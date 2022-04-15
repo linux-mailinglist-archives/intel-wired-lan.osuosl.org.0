@@ -1,81 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEAF55057D5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Apr 2022 15:54:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7E9D5057D6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Apr 2022 15:55:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2571541DA3;
-	Mon, 18 Apr 2022 13:54:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 57FAB41CAE;
+	Mon, 18 Apr 2022 13:55:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9e_BsL2VS2vf; Mon, 18 Apr 2022 13:54:56 +0000 (UTC)
+	with ESMTP id r5F9VxX0ExM8; Mon, 18 Apr 2022 13:55:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EFDAA41B6A;
-	Mon, 18 Apr 2022 13:54:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 19A6E41B6A;
+	Mon, 18 Apr 2022 13:55:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE7591BF39E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 20:53:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 756671BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 21:05:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AA9F640C20
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 20:53:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6FD2340280
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 21:05:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NK10VMofYDnc for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Apr 2022 20:53:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fnOFbo7LHeu8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Apr 2022 21:05:07 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
- [IPv6:2a00:1450:4864:20::430])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ACD8440C1E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 20:53:12 +0000 (UTC)
-Received: by mail-wr1-x430.google.com with SMTP id m14so11845621wrb.6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 13:53:12 -0700 (PDT)
+Received: from mail-oa1-x2c.google.com (mail-oa1-x2c.google.com
+ [IPv6:2001:4860:4864:20::2c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AE7D940266
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 21:05:07 +0000 (UTC)
+Received: by mail-oa1-x2c.google.com with SMTP id
+ 586e51a60fabf-d39f741ba0so8956489fac.13
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Apr 2022 14:05:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
- b=hURxvbcmXHZE0cQH3he2QePF/JGuwU07L7NGIqE/2niCHabgXwWqBKJKSoyZOLoD7u
- sz3kg9MLB33erxci1PiAerJBsobmblASO5dM6QkSEdatwtp9cYp/a7/Eh1MvKxZptgql
- aKud9nAnTNe2KL+vZidB4WUXvykVT8eoPBPEsx5wApTLFqievy5rjge9ym8ILqBBYMl5
- zrYkDoubRBWNgQ5SFhp+FaIpbqA7aUXtfS9IUD5uMvL3V5bWGEJBk0F60dhKqEaAHMH+
- G1BfjyOAQ6tQy/YEjoiNZ9iiLkwqYf6RrRc5OVrG4CGOuIJDF5v0r3MxQ5wwfaWXJaML
- ABcA==
+ h=from:to:cc:subject:date:message-id;
+ bh=DFeHwl4kR/w9Nf006Bo+dIcrWUYjy2D9GswKriWjVME=;
+ b=fPUNx3G1SpJx2MuqX7wgPfHiF6WcVq4YqREAqp5SfMCGctGw6vDNrk4nlSpL15iAGV
+ qt9YGsjDDtSN/meYbCC/ysmw9SiEcnDckONqX/cGnoj3Plor14s6Egn+A3oOhHuf9b7X
+ K0Gwpyv3McH3VHXVzx/x1u9SbtJvTgfH9JHml/7rYxXlfuho+Z3bHHXGEf+nlMhFjExa
+ V5iCa8SlqCBYT3WKx2v7+gyFfakvkPzIfxmbdfze0VzezFIAuJBMoC87fNZ3pZVMDg7d
+ zJL4y/hUkL8rGi7ABrLQk3VU6nKAFiwoh0GHuCxGn5eCQGehfA90akiumfUu6+7uhZeN
+ AD8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
- b=BwbB6+gp4Cu/Av3UTTx9fx5GaDpurOluM8uNMw0ajgNUzVwKbo39WC0VClQWVZDqL4
- fUAtvea9nW0y8KM0kzhzJucXWkvpbvvEP+Y7jgrfjE4Yuyp2h7/Q/bztNAhfmYoUgOG1
- qeKvNgfXGBIw3jRF909Ucf1+febthYjTipVZeXmtXepas9B8IWkqEEnqLzCqO6UgoHqd
- Tw/1XE99u5QaeIiAhIhM0s12XSfJEop9PMeoT2WQi4HQFqTP0IA1jdzxszJT7/tvh6U5
- kNdpehN+GPeCLG8/UjyhAuTzSNf6ZHqidYBSctYmjQFIURFzKN4PfxN5Exg3VP3BoqB9
- 9ZUg==
-X-Gm-Message-State: AOAM531/+vBNXWhae7/LyLxyWQyL90noM4pFW64OoU17c9g8QgdP46Xo
- /zSxatldKHxtk8F9V4VkzbQ=
-X-Google-Smtp-Source: ABdhPJyIDzuWNU+lgGyISF0WOPX13KdzXq4i1qTNAc+fd86+SmAMO+2T2lNd4SeTSq93uytVO66I+Q==
-X-Received: by 2002:a5d:4085:0:b0:207:b13e:e8dd with SMTP id
- o5-20020a5d4085000000b00207b13ee8ddmr538897wrp.557.1650055990836; 
- Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
-Received: from alaa-emad ([197.57.90.163]) by smtp.gmail.com with ESMTPSA id
- v5-20020a5d6785000000b0020a792848eesm3181988wru.82.2022.04.15.13.53.09
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=DFeHwl4kR/w9Nf006Bo+dIcrWUYjy2D9GswKriWjVME=;
+ b=lqjBUyG0uTE1/kF/PhScNG/L84juIg/69klNVgS3c1GgixUbpULrbL/SyHHeWn2WBj
+ jioXfNBxGPCfny0sIuFkpImlCFJiELgs8LnPk/vuAKhyvd89natyXDa1bETs0qqd2XSH
+ vTwESOKCOIIN5nnL5X1GZz8287U78gxJKnjDxn6Gm7cEauVifBvx4eWb9U4xH0jR+Mbt
+ 40bFvAZ3F4t9Pr8H375P8HfjW2qRV9/C1KcA8jXIFq4UbaDdeao3eI2BAMtL1T17/S/f
+ 32VwnN3XerDk9tP9LdB9MQZd6Cq0P2rX1PeTaZLgSsVDv+bP6rK/oRm/YT8UFxYoFyG2
+ D/Kg==
+X-Gm-Message-State: AOAM532K9Y4s9F5O8rQeVQldPTT7npr3Aunicbva9xMGKKM3ZBihTQR3
+ 0FUlZZMlhl3EWgZcA5sPGmQ=
+X-Google-Smtp-Source: ABdhPJwNGJEANI5cts9GYobmfi1XbWQKpS2jCDrzjflgzR1DOCL7uvUQ2Voorfi5bEeANWqkCWk7Zw==
+X-Received: by 2002:a05:6870:4341:b0:d3:1412:8ecb with SMTP id
+ x1-20020a056870434100b000d314128ecbmr315330oah.36.1650056706728; 
+ Fri, 15 Apr 2022 14:05:06 -0700 (PDT)
+Received: from toe.qscaudio.com ([65.113.122.35])
+ by smtp.gmail.com with ESMTPSA id
+ bg37-20020a05680817a500b002fa739a0621sm1476525oib.16.2022.04.15.14.05.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Date: Fri, 15 Apr 2022 22:53:07 +0200
-Message-Id: <20220415205307.675650-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.2
-MIME-Version: 1.0
+ Fri, 15 Apr 2022 14:05:06 -0700 (PDT)
+From: Jeff Evanson <jeff.evanson@gmail.com>
+X-Google-Original-From: Jeff Evanson <jeff.evanson@qsc.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Date: Fri, 15 Apr 2022 15:04:21 -0600
+Message-Id: <20220415210421.11217-1-jeff.evanson@qsc.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Approved-At: Mon, 18 Apr 2022 13:54:51 +0000
-Subject: [Intel-wired-lan] [PATCH] intel: igb: igb_ethtool.c: Convert kmap()
- to kmap_local_page()
+Subject: [Intel-wired-lan] [PATCH 1/2] Fix race in igc_xdp_xmit_zc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,48 +93,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, eng.alaamohamedsoliman.am@gmail.com,
- kuba@kernel.org, pabeni@redhat.com, ira.weiny@intel.com, davem@davemloft.net
+Cc: jeff.evanson@qsc.com, jeff.evanson@gmail.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The use of kmap() is being deprecated in favor of kmap_local_page()
-where it is feasible.
+in igc_xdp_xmit_zc, initialize next_to_use while holding the netif_tx_lock
+to prevent racing with other users of the tx ring
 
-With kmap_local_page(), the mapping is per thread, CPU local and not
-globally visible.
-
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Signed-off-by: Jeff Evanson <jeff.evanson@qsc.com>
 ---
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 2a5782063f4c..ba93aa4ae6a0 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 1c00ee310c19..a36a18c84aeb 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2598,7 +2598,7 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
+ 	struct netdev_queue *nq = txring_txq(ring);
+ 	union igc_adv_tx_desc *tx_desc = NULL;
+ 	int cpu = smp_processor_id();
+-	u16 ntu = ring->next_to_use;
++	u16 ntu;
+ 	struct xdp_desc xdp_desc;
+ 	u16 budget;
  
- 	frame_size >>= 1;
+@@ -2607,6 +2607,8 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
  
--	data = kmap(rx_buffer->page);
-+	data = kmap_local_page(rx_buffer->page);
+ 	__netif_tx_lock(nq, cpu);
  
- 	if (data[3] != 0xFF ||
- 	    data[frame_size + 10] != 0xBE ||
- 	    data[frame_size + 12] != 0xAF)
- 		match = false;
++	ntu = ring->next_to_use;
++
+ 	budget = igc_desc_unused(ring);
  
--	kunmap(rx_buffer->page);
-+	kunmap_local(rx_buffer->page);
- 
- 	return match;
- }
+ 	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
 -- 
-2.35.2
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
