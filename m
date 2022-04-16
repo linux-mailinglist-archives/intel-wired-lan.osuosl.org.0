@@ -1,68 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9CEC503705
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Apr 2022 16:10:09 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 273465037D9
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Apr 2022 20:36:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 73C3360E94;
-	Sat, 16 Apr 2022 14:10:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8A083840F5;
+	Sat, 16 Apr 2022 18:36:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O_0LVMI-6Ps4; Sat, 16 Apr 2022 14:10:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uAeQBqqcWRMq; Sat, 16 Apr 2022 18:36:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6DB9560A74;
-	Sat, 16 Apr 2022 14:10:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E6BD840F4;
+	Sat, 16 Apr 2022 18:36:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E89AF1BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 14:10:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A12421BF48D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 18:36:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D4226415DB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 14:10:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8DB0560FE1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 18:36:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=inria.fr
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0c6y13s_FU5s for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Apr 2022 14:10:01 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OgkqTB4Emm27 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Apr 2022 18:36:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail2-relais-roc.national.inria.fr
- (mail2-relais-roc.national.inria.fr [192.134.164.83])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 60B5F415D0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 14:10:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
- h=date:from:to:cc:subject:in-reply-to:message-id:
- references:mime-version;
- bh=QXg79ITIMb+c/YfTxTorJco9Mt6LYRevJ11/hq3FBHM=;
- b=fmJwVTpLkxQYJ84reDMPtf2kdPCy1MxrwZogdslFhrQhcidTftQca1zB
- VDQQHeuEtFCSO4nHYtOSPVwEae3uCetGHZTbhmQlZ770ZtDBtQjqUDskl
- Uvs9Xz7l5HY7zTbYbVLzjJRxg/3NQdnvRz3VJaSidouSlW2874zxBStNj 4=;
-Authentication-Results: mail2-relais-roc.national.inria.fr;
- dkim=none (message not signed) header.i=none;
- spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr;
- dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,264,1643670000"; d="scan'208";a="32016200"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
- by mail2-relais-roc.national.inria.fr with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Apr 2022 16:09:58 +0200
-Date: Sat, 16 Apr 2022 16:09:58 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-In-Reply-To: <857a2d22-5d0f-99d6-6686-98d50e4491d5@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204161608230.3501@hadrien>
-References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
- <alpine.DEB.2.22.394.2204161331080.3501@hadrien>
- <857a2d22-5d0f-99d6-6686-98d50e4491d5@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0F37060EE5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 18:36:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1650134178; x=1681670178;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=X0noK1zueRIIcHjR+9/G/K2x6BFsIqmeOKPgRqfpDcQ=;
+ b=Li8xQxbxgVTyl3usTvHBuYtX2O+7UhhX9xkP2xXMBKiKVLMD9mOfMJiB
+ MScWIU/ni3f89TJ+S/P2kiUK/3GyeRsMyXzFCaH9dVu4wn8FkqWRtZa/C
+ qJL+5fdeqOiJKX35w54NihBbSIyBtgYU7mT4Fx6DfAsyzjt0UyU+WdGat
+ ZMcPn1bkcMOw1lIj7egD2bdxusOc0xaQUWg3bHNHbRM7Mwg0tk1UxO2si
+ /sNz5eyvebA2Z8qTKkMf6rdQgRhRYZhhzsjqEmAhTggpYtNYdBCI2RPAL
+ fkU8jqekRILKOn2H0y52U1iOaDuBfONiC+wZi3yEUF54DdCraJLqnh0i8 g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="250625041"
+X-IronPort-AV: E=Sophos;i="5.90,266,1643702400"; d="scan'208";a="250625041"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2022 11:36:16 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,266,1643702400"; d="scan'208";a="663373979"
+Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 16 Apr 2022 11:36:15 -0700
+Received: from kbuild by 3abc53900bec with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nfnHK-0003Pl-RF;
+ Sat, 16 Apr 2022 18:36:14 +0000
+Date: Sun, 17 Apr 2022 02:36:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <625b0c96.9kIy+VfZHItQ32um%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-848588355-1650118198=:3501"
-Subject: Re: [Intel-wired-lan] [PATCH v3] intel: igb: igb_ethtool.c: Convert
- kmap() to kmap_local_page()
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 135e9e05924290c0416ae187444b106d207b5fb6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,108 +77,158 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: outreachy@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@inria.fr>,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- ira.weiny@intel.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 135e9e05924290c0416ae187444b106d207b5fb6  ice: Fix race during aux device (un)plugging
 
---8323329-848588355-1650118198=:3501
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+elapsed time: 1142m
 
+configs tested: 127
+configs skipped: 3
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-On Sat, 16 Apr 2022, Alaa Mohamed wrote:
+gcc tested configs:
+arm64                               defconfig
+arm64                            allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+arm                              allyesconfig
+i386                          randconfig-c001
+powerpc              randconfig-c003-20220414
+s390                          debug_defconfig
+openrisc                         alldefconfig
+arm                            xcep_defconfig
+powerpc                      tqm8xx_defconfig
+sh                          polaris_defconfig
+m68k                             allyesconfig
+sh                          r7780mp_defconfig
+sh                        edosk7760_defconfig
+arm                       aspeed_g5_defconfig
+openrisc                            defconfig
+sh                           se7724_defconfig
+sh                                  defconfig
+alpha                            allyesconfig
+mips                            gpr_defconfig
+arm                           imxrt_defconfig
+arm                        shmobile_defconfig
+sh                          landisk_defconfig
+powerpc64                        alldefconfig
+arm                     eseries_pxa_defconfig
+sh                   sh7724_generic_defconfig
+powerpc                 mpc85xx_cds_defconfig
+sh                           se7722_defconfig
+i386                             alldefconfig
+powerpc                      ppc6xx_defconfig
+powerpc                   motionpro_defconfig
+powerpc                      cm5200_defconfig
+arm                            mps2_defconfig
+x86_64                              defconfig
+powerpc                     tqm8555_defconfig
+arc                     haps_hs_smp_defconfig
+um                                  defconfig
+x86_64                        randconfig-c001
+arm                  randconfig-c002-20220415
+arm                  randconfig-c002-20220414
+ia64                             allmodconfig
+ia64                             allyesconfig
+ia64                                defconfig
+m68k                                defconfig
+m68k                             allmodconfig
+alpha                               defconfig
+csky                                defconfig
+nios2                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+s390                                defconfig
+s390                             allmodconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+i386                              debian-10.3
+i386                             allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+sparc                            allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a015
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+arc                  randconfig-r043-20220414
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                         rhel-8.3-kunit
+x86_64                               rhel-8.3
 
->
-> On ١٦/٤/٢٠٢٢ ١٣:٣١, Julia Lawall wrote:
-> >
-> > On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-> >
-> > > Convert kmap() to kmap_local_page()
-> > >
-> > > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > > globally visible.
-> > It's not clearer.
-> I mean this " fix kunmap_local path value to take address of the mapped page"
-> be more clearer
-> > This is a general statement about the function.  You
-> > need to explain why it is appropriate to use it here.  Unless it is the
-> > case that all calls to kmap should be converted to call kmap_local_page.
-> It's required to convert all calls kmap to kmap_local_page. So, I don't what
-> should the commit message be?
+clang tested configs:
+arm                         lpc32xx_defconfig
+arm                       mainstone_defconfig
+mips                         tb0287_defconfig
+i386                             allyesconfig
+arm                       aspeed_g4_defconfig
+arm                          ixp4xx_defconfig
+mips                          malta_defconfig
+powerpc                     pseries_defconfig
+arm                        mvebu_v5_defconfig
+powerpc                 mpc836x_rdk_defconfig
+arm                  colibri_pxa300_defconfig
+arm                       imx_v4_v5_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+hexagon              randconfig-r041-20220414
+s390                 randconfig-r044-20220414
+hexagon              randconfig-r045-20220414
+riscv                randconfig-r042-20220414
 
-If all calls should be changed then you can also say that.
-
-I thought that a previous commit on the outreachy list made some arguments
-about how the affacted value was just allocated and thus could not yet be
-shared.
-
-julia
-
->
-> Is this will be good :
->
-> "kmap_local_page() was recently developed as a replacement for kmap().  The
-> kmap_local_page() creates a mapping which is restricted to local use by a
-> single thread of execution. "
-> >
-> > julia
-> >
-> > > Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> > > ---
-> > > changes in V2:
-> > > 	fix kunmap_local path value to take address of the mapped page.
-> > > ---
-> > > changes in V3:
-> > > 	edit commit message to be clearer
-> > > ---
-> > >   drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
-> > >   1 file changed, 2 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > index 2a5782063f4c..c14fc871dd41 100644
-> > > --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct
-> > > igb_rx_buffer *rx_buffer,
-> > >
-> > >   	frame_size >>= 1;
-> > >
-> > > -	data = kmap(rx_buffer->page);
-> > > +	data = kmap_local_page(rx_buffer->page);
-> > >
-> > >   	if (data[3] != 0xFF ||
-> > >   	    data[frame_size + 10] != 0xBE ||
-> > >   	    data[frame_size + 12] != 0xAF)
-> > >   		match = false;
-> > >
-> > > -	kunmap(rx_buffer->page);
-> > > +	kunmap_local(data);
-> > >
-> > >   	return match;
-> > >   }
-> > > --
-> > > 2.35.2
-> > >
-> > >
-> > >
->
---8323329-848588355-1650118198=:3501
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---8323329-848588355-1650118198=:3501--
