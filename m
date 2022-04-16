@@ -2,75 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A57EB5057DF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Apr 2022 15:55:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C2445057E0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Apr 2022 15:55:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5AEC540B88;
-	Mon, 18 Apr 2022 13:55:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 320DC4100B;
+	Mon, 18 Apr 2022 13:55:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6YKRdXu59TcT; Mon, 18 Apr 2022 13:55:31 +0000 (UTC)
+	with ESMTP id q-vgSPF-EtnX; Mon, 18 Apr 2022 13:55:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3CC0F40B84;
-	Mon, 18 Apr 2022 13:55:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1B3E840B84;
+	Mon, 18 Apr 2022 13:55:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A9D401BF575
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 16:28:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 211A81BF341
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 21:43:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 91BF840A42
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 16:28:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0D06C611D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 21:43:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NsP-KP5h2tYx for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Apr 2022 16:28:17 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 33_4Lwg5RO72 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Apr 2022 21:43:09 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
- [IPv6:2a00:1450:4864:20::62d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 47817400B8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 16:28:17 +0000 (UTC)
-Received: by mail-ej1-x62d.google.com with SMTP id ks6so20226619ejb.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 09:28:17 -0700 (PDT)
+Received: from mail-ed1-x52f.google.com (mail-ed1-x52f.google.com
+ [IPv6:2a00:1450:4864:20::52f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AD48A605AB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 21:43:09 +0000 (UTC)
+Received: by mail-ed1-x52f.google.com with SMTP id z12so13672863edl.2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Apr 2022 14:43:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=urZU6KrOrqSGwz0m+DXI0c5kidJoxfuUc3lccO9cR94=;
- b=RpghoDODTD+M97ziS0MCCaHepBeh5NlSXMNtfZYbIhumwLcXxjka0WIbhm8HtjjamN
- sVfQCM2VosU0rwFvyGXtbnIdfPgg6cEc4FkXxnWR2FYuxl09eZg/dXQYRE+Kv552UN0g
- WMmD9i/HrBynGr831y5DNloziIoW4HWJl5j1UHSkPZ5OzPVAh8XdxWC199ghl/4Gmsbf
- 9jJ5tnFO0+GfiFAS6GTAYSlbdaLY52XWnkLhYkrbI2v1B5VkIJg1g+63RbpQ9UbGwp7G
- x+hb17av43Yqrm/RTQ9gVW8Hbgouqc0F2jxBh+aVW+gPpvVZ+FTBRaGLo/p7D3I94wZY
- CqcQ==
+ bh=lWYQzTIke+I/BBxWjft+Tol7xy00WJ90k4QGc0ykxY0=;
+ b=RRSz97WADhUUcCAs/8odh+Or6tW50E5Dxd42pD+VtFzvhEdkZlXewLWdcFGlS+XknA
+ zQdehWze/v+Z0Bcg2RDDPq9JrwzbRo8LfL6Wjso2hnoqNN+IKGqjrzK1vOBMoOk81GgA
+ pJ5fAh0KqNkN1wk9lrm18/iEe4fe2L6PR2QHqsU1tfqZ6vKbr5pSqgFIdzuLO9XqVIkp
+ J0jtJfgvg9FDL3TT7MSRkK3SVWxa3EuYw+rLAyH4fwdLzmBH9sg9NglziRh2iLRjs7Eb
+ sE4Aa+iZEpT0QMJsOpm+mvJmUsPLQRASHK913Vb0OuMMxjQQ0kIXjrJs7HC0QkZOuVjd
+ DBdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=urZU6KrOrqSGwz0m+DXI0c5kidJoxfuUc3lccO9cR94=;
- b=KyqzQeBVNr3yDtV8wSoYHImBCBxx9A73X6TZU3POdVBuAIAGzbbGUpyZ+rvsW4Zwla
- FGqgIwka1tlSwxS5fLMRBBJwkTul0k6cMlh7F7wAKv7eKHCj9gFIvboNzuQDaaBnEETZ
- JsrIXAoxyxf6gSC3pOGCH/MyfMzuqMcbkBC6AZqmdpE6Xv4lwiEx3b21UF+ewdxj+QxI
- +W+frns0366Aw95hPAgDQIiZ0rIZ9K/iiA2BlQnb1l1e7GWWJqXjYFLpLGyydte42AoH
- 2ffGth3Unqcp77C1u+N+czNeA21ELznV/Ro1+FSbGFhq8lsx7V88Oln81VLX+IfLwzYw
- jf9Q==
-X-Gm-Message-State: AOAM531zHQs4M7nrSYVSumDmNLzKKNR3Uo5HPFMOWfOgHlQ9yNXXAtXO
- vBhIc8sKkVaO12qIQb86eoM=
-X-Google-Smtp-Source: ABdhPJzSxbU3gaFGr+ua4dXtr/FaGXykZ1DwuE/wLuocjrs63K4wlQQ4DGkWXIbGlMULBsOtMxN19Q==
-X-Received: by 2002:a17:907:33cc:b0:6e8:81ca:f9e8 with SMTP id
- zk12-20020a17090733cc00b006e881caf9e8mr3269885ejb.51.1650126495513; 
- Sat, 16 Apr 2022 09:28:15 -0700 (PDT)
+ bh=lWYQzTIke+I/BBxWjft+Tol7xy00WJ90k4QGc0ykxY0=;
+ b=Bq0ICCeK5xrwNmEaaXvNGxjJtxq8Uo5EZaZLMZcXOwXy0D9EO9rH/FUMTpy7s78x9X
+ i3QytkLSZkry+sMbkWP0D84ICEq7bGzESlmO40aQA537U+MhAZq8fCUCdIC7p43cOU44
+ VzBDHGG0XURjMG0bnDDE+XXcfvrew2B6pBr/sjA3csUNPQ05UI9/4YRBUbFkWOlm9n/4
+ mUe+bLr53zPnGmVWpzuSVFgGYFcgFPHtsKAIqY5miOwOZfd3Gun7mEcLqJNtUt+q+tnt
+ NesuidS1f6XbOxbGVVcpKZXUmW5nXNCCvEZmOUbrgqGED8LmxHnlmkBNTwG4/EbPVTlM
+ iCJw==
+X-Gm-Message-State: AOAM533O4Mi9igaVrgxhp5nnQGGkKlxLpjh0OgTpu5Wosp8gX0t63uiU
+ Rc4UlSv4r2Nd1s8ixSg6aSk=
+X-Google-Smtp-Source: ABdhPJwpsZNTrmAX4qatilJPJfufQoUAjkKcBB+gTec0OwzFWAY9Hfl3Iq/zMEOee8Mws/JcREHUdg==
+X-Received: by 2002:a50:fb0b:0:b0:41d:8cd4:659f with SMTP id
+ d11-20020a50fb0b000000b0041d8cd4659fmr5446108edq.10.1650145387804; 
+ Sat, 16 Apr 2022 14:43:07 -0700 (PDT)
 Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it.
  [79.50.86.254]) by smtp.gmail.com with ESMTPSA id
- l13-20020a056402254d00b0041d9247d8efsm4512064edb.26.2022.04.16.09.28.13
+ e13-20020a1709067e0d00b006e880b53294sm2988632ejr.58.2022.04.16.14.43.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Apr 2022 09:28:14 -0700 (PDT)
+ Sat, 16 Apr 2022 14:43:06 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
- Julia Lawall <julia.lawall@inria.fr>
-Date: Sat, 16 Apr 2022 18:28:12 +0200
-Message-ID: <2114356.Mh6RI2rZIc@leap>
+To: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Date: Sat, 16 Apr 2022 23:43:03 +0200
+Message-ID: <4058066.1IzOArtZ34@leap>
 In-Reply-To: <1897617.PYKUYFuaPT@leap>
 References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
  <alpine.DEB.2.22.394.2204161608230.3501@hadrien> <1897617.PYKUYFuaPT@leap>
@@ -90,203 +91,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: outreachy@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Julia Lawall <julia.lawall@inria.fr>,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- ira.weiny@intel.com, davem@davemloft.net
-Content-Type: multipart/mixed; boundary="===============2804434310388314117=="
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+ kuba@kernel.org, pabeni@redhat.com, ira.weiny@intel.com, davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============2941277115071908401=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 This is a multi-part message in MIME format.
 
---===============2804434310388314117==
-Content-Type: multipart/alternative; boundary="nextPart3490882.R56niFO833"
+--===============2941277115071908401==
+Content-Type: multipart/alternative; boundary="nextPart2577984.BddDVKsqQX"
 Content-Transfer-Encoding: 7Bit
 
 This is a multi-part message in MIME format.
 
---nextPart3490882.R56niFO833
-Content-Transfer-Encoding: quoted-printable
+--nextPart2577984.BddDVKsqQX
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="ISO-8859-1"
 
 On sabato 16 aprile 2022 17:52:20 CEST Fabio M. De Francesco wrote:
 > On sabato 16 aprile 2022 16:09:58 CEST Julia Lawall wrote:
-> >=20
-> > On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-> >=20
-> > >
-> > > On =D9=A1=D9=A6/=D9=A4/=D9=A2=D9 =D9=A2=D9=A2 =D9=A1=D9=A3:=D9=A3=D9=
-=A1, Julia Lawall wrote:
-> > > >
-> > > > On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-> > > >
-> > > > > Convert kmap() to kmap_local_page()
-> > > > >
-> > > > > With kmap_local_page(), the mapping is per thread, CPU local and=
-=20
-> not
-> > > > > globally visible.
-> > > > It's not clearer.
-> > > I mean this " fix kunmap_local path value to take address of the=20
-mapped=20
-> page"
-> > > be more clearer
-> > > > This is a general statement about the function.  You
-> > > > need to explain why it is appropriate to use it here.  Unless it is=
-=20
-> the
-> > > > case that all calls to kmap should be converted to call=20
-> kmap_local_page.
-> > > It's required to convert all calls kmap to kmap_local_page. So, I=20
-don't=20
-> what
-> > > should the commit message be?
-> >=20
+> > 
 > > If all calls should be changed then you can also say that.
->=20
-> If all calls should be changed with no regards to the surrounding=20
-contexts=20
+> 
+> If all calls should be changed with no regards to the surrounding 
+contexts 
 > and special situations, we can just make an automated s/kmap()/
 > kmap_local_page()/ or something else similar :)
 
-Obviously, I was just kidding because we cannot massively and blindly=20
-change all kmap() calls to kmap_local_page().
+Hi Julia,
 
-IMO, here the changes in code are good but Julia's objections are=20
-legitimate too.
+Of course I was just kidding when talking of massively automated 
+substitutions. They are not feasible and we cannot blindly replace all 
+kmap() calls with kmap_local_page().
 
-Thanks,
+Although these code changes look good, your objections are appropriate and 
+legitimate.
 
-=46abio
+Not all kmap() calls can be changed to kmap_local_page() and, if someone 
+wants to make such replacements, they should also "prove" somehow that they 
+are doing the right changes in that specific context.
 
-> >=20
-> > I thought that a previous commit on the outreachy list made some=20
+For example, the following is one of those cases where such a replacement 
+is not allowed and a different solution has yet to be found:
+
+https://lore.kernel.org/lkml/2a7030f5-d55f-94c7-90ba-5a57235159f6@amd.com/
+
+Furthermore, if people cannot "prove" that this change is feasible, their  
+patches will probably be ignored / rejected just because many maintainers 
+still don't know if those changes are correct and safe.
+
+Whoever wants to do these changes should understand the specific context in 
+which they are working. 
+
+For example, there have also been cases where alloc_page() + kmap() was 
+simply replaced by kmalloc(). Sure!
+
+If you are interested to see how and why, please take a look at the commit 
+633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from 
+sgx_ioc_enclave_init()") from Ira Weiny.
+
+Regards,
+
+Fabio
+
+> > 
+> > I thought that a previous commit on the outreachy list made some 
 > arguments
-> > about how the affacted value was just allocated and thus could not yet=
-=20
+> > about how the affacted value was just allocated and thus could not yet 
 be
 > > shared.
-> >=20
+> > 
 > > julia
->
---nextPart3490882.R56niFO833
-Content-Transfer-Encoding: quoted-printable
+> 
+
+--nextPart2577984.BddDVKsqQX
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/html; charset="ISO-8859-1"
 
 <html>
 <head>
-<meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
-<body><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">On sabato 16 aprile 2022 17:52:20 CEST Fabio M. De Francesco wrote:</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; On sabato 16 aprile 2022 16:09:58 CEST Julia Lawall wrote:</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; On Sat, 16 Apr 2022, Alaa Mohamed wrote:</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt;</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; On =D9=A1=D9=A6/=D9=A4/=D9=A2=D9 =D9=A2=D9=A2 =D9=A1=D9=A3:=D9=
-=A3=D9=A1, Julia Lawall wrote:</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt;</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; On Sat, 16 Apr 2022, Alaa Mohamed wrote:</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt;</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; &gt; Convert kmap() to kmap_local_page()</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; &gt;</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; &gt; With kmap_local_page(), the mapping is per thread, CP=
-U local and </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; not</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; &gt; globally visible.</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; It's not clearer.</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; I mean this &quot; fix kunmap_local path value to take address =
-of the mapped </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; page&quot;</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; be more clearer</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; This is a general statement about the function.&nbsp; You<=
-/p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; need to explain why it is appropriate to use it here.&nbsp=
-; Unless it is </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; the</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; &gt; case that all calls to kmap should be converted to call </=
-p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; kmap_local_page.</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; It's required to convert all calls kmap to kmap_local_page. So,=
- I don't </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; what</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; &gt; should the commit message be?</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; If all calls should be changed then you can also say that.</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; If all calls should be changed with no regards to the surrounding context=
-s </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; and special situations, we can just make an automated s/kmap()/</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; kmap_local_page()/ or something else similar :)</p>
-<br /><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">Obviously, I was just kidding because we cannot massively and blindly ch=
-ange all kmap() calls to kmap_local_page().</p>
-<br /><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">IMO, here the changes in code are good but Julia's objections are legiti=
-mate too.</p>
-<br /><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">Thanks,</p>
-<br /><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">Fabio</p>
-<br /><p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0=
-;">&gt; &gt; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; I thought that a previous commit on the outreachy list made some </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; arguments</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; about how the affacted value was just allocated and thus could not y=
-et be</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; shared.</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; </p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-; &gt; julia</p>
-<p style=3D"margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt=
-;</p>
-</body>
+<body><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">On sabato 16 aprile 2022 17:52:20 CEST Fabio M. De Francesco wrote:</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; On sabato 16 aprile 2022 16:09:58 CEST Julia Lawall wrote:</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; If all calls should be changed then you can also say that.</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; If all calls should be changed with no regards to the surrounding contexts </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; and special situations, we can just make an automated s/kmap()/</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; kmap_local_page()/ or something else similar :)</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Hi Julia,</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Of course I was just kidding when talking of massively automated substitutions. They are not feasible and we cannot blindly replace all kmap() calls with kmap_local_page().</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Although these code changes look good, your objections are appropriate and legitimate.</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Not all kmap() calls can be changed to kmap_local_page() and, if someone wants to make such replacements, they should also &quot;prove&quot; somehow that they are doing the right changes in that specific context.</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">For example, the following is one of those cases where such a replacement is not allowed and a different solution has yet to be found:</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">https://lore.kernel.org/lkml/2a7030f5-d55f-94c7-90ba-5a57235159f6@amd.com/</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Furthermore, if people cannot &quot;prove&quot; that this change is feasible, their&nbsp; patches will probably be ignored / rejected just because many maintainers still don't know if those changes are correct and safe.</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Whoever wants to do these changes should understand the specific context in which they are working. </p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">For example, there have also been cases where alloc_page() + kmap() was simply replaced by kmalloc(). Sure!</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">If you are interested to see how and why, please take a look at the commit 633b0616cfe0 (&quot;x86/sgx: Remove unnecessary kmap() from sgx_ioc_enclave_init()&quot;) from Ira Weiny.<p>&nbsp;</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Regards,</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">Fabio</p>
+<br /><p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; I thought that a previous commit on the outreachy list made some </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; arguments</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; about how the affacted value was just allocated and thus could not yet be</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; shared.</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; </p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; &gt; julia</p>
+<p style="margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;">&gt; </p>
+<br /></body>
 </html>
---nextPart3490882.R56niFO833--
+--nextPart2577984.BddDVKsqQX--
 
 
 
 
---===============2804434310388314117==
+--===============2941277115071908401==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -297,7 +220,7 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============2804434310388314117==--
+--===============2941277115071908401==--
 
 
 
