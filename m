@@ -1,55 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E733506FFB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Apr 2022 16:19:42 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C167D506FFD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Apr 2022 16:22:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CD8B841940;
-	Tue, 19 Apr 2022 14:19:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DD66C61301;
+	Tue, 19 Apr 2022 14:22:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hCqHYUXE037I; Tue, 19 Apr 2022 14:19:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ylfKZ5ABJM6O; Tue, 19 Apr 2022 14:22:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A12E4192F;
-	Tue, 19 Apr 2022 14:19:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C342661309;
+	Tue, 19 Apr 2022 14:22:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5E2D91BF319
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:19:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AFFAF1BF319
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:22:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5813E61305
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:19:34 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AAAD161307
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:22:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wqWzkhcRUjKU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Apr 2022 14:19:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 09B5861301
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:19:32 +0000 (UTC)
-Received: from [192.168.0.7] (ip5f5ae90d.dynamic.kabel-deutschland.de
- [95.90.233.13])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7D81461CCD785;
- Tue, 19 Apr 2022 16:19:30 +0200 (CEST)
-Message-ID: <b9804c40-3402-1dac-a9c0-db37a5360015@molgen.mpg.de>
-Date: Tue, 19 Apr 2022 16:19:29 +0200
+ with ESMTP id Yj59qxzBvjez for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Apr 2022 14:22:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D942F61301
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 14:22:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1650378146;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=gx2u0UDEGlbJLmTjSX+0S/6XhMRFSaDMTCWYbhQAR20=;
+ b=PviaDVWcldPDSxfs6gRZYnRbj1kIyXznvrdPZtGMMdRDQM4LaNl1O526t6caFBZyhss1sP
+ fzhr1ruZzmi5d2FkzSojwA+ZByIAgqAAYfZp7Tg3tWNyO2BqvRnTOSud7fud3uZ9jRWiHn
+ MS08lRJUYhcuqgSIVFBy13pi0ancghQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-502-2Ii0ajvxNeikvyfFkEhgzQ-1; Tue, 19 Apr 2022 10:22:25 -0400
+X-MC-Unique: 2Ii0ajvxNeikvyfFkEhgzQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B3D86811E75;
+ Tue, 19 Apr 2022 14:22:24 +0000 (UTC)
+Received: from ceranb.redhat.com (unknown [10.40.194.169])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AAAC8145F94D;
+ Tue, 19 Apr 2022 14:22:22 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Tue, 19 Apr 2022 16:22:21 +0200
+Message-Id: <20220419142221.2349382-1-ivecera@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Content-Language: en-US
-To: Jeff Evanson <jeff.evanson@gmail.com>
-References: <20220415210546.11294-1-jeff.evanson@qsc.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220415210546.11294-1-jeff.evanson@qsc.com>
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] Trigger proper interrupts in
- igc_xsk_wakeup
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Protect vf_state check by
+ cfg_lock in ice_vc_process_vf_msg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,105 +75,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jeff.evanson@qsc.com, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Fei Liu <feliu@redhat.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ mschmidt@redhat.com, Brett Creeley <brett.creeley@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Jeff,
+Previous patch labelled "ice: Fix incorrect locking in
+ice_vc_process_vf_msg()"  fixed an issue with ignored messages
+sent by VF driver but a small race window still left.
 
+Recently caught trace during 'ip link set ... vf 0 vlan ...' operation:
 
-Thank you for your patch.
+[ 7332.995625] ice 0000:3b:00.0: Clearing port VLAN on VF 0
+[ 7333.001023] iavf 0000:3b:01.0: Reset indication received from the PF
+[ 7333.007391] iavf 0000:3b:01.0: Scheduling reset task
+[ 7333.059575] iavf 0000:3b:01.0: PF returned error -5 (IAVF_ERR_PARAM) to our request 3
+[ 7333.059626] ice 0000:3b:00.0: Invalid message from VF 0, opcode 3, len 4, error -1
 
+Setting of VLAN for VF causes a reset of the affected VF using
+ice_reset_vf() function that runs with cfg_lock taken:
 
-Am 15.04.22 um 23:05 schrieb Jeff Evanson:
+1. ice_notify_vf_reset() informs IAVF driver that reset is needed and
+   IAVF schedules its own reset procedure
+2. Bit ICE_VF_STATE_DIS is set in vf->vf_state
+3. Misc initialization steps
+4. ice_sriov_post_vsi_rebuild() -> ice_vf_set_initialized() and that
+   clears ICE_VF_STATE_DIS in vf->vf_state
 
-1.  Add a From tag(?), so your company instead of gmail.com email is used?
-2.  Please add a prefix to the commit message summary. See `git log 
---oneline drivers/net/ethernet/igc` for examples.
+Step 3 is mentioned race window because IAVF reset procedure runs in
+parallel and one of its step is sending of VIRTCHNL_OP_GET_VF_RESOURCES
+message (opcode==3). This message is handled in ice_vc_process_vf_msg()
+and if it is received during the mentioned race window then it's
+marked as invalid and error is returned to VF driver.
 
-> in igc_xsk_wakeup, trigger the proper interrupt based on whether flags
-> contains XDP_WAKEUP_RX and/or XDP_WAKEUP_TX
+Protect vf_state check in ice_vc_process_vf_msg() by cfg_lock to avoid
+this race condition.
 
-Nit. Please add a dot/period to the end of sentences.
+Fixes: e6ba5273d4ed ("ice: Fix race conditions between virtchnl handling and VF ndo ops")
+Tested-by: Fei Liu <feliu@redhat.com>
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-Can you please add a paragraph on what system you experienced the 
-problem, and how to verify your fix?
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index 5612c032f15a..b72606c9e6d0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -3625,6 +3625,8 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 		return;
+ 	}
+ 
++	mutex_lock(&vf->cfg_lock);
++
+ 	/* Check if VF is disabled. */
+ 	if (test_bit(ICE_VF_STATE_DIS, vf->vf_states)) {
+ 		err = -EPERM;
+@@ -3648,19 +3650,14 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 				      NULL, 0);
+ 		dev_err(dev, "Invalid message from VF %d, opcode %d, len %d, error %d\n",
+ 			vf_id, v_opcode, msglen, err);
+-		ice_put_vf(vf);
+-		return;
++		goto finish;
+ 	}
+ 
+-	mutex_lock(&vf->cfg_lock);
+-
+ 	if (!ice_vc_is_opcode_allowed(vf, v_opcode)) {
+ 		ice_vc_send_msg_to_vf(vf, v_opcode,
+ 				      VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
+ 				      0);
+-		mutex_unlock(&vf->cfg_lock);
+-		ice_put_vf(vf);
+-		return;
++		goto finish;
+ 	}
+ 
+ 	switch (v_opcode) {
+@@ -3773,6 +3770,7 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 			 vf_id, v_opcode, err);
+ 	}
+ 
++finish:
+ 	mutex_unlock(&vf->cfg_lock);
+ 	ice_put_vf(vf);
+ }
+-- 
+2.35.1
 
-> Signed-off-by: Jeff Evanson <jeff.evanson@qsc.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_main.c | 36 +++++++++++++++++------
->   1 file changed, 27 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index a36a18c84aeb..d706de95dc06 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -6073,7 +6073,7 @@ static void igc_trigger_rxtxq_interrupt(struct igc_adapter *adapter,
->   int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
->   {
->   	struct igc_adapter *adapter = netdev_priv(dev);
-> -	struct igc_q_vector *q_vector;
-> +	struct igc_q_vector *txq_vector = 0, *rxq_vector = 0;
-
-Should you use NULL instead of 0?
-
-
-Kind regards,
-
-Paul
-
-
->   	struct igc_ring *ring;
->   
->   	if (test_bit(__IGC_DOWN, &adapter->state))
-> @@ -6082,17 +6082,35 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
->   	if (!igc_xdp_is_enabled(adapter))
->   		return -ENXIO;
->   
-> -	if (queue_id >= adapter->num_rx_queues)
-> -		return -EINVAL;
-> +	if (flags & XDP_WAKEUP_RX) {
-> +		if (queue_id >= adapter->num_rx_queues)
-> +			return -EINVAL;
->   
-> -	ring = adapter->rx_ring[queue_id];
-> +		ring = adapter->rx_ring[queue_id];
-> +		if (!ring->xsk_pool)
-> +			return -ENXIO;
->   
-> -	if (!ring->xsk_pool)
-> -		return -ENXIO;
-> +		rxq_vector = ring->q_vector;
-> +	}
-> +
-> +	if (flags & XDP_WAKEUP_TX) {
-> +		if (queue_id >= adapter->num_tx_queues)
-> +			return -EINVAL;
-> +
-> +		ring = adapter->tx_ring[queue_id];
-> +		if (!ring->xsk_pool)
-> +			return -ENXIO;
-> +
-> +		txq_vector = ring->q_vector;
-> +	}
-> +
-> +	if (rxq_vector &&
-> +	    !napi_if_scheduled_mark_missed(&rxq_vector->napi))
-> +		igc_trigger_rxtxq_interrupt(adapter, rxq_vector);
->   
-> -	q_vector = adapter->q_vector[queue_id];
-> -	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
-> -		igc_trigger_rxtxq_interrupt(adapter, q_vector);
-> +	if (txq_vector && txq_vector != rxq_vector &&
-> +	    !napi_if_scheduled_mark_missed(&txq_vector->napi))
-> +		igc_trigger_rxtxq_interrupt(adapter, txq_vector);
->   
->   	return 0;
->   }
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
