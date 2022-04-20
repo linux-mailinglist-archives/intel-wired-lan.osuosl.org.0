@@ -1,93 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01A005089A2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3ECDF508809
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 14:23:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A3D0C84118;
-	Wed, 20 Apr 2022 13:46:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BFA0F4190D;
+	Wed, 20 Apr 2022 12:23:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9kZIExHJH54o; Wed, 20 Apr 2022 13:46:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k_VNkg0MPMN5; Wed, 20 Apr 2022 12:23:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9282A82F84;
-	Wed, 20 Apr 2022 13:46:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5F0894192C;
+	Wed, 20 Apr 2022 12:23:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A83981BF853
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FA361BF30D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 12:23:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 94DB64017C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5C6F683298
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 12:23:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3mRoPs9au-X6 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oa1-x2b.google.com (mail-oa1-x2b.google.com
- [IPv6:2001:4860:4864:20::2b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED8E6400CC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:54 +0000 (UTC)
-Received: by mail-oa1-x2b.google.com with SMTP id
- 586e51a60fabf-e2fa360f6dso492504fac.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 18:27:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=sLw0H6R3WlK1bcOpwRAGg46brAmczPbRTJQlw64+BQ8=;
- b=ignMrrjTawt+RSJ85pYU7pXLiyjs3Ks/hQyy+Go6XWmeKMgb/NaIB461stfVcxPrP4
- cdZvnpkvayzPNy+rlxYER67Xx+obKhbVtiGtE2izGTJtB5EJmCjVQABAtaAB0srcu/ry
- drprU5w2y0gyfR8HOGUsxKIG1X/0qf99a4hH0YGqeyEYT/g04lNZ8bA7oYvx8jPU7V8l
- 0x63eDNKr1euZoW6py3M/o63QlfaCqNmZTDajJ5xHKMh+KMyQBYYsAImc+K2+Y5nIAJS
- wahqAuPRHf+UYJGyFINaUf+mutvjhiR3t8ysGopcxDS+QZLxnKgbdeAFmqkXrkJUVVee
- ni9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=sLw0H6R3WlK1bcOpwRAGg46brAmczPbRTJQlw64+BQ8=;
- b=dlcdazlpIW1l2bOqWS6MMWXTSjlvyuZmVuxT99woBQjqj021tA8dDtuIx5eHi1MbR/
- deDRSzKQcV+6c5VCZ2ZGb8iHY6/6fNRa0Are1QsdV/8yoV77Oz35s77dPR/ih4G8WR3R
- eY58iNEiZqlEZsh8FPwM2XRgYVu7nURmMKHh6JgdAsv011J0dliNABQfJxmzrAySPQJg
- j0AfRD1jZPpqZB8Pw9rHxVP+m6gL2HoKVu4GQkPOQccGAbESlCTILrrYO+SiSxJkF1bG
- YFoUkJe8+a5hMCeR7b8QkOdq3lbqRvj73pz4/v7VAknx3PO4XyQJm8wby3+VsbmABjr7
- jf6w==
-X-Gm-Message-State: AOAM5310md1B+hd6ViZaWwC0h84ghFTfevc5Y/NVdGXjTGHkokYnve7A
- wVe2GQu87uY661XSx4jv39g=
-X-Google-Smtp-Source: ABdhPJyWXSgaXneeXdK00kRCm4zrorvjleC1IZX7daIwNfz00gwfZryMocgkAbGgY7JP06Gy/3n8vg==
-X-Received: by 2002:a05:6870:f624:b0:e1:c071:121b with SMTP id
- ek36-20020a056870f62400b000e1c071121bmr594369oab.182.1650418073912; 
- Tue, 19 Apr 2022 18:27:53 -0700 (PDT)
-Received: from toe.qscaudio.com ([65.113.122.35])
- by smtp.gmail.com with ESMTPSA id
- i26-20020a4a929a000000b0033a29c8d564sm4284530ooh.3.2022.04.19.18.27.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 18:27:53 -0700 (PDT)
-From: jeff.evanson@gmail.com
-X-Google-Original-From: jeff.evanson@qsc.com
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Vedang Patel <vedang.patel@intel.com>,
- Andre Guedes <andre.guedes@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jithu Joseph <jithu.joseph@intel.com>,
- intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
- netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
- linux-kernel@vger.kernel.org (open list)
-Date: Tue, 19 Apr 2022 19:26:35 -0600
-Message-Id: <20220420012635.13733-3-jeff.evanson@qsc.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220420012635.13733-1-jeff.evanson@qsc.com>
-References: <20220420012635.13733-1-jeff.evanson@qsc.com>
-X-Mailman-Approved-At: Wed, 20 Apr 2022 13:46:02 +0000
-Subject: [Intel-wired-lan] [PATCH v2 2/2] igc: Trigger proper interrupts in
- igc_xsk_wakeup
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZQ_uajOrXTJo for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Apr 2022 12:23:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3770383227
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 12:23:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1650457402; x=1681993402;
+ h=from:to:cc:subject:date:message-id;
+ bh=gSRLlKPchw6jSMv/2pjjUfgmQmkV9DnX3SHv4t3xe3E=;
+ b=S7vu2qzNGb0j2JxYKZHAIAMq8cjcLFv+KzLfvCae/dhP7KLzTwkWKHKe
+ mV1W8i7DQtN4D0/fNEXqDNYa85q88NMRG9h244nHaEWLRIhHrIBFOm21G
+ k6W2c0uEESh7CG9QB/fsHhkWbHvjuGAzmxQZuu4eRxrOYpv/iI9NDF5+u
+ Wf491vdXIKLPa5e/sSRaRpfgszys/8haU03PTDuuflLSC+DeZzzabpzH0
+ mxw/S9+4udE2+ThfFcrPJgCjKAQoCKaWh+3/eLuEQplZFKIbWA1qb9rTq
+ yE0TVXP6oBnG7WwRbl99IA/oGRzXtD6llf6bgPcMLub6DWj7zVQsFx5lN Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10322"; a="324453163"
+X-IronPort-AV: E=Sophos;i="5.90,275,1643702400"; d="scan'208";a="324453163"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2022 05:23:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,275,1643702400"; d="scan'208";a="510530420"
+Received: from mmichali-devpc.igk.intel.com ([10.211.235.239])
+ by orsmga003.jf.intel.com with ESMTP; 20 Apr 2022 05:23:20 -0700
+From: Michal Michalik <michal.michalik@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 20 Apr 2022 14:23:02 +0200
+Message-Id: <20220420122302.574-1-michal.michalik@intel.com>
+X-Mailer: git-send-email 2.9.5
+Subject: [Intel-wired-lan] [PATCH net v2] ice: fix PTP stale Tx timestamps
+ cleanup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,98 +72,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jeff Evanson <jeff.evanson@qsc.com>
+Cc: Michal Michalik <michal.michalik@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jeff Evanson <jeff.evanson@qsc.com>
+Read stale PTP Tx timestamps from PHY on cleanup.
 
-In igc_xsk_wakeup, trigger the proper interrupt based on whether flags
-contains XDP_WAKEUP_RX and/or XDP_WAKEUP_TX.
+After running out of Tx timestamps request handlers, hardware (HW) stops
+reporting finished requests. Function ice_ptp_tx_tstamp_cleanup() used
+to only clean up stale handlers in driver and was leaving the hardware
+registers not read. Not reading stale PTP Tx timestamps prevents next
+interrupts from arriving and makes timestamping unusable.
 
-Consider a scenario where the transmit queue interrupt is mapped to a
-different irq from the receive queue. If XDP_WAKEUP_TX is set in the
-flags argument, the interrupt for transmit queue must be triggered,
-otherwise the transmit queue's napi_struct will never be scheduled.
+v2:
+- update commit message,
+- added a comment to ice_read_phy_tstamp() call to clarify intentions.
 
-In the case where both XDP_WAKEUP_TX and XDP_WAKEUP_RX are both set,
-the receive interrupt should always be triggered, but the transmit
-interrupt should only be triggered if its q_vector differs from the
-receive queue's interrupt.
+v1[1]
 
-Fixes: fc9df2a0b520 ("igc: Enable RX via AF_XDP zero-copy")
+[1] https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20220414102358.13486-1-michal.michalik@intel.com/#2876713
+
+Fixes: ea9b847cda64 ("ice: enable transmit timestamps for E810 devices")
+Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 40 ++++++++++++++++++-----
- 1 file changed, 31 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index a36a18c84aeb..41b5d1ac8bc1 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6072,8 +6072,8 @@ static void igc_trigger_rxtxq_interrupt(struct igc_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index a1cd332..da025c2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2287,6 +2287,7 @@ ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
  
- int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ /**
+  * ice_ptp_tx_tstamp_cleanup - Cleanup old timestamp requests that got dropped
++ * @hw: pointer to the hw struct
+  * @tx: PTP Tx tracker to clean up
+  *
+  * Loop through the Tx timestamp requests and see if any of them have been
+@@ -2295,7 +2296,7 @@ ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
+  * timestamp will never be captured. This might happen if the packet gets
+  * discarded before it reaches the PHY timestamping block.
+  */
+-static void ice_ptp_tx_tstamp_cleanup(struct ice_ptp_tx *tx)
++static void ice_ptp_tx_tstamp_cleanup(struct ice_hw *hw, struct ice_ptp_tx *tx)
  {
-+	struct igc_q_vector *txq_vector = NULL, *rxq_vector = NULL;
- 	struct igc_adapter *adapter = netdev_priv(dev);
--	struct igc_q_vector *q_vector;
- 	struct igc_ring *ring;
+ 	u8 idx;
  
- 	if (test_bit(__IGC_DOWN, &adapter->state))
-@@ -6082,17 +6082,39 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
- 	if (!igc_xdp_is_enabled(adapter))
- 		return -ENXIO;
+@@ -2304,11 +2305,16 @@ static void ice_ptp_tx_tstamp_cleanup(struct ice_ptp_tx *tx)
  
--	if (queue_id >= adapter->num_rx_queues)
--		return -EINVAL;
-+	if (flags & XDP_WAKEUP_RX) {
-+		if (queue_id >= adapter->num_rx_queues)
-+			return -EINVAL;
+ 	for_each_set_bit(idx, tx->in_use, tx->len) {
+ 		struct sk_buff *skb;
++		u64 raw_tstamp;
  
--	ring = adapter->rx_ring[queue_id];
-+		ring = adapter->rx_ring[queue_id];
-+		if (!ring->xsk_pool)
-+			return -ENXIO;
+ 		/* Check if this SKB has been waiting for too long */
+ 		if (time_is_after_jiffies(tx->tstamps[idx].start + 2 * HZ))
+ 			continue;
  
--	if (!ring->xsk_pool)
--		return -ENXIO;
-+		rxq_vector = ring->q_vector;
-+	}
++		/* Read tstamp to be able to use this register again */
++		ice_read_phy_tstamp(hw, tx->quad, idx + tx->quad_offset,
++				    &raw_tstamp);
 +
-+	if (flags & XDP_WAKEUP_TX) {
-+		if (queue_id >= adapter->num_tx_queues)
-+			return -EINVAL;
-+
-+		ring = adapter->tx_ring[queue_id];
-+		if (!ring->xsk_pool)
-+			return -ENXIO;
-+
-+		txq_vector = ring->q_vector;
-+	}
-+
-+	if (rxq_vector != NULL &&
-+	    !napi_if_scheduled_mark_missed(&rxq_vector->napi))
-+		igc_trigger_rxtxq_interrupt(adapter, rxq_vector);
+ 		spin_lock(&tx->lock);
+ 		skb = tx->tstamps[idx].skb;
+ 		tx->tstamps[idx].skb = NULL;
+@@ -2330,7 +2336,7 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
  
--	q_vector = adapter->q_vector[queue_id];
--	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
--		igc_trigger_rxtxq_interrupt(adapter, q_vector);
-+	/* only trigger tx interrupt if the receive interrupt was not
-+	 * triggered or if its irq differs from the receive queue's irq
-+	 */
-+	if (txq_vector != NULL &&
-+            txq_vector != rxq_vector &&
-+	    !napi_if_scheduled_mark_missed(&txq_vector->napi))
-+		igc_trigger_rxtxq_interrupt(adapter, txq_vector);
+ 	ice_ptp_update_cached_phctime(pf);
  
- 	return 0;
- }
+-	ice_ptp_tx_tstamp_cleanup(&pf->ptp.port.tx);
++	ice_ptp_tx_tstamp_cleanup(&pf->hw, &pf->ptp.port.tx);
+ 
+ 	/* Run twice a second */
+ 	kthread_queue_delayed_work(ptp->kworker, &ptp->work,
 -- 
-2.17.1
+2.9.5
 
+base-commit: eb867a5e42ebf68eb4ac9e49669adb4b59f6a661
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
