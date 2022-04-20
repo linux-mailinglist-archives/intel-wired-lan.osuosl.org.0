@@ -1,127 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B7D05091A2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 22:51:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CACA65091BB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 23:02:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE90E4032B;
-	Wed, 20 Apr 2022 20:51:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 659A983E4B;
+	Wed, 20 Apr 2022 21:02:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8RIQr2u21HhI; Wed, 20 Apr 2022 20:51:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l4JQvKaNX24x; Wed, 20 Apr 2022 21:02:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 09D7240584;
-	Wed, 20 Apr 2022 20:51:52 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE7601BF2A5
- for <intel-wired-lan@osuosl.org>; Wed, 20 Apr 2022 20:51:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9B8CC83E00;
+	Wed, 20 Apr 2022 21:02:36 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5AF211BF2A5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 21:02:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AB4A340584
- for <intel-wired-lan@osuosl.org>; Wed, 20 Apr 2022 20:51:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4734060FD2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 21:02:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x-B_nBQlDWVr for <intel-wired-lan@osuosl.org>;
- Wed, 20 Apr 2022 20:51:48 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from EUR03-DB5-obe.outbound.protection.outlook.com
- (mail-eopbgr40132.outbound.protection.outlook.com [40.107.4.132])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EB65D4032B
- for <intel-wired-lan@osuosl.org>; Wed, 20 Apr 2022 20:51:47 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eNO08+F1b4glwLSu0axL8vzY268XdsMuj3WEh2Cz19a0KaDRdQa1YqP2EsQjrU4rnSQmkQy54jwNL8HZreusZDqzKQvwO3ujjB46DKedDtI1JHzz3oWF1wS1wQsvoyWx0Edq3HiLHEhAaHrFbD/+pAm9ONe+3uhiNySe9bgUGLCxIWpyUmr6Q2bLOcNHivaru21wKtHNxz/vSfCkYdWoHMdfEx13EV86gGG4Wh1NHr3NZZeRZ9lo3+WStSyqZtW5Ds29Mgw4AI2yNsbgVojK+pOsoQFZ1aF8R7r1RHJCjSlJ2XFykGBlFE5z2ghpy0OJmhDVXNopIZCSc85jAihSIQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BxBILNihGtyY6rBstYsAHqeDbbxKn0dB4PuzoEZrhBI=;
- b=c70r0P+vL6rTJpTZrHMhZFjgV9GMGLs7E1FlYYfzbd8kVyDt7HVNKDQ9uf4SkefUyjlsHIefkuzPXvbTBcqoAPTAo9RcYByh88VZJDRhYjdARtwFDij3Yt1nn6uNzCEh2jaNdVcECEjzUwzC9g8+DghzfbqprmjtQDKBoOo5pjwFBrtOVn+ChOXEtvTK4b22+Ewn7prFMp55GkipTh52ZbSMtFPRfJi8PauqA04euixMVnQneQ13W7CKeMIZ1irsD9rX0N6Iw3DQKWdc/dDByZC22ah3irqFCpYGPwGQ5dTBRaR+kTin27SUQPDK1JV8bEHcMT52E3tUw8jOfHDGkg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silicom-usa.com; dmarc=pass action=none
- header.from=silicom-usa.com; dkim=pass header.d=silicom-usa.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=SILICOMLTD.onmicrosoft.com; s=selector2-SILICOMLTD-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BxBILNihGtyY6rBstYsAHqeDbbxKn0dB4PuzoEZrhBI=;
- b=ntyAmYRyNf58EOs4yVkQt6KPP2kWAAqK4OQegst1cnfLl4JC2D4SaUoafpHjhdQcR+MHAqMG5JZ950u9fXaYNJIAxyblDFfVzmuNURszeaSidEpRGLJWRFP1+NvIsvVUCO5tw24LRyaGf+LpVuU34ZPbAenQGx/jgl/JiyXe1Ic=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=silicom-usa.com;
-Received: from AM0PR0402MB3506.eurprd04.prod.outlook.com
- (2603:10a6:208:17::29) by DU2PR04MB8647.eurprd04.prod.outlook.com
- (2603:10a6:10:2de::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5186.13; Wed, 20 Apr
- 2022 20:51:44 +0000
-Received: from AM0PR0402MB3506.eurprd04.prod.outlook.com
- ([fe80::193e:c83e:7e13:ddb]) by AM0PR0402MB3506.eurprd04.prod.outlook.com
- ([fe80::193e:c83e:7e13:ddb%6]) with mapi id 15.20.5164.026; Wed, 20 Apr 2022
- 20:51:44 +0000
-From: Jeff Daly <jeffd@silicom-usa.com>
-To: intel-wired-lan@osuosl.org
-Date: Wed, 20 Apr 2022 16:51:30 -0400
-Message-Id: <20220420205130.23616-1-jeffd@silicom-usa.com>
-X-Mailer: git-send-email 2.25.1
-X-ClientProxiedBy: BL1PR13CA0325.namprd13.prod.outlook.com
- (2603:10b6:208:2c1::30) To AM0PR0402MB3506.eurprd04.prod.outlook.com
- (2603:10a6:208:17::29)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TKhhEP8lm_1U for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Apr 2022 21:02:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B274C60EAD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 21:02:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1650488549; x=1682024549;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=CbUvZ5aOuD4KG7Z6JeXw++4Q2Fy6g+kbGJ/TVjMxe4Y=;
+ b=nDe7KaoP8w5FANYylqL0Jw2P7g7XQ+7Vf8VHUM5/3MGP6I9ckJ8bZMEV
+ L78lKVxmSHOOfpIsTyb6rgxraunlOOKGowzy8bNWXqMAd4Q0GXbXonVYF
+ /Asw+gQqbmPYk0YSZsQYlQA76IIP7opzH5T6+eNMeGbkevt7Le2phf9IT
+ xdker7eq5gLOoFVhIXbntcmoddvPKfePGrR67WZ7IJNDKtIR2hrcBfVR2
+ jKVk57+tC34pWrhi1LjuTASmhAIIx6luS/4XZHtRB0Kt0UxPE6T2ytTmc
+ cFFAWuGRUJOecmcajXKvzc6OZQJ60gWhIT37iq342sWDAvjTcUgIx1KOW Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="251459362"
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; d="scan'208";a="251459362"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2022 14:02:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; d="scan'208";a="555392627"
+Received: from enterprise.igk.intel.com ([10.102.20.175])
+ by orsmga007.jf.intel.com with ESMTP; 20 Apr 2022 14:02:27 -0700
+From: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 20 Apr 2022 23:00:49 +0200
+Message-Id: <20220420210048.5809-1-martyna.szapar-mudlaw@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: df23258d-0d95-46b7-b96f-08da230f9402
-X-MS-TrafficTypeDiagnostic: DU2PR04MB8647:EE_
-X-Microsoft-Antispam-PRVS: <DU2PR04MB8647D5EB07CAF31872862303EAF59@DU2PR04MB8647.eurprd04.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: aB4Yb5NAD+PVtb9srNdn2PKhkJV5vpQRs4xGrYvQMdFYNktKQ4B/IbJb2Kq+qu/dsbnhpMpzoFqny1jakHfUZPiRlrDGbyqchHGY7i+N3gY0YWzFahVlSwU9rS7DHYzTLdtqrTEXBYwsfBPXjvOr2JUGa4zjDOxYtaVUAn0tHl0BdcKko6A0QFBy2eN6ZrMD1LdesZXyPCH1yOPInRmDCwTHW5qC0R+eku+dB6MANnDUdqje0XjOJNJnJQ3qAwBfx1HPOntAQaNzCxWm/4FX4U1iUWvX7qHsbDKNX5oq7rP/c3nVClVrKtpaTcwL+e1xISluCuMtQ+SmnXO8uhoLMVskupP+AsqyrIqA1Gywhi5XYTp4CgpwnUOXsLs4dhVdp1r1nEmUP41WVuMz6dPWC9c85xy2A3wiaAuUQ+VBHYLnUDQDQEPUAAF9NNnH3W/bpWeUBjvI4aHw74eSBx9VXA5dEtSeVLrVr1AezgLNkXlT/g4eILa5iD6CqW0abwcvCOjGdhDG+KExL7aWnGgM4jsuu/KdWACS3YaQt+C0sYexhm8RIxGtIvDRMZGSBZyK2BQwb2OY1kIES0nMJ+G6+Rxr62yJQU5yeESUfMQjW4MX0785UNdEc3hN+2NBdilxtMnIGO6C2OfmOUgJahNP2j2YolLByOFSqNJyM2GPSqZpH3a1ZS+QyxAqYyZbpoGLG3d4cOJ/oBCKRCuRNz1LSg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM0PR0402MB3506.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(5660300002)(38100700002)(38350700002)(8936002)(316002)(86362001)(66556008)(4326008)(54906003)(66946007)(6916009)(8676002)(7416002)(6512007)(6506007)(66476007)(52116002)(26005)(83380400001)(1076003)(2616005)(508600001)(6486002)(186003)(6666004)(2906002)(36756003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FAhNooq9rQjaTRX1oFwrACdrVekyyocNc1NJ3ZSLwUckDZRP2fv09qriSGR7?=
- =?us-ascii?Q?3h3MsNAF9elqtehJIMkgE5nEJpDrJKfjaZRFUiBAdqxgOosU19SKZq4460ZC?=
- =?us-ascii?Q?U2eTJmn5rLLEpptWc0sjKZHy1a5pFNFO/CMzPiduKpEamnmKWRMaogA55b8/?=
- =?us-ascii?Q?opYBcZ110SEM6k6JDHkMLi7SLIkV10r9URLRGg5YURsNURqHkev9ZpvrwFI6?=
- =?us-ascii?Q?ncFaJLCSFb9GSbLir+wl8Yg54vTdJ6F9HUXMaRFmfFpUy9nRBeluIo5581Lh?=
- =?us-ascii?Q?x0AQr3gS354/TFRhqtMNJsWS2HoJS6BTaZusIyTfs6SzmPvWlaUG6XsGz2nc?=
- =?us-ascii?Q?zAfcKFfhmfZyJd4jAFUZcclwgnr2jc67KZgmeEhYUqVDrEazRUjuBsyDOrac?=
- =?us-ascii?Q?UyvmqCrEiHtogypXedr90PaSDsDZ9g2bX084PXsiiVj5PM+f4yOxVimHwiVn?=
- =?us-ascii?Q?e8QTNx3Bsm720a/KWt+FEJM7+jgXF4p0ip6g9XtrMqMb066wn4Iuw5y3JfZh?=
- =?us-ascii?Q?u3pZNKsvuks7Zj2SoUJisyeHBPe23tv515a11hwQA4kjL3Mf5q7InuvL2vHU?=
- =?us-ascii?Q?Kjf49GehlIx0pMyFByjwiUtzIvw5rco6ZhrzfNGiO7ecNAEhuhtXBWq1k3tb?=
- =?us-ascii?Q?d8Q4CJpFnuDb8N+ulJYJo8INb0nUPf9Ik0Vm6/EnrxFrvik9Qg08OA+eX8F7?=
- =?us-ascii?Q?5f7BjJhskXI7azHsE0gAvRToNibPHi2rP6fElXRd6QDFOKgHnm4vprxxlc94?=
- =?us-ascii?Q?Sy4/H7SM8dia7iyg0WKWA+qH//xEoZ1FkF/oi1C9yrBHFplsTVeb5cKEHu5S?=
- =?us-ascii?Q?ZnUCanAiRlASQPfZJlcTfwNGNfh+NJzNSolQc81cXOkgNlk8wQBIj4o86zsy?=
- =?us-ascii?Q?rsqO1yzGC5Xj9zsC67THOD/v8cngBO8nsGFqs6sT4T42TFzfOuksA+Tr07WU?=
- =?us-ascii?Q?bY+G18obz6CD8gY5tNGhUlbYywAz544+ZUXXXTYhD7fOoNUzKSZGnIs45DRy?=
- =?us-ascii?Q?p+MqF9Kt6eaQYxGXQ8e/aH5M4Oku32VQw9JhKUYvGAYCUNwc/xLdvCaql4Im?=
- =?us-ascii?Q?PqTLSOMMdKb1Oa0xFa1wUpDYHOYcnUqrNWiV8Twbv2xhgxvB7QaPp1FkPT8k?=
- =?us-ascii?Q?vp6Bq3J2yyjPLxRY1SCAlyvK88se7W8PalHvVRd86X0DDJPLpVoASYr8UmUB?=
- =?us-ascii?Q?ON+FrehAngLQrLsRkfZxqx9hqmsosZbJABbF4ZtFToChgN/pJtZ5T+W2k/jf?=
- =?us-ascii?Q?m4ADRnc0dX+DRxEKoVPsYJQoVivKBhQuzcO2McBwlS5t+H2X6A0vadzZQmUe?=
- =?us-ascii?Q?cGxnRPXj1+xatwh32SfBpr70yHjxq7sQw+l5zj5ITOHsgicsouqguQiH5az5?=
- =?us-ascii?Q?46wbbAZ1a960cyMwTpT9anw9TuQiENbe7+FEXfgLBz8ALjC39boT1jfxRvOm?=
- =?us-ascii?Q?yLadWqVV4CAfytTcBnSjbCJ1mWlzbcanRQoF/Dh56oWGcVRJvPc57TY3yaA+?=
- =?us-ascii?Q?Plo0oPM3F2Fj3ra2nejF775vf5pUvADAVb4nDoW6veq1xfjgwGPrCyaI0uPn?=
- =?us-ascii?Q?JxneZuW6n5La47Dc6E0KTAuYRsqwV6GPhFuZcsH1YC2VmpajHQfAQIHHSi28?=
- =?us-ascii?Q?QlFo6D+fhEZ3CLT0Sv5t7DxZcNH1VtCpxRxSe8E7iw4J0UWV32dYX6ONddF+?=
- =?us-ascii?Q?vicOA1ljx7m92o3VY6CN6QRkz6RmJkL9mjyHPu6qtG/uqGv2k9D9gDYHBUQE?=
- =?us-ascii?Q?JrVbvL4jiw=3D=3D?=
-X-OriginatorOrg: silicom-usa.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: df23258d-0d95-46b7-b96f-08da230f9402
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR0402MB3506.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2022 20:51:44.3534 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: c9e326d8-ce47-4930-8612-cc99d3c87ad1
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zvxcMskD6CkHDN54sodZKERmF6DXmDsgzBc4FZOFSH5kBE8PveQJC14hp3+lDFoU46hfpWdoUytx5JSf93jrBQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8647
-Subject: [Intel-wired-lan] [PATCH 1/1] ixgbe: correct SDP0 check of SFP cage
- for X550
+Subject: [Intel-wired-lan] [PATCH net-next] ice: switch: dynamically add
+ vlan headers to a dummy packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,47 +74,704 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Stephen Douthit <stephend@silicom-usa.com>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SDP0 for X550 NICs is active low to indicate the presence of an SFP in the
-cage (MOD_ABS#).  Invert the results of the logical AND to set
-sfp_cage_full variable correctly.
+Enable the support of creating all kinds of declared dummy packets
+with the vlan tags by inserting vlan headers (single vlan and qinq
+cases) if needed.
+Decrease in the number of declared dummy packets and increase in the
+possible packet's combinations for adding switch rules.
 
-Fixes: aac9e053f104 ("ixgbe: cleanup crosstalk fix")
+This change enables support of creating filters that match both on
+vlan + tunnels properties in switchdev.
 
-Suggested-by: Stephen Douthit <stephend@silicom-usa.com>
-Signed-off-by: Jeff Daly <jeffd@silicom-usa.com>
+Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
+Reviewed-by: Alexander Lobakin <alexandr.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_common.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_switch.c | 537 +++++---------------
+ 1 file changed, 140 insertions(+), 397 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index 4c26c4b92f07..26d16bc85c59 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -3308,8 +3308,8 @@ s32 ixgbe_check_mac_link_generic(struct ixgbe_hw *hw, ixgbe_link_speed *speed,
- 			break;
- 		case ixgbe_mac_X550EM_x:
- 		case ixgbe_mac_x550em_a:
--			sfp_cage_full = IXGBE_READ_REG(hw, IXGBE_ESDP) &
--					IXGBE_ESDP_SDP0;
-+			sfp_cage_full = !(IXGBE_READ_REG(hw, IXGBE_ESDP) &
-+					IXGBE_ESDP_SDP0);
- 			break;
- 		default:
- 			/* sanity check - No SFP+ devices here */
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 79ab2128857f..6e6becbed5c0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -31,17 +31,16 @@ static const u8 dummy_eth_header[DUMMY_ETH_HDR_LEN] = { 0x2, 0, 0, 0, 0, 0,
+ 							0x81, 0, 0, 0};
+ 
+ enum {
+-	ICE_PKT_VLAN		= BIT(0),
+-	ICE_PKT_OUTER_IPV6	= BIT(1),
+-	ICE_PKT_TUN_GTPC	= BIT(2),
+-	ICE_PKT_TUN_GTPU	= BIT(3),
+-	ICE_PKT_TUN_NVGRE	= BIT(4),
+-	ICE_PKT_TUN_UDP		= BIT(5),
+-	ICE_PKT_INNER_IPV6	= BIT(6),
+-	ICE_PKT_INNER_TCP	= BIT(7),
+-	ICE_PKT_INNER_UDP	= BIT(8),
+-	ICE_PKT_GTP_NOPAY	= BIT(9),
+-	ICE_PKT_CVLAN		= BIT(10),
++	ICE_PKT_OUTER_IPV6	= BIT(0),
++	ICE_PKT_TUN_GTPC	= BIT(1),
++	ICE_PKT_TUN_GTPU	= BIT(2),
++	ICE_PKT_TUN_NVGRE	= BIT(3),
++	ICE_PKT_TUN_UDP		= BIT(4),
++	ICE_PKT_INNER_IPV6	= BIT(5),
++	ICE_PKT_INNER_TCP	= BIT(6),
++	ICE_PKT_INNER_UDP	= BIT(7),
++	ICE_PKT_GTP_NOPAY	= BIT(8),
++	ICE_PKT_KMALLOC		= BIT(9),
+ };
+ 
+ struct ice_dummy_pkt_offsets {
+@@ -54,22 +53,42 @@ struct ice_dummy_pkt_profile {
+ 	const u8 *pkt;
+ 	u32 match;
+ 	u16 pkt_len;
++	u16 offsets_len;
+ };
+ 
+-#define ICE_DECLARE_PKT_OFFSETS(type)				\
+-	static const struct ice_dummy_pkt_offsets		\
++#define ICE_DECLARE_PKT_OFFSETS(type)					\
++	static const struct ice_dummy_pkt_offsets			\
+ 	ice_dummy_##type##_packet_offsets[]
+ 
+-#define ICE_DECLARE_PKT_TEMPLATE(type)				\
++#define ICE_DECLARE_PKT_TEMPLATE(type)					\
+ 	static const u8 ice_dummy_##type##_packet[]
+ 
+-#define ICE_PKT_PROFILE(type, m) {				\
+-	.match		= (m),					\
+-	.pkt		= ice_dummy_##type##_packet,		\
+-	.pkt_len	= sizeof(ice_dummy_##type##_packet),	\
+-	.offsets	= ice_dummy_##type##_packet_offsets,	\
++#define ICE_PKT_PROFILE(type, m) {					\
++	.match		= (m),						\
++	.pkt		= ice_dummy_##type##_packet,			\
++	.pkt_len	= sizeof(ice_dummy_##type##_packet),		\
++	.offsets	= ice_dummy_##type##_packet_offsets,		\
++	.offsets_len	= sizeof(ice_dummy_##type##_packet_offsets),	\
+ }
+ 
++ICE_DECLARE_PKT_OFFSETS(vlan) = {
++	{ ICE_VLAN_OFOS,        12 },
++};
++
++ICE_DECLARE_PKT_TEMPLATE(vlan) = {
++	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_OFOS 12 */
++};
++
++ICE_DECLARE_PKT_OFFSETS(qinq) = {
++	{ ICE_VLAN_EX,          12 },
++	{ ICE_VLAN_IN,          16 },
++};
++
++ICE_DECLARE_PKT_TEMPLATE(qinq) = {
++	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
++	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
++};
++
+ ICE_DECLARE_PKT_OFFSETS(gre_tcp) = {
+ 	{ ICE_MAC_OFOS,		0 },
+ 	{ ICE_ETYPE_OL,		12 },
+@@ -507,38 +526,6 @@ ICE_DECLARE_PKT_TEMPLATE(udp) = {
+ 	0x00, 0x00,	/* 2 bytes for 4 byte alignment */
+ };
+ 
+-/* offset info for MAC + VLAN + IPv4 + UDP dummy packet */
+-ICE_DECLARE_PKT_OFFSETS(vlan_udp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_OFOS,	12 },
+-	{ ICE_ETYPE_OL,		16 },
+-	{ ICE_IPV4_OFOS,	18 },
+-	{ ICE_UDP_ILOS,		38 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-/* C-tag (801.1Q), IPv4:UDP dummy packet */
+-ICE_DECLARE_PKT_TEMPLATE(vlan_udp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_OFOS 12 */
+-
+-	0x08, 0x00,		/* ICE_ETYPE_OL 16 */
+-
+-	0x45, 0x00, 0x00, 0x1c, /* ICE_IPV4_OFOS 18 */
+-	0x00, 0x01, 0x00, 0x00,
+-	0x00, 0x11, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 38 */
+-	0x00, 0x08, 0x00, 0x00,
+-
+-	0x00, 0x00,	/* 2 bytes for 4 byte alignment */
+-};
+-
+ /* offset info for MAC + IPv4 + TCP dummy packet */
+ ICE_DECLARE_PKT_OFFSETS(tcp) = {
+ 	{ ICE_MAC_OFOS,		0 },
+@@ -571,41 +558,6 @@ ICE_DECLARE_PKT_TEMPLATE(tcp) = {
+ 	0x00, 0x00,	/* 2 bytes for 4 byte alignment */
+ };
+ 
+-/* offset info for MAC + VLAN (C-tag, 802.1Q) + IPv4 + TCP dummy packet */
+-ICE_DECLARE_PKT_OFFSETS(vlan_tcp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_OFOS,	12 },
+-	{ ICE_ETYPE_OL,		16 },
+-	{ ICE_IPV4_OFOS,	18 },
+-	{ ICE_TCP_IL,		38 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-/* C-tag (801.1Q), IPv4:TCP dummy packet */
+-ICE_DECLARE_PKT_TEMPLATE(vlan_tcp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x81, 0x00, 0x00, 0x00,	/* ICE_VLAN_OFOS 12 */
+-
+-	0x08, 0x00,		/* ICE_ETYPE_OL 16 */
+-
+-	0x45, 0x00, 0x00, 0x28, /* ICE_IPV4_OFOS 18 */
+-	0x00, 0x01, 0x00, 0x00,
+-	0x00, 0x06, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 38 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x50, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00,	/* 2 bytes for 4 byte alignment */
+-};
+-
+ ICE_DECLARE_PKT_OFFSETS(tcp_ipv6) = {
+ 	{ ICE_MAC_OFOS,		0 },
+ 	{ ICE_ETYPE_OL,		12 },
+@@ -641,46 +593,6 @@ ICE_DECLARE_PKT_TEMPLATE(tcp_ipv6) = {
+ 	0x00, 0x00, /* 2 bytes for 4 byte alignment */
+ };
+ 
+-/* C-tag (802.1Q): IPv6 + TCP */
+-ICE_DECLARE_PKT_OFFSETS(vlan_tcp_ipv6) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_OFOS,	12 },
+-	{ ICE_ETYPE_OL,		16 },
+-	{ ICE_IPV6_OFOS,	18 },
+-	{ ICE_TCP_IL,		58 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-/* C-tag (802.1Q), IPv6 + TCP dummy packet */
+-ICE_DECLARE_PKT_TEMPLATE(vlan_tcp_ipv6) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x81, 0x00, 0x00, 0x00,	/* ICE_VLAN_OFOS 12 */
+-
+-	0x86, 0xDD,		/* ICE_ETYPE_OL 16 */
+-
+-	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 18 */
+-	0x00, 0x14, 0x06, 0x00, /* Next header is TCP */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 58 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x50, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, /* 2 bytes for 4 byte alignment */
+-};
+-
+ /* IPv6 + UDP */
+ ICE_DECLARE_PKT_OFFSETS(udp_ipv6) = {
+ 	{ ICE_MAC_OFOS,		0 },
+@@ -718,43 +630,6 @@ ICE_DECLARE_PKT_TEMPLATE(udp_ipv6) = {
+ 	0x00, 0x00, /* 2 bytes for 4 byte alignment */
+ };
+ 
+-/* C-tag (802.1Q): IPv6 + UDP */
+-ICE_DECLARE_PKT_OFFSETS(vlan_udp_ipv6) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_OFOS,	12 },
+-	{ ICE_ETYPE_OL,		16 },
+-	{ ICE_IPV6_OFOS,	18 },
+-	{ ICE_UDP_ILOS,		58 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-/* C-tag (802.1Q), IPv6 + UDP dummy packet */
+-ICE_DECLARE_PKT_TEMPLATE(vlan_udp_ipv6) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x81, 0x00, 0x00, 0x00,/* ICE_VLAN_OFOS 12 */
+-
+-	0x86, 0xDD,		/* ICE_ETYPE_OL 16 */
+-
+-	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 18 */
+-	0x00, 0x08, 0x11, 0x00, /* Next header UDP */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 58 */
+-	0x00, 0x08, 0x00, 0x00,
+-
+-	0x00, 0x00, /* 2 bytes for 4 byte alignment */
+-};
+-
+ /* Outer IPv4 + Outer UDP + GTP + Inner IPv4 + Inner TCP */
+ ICE_DECLARE_PKT_OFFSETS(ipv4_gtpu_ipv4_tcp) = {
+ 	{ ICE_MAC_OFOS,		0 },
+@@ -1234,225 +1109,7 @@ ICE_DECLARE_PKT_TEMPLATE(ipv6_gtp) = {
+ 	0x00, 0x00,
+ };
+ 
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv4) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV4_OFOS,	22 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
+-
+-	0x45, 0x00, 0x00, 0x14, /* ICE_IPV4_OFOS 22 */
+-	0x00, 0x01, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv4_udp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV4_OFOS,	22 },
+-	{ ICE_UDP_ILOS,		42 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4_udp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
+-
+-	0x45, 0x00, 0x00, 0x1c, /* ICE_IPV4_OFOS 22 */
+-	0x00, 0x01, 0x00, 0x00,
+-	0x00, 0x11, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 42 */
+-	0x00, 0x08, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv4_tcp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV4_OFOS,	22 },
+-	{ ICE_TCP_IL,		42 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv4_tcp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x08, 0x00,		/* ICE_ETYPE_OL 20 */
+-
+-	0x45, 0x00, 0x00, 0x28, /* ICE_IPV4_OFOS 22 */
+-	0x00, 0x01, 0x00, 0x00,
+-	0x00, 0x06, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 42 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x50, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv6) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV6_OFOS,	22 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
+-
+-	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
+-	0x00, 0x00, 0x3b, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv6_udp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV6_OFOS,	22 },
+-	{ ICE_UDP_ILOS,		62 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6_udp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
+-
+-	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
+-	0x00, 0x08, 0x11, 0x00, /* Next header UDP */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_UDP_ILOS 62 */
+-	0x00, 0x08, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+-ICE_DECLARE_PKT_OFFSETS(qinq_ipv6_tcp) = {
+-	{ ICE_MAC_OFOS,		0 },
+-	{ ICE_VLAN_EX,		12 },
+-	{ ICE_VLAN_IN,		16 },
+-	{ ICE_ETYPE_OL,		20 },
+-	{ ICE_IPV6_OFOS,	22 },
+-	{ ICE_TCP_IL,		62 },
+-	{ ICE_PROTOCOL_LAST,	0 },
+-};
+-
+-ICE_DECLARE_PKT_TEMPLATE(qinq_ipv6_tcp) = {
+-	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x91, 0x00, 0x00, 0x00, /* ICE_VLAN_EX 12 */
+-	0x81, 0x00, 0x00, 0x00, /* ICE_VLAN_IN 16 */
+-	0x86, 0xDD,		/* ICE_ETYPE_OL 20 */
+-
+-	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 22 */
+-	0x00, 0x14, 0x06, 0x00, /* Next header TCP */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00, 0x00, 0x00, /* ICE_TCP_IL 62 */
+-	0x00, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-	0x50, 0x00, 0x00, 0x00,
+-	0x00, 0x00, 0x00, 0x00,
+-
+-	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
+-};
+-
+ static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
+-	ICE_PKT_PROFILE(qinq_ipv6_tcp, ICE_PKT_CVLAN |
+-				       ICE_PKT_VLAN |
+-				       ICE_PKT_OUTER_IPV6 |
+-				       ICE_PKT_INNER_TCP),
+-	ICE_PKT_PROFILE(qinq_ipv6_udp, ICE_PKT_CVLAN |
+-				       ICE_PKT_VLAN |
+-				       ICE_PKT_OUTER_IPV6 |
+-				       ICE_PKT_INNER_UDP),
+-	ICE_PKT_PROFILE(qinq_ipv6, ICE_PKT_CVLAN |
+-				   ICE_PKT_VLAN |
+-				   ICE_PKT_OUTER_IPV6),
+-	ICE_PKT_PROFILE(qinq_ipv4_tcp, ICE_PKT_CVLAN |
+-				       ICE_PKT_VLAN |
+-				       ICE_PKT_INNER_TCP),
+-	ICE_PKT_PROFILE(qinq_ipv4_udp, ICE_PKT_CVLAN |
+-				       ICE_PKT_VLAN |
+-				       ICE_PKT_INNER_UDP),
+-	ICE_PKT_PROFILE(qinq_ipv4, ICE_PKT_CVLAN |
+-				   ICE_PKT_VLAN),
+ 	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPU | ICE_PKT_OUTER_IPV6 |
+ 				  ICE_PKT_GTP_NOPAY),
+ 	ICE_PKT_PROFILE(ipv6_gtpu_ipv6_udp, ICE_PKT_TUN_GTPU |
+@@ -1490,14 +1147,9 @@ static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
+ 	ICE_PKT_PROFILE(udp_tun_ipv6_udp, ICE_PKT_TUN_UDP |
+ 					  ICE_PKT_INNER_IPV6),
+ 	ICE_PKT_PROFILE(udp_tun_udp, ICE_PKT_TUN_UDP),
+-	ICE_PKT_PROFILE(vlan_udp_ipv6, ICE_PKT_OUTER_IPV6 | ICE_PKT_INNER_UDP |
+-				       ICE_PKT_VLAN),
+ 	ICE_PKT_PROFILE(udp_ipv6, ICE_PKT_OUTER_IPV6 | ICE_PKT_INNER_UDP),
+-	ICE_PKT_PROFILE(vlan_udp, ICE_PKT_INNER_UDP | ICE_PKT_VLAN),
+ 	ICE_PKT_PROFILE(udp, ICE_PKT_INNER_UDP),
+-	ICE_PKT_PROFILE(vlan_tcp_ipv6, ICE_PKT_OUTER_IPV6 | ICE_PKT_VLAN),
+ 	ICE_PKT_PROFILE(tcp_ipv6, ICE_PKT_OUTER_IPV6),
+-	ICE_PKT_PROFILE(vlan_tcp, ICE_PKT_VLAN),
+ 	ICE_PKT_PROFILE(tcp, 0),
+ };
+ 
+@@ -5798,6 +5450,79 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	return status;
+ }
+ 
++/**
++ * ice_dummy_packet_add_vlan - insert vlan header to dummy pkt
++ *
++ * @dummy_pkt: dummy packet profile pattern to which vlan tag(s) will be added
++ * @num_vlan: number of vlan tags
++ */
++static struct ice_dummy_pkt_profile *
++ice_dummy_packet_add_vlan(const struct ice_dummy_pkt_profile *dummy_pkt,
++			  u32 num_vlan)
++{
++	struct ice_dummy_pkt_profile *profile;
++	struct ice_dummy_pkt_offsets *offsets;
++	u32 buf_len, off, etype_off, i;
++	u8 *pkt;
++
++	if (num_vlan < 1 || num_vlan > 2)
++		return ERR_PTR(-EINVAL);
++
++	off = num_vlan * VLAN_HLEN;
++
++	buf_len = array_size(num_vlan, sizeof(ice_dummy_vlan_packet_offsets)) +
++		  dummy_pkt->offsets_len;
++	offsets = kzalloc(buf_len, GFP_KERNEL);
++	if (!offsets)
++		return ERR_PTR(-ENOMEM);
++
++	offsets[0] = dummy_pkt->offsets[0];
++	if (num_vlan == 2) {
++		offsets[1] = ice_dummy_qinq_packet_offsets[0];
++		offsets[2] = ice_dummy_qinq_packet_offsets[1];
++	} else if (num_vlan == 1) {
++		offsets[1] = ice_dummy_vlan_packet_offsets[0];
++	}
++
++	for (i = 1; dummy_pkt->offsets[i].type != ICE_PROTOCOL_LAST; i++) {
++		offsets[i + num_vlan].type = dummy_pkt->offsets[i].type;
++		offsets[i + num_vlan].offset =
++			dummy_pkt->offsets[i].offset + off;
++	}
++	offsets[i + num_vlan] = dummy_pkt->offsets[i];
++
++	etype_off = dummy_pkt->offsets[1].offset;
++
++	buf_len = array_size(num_vlan, sizeof(ice_dummy_vlan_packet)) +
++		  dummy_pkt->pkt_len;
++	pkt = kzalloc(buf_len, GFP_KERNEL);
++	if (!pkt) {
++		kfree(offsets);
++		return ERR_PTR(-ENOMEM);
++	}
++
++	memcpy(pkt, dummy_pkt->pkt, etype_off);
++	memcpy(pkt + etype_off,
++	       num_vlan == 2 ? ice_dummy_qinq_packet : ice_dummy_vlan_packet,
++	       off);
++	memcpy(pkt + etype_off + off, dummy_pkt->pkt + etype_off,
++	       dummy_pkt->pkt_len - etype_off);
++
++	profile = kzalloc(sizeof(*profile), GFP_KERNEL);
++	if (!profile) {
++		kfree(offsets);
++		kfree(pkt);
++		return ERR_PTR(-ENOMEM);
++	}
++
++	profile->offsets = offsets;
++	profile->pkt = pkt;
++	profile->pkt_len = buf_len;
++	profile->match |= ICE_PKT_KMALLOC;
++
++	return profile;
++}
++
+ /**
+  * ice_find_dummy_packet - find dummy packet
+  *
+@@ -5813,7 +5538,7 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 		      enum ice_sw_tunnel_type tun_type)
+ {
+ 	const struct ice_dummy_pkt_profile *ret = ice_dummy_pkt_profiles;
+-	u32 match = 0;
++	u32 match = 0, vlan_count = 0;
+ 	u16 i;
+ 
+ 	switch (tun_type) {
+@@ -5843,9 +5568,9 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 			match |= ICE_PKT_OUTER_IPV6;
+ 		else if (lkups[i].type == ICE_VLAN_OFOS ||
+ 			 lkups[i].type == ICE_VLAN_EX)
+-			match |= ICE_PKT_VLAN;
++			vlan_count++;
+ 		else if (lkups[i].type == ICE_VLAN_IN)
+-			match |= ICE_PKT_CVLAN;
++			vlan_count++;
+ 		else if (lkups[i].type == ICE_ETYPE_OL &&
+ 			 lkups[i].h_u.ethertype.ethtype_id ==
+ 				cpu_to_be16(ICE_IPV6_ETHER_ID) &&
+@@ -5867,6 +5592,9 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+ 	while (ret->match && (match & ret->match) != ret->match)
+ 		ret++;
+ 
++	if (vlan_count != 0)
++		ret = ice_dummy_packet_add_vlan(ret, vlan_count);
++
+ 	return ret;
+ }
+ 
+@@ -6273,16 +6001,22 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 
+ 	/* locate a dummy packet */
+ 	profile = ice_find_dummy_packet(lkups, lkups_cnt, rinfo->tun_type);
++	if (IS_ERR(profile))
++		return PTR_ERR(profile);
+ 
+ 	if (!(rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI ||
+ 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_Q ||
+ 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_QGRP ||
+-	      rinfo->sw_act.fltr_act == ICE_DROP_PACKET))
+-		return -EIO;
++	      rinfo->sw_act.fltr_act == ICE_DROP_PACKET)) {
++		status = -EIO;
++		goto free_pkt_profile;
++	}
+ 
+ 	vsi_handle = rinfo->sw_act.vsi_handle;
+-	if (!ice_is_vsi_valid(hw, vsi_handle))
+-		return -EINVAL;
++	if (!ice_is_vsi_valid(hw, vsi_handle)) {
++		status =  -EINVAL;
++		goto free_pkt_profile;
++	}
+ 
+ 	if (rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI)
+ 		rinfo->sw_act.fwd_id.hw_vsi_id =
+@@ -6292,7 +6026,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 
+ 	status = ice_add_adv_recipe(hw, lkups, lkups_cnt, rinfo, &rid);
+ 	if (status)
+-		return status;
++		goto free_pkt_profile;
+ 	m_entry = ice_find_adv_rule_entry(hw, lkups, lkups_cnt, rid, rinfo);
+ 	if (m_entry) {
+ 		/* we have to add VSI to VSI_LIST and increment vsi_count.
+@@ -6311,12 +6045,14 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 			added_entry->rule_id = m_entry->rule_info.fltr_rule_id;
+ 			added_entry->vsi_handle = rinfo->sw_act.vsi_handle;
+ 		}
+-		return status;
++		goto free_pkt_profile;
+ 	}
+ 	rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE + profile->pkt_len;
+ 	s_rule = kzalloc(rule_buf_sz, GFP_KERNEL);
+-	if (!s_rule)
+-		return -ENOMEM;
++	if (!s_rule) {
++		status = -ENOMEM;
++		goto free_pkt_profile;
++	}
+ 	if (!rinfo->flags_info.act_valid) {
+ 		act |= ICE_SINGLE_ACT_LAN_ENABLE;
+ 		act |= ICE_SINGLE_ACT_LB_ENABLE;
+@@ -6440,6 +6176,13 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 
+ 	kfree(s_rule);
+ 
++free_pkt_profile:
++	if (profile->match & ICE_PKT_KMALLOC) {
++		kfree(profile->offsets);
++		kfree(profile->pkt);
++		kfree(profile);
++	}
++
+ 	return status;
+ }
+ 
 -- 
-2.25.1
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
