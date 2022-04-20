@@ -1,96 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9292950899E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01A005089A2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C3344198E;
-	Wed, 20 Apr 2022 13:46:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A3D0C84118;
+	Wed, 20 Apr 2022 13:46:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x1bHZv3-ekN0; Wed, 20 Apr 2022 13:46:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9kZIExHJH54o; Wed, 20 Apr 2022 13:46:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C0420418C9;
-	Wed, 20 Apr 2022 13:46:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9282A82F84;
+	Wed, 20 Apr 2022 13:46:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 615441BF853
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A83981BF853
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4702660FC4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:51 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 94DB64017C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6xLKQhIaTe9e for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Apr 2022 01:27:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3mRoPs9au-X6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Apr 2022 01:27:55 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oi1-x236.google.com (mail-oi1-x236.google.com
- [IPv6:2607:f8b0:4864:20::236])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1900F60BF1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:49 +0000 (UTC)
-Received: by mail-oi1-x236.google.com with SMTP id w127so470396oig.10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 18:27:49 -0700 (PDT)
+Received: from mail-oa1-x2b.google.com (mail-oa1-x2b.google.com
+ [IPv6:2001:4860:4864:20::2b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ED8E6400CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:54 +0000 (UTC)
+Received: by mail-oa1-x2b.google.com with SMTP id
+ 586e51a60fabf-e2fa360f6dso492504fac.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 18:27:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=6RZt3pRY2aKwzYWHycI06GL3k6VJx2KQpfieK912YU8=;
- b=B+cxRY9FhW3qdrJo5zcX6sM27c423HY/NsSxFAgyuclMXAJFwQK1KTll69IMEU19Su
- 20uLodQmfsoLbbRgBO1oFs/wUrRP13lxDSZSt44zqP8G+DteCzjY0ybV5oJgRQL3bgaW
- oL6afyZgrOEIVVpilc7VdFeRUhRpflx2IH60v0ZaFqjpnzYT4zDNijDaJErUFQR3NdN3
- rSgBxlNvI0tjgjQb65SZ8gtcqqOyhcT7dUYuSC2fuR8ciQ33E+K2Lbkkd+1+Ew5YtMkM
- RIw5Z/8GN7/6BzNwJl+EVKneuM2X8FAhSR1jNV6DD1h4OMfBD8bg48zfUH9Vn6N3xFid
- hUVg==
+ bh=sLw0H6R3WlK1bcOpwRAGg46brAmczPbRTJQlw64+BQ8=;
+ b=ignMrrjTawt+RSJ85pYU7pXLiyjs3Ks/hQyy+Go6XWmeKMgb/NaIB461stfVcxPrP4
+ cdZvnpkvayzPNy+rlxYER67Xx+obKhbVtiGtE2izGTJtB5EJmCjVQABAtaAB0srcu/ry
+ drprU5w2y0gyfR8HOGUsxKIG1X/0qf99a4hH0YGqeyEYT/g04lNZ8bA7oYvx8jPU7V8l
+ 0x63eDNKr1euZoW6py3M/o63QlfaCqNmZTDajJ5xHKMh+KMyQBYYsAImc+K2+Y5nIAJS
+ wahqAuPRHf+UYJGyFINaUf+mutvjhiR3t8ysGopcxDS+QZLxnKgbdeAFmqkXrkJUVVee
+ ni9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=6RZt3pRY2aKwzYWHycI06GL3k6VJx2KQpfieK912YU8=;
- b=qir11mcAyKuNXY2xCTMeDwPLWYzwac5vFDhdzqRLS3ZvLVY6SyQSHqUIeTfPTpZGUb
- DpwXYwaU42HK8Tsz/XBCn2cpkqWGEYU8dPyfRwtB6T58yWwgppjG38qo40y3hrG1Ul6Q
- X6HuhoI45xJAgVXUu1RRDvBFzOW1NQqczMb8txmil3fshmQRRBMC2NrHSsukLunkwxmR
- rIGzXL//kuqMPngjYAX6Fz/StAtIDqpiQ0hziQ1JLtQFOTksHoI95S2A507absn+PRPs
- +FmcC+qIAW221T+fdd7UxiTa9CzQkbjfGlk9KjRSsBmKj+wGg+8J7xK/KIynF+Y/N4ak
- yk1g==
-X-Gm-Message-State: AOAM533hVFJr48meQuo9h/kLzbRbr9knxW8/dGZERwVfCr+L/hP28/3P
- ahOwvrxbwIk4qrzGkgbNRpE=
-X-Google-Smtp-Source: ABdhPJy65y7OiIVCslGTDjTngaUh+H8salM/co/xL+9jxZxE9vPUet2d6AEN2W7VgaiYwaDveYO/zw==
-X-Received: by 2002:aca:d9c3:0:b0:2fa:6f51:7bfe with SMTP id
- q186-20020acad9c3000000b002fa6f517bfemr639590oig.59.1650418069051; 
- Tue, 19 Apr 2022 18:27:49 -0700 (PDT)
+ bh=sLw0H6R3WlK1bcOpwRAGg46brAmczPbRTJQlw64+BQ8=;
+ b=dlcdazlpIW1l2bOqWS6MMWXTSjlvyuZmVuxT99woBQjqj021tA8dDtuIx5eHi1MbR/
+ deDRSzKQcV+6c5VCZ2ZGb8iHY6/6fNRa0Are1QsdV/8yoV77Oz35s77dPR/ih4G8WR3R
+ eY58iNEiZqlEZsh8FPwM2XRgYVu7nURmMKHh6JgdAsv011J0dliNABQfJxmzrAySPQJg
+ j0AfRD1jZPpqZB8Pw9rHxVP+m6gL2HoKVu4GQkPOQccGAbESlCTILrrYO+SiSxJkF1bG
+ YFoUkJe8+a5hMCeR7b8QkOdq3lbqRvj73pz4/v7VAknx3PO4XyQJm8wby3+VsbmABjr7
+ jf6w==
+X-Gm-Message-State: AOAM5310md1B+hd6ViZaWwC0h84ghFTfevc5Y/NVdGXjTGHkokYnve7A
+ wVe2GQu87uY661XSx4jv39g=
+X-Google-Smtp-Source: ABdhPJyWXSgaXneeXdK00kRCm4zrorvjleC1IZX7daIwNfz00gwfZryMocgkAbGgY7JP06Gy/3n8vg==
+X-Received: by 2002:a05:6870:f624:b0:e1:c071:121b with SMTP id
+ ek36-20020a056870f62400b000e1c071121bmr594369oab.182.1650418073912; 
+ Tue, 19 Apr 2022 18:27:53 -0700 (PDT)
 Received: from toe.qscaudio.com ([65.113.122.35])
  by smtp.gmail.com with ESMTPSA id
- i26-20020a4a929a000000b0033a29c8d564sm4284530ooh.3.2022.04.19.18.27.48
+ i26-20020a4a929a000000b0033a29c8d564sm4284530ooh.3.2022.04.19.18.27.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Apr 2022 18:27:48 -0700 (PDT)
+ Tue, 19 Apr 2022 18:27:53 -0700 (PDT)
 From: jeff.evanson@gmail.com
 X-Google-Original-From: jeff.evanson@qsc.com
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
  Vedang Patel <vedang.patel@intel.com>,
  Andre Guedes <andre.guedes@intel.com>,
  Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
  Jithu Joseph <jithu.joseph@intel.com>,
  intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
  netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
- linux-kernel@vger.kernel.org (open list),
- bpf@vger.kernel.org (open list:XDP (eXpress Data Path))
-Date: Tue, 19 Apr 2022 19:26:34 -0600
-Message-Id: <20220420012635.13733-2-jeff.evanson@qsc.com>
+ linux-kernel@vger.kernel.org (open list)
+Date: Tue, 19 Apr 2022 19:26:35 -0600
+Message-Id: <20220420012635.13733-3-jeff.evanson@qsc.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220420012635.13733-1-jeff.evanson@qsc.com>
 References: <20220420012635.13733-1-jeff.evanson@qsc.com>
 X-Mailman-Approved-At: Wed, 20 Apr 2022 13:46:02 +0000
-Subject: [Intel-wired-lan] [PATCH v2 1/2] igc: Fix race in igc_xdp_xmit_zc
+Subject: [Intel-wired-lan] [PATCH v2 2/2] igc: Trigger proper interrupts in
+ igc_xsk_wakeup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,36 +109,86 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jeff Evanson <jeff.evanson@qsc.com>
 
-In igc_xdp_xmit_zc, initialize next_to_use while holding the netif_tx_lock
-to prevent racing with other users of the tx ring.
+In igc_xsk_wakeup, trigger the proper interrupt based on whether flags
+contains XDP_WAKEUP_RX and/or XDP_WAKEUP_TX.
 
-Fixes: 9acf59a752d4 (igc: Enable TX via AF_XDP zero-copy)
+Consider a scenario where the transmit queue interrupt is mapped to a
+different irq from the receive queue. If XDP_WAKEUP_TX is set in the
+flags argument, the interrupt for transmit queue must be triggered,
+otherwise the transmit queue's napi_struct will never be scheduled.
+
+In the case where both XDP_WAKEUP_TX and XDP_WAKEUP_RX are both set,
+the receive interrupt should always be triggered, but the transmit
+interrupt should only be triggered if its q_vector differs from the
+receive queue's interrupt.
+
+Fixes: fc9df2a0b520 ("igc: Enable RX via AF_XDP zero-copy")
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 40 ++++++++++++++++++-----
+ 1 file changed, 31 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 1c00ee310c19..a36a18c84aeb 100644
+index a36a18c84aeb..41b5d1ac8bc1 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2598,7 +2598,7 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 	struct netdev_queue *nq = txring_txq(ring);
- 	union igc_adv_tx_desc *tx_desc = NULL;
- 	int cpu = smp_processor_id();
--	u16 ntu = ring->next_to_use;
-+	u16 ntu;
- 	struct xdp_desc xdp_desc;
- 	u16 budget;
+@@ -6072,8 +6072,8 @@ static void igc_trigger_rxtxq_interrupt(struct igc_adapter *adapter,
  
-@@ -2607,6 +2607,8 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
+ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ {
++	struct igc_q_vector *txq_vector = NULL, *rxq_vector = NULL;
+ 	struct igc_adapter *adapter = netdev_priv(dev);
+-	struct igc_q_vector *q_vector;
+ 	struct igc_ring *ring;
  
- 	__netif_tx_lock(nq, cpu);
+ 	if (test_bit(__IGC_DOWN, &adapter->state))
+@@ -6082,17 +6082,39 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ 	if (!igc_xdp_is_enabled(adapter))
+ 		return -ENXIO;
  
-+	ntu = ring->next_to_use;
+-	if (queue_id >= adapter->num_rx_queues)
+-		return -EINVAL;
++	if (flags & XDP_WAKEUP_RX) {
++		if (queue_id >= adapter->num_rx_queues)
++			return -EINVAL;
+ 
+-	ring = adapter->rx_ring[queue_id];
++		ring = adapter->rx_ring[queue_id];
++		if (!ring->xsk_pool)
++			return -ENXIO;
+ 
+-	if (!ring->xsk_pool)
+-		return -ENXIO;
++		rxq_vector = ring->q_vector;
++	}
 +
- 	budget = igc_desc_unused(ring);
++	if (flags & XDP_WAKEUP_TX) {
++		if (queue_id >= adapter->num_tx_queues)
++			return -EINVAL;
++
++		ring = adapter->tx_ring[queue_id];
++		if (!ring->xsk_pool)
++			return -ENXIO;
++
++		txq_vector = ring->q_vector;
++	}
++
++	if (rxq_vector != NULL &&
++	    !napi_if_scheduled_mark_missed(&rxq_vector->napi))
++		igc_trigger_rxtxq_interrupt(adapter, rxq_vector);
  
- 	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
+-	q_vector = adapter->q_vector[queue_id];
+-	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
+-		igc_trigger_rxtxq_interrupt(adapter, q_vector);
++	/* only trigger tx interrupt if the receive interrupt was not
++	 * triggered or if its irq differs from the receive queue's irq
++	 */
++	if (txq_vector != NULL &&
++            txq_vector != rxq_vector &&
++	    !napi_if_scheduled_mark_missed(&txq_vector->napi))
++		igc_trigger_rxtxq_interrupt(adapter, txq_vector);
+ 
+ 	return 0;
+ }
 -- 
 2.17.1
 
