@@ -1,144 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9554A50899D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9292950899E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 444C383F6E;
-	Wed, 20 Apr 2022 13:46:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C3344198E;
+	Wed, 20 Apr 2022 13:46:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v7LxXZHfXi7Y; Wed, 20 Apr 2022 13:46:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x1bHZv3-ekN0; Wed, 20 Apr 2022 13:46:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4B4A8407C;
-	Wed, 20 Apr 2022 13:46:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C0420418C9;
+	Wed, 20 Apr 2022 13:46:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 57D161BF301
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Apr 2022 23:11:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 615441BF853
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3A855610E8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Apr 2022 23:11:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4702660FC4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=qsc.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4ublXayBDdbn for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Apr 2022 23:11:11 +0000 (UTC)
-X-Greylist: delayed 00:05:08 by SQLgrey-1.8.0
-Received: from us-smtp-delivery-160.mimecast.com
- (us-smtp-delivery-160.mimecast.com [170.10.129.160])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F1F2660EB6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Apr 2022 23:11:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qsc.com;
- s=mimecast20190503; t=1650323469;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jOPJiV67EkGrlw/BDAbXbxHsHhcxdXkIw5TditZBAuo=;
- b=C41oH9mRO+zpGMA6hjD5u3RdHNROaTtHeDfyUiunJPdIGz8jX3/HrUyauPvPgX82Mwgm/Y
- 0Djav0cGf5ftxUQD+Nh7jfRdVCjtgJl4kNq9/yNN8BfDHIFAs0UhRgmKqAEVn9G7CLKmel
- 0EMx1OjaKV15Qd8A18lHZPXfWja9cGE=
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2046.outbound.protection.outlook.com [104.47.66.46]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-448-JZUpCIgePpmFjM9x11OUCg-1; Mon, 18 Apr 2022 19:04:04 -0400
-X-MC-Unique: JZUpCIgePpmFjM9x11OUCg-1
-Received: from CY4PR16MB0023.namprd16.prod.outlook.com (2603:10b6:903:da::19)
- by PH7PR16MB4745.namprd16.prod.outlook.com (2603:10b6:510:137::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Mon, 18 Apr
- 2022 23:03:59 +0000
-Received: from CY4PR16MB0023.namprd16.prod.outlook.com
- ([fe80::458a:1620:d220:26b6]) by CY4PR16MB0023.namprd16.prod.outlook.com
- ([fe80::458a:1620:d220:26b6%12]) with mapi id 15.20.5164.025; Mon, 18 Apr
- 2022 23:03:59 +0000
-From: Jeff Evanson <Jeff.Evanson@qsc.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>, Jeff Evanson
- <jeff.evanson@gmail.com>, Jesse Brandeburg <jesse.brandeburg@intel.com>, Tony
- Nguyen <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>
-Thread-Topic: [PATCH 2/2] Trigger proper interrupts in igc_xsk_wakeup
-Thread-Index: AQHYUQybCTI0E92i8ka2vo72M+w346z19daAgABUKUA=
-Date: Mon, 18 Apr 2022 23:03:59 +0000
-Message-ID: <CY4PR16MB002318405355FB6AC87CA0919BF39@CY4PR16MB0023.namprd16.prod.outlook.com>
-References: <20220415210546.11294-1-jeff.evanson@qsc.com>
- <87v8v6477g.fsf@intel.com>
-In-Reply-To: <87v8v6477g.fsf@intel.com>
-Accept-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 52f3aa96-037d-412f-f82a-08da218fb92c
-x-ms-traffictypediagnostic: PH7PR16MB4745:EE_
-x-microsoft-antispam-prvs: <PH7PR16MB4745F35BC5520EDEFF774A2F9BF39@PH7PR16MB4745.namprd16.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0
-x-microsoft-antispam-message-info: ohTjexFv2f/HU0LQEompOcuRhZdrb4mXPc8Yw74hAyuA49K74Mlu1bEZkGMNWaFscHZ6YJM0jzU03Ff8lpnCK697H7NXhOrn/4mrfLkOVtqke8TzpoK04wDxz05Cf0aevrg6QCTjJiwI+u/3hLpljIcwNGjCzuM7NmRb+QcjUE6E2TOt/4BoOGLFWcGKytq34cEhRzuW/YQzCxBM3fsPwSRmbSCCqj0vCgwfe7/FiWMRORd9SYaWLCjGvhvWntlITDL67i2DInmUgDOUK9/M/ahg+mhZgFcOeIDBLmVfLtjgKv0NgO6Oa1OH+TRIP8yi09+teCOUywDc94zdqpx75NFr31J7utkbp5qScbyhyzaXSFJo9VbXiCAp00ZST8Txe6KfyL5K6uCBIe4heOdsIFONhmRBBlN6qm+COpm+Kacn5Y95MvVIC/9G8R5M83coQy+2w0yzMWb8zpH4fgYvn2d02lX+2ND7e0S4KKIdZglyyY1CWIQYL31GHXCvVVBJGzn27DZUGpIUy9DH6mASrx3VWWklAVStAxYGhteaVImhviGoynopW7xcSq0fduqnW568E3FBn7yXNVITBsceCDktjrCc/vyeVm4Ohy8m1s445T6aX53sRmjIqHRLdh4OK/k+ztsppVUM/nByy8dIxeUpUzI0Va3//mCDb4AWtAvB2e3ywkP7t32Wre4a/+1O/gqQ6GtdconHr9pGd1BzrQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR16MB0023.namprd16.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(122000001)(9686003)(52536014)(33656002)(5660300002)(508600001)(71200400001)(316002)(38070700005)(6506007)(4326008)(8676002)(7696005)(76116006)(66476007)(64756008)(66446008)(66946007)(66556008)(8936002)(86362001)(53546011)(55016003)(2906002)(186003)(26005)(83380400001)(110136005)(38100700002);
- DIR:OUT; SFP:1102
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?U/mMKE7W06S7AF6kl6zRPJwyuYUEcPqkHJ2qBgL1gFxHQSQxTAwwB573Qj4b?=
- =?us-ascii?Q?LnXsMthwAPaQnvkyt1zA5S2bx4rOWbT+Lk4nBWpR/A9iHZ1Q9NC0lOR/d9Pf?=
- =?us-ascii?Q?T4LkC25abJ0Q+ZpnIZx5w0WAFfqKcr6IJ6Wm63r2THVq6lY3j+j0uDAlickB?=
- =?us-ascii?Q?7r3a/GcgTRvONTFg+wvfFTOe0ACzbCIeqYclpoTUCXbV2yFJGeDlNCAUcdl1?=
- =?us-ascii?Q?JXfPDEO+Xcerb4NVzKmmxFnPWHDM8UgniDcpZcXckIRVX/THz27sioLdMwwC?=
- =?us-ascii?Q?KzvC1vlklyef123fLblFmmWlge2iad44oPVfRMw1KM0ZXonGYpW2tPvFdN8D?=
- =?us-ascii?Q?P0P1dwVzlhWrg96NBnPVnrpUfVFxAcetnXiyOkP2yVN+ccsx3D8VCAmU1H7l?=
- =?us-ascii?Q?TymEiWHWAOMus+LYsvG1NWaRGxnMp1NTGjyN9OE5GJoqTzxgPSwFVCCn2GrH?=
- =?us-ascii?Q?bEHprH1IPq9d3zHTyDhpkkRwH3kbOnHJ55OMsEvjnmxVYZ6mGwmal73Vn2/B?=
- =?us-ascii?Q?r5TxN6vot1EsgVlh0y3qR/NVOkQuM8wB2VqposXSFqDKeZPEVU55/2ZlAmq7?=
- =?us-ascii?Q?HoiX5WiRzZIWi406OiwD071lyHpiMODyGA14ce/X4/LR32eMJUq3XNXW542R?=
- =?us-ascii?Q?yih2kBvgI5HNhiBnIKFOir0vMAph1UUh6gQs61U6Fs+gKYSyK8WUfjQkSlwD?=
- =?us-ascii?Q?FqcziEdc//zDEgnTDCsbtxLts6vp6W4yww6h65maYJwFsju04cF7awrl5QkD?=
- =?us-ascii?Q?mEGjzjAbnBqCsKhEZ48rsZKENVj7Y3N+VZMEaasp/jSX8zPVwabkni384VhT?=
- =?us-ascii?Q?CUtIgUp+S/4egxeKkyuoJPHqjylfa+jJInQ1v+2gA4w3jo8i56jdEt9ccew7?=
- =?us-ascii?Q?Fr78kQsVexo8pdYXwUZkZfaCn/Hnr2aJI3k6HCKYnXF5XuLsbS6ueibIOObZ?=
- =?us-ascii?Q?5mYydY4UU76O2oJQAVROIkpPGgqmRb9V9btKu6UulHNlbPIdfR5rt13HHGJj?=
- =?us-ascii?Q?Mpgv0DXy6sPI5hCGnepEb1wVzaXop9Xuvg8VhbFAfx3I1/ObvONXvWXNCg7y?=
- =?us-ascii?Q?hGrrRt4E6TUwSTdvC2i+n1KiCoY96Stg/rfnD0WzlTQUM/bVJG+aXs9XYMK7?=
- =?us-ascii?Q?+i0tsbGuj113adXRuTsx7SqLN2xuulZ4XZqjpHe9bMakfSkhavuiaFjRVxle?=
- =?us-ascii?Q?OSNacucRERtgmL6+h+UC+G5n31Wj/NiFm8+6tZ07XDPzUDE5BhvIKVPhzIfA?=
- =?us-ascii?Q?BpT79uhC0FDbMNhdvdEeoauaK7uVECb8srb9wBzKcj5HleRolL5IFiMGJI0T?=
- =?us-ascii?Q?hLpd2O+rABeK3kI27BK2sPmx1wBfQJcrr62JGgqFaFwD8lGk/Yu0KZW6PEcf?=
- =?us-ascii?Q?kO0qrTY3CYq23eyDY5p4JYcLo+eMiyD1xVMp7PtZWE1tUORN9eXiCAZ7CMod?=
- =?us-ascii?Q?QP8fbvexUVcAGjZlHx+K5ac0Pfpi5Ayyw0EakUkjc8VT9fxrfxF1NfIojAK8?=
- =?us-ascii?Q?n7i4+f13AIB03kp8RDdeCRMzcSWgZ6gMEogon3RLMC3y8kZR/Pj88T2YKcKA?=
- =?us-ascii?Q?yXVdY59u7d7uNKIoRP4O3/TXzhpDFxbpWtPSdmcPBLOsedOtCncn6qkZBbqF?=
- =?us-ascii?Q?d9E1sQKP+7imngc5whXifubmw2z7NVnwRg4G6RdXF2KDjIGQD3awDLfEAqg9?=
- =?us-ascii?Q?YBTB0q82QGg+CfJhiKZRf3t5TcMsE31FT5yi8x+nHqzxNa+Ct23ni8wnObIL?=
- =?us-ascii?Q?Wnn1T63KNg=3D=3D?=
-MIME-Version: 1.0
-X-OriginatorOrg: qsc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR16MB0023.namprd16.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 52f3aa96-037d-412f-f82a-08da218fb92c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Apr 2022 23:03:59.5399 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 23298f55-90ba-49c3-9286-576ec76d1e38
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zhiTxz/XG0w6n/AEmOiC/PR0hUVXTb5y7Qq53bCPlUwnG/J7CTXdzymv677n5FMbRH4+G5WinaMZ1IXDwVHSaQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR16MB4745
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA60A255 smtp.mailfrom=jeff.evanson@qsc.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: qsc.com
-Content-Language: en-US
+ with ESMTP id 6xLKQhIaTe9e for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Apr 2022 01:27:50 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-oi1-x236.google.com (mail-oi1-x236.google.com
+ [IPv6:2607:f8b0:4864:20::236])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1900F60BF1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 01:27:49 +0000 (UTC)
+Received: by mail-oi1-x236.google.com with SMTP id w127so470396oig.10
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Apr 2022 18:27:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=6RZt3pRY2aKwzYWHycI06GL3k6VJx2KQpfieK912YU8=;
+ b=B+cxRY9FhW3qdrJo5zcX6sM27c423HY/NsSxFAgyuclMXAJFwQK1KTll69IMEU19Su
+ 20uLodQmfsoLbbRgBO1oFs/wUrRP13lxDSZSt44zqP8G+DteCzjY0ybV5oJgRQL3bgaW
+ oL6afyZgrOEIVVpilc7VdFeRUhRpflx2IH60v0ZaFqjpnzYT4zDNijDaJErUFQR3NdN3
+ rSgBxlNvI0tjgjQb65SZ8gtcqqOyhcT7dUYuSC2fuR8ciQ33E+K2Lbkkd+1+Ew5YtMkM
+ RIw5Z/8GN7/6BzNwJl+EVKneuM2X8FAhSR1jNV6DD1h4OMfBD8bg48zfUH9Vn6N3xFid
+ hUVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=6RZt3pRY2aKwzYWHycI06GL3k6VJx2KQpfieK912YU8=;
+ b=qir11mcAyKuNXY2xCTMeDwPLWYzwac5vFDhdzqRLS3ZvLVY6SyQSHqUIeTfPTpZGUb
+ DpwXYwaU42HK8Tsz/XBCn2cpkqWGEYU8dPyfRwtB6T58yWwgppjG38qo40y3hrG1Ul6Q
+ X6HuhoI45xJAgVXUu1RRDvBFzOW1NQqczMb8txmil3fshmQRRBMC2NrHSsukLunkwxmR
+ rIGzXL//kuqMPngjYAX6Fz/StAtIDqpiQ0hziQ1JLtQFOTksHoI95S2A507absn+PRPs
+ +FmcC+qIAW221T+fdd7UxiTa9CzQkbjfGlk9KjRSsBmKj+wGg+8J7xK/KIynF+Y/N4ak
+ yk1g==
+X-Gm-Message-State: AOAM533hVFJr48meQuo9h/kLzbRbr9knxW8/dGZERwVfCr+L/hP28/3P
+ ahOwvrxbwIk4qrzGkgbNRpE=
+X-Google-Smtp-Source: ABdhPJy65y7OiIVCslGTDjTngaUh+H8salM/co/xL+9jxZxE9vPUet2d6AEN2W7VgaiYwaDveYO/zw==
+X-Received: by 2002:aca:d9c3:0:b0:2fa:6f51:7bfe with SMTP id
+ q186-20020acad9c3000000b002fa6f517bfemr639590oig.59.1650418069051; 
+ Tue, 19 Apr 2022 18:27:49 -0700 (PDT)
+Received: from toe.qscaudio.com ([65.113.122.35])
+ by smtp.gmail.com with ESMTPSA id
+ i26-20020a4a929a000000b0033a29c8d564sm4284530ooh.3.2022.04.19.18.27.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Apr 2022 18:27:48 -0700 (PDT)
+From: jeff.evanson@gmail.com
+X-Google-Original-From: jeff.evanson@qsc.com
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vedang Patel <vedang.patel@intel.com>,
+ Andre Guedes <andre.guedes@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jithu Joseph <jithu.joseph@intel.com>,
+ intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
+ netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
+ linux-kernel@vger.kernel.org (open list),
+ bpf@vger.kernel.org (open list:XDP (eXpress Data Path))
+Date: Tue, 19 Apr 2022 19:26:34 -0600
+Message-Id: <20220420012635.13733-2-jeff.evanson@qsc.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220420012635.13733-1-jeff.evanson@qsc.com>
+References: <20220420012635.13733-1-jeff.evanson@qsc.com>
 X-Mailman-Approved-At: Wed, 20 Apr 2022 13:46:02 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] Trigger proper interrupts in
- igc_xsk_wakeup
+Subject: [Intel-wired-lan] [PATCH v2 1/2] igc: Fix race in igc_xdp_xmit_zc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,111 +103,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "jeff.evanson@gmail.com" <jeff.evanson@gmail.com>
+Cc: Jeff Evanson <jeff.evanson@qsc.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vinicius. Thank you for the reply.
+From: Jeff Evanson <jeff.evanson@qsc.com>
 
-The scenario only happens when the transmit queue interrupt is mapped to a different interrupt from the receive queue. In the case where XDP_WAKEUP_TX is set in the flags argument, the previous code would only trigger the interrupt for the receive queue, causing the transmit queue's napi_struct to never be scheduled.
+In igc_xdp_xmit_zc, initialize next_to_use while holding the netif_tx_lock
+to prevent racing with other users of the tx ring.
 
-In the scenario where XDP_WAKEUP_TX and XDP_WAKEUP_RX are both set in flags, the receive interrupt is always triggered and the transmit interrupt is only triggered when the transmit q_vector differs from the receive q_vector.
+Fixes: 9acf59a752d4 (igc: Enable TX via AF_XDP zero-copy)
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Regards,
-Jeff Evanson
-
------Original Message-----
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com> 
-Sent: Monday, April 18, 2022 11:45 AM
-To: Jeff Evanson <jeff.evanson@gmail.com>; Jesse Brandeburg <jesse.brandeburg@intel.com>; Tony Nguyen <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-kernel@vger.kernel.org
-Cc: Jeff Evanson <Jeff.Evanson@qsc.com>; jeff.evanson@gmail.com
-Subject: Re: [PATCH 2/2] Trigger proper interrupts in igc_xsk_wakeup
-
--External-
-
-Jeff Evanson <jeff.evanson@gmail.com> writes:
-
-> in igc_xsk_wakeup, trigger the proper interrupt based on whether flags 
-> contains XDP_WAKEUP_RX and/or XDP_WAKEUP_TX
->
-> Signed-off-by: Jeff Evanson <jeff.evanson@qsc.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 36 
-> +++++++++++++++++------
->  1 file changed, 27 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c 
-> b/drivers/net/ethernet/intel/igc/igc_main.c
-> index a36a18c84aeb..d706de95dc06 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -6073,7 +6073,7 @@ static void igc_trigger_rxtxq_interrupt(struct 
-> igc_adapter *adapter,  int igc_xsk_wakeup(struct net_device *dev, u32 
-> queue_id, u32 flags)  {
->  	struct igc_adapter *adapter = netdev_priv(dev);
-> -	struct igc_q_vector *q_vector;
-> +	struct igc_q_vector *txq_vector = 0, *rxq_vector = 0;
->  	struct igc_ring *ring;
->  
->  	if (test_bit(__IGC_DOWN, &adapter->state)) @@ -6082,17 +6082,35 @@ 
-> int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
->  	if (!igc_xdp_is_enabled(adapter))
->  		return -ENXIO;
->  
-> -	if (queue_id >= adapter->num_rx_queues)
-> -		return -EINVAL;
-> +	if (flags & XDP_WAKEUP_RX) {
-> +		if (queue_id >= adapter->num_rx_queues)
-> +			return -EINVAL;
->  
-> -	ring = adapter->rx_ring[queue_id];
-> +		ring = adapter->rx_ring[queue_id];
-> +		if (!ring->xsk_pool)
-> +			return -ENXIO;
->  
-> -	if (!ring->xsk_pool)
-> -		return -ENXIO;
-> +		rxq_vector = ring->q_vector;
-> +	}
-> +
-> +	if (flags & XDP_WAKEUP_TX) {
-> +		if (queue_id >= adapter->num_tx_queues)
-> +			return -EINVAL;
-> +
-> +		ring = adapter->tx_ring[queue_id];
-> +		if (!ring->xsk_pool)
-> +			return -ENXIO;
-> +
-> +		txq_vector = ring->q_vector;
-> +	}
-> +
-> +	if (rxq_vector &&
-> +	    !napi_if_scheduled_mark_missed(&rxq_vector->napi))
-> +		igc_trigger_rxtxq_interrupt(adapter, rxq_vector);
->  
-> -	q_vector = adapter->q_vector[queue_id];
-> -	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
-> -		igc_trigger_rxtxq_interrupt(adapter, q_vector);
-> +	if (txq_vector && txq_vector != rxq_vector &&
-> +	    !napi_if_scheduled_mark_missed(&txq_vector->napi))
-> +		igc_trigger_rxtxq_interrupt(adapter, txq_vector);
-
-Two things:
- - My imagination was not able to produce a scenario where this commit  would solve any problems. Can you explain better the case where the  current code would cause the wrong interrupt to be generated (or miss  generating an interrupt)? (this should be in the commit message)
- - I think that with this patch applied, there would cases (both TX and  RX flags set) that we cause two writes into the EICS register. That  could cause unnecessary wakeups.
-
->  
->  	return 0;
->  }
-> --
-> 2.17.1
->
-
-Cheers,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 1c00ee310c19..a36a18c84aeb 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2598,7 +2598,7 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
+ 	struct netdev_queue *nq = txring_txq(ring);
+ 	union igc_adv_tx_desc *tx_desc = NULL;
+ 	int cpu = smp_processor_id();
+-	u16 ntu = ring->next_to_use;
++	u16 ntu;
+ 	struct xdp_desc xdp_desc;
+ 	u16 budget;
+ 
+@@ -2607,6 +2607,8 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
+ 
+ 	__netif_tx_lock(nq, cpu);
+ 
++	ntu = ring->next_to_use;
++
+ 	budget = igc_desc_unused(ring);
+ 
+ 	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
 -- 
-Vinicius
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
