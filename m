@@ -1,92 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D77D5089A5
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 15:46:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C13A1508B7D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Apr 2022 17:03:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B629240C07;
-	Wed, 20 Apr 2022 13:46:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8EFA6831F1;
+	Wed, 20 Apr 2022 15:03:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w94ckcfC-NPe; Wed, 20 Apr 2022 13:46:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1N807n-RaeUw; Wed, 20 Apr 2022 15:03:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 90E874021C;
-	Wed, 20 Apr 2022 13:46:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 278AA83104;
+	Wed, 20 Apr 2022 15:03:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 53C0D1BF2AA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 13:09:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E67501BF599
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 15:03:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 40A28400C2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 13:09:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E14C8419B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 15:03:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=redhat.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 12E6iJ7Ik3TF for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Apr 2022 13:09:23 +0000 (UTC)
+ with ESMTP id QA2cblJxHqTl for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Apr 2022 15:03:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1A21D400BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 13:09:22 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 520FA41902
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 15:03:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650460161;
+ s=mimecast20190719; t=1650466988;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=H5WElo14BBY5Cz/PaPpg1Na6JGReOhJoOldP3NeoOX8=;
- b=h0Nph4sypKFpcGtP80zXDEYmJWjv4Qb9H2AwYfouX0iMHy5QuI6RBwCUvSvjfs0d45YwyB
- WhpJsEnaTfoP2EWyPYMMSmpCmFsD8V+3BhtAtOrkoRer7XZ6l4WJ2e9QC9Y8F04V8hcwck
- ICRsTLc1Zmo9MNEjjojs2NA+07xbdJw=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=jntkh3AwC3J8OY7gWPfdf/3F9Twk7pkdRfKiiJLmegA=;
+ b=iKA8PKACNvUMy81CPcLCG2QMdq1tOTZqvL5485OL+jhOnBrjU5oZuftqB/ICYxbCKhZN8g
+ sAckt8oSbajJsJRKowjUy+0n5DxsgZrYMUw9H//hAnWd/iRpUXDdSEUxdp4oQdr/UJCbca
+ Ns6Il3bJQakvTV2l2Cn2NvbwRNv3X8g=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-212-l6y8hfQsMRSQWDNAFEA29w-1; Wed, 20 Apr 2022 09:09:20 -0400
-X-MC-Unique: l6y8hfQsMRSQWDNAFEA29w-1
-Received: by mail-qt1-f200.google.com with SMTP id
- t20-20020a05622a01d400b002f1f4b6d6d0so862398qtw.21
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Apr 2022 06:09:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=H5WElo14BBY5Cz/PaPpg1Na6JGReOhJoOldP3NeoOX8=;
- b=TBdkbYpIls15FQYFScoGWQzCtC/4mZ7ijYirfxaJa2FzuLhhpcRz4eX8B2DGjBEwhf
- 5WDhuuYYsgx0r1QbQJqQ5cIVXdOiEegT9atyG7I+7xtXVXnCHFqe4XOR7K1q3/QiMMgo
- 7JzaorOJWP+AmEZmLyA9RVwAYSRh5Cl6bq/bXF9Z+HDVX5Tp0ApXMKgNgwthAs/l9g5h
- 4BDrZw2n0o1HoHLR2YFI5YZvWMh9FeSXr/LeJvYZjuiavvI4mb3Xa+HPszxkBiOKjpog
- 1tozsVj7XVoRNq/PkKnoDnPA7Pn+3M/XA+T3wP90uhrQHYkuudYwkQMvgwO8lfhRsz52
- Gt7Q==
-X-Gm-Message-State: AOAM5337HMc9Wv3patYdTUysrwX9fXA9/yNiZiyZm3eM2kUeiGP+Hdu/
- kPGC0KIgrL9nGpQKQTDT3qcQCU3cFq82fAG8fvItB093NCrw9HsWSZmCs1LxT2TPfBhZ4FUKNbS
- gHmvA2DDPgCxtAm8EuGe3YOnQnaJscw==
-X-Received: by 2002:a05:6214:2462:b0:449:998a:8c09 with SMTP id
- im2-20020a056214246200b00449998a8c09mr2207947qvb.34.1650460159548; 
- Wed, 20 Apr 2022 06:09:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJynjmYOO8LNpuPc3DFNKKwI7gtP6MXM6nmFVA7TGJhkHdGOcq/xSHXBOnMPtHjXtdebu4//zA==
-X-Received: by 2002:a05:6214:2462:b0:449:998a:8c09 with SMTP id
- im2-20020a056214246200b00449998a8c09mr2207908qvb.34.1650460159254; 
- Wed, 20 Apr 2022 06:09:19 -0700 (PDT)
-Received: from localhost (net-93-71-56-156.cust.vodafonedsl.it. [93.71.56.156])
- by smtp.gmail.com with ESMTPSA id
- b2-20020a37b202000000b0069c7ad47221sm1462092qkf.38.2022.04.20.06.09.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Apr 2022 06:09:18 -0700 (PDT)
-Date: Wed, 20 Apr 2022 15:09:15 +0200
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: anthony.l.nguyen@intel.com
-Message-ID: <YmAF+wBcluzOGXgJ@lore-desk>
-References: <6de1d7547b60677ad0b0f7ebcbc7ebc76a31dcf7.1649180962.git.lorenzo@kernel.org>
+ us-mta-115-ufO-bh3MNVqrh9qFt8VD6Q-1; Wed, 20 Apr 2022 11:03:04 -0400
+X-MC-Unique: ufO-bh3MNVqrh9qFt8VD6Q-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EAEF229AB40C;
+ Wed, 20 Apr 2022 15:03:03 +0000 (UTC)
+Received: from ceranb.redhat.com (unknown [10.40.194.169])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 83A7440CFD06;
+ Wed, 20 Apr 2022 15:03:01 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed, 20 Apr 2022 17:02:59 +0200
+Message-Id: <20220420150300.1062689-1-ivecera@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <6de1d7547b60677ad0b0f7ebcbc7ebc76a31dcf7.1649180962.git.lorenzo@kernel.org>
-X-Mailman-Approved-At: Wed, 20 Apr 2022 13:46:02 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ixgbe: add xdp frags support
- to ndo_xdp_xmit
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Fix race during aux device
+ (un)plugging
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,206 +77,256 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: daniel@iogearbox.net, netdev@vger.kernel.org, toke@redhat.com,
- ast@kernel.org, jbrouer@redhat.com, andrii@kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, bpf@vger.kernel.org,
- pabeni@redhat.com, davem@davemloft.net, magnus.karlsson@intel.com
-Content-Type: multipart/mixed; boundary="===============6708324283759061170=="
+Cc: Leon Romanovsky <leon@kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ mschmidt@redhat.com, open list <linux-kernel@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Shiraz Saleem <shiraz.saleem@intel.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Function ice_plug_aux_dev() assigns pf->adev field too early prior
+aux device initialization and on other side ice_unplug_aux_dev()
+starts aux device deinit and at the end assigns NULL to pf->adev.
+This is wrong because pf->adev should always be non-NULL only when
+aux device is fully initialized and ready. This wrong order causes
+a crash when ice_send_event_to_aux() call occurs because that function
+depends on non-NULL value of pf->adev and does not assume that
+aux device is half-initialized or half-destroyed.
+After order correction the race window is tiny but it is still there,
+as Leon mentioned and manipulation with pf->adev needs to be protected
+by mutex.
 
---===============6708324283759061170==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Q0eCcL3TwOvk179G"
-Content-Disposition: inline
+Fix (un-)plugging functions so pf->adev field is set after aux device
+init and prior aux device destroy and protect pf->adev assignment by
+new mutex. This mutex is also held during ice_send_event_to_aux()
+call to ensure that aux device is valid during that call. Device
+lock used ice_send_event_to_aux() to avoid its concurrent run can
+be removed as this is secured by that mutex.
 
+Reproducer:
+cycle=1
+while :;do
+        echo "#### Cycle: $cycle"
 
---Q0eCcL3TwOvk179G
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+        ip link set ens7f0 mtu 9000
+        ip link add bond0 type bond mode 1 miimon 100
+        ip link set bond0 up
+        ifenslave bond0 ens7f0
+        ip link set bond0 mtu 9000
+        ethtool -L ens7f0 combined 1
+        ip link del bond0
+        ip link set ens7f0 mtu 1500
+        sleep 1
 
-> Add the capability to map non-linear xdp frames in XDP_TX and ndo_xdp_xmit
-> callback.
+        let cycle++
+done
 
-Hi Tony,
+In short when the device is added/removed to/from bond the aux device
+is unplugged/plugged. When MTU of the device is changed an event is
+sent to aux device asynchronously. This can race with (un)plugging
+operation and because pf->adev is set too early (plug) or too late
+(unplug) the function ice_send_event_to_aux() can touch uninitialized
+or destroyed fields. In the case of crash below pf->adev->dev.mutex.
 
-do you have any feedbacks about this patch?
+Crash:
+[   53.372066] bond0: (slave ens7f0): making interface the new active one
+[   53.378622] bond0: (slave ens7f0): Enslaving as an active interface with an u
+p link
+[   53.386294] IPv6: ADDRCONF(NETDEV_CHANGE): bond0: link becomes ready
+[   53.549104] bond0: (slave ens7f1): Enslaving as a backup interface with an up
+ link
+[   54.118906] ice 0000:ca:00.0 ens7f0: Number of in use tx queues changed inval
+idating tc mappings. Priority traffic classification disabled!
+[   54.233374] ice 0000:ca:00.1 ens7f1: Number of in use tx queues changed inval
+idating tc mappings. Priority traffic classification disabled!
+[   54.248204] bond0: (slave ens7f0): Releasing backup interface
+[   54.253955] bond0: (slave ens7f1): making interface the new active one
+[   54.274875] bond0: (slave ens7f1): Releasing backup interface
+[   54.289153] bond0 (unregistering): Released all slaves
+[   55.383179] MII link monitoring set to 100 ms
+[   55.398696] bond0: (slave ens7f0): making interface the new active one
+[   55.405241] BUG: kernel NULL pointer dereference, address: 0000000000000080
+[   55.405289] bond0: (slave ens7f0): Enslaving as an active interface with an u
+p link
+[   55.412198] #PF: supervisor write access in kernel mode
+[   55.412200] #PF: error_code(0x0002) - not-present page
+[   55.412201] PGD 25d2ad067 P4D 0
+[   55.412204] Oops: 0002 [#1] PREEMPT SMP NOPTI
+[   55.412207] CPU: 0 PID: 403 Comm: kworker/0:2 Kdump: loaded Tainted: G S
+           5.17.0-13579-g57f2d6540f03 #1
+[   55.429094] bond0: (slave ens7f1): Enslaving as a backup interface with an up
+ link
+[   55.430224] Hardware name: Dell Inc. PowerEdge R750/06V45N, BIOS 1.4.4 10/07/
+2021
+[   55.430226] Workqueue: ice ice_service_task [ice]
+[   55.468169] RIP: 0010:mutex_unlock+0x10/0x20
+[   55.472439] Code: 0f b1 13 74 96 eb e0 4c 89 ee eb d8 e8 79 54 ff ff 66 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 65 48 8b 04 25 40 ef 01 00 31 d2 <f0> 48 0f b1 17 75 01 c3 e9 e3 fe ff ff 0f 1f 00 0f 1f 44 00 00 48
+[   55.491186] RSP: 0018:ff4454230d7d7e28 EFLAGS: 00010246
+[   55.496413] RAX: ff1a79b208b08000 RBX: ff1a79b2182e8880 RCX: 0000000000000001
+[   55.503545] RDX: 0000000000000000 RSI: ff4454230d7d7db0 RDI: 0000000000000080
+[   55.510678] RBP: ff1a79d1c7e48b68 R08: ff4454230d7d7db0 R09: 0000000000000041
+[   55.517812] R10: 00000000000000a5 R11: 00000000000006e6 R12: ff1a79d1c7e48bc0
+[   55.524945] R13: 0000000000000000 R14: ff1a79d0ffc305c0 R15: 0000000000000000
+[   55.532076] FS:  0000000000000000(0000) GS:ff1a79d0ffc00000(0000) knlGS:0000000000000000
+[   55.540163] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   55.545908] CR2: 0000000000000080 CR3: 00000003487ae003 CR4: 0000000000771ef0
+[   55.553041] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   55.560173] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   55.567305] PKRU: 55555554
+[   55.570018] Call Trace:
+[   55.572474]  <TASK>
+[   55.574579]  ice_service_task+0xaab/0xef0 [ice]
+[   55.579130]  process_one_work+0x1c5/0x390
+[   55.583141]  ? process_one_work+0x390/0x390
+[   55.587326]  worker_thread+0x30/0x360
+[   55.590994]  ? process_one_work+0x390/0x390
+[   55.595180]  kthread+0xe6/0x110
+[   55.598325]  ? kthread_complete_and_exit+0x20/0x20
+[   55.603116]  ret_from_fork+0x1f/0x30
+[   55.606698]  </TASK>
 
-Regards,
-Lorenzo
+Fixes: f9f5301e7e2d ("ice: Register auxiliary device to provide RDMA")
+Cc: Leon Romanovsky <leon@kernel.org>
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h      |  1 +
+ drivers/net/ethernet/intel/ice/ice_idc.c  | 33 ++++++++++++++---------
+ drivers/net/ethernet/intel/ice/ice_main.c |  2 ++
+ 3 files changed, 23 insertions(+), 13 deletions(-)
 
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 99 ++++++++++++-------
->  1 file changed, 63 insertions(+), 36 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/=
-ethernet/intel/ixgbe/ixgbe_main.c
-> index c4a4954aa317..8b84c9b2eecc 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -2344,6 +2344,7 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector=
- *q_vector,
->  			hard_start =3D page_address(rx_buffer->page) +
->  				     rx_buffer->page_offset - offset;
->  			xdp_prepare_buff(&xdp, hard_start, offset, size, true);
-> +			xdp_buff_clear_frags_flag(&xdp);
->  #if (PAGE_SIZE > 4096)
->  			/* At larger PAGE_SIZE, frame_sz depend on len size */
->  			xdp.frame_sz =3D ixgbe_rx_frame_truesize(rx_ring, size);
-> @@ -8571,57 +8572,83 @@ static u16 ixgbe_select_queue(struct net_device *=
-dev, struct sk_buff *skb,
->  int ixgbe_xmit_xdp_ring(struct ixgbe_ring *ring,
->  			struct xdp_frame *xdpf)
->  {
-> -	struct ixgbe_tx_buffer *tx_buffer;
-> -	union ixgbe_adv_tx_desc *tx_desc;
-> -	u32 len, cmd_type;
-> -	dma_addr_t dma;
-> -	u16 i;
-> -
-> -	len =3D xdpf->len;
-> +	struct skb_shared_info *sinfo =3D xdp_get_shared_info_from_frame(xdpf);
-> +	u8 nr_frags =3D unlikely(xdp_frame_has_frags(xdpf)) ? sinfo->nr_frags :=
- 0;
-> +	u16 i =3D 0, index =3D ring->next_to_use;
-> +	struct ixgbe_tx_buffer *tx_head =3D &ring->tx_buffer_info[index];
-> +	struct ixgbe_tx_buffer *tx_buff =3D tx_head;
-> +	union ixgbe_adv_tx_desc *tx_desc =3D IXGBE_TX_DESC(ring, index);
-> +	u32 cmd_type, len =3D xdpf->len;
-> +	void *data =3D xdpf->data;
-> =20
-> -	if (unlikely(!ixgbe_desc_unused(ring)))
-> +	if (unlikely(ixgbe_desc_unused(ring) < 1 + nr_frags))
->  		return IXGBE_XDP_CONSUMED;
-> =20
-> -	dma =3D dma_map_single(ring->dev, xdpf->data, len, DMA_TO_DEVICE);
-> -	if (dma_mapping_error(ring->dev, dma))
-> -		return IXGBE_XDP_CONSUMED;
-> +	tx_head->bytecount =3D xdp_get_frame_len(xdpf);
-> +	tx_head->gso_segs =3D 1;
-> +	tx_head->xdpf =3D xdpf;
-> =20
-> -	/* record the location of the first descriptor for this packet */
-> -	tx_buffer =3D &ring->tx_buffer_info[ring->next_to_use];
-> -	tx_buffer->bytecount =3D len;
-> -	tx_buffer->gso_segs =3D 1;
-> -	tx_buffer->protocol =3D 0;
-> +	tx_desc->read.olinfo_status =3D
-> +		cpu_to_le32(tx_head->bytecount << IXGBE_ADVTXD_PAYLEN_SHIFT);
-> =20
-> -	i =3D ring->next_to_use;
-> -	tx_desc =3D IXGBE_TX_DESC(ring, i);
-> +	for (;;) {
-> +		dma_addr_t dma;
-> =20
-> -	dma_unmap_len_set(tx_buffer, len, len);
-> -	dma_unmap_addr_set(tx_buffer, dma, dma);
-> -	tx_buffer->xdpf =3D xdpf;
-> +		dma =3D dma_map_single(ring->dev, data, len, DMA_TO_DEVICE);
-> +		if (dma_mapping_error(ring->dev, dma))
-> +			goto unmap;
-> =20
-> -	tx_desc->read.buffer_addr =3D cpu_to_le64(dma);
-> +		dma_unmap_len_set(tx_buff, len, len);
-> +		dma_unmap_addr_set(tx_buff, dma, dma);
-> +
-> +		cmd_type =3D IXGBE_ADVTXD_DTYP_DATA | IXGBE_ADVTXD_DCMD_DEXT |
-> +			   IXGBE_ADVTXD_DCMD_IFCS | len;
-> +		tx_desc->read.cmd_type_len =3D cpu_to_le32(cmd_type);
-> +		tx_desc->read.buffer_addr =3D cpu_to_le64(dma);
-> +		tx_buff->protocol =3D 0;
-> +
-> +		if (++index =3D=3D ring->count)
-> +			index =3D 0;
-> +
-> +		if (i =3D=3D nr_frags)
-> +			break;
-> +
-> +		tx_buff =3D &ring->tx_buffer_info[index];
-> +		tx_desc =3D IXGBE_TX_DESC(ring, index);
-> +		tx_desc->read.olinfo_status =3D 0;
-> =20
-> +		data =3D skb_frag_address(&sinfo->frags[i]);
-> +		len =3D skb_frag_size(&sinfo->frags[i]);
-> +		i++;
-> +	}
->  	/* put descriptor type bits */
-> -	cmd_type =3D IXGBE_ADVTXD_DTYP_DATA |
-> -		   IXGBE_ADVTXD_DCMD_DEXT |
-> -		   IXGBE_ADVTXD_DCMD_IFCS;
-> -	cmd_type |=3D len | IXGBE_TXD_CMD;
-> -	tx_desc->read.cmd_type_len =3D cpu_to_le32(cmd_type);
-> -	tx_desc->read.olinfo_status =3D
-> -		cpu_to_le32(len << IXGBE_ADVTXD_PAYLEN_SHIFT);
-> +	tx_desc->read.cmd_type_len |=3D cpu_to_le32(IXGBE_TXD_CMD);
-> =20
->  	/* Avoid any potential race with xdp_xmit and cleanup */
->  	smp_wmb();
-> =20
-> -	/* set next_to_watch value indicating a packet is present */
-> -	i++;
-> -	if (i =3D=3D ring->count)
-> -		i =3D 0;
-> -
-> -	tx_buffer->next_to_watch =3D tx_desc;
-> -	ring->next_to_use =3D i;
-> +	tx_head->next_to_watch =3D tx_desc;
-> +	ring->next_to_use =3D index;
-> =20
->  	return IXGBE_XDP_TX;
-> +
-> +unmap:
-> +	for (;;) {
-> +		tx_buff =3D &ring->tx_buffer_info[index];
-> +		if (dma_unmap_len(tx_buff, len))
-> +			dma_unmap_page(ring->dev, dma_unmap_addr(tx_buff, dma),
-> +				       dma_unmap_len(tx_buff, len),
-> +				       DMA_TO_DEVICE);
-> +		dma_unmap_len_set(tx_buff, len, 0);
-> +		if (tx_buff =3D=3D tx_head)
-> +			break;
-> +
-> +		if (!index)
-> +			index +=3D ring->count;
-> +		index--;
-> +	}
-> +
-> +	return IXGBE_XDP_CONSUMED;
->  }
-> =20
->  netdev_tx_t ixgbe_xmit_frame_ring(struct sk_buff *skb,
-> --=20
-> 2.35.1
->=20
-
---Q0eCcL3TwOvk179G
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYmAF+wAKCRA6cBh0uS2t
-rAfGAP9cIfjFAM7/1E2LcJTfpS5ojEfBGTkaEhugBmbje2aS9gEAukiztxX5QZF7
-miBBhHtTQOmeXY1giKmesLsJBhlxuAk=
-=HySC
------END PGP SIGNATURE-----
-
---Q0eCcL3TwOvk179G--
-
-
---===============6708324283759061170==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 8ed3c9ab7ff7..a895e3a8e988 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -540,6 +540,7 @@ struct ice_pf {
+ 	struct mutex avail_q_mutex;	/* protects access to avail_[rx|tx]qs */
+ 	struct mutex sw_mutex;		/* lock for protecting VSI alloc flow */
+ 	struct mutex tc_mutex;		/* lock to protect TC changes */
++	struct mutex adev_mutex;	/* lock to protect aux device access */
+ 	u32 msg_enable;
+ 	struct ice_ptp ptp;
+ 	struct tty_driver *ice_gnss_tty_driver;
+diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
+index 25a436d342c2..aef07accd63b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_idc.c
++++ b/drivers/net/ethernet/intel/ice/ice_idc.c
+@@ -10,13 +10,15 @@
+  * ice_get_auxiliary_drv - retrieve iidc_auxiliary_drv struct
+  * @pf: pointer to PF struct
+  *
+- * This function has to be called with a device_lock on the
+- * pf->adev.dev to avoid race conditions.
++ * This function has to be called with pf->adev_mutex held
++ * to avoid race conditions.
+  */
+ static struct iidc_auxiliary_drv *ice_get_auxiliary_drv(struct ice_pf *pf)
+ {
+ 	struct auxiliary_device *adev;
+ 
++	BUG_ON(!mutex_is_locked(&pf->adev_mutex));
++
+ 	adev = pf->adev;
+ 	if (!adev || !adev->dev.driver)
+ 		return NULL;
+@@ -37,14 +39,13 @@ void ice_send_event_to_aux(struct ice_pf *pf, struct iidc_event *event)
+ 	if (WARN_ON_ONCE(!in_task()))
+ 		return;
+ 
+-	if (!pf->adev)
+-		return;
++	mutex_lock(&pf->adev_mutex);
+ 
+-	device_lock(&pf->adev->dev);
+ 	iadrv = ice_get_auxiliary_drv(pf);
+ 	if (iadrv && iadrv->event_handler)
+ 		iadrv->event_handler(pf, event);
+-	device_unlock(&pf->adev->dev);
++
++	mutex_unlock(&pf->adev_mutex);
+ }
+ 
+ /**
+@@ -290,7 +291,6 @@ int ice_plug_aux_dev(struct ice_pf *pf)
+ 		return -ENOMEM;
+ 
+ 	adev = &iadev->adev;
+-	pf->adev = adev;
+ 	iadev->pf = pf;
+ 
+ 	adev->id = pf->aux_idx;
+@@ -300,18 +300,20 @@ int ice_plug_aux_dev(struct ice_pf *pf)
+ 
+ 	ret = auxiliary_device_init(adev);
+ 	if (ret) {
+-		pf->adev = NULL;
+ 		kfree(iadev);
+ 		return ret;
+ 	}
+ 
+ 	ret = auxiliary_device_add(adev);
+ 	if (ret) {
+-		pf->adev = NULL;
+ 		auxiliary_device_uninit(adev);
+ 		return ret;
+ 	}
+ 
++	mutex_lock(&pf->adev_mutex);
++	pf->adev = adev;
++	mutex_unlock(&pf->adev_mutex);
++
+ 	return 0;
+ }
+ 
+@@ -320,12 +322,17 @@ int ice_plug_aux_dev(struct ice_pf *pf)
+  */
+ void ice_unplug_aux_dev(struct ice_pf *pf)
+ {
+-	if (!pf->adev)
+-		return;
++	struct auxiliary_device *adev;
+ 
+-	auxiliary_device_delete(pf->adev);
+-	auxiliary_device_uninit(pf->adev);
++	mutex_lock(&pf->adev_mutex);
++	adev = pf->adev;
+ 	pf->adev = NULL;
++	mutex_unlock(&pf->adev_mutex);
++
++	if (adev) {
++		auxiliary_device_delete(adev);
++		auxiliary_device_uninit(adev);
++	}
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 5b1198859da7..2cbbf7abefc4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3769,6 +3769,7 @@ u16 ice_get_avail_rxq_count(struct ice_pf *pf)
+ static void ice_deinit_pf(struct ice_pf *pf)
+ {
+ 	ice_service_task_stop(pf);
++	mutex_destroy(&pf->adev_mutex);
+ 	mutex_destroy(&pf->sw_mutex);
+ 	mutex_destroy(&pf->tc_mutex);
+ 	mutex_destroy(&pf->avail_q_mutex);
+@@ -3847,6 +3848,7 @@ static int ice_init_pf(struct ice_pf *pf)
+ 
+ 	mutex_init(&pf->sw_mutex);
+ 	mutex_init(&pf->tc_mutex);
++	mutex_init(&pf->adev_mutex);
+ 
+ 	INIT_HLIST_HEAD(&pf->aq_wait_list);
+ 	spin_lock_init(&pf->aq_wait_lock);
+-- 
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6708324283759061170==--
-
