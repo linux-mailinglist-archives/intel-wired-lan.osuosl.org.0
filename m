@@ -1,38 +1,38 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 023C350C25C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Apr 2022 00:52:24 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A31150C25D
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Apr 2022 00:52:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9B63D41CCE;
-	Fri, 22 Apr 2022 22:52:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 293B840B0F;
+	Fri, 22 Apr 2022 22:52:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WJQYEITCmRoB; Fri, 22 Apr 2022 22:52:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6FB3641CB4;
-	Fri, 22 Apr 2022 22:52:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 848011BF2BE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Apr 2022 22:52:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6E30540164
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Apr 2022 22:52:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CsT1p4DnLKCD for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ykVx6rIOVc-i; Fri, 22 Apr 2022 22:52:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3608D40164;
+	Fri, 22 Apr 2022 22:52:26 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9452E1C11A9
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Apr 2022 22:52:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8F57741CB4
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Apr 2022 22:52:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id evv7S1J_PWUN for <intel-wired-lan@osuosl.org>;
  Fri, 22 Apr 2022 22:52:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C923540159
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Apr 2022 22:52:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CC93841A14
+ for <intel-wired-lan@osuosl.org>; Fri, 22 Apr 2022 22:52:16 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
