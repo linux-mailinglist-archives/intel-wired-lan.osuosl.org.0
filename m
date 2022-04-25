@@ -1,99 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B25C50DB9D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Apr 2022 10:49:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E9CF50DC24
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Apr 2022 11:14:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B1D1A60B8D;
-	Mon, 25 Apr 2022 08:49:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B483D60B8B;
+	Mon, 25 Apr 2022 09:14:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UZXRRMH5b1Cn; Mon, 25 Apr 2022 08:49:01 +0000 (UTC)
+	with ESMTP id dwTVsIRtO0I8; Mon, 25 Apr 2022 09:14:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8516F60B43;
-	Mon, 25 Apr 2022 08:49:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3186660B66;
+	Mon, 25 Apr 2022 09:14:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8E9851BF3D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 08:48:56 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 64C3D1BF3D4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 09:14:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 88EED408F7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 08:48:56 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5B9E360B66
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 09:14:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bSKVdsUJuEdy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Apr 2022 08:48:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pSt0s6_4I_u7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Apr 2022 09:14:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2BC7240174
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 08:48:55 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7E4E860B4F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 09:14:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650876535; x=1682412535;
+ t=1650878048; x=1682414048;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=me5byuByPMaXDFdZkQ4h7JUT10Oh2T3w4kkmkj8xQAA=;
- b=IkF34hE9IWhLT3rnyA/pmlaXGj+/uX2MHQ0x0X0Qo6Gix/6P05lI2twb
- PxKWFN04A1S8f7dxq3u0ZEoyd2gsM0uYSlk/yOtcLu25+gZwYK7o1Vq0h
- 1v/ennqY08ubJFkOm7JipuceJ7xnmWPEl2zS4CmKiMpEotFxYxYIIe5hh
- FTJF12KvRsAkb5OYUrFSmUCRj3xgnD5K0TzvWG7dj/LqhBvtzkOXX41Ag
- MsPQzOoRpqne7G3Fwo+Mz1lQvDC2VZS0vLu5D4BwzeuXFgbf+ActZ616Y
- HQysYEQ+qZm29bAkKF21QABkMUWF6PsxJEh5ZulleeuzID2Pdaem6S52u A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10327"; a="328126221"
-X-IronPort-AV: E=Sophos;i="5.90,287,1643702400"; d="scan'208";a="328126221"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Apr 2022 01:48:54 -0700
+ bh=zQShvpvHQJS+j2ZPHtTR7L1LT+W4WZYAvCFsk6qaHCY=;
+ b=c6qufH1ETAeq2qoNtRkYPwACAvvzC0B/jUuxF3vyIJ+gf13s5TVqz7bl
+ iErtmTJgYXC6a+fzNroxiKMNOySDNzsC66OdzocfzU1n7EDD+15MbMhCP
+ QbRwOWvcGh/5AlpNUEyOt9a9Rn9IyGFc1OVaMB60XS0XoIY1RfVKPIrkG
+ e0sQqe0f9HXvqEh83+3wfRaUiCneQmbQ9q+M7b5VX83DtmqexpmsSy/xE
+ N+e/2Y9oAgqPeGC5teN38zuJWr9Sth+BdKz23dypK0rsQNxXLsIIi7oKP
+ BSg+MIDqZr6NYHoLxGuU1NNRujK2QTv6Gztl0Z38ubw5b+FLUHqBbwWgd g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10327"; a="245759493"
+X-IronPort-AV: E=Sophos;i="5.90,287,1643702400"; d="scan'208";a="245759493"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Apr 2022 02:14:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,287,1643702400"; d="scan'208";a="512551384"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by orsmga003.jf.intel.com with ESMTP; 25 Apr 2022 01:48:54 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.90,287,1643702400"; d="scan'208";a="579185009"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by orsmga008.jf.intel.com with ESMTP; 25 Apr 2022 02:14:07 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Mon, 25 Apr 2022 01:48:54 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ 15.1.2308.27; Mon, 25 Apr 2022 02:14:07 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Mon, 25 Apr 2022 01:48:54 -0700
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2308.27 via Frontend Transport; Mon, 25 Apr 2022 02:14:06 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.176)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Mon, 25 Apr 2022 01:48:54 -0700
+ 15.1.2308.27; Mon, 25 Apr 2022 02:14:06 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QA/iTaK+X2pHPU+8rLEYD73iX9JvX/blWNgwmAC9fKa/f6yVQYVukIIN/y2SNjXR61n2uFuMBS/qGzy0t+/r795MDowFfAYktxPDIK6DD4IK+J1/YCZRMWDHYPsitiMmVNrrBnL5zACKoHN3Vdry22Q1t0tXvv3D2gXj2PP3LogqmIDNtjixDdbyvBtLlSyjZIoQjKg3stSu67ajbuVBtZ43utzYof/lPuyAXRrmHcSTh38oS02sdHmngMkbQaFbU/zsbOycW3ttSoJVz7/UwmVNF7Bhgwb16yQcSp4aUmYhGx2EK3tg2icsyaVYFkjFGApI+rPAHs9X+yJUSv75YQ==
+ b=EPdeSi7PoWRMxqOce3lfJfiodHg22GrXygnQe9ndgg/3PRNOnwaJFQHHO4MhHrwQzo2a+VqN/NIJqPC7HooutnwPWk6LHBKWccOWvdfUydEter4RJhLruZbBdMwCBdfxBCJcPjz0+8DXDieLTKng4J8nWmRJJTdmWDAgW343LmT2ScRKn6V9nNeuPOdCnBdDGphj0I1yGc9x7X9EtoDiUGLnHfFg0pdYheqFGhIuNct3BykXWqio8nMqT+V2zt2sVBtTXqGupo+pFd7xAE7+I45MhhC2c5MV3ZXwe0zQPALiRBYkce7jf+jtj0/wFKahncdIJ36axnj1e32HnijnjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KAVoiTVDlZjsI7OHltyM+c9UB5RfhHu0wyTYoFMXpOI=;
- b=ZHTmQVUOvOXHCeU+1foGcYRs6134gmezwJbIrk5gnXBabWcSvYEt61HYvjkjf3LtcAeQ2zA2ECNkzdxinOnfr8n6Ubta7CLd83H5c08LZUxFO2uwReSgIofHb+KDyPvhYbIR1TjkFjEdQmwSfuj3XwRjks7eonDndJkDmqPE4NOEcHLAwWE8awEo8CxE6LMdeFmN1kL3ix/CLWQIUz7tMInQLdLPZLjC/DWPP5IZcJs6zBB4zprivfYd3R/A0//12Emw64fpybRlpiepxmTfi41aeAXuVZMNrHt9mOakja+T6wtDnRVsX+ixWzv2ey+TrfnuI37wEatRlXtzhftESA==
+ bh=LyqGDpUQgb14h0DWTggIjNBx3KTRTXXm6I3ayuWlPWc=;
+ b=f4w6nZBlBJGdZKbhE+KhVhwW8B5xOI2XDFtTnWkrxWOaEtVxNt7kzCq3pHbqmnOLuXoqXuYq1d3B+YOzhHmsHuBPuTO/nCnOMy3tXrna5SPN8bhGFD6Ugif2LFE16pFBvMssZLEUx1KFFo45beBWWAs2JlZrmUi3QM/srs82f+8jlJFMswRwCNfLEUEJxahv6HEPN47iWnQs8HWj5l29eC3Xqjxb5q8nP+d5HPJgFRUKbUagjTIGBG/RwiGl6AnzzWcdukI+n6d5vn/COknGMlZ4CnaKXlPkFXTP0Hh8w2rZCCj5BrRn4skYlKOQgGQJaNmNnGk17/HFxDMMNoHa2g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
- BN8PR11MB3761.namprd11.prod.outlook.com (2603:10b6:408:85::25) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5186.14; Mon, 25 Apr 2022 08:48:50 +0000
+ MWHPR1101MB2160.namprd11.prod.outlook.com (2603:10b6:301:5b::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5186.18; Mon, 25 Apr
+ 2022 09:14:04 +0000
 Received: from DM8PR11MB5621.namprd11.prod.outlook.com
  ([fe80::555a:eb0d:3532:d9d8]) by DM8PR11MB5621.namprd11.prod.outlook.com
  ([fe80::555a:eb0d:3532:d9d8%7]) with mapi id 15.20.5186.021; Mon, 25 Apr 2022
- 08:48:50 +0000
+ 09:14:04 +0000
 From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v2] i40e: Add VF VLAN pruning
-Thread-Index: AQHYTZ0u3Nv0tc1wt0KurWbtG+qsFK0AZzTg
-Date: Mon, 25 Apr 2022 08:48:50 +0000
-Message-ID: <DM8PR11MB56218477304F15B9693A9BACABF89@DM8PR11MB5621.namprd11.prod.outlook.com>
-References: <20220411120714.27462-1-mateusz.palczewski@intel.com>
-In-Reply-To: <20220411120714.27462-1-mateusz.palczewski@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, ivecera
+ <ivecera@redhat.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] ice: Protect vf_state check by
+ cfg_lock in ice_vc_process_vf_msg()
+Thread-Index: AQHYU/jzEZWxs25geESOHMu6ZwIIIqz6lTaAgAXMVfA=
+Date: Mon, 25 Apr 2022 09:14:04 +0000
+Message-ID: <DM8PR11MB5621D15FE88382CAA06B4C2DABF89@DM8PR11MB5621.namprd11.prod.outlook.com>
+References: <20220419142221.2349382-1-ivecera@redhat.com>
+ <CO1PR11MB5089EDB8FE93BA8B8905E889D6F49@CO1PR11MB5089.namprd11.prod.outlook.com>
+In-Reply-To: <CO1PR11MB5089EDB8FE93BA8B8905E889D6F49@CO1PR11MB5089.namprd11.prod.outlook.com>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -104,60 +104,62 @@ dlp-reaction: no-action
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7eb81228-cb78-4891-07aa-08da26986b50
-x-ms-traffictypediagnostic: BN8PR11MB3761:EE_
-x-microsoft-antispam-prvs: <BN8PR11MB3761392D27F391F9C69529FBABF89@BN8PR11MB3761.namprd11.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 16be2778-2f8d-49f8-f60a-08da269bf1c3
+x-ms-traffictypediagnostic: MWHPR1101MB2160:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-microsoft-antispam-prvs: <MWHPR1101MB2160B8796BC6B71BB160DAD1ABF89@MWHPR1101MB2160.namprd11.prod.outlook.com>
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: YZok6ipFc7KX3MJbB2sKiTcHJffrvb+onX7gn3AbgPiwvZOs1z91dYy2zXB+HP9VHi0oeX1EwvxWVVwHp0yem/nabnurHScN2mUAbsvldqh7khc5N+KviupPbCjk9cjWqIKqtiqPNIAHPU7/ZRvkDa7ZlhdLPLbs9f+CLXFn034oheohP3tYh5l3ZujcEKkm/gnlTiANaZXa7ct+aKn+jLKvPV0iRDjIeFHapOHzkTa7ZbY7cjh/kCYt6IXI3T3h54KfFFD477N4rGGTgfl0dz8mRbSShorg//6nQ+8Rg0r0GPRHpnawIYwC4PIdUc31V56zIUNiP4plH2f1RNaXOvHQTPZtzVopIIluSfBJb9IUvInBvdORbAu/czaYJKt8w5ZStjldXSfhtSD0ptV647J1x68ily6g55KUUbmXTlY84ZOFi88QNS3XQ8rv2ADme9Twm14j+SQYXOfmJaAmVoytnkI4OgWCMyKjlYrx+nnhg7pQYMrWLDdgWexaBKJ27htevui9lfprNmk7ySqQ7fqi3aB/NemSRH1hTJ2/MwPet8Qe/EEQSlYaJriUpHSt/KgTDf5Z2F4Jukgr+fVTqaIJUSmCNH5HoQqBXQU3nNnHUNjz9uwQ21Knd17Yh/Z5/vSbcEBZVp9AIqotVA9RtV9SVQ1nanNaGnbTRbBchqOTbXBtxfwg0hjUE/cOebCQ9Qyl5pAc7/fNT4BI50u7dQ==
+x-microsoft-antispam-message-info: 5Jq511+H9m5y8MZ4O3LK59pJ9WK7Rnq6BMYA5kaxoFVh2PEkf+aW4AWSKXOTpjtcojMdDHiQSv88SPb+HajcJC6xVmtQhZeB7jQndgQzruT/2u2vPusUfVgDBeJRO6YsZUlNYNhSReFskE60FfEMyaVlq+EN2QrtVJI7uTvlM28+eoHDQAoFcrbGniZTBzHvn1css5QNyUaaKvc9Bkn3IEX9r2YidOges/IodYzso8TmrI32k6MDD5McKdJJemSCSbCx3GNP8+gPcYq68ojULCbsVnuTzha6eeqr4uy2Jkt7sIsfkG3f7fYCazedpAC+O9yKzyFlAKnPwloZefE0b9gZCzJAu4guK2hwiSV47HtXSglbCGSBpQ+geUyiVbmSNO9/2PHoPeXNWwEMLRU8bS5vE2JtfY5Aolb5h/tpd8q7I5YTTyn2c7gHtWMsAer2XoVaMMsR7TvzZJTntlcjZ0xrM2/WHPp+CWdR9gDjNiGAm0ehauw2G5VF13DeNlLxgurq1Q1/sFV7uVQRmk6gYxiZXVmN+kqN+ce1k+XMLRQCU6LoGRyvu3c06f4ftGXOT1aYZNyGn/LZee+3vNXMjt+IIUeYEro+o71hYApeuSY+5fReqx3T41viFlfAiYvHN+ujLx8V3Sf3IvAiJ9dSdVslQDOBw7sIh6PXQ1XxlzKf8RGCHuJNYXsAAJFLazDHHlm9a7HOU5ndhTXxaW7xjw==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(366004)(71200400001)(7696005)(6506007)(38070700005)(82960400001)(38100700002)(26005)(86362001)(64756008)(110136005)(54906003)(316002)(8676002)(76116006)(66946007)(66476007)(66446008)(66556008)(4326008)(2906002)(508600001)(9686003)(53546011)(8936002)(52536014)(5660300002)(186003)(55016003)(83380400001)(107886003)(33656002)(122000001);
+ SFS:(13230001)(366004)(122000001)(66556008)(66946007)(66476007)(82960400001)(76116006)(38070700005)(38100700002)(9686003)(64756008)(54906003)(2906002)(33656002)(53546011)(7696005)(4326008)(8676002)(6506007)(86362001)(66446008)(26005)(110136005)(71200400001)(508600001)(186003)(8936002)(55016003)(5660300002)(83380400001)(316002)(52536014);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?9ZxnAe1XBUsVQOrMUUIX88rJDSee3lzzetXFMSPpvllnb8Qc20Eu6Ix6OFdr?=
- =?us-ascii?Q?AaeucfM+0IcTv238iu68YwpB784PVHXxNxMsDWceniXq/IwpFEmbzWwVzxsz?=
- =?us-ascii?Q?Y/AQPuXpaKg4hnUScTQawaL6lCxCmhpH981U+D/F4+erpkJ7BqHzEXzBUB5R?=
- =?us-ascii?Q?g0lw6ih4O40Hr5AW0s0dHYDqvoP7PejslDN4KWwJvVEjhrOhSnXgVw3i5+kn?=
- =?us-ascii?Q?eB2POJKpqSb83SdCx84I3Q4ONXEJpkmZCjLcg5HnJpQLIxvS6kDj5YsfuEmN?=
- =?us-ascii?Q?7SxMH415XSUF7yOHrUSEq5jm4LjRFgyPsmxSIQkPj1Iep+tpJtD8T7fHVwFB?=
- =?us-ascii?Q?8Jtss5HzQmHkIHMhF26WdhxZDi/mEc49QAv3uVNdohBNrNyjtPTN/Ts4xHBo?=
- =?us-ascii?Q?vr7WbC2dA9OyGwME141aKIXEWJACj63ylcFC58okypm8YT1AlJoWg91k+W2i?=
- =?us-ascii?Q?xKG9ZBxVeftMsbjg+Jks0JYxVC6QBGXYFNhnU2wss2dOt8dPv76NV+TeeNSw?=
- =?us-ascii?Q?xIiXifdVjagqTTq7nNJ04ZwCPjBF2To9u/83xiYdHIPin3P+KR6BSVgg76Go?=
- =?us-ascii?Q?pSdbeWPpsKd9FqJB9J5mD3/eHTnRQCtCLL5YqprNWllVZgF/uhwa3AlM2vAB?=
- =?us-ascii?Q?JHK+RySLElXRsDKxz56Vea4E7KZcnj6+uzkby2/Ecj2414oqsqYJzIFWQxMo?=
- =?us-ascii?Q?2IydPdDznYzuyKIvP5ZthDfCskEbtbYFw6fLXst8sCmCo9GNt/0j/NKvQwyU?=
- =?us-ascii?Q?f9zOkhum2eb9ecNycQy9Wm0PobE7D4Zvtd0qvj/mAAtQvk9vPAmOmeXZzJji?=
- =?us-ascii?Q?WmUAQ5l16LRgjO6zWhahxz9B872YJuQkLWyHsJd/5mInJNqMkk8sek/LrIgE?=
- =?us-ascii?Q?PBafZRG+J8kKztQy9qYa7gZCJ/nP5qwllic+c+BcV6ssg2Sw/Xwcdqpdm0T0?=
- =?us-ascii?Q?R7+5omMwHlj/yCi3tsDM8Q0GwBP50BexF/2qhXaBwNsgmcT8YhNhl6pPo4k1?=
- =?us-ascii?Q?BIOegp7V3RCY9m63EXBBTrVATbifGXCQHpacMyaz5WzUo63EhDpIBDsQc202?=
- =?us-ascii?Q?IYiPGWLXhHZJNgfwm65tpJFnRbW4BJI/7URErz1oYDUfV7D0fyZLrkrF28cG?=
- =?us-ascii?Q?6UhrS8pJOR3c20cs9IoVn6LGI33QNTSsePIhaqsaMjlRdRwttXA09ZaiZ8O1?=
- =?us-ascii?Q?u4rlPHR5m6izQYLPDkC2N8+sWOI/0UwhRgAeuyTWFEjVro+xS29u29+N76xN?=
- =?us-ascii?Q?B0FyKhUZQVZQ2IE7fuRFGCgmP2aw489307fK4p6MDVdYOpQ73kZKI2gS0jlv?=
- =?us-ascii?Q?SgwieZCxI2COrC4YkMfSRWAWibZNFHvCX2JbOGEaSRh1kZ2EM16VgYXSA8Tv?=
- =?us-ascii?Q?vuVV2q+TGbG0pbo9kCdr3QVISCG+iQE+lU7g0BCuy8C9Glw/ncZ8ab8IqB8B?=
- =?us-ascii?Q?9AlSuoCkxcapqCpgOCFvY/4noc9kqsjWHaOFxTQvZndcKzO3s1FkjNOUQ0dH?=
- =?us-ascii?Q?kvCipUAiX2CQivsNGNYtwQlA+qDEEUH2Eugqa8MMnWMCjDO+UlL/Q/AWMzXL?=
- =?us-ascii?Q?xPT0RPPjA/ztwO3cmKyaUYLhvFa/SHRWHNyCfizefNO0tJZ+5O+RsV0wCvdC?=
- =?us-ascii?Q?2biGY6hZawx8W1NPAUEiigHp/DGmUxEE1om47tIMhDeWHB6HjQInzuYtI5mB?=
- =?us-ascii?Q?FG71cRmn7JcpuPfSlxJf1R+WY/aopQzEt1eR8oIWYoyC1tcscTTfVhP4OaI3?=
- =?us-ascii?Q?X1CAEKvnfz7FJM6fMVat5ylyqaYaGzU=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?jqRwiwP8icCSf0tnsvV9aGm9Sw4ql88gL0xOyEY1NuI2iAIFZprLPAWO5/EX?=
+ =?us-ascii?Q?EwWy0KAOZF+2qhnCDZ7Nr3lEFHDUfWongjZXybunkd9eefO9nw8jUakIZ2z2?=
+ =?us-ascii?Q?FM9z9pA7ax0lHPE05ezrLZnRes0s9UagvotmdCSw9Uk+2QiasDz9TOg4d77M?=
+ =?us-ascii?Q?4eO68FWe9/NbmhGdGe+KzlU+X2AgGaCu6rslMfFFJwn/1gGh8uQH7vi4LBqD?=
+ =?us-ascii?Q?RTUcCjgdOpr4yQEc12ZoCogbl5ijm09S4LNmPXRk4VhGJfBn0RsTcZSao60W?=
+ =?us-ascii?Q?DlEcojwox887nvPlsMZ9I6ftzfKPFaW3X3Zge11u1yflA0WGmdbYb83EAq/k?=
+ =?us-ascii?Q?scMq/7PxYBNM82r/M7kj1iAr+5EvTHJsn/NiI0+cjuWYbJKS41TdlubkKOx3?=
+ =?us-ascii?Q?MWVPSOnh3sKNmyyJEBbPmFyjoY84Vxmv2FRwOwB7wjOieWJMYuup2zus1Blj?=
+ =?us-ascii?Q?vF9su0cbOnvRvQp/TEqJGnj5z7HNf58t1PGK8mT+HMliXnFEeHqcI5gPk5M/?=
+ =?us-ascii?Q?46PCCgK6RTP6FvVHW6ZNzKLvb7h3etw4ij2aVd6Eluju0ybaVEWYbqmozITz?=
+ =?us-ascii?Q?tOTM1I8OPKUeCjaYrcQGWZ4ncsOaraCeSExlqIkTFITdt+NJf9jwEc60DQPX?=
+ =?us-ascii?Q?TKP/R5bhCj8suk4hZWhvFeiFBns/NiALkjl+6wM4RooQKmRkIGOcFvFAnwlU?=
+ =?us-ascii?Q?G2ZPrtKO673qNGqIbCi11cKoDoJBbIsypoLm6VYPQhN8sL08zbOTzae5U369?=
+ =?us-ascii?Q?9mF2BajZzPj4kR1PPAF6mn1/jyh6h4hdNm++TMTszEq9lMYvMuyS/zjtSIHU?=
+ =?us-ascii?Q?+zhwU8bTmoIyQm7h23QD8JRsD0b9/HkmDNCLzaypc4F5/nJV4nn+8oOYHZe7?=
+ =?us-ascii?Q?OF8W2lCeVagye3QIeWEztKI9s4igWARk3UHYY1YhXriG+QqVfCtDC81X1yGo?=
+ =?us-ascii?Q?aaD0qanyAemTSvW7VxPhdNqg4CuPkzAhPig3kC2hGSNPfvYxjI2k+5XrPIYc?=
+ =?us-ascii?Q?F7N1AX97rwjwHMDMnUwYpATfcxoQRQZl5jsxZkjTitj6X3BCEWq2iFW1DzEm?=
+ =?us-ascii?Q?cWVg1AKUDa3XCqrD+ZUaqHPItpWT9A/DERFTFdHkCDUGNUv36M5dIWdU+hiL?=
+ =?us-ascii?Q?i6sp8xYBGyIJdNqvS6gNMeswsEjqkMwJqDdR09s51SuNq7w4DJGtaNj/ZXEu?=
+ =?us-ascii?Q?bCjQcRSYA1HadPfBSGcbwi2VBzp2kPzC3F2UovvN9Hs83c2xfn4vnCJ5KJDQ?=
+ =?us-ascii?Q?PrglIFb6KG56q2KDy5iEphAk5QuDZykjsfhhvma9m/e/d9vQpK55FEkJbtgt?=
+ =?us-ascii?Q?MmFVGc0tU12lFpbSA6zRDdxWNi4rIg6CyWXNfkdU6yZElu5Z6/I7VU8toCKx?=
+ =?us-ascii?Q?rmTgZCpJCD9UWGDtOdEe4itl3js1OL0PyIRUC4Acww+Tx8dUmJwOkJ0ArhwV?=
+ =?us-ascii?Q?txUFleQlskaKaf0Ak0yb3wA8nKaT7gmxfSjsMDSszWxcKsF9IqAPUMtz43G1?=
+ =?us-ascii?Q?q7JenUPD5Cqk8o9OJtmUPF14ZwAzE/Uk81IokMZ2sbyql3LHYUkXA/xkpDCk?=
+ =?us-ascii?Q?efpg1hyJb617OZY0yhbleP+tAk+5qLOSK0yUqJvJsa8xyaGClId9vtr46nJ2?=
+ =?us-ascii?Q?g0QaJywOrV/k8zUL7nk8qrAsgssKbP6GNTTYkGvfRHVgbnLfk2lOA6UUqtUD?=
+ =?us-ascii?Q?4nYzJ1ocT0jkg5ZMZCcSfTpXmRiHI4fJF107zm8r4Xe9kqmAW8M2JPVajwQD?=
+ =?us-ascii?Q?LnrIzzXHNCCNF4/9Wrk8BQyvkIvdbrs=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7eb81228-cb78-4891-07aa-08da26986b50
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Apr 2022 08:48:50.3481 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 16be2778-2f8d-49f8-f60a-08da269bf1c3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Apr 2022 09:14:04.3815 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Kc2DIUkqNVnj4vCX4EcKAoRdX5xDmCdrbOIp1yAGkcoILCK5dmR4dX1EO+H/uQK4xQ8NQvdnAIGcoTz48F2CUgrxo1rpMPWvDmikZrn1K44=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR11MB3761
+X-MS-Exchange-CrossTenant-userprincipalname: 5ubBGAGGE0jfj8GRe18d/K/Nqgw/G4bJO2uKZojunwCzbHoqf1kqxbFonf1c735QiSG0UlG8DDIYtsYtLRzdht7ok+UaVrftYSJBofrTa5I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1101MB2160
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] i40e: Add VF VLAN pruning
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Protect vf_state check by
+ cfg_lock in ice_vc_process_vf_msg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -170,9 +172,12 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>, "Patynowski,
- PrzemyslawX" <przemyslawx.patynowski@intel.com>,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Cc: Fei Liu <feliu@redhat.com>, mschmidt <mschmidt@redhat.com>,
+ Brett Creeley <brett.creeley@intel.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S.
+ Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -182,105 +187,90 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Mateusz Palczewski
-> Sent: Monday, April 11, 2022 2:07 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Palczewski, Mateusz <mateusz.palczewski@intel.com>; Patynowski,
-> PrzemyslawX <przemyslawx.patynowski@intel.com>; Sylwester Dziedziuch
-> <sylwesterx.dziedziuch@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next v2] i40e: Add VF VLAN pruning
+> Keller, Jacob E
+> Sent: Thursday, April 21, 2022 6:41 PM
+> To: ivecera <ivecera@redhat.com>; netdev@vger.kernel.org
+> Cc: Fei Liu <feliu@redhat.com>; mschmidt <mschmidt@redhat.com>; Brett
+> Creeley <brett.creeley@intel.com>; open list <linux-
+> kernel@vger.kernel.org>; moderated list:INTEL ETHERNET DRIVERS <intel-
+> wired-lan@lists.osuosl.org>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
+> <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>
+> Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Protect vf_state check by
+> cfg_lock in ice_vc_process_vf_msg()
 > 
-> VFs by default are able to see all tagged traffic regardless of trust and VLAN
-> filters configured.
 > 
-> Add new private flag vf-vlan-pruning that allows changing of default VF
-> behavior for tagged traffic. When the flag is turned on untrusted VF will only
-> be able to receive untagged traffic or traffic with VLAN tags it has created
-> interfaces for
 > 
-> The flag is off by default and can only be changed if there are no VFs
-> spawned on the PF. This flag will only be effective when no PVID is set on VF
-> and VF is not trusted.
-> Add new function that computes the correct VLAN ID for VF VLAN filters
-> based on trust, PVID, vf-vlan-prune-disable flag and current VLAN ID.
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Ivan Vecera
+> > Sent: Tuesday, April 19, 2022 7:22 AM
+> > To: netdev@vger.kernel.org
+> > Cc: Fei Liu <feliu@redhat.com>; moderated list:INTEL ETHERNET DRIVERS
+> > <intel- wired-lan@lists.osuosl.org>; mschmidt <mschmidt@redhat.com>;
+> > Brett Creeley <brett.creeley@intel.com>; open list
+> > <linux-kernel@vger.kernel.org>; Jakub Kicinski <kuba@kernel.org>;
+> > Paolo Abeni <pabeni@redhat.com>; David S. Miller
+> <davem@davemloft.net>
+> > Subject: [Intel-wired-lan] [PATCH net v2] ice: Protect vf_state check
+> > by cfg_lock in
+> > ice_vc_process_vf_msg()
+> >
+> > Previous patch labelled "ice: Fix incorrect locking in
+> > ice_vc_process_vf_msg()"  fixed an issue with ignored messages sent by
+> > VF driver but a small race window still left.
+> >
+> > Recently caught trace during 'ip link set ... vf 0 vlan ...' operation:
+> >
+> > [ 7332.995625] ice 0000:3b:00.0: Clearing port VLAN on VF 0 [
+> > 7333.001023] iavf 0000:3b:01.0: Reset indication received from the PF
+> > [ 7333.007391] iavf 0000:3b:01.0: Scheduling reset task [ 7333.059575]
+> > iavf 0000:3b:01.0: PF returned error -5 (IAVF_ERR_PARAM) to our
+> > request 3 [ 7333.059626] ice 0000:3b:00.0: Invalid message from VF 0,
+> > opcode 3, len 4, error -1
+> >
+> > Setting of VLAN for VF causes a reset of the affected VF using
+> > ice_reset_vf() function that runs with cfg_lock taken:
+> >
+> > 1. ice_notify_vf_reset() informs IAVF driver that reset is needed and
+> >    IAVF schedules its own reset procedure 2. Bit ICE_VF_STATE_DIS is
+> > set in vf->vf_state 3. Misc initialization steps 4.
+> > ice_sriov_post_vsi_rebuild() -> ice_vf_set_initialized() and that
+> >    clears ICE_VF_STATE_DIS in vf->vf_state
+> >
+> > Step 3 is mentioned race window because IAVF reset procedure runs in
+> > parallel and one of its step is sending of
+> > VIRTCHNL_OP_GET_VF_RESOURCES message (opcode==3). This message
+> is
+> > handled in ice_vc_process_vf_msg() and if it is received during the
+> > mentioned race window then it's marked as invalid and error is returned to
+> VF driver.
+> >
+> > Protect vf_state check in ice_vc_process_vf_msg() by cfg_lock to avoid
+> > this race condition.
+> >
+> > Fixes: e6ba5273d4ed ("ice: Fix race conditions between virtchnl
+> > handling and VF ndo ops")
+> > Tested-by: Fei Liu <feliu@redhat.com>
+> > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 > 
-> Testing Hints:
+> Thanks, this looks good to me.
 > 
-> Test 1: vf-vlan-pruning == off
-> ==============================
-> 1. Set the private flag
-> > ethtool --set-priv-flag eth0 vf-vlan-pruning off (default setting)
-> 2. Use scapy to send any VLAN tagged traffic and make sure the VF receives
-> all VLAN tagged traffic that matches its destination MAC filters (unicast,
-> multicast, and broadcast).
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Test 2: vf-vlan-pruning == on
-> ==============================
-> 1. Set the private flag
-> > ethtool --set-priv-flag eth0 vf-vlan-pruning on
-> 2. Use scapy to send any VLAN tagged traffic and make sure the VF does not
-> receive any VLAN tagged traffic that matches its destination MAC filters
-> (unicast, multicast, and broadcast).
-> 3. Add a VLAN filter on the VF netdev
-> > ip link add link eth0v0 name vlan10 type vlan id 10
-> 4. Bring the VLAN netdev up
-> > ip link set vlan10 up
-> 4. Use scapy to send traffic with VLAN 10, VLAN 11 (anything not VLAN 10),
-> and untagged traffic. Make sure the VF only receives VLAN 10 and untagged
-> traffic when the link partner is sending.
-> 
-> Test 3: vf-vlan-pruning == off && VF is in a port VLAN
-> ============================== 1. Set the private flag
-> > ethtool --set-priv-flag eth0 vf-vlan-pruning off (default setting)
-> 2. Create a VF
-> > echo 1 > sriov_numvfs
-> 3. Put the VF in a port VLAN
-> > ip link set eth0 vf 0 vlan 10
-> 4. Use scapy to send traffic with VLAN 10 and VLAN 11 (anything not VLAN
-> 10) and make sure the VF only receives untagged traffic when the link
-> partner is sending VLAN 10 tagged traffic as the VLAN tag is expected to be
-> stripped by HW for port VLANs and not visible to the VF.
-> 
-> Test 4: Change vf-vlan-pruning while VFs are created
-> ============================== echo 0 > sriov_numvfs ethtool --set-
-> priv-flag eth0 vf-vlan-pruning off echo 1 > sriov_numvfs ethtool --set-priv-
-> flag eth0 vf-vlan-pruning on (expect failure)
-> 
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Przemyslaw Patynowski
-> <przemyslawx.patynowski@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->  v2: Fix checpatch issues
-> ---
->  drivers/net/ethernet/intel/i40e/i40e.h        |   1 +
->  .../net/ethernet/intel/i40e/i40e_ethtool.c    |   9 ++
->  drivers/net/ethernet/intel/i40e/i40e_main.c   | 135 +++++++++++++++++-
->  .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |   8 +-
->  4 files changed, 147 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h
-> b/drivers/net/ethernet/intel/i40e/i40e.h
-> index 18558a0..57f4ec4 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
-> @@ -565,6 +565,7 @@ struct i40e_pf {
->  #define I40E_FLAG_DISABLE_FW_LLDP		BIT(24)
->  #define I40E_FLAG_RS_FEC			BIT(25)
->  #define I40E_FLAG_BASE_R_FEC			BIT(26)
-> +#define I40E_FLAG_VF_VLAN_PRUNING		BIT(27)
->  /* TOTAL_PORT_SHUTDOWN
->   * Allows to physically disable the link on the NIC's port.
->   * If enabled, (after link down request from the OS) diff --git
-> a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> index 610f00c..c65e9e2 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-> @@ -457,6 +457,8 @@ static const struct i40e_priv_flags
-> i40e_gstrings_priv_flags[] = {
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_virtchnl.c | 12 +++++-------
+> >  1 file changed, 5 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > index 5612c032f15a..b72606c9e6d0 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > @@ -3625,6 +3625,8 @@ void ice_vc_process_vf_msg(struct ice_pf *pf,
+> > struct ice_rq_event_info *event)
 
 Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
