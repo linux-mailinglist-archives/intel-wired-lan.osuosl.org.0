@@ -1,86 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3397150D537
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 24 Apr 2022 23:09:19 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2325350D93C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Apr 2022 08:11:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9DF00401B2;
-	Sun, 24 Apr 2022 21:09:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6FEE2408FE;
+	Mon, 25 Apr 2022 06:11:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eMSIaZyewJ5o; Sun, 24 Apr 2022 21:09:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aUooFt-ainqV; Mon, 25 Apr 2022 06:11:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3DDF34019E;
-	Sun, 24 Apr 2022 21:09:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF8B7408C2;
+	Mon, 25 Apr 2022 06:11:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A38141BF470
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Apr 2022 21:09:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BB6A41BF3BA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 06:11:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9DC4E4019E
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Apr 2022 21:09:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9D5576009C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 06:11:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IHBmlGRLVxTq for <intel-wired-lan@lists.osuosl.org>;
- Sun, 24 Apr 2022 21:09:10 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com
- [IPv6:2a00:1450:4864:20::330])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 80D7F4002B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Apr 2022 21:09:10 +0000 (UTC)
-Received: by mail-wm1-x330.google.com with SMTP id
- v64-20020a1cac43000000b0038cfd1b3a6dso11334261wme.5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Apr 2022 14:09:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=pgpyFJIdj4QGuzhLLktvcNa9y17JJ3EEcug8k8x1+Sc=;
- b=Vtu8Pl1kYiohom8LvtHAZoKSRmXHm3xQC/nr7arLIFh4LgeR1cyc33Kj21s27ti4cB
- QoXl8p20uyJUPyzC7bRro2hgVPqS1XXjm7c1+DjfBUrPwjEejGazD6Y/6M7zksTCT6Qj
- A3CwcYbFgII+mYeXy1WEQ5JZRcR6Z6KJYmibgNHowtaoxBcS/sfC/kBab8E0chSRCokR
- m7kgZtTAPxvPaTwlgrIPjgFoon0g4LQV2ULeRTur0WE/P/JXkDpB3qPWbfrXVcmErj3h
- 0B2U/4C7uRWTxmCHWJrc43MakhWOb6a242RhAysuniLEriERWajQ9REwsiVmmXXRp6Xu
- g4vQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=pgpyFJIdj4QGuzhLLktvcNa9y17JJ3EEcug8k8x1+Sc=;
- b=TSVTy9DG4zgCUDYUU/gfHIBSUMh6k5kybk+y1w3LQ8Q8uHdZV0PCF/oNqGuf/+B0CO
- gr6gkJRIlzLTrsUDwtxAZ7csYJ4xvXeTir1mmJ9jWbObKilWvQ13RzgURZpqvw40OSN+
- jxPl4lPYzW1mVQ7Mq3bTNVy+8u7/cTttLjYNhUDmdU5wTr0qxIWSD3C0ak5tvpRWe8qz
- MBEKQwp8gl9y8eiBMvbSo8fUBack+ljFNFfWSwd8JjITe2HYrPr5snTHNTxHwd2nvF3Q
- RG5EJk1gaiYH5RnreH6U673Bm19P2QeJhaTWvPKILVN4meHhcD/p3frgyERObyO7E/cQ
- f7DQ==
-X-Gm-Message-State: AOAM531a7PJz8DxyzGJTl6reIbGy/Eo/IEEwN6aTViT3v7xcJWiTRtt5
- NSrNq2uko6z1vyGM5q3FjnU=
-X-Google-Smtp-Source: ABdhPJyGmAdqYpkt6+g+MgY9rC79KHhx6qfU4//OL0Ib3dN3KtQq9euKiQdHG82f7ii7MpRKF8ktug==
-X-Received: by 2002:a05:600c:5c8:b0:393:eba0:8ac7 with SMTP id
- p8-20020a05600c05c800b00393eba08ac7mr2311553wmd.108.1650834548289; 
- Sun, 24 Apr 2022 14:09:08 -0700 (PDT)
-Received: from [192.168.1.5] ([197.57.78.84]) by smtp.gmail.com with ESMTPSA id
- o38-20020a05600c512600b00393ead99c5bsm1915828wms.26.2022.04.24.14.09.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 24 Apr 2022 14:09:07 -0700 (PDT)
-Message-ID: <3bcb2d3d-8b8b-8a8f-1285-7277394b4e6b@gmail.com>
-Date: Sun, 24 Apr 2022 23:09:05 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Content-Language: en-US
-To: Nikolay Aleksandrov <razor@blackwall.org>, netdev@vger.kernel.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=inria.fr
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nmYwCPwl_59K for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Apr 2022 06:11:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 051D360B1F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Apr 2022 06:11:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
+ h=date:from:to:cc:subject:in-reply-to:message-id:
+ references:mime-version;
+ bh=ZA5E+4I7a3EZc7EJ3G+9W5c7mVAeSDt2GcOP+gGk7Kw=;
+ b=txkM4NEjMqa1s9VaE7dJDTAR/3Pyriw+r6LfY9m54jks7YkcW6UOaX50
+ Hn1AqcX8PRe93D+3cxYE+pouJPjAvqngZeuSjmPCYQsk3oMJPcpUboxa5
+ mAWGGQSapMrl7qLhC37j6Au+i3h/7JH3FBcX5xo+u/IyMcov0dAsdj9Hq E=;
+Authentication-Results: mail2-relais-roc.national.inria.fr;
+ dkim=none (message not signed) header.i=none;
+ spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.90,287,1643670000"; d="scan'208";a="33083160"
+Received: from ip-214.net-89-2-7.rev.numericable.fr (HELO hadrien)
+ ([89.2.7.214]) by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2022 08:11:22 +0200
+Date: Mon, 25 Apr 2022 08:11:22 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+In-Reply-To: <3bcb2d3d-8b8b-8a8f-1285-7277394b4e6b@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2204250808280.2759@hadrien>
 References: <cover.1650800975.git.eng.alaamohamedsoliman.am@gmail.com>
  <c3a882e4fb6f9228f704ebe3c1fcace14ee6cdf2.1650800975.git.eng.alaamohamedsoliman.am@gmail.com>
  <7c8367b6-95c7-ea39-fafe-72495f343625@blackwall.org>
  <d89eefc2-664f-8537-d10e-6fdfbb6823ed@gmail.com>
  <4bf69eef-7444-1238-0f4a-fb0fccda080c@blackwall.org>
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-In-Reply-To: <4bf69eef-7444-1238-0f4a-fb0fccda080c@blackwall.org>
+ <3bcb2d3d-8b8b-8a8f-1285-7277394b4e6b@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-1725770404-1650867082=:2759"
 Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/2] rtnetlink: add extack
  support in fdb del handlers
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -97,193 +80,258 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: shshaikh@marvell.com, jdenham@redhat.com, GR-Linux-NIC-Dev@marvell.com,
  manishc@marvell.com, alexandre.belloni@bootlin.com, outreachy@lists.linux.dev,
- vladimir.oltean@nxp.com, bridge@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, sbrivio@redhat.com, claudiu.manoil@nxp.com,
+ netdev@vger.kernel.org, Nikolay Aleksandrov <razor@blackwall.org>,
+ bridge@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+ vladimir.oltean@nxp.com, sbrivio@redhat.com, claudiu.manoil@nxp.com,
  roopa@nvidia.com, kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net,
  UNGLinuxDriver@microchip.com, intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ck9uINmi2aTigI8v2aTigI8v2aLZoNmi2aIg2aLZoTrZpdmlLCBOaWtvbGF5IEFsZWtzYW5kcm92
-IHdyb3RlOgo+IE9uIDI0LzA0LzIwMjIgMjI6NDksIEFsYWEgTW9oYW1lZCB3cm90ZToKPj4gT24g
-2aLZpOKAjy/ZpOKAjy/Zotmg2aLZoiDZotmhOtmg2aIsIE5pa29sYXkgQWxla3NhbmRyb3Ygd3Jv
-dGU6Cj4+PiBPbiAyNC8wNC8yMDIyIDE1OjA5LCBBbGFhIE1vaGFtZWQgd3JvdGU6Cj4+Pj4gQWRk
-IGV4dGFjayBzdXBwb3J0IHRvIC5uZG9fZmRiX2RlbCBpbiBuZXRkZXZpY2UuaCBhbmQKPj4+PiBh
-bGwgcmVsYXRlZCBtZXRob2RzLgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQWxhYSBNb2hhbWVk
-IDxlbmcuYWxhYW1vaGFtZWRzb2xpbWFuLmFtQGdtYWlsLmNvbT4KPj4+PiAtLS0KPj4+PiBjaGFu
-Z2VzIGluIFYzOgo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgIGZpeCBlcnJvcnMgcmVwb3J0ZWQgYnkg
-Y2hlY2twYXRjaC5wbAo+Pj4+IC0tLQo+Pj4+ICDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvaWNlX21haW4uY8KgwqDCoMKgwqDCoMKgIHwgNCArKy0tCj4+Pj4gIMKgIGRyaXZlcnMv
-bmV0L2V0aGVybmV0L21zY2Mvb2NlbG90X25ldC5jwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA0ICsr
-LS0KPj4+PiAgwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvcWxvZ2ljL3FsY25pYy9xbGNuaWNfbWFp
-bi5jIHwgMiArLQo+Pj4+ICDCoCBkcml2ZXJzL25ldC9tYWN2bGFuLmPCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyICstCj4+Pj4gIMKgIGRy
-aXZlcnMvbmV0L3Z4bGFuL3Z4bGFuX2NvcmUuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8IDIgKy0KPj4+PiAgwqAgaW5jbHVkZS9saW51eC9uZXRkZXZpY2UuaMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyICstCj4+Pj4gIMKgIG5l
-dC9icmlkZ2UvYnJfZmRiLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHwgMiArLQo+Pj4+ICDCoCBuZXQvYnJpZGdlL2JyX3ByaXZhdGUu
-aMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMiAr
-LQo+Pj4+ICDCoCBuZXQvY29yZS9ydG5ldGxpbmsuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArKy0tCj4+Pj4gIMKgIDkgZmlsZXMg
-Y2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pCj4+Pj4KPj4+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9tYWluLmMgYi9kcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYwo+Pj4+IGluZGV4IGQ3Njg5MjU3
-ODVjYS4uN2I1NWQ4ZDk0ODAzIDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbWFpbi5jCj4+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaWNlL2ljZV9tYWluLmMKPj4+PiBAQCAtNTY3OCwxMCArNTY3OCwxMCBAQCBpY2VfZmRiX2Fk
-ZChzdHJ1Y3QgbmRtc2cgKm5kbSwgc3RydWN0IG5sYXR0ciBfX2Fsd2F5c191bnVzZWQgKnRiW10s
-Cj4+Pj4gIMKgIHN0YXRpYyBpbnQKPj4+PiAgwqAgaWNlX2ZkYl9kZWwoc3RydWN0IG5kbXNnICpu
-ZG0sIF9fYWx3YXlzX3VudXNlZCBzdHJ1Y3QgbmxhdHRyICp0YltdLAo+Pj4+ICDCoMKgwqDCoMKg
-wqDCoMKgwqAgc3RydWN0IG5ldF9kZXZpY2UgKmRldiwgY29uc3QgdW5zaWduZWQgY2hhciAqYWRk
-ciwKPj4+PiAtwqDCoMKgwqDCoMKgwqAgX19hbHdheXNfdW51c2VkIHUxNiB2aWQpCj4+Pj4gK8Kg
-wqDCoMKgwqDCoMKgIF9fYWx3YXlzX3VudXNlZCB1MTYgdmlkLCBzdHJ1Y3QgbmV0bGlua19leHRf
-YWNrICpleHRhY2spCj4+Pj4gIMKgIHsKPj4+PiAgwqDCoMKgwqDCoCBpbnQgZXJyOwo+Pj4+IC0K
-Pj4+PiArCj4+PiBXaGF0J3MgY2hhbmdlZCBoZXJlPwo+PiBJbiB0aGUgcHJldmlvdXMgdmVyc2lv
-biwgSSByZW1vdmVkIHRoZSBibGFuayBsaW5lIGFmdGVyICJpbnQgZXJyOyIgYW5kIHlvdSBzYWlk
-IEkgc2hvdWxkbid0IHNvIEkgYWRkZWQgYmxhbmsgbGluZS4KPj4KPiBZZWFoLCBteSBxdWVzdGlv
-biBpcyBhcmUgeW91IGZpeGluZyBhIGRvcyBlbmRpbmcgb3Igc29tZXRoaW5nIGVsc2U/Cj4gVGhl
-IGJsYW5rIGxpbmUgaXMgYWxyZWFkeSB0aGVyZSwgd2hhdCdzIHdyb25nIHdpdGggaXQ/Ck5vLCBJ
-IGRpZG4ndC4KPgo+IFRoZSBwb2ludCBpcyBpdCdzIG5vdCBuaWNlIHRvIG1peCBzdHlsZSBmaXhl
-cyBhbmQgb3RoZXIgY2hhbmdlcywgbW9yZSBzbwo+IGlmIG5vdGhpbmcgaXMgbWVudGlvbmVkIGlu
-IHRoZSBjb21taXQgbWVzc2FnZS4KR290IGl0LCBTbywgd2hhdCBzaG91bGQgSSBkbyB0byBmaXgg
-aXQ/Cj4+Pj4gIMKgwqDCoMKgwqAgaWYgKG5kbS0+bmRtX3N0YXRlICYgTlVEX1BFUk1BTkVOVCkg
-ewo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqAgbmV0ZGV2X2VycihkZXYsICJGREIgb25seSBzdXBw
-b3J0cyBzdGF0aWMgYWRkcmVzc2VzXG4iKTsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVy
-biAtRUlOVkFMOwo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9tc2NjL29j
-ZWxvdF9uZXQuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L21zY2Mvb2NlbG90X25ldC5jCj4+Pj4g
-aW5kZXggMjQ3YmMxMDViZGQyLi5lMDdjNjRlMzE1OWMgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvbXNjYy9vY2Vsb3RfbmV0LmMKPj4+PiArKysgYi9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9tc2NjL29jZWxvdF9uZXQuYwo+Pj4+IEBAIC03NzQsMTQgKzc3NCwxNCBAQCBzdGF0
-aWMgaW50IG9jZWxvdF9wb3J0X2ZkYl9hZGQoc3RydWN0IG5kbXNnICpuZG0sIHN0cnVjdCBubGF0
-dHIgKnRiW10sCj4+Pj4KPj4+PiAgwqAgc3RhdGljIGludCBvY2Vsb3RfcG9ydF9mZGJfZGVsKHN0
-cnVjdCBuZG1zZyAqbmRtLCBzdHJ1Y3QgbmxhdHRyICp0YltdLAo+Pj4+ICDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBuZXRfZGV2aWNlICpkZXYsCj4+Pj4g
-LcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb25zdCB1bnNpZ25lZCBjaGFy
-ICphZGRyLCB1MTYgdmlkKQo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgY29uc3QgdW5zaWduZWQgY2hhciAqYWRkciwgdTE2IHZpZCwgc3RydWN0IG5ldGxpbmtfZXh0
-X2FjayAqZXh0YWNrKQo+Pj4+ICDCoCB7Cj4+Pj4gIMKgwqDCoMKgwqAgc3RydWN0IG9jZWxvdF9w
-b3J0X3ByaXZhdGUgKnByaXYgPSBuZXRkZXZfcHJpdihkZXYpOwo+Pj4+ICDCoMKgwqDCoMKgIHN0
-cnVjdCBvY2Vsb3RfcG9ydCAqb2NlbG90X3BvcnQgPSAmcHJpdi0+cG9ydDsKPj4+PiAgwqDCoMKg
-wqDCoCBzdHJ1Y3Qgb2NlbG90ICpvY2Vsb3QgPSBvY2Vsb3RfcG9ydC0+b2NlbG90Owo+Pj4+ICDC
-oMKgwqDCoMKgIGludCBwb3J0ID0gcHJpdi0+Y2hpcF9wb3J0Owo+Pj4+Cj4+Pj4gLcKgwqDCoCBy
-ZXR1cm4gb2NlbG90X2ZkYl9kZWwob2NlbG90LCBwb3J0LCBhZGRyLCB2aWQsIG9jZWxvdF9wb3J0
-LT5icmlkZ2UpOwo+Pj4+ICvCoMKgwqAgcmV0dXJuIG9jZWxvdF9mZGJfZGVsKG9jZWxvdCwgcG9y
-dCwgYWRkciwgdmlkLCBvY2Vsb3RfcG9ydC0+YnJpZGdlLCBleHRhY2spOwo+Pj4+ICDCoCB9Cj4+
-Pj4KPj4+PiAgwqAgc3RhdGljIGludCBvY2Vsb3RfcG9ydF9mZGJfZHVtcChzdHJ1Y3Qgc2tfYnVm
-ZiAqc2tiLAo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9xbG9naWMvcWxj
-bmljL3FsY25pY19tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9xbG9naWMvcWxjbmljL3Fs
-Y25pY19tYWluLmMKPj4+PiBpbmRleCBkMzIwNTY3YjJjY2EuLjUxZmEyMzQxOGY2YSAxMDA2NDQK
-Pj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9xbG9naWMvcWxjbmljL3FsY25pY19tYWlu
-LmMKPj4+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9xbG9naWMvcWxjbmljL3FsY25pY19t
-YWluLmMKPj4+PiBAQCAtMzY4LDcgKzM2OCw3IEBAIHN0YXRpYyBpbnQgcWxjbmljX3NldF9tYWMo
-c3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgdm9pZCAqcCkKPj4+Pgo+Pj4+ICDCoCBzdGF0aWMg
-aW50IHFsY25pY19mZGJfZGVsKHN0cnVjdCBuZG1zZyAqbmRtLCBzdHJ1Y3QgbmxhdHRyICp0Yltd
-LAo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbmV0X2RldmljZSAqbmV0
-ZGV2LAo+Pj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbnN0IHVuc2lnbmVkIGNoYXIgKmFk
-ZHIsIHUxNiB2aWQpCj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29uc3QgdW5zaWduZWQg
-Y2hhciAqYWRkciwgdTE2IHZpZCwgc3RydWN0IG5ldGxpbmtfZXh0X2FjayAqZXh0YWNrKQo+Pj4+
-ICDCoCB7Cj4+Pj4gIMKgwqDCoMKgwqAgc3RydWN0IHFsY25pY19hZGFwdGVyICphZGFwdGVyID0g
-bmV0ZGV2X3ByaXYobmV0ZGV2KTsKPj4+PiAgwqDCoMKgwqDCoCBpbnQgZXJyID0gLUVPUE5PVFNV
-UFA7Cj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L21hY3ZsYW4uYyBiL2RyaXZlcnMvbmV0
-L21hY3ZsYW4uYwo+Pj4+IGluZGV4IDA2OWU4ODI0YzI2NC4uZmZkMzRkOWY3MDQ5IDEwMDY0NAo+
-Pj4+IC0tLSBhL2RyaXZlcnMvbmV0L21hY3ZsYW4uYwo+Pj4+ICsrKyBiL2RyaXZlcnMvbmV0L21h
-Y3ZsYW4uYwo+Pj4+IEBAIC0xMDE3LDcgKzEwMTcsNyBAQCBzdGF0aWMgaW50IG1hY3ZsYW5fZmRi
-X2FkZChzdHJ1Y3QgbmRtc2cgKm5kbSwgc3RydWN0IG5sYXR0ciAqdGJbXSwKPj4+Pgo+Pj4+ICDC
-oCBzdGF0aWMgaW50IG1hY3ZsYW5fZmRiX2RlbChzdHJ1Y3QgbmRtc2cgKm5kbSwgc3RydWN0IG5s
-YXR0ciAqdGJbXSwKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0
-IG5ldF9kZXZpY2UgKmRldiwKPj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb25z
-dCB1bnNpZ25lZCBjaGFyICphZGRyLCB1MTYgdmlkKQo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGNvbnN0IHVuc2lnbmVkIGNoYXIgKmFkZHIsIHUxNiB2aWQsIHN0cnVjdCBuZXRs
-aW5rX2V4dF9hY2sgKmV4dGFjaykKPj4+PiAgwqAgewo+Pj4+ICDCoMKgwqDCoMKgIHN0cnVjdCBt
-YWN2bGFuX2RldiAqdmxhbiA9IG5ldGRldl9wcml2KGRldik7Cj4+Pj4gIMKgwqDCoMKgwqAgaW50
-IGVyciA9IC1FSU5WQUw7Cj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3Z4bGFuL3Z4bGFu
-X2NvcmUuYyBiL2RyaXZlcnMvbmV0L3Z4bGFuL3Z4bGFuX2NvcmUuYwo+Pj4+IGluZGV4IGRlOTdm
-Zjk4ZDM2ZS4uY2YyZjYwMDM3MzQwIDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvbmV0L3Z4bGFu
-L3Z4bGFuX2NvcmUuYwo+Pj4+ICsrKyBiL2RyaXZlcnMvbmV0L3Z4bGFuL3Z4bGFuX2NvcmUuYwo+
-Pj4+IEBAIC0xMjgwLDcgKzEyODAsNyBAQCBpbnQgX192eGxhbl9mZGJfZGVsZXRlKHN0cnVjdCB2
-eGxhbl9kZXYgKnZ4bGFuLAo+Pj4+ICDCoCAvKiBEZWxldGUgZW50cnkgKHZpYSBuZXRsaW5rKSAq
-Lwo+Pj4+ICDCoCBzdGF0aWMgaW50IHZ4bGFuX2ZkYl9kZWxldGUoc3RydWN0IG5kbXNnICpuZG0s
-IHN0cnVjdCBubGF0dHIgKnRiW10sCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgc3RydWN0IG5ldF9kZXZpY2UgKmRldiwKPj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGNvbnN0IHVuc2lnbmVkIGNoYXIgKmFkZHIsIHUxNiB2aWQpCj4+Pj4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb25zdCB1bnNpZ25lZCBjaGFyICphZGRyLCB1MTYg
-dmlkLCBzdHJ1Y3QgbmV0bGlua19leHRfYWNrICpleHRhY2spCj4+Pj4gIMKgIHsKPj4+PiAgwqDC
-oMKgwqDCoCBzdHJ1Y3QgdnhsYW5fZGV2ICp2eGxhbiA9IG5ldGRldl9wcml2KGRldik7Cj4+Pj4g
-IMKgwqDCoMKgwqAgdW5pb24gdnhsYW5fYWRkciBpcDsKPj4+PiBkaWZmIC0tZ2l0IGEvaW5jbHVk
-ZS9saW51eC9uZXRkZXZpY2UuaCBiL2luY2x1ZGUvbGludXgvbmV0ZGV2aWNlLmgKPj4+PiBpbmRl
-eCAyOGVhNGY4MjY5ZDQuLmQwZDJhOGYzM2M3MyAxMDA2NDQKPj4+PiAtLS0gYS9pbmNsdWRlL2xp
-bnV4L25ldGRldmljZS5oCj4+Pj4gKysrIGIvaW5jbHVkZS9saW51eC9uZXRkZXZpY2UuaAo+Pj4+
-IEBAIC0xNTA5LDcgKzE1MDksNyBAQCBzdHJ1Y3QgbmV0X2RldmljZV9vcHMgewo+Pj4+ICDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1
-Y3QgbmxhdHRyICp0YltdLAo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAo+Pj4+ICDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb25z
-dCB1bnNpZ25lZCBjaGFyICphZGRyLAo+Pj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHUxNiB2aWQpOwo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHUxNiB2aWQsIHN0cnVjdCBuZXRs
-aW5rX2V4dF9hY2sgKmV4dGFjayk7Cj4+Pj4gIMKgwqDCoMKgwqAgaW50wqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCAoKm5kb19mZGJfZHVtcCkoc3RydWN0IHNrX2J1ZmYgKnNrYiwKPj4+PiAgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IG5ldGxp
-bmtfY2FsbGJhY2sgKmNiLAo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LAo+Pj4+IGRpZmYgLS1naXQg
-YS9uZXQvYnJpZGdlL2JyX2ZkYi5jIGIvbmV0L2JyaWRnZS9icl9mZGIuYwo+Pj4+IGluZGV4IDZj
-Y2RhNjhiZDQ3My4uNWJmY2UyZTlhNTUzIDEwMDY0NAo+Pj4+IC0tLSBhL25ldC9icmlkZ2UvYnJf
-ZmRiLmMKPj4+PiArKysgYi9uZXQvYnJpZGdlL2JyX2ZkYi5jCj4+Pj4gQEAgLTExMTAsNyArMTEx
-MCw3IEBAIHN0YXRpYyBpbnQgX19icl9mZGJfZGVsZXRlKHN0cnVjdCBuZXRfYnJpZGdlICpiciwK
-Pj4+PiAgwqAgLyogUmVtb3ZlIG5laWdoYm9yIGVudHJ5IHdpdGggUlRNX0RFTE5FSUdIICovCj4+
-Pj4gIMKgIGludCBicl9mZGJfZGVsZXRlKHN0cnVjdCBuZG1zZyAqbmRtLCBzdHJ1Y3QgbmxhdHRy
-ICp0YltdLAo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBuZXRfZGV2aWNlICpk
-ZXYsCj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoCBjb25zdCB1bnNpZ25lZCBjaGFyICphZGRyLCB1
-MTYgdmlkKQo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgY29uc3QgdW5zaWduZWQgY2hhciAqYWRk
-ciwgdTE2IHZpZCwgc3RydWN0IG5ldGxpbmtfZXh0X2FjayAqZXh0YWNrKQo+Pj4+ICDCoCB7Cj4+
-Pj4gIMKgwqDCoMKgwqAgc3RydWN0IG5ldF9icmlkZ2Vfdmxhbl9ncm91cCAqdmc7Cj4+Pj4gIMKg
-wqDCoMKgwqAgc3RydWN0IG5ldF9icmlkZ2VfcG9ydCAqcCA9IE5VTEw7Cj4+Pj4gZGlmZiAtLWdp
-dCBhL25ldC9icmlkZ2UvYnJfcHJpdmF0ZS5oIGIvbmV0L2JyaWRnZS9icl9wcml2YXRlLmgKPj4+
-PiBpbmRleCAxOGNjYzNkNWQyOTYuLjk1MzQ4YzFjOWNlNSAxMDA2NDQKPj4+PiAtLS0gYS9uZXQv
-YnJpZGdlL2JyX3ByaXZhdGUuaAo+Pj4+ICsrKyBiL25ldC9icmlkZ2UvYnJfcHJpdmF0ZS5oCj4+
-Pj4gQEAgLTc4MCw3ICs3ODAsNyBAQCB2b2lkIGJyX2ZkYl91cGRhdGUoc3RydWN0IG5ldF9icmlk
-Z2UgKmJyLCBzdHJ1Y3QgbmV0X2JyaWRnZV9wb3J0ICpzb3VyY2UsCj4+Pj4gIMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCBjb25zdCB1bnNpZ25lZCBjaGFyICphZGRyLCB1MTYgdmlkLCB1bnNpZ25l
-ZCBsb25nIGZsYWdzKTsKPj4+Pgo+Pj4+ICDCoCBpbnQgYnJfZmRiX2RlbGV0ZShzdHJ1Y3QgbmRt
-c2cgKm5kbSwgc3RydWN0IG5sYXR0ciAqdGJbXSwKPj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgIHN0
-cnVjdCBuZXRfZGV2aWNlICpkZXYsIGNvbnN0IHVuc2lnbmVkIGNoYXIgKmFkZHIsIHUxNiB2aWQp
-Owo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IG5ldF9kZXZpY2UgKmRldiwgY29uc3Qg
-dW5zaWduZWQgY2hhciAqYWRkciwgdTE2IHZpZCwgc3RydWN0IG5ldGxpbmtfZXh0X2FjayAqZXh0
-YWNrKTsKPj4+IFRoaXMgaXMgd2F5IHRvbyBsb25nICgxMTEgY2hhcnMpIGFuZCBjaGVja3BhdGNo
-IHNob3VsZCd2ZSBjb21wbGFpbmVkIGFib3V0IGl0Lgo+Pj4gV0FSTklORzogbGluZSBsZW5ndGgg
-b2YgMTExIGV4Y2VlZHMgMTAwIGNvbHVtbnMKPj4+ICMyMzQ6IEZJTEU6IG5ldC9icmlkZ2UvYnJf
-cHJpdmF0ZS5oOjc4MjoKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IG5ldF9kZXZpY2Ug
-KmRldiwgY29uc3QgdW5zaWduZWQgY2hhciAqYWRkciwgdTE2IHZpZCwgc3RydWN0IG5ldGxpbmtf
-ZXh0X2FjayAqZXh0YWNrKTsKPj4gSSB3aWxsIGZpeCBpdC4KPj4KPj4+PiAgwqAgaW50IGJyX2Zk
-Yl9hZGQoc3RydWN0IG5kbXNnICpubGgsIHN0cnVjdCBubGF0dHIgKnRiW10sIHN0cnVjdCBuZXRf
-ZGV2aWNlICpkZXYsCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb25zdCB1bnNpZ25l
-ZCBjaGFyICphZGRyLCB1MTYgdmlkLCB1MTYgbmxoX2ZsYWdzLAo+Pj4+ICDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgc3RydWN0IG5ldGxpbmtfZXh0X2FjayAqZXh0YWNrKTsKPj4+PiBkaWZmIC0t
-Z2l0IGEvbmV0L2NvcmUvcnRuZXRsaW5rLmMgYi9uZXQvY29yZS9ydG5ldGxpbmsuYwo+Pj4+IGlu
-ZGV4IDQwNDFiM2UyZThlYy4uOTliMzBhZTU4YTQ3IDEwMDY0NAo+Pj4+IC0tLSBhL25ldC9jb3Jl
-L3J0bmV0bGluay5jCj4+Pj4gKysrIGIvbmV0L2NvcmUvcnRuZXRsaW5rLmMKPj4+PiBAQCAtNDIy
-Myw3ICs0MjIzLDcgQEAgc3RhdGljIGludCBydG5sX2ZkYl9kZWwoc3RydWN0IHNrX2J1ZmYgKnNr
-Yiwgc3RydWN0IG5sbXNnaGRyICpubGgsCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoCBjb25zdCBz
-dHJ1Y3QgbmV0X2RldmljZV9vcHMgKm9wcyA9IGJyX2Rldi0+bmV0ZGV2X29wczsKPj4+Pgo+Pj4+
-ICDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKG9wcy0+bmRvX2ZkYl9kZWwpCj4+Pj4gLcKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgZXJyID0gb3BzLT5uZG9fZmRiX2RlbChuZG0sIHRiLCBkZXYsIGFkZHIs
-IHZpZCk7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZXJyID0gb3BzLT5uZG9fZmRiX2Rl
-bChuZG0sIHRiLCBkZXYsIGFkZHIsIHZpZCwgZXh0YWNrKTsKPj4+Pgo+Pj4+ICDCoMKgwqDCoMKg
-wqDCoMKgwqAgaWYgKGVycikKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ290byBv
-dXQ7Cj4+Pj4gQEAgLTQyMzUsNyArNDIzNSw3IEBAIHN0YXRpYyBpbnQgcnRubF9mZGJfZGVsKHN0
-cnVjdCBza19idWZmICpza2IsIHN0cnVjdCBubG1zZ2hkciAqbmxoLAo+Pj4+ICDCoMKgwqDCoMKg
-IGlmIChuZG0tPm5kbV9mbGFncyAmIE5URl9TRUxGKSB7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDC
-oCBpZiAoZGV2LT5uZXRkZXZfb3BzLT5uZG9fZmRiX2RlbCkKPj4+PiAgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgZXJyID0gZGV2LT5uZXRkZXZfb3BzLT5uZG9fZmRiX2RlbChuZG0sIHRiLCBk
-ZXYsIGFkZHIsCj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB2aWQpOwo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdmlkLCBleHRhY2spOwo+Pj4+ICDC
-oMKgwqDCoMKgwqDCoMKgwqAgZWxzZQo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBl
-cnIgPSBuZG9fZGZsdF9mZGJfZGVsKG5kbSwgdGIsIGRldiwgYWRkciwgdmlkKTsKPj4+Pgo+Pj4+
-IC0tIAo+Pj4+IDIuMzYuMAo+Pj4+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFu
-QG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50
-ZWwtd2lyZWQtbGFuCg==
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1725770404-1650867082=:2759
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Sun, 24 Apr 2022, Alaa Mohamed wrote:
+
+>
+> On ٢٤/٤/٢٠٢٢ ٢١:٥٥, Nikolay Aleksandrov wrote:
+> > On 24/04/2022 22:49, Alaa Mohamed wrote:
+> > > On ٢٤/٤/٢٠٢٢ ٢١:٠٢, Nikolay Aleksandrov wrote:
+> > > > On 24/04/2022 15:09, Alaa Mohamed wrote:
+> > > > > Add extack support to .ndo_fdb_del in netdevice.h and
+> > > > > all related methods.
+> > > > >
+> > > > > Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+> > > > > ---
+> > > > > changes in V3:
+> > > > >           fix errors reported by checkpatch.pl
+> > > > > ---
+> > > > >    drivers/net/ethernet/intel/ice/ice_main.c        | 4 ++--
+> > > > >    drivers/net/ethernet/mscc/ocelot_net.c           | 4 ++--
+> > > > >    drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c | 2 +-
+> > > > >    drivers/net/macvlan.c                            | 2 +-
+> > > > >    drivers/net/vxlan/vxlan_core.c                   | 2 +-
+> > > > >    include/linux/netdevice.h                        | 2 +-
+> > > > >    net/bridge/br_fdb.c                              | 2 +-
+> > > > >    net/bridge/br_private.h                          | 2 +-
+> > > > >    net/core/rtnetlink.c                             | 4 ++--
+> > > > >    9 files changed, 12 insertions(+), 12 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
+> > > > > b/drivers/net/ethernet/intel/ice/ice_main.c
+> > > > > index d768925785ca..7b55d8d94803 100644
+> > > > > --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> > > > > +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> > > > > @@ -5678,10 +5678,10 @@ ice_fdb_add(struct ndmsg *ndm, struct nlattr
+> > > > > __always_unused *tb[],
+> > > > >    static int
+> > > > >    ice_fdb_del(struct ndmsg *ndm, __always_unused struct nlattr *tb[],
+> > > > >            struct net_device *dev, const unsigned char *addr,
+> > > > > -        __always_unused u16 vid)
+> > > > > +        __always_unused u16 vid, struct netlink_ext_ack *extack)
+> > > > >    {
+> > > > >        int err;
+> > > > > -
+> > > > > +
+> > > > What's changed here?
+> > > In the previous version, I removed the blank line after "int err;" and you
+> > > said I shouldn't so I added blank line.
+> > >
+> > Yeah, my question is are you fixing a dos ending or something else?
+> > The blank line is already there, what's wrong with it?
+> No, I didn't.
+
+OK, so what is the answer to the question about what changed?  It looks
+like you remove a blank line and then add it back.  But that should not
+show up as a difference when you generate the patch.
+
+When you answer a comment, please put a blank line before and after your
+answer.  Otherwise it can be hard to see your answer when it is in the
+middle of a larger patch.
+
+> >
+> > The point is it's not nice to mix style fixes and other changes, more so
+> > if nothing is mentioned in the commit message.
+> Got it, So, what should I do to fix it?
+
+A series?  But it is not clear that any change is needed here at all.
+
+julia
+
+> > > > >        if (ndm->ndm_state & NUD_PERMANENT) {
+> > > > >            netdev_err(dev, "FDB only supports static addresses\n");
+> > > > >            return -EINVAL;
+> > > > > diff --git a/drivers/net/ethernet/mscc/ocelot_net.c
+> > > > > b/drivers/net/ethernet/mscc/ocelot_net.c
+> > > > > index 247bc105bdd2..e07c64e3159c 100644
+> > > > > --- a/drivers/net/ethernet/mscc/ocelot_net.c
+> > > > > +++ b/drivers/net/ethernet/mscc/ocelot_net.c
+> > > > > @@ -774,14 +774,14 @@ static int ocelot_port_fdb_add(struct ndmsg
+> > > > > *ndm, struct nlattr *tb[],
+> > > > >
+> > > > >    static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr
+> > > > > *tb[],
+> > > > >                       struct net_device *dev,
+> > > > > -                   const unsigned char *addr, u16 vid)
+> > > > > +                   const unsigned char *addr, u16 vid, struct
+> > > > > netlink_ext_ack *extack)
+> > > > >    {
+> > > > >        struct ocelot_port_private *priv = netdev_priv(dev);
+> > > > >        struct ocelot_port *ocelot_port = &priv->port;
+> > > > >        struct ocelot *ocelot = ocelot_port->ocelot;
+> > > > >        int port = priv->chip_port;
+> > > > >
+> > > > > -    return ocelot_fdb_del(ocelot, port, addr, vid,
+> > > > > ocelot_port->bridge);
+> > > > > +    return ocelot_fdb_del(ocelot, port, addr, vid,
+> > > > > ocelot_port->bridge, extack);
+> > > > >    }
+> > > > >
+> > > > >    static int ocelot_port_fdb_dump(struct sk_buff *skb,
+> > > > > diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+> > > > > b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+> > > > > index d320567b2cca..51fa23418f6a 100644
+> > > > > --- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+> > > > > +++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+> > > > > @@ -368,7 +368,7 @@ static int qlcnic_set_mac(struct net_device
+> > > > > *netdev, void *p)
+> > > > >
+> > > > >    static int qlcnic_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
+> > > > >                struct net_device *netdev,
+> > > > > -            const unsigned char *addr, u16 vid)
+> > > > > +            const unsigned char *addr, u16 vid, struct
+> > > > > netlink_ext_ack *extack)
+> > > > >    {
+> > > > >        struct qlcnic_adapter *adapter = netdev_priv(netdev);
+> > > > >        int err = -EOPNOTSUPP;
+> > > > > diff --git a/drivers/net/macvlan.c b/drivers/net/macvlan.c
+> > > > > index 069e8824c264..ffd34d9f7049 100644
+> > > > > --- a/drivers/net/macvlan.c
+> > > > > +++ b/drivers/net/macvlan.c
+> > > > > @@ -1017,7 +1017,7 @@ static int macvlan_fdb_add(struct ndmsg *ndm,
+> > > > > struct nlattr *tb[],
+> > > > >
+> > > > >    static int macvlan_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
+> > > > >                   struct net_device *dev,
+> > > > > -               const unsigned char *addr, u16 vid)
+> > > > > +               const unsigned char *addr, u16 vid, struct
+> > > > > netlink_ext_ack *extack)
+> > > > >    {
+> > > > >        struct macvlan_dev *vlan = netdev_priv(dev);
+> > > > >        int err = -EINVAL;
+> > > > > diff --git a/drivers/net/vxlan/vxlan_core.c
+> > > > > b/drivers/net/vxlan/vxlan_core.c
+> > > > > index de97ff98d36e..cf2f60037340 100644
+> > > > > --- a/drivers/net/vxlan/vxlan_core.c
+> > > > > +++ b/drivers/net/vxlan/vxlan_core.c
+> > > > > @@ -1280,7 +1280,7 @@ int __vxlan_fdb_delete(struct vxlan_dev *vxlan,
+> > > > >    /* Delete entry (via netlink) */
+> > > > >    static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
+> > > > >                    struct net_device *dev,
+> > > > > -                const unsigned char *addr, u16 vid)
+> > > > > +                const unsigned char *addr, u16 vid, struct
+> > > > > netlink_ext_ack *extack)
+> > > > >    {
+> > > > >        struct vxlan_dev *vxlan = netdev_priv(dev);
+> > > > >        union vxlan_addr ip;
+> > > > > diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+> > > > > index 28ea4f8269d4..d0d2a8f33c73 100644
+> > > > > --- a/include/linux/netdevice.h
+> > > > > +++ b/include/linux/netdevice.h
+> > > > > @@ -1509,7 +1509,7 @@ struct net_device_ops {
+> > > > >                               struct nlattr *tb[],
+> > > > >                               struct net_device *dev,
+> > > > >                               const unsigned char *addr,
+> > > > > -                           u16 vid);
+> > > > > +                           u16 vid, struct netlink_ext_ack *extack);
+> > > > >        int            (*ndo_fdb_dump)(struct sk_buff *skb,
+> > > > >                            struct netlink_callback *cb,
+> > > > >                            struct net_device *dev,
+> > > > > diff --git a/net/bridge/br_fdb.c b/net/bridge/br_fdb.c
+> > > > > index 6ccda68bd473..5bfce2e9a553 100644
+> > > > > --- a/net/bridge/br_fdb.c
+> > > > > +++ b/net/bridge/br_fdb.c
+> > > > > @@ -1110,7 +1110,7 @@ static int __br_fdb_delete(struct net_bridge
+> > > > > *br,
+> > > > >    /* Remove neighbor entry with RTM_DELNEIGH */
+> > > > >    int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
+> > > > >              struct net_device *dev,
+> > > > > -          const unsigned char *addr, u16 vid)
+> > > > > +          const unsigned char *addr, u16 vid, struct netlink_ext_ack
+> > > > > *extack)
+> > > > >    {
+> > > > >        struct net_bridge_vlan_group *vg;
+> > > > >        struct net_bridge_port *p = NULL;
+> > > > > diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
+> > > > > index 18ccc3d5d296..95348c1c9ce5 100644
+> > > > > --- a/net/bridge/br_private.h
+> > > > > +++ b/net/bridge/br_private.h
+> > > > > @@ -780,7 +780,7 @@ void br_fdb_update(struct net_bridge *br, struct
+> > > > > net_bridge_port *source,
+> > > > >               const unsigned char *addr, u16 vid, unsigned long
+> > > > > flags);
+> > > > >
+> > > > >    int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
+> > > > > -          struct net_device *dev, const unsigned char *addr, u16
+> > > > > vid);
+> > > > > +          struct net_device *dev, const unsigned char *addr, u16 vid,
+> > > > > struct netlink_ext_ack *extack);
+> > > > This is way too long (111 chars) and checkpatch should've complained
+> > > > about it.
+> > > > WARNING: line length of 111 exceeds 100 columns
+> > > > #234: FILE: net/bridge/br_private.h:782:
+> > > > +          struct net_device *dev, const unsigned char *addr, u16 vid,
+> > > > struct netlink_ext_ack *extack);
+> > > I will fix it.
+> > >
+> > > > >    int br_fdb_add(struct ndmsg *nlh, struct nlattr *tb[], struct
+> > > > > net_device *dev,
+> > > > >               const unsigned char *addr, u16 vid, u16 nlh_flags,
+> > > > >               struct netlink_ext_ack *extack);
+> > > > > diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+> > > > > index 4041b3e2e8ec..99b30ae58a47 100644
+> > > > > --- a/net/core/rtnetlink.c
+> > > > > +++ b/net/core/rtnetlink.c
+> > > > > @@ -4223,7 +4223,7 @@ static int rtnl_fdb_del(struct sk_buff *skb,
+> > > > > struct nlmsghdr *nlh,
+> > > > >            const struct net_device_ops *ops = br_dev->netdev_ops;
+> > > > >
+> > > > >            if (ops->ndo_fdb_del)
+> > > > > -            err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid);
+> > > > > +            err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid, extack);
+> > > > >
+> > > > >            if (err)
+> > > > >                goto out;
+> > > > > @@ -4235,7 +4235,7 @@ static int rtnl_fdb_del(struct sk_buff *skb,
+> > > > > struct nlmsghdr *nlh,
+> > > > >        if (ndm->ndm_flags & NTF_SELF) {
+> > > > >            if (dev->netdev_ops->ndo_fdb_del)
+> > > > >                err = dev->netdev_ops->ndo_fdb_del(ndm, tb, dev, addr,
+> > > > > -                               vid);
+> > > > > +                               vid, extack);
+> > > > >            else
+> > > > >                err = ndo_dflt_fdb_del(ndm, tb, dev, addr, vid);
+> > > > >
+> > > > > --
+> > > > > 2.36.0
+> > > > >
+>
+>
+--8323329-1725770404-1650867082=:2759
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--8323329-1725770404-1650867082=:2759--
