@@ -1,108 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBE95514B31
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Apr 2022 15:51:52 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF6BC514B32
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Apr 2022 15:51:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 51EC360FE1;
-	Fri, 29 Apr 2022 13:51:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3F1DB4040D;
+	Fri, 29 Apr 2022 13:51:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8pMqmAM1husx; Fri, 29 Apr 2022 13:51:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T1tfxY72avUd; Fri, 29 Apr 2022 13:51:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0509B6070A;
-	Fri, 29 Apr 2022 13:51:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EA5E340376;
+	Fri, 29 Apr 2022 13:51:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 56FAE1BF2A3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CFB071BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 527118138B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:45 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CA40B41C3E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=ibm.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JX8TO3-i32-x for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Apr 2022 13:51:44 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JCbSYKlUiGZd for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Apr 2022 13:51:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 842BE8138A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:44 +0000 (UTC)
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 23TDhRFg012039;
- Fri, 29 Apr 2022 13:51:35 GMT
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3D0F341BDB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 13:51:48 +0000 (UTC)
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 23TDKCjk005558;
+ Fri, 29 Apr 2022 13:51:36 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=pp1;
- bh=r0A26ZSi2OGq3odIkE3plPz0/FcnM2EA+xPgleBvJZU=;
- b=kAEMdoE2gOvZ0qdglbECFN4QzenEPoAQpgyx2uCtLLQlF8+my3m0/vuJCsIlQc63vCvk
- uHuVfLlKUIbybe4mte1mhUKoYf5SHcyUQZ3ArFkQ2NHR3fXyuFiyZsiiD/XStBqp7yZv
- 7y4oa6LVXiFG/DQWUSeBfTQzwOPjRGFOQLBRkpeOKYmXX9V8/2KMJCoo3C/O1Daho+At
- yM4obIjcUDYvMW2tGMhWdpxR01rf92hXluEC6f+WyOuwB/EiM18JO29rB9Pz5kn1m7mT
- irYjdQ/CFhFmeHjtyU/bb1He2/xRGZxF9VqpORR2M7zUnfDIP9q0h9rM3EfgZXNTq7Tj OA== 
+ bh=w/zz1EggfXoDBqvVR+Klge0blmFReVVt9lOkNq0EeEU=;
+ b=Y2VbXsmdM4NpPEDJS/FdYGjc4h02brYNibz6rqzIaIsx1LWYMrYwxA0OR/39kElish3g
+ lnj4LPOipLOAooN7oyJ6vD6F9oAz3OmSZ/jwmXxyqxcqcA3sZTSju4fvGwh7hyjC5Q7H
+ PnPbtbjhPZzXeJUKAbGd4N7bk28eEoTZXBP4myGlSNxY6C5TubOfxkCq9W6Bb+A5RUKS
+ drtHmW2BDfyk5ZWDoLP1RQZ+mIRs23xYGk0r9qweOZs+fifAZ7Tcd06McYr818DNiNpd
+ sQ2MNcqtKZSrDYTIqVIXzkGE/KlbTxnQ/WAWGqWiFibG8kKHTdNTH5Aqkeua6PvzKLPn DA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3frh5eg4bt-1
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3fqtvxmnke-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 29 Apr 2022 13:51:36 +0000
+Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 23TDjDRg007983;
+ Fri, 29 Apr 2022 13:51:35 GMT
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.98])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3fqtvxmnjb-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Fri, 29 Apr 2022 13:51:35 +0000
-Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 23TDnKWl029831;
- Fri, 29 Apr 2022 13:51:34 GMT
-Received: from ppma01fra.de.ibm.com (46.49.7a9f.ip4.static.sl-reverse.com
- [159.122.73.70])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3frh5eg4aq-1
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+ by ppma03ams.nl.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 23TDRL1r021679;
+ Fri, 29 Apr 2022 13:51:33 GMT
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+ (d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+ by ppma03ams.nl.ibm.com with ESMTP id 3fm93917r8-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 29 Apr 2022 13:51:34 +0000
-Received: from pps.filterd (ppma01fra.de.ibm.com [127.0.0.1])
- by ppma01fra.de.ibm.com (8.16.1.2/8.16.1.2) with SMTP id 23TDSWZS024572;
- Fri, 29 Apr 2022 13:51:32 GMT
-Received: from b06cxnps4075.portsmouth.uk.ibm.com
- (d06relay12.portsmouth.uk.ibm.com [9.149.109.197])
- by ppma01fra.de.ibm.com with ESMTP id 3fm938yabw-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 29 Apr 2022 13:51:31 +0000
+ Fri, 29 Apr 2022 13:51:33 +0000
 Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
  [9.149.105.58])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 23TDpTjr46858512
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 23TDpUvg46596428
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 29 Apr 2022 13:51:29 GMT
+ Fri, 29 Apr 2022 13:51:31 GMT
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 83B464C040;
- Fri, 29 Apr 2022 13:51:29 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id DAFF24C044;
+ Fri, 29 Apr 2022 13:51:30 +0000 (GMT)
 Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F27154C044;
- Fri, 29 Apr 2022 13:51:28 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 502E04C040;
+ Fri, 29 Apr 2022 13:51:30 +0000 (GMT)
 Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
  by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Fri, 29 Apr 2022 13:51:28 +0000 (GMT)
+ Fri, 29 Apr 2022 13:51:30 +0000 (GMT)
 From: Niklas Schnelle <schnelle@linux.ibm.com>
 To: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 29 Apr 2022 15:50:32 +0200
-Message-Id: <20220429135108.2781579-35-schnelle@linux.ibm.com>
+Date: Fri, 29 Apr 2022 15:50:33 +0200
+Message-Id: <20220429135108.2781579-36-schnelle@linux.ibm.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220429135108.2781579-1-schnelle@linux.ibm.com>
 References: <20220429135108.2781579-1-schnelle@linux.ibm.com>
 MIME-Version: 1.0
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: I1jTiIsuecqpk-pdMNeUPNPX_Q3QtrUV
-X-Proofpoint-ORIG-GUID: WksVfFPmTRT8U9W2HJI2zIlDOvMAYugO
+X-Proofpoint-ORIG-GUID: iUW5slN0ZHGDGf8WjFAm7IHpam9wKTpv
+X-Proofpoint-GUID: Gc6NjyKxyG-ysfeilBQ__EB9dsmWhpuS
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.858,Hydra:6.0.486,FMLib:17.11.64.514
  definitions=2022-04-29_06,2022-04-28_01,2022-02-23_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 adultscore=0
- phishscore=0 mlxlogscore=630 clxscore=1011 impostorscore=0 suspectscore=0
- lowpriorityscore=0 spamscore=0 priorityscore=1501 mlxscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2204290078
-Subject: [Intel-wired-lan] [PATCH 20/37] net: add HAS_IOPORT dependencies
+ malwarescore=0
+ lowpriorityscore=0 priorityscore=1501 spamscore=0 suspectscore=0
+ clxscore=1011 mlxscore=0 impostorscore=0 mlxlogscore=731 adultscore=0
+ phishscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2204290078
+Subject: [Intel-wired-lan] [RFC v2 21/39] net: add HAS_IOPORT dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,9 +117,10 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: linux-arch@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
  Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ "open list:AX.25 NETWORK LAYER" <linux-hams@vger.kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  "open list:CAN NETWORK DRIVERS" <linux-can@vger.kernel.org>,
- linux-kernel@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Ralf Baechle <ralf@linux-mips.org>,
  "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
  Marc Kleine-Budde <mkl@pengutronix.de>, linux-pci@vger.kernel.org,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -133,8 +134,11 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 In a future patch HAS_IOPORT=n will result in inb()/outb() and friends
 not being declared. We thus need to add HAS_IOPORT as dependency for
-those drivers using them.
+those drivers using them. It also turns out that with HAS_IOPORT handled
+explicitly HAMRADIO does not need the !S390 dependency and successfully
+builds the bpqether driver.
 
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
 Co-developed-by: Arnd Bergmann <arnd@kernel.org>
 Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
 ---
@@ -151,10 +155,11 @@ Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
  drivers/net/fddi/Kconfig           | 2 +-
  drivers/net/hamradio/Kconfig       | 6 +++---
  drivers/net/wan/Kconfig            | 2 +-
- 13 files changed, 16 insertions(+), 13 deletions(-)
+ net/ax25/Kconfig                   | 2 +-
+ 14 files changed, 17 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/net/Kconfig b/drivers/net/Kconfig
-index b2a4f998c180..0fd284103ee4 100644
+index b2a4f998c180..5bc1324150c2 100644
 --- a/drivers/net/Kconfig
 +++ b/drivers/net/Kconfig
 @@ -475,7 +475,7 @@ source "drivers/net/ipa/Kconfig"
@@ -162,7 +167,7 @@ index b2a4f998c180..0fd284103ee4 100644
  config NET_SB1000
  	tristate "General Instruments Surfboard 1000"
 -	depends on PNP
-+	depends on ISAPNP
++	depends on ISA && PNP
  	help
  	  This is a driver for the General Instrument (also known as
  	  NextLevel) SURFboard 1000 internal
@@ -346,6 +351,19 @@ index 140780ac1745..e62a51098836 100644
  	help
  	  Support for the FarSync T-Series X.21 (and V.35/V.24) cards by
  	  FarSite Communications Ltd.
+diff --git a/net/ax25/Kconfig b/net/ax25/Kconfig
+index d3a9843a043d..f769e8f4bd02 100644
+--- a/net/ax25/Kconfig
++++ b/net/ax25/Kconfig
+@@ -4,7 +4,7 @@
+ #
+ 
+ menuconfig HAMRADIO
+-	depends on NET && !S390
++	depends on NET
+ 	bool "Amateur Radio support"
+ 	help
+ 	  If you want to connect your Linux box to an amateur radio, answer Y
 -- 
 2.32.0
 
