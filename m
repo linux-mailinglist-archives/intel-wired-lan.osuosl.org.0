@@ -1,68 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC02D51710A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 May 2022 15:57:25 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1876C51710C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 May 2022 15:57:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4156460E21;
-	Mon,  2 May 2022 13:57:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9DD5D40273;
+	Mon,  2 May 2022 13:57:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yFAx04FncVUX; Mon,  2 May 2022 13:57:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H_sFzq_IG2PZ; Mon,  2 May 2022 13:57:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3A64560ED7;
-	Mon,  2 May 2022 13:57:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 622D740257;
+	Mon,  2 May 2022 13:57:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A40D01BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 14:13:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C9ADD1BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 23:56:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 89FFC60D74
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 14:13:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BF15781753
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 23:56:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PJDvJRa-Pjzk for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Apr 2022 14:13:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13FD260AEC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 14:13:35 +0000 (UTC)
-Received: from gallifrey.ext.pengutronix.de
- ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=bjornoya.blackshift.org)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mkl@pengutronix.de>)
- id 1nkRN3-0001gg-GR; Fri, 29 Apr 2022 16:13:21 +0200
-Received: from pengutronix.de
- (2a03-f580-87bc-d400-725c-f539-4e8e-4648.ip6.dokom21.de
- [IPv6:2a03:f580:87bc:d400:725c:f539:4e8e:4648])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (Client did not present a certificate)
- (Authenticated sender: mkl-all@blackshift.org)
- by smtp.blackshift.org (Postfix) with ESMTPSA id D56B571000;
- Fri, 29 Apr 2022 14:13:18 +0000 (UTC)
-Date: Fri, 29 Apr 2022 16:13:18 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Message-ID: <20220429141318.qonhkqar2nwyub7d@pengutronix.de>
-References: <20220429135108.2781579-1-schnelle@linux.ibm.com>
- <20220429135108.2781579-36-schnelle@linux.ibm.com>
-MIME-Version: 1.0
-In-Reply-To: <20220429135108.2781579-36-schnelle@linux.ibm.com>
-X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
-X-SA-Exim-Mail-From: mkl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=arista.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CcshaQLBwTIh for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Apr 2022 23:56:36 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-il1-x163.google.com (mail-il1-x163.google.com
+ [IPv6:2607:f8b0:4864:20::163])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 133FA81454
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 23:56:35 +0000 (UTC)
+Received: by mail-il1-x163.google.com with SMTP id r11so4957439ila.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Apr 2022 16:56:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:dkim-signature:from:to:cc:subject:date
+ :message-id:content-transfer-encoding;
+ bh=rhWp1AKBOyqcG3QjLO4nWaJXvvyqXsoLu/c9Xuqgxf4=;
+ b=DDXeea3nJFUmkktUqQQGQYaL4Vb7bILUyRqRDccBhHIqNEoYUzPgv2u8kiYP5N7ogA
+ ns9tRybs4PAqY3nZxxyiGZPPYMCJY8Ff+iubY6beyS+pWh5mqW9jCKNB4CL/vJNsh2vH
+ Kfl/u6fwRQSBEy8KRierB0yUkV4DJhJNMVm6ub0cploW464GC0reZNhq4l4JCIzk3O2Z
+ tHSiO6+WPoLu0seRy9oEJcHNHq9/dY4iTpRv9VqMTEB3N4FnlqZu0JHtOdwbBHWNAtDg
+ 0GdWbMPXXLgPpCIq1vAnZAdiDAOh2MCbX/5XGoFoHsoJyBVySYZ/mErBnLqo5nx8u6Oq
+ S5/Q==
+X-Gm-Message-State: AOAM531iVOqMQh1c9Dupq2/tZ17WSLWMa7wkXaTFL4YBzjsBHNIrUcF2
+ WQO41cBbXWBmUueRZ6UH9jdbTFDcu7ErHdU4N0bFwX/igFIv
+X-Google-Smtp-Source: ABdhPJxAayWgz3tZPEUuIHsUOIZfNThDXu/GbVfddf4sHIZaslnH/EGHTdkX1w8JoBMbbmcLLpl59JjhogjM
+X-Received: by 2002:a05:6e02:1c45:b0:2cd:95dd:ae1a with SMTP id
+ d5-20020a056e021c4500b002cd95ddae1amr701931ilg.100.1651276595115; 
+ Fri, 29 Apr 2022 16:56:35 -0700 (PDT)
+Received: from smtp.aristanetworks.com (smtp.aristanetworks.com.
+ [54.193.82.35]) by smtp-relay.gmail.com with ESMTPS id
+ a7-20020a056638164700b0032b3a7363f6sm235056jat.20.2022.04.29.16.56.34
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 29 Apr 2022 16:56:35 -0700 (PDT)
+X-Relaying-Domain: arista.com
+Received: from chmeee (unknown [10.95.70.41])
+ by smtp.aristanetworks.com (Postfix) with ESMTPS id 2D1CA3045064;
+ Fri, 29 Apr 2022 16:56:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arista.com;
+ s=Arista-A; t=1651276594;
+ bh=rhWp1AKBOyqcG3QjLO4nWaJXvvyqXsoLu/c9Xuqgxf4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=o4iJMhSMeeqwukInPgtCBAav5GBwiKBq4YBQxSYpINNXybYE3dNsSH2nBiDWetj5Q
+ 9huzeLWStt2Yh/qUvoBEvZKegxKs8NzLoFnK0N27kAbq230EJ3QKCoNFR5HL77wCHc
+ N7Oy74d3ymAVp8hSsgzY65yTWmK/dVbD3VMLbSpMz1fZPBVjvGN/k909n57ICGqDoq
+ ijOYjejoCZ/vTeCkc144dWzX9biyOT4xC2OgnHwwdaxF11EQbjheUibmKZrf85eIyH
+ mYflXpTndSTs7Da6KV8zhE8PPMmM3ab+jzTxpRRrfmfIx9a7LcMxKOqfoMIr1MWX0l
+ yJsYIxYZXasAg==
+Received: from kevmitch by chmeee with local (Exim 4.95)
+ (envelope-from <kevmitch@chmeee>) id 1nkaTN-0003Sm-TX;
+ Fri, 29 Apr 2022 16:56:29 -0700
+From: Kevin Mitchell <kevmitch@arista.com>
+To: 
+Date: Fri, 29 Apr 2022 16:55:54 -0700
+Message-Id: <20220429235554.13290-1-kevmitch@arista.com>
 X-Mailman-Approved-At: Mon, 02 May 2022 13:57:17 +0000
-Subject: Re: [Intel-wired-lan] [RFC v2 21/39] net: add HAS_IOPORT
- dependencies
+Subject: [Intel-wired-lan] [PATCH] igb: skip phy status check where
+ unavailable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,86 +94,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
- Michael Grzeschik <m.grzeschik@pengutronix.de>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>,
- "open list:CAN NETWORK DRIVERS" <linux-can@vger.kernel.org>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- "open list:AX.25 NETWORK LAYER" <linux-hams@vger.kernel.org>,
- linux-pci@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Wolfgang Grandegger <wg@grandegger.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============3131361453803854821=="
+Cc: kevmitch@arista.com, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Takuma Ueba <t.ueba11@gmail.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+igb_read_phy_reg() will silently return, leaving phy_data untouched, if
+hw->ops.read_reg isn't set. Depending on the uninitialized value of
+phy_data, this led to the phy status check either succeeding immediately
+or looping continuously for 2 seconds before emitting a noisy err-level
+timeout. This message went out to the console even though there was no
+actual problem.
 
---===============3131361453803854821==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lqcj2mbryc4mt5il"
-Content-Disposition: inline
+Instead, first check if there is read_reg function pointer. If not,
+proceed without trying to check the phy status register.
 
+Fixes: b72f3f72005d ("igb: When GbE link up, wait for Remote receiver status condition")
+Signed-off-by: Kevin Mitchell <kevmitch@arista.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
---lqcj2mbryc4mt5il
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 29.04.2022 15:50:33, Niklas Schnelle wrote:
-> In a future patch HAS_IOPORT=3Dn will result in inb()/outb() and friends
-> not being declared. We thus need to add HAS_IOPORT as dependency for
-> those drivers using them. It also turns out that with HAS_IOPORT handled
-> explicitly HAMRADIO does not need the !S390 dependency and successfully
-> builds the bpqether driver.
->=20
-> Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
-> Co-developed-by: Arnd Bergmann <arnd@kernel.org>
-> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
-> ---
->  drivers/net/can/cc770/Kconfig      | 1 +
->  drivers/net/can/sja1000/Kconfig    | 1 +
-
-For drivers/net/can:
-
-Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde           |
-Embedded Linux                   | https://www.pengutronix.de  |
-Vertretung West/Dortmund         | Phone: +49-231-2826-924     |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-5555 |
-
---lqcj2mbryc4mt5il
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEBsvAIBsPu6mG7thcrX5LkNig010FAmJr8nsACgkQrX5LkNig
-010rRQf+I21I3qExctz2dzFcblEyXWU6OZwWbigahGhoVi7VXxh/udlftKM5SSh+
-Cbv6NDOt9GxEP3/0Y4muCTq4Xg9jQenFXBGXRT89GaRIDiiAT11MOJ/e6YCiAtBq
-yHx8f04ddLmYcRFLdgZS5GvWd8/5Ji6XKBdPf3hE5KgYjEhrGNEGWFQgne10eP2c
-WqxPPa+kql2KQ2lDKUY6QcNpdhcug0PxAGJL9gnatBMVQGlwotjP/kpeKK7/7LVX
-11FA2bCHvNSpqljEGADPjl73qQsnsY9TgauxzytBOgrmDginWo2AmeJ0Pu8KbP5k
-bcb5RRiJNIkv36dBdpipE0wixsnf5A==
-=iK8a
------END PGP SIGNATURE-----
-
---lqcj2mbryc4mt5il--
-
---===============3131361453803854821==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 34b33b21e0dc..68be2976f539 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -5505,7 +5505,8 @@ static void igb_watchdog_task(struct work_struct *work)
+ 				break;
+ 			}
+ 
+-			if (adapter->link_speed != SPEED_1000)
++			if (adapter->link_speed != SPEED_1000 ||
++			    !hw->phy.ops.read_reg)
+ 				goto no_wait;
+ 
+ 			/* wait for Remote receiver status OK */
+-- 
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3131361453803854821==--
