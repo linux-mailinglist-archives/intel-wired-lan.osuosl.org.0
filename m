@@ -1,53 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 143E551710D
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 May 2022 15:57:34 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37C68517015
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 May 2022 15:16:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ACB97401DD;
-	Mon,  2 May 2022 13:57:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0FCE04159A;
+	Mon,  2 May 2022 13:16:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mvvLUE_-gwGG; Mon,  2 May 2022 13:57:31 +0000 (UTC)
+	with ESMTP id H5-AlmN1Wkoh; Mon,  2 May 2022 13:16:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8772E40286;
-	Mon,  2 May 2022 13:57:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E54D341519;
+	Mon,  2 May 2022 13:16:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 301091BF3C6
- for <intel-wired-lan@lists.osuosl.org>; Sun,  1 May 2022 22:55:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C8851BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 May 2022 13:16:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 11BC6829B1
- for <intel-wired-lan@lists.osuosl.org>; Sun,  1 May 2022 22:55:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8534360ED4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 May 2022 13:16:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SpuokaC3hA_Z for <intel-wired-lan@lists.osuosl.org>;
- Sun,  1 May 2022 22:55:08 +0000 (UTC)
-X-Greylist: delayed 00:06:54 by SQLgrey-1.8.0
-Received: from angie.orcam.me.uk (angie.orcam.me.uk [IPv6:2001:4190:8020::34])
- by smtp1.osuosl.org (Postfix) with ESMTP id CCE46828DA
- for <intel-wired-lan@lists.osuosl.org>; Sun,  1 May 2022 22:55:07 +0000 (UTC)
-Received: by angie.orcam.me.uk (Postfix, from userid 500)
- id B5CF392009E; Mon,  2 May 2022 00:48:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by angie.orcam.me.uk (Postfix) with ESMTP id A6C2392009D;
- Sun,  1 May 2022 23:48:09 +0100 (BST)
-Date: Sun, 1 May 2022 23:48:09 +0100 (BST)
-From: "Maciej W. Rozycki" <macro@orcam.me.uk>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-In-Reply-To: <20220429135108.2781579-36-schnelle@linux.ibm.com>
-Message-ID: <alpine.DEB.2.21.2205012324130.9383@angie.orcam.me.uk>
-References: <20220429135108.2781579-1-schnelle@linux.ibm.com>
- <20220429135108.2781579-36-schnelle@linux.ibm.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZyZ6pj_YLQgz for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 May 2022 13:16:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C048160EB0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 May 2022 13:16:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651497364; x=1683033364;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=WwnWRBo6NRk5ss7nUr/9lnmEEsDsYIpr8tLq1uO6jqc=;
+ b=bj3ZeiK9n4bKPk5AqmNxq0ZBWrPX+n+Hzu+DaJdB03bnRHPiXibNO0lq
+ V8Toi/PB61zDCuvFUhYkKxA7S/4snt+9zQ5PGQxb3ChCW/qiJAxKf2tX8
+ wSZM3bBnqbYsbjjToTyLfg4Hin6KrRSlympIZ0OxrOnE9cpA2yAxA1/NV
+ LCLyT2FSJRyaD5tykiXk4jj/YgxW4uD9DiLEOGJ5nU/YEfHtzh9SNQT4n
+ 4hz8V/n8nGgbhaAnVMDdrE+PWTa+VU4BeDKfVTEKuR0G8tCtq+QfirddL
+ yVOmQYERp2Kb1k48iSj/FZgBzV2Clusa2kbRwlxT/IVN6ag4EJ3zIsMgk A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10334"; a="247117472"
+X-IronPort-AV: E=Sophos;i="5.91,192,1647327600"; d="scan'208";a="247117472"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 May 2022 06:16:04 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,192,1647327600"; d="scan'208";a="619881530"
+Received: from ccdlinuxdev12.iil.intel.com ([143.185.162.56])
+ by fmsmga008.fm.intel.com with ESMTP; 02 May 2022 06:16:03 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  2 May 2022 16:15:56 +0300
+Message-Id: <20220502131556.349753-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 02 May 2022 13:57:17 +0000
-Subject: Re: [Intel-wired-lan] [RFC v2 21/39] net: add HAS_IOPORT
- dependencies
+Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Enable the GPT clock
+ before sending message to the CSME
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,71 +74,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
- Michael Grzeschik <m.grzeschik@pengutronix.de>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "open list:CAN NETWORK DRIVERS" <linux-can@vger.kernel.org>,
- linux-kernel@vger.kernel.org, Ralf Baechle <ralf@linux-mips.org>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- Marc Kleine-Budde <mkl@pengutronix.de>,
- "open list:AX.25 NETWORK LAYER" <linux-hams@vger.kernel.org>,
- linux-pci@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Wolfgang Grandegger <wg@grandegger.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 29 Apr 2022, Niklas Schnelle wrote:
+Enable the dynamic GPT clock. The clock is always ticking is the guarantee
+CSME receive the H2ME message and exit from the DMoff state.
+This clock cleared upon HW initialization (D3 -> D0 transition).
 
-> In a future patch HAS_IOPORT=n will result in inb()/outb() and friends
-> not being declared. We thus need to add HAS_IOPORT as dependency for
-> those drivers using them. It also turns out that with HAS_IOPORT handled
-> explicitly HAMRADIO does not need the !S390 dependency and successfully
-> builds the bpqether driver.
-[...]
-> diff --git a/drivers/net/fddi/Kconfig b/drivers/net/fddi/Kconfig
-> index 846bf41c2717..fa3f1e0fe143 100644
-> --- a/drivers/net/fddi/Kconfig
-> +++ b/drivers/net/fddi/Kconfig
-> @@ -29,7 +29,7 @@ config DEFZA
->  
->  config DEFXX
->  	tristate "Digital DEFTA/DEFEA/DEFPA adapter support"
-> -	depends on FDDI && (PCI || EISA || TC)
-> +	depends on FDDI && (PCI || EISA || TC) && HAS_IOPORT
->  	help
->  	  This is support for the DIGITAL series of TURBOchannel (DEFTA),
->  	  EISA (DEFEA) and PCI (DEFPA) controllers which can connect you
+Fixes: 3e55d231716e ("e1000e: Add handshake with the CSME to support s0ix")
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=214821
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- NAK, this has to be sorted out differently (and I think we discussed it 
-before).
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index fa06f68c8c80..e29a718469ee 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6494,6 +6494,10 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+ 
+ 	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
+ 	    hw->mac.type >= e1000_pch_adp) {
++		/* Keep the gpt_clk_enable_d clock for CSME*/
++		mac_data = er32(FEXTNVM);
++		mac_data |= BIT(3);
++		ew32(FEXTNVM, mac_data);
+ 		/* Request ME unconfigure the device from S0ix */
+ 		mac_data = er32(H2ME);
+ 		mac_data &= ~E1000_H2ME_START_DPG;
+-- 
+2.30.2
 
- The driver works just fine with MMIO where available, so if `inb'/`outb' 
-do get removed, then only parts that rely on port I/O need to be disabled.  
-In fact there's already such provision there in drivers/net/fddi/defxx.c 
-for TURBOchannel systems (CONFIG_TC), which have no port I/O space either:
-
-#if defined(CONFIG_EISA) || defined(CONFIG_PCI)
-#define dfx_use_mmio bp->mmio
-#else
-#define dfx_use_mmio true
-#endif
-
-so I guess it's just the conditional that will have to be changed to:
-
-#ifdef CONFIG_HAS_IOPORT
-
-replacing the current explicit bus dependency list.  The compiler will 
-then optimise away all the port I/O stuff (though I suspect dummy function 
-declarations may be required for `inb'/`outb', etc.).
-
- I can verify a suitable change with a TURBOchannel configuration once the 
-MIPS part has been sorted.
-
-  Maciej
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
