@@ -1,53 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE74B51884E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 May 2022 17:20:23 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BE0E51889F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 May 2022 17:32:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43BF241767;
-	Tue,  3 May 2022 15:20:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0831460FEE;
+	Tue,  3 May 2022 15:32:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jbcotE6qUiNN; Tue,  3 May 2022 15:20:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oZfAhZEV3A4h; Tue,  3 May 2022 15:32:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D33C44175D;
-	Tue,  3 May 2022 15:20:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D144560BA1;
+	Tue,  3 May 2022 15:32:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A8FDF1BF342
- for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D1551BF342
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:32:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 968C781469
- for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 24DC860BA1
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:32:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q6jTWNX2lc2z for <intel-wired-lan@osuosl.org>;
- Tue,  3 May 2022 15:20:13 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 96E7581460
- for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:13 +0000 (UTC)
-Received: from [192.168.0.7] (ip5f5aed95.dynamic.kabel-deutschland.de
- [95.90.237.149])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 00CCF61EA192A;
- Tue,  3 May 2022 17:20:09 +0200 (CEST)
-Message-ID: <95aac667-1a6b-780f-3fd6-84ff2d987b02@molgen.mpg.de>
-Date: Tue, 3 May 2022 17:20:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Content-Language: en-US
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C2LSnx8ZCH8Y for <intel-wired-lan@osuosl.org>;
+ Tue,  3 May 2022 15:32:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 50FA960B69
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:32:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651591957; x=1683127957;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=tN8hi1PLOygpEeaVcISPoT2Zt8lx+K4AE60YRpbMLaw=;
+ b=UOwHXec75hWfWAk5MfnX0857TPvOjDXNkraPNPc/MJjNXpBriEzVylcx
+ cpvASbUhy7p2mTF67oHJbMUtVEGGI21+6wW79cPO4rdeXB7J6AETLhP7r
+ UxZ0EKm5A22OOEcMtFNYP33cBpjqQiFiVIQ7cPVAJKw7QwrpTXx1wBVRG
+ 875zewMjPWFVuNDbdIp4VMvvSkL0EzYGSKKJ2RtQCieKexsWcvzxHe74R
+ cj3jNL9rFSLZBh931jJz1huXID+m9EFEOtk21uHP6xmhgG4nRc2IfVn0I
+ jmHwAm75euRt82G9434mMMP/8D48HJezDMp08NmBOo/To9enu4hYB4hPb A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10336"; a="292694876"
+X-IronPort-AV: E=Sophos;i="5.91,195,1647327600"; d="scan'208";a="292694876"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 May 2022 08:32:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,195,1647327600"; d="scan'208";a="708067760"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga001.fm.intel.com with ESMTP; 03 May 2022 08:32:23 -0700
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 243FWMfX028462; Tue, 3 May 2022 16:32:22 +0100
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
-References: <20220503132428.1859432-1-sudheer.mogilappagari@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue,  3 May 2022 17:29:08 +0200
+Message-Id: <20220503152908.395702-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220503132428.1859432-1-sudheer.mogilappagari@intel.com>
+References: <20220503132428.1859432-1-sudheer.mogilappagari@intel.com>
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH net-next v1] ice: Expose RSS
  indirection tables for queue groups via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -62,99 +78,167 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@osuosl.org, Paul Menzel <pmenzel@molgen.mpg.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTdWRoZWVyLAoKClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KCkFtIDAzLjA1LjIyIHVt
-IDE1OjI0IHNjaHJpZWIgU3VkaGVlciBNb2dpbGFwcGFnYXJpOgo+IEZyb206IFNyaWRoYXIgU2Ft
-dWRyYWxhIDxzcmlkaGFyLnNhbXVkcmFsYUBpbnRlbC5jb20+Cj4gCj4gV2hlbiBBRFEgcXVldWUg
-Z3JvdXBzKFRDcykgYXJlIGNyZWF0ZWQgdmlhIHRjIG1xcHJpbyBjb21tYW5kLAoKUGxlYXNlIGFk
-ZCBhIHNwYWNlIGJlZm9yZSB0aGUgKC4KCj4gUlNTIGNvbnRleHRzIGFuZCBhc3NvY2lhdGVkIFJT
-UyBpbmRpcmVjdGlvbiB0YWJsZXMgYXJlIGNvbmZpZ3VyZWQKPiBhdXRvbWF0aWNhbGx5IHBlciBU
-QyBiYXNlZCBvbiB0aGUgcXVldWUgcmFuZ2VzIHNwZWNpZmllZCBmb3IKPiBlYWNoIHRyYWZmaWMg
-Y2xhc3MuCj4gCj4gRm9yIGV4Ogo+IHRjIHFkaXNjIGFkZCBkZXYgZW5wMTc1czBmMCByb290IG1x
-cHJpbyBudW1fdGMgMyBtYXAgMCAxIDIgXAo+IAlxdWV1ZXMgMkAwIDhAMiA0QDEwIGh3IDEgbW9k
-ZSBjaGFubmVsCj4gCj4gd2lsbCBjcmVhdGUgMyBxdWV1ZSBncm91cHMoVEMgMC0yKSB3aXRoIHF1
-ZXVlIHJhbmdlcyAyLCA4IGFuZCA0CgpEaXR0by4KCj4gaW4gMyBxdWV1ZSBncm91cHMuIEVhY2gg
-cXVldWUgZ3JvdXAgaXMgYXNzb2NpYXRlZCB3aXRoIGl0cwo+IG93biBSU1MgY29udGV4dCBhbmQg
-UlNTIGluZGlyZWN0aW9uIHRhYmxlLgo+IAo+IEFkZCBzdXBwb3J0IHRvIGV4cG9zZSBSU1MgaW5k
-aXJlY3Rpb24gdGFibGVzIGZvciBhbGwgQURRIHF1ZXVlCj4gZ3JvdXBzIHVzaW5nIGV0aHRvb2wg
-UlNTIGNvbnRleHRzIGludGVyZmFjZS4KPiAJZXRodG9vbCAteCBlbnAxNzVzMGYwIGNvbnRleHQg
-PHRjLW51bT4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTcmlkaGFyIFNhbXVkcmFsYTxzcmlkaGFyLnNh
-bXVkcmFsYUBpbnRlbC5jb20+CgpNaXNzaW5nIHNwYWNlIGJlZm9yZSB0aGUgPC4KCj4gU2lnbmVk
-LW9mZi1ieTogU3VkaGVlciBNb2dpbGFwcGFnYXJpIDxzdWRoZWVyLm1vZ2lsYXBwYWdhcmlAaW50
-ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0
-b29sLmMgfCA2OSArKysrKysrKysrKysrKystLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDUxIGlu
-c2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfZXRodG9vbC5jCj4gaW5kZXggNDc2YmQxYzgzYzg3Li4xZTcxYjcwZjBl
-NTIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0
-b29sLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wu
-Ywo+IEBAIC0zMTExLDM2ICszMTExLDQ3IEBAIHN0YXRpYyB1MzIgaWNlX2dldF9yeGZoX2luZGly
-X3NpemUoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldikKPiAgIAlyZXR1cm4gbnAtPnZzaS0+cnNz
-X3RhYmxlX3NpemU7Cj4gICB9Cj4gICAKPiAtLyoqCj4gLSAqIGljZV9nZXRfcnhmaCAtIGdldCB0
-aGUgUnggZmxvdyBoYXNoIGluZGlyZWN0aW9uIHRhYmxlCj4gLSAqIEBuZXRkZXY6IG5ldHdvcmsg
-aW50ZXJmYWNlIGRldmljZSBzdHJ1Y3R1cmUKPiAtICogQGluZGlyOiBpbmRpcmVjdGlvbiB0YWJs
-ZQo+IC0gKiBAa2V5OiBoYXNoIGtleQo+IC0gKiBAaGZ1bmM6IGhhc2ggZnVuY3Rpb24KPiAtICoK
-PiAtICogUmVhZHMgdGhlIGluZGlyZWN0aW9uIHRhYmxlIGRpcmVjdGx5IGZyb20gdGhlIGhhcmR3
-YXJlLgo+IC0gKi8KPiAgIHN0YXRpYyBpbnQKPiAtaWNlX2dldF9yeGZoKHN0cnVjdCBuZXRfZGV2
-aWNlICpuZXRkZXYsIHUzMiAqaW5kaXIsIHU4ICprZXksIHU4ICpoZnVuYykKPiAraWNlX2dldF9y
-eGZoX2NvbnRleHQoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgdTMyICppbmRpciwKPiArCQkg
-ICAgIHU4ICprZXksIHU4ICpoZnVuYywgdTMyIHJzc19jb250ZXh0KQo+ICAgewo+ICAgCXN0cnVj
-dCBpY2VfbmV0ZGV2X3ByaXYgKm5wID0gbmV0ZGV2X3ByaXYobmV0ZGV2KTsKPiAgIAlzdHJ1Y3Qg
-aWNlX3ZzaSAqdnNpID0gbnAtPnZzaTsKPiAgIAlzdHJ1Y3QgaWNlX3BmICpwZiA9IHZzaS0+YmFj
-azsKPiAtCWludCBlcnIsIGk7Cj4gKwl1MTYgcWNvdW50LCBvZmZzZXQ7Cj4gKwlpbnQgZXJyLCBu
-dW1fdGMsIGk7CgpudW1fdGMgaXMgZGVmaW5lZCBhcyBgX191OGAgaW4gYGluY2x1ZGUvdWFwaS9s
-aW51eC9wa3Rfc2NoZWQuaGAuIE5vIAppZGVhLCBpZiBpdOKAmXMgdXNlZnVsIHRvIHVzZSB0aGUg
-c2FtZSB0eXBlLCBvciBqdXN0IGB1bnNpZ25lZCBpbnRgLgoKPiAgIAl1OCAqbHV0Owo+ICAgCj4g
-KwlpZiAoIXRlc3RfYml0KElDRV9GTEFHX1JTU19FTkEsIHBmLT5mbGFncykpIHsKPiArCQluZXRk
-ZXZfd2FybihuZXRkZXYsICJSU1MgaXMgbm90IHN1cHBvcnRlZCBvbiB0aGlzIFZTSSFcbiIpOwo+
-ICsJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCX0KPiArCj4gKwlpZiAocnNzX2NvbnRleHQgJiYg
-IWljZV9pc19hZHFfYWN0aXZlKHBmKSkgewo+ICsJCW5ldGRldl9lcnIobmV0ZGV2LCAiUlNTIGNv
-bnRleHQgY2Fubm90IGJlIG5vbi16ZXJvIHdoZW4gQURRIGlzIG5vdCBjb25maWd1cmVkLlxuIik7
-Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9Cj4gKwo+ICsJcWNvdW50ID0gdnNpLT5tcXByaW9f
-cW9wdC5xb3B0LmNvdW50W3Jzc19jb250ZXh0XTsKPiArCW9mZnNldCA9IHZzaS0+bXFwcmlvX3Fv
-cHQucW9wdC5vZmZzZXRbcnNzX2NvbnRleHRdOwo+ICsKPiArCWlmIChyc3NfY29udGV4dCAmJiBp
-Y2VfaXNfYWRxX2FjdGl2ZShwZikpIHsKPiArCQludW1fdGMgPSB2c2ktPm1xcHJpb19xb3B0LnFv
-cHQubnVtX3RjOwo+ICsJCWlmIChyc3NfY29udGV4dCA+PSBudW1fdGMpIHsKPiArCQkJbmV0ZGV2
-X2VycihuZXRkZXYsICJSU1MgY29udGV4dDolZCAgPiBudW1fdGM6JWRcbiIsCj4gKwkJCQkgICBy
-c3NfY29udGV4dCwgbnVtX3RjKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsJCS8q
-IFVzZSBjaGFubmVsIFZTSSBvZiBnaXZlbiBUQyAqLwo+ICsJCXZzaSA9IHZzaS0+dGNfbWFwX3Zz
-aVtyc3NfY29udGV4dF07Cj4gKwl9Cj4gKwoKCktpbmQgcmVnYXJkcywKClBhdWwKCgo+ICAgCWlm
-IChoZnVuYykKPiAgIAkJKmhmdW5jID0gRVRIX1JTU19IQVNIX1RPUDsKPiAgIAo+ICAgCWlmICgh
-aW5kaXIpCj4gICAJCXJldHVybiAwOwo+ICAgCj4gLQlpZiAoIXRlc3RfYml0KElDRV9GTEFHX1JT
-U19FTkEsIHBmLT5mbGFncykpIHsKPiAtCQkvKiBSU1Mgbm90IHN1cHBvcnRlZCByZXR1cm4gZXJy
-b3IgaGVyZSAqLwo+IC0JCW5ldGRldl93YXJuKG5ldGRldiwgIlJTUyBpcyBub3QgY29uZmlndXJl
-ZCBvbiB0aGlzIFZTSSFcbiIpOwo+IC0JCXJldHVybiAtRUlPOwo+IC0JfQo+IC0KPiAgIAlsdXQg
-PSBremFsbG9jKHZzaS0+cnNzX3RhYmxlX3NpemUsIEdGUF9LRVJORUwpOwo+ICAgCWlmICghbHV0
-KQo+ICAgCQlyZXR1cm4gLUVOT01FTTsKPiBAQCAtMzE1MywxNCArMzE2NCwzNSBAQCBpY2VfZ2V0
-X3J4Zmgoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgdTMyICppbmRpciwgdTggKmtleSwgdTgg
-KmhmdW5jKQo+ICAgCWlmIChlcnIpCj4gICAJCWdvdG8gb3V0Owo+ICAgCj4gKwlpZiAoaWNlX2lz
-X2FkcV9hY3RpdmUocGYpKSB7Cj4gKwkJZm9yIChpID0gMDsgaSA8IHZzaS0+cnNzX3RhYmxlX3Np
-emU7IGkrKykKPiArCQkJaW5kaXJbaV0gPSBvZmZzZXQgKyBsdXRbaV0gJSBxY291bnQ7Cj4gKwkJ
-Z290byBvdXQ7Cj4gKwl9Cj4gKwo+ICAgCWZvciAoaSA9IDA7IGkgPCB2c2ktPnJzc190YWJsZV9z
-aXplOyBpKyspCj4gLQkJaW5kaXJbaV0gPSAodTMyKShsdXRbaV0pOwo+ICsJCWluZGlyW2ldID0g
-bHV0W2ldOwo+ICAgCj4gICBvdXQ6Cj4gICAJa2ZyZWUobHV0KTsKPiAgIAlyZXR1cm4gZXJyOwo+
-ICAgfQo+ICAgCj4gKy8qKgo+ICsgKiBpY2VfZ2V0X3J4ZmggLSBnZXQgdGhlIFJ4IGZsb3cgaGFz
-aCBpbmRpcmVjdGlvbiB0YWJsZQo+ICsgKiBAbmV0ZGV2OiBuZXR3b3JrIGludGVyZmFjZSBkZXZp
-Y2Ugc3RydWN0dXJlCj4gKyAqIEBpbmRpcjogaW5kaXJlY3Rpb24gdGFibGUKPiArICogQGtleTog
-aGFzaCBrZXkKPiArICogQGhmdW5jOiBoYXNoIGZ1bmN0aW9uCj4gKyAqCj4gKyAqIFJlYWRzIHRo
-ZSBpbmRpcmVjdGlvbiB0YWJsZSBkaXJlY3RseSBmcm9tIHRoZSBoYXJkd2FyZS4KPiArICovCj4g
-K3N0YXRpYyBpbnQKPiAraWNlX2dldF9yeGZoKHN0cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYsIHUz
-MiAqaW5kaXIsIHU4ICprZXksIHU4ICpoZnVuYykKPiArewo+ICsJcmV0dXJuIGljZV9nZXRfcnhm
-aF9jb250ZXh0KG5ldGRldiwgaW5kaXIsIGtleSwgaGZ1bmMsIDApOwo+ICt9Cj4gKwo+ICAgLyoq
-Cj4gICAgKiBpY2Vfc2V0X3J4ZmggLSBzZXQgdGhlIFJ4IGZsb3cgaGFzaCBpbmRpcmVjdGlvbiB0
-YWJsZQo+ICAgICogQG5ldGRldjogbmV0d29yayBpbnRlcmZhY2UgZGV2aWNlIHN0cnVjdHVyZQo+
-IEBAIC00MTAyLDYgKzQxMzQsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGV0aHRvb2xfb3BzIGlj
-ZV9ldGh0b29sX29wcyA9IHsKPiAgIAkuc2V0X3BhdXNlcGFyYW0JCT0gaWNlX3NldF9wYXVzZXBh
-cmFtLAo+ICAgCS5nZXRfcnhmaF9rZXlfc2l6ZQk9IGljZV9nZXRfcnhmaF9rZXlfc2l6ZSwKPiAg
-IAkuZ2V0X3J4ZmhfaW5kaXJfc2l6ZQk9IGljZV9nZXRfcnhmaF9pbmRpcl9zaXplLAo+ICsJLmdl
-dF9yeGZoX2NvbnRleHQJPSBpY2VfZ2V0X3J4ZmhfY29udGV4dCwKPiAgIAkuZ2V0X3J4ZmgJCT0g
-aWNlX2dldF9yeGZoLAo+ICAgCS5zZXRfcnhmaAkJPSBpY2Vfc2V0X3J4ZmgsCj4gICAJLmdldF9j
-aGFubmVscwkJPSBpY2VfZ2V0X2NoYW5uZWxzLApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
-cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+Date: Tue,  3 May 2022 06:24:28 -0700
+
+> From: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> 
+> When ADQ queue groups(TCs) are created via tc mqprio command,
+> RSS contexts and associated RSS indirection tables are configured
+> automatically per TC based on the queue ranges specified for
+> each traffic class.
+> 
+> For ex:
+> tc qdisc add dev enp175s0f0 root mqprio num_tc 3 map 0 1 2 \
+> 	queues 2@0 8@2 4@10 hw 1 mode channel
+> 
+> will create 3 queue groups(TC 0-2) with queue ranges 2, 8 and 4
+> in 3 queue groups. Each queue group is associated with its
+> own RSS context and RSS indirection table.
+> 
+> Add support to expose RSS indirection tables for all ADQ queue
+> groups using ethtool RSS contexts interface.
+> 	ethtool -x enp175s0f0 context <tc-num>
+> 
+> Signed-off-by: Sridhar Samudrala<sridhar.samudrala@intel.com>
+> Signed-off-by: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+
+You didn't answer to any of my comments or questions during the
+internal review, including the ones that Paul has just asked, and
+now you're posting the same version to IWL to get it accepted
+upstream.
+That's not how it works, NAK.
+
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c | 69 +++++++++++++++-----
+>  1 file changed, 51 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index 476bd1c83c87..1e71b70f0e52 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -3111,36 +3111,47 @@ static u32 ice_get_rxfh_indir_size(struct net_device *netdev)
+>  	return np->vsi->rss_table_size;
+>  }
+>  
+> -/**
+> - * ice_get_rxfh - get the Rx flow hash indirection table
+> - * @netdev: network interface device structure
+> - * @indir: indirection table
+> - * @key: hash key
+> - * @hfunc: hash function
+> - *
+> - * Reads the indirection table directly from the hardware.
+> - */
+>  static int
+> -ice_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+> +ice_get_rxfh_context(struct net_device *netdev, u32 *indir,
+> +		     u8 *key, u8 *hfunc, u32 rss_context)
+>  {
+>  	struct ice_netdev_priv *np = netdev_priv(netdev);
+>  	struct ice_vsi *vsi = np->vsi;
+>  	struct ice_pf *pf = vsi->back;
+> -	int err, i;
+> +	u16 qcount, offset;
+> +	int err, num_tc, i;
+>  	u8 *lut;
+>  
+> +	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+> +		netdev_warn(netdev, "RSS is not supported on this VSI!\n");
+> +		return -EOPNOTSUPP;
+> +	}
+> +
+> +	if (rss_context && !ice_is_adq_active(pf)) {
+> +		netdev_err(netdev, "RSS context cannot be non-zero when ADQ is not configured.\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	qcount = vsi->mqprio_qopt.qopt.count[rss_context];
+> +	offset = vsi->mqprio_qopt.qopt.offset[rss_context];
+> +
+> +	if (rss_context && ice_is_adq_active(pf)) {
+> +		num_tc = vsi->mqprio_qopt.qopt.num_tc;
+> +		if (rss_context >= num_tc) {
+> +			netdev_err(netdev, "RSS context:%d  > num_tc:%d\n",
+> +				   rss_context, num_tc);
+> +			return -EINVAL;
+> +		}
+> +		/* Use channel VSI of given TC */
+> +		vsi = vsi->tc_map_vsi[rss_context];
+> +	}
+> +
+>  	if (hfunc)
+>  		*hfunc = ETH_RSS_HASH_TOP;
+>  
+>  	if (!indir)
+>  		return 0;
+>  
+> -	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+> -		/* RSS not supported return error here */
+> -		netdev_warn(netdev, "RSS is not configured on this VSI!\n");
+> -		return -EIO;
+> -	}
+> -
+>  	lut = kzalloc(vsi->rss_table_size, GFP_KERNEL);
+>  	if (!lut)
+>  		return -ENOMEM;
+> @@ -3153,14 +3164,35 @@ ice_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+>  	if (err)
+>  		goto out;
+>  
+> +	if (ice_is_adq_active(pf)) {
+> +		for (i = 0; i < vsi->rss_table_size; i++)
+> +			indir[i] = offset + lut[i] % qcount;
+> +		goto out;
+> +	}
+> +
+>  	for (i = 0; i < vsi->rss_table_size; i++)
+> -		indir[i] = (u32)(lut[i]);
+> +		indir[i] = lut[i];
+>  
+>  out:
+>  	kfree(lut);
+>  	return err;
+>  }
+>  
+> +/**
+> + * ice_get_rxfh - get the Rx flow hash indirection table
+> + * @netdev: network interface device structure
+> + * @indir: indirection table
+> + * @key: hash key
+> + * @hfunc: hash function
+> + *
+> + * Reads the indirection table directly from the hardware.
+> + */
+> +static int
+> +ice_get_rxfh(struct net_device *netdev, u32 *indir, u8 *key, u8 *hfunc)
+> +{
+> +	return ice_get_rxfh_context(netdev, indir, key, hfunc, 0);
+> +}
+> +
+>  /**
+>   * ice_set_rxfh - set the Rx flow hash indirection table
+>   * @netdev: network interface device structure
+> @@ -4102,6 +4134,7 @@ static const struct ethtool_ops ice_ethtool_ops = {
+>  	.set_pauseparam		= ice_set_pauseparam,
+>  	.get_rxfh_key_size	= ice_get_rxfh_key_size,
+>  	.get_rxfh_indir_size	= ice_get_rxfh_indir_size,
+> +	.get_rxfh_context	= ice_get_rxfh_context,
+>  	.get_rxfh		= ice_get_rxfh,
+>  	.set_rxfh		= ice_set_rxfh,
+>  	.get_channels		= ice_get_channels,
+> -- 
+> 2.27.0
+
+Thanks,
+Al
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
