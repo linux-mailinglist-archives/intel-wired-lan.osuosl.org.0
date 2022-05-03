@@ -2,75 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7A905187C5
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 May 2022 17:02:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE74B51884E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 May 2022 17:20:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0E7A2405AE;
-	Tue,  3 May 2022 15:02:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 43BF241767;
+	Tue,  3 May 2022 15:20:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 23IizylkAmJj; Tue,  3 May 2022 15:02:04 +0000 (UTC)
+	with ESMTP id jbcotE6qUiNN; Tue,  3 May 2022 15:20:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3FA3B400DC;
-	Tue,  3 May 2022 15:02:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id D33C44175D;
+	Tue,  3 May 2022 15:20:20 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 112651BF41A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 May 2022 15:01:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A8FDF1BF342
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F2B61818B5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 May 2022 15:01:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 968C781469
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=amazon.de
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bWwzWFGec_0Y for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 May 2022 15:01:57 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from smtp-fw-9102.amazon.com (smtp-fw-9102.amazon.com
- [207.171.184.29])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 06EB58188A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 May 2022 15:01:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1651590118; x=1683126118;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=i72tkaJ6oaE7f4rhJeF786bxD2ArgcaWXuxFVcervbo=;
- b=uk4zuZWVHj3f9F48pn1oEy/JtZxe+98DGGsfJilmdRtM+tlYgd7NeaR+
- mahlqI+aAn0ThiHAU2pgoVilyjbOE9GK1AWfoTST3nzlNwnapQkLXoQg8
- uYIcrSI1CuIQNVGW9sVz9bpRwPnH1LXcPGmlti06e7FHrT6UeSz6n5Qdc 4=;
-X-IronPort-AV: E=Sophos;i="5.91,195,1647302400"; d="scan'208";a="215841774"
-Received: from pdx4-co-svc-p1-lb2-vlan3.amazon.com (HELO
- email-inbound-relay-iad-1a-e823fbde.us-east-1.amazon.com) ([10.25.36.214])
- by smtp-border-fw-9102.sea19.amazon.com with ESMTP; 03 May 2022 15:00:58 +0000
-Received: from EX13D08EUB003.ant.amazon.com
- (iad12-ws-svc-p26-lb9-vlan3.iad.amazon.com [10.40.163.38])
- by email-inbound-relay-iad-1a-e823fbde.us-east-1.amazon.com (Postfix) with
- ESMTPS id 54951C0905; Tue,  3 May 2022 15:00:54 +0000 (UTC)
-Received: from EX13MTAUEB002.ant.amazon.com (10.43.60.12) by
- EX13D08EUB003.ant.amazon.com (10.43.166.117) with Microsoft SMTP Server (TLS)
- id 15.0.1497.32; Tue, 3 May 2022 15:00:53 +0000
-Received: from dev-dsk-mheyne-1b-c1524648.eu-west-1.amazon.com (10.15.60.66)
- by mail-relay.amazon.com (10.43.60.234) with Microsoft SMTP Server id
- 15.0.1497.32 via Frontend Transport; Tue, 3 May 2022 15:00:52 +0000
-Received: by dev-dsk-mheyne-1b-c1524648.eu-west-1.amazon.com (Postfix,
- from userid 5466572)
- id 8627641129; Tue,  3 May 2022 15:00:51 +0000 (UTC)
-From: Maximilian Heyne <mheyne@amazon.de>
-To: 
-Date: Tue, 3 May 2022 15:00:17 +0000
-Message-ID: <20220503150017.16148-1-mheyne@amazon.de>
-X-Mailer: git-send-email 2.32.0
+ with ESMTP id Q6jTWNX2lc2z for <intel-wired-lan@osuosl.org>;
+ Tue,  3 May 2022 15:20:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 96E7581460
+ for <intel-wired-lan@osuosl.org>; Tue,  3 May 2022 15:20:13 +0000 (UTC)
+Received: from [192.168.0.7] (ip5f5aed95.dynamic.kabel-deutschland.de
+ [95.90.237.149])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 00CCF61EA192A;
+ Tue,  3 May 2022 17:20:09 +0200 (CEST)
+Message-ID: <95aac667-1a6b-780f-3fd6-84ff2d987b02@molgen.mpg.de>
+Date: Tue, 3 May 2022 17:20:09 +0200
 MIME-Version: 1.0
-Precedence: Bulk
-Subject: [Intel-wired-lan] [PATCH net-next v2] drivers,
- ixgbe: show VF statistics
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+References: <20220503132428.1859432-1-sudheer.mogilappagari@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20220503132428.1859432-1-sudheer.mogilappagari@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1] ice: Expose RSS
+ indirection tables for queue groups via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -80,314 +62,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Maximilian Heyne <mheyne@amazon.de>, netdev@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This change exports network statistics for individual virtual functions
-via ethtool and iproute2.
-
-The code for retrieving the statistics from the device and printing via
-ethtool is taken from the out-of-tree driver.  The feature was
-introduced with version 2.0.75.7, so the diff between this version and
-the previous version 2.0.72.4 was used to identify required changes.  I
-took commit c8d4725e985d ("intel: Update drivers to use
-ethtool_sprintf") into account and fixed a few style issues.
-
-Apart from that, ndo_get_vf_stats is implemented so that iproute2 also
-prints the statistics.
-
-Signed-off-by: Maximilian Heyne <mheyne@amazon.de>
----
-v2: implemented the ndo_get_vf_stats callback
-
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      | 34 ++++++++
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 26 +++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 86 +++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  7 ++
- 4 files changed, 152 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 921a4d977d65..48444ab9e0b1 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -167,12 +167,46 @@ enum ixgbe_tx_flags {
- #define IXGBE_82599_VF_DEVICE_ID        0x10ED
- #define IXGBE_X540_VF_DEVICE_ID         0x1515
- 
-+#define UPDATE_VF_COUNTER_32bit(reg, last_counter, counter)	\
-+	{							\
-+		u32 current_counter = IXGBE_READ_REG(hw, reg);	\
-+		if (current_counter < last_counter)		\
-+			counter += 0x100000000LL;		\
-+		last_counter = current_counter;			\
-+		counter &= 0xFFFFFFFF00000000LL;		\
-+		counter |= current_counter;			\
-+	}
-+
-+#define UPDATE_VF_COUNTER_36bit(reg_lsb, reg_msb, last_counter, counter) \
-+	{								 \
-+		u64 current_counter_lsb = IXGBE_READ_REG(hw, reg_lsb);	 \
-+		u64 current_counter_msb = IXGBE_READ_REG(hw, reg_msb);	 \
-+		u64 current_counter = (current_counter_msb << 32) |	 \
-+			current_counter_lsb;				 \
-+		if (current_counter < last_counter)			 \
-+			counter += 0x1000000000LL;			 \
-+		last_counter = current_counter;				 \
-+		counter &= 0xFFFFFFF000000000LL;			 \
-+		counter |= current_counter;				 \
-+	}
-+
-+struct vf_stats {
-+	u64 gprc;
-+	u64 gorc;
-+	u64 gptc;
-+	u64 gotc;
-+	u64 mprc;
-+};
-+
- struct vf_data_storage {
- 	struct pci_dev *vfdev;
- 	unsigned char vf_mac_addresses[ETH_ALEN];
- 	u16 vf_mc_hashes[IXGBE_MAX_VF_MC_ENTRIES];
- 	u16 num_vf_mc_hashes;
- 	bool clear_to_send;
-+	struct vf_stats vfstats;
-+	struct vf_stats last_vfstats;
-+	struct vf_stats saved_rst_vfstats;
- 	bool pf_set_mac;
- 	u16 pf_vlan; /* When set, guest VLAN config not allowed. */
- 	u16 pf_qos;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 628d0eb0599f..ae94d927bb46 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -122,9 +122,13 @@ static const struct ixgbe_stats ixgbe_gstrings_stats[] = {
- 			 sizeof(((struct ixgbe_adapter *)0)->stats.pxoffrxc) + \
- 			 sizeof(((struct ixgbe_adapter *)0)->stats.pxofftxc)) \
- 			/ sizeof(u64))
-+#define IXGBE_VF_STATS_LEN \
-+	((((struct ixgbe_adapter *)netdev_priv(netdev))->num_vfs) * \
-+	  (sizeof(struct vf_stats) / sizeof(u64)))
- #define IXGBE_STATS_LEN (IXGBE_GLOBAL_STATS_LEN + \
- 			 IXGBE_PB_STATS_LEN + \
--			 IXGBE_QUEUE_STATS_LEN)
-+			 IXGBE_QUEUE_STATS_LEN + \
-+			 IXGBE_VF_STATS_LEN)
- 
- static const char ixgbe_gstrings_test[][ETH_GSTRING_LEN] = {
- 	"Register test  (offline)", "Eeprom test    (offline)",
-@@ -1302,6 +1306,8 @@ static void ixgbe_get_ethtool_stats(struct net_device *netdev,
- 	struct ixgbe_adapter *adapter = netdev_priv(netdev);
- 	struct rtnl_link_stats64 temp;
- 	const struct rtnl_link_stats64 *net_stats;
-+	u64 *queue_stat;
-+	int stat_count, k;
- 	unsigned int start;
- 	struct ixgbe_ring *ring;
- 	int i, j;
-@@ -1368,11 +1374,22 @@ static void ixgbe_get_ethtool_stats(struct net_device *netdev,
- 		data[i++] = adapter->stats.pxonrxc[j];
- 		data[i++] = adapter->stats.pxoffrxc[j];
- 	}
-+	stat_count = sizeof(struct vf_stats) / sizeof(u64);
-+	for (j = 0; j < adapter->num_vfs; j++) {
-+		queue_stat = (u64 *)&adapter->vfinfo[j].vfstats;
-+		for (k = 0; k < stat_count; k++)
-+			data[i + k] = queue_stat[k];
-+		queue_stat = (u64 *)&adapter->vfinfo[j].saved_rst_vfstats;
-+		for (k = 0; k < stat_count; k++)
-+			data[i + k] += queue_stat[k];
-+		i += k;
-+	}
- }
- 
- static void ixgbe_get_strings(struct net_device *netdev, u32 stringset,
- 			      u8 *data)
- {
-+	struct ixgbe_adapter *adapter = netdev_priv(netdev);
- 	unsigned int i;
- 	u8 *p = data;
- 
-@@ -1401,6 +1418,13 @@ static void ixgbe_get_strings(struct net_device *netdev, u32 stringset,
- 			ethtool_sprintf(&p, "rx_pb_%u_pxon", i);
- 			ethtool_sprintf(&p, "rx_pb_%u_pxoff", i);
- 		}
-+		for (i = 0; i < adapter->num_vfs; i++) {
-+			ethtool_sprintf(&p, "VF %u Rx Packets", i);
-+			ethtool_sprintf(&p, "VF %u Rx Bytes", i);
-+			ethtool_sprintf(&p, "VF %u Tx Packets", i);
-+			ethtool_sprintf(&p, "VF %u Tx Bytes", i);
-+			ethtool_sprintf(&p, "VF %u MC Packets", i);
-+		}
- 		/* BUG_ON(p - data != IXGBE_STATS_LEN * ETH_GSTRING_LEN); */
- 		break;
- 	case ETH_SS_PRIV_FLAGS:
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index c4a4954aa317..f60d8b425f61 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -5548,6 +5548,47 @@ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
- 	return ret;
- }
- 
-+/**
-+ * ixgbe_clear_vf_stats_counters - Clear out VF stats after reset
-+ * @adapter: board private structure
-+ *
-+ * On a reset we need to clear out the VF stats or accounting gets
-+ * messed up because they're not clear on read.
-+ **/
-+static void ixgbe_clear_vf_stats_counters(struct ixgbe_adapter *adapter)
-+{
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	int i;
-+
-+	for (i = 0; i < adapter->num_vfs; i++) {
-+		adapter->vfinfo[i].last_vfstats.gprc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGPRC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gprc +=
-+			adapter->vfinfo[i].vfstats.gprc;
-+		adapter->vfinfo[i].vfstats.gprc = 0;
-+		adapter->vfinfo[i].last_vfstats.gptc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGPTC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gptc +=
-+			adapter->vfinfo[i].vfstats.gptc;
-+		adapter->vfinfo[i].vfstats.gptc = 0;
-+		adapter->vfinfo[i].last_vfstats.gorc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGORC_LSB(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gorc +=
-+			adapter->vfinfo[i].vfstats.gorc;
-+		adapter->vfinfo[i].vfstats.gorc = 0;
-+		adapter->vfinfo[i].last_vfstats.gotc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGOTC_LSB(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gotc +=
-+			adapter->vfinfo[i].vfstats.gotc;
-+		adapter->vfinfo[i].vfstats.gotc = 0;
-+		adapter->vfinfo[i].last_vfstats.mprc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFMPRC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.mprc +=
-+			adapter->vfinfo[i].vfstats.mprc;
-+		adapter->vfinfo[i].vfstats.mprc = 0;
-+	}
-+}
-+
- static void ixgbe_setup_gpie(struct ixgbe_adapter *adapter)
- {
- 	struct ixgbe_hw *hw = &adapter->hw;
-@@ -5683,6 +5724,7 @@ static void ixgbe_up_complete(struct ixgbe_adapter *adapter)
- 	adapter->link_check_timeout = jiffies;
- 	mod_timer(&adapter->service_timer, jiffies);
- 
-+	ixgbe_clear_vf_stats_counters(adapter);
- 	/* Set PF Reset Done bit so PF/VF Mail Ops can work */
- 	ctrl_ext = IXGBE_READ_REG(hw, IXGBE_CTRL_EXT);
- 	ctrl_ext |= IXGBE_CTRL_EXT_PFRSTD;
-@@ -7270,6 +7312,32 @@ void ixgbe_update_stats(struct ixgbe_adapter *adapter)
- 	netdev->stats.rx_length_errors = hwstats->rlec;
- 	netdev->stats.rx_crc_errors = hwstats->crcerrs;
- 	netdev->stats.rx_missed_errors = total_mpc;
-+
-+	/* VF Stats Collection - skip while resetting because these
-+	 * are not clear on read and otherwise you'll sometimes get
-+	 * crazy values.
-+	 */
-+	if (!test_bit(__IXGBE_RESETTING, &adapter->state)) {
-+		for (i = 0; i < adapter->num_vfs; i++) {
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFGPRC(i),
-+					adapter->vfinfo[i].last_vfstats.gprc,
-+					adapter->vfinfo[i].vfstats.gprc);
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFGPTC(i),
-+					adapter->vfinfo[i].last_vfstats.gptc,
-+					adapter->vfinfo[i].vfstats.gptc);
-+			UPDATE_VF_COUNTER_36bit(IXGBE_PVFGORC_LSB(i),
-+					IXGBE_PVFGORC_MSB(i),
-+					adapter->vfinfo[i].last_vfstats.gorc,
-+					adapter->vfinfo[i].vfstats.gorc);
-+			UPDATE_VF_COUNTER_36bit(IXGBE_PVFGOTC_LSB(i),
-+					IXGBE_PVFGOTC_MSB(i),
-+					adapter->vfinfo[i].last_vfstats.gotc,
-+					adapter->vfinfo[i].vfstats.gotc);
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFMPRC(i),
-+					adapter->vfinfo[i].last_vfstats.mprc,
-+					adapter->vfinfo[i].vfstats.mprc);
-+		}
-+	}
- }
- 
- /**
-@@ -8995,6 +9063,23 @@ static void ixgbe_get_stats64(struct net_device *netdev,
- 	stats->rx_missed_errors	= netdev->stats.rx_missed_errors;
- }
- 
-+static int ixgbe_ndo_get_vf_stats(struct net_device *netdev, int vf,
-+				  struct ifla_vf_stats *vf_stats)
-+{
-+	struct ixgbe_adapter *adapter = netdev_priv(netdev);
-+
-+	if (vf < 0 || vf >= adapter->num_vfs)
-+		return -EINVAL;
-+
-+	vf_stats->rx_packets = adapter->vfinfo[vf].vfstats.gprc;
-+	vf_stats->rx_bytes   = adapter->vfinfo[vf].vfstats.gorc;
-+	vf_stats->tx_packets = adapter->vfinfo[vf].vfstats.gptc;
-+	vf_stats->tx_bytes   = adapter->vfinfo[vf].vfstats.gotc;
-+	vf_stats->multicast  = adapter->vfinfo[vf].vfstats.mprc;
-+
-+	return 0;
-+}
-+
- #ifdef CONFIG_IXGBE_DCB
- /**
-  * ixgbe_validate_rtr - verify 802.1Qp to Rx packet buffer mapping is valid.
-@@ -10311,6 +10396,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
- 	.ndo_set_vf_rss_query_en = ixgbe_ndo_set_vf_rss_query_en,
- 	.ndo_set_vf_trust	= ixgbe_ndo_set_vf_trust,
- 	.ndo_get_vf_config	= ixgbe_ndo_get_vf_config,
-+	.ndo_get_vf_stats	= ixgbe_ndo_get_vf_stats,
- 	.ndo_get_stats64	= ixgbe_get_stats64,
- 	.ndo_setup_tc		= __ixgbe_setup_tc,
- #ifdef IXGBE_FCOE
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 6da9880d766a..7f7ea468ffa9 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -2533,6 +2533,13 @@ enum {
- #define IXGBE_PVFTXDCTL(P)	(0x06028 + (0x40 * (P)))
- #define IXGBE_PVFTDWBAL(P)	(0x06038 + (0x40 * (P)))
- #define IXGBE_PVFTDWBAH(P)	(0x0603C + (0x40 * (P)))
-+#define IXGBE_PVFGPRC(x)	(0x0101C + (0x40 * (x)))
-+#define IXGBE_PVFGPTC(x)	(0x08300 + (0x04 * (x)))
-+#define IXGBE_PVFGORC_LSB(x)	(0x01020 + (0x40 * (x)))
-+#define IXGBE_PVFGORC_MSB(x)	(0x0D020 + (0x40 * (x)))
-+#define IXGBE_PVFGOTC_LSB(x)	(0x08400 + (0x08 * (x)))
-+#define IXGBE_PVFGOTC_MSB(x)	(0x08404 + (0x08 * (x)))
-+#define IXGBE_PVFMPRC(x)	(0x0D01C + (0x40 * (x)))
- 
- #define IXGBE_PVFTDWBALn(q_per_pool, vf_number, vf_q_index) \
- 		(IXGBE_PVFTDWBAL((q_per_pool)*(vf_number) + (vf_q_index)))
--- 
-2.32.0
-
-
-
-
-Amazon Development Center Germany GmbH
-Krausenstr. 38
-10117 Berlin
-Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
-Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
-Sitz: Berlin
-Ust-ID: DE 289 237 879
-
-
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBTdWRoZWVyLAoKClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KCkFtIDAzLjA1LjIyIHVt
+IDE1OjI0IHNjaHJpZWIgU3VkaGVlciBNb2dpbGFwcGFnYXJpOgo+IEZyb206IFNyaWRoYXIgU2Ft
+dWRyYWxhIDxzcmlkaGFyLnNhbXVkcmFsYUBpbnRlbC5jb20+Cj4gCj4gV2hlbiBBRFEgcXVldWUg
+Z3JvdXBzKFRDcykgYXJlIGNyZWF0ZWQgdmlhIHRjIG1xcHJpbyBjb21tYW5kLAoKUGxlYXNlIGFk
+ZCBhIHNwYWNlIGJlZm9yZSB0aGUgKC4KCj4gUlNTIGNvbnRleHRzIGFuZCBhc3NvY2lhdGVkIFJT
+UyBpbmRpcmVjdGlvbiB0YWJsZXMgYXJlIGNvbmZpZ3VyZWQKPiBhdXRvbWF0aWNhbGx5IHBlciBU
+QyBiYXNlZCBvbiB0aGUgcXVldWUgcmFuZ2VzIHNwZWNpZmllZCBmb3IKPiBlYWNoIHRyYWZmaWMg
+Y2xhc3MuCj4gCj4gRm9yIGV4Ogo+IHRjIHFkaXNjIGFkZCBkZXYgZW5wMTc1czBmMCByb290IG1x
+cHJpbyBudW1fdGMgMyBtYXAgMCAxIDIgXAo+IAlxdWV1ZXMgMkAwIDhAMiA0QDEwIGh3IDEgbW9k
+ZSBjaGFubmVsCj4gCj4gd2lsbCBjcmVhdGUgMyBxdWV1ZSBncm91cHMoVEMgMC0yKSB3aXRoIHF1
+ZXVlIHJhbmdlcyAyLCA4IGFuZCA0CgpEaXR0by4KCj4gaW4gMyBxdWV1ZSBncm91cHMuIEVhY2gg
+cXVldWUgZ3JvdXAgaXMgYXNzb2NpYXRlZCB3aXRoIGl0cwo+IG93biBSU1MgY29udGV4dCBhbmQg
+UlNTIGluZGlyZWN0aW9uIHRhYmxlLgo+IAo+IEFkZCBzdXBwb3J0IHRvIGV4cG9zZSBSU1MgaW5k
+aXJlY3Rpb24gdGFibGVzIGZvciBhbGwgQURRIHF1ZXVlCj4gZ3JvdXBzIHVzaW5nIGV0aHRvb2wg
+UlNTIGNvbnRleHRzIGludGVyZmFjZS4KPiAJZXRodG9vbCAteCBlbnAxNzVzMGYwIGNvbnRleHQg
+PHRjLW51bT4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTcmlkaGFyIFNhbXVkcmFsYTxzcmlkaGFyLnNh
+bXVkcmFsYUBpbnRlbC5jb20+CgpNaXNzaW5nIHNwYWNlIGJlZm9yZSB0aGUgPC4KCj4gU2lnbmVk
+LW9mZi1ieTogU3VkaGVlciBNb2dpbGFwcGFnYXJpIDxzdWRoZWVyLm1vZ2lsYXBwYWdhcmlAaW50
+ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0
+b29sLmMgfCA2OSArKysrKysrKysrKysrKystLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDUxIGlu
+c2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2ljZS9pY2VfZXRodG9vbC5jCj4gaW5kZXggNDc2YmQxYzgzYzg3Li4xZTcxYjcwZjBl
+NTIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0
+b29sLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wu
+Ywo+IEBAIC0zMTExLDM2ICszMTExLDQ3IEBAIHN0YXRpYyB1MzIgaWNlX2dldF9yeGZoX2luZGly
+X3NpemUoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldikKPiAgIAlyZXR1cm4gbnAtPnZzaS0+cnNz
+X3RhYmxlX3NpemU7Cj4gICB9Cj4gICAKPiAtLyoqCj4gLSAqIGljZV9nZXRfcnhmaCAtIGdldCB0
+aGUgUnggZmxvdyBoYXNoIGluZGlyZWN0aW9uIHRhYmxlCj4gLSAqIEBuZXRkZXY6IG5ldHdvcmsg
+aW50ZXJmYWNlIGRldmljZSBzdHJ1Y3R1cmUKPiAtICogQGluZGlyOiBpbmRpcmVjdGlvbiB0YWJs
+ZQo+IC0gKiBAa2V5OiBoYXNoIGtleQo+IC0gKiBAaGZ1bmM6IGhhc2ggZnVuY3Rpb24KPiAtICoK
+PiAtICogUmVhZHMgdGhlIGluZGlyZWN0aW9uIHRhYmxlIGRpcmVjdGx5IGZyb20gdGhlIGhhcmR3
+YXJlLgo+IC0gKi8KPiAgIHN0YXRpYyBpbnQKPiAtaWNlX2dldF9yeGZoKHN0cnVjdCBuZXRfZGV2
+aWNlICpuZXRkZXYsIHUzMiAqaW5kaXIsIHU4ICprZXksIHU4ICpoZnVuYykKPiAraWNlX2dldF9y
+eGZoX2NvbnRleHQoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgdTMyICppbmRpciwKPiArCQkg
+ICAgIHU4ICprZXksIHU4ICpoZnVuYywgdTMyIHJzc19jb250ZXh0KQo+ICAgewo+ICAgCXN0cnVj
+dCBpY2VfbmV0ZGV2X3ByaXYgKm5wID0gbmV0ZGV2X3ByaXYobmV0ZGV2KTsKPiAgIAlzdHJ1Y3Qg
+aWNlX3ZzaSAqdnNpID0gbnAtPnZzaTsKPiAgIAlzdHJ1Y3QgaWNlX3BmICpwZiA9IHZzaS0+YmFj
+azsKPiAtCWludCBlcnIsIGk7Cj4gKwl1MTYgcWNvdW50LCBvZmZzZXQ7Cj4gKwlpbnQgZXJyLCBu
+dW1fdGMsIGk7CgpudW1fdGMgaXMgZGVmaW5lZCBhcyBgX191OGAgaW4gYGluY2x1ZGUvdWFwaS9s
+aW51eC9wa3Rfc2NoZWQuaGAuIE5vIAppZGVhLCBpZiBpdOKAmXMgdXNlZnVsIHRvIHVzZSB0aGUg
+c2FtZSB0eXBlLCBvciBqdXN0IGB1bnNpZ25lZCBpbnRgLgoKPiAgIAl1OCAqbHV0Owo+ICAgCj4g
+KwlpZiAoIXRlc3RfYml0KElDRV9GTEFHX1JTU19FTkEsIHBmLT5mbGFncykpIHsKPiArCQluZXRk
+ZXZfd2FybihuZXRkZXYsICJSU1MgaXMgbm90IHN1cHBvcnRlZCBvbiB0aGlzIFZTSSFcbiIpOwo+
+ICsJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCX0KPiArCj4gKwlpZiAocnNzX2NvbnRleHQgJiYg
+IWljZV9pc19hZHFfYWN0aXZlKHBmKSkgewo+ICsJCW5ldGRldl9lcnIobmV0ZGV2LCAiUlNTIGNv
+bnRleHQgY2Fubm90IGJlIG5vbi16ZXJvIHdoZW4gQURRIGlzIG5vdCBjb25maWd1cmVkLlxuIik7
+Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwl9Cj4gKwo+ICsJcWNvdW50ID0gdnNpLT5tcXByaW9f
+cW9wdC5xb3B0LmNvdW50W3Jzc19jb250ZXh0XTsKPiArCW9mZnNldCA9IHZzaS0+bXFwcmlvX3Fv
+cHQucW9wdC5vZmZzZXRbcnNzX2NvbnRleHRdOwo+ICsKPiArCWlmIChyc3NfY29udGV4dCAmJiBp
+Y2VfaXNfYWRxX2FjdGl2ZShwZikpIHsKPiArCQludW1fdGMgPSB2c2ktPm1xcHJpb19xb3B0LnFv
+cHQubnVtX3RjOwo+ICsJCWlmIChyc3NfY29udGV4dCA+PSBudW1fdGMpIHsKPiArCQkJbmV0ZGV2
+X2VycihuZXRkZXYsICJSU1MgY29udGV4dDolZCAgPiBudW1fdGM6JWRcbiIsCj4gKwkJCQkgICBy
+c3NfY29udGV4dCwgbnVtX3RjKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsJCS8q
+IFVzZSBjaGFubmVsIFZTSSBvZiBnaXZlbiBUQyAqLwo+ICsJCXZzaSA9IHZzaS0+dGNfbWFwX3Zz
+aVtyc3NfY29udGV4dF07Cj4gKwl9Cj4gKwoKCktpbmQgcmVnYXJkcywKClBhdWwKCgo+ICAgCWlm
+IChoZnVuYykKPiAgIAkJKmhmdW5jID0gRVRIX1JTU19IQVNIX1RPUDsKPiAgIAo+ICAgCWlmICgh
+aW5kaXIpCj4gICAJCXJldHVybiAwOwo+ICAgCj4gLQlpZiAoIXRlc3RfYml0KElDRV9GTEFHX1JT
+U19FTkEsIHBmLT5mbGFncykpIHsKPiAtCQkvKiBSU1Mgbm90IHN1cHBvcnRlZCByZXR1cm4gZXJy
+b3IgaGVyZSAqLwo+IC0JCW5ldGRldl93YXJuKG5ldGRldiwgIlJTUyBpcyBub3QgY29uZmlndXJl
+ZCBvbiB0aGlzIFZTSSFcbiIpOwo+IC0JCXJldHVybiAtRUlPOwo+IC0JfQo+IC0KPiAgIAlsdXQg
+PSBremFsbG9jKHZzaS0+cnNzX3RhYmxlX3NpemUsIEdGUF9LRVJORUwpOwo+ICAgCWlmICghbHV0
+KQo+ICAgCQlyZXR1cm4gLUVOT01FTTsKPiBAQCAtMzE1MywxNCArMzE2NCwzNSBAQCBpY2VfZ2V0
+X3J4Zmgoc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiwgdTMyICppbmRpciwgdTggKmtleSwgdTgg
+KmhmdW5jKQo+ICAgCWlmIChlcnIpCj4gICAJCWdvdG8gb3V0Owo+ICAgCj4gKwlpZiAoaWNlX2lz
+X2FkcV9hY3RpdmUocGYpKSB7Cj4gKwkJZm9yIChpID0gMDsgaSA8IHZzaS0+cnNzX3RhYmxlX3Np
+emU7IGkrKykKPiArCQkJaW5kaXJbaV0gPSBvZmZzZXQgKyBsdXRbaV0gJSBxY291bnQ7Cj4gKwkJ
+Z290byBvdXQ7Cj4gKwl9Cj4gKwo+ICAgCWZvciAoaSA9IDA7IGkgPCB2c2ktPnJzc190YWJsZV9z
+aXplOyBpKyspCj4gLQkJaW5kaXJbaV0gPSAodTMyKShsdXRbaV0pOwo+ICsJCWluZGlyW2ldID0g
+bHV0W2ldOwo+ICAgCj4gICBvdXQ6Cj4gICAJa2ZyZWUobHV0KTsKPiAgIAlyZXR1cm4gZXJyOwo+
+ICAgfQo+ICAgCj4gKy8qKgo+ICsgKiBpY2VfZ2V0X3J4ZmggLSBnZXQgdGhlIFJ4IGZsb3cgaGFz
+aCBpbmRpcmVjdGlvbiB0YWJsZQo+ICsgKiBAbmV0ZGV2OiBuZXR3b3JrIGludGVyZmFjZSBkZXZp
+Y2Ugc3RydWN0dXJlCj4gKyAqIEBpbmRpcjogaW5kaXJlY3Rpb24gdGFibGUKPiArICogQGtleTog
+aGFzaCBrZXkKPiArICogQGhmdW5jOiBoYXNoIGZ1bmN0aW9uCj4gKyAqCj4gKyAqIFJlYWRzIHRo
+ZSBpbmRpcmVjdGlvbiB0YWJsZSBkaXJlY3RseSBmcm9tIHRoZSBoYXJkd2FyZS4KPiArICovCj4g
+K3N0YXRpYyBpbnQKPiAraWNlX2dldF9yeGZoKHN0cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYsIHUz
+MiAqaW5kaXIsIHU4ICprZXksIHU4ICpoZnVuYykKPiArewo+ICsJcmV0dXJuIGljZV9nZXRfcnhm
+aF9jb250ZXh0KG5ldGRldiwgaW5kaXIsIGtleSwgaGZ1bmMsIDApOwo+ICt9Cj4gKwo+ICAgLyoq
+Cj4gICAgKiBpY2Vfc2V0X3J4ZmggLSBzZXQgdGhlIFJ4IGZsb3cgaGFzaCBpbmRpcmVjdGlvbiB0
+YWJsZQo+ICAgICogQG5ldGRldjogbmV0d29yayBpbnRlcmZhY2UgZGV2aWNlIHN0cnVjdHVyZQo+
+IEBAIC00MTAyLDYgKzQxMzQsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGV0aHRvb2xfb3BzIGlj
+ZV9ldGh0b29sX29wcyA9IHsKPiAgIAkuc2V0X3BhdXNlcGFyYW0JCT0gaWNlX3NldF9wYXVzZXBh
+cmFtLAo+ICAgCS5nZXRfcnhmaF9rZXlfc2l6ZQk9IGljZV9nZXRfcnhmaF9rZXlfc2l6ZSwKPiAg
+IAkuZ2V0X3J4ZmhfaW5kaXJfc2l6ZQk9IGljZV9nZXRfcnhmaF9pbmRpcl9zaXplLAo+ICsJLmdl
+dF9yeGZoX2NvbnRleHQJPSBpY2VfZ2V0X3J4ZmhfY29udGV4dCwKPiAgIAkuZ2V0X3J4ZmgJCT0g
+aWNlX2dldF9yeGZoLAo+ICAgCS5zZXRfcnhmaAkJPSBpY2Vfc2V0X3J4ZmgsCj4gICAJLmdldF9j
+aGFubmVscwkJPSBpY2VfZ2V0X2NoYW5uZWxzLApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
+cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLXdpcmVkLWxhbgo=
