@@ -1,67 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD3D351DE9A
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 May 2022 20:04:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E735E51E546
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 May 2022 09:38:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6A7E482CDD;
-	Fri,  6 May 2022 18:04:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5E45F60E11;
+	Sat,  7 May 2022 07:38:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sfgAAWu6X3hT; Fri,  6 May 2022 18:04:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UoSHzRrtNgMP; Sat,  7 May 2022 07:38:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9E09882CC7;
-	Fri,  6 May 2022 18:04:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 632C560DFF;
+	Sat,  7 May 2022 07:38:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7D0DD1BF288
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 May 2022 18:04:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 412681BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 May 2022 07:38:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 718F740531
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 May 2022 18:04:24 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 35181829AF
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 May 2022 07:38:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AqgCElEZ5kvq for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 May 2022 18:04:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8529A4041C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 May 2022 18:04:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651860261; x=1683396261;
- h=from:to:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=u9o6IlHH4g+PdVehVNz5D1HPC1Oc1bloGLt4cEoHwkc=;
- b=bcDCHQ2R4P37vySwYg/p+b58sR3R6g7Nrg7harJ7PugcLfCR+Amt6hdj
- Oa4GlgwGSIU5rx82JfI7uP6d/0IaqKGZic7rzvDBTgdaZeDxEmMTO+gL2
- xQbDGfdGThuYJATb8X3DVP54ZjcgxReqFhBV2g+QMFRXJxhOeOlTNOlcV
- 6FihTqRVTjoFrz711mTUl7iJOCO7+cgoh6DWNha1hTM8LWdTRPK2/tTp6
- EYpYpX+Oa7coktSCyGSE3nUzDW/56QomWcHDf+x6iZD36vNGMLIdIknjR
- 4Y8as847zas2iAdjRBp+sIMb42PHCn6oKzz3+FxnfIrQpe/0OXJi5E/mw g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10339"; a="250545329"
-X-IronPort-AV: E=Sophos;i="5.91,205,1647327600"; d="scan'208";a="250545329"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2022 11:04:20 -0700
-X-IronPort-AV: E=Sophos;i="5.91,205,1647327600"; d="scan'208";a="695287726"
-Received: from dmert-dev.jf.intel.com ([10.166.241.14])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2022 11:04:20 -0700
-From: Dave Ertman <david.m.ertman@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  6 May 2022 11:04:10 -0700
-Message-Id: <20220506180410.309280-1-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.35.1
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id smnUNNuVbVm3 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  7 May 2022 07:38:04 +0000 (UTC)
+X-Greylist: delayed 00:09:23 by SQLgrey-1.8.0
+Received: from a.mx.secunet.com (a.mx.secunet.com [62.96.220.36])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C17CB829A9
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 May 2022 07:38:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by a.mx.secunet.com (Postfix) with ESMTP id 28CB220501;
+ Sat,  7 May 2022 09:28:37 +0200 (CEST)
+X-Virus-Scanned: by secunet
+Received: from a.mx.secunet.com ([127.0.0.1])
+ by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l9ZUqdJwKGbd; Sat,  7 May 2022 09:28:36 +0200 (CEST)
+Received: from mailout1.secunet.com (mailout1.secunet.com [62.96.220.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by a.mx.secunet.com (Postfix) with ESMTPS id 5D9E6200A2;
+ Sat,  7 May 2022 09:28:36 +0200 (CEST)
+Received: from cas-essen-01.secunet.de (unknown [10.53.40.201])
+ by mailout1.secunet.com (Postfix) with ESMTP id 55E8A80004A;
+ Sat,  7 May 2022 09:28:36 +0200 (CEST)
+Received: from mbx-essen-01.secunet.de (10.53.40.197) by
+ cas-essen-01.secunet.de (10.53.40.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Sat, 7 May 2022 09:28:36 +0200
+Received: from gauss2.secunet.de (10.182.7.193) by mbx-essen-01.secunet.de
+ (10.53.40.197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Sat, 7 May
+ 2022 09:28:35 +0200
+Received: by gauss2.secunet.de (Postfix, from userid 1000)
+ id 5B3E53180AAB; Sat,  7 May 2022 09:28:35 +0200 (CEST)
+Date: Sat, 7 May 2022 09:28:35 +0200
+From: Steffen Klassert <steffen.klassert@secunet.com>
+To: Leon Romanovsky <leon@kernel.org>
+Message-ID: <20220507072835.GI680067@gauss3.secunet.de>
+References: <cover.1651743750.git.leonro@nvidia.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] ice: prevent low-core machines
- crashing on DCB config
+Content-Disposition: inline
+In-Reply-To: <cover.1651743750.git.leonro@nvidia.com>
+X-ClientProxiedBy: cas-essen-02.secunet.de (10.53.40.202) To
+ mbx-essen-01.secunet.de (10.53.40.197)
+X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
+Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 0/8] Be explicit with XFRM
+ offload direction
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,84 +81,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Herbert Xu <herbert@gondor.apana.org.au>, netdev@vger.kernel.org,
+ David Ahern <dsahern@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ intel-wired-lan@lists.osuosl.org, Raed Salem <raeds@nvidia.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Leon Romanovsky <leonro@nvidia.com>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In the case where the driver is loaded on a low-core (< 8) core system,
-and then a DCB config applied with the number of traffic classes
-greater than the number of queues defined at probe time, there is a
-chance to run into a NULL pointer dereference error in the queue
-mapping code.
+On Thu, May 05, 2022 at 01:06:37PM +0300, Leon Romanovsky wrote:
+> From: Leon Romanovsky <leonro@nvidia.com>
+> 
+> Hi Steffen,
+> 
+> I may admit that the title of this series is not the best one as it
+> contains straightforward cleanups and code that converts flags to
+> something less confusing.
+> 
+> This series follows removal of FPGA IPsec code from the mlx5 driver and
+> based on net-next commit 4950b6990e3b ("Merge branch 'ocelot-vcap-cleanups'").
+> 
+> As such, first two patches delete code that was used by mlx5 FPGA code
+> but isn't needed anymore.
+> 
+> Third patch is simple struct rename.
+> 
+> Rest of the patches separate user's provided flags variable from driver's
+> usage. This allows us to created more simple in-kernel interface, that
+> supports type checking without blending different properties into one
+> variable. It is achieved by converting flags to specific bitfield variables
+> with clear, meaningful names.
+>     
+> Such change allows us more clear addition of new input flags needed to
+> mark IPsec offload type.
+> 
+> The followup code uses this extensively:
+> https://git.kernel.org/pub/scm/linux/kernel/git/leon/linux-rdma.git/log/?h=xfrm-next
+> 
+> Thanks
+> 
+> Leon Romanovsky (8):
+>   xfrm: free not used XFRM_ESP_NO_TRAILER flag
+>   xfrm: delete not used number of external headers
+>   xfrm: rename xfrm_state_offload struct to allow reuse
+>   xfrm: store and rely on direction to construct offload flags
+>   ixgbe: propagate XFRM offload state direction instead of flags
+>   netdevsim: rely on XFRM state direction instead of flags
+>   net/mlx5e: Use XFRM state direction instead of flags
+>   xfrm: drop not needed flags variable in XFRM offload struct
 
-Put in a check and an error message that will stop the NULL pointer
-dereference and notify the user that the VSI is in an indeterminate
-state.
-
-Fixes: 3a858ba392c3 ("ice: Add support for VSI allocation and deallocation")
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c    | 22 ++++++++++++++------
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  2 ++
- 2 files changed, 18 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 136d7911adb4..d7b68ec4dde5 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -738,9 +738,14 @@ void ice_vsi_map_rings_to_vectors(struct ice_vsi *vsi)
- 		for (q_id = q_base; q_id < (q_base + tx_rings_per_v); q_id++) {
- 			struct ice_tx_ring *tx_ring = vsi->tx_rings[q_id];
- 
--			tx_ring->q_vector = q_vector;
--			tx_ring->next = q_vector->tx.tx_ring;
--			q_vector->tx.tx_ring = tx_ring;
-+			if (tx_ring) {
-+				tx_ring->q_vector = q_vector;
-+				tx_ring->next = q_vector->tx.tx_ring;
-+				q_vector->tx.tx_ring = tx_ring;
-+			} else {
-+				dev_warn(ice_pf_to_dev(vsi->back), "NULL Tx ring found\n");
-+				break;
-+			}
- 		}
- 		tx_rings_rem -= tx_rings_per_v;
- 
-@@ -755,9 +760,14 @@ void ice_vsi_map_rings_to_vectors(struct ice_vsi *vsi)
- 		for (q_id = q_base; q_id < (q_base + rx_rings_per_v); q_id++) {
- 			struct ice_rx_ring *rx_ring = vsi->rx_rings[q_id];
- 
--			rx_ring->q_vector = q_vector;
--			rx_ring->next = q_vector->rx.rx_ring;
--			q_vector->rx.rx_ring = rx_ring;
-+			if (rx_ring) {
-+				rx_ring->q_vector = q_vector;
-+				rx_ring->next = q_vector->rx.rx_ring;
-+				q_vector->rx.rx_ring = rx_ring;
-+			} else {
-+				dev_warn(ice_pf_to_dev(vsi->back), "NULL Rx ring found\n");
-+				break;
-+			}
- 		}
- 		rx_rings_rem -= rx_rings_per_v;
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index add90e75f05c..fdae0b8ef525 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -744,6 +744,8 @@ void ice_pf_dcb_recfg(struct ice_pf *pf)
- 			continue;
- 
- 		if (vsi->type == ICE_VSI_PF) {
-+			if (ice_dcb_get_num_tc(dcbcfg) > vsi->alloc_txq)
-+				dev_warn(ice_pf_to_dev(vsi->back), "More TCs defined than queues/rings allocated.\n");
- 			tc_map = ice_dcb_get_ena_tc(dcbcfg);
- 
- 			/* If DCBX request non-contiguous TC, then configure
--- 
-2.35.1
-
+Series applied, thanks a lot Leon!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
