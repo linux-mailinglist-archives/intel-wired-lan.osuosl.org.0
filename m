@@ -1,67 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E009451EC05
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  8 May 2022 09:09:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83B8651EC1E
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  8 May 2022 10:09:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 913F0408F9;
-	Sun,  8 May 2022 07:09:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E704827C6;
+	Sun,  8 May 2022 08:09:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aW1Tc0B0uKrD; Sun,  8 May 2022 07:09:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BKHeKALuDI3g; Sun,  8 May 2022 08:09:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4FF63408F8;
-	Sun,  8 May 2022 07:09:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B4A7F827A1;
+	Sun,  8 May 2022 08:09:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 19BAF1BF31F
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 07:09:15 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1DFE71BF2CA
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 08:09:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EE83360E7E
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 07:09:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 111A0827A9
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 08:09:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3a0XlgwBr_HJ for <intel-wired-lan@lists.osuosl.org>;
- Sun,  8 May 2022 07:09:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 525E560AD6
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 07:09:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651993753; x=1683529753;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=S2rDDYVosDIM2LYbVqgUy7UmWJN7NB+U3bo5oZoy/Sg=;
- b=eY7DDbJa8HnRErvEWPQ5FGgVprmtlbKu1HXq+EyCt5TfwknOpDAKRZx0
- C2xa36RdjTh4/oHZ7lwm9/PLhh/13oNT/97EVPeL63V1xRH7Pu+V0kJEW
- XSqrHDlntdYGfzmS76SPevucMwI1O/QxBQ4YXRaY+slkKVDjiCLl/DcCW
- nyUt5JE+nkV15aTTKpfh7rIo0oi+GkFKVqMENvmzSTNmjG8XcIQcCikdZ
- Ia/hzvfKkxKxlmAg3Iyzl2i2w14CMsS64fyt7/CifRPsHmJUKWO3YoSxP
- VTojgSWnChFyjyTCJtJgivPwAYMrCdDtkj8pESWfnR1JuwFFHZvC+8izt w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10340"; a="248707557"
-X-IronPort-AV: E=Sophos;i="5.91,208,1647327600"; d="scan'208";a="248707557"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 May 2022 00:09:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,208,1647327600"; d="scan'208";a="695818363"
-Received: from ccdlinuxdev12.iil.intel.com ([143.185.162.56])
- by orsmga004.jf.intel.com with ESMTP; 08 May 2022 00:09:11 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Sun,  8 May 2022 10:09:05 +0300
-Message-Id: <20220508070905.1878172-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.30.2
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Di6L9K17kVp8 for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  8 May 2022 08:09:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F017C827A1
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 May 2022 08:09:01 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aed42.dynamic.kabel-deutschland.de
+ [95.90.237.66])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7465C61E6478B;
+ Sun,  8 May 2022 10:08:58 +0200 (CEST)
+Message-ID: <0e56824a-4a9e-c843-a7e0-d6e89dce1175@molgen.mpg.de>
+Date: Sun, 8 May 2022 10:08:57 +0200
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 1/1] e1000e: Enable GPT clock before
- sending message to CSME
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: Sasha Neftin <sasha.neftin@intel.com>
+References: <20220508070905.1878172-1-sasha.neftin@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20220508070905.1878172-1-sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] e1000e: Enable GPT clock
+ before sending message to CSME
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,46 +62,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On corporate (CSME) ADL systems, the Ethernet Controller may stop working
-("HW unit hang") after exiting from the s0ix state. The reason is that
-CSME misses the message sent by the host. Enabling the dynamic GPT clock
-solves this problem. This clock is cleared upon HW initialization.
-
-Fixes: 3e55d231716e ("e1000e: Add handshake with the CSME to support S0ix")
-Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=214821
-Reviewed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
-v2:
-Correct commit message and minor fix in comment.
- drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index fa06f68c8c80..c64102b29862 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6494,6 +6494,10 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
- 
- 	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
- 	    hw->mac.type >= e1000_pch_adp) {
-+		/* Keep the GPT clock enabled for CSME */
-+		mac_data = er32(FEXTNVM);
-+		mac_data |= BIT(3);
-+		ew32(FEXTNVM, mac_data);
- 		/* Request ME unconfigure the device from S0ix */
- 		mac_data = er32(H2ME);
- 		mac_data &= ~E1000_H2ME_START_DPG;
--- 
-2.30.2
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBTYXNoYSwKCgpBbSAwOC4wNS4yMiB1bSAwOTowOSBzY2hyaWViIFNhc2hhIE5lZnRpbjoK
+PiBPbiBjb3Jwb3JhdGUgKENTTUUpIEFETCBzeXN0ZW1zLCB0aGUgRXRoZXJuZXQgQ29udHJvbGxl
+ciBtYXkgc3RvcCB3b3JraW5nCj4gKCJIVyB1bml0IGhhbmciKSBhZnRlciBleGl0aW5nIGZyb20g
+dGhlIHMwaXggc3RhdGUuIFRoZSByZWFzb24gaXMgdGhhdAo+IENTTUUgbWlzc2VzIHRoZSBtZXNz
+YWdlIHNlbnQgYnkgdGhlIGhvc3QuCgpXaGF0IG1lc3NhZ2UgZXhhY3RseSBieSB0aGUgd2F5PwoK
+PiBFbmFibGluZyB0aGUgZHluYW1pYyBHUFQgY2xvY2sgc29sdmVzIHRoaXMgcHJvYmxlbS4gVGhp
+cyBjbG9jayBpcwo+IGNsZWFyZWQgdXBvbiBIVyBpbml0aWFsaXphdGlvbi4K4oCcRW5hYmxpbmfi
+gJ0gc291bmRzIGxpa2UgaXTigJlzIG5vdCBydW5uaW5nIGJlZm9yZS4gQnV0IHJlYWRpbmcgdGhl
+IGNvbW1lbnQsIAppdOKAmXMgcnVubmluZy4gQ291bGQgeW91IG1ha2UgdGhhdCBtb3JlIGNsZWFy
+IHBsZWFzZT8gVGhlIEdQVCBjbG9jayBpcyAKcnVubmluZyB3aGVuIGluIFMwaXg/CgpMYXN0bHks
+IGlzIHRoYXQgYSBDU01FIGZpcm13YXJlIGJ1ZyBhbmQgd2hhdCBDU01FIGZpcm13YXJlIHZlcnNp
+b24gd2FzIGl0PwoKPiBGaXhlczogM2U1NWQyMzE3MTZlICgiZTEwMDBlOiBBZGQgaGFuZHNoYWtl
+IHdpdGggdGhlIENTTUUgdG8gc3VwcG9ydCBTMGl4IikKPiBCdWd6aWxsYTogaHR0cHM6Ly9idWd6
+aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMTQ4MjEKPiBSZXZpZXdlZC1ieTogRGlt
+YSBSdWluc2tpeSA8ZGltYS5ydWluc2tpeUBpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogU2Fz
+aGEgTmVmdGluIDxzYXNoYS5uZWZ0aW5AaW50ZWwuY29tPgo+IC0tLQo+IHYyOgo+IENvcnJlY3Qg
+Y29tbWl0IG1lc3NhZ2UgYW5kIG1pbm9yIGZpeCBpbiBjb21tZW50Lgo+ICAgZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIHwgNCArKysrCj4gICAxIGZpbGUgY2hhbmdl
+ZCwgNCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2UxMDAwZS9uZXRkZXYuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAw
+ZS9uZXRkZXYuYwo+IGluZGV4IGZhMDZmNjhjOGM4MC4uYzY0MTAyYjI5ODYyIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+ICsrKyBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+IEBAIC02NDk0LDYgKzY0
+OTQsMTAgQEAgc3RhdGljIHZvaWQgZTEwMDBlX3MwaXhfZXhpdF9mbG93KHN0cnVjdCBlMTAwMF9h
+ZGFwdGVyICphZGFwdGVyKQo+ICAgCj4gICAJaWYgKGVyMzIoRldTTSkgJiBFMTAwMF9JQ0hfRldT
+TV9GV19WQUxJRCAmJgo+ICAgCSAgICBody0+bWFjLnR5cGUgPj0gZTEwMDBfcGNoX2FkcCkgewo+
+ICsJCS8qIEtlZXAgdGhlIEdQVCBjbG9jayBlbmFibGVkIGZvciBDU01FICovCj4gKwkJbWFjX2Rh
+dGEgPSBlcjMyKEZFWFROVk0pOwo+ICsJCW1hY19kYXRhIHw9IEJJVCgzKTsKPiArCQlldzMyKEZF
+WFROVk0sIG1hY19kYXRhKTsKPiAgIAkJLyogUmVxdWVzdCBNRSB1bmNvbmZpZ3VyZSB0aGUgZGV2
+aWNlIGZyb20gUzBpeCAqLwo+ICAgCQltYWNfZGF0YSA9IGVyMzIoSDJNRSk7Cj4gICAJCW1hY19k
+YXRhICY9IH5FMTAwMF9IMk1FX1NUQVJUX0RQRzsKCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxh
+biBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5v
+c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
