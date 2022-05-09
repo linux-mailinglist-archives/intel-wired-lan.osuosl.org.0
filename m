@@ -1,77 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56A3E51FAC5
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 May 2022 13:04:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 298EB5204E4
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 May 2022 21:02:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E51A94091E;
-	Mon,  9 May 2022 11:04:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E5A640257;
+	Mon,  9 May 2022 19:02:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bfqam3n4iaXM; Mon,  9 May 2022 11:04:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4e--RSlC28Wy; Mon,  9 May 2022 19:02:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A1D04408F1;
-	Mon,  9 May 2022 11:04:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0DFA440207;
+	Mon,  9 May 2022 19:02:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8A5581BF3A7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 11:04:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DC4A51BF283
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 772FF60BC5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 11:04:10 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C73CC60C2C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=amazon.de
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xzkFsHKHhMxl for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 May 2022 11:04:09 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from smtp-fw-80007.amazon.com (smtp-fw-80007.amazon.com
- [99.78.197.218])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5BAF060BB5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 11:04:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.de; i=@amazon.de; q=dns/txt; s=amazon201209;
- t=1652094250; x=1683630250;
+ with ESMTP id w9SSDMJCD6wO for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 May 2022 19:02:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6EA69605AF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1652122922; x=1683658922;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=075BsDc5HXl7kI8wpEo4V8pVRoj8X6Y+Wcpcup/WQ8Q=;
- b=UuNbkJpTadYJ2XUEMbZc+xccGI5rY3u6oufxdY3322NfZhg8iMOKFHtn
- REXRFtTnKXL6D2trS9L8iBHAiMN0iNCnhiZ7+x6vGwJvalyOazlZaRBf7
- /QjuGl9tTwYJGMTp2MZmqpEhorsI/JO83GiIt9EKL/c9Pi/jeHljGq8j+ w=;
-X-IronPort-AV: E=Sophos;i="5.91,211,1647302400"; d="scan'208";a="86603329"
-Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
- email-inbound-relay-pdx-2c-51ba86d8.us-west-2.amazon.com) ([10.25.36.210])
- by smtp-border-fw-80007.pdx80.corp.amazon.com with ESMTP;
- 09 May 2022 11:03:53 +0000
-Received: from EX13D08EUB002.ant.amazon.com
- (pdx1-ws-svc-p6-lb9-vlan2.pdx.amazon.com [10.236.137.194])
- by email-inbound-relay-pdx-2c-51ba86d8.us-west-2.amazon.com (Postfix) with
- ESMTPS id 2A3E88A98D; Mon,  9 May 2022 11:03:52 +0000 (UTC)
-Received: from EX13MTAUEA001.ant.amazon.com (10.43.61.82) by
- EX13D08EUB002.ant.amazon.com (10.43.166.232) with Microsoft SMTP Server (TLS)
- id 15.0.1497.32; Mon, 9 May 2022 11:03:50 +0000
-Received: from dev-dsk-mheyne-1b-c1524648.eu-west-1.amazon.com (10.15.60.66)
- by mail-relay.amazon.com (10.43.61.243) with Microsoft SMTP Server id
- 15.0.1497.32 via Frontend Transport; Mon, 9 May 2022 11:03:49 +0000
-Received: by dev-dsk-mheyne-1b-c1524648.eu-west-1.amazon.com (Postfix,
- from userid 5466572)
- id CA7E841131; Mon,  9 May 2022 11:03:48 +0000 (UTC)
-From: Maximilian Heyne <mheyne@amazon.de>
-To: 
-Date: Mon, 9 May 2022 11:03:39 +0000
-Message-ID: <20220509110340.100814-1-mheyne@amazon.de>
-X-Mailer: git-send-email 2.32.0
+ bh=M/3pwZDcMrCcluFyIFn44sBq9smO0misOGvPNpAdA14=;
+ b=hIS+TRX0uKh92cElSgJ6ME+bcYfuQ0yC3kD0rlT9NOGXDEkj+136zPDO
+ v2G5Wkp+QDC1RjGPvpdWtCzbl0kxSxSUK8yJosqP2AA0xGSs4rwJVe1VW
+ x1of12mR39Sy+k6rmIOX7DjYZoCNJWjH3m9fOxyH5a+jZiEkzcQlKQQZl
+ mqzPahKs+LladR7WMYuRLkMYHwPkPBlsfVujxAci/Vh4dzA6+NE3YuPPV
+ B/5kATj+5QdCy5EEp+V9CA+G+MJeZuM65kejkvaJFYt/nr+noI8eScks9
+ GrOZDuTlSsFY2zCrcvMP2A0ZvY49QXgIdLt/MmAWD7zt+tFKp/qF4WowI g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10342"; a="267985471"
+X-IronPort-AV: E=Sophos;i="5.91,212,1647327600"; d="scan'208";a="267985471"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 May 2022 12:01:44 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,212,1647327600"; d="scan'208";a="657270379"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by FMSMGA003.fm.intel.com with ESMTP; 09 May 2022 12:01:43 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 249J1goK015683; Mon, 9 May 2022 20:01:42 +0100
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  9 May 2022 21:01:18 +0200
+Message-Id: <20220509190118.7507-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Precedence: Bulk
-Subject: [Intel-wired-lan] [PATCH net-next v3] drivers,
- ixgbe: export vf statistics
+Subject: [Intel-wired-lan] [PATCH net] ice: ignore protocol field in GTP
+ offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -81,247 +77,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Maximilian Heyne <mheyne@amazon.de>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This change retrieves network metrics for virtual functions from the
-device and exports them via the iproute2 interface.
+Commit 34a897758efe ("ice: Add support for inner etype in switchdev")
+added the ability to match on inner ethertype. A side effect of that change
+is that it is now impossible to add some filters for protocols which do not
+contain inner ethtype field. tc requires the protocol field to be specified
+when providing certain other options, e.g. src_ip. This is a problem in
+case of GTP - when user wants to specify e.g. src_ip, they also need to
+specify protocol in tc command (otherwise tc fails with: Illegal "src_ip").
+Because GTP is a tunnel, the protocol field is treated as inner protocol.
+GTP does not contain inner ethtype field and the filter cannot be added.
 
-The code for retrieving the statistics from the device is taken from the
-out-of-tree driver.  The feature was introduced with version 2.0.75.7,
-so the diff between this version and the previous version 2.0.72.4 was
-used to identify required changes. The export via ethtool is omitted in
-favor of using the standard ndo_get_vf_stats interface.
+To fix this, ignore the ethertype field in case of GTP filters.
 
-Per-VF statistics can now be printed, for instance, via
-
-  ip --statistics link show dev eth0
-
-Signed-off-by: Maximilian Heyne <mheyne@amazon.de>
+Fixes: 9a225f81f540 ("ice: Support GTP-U and GTP-C offload in switchdev")
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
-v2: implemented the ndo_get_vf_stats callback
-v3: as per discussion, removed the ethtool changes
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      | 34 ++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 86 +++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  7 ++
- 3 files changed, 127 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 921a4d977d65..48444ab9e0b1 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -167,12 +167,46 @@ enum ixgbe_tx_flags {
- #define IXGBE_82599_VF_DEVICE_ID        0x10ED
- #define IXGBE_X540_VF_DEVICE_ID         0x1515
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index 3acd9f921c44..734bfa121e24 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -994,7 +994,9 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 		n_proto_key = ntohs(match.key->n_proto);
+ 		n_proto_mask = ntohs(match.mask->n_proto);
  
-+#define UPDATE_VF_COUNTER_32bit(reg, last_counter, counter)	\
-+	{							\
-+		u32 current_counter = IXGBE_READ_REG(hw, reg);	\
-+		if (current_counter < last_counter)		\
-+			counter += 0x100000000LL;		\
-+		last_counter = current_counter;			\
-+		counter &= 0xFFFFFFFF00000000LL;		\
-+		counter |= current_counter;			\
-+	}
-+
-+#define UPDATE_VF_COUNTER_36bit(reg_lsb, reg_msb, last_counter, counter) \
-+	{								 \
-+		u64 current_counter_lsb = IXGBE_READ_REG(hw, reg_lsb);	 \
-+		u64 current_counter_msb = IXGBE_READ_REG(hw, reg_msb);	 \
-+		u64 current_counter = (current_counter_msb << 32) |	 \
-+			current_counter_lsb;				 \
-+		if (current_counter < last_counter)			 \
-+			counter += 0x1000000000LL;			 \
-+		last_counter = current_counter;				 \
-+		counter &= 0xFFFFFFF000000000LL;			 \
-+		counter |= current_counter;				 \
-+	}
-+
-+struct vf_stats {
-+	u64 gprc;
-+	u64 gorc;
-+	u64 gptc;
-+	u64 gotc;
-+	u64 mprc;
-+};
-+
- struct vf_data_storage {
- 	struct pci_dev *vfdev;
- 	unsigned char vf_mac_addresses[ETH_ALEN];
- 	u16 vf_mc_hashes[IXGBE_MAX_VF_MC_ENTRIES];
- 	u16 num_vf_mc_hashes;
- 	bool clear_to_send;
-+	struct vf_stats vfstats;
-+	struct vf_stats last_vfstats;
-+	struct vf_stats saved_rst_vfstats;
- 	bool pf_set_mac;
- 	u16 pf_vlan; /* When set, guest VLAN config not allowed. */
- 	u16 pf_qos;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index c4a4954aa317..f60d8b425f61 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -5548,6 +5548,47 @@ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
- 	return ret;
- }
- 
-+/**
-+ * ixgbe_clear_vf_stats_counters - Clear out VF stats after reset
-+ * @adapter: board private structure
-+ *
-+ * On a reset we need to clear out the VF stats or accounting gets
-+ * messed up because they're not clear on read.
-+ **/
-+static void ixgbe_clear_vf_stats_counters(struct ixgbe_adapter *adapter)
-+{
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	int i;
-+
-+	for (i = 0; i < adapter->num_vfs; i++) {
-+		adapter->vfinfo[i].last_vfstats.gprc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGPRC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gprc +=
-+			adapter->vfinfo[i].vfstats.gprc;
-+		adapter->vfinfo[i].vfstats.gprc = 0;
-+		adapter->vfinfo[i].last_vfstats.gptc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGPTC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gptc +=
-+			adapter->vfinfo[i].vfstats.gptc;
-+		adapter->vfinfo[i].vfstats.gptc = 0;
-+		adapter->vfinfo[i].last_vfstats.gorc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGORC_LSB(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gorc +=
-+			adapter->vfinfo[i].vfstats.gorc;
-+		adapter->vfinfo[i].vfstats.gorc = 0;
-+		adapter->vfinfo[i].last_vfstats.gotc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFGOTC_LSB(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.gotc +=
-+			adapter->vfinfo[i].vfstats.gotc;
-+		adapter->vfinfo[i].vfstats.gotc = 0;
-+		adapter->vfinfo[i].last_vfstats.mprc =
-+			IXGBE_READ_REG(hw, IXGBE_PVFMPRC(i));
-+		adapter->vfinfo[i].saved_rst_vfstats.mprc +=
-+			adapter->vfinfo[i].vfstats.mprc;
-+		adapter->vfinfo[i].vfstats.mprc = 0;
-+	}
-+}
-+
- static void ixgbe_setup_gpie(struct ixgbe_adapter *adapter)
- {
- 	struct ixgbe_hw *hw = &adapter->hw;
-@@ -5683,6 +5724,7 @@ static void ixgbe_up_complete(struct ixgbe_adapter *adapter)
- 	adapter->link_check_timeout = jiffies;
- 	mod_timer(&adapter->service_timer, jiffies);
- 
-+	ixgbe_clear_vf_stats_counters(adapter);
- 	/* Set PF Reset Done bit so PF/VF Mail Ops can work */
- 	ctrl_ext = IXGBE_READ_REG(hw, IXGBE_CTRL_EXT);
- 	ctrl_ext |= IXGBE_CTRL_EXT_PFRSTD;
-@@ -7270,6 +7312,32 @@ void ixgbe_update_stats(struct ixgbe_adapter *adapter)
- 	netdev->stats.rx_length_errors = hwstats->rlec;
- 	netdev->stats.rx_crc_errors = hwstats->crcerrs;
- 	netdev->stats.rx_missed_errors = total_mpc;
-+
-+	/* VF Stats Collection - skip while resetting because these
-+	 * are not clear on read and otherwise you'll sometimes get
-+	 * crazy values.
-+	 */
-+	if (!test_bit(__IXGBE_RESETTING, &adapter->state)) {
-+		for (i = 0; i < adapter->num_vfs; i++) {
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFGPRC(i),
-+					adapter->vfinfo[i].last_vfstats.gprc,
-+					adapter->vfinfo[i].vfstats.gprc);
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFGPTC(i),
-+					adapter->vfinfo[i].last_vfstats.gptc,
-+					adapter->vfinfo[i].vfstats.gptc);
-+			UPDATE_VF_COUNTER_36bit(IXGBE_PVFGORC_LSB(i),
-+					IXGBE_PVFGORC_MSB(i),
-+					adapter->vfinfo[i].last_vfstats.gorc,
-+					adapter->vfinfo[i].vfstats.gorc);
-+			UPDATE_VF_COUNTER_36bit(IXGBE_PVFGOTC_LSB(i),
-+					IXGBE_PVFGOTC_MSB(i),
-+					adapter->vfinfo[i].last_vfstats.gotc,
-+					adapter->vfinfo[i].vfstats.gotc);
-+			UPDATE_VF_COUNTER_32bit(IXGBE_PVFMPRC(i),
-+					adapter->vfinfo[i].last_vfstats.mprc,
-+					adapter->vfinfo[i].vfstats.mprc);
-+		}
-+	}
- }
- 
- /**
-@@ -8995,6 +9063,23 @@ static void ixgbe_get_stats64(struct net_device *netdev,
- 	stats->rx_missed_errors	= netdev->stats.rx_missed_errors;
- }
- 
-+static int ixgbe_ndo_get_vf_stats(struct net_device *netdev, int vf,
-+				  struct ifla_vf_stats *vf_stats)
-+{
-+	struct ixgbe_adapter *adapter = netdev_priv(netdev);
-+
-+	if (vf < 0 || vf >= adapter->num_vfs)
-+		return -EINVAL;
-+
-+	vf_stats->rx_packets = adapter->vfinfo[vf].vfstats.gprc;
-+	vf_stats->rx_bytes   = adapter->vfinfo[vf].vfstats.gorc;
-+	vf_stats->tx_packets = adapter->vfinfo[vf].vfstats.gptc;
-+	vf_stats->tx_bytes   = adapter->vfinfo[vf].vfstats.gotc;
-+	vf_stats->multicast  = adapter->vfinfo[vf].vfstats.mprc;
-+
-+	return 0;
-+}
-+
- #ifdef CONFIG_IXGBE_DCB
- /**
-  * ixgbe_validate_rtr - verify 802.1Qp to Rx packet buffer mapping is valid.
-@@ -10311,6 +10396,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
- 	.ndo_set_vf_rss_query_en = ixgbe_ndo_set_vf_rss_query_en,
- 	.ndo_set_vf_trust	= ixgbe_ndo_set_vf_trust,
- 	.ndo_get_vf_config	= ixgbe_ndo_get_vf_config,
-+	.ndo_get_vf_stats	= ixgbe_ndo_get_vf_stats,
- 	.ndo_get_stats64	= ixgbe_get_stats64,
- 	.ndo_setup_tc		= __ixgbe_setup_tc,
- #ifdef IXGBE_FCOE
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 6da9880d766a..7f7ea468ffa9 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -2533,6 +2533,13 @@ enum {
- #define IXGBE_PVFTXDCTL(P)	(0x06028 + (0x40 * (P)))
- #define IXGBE_PVFTDWBAL(P)	(0x06038 + (0x40 * (P)))
- #define IXGBE_PVFTDWBAH(P)	(0x0603C + (0x40 * (P)))
-+#define IXGBE_PVFGPRC(x)	(0x0101C + (0x40 * (x)))
-+#define IXGBE_PVFGPTC(x)	(0x08300 + (0x04 * (x)))
-+#define IXGBE_PVFGORC_LSB(x)	(0x01020 + (0x40 * (x)))
-+#define IXGBE_PVFGORC_MSB(x)	(0x0D020 + (0x40 * (x)))
-+#define IXGBE_PVFGOTC_LSB(x)	(0x08400 + (0x08 * (x)))
-+#define IXGBE_PVFGOTC_MSB(x)	(0x08404 + (0x08 * (x)))
-+#define IXGBE_PVFMPRC(x)	(0x0D01C + (0x40 * (x)))
- 
- #define IXGBE_PVFTDWBALn(q_per_pool, vf_number, vf_q_index) \
- 		(IXGBE_PVFTDWBAL((q_per_pool)*(vf_number) + (vf_q_index)))
+-		if (n_proto_key == ETH_P_ALL || n_proto_key == 0) {
++		if (n_proto_key == ETH_P_ALL || n_proto_key == 0 ||
++		    fltr->tunnel_type == TNL_GTPU ||
++		    fltr->tunnel_type == TNL_GTPC) {
+ 			n_proto_key = 0;
+ 			n_proto_mask = 0;
+ 		} else {
 -- 
-2.32.0
-
-
-
-
-Amazon Development Center Germany GmbH
-Krausenstr. 38
-10117 Berlin
-Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
-Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
-Sitz: Berlin
-Ust-ID: DE 289 237 879
-
-
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
