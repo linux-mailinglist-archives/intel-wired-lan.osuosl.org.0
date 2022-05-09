@@ -1,70 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 298EB5204E4
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 May 2022 21:02:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2E055207F9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 May 2022 00:46:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4E5A640257;
-	Mon,  9 May 2022 19:02:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 739CC40A6E;
+	Mon,  9 May 2022 22:46:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4e--RSlC28Wy; Mon,  9 May 2022 19:02:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Pxav2wVXAami; Mon,  9 May 2022 22:46:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0DFA440207;
-	Mon,  9 May 2022 19:02:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7D0C240A6A;
+	Mon,  9 May 2022 22:46:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DC4A51BF283
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 108A61BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C73CC60C2C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 062FB40A64
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w9SSDMJCD6wO for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 May 2022 19:02:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9NP1rBS81LuD for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 May 2022 22:46:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6EA69605AF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 19:02:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652122922; x=1683658922;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=M/3pwZDcMrCcluFyIFn44sBq9smO0misOGvPNpAdA14=;
- b=hIS+TRX0uKh92cElSgJ6ME+bcYfuQ0yC3kD0rlT9NOGXDEkj+136zPDO
- v2G5Wkp+QDC1RjGPvpdWtCzbl0kxSxSUK8yJosqP2AA0xGSs4rwJVe1VW
- x1of12mR39Sy+k6rmIOX7DjYZoCNJWjH3m9fOxyH5a+jZiEkzcQlKQQZl
- mqzPahKs+LladR7WMYuRLkMYHwPkPBlsfVujxAci/Vh4dzA6+NE3YuPPV
- B/5kATj+5QdCy5EEp+V9CA+G+MJeZuM65kejkvaJFYt/nr+noI8eScks9
- GrOZDuTlSsFY2zCrcvMP2A0ZvY49QXgIdLt/MmAWD7zt+tFKp/qF4WowI g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10342"; a="267985471"
-X-IronPort-AV: E=Sophos;i="5.91,212,1647327600"; d="scan'208";a="267985471"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 May 2022 12:01:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,212,1647327600"; d="scan'208";a="657270379"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by FMSMGA003.fm.intel.com with ESMTP; 09 May 2022 12:01:43 -0700
-Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 249J1goK015683; Mon, 9 May 2022 20:01:42 +0100
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 May 2022 21:01:18 +0200
-Message-Id: <20220509190118.7507-1-marcin.szycik@linux.intel.com>
-X-Mailer: git-send-email 2.35.1
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6690F4000B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:07 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 58B1C6114A;
+ Mon,  9 May 2022 22:46:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E47F2C385B3;
+ Mon,  9 May 2022 22:46:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652136365;
+ bh=kUsp5ywapvjh+TIviLfPYdjLx8988YN+fB39xNMI1Hk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=uz2QlAxx3fLtTv+bya49kC8Eyu85O0tp7SNOppx3x1ZCgUqya39mLXLjHuMQTmFOT
+ TFijgu0XUzs94vlLJ7K0fMLiAw4GecyQ4N83nQzZwS4LJNSW6Ci7D88yvimWgO7DKa
+ QvZ9ejOgGfS2N6OSnSwRbDRWtDyOiP7SHR98x2OhSKcnVzgQ2unv4h0CiADObiyo+o
+ JLH7OkFSQb3UEEda+Cv8r3+6ESFQS1cIy3gAPQW26b7aKBMvlDtio/LA+sutQF05DO
+ YNAeOKuVg/U6FVngVsfXr/PNcRQllg64X5YRlh9zKz/PggoljrjiwMA3CMxuqQrG76
+ z+UTXDvApWvXQ==
+Date: Mon, 9 May 2022 15:46:03 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Message-ID: <20220509154603.4a7b4243@kernel.org>
+In-Reply-To: <ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com>
+References: <cover.1651762829.git.eng.alaamohamedsoliman.am@gmail.com>
+ <ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] ice: ignore protocol field in GTP
- offload
+Subject: Re: [Intel-wired-lan] [PATCH net-next v6 2/2] net: vxlan: Add
+ extack support to vxlan_fdb_delete
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,47 +71,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: shshaikh@marvell.com, jdenham@redhat.com, GR-Linux-NIC-Dev@marvell.com,
+ manishc@marvell.com, alexandre.belloni@bootlin.com, outreachy@lists.linux.dev,
+ netdev@vger.kernel.org, razor@blackwall.org, bridge@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org, vladimir.oltean@nxp.com, sbrivio@redhat.com,
+ claudiu.manoil@nxp.com, roopa@nvidia.com, intel-wired-lan@lists.osuosl.org,
+ pabeni@redhat.com, davem@davemloft.net, UNGLinuxDriver@microchip.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 34a897758efe ("ice: Add support for inner etype in switchdev")
-added the ability to match on inner ethertype. A side effect of that change
-is that it is now impossible to add some filters for protocols which do not
-contain inner ethtype field. tc requires the protocol field to be specified
-when providing certain other options, e.g. src_ip. This is a problem in
-case of GTP - when user wants to specify e.g. src_ip, they also need to
-specify protocol in tc command (otherwise tc fails with: Illegal "src_ip").
-Because GTP is a tunnel, the protocol field is treated as inner protocol.
-GTP does not contain inner ethtype field and the filter cannot be added.
+On Thu,  5 May 2022 17:09:58 +0200 Alaa Mohamed wrote:
+> +			NL_SET_ERR_MSG(extack,
+> +						  "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
 
-To fix this, ignore the ethertype field in case of GTP filters.
+This continuation line still does not align with the opening bracket.
+Look here if your email client makes it hard to see:
 
-Fixes: 9a225f81f540 ("ice: Support GTP-U and GTP-C offload in switchdev")
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+https://lore.kernel.org/all/ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com/
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 3acd9f921c44..734bfa121e24 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -994,7 +994,9 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		n_proto_key = ntohs(match.key->n_proto);
- 		n_proto_mask = ntohs(match.mask->n_proto);
- 
--		if (n_proto_key == ETH_P_ALL || n_proto_key == 0) {
-+		if (n_proto_key == ETH_P_ALL || n_proto_key == 0 ||
-+		    fltr->tunnel_type == TNL_GTPU ||
-+		    fltr->tunnel_type == TNL_GTPC) {
- 			n_proto_key = 0;
- 			n_proto_mask = 0;
- 		} else {
--- 
-2.35.1
+Same story in patch 1:
 
+>  static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
+>  			       struct net_device *dev,
+> -			       const unsigned char *addr, u16 vid)
+> +			       const unsigned char *addr, u16 vid,
+> +				   struct netlink_ext_ack *extack)
+
+and here:
+
+>  static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
+>  			    struct net_device *dev,
+> -			    const unsigned char *addr, u16 vid)
+> +			    const unsigned char *addr, u16 vid,
+> +				struct netlink_ext_ack *extack)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
