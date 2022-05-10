@@ -1,68 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC0CA520D2C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 May 2022 07:20:47 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 158C6520E42
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 May 2022 09:04:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2FB9460B33;
-	Tue, 10 May 2022 05:20:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 819C681B10;
+	Tue, 10 May 2022 07:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PdlSKMRxIRDE; Tue, 10 May 2022 05:20:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2hnw9grVlQy2; Tue, 10 May 2022 07:04:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D52A960ABB;
-	Tue, 10 May 2022 05:20:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8295881B0A;
+	Tue, 10 May 2022 07:04:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C83D01BF2CE
- for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 05:20:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C9321BF2C5
+ for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 07:04:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C07B460ABB
- for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 05:20:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 883CE4010E
+ for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 07:04:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PwsPXZJoY4lx for <intel-wired-lan@osuosl.org>;
- Tue, 10 May 2022 05:20:38 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 750FE60AB1
- for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 05:20:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652160038; x=1683696038;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=3D1KkDB8H2YeX+I6eWdOKF6XIFgljL4fDHk1tvjSEhI=;
- b=cXxcHalOEYen0qZSiJqSRL4C9FbWlYoxvyPv7ZAryseH7LbRaFyJPYc9
- P/d/ayEW8ubtjid2JLX5D+oyyDdbJtAschSmv3ZD3ZujcfefGZDjy8zRM
- RJCuP4kho9VjVXEkUW01oko6Rvw7UfBrpZpHKt3h0uO6JLemBTYNSldjY
- 4ukmMN1hKFnFszNdqsfNxHbLjfgAsQ5wE8BECFyPbmSZHjxssOGw7flLm
- Wvp/T0/KgmaBu5XZLIC9PBl7cQtNyWoL8Zclt/tlVIwUEWJQiNKBmVlSX
- +ACwfVPqqyxagj6N4eqqdQ4zDfDvboQg9cvymc7d05h3tXX5Cph6uNY4v g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10342"; a="269402239"
-X-IronPort-AV: E=Sophos;i="5.91,213,1647327600"; d="scan'208";a="269402239"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 May 2022 22:20:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,213,1647327600"; d="scan'208";a="710857935"
-Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 09 May 2022 22:20:36 -0700
-Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1noIIV-000HN2-U5;
- Tue, 10 May 2022 05:20:35 +0000
-Date: Tue, 10 May 2022 13:20:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
- intel-wired-lan@osuosl.org
-Message-ID: <202205101357.46oBdnm7-lkp@intel.com>
-References: <20220509010847.17492-1-muhammad.husaini.zulkifli@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T355itALTMRa for <intel-wired-lan@osuosl.org>;
+ Tue, 10 May 2022 07:04:25 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 71225400CC
+ for <intel-wired-lan@osuosl.org>; Tue, 10 May 2022 07:04:25 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aeae3.dynamic.kabel-deutschland.de
+ [95.90.234.227])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 095D961EA1923;
+ Tue, 10 May 2022 09:04:22 +0200 (CEST)
+Message-ID: <d9807c38-81a1-a1d9-cc77-802c2a5755cb@molgen.mpg.de>
+Date: Tue, 10 May 2022 09:04:21 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+References: <20220509010847.17492-1-muhammad.husaini.zulkifli@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
 In-Reply-To: <20220509010847.17492-1-muhammad.husaini.zulkifli@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH] igc: Correct the launchtime offset
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -77,243 +61,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
- muhammad.husaini.zulkifli@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Muhammad,
-
-Thank you for the patch! Perhaps something to improve:
-
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-[also build test WARNING on v5.18-rc6 next-20220509]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Muhammad-Husaini-Zulkifli/igc-Correct-the-launchtime-offset/20220509-091028
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-config: arm64-allmodconfig (https://download.01.org/0day-ci/archive/20220510/202205101357.46oBdnm7-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 3abb68a626160e019c30a4860e569d7bc75e486a)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/819e4648eaccdeaf40643fd0fe7cd735a584c251
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Muhammad-Husaini-Zulkifli/igc-Correct-the-launchtime-offset/20220509-091028
-        git checkout 819e4648eaccdeaf40643fd0fe7cd735a584c251
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash arch/arm64/kernel/ drivers/net/ethernet/intel/igc/ drivers/rtc/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/igc/igc_tsn.c:102:2: warning: variable 'tx_offset' is used uninitialized whenever switch default is taken [-Wsometimes-uninitialized]
-           default:
-           ^~~~~~~
-   drivers/net/ethernet/intel/igc/igc_tsn.c:106:22: note: uninitialized use occurs here
-           wr32(IGC_GTXOFFSET, tx_offset);
-                               ^~~~~~~~~
-   drivers/net/ethernet/intel/igc/igc_regs.h:310:10: note: expanded from macro 'wr32'
-           writel((val), &hw_addr[(reg)]); \
-                   ^~~
-   arch/arm64/include/asm/io.h:142:52: note: expanded from macro 'writel'
-   #define writel(v,c)             ({ __iowmb(); writel_relaxed((v),(c)); })
-                                                                 ^
-   arch/arm64/include/asm/io.h:127:74: note: expanded from macro 'writel_relaxed'
-   #define writel_relaxed(v,c)     ((void)__raw_writel((__force u32)cpu_to_le32(v),(c)))
-                                                                                ^
-   include/uapi/linux/byteorder/little_endian.h:34:51: note: expanded from macro '__cpu_to_le32'
-   #define __cpu_to_le32(x) ((__force __le32)(__u32)(x))
-                                                     ^
-   drivers/net/ethernet/intel/igc/igc_tsn.c:87:15: note: initialize the variable 'tx_offset' to silence this warning
-           u16 tx_offset;
-                        ^
-                         = 0
-   1 warning generated.
-
-
-vim +/tx_offset +102 drivers/net/ethernet/intel/igc/igc_tsn.c
-
-    81	
-    82	static int igc_tsn_enable_offload(struct igc_adapter *adapter)
-    83	{
-    84		struct igc_hw *hw = &adapter->hw;
-    85		u32 tqavctrl, baset_l, baset_h;
-    86		u32 sec, nsec, cycle;
-    87		u16 tx_offset;
-    88		ktime_t base_time, systim;
-    89		int i;
-    90	
-    91		cycle = adapter->cycle_time;
-    92		base_time = adapter->base_time;
-    93	
-    94		switch (adapter->link_speed) {
-    95		/* TODO: This code use same transmit offset across all link speed as for now. */
-    96		case SPEED_10:
-    97		case SPEED_100:
-    98		case SPEED_1000:
-    99		case SPEED_2500:
-   100			tx_offset = 1500;
-   101			break;
- > 102		default:
-   103			break;
-   104		}
-   105	
-   106		wr32(IGC_GTXOFFSET, tx_offset);
-   107		wr32(IGC_TSAUXC, 0);
-   108		wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
-   109		wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
-   110	
-   111		tqavctrl = rd32(IGC_TQAVCTRL);
-   112		tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
-   113		wr32(IGC_TQAVCTRL, tqavctrl);
-   114	
-   115		wr32(IGC_QBVCYCLET_S, cycle);
-   116		wr32(IGC_QBVCYCLET, cycle);
-   117	
-   118		for (i = 0; i < adapter->num_tx_queues; i++) {
-   119			struct igc_ring *ring = adapter->tx_ring[i];
-   120			u32 txqctl = 0;
-   121			u16 cbs_value;
-   122			u32 tqavcc;
-   123	
-   124			wr32(IGC_STQT(i), ring->start_time);
-   125			wr32(IGC_ENDQT(i), ring->end_time);
-   126	
-   127			if (adapter->base_time) {
-   128				/* If we have a base_time we are in "taprio"
-   129				 * mode and we need to be strict about the
-   130				 * cycles: only transmit a packet if it can be
-   131				 * completed during that cycle.
-   132				 */
-   133				txqctl |= IGC_TXQCTL_STRICT_CYCLE |
-   134					IGC_TXQCTL_STRICT_END;
-   135			}
-   136	
-   137			if (ring->launchtime_enable)
-   138				txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
-   139	
-   140			/* Skip configuring CBS for Q2 and Q3 */
-   141			if (i > 1)
-   142				goto skip_cbs;
-   143	
-   144			if (ring->cbs_enable) {
-   145				if (i == 0)
-   146					txqctl |= IGC_TXQCTL_QAV_SEL_CBS0;
-   147				else
-   148					txqctl |= IGC_TXQCTL_QAV_SEL_CBS1;
-   149	
-   150				/* According to i225 datasheet section 7.5.2.7, we
-   151				 * should set the 'idleSlope' field from TQAVCC
-   152				 * register following the equation:
-   153				 *
-   154				 * value = link-speed   0x7736 * BW * 0.2
-   155				 *         ---------- *  -----------------         (E1)
-   156				 *          100Mbps            2.5
-   157				 *
-   158				 * Note that 'link-speed' is in Mbps.
-   159				 *
-   160				 * 'BW' is the percentage bandwidth out of full
-   161				 * link speed which can be found with the
-   162				 * following equation. Note that idleSlope here
-   163				 * is the parameter from this function
-   164				 * which is in kbps.
-   165				 *
-   166				 *     BW =     idleSlope
-   167				 *          -----------------                      (E2)
-   168				 *          link-speed * 1000
-   169				 *
-   170				 * That said, we can come up with a generic
-   171				 * equation to calculate the value we should set
-   172				 * it TQAVCC register by replacing 'BW' in E1 by E2.
-   173				 * The resulting equation is:
-   174				 *
-   175				 * value = link-speed * 0x7736 * idleSlope * 0.2
-   176				 *         -------------------------------------   (E3)
-   177				 *             100 * 2.5 * link-speed * 1000
-   178				 *
-   179				 * 'link-speed' is present in both sides of the
-   180				 * fraction so it is canceled out. The final
-   181				 * equation is the following:
-   182				 *
-   183				 *     value = idleSlope * 61036
-   184				 *             -----------------                   (E4)
-   185				 *                  2500000
-   186				 *
-   187				 * NOTE: For i225, given the above, we can see
-   188				 *       that idleslope is represented in
-   189				 *       40.959433 kbps units by the value at
-   190				 *       the TQAVCC register (2.5Gbps / 61036),
-   191				 *       which reduces the granularity for
-   192				 *       idleslope increments.
-   193				 *
-   194				 * In i225 controller, the sendSlope and loCredit
-   195				 * parameters from CBS are not configurable
-   196				 * by software so we don't do any
-   197				 * 'controller configuration' in respect to
-   198				 * these parameters.
-   199				 */
-   200				cbs_value = DIV_ROUND_UP_ULL(ring->idleslope
-   201							     * 61036ULL, 2500000);
-   202	
-   203				tqavcc = rd32(IGC_TQAVCC(i));
-   204				tqavcc &= ~IGC_TQAVCC_IDLESLOPE_MASK;
-   205				tqavcc |= cbs_value | IGC_TQAVCC_KEEP_CREDITS;
-   206				wr32(IGC_TQAVCC(i), tqavcc);
-   207	
-   208				wr32(IGC_TQAVHC(i),
-   209				     0x80000000 + ring->hicredit * 0x7735);
-   210			} else {
-   211				/* Disable any CBS for the queue */
-   212				txqctl &= ~(IGC_TXQCTL_QAV_SEL_MASK);
-   213	
-   214				/* Set idleSlope to zero. */
-   215				tqavcc = rd32(IGC_TQAVCC(i));
-   216				tqavcc &= ~(IGC_TQAVCC_IDLESLOPE_MASK |
-   217					    IGC_TQAVCC_KEEP_CREDITS);
-   218				wr32(IGC_TQAVCC(i), tqavcc);
-   219	
-   220				/* Set hiCredit to zero. */
-   221				wr32(IGC_TQAVHC(i), 0);
-   222			}
-   223	skip_cbs:
-   224			wr32(IGC_TXQCTL(i), txqctl);
-   225		}
-   226	
-   227		nsec = rd32(IGC_SYSTIML);
-   228		sec = rd32(IGC_SYSTIMH);
-   229	
-   230		systim = ktime_set(sec, nsec);
-   231	
-   232		if (ktime_compare(systim, base_time) > 0) {
-   233			s64 n;
-   234	
-   235			n = div64_s64(ktime_sub_ns(systim, base_time), cycle);
-   236			base_time = ktime_add_ns(base_time, (n + 1) * cycle);
-   237		}
-   238	
-   239		baset_h = div_s64_rem(base_time, NSEC_PER_SEC, &baset_l);
-   240	
-   241		wr32(IGC_BASET_H, baset_h);
-   242		wr32(IGC_BASET_L, baset_l);
-   243	
-   244		return 0;
-   245	}
-   246	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBNdWhhbW1hZCwKCgpUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2guCgpBbSAwOS4wNS4yMiB1
+bSAwMzowOCBzY2hyaWViIE11aGFtbWFkIEh1c2FpbmkgWnVsa2lmbGk6Cj4gVGhlIGxhdW5jaHRp
+bWUgb2Zmc2V0IGNhbiBiZSBjb3JyZWN0ZWQgYWNjb3JkaW5nIHRvIHNlY3Rpb25zIDcuNS4yLjYK
+PiBhbmQgMTIuMy4yIG9mIHRoZSBkYXRhc2hlZXQuCgrigJxjYW7igJ0gb3Ig4oCcc2hvdWxk4oCd
+PwoKU29ycnksIHdoYXQgaXMgdGhlIG5hbWUgb2YgdGhlIGRhdGFzaGVldD8KCldoYXQgcHJvYmxl
+bXMgZG9lcyBpdCBmaXgsIGFuZCBob3cgY2FuIHRoZXkgYmUgcmVwcm9kdWNlZD8KCj4gQmFzZWQg
+b24gdGhlIHByZWxpbWluYXJ5IGRhdGEsIHRoaXMgY29ycmVjdGlvbiBpcyByb3VnaGx5IDE1MDBu
+cy4KPiBJbiB0aGUgZnV0dXJlLCBwcm9wZXIgbWVhc3VyZW1lbnRzIG11c3QgYmUgdGFrZW4sIGFu
+ZCBjb3JyZWN0aW9ucyBtdXN0IHRha2UKPiBpbnRvIGFjY291bnQgdGhlIHZhcmlvdXMgbGluayBz
+cGVlZHMuCgpOaXQ6IFBsZWFzZSBkbyBub3Qgd3JhcCBsaW5lcyBqdXN0IGJlY2F1c2UgYSBzZW50
+ZW5jZSBlbmRzLiBJZiB0aGVzZSBhcmUgCnBhcmFncmFwaHMsIHRoZW4gcGxlYXNlIHNlcGFyYXRl
+IHRob3NlIGJ5IGV4YWN0bHkgb25lIGJsYW5rIGxpbmUuCgo+IFNpZ25lZC1vZmYtYnk6IFZpbmlj
+aXVzIENvc3RhIEdvbWVzIDx2aW5pY2l1cy5nb21lc0BpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1i
+eTogTXVoYW1tYWQgSHVzYWluaSBadWxraWZsaSA8bXVoYW1tYWQuaHVzYWluaS56dWxraWZsaUBp
+bnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX3Jl
+Z3MuaCB8ICAxICsKPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfdHNuLmMg
+IHwgMTQgKysrKysrKysrKysrKysKPiAgIDIgZmlsZXMgY2hhbmdlZCwgMTUgaW5zZXJ0aW9ucygr
+KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX3Jl
+Z3MuaCBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfcmVncy5oCj4gaW5kZXgg
+ZTE5N2EzM2Q5M2EwLi45MjhkMjJiMWNhMjIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWdjL2lnY19yZWdzLmgKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pZ2MvaWdjX3JlZ3MuaAo+IEBAIC0yMzEsNiArMjMxLDcgQEAKPiAgICNkZWZpbmUgSUdD
+X0JBU0VUX0gJCTB4MzMxOAo+ICAgI2RlZmluZSBJR0NfUUJWQ1lDTEVUCQkweDMzMUMKPiAgICNk
+ZWZpbmUgSUdDX1FCVkNZQ0xFVF9TCQkweDMzMjAKPiArI2RlZmluZSBJR0NfR1RYT0ZGU0VUCQkw
+eDMzMTAKClNvcnQgdGhlc2UgYnkgdGhlIHZhbHVlPwoKPiAgIAo+ICAgI2RlZmluZSBJR0NfU1RR
+VChfbikJCSgweDMzMjQgKyAweDQgKiAoX24pKQo+ICAgI2RlZmluZSBJR0NfRU5EUVQoX24pCQko
+MHgzMzM0ICsgMHg0ICogKF9uKSkKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWdjL2lnY190c24uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2Nf
+dHNuLmMKPiBpbmRleCAwZmNlMjJkZTJhYjguLjNkNGQwYWIwMTFlMyAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdjX3Rzbi5jCj4gKysrIGIvZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY190c24uYwo+IEBAIC04NCwxMiArODQsMjYgQEAgc3Rh
+dGljIGludCBpZ2NfdHNuX2VuYWJsZV9vZmZsb2FkKHN0cnVjdCBpZ2NfYWRhcHRlciAqYWRhcHRl
+cikKPiAgIAlzdHJ1Y3QgaWdjX2h3ICpodyA9ICZhZGFwdGVyLT5odzsKPiAgIAl1MzIgdHFhdmN0
+cmwsIGJhc2V0X2wsIGJhc2V0X2g7Cj4gICAJdTMyIHNlYywgbnNlYywgY3ljbGU7Cj4gKwl1MTYg
+dHhfb2Zmc2V0OwoKUGxlYXNlIGFwcGVuZCB0aGUgdW5pdCB0byB0aGUgdmFyaWFibGUgbmFtZS4K
+CldoeSBzcGVjaWZ5IHRoZSBzaXplLCBhbmQgbm90IGp1c3QgdXNlIGB1bnNpZ25lZCBpbnRgIFsx
+XT8gKGBfX3dyaXRlbCgpYCAKYWxzbyB1c2VzIGB1bnNpZ25lZCBpbnRgIGluIHRoZSBlbmQ/Cgo+
+ICAgCWt0aW1lX3QgYmFzZV90aW1lLCBzeXN0aW07Cj4gICAJaW50IGk7Cj4gICAKPiAgIAljeWNs
+ZSA9IGFkYXB0ZXItPmN5Y2xlX3RpbWU7Cj4gICAJYmFzZV90aW1lID0gYWRhcHRlci0+YmFzZV90
+aW1lOwo+ICAgCj4gKwlzd2l0Y2ggKGFkYXB0ZXItPmxpbmtfc3BlZWQpIHsKPiArCS8qIFRPRE86
+IFRoaXMgY29kZSB1c2Ugc2FtZSB0cmFuc21pdCBvZmZzZXQgYWNyb3NzIGFsbCBsaW5rIHNwZWVk
+IGFzIGZvciBub3cuICovCj4gKwljYXNlIFNQRUVEXzEwOgo+ICsJY2FzZSBTUEVFRF8xMDA6Cj4g
+KwljYXNlIFNQRUVEXzEwMDA6Cj4gKwljYXNlIFNQRUVEXzI1MDA6Cj4gKwkJdHhfb2Zmc2V0ID0g
+MTUwMDsKPiArCQlicmVhazsKPiArCWRlZmF1bHQ6Cj4gKwkJYnJlYWs7Cj4gKwl9Cj4gKwo+ICsJ
+d3IzMihJR0NfR1RYT0ZGU0VULCB0eF9vZmZzZXQpOwo+ICAgCXdyMzIoSUdDX1RTQVVYQywgMCk7
+Cj4gICAJd3IzMihJR0NfRFRYTVhQS1RTWiwgSUdDX0RUWE1YUEtUU1pfVFNOKTsKPiAgIAl3cjMy
+KElHQ19UWFBCUywgSUdDX1RYUEJTSVpFX1RTTik7CgoKS2luZCByZWdhcmRzLAoKUGF1bAoKClsx
+XTogaHR0cHM6Ly9ub3RhYnMub3JnL2NvZGluZy9zbWFsbEludHNCaWdQZW5hbHR5Lmh0bQpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
