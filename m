@@ -1,64 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2E055207F9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 May 2022 00:46:17 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62A4C520D17
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 May 2022 06:47:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 739CC40A6E;
-	Mon,  9 May 2022 22:46:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19ACC60F38;
+	Tue, 10 May 2022 04:47:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pxav2wVXAami; Mon,  9 May 2022 22:46:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qZvN-TwIeVRm; Tue, 10 May 2022 04:47:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7D0C240A6A;
-	Mon,  9 May 2022 22:46:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1BE2A60AB1;
+	Tue, 10 May 2022 04:47:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 108A61BF36B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 22B981BF977
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 May 2022 04:47:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 062FB40A64
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0D18860AB1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 May 2022 04:47:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9NP1rBS81LuD for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 May 2022 22:46:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dtCK2w6pzHF7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 May 2022 04:47:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6690F4000B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 May 2022 22:46:07 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 58B1C6114A;
- Mon,  9 May 2022 22:46:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E47F2C385B3;
- Mon,  9 May 2022 22:46:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652136365;
- bh=kUsp5ywapvjh+TIviLfPYdjLx8988YN+fB39xNMI1Hk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=uz2QlAxx3fLtTv+bya49kC8Eyu85O0tp7SNOppx3x1ZCgUqya39mLXLjHuMQTmFOT
- TFijgu0XUzs94vlLJ7K0fMLiAw4GecyQ4N83nQzZwS4LJNSW6Ci7D88yvimWgO7DKa
- QvZ9ejOgGfS2N6OSnSwRbDRWtDyOiP7SHR98x2OhSKcnVzgQ2unv4h0CiADObiyo+o
- JLH7OkFSQb3UEEda+Cv8r3+6ESFQS1cIy3gAPQW26b7aKBMvlDtio/LA+sutQF05DO
- YNAeOKuVg/U6FVngVsfXr/PNcRQllg64X5YRlh9zKz/PggoljrjiwMA3CMxuqQrG76
- z+UTXDvApWvXQ==
-Date: Mon, 9 May 2022 15:46:03 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Message-ID: <20220509154603.4a7b4243@kernel.org>
-In-Reply-To: <ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com>
-References: <cover.1651762829.git.eng.alaamohamedsoliman.am@gmail.com>
- <ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CCDD360AAB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 May 2022 04:47:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1652158045; x=1683694045;
+ h=message-id:date:mime-version:subject:to:references:from:
+ in-reply-to:content-transfer-encoding;
+ bh=Cy7+jnc1L41HqeREspDR2PUythbPDsHVkA0tVZ1I3kc=;
+ b=ERJw1hNciSpFLtRZwmUU3OE8WADsOaavk8dcEzflH9JCz/LcJWcx31Fi
+ U8JK+epRAP23MEHA5UYGSJ+ChtvdUMBk8zvZF8JuHktyHij4yhv9Lnfiw
+ p2u6gf/piTr1TClyU87+BctkixiaSJ3i5WqydAKvRFueEG/OUSyFQoBGA
+ UkzCdVHeqZof+m5Q4zPsciKmqITP/sToEWVh0fZa/FfzKfdZ0CKOhyi4E
+ rule0JIEFIb3FpYp7C3M+FMvlilZjB1c99E1ztu3XjlEp4V3gePZwwQ9Z
+ cJtneGmv4e1VxzMjUrD0wOvuQPlD94VnWLQMA6ASoM8PFH0z+x5WP5gRz A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10342"; a="294487565"
+X-IronPort-AV: E=Sophos;i="5.91,213,1647327600"; d="scan'208";a="294487565"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 May 2022 21:47:25 -0700
+X-IronPort-AV: E=Sophos;i="5.91,213,1647327600"; d="scan'208";a="541589769"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.1])
+ ([10.13.12.1])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 May 2022 21:47:24 -0700
+Message-ID: <77c9df0a-f5d6-b653-201f-2bc57e5ceeae@linux.intel.com>
+Date: Tue, 10 May 2022 07:47:22 +0300
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 2/2] net: vxlan: Add
- extack support to vxlan_fdb_delete
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Content-Language: en-US
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20220423165321.838055-1-sasha.neftin@intel.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20220423165321.838055-1-sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] igc: Remove unused phy_type
+ enum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,41 +77,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shshaikh@marvell.com, jdenham@redhat.com, GR-Linux-NIC-Dev@marvell.com,
- manishc@marvell.com, alexandre.belloni@bootlin.com, outreachy@lists.linux.dev,
- netdev@vger.kernel.org, razor@blackwall.org, bridge@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, vladimir.oltean@nxp.com, sbrivio@redhat.com,
- claudiu.manoil@nxp.com, roopa@nvidia.com, intel-wired-lan@lists.osuosl.org,
- pabeni@redhat.com, davem@davemloft.net, UNGLinuxDriver@microchip.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu,  5 May 2022 17:09:58 +0200 Alaa Mohamed wrote:
-> +			NL_SET_ERR_MSG(extack,
-> +						  "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
-
-This continuation line still does not align with the opening bracket.
-Look here if your email client makes it hard to see:
-
-https://lore.kernel.org/all/ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com/
-
-Same story in patch 1:
-
->  static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
->  			       struct net_device *dev,
-> -			       const unsigned char *addr, u16 vid)
-> +			       const unsigned char *addr, u16 vid,
-> +				   struct netlink_ext_ack *extack)
-
-and here:
-
->  static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
->  			    struct net_device *dev,
-> -			    const unsigned char *addr, u16 vid)
-> +			    const unsigned char *addr, u16 vid,
-> +				struct netlink_ext_ack *extack)
+On 4/23/2022 19:53, Sasha Neftin wrote:
+> Complete to commit 8e153faf5827 ("igc: Remove unused phy type")
+> i225 parts have only one phy. There is no point to use phy_type enum.
+> Clean up the code accordingly, and get rid of the unused enum lines.
+> 
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+> v2: ret_val isn't needed since it's always returning 0
+>   drivers/net/ethernet/intel/igc/igc_base.c |  2 --
+>   drivers/net/ethernet/intel/igc/igc_hw.h   |  7 -------
+>   drivers/net/ethernet/intel/igc/igc_phy.c  | 12 +++---------
+>   3 files changed, 3 insertions(+), 18 deletions(-)
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
