@@ -1,69 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9677F522E7F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 10:35:28 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B94C7522FEE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 11:52:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0766940B42;
-	Wed, 11 May 2022 08:35:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A7B134034F;
+	Wed, 11 May 2022 09:52:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7hMO7TO4StT4; Wed, 11 May 2022 08:35:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lKD3D5-HoAiG; Wed, 11 May 2022 09:52:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F06B4408DF;
-	Wed, 11 May 2022 08:35:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E9AC402ED;
+	Wed, 11 May 2022 09:52:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D51C1BF5DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:35:21 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F26091BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:52:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6371041705
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:35:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EECD182F76
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EqNFDW2Vdeyt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 May 2022 08:35:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5972D415C6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:35:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652258119; x=1683794119;
- h=from:to:subject:date:message-id:in-reply-to:references:
- mime-version:content-transfer-encoding;
- bh=GHG6kNgy1m2xwDfEZoIotwGa6Uyef7TRatvlMVt9d1E=;
- b=BZ1Zbw69KNW7EQAC8yOO98bzi4S2aAYnlkv83hMrCbui+wO8m6Fdo4go
- uzlIrACQhLrSGIR/GZimRGT4SJpJAypg/Y9uvJvmHBPWjMNbW4UgH9HzN
- x4mgBGQR6QlOjMMUJe3fkqYNEldr/iGGNmiz4hEgOlIhAZm2lTl4VeifG
- aG2JCip/xeCQH3qvc7bZNplqgoIdrXWAFSXv0lBxWNNxkqd4vULcWEMjz
- qBCHlE0jQ6JCK1Orz+mb453GS6rZ15wYVD6GQx/KP8dqSjhXqObDtn6cs
- s5booZR0hvlbvrxdoG0xTcyy4QW87SQX93Mhwc1c3IFIGP5EkaHL3yPpB Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10343"; a="356056158"
-X-IronPort-AV: E=Sophos;i="5.91,216,1647327600"; d="scan'208";a="356056158"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 May 2022 01:35:18 -0700
-X-IronPort-AV: E=Sophos;i="5.91,216,1647327600"; d="scan'208";a="566074640"
-Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 May 2022 01:35:16 -0700
-From: Piotr Skajewski <piotrx.skajewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 11 May 2022 10:32:15 +0200
-Message-Id: <20220511083215.9833-1-piotrx.skajewski@intel.com>
-X-Mailer: git-send-email 2.35.0.rc0
-In-Reply-To: <20220425131758.4749-1-jeffd@silicom-usa.com>
-References: <20220425131758.4749-1-jeffd@silicom-usa.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mNoD5-YdtgCD for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 May 2022 09:52:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DC3B082F51
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:52:09 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 63FE361E6478B;
+ Wed, 11 May 2022 11:52:06 +0200 (CEST)
+Message-ID: <7ee58bc9-bacf-9d16-8f96-5c9beacb5e8a@molgen.mpg.de>
+Date: Wed, 11 May 2022 11:52:04 +0200
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 1/1] ixgbe: correct SDP0 check of SFP
- cage for X550
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: Lixue Liang <lixue.liang5086@gmail.com>
+References: <20220510012159.8924-1-lianglixue@greatwall.com.cn>
+ <8d7e86ad-932c-d08c-3131-762edd553b22@molgen.mpg.de>
+ <B0201E3D-98F5-490E-81CF-45B16A06760D@gmail.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <B0201E3D-98F5-490E-81CF-45B16A06760D@gmail.com>
+Subject: Re: [Intel-wired-lan] [PATCH] igb_ethtool: fix efficiency issues in
+ igb_set_eeprom
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,26 +63,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jeff,
-
-Our analysis (using 0x15c4) showed that every time the cage is empty SDP
-indicates 0 and when cage is full it indicates 1. No matter what
-transceiver we used, from those we have. The same happens even we don't
-use the device which fall into crosstalk fix e.g 0x15c2.
-
-When proposed patch was applied, the devices are no longer able to
-negotiate speed. So basically this patch should not be accepted.
-
-NACK
-
-BR,
-Piotr
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBMaXh1ZSwKCgpBbSAxMS4wNS4yMiB1bSAwOTo1OSBzY2hyaWViIGxpeHVlIGxpYW5nOgoK
+PiBUaGFuayB5b3UgdmVyeSBtdWNoIGZvciB5b3VyIHJlcGx5IGFuZCBzdWdnZXN0aW9ucy5JIGhh
+dmUgbWFkZSB0aGUKPiBjb3JyZXNwb25kaW5nIGNoYW5nZXMgYWNjb3JkaW5nIHRvIHlvdXIgc3Vn
+Z2VzdGlvbi4KClRoYW5rIHlvdS4KCj4gSW4gYWRkaXRpb24sIGZvciB0aGUgcHJvYmxlbSB0aGF0
+IHRoZSBpbnZhbGlkIG1hYyBhZGRyZXNzIGNhbm5vdCBsb2FkCj4gdGhlIGlnYiBkcml2ZXIsIEkg
+cGVyc29uYWxseSB0aGluayB0aGVyZSBpcyBhIGJldHRlciB3YXkgdG8gbW9kaWZ5Cj4gaXQsIGFu
+ZCBJIHdpbGwgcmVzdWJtaXQgdGhlIHBhdGNoIGFib3V0IGlnYl9tYWluLmMuCgpBd2Vzb21lLgoK
+PiBJdCdzIHRoZSBzYW1lIHF1ZXN0aW9uLCBidXQgSSBtYXkgbm90IGtub3cgaG93IHRvIGNvbnRp
+bnVlIHN1Ym1pdHRpbmcKPiBuZXcgcGF0Y2hlcyBvbiB0aGlzIGVtYWlsLCBzb3JyeSBhYm91dCB0
+aGF0LgoKQXMgeW91IHVzZSBgZ2l0IHNlbmQtZW1haWxgLCB3aGF0IGRvZXMgYGdpdCBsb2dgIHNo
+b3cgYXMgdGhlIHBhdGNoIAphdXRob3I/IEl0IG1pZ2h0IGJlIGFzIGVhc3kgYXMgdG8gZG8KCiAg
+ICAgZ2l0IGNvbmZpZyAtLWdsb2JhbCB1c2VyLm5hbWUgIkxpeHVlIExpYW5nIgogICAgIGdpdCBj
+b25maWcgLS1nbG9iYWwgdXNlci5lbWFpbCBsaWFuZ2xpeHVlQGdyZWF0d2FsbC5jb20uY24KICAg
+ICBnaXQgY29tbWl0IC0tYW1lbmQgLS1hdXRob3IgIkxpeHVlIExpYW5nIDxsaWFuZ2xpeHVlQGdy
+ZWF0d2FsbC5jb20uY24+IgoKCktpbmQgcmVnYXJkcywKClBhdWwKCgpQUzogV2hlbiByZXBseWlu
+ZywgaXTigJlkIGJlIGdyZWF0IGlmIHlvdSB1c2VkIGludGVybGVhdmVkIHN0eWxlIFsxXS4KCgpb
+MV06IGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL1Bvc3Rpbmdfc3R5bGUjSW50ZXJsZWF2
+ZWRfc3R5bGUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+SW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpo
+dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
