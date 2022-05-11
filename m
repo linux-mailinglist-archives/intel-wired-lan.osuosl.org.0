@@ -1,95 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB3DA52347A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 15:41:16 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2636052347B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 15:41:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 40A9441916;
-	Wed, 11 May 2022 13:41:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BE49783E3E;
+	Wed, 11 May 2022 13:41:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dy1LwaIFVYmr; Wed, 11 May 2022 13:41:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n19ztOaXAaFr; Wed, 11 May 2022 13:41:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E94A9418D0;
-	Wed, 11 May 2022 13:41:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B878883E38;
+	Wed, 11 May 2022 13:41:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 994CE1BF5DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:27:00 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D4531BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8703F40202
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:27:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EF71A60BFC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u4KmbhGTcYCG for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 May 2022 08:26:58 +0000 (UTC)
-X-Greylist: delayed 00:18:54 by SQLgrey-1.8.0
-Received: from spamcs.greatwall.com.cn (mail.greatwall.com.cn [111.48.58.87])
- by smtp4.osuosl.org (Postfix) with ESMTP id 16120401B9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:26:57 +0000 (UTC)
-X-ASG-Debug-ID: 1652257081-0ec56f2002045d0001-vu1QkQ
-Received: from greatwall.com.cn (mailcs.greatwall.com.cn [10.47.36.11]) by
- spamcs.greatwall.com.cn with ESMTP id 6q72WM1l6vYYQo9g for
- <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 16:18:01 +0800 (CST)
-X-Barracuda-Envelope-From: lianglixue@greatwall.com.cn
-X-Barracuda-RBL-Trusted-Forwarder: 10.47.36.11
-Received: from localhost.localdomain (unknown [223.104.68.106])
- by mailcs.greatwall.com.cn (Coremail) with SMTP id
- CyQvCgCHBu4fbXtiymIrAA--.44629S2; 
- Wed, 11 May 2022 16:00:33 +0800 (CST)
-From: lixue liang <lianglixue@greatwall.com.cn>
-X-Barracuda-RBL-IP: 223.104.68.106
-X-Barracuda-Effective-Source-IP: UNKNOWN[223.104.68.106]
-X-Barracuda-Apparent-Source-IP: 223.104.68.106
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Date: Wed, 11 May 2022 08:07:16 +0000
-X-ASG-Orig-Subj: [PATCH]
- =?UTF-8?q?igb=5Fmain=EF=BC=9AAdded=20invalid=20mac=20addr?=
- =?UTF-8?q?ess=20handling=20in=20igb=5Fprobe?=
-Message-Id: <20220511080716.10054-1-lianglixue@greatwall.com.cn>
-X-Mailer: git-send-email 2.27.0
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eHH6mDnKskEe for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 May 2022 09:13:11 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
+ [IPv6:2607:f8b0:4864:20::635])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 61B0860BE4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:11 +0000 (UTC)
+Received: by mail-pl1-x635.google.com with SMTP id j14so1300820plx.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 02:13:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=caUdEXgEVSs0kuMmNBlg8+o07OgsFwK73z/jdG/sSCw=;
+ b=GVUhA0VQq48r7t+9HqUSitkWIadgQr9wvzK2elcHTuWN5edcIU4Trwg4P6r3dVoJYC
+ Q5fqOhY+dqZHlWgocJjv0TXr3nRAK3bb58+QhzPw71xFqPQmQ8n+N8Mt9xqbGH/zegmh
+ LJ1cmRfbhjv9VtfFtNh24bA6WN4TKBW/9ytUE7M/H1zS4nWWJIB+o5xcKzP99MbAfbQA
+ 2aIb41ZOHlcuzb6vdYSBnItWez8vf8BhI+XUmIumbC1vpbsuqcJsxCZqwhlRmy1nd+RN
+ KHCtFnQuG7QQeZRNeWaTgMoEB5ah5gwnTDsR+XoATzPQLewVOnLAXTXB+Hctlj5DcO3s
+ WN2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=caUdEXgEVSs0kuMmNBlg8+o07OgsFwK73z/jdG/sSCw=;
+ b=sRavbIar6WFzcCjJ+K7iru8T0FlAI17d955nMpGi04gsJi7cmB3pLLTFXJyoQE96yH
+ QNv1FaeyltKJiyTvXgXtwOLfRkBYdAftg+YYM3xl0Tl9vpuQuMfEUxGN0OpKBFdUNrfP
+ 5peXgqQq3ZIK0hWUkMjQ/PsQKTxhjXV9HAxQ0r3c3PrE9/DjJX58ySE4b38h7Bhrd1fX
+ WxB6to+kfVO0ObdF1/nlqo9HzxKWlUnnBAXpehgCVjcLd2n0MyRDrNdaQWh5Indi21x0
+ I21lErbKGfCNqYnlUUe4z3lL2tuacxQoUlEFJVO4M/h7fhAkflweFahFZ2SFrpyuFhzZ
+ 1Rvg==
+X-Gm-Message-State: AOAM5302hdcor6TVjMgJHcw2bKUukZNZd9n+28/sdlSBpOXvOS0qwyKD
+ Pa0qIW3OeDSHNufPly9xd6f7xHxgEUTH1qGXJ+O7FA==
+X-Google-Smtp-Source: ABdhPJwmMs6CDdH2rOsFTP1PxEzN66o6t6oq61/hdcP4tRcEBlIpsFDcBpfsgDKXnU5wySkQG17XBQ==
+X-Received: by 2002:a17:90b:4a90:b0:1dc:aec3:c04 with SMTP id
+ lp16-20020a17090b4a9000b001dcaec30c04mr4280065pjb.118.1652260390756; 
+ Wed, 11 May 2022 02:13:10 -0700 (PDT)
+Received: from [192.168.42.10] ([23.91.97.158])
+ by smtp.gmail.com with ESMTPSA id
+ x185-20020a6386c2000000b003c14af5063dsm1184476pgd.85.2022.05.11.02.13.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 May 2022 02:13:10 -0700 (PDT)
+Message-ID: <d42df7fa-0eb1-bf89-6e8f-f4fc5ff138b2@gmail.com>
+Date: Wed, 11 May 2022 17:13:07 +0800
 MIME-Version: 1.0
-X-CM-TRANSID: CyQvCgCHBu4fbXtiymIrAA--.44629S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7tr47Gw1rAr1ktw4rGrW5trb_yoW8WF13pa
- 98ZFW3KrykXr48X3ykJw48Za4Fkayjqa98Gr9xAw1F93W3Zrs8Ar48Kry7GrWrJrZ5uanI
- yr45ZF4DuFn0yaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUyv14x267AKxVWUJVW8JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4U
- JVW0owA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
- Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
- I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
- 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCF04k20xvY0x0EwIxG
- rwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4
- vE14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkGc2Ij64vIr41lIxAIcVC0I7IY
- x2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26c
- xKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAF
- wI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7VUbWCJPUUUUU==
-X-CM-SenderInfo: xold0w5ol03v46juvthwzdzzoofrzhdfq/
-X-Barracuda-Connect: mailcs.greatwall.com.cn[10.47.36.11]
-X-Barracuda-Start-Time: 1652257081
-X-Barracuda-URL: https://10.47.36.10:443/cgi-mod/mark.cgi
-X-Virus-Scanned: by bsmtpd at greatwall.com.cn
-X-Barracuda-Scan-Msg-Size: 1614
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-Bayes: INNOCENT GLOBAL 0.1899 1.0000 -0.8812
-X-Barracuda-Spam-Score: -0.88
-X-Barracuda-Spam-Status: No,
- SCORE=-0.88 using global scores of TAG_LEVEL=1000.0
- QUARANTINE_LEVEL=1000.0 KILL_LEVEL=9.0 tests=BSF_SC0_MISMATCH_TO
-X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.97927
- Rule breakdown below
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- 0.00 BSF_SC0_MISMATCH_TO    Envelope rcpt doesn't match header
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+References: <20220510025755.19047-1-xiaolinkui@kylinos.cn>
+ <6b16f60d-0f76-f876-0881-de09ecbbbc89@molgen.mpg.de>
+From: Linkui Xiao <xiaolinkui@gmail.com>
+In-Reply-To: <6b16f60d-0f76-f876-0881-de09ecbbbc89@molgen.mpg.de>
 X-Mailman-Approved-At: Wed, 11 May 2022 13:40:58 +0000
-Subject: [Intel-wired-lan] =?utf-8?b?W1BBVENIXSBpZ2JfbWFpbu+8mkFkZGVkIGlu?=
- =?utf-8?q?valid_mac_address_handling_in_igb=5Fprobe?=
+Subject: Re: [Intel-wired-lan] [PATCH] igb: Convert a series of if
+ statements to switch case
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,52 +95,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lixue liang <lianglixue@greatwall.com.cn>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, Linkui Xiao <xiaolinkui@kylinos.cn>,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In some cases, when the user uses igb_set_eeprom to modify
-the mac address to be invalid, the igb driver will fail to load.
-If there is no network card device, the user must modify it to
-a valid mac address by other means. It is only the invalid
-mac address that causes the driver The fatal problem of
-loading failure will cause most users no choice but to trouble.
-
-Since the mac address may be changed to be invalid, it must
-also be changed to a valid mac address, then add a random
-valid mac address to replace the invalid mac address in the
-driver, continue to load the igb network card driver,
-and output the relevant log reminder. vital to the user.
-
-Signed-off-by: lixue liang <lianglixue@greatwall.com.cn>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 34b33b21e0dc..a513570c2ad6 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3359,9 +3359,10 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	eth_hw_addr_set(netdev, hw->mac.addr);
- 
- 	if (!is_valid_ether_addr(netdev->dev_addr)) {
--		dev_err(&pdev->dev, "Invalid MAC Address\n");
--		err = -EIO;
--		goto err_eeprom;
-+		eth_random_addr(netdev->dev_addr);
-+		memcpy(hw->mac.addr, netdev->dev_addr, netdev->addr_len);
-+		dev_info(&pdev->dev,
-+			 "Invalid Mac Address, already got random Mac Address\n");
- 	}
- 
- 	igb_set_default_mac_filter(adapter);
--- 
-2.27.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBQYXVsOgoKVGhhbmsgeW91IGZvciB5b3VyIHJlcGx5IGFuZCBzdWdnZXN0aW9ucywgSSB3
+aWxsIHNlbmQgdGhlIFYyIHZlcnNpb24gc29vbi4KCk9uIDUvMTEvMjIgMTQ6MzIsIFBhdWwgTWVu
+emVsIHdyb3RlOgo+IERlYXIgTGlua3VpLAo+Cj4KPiBUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2gu
+Cj4KPiBBbSAxMC4wNS4yMiB1bSAwNDo1NyBzY2hyaWViIHhpYW9saW5rdWk6Cj4+IEZyb206IExp
+bmt1aSBYaWFvPHhpYW9saW5rdWlAa3lsaW5vcy5jbj4KPgo+IFBsZWFzZSBhZGQgYSBzcGFjZSBi
+ZWZvcmUgdGhlIDwuCj4KPj4gQ29udmVydCBhIHNlcmllcyBvZiBpZiBzdGF0ZW1lbnRzIHRoYXQg
+aGFuZGxlIGRpZmZlcmVudCBldmVudHMgdG8KPj4gYSBzd2l0Y2ggY2FzZSBzdGF0ZW1lbnQgdG8g
+c2ltcGxpZnkgdGhlIGNvZGUuCj4KPiAoTml0OiBQbGVhc2UgdXNlIDc1IGNoYXJhY3RlcnMgcGVy
+IGxpbmUuKQo+Cj4+IFNpZ25lZC1vZmYtYnk6IExpbmt1aSBYaWFvPHhpYW9saW5rdWlAa3lsaW5v
+cy5jbj4KPj4gLS0tCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFp
+bi5jIHwgMTIgKysrKysrKystLS0tCj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMo
+KyksIDQgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pZ2IvaWdiX21haW4uYyAKPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+Z2IvaWdiX21haW4uYwo+PiBpbmRleCAzNGIzM2IyMWUwZGMuLjRjZTA3MThlZWZmNiAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPj4gKysr
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPj4gQEAgLTQ1ODgs
+MTMgKzQ1ODgsMTcgQEAgc3RhdGljIGlubGluZSB2b2lkIAo+PiBpZ2Jfc2V0X3ZmX3ZsYW5fc3Ry
+aXAoc3RydWN0IGlnYl9hZGFwdGVyICphZGFwdGVyLAo+PiDCoMKgwqDCoMKgIHN0cnVjdCBlMTAw
+MF9odyAqaHcgPSAmYWRhcHRlci0+aHc7Cj4+IMKgwqDCoMKgwqAgdTMyIHZhbCwgcmVnOwo+PiDC
+oCAtwqDCoMKgIGlmIChody0+bWFjLnR5cGUgPCBlMTAwMF84MjU3NikKPj4gK8KgwqDCoCBzd2l0
+Y2ggKGh3LT5tYWMudHlwZSkgewo+PiArwqDCoMKgIGNhc2UgZTEwMDBfdW5kZWZpbmVkOgo+PiAr
+wqDCoMKgIGNhc2UgZTEwMDBfODI1NzU6Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm47Cj4+
+IC0KPj4gLcKgwqDCoCBpZiAoaHctPm1hYy50eXBlID09IGUxMDAwX2kzNTApCj4+ICvCoMKgwqAg
+Y2FzZSBlMTAwMF9pMzUwOgo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmVnID0gRTEwMDBfRFZNT0xS
+KHZmbik7Cj4+IC3CoMKgwqAgZWxzZQo+PiArwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4+ICvCoMKg
+wqAgZGVmYXVsdDoKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJlZyA9IEUxMDAwX1ZNT0xSKHZmbik7
+Cj4+ICvCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4gK8KgwqDCoCB9Cj4+IMKgIMKgwqDCoMKgwqAg
+dmFsID0gcmQzMihyZWcpOwo+PiDCoMKgwqDCoMKgIGlmIChlbmFibGUpCj4KPiBSZXZpZXdlZC1i
+eTogUGF1bCBNZW56ZWwgPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4KPgo+Cj4gS2luZCByZWdhcmRz
+LAo+Cj4gUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
+Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
+bgo=
