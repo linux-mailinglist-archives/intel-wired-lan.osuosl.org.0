@@ -1,55 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70058522C7A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 08:41:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73476522E5B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 10:29:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 170706068D;
-	Wed, 11 May 2022 06:41:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1D45kgF17c-8; Wed, 11 May 2022 06:41:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 29337606E7;
-	Wed, 11 May 2022 06:41:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7FE251BF23C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 06:41:38 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 693B280C97
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 06:41:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC31683342;
+	Wed, 11 May 2022 08:29:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ym1A90Ca7dw0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 May 2022 06:41:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B448880C8C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 06:41:36 +0000 (UTC)
-Received: from [192.168.0.3] (ip5f5aeb08.dynamic.kabel-deutschland.de
- [95.90.235.8])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 594A561E6478B;
- Wed, 11 May 2022 08:41:34 +0200 (CEST)
-Message-ID: <8d7e86ad-932c-d08c-3131-762edd553b22@molgen.mpg.de>
-Date: Wed, 11 May 2022 08:41:34 +0200
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6p_zpXyaFV1E; Wed, 11 May 2022 08:29:30 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 069E883366;
+	Wed, 11 May 2022 08:29:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CF68A1BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:29:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id BCC696107B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:29:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n3O8guwB5sky for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 May 2022 08:29:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 374ED61079
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 08:29:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1652257765; x=1683793765;
+ h=from:to:subject:date:message-id:in-reply-to:references:
+ mime-version:content-transfer-encoding;
+ bh=BcQ4fmKkDOekqNJiCyJBBmS/7tn/WKb0EHXfvDKikfU=;
+ b=Yzj85/jxCKO3x4BGEUdmIFj2FSLk/eSox4dQex6oYR9N9iri7vz2GX4p
+ GrkdPYHl0RAR1GE86pXXId+6eOOHFL93ZzfvlQ+wrNCExpY9tfWFjXH9P
+ STgRq+mggGChNBgArRAb8G351/MMZpOemPmwyEdQTQcUEp4dENDOEzaCD
+ bF2sitXGJrL0+MUltkSCALbZAsrFrWrI70e07CedidR3xdvG61Y+IzdcD
+ fmQpKidLjgi0Pn9CA66xwS/3JSO53g1TMINzhxXg8Xh4EEz17atCR4Vcq
+ QbFNy8H6XalMAVfYdKn7SvHJB6cWsu1UkHmNq8QFbkx/V63xqvUv3ZnzF A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10343"; a="257173994"
+X-IronPort-AV: E=Sophos;i="5.91,216,1647327600"; d="scan'208";a="257173994"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 May 2022 01:29:24 -0700
+X-IronPort-AV: E=Sophos;i="5.91,216,1647327600"; d="scan'208";a="566072986"
+Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 May 2022 01:29:23 -0700
+From: Piotr Skajewski <piotrx.skajewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 11 May 2022 10:26:26 +0200
+Message-Id: <20220511082626.9716-1-piotrx.skajewski@intel.com>
+X-Mailer: git-send-email 2.35.0.rc0
+In-Reply-To: <20220316192710.9947-1-jeffd@silicom-usa.com>
+References: <20220316192710.9947-1-jeffd@silicom-usa.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Content-Language: en-US
-To: lianglixue <lixue.liang5086@gmail.com>
-References: <20220510012159.8924-1-lianglixue@greatwall.com.cn>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20220510012159.8924-1-lianglixue@greatwall.com.cn>
-Subject: Re: [Intel-wired-lan] [PATCH] igb_ethtool: fix efficiency issues in
- igb_set_eeprom
+Subject: [Intel-wired-lan] [PATCH] ixgbe: Manual AN-37 for troublesome link
+ partners for X550 SFI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,46 +76,18 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
- lianglixue <lianglixue@greatwall.com.cn>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBsaWFuZ2xpeHVlLAoKClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KCkFtIDEwLjA1LjIy
-IHVtIDAzOjIxIHNjaHJpZWIgbGlhbmdsaXh1ZToKCkl04oCZZCBiZSBncmVhdCBpZiB5b3Ugc3Bl
-bGxlZCB5b3VyIG5hbWUgd2l0aCBzcGFjZXMgKGlmIHBvc3NpYmxlKS4KCkFsc28sIGN1cnJlbnRs
-eSB5b3VyIEdvb2dsZSBNYWlsIGFkZHJlc3Mgd291bGQgYmUgdXNlZCBmb3IgdGhlIEF1dGhvciAK
-ZmllbGQuIElmIHlvdSB3YW50IHRvIHVzZSB5b3VyIGNvbXBhbnkoPykgYWRkcmVzcywgcGxlYXNl
-IGFkZCBhIEZyb206IApsaW5lIGF0IHRoZSB0b3AuCgo+IE1vZGlmeSB0aGUgdmFsdWUgb2YgZWVw
-cm9tIGluIGlnYl9zZXRfZWVwcm9tLiBJZiB0aGUgbWFjIGFkZHJlc3MKPiBvZiBpMjEwIGlzIGNo
-YW5nZWQgdG8gaWxsZWdhbCwgdGhlbiBpbiBpZ3BfcHJvYmUgaW4gdGhlCj4gaWdiX21haW4gZmls
-ZSwgaXNfdmFsaWRfZXRoX2FkZHIgKG5ldGRldi0+ZGV2X2FkZHIpIGV4aXRzCj4gd2l0aCBhbiBl
-cnJvciwgY2F1c2luZyB0aGUgaWdiIGRyaXZlciB0byBmYWlsIHRvIGxvYWQsCj4gc3VjaCBhcyBl
-dGh0b29sIC1FIGV0aDAgbWFnaWMgMHgxNTMzODA4NiBvZmZzZXQgMCB2YWx1ZSAweDAxLgo+IAo+
-IEluIHRoaXMgd2F5LCB0aGUgaWdiIGRyaXZlciBjYW4gbm8gbG9uZ2VyIGJlIGxvYWRlZCwKPiBh
-bmQgdGhlIGxlZ2FsIG1hYyBhZGRyZXNzIGNhbm5vdCBiZSByZWNvdmVyZWQgdGhyb3VnaCBldGh0
-b29sOwo+IGFkZCBpc192YWxpZF9ldGhfYWRkciB0byBpZ2Jfc2V0X2VlcHJvbSB0byBkZXRlcm1p
-bmUKPiB3aGV0aGVyIGl0IGlzIGxlZ2FsIHRvIHJld3JpdGUsIHNvIGFzIHRvIGF2b2lkIGRyaXZl
-cgo+IGVycm9ycyBkdWUgdG8gaWxsZWdhbCBtYWMgYWRkcmVzc2VzLgoKUGxlYXNlIHJlZmxvdyB0
-aGUgdGV4dCBmb3IgNzUgY2hhcmFjdGVycyBwZXIgbGluZS4KCj4gU2lnbmVkLW9mZi1ieTogbGlh
-bmdsaXh1ZSA8bGlhbmdsaXh1ZUBncmVhdHdhbGwuY29tLmNuPgo+IC0tLQo+ICAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9ldGh0b29sLmMgfCA3ICsrKysrKysKPiAgIDEgZmls
-ZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9ldGh0b29sLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pZ2IvaWdiX2V0aHRvb2wuYwo+IGluZGV4IDJhNTc4MjA2M2Y0Yy4uMzA1NTRmZDY4NGRi
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfZXRodG9v
-bC5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9ldGh0b29sLmMK
-PiBAQCAtNzk4LDYgKzc5OCwxMyBAQCBzdGF0aWMgaW50IGlnYl9zZXRfZWVwcm9tKHN0cnVjdCBu
-ZXRfZGV2aWNlICpuZXRkZXYsCj4gICAJaWYgKGVlcHJvbS0+bWFnaWMgIT0gKGh3LT52ZW5kb3Jf
-aWQgfCAoaHctPmRldmljZV9pZCA8PCAxNikpKQo+ICAgCQlyZXR1cm4gLUVGQVVMVDsKPiAgIAo+
-ICsJaWYgKGh3LT5tYWMudHlwZSA9PSBlMTAwMF9pMjEwICYmIGVlcHJvbS0+b2Zmc2V0ID09IDAp
-IHsKPiArCQlpZiAoIWlzX3ZhbGlkX2V0aGVyX2FkZHIoYnl0ZXMpKSB7Cj4gKwkJCWRldl9lcnIo
-JmFkYXB0ZXItPnBkZXYtPmRldiwgIkludmFsaWQgTUFDIEFkZHJlc3MgZm9yIGkyMTBcbiIpOwo+
-ICsJCQlyZXR1cm4gLUVJTlZBTDsKPiArCQl9Cj4gKwl9Cj4gKwo+ICAgCW1heF9sZW4gPSBody0+
-bnZtLndvcmRfc2l6ZSAqIDI7Cj4gICAKPiAgIAlmaXJzdF93b3JkID0gZWVwcm9tLT5vZmZzZXQg
-Pj4gMTsKCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
-ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
-Zm8vaW50ZWwtd2lyZWQtbGFuCg==
+Hi Jeff,
+
+This patch has been tested by validation team and appears to be working correctly.
+ACK, but first take a stance on the comment form Tony
+
+Piotr
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
