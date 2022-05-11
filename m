@@ -1,88 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2636052347B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 15:41:20 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E54BB52347C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 15:41:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BE49783E3E;
-	Wed, 11 May 2022 13:41:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8485B40B7B;
+	Wed, 11 May 2022 13:41:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n19ztOaXAaFr; Wed, 11 May 2022 13:41:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yGaf1Q3m96Yt; Wed, 11 May 2022 13:41:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B878883E38;
-	Wed, 11 May 2022 13:41:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 827D14052C;
+	Wed, 11 May 2022 13:41:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D4531BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id ACDD11BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:20:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EF71A60BFC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:11 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8FEC0832EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:20:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eHH6mDnKskEe for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 May 2022 09:13:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7ycMrjO3mlg5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 May 2022 09:20:20 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
- [IPv6:2607:f8b0:4864:20::635])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 61B0860BE4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:13:11 +0000 (UTC)
-Received: by mail-pl1-x635.google.com with SMTP id j14so1300820plx.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 02:13:11 -0700 (PDT)
+Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com
+ [IPv6:2607:f8b0:4864:20::1031])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EBCA483183
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 09:20:19 +0000 (UTC)
+Received: by mail-pj1-x1031.google.com with SMTP id
+ w17-20020a17090a529100b001db302efed6so1527299pjh.4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 02:20:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=caUdEXgEVSs0kuMmNBlg8+o07OgsFwK73z/jdG/sSCw=;
- b=GVUhA0VQq48r7t+9HqUSitkWIadgQr9wvzK2elcHTuWN5edcIU4Trwg4P6r3dVoJYC
- Q5fqOhY+dqZHlWgocJjv0TXr3nRAK3bb58+QhzPw71xFqPQmQ8n+N8Mt9xqbGH/zegmh
- LJ1cmRfbhjv9VtfFtNh24bA6WN4TKBW/9ytUE7M/H1zS4nWWJIB+o5xcKzP99MbAfbQA
- 2aIb41ZOHlcuzb6vdYSBnItWez8vf8BhI+XUmIumbC1vpbsuqcJsxCZqwhlRmy1nd+RN
- KHCtFnQuG7QQeZRNeWaTgMoEB5ah5gwnTDsR+XoATzPQLewVOnLAXTXB+Hctlj5DcO3s
- WN2A==
+ h=from:to:cc:subject:date:message-id;
+ bh=VocA58IeyI2uukCAYnVaaxkVzHhnSR0onge4nBYywA0=;
+ b=XqBt0TtwzuaJu1nZiOtPdh49FBWJDDoYWZY5kVNyNMaBftTEvlEI3+trcHjyLXe+Gf
+ zNTXDW0xtwOq1AVwKN00s0zgWvoUH2oBhgRC9V9ixh8c4fqND+f/Rky4Wpltupz9qUiT
+ Skkn7vhhdliUCw9Zeuu7Ozl7EvWH7NLf3n0A3Vmc7EVyA8HfbZr0uyjDGywHOpwrDyXU
+ eax65ijUGWyYN4/SuOLe4RsHKdqOSs5fHnQv5MzVyCCeKP9ZHk9PzhmPW3iNQFA6rY5u
+ OyGNZMgEG2MbAGtaI+l9oxlRK0Q1tz7qV2KU8W8+w2DVoUyg7JJJF4H+8NLHzqDD+pGP
+ 9r0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=caUdEXgEVSs0kuMmNBlg8+o07OgsFwK73z/jdG/sSCw=;
- b=sRavbIar6WFzcCjJ+K7iru8T0FlAI17d955nMpGi04gsJi7cmB3pLLTFXJyoQE96yH
- QNv1FaeyltKJiyTvXgXtwOLfRkBYdAftg+YYM3xl0Tl9vpuQuMfEUxGN0OpKBFdUNrfP
- 5peXgqQq3ZIK0hWUkMjQ/PsQKTxhjXV9HAxQ0r3c3PrE9/DjJX58ySE4b38h7Bhrd1fX
- WxB6to+kfVO0ObdF1/nlqo9HzxKWlUnnBAXpehgCVjcLd2n0MyRDrNdaQWh5Indi21x0
- I21lErbKGfCNqYnlUUe4z3lL2tuacxQoUlEFJVO4M/h7fhAkflweFahFZ2SFrpyuFhzZ
- 1Rvg==
-X-Gm-Message-State: AOAM5302hdcor6TVjMgJHcw2bKUukZNZd9n+28/sdlSBpOXvOS0qwyKD
- Pa0qIW3OeDSHNufPly9xd6f7xHxgEUTH1qGXJ+O7FA==
-X-Google-Smtp-Source: ABdhPJwmMs6CDdH2rOsFTP1PxEzN66o6t6oq61/hdcP4tRcEBlIpsFDcBpfsgDKXnU5wySkQG17XBQ==
-X-Received: by 2002:a17:90b:4a90:b0:1dc:aec3:c04 with SMTP id
- lp16-20020a17090b4a9000b001dcaec30c04mr4280065pjb.118.1652260390756; 
- Wed, 11 May 2022 02:13:10 -0700 (PDT)
-Received: from [192.168.42.10] ([23.91.97.158])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=VocA58IeyI2uukCAYnVaaxkVzHhnSR0onge4nBYywA0=;
+ b=qrG7CVTYQXTMsrOjtkZEpSvYOwtCEleWsqGKA2M1DXN5dEv2uiOb60hUSecr7rCwiQ
+ To5+QX0ZH9VbGnpEJWS4gp2HDQTpZFIBzaXasqWGUpiHY3H+3Nfax96leCykQDt6v9Cj
+ BcnjdXyciS1pS88zFtfZF3L9Cqt9aIaegjgc3bjr/DPpSWPRHuNUNf/zH7pYsPzoRRQX
+ KnqLLfXS3VD91s+PUnYRwne9JOb72cjuctVp+r0muXhC4X7fRzDQXj1h18yXQXIzQSTg
+ gQ+uad6CPheVxmY1tH5nDhox0ZXhDqICb5y8yO+PlYcf/0KUYXG2utUCquDMsdYOSiJp
+ SC8g==
+X-Gm-Message-State: AOAM530J99za5HDw4ZHuR6igUJWgbUm3bQ5FjjKvDXWlhvVPnN5poqH5
+ fZiS7QkkIfg/ikdGXKTzhe4=
+X-Google-Smtp-Source: ABdhPJwqZNBxmRZ2CvD/00FfhB10XL9Q7L5+sAevj7huytOPrUDSY+oZEdFhQcKGK4/9si4qDf1Juw==
+X-Received: by 2002:a17:903:240c:b0:153:c8df:7207 with SMTP id
+ e12-20020a170903240c00b00153c8df7207mr24186051plo.44.1652260819403; 
+ Wed, 11 May 2022 02:20:19 -0700 (PDT)
+Received: from localhost.localdomain ([23.91.97.158])
  by smtp.gmail.com with ESMTPSA id
- x185-20020a6386c2000000b003c14af5063dsm1184476pgd.85.2022.05.11.02.13.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 May 2022 02:13:10 -0700 (PDT)
-Message-ID: <d42df7fa-0eb1-bf89-6e8f-f4fc5ff138b2@gmail.com>
-Date: Wed, 11 May 2022 17:13:07 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Content-Language: en-US
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-References: <20220510025755.19047-1-xiaolinkui@kylinos.cn>
- <6b16f60d-0f76-f876-0881-de09ecbbbc89@molgen.mpg.de>
-From: Linkui Xiao <xiaolinkui@gmail.com>
-In-Reply-To: <6b16f60d-0f76-f876-0881-de09ecbbbc89@molgen.mpg.de>
+ o10-20020a170903210a00b0015e8d4eb23dsm1229546ple.135.2022.05.11.02.20.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 May 2022 02:20:19 -0700 (PDT)
+From: xiaolinkui <xiaolinkui@gmail.com>
+X-Google-Original-From: xiaolinkui <xiaolinkui@kylinos.cn>
+To: pmenzel@molgen.mpg.de, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com
+Date: Wed, 11 May 2022 17:20:04 +0800
+Message-Id: <20220511092004.30173-1-xiaolinkui@kylinos.cn>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Approved-At: Wed, 11 May 2022 13:40:58 +0000
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Convert a series of if
- statements to switch case
+Subject: [Intel-wired-lan] [PATCH] igb: Convert a series of if statements to
+ switch case
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +92,54 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: netdev@vger.kernel.org, Linkui Xiao <xiaolinkui@kylinos.cn>,
  edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
  pabeni@redhat.com, davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBQYXVsOgoKVGhhbmsgeW91IGZvciB5b3VyIHJlcGx5IGFuZCBzdWdnZXN0aW9ucywgSSB3
-aWxsIHNlbmQgdGhlIFYyIHZlcnNpb24gc29vbi4KCk9uIDUvMTEvMjIgMTQ6MzIsIFBhdWwgTWVu
-emVsIHdyb3RlOgo+IERlYXIgTGlua3VpLAo+Cj4KPiBUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2gu
-Cj4KPiBBbSAxMC4wNS4yMiB1bSAwNDo1NyBzY2hyaWViIHhpYW9saW5rdWk6Cj4+IEZyb206IExp
-bmt1aSBYaWFvPHhpYW9saW5rdWlAa3lsaW5vcy5jbj4KPgo+IFBsZWFzZSBhZGQgYSBzcGFjZSBi
-ZWZvcmUgdGhlIDwuCj4KPj4gQ29udmVydCBhIHNlcmllcyBvZiBpZiBzdGF0ZW1lbnRzIHRoYXQg
-aGFuZGxlIGRpZmZlcmVudCBldmVudHMgdG8KPj4gYSBzd2l0Y2ggY2FzZSBzdGF0ZW1lbnQgdG8g
-c2ltcGxpZnkgdGhlIGNvZGUuCj4KPiAoTml0OiBQbGVhc2UgdXNlIDc1IGNoYXJhY3RlcnMgcGVy
-IGxpbmUuKQo+Cj4+IFNpZ25lZC1vZmYtYnk6IExpbmt1aSBYaWFvPHhpYW9saW5rdWlAa3lsaW5v
-cy5jbj4KPj4gLS0tCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFp
-bi5jIHwgMTIgKysrKysrKystLS0tCj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMo
-KyksIDQgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pZ2IvaWdiX21haW4uYyAKPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-Z2IvaWdiX21haW4uYwo+PiBpbmRleCAzNGIzM2IyMWUwZGMuLjRjZTA3MThlZWZmNiAxMDA2NDQK
-Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPj4gKysr
-IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMKPj4gQEAgLTQ1ODgs
-MTMgKzQ1ODgsMTcgQEAgc3RhdGljIGlubGluZSB2b2lkIAo+PiBpZ2Jfc2V0X3ZmX3ZsYW5fc3Ry
-aXAoc3RydWN0IGlnYl9hZGFwdGVyICphZGFwdGVyLAo+PiDCoMKgwqDCoMKgIHN0cnVjdCBlMTAw
-MF9odyAqaHcgPSAmYWRhcHRlci0+aHc7Cj4+IMKgwqDCoMKgwqAgdTMyIHZhbCwgcmVnOwo+PiDC
-oCAtwqDCoMKgIGlmIChody0+bWFjLnR5cGUgPCBlMTAwMF84MjU3NikKPj4gK8KgwqDCoCBzd2l0
-Y2ggKGh3LT5tYWMudHlwZSkgewo+PiArwqDCoMKgIGNhc2UgZTEwMDBfdW5kZWZpbmVkOgo+PiAr
-wqDCoMKgIGNhc2UgZTEwMDBfODI1NzU6Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm47Cj4+
-IC0KPj4gLcKgwqDCoCBpZiAoaHctPm1hYy50eXBlID09IGUxMDAwX2kzNTApCj4+ICvCoMKgwqAg
-Y2FzZSBlMTAwMF9pMzUwOgo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmVnID0gRTEwMDBfRFZNT0xS
-KHZmbik7Cj4+IC3CoMKgwqAgZWxzZQo+PiArwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4+ICvCoMKg
-wqAgZGVmYXVsdDoKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJlZyA9IEUxMDAwX1ZNT0xSKHZmbik7
-Cj4+ICvCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4gK8KgwqDCoCB9Cj4+IMKgIMKgwqDCoMKgwqAg
-dmFsID0gcmQzMihyZWcpOwo+PiDCoMKgwqDCoMKgIGlmIChlbmFibGUpCj4KPiBSZXZpZXdlZC1i
-eTogUGF1bCBNZW56ZWwgPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4KPgo+Cj4gS2luZCByZWdhcmRz
-LAo+Cj4gUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
-Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
-bgo=
+From: Linkui Xiao <xiaolinkui@kylinos.cn>
+
+Convert a series of if statements that handle different events to a switch
+case statement to simplify the code.
+
+V2: fix patch description and email format.
+
+Signed-off-by: Linkui Xiao <xiaolinkui@kylinos.cn>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 34b33b21e0dc..4ce0718eeff6 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4588,13 +4588,17 @@ static inline void igb_set_vf_vlan_strip(struct igb_adapter *adapter,
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 val, reg;
+ 
+-	if (hw->mac.type < e1000_82576)
++	switch (hw->mac.type) {
++	case e1000_undefined:
++	case e1000_82575:
+ 		return;
+-
+-	if (hw->mac.type == e1000_i350)
++	case e1000_i350:
+ 		reg = E1000_DVMOLR(vfn);
+-	else
++		break;
++	default:
+ 		reg = E1000_VMOLR(vfn);
++		break;
++	}
+ 
+ 	val = rd32(reg);
+ 	if (enable)
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
