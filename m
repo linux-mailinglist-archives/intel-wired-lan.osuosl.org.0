@@ -1,82 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2181523594
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 16:33:18 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CA7252363F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 May 2022 16:54:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4271E832EA;
-	Wed, 11 May 2022 14:33:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C11F940B73;
+	Wed, 11 May 2022 14:54:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ER_7YowJKk0K; Wed, 11 May 2022 14:33:15 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id umfAxMK_KlxK; Wed, 11 May 2022 14:54:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E044182F9B;
-	Wed, 11 May 2022 14:33:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C084C40B94;
+	Wed, 11 May 2022 14:54:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C456D1BF3C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:33:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 93C391BF3C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:54:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B8A1782F9B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:33:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7E9CF40B82
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:54:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e68ZrXwdGDEm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 May 2022 14:33:05 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
- [IPv6:2607:f8b0:4864:20::1033])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 568E682F99
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:33:05 +0000 (UTC)
-Received: by mail-pj1-x1033.google.com with SMTP id
- l7-20020a17090aaa8700b001dd1a5b9965so2258452pjq.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 07:33:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:subject:from:to:date:in-reply-to:references:user-agent
- :mime-version:content-transfer-encoding;
- bh=i2EByjGZ9HI2c2OzDKOZTrB+hBnpluOldry07PZevUg=;
- b=SmaF9bFKBqMRmF3lhfm0cRxAdhuoAyfQO6hfpBu9aYxYTvKKbQ0GfYFmNNzE7zp/SA
- zMyKxy14VvELOCeLbGJKW186BQCjdLSDB0gLO+mxZ0nMv1ez4IkX3yqfTtZmp+asiCez
- Y8LoFwsv54QZbjJJZ8V59jnhCcGnmk80r7Rqk+dBza1VwNDTySQyKgqode0tr+xlA4h2
- FWa0YgwiFziqcNnGBs/GO1bCAh34y74N1OSgIEfVbyYwXst20FIsQNO3JvDMoxnbHBUe
- +SdzGTHWmLy86vw3ebdCF0sk13Y3YdAmm/PnQ8MsEm8ye56c0f92qLacy1g3v5KmZixC
- 6r+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:to:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=i2EByjGZ9HI2c2OzDKOZTrB+hBnpluOldry07PZevUg=;
- b=LP3SfQMG+Moi1mgE01iFBIj6xjft2me48LkHeQcctOBFHxv2mrIkROEyCjMWR8G5s/
- sEK/I95UJJiBrOehbEefiXF6KBAA4r8J+cbuOoK/t8i50RQFX7LEa6/VO+kdKFqLeqKj
- pVQ0P4scQ7TILAS2Mm23GZEJ4ugoUWTvBQFxtmLmLS20yeaMujoZAd4nLz2Rs061Ubza
- X/dKf8J10zQ8sBpzgl5xZPTDIdsXG/Kl9lg+ucKwH9rJ3U8MhHFCb/E7Y4cY83cdo1JR
- NSIMFmE8YR2cHyy20toVCXTuBU2puDmK9Fk8Srnd3SB0a6gds3yPgmJcdctr9T0sqouF
- Oduw==
-X-Gm-Message-State: AOAM530L5UcarPXQqve1nCTd9Iv8PnieGvJ5G1v2Bh4SSyYdkUuarMKP
- wEhzgI3Cj+kjK9fy6eZOd6cGqIWzfqc=
-X-Google-Smtp-Source: ABdhPJyWeMZ2KvoN0ZXm05z9fjpBXCpc59SjKzvIi+KH1ZaBXhaAL5UtR8FrN1PwGJ+i4sVwjGplxA==
-X-Received: by 2002:a17:90b:3ecb:b0:1dc:5401:bea with SMTP id
- rm11-20020a17090b3ecb00b001dc54010beamr5680019pjb.20.1652279584581; 
- Wed, 11 May 2022 07:33:04 -0700 (PDT)
-Received: from [192.168.0.128] ([98.97.39.30])
- by smtp.googlemail.com with ESMTPSA id
- o6-20020a17090a420600b001cd498dc153sm2704554pjg.3.2022.05.11.07.33.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 07:33:03 -0700 (PDT)
-Message-ID: <ad8cf673c8e9e21cb2e7afeb5c7e66cc76a36995.camel@gmail.com>
-From: Alexander H Duyck <alexander.duyck@gmail.com>
-To: lixue liang <lianglixue@greatwall.com.cn>, jesse.brandeburg@intel.com, 
- anthony.l.nguyen@intel.com, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org,  netdev@vger.kernel.org
-Date: Wed, 11 May 2022 07:33:02 -0700
-In-Reply-To: <20220511080716.10054-1-lianglixue@greatwall.com.cn>
-References: <20220511080716.10054-1-lianglixue@greatwall.com.cn>
-User-Agent: Evolution 3.40.4 (3.40.4-5.fc34) 
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jG6hJS_9WPLQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 May 2022 14:54:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C4AF940B73
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 May 2022 14:54:00 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id E944F61E6478B;
+ Wed, 11 May 2022 16:53:56 +0200 (CEST)
+Message-ID: <f486b0a0-2f6b-13e9-e905-8ad9163020a7@molgen.mpg.de>
+Date: Wed, 11 May 2022 16:53:56 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: lixue liang <lianglixue@greatwall.com.cn>
+References: <20220511080716.10054-1-lianglixue@greatwall.com.cn>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20220511080716.10054-1-lianglixue@greatwall.com.cn>
 Subject: Re: [Intel-wired-lan] 
  =?utf-8?b?W1BBVENIXSBpZ2JfbWFpbu+8mkFkZGVkIGlu?=
  =?utf-8?q?valid_mac_address_handling_in_igb=5Fprobe?=
@@ -92,70 +62,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: kuba@kernel.org, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2022-05-11 at 08:07 +0000, lixue liang wrote:
-> In some cases, when the user uses igb_set_eeprom to modify
-> the mac address to be invalid, the igb driver will fail to load.
-> If there is no network card device, the user must modify it to
-> a valid mac address by other means. It is only the invalid
-> mac address that causes the driver The fatal problem of
-> loading failure will cause most users no choice but to trouble.
-> 
-> Since the mac address may be changed to be invalid, it must
-> also be changed to a valid mac address, then add a random
-> valid mac address to replace the invalid mac address in the
-> driver, continue to load the igb network card driver,
-> and output the relevant log reminder. vital to the user.
-> 
-> Signed-off-by: lixue liang <lianglixue@greatwall.com.cn>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index 34b33b21e0dc..a513570c2ad6 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -3359,9 +3359,10 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->  	eth_hw_addr_set(netdev, hw->mac.addr);
->  
->  	if (!is_valid_ether_addr(netdev->dev_addr)) {
-
-It might make sense to look at adding a module parameter to control
-this behavior similar to what was done for ixgbe for
-"allow_unsupported_sfp". 
-Otherwise such a failure is likely to end up causing other issues and
-be harder to debug if it is just being automatically worked around as
-the user may not see the issue as it is only being reported as 
-
-Basically you could check for it here and either run the old code, or
-allow the new code that would assign a random MAC address.
-
-> -		dev_err(&pdev->dev, "Invalid MAC Address\n");
-> -		err = -EIO;
-> -		goto err_eeprom;
-> +		eth_random_addr(netdev->dev_addr);
-> +		memcpy(hw->mac.addr, netdev->dev_addr, netdev->addr_len);
-> +		dev_info(&pdev->dev,
-> +			 "Invalid Mac Address, already got random Mac Address\n");
-
-We would probably want to make this a dev_err instead of just a
-dev_info since the MAC address failing is pretty signficant. Also the
-message may be better as "Invalid MAC address. Assigned random MAC
-address". That way if somebody were to be parsing for the message they
-would still find it since "MAC" hasn't been changed.
-
->  	}
->  
->  	igb_set_default_mac_filter(adapter);
-
-
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBMaXh1ZSwKCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4gUGxlYXNlIHRhZyBwYXRjaCBp
+dGVyYXRpb25zIHdpdGggYSB2ZXJzaW9uLiAKKFVzZSBgLXYgMmAgaW4gYGdpdCBzZW5kLWVtYWls
+YCBmb3IgZXhhbXBsZS4pCgpBbSAxMS4wNS4yMiB1bSAxMDowNyBzY2hyaWViIGxpeHVlIGxpYW5n
+OgoKUGxlYXNlIHVzZSB0aGUgbm9ybWFsIGNvbG9uIDogaW4gdGhlIHN1bW1hcnkuCgpBbHNvLCBw
+bGVhc2UgdXNlIGltcGVyYXRpdmUgbW9vZCBpbiBwcmVzZW50IHRlbnNlOiBBZGQg4oCmCgpCdXQs
+IGluIHRoaXMgY2FzZQoKSGFuZGxlIGludmFsaWQgTUFDIGFkZHJlc3Mg4oCmCgppcyBzaG9ydGVy
+LiBPcjoKCkFzc2lnbiByYW5kb20gTUFDIGFkZHJlc3MgaW5zdGVhZCBvZiBmYWlsIGluIGNhc2Ug
+b2YgaW52YWxpZCBvbmUKCj4gSW4gc29tZSBjYXNlcywgd2hlbiB0aGUgdXNlciB1c2VzIGlnYl9z
+ZXRfZWVwcm9tIHRvIG1vZGlmeQo+IHRoZSBtYWMgYWRkcmVzcyB0byBiZSBpbnZhbGlkLCB0aGUg
+aWdiIGRyaXZlciB3aWxsIGZhaWwgdG8gbG9hZC4KPiBJZiB0aGVyZSBpcyBubyBuZXR3b3JrIGNh
+cmQgZGV2aWNlLCB0aGUgdXNlciBtdXN0IG1vZGlmeSBpdCB0bwo+IGEgdmFsaWQgbWFjIGFkZHJl
+c3MgYnkgb3RoZXIgbWVhbnMuIEl0IGlzIG9ubHkgdGhlIGludmFsaWQKPiBtYWMgYWRkcmVzcyB0
+aGF0IGNhdXNlcyB0aGUgZHJpdmVyIFRoZSBmYXRhbCBwcm9ibGVtIG9mCgrigKYgTUFDIGFkZHJl
+c3MgY2F1c2luZyB0aGUgZHJpdmVyIHRvIGZhaWx1cmUuIFRoZSBmYXRhbCDigKYKCj4gbG9hZGlu
+ZyBmYWlsdXJlIHdpbGwgY2F1c2UgbW9zdCB1c2VycyBubyBjaG9pY2UgYnV0IHRvIHRyb3VibGUu
+CgpNYXliZSByZW1vdmUgdGhpcyBzZW50ZW5jZSwgb3IgcmVwaHJhc2UuCgo+IFNpbmNlIHRoZSBt
+YWMgYWRkcmVzcyBtYXkgYmUgY2hhbmdlZCB0byBiZSBpbnZhbGlkLCBpdCBtdXN0Cj4gYWxzbyBi
+ZSBjaGFuZ2VkIHRvIGEgdmFsaWQgbWFjIGFkZHJlc3MsIHRoZW4gYWRkIGEgcmFuZG9tCj4gdmFs
+aWQgbWFjIGFkZHJlc3MgdG8gcmVwbGFjZSB0aGUgaW52YWxpZCBtYWMgYWRkcmVzcyBpbiB0aGUK
+PiBkcml2ZXIsIGNvbnRpbnVlIHRvIGxvYWQgdGhlIGlnYiBuZXR3b3JrIGNhcmQgZHJpdmVyLAo+
+IGFuZCBvdXRwdXQgdGhlIHJlbGV2YW50IGxvZyByZW1pbmRlci4gdml0YWwgdG8gdGhlIHVzZXIu
+CgpQbGVhc2UgcmVmbG93IGZvciA3NSBjaGFyYWN0ZXJzIHBlciBsaW5lLiAoTW9yZSB3b3JkcyBm
+aXQgaW4gb25lIGxpbmUuKQoKPiBTaWduZWQtb2ZmLWJ5OiBsaXh1ZSBsaWFuZyA8bGlhbmdsaXh1
+ZUBncmVhdHdhbGwuY29tLmNuPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWdiL2lnYl9tYWluLmMgfCA3ICsrKystLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlv
+bnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdi
+L2lnYl9tYWluLmMKPiBpbmRleCAzNGIzM2IyMWUwZGMuLmE1MTM1NzBjMmFkNiAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYwo+ICsrKyBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCj4gQEAgLTMzNTksOSArMzM1
+OSwxMCBAQCBzdGF0aWMgaW50IGlnYl9wcm9iZShzdHJ1Y3QgcGNpX2RldiAqcGRldiwgY29uc3Qg
+c3RydWN0IHBjaV9kZXZpY2VfaWQgKmVudCkKPiAgIAlldGhfaHdfYWRkcl9zZXQobmV0ZGV2LCBo
+dy0+bWFjLmFkZHIpOwo+ICAgCj4gICAJaWYgKCFpc192YWxpZF9ldGhlcl9hZGRyKG5ldGRldi0+
+ZGV2X2FkZHIpKSB7Cj4gLQkJZGV2X2VycigmcGRldi0+ZGV2LCAiSW52YWxpZCBNQUMgQWRkcmVz
+c1xuIik7Cj4gLQkJZXJyID0gLUVJTzsKPiAtCQlnb3RvIGVycl9lZXByb207Cj4gKwkJZXRoX3Jh
+bmRvbV9hZGRyKG5ldGRldi0+ZGV2X2FkZHIpOwo+ICsJCW1lbWNweShody0+bWFjLmFkZHIsIG5l
+dGRldi0+ZGV2X2FkZHIsIG5ldGRldi0+YWRkcl9sZW4pOwo+ICsJCWRldl9pbmZvKCZwZGV2LT5k
+ZXYsCj4gKwkJCSAiSW52YWxpZCBNYWMgQWRkcmVzcywgYWxyZWFkeSBnb3QgcmFuZG9tIE1hYyBB
+ZGRyZXNzXG4iKTsKCklzIHRoZXJlIGEgdmFsaWQgTUFDIGFkZHJlc3MgdGhhdCBzaG91bGQgYmUg
+b25seSB1c2VkIGZvciB0ZXN0aW5nLiBNYXliZSAKdGhhdCBjYW4gYmUgdXNlZC4gTWF5YmUgYWxz
+byBsb2cgdGhlIGFkZHJlc3MuCgpMYXN0bHksIHBsZWFzZSBmdWxseSBjYXBpdGFsaXplIE1BQy4K
+Cj4gICAJfQo+ICAgCj4gICAJaWdiX3NldF9kZWZhdWx0X21hY19maWx0ZXIoYWRhcHRlcik7CgoK
+S2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
+c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LXdpcmVkLWxhbgo=
