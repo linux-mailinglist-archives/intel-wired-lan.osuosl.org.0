@@ -1,73 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C59E52CFB2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 May 2022 11:50:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 775E952CFBC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 May 2022 11:51:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 76EEA41C1D;
-	Thu, 19 May 2022 09:50:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 914A341C41;
+	Thu, 19 May 2022 09:51:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ORgFY2KTS3sA; Thu, 19 May 2022 09:50:03 +0000 (UTC)
+	with ESMTP id qHQjA737JxMy; Thu, 19 May 2022 09:51:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2A23D41C21;
-	Thu, 19 May 2022 09:50:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 55EAD41C21;
+	Thu, 19 May 2022 09:51:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 65FFE1BF34D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:49:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3EE531BF34D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:51:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 60118408A5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:49:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A55141C21
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:51:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f5Uc857OKOwQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 May 2022 09:49:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0J2GLmD_uYpb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 May 2022 09:51:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3029040600
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:49:57 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1FE4841C1D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 09:51:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652953797; x=1684489797;
- h=message-id:date:mime-version:subject:to:references:from:
- in-reply-to:content-transfer-encoding;
- bh=rtmqj3TMQM5Lkrqql/9T9c/qV4lDn2ggVyHcHXuO8KE=;
- b=ENgzn8oBC/SOPgDop7sCl1/rL3qc41H5B40plDAM7ZT3kqcnWmkgnxZF
- DjDfSQjiljHcLL9KAnuJzDaw+hq9kcFUf30oEYd6fd6OXC7DWw8p4ozh5
- 4rkFdypjLzLxY3PPyBLV5f9h/yD7YGRPFjoKCplFEnBCI8MVS3AcvEuTN
- hSTCiY/EYbgocfmeU8s98nO+vbh2EsHsTFOJ/4OTP+4KeE3XbLEpSSe4L
- rBEsHm9Qqm0zO7bi5fUGBwkFKIt61/LA0lqdnl9QF7E5VO/zv+MLQxsCb
- ++gJpMF86sFqzIeeMa7l77tvpb0ivh1tWd8FeLrwV9wWb1i9qbsM9b4XV g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10351"; a="358526198"
-X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="358526198"
+ t=1652953875; x=1684489875;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=8xszIUgrAQV3TyToYUPSqdgK/yoVms8cvYqnOgszZmo=;
+ b=RCMblYGR0TBr3oxA+n/Mck03Sw2RV8zl7uFmVbgZoWCQRvpX2n9AGZlk
+ /bRwxTO7rXJZbGF1clcrn+/mzysB5GmcBsWav/PPTEDxtN1KFei9FULK7
+ MwEPeiw29MJOKGSHfH1qORSA7RA1hN0x+ynTOJ27z/2mGreQi7T0F9PDb
+ uEtL7K+jGRpUigX7hgcHF5GBwODoBTAb+hkM0AWIoj+1XTjAXy6bH68E0
+ fJke1ZI/50OL0ptFzJdHRmpxU/zCihJhQ7I2BRQ9qtv5LSyKskn5M+yLT
+ YbcKreuXUhOcsHBz3BMC+c2KNZlXNEBpxgA2z4ziP9joENfa+ykRenrHm g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10351"; a="271821957"
+X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="271821957"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 02:49:56 -0700
-X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="598468800"
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2022 02:51:14 -0700
+X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="598469532"
 Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.214.212.104])
  ([10.214.212.104])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 02:49:54 -0700
-Message-ID: <d01c1c94-3088-942d-cd18-942e4c519c6d@linux.intel.com>
-Date: Thu, 19 May 2022 12:49:41 +0300
+ 19 May 2022 02:51:13 -0700
+Message-ID: <f9909e7c-abfb-2638-b941-ca2a5e7e120c@linux.intel.com>
+Date: Thu, 19 May 2022 12:51:11 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
 Content-Language: en-US
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
- dima.ruinskiy@intel.com
-References: <20220509085254.2436296-1-sasha.neftin@intel.com>
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20220508070905.1878172-1-sasha.neftin@intel.com>
 From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20220509085254.2436296-1-sasha.neftin@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] Revert "e1000e: Fix possible
- HW unit hang after an s0ix exit"
+In-Reply-To: <20220508070905.1878172-1-sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] e1000e: Enable GPT clock
+ before sending message to CSME
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,28 +77,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 5/9/2022 11:52, Sasha Neftin wrote:
-> This reverts commit 1866aa0d0d6492bc2f8d22d0df49abaccf50cddd.
-> 
-> Commit 1866aa0d0d64("e1000e: Fix possible HW unit hang after an s0ix exit")
-> was a workaround for CSME problem to handle messages comes via H2ME
-> mailbox. This problem has been fixed by patch "e1000e: Enable the GPT
-> clock before sending message to the CSME".
+On 5/8/2022 10:09, Sasha Neftin wrote:
+> On corporate (CSME) ADL systems, the Ethernet Controller may stop working
+> ("HW unit hang") after exiting from the s0ix state. The reason is that
+> CSME misses the message sent by the host. Enabling the dynamic GPT clock
+> solves this problem. This clock is cleared upon HW initialization.
 > 
 > Fixes: 3e55d231716e ("e1000e: Add handshake with the CSME to support S0ix")
 > Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=214821
+> Reviewed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
 > Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->   drivers/net/ethernet/intel/e1000e/hw.h      |  1 -
->   drivers/net/ethernet/intel/e1000e/ich8lan.c |  4 ----
->   drivers/net/ethernet/intel/e1000e/ich8lan.h |  1 -
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 26 ---------------------
->   4 files changed, 32 deletions(-)
+> v2:
+> Correct commit message and minor fix in comment.
+>   drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++++
+>   1 file changed, 4 insertions(+)
 Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
