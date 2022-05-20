@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B385F52E1A7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49B3A52E1C8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2250284541;
-	Fri, 20 May 2022 01:16:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7A6D3833C7;
+	Fri, 20 May 2022 01:16:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1LS91s3Pt53h; Fri, 20 May 2022 01:16:06 +0000 (UTC)
+	with ESMTP id b3RiswxUwc1l; Fri, 20 May 2022 01:16:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7836384521;
-	Fri, 20 May 2022 01:16:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5351883267;
+	Fri, 20 May 2022 01:16:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 455A91BF30C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F3B21BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:16:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 34C468453A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A640084528
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id idxx5uYsyHH3 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id XZLAX1Dc__YM for <intel-wired-lan@lists.osuosl.org>;
  Fri, 20 May 2022 01:15:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E51A384528
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6ACA08452F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653009355; x=1684545355;
+ t=1653009356; x=1684545356;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=gS3QmrY8Ouj0uEw4FUK0Bv7IRhzbf1HjggXr/+kO/04=;
- b=Bp4QPhYhUZ9C5weTma+gKxNIpNeHQd2fnQt+QOyukDnRY6/hTDkD0ARl
- nJpkBgNOdt9EL4tEVNs64S9R/M08pnwh++PFH1S9rwFkgsl9LEJ4TATIR
- KHg6mPfIOO7IqYxt/nkKeASf2a2azjn5GA5VdFCEaxAobaPSVi3Rf7lSW
- waGORETfn+qe1WyPz84/Us3UxcDwcgqph4Gg5YCHwO3YZDH8kTbVDgzO+
- kTeH+KkiO6BsZvgMIwDWsngfugpMh46SM3a1Rxg+xoPhAqzb1yPh7MZ2a
- MiDY/oS4D88U4P7j0KYOA2Fm5xK8/7HaRIt6aPBwnq7hA9Nd/Qil/YhYG A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064150"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064150"
+ bh=ABPrbRrB7H4era6LahfVmzh6b3s4/Or9defPrr4gSZs=;
+ b=EmBdVc3wLeXK3FRjAps/Sze6jkwNkRdf9wLdAww2iAhftbL9iX9YhAn1
+ Ge9BBZrF/1Z45jmEZhnXx+y4BkI4zFAA8q66GTxoapbUCviyXffTEZM7L
+ 5rCWEQNXsUMyC4h2B1bdWk5FefMPspwCq5qZox0OWX6IeoC7+DdBepHWE
+ 1dnaRlO507z1IG6kTfmOtJkB2G2KOTWcyD5qc0vel2iAY8SuCbl2KxafU
+ gy8NFgLbMClcKCs9h7XKCPOnmwnVVfy5MJ48Urkl70mEMUYxYlTX0AZSv
+ PdRRD6x8HuwAcSqu6nKrdVgFrOvAb0C5U2dvDK5DvH5yhHrpZwwwiVau0 w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064153"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064153"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 18:15:53 -0700
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534535"
+ 19 May 2022 18:15:54 -0700
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534539"
 Received: from vcostago-mobl3.jf.intel.com ([10.24.14.84])
  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  19 May 2022 18:15:53 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: netdev@vger.kernel.org
-Date: Thu, 19 May 2022 18:15:28 -0700
-Message-Id: <20220520011538.1098888-2-vinicius.gomes@intel.com>
+Date: Thu, 19 May 2022 18:15:29 -0700
+Message-Id: <20220520011538.1098888-3-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v5 01/11] ethtool: Add support
- for configuring frame preemption
+Subject: [Intel-wired-lan] [PATCH net-next v5 02/11] ethtool: Add support
+ for Frame Preemption verification
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,515 +82,135 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Frame preemption (described in IEEE 802.3-2018, Section 99 in
-particular) defines the concept of preemptible and express queues. It
-allows traffic from express queues to "interrupt" traffic from
-preemptible queues, which are "resumed" after the express traffic has
-finished transmitting.
+Expose the ethtool parameters to the PREEMPT_SET/_GET commands
+necessary to support the verification procedure as defined by IEEE
+802.3-2018.
 
-Expose the UAPI bits for applications to enable using ethtool-netlink.
-Also expose the kernel ethtool functions, so device drivers can
-support it.
-
-Frame preemption can only be used when both the local device and the
-link partner support it.
+These include the 'verified' bit to indicate that the verification
+dialog has concluded successfully with the link partner and frame
+preemption is supported. There's also the 'disable_verify' config to
+disable initiating the verification dialog.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- Documentation/networking/ethtool-netlink.rst |  52 ++++++
- include/linux/ethtool.h                      |  23 +++
- include/uapi/linux/ethtool_netlink.h         |  18 ++
- net/ethtool/Makefile                         |   3 +-
- net/ethtool/common.c                         |  23 +++
- net/ethtool/netlink.c                        |  19 ++
- net/ethtool/netlink.h                        |   4 +
- net/ethtool/preempt.c                        | 177 +++++++++++++++++++
- 8 files changed, 318 insertions(+), 1 deletion(-)
- create mode 100644 net/ethtool/preempt.c
+ Documentation/networking/ethtool-netlink.rst |  3 +++
+ include/linux/ethtool.h                      |  3 +++
+ include/uapi/linux/ethtool_netlink.h         |  2 ++
+ net/ethtool/netlink.h                        |  2 +-
+ net/ethtool/preempt.c                        | 11 +++++++++++
+ 5 files changed, 20 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/networking/ethtool-netlink.rst b/Documentation/networking/ethtool-netlink.rst
-index dbca3e9ec782..15d7c025cc4e 100644
+index 15d7c025cc4e..1731e7ad9ee7 100644
 --- a/Documentation/networking/ethtool-netlink.rst
 +++ b/Documentation/networking/ethtool-netlink.rst
-@@ -220,6 +220,8 @@ Userspace to kernel:
-   ``ETHTOOL_MSG_PHC_VCLOCKS_GET``       get PHC virtual clocks info
-   ``ETHTOOL_MSG_MODULE_SET``            set transceiver module parameters
-   ``ETHTOOL_MSG_MODULE_GET``            get transceiver module parameters
-+  ``ETHTOOL_MSG_PREEMPT_GET``           get frame preemption parameters
-+  ``ETHTOOL_MSG_PREEMPT_SET``           set frame preemption parameters
-   ===================================== =================================
+@@ -1646,6 +1646,8 @@ Kernel response contents:
+   ``ETHTOOL_A_PREEMPT_ENABLED``           bool    frame preemption enabled
+   ``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK``  bitset  preemptible queue mask
+   ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``     u32     Min additional frag size
++  ``ETHTOOL_A_PREEMPT_DISABLE_VERIFY``    u32     disable verification
++  ``ETHTOOL_A_PREEMPT_VERIFIED``          u32     verification procedure
+   ======================================  ======  ==========================
  
- Kernel to userspace:
-@@ -260,6 +262,7 @@ Kernel to userspace:
-   ``ETHTOOL_MSG_STATS_GET_REPLY``          standard statistics
-   ``ETHTOOL_MSG_PHC_VCLOCKS_GET_REPLY``    PHC virtual clocks info
-   ``ETHTOOL_MSG_MODULE_GET_REPLY``         transceiver module parameters
-+  ``ETHTOOL_MSG_PREEMPT_GET_REPLY``        frame preemption parameters
-   ======================================== =================================
+ ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
+@@ -1667,6 +1669,7 @@ Request contents:
+   ``ETHTOOL_A_PREEMPT_ENABLED``           bool    frame preemption enabled
+   ``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK``  bitset  preemptible queue mask
+   ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``     u32     Min additional frag size
++  ``ETHTOOL_A_PREEMPT_DISABLE_VERIFY``    bool    disable verification
+   ======================================  ======  ==========================
  
- ``GET`` requests are sent by userspace applications to retrieve device
-@@ -1625,6 +1628,53 @@ For SFF-8636 modules, low power mode is forced by the host according to table
- For CMIS modules, low power mode is forced by the host according to table 6-12
- in revision 5.0 of the specification.
- 
-+PREEMPT_GET
-+===========
-+
-+Get information about frame preemption state.
-+
-+Request contents:
-+
-+  ====================================  ======  ==========================
-+  ``ETHTOOL_A_PREEMPT_HEADER``          nested  request header
-+  ====================================  ======  ==========================
-+
-+Kernel response contents:
-+
-+  ======================================  ======  ==========================
-+  ``ETHTOOL_A_PREEMPT_HEADER``            nested  reply header
-+  ``ETHTOOL_A_PREEMPT_ENABLED``           bool    frame preemption enabled
-+  ``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK``  bitset  preemptible queue mask
-+  ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``     u32     Min additional frag size
-+  ======================================  ======  ==========================
-+
-+``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
-+fragment size that the receiver device supports.
-+
-+``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK`` configures which queues should
-+be marked as preemptible. If bit X is '1' then queue X is preemptible,
-+the queue is express otherwise.
-+
-+PREEMPT_SET
-+===========
-+
-+Sets frame preemption parameters.
-+
-+Request contents:
-+
-+  ======================================  ======  ==========================
-+  ``ETHTOOL_A_PREEMPT_HEADER``            nested  reply header
-+  ``ETHTOOL_A_PREEMPT_ENABLED``           bool    frame preemption enabled
-+  ``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK``  bitset  preemptible queue mask
-+  ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE``     u32     Min additional frag size
-+  ======================================  ======  ==========================
-+
-+``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
-+fragment size that the receiver device supports.
-+
-+``ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK`` configures which queues should be marked as
-+preemptible.
-+
- Request translation
- ===================
- 
-@@ -1726,4 +1776,6 @@ are netlink only.
-   n/a                                 ``ETHTOOL_MSG_PHC_VCLOCKS_GET``
-   n/a                                 ``ETHTOOL_MSG_MODULE_GET``
-   n/a                                 ``ETHTOOL_MSG_MODULE_SET``
-+  n/a                                 ``ETHTOOL_MSG_PREEMPT_GET``
-+  n/a                                 ``ETHTOOL_MSG_PREEMPT_SET``
-   =================================== =====================================
+ ``ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE`` configures the minimum non-final
 diff --git a/include/linux/ethtool.h b/include/linux/ethtool.h
-index 99dc7bfbcd3c..42570ec8ee44 100644
+index 42570ec8ee44..5600a7610fa1 100644
 --- a/include/linux/ethtool.h
 +++ b/include/linux/ethtool.h
-@@ -453,6 +453,20 @@ struct ethtool_module_power_mode_params {
- 	enum ethtool_module_power_mode mode;
+@@ -13,6 +13,7 @@
+ #ifndef _LINUX_ETHTOOL_H
+ #define _LINUX_ETHTOOL_H
+ 
++#include "asm-generic/int-ll64.h"
+ #include <linux/bitmap.h>
+ #include <linux/compat.h>
+ #include <linux/netlink.h>
+@@ -464,6 +465,8 @@ struct ethtool_module_power_mode_params {
+ struct ethtool_fp {
+ 	u32 enabled;
+ 	u32 preemptible_mask;
++	u32 disable_verify;
++	u32 verified;
+ 	u32 add_frag_size;
  };
  
-+/**
-+ * struct ethtool_fp - Frame Preemption information
-+ *
-+ * @enabled: Enable frame preemption.
-+ * @add_frag_size: Minimum size for additional (non-final) fragments
-+ * in bytes, for the value defined in the IEEE 802.3-2018 standard see
-+ * ethtool_frag_size_to_mult().
-+ */
-+struct ethtool_fp {
-+	u32 enabled;
-+	u32 preemptible_mask;
-+	u32 add_frag_size;
-+};
-+
- /**
-  * struct ethtool_ops - optional netdev operations
-  * @cap_link_lanes_supported: indicates if the driver supports lanes
-@@ -606,6 +620,8 @@ struct ethtool_module_power_mode_params {
-  *	not report statistics.
-  * @get_fecparam: Get the network device Forward Error Correction parameters.
-  * @set_fecparam: Set the network device Forward Error Correction parameters.
-+ * @get_preempt: Get the network device Frame Preemption parameters.
-+ * @set_preempt: Set the network device Frame Preemption parameters.
-  * @get_ethtool_phy_stats: Return extended statistics about the PHY device.
-  *	This is only useful if the device maintains PHY statistics and
-  *	cannot use the standard PHY library helpers.
-@@ -736,6 +752,10 @@ struct ethtool_ops {
- 				      struct ethtool_fecparam *);
- 	int	(*set_fecparam)(struct net_device *,
- 				      struct ethtool_fecparam *);
-+	int	(*get_preempt)(struct net_device *dev,
-+			       struct ethtool_fp *fp);
-+	int	(*set_preempt)(struct net_device *dev, struct ethtool_fp *fp,
-+			       struct netlink_ext_ack *extack);
- 	void	(*get_ethtool_phy_stats)(struct net_device *,
- 					 struct ethtool_stats *, u64 *);
- 	int	(*get_phy_tunable)(struct net_device *,
-@@ -843,4 +863,7 @@ int ethtool_get_phc_vclocks(struct net_device *dev, int **vclock_index);
-  * next string.
-  */
- extern __printf(2, 3) void ethtool_sprintf(u8 **data, const char *fmt, ...);
-+
-+u8 ethtool_frag_size_to_mult(u32 frag_size);
-+
- #endif /* _LINUX_ETHTOOL_H */
 diff --git a/include/uapi/linux/ethtool_netlink.h b/include/uapi/linux/ethtool_netlink.h
-index d2fb4f7be61b..651c7af76776 100644
+index 651c7af76776..27c9bc5bfa51 100644
 --- a/include/uapi/linux/ethtool_netlink.h
 +++ b/include/uapi/linux/ethtool_netlink.h
-@@ -49,6 +49,8 @@ enum {
- 	ETHTOOL_MSG_PHC_VCLOCKS_GET,
- 	ETHTOOL_MSG_MODULE_GET,
- 	ETHTOOL_MSG_MODULE_SET,
-+	ETHTOOL_MSG_PREEMPT_GET,
-+	ETHTOOL_MSG_PREEMPT_SET,
+@@ -709,6 +709,8 @@ enum {
+ 	ETHTOOL_A_PREEMPT_ENABLED,			/* u8 */
+ 	ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK,		/* bitset */
+ 	ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE,		/* u32 */
++	ETHTOOL_A_PREEMPT_DISABLE_VERIFY,		/* u8 */
++	ETHTOOL_A_PREEMPT_VERIFIED,			/* u8 */
  
  	/* add new constants above here */
- 	__ETHTOOL_MSG_USER_CNT,
-@@ -94,6 +96,8 @@ enum {
- 	ETHTOOL_MSG_PHC_VCLOCKS_GET_REPLY,
- 	ETHTOOL_MSG_MODULE_GET_REPLY,
- 	ETHTOOL_MSG_MODULE_NTF,
-+	ETHTOOL_MSG_PREEMPT_GET_REPLY,
-+	ETHTOOL_MSG_PREEMPT_NTF,
- 
- 	/* add new constants above here */
- 	__ETHTOOL_MSG_KERNEL_CNT,
-@@ -697,6 +701,20 @@ enum {
- 	ETHTOOL_A_FEC_STAT_MAX = (__ETHTOOL_A_FEC_STAT_CNT - 1)
- };
- 
-+/* FRAME PREEMPTION */
-+
-+enum {
-+	ETHTOOL_A_PREEMPT_UNSPEC,
-+	ETHTOOL_A_PREEMPT_HEADER,			/* nest - _A_HEADER_* */
-+	ETHTOOL_A_PREEMPT_ENABLED,			/* u8 */
-+	ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK,		/* bitset */
-+	ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE,		/* u32 */
-+
-+	/* add new constants above here */
-+	__ETHTOOL_A_PREEMPT_CNT,
-+	ETHTOOL_A_PREEMPT_MAX = (__ETHTOOL_A_PREEMPT_CNT - 1)
-+};
-+
- /* MODULE EEPROM */
- 
- enum {
-diff --git a/net/ethtool/Makefile b/net/ethtool/Makefile
-index b76432e70e6b..c0ab048b46c9 100644
---- a/net/ethtool/Makefile
-+++ b/net/ethtool/Makefile
-@@ -7,4 +7,5 @@ obj-$(CONFIG_ETHTOOL_NETLINK)	+= ethtool_nl.o
- ethtool_nl-y	:= netlink.o bitset.o strset.o linkinfo.o linkmodes.o \
- 		   linkstate.o debug.o wol.o features.o privflags.o rings.o \
- 		   channels.o coalesce.o pause.o eee.o tsinfo.o cabletest.o \
--		   tunnels.o fec.o eeprom.o stats.o phc_vclocks.o module.o
-+		   tunnels.o fec.o eeprom.o stats.o phc_vclocks.o module.o \
-+		   preempt.o
-diff --git a/net/ethtool/common.c b/net/ethtool/common.c
-index 566adf85e658..2232b8ef18b4 100644
---- a/net/ethtool/common.c
-+++ b/net/ethtool/common.c
-@@ -597,3 +597,26 @@ ethtool_params_from_link_mode(struct ethtool_link_ksettings *link_ksettings,
- 	link_ksettings->base.duplex = link_info->duplex;
- }
- EXPORT_SYMBOL_GPL(ethtool_params_from_link_mode);
-+
-+/**
-+ * ethtool_frag_size_to_mult() - Convert from a Frame Preemption
-+ * Additional Fragment size in bytes to a multiplier.
-+ * @frag_size: minimum non-final fragment size in bytes.
-+ *
-+ * The multiplier is defined as:
-+ *	"A 2-bit integer value used to indicate the minimum size of
-+ *	non-final fragments supported by the receiver on the given port
-+ *	associated with the local System. This value is expressed in units
-+ *	of 64 octets of additional fragment length."
-+ *	Equivalent to `30.14.1.7 aMACMergeAddFragSize` from the IEEE 802.3-2018
-+ *	standard.
-+ *
-+ * Return: the multiplier is a number in the [0, 2] interval.
-+ */
-+u8 ethtool_frag_size_to_mult(u32 frag_size)
-+{
-+	u8 mult = (frag_size / 64) - 1;
-+
-+	return clamp_t(u8, mult, 0, 3);
-+}
-+EXPORT_SYMBOL_GPL(ethtool_frag_size_to_mult);
-diff --git a/net/ethtool/netlink.c b/net/ethtool/netlink.c
-index 5fe8f4ae2ceb..66b35c35fcdb 100644
---- a/net/ethtool/netlink.c
-+++ b/net/ethtool/netlink.c
-@@ -282,6 +282,7 @@ ethnl_default_requests[__ETHTOOL_MSG_USER_CNT] = {
- 	[ETHTOOL_MSG_EEE_GET]		= &ethnl_eee_request_ops,
- 	[ETHTOOL_MSG_FEC_GET]		= &ethnl_fec_request_ops,
- 	[ETHTOOL_MSG_TSINFO_GET]	= &ethnl_tsinfo_request_ops,
-+	[ETHTOOL_MSG_PREEMPT_GET]	= &ethnl_preempt_request_ops,
- 	[ETHTOOL_MSG_MODULE_EEPROM_GET]	= &ethnl_module_eeprom_request_ops,
- 	[ETHTOOL_MSG_STATS_GET]		= &ethnl_stats_request_ops,
- 	[ETHTOOL_MSG_PHC_VCLOCKS_GET]	= &ethnl_phc_vclocks_request_ops,
-@@ -598,6 +599,7 @@ ethnl_default_notify_ops[ETHTOOL_MSG_KERNEL_MAX + 1] = {
- 	[ETHTOOL_MSG_EEE_NTF]		= &ethnl_eee_request_ops,
- 	[ETHTOOL_MSG_FEC_NTF]		= &ethnl_fec_request_ops,
- 	[ETHTOOL_MSG_MODULE_NTF]	= &ethnl_module_request_ops,
-+	[ETHTOOL_MSG_PREEMPT_NTF]	= &ethnl_preempt_request_ops,
- };
- 
- /* default notification handler */
-@@ -691,6 +693,7 @@ static const ethnl_notify_handler_t ethnl_notify_handlers[] = {
- 	[ETHTOOL_MSG_EEE_NTF]		= ethnl_default_notify,
- 	[ETHTOOL_MSG_FEC_NTF]		= ethnl_default_notify,
- 	[ETHTOOL_MSG_MODULE_NTF]	= ethnl_default_notify,
-+	[ETHTOOL_MSG_PREEMPT_NTF]	= ethnl_default_notify,
- };
- 
- void ethtool_notify(struct net_device *dev, unsigned int cmd, const void *data)
-@@ -1020,6 +1023,22 @@ static const struct genl_ops ethtool_genl_ops[] = {
- 		.policy = ethnl_module_set_policy,
- 		.maxattr = ARRAY_SIZE(ethnl_module_set_policy) - 1,
- 	},
-+	{
-+		.cmd	= ETHTOOL_MSG_PREEMPT_GET,
-+		.doit	= ethnl_default_doit,
-+		.start	= ethnl_default_start,
-+		.dumpit	= ethnl_default_dumpit,
-+		.done	= ethnl_default_done,
-+		.policy = ethnl_preempt_get_policy,
-+		.maxattr = ARRAY_SIZE(ethnl_preempt_get_policy) - 1,
-+	},
-+	{
-+		.cmd	= ETHTOOL_MSG_PREEMPT_SET,
-+		.flags	= GENL_UNS_ADMIN_PERM,
-+		.doit	= ethnl_set_preempt,
-+		.policy = ethnl_preempt_set_policy,
-+		.maxattr = ARRAY_SIZE(ethnl_preempt_set_policy) - 1,
-+	},
- };
- 
- static const struct genl_multicast_group ethtool_nl_mcgrps[] = {
+ 	__ETHTOOL_A_PREEMPT_CNT,
 diff --git a/net/ethtool/netlink.h b/net/ethtool/netlink.h
-index 7919ddb2371c..444799f3e91a 100644
+index 444799f3e91a..dfdef5b8fe5b 100644
 --- a/net/ethtool/netlink.h
 +++ b/net/ethtool/netlink.h
-@@ -341,6 +341,7 @@ extern const struct ethnl_request_ops ethnl_pause_request_ops;
- extern const struct ethnl_request_ops ethnl_eee_request_ops;
- extern const struct ethnl_request_ops ethnl_tsinfo_request_ops;
- extern const struct ethnl_request_ops ethnl_fec_request_ops;
-+extern const struct ethnl_request_ops ethnl_preempt_request_ops;
- extern const struct ethnl_request_ops ethnl_module_eeprom_request_ops;
- extern const struct ethnl_request_ops ethnl_stats_request_ops;
- extern const struct ethnl_request_ops ethnl_phc_vclocks_request_ops;
-@@ -379,6 +380,8 @@ extern const struct nla_policy ethnl_tunnel_info_get_policy[ETHTOOL_A_TUNNEL_INF
- extern const struct nla_policy ethnl_fec_get_policy[ETHTOOL_A_FEC_HEADER + 1];
+@@ -381,7 +381,7 @@ extern const struct nla_policy ethnl_fec_get_policy[ETHTOOL_A_FEC_HEADER + 1];
  extern const struct nla_policy ethnl_fec_set_policy[ETHTOOL_A_FEC_AUTO + 1];
  extern const struct nla_policy ethnl_module_eeprom_get_policy[ETHTOOL_A_MODULE_EEPROM_I2C_ADDRESS + 1];
-+extern const struct nla_policy ethnl_preempt_get_policy[ETHTOOL_A_PREEMPT_HEADER + 1];
-+extern const struct nla_policy ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE + 1];
+ extern const struct nla_policy ethnl_preempt_get_policy[ETHTOOL_A_PREEMPT_HEADER + 1];
+-extern const struct nla_policy ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE + 1];
++extern const struct nla_policy ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_VERIFIED + 1];
  extern const struct nla_policy ethnl_stats_get_policy[ETHTOOL_A_STATS_GROUPS + 1];
  extern const struct nla_policy ethnl_phc_vclocks_get_policy[ETHTOOL_A_PHC_VCLOCKS_HEADER + 1];
  extern const struct nla_policy ethnl_module_get_policy[ETHTOOL_A_MODULE_HEADER + 1];
-@@ -402,6 +405,7 @@ int ethnl_tunnel_info_start(struct netlink_callback *cb);
- int ethnl_tunnel_info_dumpit(struct sk_buff *skb, struct netlink_callback *cb);
- int ethnl_set_fec(struct sk_buff *skb, struct genl_info *info);
- int ethnl_set_module(struct sk_buff *skb, struct genl_info *info);
-+int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info);
- 
- extern const char stats_std_names[__ETHTOOL_STATS_CNT][ETH_GSTRING_LEN];
- extern const char stats_eth_phy_names[__ETHTOOL_A_STATS_ETH_PHY_CNT][ETH_GSTRING_LEN];
 diff --git a/net/ethtool/preempt.c b/net/ethtool/preempt.c
-new file mode 100644
-index 000000000000..0000ba8cb90c
---- /dev/null
+index 0000ba8cb90c..7566ffb948b2 100644
+--- a/net/ethtool/preempt.c
 +++ b/net/ethtool/preempt.c
-@@ -0,0 +1,177 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+#include "common.h"
-+#include "netlink.h"
-+#include "bitset.h"
-+
-+struct preempt_req_info {
-+	struct ethnl_req_info		base;
-+};
-+
-+struct preempt_reply_data {
-+	struct ethnl_reply_data		base;
-+	struct ethtool_fp		fp;
-+};
-+
-+#define PREEMPT_QUEUES_COUNT \
-+	(sizeof_field(struct ethtool_fp, preemptible_mask) * BITS_PER_BYTE)
-+
-+#define PREEMPT_REPDATA(__reply_base) \
-+	container_of(__reply_base, struct preempt_reply_data, base)
-+
-+const struct nla_policy
-+ethnl_preempt_get_policy[] = {
-+	[ETHTOOL_A_PREEMPT_HEADER]		= NLA_POLICY_NESTED(ethnl_header_policy),
-+};
-+
-+static int preempt_prepare_data(const struct ethnl_req_info *req_base,
-+				struct ethnl_reply_data *reply_base,
-+				struct genl_info *info)
-+{
-+	struct preempt_reply_data *data = PREEMPT_REPDATA(reply_base);
-+	struct net_device *dev = reply_base->dev;
-+	int ret;
-+
-+	if (!dev->ethtool_ops->get_preempt)
-+		return -EOPNOTSUPP;
-+
-+	ret = ethnl_ops_begin(dev);
-+	if (ret < 0)
-+		return ret;
-+
-+	ret = dev->ethtool_ops->get_preempt(dev, &data->fp);
-+	ethnl_ops_complete(dev);
-+
-+	return ret;
-+}
-+
-+static int preempt_reply_size(const struct ethnl_req_info *req_base,
-+			      const struct ethnl_reply_data *reply_base)
-+{
-+	bool compact = req_base->flags & ETHTOOL_FLAG_COMPACT_BITSETS;
-+	const struct preempt_reply_data *data = PREEMPT_REPDATA(reply_base);
-+	const struct ethtool_fp *preempt = &data->fp;
-+	int len = 0;
-+	int ret;
-+
-+	ret = ethnl_bitset32_size(&preempt->preemptible_mask, NULL,
-+				  PREEMPT_QUEUES_COUNT, NULL, compact);
-+	if (ret < 0)
-+		return ret;
-+
-+	len += ret;
-+
-+	len += nla_total_size(sizeof(u8)); /* _PREEMPT_ENABLED */
-+	len += nla_total_size(sizeof(u32)); /* _PREEMPT_ADD_FRAG_SIZE */
-+
-+	return len;
-+}
-+
-+static int preempt_fill_reply(struct sk_buff *skb,
-+			      const struct ethnl_req_info *req_base,
-+			      const struct ethnl_reply_data *reply_base)
-+{
-+	bool compact = req_base->flags & ETHTOOL_FLAG_COMPACT_BITSETS;
-+	const struct preempt_reply_data *data = PREEMPT_REPDATA(reply_base);
-+	const struct ethtool_fp *preempt = &data->fp;
-+	int ret;
-+
-+	if (nla_put_u32(skb, ETHTOOL_A_PREEMPT_ENABLED, preempt->enabled))
+@@ -63,6 +63,8 @@ static int preempt_reply_size(const struct ethnl_req_info *req_base,
+ 
+ 	len += nla_total_size(sizeof(u8)); /* _PREEMPT_ENABLED */
+ 	len += nla_total_size(sizeof(u32)); /* _PREEMPT_ADD_FRAG_SIZE */
++	len += nla_total_size(sizeof(u8)); /* _PREEMPT_DISABLE_VERIFY */
++	len += nla_total_size(sizeof(u8)); /* _PREEMPT_VERIFIED */
+ 
+ 	return len;
+ }
+@@ -89,6 +91,12 @@ static int preempt_fill_reply(struct sk_buff *skb,
+ 	if (ret < 0)
+ 		return ret;
+ 
++	if (nla_put_u32(skb, ETHTOOL_A_PREEMPT_DISABLE_VERIFY, preempt->disable_verify))
 +		return -EMSGSIZE;
 +
-+	if (nla_put_u32(skb, ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE,
-+			preempt->add_frag_size))
++	if (nla_put_u32(skb, ETHTOOL_A_PREEMPT_VERIFIED, preempt->verified))
 +		return -EMSGSIZE;
 +
-+	ret = ethnl_put_bitset32(skb, ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK,
-+				 &preempt->preemptible_mask, NULL, PREEMPT_QUEUES_COUNT,
-+				 NULL, compact);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+const struct ethnl_request_ops ethnl_preempt_request_ops = {
-+	.request_cmd		= ETHTOOL_MSG_PREEMPT_GET,
-+	.reply_cmd		= ETHTOOL_MSG_PREEMPT_GET_REPLY,
-+	.hdr_attr		= ETHTOOL_A_PREEMPT_HEADER,
-+	.req_info_size		= sizeof(struct preempt_req_info),
-+	.reply_data_size	= sizeof(struct preempt_reply_data),
-+
-+	.prepare_data		= preempt_prepare_data,
-+	.reply_size		= preempt_reply_size,
-+	.fill_reply		= preempt_fill_reply,
-+};
-+
-+const struct nla_policy
-+ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_MAX + 1] = {
-+	[ETHTOOL_A_PREEMPT_HEADER]			= NLA_POLICY_NESTED(ethnl_header_policy),
-+	[ETHTOOL_A_PREEMPT_ENABLED]			= NLA_POLICY_RANGE(NLA_U8, 0, 1),
-+	[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE]		= { .type = NLA_U32 },
-+	[ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK]		= { .type = NLA_NESTED },
-+};
-+
-+int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info)
-+{
-+	struct ethnl_req_info req_info = {};
-+	struct nlattr **tb = info->attrs;
-+	struct ethtool_fp preempt = {};
-+	struct net_device *dev;
-+	bool mod = false;
-+	int ret;
-+
-+	ret = ethnl_parse_header_dev_get(&req_info,
-+					 tb[ETHTOOL_A_PREEMPT_HEADER],
-+					 genl_info_net(info), info->extack,
-+					 true);
-+	if (ret < 0)
-+		return ret;
-+	dev = req_info.dev;
-+
-+	ret = -EOPNOTSUPP;
-+	if (!dev->ethtool_ops->get_preempt ||
-+	    !dev->ethtool_ops->set_preempt)
-+		goto out_dev;
-+
-+	rtnl_lock();
-+	ret = ethnl_ops_begin(dev);
-+	if (ret < 0)
-+		goto out_rtnl;
-+
-+	ret = dev->ethtool_ops->get_preempt(dev, &preempt);
-+	if (ret < 0) {
-+		GENL_SET_ERR_MSG(info, "failed to retrieve frame preemption settings");
-+		goto out_ops;
-+	}
-+
-+	ret = ethnl_update_bitset32(&preempt.preemptible_mask, PREEMPT_QUEUES_COUNT,
-+				    tb[ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK],
-+				    NULL, info->extack, &mod);
-+	if (ret < 0)
-+		goto out_ops;
-+
-+	ethnl_update_bool32(&preempt.enabled,
-+			    tb[ETHTOOL_A_PREEMPT_ENABLED], &mod);
-+	ethnl_update_u32(&preempt.add_frag_size,
-+			 tb[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE], &mod);
-+	ret = 0;
-+	if (!mod)
-+		goto out_ops;
-+
-+	ret = dev->ethtool_ops->set_preempt(dev, &preempt, info->extack);
-+	if (ret < 0) {
-+		GENL_SET_ERR_MSG(info, "frame preemption settings update failed");
-+		goto out_ops;
-+	}
-+
-+	ethtool_notify(dev, ETHTOOL_MSG_PREEMPT_NTF, NULL);
-+
-+out_ops:
-+	ethnl_ops_complete(dev);
-+out_rtnl:
-+	rtnl_unlock();
-+out_dev:
-+	dev_put(dev);
-+	return ret;
-+}
+ 	return 0;
+ }
+ 
+@@ -110,6 +118,7 @@ ethnl_preempt_set_policy[ETHTOOL_A_PREEMPT_MAX + 1] = {
+ 	[ETHTOOL_A_PREEMPT_ENABLED]			= NLA_POLICY_RANGE(NLA_U8, 0, 1),
+ 	[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE]		= { .type = NLA_U32 },
+ 	[ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK]		= { .type = NLA_NESTED },
++	[ETHTOOL_A_PREEMPT_DISABLE_VERIFY]		= NLA_POLICY_RANGE(NLA_U8, 0, 1),
+ };
+ 
+ int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info)
+@@ -155,6 +164,8 @@ int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info)
+ 			    tb[ETHTOOL_A_PREEMPT_ENABLED], &mod);
+ 	ethnl_update_u32(&preempt.add_frag_size,
+ 			 tb[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE], &mod);
++	ethnl_update_bool32(&preempt.disable_verify,
++			    tb[ETHTOOL_A_PREEMPT_DISABLE_VERIFY], &mod);
+ 	ret = 0;
+ 	if (!mod)
+ 		goto out_ops;
 -- 
 2.35.3
 
