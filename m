@@ -2,92 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8274252E29A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 04:46:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DEC1652E4D7
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 08:13:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 98E0E41909;
-	Fri, 20 May 2022 02:46:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D43EF41D63;
+	Fri, 20 May 2022 06:13:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fQB2sAaiA5pM; Fri, 20 May 2022 02:46:03 +0000 (UTC)
+	with ESMTP id Qw2FmerkDc1K; Fri, 20 May 2022 06:13:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1AC0C4190A;
-	Fri, 20 May 2022 02:46:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D0B3418CB;
+	Fri, 20 May 2022 06:13:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B51B61BF39C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 02:45:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AAE071BF339
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 06:13:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 962BF405B5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 02:45:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A5E56418CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 06:13:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=canonical.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8SQc8fWYcBPw for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 May 2022 02:45:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pHF1BpCQdevZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 May 2022 06:13:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtp-relay-internal-1.canonical.com
- (smtp-relay-internal-1.canonical.com [185.125.188.123])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B3EBB400A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 02:45:57 +0000 (UTC)
-Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
- [209.85.161.71])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 1E83D402F0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 02:45:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1653014750;
- bh=GaatjPyXHl4SmKXxygcZKmkO/KC5Kz97rzqAvXN3cKo=;
- h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
- To:Cc:Content-Type;
- b=HifUCEC0xIsGAV9qvjMaltwtEzsaCMADXfbjb4M87lkAYvocii34FNV+vufwvNHyf
- pZB1wloQ8KNUjvmOpbeXB242jHblxfJmVy0VZ5P/NKer1qNe9eFa63YWCwbPtPYe54
- uNFtFoUpFCMbfVs9+hgG3nais96Y4LuKWjcffmMr/Utqli9wjaIM3k7LqVn4xw8Acf
- ta7QpMw3yOP07n0HQHAu2p0a/eOsvCfcdAsCK70Y4TJ5d1JjUUW3sDLRN5IrVU4/5m
- m28FV3+W4aAFLPc1PPltT26bPRw39qlDy1kwKonPl1CQoZDwA+DOm7VFuMYEWtdHER
- 0rD7wiieM+lCQ==
-Received: by mail-oo1-f71.google.com with SMTP id
- t19-20020a4a96d3000000b003295d7ce159so3436429ooi.11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 May 2022 19:45:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GaatjPyXHl4SmKXxygcZKmkO/KC5Kz97rzqAvXN3cKo=;
- b=VDqZ5eh5oheYLdx4WM2ysRbX/AveRNPcTa+5fTgKkOyAq5HI+Be08lZRMXfAMgBHNz
- Tac17g2vVAw4rkFF+HK9q9AXU8aoWXCHu9VtNUmTMwmhy/ygeVySXgtqKqIdvUk1MMqY
- gY0WzAE2vCAjgSoTYgB9gHyC6qYx1x486hxTAGWrz8ukCCEC9ckDHE7nOvrC173bCyeX
- iELKRwvyIWCWr7YH2e4C51Y7khoHpjBFybcu0EGlxEzVExOd4UrBuzIROQfbuyvW4WQ8
- lSJ89dflYy8SQulRIerUFdArTT9ngehiU9B6BobtqqXNSzLRkUTU7aJQNbXTI/HUz+ik
- K3EA==
-X-Gm-Message-State: AOAM5321Q4fDn1A4NNzYSIx1O+k8s3v3V3kBhPMvEysZm6OaxtEW55rq
- p5WjcSpm/BJibnnJlVAcMVz2VLQS/yJga/dbauBwxpPQ6RsR/WeF82SgXYPYVRa3FRY+RHtq+rS
- plSX15BQQ9bXTb+ZiuQpBd0+xBg6zAyUS0kKbpphwzsiTSU/gAGBIxrTSTH/0Bug=
-X-Received: by 2002:a05:6870:2111:b0:e6:8026:8651 with SMTP id
- f17-20020a056870211100b000e680268651mr4440519oae.42.1653014745864; 
- Thu, 19 May 2022 19:45:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUd8npgDZFVCRK+/H03mTTbAYJXBPp30NE0Tzuyut6qHq5m/2a0jX6vwPXLG6EttAHcJwZSaW+auW+bAcL76c=
-X-Received: by 2002:a05:6870:2111:b0:e6:8026:8651 with SMTP id
- f17-20020a056870211100b000e680268651mr4440502oae.42.1653014745511; Thu, 19
- May 2022 19:45:45 -0700 (PDT)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6C25D418C9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 06:13:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1653027201; x=1684563201;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=LIUNboT17lR5CW5ZnVnjFPjF/nqQXlv0eH78sLfL0aQ=;
+ b=fhxmdxxHMTxN2QCHCvuys5oKcITVhvJ146xlC0CFy83u4IA/Kz72GuLq
+ JoKWkfZ7Be2wHx05B/Zd3tXdGh1nkftGCFqo/GeZfGNA7uAT2TUWMoszp
+ g1i/1kWcnXFkPdMa9iRI6IjSoWErWutm9UMqyBoaY+CDXeoO5jYqqcgiW
+ Pw6AtYFA8wHmey15GQFHnaBTY8XG6AfaNlUxcJqjsPvbfj/bhdvcXBnUW
+ tQw3i8ZoT4hD6ZWI8GyCmkv6GyFVSoOIWluByQAJCdX3DS9aZLKBrr+9f
+ QLCuJuZajXxcdDC3QVPa7HGaHBTPzn8Rgb7kujuQt3gQ/xeBnb6pNobap w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="270089204"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="270089204"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2022 23:13:20 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="662109027"
+Received: from lkp-server02.sh.intel.com (HELO 242b25809ac7) ([10.239.97.151])
+ by FMSMGA003.fm.intel.com with ESMTP; 19 May 2022 23:13:17 -0700
+Received: from kbuild by 242b25809ac7 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nrvsy-0004Lr-TJ;
+ Fri, 20 May 2022 06:13:16 +0000
+Date: Fri, 20 May 2022 14:11:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>, netdev@vger.kernel.org
+Message-ID: <202205201422.84XYwlpY-lkp@intel.com>
+References: <20220520011538.1098888-11-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-References: <20220511122806.2146847-1-kai.heng.feng@canonical.com>
- <20220511122806.2146847-2-kai.heng.feng@canonical.com>
- <6246d753-00cb-b5dc-f5fc-d041a8e78718@molgen.mpg.de>
- <CAAd53p52gkv-PLRvEM3GunTwU1J=c+n0J6uD03AQJ4EnL2y4Kg@mail.gmail.com>
-In-Reply-To: <CAAd53p52gkv-PLRvEM3GunTwU1J=c+n0J6uD03AQJ4EnL2y4Kg@mail.gmail.com>
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Date: Fri, 20 May 2022 10:45:33 +0800
-Message-ID: <CAAd53p4h1-SJROvUghPYbBnh2Z9nRtgfNEagE4X6XtBwNg8JOg@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] igb: Make DMA faster when CPU is
- active on the PCIe link
+Content-Disposition: inline
+In-Reply-To: <20220520011538.1098888-11-vinicius.gomes@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 10/11] igc: Check
+ incompatible configs for Frame Preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,130 +77,151 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: jiri@resnulli.us, kbuild-all@lists.01.org, vladimir.oltean@nxp.com,
+ po.liu@nxp.com, llvm@lists.linux.dev, jhs@mojatatu.com,
+ intel-wired-lan@lists.osuosl.org, boon.leong.ong@intel.com,
+ xiyou.wangcong@gmail.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, May 12, 2022 at 10:55 AM Kai-Heng Feng
-<kai.heng.feng@canonical.com> wrote:
->
-> Hi Paul,
->
-> On Wed, May 11, 2022 at 8:49 PM Paul Menzel <pmenzel@molgen.mpg.de> wrote:
-> >
-> > Dear Kai-Hang,
-> >
-> >
-> > Thank you for the patch.
-> >
-> >
-> > Am 11.05.22 um 14:28 schrieb Kai-Heng Feng:
-> > > We found Intel I210 can only achieve ~750Mbps Tx speed on some
-> > > platforms. The RR2DCDELAY shows around 0x2xxx DMA delay, which will be
-> >
-> > Please give an example platform, where it works and where it does not.
->
-> The platform is about but not yet hit the market yet, so I can't disclose it.
-> They are Intel Alder Lake based.
->
-> >
-> > How did you test transfer speed?
->
-> Iperf.
->
-> >
-> > > significantly lower when 1) ASPM is disabled or 2) SoC package c-state
-> > > stays above PC3. When the RR2DCDELAY is around 0x1xxx the Tx speed can
-> > > reach to ~950Mbps.
-> > >
-> > > According to the I210 datasheet "8.26.1 PCIe Misc. Register - PCIEMISC",
-> > > "DMA Idle Indication" doesn't seem to tie to DMA coalesce anymore, so
-> > > set it to 1b for "DMA is considered idle when there is no Rx or Tx AND
-> > > when there are no TLPs indicating that CPU is active detected on the
-> > > PCIe link (such as the host executes CSR or Configuration register read
-> > > or write operation)" and performing Tx should also fall under "active
-> > > CPU on PCIe link" case.
-> > >
-> > > In addition to that, commit b6e0c419f040 ("igb: Move DMA Coalescing init
-> > > code to separate function.") seems to wrongly changed from enabling
-> > > E1000_PCIEMISC_LX_DECISION to disabling it, also fix that.
-> >
-> > Please split this into a separate commit with Fixes tag, and maybe the
-> > commit author in Cc.
->
-> I don't see the need to split to separate commit as both require the
-> same change.
->
-> I will add the "Fixes" tag once the igb maintainers reviewed the patch.
+Hi Vinicius,
 
-A gentle ping...
+I love your patch! Perhaps something to improve:
 
-Please let me know if this is a proper fix so I can send v2.
+[auto build test WARNING on net-next/master]
 
-Kai-Heng
+url:    https://github.com/intel-lab-lkp/linux/commits/Vinicius-Costa-Gomes/ethtool-Add-support-for-frame-preemption/20220520-092800
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git df98714e432abf5cbdac3e4c1a13f94c65ddb8d3
+config: s390-buildonly-randconfig-r002-20220519 (https://download.01.org/0day-ci/archive/20220520/202205201422.84XYwlpY-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project e00cbbec06c08dc616a0d52a20f678b8fbd4e304)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install s390 cross compiling tool for clang build
+        # apt-get install binutils-s390x-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/a42e940bc53c40ee4e33a1bbf022a663bb28a9c7
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Vinicius-Costa-Gomes/ethtool-Add-support-for-frame-preemption/20220520-092800
+        git checkout a42e940bc53c40ee4e33a1bbf022a663bb28a9c7
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash drivers/net/ethernet/intel/igc/
 
->
-> Kai-Heng
->
-> >
-> >
-> > Kind regards,
-> >
-> > Paul
-> >
-> >
-> > > Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> > > ---
-> > >   drivers/net/ethernet/intel/igb/igb_main.c | 12 +++++-------
-> > >   1 file changed, 5 insertions(+), 7 deletions(-)
-> > >
-> > > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> > > index 34b33b21e0dcd..eca797dded429 100644
-> > > --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> > > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> > > @@ -9897,11 +9897,10 @@ static void igb_init_dmac(struct igb_adapter *adapter, u32 pba)
-> > >       struct e1000_hw *hw = &adapter->hw;
-> > >       u32 dmac_thr;
-> > >       u16 hwm;
-> > > +     u32 reg;
-> > >
-> > >       if (hw->mac.type > e1000_82580) {
-> > >               if (adapter->flags & IGB_FLAG_DMAC) {
-> > > -                     u32 reg;
-> > > -
-> > >                       /* force threshold to 0. */
-> > >                       wr32(E1000_DMCTXTH, 0);
-> > >
-> > > @@ -9934,7 +9933,6 @@ static void igb_init_dmac(struct igb_adapter *adapter, u32 pba)
-> > >                       /* Disable BMC-to-OS Watchdog Enable */
-> > >                       if (hw->mac.type != e1000_i354)
-> > >                               reg &= ~E1000_DMACR_DC_BMC2OSW_EN;
-> > > -
-> > >                       wr32(E1000_DMACR, reg);
-> > >
-> > >                       /* no lower threshold to disable
-> > > @@ -9951,12 +9949,12 @@ static void igb_init_dmac(struct igb_adapter *adapter, u32 pba)
-> > >                        */
-> > >                       wr32(E1000_DMCTXTH, (IGB_MIN_TXPBSIZE -
-> > >                            (IGB_TX_BUF_4096 + adapter->max_frame_size)) >> 6);
-> > > +             }
-> > >
-> > > -                     /* make low power state decision controlled
-> > > -                      * by DMA coal
-> > > -                      */
-> > > +             if (hw->mac.type >= e1000_i210 ||
-> > > +                 (adapter->flags & IGB_FLAG_DMAC)) {
-> > >                       reg = rd32(E1000_PCIEMISC);
-> > > -                     reg &= ~E1000_PCIEMISC_LX_DECISION;
-> > > +                     reg |= E1000_PCIEMISC_LX_DECISION;
-> > >                       wr32(E1000_PCIEMISC, reg);
-> > >               } /* endif adapter->dmac is not disabled */
-> > >       } else if (hw->mac.type == e1000_82580) {
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   In file included from drivers/net/ethernet/intel/igc/igc_main.c:6:
+   In file included from include/linux/if_vlan.h:10:
+   In file included from include/linux/netdevice.h:38:
+   In file included from include/net/net_namespace.h:40:
+   In file included from include/linux/skbuff.h:31:
+   In file included from include/linux/dma-mapping.h:10:
+   In file included from include/linux/scatterlist.h:9:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:464:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __raw_readb(PCI_IOBASE + addr);
+                             ~~~~~~~~~~ ^
+   include/asm-generic/io.h:477:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:37:59: note: expanded from macro '__le16_to_cpu'
+   #define __le16_to_cpu(x) __swab16((__force __u16)(__le16)(x))
+                                                             ^
+   include/uapi/linux/swab.h:102:54: note: expanded from macro '__swab16'
+   #define __swab16(x) (__u16)__builtin_bswap16((__u16)(x))
+                                                        ^
+   In file included from drivers/net/ethernet/intel/igc/igc_main.c:6:
+   In file included from include/linux/if_vlan.h:10:
+   In file included from include/linux/netdevice.h:38:
+   In file included from include/net/net_namespace.h:40:
+   In file included from include/linux/skbuff.h:31:
+   In file included from include/linux/dma-mapping.h:10:
+   In file included from include/linux/scatterlist.h:9:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:490:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:35:59: note: expanded from macro '__le32_to_cpu'
+   #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
+                                                             ^
+   include/uapi/linux/swab.h:115:54: note: expanded from macro '__swab32'
+   #define __swab32(x) (__u32)__builtin_bswap32((__u32)(x))
+                                                        ^
+   In file included from drivers/net/ethernet/intel/igc/igc_main.c:6:
+   In file included from include/linux/if_vlan.h:10:
+   In file included from include/linux/netdevice.h:38:
+   In file included from include/net/net_namespace.h:40:
+   In file included from include/linux/skbuff.h:31:
+   In file included from include/linux/dma-mapping.h:10:
+   In file included from include/linux/scatterlist.h:9:
+   In file included from arch/s390/include/asm/io.h:75:
+   include/asm-generic/io.h:501:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writeb(value, PCI_IOBASE + addr);
+                               ~~~~~~~~~~ ^
+   include/asm-generic/io.h:511:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:521:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:609:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsb(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:617:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsw(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:625:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsl(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:634:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesb(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:643:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesw(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:652:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesl(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+>> drivers/net/ethernet/intel/igc/igc_main.c:5919:6: warning: variable 'ring' is uninitialized when used here [-Wuninitialized]
+           if (ring->preemptible) {
+               ^~~~
+   drivers/net/ethernet/intel/igc/igc_main.c:5914:23: note: initialize the variable 'ring' to silence this warning
+           struct igc_ring *ring;
+                                ^
+                                 = NULL
+   13 warnings generated.
+
+
+vim +/ring +5919 drivers/net/ethernet/intel/igc/igc_main.c
+
+  5910	
+  5911	static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
+  5912					      bool enable)
+  5913	{
+  5914		struct igc_ring *ring;
+  5915	
+  5916		if (queue < 0 || queue >= adapter->num_tx_queues)
+  5917			return -EINVAL;
+  5918	
+> 5919		if (ring->preemptible) {
+  5920			netdev_err(adapter->netdev, "Cannot enable LaunchTime on a preemptible queue\n");
+  5921			return -EINVAL;
+  5922		}
+  5923	
+  5924		ring = adapter->tx_ring[queue];
+  5925		ring->launchtime_enable = enable;
+  5926	
+  5927		return 0;
+  5928	}
+  5929	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
