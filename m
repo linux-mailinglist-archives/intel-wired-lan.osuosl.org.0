@@ -1,66 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0CB752E9A8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 12:10:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30C7952EA1C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 12:44:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 22B9A61341;
-	Fri, 20 May 2022 10:10:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 96E0B425A4;
+	Fri, 20 May 2022 10:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EJdOovMn1lXu; Fri, 20 May 2022 10:10:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s-Meu6SoKajD; Fri, 20 May 2022 10:44:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF92D60E2F;
-	Fri, 20 May 2022 10:10:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C37C44259F;
+	Fri, 20 May 2022 10:44:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DEAE81BF33E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:10:34 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B5271BF303
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:44:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CAC48607A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:10:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id ECD48845DB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y7inylPM1Qs6 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 May 2022 10:10:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 736CC60E2F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:10:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653041433; x=1684577433;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=wTy9MwhO+2k++iFVpFIW+pYmXaJrAVxMLDzpo5nFNx4=;
- b=BxRQCx5EXFpcEqzH3eALgDM1dqOuGUZHCT2GvbAPU5vboc1J4XBgdwLQ
- iPuC3vVdMu/qxYZn9uxX4mfe0oN4u1uq7dw9qPtFYDH23amhqzq3Wb9os
- k3pFnzAmco0tTUJSzTdErF6BYOe6wg15v8XNmZoJM5wRli6gSAjizoHJ5
- oc3ilm6lXU5yNxJWVUO4ssYTXIC9gZJupuDMqfgK3iGrPCP3jUO25VzPd
- CqLRZfQUUxnPm4FgX3RyURbPiE28i2Z51RmBk3ygyeXkLwGI60Yx3mZOk
- tImRTo/Oq0OSWrZD9zTKbMh0bDiA9ildMhbUVuIDgHhap3ukumNW+4g9p w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333185597"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333185597"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2022 03:10:31 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="606958818"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by orsmga001.jf.intel.com with ESMTP; 20 May 2022 03:10:29 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 20 May 2022 12:07:13 +0200
-Message-Id: <20220520100713.6632-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=nxp.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id F9Yd22enudE1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 May 2022 10:43:58 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from EUR02-AM5-obe.outbound.protection.outlook.com
+ (mail-eopbgr00057.outbound.protection.outlook.com [40.107.0.57])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3FD51845B1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 10:43:58 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QDjrXlzeHOnze5EmspBKOLTp1BtL64EloM1gEbs9hZ0Q/zSprecFxRoVTHTd2tnvmrWiZ36zfGyDrgpdMKnMsW/enIUMT96qHDzVj8odPJ7lKXkth973lP+7jpHiOvFibMJbK6DB58OOauSLgUOZHQbZTsTK1wxoSPyKdPH+XyIJvv5EWD9h2OqHkv84yE7aujuhkHgsZ8MrrGqmDnFCaiPeRodu57HCv0XlWySsLscXNLly2K+Cjm8uGENLWH8DH/1b8aXLG+HQkt0fwNFMPSeCM2VK86hUE+OvzdifWWAh4s8Zi9EQ+LddC653VpVH0ixVnavf76na7472znX35Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kbkxmMxmvkB9PE6VAL4ns0E3pTe9t27bhJYiw7oB41g=;
+ b=dBRHApFY77oLyxLN5yGFl3Zz45mLxoFtJKj9mx6cCdR5gMBw35vyOKZPD0+Tcij/ymAZffWdpRP74Z5jRHNyDzPRJNKlvyuwmWwTboqYshkPjzdT/Gaip4SfbmOrboi4nua8UWo+lcO3VmVvXZKELh2uJzYTjFbpuWyaNegICHoc8kKU7RPNJl43PKWOJGgMi+UE9/jXllT4kTTSwSQ4wW+hhG6h40IyuPX3VMR2GnVSuwca+pkA2nT1YwLCMUbRExIcT7KFUtKrzArckx0DF33bx/L8WwHikR5pW/2VcJcXgpTGwqiQ2oCy7IUuu/5jPxT0HAHh0RKP8fcLPvug5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kbkxmMxmvkB9PE6VAL4ns0E3pTe9t27bhJYiw7oB41g=;
+ b=RxeKm8+JN0PsC+azgh7GAGjrO7quvq9yDNi5yubMXHrC/ucyV3W9lEskABWR3T/8r15ioYAtrvmNoxSIRKVdn7R2YzbhAagInXuCpmc561mnqSoeJKyB07ag7GXpmHCJzb9rzdMUK/IbABq5sJLhl6CWzlO456eQEpiQ1212y9s=
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
+ by AM8PR04MB7729.eurprd04.prod.outlook.com (2603:10a6:20b:24c::24)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.17; Fri, 20 May
+ 2022 10:43:54 +0000
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::fd1f:cc16:dafe:4bf5]) by VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::fd1f:cc16:dafe:4bf5%5]) with mapi id 15.20.5250.014; Fri, 20 May 2022
+ 10:43:54 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Thread-Topic: [PATCH net-next v5 09/11] igc: Add support for Frame Preemption
+ verification
+Thread-Index: AQHYa+cvrq4+J7/M40C9l/AanXWKwK0nlTCA
+Date: Fri, 20 May 2022 10:43:54 +0000
+Message-ID: <20220520104353.dvtivs36lrsf26pb@skbuf>
+References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
+ <20220520011538.1098888-10-vinicius.gomes@intel.com>
+In-Reply-To: <20220520011538.1098888-10-vinicius.gomes@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: ad0f9143-8898-46f4-635e-08da3a4da2e7
+x-ms-traffictypediagnostic: AM8PR04MB7729:EE_
+x-microsoft-antispam-prvs: <AM8PR04MB7729E5827D36C8A22B3EB305E0D39@AM8PR04MB7729.eurprd04.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: BU73AIPe3PDOZ3beOgXj27rLus1OpzeqEGYngdtk+WmVWqK4ioTTYPBg2SxOIYQEZHb78Xmr+bjEuT+/Em2hklot3ZX8MyOOQEOtUwqpQALuC2e3tNaBHAiWf9ZpGslJrMCKKElzBBHQ/mVGzQzwI9gq5Mlzut5ClLSeZV72wIOD7/P+Sds77Ez7RxoWy5LyNClXstMZuyCsKnCB/1Kw33zH6jvO5dNN21moj3rd/aF5O5XvWJ6XJfAbJzxy0QUHGsmjjInX+dwF/GB0J6K8MltiQtsW6PnBkbfXd/itZg6DpJjtTxxOfsl6Y3LFUw7nDH1eccumOHwDoRnBMmZeg0tQGZ6dXL4jbJCKfo/tMaH4rn43P2T28ARRMeygVTTFT9XZkN/+zWWBRyhfIMBZW96/rMdgppuboHAYVHEDQrcAPljgwrQaogP5H0wn3HdRBvxPh/BDT4MucdUjjjXcXEg7qA7sqoYU7838IujFHBxrxNs8eqxSOacnRUTGpwKiGzjwEzugVRQfNcSRh7asPsPMN/8UK2ZyOPSblMp/LI+GrpM+ixSZsUOhHADtv4YRBjIuKrr/WC/zSx2J+wir751+H91GlMVLV9ddaB5PfsW2lsmVSIocA/Kcs9VSanVvjnJwyGnSlkORWRNRnwIeiaS/8Kc4U2rsjlLEejxBS+POPZ3yHRjOeJYMaL0RgWmQGN797JO9XQXJVrgUn2DrFQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(4636009)(366004)(33716001)(30864003)(44832011)(15650500001)(5660300002)(8936002)(66556008)(66476007)(66446008)(91956017)(8676002)(76116006)(66946007)(4326008)(64756008)(26005)(54906003)(6916009)(71200400001)(316002)(508600001)(2906002)(6506007)(6486002)(38070700005)(38100700002)(9686003)(86362001)(83380400001)(6512007)(122000001)(1076003)(186003)(579004);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?/jO9Do9YGnC3EFUFxBZGBd4vVona2ixEZINum9p6PerzafJ+1XeoAyCfJ8/h?=
+ =?us-ascii?Q?IxEZZutwnetiPw9IMwnZ7sNpQNqeulaMs1UBMr008oAG/HXFlEdkk1xqi7CA?=
+ =?us-ascii?Q?1Mac1WS/eiQneR8wiVgG4fgy1zFi4PAJNdBpAn5FuMDf2CKE6oqVDlAf2WdU?=
+ =?us-ascii?Q?6uVI4oqHBmjfDcPeN4hzEXQv/dI0EopqZN7b2yySasLqzU3Bb+MvAnG7+PeX?=
+ =?us-ascii?Q?3a1N/xrm1Syf9aMjSrEGhol+un/rE/Yx3jO2uZrTarNGKuYyQQGVf9WJ0BcU?=
+ =?us-ascii?Q?s6qiDwZ74CTrmKnYXscl82GEIYDBy/CyDfq4SWopufr//Li6ycBHNXzZr/Cy?=
+ =?us-ascii?Q?mHqClbHu1qNLEQcE99Lf6WEfgU6S6OXaQaLvMvEUs0KM0PrQPWGkSOoX0wCj?=
+ =?us-ascii?Q?U940XinwzW/oVAlawxr8dAivs8huU2QwQsMpd5bRP/ihNoRH66GkxEGnI6ZL?=
+ =?us-ascii?Q?0RHyqdRTuKOGvZErPWVcdGkC6cMPYirse5u2uzaInUaV2ob5Vl/30SE8J7PH?=
+ =?us-ascii?Q?GYmm9eliByO8kZnXMUru2K9lkyrj/wAdo/9Wbw+bgg4Reib/OmWx7eQN+m+7?=
+ =?us-ascii?Q?88tRQC0v7VhL6BH/3j0RhmU3rUPwj6q3xB8IEiBalaXu8ZQsbAY91FBx7tvs?=
+ =?us-ascii?Q?sbEMxTmSmvGizYhhneCXWADoXtptVdFMEyKP4kYFEKeUOTC9c6uEA6yKvQs9?=
+ =?us-ascii?Q?Fw0mCFlZma/T/wo5vwZRBzzqx9jvFzgONrGoCX8FlASaJ6t4EvCgDOQxQ3Nb?=
+ =?us-ascii?Q?6+2sIfEygx5iGqpdQg5bSwz+VWNs6Y6OKAP5CVUrdC0dbu8t947HwLlAqz+c?=
+ =?us-ascii?Q?f6Py96b2J5QmmhJ8mUv3buCQcfHQjfBs3BxFv9dVupZ9/W3X24a0gaQVal5L?=
+ =?us-ascii?Q?6ejZD37Uh1tTgz0joQ6ivbQMMSsi/6/wT8IkY581mmbkCwiE9mEVTlLzCO1H?=
+ =?us-ascii?Q?fj+yNBfDfa25+nSjUVZf8WOiTXkvQGPgFwCPOc+Y61av1kXyr15UxsLHk9bI?=
+ =?us-ascii?Q?W1Mh0b//s6vZJvCVq3o767hVPPHQhD2Psz9k+ylq6Hi5Pb0exTN+UTxo1pU/?=
+ =?us-ascii?Q?DMfMgimg2kFuG0V7yyfGMOusrxHgA9YmnK1w9b0o9+KmAWmaYAMikcMnO2dJ?=
+ =?us-ascii?Q?7VNqz3MuaDHDZgY1gLPh0u1VporySUyoqIMBbh7XvmQ/mB0ID6br/szBCLOu?=
+ =?us-ascii?Q?WMU2zzV7gfsrCAMk4kmGs/bwzLaiAlJYnKR+xLlPUIfM2V2+yhxVkSUhUtpA?=
+ =?us-ascii?Q?oTkhJjlGgIpXTiVdJRtspNAoW+uIU4zNqCoRR/D0a362AIqZeqGxjh14Hcsu?=
+ =?us-ascii?Q?XjTN6UFKhxMKfleZSF5itfb6oZh2k7ryUjiuQ5TvMq7q39VV6nZauWo3bmli?=
+ =?us-ascii?Q?+1fIlpJlutrTNsNfUQvoaQ3gUk1ZZofArdpx0GvE6/vX/xiETwyvfe1BfIMP?=
+ =?us-ascii?Q?B4WsR8MnLU/1R8Oipc5rkFf/jINMqh2RFE4jTurUVaUDbuJh4bXNvZ1U6/3N?=
+ =?us-ascii?Q?SQQNhupYRdpgg2OJzvKom8ZzvMbQL9mbfVYR8SmyGekH9zJ14uktfBahbMl/?=
+ =?us-ascii?Q?bnv0ZJZqcWGvS7+SQa8/2rG7lvyuRNqChM5QWEP0RpUevv2geVGaHBUgqUgR?=
+ =?us-ascii?Q?diAuvgAIs5Kc01+XAv2W+/AIGKK1UKEY2dNNlIqjMzuV6WiStszRRHUydLnd?=
+ =?us-ascii?Q?RySIF8ue2iFj6+qDEZ/MCoGN1jgHhy0kyEzRdvmWI7fZcHZfn4tkvXOjO9/3?=
+ =?us-ascii?Q?lqi78SduyTjaKYy5aQwMV43rovIbPd0=3D?=
+Content-ID: <926F9622491D284096B74B9290DC0C08@eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v4] iavf: Add waiting for
- response from PF in set mac
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ad0f9143-8898-46f4-635e-08da3a4da2e7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2022 10:43:54.5687 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: nPvrmbt0NVBw99/TDmFs60QRcGEcRcIenSLWu5hecR5ejNr5GqPjqJvQGOxSkg3IY9VrMoN4l6l935FwwFxHUw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7729
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 09/11] igc: Add support
+ for Frame Preemption verification
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,372 +142,563 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Cc: "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Make iavf_set_mac synchronous by waiting for a response
-from a PF. Without this iavf_set_mac is always returning
-success even though set_mac can be rejected by a PF.
-This ensures that when set_mac exits netdev MAC is updated.
-This is needed for sending ARPs with correct MAC after
-changing VF's MAC. This is also needed by bonding module.
+On Thu, May 19, 2022 at 06:15:36PM -0700, Vinicius Costa Gomes wrote:
+> Add support for sending/receiving Frame Preemption verification
+> frames.
+> 
+> The i225 hardware doesn't implement the process of verification
+> internally, this is left to the driver.
+> 
+> Add a simple implementation of the state machine defined in IEEE
+> 802.3-2018, Section 99.4.7.
+> 
+> For now, the state machine is started manually by the user, when
+> enabling verification. Example:
+> 
+> $ ethtool --set-frame-preemption IFACE disable-verify off
+> 
+> The "verified" condition is set to true when the SMD-V frame is sent,
+> and the SMD-R frame is received. So, it only tracks the transmission
+> side. This seems to be what's expected from IEEE 802.3-2018.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc.h         |  16 ++
+>  drivers/net/ethernet/intel/igc/igc_defines.h |  13 +
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c |  37 ++-
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 243 +++++++++++++++++++
+>  4 files changed, 307 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+> index 11da66bd9c2c..be4a8362d6d7 100644
+> --- a/drivers/net/ethernet/intel/igc/igc.h
+> +++ b/drivers/net/ethernet/intel/igc/igc.h
+> @@ -131,6 +131,13 @@ struct igc_ring {
+>  	struct xsk_buff_pool *xsk_pool;
+>  } ____cacheline_internodealigned_in_smp;
+>  
+> +enum frame_preemption_state {
+> +	FRAME_PREEMPTION_STATE_FAILED,
+> +	FRAME_PREEMPTION_STATE_DONE,
+> +	FRAME_PREEMPTION_STATE_START,
+> +	FRAME_PREEMPTION_STATE_SENT,
+> +};
+> +
+>  /* Board specific private data structure */
+>  struct igc_adapter {
+>  	struct net_device *netdev;
+> @@ -184,6 +191,7 @@ struct igc_adapter {
+>  	ktime_t base_time;
+>  	ktime_t cycle_time;
+>  	bool frame_preemption_active;
+> +	bool frame_preemption_requested;
+>  	u32 add_frag_size;
+>  
+>  	/* OS defined structs */
+> @@ -250,6 +258,14 @@ struct igc_adapter {
+>  		struct timespec64 start;
+>  		struct timespec64 period;
+>  	} perout[IGC_N_PEROUT];
+> +
+> +	struct delayed_work fp_verification_work;
+> +	unsigned long fp_start;
+> +	bool fp_received_smd_v;
+> +	bool fp_received_smd_r;
+> +	unsigned int fp_verify_cnt;
+> +	enum frame_preemption_state fp_tx_state;
+> +	bool fp_disable_verify;
+>  };
+>  
+>  void igc_up(struct igc_adapter *adapter);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index 68faca584e34..63fc76a0b72a 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -307,6 +307,8 @@
+>  #define IGC_TXD_DTYP_C		0x00000000 /* Context Descriptor */
+>  #define IGC_TXD_POPTS_IXSM	0x01       /* Insert IP checksum */
+>  #define IGC_TXD_POPTS_TXSM	0x02       /* Insert TCP/UDP checksum */
+> +#define IGC_TXD_POPTS_SMD_V	0x10       /* Transmitted packet is a SMD-Verify */
+> +#define IGC_TXD_POPTS_SMD_R	0x20       /* Transmitted packet is a SMD-Response */
+>  #define IGC_TXD_CMD_EOP		0x01000000 /* End of Packet */
+>  #define IGC_TXD_CMD_IC		0x04000000 /* Insert Checksum */
+>  #define IGC_TXD_CMD_DEXT	0x20000000 /* Desc extension (0 = legacy) */
+> @@ -366,9 +368,20 @@
+>  
+>  #define IGC_RXDEXT_STATERR_LB	0x00040000
+>  
+> +#define IGC_RXD_STAT_SMD_V	0x2000  /* Received packet is SMD-Verify packet */
+> +#define IGC_RXD_STAT_SMD_R	0x4000  /* Received packet is SMD-Response packet */
+> +
+>  /* Advanced Receive Descriptor bit definitions */
+>  #define IGC_RXDADV_STAT_TSIP	0x08000 /* timestamp in packet */
+>  
+> +#define IGC_RXDADV_STAT_SMD_TYPE_MASK	0x06000
+> +#define IGC_RXDADV_STAT_SMD_TYPE_SHIFT	13
+> +
+> +#define IGC_SMD_TYPE_SFD		0x0
+> +#define IGC_SMD_TYPE_SMD_V		0x1
+> +#define IGC_SMD_TYPE_SMD_R		0x2
+> +#define IGC_SMD_TYPE_COMPLETE		0x3
+> +
+>  #define IGC_RXDEXT_STATERR_L4E		0x20000000
+>  #define IGC_RXDEXT_STATERR_IPE		0x40000000
+>  #define IGC_RXDEXT_STATERR_RXE		0x80000000
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index 401d2cdb3e81..9a80e2569dc3 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> @@ -1680,6 +1680,8 @@ static int igc_ethtool_get_preempt(struct net_device *netdev,
+>  
+>  	fpcmd->enabled = adapter->frame_preemption_active;
+>  	fpcmd->add_frag_size = adapter->add_frag_size;
+> +	fpcmd->verified = adapter->fp_tx_state == FRAME_PREEMPTION_STATE_DONE;
+> +	fpcmd->disable_verify = adapter->fp_disable_verify;
+>  
+>  	for (i = 0; i < adapter->num_tx_queues; i++) {
+>  		struct igc_ring *ring = adapter->tx_ring[i];
+> @@ -1698,6 +1700,7 @@ static int igc_ethtool_set_preempt(struct net_device *netdev,
+>  				   struct netlink_ext_ack *extack)
+>  {
+>  	struct igc_adapter *adapter = netdev_priv(netdev);
+> +	bool verified = false, mask_changed = false;
 
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- v4: Rewrited some code to avoid passing a value as a condition
- v3: Resent the patch to apply to next-queue
- v2: Changed __IAVF_IN_CRITICAL_TASK to crit_lock 
----
- drivers/net/ethernet/intel/iavf/iavf.h        |   7 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 127 +++++++++++++++---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  61 ++++++++-
- 3 files changed, 174 insertions(+), 21 deletions(-)
+"verified" is assigned unconditionally below, no need to initialize it to false.
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 49aed3e..fda1198 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -146,7 +146,8 @@ struct iavf_mac_filter {
- 		u8 remove:1;        /* filter needs to be removed */
- 		u8 add:1;           /* filter needs to be added */
- 		u8 is_primary:1;    /* filter is a default VF MAC */
--		u8 padding:4;
-+		u8 add_handled:1;   /* received response for filter add */
-+		u8 padding:3;
- 	};
- };
- 
-@@ -248,6 +249,7 @@ struct iavf_adapter {
- 	struct work_struct adminq_task;
- 	struct delayed_work client_task;
- 	wait_queue_head_t down_waitqueue;
-+	wait_queue_head_t vc_waitqueue;
- 	struct iavf_q_vector *q_vectors;
- 	struct list_head vlan_filter_list;
- 	struct list_head mac_filter_list;
-@@ -292,6 +294,7 @@ struct iavf_adapter {
- #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
- #define IAVF_FLAG_SETUP_NETDEV_FEATURES		BIT(18)
- #define IAVF_FLAG_REINIT_MSIX_NEEDED		BIT(20)
-+#define IAVF_FLAG_INITIAL_MAC_SET		BIT(23)
- /* duplicates for common code */
- #define IAVF_FLAG_DCB_ENABLED			0
- 	/* flags for admin queue service task */
-@@ -559,6 +562,8 @@ void iavf_enable_vlan_stripping_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_disable_vlan_stripping_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_enable_vlan_insertion_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_disable_vlan_insertion_v2(struct iavf_adapter *adapter, u16 tpid);
-+int iavf_replace_primary_mac(struct iavf_adapter *adapter,
-+			     const u8 *new_mac);
- void
- iavf_set_vlan_offload_features(struct iavf_adapter *adapter,
- 			       netdev_features_t prev_features,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 7dfcf78..11210f1 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -983,6 +983,7 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
- 
- 		list_add_tail(&f->list, &adapter->mac_filter_list);
- 		f->add = true;
-+		f->add_handled = false;
- 		f->is_new_mac = true;
- 		f->is_primary = false;
- 		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
-@@ -994,47 +995,132 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
- }
- 
- /**
-- * iavf_set_mac - NDO callback to set port mac address
-- * @netdev: network interface device structure
-- * @p: pointer to an address structure
-+ * iavf_replace_primary_mac - Replace current primary address
-+ * @adapter: board private structure
-+ * @new_mac: new mac address to be applied
-  *
-- * Returns 0 on success, negative on failure
-+ * Replace current dev_addr and send request to PF for removal of previous
-+ * primary mac address filter and addition of new primary mac filter.
-+ * Return 0 for success, -ENOMEM for failure.
-+ *
-+ * Do not call this with mac_vlan_list_lock!
-  **/
--static int iavf_set_mac(struct net_device *netdev, void *p)
-+int iavf_replace_primary_mac(struct iavf_adapter *adapter,
-+			     const u8 *new_mac)
- {
--	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_mac_filter *f;
--	struct sockaddr *addr = p;
--
--	if (!is_valid_ether_addr(addr->sa_data))
--		return -EADDRNOTAVAIL;
--
--	if (ether_addr_equal(netdev->dev_addr, addr->sa_data))
--		return 0;
- 
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 
-+	list_for_each_entry(f, &adapter->mac_filter_list, list) {
-+		f->is_primary = false;
-+	}
-+
- 	f = iavf_find_filter(adapter, hw->mac.addr);
- 	if (f) {
- 		f->remove = true;
--		f->is_primary = true;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_MAC_FILTER;
- 	}
- 
--	f = iavf_add_filter(adapter, addr->sa_data);
-+	f = iavf_add_filter(adapter, new_mac);
-+
- 	if (f) {
-+		/* Always send the request to add if changing primary MAC
-+		 * even if filter is already present on the list
-+		 */
- 		f->is_primary = true;
--		ether_addr_copy(hw->mac.addr, addr->sa_data);
-+		f->add = true;
-+		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
-+		ether_addr_copy(hw->mac.addr, new_mac);
- 	}
- 
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
- 	/* schedule the watchdog task to immediately process the request */
--	if (f)
-+	if (f) {
- 		queue_work(iavf_wq, &adapter->watchdog_task.work);
-+		return 0;
-+	}
-+	return -ENOMEM;
-+}
-+
-+/**
-+ * iavf_is_mac_set_handled - wait for a response to set MAC from PF
-+ * @netdev: network interface device structure
-+ * @macaddr: MAC address to set
-+ *
-+ * Returns true on success, false on failure
-+ */
-+static bool iavf_is_mac_set_handled(struct net_device *netdev,
-+				    const u8 *macaddr)
-+{
-+	struct iavf_adapter *adapter = netdev_priv(netdev);
-+	struct iavf_mac_filter *f;
-+	bool ret = false;
-+
-+	spin_lock_bh(&adapter->mac_vlan_list_lock);
-+
-+	f = iavf_find_filter(adapter, macaddr);
-+
-+	if (!f || (!f->add && f->add_handled))
-+		ret = true;
- 
--	return (f == NULL) ? -ENOMEM : 0;
-+	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+
-+	return ret;
-+}
-+
-+/**
-+ * iavf_set_mac - NDO callback to set port mac address
-+ * @netdev: network interface device structure
-+ * @p: pointer to an address structure
-+ *
-+ * Returns 0 on success, negative on failure
-+ */
-+static int iavf_set_mac(struct net_device *netdev, void *p)
-+{
-+	struct iavf_adapter *adapter = netdev_priv(netdev);
-+	struct sockaddr *addr = p;
-+	bool handle_mac = iavf_is_mac_set_handled(netdev, addr->sa_data);
-+	int ret;
-+
-+	if (!is_valid_ether_addr(addr->sa_data))
-+		return -EADDRNOTAVAIL;
-+
-+	ret = iavf_replace_primary_mac(adapter, addr->sa_data);
-+
-+	if (ret)
-+		return ret;
-+
-+	/* If this is an initial set mac during VF spawn do not wait */
-+	if (adapter->flags & IAVF_FLAG_INITIAL_MAC_SET) {
-+		adapter->flags &= ~IAVF_FLAG_INITIAL_MAC_SET;
-+		return 0;
-+	}
-+
-+	if (handle_mac)
-+		goto done;
-+
-+	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue, false, msecs_to_jiffies(2500));
-+
-+	/* If ret < 0 then it means wait was interrupted.
-+	 * If ret == 0 then it means we got a timeout.
-+	 * else it means we got response for set MAC from PF,
-+	 * check if netdev MAC was updated to requested MAC,
-+	 * if yes then set MAC succeeded otherwise it failed return -EACCES
-+	 */
-+	if (ret < 0)
-+		return ret;
-+
-+	if (!ret)
-+		return -EAGAIN;
-+
-+done:
-+	if (!ether_addr_equal(netdev->dev_addr, addr->sa_data))
-+		return -EACCES;
-+
-+	return 0;
- }
- 
- /**
-@@ -2451,6 +2537,8 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 		ether_addr_copy(netdev->perm_addr, adapter->hw.mac.addr);
- 	}
- 
-+	adapter->flags |= IAVF_FLAG_INITIAL_MAC_SET;
-+
- 	adapter->tx_desc_count = IAVF_DEFAULT_TXD;
- 	adapter->rx_desc_count = IAVF_DEFAULT_RXD;
- 	err = iavf_init_interrupt_scheme(adapter);
-@@ -4681,6 +4769,9 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* Setup the wait queue for indicating transition to down status */
- 	init_waitqueue_head(&adapter->down_waitqueue);
- 
-+	/* Setup the wait queue for indicating virtchannel events */
-+	init_waitqueue_head(&adapter->vc_waitqueue);
-+
- 	return 0;
- 
- err_ioremap:
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 782450d..e2b4ba9 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -598,6 +598,8 @@ static void iavf_mac_add_ok(struct iavf_adapter *adapter)
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
- 		f->is_new_mac = false;
-+		if (!f->add && !f->add_handled)
-+			f->add_handled = true;
- 	}
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- }
-@@ -618,6 +620,9 @@ static void iavf_mac_add_reject(struct iavf_adapter *adapter)
- 		if (f->remove && ether_addr_equal(f->macaddr, netdev->dev_addr))
- 			f->remove = false;
- 
-+		if (!f->add && !f->add_handled)
-+			f->add_handled = true;
-+
- 		if (f->is_new_mac) {
- 			list_del(&f->list);
- 			kfree(f);
-@@ -1932,6 +1937,7 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			iavf_mac_add_reject(adapter);
- 			/* restore administratively set MAC address */
- 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
-+			wake_up(&adapter->vc_waitqueue);
- 			break;
- 		case VIRTCHNL_OP_DEL_VLAN:
- 			dev_err(&adapter->pdev->dev, "Failed to delete VLAN filter, error %s\n",
-@@ -2091,7 +2097,13 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		if (!v_retval)
- 			iavf_mac_add_ok(adapter);
- 		if (!ether_addr_equal(netdev->dev_addr, adapter->hw.mac.addr))
--			eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+			if (!ether_addr_equal(netdev->dev_addr,
-+					      adapter->hw.mac.addr)) {
-+				netif_addr_lock_bh(netdev);
-+				eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+				netif_addr_unlock_bh(netdev);
-+			}
-+		wake_up(&adapter->vc_waitqueue);
- 		break;
- 	case VIRTCHNL_OP_GET_STATS: {
- 		struct iavf_eth_stats *stats =
-@@ -2121,10 +2133,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			/* restore current mac address */
- 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
- 		} else {
-+			netif_addr_lock_bh(netdev);
- 			/* refresh current mac address if changed */
--			eth_hw_addr_set(netdev, adapter->hw.mac.addr);
- 			ether_addr_copy(netdev->perm_addr,
- 					adapter->hw.mac.addr);
-+			netif_addr_unlock_bh(netdev);
- 		}
- 		spin_lock_bh(&adapter->mac_vlan_list_lock);
- 		iavf_add_filter(adapter, adapter->hw.mac.addr);
-@@ -2160,6 +2173,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		}
- 		fallthrough;
- 	case VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS: {
-+		struct iavf_mac_filter *f;
-+		bool was_mac_changed;
-+		u64 aq_required = 0;
-+
- 		if (v_opcode == VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS)
- 			memcpy(&adapter->vlan_v2_caps, msg,
- 			       min_t(u16, msglen,
-@@ -2167,6 +2184,46 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 
- 		iavf_process_config(adapter);
- 		adapter->flags |= IAVF_FLAG_SETUP_NETDEV_FEATURES;
-+		was_mac_changed = !ether_addr_equal(netdev->dev_addr,
-+						    adapter->hw.mac.addr);
-+
-+		spin_lock_bh(&adapter->mac_vlan_list_lock);
-+
-+		/* re-add all MAC filters */
-+		list_for_each_entry(f, &adapter->mac_filter_list, list) {
-+			if (was_mac_changed &&
-+			    ether_addr_equal(netdev->dev_addr, f->macaddr))
-+				ether_addr_copy(f->macaddr,
-+						adapter->hw.mac.addr);
-+
-+			f->is_new_mac = true;
-+			f->add = true;
-+			f->add_handled = false;
-+			f->remove = false;
-+		}
-+
-+		/* re-add all VLAN filters */
-+		if (VLAN_FILTERING_ALLOWED(adapter)) {
-+			struct iavf_vlan_filter *vlf;
-+
-+			if (!list_empty(&adapter->vlan_filter_list)) {
-+				list_for_each_entry(vlf,
-+						    &adapter->vlan_filter_list,
-+						    list)
-+					vlf->add = true;
-+
-+				aq_required |= IAVF_FLAG_AQ_ADD_VLAN_FILTER;
-+			}
-+		}
-+
-+		spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+
-+		netif_addr_lock_bh(netdev);
-+		eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+		netif_addr_unlock_bh(netdev);
-+
-+		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER |
-+			aq_required;
- 		}
- 		break;
- 	case VIRTCHNL_OP_ENABLE_QUEUES:
--- 
-2.27.0
+>  	u32 mask;
+>  	int i;
+>  
+> @@ -1706,17 +1709,47 @@ static int igc_ethtool_set_preempt(struct net_device *netdev,
+>  		return -EINVAL;
+>  	}
+>  
+> -	adapter->frame_preemption_active = fpcmd->enabled;
+> +	adapter->frame_preemption_requested = fpcmd->enabled;
+>  	adapter->add_frag_size = fpcmd->add_frag_size;
+>  	mask = fpcmd->preemptible_mask;
+>  
+>  	for (i = 0; i < adapter->num_tx_queues; i++) {
+>  		struct igc_ring *ring = adapter->tx_ring[i];
+> +		bool preemptible = mask & BIT(i);
+> +
+> +		if (ring->preemptible != preemptible)
+> +			mask_changed = true;
+>  
+>  		ring->preemptible = (mask & BIT(i));
+>  	}
+>  
+> -	return igc_tsn_offload_apply(adapter);
+> +	if (!fpcmd->disable_verify && adapter->fp_disable_verify) {
+> +		adapter->fp_tx_state = FRAME_PREEMPTION_STATE_START;
+> +		schedule_delayed_work(&adapter->fp_verification_work,
+> +				      msecs_to_jiffies(10));
+> +	}
+> +
+> +	adapter->fp_disable_verify = fpcmd->disable_verify;
 
+This races with the first check in the fp_verification_work, so it may
+see an old fp_disable_verify value.
+
+> +
+> +	verified = adapter->fp_tx_state == FRAME_PREEMPTION_STATE_DONE;
+> +
+> +	/* If the verification was not done, we want to enable frame
+> +	 * preemption and we have not finished it, wait for it to
+> +	 * finish.
+> +	 */
+> +	if (!verified && !adapter->fp_disable_verify && adapter->frame_preemption_requested)
+> +		return 0;
+
+This is a bit hard to follow, sorry if I am misunderstanding something.
+But in principle, you exit early if preemption is enabled (requested),
+verification is enabled, and verification isn't complete.
+
+So you proceed on the negated condition, i.e. preemption is disabled, or
+verification is disabled, or verification is complete. Is the last
+condition what you want? You race with the schedule_delayed_work()
+above, and verification may become complete, case in which you go ahead
+to the next check. Intuitively, this code block right here should only
+deal with the case where we don't have verification enabled, but the
+checks allow other conditions to pass.
+
+So the next check here, right below:
+
+	if (adapter->frame_preemption_active != adapter->frame_preemption_requested ||
+
+races with the verify state machine doing this:
+
+1			adapter->fp_tx_state = FRAME_PREEMPTION_STATE_DONE;
+2			adapter->fp_received_smd_r = false;
+3
+4			if (adapter->frame_preemption_requested) {
+5				adapter->frame_preemption_active = true;
+6				igc_tsn_offload_apply(adapter);
+7			}
+
+Because "verified == true" makes us run further, this only means that line 1
+above has already executed in the state machine. But it doesn't mean
+that lines 2...5 have executed. If the state machine kthread is
+preempted too between lines 1 and 5, then both igc_ethtool_set_preempt()
+and igc_fp_verification_work() will end up calling igc_tsn_offload_apply().
+
+Have you considered just introducing a DISABLED state in your verify
+state machine, and handling that case in the delayed work as well, to
+reduce the potential for races?
+
+> +
+> +	if (adapter->frame_preemption_active != adapter->frame_preemption_requested ||
+> +	    adapter->add_frag_size != fpcmd->add_frag_size ||
+
+To save some line space, could you perhaps rename "frame_preemption_" to "fp_"?
+
+> +	    mask_changed) {
+> +		adapter->frame_preemption_active = adapter->frame_preemption_requested;
+> +		adapter->add_frag_size = fpcmd->add_frag_size;
+> +
+> +		return igc_tsn_offload_apply(adapter);
+> +	}
+> +
+> +	return 0;
+>  }
+>  
+>  static int igc_ethtool_begin(struct net_device *netdev)
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 5dd7140bac82..69e96e9a3ec8 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -30,6 +30,11 @@
+>  #define IGC_XDP_TX		BIT(1)
+>  #define IGC_XDP_REDIRECT	BIT(2)
+>  
+> +#define IGC_FP_TIMEOUT msecs_to_jiffies(100)
+> +#define IGC_MAX_VERIFY_CNT 3
+> +
+> +#define IGC_FP_SMD_FRAME_SIZE 60
+> +
+>  static int debug = -1;
+>  
+>  MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
+> @@ -2190,6 +2195,79 @@ static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
+>  	return 0;
+>  }
+>  
+> +static int igc_fp_init_smd_frame(struct igc_ring *ring, struct igc_tx_buffer *buffer,
+> +				 struct sk_buff *skb)
+> +{
+> +	dma_addr_t dma;
+> +	unsigned int size;
+
+Variable ordering longest to shortest please. Also, "size" could be initialized inline.
+
+> +
+> +	size = skb_headlen(skb);
+
+I think alloc_skb() doesn't create nonlinear skbs, only alloc_skb_with_frags(),
+so this could be skb->len.
+
+> +
+> +	dma = dma_map_single(ring->dev, skb->data, size, DMA_TO_DEVICE);
+> +	if (dma_mapping_error(ring->dev, dma)) {
+> +		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
+> +		return -ENOMEM;
+> +	}
+> +
+> +	buffer->skb = skb;
+> +	buffer->protocol = 0;
+> +	buffer->bytecount = skb->len;
+> +	buffer->gso_segs = 1;
+> +	buffer->time_stamp = jiffies;
+> +	dma_unmap_len_set(buffer, len, skb->len);
+
+And then use "size" here and in buffer->bytecount.
+
+> +	dma_unmap_addr_set(buffer, dma, dma);
+> +
+> +	return 0;
+> +}
+> +
+> +static int igc_fp_init_tx_descriptor(struct igc_ring *ring,
+> +				     struct sk_buff *skb, int type)
+> +{
+> +	struct igc_tx_buffer *buffer;
+> +	union igc_adv_tx_desc *desc;
+> +	u32 cmd_type, olinfo_status;
+> +	int err;
+> +
+> +	if (!igc_desc_unused(ring))
+> +		return -EBUSY;
+> +
+> +	buffer = &ring->tx_buffer_info[ring->next_to_use];
+> +	err = igc_fp_init_smd_frame(ring, buffer, skb);
+> +	if (err)
+> +		return err;
+> +
+> +	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
+> +		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
+> +		   buffer->bytecount;
+> +	olinfo_status = buffer->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
+> +
+> +	switch (type) {
+> +	case IGC_SMD_TYPE_SMD_V:
+> +		olinfo_status |= (IGC_TXD_POPTS_SMD_V << 8);
+> +		break;
+> +	case IGC_SMD_TYPE_SMD_R:
+> +		olinfo_status |= (IGC_TXD_POPTS_SMD_R << 8);
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	desc = IGC_TX_DESC(ring, ring->next_to_use);
+> +	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
+> +	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
+> +	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(buffer, dma));
+> +
+> +	netdev_tx_sent_queue(txring_txq(ring), skb->len);
+> +
+> +	buffer->next_to_watch = desc;
+> +
+> +	ring->next_to_use++;
+> +	if (ring->next_to_use == ring->count)
+> +		ring->next_to_use = 0;
+> +
+> +	return 0;
+> +}
+> +
+>  static struct igc_ring *igc_xdp_get_tx_ring(struct igc_adapter *adapter,
+>  					    int cpu)
+>  {
+> @@ -2317,6 +2395,43 @@ static void igc_update_rx_stats(struct igc_q_vector *q_vector,
+>  	q_vector->rx.total_bytes += bytes;
+>  }
+>  
+> +static int igc_rx_desc_smd_type(union igc_adv_rx_desc *rx_desc)
+> +{
+> +	u32 status = le32_to_cpu(rx_desc->wb.upper.status_error);
+> +
+> +	return (status & IGC_RXDADV_STAT_SMD_TYPE_MASK)
+> +		>> IGC_RXDADV_STAT_SMD_TYPE_SHIFT;
+> +}
+> +
+> +static bool igc_check_smd_frame(void *pktbuf, unsigned int size)
+> +{
+> +#if defined(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS)
+> +	const u32 *b;
+> +#else
+> +	const u16 *b;
+> +#endif
+> +	int i;
+> +
+> +	if (size != 60)
+> +		return false;
+> +
+> +	/* The SMD frames (V and R) have the preamble, the SMD tag, 60
+> +	 * octects of zeroes and the mCRC. At this point the hardware
+
+Typo: octets
+
+> +	 * already discarded most of that, so we only need to check
+> +	 * the "contents" of the frame.
+> +	 */
+> +	b = pktbuf;
+> +	for (i = 16 / sizeof(*b); i < size / sizeof(*b); i++)
+> +		/* FIXME: i226 seems to insert some garbage
+> +		 * (timestamps?) in SMD frames, ignore the first 16
+> +		 * bytes (4 words). Investigate better.
+> +		 */
+> +		if (b[i] != 0)
+> +			return false;
+> +
+> +	return true;
+> +}
+
+I admit I'm not really following the clean_rx procedure. But do you call
+igc_put_rx_buffer() for SMD frames, i.e. are you DMA unmapping the
+buffer before you look at it? It seems like you have the "smd" check too
+early. If you enable CONFIG_DMA_API_DEBUG, does it say anything?
+
+> +
+>  static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+>  {
+>  	unsigned int total_bytes = 0, total_packets = 0;
+> @@ -2333,6 +2448,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+>  		ktime_t timestamp = 0;
+>  		struct xdp_buff xdp;
+>  		int pkt_offset = 0;
+> +		int smd_type;
+>  		void *pktbuf;
+>  
+>  		/* return some buffers to hardware, one at a time is too slow */
+> @@ -2364,6 +2480,22 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+>  			size -= IGC_TS_HDR_LEN;
+>  		}
+>  
+> +		smd_type = igc_rx_desc_smd_type(rx_desc);
+> +
+> +		if (unlikely(smd_type == IGC_SMD_TYPE_SMD_V || smd_type == IGC_SMD_TYPE_SMD_R)) {
+> +			if (igc_check_smd_frame(pktbuf, size)) {
+> +				adapter->fp_received_smd_v = smd_type == IGC_SMD_TYPE_SMD_V;
+> +				adapter->fp_received_smd_r = smd_type == IGC_SMD_TYPE_SMD_R;
+> +				schedule_delayed_work(&adapter->fp_verification_work, 0);
+> +			}
+> +
+> +			/* Advance the ring next-to-clean */
+> +			igc_is_non_eop(rx_ring, rx_desc);
+> +
+> +			cleaned_count++;
+> +			continue;
+> +		}
+> +
+>  		if (!skb) {
+>  			xdp_init_buff(&xdp, truesize, &rx_ring->xdp_rxq);
+>  			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
+> @@ -6003,6 +6135,116 @@ static int igc_tsn_enable_cbs(struct igc_adapter *adapter,
+>  	return igc_tsn_offload_apply(adapter);
+>  }
+>  
+> +/* I225 doesn't send the SMD frames automatically, we need to handle
+> + * them ourselves.
+> + */
+> +static int igc_xmit_smd_frame(struct igc_adapter *adapter, int type)
+> +{
+> +	int cpu = smp_processor_id();
+> +	struct netdev_queue *nq;
+> +	struct igc_ring *ring;
+> +	struct sk_buff *skb;
+> +	void *data;
+> +	int err;
+> +
+> +	if (!netif_running(adapter->netdev))
+> +		return -ENOTCONN;
+> +
+> +	/* FIXME: rename this function to something less specific, as
+> +	 * it can be used outside XDP.
+> +	 */
+> +	ring = igc_xdp_get_tx_ring(adapter, cpu);
+> +	nq = txring_txq(ring);
+> +
+> +	skb = alloc_skb(IGC_FP_SMD_FRAME_SIZE, GFP_KERNEL);
+> +	if (!skb)
+> +		return -ENOMEM;
+> +
+> +	data = skb_put(skb, IGC_FP_SMD_FRAME_SIZE);
+> +	memset(data, 0, IGC_FP_SMD_FRAME_SIZE);
+> +
+> +	__netif_tx_lock_bh(nq);
+> +
+> +	err = igc_fp_init_tx_descriptor(ring, skb, type);
+> +
+> +	igc_flush_tx_descriptors(ring);
+> +
+> +	__netif_tx_unlock_bh(nq);
+> +
+> +	return err;
+> +}
+> +
+> +static void igc_fp_verification_work(struct work_struct *work)
+> +{
+> +	struct delayed_work *dwork = to_delayed_work(work);
+> +	struct igc_adapter *adapter;
+> +	int err;
+> +
+> +	adapter = container_of(dwork, struct igc_adapter, fp_verification_work);
+> +
+> +	if (adapter->fp_disable_verify)
+> +		goto done;
+> +
+> +	switch (adapter->fp_tx_state) {
+> +	case FRAME_PREEMPTION_STATE_START:
+> +		adapter->fp_received_smd_r = false;
+> +		err = igc_xmit_smd_frame(adapter, IGC_SMD_TYPE_SMD_V);
+> +		if (err < 0)
+> +			netdev_err(adapter->netdev, "Error sending SMD-V frame\n");
+> +
+> +		adapter->fp_tx_state = FRAME_PREEMPTION_STATE_SENT;
+> +		adapter->fp_start = jiffies;
+> +		schedule_delayed_work(&adapter->fp_verification_work, IGC_FP_TIMEOUT);
+> +		break;
+> +
+> +	case FRAME_PREEMPTION_STATE_SENT:
+> +		if (adapter->fp_received_smd_r) {
+> +			/* Verifcation has finished successfully, we
+
+Typo: verification
+
+> +			 * can enable frame preemption in the hw now
+> +			 */
+> +			adapter->fp_tx_state = FRAME_PREEMPTION_STATE_DONE;
+> +			adapter->fp_received_smd_r = false;
+> +
+> +			if (adapter->frame_preemption_requested) {
+> +				adapter->frame_preemption_active = true;
+
+Maybe WRITE_ONCE(adapter->fp_active, true) here, and READ_ONCE
+everywhere else, so annotate lockless accesses?
+
+> +				igc_tsn_offload_apply(adapter);
+> +			}
+> +
+> +			break;
+> +		}
+> +
+> +		if (time_is_before_jiffies(adapter->fp_start + IGC_FP_TIMEOUT)) {
+> +			adapter->fp_verify_cnt++;
+> +			netdev_warn(adapter->netdev, "Timeout waiting for SMD-R frame\n");
+> +
+> +			if (adapter->fp_verify_cnt > IGC_MAX_VERIFY_CNT) {
+> +				adapter->fp_verify_cnt = 0;
+> +				adapter->fp_tx_state = FRAME_PREEMPTION_STATE_FAILED;
+> +				netdev_err(adapter->netdev,
+> +					   "Exceeded number of attempts for frame preemption verification\n");
+> +			} else {
+> +				adapter->fp_tx_state = FRAME_PREEMPTION_STATE_START;
+> +			}
+> +			schedule_delayed_work(&adapter->fp_verification_work, IGC_FP_TIMEOUT);
+> +		}
+> +
+> +		break;
+> +
+> +	case FRAME_PREEMPTION_STATE_FAILED:
+> +	case FRAME_PREEMPTION_STATE_DONE:
+> +		break;
+> +	}
+> +
+> +done:
+> +	if (adapter->fp_received_smd_v) {
+> +		err = igc_xmit_smd_frame(adapter, IGC_SMD_TYPE_SMD_R);
+> +		if (err < 0)
+> +			netdev_err(adapter->netdev, "Error sending SMD-R frame\n");
+> +
+> +		adapter->fp_received_smd_v = false;
+> +	}
+> +}
+> +
+>  static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
+>  			void *type_data)
+>  {
+> @@ -6369,6 +6611,7 @@ static int igc_probe(struct pci_dev *pdev,
+>  
+>  	INIT_WORK(&adapter->reset_task, igc_reset_task);
+>  	INIT_WORK(&adapter->watchdog_task, igc_watchdog_task);
+> +	INIT_DELAYED_WORK(&adapter->fp_verification_work, igc_fp_verification_work);
+>  
+>  	/* Initialize link properties that are user-changeable */
+>  	adapter->fc_autoneg = true;
+> -- 
+> 2.35.3
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
