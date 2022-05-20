@@ -1,69 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F18AD52E1AA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D0D452E1AB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A4AA2405AF;
-	Fri, 20 May 2022 01:16:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3E2CF8453A;
+	Fri, 20 May 2022 01:16:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Cg83xVFJ1X6H; Fri, 20 May 2022 01:16:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CpNWyGv338aD; Fri, 20 May 2022 01:16:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 91783410FF;
-	Fri, 20 May 2022 01:16:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5585684521;
+	Fri, 20 May 2022 01:16:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B3391BF30C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1BFCF1BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 582E68453A
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7F3B084534
  for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QGVx3eiIXOFg for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 May 2022 01:15:56 +0000 (UTC)
+ with ESMTP id QmHdwRvSpyjF for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 May 2022 01:15:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 99DB884534
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D8CE78451D
  for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1653009356; x=1684545356;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=5xX/sdy+eR/dQdua3+HvBUCEnqwifRscdxcfvrZZ8tk=;
- b=kb2XlQUEd8Ju9P0kKIcZ6HjB8kljPHpQ7UUhLVzB8RNE1FiJuhlRjzix
- 1fimFtTG4uAgZtufwf+HfwbgIox3Ktu8nHGpjGSda//e/gRifeVdO1SKU
- 7IBQE1C48nKJZ7jeDXQmOS90kSz/8FEKjmknNaX6ygTClvv2UZz8OGORX
- 5CC5I6XQVvHrWW1/iILIgXM+CCWwMgyEBpTZBuV9gC/3UMsTRglhUD6J0
- xOTuYwpKWn03cwA18rc79cmNccpbIVvYs8Lwy/9DNE5QiSXCuil+sSZAb
- XUCq6KsHMfUYRpWfGlNwkVRCqUvWp9OR3+yxCEeOgijxD8KOFvMwSoHvi A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064157"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064157"
+ bh=GvvOSRP3CzY8wou3e94OjmzfEqmZRYgWGPqWk9AlwqA=;
+ b=ZB5JiVNw8R35rjCpDbh9MmC6csTkTheK5yN1brS8YJemkmsQ5g8hc1HW
+ TNoElSjHZz36bTzOx4X6TqUA/lCAbSRtdXRYxo2+wdHys7oyh0ReQY2Ri
+ 9o91+pmaDcdAIG8VemuK5j8BNFGV/Ft4klYSBT4LVtqYP4B+WxWYgRuWi
+ 1Zz47DEIEM9QCTRb9AOopoIUmznoak3V06qJfCGNmf1GTe97QIKcoUhw8
+ y0dHalHmUoiv3nuumifMz2CRkOqSSvAdONkk9Y1EeIfmtj5J2BgNhh4aV
+ +Vx1Zi+5CIoeMoUYsU32Y2nfS56eAQXmbw/yXnfxHuaJk0EMd4IN+T7tI A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064159"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064159"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  19 May 2022 18:15:54 -0700
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534545"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534548"
 Received: from vcostago-mobl3.jf.intel.com ([10.24.14.84])
  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  19 May 2022 18:15:54 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: netdev@vger.kernel.org
-Date: Thu, 19 May 2022 18:15:31 -0700
-Message-Id: <20220520011538.1098888-5-vinicius.gomes@intel.com>
+Date: Thu, 19 May 2022 18:15:32 -0700
+Message-Id: <20220520011538.1098888-6-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v5 04/11] igc: Set the RX packet
- buffer size for TSN mode
+Subject: [Intel-wired-lan] [PATCH net-next v5 05/11] igc: Optimze TX buffer
+ sizes for TSN
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,73 +82,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation for supporting frame preemption, when entering TSN mode
-set the receive packet buffer to 16KB for the Express MAC, 16KB for
-the Preemptible MAC and 2KB for the BMC, according to the datasheet
-section 7.1.3.2.
+There are 64KB buffer space shared for TX and RX (including the BMC).
+We were only reserving 22KB for TX, increase each TX buffer (per
+queue) by 2KB, the total is now 30KB for TX.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_defines.h |  2 ++
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 13 +++++++++++--
- 2 files changed, 13 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 5c66b97c0cfa..f609b2dbbc28 100644
+index f609b2dbbc28..62fff53254dd 100644
 --- a/drivers/net/ethernet/intel/igc/igc_defines.h
 +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -396,6 +396,8 @@
+@@ -395,7 +395,7 @@
+ #define I225_TXPBSIZE_DEFAULT	0x04000014 /* TXPBSIZE default */
  #define IGC_RXPBS_CFG_TS_EN	0x80000000 /* Timestamp in Rx buffer */
  
- #define IGC_TXPBSIZE_TSN	0x04145145 /* 5k bytes buffer for each queue */
-+#define IGC_RXPBSIZE_TSN	0x0000f08f /* 15KB for EXP + 15KB for BE + 2KB for BMC */
-+#define IGC_RXPBSIZE_SIZE_MASK	0x0001FFFF
+-#define IGC_TXPBSIZE_TSN	0x04145145 /* 5k bytes buffer for each queue */
++#define IGC_TXPBSIZE_TSN	0x041c71c7 /* 7KB buffer for each queue + 2KB for BMC */
+ #define IGC_RXPBSIZE_TSN	0x0000f08f /* 15KB for EXP + 15KB for BE + 2KB for BMC */
+ #define IGC_RXPBSIZE_SIZE_MASK	0x0001FFFF
  
- #define IGC_DTXMXPKTSZ_TSN	0x19 /* 1600 bytes of max TX DMA packet size */
- #define IGC_DTXMXPKTSZ_DEFAULT	0x98 /* 9728-byte Jumbo frames */
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 270a08196f49..40a730f8b3f3 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -54,12 +54,17 @@ static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
--	u32 tqavctrl;
-+	u32 tqavctrl, rxpbs;
- 	int i;
- 
- 	wr32(IGC_TXPBS, I225_TXPBSIZE_DEFAULT);
- 	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_DEFAULT);
- 
-+	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
-+	rxpbs |= I225_RXPBSIZE_DEFAULT;
-+
-+	wr32(IGC_RXPBS, rxpbs);
-+
- 	tqavctrl = rd32(IGC_TQAVCTRL);
- 	tqavctrl &= ~(IGC_TQAVCTRL_TRANSMIT_MODE_TSN |
- 		      IGC_TQAVCTRL_ENHANCED_QAV);
-@@ -83,7 +88,7 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 tqavctrl, baset_l, baset_h;
--	u32 sec, nsec, cycle;
-+	u32 sec, nsec, cycle, rxpbs;
- 	ktime_t base_time, systim;
- 	int i;
- 
-@@ -94,6 +99,10 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
- 	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
- 
-+	rxpbs = rd32(IGC_RXPBS) & ~IGC_RXPBSIZE_SIZE_MASK;
-+	rxpbs |= IGC_RXPBSIZE_TSN;
-+	wr32(IGC_RXPBS, rxpbs);
-+
- 	tqavctrl = rd32(IGC_TQAVCTRL);
- 	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
- 	wr32(IGC_TQAVCTRL, tqavctrl);
 -- 
 2.35.3
 
