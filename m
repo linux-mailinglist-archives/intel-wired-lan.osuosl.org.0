@@ -1,67 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D0D452E1AB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:24 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C83E252E1A9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 03:16:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3E2CF8453A;
-	Fri, 20 May 2022 01:16:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 72FED60E53;
+	Fri, 20 May 2022 01:16:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CpNWyGv338aD; Fri, 20 May 2022 01:16:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XuINe_AJtJQp; Fri, 20 May 2022 01:16:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5585684521;
-	Fri, 20 May 2022 01:16:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82A8B60C24;
+	Fri, 20 May 2022 01:16:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1BFCF1BF30C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 114B71BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7F3B084534
+ by smtp2.osuosl.org (Postfix) with ESMTP id 825EC40488
  for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QmHdwRvSpyjF for <intel-wired-lan@lists.osuosl.org>;
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id R1ulPwPwIRDV for <intel-wired-lan@lists.osuosl.org>;
  Fri, 20 May 2022 01:15:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D8CE78451D
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EFF8A403FD
  for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 01:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1653009356; x=1684545356;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=GvvOSRP3CzY8wou3e94OjmzfEqmZRYgWGPqWk9AlwqA=;
- b=ZB5JiVNw8R35rjCpDbh9MmC6csTkTheK5yN1brS8YJemkmsQ5g8hc1HW
- TNoElSjHZz36bTzOx4X6TqUA/lCAbSRtdXRYxo2+wdHys7oyh0ReQY2Ri
- 9o91+pmaDcdAIG8VemuK5j8BNFGV/Ft4klYSBT4LVtqYP4B+WxWYgRuWi
- 1Zz47DEIEM9QCTRb9AOopoIUmznoak3V06qJfCGNmf1GTe97QIKcoUhw8
- y0dHalHmUoiv3nuumifMz2CRkOqSSvAdONkk9Y1EeIfmtj5J2BgNhh4aV
- +Vx1Zi+5CIoeMoUYsU32Y2nfS56eAQXmbw/yXnfxHuaJk0EMd4IN+T7tI A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064159"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064159"
+ bh=tPQE+Qlryk7avBL9Z3AbOFS6jfrdTs4+uu3FoJxBUqg=;
+ b=grzKVIl/whKPRUfuIxO3DKMx1DTun7Z13bp673UKtj45mQS3nEaRWAIY
+ WosvpwjN6UaofbVZvvsQMHmRK3uvHz6gxaSAlCrO0c+ywG6yysK7EdAdH
+ belui1OrtLQp3JPjGJQS5tptYXpsrKPW5Pr+z2Lkb+0aEOiyig217iBpc
+ IRy2afqB646SgbMWI9yALE1aR+2feNDZELHCSQlMTPxecNfGOvEpnxGXl
+ 94G4XdQWWfgCRTNjA3dnehrUdTBwCj7yUCglEAQraSAl+F9ldIefa0wdq
+ b+vt42Nbp13IJPKNBX+H1U4M7oPZDD/2qsQW4lYtXQKXpZwHsaJHTyJM5 A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="333064161"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="333064161"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  19 May 2022 18:15:54 -0700
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534548"
+X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="570534552"
 Received: from vcostago-mobl3.jf.intel.com ([10.24.14.84])
  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  19 May 2022 18:15:54 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: netdev@vger.kernel.org
-Date: Thu, 19 May 2022 18:15:32 -0700
-Message-Id: <20220520011538.1098888-6-vinicius.gomes@intel.com>
+Date: Thu, 19 May 2022 18:15:33 -0700
+Message-Id: <20220520011538.1098888-7-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v5 05/11] igc: Optimze TX buffer
- sizes for TSN
+Subject: [Intel-wired-lan] [PATCH net-next v5 06/11] igc: Add support for
+ receiving errored frames
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,28 +84,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There are 64KB buffer space shared for TX and RX (including the BMC).
-We were only reserving 22KB for TX, increase each TX buffer (per
-queue) by 2KB, the total is now 30KB for TX.
+While developing features that require sending potencially ill formed
+frames, it is useful being able to receive them on the other side.
+
+The driver already had all the pieces in place to support that, all
+that was missing was put the flag in the list of supported features.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index f609b2dbbc28..62fff53254dd 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -395,7 +395,7 @@
- #define I225_TXPBSIZE_DEFAULT	0x04000014 /* TXPBSIZE default */
- #define IGC_RXPBS_CFG_TS_EN	0x80000000 /* Timestamp in Rx buffer */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index bcbf35b32ef3..5dd7140bac82 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6318,6 +6318,7 @@ static int igc_probe(struct pci_dev *pdev,
  
--#define IGC_TXPBSIZE_TSN	0x04145145 /* 5k bytes buffer for each queue */
-+#define IGC_TXPBSIZE_TSN	0x041c71c7 /* 7KB buffer for each queue + 2KB for BMC */
- #define IGC_RXPBSIZE_TSN	0x0000f08f /* 15KB for EXP + 15KB for BE + 2KB for BMC */
- #define IGC_RXPBSIZE_SIZE_MASK	0x0001FFFF
- 
+ 	/* copy netdev features into list of user selectable features */
+ 	netdev->hw_features |= NETIF_F_NTUPLE;
++	netdev->hw_features |= NETIF_F_RXALL;
+ 	netdev->hw_features |= NETIF_F_HW_VLAN_CTAG_TX;
+ 	netdev->hw_features |= NETIF_F_HW_VLAN_CTAG_RX;
+ 	netdev->hw_features |= netdev->features;
 -- 
 2.35.3
 
