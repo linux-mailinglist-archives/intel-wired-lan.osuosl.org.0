@@ -1,71 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4178E52E7F7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 10:46:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B37E52E844
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 May 2022 11:06:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9AD244110B;
-	Fri, 20 May 2022 08:46:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9FAA084663;
+	Fri, 20 May 2022 09:06:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8XqscrHyCGht; Fri, 20 May 2022 08:46:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BtsuySGtMZaZ; Fri, 20 May 2022 09:06:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9F54741101;
-	Fri, 20 May 2022 08:46:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 90EDB84607;
+	Fri, 20 May 2022 09:06:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DB0C61BF363
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 08:46:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6E1EE1BF405
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 09:06:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C65258466F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 08:46:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5B85384607
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 09:06:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lRVGMz5vVyqj for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 May 2022 08:46:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9B92184675
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 08:46:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653036366; x=1684572366;
- h=from:to:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=g1eEt045U5w6ey+rseDXoBhP2rjME17IYgRqqmnAyws=;
- b=L/PcCfWnxqboCTDXgw1CIgIpU5/IxbhibAh/dQH1qMOsG1wjSKvGjY4y
- 2SVWgbh1/hOb1+xWXFCA5166gnxiKvQZiLPMgfOLvH3PL2nQNJdqFitma
- CFgat8Gqn8bZd90jZAmdw20UZHATXznXaTvdgCLGN/iwl8p8f8nGUpRmt
- IKmh6xDSsFEvgkLXDu1o2azEDDblFclMMAAT8nr52wrJbftBALTlyjjVe
- 3qj5Ra2Pf+pYx96OQU2TzDUNjksQp2yOjrhngcz++VZIQLOOciEI9T+TB
- I7pbdKQKIHiuo30TCvr5hnIXLa2qJfRVXbiF0lqrxbrfnKSKbutFKPzyz w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="270125836"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="270125836"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2022 01:46:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="701648922"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga004.jf.intel.com with ESMTP; 20 May 2022 01:46:03 -0700
-Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
- [172.22.229.137])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 24K8k2cU009798
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 09:46:02 +0100
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 20 May 2022 10:45:27 +0200
-Message-Id: <20220520084527.123885-1-wojciech.drewek@intel.com>
-X-Mailer: git-send-email 2.31.1
+ with ESMTP id oJEYGmANAnjS for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 May 2022 09:06:16 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from EUR04-HE1-obe.outbound.protection.outlook.com
+ (mail-eopbgr70052.outbound.protection.outlook.com [40.107.7.52])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 61C6883EEB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 May 2022 09:06:16 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=K4R6K27h6wICkppuWtZiCaN40snBAfyOyBJotaVGyGX/niGJZiTjzLUS1msjDmoqwBBDiBmL70oBXHxNrCXb7rMyPIPUg5icQ3KUf6eIHg94xlTk0EL6QLycoeysrldwBrvpCokOkQgLor16EY3p+rxauvY1ZVMFcEPJxtLqW7c/q08TlaUHtKQnM2WLN/ClphiMrc5IrLO2KwShwx03FXeZ5E/KhwrRYKkQxI4zohJDTpBP0kh6UJsDVBZXe0qbQbFKjbzRkXYXw1LGQ80Jso4XA0IBk20zZsX7+mcsMORMCWDxDhiXgPZpd2nKGXyoLwW+xEi1Ai+yco3Cp/MvTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3ADk6v+4182BpuHknvF3Npcmr9hcnY1ePkFQQqAQuJs=;
+ b=KXX/j3l2L0HvsV1uQM4O8V46VSqFBGnQHR6yOqrV1mHnx/TDD4b7flHUABpg+/hTYqeaW6LCdv+83mi8U3NT0ImbvYSYaYbJpZhHhtyJtRq9+44fjBi9aNNzw4uHToJjsyuD4Ht9REAfgd+x5jw595GGEJFKCKbVQrYdWyzvM80GV3W2M3IX0Io6Yg0u9Yu1//zO/XSj59ev2KCtDGLCRPK+Ld9+gKZM3KwbSf6enIr9xluGzircC3yHpvBjrmZRVcxgt16EiZf3IU2M879aP8vIqbQVj/fpT3QE3JiBzG0YAgor8OxgcuakTaFGVaCc1ritYfDuMS79cYTVC0HUag==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3ADk6v+4182BpuHknvF3Npcmr9hcnY1ePkFQQqAQuJs=;
+ b=EIvGgTTzxnJHUDFPNeFxtC8PxTzLHPkIrYiFd9+TOIy+eKxEXNppt5PFu9mWJiV4nwXGAF3QYb3uGZGZ1LWlStkdAwk5np8JlfxIbJnr2dgGlJOX9FZsnWZqnICD/9BnVCVRuLrA8W15xDTW7ENWTvSAU/H+x3naxudlUGA+mYU=
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
+ by DB8PR04MB6827.eurprd04.prod.outlook.com (2603:10a6:10:f8::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.17; Fri, 20 May
+ 2022 09:06:13 +0000
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::fd1f:cc16:dafe:4bf5]) by VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::fd1f:cc16:dafe:4bf5%5]) with mapi id 15.20.5250.014; Fri, 20 May 2022
+ 09:06:12 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Thread-Topic: [PATCH net-next v5 01/11] ethtool: Add support for configuring
+ frame preemption
+Thread-Index: AQHYa+cuwI/D9jUrrkKPkYqGQR9M/K0neeSA
+Date: Fri, 20 May 2022 09:06:12 +0000
+Message-ID: <20220520090611.5gcguajnucyj7uli@skbuf>
+References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
+ <20220520011538.1098888-2-vinicius.gomes@intel.com>
+In-Reply-To: <20220520011538.1098888-2-vinicius.gomes@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 5b397739-d748-46c6-bba0-08da3a3ffcf5
+x-ms-traffictypediagnostic: DB8PR04MB6827:EE_
+x-microsoft-antispam-prvs: <DB8PR04MB68273B2C7F528DD3BA51C77CE0D39@DB8PR04MB6827.eurprd04.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: eYu1OUoI49uFOsDPT1NiP0zzhBXku6420q89nk5HqSDjoTeDrNjudkyand7siaSkcEF7242RHM7BYXcNlDjAMkb5DG9RaHNoeWbsjlMeOHD+9sA6SOCLOgiEONkz1JkXseAnaO8Xr8O+HlidqMaJhje1DnVFDsXXY5+uoL2WnFgRP4Yw3ljUFCKY1fm9z6PINQQevS1C7unzfHZsVe0Ry6w0wxlJ+XdYjm7oN8Y242lFNNV5BOA4EdNjWo4jRzCYuHGU2Iu7KPRcUU7O6hZhRHm1xiFFQMZhpg1pOlOO9SYjweC9y2Zb0xQaRS+LJYk7K0Ner/lPKO12XQ+I1egeq547798xY5RC9CfyyKZ7NvsoFKIC6PdtH0nNwhNA7F9uykVe+SAAKlhl/tzzA8CJSY0gFRPcvxo+7jkqKAx5XLcakWNqiBWWUphmr8I2HRt1cBicGXk3GDJ2Q6LcXUUqFCgM2sxpxJ3u99m9NkNnA3dBFJ646+/89oD0chb8cZi8tNcOgqfJUgqRsttCsbbFZRC1jJtktoU/s6OoZjrxzQtponO9bG0RcAhAkJXHjXFyJHuaHUNcAW7kyioIXcImuiVtLXsfsO2uBL9EoHAC7C6nsQHdAIFtNrRUYxgXfotjWcRthHDx8uIgH7gMnNrV1qPseAYR9tnQVmSeRnqNfbbGK7WMzfcZE2tPwAJq0ZX/XxEiS1IwKQCHQ6EANo0qsw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(7916004)(366004)(316002)(186003)(8936002)(122000001)(508600001)(6506007)(1076003)(6916009)(54906003)(33716001)(83380400001)(4326008)(38070700005)(38100700002)(66946007)(71200400001)(64756008)(91956017)(66446008)(66556008)(66476007)(76116006)(8676002)(26005)(6486002)(44832011)(86362001)(6512007)(9686003)(5660300002)(2906002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?I77QrgKXDy3h1FQHwh9AgWYFChTGZnkanfaK6csPAOD3xLE0TbsyOst5nBDM?=
+ =?us-ascii?Q?70EgZZw6UGZaw24rdgppo/3Uh5nCEZFxBcvRQcPWA/hU76V4SLOGXqxjbIyQ?=
+ =?us-ascii?Q?yTdFzCcizlP+n+2kI8/GqyL88QALxmYSr9lYn42TOK6Zj/fquT1UQZTozUKC?=
+ =?us-ascii?Q?xFikxvAmFS/FIzyjypKckDOn5+dHysjA9vfyeBNHm246wAbbefFCGVbB2X7x?=
+ =?us-ascii?Q?NUgkInp8UNFpFI1fmguRhKWey9ubI6u7sajs6EUkVOGARaOKdojlZ7Y7ISFz?=
+ =?us-ascii?Q?EYUeexFcB3CxIfMGR+souWmRwuBroPP2s9RcY+4VJde0LsdAF8PePOkmg4T7?=
+ =?us-ascii?Q?B8h93BhFkrEB2dhvUB7Kg6h2N93k16VtmHeeLl0HTWx2x1BQuWaDAlwIes1R?=
+ =?us-ascii?Q?ZjunREPWQeMIJ8URBZ6bBW3VmaNO2lDMz+NWBqCXab3XEWq3DknjK2y4sjPt?=
+ =?us-ascii?Q?L/+54twG1hZTIG7gDB5BNiYL8L768mfnyZrqOZMW9QZmPC73nS+teDnaTk8B?=
+ =?us-ascii?Q?Rjwq7yG77Sl28422/RogkeQgstw/cW6D0CryxVzlzjLMgNT/9EFT0qiKk+pH?=
+ =?us-ascii?Q?XQh0OJocrB7KJIA7971bVedQRdZAfMq+WrTzj82tA8SNKfy5480ShYqs7tl+?=
+ =?us-ascii?Q?q/OnyL30VHqD85YM622A9Zh7QKogQVrxUdDyjBQSg3E1+1W5Cr34CKLcdj1R?=
+ =?us-ascii?Q?3rhCurq+iCQkRKRL6KQ+LUu8h6FMzmKnf5/MYB944iPD3l5Mv5F8SjRB+pht?=
+ =?us-ascii?Q?TfLMKO/H/bWSLSDuCY7uXwaD2PuiOUNUi1eNX+S2JHu9RSEHft2WtFrWKezh?=
+ =?us-ascii?Q?79EzjWobPWe3OP9SURt/HETaSEnUdNGROYjr7Fn+YIJXeHOXY+SVdUWJwTkd?=
+ =?us-ascii?Q?ofyw3Z0N90+E9CsBom2nB2dDcvHga8toZbLXHWmLJ7Upep2nV44/lYg9+q57?=
+ =?us-ascii?Q?d1bv+JTgXBv2khe73zNDeWSLVU30LC9q2aPG+1aOO4cWPvvQJhQl5jj99rBj?=
+ =?us-ascii?Q?NRRtLQBpLrMjeb6gJJ2MlO0Vk82mDxCeR4GVRfazTivrXJLtzy5i4kYgTdTy?=
+ =?us-ascii?Q?hWR2PENFA/AOHE3qVr3xmWEOFFEA9h9cJM8dk5Q6acZytJjRb9XqnhPv4cRU?=
+ =?us-ascii?Q?u25Snuuem2d7udZq54af64/tktQwLDw4KMzuXj5d4ZctVxIwqajIButEMNbk?=
+ =?us-ascii?Q?POunPGVLkmF4roqUdgE1gcwuWECyHB22EhKXSHLZkHHMEYAwWS5+c+FN5L6l?=
+ =?us-ascii?Q?AvmmBmDHYUwYYVzrTsgcofJ2L/5nbd3417KcrF3B2D8IZIsh1cjhLzIanHKm?=
+ =?us-ascii?Q?GWB11/qclVmACRthimf5YTAajM1TGiWgaZF1jSIogp+slBqeWgOD4i15LFlL?=
+ =?us-ascii?Q?xlNAyKLUy/vIrhKrygc7g7/s81HTMcUyvoBEalcvYNpyHPDV/lCL489GN8GD?=
+ =?us-ascii?Q?S2LorZ/+VbWSD5pLMaMeAyVsS2OfqdOASRf3Ch5MvPAWk4PSw4wB62hEaRLk?=
+ =?us-ascii?Q?qY5fLqU9fahdRWU0qqxTdcMZq/jiUNiuT19kXpZOlakB0kcPDUtXnew0OQZ/?=
+ =?us-ascii?Q?kGrGe65pWrKaeN0IfcKFsClzznbCUXrjKwamcvckdykrRWt2wW8V9xayBapu?=
+ =?us-ascii?Q?qEzOMamqXebQBb8KuwJfkvYCWjN5vX0Hk5HrVDrpwS3O3RJBNgeZhlKqCkk8?=
+ =?us-ascii?Q?PSPKMAjYGbswZ4AhpX2qt27LnUiCPYNNMyxAldXVfLo6e1/J9lCgUNL6gQTu?=
+ =?us-ascii?Q?63YgZCXwD/PBG4RafM/6j5DuEi5V0SU=3D?=
+Content-ID: <C0F08D51A3F5C24D9FB093CBF0E397A4@eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] ice: Fix switchdev rules book keeping
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b397739-d748-46c6-bba0-08da3a3ffcf5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2022 09:06:12.7347 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: xLnsF2GSn26Wq2Epso+qShao5e0zkAQlcU7Sq2715NDFPXP1tchO6Hvk8othJIvR7ShBQO8jo2lhlCbs9JXb2Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB6827
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 01/11] ethtool: Add
+ support for configuring frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,39 +140,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
+ "jhs@mojatatu.com" <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Adding two filters with same matching criteria ends up with
-one rule in hardware with act = ICE_FWD_TO_VSI_LIST.
-In order to remove them properly we have to keep the
-information about vsi handle which is used in VSI bitmap
-(ice_adv_fltr_mgmt_list_entry::vsi_list_info::vsi_map).
+Hi Vinicius,
 
-Fixes: 0d08a441fb1a ("ice: ndo_setup_tc implementation for PF")
-Reported-by: Sridhar Samudrala<sridhar.samudrala@intel.com>
-Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 1 +
- 1 file changed, 1 insertion(+)
+On Thu, May 19, 2022 at 06:15:28PM -0700, Vinicius Costa Gomes wrote:
+> Frame preemption (described in IEEE 802.3-2018, Section 99 in
+> particular) defines the concept of preemptible and express queues. It
+> allows traffic from express queues to "interrupt" traffic from
+> preemptible queues, which are "resumed" after the express traffic has
+> finished transmitting.
+> 
+> Expose the UAPI bits for applications to enable using ethtool-netlink.
+> Also expose the kernel ethtool functions, so device drivers can
+> support it.
+> 
+> Frame preemption can only be used when both the local device and the
+> link partner support it.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 847b19f5ac0e..f216c4eca747 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -557,6 +557,7 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 	 */
- 	fltr->rid = rule_added.rid;
- 	fltr->rule_id = rule_added.rule_id;
-+	fltr->dest_vsi_handle = rule_added.vsi_handle;
- 
- exit:
- 	kfree(list);
--- 
-2.31.1
+This looks good to me. Just one comment below.
 
+> +int ethnl_set_preempt(struct sk_buff *skb, struct genl_info *info)
+> +{
+> +	struct ethnl_req_info req_info = {};
+> +	struct nlattr **tb = info->attrs;
+> +	struct ethtool_fp preempt = {};
+> +	struct net_device *dev;
+> +	bool mod = false;
+> +	int ret;
+> +
+> +	ret = ethnl_parse_header_dev_get(&req_info,
+> +					 tb[ETHTOOL_A_PREEMPT_HEADER],
+> +					 genl_info_net(info), info->extack,
+> +					 true);
+> +	if (ret < 0)
+> +		return ret;
+> +	dev = req_info.dev;
+> +
+> +	ret = -EOPNOTSUPP;
+> +	if (!dev->ethtool_ops->get_preempt ||
+> +	    !dev->ethtool_ops->set_preempt)
+> +		goto out_dev;
+> +
+> +	rtnl_lock();
+> +	ret = ethnl_ops_begin(dev);
+> +	if (ret < 0)
+> +		goto out_rtnl;
+> +
+> +	ret = dev->ethtool_ops->get_preempt(dev, &preempt);
+> +	if (ret < 0) {
+> +		GENL_SET_ERR_MSG(info, "failed to retrieve frame preemption settings");
+> +		goto out_ops;
+> +	}
+> +
+> +	ret = ethnl_update_bitset32(&preempt.preemptible_mask, PREEMPT_QUEUES_COUNT,
+> +				    tb[ETHTOOL_A_PREEMPT_PREEMPTIBLE_MASK],
+> +				    NULL, info->extack, &mod);
+> +	if (ret < 0)
+> +		goto out_ops;
+> +
+> +	ethnl_update_bool32(&preempt.enabled,
+> +			    tb[ETHTOOL_A_PREEMPT_ENABLED], &mod);
+> +	ethnl_update_u32(&preempt.add_frag_size,
+> +			 tb[ETHTOOL_A_PREEMPT_ADD_FRAG_SIZE], &mod);
+> +	ret = 0;
+> +	if (!mod)
+> +		goto out_ops;
+> +
+> +	ret = dev->ethtool_ops->set_preempt(dev, &preempt, info->extack);
+> +	if (ret < 0) {
+> +		GENL_SET_ERR_MSG(info, "frame preemption settings update failed");
+
+If you pass the extack to ->set_preempt, would you consider not
+overwriting it immediately afterwards on error?
+
+> +		goto out_ops;
+> +	}
+> +
+> +	ethtool_notify(dev, ETHTOOL_MSG_PREEMPT_NTF, NULL);
+> +
+> +out_ops:
+> +	ethnl_ops_complete(dev);
+> +out_rtnl:
+> +	rtnl_unlock();
+> +out_dev:
+> +	dev_put(dev);
+> +	return ret;
+> +}
+> -- 
+> 2.35.3
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
