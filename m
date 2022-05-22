@@ -1,135 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA76852FD7D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 May 2022 17:03:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09F88530035
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 22 May 2022 03:30:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 13A796103B;
-	Sat, 21 May 2022 15:03:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4CE254193D;
+	Sun, 22 May 2022 01:30:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kR0YacR3GYmx; Sat, 21 May 2022 15:03:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dEw4DYSsiu0u; Sun, 22 May 2022 01:30:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8364D60B96;
-	Sat, 21 May 2022 15:03:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C458441922;
+	Sun, 22 May 2022 01:30:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 002A61BF475
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 May 2022 15:03:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 210531BF3BE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 May 2022 01:30:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E21584198C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 May 2022 15:03:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0DFB841931
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 May 2022 01:30:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=nxp.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NkRbIVubVRLU for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 May 2022 15:03:08 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from EUR03-AM5-obe.outbound.protection.outlook.com
- (mail-eopbgr30062.outbound.protection.outlook.com [40.107.3.62])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 733CB424ED
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 May 2022 15:03:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=adajRGC7fVuhgja9CLaBfloafmTn+8sLSObX+0MG/f7qF/K19Ok4S97BqnY0pSYQc0YdEF1s296xS+Wiptfwz4FNcTsHd3mZgOE2x2/X2dQR6BiVVPhwOkb1M6f7xFwAFFOJRreXEsxBg22GB2y3i0WvbrrCD6cZwVNF90/wq1ZMzXF3ZqUbkPVt5mOzQhEk5bGkT9vvsMTmZOGad59WcqHn9/S/DaXzaEH3bWUMPrO+N35t6oeR+IFve3+gMtzV1Uhm99Nm3rqc21q7rJh1HISnjszeSStFwXBie2GA+Nk21jW5fTFbzfFz8TWCdcGFPRsRDkXju8wxQD9WzpJEDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QrHo5Bv+KLVGORYaxOKqKLhRIoMIMlpj23UEG5+xeO8=;
- b=Ivqw6dLV8hEnAIvaGmC1Teae+1+5wqq9ZAO+TUZGokpSMZ/LlRyFrxpn2GtdSsFjIqI8lVDqnRaYACuGRz4AlFw8nA/RVjr5sqznU0t8n6KOzIMbXcfJK+jZ16R1G73f9t4/aawZ5cbU/Xtz2uoKerhVLcas5KEtc2TzQlVmeNsfQAjTWj8eRaK7L7ptt9fVfC7Q8l1QOuOdH/3DBhYip9hx8+nJgpGyWjs3nKCEbAJYf2Lx/d7oL7qRAN9Dsmn21kqtjRoSgwPaPgjkZpjg5/98WGfdS+TNprQZv+2bMQSs/8BmAnwJAGMMQg7VwNJihZ8m5i1+dKk7rb4c7mOziQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QrHo5Bv+KLVGORYaxOKqKLhRIoMIMlpj23UEG5+xeO8=;
- b=Aw/4J/glL58DfkxeVpWHHAeJK3FZX3QqPl3LfgBE/IzmXNS385qu+VxA148wC3NAQAhHyCwpRfeF6OdWO0owx0zhSzOPFIpgPVv5QFfJIf9a1lgX6b8ZtT7oBz5HAcc3cSVzTJaC2bXYnUQW88ljue5WLipksWAkgWd+283zoSk=
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by VI1PR04MB3181.eurprd04.prod.outlook.com (2603:10a6:802:a::31) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.19; Sat, 21 May
- 2022 15:03:05 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::fd1f:cc16:dafe:4bf5]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::fd1f:cc16:dafe:4bf5%5]) with mapi id 15.20.5250.014; Sat, 21 May 2022
- 15:03:05 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Thread-Topic: [PATCH net-next v5 00/11] ethtool: Add support for frame
- preemption
-Thread-Index: AQHYa+cqehaWXK64WUeB49V4C8aceq0oW6eAgAEUSAA=
-Date: Sat, 21 May 2022 15:03:05 +0000
-Message-ID: <20220521150304.3lhpraxpssjxfhai@skbuf>
-References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
- <20220520153413.16c6830b@kernel.org>
-In-Reply-To: <20220520153413.16c6830b@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ca23daf5-e296-4b16-b73a-08da3b3b0215
-x-ms-traffictypediagnostic: VI1PR04MB3181:EE_
-x-microsoft-antispam-prvs: <VI1PR04MB3181F244D450D86B11214389E0D29@VI1PR04MB3181.eurprd04.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5F55TYUBy5A/rfr6cD8FDAYU8vfGCD2Ls/PL63XDQXIp1rJ5/a4E/tFjB5fHVfFiD5iETROjbze/DGzOEUcqnlZi17LHjbBbZSQ+MKKC7pNj+hSDGfXhICWq23aVaUibeRZYfd9EGcBc2XEJMgWb0u38LfqBDQpXH/nI+vKI1HNg5/PnU/6uw7cMwmWoM1DA5dBz+fBNRJ0qbE1FigBATcPG+onEdpQdU2Uv0u/HcpPAx1rbuPQ2qRPMblPu1ORfJ+6IkNVMV95/dcEEeNu/VkzTMj6lta65Ozev8LwTaH5t+K5/dnUzObbyeD6qy+j6xsW2KX/tvJ5ub1ImCJ9BZAVRx6wPlBXhNA6zt6o6DuZg0PbS4Or0f3sRFRjtZt4rTiJd5U6ysccHRb74nQxTpZiQTV1sVLsvTUofJhYfS1BOIs12MkbxW70XaolaUcM58hTkrNWO9djRigSQPx5HKXUSlVNWckw2BpTGlp3zIRzwpScABBKI7lDumMSusNjiALEXpCVOd3SfTAT/SPigwT39qRhxHwzfwXI5ropswlJgXkdDEsh5uUeaR9OFXOVZJZN+BwGC7aEk+VQrbSFfauYfFmE2QEzyAhOLCCI8aZ9fdM0igjfGN9MXWdt61z7zVu6n6bL6MpyXXllFcHEWD518ba72kBAAX+lEkFFkgppnuNO4pq4OogzQGa/8EJVDxM9RKZMIFXL3sFzsFsfnGQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(4636009)(366004)(122000001)(66946007)(86362001)(76116006)(64756008)(66476007)(91956017)(8676002)(4326008)(38070700005)(66446008)(66556008)(5660300002)(38100700002)(2906002)(8936002)(44832011)(316002)(508600001)(6506007)(54906003)(26005)(6512007)(9686003)(6916009)(83380400001)(71200400001)(33716001)(6486002)(186003)(1076003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?jGbukd5SXVADTVhpcLFFGls5/h3xQZ+E56ewE5QDgucORWmFOH2yh+MoX/vU?=
- =?us-ascii?Q?+R99L/4BRAFWY90TmMkU+RIg0zglE5MG9GY+NLi43WFBOcI6KENbBHO6vquV?=
- =?us-ascii?Q?z2BXKPDosa6s7mGs0RyrvUAbCdp28jdmceqxCYN9W8kG2fefInY+N1vsNoJF?=
- =?us-ascii?Q?dzzUvwLC4IqIEx5ggwjkITa8HVVylodrCexakKR/t54qLvN31x9gaEe2tzcW?=
- =?us-ascii?Q?XBHdQw1oeD3yKcobQwMtT025Zf/ROr6FAa07F6lvv//uNX5jLldtmHHeImMZ?=
- =?us-ascii?Q?Kk/tSZfOAd0DqjHlMatoxx7vD8JfCXnQL9NnxH2CqbYJqwG70p1H4N+s3uYo?=
- =?us-ascii?Q?+C8angvYaCX2oEJSJR1aeATNO4c85FRRH2CS6zUZ3RWWceKJDcavssxjN2ML?=
- =?us-ascii?Q?CF12zaJboH5wIWGpj7xRhu1fnzEP8qJUG3u7MzD/HYm2civDHSke10kZGI7l?=
- =?us-ascii?Q?sR9Gcht/YQH1hI/QD28ndiWGFpf+2QEEDAOhTsEKd01w7J5RwqWDYcpEUUhF?=
- =?us-ascii?Q?gGHEkewGDypNp4g0LIJ+U045GePJhSdX3ZYwW0loL8zDJwGZl2eWCOxBRiHc?=
- =?us-ascii?Q?WgeC2HUBrAt4DsDdTC65t1/MXXNgXAeX+M4e1yzoDnlN/I2e9OUeewJDF/UO?=
- =?us-ascii?Q?7OaGFYwnV8cCQUxL36VfOcCumCg9PhEM25huNn1vCUNiCJiAvSFlM8qPmSq5?=
- =?us-ascii?Q?Vu9W/UxjzVHmWVHc6DeK9F+/3QvGpB3g9wTUOHeht/L2UPmdX2iCl5gYL8DP?=
- =?us-ascii?Q?ueOzcH2GQ6/WUQZ+ZHdu9e+5w5hf/abZ81tCpgDmY5r7eZk0cV1xye8UppR/?=
- =?us-ascii?Q?2MQxA9R9gMMi2mjdskjV1o57fT1RFrOM0bLMsop7Bm4Gxw4jfULTizqdOM0W?=
- =?us-ascii?Q?LAV/NcM0TfaBIDkkz2z18yrBLfJJX3pkCtEbAOLaYHeUriPZn0wf79lybn5D?=
- =?us-ascii?Q?btDz+sqOwCZwJjgHylEuJFRpzpncFi+SB7z0wXuo+mIFdq2VHa6XU0ndtPfr?=
- =?us-ascii?Q?NJxd8vRit2ZIqM/QJoZOuUTdIJK6ZsITUp9S/1zaaHu4FfJhHUzPMu8trTDb?=
- =?us-ascii?Q?Yeo66wtPKAaD+6v4O9QpBTQIoAKKwnau8B+JFxSCkaIZ030bsHDuKo91UHvs?=
- =?us-ascii?Q?ruTo36EsF4iaXmn2N5paCDmMc2aN6lL5B9Mg5w8NqoG4FgPBC8tnTI5bKNw+?=
- =?us-ascii?Q?cnZwe/rgLhXd4IFfEZ+BzJUs1rInF0ee74bsrB7itZpEpHaOj9nIPAjDL5l9?=
- =?us-ascii?Q?mTXOcUNilzR3eSSYwK+C4+EI3SgTj+ExG3s/gBgrKyxXkRaCCFV4J4ZqPsgz?=
- =?us-ascii?Q?LBXIpRu9ADTIGVnbwUPSv5CdE61cUrfTq3eqmpTUq8PhOEcxppUKh4Zo6pSS?=
- =?us-ascii?Q?DrG5EeLWkBJBlRK7M8q1mB7rFW0GyLHyOuKeXEBq9apyEVIgSRXm9PzQiXQB?=
- =?us-ascii?Q?e47ioSaPA+GjQMmqkb4XeemfemrkZEPweNy/TIve0ovi1aKn3q/FXQa278uZ?=
- =?us-ascii?Q?3S01daP1zoPoDIiNYac6Xb11VZ4uYYFdtIzGb0Husvrc5VUrSCvaRr1rQFtv?=
- =?us-ascii?Q?bbIGwMrB0v7mGnL+FZKPc7F2tYwjRBpoywF+h7bSvX55sxvoE69nDgvQ/+ql?=
- =?us-ascii?Q?Cek3cmHoCuAXnB6LaXZUopMym6UtIVaB+zOy11SoiIjJImQhHgoFohNInHvf?=
- =?us-ascii?Q?1hJbehIsYywHD+1CIm3vC/e6q+259VBb8cFdkMmp0NRyIKXWI82ibC84/pfg?=
- =?us-ascii?Q?+WyNfeBE/Thl0pX0NuklRiQxmcVPCaI=3D?=
-Content-ID: <929CE2FD7CF91A47B3AC42B6C82F6679@eurprd04.prod.outlook.com>
+ with ESMTP id jzQHXSG2nIfx for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 22 May 2022 01:30:00 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BCA3941922
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 May 2022 01:29:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1653183000; x=1684719000;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=lVKPwmfJGZFHCxtVwbFEoG64+KFcs0rL65FtQDcMu8U=;
+ b=UEERGQ6SpdSc8VYwH3injtRMupl5nVpDEOSdSZOvmlzb9yUF8+7x9YOr
+ D6jn36m23IR/L4RpuuGOE3PeqcLu8dhgG7uXOhtIDhAVbOWVGr6VyGqIL
+ IgLxu8gGktprytRUgD295IjSGSnJBDHIVRgOV1H/kVGGDjipGcC+QkrPy
+ UU3txuvpasXZ0UfvT49Hrf3rqJnFUBrveaYy3HJ5EWZ9dezPio014H3kq
+ XBfvEdXxTCHJ4abSLDrMVNg7M8x1HRB+6mphHXdBPVq0iGYc9O3V6f/AT
+ BoGUbZLGCpNeokkNHy8NaS08v3sfnB6ZxqVt51sjXyMDXioidaLpklC3F g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10354"; a="272907412"
+X-IronPort-AV: E=Sophos;i="5.91,243,1647327600"; d="scan'208";a="272907412"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 May 2022 18:29:59 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,243,1647327600"; d="scan'208";a="547285562"
+Received: from lkp-server02.sh.intel.com (HELO 242b25809ac7) ([10.239.97.151])
+ by orsmga006.jf.intel.com with ESMTP; 21 May 2022 18:29:57 -0700
+Received: from kbuild by 242b25809ac7 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nsaPt-0006oi-7I;
+ Sun, 22 May 2022 01:29:57 +0000
+Date: Sun, 22 May 2022 09:29:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Wojciech Drewek <wojciech.drewek@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <202205220932.IobcFqRE-lkp@intel.com>
+References: <20220520084527.123885-1-wojciech.drewek@intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ca23daf5-e296-4b16-b73a-08da3b3b0215
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2022 15:03:05.0277 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7Ud28JMuMOM2AK/53JNYRROVhRhtkR8k6nZ54hGpq+QXGs/Z0aq3jdIXGspGwWwz6wxzQhWAo67iyD5mibi4RQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB3181
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 00/11] ethtool: Add
- support for frame preemption
+Content-Disposition: inline
+In-Reply-To: <20220520084527.123885-1-wojciech.drewek@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix switchdev rules book
+ keeping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,173 +78,130 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "jiri@resnulli.us" <jiri@resnulli.us>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Po Liu <po.liu@nxp.com>,
- "jhs@mojatatu.com" <jhs@mojatatu.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "boon.leong.ong@intel.com" <boon.leong.ong@intel.com>,
- "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jakub,
+Hi Wojciech,
 
-On Fri, May 20, 2022 at 03:34:13PM -0700, Jakub Kicinski wrote:
-> On Thu, 19 May 2022 18:15:27 -0700 Vinicius Costa Gomes wrote:
-> > Changes from v4:
-> >  - Went back to exposing the per-queue frame preemption bits via
-> >    ethtool-netlink only, via taprio/mqprio was seen as too much
-> >    trouble. (Vladimir Oltean)
-> >  - Fixed documentation and code/patch organization changes (Vladimir
-> >    Oltean).
-> 
-> First of all - could you please, please, please rev these patches more
-> than once a year? It's really hard to keep track of the context when
-> previous version was sent in Jun 2021 :/
+Thank you for the patch! Yet something to improve:
 
-It would have been nice if Vinicius would have posted these more than
-once a year. But let's not throw stones at each other, I'm sure everyone
-is doing their best ;) These are new specs, their usefulness in the Real
-World is still being evaluated, and you shouldn't underestimate the
-difficulty of exposing standard Linux interfaces for pre-standard or
-first-generation hardware. Even the mistakes I may be making in my
-interpretation of the spec below are in good faith (i.e. if I'm wrong
-it's because I'm stupid, not because I'm interested in leaning the
-implementation towards an interface that's more conventient for the
-hardware I'm working with).
+[auto build test ERROR on net/master]
 
+url:    https://github.com/intel-lab-lkp/linux/commits/Wojciech-Drewek/ice-Fix-switchdev-rules-book-keeping/20220520-164759
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git 9b80ccda233fa6c59de411bf889cc4d0e028f2c7
+config: i386-debian-10.3-kselftests (https://download.01.org/0day-ci/archive/20220522/202205220932.IobcFqRE-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-1) 11.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/e04c52f89a78dfae78ac79a71f0c92df8c409146
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Wojciech-Drewek/ice-Fix-switchdev-rules-book-keeping/20220520-164759
+        git checkout e04c52f89a78dfae78ac79a71f0c92df8c409146
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/gpu/drm/i915/ drivers/net/ethernet/intel/ice/
 
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-> I disagree that queue mask belongs in ethtool. It's an attribute of 
-> a queue and should be attached to a queue.
+All errors (new ones prefixed by >>):
 
-Sure, you have very strong reasons to disagree with that statement, if
-only the premise were true. But you have to understand that IEEE 802.1Q
-does not talk about preemptible queues, but about preemptible priorities.
-Here:
-
-| 6.7.1 Support of the ISS by IEEE Std 802.3 (Ethernet)
-| 
-| For priority values that are identified in the frame preemption status table
-| (6.7.2) as preemptible, frames that are selected for transmission shall be
-| transmitted using the pMAC service instance, and for priority values that are
-| identified in the frame preemption status table as express, frames that are
-| selected for transmission shall be transmitted using the eMAC service instance.
-| In all other respects, the Port behaves as if it is supported by a single MAC
-| service interface. In particular, all frames received by the Port are treated
-| as if they were received on a single MAC service interface regardless of
-| whether they were received on the eMAC service interface or the pMAC service
-| interface, except with respect to frame preemption.
-| 
-| 6.7.2 Frame preemption
-| If the Port supports frame preemption, then a value of frame preemption status
-| is assigned to each value of priority via a frame preemption status table. The
-| possible values of frame preemption status are express or preemptible.
-| The frame preemption status table can be changed by management as described in
-| 12.30.1.1. The default value of frame preemption status is express for all
-| priority values.
-
-For context, I probably need to point out the distinction that the spec
-makes between a priority and a traffic class.
-
-A priority is a number assigned to a packet based on the VLAN PCP using
-the rules in clause 6.9.3 Priority Code Point encoding. In Linux, it is
-more or less equivalent to skb->priority.
-
-A traffic class, on the other hand, is defined as basically synonimous
-with a TX priority queue, as follows:
-
-| 3.268 traffic class: A classification used to expedite transmission of frames
-| generated by critical or time-sensitive services. Traffic classes are numbered
-| from zero through N-1, where N is the number of outbound queues associated with
-| a given Bridge Port, and 1 <= N <= 8, and each traffic class has a one-to-one
-| correspondence with a specific outbound queue for that Port. Traffic class 0
-| corresponds to nonexpedited traffic; nonzero traffic classes correspond to
-| expedited classes of traffic. A fixed mapping determines, for a given priority
-| associated with a frame and a given number of traffic classes, what traffic
-| class will be assigned to the frame.
-
-A priority is translated into a traffic class using Table 8-5:
-Recommended priority to traffic class mappings, which in Linux would be
-handled using the tc-mqprio "map".
-
-But attention, a priority TX queue is not the same as a netdev TX queue,
-but rather the same as a tc-mqprio traffic class (i.e. when you specify
-"queues count@offset" to mqprio, from Linux perspective there are "count"
-queues, from 802.1Q perspective there is only the "offset" queue (or TC).
-This is because we may have per-CPU queues, etc.
-
-This is even spelled out in this note:
-
-| NOTE 3 - A queue in this context is not necessarily a single FIFO data structure.
-| A queue is a record of all frames of a given traffic class awaiting
-| transmission on a given Bridge Port. The structure of this record is not
-| specified. The transmission selection algorithm (8.6.8) determines which
-| traffic class, among those classes with frames available for transmission,
-| provides the next frame for transmission. The method of determining which frame
-| within a traffic class is the next available frame is not specified beyond
-| conforming to the frame ordering requirements of this subclause. This allows a
-| variety of queue structures such as a single FIFO, or a set of FIFOs with one
-| for each pairing of ingress and egress ports (i.e., Virtual Output Queuing), or
-| a set of FIFOs with one for each VLAN or priority, or hierarchical structures.
-
-I'm not sure how much of this was already clear and how much wasn't.
-I apologize if I'm not bringing new info to the table. I just want to
-point out what a "queue" is, and what a "priority" is.
+   drivers/net/ethernet/intel/ice/ice_tc_lib.c: In function 'ice_eswitch_add_tc_fltr':
+>> drivers/net/ethernet/intel/ice/ice_tc_lib.c:527:13: error: 'struct ice_tc_flower_fltr' has no member named 'dest_vsi_handle'
+     527 |         fltr->dest_vsi_handle = rule_added.vsi_handle;
+         |             ^~
 
 
+vim +527 drivers/net/ethernet/intel/ice/ice_tc_lib.c
 
-> The DCBNL parallel is flawed IMO because pause generation is Rx, not
-> Tx. There is no Rx queue in Linux, much less per-prio.
+   452	
+   453	static int
+   454	ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
+   455	{
+   456		struct ice_tc_flower_lyr_2_4_hdrs *headers = &fltr->outer_headers;
+   457		struct ice_adv_rule_info rule_info = { 0 };
+   458		struct ice_rule_query_data rule_added;
+   459		struct ice_hw *hw = &vsi->back->hw;
+   460		struct ice_adv_lkup_elem *list;
+   461		u32 flags = fltr->flags;
+   462		int lkups_cnt;
+   463		int ret;
+   464		int i;
+   465	
+   466		if (!flags || (flags & ICE_TC_FLWR_FIELD_ENC_SRC_L4_PORT)) {
+   467			NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported encap field(s)");
+   468			return -EOPNOTSUPP;
+   469		}
+   470	
+   471		lkups_cnt = ice_tc_count_lkups(flags, headers, fltr);
+   472		list = kcalloc(lkups_cnt, sizeof(*list), GFP_ATOMIC);
+   473		if (!list)
+   474			return -ENOMEM;
+   475	
+   476		i = ice_tc_fill_rules(hw, flags, fltr, list, &rule_info, NULL);
+   477		if (i != lkups_cnt) {
+   478			ret = -EINVAL;
+   479			goto exit;
+   480		}
+   481	
+   482		/* egress traffic is always redirect to uplink */
+   483		if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS)
+   484			fltr->dest_vsi = vsi->back->switchdev.uplink_vsi;
+   485	
+   486		rule_info.sw_act.fltr_act = fltr->action.fltr_act;
+   487		if (fltr->action.fltr_act != ICE_DROP_PACKET)
+   488			rule_info.sw_act.vsi_handle = fltr->dest_vsi->idx;
+   489		/* For now, making priority to be highest, and it also becomes
+   490		 * the priority for recipe which will get created as a result of
+   491		 * new extraction sequence based on input set.
+   492		 * Priority '7' is max val for switch recipe, higher the number
+   493		 * results into order of switch rule evaluation.
+   494		 */
+   495		rule_info.priority = 7;
+   496	
+   497		if (fltr->direction == ICE_ESWITCH_FLTR_INGRESS) {
+   498			rule_info.sw_act.flag |= ICE_FLTR_RX;
+   499			rule_info.sw_act.src = hw->pf_id;
+   500			rule_info.rx = true;
+   501		} else {
+   502			rule_info.sw_act.flag |= ICE_FLTR_TX;
+   503			rule_info.sw_act.src = vsi->idx;
+   504			rule_info.rx = false;
+   505			rule_info.flags_info.act = ICE_SINGLE_ACT_LAN_ENABLE;
+   506			rule_info.flags_info.act_valid = true;
+   507		}
+   508	
+   509		/* specify the cookie as filter_rule_id */
+   510		rule_info.fltr_rule_id = fltr->cookie;
+   511	
+   512		ret = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info, &rule_added);
+   513		if (ret == -EEXIST) {
+   514			NL_SET_ERR_MSG_MOD(fltr->extack, "Unable to add filter because it already exist");
+   515			ret = -EINVAL;
+   516			goto exit;
+   517		} else if (ret) {
+   518			NL_SET_ERR_MSG_MOD(fltr->extack, "Unable to add filter due to error");
+   519			goto exit;
+   520		}
+   521	
+   522		/* store the output params, which are needed later for removing
+   523		 * advanced switch filter
+   524		 */
+   525		fltr->rid = rule_added.rid;
+   526		fltr->rule_id = rule_added.rule_id;
+ > 527		fltr->dest_vsi_handle = rule_added.vsi_handle;
+   528	
+   529	exit:
+   530		kfree(list);
+   531		return ret;
+   532	}
+   533	
 
-First of all: we both know that PFC is not only about RX, right? :) Here:
-
-| 8.6.8 Transmission selection
-| In a port of a Bridge or station that supports PFC, a frame of priority
-| n is not available for transmission if that priority is paused (i.e., if
-| Priority_Paused[n] is TRUE (see 36.1.3.2) on that port.
-| 
-| NOTE 1 - Two or more priorities can be combined in a single queue. In
-| this case if one or more of the priorities in the queue are paused, it
-| is possible for frames in that queue not belonging to the paused
-| priority to not be scheduled for transmission.
-| 
-| NOTE 2 - Mixing PFC and non-PFC priorities in the same queue results in
-| non-PFC traffic being paused causing congestion spreading, and therefore
-| is not recommended.
-
-And that's kind of my whole point: PFC is per _priority_, not per
-"queue"/"traffic class". And so is frame preemption (right below, same
-clause). So the parallel isn't flawed at all. The dcbnl-pfc isn't in tc
-for a reason, and that isn't because we don't have RX netdev queues...
-And the reason why dcbnl-pfc isn't in tc is the same reason why ethtool
-frame preemption shouldn't, either.
-
-| In a port of a Bridge or station that supports frame preemption, a frame
-| of priority n is not available for transmission if that priority is
-| identified in the frame preemption status table (6.7.2) as preemptible
-| and either the holdRequest object (12.30.1.5) is set to the value hold,
-| or the transmission of a prior preemptible frame has yet to complete
-| because it has been interrupted to allow the transmission of an express
-| frame.
-
-So since the managed objects for frame preemption are stipulated by IEEE
-per priority:
-
-| The framePreemptionStatusTable (6.7.2) consists of 8
-| framePreemptionAdminStatus values (12.30.1.1.1), one per priority.
-
-I think it is only reasonable for Linux to expose the same thing, and
-let drivers do the priority to queue or traffic class remapping as they
-see fit, when tc-mqprio or tc-taprio or other qdiscs that change this
-mapping are installed (if their preemption hardware implementation is
-per TC or queue rather than per priority). After all, you can have 2
-priorities mapped to the same TC, but still have one express and one
-preemptible. That is to say, you can implement preemption even in single
-"queue" devices, and it even makes sense.
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
