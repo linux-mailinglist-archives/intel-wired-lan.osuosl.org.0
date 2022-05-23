@@ -2,131 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 530435315F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 May 2022 22:32:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45B33531DCC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 May 2022 23:31:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD5D061136;
-	Mon, 23 May 2022 20:32:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E2C5761151;
+	Mon, 23 May 2022 21:31:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U9dmJOjj0q2a; Mon, 23 May 2022 20:32:25 +0000 (UTC)
+	with ESMTP id 6gwkUu_xcPoY; Mon, 23 May 2022 21:31:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9310460F1F;
-	Mon, 23 May 2022 20:32:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C8D2E6114A;
+	Mon, 23 May 2022 21:31:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D4A661BF29C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 20:32:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C26D31BF299
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 21:31:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C08CD60F1F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 20:32:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AEDF1419E3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 21:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PCq9OWvTGGW7 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 May 2022 20:32:19 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from EUR04-VI1-obe.outbound.protection.outlook.com
- (mail-eopbgr80083.outbound.protection.outlook.com [40.107.8.83])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7734F60E43
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 20:32:19 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jBwZASFXxBNQbG81847nezfo8J1GccohlCV8shdw+epdK62tcZwbSm443h7JBGLhZx8m3VrpqrTfQTzrlSnGA9jmq58vmxnqXbOOheX1h8XHeO8ate1t+0fTc/grak+Ggl163m3joubFC3+LCpJsXCwZZRQg/JRGYuKXOAK7pxqP/rghSpMWtwcoZYnfz/Yy7XR+hYReTc1jZ5sIrlpemlPaCC16xzwiI0DRO+mHuIRL0rET3yB1UUGNBy8x/7VjtuzDq+2wKv44SLHrQi0D3sPC6qncqWfkANjzQWcKAVCaFwIBDCqgOo88VcjbDuyAikIh+84p105Wwm7KQTyE3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mNsdLmYZpgqM86cKtjbz9poU0v+eBJLaQbGnevK609s=;
- b=hLpdQpjoNjeyBefDCS6tQYiiP3w7Ti+N/tP/YwNweBiGsqL7xJwKdBnl/htaUUJKtknrU/nxY52mtXUNx6IhmWiTIwnrDs7zxrNWK2QBrcSacDv29Ved6Bs6kN8d1pCUjO5cTMymp316vUtuhEXyQqBFrTxl21C5UCR3me7CU4MCRAVYh1BsSIVwWorX0KujhG4utY9d9bOnzj6elkKVS+7WwWYIyXd4ZVxuAu7PH+FJdyaEbpE4ZqlmR/mAa9xTucFibanooqvwV98YDstrFPQW8ZVbgSUYgwsHU77Uf1+dIOk5QCqZHje1AVN//3U+wMX6TmUWDE1cEL7Bp/GBiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mNsdLmYZpgqM86cKtjbz9poU0v+eBJLaQbGnevK609s=;
- b=OEFTr3IVZG3y38EQzdVWtU3QK3kgWpHWS+9hUJM3HhUvuGjDiPebRWoajcp+O2gvfhwon2ES3pXC0xk6ID8fyvvg1YhmXG3fjwCctmGTjas7ddJUFvPh3iYniJVzX/SCsP8c9+b6mDYYY89RRNzgFSIvxqOCgxr0R4YeQK4dRI0=
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by DB3PR0402MB3865.eurprd04.prod.outlook.com (2603:10a6:8:12::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.22; Mon, 23 May
- 2022 20:32:15 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::fd1f:cc16:dafe:4bf5]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::fd1f:cc16:dafe:4bf5%5]) with mapi id 15.20.5273.022; Mon, 23 May 2022
- 20:32:15 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Thread-Topic: [PATCH net-next v5 00/11] ethtool: Add support for frame
- preemption
-Thread-Index: AQHYa+cqehaWXK64WUeB49V4C8aceq0oW6eAgAEUSACAA3WRAIAACxEA
-Date: Mon, 23 May 2022 20:32:15 +0000
-Message-ID: <20220523203214.ooixl3vb5q6cgwfq@skbuf>
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zKgA0pqYi59t for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 May 2022 21:31:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2B631419DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 21:31:21 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 54679B8162F;
+ Mon, 23 May 2022 21:31:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BAFDC385A9;
+ Mon, 23 May 2022 21:31:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1653341477;
+ bh=i9VoQMakoAqQtKbMqPkGExlEwCTN9b+YwmzR3Re+St8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=qHod3t0/7//6GxfwMabJOYAw9M7sxEnJSNTKYvm5CpcnYg9G3ewwEJ3Ar0WL1FGUO
+ 9UGgaRzBPjfqdD0tQBh/7yDfZtQGnYCtvgTxz1Nz8jlEHFsjX338pB+iAPLsh2GWg9
+ nkNA3X6t4BpsS5+wI3yu8deS0XRjTXmOdY40JjSaeV4kGU5w4lncAbUOZJI2+j0gAk
+ xM04Zytvv9edfcVHK7qyQYInjg4IZXcsAUuqjGis2KwCu7LvqGG0azEA7k2M9kDeUD
+ OxSk0bZVeWBrDwE5TpHYrLT5wRgz+csfP6J7iKR3sfD/onDSZDMJnvMkKfsUbojwuu
+ cvCFOLP5WBIgA==
+Date: Mon, 23 May 2022 14:31:16 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Message-ID: <20220523143116.47df6b34@kernel.org>
+In-Reply-To: <20220523203214.ooixl3vb5q6cgwfq@skbuf>
 References: <20220520011538.1098888-1-vinicius.gomes@intel.com>
- <20220520153413.16c6830b@kernel.org> <20220521150304.3lhpraxpssjxfhai@skbuf>
+ <20220520153413.16c6830b@kernel.org>
+ <20220521150304.3lhpraxpssjxfhai@skbuf>
  <20220523125238.6f73b9f5@kernel.org>
-In-Reply-To: <20220523125238.6f73b9f5@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 15b96777-206b-4408-6cd0-08da3cfb5329
-x-ms-traffictypediagnostic: DB3PR0402MB3865:EE_
-x-microsoft-antispam-prvs: <DB3PR0402MB38653EBC77EAA59182357C2FE0D49@DB3PR0402MB3865.eurprd04.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: h2lmBiw01fCYUeAcgHyXlgHpjA8NRO6QlWCQUrVPZrJfdgB5nIIo+MdSohNmJXrLbnj8pdRAK8vIUK1cDTNUt8nlKUhYbJ2P6xgU1Tbg21iNFhPUHQ+WpsQOEvsZdciXGnteCqA7Nt1WXL/G+cpfkcCJvKtjmQkRjoMsJkvpS++J/b5ZTCnyI479Gk1aaQR6xT6HHb+r66d6KOL26tc9HLqtVLrOju8jcJwhzoevRt9eraV5tmmV1x1PB8AyLqYKKpriv4u8BGBuHfEx/I7n4HaRm81sNw45r50BNaVnoZwmlQcHsfHVYUFFPqqo0zhT2s5gJ/16SUwo5msOXVaVyszl2mvuw/I4zgbiY275JdJJC9/WszpPThqROx0i5uMREeqZz3yDdaGKdpwi7CBWNURqmT6vrlGEpwyksp/8m6JBt2Z67VG1joSQE9/2sA65wf4Rx0X79Kx5NwhEMNySOPz3d8D8RkddSOXhXgHT3X4VfNEv/9PV2emAciqv0jPTiW4yvZU5hiRwzho9RULV8uIqKAYRakzwm65ZIjftfHEj+7N53VC+v9ZK2wpzgdzW/CcM2x41wnJ+shxasG339hDopVfs5XprW0ce519oHYZm3Ox/7JDIGatkeidOZ+7BhI4EVCDZ9XvswyByyVCvmtpsDlQUW/7Yv3K166VBwo0hrdgc5crkNqVNjrXFL6gYWeVQT2VZvjdsM8Z9NZ6qXteDbyfH7z38reTqFEB29dSmLRFvLVkrXvW/hV6NxCAznoZxgoeWUVlt4DdYxleV5fmipFBRkVIEZdUGSWZm0Pk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(4636009)(366004)(44832011)(38100700002)(6512007)(6486002)(71200400001)(6506007)(86362001)(5660300002)(33716001)(64756008)(316002)(2906002)(26005)(966005)(9686003)(38070700005)(83380400001)(122000001)(8676002)(4326008)(6916009)(54906003)(66556008)(66476007)(76116006)(66446008)(186003)(8936002)(508600001)(1076003)(66946007);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?sMhK5nMabViksbDGCEspomWZeLqjL2NehDBonn35wjfCknEPaEyR67UeRUyt?=
- =?us-ascii?Q?nl9W2UXjqeyBJOIttFWghdMG1Y+RNlgJGcUtXb/+j+dXcbl4ZoDG/5uuBAUV?=
- =?us-ascii?Q?uVIaq/YMJwD/iBS+UHSOgSVMgCfKWK+2A3woUqJ2HDJJn/g7ChzaPiINgsK8?=
- =?us-ascii?Q?1bu17MQW91PcP6R16yIIajgYpSddA4A3rCD7jchRIA2es3PNclquhcpT7L/h?=
- =?us-ascii?Q?KWiN2czIohk0bdl3uUduFZlihALrDfiLefx1cPp832lsZ4syaMr8tzOTMnnt?=
- =?us-ascii?Q?CLJkUyWu1o7UvQoJODz7eHZlfnClu8ssyh3Fk/jaeG8U5WKjZGaJCFHjARkE?=
- =?us-ascii?Q?DpaYsVvHAnnVK3bBuw/fkKV69/yrxVnSCoDzna+fOtXoiZGeL1h+IqR1cgFD?=
- =?us-ascii?Q?acR7g2PRgTJgTfT0/8K362buOk43oEDmMpRXGzAugttNfOs+T/hhb9B+uRCl?=
- =?us-ascii?Q?cnwr6HW8fx1WGNKNgLKk4ARWyWb4nG+GFzhs6z8pfZMhwyi3BX7gftcMmIV8?=
- =?us-ascii?Q?XZ7mbg5qRJywqnPmdTwo20QslSv9zQXuBGih47fNhq7isVrA9FtoJGS/TpTg?=
- =?us-ascii?Q?53bfhQBv5GlWlrADc+Y3+p59AxrDNlSHlSuv/DC7c+QcJiydeHuyxF1NNTnp?=
- =?us-ascii?Q?GJBlEIUlYe4u04vCxZYscSS1lGejCwxJaudTG1WRGa/0VD/J+7hIgevblMux?=
- =?us-ascii?Q?Kev9yDaxyTVJmNd0ytRHbPJKw+04+AzOjmHeOg+JeWCk/NNCzX2EHeSQLyCf?=
- =?us-ascii?Q?VrQde4zdaacoTiFTzIT32rYXJ3wzTcL7yN6qNtv8fdLCVIrT1+C9czNGABNu?=
- =?us-ascii?Q?Bh1ckqDESsX1aANMDFa/Mnut8BbEWj3UJe1wrz/0yKvOeEqyR5/M2BjAVZL2?=
- =?us-ascii?Q?ah3niAyc5StodSRs6AEMAPwp6Bv/E7/kK/2n9OTUyirgfTN7sKA+/j3nPIkJ?=
- =?us-ascii?Q?R+OTIWSMhznFEWHyMK688XS4bhpO8jS/+b16tpNFB9E5v6MxLJHlPgohROwu?=
- =?us-ascii?Q?J+50YVIa1M1nXR7tBwRRdgSITsKmdAyIqwEfQtqzSHF+9tFUkIDEvD7h5dm5?=
- =?us-ascii?Q?fej8b5KwrFks2UhpC8EMVFX0TcW3QlRji3ipLhvgJOIITTu1LwYL/PMlwyNO?=
- =?us-ascii?Q?SONS9PQO9/Kfzaxuh7wl3BRiOWBT5L+MKcJ4XnjpmhwWsg+raAuk/g2R/nMz?=
- =?us-ascii?Q?v81vkaYswSVx8Opu8lGUqU8NRZuWiCVQlrxglDgX6Zh5UupICr+d9ZIK70s7?=
- =?us-ascii?Q?ETV/hdy3GE369NKtTIq3tuDS9gUMkrHrA2C4WGfC389VDQy7WjXNVdB+6WDE?=
- =?us-ascii?Q?6mKH/z64acZOaMpd45SxBm6BT5MHBIT7xF6JdfVTc0uD2REgPE/gwsFVqPNi?=
- =?us-ascii?Q?uEIGRtX8sBsGhmrOdN4FPi3DBrfDyXj6SR9yPvNjlVDIAznVrjs998GJozVE?=
- =?us-ascii?Q?E8EMe/rpjef20wPleZipziPFw8JkZZx5xsePWPGpvIQeKiGnc561n81FnfQD?=
- =?us-ascii?Q?KbXjnFQGBCsQDXK4Jp7JBpA3xoib7zLMbgjcZsyp3WPwu9qnGQKKWHQ3NW8y?=
- =?us-ascii?Q?1OGLrtTVzUsYW63meVy4eIYLwQVJnWrqHYf2wDk4FHog4lAJcwhEXXyJLbLT?=
- =?us-ascii?Q?wG/eFz9F5Rom1YO0b0MUyJtcqG2KvKRfHZ1LC0/o0EEjQM5D3bQe150a/aay?=
- =?us-ascii?Q?YPWn5A5w+XyAL4h+a9WWG48cSU0gYs6w+mf3T3jMAWNHcUyY1aMYr79gpULs?=
- =?us-ascii?Q?BTYh9UVXEvEtIiZ7k8ilmjpys25m8QY=3D?=
-Content-ID: <9742E0ABA73718428D044C420E7C56D1@eurprd04.prod.outlook.com>
+ <20220523203214.ooixl3vb5q6cgwfq@skbuf>
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 15b96777-206b-4408-6cd0-08da3cfb5329
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 May 2022 20:32:15.5403 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: RBMNLUxKvzaPvUERDih2PO+xEJhtxAyzHLSEbka9iMgpQPPreHqD17ihgAfbj3YhzUUC/l80TFf3/hkFah0ZyQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB3PR0402MB3865
 Subject: Re: [Intel-wired-lan] [PATCH net-next v5 00/11] ethtool: Add
  support for frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -153,110 +87,88 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 23, 2022 at 12:52:38PM -0700, Jakub Kicinski wrote:
-> > > The DCBNL parallel is flawed IMO because pause generation is Rx, not
-> > > Tx. There is no Rx queue in Linux, much less per-prio.  
+On Mon, 23 May 2022 20:32:15 +0000 Vladimir Oltean wrote:
+> > > | In a port of a Bridge or station that supports frame preemption, a frame
+> > > | of priority n is not available for transmission if that priority is
+> > > | identified in the frame preemption status table (6.7.2) as preemptible
+> > > | and either the holdRequest object (12.30.1.5) is set to the value hold,
+> > > | or the transmission of a prior preemptible frame has yet to complete
+> > > | because it has been interrupted to allow the transmission of an express
+> > > | frame.
+> > > 
+> > > So since the managed objects for frame preemption are stipulated by IEEE
+> > > per priority:
+> > > 
+> > > | The framePreemptionStatusTable (6.7.2) consists of 8
+> > > | framePreemptionAdminStatus values (12.30.1.1.1), one per priority.
+> > > 
+> > > I think it is only reasonable for Linux to expose the same thing, and
+> > > let drivers do the priority to queue or traffic class remapping as they
+> > > see fit, when tc-mqprio or tc-taprio or other qdiscs that change this
+> > > mapping are installed (if their preemption hardware implementation is
+> > > per TC or queue rather than per priority). After all, you can have 2
+> > > priorities mapped to the same TC, but still have one express and one
+> > > preemptible. That is to say, you can implement preemption even in single
+> > > "queue" devices, and it even makes sense.  
 > > 
-> > First of all: we both know that PFC is not only about RX, right? :) Here:
-> > 
-> > | 8.6.8 Transmission selection
-> > | In a port of a Bridge or station that supports PFC, a frame of priority
-> > | n is not available for transmission if that priority is paused (i.e., if
-> > | Priority_Paused[n] is TRUE (see 36.1.3.2) on that port.
-> > | 
-> > | NOTE 1 - Two or more priorities can be combined in a single queue. In
-> > | this case if one or more of the priorities in the queue are paused, it
-> > | is possible for frames in that queue not belonging to the paused
-> > | priority to not be scheduled for transmission.
-> > | 
-> > | NOTE 2 - Mixing PFC and non-PFC priorities in the same queue results in
-> > | non-PFC traffic being paused causing congestion spreading, and therefore
-> > | is not recommended.
-> > 
-> > And that's kind of my whole point: PFC is per _priority_, not per
-> > "queue"/"traffic class". And so is frame preemption (right below, same
-> > clause). So the parallel isn't flawed at all. The dcbnl-pfc isn't in tc
-> > for a reason, and that isn't because we don't have RX netdev queues...
-> > And the reason why dcbnl-pfc isn't in tc is the same reason why ethtool
-> > frame preemption shouldn't, either.
+> > Honestly I feel like I'm missing a key detail because all you wrote
+> > sounds like an argument _against_ exposing the queue mask in ethtool.  
 > 
-> My understanding is that DCBNL is not in ethtool is that it was built
-> primarily for converged Ethernet. ethtool being a netdev thing it's
-> largely confined to coarse interface configuration in such
-> environments, they certainly don't use TC to control RDMA queues.
+> Yeah, I guess the key detail that you're missing is that there's no such
+> thing as "preemptible queue mask" in 802.1Q. My feeling is that both
+> Vinicius and myself were confused in different ways by some spec
+> definitions and had slightly different things in mind, and we've
+> essentially ended up debating where a non-standard thing should go.
 > 
-> To put it differently DCBNL separates RoCE and storage queues from
-> netdev queues (latter being lossy). It's Conway's law at work.
+> In my case, I said in my reply to the previous patch set that a priority
+> is essentially synonymous with a traffic class (which it isn't, as per
+> the definitions above), so I used the "traffic class" term incorrectly
+> and didn't capitalize the "priority" word, which I should have.
+> https://patchwork.kernel.org/project/netdevbpf/patch/20210626003314.3159402-3-vinicius.gomes@intel.com/#24812068
 > 
-> Frame preemption falls entirely into netdev land. We can use the right
-> interface rather than building a FW shim^W "generic" interface.
-
-Not sure where you're aiming with this, sorry. Why dcbnl is not
-integrated in ethtool is a bit beside the point. What was relevant about
-PFC as an analogy was it's something that is configured per priority
-[ and not per queue ] and does not belong to the qdisc for that reason.
-
-> > | In a port of a Bridge or station that supports frame preemption, a frame
-> > | of priority n is not available for transmission if that priority is
-> > | identified in the frame preemption status table (6.7.2) as preemptible
-> > | and either the holdRequest object (12.30.1.5) is set to the value hold,
-> > | or the transmission of a prior preemptible frame has yet to complete
-> > | because it has been interrupted to allow the transmission of an express
-> > | frame.
+> In Vinicius' case, part of the confusion might come from the fact that
+> his hardware really has preemption configurable per queue, and he
+> mistook it for the standard itself.
+> 
+> > Neither the standard calls for it, nor is it convenient to the user
+> > who sets the prio->tc and queue allocation in TC.
 > > 
-> > So since the managed objects for frame preemption are stipulated by IEEE
-> > per priority:
-> > 
-> > | The framePreemptionStatusTable (6.7.2) consists of 8
-> > | framePreemptionAdminStatus values (12.30.1.1.1), one per priority.
-> > 
-> > I think it is only reasonable for Linux to expose the same thing, and
-> > let drivers do the priority to queue or traffic class remapping as they
-> > see fit, when tc-mqprio or tc-taprio or other qdiscs that change this
-> > mapping are installed (if their preemption hardware implementation is
-> > per TC or queue rather than per priority). After all, you can have 2
-> > priorities mapped to the same TC, but still have one express and one
-> > preemptible. That is to say, you can implement preemption even in single
-> > "queue" devices, and it even makes sense.
+> > If we wanted to expose prio mask in ethtool, that's a different story.  
 > 
-> Honestly I feel like I'm missing a key detail because all you wrote
-> sounds like an argument _against_ exposing the queue mask in ethtool.
+> Re-reading what I've said, I can't say "I was right all along"
+> (not by a long shot, sorry for my part in the confusion),
 
-Yeah, I guess the key detail that you're missing is that there's no such
-thing as "preemptible queue mask" in 802.1Q. My feeling is that both
-Vinicius and myself were confused in different ways by some spec
-definitions and had slightly different things in mind, and we've
-essentially ended up debating where a non-standard thing should go.
+Sorry, I admit I did not go back to the archives to re-read your
+feedback today. I'm purely reacting to the fact that the "preemptible
+queue mask" attribute which I have successfully fought off in the
+past have now returned.
 
-In my case, I said in my reply to the previous patch set that a priority
-is essentially synonymous with a traffic class (which it isn't, as per
-the definitions above), so I used the "traffic class" term incorrectly
-and didn't capitalize the "priority" word, which I should have.
-https://patchwork.kernel.org/project/netdevbpf/patch/20210626003314.3159402-3-vinicius.gomes@intel.com/#24812068
+Let me also spell out the source of my objection - high speed NICs
+have multitude of queues, queue groups and sub-interfaces. ethtool
+uAPI which uses a zero-based integer ID will lead to confusion and lack
+of portability because users will not know the mapping and vendors
+will invent whatever fits their HW best.
 
-In Vinicius' case, part of the confusion might come from the fact that
-his hardware really has preemption configurable per queue, and he
-mistook it for the standard itself.
-
-> Neither the standard calls for it, nor is it convenient to the user
-> who sets the prio->tc and queue allocation in TC.
+> but I guess the conclusion is that:
 > 
-> If we wanted to expose prio mask in ethtool, that's a different story.
+> (a) "preemptable queues" needs to become "preemptable priorities" in the
+>     UAPI. The question becomes how to expose the mask of preemptable
+>     priorities. A simple u8 bit mask where "BIT(i) == 1" means "prio i
+>     is preemptable", or with a nested netlink attribute scheme similar
+>     to DCB_PFC_UP_ATTR_0 -> DCB_PFC_UP_ATTR_7?
 
-Re-reading what I've said, I can't say "I was right all along"
-(not by a long shot, sorry for my part in the confusion), but I guess
-the conclusion is that:
+No preference there, we can also put it in DCBnl, if it fits better.
 
-(a) "preemptable queues" needs to become "preemptable priorities" in the
-    UAPI. The question becomes how to expose the mask of preemptable
-    priorities. A simple u8 bit mask where "BIT(i) == 1" means "prio i
-    is preemptable", or with a nested netlink attribute scheme similar
-    to DCB_PFC_UP_ATTR_0 -> DCB_PFC_UP_ATTR_7?
+> (b) keeping the "preemptable priorities" away from tc-qdisc is ok
 
-(b) keeping the "preemptable priorities" away from tc-qdisc is ok
+Ack.
 
-(c) non-standard hardware should deal with prio <-> queue mapping by
-    itself if its queues are what are preemptable
+> (c) non-standard hardware should deal with prio <-> queue mapping by
+>     itself if its queues are what are preemptable
+
+I'd prefer if the core had helpers to do the mapping for drivers, 
+but in principle yes - make the preemptible queues an implementation
+detail if possible.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
