@@ -1,57 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23691530915
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 May 2022 08:01:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83130530C5E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 May 2022 11:42:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ACCE083F91;
-	Mon, 23 May 2022 06:01:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EAA0040B43;
+	Mon, 23 May 2022 09:42:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FArd13AmuSQb; Mon, 23 May 2022 06:01:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dDPcOLx6kQsl; Mon, 23 May 2022 09:42:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 906BA83F93;
-	Mon, 23 May 2022 06:01:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E2AD740B45;
+	Mon, 23 May 2022 09:42:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D816A1BF589
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 06:01:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2E5C21BF378
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 09:42:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C53A583F8B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 06:01:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1CA8483E1A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 09:42:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1NjEghDXcwfn for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 May 2022 06:01:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3F30983F8A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 06:01:02 +0000 (UTC)
-Received: from [192.168.0.6] (ip5f5aedde.dynamic.kabel-deutschland.de
- [95.90.237.222])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 749C961EA1928;
- Mon, 23 May 2022 08:01:00 +0200 (CEST)
-Message-ID: <834bb0a6-3085-7725-d176-f83ec7912903@molgen.mpg.de>
-Date: Mon, 23 May 2022 08:01:00 +0200
+ with ESMTP id TFbgmF60MAaX for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 May 2022 09:42:36 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 912CF8332A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 09:42:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1653298956; x=1684834956;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ICZySgEhFf7hhJcW7RsWj3f4H97EWZbzDAnNMM3Dwx8=;
+ b=Z2HuyZwM4XvTdjmEU6rNKCn8H5JnRKW7GJ7M6BV4NtJL3J8MAIk+nt4Z
+ 7hqjBy1JW2p/x0Rdg/dmxBcR6EXQVTPl3LIUvTr4CwjMvU07AF09u7mGS
+ MmaozMH3KJnXcNOLK4yrGoFWXcGKbenw6jOplQBPfMe6oZossb3lWQF0g
+ 6T3xPjZClcVw7OQ+LU0MTOWLpvK1VQw6MBt8JxD+NKZGaJWTxZ+y9q9Ko
+ +Ki9AQRydY0dFPlMawWmN08F5WY47muvHPGSRma7DYrRCCoI89cWihCHD
+ MRV7rpvFmWBrjc1chIc7KlrvaFGhshlXn4qEAtKJChiPKMq0Wo1CJ/ZQm w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10355"; a="273286306"
+X-IronPort-AV: E=Sophos;i="5.91,246,1647327600"; d="scan'208";a="273286306"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2022 02:42:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,246,1647327600"; d="scan'208";a="572000300"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga007.jf.intel.com with ESMTP; 23 May 2022 02:42:35 -0700
+Received: from switcheroo.igk.intel.com (switcheroo.igk.intel.com
+ [172.22.229.137])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 24N9gY99001338
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 May 2022 10:42:34 +0100
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 23 May 2022 11:41:55 +0200
+Message-Id: <20220523094155.388032-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Content-Language: en-US
-To: Julia Lawall <julia.lawall@inria.fr>
-References: <20220521111145.81697-50-Julia.Lawall@inria.fr>
- <71292e14-fe6c-f475-009d-1ea8cde0ea46@molgen.mpg.de>
- <alpine.DEB.2.22.394.2205230736190.2777@hadrien>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <alpine.DEB.2.22.394.2205230736190.2777@hadrien>
-Subject: Re: [Intel-wired-lan] [PATCH] drivers/net/ethernet/intel: fix typos
- in comments
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Fix switchdev rules book
+ keeping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,76 +79,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBKdWxpYSwKCgpBbSAyMy4wNS4yMiB1bSAwNzo0MCBzY2hyaWViIEp1bGlhIExhd2FsbDoK
-Cj4gT24gTW9uLCAyMyBNYXkgMjAyMiwgUGF1bCBNZW56ZWwgd3JvdGU6Cgo+PiBUaGFuayB5b3Ug
-Zm9yIHlvdXIgcGF0Y2guCj4+Cj4+IEkgbm90aWNlZCwgdGhhdCB0aGUgbWFpbnRhaW5lciBUb255
-IHdhc27igJl0IGluIHRoZSBDYzogbGlzdC4KPiAKPiBnZXRfbWFpbnRhaW5lciByZXBvcnRzIGhp
-bSBhcyBhICJzdXBwb3J0ZXIiLCBhbmQgSSB0aGluayB0aGF0IG15IHNjcmlwdAo+IG9ubHkgdGFr
-ZXMgcGVvcGxlIGxpc3RlZCBhcyAibWFpbnRhaW5lciIuCgogICAgIElOVEVMIEVUSEVSTkVUIERS
-SVZFUlMKICAgICBNOiAgICAgIEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50
-ZWwuY29tPgogICAgIE06ICAgICAgVG9ueSBOZ3V5ZW4gPGFudGhvbnkubC5uZ3V5ZW5AaW50ZWwu
-Y29tPgoKRm9yIHRoZSBjaGFuZ2VkIGZpbGVzLCBib3RoIGFyZSBsaXN0ZWQgYXMgc3VwcG9ydGVy
-IGJ5IApgZ2V0X21haW50YWluZXIucGxgLCBidXQgb25seSBKZXNzZSB3YXMgdGFrZW4uIE5vdCBp
-bXBvcnRhbnQsIGp1c3QgCndhbnRlZCB0byBtZW50aW9uIGl0LgoKPiAKPj4gQW0gMjEuMDUuMjIg
-dW0gMTM6MTEgc2NocmllYiBKdWxpYSBMYXdhbGw6Cj4+PiBTcGVsbGluZyBtaXN0YWtlcyAodHJp
-cGxlIGxldHRlcnMpIGluIGNvbW1lbnRzLgo+Pj4gRGV0ZWN0ZWQgd2l0aCB0aGUgaGVscCBvZiBD
-b2NjaW5lbGxlLgo+Pgo+PiBJ4oCZZCBiZSBpbnRlcmVzdGVkIGluIHRoZSBzY3JpcHQgeW91IHVz
-ZWQuCj4gCj4gQXR0YWNoZWQuICBJdCBzaG91bGQgaGF2ZSBhIHByZXR0eSBsb3cgcmF0ZSBvZiBm
-YWxzZSBwb3NpdGl2ZXMuICBNb3N0bHkKPiB0aGluZ3MgbGlrZSBFZWV3IGFuZCBXaGVlZS4KClRo
-YW5rIHlvdS4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKPj4+IFNpZ25lZC1vZmYtYnk6IEp1bGlh
-IExhd2FsbCA8SnVsaWEuTGF3YWxsQGlucmlhLmZyPgo+Pj4KPj4KPj4gTml0OiBPbmUgdW5uZWVk
-ZWQgYmxhbmsgbGluZS4KPiAKPiBPSywgdGhhbmtzLgo+IAo+IGp1bGlhCj4gCj4+PiAtLS0KPj4+
-ICAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ZtMTBrL2ZtMTBrX21ieC5jICAgfCAgICAy
-ICstCj4+PiAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xpYi5jICAgICAg
-IHwgICAgMiArLQo+Pj4gICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVf
-c3Jpb3YuYyB8ICAgIDIgKy0KPj4+ICAgIDMgZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCsp
-LCAzIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9mbTEway9mbTEwa19tYnguYwo+Pj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9mbTEway9mbTEwa19tYnguYwo+Pj4gaW5kZXggMzBjYTllZTE5MDBiLi5mMmZiYTZlMWQwZjcg
-MTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9mbTEway9mbTEwa19t
-YnguYwo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZm0xMGsvZm0xMGtfbWJ4
-LmMKPj4+IEBAIC0xODI1LDcgKzE4MjUsNyBAQCBzdGF0aWMgdm9pZCBmbTEwa19zbV9tYnhfcHJv
-Y2Vzc19lcnJvcihzdHJ1Y3QKPj4+IGZtMTBrX21ieF9pbmZvICptYngpCj4+PiAgICAJCWZtMTBr
-X3NtX21ieF9jb25uZWN0X3Jlc2V0KG1ieCk7Cj4+PiAgICAJCWJyZWFrOwo+Pj4gICAgCWNhc2Ug
-Rk0xMEtfU1RBVEVfQ09OTkVDVDoKPj4+IC0JCS8qIHRyeSBjb25ubmVjdGluZyBhdCBsb3dlciB2
-ZXJzaW9uICovCj4+PiArCQkvKiB0cnkgY29ubmVjdGluZyBhdCBsb3dlciB2ZXJzaW9uICovCj4+
-PiAgICAJCWlmIChtYngtPnJlbW90ZSkgewo+Pj4gICAgCQkJd2hpbGUgKG1ieC0+bG9jYWwgPiAx
-KQo+Pj4gICAgCQkJCW1ieC0+bG9jYWwtLTsKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xpYi5jCj4+PiBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2VfbGliLmMKPj4+IGluZGV4IDQ1NGUwMWFlMDliOS4uNzA5NjFjMDM0M2U3IDEw
-MDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYwo+
-Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYwo+Pj4gQEAg
-LTI0MDMsNyArMjQwMyw3IEBAIHN0YXRpYyB2b2lkIGljZV9zZXRfYWdnX3ZzaShzdHJ1Y3QgaWNl
-X3ZzaSAqdnNpKQo+Pj4gICAgCQkJCWFnZ19pZCk7Cj4+PiAgICAJCQlyZXR1cm47Cj4+PiAgICAJ
-CX0KPj4+IC0JCS8qIGFnZ3JlZ2F0b3Igbm9kZSBpcyBjcmVhdGVkLCBzdG9yZSB0aGUgbmVlZWRl
-ZCBpbmZvICovCj4+PiArCQkvKiBhZ2dyZWdhdG9yIG5vZGUgaXMgY3JlYXRlZCwgc3RvcmUgdGhl
-IG5lZWRlZCBpbmZvICovCj4+PiAgICAJCWFnZ19ub2RlLT52YWxpZCA9IHRydWU7Cj4+PiAgICAJ
-CWFnZ19ub2RlLT5hZ2dfaWQgPSBhZ2dfaWQ7Cj4+PiAgICAJfQo+Pj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3NyaW92LmMKPj4+IGIvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfc3Jpb3YuYwo+Pj4gaW5kZXggM2U3NGFi
-ODI4NjhiLi4zZjVlZjUyNjliYjIgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9peGdiZS9peGdiZV9zcmlvdi5jCj4+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9peGdiZS9peGdiZV9zcmlvdi5jCj4+PiBAQCAtNzcsNyArNzcsNyBAQCBzdGF0aWMg
-aW50IF9faXhnYmVfZW5hYmxlX3NyaW92KHN0cnVjdCBpeGdiZV9hZGFwdGVyCj4+PiAqYWRhcHRl
-ciwKPj4+ICAgIAlJWEdCRV9XUklURV9SRUcoaHcsIElYR0JFX1BGRFRYR1NXQywgSVhHQkVfUEZE
-VFhHU1dDX1ZUX0xCRU4pOwo+Pj4gICAgCWFkYXB0ZXItPmJyaWRnZV9tb2RlID0gQlJJREdFX01P
-REVfVkVCOwo+Pj4gICAgLQkvKiBsaW1pdCB0cmFmZmZpYyBjbGFzc2VzIGJhc2VkIG9uIFZGcyBl
-bmFibGVkICovCj4+PiArCS8qIGxpbWl0IHRyYWZmaWMgY2xhc3NlcyBiYXNlZCBvbiBWRnMgZW5h
-YmxlZCAqLwo+Pj4gICAgCWlmICgoYWRhcHRlci0+aHcubWFjLnR5cGUgPT0gaXhnYmVfbWFjXzgy
-NTk5RUIpICYmIChudW1fdmZzIDwgMTYpKSB7Cj4+PiAgICAJCWFkYXB0ZXItPmRjYl9jZmcubnVt
-X3Rjcy5wZ190Y3MgPSBNQVhfVFJBRkZJQ19DTEFTUzsKPj4+ICAgIAkJYWRhcHRlci0+ZGNiX2Nm
-Zy5udW1fdGNzLnBmY190Y3MgPSBNQVhfVFJBRkZJQ19DTEFTUzsKPj4KPj4gUmV2aWV3ZWQtYnk6
-IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+Cj4+Cj4+Cj4+IEtpbmQgcmVnYXJk
-cywKPj4KPj4gUGF1bAo+PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vv
-c2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdp
-cmVkLWxhbgo=
+Adding two filters with same matching criteria ends up with
+one rule in hardware with act = ICE_FWD_TO_VSI_LIST.
+In order to remove them properly we have to keep the
+information about vsi handle which is used in VSI bitmap
+(ice_adv_fltr_mgmt_list_entry::vsi_list_info::vsi_map).
+
+Fixes: 0d08a441fb1a ("ice: ndo_setup_tc implementation for PF")
+Reported-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+v2: compile issue fixed
+---
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index 3acd9f921c44..4abf914a3b3e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -524,6 +524,7 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
+ 	 */
+ 	fltr->rid = rule_added.rid;
+ 	fltr->rule_id = rule_added.rule_id;
++	fltr->dest_id = rule_added.vsi_handle;
+ 
+ exit:
+ 	kfree(list);
+-- 
+2.31.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
