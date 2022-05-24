@@ -1,70 +1,171 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1093853252E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 May 2022 10:24:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E8B4532B69
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 May 2022 15:40:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8316C4183D;
-	Tue, 24 May 2022 08:24:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9C51D84019;
+	Tue, 24 May 2022 13:40:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l7EBzu7q6o_u; Tue, 24 May 2022 08:24:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VNlBe8DIR6X4; Tue, 24 May 2022 13:40:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 29215416DE;
-	Tue, 24 May 2022 08:24:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A4241827AF;
+	Tue, 24 May 2022 13:40:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A95801BF28D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 08:24:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B85481BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 13:40:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9602F40587
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 08:24:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9E06A4046B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 13:40:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ETJu90pcjjH2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 May 2022 08:24:12 +0000 (UTC)
+ with ESMTP id zIepO6zK--X1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 May 2022 13:40:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9EF1940571
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 08:24:12 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 51F18404C9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 May 2022 13:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653380652; x=1684916652;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=+iuKpdWxZnpr7Wck0q56c8MO3ipgoYcs/3c3L3MfeTc=;
- b=OJO5fZPtbYUbu+lTsWI/b667DtQ5HvSiQ4eX1w0cn3fc7sM36s6vkAw0
- xQ3cHZuruos4qw8nevGHFTEAlNPpoeho8YgxhHk0cmBZbOLAUGk//yh7u
- vvgEZGnRfRoEJ503ZcGTklxEImwQ7xsKM0EO5wUr4lMMx3XlvlQ8/8NQd
- LdjW3/o/UTZ69uQqd8CLXDyoprAIObO+//rv64ICFfxUCsn3fjEn8sKrt
- 0JHAWg7hSGuCtxu07eb87uDymvIdcfRMgqnWwhIfOHcPobbxSQaawXUcZ
- jNS6HdawTlJdG15X/ti//jauBCOgeku4Ep8McOf/0bjTeRsz2v72NX9vt g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10356"; a="334114490"
-X-IronPort-AV: E=Sophos;i="5.91,248,1647327600"; d="scan'208";a="334114490"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2022 01:24:11 -0700
+ t=1653399633; x=1684935633;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=++vjas+PX+wlqfV344tFRyjKF322+YsDWlLQtLrpfxA=;
+ b=nac8nzMZe4txupb5zY20v5whw29f1e0K8K2l8ITByPBc6LyVzS/cFEkk
+ d+5tbnRbI4jI1GoE7HLkBYdFHKghSl8zS501/AaJUOPPmS98xrl9tA4NI
+ meGCvynpyPKzvdUxcHXlesenC7xwXRy2QHKpVROGTKQFpGNVW76ypQjjc
+ tpp4kvUNzBhmJa8zQ60uxl8nzzszqECnS50GZkIhS22dsFZ0fpOHnBqLM
+ aO7yWaUtwvYrMyapyLqVZFY8yQYvxBUu9Ju/CWiA5pjxbAeHtFYxstGPt
+ FDhrjvVaX2/9MfUtbEhvE2G2kz726c9dJGPMyT+fvqnGyl1CLeEsXRd1q Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10356"; a="253404723"
+X-IronPort-AV: E=Sophos;i="5.91,248,1647327600"; d="scan'208";a="253404723"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 May 2022 06:40:32 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,248,1647327600"; d="scan'208";a="820195116"
-Received: from lkp-server01.sh.intel.com (HELO db63a1be7222) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 24 May 2022 01:24:10 -0700
-Received: from kbuild by db63a1be7222 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1ntPpq-0001sZ-0Y;
- Tue, 24 May 2022 08:24:10 +0000
-Date: Tue, 24 May 2022 16:23:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <628c95f1.OtDdNUE+yXL2J4bt%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.91,248,1647327600"; d="scan'208";a="526406089"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga003.jf.intel.com with ESMTP; 24 May 2022 06:40:29 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Tue, 24 May 2022 06:40:29 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Tue, 24 May 2022 06:40:28 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Tue, 24 May 2022 06:40:28 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.108)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Tue, 24 May 2022 06:40:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jeAXRtd1KiIvH6xWi29bmD0LcaercpbKvyIjfC7s+BgEk0Ex3ZUIH+2lP+n43L3VP0vVhQIGRGX0qyDGwUleCMnI7ggTcSl9yQCd9RaEVDNqkqPs+jTBaYlk+Yyu1ViX1w0JCHZketc1e3mpFvyZ5dc/O/4kbPuuoO4eZCJrvCVqbjvtezUfv49Ss1Mg/tlq2xuj4DkCoS67vuR61UeY409E+GycDKbZlvHS5wUk8LuDzvbQ59abX1sSkB0k7t+2ZtrW9OJw9xr16ML/6GZ/C154omjYZ0HDBuL2PNSoSgMWktMOi+cqMEUF2TUPeXMOmz26qFfsx+JxQEgQR+8KIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rAfxoN75yPrvYNfcgpTDZNM0Nz8aEtz6xVVTu8aQ2CY=;
+ b=oBCucRrPvczJ81SAxciw/mnKSA/y/2+Q9tf49q7+1EBSzcmCXlOEywlclnzROQW5lqLiEw+1ZGOJV68nc7cXnI8ITFsnzRgtErpvi5dEQpy9+9IPkfWC199bfZsemVJt47ofbZPSVTynSwd/kdfBFZ5Cz4SBOi8aXbqwVQVnex2Gd2/Crlb8WW3HGXa2cc0xWsfk2NXcGhs9M3zntnY+yNVjofExO2FwSNOTQuVulHpA8csYype7ukaSRCPe5WRf3L9fxXtLtec5+CQV/OgubHSrKwtoI1H6j6Ilmgh8OVeiKCqrkiohHEsV0Mvw1omp37rnlW8+iwFs/05E3clEww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by CH0PR11MB5475.namprd11.prod.outlook.com (2603:10b6:610:d6::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5293.13; Tue, 24 May
+ 2022 13:40:27 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::829:3da:fb91:c8e7]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::829:3da:fb91:c8e7%6]) with mapi id 15.20.5293.013; Tue, 24 May 2022
+ 13:40:27 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: Bernard Zhao <zhaojunkui2008@126.com>, "Brandeburg, Jesse"
+ <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH] intel/i40e: delete if NULL check
+ before dev_kfree_skb
+Thread-Index: AQHYZTzOQMmO4kPqPEi5xAu279lZRq0uHQYQ
+Date: Tue, 24 May 2022 13:40:27 +0000
+Message-ID: <BYAPR11MB33672B20A0116900DAFCB8AFFCD79@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20220511065451.655335-1-zhaojunkui2008@126.com>
+In-Reply-To: <20220511065451.655335-1-zhaojunkui2008@126.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: f2b30c96-7456-480d-f326-08da3d8af641
+x-ms-traffictypediagnostic: CH0PR11MB5475:EE_
+x-microsoft-antispam-prvs: <CH0PR11MB547500552777604C798FF11FFCD79@CH0PR11MB5475.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: VTSW2sUM3RfDCKrld0mkbepgf4ZiH/QZcQkh1zNDGtXjxd1Nogy1QAM/95WaCamb0ZcRUvDxZixN+ZuEDj2X/XcOrmoK4F/uoAFMLEyYDXUhFy8//dh8Ni2IFmkwtDdvmbuywDC7mWrC5k8x3XqHgW5V3NdbNL/3YwAhgwvyWWR5q7LgI5RFyrUzJeOQGmlDS8MXA0uj5KQTzDdz9RMpXuo6he0WOAZY33Quj/JTjubzD7ZoM8i+X3Z2EVQQTHouz0PVm9WC68RNHc0IKsbUhAoLdjEGHp1/Bgqu5x2+9H8cN6ZB1kDkflRYHk58mIunfXIDSSfLZMnBg3jutFHmE7b1GyKVkOADbtMIe50cbjXJQsG1TrYmfPgJ5fRVxuqI9krUc5OmWPb2enUQk3dTQe1gG+djf1tQf3a4FwaVIWLH8c5+9sNEKEtLMKMmJoCg8nBTAn7bjILKoxvt6H/N2wUuIwcxYC9QFXX+tCb1sc/mxrqNFdRbmMUQzzVqAznebcNUHo2G0OdxnA0pInj4VgP5+oLttUTcZ1G10s02C1Nc8fNJXG6AunD6vCrfNIkNjYsZm5l68EzTVNlXLnsI82JlSMTQBkbYBbvBL0x+TXsdjRa/s8ecbeHi/HeDVFpq/gpMUJwaCd2KKkIctAOtRRSU+jQpkmN0hOeyJ8cJm4IJAjHMjbVFH1mzS/NkWqEm0ISepdKQsPamFrkT9CfrJgfdLPCu6g6+bH/IdJXaeYg=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(38100700002)(316002)(83380400001)(8936002)(122000001)(2906002)(110136005)(186003)(53546011)(38070700005)(66446008)(66476007)(66946007)(64756008)(66556008)(4326008)(8676002)(4744005)(55016003)(6506007)(7696005)(26005)(9686003)(921005)(82960400001)(86362001)(33656002)(508600001)(5660300002)(71200400001)(76116006)(52536014);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?V/vJQKJlfrOqKGNTesh2zDX8QH4i1d6j2kvDD4paLEokVAf7yokrUq3/tp3K?=
+ =?us-ascii?Q?N3u8ITFAtZ2dUP79+YtJiHpxfhrstYtDqoKFXapqNCWo3G6LxbzHX0Y4l7Yj?=
+ =?us-ascii?Q?GPvVOcXIGl18YhRB4f6Qyecq32Am6iwZRwwXpvsnxz8BNLORGG0ThG9jWIvp?=
+ =?us-ascii?Q?z/ive7fgpAkAUa+KZfi9T/+kHbbH3uHTolHBiRbtUpjmSdZhuj5mjLRw1XMQ?=
+ =?us-ascii?Q?CRBoHVw97azoxaJaUNDOoGlO2KqW5YucTVybxdNBtub8F+kNilswSg80nZ2D?=
+ =?us-ascii?Q?ya/RkMZVFLjby4IyMe8fSU7feK7No5AyYXEY+FV5nyJCAiI5vUUH8ZAmoVrf?=
+ =?us-ascii?Q?50GC2Mrg2PBWcFi0XrhkGm6mAsn9qgHDPHFpcm+LiVAj/RhRGduCtg+jmzMG?=
+ =?us-ascii?Q?Hug6nwxbw8PBljkVKRwccy4QdSpLtIGTBmdRiBsx8IWywruMmNbh9LppA8QN?=
+ =?us-ascii?Q?5WQrBqo3Yf5XGshOLq9DmIPZCidJml2cPdBJ3UmicURVj/qJtwgyl6yW1prA?=
+ =?us-ascii?Q?q8adJvDlotZmjm0+RGsaLVJ2bq/ReX9a5QtXZO4M2CGVH0+sx5fqIkNK7eyA?=
+ =?us-ascii?Q?se+dez30l9bLYM309256N3tZdWUTlotiM6VWKSGKbLafX33jrSJQq+O7b1O0?=
+ =?us-ascii?Q?FmQFkerH+wvvrVgJSiBcs8lwsMNowg9KUQbEYSFSlNZy6dtWCezpY+/hYoZ1?=
+ =?us-ascii?Q?GVxhGay/QC8JqL4GT8kV+3PxxfH0q67ix5moCkA8q0l/gPcFYZXoZpuKZ659?=
+ =?us-ascii?Q?D8mXaLsrr+43hwLM8ysD5gy28NKflln42slAlvsSThbtAGVJRJVdVWvE6nVh?=
+ =?us-ascii?Q?F1oVUg5cOh+oFfW6STrzD/GeU3GDrHoAL3EHLFlJQyUzoVD0VGI9sRs8O9co?=
+ =?us-ascii?Q?gMbGXwJMyinCK4b5jAcMOMG8Bo2xAqp72APhD0lZg0KiHM0BzSSUAqqpzX1P?=
+ =?us-ascii?Q?9tHF3RbXbzX08G6R5xeV7ueh+AClthQUODhIDg+RhSaayQdpj10WT8C25+xw?=
+ =?us-ascii?Q?p+DpzNKJRyQE9oHelXOBe4ZahTNGfZrGRCsLlV7g8F6iX/oInZawkBiCii3g?=
+ =?us-ascii?Q?S5SyQH1o/6VAZ33KhngL+KfxNdbxCqhPDHmSgke4CeI48h1M+S2CAzerUe9S?=
+ =?us-ascii?Q?7lQZc6egzaOKPDJe65f0H82WItROFXy5gBP3aq2bbs+j9QwRsXyYpEnjgNbo?=
+ =?us-ascii?Q?oCe11MY0ZIQeVNnXr+pcMTydOLZ9bkcRNwDzN/a9bE2pERkO7Eul1cpdXf2F?=
+ =?us-ascii?Q?5w0nVl1Hvm+8z52wCXkn8mnLK8EnPkfw65GsiZTykJ3Pg4oHmY7+f4NmxMWC?=
+ =?us-ascii?Q?v+Ry4uOWY7fn03nZsEl/74RTIMDcAv6HK9QfUP9LJWeaRxtiA2NA8CUpI+p2?=
+ =?us-ascii?Q?g/FIxSGH9lqyIsi7hyufbBQSRZ6UABQ5DP3HnjMcZEbQlNfZOkZct5FB+k4R?=
+ =?us-ascii?Q?HqqbEy/OZNvdylxyWXUFnzNN9+YKPYbSdUz9dgnjMDkSIiazmoqh6Q2JxUQ6?=
+ =?us-ascii?Q?8B67qtCmqXlwDh1El4Ez+HLNO2k71wrul0pL4oT+8JvvyS9RPvHcw7FHfHrD?=
+ =?us-ascii?Q?OEBv69rw6P+KS+Q/Pw4vqBTfq6g/gfFiYlN3EqALyMcUKabjER5ocwGfLKcr?=
+ =?us-ascii?Q?O8e4xDK6jTo6nY7N3I/s8gO5wZu636ApdSdeqWBEREIea1LlUnI1tGu46xMK?=
+ =?us-ascii?Q?cO6P9TEH7pxQGIC6xqJE0pZv94RofOA3ZZA6V9C82GlS7zrLfNkKnr6pE+U1?=
+ =?us-ascii?Q?vguEqwEDkg=3D=3D?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- f790755ebde8a181920552d5388d398091ae9875
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f2b30c96-7456-480d-f326-08da3d8af641
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 May 2022 13:40:27.2019 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2HeNLakLPECsdlblTeVN8rIGSBfMp6TEetODNapJpuNCBjx0/gpHDmpoB/0UkO4woBa2hrXfisj8P4DKP2x9JQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5475
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH] intel/i40e: delete if NULL check
+ before dev_kfree_skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,138 +178,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "bernard@vivo.com" <bernard@vivo.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: f790755ebde8a181920552d5388d398091ae9875  ice: Fix switchdev rules book keeping
 
-elapsed time: 749m
 
-configs tested: 109
-configs skipped: 3
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Bernard Zhao
+> Sent: Wednesday, May 11, 2022 12:25 PM
+> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
+> Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>;
+> intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
+> kernel@vger.kernel.org
+> Cc: bernard@vivo.com; Bernard Zhao <zhaojunkui2008@126.com>
+> Subject: [Intel-wired-lan] [PATCH] intel/i40e: delete if NULL check before
+> dev_kfree_skb
+> 
+> dev_kfree_skb check if the input parameter NULL and do the right thing,
+> there is no need to check again.
+> This change is to cleanup the code a bit.
+> 
+> Signed-off-by: Bernard Zhao <zhaojunkui2008@126.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm64                               defconfig
-arm64                            allyesconfig
-arm                              allmodconfig
-arm                                 defconfig
-arm                              allyesconfig
-powerpc                     tqm8541_defconfig
-m68k                        mvme147_defconfig
-sh                           se7343_defconfig
-nios2                            alldefconfig
-m68k                         amcore_defconfig
-arm                           imxrt_defconfig
-arm                        realview_defconfig
-sparc64                          alldefconfig
-arm                             ezx_defconfig
-sh                     sh7710voipgw_defconfig
-powerpc                     pq2fads_defconfig
-arm                          lpd270_defconfig
-ia64                                defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-nios2                               defconfig
-arc                              allyesconfig
-csky                                defconfig
-nios2                            allyesconfig
-alpha                               defconfig
-alpha                            allyesconfig
-h8300                            allyesconfig
-xtensa                           allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allmodconfig
-s390                                defconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-s390                             allyesconfig
-i386                   debian-10.3-kselftests
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                              debian-10.3
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-i386                 randconfig-a001-20220523
-i386                 randconfig-a006-20220523
-i386                 randconfig-a002-20220523
-i386                 randconfig-a005-20220523
-i386                 randconfig-a003-20220523
-i386                 randconfig-a004-20220523
-x86_64               randconfig-a003-20220523
-x86_64               randconfig-a006-20220523
-x86_64               randconfig-a001-20220523
-x86_64               randconfig-a004-20220523
-x86_64               randconfig-a002-20220523
-x86_64               randconfig-a005-20220523
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-arc                  randconfig-r043-20220523
-arc                  randconfig-r043-20220522
-s390                 randconfig-r044-20220522
-riscv                randconfig-r042-20220522
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                                  kexec
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                           rhel-8.3-syz
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-
-clang tested configs:
-arm                  randconfig-c002-20220522
-x86_64                        randconfig-c007
-s390                 randconfig-c005-20220522
-i386                          randconfig-c001
-powerpc              randconfig-c003-20220522
-riscv                randconfig-c006-20220522
-mips                 randconfig-c004-20220522
-arm                        mvebu_v5_defconfig
-arm                         lpc32xx_defconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                     akebono_defconfig
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                 randconfig-a014-20220523
-i386                 randconfig-a011-20220523
-i386                 randconfig-a013-20220523
-i386                 randconfig-a016-20220523
-i386                 randconfig-a012-20220523
-i386                 randconfig-a015-20220523
-hexagon              randconfig-r045-20220523
-hexagon              randconfig-r045-20220522
-hexagon              randconfig-r041-20220523
-hexagon              randconfig-r041-20220522
-riscv                randconfig-r042-20220523
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
