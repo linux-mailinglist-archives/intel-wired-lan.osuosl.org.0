@@ -1,68 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49D6E53A5C5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jun 2022 15:18:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE39F53A98B
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jun 2022 17:05:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 97801416FC;
-	Wed,  1 Jun 2022 13:18:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1529F40C38;
+	Wed,  1 Jun 2022 15:05:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Lja_8SFsExec; Wed,  1 Jun 2022 13:18:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NNTmUWKBk4Lx; Wed,  1 Jun 2022 15:05:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ECC06416E8;
-	Wed,  1 Jun 2022 13:18:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F417140C35;
+	Wed,  1 Jun 2022 15:05:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A27DD1BF3E1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 13:18:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0D8881BF588
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8F9A0408B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 13:18:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 074FB4177A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=126.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VfUZvJS7nLe6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jun 2022 13:17:59 +0000 (UTC)
+ with ESMTP id yAw8jeRs3rRq for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jun 2022 15:05:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 236EF408AA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 13:17:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1654089479; x=1685625479;
- h=from:to:subject:date:message-id:in-reply-to:references:
- mime-version:content-transfer-encoding;
- bh=mq2oYT7Lc6sR7jNOWR/S0+/netRt614ForLei3XnMp4=;
- b=QmhI0EkiFK5r7phN+Q1DsSBlSJDP9ltRGJUlYhvfukExqVnkbIsTpLiF
- 9YM9n86JwhvW+3ox9ko9N/E+6Zb0DTeoOEBZX06Pm3FaP1pASKd1JZd9d
- nLWK5Ns0G50d9k32yvhI/WMjErbfFiAkHDNDGFXc6qazxTxjeC3RwlSkQ
- 7S7BWw3tfLAo1a33G10fwHyua4zLGeopq6QapPftIqImyu728oXx8nkWY
- +FRsdG4vHt1ydg6xJwaAs0gDYmXluke8iwejKLaYZojlP7mv/nneYiZuB
- tKIqB/4Xl5C9KwtgVGaW+nVSqvKT8wQSAJBO/nu9fyBimqSkC0hPLZsnV g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10365"; a="300937188"
-X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="300937188"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2022 06:17:58 -0700
-X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="576931057"
-Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2022 06:17:56 -0700
-From: Piotr Skajewski <piotrx.skajewski@intel.com>
-To: maciej.fijalkowski@intel.com,
-	intel-wired-lan@lists.osuosl.org
-Date: Wed,  1 Jun 2022 15:14:48 +0200
-Message-Id: <20220601131448.13796-1-piotrx.skajewski@intel.com>
-X-Mailer: git-send-email 2.35.0.rc0
-In-Reply-To: <20220519055358.20314-1-piotrx.skajewski@intel.com>
-References: <20220519055358.20314-1-piotrx.skajewski@intel.com>
+Received: from m15114.mail.126.com (m15114.mail.126.com [220.181.15.114])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E11D941778
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=HWtXy
+ zpTYQi99vLNSN4B9mSWTWB3vA617XDlC71beEg=; b=REGwHbh2ta/WGQSkYIACC
+ gSL3byjExvI15fyOzkdsCZNZ7qpTvwJZp8NZt741HlPEN2W+k5rnqHtZYEL4/FgV
+ 2z/Y8Z/BWyHpjnMoLoYsRMlsjuGnM4+kaJTt1Kq0iVi06L/WAkhUUTeBhtn9XXHW
+ maDm0qIxrOMnI4Y/w76VfA=
+Received: from localhost.localdomain (unknown [223.104.68.68])
+ by smtp7 (Coremail) with SMTP id DsmowAC3mKT9f5dis3x_CQ--.20151S2;
+ Wed, 01 Jun 2022 23:04:30 +0800 (CST)
+From: Lixue Liang <lianglixuehao@126.com>
+To: pmenzel@molgen.mpg.de
+Date: Wed,  1 Jun 2022 15:04:28 +0000
+Message-Id: <20220601150428.33945-1-lianglixuehao@126.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Add locking to prevent
- panic when setting sriov_numvfs to zero
+X-CM-TRANSID: DsmowAC3mKT9f5dis3x_CQ--.20151S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uFW3Ww4xGFW3KrWrAFyxZrb_yoW8Zw1Upa
+ yrJa42grWkJr4jqw4kX3WxZas0kan0q345C39Iyw1F93Z0grWDArWrtry7tryrKrZ5Ca13
+ Zr17Za1Dua1DAFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jU0edUUUUU=
+X-Originating-IP: [223.104.68.68]
+X-CM-SenderInfo: xold0w5ol03vxkdrqiyswou0bp/xtbBGggTFl-HZMgquAAAsx
+Subject: [Intel-wired-lan] [PATCH v4] igb: Assign random MAC address instead
+ of fail in case of invalid one
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,191 +69,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: lianglixue@greatwall.com.cn, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> On Thu, May 19, 2022 at 07:53:58AM +0200, Piotr Skajewski wrote:
-> > It is possible to disable VFs while the PF driver is processing requests
-> > from the VF driver.  This can result in a panic.
-> > 
-> > BUG: unable to handle kernel paging request at 000000000000106c
-> > PGD 0 P4D 0
-> > Oops: 0000 [#1] SMP NOPTI
-> > CPU: 8 PID: 0 Comm: swapper/8 Kdump: loaded Tainted: G I      --------- -
-> > Hardware name: Dell Inc. PowerEdge R740/06WXJT, BIOS 2.8.2 08/27/2020
-> > RIP: 0010:ixgbe_msg_task+0x4c8/0x1690 [ixgbe]
-> > Code: 00 00 48 8d 04 40 48 c1 e0 05 89 7c 24 24 89 fd 48 89 44 24 10 83 ff
-> > 01 0f 84 b8 04 00 00 4c 8b 64 24 10 4d 03 a5 48 22 00 00 <41> 80 7c 24 4c
-> > 00 0f 84 8a 03 00 00 0f b7 c7 83 f8 08 0f 84 8f 0a
-> > RSP: 0018:ffffb337869f8df8 EFLAGS: 00010002
-> > RAX: 0000000000001020 RBX: 0000000000000000 RCX: 000000000000002b
-> > RDX: 0000000000000002 RSI: 0000000000000008 RDI: 0000000000000006
-> > RBP: 0000000000000006 R08: 0000000000000002 R09: 0000000000029780
-> > R10: 00006957d8f42832 R11: 0000000000000000 R12: 0000000000001020
-> > R13: ffff8a00e8978ac0 R14: 000000000000002b R15: ffff8a00e8979c80
-> > FS:  0000000000000000(0000) GS:ffff8a07dfd00000(0000) knlGS:00000000000000
-> > CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> > CR2: 000000000000106c CR3: 0000000063e10004 CR4: 00000000007726e0
-> > DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-> > DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-> > PKRU: 55555554
-> > Call Trace:
-> >  <IRQ>
-> >  ? ttwu_do_wakeup+0x19/0x140
-> >  ? try_to_wake_up+0x1cd/0x550
-> >  ? ixgbevf_update_xcast_mode+0x71/0xc0 [ixgbevf]
-> >  ixgbe_msix_other+0x17e/0x310 [ixgbe]
-> >  __handle_irq_event_percpu+0x40/0x180
-> >  handle_irq_event_percpu+0x30/0x80
-> >  handle_irq_event+0x36/0x53
-> >  handle_edge_irq+0x82/0x190
-> >  handle_irq+0x1c/0x30
-> >  do_IRQ+0x49/0xd0
-> >  common_interrupt+0xf/0xf
-> > 
-> > This can be eventually be reproduced with the following script:
-> > 
-> > while :
-> > do
-> >     echo 63 > /sys/class/net/<devname>/device/sriov_numvfs
-> >     sleep 1
-> >     echo 0 > /sys/class/net/<devname>/device/sriov_numvfs
-> >     sleep 1
-> > done
-> > 
-> > Add lock when disabling SR-IOV to prevent process VF mailbox communication.
-> > 
-> > Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
-> 
-> This is a fix for sure. Please target it to net tree and add fixes tag.
-> 
-> > ---
-> > changes in v2:
-> >     - replace type spin_lock_bh to spin_lock
-> 
-> Why? Please explain what contexts are being synchronized.k
+From: Lixue Liang <lianglixue@greatwall.com.cn>
 
-The synchronization of shared resources while creating and removing many
-virtual function simultaneously.
+In some cases, when the user uses igb_set_eeprom to modify the MAC
+address to be invalid, the igb driver will fail to load. If there is no
+network card device, the user must modify it to a valid MAC address by
+other means.
 
-> 
-> > 
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  3 ++
-> >  .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    | 28 ++++++++++++-------
-> >  3 files changed, 22 insertions(+), 10 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > index 921a4d977d65..8813b4dd6872 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > @@ -779,6 +779,7 @@ struct ixgbe_adapter {
-> >  #ifdef CONFIG_IXGBE_IPSEC
-> >  	struct ixgbe_ipsec *ipsec;
-> >  #endif /* CONFIG_IXGBE_IPSEC */
-> > +	spinlock_t vfs_lock;
-> >  };
-> >  
-> >  static inline int ixgbe_determine_xdp_q_idx(int cpu)
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > index c4a4954aa317..6c403f112d29 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > @@ -6402,6 +6402,9 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
-> >  	/* n-tuple support exists, always init our spinlock */
-> >  	spin_lock_init(&adapter->fdir_perfect_lock);
-> >  
-> > +	/* init spinlock to avoid concurrency of VF resources */
-> > +	spin_lock_init(&adapter->vfs_lock);
-> > +
-> >  #ifdef CONFIG_IXGBE_DCB
-> >  	ixgbe_init_dcb(adapter);
-> >  #endif
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > index 7f11c0a8e7a9..6f583df19635 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > @@ -207,6 +207,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
-> >  	unsigned int num_vfs = adapter->num_vfs, vf;
-> >  	int rss;
-> >  
-> > +	spin_lock(&adapter->vfs_lock);
-> > +
-> >  	/* set num VFs to 0 to prevent access to vfinfo */
-> >  	adapter->num_vfs = 0;
-> >  
-> > @@ -228,6 +230,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
-> >  	kfree(adapter->mv_list);
-> >  	adapter->mv_list = NULL;
-> >  
-> > +	spin_unlock(&adapter->vfs_lock);
-> > +
-> >  	/* if SR-IOV is already disabled then there is nothing to do */
-> >  	if (!(adapter->flags & IXGBE_FLAG_SRIOV_ENABLED))
-> >  		return 0;
-> > @@ -1357,19 +1361,23 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
-> >  	struct ixgbe_hw *hw = &adapter->hw;
-> >  	u32 vf;
-> >  
-> > -	for (vf = 0; vf < adapter->num_vfs; vf++) {
-> > -		/* process any reset requests */
-> > -		if (!ixgbe_check_for_rst(hw, vf))
-> > -			ixgbe_vf_reset_event(adapter, vf);
-> > +	spin_lock(&adapter->vfs_lock);
-> > +	if (adapter->vfinfo) {
-> 
-> why this is needed?
+Since the MAC address can be modified, then add a random valid MAC address
+to replace the invalid MAC address in the driver can be workable, it can
+continue to finish the loading, and output the relevant log reminder.
 
-While creating and removing many VF at the same time,
-it happens that we process messages from VF whose resources
-have already been released. Driver should not process message
-while this is happening.
+Signed-off-by: Lixue Liang <lianglixue@greatwall.com.cn>
+---
+Changelog:
+* v4:
+  - Change the igb_mian in the title to igb
+  - Fix dev_err message: replace "already assigned random MAC address" 
+    with "Invalid MAC address. Assigned random MAC address" 
+  Suggested-by Tony <anthony.l.nguyen@intel.com>
 
-> 
-> also maybe revert the logic and flatten the code:
->     if (!adapter->vfinfo)
-> 	goto unlock;
->     (...)
-> unlock:
->     spin_unlock(&adapter->vfs_lock);
-> 
+* v3:
+  - Add space after comma in commit message 
+  - Correct spelling of MAC address
+  Suggested-by Paul <pmenzel@molgen.mpg.de>
 
-This check is not related to spinlock itself but
-stick to the loop where VF message is processed.
+* v2:
+  - Change memcpy to ether_addr_copy
+  - Change dev_info to dev_err
+  - Fix the description of the commit message
+  - Change eth_random_addr to eth_hw_addr_random
+  Reported-by: kernel test robot <lkp@intel.com>
 
-> > +		for (vf = 0; vf < adapter->num_vfs; vf++) {
-> > +			/* process any reset requests */
-> > +			if (!ixgbe_check_for_rst(hw, vf))
-> > +				ixgbe_vf_reset_event(adapter, vf);
-> >  
-> > -		/* process any messages pending */
-> > -		if (!ixgbe_check_for_msg(hw, vf))
-> > -			ixgbe_rcv_msg_from_vf(adapter, vf);
-> > +			/* process any messages pending */
-> > +			if (!ixgbe_check_for_msg(hw, vf))
-> > +				ixgbe_rcv_msg_from_vf(adapter, vf);
-> >  
-> > -		/* process any acks */
-> > -		if (!ixgbe_check_for_ack(hw, vf))
-> > -			ixgbe_rcv_ack_from_vf(adapter, vf);
-> > +			/* process any acks */
-> > +			if (!ixgbe_check_for_ack(hw, vf))
-> > +				ixgbe_rcv_ack_from_vf(adapter, vf);
-> > +		}
-> >  	}
-> > +	spin_unlock(&adapter->vfs_lock);
-> >  }
-> >  
-> >  static inline void ixgbe_ping_vf(struct ixgbe_adapter *adapter, int vf)
-> > -- 
-> > 2.35.0.rc0
-> > 
-> > _______________________________________________
-> > Intel-wired-lan mailing list
-> > Intel-wired-lan@osuosl.org
-> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+ drivers/net/ethernet/intel/igb/igb_main.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 34b33b21e0dc..5e3b162e50ac 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -3359,9 +3359,10 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	eth_hw_addr_set(netdev, hw->mac.addr);
+ 
+ 	if (!is_valid_ether_addr(netdev->dev_addr)) {
+-		dev_err(&pdev->dev, "Invalid MAC Address\n");
+-		err = -EIO;
+-		goto err_eeprom;
++		eth_hw_addr_random(netdev);
++		ether_addr_copy(hw->mac.addr, netdev->dev_addr);
++		dev_err(&pdev->dev,
++			"Invalid MAC address. Assigned random MAC address\n");
+ 	}
+ 
+ 	igb_set_default_mac_filter(adapter);
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
