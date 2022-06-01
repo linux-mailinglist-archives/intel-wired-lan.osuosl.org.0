@@ -1,62 +1,177 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE39F53A98B
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jun 2022 17:05:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB69453A9EB
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jun 2022 17:26:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1529F40C38;
-	Wed,  1 Jun 2022 15:05:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CF28C417A8;
+	Wed,  1 Jun 2022 15:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NNTmUWKBk4Lx; Wed,  1 Jun 2022 15:05:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2jxDlzKaBcIi; Wed,  1 Jun 2022 15:26:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F417140C35;
-	Wed,  1 Jun 2022 15:05:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5AE8341781;
+	Wed,  1 Jun 2022 15:26:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0D8881BF588
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C88F91BF588
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:26:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 074FB4177A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AB45440E08
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:26:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=126.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yAw8jeRs3rRq for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jun 2022 15:05:12 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7btjoAguIm7m for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jun 2022 15:26:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from m15114.mail.126.com (m15114.mail.126.com [220.181.15.114])
- by smtp4.osuosl.org (Postfix) with ESMTP id E11D941778
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:05:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=HWtXy
- zpTYQi99vLNSN4B9mSWTWB3vA617XDlC71beEg=; b=REGwHbh2ta/WGQSkYIACC
- gSL3byjExvI15fyOzkdsCZNZ7qpTvwJZp8NZt741HlPEN2W+k5rnqHtZYEL4/FgV
- 2z/Y8Z/BWyHpjnMoLoYsRMlsjuGnM4+kaJTt1Kq0iVi06L/WAkhUUTeBhtn9XXHW
- maDm0qIxrOMnI4Y/w76VfA=
-Received: from localhost.localdomain (unknown [223.104.68.68])
- by smtp7 (Coremail) with SMTP id DsmowAC3mKT9f5dis3x_CQ--.20151S2;
- Wed, 01 Jun 2022 23:04:30 +0800 (CST)
-From: Lixue Liang <lianglixuehao@126.com>
-To: pmenzel@molgen.mpg.de
-Date: Wed,  1 Jun 2022 15:04:28 +0000
-Message-Id: <20220601150428.33945-1-lianglixuehao@126.com>
-X-Mailer: git-send-email 2.27.0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AB2FA40578
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 15:26:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1654097172; x=1685633172;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=Zq18k1wXu7TLaWYFif4QTWb20oYIYjwB9mDMAFjel7c=;
+ b=BGVYID42DQvo4o1pOSovenj66XCLPssyhhePuD0Q/jZpDp/znpkm0kA4
+ Nq1TxmlNtiBWgnFl+bE9yfxMf5ggYiMER9HFyMwLJHF7bRgvD9O3YTCBo
+ CVDiKblA8Dt5rIADkoXr8nlM4728xZILiCXQ7ySm5mhmCJ+XISx7m3ijP
+ t3YXonBXoSqM8K2kjQFjXbRzK4rGTLZ+9jhJXR9Oy1P25hqknqT9h0aJt
+ QRmRHOxA69GvFbtahRCVkWeRTtknpEUeRl8ogkqaJzhM2W/PoKg7Bt39F
+ YwN01KTLzoIK8GQYIZ4gHX9DwIh8VhlWrd41zatUpPnjT0sNz6n/ZuYb5 w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10365"; a="274428344"
+X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="274428344"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jun 2022 08:26:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="667474818"
+Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
+ by FMSMGA003.fm.intel.com with ESMTP; 01 Jun 2022 08:26:11 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 1 Jun 2022 08:26:10 -0700
+Received: from orsmsx605.amr.corp.intel.com (10.22.229.18) by
+ ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 1 Jun 2022 08:26:10 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 1 Jun 2022 08:26:10 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 1 Jun 2022 08:26:09 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LCPdS6G8MrCplprZeOEV/8zkfco4TH7mnu94ft09g5fCHjlX0jTrNMFnXIa4XkXnw1qyK5/TCFjjomGftdVmnEBDrNM9DmuCF0Eu+QfCGt/BC3fbdrPkDXPVP17z4uDhxMBGzgPhn22UjQ23rJVOVCX+HAmHnU8RDmlLIDA4+HkdlvNexZKUUDFIMQZVkhZHJ7C4I9Y6gXwLJ+FlzLDYM1mgbzl6nR3c9gZA3F4mvULM5GBUpRO7Nm+zf3wk6/mdJ42BKSFv/tDnkf7YbeLn1UY/RQBnrKz8V0WKcOph64ckmlv4UM03s3OXGaOVJy3Ya20w9QHo/RW3uuQIGpzk7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8FSm4geWnfeVTRt8z4UhyXDY3RC22o1NrAtAAfPJRnE=;
+ b=KxIhqheH4XsE/vhYv4CL0e3k/sotkcyqdPOalTjB978pOz6fMUjQj0lOU+eky6l2NVNtPfx26LVH9+qJhJfyqubPNcPeul/y93Cao3W9IF4A5KB86qOVssKgKd2DM7Wj4lL+MkajO0vjUt1Vvq/6BBKf+oq2k6RbQtWxwHl9XLi0H+1OrGeDi/CdoiI7LaqHaoBxrIBglYKGicRIFvSHZyyi2TYXrrhtu/B0mnWfHH8eBRNKXvlvL7l2+DDVpX94aPQQkiqchVBnxLgnPM4t1lEtp8oI4uqVEgM6EIv808NeHB0ruNfj9SiFMbOgDHDucx0LkUn9wHrf1wrivpZkLw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by BL0PR11MB3345.namprd11.prod.outlook.com (2603:10b6:208:6f::26)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.13; Wed, 1 Jun
+ 2022 15:26:06 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::317d:11f9:2381:a3a3]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::317d:11f9:2381:a3a3%6]) with mapi id 15.20.5293.019; Wed, 1 Jun 2022
+ 15:26:06 +0000
+Message-ID: <96a94d61-6fec-7df7-4358-8e16a3e9b46f@intel.com>
+Date: Wed, 1 Jun 2022 08:26:02 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Content-Language: en-US
+To: Alexander Lobakin <alexandr.lobakin@intel.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+References: <20220601105924.2841410-1-alexandr.lobakin@intel.com>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20220601105924.2841410-1-alexandr.lobakin@intel.com>
+X-ClientProxiedBy: MW2PR16CA0017.namprd16.prod.outlook.com (2603:10b6:907::30)
+ To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
 MIME-Version: 1.0
-X-CM-TRANSID: DsmowAC3mKT9f5dis3x_CQ--.20151S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7uFW3Ww4xGFW3KrWrAFyxZrb_yoW8Zw1Upa
- yrJa42grWkJr4jqw4kX3WxZas0kan0q345C39Iyw1F93Z0grWDArWrtry7tryrKrZ5Ca13
- Zr17Za1Dua1DAFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jU0edUUUUU=
-X-Originating-IP: [223.104.68.68]
-X-CM-SenderInfo: xold0w5ol03vxkdrqiyswou0bp/xtbBGggTFl-HZMgquAAAsx
-Subject: [Intel-wired-lan] [PATCH v4] igb: Assign random MAC address instead
- of fail in case of invalid one
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 69088f51-b6ee-4910-b8c6-08da43e30bef
+X-MS-TrafficTypeDiagnostic: BL0PR11MB3345:EE_
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-Microsoft-Antispam-PRVS: <BL0PR11MB3345EC73DF5A88E5D879D8DEC6DF9@BL0PR11MB3345.namprd11.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: dU50pVsl9VvxAjHf0v2B0l9d8KVtIRxMpOGCG10M933gZaYNd+bAGSXTfS46sgVs7+0Ee+oaP7f67Tw0H2ec/Bip4TAG4qjQ+ke++AJ36kgD5Zggwwfo8TbsM2apCxwIi9j/d78xRgwNKIxCM3wGXg3fqntw72NjL1SY7vibN8P6NKqd57KsSWQgWov9FlifigDX7N8/GFiB3gZpreRAIPIqRk7tXIFRm91ZGAoxLBYrSIc9XnxK23O7QuacdfUMV9AYbbyGGVXJzR4NhSHTkM3/kAOrJRO8TTTxrF7mypmcwDuV5b7O4+WBzQrepDQrCemGuH3nhl72WSH2w71TVWx8qHDBsLsT9T497bfAkbVcnkMAdG9DvqWyz/kAioNfy9UOMeDpC7wgFJSRacfPvP+p8P3iqSxdmQjMGReelN6otV/QWuCZ1XUMPjWMP7uEeIpm4LCYxI/kmm39GN7IfUp7sLxzvsdy47ShoMXUzzATKbupUKmNpvqTQJJ4pLVgQcDFZDAj2P12Z6h/wVK0kiJdgxzPcl6SVVysdwr1AfRHnlKMS7akUbkOeZYRLibu/tvruUjwONCc5r770xZi3gYWfPowd8lg0HjopBpzqe5mu87NziFG18rqfOBafhzhYKp0O6xb75u62Ja1AutaZdtIK3gEBcnvjunvyyAgtr4GbC5VsiUHjQZ4E6Ej3xYtdsB0plaMfbD8sVAQm3lpqkmP7lREWx3XYKQ2KPAaZvo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(26005)(31686004)(6512007)(6666004)(53546011)(6506007)(31696002)(2906002)(508600001)(83380400001)(6486002)(316002)(86362001)(54906003)(36756003)(5660300002)(66946007)(38100700002)(66556008)(66476007)(82960400001)(8936002)(4326008)(8676002)(2616005)(186003)(110136005)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?a0lwR3greGUwdlpRS01yUnM2eW5tV1BmRGhVL2lpUlZnVVV5aWZCNVYyZXpH?=
+ =?utf-8?B?WDd3N0Qyc3o2K1B3V1ZOMEN5akx4U0c0RVU4N2s5Q3piNnlnOTQzcFdUMWpJ?=
+ =?utf-8?B?RHErQkVzS1hwUk1McXprSFZsbisrWmVNeitvSGp0Z3hzdlUrQWxLQ1d1dVNK?=
+ =?utf-8?B?alBpTFFWUUptOGJIUkx1bXRpMFBLcXVBZVcyNER4TDRTdXREOGRqTGVIWWZl?=
+ =?utf-8?B?dndtV1YrRW1BS0twY0ptQ0JJdlc1S1cwdUxVR1JyNWlzbVpRSG5UR2cyRC9n?=
+ =?utf-8?B?NzdmZlNrSktkbWR0aEIycGdsRDlZSjJjWi9PNXRPdzBCeHpiUStkZFlqaExY?=
+ =?utf-8?B?VU1JSDdsK0VuanJOTFJOZFdWUldRbG41TlI2UzhNbGthYWtHR1lLa1JBTStv?=
+ =?utf-8?B?V1lFTDQ2ZXp4N0lPL3didVNBNjRaZytEWVU1WUVjeXNGdzRCU3c0RXlFTVd4?=
+ =?utf-8?B?RmtqWWNhNWZLMnNpc2d5UGZMUDhZSm5uK1BLK1V5M1V6OFd3a3VSb295YUVy?=
+ =?utf-8?B?WEJBbnJUbmY5UldyNjVKWWZzVTFCdUluNGNYb2RLVW1URk1DNUhqcDdxU0la?=
+ =?utf-8?B?cTYvd0NFSWo0MGNpZGM1UHFsZlJYM1FJVm1hNjdOTExHaC9OeGlHV2lVZWdH?=
+ =?utf-8?B?ZlpzSi8xYWQxd0Y4MjRHYm16Z3YyVTlZaDVxRVZTUXBNOFpkQXpLM0drK1pF?=
+ =?utf-8?B?M0VHWGlwam43bHpqanBJTVNVNVBZcU43MmZhT1l0TThrZFZXaTBmMXpOcE0z?=
+ =?utf-8?B?NDNqRFNtSVB1a3lKdWFJOWFBQ0VCeTVzUDgrMkxXTEttYXhwWGdnU3F2bzhI?=
+ =?utf-8?B?SUdUb1FJbDlJcXFXK1BRRk9HYXZocjlOZmpzQUtBOE84a3hSeCtoYVpkSEE0?=
+ =?utf-8?B?RmNxOU1INmdBREJIUTNINzRDOGVGcWJ5R3NzZ3hMa2prZjVLZmU5Z05qeE1v?=
+ =?utf-8?B?bExBYXhVZElFUTJ4enVqenRDRzkvNXg5ZkJyUlk1WVJlYjRLelFoNjd1alR2?=
+ =?utf-8?B?V0psZ1UxYWhDSWNhOHJFZCtkcFhINXE2VElYazVWRG1IQ3UyWnEwOFVJU3kv?=
+ =?utf-8?B?SVFTaUNCNkdSMld5MnVBamxwam5EckJ2NUJkVFZnMmlWaXM1cmFSTG5FQVZM?=
+ =?utf-8?B?ZFJrdnlzVU56WjM1Qk12dXM4Wk11TDVFZWxpVmEyMFp5eEQ5RUlwM0ROOTRK?=
+ =?utf-8?B?TlJweVE0aGNFWWVwUFQ5YThkakdxYmREUU82SGxDV2tyVEljRGxMSjBGZjhW?=
+ =?utf-8?B?K3h1Nldja2l4MHZ2Yjdza29xaUY4Ui9DTXdPd3Y0OFdxWnBqdmdCcFpSb3JH?=
+ =?utf-8?B?c3d4ekVwd0pxcFhpK3FaUWU0NFNxbWIxMTQwZURqL0JTcUdtN0NHR05sb3dK?=
+ =?utf-8?B?RkJwTWFmZWZXSkttMmJXL3pKakZvT1RsUEFiVWJKZmJad1RzcTlpWmwvTExN?=
+ =?utf-8?B?S2VlamlkVDcvMHNucVp4aTJCaHIyejdOWGlGOFBFMXNXdmV3MmVST0FFVDRW?=
+ =?utf-8?B?aGp4ZG5oK2twOWlTa01mK3g4QWNwOXlhQmRZZVR0Z1RSOGpDZGRUc0l4Vld5?=
+ =?utf-8?B?dTNPTFc3cEREYmN1cFQ3dmdybXhEYjdrWWVTeUY3d1F2ZlBoVktTU3p5eHpB?=
+ =?utf-8?B?eEw5RnBDWWpwMENtN0l3ZEZWN2VWN3FFa290NHVMMngzUHkydTk3blE5dkNs?=
+ =?utf-8?B?MlRqMkptQkV1VUV1WmprclpJUlM0akVBZExKOTF3U0poNVg0YmZjMmJiVUZM?=
+ =?utf-8?B?Lyt4c1pYL20zV0R2WlM3Y2Y1dGpvUURpYXdydGtNMjJ6aGZEWGJGNzJmMElw?=
+ =?utf-8?B?amZnUGR4U2NqMGY4SmVKTGx0d21qc24yRUpLaEtjMmF3YUNjTTE1djEremhl?=
+ =?utf-8?B?aWhnZlplSEthVnUzMkdWT2RrKzdDektlL0tKMWJ0YStlQUdpbThYQlNXYzhn?=
+ =?utf-8?B?TWxnZjE3RVBoRXh1azlkVFh5ZHZtSy9aQUtJck1TanVMY0VVdHcrN2xjb05o?=
+ =?utf-8?B?a3ZySHZqSHJwYW1WbGRQbGVBTllVN0dZakZ1UXBwR0cxQm9jVGltekQzd3Ur?=
+ =?utf-8?B?cmVwejJaekYrR3htM2llYjNjWFhhOVdDa01CVS9wTWpRc1FhNU9PdmdKNUtM?=
+ =?utf-8?B?S2ZndkJSVWlRcCtCb1dZRGREdEt1clV1MVNRNEswdkVXZ1FtL0FoZytsY2JZ?=
+ =?utf-8?B?VWxPOStQMVFNVkN5eU9MRGdkSWx6ajhGWjBkWGJQdnB6bDczN1AydnJPbWVj?=
+ =?utf-8?B?WWRQUUkzOTVKME5mUFZtci9tTG9BSitXSEhBMFZxUGgzLzhYakhFWU5UVVNv?=
+ =?utf-8?B?NkNnWk95Zjd6RHQxOVBKSUZGNHoxekxDeTJlc0liSnlxdU00RjZ6UmRnN3Ja?=
+ =?utf-8?Q?ljiKnraoDC3SarOg=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 69088f51-b6ee-4910-b8c6-08da43e30bef
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jun 2022 15:26:06.5587 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: igy8MQh5g/G4vNh9gml6+WfS3tQdGMEYfZ/ZyQ4Iu6ardG7unYVC3ZABhmxvMM2IO3md81+oQIOBjMupB7wx4YBC1R9k07FsLY1fHbxJ/IY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR11MB3345
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix access-beyond-end in the
+ switch code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,68 +184,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lianglixue@greatwall.com.cn, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>,
+ netdev@vger.kernel.org, Bruce Allan <bruce.w.allan@intel.com>,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Lixue Liang <lianglixue@greatwall.com.cn>
 
-In some cases, when the user uses igb_set_eeprom to modify the MAC
-address to be invalid, the igb driver will fail to load. If there is no
-network card device, the user must modify it to a valid MAC address by
-other means.
 
-Since the MAC address can be modified, then add a random valid MAC address
-to replace the invalid MAC address in the driver can be workable, it can
-continue to finish the loading, and output the relevant log reminder.
+On 6/1/2022 3:59 AM, Alexander Lobakin wrote:
+> Global `-Warray-bounds` enablement revealed some problems, one of
+> which is the way we define and use AQC rules messages.
+> In fact, they have a shared header, followed by the actual message,
+> which can be of one of several different formats. So it is
+> straightforward enough to define that header as a separate struct
+> and then embed it into message structures as needed, but currently
+> all the formats reside in one union coupled with the header. Then,
+> the code allocates only the memory needed for a particular message
+> format, leaving the union potentially incomplete.
+> There are no actual reads or writes beyond the end of an allocated
+> chunk, but at the same time, the whole implementation is fragile and
+> backed by an equilibrium rather than strong type and memory checks.
+> 
+> Define the structures the other way around: one for the common
+> header and the rest for the actual formats with the header embedded.
+> There are no places where several union members would be used at the
+> same time anyway. This allows to use proper struct_size() and let
+> the compiler know what is going to be done.
+> Finally, unsilence `-Warray-bounds` back for ice_switch.c.
+> 
+> Other little things worth mentioning:
+> * &ice_sw_rule_vsi_list_query is not used anywhere, remove it. It's
+>    weird anyway to talk to hardware with purely kernel types
+>    (bitmaps);
+> * expand the ICE_SW_RULE_*_SIZE() macros to pass a structure
+>    variable name to struct_size() to let it do strict typechecking;
+> * rename ice_sw_rule_lkup_rx_tx::hdr to ::hdr_data to keep ::hdr
+>    for the header structure to have the same name for it constistenly
+>    everywhere;
+> * drop the duplicate of %ICE_SW_RULE_RX_TX_NO_HDR_SIZE residing in
+>    ice_switch.h.
+> 
+> Fixes: 9daf8208dd4d ("ice: Add support for switch filter programming")
+> Fixes: 66486d8943ba ("ice: replace single-element array used for C struct hack")
+> Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
+> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+> ---
+> To Tony: I'd like this to hit RC1 or RC2, so would it be okay to pass
+> through -net directly? Or via some quick pull request would work too
+> I guess :)
 
-Signed-off-by: Lixue Liang <lianglixue@greatwall.com.cn>
----
-Changelog:
-* v4:
-  - Change the igb_mian in the title to igb
-  - Fix dev_err message: replace "already assigned random MAC address" 
-    with "Invalid MAC address. Assigned random MAC address" 
-  Suggested-by Tony <anthony.l.nguyen@intel.com>
+LGTM. I'm okay with it going to net directly.
 
-* v3:
-  - Add space after comma in commit message 
-  - Correct spelling of MAC address
-  Suggested-by Paul <pmenzel@molgen.mpg.de>
+Acked-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 
-* v2:
-  - Change memcpy to ether_addr_copy
-  - Change dev_info to dev_err
-  - Fix the description of the commit message
-  - Change eth_random_addr to eth_hw_addr_random
-  Reported-by: kernel test robot <lkp@intel.com>
-
- drivers/net/ethernet/intel/igb/igb_main.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 34b33b21e0dc..5e3b162e50ac 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3359,9 +3359,10 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	eth_hw_addr_set(netdev, hw->mac.addr);
- 
- 	if (!is_valid_ether_addr(netdev->dev_addr)) {
--		dev_err(&pdev->dev, "Invalid MAC Address\n");
--		err = -EIO;
--		goto err_eeprom;
-+		eth_hw_addr_random(netdev);
-+		ether_addr_copy(hw->mac.addr, netdev->dev_addr);
-+		dev_err(&pdev->dev,
-+			"Invalid MAC address. Assigned random MAC address\n");
- 	}
- 
- 	igb_set_default_mac_filter(adapter);
--- 
-2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
