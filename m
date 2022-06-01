@@ -1,71 +1,182 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 655C453A35F
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jun 2022 13:01:21 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D92E653BA85
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jun 2022 16:14:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E407B60D5F;
-	Wed,  1 Jun 2022 11:01:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 90AED4060D;
+	Thu,  2 Jun 2022 14:14:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YYUtvYoco_EN; Wed,  1 Jun 2022 11:01:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dxJ1gFfZNpkh; Thu,  2 Jun 2022 14:14:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BBB0260C03;
-	Wed,  1 Jun 2022 11:01:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 87987400D2;
+	Thu,  2 Jun 2022 14:14:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A74B11BF5D7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 11:01:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 143651BF591
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 12:27:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 94C8360C03
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 11:01:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0098160BCA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 12:27:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 67eCXMB8jDrE for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jun 2022 11:01:11 +0000 (UTC)
+ with ESMTP id ZVTYtmUZsxRf for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jun 2022 12:27:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D78CB60D5F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 11:01:11 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 46B4E60B06
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jun 2022 12:27:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1654081271; x=1685617271;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=uvZYnWXEBdVsWK8hcE8N3xslkBAQQvJxIizBzObTpZg=;
- b=Vec7IVto3QDfsedG4amFyaJNg0ZT2nD7Db5u0x4N64Qt2X9+DsfVN3Sb
- L7xX9g/rBRCQGJDYj8Wyq2dwWEu7hLnNnAweSAimCP5d8bXEqe16iFr5C
- j8uzbmdmojQkYyJg+y0hEwMbWVE22oinNF1daPJv5IcacLLkyXiWRTi5G
- EBXTVMSldAh8+o0boxvlXskdHUlWnq2pljD31FR6e/c8V/+LZ/p80dYT8
- SUQyiRTLnjHzYau2C/X3PMvnDIHIbzkezVgUZCsLBxiPhJxh0g0JwWAtr
- HmBtK03WaSMMsEEjhiu+7pVH5MMq9mEqeMcesBOtV5mpD8QRiwKBSq9O6 Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10364"; a="361924810"
-X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="361924810"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2022 04:00:55 -0700
+ t=1654086452; x=1685622452;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4wEWroSfhhvwnER/F/nd1a6tAY1IYM3KL3d27efwg3I=;
+ b=UBpU9hrxnvkJz4zQ3NdGYtwnC5IBFJO8Bs2LNKfsorK5sk6gp/xI//yL
+ Ky5lxRBODx+IHf+cHQaeton9IxZw/UxCkYOeDH/kFpNmQX+H+6T3EQYgC
+ fAkPb409/QRqFmQMouciLujhuqVFPq5sdrHRIkqsS3P4G2YXPe/nXS/Ml
+ 0D2rynjEYIdh8mjaYrbTrDOvJfjs+/iLxSzXqdjOuhc2hGbKLgcjz2O1I
+ MeNRad2sJxtIUpnuAbH/L64PQ05q9VOy+z8yZ/cB+Tg8YsB5+h597oYDY
+ Bvxr13ExnpXB205pPeRAxU6tMtlD4i1LqbDUsWytLSyi3HTxbWBmETPE9 g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10364"; a="274372064"
+X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="274372064"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jun 2022 05:27:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="552255407"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga006.jf.intel.com with ESMTP; 01 Jun 2022 04:00:50 -0700
-Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
- [10.102.20.203])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 251B0nFb000755; Wed, 1 Jun 2022 12:00:49 +0100
-From: Alexander Lobakin <alexandr.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Date: Wed,  1 Jun 2022 12:59:24 +0200
-Message-Id: <20220601105924.2841410-1-alexandr.lobakin@intel.com>
-X-Mailer: git-send-email 2.36.1
+X-IronPort-AV: E=Sophos;i="5.91,268,1647327600"; d="scan'208";a="823729576"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by fmsmga006.fm.intel.com with ESMTP; 01 Jun 2022 05:27:31 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 1 Jun 2022 05:27:31 -0700
+Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 1 Jun 2022 05:27:30 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 1 Jun 2022 05:27:30 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.48) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 1 Jun 2022 05:27:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DL+vVsKDjvybojuolnK5l1TPu6REUapt/7Elfql+OgXWuyy4rfmNnumwhvg3JPhSeBSiLqzsRT9b/0LcdD+VmwAdTTb1HympAyz8A9+X8CY7VCI7Am2F0v/FeyEChqEdZcqMv/AankZBMr/BE3VHxcqD2iHe+k6OTo/qQlZlEY3qizrl5bmhwLsMU68QbnwW/iS/3A+kIE+8YTKVWIVDQbtLpdjIT0xT15Hf7MYKytbgIj9gtkAUS7Jt8BqtmYW0eQ+KpZGtMWJik4h07Gv2/9JVabsbqFddmBdax1gqkLO0nQ0gLmxyg/nytZ+WQk2b7vRf5X8fSEdauqqVNUeQKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4wEWroSfhhvwnER/F/nd1a6tAY1IYM3KL3d27efwg3I=;
+ b=GXDD5wxrUfkZtEX+zkJnHm80sU3Yc39PRsybRHTP3KyKkTFYUgsBLmnUI9iyPriICe1K17dtDESrDg6HBpyV4ZZx1So8DcPD1ai+EUp5d9E0OvFnK/5QVFVcdBUPmZdFLfgRa1qGDarLXWjvyWO+d060fwRB5JoYq8G17zraZMgD19GgHUIDRzoCrgozQLZuKfpYONSc3OcTz34c8F+QDZy5jZzXPLH46AYUMgSM4UNGVuZ+0skJo8BsHYKlLywSsv3XExyit2djRrJBGRn1IoX1wVsJ7b7gtFTgYzNyynh/BOFaCq1Ftn8bwbFseRs4tOEZwd0lyCKxzDta5WC7og==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB2901.namprd11.prod.outlook.com (2603:10b6:a03:91::23)
+ by SN6PR11MB3309.namprd11.prod.outlook.com (2603:10b6:805:bd::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5293.17; Wed, 1 Jun
+ 2022 12:27:29 +0000
+Received: from BYAPR11MB2901.namprd11.prod.outlook.com
+ ([fe80::984a:d0f9:9f7d:2a2b]) by BYAPR11MB2901.namprd11.prod.outlook.com
+ ([fe80::984a:d0f9:9f7d:2a2b%4]) with mapi id 15.20.5293.013; Wed, 1 Jun 2022
+ 12:27:29 +0000
+From: "Patynowski, PrzemyslawX" <przemyslawx.patynowski@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Palczewski, Mateusz"
+ <mateusz.palczewski@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1 1/2] ice: Add error handling for
+ queue config fail
+Thread-Index: AQHYdPFvYGBHyZYmsUy8866KIvICj605c3qAgAEIEEA=
+Date: Wed, 1 Jun 2022 12:27:29 +0000
+Message-ID: <BYAPR11MB2901A066D250958D1EB9E83482DF9@BYAPR11MB2901.namprd11.prod.outlook.com>
+References: <20220531131835.3614-1-mateusz.palczewski@intel.com>
+ <2cceb264-8998-2f81-354b-b1331f71102d@intel.com>
+In-Reply-To: <2cceb264-8998-2f81-354b-b1331f71102d@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-reaction: no-action
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 44a91cac-8d9b-41ae-a135-08da43ca1812
+x-ms-traffictypediagnostic: SN6PR11MB3309:EE_
+x-microsoft-antispam-prvs: <SN6PR11MB330941EEE1F46AC1A59AF9DE82DF9@SN6PR11MB3309.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 2lITzWhzm7dCROkhanYgY22H4q9/zT+LX+Ea/I8rSlNJyXt/GMvwS1cFYb/YxI9AGRziy/b8o9TXqNhgIfAdlQYDn9u6R8k6jaG1Fi/R18/mzarW3Id3tDxjEk4hPl3kgoyUgulCCyrazdxSnqJL+bcvp6CpINDSkDds89dPdkgVFvHugO5FCkUXMYjgFfglHurJEUokeTwWbyWkGBEzXWlpI71fV7xEx60D8uDGsHEf3VdN4NfeYofT37fZ+/jEVf+3k0OwgWgi9BcXobU0rZCjXFlGWIdSqJwkJStqJ6s4Foe4hdbIxf6zD9dAs3B6T5Gqa4pLJ9kjl1C5yjzbYwXBV+PpXpnjYYFuKt4vEe9WoYvDdA2SKdizYQOJbEuIudfMbm/6KYrvG+HtHZgcQXegsZ9t77+ygsS+hAejinBBAPSazdautvl+N3Vkh6kBTxdR3KWFSA3N6oGQRqwipPufygu5QUEWXyYWEjCQvrR60xKdTnJpyFvhEbsxxelNoTTR0ci05NgxUV3DrDRdbFhF+FMRA7a/OPCfBs+n6cjYgvXoOG2u59a1oRWRZnb+zyDAPhc9HwiO7PTVFn4WRCdoaxn2mGVH7oiy6pmT0XTLpAqquLRO32nEWa+PhkiT0L14gyNCC7szebkfxqYFphqDrQGSgxBl5+gUDHLPkcYDC6Mz4npxLgNHu1um8sBDUe5bF/sB/ayjI0+VqEqqrA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB2901.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(2906002)(38100700002)(316002)(52536014)(26005)(110136005)(107886003)(9686003)(186003)(55016003)(5660300002)(76116006)(7696005)(6506007)(86362001)(66946007)(71200400001)(122000001)(4326008)(8676002)(66476007)(66446008)(64756008)(82960400001)(66556008)(83380400001)(38070700005)(8936002)(33656002)(508600001)(53546011);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UTR6TjQxVkZpYWI2aEJMbDlFL1FTRmxTOHNQUGhaMTBwc0E2bXBHcjJ1eXlC?=
+ =?utf-8?B?V1R6anFjM3pYczdSZnhhenRBcFZJVDVCN0VvbTFmdGhnQm9xVDE0Z0pRUHRI?=
+ =?utf-8?B?ckc5WHJrRjl4bWlDT2lLT1RSMDRpc1RFcnovdHFrbGlPM2JoTTQvY1FRVGtL?=
+ =?utf-8?B?Q0VSdDY5QktHaUhUbk0yWWJuNWk5WUllaktyQzFWS1BZUGN3QjIzR1JBRUtO?=
+ =?utf-8?B?dzVKa2p3eXVPdzV1RkhPYUVpWXRYdkYyMi9VQkdTRE0wb0NOSnNvOENTSkhw?=
+ =?utf-8?B?WjB0ZDFUMS9jWElXL3VMRENUeVBzYjRvcDdKRnVUcWN0SkVpM2FNb08wVnlF?=
+ =?utf-8?B?ejdwQUtNYVV4Sk9hNlJTbHBDZ0pmRllQZ21PQmNqTTQ2Mlp3ZlhxRGgrMnhZ?=
+ =?utf-8?B?L3c0MGZuVjZVV0k0TE05eDdRZ0xVS29HMW9ETkR6NE81bjhFdFVCVTNMKzBn?=
+ =?utf-8?B?Q241Z0t1VTh6TVVQbXBkUGwzYTFTZnE3UUE3Znd3d1BtbjE3UGo0Nm96bHRh?=
+ =?utf-8?B?a1l0T3dpaGVEUHE4S1lSSXJpVmVOeVdZU0FyamlJc1pFMG94Rk5uSm5GOVRS?=
+ =?utf-8?B?Y1E2cEZUQzJYdGtsd1RqRkxRZnMzODhSUnJvdTY5bDFZdkRPSmxlb0pQa0p5?=
+ =?utf-8?B?WFdEclNtS3Fnc1JqdFhuc0dBUzJIOWs3NVEyNGpJTXc0NklqcnVtSmVKMlFV?=
+ =?utf-8?B?ZldIaXkyb3hGcXRhQWxYYWwwNjdjOTBmK2JVVCtIWVgvT2tPdGxGbVJVTW85?=
+ =?utf-8?B?RDQ2dVpDSW9zTzVlSnhiMnZHaXhIbmdTQTJidDBDcm1rdFBKS2NRYUtuajRm?=
+ =?utf-8?B?V2Z5MWd0Q2tDSXczSzFxWU1qWmRzd0MrY3VyVUFSMUZHV2liZ1pnaFNHQkNi?=
+ =?utf-8?B?bUhBSHdqTTZCZVN4enlwYzNJWlJQUnFZT0RKWURPaFlrZnlIRDNLNnpoVFdx?=
+ =?utf-8?B?ZERCbDRIWTF4c1Q2dE85bFM4a2RXVFlTZnpRcC9tK3ZMS2U2cGswQUFJZWVU?=
+ =?utf-8?B?N1drRUIxV0dFK2c3WU9LZUkySkVDRnFoV2I2a3R2RnhJMTV5T3BNajFxdGZF?=
+ =?utf-8?B?UGNQa0FtQlVPNG1WWHZleFZLQzl0Ny9DOTZXajk0VHlsbW5aVXczT3J2WUZK?=
+ =?utf-8?B?YktKNjBPQ3pwN05kRk5rR2ZUNHE2dW13dkhUc3hLK1hBOE1PRk9kUXRqekVK?=
+ =?utf-8?B?TlNvQk9BVWhLMjNOZThmandLTlVkbCtDSHIxb2tnbzBkV1lTbE9uZUJxNmlX?=
+ =?utf-8?B?cjI2dm8va01LT0lCRGt0bWZONWpYSHlWNE5YMitnVVRVcW4xZzdZbFl4NlNh?=
+ =?utf-8?B?MVh1Z1NSbkV1STdOdUd4UTF0allzZyttUnBLdEtwdlJpSXR1c3R6eXRNM2dE?=
+ =?utf-8?B?T29tbG5XWS85MEhVZGtRaXUxbjh3NGhWeEJqcUhwTm1qb2ZlQnFTUDBXZmVU?=
+ =?utf-8?B?MUxJSytwTzRBMS9OdlhLRFkxV0pwM3BsVThrMDBiU2hCTW5pK25TQTZpcEdt?=
+ =?utf-8?B?RGxXZTNQajJqNGVRN05MYkNWYXdtRTIzK0lJSllRbHQ2aDFEMUxpaEVyRm4x?=
+ =?utf-8?B?TExOSW5rQ3hEQWJ0T3hnSTZyOVdERGd5TjQ0QTAwb05uOUJoRDJqZzVOMHpH?=
+ =?utf-8?B?MHNSWXNLVzNJYktXYzZrakdMTTJIWXI0WmVjM0UwZVlhSEwrUGIxbXBzZEtz?=
+ =?utf-8?B?TzZCSmpNV1NkNlV5Y0hhc01rM3hzM0ZOc2pmUmY4OWJONHNzWDYxUGtFQkpH?=
+ =?utf-8?B?Tm9DeTNubnc1ZEU1MTVoZ3g5OS9WL3dYRWdQa2w3R1Z4K3lFQW9UeDJUTUJq?=
+ =?utf-8?B?SFhLTDd1cUcrNEZmOFI5dGJCVDBERUplWHd5a21QT3IzMHEvLzRLYzVQeTU1?=
+ =?utf-8?B?cFU3MnVKcUdVTnJjNXZ3WG1aMTRtMWtzMEd4Q0ltU1hXNi9Zb3krWndrUkNa?=
+ =?utf-8?B?YjlvNDNveCtGNU9jaUdTN3ROaFJ1b3RIQ1FTK3hsZWIwLy9Xbk9IdkJsSi9u?=
+ =?utf-8?B?cm1SNjZhM0JYTU5KbGxYRk0wODNrYnFsS09tMmxrejlTK3h1SGdCYnpHbTdu?=
+ =?utf-8?B?RlhITUt4am1EU253K2xueEM4MkNpR05rMmJFNEhOcjdmMUMzMDRVTENDbk5J?=
+ =?utf-8?B?WkF6ZGRHb3d6R3NtaEFWYlE1RytLeGk1d29FQnJKTGIrUlZQMTNLOEwwQ2tJ?=
+ =?utf-8?B?YktVNHFlbDhZdkdGS29nT00vY3NlUlV4cDhJenJ6RmpRb2dsRjhsV2FLNGhM?=
+ =?utf-8?B?UThsQjNBWEE2YStTRmdKSzc0SWZDUUJ4bEFYc1I3ZFNSOFVmakNpUDZRckNI?=
+ =?utf-8?B?K0drTUtIeGgrOEpOSHZmOWJoS3I4eDNqMHpzTUVCY1JqUTFBUWRWMzhQd3Nt?=
+ =?utf-8?Q?MvHb8I/KoPSjguULBXKmGmiU6PzJ3OpQMNrim?=
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net] ice: fix access-beyond-end in the
- switch code
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2901.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44a91cac-8d9b-41ae-a135-08da43ca1812
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2022 12:27:29.2050 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: feTNaR1aEsW5HvuVTZhGkccQ128LGpyyjW404ay3txCW4Iu8updOu1WcCdtUHTI3KhxiTE//fFRy2ssULP2k7u8XKslsuHeIHZkNCBQt3qjh6Uoh/5Lf74Ne/5lZXaMf
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3309
+X-OriginatorOrg: intel.com
+X-Mailman-Approved-At: Thu, 02 Jun 2022 14:14:12 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net v1 1/2] ice: Add error handling
+ for queue config fail
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,718 +189,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>,
- netdev@vger.kernel.org, Bruce Allan <bruce.w.allan@intel.com>,
- linux-kernel@vger.kernel.org, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Global `-Warray-bounds` enablement revealed some problems, one of
-which is the way we define and use AQC rules messages.
-In fact, they have a shared header, followed by the actual message,
-which can be of one of several different formats. So it is
-straightforward enough to define that header as a separate struct
-and then embed it into message structures as needed, but currently
-all the formats reside in one union coupled with the header. Then,
-the code allocates only the memory needed for a particular message
-format, leaving the union potentially incomplete.
-There are no actual reads or writes beyond the end of an allocated
-chunk, but at the same time, the whole implementation is fragile and
-backed by an equilibrium rather than strong type and memory checks.
-
-Define the structures the other way around: one for the common
-header and the rest for the actual formats with the header embedded.
-There are no places where several union members would be used at the
-same time anyway. This allows to use proper struct_size() and let
-the compiler know what is going to be done.
-Finally, unsilence `-Warray-bounds` back for ice_switch.c.
-
-Other little things worth mentioning:
-* &ice_sw_rule_vsi_list_query is not used anywhere, remove it. It's
-  weird anyway to talk to hardware with purely kernel types
-  (bitmaps);
-* expand the ICE_SW_RULE_*_SIZE() macros to pass a structure
-  variable name to struct_size() to let it do strict typechecking;
-* rename ice_sw_rule_lkup_rx_tx::hdr to ::hdr_data to keep ::hdr
-  for the header structure to have the same name for it constistenly
-  everywhere;
-* drop the duplicate of %ICE_SW_RULE_RX_TX_NO_HDR_SIZE residing in
-  ice_switch.h.
-
-Fixes: 9daf8208dd4d ("ice: Add support for switch filter programming")
-Fixes: 66486d8943ba ("ice: replace single-element array used for C struct hack")
-Signed-off-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
----
-To Tony: I'd like this to hit RC1 or RC2, so would it be okay to pass
-through -net directly? Or via some quick pull request would work too
-I guess :)
----
- drivers/net/ethernet/intel/ice/Makefile       |   5 -
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  58 +++---
- drivers/net/ethernet/intel/ice/ice_switch.c   | 188 +++++++++---------
- drivers/net/ethernet/intel/ice/ice_switch.h   |   3 -
- 4 files changed, 115 insertions(+), 139 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 46f439641441..9183d480b70b 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -47,8 +47,3 @@ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
- ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
- ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
- ice-$(CONFIG_ICE_SWITCHDEV) += ice_eswitch.o
--
--# FIXME: temporarily silence -Warray-bounds on non W=1+ builds
--ifndef KBUILD_EXTRA_WARN
--CFLAGS_ice_switch.o += -Wno-array-bounds
--endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index b25e27c4d887..05cb9dd7035a 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -601,12 +601,30 @@ struct ice_aqc_sw_rules {
- 	__le32 addr_low;
- };
- 
-+/* Add switch rule response:
-+ * Content of return buffer is same as the input buffer. The status field and
-+ * LUT index are updated as part of the response
-+ */
-+struct ice_aqc_sw_rules_elem_hdr {
-+	__le16 type; /* Switch rule type, one of T_... */
-+#define ICE_AQC_SW_RULES_T_LKUP_RX		0x0
-+#define ICE_AQC_SW_RULES_T_LKUP_TX		0x1
-+#define ICE_AQC_SW_RULES_T_LG_ACT		0x2
-+#define ICE_AQC_SW_RULES_T_VSI_LIST_SET		0x3
-+#define ICE_AQC_SW_RULES_T_VSI_LIST_CLEAR	0x4
-+#define ICE_AQC_SW_RULES_T_PRUNE_LIST_SET	0x5
-+#define ICE_AQC_SW_RULES_T_PRUNE_LIST_CLEAR	0x6
-+	__le16 status;
-+} __packed __aligned(sizeof(__le16));
-+
- /* Add/Update/Get/Remove lookup Rx/Tx command/response entry
-  * This structures describes the lookup rules and associated actions. "index"
-  * is returned as part of a response to a successful Add command, and can be
-  * used to identify the rule for Update/Get/Remove commands.
-  */
- struct ice_sw_rule_lkup_rx_tx {
-+	struct ice_aqc_sw_rules_elem_hdr hdr;
-+
- 	__le16 recipe_id;
- #define ICE_SW_RECIPE_LOGICAL_PORT_FWD		10
- 	/* Source port for LOOKUP_RX and source VSI in case of LOOKUP_TX */
-@@ -683,14 +701,16 @@ struct ice_sw_rule_lkup_rx_tx {
- 	 * lookup-type
- 	 */
- 	__le16 hdr_len;
--	u8 hdr[];
--};
-+	u8 hdr_data[];
-+} __packed __aligned(sizeof(__le16));
- 
- /* Add/Update/Remove large action command/response entry
-  * "index" is returned as part of a response to a successful Add command, and
-  * can be used to identify the action for Update/Get/Remove commands.
-  */
- struct ice_sw_rule_lg_act {
-+	struct ice_aqc_sw_rules_elem_hdr hdr;
-+
- 	__le16 index; /* Index in large action table */
- 	__le16 size;
- 	/* Max number of large actions */
-@@ -744,45 +764,19 @@ struct ice_sw_rule_lg_act {
- #define ICE_LG_ACT_STAT_COUNT_S		3
- #define ICE_LG_ACT_STAT_COUNT_M		(0x7F << ICE_LG_ACT_STAT_COUNT_S)
- 	__le32 act[]; /* array of size for actions */
--};
-+} __packed __aligned(sizeof(__le16));
- 
- /* Add/Update/Remove VSI list command/response entry
-  * "index" is returned as part of a response to a successful Add command, and
-  * can be used to identify the VSI list for Update/Get/Remove commands.
-  */
- struct ice_sw_rule_vsi_list {
-+	struct ice_aqc_sw_rules_elem_hdr hdr;
-+
- 	__le16 index; /* Index of VSI/Prune list */
- 	__le16 number_vsi;
- 	__le16 vsi[]; /* Array of number_vsi VSI numbers */
--};
--
--/* Query VSI list command/response entry */
--struct ice_sw_rule_vsi_list_query {
--	__le16 index;
--	DECLARE_BITMAP(vsi_list, ICE_MAX_VSI);
--} __packed;
--
--/* Add switch rule response:
-- * Content of return buffer is same as the input buffer. The status field and
-- * LUT index are updated as part of the response
-- */
--struct ice_aqc_sw_rules_elem {
--	__le16 type; /* Switch rule type, one of T_... */
--#define ICE_AQC_SW_RULES_T_LKUP_RX		0x0
--#define ICE_AQC_SW_RULES_T_LKUP_TX		0x1
--#define ICE_AQC_SW_RULES_T_LG_ACT		0x2
--#define ICE_AQC_SW_RULES_T_VSI_LIST_SET		0x3
--#define ICE_AQC_SW_RULES_T_VSI_LIST_CLEAR	0x4
--#define ICE_AQC_SW_RULES_T_PRUNE_LIST_SET	0x5
--#define ICE_AQC_SW_RULES_T_PRUNE_LIST_CLEAR	0x6
--	__le16 status;
--	union {
--		struct ice_sw_rule_lkup_rx_tx lkup_tx_rx;
--		struct ice_sw_rule_lg_act lg_act;
--		struct ice_sw_rule_vsi_list vsi_list;
--		struct ice_sw_rule_vsi_list_query vsi_list_query;
--	} __packed pdata;
--};
-+} __packed __aligned(sizeof(__le16));
- 
- /* Query PFC Mode (direct 0x0302)
-  * Set PFC Mode (direct 0x0303)
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 9f0a4dfb4818..8d8f3eec79ee 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -1282,18 +1282,13 @@ static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
- 	ICE_PKT_PROFILE(tcp, 0),
- };
- 
--#define ICE_SW_RULE_RX_TX_ETH_HDR_SIZE \
--	(offsetof(struct ice_aqc_sw_rules_elem, pdata.lkup_tx_rx.hdr) + \
--	 (DUMMY_ETH_HDR_LEN * \
--	  sizeof(((struct ice_sw_rule_lkup_rx_tx *)0)->hdr[0])))
--#define ICE_SW_RULE_RX_TX_NO_HDR_SIZE \
--	(offsetof(struct ice_aqc_sw_rules_elem, pdata.lkup_tx_rx.hdr))
--#define ICE_SW_RULE_LG_ACT_SIZE(n) \
--	(offsetof(struct ice_aqc_sw_rules_elem, pdata.lg_act.act) + \
--	 ((n) * sizeof(((struct ice_sw_rule_lg_act *)0)->act[0])))
--#define ICE_SW_RULE_VSI_LIST_SIZE(n) \
--	(offsetof(struct ice_aqc_sw_rules_elem, pdata.vsi_list.vsi) + \
--	 ((n) * sizeof(((struct ice_sw_rule_vsi_list *)0)->vsi[0])))
-+#define ICE_SW_RULE_RX_TX_HDR_SIZE(s, l)	struct_size((s), hdr_data, (l))
-+#define ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s)	\
-+	ICE_SW_RULE_RX_TX_HDR_SIZE((s), DUMMY_ETH_HDR_LEN)
-+#define ICE_SW_RULE_RX_TX_NO_HDR_SIZE(s)	\
-+	ICE_SW_RULE_RX_TX_HDR_SIZE((s), 0)
-+#define ICE_SW_RULE_LG_ACT_SIZE(s, n)		struct_size((s), act, (n))
-+#define ICE_SW_RULE_VSI_LIST_SIZE(s, n)		struct_size((s), vsi, (n))
- 
- /* this is a recipe to profile association bitmap */
- static DECLARE_BITMAP(recipe_to_profile[ICE_MAX_NUM_RECIPES],
-@@ -2376,7 +2371,8 @@ static void ice_fill_sw_info(struct ice_hw *hw, struct ice_fltr_info *fi)
-  */
- static void
- ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
--		 struct ice_aqc_sw_rules_elem *s_rule, enum ice_adminq_opc opc)
-+		 struct ice_sw_rule_lkup_rx_tx *s_rule,
-+		 enum ice_adminq_opc opc)
- {
- 	u16 vlan_id = ICE_MAX_VLAN_ID + 1;
- 	u16 vlan_tpid = ETH_P_8021Q;
-@@ -2388,15 +2384,14 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
- 	u8 q_rgn;
- 
- 	if (opc == ice_aqc_opc_remove_sw_rules) {
--		s_rule->pdata.lkup_tx_rx.act = 0;
--		s_rule->pdata.lkup_tx_rx.index =
--			cpu_to_le16(f_info->fltr_rule_id);
--		s_rule->pdata.lkup_tx_rx.hdr_len = 0;
-+		s_rule->act = 0;
-+		s_rule->index = cpu_to_le16(f_info->fltr_rule_id);
-+		s_rule->hdr_len = 0;
- 		return;
- 	}
- 
- 	eth_hdr_sz = sizeof(dummy_eth_header);
--	eth_hdr = s_rule->pdata.lkup_tx_rx.hdr;
-+	eth_hdr = s_rule->hdr_data;
- 
- 	/* initialize the ether header with a dummy header */
- 	memcpy(eth_hdr, dummy_eth_header, eth_hdr_sz);
-@@ -2481,14 +2476,14 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
- 		break;
- 	}
- 
--	s_rule->type = (f_info->flag & ICE_FLTR_RX) ?
-+	s_rule->hdr.type = (f_info->flag & ICE_FLTR_RX) ?
- 		cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX) :
- 		cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_TX);
- 
- 	/* Recipe set depending on lookup type */
--	s_rule->pdata.lkup_tx_rx.recipe_id = cpu_to_le16(f_info->lkup_type);
--	s_rule->pdata.lkup_tx_rx.src = cpu_to_le16(f_info->src);
--	s_rule->pdata.lkup_tx_rx.act = cpu_to_le32(act);
-+	s_rule->recipe_id = cpu_to_le16(f_info->lkup_type);
-+	s_rule->src = cpu_to_le16(f_info->src);
-+	s_rule->act = cpu_to_le32(act);
- 
- 	if (daddr)
- 		ether_addr_copy(eth_hdr + ICE_ETH_DA_OFFSET, daddr);
-@@ -2502,7 +2497,7 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
- 
- 	/* Create the switch rule with the final dummy Ethernet header */
- 	if (opc != ice_aqc_opc_update_sw_rules)
--		s_rule->pdata.lkup_tx_rx.hdr_len = cpu_to_le16(eth_hdr_sz);
-+		s_rule->hdr_len = cpu_to_le16(eth_hdr_sz);
- }
- 
- /**
-@@ -2519,7 +2514,8 @@ static int
- ice_add_marker_act(struct ice_hw *hw, struct ice_fltr_mgmt_list_entry *m_ent,
- 		   u16 sw_marker, u16 l_id)
- {
--	struct ice_aqc_sw_rules_elem *lg_act, *rx_tx;
-+	struct ice_sw_rule_lkup_rx_tx *rx_tx;
-+	struct ice_sw_rule_lg_act *lg_act;
- 	/* For software marker we need 3 large actions
- 	 * 1. FWD action: FWD TO VSI or VSI LIST
- 	 * 2. GENERIC VALUE action to hold the profile ID
-@@ -2540,18 +2536,18 @@ ice_add_marker_act(struct ice_hw *hw, struct ice_fltr_mgmt_list_entry *m_ent,
- 	 *    1. Large Action
- 	 *    2. Look up Tx Rx
- 	 */
--	lg_act_size = (u16)ICE_SW_RULE_LG_ACT_SIZE(num_lg_acts);
--	rules_size = lg_act_size + ICE_SW_RULE_RX_TX_ETH_HDR_SIZE;
-+	lg_act_size = (u16)ICE_SW_RULE_LG_ACT_SIZE(lg_act, num_lg_acts);
-+	rules_size = lg_act_size + ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(rx_tx);
- 	lg_act = devm_kzalloc(ice_hw_to_dev(hw), rules_size, GFP_KERNEL);
- 	if (!lg_act)
- 		return -ENOMEM;
- 
--	rx_tx = (struct ice_aqc_sw_rules_elem *)((u8 *)lg_act + lg_act_size);
-+	rx_tx = (typeof(rx_tx))((u8 *)lg_act + lg_act_size);
- 
- 	/* Fill in the first switch rule i.e. large action */
--	lg_act->type = cpu_to_le16(ICE_AQC_SW_RULES_T_LG_ACT);
--	lg_act->pdata.lg_act.index = cpu_to_le16(l_id);
--	lg_act->pdata.lg_act.size = cpu_to_le16(num_lg_acts);
-+	lg_act->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LG_ACT);
-+	lg_act->index = cpu_to_le16(l_id);
-+	lg_act->size = cpu_to_le16(num_lg_acts);
- 
- 	/* First action VSI forwarding or VSI list forwarding depending on how
- 	 * many VSIs
-@@ -2563,13 +2559,13 @@ ice_add_marker_act(struct ice_hw *hw, struct ice_fltr_mgmt_list_entry *m_ent,
- 	act |= (id << ICE_LG_ACT_VSI_LIST_ID_S) & ICE_LG_ACT_VSI_LIST_ID_M;
- 	if (m_ent->vsi_count > 1)
- 		act |= ICE_LG_ACT_VSI_LIST;
--	lg_act->pdata.lg_act.act[0] = cpu_to_le32(act);
-+	lg_act->act[0] = cpu_to_le32(act);
- 
- 	/* Second action descriptor type */
- 	act = ICE_LG_ACT_GENERIC;
- 
- 	act |= (1 << ICE_LG_ACT_GENERIC_VALUE_S) & ICE_LG_ACT_GENERIC_VALUE_M;
--	lg_act->pdata.lg_act.act[1] = cpu_to_le32(act);
-+	lg_act->act[1] = cpu_to_le32(act);
- 
- 	act = (ICE_LG_ACT_GENERIC_OFF_RX_DESC_PROF_IDX <<
- 	       ICE_LG_ACT_GENERIC_OFFSET_S) & ICE_LG_ACT_GENERIC_OFFSET_M;
-@@ -2579,24 +2575,22 @@ ice_add_marker_act(struct ice_hw *hw, struct ice_fltr_mgmt_list_entry *m_ent,
- 	act |= (sw_marker << ICE_LG_ACT_GENERIC_VALUE_S) &
- 		ICE_LG_ACT_GENERIC_VALUE_M;
- 
--	lg_act->pdata.lg_act.act[2] = cpu_to_le32(act);
-+	lg_act->act[2] = cpu_to_le32(act);
- 
- 	/* call the fill switch rule to fill the lookup Tx Rx structure */
- 	ice_fill_sw_rule(hw, &m_ent->fltr_info, rx_tx,
- 			 ice_aqc_opc_update_sw_rules);
- 
- 	/* Update the action to point to the large action ID */
--	rx_tx->pdata.lkup_tx_rx.act =
--		cpu_to_le32(ICE_SINGLE_ACT_PTR |
--			    ((l_id << ICE_SINGLE_ACT_PTR_VAL_S) &
--			     ICE_SINGLE_ACT_PTR_VAL_M));
-+	rx_tx->act = cpu_to_le32(ICE_SINGLE_ACT_PTR |
-+				 ((l_id << ICE_SINGLE_ACT_PTR_VAL_S) &
-+				  ICE_SINGLE_ACT_PTR_VAL_M));
- 
- 	/* Use the filter rule ID of the previously created rule with single
- 	 * act. Once the update happens, hardware will treat this as large
- 	 * action
- 	 */
--	rx_tx->pdata.lkup_tx_rx.index =
--		cpu_to_le16(m_ent->fltr_info.fltr_rule_id);
-+	rx_tx->index = cpu_to_le16(m_ent->fltr_info.fltr_rule_id);
- 
- 	status = ice_aq_sw_rules(hw, lg_act, rules_size, 2,
- 				 ice_aqc_opc_update_sw_rules, NULL);
-@@ -2658,7 +2652,7 @@ ice_update_vsi_list_rule(struct ice_hw *hw, u16 *vsi_handle_arr, u16 num_vsi,
- 			 u16 vsi_list_id, bool remove, enum ice_adminq_opc opc,
- 			 enum ice_sw_lkup_type lkup_type)
- {
--	struct ice_aqc_sw_rules_elem *s_rule;
-+	struct ice_sw_rule_vsi_list *s_rule;
- 	u16 s_rule_size;
- 	u16 rule_type;
- 	int status;
-@@ -2681,7 +2675,7 @@ ice_update_vsi_list_rule(struct ice_hw *hw, u16 *vsi_handle_arr, u16 num_vsi,
- 	else
- 		return -EINVAL;
- 
--	s_rule_size = (u16)ICE_SW_RULE_VSI_LIST_SIZE(num_vsi);
-+	s_rule_size = (u16)ICE_SW_RULE_VSI_LIST_SIZE(s_rule, num_vsi);
- 	s_rule = devm_kzalloc(ice_hw_to_dev(hw), s_rule_size, GFP_KERNEL);
- 	if (!s_rule)
- 		return -ENOMEM;
-@@ -2691,13 +2685,13 @@ ice_update_vsi_list_rule(struct ice_hw *hw, u16 *vsi_handle_arr, u16 num_vsi,
- 			goto exit;
- 		}
- 		/* AQ call requires hw_vsi_id(s) */
--		s_rule->pdata.vsi_list.vsi[i] =
-+		s_rule->vsi[i] =
- 			cpu_to_le16(ice_get_hw_vsi_num(hw, vsi_handle_arr[i]));
- 	}
- 
--	s_rule->type = cpu_to_le16(rule_type);
--	s_rule->pdata.vsi_list.number_vsi = cpu_to_le16(num_vsi);
--	s_rule->pdata.vsi_list.index = cpu_to_le16(vsi_list_id);
-+	s_rule->hdr.type = cpu_to_le16(rule_type);
-+	s_rule->number_vsi = cpu_to_le16(num_vsi);
-+	s_rule->index = cpu_to_le16(vsi_list_id);
- 
- 	status = ice_aq_sw_rules(hw, s_rule, s_rule_size, 1, opc, NULL);
- 
-@@ -2745,13 +2739,14 @@ ice_create_pkt_fwd_rule(struct ice_hw *hw,
- 			struct ice_fltr_list_entry *f_entry)
- {
- 	struct ice_fltr_mgmt_list_entry *fm_entry;
--	struct ice_aqc_sw_rules_elem *s_rule;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule;
- 	enum ice_sw_lkup_type l_type;
- 	struct ice_sw_recipe *recp;
- 	int status;
- 
- 	s_rule = devm_kzalloc(ice_hw_to_dev(hw),
--			      ICE_SW_RULE_RX_TX_ETH_HDR_SIZE, GFP_KERNEL);
-+			      ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule),
-+			      GFP_KERNEL);
- 	if (!s_rule)
- 		return -ENOMEM;
- 	fm_entry = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*fm_entry),
-@@ -2772,17 +2767,16 @@ ice_create_pkt_fwd_rule(struct ice_hw *hw,
- 	ice_fill_sw_rule(hw, &fm_entry->fltr_info, s_rule,
- 			 ice_aqc_opc_add_sw_rules);
- 
--	status = ice_aq_sw_rules(hw, s_rule, ICE_SW_RULE_RX_TX_ETH_HDR_SIZE, 1,
-+	status = ice_aq_sw_rules(hw, s_rule,
-+				 ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule), 1,
- 				 ice_aqc_opc_add_sw_rules, NULL);
- 	if (status) {
- 		devm_kfree(ice_hw_to_dev(hw), fm_entry);
- 		goto ice_create_pkt_fwd_rule_exit;
- 	}
- 
--	f_entry->fltr_info.fltr_rule_id =
--		le16_to_cpu(s_rule->pdata.lkup_tx_rx.index);
--	fm_entry->fltr_info.fltr_rule_id =
--		le16_to_cpu(s_rule->pdata.lkup_tx_rx.index);
-+	f_entry->fltr_info.fltr_rule_id = le16_to_cpu(s_rule->index);
-+	fm_entry->fltr_info.fltr_rule_id = le16_to_cpu(s_rule->index);
- 
- 	/* The book keeping entries will get removed when base driver
- 	 * calls remove filter AQ command
-@@ -2807,20 +2801,22 @@ ice_create_pkt_fwd_rule(struct ice_hw *hw,
- static int
- ice_update_pkt_fwd_rule(struct ice_hw *hw, struct ice_fltr_info *f_info)
- {
--	struct ice_aqc_sw_rules_elem *s_rule;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule;
- 	int status;
- 
- 	s_rule = devm_kzalloc(ice_hw_to_dev(hw),
--			      ICE_SW_RULE_RX_TX_ETH_HDR_SIZE, GFP_KERNEL);
-+			      ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule),
-+			      GFP_KERNEL);
- 	if (!s_rule)
- 		return -ENOMEM;
- 
- 	ice_fill_sw_rule(hw, f_info, s_rule, ice_aqc_opc_update_sw_rules);
- 
--	s_rule->pdata.lkup_tx_rx.index = cpu_to_le16(f_info->fltr_rule_id);
-+	s_rule->index = cpu_to_le16(f_info->fltr_rule_id);
- 
- 	/* Update switch rule with new rule set to forward VSI list */
--	status = ice_aq_sw_rules(hw, s_rule, ICE_SW_RULE_RX_TX_ETH_HDR_SIZE, 1,
-+	status = ice_aq_sw_rules(hw, s_rule,
-+				 ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule), 1,
- 				 ice_aqc_opc_update_sw_rules, NULL);
- 
- 	devm_kfree(ice_hw_to_dev(hw), s_rule);
-@@ -3104,17 +3100,17 @@ static int
- ice_remove_vsi_list_rule(struct ice_hw *hw, u16 vsi_list_id,
- 			 enum ice_sw_lkup_type lkup_type)
- {
--	struct ice_aqc_sw_rules_elem *s_rule;
-+	struct ice_sw_rule_vsi_list *s_rule;
- 	u16 s_rule_size;
- 	int status;
- 
--	s_rule_size = (u16)ICE_SW_RULE_VSI_LIST_SIZE(0);
-+	s_rule_size = (u16)ICE_SW_RULE_VSI_LIST_SIZE(s_rule, 0);
- 	s_rule = devm_kzalloc(ice_hw_to_dev(hw), s_rule_size, GFP_KERNEL);
- 	if (!s_rule)
- 		return -ENOMEM;
- 
--	s_rule->type = cpu_to_le16(ICE_AQC_SW_RULES_T_VSI_LIST_CLEAR);
--	s_rule->pdata.vsi_list.index = cpu_to_le16(vsi_list_id);
-+	s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_VSI_LIST_CLEAR);
-+	s_rule->index = cpu_to_le16(vsi_list_id);
- 
- 	/* Free the vsi_list resource that we allocated. It is assumed that the
- 	 * list is empty at this point.
-@@ -3274,10 +3270,10 @@ ice_remove_rule_internal(struct ice_hw *hw, u8 recp_id,
- 
- 	if (remove_rule) {
- 		/* Remove the lookup rule */
--		struct ice_aqc_sw_rules_elem *s_rule;
-+		struct ice_sw_rule_lkup_rx_tx *s_rule;
- 
- 		s_rule = devm_kzalloc(ice_hw_to_dev(hw),
--				      ICE_SW_RULE_RX_TX_NO_HDR_SIZE,
-+				      ICE_SW_RULE_RX_TX_NO_HDR_SIZE(s_rule),
- 				      GFP_KERNEL);
- 		if (!s_rule) {
- 			status = -ENOMEM;
-@@ -3288,8 +3284,8 @@ ice_remove_rule_internal(struct ice_hw *hw, u8 recp_id,
- 				 ice_aqc_opc_remove_sw_rules);
- 
- 		status = ice_aq_sw_rules(hw, s_rule,
--					 ICE_SW_RULE_RX_TX_NO_HDR_SIZE, 1,
--					 ice_aqc_opc_remove_sw_rules, NULL);
-+					 ICE_SW_RULE_RX_TX_NO_HDR_SIZE(s_rule),
-+					 1, ice_aqc_opc_remove_sw_rules, NULL);
- 
- 		/* Remove a book keeping from the list */
- 		devm_kfree(ice_hw_to_dev(hw), s_rule);
-@@ -3437,7 +3433,7 @@ bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle)
-  */
- int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- {
--	struct ice_aqc_sw_rules_elem *s_rule, *r_iter;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule, *r_iter;
- 	struct ice_fltr_list_entry *m_list_itr;
- 	struct list_head *rule_head;
- 	u16 total_elem_left, s_rule_size;
-@@ -3501,7 +3497,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 	rule_head = &sw->recp_list[ICE_SW_LKUP_MAC].filt_rules;
- 
- 	/* Allocate switch rule buffer for the bulk update for unicast */
--	s_rule_size = ICE_SW_RULE_RX_TX_ETH_HDR_SIZE;
-+	s_rule_size = ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule);
- 	s_rule = devm_kcalloc(ice_hw_to_dev(hw), num_unicast, s_rule_size,
- 			      GFP_KERNEL);
- 	if (!s_rule) {
-@@ -3517,8 +3513,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 		if (is_unicast_ether_addr(mac_addr)) {
- 			ice_fill_sw_rule(hw, &m_list_itr->fltr_info, r_iter,
- 					 ice_aqc_opc_add_sw_rules);
--			r_iter = (struct ice_aqc_sw_rules_elem *)
--				((u8 *)r_iter + s_rule_size);
-+			r_iter = (typeof(s_rule))((u8 *)r_iter + s_rule_size);
- 		}
- 	}
- 
-@@ -3527,7 +3522,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 	/* Call AQ switch rule in AQ_MAX chunk */
- 	for (total_elem_left = num_unicast; total_elem_left > 0;
- 	     total_elem_left -= elem_sent) {
--		struct ice_aqc_sw_rules_elem *entry = r_iter;
-+		struct ice_sw_rule_lkup_rx_tx *entry = r_iter;
- 
- 		elem_sent = min_t(u8, total_elem_left,
- 				  (ICE_AQ_MAX_BUF_LEN / s_rule_size));
-@@ -3536,7 +3531,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 					 NULL);
- 		if (status)
- 			goto ice_add_mac_exit;
--		r_iter = (struct ice_aqc_sw_rules_elem *)
-+		r_iter = (typeof(s_rule))
- 			((u8 *)r_iter + (elem_sent * s_rule_size));
- 	}
- 
-@@ -3548,8 +3543,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 		struct ice_fltr_mgmt_list_entry *fm_entry;
- 
- 		if (is_unicast_ether_addr(mac_addr)) {
--			f_info->fltr_rule_id =
--				le16_to_cpu(r_iter->pdata.lkup_tx_rx.index);
-+			f_info->fltr_rule_id = le16_to_cpu(r_iter->index);
- 			f_info->fltr_act = ICE_FWD_TO_VSI;
- 			/* Create an entry to track this MAC address */
- 			fm_entry = devm_kzalloc(ice_hw_to_dev(hw),
-@@ -3565,8 +3559,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 			 */
- 
- 			list_add(&fm_entry->list_entry, rule_head);
--			r_iter = (struct ice_aqc_sw_rules_elem *)
--				((u8 *)r_iter + s_rule_size);
-+			r_iter = (typeof(s_rule))((u8 *)r_iter + s_rule_size);
- 		}
- 	}
- 
-@@ -3865,7 +3858,7 @@ ice_rem_adv_rule_info(struct ice_hw *hw, struct list_head *rule_head)
-  */
- int ice_cfg_dflt_vsi(struct ice_hw *hw, u16 vsi_handle, bool set, u8 direction)
- {
--	struct ice_aqc_sw_rules_elem *s_rule;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule;
- 	struct ice_fltr_info f_info;
- 	enum ice_adminq_opc opcode;
- 	u16 s_rule_size;
-@@ -3876,8 +3869,8 @@ int ice_cfg_dflt_vsi(struct ice_hw *hw, u16 vsi_handle, bool set, u8 direction)
- 		return -EINVAL;
- 	hw_vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
- 
--	s_rule_size = set ? ICE_SW_RULE_RX_TX_ETH_HDR_SIZE :
--		ICE_SW_RULE_RX_TX_NO_HDR_SIZE;
-+	s_rule_size = set ? ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule) :
-+			    ICE_SW_RULE_RX_TX_NO_HDR_SIZE(s_rule);
- 
- 	s_rule = devm_kzalloc(ice_hw_to_dev(hw), s_rule_size, GFP_KERNEL);
- 	if (!s_rule)
-@@ -3915,7 +3908,7 @@ int ice_cfg_dflt_vsi(struct ice_hw *hw, u16 vsi_handle, bool set, u8 direction)
- 	if (status || !(f_info.flag & ICE_FLTR_TX_RX))
- 		goto out;
- 	if (set) {
--		u16 index = le16_to_cpu(s_rule->pdata.lkup_tx_rx.index);
-+		u16 index = le16_to_cpu(s_rule->index);
- 
- 		if (f_info.flag & ICE_FLTR_TX) {
- 			hw->port_info->dflt_tx_vsi_num = hw_vsi_id;
-@@ -5641,7 +5634,7 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
-  */
- static int
- ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
--			  struct ice_aqc_sw_rules_elem *s_rule,
-+			  struct ice_sw_rule_lkup_rx_tx *s_rule,
- 			  const struct ice_dummy_pkt_profile *profile)
- {
- 	u8 *pkt;
-@@ -5650,7 +5643,7 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 	/* Start with a packet with a pre-defined/dummy content. Then, fill
- 	 * in the header values to be looked up or matched.
- 	 */
--	pkt = s_rule->pdata.lkup_tx_rx.hdr;
-+	pkt = s_rule->hdr_data;
- 
- 	memcpy(pkt, profile->pkt, profile->pkt_len);
- 
-@@ -5740,7 +5733,7 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 		}
- 	}
- 
--	s_rule->pdata.lkup_tx_rx.hdr_len = cpu_to_le16(profile->pkt_len);
-+	s_rule->hdr_len = cpu_to_le16(profile->pkt_len);
- 
- 	return 0;
- }
-@@ -5963,7 +5956,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 		 struct ice_rule_query_data *added_entry)
- {
- 	struct ice_adv_fltr_mgmt_list_entry *m_entry, *adv_fltr = NULL;
--	struct ice_aqc_sw_rules_elem *s_rule = NULL;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule = NULL;
- 	const struct ice_dummy_pkt_profile *profile;
- 	u16 rid = 0, i, rule_buf_sz, vsi_handle;
- 	struct list_head *rule_head;
-@@ -6040,7 +6033,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 		}
- 		return status;
- 	}
--	rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE + profile->pkt_len;
-+	rule_buf_sz = ICE_SW_RULE_RX_TX_HDR_SIZE(s_rule, profile->pkt_len);
- 	s_rule = kzalloc(rule_buf_sz, GFP_KERNEL);
- 	if (!s_rule)
- 		return -ENOMEM;
-@@ -6089,16 +6082,15 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	 * by caller)
- 	 */
- 	if (rinfo->rx) {
--		s_rule->type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
--		s_rule->pdata.lkup_tx_rx.src =
--			cpu_to_le16(hw->port_info->lport);
-+		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
-+		s_rule->src = cpu_to_le16(hw->port_info->lport);
- 	} else {
--		s_rule->type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_TX);
--		s_rule->pdata.lkup_tx_rx.src = cpu_to_le16(rinfo->sw_act.src);
-+		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_TX);
-+		s_rule->src = cpu_to_le16(rinfo->sw_act.src);
- 	}
- 
--	s_rule->pdata.lkup_tx_rx.recipe_id = cpu_to_le16(rid);
--	s_rule->pdata.lkup_tx_rx.act = cpu_to_le32(act);
-+	s_rule->recipe_id = cpu_to_le16(rid);
-+	s_rule->act = cpu_to_le32(act);
- 
- 	status = ice_fill_adv_dummy_packet(lkups, lkups_cnt, s_rule, profile);
- 	if (status)
-@@ -6107,7 +6099,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	if (rinfo->tun_type != ICE_NON_TUN &&
- 	    rinfo->tun_type != ICE_SW_TUN_AND_NON_TUN) {
- 		status = ice_fill_adv_packet_tun(hw, rinfo->tun_type,
--						 s_rule->pdata.lkup_tx_rx.hdr,
-+						 s_rule->hdr_data,
- 						 profile->offsets);
- 		if (status)
- 			goto err_ice_add_adv_rule;
-@@ -6135,8 +6127,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 
- 	adv_fltr->lkups_cnt = lkups_cnt;
- 	adv_fltr->rule_info = *rinfo;
--	adv_fltr->rule_info.fltr_rule_id =
--		le16_to_cpu(s_rule->pdata.lkup_tx_rx.index);
-+	adv_fltr->rule_info.fltr_rule_id = le16_to_cpu(s_rule->index);
- 	sw = hw->switch_info;
- 	sw->recp_list[rid].adv_rule = true;
- 	rule_head = &sw->recp_list[rid].filt_rules;
-@@ -6384,17 +6375,16 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	}
- 	mutex_unlock(rule_lock);
- 	if (remove_rule) {
--		struct ice_aqc_sw_rules_elem *s_rule;
-+		struct ice_sw_rule_lkup_rx_tx *s_rule;
- 		u16 rule_buf_sz;
- 
--		rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE;
-+		rule_buf_sz = ICE_SW_RULE_RX_TX_NO_HDR_SIZE(s_rule);
- 		s_rule = kzalloc(rule_buf_sz, GFP_KERNEL);
- 		if (!s_rule)
- 			return -ENOMEM;
--		s_rule->pdata.lkup_tx_rx.act = 0;
--		s_rule->pdata.lkup_tx_rx.index =
--			cpu_to_le16(list_elem->rule_info.fltr_rule_id);
--		s_rule->pdata.lkup_tx_rx.hdr_len = 0;
-+		s_rule->act = 0;
-+		s_rule->index = cpu_to_le16(list_elem->rule_info.fltr_rule_id);
-+		s_rule->hdr_len = 0;
- 		status = ice_aq_sw_rules(hw, (struct ice_aqc_sw_rules *)s_rule,
- 					 rule_buf_sz, 1,
- 					 ice_aqc_opc_remove_sw_rules, NULL);
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index ecac75e71395..eb641e5512d2 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -23,9 +23,6 @@
- #define ICE_PROFID_IPV6_GTPU_TEID			46
- #define ICE_PROFID_IPV6_GTPU_IPV6_TCP_INNER		70
- 
--#define ICE_SW_RULE_RX_TX_NO_HDR_SIZE \
--	(offsetof(struct ice_aqc_sw_rules_elem, pdata.lkup_tx_rx.hdr))
--
- /* VSI context structure for add/get/update/free operations */
- struct ice_vsi_ctx {
- 	u16 vsi_num;
--- 
-2.36.1
-
+> -----Original Message-----
+> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
+> Sent: Tuesday, May 31, 2022 22:41
+> To: Palczewski, Mateusz <mateusz.palczewski@intel.com>; intel-wired-lan@lists.osuosl.org
+> Cc: Patynowski, PrzemyslawX <przemyslawx.patynowski@intel.com>; Laba, SlawomirX <slawomirx.laba@intel.com>
+> Subject: Re: [Intel-wired-lan] [PATCH net v1 1/2] ice: Add error handling for queue config fail
+> 
+> 
+> 
+> On 5/31/2022 6:18 AM, Mateusz Palczewski wrote:
+> > From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+> > 
+> > Disable VF's RX/TX queues, when VIRTCHNL_OP_CONFIG_VSI_QUEUES fail.
+> > Not disabling them might lead to scenario, where PF driver leaves VF 
+> > queues enabled, when VF's VSI failed queue config.
+> > In this scenario VF should not have RX/TX queues enabled. If PF failed 
+> > to setup VF's queues, VF will reset due to TX timeouts in VF driver.
+> > 
+> 
+> Patches for net need a Fixes tag.
+> 
+> > Signed-off-by: Przemyslaw Patynowski 
+> > <przemyslawx.patynowski@intel.com>
+> > Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> > Suggested-by: Slawomir Laba <slawomirx.laba@intel.com>
+> > ---
+> >   drivers/net/ethernet/intel/ice/ice_virtchnl.c | 53 +++++++++----------
+> >   1 file changed, 26 insertions(+), 27 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c 
+> > b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > index 1d9b84c..4547bc1 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> > @@ -1569,35 +1569,27 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
+> >    */
+> >   static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+> >   {
+> > -	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
+We will upload this as fix then, because I believe it actually fixes same scenario as in the 2/2 patch,
+but it's just harder to trigger this case.
+> 
+> This removal seems like a refactor and unrelated to the bug. Please send this change via net-next.
+> 
+> Thanks,
+> Tony
+> 
+> >   	struct virtchnl_vsi_queue_config_info *qci =
+> >   	    (struct virtchnl_vsi_queue_config_info *)msg;
+> >   	struct virtchnl_queue_pair_info *qpi;
+> >   	struct ice_pf *pf = vf->pf;
+> >   	struct ice_vsi *vsi;
+> > -	int i, q_idx;
+> > +	int i = -1, q_idx;
+> >   
+> > -	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
+> > -		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> > +	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
+> >   		goto error_param;
+> > -	}
+> >   
+> > -	if (!ice_vc_isvalid_vsi_id(vf, qci->vsi_id)) {
+> > -		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> > +	if (!ice_vc_isvalid_vsi_id(vf, qci->vsi_id))
+> >   		goto error_param;
+> > -	}
+> 
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
