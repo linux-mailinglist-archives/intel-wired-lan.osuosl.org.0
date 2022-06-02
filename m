@@ -1,83 +1,47 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 886D453BBFC
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jun 2022 17:57:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B46453BC11
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jun 2022 18:04:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B995C40A95;
-	Thu,  2 Jun 2022 15:57:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A3C561047;
+	Thu,  2 Jun 2022 16:04:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2iQ7Dg5mGrsM; Thu,  2 Jun 2022 15:57:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kDZUm6sX7dQQ; Thu,  2 Jun 2022 16:04:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B0FB2408A6;
-	Thu,  2 Jun 2022 15:57:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0EC1260F8D;
+	Thu,  2 Jun 2022 16:04:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6C6D01BF401
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 15:57:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AFE141BF401
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 16:04:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 68DBE81AC1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 15:57:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9DA3360B56
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 16:04:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P0z6CHtNkrYU for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jun 2022 15:57:44 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x531.google.com (mail-pg1-x531.google.com
- [IPv6:2607:f8b0:4864:20::531])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 869E881763
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 15:57:44 +0000 (UTC)
-Received: by mail-pg1-x531.google.com with SMTP id u4so2133518pgk.11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 02 Jun 2022 08:57:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=geyGj2h8e5l4UvjaG7yeOltvkAXWrkX3tnYPm/28OpM=;
- b=J7oc9gaOHz7cu1wMvim5v58b0ncAlSkdd+bBZQ652fPzpKuCR8VDXEHy+a3i9H/aJE
- u3CjahDq48eE5TS/3qSTkFrPYG/1VEB25jXMY2Tatgm+CLAB1t+Q4/lOkTkT3RRB3bYl
- pB0tamF8CO4YSYzxaYNVmz3GDSOtIsGMMGJGmBnEMfxCGfVcrVIzM2mh3cVJbVsDHlrN
- zthxjcfxsTHBmJIcBoyGHfk1I7E2hPz6LEpp9ZRdbvhkkMhGAKcjigS+m1M5/PXxuOAc
- ure4OMlDX/BkcLE0wpTCwP4zDYDXL5Z2k3OJMikfhCiwHtDyNy7tvSKFlwi4WtUTH5rf
- EIgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=geyGj2h8e5l4UvjaG7yeOltvkAXWrkX3tnYPm/28OpM=;
- b=3HZZJSHQzCGzvFtJN73GLtVLqzq6u+cijn0tjPu0BMpvfl4pxBZrEmoDbblQFi06ip
- GHUY1JgjjmuLtibc8k9LLPYNbf6Vn7SPyKV8hd3xlRCe9QbI5jVObGqbUZ71HOhShTRF
- CkkzZsNz6dMe3Q3yH+rlbsYRRle3E9J06bVNi0h+seMLL0rU4szaeP5nS77GG/A1QmPR
- BidoPbUofGDeeXumXgEMSeeKe88EMhSnyU9v54Nxt/TZOqYFyLufOW51Vvssme34mxWF
- 8jucPLuBKP9lNc+sKONM16PQpnZ0zxezm84hG9ini5L4xuN3ErVx3absD22aZX1wZPkr
- HEpA==
-X-Gm-Message-State: AOAM530chV2LBa1okWm3tH1QA+TrzoO0OA8CexDfTrYwqdrYFGWC9cXZ
- 9M6+09PZHD6aV1mezUgIeFc=
-X-Google-Smtp-Source: ABdhPJyZX0VZHGnsu0fmc0nF/zEyM2xuUFHR/oXBozjNIgICnhchUzL3uIfQcp+/6NcvJopwanUuRA==
-X-Received: by 2002:a05:6a00:8cb:b0:510:9ec4:8f85 with SMTP id
- s11-20020a056a0008cb00b005109ec48f85mr5908257pfu.24.1654185463778; 
- Thu, 02 Jun 2022 08:57:43 -0700 (PDT)
-Received: from [192.168.0.128] ([98.97.39.9])
- by smtp.googlemail.com with ESMTPSA id
- s11-20020a170902a50b00b001661f9ada6dsm3402479plq.143.2022.06.02.08.57.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jun 2022 08:57:43 -0700 (PDT)
-Message-ID: <f16ef33a4b12cebae2e2300a509014cd5de4a0d2.camel@gmail.com>
-From: Alexander H Duyck <alexander.duyck@gmail.com>
-To: Lixue Liang <lianglixuehao@126.com>, pmenzel@molgen.mpg.de
-Date: Thu, 02 Jun 2022 08:57:41 -0700
-In-Reply-To: <20220601150428.33945-1-lianglixuehao@126.com>
-References: <20220601150428.33945-1-lianglixuehao@126.com>
-User-Agent: Evolution 3.40.4 (3.40.4-5.fc34) 
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N5Qxo3MP7m22 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jun 2022 16:03:59 +0000 (UTC)
+X-Greylist: delayed 00:05:44 by SQLgrey-1.8.0
+Received: from mail.wantstofly.org (hmm.wantstofly.org [213.239.204.108])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4E279605EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jun 2022 16:03:59 +0000 (UTC)
+Received: by mail.wantstofly.org (Postfix, from userid 1000)
+ id C70227F546; Thu,  2 Jun 2022 18:58:11 +0300 (EEST)
+Date: Thu, 2 Jun 2022 18:58:11 +0300
+From: Lennert Buytenhek <buytenh@wantstofly.org>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <YpjeEyMxobCIRfTx@wantstofly.org>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v4] igb: Assign random MAC address
- instead of fail in case of invalid one
+Content-Disposition: inline
+Subject: [Intel-wired-lan] [PATCH v1] igc: Reinstate IGC_REMOVED logic and
+ implement it properly
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,86 +54,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lianglixue@greatwall.com.cn, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org
+Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2022-06-01 at 15:04 +0000, Lixue Liang wrote:
-> From: Lixue Liang <lianglixue@greatwall.com.cn>
-> 
-> In some cases, when the user uses igb_set_eeprom to modify the MAC
-> address to be invalid, the igb driver will fail to load. If there is no
-> network card device, the user must modify it to a valid MAC address by
-> other means.
-> 
-> Since the MAC address can be modified, then add a random valid MAC address
-> to replace the invalid MAC address in the driver can be workable, it can
-> continue to finish the loading, and output the relevant log reminder.
-> 
-> Signed-off-by: Lixue Liang <lianglixue@greatwall.com.cn>
-> ---
-> Changelog:
-> * v4:
->   - Change the igb_mian in the title to igb
->   - Fix dev_err message: replace "already assigned random MAC address" 
->     with "Invalid MAC address. Assigned random MAC address" 
->   Suggested-by Tony <anthony.l.nguyen@intel.com>
-> 
-> * v3:
->   - Add space after comma in commit message 
->   - Correct spelling of MAC address
->   Suggested-by Paul <pmenzel@molgen.mpg.de>
-> 
-> * v2:
->   - Change memcpy to ether_addr_copy
->   - Change dev_info to dev_err
->   - Fix the description of the commit message
->   - Change eth_random_addr to eth_hw_addr_random
->   Reported-by: kernel test robot <lkp@intel.com>
-> 
->  drivers/net/ethernet/intel/igb/igb_main.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index 34b33b21e0dc..5e3b162e50ac 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -3359,9 +3359,10 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->  	eth_hw_addr_set(netdev, hw->mac.addr);
->  
->  	if (!is_valid_ether_addr(netdev->dev_addr)) {
-> -		dev_err(&pdev->dev, "Invalid MAC Address\n");
-> -		err = -EIO;
-> -		goto err_eeprom;
-> +		eth_hw_addr_random(netdev);
-> +		ether_addr_copy(hw->mac.addr, netdev->dev_addr);
-> +		dev_err(&pdev->dev,
-> +			"Invalid MAC address. Assigned random MAC address\n");
->  	}
->  
->  	igb_set_default_mac_filter(adapter);
+The initially merged version of the igc driver code (via commit
+146740f9abc4, "igc: Add support for PF") contained the following
+IGC_REMOVED checks in the igc_rd32/wr32() MMIO accessors:
 
-Losing the MAC address is one of the least destructive things you can
-do by poking the EEPROM manually. There are settings in there for other
-parts of the EEPROM for the NIC that can just as easily prevent the
-driver from loading, or worse yet even prevent it from appearing on the
-PCIe bus in some cases. So I don't see the user induced EEPROM
-corruption as a good justification for this patch as the user shouldn't
-be poking the EEPROM if they cannot do so without breaking things.
+	u32 igc_rd32(struct igc_hw *hw, u32 reg)
+	{
+		u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+		u32 value = 0;
 
-With that said I would be okay with adding this with the provision that
-there is a module parameter to turn on this funcitonality. The
-justification would be that the user is expecting to have a corrupted
-EEPROM because they are working with some pre-production board or
-uninitialized sample. This way if somebody is wanting to update the
-EEPROM on a bad board they can use the kernel to do it, but they have
-to explicitly enable this mode and not just have the fact that their
-EEPROM is corrupted hidden as error messages don't necessarily get
-peoples attention unless they are seeing some other issue.
+		if (IGC_REMOVED(hw_addr))
+			return ~value;
 
+		value = readl(&hw_addr[reg]);
+
+		/* reads should not return all F's */
+		if (!(~value) && (!reg || !(~readl(hw_addr))))
+			hw->hw_addr = NULL;
+
+		return value;
+	}
+
+And:
+
+	#define wr32(reg, val) \
+	do { \
+		u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
+		if (!IGC_REMOVED(hw_addr)) \
+			writel((val), &hw_addr[(reg)]); \
+	} while (0)
+
+E.g. igb has similar checks in its MMIO accessors, and has a similar
+macro E1000_REMOVED, which is implemented as follows:
+
+	#define E1000_REMOVED(h) unlikely(!(h))
+
+These checks serve to detect and take note of an 0xffffffff MMIO read
+return from the device, which can be caused by a PCIe link flap or some
+other kind of PCI bus error, and to avoid performing MMIO reads and
+writes from that point onwards.
+
+However, the IGC_REMOVED macro was not originally implemented:
+
+	#ifndef IGC_REMOVED
+	#define IGC_REMOVED(a) (0)
+	#endif /* IGC_REMOVED */
+
+This led to the IGC_REMOVED logic to be removed entirely in a
+subsequent commit (commit 3c215fb18e70, "igc: remove IGC_REMOVED
+function"), with the rationale that such checks matter only for
+virtualization and that igc does not support virtualization -- but a
+PCIe device can become detached even without virtualization being in
+use, and without proper checks, a PCIe bus error affecting an igc
+adapter will lead to various NULL pointer dereferences, as the first
+access after the error will set hw->hw_addr to NULL, and subsequent
+accesses will blindly dereference this now-NULL pointer.
+
+This patch reinstates the IGC_REMOVED checks in igc_rd32/wr32(), and
+implements IGC_REMOVED the way it is done for igb, by checking for the
+unlikely() case of hw_addr being NULL.  This change prevents the oopses
+seen when a PCIe link flap occurs on an igc adapter.
+
+Fixes: 146740f9abc4 ("igc: Add support for PF")
+Signed-off-by: Lennert Buytenhek <buytenh@arista.com>
+---
+As initially reported on intel-wired-lan@ in February:
+
+	https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20220214/027787.html
+
+We're seeing these NULL pointer dereferences hit fairly reproducibly
+when rebooting, presumably due to the particularities of reset
+sequencing on the boards we see this hit on.
+
+A link flap can be caused by toggling the Secondary Bus Reset bit
+in the upstream PCIe bridge's Bridge Control register and can reliably
+reproduce this problem.
+
+ drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+ drivers/net/ethernet/intel/igc/igc_regs.h | 5 ++++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 74b2c590ed5d..38e46e9ba8bb 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6171,6 +6171,9 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+ 	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+ 	u32 value = 0;
+ 
++	if (IGC_REMOVED(hw_addr))
++		return ~value;
++
+ 	value = readl(&hw_addr[reg]);
+ 
+ 	/* reads should not return all F's */
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index e197a33d93a0..026c3b65fc37 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -306,7 +306,8 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg);
+ #define wr32(reg, val) \
+ do { \
+ 	u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
+-	writel((val), &hw_addr[(reg)]); \
++	if (!IGC_REMOVED(hw_addr)) \
++		writel((val), &hw_addr[(reg)]); \
+ } while (0)
+ 
+ #define rd32(reg) (igc_rd32(hw, reg))
+@@ -318,4 +319,6 @@ do { \
+ 
+ #define array_rd32(reg, offset) (igc_rd32(hw, (reg) + ((offset) << 2)))
+ 
++#define IGC_REMOVED(h) unlikely(!(h))
++
+ #endif
+-- 
+2.36.1
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
