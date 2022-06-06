@@ -1,65 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A7D253E519
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jun 2022 16:39:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EECE53F1B3
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jun 2022 23:28:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 09FD240127;
-	Mon,  6 Jun 2022 14:39:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C562161075;
+	Mon,  6 Jun 2022 21:28:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XgrAdTio-NEN; Mon,  6 Jun 2022 14:39:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 49E9tiBf8lPb; Mon,  6 Jun 2022 21:28:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D1B0E4013B;
-	Mon,  6 Jun 2022 14:39:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ACA2D60EC7;
+	Mon,  6 Jun 2022 21:28:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A20891BF363
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 14:39:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 47C131BF3F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 15:35:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9C0FF41621
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 14:39:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 442F683FBB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 15:35:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=126.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HmFiNFBhnNNR for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jun 2022 14:39:27 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iLa7DpvVzgFi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jun 2022 15:35:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from m15111.mail.126.com (m15111.mail.126.com [220.181.15.111])
- by smtp4.osuosl.org (Postfix) with ESMTP id 664B9415D8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 14:39:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
- s=s110527; h=Mime-Version:Subject:From:Date:Message-Id; bh=+j7I1
- ANOmEKl+mgVzb1Ui/TPSkwl2RERC54Siy1QUVw=; b=PCL8L0rl1QYU446YnN+AE
- dcDZJPV4hSTpUNoi+xdQAngDiPV9iraDZYuhLRk1ybHBIcklp8BiB0hVjP/i93k7
- xRFFIPar5bxfbzIYxgQC4rN9RvdIYkNsoTAbVVY4xF/2y+PMGhfU1ettHPDUyWXF
- 4Cj3qvZ9GSf32DA5ao5gqw=
-Received: from smtpclient.apple (unknown [120.229.65.48])
- by smtp1 (Coremail) with SMTP id C8mowACXdd6aEJ5izOPPDQ--.38245S2;
- Mon, 06 Jun 2022 22:35:08 +0800 (CST)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.80.82.1.1\))
-From: =?utf-8?B?5qKB56S85a2m?= <lianglixuehao@126.com>
-In-Reply-To: <f16ef33a4b12cebae2e2300a509014cd5de4a0d2.camel@gmail.com>
-Date: Mon, 6 Jun 2022 22:35:07 +0800
-Message-Id: <0362CDDC-AE9B-448C-BE7C-D563B12D5A61@126.com>
-References: <20220601150428.33945-1-lianglixuehao@126.com>
- <f16ef33a4b12cebae2e2300a509014cd5de4a0d2.camel@gmail.com>
-To: Alexander H Duyck <alexander.duyck@gmail.com>
-X-Mailer: Apple Mail (2.3696.80.82.1.1)
-X-CM-TRANSID: C8mowACXdd6aEJ5izOPPDQ--.38245S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW3XFW8Gw15AFW8JFyUKF48JFb_yoW7CF1xpF
- Z3Ka17KFykJr4jk3ykXw48XFyF9Fs5Jay5Gr90yw1F9Fn8Wr9rAr48K345C34rJrZ7G3W2
- vF43ZF4Du3Z0yaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UP5rxUUUUU=
-X-Originating-IP: [120.229.65.48]
-X-CM-SenderInfo: xold0w5ol03vxkdrqiyswou0bp/1tbi3B0YFlpEDpwWUwAAsG
-Subject: Re: [Intel-wired-lan] [PATCH v4] igb: Assign random MAC address
- instead of fail in case of invalid one
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 89C3283FAE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jun 2022 15:35:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1654529750; x=1686065750;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=UXGDFjXHXhBPs3ndifvn+pkBqRw8EmnLxTlNv0zLU68=;
+ b=YHyY+z7vuNX2iOvEotT/Vl6gH3Ix9TEgZaT9XZcNxNYkhKEYn5LIqI8u
+ aaOK7WkPrjgLZdnN1Dx9S5k+elUMrJKFobjsAwWZTzoG8uYyB6Zn6S+0y
+ dmFlSZI3w+V3QJ1TPRX1H4ruSibHjVHnrygrkeMoXb/wjMbA7hbPd86iN
+ g96jwycq5msQHyek/Zi1Zt3m/zJM+6OgotFWmEhqc5+n6Yz78sDvjnQIM
+ c/P1xC7cFJATqryzh44yzqhUbJ+sh6b15X9VlH6P8b9mChkowfbh3KpPL
+ 1ABJvFaysqHAMO7pvFtOgCAk2WTUgEkLpSVllBgbMD8Ffi1ydngxTA8ri A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10370"; a="274201186"
+X-IronPort-AV: E=Sophos;i="5.91,280,1647327600"; d="scan'208";a="274201186"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2022 08:35:48 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,280,1647327600"; d="scan'208";a="579204726"
+Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
+ ([10.166.28.101])
+ by orsmga007.jf.intel.com with ESMTP; 06 Jun 2022 08:35:48 -0700
+From: Jun Zhang <xuejun.zhang@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  6 Jun 2022 11:35:35 -0400
+Message-Id: <20220606153535.3574930-1-xuejun.zhang@intel.com>
+X-Mailer: git-send-email 2.35.3
+MIME-Version: 1.0
+X-Mailman-Approved-At: Mon, 06 Jun 2022 21:28:14 +0000
+Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix max_rate limiting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,111 +75,105 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, lianglixue@greatwall.com.cn,
- Netdev <netdev@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ Jun Zhang <xuejun.zhang@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGksCnRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHlvdXIgc3VnZ2VzdGlvbi4KCkFzIHlvdSBzYWlk
-LCB0aGUgd2F5IHRvIGNhdXNlIOKAmEludmFsaWQgTUFDIGFkZHJlc3PigJkgaXMgbm90IG9ubHkg
-dGhyb3VnaCBpZ2Jfc2V0X2VlcHJvbSwKYnV0IGFsc28gc29tZSBwcmUtcHJvZHVjdGlvbiBvciB1
-bmluaXRpYWxpemVkIGJvYXJkcy4KCkJ1dCBpZiBzZXQgYnkgbW9kdWxlIHBhcmFtZXRlcnMsIGVz
-cGVjaWFsbHkgaW4gdGhlIGNhc2Ugb2YgQ09ORklHX0lHQj15LApUaGUgc2l0dWF0aW9uIG1heSBi
-ZSBtb3JlIHRyb3VibGVzb21lLCBiZWNhdXNlIGZvciBtb3N0IHVzZXJzLCBpZiB0aGUgc3lzdGVt
-IGRvZXMgbm90IHByb3Blcmx5IGxvYWQgYW5kIGdlbmVyYXRlIAp0aGUgbmV0d29yayBjYXJkIGRl
-dmljZSwgdGhleSBjYW4gb25seSBhc2sgdGhlIGhvc3Qgc3VwcGxpZXIgZm9yIGhlbHAuQnV0LAoK
-KDEpIElmIHRoZSBpbnZhbGlkIG1hYyBhZGRyZXNzIGlzIGNhdXNlZCBieSBpZ2Jfc2V0X2VlcHJv
-bSwgaXQgaXMgcmVsYXRpdmVseSBtb3JlIGNvbnZlbmllbnQgZm9yIG1vc3Qgb3BlcmF0aW9ucyBl
-bmdpbmVlcnMgCnRvIGNoYW5nZSB0aGUgaW52YWxpZCBtYWMgYWRkcmVzcyB0byB0aGUgbWFjIGFk
-ZHJlc3MgdGhleSB0aGluayBzaG91bGQgYmUgdmFsaWQgYnkgZXRodG9vbCwgd2hpY2ggbWF5IHN0
-aWxsIGJlIEludmFsaWQuCkF0IHRoaXMgdGltZSxhc3NpZ25lZCByYW5kb20gTUFDIGFkZHJlc3Mg
-d2hpY2ggaXMgdmFsaWQgYnkgdGhlIGRyaXZlciBlbmFibGVzIHRoZSBuZXR3b3JrIGNhcmQgZHJp
-dmVyIHRvIGNvbnRpbnVlIHRvIGNvbXBsZXRlIHRoZSBsb2FkaW5nLgpBcyBmb3Igd2hhdCB5b3Ug
-bWVudGlvbmVkLCBpbiB0aGlzIGNhc2UgaWYgdGhlIHVzZXIgZG9lcyBub3Qgbm90aWNlIHRoYXQg
-dGhlIGRyaXZlciBoYWQgdXNlZCBhIHJhbmRvbSBtYWMgYWRkcmVzcywKaXQgbWF5IGxlYWQgdG8g
-b3RoZXIgcHJvYmxlbXMuYnV0IHRoZSBmYWN0IGlzIHRoYXQgaWYgdGhlIHVzZXIgZGVsaWJlcmF0
-ZWx5IHNldHMgYSBjdXN0b21pemVkIG1hYyBhZGRyZXNzLCAKdGhlIHVzZXIgc2hvdWxkIHBheSBh
-dHRlbnRpb24gdG8gd2hldGhlciB0aGUgbWFjIGFkZHJlc3MgaXMgc3VjY2Vzc2Z1bGx5IGNoYW5n
-ZWQsIGFuZCBhbHNvIHBheSBhdHRlbnRpb24gdG8gdGhlIApleHBlY3RlZCByZXN1bHQgYWZ0ZXIg
-Y2hhbmdpbmcgdGhlIG1hYyBhZGRyZXNzLldoZW4gdXNlcnMgZmluZCB0aGF0IHRoZSBjdXN0b20g
-bWFjIGFkZHJlc3MgY2Fubm90IApiZSBzdWNjZXNzZnVsbHkgY2hhbmdlZCB0byB0aGUgY3VzdG9t
-aXplZCBvbmUsIHRoZXkgY2FuIGNvbnRpbnVlIGRlYnVnZ2luZywgd2hpY2ggaXMgZWFzaWVyIHRo
-YW4gbG9va2luZyBmb3IgCnRoZSBob3N0IHN1cHBsaWVy4oCZcyBzdXBwb3J0IGZyb20gdGhlIHZl
-cnkgZmlyc3QgdGltZSBvZiDigJxJbnZhbGlkIE1BQyBhZGRyZXNz4oCdLgoKKDIpIElmIHRoZSBp
-bnZhbGlkIG1hYyBhZGRyZXNzIGlzIGNhdXNlZCBkdXJpbmcgcHJlLXByb2R1Y3Rpb24gb3IgaW5p
-dGlhbGl6YXRpb24gb2YgdGhlIGJvYXJkLCBpdCBpcyBldmVuIG1vcmUgbmVjZXNzYXJ5IAp0byB1
-c2UgYSByYW5kb20gbWFjIGFkZHJlc3MgdG8gY29tcGxldGUgdGhlIGxvYWRpbmcgb2YgdGhlIG5l
-dHdvcmsgY2FyZCwgYmVjYXVzZSB0aGUgdXNlciBvbmx5IGNhcmVzIGFib3V0IHdoZXRoZXIgCnRo
-ZSBuZXR3b3JrIGNhcmQgaXMgbG9hZGVkLCBub3Qgd2hhdCB0aGUgdmFsaWQgTUFDIGFkZHJlc3Mg
-aXMuCgpBbmQgSSBhbHNvIG5vdGljZWQgdGhhdCBpeGdidmVmX3N3X2luaXQgYWxzbyB1c2VzIGEg
-cmFuZG9tIHZhbGlkIG1hYyBhZGRyZXNzIHRvIGNvbnRpbnVlIGxvYWRpbmcgdGhlIGRyaXZlciB3
-aGVuIAp0aGUgYWRkcmVzcyBpcyBpbnZhbGlkLiBJbiBhZGRpdGlvbiwgbmV0d29yayBjYXJkIGRy
-aXZlcnMgc3VjaCBhcyBtYXJ2ZWxsLCBicm9hZGNvbSwgcmVhbHRlaywgZXRjLiwgd2hlbiBhbiBp
-bnZhbGlkIApNQUMgYWRkcmVzcyBpcyBkZXRlY3RlZCwgaXQgYWxzbyBkb2VzIG5vdCBkaXJlY3Rs
-eSBleGl0IHRoZSBkcml2ZXIgbG9hZGluZywgYnV0IHVzZXMgYSByYW5kb20gdmFsaWQgTUFDIGFk
-ZHJlc3MuCgo+IDIwMjLlubQ25pyIMuaXpSAyMzo1N++8jEFsZXhhbmRlciBIIER1eWNrIDxhbGV4
-YW5kZXIuZHV5Y2tAZ21haWwuY29tPiDlhpnpgZPvvJoKPiAKPiBPbiBXZWQsIDIwMjItMDYtMDEg
-YXQgMTU6MDQgKzAwMDAsIExpeHVlIExpYW5nIHdyb3RlOgo+PiBGcm9tOiBMaXh1ZSBMaWFuZyA8
-bGlhbmdsaXh1ZUBncmVhdHdhbGwuY29tLmNuPgo+PiAKPj4gSW4gc29tZSBjYXNlcywgd2hlbiB0
-aGUgdXNlciB1c2VzIGlnYl9zZXRfZWVwcm9tIHRvIG1vZGlmeSB0aGUgTUFDCj4+IGFkZHJlc3Mg
-dG8gYmUgaW52YWxpZCwgdGhlIGlnYiBkcml2ZXIgd2lsbCBmYWlsIHRvIGxvYWQuIElmIHRoZXJl
-IGlzIG5vCj4+IG5ldHdvcmsgY2FyZCBkZXZpY2UsIHRoZSB1c2VyIG11c3QgbW9kaWZ5IGl0IHRv
-IGEgdmFsaWQgTUFDIGFkZHJlc3MgYnkKPj4gb3RoZXIgbWVhbnMuCj4+IAo+PiBTaW5jZSB0aGUg
-TUFDIGFkZHJlc3MgY2FuIGJlIG1vZGlmaWVkLCB0aGVuIGFkZCBhIHJhbmRvbSB2YWxpZCBNQUMg
-YWRkcmVzcwo+PiB0byByZXBsYWNlIHRoZSBpbnZhbGlkIE1BQyBhZGRyZXNzIGluIHRoZSBkcml2
-ZXIgY2FuIGJlIHdvcmthYmxlLCBpdCBjYW4KPj4gY29udGludWUgdG8gZmluaXNoIHRoZSBsb2Fk
-aW5nLCBhbmQgb3V0cHV0IHRoZSByZWxldmFudCBsb2cgcmVtaW5kZXIuCj4+IAo+PiBTaWduZWQt
-b2ZmLWJ5OiBMaXh1ZSBMaWFuZyA8bGlhbmdsaXh1ZUBncmVhdHdhbGwuY29tLmNuPgo+PiAtLS0K
-Pj4gQ2hhbmdlbG9nOgo+PiAqIHY0Ogo+PiAtIENoYW5nZSB0aGUgaWdiX21pYW4gaW4gdGhlIHRp
-dGxlIHRvIGlnYgo+PiAtIEZpeCBkZXZfZXJyIG1lc3NhZ2U6IHJlcGxhY2UgImFscmVhZHkgYXNz
-aWduZWQgcmFuZG9tIE1BQyBhZGRyZXNzIiAKPj4gIHdpdGggIkludmFsaWQgTUFDIGFkZHJlc3Mu
-IEFzc2lnbmVkIHJhbmRvbSBNQUMgYWRkcmVzcyIgCj4+IFN1Z2dlc3RlZC1ieSBUb255IDxhbnRo
-b255Lmwubmd1eWVuQGludGVsLmNvbT4KPj4gCj4+ICogdjM6Cj4+IC0gQWRkIHNwYWNlIGFmdGVy
-IGNvbW1hIGluIGNvbW1pdCBtZXNzYWdlIAo+PiAtIENvcnJlY3Qgc3BlbGxpbmcgb2YgTUFDIGFk
-ZHJlc3MKPj4gU3VnZ2VzdGVkLWJ5IFBhdWwgPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4KPj4gCj4+
-ICogdjI6Cj4+IC0gQ2hhbmdlIG1lbWNweSB0byBldGhlcl9hZGRyX2NvcHkKPj4gLSBDaGFuZ2Ug
-ZGV2X2luZm8gdG8gZGV2X2Vycgo+PiAtIEZpeCB0aGUgZGVzY3JpcHRpb24gb2YgdGhlIGNvbW1p
-dCBtZXNzYWdlCj4+IC0gQ2hhbmdlIGV0aF9yYW5kb21fYWRkciB0byBldGhfaHdfYWRkcl9yYW5k
-b20KPj4gUmVwb3J0ZWQtYnk6IGtlcm5lbCB0ZXN0IHJvYm90IDxsa3BAaW50ZWwuY29tPgo+PiAK
-Pj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgfCA3ICsrKystLS0K
-Pj4gMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPj4gCj4+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCj4+IGluZGV4IDM0YjMz
-YjIxZTBkYy4uNWUzYjE2MmU1MGFjIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pZ2IvaWdiX21haW4uYwo+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pZ2IvaWdiX21haW4uYwo+PiBAQCAtMzM1OSw5ICszMzU5LDEwIEBAIHN0YXRpYyBpbnQgaWdi
-X3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LCBjb25zdCBzdHJ1Y3QgcGNpX2RldmljZV9pZCAq
-ZW50KQo+PiAJZXRoX2h3X2FkZHJfc2V0KG5ldGRldiwgaHctPm1hYy5hZGRyKTsKPj4gCj4+IAlp
-ZiAoIWlzX3ZhbGlkX2V0aGVyX2FkZHIobmV0ZGV2LT5kZXZfYWRkcikpIHsKPj4gLQkJZGV2X2Vy
-cigmcGRldi0+ZGV2LCAiSW52YWxpZCBNQUMgQWRkcmVzc1xuIik7Cj4+IC0JCWVyciA9IC1FSU87
-Cj4+IC0JCWdvdG8gZXJyX2VlcHJvbTsKPj4gKwkJZXRoX2h3X2FkZHJfcmFuZG9tKG5ldGRldik7
-Cj4+ICsJCWV0aGVyX2FkZHJfY29weShody0+bWFjLmFkZHIsIG5ldGRldi0+ZGV2X2FkZHIpOwo+
-PiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsCj4+ICsJCQkiSW52YWxpZCBNQUMgYWRkcmVzcy4gQXNz
-aWduZWQgcmFuZG9tIE1BQyBhZGRyZXNzXG4iKTsKPj4gCX0KPj4gCj4+IAlpZ2Jfc2V0X2RlZmF1
-bHRfbWFjX2ZpbHRlcihhZGFwdGVyKTsKPiAKPiBMb3NpbmcgdGhlIE1BQyBhZGRyZXNzIGlzIG9u
-ZSBvZiB0aGUgbGVhc3QgZGVzdHJ1Y3RpdmUgdGhpbmdzIHlvdSBjYW4KPiBkbyBieSBwb2tpbmcg
-dGhlIEVFUFJPTSBtYW51YWxseS4gVGhlcmUgYXJlIHNldHRpbmdzIGluIHRoZXJlIGZvciBvdGhl
-cgo+IHBhcnRzIG9mIHRoZSBFRVBST00gZm9yIHRoZSBOSUMgdGhhdCBjYW4ganVzdCBhcyBlYXNp
-bHkgcHJldmVudCB0aGUKPiBkcml2ZXIgZnJvbSBsb2FkaW5nLCBvciB3b3JzZSB5ZXQgZXZlbiBw
-cmV2ZW50IGl0IGZyb20gYXBwZWFyaW5nIG9uIHRoZQo+IFBDSWUgYnVzIGluIHNvbWUgY2FzZXMu
-IFNvIEkgZG9uJ3Qgc2VlIHRoZSB1c2VyIGluZHVjZWQgRUVQUk9NCj4gY29ycnVwdGlvbiBhcyBh
-IGdvb2QganVzdGlmaWNhdGlvbiBmb3IgdGhpcyBwYXRjaCBhcyB0aGUgdXNlciBzaG91bGRuJ3QK
-PiBiZSBwb2tpbmcgdGhlIEVFUFJPTSBpZiB0aGV5IGNhbm5vdCBkbyBzbyB3aXRob3V0IGJyZWFr
-aW5nIHRoaW5ncy4KPiAKPiBXaXRoIHRoYXQgc2FpZCBJIHdvdWxkIGJlIG9rYXkgd2l0aCBhZGRp
-bmcgdGhpcyB3aXRoIHRoZSBwcm92aXNpb24gdGhhdAo+IHRoZXJlIGlzIGEgbW9kdWxlIHBhcmFt
-ZXRlciB0byB0dXJuIG9uIHRoaXMgZnVuY2l0b25hbGl0eS4gVGhlCj4ganVzdGlmaWNhdGlvbiB3
-b3VsZCBiZSB0aGF0IHRoZSB1c2VyIGlzIGV4cGVjdGluZyB0byBoYXZlIGEgY29ycnVwdGVkCj4g
-RUVQUk9NIGJlY2F1c2UgdGhleSBhcmUgd29ya2luZyB3aXRoIHNvbWUgcHJlLXByb2R1Y3Rpb24g
-Ym9hcmQgb3IKPiB1bmluaXRpYWxpemVkIHNhbXBsZS4gVGhpcyB3YXkgaWYgc29tZWJvZHkgaXMg
-d2FudGluZyB0byB1cGRhdGUgdGhlCj4gRUVQUk9NIG9uIGEgYmFkIGJvYXJkIHRoZXkgY2FuIHVz
-ZSB0aGUga2VybmVsIHRvIGRvIGl0LCBidXQgdGhleSBoYXZlCj4gdG8gZXhwbGljaXRseSBlbmFi
-bGUgdGhpcyBtb2RlIGFuZCBub3QganVzdCBoYXZlIHRoZSBmYWN0IHRoYXQgdGhlaXIKPiBFRVBS
-T00gaXMgY29ycnVwdGVkIGhpZGRlbiBhcyBlcnJvciBtZXNzYWdlcyBkb24ndCBuZWNlc3Nhcmls
-eSBnZXQKPiBwZW9wbGVzIGF0dGVudGlvbiB1bmxlc3MgdGhleSBhcmUgc2VlaW5nIHNvbWUgb3Ro
-ZXIgaXNzdWUuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
-Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
-bgo=
+Fix max_rate option in tc, check for proper quanta boundaries.
+Check for minimum value provided and if it fits expected 50Mbps
+quanta.
+
+Without this patch, iavf could send settings for max_rate limiting
+that would be accepted from by PF even the max_rate option is less
+than expected 50Mbps quanta. It results in no rate limiting
+on traffic as rate limiting will be floored to 0.
+
+Example:
+tc qdisc add dev $vf root mqprio num_tc 3 map 0 2 1 queues \
+2@0 2@2 2@4 hw 1 mode channel shaper bw_rlimit \
+max_rate 50Mbps 500Mbps 500Mbps
+
+Should limit TC0 to circa 50 Mbps
+
+tc qdisc add dev $vf root mqprio num_tc 3 map 0 2 1 queues \
+2@0 2@2 2@4 hw 1 mode channel shaper bw_rlimit \
+max_rate 0Mbps 100Kbit 500Mbps
+
+Should return error
+
+Fixes: d5b33d024496 ("i40evf: add ndo_setup_tc callback to i40evf")
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h      |  1 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 24 +++++++++++++++++++--
+ 2 files changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index fda1198d2c00..0bd516ecebef 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -93,6 +93,7 @@ struct iavf_vsi {
+ #define IAVF_HKEY_ARRAY_SIZE ((IAVF_VFQF_HKEY_MAX_INDEX + 1) * 4)
+ #define IAVF_HLUT_ARRAY_SIZE ((IAVF_VFQF_HLUT_MAX_INDEX + 1) * 4)
+ #define IAVF_MBPS_DIVISOR	125000 /* divisor to convert to Mbps */
++#define IAVF_MBPS_QUANTA	50
+ 
+ #define IAVF_VIRTCHNL_VF_RESOURCE_SIZE (sizeof(struct virtchnl_vf_resource) + \
+ 					(IAVF_MAX_VF_VSI * \
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 57c51a15bcbc..27a39d86268d 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -3411,6 +3411,7 @@ static int iavf_validate_ch_config(struct iavf_adapter *adapter,
+ 	u64 total_max_rate = 0;
+ 	int i, num_qps = 0;
+ 	u64 tx_rate = 0;
++	u32 tx_rate_rem = 0;
+ 	int ret = 0;
+ 
+ 	if (mqprio_qopt->qopt.num_tc > IAVF_MAX_TRAFFIC_CLASS ||
+@@ -3423,12 +3424,31 @@ static int iavf_validate_ch_config(struct iavf_adapter *adapter,
+ 			return -EINVAL;
+ 		if (mqprio_qopt->min_rate[i]) {
+ 			dev_err(&adapter->pdev->dev,
+-				"Invalid min tx rate (greater than 0) specified\n");
++				"Invalid min tx rate (greater than 0) specified for TC%d\n", i);
+ 			return -EINVAL;
+ 		}
+-		/*convert to Mbps */
++
++		/* convert to Mbps */
+ 		tx_rate = div_u64(mqprio_qopt->max_rate[i],
+ 				  IAVF_MBPS_DIVISOR);
++
++		if (mqprio_qopt->max_rate[i] &&
++		    tx_rate < IAVF_MBPS_QUANTA) {
++			dev_err(&adapter->pdev->dev,
++				"Invalid max tx rate for TC%d, minimum %dMbps\n",
++				i, IAVF_MBPS_QUANTA);
++			return -EINVAL;
++		}
++
++		(void)div_u64_rem(tx_rate, IAVF_MBPS_QUANTA, &tx_rate_rem);
++
++		if (tx_rate_rem != 0) {
++			dev_err(&adapter->pdev->dev,
++				"Invalid max tx rate for TC%d, not divisible by %d\n",
++				i, IAVF_MBPS_QUANTA);
++			return -EINVAL;
++		}
++
+ 		total_max_rate += tx_rate;
+ 		num_qps += mqprio_qopt->qopt.count[i];
+ 	}
+-- 
+2.35.3
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
