@@ -1,68 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8172542AC6
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jun 2022 11:08:41 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E06A0542ACA
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jun 2022 11:11:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D8AE660761;
-	Wed,  8 Jun 2022 09:08:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A8CE1419F3;
+	Wed,  8 Jun 2022 09:11:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uuUQfbQ6IoYx; Wed,  8 Jun 2022 09:08:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FTwFy-Ney6sn; Wed,  8 Jun 2022 09:11:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF4DA60746;
-	Wed,  8 Jun 2022 09:08:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3F7D841945;
+	Wed,  8 Jun 2022 09:11:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D64CF1BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:08:33 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AC1E1BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:11:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D084340B0F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:08:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EBEA641945
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:11:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ef2kGJRaVFMd for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jun 2022 09:08:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FKh8mjpdd_MS for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jun 2022 09:11:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F36AD4019C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:08:32 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 91EDB41922
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 09:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1654679313; x=1686215313;
+ t=1654679465; x=1686215465;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=shyzRlzoW3qLVqoyoD8B96ASjWuKlGRReGi64qcYm/U=;
- b=G6/tBnqkPleveVgRGE0JIe/jdVbwTyB7M/TuokCjuZ0rVUsgg91AhxZe
- pqmFeQl1aWolLKzsOkDeCJWIUiyOrxF6gd5DAORFfO2hJpJhMMDnlS6F+
- x5lvl6/b3dbJ9CGb+aSeS0sIW8MczalxlOkwo1PYWf1DNqJo3WS9Au+Fr
- 3d8BeKfL0YabzVSMxYhMkt2jI77MHm99rqLr3+GZAfxKy+20vQ5sUE9MP
- qhOGGwUFVZ0WJcLW4lmkpLd5/T/XOikpWhTDWkohDHW4azeF61iwE9cBW
- T8yKorkfKxTIMS6tGjFWz6DI/BEwgBZVJrcfuMmA0CnmgZ/7OJYOviy+r Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10371"; a="257258446"
-X-IronPort-AV: E=Sophos;i="5.91,285,1647327600"; d="scan'208";a="257258446"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jun 2022 02:08:32 -0700
+ bh=B+DzPiwXFFQMHlOcIyqsWSIxe71pkiWiD55HmK0+Jdc=;
+ b=hVZrN19+pIPN6GoAUOSaAAmiZQ/wMFKqh74vaBs92xcvgRccAVRWsQKo
+ Blt7TwoTsW8s0w+Vr914VT6ylhybGt0Dd04V3s3R+mSgISWK2favJ+SqA
+ hJGSPdD+hIR5Al0STb2I8N5JgxUaiHCrkn27XVqLyhaV8HjT2DpKG2wDC
+ sMvmsB7Dy2C7+6qGZnMi/fzbjRzEybKR7EF1x/TT9ZblHQO2t7kOmv+Vm
+ LOVqWpy0jFSAaAn+sIetuzUyveWwB7dMcKKosk1H584soiFDq/GBgHN67
+ 4Ecb5wiA4CdQgnI7YR4tSkD2KLbYDwsSxlVS7Dy953/Q4qZr+QOj68XNi w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10371"; a="278009245"
+X-IronPort-AV: E=Sophos;i="5.91,285,1647327600"; d="scan'208";a="278009245"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jun 2022 02:10:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,285,1647327600"; d="scan'208";a="648502773"
+X-IronPort-AV: E=Sophos;i="5.91,285,1647327600"; d="scan'208";a="533020557"
 Received: from s240.igk.intel.com (HELO localhost.localdomain)
  ([10.102.18.202])
- by fmsmga004.fm.intel.com with ESMTP; 08 Jun 2022 02:08:31 -0700
+ by orsmga003.jf.intel.com with ESMTP; 08 Jun 2022 02:10:55 -0700
 From: Jan Sokolowski <jan.sokolowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Jun 2022 11:10:56 +0200
-Message-Id: <20220608091056.394208-1-jan.sokolowski@intel.com>
+Date: Wed,  8 Jun 2022 11:13:21 +0200
+Message-Id: <20220608091321.394492-1-jan.sokolowski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix VF's MAC Address change
- on VM
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix erroneous adapter
+ reinitialization during recovery process
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,49 +73,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Norbert Zulinski <norbertx.zulinski@intel.com>
+Cc: Dawid Lukwinski <dawid.lukwinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Norbert Zulinski <norbertx.zulinski@intel.com>
+From: Alice Michael <alice.michael@intel.com>
 
-Clear VF MAC from parent PF and remove VF filter from VSI when both
-conditions are true:
--VIRTCHNL_VF_OFFLOAD_USO is not used
--VM MAC was not set from PF level
+Fix an issue, when driver incorrectly detects state
+of recovery process and erroneously reinitializes interrupts,
+which results in a kernel error and call trace message.
 
-It affects older version of IAVF
-and it allow them to change MAC Address on VM,
-newer IAVF won't change their behaviour.
+The issue was caused by a combination of two factors:
+1. Assuming the EMP reset issued after completing
+firmware recovery means the whole recovery process is complete.
+2. Erroneous reinitialization of interrupt vector after detecting
+the abovementioned EMP reset.
 
-Previously it wasn't possible to change VF's MAC Address on VM
-because there is flag on IAVF driver that won't allow to
-change MAC Address if this address is given from PF driver.
+Fixes (1) by changing how recovery state change is detected
+and (2) by adjusting the conditional expression to ensure using proper
+interrupt reinitialization method, depending on the situation.
 
-Fixes: 155f0ac2c96b ("iavf: allow permanent MAC address to change")
-Signed-off-by: Norbert Zulinski <norbertx.zulinski@intel.com>
+Fixes: 4ff0ee1af016 ("i40e: Introduce recovery mode support")
+Signed-off-by: Alice Michael <alice.michael@intel.com>
+Signed-off-by: Dawid Lukwinski <dawid.lukwinski@intel.com>
 Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 033ea71763e3..86b0f21287dc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2147,6 +2147,10 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
- 		/* VFs only use TC 0 */
- 		vfres->vsi_res[0].qset_handle
- 					  = le16_to_cpu(vsi->info.qs_handle[0]);
-+		if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_USO) && !vf->pf_set_mac) {
-+			i40e_del_mac_filter(vsi, vf->default_lan_addr.addr);
-+			eth_zero_addr(vf->default_lan_addr.addr);
-+		}
- 		ether_addr_copy(vfres->vsi_res[0].default_mac_addr,
- 				vf->default_lan_addr.addr);
- 	}
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index d59b9a08f5b3..685556e968f2 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -10654,7 +10654,7 @@ static int i40e_reset(struct i40e_pf *pf)
+  **/
+ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+ {
+-	int old_recovery_mode_bit = test_bit(__I40E_RECOVERY_MODE, pf->state);
++	const bool is_recovery_mode_reported = i40e_check_recovery_mode(pf);
+ 	struct i40e_vsi *vsi = pf->vsi[pf->lan_vsi];
+ 	struct i40e_hw *hw = &pf->hw;
+ 	i40e_status ret;
+@@ -10662,13 +10662,11 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+ 	int v;
+ 
+ 	if (test_bit(__I40E_EMP_RESET_INTR_RECEIVED, pf->state) &&
+-	    i40e_check_recovery_mode(pf)) {
++	    is_recovery_mode_reported)
+ 		i40e_set_ethtool_ops(pf->vsi[pf->lan_vsi]->netdev);
+-	}
+ 
+ 	if (test_bit(__I40E_DOWN, pf->state) &&
+-	    !test_bit(__I40E_RECOVERY_MODE, pf->state) &&
+-	    !old_recovery_mode_bit)
++	    !test_bit(__I40E_RECOVERY_MODE, pf->state))
+ 		goto clear_recovery;
+ 	dev_dbg(&pf->pdev->dev, "Rebuilding internal switch\n");
+ 
+@@ -10695,13 +10693,12 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+ 	 * accordingly with regard to resources initialization
+ 	 * and deinitialization
+ 	 */
+-	if (test_bit(__I40E_RECOVERY_MODE, pf->state) ||
+-	    old_recovery_mode_bit) {
++	if (test_bit(__I40E_RECOVERY_MODE, pf->state)) {
+ 		if (i40e_get_capabilities(pf,
+ 					  i40e_aqc_opc_list_func_capabilities))
+ 			goto end_unlock;
+ 
+-		if (test_bit(__I40E_RECOVERY_MODE, pf->state)) {
++		if (is_recovery_mode_reported) {
+ 			/* we're staying in recovery mode so we'll reinitialize
+ 			 * misc vector here
+ 			 */
 -- 
 2.27.0
 
