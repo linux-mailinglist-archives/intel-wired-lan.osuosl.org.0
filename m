@@ -1,71 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51F8B5438B4
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jun 2022 18:19:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 842C65439E7
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jun 2022 19:06:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C309B60D4F;
-	Wed,  8 Jun 2022 16:18:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 69788401C5;
+	Wed,  8 Jun 2022 17:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dkZZ-vT8LFEp; Wed,  8 Jun 2022 16:18:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9IhPPI2ERTGP; Wed,  8 Jun 2022 17:06:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A1E6660D68;
-	Wed,  8 Jun 2022 16:18:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7480F40101;
+	Wed,  8 Jun 2022 17:06:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A49AC1BF45A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 12:44:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7FFE51BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 17:05:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9178A41922
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 12:44:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6E0A340101
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 17:05:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zRAypHBl7Vkc for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jun 2022 12:44:53 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j3BLndBWLqNp for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jun 2022 17:05:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 42B22417B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 12:44:53 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0B51161902;
- Wed,  8 Jun 2022 12:44:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BEA34C34116;
- Wed,  8 Jun 2022 12:44:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1654692291;
- bh=LVReFo01uACTlKrhwXKsuUfBq5L0CISVHHKRJOYLXHw=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=cC/4JnE8PN/l2yj6uJwN7ybIsEkH2DwWfR6ZjesxpCLKK3ksJcqgm9fBY6Vf0lG7g
- VSIKpW4RRux41sf3nE4ZOJFDhmFGSmdi2gvSZ7Erbo0Fu9N+rDdJDOXt0r3ZskYd72
- SbREicE13lI0Qd2NoYSN9vQaimGvr2vGUurCD31I7zd2BupTgqj4K/UO1hykYDGJEY
- LrFJDEj2c/EtRuO9D+PPnV+2ZpRug8uEM7hroZrIEytGq8zocinnSg4tL4O97+gwZ6
- GT36MY93c4Vi+1nMMAnsPdDW4glidwVd5N5A8ajg946W4w9/1GQ0+bnBL1iNtFlSvm
- 57dJfOG7Z+F6g==
-Message-ID: <5522f28fa2aef2890c1d5533899b0a7954bddc6a.camel@kernel.org>
-From: Jeff Layton <jlayton@kernel.org>
-To: "Switzer, David" <david.switzer@intel.com>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>
-Date: Wed, 08 Jun 2022 08:44:49 -0400
-In-Reply-To: <SN6PR11MB351830AC7CCF4B4D2C49F165EBA59@SN6PR11MB3518.namprd11.prod.outlook.com>
-References: <8225a14538339c7b38d9da1974ebefaf4db1bc51.camel@kernel.org>
- <SN6PR11MB351830AC7CCF4B4D2C49F165EBA59@SN6PR11MB3518.namprd11.prod.outlook.com>
-User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 466AC40002
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jun 2022 17:05:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1654707957; x=1686243957;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=mIkkQ8/5DrIuapdEq8RIpJ7NiFbp8MDGZSzozoidtH0=;
+ b=KYvVUzGhsoAvGSb5VPaS4utvx6Sb+vRGv9InlrLZNvhwQJwTb72BT7r2
+ tpOcRzIvgj8NwThEkfu9ZLen3GTjkHwekEbVdm3c5NDZp5oI0wA9kahBQ
+ j/TZ0Vqy/jK/Tfgh+C/qsXbR8I1u4t3jQ9Wg7Czr48zCsf6M/a7RScEcC
+ /xLBYR9icpP4rq/3+RVYDm5qVNViqZnMk52TqCBGc22Zs4PBPybB1jqhp
+ WRzvqBjVATcBJbAyzMPMF2gpu/y4AqFzkodfT246wbwVYq3UBjhowhYEu
+ PJjVUhhoS4GvQzJXKc5fIC42wBSJQn1wdEFK2sV8ci6ozuXLat/rTH1Fq g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10372"; a="338756306"
+X-IronPort-AV: E=Sophos;i="5.91,286,1647327600"; d="scan'208";a="338756306"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jun 2022 10:05:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,286,1647327600"; d="scan'208";a="648727689"
+Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
+ ([10.166.28.101])
+ by fmsmga004.fm.intel.com with ESMTP; 08 Jun 2022 10:05:52 -0700
+From: Jun Zhang <xuejun.zhang@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  8 Jun 2022 13:05:40 -0400
+Message-Id: <20220608170540.3463098-1-xuejun.zhang@intel.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 08 Jun 2022 16:18:54 +0000
-Subject: Re: [Intel-wired-lan] intermittent ixgbe transmit queue timeouts in
- v5.18 kernels
+Subject: [Intel-wired-lan] [PATCH net v2] iavf: Fix missing state logs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,122 +72,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ilya Dryomov <idryomov@gmail.com>, Xiubo Li <xiubli@redhat.com>,
- Venky Shankar <vshankar@redhat.com>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 2022-06-07 at 21:22 +0000, Switzer, David wrote:
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of
-> > Jeff Layton
-> > Sent: Thursday, June 2, 2022 2:38 PM
-> > To: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
-> > <anthony.l.nguyen@intel.com>; Brandeburg, Jesse
-> > <jesse.brandeburg@intel.com>
-> > Cc: Ilya Dryomov <idryomov@gmail.com>; Xiubo Li <xiubli@redhat.com>;
-> > Venky Shankar <vshankar@redhat.com>
-> > Subject: [Intel-wired-lan] intermittent ixgbe transmit queue
-> > timeouts in v5.18
-> > kernels
-> > =
+Fix debug prints, by adding missing state prints.
 
-> > The Ceph project test lab has a fairly large cluster of machines
-> > with ixgbe
-> > adapters:
-> > =
+Extend iavf_state_str by strings for __IAVF_INIT_EXTENDED_CAPS and
+__IAVF_INIT_CONFIG_ADAPTER.
 
-> > =A0=A0=A003:00.0 Ethernet controller: Intel Corporation 82599ES 10-Giga=
-bit
-> > SFI/SFP+
-> > Network Connection (rev 01)
-> > =
+Without this patch, when enabling debug prints for iavf.h, user will
+see:
+iavf 0000:06:0e.0: state transition from:__IAVF_INIT_GET_RESOURCES to:__IAVF_UNKNOWN_STATE
+iavf 0000:06:0e.0: state transition from:__IAVF_UNKNOWN_STATE to:__IAVF_UNKNOWN_STATE
 
-> We are attempting to reproduce your issue, and the output from lspci -
-> s 03:00.0
-> -vv would help us make sure we're looking at the exact adapter that
-> the issue is
-> Being seen on.
-> =
+Fixes: 605ca7c5c670 ("iavf: Fix kernel BUG in free_msi_irqs")
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
+---
+v2: add Fixes Tag and Blank lines @ commit message
+---
+ drivers/net/ethernet/intel/iavf/iavf.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> > Recently, we've started getting intermittent tx queue timeouts with
-> > these
-> > machines. One of them is reported here:
-> > =
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index fda1198d2c00..cbcf0c710072 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -464,6 +464,10 @@ static inline const char *iavf_state_str(enum iavf_state_t state)
+ 		return "__IAVF_INIT_VERSION_CHECK";
+ 	case __IAVF_INIT_GET_RESOURCES:
+ 		return "__IAVF_INIT_GET_RESOURCES";
++	case __IAVF_INIT_EXTENDED_CAPS:
++		return "__IAVF_INIT_EXTENDED_CAPS";
++	case __IAVF_INIT_CONFIG_ADAPTER:
++		return "__IAVF_INIT_CONFIG_ADAPTER";
+ 	case __IAVF_INIT_SW:
+ 		return "__IAVF_INIT_SW";
+ 	case __IAVF_INIT_FAILED:
+-- 
+2.35.3
 
-> > =A0=A0=A0https://tracker.ceph.com/issues/55823
-> > =
-
-> > Usually this happens when we're trying to do a sync, and there is a
-> > flurry of
-> > transmission activity. Afterward we see a lot of fallout in ceph
-> > culminating in
-> > softlockups.
-> > =
-
-> > The kernels we're testing have some patches that are not yet in
-> > mainline, but
-> > mostly they are confined to net/ceph and fs/ceph, and shouldn't
-> > really affect
-> > hw drivers.
-> > =
-
-> > The problem manifested pretty regularly during v5.18 and then I
-> > didn't see it
-> > for a while. I had figured it was something that had been fixed, but
-> > I think it
-> > was just "luck".
-> > =
-
-> > I attempted a bisect a while back, and ruled out recent ceph changes
-> > as the
-> > issue. Unfortunately, I wasn't able to get to a conclusive patch
-> > that broke it,
-> > but I think it likely crept in during the initial merge window for
-> > v5.18 (pre-rc1).
-> > =
-
-> > One other oddity: the test lab often installs bleeding-edge kernels
-> > on old
-> > distros (RHEL8 and Ubuntu from similar era). Is it possible that the
-> > firmware
-> > that ships with these older distros is not suitable for the more
-> > recent driver in
-> > v5.18 ?
-> > =
-
-> Thank you for this information, we'll look into it if we're having
-> trouble
-> reproducing the issue!
-> =
-
-> =
-
-> > Any thoughts or suggestions on things we can do to fix this?
-> > =
-
-> Nothing yet, but we'll be sure to let you know when we find it.
-> =
-
-
-Thanks for getting back to us.
-
-Since I emailed you, I've found a bug in ceph that could make the cephfs
-client spin in an (essentially) infinite loop if there were delays
-getting MDS replies in some situations. We've fixed that and I haven't
-seen any tx queue timeouts since, though I've only had the fix in place
-for a day or so.
-
-For now, I think we can just consider this to be fallout from the ceph
-bug. If the problems return though, I'll let you know!
-
-Thanks again!
--- =
-
-Jeff Layton <jlayton@kernel.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
