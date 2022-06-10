@@ -1,66 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7812A5456D3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jun 2022 00:01:42 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C87A545A33
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jun 2022 04:40:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1A3AC60ED7;
-	Thu,  9 Jun 2022 22:01:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D6D8240272;
+	Fri, 10 Jun 2022 02:40:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 26CXUKuMGH3F; Thu,  9 Jun 2022 22:01:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8hdOXTIYBoSX; Fri, 10 Jun 2022 02:40:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03C1A60E09;
-	Thu,  9 Jun 2022 22:01:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D990440C3F;
+	Fri, 10 Jun 2022 02:40:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7D77C1BF390
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jun 2022 22:01:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BCE81BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jun 2022 02:40:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7043B60ED7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jun 2022 22:01:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4F92A40272
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jun 2022 02:40:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e-ESIC9ENInB for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jun 2022 22:01:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ol2hGFvjfOY2 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jun 2022 02:40:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 85C1160EC9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jun 2022 22:01:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1654812094; x=1686348094;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=NsF8Vf/N/tExBLJ7ViQydNTuQFdygsxDc1t+NYNGRGc=;
- b=MFJmshoEiUgPC8fmw58SBiDtHwuAhIwRQaYbcX+CJtHmjkGImHjzi34P
- OWC1IShJm09cyG8HAfdBTTsz6gbtAdCNFguqqWRA0si2mPC0qBWBiGvwt
- HnIizyPeQ+Lxu5RVvrH0yTVMa5jmMvgBoQa+jFLzIBbhn4g/FJN+Xeg2W
- V2qPXfjmKLK3NhgOokYUNfCP3Pxx1Sg2ncZelp2ZpREHB+2l0CbS9gMpM
- kG5reeYglSBE6zH3JjZnXRO6L9Ty1/FvyxZYBSRx3yRtWi2m8GOVINh4i
- ipNt/sxubl2Gj//gtvDu1RajWl6K9Rp/LjIimy5kLlXapgY3GQAE2M76+ g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10373"; a="363762089"
-X-IronPort-AV: E=Sophos;i="5.91,288,1647327600"; d="scan'208";a="363762089"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jun 2022 15:01:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,288,1647327600"; d="scan'208";a="649500890"
-Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
- ([10.166.28.101])
- by fmsmga004.fm.intel.com with ESMTP; 09 Jun 2022 15:01:33 -0700
-From: Jun Zhang <xuejun.zhang@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  9 Jun 2022 18:01:21 -0400
-Message-Id: <20220609220121.1286133-1-xuejun.zhang@intel.com>
-X-Mailer: git-send-email 2.35.3
+Received: from m15112.mail.126.com (m15112.mail.126.com [220.181.15.112])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6D17540138
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jun 2022 02:40:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=91ux5
+ kPCoAamyvRVP7GYhUZHehWVrxoVsAQMzUFDlOg=; b=nh8IXWmkLuJv6B55c+GLN
+ 3NaOxRpisUQUB9ANqLqaW35T7mjbG9yzcQEAVdfPORqgw92Ihu5Qqkq2i1zIA+io
+ SQINq7+d2CIW06nhbF5ker7l2IFJodM3v4eHzcEunCXDMMjGRuZZJhA4iRiuYbx+
+ bo+Kx0NgLchZiPsUo6/KjA=
+Received: from localhost.localdomain (unknown [117.136.33.145])
+ by smtp2 (Coremail) with SMTP id DMmowABHTwPvrqJiJk9+Cw--.18883S2;
+ Fri, 10 Jun 2022 10:39:44 +0800 (CST)
+From: Lixue Liang <lianglixuehao@126.com>
+To: pmenzel@molgen.mpg.de
+Date: Fri, 10 Jun 2022 02:39:22 +0000
+Message-Id: <20220610023922.74892-1-lianglixuehao@126.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2] iavf: Disallow changing
- rx/tx-frames and rx/tx-frames-irq
+X-CM-TRANSID: DMmowABHTwPvrqJiJk9+Cw--.18883S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxZw1ruFWxAr17AFy7Gr15Arb_yoW5Xw1kpa
+ yUJa43XrWkJr4avaykXw48XFy5CayDJ3y5CFZxZw1F9FnIqw1DArW8t347Xry0grWvka1x
+ Jr17Zrs7ua1DAa7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j-kucUUUUU=
+X-Originating-IP: [117.136.33.145]
+X-CM-SenderInfo: xold0w5ol03vxkdrqiyswou0bp/1tbiohccFlx5hnOT2QABsk
+Subject: [Intel-wired-lan] [PATCH v6] igb: Assign random MAC address instead
+ of fail in case of invalid one
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,115 +67,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Cc: lianglixue@greatwall.com.cn, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+From: Lixue Liang <lianglixue@greatwall.com.cn>
 
-Remove support for rx/tx-frames and rx/tx-frames-irq as it is
-introducing counterintuitive settings and is not stated in any
-requirement.
-Remove from supported_coalesce_params ETHTOOL_COALESCE_MAX_FRAMES
-and ETHTOOL_COALESCE_MAX_FRAMES_IRQ. As tx-frames-irq allowed
-user to change budget for iavf_clean_tx_irq, remove work_limit
-and use define for budget.
-Without this patch there would be possiblity to change rx/tx-frames
-and rx/tx-frames-irq, which for rx/tx-frames did nothing, while for
-rx/tx-frames-irq it changed rx/tx-frames and only changed budget
-for cleaning NAPI poll.
+Add the module parameter "allow_invalid_mac_address" to control the
+behavior. When set to true, a random MAC address is assigned, and the
+driver can be loaded, allowing the user to correct the invalid MAC address.
 
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
+Signed-off-by: Lixue Liang <lianglixue@greatwall.com.cn>
 ---
-v2: Change author to Przemyslaw Patynowski
----
- drivers/net/ethernet/intel/iavf/iavf.h         |  1 -
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 10 ----------
- drivers/net/ethernet/intel/iavf/iavf_main.c    |  1 -
- drivers/net/ethernet/intel/iavf/iavf_txrx.c    |  2 +-
- 4 files changed, 1 insertion(+), 13 deletions(-)
+Changelog:
+* v6:
+  - Modify commit messages and naming of module parameters
+Suggested-by Paul <pmenzel@molgen.mpg.de>
+* v5:
+  - Through the setting of module parameters, it is allowed to complete
+    the loading of the igb network card driver with an invalid MAC address.
+Suggested-by <alexander.duyck@gmail.com>
+* v4:
+  - Change the igb_mian in the title to igb
+  - Fix dev_err message: replace "already assigned random MAC address"
+    with "Invalid MAC address. Assigned random MAC address"
+Suggested-by Tony <anthony.l.nguyen@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index fda1198d2c00..07143a94159d 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -64,7 +64,6 @@ struct iavf_vsi {
- 	u16 id;
- 	DECLARE_BITMAP(state, __IAVF_VSI_STATE_SIZE__);
- 	int base_vector;
--	u16 work_limit;
- 	u16 qs_handle;
- 	void *priv;     /* client driver data reference. */
- };
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 3bb56714beb0..e535d4c3da49 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -692,12 +692,8 @@ static int __iavf_get_coalesce(struct net_device *netdev,
- 			       struct ethtool_coalesce *ec, int queue)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
--	struct iavf_vsi *vsi = &adapter->vsi;
- 	struct iavf_ring *rx_ring, *tx_ring;
+* v3:
+  - Add space after comma in commit message
+  - Correct spelling of MAC address
+Suggested-by Paul <pmenzel@molgen.mpg.de>
+
+* v2:
+  - Change memcpy to ether_addr_copy
+  - Change dev_info to dev_err
+  - Fix the description of the commit message
+  - Change eth_random_addr to eth_hw_addr_random
+Reported-by: kernel test robot <lkp@intel.com>
+
+ drivers/net/ethernet/intel/igb/igb_main.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 34b33b21e0dc..b61f216331da 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -238,8 +238,11 @@ MODULE_LICENSE("GPL v2");
  
--	ec->tx_max_coalesced_frames = vsi->work_limit;
--	ec->rx_max_coalesced_frames = vsi->work_limit;
--
- 	/* Rx and Tx usecs per queue value. If user doesn't specify the
- 	 * queue, return queue 0's value to represent.
- 	 */
-@@ -825,12 +821,8 @@ static int __iavf_set_coalesce(struct net_device *netdev,
- 			       struct ethtool_coalesce *ec, int queue)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
--	struct iavf_vsi *vsi = &adapter->vsi;
- 	int i;
+ #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
+ static int debug = -1;
++static bool allow_invalid_mac_address;
+ module_param(debug, int, 0);
++module_param(allow_invalid_mac_address, bool, 0);
+ MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
++MODULE_PARM_DESC(allow_invalid_mac_address, "Allow NIC driver to be loaded with invalid MAC address");
  
--	if (ec->tx_max_coalesced_frames_irq || ec->rx_max_coalesced_frames_irq)
--		vsi->work_limit = ec->tx_max_coalesced_frames_irq;
--
- 	if (ec->rx_coalesce_usecs == 0) {
- 		if (ec->use_adaptive_rx_coalesce)
- 			netif_info(adapter, drv, netdev, "rx-usecs=0, need to disable adaptive-rx for a complete disable\n");
-@@ -1969,8 +1961,6 @@ static int iavf_set_rxfh(struct net_device *netdev, const u32 *indir,
+ struct igb_reg_info {
+ 	u32 ofs;
+@@ -3359,9 +3362,16 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	eth_hw_addr_set(netdev, hw->mac.addr);
  
- static const struct ethtool_ops iavf_ethtool_ops = {
- 	.supported_coalesce_params = ETHTOOL_COALESCE_USECS |
--				     ETHTOOL_COALESCE_MAX_FRAMES |
--				     ETHTOOL_COALESCE_MAX_FRAMES_IRQ |
- 				     ETHTOOL_COALESCE_USE_ADAPTIVE,
- 	.get_drvinfo		= iavf_get_drvinfo,
- 	.get_link		= ethtool_op_get_link,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 57c51a15bcbc..3c621607bc46 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2327,7 +2327,6 @@ int iavf_parse_vf_resource_msg(struct iavf_adapter *adapter)
+ 	if (!is_valid_ether_addr(netdev->dev_addr)) {
+-		dev_err(&pdev->dev, "Invalid MAC Address\n");
+-		err = -EIO;
+-		goto err_eeprom;
++		if (!allow_invalid_mac_address) {
++			dev_err(&pdev->dev, "Invalid MAC address\n");
++			err = -EIO;
++			goto err_eeprom;
++		} else {
++			eth_hw_addr_random(netdev);
++			ether_addr_copy(hw->mac.addr, netdev->dev_addr);
++			dev_err(&pdev->dev,
++				"Invalid MAC address. Assigned random MAC address\n");
++		}
+ 	}
  
- 	adapter->vsi.back = adapter;
- 	adapter->vsi.base_vector = 1;
--	adapter->vsi.work_limit = IAVF_DEFAULT_IRQ_WORK;
- 	vsi->netdev = adapter->netdev;
- 	vsi->qs_handle = adapter->vsi_res->qset_handle;
- 	if (adapter->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_RSS_PF) {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 978f651c6b09..7bf8c25dc824 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -194,7 +194,7 @@ static bool iavf_clean_tx_irq(struct iavf_vsi *vsi,
- 	struct iavf_tx_buffer *tx_buf;
- 	struct iavf_tx_desc *tx_desc;
- 	unsigned int total_bytes = 0, total_packets = 0;
--	unsigned int budget = vsi->work_limit;
-+	unsigned int budget = IAVF_DEFAULT_IRQ_WORK;
- 
- 	tx_buf = &tx_ring->tx_bi[i];
- 	tx_desc = IAVF_TX_DESC(tx_ring, i);
+ 	igb_set_default_mac_filter(adapter);
 -- 
-2.35.3
+2.27.0
 
 _______________________________________________
 Intel-wired-lan mailing list
