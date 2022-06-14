@@ -1,70 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28D8254B430
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jun 2022 17:08:22 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 363A454B7B1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jun 2022 19:32:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1420183298;
-	Tue, 14 Jun 2022 15:08:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DAF4240B77;
+	Tue, 14 Jun 2022 17:32:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tGraLCxbUMfL; Tue, 14 Jun 2022 15:08:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MM9QDesf-fS3; Tue, 14 Jun 2022 17:32:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CA32783294;
-	Tue, 14 Jun 2022 15:08:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A28340A97;
+	Tue, 14 Jun 2022 17:32:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9109A1BF4D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:13 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8717F1BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 17:32:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7D95B40B3D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6E8DE418A7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 17:32:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KNWMvyS0fMg0 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jun 2022 15:08:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cPSDA8BLmyX8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jun 2022 17:32:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5D5C140B22
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:12 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EC7D9418A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 17:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655219292; x=1686755292;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Wxhm7vbdWBs05KIbC2O6NnZOv2F/9l3b9S3+uorsDZI=;
- b=NjFV6JqSZ+HDW7F9gBTGCDOGgVx2oo7gamtyB9CKUwJyoxcrl8k0K//Q
- R6a9OFlhwdZLmMcWvX3Z3jlLbtgQl1PTsl/jBWRu3TT8ParG+xK+HHTHx
- mStgTxCf/c+6EnmDbl1etLPT77GP6svkMLkWc8sx1KCaPOHFJBplunTlY
- eo3vZliD+XaOZFv0BNGIaPttaA9pLDFw8DohjrIvgNSb63p2EXVXPUtnz
- KZInp7KO3ggklR0x3TfYGHMN+joTi35288ClSpjoBVyU5Jy955Vm+cyNF
- HzjJaZmaM2LdmqI/JwprL05lmltuc+v9l3RIksCTYcpR9uEXDNYtNAysV w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="259097598"
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="259097598"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2022 08:08:10 -0700
+ t=1655227950; x=1686763950;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XFvxNqvPxqR3F3Ik9xDQMr8elMSS73GUdUmI4q5Onoc=;
+ b=dvfDxo3w5pts+Va2RWm0fhyhacT/NWs0fLpSZ7MDg55mb+OwFBb3zc9V
+ v3QItOp7KZJCizzCJV31bbDy2VzSaJGoD1rBjEJHwJfP18knLqXK9nI2F
+ 1uKdACb+fFarQXPS3PzZ2qguNi7skSfi3vpoUF3NiETzb5fKjTq7ys3Yh
+ J0XGCo//Pj/Jv//cc11uaj2WYzTddWM1hSjYIU4u6ZHiBexabls2UCG5g
+ rqwCsE9M/3wVhYFmmYS87t27r1HE6AzkyHD/3RZjaFCu+qqu74MZOTw8d
+ Gt4Wd9j5//FOMyVE0QbCTwA2w7gZDFvuvh5rarIv1jAu/gZ2jHKfJCCR/ g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="365029354"
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="365029354"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2022 10:32:05 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="558381719"
-Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
- by orsmga006.jf.intel.com with ESMTP; 14 Jun 2022 08:08:08 -0700
-Date: Tue, 14 Jun 2022 17:08:07 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Piotr Skajewski <piotrx.skajewski@intel.com>
-Message-ID: <YqikV7W1sJuGBsnW@boxer>
-References: <20220519055358.20314-1-piotrx.skajewski@intel.com>
- <20220601131448.13796-1-piotrx.skajewski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="612325437"
+Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
+ by orsmga008.jf.intel.com with ESMTP; 14 Jun 2022 10:32:03 -0700
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	anthony.l.nguyen@intel.com
+Date: Tue, 14 Jun 2022 19:29:38 +0200
+Message-Id: <20220614172938.3167170-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220601131448.13796-1-piotrx.skajewski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Add locking to prevent
- panic when setting sriov_numvfs to zero
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix ethtool rx-flow-hash
+ setting for X722
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,210 +75,234 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Slawomir Laba <slawomirx.laba@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jun 01, 2022 at 03:14:48PM +0200, Piotr Skajewski wrote:
-> > On Thu, May 19, 2022 at 07:53:58AM +0200, Piotr Skajewski wrote:
-> > > It is possible to disable VFs while the PF driver is processing requests
-> > > from the VF driver.  This can result in a panic.
-> > > 
-> > > BUG: unable to handle kernel paging request at 000000000000106c
-> > > PGD 0 P4D 0
-> > > Oops: 0000 [#1] SMP NOPTI
-> > > CPU: 8 PID: 0 Comm: swapper/8 Kdump: loaded Tainted: G I      --------- -
-> > > Hardware name: Dell Inc. PowerEdge R740/06WXJT, BIOS 2.8.2 08/27/2020
-> > > RIP: 0010:ixgbe_msg_task+0x4c8/0x1690 [ixgbe]
-> > > Code: 00 00 48 8d 04 40 48 c1 e0 05 89 7c 24 24 89 fd 48 89 44 24 10 83 ff
-> > > 01 0f 84 b8 04 00 00 4c 8b 64 24 10 4d 03 a5 48 22 00 00 <41> 80 7c 24 4c
-> > > 00 0f 84 8a 03 00 00 0f b7 c7 83 f8 08 0f 84 8f 0a
-> > > RSP: 0018:ffffb337869f8df8 EFLAGS: 00010002
-> > > RAX: 0000000000001020 RBX: 0000000000000000 RCX: 000000000000002b
-> > > RDX: 0000000000000002 RSI: 0000000000000008 RDI: 0000000000000006
-> > > RBP: 0000000000000006 R08: 0000000000000002 R09: 0000000000029780
-> > > R10: 00006957d8f42832 R11: 0000000000000000 R12: 0000000000001020
-> > > R13: ffff8a00e8978ac0 R14: 000000000000002b R15: ffff8a00e8979c80
-> > > FS:  0000000000000000(0000) GS:ffff8a07dfd00000(0000) knlGS:00000000000000
-> > > CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> > > CR2: 000000000000106c CR3: 0000000063e10004 CR4: 00000000007726e0
-> > > DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-> > > DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-> > > PKRU: 55555554
-> > > Call Trace:
-> > >  <IRQ>
-> > >  ? ttwu_do_wakeup+0x19/0x140
-> > >  ? try_to_wake_up+0x1cd/0x550
-> > >  ? ixgbevf_update_xcast_mode+0x71/0xc0 [ixgbevf]
-> > >  ixgbe_msix_other+0x17e/0x310 [ixgbe]
-> > >  __handle_irq_event_percpu+0x40/0x180
-> > >  handle_irq_event_percpu+0x30/0x80
-> > >  handle_irq_event+0x36/0x53
-> > >  handle_edge_irq+0x82/0x190
-> > >  handle_irq+0x1c/0x30
-> > >  do_IRQ+0x49/0xd0
-> > >  common_interrupt+0xf/0xf
-> > > 
-> > > This can be eventually be reproduced with the following script:
-> > > 
-> > > while :
-> > > do
-> > >     echo 63 > /sys/class/net/<devname>/device/sriov_numvfs
-> > >     sleep 1
-> > >     echo 0 > /sys/class/net/<devname>/device/sriov_numvfs
-> > >     sleep 1
-> > > done
-> > > 
-> > > Add lock when disabling SR-IOV to prevent process VF mailbox communication.
-> > > 
-> > > Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
-> > 
-> > This is a fix for sure. Please target it to net tree and add fixes tag.
-> > 
-> > > ---
-> > > changes in v2:
-> > >     - replace type spin_lock_bh to spin_lock
-> > 
-> > Why? Please explain what contexts are being synchronized.k
-> 
-> The synchronization of shared resources while creating and removing many
-> virtual function simultaneously.
+From: Slawomir Laba <slawomirx.laba@intel.com>
 
-This doesn't answer my question unfortunately :(
+When enabling flow type for RSS hash via ethtool:
 
-> 
-> > 
-> > > 
-> > >  drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
-> > >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  3 ++
-> > >  .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    | 28 ++++++++++++-------
-> > >  3 files changed, 22 insertions(+), 10 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > > index 921a4d977d65..8813b4dd6872 100644
-> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > > @@ -779,6 +779,7 @@ struct ixgbe_adapter {
-> > >  #ifdef CONFIG_IXGBE_IPSEC
-> > >  	struct ixgbe_ipsec *ipsec;
-> > >  #endif /* CONFIG_IXGBE_IPSEC */
-> > > +	spinlock_t vfs_lock;
-> > >  };
-> > >  
-> > >  static inline int ixgbe_determine_xdp_q_idx(int cpu)
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > index c4a4954aa317..6c403f112d29 100644
-> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > @@ -6402,6 +6402,9 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
-> > >  	/* n-tuple support exists, always init our spinlock */
-> > >  	spin_lock_init(&adapter->fdir_perfect_lock);
-> > >  
-> > > +	/* init spinlock to avoid concurrency of VF resources */
-> > > +	spin_lock_init(&adapter->vfs_lock);
-> > > +
-> > >  #ifdef CONFIG_IXGBE_DCB
-> > >  	ixgbe_init_dcb(adapter);
-> > >  #endif
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > > index 7f11c0a8e7a9..6f583df19635 100644
-> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> > > @@ -207,6 +207,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
-> > >  	unsigned int num_vfs = adapter->num_vfs, vf;
-> > >  	int rss;
-> > >  
-> > > +	spin_lock(&adapter->vfs_lock);
-> > > +
-> > >  	/* set num VFs to 0 to prevent access to vfinfo */
-> > >  	adapter->num_vfs = 0;
-> > >  
-> > > @@ -228,6 +230,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
-> > >  	kfree(adapter->mv_list);
-> > >  	adapter->mv_list = NULL;
-> > >  
-> > > +	spin_unlock(&adapter->vfs_lock);
-> > > +
-> > >  	/* if SR-IOV is already disabled then there is nothing to do */
-> > >  	if (!(adapter->flags & IXGBE_FLAG_SRIOV_ENABLED))
-> > >  		return 0;
-> > > @@ -1357,19 +1361,23 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
-> > >  	struct ixgbe_hw *hw = &adapter->hw;
-> > >  	u32 vf;
-> > >  
-> > > -	for (vf = 0; vf < adapter->num_vfs; vf++) {
-> > > -		/* process any reset requests */
-> > > -		if (!ixgbe_check_for_rst(hw, vf))
-> > > -			ixgbe_vf_reset_event(adapter, vf);
-> > > +	spin_lock(&adapter->vfs_lock);
+  ethtool -N $pf rx-flow-hash tcp4|tcp6|udp4|udp6 s|d
 
-So this is broken and that's why I was asking for explanation in regards
-to what contexts we're playing with.
+the driver would fail to setup this setting on X722
+device since it was using the mask on the register
+dedicated for X710 devices.
 
-ixgbe_msg_task() which splat points to is run in interrupt context, so you
-need to disable the interrupts before holding a lock. You should use
-spin_lock_irqsave(). Otherwise there is a chance that
-ixgbe_disable_sriov() would be interrupted by ixgbe_msg_task() on the same
-cpu and you'll run into the deadlock.
+Implement a bitmap to collect the flow pc types that
+shall be applied on the inset and hena registers.
+Apply a different mask on the register when setting the
+RSS hash for the X722 device.
 
-> > > +	if (adapter->vfinfo) {
-> > 
-> > why this is needed?
-> 
-> While creating and removing many VF at the same time,
-> it happens that we process messages from VF whose resources
-> have already been released. Driver should not process message
-> while this is happening.
+When displaying the flow types enabled via ethtool:
 
-I was only asking why we need check for adapter->vinfo and I feel that
-you started to explain why locking is needed here.
+  ethtool -n $pf rx-flow-hash tcp4|tcp6|udp4|udp6
 
-> 
-> > 
-> > also maybe revert the logic and flatten the code:
-> >     if (!adapter->vfinfo)
-> > 	goto unlock;
-> >     (...)
-> > unlock:
-> >     spin_unlock(&adapter->vfs_lock);
-> > 
-> 
-> This check is not related to spinlock itself but
-> stick to the loop where VF message is processed.
-> 
-> > > +		for (vf = 0; vf < adapter->num_vfs; vf++) {
-> > > +			/* process any reset requests */
-> > > +			if (!ixgbe_check_for_rst(hw, vf))
-> > > +				ixgbe_vf_reset_event(adapter, vf);
-> > >  
-> > > -		/* process any messages pending */
-> > > -		if (!ixgbe_check_for_msg(hw, vf))
-> > > -			ixgbe_rcv_msg_from_vf(adapter, vf);
-> > > +			/* process any messages pending */
-> > > +			if (!ixgbe_check_for_msg(hw, vf))
-> > > +				ixgbe_rcv_msg_from_vf(adapter, vf);
-> > >  
-> > > -		/* process any acks */
-> > > -		if (!ixgbe_check_for_ack(hw, vf))
-> > > -			ixgbe_rcv_ack_from_vf(adapter, vf);
-> > > +			/* process any acks */
-> > > +			if (!ixgbe_check_for_ack(hw, vf))
-> > > +				ixgbe_rcv_ack_from_vf(adapter, vf);
-> > > +		}
-> > >  	}
-> > > +	spin_unlock(&adapter->vfs_lock);
-> > >  }
-> > >  
-> > >  static inline void ixgbe_ping_vf(struct ixgbe_adapter *adapter, int vf)
-> > > -- 
-> > > 2.35.0.rc0
-> > > 
-> > > _______________________________________________
-> > > Intel-wired-lan mailing list
-> > > Intel-wired-lan@osuosl.org
-> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+the driver would print wrong values for X722 device.
+
+Fix this issue by testing masks for X722 device in
+i40e_get_rss_hash_opts function.
+
+Fixes: eb0dd6e4a3b3 (i40e: Allow RSS Hash set with less than four parameters)
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
+---
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 103 +++++++++++-------
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |   4 +
+ 2 files changed, 67 insertions(+), 40 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 19704f5..bc9e921 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -3098,10 +3098,17 @@ static int i40e_get_rss_hash_opts(struct i40e_pf *pf, struct ethtool_rxnfc *cmd)
+ 
+ 		if (cmd->flow_type == TCP_V4_FLOW ||
+ 		    cmd->flow_type == UDP_V4_FLOW) {
+-			if (i_set & I40E_L3_SRC_MASK)
+-				cmd->data |= RXH_IP_SRC;
+-			if (i_set & I40E_L3_DST_MASK)
+-				cmd->data |= RXH_IP_DST;
++			if (hw->mac.type == I40E_MAC_X722) {
++				if (i_set & I40E_X722_L3_SRC_MASK)
++					cmd->data |= RXH_IP_SRC;
++				if (i_set & I40E_X722_L3_DST_MASK)
++					cmd->data |= RXH_IP_DST;
++			} else {
++				if (i_set & I40E_L3_SRC_MASK)
++					cmd->data |= RXH_IP_SRC;
++				if (i_set & I40E_L3_DST_MASK)
++					cmd->data |= RXH_IP_DST;
++			}
+ 		} else if (cmd->flow_type == TCP_V6_FLOW ||
+ 			  cmd->flow_type == UDP_V6_FLOW) {
+ 			if (i_set & I40E_L3_V6_SRC_MASK)
+@@ -3459,12 +3466,15 @@ static int i40e_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 
+ /**
+  * i40e_get_rss_hash_bits - Read RSS Hash bits from register
++ * @hw: hw structure
+  * @nfc: pointer to user request
+  * @i_setc: bits currently set
+  *
+  * Returns value of bits to be set per user request
+  **/
+-static u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
++static u64 i40e_get_rss_hash_bits(struct i40e_hw *hw,
++				  struct ethtool_rxnfc *nfc,
++				  u64 i_setc)
+ {
+ 	u64 i_set = i_setc;
+ 	u64 src_l3 = 0, dst_l3 = 0;
+@@ -3483,8 +3493,13 @@ static u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
+ 		dst_l3 = I40E_L3_V6_DST_MASK;
+ 	} else if (nfc->flow_type == TCP_V4_FLOW ||
+ 		  nfc->flow_type == UDP_V4_FLOW) {
+-		src_l3 = I40E_L3_SRC_MASK;
+-		dst_l3 = I40E_L3_DST_MASK;
++		if (hw->mac.type == I40E_MAC_X722) {
++			src_l3 = I40E_X722_L3_SRC_MASK;
++			dst_l3 = I40E_X722_L3_DST_MASK;
++		} else {
++			src_l3 = I40E_L3_SRC_MASK;
++			dst_l3 = I40E_L3_DST_MASK;
++		}
+ 	} else {
+ 		/* Any other flow type are not supported here */
+ 		return i_set;
+@@ -3502,6 +3517,8 @@ static u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
+ 	return i_set;
+ }
+ 
++#define FLOW_PCTYPES_SIZE 64
++
+ /**
+  * i40e_set_rss_hash_opt - Enable/Disable flow types for RSS hash
+  * @pf: pointer to the physical function struct
+@@ -3514,9 +3531,11 @@ static int i40e_set_rss_hash_opt(struct i40e_pf *pf, struct ethtool_rxnfc *nfc)
+ 	struct i40e_hw *hw = &pf->hw;
+ 	u64 hena = (u64)i40e_read_rx_ctl(hw, I40E_PFQF_HENA(0)) |
+ 		   ((u64)i40e_read_rx_ctl(hw, I40E_PFQF_HENA(1)) << 32);
+-	u8 flow_pctype = 0;
++	DECLARE_BITMAP(flow_pctypes, FLOW_PCTYPES_SIZE);
+ 	u64 i_set, i_setc;
+ 
++	bitmap_zero(flow_pctypes, FLOW_PCTYPES_SIZE);
++
+ 	if (pf->flags & I40E_FLAG_MFP_ENABLED) {
+ 		dev_err(&pf->pdev->dev,
+ 			"Change of RSS hash input set is not supported when MFP mode is enabled\n");
+@@ -3532,36 +3551,35 @@ static int i40e_set_rss_hash_opt(struct i40e_pf *pf, struct ethtool_rxnfc *nfc)
+ 
+ 	switch (nfc->flow_type) {
+ 	case TCP_V4_FLOW:
+-		flow_pctype = I40E_FILTER_PCTYPE_NONF_IPV4_TCP;
++		set_bit(I40E_FILTER_PCTYPE_NONF_IPV4_TCP, flow_pctypes);
+ 		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE)
+-			hena |=
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_IPV4_TCP_SYN_NO_ACK);
++			set_bit(I40E_FILTER_PCTYPE_NONF_IPV4_TCP_SYN_NO_ACK,
++				flow_pctypes);
+ 		break;
+ 	case TCP_V6_FLOW:
+-		flow_pctype = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
++		set_bit(I40E_FILTER_PCTYPE_NONF_IPV6_TCP, flow_pctypes);
+ 		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE)
+-			hena |=
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_IPV4_TCP_SYN_NO_ACK);
+-		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE)
+-			hena |=
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_IPV6_TCP_SYN_NO_ACK);
++			set_bit(I40E_FILTER_PCTYPE_NONF_IPV6_TCP_SYN_NO_ACK,
++				flow_pctypes);
+ 		break;
+ 	case UDP_V4_FLOW:
+-		flow_pctype = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
+-		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE)
+-			hena |=
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_UNICAST_IPV4_UDP) |
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_MULTICAST_IPV4_UDP);
+-
++		set_bit(I40E_FILTER_PCTYPE_NONF_IPV4_UDP, flow_pctypes);
++		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE) {
++			set_bit(I40E_FILTER_PCTYPE_NONF_UNICAST_IPV4_UDP,
++				flow_pctypes);
++			set_bit(I40E_FILTER_PCTYPE_NONF_MULTICAST_IPV4_UDP,
++				flow_pctypes);
++		}
+ 		hena |= BIT_ULL(I40E_FILTER_PCTYPE_FRAG_IPV4);
+ 		break;
+ 	case UDP_V6_FLOW:
+-		flow_pctype = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
+-		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE)
+-			hena |=
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_UNICAST_IPV6_UDP) |
+-			  BIT_ULL(I40E_FILTER_PCTYPE_NONF_MULTICAST_IPV6_UDP);
+-
++		set_bit(I40E_FILTER_PCTYPE_NONF_IPV6_UDP, flow_pctypes);
++		if (pf->hw_features & I40E_HW_MULTIPLE_TCP_UDP_RSS_PCTYPE) {
++			set_bit(I40E_FILTER_PCTYPE_NONF_UNICAST_IPV6_UDP,
++				flow_pctypes);
++			set_bit(I40E_FILTER_PCTYPE_NONF_MULTICAST_IPV6_UDP,
++				flow_pctypes);
++		}
+ 		hena |= BIT_ULL(I40E_FILTER_PCTYPE_FRAG_IPV6);
+ 		break;
+ 	case AH_ESP_V4_FLOW:
+@@ -3594,17 +3612,24 @@ static int i40e_set_rss_hash_opt(struct i40e_pf *pf, struct ethtool_rxnfc *nfc)
+ 		return -EINVAL;
+ 	}
+ 
+-	if (flow_pctype) {
+-		i_setc = (u64)i40e_read_rx_ctl(hw, I40E_GLQF_HASH_INSET(0,
+-					       flow_pctype)) |
+-			((u64)i40e_read_rx_ctl(hw, I40E_GLQF_HASH_INSET(1,
+-					       flow_pctype)) << 32);
+-		i_set = i40e_get_rss_hash_bits(nfc, i_setc);
+-		i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(0, flow_pctype),
+-				  (u32)i_set);
+-		i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(1, flow_pctype),
+-				  (u32)(i_set >> 32));
+-		hena |= BIT_ULL(flow_pctype);
++	if (bitmap_weight(flow_pctypes, FLOW_PCTYPES_SIZE)) {
++		u8 flow_id;
++
++		for_each_set_bit(flow_id, flow_pctypes, FLOW_PCTYPES_SIZE) {
++			i_setc = (u64)i40e_read_rx_ctl(hw,
++						       I40E_GLQF_HASH_INSET
++						       (0, flow_id)) |
++				 ((u64)i40e_read_rx_ctl(hw,
++							I40E_GLQF_HASH_INSET
++							(1, flow_id)) << 32);
++			i_set = i40e_get_rss_hash_bits(&pf->hw, nfc, i_setc);
++
++			i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(0, flow_id),
++					  (u32)i_set);
++			i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(1, flow_id),
++					  (u32)(i_set >> 32));
++			hena |= BIT_ULL(flow_id);
++		};
+ 	}
+ 
+ 	i40e_write_rx_ctl(hw, I40E_PFQF_HENA(0), (u32)hena);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+index 7b3f30b..388c3d3 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_type.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+@@ -1404,6 +1404,10 @@ struct i40e_lldp_variables {
+ #define I40E_PFQF_CTL_0_HASHLUTSIZE_512	0x00010000
+ 
+ /* INPUT SET MASK for RSS, flow director, and flexible payload */
++#define I40E_X722_L3_SRC_SHIFT		49
++#define I40E_X722_L3_SRC_MASK		(0x3ULL << I40E_X722_L3_SRC_SHIFT)
++#define I40E_X722_L3_DST_SHIFT		41
++#define I40E_X722_L3_DST_MASK		(0x3ULL << I40E_X722_L3_DST_SHIFT)
+ #define I40E_L3_SRC_SHIFT		47
+ #define I40E_L3_SRC_MASK		(0x3ULL << I40E_L3_SRC_SHIFT)
+ #define I40E_L3_V6_SRC_SHIFT		43
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
