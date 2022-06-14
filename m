@@ -1,162 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C464254B416
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jun 2022 17:01:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28D8254B430
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jun 2022 17:08:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 18FA540B57;
-	Tue, 14 Jun 2022 15:01:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1420183298;
+	Tue, 14 Jun 2022 15:08:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9Oqj5tzG2XDK; Tue, 14 Jun 2022 15:01:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tGraLCxbUMfL; Tue, 14 Jun 2022 15:08:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CCDC040B56;
-	Tue, 14 Jun 2022 15:01:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CA32783294;
+	Tue, 14 Jun 2022 15:08:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 874EF1BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:01:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9109A1BF4D7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7480140B43
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:01:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7D95B40B3D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UwG9a9UXWbeg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jun 2022 15:01:42 +0000 (UTC)
+ with ESMTP id KNWMvyS0fMg0 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jun 2022 15:08:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ECC254010E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:01:41 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5D5C140B22
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jun 2022 15:08:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655218902; x=1686754902;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=nKluARxMQi9zL10EO/FvsQxGyLJJ49N5qShyxwZTrxg=;
- b=Hjd9PeGm5LpJXgiWOlwSl3vAnmCC9sJx7E2kxKNemxSKtf4GLaNW8mel
- YjT7maeh0Hq7/fm3noC4nLT0Zvs3RwMXKnZxUPm5cyOHr29gJHLio0ZfI
- g+Ubh4XDbWVaUqOfoLyM1p3ZQujricaV66u9mkLxYMtSBaCF2M5VRfJfu
- h1egSGWtu13G8RvB5EeISEsrPo5LMa+tck/Mmkexh/yDFslHO5QBVPrFA
- R1+EkFObw2qFaMQ4F5YupHXbnu+y3DCd/c639mPAgoKwfYCQhlE8Y8RKQ
- cK6iLzX6uBJuZF452KLbhUMbAlQrySFW1uawANAXRwqnqg5QWKZOUR23I A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="279358208"
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="279358208"
+ t=1655219292; x=1686755292;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Wxhm7vbdWBs05KIbC2O6NnZOv2F/9l3b9S3+uorsDZI=;
+ b=NjFV6JqSZ+HDW7F9gBTGCDOGgVx2oo7gamtyB9CKUwJyoxcrl8k0K//Q
+ R6a9OFlhwdZLmMcWvX3Z3jlLbtgQl1PTsl/jBWRu3TT8ParG+xK+HHTHx
+ mStgTxCf/c+6EnmDbl1etLPT77GP6svkMLkWc8sx1KCaPOHFJBplunTlY
+ eo3vZliD+XaOZFv0BNGIaPttaA9pLDFw8DohjrIvgNSb63p2EXVXPUtnz
+ KZInp7KO3ggklR0x3TfYGHMN+joTi35288ClSpjoBVyU5Jy955Vm+cyNF
+ HzjJaZmaM2LdmqI/JwprL05lmltuc+v9l3RIksCTYcpR9uEXDNYtNAysV w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="259097598"
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="259097598"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2022 08:01:19 -0700
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2022 08:08:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="558377854"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by orsmga006.jf.intel.com with ESMTP; 14 Jun 2022 08:01:19 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Tue, 14 Jun 2022 08:01:18 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Tue, 14 Jun 2022 08:01:18 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.176)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Tue, 14 Jun 2022 08:01:18 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ChjYCWdlaT1/yCBfrTu4UG/APWq+WFvPSgIRaU0Xl16NBHptkY6MaBw/S2vjQOEHxwe+YTrZrtQXIvnHShkvD1gLvCuKecEbW/+7a71qmmmmI7ixRAZn+1XsKx3jJZmmiM6c5EfZt3HuaO2GKhkw5pJ3RWqVCngJSBuvwQezyxAT6erPU3FxgYxnGq+ISwXBaNNi8fgR0W/ZqOJKBhXEUSId0RLLySv4dAXBe4YIWL3P28ccvNBafD9AO2PsTg5NRgZl3zYzobABexnMVVJpLB56Fk2VIS8F08oIUADeKZs4RQ9dCcMjpqGdQteYD9ervgsseoqvHMWElh/nOkcphg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UL10wiIF8ms3oXCVEw8YGkN1Y2S9W1KimDJv5c/oKSw=;
- b=kRF73DJQT7K0zOuG7NncztFD38xnWpEcqpEynnnjtHj8AfbyWpNC+DIRfn4OkdjYlv2q5ZElIameKx1DNzc1HL69nrBwqu29QaQ0hkTC+7VhUztVcfH0a1aq7W0FZh4Lo8zHUCiRpsv4asE0wxcqqb56fUlVHZo+/wzmMyh9ZT452TNzaL765lIYAIuu6kYoloohzdVNnsgX8/RkhmQ5MB1F04b7pLPsJ16QDcqOTEY88fj4yEDvjslubPKO4KEEcnIkonfkFCiaGa+a+q7TK+4dkisQkqOhBnfaQJ0tYaFD3PjBbaAcxs4mtYXepThO1aIL0bxLEGE/ViKxOQq7yQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by DM4PR11MB5360.namprd11.prod.outlook.com (2603:10b6:5:397::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.19; Tue, 14 Jun
- 2022 15:01:11 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::829:3da:fb91:c8e7]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::829:3da:fb91:c8e7%6]) with mapi id 15.20.5332.022; Tue, 14 Jun 2022
- 15:01:11 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH v2 2/2] igb: Make DMA faster when CPU
- is active on the PCIe link
-Thread-Index: AQHYcCsKb+YiMy35L0eMGgVYBuwEaq1PHrQA
-Date: Tue, 14 Jun 2022 15:01:11 +0000
-Message-ID: <BYAPR11MB336759CD46D7A1BD30A86BC9FCAA9@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20220525113113.171746-1-kai.heng.feng@canonical.com>
- <20220525113113.171746-2-kai.heng.feng@canonical.com>
-In-Reply-To: <20220525113113.171746-2-kai.heng.feng@canonical.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ed75031d-0b23-43d3-8b1b-08da4e16b885
-x-ms-traffictypediagnostic: DM4PR11MB5360:EE_
-x-microsoft-antispam-prvs: <DM4PR11MB53605C2E52DBE28604D2FBFEFCAA9@DM4PR11MB5360.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 632ha6Aj2pnPneSM3MU1bDsZzGs2b6wlC+tlmp239JhPIwaBYW7LYjGNXM35M0CQwMZppuWAjEovE5lIWc+99c2XEvVfGSJC+9Y6k4WR38KezO18KWUBv/7gcjEfhg+C4rmuPUnZ0GORFsErCZgWTzFpXKIuzJPreRDYqXf+ZV3xDuXGIQJb3m1u/lLMl4hEkIgd8bdSDQPT4IfTR0UlG72eZVSW3gN8tCmDts+/EATFmjReKkxOUvJxDkR6nD1HCjA0GhWW/54tQlkHQhHe2iSxccyzqtTtTGaYAUdnPxYHsefIPR+7zl31dba73IiNV2vj1a0VFOC6bogZFYDaJ+R/X+4SiZc+daLUOzifo7jOhDGvi/56WGNtfPYcDw0MzQk2LwDNMjium948H4GULqbI01ctTETyRdbBiokNXJ417CEhdG0CFBco8RxCopX3YMOS4uNDyvSqHeW0PDI1idYj9Y5LdRDJGFta2L1HNmDkqVoWlAGaFylwLxHuCUaXkRPr6OYo375Cku0w3DpJSlR7TH10Puc0Iww9M8zvWzDer6Or3fgnyluUto8rCI70iOehSLQcUAmax4j5RUcW6+YH6Fmd8XP0nN5Q6QTy5iNSeGVNCMq69KQkN/nhyNOrA1mC+SziJ600z6MHXxAwMwnUs/aaFNniMram220Xd9KE+G+OTAxwBykk6YobfF1JV76Izz0kqv8F3egGNVrYkA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(366004)(26005)(5660300002)(2906002)(38070700005)(52536014)(9686003)(82960400001)(122000001)(55016003)(83380400001)(110136005)(71200400001)(508600001)(6506007)(8936002)(38100700002)(316002)(186003)(53546011)(76116006)(66446008)(66476007)(66946007)(8676002)(4326008)(64756008)(66556008)(7696005)(86362001)(6636002)(54906003)(33656002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?VBcJJ4Q1+CTlD/bqX4+h/Nm/3KQzrdPBZ1f8ExVEySrInuOD5pI5YGjPja/F?=
- =?us-ascii?Q?D1wgXlHqzDlteTPl4QQgfY4ew4nk6kptdZQp7+dLq6jih+xn2kObk1R5G9WY?=
- =?us-ascii?Q?MGAPXXaUKV3l/2+sP3FMcjQczejqWd9wnJByrI7WUe3P/RD0VEug7agLg6es?=
- =?us-ascii?Q?vIdhcaggaWi8JHGvSum2JXVUZhJKl5hqmLV0p0myP6D6fAFXd5bGF3r0WYeF?=
- =?us-ascii?Q?GCNMdn8oclfcFuoTfmlXDJaxGUoSr1/hmOq4KnzBqddFzsdLx7PoadSDdhl6?=
- =?us-ascii?Q?22r0K8tnLbnHKptvnQQhyZiDtB8bB+A0cLQFIDinp/r7C8gwYbheErAcfa5G?=
- =?us-ascii?Q?UP4TwCbW0FugzhJ27gv1+ESrK7WAetiysTC7UDorU+u8KN8MCs/NTNr7bLUl?=
- =?us-ascii?Q?7fzTQblf/HqLrLUp6ERkW3i8YrHZBNeQVSNnXHcV6/1Xgt0SEbZd80uWfVv0?=
- =?us-ascii?Q?djTw9TpUswzIqp1shdg2ClKqxn8kNC6sfhdFftVzUxMB6Yu6LokLekNZI3Hs?=
- =?us-ascii?Q?JwgQCrKwG1v2YHFxsOi/raA4DBqJKVQ12jgaQsuAQZzqv5bE0j3SIemoac9Z?=
- =?us-ascii?Q?IFsnuW02S044PYU/kuCuiTvEN/8nC6gJhPSvEN4nLGXqS/4XNyEwc5vfU1A1?=
- =?us-ascii?Q?OWqgEblgFivMs1biVVyLB9h0vV9C0hF93GbdpWK5fs4gkLnhWPE/fDnM1p6R?=
- =?us-ascii?Q?yC/SrAbI45y+2uydjNQDtpCYr4qCSgwADbI4cw/TY0KUAikI48PHeDEA9OHT?=
- =?us-ascii?Q?cXcpDI74Df8VeuDieZvRpuH+ypkKD27H5PsOKeAPuOkMk2wACBcLWIpz4TYD?=
- =?us-ascii?Q?M+fmdAU4kG2JwRmkRGQpFzcB7tKLpWRHg/pyPH5mhXpMbOC8HQuBTn+0bhoQ?=
- =?us-ascii?Q?Rjj6UFrfKkXSPbb2GmH71cbsUTUB/OOpx/+1FlxxMvF5KveZ+ZiqDznBlg13?=
- =?us-ascii?Q?YgIq1KxQD3WPkqnWLFeYcJn63xjb3uLqHdzaNExQS1uHIeJpNWVKj/hgcvOl?=
- =?us-ascii?Q?xg6TzrBhhJbZBSrbNJSm9X0qblALlnUu58Sa3mxsobVGYoBK0qu4ReDOi28j?=
- =?us-ascii?Q?BIJnlEeMRUiqyxj947wJkmt6dX4azmVpRFrRLqzw5hbrLmPTSuRldn3DchAU?=
- =?us-ascii?Q?qCAM6V16ulA7CZgcQmLLZGWlILAMwtjeEvvwc3ga2gS5n3diewhlu5HPBH+D?=
- =?us-ascii?Q?dFgPDYkRmd3ULr3OCoiwyPQnDqgXXe7nqldpz5vE8eD+dcRfUlcbJpbnlt12?=
- =?us-ascii?Q?eI+CeJPwOqivupovfHkLMyYUNLG9ZZ+ePk5K3NryBiIepQsJTH1EJjMU5fRw?=
- =?us-ascii?Q?xTm29opPGl6ZP1PbYNyefnuhhopjtDiYavxmiuuhZbGUUUzBFczr3UJdrred?=
- =?us-ascii?Q?HbL1N7i/mfxBRQe71T2C3bDeEztjZIhFHHafMzGrUJ4XZdG1o0gSfovTOhAG?=
- =?us-ascii?Q?k/QpNInmIXJeOtpzHnlD920YUeIhJaUwb04uQeNcuh9ZWIqZv0zOb1oi3Ht9?=
- =?us-ascii?Q?vHf9CqnJU0tpczL28sgNsUdeRFTFftvcegrpr30KFBxuJfkAozJZU6ui9DIw?=
- =?us-ascii?Q?cT4X0XW08rR3Xq2ccJpOAHjxpkL0do8UfaSzskm9Rkabu5iNLVsuqXLfkoGb?=
- =?us-ascii?Q?zFj8QtF/wG1Waa5z0Ps6+1cBYT1WDrWsZKdZB4l76glx4AmDRW6/ltt3tg3U?=
- =?us-ascii?Q?TGb0urwbO4xC1KyY9KqAl0X6fCh9DicIfG4fumO8vmQewItKs7q4kKdo1/bA?=
- =?us-ascii?Q?mxogxNMz9Q=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="558381719"
+Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
+ by orsmga006.jf.intel.com with ESMTP; 14 Jun 2022 08:08:08 -0700
+Date: Tue, 14 Jun 2022 17:08:07 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Piotr Skajewski <piotrx.skajewski@intel.com>
+Message-ID: <YqikV7W1sJuGBsnW@boxer>
+References: <20220519055358.20314-1-piotrx.skajewski@intel.com>
+ <20220601131448.13796-1-piotrx.skajewski@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed75031d-0b23-43d3-8b1b-08da4e16b885
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2022 15:01:11.7728 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TawVVKC3w5AoCLSVRbkRoJhQ2PIWxnL4OPzoaY1k9BHjAY5qO2nFpaLAzu1yAp0anj6RaSXJp1qWRK3iPqESzQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5360
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] igb: Make DMA faster when CPU
- is active on the PCIe link
+Content-Disposition: inline
+In-Reply-To: <20220601131448.13796-1-piotrx.skajewski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbe: Add locking to prevent
+ panic when setting sriov_numvfs to zero
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,59 +77,210 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eric
- Dumazet <edumazet@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Wed, Jun 01, 2022 at 03:14:48PM +0200, Piotr Skajewski wrote:
+> > On Thu, May 19, 2022 at 07:53:58AM +0200, Piotr Skajewski wrote:
+> > > It is possible to disable VFs while the PF driver is processing requests
+> > > from the VF driver.  This can result in a panic.
+> > > 
+> > > BUG: unable to handle kernel paging request at 000000000000106c
+> > > PGD 0 P4D 0
+> > > Oops: 0000 [#1] SMP NOPTI
+> > > CPU: 8 PID: 0 Comm: swapper/8 Kdump: loaded Tainted: G I      --------- -
+> > > Hardware name: Dell Inc. PowerEdge R740/06WXJT, BIOS 2.8.2 08/27/2020
+> > > RIP: 0010:ixgbe_msg_task+0x4c8/0x1690 [ixgbe]
+> > > Code: 00 00 48 8d 04 40 48 c1 e0 05 89 7c 24 24 89 fd 48 89 44 24 10 83 ff
+> > > 01 0f 84 b8 04 00 00 4c 8b 64 24 10 4d 03 a5 48 22 00 00 <41> 80 7c 24 4c
+> > > 00 0f 84 8a 03 00 00 0f b7 c7 83 f8 08 0f 84 8f 0a
+> > > RSP: 0018:ffffb337869f8df8 EFLAGS: 00010002
+> > > RAX: 0000000000001020 RBX: 0000000000000000 RCX: 000000000000002b
+> > > RDX: 0000000000000002 RSI: 0000000000000008 RDI: 0000000000000006
+> > > RBP: 0000000000000006 R08: 0000000000000002 R09: 0000000000029780
+> > > R10: 00006957d8f42832 R11: 0000000000000000 R12: 0000000000001020
+> > > R13: ffff8a00e8978ac0 R14: 000000000000002b R15: ffff8a00e8979c80
+> > > FS:  0000000000000000(0000) GS:ffff8a07dfd00000(0000) knlGS:00000000000000
+> > > CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> > > CR2: 000000000000106c CR3: 0000000063e10004 CR4: 00000000007726e0
+> > > DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+> > > DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> > > PKRU: 55555554
+> > > Call Trace:
+> > >  <IRQ>
+> > >  ? ttwu_do_wakeup+0x19/0x140
+> > >  ? try_to_wake_up+0x1cd/0x550
+> > >  ? ixgbevf_update_xcast_mode+0x71/0xc0 [ixgbevf]
+> > >  ixgbe_msix_other+0x17e/0x310 [ixgbe]
+> > >  __handle_irq_event_percpu+0x40/0x180
+> > >  handle_irq_event_percpu+0x30/0x80
+> > >  handle_irq_event+0x36/0x53
+> > >  handle_edge_irq+0x82/0x190
+> > >  handle_irq+0x1c/0x30
+> > >  do_IRQ+0x49/0xd0
+> > >  common_interrupt+0xf/0xf
+> > > 
+> > > This can be eventually be reproduced with the following script:
+> > > 
+> > > while :
+> > > do
+> > >     echo 63 > /sys/class/net/<devname>/device/sriov_numvfs
+> > >     sleep 1
+> > >     echo 0 > /sys/class/net/<devname>/device/sriov_numvfs
+> > >     sleep 1
+> > > done
+> > > 
+> > > Add lock when disabling SR-IOV to prevent process VF mailbox communication.
+> > > 
+> > > Signed-off-by: Piotr Skajewski <piotrx.skajewski@intel.com>
+> > 
+> > This is a fix for sure. Please target it to net tree and add fixes tag.
+> > 
+> > > ---
+> > > changes in v2:
+> > >     - replace type spin_lock_bh to spin_lock
+> > 
+> > Why? Please explain what contexts are being synchronized.k
+> 
+> The synchronization of shared resources while creating and removing many
+> virtual function simultaneously.
 
+This doesn't answer my question unfortunately :(
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Kai-Heng Feng
-> Sent: Wednesday, May 25, 2022 5:01 PM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>
-> Cc: linux-kernel@vger.kernel.org; Eric Dumazet <edumazet@google.com>;
-> Kai-Heng Feng <kai.heng.feng@canonical.com>; intel-wired-
-> lan@lists.osuosl.org; Jeff Kirsher <jeffrey.t.kirsher@intel.com>;
-> netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
-> <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>
-> Subject: [Intel-wired-lan] [PATCH v2 2/2] igb: Make DMA faster when CPU is
-> active on the PCIe link
 > 
-> Intel I210 on some Intel Alder Lake platforms can only achieve ~750Mbps Tx
-> speed via iperf. The RR2DCDELAY shows around 0x2xxx DMA delay, which
-> will be significantly lower when 1) ASPM is disabled or 2) SoC package c-state
-> stays above PC3. When the RR2DCDELAY is around 0x1xxx the Tx speed can
-> reach to ~950Mbps.
-> 
-> According to the I210 datasheet "8.26.1 PCIe Misc. Register - PCIEMISC",
-> "DMA Idle Indication" doesn't seem to tie to DMA coalesce anymore, so set it
-> to 1b for "DMA is considered idle when there is no Rx or Tx AND when there
-> are no TLPs indicating that CPU is active detected on the PCIe link (such as
-> the host executes CSR or Configuration register read or write operation)" and
-> performing Tx should also fall under "active CPU on PCIe link" case.
-> 
-> In addition to that, commit b6e0c419f040 ("igb: Move DMA Coalescing init
-> code to separate function.") seems to wrongly changed from enabling
-> E1000_PCIEMISC_LX_DECISION to disabling it, also fix that.
-> 
-> Fixes: b6e0c419f040 ("igb: Move DMA Coalescing init code to separate
-> function.")
-> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
-> 
+> > 
+> > > 
+> > >  drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
+> > >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  3 ++
+> > >  .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    | 28 ++++++++++++-------
+> > >  3 files changed, 22 insertions(+), 10 deletions(-)
+> > > 
+> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> > > index 921a4d977d65..8813b4dd6872 100644
+> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+> > > @@ -779,6 +779,7 @@ struct ixgbe_adapter {
+> > >  #ifdef CONFIG_IXGBE_IPSEC
+> > >  	struct ixgbe_ipsec *ipsec;
+> > >  #endif /* CONFIG_IXGBE_IPSEC */
+> > > +	spinlock_t vfs_lock;
+> > >  };
+> > >  
+> > >  static inline int ixgbe_determine_xdp_q_idx(int cpu)
+> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> > > index c4a4954aa317..6c403f112d29 100644
+> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> > > @@ -6402,6 +6402,9 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
+> > >  	/* n-tuple support exists, always init our spinlock */
+> > >  	spin_lock_init(&adapter->fdir_perfect_lock);
+> > >  
+> > > +	/* init spinlock to avoid concurrency of VF resources */
+> > > +	spin_lock_init(&adapter->vfs_lock);
+> > > +
+> > >  #ifdef CONFIG_IXGBE_DCB
+> > >  	ixgbe_init_dcb(adapter);
+> > >  #endif
+> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > > index 7f11c0a8e7a9..6f583df19635 100644
+> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > > @@ -207,6 +207,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
+> > >  	unsigned int num_vfs = adapter->num_vfs, vf;
+> > >  	int rss;
+> > >  
+> > > +	spin_lock(&adapter->vfs_lock);
+> > > +
+> > >  	/* set num VFs to 0 to prevent access to vfinfo */
+> > >  	adapter->num_vfs = 0;
+> > >  
+> > > @@ -228,6 +230,8 @@ int ixgbe_disable_sriov(struct ixgbe_adapter *adapter)
+> > >  	kfree(adapter->mv_list);
+> > >  	adapter->mv_list = NULL;
+> > >  
+> > > +	spin_unlock(&adapter->vfs_lock);
+> > > +
+> > >  	/* if SR-IOV is already disabled then there is nothing to do */
+> > >  	if (!(adapter->flags & IXGBE_FLAG_SRIOV_ENABLED))
+> > >  		return 0;
+> > > @@ -1357,19 +1361,23 @@ void ixgbe_msg_task(struct ixgbe_adapter *adapter)
+> > >  	struct ixgbe_hw *hw = &adapter->hw;
+> > >  	u32 vf;
+> > >  
+> > > -	for (vf = 0; vf < adapter->num_vfs; vf++) {
+> > > -		/* process any reset requests */
+> > > -		if (!ixgbe_check_for_rst(hw, vf))
+> > > -			ixgbe_vf_reset_event(adapter, vf);
+> > > +	spin_lock(&adapter->vfs_lock);
 
-Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+So this is broken and that's why I was asking for explanation in regards
+to what contexts we're playing with.
+
+ixgbe_msg_task() which splat points to is run in interrupt context, so you
+need to disable the interrupts before holding a lock. You should use
+spin_lock_irqsave(). Otherwise there is a chance that
+ixgbe_disable_sriov() would be interrupted by ixgbe_msg_task() on the same
+cpu and you'll run into the deadlock.
+
+> > > +	if (adapter->vfinfo) {
+> > 
+> > why this is needed?
+> 
+> While creating and removing many VF at the same time,
+> it happens that we process messages from VF whose resources
+> have already been released. Driver should not process message
+> while this is happening.
+
+I was only asking why we need check for adapter->vinfo and I feel that
+you started to explain why locking is needed here.
+
+> 
+> > 
+> > also maybe revert the logic and flatten the code:
+> >     if (!adapter->vfinfo)
+> > 	goto unlock;
+> >     (...)
+> > unlock:
+> >     spin_unlock(&adapter->vfs_lock);
+> > 
+> 
+> This check is not related to spinlock itself but
+> stick to the loop where VF message is processed.
+> 
+> > > +		for (vf = 0; vf < adapter->num_vfs; vf++) {
+> > > +			/* process any reset requests */
+> > > +			if (!ixgbe_check_for_rst(hw, vf))
+> > > +				ixgbe_vf_reset_event(adapter, vf);
+> > >  
+> > > -		/* process any messages pending */
+> > > -		if (!ixgbe_check_for_msg(hw, vf))
+> > > -			ixgbe_rcv_msg_from_vf(adapter, vf);
+> > > +			/* process any messages pending */
+> > > +			if (!ixgbe_check_for_msg(hw, vf))
+> > > +				ixgbe_rcv_msg_from_vf(adapter, vf);
+> > >  
+> > > -		/* process any acks */
+> > > -		if (!ixgbe_check_for_ack(hw, vf))
+> > > -			ixgbe_rcv_ack_from_vf(adapter, vf);
+> > > +			/* process any acks */
+> > > +			if (!ixgbe_check_for_ack(hw, vf))
+> > > +				ixgbe_rcv_ack_from_vf(adapter, vf);
+> > > +		}
+> > >  	}
+> > > +	spin_unlock(&adapter->vfs_lock);
+> > >  }
+> > >  
+> > >  static inline void ixgbe_ping_vf(struct ixgbe_adapter *adapter, int vf)
+> > > -- 
+> > > 2.35.0.rc0
+> > > 
+> > > _______________________________________________
+> > > Intel-wired-lan mailing list
+> > > Intel-wired-lan@osuosl.org
+> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
