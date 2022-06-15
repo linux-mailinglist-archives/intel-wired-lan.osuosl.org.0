@@ -1,65 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1D6B54C87B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jun 2022 14:27:31 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1696554C87E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jun 2022 14:27:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C89E607CA;
-	Wed, 15 Jun 2022 12:27:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4CC65410C7;
+	Wed, 15 Jun 2022 12:27:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CtMGlaWaYg6x; Wed, 15 Jun 2022 12:27:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HeT0n4afDB1G; Wed, 15 Jun 2022 12:27:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70DA360BC5;
-	Wed, 15 Jun 2022 12:27:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 612B641908;
+	Wed, 15 Jun 2022 12:27:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF0001BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 54C111BF5A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9D2CF60B93
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 428C141908
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SYq7ohl1MKZD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Jun 2022 12:27:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZjAD52oqaUGR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Jun 2022 12:27:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DEADF607CA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E5801410C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 12:27:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655296043; x=1686832043;
+ t=1655296053; x=1686832053;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=KIkf2Owy8bJlvFyiWKzeR1CkS4Jsn1VQRBayf2D5ldU=;
- b=VKSGt6EmImpmq3J15MWeh3i94mF1hXXRu9rxxrdBA/mVCETZHNsAZmpL
- JC226/pQPSMS29P6QJK4tZkPueDq9BmXotctr2BjXGo7lDehOk8Pk9tj8
- VaACNDlZ/JV+Ja+A5YaOCi0uQ9NfC4BSTFgQEO8O5EgiDBSJzfrj5uH85
- URpDQnQoFY3QmjQUJL917CGeqQ2G0LVI9xaP5+yvDroe7c+dcE914P7AW
- 7FMeLlx1kSvejQlvrGjGHhrHcAy8Rw+z50khjWTFOr84lenfibrvGay20
- vSsJjITO6ULi09q8ur1mx7MEStd44PDuH+XQOdS3mkLYlKKHdskUnoWo2 w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="259404366"
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="259404366"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ bh=BrTj8Bhds2QBZJGPNH6u0jdlS9Tpa+9kYe5MD/OMPjE=;
+ b=koOeBiEDK4qzvdzYAZwGL4KbBN+Tzbh3JTTJtAdBeNHHtWfHLqZmuWJt
+ V+b2E1gqfUoW5xCsDWOSMlDyd45b7VirOHUqIR3nRChbVu07nJ0vEWRy0
+ g5R9iWlOgl9VfXhk8009vkYd1iHmgvIRwMIyOIF/okVmRSM0YkhVaPSs/
+ cX0SwzPeHn5qALGn6yq8cdvdyjVz/6VFTFWHlYG50gJqFgI7R0pKIjkac
+ b6GwyShyhl4/jzS6nKlPaDN/YTwHmaC1iasjEGseRJj8uYqDyRAljS2/S
+ TLvMLrKe9/B8qEyK2zVbpZywoxpascxr7h0WgMpeY/WvWbxcw/vp+hwyC A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="259404405"
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="259404405"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2022 05:27:23 -0700
+ 15 Jun 2022 05:27:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="652633698"
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="712913498"
 Received: from amlin-019-046.igk.intel.com (HELO localhost.igk.intel.com)
  ([10.102.19.46])
- by fmsmga004.fm.intel.com with ESMTP; 15 Jun 2022 05:27:22 -0700
+ by orsmga004.jf.intel.com with ESMTP; 15 Jun 2022 05:27:31 -0700
 From: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 15 Jun 2022 12:27:04 +0000
-Message-Id: <20220615122704.27073-1-mateusz.palczewski@intel.com>
+Date: Wed, 15 Jun 2022 12:27:14 +0000
+Message-Id: <20220615122714.27177-1-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1 1/3] iavf: Fix reset error handling
+Subject: [Intel-wired-lan] [PATCH net v1 2/3] iavf: Fix NULL pointer
+ dereference in iavf_get_link_ksettings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,97 +81,98 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 
-Do not call iavf_close in iavf_reset_task error handling. Doing so can
-lead to double call of napi_disable, which can lead to deadlock there.
-Removing VF would lead to iavf_remove task being stuck, because it
-requires crit_lock, which is held by iavf_close.
-Call iavf_disable_vf if reset fail, so that driver will clean up
-remaining invalid resources.
-During rapid VF resets, HW can fail to setup VF mailbox. Wrong
-error handling can lead to iavf_remove being stuck with:
-[ 5218.999087] iavf 0000:82:01.0: Failed to init adminq: -53
-...
-[ 5267.189211] INFO: task repro.sh:11219 blocked for more than 30 seconds.
-[ 5267.189520]       Tainted: G S          E     5.18.0-04958-ga54ce3703613-dirty #1
-[ 5267.189764] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
-[ 5267.190062] task:repro.sh        state:D stack:    0 pid:11219 ppid:  8162 flags:0x00000000
-[ 5267.190347] Call Trace:
-[ 5267.190647]  <TASK>
-[ 5267.190927]  __schedule+0x460/0x9f0
-[ 5267.191264]  schedule+0x44/0xb0
-[ 5267.191563]  schedule_preempt_disabled+0x14/0x20
-[ 5267.191890]  __mutex_lock.isra.12+0x6e3/0xac0
-[ 5267.192237]  ? iavf_remove+0xf9/0x6c0 [iavf]
-[ 5267.192565]  iavf_remove+0x12a/0x6c0 [iavf]
-[ 5267.192911]  ? _raw_spin_unlock_irqrestore+0x1e/0x40
-[ 5267.193285]  pci_device_remove+0x36/0xb0
-[ 5267.193619]  device_release_driver_internal+0xc1/0x150
-[ 5267.193974]  pci_stop_bus_device+0x69/0x90
-[ 5267.194361]  pci_stop_and_remove_bus_device+0xe/0x20
-[ 5267.194735]  pci_iov_remove_virtfn+0xba/0x120
-[ 5267.195130]  sriov_disable+0x2f/0xe0
-[ 5267.195506]  ice_free_vfs+0x7d/0x2f0 [ice]
-[ 5267.196056]  ? pci_get_device+0x4f/0x70
-[ 5267.196496]  ice_sriov_configure+0x78/0x1a0 [ice]
-[ 5267.196995]  sriov_numvfs_store+0xfe/0x140
-[ 5267.197466]  kernfs_fop_write_iter+0x12e/0x1c0
-[ 5267.197918]  new_sync_write+0x10c/0x190
-[ 5267.198404]  vfs_write+0x24e/0x2d0
-[ 5267.198886]  ksys_write+0x5c/0xd0
-[ 5267.199367]  do_syscall_64+0x3a/0x80
-[ 5267.199827]  entry_SYSCALL_64_after_hwframe+0x46/0xb0
-[ 5267.200317] RIP: 0033:0x7f5b381205c8
-[ 5267.200814] RSP: 002b:00007fff8c7e8c78 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
-[ 5267.201981] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f5b381205c8
-[ 5267.202620] RDX: 0000000000000002 RSI: 00005569420ee900 RDI: 0000000000000001
-[ 5267.203426] RBP: 00005569420ee900 R08: 000000000000000a R09: 00007f5b38180820
-[ 5267.204327] R10: 000000000000000a R11: 0000000000000246 R12: 00007f5b383c06e0
-[ 5267.205193] R13: 0000000000000002 R14: 00007f5b383bb880 R15: 0000000000000002
-[ 5267.206041]  </TASK>
-[ 5267.206970] Kernel panic - not syncing: hung_task: blocked tasks
-[ 5267.207809] CPU: 48 PID: 551 Comm: khungtaskd Kdump: loaded Tainted: G S          E     5.18.0-04958-ga54ce3703613-dirty #1
-[ 5267.208726] Hardware name: Dell Inc. PowerEdge R730/0WCJNT, BIOS 2.11.0 11/02/2019
-[ 5267.209623] Call Trace:
-[ 5267.210569]  <TASK>
-[ 5267.211480]  dump_stack_lvl+0x33/0x42
-[ 5267.212472]  panic+0x107/0x294
-[ 5267.213467]  watchdog.cold.8+0xc/0xbb
-[ 5267.214413]  ? proc_dohung_task_timeout_secs+0x30/0x30
-[ 5267.215511]  kthread+0xf4/0x120
-[ 5267.216459]  ? kthread_complete_and_exit+0x20/0x20
-[ 5267.217505]  ret_from_fork+0x22/0x30
-[ 5267.218459]  </TASK>
+Fix possible NULL pointer dereference, due to freeing of adapter->vf_res
+in iavf_init_get_resources. Commit #209f2f9c7181 introduced a regression,
+where receiving IAVF_ERR_ADMIN_QUEUE_NO_WORK from iavf_get_vf_config
+would free adapter->vf_res. However, netdev is still registered, so
+ethtool_ops can be called. Calling iavf_get_link_ksettings with no vf_res,
+will result with:
+[ 9385.242676] BUG: kernel NULL pointer dereference, address: 0000000000000008
+[ 9385.242683] #PF: supervisor read access in kernel mode
+[ 9385.242686] #PF: error_code(0x0000) - not-present page
+[ 9385.242690] PGD 0 P4D 0
+[ 9385.242696] Oops: 0000 [#1] PREEMPT SMP DEBUG_PAGEALLOC PTI
+[ 9385.242701] CPU: 6 PID: 3217 Comm: pmdalinux Kdump: loaded Tainted: G S          E     5.18.0-04958-ga54ce3703613-dirty #1
+[ 9385.242708] Hardware name: Dell Inc. PowerEdge R730/0WCJNT, BIOS 2.11.0 11/02/2019
+[ 9385.242710] RIP: 0010:iavf_get_link_ksettings+0x29/0xd0 [iavf]
+[ 9385.242745] Code: 00 0f 1f 44 00 00 b8 01 ef ff ff 48 c7 46 30 00 00 00 00 48 c7 46 38 00 00 00 00 c6 46 0b 00 66 89 46 08 48 8b 87 68 0e 00 00 <f6> 40 08 80 75 50 8b 87 5c 0e 00 00 83 f8 08 74 7a 76 1d 83 f8 20
+[ 9385.242749] RSP: 0018:ffffc0560ec7fbd0 EFLAGS: 00010246
+[ 9385.242755] RAX: 0000000000000000 RBX: ffffc0560ec7fc08 RCX: 0000000000000000
+[ 9385.242759] RDX: ffffffffc0ad4550 RSI: ffffc0560ec7fc08 RDI: ffffa0fc66674000
+[ 9385.242762] RBP: 00007ffd1fb2bf50 R08: b6a2d54b892363ee R09: ffffa101dc14fb00
+[ 9385.242765] R10: 0000000000000000 R11: 0000000000000004 R12: ffffa0fc66674000
+[ 9385.242768] R13: 0000000000000000 R14: ffffa0fc66674000 R15: 00000000ffffffa1
+[ 9385.242771] FS:  00007f93711a2980(0000) GS:ffffa0fad72c0000(0000) knlGS:0000000000000000
+[ 9385.242775] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 9385.242778] CR2: 0000000000000008 CR3: 0000000a8e61c003 CR4: 00000000003706e0
+[ 9385.242781] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 9385.242784] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 9385.242787] Call Trace:
+[ 9385.242791]  <TASK>
+[ 9385.242793]  ethtool_get_settings+0x71/0x1a0
+[ 9385.242814]  __dev_ethtool+0x426/0x2f40
+[ 9385.242823]  ? slab_post_alloc_hook+0x4f/0x280
+[ 9385.242836]  ? kmem_cache_alloc_trace+0x15d/0x2f0
+[ 9385.242841]  ? dev_ethtool+0x59/0x170
+[ 9385.242848]  dev_ethtool+0xa7/0x170
+[ 9385.242856]  dev_ioctl+0xc3/0x520
+[ 9385.242866]  sock_do_ioctl+0xa0/0xe0
+[ 9385.242877]  sock_ioctl+0x22f/0x320
+[ 9385.242885]  __x64_sys_ioctl+0x84/0xc0
+[ 9385.242896]  do_syscall_64+0x3a/0x80
+[ 9385.242904]  entry_SYSCALL_64_after_hwframe+0x46/0xb0
+[ 9385.242918] RIP: 0033:0x7f93702396db
+[ 9385.242923] Code: 73 01 c3 48 8b 0d ad 57 38 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 7d 57 38 00 f7 d8 64 89 01 48
+[ 9385.242927] RSP: 002b:00007ffd1fb2bf18 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[ 9385.242932] RAX: ffffffffffffffda RBX: 000055671b1d2fe0 RCX: 00007f93702396db
+[ 9385.242935] RDX: 00007ffd1fb2bf20 RSI: 0000000000008946 RDI: 0000000000000007
+[ 9385.242937] RBP: 00007ffd1fb2bf20 R08: 0000000000000003 R09: 0030763066307330
+[ 9385.242940] R10: 0000000000000000 R11: 0000000000000246 R12: 00007ffd1fb2bf80
+[ 9385.242942] R13: 0000000000000007 R14: 0000556719f6de90 R15: 00007ffd1fb2c1b0
+[ 9385.242948]  </TASK>
+[ 9385.242949] Modules linked in: iavf(E) xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nft_compat nf_nat_tftp nft_objref nf_conntrack_tftp bridge stp llc nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nf_tables rfkill nfnetlink vfat fat irdma ib_uverbs ib_core intel_rapl_msr intel_rapl_common sb_edac x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm iTCO_wdt iTCO_vendor_support ice irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel rapl i40e pcspkr intel_cstate joydev mei_me intel_uncore mxm_wmi mei ipmi_ssif lpc_ich ipmi_si acpi_power_meter xfs libcrc32c mgag200 i2c_algo_bit drm_shmem_helper drm_kms_helper sd_mod t10_pi crc64_rocksoft crc64 syscopyarea sg sysfillrect sysimgblt fb_sys_fops drm ixgbe ahci libahci libata crc32c_intel mdio dca wmi dm_mirror dm_region_hash dm_log dm_mod ipmi_devintf ipmi_msghandler fuse
+[ 9385.243065]  [last unloaded: iavf]
 
-Fixes: f0db78928783 ("i40evf: use netdev variable in reset task")
+Dereference happens in if (ADV_LINK_SUPPORT(adapter)) statement
+
+Fixes: 209f2f9c7181 ("iavf: Add support for VIRTCHNL_VF_OFFLOAD_VLAN_V2 negotiation")
 Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 6 ++++++
+ drivers/net/ethernet/intel/iavf/iavf_main.c    | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index e535d4c3da49..01e4037407e5 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -275,6 +275,12 @@ static int iavf_get_link_ksettings(struct net_device *netdev,
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+ 
++	/* if VF failed initialization during __IAVF_INIT_GET_RESOURCES,
++	 * it is possible for this variable to be freed there.
++	 */
++	if (!adapter->vf_res)
++		return -EAGAIN;
++
+ 	ethtool_link_ksettings_zero_link_mode(cmd, supported);
+ 	cmd->base.autoneg = AUTONEG_DISABLE;
+ 	cmd->base.port = PORT_NONE;
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 05b01b67210d..83170fdb3eaf 100644
+index 83170fdb3eaf..68996006657b 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2998,12 +2998,15 @@ static void iavf_reset_task(struct work_struct *work)
- 
- 	return;
- reset_err:
-+	if (running) {
-+		set_bit(__IAVF_VSI_DOWN, adapter->vsi.state);
-+		iavf_free_traffic_irqs(adapter);
-+	}
-+	iavf_disable_vf(adapter);
-+
- 	mutex_unlock(&adapter->client_lock);
- 	mutex_unlock(&adapter->crit_lock);
--	if (running)
--		iavf_change_state(adapter, __IAVF_RUNNING);
- 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
--	iavf_close(netdev);
- }
- 
- /**
+@@ -2281,7 +2281,7 @@ static void iavf_init_get_resources(struct iavf_adapter *adapter)
+ 	err = iavf_get_vf_config(adapter);
+ 	if (err == -EALREADY) {
+ 		err = iavf_send_vf_config_msg(adapter);
+-		goto err_alloc;
++		goto err;
+ 	} else if (err == -EINVAL) {
+ 		/* We only get -EINVAL if the device is in a very bad
+ 		 * state or if we've been disabled for previous bad
 -- 
 2.25.1
 
