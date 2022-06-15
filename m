@@ -1,65 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81A7454C39C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jun 2022 10:36:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D050254C472
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jun 2022 11:17:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A5A1241926;
-	Wed, 15 Jun 2022 08:36:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4C0E761036;
+	Wed, 15 Jun 2022 09:17:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n3VMcwhq3-hj; Wed, 15 Jun 2022 08:36:26 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HcvWa6x_E1Fy; Wed, 15 Jun 2022 09:17:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0F3C741903;
-	Wed, 15 Jun 2022 08:36:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3255C6102D;
+	Wed, 15 Jun 2022 09:17:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 183E71BF954
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 08:36:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 88E3E1BF417
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 09:17:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0EC9B41918
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 08:36:21 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 76F36418D9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 09:17:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BLj_kakURCQ9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Jun 2022 08:36:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A257541903
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 08:36:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655282179; x=1686818179;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ybO0SE/rdWRAxvk8vXYBK5qO/6vX+Zm7xtBxU0afk8o=;
- b=Pl0S1M/jslduOfxcIjR12/bAUcrs0SvgaU9W05IL7Vk5uxlO3htjmd0F
- psm4ttqZO8Ul1Tcn1/D6UgESgYQwcICEyPJiagfkRHQty+7R0X7LDrYhY
- xxDLpOwe4jwGpmhqoHE2MkycocSXkIgWsPnzC1CZLqLAP9k5TH7H6BcWM
- M3FCx32kk+CbkuOvWFUP1WLXAl6VAslUv1O4HIu/VS4UyiKfGEUQsWCu+
- U/X9nHJrshMcsF5/irvAmZQ1AUG5vWMROrsiyAUVIkWMJYLsrpxzDCIMB
- UKnCeubtddGihMM0+It9A6joO4HeOd4gXKyOYaRvkTeRmvXnFnIHtQXE+ A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="279600559"
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="279600559"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2022 01:36:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; d="scan'208";a="640873160"
-Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by fmsmga008.fm.intel.com with ESMTP; 15 Jun 2022 01:36:16 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 15 Jun 2022 10:33:54 +0200
-Message-Id: <20220615083354.3181885-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.27.0
+ with ESMTP id NpG6vhIpMktG for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Jun 2022 09:17:04 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D5010418CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 09:17:03 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5aeb3c.dynamic.kabel-deutschland.de
+ [95.90.235.60])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 46D0661EA1928;
+ Wed, 15 Jun 2022 11:17:00 +0200 (CEST)
+Message-ID: <6e59c707-ae30-9471-5669-8fce6f58a7a7@molgen.mpg.de>
+Date: Wed, 15 Jun 2022 11:16:59 +0200
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix 'tc qdisc show' list too
- many queues
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Content-Language: en-US
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+References: <20220615083354.3181885-1-jedrzej.jagielski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20220615083354.3181885-1-jedrzej.jagielski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: Fix 'tc qdisc show' list
+ too many queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,140 +63,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
- Kiran Patil <kiran.patil@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org, Kiran Patil <kiran.patil@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-
-Fix tc qdisc show dev <ethX> root displaying too many fq_codel
-qdiscs.
-tc_modify_qdisc, which is caller of ndo_setup_tc, expects
-driver to call netif_set_real_num_tx_queues, which prepares
-qdiscs.
-Without this patch, fq_codel qdiscs would not be adjusted to
-number of queues on VF.
-e.g.:
-tc qdisc show dev <ethX>
-qdisc mq 0: root
-qdisc fq_codel 0: parent :4 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent :3 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent :2 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent :1 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-tc qdisc add dev <ethX> root mqprio num_tc 2 map 1 0 0 0 0 0 0 0 queues 1@0 1@1 hw 1 mode channel shaper bw_rlimit max_rate 5000Mbit 150Mbit
-tc qdisc show dev <ethX>
-qdisc mqprio 8003: root tc 2 map 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-             queues:(0:0) (1:1)
-             mode:channel
-             shaper:bw_rlimit   max_rate:5Gbit 150Mbit
-qdisc fq_codel 0: parent 8003:4 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent 8003:3 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent 8003:2 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent 8003:1 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-
-While after fix:
-tc qdisc add dev <ethX> root mqprio num_tc 2 map 1 0 0 0 0 0 0 0 queues 1@0 1@1 hw 1 mode channel shaper bw_rlimit max_rate 5000Mbit 150Mbit
-tc qdisc show dev <ethX> #should show 2, shows 4
-qdisc mqprio 8004: root tc 2 map 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-             queues:(0:0) (1:1)
-             mode:channel
-             shaper:bw_rlimit   max_rate:5Gbit 150Mbit
-qdisc fq_codel 0: parent 8004:2 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-qdisc fq_codel 0: parent 8004:1 limit 10240p flows 1024 quantum 1514 target 5ms interval 100ms memory_limit 32Mb ecn drop_batch 64
-
-Fixes: d5b33d024496 ("i40evf: add ndo_setup_tc callback to i40evf")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Kiran Patil <kiran.patil@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |  5 +++++
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 20 +++++++++++++++++++
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  1 +
- 3 files changed, 26 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 49aed3e506a6..05cd2dd5bd36 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -427,6 +427,11 @@ struct iavf_adapter {
- 	/* lock to protect access to the cloud filter list */
- 	spinlock_t cloud_filter_list_lock;
- 	u16 num_cloud_filters;
-+	/* snapshot of "num_active_queues" before setup_tc for qdisc add
-+	 * is invoked. This information is useful during qdisc del flow,
-+	 * to restore correct number of queues
-+	 */
-+	int orig_num_active_queues;
- 
- #define IAVF_MAX_FDIR_FILTERS 128	/* max allowed Flow Director filters */
- 	u16 fdir_active_fltr;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index f3ecb3bca33d..d2220043fd48 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3411,6 +3411,7 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- 			netif_tx_disable(netdev);
- 			iavf_del_all_cloud_filters(adapter);
- 			adapter->aq_required = IAVF_FLAG_AQ_DISABLE_CHANNELS;
-+			total_qps = adapter->orig_num_active_queues;
- 			goto exit;
- 		} else {
- 			return -EINVAL;
-@@ -3454,7 +3455,20 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- 				adapter->ch_config.ch_info[i].offset = 0;
- 			}
- 		}
-+
-+		/* Take snapshot of original config such as "num_active_queues"
-+		 * It is used later when delete ADQ flow is exercised, so that
-+		 * once delete ADQ flow completes, VF shall go back to its
-+		 * original queue configuration
-+		 */
-+
-+		adapter->orig_num_active_queues = adapter->num_active_queues;
-+		/* Store queue info based on TC so that, VF gets configured
-+		 * with correct number of queues when VF completes ADQ config
-+		 * flow
-+		 */
- 		adapter->ch_config.total_qps = total_qps;
-+
- 		netif_tx_stop_all_queues(netdev);
- 		netif_tx_disable(netdev);
- 		adapter->aq_required |= IAVF_FLAG_AQ_ENABLE_CHANNELS;
-@@ -3471,6 +3485,12 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- 		}
- 	}
- exit:
-+	if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-+		return 0;
-+
-+	netif_set_real_num_rx_queues(netdev, total_qps);
-+	netif_set_real_num_tx_queues(netdev, total_qps);
-+
- 	return ret;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 782450d5c12f..8d5f1d5b49cd 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1920,6 +1920,7 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		}
- 		return;
- 	}
-+
- 	if (v_retval) {
- 		switch (v_opcode) {
- 		case VIRTCHNL_OP_ADD_VLAN:
--- 
-2.27.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBKZWRyemVqLCBsaWViZXIgUHJ6ZW15c2xhdywKCgpBbSAxNS4wNi4yMiB1bSAxMDozMyBz
+Y2hyaWViIEplZHJ6ZWogSmFnaWVsc2tpOgo+IEZyb206IFByemVteXNsYXcgUGF0eW5vd3NraSA8
+cHJ6ZW15c2xhd3gucGF0eW5vd3NraUBpbnRlbC5jb20+CgpJbiB0aGUgc3VtbWFyeToKCnMvbGlz
+dC9saXN0aW5nLwoKPiBGaXggdGMgcWRpc2Mgc2hvdyBkZXYgPGV0aFg+IHJvb3QgZGlzcGxheWlu
+ZyB0b28gbWFueSBmcV9jb2RlbAo+IHFkaXNjcy4KPiB0Y19tb2RpZnlfcWRpc2MsIHdoaWNoIGlz
+IGNhbGxlciBvZiBuZG9fc2V0dXBfdGMsIGV4cGVjdHMKPiBkcml2ZXIgdG8gY2FsbCBuZXRpZl9z
+ZXRfcmVhbF9udW1fdHhfcXVldWVzLCB3aGljaCBwcmVwYXJlcwo+IHFkaXNjcy4KPiBXaXRob3V0
+IHRoaXMgcGF0Y2gsIGZxX2NvZGVsIHFkaXNjcyB3b3VsZCBub3QgYmUgYWRqdXN0ZWQgdG8KPiBu
+dW1iZXIgb2YgcXVldWVzIG9uIFZGLgoKUGxlYXNlIHJlZmxvdyBmb3IgNzUgY2hhcmFjdGVycyBw
+ZXIgbGluZS4KCj4gZS5nLjoKPiB0YyBxZGlzYyBzaG93IGRldiA8ZXRoWD4KPiBxZGlzYyBtcSAw
+OiByb290Cj4gcWRpc2MgZnFfY29kZWwgMDogcGFyZW50IDo0IGxpbWl0IDEwMjQwcCBmbG93cyAx
+MDI0IHF1YW50dW0gMTUxNCB0YXJnZXQgNW1zIGludGVydmFsIDEwMG1zIG1lbW9yeV9saW1pdCAz
+Mk1iIGVjbiBkcm9wX2JhdGNoIDY0Cj4gcWRpc2MgZnFfY29kZWwgMDogcGFyZW50IDozIGxpbWl0
+IDEwMjQwcCBmbG93cyAxMDI0IHF1YW50dW0gMTUxNCB0YXJnZXQgNW1zIGludGVydmFsIDEwMG1z
+IG1lbW9yeV9saW1pdCAzMk1iIGVjbiBkcm9wX2JhdGNoIDY0Cj4gcWRpc2MgZnFfY29kZWwgMDog
+cGFyZW50IDoyIGxpbWl0IDEwMjQwcCBmbG93cyAxMDI0IHF1YW50dW0gMTUxNCB0YXJnZXQgNW1z
+IGludGVydmFsIDEwMG1zIG1lbW9yeV9saW1pdCAzMk1iIGVjbiBkcm9wX2JhdGNoIDY0Cj4gcWRp
+c2MgZnFfY29kZWwgMDogcGFyZW50IDoxIGxpbWl0IDEwMjQwcCBmbG93cyAxMDI0IHF1YW50dW0g
+MTUxNCB0YXJnZXQgNW1zIGludGVydmFsIDEwMG1zIG1lbW9yeV9saW1pdCAzMk1iIGVjbiBkcm9w
+X2JhdGNoIDY0Cj4gdGMgcWRpc2MgYWRkIGRldiA8ZXRoWD4gcm9vdCBtcXByaW8gbnVtX3RjIDIg
+bWFwIDEgMCAwIDAgMCAwIDAgMCBxdWV1ZXMgMUAwIDFAMSBodyAxIG1vZGUgY2hhbm5lbCBzaGFw
+ZXIgYndfcmxpbWl0IG1heF9yYXRlIDUwMDBNYml0IDE1ME1iaXQKPiB0YyBxZGlzYyBzaG93IGRl
+diA8ZXRoWD4KPiBxZGlzYyBtcXByaW8gODAwMzogcm9vdCB0YyAyIG1hcCAxIDAgMCAwIDAgMCAw
+IDAgMCAwIDAgMCAwIDAgMCAwCj4gICAgICAgICAgICAgICBxdWV1ZXM6KDA6MCkgKDE6MSkKPiAg
+ICAgICAgICAgICAgIG1vZGU6Y2hhbm5lbAo+ICAgICAgICAgICAgICAgc2hhcGVyOmJ3X3JsaW1p
+dCAgIG1heF9yYXRlOjVHYml0IDE1ME1iaXQKPiBxZGlzYyBmcV9jb2RlbCAwOiBwYXJlbnQgODAw
+Mzo0IGxpbWl0IDEwMjQwcCBmbG93cyAxMDI0IHF1YW50dW0gMTUxNCB0YXJnZXQgNW1zIGludGVy
+dmFsIDEwMG1zIG1lbW9yeV9saW1pdCAzMk1iIGVjbiBkcm9wX2JhdGNoIDY0Cj4gcWRpc2MgZnFf
+Y29kZWwgMDogcGFyZW50IDgwMDM6MyBsaW1pdCAxMDI0MHAgZmxvd3MgMTAyNCBxdWFudHVtIDE1
+MTQgdGFyZ2V0IDVtcyBpbnRlcnZhbCAxMDBtcyBtZW1vcnlfbGltaXQgMzJNYiBlY24gZHJvcF9i
+YXRjaCA2NAo+IHFkaXNjIGZxX2NvZGVsIDA6IHBhcmVudCA4MDAzOjIgbGltaXQgMTAyNDBwIGZs
+b3dzIDEwMjQgcXVhbnR1bSAxNTE0IHRhcmdldCA1bXMgaW50ZXJ2YWwgMTAwbXMgbWVtb3J5X2xp
+bWl0IDMyTWIgZWNuIGRyb3BfYmF0Y2ggNjQKPiBxZGlzYyBmcV9jb2RlbCAwOiBwYXJlbnQgODAw
+MzoxIGxpbWl0IDEwMjQwcCBmbG93cyAxMDI0IHF1YW50dW0gMTUxNCB0YXJnZXQgNW1zIGludGVy
+dmFsIDEwMG1zIG1lbW9yeV9saW1pdCAzMk1iIGVjbiBkcm9wX2JhdGNoIDY0Cj4gCj4gV2hpbGUg
+YWZ0ZXIgZml4Ogo+IHRjIHFkaXNjIGFkZCBkZXYgPGV0aFg+IHJvb3QgbXFwcmlvIG51bV90YyAy
+IG1hcCAxIDAgMCAwIDAgMCAwIDAgcXVldWVzIDFAMCAxQDEgaHcgMSBtb2RlIGNoYW5uZWwgc2hh
+cGVyIGJ3X3JsaW1pdCBtYXhfcmF0ZSA1MDAwTWJpdCAxNTBNYml0Cj4gdGMgcWRpc2Mgc2hvdyBk
+ZXYgPGV0aFg+ICNzaG91bGQgc2hvdyAyLCBzaG93cyA0Cj4gcWRpc2MgbXFwcmlvIDgwMDQ6IHJv
+b3QgdGMgMiBtYXAgMSAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMAo+ICAgICAgICAgICAg
+ICAgcXVldWVzOigwOjApICgxOjEpCj4gICAgICAgICAgICAgICBtb2RlOmNoYW5uZWwKPiAgICAg
+ICAgICAgICAgIHNoYXBlcjpid19ybGltaXQgICBtYXhfcmF0ZTo1R2JpdCAxNTBNYml0Cj4gcWRp
+c2MgZnFfY29kZWwgMDogcGFyZW50IDgwMDQ6MiBsaW1pdCAxMDI0MHAgZmxvd3MgMTAyNCBxdWFu
+dHVtIDE1MTQgdGFyZ2V0IDVtcyBpbnRlcnZhbCAxMDBtcyBtZW1vcnlfbGltaXQgMzJNYiBlY24g
+ZHJvcF9iYXRjaCA2NAo+IHFkaXNjIGZxX2NvZGVsIDA6IHBhcmVudCA4MDA0OjEgbGltaXQgMTAy
+NDBwIGZsb3dzIDEwMjQgcXVhbnR1bSAxNTE0IHRhcmdldCA1bXMgaW50ZXJ2YWwgMTAwbXMgbWVt
+b3J5X2xpbWl0IDMyTWIgZWNuIGRyb3BfYmF0Y2ggNjQKPiAKPiBGaXhlczogZDViMzNkMDI0NDk2
+ICgiaTQwZXZmOiBhZGQgbmRvX3NldHVwX3RjIGNhbGxiYWNrIHRvIGk0MGV2ZiIpCj4gU2lnbmVk
+LW9mZi1ieTogUHJ6ZW15c2xhdyBQYXR5bm93c2tpIDxwcnplbXlzbGF3eC5wYXR5bm93c2tpQGlu
+dGVsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBHcnplZ29yeiBTemN6dXJlayA8Z3J6ZWdvcnp4LnN6
+Y3p1cmVrQGludGVsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBLaXJhbiBQYXRpbCA8a2lyYW4ucGF0
+aWxAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEplZHJ6ZWogSmFnaWVsc2tpIDxqZWRyemVq
+LmphZ2llbHNraUBpbnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pYXZmL2lhdmYuaCAgICAgICAgfCAgNSArKysrKwo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWF2Zi9pYXZmX21haW4uYyAgIHwgMjAgKysrKysrKysrKysrKysrKysrKwo+ICAgLi4u
+L25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYyAgIHwgIDEgKwo+ICAgMyBm
+aWxlcyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zi5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaWF2Zi9pYXZmLmgKPiBpbmRleCA0OWFlZDNlNTA2YTYuLjA1Y2QyZGQ1YmQzNiAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmYuaAo+ICsrKyBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zi5oCj4gQEAgLTQyNyw2ICs0MjcsMTEg
+QEAgc3RydWN0IGlhdmZfYWRhcHRlciB7Cj4gICAJLyogbG9jayB0byBwcm90ZWN0IGFjY2VzcyB0
+byB0aGUgY2xvdWQgZmlsdGVyIGxpc3QgKi8KPiAgIAlzcGlubG9ja190IGNsb3VkX2ZpbHRlcl9s
+aXN0X2xvY2s7Cj4gICAJdTE2IG51bV9jbG91ZF9maWx0ZXJzOwo+ICsJLyogc25hcHNob3Qgb2Yg
+Im51bV9hY3RpdmVfcXVldWVzIiBiZWZvcmUgc2V0dXBfdGMgZm9yIHFkaXNjIGFkZAo+ICsJICog
+aXMgaW52b2tlZC4gVGhpcyBpbmZvcm1hdGlvbiBpcyB1c2VmdWwgZHVyaW5nIHFkaXNjIGRlbCBm
+bG93LAo+ICsJICogdG8gcmVzdG9yZSBjb3JyZWN0IG51bWJlciBvZiBxdWV1ZXMKPiArCSAqLwo+
+ICsJaW50IG9yaWdfbnVtX2FjdGl2ZV9xdWV1ZXM7Cj4gICAKPiAgICNkZWZpbmUgSUFWRl9NQVhf
+RkRJUl9GSUxURVJTIDEyOAkvKiBtYXggYWxsb3dlZCBGbG93IERpcmVjdG9yIGZpbHRlcnMgKi8K
+PiAgIAl1MTYgZmRpcl9hY3RpdmVfZmx0cjsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2lhdmYvaWF2Zl9tYWluLmMKPiBpbmRleCBmM2VjYjNiY2EzM2QuLmQyMjIwMDQzZmQ0OCAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfbWFpbi5jCj4g
+KysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX21haW4uYwo+IEBAIC0z
+NDExLDYgKzM0MTEsNyBAQCBzdGF0aWMgaW50IF9faWF2Zl9zZXR1cF90YyhzdHJ1Y3QgbmV0X2Rl
+dmljZSAqbmV0ZGV2LCB2b2lkICp0eXBlX2RhdGEpCj4gICAJCQluZXRpZl90eF9kaXNhYmxlKG5l
+dGRldik7Cj4gICAJCQlpYXZmX2RlbF9hbGxfY2xvdWRfZmlsdGVycyhhZGFwdGVyKTsKPiAgIAkJ
+CWFkYXB0ZXItPmFxX3JlcXVpcmVkID0gSUFWRl9GTEFHX0FRX0RJU0FCTEVfQ0hBTk5FTFM7Cj4g
+KwkJCXRvdGFsX3FwcyA9IGFkYXB0ZXItPm9yaWdfbnVtX2FjdGl2ZV9xdWV1ZXM7Cj4gICAJCQln
+b3RvIGV4aXQ7Cj4gICAJCX0gZWxzZSB7Cj4gICAJCQlyZXR1cm4gLUVJTlZBTDsKPiBAQCAtMzQ1
+NCw3ICszNDU1LDIwIEBAIHN0YXRpYyBpbnQgX19pYXZmX3NldHVwX3RjKHN0cnVjdCBuZXRfZGV2
+aWNlICpuZXRkZXYsIHZvaWQgKnR5cGVfZGF0YSkKPiAgIAkJCQlhZGFwdGVyLT5jaF9jb25maWcu
+Y2hfaW5mb1tpXS5vZmZzZXQgPSAwOwo+ICAgCQkJfQo+ICAgCQl9Cj4gKwo+ICsJCS8qIFRha2Ug
+c25hcHNob3Qgb2Ygb3JpZ2luYWwgY29uZmlnIHN1Y2ggYXMgIm51bV9hY3RpdmVfcXVldWVzIgo+
+ICsJCSAqIEl0IGlzIHVzZWQgbGF0ZXIgd2hlbiBkZWxldGUgQURRIGZsb3cgaXMgZXhlcmNpc2Vk
+LCBzbyB0aGF0Cj4gKwkJICogb25jZSBkZWxldGUgQURRIGZsb3cgY29tcGxldGVzLCBWRiBzaGFs
+bCBnbyBiYWNrIHRvIGl0cwo+ICsJCSAqIG9yaWdpbmFsIHF1ZXVlIGNvbmZpZ3VyYXRpb24KPiAr
+CQkgKi8KPiArCj4gKwkJYWRhcHRlci0+b3JpZ19udW1fYWN0aXZlX3F1ZXVlcyA9IGFkYXB0ZXIt
+Pm51bV9hY3RpdmVfcXVldWVzOwoKSXTigJlkIG1vdmUgdGhlIGJsYW5rIGxpbmUgYmVsb3cuCgo+
+ICsJCS8qIFN0b3JlIHF1ZXVlIGluZm8gYmFzZWQgb24gVEMgc28gdGhhdCwgVkYgZ2V0cyBjb25m
+aWd1cmVkCgpSZW1vdmUgdGhlIGNvbW1hPwoKPiArCQkgKiB3aXRoIGNvcnJlY3QgbnVtYmVyIG9m
+IHF1ZXVlcyB3aGVuIFZGIGNvbXBsZXRlcyBBRFEgY29uZmlnCj4gKwkJICogZmxvdwo+ICsJCSAq
+Lwo+ICAgCQlhZGFwdGVyLT5jaF9jb25maWcudG90YWxfcXBzID0gdG90YWxfcXBzOwo+ICsKPiAg
+IAkJbmV0aWZfdHhfc3RvcF9hbGxfcXVldWVzKG5ldGRldik7Cj4gICAJCW5ldGlmX3R4X2Rpc2Fi
+bGUobmV0ZGV2KTsKPiAgIAkJYWRhcHRlci0+YXFfcmVxdWlyZWQgfD0gSUFWRl9GTEFHX0FRX0VO
+QUJMRV9DSEFOTkVMUzsKPiBAQCAtMzQ3MSw2ICszNDg1LDEyIEBAIHN0YXRpYyBpbnQgX19pYXZm
+X3NldHVwX3RjKHN0cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYsIHZvaWQgKnR5cGVfZGF0YSkKPiAg
+IAkJfQo+ICAgCX0KPiAgIGV4aXQ6Cj4gKwlpZiAodGVzdF9iaXQoX19JQVZGX0lOX1JFTU9WRV9U
+QVNLLCAmYWRhcHRlci0+Y3JpdF9zZWN0aW9uKSkKPiArCQlyZXR1cm4gMDsKPiArCj4gKwluZXRp
+Zl9zZXRfcmVhbF9udW1fcnhfcXVldWVzKG5ldGRldiwgdG90YWxfcXBzKTsKPiArCW5ldGlmX3Nl
+dF9yZWFsX251bV90eF9xdWV1ZXMobmV0ZGV2LCB0b3RhbF9xcHMpOwo+ICsKPiAgIAlyZXR1cm4g
+cmV0Owo+ICAgfQo+ICAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2lhdmYvaWF2Zl92aXJ0Y2hubC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9p
+YXZmX3ZpcnRjaG5sLmMKPiBpbmRleCA3ODI0NTBkNWMxMmYuLjhkNWYxZDViNDljZCAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYwo+
+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4g
+QEAgLTE5MjAsNiArMTkyMCw3IEBAIHZvaWQgaWF2Zl92aXJ0Y2hubF9jb21wbGV0aW9uKHN0cnVj
+dCBpYXZmX2FkYXB0ZXIgKmFkYXB0ZXIsCj4gICAJCX0KPiAgIAkJcmV0dXJuOwo+ICAgCX0KPiAr
+CgpVbnJlbGF0ZWQuCgo+ICAgCWlmICh2X3JldHZhbCkgewo+ICAgCQlzd2l0Y2ggKHZfb3Bjb2Rl
+KSB7Cj4gICAJCWNhc2UgVklSVENITkxfT1BfQUREX1ZMQU46CgoKS2luZCByZWdhcmRzLAoKUGF1
+bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13
+aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8v
+bGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
