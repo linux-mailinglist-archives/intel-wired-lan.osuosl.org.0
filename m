@@ -2,66 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F2D454D07F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jun 2022 19:57:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48D0A54D9F2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jun 2022 07:46:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC06081B70;
-	Wed, 15 Jun 2022 17:57:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D42908297F;
+	Thu, 16 Jun 2022 05:46:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dqXzL-OimRjq; Wed, 15 Jun 2022 17:57:39 +0000 (UTC)
+	with ESMTP id X_COroxqJTHV; Thu, 16 Jun 2022 05:46:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B603E81A8E;
-	Wed, 15 Jun 2022 17:57:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C9B0A8191E;
+	Thu, 16 Jun 2022 05:46:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 40D4B1BF300
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 17:57:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 540F81BF8C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jun 2022 05:46:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 20CDE415CD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 17:57:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4116D41A24
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jun 2022 05:46:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id icFfw3zxuLfE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Jun 2022 17:57:33 +0000 (UTC)
+ with ESMTP id ExADjhZls_-e for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jun 2022 05:46:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 21255409FF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jun 2022 17:57:32 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D090341A22
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jun 2022 05:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655315853; x=1686851853;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1655358410; x=1686894410;
+ h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=mpRgWiOmGz3S7N9uHsWfpd1PiTlTTZFrpAxauFO1/hA=;
- b=fXAQ2mLk68nkcEPhT0HGwXw/UF+K88uFMfG06Zs72o9VvRsf0pA35s/w
- 9iDQlNbCXuin5R8F8N12L++t4Rpj5o20b7TcotRLL175wWHiOgV9rXeex
- UiJVtcMR+pzIMgMzXpmROM3MaZvV3CAIuqTBIu92FPlNjGtMt8iNvj+oQ
- ic1ZB3s9CU+acBHzfYxz+I+8uA+QvV6w0wzDsHBWUlTjJGDesUMDHfctE
- sQtKEWyIVuFsB+exaV70Hc32SpNbW0l/BdAvXTuQOFiuLP5EXICYX0RV3
- gDspNEG61qNuSBqHu4NE471RNOWAvbbWe60vhwrM8qgO/nTu5F94T6TO7 w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10379"; a="279770662"
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="279770662"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2022 10:57:32 -0700
+ bh=Gqd8UWdfTrldGLzepbw0pYe9EpEsgCqjIBcROSQGmus=;
+ b=BPOJj6GKvDsjm4j/bW/1m0FYd8kioLKV1GrGkMRVGsQ4PG3UfFo0psD8
+ Gc47VOTPF6HrGrU/+f2cyW6UrfuOsfZHUaJjzepaaiikdmaahIfS0NTko
+ GxYjY8HGeyLkboi3nVKdVov5NXhXcEB18hSi4dozizQ2GG8ncb1eyjvcg
+ sKckj2Aav7Jv4mmotNlJ2mINbcjhJv3MxyAqk+EYsOWZd/0oYG+cEEgg5
+ FWQZl815geYQHH5+Dp5zIxD+S/hD/oquFqPT6ByTWp94JUuuQh0KgOUYZ
+ U/euMDy4M6VybIHyhxuMZ0t/Ts0wpvyu3Pzy7u4FX50rLgKh4SNQtHjTN Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10379"; a="343130211"
+X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; d="scan'208";a="343130211"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2022 22:46:50 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; d="scan'208";a="618576065"
-Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
- ([10.166.28.101])
- by orsmga001.jf.intel.com with ESMTP; 15 Jun 2022 10:57:32 -0700
-From: Jun Zhang <xuejun.zhang@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 15 Jun 2022 13:57:20 -0400
-Message-Id: <20220615175720.4058112-1-xuejun.zhang@intel.com>
-X-Mailer: git-send-email 2.35.3
+X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; d="scan'208";a="831414656"
+Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 15 Jun 2022 22:46:49 -0700
+Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1o1iLA-000O75-H1;
+ Thu, 16 Jun 2022 05:46:48 +0000
+Date: Thu, 16 Jun 2022 13:46:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62aac3c4.dgqatSwpI6j2uMap%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v3] iavf: Fix missing state logs
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ efe41860008e57fb6b69855b4b93fdf34bc42798
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,52 +77,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: efe41860008e57fb6b69855b4b93fdf34bc42798  ice: Fix memory corruption in VF driver
 
-Fix debug prints, by adding missing state prints.
+elapsed time: 2162m
 
-Extend iavf_state_str by strings for __IAVF_INIT_EXTENDED_CAPS and
-__IAVF_INIT_CONFIG_ADAPTER.
+configs tested: 80
+configs skipped: 3
 
-Without this patch, when enabling debug prints for iavf.h, user will
-see:
-iavf 0000:06:0e.0: state transition from:__IAVF_INIT_GET_RESOURCES to:__IAVF_UNKNOWN_STATE
-iavf 0000:06:0e.0: state transition from:__IAVF_UNKNOWN_STATE to:__IAVF_UNKNOWN_STATE
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Fixes: 605ca7c5c670 ("iavf: Fix kernel BUG in free_msi_irqs")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
----
-v2: add Fixes Tag and Blank lines @ commit message
-v3: change code author
----
- drivers/net/ethernet/intel/iavf/iavf.h | 4 ++++
- 1 file changed, 4 insertions(+)
+gcc tested configs:
+arm                              allyesconfig
+arm64                               defconfig
+arm64                            allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+csky                                defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                                defconfig
+s390                             allmodconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                             allyesconfig
+sparc                               defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64               randconfig-a014-20220613
+x86_64               randconfig-a012-20220613
+x86_64               randconfig-a011-20220613
+x86_64               randconfig-a015-20220613
+x86_64               randconfig-a013-20220613
+i386                 randconfig-a013-20220613
+i386                 randconfig-a011-20220613
+i386                 randconfig-a014-20220613
+i386                 randconfig-a012-20220613
+i386                 randconfig-a016-20220613
+arc                  randconfig-r043-20220613
+riscv                randconfig-r042-20220613
+s390                 randconfig-r044-20220613
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                                  kexec
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                           rhel-8.3-syz
+x86_64                    rhel-8.3-kselftests
+x86_64                         rhel-8.3-kunit
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index fda1198d2c00..cbcf0c710072 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -464,6 +464,10 @@ static inline const char *iavf_state_str(enum iavf_state_t state)
- 		return "__IAVF_INIT_VERSION_CHECK";
- 	case __IAVF_INIT_GET_RESOURCES:
- 		return "__IAVF_INIT_GET_RESOURCES";
-+	case __IAVF_INIT_EXTENDED_CAPS:
-+		return "__IAVF_INIT_EXTENDED_CAPS";
-+	case __IAVF_INIT_CONFIG_ADAPTER:
-+		return "__IAVF_INIT_CONFIG_ADAPTER";
- 	case __IAVF_INIT_SW:
- 		return "__IAVF_INIT_SW";
- 	case __IAVF_INIT_FAILED:
+clang tested configs:
+i386                 randconfig-a002-20220613
+i386                 randconfig-a003-20220613
+i386                 randconfig-a001-20220613
+i386                 randconfig-a004-20220613
+i386                 randconfig-a005-20220613
+i386                 randconfig-a006-20220613
+x86_64               randconfig-a002-20220613
+x86_64               randconfig-a001-20220613
+x86_64               randconfig-a003-20220613
+x86_64               randconfig-a004-20220613
+x86_64               randconfig-a005-20220613
+x86_64               randconfig-a006-20220613
+hexagon              randconfig-r041-20220613
+hexagon              randconfig-r045-20220613
+
 -- 
-2.35.3
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
