@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B45D154FC88
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jun 2022 19:54:29 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5008755025A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jun 2022 05:17:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DEAE241778;
-	Fri, 17 Jun 2022 17:54:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DEAE241778
-Authentication-Results: smtp4.osuosl.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=Cs6q0swr
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3759E404ED;
+	Sat, 18 Jun 2022 03:16:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3759E404ED
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1655522218;
+	bh=Pcz+0Ym2iZDpUAOvUf5RHeJb/9mMHVXjczFnyCTxmZo=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=fj4vBLM+7naUi0G9KUYXWdv8tE2JmbPriuf/auqUaMuOY5V1FKVeS6kV0TTk/ZKwy
+	 AXdtvDlgjdN1TOQOf6Wfgg101nNb6RSfXnV7C2f+wbzPWikgNGjfHFrWbUFl4djJy0
+	 sGf0yPZVoOV3OorIWJk1KtwnkTH7oyc5wdR+7y7gj5TOitiG3l88Hurlxpm1EkJ3F+
+	 yW9UuSrl+5K1zHzYKAohFa2/tM1cI9+yHL6dtuwUEzEVHSmYfo0HGJTb0+gtN6xNzZ
+	 LtMOZFOLCyUsJUut6QnQRF71gv4hIPx2x+7XL9P9lK8t5sw5pU7CZwXPTQqSF9ZsYn
+	 zGq7/V0e6R8+w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zO_h-JCFsT72; Fri, 17 Jun 2022 17:54:24 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3D2GPplq4JNa; Sat, 18 Jun 2022 03:16:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 49A6B41770;
-	Fri, 17 Jun 2022 17:54:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 49A6B41770
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2184F40370;
+	Sat, 18 Jun 2022 03:16:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2184F40370
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 884A01BF331
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jun 2022 17:54:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 56D2B1BF9CB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 03:16:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6F7D041770
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jun 2022 17:54:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F7D041770
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3DBB640901
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 03:16:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3DBB640901
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mNvlxoDExG6G for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jun 2022 17:54:17 +0000 (UTC)
+ with ESMTP id 8FP_mu1uuK8R for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 Jun 2022 03:16:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C11941752
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3C11941752
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jun 2022 17:54:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655488457; x=1687024457;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=Tl3tzRpk6aIfyvlublC9283JaOB9qrtRYY79+EPtmd0=;
- b=Cs6q0swr1dzE2tmPbbS1huPV4A7woNeEqJq79btSTlMHed+fz0ahc1uF
- nhwsaVh8S8UanllOe/gWW5AzcqQMxvaTM6F28WL4n5VXU26MQW3gRjL0a
- pR0BwSeD1FNjnruQFfPPLok+RIkKjjiP+icUzIAhhege7m6D1MgJ01zyA
- N6Ivys2hWnOrYixjuF0jS0QWJxd+2aCMvKqRV3MY6M/C67gOu+pimmNN0
- oeBR9Z6xpX9FbyAyuC2+RxKWIzoBnzpALueu0OlifOibYAUV2z7pYsVzY
- KoteoOGyp6HkqGwdnG6iKiqY97Mt8CjcN+J72+xOXiW+8WUtWv9AgrR2+ g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="268266141"
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="268266141"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2022 10:50:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="688392564"
-Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
- ([10.166.28.101])
- by fmsmga002.fm.intel.com with ESMTP; 17 Jun 2022 10:50:11 -0700
-From: Jun Zhang <xuejun.zhang@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 17 Jun 2022 13:50:00 -0400
-Message-Id: <20220617175000.2168164-1-xuejun.zhang@intel.com>
-X-Mailer: git-send-email 2.35.3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2444040342
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2444040342
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 03:16:50 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 7D029B82D03;
+ Sat, 18 Jun 2022 03:16:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEC43C341C4;
+ Sat, 18 Jun 2022 03:16:45 +0000 (UTC)
+Date: Fri, 17 Jun 2022 20:16:44 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+Message-ID: <20220617201644.368bab1b@kernel.org>
+In-Reply-To: <108bf94b-85a6-98d4-175b-2c0d43e17b11@redhat.com>
+References: <e5c01d549dc37bff18e46aeabd6fb28a7bcf84be.1655388571.git.lorenzo@kernel.org>
+ <f137891f-eb33-b32b-5a16-912eb524ddef@intel.com>
+ <108bf94b-85a6-98d4-175b-2c0d43e17b11@redhat.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v1] iavf: validate dest MAC and VLAN
- from tc-filter code path
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: fix a use-after-free issue
+ in igb_clean_tx_ring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,132 +79,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kiran Patil <kiran.patil@intel.com>
+Cc: netdev@vger.kernel.org, edumazet@google.com, brouer@redhat.com,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Kiran Patil <kiran.patil@intel.com>
+On Fri, 17 Jun 2022 16:36:56 +0200 Jesper Dangaard Brouer wrote:
+> On 16/06/2022 20.26, Jesse Brandeburg wrote:
+> > On 6/16/2022 7:13 AM, Lorenzo Bianconi wrote:  
+> >> Fixes: 9cbc948b5a20c ("igb: add XDP support")
+> >> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>  
+> > 
+> > Thanks Lorenzo, @maintainers this fix seems simple enough you could 
+> > directly apply it without going through intel-wired-lan, once you think 
+> > it's ready.
+> > 
+> > Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> 
+> Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-Before allowing tc-filter using dest MAC, VLAN - check to make
-sure there is basic active filter using specified dest MAC and
-likewise for VLAN.
+It got marked as Awaiting Upstream so the bot won't respond.
+It's the commit 3f6a57ee8544 ("igb: fix a use-after-free issue 
+in igb_clean_tx_ring") in net now.
 
-This check is must to allow only legit filter via tc-filter
-code path with or without ADQ.
-
-Fixes: 0075fa0fadd0 ("i40evf: Add support to apply cloud filters")
-Signed-off-by: Kiran Patil <kiran.patil@intel.com>
-Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 62 ++++++++++++++++++++-
- 1 file changed, 61 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 57c51a15bcbc..287c3e4bf8af 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3558,6 +3558,48 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- 	return ret;
- }
- 
-+/**
-+ * iavf_is_vlan_tc_filter_allowed - allowed to add tc-filter using VLAN
-+ * @adapter: board private structure
-+ * @vlan: VLAN to verify
-+ *
-+ * Using specified "vlan" ID, there must be active VLAN filter in VF's
-+ * MAC-VLAN filter list.
-+ */
-+static bool
-+iavf_is_vlan_tc_filter_allowed(struct iavf_adapter *adapter, u16 vlan)
-+{
-+	struct iavf_vlan_filter *f;
-+	bool allowed;
-+
-+	spin_lock_bh(&adapter->mac_vlan_list_lock);
-+	f = iavf_find_vlan(adapter, IAVF_VLAN(vlan, ETH_P_8021Q));
-+	allowed = (f && f->add && !f->remove);
-+	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+	return allowed;
-+}
-+
-+/**
-+ * iavf_is_mac_tc_filter_allowed - allowed to add tc-filter using MAC addr
-+ * @adapter: board private structure
-+ * @macaddr: MAC address
-+ *
-+ * Using specified MAC address, there must be active MAC filter in VF's
-+ * MAC-VLAN filter list.
-+ */
-+static bool
-+iavf_is_mac_tc_filter_allowed(struct iavf_adapter *adapter, const u8 *macaddr)
-+{
-+	struct iavf_mac_filter *f;
-+	bool allowed;
-+
-+	spin_lock_bh(&adapter->mac_vlan_list_lock);
-+	f = iavf_find_filter(adapter, macaddr);
-+	allowed = (f && f->add && !f->is_new_mac && !f->remove);
-+	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+	return allowed;
-+}
-+
- /**
-  * iavf_parse_cls_flower - Parse tc flower filters provided by kernel
-  * @adapter: board private structure
-@@ -3651,7 +3693,15 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
- 			}
- 		}
- 
--		if (!is_zero_ether_addr(match.key->dst))
-+		if (!is_zero_ether_addr(match.key->dst)) {
-+			if (!iavf_is_mac_tc_filter_allowed(adapter,
-+							   match.key->dst)) {
-+				dev_err(&adapter->pdev->dev,
-+					"Dest MAC %pM doesn't belong to this VF\n",
-+					match.mask->dst);
-+				return -EINVAL;
-+			}
-+
- 			if (is_valid_ether_addr(match.key->dst) ||
- 			    is_multicast_ether_addr(match.key->dst)) {
- 				/* set the mask if a valid dst_mac address */
-@@ -3660,6 +3710,7 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
- 				ether_addr_copy(vf->data.tcp_spec.dst_mac,
- 						match.key->dst);
- 			}
-+		}
- 
- 		if (!is_zero_ether_addr(match.key->src))
- 			if (is_valid_ether_addr(match.key->src) ||
-@@ -3677,6 +3728,8 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
- 
- 		flow_rule_match_vlan(rule, &match);
- 		if (match.mask->vlan_id) {
-+			u16 vlan = match.key->vlan_id & VLAN_VID_MASK;
-+
- 			if (match.mask->vlan_id == VLAN_VID_MASK) {
- 				field_flags |= IAVF_CLOUD_FIELD_IVLAN;
- 			} else {
-@@ -3684,6 +3737,13 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
- 					match.mask->vlan_id);
- 				return -EINVAL;
- 			}
-+
-+			if (!iavf_is_vlan_tc_filter_allowed(adapter, vlan)) {
-+				dev_err(&adapter->pdev->dev,
-+					"VLAN %u doesn't belong to this VF\n",
-+					vlan);
-+				return -EINVAL;
-+			}
- 		}
- 		vf->mask.tcp_spec.vlan_id |= cpu_to_be16(0xffff);
- 		vf->data.tcp_spec.vlan_id = cpu_to_be16(match.key->vlan_id);
--- 
-2.35.3
-
+Thanks!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
