@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B6E75503FE
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jun 2022 12:25:26 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46E105503FF
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jun 2022 12:25:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3FF1A60B60;
-	Sat, 18 Jun 2022 10:25:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3FF1A60B60
+	by smtp3.osuosl.org (Postfix) with ESMTP id 69B0160ED9;
+	Sat, 18 Jun 2022 10:25:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 69B0160ED9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1655547923;
-	bh=QHNmVjurnHbegKrv5Nc5xYpC4vPK3yiw+53hBEFlPX0=;
+	s=default; t=1655547927;
+	bh=l/Eu9/Qr+nEIo+raVxRFHSNBC7XrOGywPrZ4d88+gBs=;
 	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=vZKDuMQBjxfaTjQ+/+vUgefIvf2igY680Vu1vGUqSKiWEMu+5gTRrDnQ2dw0/4Q88
-	 b8ohhZyGaGRC2WWgrvMeFMo3YBfMrlTNSFp0iUOu3yFuJqJaO4lnmXUIjSGCyd8Ch+
-	 5vZ+A3o0glwTQGK2a1G6v2zUNSZEie+TgtsTZIz8pb/TKdFcs+vQ5Fn06gKQ7+DRTF
-	 ljQHSz36veMN8R0v37OgLuDoVWJIATAcenqPdfox+hj0qnZkyr99PLOlcgkcyphBrc
-	 Lu4NA3QsWUG82FxRjrj241dMaA30LWWe1Rux3bB4+xh7jJRjzSkTwigXe7H2BMTi+p
-	 6Qp4T+e4i526Q==
+	b=RiPUDwCxDFnpE1o5E29rT6k0PrZfjqlE4vwvYZXs2WDC17w7pZCC3Ji6i5lhcrUvH
+	 zlFbaYHBQrbpndHTXrUxtZbSihiQc5mTiYlxWZzA7US4qmtC7vrmLW8vlBcHobNAp1
+	 YeLfziH3bQsaSbf5a/1/YVcruaGfIlPr9jPxiV065PqLvdrGMs22iUMgJi2lhpHh8o
+	 1RktMHsMzXqN7LcMxVBPbUjNUoTxIacmNkN1UhQRSmkvTbU6/SvklZyysE9XDjIS8G
+	 qPCx1WW7c88bBlPhJlCpLUwlMYcnIrGB5oYiXmApMys6VS4+I4/vVaC7mHNcZe23Yw
+	 xHarsgecZsXqw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FKOhoAEylhgi; Sat, 18 Jun 2022 10:25:22 +0000 (UTC)
+	with ESMTP id UsVr2jvSYSNA; Sat, 18 Jun 2022 10:25:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 11C1B60B27;
-	Sat, 18 Jun 2022 10:25:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11C1B60B27
+	by smtp3.osuosl.org (Postfix) with ESMTP id 469AC60AAE;
+	Sat, 18 Jun 2022 10:25:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 469AC60AAE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0E0A51BF3DE
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 56A191BF3DE
  for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 10:25:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DACB560B27
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 10:25:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DACB560B27
+ by smtp4.osuosl.org (Postfix) with ESMTP id 300AE41775
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 10:25:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 300AE41775
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XPvJGKtG9H14 for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ttFoIvqZAPd1 for <intel-wired-lan@lists.osuosl.org>;
  Sat, 18 Jun 2022 10:25:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D768960AAE
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D768960AAE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DA4324176F
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DA4324176F
  for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jun 2022 10:25:15 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="260077366"
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="260077366"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="259468260"
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="259468260"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jun 2022 03:25:15 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="832382991"
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="653968527"
 Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 18 Jun 2022 03:25:14 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 18 Jun 2022 03:25:14 -0700
 Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1o2Vdh-000QFR-No;
+ (envelope-from <lkp@intel.com>) id 1o2Vdh-000QFP-N0;
  Sat, 18 Jun 2022 10:25:13 +0000
-Date: Sat, 18 Jun 2022 18:24:25 +0800
+Date: Sat, 18 Jun 2022 18:25:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62ada7d9.A5OU6KsZ1Bd+S0pC%lkp@intel.com>
+Message-ID: <62ada807.G0YVO9xEXBUBY8QJ%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 371e59d265551fff92ab0a29503a6454b99ba22f
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ e1a9d2dfe995cd06447174255ab54b06ec7ce1f7
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,10 +83,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 371e59d265551fff92ab0a29503a6454b99ba22f  ice: Remove unnecessary NULL check before dev_put
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: e1a9d2dfe995cd06447174255ab54b06ec7ce1f7  iavf: Fix missing state logs
 
-elapsed time: 727m
+elapsed time: 728m
 
 configs tested: 131
 configs skipped: 4
@@ -204,8 +204,8 @@ x86_64                              defconfig
 x86_64                           allyesconfig
 x86_64                               rhel-8.3
 x86_64                          rhel-8.3-func
-x86_64                           rhel-8.3-syz
 x86_64                         rhel-8.3-kunit
+x86_64                           rhel-8.3-syz
 
 clang tested configs:
 arm                       spear13xx_defconfig
