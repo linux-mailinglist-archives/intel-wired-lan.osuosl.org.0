@@ -1,84 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D40545511C8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jun 2022 09:48:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88F2F5512C3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jun 2022 10:30:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0214B60F2D;
-	Mon, 20 Jun 2022 07:48:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0214B60F2D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95AD660F34;
+	Mon, 20 Jun 2022 08:30:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 95AD660F34
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1655711314;
-	bh=xnygRBttwO1pSE8fJQw5i1V7zby/iXvKFgVACIE+L+c=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zpNSbupeGLb5O0c4u9gGWHhye47UCeUpcGo5BaiwCLlUxKiOuOaVHGZQ+MFOpbeaF
-	 jckS/YKeca67PRD48UtumsJZCyLRh2OiifXlm5f0x7LxQxtDvNTLwACliiEzGVmD5u
-	 ozeMBIy+8X+zGSwrMemPr3Ql4Kk1gxJphDzF8+TWG40dwEl6bdTBEWtF3zkH4BZLh/
-	 2iOHbPljL53WfMuU7JEuGHFf0ZQ2+eDITfSzIe68lK5qPAmvE7DGdgOo0GeM6rcUm6
-	 F9l1rUY15WvQO0LVSTqmDs54jXHKtHwlMQKLhFTcfoOANxP3bOSFhduCiFIPcWQUx/
-	 Pt4olvA3cVxlg==
+	s=default; t=1655713823;
+	bh=+vtc8CW/1eVatVj4tC/7LPWZ+NcI6Dby0BqiXto0Oc0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=HTSLSD8MYR69x4+GUP/o+IuWWCfPWLKqgrqsGJ+tv7dEaY0aHS4JprDufplj6n1FZ
+	 ZGMgEnNmJZiWMPqf2LGBvnplkdjhSxVn5MZyzpJSSaJZbx7WcJ77x76wiVzprcXxIt
+	 yOESu8EO1Zf04QAFSFcrdS0xrB9EIQNa30YwggFnPjLRTEY7c2BVeoc2NhDLSYeS0m
+	 WSe3vHDSKjxqtRn5T2JuCTyKfBLtIRT77rM/2qL9O12/UTHznLEM8tnMsLWFUHwVSS
+	 XyeO9Dsxo7/qx+/E+OXcVpcIgONM5Dk4hZOtO5Wjc/ktDGNAdvT7wAtT4/3mLtgerl
+	 g19nTxgf1pEaQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hSSBphuKcCIO; Mon, 20 Jun 2022 07:48:33 +0000 (UTC)
+	with ESMTP id JsjrV5MgR850; Mon, 20 Jun 2022 08:30:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E1C6460F28;
-	Mon, 20 Jun 2022 07:48:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1C6460F28
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F7C460F32;
+	Mon, 20 Jun 2022 08:30:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F7C460F32
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 297411BF471
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 07:48:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B5ADF1BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 08:30:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 02A6A60F28
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 07:48:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 02A6A60F28
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9C5E5417D4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 08:30:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C5E5417D4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1xSiq8aeLzOW for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Jun 2022 07:48:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jHOMKQidr12T for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Jun 2022 08:30:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36EBD605B7
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 36EBD605B7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 07:48:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="280887161"
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="280887161"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2022 00:48:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="676420302"
-Received: from propan.igk.intel.com ([10.211.8.82])
- by FMSMGA003.fm.intel.com with ESMTP; 20 Jun 2022 00:48:11 -0700
-From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 20 Jun 2022 09:47:05 +0200
-Message-Id: <20220620074705.112316-1-anatolii.gerasymenko@intel.com>
-X-Mailer: git-send-email 2.25.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 50DF5417CE
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 50DF5417CE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jun 2022 08:30:16 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="279887834"
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="279887834"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2022 01:30:15 -0700
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; d="scan'208";a="591073956"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2022 01:30:14 -0700
+Date: Mon, 20 Jun 2022 01:32:37 -0400
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Jun Zhang <xuejun.zhang@intel.com>
+Message-ID: <YrAGdQB2np+/P/Ia@localhost.localdomain>
+References: <20220617175000.2168164-1-xuejun.zhang@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220617175000.2168164-1-xuejun.zhang@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655711307; x=1687247307;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ipol/DREk/Jdw03BaLwC1nMlg745N9ERJehpcEw77Zw=;
- b=W7EvAthQixORgsKu9IdtfvKyPpplhU9kQpz3Tylzbjmj1e+EPZ2h4QN1
- pTvKi4HVyGFQGoaIVUIE7ksOqOwVDCDzUELBGoiMvskQov4wePDhsYUQS
- glb4TbT/agM4+x1T2n4ZpAwEMe/i9cmlvO0udnZYjAMlovrkRCWp8nxxZ
- +GQVeh0rlVL7NP5wCsiOE9g/wNpD8wB+Jh+vkRi7/SjEpcWFSHuiFaKQn
- F7N/nMZNGLHI6g9ojFfR17T28RcELop42ibMDRCEVd+tmPGsHKgnh0u90
- m59Azjyw++W1TJb5NJE8e+7O5ZRhkH4taWv1eqm4THBHA5RWmwgj8T3SP
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1655713816; x=1687249816;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=aHZKqpD/6qaMdTsMjWHcrMV39WjoYOUvF5IW/lbUJ3g=;
+ b=BwksW/AEvERREeG1EXSXCbFFH1FJC7FYGYO8Qf34ip7AmWdpTm4ILmyQ
+ IbTwzCEQd4OxgwajMHiFmRu+rHA5yhiJ7iFRjRycCUvGHK85adHei+FBW
+ byGSVIcoQ8m1WU5BzVgC7fMwn1qVLBKPXg1nHjE7QPO9HM/2jhkxJmJCs
+ 0/LhDLBwsFJp6qVtdIvw5BNEceiESZ1snI0oBPL9wRK6EFIwsOXoYInvP
+ C/+0RHedgHhRfUM24NnPsKnoOr4i5/7+RqU+c6gPbY01fNxaVf42pHr1k
+ ORwAZWhoAN11S+5FIJMtBqnet1dD2YIMb/gQfu9K0OynCLOxAeamJIW8O
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=W7EvAthQ
-Subject: [Intel-wired-lan] [PATCH net v2] ice: ethtool: advertise 1000M
- speeds properly
+ header.a=rsa-sha256 header.s=Intel header.b=BwksW/AE
+Subject: Re: [Intel-wired-lan] [PATCH net v1] iavf: validate dest MAC and
+ VLAN from tc-filter code path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,86 +94,139 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, Kiran Patil <kiran.patil@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In current implementation ice_update_phy_type enables all link modes
-for selected speed. This approach doesn't work for 1000M speeds,
-because both copper (1000baseT) and optical (1000baseX) standards
-cannot be enabled at once.
+On Fri, Jun 17, 2022 at 01:50:00PM -0400, Jun Zhang wrote:
+> From: Kiran Patil <kiran.patil@intel.com>
+> 
+> Before allowing tc-filter using dest MAC, VLAN - check to make
+> sure there is basic active filter using specified dest MAC and
+> likewise for VLAN.
+> 
+> This check is must to allow only legit filter via tc-filter
+> code path with or without ADQ.
+> 
+> Fixes: 0075fa0fadd0 ("i40evf: Add support to apply cloud filters")
+> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+> Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 62 ++++++++++++++++++++-
+>  1 file changed, 61 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 57c51a15bcbc..287c3e4bf8af 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -3558,6 +3558,48 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
+>  	return ret;
+>  }
+>  
+> +/**
+> + * iavf_is_vlan_tc_filter_allowed - allowed to add tc-filter using VLAN
+> + * @adapter: board private structure
+> + * @vlan: VLAN to verify
+> + *
+> + * Using specified "vlan" ID, there must be active VLAN filter in VF's
+> + * MAC-VLAN filter list.
+> + */
+> +static bool
+> +iavf_is_vlan_tc_filter_allowed(struct iavf_adapter *adapter, u16 vlan)
+> +{
+> +	struct iavf_vlan_filter *f;
+> +	bool allowed;
+> +
+> +	spin_lock_bh(&adapter->mac_vlan_list_lock);
+Why do we need lock here?
 
-Fix this, by adding the function `ice_set_phy_type_from_speed()`
-for 1000M speeds.
-
-Fixes: 48cb27f2fd18 ("ice: Implement handlers for ethtool PHY/link operations")
-Signed-off-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 39 +++++++++++++++++++-
- 1 file changed, 38 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 1e71b70f0e52..8078618ce1b6 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2189,6 +2189,42 @@ ice_setup_autoneg(struct ice_port_info *p, struct ethtool_link_ksettings *ks,
- 	return err;
- }
- 
-+/**
-+ * ice_set_phy_type_from_speed - set phy_types based on speeds
-+ * and advertised modes
-+ * @ks: ethtool link ksettings struct
-+ * @phy_type_low: pointer to the lower part of phy_type
-+ * @phy_type_high: pointer to the higher part of phy_type
-+ * @adv_link_speed: targeted link speeds bitmap
-+ */
-+static void
-+ice_set_phy_type_from_speed(const struct ethtool_link_ksettings *ks,
-+			    u64 *phy_type_low, u64 *phy_type_high,
-+			    u16 adv_link_speed)
-+{
-+	/* Handle 1000M speed in a special way because ice_update_phy_type
-+	 * enables all link modes, but having mixed copper and optical
-+	 * standards is not supported.
-+	 */
-+	adv_link_speed &= ~ICE_AQ_LINK_SPEED_1000MB;
-+
-+	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-+						  1000baseT_Full))
-+		*phy_type_low |= ICE_PHY_TYPE_LOW_1000BASE_T |
-+				 ICE_PHY_TYPE_LOW_1G_SGMII;
-+
-+	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-+						  1000baseKX_Full))
-+		*phy_type_low |= ICE_PHY_TYPE_LOW_1000BASE_KX;
-+
-+	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-+						  1000baseX_Full))
-+		*phy_type_low |= ICE_PHY_TYPE_LOW_1000BASE_SX |
-+				 ICE_PHY_TYPE_LOW_1000BASE_LX;
-+
-+	ice_update_phy_type(phy_type_low, phy_type_high, adv_link_speed);
-+}
-+
- /**
-  * ice_set_link_ksettings - Set Speed and Duplex
-  * @netdev: network interface device structure
-@@ -2320,7 +2356,8 @@ ice_set_link_ksettings(struct net_device *netdev,
- 		adv_link_speed = curr_link_speed;
- 
- 	/* Convert the advertise link speeds to their corresponded PHY_TYPE */
--	ice_update_phy_type(&phy_type_low, &phy_type_high, adv_link_speed);
-+	ice_set_phy_type_from_speed(ks, &phy_type_low, &phy_type_high,
-+				    adv_link_speed);
- 
- 	if (!autoneg_changed && adv_link_speed == curr_link_speed) {
- 		netdev_info(netdev, "Nothing changed, exiting without setting anything.\n");
--- 
-2.25.1
-
+> +	f = iavf_find_vlan(adapter, IAVF_VLAN(vlan, ETH_P_8021Q));
+> +	allowed = (f && f->add && !f->remove);
+> +	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+> +	return allowed;
+> +}
+> +
+> +/**
+> + * iavf_is_mac_tc_filter_allowed - allowed to add tc-filter using MAC addr
+> + * @adapter: board private structure
+> + * @macaddr: MAC address
+> + *
+> + * Using specified MAC address, there must be active MAC filter in VF's
+> + * MAC-VLAN filter list.
+> + */
+> +static bool
+> +iavf_is_mac_tc_filter_allowed(struct iavf_adapter *adapter, const u8 *macaddr)
+> +{
+> +	struct iavf_mac_filter *f;
+> +	bool allowed;
+> +
+> +	spin_lock_bh(&adapter->mac_vlan_list_lock);
+> +	f = iavf_find_filter(adapter, macaddr);
+> +	allowed = (f && f->add && !f->is_new_mac && !f->remove);
+> +	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+> +	return allowed;
+> +}
+> +
+>  /**
+>   * iavf_parse_cls_flower - Parse tc flower filters provided by kernel
+>   * @adapter: board private structure
+> @@ -3651,7 +3693,15 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  			}
+>  		}
+>  
+> -		if (!is_zero_ether_addr(match.key->dst))
+> +		if (!is_zero_ether_addr(match.key->dst)) {
+> +			if (!iavf_is_mac_tc_filter_allowed(adapter,
+> +							   match.key->dst)) {
+> +				dev_err(&adapter->pdev->dev,
+> +					"Dest MAC %pM doesn't belong to this VF\n",
+> +					match.mask->dst);
+> +				return -EINVAL;
+> +			}
+> +
+>  			if (is_valid_ether_addr(match.key->dst) ||
+>  			    is_multicast_ether_addr(match.key->dst)) {
+>  				/* set the mask if a valid dst_mac address */
+> @@ -3660,6 +3710,7 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  				ether_addr_copy(vf->data.tcp_spec.dst_mac,
+>  						match.key->dst);
+>  			}
+> +		}
+>  
+>  		if (!is_zero_ether_addr(match.key->src))
+>  			if (is_valid_ether_addr(match.key->src) ||
+> @@ -3677,6 +3728,8 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  
+>  		flow_rule_match_vlan(rule, &match);
+>  		if (match.mask->vlan_id) {
+> +			u16 vlan = match.key->vlan_id & VLAN_VID_MASK;
+> +
+>  			if (match.mask->vlan_id == VLAN_VID_MASK) {
+>  				field_flags |= IAVF_CLOUD_FIELD_IVLAN;
+>  			} else {
+> @@ -3684,6 +3737,13 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  					match.mask->vlan_id);
+>  				return -EINVAL;
+>  			}
+> +
+> +			if (!iavf_is_vlan_tc_filter_allowed(adapter, vlan)) {
+> +				dev_err(&adapter->pdev->dev,
+> +					"VLAN %u doesn't belong to this VF\n",
+> +					vlan);
+> +				return -EINVAL;
+> +			}
+>  		}
+>  		vf->mask.tcp_spec.vlan_id |= cpu_to_be16(0xffff);
+>  		vf->data.tcp_spec.vlan_id = cpu_to_be16(match.key->vlan_id);
+> -- 
+> 2.35.3
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
