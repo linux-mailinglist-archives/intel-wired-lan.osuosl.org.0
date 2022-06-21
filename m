@@ -1,73 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD8D755361E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Jun 2022 17:31:28 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C34155361C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Jun 2022 17:31:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 61CE683F6F;
-	Tue, 21 Jun 2022 15:31:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61CE683F6F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7541B4195A;
+	Tue, 21 Jun 2022 15:31:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7541B4195A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1655825487;
-	bh=nyEI9ty35rWrhML2alydzwZjsCn2IFvhPsPselBpdPk=;
+	s=default; t=1655825479;
+	bh=x/dH9gLNrMUJjENqYWQP9aGDgrftzTG66E6CDFD6/TI=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Weak6MlURWG7jpc6e/RtOdzJjo7KTy2gKoyP4+FzP//EWhTDIT8H3Y6pU1HYO51Z3
-	 8PpY0DkipqTfTWRiTO5QXe3LTdNPrKi8mDAAgsH1uNGP2UwsvtEctsy5C2GVVjAvj2
-	 f5CP9ZBVKqdz3+JU0DBbLp+VVkQBrtnwWeQ9eE0B9pNMkhP6u25sp3+KrYL6PmAzL+
-	 5VhK2FBp81UJ0npF+VS0vW4i6TiNov2yV3mkJAxEw2AVClEJwkTueu9qRTCqE3efUU
-	 hrpnvnqWnKLrOyAzNe9kRUk+rYBho5zRnQV8oj/kA6YykMvve6JmuHZmSVoeLLOF71
-	 D1j9ANxcwBAlA==
+	b=uWhyiafNh1rF/23QORKGD7MZh0l/azl/S4wRxNC3aWz2SGz85c789MsNeWG8uYOX6
+	 RPDuOu7CBhKnmosLARMJ3ClGfF5m82H08bQIoadp8KhgWQeuC9STqDC13k7CshTJqU
+	 uyueOg9AgzD1bsOCZYc81fhC2Ea2Zm0c//InZJDv/9ytu22gdNKAvGi7DJywcKKsey
+	 5z9/+sCd4dISMdH+7z4Sd6ignMmEv/5VGLtMOHjCe29XFcaO4UqUIqYq0qerq1OxYC
+	 +UebVMo+V88M162qpgS+x9CvcggoNRsXvm83ZouSyad4kt3gmrLmnm5vgxm73DeDHB
+	 eaZYw4sNDM/wg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B3LoQtjVKYBL; Tue, 21 Jun 2022 15:31:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PXdXz7-W0NUM; Tue, 21 Jun 2022 15:31:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 510EA83F67;
-	Tue, 21 Jun 2022 15:31:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 510EA83F67
+	by smtp4.osuosl.org (Postfix) with ESMTP id 40D90418F3;
+	Tue, 21 Jun 2022 15:31:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40D90418F3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 805501BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:39:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2CC291BF5DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:34:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 56B3A82EA5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:39:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56B3A82EA5
+ by smtp2.osuosl.org (Postfix) with ESMTP id AF45240BB2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:34:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AF45240BB2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nfnPQoYMxq6k for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Jun 2022 08:39:14 +0000 (UTC)
-X-Greylist: delayed 00:07:32 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CD03482C8E
-Received: from smtpbg.qq.com (smtpbg136.qq.com [106.55.201.188])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CD03482C8E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:39:13 +0000 (UTC)
-X-QQ-mid: bizesmtp72t1655800158tfnrwfs8
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EH7TW_BaQRQ1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Jun 2022 08:34:04 +0000 (UTC)
+X-Greylist: delayed 00:06:35 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5A35404EB
+Received: from smtpbg.qq.com (smtpbg123.qq.com [175.27.65.52])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E5A35404EB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jun 2022 08:34:03 +0000 (UTC)
+X-QQ-mid: bizesmtp84t1655800307tp96dari
 Received: from ubuntu.localdomain ( [106.117.99.68])
  by bizesmtp.qq.com (ESMTP) with 
- id ; Tue, 21 Jun 2022 16:29:13 +0800 (CST)
-X-QQ-SSF: 01000000007000109000B00A0000000
-X-QQ-FEAT: Mzskoac49Og1pKkwi0Uw9GzgjMlyWLwT52H3OZ9eWzOYvgJmdAskrojWW4fK3
- 4HQXdpqsjdOdcQBHh6i1463QxybshHDWihyQ4BOrdDP4W+GL5bhlWAm8BIy+bodH9cvuAiE
- e/HoK3VgBrdIpVA/mvyMNC3k0S/HSI+bT0ya13s2cbDcV+CzRNe58Qku55jjIUe7WjMjPw3
- o5O6RMdEXZy5+vTstBiW6H8szwjJg5zcT0tcPrhFOhG8qEx0a4vMgYBF7kTNTn+UlBqWVW9
- UP1HBIzF8sjWHS6r1xQWvvUR4YdQWbVdbcxgtKC7Rew/FzABzJ2/zgk11LntTSHLUiT3F1s
- x0nL7HULGOIbqnc0Ic=
+ id ; Tue, 21 Jun 2022 16:31:42 +0800 (CST)
+X-QQ-SSF: 01000000007000209000B00A0000000
+X-QQ-FEAT: 0VgNaGdhy9i3VEgTjda6YTeTUjwUfOcImznDL6T2LXaZA2NbnSfXY1kzYj4wX
+ t4P4vhDP0uFEgNKYWsiYzOWMCHw/oep9gTTRwmXEi+9fjX+I2c73H0oaXT3LQ4/fbPX8kDd
+ 48m7ZLETi83rkgCTaPCq5BbS5BmIlP29LhhA7xL5ua1kiuKqYg8lzawQ20Rtr0Uy0reliM2
+ ndcX/2Luky4X4Pb9dsOIVx67CvUzjnLs5CWsFN47jR98iH8N3KLLGFgycF8usTl4QuS4dlK
+ NOw5CnXyy2nqCB/fviIu1Rc5iqmHa6h7gMaS7k80Gyd4Ynti4HaNZWm3362I4A2QMxrWn99
+ 206wO8pIWtxTJWS/XI=
 X-QQ-GoodBg: 0
 From: Jiang Jian <jiangjian@cdjrlc.com>
 To: jesse.brandeburg@intel.com,
 	anthony.l.nguyen@intel.com
-Date: Tue, 21 Jun 2022 16:29:11 +0800
-Message-Id: <20220621082911.53165-1-jiangjian@cdjrlc.com>
+Date: Tue, 21 Jun 2022 16:31:40 +0800
+Message-Id: <20220621083140.54004-1-jiangjian@cdjrlc.com>
 X-Mailer: git-send-email 2.17.1
 X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:cdjrlc.com:qybgspam:qybgspam7
+Feedback-ID: bizesmtp:cdjrlc.com:qybgspam:qybgspam8
 X-Mailman-Approved-At: Tue, 21 Jun 2022 15:31:12 +0000
-Subject: [Intel-wired-lan] [PATCH] fm10k: remove unexpected word "the"
+Subject: [Intel-wired-lan] [PATCH] igb: remove unexpected word "the"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,22 +93,22 @@ there is an unexpected word "the" in the comments that need to be removed
 
 Signed-off-by: Jiang Jian <jiangjian@cdjrlc.com>
 ---
- drivers/net/ethernet/intel/fm10k/fm10k_mbx.c | 2 +-
+ drivers/net/ethernet/intel/igb/e1000_82575.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_mbx.c b/drivers/net/ethernet/intel/fm10k/fm10k_mbx.c
-index f2fba6e1d0f7..87fa5874f16e 100644
---- a/drivers/net/ethernet/intel/fm10k/fm10k_mbx.c
-+++ b/drivers/net/ethernet/intel/fm10k/fm10k_mbx.c
-@@ -809,7 +809,7 @@ static s32 fm10k_mbx_read(struct fm10k_hw *hw, struct fm10k_mbx_info *mbx)
-  *  @hw: pointer to hardware structure
-  *  @mbx: pointer to mailbox
+diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.c b/drivers/net/ethernet/intel/igb/e1000_82575.c
+index cbe92fd23a70..8d6e44ee1895 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_82575.c
++++ b/drivers/net/ethernet/intel/igb/e1000_82575.c
+@@ -2207,7 +2207,7 @@ s32 igb_write_phy_reg_82580(struct e1000_hw *hw, u32 offset, u16 data)
+  *  igb_reset_mdicnfg_82580 - Reset MDICNFG destination and com_mdio bits
+  *  @hw: pointer to the HW structure
   *
-- *  This function copies the message from the the message array to mbmem
-+ *  This function copies the message from the message array to mbmem
+- *  This resets the the MDICNFG.Destination and MDICNFG.Com_MDIO bits based on
++ *  This resets the MDICNFG.Destination and MDICNFG.Com_MDIO bits based on
+  *  the values found in the EEPROM.  This addresses an issue in which these
+  *  bits are not restored from EEPROM after reset.
   **/
- static void fm10k_mbx_write(struct fm10k_hw *hw, struct fm10k_mbx_info *mbx)
- {
 -- 
 2.17.1
 
