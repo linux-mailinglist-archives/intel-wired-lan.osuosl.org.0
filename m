@@ -1,87 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EE8C5542EE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jun 2022 08:37:48 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 260AA5544CD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jun 2022 11:15:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4FC7240C63;
-	Wed, 22 Jun 2022 06:37:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4FC7240C63
+	by smtp3.osuosl.org (Postfix) with ESMTP id 73D5B612F6;
+	Wed, 22 Jun 2022 09:15:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 73D5B612F6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1655879866;
-	bh=RWQXZKsOFZnttpuuYnY8H/i77H5h5cV6cVbYk3oC21U=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=OqoGnyvqhjvynjceikBJ7G3AZ1/6oeqnCGPyDV2OdjP6K18IDw4VWM/7UUd8LQMZM
-	 OqyzrifSiA3D6A64N/zig59JR7hKjsAL7X2n/vaSqKHXoLgRIN/wpR3b3DJCGH0qWu
-	 ATFo19PeC0YrNSZPj5ZXfxLCYkSrkj2e3G+NkWhg61PjQGS4ZiKmXcYinZK99Q7hlO
-	 IMH6HbyUbnJdSEFQdS7WOcfbXB4vgB1bsdJxst1ZIZxI9VIYry2lLKWvffwprdc+er
-	 4Jm25aMPG1Ne+72Ur1mFDJ1KVou/Nyt4FXtuSXOEqAnKdeED6QYptsUj2Mj/16IPqt
-	 FfYhIdM3QQTQg==
+	s=default; t=1655889322;
+	bh=1OgbqXq1WhjVKFBqRf1q3Fqd5pwlKMSea3iTj2k77uM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=6PnD2Le+AjOJdMS/pBQqT3VAV5mAoS6twew98IljoC4FJH/dh8YKycGM8q9g4fep2
+	 yXXrCSfZrEa3ZKGePOqJzuVY0bZjTvY9eqWujoY/lYGA4R2jSdlnUdq6cXOJjCzh3l
+	 /KzI3f5U3Zwy/2A22pUG+GNkmx5ycc20YyiiwInVLE1n7WVx7VQurJOdv6j3OyLSgR
+	 YHRVyPyuRVEHGAQIyRUUUGUfgPIZsowwoVtB2ExO5sXrK8MOBbMBelYiA2ZlMrUwM+
+	 PLzeTXcgDEnzBkOzUgYWNb1aGeHlSQeuVvHxHyMPsVC+OqcMSuX/D6TX2A5HIS+ZNW
+	 U9JIPKEQN8XkA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pKZJ9iJ5BAza; Wed, 22 Jun 2022 06:37:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JepFhbMViYbv; Wed, 22 Jun 2022 09:15:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1C25640C5E;
-	Wed, 22 Jun 2022 06:37:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C25640C5E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5FABD61273;
+	Wed, 22 Jun 2022 09:15:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5FABD61273
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BD4AF1BF3BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 06:37:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B63D61BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 09:15:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A0F6460ABA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 06:37:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A0F6460ABA
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9D7E661273
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 09:15:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D7E661273
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p4hlVP1kwVPA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Jun 2022 06:37:37 +0000 (UTC)
+ with ESMTP id OUSAS-ixuMBo for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Jun 2022 09:15:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9053561236
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9053561236
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 06:37:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10385"; a="279098073"
-X-IronPort-AV: E=Sophos;i="5.92,211,1650956400"; d="scan'208";a="279098073"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2022 23:37:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,211,1650956400"; d="scan'208";a="587315107"
-Received: from lkp-server02.sh.intel.com (HELO a67cc04a5eeb) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 21 Jun 2022 23:37:35 -0700
-Received: from kbuild by a67cc04a5eeb with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1o3tzb-0000wL-0E;
- Wed, 22 Jun 2022 06:37:35 +0000
-Date: Wed, 22 Jun 2022 14:36:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62b2b88b.4QrSMl33lCjU6oUW%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7F8D606E6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D7F8D606E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jun 2022 09:15:15 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10385"; a="277912085"
+X-IronPort-AV: E=Sophos;i="5.92,212,1650956400"; d="scan'208";a="277912085"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jun 2022 02:15:14 -0700
+X-IronPort-AV: E=Sophos;i="5.92,212,1650956400"; d="scan'208";a="562883193"
+Received: from silpixa00401086.ir.intel.com ([10.55.128.124])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jun 2022 02:15:12 -0700
+From: Ciara Loftus <ciara.loftus@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ kuba@kernel.org
+Date: Wed, 22 Jun 2022 09:14:47 +0000
+Message-Id: <20220622091447.243101-1-ciara.loftus@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1655879857; x=1687415857;
- h=date:from:to:subject:message-id:mime-version:
+ t=1655889315; x=1687425315;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=j8brFuWChJ6cL1uhFFxcicK03F9xDq9uYuAHQqp++zo=;
- b=KjjI2IO3YU1FS4HUfczB4wpdsva6oSOol5XkoCAO2EInfCCYDIY2kW1E
- V7YlJzmjj7wAb3duVN00iL6WJAzMz0JWSP/vS/Vm0EeYdGJPim97/8kXR
- 1CZvBwzA8FXmjoAcHR2YpalcdBB6luBz3Qemzeemd56QdtsU2//dnNRXb
- vmMtYD7lCXkn2hLJ1/0vqMWAHVSJjNyoWeOtOhUulWfD882OuM3Re2lib
- wNVYM3NVzdHHCWwQwhVrZmAwm6nKzuYIWNIVbp74MNriG1SD7xfHt5blp
- IvZZlmSo74eDfKpbtH4Ylyw7sUCxlb33o4RQDV0DE5NIFUHC4o8qGr8O3
- g==;
+ bh=qkIbc9bgxwlz5t1sR0ht0Cvk/IpQWMrSNCWK6J6W2/A=;
+ b=X4cIlpYb4Ne449deqTVWfktSJ5+mVOUkdKIYUISZbjn57Kf1RT8tWF95
+ iu5Jwc6Fk4BrYShfSI4glkudRpekP8nRNEp8+fQGoM7RwM5vBlyMZWKiw
+ WmOl1/0DNJ2MkH7bpKzTyUyf1j5cPICrqnRHIMdq4TlwUYfAyYHgJ0V5l
+ JHS711pqwT4l98oLWyzbXK6FakAmYnlB84iKZ4sZa6mIEAOuO9WzN7fSW
+ vWMBbO5Ggr0JyTMnM/6F86zkmk6f0Jg8Ub0fGKxEjxaUYAhTwRlI32jde
+ GiCQq/97Rn8vKJVeJzzXyOAVr8V6NMBSyKMDIICvV8ssuVyrFaKkpEYLa
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KjjI2IO3
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 3f1412c503c2719cf445161c5ebd69ef507a0e17
+ header.a=rsa-sha256 header.s=Intel header.b=X4cIlpYb
+Subject: [Intel-wired-lan] [PATCH net-next] i40e: xsk: read the XDP program
+ once per NAPI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,87 +92,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 3f1412c503c2719cf445161c5ebd69ef507a0e17  ice: ethtool: advertise 1000M speeds properly
+Similar to how it's done in the ice driver since 'eb087cd82864 ("ice:
+propagate xdp_ring onto rx_ring")', read the XDP program once per NAPI
+instead of once per descriptor cleaned. I measured an improvement in
+throughput of 2% for the AF_XDP xdpsock l2fwd benchmark in busy polling
+mode on my platform.
 
-elapsed time: 724m
+Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
-configs tested: 58
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-ia64                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-i386                                defconfig
-i386                             allyesconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arc                  randconfig-r043-20220622
-riscv                             allnoconfig
-riscv                    nommu_k210_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-syz
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-
-clang tested configs:
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-x86_64                        randconfig-a014
-x86_64                        randconfig-a012
-x86_64                        randconfig-a016
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-hexagon              randconfig-r041-20220622
-s390                 randconfig-r044-20220622
-hexagon              randconfig-r045-20220622
-riscv                randconfig-r042-20220622
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index af3e7e6afc85..2f422c61ac11 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -146,17 +146,13 @@ int i40e_xsk_pool_setup(struct i40e_vsi *vsi, struct xsk_buff_pool *pool,
+  *
+  * Returns any of I40E_XDP_{PASS, CONSUMED, TX, REDIR}
+  **/
+-static int i40e_run_xdp_zc(struct i40e_ring *rx_ring, struct xdp_buff *xdp)
++static int i40e_run_xdp_zc(struct i40e_ring *rx_ring, struct xdp_buff *xdp,
++			   struct bpf_prog *xdp_prog)
+ {
+ 	int err, result = I40E_XDP_PASS;
+ 	struct i40e_ring *xdp_ring;
+-	struct bpf_prog *xdp_prog;
+ 	u32 act;
+ 
+-	/* NB! xdp_prog will always be !NULL, due to the fact that
+-	 * this path is enabled by setting an XDP program.
+-	 */
+-	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
+ 	act = bpf_prog_run_xdp(xdp_prog, xdp);
+ 
+ 	if (likely(act == XDP_REDIRECT)) {
+@@ -339,9 +335,15 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
+ 	u16 next_to_clean = rx_ring->next_to_clean;
+ 	u16 count_mask = rx_ring->count - 1;
+ 	unsigned int xdp_res, xdp_xmit = 0;
++	struct bpf_prog *xdp_prog;
+ 	bool failure = false;
+ 	u16 cleaned_count;
+ 
++	/* NB! xdp_prog will always be !NULL, due to the fact that
++	 * this path is enabled by setting an XDP program.
++	 */
++	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
++
+ 	while (likely(total_rx_packets < (unsigned int)budget)) {
+ 		union i40e_rx_desc *rx_desc;
+ 		unsigned int rx_packets;
+@@ -378,7 +380,7 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
+ 		xsk_buff_set_size(bi, size);
+ 		xsk_buff_dma_sync_for_cpu(bi, rx_ring->xsk_pool);
+ 
+-		xdp_res = i40e_run_xdp_zc(rx_ring, bi);
++		xdp_res = i40e_run_xdp_zc(rx_ring, bi, xdp_prog);
+ 		i40e_handle_xdp_result_zc(rx_ring, bi, rx_desc, &rx_packets,
+ 					  &rx_bytes, size, xdp_res, &failure);
+ 		if (failure)
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.25.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
