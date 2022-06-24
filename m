@@ -2,86 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE47C559785
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jun 2022 12:17:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A2C85597B8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jun 2022 12:21:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6426541140;
-	Fri, 24 Jun 2022 10:17:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6426541140
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8295740477;
+	Fri, 24 Jun 2022 10:21:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8295740477
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656065822;
-	bh=ZJP5egU/qGHCkcJQNyzgxMWtxvk89zOamRS1vt4H60M=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=AC5e7Y8fJQTtQyR9sICcFgqgxUXynHneUD1gh/BbnG+J85lgwg9LSZ8YvieP8i4cs
-	 WQCcPKFYt4wCkloiBwzc9qEXhiijl+fmR2HNPp9tRqDt3JGjhhW/XXtV+JQYTPufBi
-	 jaieZ9KAeT059yR7lXE/WW7TeVwGaCCqMIRvPlHyuHJGSIJSOeZEFe403RwdAGbIFs
-	 Arc+wFhEzZMs5O+T0trZ/d0mj4soiKjLbxj9IVGHcW5qUdUt6Uka7nXwF+C1LkmsKW
-	 A+6iKUowOKarAAihMcTs2FPggTzyFozyVN3VSRoAu/HMWJGwXTT9cf6xFCC+6/RboB
-	 ckK4hqz+dC1SQ==
+	s=default; t=1656066093;
+	bh=oGKmxW0/duO9ClmwIecVAr3iwriy4/jQqbkuxDQf+pc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=gCDZaczHmjkUPTz721WpRx8Re/ako7TNiQDfnSUrEFQDdFgVgnmaDlY1IjsP7rgTg
+	 CM0E8ruqmKBUOaeFZmIKLN2KhL8BaD0xdGGa4oen6MuAPUh7eZWCxDMHdxO3+2s9kH
+	 5+SUp1fnVz/L81DqkBCIoeI1gdS8/2A2DVFPGhc0O2ZQI/3j5/rdVmX2phLKHCRO5w
+	 SGuf+LwX/DP4uuiPvWQd05bGa/PNJ7+VnGhVTwvLfMPk4IqlsAJg0TPrvs8PybZS1f
+	 yhTE8VlLSUgJ6Dyd8v4e5ECJgNsHewUm3QIBdsyVB9cMwS1qrqp5S374HBCOlmy1lJ
+	 p4jvPWIEV7Jpw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zsmz7xgMFi12; Fri, 24 Jun 2022 10:17:01 +0000 (UTC)
+	with ESMTP id gf8vI8jbLHiH; Fri, 24 Jun 2022 10:21:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3678C40477;
-	Fri, 24 Jun 2022 10:17:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3678C40477
+	by smtp2.osuosl.org (Postfix) with ESMTP id 65A1F401A2;
+	Fri, 24 Jun 2022 10:21:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 65A1F401A2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 92D391BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:16:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E99E81BF2C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:21:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 69DC8425C7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:16:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69DC8425C7
+ by smtp4.osuosl.org (Postfix) with ESMTP id C29C7401F4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:21:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C29C7401F4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CgkpncHyxaZa for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Jun 2022 10:16:53 +0000 (UTC)
+ with ESMTP id A9fcJMZIqP-y for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jun 2022 10:21:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AEF2425AB
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4AEF2425AB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:16:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10387"; a="269701094"
-X-IronPort-AV: E=Sophos;i="5.92,218,1650956400"; d="scan'208";a="269701094"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2022 03:16:41 -0700
-X-IronPort-AV: E=Sophos;i="5.92,218,1650956400"; d="scan'208";a="678488605"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9563E400AB
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9563E400AB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jun 2022 10:21:25 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10387"; a="261397340"
+X-IronPort-AV: E=Sophos;i="5.92,218,1650956400"; d="scan'208";a="261397340"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2022 03:21:25 -0700
+X-IronPort-AV: E=Sophos;i="5.92,218,1650956400"; d="scan'208";a="593165359"
 Received: from moradin.igk.intel.com ([10.123.220.12])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2022 03:16:40 -0700
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2022 03:21:24 -0700
 From: Michal Wilczynski <michal.wilczynski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Jun 2022 12:16:11 +0200
-Message-Id: <20220624101611.1007933-3-michal.wilczynski@intel.com>
+Date: Fri, 24 Jun 2022 12:21:08 +0200
+Message-Id: <20220624102110.1008410-1-michal.wilczynski@intel.com>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20220624101611.1007933-1-michal.wilczynski@intel.com>
-References: <20220624101611.1007933-1-michal.wilczynski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1656065813; x=1687601813;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=BnOrpn9w42KJ87vfgcA+EmHfwOA5eiiinZ2hVnM8MLo=;
- b=XbKchU21/UNIGsw5fR2tFeeTpBkoi3F4YF0yu8U1dgezdcWz48izCTBZ
- XTrewcLQ3CJRXFvGAmTcNnM4S1Wv8weWTFTsPqQz6lZSFUud8BPRFMTjI
- mvECW/ywJhFB6xp7aviDOPWl7o3jVw4UDbx6AQwtoyjIfMxM9FSSCYtsi
- 6zILC9XkOBNnx0em8rxFhnJ8wOrhBQEVlqjkoQhjoe8THbzNL24PaEI09
- CCdrvZLVXnJzbU6KSf7po55hY/Bir2EzUok0V+N2EgARQyrTu/9wJV85V
- or+7SYfsnTDNO2cM1q8wUlxDTGHv0MeWNylu1Mq35uiCtliZN49MB9l9v
+ t=1656066085; x=1687602085;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=S9EY2g+OTNxO4PpOFWNhUGE/Bd/7NyBWIsPiEDeCSFQ=;
+ b=lhhigNX2H47/UBm1ib/tXfw4dK5RFI3m21WUfbaoiEafNbpMBXQJd90I
+ Uzh8JcGeE15igFOOuzHuukCRjoPQCZuoUASoiPnlhUSRxna2IbGufjzeo
+ 2E+UXSE4WjNCfGbYrQwh/Ffc8HA/FSAiJqCWqMzqJP88cQULtMu/NyES3
+ U5HJE9Ux6GKhFtEiKzs/aWz09kNk40URnWyADiPf+zVJkHA8Cjr0M2Hdl
+ QIotaq+QN79CaFL15F23Txx6cRDqlfw7hIcrQT21leLrMvWmcCVYfLf+k
+ PqH7sKQYBC31hbr7G/+Q1j4+nUuhuzWUaXstz2fUHpgVlKmK0LEsYfRzG
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XbKchU21
-Subject: [Intel-wired-lan] [PATCH net-next v1 2/2] ice: Fix promiscuous mode
- not turning off
+ header.a=rsa-sha256 header.s=Intel header.b=lhhigNX2
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/2] ice: Support 5 layer tx
+ scheduler topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,165 +97,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When trust is turned off for the VF, the expectation is that
-promiscuous and allmulticast filters are removed.
-Currently default VSI filter is not getting cleared in this
-flow.
 
-Example:
+For performance reasons there is a need to have support for selectable
+tx scheduler topology. Currently firmware supports only the default
+9-layer and 5-layer topology. This patch series enables switch from
+default to 5-layer topology, if user decides to opt-in.
 
-ip link set enp236s0f0 vf 0 trust on
-ip link set enp236s0f0v0 promisc on
-ip link set enp236s0f0 vf 0 trust off
-/* promiscuous mode is still enabled on VF0 */
+Michal Wilczynski (1):
+  ice: Enable switching default tx scheduler topology
+v2: 
+- Moved definitions of scheduling layers to other commit
 
-Remove switch filters for both cases.
-This commit fixes above behavior by removing default VSI filters
-and allmulticast filters when vf-true-promisc-support is OFF.
+Raj Victor (1):
+  ice: Code added to support 5 layer topology
+v2:
+- Added example of performance decrease in commit message
+- Reworded commit message for imperative mood
+- Removed unnecessary tags
+- Refactored duplicated function call
+- Fixed RCT
+- Fixed unnecessary call to devm_kfree
+- Defined constants
 
-Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 78 ++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  2 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  9 +--
- 3 files changed, 70 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index 9038d2687ba6..617803185ca6 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -297,6 +297,72 @@ bool ice_is_any_vf_in_unicast_promisc(struct ice_pf *pf)
- 	return is_vf_promisc;
- }
- 
-+/**
-+ * ice_vf_get_promisc_masks - Calculate masks for promiscuous modes
-+ * @vf: the VF pointer
-+ * @vsi: the VSI to configure
-+ * @ucast_m: promiscuous mask to apply to unicast
-+ * @mcast_m: promiscuous mask to apply to multicast
-+ *
-+ * Decide which mask should be used for unicast and multicast filter,
-+ * based on presence of VLANs
-+ */
-+void ice_vf_get_promisc_masks(struct ice_vf *vf, struct ice_vsi *vsi,
-+			      u8 *ucast_m, u8 *mcast_m)
-+{
-+	if (ice_vf_is_port_vlan_ena(vf) ||
-+	    ice_vsi_has_non_zero_vlans(vsi)) {
-+		*mcast_m = ICE_MCAST_VLAN_PROMISC_BITS;
-+		*ucast_m = ICE_UCAST_VLAN_PROMISC_BITS;
-+	} else {
-+		*mcast_m = ICE_MCAST_PROMISC_BITS;
-+		*ucast_m = ICE_UCAST_PROMISC_BITS;
-+	}
-+}
-+
-+/**
-+ * ice_vf_clear_all_promisc_modes - Clear promisc/allmulticast on VF VSI
-+ * @vf: the VF pointer
-+ * @vsi: the VSI to configure
-+ *
-+ * Clear all promiscuous/allmulticast filters for a VF
-+ */
-+static int ice_vf_clear_all_promisc_modes(struct ice_vf *vf,
-+					  struct ice_vsi *vsi)
-+{
-+	struct ice_pf *pf = vf->pf;
-+	u8 ucast_m, mcast_m;
-+	int ret = 0;
-+
-+	ice_vf_get_promisc_masks(vf, vsi, &ucast_m, &mcast_m);
-+	if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states)) {
-+		if (!test_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags)) {
-+			if (ice_is_dflt_vsi_in_use(vsi->port_info))
-+				ret = ice_clear_dflt_vsi(vsi);
-+		} else {
-+			ret = ice_vf_clear_vsi_promisc(vf, vsi, ucast_m);
-+		}
-+
-+		if (ret) {
-+			dev_err(ice_pf_to_dev(vf->pf), "Disabling promiscuous mode failed\n");
-+		} else {
-+			clear_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states);
-+			dev_info(ice_pf_to_dev(vf->pf), "Disabling promiscuous mode succeeded\n");
-+		}
-+	}
-+
-+	if (test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states)) {
-+		ret = ice_vf_clear_vsi_promisc(vf, vsi, mcast_m);
-+		if (ret) {
-+			dev_err(ice_pf_to_dev(vf->pf), "Disabling allmulticast mode failed\n");
-+		} else {
-+			clear_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states);
-+			dev_info(ice_pf_to_dev(vf->pf), "Disabling allmulticast mode succeeded\n");
-+		}
-+	}
-+	return ret;
-+}
-+
- /**
-  * ice_vf_set_vsi_promisc - Enable promiscuous mode for a VF VSI
-  * @vf: the VF to configure
-@@ -487,7 +553,6 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	struct ice_vsi *vsi;
- 	struct device *dev;
- 	struct ice_hw *hw;
--	u8 promisc_m;
- 	int err = 0;
- 	bool rsd;
- 
-@@ -554,16 +619,7 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	/* disable promiscuous modes in case they were enabled
- 	 * ignore any error if disabling process failed
- 	 */
--	if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
--	    test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states)) {
--		if (ice_vf_is_port_vlan_ena(vf) || vsi->num_vlan)
--			promisc_m = ICE_UCAST_VLAN_PROMISC_BITS;
--		else
--			promisc_m = ICE_UCAST_PROMISC_BITS;
--
--		if (ice_vf_clear_vsi_promisc(vf, vsi, promisc_m))
--			dev_err(dev, "disabling promiscuous mode failed\n");
--	}
-+	ice_vf_clear_all_promisc_modes(vf, vsi);
- 
- 	ice_eswitch_del_vf_mac_rule(vf);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index 1acb35c9ff01..74bd4ce556e8 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -215,6 +215,8 @@ bool ice_is_vf_disabled(struct ice_vf *vf);
- int ice_check_vf_ready_for_cfg(struct ice_vf *vf);
- void ice_set_vf_state_qs_dis(struct ice_vf *vf);
- bool ice_is_any_vf_in_unicast_promisc(struct ice_pf *pf);
-+void ice_vf_get_promisc_masks(struct ice_vf *vf, struct ice_vsi *vsi,
-+			      u8 *ucast_m, u8 *mcast_m);
- int
- ice_vf_set_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m);
- int
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 47ce713274cf..d46786cdc162 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -1046,14 +1046,7 @@ static int ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	if (ice_vf_is_port_vlan_ena(vf) ||
--	    ice_vsi_has_non_zero_vlans(vsi)) {
--		mcast_m = ICE_MCAST_VLAN_PROMISC_BITS;
--		ucast_m = ICE_UCAST_VLAN_PROMISC_BITS;
--	} else {
--		mcast_m = ICE_MCAST_PROMISC_BITS;
--		ucast_m = ICE_UCAST_PROMISC_BITS;
--	}
-+	ice_vf_get_promisc_masks(vf, vsi, &ucast_m, &mcast_m);
- 
- 	if (!test_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags)) {
- 		if (alluni) {
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  23 ++
+ drivers/net/ethernet/intel/ice/ice_common.c   |   5 +
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    | 203 ++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_flex_type.h    |  17 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     | 113 ++++++++--
+ drivers/net/ethernet/intel/ice/ice_sched.c    |  35 +--
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ 8 files changed, 362 insertions(+), 38 deletions(-)
+
 -- 
 2.27.0
 
