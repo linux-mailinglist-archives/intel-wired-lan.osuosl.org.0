@@ -1,82 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 155A255F54F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jun 2022 06:39:55 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5558555F552
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jun 2022 06:40:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9D65D405D6;
-	Wed, 29 Jun 2022 04:39:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D65D405D6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 98F99405A5;
+	Wed, 29 Jun 2022 04:40:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 98F99405A5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656477593;
-	bh=lQsHNrrtbC4AsFanwyNoVrPM4k7pAWpV6/w1Pmq9pFI=;
+	s=default; t=1656477629;
+	bh=y+0Y8ncOpPI7I7fvTd2wH6AazUVld1g6Qk6Rj2xby74=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ibUA63+Y6MhzlujM/G6JoIXAjtjgOy52PQeI6O916K6bj1CsqFd+0+adpJhX+wCBL
-	 F4W/SpGmpHHKJepe6vfaYL3Y2Ao0v/fPYao7dsZE3UaL+831C07JVvjxJCrgx2rqUG
-	 XLqzkZF1V4+T3TEE5Lvi0H2Dg3uL/gIlNxbySHPvZ06qHLQk34D/2Uuwenp95CiSCw
-	 yUecRgyO7cyVO50kPCxeAk/8iLEXd1rLCyTZYoLS/3VJip+FKLUZoW9kh1RAo8M46M
-	 VdhfFXUs9HUEmlQPj2aS2vJvrXhm8dCQRtHAlvke4x05tKLb+UxGSgwk7+QxtsmC+L
-	 B/1ryx0MCPppQ==
+	b=B4JbB6bGcI9ZpRqvGQR7297JJs/zkdNXyNS9z/pE2gDOSl8bXbBgzFtpmhVx0IThs
+	 eQx4VhGZQdXp+WgucNUidH8XV1u4oKPF5OKvGJs7tD5CBH4XWkWUmtQSxD7zdao6hD
+	 f49DiAM4+vfr9+h23AfRQdfm2q9BvzY0eIf089oMv00Boll6jxdAm7OXSGvSvqMwQp
+	 nhLX80+665tPv40GRGlOhoyTk2SE3sgCyWDYrXDEDosdeE/R1yM54EXGX4rhRUie4L
+	 c7VKYWO6W7x8qOl4IxkP8z7SV3XZg6QOlNTtQNxSM4B6x/yzC1yLGtBqPnDJDOqz5w
+	 6FNycQIO1qaGA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b8yYlFthjpIH; Wed, 29 Jun 2022 04:39:52 +0000 (UTC)
+	with ESMTP id Kj50UqXDnVdK; Wed, 29 Jun 2022 04:40:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7AAC8405EB;
-	Wed, 29 Jun 2022 04:39:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7AAC8405EB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8842C40320;
+	Wed, 29 Jun 2022 04:40:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8842C40320
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6512E1BF409
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:39:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A43E11BF409
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:40:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3BD4A82BEB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:39:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3BD4A82BEB
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8B33460BFF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:40:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B33460BFF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3lQHUznuJTk5 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Jun 2022 04:39:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tEAzJgDJyC8L for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Jun 2022 04:40:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89C2182BE5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E03A660B2A
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 89C2182BE5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:39:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E03A660B2A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 04:40:22 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3939E60F8F;
- Wed, 29 Jun 2022 04:39:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9279EC34114;
- Wed, 29 Jun 2022 04:39:43 +0000 (UTC)
-Date: Tue, 28 Jun 2022 21:39:42 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 2497961236;
+ Wed, 29 Jun 2022 04:40:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0627DC3411E;
+ Wed, 29 Jun 2022 04:40:20 +0000 (UTC)
+Date: Tue, 28 Jun 2022 21:40:20 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Marcin Szycik <marcin.szycik@linux.intel.com>
-Message-ID: <20220628213942.06210e78@kernel.org>
-In-Reply-To: <20220628112918.11296-1-marcin.szycik@linux.intel.com>
+Message-ID: <20220628214020.0f83fc21@kernel.org>
+In-Reply-To: <20220628112918.11296-2-marcin.szycik@linux.intel.com>
 References: <20220628112918.11296-1-marcin.szycik@linux.intel.com>
+ <20220628112918.11296-2-marcin.szycik@linux.intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1656477584;
- bh=ToYVgHxUr2q1MypuuAGuqsYxH7HBrPqNKx+bYOmEhGM=;
+ d=kernel.org; s=k20201202; t=1656477621;
+ bh=iHw9bd8s4EekjXNRbJp+UlyFG/OqrDWm5kUz2JiIYjM=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bWtYWzH8HeicbyY/C9SAoXhsNzZA8O8//neTmPfJCjq+Dih126wTa9ttJaGM/Snic
- 8vSXl+jc4M9sb4MGgB6d4ThcTgXvO0EC/FwE5DBvJpdFwdViqKWHnQ/qhYRdhnD/ap
- XoPUvAbRX4WDVdMeEX3GBUoRyFPYPZD5bcCDaBKWz7+ZI0e4kGsQD1fmMfB2JUUMR9
- zaYxEcTd75xKDAYfNnPNn7y7Qr3mRj/c1LjlkKOjk8yD+BFoXBM/IkHta7pN4u9vtu
- x8s2T9H7LLxd2mx47AXKByGAzZQbnTpHPpAZAJtWlMa2eQYm2ml7jSYjD2rsy/H7mU
- hgnhdRWqZCQJw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=GD4Q6OAPWtS2tJDYyq+B7IwLHgSANFRKHGUT4Saed8lSn1NUhBWXev69bFxTercB6
+ bIGPDAXbVWHucBIs96tei3pdmPkZvfrqbBTKusg0Mg5LmXRi/sxIJRRYifZpS5idhD
+ w/V7bLpfIHjd4jK+zsqo4GpKqzz9rl6RixbAh6DRu+7tTeZe5yNvVWTMa/HJcSyh++
+ xIrkYg5ueBsONBT7aBLBOUHxBwHNSMKFQes23nRhGFPQjjvHLw/ZkBebgPSCBGH+aI
+ byZ5JVdByHN///4+qc6uiu5eOj5/MsqacmbFuWnIjEfwq0kB3/1usSXBZV3a3YtxZs
+ LWWZq7oUrDdLg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=bWtYWzH8
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v2 0/4] ice: PPPoE
- offload support
+ header.a=rsa-sha256 header.s=k20201202 header.b=GD4Q6OAP
+Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v2 1/4] flow_dissector:
+ Add PPPoE dissectors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,26 +102,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 28 Jun 2022 13:29:14 +0200 Marcin Szycik wrote:
-> Add support for dissecting PPPoE and PPP-specific fields in flow dissector:
-> PPPoE session id and PPP protocol type. Add support for those fields in
-> tc-flower and support offloading PPPoE. Finally, add support for hardware
-> offload of PPPoE packets in switchdev mode in ice driver.
-> 
-> Example filter:
-> tc filter add dev $PF1 ingress protocol ppp_ses prio 1 flower pppoe_sid \
->     1234 ppp_proto ip skip_sw action mirred egress redirect dev $VF1_PR
-> 
-> Changes in iproute2 are required to use the new fields (will be submitted
-> soon).
-> 
-> ICE COMMS DDP package is required to create a filter in ice.
-> 
-> Note: currently matching on vlan + PPPoE fields is not supported. Patch [0]
-> will add this feature.
+On Tue, 28 Jun 2022 13:29:15 +0200 Marcin Szycik wrote:
+> +static bool is_ppp_proto_supported(__be16 proto)
 
-Please make sure to CC Guillaume Nault <gnault@redhat.com> 
-and PPP folks from MAINTAINERS.
+What does supported mean in this context?
+
+> +{
+> +	switch (ntohs(proto)) {
+> +	case PPP_AT:
+
+Byte swap on the constant.
+
+> +	case PPP_IPX:
+> +	case PPP_VJC_COMP:
+> +	case PPP_VJC_UNCOMP:
+> +	case PPP_MP:
+> +	case PPP_COMPFRAG:
+> +	case PPP_COMP:
+> +	case PPP_MPLS_UC:
+> +	case PPP_MPLS_MC:
+> +	case PPP_IPCP:
+> +	case PPP_ATCP:
+> +	case PPP_IPXCP:
+> +	case PPP_IPV6CP:
+> +	case PPP_CCPFRAG:
+> +	case PPP_MPLSCP:
+> +	case PPP_LCP:
+> +	case PPP_PAP:
+> +	case PPP_LQR:
+> +	case PPP_CHAP:
+> +	case PPP_CBCP:
+> +		return true;
+> +	default:
+> +		return false;
+> +	}
+> +}
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
