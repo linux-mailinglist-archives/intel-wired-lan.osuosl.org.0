@@ -1,90 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB096560349
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jun 2022 16:40:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75DB056034B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jun 2022 16:40:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DD0CC408CD;
-	Wed, 29 Jun 2022 14:40:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DD0CC408CD
+	by smtp1.osuosl.org (Postfix) with ESMTP id CBE97840B6;
+	Wed, 29 Jun 2022 14:40:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CBE97840B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656513638;
-	bh=FfxQwCNS7gVWcXwFbwvhdJF8UtOW/HfAQo5yVq+yFtM=;
+	s=default; t=1656513646;
+	bh=UYetqUPMasGfo1Xmm76dBixoUomVcsXGh9128GCvmAc=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bJ6aBptns7p1zF8/HHH+OSECJsbxgNZJHoY0+Qn07YBN8zl9f50HH0p5wBoUZsGXd
-	 r4MXrxUTOLh//GbOiusL7NDFr1e7JBqvFb10JJKccQaXfP/TCIPXSC6e5sFce/Cw91
-	 EYTKCW3i7KcaR5CbOzQh2dLgWVnDkiESBUHMoSbP9+gGElxwkGJRlBo3yPK00o/37E
-	 A8Rr9o5dz8lDkSXWQUDCLa7UpKJORzOPEuR6dcNwB27PT5QU/thirPmL7X3vLKgcL5
-	 8+VduUpTLR+zLnTa9xgBB7mTdAAd+Gk3q/j2TmfbLduq3n+kYFfP1n2tPuJwEOx1ZY
-	 pGtidJxt9AVwA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uZP5Nods5QAM; Wed, 29 Jun 2022 14:40:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C04441799;
-	Wed, 29 Jun 2022 14:40:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5C04441799
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA9021BF28F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:29 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 95FEF84090
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 95FEF84090
+	b=DMx2PiWoQo1zyqSummmy+Q3yV6yOB+gF//DJxFBc9Nid52MnQEuDF/J+oNKh+yNs6
+	 QONTk/FOpfPKl9bv1byhm09hZGZU/LTyUyL+x6f1PivAdBuLH8Ix/lKbwCmUZ+Ei71
+	 SUT4VMis+xjqmEIvs+V+WODI/LigXoXm5ut0TWmJmGgBAaxAp7rVdDuPTzjQKmNrLc
+	 AR7onDvH943k5X7k6Pst23wp4vUzEr9HHgbujse0zE70bb/8GYryokMexDf3PZIAhj
+	 RxoItGNIYE0Pp+9rpkqKqVlxGFfVXRiFb7GXo6vS7hVxaKp1/DE+J4+8qddwT4Ks66
+	 42GIWQE0JdVfw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LAXBwUKkWp7B for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Jun 2022 14:40:28 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id duUTbrL8GTI4; Wed, 29 Jun 2022 14:40:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id CC5F284090;
+	Wed, 29 Jun 2022 14:40:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC5F284090
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BC901BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0448D41799
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0448D41799
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iadgnX113rtf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Jun 2022 14:40:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C170E83F9C
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C170E83F9C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10392"; a="282079367"
-X-IronPort-AV: E=Sophos;i="5.92,231,1650956400"; d="scan'208";a="282079367"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jun 2022 07:40:28 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18889408CD
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 18889408CD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jun 2022 14:40:30 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10392"; a="343734793"
+X-IronPort-AV: E=Sophos;i="5.92,231,1650956400"; d="scan'208";a="343734793"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jun 2022 07:40:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,231,1650956400"; d="scan'208";a="693601646"
+X-IronPort-AV: E=Sophos;i="5.92,231,1650956400"; d="scan'208";a="595255561"
 Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by fmsmga002.fm.intel.com with ESMTP; 29 Jun 2022 07:40:23 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 29 Jun 2022 07:40:25 -0700
 Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
  by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 25TEeJ3Z022901; Wed, 29 Jun 2022 15:40:22 +0100
+ 25TEeJ3a022901; Wed, 29 Jun 2022 15:40:23 +0100
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
 To: netdev@vger.kernel.org
-Date: Wed, 29 Jun 2022 16:38:57 +0200
-Message-Id: <20220629143859.209028-3-marcin.szycik@linux.intel.com>
+Date: Wed, 29 Jun 2022 16:38:58 +0200
+Message-Id: <20220629143859.209028-4-marcin.szycik@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220629143859.209028-1-marcin.szycik@linux.intel.com>
 References: <20220629143859.209028-1-marcin.szycik@linux.intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1656513628; x=1688049628;
+ t=1656513630; x=1688049630;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Rp7DqZciaDZD8fI0/PA8Yg3M9PSYbqaDGgFpfZThO5E=;
- b=YRNK/VrWKwL77HBisM+9EMRUi0wL7LWyW7nCWKoRUM/XvtIhJj2OOdxi
- eG33+vfxbdvDi7oQ/nQQUX9G9Ww6ZSqUNHHzKZIE+YvNEo2h9Y7IhfhtL
- 3ZTP5kLVRGOdDKgrUkYnOLDnouPyHBnctJBxWp91imF0pMwfRrzCGLzdm
- 36veDGrXaEAdAqZplhbGX09pwMApbCa4n1gZATkFTm/jhfxrYIcZk/ikC
- MNkpviqp/Vc9tuJngisP6OkELQNQA/aJsT26Zd/8fAEtFtVutH1f5CK2I
- PNFVhv4Rt5agklu6HKvblbHVTAgj3FTLxB3Qcid3Xk+v9j3QHSruQntVA
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=tHizgFNnSXkpG46Dn3nJDt/CPuSpOnuIsvpe7rCWWTo=;
+ b=ZdMW3PvijoWkFt2ZHBTDP+zoHv5Gqo0BwgJw87tjKHa9mv4oYSOs6+y6
+ wsz74DpU299NFBL9w8nNu00758FCymO0mZorC5avCX9EUHqWNTr9m1XwV
+ UGQ6VV5MZP4Ceac3d0bvnAkU3ZOH4zLhYdbGEAVkge+ZOMfFfdtTB5HDz
+ Mr7ctnRe89HbnDZg2hOEEqemHxO6JkPz4lIfEDeiwV8jBNaexTQlJufsu
+ nW/tQjV4AqUEeDRfkIbbAdUp+sYN996p4nATru0Hed+ROpq6SLik5drtz
+ 188ajuSwbLb0+/edQuBJy6Sk2ZuHTfZzy6HBWQDzoP6Ba3p5fDzEaFwt5
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YRNK/VrW
-Subject: [Intel-wired-lan] [RFC PATCH net-next v3 2/4] net/sched: flower:
- Add PPPoE filter
+ header.a=rsa-sha256 header.s=Intel header.b=ZdMW3Pvi
+Subject: [Intel-wired-lan] [RFC PATCH net-next v3 3/4] flow_offload:
+ Introduce flow_match_pppoe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,132 +111,57 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Wojciech Drewek <wojciech.drewek@intel.com>
 
-Add support for PPPoE specific fields for tc-flower.
-Those fields can be provided only when protocol was set
-to ETH_P_PPP_SES. Defines, dump, load and set are being done here.
-
-Overwrite basic.n_proto only in case of PPP_IP and PPP_IPV6,
-otherwise leave it as ETH_P_PPP_SES.
+Allow to offload PPPoE filters by adding flow_rule_match_pppoe.
+Drivers can extract PPPoE specific fields from now on.
 
 Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
 ---
- include/uapi/linux/pkt_cls.h |  3 +++
- net/sched/cls_flower.c       | 46 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+)
+ include/net/flow_offload.h | 6 ++++++
+ net/core/flow_offload.c    | 7 +++++++
+ 2 files changed, 13 insertions(+)
 
-diff --git a/include/uapi/linux/pkt_cls.h b/include/uapi/linux/pkt_cls.h
-index 9a2ee1e39fad..a67dcd8294c9 100644
---- a/include/uapi/linux/pkt_cls.h
-+++ b/include/uapi/linux/pkt_cls.h
-@@ -589,6 +589,9 @@ enum {
+diff --git a/include/net/flow_offload.h b/include/net/flow_offload.h
+index 6484095a8c01..50283a30b97b 100644
+--- a/include/net/flow_offload.h
++++ b/include/net/flow_offload.h
+@@ -72,6 +72,10 @@ struct flow_match_ct {
+ 	struct flow_dissector_key_ct *key, *mask;
+ };
  
- 	TCA_FLOWER_KEY_NUM_OF_VLANS,    /* u8 */
- 
-+	TCA_FLOWER_KEY_PPPOE_SID,	/* u16 */
-+	TCA_FLOWER_KEY_PPP_PROTO,	/* be16 */
++struct flow_match_pppoe {
++	struct flow_dissector_key_pppoe *key, *mask;
++};
 +
- 	__TCA_FLOWER_MAX,
- };
+ struct flow_rule;
  
-diff --git a/net/sched/cls_flower.c b/net/sched/cls_flower.c
-index dcca70144dff..f6a0bb87f869 100644
---- a/net/sched/cls_flower.c
-+++ b/net/sched/cls_flower.c
-@@ -16,6 +16,7 @@
- #include <linux/in6.h>
- #include <linux/ip.h>
- #include <linux/mpls.h>
-+#include <linux/ppp_defs.h>
+ void flow_rule_match_meta(const struct flow_rule *rule,
+@@ -116,6 +120,8 @@ void flow_rule_match_enc_opts(const struct flow_rule *rule,
+ 			      struct flow_match_enc_opts *out);
+ void flow_rule_match_ct(const struct flow_rule *rule,
+ 			struct flow_match_ct *out);
++void flow_rule_match_pppoe(const struct flow_rule *rule,
++			   struct flow_match_pppoe *out);
  
- #include <net/sch_generic.h>
- #include <net/pkt_cls.h>
-@@ -73,6 +74,7 @@ struct fl_flow_key {
- 	struct flow_dissector_key_ct ct;
- 	struct flow_dissector_key_hash hash;
- 	struct flow_dissector_key_num_of_vlans num_of_vlans;
-+	struct flow_dissector_key_pppoe pppoe;
- } __aligned(BITS_PER_LONG / 8); /* Ensure that we can do comparisons as longs. */
- 
- struct fl_flow_mask_range {
-@@ -714,6 +716,8 @@ static const struct nla_policy fl_policy[TCA_FLOWER_MAX + 1] = {
- 	[TCA_FLOWER_KEY_HASH]		= { .type = NLA_U32 },
- 	[TCA_FLOWER_KEY_HASH_MASK]	= { .type = NLA_U32 },
- 	[TCA_FLOWER_KEY_NUM_OF_VLANS]	= { .type = NLA_U8 },
-+	[TCA_FLOWER_KEY_PPPOE_SID]	= { .type = NLA_U16 },
-+	[TCA_FLOWER_KEY_PPP_PROTO]	= { .type = NLA_U16 },
- 
- };
- 
-@@ -1041,6 +1045,32 @@ static void fl_set_key_vlan(struct nlattr **tb,
- 	}
+ enum flow_action_id {
+ 	FLOW_ACTION_ACCEPT		= 0,
+diff --git a/net/core/flow_offload.c b/net/core/flow_offload.c
+index 929f6379a279..d13d293e3de2 100644
+--- a/net/core/flow_offload.c
++++ b/net/core/flow_offload.c
+@@ -223,6 +223,13 @@ void flow_rule_match_ct(const struct flow_rule *rule,
  }
+ EXPORT_SYMBOL(flow_rule_match_ct);
  
-+static void fl_set_key_pppoe(struct nlattr **tb,
-+			     struct flow_dissector_key_pppoe *key_val,
-+			     struct flow_dissector_key_pppoe *key_mask,
-+			     struct fl_flow_key *key,
-+			     struct fl_flow_key *mask)
++void flow_rule_match_pppoe(const struct flow_rule *rule,
++			   struct flow_match_pppoe *out)
 +{
-+	if (tb[TCA_FLOWER_KEY_PPPOE_SID]) {
-+		key_val->session_id =
-+			nla_get_u16(tb[TCA_FLOWER_KEY_PPPOE_SID]);
-+		key_mask->session_id = 0xffff;
-+	}
-+	if (tb[TCA_FLOWER_KEY_PPP_PROTO]) {
-+		key_val->ppp_proto =
-+			nla_get_be16(tb[TCA_FLOWER_KEY_PPP_PROTO]);
-+		key_mask->ppp_proto = cpu_to_be16(~0);
-+
-+		if (key_val->ppp_proto == htons(PPP_IP)) {
-+			key->basic.n_proto = htons(ETH_P_IP);
-+			mask->basic.n_proto = cpu_to_be16(~0);
-+		} else if (key_val->ppp_proto == htons(PPP_IPV6)) {
-+			key->basic.n_proto = htons(ETH_P_IPV6);
-+			mask->basic.n_proto = cpu_to_be16(~0);
-+		}
-+	}
++	FLOW_DISSECTOR_MATCH(rule, FLOW_DISSECTOR_KEY_PPPOE, out);
 +}
++EXPORT_SYMBOL(flow_rule_match_pppoe);
 +
- static void fl_set_key_flag(u32 flower_key, u32 flower_mask,
- 			    u32 *dissector_key, u32 *dissector_mask,
- 			    u32 flower_flag_bit, u32 dissector_flag_bit)
-@@ -1651,6 +1681,9 @@ static int fl_set_key(struct net *net, struct nlattr **tb,
- 		}
- 	}
- 
-+	if (key->basic.n_proto == htons(ETH_P_PPP_SES))
-+		fl_set_key_pppoe(tb, &key->pppoe, &mask->pppoe, key, mask);
-+
- 	if (key->basic.n_proto == htons(ETH_P_IP) ||
- 	    key->basic.n_proto == htons(ETH_P_IPV6)) {
- 		fl_set_key_val(tb, &key->basic.ip_proto, TCA_FLOWER_KEY_IP_PROTO,
-@@ -1923,6 +1956,8 @@ static void fl_init_dissector(struct flow_dissector *dissector,
- 			     FLOW_DISSECTOR_KEY_HASH, hash);
- 	FL_KEY_SET_IF_MASKED(mask, keys, cnt,
- 			     FLOW_DISSECTOR_KEY_NUM_OF_VLANS, num_of_vlans);
-+	FL_KEY_SET_IF_MASKED(mask, keys, cnt,
-+			     FLOW_DISSECTOR_KEY_PPPOE, pppoe);
- 
- 	skb_flow_dissector_init(dissector, keys, cnt);
- }
-@@ -3051,6 +3086,17 @@ static int fl_dump_key(struct sk_buff *skb, struct net *net,
- 	    fl_dump_key_ip(skb, false, &key->ip, &mask->ip)))
- 		goto nla_put_failure;
- 
-+	if (mask->pppoe.session_id) {
-+		if (nla_put_u16(skb, TCA_FLOWER_KEY_PPPOE_SID,
-+				key->pppoe.session_id))
-+			goto nla_put_failure;
-+	}
-+	if (mask->basic.n_proto && mask->pppoe.ppp_proto) {
-+		if (nla_put_be16(skb, TCA_FLOWER_KEY_PPP_PROTO,
-+				 key->pppoe.ppp_proto))
-+			goto nla_put_failure;
-+	}
-+
- 	if (key->control.addr_type == FLOW_DISSECTOR_KEY_IPV4_ADDRS &&
- 	    (fl_dump_key_val(skb, &key->ipv4.src, TCA_FLOWER_KEY_IPV4_SRC,
- 			     &mask->ipv4.src, TCA_FLOWER_KEY_IPV4_SRC_MASK,
+ struct flow_block_cb *flow_block_cb_alloc(flow_setup_cb_t *cb,
+ 					  void *cb_ident, void *cb_priv,
+ 					  void (*release)(void *cb_priv))
 -- 
 2.35.1
 
