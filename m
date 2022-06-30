@@ -1,96 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0B70561FF0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jun 2022 18:09:39 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5138F566EAE
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jul 2022 14:51:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 561774243F;
-	Thu, 30 Jun 2022 16:09:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 561774243F
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA4AA40A96;
+	Tue,  5 Jul 2022 12:51:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA4AA40A96
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656605378;
-	bh=MwNKZeQpxMUIshJbcpKeR887pUfEJCmIyHMAjLYbeH0=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1657025481;
+	bh=w8hyAUZWn2wxIOqNJlwYOJg7ldG8aBAinpbFwVQVFDk=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=T49mNj9QNpfuoWIbPx6a4a02t8ESwPXM4XZKFu0Hfj2zVvc7jBWCb32cUQB5vp6+V
-	 0ZuProaMqW26SCswKsVYoZwLr/miaeEkPbkkh7BOkBScsOGEqQ4Py2PavK7xMNEwKo
-	 rXlWG8oaJ/ztDhanz58Gy8DuHqvlOduRz5IoauLPM3TLKuIzPOzePvmh04lHI6eVsJ
-	 9UdLcKRWpb2B3kFvmDJael2eFH5gkwoovqBjpfJNM8imbwblKrt6GwbaHD6CODnlOg
-	 +qg+u0ylGk2e8uMzAU58sMMWNY49piRFkTTPpyIi8oAUk4XPi1rnAr+7pCHBUECVf2
-	 +RYc5SrvZoQbA==
+	b=Jp2fFs5b8jJnHiyxa3zwoDpKmDX2f8SKfd1jpqLZV3Nmn0AIuusH+3YOFk+udev3V
+	 VlQDIGA8MHjVwPl/WRAT6RxeHrXlq6MeZ1C7bIXipp8NjUZiKFaw9WvJ69T7FkQO5N
+	 isNz3S4ryOI3vX5fE9BFm4I2MrrHYuft76Sitgnme/nfeiZLqLzLEC2V4HQrHdPIdk
+	 O50ruQIQjzHwiUv1hcD3NN7SvEPKtmDHi6cL5QCgD0Ffmnp4GRLXbyrvHB0tVYcFQ5
+	 tXhUY3Dq+QlJmNqn9jOB9WGsR9kW/3IZodTTv6KSClKaZJjIP56sZdKShTwmzjh7Kn
+	 Kf8tpsjYdeFtA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x4ISjxl4426Z; Thu, 30 Jun 2022 16:09:37 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uCOmK2ESSpi3; Tue,  5 Jul 2022 12:51:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EF26642427;
-	Thu, 30 Jun 2022 16:09:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF26642427
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8417A40A67;
+	Tue,  5 Jul 2022 12:51:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8417A40A67
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9C1B41BF955
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 16:09:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AF9311BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 18:13:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 752D640B1A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 16:09:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 752D640B1A
+ by smtp2.osuosl.org (Postfix) with ESMTP id 92CDD40533
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 18:13:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 92CDD40533
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zw34yyvWPRtA for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Jun 2022 16:09:31 +0000 (UTC)
+ with ESMTP id 5FbMgg3IAOdz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Jun 2022 18:13:42 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43BF640533
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
- [IPv6:2a00:1450:4864:20::62d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 43BF640533
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 16:09:31 +0000 (UTC)
-Received: by mail-ej1-x62d.google.com with SMTP id sb34so39855958ejc.11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 09:09:31 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6D0EA40286
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com
+ [IPv6:2a00:1450:4864:20::531])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6D0EA40286
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 18:13:42 +0000 (UTC)
+Received: by mail-ed1-x531.google.com with SMTP id z19so27591015edb.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 11:13:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W7SHta3R6YcleHmOphCvTADHKrbts/DoO7PiUh5TyAw=;
- b=qo+1Mgt87WICuRODS9t890lF2CR24FdmPNmDfGYw0HahlW09XbhQ84gr3LR6YlcaT/
- n9EEi1gkm0k09NrJzAXbNfxETATIIJobYsGpNFZ0FksLJpLhm4XK77WpqwjSSlGqsjvh
- nDyaBfbXj/iEwCBTupjkrbrueRGbY4TO/tdvZemXXPqqQZQl+EQZ8iIEWJuyn60Gd+a2
- Qah+LUXq6aNj8e0KOVBHSR7Sh5+beJL8sJcHu2Dnb5nV1A/LulTk2f233hXY71JVG/p7
- d9wTGxBz0nA7aMeQJoUsq50rAzKzPdex6p/Z3Ht4y8aEqJQ2QmnFV5T2HE9cNjH41lDt
- 0vVw==
-X-Gm-Message-State: AJIora82pbDSuo1L+SPHf/+fFxTpDDMyLTtma7fZwaqYWoAfM7Yd5FTk
- YMfL2XPBtIEHoBaOGXqfMt/vAjMZaJyv1J1pb6U=
-X-Google-Smtp-Source: AGRyM1see/eF8lNqERI7kZvJTMTd5XDcrqHQx57Y8MmMZ80nmUey6lr33deQShd6xy8hmeSnHCAIpwbadHNwDYyAiBE=
-X-Received: by 2002:a17:907:d17:b0:726:a3be:bba4 with SMTP id
- gn23-20020a1709070d1700b00726a3bebba4mr9602604ejc.584.1656605369361; Thu, 30
- Jun 2022 09:09:29 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8glAiFvvYAhfMI+vcfTy74bCy0VAErz9qlw2gOrB7qA=;
+ b=NvsTnqGgSlYgeZV7KZ28utZBGkwy0C4Fp5Sfbirr8ZCRcd0ox1L0zH5vbNsW/ljjnZ
+ Lp6+EF2k3Hvh/h/XbtlPylQ2GFfvrbiW5Sigz1ZdJ3TzQOrdrRypd4qgk8xC+9DP397v
+ a7UIvFX6fT8DtX66Z56qP23yquPaV7fmXRHh76xh9/0k/AO8kCwTrqnFncE6EqLcQ+w7
+ /EYeTF2BX+bWjYXBC70PWCS/LTqA1YIwasysgNOnvFjZt4viqApBTfbi7eaRAyPpzNfn
+ hJ+CJmlTjxD7pDNC+ETDgcRTFaZ8n6edRtvtgAuBE1HlIGn175HrdjtVdffDhdlXaqTb
+ DmWA==
+X-Gm-Message-State: AJIora8dd3GkEkYOlS7tbfyp5IYHpESrZOJfcNn166zxNC3rvuZxD81C
+ iS+OZDGmjyFuJoALSobyRV8=
+X-Google-Smtp-Source: AGRyM1tRbV9myCID4do+RE+BD6VuESTf79GpY37rWF1nuOjpF2gsd4l25Fxd/4Kig/NcRnR7mdixUA==
+X-Received: by 2002:a05:6402:26d6:b0:435:ba41:dbb0 with SMTP id
+ x22-20020a05640226d600b00435ba41dbb0mr13327972edd.242.1656612820518; 
+ Thu, 30 Jun 2022 11:13:40 -0700 (PDT)
+Received: from opensuse.localnet (host-87-6-98-182.retail.telecomitalia.it.
+ [87.6.98.182]) by smtp.gmail.com with ESMTPSA id
+ p5-20020a17090653c500b00722e8c47cc9sm1833654ejo.181.2022.06.30.11.13.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jun 2022 11:13:38 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 30 Jun 2022 20:13:37 +0200
+Message-ID: <12017329.O9o76ZdvQC@opensuse>
+In-Reply-To: <CAKgT0UfGM8nCZnnYjWPKT+JXOwVJx1xj6n7ssGi41vH4GrUy0Q@mail.gmail.com>
 References: <20220629085836.18042-1-fmdefrancesco@gmail.com>
  <Yr12jl1nEqqVI3TT@boxer>
  <CAKgT0UfGM8nCZnnYjWPKT+JXOwVJx1xj6n7ssGi41vH4GrUy0Q@mail.gmail.com>
- <CANn89iK6g+4Fy2VMV7=feUAOUDHu-J38be+oU76yp+zGH6xCJQ@mail.gmail.com>
-In-Reply-To: <CANn89iK6g+4Fy2VMV7=feUAOUDHu-J38be+oU76yp+zGH6xCJQ@mail.gmail.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 30 Jun 2022 09:09:18 -0700
-Message-ID: <CAKgT0UcKRJUJrpFHdNrdH98eu_dpiZiVakJRqc2qHrdGJJQRQA@mail.gmail.com>
-To: Eric Dumazet <edumazet@google.com>
+MIME-Version: 1.0
+X-Mailman-Approved-At: Tue, 05 Jul 2022 12:51:16 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc;
- bh=W7SHta3R6YcleHmOphCvTADHKrbts/DoO7PiUh5TyAw=;
- b=leQQP/xhczwNdOGnF18R9mF1JXFj2pmiWegEIpuR/mn6I7XObmb8R/TeqQyM7hkH0F
- kYK75lbPEikoYA5d/mNMOo9I5X01TIWLhsFRp7GYYk4blQ9KDfwKc2R6hPys1gv31QZC
- 7vHGwCNZUN+IjHVGqL/BNxJzmdkkbru/xoOdG8X5yCdqqV0exGFQkXXtQdcDBQ5IPRBO
- Ks9mL31MeKBiF9JARxV/08FqW39PJuiX1sYOhBgCNdhcHsHkXHqyu36RSzhqg081jEJh
- mstGPi3BeGuxoB7S6rP1c6v9vJYkwQU5M8af5DrCcEhbq6GJXDOsa2sxpd3fswRdDhwP
- eb4g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8glAiFvvYAhfMI+vcfTy74bCy0VAErz9qlw2gOrB7qA=;
+ b=l1r+1Vmf9q2oWvjMcHJzsqJnIeHo07Lf7an896wGvxkwuV/81/9kjyXcVpowrnWjQR
+ MebPRwlejspQtTlgWcn6o56P0UE9VvteQLMMl153TNVbdz3gnJurMJCXzIV31PI9f3Gy
+ +LsuxTKlXXI3+buzGcTM0g9BN49+68ylLEbbQovNwqhHwMFaFnB1VL8mE/Cesmwq7RWw
+ w7MHT1YsfBSOYyRXOaoseLr8ybSjV+UhnJC0OkCsWNmyGRAgpQR3e8C+LMj+4S9UO4gm
+ fm1ma4xUoIcEn6Rwa4zlti9dlk2NSt+9w82HeC4rueqqWCPMsgeEzo7+9g5osgVQ7q4W
+ x00Q==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=leQQP/xh
+ header.a=rsa-sha256 header.s=20210112 header.b=l1r+1Vmf
 Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Use kmap_local_page in
  ixgbe_check_lbtest_frame()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -106,69 +112,44 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- "David S. Miller" <davem@davemloft.net>, Netdev <netdev@vger.kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
  Alexander Duyck <alexanderduyck@fb.com>,
  John Fastabend <john.fastabend@gmail.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Alexei Starovoitov <ast@kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
  intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
  Jakub Kicinski <kuba@kernel.org>, bpf <bpf@vger.kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
- Ira Weiny <ira.weiny@intel.com>, LKML <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Paolo Abeni <pabeni@redhat.com>, Ira Weiny <ira.weiny@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 30, 2022 at 8:25 AM Eric Dumazet <edumazet@google.com> wrote:
->
-> On Thu, Jun 30, 2022 at 5:17 PM Alexander Duyck
-> <alexander.duyck@gmail.com> wrote:
-> >
-> > On Thu, Jun 30, 2022 at 3:10 AM Maciej Fijalkowski
-> > <maciej.fijalkowski@intel.com> wrote:
-> > >
-> > > On Wed, Jun 29, 2022 at 10:58:36AM +0200, Fabio M. De Francesco wrote:
-> > > > The use of kmap() is being deprecated in favor of kmap_local_page().
-> > > >
-> > > > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > > > globally visible. Furthermore, the mapping can be acquired from any context
-> > > > (including interrupts).
-> > > >
-> > > > Therefore, use kmap_local_page() in ixgbe_check_lbtest_frame() because
-> > > > this mapping is per thread, CPU local, and not globally visible.
-> > >
-> > > Hi,
-> > >
-> > > I'd like to ask why kmap was there in the first place and not plain
-> > > page_address() ?
-> > >
-> > > Alex?
-> >
-> > The page_address function only works on architectures that have access
-> > to all of physical memory via virtual memory addresses. The kmap
-> > function is meant to take care of highmem which will need to be mapped
-> > before it can be accessed.
-> >
-> > For non-highmem pages kmap just calls the page_address function.
-> > https://elixir.bootlin.com/linux/latest/source/include/linux/highmem-internal.h#L40
->
->
-> Sure, but drivers/net/ethernet/intel/ixgbe/ixgbe_main.c is allocating
-> pages that are not highmem ?
->
-> This kmap() does not seem needed.
-
-Good point. So odds are page_address is fine to use. Actually there is
-a note to that effect in ixgbe_pull_tail.
-
-As such we could probably go through and update igb, and several of
-the other Intel drivers as well.
-
-- Alex
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gZ2lvdmVkw6wgMzAgZ2l1Z25vIDIwMjIgMTc6MTc6MjQgQ0VTVCBBbGV4YW5kZXIgRHV5Y2sg
+d3JvdGU6Cj4gT24gVGh1LCBKdW4gMzAsIDIwMjIgYXQgMzoxMCBBTSBNYWNpZWogRmlqYWxrb3dz
+a2kKPiA8bWFjaWVqLmZpamFsa293c2tpQGludGVsLmNvbT4gd3JvdGU6Cj4gPgo+ID4gT24gV2Vk
+LCBKdW4gMjksIDIwMjIgYXQgMTA6NTg6MzZBTSArMDIwMCwgRmFiaW8gTS4gRGUgRnJhbmNlc2Nv
+IHdyb3RlOgo+ID4gPiBUaGUgdXNlIG9mIGttYXAoKSBpcyBiZWluZyBkZXByZWNhdGVkIGluIGZh
+dm9yIG9mIGttYXBfbG9jYWxfcGFnZSgpLgo+ID4gPgo+ID4gPiBXaXRoIGttYXBfbG9jYWxfcGFn
+ZSgpLCB0aGUgbWFwcGluZyBpcyBwZXIgdGhyZWFkLCBDUFUgbG9jYWwgYW5kIG5vdAo+ID4gPiBn
+bG9iYWxseSB2aXNpYmxlLiBGdXJ0aGVybW9yZSwgdGhlIG1hcHBpbmcgY2FuIGJlIGFjcXVpcmVk
+IGZyb20gYW55IApjb250ZXh0Cj4gPiA+IChpbmNsdWRpbmcgaW50ZXJydXB0cykuCj4gPiA+Cj4g
+PiA+IFRoZXJlZm9yZSwgdXNlIGttYXBfbG9jYWxfcGFnZSgpIGluIGl4Z2JlX2NoZWNrX2xidGVz
+dF9mcmFtZSgpIApiZWNhdXNlCj4gPiA+IHRoaXMgbWFwcGluZyBpcyBwZXIgdGhyZWFkLCBDUFUg
+bG9jYWwsIGFuZCBub3QgZ2xvYmFsbHkgdmlzaWJsZS4KPiA+Cj4gPiBIaSwKPiA+Cj4gPiBJJ2Qg
+bGlrZSB0byBhc2sgd2h5IGttYXAgd2FzIHRoZXJlIGluIHRoZSBmaXJzdCBwbGFjZSBhbmQgbm90
+IHBsYWluCj4gPiBwYWdlX2FkZHJlc3MoKSA/Cj4gPgo+ID4gQWxleD8KPiAKPiBUaGUgcGFnZV9h
+ZGRyZXNzIGZ1bmN0aW9uIG9ubHkgd29ya3Mgb24gYXJjaGl0ZWN0dXJlcyB0aGF0IGhhdmUgYWNj
+ZXNzCj4gdG8gYWxsIG9mIHBoeXNpY2FsIG1lbW9yeSB2aWEgdmlydHVhbCBtZW1vcnkgYWRkcmVz
+c2VzLiBUaGUga21hcAo+IGZ1bmN0aW9uIGlzIG1lYW50IHRvIHRha2UgY2FyZSBvZiBoaWdobWVt
+IHdoaWNoIHdpbGwgbmVlZCB0byBiZSBtYXBwZWQKPiBiZWZvcmUgaXQgY2FuIGJlIGFjY2Vzc2Vk
+Lgo+IAo+IEZvciBub24taGlnaG1lbSBwYWdlcyBrbWFwIGp1c3QgY2FsbHMgdGhlIHBhZ2VfYWRk
+cmVzcyBmdW5jdGlvbi4KPiBodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC9sYXRlc3Qv
+c291cmNlL2luY2x1ZGUvbGludXgvaGlnaG1lbS1pbnRlcm5hbC5oI0w0MAoKUGxlYXNlIHRha2Ug
+YSBsb29rIGF0IGRvY3VtZW50YXRpb24gKGhpZ2htZW0ucnN0KS4gSSd2ZSByZWNlbnRseSByZXdv
+cmtlZCAKaXQgYW5kIGFkZGVkIGluZm9ybWF0aW9uIGFib3V0IGttYXBfbG9jYWxfcGFnZSgpCgpU
+aGFua3MsCgpGYWJpbwoKPiAKPiBUaGFua3MsCj4gCj4gLSBBbGV4Cj4gCgoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
