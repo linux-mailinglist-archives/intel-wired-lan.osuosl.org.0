@@ -1,92 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F82D561328
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jun 2022 09:23:44 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27FC5561751
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jun 2022 12:10:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 51F224010E;
-	Thu, 30 Jun 2022 07:23:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51F224010E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A2A641BE3;
+	Thu, 30 Jun 2022 10:10:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A2A641BE3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656573822;
-	bh=d7Dp+kPuL4pdw4v+Gj8HYoY/lzytrqJBR730dBEOuQg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1656583836;
+	bh=msX86gfFxXTkP79zG6r/jGIVx1GwxAcbB0HveXWzTbE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=TU6UN6iFA01M4n8Tp1QIs0E9Y8svI0+z2RZkLwp2uoX+barEKHb6AuaeX8S8HefVA
-	 nqr1RbfIh6OTep3yKPA054hlDZQHXkXIG4X/GxUBX/K+AjQiBsIhiRvYa6bAgyxfbp
-	 19m3kLITOL6llElve//c1BA2Gt7Wv6j57tstZdlAkwAEzRKi62rLUTWtYp8aclcuMO
-	 3ovSdeLCnxqWnskA4QjzRmI4afH1QHb7tT2P90EJj7Sztu8yTfp/lTIFB74+zqo6h7
-	 n/2i4HN6pBkLsOlygYdCFJSAr/8EnfGZcu/LvCbdzavbAhCrjL6rK2TZYYkmcFzsku
-	 41lGWCzlLI6sw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jWMLLJNcTLYI; Thu, 30 Jun 2022 07:23:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1EB2A40A89;
-	Thu, 30 Jun 2022 07:23:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1EB2A40A89
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BBA6C1BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 07:23:34 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8F29E40354
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 07:23:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F29E40354
+	b=ldErprvTZ+wXdvd/ojo9xbovvjaCTzmhgJsZzWdc/sDKAZN7dFuJWkgURx5VmEDm1
+	 GyEerXfTz2aUuRPfvOa+C9SDvYHC351cOIkSVO5VyBQ1n9N9GAXS8RZrokXv4v/PVW
+	 GqS98OFPog1y5lqyxjIhi4Hu0hyGH2dQUDo3IgzqC8ZwkHDLrj0RtD1dKNN8vuwS/F
+	 yjusnV71wn4GDQ3I8yX6Uc7j4VqzBoMyh517EyUBYLvenRQxkUPkbXwF8FBlbNjWAL
+	 qMkV75/AfPulovvVZ78AUmRMz8btAoHtSJrJHA6IsIknz46UYZFse3WgHUG3R3Y6cC
+	 fK+yaS1a5Y/sg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vBjwLGvXx0rY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Jun 2022 07:23:33 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UY0O-B-9LqbD; Thu, 30 Jun 2022 10:10:35 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4AD3B41B4F;
+	Thu, 30 Jun 2022 10:10:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AD3B41B4F
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5EE191BF387
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 10:10:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 33EBC840CB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 10:10:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 33EBC840CB
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vyiEfm_u5qWF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Jun 2022 10:10:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E20A04034E
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E20A04034E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 07:23:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10393"; a="265305135"
-X-IronPort-AV: E=Sophos;i="5.92,233,1650956400"; d="scan'208";a="265305135"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2022 00:23:31 -0700
-X-IronPort-AV: E=Sophos;i="5.92,233,1650956400"; d="scan'208";a="658889107"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.28])
- ([10.13.12.28])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2022 00:23:28 -0700
-Message-ID: <887f578a-6302-a1c5-b96e-012fef31ae60@linux.intel.com>
-Date: Thu, 30 Jun 2022 10:23:12 +0300
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7C83183F70
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7C83183F70
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jun 2022 10:10:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10393"; a="283405710"
+X-IronPort-AV: E=Sophos;i="5.92,233,1650956400"; d="scan'208";a="283405710"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jun 2022 03:10:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,233,1650956400"; d="scan'208";a="680918936"
+Received: from boxer.igk.intel.com (HELO boxer) ([10.102.20.173])
+ by FMSMGA003.fm.intel.com with ESMTP; 30 Jun 2022 03:10:23 -0700
+Date: Thu, 30 Jun 2022 12:10:22 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Message-ID: <Yr12jl1nEqqVI3TT@boxer>
+References: <20220629085836.18042-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Content-Language: en-US
-To: Lennert Buytenhek <buytenh@wantstofly.org>,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-References: <YpjeEyMxobCIRfTx@wantstofly.org>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <YpjeEyMxobCIRfTx@wantstofly.org>
+Content-Disposition: inline
+In-Reply-To: <20220629085836.18042-1-fmdefrancesco@gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1656573812; x=1688109812;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=MbfSuw9UA3LRc7GDrrVI9/ku4qISI1pv7/WgZ9sqQ64=;
- b=g05FKOIhbl7q8FJpcOXNRXSm4byEqHZgNSwxMuCaKmktbsq8+Oj2MuSm
- YwDl3vzsENFHAYdhnZimOSMaMuu/+1FlNXOBoqmmHNTQ8BLuH9q/CJHVy
- HtjWcIjDwhX1uvQFIJjaFkAworSd5H28Kqccj/v7d6AIWNg1LU+/wQ0Aw
- NUeLQU5nxtLWwOLWTg8DCziNWU9vq2/mUGvxK+9k02ZTZCetzrSpOTC0s
- teuiBm9XdOHFUdddcTk9xDM1wV5oB0ZqsmjkIL9EfhQzKv4+FDQWEEKdd
- rRqc04XGFwuqw/RNOTiv4Co9rjPbz0XntvmGdznSd9T+aU/bL3haMdXas
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1656583828; x=1688119828;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=XzV8lb39RqU/gtzU+hmSRVGu76gzswS57eUcYcMU+Qs=;
+ b=aZS93eVCGoesr1bFR8fnVYOlg23DYll4Sm8l5ZWDeyVxx2AaubJqwl76
+ Z39R2pnsbvV1Rn0xKu3BMqfKJqij6opY3Uc2oG094zuLVs/IKLf9t1V5+
+ +3lH08RAz5ect3wLrl/gjqfgi5dlZgUj66rFSxIYFqMc3pPxjRQeHjP4k
+ qpQrJ0npzmMU2/22Tn0HxetWy9n5y3bWcFr0xRFwXVcbQ4XgtFrbSkcLa
+ EwMJDclXiZrpym0MelAJSTfN9PBEZTFX1Dbk79OXB8xeopVsH8kuCcja5
+ aOfNMxEQBdjCwOFaB9WKZTQzpJxyPLwoUqNbOj7x6+yub7G1uIQQ1+IYG
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=g05FKOIh
-Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Reinstate IGC_REMOVED logic
- and implement it properly
+ header.a=rsa-sha256 header.s=Intel header.b=aZS93eVC
+Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Use kmap_local_page in
+ ixgbe_check_lbtest_frame()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,95 +94,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, intel-wired-lan@lists.osuosl.org,
+ alexanderduyck@fb.com, John Fastabend <john.fastabend@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Ira Weiny <ira.weiny@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 6/2/2022 18:58, Lennert Buytenhek wrote:
-> The initially merged version of the igc driver code (via commit
-> 146740f9abc4, "igc: Add support for PF") contained the following
-> IGC_REMOVED checks in the igc_rd32/wr32() MMIO accessors:
+On Wed, Jun 29, 2022 at 10:58:36AM +0200, Fabio M. De Francesco wrote:
+> The use of kmap() is being deprecated in favor of kmap_local_page().
 > 
-> 	u32 igc_rd32(struct igc_hw *hw, u32 reg)
-> 	{
-> 		u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
-> 		u32 value = 0;
+> With kmap_local_page(), the mapping is per thread, CPU local and not
+> globally visible. Furthermore, the mapping can be acquired from any context
+> (including interrupts).
 > 
-> 		if (IGC_REMOVED(hw_addr))
-> 			return ~value;
+> Therefore, use kmap_local_page() in ixgbe_check_lbtest_frame() because
+> this mapping is per thread, CPU local, and not globally visible.
+
+Hi,
+
+I'd like to ask why kmap was there in the first place and not plain
+page_address() ?
+
+Alex?
+
 > 
-> 		value = readl(&hw_addr[reg]);
-> 
-> 		/* reads should not return all F's */
-> 		if (!(~value) && (!reg || !(~readl(hw_addr))))
-> 			hw->hw_addr = NULL;
-> 
-> 		return value;
-> 	}
-> 
-> And:
-> 
-> 	#define wr32(reg, val) \
-> 	do { \
-> 		u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
-> 		if (!IGC_REMOVED(hw_addr)) \
-> 			writel((val), &hw_addr[(reg)]); \
-> 	} while (0)
-> 
-> E.g. igb has similar checks in its MMIO accessors, and has a similar
-> macro E1000_REMOVED, which is implemented as follows:
-> 
-> 	#define E1000_REMOVED(h) unlikely(!(h))
-> 
-> These checks serve to detect and take note of an 0xffffffff MMIO read
-> return from the device, which can be caused by a PCIe link flap or some
-> other kind of PCI bus error, and to avoid performing MMIO reads and
-> writes from that point onwards.
-> 
-> However, the IGC_REMOVED macro was not originally implemented:
-> 
-> 	#ifndef IGC_REMOVED
-> 	#define IGC_REMOVED(a) (0)
-> 	#endif /* IGC_REMOVED */
-> 
-> This led to the IGC_REMOVED logic to be removed entirely in a
-> subsequent commit (commit 3c215fb18e70, "igc: remove IGC_REMOVED
-> function"), with the rationale that such checks matter only for
-> virtualization and that igc does not support virtualization -- but a
-> PCIe device can become detached even without virtualization being in
-> use, and without proper checks, a PCIe bus error affecting an igc
-> adapter will lead to various NULL pointer dereferences, as the first
-> access after the error will set hw->hw_addr to NULL, and subsequent
-> accesses will blindly dereference this now-NULL pointer.
-> 
-> This patch reinstates the IGC_REMOVED checks in igc_rd32/wr32(), and
-> implements IGC_REMOVED the way it is done for igb, by checking for the
-> unlikely() case of hw_addr being NULL.  This change prevents the oopses
-> seen when a PCIe link flap occurs on an igc adapter.
-> 
-> Fixes: 146740f9abc4 ("igc: Add support for PF")
-> Signed-off-by: Lennert Buytenhek <buytenh@arista.com>
+> Suggested-by: Ira Weiny <ira.weiny@intel.com>
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 > ---
-> As initially reported on intel-wired-lan@ in February:
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> 	https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20220214/027787.html
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> index 628d0eb0599f..e64d40482bfd 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> @@ -1966,14 +1966,14 @@ static bool ixgbe_check_lbtest_frame(struct ixgbe_rx_buffer *rx_buffer,
+>  
+>  	frame_size >>= 1;
+>  
+> -	data = kmap(rx_buffer->page) + rx_buffer->page_offset;
+> +	data = kmap_local_page(rx_buffer->page) + rx_buffer->page_offset;
+>  
+>  	if (data[3] != 0xFF ||
+>  	    data[frame_size + 10] != 0xBE ||
+>  	    data[frame_size + 12] != 0xAF)
+>  		match = false;
+>  
+> -	kunmap(rx_buffer->page);
+> +	kunmap_local(data);
+>  
+>  	return match;
+>  }
+> -- 
+> 2.36.1
 > 
-> We're seeing these NULL pointer dereferences hit fairly reproducibly
-> when rebooting, presumably due to the particularities of reset
-> sequencing on the boards we see this hit on.
-> 
-> A link flap can be caused by toggling the Secondary Bus Reset bit
-> in the upstream PCIe bridge's Bridge Control register and can reliably
-> reproduce this problem.
-> 
->   drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
->   drivers/net/ethernet/intel/igc/igc_regs.h | 5 ++++-
->   2 files changed, 7 insertions(+), 1 deletion(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
