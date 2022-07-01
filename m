@@ -1,186 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBA67563465
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Jul 2022 15:33:48 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7CBD5636C9
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Jul 2022 17:18:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5264E40B8B;
-	Fri,  1 Jul 2022 13:33:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5264E40B8B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 48BED41049;
+	Fri,  1 Jul 2022 15:18:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 48BED41049
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1656682427;
-	bh=vm8s/vbFET4OAsnUEdxxDN6GSrmwM13rugDGPTw9Bx8=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=2Q4x2x58EfDOKYDki6KbODN/hmuTQKwkeQKj4jDGHi8oiHoFSYN4rvJk1JwSsX+ex
-	 jvGUgLhGbaQc0ui14MUUgaIH5EK7fZWOqQSJ5xqsP3M4o2p6ZBsDy/ewbIB9IMI4M5
-	 koCXSkAnTyEiN/pZ85NA6O8ZaSLeOhMzCrTh0FwfDU9U+Hzoivg4uPoS9Rx76zfP0i
-	 EbeWVX3DBR9aM2LuOcE6qCT0c9Sjb8SoT6GtkPF7TzjQjY/YxhpKkV2dkyY/Rzrhrp
-	 U7KwGEYIl1USUQ64Ap+e/yDojSgyXSQ+awspeJbbAE5fRt+lsnYCRYxPH0/DgkHFSe
-	 HN7GrLyQq8ysA==
+	s=default; t=1656688693;
+	bh=rcGnqEBnvyfHvC7JnRSCWdQJVRvCphUc+saxyFzPITo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=mPh8n79yQNySmhdZVCgf/hT8Q38kRma1su9YlQr7Umw32q06VaDFzJapBdlwMAPbV
+	 sT762kYSbeIAbe+Gy4qP9HCevmAxijlOdLBq5k5EZJ1XVyrFlO/+WMq5KRlrdnXzkx
+	 rVd67A4amglKX/nXsP7f2BEjykNPCMFBWs7mF4H/GkIvgp9oyAKpUr4aKHssRfQFXT
+	 fYxfve3LKo9RIcNdanmNyPwPpinLqnW7D24fw265/bGx+XHJVNvzI4I0wZk5+mfHpN
+	 3jjUVFX7VepXO4AneW4Tt+ObVj4j6s1NYE9ODIHScR3TyxJhViKdGxADnoJ0Pq/RN4
+	 f+/moGpY8POnw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZvIN0zv5bXB3; Fri,  1 Jul 2022 13:33:46 +0000 (UTC)
+	with ESMTP id eJ6FLpXudevJ; Fri,  1 Jul 2022 15:18:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A8A7F40B7A;
-	Fri,  1 Jul 2022 13:33:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8A7F40B7A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3601B40573;
+	Fri,  1 Jul 2022 15:18:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3601B40573
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4C6E31BF302
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 13:33:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 486951BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 15:18:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 243418460C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 13:33:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 243418460C
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2F3FC8471C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 15:18:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F3FC8471C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kLR1tjwlW6xs for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Jul 2022 13:33:39 +0000 (UTC)
+ with ESMTP id F5SqMx9JnLpu for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Jul 2022 15:18:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C851484505
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 85D928470C
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C851484505
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 13:33:39 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10394"; a="262452014"
-X-IronPort-AV: E=Sophos;i="5.92,237,1650956400"; d="scan'208";a="262452014"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 85D928470C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Jul 2022 15:18:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10395"; a="262472755"
+X-IronPort-AV: E=Sophos;i="5.92,237,1650956400"; d="scan'208";a="262472755"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2022 06:33:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,237,1650956400"; d="scan'208";a="596260089"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga007.fm.intel.com with ESMTP; 01 Jul 2022 06:33:38 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Fri, 1 Jul 2022 06:33:38 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Fri, 1 Jul 2022 06:33:37 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Fri, 1 Jul 2022 06:33:37 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.105)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Fri, 1 Jul 2022 06:33:37 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eEi7WQckEmA/l1YN6JSGD+oz42xZHvX05IP+btCQ0DodPMZ0hVaoTRpcWUrqZyJSYx+6RisFglajclzWTJUDpN+4XtqNjkghgNTZutdbOcpb3LERv3e/8NYnB+1PkaqED/dJ/8iNR9xu//tRI0vGTqw212ymE8XmzRRipvN+f6zQcSlUReWuRn7iCbIarc6QtJ8BLn4bb1GATecC/VGyWELbtamS16YiUUwclZm5fqBQ6Y/MTv+SoORMULmJC1BP6uIg1q3SkzsgTotSCTbwPE/RVwv5Jl11SLMRf+bJvVX5ZoFZZvxatBf244YQ/d5kvv+EhywgZecCIeVsZWgXtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PzZCdz6wxXvfZeDy/AiX3TfKENmxBt0bfc3+jQXvtz0=;
- b=C7/M7AjqJaGM0Mdm9mdAsEl+r8/8mNJ0DKVfqqcIjB8JJzK3kdqaLeHIYOoi7Lz2sR3RE99XUsdMIPoc0uF6WSQEMi381CKc1EB6w1D5aGLmeEt1uydAIEKEAOQFhNyOuyiaf8XvEBhfRFhRQmFXtEcgqfy35m7DCXpUteLJNAcj1wXVKhpCCuWUrjwSeNwwYK6ayc/Mn7Hkkh10/79P+7WhroYY5+qE735unuSXCvMI71ff/s7TeDOJ4blDBaX03sKkfYObHy9L/1EZdawY5A91uPSUt39dHJAnvIFgCYKL/bclZlymqFQL6w6fzZtV/bySH94CWMIZIsAZr49wlQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by MW3PR11MB4716.namprd11.prod.outlook.com (2603:10b6:303:53::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5395.15; Fri, 1 Jul
- 2022 13:33:36 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::9eb:1dcb:baf2:a46c]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::9eb:1dcb:baf2:a46c%3]) with mapi id 15.20.5395.014; Fri, 1 Jul 2022
- 13:33:36 +0000
-From: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-To: Guillaume Nault <gnault@redhat.com>
-Thread-Topic: [RFC PATCH net-next v3 1/4] flow_dissector: Add PPPoE dissectors
-Thread-Index: AQHYi8Yz71onwe1ZJkqLrfIIHXHZd61olZEAgAC2kwCAACwZgIAACRCQ
-Date: Fri, 1 Jul 2022 13:33:35 +0000
-Message-ID: <MW4PR11MB57765C3D4A7B8B95F4145BBEFDBD9@MW4PR11MB5776.namprd11.prod.outlook.com>
-References: <20220629143859.209028-1-marcin.szycik@linux.intel.com>
- <20220629143859.209028-2-marcin.szycik@linux.intel.com>
- <20220630231016.GA392@debian.home>
- <MW4PR11MB5776F1388A0EFB83990120CDFDBD9@MW4PR11MB5776.namprd11.prod.outlook.com>
- <20220701124133.GA10226@debian.home>
-In-Reply-To: <20220701124133.GA10226@debian.home>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.500.17
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 65935b21-5fd8-4992-3295-08da5b664ccb
-x-ms-traffictypediagnostic: MW3PR11MB4716:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: jzzMRQa/7z9eI1xjUrC3czCVUUaq/+LpJmXgZ0/e9qw9svvy0OkmNYFW1RdkulZhqwZTtml4F5B0sOymoREnZKjs5yl526OfcPxcjyK3sJDGdpEei6qNF5uNhO+2ZKxcv/7Lgp7z2aXA8aBWGe4KuyUJPsXTS0qbsP75rCnWHEngEM7NsgPB5S562Yz5/SxEeFU+lRiAb7QwtWlFya6e9XxxFnRghCy3rzP47ZYo+WrdxC3dBABgD07Zd018UFxEmRBEiZjQIZIY/HYG5v3BMOpisbl4AwEVmq+oPrZMll+Ncdi5Xa0W+8P3dXBxHtjq6vjpCaVt4tZSIOR908iDU0W1QCS6MHoLz9AfGrvKnZ7Ksxwd/LpGgbDm9JfbTDNYWp+/CGcP+4Ct8oDqaf0GW0d+bhtdGPD12kjTUfFUnq0FZ3AYEuBW0ZXJAJabsI9/TXUw7Qsg23ETkfwkAgrFymIL08JtGT7ntNDnOF1RFv3jDh/VDyNMml1mCsQqvCasTR38Ynyj0XWMrHpHtxqOw2GizYLYvOY/2+hxmnYw7Fclhz5T8E3+JNWliZOg+dd2XZU6g6zhWq3bYdObqFCdtfpo75IOeEBamfO43aL+u3ih0bdjH0vZW398zlA4w+2IT8JqKcJu01ERKC2LYRq0IcpVNhQxUion4GdfIa9vaU1TiSUjaQe/y76A3KFAJimOIv6H9cEvlV/foqXq+5Cp55rkksEPNiKQR1jsbBtDWnCzDqFKpDcn3o05eAUiDMNiKgnLQozQDgxLa5pg7imxZ9aKZbOv1WQEIJss8UiH3jO5XDqxSirjZw+Jjd1Y6pRZpqaPxpkEApBQw4ZhwBpmxk7Td8ffFJ0jGlu7C5JdzjTbEc4gqCDHQB2vDgvzjbB6
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(39860400002)(366004)(346002)(136003)(396003)(376002)(54906003)(6916009)(66574015)(316002)(66946007)(4326008)(66446008)(66476007)(76116006)(66556008)(86362001)(55016003)(186003)(33656002)(2906002)(8676002)(9686003)(7416002)(8936002)(5660300002)(52536014)(478600001)(53546011)(6506007)(7696005)(122000001)(71200400001)(38100700002)(26005)(83380400001)(64756008)(41300700001)(82960400001)(38070700005)(966005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?XW5sLRtiLOAWCeel4ggQ2pgmq+uOIAKXiqXPodHcIXFQzUPiYJtCdx8NR2?=
- =?iso-8859-2?Q?ZcJB5YD6mHNFFDOwj91kYqQVkVYqfRoMIE+aLyBS0wPLMuikt8QHgTECvP?=
- =?iso-8859-2?Q?gXnefT9I2yjVRtP/wf7nn+Ujrei/IUwZn7NvJhPeYTMluZKTCvykud64Jq?=
- =?iso-8859-2?Q?uQ4lANplnpd+bIjSlMjsNpTWzcNcHwyx5REIBXK/DNtpsf0yG50EB3DxGi?=
- =?iso-8859-2?Q?7aSJ8/cfgV/c22H7IC3pE9g9ocwD9F2aordaaiiuKVOuPxhW4F4Z4p2nik?=
- =?iso-8859-2?Q?GUEOW3lksiXB7zRGwpb/FDjnxq47pg4BFOUxadghGglhwyd8nR421F9Qbl?=
- =?iso-8859-2?Q?5Bgk6KmGN3/LcYwRk8bRyGhsBQurU11onEYkrhcTLXarjua2np7daZR9HV?=
- =?iso-8859-2?Q?+M0ixoCLy2oOUc0TrHcQy1zvgVqCYmfJpGCK3Ec5HdHfOfuAc/4fKnlX/Z?=
- =?iso-8859-2?Q?M9rV2Oku2j4Y2mknkT8RS+cD0zYiXmNWCsBM+Cf9nsxyOHQlM8Bny5IVT5?=
- =?iso-8859-2?Q?ZA3viVm6XeZermTNmqpGZzruI0ca6lf+G9UhOPIr4JLnl87qswZTcsGBkb?=
- =?iso-8859-2?Q?HXIjg+Cyb+tIdQmBgkcHpyUdBVE5A6q4et5OIQUiU5tEdB2Dl85TkD/q1U?=
- =?iso-8859-2?Q?lhXKTTq1OTm7HuON4eNQ6ol5qLPsKaQDAqWqEivoWPLlKP7XD26ZZy37JR?=
- =?iso-8859-2?Q?29Uyu3t1LwuHllnBrf/2Uj7LyASnDlX3Onsc87V9Bnnpwre3d6Ce8oxFeW?=
- =?iso-8859-2?Q?sx//9gx5IyDz1Vy5gTWKUezzCkYHxyNk3BhPESWZiQrWjqDCbxgZc32p5a?=
- =?iso-8859-2?Q?LCtt1ZNOh7aMjocJAhi/vj9gFcA7n+VBKUPCPbKcEV3HYJdDIzVm6ZytuC?=
- =?iso-8859-2?Q?tkG9XU6zXD+omp3kLKDiKWS+PLm/ia1ptD4c8PAN6tj61SNsUR1ci/twZw?=
- =?iso-8859-2?Q?k/jJCI3wBScIvTkZFpXuv7kj1tGNRmBVFUbXe6Y5ozNDo1yxoY4CWq2hB6?=
- =?iso-8859-2?Q?zA2lQIrswoYIuRJ8XI1/Xi5bYlTk4JzPW84BsZ0VSUoAacyUhwHN6lbC9w?=
- =?iso-8859-2?Q?y7TsuErDb+SKw7fH1Swo8AbQcLE6lJvNgiiXA79F1Gq9nRdmEh3GHsEXFT?=
- =?iso-8859-2?Q?jbJ6IQV9oaRFQQEK9CXJjgVP3OeMJ/WiCkxZSrw1vlfSW0m2MXOFDbrLjT?=
- =?iso-8859-2?Q?eJhKXWoyub/m+6a2xgoV/b2wzHLvhk5foFi3EsT8rwIGLd42EeGQE/vxxu?=
- =?iso-8859-2?Q?jEH8djiF6MpYAXImc4pQOHEm9QCOPSIYCSjUa+BKdMhaJfJwrBSL6iuDLr?=
- =?iso-8859-2?Q?M9u3VmQzJGXpMt+oksRMrPyBF9t2E61kI8lU86dIyvpWqAksLkAKilUSOk?=
- =?iso-8859-2?Q?dGA1iUpkkVqosodcpdBoYP5j1rvyv+Htp05tFSwTUhfno5yHpy2IsHqYBi?=
- =?iso-8859-2?Q?Nu7tiEC7q1+xYUj+GjbORD3ViBXz+lLB9QSUIFLmHt94GV99nnZtUAPW21?=
- =?iso-8859-2?Q?B3gWe77pcKwUeaMWWoZd1skj7WZZvuWAtqcXK1qCIUZJcTapo9XPIWffA7?=
- =?iso-8859-2?Q?aY/nojZyzhYgVl4YOAjCsiVvBoT/KReiAiUReh9ocYuveBNHm0GBj5D4J2?=
- =?iso-8859-2?Q?JTJoNlv1BODgJ8HAdGdAIkcwIXxitRfqws?=
+ 01 Jul 2022 08:18:06 -0700
+X-IronPort-AV: E=Sophos;i="5.92,237,1650956400"; d="scan'208";a="596288233"
+Received: from moradin.igk.intel.com ([10.123.220.12])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2022 08:18:05 -0700
+From: Michal Wilczynski <michal.wilczynski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  1 Jul 2022 17:17:48 +0200
+Message-Id: <20220701151750.2441885-1-michal.wilczynski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 65935b21-5fd8-4992-3295-08da5b664ccb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2022 13:33:35.9367 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mInNMUTbK1uHYMPT2QtsbL/74CR4I5xb8hZElh086KhPX+Ath57eUTRuE6kGeqVASuAgYPBwmmnVQwXzqQ/BnrazIUuI5pxMimiM8YLfNM4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4716
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1656682419; x=1688218419;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=+jCiBYtU8ePcLvo3jW7YsIo3Uvff/+4Ue4NAmLxopiU=;
- b=BWL6HsoXtUtM8DHJpAHW3EPsA4ploqmcRXfAoNETL8r0DH2YfRI22qS8
- 24HlEoyV7yHWsnNiWXqwNgogiKymXfb6DbI0DSYvrBQ6UrXuuZ79FDhqs
- LIQCaHqYe0pINXg1RwXq4W3Dtv4scN3ZJ8KUdLZVB8E1A448rz85Iog0s
- 0+q5QdPeEC6kWEEVCi/+42LdcI+sgMTtlPCeyzq8DK7BF27xOcbkNkOcq
- g1VsbiXzAn38bHPP5qwCWIg7ETNeI2JvW1KI9ARnML4YEIFJylhQgFqzf
- AFUgpZvyWPvcYL/MJg5hIkTJva7xIgR67xHjn98DaCoXB7umlsVGvMY1f
- g==;
+ t=1656688686; x=1688224686;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=bJkiMOhHz4WKbf4idQxJw5jTARO/WPatrjaXEt+efM0=;
+ b=c3IO6F42lGt4fOfAxNWLLqIZz7Ig7maL4KEKpA2XfHavVaeoYRlwsit6
+ BlhAxDft7eteS/OBm+zbXFf+uaIEezfAE+2kJXuYBg9XgRrhE0E/F10FE
+ mxzz7OdpI4N/aaDGvXCSF2TEoVJO0nbc2Gfpr5Ylzz4uUY/W/dv2CIhVA
+ DEIu+XVUT3dgWXcL0YfhwU6ri+uPHmqT23mwq6g8pcpTWeeBWRRjSFxGu
+ UYZJie7VJSTXxAVclXnbedFR+ldNKF6PZyHkg+Pa15wTNuIMIdoDOdQWt
+ GIF4+pBnqw++0Yh78iWzt7vghVtNjb+Dh9jnBhxz72zSYTEK48BSs9SJV
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BWL6HsoX
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v3 1/4] flow_dissector:
- Add PPPoE dissectors
+ header.a=rsa-sha256 header.s=Intel header.b=c3IO6F42
+Subject: [Intel-wired-lan] [PATCH net v2 0/2] Improvements for default VSI
+ filter handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -193,216 +91,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "simon.horman@corigine.com" <simon.horman@corigine.com>,
- "kurt@linutronix.de" <kurt@linutronix.de>,
- "paulb@nvidia.com" <paulb@nvidia.com>,
- "edumazet@google.com" <edumazet@google.com>,
- "boris.sukholitko@broadcom.com" <boris.sukholitko@broadcom.com>,
- "paulus@samba.org" <paulus@samba.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "zhangkaiheb@126.com" <zhangkaiheb@126.com>,
- "pablo@netfilter.org" <pablo@netfilter.org>,
- "baowen.zheng@corigine.com" <baowen.zheng@corigine.com>,
- "jiri@resnulli.us" <jiri@resnulli.us>,
- "komachi.yoshiki@gmail.com" <komachi.yoshiki@gmail.com>,
- "jhs@mojatatu.com" <jhs@mojatatu.com>,
- "mostrows@earthlink.net" <mostrows@earthlink.net>,
- "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "gustavoars@kernel.org" <gustavoars@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Cc: Michal Wilczynski <michal.wilczynski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Currently when vf-true-promisc-support private flag is set to false, default VSI
+switch filter is used instead of a proper promiscuous one. Unfortunately flow for
+default VSI is a bit different, which leads to improper behavior like not being
+able to enable promisc mode on multiple VF's, or filter not being removed in
+'trust off' flow.
 
+v2:
+- Changed net-next to net, since this can be treated as a bug fixes
+Michal Wilczynski (2):
+  ice: Introduce enabling promiscuous mode on multiple VF's
+v2:
+- Removed unnecessary parameter in function description
+- Removed unnecessary comments
+- Moved ice_vsi_uses_fltr function
+- Removed unnecessary blank lines
+- Changed commit message to utilize full 75 characters
 
-> -----Original Message-----
-> From: Guillaume Nault <gnault@redhat.com>
-> Sent: pi=B1tek, 1 lipca 2022 14:42
-> To: Drewek, Wojciech <wojciech.drewek@intel.com>
-> Cc: Marcin Szycik <marcin.szycik@linux.intel.com>; netdev@vger.kernel.org=
-; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
-> davem@davemloft.net; xiyou.wangcong@gmail.com; Brandeburg, Jesse <jesse.b=
-randeburg@intel.com>; gustavoars@kernel.org;
-> baowen.zheng@corigine.com; boris.sukholitko@broadcom.com; edumazet@google=
-.com; kuba@kernel.org; jhs@mojatatu.com;
-> jiri@resnulli.us; kurt@linutronix.de; pablo@netfilter.org; pabeni@redhat.=
-com; paulb@nvidia.com; simon.horman@corigine.com;
-> komachi.yoshiki@gmail.com; zhangkaiheb@126.com; intel-wired-lan@lists.osu=
-osl.org; michal.swiatkowski@linux.intel.com; Lobakin,
-> Alexandr <alexandr.lobakin@intel.com>; mostrows@earthlink.net; paulus@sam=
-ba.org
-> Subject: Re: [RFC PATCH net-next v3 1/4] flow_dissector: Add PPPoE dissec=
-tors
-> =
+  ice: Fix promiscuous mode not turning off
 
-> On Fri, Jul 01, 2022 at 10:53:51AM +0000, Drewek, Wojciech wrote:
-> > > > +/**
-> > > > + * struct flow_dissector_key_pppoe:
-> > > > + * @session_id: pppoe session id
-> > > > + * @ppp_proto: ppp protocol
-> > > > + */
-> > > > +struct flow_dissector_key_pppoe {
-> > > > +	u16 session_id;
-> > > > +	__be16 ppp_proto;
-> > > > +};
-> > >
-> > > Why isn't session_id __be16 too?
-> >
-> > I've got general impression that storing protocols values
-> > in big endian is a standard through out the code and other values like =
-vlan_id
-> > don't have to be stored in big endian, but maybe it's just my illusion =
-:)
-> > I can change that in v3.
-> =
+ drivers/net/ethernet/intel/ice/ice.h          |   2 -
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  |   8 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  67 ++++-----
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   9 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  14 +-
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 135 +++++++++---------
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   6 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   4 -
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  89 +++++++++---
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   7 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  51 +++----
+ 12 files changed, 216 insertions(+), 178 deletions(-)
 
-> I don't know of any written rule, but looking at other keys, every
-> protocol field is stored with the endianess used on the wire. Only
-> metadata are stored in host byte order. For flow_dissector_key_vlan,
-> vlan_id is a bit special since it's only 12 bits long, but other vlan
-> fields are stored in big endian (vlan_tci is __be16 for example). And
-> vlan ids are special for another reason too: they're also metadata
-> stored in skbuffs because of vlan hardware offload.
-> =
+-- 
+2.27.0
 
-> But PPPoE Session Id is clearly read from the packet header, where it's
-> stored in network byte order.
-
-Thanks for explanation! We'll use __be16 for session_id since now.
-
-> =
-
-> > > Also, I'm not sure I like mixing the PPPoE session ID and PPP protocol
-> > > fields in the same structure: they're part of two different protocols.
-> > > However, I can't anticipate any technical problem in doing so, and I
-> > > guess there's no easy way to let the flow dissector parse the PPP
-> > > header independently. So well, maybe we don't have choice...
-> >
-> > We are not planning to match on other fields from PPP protocol so
-> > separate structure just for it is not needed I guess.
-> =
-
-> FTR, I believe it's okay to take this shortcut but for different
-> reasons:
-> =
-
->  * When transported over PPPoE, PPP frames are not supposed to have
->    address and control fields. Therefore, in this case, the PPP header
->    is limitted to the protocol field, so the dissector key would never
->    have to be extended.
-> =
-
->  * It's unlikely enough that we'd ever have any other protocol
->    transporting PPP frames to implement in the flow dissector.
->    Therefore, independent PPP dissection code probably won't be needed
->    (even if one wants to add support for L2TP or PPTP in the flow
->    dissector, that probably should be done with tunnel metadata, like
->    VXLAN).
-> =
-
->  * We have gotos for jumping to "network" or "transport" header dissection
->    (proto_again and ip_proto_again), but no place to restart at the "link"
->    header and no way to tell what type of link layer header we're
->    requesting to parse (Ethernet or PPP).
-> =
-
-> For all these reasons, I believe your approach is an acceptable
-> shortcut. But I don't buy the "let's limit the flow dissector to what
-> we plan to support in ice" argument.
-
-Again thanks for explanation. Sorry, I didn't want to suggest that flow_dis=
-sector
-should be designed based only on our needs. We are happy to change our
-implementation if requested.
-
-We will stay with the current approach if this is the conclusion.
-
-> =
-
-> > > > @@ -1221,19 +1254,29 @@ bool __skb_flow_dissect(const struct net *n=
-et,
-> > > >  		}
-> > > >
-> > > >  		nhoff +=3D PPPOE_SES_HLEN;
-> > > > -		switch (hdr->proto) {
-> > > > -		case htons(PPP_IP):
-> > > > +		if (hdr->proto =3D=3D htons(PPP_IP)) {
-> > > >  			proto =3D htons(ETH_P_IP);
-> > > >  			fdret =3D FLOW_DISSECT_RET_PROTO_AGAIN;
-> > > > -			break;
-> > > > -		case htons(PPP_IPV6):
-> > > > +		} else if (hdr->proto =3D=3D htons(PPP_IPV6)) {
-> > > >  			proto =3D htons(ETH_P_IPV6);
-> > > >  			fdret =3D FLOW_DISSECT_RET_PROTO_AGAIN;
-> > > > -			break;
-> > >
-> > > 1)
-> > > Looks like you could easily handle MPLS too. Did you skip it on
-> > > purpose? (not enough users to justify writing and maintaining
-> > > the code?).
-> > >
-> > > I don't mean MPLS has to be supported; I'd just like to know if it was
-> > > considered.
-> >
-> > Yes, exactly as you write, not enough users, but I can see thet MPLS sh=
-ould
-> > be easy to implement so I'll include it in the next version.
-> =
-
-> Okay.
-> =
-
-> > > 2)
-> > > Also this whole test is a bit weak: the version, type and code fields
-> > > must have precise values for the PPPoE Session packet to be valid.
-> > > If either version or type is different than 1, then the packet
-> > > advertises a new version of the protocol that we don't know how to pa=
-rse
-> > > (or most probably the packet was forged or corrupted). A non-zero code
-> > > is also invalid.
-> > >
-> > > I know the code was already like this before your patch, but it's
-> > > probably better to fix it before implementing hardware offload.
-> >
-> > Sure, I'll add packet validation in next version.
-> =
-
-> Great!
-> =
-
-> > > 3)
-> > > Finally, the PPP protocol could be compressed and stored in 1 byte
-> > > instead of 2. This case wasn't handled before your patch, but I think
-> > > that should be fixed too before implementing hardware offload.
-> >
-> > We faced that issue but we couldn't find out what indicates
-> > when ppp protocol is stored in 1 byte instead of 2.
-> =
-
-> That depends on the least significant bit of the first byte. If it's 0
-> then the next byte is also part of the protocol field. If it's one,
-> the protocol is "compressed" (that is the high order 0x00 byte has been
-> stripped and we're left with only the least significant byte).
-> =
-
-> This is explained more formally in RFC 1661 section 2 (PPP Encapsulation):
->   https://datatracker.ietf.org/doc/html/rfc1661#section-2
-> =
-
-> and section 6.5 (Protocol-Field-Compression (PFC)):
->   https://datatracker.ietf.org/doc/html/rfc1661#section-6.5
-> =
-
-> There should be no reason to use this old PPP feature with PPPoE, but
-> it's still valid (even though it breaks IP header alignment).
-
-Thanks for explanation! From the next version we will support both options.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
