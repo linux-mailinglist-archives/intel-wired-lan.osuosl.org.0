@@ -1,81 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D595566EBB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Jul 2022 14:52:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EFE0540AA4;
-	Tue,  5 Jul 2022 12:51:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EFE0540AA4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1657025520;
-	bh=o95kRSjJzLDiOXetkMj59zFUVNXMgGkuPZNaKJPbJmQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=7wW5SdliylfVX1aQIgybQ/YVSFpBSvVuLQ3RECPFpUwC+v7GvgnQCejAduf7rUTzH
-	 +C30NfDoIwKtI8z6k+Dx9Ekqn3QcIOme0cLOash9BmtQFKmmjmtzoKedDo+gtZJG7f
-	 Zd9iK3PnHiXQU9o792pWPBPxGYcP/Ku0V5ICk+5qt6q/hLZlEdMkXW+nMBxW7gInaO
-	 9ze6kPXW7nWqwkjVupV+MopoCqS/8JqeyUMK+lgunsqB7qACC7nV3cnK9TAGBk4C5c
-	 DSbeeN5m72SyDhVgdHYZNEssL8glXD0EgKvvCo0dNmiBN6yW9Ruo/pfrETiLxKjd3u
-	 WMv7MsVowuwsQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N3cJeFdWaVxB; Tue,  5 Jul 2022 12:51:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B363A40A9F;
-	Tue,  5 Jul 2022 12:51:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B363A40A9F
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 903F81C11A9
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 01:03:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0723F563EAB
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Jul 2022 07:29:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5AD4A60B61
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 01:03:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AD4A60B61
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8B28B60FAF;
+	Sat,  2 Jul 2022 05:29:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B28B60FAF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1656739741;
+	bh=fMHHVmOA6E/hLeB5IrrUtZVT3oYL+EVVkvGwadc4Hxc=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=vHqiTgx59SEYaQlA+MgQqKjkPYRJwFl6JZvt24EiKQ67K0Q2+05fVhzOd1hucselW
+	 H4AO7tmYxIoHtgY99bSm1eAkswXCjcI1a84DAv56R6xb5a34gHLTnq9QZdrfxovRh2
+	 5K4h2YPdqnuSAIr4nOpbKVuDaYd0TN9qsuKF9BZmyV1wZlnhWZDCH5eSPoPOEFGGw3
+	 BJNNJWljMj56dQWbmWPD7Oc3fLESI4F2qcXL67TV1CqGw+KHQnpAf4qWd7YrpV+/px
+	 Fe3MekX+XIRqp7M46IZx+xjHN3as41d5Ir69T8FWVqI/zgdDriXSEYvqdiyHUHFpk0
+	 qifm9vzNkBucQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T_XY_qfq3QEl for <intel-wired-lan@lists.osuosl.org>;
- Sat,  2 Jul 2022 01:03:36 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ni5MCvmqMYvm; Sat,  2 Jul 2022 05:29:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7826060F29;
+	Sat,  2 Jul 2022 05:29:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7826060F29
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3AB2C1BF8C7
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 05:28:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0CC154152A
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 05:28:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0CC154152A
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id t0eOBn4QQ1dE for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  2 Jul 2022 05:28:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1EFB060B2F
-Received: from out1.migadu.com (out1.migadu.com [91.121.223.63])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1EFB060B2F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 01:03:36 +0000 (UTC)
-Date: Fri, 1 Jul 2022 18:03:10 -0700
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Roman Gushchin <roman.gushchin@linux.dev>
-To: Andrew Morton <akpm@linux-foundation.org>,
- kernel test robot <lkp@intel.com>
-Message-ID: <Yr+ZTnLb9lJk6fJO@castle>
-References: <62be3696.+PAAAVlbtWK6G2hk%lkp@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9FEF410D2
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E9FEF410D2
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Jul 2022 05:28:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10395"; a="280349096"
+X-IronPort-AV: E=Sophos;i="5.92,239,1650956400"; d="scan'208";a="280349096"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2022 22:28:37 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,239,1650956400"; d="scan'208";a="566557849"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 01 Jul 2022 22:28:36 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1o7VgJ-000ErM-Kk;
+ Sat, 02 Jul 2022 05:28:35 +0000
+Date: Sat, 02 Jul 2022 13:27:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62bfd75f.si0xCkBqI/i0qAHM%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <62be3696.+PAAAVlbtWK6G2hk%lkp@intel.com>
-X-Migadu-Flow: FLOW_OUT
-X-Migadu-Auth-User: linux.dev
-X-Mailman-Approved-At: Tue, 05 Jul 2022 12:51:15 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1656723813;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=UefsvJWBOCsJEHG/jcpgIGR+KBtUCRUqjXcROu7qjh4=;
- b=oGHlDm4tgr6UzDbC5z/sb7q2WEts5mi8mJ8aiIMXBOzW75BRr4BaIuszRL9hOCzoFfVxku
- tmO6BM7R9GzDDzZbe/MQeyeOEOAx+3VHqH/w/8ecEZ7fImffcNYGlal4Cw/gQ26E9Sym1J
- usYWeNXz8OdB9Vt23HLuxwKOwXbZ7ng=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=oGHlDm4t
-Subject: Re: [Intel-wired-lan] [linux-next:master] BUILD REGRESSION
- 6cc11d2a1759275b856e464265823d94aabd5eaf
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1656739733; x=1688275733;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=oFFfsXe8TU9dCU90ZFynLwQeWQJuJ+G3EU8RI2/6eHM=;
+ b=k0FPV2UOJnZMU4djt3nKOixRaPWswaaUWRZOkIxLeKY75ylUTLxHsw47
+ M2bFuPlFhk91QYlinrt4O4ICNLxtrLe32hotWloEx+DHVCb3ueCIBIlGF
+ 57VRkN/Fn5KxN6GD3vwdHct7TPBdQUixD29IPhmNFEDiz8rvDvNXxSpE0
+ vsxX0jimw6gmDW2nPlyttezKJrhWxCbZZ3kD2tQvXu9bs50OwXeva37qX
+ XMVElgRVlgjTI8EG/RdiXnoN/OwJU5g4v4hOqtgUPGhSV7BcZ1EqQS3FD
+ K+PR7k0yGYtG0DAVsu59xmEoT1/akyAlVlqJN5e4CgMr3b7YqHMiugdob
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=k0FPV2UO
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 2d8b9acd663167dbd22a2ccb2acd6a35b5d0ceb2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,151 +94,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: nvdimm@lists.linux.dev, legousb-devel@lists.sourceforge.net,
- dri-devel@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- ceph-devel@vger.kernel.org, linux-pm@vger.kernel.org,
- usbb2k-api-dev@nongnu.org, linux-omap@vger.kernel.org,
- megaraidlinux.pdl@broadcom.com, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-perf-users@vger.kernel.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, linux-wpan@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-parport@lists.infradead.org,
- samba-technical@lists.samba.org, linux-cxl@vger.kernel.org,
- virtualization@lists.linux-foundation.org, dm-devel@redhat.com,
- target-devel@vger.kernel.org, dev@openvswitch.org, linux-cifs@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux.dev, coreteam@netfilter.org, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, cgroups@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-block@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-integrity@vger.kernel.org,
- linux-efi@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-fpga@vger.kernel.org,
- alsa-devel@alsa-project.org, linux-mtd@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-phy@lists.infradead.org,
- sound-open-firmware@alsa-project.org, linux-rdma@vger.kernel.org,
- linux-staging@lists.linux.dev, amd-gfx@lists.freedesktop.org,
- isdn4linux@listserv.isdn4linux.de, linux-input@vger.kernel.org,
- linux-ext4@vger.kernel.org, mjpeg-users@lists.sourceforge.net,
- openipmi-developer@lists.sourceforge.net, linux-hwmon@vger.kernel.org,
- linux-parisc@vger.kernel.org, linux-ide@vger.kernel.org,
- linux-mmc@vger.kernel.org, iommu@lists.linux-foundation.org,
- keyrings@vger.kernel.org, netdev@vger.kernel.org, kvm@vger.kernel.org,
- damon@lists.linux.dev, linux-mm@kvack.org,
- accessrunner-general@lists.sourceforge.net,
- linux1394-devel@lists.sourceforge.net, linux-leds@vger.kernel.org,
- rds-devel@oss.oracle.com, linux-x25@vger.kernel.org, dccp@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-serial@vger.kernel.org,
- devicetree@vger.kernel.org, linux-nfc@lists.01.org,
- osmocom-net-gprs@lists.osmocom.org, apparmor@lists.ubuntu.com,
- linux-raid@vger.kernel.org, linux-bcache@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- linux-scsi@vger.kernel.org, patches@opensource.cirrus.com,
- linux-unionfs@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- ntb@lists.linux.dev, tipc-discussion@lists.sourceforge.net,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-esOn Fri, Jul 01, 2022 at 07:49:42AM +0800, kbuild test robot wrote:
-> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-> branch HEAD: 6cc11d2a1759275b856e464265823d94aabd5eaf  Add linux-next specific files for 20220630
-> 
-> Error/Warning reports:
-> 
-> https://lore.kernel.org/linux-mm/202206301859.UodBCrva-lkp@intel.com
-> 
-> Error/Warning: (recently discovered and may have been fixed)
-> 
-> arch/powerpc/kernel/interrupt.c:542:55: error: suggest braces around empty body in an 'if' statement [-Werror=empty-body]
-> arch/powerpc/kernel/interrupt.c:542:55: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
-> drivers/pci/endpoint/functions/pci-epf-vntb.c:975:5: warning: no previous prototype for 'pci_read' [-Wmissing-prototypes]
-> drivers/pci/endpoint/functions/pci-epf-vntb.c:984:5: warning: no previous prototype for 'pci_write' [-Wmissing-prototypes]
-> mm/shrinker_debug.c:143:9: warning: function 'shrinker_debugfs_rename' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-> mm/shrinker_debug.c:217:9: warning: function 'shrinker_debugfs_rename' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-> mm/vmscan.c:637:9: warning: function 'prealloc_shrinker' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-> mm/vmscan.c:642:9: warning: function 'prealloc_shrinker' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-> mm/vmscan.c:697:9: warning: function 'register_shrinker' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-> mm/vmscan.c:702:9: warning: function 'register_shrinker' might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 2d8b9acd663167dbd22a2ccb2acd6a35b5d0ceb2  ice: Remove pci_aer_clear_nonfatal_status() call
 
-Shrinker-related warnings should be fixed by the following patch.
+elapsed time: 725m
 
-Thanks!
+configs tested: 52
+configs skipped: 2
 
---
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-From c399aff65c7745a209397a531c5b28fd404d83c2 Mon Sep 17 00:00:00 2001
-From: Roman Gushchin <roman.gushchin@linux.dev>
-Date: Fri, 1 Jul 2022 17:38:31 -0700
-Subject: [PATCH] mm:shrinkers: fix build warnings
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm64                            allyesconfig
+ia64                             allmodconfig
+powerpc                           allnoconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+i386                             allyesconfig
+i386                                defconfig
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+x86_64                        randconfig-a015
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+arc                  randconfig-r043-20220629
+s390                 randconfig-r044-20220629
+riscv                randconfig-r042-20220629
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                         rhel-8.3-kunit
+x86_64                           rhel-8.3-syz
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
 
-Add __printf(a, b) attributes to shrinker functions taking shrinker
-name as an argument to avoid compiler warnings like:
+clang tested configs:
+x86_64                        randconfig-a005
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+x86_64                        randconfig-a012
+i386                          randconfig-a013
+i386                          randconfig-a015
+i386                          randconfig-a011
+hexagon              randconfig-r045-20220629
+hexagon              randconfig-r041-20220629
 
-mm/shrinker_debug.c:143:9: warning: function 'shrinker_debugfs_rename'
-  might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-mm/shrinker_debug.c:217:9: warning: function 'shrinker_debugfs_rename'
-  might be a candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-mm/vmscan.c:637:9: warning: function 'prealloc_shrinker' might be a
-  candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-mm/vmscan.c:642:9: warning: function 'prealloc_shrinker' might be a
-  candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-mm/vmscan.c:697:9: warning: function 'register_shrinker' might be a
-  candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-mm/vmscan.c:702:9: warning: function 'register_shrinker' might be a
-  candidate for 'gnu_printf' format attribute [-Wsuggest-attribute=format]
-
-Signed-off-by: Roman Gushchin <roman.gushchin@linux.dev>
----
- include/linux/shrinker.h | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
-
-diff --git a/include/linux/shrinker.h b/include/linux/shrinker.h
-index 64416f3e0a1f..08e6054e061f 100644
---- a/include/linux/shrinker.h
-+++ b/include/linux/shrinker.h
-@@ -93,9 +93,11 @@ struct shrinker {
-  */
- #define SHRINKER_NONSLAB	(1 << 3)
- 
--extern int prealloc_shrinker(struct shrinker *shrinker, const char *fmt, ...);
-+extern int __printf(2, 3) prealloc_shrinker(struct shrinker *shrinker,
-+					    const char *fmt, ...);
- extern void register_shrinker_prepared(struct shrinker *shrinker);
--extern int register_shrinker(struct shrinker *shrinker, const char *fmt, ...);
-+extern int __printf(2, 3) register_shrinker(struct shrinker *shrinker,
-+					    const char *fmt, ...);
- extern void unregister_shrinker(struct shrinker *shrinker);
- extern void free_prealloced_shrinker(struct shrinker *shrinker);
- extern void synchronize_shrinkers(void);
-@@ -103,8 +105,8 @@ extern void synchronize_shrinkers(void);
- #ifdef CONFIG_SHRINKER_DEBUG
- extern int shrinker_debugfs_add(struct shrinker *shrinker);
- extern void shrinker_debugfs_remove(struct shrinker *shrinker);
--extern int shrinker_debugfs_rename(struct shrinker *shrinker,
--				   const char *fmt, ...);
-+extern int __printf(2, 3) shrinker_debugfs_rename(struct shrinker *shrinker,
-+						  const char *fmt, ...);
- #else /* CONFIG_SHRINKER_DEBUG */
- static inline int shrinker_debugfs_add(struct shrinker *shrinker)
- {
-@@ -113,8 +115,8 @@ static inline int shrinker_debugfs_add(struct shrinker *shrinker)
- static inline void shrinker_debugfs_remove(struct shrinker *shrinker)
- {
- }
--static inline int shrinker_debugfs_rename(struct shrinker *shrinker,
--					  const char *fmt, ...)
-+static inline __printf(2, 3)
-+int shrinker_debugfs_rename(struct shrinker *shrinker, const char *fmt, ...)
- {
- 	return 0;
- }
 -- 
-2.36.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
