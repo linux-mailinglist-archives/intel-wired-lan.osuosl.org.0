@@ -1,102 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B57456A4D8
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Jul 2022 16:03:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 325D856A530
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Jul 2022 16:14:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DE875419FD;
-	Thu,  7 Jul 2022 14:03:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DE875419FD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9126083FC0;
+	Thu,  7 Jul 2022 14:14:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9126083FC0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1657202588;
-	bh=MMe/QeheFq95o7OnPzpFzh8ckQfrvqGlXNsYbOGt2Kc=;
+	s=default; t=1657203269;
+	bh=Dk/++dgv+MupuxtH8OMp/k6YJ0BD0rn36w1a7pfdTvw=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=sHZt4EimMWpAxhrSGJ0ziYeWHcxiednID1aJq5Fjid/jIay/Xccidww452+BsDCRm
-	 A8Ez4xob58p/YZVmQL38S67UhZ/D/9HMfg1YKQzmainr9+TjmZRTFfCB4ogl68c5tK
-	 QZZj7VQiWlLT8QNnnBZ8WsAbfxswx3LWEHvMY7ke7jcATOk53bSXwGi1RXvLY4hoX0
-	 JJY/WdrmPQxkyWw3jiFeFBapJLQvATAW9kOvOe8kZ3s4s1Z99cbhW3piAmU5C0cwYK
-	 KOH1m6ghk3NirnMgGNTdArExj5D1Rud/uEOSJfB8y6ncs2zkGxX7RA2dSMLiQOaKxv
-	 Rpwj7sbwUXJQw==
+	b=MovgAKtoHHnV2HYSP21oXjAbj9IITqLOeJceoJoj+akRiMIf3a434Ksh+XqyStk5Y
+	 8llcNX9w1Pl9Ve8KhpYPE+7k5iWbvbykThwnudEaCma1JTuHCk/gBWYm4Ls4vtbLM6
+	 vZ4UNiVTZxPLxCoqSjyhFpUI1VySeoIo9BZmXP+mm5ivfO0pyGMczWgGkc0LDQE35i
+	 LDYPYe33+RfCv7G4uBBl9k9nAlHhkXOLoyBf32foJu5n3JSMsq3/pTCkedw1l6nIsU
+	 W+NjOrMeJoOduMy0u6r4daZKj/rLw2WjKpDdsa2K08WXtKbjKwibiTIq1lsZxlFpjB
+	 G8lGKJOK2A1QA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pexISfgoKNl5; Thu,  7 Jul 2022 14:03:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Imw0egwW4aY2; Thu,  7 Jul 2022 14:14:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BDB21419F3;
-	Thu,  7 Jul 2022 14:03:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDB21419F3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8C26A83FC2;
+	Thu,  7 Jul 2022 14:14:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C26A83FC2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EEC791BF40E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:03:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B491B1BF2CD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:14:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D582240498
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:03:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D582240498
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8D87040FD3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:14:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D87040FD3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wlpyKwl2irTJ for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Jul 2022 14:03:01 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24D134048F
-Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com
- [IPv6:2607:f8b0:4864:20::42a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 24D134048F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:03:01 +0000 (UTC)
-Received: by mail-pf1-x42a.google.com with SMTP id g126so5153512pfb.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 07 Jul 2022 07:03:01 -0700 (PDT)
+ with ESMTP id oZK4aiKQiDhG for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Jul 2022 14:14:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A57EA40D99
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A57EA40D99
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 14:14:22 +0000 (UTC)
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-587-wYldcAoYPL2J0HO3H6MOSA-1; Thu, 07 Jul 2022 10:14:20 -0400
+X-MC-Unique: wYldcAoYPL2J0HO3H6MOSA-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ e6-20020adfc846000000b0021d2af9adb6so3334592wrh.18
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 07 Jul 2022 07:14:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to;
- bh=afbiyF16Fd4Ewaaf3EKKCpvpR7aHAsNAQp7K3TuQXs4=;
- b=xJCuDqnpW1We3Mc/rBSx8T9F+q6tT2U/V93w3Xxu0GLwvTRaTOcsbFBmQZ0x+F/O+m
- HYmhDVjxGJy2u67HCr9qiu+exhO0ppaImOJ3m1ANGFCJ1ct4Mg5G09RGzs48bzc2zTv2
- vxkHHdpqTBMq9QJNDMdHbntxsNxTsibzdMaHDm5AZsoRDVhyoHb2kcZIPzhKvt6E0Ogf
- u/+E26TV5dmF+cf0LBNkXC+OTJgy4Rst/32Lyj0LNlzVt7mO/VjwLmclZ5f27zHRItv3
- cXdcweoMnMnYSXZCSwX/3qagQ5Jo9LmGKuPZP6icUox8kapLJT3ZV+z4oFNc/WxVTfRf
- Gwig==
-X-Gm-Message-State: AJIora90xxFfJAzTxObTDd7ATnnTYVoEwwCuS1XaM/qBGrJYaNKRBrl3
- /VOT4WyvAxbMkPJ6cV4D5+0=
-X-Google-Smtp-Source: AGRyM1uGEg1zRLKU3mt/8yK/HfEqKFBdv1eoQpzxhqHLW6DjIp1gLh6JEsU/RWRdBfoHFypH/TfaNQ==
-X-Received: by 2002:a17:90b:4c8f:b0:1ec:cdd0:41b7 with SMTP id
- my15-20020a17090b4c8f00b001eccdd041b7mr5420238pjb.119.1657202580508; 
- Thu, 07 Jul 2022 07:03:00 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=iKA2qidqE9pif8xksazqs8JG1hIHW8krOJ1dxi9lmZ8=;
+ b=ukAlvotNt3TUeEPrSAM+x9HRZhwh6Kw9PJY7yiLQzNKKAdIpPvzGap+2CbCGXaAMYv
+ mP3/mVKlP4+Ocz7wi2z1DEMH3NtclsUbDpqVC9srPiFDm0VDPP30F37mZx0dWzjr3Lly
+ m3kNmPhrr0cUf8wJjd6wi6WrA6F4sfyvQIMfJiL6FArlM2BFOvtdHM8ChSjcLxpOuRgZ
+ MWxWpdzPxLOXwnkUZedOW5ycpaSmFmHG7a9fB65Mir2SGCgIMMvcrlXmqZrDcc+kwDzd
+ LpVRGWg3O6fuyv2Xe0zBvEiHxnzhsOiTW8YZF3U3QUwqjWmdTK9ZANVyRaBr+m1E89XP
+ h3nw==
+X-Gm-Message-State: AJIora+RlU4UVkLgHN4eFGxeme55ooViydbr7vUl78fwD8t8Pzo8X4c0
+ gp2NY7qKxeWXrmukit/e53NuHh+CKfQJOxCeu6vP28jp92ocCQLCW3p9tpYDJjcwnNcfUpHfvT1
+ ZooTck9JZEwSXSymXL3uorKfFbqq3GA==
+X-Received: by 2002:adf:e949:0:b0:21d:89d4:91b3 with SMTP id
+ m9-20020adfe949000000b0021d89d491b3mr2094524wrn.162.1657203259005; 
+ Thu, 07 Jul 2022 07:14:19 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1t0tC7akjIJ0A2ue8fgkY10fu239iXuCRNeR9TTMvlyyTI5Zl5gI7Am80XPsX5PUO/VLRRMWw==
+X-Received: by 2002:adf:e949:0:b0:21d:89d4:91b3 with SMTP id
+ m9-20020adfe949000000b0021d89d491b3mr2094472wrn.162.1657203258587; 
+ Thu, 07 Jul 2022 07:14:18 -0700 (PDT)
+Received: from debian.home
+ (2a01cb058d1194004161f17a6a9ad508.ipv6.abo.wanadoo.fr.
+ [2a01:cb05:8d11:9400:4161:f17a:6a9a:d508])
  by smtp.gmail.com with ESMTPSA id
- k127-20020a632485000000b004148cbdd4e5sm1215293pgk.57.2022.07.07.07.02.58
+ b4-20020a5d6344000000b0021d68a504cbsm12517211wrw.94.2022.07.07.07.14.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Jul 2022 07:02:59 -0700 (PDT)
-Date: Thu, 7 Jul 2022 07:02:58 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Greg KH <gregkh@linuxfoundation.org>
-Message-ID: <20220707140258.GA3492673@roeck-us.net>
-References: <62c683a2.g1VSVt6BrQC6ZzOz%lkp@intel.com>
- <YsaUgfPbOg7WuBuB@kroah.com>
+ Thu, 07 Jul 2022 07:14:17 -0700 (PDT)
+Date: Thu, 7 Jul 2022 16:14:15 +0200
+From: Guillaume Nault <gnault@redhat.com>
+To: Marcin Szycik <marcin.szycik@linux.intel.com>
+Message-ID: <20220707141415.GB7483@debian.home>
+References: <20220629143859.209028-1-marcin.szycik@linux.intel.com>
+ <20220629143859.209028-5-marcin.szycik@linux.intel.com>
+ <20220630231244.GC392@debian.home>
+ <7a706a7e-d3bd-b4da-fa68-2cabf3e75871@linux.intel.com>
+ <7aa3a974-6575-ade6-b863-feb25736ec0f@linux.intel.com>
 MIME-Version: 1.0
+In-Reply-To: <7aa3a974-6575-ade6-b863-feb25736ec0f@linux.intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
-In-Reply-To: <YsaUgfPbOg7WuBuB@kroah.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=afbiyF16Fd4Ewaaf3EKKCpvpR7aHAsNAQp7K3TuQXs4=;
- b=EzpeppBfdoHkOWruUNAYNHzOi8S5lBuVkWR/uarc/O7MDVJ2qM1NUNdy3hxzZeKinw
- 1f6tPe15AftcBiSP1Sugt5jiQpAKlLcyz+gPyHgHTvK6IkiuSg6SYHkmzqBCpGaHkm3K
- GirawtqITR+EFkG0pF8QxPm0bxzk97EH7JYJxQXFRi4d1kRfsZVOuxKRapjByLByJ3DF
- qAVqAZfaAfJT+F8T/W2rPtPmXy6/uaYwejGaDWQ5Frl3XCXwsQlqWF67lU3BIXdseGBS
- CTJ5pH+oR76s++4uNTCxHCZwHNyWF4xdxY3ay2k5fQlKGRbstnEbIjnAVDZkl7wMQgN9
- oSpA==
+ d=redhat.com; 
+ s=mimecast20190719; t=1657203261;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=iKA2qidqE9pif8xksazqs8JG1hIHW8krOJ1dxi9lmZ8=;
+ b=F97WQ0ih57hOiHcfRQZ85dvtfLGuWlDSyV1idzYhdZ3k8vsrAf1jcXhOPGgEtoUB8vOpmk
+ Ny5pl9e2IjZUGWMJjr8F7g3C18BBcC2XOLn/p1HJTHij5LehmPw9OZiqOnNNs+474zHUkt
+ Gu01uGQYU5HaZyKpGhjD3YFb8ZU4C6Q=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=EzpeppBf
-Subject: Re: [Intel-wired-lan] [linux-next:master] BUILD REGRESSION
- 088b9c375534d905a4d337c78db3b3bfbb52c4a0
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=F97WQ0ih
+X-Mailman-Original-Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gnault@redhat.com
+Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v3 4/4] ice: Add support
+ for PPPoE hardware offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,88 +127,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: nvdimm@lists.linux.dev, legousb-devel@lists.sourceforge.net,
- dri-devel@lists.freedesktop.org, linux-sctp@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org,
- ceph-devel@vger.kernel.org, linux-pm@vger.kernel.org,
- usbb2k-api-dev@nongnu.org, linux-omap@vger.kernel.org,
- megaraidlinux.pdl@broadcom.com, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-perf-users@vger.kernel.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- linux-wpan@vger.kernel.org, linux-fbdev@vger.kernel.org,
- linux-parport@lists.infradead.org, linux-doc@vger.kernel.org,
- samba-technical@lists.samba.org, linux-cxl@vger.kernel.org,
- virtualization@lists.linux-foundation.org, dm-devel@redhat.com,
- target-devel@vger.kernel.org, dev@openvswitch.org, linux-cifs@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux.dev, coreteam@netfilter.org, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, greybus-dev@lists.linaro.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-block@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-integrity@vger.kernel.org, linux-efi@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-fpga@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-mtd@lists.infradead.org, cgroups@vger.kernel.org,
- linux-phy@lists.infradead.org, sound-open-firmware@alsa-project.org,
- linux-rdma@vger.kernel.org, linux-staging@lists.linux.dev,
- amd-gfx@lists.freedesktop.org, isdn4linux@listserv.isdn4linux.de,
- linux-input@vger.kernel.org, linux-ext4@vger.kernel.org,
- ath11k@lists.infradead.org, mjpeg-users@lists.sourceforge.net,
- openipmi-developer@lists.sourceforge.net, linux-hwmon@vger.kernel.org,
- linux-parisc@vger.kernel.org, linux-ide@vger.kernel.org,
- linux-mmc@vger.kernel.org, iommu@lists.linux-foundation.org,
- keyrings@vger.kernel.org, netdev@vger.kernel.org, kvm@vger.kernel.org,
- damon@lists.linux.dev, linux-mm@kvack.org,
- accessrunner-general@lists.sourceforge.net,
- linux1394-devel@lists.sourceforge.net, linux-leds@vger.kernel.org,
- rds-devel@oss.oracle.com, linux-x25@vger.kernel.org, dccp@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-serial@vger.kernel.org,
- devicetree@vger.kernel.org, linux-nfc@lists.01.org,
- osmocom-net-gprs@lists.osmocom.org, apparmor@lists.ubuntu.com,
- linux-raid@vger.kernel.org, linux-bcache@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- linux-scsi@vger.kernel.org, patches@opensource.cirrus.com,
- linux-unionfs@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- ntb@lists.linux.dev, tipc-discussion@lists.sourceforge.net,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: simon.horman@corigine.com, kurt@linutronix.de, paulb@nvidia.com,
+ edumazet@google.com, boris.sukholitko@broadcom.com, jiri@resnulli.us,
+ paulus@samba.org, jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ kuba@kernel.org, zhangkaiheb@126.com, pablo@netfilter.org,
+ baowen.zheng@corigine.com, komachi.yoshiki@gmail.com, jhs@mojatatu.com,
+ mostrows@earthlink.net, xiyou.wangcong@gmail.com, pabeni@redhat.com,
+ netdev@vger.kernel.org, gustavoars@kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jul 07, 2022 at 10:08:33AM +0200, Greg KH wrote:
-
-[ ... ]
+On Tue, Jul 05, 2022 at 11:54:08AM +0200, Marcin Szycik wrote:
+> 
+> 
+> On 01-Jul-22 18:12, Marcin Szycik wrote:
 > > 
-> > Unverified Error/Warning (likely false positive, please contact us if interested):
 > > 
-> > arch/x86/events/core.c:2114 init_hw_perf_events() warn: missing error code 'err'
-> > drivers/android/binder.c:1481:19-23: ERROR: from is NULL but dereferenced.
-> > drivers/android/binder.c:2920:29-33: ERROR: target_thread is NULL but dereferenced.
-> > drivers/android/binder.c:353:25-35: ERROR: node -> proc is NULL but dereferenced.
-> > drivers/android/binder.c:4888:16-20: ERROR: t is NULL but dereferenced.
-> > drivers/base/regmap/regmap.c:1996:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/char/random.c:869:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/firmware/arm_scmi/clock.c:394:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/firmware/arm_scmi/powercap.c:376:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/gpu/drm/amd/amdgpu/../pm/powerplay/hwmgr/vega10_powertune.c:1214:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/gpu/drm/amd/display/dc/os_types.h: drm/drm_print.h is included more than once.
-> > drivers/gpu/drm/bridge/ite-it66121.c:1398:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> > drivers/greybus/operation.c:617:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+> > On 01-Jul-22 01:12, Guillaume Nault wrote:
+> >> On Wed, Jun 29, 2022 at 04:38:59PM +0200, Marcin Szycik wrote:
+> >>> Add support for creating PPPoE filters in switchdev mode. Add support
+> >>> for parsing PPPoE and PPP-specific tc options: pppoe_sid and ppp_proto.
+> >>>
+> >>> Example filter:
+> >>> tc filter add dev $PF1 ingress protocol ppp_ses prio 1 flower pppoe_sid \
+> >>>     1234 ppp_proto ip skip_sw action mirred egress redirect dev $VF1_PR
+> >>>
+> >>> Changes in iproute2 are required to use the new fields.
+> >>>
+> >>> ICE COMMS DDP package is required to create a filter as it contains PPPoE
+> >>> profiles. Added a warning message when loaded DDP package does not contain
+> >>> required profiles.
+> >>>
+> >>> Note: currently matching on vlan + PPPoE fields is not supported. Patch [0]
+> >>> will add this feature.
+> >>>
+> >>> [0] https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20220420210048.5809-1-martyna.szapar-mudlaw@intel.com
+> >>
+> >> Out of curiosity, can ice direct PPPoE Session packets to different
+> >> queues with RSS (based on the session ID)?
+> > 
+> > Hardware should support it, but I'm not sure if it's possible with the current driver and how to configure it. I'll try to find out.
 > 
-> <snip>
-> 
-> When the compiler crashes, why are you blaming all of these different
-> mailing lists?  Perhaps you need to fix your compiler :)
-> 
+> From what I understand, currently it's not possible to configure RSS for PPPoE session id, because ethtool does not support PPPoE.
 
-To be fair, it says above "likely false positive, please contact us
-if interested". Also, the 32-bit build errors _are_ real, and the NULL
-dereferences in the binder driver are at the very least suspicious.
+Thanks, that's interesting. PPPoE support in RSS would have been useful
+to me a few years ago. I've heard some former collegues tried to use
+eBPF to work around this limitation and spread packets to different
+cores.
 
-Guenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
