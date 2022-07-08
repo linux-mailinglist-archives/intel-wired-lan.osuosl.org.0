@@ -1,84 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF88756A792
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Jul 2022 18:11:47 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45CCD56BB13
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Jul 2022 15:44:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BFF9341BE0;
-	Thu,  7 Jul 2022 16:11:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BFF9341BE0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 77B368477B;
+	Fri,  8 Jul 2022 13:44:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 77B368477B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1657210304;
-	bh=0PigCmtxUz8spDtSjUcTHH13d21x1rBJ9E01jkQTsp0=;
+	s=default; t=1657287846;
+	bh=3FUmB9Z0HfQb7SmZI96ZXilZx0MzvHiGTS4+ifY3eJ4=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=B4nKVwz7lPEvHLbXu8qa6HBGCkp1Rjqlaf3hBYemy74YY8MUFWFv/obqnR+MEJZQf
-	 2j3cxU+3xAijiFCedDJabUhZQ9WsbNUGQoN1BOvxXiS/G94ub8fUuRBCVm7DstqMYh
-	 Ler8KexJRYdFfEeVDmX6pVKSbjKlABEm15vP9NfOZThz+NsfjPYfCZ4oqKvd4B8G3U
-	 mLHVrJA/9gMr8oPzdddkQ5Ff5Hi6dWQa52pgG4hTaTbiv8Y2QoiyejjxpOXJA6OWqL
-	 JjssR7Z8AwOXufZ+tfQkdnanpfus909TzgDfjAU0jxSt/2/hbcNWz6A3AmwaAbUqaG
-	 Mqyo2YfJb2i2g==
+	b=9k4treBoNQsVpjHOmPlcXfZ+tthyQmOUrQzPQD5end2d47awuyo8+l8IJOqHocfX9
+	 E7m9mwxnMNxLamzymzyWJ3N1UJX586eT/DfQeWutcnNiJyJb2+DXSmj519wARwNPkw
+	 N09xAKL4cfY3R4fAzMrUTnkiG3nDLcPzwkZTiJf6brCIiknyJLOxkHYEFJuSxYzZnN
+	 vo/Bb3+aAKcT8mJ7kE+rNClohzg9JICGTKjvlZlYsUN659R2hrHSrzEYCI9DoUnyzk
+	 HkkIEffj3DIDI7e27qNwmuF6lZjjax0Da7LUKw3s3Y0lH1j0ajcxlbVgVWoqvH/EQf
+	 1dn0JgcM0s9Yw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S1eYisZLRSNw; Thu,  7 Jul 2022 16:11:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s94qGqzWKKgW; Fri,  8 Jul 2022 13:44:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 53C0641A24;
-	Thu,  7 Jul 2022 16:11:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 53C0641A24
+	by smtp1.osuosl.org (Postfix) with ESMTP id 78AFB8402A;
+	Fri,  8 Jul 2022 13:44:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78AFB8402A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1BA631BF2A3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 16:11:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 207D21BF379
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jul 2022 03:53:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F2E8A61263
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 16:11:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F2E8A61263
+ by smtp2.osuosl.org (Postfix) with ESMTP id EEC874010C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jul 2022 03:53:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EEC874010C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1xuD1EEMr6U3 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Jul 2022 16:11:37 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oIiL3HUtMb41 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Jul 2022 03:53:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 306AB60B0B
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 306AB60B0B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Jul 2022 16:11:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10401"; a="348045859"
-X-IronPort-AV: E=Sophos;i="5.92,253,1650956400"; d="scan'208";a="348045859"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2022 09:11:34 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,253,1650956400"; d="scan'208";a="839971579"
-Received: from boxer.igk.intel.com ([10.102.20.173])
- by fmsmga006.fm.intel.com with ESMTP; 07 Jul 2022 09:11:34 -0700
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  7 Jul 2022 18:11:28 +0200
-Message-Id: <20220707161128.54215-1-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.33.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B79C400EA
+Received: from m12-13.163.com (m12-13.163.com [220.181.12.13])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2B79C400EA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Jul 2022 03:53:41 +0000 (UTC)
+Received: from bf-rmsz-11.ccdomain.com (unknown [218.17.89.92])
+ by smtp9 (Coremail) with SMTP id DcCowAAXVuvgqcdiOwytNw--.46411S2;
+ Fri, 08 Jul 2022 11:52:01 +0800 (CST)
+From: Zhongjun Tan <hbut_tan@163.com>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
+Date: Fri,  8 Jul 2022 11:51:54 +0800
+Message-Id: <20220708035154.44079-1-hbut_tan@163.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1657210295; x=1688746295;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=vesXtGlDmOsjMCJXAf5YAftKju8+FHR1Lh+U8lCzIoU=;
- b=HV7FWh4UMas0aqfCPYyKNaG4817o0QFvWQHOJUfBBBthaBJ8uJPpioUz
- 18Fqnk+PCZrwRgz8tbryBiwomGbz866olBY9kTSIQt0YtoqMwbQRWgQMC
- uPlF1IYGJ3p7GP3Apm/4T5BwZpB+vHs+G47Z1H3ref3vEyANzndPfxKUu
- tjhdLU27gnDpMKGrJ0lKH+B5hfoGzC9st20cbNINM+yKOjmRrbIgoOUad
- nduDW/VzSkol58eTZGzvej887Skm/9LtV78Bhk9LGPzQ51MtKYmTli+Je
- Mfrzn34sDtUraGoM6/kNP8sQ5xRudGpov5oa5c+dgPHRzXAOlGo0hKtjt
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HV7FWh4U
-Subject: [Intel-wired-lan] [PATCH intel-net] ice: xsk: use Rx ring when
- picking NAPI context
+X-CM-TRANSID: DcCowAAXVuvgqcdiOwytNw--.46411S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JFWkCr4Uur4UKF4ftr1DZFb_yoWfZFX_Kr
+ Wjqr4xCan8JF1SvryUtrW29a4j9rWqywn7uF9Fk39Fy343Xw1UCr1DZw1fAr4Y9ry5GF9r
+ Z3ZxJryxt34jyjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUnqjg3UUUUU==
+X-Originating-IP: [218.17.89.92]
+X-CM-SenderInfo: xkex3sxwdqqiywtou0bp/xtbBlwI4xmI0WBtgogAAs8
+X-Mailman-Approved-At: Fri, 08 Jul 2022 13:44:00 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=163.com; 
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=82Uye
+ dPEauwT5cf5wHBTyobSyIimwqIK7UX1yZj1hqg=; b=LIoF5qwkAQXiMqjp4eEWR
+ CVtdg68cKtOEcacBOjYEKmoZiCoPHUhfz6lKe9BE8JzABD69AUudrB0Xyf/DpWG+
+ uq7Ku1Jm4TAI0E9FIMKI45rWHxPixXtNseFr61fn9wg7izaC+wvHdXFqSGg8hEdk
+ eqALjah1eTDNs/MdoEyL68=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=163.com header.i=@163.com
+ header.a=rsa-sha256 header.s=s110527 header.b=LIoF5qwk
+Subject: [Intel-wired-lan] [PATCH] iavf: Remove condition with no effect
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,73 +88,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
- davem@davemloft.net, magnus.karlsson@intel.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Zhongjun Tan <tanzhongjun@coolpad.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ice driver allocates per cpu XDP queues so that redirect path can safely
-use smp_processor_id() as an index to the array. At the same time
-though, XDP rings are used to pick NAPI context to call napi_schedule()
-or set NAPIF_STATE_MISSED. When user reduces queue count, say to 8, and
-num_possible_cpus() of underlying platform is 44, then this means queue
-vectors with correlated NAPI contexts will carry several XDP queues.
+From: Zhongjun Tan <tanzhongjun@coolpad.com>
 
-This in turn can result in a broken behavior where NAPI context of
-interest will never be scheduled and AF_XDP socket will not process any
-traffic.
+Remove condition with no effect
 
-To fix this issue, use Rx ring to pull out the NAPI context.
-
-Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
-Fixes: 22bf877e528f ("ice: introduce XDP_TX fallback path")
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Zhongjun Tan <tanzhongjun@coolpad.com>
 ---
- drivers/net/ethernet/intel/ice/ice_xsk.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 49ba8bfdbf04..34d851d3e767 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -353,7 +353,7 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
- 	if (if_running) {
- 		ret = ice_qp_ena(vsi, qid);
- 		if (!ret && pool_present)
--			napi_schedule(&vsi->xdp_rings[qid]->q_vector->napi);
-+			napi_schedule(&vsi->rx_rings[qid]->q_vector->napi);
- 		else if (ret)
- 			netdev_err(vsi->netdev, "ice_qp_ena error = %d\n", ret);
- 	}
-@@ -936,7 +936,7 @@ ice_xsk_wakeup(struct net_device *netdev, u32 queue_id,
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_q_vector *q_vector;
- 	struct ice_vsi *vsi = np->vsi;
--	struct ice_tx_ring *ring;
-+	struct ice_rx_ring *ring;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 69ade653f5d4..52b622ea7d6b 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -2136,8 +2136,6 @@ iavf_set_vlan_offload_features(struct iavf_adapter *adapter,
+ 		vlan_ethertype = ETH_P_8021Q;
+ 	else if (prev_features & (NETIF_F_HW_VLAN_STAG_RX | NETIF_F_HW_VLAN_STAG_TX))
+ 		vlan_ethertype = ETH_P_8021AD;
+-	else if (prev_features & (NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_CTAG_TX))
+-		vlan_ethertype = ETH_P_8021Q;
+ 	else
+ 		vlan_ethertype = ETH_P_8021Q;
  
- 	if (test_bit(ICE_VSI_DOWN, vsi->state))
- 		return -ENETDOWN;
-@@ -944,13 +944,13 @@ ice_xsk_wakeup(struct net_device *netdev, u32 queue_id,
- 	if (!ice_is_xdp_ena_vsi(vsi))
- 		return -EINVAL;
- 
--	if (queue_id >= vsi->num_txq)
-+	if (queue_id >= vsi->num_txq || queue_id >= vsi->num_rxq)
- 		return -EINVAL;
- 
- 	if (!vsi->xdp_rings[queue_id]->xsk_pool)
- 		return -EINVAL;
- 
--	ring = vsi->xdp_rings[queue_id];
-+	ring = vsi->rx_rings[queue_id];
- 
- 	/* The idea here is that if NAPI is running, mark a miss, so
- 	 * it will run again. If not, trigger an interrupt and
 -- 
-2.27.0
+2.29.0
 
 _______________________________________________
 Intel-wired-lan mailing list
