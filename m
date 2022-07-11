@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A43595701C9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Jul 2022 14:13:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 674AD5701CB
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Jul 2022 14:13:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A12B34089D;
-	Mon, 11 Jul 2022 12:13:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A12B34089D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0464241739;
+	Mon, 11 Jul 2022 12:13:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0464241739
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1657541581;
-	bh=M5e6bOIM14KsawgehJIJaFYA/VNgnQdxVvw6Wcz2SZE=;
+	s=default; t=1657541592;
+	bh=M5RkW/kzTLGSeQGCjeYzKWygtN4l86kK8qqYLrv4+0s=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=7swCo+sHsBZmNc2f6BF05YqQJvgxZNqrZtG5inAL1k7LfXKJEZtQaz9DkY8R32wBr
-	 HaQErwHDvTxvTyQl2CukZI4LrGhZfLxYVqWzpJXR6KwTLDgiYPod7NBt4RovYv2qXm
-	 FhhjSllmGrhzqqrEIlphJPQUoLQzPVGXlg3P+9CmdlcritXxPWJLhSVWHvYznLajpA
-	 mjy3cPTSc+h6PmV7za+XoqC4tt/5eyy+S3iwOn8hJeqnafv5G94xQMc4Da21caQya+
-	 yZk/2AESqJTe+lXADXoCjSu3RF2naWXcxqNxZBOL8t4zIeshKClhlWAQfkrvqF9E+Q
-	 PCLUpypBZ+Piw==
+	b=b4I5EhlBgt1Tjr34flP53GAHxzBEkkIHc4g0DZxSSVg0TyePTXpwEgtEOJkxUroKN
+	 s1ce9IE5LQ4KtDMBgpaMQCBTWRZpT7yUthXIm1Rc8+JzyCvpwG+wns1THvqUT5AFwl
+	 jwzxL1RL5/1Y3Yfrikpi5ShSc8P3VRNUYJvaAMsLU3fikbGCEV9faUvn+NBWizlT0l
+	 rTfKxcLl9u40j7HSZqxsfabHlCFFbSQdh9pJQeXj8JExyhu0gRdS7wlsPrlVN18QBS
+	 s/fl2I9uTzzVvbD8122/H+u7FS5urasAyfoVhElzWopgI33QCbjSuJcYajbQ5Sk++6
+	 hdHin0u4wYOHw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DkmXvaKgZ1Ya; Mon, 11 Jul 2022 12:13:00 +0000 (UTC)
+	with ESMTP id q2X1c3Q1esfb; Mon, 11 Jul 2022 12:13:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C7BAA408A9;
-	Mon, 11 Jul 2022 12:12:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C7BAA408A9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9595C408AC;
+	Mon, 11 Jul 2022 12:13:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9595C408AC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1912A1BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:12:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B14BB1BF3ED
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:13:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E68F1404DD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:12:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E68F1404DD
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8C6B982FC9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:13:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C6B982FC9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ADbOQUACyrLQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Jul 2022 12:12:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qZIXWx-reXIp for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Jul 2022 12:13:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90E9A4046D
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 90E9A4046D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:12:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10404"; a="348623667"
-X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; d="scan'208";a="348623667"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA5E782F99
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BA5E782F99
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Jul 2022 12:13:03 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10404"; a="264422446"
+X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; d="scan'208";a="264422446"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jul 2022 05:12:51 -0700
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jul 2022 05:13:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; d="scan'208";a="771493842"
+X-IronPort-AV: E=Sophos;i="5.92,262,1650956400"; d="scan'208";a="771493895"
 Received: from propan.igk.intel.com ([10.211.8.82])
- by orsmga005.jf.intel.com with ESMTP; 11 Jul 2022 05:12:50 -0700
+ by orsmga005.jf.intel.com with ESMTP; 11 Jul 2022 05:13:01 -0700
 From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 11 Jul 2022 14:10:46 +0200
-Message-Id: <20220711121047.111489-2-anatolii.gerasymenko@intel.com>
+Date: Mon, 11 Jul 2022 14:10:47 +0200
+Message-Id: <20220711121047.111489-3-anatolii.gerasymenko@intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220711121047.111489-1-anatolii.gerasymenko@intel.com>
 References: <20220711121047.111489-1-anatolii.gerasymenko@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1657541572; x=1689077572;
+ t=1657541583; x=1689077583;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=K8DEUjl3Ttl+7C5jWwHP8ltiiEt8l7WwqALWdjQhID8=;
- b=jvSzbJkMOpAxL35vpuAx6WQus3UJs8UzBfd/SqkGVVvusHYUk9SYuBr3
- mOIv1+RGmMtCz6V7YRuyKcArJfuECAGX2IVtk7UMhEq3NEDQ07bOJneG/
- YRp12fZf5Y0c+vhnKjgYN97x+RRNvnvd47Y7NvwvVaSNDG3+5ZDgvs/D5
- vyJpeMR9kV+wOgGv3az1VDT9mT8EbUyoGSQUn9c9PVbseSlwSTGB1nlXM
- OueGQr2L0aYYedEWvG2JMwBKclbTPIBboMhFFbYEiTM784VQ6vG6iqdA8
- JfxYyf+yG+qdSgCtj5S8Y4+eKmkLLj0T354dzl7mAvBR5Govu8I50wHV7
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=L8gUvos48ZyU3ZqWvwrYXUuSZIs0WmC4inwOTjJ8Kdc=;
+ b=EpWastoWM6FNh/LOq/GnS1SCO1a6rDh3husT+Qb7Fz2r3j1jL3MTL9Do
+ g1mLmbRxuGPXJ53qU+jxjgb/gs1YGotOgPjrL8dMXlzs5+U78eIdBRYIU
+ kPlmpZfq8PSa5+p1xgQkmgHNDdZ7GMOQ9lFdrsqvneF7uTpPrKDG2ggbn
+ ehEdZxoEmT9NRpAVdpU17VSt/fOFh+i8rJLofq4IHe6aYZ9gHXMnhCOR2
+ DsylZ3SRMfMNRmdmMQzQOa/10DzIaxH008YCU+aGFyf0QoACuejvSm4MK
+ KGSrQyAMXmsZo6vpypSoe3A9Wtk4y03ag0amOxljnYXF4HWHmb58Lylzt
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jvSzbJkM
-Subject: [Intel-wired-lan] [PATCH net-next v2 1/2] ice: Implement control of
- FCS/CRC stripping
+ header.a=rsa-sha256 header.s=Intel header.b=EpWastoW
+Subject: [Intel-wired-lan] [PATCH net-next v2 2/2] ice: Implement FCS/CRC
+ and VLAN stripping co-existence policy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,217 +101,119 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Make sure that only the valid combinations of FCS/CRC stripping and
+VLAN stripping offloads are allowed.
 
-The driver can allow the user to configure whether the CRC aka the FCS
-(Frame Check Sequence) is DMA'd to the host as part of the receive
-buffer.  The driver usually wants this feature disabled so that the
-hardware checks the FCS and strips it in order to save PCI bandwidth.
+You cannot have FCS/CRC stripping disabled while VLAN stripping is
+enabled - this breaks the correctness of the FCS/CRC.
 
-Control the reception of FCS to the host using the command:
-ethtool -K eth0 rx-fcs <on|off>
+If administrator tries to enable VLAN stripping when FCS/CRC stripping is
+disabled, the request should be rejected.
 
-The default shown in ethtool -k eth0 | grep fcs; should be "off", as the
-hardware will drop any frame with a bad checksum, and DMA of the
-checksum is useless overhead especially for small packets.
+If administrator tries to disable FCS/CRC stripping when VLAN stripping
+is enabled, the request should be rejected if VLANs are configured. If
+there is no VLAN configured, then both FCS/CRC and VLAN stripping should
+be disabled.
 
 Testing Hints:
-test the FCS/CRC arrives with received packets using
-tcpdump -nnpi eth0 -xxxx
-and it should show crc data as the last 4 bytes of the packet. Can also
-use wireshark to turn on CRC checking and check the data is correct.
+The default settings after driver load are:
+- VLAN C-Tag offloads are enabled
+- VLAN S-Tag offloads are disabled
+- FCS/CRC stripping is enabled
 
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Co-Developed-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
+Restore the default settings before each test with the command:
+ethtool -K eth0 rx-fcs off rxvlan on txvlan on rx-vlan-stag-hw-parse off
+tx-vlan-stag-hw-insert off
+
+Test 1:
+Disable FCS/CRC and VLAN stripping:
+ethtool -K eth0 rx-fcs on rxvlan off
+Try to enable VLAN stripping:
+ethtool -K eth0 rxvlan on
+
+Expected: VLAN stripping request is rejected
+
+Test 2:
+Try to disable FCS/CRC stripping:
+ethtool -K eth0 rx-fcs on
+
+Expected: VLAN stripping is also disabled, as there are no VLAN
+configured
+
+Test 3:
+Add a VLAN:
+ip link add link eth0 eth0.42 type vlan id 42
+ip link set eth0 up
+Try to disable FCS/CRC stripping:
+ethtool -K eth0 rx-fcs on
+
+Expected: FCS/CRC stripping request is rejected
+
 Signed-off-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 Acked-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
 v2: rebase on top of Maciej Fijalkowski's patches
 ---
- drivers/net/ethernet/intel/ice/ice.h         |  1 +
- drivers/net/ethernet/intel/ice/ice_base.c    |  2 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c |  5 +--
- drivers/net/ethernet/intel/ice/ice_lib.c     | 21 ++++++++++
- drivers/net/ethernet/intel/ice/ice_lib.h     |  2 +
- drivers/net/ethernet/intel/ice/ice_main.c    | 40 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_txrx.h    |  3 +-
- 7 files changed, 68 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 25 +++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 60453b3b8d23..f04afce606b9 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -854,6 +854,7 @@ ice_fetch_u64_stats_per_ring(struct u64_stats_sync *syncp,
- 			     struct ice_q_stats stats, u64 *pkts, u64 *bytes);
- int ice_up(struct ice_vsi *vsi);
- int ice_down(struct ice_vsi *vsi);
-+int ice_down_up(struct ice_vsi *vsi);
- int ice_vsi_cfg(struct ice_vsi *vsi);
- struct ice_vsi *ice_lb_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi);
- int ice_vsi_determine_xdp_res(struct ice_vsi *vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 136d7911adb4..6f092e06054e 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -417,7 +417,7 @@ static int ice_setup_rx_ctx(struct ice_rx_ring *ring)
- 	/* Strip the Ethernet CRC bytes before the packet is posted to host
- 	 * memory.
- 	 */
--	rlan_ctx.crcstrip = 1;
-+	rlan_ctx.crcstrip = !(ring->flags & ICE_RX_FLAGS_CRC_STRIP_DIS);
- 
- 	/* L2TSEL flag defines the reported L2 Tags in the receive descriptor
- 	 * and it needs to remain 1 for non-DVM capable configurations to not
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 4efa5e5846e0..1b66b22fd15a 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -1284,10 +1284,7 @@ static int ice_set_priv_flags(struct net_device *netdev, u32 flags)
- 	}
- 	if (test_bit(ICE_FLAG_LEGACY_RX, change_flags)) {
- 		/* down and up VSI so that changes of Rx cfg are reflected. */
--		if (!test_and_set_bit(ICE_VSI_DOWN, vsi->state)) {
--			ice_down(vsi);
--			ice_up(vsi);
--		}
-+		ice_down_up(vsi);
- 	}
- 	/* don't allow modification of this flag when a single VF is in
- 	 * promiscuous mode because it's not supported
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index a6c4be5e5566..d9451a5c9106 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1561,6 +1561,22 @@ void ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena)
- 	kfree(lut);
- }
- 
-+/**
-+ * ice_vsi_cfg_crc_strip - Configure CRC stripping for a VSI
-+ * @vsi: VSI to be configured
-+ * @disable: set to true to have FCS / CRC in the frame data
-+ */
-+void ice_vsi_cfg_crc_strip(struct ice_vsi *vsi, bool disable)
-+{
-+	int i;
-+
-+	ice_for_each_rxq(vsi, i)
-+		if (disable)
-+			vsi->rx_rings[i]->flags |= ICE_RX_FLAGS_CRC_STRIP_DIS;
-+		else
-+			vsi->rx_rings[i]->flags &= ~ICE_RX_FLAGS_CRC_STRIP_DIS;
-+}
-+
- /**
-  * ice_vsi_cfg_rss_lut_key - Configure RSS params for a VSI
-  * @vsi: VSI to be configured
-@@ -3276,6 +3292,11 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
- 			 */
- 			if (test_bit(ICE_FLAG_RSS_ENA, pf->flags))
- 				ice_vsi_cfg_rss_lut_key(vsi);
-+
-+		/* disable or enable CRC stripping */
-+		ice_vsi_cfg_crc_strip(vsi, !!(vsi->netdev->features &
-+					      NETIF_F_RXFCS));
-+
- 		break;
- 	case ICE_VSI_VF:
- 		ret = ice_vsi_alloc_q_vectors(vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index 0095329949d4..d22f4b062c4f 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -89,6 +89,8 @@ void ice_vsi_free_tx_rings(struct ice_vsi *vsi);
- 
- void ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena);
- 
-+void ice_vsi_cfg_crc_strip(struct ice_vsi *vsi, bool disable);
-+
- void ice_update_tx_ring_stats(struct ice_tx_ring *ring, u64 pkts, u64 bytes);
- 
- void ice_update_rx_ring_stats(struct ice_rx_ring *ring, u64 pkts, u64 bytes);
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ec1de9d59172..0f9c4463eb50 100644
+index 0f9c4463eb50..5b8964215bc8 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3374,6 +3374,11 @@ static void ice_set_netdev_features(struct net_device *netdev)
- 	if (is_dvm_ena)
- 		netdev->hw_features |= NETIF_F_HW_VLAN_STAG_RX |
- 			NETIF_F_HW_VLAN_STAG_TX;
+@@ -5725,6 +5725,9 @@ ice_fdb_del(struct ndmsg *ndm, __always_unused struct nlattr *tb[],
+ 					 NETIF_F_HW_VLAN_STAG_RX | \
+ 					 NETIF_F_HW_VLAN_STAG_TX)
+ 
++#define NETIF_VLAN_STRIPPING_FEATURES	(NETIF_F_HW_VLAN_CTAG_RX | \
++					 NETIF_F_HW_VLAN_STAG_RX)
 +
-+	/* Leave CRC / FCS stripping enabled by default, but allow the value to
-+	 * be changed at runtime
-+	 */
-+	netdev->hw_features |= NETIF_F_RXFCS;
- }
+ #define NETIF_VLAN_FILTERING_FEATURES	(NETIF_F_HW_VLAN_CTAG_FILTER | \
+ 					 NETIF_F_HW_VLAN_STAG_FILTER)
  
- /**
-@@ -5981,6 +5986,16 @@ ice_set_features(struct net_device *netdev, netdev_features_t features)
- 	if (ret)
- 		return ret;
+@@ -5811,6 +5814,14 @@ ice_fix_features(struct net_device *netdev, netdev_features_t features)
+ 			      NETIF_F_HW_VLAN_STAG_TX);
+ 	}
  
-+	/* Turn on receive of FCS aka CRC, and after setting this
-+	 * flag the packet data will have the 4 byte CRC appended
-+	 */
-+	if (changed & NETIF_F_RXFCS) {
-+		ice_vsi_cfg_crc_strip(vsi, !!(features & NETIF_F_RXFCS));
-+		ret = ice_down_up(vsi);
-+		if (ret)
-+			return ret;
++	if (!(netdev->features & NETIF_F_RXFCS) &&
++	    (features & NETIF_F_RXFCS) &&
++	    (features & NETIF_VLAN_STRIPPING_FEATURES) &&
++	    !ice_vsi_has_non_zero_vlans(np->vsi)) {
++		netdev_warn(netdev, "Disabling VLAN stripping as FCS/CRC stripping is also disabled and there is no VLAN configured\n");
++		features &= ~NETIF_VLAN_STRIPPING_FEATURES;
 +	}
 +
- 	if (changed & NETIF_F_NTUPLE) {
- 		bool ena = !!(features & NETIF_F_NTUPLE);
- 
-@@ -6684,6 +6699,31 @@ int ice_down(struct ice_vsi *vsi)
- 	return 0;
+ 	return features;
  }
  
-+/**
-+ * ice_down_up - shutdown the VSI connection and bring it up
-+ * @vsi: the VSI to be reconnected
-+ */
-+int ice_down_up(struct ice_vsi *vsi)
-+{
-+	int ret;
+@@ -5904,6 +5915,13 @@ ice_set_vlan_features(struct net_device *netdev, netdev_features_t features)
+ 	current_vlan_features = netdev->features & NETIF_VLAN_OFFLOAD_FEATURES;
+ 	requested_vlan_features = features & NETIF_VLAN_OFFLOAD_FEATURES;
+ 	if (current_vlan_features ^ requested_vlan_features) {
++		if ((features & NETIF_F_RXFCS) &&
++		    (features & NETIF_VLAN_STRIPPING_FEATURES)) {
++			dev_err(ice_pf_to_dev(vsi->back),
++				"To enable VLAN stripping, you must first enable FCS/CRC stripping\n");
++			return -EIO;
++		}
 +
-+	/* if DOWN already set, nothing to do */
-+	if (test_and_set_bit(ICE_VSI_DOWN, vsi->state))
-+		return 0;
+ 		err = ice_set_vlan_offload_features(vsi, features);
+ 		if (err)
+ 			return err;
+@@ -5990,6 +6008,13 @@ ice_set_features(struct net_device *netdev, netdev_features_t features)
+ 	 * flag the packet data will have the 4 byte CRC appended
+ 	 */
+ 	if (changed & NETIF_F_RXFCS) {
++		if ((features & NETIF_F_RXFCS) &&
++		    (features & NETIF_VLAN_STRIPPING_FEATURES)) {
++			dev_err(ice_pf_to_dev(vsi->back),
++				"To disable FCS/CRC stripping, you must first disable VLAN stripping\n");
++			return -EIO;
++		}
 +
-+	ret = ice_down(vsi);
-+	if (ret)
-+		return ret;
-+
-+	ret = ice_up(vsi);
-+	if (ret) {
-+		netdev_err(vsi->netdev, "reallocating resources failed during netdev features change, may need to reload driver\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_vsi_setup_tx_rings - Allocate VSI Tx queue resources
-  * @vsi: VSI having resources allocated
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index ca902af54bb4..932b5661ec4d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -295,10 +295,11 @@ struct ice_rx_ring {
- 	struct xsk_buff_pool *xsk_pool;
- 	struct sk_buff *skb;
- 	dma_addr_t dma;			/* physical address of ring */
--#define ICE_RX_FLAGS_RING_BUILD_SKB	BIT(1)
- 	u64 cached_phctime;
- 	u8 dcb_tc;			/* Traffic class of ring */
- 	u8 ptp_rx;
-+#define ICE_RX_FLAGS_RING_BUILD_SKB	BIT(1)
-+#define ICE_RX_FLAGS_CRC_STRIP_DIS	BIT(2)
- 	u8 flags;
- } ____cacheline_internodealigned_in_smp;
- 
+ 		ice_vsi_cfg_crc_strip(vsi, !!(features & NETIF_F_RXFCS));
+ 		ret = ice_down_up(vsi);
+ 		if (ret)
 -- 
 2.25.1
 
