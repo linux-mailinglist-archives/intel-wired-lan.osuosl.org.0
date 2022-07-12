@@ -1,117 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E44F15721A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jul 2022 19:20:50 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 764055721C7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Jul 2022 19:31:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A37140D82;
-	Tue, 12 Jul 2022 17:20:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A37140D82
+	by smtp1.osuosl.org (Postfix) with ESMTP id 44E6383E83;
+	Tue, 12 Jul 2022 17:31:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 44E6383E83
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1657646447;
-	bh=zmYRlV7HjpXg2rZxVLsHZyVAQeGc7Hk3DieYPnlk4QI=;
+	s=default; t=1657647087;
+	bh=j/tBsvBr3Ytn/0IMR5rG/NJuRmyJY4JeiHQsNrjrrtI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=XzeLZJjXNsNJL9B0OVC9RSTPkrvmvGKmre9XK1nMHs6Buq+/nEHuHcO9rBr8Krwae
-	 OmAmf/nlXhWpnj9G/efwqD1kSVabVxw5E9vuDhMr4eOrIZqmeh64pgnk72nFlk9shx
-	 CAOhsEjRXvv0HCBSHRdLIrriXZV4rQBPhJ0I7nDQMTJ9c6jeJ12eLhrCsMY8TBz5vw
-	 Vw3P08fTaJgIck3KkZAPauPmHM7L3m2WOFqWMvyhdGqd4puG8DV2cmYyXz3/OHn163
-	 WL4ciuxhBYy43vHKAQPz0RcoX4M4FKMUDo2/xpZJRz95xLKWwTDQYuJtsNzDctzIDR
-	 BFxewbpMD0+3Q==
+	b=OhWSEO/DPIrK5snmeloXP/gu0D9hSy+WnMxHh2Gsls8jD26mjRTKY7pKnPY7AnkfO
+	 5lT87QSiqUkZ5hxL0E+OEtjdvdKa960x1C5D9pO8g9Cs2CN8BrMwQ+0bGS5ZHqDEpr
+	 FhPRUoj+GWXYseQS+rUvlgeLudg33Upl1A4nAXwHBX0TdUm20KsJyJ7qAgCZ9gpU6d
+	 UaUMGPIgIvOPexGbZQ1wXq5DyWxlKd8VopO0AWDMoPUyQb3hUb+OhjWFu9oVqQq0iy
+	 98TuAG6G7aUWSSSItorSTOsHHSdRGBopCFaJ9ASSAE+LpHytwS3MG+ynLaYjKUgbvo
+	 z5dvN8FaX8b4Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U9Mkf1hg6FeK; Tue, 12 Jul 2022 17:20:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AKWwW8-BdYkm; Tue, 12 Jul 2022 17:31:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 578C740D73;
-	Tue, 12 Jul 2022 17:20:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 578C740D73
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB03283E0D;
+	Tue, 12 Jul 2022 17:31:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB03283E0D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0FA121BF575
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:20:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CF6D81BF575
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:31:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E911F40D73
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:20:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E911F40D73
+ by smtp2.osuosl.org (Postfix) with ESMTP id B5A3D40B07
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:31:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B5A3D40B07
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7Io1zVq1_6Ha for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Jul 2022 17:20:40 +0000 (UTC)
+ with ESMTP id 4GeYSSFfbe30 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Jul 2022 17:31:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0C52440184
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A349B4074E
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0C52440184
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:20:39 +0000 (UTC)
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A349B4074E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 17:31:17 +0000 (UTC)
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-118-GIF3WrCrMTyZQzn9QSbKAA-1; Tue, 12 Jul 2022 13:20:37 -0400
-X-MC-Unique: GIF3WrCrMTyZQzn9QSbKAA-1
-Received: by mail-wm1-f71.google.com with SMTP id
- c187-20020a1c35c4000000b003a19b3b9e6cso6959079wma.5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 10:20:37 -0700 (PDT)
+ us-mta-170-WSpd2zjHM42NCZ19WTNdZg-1; Tue, 12 Jul 2022 13:31:15 -0400
+X-MC-Unique: WSpd2zjHM42NCZ19WTNdZg-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ p21-20020a05600c1d9500b003a2d6c2b643so911922wms.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Jul 2022 10:31:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=/bGlhR2C9Bbup3g3CXkgqiri2zsfVzF4PubM7oVkOco=;
- b=ViVoD07xu9IuAbJphHvNBHxHqooa1Fy0WhDa+Ju+rmPYzN93aZWoLvayG2VeLFxujA
- VzZBVuByAN9KI0PWwRcaiywM43FLA4M9FJrEbDM1ihQURtPRnDuq4ZxsfW21sgNUZ948
- +r0VX21cdxDwlABEkrPKSPUCNnhA4Hf6A2GG0ZD+10LgUN7mGwpBLixkD+zhVnJ8K2Jt
- RDxT+tFmyH8rYwIrRRtL9JiRryYRFBhV06puiPMkmUiAtEBS1RQkXCGq9boxV68y/6Ry
- j121xxGCPXRpfhlkwzj9iRdnsD8oFyZTrEebi0XUGvVq7UYfemf/wk1QH6h9nLOFh+cE
- UsFw==
-X-Gm-Message-State: AJIora/2A/miPU//1jTy5SoaMJlI5BvO8OB0STczhmTDuCuWQqapXCGD
- IWkGGoqPRihUce3frH3rkFl1u2YpvItkVlCQGMdwddGdjaQWG2UWrd1B++e7ezZzTmjXdvKFKD5
- cVZ1Ix49d1taFYgQXkkxzLzdvuyxZ4Q==
-X-Received: by 2002:a5d:40cc:0:b0:21d:68ce:4a71 with SMTP id
- b12-20020a5d40cc000000b0021d68ce4a71mr22431787wrq.195.1657646436320; 
- Tue, 12 Jul 2022 10:20:36 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1veC7eQiWcQZEt5/vXbhWczGvcEmYYjNL8gLbeWovr3kMYq72JfuaErbNpIzTWYHRRxn8V0Rw==
-X-Received: by 2002:a5d:40cc:0:b0:21d:68ce:4a71 with SMTP id
- b12-20020a5d40cc000000b0021d68ce4a71mr22431743wrq.195.1657646436011; 
- Tue, 12 Jul 2022 10:20:36 -0700 (PDT)
+ bh=Xlt7tEF5MS5pxQiB3QIg/pvI4EFIsZBxEXSN0MrG/jw=;
+ b=ofALzHLtwYmm5R0xGWGxJrXqdAW9unYTBh1q8iGFC6uvakDqZK6wbOJrdvN8takerA
+ itVG8mNfw2dhqIGOliYKh8uUdDGRIqpHZoqOdwyJ7YEQJD6HGiKopx/d1eXzUTnvD7Ix
+ dPqwQUMby7dalIAySgny5khGw1hDA0dmnEIG+OLIf8pcRwzGqu4OEnuAIW3H8zOli2s2
+ c1APuL2JazLX9rL4V39Cj2srZITUhjBlkKfWRYcaf5rCxVNcf0A2C5neRGbYs79B09z7
+ mHOlOywxT1TWJhQ4hGL79A/faJhvd+Iwkb6/m295Ltyn3NWGf+5sMSqHSrEOrrh2cizQ
+ Ludg==
+X-Gm-Message-State: AJIora/Lebwzcc70v60izjgxqBEocKRWvoa0tiMV2kIyaBbXUKKso0s3
+ xaD79F9SoQoVnGAZwRoHYB0DvN8Drc5IRutDx9T1C194XAfwqlV3wnfrx3IvRw8nl01m9AL+3sV
+ pL6dBnFu4lrn2UvOMT2D3ksKf5V15Fg==
+X-Received: by 2002:a05:600c:5013:b0:3a2:e7a0:a4e4 with SMTP id
+ n19-20020a05600c501300b003a2e7a0a4e4mr5324550wmr.122.1657647073828; 
+ Tue, 12 Jul 2022 10:31:13 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1s0r989U5Ouvj2bJIHS625Y9N7GUvbCsG3uzPYYcJStSYMmdiEh5m+vwinxrjEjYEN0fCfyTQ==
+X-Received: by 2002:a05:600c:5013:b0:3a2:e7a0:a4e4 with SMTP id
+ n19-20020a05600c501300b003a2e7a0a4e4mr5324494wmr.122.1657647073515; 
+ Tue, 12 Jul 2022 10:31:13 -0700 (PDT)
 Received: from localhost.localdomain ([185.233.130.50])
  by smtp.gmail.com with ESMTPSA id
- b18-20020a5d45d2000000b0021d7ff34df7sm10296317wrs.117.2022.07.12.10.20.34
+ g17-20020a05600c4ed100b003a2ed2a40e4sm3182733wmq.17.2022.07.12.10.31.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Jul 2022 10:20:34 -0700 (PDT)
-Date: Tue, 12 Jul 2022 19:20:18 +0200
+ Tue, 12 Jul 2022 10:31:13 -0700 (PDT)
+Date: Tue, 12 Jul 2022 19:31:10 +0200
 From: Guillaume Nault <gnault@redhat.com>
 To: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-Message-ID: <20220712172018.GA3794@localhost.localdomain>
+Message-ID: <20220712173110.GB3794@localhost.localdomain>
 References: <20220708122421.19309-1-marcin.szycik@linux.intel.com>
- <20220708122421.19309-2-marcin.szycik@linux.intel.com>
- <20220708190528.GB3166@debian.home>
- <MW4PR11MB57767AD317D175D260362539FD879@MW4PR11MB5776.namprd11.prod.outlook.com>
+ <20220708122421.19309-3-marcin.szycik@linux.intel.com>
+ <20220708192253.GC3166@debian.home>
+ <MW4PR11MB57763D75A50EF9CF369C0EDAFD879@MW4PR11MB5776.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <MW4PR11MB57767AD317D175D260362539FD879@MW4PR11MB5776.namprd11.prod.outlook.com>
+In-Reply-To: <MW4PR11MB57763D75A50EF9CF369C0EDAFD879@MW4PR11MB5776.namprd11.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1657646438;
+ s=mimecast20190719; t=1657647076;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=/bGlhR2C9Bbup3g3CXkgqiri2zsfVzF4PubM7oVkOco=;
- b=AZruPFQUkYz7IVp2luvPG5Sxqgrr2xu/bMRcazkCvvkTuwyUEDvAJSs2wn3TS0L8fDkAZT
- sp4VAI97ubUyQbLmAhlCyCXotulpOIeQ1Eu6sAXMrOt55P1nUpHLht99Zv2lCT2Y2mX1E2
- yCTMSMWypPBRU9bWLnkTH1UovGU4RmA=
+ bh=Xlt7tEF5MS5pxQiB3QIg/pvI4EFIsZBxEXSN0MrG/jw=;
+ b=GXpqTJvfk+lkOFi4aJlrJThimMq3JEwXGBhl0FeToOW5LawOMftWT4oQjx846zcdPEt/lH
+ YlUNIAyXi0NJDzW/4jgv+zoCZrwQHQdV6Kfigq9HJdhncZkveixj1AOHMr8MAOw079f5rB
+ DQVN7Gy/NuGYN7uRoMQMd25eVmi8yLU=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=AZruPFQU
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=GXpqTJvf
 X-Mailman-Original-Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=gnault@redhat.com
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v4 1/4] flow_dissector:
- Add PPPoE dissectors
+Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v4 2/4] net/sched:
+ flower: Add PPPoE filter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,86 +150,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jul 11, 2022 at 10:23:50AM +0000, Drewek, Wojciech wrote:
-> > > diff --git a/include/net/flow_dissector.h b/include/net/flow_dissector.h
-> > > index a4c6057c7097..af0d429b9a26 100644
-> > > --- a/include/net/flow_dissector.h
-> > > +++ b/include/net/flow_dissector.h
-> > > @@ -261,6 +261,18 @@ struct flow_dissector_key_num_of_vlans {
-> > >  	u8 num_of_vlans;
-> > >  };
-> > >
-> > > +/**
-> > > + * struct flow_dissector_key_pppoe:
-> > > + * @session_id: pppoe session id
-> > > + * @ppp_proto: ppp protocol
-> > > + * @type: pppoe eth type
-> > > + */
-> > > +struct flow_dissector_key_pppoe {
-> > > +	__be16 session_id;
-> > > +	__be16 ppp_proto;
-> > > +	__be16 type;
+On Mon, Jul 11, 2022 at 10:26:21AM +0000, Drewek, Wojciech wrote:
+> > > +static void fl_set_key_pppoe(struct nlattr **tb,
+> > > +			     struct flow_dissector_key_pppoe *key_val,
+> > > +			     struct flow_dissector_key_pppoe *key_mask,
+> > > +			     struct fl_flow_key *key,
+> > > +			     struct fl_flow_key *mask)
+> > > +{
+> > > +	/* key_val::type must be set to ETH_P_PPP_SES
+> > > +	 * because ETH_P_PPP_SES was stored in basic.n_proto
+> > > +	 * which might get overwritten by ppp_proto
+> > > +	 * or might be set to 0, the role of key_val::type
+> > > +	 * is simmilar to vlan_key::tpid
 > > 
-> > I don't understand the need for the new 'type' field.
+> > Didn't you mean "vlan_tpid"?
 > 
-> Let's say user want to add below filter with just protocol field:
-> tc filter add dev ens6f0 ingress prio 1 protocol ppp_ses action drop
-> 
-> cls_flower would set basic.n_proto to ETH_P_PPP_SES, then PPPoE packet
-> arrives with ppp_proto = PPP_IP, which means that in  __skb_flow_dissect basic.n_proto is going to
-> be set to ETH_P_IP. We have a mismatch here cls_flower set basic.n_proto to ETH_P_PPP_SES and
-> flow_dissector set it to ETH_P_IP. That's why in such example basic.n_proto has to be set to 0 (it works the same 
-> with vlans) and key_pppoe::type has to be used. In other words basic.n_proto can't be used for storing
-> ETH_P_PPP_SES because it will store encapsulated protocol.
-> 
-> We could also use it to match on ETH_P_PPP_DISC.
+> Yes, is vlan_key::tpid not clear/valid?
 
-Thanks for the explanation. That makes sense.
-
-> > > @@ -1214,26 +1250,60 @@ bool __skb_flow_dissect(const struct net *net,
-> > >  			struct pppoe_hdr hdr;
-> > >  			__be16 proto;
-> > >  		} *hdr, _hdr;
-> > > +		__be16 ppp_proto;
-> > > +
-> > >  		hdr = __skb_header_pointer(skb, nhoff, sizeof(_hdr), data, hlen, &_hdr);
-> > >  		if (!hdr) {
-> > >  			fdret = FLOW_DISSECT_RET_OUT_BAD;
-> > >  			break;
-> > >  		}
-> > >
-> > > -		nhoff += PPPOE_SES_HLEN;
-> > > -		switch (hdr->proto) {
-> > > -		case htons(PPP_IP):
-> > > +		if (!is_pppoe_ses_hdr_valid(hdr->hdr)) {
-> > > +			fdret = FLOW_DISSECT_RET_OUT_BAD;
-> > > +			break;
-> > > +		}
-> > > +
-> > > +		/* least significant bit of the first byte
-> > > +		 * indicates if protocol field was compressed
-> > > +		 */
-> > > +		if (hdr->proto & 1) {
-> > > +			ppp_proto = hdr->proto << 8;
-> > 
-> > This is little endian specific code. We can't make such assumptions.
-> 
-> Both ppp_proto and hdr->prot are stored in __be16 so left shift by 8 bits
-> should always be ok, am I right?
-
-Sorry, I don't understand. How could the test and the bit shift
-operation give the correct result on a big endian machine?
-
-Let's say we handle an IPv4 packet and the PPP protocol field isn't
-compressed. That is, protocol is 0x0021.
-On a big endian machine 'hdr->proto & 1' is true and the bit shift sets
-ppp_proto to 0x2100, while the code should have left the original value
-untouched.
-
-> Should I use cpu_to_be16 on both 1 and 8. Is that what you mean?
-
-I can't see how cpu_to_be16() could help here. I was thinking of simply
-using ntohs(hdr->proto).
+At least it wasn't entirely clear to me as I wondered if I got the
+comment right. And it's basically free to use the real name of the
+structure field.
 
 _______________________________________________
 Intel-wired-lan mailing list
