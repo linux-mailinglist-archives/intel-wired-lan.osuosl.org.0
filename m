@@ -2,180 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A0A8578484
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jul 2022 15:56:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 141B35787B2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Jul 2022 18:45:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A10A24157E;
-	Mon, 18 Jul 2022 13:56:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A10A24157E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B73F417AF;
+	Mon, 18 Jul 2022 16:45:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B73F417AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658152599;
-	bh=xYHv3c8XjfMfyXR6jgrly9uxjPQxm6tN229E35NWXmM=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=48Y/HDA086tcQQQA7VTvTPYomOCYzUQPT1Twg5pyJY90IcNPe9cX6Xj+0Sp4Z5zQ5
-	 PqF6hEgTTBhT4xr4Llf9ThCmO7P6uZf/+kl1Fa92XmI5mAf98mJgdGcr9DPXsuGYsW
-	 Y0DuJ0tBKdYMITYF3QQRSg4sa18sknk2/+0Ly4SmSdh+nEaGyLIiQik1aC81vJKAcc
-	 4KXcc6X5ktBI/uMjdP00C9VG7X3tys35JTFd3M/m2+spoOcGE4k20DfBIugTR9IqHJ
-	 LnN7ojn75kRufKu/00MuiTlxnCNorlmJSkz8Ahtt5wRuEbhxba9fBiJfIjiRtFWMsz
-	 N9SLP7nnD402Q==
+	s=default; t=1658162718;
+	bh=McDTJwgDhXlS3dGnGe3daI+OkjU4FAIm1KIj83mRuY0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=KnI2NO6+AYeUuHOT1eTWyLnn95fP3Yi2cLiW3KVQZyhte0ZcEnf5kX/QAvWyh5sJi
+	 s+lGlFDslq22vHmd4K5WgyJ9TS8j4Qcm18AHS4hFSLvgvUBm7FrtNWZ26vwlgEic/m
+	 FNN01+PItbFKCOEo1W/9mDHC5U0BbZcE96uLYslFQIiBSAGVEj1SXYDxv8fJa5XwD9
+	 OFQnBckWBk+PKPZX6I9YT7jJmGXEDr2XlUCECc913QUWr/RCPekd88Tb0H+f1pK9tb
+	 /DDNwnExNLzSxUNDbnm5b0itKJLlJO/16op+08D//Akbc0pkeFer5MPoFutjc+SyIi
+	 1b6kmd/5RJjxg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kY-wI_Fh9mGg; Mon, 18 Jul 2022 13:56:38 +0000 (UTC)
+	with ESMTP id P1WEHh2n1InZ; Mon, 18 Jul 2022 16:45:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1946E41576;
-	Mon, 18 Jul 2022 13:56:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1946E41576
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98B71415BF;
+	Mon, 18 Jul 2022 16:45:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98B71415BF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C16C31BF3B0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 13:56:32 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EBE461BF299
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 16:45:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A5A9440620
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 13:56:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A5A9440620
+ by smtp3.osuosl.org (Postfix) with ESMTP id D33FC60F2B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 16:45:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D33FC60F2B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CdQIZnydN4Cq for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Jul 2022 13:56:31 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kA4MkwfiFfaN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Jul 2022 16:45:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C348404DA
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6C348404DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 13:56:31 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10411"; a="286966105"
-X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; d="scan'208";a="286966105"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2022 06:56:30 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8028560B5B
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8028560B5B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Jul 2022 16:45:09 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10412"; a="273096655"
+X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; d="scan'208";a="273096655"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2022 09:45:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; d="scan'208";a="624738664"
-Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
- by orsmga008.jf.intel.com with ESMTP; 18 Jul 2022 06:56:27 -0700
-Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
- fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Mon, 18 Jul 2022 06:56:25 -0700
-Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
- fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Mon, 18 Jul 2022 06:56:25 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Mon, 18 Jul 2022 06:56:25 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Mon, 18 Jul 2022 06:56:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HbmTENPYzN9BwpyBQYYr5aOn98AwVdQIkFvuViWc949rq9mTSL5OsE2n8jQwaWW7lALHMaoMV/l17aDbXVNT2C30o8RO3hBEXhhbihB2Gz/nRgEyowvGqhWj317yUvyreGhGruWKuSPYeTIGRei5Dz7CwArrsFimK1uo7tgYllBaVEadH70OhtuI44axPLFN43R1JNGoZA/VrOJczoWdlpC7Pch7UMQf/fAPfBOhr7SF6eJB+QcyWiCDJL0UZWOFka7Qd95xz4T/jk5iAJ1mGLD3zdYwa1fryGT2HV7Nhp9PPcNvUkTRrQsWMZ+aj/8rL64q2iUOCTMRcXYpqCCiHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lqgfMoUh6uQsG4wV8ft4LnpzJVI+BZcqYdWdETsmI5I=;
- b=UfUC8uiA5US2edCmAbpL+wrJKGEqGzDuaVrhl5gHuK+igZfOs/6+yjRlWNMwVV6hMg1s7iZPGULevN0aurIaELlPQArk5LWe9QbNvONKCKqkeQgX2Pbz/nuG2MBbrayrVkWx0AYGSGo60qoi7kCdfuv373ZFAXTmdd8MbQHrnrcGpTdVzY7ddoh1WBNOqgHwvK1n0g2rMpKJYm+KE99XXoKgeQUe18doID+XUcG3pTgK5EPDJEGGRBw1AgL+AAht5EDpSd7K4PkfFR87t4KwnGRwJQqlCSUdCXKnjSQGXeIfQi781GYeu2PnOEAcoTFMXHvKe+vBNvmUJLacjudcZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by BYAPR11MB2582.namprd11.prod.outlook.com (2603:10b6:a02:cb::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5438.14; Mon, 18 Jul
- 2022 13:56:18 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::682f:e9fd:d1d7:f3b9]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::682f:e9fd:d1d7:f3b9%4]) with mapi id 15.20.5438.023; Mon, 18 Jul 2022
- 13:56:18 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Siwik, Grzegorz" <grzegorz.siwik@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v1 2/3] ice: Ignore
- ERR_ALREADY_EXISTS when setting promisc mode
-Thread-Index: AQHYkgPhU5lYeLotJkmzNolNditNe62EOCrw
-Date: Mon, 18 Jul 2022 13:56:18 +0000
-Message-ID: <BYAPR11MB3367E53B0AF3374225AFEFEFFC8C9@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <1657199751-256188-1-git-send-email-grzegorz.siwik@intel.com>
- <1657199751-256188-3-git-send-email-grzegorz.siwik@intel.com>
-In-Reply-To: <1657199751-256188-3-git-send-email-grzegorz.siwik@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: d2ce6305-5e47-413c-27c6-08da68c549c7
-x-ms-traffictypediagnostic: BYAPR11MB2582:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: jlkzntxvzPQjOs6WVddT9rb1gKPVPKWt3VlFfhnZmmSlUPCZTyPcXh9Wr23RkIbdgtD9cYUiTzfrOMADSNOgH/CoTnsFpGUyK3TOBKpDGgE8QkzSyulCMNnpQtVUhyQKI+mBHj5C2fhXX+YvJPr4XP9WKP1DIUV1GP6fB6+cHv3IKLrHnfImWobHJdeuom5vqpNeHpr+RntpJ8wu639cdXHVgipXQqeBsp8/Yp3+QvokKGrjkJ0wkN0PMzb4kBUgZSZw82oXRKl0XC1gA+9tR2pihgZisS1NVOWSfuXW/7Lggk8Pdsl0uhJO5iW5iRjhLZcolfmDrPZ/nHNoVo2zX20OjxacnML2x0V99x50ucK7m5e3UGm9v5wotw+1mtlwms19/QcKVqWiCYdIPYejcHTIihqg5Xdb70nMZ/DsCofvwRfbRwCYUwpRJ3JgTKE1DCmuIHTDrEQDDOOi3HJc5bv8yAwD/Xo8Mf+Fd+IwQd/jvYIN3ap0zbJqf3Qh0YP0rIMN01EsnzqcF322bEMCdn6afSLsfLKiel3uk+6oBp+6zm49uv7qiSjHCO96kr1xBlSIryOb7gHbxAarugbVERlrraR5tqlUdtj9OLEIZF2t98YLtrFEkaaYg+Hlsv/yLBhvz3P64zSSo3R1Xkb5ZQxbyf5Mr0TPYOMyJI8cBvJ76oloCvbIetXOYrnLzDWFmqdcIQSWssy3dddJI2djsEljcEjFSWDEUHFAZM0UkchrfpgV9E20U9tG4QQNAaXBc8kkSgpL8V4+Qow55WuMnwXBvXKZBlopDoeOCh6heoV1/0q628EcZwJUJ3zfTVw4AbpYJLmeCaNuqAh58CtVig==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(136003)(39860400002)(366004)(376002)(396003)(346002)(966005)(41300700001)(71200400001)(478600001)(186003)(122000001)(53546011)(9686003)(26005)(6506007)(107886003)(82960400001)(7696005)(83380400001)(66946007)(38100700002)(66476007)(38070700005)(4744005)(8676002)(2906002)(33656002)(8936002)(5660300002)(52536014)(55016003)(110136005)(4326008)(64756008)(86362001)(76116006)(66446008)(66556008)(316002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Il3pwyKM1S/XnVlxudM73AsnAik1XO7fhZfFDZvzWXYzoYamZXQEI/qlcS/j?=
- =?us-ascii?Q?/eQBr/XElwvvH5V4Yuz6glEx/XmVFOwm76iBgL+/CxdQeZSG7Jn9G5MQ+H/C?=
- =?us-ascii?Q?x2wkt/AeR+tbsng/yFKvzTBknEjGYXUh0gBweChGQxlQbJ9ut5feBf37e15c?=
- =?us-ascii?Q?4coZutUDEvUO3LyiPJ3VC9W+NN0h3xQdcGAqw/uHr0WoyrRK2N8PGWYh/DFR?=
- =?us-ascii?Q?d4J6OuJOL7fNngHvMpNryW/pLPh6VTDVC5OTy5ZoYkKWO+EAknwxqLbeq4tA?=
- =?us-ascii?Q?+WOfWfWSp3eYr9E1GdAFYpSubgN1cOH0oNynn8KqC11VsFJJWJ1BjmutkFqN?=
- =?us-ascii?Q?xscc4Ydb9NtCaqWIxTqdEi4cNaAf117OEbXDgG1gZ6iqXY9p9xaF4G1Zc3ik?=
- =?us-ascii?Q?GwYHsLVnlNoRTW5VkU1m6O8WNLXHlnhFt4Dh2aCD7t6vgEU9ktUBmXWY1IRN?=
- =?us-ascii?Q?vDGPwK++TQNvIpnsrtaS42RR7wxO0linM4cW7ltfONC2eaErV3qU2dOUWcjA?=
- =?us-ascii?Q?+7C7r0Cf2ajomVPeWAKO0I6lIVS3ry8OLwX+Vpznp6xZ4IRsP+WXiKgdeO/W?=
- =?us-ascii?Q?L1JR437gH2tYkhugieBZvjEWR648tJBvOLRuu4uebvhfiGFZnYcCRFlMUtjG?=
- =?us-ascii?Q?P6ovKZ6taLkHCf31ndOYIZtlGoPNVVBvYkoZvx/5wOc/pEqpOWvBrR+rHfPY?=
- =?us-ascii?Q?2jiADJj9+18W1Za5P2Ey6GPv2aTclZnsl/aGgFaiO1JhNxz0Ef4j2BNHEQzN?=
- =?us-ascii?Q?2dgtIy+mvoXK+GTAreDrBS5uYXh6OUjBzBcopDB+EMnMZ0FWCacnA+7iOZjX?=
- =?us-ascii?Q?Grxhj4zL4Tl1hQ1k3679WEmwT/jSULfrSJD9O+wtiD/EtJ/iQ8J6Dep8aDr1?=
- =?us-ascii?Q?BeSps+4EnNIugKE59QYy7IWTwMfpgFr6m03cFcBMLwN2CKnY2Mb5wRFEAfzs?=
- =?us-ascii?Q?W7/NrhBYYh4CqcV7cMa+t8iGepTGmtOni+smNba9S3p/xK8via645R4fTsiS?=
- =?us-ascii?Q?trDvu8yUp9iolMYImstiXQMWABSd94VSbMmH+6fP6uCS0Mr977jNMkvGpzXX?=
- =?us-ascii?Q?wztdk5r0F4g1T7g37Ssd1hvhmBp8p9ZQExjrkvBTU/cI6QdnyYFsq8O8sb4a?=
- =?us-ascii?Q?X3Yx1pSuqlyIsWFkqIioS0iTq2jIp8ReMMUck0BxOICuidwU+owRIacwQ/lJ?=
- =?us-ascii?Q?ewscxJxFr1TGAZqYJZqppizL+CPxQ2DJDJ1Rl0EFBTYQ24kjpFfa/wNUHofg?=
- =?us-ascii?Q?4UJfVw04dzOhuw+de3yoPJzNmqcnR1lBtZhTNjoN8BEuFIs1cxjvRvtr7Kh6?=
- =?us-ascii?Q?uG6/F4Ly+5jEV0B9LgV6R0RUIPyKuJRMnTE9EqhVjrFwrQLCesJl7sCXi1Ds?=
- =?us-ascii?Q?YQTBtwyyG+MMcu/zlUbuVw15elguX4NDkmlmVm2oDSpVG8SpHmrKQMqRtaAV?=
- =?us-ascii?Q?nQFY5QCZEY+NmVr+7kRLdprjnOeW8BMZP6UIsIYNiD6N/Z8S+jdO1hf6MFuO?=
- =?us-ascii?Q?hf7Y0rsZ8ya5Q9tT8Ub9eMzW+bP7/qoRRNHZ9WxRH50uV/rAeO/J+cHbz3YV?=
- =?us-ascii?Q?Q9IX8sgDxUOdEPVtYyCuvyOKIsDCPhAZwd+ThYrj?=
+X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; d="scan'208";a="572482717"
+Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
+ by orsmga006.jf.intel.com with ESMTP; 18 Jul 2022 09:45:06 -0700
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 18 Jul 2022 18:42:43 +0200
+Message-Id: <20220718164244.261979-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d2ce6305-5e47-413c-27c6-08da68c549c7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jul 2022 13:56:18.1512 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: tHGfRfp2vtDx2kTjrNz2++9Ce2KmiW4waLXGT5kEqIkREjMikV68tdMEyAMB9yWaFxemXzAR0Q8pZ+ULX7152Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2582
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658152591; x=1689688591;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=SFRec+stVSFZ4zr44vusTgN1Dd1WbiaE/bpP4Q1x3Vc=;
- b=lns6sb3fFz+SIJZ5+lGVW4nAX9FB81pxKRwv49ZIrLB8FsT9p0LpSPtx
- Ic8ORBIp7hD5IoD4N3gvRWmmIcJxv6k8sRaQYqRmemzyKQ8DYAWYKXGcS
- 9LuQUv+UZXg8c7e0EA0AMjEIUJ5bmvOqF2/QIzKDyBMG6hLWcNDDuCFfY
- aVe4dpnzd/pzd3ujDmo2rQY7oBw4DS9OtuPrU5GQUL2lrJE0wuFBe95Vi
- S2M4z9Gf7AWVHwyhlokS8bdpca7Y035CymivAYTEoP12NhthW9R8WXSRZ
- JXEXOxtGrhIkJriJqixIHomIu9YDpHnaq9LR6L+JaDyp6wqF4rZTiFyih
+ t=1658162709; x=1689698709;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=etC0uablMBCNzjurWFGApG0Hyi+y7RJMLT9GBlfaZxo=;
+ b=KU+AcLMbJDjUbLlgINs4LN+oXqvnQJO5qZ7V1O1NDR8GyWrL8mqiCKYI
+ xrC2lOTwISWlvYpZi+mCMLSJJirwLRWqSY50OZd61Ua9BFTw0zc6q64pO
+ FwUgMV8Z8x2sNBJ7Og3U5SDpPrNFs8nuYTqYL71Ky8ldhLxXL5y5G4fU1
+ 4hsosc5r8uEsnPWcJEdZB4pMVbD1JZ869HWUWccDrenWk3WpeGImeCPRP
+ rX9aIxzzYAqEXLrWujQvY0lpkvV2Way7VEF2gBRWcuJfhlmtOjeIU1Zce
+ 6ndfLFvcFDvp8vZkwjCM7Xgh1gmQ+0DPGcWmOk8xhkLxOwz4SptXyuQri
  w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lns6sb3f
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v1 2/3] ice: Ignore
- ERR_ALREADY_EXISTS when setting promisc mode
+ header.a=rsa-sha256 header.s=Intel header.b=KU+AcLMb
+Subject: [Intel-wired-lan] [PATCH net v5 1/2] ice: Fix VSIs unable to share
+ unicast MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,42 +91,216 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Siwik, Grzegorz" <grzegorz.siwik@intel.com>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
+The driver currently does not allow two VSIs in the same PF domain
+to have the same unicast MAC address. This is incorrect in the sense
+that a policy decision is being made in the driver when it must be
+left to the user. This approach was causing issues when rebooting
+the system with VFs spawned not being able to change their MAC addresses.
+Such errors were present in dmesg:
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Grzegorz Siwik
-> Sent: Thursday, July 7, 2022 6:46 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Siwik, Grzegorz <grzegorz.siwik@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net v1 2/3] ice: Ignore
-> ERR_ALREADY_EXISTS when setting promisc mode
-> 
-> Ignore ERR_ALREADY_EXISTS error when setting promiscuous mode.
-> This fix is needed because the driver could set promiscuous mode when it
-> still has not cleared properly.
-> Promiscuous mode could be set only once, so setting it second time will be
-> rejected.
-> 
-> Fixes: 5eda8afd6bcc ("ice: Add support for PF/VF promiscuous mode")
-> Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
-> Tested-by: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
-> Tested-by: Igor Raits <igor@gooddata.com>
-> Link:
-> https://lore.kernel.org/all/CAK8fFZ7m-
-> KR57M_rYX6xZN39K89O=LGooYkKsu6HKt0Bs+x6xQ@mail.gmail.com/
-> ---
->  drivers/net/ethernet/intel/ice/ice_switch.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+[ 7921.068237] ice 0000:b6:00.2 ens2f2: Unicast MAC 6a:0d:e4:70:ca:d1 already
+exists on this PF. Preventing setting VF 7 unicast MAC address to 6a:0d:e4:70:ca:d1
 
-Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Fix that by removing this restriction. Doing this also allows
+us to remove some additional code that's checking if a unicast MAC
+filter already exists.
+
+Rename ucast_shared to umac_shared, as "umac" is a more widely
+used shorthand for "unicast MAC".
+
+Also add a helper function to set this flag. This helper is
+expected to be called by core drivers.
+
+Fixes: 47ebc7b02485 ("ice: Check if unicast MAC exists before setting VF MAC")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+---
+v2: amend the commit msg
+v3: removed ucast_shared
+v4: remove if statements depending on ucast_shared
+v5: split into 2 separete patches
+---
+ drivers/net/ethernet/intel/ice/ice_common.c | 11 ++++++
+ drivers/net/ethernet/intel/ice/ice_common.h |  1 +
+ drivers/net/ethernet/intel/ice/ice_main.c   |  2 ++
+ drivers/net/ethernet/intel/ice/ice_sriov.c  | 40 ---------------------
+ drivers/net/ethernet/intel/ice/ice_switch.c |  8 ++---
+ drivers/net/ethernet/intel/ice/ice_type.h   |  3 +-
+ 6 files changed, 20 insertions(+), 45 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 9619bdb9e49a..64748ecebabe 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -899,6 +899,17 @@ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
+ 	}
+ }
+ 
++/**
++ * ice_set_umac_shared
++ * @hw: pointer to the hw struct
++ *
++ * Set boolean flag to allow unicast MAC sharing
++ */
++void ice_set_umac_shared(struct ice_hw *hw)
++{
++	hw->umac_shared = true;
++}
++
+ /**
+  * ice_init_hw - main hardware initialization routine
+  * @hw: pointer to the hardware structure
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 872ea7d2332d..8a66f86c8893 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -16,6 +16,7 @@
+ #define ICE_SQ_SEND_DELAY_TIME_MS	10
+ #define ICE_SQ_SEND_MAX_EXECUTE		3
+ 
++void ice_set_umac_shared(struct ice_hw *hw);
+ int ice_init_hw(struct ice_hw *hw);
+ void ice_deinit_hw(struct ice_hw *hw);
+ int ice_check_reset(struct ice_hw *hw);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 0c5780bccb38..bea750bebdb6 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4667,6 +4667,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 		ice_set_safe_mode_caps(hw);
+ 	}
+ 
++	ice_set_umac_shared(hw);
++
+ 	err = ice_init_pf(pf);
+ 	if (err) {
+ 		dev_err(dev, "ice_init_pf failed: %d\n", err);
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index bb1721f1321d..f4907a3c2d19 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -1309,39 +1309,6 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 	return ret;
+ }
+ 
+-/**
+- * ice_unicast_mac_exists - check if the unicast MAC exists on the PF's switch
+- * @pf: PF used to reference the switch's rules
+- * @umac: unicast MAC to compare against existing switch rules
+- *
+- * Return true on the first/any match, else return false
+- */
+-static bool ice_unicast_mac_exists(struct ice_pf *pf, u8 *umac)
+-{
+-	struct ice_sw_recipe *mac_recipe_list =
+-		&pf->hw.switch_info->recp_list[ICE_SW_LKUP_MAC];
+-	struct ice_fltr_mgmt_list_entry *list_itr;
+-	struct list_head *rule_head;
+-	struct mutex *rule_lock; /* protect MAC filter list access */
+-
+-	rule_head = &mac_recipe_list->filt_rules;
+-	rule_lock = &mac_recipe_list->filt_rule_lock;
+-
+-	mutex_lock(rule_lock);
+-	list_for_each_entry(list_itr, rule_head, list_entry) {
+-		u8 *existing_mac = &list_itr->fltr_info.l_data.mac.mac_addr[0];
+-
+-		if (ether_addr_equal(existing_mac, umac)) {
+-			mutex_unlock(rule_lock);
+-			return true;
+-		}
+-	}
+-
+-	mutex_unlock(rule_lock);
+-
+-	return false;
+-}
+-
+ /**
+  * ice_set_vf_mac
+  * @netdev: network interface device structure
+@@ -1376,13 +1343,6 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+-	if (ice_unicast_mac_exists(pf, mac)) {
+-		netdev_err(netdev, "Unicast MAC %pM already exists on this PF. Preventing setting VF %u unicast MAC address to %pM\n",
+-			   mac, vf_id, mac);
+-		ret = -EINVAL;
+-		goto out_put_vf;
+-	}
+-
+ 	mutex_lock(&vf->cfg_lock);
+ 
+ 	/* VF is notified of its new MAC via the PF's response to the
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index fc231446c641..b7f3876d8d12 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -3425,7 +3425,7 @@ bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle)
+  * @hw: pointer to the hardware structure
+  * @m_list: list of MAC addresses and forwarding information
+  *
+- * IMPORTANT: When the ucast_shared flag is set to false and m_list has
++ * IMPORTANT: When the umac_shared flag is set to false and m_list has
+  * multiple unicast addresses, the function assumes that all the
+  * addresses are unique in a given add_mac call. It doesn't
+  * check for duplicates in this case, removing duplicates from a given
+@@ -3467,7 +3467,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
+ 		if (m_list_itr->fltr_info.lkup_type != ICE_SW_LKUP_MAC ||
+ 		    is_zero_ether_addr(add))
+ 			return -EINVAL;
+-		if (is_unicast_ether_addr(add) && !hw->ucast_shared) {
++		if (is_unicast_ether_addr(add) && !hw->umac_shared) {
+ 			/* Don't overwrite the unicast address */
+ 			mutex_lock(rule_lock);
+ 			if (ice_find_rule_entry(hw, ICE_SW_LKUP_MAC,
+@@ -3478,7 +3478,7 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
+ 			mutex_unlock(rule_lock);
+ 			num_unicast++;
+ 		} else if (is_multicast_ether_addr(add) ||
+-			   (is_unicast_ether_addr(add) && hw->ucast_shared)) {
++			   (is_unicast_ether_addr(add) && hw->umac_shared)) {
+ 			m_list_itr->status =
+ 				ice_add_rule_internal(hw, ICE_SW_LKUP_MAC,
+ 						      m_list_itr);
+@@ -4000,7 +4000,7 @@ int ice_remove_mac(struct ice_hw *hw, struct list_head *m_list)
+ 
+ 		list_itr->fltr_info.fwd_id.hw_vsi_id =
+ 					ice_get_hw_vsi_num(hw, vsi_handle);
+-		if (is_unicast_ether_addr(add) && !hw->ucast_shared) {
++		if (is_unicast_ether_addr(add) && !hw->umac_shared) {
+ 			/* Don't remove the unicast address that belongs to
+ 			 * another VSI on the switch, since it is not being
+ 			 * shared...
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index f2a518a1fd94..bef7c3ba1a20 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -889,7 +889,8 @@ struct ice_hw {
+ 	/* INTRL granularity in 1 us */
+ 	u8 intrl_gran;
+ 
+-	u8 ucast_shared;	/* true if VSIs can share unicast addr */
++	/* true if VSIs can share unicast MAC addr */
++	u8 umac_shared;
+ 
+ #define ICE_PHY_PER_NAC		1
+ #define ICE_MAX_QUAD		2
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
