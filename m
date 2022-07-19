@@ -1,185 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FB4457A710
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jul 2022 21:17:18 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1524E57A981
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Jul 2022 23:53:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9403081369;
-	Tue, 19 Jul 2022 19:17:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9403081369
+	by smtp3.osuosl.org (Postfix) with ESMTP id A177E60E24;
+	Tue, 19 Jul 2022 21:53:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A177E60E24
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658258236;
-	bh=4iw5v9UgD1jqQdt5MlCTuWliYYcOu/nqktbplQgVPFs=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=HjQsfr+e0FqMqkzE8mz+fSWWQZJR5mjcm7/S9LdvpQwEGJDYq89uDF0lOq8jA2mYt
-	 Zsdr7P2sdhuhgT9+TpAs5aM3ZWmMRJ8SiS5CMXL8yBwLA+4pnQc+K9csyXbWepHFbO
-	 wxrd0yPRSWV67slCEnFZgrBiPFuMxmCgWVz45HZVIbPT/AUVb/KjdROpmWD9OcG4bR
-	 E6lsSMC4lP0H0tVro8ZzUfbfHokBFE34pk4KqPcsJOkABMY3zrANByT2cZxfjUxBhp
-	 S/2SfBxOdgz2TUeywxgtCltuMe8VH/6Vv65qNJjqthMW8i7UTPMD5vlJBmW7WGNl8k
-	 iI+61C9dMtn9w==
+	s=default; t=1658267607;
+	bh=uOP5jqlnpIxr4cv3fL2tY3MyPdHnxUT7luhkzecT4Z8=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ZEPm66wsenmE/MAecMLPZDcOfLxtHaJ3ZugoT6exSlWuleo5YEG/qqbU+hGQ1xsl4
+	 4hjFkz0s6TR2Cf3oR77ZHFHxdHFT/NFQpdNH51OVo5IiHfQ+iq2oczD1ErEvnW5r76
+	 5aRm0G2d5yhIkl2OyTWX9YZHqRlWiQYMG2G1tJn5IWvBudBCdbbBwPuoi/JydUN/F7
+	 4946PAMrNwYz6nP71fjPv+ccEnC/qoOkW0gLr51NTtYKBsA2UkdIb8VBwnRuhmffuy
+	 tzIJCZcwF5Lz99MwBpYOu3i1W0lwxdUOqARkMbqMMSWwO0Rah8vbskbIbueIxyrFYr
+	 8UGkrofoaPJiQ==
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y0NdOCi7pSTD; Tue, 19 Jul 2022 21:53:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 57B8560EFA;
+	Tue, 19 Jul 2022 21:53:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57B8560EFA
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 50F591BF37C
+ for <intel-wired-lan@osuosl.org>; Tue, 19 Jul 2022 21:53:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3837382EA2
+ for <intel-wired-lan@osuosl.org>; Tue, 19 Jul 2022 21:53:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3837382EA2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vW8Uk_HP70Iy; Tue, 19 Jul 2022 19:17:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 442248133D;
-	Tue, 19 Jul 2022 19:17:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 442248133D
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 62E841BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jul 2022 19:17:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3A980405CD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jul 2022 19:17:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A980405CD
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hJ5y0Ho0ZW58 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Jul 2022 19:17:06 +0000 (UTC)
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id D9UwtSw_vxye for <intel-wired-lan@osuosl.org>;
+ Tue, 19 Jul 2022 21:53:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C5CD40114
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1C5CD40114
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Jul 2022 19:17:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10413"; a="285329996"
-X-IronPort-AV: E=Sophos;i="5.92,285,1650956400"; d="scan'208";a="285329996"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2022 12:17:05 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0EA4482E5F
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0EA4482E5F
+ for <intel-wired-lan@osuosl.org>; Tue, 19 Jul 2022 21:53:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10413"; a="269644865"
+X-IronPort-AV: E=Sophos;i="5.92,285,1650956400"; d="scan'208";a="269644865"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2022 14:53:19 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,285,1650956400"; d="scan'208";a="655910006"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga008.fm.intel.com with ESMTP; 19 Jul 2022 12:17:04 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Tue, 19 Jul 2022 12:17:04 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Tue, 19 Jul 2022 12:17:04 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.100)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Tue, 19 Jul 2022 12:17:03 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DLINuIB90t0ZT3GTUo8lKm0o8b/diRxtGovboIXcMrEL1FbRWkQzGmJE8gC5nQVZJJwpohIYLXAQkXICz+N0uM+msXlMh7G+Pzx0GynUQOv4PHY6kw+fQn+LEDdT9ayHS44CWzTLm94BZWSbU1xWAUQ6tgRt1sd0zf4XdA4bODw989+mC7r3IWgmmPaN5/zbi7D3SPXUTrONxYAn+vsqjDfdgLracEYNKrgaBkhSLVwoaIBjJPzJpktJ3Z3mt8Pe+EHZ97nCSFMEU/IUjS52F3APpccKR8PlFMM++W8QR+KcV2K7eEO7YmeAzKo74kom6XiKh/7hVxJiV87RcrONcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XZKJCdIM1ULyEBTfWzkh1xhKV8pI8x4xrydXF7/5XaE=;
- b=m+iKiozwf8/F07wAl9mazU+/FupujZNOngLmJ73hc4eQcMwMht7m+Tc6mL7O302UMkTgv0CQDu38EFK05MwMAeUywcSBR3g+aeDj09RfO4lOKuUCZGSCQX9KkXL3rQZEmFT8GXzmTJnczFHEcjTbz2+ngXsWubIw1Z9ClXy3WgXjmQeIFbFubqc3XVp/rUzPavbIKW9AEUE5RC00Rd3OTGDsQhd7mOWC/BvkczCiW3GoXzoeS+5VkXtsAQlg20yynrsivNJT1fkln5QIJajnl5FPEMVAu8C2uqH6A7KxeMPPvz+bQeK6wc85LHJ5JeMVa1XXUc0/9hYyqhKg+2tgkQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM5PR1101MB2235.namprd11.prod.outlook.com (2603:10b6:4:52::15)
- by CY5PR11MB6413.namprd11.prod.outlook.com (2603:10b6:930:37::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5438.23; Tue, 19 Jul
- 2022 19:17:02 +0000
-Received: from DM5PR1101MB2235.namprd11.prod.outlook.com
- ([fe80::c987:bcad:a771:2696]) by DM5PR1101MB2235.namprd11.prod.outlook.com
- ([fe80::c987:bcad:a771:2696%3]) with mapi id 15.20.5438.023; Tue, 19 Jul 2022
- 19:17:02 +0000
-Message-ID: <34a8720b-47f8-5aa6-3953-a0c82915d188@intel.com>
-Date: Tue, 19 Jul 2022 22:16:54 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Firefox/91.0 Thunderbird/91.11.0
-Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo@kernel.org>, <netdev@vger.kernel.org>
-References: <d8e3744f060ee11d5069bfd0f581f02d0ecb5e08.1657093744.git.lorenzo@kernel.org>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-In-Reply-To: <d8e3744f060ee11d5069bfd0f581f02d0ecb5e08.1657093744.git.lorenzo@kernel.org>
-X-ClientProxiedBy: LO4P123CA0600.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:295::20) To DM5PR1101MB2235.namprd11.prod.outlook.com
- (2603:10b6:4:52::15)
+X-IronPort-AV: E=Sophos;i="5.92,285,1650956400"; d="scan'208";a="843814532"
+Received: from dev1-atbrady.jf.intel.com ([10.166.241.16])
+ by fmsmga006.fm.intel.com with ESMTP; 19 Jul 2022 14:53:18 -0700
+From: Alan Brady <alan.brady@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Tue, 19 Jul 2022 14:52:00 -0700
+Message-Id: <20220719215200.6237-1-alan.brady@intel.com>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 71b2dfbc-2862-4a20-5278-08da69bb4236
-X-MS-TrafficTypeDiagnostic: CY5PR11MB6413:EE_
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ANNQSp8Pp0eeMu+ho0hUWOivXPuANPMkJkeOQx+TG5j0/1IGwn1tuZReZiqEml9tmtqvIuXc9kzYp3S9q2XXtoBwjThcENvsE1+dzcisM7R//YFzV2Mo+XoVVZcblFBokkZFqRXp3GtylfabLOUHOFoxQ4r1kEsMvnBIuY38ScC8hJq5GCMTHTf/knzbBZyJrzeFutxIInjfJdYkweVUIlr39lRem5CJqgdD1/u0AtNyhrCxvyUepv3yS6LVJ6j+cNKPWO9S/I5LhjljHsc/t1vRJEfdA9cz96LAZbiGr9uNM+NAwum6Xur2fY/3AT3h5ryYdtWyMSkRCbgNnwnT5rUvvoJ+sO2MQVHLcHGxA2KVE1+YRancgRlF+bFE7MGuaZxb5UDAsidgoKnDXBw/KY0QhlZZe6i3v5e2KOULNLt3xsYkb4CFmqKxE80B74cS/VskV8UOaNUfMCnglxkFvpTuMFBftxaEkQT+wqF8b8WRbq+57/x2MnqDNGScVIyevaDK4wn1HXN0ocQZmOtvY+BgdwPwdh2vjHXpPz/0Jeq4RWi9iIvPQEjKBR/11p4YvUXlZT2GPQmk96NwDVBX62+wXOrcBSNyz+18kup/UVoBrNpMgFMLzYLXsJDclrV0XXM97po3rv/8QcXVtQQBWkqz5Iw2+y5NbKXZ1zv+ttKA3/G/x7vIt5CP4swQ+WCWeiL287GdakEG/En0nVcu8E0NFQe1afSIzXxFL+rmvmw+jrDb9LmiFz2Hlkp0bQlQWfypoElus72urUDEw6yFWq/tpnJkmhXS/dwbvjumdt+AjkgD6b1vBmKGcACSnVXeR2HflZ5n2GGl0YFkwAfJRg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR1101MB2235.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(136003)(376002)(346002)(396003)(366004)(39860400002)(316002)(8936002)(66476007)(66946007)(66556008)(38100700002)(4326008)(36756003)(8676002)(31696002)(53546011)(6506007)(82960400001)(54906003)(83380400001)(6512007)(31686004)(26005)(41300700001)(186003)(2616005)(6666004)(5660300002)(478600001)(86362001)(6486002)(2906002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bm1YV2k2TlFyOXlBU21XZjhxZytEdlAweFh2WFRiMnlNekRQK1NWbnE2YUJZ?=
- =?utf-8?B?SDRUcUllb1Z5YkF4UHhSV0taQ3VUbjVxSWZxcnVOS2ZvanhIdFBNR2oyUTVl?=
- =?utf-8?B?STA4MjQzR2RLMHNiWDFpcGRKTFR5VVBoUVQyWlh3c1krVkxqd1RkaSttSkwx?=
- =?utf-8?B?ZVNhVG5vMEd2RHFmRURVL25idEw2c0h4eHVHUEhjdjZqbGVEekFKSHNsbWc1?=
- =?utf-8?B?YWwzek12Y1gwY1NZQXgwQUJmNks2NXRPWVhSTXhrL0ZjcWUvOEdESTdycnZY?=
- =?utf-8?B?bmQ3eE9XTys2OGtIM2ZIK3Nqb1pvSFkwRXFwTWlPMWNHa09MTE5vZkN1bHZO?=
- =?utf-8?B?cWlKSldNZTZmcW9VVHVkRzc3bEVkL1I4ZlRLdWxRUVNjMXJwdnBkNys3YlR6?=
- =?utf-8?B?RWczY2JtencxUnptQTlXM1hmWUJnMHlQNEpVMlpwRmk4K2J1eDNUTUZkZjBW?=
- =?utf-8?B?ZFNUSWhkbU1GUURzZkFJQTRWVnBkM0FJTElBN2VQdjNFWVNNQUtVMFRJTEtI?=
- =?utf-8?B?LzhsaHNyZEN1RElmNEFzaE5TTnI5UEluNm9Ick91YW5RMHp6YjJuWXpIT1lV?=
- =?utf-8?B?NGN5c25FV0UreE9URXA0cG1iM0ZtaEFTQUdiVnZGS1ZKMDhVSVgyUXNhb21Q?=
- =?utf-8?B?Y3RUZkFkWSsrSklhYnVCOENTWjViU1VQK3FPWjhwdEF3b1F6QmF6a2xKOWRJ?=
- =?utf-8?B?aEcxSkM5M2ZjRDBBTTllVXc0UjY4dmRLSjd3M2NyUzREeDFReUQ2OXdOWFpF?=
- =?utf-8?B?QWUrQWVxVGF2cEV0bFpHdWdFMFEzK25FOVpvWkM2NXp0cExlenErM3BEZ2JL?=
- =?utf-8?B?TzJ4N0tEYUFSU3NzSjRTeHZ1dXFGeW04VE5ZbUNPblB4dlY0blZXamhSSDhH?=
- =?utf-8?B?ZkNKSGtYNWQ1OWc2OCs0NDNRNFlLaVRRSUdLMSs4UFJJSENnWVdKYitYM1JZ?=
- =?utf-8?B?ZTRVMlU1Zi9STkpVZnJadStMVERDZm1veEhPUW8vbzBpQ3EwWnl4SlM0aHdt?=
- =?utf-8?B?LzVUN2JGTTdyMDJGUHE2V0NKaEY0QUpEUkozZTNROUUyZmlPSWZMYWwyNlBZ?=
- =?utf-8?B?YzdsVGRQbk04K1ROUmhmNE1oNXU0d2R0UnhJd2laU25wM0dwa3gzaWFSRy9h?=
- =?utf-8?B?SWwySFBBeU1LbUsxdnE2Qm04YUsxWlJ6N3NSQ1ZJdE1MS09uR0gvaGFQSElN?=
- =?utf-8?B?RFhUMmZGUHcvMWtXbVNIOFQzOTMvRzJvTVJiRGdIWlB0QWlEcXpEYWxQSUlY?=
- =?utf-8?B?ajQ5cjh3eW1iNUlQUk04dFFOQWc3U2lpVTVVck92ZUtuN0piLzY0OTNNdnFE?=
- =?utf-8?B?czdwVklLOEZmYTNZQW04VTNzRUxJbTZINDFyN0pwQVFlQmo2cG1XWnVlRnIx?=
- =?utf-8?B?OGNQMnJWM2RnK2M3RFRKY3NZR3VIUDFWWCszdjhNMkt1UlhwVnVLeC85ODRa?=
- =?utf-8?B?TDhaRWg3aEtDN1NTUEZWVU50YVBTWWtNZ1RaUUg0ZWFyeCtqSDRwczFvTnQz?=
- =?utf-8?B?UFJ6V2RSeHUwSWRjRS93OFVDOUlqb1hTRWxkcXJ6QlV6TlJxQ2RrdXluRWpr?=
- =?utf-8?B?RDF4c2s2SHQydEVDOVNOT2p2bm5YT1JZOFFuSTVOSUN3ZnprWGg1cURBN2Fj?=
- =?utf-8?B?dFBFM2lKVFovT0xDK09WbHhFVGp6NCswV3NIRHR3b2ZhRzBrVFEzTGpLK0xR?=
- =?utf-8?B?eGg5cHI1TTg4RW0xd05JbzVYMkZCcGhRc3FaRHdhRG1Da0hqSC9OOUNDSlBJ?=
- =?utf-8?B?MFdaTEJDczZBb2lqWHVHRVF4K01BQ2RwZVZoS3cwbTNlbDY4V2ZwSHNiN3g4?=
- =?utf-8?B?N1RJTUNmbmdxWWNiR1cxRnFQckpTajBOaVNPQXpNdSs0Y20yRi9uNm5tVFB6?=
- =?utf-8?B?Wm96Sm16TUJIcXkxZG1kSEhKZW4rdEhpWWdlM0l1V3owdnJjcW1vS2dxZlV0?=
- =?utf-8?B?eFkzZmR3Mkxoam4xK0hZNThVc1Q3eVpVWEJ5UXZiWVlzSmZEUGRqS0pFWE0x?=
- =?utf-8?B?L3ZZV3dlRjJEWWg0a1FjT0YrTElEeEVqUURZRDNpeUJPaGtmVHRIejZUZGhl?=
- =?utf-8?B?S1NHMGVDeUU5T1J3czdqS0ZCYkRaNHNBOW1jR0VyZ1EyNXNUeFZlMXpWWXVJ?=
- =?utf-8?B?d2NvdVoyeEJKTUhTVlZaR2hOaFBibXFtL1BQTjhGUDF6REo4cnVXeUYxOUZp?=
- =?utf-8?B?NkE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 71b2dfbc-2862-4a20-5278-08da69bb4236
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR1101MB2235.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jul 2022 19:17:02.0128 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 47F71adLqtsWP/qYDNdfX3tEDIFFChpJ30wyi5AcA+SH7XbEXFk4ZZFABQrZh+MuvTIBSMaOcRLNKLKXiZk0oA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6413
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658258226; x=1689794226;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=kM6dsYW3CAlNCMXqLOGPUX8A9LmNJEJ2SF9NprqXLks=;
- b=Z/WQeANDs9A8/yjTFwZ0lrsQXRSPQSnyirzDd1feRQQvibOsMwOtuQid
- pcR+fYBNL5xtac8FBR1beHFy6sjHqQhD8q48Ca2D/FJ5UkFfR5wPKu9+S
- xHwAiRceDG6cpceyEcvIwOkuV6KMBESalFnpWT13VkdBgs7Z2amYF24Q9
- ql0xeVszEI9OPlKV6nocaCD6r6lD1Yg2eZe0fdT7YalZdvwHH0huluwmj
- bNX5a3DAW8v76IJI8nlYQxC2H4pKrmYGe+U8EIJVZ5fpua+F4LrlErpST
- QJeaTXjTBIaW/TiTtGdWuFiObdnrim3LnTkvzakeMY/G+TNAtZv3fjn96
+ t=1658267600; x=1689803600;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=NKO0HwsHCBfElbSjYpVgtdBzb9++mHfLMT+lCUPZ28g=;
+ b=apKnz8HK4TS/udT5VbA1XqrGyPH5jBcPCYw81Ccg61FderHStbZvdco0
+ 9W0vS261xs7DXYdsEnYpXNRNjRTf4BZwP6gOfYeZDgSQRwyloUCDVrspf
+ PLOVAd2ve1gxslGdRjJdZgMKYTfNInZm4l7xH6OmvfVHNrO+UuE3/SH6D
+ puaEPkw4Hzldr3yPu9uyiiG6gjXtjSYlNH4qxJ8sxJZxMkz3/LNO6INcs
+ BUBsrcNrmR2bbBn/iwIr32n8bhQRfYxmJ6RT3w8Z/bCHVJnoqLhDZEYEp
+ ThgOppjQ1fDQlaZGJIttGjoEnANNGc5vu/BPxWEacL0vSztkUtv9nYZ5A
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Z/WQeAND
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next] igc: add xdp frags support
- to ndo_xdp_xmit
+ header.a=rsa-sha256 header.s=Intel header.b=apKnz8HK
+Subject: [Intel-wired-lan] [PATCH net-next v2] ping: support ipv6 ping
+ socket flow labels
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -192,191 +91,269 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>,
- jesse.brandeburg@intel.com, jbrouer@redhat.com, "Edri,
- Michael" <michael.edri@intel.com>, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, magnus.karlsson@intel.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/6/2022 10:54, Lorenzo Bianconi wrote:
-> Add the capability to map non-linear xdp frames in XDP_TX and
-> ndo_xdp_xmit callback.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
-> Please note this patch is only compiled tested since I do not have
-> access to a igc NIC
-> ---
->   drivers/net/ethernet/intel/igc/igc_main.c | 128 ++++++++++++++--------
->   1 file changed, 83 insertions(+), 45 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index ae17af44fe02..71657d03da03 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -2129,65 +2129,102 @@ static bool igc_alloc_rx_buffers_zc(struct igc_ring *ring, u16 count)
->   	return ok;
->   }
->   
-> -static int igc_xdp_init_tx_buffer(struct igc_tx_buffer *buffer,
-> -				  struct xdp_frame *xdpf,
-> -				  struct igc_ring *ring)
-> -{
-> -	dma_addr_t dma;
-> -
-> -	dma = dma_map_single(ring->dev, xdpf->data, xdpf->len, DMA_TO_DEVICE);
-> -	if (dma_mapping_error(ring->dev, dma)) {
-> -		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
-> -		return -ENOMEM;
-> -	}
-> -
-> -	buffer->type = IGC_TX_BUFFER_TYPE_XDP;
-> -	buffer->xdpf = xdpf;
-> -	buffer->protocol = 0;
-> -	buffer->bytecount = xdpf->len;
-> -	buffer->gso_segs = 1;
-> -	buffer->time_stamp = jiffies;
-> -	dma_unmap_len_set(buffer, len, xdpf->len);
-> -	dma_unmap_addr_set(buffer, dma, dma);
-> -	return 0;
-> -}
-> -
->   /* This function requires __netif_tx_lock is held by the caller. */
->   static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
->   				      struct xdp_frame *xdpf)
->   {
-> -	struct igc_tx_buffer *buffer;
-> -	union igc_adv_tx_desc *desc;
-> -	u32 cmd_type, olinfo_status;
-> -	int err;
-> +	struct skb_shared_info *sinfo = xdp_get_shared_info_from_frame(xdpf);
-> +	u8 nr_frags = unlikely(xdp_frame_has_frags(xdpf)) ? sinfo->nr_frags : 0;
-> +	u16 count, index = ring->next_to_use;
-> +	struct igc_tx_buffer *head = &ring->tx_buffer_info[index];
-> +	struct igc_tx_buffer *buffer = head;
-> +	union igc_adv_tx_desc *desc = IGC_TX_DESC(ring, index);
-> +	u32 olinfo_status, len = xdpf->len, cmd_type;
-> +	void *data = xdpf->data;
-> +	u16 i;
->   
-> -	if (!igc_desc_unused(ring))
-> -		return -EBUSY;
-> +	count = TXD_USE_COUNT(len);
-> +	for (i = 0; i < nr_frags; i++)
-> +		count += TXD_USE_COUNT(skb_frag_size(&sinfo->frags[i]));
->   
-> -	buffer = &ring->tx_buffer_info[ring->next_to_use];
-> -	err = igc_xdp_init_tx_buffer(buffer, xdpf, ring);
-> -	if (err)
-> -		return err;
-> +	if (igc_maybe_stop_tx(ring, count + 3)) {
-> +		/* this is a hard error */
-> +		return -EBUSY;
-> +	}
->   
-> -	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
-> -		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
-> -		   buffer->bytecount;
-> -	olinfo_status = buffer->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
-> +	i = 0;
-> +	head->bytecount = xdp_get_frame_len(xdpf);
-> +	head->type = IGC_TX_BUFFER_TYPE_XDP;
-> +	head->gso_segs = 1;
-> +	head->xdpf = xdpf;
->   
-> -	desc = IGC_TX_DESC(ring, ring->next_to_use);
-> -	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-> +	olinfo_status = head->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
->   	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
-> -	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(buffer, dma));
->   
-> -	netdev_tx_sent_queue(txring_txq(ring), buffer->bytecount);
-> +	for (;;) {
-> +		dma_addr_t dma;
->   
-> -	buffer->next_to_watch = desc;
-> +		dma = dma_map_single(ring->dev, data, len, DMA_TO_DEVICE);
-> +		if (dma_mapping_error(ring->dev, dma)) {
-> +			netdev_err_once(ring->netdev,
-> +					"Failed to map DMA for TX\n");
-> +			goto unmap;
-> +		}
->   
-> -	ring->next_to_use++;
-> -	if (ring->next_to_use == ring->count)
-> -		ring->next_to_use = 0;
-> +		dma_unmap_len_set(buffer, len, len);
-> +		dma_unmap_addr_set(buffer, dma, dma);
-> +
-> +		cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
-> +			   IGC_ADVTXD_DCMD_IFCS | len;
-> +
-> +		desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-> +		desc->read.buffer_addr = cpu_to_le64(dma);
-> +
-> +		buffer->protocol = 0;
-> +
-> +		if (++index == ring->count)
-> +			index = 0;
-> +
-> +		if (i == nr_frags)
-> +			break;
-> +
-> +		buffer = &ring->tx_buffer_info[index];
-> +		desc = IGC_TX_DESC(ring, index);
-> +		desc->read.olinfo_status = 0;
-> +
-> +		data = skb_frag_address(&sinfo->frags[i]);
-> +		len = skb_frag_size(&sinfo->frags[i]);
-> +		i++;
-> +	}
-> +	desc->read.cmd_type_len |= cpu_to_le32(IGC_TXD_DCMD);
-> +
-> +	netdev_tx_sent_queue(txring_txq(ring), head->bytecount);
-> +	/* set the timestamp */
-> +	head->time_stamp = jiffies;
-> +	/* set next_to_watch value indicating a packet is present */
-> +	head->next_to_watch = desc;
-> +	ring->next_to_use = index;
->   
->   	return 0;
-> +
-> +unmap:
-> +	for (;;) {
-> +		buffer = &ring->tx_buffer_info[index];
-> +		if (dma_unmap_len(buffer, len))
-> +			dma_unmap_page(ring->dev,
-> +				       dma_unmap_addr(buffer, dma),
-> +				       dma_unmap_len(buffer, len),
-> +				       DMA_TO_DEVICE);
-> +		dma_unmap_len_set(buffer, len, 0);
-> +		if (buffer == head)
-> +			break;
-> +
-> +		if (!index)
-> +			index += ring->count;
-> +		index--;
-> +	}
-> +
-> +	return -ENOMEM;
->   }
->   
->   static struct igc_ring *igc_xdp_get_tx_ring(struct igc_adapter *adapter,
-> @@ -2369,6 +2406,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
->   					 igc_rx_offset(rx_ring) + pkt_offset,
->   					 size, true);
-> +			xdp_buff_clear_frags_flag(&xdp);
->   
->   			skb = igc_xdp_run_prog(adapter, &xdp);
->   		}
-Hello Lorenzo,
-Could you provide test hints (step by step) on how to test it?
-Sasha
+Ping sockets don't appear to make any attempt to preserve flow labels
+created and set by userspace using IPV6_FLOWINFO_SEND. Instead they are
+clobbered by autolabels (if enabled) or zero.
+
+Grab the flowlabel out of the msghdr similar to how rawv6_sendmsg does
+it and move the memset up so it doesn't get zeroed after.
+
+Signed-off-by: Alan Brady <alan.brady@intel.com>
+Tested-by: Gurucharan <gurucharanx.g@intel.com>
+---
+v2: change 'fix' to 'support' and add some selftests
+---
+ net/ipv6/ping.c                               |  6 +-
+ tools/testing/selftests/net/ipv6_flowlabel.c  | 75 +++++++++++++++----
+ tools/testing/selftests/net/ipv6_flowlabel.sh | 16 ++++
+ 3 files changed, 81 insertions(+), 16 deletions(-)
+
+diff --git a/net/ipv6/ping.c b/net/ipv6/ping.c
+index ecf3a553a0dc..b1179f62bd23 100644
+--- a/net/ipv6/ping.c
++++ b/net/ipv6/ping.c
+@@ -64,6 +64,8 @@ static int ping_v6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 	if (err)
+ 		return err;
+ 
++	memset(&fl6, 0, sizeof(fl6));
++
+ 	if (msg->msg_name) {
+ 		DECLARE_SOCKADDR(struct sockaddr_in6 *, u, msg->msg_name);
+ 		if (msg->msg_namelen < sizeof(*u))
+@@ -72,12 +74,15 @@ static int ping_v6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 			return -EAFNOSUPPORT;
+ 		}
+ 		daddr = &(u->sin6_addr);
++		if (np->sndflow)
++			fl6.flowlabel = u->sin6_flowinfo & IPV6_FLOWINFO_MASK;
+ 		if (__ipv6_addr_needs_scope_id(ipv6_addr_type(daddr)))
+ 			oif = u->sin6_scope_id;
+ 	} else {
+ 		if (sk->sk_state != TCP_ESTABLISHED)
+ 			return -EDESTADDRREQ;
+ 		daddr = &sk->sk_v6_daddr;
++		fl6.flowlabel = np->flow_label;
+ 	}
+ 
+ 	if (!oif)
+@@ -101,7 +106,6 @@ static int ping_v6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 	ipc6.sockc.tsflags = sk->sk_tsflags;
+ 	ipc6.sockc.mark = sk->sk_mark;
+ 
+-	memset(&fl6, 0, sizeof(fl6));
+ 	fl6.flowi6_oif = oif;
+ 
+ 	if (msg->msg_controllen) {
+diff --git a/tools/testing/selftests/net/ipv6_flowlabel.c b/tools/testing/selftests/net/ipv6_flowlabel.c
+index a7c41375374f..708a9822259d 100644
+--- a/tools/testing/selftests/net/ipv6_flowlabel.c
++++ b/tools/testing/selftests/net/ipv6_flowlabel.c
+@@ -9,6 +9,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <limits.h>
++#include <linux/icmpv6.h>
+ #include <linux/in6.h>
+ #include <stdbool.h>
+ #include <stdio.h>
+@@ -29,26 +30,48 @@
+ #ifndef IPV6_FLOWLABEL_MGR
+ #define IPV6_FLOWLABEL_MGR 32
+ #endif
++#ifndef IPV6_FLOWINFO_SEND
++#define IPV6_FLOWINFO_SEND 33
++#endif
+ 
+ #define FLOWLABEL_WILDCARD	((uint32_t) -1)
+ 
+ static const char cfg_data[]	= "a";
+ static uint32_t cfg_label	= 1;
++static bool use_ping;
++static bool use_flowinfo_send;
++
++static struct icmp6hdr icmp6 = {
++	.icmp6_type = ICMPV6_ECHO_REQUEST
++};
++
++static struct sockaddr_in6 addr = {
++	.sin6_family = AF_INET6,
++	.sin6_addr = IN6ADDR_LOOPBACK_INIT,
++};
+ 
+ static void do_send(int fd, bool with_flowlabel, uint32_t flowlabel)
+ {
+ 	char control[CMSG_SPACE(sizeof(flowlabel))] = {0};
+ 	struct msghdr msg = {0};
+-	struct iovec iov = {0};
++	struct iovec iov = {
++		.iov_base = (char *)cfg_data,
++		.iov_len = sizeof(cfg_data)
++	};
+ 	int ret;
+ 
+-	iov.iov_base = (char *)cfg_data;
+-	iov.iov_len = sizeof(cfg_data);
++	if (use_ping) {
++		iov.iov_base = &icmp6;
++		iov.iov_len = sizeof(icmp6);
++	}
+ 
+ 	msg.msg_iov = &iov;
+ 	msg.msg_iovlen = 1;
+ 
+-	if (with_flowlabel) {
++	if (use_flowinfo_send) {
++		msg.msg_name = &addr;
++		msg.msg_namelen = sizeof(addr);
++	} else if (with_flowlabel) {
+ 		struct cmsghdr *cm;
+ 
+ 		cm = (void *)control;
+@@ -94,6 +117,8 @@ static void do_recv(int fd, bool with_flowlabel, uint32_t expect)
+ 	ret = recvmsg(fd, &msg, 0);
+ 	if (ret == -1)
+ 		error(1, errno, "recv");
++	if (use_ping)
++		goto parse_cmsg;
+ 	if (msg.msg_flags & (MSG_TRUNC | MSG_CTRUNC))
+ 		error(1, 0, "recv: truncated");
+ 	if (ret != sizeof(cfg_data))
+@@ -101,6 +126,7 @@ static void do_recv(int fd, bool with_flowlabel, uint32_t expect)
+ 	if (memcmp(data, cfg_data, sizeof(data)))
+ 		error(1, 0, "recv: data mismatch");
+ 
++parse_cmsg:
+ 	cm = CMSG_FIRSTHDR(&msg);
+ 	if (with_flowlabel) {
+ 		if (!cm)
+@@ -114,9 +140,11 @@ static void do_recv(int fd, bool with_flowlabel, uint32_t expect)
+ 		flowlabel = ntohl(*(uint32_t *)CMSG_DATA(cm));
+ 		fprintf(stderr, "recv with label %u\n", flowlabel);
+ 
+-		if (expect != FLOWLABEL_WILDCARD && expect != flowlabel)
++		if (expect != FLOWLABEL_WILDCARD && expect != flowlabel) {
+ 			fprintf(stderr, "recv: incorrect flowlabel %u != %u\n",
+ 					flowlabel, expect);
++			error(1, 0, "recv: flowlabel is wrong");
++		}
+ 
+ 	} else {
+ 		fprintf(stderr, "recv without label\n");
+@@ -165,11 +193,17 @@ static void parse_opts(int argc, char **argv)
+ {
+ 	int c;
+ 
+-	while ((c = getopt(argc, argv, "l:")) != -1) {
++	while ((c = getopt(argc, argv, "l:ps")) != -1) {
+ 		switch (c) {
+ 		case 'l':
+ 			cfg_label = strtoul(optarg, NULL, 0);
+ 			break;
++		case 'p':
++			use_ping = true;
++			break;
++		case 's':
++			use_flowinfo_send = true;
++			break;
+ 		default:
+ 			error(1, 0, "%s: parse error", argv[0]);
+ 		}
+@@ -178,27 +212,30 @@ static void parse_opts(int argc, char **argv)
+ 
+ int main(int argc, char **argv)
+ {
+-	struct sockaddr_in6 addr = {
+-		.sin6_family = AF_INET6,
+-		.sin6_port = htons(8000),
+-		.sin6_addr = IN6ADDR_LOOPBACK_INIT,
+-	};
+ 	const int one = 1;
+ 	int fdt, fdr;
++	int prot = 0;
++
++	addr.sin6_port = htons(8000);
+ 
+ 	parse_opts(argc, argv);
+ 
+-	fdt = socket(PF_INET6, SOCK_DGRAM, 0);
++	if (use_ping) {
++		fprintf(stderr, "attempting to use ping sockets\n");
++		prot = IPPROTO_ICMPV6;
++	}
++
++	fdt = socket(PF_INET6, SOCK_DGRAM, prot);
+ 	if (fdt == -1)
+ 		error(1, errno, "socket t");
+ 
+-	fdr = socket(PF_INET6, SOCK_DGRAM, 0);
++	fdr = use_ping ? fdt : socket(PF_INET6, SOCK_DGRAM, 0);
+ 	if (fdr == -1)
+ 		error(1, errno, "socket r");
+ 
+ 	if (connect(fdt, (void *)&addr, sizeof(addr)))
+ 		error(1, errno, "connect");
+-	if (bind(fdr, (void *)&addr, sizeof(addr)))
++	if (!use_ping && bind(fdr, (void *)&addr, sizeof(addr)))
+ 		error(1, errno, "bind");
+ 
+ 	flowlabel_get(fdt, cfg_label, IPV6_FL_S_EXCL, IPV6_FL_F_CREATE);
+@@ -216,13 +253,21 @@ int main(int argc, char **argv)
+ 		do_recv(fdr, false, 0);
+ 	}
+ 
++	if (use_flowinfo_send) {
++		fprintf(stderr, "using IPV6_FLOWINFO_SEND to send label\n");
++		addr.sin6_flowinfo = htonl(cfg_label);
++		if (setsockopt(fdt, SOL_IPV6, IPV6_FLOWINFO_SEND, &one,
++			       sizeof(one)) == -1)
++			error(1, errno, "setsockopt flowinfo_send");
++	}
++
+ 	fprintf(stderr, "send label\n");
+ 	do_send(fdt, true, cfg_label);
+ 	do_recv(fdr, true, cfg_label);
+ 
+ 	if (close(fdr))
+ 		error(1, errno, "close r");
+-	if (close(fdt))
++	if (!use_ping && close(fdt))
+ 		error(1, errno, "close t");
+ 
+ 	return 0;
+diff --git a/tools/testing/selftests/net/ipv6_flowlabel.sh b/tools/testing/selftests/net/ipv6_flowlabel.sh
+index d3bc6442704e..cee95e252bee 100755
+--- a/tools/testing/selftests/net/ipv6_flowlabel.sh
++++ b/tools/testing/selftests/net/ipv6_flowlabel.sh
+@@ -18,4 +18,20 @@ echo "TEST datapath (with auto-flowlabels)"
+ ./in_netns.sh \
+   sh -c 'sysctl -q -w net.ipv6.auto_flowlabels=1 && ./ipv6_flowlabel -l 1'
+ 
++echo "TEST datapath (with ping-sockets)"
++./in_netns.sh \
++  sh -c 'sysctl -q -w net.ipv6.flowlabel_reflect=4 && \
++    sysctl -q -w net.ipv4.ping_group_range="0 2147483647" && \
++    ./ipv6_flowlabel -l 1 -p'
++
++echo "TEST datapath (with flowinfo-send)"
++./in_netns.sh \
++  sh -c './ipv6_flowlabel -l 1 -s'
++
++echo "TEST datapath (with ping-sockets flowinfo-send)"
++./in_netns.sh \
++  sh -c 'sysctl -q -w net.ipv6.flowlabel_reflect=4 && \
++    sysctl -q -w net.ipv4.ping_group_range="0 2147483647" && \
++    ./ipv6_flowlabel -l 1 -p -s'
++
+ echo OK. All tests passed
+-- 
+2.37.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
