@@ -1,91 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D51BB57C1D7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Jul 2022 03:14:39 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D335157C5CD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Jul 2022 10:05:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E1E0C83FDD;
-	Thu, 21 Jul 2022 01:14:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1E0C83FDD
+	by smtp1.osuosl.org (Postfix) with ESMTP id A3C8B84753;
+	Thu, 21 Jul 2022 08:05:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A3C8B84753
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658366076;
-	bh=zKwTrg2G6Nw1aoHfcnc+fIJgyQvV3bwgDeq99Gf5Dw8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=P+ygAqfnovfRFNsxw6KMZq0y0nU0uqHqeQkzkBHj80R3vwo2OI3ZfD/peZqCUKJAR
-	 Gc+EseQ1AKtWizq/UJ5xxAM7hFJ9shmOOVHcGFC0mWwr2hpY8OY5oIMQg1uVhWbEKI
-	 iH3icolAfdQkk9U272e8rqeYzRnqXVvt8i/gXC1umPEyx2KeSGAtJq9I/HcC0jFBq7
-	 6cB9JGczm35w4Irc8ICcDU4DnMfvBDP55xqMfDzDJPPFUpU1NmbkW6/T2jEnATg+lH
-	 jNGRjjyqZ7j31lQSzYqkKly+QG/1b2F07ZDUUhGEmSeXxCKJTYSrkuV4v2V7M+YAvJ
-	 7KrPuuNjsGsDg==
+	s=default; t=1658390718;
+	bh=/suBXKa3c5pmDseQWyPuncV7QNV2Ikw2QZL9b4yBYM0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=E/CJgSpcLkNDymEAR+lY+OKsrMi0nkU00iJKLehqN+eoNKOFtFPZZ0+CwMMcye8yQ
+	 V+VAoYfmMreSjr2VS1eSpIP0cdPjuCNk7RW1mkxVSwyye2LfnWv5XJ18M5IP06XT2w
+	 xtDSZCqdmlRboTM6TFchrfdpjYxhiERwzp3UZmZyTBs5RCatMRcBeFA3wtN8zt9E8G
+	 iWA+6nT5syA0KbVTFg1quVKZjAOCqcHhR4k3G8P0WQQFYA81IT7jg4JEPr/XAI10xQ
+	 Ero+Ge08p0nFECUinn4ygRj4ZLQdTYIwWJm20yX/V3mUKAlxvWnuguix1/sPSf7bRV
+	 hRiHBDGqrF7IQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RgV8Mb1QFZDP; Thu, 21 Jul 2022 01:14:36 +0000 (UTC)
+	with ESMTP id p9fcNgFqwjtZ; Thu, 21 Jul 2022 08:05:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AE8C983F9A;
-	Thu, 21 Jul 2022 01:14:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE8C983F9A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E4B283FC2;
+	Thu, 21 Jul 2022 08:05:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E4B283FC2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 125331BF357
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 01:14:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F25351BF42E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 08:05:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D1AFA60E32
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 01:14:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1AFA60E32
+ by smtp3.osuosl.org (Postfix) with ESMTP id C69FE60EAB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 08:05:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C69FE60EAB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6nv2v30pFwht for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Jul 2022 01:14:28 +0000 (UTC)
+ with ESMTP id o6TvfYcAbaAu for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Jul 2022 08:05:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A079360E08
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A079360E08
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 01:14:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10414"; a="267321408"
-X-IronPort-AV: E=Sophos;i="5.92,287,1650956400"; d="scan'208";a="267321408"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jul 2022 18:14:19 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54C64605AE
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 54C64605AE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 08:05:10 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10414"; a="348677188"
+X-IronPort-AV: E=Sophos;i="5.92,289,1650956400"; d="scan'208";a="348677188"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jul 2022 01:05:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,287,1650956400"; d="scan'208";a="630977946"
-Received: from lkp-server01.sh.intel.com (HELO 7dfbdc7c7900) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 20 Jul 2022 18:14:17 -0700
-Received: from kbuild by 7dfbdc7c7900 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1oEKld-0001Bn-0K;
- Thu, 21 Jul 2022 01:14:17 +0000
-Date: Thu, 21 Jul 2022 09:13:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michal Wilczynski <michal.wilczynski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202207210918.4FyECq6p-lkp@intel.com>
-References: <20220720144004.14250-5-michal.wilczynski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.92,288,1650956400"; d="scan'208";a="548680455"
+Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
+ by orsmga003.jf.intel.com with ESMTP; 21 Jul 2022 01:05:08 -0700
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 21 Jul 2022 10:01:25 +0200
+Message-Id: <20220721080125.508953-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220720144004.14250-5-michal.wilczynski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658366068; x=1689902068;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=cFmA4tDwWO1v3+Cs+8THbxou38QrqHVwFSFCzKlY2pE=;
- b=X+hYPhiGAxaqjIPFiwYs81IyQGlDTvyTV1lFwVK+AfRgg/HoRtF4OqNt
- mF4UZayGIQSHjvqHEO4w0NP51Mi5mUp7mVLsbAnlTHx6sLpIRKfYUL335
- phUgrrHipjX46KPe1vDU3572UyDB7rVE6Ouzrkbt17Wu1MMFVXY65Ub6f
- eD1phE+SFOiGs92/ztXWnJHiezNwFmnR9b1C7Bb8AWTDjz99mQ2s+1JwR
- YU1vFoEpM7NbHxNMbMM6vy9Glr+BQbZ/F1p38vjz8w22d7Hx99F6CmjnB
- kjN3Q1pWag6FlbZd870DdcdK8H5aLaGiLc15/jgW7x9xgfBghM9p14gBd
- g==;
+ t=1658390710; x=1689926710;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=pOQ3WUwW8I2FxRrXnrK0vfrHGZX8wDc5z5VpVNgjya4=;
+ b=LIc9KvVfn72E4bfpomWPrmLPfLkXyt3drUQotCeaF6nZoJUn6Jdb4329
+ NmUhVeE6+PgkxZNTnm6IjmaCd6PCLDLB1od3sWm12e3NeqtN523tWUxEA
+ S0zU9ZHYpbGc/WTuG0HB/s4yrXPJEnKBLLco7uyOcuEV728wdjhw1z6+v
+ qb0kz1Cwsul5olsDmwl7q9OvlB3djz+AW4fWL4aOma5KOgw+xmdez9wcF
+ XargBXfTKt7At+X3ANT4G6bDzJwi80jdgyJh/ky7ixdeIGK2ugvQz5t9Y
+ yAXFenKsfD/CUjfWcsTt97gBa+sNEfnYgLNd8XkwtR0hbhz0ujYlwK8BR
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=X+hYPhiG
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 4/4] ice: Add txbalancing
- devlink param
+ header.a=rsa-sha256 header.s=Intel header.b=LIc9KvVf
+Subject: [Intel-wired-lan] [PATCH net v7] ice: Fix VSIs unable to share
+ unicast MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,134 +91,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
- Michal Wilczynski <michal.wilczynski@intel.com>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Michal,
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Thank you for the patch! Perhaps something to improve:
+The driver currently does not allow two VSIs in the same PF domain
+to have the same unicast MAC address. This is incorrect in the sense
+that a policy decision is being made in the driver when it must be
+left to the user. This approach was causing issues when rebooting
+the system with VFs spawned not being able to change their MAC addresses.
+Such errors were present in dmesg:
 
-[auto build test WARNING on net-next/master]
+[ 7921.068237] ice 0000:b6:00.2 ens2f2: Unicast MAC 6a:0d:e4:70:ca:d1 already
+exists on this PF. Preventing setting VF 7 unicast MAC address to 6a:0d:e4:70:ca:d1
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Michal-Wilczynski/ice-Support-5-layer-tx-scheduler-topology/20220720-224322
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git 5fb859f79f4f49d9df16bac2b3a84a6fa3aaccf1
-config: i386-randconfig-a013 (https://download.01.org/0day-ci/archive/20220721/202207210918.4FyECq6p-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project dd5635541cd7bbd62cd59b6694dfb759b6e9a0d8)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/15b804e74b266402a1af3d04b1b3106d06670c23
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Michal-Wilczynski/ice-Support-5-layer-tx-scheduler-topology/20220720-224322
-        git checkout 15b804e74b266402a1af3d04b1b3106d06670c23
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/net/ethernet/intel/ice/
+Fix that by removing this restriction. Doing this also allows
+us to remove some additional code that's checking if a unicast MAC
+filter already exists.
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+Fixes: 47ebc7b02485 ("ice: Check if unicast MAC exists before setting VF MAC")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+---
+ v2: amend the commit msg
+ v3: removed ucast_shared
+ v4: remove if statements depending on ucast_shared
+ v5: split into 2 separete patches
+ v6: target the second patch to next-q
+ v7: correct the 'fixes' tag
+ ---
+ drivers/net/ethernet/intel/ice/ice_main.c  |  2 ++
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 40 ----------------------
+ 2 files changed, 2 insertions(+), 40 deletions(-)
 
-All warnings (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/ice/ice_devlink.c:389:5: warning: no previous prototype for function 'ice_get_tx_topo_user_sel' [-Wmissing-prototypes]
-   int ice_get_tx_topo_user_sel(struct ice_pf *pf, bool *txbalance_ena)
-       ^
-   drivers/net/ethernet/intel/ice/ice_devlink.c:389:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   int ice_get_tx_topo_user_sel(struct ice_pf *pf, bool *txbalance_ena)
-   ^
-   static 
->> drivers/net/ethernet/intel/ice/ice_devlink.c:421:1: warning: no previous prototype for function 'ice_update_tx_topo_user_sel' [-Wmissing-prototypes]
-   ice_update_tx_topo_user_sel(struct ice_pf *pf, bool txbalance_ena)
-   ^
-   drivers/net/ethernet/intel/ice/ice_devlink.c:420:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   int
-   ^
-   static 
-   2 warnings generated.
-
-
-vim +/ice_get_tx_topo_user_sel +389 drivers/net/ethernet/intel/ice/ice_devlink.c
-
-   379	
-   380	/**
-   381	 * ice_get_tx_topo_user_sel - Read user's choice from flash
-   382	 * @pf: pointer to pf structure
-   383	 * @txbalance_ena: value read from flash will be saved here
-   384	 *
-   385	 * Reads user's preference for Tx Scheduler Topology Tree from PFA TLV.
-   386	 *
-   387	 * Returns zero when read was successful, negative values otherwise.
-   388	 */
- > 389	int ice_get_tx_topo_user_sel(struct ice_pf *pf, bool *txbalance_ena)
-   390	{
-   391		struct ice_aqc_nvm_tx_topo_user_sel usr_sel = {};
-   392		struct ice_hw *hw = &pf->hw;
-   393		int status;
-   394	
-   395		status = ice_acquire_nvm(hw, ICE_RES_READ);
-   396		if (status)
-   397			return status;
-   398	
-   399		status = ice_aq_read_nvm(hw, ICE_AQC_NVM_TX_TOPO_MOD_ID, 0,
-   400					 sizeof(usr_sel), &usr_sel, true, true, NULL);
-   401		ice_release_nvm(hw);
-   402	
-   403		*txbalance_ena = usr_sel.data & ICE_AQC_NVM_TX_TOPO_USER_SEL;
-   404	
-   405		return status;
-   406	}
-   407	
-   408	/**
-   409	 * ice_update_tx_topo_user_sel - Save user's preference in flash
-   410	 * @pf: pointer to pf structure
-   411	 * @txbalance_ena: value to be saved in flash
-   412	 *
-   413	 * When txbalance_ena is set to true it means user's preference is to use
-   414	 * five layer Tx Scheduler Topology Tree, when it is set to false then it is
-   415	 * nine layer. This choice should be stored in PFA TLV field and should be
-   416	 * picked up by driver, next time during init.
-   417	 *
-   418	 * Returns zero when save was successful, negative values otherwise.
-   419	 */
-   420	int
- > 421	ice_update_tx_topo_user_sel(struct ice_pf *pf, bool txbalance_ena)
-   422	{
-   423		struct ice_aqc_nvm_tx_topo_user_sel usr_sel = {};
-   424		struct ice_hw *hw = &pf->hw;
-   425		int status;
-   426	
-   427		status = ice_acquire_nvm(hw, ICE_RES_WRITE);
-   428		if (status)
-   429			return status;
-   430	
-   431		status = ice_aq_read_nvm(hw, ICE_AQC_NVM_TX_TOPO_MOD_ID, 0,
-   432					 sizeof(usr_sel), &usr_sel, true, true, NULL);
-   433		if (status)
-   434			goto exit_release_res;
-   435	
-   436		if (txbalance_ena)
-   437			usr_sel.data |= ICE_AQC_NVM_TX_TOPO_USER_SEL;
-   438		else
-   439			usr_sel.data &= ~ICE_AQC_NVM_TX_TOPO_USER_SEL;
-   440	
-   441		status = ice_write_one_nvm_block(pf, ICE_AQC_NVM_TX_TOPO_MOD_ID, 2,
-   442					      sizeof(usr_sel.data), &usr_sel.data,
-   443					      true, NULL, NULL);
-   444	
-   445	exit_release_res:
-   446		ice_release_nvm(hw);
-   447	
-   448		return status;
-   449	}
-   450	
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 0c5780bccb38..3ca5c30452d4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4667,6 +4667,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 		ice_set_safe_mode_caps(hw);
+ 	}
+ 
++	hw->ucast_shared = true;
++
+ 	err = ice_init_pf(pf);
+ 	if (err) {
+ 		dev_err(dev, "ice_init_pf failed: %d\n", err);
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index bb1721f1321d..f4907a3c2d19 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -1309,39 +1309,6 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 	return ret;
+ }
+ 
+-/**
+- * ice_unicast_mac_exists - check if the unicast MAC exists on the PF's switch
+- * @pf: PF used to reference the switch's rules
+- * @umac: unicast MAC to compare against existing switch rules
+- *
+- * Return true on the first/any match, else return false
+- */
+-static bool ice_unicast_mac_exists(struct ice_pf *pf, u8 *umac)
+-{
+-	struct ice_sw_recipe *mac_recipe_list =
+-		&pf->hw.switch_info->recp_list[ICE_SW_LKUP_MAC];
+-	struct ice_fltr_mgmt_list_entry *list_itr;
+-	struct list_head *rule_head;
+-	struct mutex *rule_lock; /* protect MAC filter list access */
+-
+-	rule_head = &mac_recipe_list->filt_rules;
+-	rule_lock = &mac_recipe_list->filt_rule_lock;
+-
+-	mutex_lock(rule_lock);
+-	list_for_each_entry(list_itr, rule_head, list_entry) {
+-		u8 *existing_mac = &list_itr->fltr_info.l_data.mac.mac_addr[0];
+-
+-		if (ether_addr_equal(existing_mac, umac)) {
+-			mutex_unlock(rule_lock);
+-			return true;
+-		}
+-	}
+-
+-	mutex_unlock(rule_lock);
+-
+-	return false;
+-}
+-
+ /**
+  * ice_set_vf_mac
+  * @netdev: network interface device structure
+@@ -1376,13 +1343,6 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+-	if (ice_unicast_mac_exists(pf, mac)) {
+-		netdev_err(netdev, "Unicast MAC %pM already exists on this PF. Preventing setting VF %u unicast MAC address to %pM\n",
+-			   mac, vf_id, mac);
+-		ret = -EINVAL;
+-		goto out_put_vf;
+-	}
+-
+ 	mutex_lock(&vf->cfg_lock);
+ 
+ 	/* VF is notified of its new MAC via the PF's response to the
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
