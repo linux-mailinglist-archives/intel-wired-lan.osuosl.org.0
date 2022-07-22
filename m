@@ -2,86 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0407F57D99C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jul 2022 06:31:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C46B57DA33
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jul 2022 08:22:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 990DD4183A;
-	Fri, 22 Jul 2022 04:31:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 990DD4183A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 047AA41B89;
+	Fri, 22 Jul 2022 06:22:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 047AA41B89
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658464288;
-	bh=X4FSfFEKT57y4I+Ki0f1ThkN/o5G4qQ/zDnoJ0MtEms=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=oZL+PbboprSYJin65iay5VM8nJFXvNS81Qgle4rIpa2s51AWv8Q8LkzfDcOrkNo5P
-	 wFdsOBp4q1436XVf2x059Rt48ERsRc4V8PMQzTedDrolkJg+/zM7F32mXHmyXZQ1e8
-	 5Fe0U4TJSx0OoFDqRu2Gdlm9wHbOqIfpUrcPzpa3lVAbzh9D2Lh5rmpSV/Cld7UAfY
-	 gFNofAoBT6zeY7um3aDktmQCSlEEdR1L+D6BZd+WpUDuBK91pxRSMAuTweLjODOuQP
-	 Cf4kNBBJ7YroD8sq4qsIr/eKJsVEp1YhZIN7v2tvJ2BQH+/0SLk16OrhgAXwhota5M
-	 hRLH5iziOd8IQ==
+	s=default; t=1658470935;
+	bh=fTY9vqUkzHdnKeF/mtXdxjrqsoJeVAx7EM9S71nUh+I=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=BHFwCmqKNs1SYfRJHDpFwalDxE2uA3l6WOBrD2ikzMUVLbDP53EB/ozjZ1Z6tm8n5
+	 GHSBmSPQOy2kbxeoAQvtPy8HH7j68XV0p/nxSHF6g1BTfIhn7F3Dqk6Hzj56SKuYoY
+	 zsNNhGjR4Fiy4pAk7mALOU3ZV7NTK4E2tvKd4wVh0YWODFzCsgPdm9QNt9zB+eSSNR
+	 OeN4m6Am5I+CKgYrZKJhBSZ5/Ym7fv2Z1sTa4RvN8joHfYsJhf5ttpbioTGqXC4vh0
+	 q61HpLx40RlhNKerIBZEz2NNrd/P9SsLuN3eo68tf5LeB+tZdwkIe3cZeSCLtNzC5U
+	 CPvSbpPgYjqGw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5_yDfb3_NPjZ; Fri, 22 Jul 2022 04:31:27 +0000 (UTC)
+	with ESMTP id rYy-IzzpHWTO; Fri, 22 Jul 2022 06:22:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 15DF841837;
-	Fri, 22 Jul 2022 04:31:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 15DF841837
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C7BF41822;
+	Fri, 22 Jul 2022 06:22:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6C7BF41822
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 35F871BF3EB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 04:31:21 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 53F431BF855
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:22:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1CD6E404E5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 04:31:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1CD6E404E5
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2861C84792
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:22:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2861C84792
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rrk-8THiypQ0 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Jul 2022 04:31:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4D2C4013A
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D4D2C4013A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 04:31:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10415"; a="267008943"
-X-IronPort-AV: E=Sophos;i="5.93,184,1654585200"; d="scan'208";a="267008943"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2022 21:31:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,184,1654585200"; d="scan'208";a="574023655"
-Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 21 Jul 2022 21:31:15 -0700
-Received: from kbuild by e0eace57cfef with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oEkJm-0000xk-2w;
- Fri, 22 Jul 2022 04:31:14 +0000
-Date: Fri, 22 Jul 2022 12:30:39 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62da27ef.BeiEan0L1/2pS0Rr%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NcbiH6PUxZzT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Jul 2022 06:22:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 280BC84782
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 280BC84782
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:22:04 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id sz17so6895049ejc.9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 23:22:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4teoEu/6jlLuEBrXi44fco9oNrxWO5E3FOKoNlVFqt0=;
+ b=jRf5ezFsRxyQ920hm7Sf9dPWruevs8fvh1BxaSsxLWds6ykyVc3z3lQOIHQmtl64dP
+ fFFnOCdI4g9lLmKKKuW6CzA4jvPnGhelJCXdT5IVy2PWbLOb9D1DL00qSEKYyyF2u2q0
+ 0xdbvBFcEBvMR/g1DkL8qEezDZyfjPjjp7unPTyvpq78gJAZioExoyLNVFI+FIZIViEY
+ CGwFrQoLeA8YFQB9OEdYCsVAm3YKk7hM94YbO6IRmTGlMWKi9MWS8CIsBG+Q95aOqXGV
+ EiPSz1xl7bJ1vFjZiV3uK07CQW0n8RrCWXsL1DxewIAwqMaXqpKuU3iPV+X6Z7LmFXH0
+ +ZpQ==
+X-Gm-Message-State: AJIora89wMaOz5wOFClkPTSqONnA5iM+ZbgYOZkO/5Ie0k1WVetDUMtw
+ r1D+KnkbUP4c6gqgkfcDpgRVSA==
+X-Google-Smtp-Source: AGRyM1tSgeFH8GK9rM+Z8I/XNtKmZF3Zn7iGX2ibiPOuos6BiMjb++c1IXuGJ7/YHhxeWKMWoK0wZQ==
+X-Received: by 2002:a17:907:2d0e:b0:72b:4af7:7ccd with SMTP id
+ gs14-20020a1709072d0e00b0072b4af77ccdmr1839404ejc.209.1658470922733; 
+ Thu, 21 Jul 2022 23:22:02 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ y3-20020aa7ccc3000000b0043577da51f1sm2055425edt.81.2022.07.21.23.22.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Jul 2022 23:22:01 -0700 (PDT)
+Date: Fri, 22 Jul 2022 08:22:00 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <YtpCCFiXSAFWoUdg@nanopsycho>
+References: <20220721211451.2475600-1-jacob.e.keller@intel.com>
+ <20220721211451.2475600-7-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658464278; x=1690000278;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=ydSwkCT4KgANxbAyuQnQltn2eNV9/sn5igJGEyeuKOg=;
- b=Kn9Ldw4OqU7vYm8X6exWDThzQMLIR9IFDhBeVL3ObgYgEEhwMY0nUnZ1
- MNcxwP2hGlZtD9F9XyGwkoux9dtSIosGkz8W0H3ktrfYHVluzsubFvoa/
- t06Y2ftxzxJPdmOijWE90e6Mkzz4hzGdgF1K7MH+ID67tpUtvMN+GFnKG
- luHcZnUVbFv3517cOcHYS9upDwLxYVt0W+P0noID+tLoKQb3AbmwPmnQu
- vchUZheAO1tqVNUqYNY86OJXLfJLCifAx/IzNV8ZDgb/Nj5Fd09Ozb2Go
- hdNOhHbOok2P8CbsX9pAhVz45yP35a8Qhmg7DwPt8BzETabqrO/RqKHwn
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Kn9Ldw4O
-Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
- 5588d628027092e66195097bdf6835ddf64418b3
+Content-Disposition: inline
+In-Reply-To: <20220721211451.2475600-7-jacob.e.keller@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=4teoEu/6jlLuEBrXi44fco9oNrxWO5E3FOKoNlVFqt0=;
+ b=t3B5GXw6DpT2iiC9VZrGPQ9dZdP4it222ntyWbkA7gc7T+Es9QMWLlJF/ExWdrue/p
+ JCXxlpOV6SV2xFbXBfeMUgZvPqLOm852Mg+cWfKgopgnx+R7DJqu6wapWPPbrXhPjCtS
+ FHt0GRAYOe0SMjmmo3QXCE+mLDpgW+Zgqo906IOaFvOlDxY8+/SlruI3ogxOuSuFFNIT
+ JeG4vvXowtlx6IZmrCv/th0ARb2poce+diA8ESZ1TInEXEBlNbAF7m5KkBfYUjYKlZ7r
+ AtF8oxJeHfqG2JJovTTp491EZddMBq0sJwsycE8RR8r+74+/zb4l2LtOQP6J9e2XzSMp
+ 9rww==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20210112.gappssmtp.com
+ header.i=@resnulli-us.20210112.gappssmtp.com header.a=rsa-sha256
+ header.s=20210112 header.b=t3B5GXw6
+Subject: Re: [Intel-wired-lan] [iproute2-next v2 3/3] devlink: add dry run
+ attribute support to devlink flash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,121 +110,167 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
+ David Ahern <dsahern@kernel.org>, linux-doc@vger.kernel.org,
+ Stephen Hemminger <stephen@networkplumber.org>,
+ Eric Dumazet <edumazet@google.com>, Jiri Pirko <jiri@nvidia.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
-branch HEAD: 5588d628027092e66195097bdf6835ddf64418b3  net/cdc_ncm: Increase NTB max RX/TX values to 64kb
+Thu, Jul 21, 2022 at 11:14:51PM CEST, jacob.e.keller@intel.com wrote:
+>Recent versions of the kernel support the DEVLINK_ATTR_DRY_RUN attribute
+>which allows requesting a dry run of a command. A dry run is simply
+>a request to validate that a command would work, without performing any
+>destructive changes.
+>
+>The attribute is supported by the devlink flash update as a way to
+>validate an update, including potentially the binary image, without
+>modifying the device.
+>
+>Add a "dry_run" option to the command line parsing which will enable
+>this attribute when requested.
+>
+>To avoid potential issues, only allow the attribute to be added to
+>commands when the kernel recognizes it. This is important because some
+>commands do not perform strict validation. If we were to add the
+>attribute without this check, an old kernel may silently accept the
+>command and perform an update even when dry_run was requested.
+>
+>Before adding the attribute, check the maximum attribute from the
+>CTRL_CMD_GETFAMILY and make sure that the kernel recognizes the
+>DEVLINK_ATTR_DRY_RUN attribute.
+>
+>Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+>---
+>Changes since v1
+>* Make dl_kernel_supports_dry_run more generic by passing attribute
+>
+> devlink/devlink.c | 45 +++++++++++++++++++++++++++++++++++++++++++--
+> 1 file changed, 43 insertions(+), 2 deletions(-)
+>
+>diff --git a/devlink/devlink.c b/devlink/devlink.c
+>index 1e2cfc3d4285..24f1a70a9656 100644
+>--- a/devlink/devlink.c
+>+++ b/devlink/devlink.c
+>@@ -296,6 +296,7 @@ static void ifname_map_free(struct ifname_map *ifname_map)
+> #define DL_OPT_PORT_FN_RATE_PARENT	BIT(51)
+> #define DL_OPT_LINECARD		BIT(52)
+> #define DL_OPT_LINECARD_TYPE	BIT(53)
+>+#define DL_OPT_DRY_RUN			BIT(54)
+> 
+> struct dl_opts {
+> 	uint64_t present; /* flags of present items */
+>@@ -372,6 +373,8 @@ struct dl {
+> 	bool verbose;
+> 	bool stats;
+> 	bool hex;
+>+	bool max_attr_valid;
+>+	uint32_t max_attr;
+> 	struct {
+> 		bool present;
+> 		char *bus_name;
+>@@ -701,6 +704,7 @@ static const enum mnl_attr_data_type devlink_policy[DEVLINK_ATTR_MAX + 1] = {
+> 	[DEVLINK_ATTR_LINECARD_STATE] = MNL_TYPE_U8,
+> 	[DEVLINK_ATTR_LINECARD_TYPE] = MNL_TYPE_STRING,
+> 	[DEVLINK_ATTR_LINECARD_SUPPORTED_TYPES] = MNL_TYPE_NESTED,
+>+	[DEVLINK_ATTR_DRY_RUN] = MNL_TYPE_FLAG,
+> };
+> 
+> static const enum mnl_attr_data_type
+>@@ -1522,6 +1526,30 @@ static int dl_args_finding_required_validate(uint64_t o_required,
+> 	return 0;
+> }
+> 
+>+static void dl_get_max_attr(struct dl *dl)
+>+{
+>+	if (!dl->max_attr_valid) {
 
-elapsed time: 880m
+if (dl->max_attr_valid)
+	return;
 
-configs tested: 90
-configs skipped: 3
+and then you can drop the indent.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
-gcc tested configs:
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                          randconfig-c001
-sh                               j2_defconfig
-arc                          axs101_defconfig
-alpha                               defconfig
-mips                         cobalt_defconfig
-arm                      jornada720_defconfig
-sh                              ul2_defconfig
-powerpc                        cell_defconfig
-riscv             nommu_k210_sdcard_defconfig
-mips                           xway_defconfig
-mips                          rb532_defconfig
-powerpc                 mpc834x_mds_defconfig
-m68k                        mvme147_defconfig
-mips                     loongson1b_defconfig
-arm                         at91_dt_defconfig
-m68k                                defconfig
-s390                          debug_defconfig
-nios2                         10m50_defconfig
-sh                               alldefconfig
-powerpc                     tqm8555_defconfig
-arm                             pxa_defconfig
-powerpc                      tqm8xx_defconfig
-mips                           gcw0_defconfig
-arm                        oxnas_v6_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-i386                              debian-10.3
-arm                  randconfig-c002-20220721
-csky                              allnoconfig
-alpha                             allnoconfig
-arc                               allnoconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-i386                             allyesconfig
-i386                                defconfig
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a011
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
+>+		uint32_t max_attr;
+>+		int err;
+>+
+>+		err = mnlg_socket_get_max_attr(&dl->nlg, &max_attr);
+>+		if (err) {
+>+			pr_err("Unable to determine maximum supported devlink attribute\n");
+>+			return;
+>+		}
+>+
+>+		dl->max_attr = max_attr;
+>+		dl->max_attr_valid = true;
+>+	}
+>+}
+>+
+>+static bool dl_kernel_supports_attr(struct dl *dl, enum devlink_attr attr)
+>+{
+>+	dl_get_max_attr(dl);
+>+
+>+	return (dl->max_attr_valid && dl->max_attr >= attr);
 
-clang tested configs:
-mips                malta_qemu_32r6_defconfig
-mips                  cavium_octeon_defconfig
-powerpc                     tqm8540_defconfig
-arm                          ixp4xx_defconfig
-powerpc                  mpc866_ads_defconfig
-mips                      malta_kvm_defconfig
-arm                                 defconfig
-arm                           spitz_defconfig
-mips                      pic32mzda_defconfig
-mips                           mtx1_defconfig
-powerpc                 mpc836x_mds_defconfig
-arm                      tct_hammer_defconfig
-mips                        qi_lb60_defconfig
-x86_64                           allyesconfig
-x86_64                        randconfig-k001
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-hexagon              randconfig-r041-20220721
-s390                 randconfig-r044-20220721
-hexagon              randconfig-r045-20220721
-riscv                randconfig-r042-20220721
+Return is not a function. Drop the "()" here.
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+
+>+}
+>+
+> static int dl_argv_parse(struct dl *dl, uint64_t o_required,
+> 			 uint64_t o_optional)
+> {
+>@@ -2037,6 +2065,16 @@ static int dl_argv_parse(struct dl *dl, uint64_t o_required,
+> 			dl_arg_inc(dl);
+> 			opts->linecard_type = "";
+> 			o_found |= DL_OPT_LINECARD_TYPE;
+>+		} else if (dl_argv_match(dl, "dry_run") &&
+>+			   (o_all & DL_OPT_DRY_RUN)) {
+>+
+>+			if (!dl_kernel_supports_attr(dl, DEVLINK_ATTR_DRY_RUN)) {
+>+				pr_err("Kernel does not support dry_run attribute\n");
+>+				return -EOPNOTSUPP;
+>+			}
+>+
+>+			dl_arg_inc(dl);
+>+			o_found |= DL_OPT_DRY_RUN;
+> 		} else {
+> 			pr_err("Unknown option \"%s\"\n", dl_argv(dl));
+> 			return -EINVAL;
+>@@ -2115,6 +2153,8 @@ static void dl_opts_put(struct nlmsghdr *nlh, struct dl *dl)
+> 		mnl_attr_put_strz(nlh, DEVLINK_ATTR_RATE_NODE_NAME,
+> 				  opts->rate_node_name);
+> 	}
+>+	if (opts->present & DL_OPT_DRY_RUN)
+>+		mnl_attr_put(nlh, DEVLINK_ATTR_DRY_RUN, 0, NULL);
+> 	if (opts->present & DL_OPT_PORT_TYPE)
+> 		mnl_attr_put_u16(nlh, DEVLINK_ATTR_PORT_TYPE,
+> 				 opts->port_type);
+>@@ -2326,7 +2366,7 @@ static void cmd_dev_help(void)
+> 	pr_err("       devlink dev reload DEV [ netns { PID | NAME | ID } ]\n");
+> 	pr_err("                              [ action { driver_reinit | fw_activate } ] [ limit no_reset ]\n");
+> 	pr_err("       devlink dev info [ DEV ]\n");
+>-	pr_err("       devlink dev flash DEV file PATH [ component NAME ] [ overwrite SECTION ]\n");
+>+	pr_err("       devlink dev flash DEV file PATH [ component NAME ] [ overwrite SECTION ] [ dry_run ]\n");
+> }
+> 
+> static bool cmp_arr_last_handle(struct dl *dl, const char *bus_name,
+>@@ -3886,7 +3926,8 @@ static int cmd_dev_flash(struct dl *dl)
+> 			       NLM_F_REQUEST | NLM_F_ACK);
+> 
+> 	err = dl_argv_parse_put(nlh, dl, DL_OPT_HANDLE | DL_OPT_FLASH_FILE_NAME,
+>-				DL_OPT_FLASH_COMPONENT | DL_OPT_FLASH_OVERWRITE);
+>+				DL_OPT_FLASH_COMPONENT | DL_OPT_FLASH_OVERWRITE |
+>+				DL_OPT_DRY_RUN);
+> 	if (err)
+> 		return err;
+> 
+>-- 
+>2.36.1
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
