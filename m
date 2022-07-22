@@ -1,103 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7ABC57DA42
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jul 2022 08:28:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 766CF57DFD8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Jul 2022 12:28:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6BE5E41858;
-	Fri, 22 Jul 2022 06:28:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6BE5E41858
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D747610E9;
+	Fri, 22 Jul 2022 10:28:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D747610E9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658471310;
-	bh=Vc4MVaZGd9FzxN8UZBr1QVwrUhrrezP+80fdr6wqUyU=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1658485690;
+	bh=gI6R2Vktga+iXUcZVuJiZiXnwceC8DIyOgh7tUrnWP4=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Nie1eEmqWXM7z0xY2EhEi6xBetiRe1KsvIjD3bqr9bYvm7N96WHjb1x+yBw1PA5f+
-	 dVu7UsnPQVC1ZQ0qMpnaqJLefYLNOua46jbV3q5agGsfDgpuGrIH70fwwfGzonzfYv
-	 GkUiVdcN1M0dqNnziUcHyYqrrZ5sRTDKClhw1QxX9lgTKazs7lPv9T/MSOV0hMQ98K
-	 WbzfNkVRJnlRu326PNMC4u8F6m9CRWS2RXq/pWaBNdDmy8pO4dI0L6laBW0KIr8OKX
-	 pgogjDGKu2Wr1JM2OVo43dFRSO6nK4nzmeRdUfYwdWNIk9UeHFnFK/74Akm6otCqOi
-	 solPIjwexxdbw==
+	b=5ALPDJXQq2gIdoawjGXcI+juM8oNzGUJ5+5Wyzh+PFWBd5skBOkWKM9l3vwuLd5Ib
+	 jrjn4nwc/XofaybCU+vQC9wCR92UwQYCmBWrMAGrGRRXJlrdB/UnG+j+/3qE4N1vpt
+	 0fl3tiI6MSfzBjZFwZTbBKVEAi3iCzpyqhNWkRkL+YaPwnFoqezVWvDLvNtlNNo7/s
+	 gvvJvfPk0tHMZm9KZlsl+AkKibzgH0twh53YuiBJaGnj0uImXoXm5lKFGHSRA5Dox9
+	 ZrtYIXt4Gq0vugtSxxZZjj9cpn0HIE6bA4c+3aDw0Yju+BluUZqtZHYsQcLNsdfDuD
+	 EO6KcAscGaELA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Cv0IVDoWlEyg; Fri, 22 Jul 2022 06:28:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DzJdc1hVjELz; Fri, 22 Jul 2022 10:28:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A17E04054A;
-	Fri, 22 Jul 2022 06:28:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A17E04054A
+	by smtp3.osuosl.org (Postfix) with ESMTP id E511E60BB5;
+	Fri, 22 Jul 2022 10:28:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E511E60BB5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3D87C1BF855
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:26:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0B0951BF32B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 10:28:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 16A18847CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:26:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 16A18847CB
+ by smtp1.osuosl.org (Postfix) with ESMTP id D758C84123
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 10:28:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D758C84123
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ey9igvOP2vt2 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Jul 2022 06:26:13 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E6BA847C8
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
- [IPv6:2a00:1450:4864:20::635])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0E6BA847C8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 06:26:12 +0000 (UTC)
-Received: by mail-ej1-x635.google.com with SMTP id bp15so6922337ejb.6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Jul 2022 23:26:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=yMVE49QTpYIAzKMre5/nLQ7uVcVNklEmnBRfrBYsHL0=;
- b=jEBPHCq3nUB6jmWINg6fDLp/DIAnS6E8cr+7Boxru4sOw2y/uxqxdhcpVSFO0uPdij
- QBd4fBW6Dcch3AdLtH/xXEXUrBmneAFA1vlhAvpYSDyaK5kGTsak9RZ4YUv+76SQsPEp
- umNL3l7ecTJgpK/YoLVdRRxwEoCAnz+nmfbITaSP0MmS2+XHd33r1CFZnxl3pLPQwQb2
- LqNjpB06n27XZKQbBx2bbQzXHAVQ/ktksbFFC43WGLUvmn+MlQWukR+rW2xiUiOs/A0r
- f6ziuMLkUIVkcGDoKRYUUR8PglHddW8EuB97zA+vP2ghPHSYRlYUgorKtTxhvGZ7SItf
- QdAA==
-X-Gm-Message-State: AJIora/A07NUPBMeWolaEQZFJ5i7ZsZTS3bSgGvBpQltUHhPVzsa+wq+
- MTTgfy/Xwk4win5/A+lyoUPX5Q==
-X-Google-Smtp-Source: AGRyM1srQgoGRk2mHXtOr5D80qB898XHyn5r/b2frEFFaVuftb9wpJV5LXYyuy6tYPL8DU0b5fc3Pw==
-X-Received: by 2002:a17:907:94cf:b0:72f:1c2a:d475 with SMTP id
- dn15-20020a17090794cf00b0072f1c2ad475mr1917361ejc.237.1658471171023; 
- Thu, 21 Jul 2022 23:26:11 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- g22-20020a17090670d600b006f3ef214e27sm1633362ejk.141.2022.07.21.23.26.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Jul 2022 23:26:10 -0700 (PDT)
-Date: Fri, 22 Jul 2022 08:26:09 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <YtpDAQS+eQI9C+LV@nanopsycho>
-References: <20220721211451.2475600-1-jacob.e.keller@intel.com>
- <20220721211451.2475600-2-jacob.e.keller@intel.com>
+ with ESMTP id h-0b_Gpg2kk7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Jul 2022 10:28:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E7A8840FE
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7E7A8840FE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Jul 2022 10:28:02 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10415"; a="274140572"
+X-IronPort-AV: E=Sophos;i="5.93,185,1654585200"; d="scan'208";a="274140572"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2022 03:28:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,185,1654585200"; d="scan'208";a="626516027"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga008.jf.intel.com with ESMTP; 22 Jul 2022 03:28:00 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Fri, 22 Jul 2022 03:27:59 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Fri, 22 Jul 2022 03:27:59 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.170)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Fri, 22 Jul 2022 03:27:59 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fFeoVz0U1Fm4xQ16VFYhB9Qb4gx5ufOjr/YChKNAtKWQK5IK6ZqbKOPkduDD5Ic3AcCtdjXH1YDmxo4UxmguwZRzSjU+PPV/4WoLTrS+1AFfnfDnbbLU9EKw5o1NLo7zhohI/ANGr9FYr1+RC4pvp45zXQhdQCQNGbXtLM1K+8KpqVN2m+m3OAleQ+PQfhEOlRbH/APq4B0LoA8lEb1PYVsV5nICqSl+35KNgn/f9KlbUGBhjSvQe17tBX3mQCFPQeHGL8dCtxjB+J11o+518J/AQCs0YWkdFzizDSDnAc/a4P/4kiesMhQHjEz24rBXL9BbWjMmxg5/9UUAi3f4JA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kPPSpJqKQk1I3XHRsXUf6GNRt1sE3UlznjrZqWN3+A0=;
+ b=ZOh3KyOIbfI3OpZS7g9V5110+EeHmuHVHokPTl7hi/aKgW5fch9jLW9+hLWWBu8dfHG9EzbVEDEclfs3Y3OnGMcNqbfxKz+bjV6VvPEUQccpZCuWuPo009gMjbTj3PiGqtVNmTP65CgFyHZ8V/Cc2LtYik/mABSY+oifZNVDwph5Etw49yMUt+C6zYlk8lkPJkPRUVDRL+XmIDPS4S9PtLqdulCBxOlZd7K3NYxT9SJFpq+whoA5NXRnU70Kcfg5uE0O66Nm8AdbgQApd5odZ6XiRk4Kd6AGK4wh9KagE2MSJFuytPLV65C/RAhh2YSD//UCYx2wTL9uvBsv8QfV8A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CY4PR11MB1624.namprd11.prod.outlook.com (2603:10b6:910:8::12)
+ by MN2PR11MB4336.namprd11.prod.outlook.com (2603:10b6:208:18c::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5458.19; Fri, 22 Jul
+ 2022 10:27:58 +0000
+Received: from CY4PR11MB1624.namprd11.prod.outlook.com
+ ([fe80::6023:b392:54a4:a0a6]) by CY4PR11MB1624.namprd11.prod.outlook.com
+ ([fe80::6023:b392:54a4:a0a6%12]) with mapi id 15.20.5438.023; Fri, 22 Jul
+ 2022 10:27:57 +0000
+From: "Szlosek, Marek" <marek.szlosek@intel.com>
+To: "Wilczynski, Michal" <michal.wilczynski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v3 1/2] ice: Introduce enabling
+ promiscuous mode on multiple VF's
+Thread-Index: AQHYj6fVSo1xJNGFK0yVjclK/anqha2KS0Xg
+Date: Fri, 22 Jul 2022 10:27:56 +0000
+Message-ID: <CY4PR11MB162405ABC9BEC5454D266A41E6909@CY4PR11MB1624.namprd11.prod.outlook.com>
+References: <20220704131227.2966160-1-michal.wilczynski@intel.com>
+ <20220704131227.2966160-2-michal.wilczynski@intel.com>
+In-Reply-To: <20220704131227.2966160-2-michal.wilczynski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 73ab4c5d-00ac-423b-96e5-08da6bccd822
+x-ms-traffictypediagnostic: MN2PR11MB4336:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: K/KKmwnlRO0N85VL+LuNwvUP6eV9CcZARMOOIP4zMp3SrqW6mNtcg6wlEi1HwRChhzlr68OxSVahEubM6PVFjABAMmg050BFH7sb8x5e8PL5z8jz5otqbWjhgWTvtls9ZBxl7UpZDAiy6yzgLCOsh4zuYMQLL5K/bVxTgVSAp224jVFnFTdHiH/GdWy6b54YPplOxZdvGEHMHNJmRoipitmjez70n7WfBwx5tPlyFcG5wUk0q8xQ2VHOLLV1R+01qoMbv0EnY9jpbRq10VA4Z7fqQy/5cQpoZ3tg0R3r7rS+q+/Qd/0sBHSftXK7INDWPsxr6GDyvVZa03KAiQpTzv4AhyM1kmcMT7uGLA1TmZXN8JqhcVKR/8HujQ0ciBVpHH43pKZ+VV53mIWzUz/jikHrRqgMkHFKmdLDPA2aXx0PqW1srwiT0JuBtawqX9Ye1DBHuzW/8Jk4VezQOuWnMflcw8hJehnpghbJDw76JZxpiILNiExzE1XjPVOvtM9bsGO0uJaSfslEyehW5yx3+dWfR92+g4NKyQnEXGUOhX4/JeNK7eGeFhqbJnUlYEd0ixK6Jro5zhgBYspzWRPW8Oi1Xja36W7V4v10GdS/QLuAHSnZmzOra7X++79he5rPTf54dQfwqbdgxjHQES4/KaHgd+hLRTRJdWHqSZznhOlPzCJofYJUgMFnq/YLEZM15tYKYDgKwNf8LMgkp5bBF8v/0VQgEEg03SODVHJPKOEdMF+UexTHrZCgFWhKxkToyhEIJSpN0dhktRBCcYWQMcdADzFvGiHw/8IMkwN9mobisz17HQIOUjpGpVUwLrGl
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY4PR11MB1624.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(136003)(376002)(346002)(366004)(39860400002)(396003)(66556008)(66476007)(66446008)(64756008)(83380400001)(186003)(76116006)(8676002)(4326008)(6506007)(66946007)(86362001)(478600001)(2906002)(33656002)(55016003)(122000001)(82960400001)(52536014)(8936002)(38070700005)(5660300002)(316002)(26005)(53546011)(41300700001)(107886003)(71200400001)(110136005)(9686003)(7696005)(38100700002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?e5FVv/y65mxmq42Udwvw9rbX/RilOWJ4UwrXPawsIe87MqbzfP2cyy43yH?=
+ =?iso-8859-2?Q?OM8Sw26mPvB3C+4dtrMqwpKoi73u/TIbxobQtoCgUGtIrfdXPiP3+XVrvy?=
+ =?iso-8859-2?Q?FCp7PLBVR8z7xM7aTsJLFwW/ae1/MUd3tlYwl3HavpEkQEf3waX4XunOhQ?=
+ =?iso-8859-2?Q?7C9z1rzxhGqS/4Zi+O8+FO9s1ES0jssL1Naw/dZAOy4tb9IIS1Xy/+vFz8?=
+ =?iso-8859-2?Q?PEV9RPalzAJIIL9ofi9EJwZjv6v5Rf/HpY71YBDiZtQU5J5r7sirW0vKDt?=
+ =?iso-8859-2?Q?Wei7wBNwbUIKX2e6iUK1Jpg2HKfpir5y2RTDwdYDjGesOb337eVNVukBCT?=
+ =?iso-8859-2?Q?46eWE1a+M8HrvHOAno4b5Bb4KiIAMixeMDQwqg8BUNu5T6GFM8+iU4iKTP?=
+ =?iso-8859-2?Q?qoQ8EhETE3bF35Wsvsu48Arcr4o/vyWDWgP5fauAV6u5geYGn9h3qHI+vM?=
+ =?iso-8859-2?Q?et2eMz7T54s+zhf12SObqrsSb/pvyN0Ue6zxcFfY//jh4WOTgNVZwZUZpf?=
+ =?iso-8859-2?Q?gZlUIScKnapsBL1Vamay0YLI1SHirAuWv4XxjrDHHYdtgemvszUAXcGXRa?=
+ =?iso-8859-2?Q?Fr0JDa2DE7DtH+r5H4OilKtS/Dh7vy7MJw/muPEcZUbFEZUoPBw9xLFgLk?=
+ =?iso-8859-2?Q?cNWyPQ1zcN+hA1l9J5TUiTeExd6Hon78Tp8ld0e3FaOCaUiSO4pyKzFZcy?=
+ =?iso-8859-2?Q?3z/dtgUPIYoH0J7FUPXyH4bnaVymmBcK8PYDOeq5GV185pjj5YWGUErJgv?=
+ =?iso-8859-2?Q?sYlax97ohrNaEEgR4/lJkdLntDT2/4oPT4sBsV02lqDwpSx9DhYi5rxlNM?=
+ =?iso-8859-2?Q?iv9lYBuPYcAuxRxhPl+6e9LXYHn4i2Q6opHq5fouLcg3BNnO4lcFYaFVB2?=
+ =?iso-8859-2?Q?+x7vBzctBLtnC5AlHi/CwgDONrkIR+PIDtpUjWGCyES8XDFpDigrG7R4A3?=
+ =?iso-8859-2?Q?2MoEQJN/hY8VUkl85GX6B9Qf/32k0tSxlK4Qx+JYkEDz2D6F5ML7v4TlnB?=
+ =?iso-8859-2?Q?fYs5f3+Zs6SPnCFQ0QVwxxQExwP/YtZCs9ieFdh2Rk6NeT5Cc7yaazon7V?=
+ =?iso-8859-2?Q?DbD5lUXGfuWIe1WbvOIzPsRuBHajiFpig31bAIHZkKLsRCT5CTurz2An5Y?=
+ =?iso-8859-2?Q?IXib9/jPUUUZikW8EkN1ZVylXtnl1pxFjwpxKMH1q5FmU8VpPpJJxtWsqS?=
+ =?iso-8859-2?Q?v3zJq7ZSHcFiWgt8t+V9u9Wgu25PZCllHpXBZhh5CdNmTedWJGY3CvOc8k?=
+ =?iso-8859-2?Q?kYOStW1F2kVb7rDKpI4SnwpqQokmPB6druOFQTupmboYcPZgAWxi8Asx8O?=
+ =?iso-8859-2?Q?ZjWNCg0EAH46t7Kq1udKP2MR+sT6GnhyT9ks5VRtATXsH65ChwM1u9ROi7?=
+ =?iso-8859-2?Q?upuPL+7yO1bmkagjwcgCuh4i0A1Lh6GXV83CwxdMmJKn14/pvu40O9jt5g?=
+ =?iso-8859-2?Q?z4XrjOf77kZYPl/sqU+DrSlNvhsW5Fqie0ZQDFIcxT53nb/ZU++sbaytXM?=
+ =?iso-8859-2?Q?MWBRKT5ehCAHbC3t2L+rz+SHxhjKiC52nnPDgGZ66lPSYPNLyQ3Blp/igz?=
+ =?iso-8859-2?Q?nKnZrVuGcD9+VrrdZLpYeaU4pNaKe04fV88n7D0TFrT/CC5t46MbTHVz9h?=
+ =?iso-8859-2?Q?WlHH0RQOk3QmkuYzxeCI9WgXS+BHMPREzu?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220721211451.2475600-2-jacob.e.keller@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=yMVE49QTpYIAzKMre5/nLQ7uVcVNklEmnBRfrBYsHL0=;
- b=Clw+vWYWK9cODwTMjVZuKWbwl+iTUfN2dQCmUX6jPG5IpTaJuAQYig9hApmoPqUrgn
- aXkFaH5E1hIrqovdcfGOBkh5pgrJqhgNjL0Z21dKfmAZCmiqvxKJZb4KKCGDj6TR2VmL
- riOblQnCo+Z10A5hLUbz5zSoxcm7jbIn3CSZfkKngShEMbe9PLZf/ORgJkRv6mHAn35L
- eyM6mOCvL1H0jNszMqYPJ9sTSni8TDf6VtFSISInmQ9rYxobuHKJ7drBJSYmchmZ8qab
- 0dtIMik9KH6L/a8c0+8BGuiYzowe3f0fJla090nt5jMQBqxlFMe5pB0Rp4E7hE1JSTbj
- HIIw==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1624.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 73ab4c5d-00ac-423b-96e5-08da6bccd822
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Jul 2022 10:27:56.9679 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JaP7C9sw4yWAdqts/F881J8iwGEdM0DQA9JOwdHh+rGUNH2DiCa0l+ne1sfZ1URmEqk9XhxUxFKP5pqtFMzRSQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4336
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1658485682; x=1690021682;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=Gk4Zo1cNOHCNgNlSP4H6ccWmR6KtaEo9aLneGgLDOxA=;
+ b=M/X+DPFK/IrONiSo0xGRJTB6sD1X99HG+TetNAFNyd2EJpCqq5fl9NE0
+ YRX7hZwoHyk/xJvZbmGmj9tIL18FgAs0PF0c2t008SKPJ1aSDiixy9YXF
+ chKLNnb54HhQXMmzxbgs0cnz3k3GVm6CENlFcUf1EtdFFzwff0CLOaRm5
+ 3P8EcxOlO3///OLbpooz1vBwtCFiA3Ucb2NwYGkl+Jzjp2DVBvrd0UeZU
+ aWFPMV29zd5IRn6PqeS3XqxIquZwWFHpZCLcK5G3uWr7qONZfHBvUcaRO
+ oBPmgpzJDAmaVdxt+cHWKEwJHdm7EmmSf5Sj/33ehoYFoH61cpmryT1UB
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20210112.gappssmtp.com
- header.i=@resnulli-us.20210112.gappssmtp.com header.a=rsa-sha256
- header.s=20210112 header.b=Clw+vWYW
-Subject: Re: [Intel-wired-lan] [net-next v2 1/2] devlink: add dry run
- attribute to flash update
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=M/X+DPFK
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v3 1/2] ice: Introduce enabling
+ promiscuous mode on multiple VF's
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,198 +188,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
- David Ahern <dsahern@kernel.org>, linux-doc@vger.kernel.org,
- Stephen Hemminger <stephen@networkplumber.org>,
- Eric Dumazet <edumazet@google.com>, Jiri Pirko <jiri@nvidia.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Wilczynski, Michal" <michal.wilczynski@intel.com>
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Jul 21, 2022 at 11:14:46PM CEST, jacob.e.keller@intel.com wrote:
->Users use the devlink flash interface to request a device driver program or
->update the device flash chip. In some cases, a user (or script) may want to
->verify that a given flash update command is supported without actually
->committing to immediately updating the device. For example, a system
->administrator may want to validate that a particular flash binary image
->will be accepted by the device, or simply validate a command before finally
->committing to it.
->
->The current flash update interface lacks a method to support such a dry
->run. Add a new DEVLINK_ATTR_DRY_RUN attribute which shall be used by a
->devlink command to indicate that a request is a dry run which should not
->perform device configuration. Instead, the command should report whether
->the command or configuration request is valid.
->
->While we can validate the initial arguments of the devlink command, a
->proper dry run must be processed by the device driver. This is required
->because only the driver can perform validation of the flash binary file.
->
->Add a new dry_run parameter to the devlink_flash_update_params struct,
->along with the associated bit to indicate if a driver supports verifying a
->dry run.
->
->We always check the dry run attribute last in order to allow as much
->verification of other parameters as possible. For example, even if a driver
->does not support the dry_run option, we can still validate the other
->optional parameters such as the overwrite_mask and per-component update
->name.
->
->Document that userspace should take care when issuing a dry run to older
->kernels, as the flash update command is not strictly verified. Thus,
->unknown attributes will be ignored and this could cause a request for a dry
->run to perform an actual update. We can't fix old kernels to verify unknown
->attributes, but userspace can check the maximum attribute and reject the
->dry run request if it is not supported by the kernel.
->
->Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
->---
->
->Changes since v1:
->* Add kernel doc comments to devlink_flash_update_params
->* Reduce indentation by using nla_get_flag
->
-> .../networking/devlink/devlink-flash.rst      | 23 +++++++++++++++++++
-> include/net/devlink.h                         |  4 ++++
-> include/uapi/linux/devlink.h                  |  8 +++++++
-> net/core/devlink.c                            | 17 +++++++++++++-
-> 4 files changed, 51 insertions(+), 1 deletion(-)
->
->diff --git a/Documentation/networking/devlink/devlink-flash.rst b/Documentation/networking/devlink/devlink-flash.rst
->index 603e732f00cc..1dc373229a54 100644
->--- a/Documentation/networking/devlink/devlink-flash.rst
->+++ b/Documentation/networking/devlink/devlink-flash.rst
->@@ -44,6 +44,29 @@ preserved across the update. A device may not support every combination and
-> the driver for such a device must reject any combination which cannot be
-> faithfully implemented.
-> 
->+Dry run
->+=======
->+
->+Users can request a "dry run" of a flash update by adding the
->+``DEVLINK_ATTR_DRY_RUN`` attribute to the ``DEVLINK_CMD_FLASH_UPDATE``
->+command. If the attribute is present, the kernel will only verify that the
->+provided command is valid. During a dry run, an update is not performed.
->+
->+If supported by the driver, the flash image contents are also validated and
->+the driver may indicate whether the file is a valid flash image for the
->+device.
->+
->+.. code:: shell
->+
->+   $ devlink dev flash pci/0000:af:00.0 file image.bin dry-run
->+   Validating flash binary
->+
->+Note that user space should take care when adding this attribute. Older
->+kernels which do not recognize the attribute may accept the command with an
->+unknown attribute. This could lead to a request for a dry run which performs
->+an unexpected update. To avoid this, user space should check the policy dump
->+and verify that the attribute is recognized before adding it to the command.
->+
-> Firmware Loading
-> ================
-> 
->diff --git a/include/net/devlink.h b/include/net/devlink.h
->index 780744b550b8..47b86ccb85b0 100644
->--- a/include/net/devlink.h
->+++ b/include/net/devlink.h
->@@ -613,6 +613,8 @@ enum devlink_param_generic_id {
->  * struct devlink_flash_update_params - Flash Update parameters
->  * @fw: pointer to the firmware data to update from
->  * @component: the flash component to update
->+ * @overwrite_mask: what sections of flash can be overwritten
-
-Well, strictly speaking, this is not related to this patch and should be
-done in a separate one. But hey, it's a comment, so I guess noone really
-cares.
 
 
->+ * @dry_run: if true, do not actually update the flash
->  *
->  * With the exception of fw, drivers must opt-in to parameters by
->  * setting the appropriate bit in the supported_flash_update_params field in
->@@ -622,10 +624,12 @@ struct devlink_flash_update_params {
-> 	const struct firmware *fw;
-> 	const char *component;
-> 	u32 overwrite_mask;
->+	bool dry_run;
-> };
-> 
-> #define DEVLINK_SUPPORT_FLASH_UPDATE_COMPONENT		BIT(0)
-> #define DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK	BIT(1)
->+#define DEVLINK_SUPPORT_FLASH_UPDATE_DRY_RUN		BIT(2)
-> 
-> struct devlink_region;
-> struct devlink_info_req;
->diff --git a/include/uapi/linux/devlink.h b/include/uapi/linux/devlink.h
->index b3d40a5d72ff..e24a5a808a12 100644
->--- a/include/uapi/linux/devlink.h
->+++ b/include/uapi/linux/devlink.h
->@@ -576,6 +576,14 @@ enum devlink_attr {
-> 	DEVLINK_ATTR_LINECARD_TYPE,		/* string */
-> 	DEVLINK_ATTR_LINECARD_SUPPORTED_TYPES,	/* nested */
-> 
->+	/* Before adding this attribute to a command, user space should check
->+	 * the policy dump and verify the kernel recognizes the attribute.
->+	 * Otherwise older kernels which do not recognize the attribute may
->+	 * silently accept the unknown attribute while not actually performing
->+	 * a dry run.
->+	 */
->+	DEVLINK_ATTR_DRY_RUN,			/* flag */
->+
-> 	/* add new attributes above here, update the policy in devlink.c */
-> 
-> 	__DEVLINK_ATTR_MAX,
->diff --git a/net/core/devlink.c b/net/core/devlink.c
->index 98d79feeb3dc..1cff636c9b2b 100644
->--- a/net/core/devlink.c
->+++ b/net/core/devlink.c
->@@ -4743,7 +4743,8 @@ EXPORT_SYMBOL_GPL(devlink_flash_update_timeout_notify);
-> static int devlink_nl_cmd_flash_update(struct sk_buff *skb,
-> 				       struct genl_info *info)
-> {
->-	struct nlattr *nla_component, *nla_overwrite_mask, *nla_file_name;
->+	struct nlattr *nla_component, *nla_overwrite_mask, *nla_file_name,
->+		      *nla_dry_run;
-> 	struct devlink_flash_update_params params = {};
-> 	struct devlink *devlink = info->user_ptr[0];
-> 	const char *file_name;
->@@ -4789,6 +4790,19 @@ static int devlink_nl_cmd_flash_update(struct sk_buff *skb,
-> 		return ret;
-> 	}
-> 
->+	/* Always check dry run last, in order to allow verification of other
->+	 * parameter support even if the particular driver does not yet
->+	 * support a full dry-run
->+	 */
->+	params.dry_run = nla_get_flag(info->attrs[DEVLINK_ATTR_DRY_RUN]);
->+	if (params.dry_run &&
->+	    !(supported_params & DEVLINK_SUPPORT_FLASH_UPDATE_DRY_RUN)) {
->+		NL_SET_ERR_MSG_ATTR(info->extack, nla_dry_run,
->+				    "flash update is supported, but dry run is not supported for this device");
->+		release_firmware(params.fw);
->+		return -EOPNOTSUPP;
->+	}
->+
-> 	devlink_flash_update_begin_notify(devlink);
-> 	ret = devlink->ops->flash_update(devlink, &params, info->extack);
-> 	devlink_flash_update_end_notify(devlink);
->@@ -9004,6 +9018,7 @@ static const struct nla_policy devlink_nl_policy[DEVLINK_ATTR_MAX + 1] = {
-> 	[DEVLINK_ATTR_RATE_PARENT_NODE_NAME] = { .type = NLA_NUL_STRING },
-> 	[DEVLINK_ATTR_LINECARD_INDEX] = { .type = NLA_U32 },
-> 	[DEVLINK_ATTR_LINECARD_TYPE] = { .type = NLA_NUL_STRING },
->+	[DEVLINK_ATTR_DRY_RUN] = { .type = NLA_FLAG },
-> };
-> 
-> static const struct genl_small_ops devlink_nl_ops[] = {
->-- 
->2.35.1.456.ga9c7032d4631
->
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Michal Wilczynski
+> Sent: poniedzia=B3ek, 4 lipca 2022 15:12
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Wilczynski, Michal <michal.wilczynski@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v3 1/2] ice: Introduce enabling
+> promiscuous mode on multiple VF's
+> =
 
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
+> In current implementation default VSI switch filter is only able to forwa=
+rd
+> traffic to a single VSI. This limits promiscuous mode with private flag '=
+vf-true-
+> promisc-support' to a single VF. Enabling it on the second VF won't work.=
+ Also
+> allmulticast support doesn't seem to be properly implemented when vf-true-
+> promisc-support is true.
+> =
+
+> Use standard ice_add_rule_internal() function that already implements
+> forwarding to multiple VSI's instead of constructing AQ call manually.
+> =
+
+> Add switch filter for allmulticast mode when vf-true-promisc-support is
+> enabled. The same filter is added regardless of the flag - it doesn't mat=
+ter for
+> this case.
+> =
+
+> Remove unnecessary fields in switch structure. From now on book keeping
+> will be done by ice_add_rule_internal().
+> =
+
+> Refactor unnecessarily passed function arguments.
+> =
+
+> To test:
+> 1) Create 2 VM's, and two VF's. Attach VF's to VM's.
+> 2) Enable promiscuous mode on both of them and check if
+>    traffic is seen on both of them.
+> =
+
+> Fixes: 01b5e89aab49 ("ice: Add VF promiscuous support")
+> Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h          |   2 -
+>  drivers/net/ethernet/intel/ice/ice_eswitch.c  |   8 +-
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c  |   2 +-
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  67 ++++-----
+>  drivers/net/ethernet/intel/ice/ice_lib.h      |   9 +-
+>  drivers/net/ethernet/intel/ice/ice_main.c     |  14 +-
+>  drivers/net/ethernet/intel/ice/ice_switch.c   | 134 +++++++++---------
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |   6 +-
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   4 -
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  10 +-
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   4 +-
+>  drivers/net/ethernet/intel/ice/ice_virtchnl.c |  58 ++++----
+>  12 files changed, 151 insertions(+), 167 deletions(-)
+> =
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h
+> b/drivers/net/ethernet/intel/ice/ice.h
+> index 60453b3b8d23..d8d64914e413 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+
+Tested-by: Marek Szlosek <marek.szlosek@intel.com>
 
 
 _______________________________________________
