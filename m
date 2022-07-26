@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C76F581C8A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 01:44:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACC54581C8C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 01:44:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36BC360A78;
-	Tue, 26 Jul 2022 23:44:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36BC360A78
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3ECEA408DE;
+	Tue, 26 Jul 2022 23:44:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3ECEA408DE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658879073;
-	bh=thRCZ8JQ0Hh2/Ekm+3EMvIm6Ps07FaFRhUzuWNpvbVg=;
+	s=default; t=1658879082;
+	bh=Op3+muHyUM10dSQVm806hQO7Uz00Tbf0HVaEgo62ipk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Ai+F2JAL4M5t/emU9L4KWWob2H5aF+05N+oiEInzharoptvbtZEQ0tLM52okC0B2/
-	 h0n+QfTN7F1Zzry0LZF3tuI3sdksmOym3kTVSr8zaw9ClTKAHkfvDyjFVv/zWYOQEd
-	 wui1KU+uaOhcu6DUW6AkJATkCbt7SAiaxvFF7PSvlqZcaOEyZgdy+WncCj95qz9OVP
-	 7ZsCkhKaMIwJ1a9GbVgkmCxWWqbb30hBQGeisI7M6RlawmZj+8MBQE4ihq3sqXIjYG
-	 rFe/g7aWO1pLIAvXGW0wpRUZFiCwoHe1oWw1YsFOXSAqEwJWdlJOY7hA+QKa8lXoMV
-	 +A64SpW3TOijw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4VzumhCn765W; Tue, 26 Jul 2022 23:44:31 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 59970605B0;
-	Tue, 26 Jul 2022 23:44:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59970605B0
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7AAAA1BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:15 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4F1F640934
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4F1F640934
+	b=o+XYCv/bNSd0EVuV2c7XcpI1SfnPSHfWVwCjNWqJoRcB6QjEZJKH9evvPKSqBaIHT
+	 G/5P2qOh2Q4eMNER+eYTMNwYOZlwA8JKtg6TcoEvTdBdxuqwvTKfxTp0PrkNFJrBsa
+	 gKF2pRpjF9148RqD8P+NqphbGS/doDrXtVLvzkkJ5BNmji6TcKCWCpj00IhW5OLVjw
+	 +r8C6igFUNgzl4DU6HiBmxVo3+ncsj4ILQ5kBVV1fGgWF9U8f4WP91Ez5FHNtIvFft
+	 AEXuapXc6kEFhBdyRxy8Ll+nVRBb01izYfcOj/fOTLi5w6h+SExSFw1zrDdicl9aUT
+	 mvP57pgEAApQw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BBQM1JMiDIT7 for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 64kMf3Gq6oYr; Tue, 26 Jul 2022 23:44:39 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 77FE540347;
+	Tue, 26 Jul 2022 23:44:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 77FE540347
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 562641BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 11585402E7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 11585402E7
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id J3lBKHrj7na2 for <intel-wired-lan@lists.osuosl.org>;
  Tue, 26 Jul 2022 23:44:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CCDCE40936
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1EB9C402FE
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CCDCE40936
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1EB9C402FE
  for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="313873688"
-X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="313873688"
+X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="313873690"
+X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="313873690"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Jul 2022 16:44:10 -0700
-X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="689649904"
+X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="689649907"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.7])
  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Jul 2022 16:44:10 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 26 Jul 2022 16:43:56 -0700
-Message-Id: <20220726234357.50610-6-jacob.e.keller@intel.com>
+Date: Tue, 26 Jul 2022 16:43:57 -0700
+Message-Id: <20220726234357.50610-7-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.37.1.208.ge72d93e88cb2
 In-Reply-To: <20220726234357.50610-1-jacob.e.keller@intel.com>
 References: <20220726234357.50610-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658879052; x=1690415052;
+ t=1658879053; x=1690415053;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=KGpXs4Jif5N3bxKQl9rzxanwpGev+66LHFlH7PkYZek=;
- b=fF/EqdrW9hgoSSAohQzjh18a1fiaFOUizLvTE+TrgxTGsdyAkTc1+m0/
- 5djv12FLYuPzQeajRBgNTPbk8CbNoJqo0+WJIzliE9XxzGQzsWEQFU9Y0
- vgIGwtxFnA2kvzmV3mBBGQZSehFuikgIDo0iXdIC8FglVDtF+/7iOD3fF
- 3osXl2L+DF6lHrB2OrKCvJHLw55itpNAzpiFFVCBIUvNsAKQs8iXa0x9R
- 4zsSiTJz34GulYf50fu1i3paaEZvfMnm+Db+nk/gLzHFgw15TH9M7K6i+
- m6tze7+kQUUv45+i/4wQt2omvEjs8I1pcwcByecS5KgAUwmmJovV1IlTU
+ bh=tfKRGOhdagiI0yjFIWvqkL3vajGzu3K+nFC0UAaCwlQ=;
+ b=kSkZDdqRYPfh0Nn8kDHi2hdDcg7mUj2ygGIDytU5ObaoIu4a6fh65BIP
+ bhhIkBu+RQ4rDq93JRddeQWCq0AEuk2VerKCT/SknbKlRLNZ7jE0WhrEs
+ Bz/Q7p9g/ONKA6+0wXxTE9aY3fGjGgF5p0QzU0swvMQQBW2PbUuUyL/zH
+ hS6GZTtxBs1JCoNgsmO/SUxnHbTTE1Dvzuim9Fx0kxBIE+1VjnjAr2u4O
+ JcZLYUeWnpFT66KVqGXXvbOAHtCKHYPOCk1LMbq/Mo1dgD4tExBTUELEt
+ lRU7WktAPFAjxtLf0lmNGFyNrRvQd37jQ36w5OKUv1bYRXQG4I+iwylYl
  A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fF/EqdrW
-Subject: [Intel-wired-lan] [net-next 5/6] ice: re-arrange some static
- functions in ice_ptp.c
+ header.a=rsa-sha256 header.s=Intel header.b=kSkZDdqR
+Subject: [Intel-wired-lan] [net-next 6/6] ice: introduce
+ ice_ptp_reset_cached_phctime function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,719 +100,199 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-A following change is going to want to make use of ice_ptp_flush_tx_tracker
-earlier in the ice_ptp.c file. To make this work, move the Tx timestamp
-tracking functions higher up in the file, and pull the
-ice_ptp_update_cached_timestamp function below them. This should have no
-functional change.
+If the PTP hardware clock is adjusted, the ice driver must update the
+cached PHC timestamp. This is required in order to perform timestamp
+extension on the shorter timestamps captured by the PHY.
+
+Currently, we simply call ice_ptp_update_cached_phctime in the settime and
+adjtime callbacks. This has a few issues:
+
+1) if ICE_CFG_BUSY is set because another thread is updating the Rx rings,
+   we will exit with an error. This is not checked, and the functions do
+   not re-schedule the update. This could leave the cached timestamp
+   incorrect until the next scheduled work item execution.
+
+2) even if we did handle an update, any currently outstanding Tx timestamp
+   would be extended using the wrong cached PHC time. This would produce
+   incorrect results.
+
+To fix these issues, introduce a new ice_ptp_reset_cached_phctime function.
+This function calls the ice_ptp_update_cached_phctime, and discards
+outstanding Tx timestamps.
+
+If the ice_ptp_update_cached_phctime function fails because ICE_CFG_BUSY is
+set, we log a warning and schedule the thread to execute soon. The update
+function is modified so that it always updates the cached copy in the PF
+regardless. This ensures we have the most up to date values possible and
+minimizes the risk of a packet timestamp being extended with the wrong
+value.
+
+It would be nice if we could skip reporting Rx timestamps until the cached
+values are up to date. However, we can't access the Rx rings while
+ICE_CFG_BUSY is set because they are actively being updated by another
+thread.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 670 +++++++++++------------
- 1 file changed, 335 insertions(+), 335 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 99 ++++++++++++++++++------
+ 1 file changed, 76 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index bfab72e00e3e..b46283cf97e4 100644
+index b46283cf97e4..ba7d78a08f85 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -490,68 +490,6 @@ ice_ptp_read_src_clk_reg(struct ice_pf *pf, struct ptp_system_timestamp *sts)
- 	return ((u64)hi << 32) | lo;
- }
- 
--/**
-- * ice_ptp_update_cached_phctime - Update the cached PHC time values
-- * @pf: Board specific private structure
-- *
-- * This function updates the system time values which are cached in the PF
-- * structure and the Rx rings.
-- *
-- * This function must be called periodically to ensure that the cached value
+@@ -880,8 +880,10 @@ static void ice_ptp_tx_tstamp_cleanup(struct ice_pf *pf, struct ice_ptp_tx *tx)
+  * structure and the Rx rings.
+  *
+  * This function must be called periodically to ensure that the cached value
 - * is never more than 2 seconds old. It must also be called whenever the PHC
 - * time has been changed.
-- *
-- * Return:
-- * * 0 - OK, successfully updated
-- * * -EAGAIN - PF was busy, need to reschedule the update
-- */
--static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	unsigned long update_before;
--	u64 systime;
--	int i;
--
++ * is never more than 2 seconds old.
++ *
++ * Note that the cached copy in the PF PTP structure is always updated, even
++ * if we can't update the copy in the Rx rings.
+  *
+  * Return:
+  * * 0 - OK, successfully updated
+@@ -894,9 +896,6 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+ 	u64 systime;
+ 	int i;
+ 
 -	if (test_and_set_bit(ICE_CFG_BUSY, pf->state))
 -		return -EAGAIN;
 -
--	update_before = pf->ptp.cached_phc_jiffies + msecs_to_jiffies(2000);
--	if (pf->ptp.cached_phc_time &&
--	    time_is_before_jiffies(update_before)) {
--		unsigned long time_taken = jiffies - pf->ptp.cached_phc_jiffies;
--		dev_warn(dev, "%u msecs passed between update to cached PHC time\n",
--			 jiffies_to_msecs(time_taken));
--		pf->ptp.late_cached_phc_updates++;
--	}
--
--	/* Read the current PHC time */
--	systime = ice_ptp_read_src_clk_reg(pf, NULL);
--
--	/* Update the cached PHC time stored in the PF structure */
--	WRITE_ONCE(pf->ptp.cached_phc_time, systime);
--	WRITE_ONCE(pf->ptp.cached_phc_jiffies, jiffies);
--
--	ice_for_each_vsi(pf, i) {
--		struct ice_vsi *vsi = pf->vsi[i];
--		int j;
--
--		if (!vsi)
--			continue;
--
--		if (vsi->type != ICE_VSI_PF)
--			continue;
--
--		ice_for_each_rxq(vsi, j) {
--			if (!vsi->rx_rings[j])
--				continue;
--			WRITE_ONCE(vsi->rx_rings[j]->cached_phctime, systime);
--		}
--	}
--	clear_bit(ICE_CFG_BUSY, pf->state);
--
--	return 0;
--}
--
- /**
-  * ice_ptp_extend_32b_ts - Convert a 32b nanoseconds timestamp to 64b
-  * @cached_phc_time: recently cached copy of PHC time
-@@ -661,6 +599,341 @@ static u64 ice_ptp_extend_40b_ts(struct ice_pf *pf, u64 in_tstamp)
- 				     (in_tstamp >> 8) & mask);
- }
+ 	update_before = pf->ptp.cached_phc_jiffies + msecs_to_jiffies(2000);
+ 	if (pf->ptp.cached_phc_time &&
+ 	    time_is_before_jiffies(update_before)) {
+@@ -913,6 +912,9 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+ 	WRITE_ONCE(pf->ptp.cached_phc_time, systime);
+ 	WRITE_ONCE(pf->ptp.cached_phc_jiffies, jiffies);
  
-+/**
-+ * ice_ptp_tx_tstamp_work - Process Tx timestamps for a port
-+ * @work: pointer to the kthread_work struct
-+ *
-+ * Process timestamps captured by the PHY associated with this port. To do
-+ * this, loop over each index with a waiting skb.
-+ *
-+ * If a given index has a valid timestamp, perform the following steps:
-+ *
-+ * 1) copy the timestamp out of the PHY register
-+ * 4) clear the timestamp valid bit in the PHY register
-+ * 5) unlock the index by clearing the associated in_use bit.
-+ * 2) extend the 40b timestamp value to get a 64bit timestamp
-+ * 3) send that timestamp to the stack
-+ *
-+ * After looping, if we still have waiting SKBs, then re-queue the work. This
-+ * may cause us effectively poll even when not strictly necessary. We do this
-+ * because it's possible a new timestamp was requested around the same time as
-+ * the interrupt. In some cases hardware might not interrupt us again when the
-+ * timestamp is captured.
-+ *
-+ * Note that we only take the tracking lock when clearing the bit and when
-+ * checking if we need to re-queue this task. The only place where bits can be
-+ * set is the hard xmit routine where an SKB has a request flag set. The only
-+ * places where we clear bits are this work function, or the periodic cleanup
-+ * thread. If the cleanup thread clears a bit we're processing we catch it
-+ * when we lock to clear the bit and then grab the SKB pointer. If a Tx thread
-+ * starts a new timestamp, we might not begin processing it right away but we
-+ * will notice it at the end when we re-queue the work item. If a Tx thread
-+ * starts a new timestamp just after this function exits without re-queuing,
-+ * the interrupt when the timestamp finishes should trigger. Avoiding holding
-+ * the lock for the entire function is important in order to ensure that Tx
-+ * threads do not get blocked while waiting for the lock.
-+ */
-+static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
-+{
-+	struct ice_ptp_port *ptp_port;
-+	struct ice_ptp_tx *tx;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	u8 idx;
-+
-+	tx = container_of(work, struct ice_ptp_tx, work);
-+	if (!tx->init)
-+		return;
-+
-+	ptp_port = container_of(tx, struct ice_ptp_port, tx);
-+	pf = ptp_port_to_pf(ptp_port);
-+	hw = &pf->hw;
-+
-+	for_each_set_bit(idx, tx->in_use, tx->len) {
-+		struct skb_shared_hwtstamps shhwtstamps = {};
-+		u8 phy_idx = idx + tx->quad_offset;
-+		u64 raw_tstamp, tstamp;
-+		struct sk_buff *skb;
-+		int err;
-+
-+		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
-+
-+		err = ice_read_phy_tstamp(hw, tx->quad, phy_idx,
-+					  &raw_tstamp);
-+		if (err)
-+			continue;
-+
-+		ice_trace(tx_tstamp_fw_done, tx->tstamps[idx].skb, idx);
-+
-+		/* Check if the timestamp is invalid or stale */
-+		if (!(raw_tstamp & ICE_PTP_TS_VALID) ||
-+		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
-+			continue;
-+
-+		/* The timestamp is valid, so we'll go ahead and clear this
-+		 * index and then send the timestamp up to the stack.
-+		 */
-+		spin_lock(&tx->lock);
-+		tx->tstamps[idx].cached_tstamp = raw_tstamp;
-+		clear_bit(idx, tx->in_use);
-+		skb = tx->tstamps[idx].skb;
-+		tx->tstamps[idx].skb = NULL;
-+		spin_unlock(&tx->lock);
-+
-+		/* it's (unlikely but) possible we raced with the cleanup
-+		 * thread for discarding old timestamp requests.
-+		 */
-+		if (!skb)
-+			continue;
-+
-+		/* Extend the timestamp using cached PHC time */
-+		tstamp = ice_ptp_extend_40b_ts(pf, raw_tstamp);
-+		if (tstamp) {
-+			shhwtstamps.hwtstamp = ns_to_ktime(tstamp);
-+			ice_trace(tx_tstamp_complete, skb, idx);
-+		}
-+
-+		skb_tstamp_tx(skb, &shhwtstamps);
-+		dev_kfree_skb_any(skb);
-+	}
-+
-+	/* Check if we still have work to do. If so, re-queue this task to
-+	 * poll for remaining timestamps.
-+	 */
-+	spin_lock(&tx->lock);
-+	if (!bitmap_empty(tx->in_use, tx->len))
-+		kthread_queue_work(pf->ptp.kworker, &tx->work);
-+	spin_unlock(&tx->lock);
-+}
-+
-+/**
-+ * ice_ptp_alloc_tx_tracker - Initialize tracking for Tx timestamps
-+ * @tx: Tx tracking structure to initialize
-+ *
-+ * Assumes that the length has already been initialized. Do not call directly,
-+ * use the ice_ptp_init_tx_e822 or ice_ptp_init_tx_e810 instead.
-+ */
-+static int
-+ice_ptp_alloc_tx_tracker(struct ice_ptp_tx *tx)
-+{
-+	tx->tstamps = kcalloc(tx->len, sizeof(*tx->tstamps), GFP_KERNEL);
-+	if (!tx->tstamps)
-+		return -ENOMEM;
-+
-+	tx->in_use = bitmap_zalloc(tx->len, GFP_KERNEL);
-+	if (!tx->in_use) {
-+		kfree(tx->tstamps);
-+		tx->tstamps = NULL;
-+		return -ENOMEM;
-+	}
-+
-+	spin_lock_init(&tx->lock);
-+	kthread_init_work(&tx->work, ice_ptp_tx_tstamp_work);
-+
-+	tx->init = 1;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_ptp_flush_tx_tracker - Flush any remaining timestamps from the tracker
-+ * @pf: Board private structure
-+ * @tx: the tracker to flush
-+ */
-+static void
-+ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	u8 idx;
-+
-+	for (idx = 0; idx < tx->len; idx++) {
-+		u8 phy_idx = idx + tx->quad_offset;
-+
-+		spin_lock(&tx->lock);
-+		if (tx->tstamps[idx].skb) {
-+			dev_kfree_skb_any(tx->tstamps[idx].skb);
-+			tx->tstamps[idx].skb = NULL;
-+			pf->ptp.tx_hwtstamp_flushed++;
-+		}
-+		clear_bit(idx, tx->in_use);
-+		spin_unlock(&tx->lock);
-+
-+		/* Clear any potential residual timestamp in the PHY block */
-+		if (!pf->hw.reset_ongoing)
-+			ice_clear_phy_tstamp(&pf->hw, tx->quad, phy_idx);
-+	}
-+}
-+
-+/**
-+ * ice_ptp_release_tx_tracker - Release allocated memory for Tx tracker
-+ * @pf: Board private structure
-+ * @tx: Tx tracking structure to release
-+ *
-+ * Free memory associated with the Tx timestamp tracker.
-+ */
-+static void
-+ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	tx->init = 0;
-+
-+	kthread_cancel_work_sync(&tx->work);
-+
-+	ice_ptp_flush_tx_tracker(pf, tx);
-+
-+	kfree(tx->tstamps);
-+	tx->tstamps = NULL;
-+
-+	bitmap_free(tx->in_use);
-+	tx->in_use = NULL;
-+
-+	tx->len = 0;
-+}
-+
-+/**
-+ * ice_ptp_init_tx_e822 - Initialize tracking for Tx timestamps
-+ * @pf: Board private structure
-+ * @tx: the Tx tracking structure to initialize
-+ * @port: the port this structure tracks
-+ *
-+ * Initialize the Tx timestamp tracker for this port. For generic MAC devices,
-+ * the timestamp block is shared for all ports in the same quad. To avoid
-+ * ports using the same timestamp index, logically break the block of
-+ * registers into chunks based on the port number.
-+ */
-+static int
-+ice_ptp_init_tx_e822(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
-+{
-+	tx->quad = port / ICE_PORTS_PER_QUAD;
-+	tx->quad_offset = (port % ICE_PORTS_PER_QUAD) * INDEX_PER_PORT;
-+	tx->len = INDEX_PER_PORT;
-+
-+	return ice_ptp_alloc_tx_tracker(tx);
-+}
-+
-+/**
-+ * ice_ptp_init_tx_e810 - Initialize tracking for Tx timestamps
-+ * @pf: Board private structure
-+ * @tx: the Tx tracking structure to initialize
-+ *
-+ * Initialize the Tx timestamp tracker for this PF. For E810 devices, each
-+ * port has its own block of timestamps, independent of the other ports.
-+ */
-+static int
-+ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	tx->quad = pf->hw.port_info->lport;
-+	tx->quad_offset = 0;
-+	tx->len = INDEX_PER_QUAD;
-+
-+	return ice_ptp_alloc_tx_tracker(tx);
-+}
-+
-+/**
-+ * ice_ptp_tx_tstamp_cleanup - Cleanup old timestamp requests that got dropped
-+ * @pf: pointer to the PF struct
-+ * @tx: PTP Tx tracker to clean up
-+ *
-+ * Loop through the Tx timestamp requests and see if any of them have been
-+ * waiting for a long time. Discard any SKBs that have been waiting for more
-+ * than 2 seconds. This is long enough to be reasonably sure that the
-+ * timestamp will never be captured. This might happen if the packet gets
-+ * discarded before it reaches the PHY timestamping block.
-+ */
-+static void ice_ptp_tx_tstamp_cleanup(struct ice_pf *pf, struct ice_ptp_tx *tx)
-+{
-+	struct ice_hw *hw = &pf->hw;
-+	u8 idx;
-+
-+	if (!tx->init)
-+		return;
-+
-+	for_each_set_bit(idx, tx->in_use, tx->len) {
-+		struct sk_buff *skb;
-+		u64 raw_tstamp;
-+
-+		/* Check if this SKB has been waiting for too long */
-+		if (time_is_after_jiffies(tx->tstamps[idx].start + 2 * HZ))
-+			continue;
-+
-+		/* Read tstamp to be able to use this register again */
-+		ice_read_phy_tstamp(hw, tx->quad, idx + tx->quad_offset,
-+				    &raw_tstamp);
-+
-+		spin_lock(&tx->lock);
-+		skb = tx->tstamps[idx].skb;
-+		tx->tstamps[idx].skb = NULL;
-+		clear_bit(idx, tx->in_use);
-+		spin_unlock(&tx->lock);
-+
-+		/* Count the number of Tx timestamps which have timed out */
-+		pf->ptp.tx_hwtstamp_timeouts++;
-+
-+		/* Free the SKB after we've cleared the bit */
-+		dev_kfree_skb_any(skb);
-+	}
-+}
-+
-+/**
-+ * ice_ptp_update_cached_phctime - Update the cached PHC time values
-+ * @pf: Board specific private structure
-+ *
-+ * This function updates the system time values which are cached in the PF
-+ * structure and the Rx rings.
-+ *
-+ * This function must be called periodically to ensure that the cached value
-+ * is never more than 2 seconds old. It must also be called whenever the PHC
-+ * time has been changed.
-+ *
-+ * Return:
-+ * * 0 - OK, successfully updated
-+ * * -EAGAIN - PF was busy, need to reschedule the update
-+ */
-+static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	unsigned long update_before;
-+	u64 systime;
-+	int i;
-+
 +	if (test_and_set_bit(ICE_CFG_BUSY, pf->state))
 +		return -EAGAIN;
 +
-+	update_before = pf->ptp.cached_phc_jiffies + msecs_to_jiffies(2000);
-+	if (pf->ptp.cached_phc_time &&
-+	    time_is_before_jiffies(update_before)) {
-+		unsigned long time_taken = jiffies - pf->ptp.cached_phc_jiffies;
-+		dev_warn(dev, "%u msecs passed between update to cached PHC time\n",
-+			 jiffies_to_msecs(time_taken));
-+		pf->ptp.late_cached_phc_updates++;
+ 	ice_for_each_vsi(pf, i) {
+ 		struct ice_vsi *vsi = pf->vsi[i];
+ 		int j;
+@@ -934,6 +936,52 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+ 	return 0;
+ }
+ 
++/**
++ * ice_ptp_reset_cached_phctime - Reset cached PHC time after an update
++ * @pf: Board specific private structure
++ *
++ * This function must be called when the cached PHC time is no longer valid,
++ * such as after a time adjustment. It discards any outstanding Tx timestamps,
++ * and updates the cached PHC time for both the PF and Rx rings. If updating
++ * the PHC time cannot be done immediately, a warning message is logged and
++ * the work item is scheduled.
++ *
++ * These steps are required in order to ensure that we do not accidentally
++ * report a timestamp extended by the wrong PHC cached copy. Note that we
++ * do not directly update the cached timestamp here because it is possible
++ * this might produce an error when ICE_CFG_BUSY is set. If this occurred, we
++ * would have to try again. During that time window, timestamps might be
++ * requested and returned with an invalid extension. Thus, on failure to
++ * immediately update the cached PHC time we would need to zero the value
++ * anyways. For this reason, we just zero the value immediately and queue the
++ * update work item.
++ */
++static void ice_ptp_reset_cached_phctime(struct ice_pf *pf)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++	int err;
++
++	/* Update the cached PHC time immediately if possible, otherwise
++	 * schedule the work item to execute soon.
++	 */
++	err = ice_ptp_update_cached_phctime(pf);
++	if (err) {
++		/* If another thread is updating the Rx rings, we won't
++		 * properly reset them here. This could lead to reporting of
++		 * invalid timestamps, but there isn't much we can do.
++		 */
++		dev_warn(dev, "%s: ICE_CFG_BUSY, unable to immediately update cached PHC time\n",
++			 __func__);
++
++		/* Queue the work item to update the Rx rings when possible */
++		kthread_queue_delayed_work(pf->ptp.kworker, &pf->ptp.work,
++					   msecs_to_jiffies(10));
 +	}
 +
-+	/* Read the current PHC time */
-+	systime = ice_ptp_read_src_clk_reg(pf, NULL);
-+
-+	/* Update the cached PHC time stored in the PF structure */
-+	WRITE_ONCE(pf->ptp.cached_phc_time, systime);
-+	WRITE_ONCE(pf->ptp.cached_phc_jiffies, jiffies);
-+
-+	ice_for_each_vsi(pf, i) {
-+		struct ice_vsi *vsi = pf->vsi[i];
-+		int j;
-+
-+		if (!vsi)
-+			continue;
-+
-+		if (vsi->type != ICE_VSI_PF)
-+			continue;
-+
-+		ice_for_each_rxq(vsi, j) {
-+			if (!vsi->rx_rings[j])
-+				continue;
-+			WRITE_ONCE(vsi->rx_rings[j]->cached_phctime, systime);
-+		}
-+	}
-+	clear_bit(ICE_CFG_BUSY, pf->state);
-+
-+	return 0;
++	/* Flush any outstanding Tx timestamps */
++	ice_ptp_flush_tx_tracker(pf, &pf->ptp.port.tx);
 +}
 +
  /**
   * ice_ptp_read_time - Read the time from the device
   * @pf: Board private structure
-@@ -2035,113 +2308,6 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
+@@ -1802,7 +1850,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 	ice_ptp_unlock(hw);
+ 
+ 	if (!err)
+-		ice_ptp_update_cached_phctime(pf);
++		ice_ptp_reset_cached_phctime(pf);
+ 
+ 	/* Reenable periodic outputs */
+ 	ice_ptp_enable_all_clkout(pf);
+@@ -1881,7 +1929,7 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
+ 		return err;
+ 	}
+ 
+-	ice_ptp_update_cached_phctime(pf);
++	ice_ptp_reset_cached_phctime(pf);
+ 
  	return 0;
  }
+@@ -2089,26 +2137,31 @@ void
+ ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
+ 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb)
+ {
++	struct skb_shared_hwtstamps *hwtstamps;
++	u64 ts_ns, cached_time;
+ 	u32 ts_high;
+-	u64 ts_ns;
  
--/**
-- * ice_ptp_tx_tstamp_work - Process Tx timestamps for a port
-- * @work: pointer to the kthread_work struct
-- *
-- * Process timestamps captured by the PHY associated with this port. To do
-- * this, loop over each index with a waiting skb.
-- *
-- * If a given index has a valid timestamp, perform the following steps:
-- *
-- * 1) copy the timestamp out of the PHY register
-- * 4) clear the timestamp valid bit in the PHY register
-- * 5) unlock the index by clearing the associated in_use bit.
-- * 2) extend the 40b timestamp value to get a 64bit timestamp
-- * 3) send that timestamp to the stack
-- *
-- * After looping, if we still have waiting SKBs, then re-queue the work. This
-- * may cause us effectively poll even when not strictly necessary. We do this
-- * because it's possible a new timestamp was requested around the same time as
-- * the interrupt. In some cases hardware might not interrupt us again when the
-- * timestamp is captured.
-- *
-- * Note that we only take the tracking lock when clearing the bit and when
-- * checking if we need to re-queue this task. The only place where bits can be
-- * set is the hard xmit routine where an SKB has a request flag set. The only
-- * places where we clear bits are this work function, or the periodic cleanup
-- * thread. If the cleanup thread clears a bit we're processing we catch it
-- * when we lock to clear the bit and then grab the SKB pointer. If a Tx thread
-- * starts a new timestamp, we might not begin processing it right away but we
-- * will notice it at the end when we re-queue the work item. If a Tx thread
-- * starts a new timestamp just after this function exits without re-queuing,
-- * the interrupt when the timestamp finishes should trigger. Avoiding holding
-- * the lock for the entire function is important in order to ensure that Tx
-- * threads do not get blocked while waiting for the lock.
-- */
--static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
--{
--	struct ice_ptp_port *ptp_port;
--	struct ice_ptp_tx *tx;
--	struct ice_pf *pf;
--	struct ice_hw *hw;
--	u8 idx;
--
--	tx = container_of(work, struct ice_ptp_tx, work);
--	if (!tx->init)
--		return;
--
--	ptp_port = container_of(tx, struct ice_ptp_port, tx);
--	pf = ptp_port_to_pf(ptp_port);
--	hw = &pf->hw;
--
--	for_each_set_bit(idx, tx->in_use, tx->len) {
--		struct skb_shared_hwtstamps shhwtstamps = {};
--		u8 phy_idx = idx + tx->quad_offset;
--		u64 raw_tstamp, tstamp;
--		struct sk_buff *skb;
--		int err;
--
--		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
--
--		err = ice_read_phy_tstamp(hw, tx->quad, phy_idx,
--					  &raw_tstamp);
--		if (err)
--			continue;
--
--		ice_trace(tx_tstamp_fw_done, tx->tstamps[idx].skb, idx);
--
--		/* Check if the timestamp is invalid or stale */
--		if (!(raw_tstamp & ICE_PTP_TS_VALID) ||
--		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
--			continue;
--
--		/* The timestamp is valid, so we'll go ahead and clear this
--		 * index and then send the timestamp up to the stack.
+-	/* Populate timesync data into skb */
+-	if (rx_desc->wb.time_stamp_low & ICE_PTP_TS_VALID) {
+-		struct skb_shared_hwtstamps *hwtstamps;
++	if (!(rx_desc->wb.time_stamp_low & ICE_PTP_TS_VALID))
++		return;
+ 
+-		/* Use ice_ptp_extend_32b_ts directly, using the ring-specific
+-		 * cached PHC value, rather than accessing the PF. This also
+-		 * allows us to simply pass the upper 32bits of nanoseconds
+-		 * directly. Calling ice_ptp_extend_40b_ts is unnecessary as
+-		 * it would just discard these bits itself.
 -		 */
--		spin_lock(&tx->lock);
--		tx->tstamps[idx].cached_tstamp = raw_tstamp;
--		clear_bit(idx, tx->in_use);
--		skb = tx->tstamps[idx].skb;
--		tx->tstamps[idx].skb = NULL;
--		spin_unlock(&tx->lock);
--
--		/* it's (unlikely but) possible we raced with the cleanup
--		 * thread for discarding old timestamp requests.
--		 */
--		if (!skb)
--			continue;
--
--		/* Extend the timestamp using cached PHC time */
--		tstamp = ice_ptp_extend_40b_ts(pf, raw_tstamp);
--		if (tstamp) {
--			shhwtstamps.hwtstamp = ns_to_ktime(tstamp);
--			ice_trace(tx_tstamp_complete, skb, idx);
--		}
--
--		skb_tstamp_tx(skb, &shhwtstamps);
--		dev_kfree_skb_any(skb);
+-		ts_high = le32_to_cpu(rx_desc->wb.flex_ts.ts_high);
+-		ts_ns = ice_ptp_extend_32b_ts(rx_ring->cached_phctime, ts_high);
++	cached_time = READ_ONCE(rx_ring->cached_phctime);
+ 
+-		hwtstamps = skb_hwtstamps(skb);
+-		memset(hwtstamps, 0, sizeof(*hwtstamps));
+-		hwtstamps->hwtstamp = ns_to_ktime(ts_ns);
 -	}
--
--	/* Check if we still have work to do. If so, re-queue this task to
--	 * poll for remaining timestamps.
--	 */
--	spin_lock(&tx->lock);
--	if (!bitmap_empty(tx->in_use, tx->len))
--		kthread_queue_work(pf->ptp.kworker, &tx->work);
--	spin_unlock(&tx->lock);
--}
--
- /**
-  * ice_ptp_request_ts - Request an available Tx timestamp index
-  * @tx: the PTP Tx timestamp tracker to request from
-@@ -2194,172 +2360,6 @@ void ice_ptp_process_ts(struct ice_pf *pf)
- 		kthread_queue_work(pf->ptp.kworker, &pf->ptp.port.tx.work);
++	/* Do not report a timestamp if we don't have a cached PHC time */
++	if (!cached_time)
++		return;
++
++	/* Use ice_ptp_extend_32b_ts directly, using the ring-specific cached
++	 * PHC value, rather than accessing the PF. This also allows us to
++	 * simply pass the upper 32bits of nanoseconds directly. Calling
++	 * ice_ptp_extend_40b_ts is unnecessary as it would just discard these
++	 * bits itself.
++	 */
++	ts_high = le32_to_cpu(rx_desc->wb.flex_ts.ts_high);
++	ts_ns = ice_ptp_extend_32b_ts(cached_time, ts_high);
++
++	hwtstamps = skb_hwtstamps(skb);
++	memset(hwtstamps, 0, sizeof(*hwtstamps));
++	hwtstamps->hwtstamp = ns_to_ktime(ts_ns);
  }
  
--/**
-- * ice_ptp_alloc_tx_tracker - Initialize tracking for Tx timestamps
-- * @tx: Tx tracking structure to initialize
-- *
-- * Assumes that the length has already been initialized. Do not call directly,
-- * use the ice_ptp_init_tx_e822 or ice_ptp_init_tx_e810 instead.
-- */
--static int
--ice_ptp_alloc_tx_tracker(struct ice_ptp_tx *tx)
--{
--	tx->tstamps = kcalloc(tx->len, sizeof(*tx->tstamps), GFP_KERNEL);
--	if (!tx->tstamps)
--		return -ENOMEM;
--
--	tx->in_use = bitmap_zalloc(tx->len, GFP_KERNEL);
--	if (!tx->in_use) {
--		kfree(tx->tstamps);
--		tx->tstamps = NULL;
--		return -ENOMEM;
--	}
--
--	spin_lock_init(&tx->lock);
--	kthread_init_work(&tx->work, ice_ptp_tx_tstamp_work);
--
--	tx->init = 1;
--
--	return 0;
--}
--
--/**
-- * ice_ptp_flush_tx_tracker - Flush any remaining timestamps from the tracker
-- * @pf: Board private structure
-- * @tx: the tracker to flush
-- */
--static void
--ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
--{
--	u8 idx;
--
--	for (idx = 0; idx < tx->len; idx++) {
--		u8 phy_idx = idx + tx->quad_offset;
--
--		spin_lock(&tx->lock);
--		if (tx->tstamps[idx].skb) {
--			dev_kfree_skb_any(tx->tstamps[idx].skb);
--			tx->tstamps[idx].skb = NULL;
--			pf->ptp.tx_hwtstamp_flushed++;
--		}
--		clear_bit(idx, tx->in_use);
--		spin_unlock(&tx->lock);
--
--		/* Clear any potential residual timestamp in the PHY block */
--		if (!pf->hw.reset_ongoing)
--			ice_clear_phy_tstamp(&pf->hw, tx->quad, phy_idx);
--	}
--}
--
--/**
-- * ice_ptp_release_tx_tracker - Release allocated memory for Tx tracker
-- * @pf: Board private structure
-- * @tx: Tx tracking structure to release
-- *
-- * Free memory associated with the Tx timestamp tracker.
-- */
--static void
--ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
--{
--	tx->init = 0;
--
--	kthread_cancel_work_sync(&tx->work);
--
--	ice_ptp_flush_tx_tracker(pf, tx);
--
--	kfree(tx->tstamps);
--	tx->tstamps = NULL;
--
--	bitmap_free(tx->in_use);
--	tx->in_use = NULL;
--
--	tx->len = 0;
--}
--
--/**
-- * ice_ptp_init_tx_e822 - Initialize tracking for Tx timestamps
-- * @pf: Board private structure
-- * @tx: the Tx tracking structure to initialize
-- * @port: the port this structure tracks
-- *
-- * Initialize the Tx timestamp tracker for this port. For generic MAC devices,
-- * the timestamp block is shared for all ports in the same quad. To avoid
-- * ports using the same timestamp index, logically break the block of
-- * registers into chunks based on the port number.
-- */
--static int
--ice_ptp_init_tx_e822(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
--{
--	tx->quad = port / ICE_PORTS_PER_QUAD;
--	tx->quad_offset = (port % ICE_PORTS_PER_QUAD) * INDEX_PER_PORT;
--	tx->len = INDEX_PER_PORT;
--
--	return ice_ptp_alloc_tx_tracker(tx);
--}
--
--/**
-- * ice_ptp_init_tx_e810 - Initialize tracking for Tx timestamps
-- * @pf: Board private structure
-- * @tx: the Tx tracking structure to initialize
-- *
-- * Initialize the Tx timestamp tracker for this PF. For E810 devices, each
-- * port has its own block of timestamps, independent of the other ports.
-- */
--static int
--ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
--{
--	tx->quad = pf->hw.port_info->lport;
--	tx->quad_offset = 0;
--	tx->len = INDEX_PER_QUAD;
--
--	return ice_ptp_alloc_tx_tracker(tx);
--}
--
--/**
-- * ice_ptp_tx_tstamp_cleanup - Cleanup old timestamp requests that got dropped
-- * @pf: pointer to the PF struct
-- * @tx: PTP Tx tracker to clean up
-- *
-- * Loop through the Tx timestamp requests and see if any of them have been
-- * waiting for a long time. Discard any SKBs that have been waiting for more
-- * than 2 seconds. This is long enough to be reasonably sure that the
-- * timestamp will never be captured. This might happen if the packet gets
-- * discarded before it reaches the PHY timestamping block.
-- */
--static void ice_ptp_tx_tstamp_cleanup(struct ice_pf *pf, struct ice_ptp_tx *tx)
--{
--	struct ice_hw *hw = &pf->hw;
--	u8 idx;
--
--	if (!tx->init)
--		return;
--
--	for_each_set_bit(idx, tx->in_use, tx->len) {
--		struct sk_buff *skb;
--		u64 raw_tstamp;
--
--		/* Check if this SKB has been waiting for too long */
--		if (time_is_after_jiffies(tx->tstamps[idx].start + 2 * HZ))
--			continue;
--
--		/* Read tstamp to be able to use this register again */
--		ice_read_phy_tstamp(hw, tx->quad, idx + tx->quad_offset,
--				    &raw_tstamp);
--
--		spin_lock(&tx->lock);
--		skb = tx->tstamps[idx].skb;
--		tx->tstamps[idx].skb = NULL;
--		clear_bit(idx, tx->in_use);
--		spin_unlock(&tx->lock);
--
--		/* Count the number of Tx timestamps which have timed out */
--		pf->ptp.tx_hwtstamp_timeouts++;
--
--		/* Free the SKB after we've cleared the bit */
--		dev_kfree_skb_any(skb);
--	}
--}
--
- static void ice_ptp_periodic_work(struct kthread_work *work)
- {
- 	struct ice_ptp *ptp = container_of(work, struct ice_ptp, work.work);
+ /**
 -- 
 2.37.1.208.ge72d93e88cb2
 
