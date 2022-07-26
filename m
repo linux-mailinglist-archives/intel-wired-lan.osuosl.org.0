@@ -2,84 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F28B9581C87
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 01:44:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BC08581C8D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 01:44:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3D5BA40934;
-	Tue, 26 Jul 2022 23:44:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3D5BA40934
+	by smtp4.osuosl.org (Postfix) with ESMTP id 120A840934;
+	Tue, 26 Jul 2022 23:44:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 120A840934
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658879060;
-	bh=oeAH7ZwYZHr6/uqtcbS441OkBIcx1jo5s6rIvd5RDh0=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=11i/r3/GY7fse+p5gmTNbd0z91Eye4fbNm5uBRMJpiJgDEFUa+fDFTdRtgbFgn9hO
-	 GCx89nWRw5M2sOaCYHRmMLnCLBWDhOPOZwgO2j3WWu0Voq9jF8lJu5Mv+l3eGHDe7M
-	 tcny2Gz790pBfEwMLI6GverXqle+S+RbIPt02G3Q3jpUIu0h04dB/xElilXeY8etGs
-	 5ZYTfrVLvT1ZHO5cno6qOzB5R3PK6EAgTmfRnGhC1CeWLYp7nnp9sphI9bzqBZdcLF
-	 nfoIsGJSbC0k3L1R4oDZYzVkBjUqlSAGlIshnF4vDIyHu7s4hmocLGv39zTLX91J+Z
-	 T3xOErzaErbVQ==
+	s=default; t=1658879085;
+	bh=8FklffUlJ3f9Mr77mfEIz759xJENIKDo1EwXi722Uco=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=pLtXxef9SOuXsHfqbSoVm+o+zMv6Kuk90PknfDnOfcGMU27gglMLMehXa5lNtYbFO
+	 g88/xal6dlBSCSwrKPXt0RaSlXwq4sWDVQSfv5HTzmENharzvjvt4vE2yznLl9URp9
+	 +/5L4pfNwuwufq6EQjvrDqrBLzjrdi2heWXzr9LPQ/KerXRtUCdgPb37aqu2cHx3xf
+	 dH9vmkiHiDSIa6nE2pxkWDAKH+eHrFUY1s3CANy1XPuZsj1rwSjb0fCgN4vA58KUj8
+	 VM/9j38h0+v02xkMi92iRVTQcZHvbltAJBD0qmpxAyMKvD8gfF7H+V588OHXo6c4X2
+	 nAqW+/w1PyvJQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s7sVpcCHfBjC; Tue, 26 Jul 2022 23:44:19 +0000 (UTC)
+	with ESMTP id DDrAA--DBxlC; Tue, 26 Jul 2022 23:44:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB310408DE;
-	Tue, 26 Jul 2022 23:44:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB310408DE
+	by smtp4.osuosl.org (Postfix) with ESMTP id C991D40347;
+	Tue, 26 Jul 2022 23:44:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C991D40347
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 642711BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 676C71BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 31B3F4031D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 31B3F4031D
+ by smtp2.osuosl.org (Postfix) with ESMTP id 21BEF402F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21BEF402F6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K3bameeKdA0c for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 3MG-NFY7FsaQ for <intel-wired-lan@lists.osuosl.org>;
  Tue, 26 Jul 2022 23:44:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F167F40003
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7FFD1402E5
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F167F40003
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="313873675"
-X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="313873675"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7FFD1402E5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Jul 2022 23:44:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="313873679"
+X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="313873679"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Jul 2022 16:44:09 -0700
-X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="689649885"
+X-IronPort-AV: E=Sophos;i="5.93,194,1654585200"; d="scan'208";a="689649888"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.7])
  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Jul 2022 16:44:09 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 26 Jul 2022 16:43:51 -0700
-Message-Id: <20220726234357.50610-1-jacob.e.keller@intel.com>
+Date: Tue, 26 Jul 2022 16:43:52 -0700
+Message-Id: <20220726234357.50610-2-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.37.1.208.ge72d93e88cb2
+In-Reply-To: <20220726234357.50610-1-jacob.e.keller@intel.com>
+References: <20220726234357.50610-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658879051; x=1690415051;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=OhJyHnOKLqRqtcaq6taLGccXrTy8gu/zR0H4KVHBFuA=;
- b=QbnkVL204VY//1LzxWkTLHDZ4lIs9CsJ3TC1da8WZClguiIn2SD7sS8P
- Lqa2qSlnwYOHAySk/IGA/f4uxiMZEYXo3EEfDue1Z9ebgXtdNyt+1izPk
- r6OX1O/U7go7TIkPPv4FZya5PYb1cgufHiMmnImcBk3JCVAei0f9lYhS7
- PAF6xh9Ew34ooSkqf89FyrLvv/q4jeqdRSyfE7nZe8SkhN8GO7IhRmA62
- /HRpq41wuhSxDW2+JMNbV+yy/6BMyAuFya9lxPsSVu9gIaSENZldWwMMp
- NkdEJ0qnnac0HdbQiKD1+GfHaNKc8OFUkTmvCO+M0Om8BkbcMqH0GaRqa
- Q==;
+ t=1658879052; x=1690415052;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ey6pxxRz8uv6NX60hlF+g/AHbOzLmI5YGVcvPkgAUOo=;
+ b=b2iMnMf20hZTSHrcIYcBdaW15jW0R18V6dnneGNpXUahZ9ghW9jfutQs
+ oKor18lLl+ryS8Kcp6Y/F2GHHBwWLgK/vVvBeYBOkl07v62ev1S559XaV
+ lNvFIIhzy/J0bkwnIX1usBiS/SrhRxso7lH3l7jwFkWpzjZIRVlbSnFKp
+ 5MAUDcw0grEJ2cauCD8Zq46Rj/VrCJ/ERDEppPnmCVPyMLUarv255ol4L
+ gy1smIJzJ2heI1nvHmWsnLLvsEC3kP5YZqWdLWB82s+EwsT2uRNKD+td+
+ FMGjNmJXfbjj5WCKAF4vbSN7NeipyfeOczDIFvtKlBsbzhZDMJ9drNHG4
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QbnkVL20
-Subject: [Intel-wired-lan] [net-next 0/6] ice: detect and report PTP
- timestamp issues
+ header.a=rsa-sha256 header.s=Intel header.b=b2iMnMf2
+Subject: [Intel-wired-lan] [net-next 1/6] ice: set tx_tstamps when creating
+ new Tx rings via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,34 +100,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series fixes a few small issues with the cached PTP Hardware Clock
-timestamp used for timestamp extension. It also introduces extra checks to
-help detect issues with this logic, such as if the cached timestamp is not
-updated within the 2 second window.
+When the user changes the number of queues via ethtool, the driver
+allocates new rings. This allocation did not initialize tx_tstamps. This
+results in the tx_tstamps field being zero (due to kcalloc allocation), and
+would result in a NULL pointer dereference when attempting a transmit
+timestamp on the new ring.
 
-This introduces a few statistics similar to the ones already available in
-other Intel drivers, including tx_hwtstamp_skipped and tx_hwtstamp_timeouts.
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-It is intended to aid in debugging issues we're seeing with some setups
-which might be related to incorrect cached timestamp values.
-
-Jacob Keller (6):
-  ice: set tx_tstamps when creating new Tx rings via ethtool
-  ice: initialize cached_phctime when creating Rx rings
-  ice: track Tx timestamp stats similar to other Intel drivers
-  ice: track and warn when PHC update is late
-  ice: re-arrange some static functions in ice_ptp.c
-  ice: introduce ice_ptp_reset_cached_phctime function
-
- drivers/net/ethernet/intel/ice/ice_ethtool.c |   7 +
- drivers/net/ethernet/intel/ice/ice_lib.c     |   1 +
- drivers/net/ethernet/intel/ice/ice_ptp.c     | 751 ++++++++++---------
- drivers/net/ethernet/intel/ice/ice_ptp.h     |   9 +
- drivers/net/ethernet/intel/ice/ice_txrx.c    |   4 +-
- 5 files changed, 435 insertions(+), 337 deletions(-)
-
-
-base-commit: 5245eb4f3cf8ba1e9e0e6d58d810eceae9edc0c1
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 238706d94ab2..bea87c5acd26 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -2823,6 +2823,7 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring,
+ 		tx_rings[i].count = new_tx_cnt;
+ 		tx_rings[i].desc = NULL;
+ 		tx_rings[i].tx_buf = NULL;
++		tx_rings[i].tx_tstamps = &pf->ptp.port.tx;
+ 		err = ice_setup_tx_ring(&tx_rings[i]);
+ 		if (err) {
+ 			while (i--)
 -- 
 2.37.1.208.ge72d93e88cb2
 
