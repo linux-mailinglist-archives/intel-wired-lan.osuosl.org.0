@@ -1,83 +1,196 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B9755826D1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 14:38:31 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0205A58270B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 14:51:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3EDE260BF8;
-	Wed, 27 Jul 2022 12:38:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3EDE260BF8
+	by smtp4.osuosl.org (Postfix) with ESMTP id E78A6410D0;
+	Wed, 27 Jul 2022 12:51:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E78A6410D0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658925510;
-	bh=nV4vsYMVt7RK+CYFqZM9gL7jgCEdt4rfRNmNkbA8WeE=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RaAlq7PpXRcCyInTOw0HJdIM6UlnXzgt1EDgMimnIq02rWxwU+COJTjnMBjK2JbUy
-	 P8gONaf3pqut6g+t4vZKVt+ehYPcLfRNcKgcx9LFofX30WWNBNigpcmIuuy3SqndUs
-	 v1QliOpbngr7Ku6og3GMWjEmgaUYbpgGCshFkk4yDoBAFkivtSmlKVwpZyaEVodlBe
-	 4/+hl7x/ioDWlJZgfr8Fdu+XkgRV0LMVeIdfB6zpjkzv1Hi/3jY/4eqyJLIlxeqFvr
-	 9NzdsQpmoGD250ryqdnr7Tg70Nxp6j0OMZ6OY6ybd1rusqbl5wXsvwzu40ur3eC/XE
-	 vyiBEpzyBjw0w==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n9T09PQ9ot2z; Wed, 27 Jul 2022 12:38:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E611B60BEC;
-	Wed, 27 Jul 2022 12:38:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E611B60BEC
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4D15E1BF372
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:38:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 26154401E9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:38:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 26154401E9
+	s=default; t=1658926294;
+	bh=SrZrpDDIvgmCaLvZUFegD9lGbc2tfaY+B2PpAoS33Cc=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=u6Qgu48feSkGdBGB/PCs5/X1cPNeQjV9jJHdHlNuLY0C0nR1VwgQzqK/OUjI5iQQD
+	 icL9Y2a444ErsIfUXqBuLDRDpwfFXBri9gY/0ba+GywBGeLuQDZ5oSoroIUOoVTdpX
+	 mtoJAx5SzqQ+DOhFQyM/Ope5MVAhbc2PfsQKMJn09sZ4OE5hKaidFatLlcklO3WbuD
+	 wuJd4xaXoEpSkIIUOXf4Zip9H3/wu2qJimHp99kxxLUcli/vR1XG1fYAycqloHEagH
+	 NnH2YWFXWuvHzXH3kl7MSXB6SYM4oyBmG0JHbxi+Y1QXGtuKvhhyh++3G4QHWUU2/F
+	 dLuQO7GRx+j5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hc0EE0MBHyqz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jul 2022 12:38:22 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VX1uzRebUhXV; Wed, 27 Jul 2022 12:51:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6984D40A7A;
+	Wed, 27 Jul 2022 12:51:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6984D40A7A
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A51711BF372
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:51:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7D40760BF6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:51:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7D40760BF6
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ruDXud2MTMwf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jul 2022 12:51:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8EC7F401C6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8EC7F401C6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:38:22 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="267988262"
-X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="267988262"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59D7360BD6
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 59D7360BD6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 12:51:26 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="288987597"
+X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="288987597"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jul 2022 05:38:21 -0700
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jul 2022 05:51:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="633189884"
-Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by orsmga001.jf.intel.com with ESMTP; 27 Jul 2022 05:38:20 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 27 Jul 2022 14:35:49 +0200
-Message-Id: <20220727123549.1146738-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="633193294"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga001.jf.intel.com with ESMTP; 27 Jul 2022 05:51:25 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Wed, 27 Jul 2022 05:51:25 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Wed, 27 Jul 2022 05:51:24 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Wed, 27 Jul 2022 05:51:24 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Wed, 27 Jul 2022 05:51:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hF2tBjPL2OM6mbcxoCySyafiD2CRVgBP46g5cvOqfzUbCAldQkYclPf9VDw9hYo6+dcZXNwz0nLHzZDfgar3GJ2S80Qy1gg/qR8Ow4NjqcG/qjihTjyXFMLePs+Bk4GdsQUbdocyUs4c46tExo7FG3XSbXqcBRnfzqQ6h9arOKRqAILn+Vr1EupLziS5JKBu/L3O7TaL8DtiROvJMwqdiycz8fW+GtgAi6CGpYc/6mvwNFLMmTkDHuvSIZDZGgX2hxFx6DFLqfkhYJLd86hUmdSY0L9a5V+HBG70cuW8GDXRQ7geEPWl8JBk0yP+KtGaUCnXBifxY6VpBgyWM5tu8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oZrd7MVZTATvWVtOrMiVJTLCIg5bnmwBSONdVqv9w8w=;
+ b=mkr/TxZEeYimrU+M+lLJsyAGok7y2rz3Ol0qPGIC/8PhOO2L67D3tSx3cs3/YS53xZXDHdpiT5W3qJPdjb7MCRIu9WXEiEToXSBFAbUsjNZUMeMDMEsYdH2JSQRs4pHhQTOqrP7E1kGXQymVHQ/OcWhnJiAcawcJN4Vzdq764YUjU6WW+HUdZk3Q5nlFGQ92pLdl63pM+xRYcjRsgrATyT0HK3iRYMIc9bsSc+J5325KUZYMd5kw031ZytD9GhQY2ucOr0YOxuIUkcwnzuwKwUAEiAKfpBCd4OIx+FNPjphFIDEbeq0I23OvkIOL5Ffjk0YpKgzfKuvFWI420heGlA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3449.namprd11.prod.outlook.com (2603:10b6:5:d::30) by
+ DM6PR11MB2972.namprd11.prod.outlook.com (2603:10b6:5:63::22) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5482.6; Wed, 27 Jul 2022 12:51:22 +0000
+Received: from DM6PR11MB3449.namprd11.prod.outlook.com
+ ([fe80::543c:e7:1ab9:668c]) by DM6PR11MB3449.namprd11.prod.outlook.com
+ ([fe80::543c:e7:1ab9:668c%5]) with mapi id 15.20.5458.025; Wed, 27 Jul 2022
+ 12:51:21 +0000
+From: "Siwik, Grzegorz" <grzegorz.siwik@intel.com>
+To: poros <poros@redhat.com>, "G, GurucharanX" <gurucharanx.g@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1 1/3] ice: Fix double VLAN error
+ when entering promisc mode
+Thread-Index: AQHYkgO8c+Hv7GhaGUOFdxFQWWdjKK2QPmWAgAHbDICAADFu0A==
+Date: Wed, 27 Jul 2022 12:51:21 +0000
+Message-ID: <DM6PR11MB344990ADA7EE8FA40918C64D84979@DM6PR11MB3449.namprd11.prod.outlook.com>
+References: <1657199751-256188-1-git-send-email-grzegorz.siwik@intel.com>
+ <1657199751-256188-2-git-send-email-grzegorz.siwik@intel.com>
+ <BYAPR11MB3367E7DA6E06013CAC612C91FC949@BYAPR11MB3367.namprd11.prod.outlook.com>
+ <668ad644d03b30975b88ac84c9e4a1263115095f.camel@redhat.com>
+In-Reply-To: <668ad644d03b30975b88ac84c9e4a1263115095f.camel@redhat.com>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.6.500.17
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bb634713-d079-4e93-312f-08da6fceb51f
+x-ms-traffictypediagnostic: DM6PR11MB2972:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: jTzWW1ovcSni4br2cJsNao3/p+eNFonCzOfupPQpooZvrkQYmEyAoFmPLL1D7GEuG4MWTPblDA6JW4L0udTh3yJ+cDPzxTePZc/HcbgYX6vWaPa6OO1KSHe/rakagjTex2GJmSysTJBexEoDdf/jxflT+xemcviCu9Wc/gRq/xEsy+NpuhQ1SmfRKwuGiDbTKZMAo2VQEFbJsWshTm43bGtkHRUvLsuORk0xYy/KzV7a8qtNXl7UUg6kBrJAH9rus5dsl+h5dL1Q6XpyNxe7rtzkFghj/JWOwF+yNUjU4ugn59e4RsWfdtL1QhKqTwn89CH9EqxjXpYQ7DEh0cT1KaGioYM3+NtepbP1b6XI5FhT0t+dNPVpR+Bbw2bvoNjWLmJVRv7kMCo5SqAjsqv9pzhgR9CpeocLX7x3eb+nOKxR0gkPTgmIToMPXsHVXuktc8JBNsL30lcuyF4iFafGHXz9OMpI400KJFgG8vvOj8HFHot36bSD/kgcN2O3FUoogA3jyPo/dYwDguXLT9I2OX/iYiqiRpkcZbsvVnkJrJ3Itp9Qq57tUUH8DvL7yIDE2Wr9FWik1tZE+KkLs+s+q33OrhP6cLA5MYBPUleW5B9IljYOhG+sJw6s5m0w0j6RuADfkmR5Xrch8eunD7Vc8b5xIUDvXtBlQPqoraKfBVjICymvgxSq4LSJRXFEfNMY2dyCdJQS0boa7sZANEBveDdPVAo0mMeHROSa0EkMQcOBavaekGbJL7OzvV9zTts03TcmzsbTjwLZl6EOSuFAvirVeFDjxx+RdX/zfdeLN+z9KGPr5OE5fX/2MOortdYwyuINsLHWdsLNIFUDL9YSvwGgmqdgL31blCngG8VOH4lg+gzVHsf4cRMfphlfdZUr
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3449.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(376002)(346002)(136003)(39860400002)(396003)(366004)(83380400001)(316002)(110136005)(478600001)(966005)(38100700002)(122000001)(41300700001)(186003)(9686003)(26005)(7696005)(53546011)(5660300002)(55016003)(76116006)(71200400001)(2906002)(66446008)(66556008)(64756008)(86362001)(66476007)(66946007)(8676002)(52536014)(82960400001)(8936002)(6506007)(38070700005)(33656002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NW5SQ0RvV0JVZVlVUVRoZk55dFdBT3hXSzhRQkNVb05DZnFobk84ckxIUFlM?=
+ =?utf-8?B?dGVhc1FHUFgwcGIxdGFMOW1odWJOcFJidnZtRUFVeDRWa1pRU2N4VTY2NUlX?=
+ =?utf-8?B?Zmx1Q25aTTJTOXNVcFpEMWU1RzNDVGRRTHlRbER4S2dpYktyVEFQazR0Q0JL?=
+ =?utf-8?B?UmFpUVI2azhBQXY0VEZ1aFQ0Q09vTHcyRE5aRDZPaXNPeGRkb0s2NlF4RXQ3?=
+ =?utf-8?B?U1g5UGZWTTFxK3JNRDJJNE9mK3FhNTZhc09TY2g5N2dscldmQlowNC9WeWU2?=
+ =?utf-8?B?OFV3K0pkRjFvQWZLbytFd3J1MTJRL0VrRWRIR1RpOHJDQkdWQS9xcDdMV3Ny?=
+ =?utf-8?B?R1RLYlFaWVNIVjNmbWF2RjlHLzdpT0tuMngzWFlRbFplYlFaOVVZcllreERa?=
+ =?utf-8?B?YmlMNXhoeGsrNG9oOTlBUVVZZk1TN25WYzZ0VVVCbGlTOU9Ka1BhUWpEc1Js?=
+ =?utf-8?B?SlkzN0FWRE9PRmRaOVNSb3lCUTZRWkJVdzNXL0xzSVJvVzdOcGc2VFAvbGZK?=
+ =?utf-8?B?ZGtTVWxjTkJpN0NHRm5vRjBzYzNKOWo0Sk5CRmh6MWRzTWtNK2RzMjNHV1JP?=
+ =?utf-8?B?ZkZwaWt4a2JpeUI5TWpxYTEzRjAzMElvR2xtUVpXckFSQzJ1UUFHdHliOTdn?=
+ =?utf-8?B?dlUvZk9ERHZuajNFNUM0QmFheS9TYVM4SGJYQmJyZ0YxbGt3bzNsN2dzOWxo?=
+ =?utf-8?B?bThhRFVXdS9Oa3hPc08wMVByMjA2enViQkNNQnI5eStWbmIzdzlwdlFnc2g5?=
+ =?utf-8?B?TUhnZU1rMWdWYmhqWDVEbnhLM3ZobXlhcHJXL3lDN2RzL0p2cVk4YjlhMEQv?=
+ =?utf-8?B?Wk1JYXFVOC9rTFFSVDBVY2J4T0dBcS9lcEJUVE9YMDg0QUtRM1FMdDFLUE4x?=
+ =?utf-8?B?cnRuMWdadGZOTFIrbTZFdmYxSGxEQU5Ncm1jcWlRVzZOUmEvK2VxaGRsZUdm?=
+ =?utf-8?B?NFgyQVByMXZZM25Obzl4UUV1Y1VVQnVZOFpad0o1TXFyV3N5YWIvQ0lzcFRK?=
+ =?utf-8?B?QXdsNU80TE1CNVFZeUNYUVhhVDZDUnBMM2FPWjNDOThiZkxJb2VqeitXSjVE?=
+ =?utf-8?B?MmExU0t4QkpJMDN3SC9Td3NVVm9EekVCcG8vWVU2WG5NUTBnYUpNSnNGc3JB?=
+ =?utf-8?B?NUpCSjZGMHlhaFZyRXN0YVVINDZGSllVbHVMdjJzU2YxYlpZNmh2QWF3Tm5H?=
+ =?utf-8?B?TW1ORnVKb3FlSENlbDZ3KzJyeXYreldYQlNKQnJaZ2s3SVRydXJINVVyVkx0?=
+ =?utf-8?B?eU5KZkthWFQweDl0YzhhcGd4T1lxbWhBNHczUFhiQk5iNlVpZGpUdWR4Rjli?=
+ =?utf-8?B?QTRoOENDZjZ5RjhSNU9pRUpMUDFzS0xFMDVXVi8rVFo5WWpwNkJBOEVkUzJw?=
+ =?utf-8?B?dUlZakRBVDdNdWpBdTVCck81bXI2V2pqejRveFdZWEtkNnY4bGpoQ3VGZE4r?=
+ =?utf-8?B?T2w5bW04RHc1UHU1VmdMcWxqODN1bHNUYzNXd0dQOG5XUEtSM2VYeUhzM2NV?=
+ =?utf-8?B?QW9YOTExMDh2N1FjVzdUbVdtYkV5K1VTT012OGJjUVJJYjBSTmwzSk1XS0JK?=
+ =?utf-8?B?TzJDQ3FId205ZTdWQ2FJWlc0akFrRG9NNmgvRTVPUEZPNTV1c2lrYkRscGIx?=
+ =?utf-8?B?dEs3VWx4bVpIdFF5NTdyVlhXMm9ma0Vqc1p5bUd2WDVqVEVCbWdiQUxzYXJ4?=
+ =?utf-8?B?SGI0Kzk2aERIbkpoNTBqMldzbnRaWTRpYXduaVBRNUpVWkdEbForMFdJa21s?=
+ =?utf-8?B?d0R1UlVRelY2eWRvaWVTSUhueCtOc09HQ25sUkZSTDdLQzlVTWVDVEE0ZkZ5?=
+ =?utf-8?B?OVkrazNVbnhzRVU4WGZ1NXF2bVV1czdXNStDZE5hNHVzNjZFTTF2ZVNwbVRK?=
+ =?utf-8?B?Z0V2b3lkaEkzWGhJSnR5NkVaTmpQNkh4NlA3RVM1QzBnbTNOTmJXakVHcTYy?=
+ =?utf-8?B?SHpZNWc1Y1g1TEdrVXZuZkZmMU1TS1l1YVNya1h5dEtNQWxLcnNRKzNyQ3ph?=
+ =?utf-8?B?L1lPbSszcWZBVjI4ZE00Ynk5YWdzbktvRndvVi9nQk9IRDhINktsT0JVZ1pS?=
+ =?utf-8?B?bW1sMDU1TGlOeFlKZmk1TkUva1AyZU9VZWNoY3pNcEJTQVEyeXFwNHBHVnF4?=
+ =?utf-8?Q?z1QrwiCTZj2QTry5wScpijfiY?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3449.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bb634713-d079-4e93-312f-08da6fceb51f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Jul 2022 12:51:21.8544 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +KIpkpYuRoU2LunC7N8gFSwOwIek8dHtIS8s/G/PXUN2qnhaHNYC5wV/db2g/CCNnG5rlfilTfEyP20ANTU4dph3skFHBeBC0srk6LezyLU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2972
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658925502; x=1690461502;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=dny5uB2/r94fmDsy3cMrO5H2bnDY47gImKJ4Cu3WQeQ=;
- b=FIE8zmSJDlWwWErYG26/iRNWNi9pkYca0nBHfrjmtqSJx+S42ueu0VY+
- c1gcpGthvSi86Z1L3ezDVoaV3mF8LK620G/OKb/FSrsnDQRgnlQqxRww4
- P3pfMV4ldt06US+YLLQoYkARs64TaqNsiTd2KHtUos/uDXu6ofMG5fU25
- jBy6MtrKQ0eHgqfil7u+YfALEYOsN23XHbBvF5d0J+Qx4sv6l/vef9VND
- SKpfG9/2Vhf4HrrcDZC88tbjPiSC6CmNkbTtP989COWKgsbpCtrChPIyp
- gNiqayqMUDRmXj8SrctaD1Y0CC6Jc0GtTDxD8nNlC16OukXKBYwVQRY3p
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1658926286; x=1690462286;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=oZrd7MVZTATvWVtOrMiVJTLCIg5bnmwBSONdVqv9w8w=;
+ b=CAT22G9xUX1oPjGg+mVXv5GBosifY6RfUWqX9bd3xoZ4UyjwQzZaveRA
+ l4JbMrEAT/snC3B56/IGilyhGRe5LGKvtX0udY/ANGiL+EZTwvvQUB/Mk
+ kqbjieiQXtWUAtnYb+1PogEs60yzYW7JsEjJnEAE4h5KDKgsN4skCNjIX
+ /UpTrtS/OFNKQHcnTyg9U9nekJUDrKG1nC7Bqw6sLc0tEBKiXr+MKoqqx
+ +U5IY58WkLqLlqb2Je7TJtomCOI1gOVGHCKlClkl1qVlYj8qvr1Ywj2W4
+ EZqHVKvmObjKfRtoJMiDkEQ/jsQ9LK9X+K2eTSU45wlw/Hz19Pvjprp4z
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FIE8zmSJ
-Subject: [Intel-wired-lan] [PATCH net-next v2] ice: Remove ucast_shared
+ header.a=rsa-sha256 header.s=Intel header.b=CAT22G9x
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v1 1/3] ice: Fix double VLAN error
+ when entering promisc mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,283 +203,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-
-Remove ucast_shared as it was always true. Remove the code depending on
-ucast_shared from ice_add_mac and ice_remove_mac.
-Remove ice_find_ucast_rule_entry function as it was only
-used when ucast_shared was set to false.
-
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
-v2: remove struct ice_switch_info *sw, which is set but unused
----
- drivers/net/ethernet/intel/ice/ice_main.c   |   2 -
- drivers/net/ethernet/intel/ice/ice_switch.c | 166 +-------------------
- drivers/net/ethernet/intel/ice/ice_type.h   |   2 -
- 3 files changed, 5 insertions(+), 165 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 47046c0bc93e..da212fbbd9d9 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4748,8 +4748,6 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 		ice_set_safe_mode_caps(hw);
- 	}
- 
--	hw->ucast_shared = true;
--
- 	err = ice_init_pf(pf);
- 	if (err) {
- 		dev_err(dev, "ice_init_pf failed: %d\n", err);
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 66d1e17896a6..58bc09631bf7 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3295,31 +3295,15 @@ bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle)
-  * ice_add_mac - Add a MAC address based filter rule
-  * @hw: pointer to the hardware structure
-  * @m_list: list of MAC addresses and forwarding information
-- *
-- * IMPORTANT: When the ucast_shared flag is set to false and m_list has
-- * multiple unicast addresses, the function assumes that all the
-- * addresses are unique in a given add_mac call. It doesn't
-- * check for duplicates in this case, removing duplicates from a given
-- * list should be taken care of in the caller of this function.
-  */
- int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- {
--	struct ice_sw_rule_lkup_rx_tx *s_rule, *r_iter;
- 	struct ice_fltr_list_entry *m_list_itr;
--	struct list_head *rule_head;
--	u16 total_elem_left, s_rule_size;
--	struct ice_switch_info *sw;
--	struct mutex *rule_lock; /* Lock to protect filter rule list */
--	u16 num_unicast = 0;
- 	int status = 0;
--	u8 elem_sent;
- 
- 	if (!m_list || !hw)
- 		return -EINVAL;
- 
--	s_rule = NULL;
--	sw = hw->switch_info;
--	rule_lock = &sw->recp_list[ICE_SW_LKUP_MAC].filt_rule_lock;
- 	list_for_each_entry(m_list_itr, m_list, list_entry) {
- 		u8 *add = &m_list_itr->fltr_info.l_data.mac.mac_addr[0];
- 		u16 vsi_handle;
-@@ -3338,106 +3322,13 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 		if (m_list_itr->fltr_info.lkup_type != ICE_SW_LKUP_MAC ||
- 		    is_zero_ether_addr(add))
- 			return -EINVAL;
--		if (is_unicast_ether_addr(add) && !hw->ucast_shared) {
--			/* Don't overwrite the unicast address */
--			mutex_lock(rule_lock);
--			if (ice_find_rule_entry(hw, ICE_SW_LKUP_MAC,
--						&m_list_itr->fltr_info)) {
--				mutex_unlock(rule_lock);
--				return -EEXIST;
--			}
--			mutex_unlock(rule_lock);
--			num_unicast++;
--		} else if (is_multicast_ether_addr(add) ||
--			   (is_unicast_ether_addr(add) && hw->ucast_shared)) {
--			m_list_itr->status =
--				ice_add_rule_internal(hw, ICE_SW_LKUP_MAC,
--						      m_list_itr);
--			if (m_list_itr->status)
--				return m_list_itr->status;
--		}
--	}
--
--	mutex_lock(rule_lock);
--	/* Exit if no suitable entries were found for adding bulk switch rule */
--	if (!num_unicast) {
--		status = 0;
--		goto ice_add_mac_exit;
--	}
--
--	rule_head = &sw->recp_list[ICE_SW_LKUP_MAC].filt_rules;
--
--	/* Allocate switch rule buffer for the bulk update for unicast */
--	s_rule_size = ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule);
--	s_rule = devm_kcalloc(ice_hw_to_dev(hw), num_unicast, s_rule_size,
--			      GFP_KERNEL);
--	if (!s_rule) {
--		status = -ENOMEM;
--		goto ice_add_mac_exit;
--	}
--
--	r_iter = s_rule;
--	list_for_each_entry(m_list_itr, m_list, list_entry) {
--		struct ice_fltr_info *f_info = &m_list_itr->fltr_info;
--		u8 *mac_addr = &f_info->l_data.mac.mac_addr[0];
--
--		if (is_unicast_ether_addr(mac_addr)) {
--			ice_fill_sw_rule(hw, &m_list_itr->fltr_info, r_iter,
--					 ice_aqc_opc_add_sw_rules);
--			r_iter = (typeof(s_rule))((u8 *)r_iter + s_rule_size);
--		}
--	}
--
--	/* Call AQ bulk switch rule update for all unicast addresses */
--	r_iter = s_rule;
--	/* Call AQ switch rule in AQ_MAX chunk */
--	for (total_elem_left = num_unicast; total_elem_left > 0;
--	     total_elem_left -= elem_sent) {
--		struct ice_sw_rule_lkup_rx_tx *entry = r_iter;
--
--		elem_sent = min_t(u8, total_elem_left,
--				  (ICE_AQ_MAX_BUF_LEN / s_rule_size));
--		status = ice_aq_sw_rules(hw, entry, elem_sent * s_rule_size,
--					 elem_sent, ice_aqc_opc_add_sw_rules,
--					 NULL);
--		if (status)
--			goto ice_add_mac_exit;
--		r_iter = (typeof(s_rule))
--			((u8 *)r_iter + (elem_sent * s_rule_size));
--	}
--
--	/* Fill up rule ID based on the value returned from FW */
--	r_iter = s_rule;
--	list_for_each_entry(m_list_itr, m_list, list_entry) {
--		struct ice_fltr_info *f_info = &m_list_itr->fltr_info;
--		u8 *mac_addr = &f_info->l_data.mac.mac_addr[0];
--		struct ice_fltr_mgmt_list_entry *fm_entry;
--
--		if (is_unicast_ether_addr(mac_addr)) {
--			f_info->fltr_rule_id = le16_to_cpu(r_iter->index);
--			f_info->fltr_act = ICE_FWD_TO_VSI;
--			/* Create an entry to track this MAC address */
--			fm_entry = devm_kzalloc(ice_hw_to_dev(hw),
--						sizeof(*fm_entry), GFP_KERNEL);
--			if (!fm_entry) {
--				status = -ENOMEM;
--				goto ice_add_mac_exit;
--			}
--			fm_entry->fltr_info = *f_info;
--			fm_entry->vsi_count = 1;
--			/* The book keeping entries will get removed when
--			 * base driver calls remove filter AQ command
--			 */
- 
--			list_add(&fm_entry->list_entry, rule_head);
--			r_iter = (typeof(s_rule))((u8 *)r_iter + s_rule_size);
--		}
-+		m_list_itr->status = ice_add_rule_internal(hw, ICE_SW_LKUP_MAC,
-+							   m_list_itr);
-+		if (m_list_itr->status)
-+			return m_list_itr->status;
- 	}
- 
--ice_add_mac_exit:
--	mutex_unlock(rule_lock);
--	if (s_rule)
--		devm_kfree(ice_hw_to_dev(hw), s_rule);
- 	return status;
- }
- 
-@@ -3822,38 +3713,6 @@ ice_check_if_dflt_vsi(struct ice_port_info *pi, u16 vsi_handle,
- 	return ret;
- }
- 
--/**
-- * ice_find_ucast_rule_entry - Search for a unicast MAC filter rule entry
-- * @hw: pointer to the hardware structure
-- * @recp_id: lookup type for which the specified rule needs to be searched
-- * @f_info: rule information
-- *
-- * Helper function to search for a unicast rule entry - this is to be used
-- * to remove unicast MAC filter that is not shared with other VSIs on the
-- * PF switch.
-- *
-- * Returns pointer to entry storing the rule if found
-- */
--static struct ice_fltr_mgmt_list_entry *
--ice_find_ucast_rule_entry(struct ice_hw *hw, u8 recp_id,
--			  struct ice_fltr_info *f_info)
--{
--	struct ice_switch_info *sw = hw->switch_info;
--	struct ice_fltr_mgmt_list_entry *list_itr;
--	struct list_head *list_head;
--
--	list_head = &sw->recp_list[recp_id].filt_rules;
--	list_for_each_entry(list_itr, list_head, list_entry) {
--		if (!memcmp(&f_info->l_data, &list_itr->fltr_info.l_data,
--			    sizeof(f_info->l_data)) &&
--		    f_info->fwd_id.hw_vsi_id ==
--		    list_itr->fltr_info.fwd_id.hw_vsi_id &&
--		    f_info->flag == list_itr->fltr_info.flag)
--			return list_itr;
--	}
--	return NULL;
--}
--
- /**
-  * ice_remove_mac - remove a MAC address based filter rule
-  * @hw: pointer to the hardware structure
-@@ -3870,15 +3729,12 @@ ice_find_ucast_rule_entry(struct ice_hw *hw, u8 recp_id,
- int ice_remove_mac(struct ice_hw *hw, struct list_head *m_list)
- {
- 	struct ice_fltr_list_entry *list_itr, *tmp;
--	struct mutex *rule_lock; /* Lock to protect filter rule list */
- 
- 	if (!m_list)
- 		return -EINVAL;
- 
--	rule_lock = &hw->switch_info->recp_list[ICE_SW_LKUP_MAC].filt_rule_lock;
- 	list_for_each_entry_safe(list_itr, tmp, m_list, list_entry) {
- 		enum ice_sw_lkup_type l_type = list_itr->fltr_info.lkup_type;
--		u8 *add = &list_itr->fltr_info.l_data.mac.mac_addr[0];
- 		u16 vsi_handle;
- 
- 		if (l_type != ICE_SW_LKUP_MAC)
-@@ -3890,19 +3746,7 @@ int ice_remove_mac(struct ice_hw *hw, struct list_head *m_list)
- 
- 		list_itr->fltr_info.fwd_id.hw_vsi_id =
- 					ice_get_hw_vsi_num(hw, vsi_handle);
--		if (is_unicast_ether_addr(add) && !hw->ucast_shared) {
--			/* Don't remove the unicast address that belongs to
--			 * another VSI on the switch, since it is not being
--			 * shared...
--			 */
--			mutex_lock(rule_lock);
--			if (!ice_find_ucast_rule_entry(hw, ICE_SW_LKUP_MAC,
--						       &list_itr->fltr_info)) {
--				mutex_unlock(rule_lock);
--				return -ENOENT;
--			}
--			mutex_unlock(rule_lock);
--		}
-+
- 		list_itr->status = ice_remove_rule_internal(hw,
- 							    ICE_SW_LKUP_MAC,
- 							    list_itr);
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 830a77dfe6fa..52fbd903d256 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -886,8 +886,6 @@ struct ice_hw {
- 	/* INTRL granularity in 1 us */
- 	u8 intrl_gran;
- 
--	u8 ucast_shared;	/* true if VSIs can share unicast addr */
--
- #define ICE_PHY_PER_NAC		1
- #define ICE_MAX_QUAD		2
- #define ICE_NUM_QUAD_TYPE	2
--- 
-2.27.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiBHLCBHdXJ1Y2hhcmFuWCBww63FoWUgdiDDmnQgMjYuIDA3LiAyMDIyIHYgMDU6MzMgKzAwMDA6
+DQo+ID4gDQo+ID4gDQo+ID4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+ID4gRnJv
+bTogSW50ZWwtd2lyZWQtbGFuIDxpbnRlbC13aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnPiBP
+biBCZWhhbGYgDQo+ID4gPiBPZiBHcnplZ29yeiBTaXdpaw0KPiA+ID4gU2VudDogVGh1cnNkYXks
+IEp1bHkgNywgMjAyMiA2OjQ2IFBNDQo+ID4gPiBUbzogaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9z
+dW9zbC5vcmcNCj4gPiA+IENjOiBTaXdpaywgR3J6ZWdvcnogPGdyemVnb3J6LnNpd2lrQGludGVs
+LmNvbT4NCj4gPiA+IFN1YmplY3Q6IFtJbnRlbC13aXJlZC1sYW5dIFtQQVRDSCBuZXQgdjEgMS8z
+XSBpY2U6IEZpeCBkb3VibGUgVkxBTiANCj4gPiA+IGVycm9yIHdoZW4gZW50ZXJpbmcgcHJvbWlz
+YyBtb2RlDQo+ID4gPiANCj4gPiA+IEF2b2lkIGVuYWJsaW5nIG9yIGRpc2FibGluZyB2bGFuIDAg
+d2hlbiB0cnlpbmcgdG8gc2V0IHByb21pc2N1b3VzIA0KPiA+ID4gdmxhbiBtb2RlIGlmIGRvdWJs
+ZSB2bGFuIG1vZGUgaXMgZW5hYmxlZC4gVGhpcyBmaXggaXMgbmVlZGVkIGJlY2F1c2UgDQo+ID4g
+PiB0aGUgZHJpdmVyIHRyaWVzIHRvIGFkZCB0aGUgdmxhbiAwIGZpbHRlciB0d2ljZSAob25jZSBm
+b3IgaW5uZXIgYW5kIA0KPiA+ID4gb25jZSBmb3Igb3V0ZXIpIHdoZW4gZG91YmxlIFZMQU4gbW9k
+ZSBpcyBlbmFibGVkLiBUaGUgZmlsdGVyIHByb2dyYW0gDQo+ID4gPiBpcyByZWplY3RlZCBieSB0
+aGUgZmlybXdhcmUgd2hlbiBkb3VibGUgdmxhbiBpcyBlbmFibGVkLCBiZWNhdXNlIHRoZSANCj4g
+PiA+IHByb21pc2N1b3VzIGZpbHRlciBvbmx5IG5lZWRzIHRvIGJlIHNldCBvbmNlLg0KPiA+ID4g
+DQo+ID4gPiBUaGlzIGlzc3VlIHdhcyBtaXNzZWQgaW4gdGhlIGluaXRpYWwgaW1wbGVtZW50YXRp
+b24gb2YgZG91YmxlIHZsYW4gDQo+ID4gPiBtb2RlLg0KPiA+ID4gDQo+ID4gPiBGaXhlczogNWVk
+YThhZmQ2YmNjICgiaWNlOiBBZGQgc3VwcG9ydCBmb3IgUEYvVkYgcHJvbWlzY3VvdXMgbW9kZSIp
+DQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBHcnplZ29yeiBTaXdpayA8Z3J6ZWdvcnouc2l3aWtAaW50
+ZWwuY29tPg0KPiA+ID4gVGVzdGVkLWJ5OiBKYXJvc2xhdiBQdWxjaGFydCA8amFyb3NsYXYucHVs
+Y2hhcnRAZ29vZGRhdGEuY29tPg0KPiA+ID4gVGVzdGVkLWJ5OiBJZ29yIFJhaXRzIDxpZ29yQGdv
+b2RkYXRhLmNvbT4NCj4gPiA+IExpbms6DQo+ID4gPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9h
+bGwvQ0FLOGZGWjdtLQ0KPiA+ID4gS1I1N01fcllYNnhaTjM5Szg5Tz1MR29vWWtLc3U2SEt0MEJz
+K3g2eFFAbWFpbC5nbWFpbC5jb20vDQo+ID4gPiAtLS0NCj4gPiA+ICBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pY2UvaWNlX3N3aXRjaC5jIHwgNyArKysrKysrDQo+ID4gPiAgMSBmaWxlIGNo
+YW5nZWQsIDcgaW5zZXJ0aW9ucygrKQ0KPiA+ID4gDQo+ID4gDQo+ID4gSSBjb3VsZCBzdGlsbCBv
+YnNlcnZlIHRoZSBpc3N1ZSB3aGVuIHRoZSBpY2UgZHJpdmVyIGhhcyBiZWVuIHJlbW92ZWQgDQo+
+ID4gZnJvbSB0aGUgc3lzdGVtIG9uY2UgYWZ0ZXIgZXhlY3V0aW5nIGNyZWF0aW5nIGJyaWRnZSBv
+dmVyIGJvbmQgYW5kIA0KPiA+IHRoZW4gZG91YmxlIHZsYW4NCj4gDQo+IEhpLA0KPiANCj4gSXMg
+aXQgcmVncmVzc2lvbiBpbnRyb2R1Y2VkIGJ5IHRoaXMgcGF0Y2ggb3IgdGhpcyBmaXggaXMgcGFy
+dGlhbCBhbmQgbWVudGlvbmVkIGlzc3VlIGlzIHVuZml4ZWQgcmVncmVzc2lvbiBmcm9tIHBhc3Qu
+IEkgYXNraW5nIGJlY2F1c2UgcHJvbWlzYyBtb2RlIGlzc3VlcyBpcyB2ZXJ5IHBhaW4gZm9yIHVz
+IGFuZCBpbiBzZWNvbmQgY2FzZSB3aWxsIGJlDQo+IChtYXliZSkgZ29vZCB0byBtb3ZlIHRoaXMg
+Zm9yd2FyZCBhbmQgbWVudGlvbmVkIGlzc3VlIHdpbGwgZml4IGluIG5leHQgcGF0Y2guDQo+IA0K
+PiBNYW55IHRoYW5rcywNCj4gUGV0cg0KSGksDQpXZSBhcmUgY3VycmVudGx5IGludmVzdGlnYXRp
+bmcgd2hhdCBpcyB3cm9uZyB3aXRoIHRoYXQgLSBpdCBpcyBwb3NzaWJsZSB0aGF0IGkgaGF2ZSBz
+b21ldGhpbmcgbWlzc2VkIGluIHVwc3RyZWFtaW5nIG9uZSBvZiB0aGVzZSBwYXRjaGVzLiANCldl
+IGxldCBrbm93IHdoZW4gd2UgZmluZCB3aGF0IGlzIHdyb25nLg0KDQpCZXN0IFJlZ2FyZHMsDQpH
+cnplZ29yeg0KDQo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18NCj4gPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0DQo+ID4gSW50ZWwtd2lyZWQt
+bGFuQG9zdW9zbC5vcmcNCj4gPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9pbnRlbC13aXJlZC1sYW4gDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
+bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
+aW50ZWwtd2lyZWQtbGFuCg==
