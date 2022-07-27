@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EBE5583590
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 01:16:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DA3B58358C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 01:16:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4898A41704;
-	Wed, 27 Jul 2022 23:16:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4898A41704
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7D4E48299E;
+	Wed, 27 Jul 2022 23:16:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D4E48299E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658963804;
-	bh=lT+TuTtB20LrU5HPUD324/6Hn3pHIrq6a/7PkNy6+Tk=;
+	s=default; t=1658963795;
+	bh=9trK3ownsxHCy/JWrJPoeUgumdrzOEKm4c3Twsq8XuI=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7E7tHlWVmhhUPuoadqCvWneOpqTWLSQExIqKXRdbDQL1EBbIoCewgD8VzXOik4Sfg
-	 A26xVNZZ2L0lzwW4ARNOoYyAXMUVNpoWeYrthbZIh4SQrpb2EBCSpYzTom7zzT4wfU
-	 QoE8/QPG0ErLLHTjQCbWgURrqD1IX4shghOmBQaV+m2kGXW5KhnU3i6nkFGE62g47w
-	 BWqmMdmmdDesjHd7jUNCQmJtcAU3Hi7EkYkGflJRmzCvGJ7ICE3V9YfmAHx3wRXra/
-	 C8SmdzFfM9F14Jawz1C16hY7YC7royEADHh64f7okQ6zjZmDRmUJVDuoFdbKuHx8hv
-	 zB7TYsRfp9pdw==
+	b=sQvJv+Sm9GOotUV6obmW48iqKh1wEC1Ro8Cp+CkRQhV6On0oITV8GJIGKJrf0vJHo
+	 h43fUThNMy0b9V+TXeeQC9bqf6XbMybPYGGDhJh5mc/js5OI0HimmrKC0ClezBX9fT
+	 C/ynnkihOA+UI4D+ccmrVAlNDP9PKh8dfvSODdaaMrpTj6DG2kA12e0GXdjIIsN0Oa
+	 hLUce+nblUyO8baPjq15Z9pUm9iQgU9q8ImBx/tLDrScFr+Aadqoj9ED1kMMq8zGdO
+	 JzheJAwYa2ww1/upIg2puBgZNHlJcTwhoiaqr5MR9jwAAx0lGBfPEdsCSfxCyj8wIZ
+	 GZ5RGnl571n+A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sj-12npo9-Id; Wed, 27 Jul 2022 23:16:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Q81HyWnyhx0e; Wed, 27 Jul 2022 23:16:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2E3F7416F5;
-	Wed, 27 Jul 2022 23:16:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E3F7416F5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5772382948;
+	Wed, 27 Jul 2022 23:16:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5772382948
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4009F1BF42D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 23:16:25 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 52EB2416E9
+ by ash.osuosl.org (Postfix) with ESMTP id 54BAE1BF42D
  for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 23:16:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52EB2416E9
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 40922416F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 23:16:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40922416F5
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nn6XEDSgEE3Q for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jul 2022 23:16:19 +0000 (UTC)
+ with ESMTP id KUgXlFCGwOlS for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jul 2022 23:16:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE7A9415C9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 55971416ED
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BE7A9415C9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 23:16:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10421"; a="288382450"
-X-IronPort-AV: E=Sophos;i="5.93,196,1654585200"; d="scan'208";a="288382450"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 55971416ED
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 23:16:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10421"; a="288382451"
+X-IronPort-AV: E=Sophos;i="5.93,196,1654585200"; d="scan'208";a="288382451"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 Jul 2022 16:16:10 -0700
-X-IronPort-AV: E=Sophos;i="5.93,196,1654585200"; d="scan'208";a="846448004"
+X-IronPort-AV: E=Sophos;i="5.93,196,1654585200"; d="scan'208";a="846448008"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.7])
  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jul 2022 16:16:09 -0700
+ 27 Jul 2022 16:16:10 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 27 Jul 2022 16:15:58 -0700
-Message-Id: <20220727231602.1625980-3-jacob.e.keller@intel.com>
+Date: Wed, 27 Jul 2022 16:15:59 -0700
+Message-Id: <20220727231602.1625980-4-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.37.1.208.ge72d93e88cb2
 In-Reply-To: <20220727231602.1625980-1-jacob.e.keller@intel.com>
 References: <20220727231602.1625980-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658963779; x=1690499779;
+ t=1658963780; x=1690499780;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=wjNXJ9Vwsf2Ddmv2y6GXFiQSVQtJK/Dcel90wrbUfwE=;
- b=GQbphtXd95Q2CbMQN3fRvZ99B67QTIm7jFtWhEr22kywxZU1ReALR6+e
- gBF3AknpBg+Zas6aymsmNno/Srx5qPagcf+ABgc6hAiAoHWNmXYJHrIu9
- H9imfqlAPjsvlBOX0A7Eo1aHKoPGRazRu4b4NsK70wJw9HUy1dSZjsZ2U
- HW3OdL7Y8mPeTYc5RVNm0Di9SkPS7liuxplFC+zDVzCyqsWE9fYusI+7A
- KGMVMfB7Vu7coTAJArF0Vb5JDuwJyOx6Mfb4vfGy6pdjw4skguu7FHs7o
- TecRTDb+dr8WBi2sga3vKr8QifNKnlvUtoGcoVDCBGdY25regm4ae3D6P
- g==;
+ bh=HV9E8ETfSI1wC6fw/3Y68h42mHd8eFFVCmU08DOSDcc=;
+ b=Nm008Ea+7o1mKlP9Tjgz+75qZrDgJ/OjElgNFYO30uPSrXYokzm9PyF4
+ Bo6SPcFI2vf6belsU9cjONoMxCCK5asVtmF6RjlNblwQzxPaUqdIFTrM/
+ 2JkInplClpKw8Im8K88t9ZkxMjU9JBYcJ3GQnKJgWo6r0Zkn+eifG+9lm
+ RAE8tLq+NJuPdcGQ7coy6jy4qoh3/Q9nT1IPUstZ7w5qs6q9iqZfoeMDn
+ qKmbBPFAhpiKgeYJt/R2Uy7NI+1izCfkATZRVvOOnW+V63nBSM8E/pxk8
+ VEhutTk/jROZaFEqMCpaAeypaZPRvXkKItwbCTh+a3hUmNz/0nwO3mD6h
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=GQbphtXd
-Subject: [Intel-wired-lan] [net-next v2 2/6] ice: initialize cached_phctime
- when creating Rx rings
+ header.a=rsa-sha256 header.s=Intel header.b=Nm008Ea+
+Subject: [Intel-wired-lan] [net-next v2 3/6] ice: track Tx timestamp stats
+ similar to other Intel drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,42 +100,127 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When we create new Rx rings, the cached_phctime field is zero initialized.
-This could result in incorrect timestamp reporting due to the cached value
-not yet being updated. Although a background task will periodically update
-the cached value, ensure it matches the existing cached value in the PF
-structure at ring initialization.
+Several Intel networking drivers which support PTP track when Tx timestamps
+are skipped or when they timeout without a timestamp from hardware. The
+conditions which could cause these events are rare, but it can be useful to
+know when and how often they occur.
+
+Implement similar statistics for the ice driver, tx_hwtstamp_skipped,
+tx_hwtstamp_timeouts, and tx_hwtstamp_flushed.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 1 +
- drivers/net/ethernet/intel/ice/ice_lib.c     | 1 +
- 2 files changed, 2 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c |  3 +++
+ drivers/net/ethernet/intel/ice/ice_ptp.c     | 11 ++++++++---
+ drivers/net/ethernet/intel/ice/ice_ptp.h     |  6 ++++++
+ drivers/net/ethernet/intel/ice/ice_txrx.c    |  4 +++-
+ 4 files changed, 20 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index bea87c5acd26..ca5a38651220 100644
+index ca5a38651220..e9843bdfe8dc 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2882,6 +2882,7 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring,
- 		/* clone ring and setup updated count */
- 		rx_rings[i] = *vsi->rx_rings[i];
- 		rx_rings[i].count = new_rx_cnt;
-+		rx_rings[i].cached_phctime = pf->ptp.cached_phc_time;
- 		rx_rings[i].desc = NULL;
- 		rx_rings[i].rx_buf = NULL;
- 		/* this is to allow wr32 to have something to write to
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 419ffdbac282..44c3d82e8da5 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1522,6 +1522,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 		ring->netdev = vsi->netdev;
- 		ring->dev = dev;
- 		ring->count = vsi->num_rx_desc;
-+		ring->cached_phctime = pf->ptp.cached_phc_time;
- 		WRITE_ONCE(vsi->rx_rings[i], ring);
- 	}
+@@ -136,6 +136,9 @@ static const struct ice_stats ice_gstrings_pf_stats[] = {
+ 	ICE_PF_STAT("mac_remote_faults.nic", stats.mac_remote_faults),
+ 	ICE_PF_STAT("fdir_sb_match.nic", stats.fd_sb_match),
+ 	ICE_PF_STAT("fdir_sb_status.nic", stats.fd_sb_status),
++	ICE_PF_STAT("tx_hwtstamp_skipped", ptp.tx_hwtstamp_skipped),
++	ICE_PF_STAT("tx_hwtstamp_timeouts", ptp.tx_hwtstamp_timeouts),
++	ICE_PF_STAT("tx_hwtstamp_flushed", ptp.tx_hwtstamp_flushed),
+ };
  
+ static const u32 ice_regs_dump_list[] = {
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 72b663108a4a..c1758f7bd091 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2219,6 +2219,7 @@ ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 		if (tx->tstamps[idx].skb) {
+ 			dev_kfree_skb_any(tx->tstamps[idx].skb);
+ 			tx->tstamps[idx].skb = NULL;
++			pf->ptp.tx_hwtstamp_flushed++;
+ 		}
+ 		clear_bit(idx, tx->in_use);
+ 		spin_unlock(&tx->lock);
+@@ -2295,7 +2296,7 @@ ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 
+ /**
+  * ice_ptp_tx_tstamp_cleanup - Cleanup old timestamp requests that got dropped
+- * @hw: pointer to the hw struct
++ * @pf: pointer to the PF struct
+  * @tx: PTP Tx tracker to clean up
+  *
+  * Loop through the Tx timestamp requests and see if any of them have been
+@@ -2304,8 +2305,9 @@ ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
+  * timestamp will never be captured. This might happen if the packet gets
+  * discarded before it reaches the PHY timestamping block.
+  */
+-static void ice_ptp_tx_tstamp_cleanup(struct ice_hw *hw, struct ice_ptp_tx *tx)
++static void ice_ptp_tx_tstamp_cleanup(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ {
++	struct ice_hw *hw = &pf->hw;
+ 	u8 idx;
+ 
+ 	if (!tx->init)
+@@ -2329,6 +2331,9 @@ static void ice_ptp_tx_tstamp_cleanup(struct ice_hw *hw, struct ice_ptp_tx *tx)
+ 		clear_bit(idx, tx->in_use);
+ 		spin_unlock(&tx->lock);
+ 
++		/* Count the number of Tx timestamps which have timed out */
++		pf->ptp.tx_hwtstamp_timeouts++;
++
+ 		/* Free the SKB after we've cleared the bit */
+ 		dev_kfree_skb_any(skb);
+ 	}
+@@ -2345,7 +2350,7 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
+ 
+ 	err = ice_ptp_update_cached_phctime(pf);
+ 
+-	ice_ptp_tx_tstamp_cleanup(&pf->hw, &pf->ptp.port.tx);
++	ice_ptp_tx_tstamp_cleanup(pf, &pf->ptp.port.tx);
+ 
+ 	/* Run twice a second or reschedule if phc update failed */
+ 	kthread_queue_delayed_work(ptp->kworker, &ptp->work,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+index 10e396abf130..2e2245f5c690 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+@@ -171,6 +171,9 @@ struct ice_ptp_port {
+  * @clock: pointer to registered PTP clock device
+  * @tstamp_config: hardware timestamping configuration
+  * @reset_time: kernel time after clock stop on reset
++ * @tx_hwtstamp_skipped: number of Tx time stamp requests skipped
++ * @tx_hwtstamp_timeouts: number of Tx skbs discarded with no time stamp
++ * @tx_hwtstamp_flushed: number of Tx skbs flushed due to interface closed
+  */
+ struct ice_ptp {
+ 	struct ice_ptp_port port;
+@@ -185,6 +188,9 @@ struct ice_ptp {
+ 	struct ptp_clock *clock;
+ 	struct hwtstamp_config tstamp_config;
+ 	u64 reset_time;
++	u32 tx_hwtstamp_skipped;
++	u32 tx_hwtstamp_timeouts;
++	u32 tx_hwtstamp_flushed;
+ };
+ 
+ #define __ptp_port_to_ptp(p) \
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 836dce840712..42b42f4b21ef 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -2255,8 +2255,10 @@ ice_tstamp(struct ice_tx_ring *tx_ring, struct sk_buff *skb,
+ 
+ 	/* Grab an open timestamp slot */
+ 	idx = ice_ptp_request_ts(tx_ring->tx_tstamps, skb);
+-	if (idx < 0)
++	if (idx < 0) {
++		tx_ring->vsi->back->ptp.tx_hwtstamp_skipped++;
+ 		return;
++	}
+ 
+ 	off->cd_qw1 |= (u64)(ICE_TX_DESC_DTYPE_CTX |
+ 			     (ICE_TX_CTX_DESC_TSYN << ICE_TXD_CTX_QW1_CMD_S) |
 -- 
 2.37.1.208.ge72d93e88cb2
 
