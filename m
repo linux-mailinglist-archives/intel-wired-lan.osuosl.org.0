@@ -1,87 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47BB2582293
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 10:59:15 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 244515822F4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Jul 2022 11:21:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DD5718194A;
-	Wed, 27 Jul 2022 08:59:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD5718194A
+	by smtp2.osuosl.org (Postfix) with ESMTP id BFC164028D;
+	Wed, 27 Jul 2022 09:21:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BFC164028D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1658912353;
-	bh=ZNaZLQVfwT4iKRHZUaIozx9VR409N6gR1b/DjqDSNUA=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=FMXxlMZcRGE2XmYgELXyW0+QMUT4fDWo0sDPI/QvUHu4x6ensKYI3/vj4HAHeXUel
-	 K35t8VwDyLgzN+BlKMcGXT2wmvqa++7XmUupk+esX091RiLZjxAvSFGbxiwiAJtugt
-	 Ra59oDumncEWdu443bSfSmp2/+0ZQa1PigaTbjxNSW3UU+empaYhbOIkWTXjXofVoY
-	 Ny3Xq33fFaReOBQpUTfslGxtnAoDm4wi/iqYS7BOlkJheX6PBPq4Y3Z2Lm9LDd9pVz
-	 omPcBaxb+TLDK/mRIlBCEdgw0+IYhUXHlP0Hp+Fg+ZHmm9u5jVrd+YhEemGNdcG/ID
-	 Kks6xFHc8iyZQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hhZdwww803-u; Wed, 27 Jul 2022 08:59:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D8626817AD;
-	Wed, 27 Jul 2022 08:59:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D8626817AD
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B64421BF335
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 08:59:07 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8FFAC401C5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 08:59:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8FFAC401C5
+	s=default; t=1658913664;
+	bh=BYOWCVKw8KcT9KHcSDtrkFas1r605W2hj2G1z3G18Fo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=xgNLvlABQCMJ9GD7JIwyng9oSVW1JySi6/Nf7HQw/jCWTOac37BAaGgJ6zY+WrpaZ
+	 ZbkCe5zd/Fy4f8gRC+FwUdwaoXDNpIuN6xKH3Julz0sPZaExHy+j7kQKu+2uTTIKhX
+	 3M0EyfbgGK/UGzYJKp6YZE+0TL4Ajsl0ySlv+VgMSMtOXFfIsu8VS42O3KjXkqTchD
+	 Fp7SCx0OHk/byBV+rFsvvVipmuV/PlmeeL3Hw13KqIusvE1Ek+uudFx98xvNapuwdF
+	 pxQ3xeJuJWNHyMmfHe1mu/Zydsqq6zzlOUMgmLbeV6jpO13hRC0Ns0NuX1umjHY1jU
+	 OG//qOkfMQpnQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id umbtU2unYLkA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Jul 2022 08:59:06 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dsR94WnOhuOB; Wed, 27 Jul 2022 09:21:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id BBA0F40492;
+	Wed, 27 Jul 2022 09:21:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBA0F40492
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B2421BF57F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 09:20:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 332D0408CF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 09:20:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 332D0408CF
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id maP2z6Y3hd_B for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Jul 2022 09:20:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8B83D40151
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8B83D40151
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 08:59:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="288945648"
-X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="288945648"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jul 2022 01:59:05 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2842C408CC
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2842C408CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Jul 2022 09:20:56 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10420"; a="268571907"
+X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="268571907"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jul 2022 02:20:23 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="600339044"
-Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 27 Jul 2022 01:59:04 -0700
-Received: from kbuild by e0eace57cfef with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oGcsi-0008Yf-0C;
- Wed, 27 Jul 2022 08:59:04 +0000
-Date: Wed, 27 Jul 2022 16:58:53 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <62e0fe4d.XpCjTyZqf16K2BSQ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.93,195,1654585200"; d="scan'208";a="597358998"
+Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.68])
+ by orsmga007.jf.intel.com with ESMTP; 27 Jul 2022 02:20:22 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 27 Jul 2022 11:19:40 +0200
+Message-Id: <20220727091940.10902-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1658912346; x=1690448346;
- h=date:from:to:subject:message-id:mime-version:
+ t=1658913657; x=1690449657;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=7cFz29EygoUmKGNjOzdWm9eCqnJoYZh8Z+Nt94Cb8yQ=;
- b=Ataz+MTTGVwJCNNfJaxm9dzxWRqxIH2BEEoTg0EI8Z/rbaLWLMb0uKYd
- XRttrQMpRsYhcJuoOy6gvHX9BYgQIGqXkZeECQ3YmEMSKK3b2nKyVZPLG
- wEbi1H9jco38jVd/TWvaDhVqcf0F1WnyEiumLumDtSs3HdPqXP5G2h9/p
- 5QBwEbXt3Fqo3c11ELCZyDxVSb3EHj3Aa1ve9/bozPfdk7UsyzkQyWXZQ
- IioIPBzA4NSUWgU5BccEVKAOL10BQh+KbkfJMsqR28ty4hMYPqflfdRri
- FOmVnvJZ9JwVxcAuxUR64jzhuzt7ZZICTloNa6MvwzDgiEHdnGmkY8H5n
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=oOzwDV9ZLY8HIrJw5I2RcPVMz9BDIIit14tnyEgMRug=;
+ b=ShYTtQYXWzLKktVJKiF803gzpTOnirAV3NsOwx+davIRuXAs54R3ZCuo
+ 9L075L47kTZCeEDRaecy/vZi1dy7KkfCBRvn7pbpNyR9QTqk9dGGSZ/FL
+ kNHrAnp/vOlZUimIyoge9mGFj+Jy3kmrCPzT3+xh62WI5XIv+M1rs/3SE
+ VLh6mVR5WnHeQ1sn8s+Nse4pImtbCdWPFLgd2elrUZmMZo8WRuB/1uQMr
+ 9gu8BVEXZNtko2MrFZwokI088s/FEEb/F3WQ5x7HzGzif7Ec+vYGY4VdA
+ W/8OsyUrZ5l/zBJMOFGQD53oN2aWX9LqenZDVIjgJTSrJTkJ3Rfbq+d7L
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Ataz+MTT
-Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
- cc019545a238518fa9da1e2a889f6e1bb1005a63
+ header.a=rsa-sha256 header.s=Intel header.b=ShYTtQYX
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix tunnel checksum offload
+ with fragmented traffic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,122 +92,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
-branch HEAD: cc019545a238518fa9da1e2a889f6e1bb1005a63  ice: do not setup vlan for loopback VSI
+From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 
-elapsed time: 727m
+Fix checksum offload on VXLAN tunnels.
+In case, when mpls protocol is not used, set l4 header to transport
+header of skb. This fixes case, when user tries to offload checksums
+of VXLAN tunneled traffic.
 
-configs tested: 92
-configs skipped: 2
+Steps for reproduction (requires link partner with tunnels):
+ip l s enp130s0f0 up
+ip a f enp130s0f0
+ip a a 10.10.110.2/24 dev enp130s0f0
+ip l s enp130s0f0 mtu 1600
+ip link add vxlan12_sut type vxlan id 12 group 238.168.100.100 dev \
+enp130s0f0 dstport 4789
+ip l s vxlan12_sut up
+ip a a 20.10.110.2/24 dev vxlan12_sut
+iperf3 -c 20.10.110.1 #should connect
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Without this patch, TX descriptor was using wrong data, due to
+l4 header pointing wrong address. NIC would then drop those packets
+internally, due to incorrect TX descriptor data, which increased
+GLV_TEPC register.
 
-gcc tested configs:
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                          randconfig-c001
-arm64                               defconfig
-arm                        spear6xx_defconfig
-m68k                         apollo_defconfig
-mips                      loongson3_defconfig
-sh                            migor_defconfig
-arm                          badge4_defconfig
-sh                               j2_defconfig
-powerpc                  iss476-smp_defconfig
-mips                       capcella_defconfig
-powerpc                         ps3_defconfig
-arm                        keystone_defconfig
-sh                          rsk7264_defconfig
-m68k                       m5275evb_defconfig
-arm                        shmobile_defconfig
-powerpc                 mpc837x_rdb_defconfig
-mips                         bigsur_defconfig
-arm                           stm32_defconfig
-arc                    vdk_hs38_smp_defconfig
-openrisc                 simple_smp_defconfig
-nios2                            allyesconfig
-arc                          axs103_defconfig
-nios2                               defconfig
-um                                  defconfig
-parisc                           allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-loongarch                           defconfig
-loongarch                         allnoconfig
-csky                              allnoconfig
-alpha                             allnoconfig
-arc                               allnoconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-s390                 randconfig-r044-20220724
-riscv                randconfig-r042-20220724
-arc                  randconfig-r043-20220724
-arc                  randconfig-r043-20220726
-s390                 randconfig-r044-20220726
-riscv                randconfig-r042-20220726
-x86_64                    rhel-8.3-kselftests
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                           rhel-8.3-kvm
-x86_64                          rhel-8.3-func
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
+Fixes: b4fb2d33514a ("i40e: Add support for MPLS + TSO")
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-clang tested configs:
-arm                        multi_v5_defconfig
-mips                           ip28_defconfig
-powerpc                          allmodconfig
-mips                  cavium_octeon_defconfig
-powerpc               mpc834x_itxgp_defconfig
-powerpc                 mpc836x_rdk_defconfig
-powerpc                        fsp2_defconfig
-mips                           rs90_defconfig
-x86_64                        randconfig-k001
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-hexagon              randconfig-r041-20220724
-hexagon              randconfig-r045-20220724
-hexagon              randconfig-r045-20220726
-hexagon              randconfig-r041-20220726
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 7bc1174edf6b..af69ccc6e8d2 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -3204,11 +3204,13 @@ static int i40e_tx_enable_csum(struct sk_buff *skb, u32 *tx_flags,
+ 
+ 	protocol = vlan_get_protocol(skb);
+ 
+-	if (eth_p_mpls(protocol))
++	if (eth_p_mpls(protocol)) {
+ 		ip.hdr = skb_inner_network_header(skb);
+-	else
++		l4.hdr = skb_checksum_start(skb);
++	} else {
+ 		ip.hdr = skb_network_header(skb);
+-	l4.hdr = skb_checksum_start(skb);
++		l4.hdr = skb_transport_header(skb);
++	}
+ 
+ 	/* set the tx_flags to indicate the IP protocol type. this is
+ 	 * required so that checksum header computation below is accurate.
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
