@@ -1,85 +1,183 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6963B583F4F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 14:53:26 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12183583F51
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 14:53:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B169D4156D;
-	Thu, 28 Jul 2022 12:53:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B169D4156D
+	by smtp3.osuosl.org (Postfix) with ESMTP id C104660EC4;
+	Thu, 28 Jul 2022 12:53:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C104660EC4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659012804;
-	bh=fFKLNVhuOFi+dZ9s4XvcvmGKiatS1snhu3cj6TlxD08=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=5I8AzrcnxQQFJuFOqCvd8B8IED3P/e3aCLRHWej9ehd/YP+IYpR7HiI0l8RXAsYCk
-	 XkQsMoBDyXQ5yOqwGD85ZXNwJnwwxXa6SL7kMNwp9DTaiKdVGSBP8HIunJ8Duj3tdi
-	 e3uBTC4tna0ILCTu7Q//XSx5nbZ6Fa+NpYhIBZ22IUmY79baf13eU8Zyi1VdMvy7BQ
-	 aN/IJqdSFpCkmdX893JVnDF77auibpehKDUkLGfhIev3005VZZlxsqtyyE1oV2Tr4H
-	 vwmTREKg1zgdkwMUOJfi+5D27uGuY5nbqQtpwzj8R1fzMbQEEre7DZTG4y3CpstazA
-	 oaX6X4MZwe4TA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P2L7a7ThLMUE; Thu, 28 Jul 2022 12:53:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 859044088F;
-	Thu, 28 Jul 2022 12:53:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 859044088F
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8E7D1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 925B460592
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 925B460592
+	s=default; t=1659012814;
+	bh=fQEdbyuuz2ZynlybaYrhWLQLw4B2r75CYAN+HKJgQ20=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=M9LKLNQdxqJwPkNxOVCV6UOPT2mW522oM+YydvF/q9Ks8SUeaXByWR2DWPX160Ssi
+	 oE1PVO2TfEUNAsSUF26TAstW4gxs+qr15CZtP9NKgTI+DzXQqWF9dBIDcjLDLfblfC
+	 2SLMFb1DpZjAW2NbE9HnpEaFFr94Ver63NJs0dnnN1ID0I2eTHisOasBk1+lXEkoPM
+	 jyoPCA4U1UPa3OhcLAiGbvdxYrnf98Kh+y5zV69pI1gCs7LgLJp67J8h6SVJZDJj54
+	 sS/v+1mnyMK7GxMpOOxyKyaKEPIXlN+dXv1DNAf5V2WRjyOt6OhXGftLQxyGgvvaiL
+	 XjDYXSQWcKXVQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XPLO6NfFaGar for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Jul 2022 12:53:16 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 35iEUDmfAV5X; Thu, 28 Jul 2022 12:53:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9B8F660709;
+	Thu, 28 Jul 2022 12:53:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9B8F660709
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E4DD1BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E72DB4088F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E72DB4088F
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oL4BkB1-bYoF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Jul 2022 12:53:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D163606CB
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4D163606CB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10421"; a="286053170"
-X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="286053170"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2022 05:53:15 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 94D984087C
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 94D984087C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 12:53:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10421"; a="350207393"
+X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="350207393"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2022 05:53:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="604559015"
-Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
- by fmsmga007.fm.intel.com with ESMTP; 28 Jul 2022 05:53:14 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 28 Jul 2022 14:53:10 +0200
-Message-Id: <20220728125310.989781-1-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.34.1
+X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="928277196"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga005.fm.intel.com with ESMTP; 28 Jul 2022 05:53:26 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 28 Jul 2022 05:53:25 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 28 Jul 2022 05:53:24 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Thu, 28 Jul 2022 05:53:24 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.103)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Thu, 28 Jul 2022 05:53:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gdvxfn9uV6F4cb5B0zJ9iOBTozwWkypSvNKgD0C5wTHrNFVbNdVv/wffT8oJaY0E5EXYEe+N9TlN46H0bdKoSHpCDTBqzPLi0DgSGiv5+32H4dbyA9aB7jm9mMye6bhmihzWmIi1QWqoRjEfW8LnkuXwLr4PpC0VQbzsh0rtUu6gmQGQLw4sm8ALSxjEgYSxhqF9zP18SFWkE0RhAsC94ooF5ke0wdxOd+8vRUYLFB0hb1qJg4e5rz/CJlmdABkDThjwMvSGw7Hx3QYCAQGsM34/M3+GttgR7VkJFTYxanOexrJgbQZ31jmCvm/ebzq9fwUHyP3TwpiVmciV22nZ9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZsHXvnH+SZLWj9bwoPko4ygXlYXsIIICq0kPTrAkYQg=;
+ b=KKXfdag7cJ4fCgh2EhMZa+CP4OewNbcuwaSYVOOOImXDiSS57/zp7aYPWTQQP2HeJEswApyv6rw4G6AoajjRUfh77UCsKLYiLNqckHY0hP4qRFhYSDmgQP9UQ7z4Xbygq8AQPO6EBaeKJtg5AQEMo+ByDCk7R0c2lNT2u/dbNDrkD5wejni/DP7u6qTQIbEhMFumKciQ2+cJ90wb2E2IpamPmCOzEH2pMhsE2OlY4bTry8YHmrFEooaFLlhSjuaONykJZK9G1L7r41CD6Az2qMEMON7+BMaYPqkVxnt3ODeEVWVFF/DP8OmobtmipeARglqayfgvX9XFAbKtq2iGpg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW4PR11MB5800.namprd11.prod.outlook.com (2603:10b6:303:186::21)
+ by BYAPR11MB3000.namprd11.prod.outlook.com (2603:10b6:a03:8e::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5458.19; Thu, 28 Jul
+ 2022 12:53:20 +0000
+Received: from MW4PR11MB5800.namprd11.prod.outlook.com
+ ([fe80::19dc:f7e0:16ef:d7ad]) by MW4PR11MB5800.namprd11.prod.outlook.com
+ ([fe80::19dc:f7e0:16ef:d7ad%8]) with mapi id 15.20.5458.025; Thu, 28 Jul 2022
+ 12:53:20 +0000
+From: "Kolacinski, Karol" <karol.kolacinski@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Add low latency Tx
+ timestamp read
+Thread-Index: AQHYneDq7s24lnWi+0Ccf2ZjfZ5iK62RNH2AgAKQPyE=
+Date: Thu, 28 Jul 2022 12:53:20 +0000
+Message-ID: <MW4PR11MB5800A03383D2724EF4072F1786969@MW4PR11MB5800.namprd11.prod.outlook.com>
+References: <20220722153610.499172-1-karol.kolacinski@intel.com>
+ <63bf55b9-9889-a947-d689-b7c61d55ff5a@intel.com>
+In-Reply-To: <63bf55b9-9889-a947-d689-b7c61d55ff5a@intel.com>
+Accept-Language: pl-PL, en-US
+Content-Language: pl-PL
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+suggested_attachment_session_id: 221233f7-3c7b-5869-ce25-3f80dd873b15
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: c4cc3e21-fe01-4257-84a2-08da7098261d
+x-ms-traffictypediagnostic: BYAPR11MB3000:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: NOmaSSDTJxi+5DxYMP/Q2sfU63KpCHJoIVGsEdXbq1dvOEgy1p7EoBmyz1wXEUpDqLjzBlB+rB0+l8Er8zKDlSNmMP+pd2FJ6gd1YSjAxQHmusutbigStGH4IEhlD5J1sGo/03AkeSBVVcPHeia9MQIJ5tWgf3TgbEziHzAAEDBpXM5yD16/GOzjXGLMyXKA/9xfc6tJlzgB9rsCSBHsCwySjbryZC7i7rR/C/w5q1iSMR1slp8qXRP1+l+vEq0cwDyTNToRoql8+9bkAhweWNWmEMNfoPxAvJf21SlChZ0kw5GRRmCioEFKZBRljiHKRtF5iKwjBHs7jmaJtbpnsmYr1HAgPMRiB5EwPL9K2XPFN0AeRK2LF/AxDf8c+eOyAYMM2ebJoll3RZ9aXrS9RLbd7U7oMUQvktERF9dGt094WtIQSazvjF5nZy2wht70OoC8gNPYtCwaBMYU+yQyBBMzjhFptROKUEjDEotaPKF+X5bOSrwXEY9y/sLsJReUNpkb2Sjszsdm1JBR0u7XT/+O21TujPnBwk3Rv+Eq7gDm3mXYd8+spk/vhauuDaPjJZbe3C43CkxLS7+edttM24p55PT10BU8Ro+jYSLR8Ox+kkSZI9rtaYmw78njq2MmXfRf8X28KJGymU9kPp7WJTVsFp3vgjWXp+9NSUfVT+N0pTUxxUbkZBn9eCKGIz2619OSS6p6lEiB7hpAWQ4kvAWghpmvhiF4aTH8NGoXBgzW7iTH5TnaPlSE8t15Pbe+5RSPoX+r6p6FFgfA+Y3M5WEPrBJQrH4kfmr7Z055YRgEVu/BYyMmdhrOrbZITRbJ
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW4PR11MB5800.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(366004)(396003)(136003)(376002)(346002)(39860400002)(91956017)(26005)(53546011)(66476007)(82960400001)(38070700005)(71200400001)(6506007)(8676002)(38100700002)(33656002)(66946007)(66556008)(66446008)(2906002)(41300700001)(9686003)(7696005)(64756008)(186003)(478600001)(86362001)(122000001)(76116006)(83380400001)(110136005)(8936002)(52536014)(55016003)(316002)(5660300002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?2f6hTGTULZlggAZEOuW1u+3+qjutqnpUhWU7X6+Kv2pJVry3GW5guyzFYe?=
+ =?iso-8859-2?Q?cY8SpKnA5aicD+d4hCk5PHz+VI5i2aKJ00UnO17CqyZl7amtb1Jki+XJl+?=
+ =?iso-8859-2?Q?B5PkJiK54QVkLo1V5pv2R64Ea1Mn/oJn+NEAw7cEyX78KMre2oXCvevmVm?=
+ =?iso-8859-2?Q?QFJFjr58HjgeHgcgk/6LDLEmJrUK0YCPuQZI7nMIY7KSAsdsQCokodxqJt?=
+ =?iso-8859-2?Q?avrhn7jJjB4WQ/x/ZRdFhKg/XflRgYsfLNmTUUE7dUmsdewAx12qwCjt8+?=
+ =?iso-8859-2?Q?Z3GOoy/aPcc4yBH5tMF1UahJ/zFMdC3ajjwfaf4mT/IJkpmlyHIGH4hin9?=
+ =?iso-8859-2?Q?/NXS8DoVYo04u2NeEJ8Bg/qoleAcvE3dLbGSkunwGUWgcdn+NaTgqJ1lMd?=
+ =?iso-8859-2?Q?g4bFe+ACN/UwE5HgNHS6Ge0Tyyr8qE12aMaBaAsbB37RXho263Ho8AW1dy?=
+ =?iso-8859-2?Q?wMkZ2KTDG6+KVzx/GzwTdhHy/+p+MBe21t5bq/4NrupggDH/H5vSiAW4cR?=
+ =?iso-8859-2?Q?AQ/3nCv2qtgbHEfL6bWGtG16zRAXaI9og8nSnB8QrOWPP5rPgXkFnZcvHN?=
+ =?iso-8859-2?Q?QSb3WxcmtAx6XmJG4R+r2pUw9wt+amn4pYGdIcXlAqYWbK4mKP22ZaSInh?=
+ =?iso-8859-2?Q?nYlvuDk3X4ck8mSeB3fCJLVI5qU/CjE+OPgeVQzS3ykSpV/VJQFNDigxYK?=
+ =?iso-8859-2?Q?ZHs+KQNK7Q4m1VtxijubPsfcSDPbaaYhTHt7TKLtuHf7ZopI4WRnZrDOvF?=
+ =?iso-8859-2?Q?KzLtN4DKXZdJfapjAi+KsE5xshRSPgrL0RVy3btdgjNH3Iyi0wV6ZxgQZ4?=
+ =?iso-8859-2?Q?mLIluSKjxUMKYf+WZcBflN1U0lKbLCe3+ojgIuyJE3yQfyLpY9a5TnQgji?=
+ =?iso-8859-2?Q?n3NExqA+YsYrxC+cXQNUOVALZmBA+b4EiMEhi/yN3NU+V8Uuhqd7KfT0Eg?=
+ =?iso-8859-2?Q?vT/I5tEHJ1dDQS38FzAGIgdcdsK2GNsFX9wTTMYT1lix0NWsLfFVvKsGJE?=
+ =?iso-8859-2?Q?IC7ZxgMWwdJlYJzeytpwooua9uHwgR1kHdvcM7t0CJaeQqjW5yddfnCLx6?=
+ =?iso-8859-2?Q?10xY8Nf200WYnrruVcWoO5X/sAO3IFskPBlUPLEJo6nXH8oNPpBGwWqw2C?=
+ =?iso-8859-2?Q?yi+CjVJFhiiEUrmX6J73upQTi35ARZ2/Wdi8i8INwQO4izHrRJvw2dOIoM?=
+ =?iso-8859-2?Q?EdY70CGm545a+dCoE/GGh7pgjx7JH97C1iZxBcFhX9jqiqiwcdvfFlppwP?=
+ =?iso-8859-2?Q?DzLZQ5FICYksF9eb9JGFflgI3iPX3PXy5sUGK5DGm744Ym+ul8VJ5Krhie?=
+ =?iso-8859-2?Q?NuKUdcvXtFOcEJCpQcniHhfywc1QSK01vB6W/K2yINUWd8UY3+iMaF7kBZ?=
+ =?iso-8859-2?Q?Cxj/McEk4xpPb95VJHYEVGkQZEnqX1adk6FeeJCssUemV99yuuyh+7J/+D?=
+ =?iso-8859-2?Q?n0sW+Ks9qztceDwIninH8yuxmwJGUAxSa1UY5gRrxveFF6Uw59MLke7ajl?=
+ =?iso-8859-2?Q?9ZaYW3ZjWdMvL/VKpHq2WjpSsZyyknV039BW4zVBYn7iLw0aAtUCE8cvXp?=
+ =?iso-8859-2?Q?mAl/IGR/V6znGgBZtoPIzqqkQebzh72cMzRXW+mn/FnBEqLYci8fA8LSDV?=
+ =?iso-8859-2?Q?TiIA8VUdt1mthcgRCwyDkqfSyK7iWiiHTo5M5WUbMB8zVQG9ln3Gnriw?=
+ =?iso-8859-2?Q?=3D=3D?=
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5800.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c4cc3e21-fe01-4257-84a2-08da7098261d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2022 12:53:20.2998 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: A/K+jaQY9dpb1X6yXG/twt+wlTTtaKfMYRalwHO2owez9Vg9Ww48jVMiAFKqRCgAkclxF6Wd8Hgp2kpCa17gPJnnj8uQeNPLGXAEKOiz6Jg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3000
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659012796; x=1690548796;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=2LkFAmpKt933Dq4fmxeJONiYFNA9qBov1dbVr2QAt58=;
- b=l7OqiBteO9lsnMwBj12N3S1LH+1LljpjFfCXdJuQISWo+2sM4Qrp/jzF
- 86vghx91lDk10vcylY6GUjkRCqTXI6nJ/i0qjWG5J+THTY1f+ULBaYqfY
- oFz+AfWm1BVyve/l+CGHCpy4WlbYV6SouWAPvlo/vbhrFRs74UbneukDA
- mKCigf/AveCh5wDQIDschUCL4OJAV1ifDujSSZ0AzywoRn3C1rDqk27bX
- wVdXg+PS0JPC66Ed/dCUG8dQdXmH0DURfYCiwbOFDicsqyn8OvSI6fKka
- MxXWM0GyELybrCmTvvikvOk4jA5fByjmV1ft52gjZFakJkDkj8BrEf9KH
+ t=1659012807; x=1690548807;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=ZsHXvnH+SZLWj9bwoPko4ygXlYXsIIICq0kPTrAkYQg=;
+ b=cy5+wpj5xPx3gPoVBKbXXkud6E0ellAKHikFQFOGSNg1NyfAOx8A8K+J
+ S3g6po3eXi9Do0w2ouPHU4YWsjCUbsRe/MnZD2utCti/OmBwwdpy6X4TF
+ 5g1dDzYrbkaXmAYq9KS6ykBA7LLqvpArX1TaxWHqmoife+nLtosg4JdkX
+ jyPPX4t0smlUuc0o8vO04b4v8wC4uPAzokfyJEjLmzJ+PxgHnPNxJXLQ4
+ NLnanIFke1XNYW2n0WU44ydCqoeBlH4I8YeImnIyZQjXrH84B4N41E2Ov
+ x8+0MrSrBmGTSStzmDsryN7Zcd4e1uJxVEoBUSmHS3vRluo9xxg2SaO9Z
  w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=l7OqiBte
-Subject: [Intel-wired-lan] [PATCH v2 net-next] ice: Add low latency Tx
+ header.a=rsa-sha256 header.s=Intel header.b=cy5+wpj5
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Add low latency Tx
  timestamp read
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -93,468 +191,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karol Kolacinski <karol.kolacinski@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E810 products can support low latency Tx timestamp register read.
-This requires usage of threaded IRQ instead of kthread to reduce the
-kthread start latency (spikes up to 20 ms).
-Add a check for the device capability and use the new method if
-supported.
+Hi Tony,
 
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V1 -> V2: Removed unnecessary cast and else
+On 26.07.2022 13:39 PM, Anthony L Nguyen wrote:
+> > @@ -3121,6 +3123,24 @@ static irqreturn_t ice_misc_intr(int __always_un=
+used irq, void *data)
+> >=A0=A0=A0=A0=A0=A0=A0 return ret;
+> >=A0=A0 }
+> >=A0=A0 =
 
- drivers/net/ethernet/intel/ice/ice_common.c |  4 +
- drivers/net/ethernet/intel/ice/ice_main.c   | 32 +++++--
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 47 +++++-----
- drivers/net/ethernet/intel/ice/ice_ptp.h    |  7 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 98 ++++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  7 ++
- drivers/net/ethernet/intel/ice/ice_type.h   |  2 +
- 7 files changed, 152 insertions(+), 45 deletions(-)
+> > +/**
+> > + * ice_misc_intr_thread_fn - misc interrupt thread function
+> > + * @irq: interrupt number
+> > + * @data: pointer to a q_vector
+> > + */
+> > +static irqreturn_t ice_misc_intr_thread_fn(int __always_unused irq, vo=
+id *data)
+> > +{
+> > +=A0=A0=A0=A0 struct ice_pf *pf =3D (struct ice_pf *)data;
+> =
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 27d0cbbd29da..7027d7fbff92 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -2397,6 +2397,8 @@ ice_parse_1588_dev_caps(struct ice_hw *hw, struct ice_hw_dev_caps *dev_p,
- 	info->tmr1_owned = ((number & ICE_TS_TMR1_OWND_M) != 0);
- 	info->tmr1_ena = ((number & ICE_TS_TMR1_ENA_M) != 0);
- 
-+	info->ts_ll_read = ((number & ICE_TS_LL_TX_TS_READ_M) != 0);
-+
- 	info->ena_ports = logical_id;
- 	info->tmr_own_map = phys_id;
- 
-@@ -2414,6 +2416,8 @@ ice_parse_1588_dev_caps(struct ice_hw *hw, struct ice_hw_dev_caps *dev_p,
- 		  info->tmr1_owned);
- 	ice_debug(hw, ICE_DBG_INIT, "dev caps: tmr1_ena = %u\n",
- 		  info->tmr1_ena);
-+	ice_debug(hw, ICE_DBG_INIT, "dev caps: ts_ll_read = %u\n",
-+		  info->ts_ll_read);
- 	ice_debug(hw, ICE_DBG_INIT, "dev caps: ieee_1588 ena_ports = %u\n",
- 		  info->ena_ports);
- 	ice_debug(hw, ICE_DBG_INIT, "dev caps: tmr_own_map = %u\n",
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f3a5cb93e2fd..4c57d5ad6d99 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3078,7 +3078,8 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
- 
- 	if (oicr & PFINT_OICR_TSYN_TX_M) {
- 		ena_mask &= ~PFINT_OICR_TSYN_TX_M;
--		ice_ptp_process_ts(pf);
-+		if (!hw->reset_ongoing)
-+			ret = IRQ_WAKE_THREAD;
- 	}
- 
- 	if (oicr & PFINT_OICR_TSYN_EVNT_M) {
-@@ -3113,7 +3114,8 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
- 			ice_service_task_schedule(pf);
- 		}
- 	}
--	ret = IRQ_HANDLED;
-+	if (!ret)
-+		ret = IRQ_HANDLED;
- 
- 	ice_service_task_schedule(pf);
- 	ice_irq_dynamic_ena(hw, NULL, NULL);
-@@ -3121,6 +3123,24 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
- 	return ret;
- }
- 
-+/**
-+ * ice_misc_intr_thread_fn - misc interrupt thread function
-+ * @irq: interrupt number
-+ * @data: pointer to a q_vector
-+ */
-+static irqreturn_t ice_misc_intr_thread_fn(int __always_unused irq, void *data)
-+{
-+	struct ice_pf *pf = data;
-+	irqreturn_t ret = IRQ_HANDLED;
-+	bool irq_handled;
-+
-+	irq_handled = ice_ptp_process_ts(pf);
-+	if (!irq_handled)
-+		ret = IRQ_WAKE_THREAD;
-+
-+	return ret;
-+}
-+
- /**
-  * ice_dis_ctrlq_interrupts - disable control queue interrupts
-  * @hw: pointer to HW structure
-@@ -3233,10 +3253,12 @@ static int ice_req_irq_msix_misc(struct ice_pf *pf)
- 	pf->num_avail_sw_msix -= 1;
- 	pf->oicr_idx = (u16)oicr_idx;
- 
--	err = devm_request_irq(dev, pf->msix_entries[pf->oicr_idx].vector,
--			       ice_misc_intr, 0, pf->int_name, pf);
-+	err = devm_request_threaded_irq(dev,
-+					pf->msix_entries[pf->oicr_idx].vector,
-+					ice_misc_intr, ice_misc_intr_thread_fn,
-+					0, pf->int_name, pf);
- 	if (err) {
--		dev_err(dev, "devm_request_irq for %s failed: %d\n",
-+		dev_err(dev, "devm_request_threaded_irq for %s failed: %d\n",
- 			pf->int_name, err);
- 		ice_free_res(pf->irq_tracker, 1, ICE_RES_MISC_VEC_ID);
- 		pf->num_avail_sw_msix += 1;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 29c7a0ccb3c4..a3373ccb25d2 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2026,8 +2026,8 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
- }
- 
- /**
-- * ice_ptp_tx_tstamp_work - Process Tx timestamps for a port
-- * @work: pointer to the kthread_work struct
-+ * ice_ptp_tx_tstamp - Process Tx timestamps for a port
-+ * @tx: the PTP Tx timestamp tracker
-  *
-  * Process timestamps captured by the PHY associated with this port. To do
-  * this, loop over each index with a waiting skb.
-@@ -2040,11 +2040,11 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
-  * 2) extend the 40b timestamp value to get a 64bit timestamp
-  * 3) send that timestamp to the stack
-  *
-- * After looping, if we still have waiting SKBs, then re-queue the work. This
-- * may cause us effectively poll even when not strictly necessary. We do this
-- * because it's possible a new timestamp was requested around the same time as
-- * the interrupt. In some cases hardware might not interrupt us again when the
-- * timestamp is captured.
-+ * After looping, if we still have waiting SKBs, return true. This may cause us
-+ * effectively poll even when not strictly necessary. We do this because it's
-+ * possible a new timestamp was requested around the same time as the interrupt.
-+ * In some cases hardware might not interrupt us again when the timestamp is
-+ * captured.
-  *
-  * Note that we only take the tracking lock when clearing the bit and when
-  * checking if we need to re-queue this task. The only place where bits can be
-@@ -2053,27 +2053,24 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
-  * thread. If the cleanup thread clears a bit we're processing we catch it
-  * when we lock to clear the bit and then grab the SKB pointer. If a Tx thread
-  * starts a new timestamp, we might not begin processing it right away but we
-- * will notice it at the end when we re-queue the work item. If a Tx thread
-- * starts a new timestamp just after this function exits without re-queuing,
-+ * will notice it at the end when we re-queue the task. If a Tx thread starts
-+ * a new timestamp just after this function exits without re-queuing,
-  * the interrupt when the timestamp finishes should trigger. Avoiding holding
-  * the lock for the entire function is important in order to ensure that Tx
-  * threads do not get blocked while waiting for the lock.
-  */
--static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
-+static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- {
- 	struct ice_ptp_port *ptp_port;
--	struct ice_ptp_tx *tx;
-+	bool ts_handled = true;
- 	struct ice_pf *pf;
--	struct ice_hw *hw;
- 	u8 idx;
- 
--	tx = container_of(work, struct ice_ptp_tx, work);
- 	if (!tx->init)
--		return;
-+		return false;
- 
- 	ptp_port = container_of(tx, struct ice_ptp_port, tx);
- 	pf = ptp_port_to_pf(ptp_port);
--	hw = &pf->hw;
- 
- 	for_each_set_bit(idx, tx->in_use, tx->len) {
- 		struct skb_shared_hwtstamps shhwtstamps = {};
-@@ -2084,7 +2081,7 @@ static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
- 
- 		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
- 
--		err = ice_read_phy_tstamp(hw, tx->quad, phy_idx,
-+		err = ice_read_phy_tstamp(&pf->hw, tx->quad, phy_idx,
- 					  &raw_tstamp);
- 		if (err)
- 			continue;
-@@ -2127,8 +2124,10 @@ static void ice_ptp_tx_tstamp_work(struct kthread_work *work)
- 	 */
- 	spin_lock(&tx->lock);
- 	if (!bitmap_empty(tx->in_use, tx->len))
--		kthread_queue_work(pf->ptp.kworker, &tx->work);
-+		ts_handled = false;
- 	spin_unlock(&tx->lock);
-+
-+	return ts_handled;
- }
- 
- /**
-@@ -2171,16 +2170,17 @@ s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb)
- }
- 
- /**
-- * ice_ptp_process_ts - Spawn kthread work to handle timestamps
-+ * ice_ptp_process_ts - Process the PTP Tx timestamps
-  * @pf: Board private structure
-  *
-- * Queue work required to process the PTP Tx timestamps outside of interrupt
-- * context.
-+ * Returns true if timestamps are processed.
-  */
--void ice_ptp_process_ts(struct ice_pf *pf)
-+bool ice_ptp_process_ts(struct ice_pf *pf)
- {
- 	if (pf->ptp.port.tx.init)
--		kthread_queue_work(pf->ptp.kworker, &pf->ptp.port.tx.work);
-+		return ice_ptp_tx_tstamp(&pf->ptp.port.tx);
-+
-+	return false;
- }
- 
- /**
-@@ -2205,7 +2205,6 @@ ice_ptp_alloc_tx_tracker(struct ice_ptp_tx *tx)
- 	}
- 
- 	spin_lock_init(&tx->lock);
--	kthread_init_work(&tx->work, ice_ptp_tx_tstamp_work);
- 
- 	tx->init = 1;
- 
-@@ -2251,8 +2250,6 @@ ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
- {
- 	tx->init = 0;
- 
--	kthread_cancel_work_sync(&tx->work);
--
- 	ice_ptp_flush_tx_tracker(pf, tx);
- 
- 	kfree(tx->tstamps);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 10e396abf130..5e620e15a265 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -105,7 +105,6 @@ struct ice_tx_tstamp {
- 
- /**
-  * struct ice_ptp_tx - Tracking structure for all Tx timestamp requests on a port
-- * @work: work function to handle processing of Tx timestamps
-  * @lock: lock to prevent concurrent write to in_use bitmap
-  * @tstamps: array of len to store outstanding requests
-  * @in_use: bitmap of len to indicate which slots are in use
-@@ -117,7 +116,6 @@ struct ice_tx_tstamp {
-  *               window, timestamps are temporarily disabled.
-  */
- struct ice_ptp_tx {
--	struct kthread_work work;
- 	spinlock_t lock; /* lock protecting in_use bitmap */
- 	struct ice_tx_tstamp *tstamps;
- 	unsigned long *in_use;
-@@ -236,7 +234,7 @@ void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena);
- int ice_get_ptp_clock_index(struct ice_pf *pf);
- 
- s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb);
--void ice_ptp_process_ts(struct ice_pf *pf);
-+bool ice_ptp_process_ts(struct ice_pf *pf);
- 
- void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
-@@ -269,7 +267,8 @@ ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb)
- 	return -1;
- }
- 
--static inline void ice_ptp_process_ts(struct ice_pf *pf) { }
-+static inline bool ice_ptp_process_ts(struct ice_pf *pf)
-+{ return true; }
- static inline void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb) { }
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 6dff97d53d81..772b1f566d6e 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright (C) 2021, Intel Corporation. */
- 
-+#include <linux/delay.h>
- #include "ice_common.h"
- #include "ice_ptp_hw.h"
- #include "ice_ptp_consts.h"
-@@ -2587,38 +2588,113 @@ static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
- }
- 
- /**
-- * ice_read_phy_tstamp_e810 - Read a PHY timestamp out of the external PHY
-+ * ice_read_phy_tstamp_ll_e810 - Read a PHY timestamp registers through the FW
-+ * @hw: pointer to the HW struct
-+ * @idx: the timestamp index to read
-+ * @hi: 8 bit timestamp high value
-+ * @lo: 32 bit timestamp low value
-+ *
-+ * Read a 8bit timestamp high value and 32 bit timestamp low value out of the
-+ * timestamp block of the external PHY on the E810 device using the low latency
-+ * timestamp read.
-+ */
-+static int
-+ice_read_phy_tstamp_ll_e810(struct ice_hw *hw, u8 idx, u8 *hi, u32 *lo)
-+{
-+	u32 val;
-+	u8 i;
-+
-+	/* Write TS index to read to the PF register so the FW can read it */
-+	val = FIELD_PREP(TS_LL_READ_TS_IDX, idx) | TS_LL_READ_TS;
-+	wr32(hw, PF_SB_ATQBAL, val);
-+
-+	/* Read the register repeatedly until the FW provides us the TS */
-+	for (i = TS_LL_READ_RETRIES; i > 0; i--) {
-+		val = rd32(hw, PF_SB_ATQBAL);
-+
-+		/* When the bit is cleared, the TS is ready in the register */
-+		if (!(FIELD_GET(TS_LL_READ_TS, val))) {
-+			/* High 8 bit value of the TS is on the bits 16:23 */
-+			*hi = FIELD_GET(TS_LL_READ_TS_HIGH, val);
-+
-+			/* Read the low 32 bit value and set the TS valid bit */
-+			*lo = rd32(hw, PF_SB_ATQBAH) | TS_VALID;
-+			return 0;
-+		}
-+
-+		udelay(10);
-+	}
-+
-+	/* FW failed to provide the TS in time */
-+	ice_debug(hw, ICE_DBG_PTP, "Failed to read PTP timestamp using low latency read\n");
-+	return -EINVAL;
-+}
-+
-+/**
-+ * ice_read_phy_tstamp_sbq_e810 - Read a PHY timestamp registers through the sbq
-  * @hw: pointer to the HW struct
-  * @lport: the lport to read from
-  * @idx: the timestamp index to read
-- * @tstamp: on return, the 40bit timestamp value
-+ * @hi: 8 bit timestamp high value
-+ * @lo: 32 bit timestamp low value
-  *
-- * Read a 40bit timestamp value out of the timestamp block of the external PHY
-- * on the E810 device.
-+ * Read a 8bit timestamp high value and 32 bit timestamp low value out of the
-+ * timestamp block of the external PHY on the E810 device using sideband queue.
-  */
- static int
--ice_read_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx, u64 *tstamp)
-+ice_read_phy_tstamp_sbq_e810(struct ice_hw *hw, u8 lport, u8 idx, u8 *hi,
-+			     u32 *lo)
- {
--	u32 lo_addr, hi_addr, lo, hi;
-+	u32 hi_addr = TS_EXT(HIGH_TX_MEMORY_BANK_START, lport, idx);
-+	u32 lo_addr = TS_EXT(LOW_TX_MEMORY_BANK_START, lport, idx);
-+	u32 lo_val, hi_val;
- 	int err;
- 
--	lo_addr = TS_EXT(LOW_TX_MEMORY_BANK_START, lport, idx);
--	hi_addr = TS_EXT(HIGH_TX_MEMORY_BANK_START, lport, idx);
--
--	err = ice_read_phy_reg_e810(hw, lo_addr, &lo);
-+	err = ice_read_phy_reg_e810(hw, lo_addr, &lo_val);
- 	if (err) {
- 		ice_debug(hw, ICE_DBG_PTP, "Failed to read low PTP timestamp register, err %d\n",
- 			  err);
- 		return err;
- 	}
- 
--	err = ice_read_phy_reg_e810(hw, hi_addr, &hi);
-+	err = ice_read_phy_reg_e810(hw, hi_addr, &hi_val);
- 	if (err) {
- 		ice_debug(hw, ICE_DBG_PTP, "Failed to read high PTP timestamp register, err %d\n",
- 			  err);
- 		return err;
- 	}
- 
-+	*lo = lo_val;
-+	*hi = (u8)hi_val;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_read_phy_tstamp_e810 - Read a PHY timestamp out of the external PHY
-+ * @hw: pointer to the HW struct
-+ * @lport: the lport to read from
-+ * @idx: the timestamp index to read
-+ * @tstamp: on return, the 40bit timestamp value
-+ *
-+ * Read a 40bit timestamp value out of the timestamp block of the external PHY
-+ * on the E810 device.
-+ */
-+static int
-+ice_read_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx, u64 *tstamp)
-+{
-+	u32 lo = 0;
-+	u8 hi = 0;
-+	int err;
-+
-+	if (hw->dev_caps.ts_dev_info.ts_ll_read)
-+		err = ice_read_phy_tstamp_ll_e810(hw, idx, &hi, &lo);
-+	else
-+		err = ice_read_phy_tstamp_sbq_e810(hw, lport, idx, &hi, &lo);
-+
-+	if (err)
-+		return err;
-+
- 	/* For E810 devices, the timestamp is reported with the lower 32 bits
- 	 * in the low register, and the upper 8 bits in the high register.
- 	 */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 1246e4ee4b5d..2bda64c76abc 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -402,6 +402,7 @@ bool ice_is_pca9575_present(struct ice_hw *hw);
- #define INCVAL_HIGH_M			0xFF
- 
- /* Timestamp block macros */
-+#define TS_VALID			BIT(0)
- #define TS_LOW_M			0xFFFFFFFF
- #define TS_HIGH_M			0xFF
- #define TS_HIGH_S			32
-@@ -413,6 +414,12 @@ bool ice_is_pca9575_present(struct ice_hw *hw);
- #define BYTES_PER_IDX_ADDR_L_U		8
- #define BYTES_PER_IDX_ADDR_L		4
- 
-+/* Tx timestamp low latency read definitions */
-+#define TS_LL_READ_RETRIES		200
-+#define TS_LL_READ_TS_HIGH		GENMASK(23, 16)
-+#define TS_LL_READ_TS_IDX		GENMASK(29, 24)
-+#define TS_LL_READ_TS			BIT(31)
-+
- /* Internal PHY timestamp address */
- #define TS_L(a, idx) ((a) + ((idx) * BYTES_PER_IDX_ADDR_L_U))
- #define TS_H(a, idx) ((a) + ((idx) * BYTES_PER_IDX_ADDR_L_U +		\
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 861b64322959..920c47ddbe8d 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -347,6 +347,7 @@ struct ice_ts_func_info {
- #define ICE_TS_DEV_ENA_M		BIT(24)
- #define ICE_TS_TMR0_ENA_M		BIT(25)
- #define ICE_TS_TMR1_ENA_M		BIT(26)
-+#define ICE_TS_LL_TX_TS_READ_M		BIT(28)
- 
- struct ice_ts_dev_info {
- 	/* Device specific info */
-@@ -359,6 +360,7 @@ struct ice_ts_dev_info {
- 	u8 ena;
- 	u8 tmr0_ena;
- 	u8 tmr1_ena;
-+	u8 ts_ll_read;
- };
- 
- /* Function specific capabilities */
--- 
-2.34.1
+> Cast shouldn't be needed.
 
+Done
+
+> > @@ -2171,16 +2170,17 @@ s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, st=
+ruct sk_buff *skb)
+> >=A0=A0 }
+> >=A0=A0 =
+
+> >=A0=A0 /**
+> > - * ice_ptp_process_ts - Spawn kthread work to handle timestamps
+> > + * ice_ptp_process_ts - Process the PTP Tx timestamps
+> >=A0=A0=A0 * @pf: Board private structure
+> >=A0=A0=A0 *
+> > - * Queue work required to process the PTP Tx timestamps outside of int=
+errupt
+> > - * context.
+> > + * Returns true if timestamps are processed.
+> >=A0=A0=A0 */
+> > -void ice_ptp_process_ts(struct ice_pf *pf)
+> > +bool ice_ptp_process_ts(struct ice_pf *pf)
+> >=A0=A0 {
+> >=A0=A0=A0=A0=A0=A0=A0 if (pf->ptp.port.tx.init)
+> > -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 kthread_queue_work(pf->ptp.kworke=
+r, &pf->ptp.port.tx.work);
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return ice_ptp_tx_tstamp(&pf->ptp=
+.port.tx);
+> > +=A0=A0=A0=A0 else
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return false;
+> =
+
+> I believe preference is to remove the else and have an un-indented =
+
+> return false.
+
+Done
+
+> > @@ -2587,38 +2588,113 @@ static int ice_write_phy_reg_e810(struct ice_h=
+w *hw, u32 addr, u32 val)
+> >=A0=A0 }
+> >=A0=A0 =
+
+> >=A0=A0 /**
+> > - * ice_read_phy_tstamp_e810 - Read a PHY timestamp out of the external=
+ PHY
+> > + * ice_read_phy_tstamp_ll_e810 - Read a PHY timestamp registers throug=
+h the FW
+> > + * @hw: pointer to the HW struct
+> > + * @idx: the timestamp index to read
+> > + * @hi: 8 bit timestamp high value
+> > + * @lo: 32 bit timestamp low value
+> > + *
+> > + * Read a 8bit timestamp high value and 32 bit timestamp low value out=
+ of the
+> > + * timestamp block of the external PHY on the E810 device using the lo=
+w latency
+> > + * timestamp read.
+> > + */
+> > +static int
+> > +ice_read_phy_tstamp_ll_e810(struct ice_hw *hw, u8 idx, u8 *hi, u32 *lo)
+> > +{
+> > +=A0=A0=A0=A0 u32 val;
+> > +=A0=A0=A0=A0 u8 i;
+> > +
+> > +=A0=A0=A0=A0 /* Write TS index to read to the PF register so the FW ca=
+n read it */
+> > +=A0=A0=A0=A0 val =3D FIELD_PREP(TS_LL_READ_TS_IDX, idx) | TS_LL_READ_T=
+S;
+> > +=A0=A0=A0=A0 wr32(hw, PF_SB_ATQBAL, val);
+> > +
+> > +=A0=A0=A0=A0 /* Read the register repeatedly until the FW provides us =
+the TS */
+> > +=A0=A0=A0=A0 for (i =3D TS_LL_READ_RETRIES; i > 0; i--) {
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 val =3D rd32(hw, PF_SB_ATQBAL);
+> > +
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 /* When the bit is cleared, the T=
+S is ready in the register */
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (!(FIELD_GET(TS_LL_READ_TS, va=
+l))) {
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 /* High 8=
+ bit value of the TS is on the bits 16:23 */
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 *hi =3D F=
+IELD_GET(TS_LL_READ_TS_HIGH, val);
+> > +
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 /* Read t=
+he low 32 bit value and set the TS valid bit */
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 *lo =3D r=
+d32(hw, PF_SB_ATQBAH) | TS_VALID;
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 0;
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
+> > +
+> > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 udelay(10);
+> =
+
+> CHECK: usleep_range is preferred over udelay; see =
+
+> Documentation/timers/timers-howto.rst
+
+This udelay use is intentional as the delay value is small and this
+loop is time sensitive.
+
+Kind regards,
+Karol
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
