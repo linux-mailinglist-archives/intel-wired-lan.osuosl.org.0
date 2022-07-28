@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7178358408F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 16:07:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E490584291
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Jul 2022 17:09:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CEE9A41A01;
-	Thu, 28 Jul 2022 14:07:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CEE9A41A01
+	by smtp4.osuosl.org (Postfix) with ESMTP id 97325417AA;
+	Thu, 28 Jul 2022 15:09:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 97325417AA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659017260;
-	bh=+AJnuqn2M0fPdfB8TMGbPsoUFpJQXubHKU+bR5AmuRk=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=IOAK6VyzDC0x3nO5KCwg63nWH602JR0NvET6Zqn+BvYAiOyNVpU056gnuR7zLQZOA
-	 FVMD/Po/DnqjXLGL4hwJlXDzOSDA96+6DhcS+exHofNX3WckFLEMgCVpECD2RD/Ce5
-	 JKN9+a3SPf/wQDHK4g7gXhlaTjrBW96TnfNWmvaMpAvdofWIeYPScss7W2zPkhZwfO
-	 wD0kgqqMuR7R5Fx1YyEb9uQQkf5QZjqCONuRYlhBfih3XHF0SxOoQZJvBZ8iotZGV/
-	 NwhXuaUk1fqNRba6GUtwDSA39/waNjxvEPED876G48JvTtf/JltzvngvjCNKZTM4la
-	 BB9Vaf5Sc/GJg==
+	s=default; t=1659020973;
+	bh=pcIT6bH8QZJlZBavzlDbVGMpvbR+b6yezRsR6pwrmJU=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=RH0eZKrWatX4t/qJxewR7lOhFqD1K1uI+sHNReBILa/eCqLDGHqhQiR0H3MWZGCRM
+	 /IyFoODzYY4GsaWXDgK6sCk3qDpFb4BYCH/cxcQpDLZM4UcDBpgcByA/8FE7JudtiP
+	 h9DuraMkHUClt5OlV6OpyOqpD3h0yhyZ1CYTOFOladU12utOSzM1iBrDq9n4buQw4+
+	 mrtFg0VTSLBW5PTC3ajj6IukXRs6ntKh1Keai1HrmY3K6YNnEjV7oaZiCzlSplkWoQ
+	 e1adqhTObvLOhcrHoMBFtftxU7/q9GDwG/bOVhgLVf6tWqhWaknSPLREIXs5lCLJaE
+	 ZPgS5WfrR8EEQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9ni7DOuXDygP; Thu, 28 Jul 2022 14:07:39 +0000 (UTC)
+	with ESMTP id zRNPmqIaubmX; Thu, 28 Jul 2022 15:09:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7879C418AA;
-	Thu, 28 Jul 2022 14:07:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7879C418AA
+	by smtp4.osuosl.org (Postfix) with ESMTP id 16D1B41781;
+	Thu, 28 Jul 2022 15:09:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 16D1B41781
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 974AF1BF33F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 14:07:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 57DAB1BF3ED
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 15:09:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 71339409EE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 14:07:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71339409EE
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A0B360F60
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 15:09:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A0B360F60
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R6PD06AuMc91 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Jul 2022 14:07:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6BAQRBGj7VaN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Jul 2022 15:09:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B6708408C8
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B6708408C8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 14:07:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10421"; a="289289250"
-X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="289289250"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2022 07:07:29 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3183060F51
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3183060F51
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Jul 2022 15:09:25 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10422"; a="268916541"
+X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="268916541"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2022 08:09:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="690328113"
-Received: from propan.igk.intel.com ([10.211.8.82])
- by FMSMGA003.fm.intel.com with ESMTP; 28 Jul 2022 07:07:28 -0700
-From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 28 Jul 2022 16:04:26 +0200
-Message-Id: <20220728140426.664140-4-anatolii.gerasymenko@intel.com>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20220728140426.664140-1-anatolii.gerasymenko@intel.com>
-References: <20220728140426.664140-1-anatolii.gerasymenko@intel.com>
+X-IronPort-AV: E=Sophos;i="5.93,198,1654585200"; d="scan'208";a="600902736"
+Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 28 Jul 2022 08:09:23 -0700
+Received: from kbuild by e0eace57cfef with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oH58c-000AEa-1c;
+ Thu, 28 Jul 2022 15:09:22 +0000
+Date: Thu, 28 Jul 2022 23:08:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62e2a682.kC4Wt46J7Iq1QcT6%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659017249; x=1690553249;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+IpoxV1y3li3/3vOL7fPn4wbP/mtvRHkp2Q1Yv+nklk=;
- b=OFPrMbbdHamedTSagYhS/zvfFoj1jn89QLfFMJKvi4jIs0qB9D055c53
- mdCNaZ6WUJpVaeKeH/SQ+0Aenrd+Ni0wkpBCYcvcdmgoEdozzqJZE4onP
- /MB9cFO2rVbot+/6CC+QNmKM9D268GJYwuaoAfGJ4O7TlRa1L0HAJgC+c
- ZF/npuWMiVEm1oDwgcDdNbwpjJTLufZ+VcmgshKL5xXdfamkSXHj8XZz/
- /wlpuZLOFkSSOCda/8vOGdxdimYBapp9lTFj1zTLFrnbbkzFCRD8xubpJ
- X4181NF0AnzE1YtXCd2GfSNmwIkaNp/s3JuMxrzPowlrmTra4fhesuj5E
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1659020965; x=1690556965;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=j5FYtgwgyRDJIZszhGKr8wsP1THPm5MaE9vDOaU9bOs=;
+ b=aogxllzeH9vWgooiOJg3TFrWa+1qTkyQeCQePLtLcOjOb/Oh5km/Wh5N
+ kToCqO09Hr739sVfKLae88GdIKbE4tg0cgdoAEML9Ks+7lD0UqOTufIRo
+ f38MS4BoC2ReegN+YCK02sq+ayq1zM/qFBrbgwAw+J752COXhpsd1zQgH
+ X+9F9CEaKifWMxfl5RSQKydW9abcNgr57REoGlj2l4bRcV/E+5mCgRIu0
+ Mla3UoAI72f64ocV9s5TdYxNro9NGoQrPdVqoSKwQf2H4DsuTvZMeiCLo
+ JLzjiFd9AO5WOTzcQtXNpjdSLjl1JnDT0Xf4oiII4UbpvMm6y2r5jK2A/
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OFPrMbbd
-Subject: [Intel-wired-lan] [PATCH net-next 3/3] ice: Handle LLDP MIB Pending
- change
+ header.a=rsa-sha256 header.s=Intel header.b=aogxllze
+Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
+ e62d2e110356093c034998e093675df83057e511
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,102 +94,168 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If the number of Traffic Classes (TC) is decreased, the FW will no
-longer remove TC nodes, but will send a pending change notification. This
-will allow RDMA to destroy corresponding Control QP markers. After RDMA
-finishes outstanding operations, the ice driver will send an execute MIB
-Pending change admin queue command to FW to finish DCB configuration
-change.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git master
+branch HEAD: e62d2e110356093c034998e093675df83057e511  tcp: md5: fix IPv4-mapped support
 
-The FW will buffer all incoming Pending changes, so there can be only
-one active Pending change.
+elapsed time: 1281m
 
-RDMA driver guarantees to remove Control QP markers within 5000 ms.
-Hence, LLDP response timeout txTTL (default 30 sec) will be met.
+configs tested: 136
+configs skipped: 6
 
-Signed-off-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 25 ++++++++++++++++++--
- 1 file changed, 23 insertions(+), 2 deletions(-)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 1c54eb643b6f..f16e4c54409f 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -933,6 +933,16 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_tx_ring *tx_ring,
- 	}
- }
- 
-+/**
-+ * ice_dcb_is_mib_change_pending - Check if MIB change is pending
-+ * @state: MIB change state
-+ */
-+static inline bool ice_dcb_is_mib_change_pending(u8 state)
-+{
-+	return ICE_AQ_LLDP_MIB_CHANGE_PENDING ==
-+		FIELD_GET(ICE_AQ_LLDP_MIB_CHANGE_STATE_M, state);
-+}
-+
- /**
-  * ice_dcb_process_lldp_set_mib_change - Process MIB change
-  * @pf: ptr to ice_pf
-@@ -946,6 +956,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_aqc_lldp_get_mib *mib;
- 	struct ice_dcbx_cfg tmp_dcbx_cfg;
-+	bool pending_handled = false;
- 	bool need_reconfig = false;
- 	struct ice_port_info *pi;
- 	u8 mib_type;
-@@ -966,7 +977,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	mib_type = FIELD_GET(ICE_AQ_LLDP_BRID_TYPE_M, mib->type);
- 	dev_dbg(dev, "LLDP event MIB bridge type 0x%x\n", mib_type);
- 	if (mib_type != ICE_AQ_LLDP_BRID_TYPE_NEAREST_BRID)
--		return;
-+		goto handle_pending;
- 
- 	/* Check MIB Type and return if event for Remote MIB update */
- 	mib_type = FIELD_GET(ICE_AQ_LLDP_MIB_TYPE_M, mib->type);
-@@ -974,7 +985,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	if (mib_type == ICE_AQ_LLDP_MIB_REMOTE) {
- 		/* Update the remote cached instance and return */
- 		ice_get_dcb_cfg_from_mib_change(pi, event);
--		return;
-+		goto handle_pending;
- 	}
- 
- 	mutex_lock(&pf->tc_mutex);
-@@ -1009,6 +1020,12 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 		clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
- 	}
- 
-+	/* Send Execute Pending MIB Change event if it is a Pending event */
-+	if (ice_dcb_is_mib_change_pending(mib->state)) {
-+		ice_lldp_execute_pending_mib(&pf->hw);
-+		pending_handled = true;
-+	}
-+
- 	rtnl_lock();
- 	/* disable VSIs affected by DCB changes */
- 	ice_dcb_ena_dis_vsi(pf, false, true);
-@@ -1028,4 +1045,8 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	rtnl_unlock();
- out:
- 	mutex_unlock(&pf->tc_mutex);
-+handle_pending:
-+	/* Send Execute Pending MIB Change event if it is a Pending event */
-+	if (!pending_handled && ice_dcb_is_mib_change_pending(mib->state))
-+		ice_lldp_execute_pending_mib(&pf->hw);
- }
+gcc tested configs:
+x86_64                        randconfig-a002
+x86_64                        randconfig-a004
+x86_64                        randconfig-a006
+um                           x86_64_defconfig
+um                             i386_defconfig
+arc                  randconfig-r043-20220727
+x86_64                    rhel-8.3-kselftests
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+x86_64                        randconfig-a013
+x86_64                           rhel-8.3-kvm
+x86_64                           rhel-8.3-syz
+i386                             allyesconfig
+i386                                defconfig
+x86_64                        randconfig-a015
+x86_64                        randconfig-a011
+m68k                             allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+csky                              allnoconfig
+alpha                             allnoconfig
+arc                               allnoconfig
+riscv                             allnoconfig
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+arc                        vdk_hs38_defconfig
+mips                            ar7_defconfig
+m68k                        stmark2_defconfig
+sh                          lboxre2_defconfig
+powerpc                           allnoconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+mips                     decstation_defconfig
+xtensa                  cadence_csp_defconfig
+arc                                 defconfig
+powerpc                      pasemi_defconfig
+m68k                         amcore_defconfig
+arm                            lart_defconfig
+sh                           se7712_defconfig
+powerpc                 mpc837x_rdb_defconfig
+powerpc                         ps3_defconfig
+arm                        mvebu_v7_defconfig
+arm                         vf610m4_defconfig
+xtensa                       common_defconfig
+i386                          randconfig-c001
+i386                          debian-10.3-kvm
+i386                        debian-10.3-kunit
+i386                         debian-10.3-func
+sparc                       sparc64_defconfig
+arm                           sama5_defconfig
+arm                            qcom_defconfig
+arm                            hisi_defconfig
+m68k                        m5272c3_defconfig
+sh                          rsk7264_defconfig
+mips                  decstation_64_defconfig
+arm                         assabet_defconfig
+sh                         ecovec24_defconfig
+powerpc                 mpc8540_ads_defconfig
+sh                   sh7770_generic_defconfig
+m68k                          amiga_defconfig
+arm                         cm_x300_defconfig
+ia64                                defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+xtensa                    smp_lx200_defconfig
+parisc64                            defconfig
+csky                             alldefconfig
+arm                           viper_defconfig
+mips                 randconfig-c004-20220728
+powerpc              randconfig-c003-20220728
+loongarch                           defconfig
+loongarch                         allnoconfig
+xtensa                           allyesconfig
+arm                           u8500_defconfig
+powerpc                 linkstation_defconfig
+s390                 randconfig-r044-20220728
+riscv                randconfig-r042-20220728
+arc                  randconfig-r043-20220728
+s390                                defconfig
+s390                             allmodconfig
+alpha                               defconfig
+s390                             allyesconfig
+nios2                            allyesconfig
+nios2                               defconfig
+parisc                              defconfig
+parisc                           allyesconfig
+powerpc                    amigaone_defconfig
+sh                          landisk_defconfig
+ia64                        generic_defconfig
+arc                            hsdk_defconfig
+
+clang tested configs:
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+hexagon              randconfig-r045-20220727
+hexagon              randconfig-r041-20220727
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+riscv                randconfig-r042-20220727
+s390                 randconfig-r044-20220727
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+arm                        neponset_defconfig
+hexagon              randconfig-r041-20220728
+hexagon              randconfig-r045-20220728
+powerpc                    mvme5100_defconfig
+powerpc                      pmac32_defconfig
+arm                        spear3xx_defconfig
+x86_64                        randconfig-k001
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+powerpc                 mpc8315_rdb_defconfig
+mips                      pic32mzda_defconfig
+hexagon                             defconfig
+arm                          ixp4xx_defconfig
+mips                 randconfig-c004-20220728
+x86_64                        randconfig-c007
+s390                 randconfig-c005-20220728
+powerpc              randconfig-c003-20220728
+i386                          randconfig-c001
+riscv                randconfig-c006-20220728
+arm                  randconfig-c002-20220728
+mips                malta_qemu_32r6_defconfig
+powerpc                    gamecube_defconfig
+arm                          collie_defconfig
+
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
