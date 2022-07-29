@@ -1,91 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28A4B584D8C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jul 2022 10:42:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B8F961076;
-	Fri, 29 Jul 2022 08:42:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4B8F961076
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659084128;
-	bh=X9VXRUmT9Zz5REeahnDy0IAe7Cb2BB6sBxvH4UVHlM4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=p3e3/pzEnkAhtndmnUKSV5SwZ0ck6r8SZFVAueK9LnuZojQwRRZxB08u7HBtLAllC
-	 QFH1KSRzbZBfyXgxB4OH6N7kyFdw02Qnqpe3d9TT51HWiGar2ti/f2E17D9j4LMgBd
-	 m0wnBhNpB8kzWWGeZsI17Wq2IlCWI4XRqivc6kzAalTOX4Fdu8DJHBUCvx/WTpOKpX
-	 l/nCkd6+7+lZrI7R2RMj0zxaOmIexaiMPgAxRf09018XNlDXLT2PEH50aMO12SLmwk
-	 oSe1LgliWR7XQg4iXhuLW5aj0AJTPe3QflRYYbnExtOhXCdrrAxt8s75b40icc24bV
-	 OzNPhw0CD2myA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KC4SPGFaLlTW; Fri, 29 Jul 2022 08:42:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 11EE861071;
-	Fri, 29 Jul 2022 08:42:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11EE861071
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB8FD1BF308
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 08:42:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B3BE584F54
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Jul 2022 13:04:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C52F84016A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 08:42:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C52F84016A
+	by smtp2.osuosl.org (Postfix) with ESMTP id B1E6540B63;
+	Fri, 29 Jul 2022 11:04:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B1E6540B63
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1659092693;
+	bh=MKYRGxOB5rjfMd6Tt1eG9DnLs41qocsf2tOcM0whpc4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=FuZ9vNH/sUjX8e6gHeJUqUmKoR3HoiRXoC8I/yANUueaPPXqKKtQWfMWswALOgTi7
+	 5QvLo8uY11NZmZXc9hmetHZq/9e701uD2sPRI9zZfuWlEp5rFJRBHiWCTOWLvb6h9M
+	 xRX8VK8ubhgp4t3VSIEnROEQHhu5bbNckHdkG7fwt07l1Eniy+T5xIfaBucO9Mj9WH
+	 yrppHVK91gFupU6rvsGicOsAchgI4KCv/qmb469iliq4ri0YxLTzshnhPVEksadtq+
+	 lI469Ge5OMpkIfP9YB34OhI5l+IY3HmD66EbiSLFUGYy901NKdHWFkb3InMy+HL0UX
+	 MSPQq0xFJaCoA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id it9Ad8D0TTGl for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Jul 2022 08:42:01 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id h_XHPfOyNPYp; Fri, 29 Jul 2022 11:04:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 66AC340486;
+	Fri, 29 Jul 2022 11:04:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 66AC340486
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F3F951BF279
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 11:04:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id CD27760F25
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 11:04:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD27760F25
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E0HtCGlzjZ7n for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Jul 2022 11:04:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C5A6C40B7B
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C5A6C40B7B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 08:42:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10422"; a="271765142"
-X-IronPort-AV: E=Sophos;i="5.93,200,1654585200"; d="scan'208";a="271765142"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2022 01:42:00 -0700
-X-IronPort-AV: E=Sophos;i="5.93,200,1654585200"; d="scan'208";a="669207270"
-Received: from mszycik-mobl.ger.corp.intel.com (HELO [10.237.142.70])
- ([10.237.142.70])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2022 01:41:59 -0700
-Message-ID: <8e65876e-4168-e5bb-813c-3bba478a11fb@linux.intel.com>
-Date: Fri, 29 Jul 2022 10:40:34 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Content-Language: en-US
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20220706162639.8897-1-marcin.szycik@linux.intel.com>
- <f8e9e966-8d98-9a17-298f-d2e791e5359d@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B786E60B56
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B786E60B56
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Jul 2022 11:04:46 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10422"; a="289514744"
+X-IronPort-AV: E=Sophos;i="5.93,201,1654585200"; d="scan'208";a="289514744"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2022 04:04:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,201,1654585200"; d="scan'208";a="727712937"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga004.jf.intel.com with ESMTP; 29 Jul 2022 04:04:16 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 26TB4FSr030915; Fri, 29 Jul 2022 12:04:15 +0100
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <f8e9e966-8d98-9a17-298f-d2e791e5359d@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 29 Jul 2022 13:03:37 +0200
+Message-Id: <20220729110337.11243-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659084120; x=1690620120;
- h=message-id:date:mime-version:subject:to:references:from:
- in-reply-to:content-transfer-encoding;
- bh=8VT4fL9Z12j0mgFMqIQwGoMnAdkaaPHNTLsqFRl2lhw=;
- b=MKjjG0XnEPw5xhMmS5mLR9QRKw61gGFvI3twIj09T6Uk+PL6qu56YfHK
- /2uf/jMUj3DgmDj7yrCZoM35bQL1I6Y5z61rR8VpJv7YGiVsTB6NCl+wV
- dwhpgneeupIDim/0CM1Q2HIlB9FsJa+wB9+RghE9V1Iwm4Upe54GUqKI/
- ZvE2pmNdWeU+jm2wgvn4E1taUUatd4r5SbiFTeFM2t/KLmLwsum/fJ6TA
- 170qK6xDn9tUIraHTFVksQ2K2o6g8Wf+HZFSsGUlvcqzxtRZM/5GIIdfu
- 4ikQOnXM19nJ1Na0yyQHfmXhXRGmmGTTWjXUrkU78FAF6WeKbWQSy3gxR
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1659092686; x=1690628686;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Cl/xYsrv8Pdt/rBnu7MI2Qk4CJKpa8cnsom0j6G443o=;
+ b=EdIEbgt3r752jqH77ibbJfeZEXD7FiUGx2Io1k35jj2ZnHojt6RlVgvQ
+ HKOJD5Zc1SrqQJcM19PqpHXHH82HIne8rsEpgFvRcOzGW2AvE25voqqWN
+ TL03hEN1cqwcSXQCp47vMIql1lA0uNs6Wdz6WXh5nX1Ait78mMD3fiKtm
+ x8yDuWgPxplJSBGY84z9ipHuNIlA4ZuezJDQ56K5qMebSZ05Mm1DB78Nh
+ 4g4ji3FIV2ZwQO7vzmE3LKR1H8GsiR0sIX3UkamjJO20ZFYG65S1owaSh
+ lfdprGkxLm8do+GZYcGSTcOtIiGmhOJfcBv30JA/Puzpd61PYzltAy8vp
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MKjjG0Xn
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ice: Add support for ip
- TTL & ToS offload
+ header.a=rsa-sha256 header.s=Intel header.b=EdIEbgt3
+Subject: [Intel-wired-lan] [PATCH net-next v3] ice: Add support for ip TTL &
+ ToS offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,45 +94,256 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiAyOC1KdWwtMjIgMTg6MTQsIFRvbnkgTmd1eWVuIHdyb3RlOgo+IE9uIDcvNi8yMDIyIDk6
-MjYgQU0sIE1hcmNpbiBTenljaWsgd3JvdGU6Cj4+IEFkZCBzdXBwb3J0IGZvciBwYXJzaW5nIFRU
-TCBhbmQgVG9TIChIb3AgTGltaXQgYW5kIFRyYWZmaWMgQ2xhc3MpIHRjIGZpZWxkcwo+PiBhbmQg
-bWF0Y2hpbmcgb24gdGhvc2UgZmllbGRzIGluIGZpbHRlcnMuIEluY29tcGxldGUgcGFydCBvZiBp
-bXBsZW1lbnRhdGlvbgo+PiB3YXMgYWxyZWFkeSBpbiBwbGFjZSAoZ2V0dGluZyBlbmNfaXAgYW5k
-IGVuY190b3MgZnJvbSBmbG93X21hdGNoX2lwIGFuZAo+PiB3cml0aW5nIHRoZW0gdG8gZmlsdGVy
-IGhlYWRlcikuCj4+Cj4+IE5vdGU6IG1hdGNoaW5nIG9uIGlwdjYgaXBfdHRsLCBlbmNfdHRsIGFu
-ZCBlbmNfdG9zIGlzIGN1cnJlbnRseSBub3QKPj4gc3VwcG9ydGVkIGJ5IHRoZSBERFAgcGFja2Fn
-ZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTWFyY2luIFN6eWNpayA8bWFyY2luLnN6eWNpa0BsaW51
-eC5pbnRlbC5jb20+Cj4+IFJldmlld2VkLWJ5OiBNaWNoYWwgU3dpYXRrb3dza2kgPG1pY2hhbC5z
-d2lhdGtvd3NraUBsaW51eC5pbnRlbC5jb20+Cj4+IC0tLQo+IAo+IDxzbmlwPgo+IAo+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90Y19saWIuaCBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdGNfbGliLmgKPj4gaW5kZXggMDE5Mzg3
-NGNkMjAzLi43ZGE5YjkyZTNiNDkgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfdGNfbGliLmgKPj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaWNlL2ljZV90Y19saWIuaAo+PiBAQCAtMjQsOSArMjQsMTUgQEAKPj4gwqAgI2RlZmluZSBJ
-Q0VfVENfRkxXUl9GSUVMRF9FVEhfVFlQRV9JRMKgwqDCoMKgwqDCoMKgIEJJVCgxNykKPj4gwqAg
-I2RlZmluZSBJQ0VfVENfRkxXUl9GSUVMRF9FTkNfT1BUU8KgwqDCoMKgwqDCoMKgIEJJVCgxOCkK
-Pj4gwqAgI2RlZmluZSBJQ0VfVENfRkxXUl9GSUVMRF9DVkxBTsKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgQklUKDE5KQo+PiArI2RlZmluZSBJQ0VfVENfRkxXUl9GSUVMRF9JUF9UT1PCoMKgwqDCoMKg
-wqDCoCBCSVQoMjApCj4+ICsjZGVmaW5lIElDRV9UQ19GTFdSX0ZJRUxEX0lQX1RUTMKgwqDCoMKg
-wqDCoMKgIEJJVCgyMSkKPj4gKyNkZWZpbmUgSUNFX1RDX0ZMV1JfRklFTERfRU5DX0lQX1RPU8Kg
-wqDCoMKgwqDCoMKgIEJJVCgyMikKPj4gKyNkZWZpbmUgSUNFX1RDX0ZMV1JfRklFTERfRU5DX0lQ
-X1RUTMKgwqDCoMKgwqDCoMKgIEJJVCgyMykKPiAKPiBMb29rcyBsaWtlIHRoZSBQUFBvRSB2YWx1
-ZXMgWzFdIGFyZSBub3cgY29uZmxpY3Rpbmcgd2l0aCB0aGVzZS4gQXMgUFBQb0Ugd2FzIGFjY2Vw
-dGVkIGludG8gbmV0LW5leHQsIHBsZWFzZSB1cGRhdGUgdGhlc2UgdmFsdWVzLgoKVGhhbmtzIGZv
-ciBwb2ludGluZyB0aGlzIG91dCwgSSdsbCBmaXggaXQuCgo+IAo+PiDCoCAjZGVmaW5lIElDRV9U
-Q19GTE9XRVJfTUFTS18zMsKgwqAgMHhGRkZGRkZGRgo+PiDCoCArI2RlZmluZSBJQ0VfSVBWNl9I
-RFJfVENfTUFTSyAweEZGMDAwMDAKPj4gKwo+PiDCoCBzdHJ1Y3QgaWNlX2luZHJfYmxvY2tfcHJp
-diB7Cj4+IMKgwqDCoMKgwqAgc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldjsKPj4gwqDCoMKgwqDC
-oCBzdHJ1Y3QgaWNlX25ldGRldl9wcml2ICpucDsKPiAKPiAKPiBbMV0gaHR0cHM6Ly9naXQua2Vy
-bmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV0ZGV2L25ldC1uZXh0LmdpdC9kaWZm
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdGNfbGliLmg/aWQ9Y2Q4ZWZlZWVk
-MTZlOGVjZjMwMDcxNTgzODY1ZjNmNDY4ZGI5ZTg1NApfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVs
-LXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Add support for parsing TTL and ToS (Hop Limit and Traffic Class) tc fields
+and matching on those fields in filters. Incomplete part of implementation
+was already in place (getting enc_ip and enc_tos from flow_match_ip and
+writing them to filter header).
+
+Note: matching on ipv6 ip_ttl, enc_ttl and enc_tos is currently not
+supported by the DDP package.
+
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+v3: rebase (update ICE_TC_FLWR_FIELD_*)
+v2: wrap bitops conditions in brackets, use be32p_replace_bits to set
+    TC field in ipv6 header (thanks Alex!)
+
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 142 +++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h |   6 +
+ 2 files changed, 144 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index a298862857a8..42df686e0215 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -36,6 +36,10 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
+ 		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV6))
+ 		lkups_cnt++;
+ 
++	if (flags & (ICE_TC_FLWR_FIELD_ENC_IP_TOS |
++		     ICE_TC_FLWR_FIELD_ENC_IP_TTL))
++		lkups_cnt++;
++
+ 	if (flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT)
+ 		lkups_cnt++;
+ 
+@@ -64,6 +68,9 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
+ 		     ICE_TC_FLWR_FIELD_DEST_IPV6 | ICE_TC_FLWR_FIELD_SRC_IPV6))
+ 		lkups_cnt++;
+ 
++	if (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL))
++		lkups_cnt++;
++
+ 	/* is L4 (TCP/UDP/any other L4 protocol fields) specified? */
+ 	if (flags & (ICE_TC_FLWR_FIELD_DEST_L4_PORT |
+ 		     ICE_TC_FLWR_FIELD_SRC_L4_PORT))
+@@ -257,6 +264,50 @@ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
+ 		i++;
+ 	}
+ 
++	if (fltr->inner_headers.l2_key.n_proto == htons(ETH_P_IP) &&
++	    (flags & (ICE_TC_FLWR_FIELD_ENC_IP_TOS |
++		      ICE_TC_FLWR_FIELD_ENC_IP_TTL))) {
++		list[i].type = ice_proto_type_from_ipv4(false);
++
++		if (flags & ICE_TC_FLWR_FIELD_ENC_IP_TOS) {
++			list[i].h_u.ipv4_hdr.tos = hdr->l3_key.tos;
++			list[i].m_u.ipv4_hdr.tos = hdr->l3_mask.tos;
++		}
++
++		if (flags & ICE_TC_FLWR_FIELD_ENC_IP_TTL) {
++			list[i].h_u.ipv4_hdr.time_to_live = hdr->l3_key.ttl;
++			list[i].m_u.ipv4_hdr.time_to_live = hdr->l3_mask.ttl;
++		}
++
++		i++;
++	}
++
++	if (fltr->inner_headers.l2_key.n_proto == htons(ETH_P_IPV6) &&
++	    (flags & (ICE_TC_FLWR_FIELD_ENC_IP_TOS |
++		      ICE_TC_FLWR_FIELD_ENC_IP_TTL))) {
++		struct ice_ipv6_hdr *hdr_h, *hdr_m;
++
++		hdr_h = &list[i].h_u.ipv6_hdr;
++		hdr_m = &list[i].m_u.ipv6_hdr;
++		list[i].type = ice_proto_type_from_ipv6(false);
++
++		if (flags & ICE_TC_FLWR_FIELD_ENC_IP_TOS) {
++			be32p_replace_bits(&hdr_h->be_ver_tc_flow,
++					   hdr->l3_key.tos,
++					   ICE_IPV6_HDR_TC_MASK);
++			be32p_replace_bits(&hdr_m->be_ver_tc_flow,
++					   hdr->l3_mask.tos,
++					   ICE_IPV6_HDR_TC_MASK);
++		}
++
++		if (flags & ICE_TC_FLWR_FIELD_ENC_IP_TTL) {
++			hdr_h->hop_limit = hdr->l3_key.ttl;
++			hdr_m->hop_limit = hdr->l3_mask.ttl;
++		}
++
++		i++;
++	}
++
+ 	if ((flags & ICE_TC_FLWR_FIELD_ENC_DEST_L4_PORT) &&
+ 	    hdr->l3_key.ip_proto == IPPROTO_UDP) {
+ 		list[i].type = ICE_UDP_OF;
+@@ -420,6 +471,50 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
+ 		i++;
+ 	}
+ 
++	if (headers->l2_key.n_proto == htons(ETH_P_IP) &&
++	    (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL))) {
++		list[i].type = ice_proto_type_from_ipv4(inner);
++
++		if (flags & ICE_TC_FLWR_FIELD_IP_TOS) {
++			list[i].h_u.ipv4_hdr.tos = headers->l3_key.tos;
++			list[i].m_u.ipv4_hdr.tos = headers->l3_mask.tos;
++		}
++
++		if (flags & ICE_TC_FLWR_FIELD_IP_TTL) {
++			list[i].h_u.ipv4_hdr.time_to_live =
++				headers->l3_key.ttl;
++			list[i].m_u.ipv4_hdr.time_to_live =
++				headers->l3_mask.ttl;
++		}
++
++		i++;
++	}
++
++	if (headers->l2_key.n_proto == htons(ETH_P_IPV6) &&
++	    (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL))) {
++		struct ice_ipv6_hdr *hdr_h, *hdr_m;
++
++		hdr_h = &list[i].h_u.ipv6_hdr;
++		hdr_m = &list[i].m_u.ipv6_hdr;
++		list[i].type = ice_proto_type_from_ipv6(inner);
++
++		if (flags & ICE_TC_FLWR_FIELD_IP_TOS) {
++			be32p_replace_bits(&hdr_h->be_ver_tc_flow,
++					   headers->l3_key.tos,
++					   ICE_IPV6_HDR_TC_MASK);
++			be32p_replace_bits(&hdr_m->be_ver_tc_flow,
++					   headers->l3_mask.tos,
++					   ICE_IPV6_HDR_TC_MASK);
++		}
++
++		if (flags & ICE_TC_FLWR_FIELD_IP_TTL) {
++			hdr_h->hop_limit = headers->l3_key.ttl;
++			hdr_m->hop_limit = headers->l3_mask.ttl;
++		}
++
++		i++;
++	}
++
+ 	/* copy L4 (src, dest) port */
+ 	if (flags & (ICE_TC_FLWR_FIELD_DEST_L4_PORT |
+ 		     ICE_TC_FLWR_FIELD_SRC_L4_PORT)) {
+@@ -838,6 +933,40 @@ ice_tc_set_ipv6(struct flow_match_ipv6_addrs *match,
+ 	return 0;
+ }
+ 
++/**
++ * ice_tc_set_tos_ttl - Parse IP ToS/TTL from TC flower filter
++ * @match: Pointer to flow match structure
++ * @fltr: Pointer to filter structure
++ * @headers: inner or outer header fields
++ * @is_encap: set true for tunnel
++ */
++static void
++ice_tc_set_tos_ttl(struct flow_match_ip *match,
++		   struct ice_tc_flower_fltr *fltr,
++		   struct ice_tc_flower_lyr_2_4_hdrs *headers,
++		   bool is_encap)
++{
++	if (match->mask->tos) {
++		if (is_encap)
++			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_IP_TOS;
++		else
++			fltr->flags |= ICE_TC_FLWR_FIELD_IP_TOS;
++
++		headers->l3_key.tos = match->key->tos;
++		headers->l3_mask.tos = match->mask->tos;
++	}
++
++	if (match->mask->ttl) {
++		if (is_encap)
++			fltr->flags |= ICE_TC_FLWR_FIELD_ENC_IP_TTL;
++		else
++			fltr->flags |= ICE_TC_FLWR_FIELD_IP_TTL;
++
++		headers->l3_key.ttl = match->key->ttl;
++		headers->l3_mask.ttl = match->mask->ttl;
++	}
++}
++
+ /**
+  * ice_tc_set_port - Parse ports from TC flower filter
+  * @match: Flow match structure
+@@ -967,10 +1096,7 @@ ice_parse_tunnel_attr(struct net_device *dev, struct flow_rule *rule,
+ 		struct flow_match_ip match;
+ 
+ 		flow_rule_match_enc_ip(rule, &match);
+-		headers->l3_key.tos = match.key->tos;
+-		headers->l3_key.ttl = match.key->ttl;
+-		headers->l3_mask.tos = match.mask->tos;
+-		headers->l3_mask.ttl = match.mask->ttl;
++		ice_tc_set_tos_ttl(&match, fltr, headers, true);
+ 	}
+ 
+ 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_PORTS) &&
+@@ -1039,6 +1165,7 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+ 	      BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) |
+ 	      BIT(FLOW_DISSECTOR_KEY_ENC_OPTS) |
++	      BIT(FLOW_DISSECTOR_KEY_IP) |
+ 	      BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
+ 	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+ 	      BIT(FLOW_DISSECTOR_KEY_PPPOE))) {
+@@ -1217,6 +1344,13 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 			return -EINVAL;
+ 	}
+ 
++	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_IP)) {
++		struct flow_match_ip match;
++
++		flow_rule_match_ip(rule, &match);
++		ice_tc_set_tos_ttl(&match, fltr, headers, false);
++	}
++
+ 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_PORTS)) {
+ 		struct flow_match_ports match;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
+index 91cd3d3778c7..f397ed02606d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
+@@ -26,9 +26,15 @@
+ #define ICE_TC_FLWR_FIELD_CVLAN			BIT(19)
+ #define ICE_TC_FLWR_FIELD_PPPOE_SESSID		BIT(20)
+ #define ICE_TC_FLWR_FIELD_PPP_PROTO		BIT(21)
++#define ICE_TC_FLWR_FIELD_IP_TOS		BIT(22)
++#define ICE_TC_FLWR_FIELD_IP_TTL		BIT(23)
++#define ICE_TC_FLWR_FIELD_ENC_IP_TOS		BIT(24)
++#define ICE_TC_FLWR_FIELD_ENC_IP_TTL		BIT(25)
+ 
+ #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
+ 
++#define ICE_IPV6_HDR_TC_MASK 0xFF00000
++
+ struct ice_indr_block_priv {
+ 	struct net_device *netdev;
+ 	struct ice_netdev_priv *np;
+-- 
+2.35.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
