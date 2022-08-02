@@ -1,192 +1,186 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B37145874CB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Aug 2022 02:26:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6DAC5874DC
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Aug 2022 02:38:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B798440286;
-	Tue,  2 Aug 2022 00:26:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B798440286
+	by smtp4.osuosl.org (Postfix) with ESMTP id B15D84034E;
+	Tue,  2 Aug 2022 00:38:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B15D84034E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659399977;
-	bh=/D0vN5hrpyBZKbTxSe0fV4jVrQ6Rdqecs23+5fqABBc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1659400709;
+	bh=6dRlnrLhTSiOsDpvFqbyaXc+6oxWz6P8D+cI1BUCMc4=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=EGIst0YdKfghuIQcBZTSzTyzG/Ya+FajvRWNynYsI4aQxtNkmM1mveZJjuUULHG7d
-	 9IKW1h4xdVgeDbzzFp8sfiU97zkATBUvhU1GW4I9c3MN+qnFWtKeRKigy4srKA5MZ2
-	 +aPhcnh1U8XtcGWYSXqB8QrqijvKCOzEpemUAZ7J06hOTtz0/UbPvOzVEAwORQlfxS
-	 Cuqj8RXdVq+zHYSTVVaotQWB7Am+fIxjrcE985qSMwQXEK3BjbKH90wD6XNb3UbtuD
-	 k/Uf3zf6TV4fHMNJWJ06zorZjzxuadIv/Dox4vA7mbg3E/cCSJ4oM9DBYnugqOmCfT
-	 DidCtLRGG+zwQ==
+	 Cc:From;
+	b=jRYTYVAydjVplX3ZirXMwE07gpebRhaIV3267nUQXjI9hpPKVLoo77Ou2mCRCB7fc
+	 4S5Ytxzi/+DIIgsNfhzuwIWhzZGA8jb74ENDvnkdDoAnFOEhOH9ZcY1kPdyIp1hEiF
+	 e2U4qSQnPdQ88kzjC+ntDKgYaMU2Fv1wQDB/tAAHQHIGqbp1WlKC6KFrQAOOPAr5A3
+	 4Xeve3oXHzQBVQ1dufZ3p76CnX/5+liaSuZk632l7dsar0CSs/oeI7wSDADQ4d3y2O
+	 b95nknCNz6GenPvfFgINcu6DsQ5Md6YZwJQDI96PQmNGjv7J2OivC8wYRAwSDIZUPY
+	 zOtvOAwF33D5g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JBxeMBD_lMA2; Tue,  2 Aug 2022 00:26:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Pf8iPlv-01VY; Tue,  2 Aug 2022 00:38:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7D3B24023B;
-	Tue,  2 Aug 2022 00:26:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D3B24023B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 34C4E40356;
+	Tue,  2 Aug 2022 00:38:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34C4E40356
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 53CE91BF318
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:26:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93EAC1BF318
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:38:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2A82940892
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:26:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A82940892
+ by smtp4.osuosl.org (Postfix) with ESMTP id 709B540356
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:38:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 709B540356
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LwPU02mXQAGy for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Aug 2022 00:26:09 +0000 (UTC)
+ with ESMTP id 71DZ5eR1jIzM for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Aug 2022 00:38:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E6DD4088E
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9E6DD4088E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:26:09 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10426"; a="269663334"
-X-IronPort-AV: E=Sophos;i="5.93,209,1654585200"; d="scan'208";a="269663334"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2022 17:26:08 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31DE24034E
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 31DE24034E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 00:38:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10426"; a="276192525"
+X-IronPort-AV: E=Sophos;i="5.93,209,1654585200"; d="scan'208";a="276192525"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2022 17:38:19 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,209,1654585200"; d="scan'208";a="661390183"
-Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
- by fmsmga008.fm.intel.com with ESMTP; 01 Aug 2022 17:26:08 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.93,209,1654585200"; d="scan'208";a="599122010"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by orsmga007.jf.intel.com with ESMTP; 01 Aug 2022 17:38:19 -0700
+Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 1 Aug 2022 17:26:07 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2375.28; Mon, 1 Aug 2022 17:38:18 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Mon, 1 Aug 2022 17:26:07 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28 via Frontend Transport; Mon, 1 Aug 2022 17:26:07 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.107)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2375.28 via Frontend Transport; Mon, 1 Aug 2022 17:38:18 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.45) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.28; Mon, 1 Aug 2022 17:26:07 -0700
+ 15.1.2375.28; Mon, 1 Aug 2022 17:38:18 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Xm6oaEcAoTpQNKdlFPErrnjRLAwfNhF+f1XRUwH7aHs+HaZq1LCieVRLaINBJ8ypwa32pboHV2CPSiaD7JuPQcrCehS77ATwdH8fr7cvPTr7DaKcA5bCU3R+6gRcmHKeaUVxoPc03pEuhJUu7Hkm273kZYUjlE4b1X8ObOvK9iu8wEc3dggwzb/IglnTGtllDfY2HnJmwu8yDS5mLpmnkTeD5unN1GynSPnjUhlBBS47vBjTVTqMbV7vo1cw0H5+LWpoJ3otHYWdQzNn13NJXrE/2Tl8W3lS+RADCxAB3QzJ2fPWU/RjJAxK+Nu1ZPa7SyxevqImAhkBYZnAuvSiuA==
+ b=cMGbQH3+rg95VmChpIBNSYW6Y6d2aTvZ0naBV17BmksonEqL+//P9BQhQRrNSCThMDiaWY59OxhH4IXVmeOgWUPWM5jcqd3nmAd8qzhb2XXFCcbTMSB4N5Brm4iUz6FNhatvonM3vJY+BVqJv1gV5fAcBhBdvM7eD7zPhF1ce3apTuu/MDCciTGWTjUXmp304n+YgGknFeFlb7k+pA5K4UgmpGmU5iSDGmVXvwd0vN3vmYHnX9R83SdYqnKeLSQ9oPrpBEkrRC4IIBZ1UVN7RO2/JKe4TE7sAbvB2pCwKeTos9iGHPq+gvATs7oaTre0/MlDhpWajOuK+EB7fp6Eeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JS5WPUE/RGovSLRsX144ee+g16PQGaMiTTqQ0JfXfsY=;
- b=lnj/cLc03WtC2R71GQr6xQHugfsBGwKivCf7F6BT/2HSylfDLu7sLAim+vYQR8uqtzsv4ypxPgJnkeAmG33Nv3kGajVAbPX5mGDjSy3cTPp6Fo6K5VR1jLdmFsKyDh/ZKIe2Ptl73nFdKg9Pwot2plzSq3wHFC06hLNg2LNKfXMRPiicXe16SoEc1qZPIKdLmAiPYh3al7BcoAT77zV3xOMYEueuX1gSA8ZcVm0cKm/sDn2PzAtejGyJmRFPTzoQ3sHEmh7Oxk1HnwKvXkDBaOvRCj9PfGRqTNItFdNxOcbeBDCW+bntasvVquzfg1t831tpJJPORUyKOHjcV4OvVA==
+ bh=AvYlJPFG8mfBbeZOmtpSXlPkfsL5jWLDEh4h4e6YKmA=;
+ b=BZHgEs51KM4NtipVslwAZvg2QCLwDuHBW+0zHLccW0DJQx27lzZhWrxUj7xQ2zlYArN/U+fF/PMjem+OETzrPzP9zIETkGcGZpW/MH1NQua6N66QIs6q3xQ8VgwB21dPwE0WyMBMDkfHN6b0rH++avs9Nx4onQOqM2GS1iG7XhMzZsYgeohiZ4OtmbY6oohgwDROjHUFrrTZEIkeWovEpLbG7Wh/A7YpFsG+uNx3so2boWcTr44Hj91oWNYZoD3k/1OUlULo4NIXYeixADXRhLYXjxNI/bqNjO+Y7qhbIsUZ7Yw2aT7cauGm+xbaLLJiLKj/VG4VeqhxSaGrpfVsSw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by BN6PR11MB4097.namprd11.prod.outlook.com (2603:10b6:405:7e::33)
+ by BYAPR11MB2678.namprd11.prod.outlook.com (2603:10b6:a02:c1::22)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.11; Tue, 2 Aug
- 2022 00:26:05 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.15; Tue, 2 Aug
+ 2022 00:38:15 +0000
 Received: from CO1PR11MB5089.namprd11.prod.outlook.com
  ([fe80::5874:aaae:2f96:918a]) by CO1PR11MB5089.namprd11.prod.outlook.com
  ([fe80::5874:aaae:2f96:918a%9]) with mapi id 15.20.5482.016; Tue, 2 Aug 2022
- 00:26:05 +0000
-Message-ID: <0048e66d-6115-4b71-0804-3a0180105431@intel.com>
-Date: Mon, 1 Aug 2022 17:26:00 -0700
+ 00:38:15 +0000
+Message-ID: <4dab53a0-a9de-ff9a-69f5-ab2a005659e0@intel.com>
+Date: Mon, 1 Aug 2022 17:38:09 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Firefox/91.0 Thunderbird/91.11.0
 Content-Language: en-US
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Ilya Evenbach <ievenbach@aurora.tech>, Alison Chaiken
- <achaiken@aurora.tech>, Steve Payne <spayne@aurora.tech>,
- <jesse.brandeburg@intel.com>, <richardcochran@gmail.com>,
- <netdev@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>
+To: Alison Chaiken <achaiken@aurora.tech>
 References: <20220801133750.7312-1-achaiken@aurora.tech>
  <CO1PR11MB508966EB7A3CF01A58553536D69A9@CO1PR11MB5089.namprd11.prod.outlook.com>
  <CAFzL-7tX845o2kJmE4o8EhbeD-=vkR6rmaiz_ZEWfSD4W+iWEA@mail.gmail.com>
  <CAJmffrqxwFyRGpMRYRYLPi3yrLQgzqnW5UKgbgACGNqoN_hsVQ@mail.gmail.com>
  <CAJmffrr=J_s9cFw5Q58rvZRWLpsrDnx3RkRXS3oLZDYY3BrNcw@mail.gmail.com>
  <bd24eeb0-318c-71a4-527f-02832b74250c@intel.com>
-In-Reply-To: <bd24eeb0-318c-71a4-527f-02832b74250c@intel.com>
-X-ClientProxiedBy: SJ0PR13CA0205.namprd13.prod.outlook.com
- (2603:10b6:a03:2c3::30) To CO1PR11MB5089.namprd11.prod.outlook.com
+ <CAFzL-7uBrzQNmYCXvaL-OokE07cWT-jr4tgGR2VgeaUeayLfxw@mail.gmail.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <CAFzL-7uBrzQNmYCXvaL-OokE07cWT-jr4tgGR2VgeaUeayLfxw@mail.gmail.com>
+X-ClientProxiedBy: SJ0PR05CA0129.namprd05.prod.outlook.com
+ (2603:10b6:a03:33d::14) To CO1PR11MB5089.namprd11.prod.outlook.com
  (2603:10b6:303:9b::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8e3b73db-9efe-49aa-cc9e-08da741d966a
-X-MS-TrafficTypeDiagnostic: BN6PR11MB4097:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2646bd58-c019-4e60-b399-08da741f4974
+X-MS-TrafficTypeDiagnostic: BYAPR11MB2678:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Xytf78SuQPvaZAtU5u5vVCxMZlIpUd9u6Kn7wOqn+FCzrJdcfsUIMGiBzImo14cmJhTNPwry211cewJ+XMYPWPHjeRXhoj5FPmlmfk01qVZv3MfpXLpkMLx9a9zYvdmoaYmb2YJkBNbM96SF2va+L08twk/NojFfdO9eBz55DenoxABL2EjviEfw0EKYzk5MB0jGnZvP6UZfs61UCYcfVJ1lUYnR+4YVm1WK1RMSqx21UP9AOh+KWlSr6wgZ8v/FxhUcNSeUqPm3+0VHk5Fx4iwVifPlewdBE7x2saKJStqgmQFg4AC4yE0OfA9Pp+UdxAqkzrFUxQ+VbigfViG0928MhE6ApOKY3FQsJ4bcMBmKpGUWQ0kZAKk6AaV9seQ1hU8O2Lg6GJh8zBbziaYQu2mX7MK2Ck/NfE0+90dWC3dDe2t7NmxEhLB+EhkP1Km4avi2F3irJ2HzPHzNNONrXj67tr1dFX8awJVtK6n2zW1/WNp4QUNsHBCTxYdNiu3VCkW28jkg/4+pBlAmZYxnEfHsDpTSPGcdDeANTbn1Yr5fwbSukcgVvOTqhrEruEm1QgveQNebyAI6o83hsI8UByQ447E74ln7V/A4ppNi64cAd0JmXTQeBHkZPonAFUmBuVs6wXFRKIz2KE115Q1rbc7TUHLyotv6jRzAw53je7JSeEXufo30vAX4UrdVxx/SdYiHN2a35fGa9jlsXYo6wC+0ouzwGz8jDgx4wKDlf3L1qYsvpG7NlevScg7KGOppZ/aYoqCGF6ezgAQGy17lOFDNgl0D9gl1xphiVDRHuE1nDWJBnYLu4EyqrBVgkc6zSl3X23PthUTTCC3ucs53yA==
+X-Microsoft-Antispam-Message-Info: I7OPUY3k354fkjZS26givtBMd+oFiKQ33mDTt9D+6ky1F1kYZr9B8XiIss8mbWecyX8tu7prrYDB3M43hSbYHeaQ7fgDRxcnKwM6bsf5mewmmScrsQG5Pe2PLknVKUouz0VrijvAFn44iAb+QH79iqAhQlCRJP4Vt1xjuAtrloRbjedUEY2d6Mwen3XXoy6i1VxmbEN+b5OuH7L+BwQf5gyq18+DSt9gIAZX/8+bProzXp0y9QXaDZZXGQLCo8coxx1IRoc1SPdN1XC3rKnCmH8WtzGUgtE6LzqY0in4vfcoEdRuXpS9iD7zePNPqX1WgPiyQVHSv5W623Nn8ZoH3gm2Bibnax7QbxYD8wNARpE9Is6QSjsedKty49rCnKj+vtrgrlC7RpQq+SDDuJ3HPMdD16yNr6tSJOLNC7hH/sjhnp1T6Yq5j4Cdt92T2YM4C28ATjSXTWJj3T5J8O5FBQNmNBZEQXdhOAS/GccIHL1sBwO8gL2MxqrKQIl2P+aIvs7sfn2KoW8wMeO/Ze0wDZyoFZ2N1tqjRBBWNXlq+/8nrzN/XT6mCZaFcRGfNv4wXKvW2Yl0bpJGQgM7KmsqYj0D8jSn7fuPOP+GN5Tv3eun/YOyl+uwLebQpGZkafT1/2I5FegZun4jHwdh2tTUy2859FneHnvRLUPeEnSZQNRb0k+patR7FNb3icjzWk2qmiAhh6E2kXbBs8U0KtDSXCar+uZnPk48WF3elLe85NEL9zci4yRPWno1dZ1COLspX8O1mU2/5AwukZHEPYeifTOoJozJkZu3U+JMEnqpfuPeFnCiuznHDo6zvCY+G6SPlakttQnO9pgXJzaoxfkv3Q==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(39860400002)(136003)(396003)(346002)(376002)(366004)(83380400001)(6512007)(26005)(6506007)(53546011)(186003)(2616005)(82960400001)(38100700002)(8936002)(5660300002)(8676002)(2906002)(6486002)(6666004)(41300700001)(478600001)(66556008)(66476007)(110136005)(316002)(86362001)(36756003)(66946007)(31696002)(31686004)(43740500002)(45980500001);
+ SFS:(13230016)(376002)(346002)(396003)(136003)(39860400002)(366004)(186003)(26005)(6512007)(8676002)(38100700002)(66476007)(36756003)(31686004)(66946007)(2616005)(66556008)(5660300002)(8936002)(478600001)(83380400001)(2906002)(316002)(54906003)(6916009)(6486002)(41300700001)(53546011)(86362001)(6506007)(82960400001)(6666004)(31696002)(4326008)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R2taMjFlOUM3Y0RiWHFJQThCZXRINzVqRDhKUEZtTDV6bzlqSVpxUUVxQmVy?=
- =?utf-8?B?RVBDa3lleDYzYlFqTllJVE8wUDJxQUVGcWo0bnNoeFU4eXJFcnVwb1hWTUlM?=
- =?utf-8?B?cmFYOVdCdkx3bDQrVExXeDh2Q05kd2tOV3ArRnlFWTRtVnNaMmk4ZktaMGx1?=
- =?utf-8?B?OERwYVl3YXA5SVpzaUZOVG1VWjN3Vm1ZaTBvbVovRjVpZStCdyt1am9jRDM4?=
- =?utf-8?B?b043MVZqZHhBN3NUWTQ0eUFJZ2RjRkk3dFE0ejV6SW9YSkNiRStCQnJ6WnVm?=
- =?utf-8?B?TkI1bVB0dXRDWTN6YkdJamRXUVZ0dHlkSnVBMzI5aHZUcTJqUFh2SEhLQXVF?=
- =?utf-8?B?ejJ5akRoK3AyVXB5TVpMMUEwZ0hqNlhiQkVHWHBkZnFWSFZhc3Zxc1Bzc1Jh?=
- =?utf-8?B?TGVUQ0Nhc0x0SG53WGN4cHp4elEyL0l3emE5c1ArOVk3eWZGbm1aYXBpZFgx?=
- =?utf-8?B?K2FnNUswSkFSWVZGTGgvTkZTT3JMdGZObFpuckVGY2NWeDFQQlY5eHNINC9l?=
- =?utf-8?B?eWJTckgrbEFzb1ozK2lGZmhaeUdkRkIxV0ptZEZJRlhpS3VnN20wcThUY2lO?=
- =?utf-8?B?bm9wR2p1dWdEMEx3eFl3S2NpNW9vSDRzTkN3b3BRaE9qOXNUMXJFeVFwYmtp?=
- =?utf-8?B?aCsyZWtsaEFHMEIvbU1nM2NnN0xLVmdKNDBtZnY4dEUvSWgvQjZzb3B2UnVx?=
- =?utf-8?B?aTlCOTdyZlhIVks4NHMvN1A5cjR6MUFMaVZJSzVsSkY4UUlRNVNSMGZpMUln?=
- =?utf-8?B?ZHFGcVgwT0ovejVLbUkyZlhGYSt2TU1IbUtBamNNbTZZZFdYNFFWNVAvQkxm?=
- =?utf-8?B?aWFxbmtBNnlhNTlEem5RalQ5Zk5OWmNiTnJtOFAzYWFDOEZDbW9DUC9LMTdU?=
- =?utf-8?B?UE91anFrejN1Qm9RNG82R0VvK3VBZHMvNGpmNXMxQnE0SU5EWjh1dUtWeWhj?=
- =?utf-8?B?MzFWUFMrY1Rad0NoZ2JqQ3pJWHJ3SC9PY1U0WmI4K1dGVW1mSHM5SU1heGhs?=
- =?utf-8?B?WVlaSDlwcXRreXMreURtZzltMzZHYk9ZdmxKLzI0eVRMSVBzS242b2tWekhh?=
- =?utf-8?B?SEJ3NWUvS2hnNkJKRkxyZStiV2ZlNzF0cHZScjIveGlWb1Q5WFB0QktvenB3?=
- =?utf-8?B?bmYxT3pvNlNrZjJoam9PTGl5TjUzNFZmQ1BFbDBxOExHTGdpWGRaVnlydUVR?=
- =?utf-8?B?N3B6STJCZldtbmk2MEdKamhJc0dDSzJuRTFuaU14a3J6Und2dDhkNzBGUExL?=
- =?utf-8?B?U0cwQlBqOVkvSXRBL1JLczRKNkRtR1lyZW1GWGZ4eDhsNjB0Nyt4MGFEZlVo?=
- =?utf-8?B?V094Kzh4eVhKdHhuanRkVXNCSVNKc09DTXBIaFhFaEUzZnJhVkt5R1cwM1Vp?=
- =?utf-8?B?Z3NoTURUdVNRd3kxekE3SFVGQzgyWnpXUTNaL2RQd1BHM1pPc05ocmFBa1Z2?=
- =?utf-8?B?L2RMZ3RDbVdOdE1oVTk3amRWdzRWd3dOT1czYWMvSkFCVEZ4YndpMG1TM2o5?=
- =?utf-8?B?MjJVMVRGRk1kdEI5TDlrMTlzNW9oaUVIVmJpbFBqaFN4L05mNndnUmswb0Vw?=
- =?utf-8?B?WFhyN0p6a1d2TnJDTGF3aEdnRjAzcUpTMThzNXpWbGQ4eC9xTWJFOEh2bHNn?=
- =?utf-8?B?NTM4aE55UHVEVzdJOTZQWHQ1em9YYjQvc2ZpYkdGWktDbCtRNldUeHd0WkdB?=
- =?utf-8?B?Z0FkRTJsRmhhbmlaRDBZTzJQRDc2QkVGQi9XUWhtWCtzdElTQXVFWVJ4ZkJo?=
- =?utf-8?B?blZ3U0F4VkFRWEVpNTg2TFhMdGVMbGlRd3FWSEovWFRKRDBZYjlMcXk3am8z?=
- =?utf-8?B?aXpMRFB6cXQrc0gxSzlOMmxBcUFsSGRZaHExQVRMcDh2WTl6a2JDc0F3OWs1?=
- =?utf-8?B?MTZ5K0xkWkZObHA5cGtZQUFJdG0wZ1E2bk55NUhPNDZEcjl2ampqMFpjNzFn?=
- =?utf-8?B?ZUNYMEIwMVdHSFVBdFdyL2pUS3NQTmRmNzVTVkp2czA2VWtrSXN3UTFGUnBV?=
- =?utf-8?B?RWFaWk0yb28zZjhoY1dEMkkxWW5mMFJlbThvdDhVekl6ZmxlYmNRRHh6YWtR?=
- =?utf-8?B?MlhjVmM0WGs3SDhxdXRkbXdjVmhZM3dFcVFvcE5YSnk4dDVwb0VOek5tVDhF?=
- =?utf-8?B?VW9ZUlltZTcyL2hsdldsV0F0bTl3WFZVNXVyS1oxZVk3R0ZiYVd6YlV2b3dC?=
- =?utf-8?B?NXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8e3b73db-9efe-49aa-cc9e-08da741d966a
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RURoV0lOeHN4YUZUWUN3WVlMUXk2Z3VCSnFIVG5LNElrUjUzdVNZZ2lOYVZU?=
+ =?utf-8?B?QzcyQVRxUlZ4SUNtQVN1OFBIT0E0UkJNbFl0bnVEYnlDMmJqSHgxelY0K1JI?=
+ =?utf-8?B?dmNYNzR4eVdGR0RyS2IzNjVUQkJSVk9GUHc1NVovTHRMajNPTUhNZmYxQVZx?=
+ =?utf-8?B?Zk80cHo2Qm5RLzNIMXR1RHBuaEg5T09kWDdxVGNKdnUzeDJHdGlXS2x5VlZJ?=
+ =?utf-8?B?c1lIM1hoMDd5czdaSXI4Nm4yMmc3R204WithV2FJVkdSZnVpTlBuc0hjeU45?=
+ =?utf-8?B?Vlo5YzltSVFzd0Z5S3gxM0Q1QzJVeTZ0MzRReWxWVmlRQXVPQTMyaFJibkJR?=
+ =?utf-8?B?ZHIyZWtjZDRmZWcxVXZzR09VWlNiQURMcmFiS2VOYmZIWUNzQlFPeVdIaGRD?=
+ =?utf-8?B?TnVNbmFYNW80N2dxZnBQYXdDYXJqRUlHVXpRZWJ1L1JlTjF6Wnp6NmVHQVR5?=
+ =?utf-8?B?dDgweVh5MTluU1dxd2JvK1NPWDRrcjJvaDFWRkFaclp1MjhDV20yY0lNQWNl?=
+ =?utf-8?B?cUt1ZUZQT1lUWUoxOXdGam0xUVlSc0ZtcFFHMXU0d25XUDc5NU1nOUVqMjBr?=
+ =?utf-8?B?ZlluYldNT3lLWFVCQlhHWU1tTTRTZElUanpURnNBUklYbk0wSUNJSis3TmJi?=
+ =?utf-8?B?aGdxZWhvL2dvUmYvZVdiekxxY2xySXJwdnpoK24zZ2FFOGVBR0xaUkFBMnRG?=
+ =?utf-8?B?UHErdmJabkVtSEFLUkV4aERrVWhtdnJYUWl1UmhBTjdvcC83dlc1WWRKbVVC?=
+ =?utf-8?B?YUR4dXNqQjNjT2pLekZwaTg2Mzl2dERuVkdzL0pyT29ReUxWYWlhWnp6Vkoz?=
+ =?utf-8?B?MWVrRGxveFpmRHFVQmxqYk52aGVrVmFXRFdLUkIzYUM2ZVZxLzNZcnhuQ3dU?=
+ =?utf-8?B?ZERrN1R0MVZYdld3eVdEWGM0VHhkME01M0hnSWhtd0NEOTF4RW1TTktrMzh5?=
+ =?utf-8?B?VzZjbURHbEdXYjdOWW9oZkxHTUhQUktPRGZBZE53WWZYSFZ5REpjNmszdXBX?=
+ =?utf-8?B?MWF6VVNUaTFldEpROWFJMWpZYmtUTnhvSnpBL2tCbWJxdG5wS0VkS2Y0SkhN?=
+ =?utf-8?B?OTZiUGM3Z3lPaVhOWVd5VG1LN3dpZHJmVUZON3diUGZ4NWd4VGhxbmZiUzNa?=
+ =?utf-8?B?b0ZMNFoycWRvNXVSdzkwTnB1NVdWL3lNWXlUaWNCbStKNjAyKzdkanBBT3Rl?=
+ =?utf-8?B?L08zLzdYYVg2VXNNaXk4SFpKR2crSG90TisvZWRXbFl3MVB1THBGZGMvbDNS?=
+ =?utf-8?B?R0YvNndNa0R0alBhNVliSlQ5WEdkMXJyY3ZlQjFxTWplTDdIekZmTnErWG4v?=
+ =?utf-8?B?Q0lQVkZYdmJNb0lRaUdhcVltVmxPM2xlMHdnRjZvazVNRGt4VGY0cEszK2FN?=
+ =?utf-8?B?dGJGRitTT0FWVGM2RTAxL09yNTduaGI0OUMyaFgwdnhiT3lxd2x1dW5DQlo5?=
+ =?utf-8?B?MkY2UUZVdDJOWjBIeG85Yk5hR3BVaGo2ZW9FY1cxS09yejlTaFdKM2hPQ1pI?=
+ =?utf-8?B?K3Y3VHlvUU9VWlJ3dCs3czlNR1IvRGRla2FoRExuelBSSnlpQzdMa0haVVI0?=
+ =?utf-8?B?TFh3YVZxb3Bod0dYOGJrRnNGaUVSVWVMY0k0ZVFxdEo1QjYzckFETXVwRmQ4?=
+ =?utf-8?B?cTlRbTlyUklmTlhyeHFIanFGd3EzTExsT3Z3SXBORzZZY25LS25KR21xbjlj?=
+ =?utf-8?B?NGRqSzI5QjVlZXRvOGVjRDREeFRpY3BuMGNQTG9ZQWxBK0JvbkRObHdaSVBU?=
+ =?utf-8?B?a0piMms0eERWOVRSd2ZNSjVSQkJoSHhhUEdDK21ncEt2N2dDbS8zN1RkLzF6?=
+ =?utf-8?B?MDREMDZRVlJOcU5sU3htTDVRLzBMR3VSQ2lMTFl6eHdrOWFNbGJOenY3Rk1X?=
+ =?utf-8?B?QVVNT2xlazFVNnJYYjU3ckpJV3JaZGN4ekpGeXZEdTVtRWZTWWJaM3pFWFRp?=
+ =?utf-8?B?YXozcmlWUFZDM1F3NVdaOUFwWTNzbnNiemJUTkJXYVVyNDlKSnM4UWFiaFMr?=
+ =?utf-8?B?aDZpL2hjdWY4T1E3SEhyM2RoOTRDR0VyUW5oeXdoK3ZQMGJCMjJ1NkxZNzF2?=
+ =?utf-8?B?S3FYWVVBS09jaUNzLzl3c2p4U2RTSUpycU9kN0YrM3NlL3M0RmxMSDZaMld1?=
+ =?utf-8?B?NGF6N2dCR25CRzErMlV0NGNTV0xObzZNUkxBSUlVVHBxdE5RblE4bEpTVGh0?=
+ =?utf-8?B?d3c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2646bd58-c019-4e60-b399-08da741f4974
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Aug 2022 00:26:05.4206 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Aug 2022 00:38:15.5757 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KcIkDPc0MNU5HA9ReMHLdFhSUxP3y5/SMNMUt0/xP7FoE6RWvhTKVVsxuBeZcuj4htNRAOvcn+j+JD7BIRP866eL7HVQFxo8duz+jZS8K7A=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB4097
+X-MS-Exchange-CrossTenant-UserPrincipalName: U6w5Kc/DVbIdkBWeqvy89AQr8oLymZtTR2Jp0M5fmBO1yt474CJmujErwPQmgwM4kGVR8LuY7QPUSY9d4PQMKg5fzz7/fPBw93Mz00udfGE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB2678
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659399969; x=1690935969;
- h=message-id:date:subject:from:to:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=dpLWDJ98L7fLHpG+1X88xwt2q/bLC7umoa47Moen2bE=;
- b=nbV+lko7lZo8hEaWduo6M5Et1OvBdsAhyxddMhUcGfpVdNBlDGMf4mdA
- XYuUExT2mGWONteMaGe8kW82P8uMr/UOsr+Nmj0obv41VwA6P+7wSmftu
- jB2GcC07B5X90tjCXs8PHhpuINhsd1jn5fuV4/kKCNAKA4/om7vf3yTVa
- v4PJLP5p4CaBjA8vkgCnkZo1g+R6BQu3vF/lW6JF7mhIddUsGRtHFLfyQ
- CyRZkFWSKv80N1wkhQZHpJB18Qj1yHbyn+dx1XsD+lSoiZikWG5GOLo3q
- i7v4HdhtTaqRUaPxGEwIZqaBdQjskAE5CyNCPeiBVyKCNtWMUexntJEug
+ t=1659400700; x=1690936700;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=94y8s3e53ZO9W30QGQ6jBOffHfvveAqvpSvB3yscLJI=;
+ b=BFYrVmia3xxl+pFg9bKmcthVmKlkswPFa6+uaO7micJC+4GfIhJl4yS4
+ B/6lOebzK6FsdDI93G4k3xey5UH2QegKPnL0/WtQGkFoS2tTxxpteXNRn
+ Iy94kTWYP2CNaTNYjhJuL2RQ+r7C0Rv1j0puZbsY4U1SNPwj+RRgCM9UK
+ skXd7tMPLV1mIBVafPYfDlrim6IeOQUoyU54u0GbcnJZzQfLiQet7UbzL
+ tC7ZGP4F0kKh757sUgSawVWuxsjoFzsh3N2d8KeIZm6qiwaaNL50Z716w
+ 3GBu4CNTW3Gj0NEE2Fi3iaKJg3AtPgct6IlEIeV6VRu8+Ftt3ptvVBITw
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nbV+lko7
+ header.a=rsa-sha256 header.s=Intel header.b=BFYrVmia
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] Fwd: [PATCH] Use ixgbe_ptp_reset on
@@ -203,6 +197,9 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ilya Evenbach <ievenbach@aurora.tech>, netdev@vger.kernel.org,
+ richardcochran@gmail.com, jesse.brandeburg@intel.com,
+ intel-wired-lan@lists.osuosl.org, Steve Payne <spayne@aurora.tech>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -210,84 +207,103 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-On 8/1/2022 4:29 PM, Jacob Keller wrote:
-> 
-> 
-> On 8/1/2022 4:00 PM, Ilya Evenbach wrote:
->>>> -----Original Message-----
->>>> From: achaiken@aurora.tech <achaiken@aurora.tech>
->>>> Sent: Monday, August 01, 2022 6:38 AM
->>>> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>;
->>>> richardcochran@gmail.com
->>>> Cc: spayne@aurora.tech; achaiken@aurora.tech; alison@she-devel.com;
->>>> netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org
->>>> Subject: [PATCH] Use ixgbe_ptp_reset on linkup/linkdown for X550
+On 8/1/2022 5:24 PM, Alison Chaiken wrote:
+> On Mon, Aug 1, 2022 at 4:29 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
+>>
+>>
+>>
+>> On 8/1/2022 4:00 PM, Ilya Evenbach wrote:
+>>>>> -----Original Message-----
+>>>>> From: achaiken@aurora.tech <achaiken@aurora.tech>
+>>>>> Sent: Monday, August 01, 2022 6:38 AM
+>>>>> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>;
+>>>>> richardcochran@gmail.com
+>>>>> Cc: spayne@aurora.tech; achaiken@aurora.tech; alison@she-devel.com;
+>>>>> netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org
+>>>>> Subject: [PATCH] Use ixgbe_ptp_reset on linkup/linkdown for X550
+>>>>>
+>>>>> From: Steve Payne <spayne@aurora.tech>
+>>>>>
+>>>>> For an unknown reason, when `ixgbe_ptp_start_cyclecounter` is called
+>>>>> from `ixgbe_watchdog_link_is_down` the PHC on the NIC jumps backward
+>>>>> by a seemingly inconsistent amount, which causes discontinuities in
+>>>>> time synchronization. Explicitly reset the NIC's PHC to
+>>>>> `CLOCK_REALTIME` whenever the NIC goes up or down by calling
+>>>>> `ixgbe_ptp_reset` instead of the bare `ixgbe_ptp_start_cyclecounter`.
+>>>>>
+>>>>> Signed-off-by: Steve Payne <spayne@aurora.tech>
+>>>>> Signed-off-by: Alison Chaiken <achaiken@aurora.tech>
+>>>>>
 >>>>
->>>> From: Steve Payne <spayne@aurora.tech>
->>>>
->>>> For an unknown reason, when `ixgbe_ptp_start_cyclecounter` is called
->>>> from `ixgbe_watchdog_link_is_down` the PHC on the NIC jumps backward
->>>> by a seemingly inconsistent amount, which causes discontinuities in
->>>> time synchronization. Explicitly reset the NIC's PHC to
->>>> `CLOCK_REALTIME` whenever the NIC goes up or down by calling
->>>> `ixgbe_ptp_reset` instead of the bare `ixgbe_ptp_start_cyclecounter`.
->>>>
->>>> Signed-off-by: Steve Payne <spayne@aurora.tech>
->>>> Signed-off-by: Alison Chaiken <achaiken@aurora.tech>
->>>>
+>>>> Resetting PTP could be a problem if the clock was not being synchronized with the kernel CLOCK_REALTIME,
 >>>
->>> Resetting PTP could be a problem if the clock was not being synchronized with the kernel CLOCK_REALTIME,
->>
->> That is true, but most likely not really important, as the unmitigated
->> problem also introduces significant discontinuities in time.
->> Basically, this patch does not make things worse.
->>
-> 
-> Sure, but I am trying to see if I can understand *why* things get wonky.
-> I suspect the issue is caused because of how we're resetting the
-> cyclecounter.
-> 
+>>> That is true, but most likely not really important, as the unmitigated
+>>> problem also introduces significant discontinuities in time.
+>>> Basically, this patch does not make things worse.
 >>>
->>> and does result in some loss of timer precision either way due to the delays involved with setting the time.
 >>
->>  That precision loss is negligible compared to jumps resulting from
->> link down/up, and should be corrected by normal PTP operation very
->> quickly.
+>> Sure, but I am trying to see if I can understand *why* things get wonky.
+>> I suspect the issue is caused because of how we're resetting the
+>> cyclecounter.
 >>
-> 
-> Only if CLOCK_REALTIME is actually being synchronized. Yes, that is
-> generally true, but its not necessarily guaranteed.
-> 
+>>>>
+>>>> and does result in some loss of timer precision either way due to the delays involved with setting the time.
 >>>
->>> Do you have an example of the clock jump? How much is it?
+>>>  That precision loss is negligible compared to jumps resulting from
+>>> link down/up, and should be corrected by normal PTP operation very
+>>> quickly.
+>>>
 >>
->> 2021-02-12T09:24:37.741191+00:00 bench-12 phc2sys: [195230.451]
->> CLOCK_REALTIME phc offset        61 s2 freq  -36503 delay   2298
->> 2021-02-12T09:24:38.741315+00:00 bench-12 phc2sys: [195231.451]
->> CLOCK_REALTIME phc offset       169 s2 freq  -36377 delay   2294
->> 2021-02-12T09:24:39.741407+00:00 bench-12 phc2sys: [195232.451]
->> CLOCK_REALTIME phc offset 195213702387037 s2 freq +100000000 delay
->> 2301
->> 2021-02-12T09:24:40.741489+00:00 bench-12 phc2sys: [195233.452]
->> CLOCK_REALTIME phc offset 195213591220495 s2 freq +100000000 delay
->> 2081
+>> Only if CLOCK_REALTIME is actually being synchronized. Yes, that is
+>> generally true, but its not necessarily guaranteed.
 >>
+>>>>
+>>>> Do you have an example of the clock jump? How much is it?
+>>>
+>>> 2021-02-12T09:24:37.741191+00:00 bench-12 phc2sys: [195230.451]
+>>> CLOCK_REALTIME phc offset        61 s2 freq  -36503 delay   2298
+>>> 2021-02-12T09:24:38.741315+00:00 bench-12 phc2sys: [195231.451]
+>>> CLOCK_REALTIME phc offset       169 s2 freq  -36377 delay   2294
+>>> 2021-02-12T09:24:39.741407+00:00 bench-12 phc2sys: [195232.451]
+>>> CLOCK_REALTIME phc offset 195213702387037 s2 freq +100000000 delay
+>>> 2301
+>>> 2021-02-12T09:24:40.741489+00:00 bench-12 phc2sys: [195233.452]
+>>> CLOCK_REALTIME phc offset 195213591220495 s2 freq +100000000 delay
+>>> 2081
+>>>
+>>
+>> Thanks.
+>>
+>> I think what's actually going on is a bug in the
+>> ixgbe_ptp_start_cyclecounter function where the system time registers
+>> are being reset.
+>>
+>> What hardware are you operating on? Do you know if its an X550 board?
 > 
-> Thanks.
+> Indeed it is.
 > 
-> I think what's actually going on is a bug in the
-> ixgbe_ptp_start_cyclecounter function where the system time registers
-> are being reset.
+>> It
+>> looks like this has been the case since a9763f3cb54c ("ixgbe: Update PTP
+>> to support X550EM_x devices").
 > 
-> What hardware are you operating on? Do you know if its an X550 board? It
-> looks like this has been the case since a9763f3cb54c ("ixgbe: Update PTP
-> to support X550EM_x devices").
+> The current test results come from v5.15.49-rt47. We observed the same
+> problem in 5.4.93-rt51, which contains a9763f3cb54c.
 > 
-> The start_cyclecounter was never supposed to modify the current time
-> registers, but resetting it to 0 as it does for X550 devices would give
-> the exact behavior you're seeing.
+>> The start_cyclecounter was never supposed to modify the current time
+>> registers, but resetting it to 0 as it does for X550 devices would give
+>> the exact behavior you're seeing.
+> 
+> That certainly sounds plausible.
+> 
+> Thanks,
+> Alison Chaiken
+> Aurora Innovation
 
-I just posted an alternative fix which I believe resolves this issue.
+I just posted a fix which moves the SYSTIME clearing out of
+start_cyclecounter and into ixgbe_ptp_reset. I'm fairly confident that
+its the correct fix, based on the function comments. I think the
+implementor for the X550 simply didn't understand the separation of
+ixgbe_ptp_start_cyclecouter and ixgbe_ptp_reset.
 
 Thanks,
 Jake
