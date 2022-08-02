@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83486587AAF
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Aug 2022 12:29:03 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27815587AB0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Aug 2022 12:29:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 997BE40591;
-	Tue,  2 Aug 2022 10:29:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 997BE40591
+	by smtp3.osuosl.org (Postfix) with ESMTP id A4B8960AFD;
+	Tue,  2 Aug 2022 10:29:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A4B8960AFD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659436141;
-	bh=MwcZeQF9bEcrkZt6ISOYF8q7ESNTnfNtafkJjaPdkqI=;
+	s=default; t=1659436145;
+	bh=BZ96z9bqrzqCsXAxbDR4lLNRRel/ClLX/h/dGZzO6iA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=R4blXq8VUVqGS1WmLP3lckrFNJ9cCBoFQweQIUmUovy3Qo9GxL3CRCjm6mAhx57D1
-	 e7KWjbIyRe4l74FGI52DOu/BzAGDWgXxeAm2/j1oNNUGbEdqLx3V+2tBkgDyqr+MDv
-	 C24oBJR5Ck3vI/r/nTe/OqsoqjwOJ7EsQmNGyGxGAaR8Q9orRe+DPaINLNq+JzeNl/
-	 KuDgr8zwuFF3hrbr3OilEOk+bygjHg0VWW6aiU3HjW9ogdK/Ukj3AMBFa+0QaXeYNf
-	 hap5QrhnCUcTh4VDZ3gEO0x46mmuX5tiLKUpsXc/bY3lPCUZtZCIx0Sf4yuEmjgEH2
-	 KJuKWJjQpwqIA==
+	b=nwBiaAvRjft3Xj3oh6MaHZ4SHhKknvizoKLfyUiU0KlutVP4TJZmm8cJgCwW2gSSH
+	 gOrPpIiQwdNDnHhNr6sN+38xsnuKavq8tdYmOSo/rTK4csVjKk/31zKAxYbN7Xko8e
+	 eeW6P7Ierrf/C/fvM3XY3mHIrv7Phog5lj84LmX0UezML6KCvDsk8HjnNINKgWzhF4
+	 rOv+XS4jKmbIi7q96aCIvR/MZmUplOZm5sNlxrpquRP6upM1dDXF6DkB4+krRo9ESm
+	 YHxMKGe/g6g1zz6CNSkKGzvgwv8s36dEItGHyHAenF3YoFP/CCt+QYTfisd76n+Pz9
+	 nYRdO+g5cUiQQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FxVEbQyMHg8G; Tue,  2 Aug 2022 10:29:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ye40y_PQ4H_1; Tue,  2 Aug 2022 10:29:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2094C402C5;
-	Tue,  2 Aug 2022 10:29:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2094C402C5
+	by smtp3.osuosl.org (Postfix) with ESMTP id 860A460B74;
+	Tue,  2 Aug 2022 10:29:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 860A460B74
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E33281BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CB05F1BF5DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C9496402C5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9496402C5
+ by smtp4.osuosl.org (Postfix) with ESMTP id A4FA740554
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A4FA740554
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EJi-285iDCUq for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Aug 2022 10:28:54 +0000 (UTC)
+ with ESMTP id BEqFD1gdwhzl for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Aug 2022 10:28:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E2F3402C2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A6B9B402C5
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7E2F3402C2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10426"; a="290589548"
-X-IronPort-AV: E=Sophos;i="5.93,210,1654585200"; d="scan'208";a="290589548"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A6B9B402C5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 10:28:58 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10426"; a="290589556"
+X-IronPort-AV: E=Sophos;i="5.93,210,1654585200"; d="scan'208";a="290589556"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2022 03:28:54 -0700
+ 02 Aug 2022 03:28:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,210,1654585200"; d="scan'208";a="635244154"
+X-IronPort-AV: E=Sophos;i="5.93,210,1654585200"; d="scan'208";a="635244164"
 Received: from propan.igk.intel.com ([10.211.8.82])
- by orsmga001.jf.intel.com with ESMTP; 02 Aug 2022 03:28:53 -0700
+ by orsmga001.jf.intel.com with ESMTP; 02 Aug 2022 03:28:57 -0700
 From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Aug 2022 12:26:17 +0200
-Message-Id: <20220802102618.31303-3-anatolii.gerasymenko@intel.com>
+Date: Tue,  2 Aug 2022 12:26:18 +0200
+Message-Id: <20220802102618.31303-4-anatolii.gerasymenko@intel.com>
 X-Mailer: git-send-email 2.37.1
 In-Reply-To: <20220802102618.31303-1-anatolii.gerasymenko@intel.com>
 References: <20220802102618.31303-1-anatolii.gerasymenko@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659436134; x=1690972134;
+ t=1659436138; x=1690972138;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=1HRiJx4BiOZSs7EC/186VvYBQXUuTkJGjFqGfyWZv3M=;
- b=kvIYMv8yOVc1x3t1YVon4DtYgLC/TzHaeAuxMHbZye+/r4WURJzZiW9k
- H69GPwWZggjjbYnFY3lZMVxZAClRtvI+Ab0oNX75UlbIBBF5KwgDGuJUg
- JLOihubClYmzJBBqXJ19R7ws1YFjlRRFWV/6rMzNmWezdjsRrjK/Sixub
- DZnvWXnsN69xAIOP9HRfamDoGIKaiXmoXLDTILFbEmgHwQPG2KxPEV4br
- +5WWx9TGuQv78E11GZb66Ma01zR8FI7JibZnRomP4Q67TIdE0ij/cGu10
- /p8eM05q/aGPBMwKefs9P2F0isAtwZsP0Y4YC/Jhz4xjITfp1RewV21I4
- g==;
+ bh=An5rmkQubGMd7VmSVFTP8YfTnigXtT+BzfPJXHnC8sc=;
+ b=Z7I/tS7WudaVlzw9GmcDrABgwJMERt7UxahnVyJKZTcrM0gRYc8YDI2Q
+ 4pQin3JYDxyTqi0mgrCJGvXEx4zKYcMetBgf0iqj56aCRhpl2WTudXPgQ
+ IrTlNvaBhZUZ7PYKo2ZwaK5QX+I9kGKy3l4NWWds7CEDwLIVghUMnKTwy
+ 4An6CjNbWfoMHxtSTT98wC2tkYJWALmaFJeIJgHIz4dRecHs8HwCX+8N2
+ GpE1F2+0Jyw9nwwp2LrnQrCFh6D2gpfN/FwFbVZPrOhstIFKhmvg+zb5n
+ gGqJ+tQ8UIse0hBNSNi7/yz7b4QNiZm5YKnIUTibnRw5V+JcaqSfsc+xQ
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=kvIYMv8y
-Subject: [Intel-wired-lan] [PATCH net-next v2 2/3] ice: Get DCBX config from
- LLDP MIB change event
+ header.a=rsa-sha256 header.s=Intel header.b=Z7I/tS7W
+Subject: [Intel-wired-lan] [PATCH net-next v2 3/3] ice: Handle LLDP MIB
+ Pending change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,141 +100,95 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-LLDP MIB Change Event (opcode 0x0A01) already contains MIB, which has
-been changed. Add ice_dcb_process_lldp_set_mib_change() function, which
-will set local/remote DCBX config from LLDP MIB Change Event's buffer.
+If the number of Traffic Classes (TC) is decreased, the FW will no
+longer remove TC nodes, but will send a pending change notification. This
+will allow RDMA to destroy corresponding Control QP markers. After RDMA
+finishes outstanding operations, the ice driver will send an execute MIB
+Pending change admin queue command to FW to finish DCB configuration
+change.
 
-This will save redundant Get LLDP MIB (opcode 0x0A00) AQ calls.
+The FW will buffer all incoming Pending changes, so there can be only
+one active Pending change.
+
+RDMA driver guarantees to remove Control QP markers within 5000 ms.
+Hence, LLDP response timeout txTTL (default 30 sec) will be met.
 
 Signed-off-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb.c     | 36 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_dcb.h     |  2 ++
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 30 +++++-----------
- 3 files changed, 46 insertions(+), 22 deletions(-)
+v2: Remove inline hint for ice_dcb_is_mib_change_pending()
+---
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 25 ++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.c b/drivers/net/ethernet/intel/ice/ice_dcb.c
-index ca95f8753cee..f5d9533e61cc 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb.c
-@@ -966,6 +966,42 @@ int ice_get_dcb_cfg(struct ice_port_info *pi)
- 	return ret;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 1c54eb643b6f..2fcfb31bb4ef 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -933,6 +933,16 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_tx_ring *tx_ring,
+ 	}
  }
  
 +/**
-+ * ice_get_dcb_cfg_from_mib_change
-+ * @pi: port information structure
-+ * @event: pointer to the admin queue receive event
-+ *
-+ * Set DCB configuration from received MIB Change event
++ * ice_dcb_is_mib_change_pending - Check if MIB change is pending
++ * @state: MIB change state
 + */
-+void ice_get_dcb_cfg_from_mib_change(struct ice_port_info *pi,
-+				     struct ice_rq_event_info *event)
++static bool ice_dcb_is_mib_change_pending(u8 state)
 +{
-+	struct ice_dcbx_cfg *dcbx_cfg = &pi->qos_cfg.local_dcbx_cfg;
-+	struct ice_aqc_lldp_get_mib *mib;
-+	u8 change_type, dcbx_mode;
-+
-+	mib = (struct ice_aqc_lldp_get_mib *)&event->desc.params.raw;
-+
-+	change_type = FIELD_GET(ICE_AQ_LLDP_MIB_TYPE_M,  mib->type);
-+	if (change_type == ICE_AQ_LLDP_MIB_REMOTE)
-+		dcbx_cfg = &pi->qos_cfg.remote_dcbx_cfg;
-+
-+	dcbx_mode = FIELD_GET(ICE_AQ_LLDP_DCBX_M, mib->type);
-+
-+	switch (dcbx_mode) {
-+	case ICE_AQ_LLDP_DCBX_IEEE:
-+		dcbx_cfg->dcbx_mode = ICE_DCBX_MODE_IEEE;
-+		ice_lldp_to_dcb_cfg(event->msg_buf, dcbx_cfg);
-+		break;
-+
-+	case ICE_AQ_LLDP_DCBX_CEE:
-+		pi->qos_cfg.desired_dcbx_cfg = pi->qos_cfg.local_dcbx_cfg;
-+		ice_cee_to_dcb_cfg((struct ice_aqc_get_cee_dcb_cfg_resp *)
-+				   event->msg_buf, pi);
-+		break;
-+	}
++	return ICE_AQ_LLDP_MIB_CHANGE_PENDING ==
++		FIELD_GET(ICE_AQ_LLDP_MIB_CHANGE_STATE_M, state);
 +}
 +
  /**
-  * ice_init_dcb
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.h b/drivers/net/ethernet/intel/ice/ice_dcb.h
-index 6abf28a14291..be34650a77d5 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb.h
-@@ -144,6 +144,8 @@ ice_aq_get_dcb_cfg(struct ice_hw *hw, u8 mib_type, u8 bridgetype,
- 		   struct ice_dcbx_cfg *dcbcfg);
- int ice_get_dcb_cfg(struct ice_port_info *pi);
- int ice_set_dcb_cfg(struct ice_port_info *pi);
-+void ice_get_dcb_cfg_from_mib_change(struct ice_port_info *pi,
-+				     struct ice_rq_event_info *event);
- int ice_init_dcb(struct ice_hw *hw, bool enable_mib_change);
- int
- ice_query_port_ets(struct ice_port_info *pi,
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index add90e75f05c..1c54eb643b6f 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -963,41 +963,27 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	pi = pf->hw.port_info;
- 	mib = (struct ice_aqc_lldp_get_mib *)&event->desc.params.raw;
- 	/* Ignore if event is not for Nearest Bridge */
--	mib_type = ((mib->type >> ICE_AQ_LLDP_BRID_TYPE_S) &
--		    ICE_AQ_LLDP_BRID_TYPE_M);
-+	mib_type = FIELD_GET(ICE_AQ_LLDP_BRID_TYPE_M, mib->type);
+  * ice_dcb_process_lldp_set_mib_change - Process MIB change
+  * @pf: ptr to ice_pf
+@@ -946,6 +956,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_aqc_lldp_get_mib *mib;
+ 	struct ice_dcbx_cfg tmp_dcbx_cfg;
++	bool pending_handled = false;
+ 	bool need_reconfig = false;
+ 	struct ice_port_info *pi;
+ 	u8 mib_type;
+@@ -966,7 +977,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 	mib_type = FIELD_GET(ICE_AQ_LLDP_BRID_TYPE_M, mib->type);
  	dev_dbg(dev, "LLDP event MIB bridge type 0x%x\n", mib_type);
  	if (mib_type != ICE_AQ_LLDP_BRID_TYPE_NEAREST_BRID)
- 		return;
+-		return;
++		goto handle_pending;
  
  	/* Check MIB Type and return if event for Remote MIB update */
--	mib_type = mib->type & ICE_AQ_LLDP_MIB_TYPE_M;
-+	mib_type = FIELD_GET(ICE_AQ_LLDP_MIB_TYPE_M, mib->type);
- 	dev_dbg(dev, "LLDP event mib type %s\n", mib_type ? "remote" : "local");
+ 	mib_type = FIELD_GET(ICE_AQ_LLDP_MIB_TYPE_M, mib->type);
+@@ -974,7 +985,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
  	if (mib_type == ICE_AQ_LLDP_MIB_REMOTE) {
  		/* Update the remote cached instance and return */
--		ret = ice_aq_get_dcb_cfg(pi->hw, ICE_AQ_LLDP_MIB_REMOTE,
--					 ICE_AQ_LLDP_BRID_TYPE_NEAREST_BRID,
--					 &pi->qos_cfg.remote_dcbx_cfg);
--		if (ret) {
--			dev_err(dev, "Failed to get remote DCB config\n");
--			return;
--		}
-+		ice_get_dcb_cfg_from_mib_change(pi, event);
-+		return;
+ 		ice_get_dcb_cfg_from_mib_change(pi, event);
+-		return;
++		goto handle_pending;
  	}
  
  	mutex_lock(&pf->tc_mutex);
+@@ -1009,6 +1020,12 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 		clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
+ 	}
  
- 	/* store the old configuration */
--	tmp_dcbx_cfg = pf->hw.port_info->qos_cfg.local_dcbx_cfg;
--
--	/* Reset the old DCBX configuration data */
--	memset(&pi->qos_cfg.local_dcbx_cfg, 0,
--	       sizeof(pi->qos_cfg.local_dcbx_cfg));
-+	tmp_dcbx_cfg = pi->qos_cfg.local_dcbx_cfg;
- 
--	/* Get updated DCBX data from firmware */
--	ret = ice_get_dcb_cfg(pf->hw.port_info);
--	if (ret) {
--		dev_err(dev, "Failed to get DCB config\n");
--		goto out;
--	}
-+	/* Update DCBX data from MIB Change event's buffer */
-+	ice_get_dcb_cfg_from_mib_change(pi, event);
- 
- 	/* No change detected in DCBX configs */
- 	if (!memcmp(&tmp_dcbx_cfg, &pi->qos_cfg.local_dcbx_cfg,
-@@ -1027,7 +1013,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
++	/* Send Execute Pending MIB Change event if it is a Pending event */
++	if (ice_dcb_is_mib_change_pending(mib->state)) {
++		ice_lldp_execute_pending_mib(&pf->hw);
++		pending_handled = true;
++	}
++
+ 	rtnl_lock();
  	/* disable VSIs affected by DCB changes */
  	ice_dcb_ena_dis_vsi(pf, false, true);
- 
--	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
-+	ret = ice_query_port_ets(pi, &buf, sizeof(buf), NULL);
- 	if (ret) {
- 		dev_err(dev, "Query Port ETS failed\n");
- 		goto unlock_rtnl;
+@@ -1028,4 +1045,8 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 	rtnl_unlock();
+ out:
+ 	mutex_unlock(&pf->tc_mutex);
++handle_pending:
++	/* Send Execute Pending MIB Change event if it is a Pending event */
++	if (!pending_handled && ice_dcb_is_mib_change_pending(mib->state))
++		ice_lldp_execute_pending_mib(&pf->hw);
+ }
 -- 
 2.37.1
 
