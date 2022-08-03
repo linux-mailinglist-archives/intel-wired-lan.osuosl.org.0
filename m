@@ -1,189 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42787588457
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Aug 2022 00:34:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62347588682
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Aug 2022 06:29:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BB04F8124B;
-	Tue,  2 Aug 2022 22:33:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BB04F8124B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6B3C98199D;
+	Wed,  3 Aug 2022 04:29:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B3C98199D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659479639;
-	bh=JCMdJ3ux1P55kFpSjpBaKSJT79LwYDP7PpAbdRymA4o=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=nLxfn8bDCmJVmp9dK6ohqFitAfup8WsQXKCZKWjWPafF0uvb+igQ2fLEnOHpW0QUT
-	 g2tmp1IGOOcrmkRhxpHn9SNcq35XHcMz0WGlghns6Q/Oob9JhnhyNwbwN1Ohba97w5
-	 ESXA5RixpbPN5K/yfEZxmolnVrhXo+4HaAkHhPY94hsykoydmcoxOAxVy89tb+EdCR
-	 LQWElMkk3f2dKQ3tXiwVin0eDIn+/LKs9Mx/1eskK9ekKWBUcXkV+YEJ5xVRl2K42p
-	 M4VwUwno25gjuMBK91FtMdY3FisSf+leKL70fTQiH3o1FdJFI3RHllvs08EaFEe8Ev
-	 QI0dshx7MPOuA==
+	s=default; t=1659500943;
+	bh=vrbCa4CIBfsv4R9aE+wR2WN9MSULJauFsgWtl+8tLhA=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=zYl+AHxB20QV0KL0DD4Mm60JWdOMjeTmg0ul4WWHOOE5DWLrHFQmpOJF2j9HXF8gr
+	 HTwdc6+S7XZ9HFDOFJZGAj1f/+pUbweCCHniASz+1E1KchlXbgLlRyfKjpavHPaJ0l
+	 tJQZ2dwZiZ+IYlJJTTgZy7mzKdyonq/gJ/kqZ3Ecv90eQqKBuoUh1Gn7MbVsFZs8kD
+	 Nx1jWMIRki4MdFUksT9C5sjSSX5rnG7Tnr88xJAZG1CoSEYrS/kYLH/7hWdR7o2Fzd
+	 9m5NQW1Udf7QeyQKsTtge+oV3s/SnQxP57f4G87VNU8URm6+N9yOLFss094DhjX58W
+	 O2deY7OWTmQhA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pDp0KgWjM_dL; Tue,  2 Aug 2022 22:33:58 +0000 (UTC)
+	with ESMTP id tCjly2a9XCve; Wed,  3 Aug 2022 04:29:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 70C5680D80;
-	Tue,  2 Aug 2022 22:33:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 70C5680D80
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5A56F81882;
+	Wed,  3 Aug 2022 04:29:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A56F81882
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1E3371BF48B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 22:33:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 97B071BF2C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 04:28:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E877840961
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 22:33:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E877840961
+ by smtp4.osuosl.org (Postfix) with ESMTP id 694D4403C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 04:28:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 694D4403C8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6GyaisR4vjh1 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Aug 2022 22:33:50 +0000 (UTC)
+ with ESMTP id s3ubzt3EelST for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Aug 2022 04:28:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1DAE40931
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B1DAE40931
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Aug 2022 22:33:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10427"; a="375832750"
-X-IronPort-AV: E=Sophos;i="5.93,212,1654585200"; d="scan'208";a="375832750"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2022 15:33:50 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2699E403C1
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2699E403C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 04:28:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10427"; a="287139760"
+X-IronPort-AV: E=Sophos;i="5.93,213,1654585200"; d="scan'208";a="287139760"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Aug 2022 21:28:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,212,1654585200"; d="scan'208";a="728993830"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by orsmga004.jf.intel.com with ESMTP; 02 Aug 2022 15:33:49 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Tue, 2 Aug 2022 15:33:49 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Tue, 2 Aug 2022 15:33:48 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28 via Frontend Transport; Tue, 2 Aug 2022 15:33:48 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.28; Tue, 2 Aug 2022 15:33:48 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GVoBfybN1DUMXXaYE/J0lPq5P2PNHVwjNSRaq/KxIRozYPXzEuhu0wk9iDHJnzqF0hW3aN0Bd9FyWEO4qsX9Z+dBvGVA9t06W3Y7EsuF5a7iIEOwuRYqiUnN2H/yy2yKYs4m/BNgjz1BGsM8nvkBvqLkhyIubM0xitYcDrXxBsv2xEt+hP3z85lDGz8FKLZMShnRfrxIof4PC0Mk28C8RqoKhETkiDcF1wJV2xRudAWjz4foU8v4RLOqvU9UuTzjY01eXiAe48SR11khK5X/i4loOtNHRCbBjw4RbSWQbp/A+4QzUJPkYYcQtDzB8PonXlhzASysPgfxxCdhJ5cEbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=C3v3MhHlR7knZ2ZgoPwyJQJzqdmKPSIf/+XBCtb5Rqw=;
- b=d/VNgq8hHRyP+SncncjWRY48+i2I8WaLpGCXhV8gclCJsCT4mWmCPbz1qcmy7roMtsalN2YZpeTRU/QCQ4/6CoeL578iV3tBL7lHzqxFLOBB1/pNQI2f23YH06N+759B5t9SqN2gd9+idNRA3fKlhCNEufhEEaQ9Af+GUUhxGyhAqZE8gCf6lHexdMYTvWEK1PkJyvT9pUeIUlo1i+Mtnq2XhWOrKc7+pcQDQYoPuVvtW2lYYBSTWMc5CZhAFOHKJJGx3CaOUr6DQxSc6p48s7uMCb+LSa8CdfOoBmELUhUjF2jDLhyoEfVkAKTNVky0Q4aw1vfPFOW8DH1xeyW7ww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
- by SA2PR11MB4907.namprd11.prod.outlook.com (2603:10b6:806:111::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.11; Tue, 2 Aug
- 2022 22:33:46 +0000
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::7504:add2:2794:3ecb]) by SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::7504:add2:2794:3ecb%7]) with mapi id 15.20.5482.014; Tue, 2 Aug 2022
- 22:33:46 +0000
-Message-ID: <b0934e11-7fd9-a9ff-86b1-2765781f3927@intel.com>
-Date: Tue, 2 Aug 2022 15:33:34 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Content-Language: en-US
-To: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-References: <20220801161228.874194-1-mateusz.palczewski@intel.com>
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20220801161228.874194-1-mateusz.palczewski@intel.com>
-X-ClientProxiedBy: SJ0PR03CA0294.namprd03.prod.outlook.com
- (2603:10b6:a03:39e::29) To SN6PR11MB3229.namprd11.prod.outlook.com
- (2603:10b6:805:ba::28)
+X-IronPort-AV: E=Sophos;i="5.93,213,1654585200"; d="scan'208";a="578487396"
+Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 02 Aug 2022 21:28:48 -0700
+Received: from kbuild by e0eace57cfef with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oJ600-000Gox-0k;
+ Wed, 03 Aug 2022 04:28:48 +0000
+Date: Wed, 03 Aug 2022 12:28:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62e9f95c.W1S4NO+a/qNnCCdG%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 58b685c3-2f01-4463-e081-08da74d7103b
-X-MS-TrafficTypeDiagnostic: SA2PR11MB4907:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Yd6Jq8j2lLOnYVilUsSQOANeVgnZG6BzByOKFnZ2v+sKCdOcybFu8k2yYwg6fTRbI93r6ZZFiu+bYY9mFvhUKauzYFflLa4kCX1N65A1wCVMI6SHS4XbBN9bg2ACEqQbxeb3G6ARiaIlBUSBGUw1mvbjd7pep8BBdjDfSii53ZpBKM7NYH+9RtOvHcXI9JPqTXOvY4JvL9DD+ijEPOF4yR5TsnWw6J3xXoL6qvKwWYi/JPXEVv+aBbWuOzHY54mpoxutRooUqjcZ/f4EEp86V1DwE6DFayLdY5ugR54rHq7GbaDOyszwxNoZnNb631+T2O5ZHv1wEnWh0uOg6hPE+OZA2OSkqIOjvw855oBed0+t1VH8CEh9s7keSMwK/4vSvRlHA4I1ugK59mZy5lJB8uVMWJ+uAqCeTJC2MYyL5Zon0oTRFGS/8irV0gC8re4kSNT1ub3qbSPMNHN7UquKL23cctepP0wBesiHiCpGqmk1xsCvza8XeL5xvdkmH3N+zLo2kxPoX3MsC+4Yt/BFdI6jSksSRZjL+nW6Nfi0bn2i3LSwxs2PqUmkGo4zRQWRlkp9494RLtqsdelI3+vyIvxXjdR0EMMbt5Gek33JarneTuEOLpXFuxHxwaYOlmJ/COtvgTkvtnFya47jz79eZ5+CtP9/5W+w37Y8kF7eNOuIa874M+RjmQIjnmTr0R7svIYSQo/DhCoxQNajPq8YPnlYvfiLTKR64tl59nrozerG0nr5z/pFAY/wfB2O4SFfjibvqpkSPSX2gswKT1OZCuz4M7CDScWO+Dq3tORa9wUN2CQ6SVGqrjcLdwFIc7CPI1yEgW2oDQjwLkIoWn7lTg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(136003)(366004)(396003)(376002)(39860400002)(346002)(8936002)(107886003)(2616005)(66556008)(316002)(8676002)(4326008)(66476007)(31696002)(86362001)(66946007)(5660300002)(82960400001)(53546011)(6506007)(83380400001)(186003)(38100700002)(41300700001)(6666004)(26005)(6512007)(6486002)(478600001)(31686004)(36756003)(2906002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZnVGaEMyKy85L1R2UTFYbWhPbUt6L25iSFp3OGRLM2FGNm5zSkEvc1RtcW9G?=
- =?utf-8?B?bkloT01xOG5vNCtCWjhZUW8yeGtpSVhTZW9ROE9QVk4vRmYwb0w0Q0s2Ulpq?=
- =?utf-8?B?d1M1c0UzWW1IVURJUFlHMCtCNkkvWDVOaVFOMUtsR2pMbUZWcnFLUTdaa0p2?=
- =?utf-8?B?amJPcDl5ZVVHbG1mVkh3T1gwVVVIdlJvOTF2bjNRZVZ6NlZpMHhRTDZlUzBj?=
- =?utf-8?B?aHdQTVhBMEwvRU9VWVFjNEU4NWhIdDlMMzZscjlwbG1mUDJ5RnIvNjRYRUZZ?=
- =?utf-8?B?dHh0dk5WaCtGZ3VLWktWdzRMNXpSVGpqQkJ4c1hoRFFjTUVHZ0puNkRyK004?=
- =?utf-8?B?OGIxNWJzaXcxSE5mSkxQY1VsMGJvY0VLcGpEaE9tdXNFQkUza3pXNE15dWNh?=
- =?utf-8?B?WDRMdTZQKzRQYWtGVDJSY2IySk9MOW9DcDF4NlNtdC9QZGp5NmIycGNqVnNY?=
- =?utf-8?B?YlZqTHFMTVNzNXRHYlJBQTRLMkt0N1F3YmJoeEZzZDhhV2lWNkIxNWQrQ1Zt?=
- =?utf-8?B?Ti9US3hIZ1Bvek5PUWZOd2R0TGIveXRSZjVWT2xWWDZqTjgvZmRhcGlYb2g4?=
- =?utf-8?B?ejEwZU1EWmlQWGUzdmdZcDFud2VlWEwrb0VuRE8yalJyZ3oyTWs4dGVWQUVy?=
- =?utf-8?B?RFpVcWxGUUhXWTIxcUFXVmw3WVkyRFJwaGlCMGdLMFFRblRUdU9DL0ZmTnBJ?=
- =?utf-8?B?Z29TRkdUWWcySDB2ZnNDS04yc2d3OFZGTDN0U1UzM090QTdIcEJmd0dNNHFR?=
- =?utf-8?B?aEVGaHRKUXpHSmkrZlVURXdldWcvVWJCKzl2R2xkSE9sNWtQWlVKamt6UWpL?=
- =?utf-8?B?OFFNeUczd29GS0syZldHRVZEU1p5V1VhczArQUdUdUM5SzcvV0hOZTZOSGc2?=
- =?utf-8?B?eGsyL2xOU0txcDBUa28wTXVlZXNQL2lyVGk0ZzUwZGIxNUFZZGVyR2lEZTdx?=
- =?utf-8?B?YitoNHc1eWV6c213N1hvTVVGK0g3cTNHWGc2SzlXN2o3ZnN1KysrODI4azIr?=
- =?utf-8?B?bUxzWDQ3MktQYnpNeTNyWXBqNnh2QmRJc0s5bzc1d29jRzI1Y3ZpdnVhVEha?=
- =?utf-8?B?dWdVUWQ3Q3duYVIzZWFPL3NMQ1VWa1VxMDBCNmtmTGprQXZnUGNLQVc3aHZL?=
- =?utf-8?B?SmVRUlJnclpYYXd1Zy81YWo4MGNtbHB0Q0hxb2Vob2ZPWWtJM0VmWEhiVnBx?=
- =?utf-8?B?WjNJeHE0Nk9jTTJIUDlaSVNlMThSa1ZnM3dLN25WU2RlV0RxVENwbFpKT2pK?=
- =?utf-8?B?cGt3eEJwcUNYaTM4bG0wS0N5cUluZzE1U25uUlZKZk42QUNCREZYMndYWmVz?=
- =?utf-8?B?WEU1Ync4bUJKZUVUbGVNejdTdFNOZE12UE9iZHh6OUFibWhaN0ttRUdkL1E3?=
- =?utf-8?B?ZGZOaVMzbS9MclZ0RXhJNWZjN3Y2UFh4VTVZT1NpR3ptMHhZNzNja2k1RWc2?=
- =?utf-8?B?NWMveTd3a3BuUHBlN3FqRFRBQ1NiZnVsdnQ3OUpTT2pkbGJBV01nTDN5eStU?=
- =?utf-8?B?VnZwNVdkdVYxSFFBMHRWNDBPajBSRVg0bG1VQTBoZFZGVHFzNlhpdlhwdTJW?=
- =?utf-8?B?aS9zWG5mWWZsM1M0bjZLSHl2VGpOMDc3aWJvMXRpYU1VU0dxaS9udGpVbE9t?=
- =?utf-8?B?aTRRdVd5cllMN3psc0oraG01ZWs3ZGM5MDdPT3ZkSCtZQ3JqeVdvWGN4aW01?=
- =?utf-8?B?Q0dmakgwY2NIV2JzNnRuWkVWTVdJT2pLWUsrbU0ybFd5bGwvYk9GSi80Qmpn?=
- =?utf-8?B?REtlZGhQNWhiV0dvaWwwK1pPRUNRenlseEcxaEN0TkQ1UTMxcWs5TU0yVTdx?=
- =?utf-8?B?M21venRoWDBmN1NjanhaU0pHdjNkcEd2Y3k2R3d2LzJLZnZVRmZmSTFkVzgy?=
- =?utf-8?B?ZllxMFFYM1UyWThoQ3RPTS9yWWZmeTdKYWhEVjhYb3lvRXpITXVocEpTOWQ5?=
- =?utf-8?B?ZlNUbzZxMGNvSzRObzRsaWlPODZvdTNjakd2SlhmaHEvYWxOY3dqbXhwcFNu?=
- =?utf-8?B?R1Vxdis5ZDZhYzBxeHN0T3pteCtTT1BiMlhvbkQ2blc3SmZCUUdwQmJ0VU9M?=
- =?utf-8?B?MFN4V05hcENVUFhZdytSam1ZaHIrLzRZenpHaEdQNkNvbUxMMHJEZDZENTVa?=
- =?utf-8?B?RjE4aWJCbDQxd01ialVka3J6ZkNZMlBscHFzYWtENmdUM2Naa0N1R0lyTlFu?=
- =?utf-8?B?bVE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 58b685c3-2f01-4463-e081-08da74d7103b
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Aug 2022 22:33:46.7215 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GEZhB17Y88DVbyAQ8AvIDbTmq08xawwhPJpg/1m2lwu2QwHIApNk48mgTsAiDbqaqA3gHNGv6uNpmavaDWpS3xh24DFlqI8PiOPb3f8kOpQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4907
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659479630; x=1691015630;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=1w2vqlPDdHmVzmd42+rvpRfH5l7QyrAPXjZHYNmgOow=;
- b=RJsm5850F9Ih0j9ryIImJHzVIByZjplc7fKblvpQ4RjTla4nuzuzNdK4
- cLNOh6KH8j3bnyExKB/8HF55finBpUCJir0WwlS6l37dCevPERAVFt5uI
- 2N2cLmkSwez1fQRJQmDsUVQHndT4Apc1GSeLqcA83rQ6jzAqyNLJB//+V
- dP6UVeX2KWHLX5BS879Mm0xW3Umx7xOc2sac6vDoMvHGxlepDgoZBCHb6
- 28n2KqbDhW8wJklnrWB6JVRo3lB9+8IkGLPrhGn0o15yg4bPewkflysZW
- RRoSW/eumWY9b+iFw1BR3ehhhws1NyX5DxW3pQbi7CHPCLeehbuskslY3
- g==;
+ t=1659500936; x=1691036936;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=/vorI2nK2iTssOqYLric5A9IVizxMjUInv7551XJeEc=;
+ b=KpRfNMa/VDTIJXqY3Van6u22t+2nRzkC9DSwSpCEGsuRujN+nQmJmzB+
+ RGX4iHZGpP5lDBt4jRh3F1xRjwpLjL5poSXkKCtIf7EjfNWd3cSGuI0Ed
+ vLYvUJEhYqxPJiesCdAdFI1ETeq6eG2Hr6yydcOx7PjIK6oBMZBfu0O9m
+ ZS6aH6ZSRexpZYaMyINDkqCc9uhDQ4FZ556ettxflElXg6SmIh7YIED2f
+ be2mUIwjGX5nMyAVFUdLXRHrXoIioENcOoh5+gBVQGsCHMFbE8ZMcmJml
+ bgW/CPw0Leq31G8jdiQY1TXFQaLaAYr8AeH9pLSyLr/1e+lL6k30i2lAv
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RJsm5850
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: Fix VF not able to send
- tagged traffic with no VLAN filters
+ header.a=rsa-sha256 header.s=Intel header.b=KpRfNMa/
+Subject: [Intel-wired-lan] [tnguy-net-queue:master] BUILD SUCCESS
+ 8eaa1d110800fac050bab44001732747a1c39894
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -196,182 +94,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 8/1/2022 9:12 AM, Mateusz Palczewski wrote:
-> From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> 
-> VF was not able to send tagged traffic when it didn't
-> have any VLAN interfaces and VLAN anti-spoofing was enabled.
-> Fix this by allowing VFs with no VLAN filters to send tagged
-> traffic. After VF adds a VLAN interface it will be able to
-> send tagged traffic matching VLAN filters only.
-> 
-> Testing hints:
-> 1. Spawn VF
-> 2. Send tagged packet from a VF
-> 3. The packet should be sent out and not dropped
-> 4. Add a VLAN interface on VF
-> 5. Send tagged packet on that VLAN interface
-> 6. Packet should be sent out and not dropped
-> 7. Send tagged packet with id different than VLAN interface
-> 8. Packet should be dropped
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git master
+branch HEAD: 8eaa1d110800fac050bab44001732747a1c39894  net/mlx5e: xsk: Discard unaligned XSK frames on striding RQ
 
-This has checkpatch issues:
+elapsed time: 863m
 
-CHECK: Unnecessary parentheses around 'vsi->type != ICE_VSI_VF'
-ERROR: trailing whitespace
+configs tested: 20
+configs skipped: 2
 
-Also, if possible, would be nice to resolve these if it doesn't affect 
-readability:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-WARNING: line length of 82 exceeds 80 columns
-WARNING: line length of 85 exceeds 80 columns
-WARNING: line length of 88 exceeds 80 columns
-WARNING: line length of 89 exceeds 80 columns
-WARNING: line length of 91 exceeds 80 columns
-WARNING: line length of 97 exceeds 80 columns
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+arc                  randconfig-r043-20220801
+s390                 randconfig-r044-20220801
+riscv                randconfig-r042-20220801
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+sh                               allmodconfig
 
-> Fixes: daf4dd16438b ("ice: Refactor spoofcheck configuration functions")
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  7 ++-
->   drivers/net/ethernet/intel/ice/ice_virtchnl.c | 57 ++++++++++++++++---
->   2 files changed, 55 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> index 2d6130af1d40..2e1bcd44f32b 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> @@ -707,11 +707,14 @@ static int ice_cfg_mac_antispoof(struct ice_vsi *vsi, bool enable)
->   static int ice_vsi_ena_spoofchk(struct ice_vsi *vsi)
->   {
->   	struct ice_vsi_vlan_ops *vlan_ops;
-> -	int err;
-> +	int err = 0;
->   
->   	vlan_ops = ice_get_compat_vsi_vlan_ops(vsi);
->   
-> -	err = vlan_ops->ena_tx_filtering(vsi);
-> +	/* Allow VF with VLAN 0 only to send all tagged traffic */
-> +	if ((vsi->type != ICE_VSI_VF) || ice_vsi_has_non_zero_vlans(vsi))
-> +		err = vlan_ops->ena_tx_filtering(vsi);
-> +	
->   	if (err)
->   		return err;
+clang tested configs:
+i386                 randconfig-a005-20220801
+i386                 randconfig-a006-20220801
+hexagon              randconfig-r045-20220801
+hexagon              randconfig-r041-20220801
 
-Should this be part of the above if as well?
-
->   
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> index 24188ec594d5..a241c0bdc150 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> @@ -2264,6 +2264,15 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
->   
->   			/* Enable VLAN filtering on first non-zero VLAN */
->   			if (!vlan_promisc && vid && !ice_is_dvm_ena(&pf->hw)) {
-> +				if (vf->spoofchk) {
-> +					status = vsi->inner_vlan_ops.ena_tx_filtering(vsi);
-> +					if (status) {
-> +						v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-> +						dev_err(dev, "Enable VLAN anti-spoofing on VLAN ID: %d failed error-%d\n",
-> +							vid, status);
-> +						goto error_param;
-> +					}
-> +				}
->   				if (vsi->inner_vlan_ops.ena_rx_filtering(vsi)) {
->   					v_ret = VIRTCHNL_STATUS_ERR_PARAM;
->   					dev_err(dev, "Enable VLAN pruning on VLAN ID: %d failed error-%d\n",
-> @@ -2309,8 +2318,10 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
->   			}
->   
->   			/* Disable VLAN filtering when only VLAN 0 is left */
-> -			if (!ice_vsi_has_non_zero_vlans(vsi))
-> +			if (!ice_vsi_has_non_zero_vlans(vsi)) {
-> +				vsi->inner_vlan_ops.dis_tx_filtering(vsi);
->   				vsi->inner_vlan_ops.dis_rx_filtering(vsi);
-> +			}
->   
->   			if (vlan_promisc)
->   				ice_vf_dis_vlan_promisc(vsi, &vlan);
-> @@ -2814,6 +2825,13 @@ ice_vc_del_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
->   
->   			if (vlan_promisc)
->   				ice_vf_dis_vlan_promisc(vsi, &vlan);
-> +
-> +			/* Disable VLAN filtering when only VLAN 0 is left */
-> +			if (!ice_vsi_has_non_zero_vlans(vsi) && ice_is_dvm_ena(&vsi->back->hw)) {
-> +				err = vsi->outer_vlan_ops.dis_tx_filtering(vsi);
-> +				if (err)
-> +					return err;
-> +			}
->   		}
->   
->   		vc_vlan = &vlan_fltr->inner;
-> @@ -2829,8 +2847,17 @@ ice_vc_del_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
->   			/* no support for VLAN promiscuous on inner VLAN unless
->   			 * we are in Single VLAN Mode (SVM)
->   			 */
-> -			if (!ice_is_dvm_ena(&vsi->back->hw) && vlan_promisc)
-> -				ice_vf_dis_vlan_promisc(vsi, &vlan);
-> +			if (!ice_is_dvm_ena(&vsi->back->hw)) {
-> +				if (vlan_promisc)
-> +					ice_vf_dis_vlan_promisc(vsi, &vlan);
-> +
-> +				/* Disable VLAN filtering when only VLAN 0 is left */
-> +				if (!ice_vsi_has_non_zero_vlans(vsi)) {
-> +					err = vsi->inner_vlan_ops.dis_tx_filtering(vsi);
-> +					if (err)
-> +						return err;
-> +				}
-> +			}
->   		}
->   	}
->   
-> @@ -2907,6 +2934,13 @@ ice_vc_add_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
->   				if (err)
->   					return err;
->   			}
-> +
-> +			/* Enable VLAN filtering on first non-zero VLAN */
-> +			if (vf->spoofchk && vlan.vid && ice_is_dvm_ena(&vsi->back->hw)) {
-> +				err = vsi->outer_vlan_ops.ena_tx_filtering(vsi);
-> +				if (err)
-> +					return err;
-> +			}
->   		}
->   
->   		vc_vlan = &vlan_fltr->inner;
-> @@ -2922,10 +2956,19 @@ ice_vc_add_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
->   			/* no support for VLAN promiscuous on inner VLAN unless
->   			 * we are in Single VLAN Mode (SVM)
->   			 */
-> -			if (!ice_is_dvm_ena(&vsi->back->hw) && vlan_promisc) {
-> -				err = ice_vf_ena_vlan_promisc(vsi, &vlan);
-> -				if (err)
-> -					return err;
-> +			if (!ice_is_dvm_ena(&vsi->back->hw)) {
-> +				if (vlan_promisc) {
-> +					err = ice_vf_ena_vlan_promisc(vsi, &vlan);
-> +					if (err)
-> +						return err;
-> +				}
-> +
-> +				/* Enable VLAN filtering on first non-zero VLAN */
-> +				if (vf->spoofchk && vlan.vid) {
-> +					err = vsi->inner_vlan_ops.ena_tx_filtering(vsi);
-> +					if (err)
-> +						return err;
-> +				}
->   			}
->   		}
->   	}
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
