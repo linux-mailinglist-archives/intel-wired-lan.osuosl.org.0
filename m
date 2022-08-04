@@ -1,84 +1,184 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99DA15890A6
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Aug 2022 18:41:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A1E75898D7
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Aug 2022 09:55:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0E17760C34;
-	Wed,  3 Aug 2022 16:41:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E17760C34
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1D424408A5;
+	Thu,  4 Aug 2022 07:55:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1D424408A5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659544867;
-	bh=uW+wnuAaLFvm80D4H+6UBLRGh7H1S6khqOZt4U/tXZg=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=X8i+XagkqBrmE+rbYOEHio3VvlMEuMF8u8ZLpAuwPPtJs4EYHoFaqqzXwIbdWluIs
-	 HtDeCknzDIqiFvAWfrRTLfXqW7LlIlr6y3DEUbJLP1nHPlRyYZV6mbK1nGS8pl6EE6
-	 ue4hm7BnKiMClASU4SfkNmbXqCZsbTNNyWqT9G729ejRaCYmbJ2ZUGpKUkU/0M/sNV
-	 X7i6iXTYjtGhogtFAK7iffEX/5gHjnlie9cVPf6Sz6xT7eB1rjyvHrLoIxKMIIYn3/
-	 OvKkyPcuu8mvtBJtW/mFbuDBGl5LggcMk0LdatWXamVZDzBee0LwVbE+3mGGtnpyhV
-	 Il4UPmb6g2S1g==
+	s=default; t=1659599748;
+	bh=GuWBmAmy9Y4tgN9Qv0RzGNauNlM7JNxkKveYdvyby4Q=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=vvlVRFUEDMUv20VI5/u56DgZ78DcN+JQIxWuqTfuHLlQPJ7bp9FLPwuwPRLwFmuu6
+	 T7w3364lcUmScf4yceb5d3pu/BL3x40xYj+NdPdJSWczlwUkacJQQwSI9TcvLRVpP6
+	 TsPFnv8wHhdpvqqzbDokLJ2k+Oso4T3kgenG9bchajq+4rkfH9C4WBCry7RXLX7z6M
+	 L0lj8YxiLCGiZuWG8C6TEQSzWgTrd/utRJLLditwzexb3riQOViC66vLze9pzHjc3u
+	 EZIhkFrmRghDl3WPB03ETYEkZ8wVhLo1Nz9Fw0M3duIHNvxrkI9JbppR1Fn6KbNowf
+	 UnRxk32lY5Bww==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OC9shU51OWMY; Wed,  3 Aug 2022 16:41:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VlSmVxtgDsXe; Thu,  4 Aug 2022 07:55:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F14F160BDC;
-	Wed,  3 Aug 2022 16:41:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F14F160BDC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1077A40503;
+	Thu,  4 Aug 2022 07:55:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1077A40503
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 263D71BF3D5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 16:41:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D9641BF2C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Aug 2022 07:55:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EF71F40142
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 16:41:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF71F40142
+ by smtp4.osuosl.org (Postfix) with ESMTP id 644EE40905
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Aug 2022 07:55:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 644EE40905
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2HcSLGxBTqG6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Aug 2022 16:40:59 +0000 (UTC)
+ with ESMTP id lL8vYmPzn0Lb for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Aug 2022 07:55:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8FA3940131
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8FA3940131
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Aug 2022 16:40:59 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10428"; a="272768080"
-X-IronPort-AV: E=Sophos;i="5.93,214,1654585200"; d="scan'208";a="272768080"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Aug 2022 09:40:58 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AB7640912
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4AB7640912
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Aug 2022 07:55:40 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10428"; a="291087162"
+X-IronPort-AV: E=Sophos;i="5.93,215,1654585200"; d="scan'208";a="291087162"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Aug 2022 00:55:39 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,214,1654585200"; d="scan'208";a="692307467"
-Received: from amlin-018-218.igk.intel.com ([10.102.18.218])
- by FMSMGA003.fm.intel.com with ESMTP; 03 Aug 2022 09:40:56 -0700
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	anthony.l.nguyen@intel.com
-Date: Wed,  3 Aug 2022 18:38:21 +0200
-Message-Id: <20220803163821.229317-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.93,215,1654585200"; d="scan'208";a="729497396"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by orsmga004.jf.intel.com with ESMTP; 04 Aug 2022 00:55:39 -0700
+Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 4 Aug 2022 00:55:38 -0700
+Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
+ fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 4 Aug 2022 00:55:38 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Thu, 4 Aug 2022 00:55:38 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Thu, 4 Aug 2022 00:55:38 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kbkvomz3gijoktk0nQMztuTGyqU2o5Bm8iHw+P3IhJP8KbpywIhIMFL7l5v/h1a9uvdyoXF4buMhbad4dVcO0Wr37vsv486wcGhyYmearMwxpGEUlA81NMRx2wEPHZyLKZw1xpLlRyAl1l7NgnFsM46ib2VRRviY+M1LWUnIqiot2xi9+Rl9MkOAkxm0riB3uyU+HgQjmOFejveZQmdFkUPTUrOLi5+OEKVvBBjXLOaObLSfEo0BHJVUuRfkIvF8W6hYtuN7dMOWD5aYDppjXYUN7UoPV0b7YLalGn7HfQSXDmJvYufR4d2p9nJEGB9USzQ12bcdYszLjDILl4Iotg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jDMmmszChUoF7i8vvCt/yewnFwUL6EDm307OfNs5ECQ=;
+ b=OE5UflJ0IIFX4Aanm1DoBI1W7Up4oW5gDdx69RKC4g0tMUHgciEsAQd8jkBjdY5ssNNSvYD0OMoDJyEoXkLEH1J1Kn6J1VABNBeCqGDVOSZJQEMb1LHa2veka260CeXvsBFl/PDEA4ai7SPpyPnbIr3ZpnWfuhJu9THnt2GCCyI79fhledVyRZYiA9IgQfDz+TqKB10XZXikiCkEWQ0g6QowFtXScj1VXPEzx9oMsYtq6YgkpNwyAm0Io2w3lHZjOj6D2Y6IZqzUgpIo0uQFPXhT8EdsQoceyDN4bXbpvAChdyZqwYglheHYiFYC147j/QZorcytNhJjfRf7yKXpkQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CY4PR11MB1624.namprd11.prod.outlook.com (2603:10b6:910:8::12)
+ by CH2PR11MB4357.namprd11.prod.outlook.com (2603:10b6:610:3d::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5504.14; Thu, 4 Aug
+ 2022 07:55:36 +0000
+Received: from CY4PR11MB1624.namprd11.prod.outlook.com
+ ([fe80::6023:b392:54a4:a0a6]) by CY4PR11MB1624.namprd11.prod.outlook.com
+ ([fe80::6023:b392:54a4:a0a6%12]) with mapi id 15.20.5482.016; Thu, 4 Aug 2022
+ 07:55:35 +0000
+From: "Szlosek, Marek" <marek.szlosek@intel.com>
+To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2 1/2] iavf: Fix shutdown pci
+ callback to match the remove one
+Thread-Index: AQHYpmZpsx/Jjq/PXUGlnJWU2d0pUq2eYkrw
+Date: Thu, 4 Aug 2022 07:55:35 +0000
+Message-ID: <CY4PR11MB1624B39B9E4D46CB1290CBDDE69F9@CY4PR11MB1624.namprd11.prod.outlook.com>
+References: <20220802115142.65176-1-mateusz.palczewski@intel.com>
+ <20220802115142.65176-2-mateusz.palczewski@intel.com>
+In-Reply-To: <20220802115142.65176-2-mateusz.palczewski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8f3af205-a849-4eef-93ed-08da75eeb6db
+x-ms-traffictypediagnostic: CH2PR11MB4357:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: i9Xa6o1dJ75WM7WSXPKCN7J0oj/LVYLgzANJZnEnMpH05UXk6VlJTlqRm0dmgunXzToRz8DJjIQYt4wp5yd4qSCFG0b++/7HT/vP/QYMK+P1rBB4l1Tt7OgnVds7qSSqRq96F7ungh7ktOX8U9jI2UU/fH3t4HEI/o7jeKg32gm7bopPi/yPhDa43pQ4IMh+eUMZXmCeb3kKq0kvqL5Fb0x0uXFucUwI1TZdGJU+/iTIC8c5P/j5SKdnDj2l/zpHpsukG5rpwvB32Ip8tjqOM+KhLVNPcXCjVXpdmItBxGNQc225d0/sbd2j5XbJQIYH4c6q9I+pZpGo6NORSrHSfaRLtnMc21fIO36b34Y1HlrZ34ZW1BmRQmO+pPk7UlZzOqhSEojQWXT0jO7Tn7rtUrEmjU3NwA4BF/jM9eQbQaQxeyRL5n6BuHU7tCLfMpn0Ns418fTQK6bUeWJZGkz/LCob3muD241H29aaunQV59xuAvDJa1CMogQBgJAf/lAlxmDn20tBiCMefpMlmbGh3ymV/Yyp1bmVhG4h0W0v7S8ZhhSUL6EXZ0IOSp7bHCpxdCDLNxzyzcuv1/iZtQzpZ2C0jEpTpgQ+m/CdiWRtTYcWAnKM6+ASpiE6HUxjAqvldznXhi7jHH8Fw3tDSkliwUUTWyrIvf3Do1wZJR0eIK3YnnKGL3YKvLeMNqYcWJ+4NjmUQJImAo0m7GrCwpAKc5huMu4lUpJ3M5fRJuF8nPS7faRKlAnFX+qKICPBoZ7vU7PnMA6ADUwNb9ZPkA1VGf1SgAEcd24+aOJf03hjqXw=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY4PR11MB1624.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(396003)(366004)(39860400002)(346002)(376002)(136003)(38100700002)(33656002)(186003)(86362001)(7696005)(107886003)(26005)(71200400001)(6506007)(9686003)(41300700001)(53546011)(122000001)(316002)(55016003)(83380400001)(110136005)(66476007)(64756008)(66556008)(66446008)(66946007)(2906002)(4326008)(76116006)(8676002)(5660300002)(478600001)(52536014)(8936002)(82960400001)(38070700005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?bxtCYQkRTXO5h1S2zENwARFOrGjtAtzuM41+QB/FNTGXlT20jDlRVkTm0OWg?=
+ =?us-ascii?Q?H9TJLgFheY+zDrfVQayzGFQ8+Dm27VkajbIHdqKGlyGBIJ8KXsZEBJ6TeRgO?=
+ =?us-ascii?Q?IHaBo1timcD06HjpDK7ytNqQvXHEq1uQum+QSArHWAD+MVr8Ar/dSz9aAW55?=
+ =?us-ascii?Q?/LI6eiCzI7V3aYHf3HwJ3VO37in52rvF6gz/fNiW051aWmSEvBIB5bvdSgoO?=
+ =?us-ascii?Q?noydkn6nkU5jc2+GduMzK1ZSB1/e6Rc3musxKIpynhBgVN7EHGqho8fjNDM8?=
+ =?us-ascii?Q?dfBZbwfNnEFzA1OetXU2Dj0kuxzJ+XH+0hbZ1DWD0bhSw6iaYW/CQQpkX6GB?=
+ =?us-ascii?Q?UgTxb1LyElMBVVs1S9baLCiQXH51bTKuGLLWscwy08f9iajKKeiBDjGS8EjK?=
+ =?us-ascii?Q?RWym29nG7uGNym02IxchQXZBoK+TXld1+6QgZMOLdAwYDG5ykx3YVGOszNgK?=
+ =?us-ascii?Q?G6KmMXcUw358K2KLX4z7IiGO8GyMpYAc78gc+r1jSDEGEq0CchffLGwRbtsL?=
+ =?us-ascii?Q?AgkyOL8nciGWobw0SJu4eY+N3gKKhgQoaQdXxBYi7am7/RL6HArLRESSf+ft?=
+ =?us-ascii?Q?fSXoiYviG+ma1TmqXCYkfl5jZT3Lro4prxTaX1XLQH5B2hzLN9cWluFzfS2Z?=
+ =?us-ascii?Q?y94V4+l3Zait7oa13OTrhvxcbW0mRfim7dpuHheHLjl2Zgg6fr+DBa2v/ugM?=
+ =?us-ascii?Q?rOuAO2NrYysnpgYx+UZfQmPLTeUxU7V0BhnKnn2bPVuwAqemSWDpSzJAG9xG?=
+ =?us-ascii?Q?M42kxCBuUoi4FVCvbU1uiBIjriYjknraznkIam+DOEFTCRQWjNastB0icBcd?=
+ =?us-ascii?Q?TxydAVch/bcA7vTQA4aFfpabTG6T3PAUqu4lYvFp9vXmo5cm4smhKIzz/zuK?=
+ =?us-ascii?Q?YyaKmjd9ZxZJvR42oMPTaR4Z3xswW3r3odIvMtoRAw58m44aO5fPhnS1pID6?=
+ =?us-ascii?Q?76QsGC882t0LWNL0c2Bgwi7oZL+EOB3O9/VxLxz7MxB33gd1CG78urYo95bI?=
+ =?us-ascii?Q?j3RgMg1ygjl8wT7qSzgkxHs0QW7kkEMXzezSu2l2Vg19U2XsLYa7iVH1FUDf?=
+ =?us-ascii?Q?4ewIWWnYme2gI7IaHYnWesvfNZVtQ/HUQirWZULYGj7Ep4slNV9b/9UIEDP8?=
+ =?us-ascii?Q?cfCFQHGT1yilh8e+Drr2t6mSZjE7hnsO6f1qpd36P/70kJZZBvVVhQTV3rQr?=
+ =?us-ascii?Q?cDSFnRX6AktCi+bDxx1BK0COvwZjHgobywEGE9Zxa2A51Ym7txnNI3MnfzPM?=
+ =?us-ascii?Q?JoUL8pl8clBmoZlihncq+dtrVAkD8D6bnUz4E/AUCWKR6h/YQq2GewofZJTq?=
+ =?us-ascii?Q?9+tpvmDhoCdvcyTHwTV0MMAmOrP1Oib179MNDRok75snwsgiK2ORIoGZpWRU?=
+ =?us-ascii?Q?XBszmj3X8qn+uyUOYqRh5tGuB6rEgbtfV5HkW4o6mwVySzEH6c+XsY+QmW//?=
+ =?us-ascii?Q?hxIZjiViF3Tc6dh9X5m6b1A8ysXkwqeXBweLs3ItnxoCYL7bZjlc0QJ/ieS7?=
+ =?us-ascii?Q?TvHQL3s8FEF23WwyAJDg/3hi1ttEfhrRowIA3dlgXI/LwElocwSyPlbHXjH8?=
+ =?us-ascii?Q?uuWT3duAqNzUy4VOF7kIvvyogTu4UnlX5UFAYQIt?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR11MB1624.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8f3af205-a849-4eef-93ed-08da75eeb6db
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2022 07:55:35.6387 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zFx2QHOzIbEWdrfBaQ8JJS4dUmW2+s5Vf4sDd0VXXoyhtt+KvPsc9Jt+jaCF6K+hTnudp7VwllvryTNBDT86/w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR11MB4357
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659544859; x=1691080859;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=EguyO5nV9HgQWRR0WKv+3DsB22q/04n6Vl9eDugxKTs=;
- b=lWXPPs9TOetyYhs65bfePr7etdu3WfA8STyDvS6LI6usnIXLIeG78uRd
- dCw8cIE4wEhazEedz+dJ2Hq7UcLS2R3em2uVyyxIsq4bBDHXwxpomb90H
- NbEDvRgoYZLQG51fIWyDAJwukxq8LjwQRDma+CoEYzlFfLA898K+M5il4
- 2pncClY/xlZTo77RN/PBLFt+eSJFXW+squBDq59dIqUFXxjAoebMSSAqY
- q96iDAGBaH5poGUnpYBm0ikteJlogWp66wJFpMAsyb7cK18o35AGugJLM
- zIlmgy9bcfECLBL7oGUDo/Q4fVBGcA/tvT9Wxy8+KXDDm1c74f7WKO+Jk
- A==;
+ t=1659599740; x=1691135740;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=Aiynydy0uP2WhfXjtidEWM+X6x9JqRGWYDtNjjPq+w0=;
+ b=HwMMWnsCHYx1pl/K23dqvGoBitOCYVL9IhlDjuZB2RPpnfUAttkTf6Vo
+ GfxM/9hUJAKDjjrtW+cUvvuxIX3Xzb4HznfSfm3+wSlnndt5idt+iOdNA
+ 0RBSkrUoOj3efxk7XbO+Xl+LoWrRcxC0XSeYggivpogJT2DrOS2PyF7Ph
+ PWhRh0n0A3I+XXAF3QO+wUdus/r8CW3Xg8aaOp17pec/0WCCgXvzNKqAw
+ xPL13vyyCv203kq5PlfV9tQMHLnFpZiTKMP+PhQZ/oGnMQrZwSOP/T+mu
+ pvgAlj65hXaSUxB70L/afTbAIcF/Cll0rfyKKeTIujSiviNYgrPhtk/RQ
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lWXPPs9T
-Subject: [Intel-wired-lan] [PATCH net-next v3] i40e: Add source-pruning flag
+ header.a=rsa-sha256 header.s=Intel header.b=HwMMWnsC
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2 1/2] iavf: Fix shutdown pci
+ callback to match the remove one
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,127 +191,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Jaron <michalx.jaron@intel.com>
+Cc: "Laba, SlawomirX" <slawomirx.laba@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Jaron <michalx.jaron@intel.com>
 
-Add source-pruning flag to meet UI requirements for command names.
 
-Source-pruning flag have opposite value to disable-source-pruning.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Mateusz Palczewski
+> Sent: wtorek, 2 sierpnia 2022 13:52
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Laba, SlawomirX <slawomirx.laba@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v2 1/2] iavf: Fix shutdown pci callback
+> to match the remove one
+> 
+> From: Slawomir Laba <slawomirx.laba@intel.com>
+> 
+> Make the flow for pci shutdown be the same to the pci remove.
+> 
+> iavf_shutdown was implementing an incomplete version of iavf_remove. It
+> misses several calls  to the kernel like iavf_free_misc_irq,
+> iavf_reset_interrupt_capability, iounmap that might break the system on
+> reboot or hibernation.
+> 
+> Implement the call of iavf_remove directly in iavf_shutdown to close this gap.
+> 
+> Fixes: 5eae00c57f5e ("i40evf: main driver core")
+> Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
+> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> ---
+>  v2: Fixed author
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 40 +++++++--------------
+>  1 file changed, 12 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 04fb9fc0de19..6357dea93b99 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
 
-Signed-off-by: Michal Jaron michalx.jaron@intel.com
-Signed-off-by: Aleksandr Loktionov aleksandr.loktionov@intel.com
----
- drivers/net/ethernet/intel/i40e/i40e.h         |  7 +++++--
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 17 ++++++++++++++++-
- drivers/net/ethernet/intel/i40e/i40e_main.c    | 13 +++++++++----
- 3 files changed, 30 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index d86b6d3..d2b2769 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -559,14 +559,17 @@ struct i40e_pf {
- #define I40E_FLAG_PTP				BIT(17)
- #define I40E_FLAG_IWARP_ENABLED			BIT(18)
- #define I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED	BIT(19)
--#define I40E_FLAG_SOURCE_PRUNING_DISABLED       BIT(20)
-+#define I40E_FLAG_SOURCE_PRUNING_DISABLED	BIT(20)
- #define I40E_FLAG_TC_MQPRIO			BIT(21)
- #define I40E_FLAG_FD_SB_INACTIVE		BIT(22)
- #define I40E_FLAG_FD_SB_TO_CLOUD_FILTER		BIT(23)
- #define I40E_FLAG_DISABLE_FW_LLDP		BIT(24)
- #define I40E_FLAG_RS_FEC			BIT(25)
- #define I40E_FLAG_BASE_R_FEC			BIT(26)
--#define I40E_FLAG_VF_VLAN_PRUNING		BIT(27)
-+/* 27..29 bits are reserved for compatibility purposes */
-+#define I40E_FLAG_VF_VLAN_PRUNING		BIT(30)
-+#define I40E_FLAG_SOURCE_PRUNING		BIT(31)
-+
- /* TOTAL_PORT_SHUTDOWN
-  * Allows to physically disable the link on the NIC's port.
-  * If enabled, (after link down request from the OS)
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index 156e92c..58ca3f7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -457,6 +457,8 @@ static const struct i40e_priv_flags i40e_gstrings_priv_flags[] = {
- 	I40E_PRIV_FLAG("base-r-fec", I40E_FLAG_BASE_R_FEC, 0),
- 	I40E_PRIV_FLAG("vf-vlan-pruning",
- 		       I40E_FLAG_VF_VLAN_PRUNING, 0),
-+	I40E_PRIV_FLAG("source-pruning",
-+		       I40E_FLAG_SOURCE_PRUNING, 0),
- };
- 
- #define I40E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(i40e_gstrings_priv_flags)
-@@ -5283,7 +5285,8 @@ static int i40e_set_priv_flags(struct net_device *dev, u32 flags)
- 	if (changed_flags & I40E_FLAG_DISABLE_FW_LLDP)
- 		reset_needed = I40E_PF_RESET_AND_REBUILD_FLAG;
- 	if (changed_flags & (I40E_FLAG_VEB_STATS_ENABLED |
--	    I40E_FLAG_LEGACY_RX | I40E_FLAG_SOURCE_PRUNING_DISABLED))
-+	    I40E_FLAG_LEGACY_RX | I40E_FLAG_SOURCE_PRUNING_DISABLED |
-+	    I40E_FLAG_SOURCE_PRUNING))
- 		reset_needed = BIT(__I40E_PF_RESET_REQUESTED);
- 
- 	/* Before we finalize any flag changes, we need to perform some
-@@ -5397,6 +5400,18 @@ static int i40e_set_priv_flags(struct net_device *dev, u32 flags)
- 		dev_warn(&pf->pdev->dev,
- 			 "Turning on link-down-on-close flag may affect other partitions\n");
- 
-+	if (changed_flags & I40E_FLAG_SOURCE_PRUNING_DISABLED) {
-+		if (new_flags & I40E_FLAG_SOURCE_PRUNING_DISABLED)
-+			new_flags &= ~(I40E_FLAG_SOURCE_PRUNING);
-+		else
-+			new_flags |= I40E_FLAG_SOURCE_PRUNING;
-+	} else if (changed_flags & I40E_FLAG_SOURCE_PRUNING) {
-+		if (new_flags & I40E_FLAG_SOURCE_PRUNING)
-+			new_flags &= ~(I40E_FLAG_SOURCE_PRUNING_DISABLED);
-+		else
-+			new_flags |= I40E_FLAG_SOURCE_PRUNING_DISABLED;
-+	}
-+
- 	if (changed_flags & I40E_FLAG_DISABLE_FW_LLDP) {
- 		if (new_flags & I40E_FLAG_DISABLE_FW_LLDP) {
- #ifdef CONFIG_I40E_DCB
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index b36bf9c..fe3fea4 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -12834,6 +12834,9 @@ static int i40e_sw_init(struct i40e_pf *pf)
- 		dev_info(&pf->pdev->dev,
- 			 "total-port-shutdown was enabled, link-down-on-close is forced on\n");
- 	}
-+	/* VSIs have source pruning enabled by default */
-+	pf->flags |= I40E_FLAG_SOURCE_PRUNING;
-+
- 	mutex_init(&pf->switch_mutex);
- 
- sw_init_done:
-@@ -13880,11 +13883,13 @@ static int i40e_add_vsi(struct i40e_vsi *vsi)
- 
- 		enabled_tc = i40e_pf_get_tc_map(pf);
- 
--		/* Source pruning is enabled by default, so the flag is
--		 * negative logic - if it's set, we need to fiddle with
--		 * the VSI to disable source pruning.
-+		/* Source pruning is enabled by default, one flag is negative
-+		 * logic and the second is positive logic if source pruning is
-+		 * enabled, we need to fiddle with the VSI to disable source
-+		 * pruning.
- 		 */
--		if (pf->flags & I40E_FLAG_SOURCE_PRUNING_DISABLED) {
-+		if ((pf->flags & I40E_FLAG_SOURCE_PRUNING_DISABLED) ||
-+		    !(pf->flags & I40E_FLAG_SOURCE_PRUNING)) {
- 			memset(&ctxt, 0, sizeof(ctxt));
- 			ctxt.seid = pf->main_vsi_seid;
- 			ctxt.pf_num = pf->hw.pf_id;
--- 
-2.31.1
-
+Tested-by: Marek Szlosek <marek.szlosek@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
