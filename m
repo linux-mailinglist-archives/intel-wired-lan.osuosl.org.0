@@ -1,91 +1,180 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD64358AD1F
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Aug 2022 17:39:16 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D07158ADD7
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Aug 2022 18:05:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B76506F991;
-	Fri,  5 Aug 2022 15:39:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B76506F991
+	by smtp1.osuosl.org (Postfix) with ESMTP id A768A83E85;
+	Fri,  5 Aug 2022 16:05:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A768A83E85
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659713954;
-	bh=JcQE4MJPklxbX7OW9DiEg3zLtpGCkX2OUA3w6UhR62w=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=00rpB0tiJEvBzbCRiUVkgCsCZ8vbRxAiI+ld3OZVEik2D/sspGH8h8CmZR5BeC/aS
-	 hIJza4IiAr4YmRhNMf2wA1nE+Cmt+O0RIrjHjjIcJ7sHy4PV5povvsLscx1N0LmdUD
-	 FL0/PtcZCHmPBJiyCB3h2Dtx8FLW1kY4W3t2sJHY4MsNH+F/kf9BjBageZQnpqyubx
-	 8SOU1GKjBCz1Vpf60rucg+LoxuZJ90CFn6qYDFqGaHVjEzUD62MNjbbtWQzfG0wcKB
-	 n99519ML2qOfovfTxxyTa6hxqattlipkqTTq4YwTixaNYwAU/Iw05P05r5OFNxLgmC
-	 mVQSdU0u2j6ig==
+	s=default; t=1659715522;
+	bh=JpotFfZhbA5ZPGcRTNGqsyUJq7G9N53Nt9xLqe2Ch34=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Yc79FIkbJxelm0ERkOI9jbfwuJW01rBiAGAD7HHxNeCbAnxAEIix8CcVdUv4m2cwu
+	 RAO3mKvCJon6EvOW5BUgZoxlbuExNiy5HKSCFtric0pxLWDNECh4ZmzmWi+B886jtY
+	 rmXIFQzfHgx7GSTfJozaU4KmpQcDnl7cgmX5PXK6CFCcY4b9xaLnllpwtCClsiHnMX
+	 1ZtcF9TUjkYLNYPET7kfL4SyToc86YK/OXSDDUaUK/UCZAmvxRtMVo1n+x/6HlEM9K
+	 FcfXERvLQr4IW8ZH2J05XGcMwl+nxQ8/pT2HJt4S8ffcxkFzrkLT60n7zyrwxeF2yx
+	 Lb2IgQyEGk/uw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hmedWA8z-MPS; Fri,  5 Aug 2022 15:39:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 499QmVBDIpSC; Fri,  5 Aug 2022 16:05:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5FD426F970;
-	Fri,  5 Aug 2022 15:39:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5FD426F970
+	by smtp1.osuosl.org (Postfix) with ESMTP id 892F983E82;
+	Fri,  5 Aug 2022 16:05:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 892F983E82
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 916401BF370
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 13:02:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 711981BF31E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 16:05:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 68FA841DC4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 13:02:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68FA841DC4
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4A3E283E82
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 16:05:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A3E283E82
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bzcun_yBsSOe for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Aug 2022 13:02:21 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B627441DC3
-Received: from mail-ej1-f45.google.com (mail-ej1-f45.google.com
- [209.85.218.45])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B627441DC3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 13:02:20 +0000 (UTC)
-Received: by mail-ej1-f45.google.com with SMTP id gb36so4869360ejc.10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 05 Aug 2022 06:02:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=fpoQr5VMaZEc98czHykM9uuB7d29Bj/T1n0lXAbDtQo=;
- b=v5hh0WHfA6XzeeB9kAQiOvVNYtSwkLE6/1x5wcOCludRIgE/jDZk/pIobfgrni2yfb
- lB3T8TNoZhX+qRR8xZJiFF8nbkviDgolJDqKRCwuUGm3HFdqpPuEQYaAaZ7t0oWstHLA
- rTtKuJBHt2qd0ZLxRuUktrxaxQ1MVhCWzbABr0521tgSYfAi8nxdnmRVJfBRHMycmoAq
- QqCDaaUYFVVcYqGdjmX2ob/csoU2YsexXAWcTBDCkKNDDHI7P99rj79q41HeZ6OflFKx
- 2RAVaMfnVqhnIg+kQ0BKPmfRfifrua08poA06m/2Z2wluXtRlBjOIXYrdrr0XYpvN5x5
- /ilA==
-X-Gm-Message-State: ACgBeo1h9EVQgpSSWtMWQ4wLOZrWxs3uJzdmaC2F0UdykWuznrNthRM2
- EBW3vAS96pJlCv+MZBdCDBeHOAoLHJABVG5alg==
-X-Google-Smtp-Source: AA6agR7GgaT8inTxaJi8umT0CG3ime4viRE+hP/Qtt4P8hUClvfWmHbwnR9X/+xIJ93AQHbNFXWq4g==
-X-Received: by 2002:a17:907:16a8:b0:730:a324:2712 with SMTP id
- hc40-20020a17090716a800b00730a3242712mr5213888ejc.368.1659704538722; 
- Fri, 05 Aug 2022 06:02:18 -0700 (PDT)
-Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com.
- [209.85.218.47]) by smtp.gmail.com with ESMTPSA id
- z17-20020a1709064e1100b0072fe6408526sm1572362eju.9.2022.08.05.06.01.58
- for <intel-wired-lan@lists.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Aug 2022 06:02:04 -0700 (PDT)
-Received: by mail-ej1-f47.google.com with SMTP id y13so4840895ejp.13
- for <intel-wired-lan@lists.osuosl.org>; Fri, 05 Aug 2022 06:01:58 -0700 (PDT)
-X-Received: by 2002:a17:907:1629:b0:730:7d10:639c with SMTP id
- hb41-20020a170907162900b007307d10639cmr5009392ejc.256.1659704516583; Fri, 05
- Aug 2022 06:01:56 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CrLu9K5ZfaoS for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Aug 2022 16:05:16 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ECC6C83E79
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id ECC6C83E79
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 16:05:15 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="287797746"
+X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="287797746"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2022 09:04:58 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="693042577"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by FMSMGA003.fm.intel.com with ESMTP; 05 Aug 2022 09:04:58 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Fri, 5 Aug 2022 09:04:57 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Fri, 5 Aug 2022 09:04:57 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.175)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Fri, 5 Aug 2022 09:04:53 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VinPrYBZvs+0s+ho2PZWWNs0RFEWJZepi25ll+v6VWZ1iFkrcmXxuKSZLr1Ca1bFx8fgLKX7v6MPsCRIIqtUXcCuxvxHgZVKFDFlJOgnH6SbyEo4vi6jdhE0bdeBGDWFjvO/CK+w8yH0oS/BjbgsnmKIQflTIP42TGh8bNEfqsNTpuk6l+Uw7lX9HT1LdoGP65HeHrH8J1pswe8/DBMPBHTuR2Yhy9Ju9p6e5VP1teyTiGwXkxK1LOzAMoudmSRpEM8ivXXaRP8lJldKDF13aOQiQ0gokybPcHr0bKLl/JkjZ8Ud+UdRAwlFjIQypcGR3AYqb1Ey9wWpQqRa2MV26g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+gLF8veeQeoShCgNUQa+ynkxgB4tmYBDTxKLV8dmQaA=;
+ b=Be12tnMohBO9CILG7GYhVBVbE/XRDYoqxh48LmlfaPKDlEuL5a3Q39ddmRgoORGvhZbcsKrnIHIcWWmC+qUvlXiFkRBNWlJRuDfM3enNRftpxKQYM0OWB76QGrRj4m5d3DoZTUaRbpldDY4rhl5MOwn1vM19WV083mVsygktzLpEWO8S2pO4mPJePiGcLo0hvgxVtmkRx7Ut9bRYO9maDr02RH0hbwvKELlRB+9iwlk2tSIGOiEnLgqK09hFEH0cbkCdPPKPc50PMdxm3mAEypFr5+6+Ww5qSJZeBdMVpTndt47fDO+9RFfYpD0d4SpqCyiuO2OVACdUQ9Iy/Yy7vg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by DM6PR11MB4508.namprd11.prod.outlook.com (2603:10b6:5:200::32) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5504.16; Fri, 5 Aug
+ 2022 16:04:52 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475%7]) with mapi id 15.20.5504.016; Fri, 5 Aug 2022
+ 16:04:52 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Maziarz, Kamil" <kamil.maziarz@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e: Disallow ip4 and ip6
+ l4_4_bytes
+Thread-Index: AQHYpw7b8kziNWYwfkGDRMQiaJdDM62geyxA
+Date: Fri, 5 Aug 2022 16:04:52 +0000
+Message-ID: <SN6PR11MB3229FA3AA3E5E5747442CBD1C69E9@SN6PR11MB3229.namprd11.prod.outlook.com>
+References: <20220803100744.889542-1-kamil.maziarz@intel.com>
+In-Reply-To: <20220803100744.889542-1-kamil.maziarz@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.6.500.17
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: b60cb6a2-5cb1-496b-973d-08da76fc3b3d
+x-ms-traffictypediagnostic: DM6PR11MB4508:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: mDOpQs7akiVwD9BrD7LGwtUm4wjw2GtuDU5NT6tN7l+C86Je2mq1h1aAiveW7BytJQhO/Wlok+t5/UDbR3iRcR7uJOJ9/qEKYNSQ/WHDsP11EImWQoQjSjO6fEH3RkVT/C5b71KuA+yEUKnztVBWggCbPH9Lxq2Sse5eZNPh5ML64RUdaMLC0nCfnrnTpfinM2kY/UfKrGRLx0KB9wUlwYoT5yN/kohw7FBuMzlrOd7xlc+mxFs93NkovFmez2soXxbnmDvb+fX94xsrLuEHZNph/vFAgIBcgu/HyXQmw6SpbKpO/Cq8NPrUgGNKaz43D4NDdGZWLQKDpb4VRZ95ZiS1FqqVQuDPaKE4S2DRqCdKuUceZeqhemnG9OdqLPj8duMCaY23rDj4tMTsTGb7IxToLHA3/2GiH5XouqNt1ft/HKoubxlXc6wpWSvHuyafP5WXkf+0rmVgsQA1qgz4dOPhvO5YaxBD6wtPgrp6kRKtlusIWW9wkjHAu7y9VZ6R9nAh7e55ALHCxykw0RwoQjogsY8DRdOJlY48658UTYlgo4lfuPSiYD9qf5WEbSSMHp7yJwuc39fTI9ggieXMHQVAxgd24yClhtoscasabQbFZovrigrsokjpXJyXQZ0amrFn3uylC26dRJkd78whaiLWf9Lc6h/K+hi4TdvJOgSZm9zYCbheSD9W6SoFYEeBbq9TRV04XMI9jx+jgqoi5yE69B/lnboEL0mdI0pXhg6OHCjR6Lfu4xIMsbfqx782S7rup4H5gW/L5UNUkXpXZTQSAESlXL/44Y6YJyI2R2TPoe7cP359L4n4EALmvVaGCk2wTAYJv75ewKob0EKA5A==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(39860400002)(136003)(366004)(396003)(376002)(346002)(86362001)(76116006)(83380400001)(71200400001)(8936002)(5660300002)(4326008)(8676002)(33656002)(55016003)(52536014)(66946007)(64756008)(66476007)(66556008)(66446008)(122000001)(38070700005)(478600001)(186003)(82960400001)(38100700002)(110136005)(316002)(54906003)(9686003)(6506007)(7696005)(41300700001)(107886003)(53546011)(26005)(2906002)(966005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7FOvO8jhany8h9J3UtUTstAnlR498lqL+1+cj0lTTqMu1JKh+QIo15dl7Ovu?=
+ =?us-ascii?Q?ddCe5VjHrHqiVss6QFJnferoIB6zZE+vgWQQFpGyoPb0n/iMfjoKzwlNb0yN?=
+ =?us-ascii?Q?DI8zt4y8nUNYCP62k7mMjLzSpUqm4eCDnsHFzEPvM8/javtRBK02BIRFwDVg?=
+ =?us-ascii?Q?BltyppOMsmmiwKc+Njtqj27R0YsoifI0jKAGLR07RMHZAUXDDtMWr6r5jlgt?=
+ =?us-ascii?Q?nIJlIWCz1GgcsQ4rr1q5gG72/00/HgpKnoB+gkGMMk/vqOWvIZuM47fMRX09?=
+ =?us-ascii?Q?1IX2d/mrtgJUM/5Mq2W84pk+lRdk8f1gpbP47wgVVUZ47g9stKMnMw7mAYP+?=
+ =?us-ascii?Q?AjQi7MvsA3WXIk8GbDNQXLtPC0jon5bFJPddO3eiDFT8CQZtc+Tm+xTLWOTA?=
+ =?us-ascii?Q?0UqcAAl/k6OUkiggYgWp7QckJJ5q5z1KYuG/Mi97N1pizqRgw3y5ptkOLxdC?=
+ =?us-ascii?Q?QP6bTa4EeOyfN/bIoQfIFKd0rZ4WotZf0ZFp0Yue4F9RGmgABopVUyIXwk1h?=
+ =?us-ascii?Q?RpfYkWHP5qrhvAxoQv3b4+1HuVQmZJGSa+6LiYxwfF3x7T6hSVeq4QyshenC?=
+ =?us-ascii?Q?ESsFnzEg8ki3XZCgTyV7vr8VPf9CXZdd7r3pi2eqXWgbMHnDtn21vmlJuLA+?=
+ =?us-ascii?Q?FoZzNdk4w+zMyu2D+gm0S0pvK78CCShNvqW/KurNyQrBLSUC9ZgcQCVTxoOS?=
+ =?us-ascii?Q?OQ7oHCkTmCCIbpfSBcXtxapPxp4wDWs3+nHYSmIiQQKEKp5/lRhRVzA/SglD?=
+ =?us-ascii?Q?q7d5OF2EnX1VEHgn9POlXu9y+/jVs54cBMg750ADy//G5PGFtTbELAsjJi+K?=
+ =?us-ascii?Q?PX2vWIDVOa+8wRPEbxr9AUoKl2Gnmcnzh5jv51CZbnaQHSLS74+5CMchdBrT?=
+ =?us-ascii?Q?8SLF+UJTLhjFVrFl+texkQUlmeHFaFi9NecfLGSPupV7QusKGs7qK2z7il3g?=
+ =?us-ascii?Q?bsqlAsNFEgJiDMTlo6MbQu4i9Uu1MqNNxmvZcTTJIjiPbAiO3tKUHW/t6koU?=
+ =?us-ascii?Q?64V7AOf5apVrEDEnoa9vEcRcXHOt75A8tWuPLMfsiOi88rcyyOEVC3hQ8yHx?=
+ =?us-ascii?Q?igcWXCmX6YMnwnfz4DnhYYXffj77/WFNzgcTFSseTvukxlj+1zhgbDL4ajZo?=
+ =?us-ascii?Q?4z1JIvJCplsJTSeBEcGBTO4eGFxbiSLkgSznLKIvhcfd8PY2zj0uod/M9GqB?=
+ =?us-ascii?Q?arp6HCebrTrNpmRCq34DXJio1oMMzGXmI3IPwse6Ll5yDJRl4cCBUwMNXnep?=
+ =?us-ascii?Q?DNx6veYSH14FyWzy2NWy5eRTpEm54Yv3djQF9woNchM0inYM768iO/nVLeSr?=
+ =?us-ascii?Q?j73dJEeCCifNoFr9pw6n6epX3sIpcRQLqZsgsqwEzUAakrEtfRxn7rcIL991?=
+ =?us-ascii?Q?zwLcAiINJVoQBBjO28vn1xODb9rHmQK+kHj3Yn0pQUXagRXwTWIMWcH0vzYS?=
+ =?us-ascii?Q?9RmOQF1s9tuXj1BGLYcPWsbQJzIyJurSmeuRbOxB3Y4G3DLqGSv3D+PZMJVo?=
+ =?us-ascii?Q?mL4Fc6I9i9a/0uPgkA1n9W6NQT0A1bmBe7VKNAgyPX6KOlHVaxhTXBgc/Etz?=
+ =?us-ascii?Q?9UnhU6iusd/A4ZA0/pVGx9MrInDRWHu76h889z5FObszHWaH/0vZNFcPc60e?=
+ =?us-ascii?Q?WQ=3D=3D?=
 MIME-Version: 1.0
-From: Peifeng Qiu <linux@qiupf.dev>
-Date: Fri, 5 Aug 2022 22:01:45 +0900
-X-Gmail-Original-Message-ID: <CAPH51bfzUoZh3FbkCx3ZdpvFynTVagNWPvfKWQsaT9F+RP2X6Q@mail.gmail.com>
-Message-ID: <CAPH51bfzUoZh3FbkCx3ZdpvFynTVagNWPvfKWQsaT9F+RP2X6Q@mail.gmail.com>
-To: przemyslawx.patynowski@intel.com, jesse.brandeburg@intel.com, 
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org
-X-Mailman-Approved-At: Fri, 05 Aug 2022 15:39:04 +0000
-Subject: [Intel-wired-lan] "BUG: Bad page state in process swapper" in
- kernel 5.19
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b60cb6a2-5cb1-496b-973d-08da76fc3b3d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Aug 2022 16:04:52.3762 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: HrOmJqQbEKKMJ7IbFXEmpBEKESSkrNcrhQPurWMrn0w33v7ar4uNU0szBQHfsn7coAlXOf+38hTxuTIMtP/4L7HumdQtlsYS9uTk6TIIXi8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4508
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1659715516; x=1691251516;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=+gLF8veeQeoShCgNUQa+ynkxgB4tmYBDTxKLV8dmQaA=;
+ b=mneOLnLVxihkvXO9ZmIyt/WSyZXImOQ0EdMlKyu1bYrNZ7ePdqT9wCeK
+ Gf0qR/fmobjmHFUnztETI+hKgkmKXIKB6M5+FeO+DLgi1VgjdZ1PkjHx5
+ Z6/pFDjGnk27QAsGaC9hXv5doHzaHcLeRSzKLvrWyf7Btcrgys/mnBptR
+ LkuW7yq+ed10vzPcSk2D1RAEClskgMDCTPNrnYX5fBWdPtn90lX+pZKcy
+ 3+8GaIEN//FS9YgvzK6NU1lFKbXtS+0VZDzOGqfyON2kYre4SwX0nCsDM
+ UCjl1rtJFOSnk4+T+KCUbYfJ1lf2aOBByEfpcOwD358CrT2i0DeSMmYOg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=mneOLnLV
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Disallow ip4 and ip6
+ l4_4_bytes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,204 +187,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6094886838188654312=="
+Cc: "Patynowski, PrzemyslawX" <przemyslawx.patynowski@intel.com>, "Maziarz,
+ Kamil" <kamil.maziarz@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============6094886838188654312==
-Content-Type: multipart/alternative; boundary="00000000000024b9ef05e57e12ed"
-
---00000000000024b9ef05e57e12ed
-Content-Type: text/plain; charset="UTF-8"
-
-Hi,
-I'm using a E810-XXVDA2 card with virtual function passed to a container,
-with a heavy P2P app running inside. I usually run arch linux with custom
-compiled latest mainline kernel. Recently I observe a strange kernel bug
-after switching to 5.19. When the P2P app opens lots of (~500) tcp
-connections, the kernel locks up and a hard reset is required.
-Here's an example dmesg with stack dump.
-
-[  463.311996] BUG: Bad page state in process swapper/43  pfn:20b59f8
-[  463.312010] page:00000000d6eff355 refcount:-1 mapcount:0
-mapping:0000000000000000 index:0x0 pfn:0x20b59f8
-[  463.312027] flags: 0xaffff0000000000(node=1|zone=2|lastcpupid=0xffff)
-[  463.312037] raw: 0affff0000000000 dead000000000100 dead000000000122
-0000000000000000
-[  463.312041] raw: 0000000000000000 0000000000000000 ffffffffffffffff
-0000000000000000
-[  463.312044] page dumped because: nonzero _refcount
-[  463.312046] Modules linked in: iavf xt_conntrack nft_chain_nat
-xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack nf_defrag_ipv6
-nf_defrag_ipv4 xt_addrtype nft_compat nf_tables nfnetlink rfkill overlay
-intel_rapl_msr intel_rapl_common intel_uncore_frequency
-intel_uncore_frequency_common nd_pmem dax_pmem nd_btt i10nm_edac rpcrdma
-ipmi_ssif sunrpc rdma_ucm ib_iser libiscsi scsi_transport_iscsi rdma_cm
-iw_cm ib_cm irdma i40e ib_uverbs x86_pkg_temp_thermal intel_powerclamp
-iTCO_wdt vfat intel_pmc_bxt ib_core iTCO_vendor_support coretemp fat
-kvm_intel kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel
-aesni_intel crypto_simd cryptd rapl intel_cstate xfs ast libcrc32c
-intel_uncore drm_vram_helper ice drm_ttm_helper pcspkr mei_me
-isst_if_mbox_pci joydev i2c_i801 isst_if_mmio ioatdma isst_if_common ttm
-i2c_smbus mousedev mei intel_pch_thermal intel_vsec dca wmi acpi_ipmi
-ipmi_si ipmi_devintf ipmi_msghandler nfit acpi_power_meter mac_hid
-dm_multipath dm_mod br_netfilter bridge
-[  463.312198]  stp llc sg fuse bpf_preload ip_tables x_tables ext4
-crc32c_generic crc16 mbcache jbd2 usbhid ses enclosure xhci_pci
-crc32c_intel smartpqi xhci_pci_renesas scsi_transport_sas
-[  463.312232] CPU: 43 PID: 0 Comm: swapper/43 Not tainted 5.19.0 #15
-ca69d5d6930d879ee250b33d62ed9a778cf61ae8
-[  463.312241] Hardware name: Inspur NF5280M6/NF5280M6, BIOS 06.00.04
-04/12/2022
-[  463.312244] Call Trace:
-[  463.312248]  <IRQ>
-[  463.312252]  dump_stack_lvl+0x44/0x5c
-[  463.312266]  bad_page.cold+0x63/0x8f
-[  463.312275]  check_new_pages+0xb1/0xd0
-[  463.312285]  rmqueue_bulk+0x2ac/0xa70
-[  463.312297]  get_page_from_freelist+0xef2/0x1540
-[  463.312304]  ? intel_iommu_map_pages+0xbd/0xe0
-[  463.312314]  ? __iommu_map+0xdf/0x2a0
-[  463.312323]  ? intel_iommu_iotlb_sync_map+0x73/0xb0
-[  463.312333]  __alloc_pages+0xf4/0x250
-[  463.312340]  iavf_alloc_rx_buffers+0xcb/0x1e0 [iavf
-35fcb0ed6732e327666cfb51b6fc761b3b822b97]
-[  463.312357]  iavf_napi_poll+0xb4f/0xfd0 [iavf
-35fcb0ed6732e327666cfb51b6fc761b3b822b97]
-[  463.312371]  __napi_poll+0x28/0x160
-[  463.312379]  net_rx_action+0x29e/0x350
-[  463.312387]  __do_softirq+0xcc/0x2c5
-[  463.312396]  ? sched_clock_cpu+0x9/0xb0
-[  463.312403]  __irq_exit_rcu+0x8e/0xc0
-[  463.312409]  common_interrupt+0x82/0xa0
-[  463.312418]  </IRQ>
-[  463.312420]  <TASK>
-[  463.312423]  asm_common_interrupt+0x22/0x40
-[  463.312429] RIP: 0010:cpuidle_enter_state+0xd8/0x380
-[  463.312440] Code: 00 00 31 ff e8 49 51 7f ff 45 84 ff 74 16 9c 58 0f 1f
-40 00 f6 c4 02 0f 85 92 02 00 00 31 ff e8 5e a9 85 ff fb 0f 1f 44 00 00
-<45> 85 f6 0f 88 25 01 00 00 49 63 ce 48 8d 04 49 48 8d 04 81 49 8d
-[  463.312445] RSP: 0018:ff1490b308687e90 EFLAGS: 00000246
-[  463.312451] RAX: ff1478f87f6f2c80 RBX: 0000000000000002 RCX:
-0000000000000000
-[  463.312455] RDX: 0000006bdf8bd2c6 RSI: fffffcb8f2b353f6 RDI:
-0000000000000000
-[  463.312459] RBP: ff4690b2f7eeda00 R08: 0000000000000002 R09:
-000000003d1879ab
-[  463.312462] R10: 0000000000000046 R11: 0000000000000037 R12:
-ffffffffbc743f60
-[  463.312466] R13: 0000006bdf8bd2c6 R14: 0000000000000002 R15:
-0000000000000000
-[  463.312473]  cpuidle_enter+0x29/0x40
-[  463.312479]  do_idle+0x1ba/0x220
-[  463.312486]  cpu_startup_entry+0x19/0x20
-[  463.312492]  start_secondary+0x111/0x130
-[  463.312499]  secondary_startup_64_no_verify+0xe5/0xeb
-[  463.312511]  </TASK>
-[  463.312513] Disabling lock debugging due to kernel taint
 
 
-Although I don't know exact steps to trigger this bug, I was able to
-reproduce this usually within 5 minutes. So I did git bisect on this
-issue and found the culprit to be
-[a9f49e0060301a9bfebeca76739158d0cf91cdf6] iavf: Fix handling of dummy
-receive descriptors
-I reverted this commit on top of v5.19 then the issue disappeared.
-Can you please take a look at this?
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Kamil
+> Maziarz
+> Sent: Wednesday, August 03, 2022 3:08 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Patynowski, PrzemyslawX <przemyslawx.patynowski@intel.com>; Maziarz,
+> Kamil <kamil.maziarz@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v2] i40e: Disallow ip4 and ip6 l4_4_bytes
+> 
+> From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+> 
+> Return -EOPNOTSUPP, when user requests l4_4_bytes for raw IP4 or
+> IP6 flow director filters. Flow director does not support filtering on l4 bytes for
+> PCTYPEs used by IP4 and IP6 filters.
+> Without this patch, user could create filters with l4_4_bytes fields, which did not
+> do any filtering on L4, but only on L3 fields.
+> 
 
-Thank you.
-Peifeng Qiu
+Patches for net should have a Fixes tag [1].
 
---00000000000024b9ef05e57e12ed
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+> ---
 
-<div dir=3D"ltr"><div>Hi,</div><div>I&#39;m using a E810-XXVDA2 card with v=
-irtual function passed to a container, <br></div><div>with a heavy P2P app =
-running inside. I usually run arch linux with custom</div><div>compiled lat=
-est mainline kernel. Recently I observe a strange kernel bug <br></div><div=
->after switching to 5.19. When the P2P app opens lots of (~500) tcp</div><d=
-iv>connections, the kernel locks up and a hard reset is required.</div><div=
-></div><div>Here&#39;s an example dmesg with stack dump.</div><div><br></di=
-v><div>[ =C2=A0463.311996] BUG: Bad page state in process swapper/43 =C2=A0=
-pfn:20b59f8<br>[ =C2=A0463.312010] page:00000000d6eff355 refcount:-1 mapcou=
-nt:0 mapping:0000000000000000 index:0x0 pfn:0x20b59f8<br>[ =C2=A0463.312027=
-] flags: 0xaffff0000000000(node=3D1|zone=3D2|lastcpupid=3D0xffff)<br>[ =C2=
-=A0463.312037] raw: 0affff0000000000 dead000000000100 dead000000000122 0000=
-000000000000<br>[ =C2=A0463.312041] raw: 0000000000000000 0000000000000000 =
-ffffffffffffffff 0000000000000000<br>[ =C2=A0463.312044] page dumped becaus=
-e: nonzero _refcount<br>[ =C2=A0463.312046] Modules linked in: iavf xt_conn=
-track nft_chain_nat xt_MASQUERADE nf_nat nf_conntrack_netlink nf_conntrack =
-nf_defrag_ipv6 nf_defrag_ipv4 xt_addrtype nft_compat nf_tables nfnetlink rf=
-kill overlay intel_rapl_msr intel_rapl_common intel_uncore_frequency intel_=
-uncore_frequency_common nd_pmem dax_pmem nd_btt i10nm_edac rpcrdma ipmi_ssi=
-f sunrpc rdma_ucm ib_iser libiscsi scsi_transport_iscsi rdma_cm iw_cm ib_cm=
- irdma i40e ib_uverbs x86_pkg_temp_thermal intel_powerclamp iTCO_wdt vfat i=
-ntel_pmc_bxt ib_core iTCO_vendor_support coretemp fat kvm_intel kvm irqbypa=
-ss crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel crypto_sim=
-d cryptd rapl intel_cstate xfs ast libcrc32c intel_uncore drm_vram_helper i=
-ce drm_ttm_helper pcspkr mei_me isst_if_mbox_pci joydev i2c_i801 isst_if_mm=
-io ioatdma isst_if_common ttm i2c_smbus mousedev mei intel_pch_thermal inte=
-l_vsec dca wmi acpi_ipmi ipmi_si ipmi_devintf ipmi_msghandler nfit acpi_pow=
-er_meter mac_hid dm_multipath dm_mod br_netfilter bridge<br>[ =C2=A0463.312=
-198] =C2=A0stp llc sg fuse bpf_preload ip_tables x_tables ext4 crc32c_gener=
-ic crc16 mbcache jbd2 usbhid ses enclosure xhci_pci crc32c_intel smartpqi x=
-hci_pci_renesas scsi_transport_sas<br>[ =C2=A0463.312232] CPU: 43 PID: 0 Co=
-mm: swapper/43 Not tainted 5.19.0 #15 ca69d5d6930d879ee250b33d62ed9a778cf61=
-ae8<br>[ =C2=A0463.312241] Hardware name: Inspur NF5280M6/NF5280M6, BIOS 06=
-.00.04 04/12/2022<br>[ =C2=A0463.312244] Call Trace:<br>[ =C2=A0463.312248]=
- =C2=A0&lt;IRQ&gt;<br>[ =C2=A0463.312252] =C2=A0dump_stack_lvl+0x44/0x5c<br=
->[ =C2=A0463.312266] =C2=A0bad_page.cold+0x63/0x8f<br>[ =C2=A0463.312275] =
-=C2=A0check_new_pages+0xb1/0xd0<br>[ =C2=A0463.312285] =C2=A0rmqueue_bulk+0=
-x2ac/0xa70<br>[ =C2=A0463.312297] =C2=A0get_page_from_freelist+0xef2/0x1540=
-<br>[ =C2=A0463.312304] =C2=A0? intel_iommu_map_pages+0xbd/0xe0<br>[ =C2=A0=
-463.312314] =C2=A0? __iommu_map+0xdf/0x2a0<br>[ =C2=A0463.312323] =C2=A0? i=
-ntel_iommu_iotlb_sync_map+0x73/0xb0<br>[ =C2=A0463.312333] =C2=A0__alloc_pa=
-ges+0xf4/0x250<br>[ =C2=A0463.312340] =C2=A0iavf_alloc_rx_buffers+0xcb/0x1e=
-0 [iavf 35fcb0ed6732e327666cfb51b6fc761b3b822b97]<br>[ =C2=A0463.312357] =
-=C2=A0iavf_napi_poll+0xb4f/0xfd0 [iavf 35fcb0ed6732e327666cfb51b6fc761b3b82=
-2b97]<br>[ =C2=A0463.312371] =C2=A0__napi_poll+0x28/0x160<br>[ =C2=A0463.31=
-2379] =C2=A0net_rx_action+0x29e/0x350<br>[ =C2=A0463.312387] =C2=A0__do_sof=
-tirq+0xcc/0x2c5<br>[ =C2=A0463.312396] =C2=A0? sched_clock_cpu+0x9/0xb0<br>=
-[ =C2=A0463.312403] =C2=A0__irq_exit_rcu+0x8e/0xc0<br>[ =C2=A0463.312409] =
-=C2=A0common_interrupt+0x82/0xa0<br>[ =C2=A0463.312418] =C2=A0&lt;/IRQ&gt;<=
-br>[ =C2=A0463.312420] =C2=A0&lt;TASK&gt;<br>[ =C2=A0463.312423] =C2=A0asm_=
-common_interrupt+0x22/0x40<br>[ =C2=A0463.312429] RIP: 0010:cpuidle_enter_s=
-tate+0xd8/0x380<br>[ =C2=A0463.312440] Code: 00 00 31 ff e8 49 51 7f ff 45 =
-84 ff 74 16 9c 58 0f 1f 40 00 f6 c4 02 0f 85 92 02 00 00 31 ff e8 5e a9 85 =
-ff fb 0f 1f 44 00 00 &lt;45&gt; 85 f6 0f 88 25 01 00 00 49 63 ce 48 8d 04 4=
-9 48 8d 04 81 49 8d<br>[ =C2=A0463.312445] RSP: 0018:ff1490b308687e90 EFLAG=
-S: 00000246<br>[ =C2=A0463.312451] RAX: ff1478f87f6f2c80 RBX: 0000000000000=
-002 RCX: 0000000000000000<br>[ =C2=A0463.312455] RDX: 0000006bdf8bd2c6 RSI:=
- fffffcb8f2b353f6 RDI: 0000000000000000<br>[ =C2=A0463.312459] RBP: ff4690b=
-2f7eeda00 R08: 0000000000000002 R09: 000000003d1879ab<br>[ =C2=A0463.312462=
-] R10: 0000000000000046 R11: 0000000000000037 R12: ffffffffbc743f60<br>[ =
-=C2=A0463.312466] R13: 0000006bdf8bd2c6 R14: 0000000000000002 R15: 00000000=
-00000000<br>[ =C2=A0463.312473] =C2=A0cpuidle_enter+0x29/0x40<br>[ =C2=A046=
-3.312479] =C2=A0do_idle+0x1ba/0x220<br>[ =C2=A0463.312486] =C2=A0cpu_startu=
-p_entry+0x19/0x20<br>[ =C2=A0463.312492] =C2=A0start_secondary+0x111/0x130<=
-br>[ =C2=A0463.312499] =C2=A0secondary_startup_64_no_verify+0xe5/0xeb<br>[ =
-=C2=A0463.312511] =C2=A0&lt;/TASK&gt;<br>[ =C2=A0463.312513] Disabling lock=
- debugging due to kernel taint</div><div><br></div><div><br></div><div>Alth=
-ough I don&#39;t know exact steps to trigger this bug, I was able to</div><=
-div>reproduce this usually within 5 minutes. So I did git bisect on this</d=
-iv><div>issue and found the culprit to be [a9f49e0060301a9bfebeca76739158d0=
-cf91cdf6] iavf: Fix handling of dummy receive descriptors</div><div></div><=
-div>I reverted this commit on top of v5.19 then the issue disappeared.</div=
->Can you please take a look at this?<br><div><div><br></div><div>Thank you.=
-</div><div>Peifeng Qiu<br></div><div><br></div></div></div>
+<snip>
 
---00000000000024b9ef05e57e12ed--
+> ---------------------------------------------------------------------
+> Intel Technology Poland sp. z o.o.
+> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII
+> Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-
+> 52-316 | Kapital zakladowy 200.000 PLN.
+> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i
+> moze zawierac informacje poufne. W razie przypadkowego otrzymania tej
+> wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie;
+> jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
+> This e-mail and any attachments may contain confidential material for the sole
+> use of the intended recipient(s). If you are not the intended recipient, please
+> contact the sender and delete all copies; any review or distribution by others is
+> strictly prohibited.
 
---===============6094886838188654312==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Please remove this footer. It does not belong on Linux mailing lists.
 
+[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-changes
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6094886838188654312==--
