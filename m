@@ -1,85 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A20E58AA14
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Aug 2022 13:25:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5013F58AD1E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Aug 2022 17:39:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 420C660B43;
-	Fri,  5 Aug 2022 11:25:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 420C660B43
+	by smtp1.osuosl.org (Postfix) with ESMTP id A11EF83EC3;
+	Fri,  5 Aug 2022 15:39:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A11EF83EC3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659698725;
-	bh=Tkmrl+CTGk6M7gJ+tMiQvZC8iQ5WXZnqngDXKlEPiPo=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=MxMHO9V/XLSh6plWaz9Y7d0CisJc9YsWSbE8xq/NhEwOXIBRhabLZH9udiOJ5COcS
-	 QaoU6oNgRv2fjq3IaUsi7F2ddAx583MdfeGVrSY/8ourg8lI65AysGfbDgVvsGufNi
-	 qIzhuZCaSz8FgCPddRt7ICxDBikXT4GxtB2+5+9g0Nnvm6cihnFrlEzWlc0pV7EQCr
-	 zdQHM9oH6Gu+6E0MwUYYvQ/N81UQSNeu0K1FQuQVlgQvhHVmZIFZoZZPWeU7i2/TJL
-	 FxcTXT+3wZgkaxyADAtDAS1RoyqPqISuyIPEXd89MT50wCYt2laE5mvqjY2dcQNWV3
-	 hZTH66zj2G49g==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hA5Rw29i6nfi; Fri,  5 Aug 2022 11:25:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 13AC360ADC;
-	Fri,  5 Aug 2022 11:25:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13AC360ADC
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BF82E1BF39D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 11:25:19 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9686F83E3E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 11:25:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9686F83E3E
+	s=default; t=1659713950;
+	bh=Nbwv1IMIl2JSyUNgXseokkjPv7TP6LQ8WSzQ2Lr8P80=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=05NIor3gsIMce47OyH9I3wVwx7h8XNj8StXa9Hd/TnwF7MhZShzBCcqHRfEXHVOFk
+	 xSgiL98mDiABinEqjysAnO8vpdDTLJqA/BfHjYVt5ZNeZzxE+xSE4fkXi1Fu0sM5CY
+	 KSX5wb/AkmZ+120TbKu6BnsbkAQj+H1MEwpgs7u71p6kE7R2aW6/nUi1rjrv8QJhdN
+	 hyrmlFFaC8PM09kPiREOKJxSQRrdGIkRtbwg+902gVH7UfZXlAP3PM1rMrvE0QOZSj
+	 MnNAXcADHR0psgIGJnpIrE4Lgs3zCnxNsW9BO6bk67SqgfMR88t0m6/+TuWPfCQ9eT
+	 H68OzV53dheKw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9uIY2c1N_526 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Aug 2022 11:25:18 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4Zu5Fo8dJPhV; Fri,  5 Aug 2022 15:39:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 82D8B83EC8;
+	Fri,  5 Aug 2022 15:39:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 82D8B83EC8
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E890F1BF370
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 09:20:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D058E41C73
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 09:20:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D058E41C73
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cb1WQp-ACkjb for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Aug 2022 09:20:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3CA7B83E3D
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3CA7B83E3D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 11:25:18 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 234B6B82868;
- Fri,  5 Aug 2022 11:25:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58A84C433D6;
- Fri,  5 Aug 2022 11:25:12 +0000 (UTC)
-From: James Hogan <jhogan@kernel.org>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, Sasha Neftin <sasha.neftin@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Fri, 05 Aug 2022 12:25:05 +0100
-Message-ID: <4765029.31r3eYUQgx@saruman>
-In-Reply-To: <3514132.R56niFO833@saruman>
-References: <4752347.31r3eYUQgx@saruman> <1838555.CQOukoFCf9@saruman>
- <3514132.R56niFO833@saruman>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C009841C2B
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C009841C2B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Aug 2022 09:20:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10429"; a="290935125"
+X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="290935125"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2022 02:20:14 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="631948336"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by orsmga008.jf.intel.com with ESMTP; 05 Aug 2022 02:20:12 -0700
+From: Andrii Staikov <andrii.staikov@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  5 Aug 2022 11:34:23 +0000
+Message-Id: <20220805113423.267941-1-andrii.staikov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-Mailman-Approved-At: Fri, 05 Aug 2022 15:39:04 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1659698713;
- bh=KmJe2qnqGyoOeiAUg0mt7Tfq1iwsWa5Ik7kNc1FSwGE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jP3SFGjpiKDYr5Ol6KP/IzgbS3NrexKwGRq84KeOXNGiGqoifnPy3cZKN2raB7I0G
- YGgYLZbCJdjgEyZ9tAtgfkNObaAgGVxOgbYkM7ZzFk2Sy9bUMaxHMEfe02toVYR2bZ
- 1mA2U8ll+X5n5Mp3oW5BEIuHvtX0nkBWHtfA+N4qje4iHaZvuSD5sQQ2dcB+7VfN8S
- Ti7jS1lRf+nndY/uk+j+UEUatzeTmsR3+pv9qb9mNh3qvmyu9OSVt/oquxMhtQYV7p
- e9dLHJprBTiStWtHRjJyvwJQDqGWLnKPjkdR3hSwAxkh4DOusen8AzMOvcNmHUPY5P
- zf1ZWqiOM2UwQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=jP3SFGjp
-Subject: Re: [Intel-wired-lan] I225-V (igc driver) hangs after resume in
- igc_resume/igc_tsn_reset
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1659691214; x=1691227214;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=EKQfiMU4B3jb6qF7qhrdEKQYlHQO1Qn9e9jIQrfuhA4=;
+ b=XuNm4NRFgiOnhH285lg1kBVs3SqO4UHNs2GsZTASvG0YPBsIgJ5CnEne
+ dvtqWPA16RW4Ll5JDDhUwDSB0cmdx+qJGYV+jhaFqPfA+hB0Gycq+GvUI
+ S3aIoVKM2vZ8YwRIq73Yy/xUJ919BX9NBTkljWQ+kn3StzObdR4gsbtWj
+ IByz5mfZ9pwQxbF4+2ap8wZMrIjBix1kkFhZftO3KiST1HFb+D8ESYmjd
+ PW46iPkwZ3Je8a6MPaeE2OsCpygqdv0MpHX3s6qhbfXeaD84w32DE7H35
+ 03gEKsQeuhWuFaJ0V74e/MsG52Xcsd95l8KJ9yci+efB988taH4rUMaE3
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=XuNm4NRF
+Subject: [Intel-wired-lan] [PATCH net-next v1] i40e: add description and
+ modify interrupts configuration procedure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,123 +92,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
+Cc: Jaroslaw Gawin <jaroslawx.gawin@intel.com>,
+ Staikov Andrii <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thursday, 4 August 2022 23:07:34 BST James Hogan wrote:
-> And I just found this patch from December which may have been masked by the
-> PTM issues:
-> https://lore.kernel.org/netdev/20211201185731.236130-1-vinicius.gomes@intel.
-> com/
-> 
-> I'll build and run with that for a few days and see how it goes.
+From: Staikov Andrii <andrii.staikov@intel.com>
 
-I gave it a good hammering yesterday evening with suspend/resume cycles, and
-it didn't lock up, however it did still fail to bring the network up a couple
-of times, requiring me to unload and reload the driver.
+Add description for values written into registers QINT_XXXX
+and small cosmetic changes for MSI/LEGACY interrupts
+configuration in the same way as for MSI-X.
+Descriptions confirm the code is written correctly and
+make the code clear. Small cosmetic changes for MSI/LEGACY
+interrupts make code clear in the same manner as for MSI-X
+interrupts.
+Without this descriptions the code doesn't look right.
 
-The only kernel log splats I saw were an assert that RTNL mutex wasn't taken
-in the igc_runtime_resume path, and a suspicious RCU usage warning, both
-pasted below.
+Signed-off-by: Jaroslaw Gawin <jaroslawx.gawin@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h      | 14 ++++++++
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 36 ++++++++-------------
+ 2 files changed, 28 insertions(+), 22 deletions(-)
 
-I'll keep running with that patch and lockdep enabled (based on
-5.18.16-arch1-1) and report back any further issues.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index d86b6d349ea9..9a60d6b207f7 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -399,6 +399,20 @@ struct i40e_ddp_old_profile_list {
+ 				 I40E_FLEX_54_MASK | I40E_FLEX_55_MASK | \
+ 				 I40E_FLEX_56_MASK | I40E_FLEX_57_MASK)
+ 
++#define I40E_QINT_TQCTL_VAL(qp, vector, nextq_type) \
++	(I40E_QINT_TQCTL_CAUSE_ENA_MASK | \
++	(I40E_TX_ITR << I40E_QINT_TQCTL_ITR_INDX_SHIFT) | \
++	((vector) << I40E_QINT_TQCTL_MSIX_INDX_SHIFT) | \
++	((qp) << I40E_QINT_TQCTL_NEXTQ_INDX_SHIFT) | \
++	(I40E_QUEUE_TYPE_##nextq_type << I40E_QINT_TQCTL_NEXTQ_TYPE_SHIFT))
++
++#define I40E_QINT_RQCTL_VAL(qp, vector, nextq_type) \
++	(I40E_QINT_RQCTL_CAUSE_ENA_MASK | \
++	(I40E_RX_ITR << I40E_QINT_RQCTL_ITR_INDX_SHIFT) | \
++	((vector) << I40E_QINT_RQCTL_MSIX_INDX_SHIFT) | \
++	((qp) << I40E_QINT_RQCTL_NEXTQ_INDX_SHIFT) | \
++	(I40E_QUEUE_TYPE_##nextq_type << I40E_QINT_RQCTL_NEXTQ_TYPE_SHIFT))
++
+ struct i40e_flex_pit {
+ 	struct list_head list;
+ 	u16 src_offset;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 9f1d5de7bf16..174511d64627 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3878,7 +3878,7 @@ static void i40e_vsi_configure_msix(struct i40e_vsi *vsi)
+ 		wr32(hw, I40E_PFINT_RATEN(vector - 1),
+ 		     i40e_intrl_usec_to_reg(vsi->int_rate_limit));
+ 
+-		/* Linked list for the queuepairs assigned to this vector */
++		/* begin of linked list for RX queue assigned to this vector */
+ 		wr32(hw, I40E_PFINT_LNKLSTN(vector - 1), qp);
+ 		for (q = 0; q < q_vector->num_ringpairs; q++) {
+ 			u32 nextqp = has_xdp ? qp + vsi->alloc_queue_pairs : qp;
+@@ -3894,6 +3894,7 @@ static void i40e_vsi_configure_msix(struct i40e_vsi *vsi)
+ 			wr32(hw, I40E_QINT_RQCTL(qp), val);
+ 
+ 			if (has_xdp) {
++				/* TX queue with next queue set to TX */
+ 				val = I40E_QINT_TQCTL_CAUSE_ENA_MASK |
+ 				      (I40E_TX_ITR << I40E_QINT_TQCTL_ITR_INDX_SHIFT) |
+ 				      (vector << I40E_QINT_TQCTL_MSIX_INDX_SHIFT) |
+@@ -3903,7 +3904,7 @@ static void i40e_vsi_configure_msix(struct i40e_vsi *vsi)
+ 
+ 				wr32(hw, I40E_QINT_TQCTL(nextqp), val);
+ 			}
+-
++			/* TX queue with next RX or end of linked list */
+ 			val = I40E_QINT_TQCTL_CAUSE_ENA_MASK |
+ 			      (I40E_TX_ITR << I40E_QINT_TQCTL_ITR_INDX_SHIFT) |
+ 			      (vector << I40E_QINT_TQCTL_MSIX_INDX_SHIFT) |
+@@ -3972,7 +3973,6 @@ static void i40e_configure_msi_and_legacy(struct i40e_vsi *vsi)
+ 	struct i40e_q_vector *q_vector = vsi->q_vectors[0];
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_hw *hw = &pf->hw;
+-	u32 val;
+ 
+ 	/* set the ITR configuration */
+ 	q_vector->rx.next_update = jiffies + 1;
+@@ -3989,28 +3989,20 @@ static void i40e_configure_msi_and_legacy(struct i40e_vsi *vsi)
+ 	/* FIRSTQ_INDX = 0, FIRSTQ_TYPE = 0 (rx) */
+ 	wr32(hw, I40E_PFINT_LNKLST0, 0);
+ 
+-	/* Associate the queue pair to the vector and enable the queue int */
+-	val = I40E_QINT_RQCTL_CAUSE_ENA_MASK		       |
+-	      (I40E_RX_ITR << I40E_QINT_RQCTL_ITR_INDX_SHIFT)  |
+-	      (nextqp	   << I40E_QINT_RQCTL_NEXTQ_INDX_SHIFT)|
+-	      (I40E_QUEUE_TYPE_TX << I40E_QINT_TQCTL_NEXTQ_TYPE_SHIFT);
+-
+-	wr32(hw, I40E_QINT_RQCTL(0), val);
+-
+-	if (i40e_enabled_xdp_vsi(vsi)) {
+-		val = I40E_QINT_TQCTL_CAUSE_ENA_MASK		     |
+-		      (I40E_TX_ITR << I40E_QINT_TQCTL_ITR_INDX_SHIFT)|
+-		      (I40E_QUEUE_TYPE_TX
+-		       << I40E_QINT_TQCTL_NEXTQ_TYPE_SHIFT);
++	/* Associate the queue pair to the vector and enable the queue
++	 * interrupt RX queue in linked list with next queue set to TX
++	 */
++	wr32(hw, I40E_QINT_RQCTL(0), I40E_QINT_RQCTL_VAL(nextqp, 0, TX));
+ 
+-		wr32(hw, I40E_QINT_TQCTL(nextqp), val);
++	if (nextqp) {
++		/* TX queue in linked list with next queue set to TX */
++		wr32(hw, I40E_QINT_TQCTL(nextqp),
++		     I40E_QINT_TQCTL_VAL(nextqp, 0, TX));
+ 	}
+ 
+-	val = I40E_QINT_TQCTL_CAUSE_ENA_MASK		      |
+-	      (I40E_TX_ITR << I40E_QINT_TQCTL_ITR_INDX_SHIFT) |
+-	      (I40E_QUEUE_END_OF_LIST << I40E_QINT_TQCTL_NEXTQ_INDX_SHIFT);
+-
+-	wr32(hw, I40E_QINT_TQCTL(0), val);
++	/* last TX queue so the next RX queue doesn't matter */
++	wr32(hw, I40E_QINT_TQCTL(0),
++	     I40E_QINT_TQCTL_VAL(I40E_QUEUE_END_OF_LIST, 0, RX));
+ 	i40e_flush(hw);
+ }
+ 
+-- 
+2.25.1
 
-Cheers
-James
-
-------------[ cut here ]------------
-RTNL: assertion failed at net/core/dev.c (2886)
-WARNING: CPU: 0 PID: 7752 at net/core/dev.c:2886 netif_set_real_num_tx_queues+0x1f0/0x210
-Modules linked in: rfcomm intel_rapl_msr ee1004 spi_nor iTCO_wdt intel_pmc_bxt mtd iTCO_vendor_support mei_pxp mei_hdcp cmac algif_hash algif_skcipher af_alg bnep pmt_telemetry pmt_class wmi_bmof mxm_wmi intel_rapl_common intel_tcc_cooling x86_pkg_temp_thermal intel_powerclamp kvm_intel kvm irqbypass rapl intel_cstate intel_uncore pcspkr snd_sof_pci_intel_tgl snd_sof_intel_hda_common soundwire_intel soundwire_generic_allocation soundwire_cadence snd_sof_intel_hda snd_sof_pci snd_sof_xtensa_dsp snd_sof snd_hda_codec_realtek snd_sof_utils snd_soc_hdac_hda snd_hda_codec_generic snd_hda_ext_core snd_soc_acpi_intel_match snd_soc_acpi soundwire_bus ledtrig_audio uvcvideo snd_usb_audio snd_soc_core videobuf2_vmalloc videobuf2_memops snd_usbmidi_lib videobuf2_v4l2 snd_compress i2c_i801 snd_rawmidi spi_intel_pci ac97_bus igc(-) spi_intel videobuf2_common snd_pcm_dmaengine i2c_smbus snd_seq_device mei_me snd_hda_codec_hdmi mei cdc_acm videodev snd_hda_intel snd_intel_dspcfg
- snd_intel_sdw_acpi mc amdgpu mousedev i915 snd_hda_codec snd_hda_core btusb snd_hwdep btrtl snd_pcm btbcm gpu_sched drm_buddy joydev btintel snd_timer drm_ttm_helper btmtk snd ttm intel_vsec drm_dp_helper soundcore intel_gtt serial_multi_instantiate wmi video bluetooth ecdh_generic acpi_tad rfkill coretemp acpi_pad nls_iso8859_1 vfat fat mac_hid ip6t_REJECT nf_reject_ipv6 xt_hl ip6t_rt ipt_REJECT nf_reject_ipv4 xt_LOG nf_log_syslog xt_multiport xt_limit xt_addrtype xt_tcpudp xt_conntrack nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c ip6table_filter ip6_tables iptable_filter i2c_dev sg crypto_user fuse bpf_preload ip_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 hid_microsoft ff_memless dm_crypt cbc encrypted_keys trusted asn1_encoder tee tpm rng_core dm_mod usbhid crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel aesni_intel crypto_simd nvme cryptd sr_mod xhci_pci nvme_core cdrom xhci_pci_renesas
-CPU: 0 PID: 7752 Comm: kworker/0:1 Not tainted 5.18.16-arch1-1 #3 2927cbed739f932be66f137e6808a2714da26c25
-Hardware name: Micro-Star International Co., Ltd. MS-7D25/PRO Z690-A DDR4(MS-7D25), BIOS 1.40 05/17/2022
-Workqueue: pm pm_runtime_work
-RIP: 0010:netif_set_real_num_tx_queues+0x1f0/0x210
-Code: f8 f7 5f 01 00 0f 85 90 fe ff ff ba 46 0b 00 00 48 c7 c6 6e 6e 6f 82 48 c7 c7 70 a5 72 82 c6 05 d8 f7 5f 01 01 e8 1f d6 25 00 <0f> 0b e9 6a fe ff ff b8 ea ff ff ff e9 46 fe ff ff 66 66 2e 0f 1f
-RSP: 0018:ffffa25e823dbc98 EFLAGS: 00010286
-RAX: 0000000000000000 RBX: ffff95a5668fa000 RCX: 0000000000000027
-RDX: ffff95accfc21a28 RSI: 0000000000000001 RDI: ffff95accfc21a20
-RBP: 0000000000000004 R08: 0000000000000000 R09: ffffa25e823dbaa0
-R10: 0000000000000003 R11: ffff95acf07ac2e8 R12: 0000000000000001
-R13: 0000000000000004 R14: ffff95a5668fa000 R15: ffff95a5691bc1e8
-FS:  0000000000000000(0000) GS:ffff95accfc00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007feec86e5c90 CR3: 0000000252fdc001 CR4: 0000000000f70ef0
-PKRU: 55555554
-Call Trace:
- <TASK>
- __igc_open+0x40a/0x660 [igc 73e11f9f5110389b26a5a274cff80c9ddf9bab7a]
- __igc_resume+0x133/0x240 [igc 73e11f9f5110389b26a5a274cff80c9ddf9bab7a]
- ? pci_pme_active+0xa5/0x1a0
- pci_pm_runtime_resume+0xab/0xd0
- ? pci_pm_freeze_noirq+0xf0/0xf0
- __rpm_callback+0x41/0x170
- rpm_callback+0x35/0x70
- ? pci_pm_freeze_noirq+0xf0/0xf0
- rpm_resume+0x5ee/0x820
- pm_runtime_work+0x7c/0xb0
- process_one_work+0x276/0x570
- worker_thread+0x53/0x390
- ? _raw_spin_unlock_irqrestore+0x34/0x60
- ? process_one_work+0x570/0x570
- kthread+0xdb/0x110
- ? kthread_complete_and_exit+0x20/0x20
- ret_from_fork+0x1f/0x30
- </TASK>
-irq event stamp: 128847
-hardirqs last  enabled at (128853): [<ffffffff81132dde>] __up_console_sem+0x5e/0x70
-hardirqs last disabled at (128858): [<ffffffff81132dc3>] __up_console_sem+0x43/0x70
-softirqs last  enabled at (125404): [<ffffffff810a5533>] __irq_exit_rcu+0xa3/0xd0
-softirqs last disabled at (125395): [<ffffffff810a5533>] __irq_exit_rcu+0xa3/0xd0
----[ end trace 0000000000000000 ]---
-
-=============================
-WARNING: suspicious RCU usage
-5.18.16-arch1-1 #3 Tainted: G        W   
------------------------------
-net/sched/sch_generic.c:1389 suspicious rcu_dereference_protected() usage!
-
-other info that might help us debug this:
-
-rcu_scheduler_active = 2, debug_locks = 1 
-2 locks held by kworker/0:1/7752:
- #0: ffff95a540ba8b38 ((wq_completion)pm){+.+.}-{0:0}, at: process_one_work+0x1f5/0x570
- #1: ffffa25e823dbe78 ((work_completion)(&dev->power.work)){+.+.}-{0:0}, at: process_one_work+0x1f5/0x570
-
-stack backtrace:
-CPU: 0 PID: 7752 Comm: kworker/0:1 Tainted: G        W         5.18.16-arch1-1 #3 2927cbed739f932be66f137e6808a2714da26c25
-Hardware name: Micro-Star International Co., Ltd. MS-7D25/PRO Z690-A DDR4(MS-7D25), BIOS 1.40 05/17/2022
-Workqueue: pm pm_runtime_work
-Call Trace:
- <TASK>
- dump_stack_lvl+0x5f/0x7b
- dev_qdisc_change_real_num_tx+0x68/0x80
- netif_set_real_num_tx_queues+0x8d/0x210
- __igc_open+0x40a/0x660 [igc 73e11f9f5110389b26a5a274cff80c9ddf9bab7a]
- __igc_resume+0x133/0x240 [igc 73e11f9f5110389b26a5a274cff80c9ddf9bab7a]
- ? pci_pme_active+0xa5/0x1a0
- pci_pm_runtime_resume+0xab/0xd0
- ? pci_pm_freeze_noirq+0xf0/0xf0
- __rpm_callback+0x41/0x170
- rpm_callback+0x35/0x70
- ? pci_pm_freeze_noirq+0xf0/0xf0
- rpm_resume+0x5ee/0x820
- pm_runtime_work+0x7c/0xb0
- process_one_work+0x276/0x570
- worker_thread+0x53/0x390
- ? _raw_spin_unlock_irqrestore+0x34/0x60
- ? process_one_work+0x570/0x570
- kthread+0xdb/0x110
- ? kthread_complete_and_exit+0x20/0x20
- ret_from_fork+0x1f/0x30
- </TASK>
-
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
 
 _______________________________________________
 Intel-wired-lan mailing list
