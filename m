@@ -1,86 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8985658CD3A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Aug 2022 19:59:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B02858CE11
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Aug 2022 20:55:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 20344605D5;
-	Mon,  8 Aug 2022 17:59:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20344605D5
+	by smtp1.osuosl.org (Postfix) with ESMTP id A23AF813E4;
+	Mon,  8 Aug 2022 18:55:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A23AF813E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1659981543;
-	bh=DO3Y3iwIoGfqGgS0L+QW9i4fx7t/EvalCJ0Pqphbjb4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=3r+zAjyDepQfyeqYGyzZIac1E4936as558RZlEdWqPhBEHjO7uLNe2AYe35Nco2uw
-	 u8ln0Wl7jMl33G6xooXvFSg6GHrY8V9AIAbQq70uZhfFiUB/DAgHWIebkS9MP99K/Z
-	 9cUNeIR+bA4BO4sJOhpPzZkb6mub60UmCAQWdN3/XNV3Mp+Imc+jUs0KpjadLc5TgX
-	 FzGsfKuIuEL3GQ7CToeHfY1RfCntmBUi3ik5AHOJh4oVWvc8Yj8zgeD94bwF04fg7v
-	 1rHcovmkbo25MxqTWlQYmfh5QxjhDq42ps0X7p1Gcxv8xdjK7NVHrjXyiYQsqqStqj
-	 tubbSV73TWkAg==
+	s=default; t=1659984921;
+	bh=bgkoKfZZi6gtCQHw8oABFnVElT1iAN1E9fCAW0c9tWA=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=d3xjX9uRSYArFmGzwm14B3mBrDJKSW6dvJ2DZRPDNAnmDKodNMPyolEtDfche3nDZ
+	 pQmxIdGlYipW8g7rPrA0K5lnpbLnE1zBZwCjlfIv5MOgPGvyFIuPD5K6Cw8zl1+msR
+	 jGfYydOL2lEaQ77igzU9T1nbV3WHWZNwVecL8FPmy9oVnxwgwdCd9qq1HeR8kbFJqR
+	 xvCu7bXDZu6RvnZcB2RD9FWgDYgVIHGWREbk/Yu+NGytsZ5xvWznjj8LLYkXDzml9i
+	 ToFfrW6w2n2jHJFWmbzIK327c/B10ACxnbZ6ov8THeSN79aB58uWD2+s6dpiujxTcb
+	 Uq97Df+zMIaww==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id By0JBb_gfF50; Mon,  8 Aug 2022 17:59:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L9z5n2wwpGxJ; Mon,  8 Aug 2022 18:55:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F3ED7605AF;
-	Mon,  8 Aug 2022 17:59:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F3ED7605AF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A344813D5;
+	Mon,  8 Aug 2022 18:55:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A344813D5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5909B1BF3E1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 17:58:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3942D1BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 18:55:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 315F7404F7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 17:58:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 315F7404F7
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1ECFC408BA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 18:55:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1ECFC408BA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KqS83ozJABfX for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Aug 2022 17:58:56 +0000 (UTC)
+ with ESMTP id sJnwE_Dsm62L for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Aug 2022 18:55:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0A759404F1
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0A759404F1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 17:58:55 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-418-R9LkVXhoN4url2WW2DAw_A-1; Mon, 08 Aug 2022 13:58:49 -0400
-X-MC-Unique: R9LkVXhoN4url2WW2DAw_A-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B221840897
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B221840897
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Aug 2022 18:55:14 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9B4311019DE1;
- Mon,  8 Aug 2022 17:58:48 +0000 (UTC)
-Received: from p1.luc.com (unknown [10.40.194.142])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B4410C15BA1;
- Mon,  8 Aug 2022 17:58:46 +0000 (UTC)
-From: Ivan Vecera <ivecera@redhat.com>
-To: netdev@vger.kernel.org
-Date: Mon,  8 Aug 2022 19:58:45 +0200
-Message-Id: <20220808175845.484968-1-ivecera@redhat.com>
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 95D5261265;
+ Mon,  8 Aug 2022 18:55:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F522C433C1;
+ Mon,  8 Aug 2022 18:55:12 +0000 (UTC)
+Date: Mon, 8 Aug 2022 11:55:11 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lin Ma <linma@zju.edu.cn>
+Message-ID: <20220808115511.5b574db2@kernel.org>
+In-Reply-To: <20220808081050.25229-1-linma@zju.edu.cn>
+References: <20220808081050.25229-1-linma@zju.edu.cn>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1659981534;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=rKD32BoUZtJVmXJMy5BhMXR7sCS+Ype3RSG55JgauC4=;
- b=A5H92BSnUdkTH4QssmWsBZvxKI3n2JdZtzne8P4S6ezqLggk01NTm6gpN/MSJ0nmkVi3xW
- TvdnA3HaixpeioIgP9yF4woM3mxpsLGj0v5FIDZM/LwidvQgq9YadNZUjCmRrdFlu3fOX/
- KbSZfKgEw4OjU+SdnMX98NlhJpZHuwg=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1659984913;
+ bh=yff99Hl54xIWNYpq9yhdMz/cTBVGMhnzM72x5OvdS2I=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=lr2xrUztTk+UvlbkoQ8xdaOGPFwA6cmGaHiN802TxIQMgz4mp2+NoAxcYtIuoMPxm
+ hZl4hn/lJbeUllnA30x+R8VUtG2ZQWNnC42uMY5HVBg378RuBJCs62pl86bwFAlxxJ
+ p3+/ow+1G4fVi6aDGqW8Ls9gEP/nb3AR3AEEhjKb+Qasha5QvWXiZ3lIrMDLXhXaJH
+ yiIhBymtEh3dH6djipRGVTNSiP38tidhKPqRewg/1CT4v3H4Dm1Rf+t657vMSMkQkv
+ D8NwyWgU9ZWsnVTUWcnEmhXDi3cbaDp+13VDjgXbPAkQn6DymqvWDK6XHY6TZxxuZP
+ YDmqQlgsWN82g==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=A5H92BSn
-Subject: [Intel-wired-lan] [PATCH net] iavf: Fix deadlock in initialization
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=lr2xrUzt
+Subject: Re: [Intel-wired-lan] [PATCH v0] idb: Add rtnl_lock to avoid data
+ race
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,80 +88,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- open list <linux-kernel@vger.kernel.org>, Stefan Assmann <sassmann@kpanic.de>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: hawk@kernel.org, daniel@iogearbox.net, netdev@vger.kernel.org,
+ john.fastabend@gmail.com, jesse.brandeburg@intel.com, ast@kernel.org,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ pabeni@redhat.com, davem@davemloft.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix deadlock that occurs when iavf interface is a part of failover
-configuration.
+On Mon,  8 Aug 2022 16:10:50 +0800 Lin Ma wrote:
+> The commit c23d92b80e0b ("igb: Teardown SR-IOV before
+> unregister_netdev()") places the unregister_netdev() call after the
+> igb_disable_sriov() call to avoid functionality issue.
+> 
+> However, it introduces several race conditions when detaching a device.
+> For example, when .remove() is called, the below interleaving leads to
+> use-after-free.
+> 
+>  (FREE from device detaching)      |   (USE from netdev core)
+> igb_remove                         |  igb_ndo_get_vf_config
+>  igb_disable_sriov                 |  vf >= adapter->vfs_allocated_count?
+>   kfree(adapter->vf_data)          |
+>   adapter->vfs_allocated_count = 0 |
+>                                    |    memcpy(... adapter->vf_data[vf]
+> 
+> In short, there are data races between read and write of
+> adapter->vfs_allocated_count. To fix this, we can add a new lock to
+> protect members in adapter object. However, we cau use the existing
+> rtnl_lock just as other drivers do. (See how dpaa2_eth_disconnect_mac is
+> protected in dpaa2_eth_remove function). This patch adopts similar
+> fixes.
+> 
+> Fixes: c23d92b80e0b ("igb: Teardown SR-IOV before unregister_netdev()")
+> Signed-off-by: Lin Ma <linma@zju.edu.cn>
+> ---
+>  drivers/net/ethernet/intel/igb/igb_main.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index d8b836a85cc3..e86ea4de05f8 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -3814,7 +3814,9 @@ static void igb_remove(struct pci_dev *pdev)
+>  	igb_release_hw_control(adapter);
+>  
+>  #ifdef CONFIG_PCI_IOV
+> +	rtnl_lock();
+>  	igb_disable_sriov(pdev);
+> +	rtnl_unlock();
+>  #endif
+>  
+>  	unregister_netdev(netdev);
 
-1. Mutex crit_lock is taken at the beginning of iavf_watchdog_task()
-2. Function iavf_init_config_adapter() is called when adapter
-   state is __IAVF_INIT_CONFIG_ADAPTER
-3. iavf_init_config_adapter() calls register_netdevice() that emits
-   NETDEV_REGISTER event
-4. Notifier function failover_event() then calls
-   net_failover_slave_register() that calls dev_open()
-5. dev_open() calls iavf_open() that tries to take crit_lock in
-   end-less loop
-
-Stack trace:
-...
-[  790.251876]  usleep_range_state+0x5b/0x80
-[  790.252547]  iavf_open+0x37/0x1d0 [iavf]
-[  790.253139]  __dev_open+0xcd/0x160
-[  790.253699]  dev_open+0x47/0x90
-[  790.254323]  net_failover_slave_register+0x122/0x220 [net_failover]
-[  790.255213]  failover_slave_register.part.7+0xd2/0x180 [failover]
-[  790.256050]  failover_event+0x122/0x1ab [failover]
-[  790.256821]  notifier_call_chain+0x47/0x70
-[  790.257510]  register_netdevice+0x20f/0x550
-[  790.258263]  iavf_watchdog_task+0x7c8/0xea0 [iavf]
-[  790.259009]  process_one_work+0x1a7/0x360
-[  790.259705]  worker_thread+0x30/0x390
-
-To fix the situation we should check the current adapter state after
-first unsuccessful mutex_trylock() and return with -EBUSY if it is
-__IAVF_INIT_CONFIG_ADAPTER.
-
-Fixes: 226d528512cf ("iavf: fix locking of critical sections")
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 45d097a164ad..f9dcaadc7ea0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -4085,8 +4085,17 @@ static int iavf_open(struct net_device *netdev)
- 		return -EIO;
- 	}
- 
--	while (!mutex_trylock(&adapter->crit_lock))
-+	while (!mutex_trylock(&adapter->crit_lock)) {
-+		/* If we are in __IAVF_INIT_CONFIG_ADAPTER state the crit_lock
-+		 * is already taken and iavf_open is called from an upper
-+		 * device's notifier reacting on NETDEV_REGISTER event.
-+		 * We have to leave here to avoid dead lock.
-+		 */
-+		if (adapter->state == __IAVF_INIT_CONFIG_ADAPTER)
-+			return -EBUSY;
-+
- 		usleep_range(500, 1000);
-+	}
- 
- 	if (adapter->state != __IAVF_DOWN) {
- 		err = -EBUSY;
--- 
-2.35.1
-
+What about the disable path coming from sysfs? This looks incomplete to
+me. Perhaps take a look at commit 1e53834ce541 ("ixgbe: Add locking to
+prevent panic when setting sriov_numvfs to zero") for some inspiration.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
