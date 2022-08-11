@@ -1,176 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91F5C58FB22
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 13:15:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08BBC58FB99
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 13:46:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB80E4180D;
-	Thu, 11 Aug 2022 11:15:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB80E4180D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7633382A5D;
+	Thu, 11 Aug 2022 11:46:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7633382A5D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660216550;
-	bh=y1CjDW4dh1g2wIKOJeBk2msH6iTwL2Uk9wNDcrNxQ4M=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=JF6UyByyz8PnY8QGkem4lgC0xODK91HYbxGlP2upMvDzhmhxwhrIArj9M9fESH5L/
-	 /4C6zR5fhROaMMPwoUYDNf3G9eAqWSO062GMWWXbHddlRWyt2+HhN+GB7Jw4hu+wC1
-	 KBh1HeMCspBcvlq7dD9hlAs0FqnUvvKPlc8JUGo1vy2blZgYc8eXbmAmSrkBFMZwAf
-	 5ewbPNBVYmeHOdW//2tWxVxDajk6noShcQvHX+uJQEP15TRRxtxmkP5B+2AXVx1oWk
-	 jddqXs8LUVsio5pW7PB6IUGhcC8wtB8AUfeM6INeUOKM2r7J0nOFcBeH1bvXHhItKX
-	 3XtbkEQ34YVaw==
+	s=default; t=1660218414;
+	bh=h3fIe0Etvchqi9WgqzsJqG+z1fKvkEyommAI53XCcXY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=BV6lPrM1oQneDLMzJznxg+pCcyVq8eg3Gmy+XNc7Ac3S4fQkxv1jH2y2Da6WUHrlR
+	 eEQjyxoCqewW9vauZchqBBW132Y8HJMGJu4B2m+cBOUEAwKOkWKOId9FihmXrq5uN6
+	 NWJ8K7tIo/miLEiOuKFmhXUYXYyWuqtztg6VuQJW4avKfFLRJ+df00i2Zrkj4QKQE8
+	 9x111jgHpgTYYimssqeojm6A3VhhVDCxUgPwc3DWcAsdIkd2pcEfRMHVwyYofqAJK9
+	 sQ2NiJJcrcEmkKvYBdt8wyg21jfwHf1OLi4t2wHr5+LfgWeKpOGbfJjDwuTtVo49nz
+	 G/xwtm+oKINCw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 82cPCXOmvvXJ; Thu, 11 Aug 2022 11:15:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AtOtI12L2y-I; Thu, 11 Aug 2022 11:46:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 81C43417D7;
-	Thu, 11 Aug 2022 11:15:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81C43417D7
+	by smtp1.osuosl.org (Postfix) with ESMTP id 08AB282A4E;
+	Thu, 11 Aug 2022 11:46:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 08AB282A4E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E08331BF38C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A9F31BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:46:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B94FB60A9B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B94FB60A9B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 02058417E6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:46:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 02058417E6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id te5_HlAGAoPY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Gpb4LoLdWJFq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Aug 2022 11:46:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1D4760A74
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D1D4760A74
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="288888380"
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="288888380"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2022 04:15:41 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40F5D417E5
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 40F5D417E5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:46:46 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="271101367"
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="271101367"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2022 04:46:45 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="708580951"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga002.fm.intel.com with ESMTP; 11 Aug 2022 04:15:40 -0700
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28; Thu, 11 Aug 2022 04:15:40 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.28 via Frontend Transport; Thu, 11 Aug 2022 04:15:40 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.28; Thu, 11 Aug 2022 04:15:40 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Lldp9Jpl5y1B298GGa/Hb0dNo4R9AhDFZHQLr2wkbexjmmCrfYiX/RaNfmt08+Wyo/Iuhh2A0BhUqK9j2u/cvbBrALOevmwaNHNBCMqT0w7FRePV7lduVvSOMp0vC1vE2cjiOfS34kXc8ODbLBirIe0+DlAJUPkuB8izdgih4jEn/6yFdGc9d75VhF1C3TCur/UIuNvYYU7ovMrvRHI1me8PtCvhRkCQ1nAgFdnOAGqiELpUbvVAEwiG4gxO3nAYf1f1FtkYUoBq1ih2NAF+T71BsDL7o7eIFdb7hhlkAVohoFiz1yRMKC3xQElvuSwVKNhylC+S1DD0HhMa17IMSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7f20wS/oIF6J7migV0LBwVR+KoYDx8oNTAQNouv46f0=;
- b=KxAS97Jl2xH+19Ge5qCb9blHMJiKNVzq5Wr8hhbXyUFo+QNvjDLNyJo62fX3vEQ9nl6HQEtnA0I9n/syvnswdDmsrIJ35pbW4BUaKdeEBKNv9+Vatp7wAIgibKWU2dJf875j8L82BG2Wx8M8WVyWFp8LxGqjs7cpzAVb4wV7Y2yvIM8w4pU96Iy2OxPjo2H2D3C2SaC9ubee1WgwjWLjmKr4JEDbCY3R5xmZ8+0T9uFeyH3OVyt/IGbDqr21+HiR30Cf4RN7VGvKuoAKdCtLeYnHwbCdVRTC6aa8NZ+BHSht0BlPp8kqWM/peSupIH25gtb7zxxw0og/LsUnYLOKzQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by DM6PR11MB3052.namprd11.prod.outlook.com (2603:10b6:5:69::29) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5504.16; Thu, 11 Aug
- 2022 11:15:33 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::682f:e9fd:d1d7:f3b9]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::682f:e9fd:d1d7:f3b9%4]) with mapi id 15.20.5525.011; Thu, 11 Aug 2022
- 11:15:33 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
- recovery if GLOBR fails
-Thread-Index: AQHYpkjGWWErztxVj0qm9q0aiNm9pa2pmqUA
-Date: Thu, 11 Aug 2022 11:15:33 +0000
-Message-ID: <BYAPR11MB3367CCCA47B65703FAA583EFFC649@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20220802081917.86798-1-mateusz.palczewski@intel.com>
-In-Reply-To: <20220802081917.86798-1-mateusz.palczewski@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4d19cdc1-accf-4c12-4792-08da7b8acef9
-x-ms-traffictypediagnostic: DM6PR11MB3052:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: a2c1WasSyKOqk1aVJAdrUOzpj1L8Qcg9U3kEmW+07MznH/gm1oF06IppZoZNUWRBGJmt8Nuzb30Y19RksGLAVYrIRcTgX0mgaHDJqhloSnn8ayDha2icA/aI8eDONz4xqO0KCjKEPoXJAwtbu/RgAYF2+LnK8p8bqIh6czcAV3/ofXvey8KWiRo+CT2DuNBOnx2ja7twviOZn/nD0QEoFP6r8BPFC3TVFxe9L3cvsEXNwRdqkMnD61pfC6UEg2HZvjHGti1g8/WpTvWNJLz/KpadDbS920/qj32Ur3PkwPhXWOavbP6TI5wEgQY7rGtkYWnNQgz3Ebh6a9NPOpJVBxul+v/Jhm6HMSwjQ7XxJSg+Ogf1AMD17oPyY69+Z5aEtTAUYPSy+f/0l+WdWPCKEY7mT+pA6KfjnWEWz7SJ6kndMIYgtgW6buOCA4etHtoT+tQxS5OATlZEk5eO3RMk1oJeOc/fTzcfaf+24NarwnYC+T4rFBHnRZsnBefjNXHtefthEGAlEDyjH5EDlPSPyyQHSDOOmKOzpCGEmMBW0QKJfyjMk+//VgU1zeskNvKZElpMyUW7GD7UTF1jZJpHGWzAD0XgjdAc+HgYBOoVudStBni/spGjhW/aqmQmD5Bgk2tC1CSgnMgwBL6FX6iRtnykL3GCt/X1hoyfPLw9Wy28qUshNnk9CM9MnuYVrJTzoBHxsHUTs0kBd1eyTE7O+lipuw6qPSwAv+LPefIbzISNaj010uZSnuYwew1sNjBhkvXtEUW/aNYkTkBno/1KTtMQebTQnSs4k1go50pIybc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(39860400002)(366004)(346002)(396003)(376002)(136003)(66446008)(38100700002)(83380400001)(26005)(9686003)(76116006)(66946007)(53546011)(41300700001)(8676002)(7696005)(122000001)(86362001)(52536014)(186003)(82960400001)(8936002)(5660300002)(2906002)(64756008)(55016003)(316002)(38070700005)(33656002)(110136005)(478600001)(6506007)(71200400001)(66476007)(66556008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?cHvP4xOEaBfI024CzlyKKMyPfZ9fBSZEhy8M/Cw+1ErF8J4cOUpMYOTVhq9O?=
- =?us-ascii?Q?mIBOsw4GQzM+7vREK1a8WGpQC0llb+Jw2aJO7/Wz3o7mukwOibdh9wp2s8Ls?=
- =?us-ascii?Q?3yt/CgPgTJZC5Pzxe4RC3qSg7V2Ra83+RNTZDefZVZRC/Z3KMRVQHqmnuuu4?=
- =?us-ascii?Q?wQh5OIit+Z6hrYT+t9xgwCG4b+CwkXf99/hTcymWrVTv/sRxCCLQqNG18Yli?=
- =?us-ascii?Q?5AJ6iH8/U+8gTUiNELXHPapJM3h2xqvq3hQz0qnQLiyKBvBitMaHLVByR9oS?=
- =?us-ascii?Q?CCVl/V+tZZWAz7bRGA3hW0Hj3FqOZo/t2QVIDgTMqaiq6eclG9z5snmtdJEN?=
- =?us-ascii?Q?FunGgxJPPtCIYatRb9AUQbk39GOCZP09kJHMQKL+mMnLoOOy2QAtoy7Co2+O?=
- =?us-ascii?Q?fIRv8aNibsOdtF/x8VhETvsrmPpEZ3pwiNLrKHmn0Fc6FP4T0PjtpYOwyPaf?=
- =?us-ascii?Q?5/vNXiGehJST0m8EAuCb+bttNaTYHCaLs7FP/78qyzFvuRoYHFtaU7ijiemU?=
- =?us-ascii?Q?mGduvIia9cHT98tRX63mTrPAldmz03VUrJQSflI0AqQGCcdlXrqqfRpEvNsu?=
- =?us-ascii?Q?KT4XkrthctqsHnb0dXmJUNvel4R5duzLFw/+eijUTi/Yy6cmHaQxRInlbkWw?=
- =?us-ascii?Q?kHa1eNPHyKvcDMEy9m5tyEEB3PUkycq7K9GzDIk0ZuV26GCfMbOftGo9uvis?=
- =?us-ascii?Q?MRi6Y5w2zUhb20o3eZWJFJqeQuDTSas4j37aCe40AJALv0/lGgyyK2iIKdY7?=
- =?us-ascii?Q?KnPk7xdXST/civNCLX19ZdfAgMhyt5OPO8Vxu3t27Uzr+2cTwVahYEz6gbhS?=
- =?us-ascii?Q?U1n2pE/Hq5MOXado86Yr/AHGfOkqXwUJu1Uyi++p6XWYaMQDp/XN6ajzQcwQ?=
- =?us-ascii?Q?8TWtt4ZOKkWemic7/ehJ1ndpNKx+WTPW6xFgP+a7dXL/yBRwojQyIiwXHonD?=
- =?us-ascii?Q?6V6wKsp2SAz8he/LOV0VZAkMe0kNlChLuf32ia4MPmhJR+mVmE/4cLtsdpS4?=
- =?us-ascii?Q?hphrbiyRl3QzlZjPmphq3qCokPFCTS79Me98uXvzOqR6jV1BNht0RRJqbIKT?=
- =?us-ascii?Q?zKp6hVSOVZ8Xpr/j9RlBmeqbfLA1zlilGr8lEd/7j+Yzvbq2g3rlpRvOHsvi?=
- =?us-ascii?Q?CaYq5YKa4y2WRDnkvloLQX+cYVfwqO4fSsH7wVYPZ1R7h9xySwnWu6QZVPoe?=
- =?us-ascii?Q?rr+iXx7TqJNa49WMOrutoy4+NttTRT260yPqTxEj4KqX5Ra9gctpa4vkvtN6?=
- =?us-ascii?Q?Wz9LzA9/iAYDHqGgBM5+GTm6gSQXty7wyi2MJLB+8mghk8x3209f+eHT70rd?=
- =?us-ascii?Q?dL5K2UbGpXDL/MzDuN4MyIQflpGO3rMOrQX9IwQOrQUHUupTqRRNm4aczym5?=
- =?us-ascii?Q?8AaPvyw+cMKwQ35/aHMRvdCbuKsgQnea3ebKpYVF7I7z3IapuUKXnaOO3qdH?=
- =?us-ascii?Q?EwI+hcdC/9tuzRpfXBCqHD2oQko4T0DGB2gzgdvrwuF2uHXUvUFkdahOMDm5?=
- =?us-ascii?Q?MVIJi8ZsOUris9H2qI+UAHneA3CpouIMUR3bBQuBVvw1iNkQwHaOGKSJXAFj?=
- =?us-ascii?Q?oXPojnxSxvBI0aLvKstQGjRqNI35OsjF1XmTChxt?=
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="851178104"
+Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
+ ([10.102.18.68])
+ by fmsmga006.fm.intel.com with ESMTP; 11 Aug 2022 04:46:43 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 11 Aug 2022 13:45:52 +0200
+Message-Id: <20220811114552.1577550-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4d19cdc1-accf-4c12-4792-08da7b8acef9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2022 11:15:33.3868 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rXoWRMhEBzswWvl+RTgRRMa3EGWYfkA3xbCdL96cagjX5/L1F0DdB0gLaz3E2yyOdKVlDlLvzT3Xpelo8DMlsg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3052
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660216541; x=1691752541;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=NCXBASbrRcAfnEwfuTEVEAbZQ9uPhnFUOOrPkvckEtc=;
- b=Yd3yBseQus4be5oXM6QBrV67mMbMECC7EHqVJ4NKO6bUKlg6nYueh8QF
- 2Uhl0iCjMRZKe5hgU8bLOIC+Mawr0RZ6W4adJC7wGDyt2h9eBsGruwzDT
- zR9cmFzbud2g+AcEX3R6w7qYgRX7kU4OC8LvWaBzI+tZMl2BA9i+esX+o
- +lqmDkr0Fn03qKgHBbyAe4+Jm7xasLjcaW/vOB/xyTYQj62Hpzb6Y8I5X
- xpay5cqaWgqItMqi7a2TZi/Vns6LrdunAz7U8tki+STquRj90LLkpaVP0
- E0MIZUuxlEYIELn4FKwpfL0W5LPkkhBq+Nqp307LG+LL3g5ZYBsyxLdpH
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1660218406; x=1691754406;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+EmJVN6VCmlLQBE57BZPSibLQmgrqsoO+KXecqQLbhM=;
+ b=jsEsZdiMzW/MdTwa03hIaHnT9s19eHvznoEVg8lD8RVIYsTO5vOmp1Wf
+ W/zSlXHDSpvRKNDZedu1xxmcRDBWyGvnmjuTCCjdZ/LlxcXcVdnaCkI7+
+ qrulxLq9KCxHUFCtke9SYdEllpBp2kORbGXqU6pVycS3p4D6/7Nfc9jw+
+ 5Ts5GGsJldYm01iU3v8sReemcwG3wiH9iBHjmlA6Mj8FyTN41VTz4yVQ7
+ 9tJtSFuUFfEjtjggRgLoKws7xK9PL4/y94S4WVqtBItRyFPye91mB3vSl
+ YiQtYD3F2N7eDPG7slvbxk5E82aUVgRBuofKkN1JHDcRuGeDGHREigxd0
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Yd3yBseQ
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
- recovery if GLOBR fails
+ header.a=rsa-sha256 header.s=Intel header.b=jsEsZdiM
+Subject: [Intel-wired-lan] [PATCH net v1] ice: Fix inventory failed error
+ during flash update
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,44 +92,330 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 
+After updating flash image on E810 card with NVM update tool
+there was an error: The inventory process failed.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Mateusz Palczewski
-> Sent: Tuesday, August 2, 2022 1:49 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
-> recovery if GLOBR fails
-> 
-> From: Alan Brady <alan.brady@intel.com>
-> 
-> When a tx_timeout fires, the PF attempts to recover by incrementally
-> resetting.  First we try a PFR, then CORER and finally a GLOBR.  If the GLOBR
-> fails, then we keep hitting the tx_timeout and incrementing the recovery
-> level and issuing dmesgs, which is both annoying to the user and
-> accomplishes nothing.
-> 
-> If the GLOBR fails, then we're pretty much totally hosed, and there's not
-> much else we can do to recover, so this makes it such that we just kill the VSI
-> and stop hitting the tx_timeout in such a case.
-> 
-> Fixes: 41c445ff0f48 ("i40e: main driver core")
-> Signed-off-by: Alan Brady <alan.brady@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->  v2: Changed the author
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
+This was reported at bugzilla thread #2114483 and caused by the tool
+trying to read devlink parameters fw.mgmt.minsrev and fw.undi.minsrev
+but those parameters were not registered by the driver.
 
-Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+The ice NVM flash has a security revision field for the main NVM bank
+and the Option ROM bank. In addition to the revision within the module,
+the device also has a minimum security revision TLV area. This minimum
+security revision field indicates the minimum value that will be
+accepted for the associated security revision when loading the NVM bank.
+
+These parameters are permanent (i.e. stored in flash), and are used to
+indicate the minimum security revision of the associated NVM bank. If
+the image in the bank has a lower security revision, then the flash
+loader will not continue loading that flash bank.
+
+Fix this by adding two new devlink parameters fw.mgmt.minsrev
+and fw.undi.minsrev and function to read they respective values.
+
+This idea was proposed before with both write and read funcionality
+but was rejected by community. This patch focuses on read only.
+
+Fixes: 1adf7ead8204 ("ice: enable initial devlink support")
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Link: https://lore.kernel.org/netdev/20210129004332.3004826-5-anthony.l.nguyen@intel.com/
+---
+ Documentation/networking/devlink/ice.rst      | 33 +++++++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 17 ++++
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 90 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_nvm.c      | 53 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |  1 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |  8 ++
+ 6 files changed, 202 insertions(+)
+
+diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
+index 8c082b139bbd..aabd33a7f7da 100644
+--- a/Documentation/networking/devlink/ice.rst
++++ b/Documentation/networking/devlink/ice.rst
+@@ -90,6 +90,39 @@ The ``ice`` driver reports the following versions
+       - 0xee16ced7
+       - The first 4 bytes of the hash of the netlist module contents.
+ 
++Parameters
++==========
++
++The minimum security revision fields of the ice device control whether the
++associated flash section can be loaded. If the security revision field of
++the section -- ``fw.mgmt.srev`` for the main firmware section and
++``fw.undi.srev`` for the Option ROM -- is lower than the associated minimum
++security revision, then the device will not load that section of firmware.
++
++The ``ice`` driver implements driver-specific parameters for reading the
++minimum security revision fields associated those two sections of the device
++flash. Note that the device will not allow lowering a minimum security
++revision, nor will it allow increasing the security revision higher than the
++associated security revision of the active flash image.
++
++.. list-table:: Minimum security revision parameters
++      :widths: 5 5 5 85
++
++   * - Name
++     - Type
++     - Mode
++     - Description
++   * - ``fw.undi.minsrev``
++     - u32
++     - permanent
++     - The device's minimum security revision for the ``fw.undi`` section of
++       the flash.
++   * - ``fw.mgmt.minsrev``
++     - u32
++     - permanent
++     - The device's minimum security revision for the ``fw.mgmt`` section of
++       the flash.
++
+ Flash Update
+ ============
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 9939238573a4..4d46f91adbdc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1509,6 +1509,23 @@ struct ice_aqc_nvm_checksum {
+ 	u8 rsvd2[12];
+ };
+ 
++#define ICE_AQC_NVM_MINSREV_MOD_ID		0x130
++
++/* Used for reading and writing MinSRev using 0x0701 and 0x0703. Note that the
++ * type field is excluded from the section when reading and writing from
++ * a module using the module_typeid field with these AQ commands.
++ */
++struct ice_aqc_nvm_minsrev {
++	__le16 length;
++	__le16 validity;
++#define ICE_AQC_NVM_MINSREV_NVM_VALID          BIT(0)
++#define ICE_AQC_NVM_MINSREV_OROM_VALID         BIT(1)
++	__le16 nvm_minsrev_l;
++	__le16 nvm_minsrev_h;
++	__le16 orom_minsrev_l;
++	__le16 orom_minsrev_h;
++};
++
+ /* Used for NVM Set Package Data command - 0x070A */
+ struct ice_aqc_nvm_pkg_data {
+ 	u8 reserved[3];
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 3337314a7b35..95f1653306d5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -372,6 +372,83 @@ static int ice_devlink_info_get(struct devlink *devlink,
+ 	return err;
+ }
+ 
++enum ice_devlink_param_id {
++	ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
++	ICE_DEVLINK_PARAM_ID_FW_MGMT_MINSREV,
++	ICE_DEVLINK_PARAM_ID_FW_UNDI_MINSREV,
++};
++
++/**
++ * ice_devlink_minsrev_get - Get the current minimum security revision
++ * @devlink: pointer to the devlink instance
++ * @id: the parameter ID to get
++ * @ctx: context to return the parameter value
++ *
++ * Returns: zero on success, or an error code on failure.
++ */
++static int
++ice_devlink_minsrev_get(struct devlink *devlink, u32 id,
++			struct devlink_param_gset_ctx *ctx)
++{
++	struct ice_pf *pf = devlink_priv(devlink);
++	struct device *dev = ice_pf_to_dev(pf);
++	struct ice_minsrev_info minsrevs = {};
++
++	if (id != ICE_DEVLINK_PARAM_ID_FW_MGMT_MINSREV &&
++	    id != ICE_DEVLINK_PARAM_ID_FW_UNDI_MINSREV)
++		return -EINVAL;
++
++	if (ice_get_nvm_minsrevs(&pf->hw, &minsrevs)) {
++		dev_warn(dev, "Failed to read minimum security revision data from flash\n");
++		return -EIO;
++	}
++
++	/* We report zero if the device has not yet had a valid minimum
++	 * security revision programmed for the associated module. This makes
++	 * sense because it is not possible to have a security revision of
++	 * less than zero. Thus, all images will be able to load if the
++	 * minimum security revision is zero, the same as the case where the
++	 * minimum value is indicated as invalid.
++	 */
++	switch (id) {
++	case ICE_DEVLINK_PARAM_ID_FW_MGMT_MINSREV:
++		if (minsrevs.nvm_valid)
++			ctx->val.vu32 = minsrevs.nvm;
++		else
++			ctx->val.vu32 = 0;
++		break;
++	case ICE_DEVLINK_PARAM_ID_FW_UNDI_MINSREV:
++		if (minsrevs.orom_valid)
++			ctx->val.vu32 = minsrevs.orom;
++		else
++			ctx->val.vu32 = 0;
++		break;
++	}
++
++	return 0;
++}
++
++/**
++ * ice_devlink_minsrev_set - Set the minimum security revision
++ * @devlink: pointer to the devlink instance
++ * @id: the parameter ID to set
++ * @ctx: context to return the parameter value
++ *
++ * Currently manually changing minimum security revision is not supported.
++ *
++ * Returns: EINVAL.
++ */
++static int
++ice_devlink_minsrev_set(struct devlink *devlink, u32 id,
++			struct devlink_param_gset_ctx *ctx)
++{
++	struct ice_pf *pf = devlink_priv(devlink);
++
++	dev_err(ice_pf_to_dev(pf), "Setting minimum security revision is not available\n");
++
++	return -EINVAL;
++}
++
+ /**
+  * ice_devlink_reload_empr_start - Start EMP reset to activate new firmware
+  * @devlink: pointer to the devlink instance to reload
+@@ -589,6 +666,19 @@ static const struct devlink_param ice_devlink_params[] = {
+ 			      ice_devlink_enable_iw_get,
+ 			      ice_devlink_enable_iw_set,
+ 			      ice_devlink_enable_iw_validate),
++	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_FW_MGMT_MINSREV,
++			     "fw.mgmt.minsrev",
++			     DEVLINK_PARAM_TYPE_U32,
++			     BIT(DEVLINK_PARAM_CMODE_PERMANENT),
++			     ice_devlink_minsrev_get,
++			     ice_devlink_minsrev_set, NULL),
++	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_FW_UNDI_MINSREV,
++			     "fw.undi.minsrev",
++			     DEVLINK_PARAM_TYPE_U32,
++			     BIT(DEVLINK_PARAM_CMODE_PERMANENT),
++			     ice_devlink_minsrev_get,
++			     ice_devlink_minsrev_set, NULL),
++
+ 
+ };
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index 13cdb5ea594d..1c3fa733387d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -1139,6 +1139,59 @@ int ice_nvm_write_activate(struct ice_hw *hw, u8 cmd_flags, u8 *response_flags)
+ 	return err;
+ }
+ 
++/**
++ * ice_get_nvm_minsrevs - Get the Minimum Security Revision values from flash
++ * @hw: pointer to the HW struct
++ * @minsrevs: structure to store NVM and OROM minsrev values
++ *
++ * Read the Minimum Security Revision TLV and extract the revision values from
++ * the flash image into a readable structure for processing.
++ */
++int ice_get_nvm_minsrevs(struct ice_hw *hw, struct ice_minsrev_info *minsrevs)
++{
++	struct ice_aqc_nvm_minsrev data;
++	int status;
++	u16 valid;
++
++	status = ice_acquire_nvm(hw, ICE_RES_READ);
++	if (status)
++		return status;
++
++	status = ice_aq_read_nvm(hw, ICE_AQC_NVM_MINSREV_MOD_ID, 0,
++				 sizeof(data), &data, true, false, NULL);
++
++	ice_release_nvm(hw);
++
++	if (status)
++		return status;
++
++	valid = le16_to_cpu(data.validity);
++
++	/* Extract NVM minimum security revision */
++	if (valid & ICE_AQC_NVM_MINSREV_NVM_VALID) {
++		u16 minsrev_l, minsrev_h;
++
++		minsrev_l = le16_to_cpu(data.nvm_minsrev_l);
++		minsrev_h = le16_to_cpu(data.nvm_minsrev_h);
++
++		minsrevs->nvm = minsrev_h << 16 | minsrev_l;
++		minsrevs->nvm_valid = true;
++	}
++
++	/* Extract the OROM minimum security revision */
++	if (valid & ICE_AQC_NVM_MINSREV_OROM_VALID) {
++		u16 minsrev_l, minsrev_h;
++
++		minsrev_l = le16_to_cpu(data.orom_minsrev_l);
++		minsrev_h = le16_to_cpu(data.orom_minsrev_h);
++
++		minsrevs->orom = minsrev_h << 16 | minsrev_l;
++		minsrevs->orom_valid = true;
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_aq_nvm_update_empr
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.h b/drivers/net/ethernet/intel/ice/ice_nvm.h
+index 856d1ad4398b..b44ecb8b9341 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.h
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.h
+@@ -20,6 +20,7 @@ ice_read_flat_nvm(struct ice_hw *hw, u32 offset, u32 *length, u8 *data,
+ int
+ ice_get_pfa_module_tlv(struct ice_hw *hw, u16 *module_tlv, u16 *module_tlv_len,
+ 		       u16 module_type);
++int ice_get_nvm_minsrevs(struct ice_hw *hw, struct ice_minsrev_info *minsrevs);
+ int ice_get_inactive_orom_ver(struct ice_hw *hw, struct ice_orom_info *orom);
+ int ice_get_inactive_nvm_ver(struct ice_hw *hw, struct ice_nvm_info *nvm);
+ int
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 861b64322959..c14fa57b1cb7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -428,6 +428,14 @@ struct ice_nvm_info {
+ 	u8 minor;
+ };
+ 
++/* Minimum Security Revision information */
++struct ice_minsrev_info {
++	u32 nvm;
++	u32 orom;
++	u8 nvm_valid : 1;
++	u8 orom_valid : 1;
++};
++
+ /* netlist version information */
+ struct ice_netlist_info {
+ 	u32 major;			/* major high/low */
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
