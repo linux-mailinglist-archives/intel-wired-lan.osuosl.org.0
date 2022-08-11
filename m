@@ -1,85 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEC7A590089
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 17:44:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17476590634
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 20:14:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E8FFF6108A;
-	Thu, 11 Aug 2022 15:44:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E8FFF6108A
+	by smtp1.osuosl.org (Postfix) with ESMTP id B05BD8301F;
+	Thu, 11 Aug 2022 18:14:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B05BD8301F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660232658;
-	bh=0c/kEfKQdJFbJiRs+0iJEcDTIXMk/VjovneSS2Q1lLE=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1660241691;
+	bh=WJ+f0IENPDBSic7Ta2T0991VgMz240D20ANM4pBsqI4=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=OEjl5pu00fw+0UTbtaaPBAl+oroGLx/TcY6uiudlS/I1lOAo28gKFLWkEgMh9VHW/
-	 cnfacOHWx53hPD6Ae/Mt6koI+tvZRM0gArXkRx7XNufv7HeJ7CPUHsf8h02TC6vTlc
-	 ruCrtBY72zNWoz9/mtFndfVzUbhg3dHDOm0ccaT+TanIUEuY9oep7UnOHfbeGz6hOB
-	 d3iBBWYuapShPJe1xHAZ7SrF9COuWllsoeaaeriy1nYJjWcI75Gkip0p/3HpwcBf/R
-	 ZVxuIotP7eheq/415lIyQsmEtH6k4dpoxHiUj4XWFt4zGWk/XpCQZsC6WEsNfR0+qg
-	 AE3voaIC3cytg==
+	b=V6TI0K0qPvux62s3pBPXdMnf75FMnkc8vpwjNQv04xWc4iGZaHfP1kA9aOU9dM/vj
+	 gFRCDEiTJd94lLovqaYgC08WZuKlqvVYjTsrZfI7tR55lPD0ShvhrLCvMT6k5CmP7O
+	 WmjBIeXUZk98Y2VRw3V4Tydlk60OQErIwVrNB/zJ5ugToeznLE/jRRAmNRw4f6CaRd
+	 KW9tRk22noDNedrEUbpWMDzDJGVQtczLyqiCecmdWQH17ouCVw2r7v9ZsALVPwaPGM
+	 iRFufCU8F+8o5k37Mmagh61wCG5PYGwmi9CUbi54huYWrZHJ9+TfAEjcn5FsLjTHGu
+	 M7dApFcrtMKjg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YU_lkAxkiAzD; Thu, 11 Aug 2022 15:44:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2a4Bet5A1OQb; Thu, 11 Aug 2022 18:14:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6EE2B60B06;
-	Thu, 11 Aug 2022 15:44:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6EE2B60B06
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD2C582FF9;
+	Thu, 11 Aug 2022 18:14:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD2C582FF9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0C04F1BF371
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 15:44:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D6DCB1BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 18:14:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DA729404C3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 15:44:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA729404C3
+ by smtp4.osuosl.org (Postfix) with ESMTP id B6C194184A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 18:14:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6C194184A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JPNA-x9v_zlt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Aug 2022 15:44:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c_cEyS34lwld for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Aug 2022 18:14:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBDA240165
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BBDA240165
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 15:44:09 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 12512616E2;
- Thu, 11 Aug 2022 15:44:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FA5CC433C1;
- Thu, 11 Aug 2022 15:44:06 +0000 (UTC)
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Thu, 11 Aug 2022 11:41:09 -0400
-Message-Id: <20220811154237.1531313-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220811154237.1531313-1-sashal@kernel.org>
-References: <20220811154237.1531313-1-sashal@kernel.org>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A63DC4182A
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A63DC4182A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 18:14:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10436"; a="271810139"
+X-IronPort-AV: E=Sophos;i="5.93,230,1654585200"; d="scan'208";a="271810139"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2022 11:14:43 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,230,1654585200"; d="scan'208";a="602256418"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga007.jf.intel.com with ESMTP; 11 Aug 2022 11:14:43 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 11 Aug 2022 11:14:43 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 11 Aug 2022 11:14:40 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Thu, 11 Aug 2022 11:14:40 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.173)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Thu, 11 Aug 2022 11:14:38 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UWJxIwn+uB5+33DTMreruSzDXIJH7TIo+LEcsskryi083rQnLNuJYf/Ik4azbkfk4sRSkJMww11bpCm1FoEvznR8DIDxcHrCRSbJZgH/RHfNl2/aZyGNjgKPPJwD59vcCscMlSQFBx9mPo0QvlPdT1C27ZD+Dz8NeqC2aLucJXiQHgAQTpJQIo+ynAxkVd1TF5Vl10X/GjXpnRY0+CGhOdQ2iUCT+f1/23oimMwsUZ8EPAk9Scf4ZptuA6iqOl33rEQ6r5SUmWk5JxnS4fgJIVSrkqiuaQqqSj5PFhBUfS4yjjBZua62Bxs921Q32YRODgMDHzQsFLg6zHQVxlPvFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F29gLG4yk1k6+Jx1rDal8d4d9PeIrTEqcrjwbfdBq6o=;
+ b=jfVBrMmjNTsJ2Np15Zu3DrdONnJjWOVaaIEKEaEVsLq544f893UKuAo4rW9HuaIK/Pp7ZBe6dCyzyp/clbBbcwEcWopw0Ue+IbvefmuQrKUSJpnC6ZuQyqkJVOEbIQv+ttz2v/5srT3nE19/LeAHNqVdPWvQ2xE6TkkYz9vGBgpdgwi0m+hGMRuG2ZKMw57XBzPl2DlVw0m/C7t/UMh033iS5lG2eZwmMZZ+uW1DL/3obpu3+XuzZoO7tqk/4xV3+skTRWq+RaquFeXBjHtp2+WaerAsvaZT1V3Ms2Qs36NXHQ/QXzk+p/DxPTOKgeFL877eYKNdrUaMQaww3PM1dw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by DM6PR11MB2762.namprd11.prod.outlook.com (2603:10b6:5:c8::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5504.16; Thu, 11 Aug
+ 2022 18:14:37 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475%7]) with mapi id 15.20.5504.016; Thu, 11 Aug 2022
+ 18:14:36 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Siwik, Grzegorz" <grzegorz.siwik@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v4 2/4] ice: Ignore
+ ERR_ALREADY_EXISTS when setting promisc mode
+Thread-Index: AQHYrYSwsPf5n6epnUGViTX3lx5Ohq2qAHxA
+Date: Thu, 11 Aug 2022 18:14:36 +0000
+Message-ID: <SN6PR11MB3229D244CC48B161244F80F8C6649@SN6PR11MB3229.namprd11.prod.outlook.com>
+References: <1660223801-254272-1-git-send-email-grzegorz.siwik@intel.com>
+ <1660223801-254272-3-git-send-email-grzegorz.siwik@intel.com>
+In-Reply-To: <1660223801-254272-3-git-send-email-grzegorz.siwik@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.6.500.17
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: be439d2b-71ef-46bf-884a-08da7bc5598c
+x-ms-traffictypediagnostic: DM6PR11MB2762:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: XJsIhzcNJ0fOFjs/PYbQ6d8H5LtCDrRuR91SgfrPxkvF0+x7OB36xMdMh4H+URdWz/zeZAoRMYxywAkGUacOXTio++5GfYlACxBwhoBiczmWyldGTfFMNIwu9Es2E3XR2pEnRLOFMrxfs4xz24N91wiAbByV7+hFf3kIVzZkSY0/z4aM5dNbtkbucXGwmhFdiltPT4WqdTBnEvbBRaWYI+3BHx1Np7GVaFEMVehvHZmHfqRAy/w1jkyynqv/em0MnaFWA62FP9jfuPSoAH+kO9gQHCgMRQItnKCsvQRyO1wo6IQiDYCOoobL9/8mgYqGYCfYr9X8VblNcb8llajZ2QtvC2mn2jv7oN+ZxsiCUKy38N97vx0Kni0atqNJ8n4MVm0LXhdTsHQTq7WDA1cN9wehhZYNixHe3wF6V8xw4TLQzCNfxwt+BTGIOWeenEicTYbJzlV+WQNSEoMK1/7vs/tJ+R3ooTyS4ZbiF8va76uhKkRyd0XTIli/hfx0EONiOk8HNJPuR68MjS3dEzQ6Z12qhlaSJQxR4UN8Bi9XGkYAsLr2gGaMPynHR8ut0VYmiyc+YtmweFwOMyTb9iEQck4/Q2JJzM3l/+7f6U3QUE7s8JR1ta1ac7DD7AH58pGUGuHA/+F6xN7UJk4VhtQnXdS6DiDN0N3T3XNrDLRsy6HR9Xbd18cXbG6La69vXbSy9R23/VfXOKXHSUP5IuWkH64XaVBowzqU1/CJibAURQm4CD5cCZXIA/OGEjcuWAQ13FrV3HaR3lydZ0F8CzE654gXKmSkfp2q8Q5TBRjUc/E=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(136003)(346002)(376002)(396003)(39860400002)(366004)(5660300002)(26005)(66476007)(110136005)(8676002)(41300700001)(66446008)(4744005)(64756008)(478600001)(76116006)(7696005)(86362001)(33656002)(66556008)(8936002)(71200400001)(52536014)(9686003)(4326008)(66946007)(316002)(6506007)(107886003)(122000001)(38100700002)(55016003)(53546011)(2906002)(186003)(83380400001)(38070700005)(82960400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?BucoviFaplMm1MolgAQSJDl5v9f2rJnqEApxGEhySelVwaJsMjxfWn9QyaFc?=
+ =?us-ascii?Q?zVXCy2GCQcpOymdUlT+TibY5m2D4a3bVlQzaiMHh6plYh+o72pwMi6tNbmh/?=
+ =?us-ascii?Q?TudZu/m1r9u2gpNUAVng7rwz3I6rrPArCxA+G8HyCzI40P8AQ6uKBbZxjA4U?=
+ =?us-ascii?Q?lmpDrCXai2lHfEto+97nYqM8fuTrp40/Q526k66NAMvjgNDV1DDnZiKzS31s?=
+ =?us-ascii?Q?+/aEVgHTQba+ODre3N+cNc50DlXBUND9IK6okE0HJCx64l1hvtOKyi9x/pO0?=
+ =?us-ascii?Q?tzLPU8kZOdrAaOenKuvq/RBLn1jypiMXjA7jsWWtXCcvcDZvTWbFWqKZmYUG?=
+ =?us-ascii?Q?l9eX/+xbTGMsvPe2ayfa3Vo+vo9RWj30pjQRkGOb0asF4CMtaiJt14qfrPyr?=
+ =?us-ascii?Q?D+6rmSALzhfD1nN8EfTPFNTuuATC06M/Me6v+gcVa1Adqv7hGfMCcBfJZGQf?=
+ =?us-ascii?Q?MAJr4zyU6XEABjYjww7t6VGrwzX+i6PouDfXtiysLqanZwCi6p7Svl3U+mIf?=
+ =?us-ascii?Q?X83pecTDpgIITvEZivL4PZrwakTqgZ/sSyT4Jb+Y/zUoOqLae6ZPs5+wKKde?=
+ =?us-ascii?Q?LtBqqzsr26oK9hog2tPX+kQSdP4a5QYTA8Mr5AkLZ3pfmg8UsHRP9gaQjbGD?=
+ =?us-ascii?Q?Zd7XnhnhGsUYZZXQ9hbEufR5r+GFpImhrsKcYiSLg3u5LBYFyvpkyWhSe59N?=
+ =?us-ascii?Q?rJhT3j0pVDxmzxHFIr3zgtRhGYjct/aOFDUzDFYCUv3AYQqgU21hxl8+6TdE?=
+ =?us-ascii?Q?06rOI+4SXDyjlY1xIyKzz9mv4un7bB4C/cA87RtQhh1BR8bUlDLQO0wk2G+0?=
+ =?us-ascii?Q?q0PYd/JrXAY1qoDv4fpeZtExc3YJ11a0rjgxL8VFI5oFPGGLjWPhBSrjTAzc?=
+ =?us-ascii?Q?lW0uQkqN4xrfU/0W5UTUpE9OhFjUrZWwpR2vvYs0YC8jc+eldf+Hli+DsPcT?=
+ =?us-ascii?Q?+sIqBQtXr2fqs1TJe7jHRyh6+99fsZwgQym+ESzm3MIo4vtOVV3crRSFlDr8?=
+ =?us-ascii?Q?GJRHct9mulXBPj3QaHcOhgCzRB6/JyztKPFsHt5F2L2VY/+SHW/V2dgxjHb0?=
+ =?us-ascii?Q?voPVNWuDLWyyX/ozw30g729tKcxnSIEn7E0XB1ZZhPVEQ51GTGFN8JI8N+tT?=
+ =?us-ascii?Q?9ixzBBtZQSM39Ex+q1PbVPu5PQifZFFFjsPluUPp3M9YLRI3I6YWt95wX4rW?=
+ =?us-ascii?Q?C9t3N4PxXW73BlZ6cB7kAslROQoka0Ba2wX1pBkBwVzzt3gIUICUxEkvPOaZ?=
+ =?us-ascii?Q?M9o+I4NmEF7NQR24X2WZXIreToc18za4ytTTWoSfH4kXOcCxdg7roa2OBYaz?=
+ =?us-ascii?Q?6+cppl7qCdZbb0l5Zzz7Y4HoumUNp195rD3soLHPtcHMEEEv1tRPtWKhhZeD?=
+ =?us-ascii?Q?sauWa8DaMm34pNkaI/KRXrZgP+ZP7m3VUQigZbDrOv4YNO+CiRgAxH5izl62?=
+ =?us-ascii?Q?V7hDm9H3gJzs3w/1XRLlzZaZlUYQRN+plhTi0fOT/UDGrZwTvE+TwKGmZzuT?=
+ =?us-ascii?Q?+FBcltgHyij6RMykuczFXTdpGCDV310ksY76VpWjyAqRdX3vOiC+VKbrF7Mz?=
+ =?us-ascii?Q?dCNhZze5hCv2d1qAap4qVTDHrD1swLyDk+bF+m9cSNpraZizBW1hz8KVMleK?=
+ =?us-ascii?Q?PQ=3D=3D?=
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: be439d2b-71ef-46bf-884a-08da7bc5598c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2022 18:14:36.7346 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JfnwjSgIf9PlU40MHhOLqTvZEAXzwarL7NWLqUKmgN4ByMKIjNhdbEf9JfwXxLUTaRlRMY6PCWvzf0jOdwdElMw/vv4ffx8+0lEKHstkP64=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2762
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1660232648;
- bh=JpWJuc87JdE7l8Oa/B1+9XhhPK7XEBMFR4T7SWPH+Tc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nqTpBtJdIUA6YGpnRGA+ZLbxB8+eHwv27H0SnRVScYA5aB0qbcQuGTf0CMUeJXWiq
- nNHolWtkFbz1pXGQ2Ob62NEvIlmLo040vSmu3uPkFHDcmQZtw1r5OpRjnOmBhsaSuv
- qxbDp7oGuTNfPrG5gbxicp22HoSE7il1jdgUuJVssR+2lUmLvU74jM0qR+aLNiqHhS
- XctGJlmldQ7fT0PU+V4tXuwZPEPrqbeBKHIuLpx6m24Lh/zXpM6yVloxyA2ciuyMzV
- I0z4UA5yHXdMngKZd2YL5NrUuyciffaCNE8TkDaXmiijLHdGPIkN0ALuVueUq+Cbh1
- +adwd+vu3Cohw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=nqTpBtJd
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.18 15/93] iavf: Add waiting for
- response from PF in set mac
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1660241684; x=1691777684;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=F29gLG4yk1k6+Jx1rDal8d4d9PeIrTEqcrjwbfdBq6o=;
+ b=FS7eFGSo/po6jJk2FjQwu01/DRnemvQwtMWBfNjL627Cy+d0vxADdcZq
+ FAMAaV9KyWtovm3/7dWkIU1Y+gaN1Lq9H5r2vEg0D3UCeXmLSpDU8aUO8
+ T1VhO1QlbKz6gIGS1Uxp4RxeFw+KcgoQlLR0TAvKFl3MDs1BLI07bRf9M
+ 1ZBOhQiubjd9IVuvtHTiCHtFZGVG4GyGZpDbZxtHM0R8GGuu+lf71dUrp
+ bn0Jsg2hFgL1Q6iHNRp3wTvUUopJ0Vwe5bOMiImnj3cLgCJNPfhoMNgNY
+ TRm4/Dkd4SaBm+6BgO7oJqAbNOUgG9sOQ9nFLeQd6eRLApyk+AhYIzzNz
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=FS7eFGSo
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v4 2/4] ice: Ignore
+ ERR_ALREADY_EXISTS when setting promisc mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,377 +192,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, jesse.brandeburg@intel.com,
- edumazet@google.com, netdev@vger.kernel.org,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>, kuba@kernel.org,
- pabeni@redhat.com, davem@davemloft.net, intel-wired-lan@lists.osuosl.org
+Cc: "Siwik, Grzegorz" <grzegorz.siwik@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 
-[ Upstream commit 35a2443d0910fdd6ce29d4f724447ad7029e8f23 ]
 
-Make iavf_set_mac synchronous by waiting for a response
-from a PF. Without this iavf_set_mac is always returning
-success even though set_mac can be rejected by a PF.
-This ensures that when set_mac exits netdev MAC is updated.
-This is needed for sending ARPs with correct MAC after
-changing VF's MAC. This is also needed by bonding module.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Grzegorz Siwik
+> Sent: Thursday, August 11, 2022 6:17 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Siwik, Grzegorz <grzegorz.siwik@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v4 2/4] ice: Ignore ERR_ALREADY_EXISTS
+> when setting promisc mode
 
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |   7 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 127 +++++++++++++++---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  61 ++++++++-
- 3 files changed, 174 insertions(+), 21 deletions(-)
+This title still needs updating; ERR_ALREADY_EXISTS does not exist in this patch or the driver.
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 0ea0361cd86b..69703801d1b0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -145,7 +145,8 @@ struct iavf_mac_filter {
- 		u8 remove:1;        /* filter needs to be removed */
- 		u8 add:1;           /* filter needs to be added */
- 		u8 is_primary:1;    /* filter is a default VF MAC */
--		u8 padding:4;
-+		u8 add_handled:1;   /* received response for filter add */
-+		u8 padding:3;
- 	};
- };
- 
-@@ -251,6 +252,7 @@ struct iavf_adapter {
- 	struct work_struct adminq_task;
- 	struct delayed_work client_task;
- 	wait_queue_head_t down_waitqueue;
-+	wait_queue_head_t vc_waitqueue;
- 	struct iavf_q_vector *q_vectors;
- 	struct list_head vlan_filter_list;
- 	struct list_head mac_filter_list;
-@@ -295,6 +297,7 @@ struct iavf_adapter {
- #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
- #define IAVF_FLAG_SETUP_NETDEV_FEATURES		BIT(18)
- #define IAVF_FLAG_REINIT_MSIX_NEEDED		BIT(20)
-+#define IAVF_FLAG_INITIAL_MAC_SET		BIT(23)
- /* duplicates for common code */
- #define IAVF_FLAG_DCB_ENABLED			0
- 	/* flags for admin queue service task */
-@@ -567,6 +570,8 @@ void iavf_enable_vlan_stripping_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_disable_vlan_stripping_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_enable_vlan_insertion_v2(struct iavf_adapter *adapter, u16 tpid);
- void iavf_disable_vlan_insertion_v2(struct iavf_adapter *adapter, u16 tpid);
-+int iavf_replace_primary_mac(struct iavf_adapter *adapter,
-+			     const u8 *new_mac);
- void
- iavf_set_vlan_offload_features(struct iavf_adapter *adapter,
- 			       netdev_features_t prev_features,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 2e2c153ce46a..2ec3ebb397f3 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -978,6 +978,7 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
- 
- 		list_add_tail(&f->list, &adapter->mac_filter_list);
- 		f->add = true;
-+		f->add_handled = false;
- 		f->is_new_mac = true;
- 		f->is_primary = ether_addr_equal(macaddr, adapter->hw.mac.addr);
- 		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
-@@ -989,47 +990,132 @@ struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
- }
- 
- /**
-- * iavf_set_mac - NDO callback to set port mac address
-- * @netdev: network interface device structure
-- * @p: pointer to an address structure
-+ * iavf_replace_primary_mac - Replace current primary address
-+ * @adapter: board private structure
-+ * @new_mac: new MAC address to be applied
-  *
-- * Returns 0 on success, negative on failure
-+ * Replace current dev_addr and send request to PF for removal of previous
-+ * primary MAC address filter and addition of new primary MAC filter.
-+ * Return 0 for success, -ENOMEM for failure.
-+ *
-+ * Do not call this with mac_vlan_list_lock!
-  **/
--static int iavf_set_mac(struct net_device *netdev, void *p)
-+int iavf_replace_primary_mac(struct iavf_adapter *adapter,
-+			     const u8 *new_mac)
- {
--	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_mac_filter *f;
--	struct sockaddr *addr = p;
--
--	if (!is_valid_ether_addr(addr->sa_data))
--		return -EADDRNOTAVAIL;
--
--	if (ether_addr_equal(netdev->dev_addr, addr->sa_data))
--		return 0;
- 
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 
-+	list_for_each_entry(f, &adapter->mac_filter_list, list) {
-+		f->is_primary = false;
-+	}
-+
- 	f = iavf_find_filter(adapter, hw->mac.addr);
- 	if (f) {
- 		f->remove = true;
--		f->is_primary = true;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DEL_MAC_FILTER;
- 	}
- 
--	f = iavf_add_filter(adapter, addr->sa_data);
-+	f = iavf_add_filter(adapter, new_mac);
-+
- 	if (f) {
-+		/* Always send the request to add if changing primary MAC
-+		 * even if filter is already present on the list
-+		 */
- 		f->is_primary = true;
--		ether_addr_copy(hw->mac.addr, addr->sa_data);
-+		f->add = true;
-+		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER;
-+		ether_addr_copy(hw->mac.addr, new_mac);
- 	}
- 
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
- 	/* schedule the watchdog task to immediately process the request */
--	if (f)
-+	if (f) {
- 		queue_work(iavf_wq, &adapter->watchdog_task.work);
-+		return 0;
-+	}
-+	return -ENOMEM;
-+}
-+
-+/**
-+ * iavf_is_mac_set_handled - wait for a response to set MAC from PF
-+ * @netdev: network interface device structure
-+ * @macaddr: MAC address to set
-+ *
-+ * Returns true on success, false on failure
-+ */
-+static bool iavf_is_mac_set_handled(struct net_device *netdev,
-+				    const u8 *macaddr)
-+{
-+	struct iavf_adapter *adapter = netdev_priv(netdev);
-+	struct iavf_mac_filter *f;
-+	bool ret = false;
-+
-+	spin_lock_bh(&adapter->mac_vlan_list_lock);
-+
-+	f = iavf_find_filter(adapter, macaddr);
- 
--	return (f == NULL) ? -ENOMEM : 0;
-+	if (!f || (!f->add && f->add_handled))
-+		ret = true;
-+
-+	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+
-+	return ret;
-+}
-+
-+/**
-+ * iavf_set_mac - NDO callback to set port MAC address
-+ * @netdev: network interface device structure
-+ * @p: pointer to an address structure
-+ *
-+ * Returns 0 on success, negative on failure
-+ */
-+static int iavf_set_mac(struct net_device *netdev, void *p)
-+{
-+	struct iavf_adapter *adapter = netdev_priv(netdev);
-+	struct sockaddr *addr = p;
-+	bool handle_mac = iavf_is_mac_set_handled(netdev, addr->sa_data);
-+	int ret;
-+
-+	if (!is_valid_ether_addr(addr->sa_data))
-+		return -EADDRNOTAVAIL;
-+
-+	ret = iavf_replace_primary_mac(adapter, addr->sa_data);
-+
-+	if (ret)
-+		return ret;
-+
-+	/* If this is an initial set MAC during VF spawn do not wait */
-+	if (adapter->flags & IAVF_FLAG_INITIAL_MAC_SET) {
-+		adapter->flags &= ~IAVF_FLAG_INITIAL_MAC_SET;
-+		return 0;
-+	}
-+
-+	if (handle_mac)
-+		goto done;
-+
-+	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue, false, msecs_to_jiffies(2500));
-+
-+	/* If ret < 0 then it means wait was interrupted.
-+	 * If ret == 0 then it means we got a timeout.
-+	 * else it means we got response for set MAC from PF,
-+	 * check if netdev MAC was updated to requested MAC,
-+	 * if yes then set MAC succeeded otherwise it failed return -EACCES
-+	 */
-+	if (ret < 0)
-+		return ret;
-+
-+	if (!ret)
-+		return -EAGAIN;
-+
-+done:
-+	if (!ether_addr_equal(netdev->dev_addr, addr->sa_data))
-+		return -EACCES;
-+
-+	return 0;
- }
- 
- /**
-@@ -2445,6 +2531,8 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 		ether_addr_copy(netdev->perm_addr, adapter->hw.mac.addr);
- 	}
- 
-+	adapter->flags |= IAVF_FLAG_INITIAL_MAC_SET;
-+
- 	adapter->tx_desc_count = IAVF_DEFAULT_TXD;
- 	adapter->rx_desc_count = IAVF_DEFAULT_RXD;
- 	err = iavf_init_interrupt_scheme(adapter);
-@@ -4678,6 +4766,9 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* Setup the wait queue for indicating transition to down status */
- 	init_waitqueue_head(&adapter->down_waitqueue);
- 
-+	/* Setup the wait queue for indicating virtchannel events */
-+	init_waitqueue_head(&adapter->vc_waitqueue);
-+
- 	return 0;
- 
- err_ioremap:
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 1603e99bae4a..7c98ac1fe458 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -598,6 +598,8 @@ static void iavf_mac_add_ok(struct iavf_adapter *adapter)
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
- 		f->is_new_mac = false;
-+		if (!f->add && !f->add_handled)
-+			f->add_handled = true;
- 	}
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- }
-@@ -618,6 +620,9 @@ static void iavf_mac_add_reject(struct iavf_adapter *adapter)
- 		if (f->remove && ether_addr_equal(f->macaddr, netdev->dev_addr))
- 			f->remove = false;
- 
-+		if (!f->add && !f->add_handled)
-+			f->add_handled = true;
-+
- 		if (f->is_new_mac) {
- 			list_del(&f->list);
- 			kfree(f);
-@@ -1970,6 +1975,7 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			iavf_mac_add_reject(adapter);
- 			/* restore administratively set MAC address */
- 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
-+			wake_up(&adapter->vc_waitqueue);
- 			break;
- 		case VIRTCHNL_OP_DEL_VLAN:
- 			dev_err(&adapter->pdev->dev, "Failed to delete VLAN filter, error %s\n",
-@@ -2134,7 +2140,13 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		if (!v_retval)
- 			iavf_mac_add_ok(adapter);
- 		if (!ether_addr_equal(netdev->dev_addr, adapter->hw.mac.addr))
--			eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+			if (!ether_addr_equal(netdev->dev_addr,
-+					      adapter->hw.mac.addr)) {
-+				netif_addr_lock_bh(netdev);
-+				eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+				netif_addr_unlock_bh(netdev);
-+			}
-+		wake_up(&adapter->vc_waitqueue);
- 		break;
- 	case VIRTCHNL_OP_GET_STATS: {
- 		struct iavf_eth_stats *stats =
-@@ -2164,10 +2176,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			/* restore current mac address */
- 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
- 		} else {
-+			netif_addr_lock_bh(netdev);
- 			/* refresh current mac address if changed */
--			eth_hw_addr_set(netdev, adapter->hw.mac.addr);
- 			ether_addr_copy(netdev->perm_addr,
- 					adapter->hw.mac.addr);
-+			netif_addr_unlock_bh(netdev);
- 		}
- 		spin_lock_bh(&adapter->mac_vlan_list_lock);
- 		iavf_add_filter(adapter, adapter->hw.mac.addr);
-@@ -2203,6 +2216,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		}
- 		fallthrough;
- 	case VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS: {
-+		struct iavf_mac_filter *f;
-+		bool was_mac_changed;
-+		u64 aq_required = 0;
-+
- 		if (v_opcode == VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS)
- 			memcpy(&adapter->vlan_v2_caps, msg,
- 			       min_t(u16, msglen,
-@@ -2210,6 +2227,46 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 
- 		iavf_process_config(adapter);
- 		adapter->flags |= IAVF_FLAG_SETUP_NETDEV_FEATURES;
-+		was_mac_changed = !ether_addr_equal(netdev->dev_addr,
-+						    adapter->hw.mac.addr);
-+
-+		spin_lock_bh(&adapter->mac_vlan_list_lock);
-+
-+		/* re-add all MAC filters */
-+		list_for_each_entry(f, &adapter->mac_filter_list, list) {
-+			if (was_mac_changed &&
-+			    ether_addr_equal(netdev->dev_addr, f->macaddr))
-+				ether_addr_copy(f->macaddr,
-+						adapter->hw.mac.addr);
-+
-+			f->is_new_mac = true;
-+			f->add = true;
-+			f->add_handled = false;
-+			f->remove = false;
-+		}
-+
-+		/* re-add all VLAN filters */
-+		if (VLAN_FILTERING_ALLOWED(adapter)) {
-+			struct iavf_vlan_filter *vlf;
-+
-+			if (!list_empty(&adapter->vlan_filter_list)) {
-+				list_for_each_entry(vlf,
-+						    &adapter->vlan_filter_list,
-+						    list)
-+					vlf->add = true;
-+
-+				aq_required |= IAVF_FLAG_AQ_ADD_VLAN_FILTER;
-+			}
-+		}
-+
-+		spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+
-+		netif_addr_lock_bh(netdev);
-+		eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+		netif_addr_unlock_bh(netdev);
-+
-+		adapter->aq_required |= IAVF_FLAG_AQ_ADD_MAC_FILTER |
-+			aq_required;
- 		}
- 		break;
- 	case VIRTCHNL_OP_ENABLE_QUEUES:
--- 
-2.35.1
+> Ignore EEXIST error when setting promiscuous mode.
+> This fix is needed because the driver could set promiscuous mode when it still
+> has not cleared properly.
+> Promiscuous mode could be set only once, so setting it second time will be
+> rejected.
 
 _______________________________________________
 Intel-wired-lan mailing list
