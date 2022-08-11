@@ -1,84 +1,176 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55ACC58FA7F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 12:10:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C583E60B5B;
-	Thu, 11 Aug 2022 10:10:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C583E60B5B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660212622;
-	bh=ohNZQoY8+rErxLwDtelhk9KEd4+Dqqp6V3ClYAfT3IY=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=utv+XeNtwKDYrOiUNN/S+wQzpk5DN2qHaaFu8xGOBDUVqLIunQ63J1JFo/UIvQ/c6
-	 XWewQyyT6lV15qf6B+jwM3jAMkKszcCXyJ6aN5gKQyXYzqnEYhixtO1gYD7K+2aman
-	 s9UbGhGSSlGZwkvJWpNCOCyZQohMWgkMO4OKIqFeZ8pUreYhug2x+xmoHmr/pkl+/M
-	 BSbwgn8Nc3vomV7yLRnAri03I+mIh+AH4Vkx5TDtf/AZR96RoP5nJ+HESQk+M5SaB4
-	 JlYVI1gaHWcarALQtlD7VOhPxzIqJ8EaUN3pHx2kKE8VaxFE/8wyNlDfLTm8/ujU4N
-	 tNDRZmUPRLV5Q==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hhgF1-nTLm50; Thu, 11 Aug 2022 10:10:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7B01460AAE;
-	Thu, 11 Aug 2022 10:10:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B01460AAE
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A37E11BF403
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91F5C58FB22
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 13:15:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7DA5B40871
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7DA5B40871
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB80E4180D;
+	Thu, 11 Aug 2022 11:15:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB80E4180D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1660216550;
+	bh=y1CjDW4dh1g2wIKOJeBk2msH6iTwL2Uk9wNDcrNxQ4M=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=JF6UyByyz8PnY8QGkem4lgC0xODK91HYbxGlP2upMvDzhmhxwhrIArj9M9fESH5L/
+	 /4C6zR5fhROaMMPwoUYDNf3G9eAqWSO062GMWWXbHddlRWyt2+HhN+GB7Jw4hu+wC1
+	 KBh1HeMCspBcvlq7dD9hlAs0FqnUvvKPlc8JUGo1vy2blZgYc8eXbmAmSrkBFMZwAf
+	 5ewbPNBVYmeHOdW//2tWxVxDajk6noShcQvHX+uJQEP15TRRxtxmkP5B+2AXVx1oWk
+	 jddqXs8LUVsio5pW7PB6IUGhcC8wtB8AUfeM6INeUOKM2r7J0nOFcBeH1bvXHhItKX
+	 3XtbkEQ34YVaw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Eb5eeR0thmAi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Aug 2022 10:10:15 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 82cPCXOmvvXJ; Thu, 11 Aug 2022 11:15:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 81C43417D7;
+	Thu, 11 Aug 2022 11:15:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81C43417D7
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E08331BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id B94FB60A9B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B94FB60A9B
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id te5_HlAGAoPY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Aug 2022 11:15:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1177B4086F
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1177B4086F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="292569826"
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="292569826"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2022 03:10:14 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1D4760A74
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D1D4760A74
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 11:15:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="288888380"
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="288888380"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2022 04:15:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="556073921"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by orsmga003.jf.intel.com with ESMTP; 11 Aug 2022 03:10:13 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 11 Aug 2022 12:09:22 +0200
-Message-Id: <20220811100922.1540016-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="708580951"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga002.fm.intel.com with ESMTP; 11 Aug 2022 04:15:40 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Thu, 11 Aug 2022 04:15:40 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Thu, 11 Aug 2022 04:15:40 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Thu, 11 Aug 2022 04:15:40 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Lldp9Jpl5y1B298GGa/Hb0dNo4R9AhDFZHQLr2wkbexjmmCrfYiX/RaNfmt08+Wyo/Iuhh2A0BhUqK9j2u/cvbBrALOevmwaNHNBCMqT0w7FRePV7lduVvSOMp0vC1vE2cjiOfS34kXc8ODbLBirIe0+DlAJUPkuB8izdgih4jEn/6yFdGc9d75VhF1C3TCur/UIuNvYYU7ovMrvRHI1me8PtCvhRkCQ1nAgFdnOAGqiELpUbvVAEwiG4gxO3nAYf1f1FtkYUoBq1ih2NAF+T71BsDL7o7eIFdb7hhlkAVohoFiz1yRMKC3xQElvuSwVKNhylC+S1DD0HhMa17IMSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7f20wS/oIF6J7migV0LBwVR+KoYDx8oNTAQNouv46f0=;
+ b=KxAS97Jl2xH+19Ge5qCb9blHMJiKNVzq5Wr8hhbXyUFo+QNvjDLNyJo62fX3vEQ9nl6HQEtnA0I9n/syvnswdDmsrIJ35pbW4BUaKdeEBKNv9+Vatp7wAIgibKWU2dJf875j8L82BG2Wx8M8WVyWFp8LxGqjs7cpzAVb4wV7Y2yvIM8w4pU96Iy2OxPjo2H2D3C2SaC9ubee1WgwjWLjmKr4JEDbCY3R5xmZ8+0T9uFeyH3OVyt/IGbDqr21+HiR30Cf4RN7VGvKuoAKdCtLeYnHwbCdVRTC6aa8NZ+BHSht0BlPp8kqWM/peSupIH25gtb7zxxw0og/LsUnYLOKzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by DM6PR11MB3052.namprd11.prod.outlook.com (2603:10b6:5:69::29) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5504.16; Thu, 11 Aug
+ 2022 11:15:33 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::682f:e9fd:d1d7:f3b9]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::682f:e9fd:d1d7:f3b9%4]) with mapi id 15.20.5525.011; Thu, 11 Aug 2022
+ 11:15:33 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
+ recovery if GLOBR fails
+Thread-Index: AQHYpkjGWWErztxVj0qm9q0aiNm9pa2pmqUA
+Date: Thu, 11 Aug 2022 11:15:33 +0000
+Message-ID: <BYAPR11MB3367CCCA47B65703FAA583EFFC649@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20220802081917.86798-1-mateusz.palczewski@intel.com>
+In-Reply-To: <20220802081917.86798-1-mateusz.palczewski@intel.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 4d19cdc1-accf-4c12-4792-08da7b8acef9
+x-ms-traffictypediagnostic: DM6PR11MB3052:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: a2c1WasSyKOqk1aVJAdrUOzpj1L8Qcg9U3kEmW+07MznH/gm1oF06IppZoZNUWRBGJmt8Nuzb30Y19RksGLAVYrIRcTgX0mgaHDJqhloSnn8ayDha2icA/aI8eDONz4xqO0KCjKEPoXJAwtbu/RgAYF2+LnK8p8bqIh6czcAV3/ofXvey8KWiRo+CT2DuNBOnx2ja7twviOZn/nD0QEoFP6r8BPFC3TVFxe9L3cvsEXNwRdqkMnD61pfC6UEg2HZvjHGti1g8/WpTvWNJLz/KpadDbS920/qj32Ur3PkwPhXWOavbP6TI5wEgQY7rGtkYWnNQgz3Ebh6a9NPOpJVBxul+v/Jhm6HMSwjQ7XxJSg+Ogf1AMD17oPyY69+Z5aEtTAUYPSy+f/0l+WdWPCKEY7mT+pA6KfjnWEWz7SJ6kndMIYgtgW6buOCA4etHtoT+tQxS5OATlZEk5eO3RMk1oJeOc/fTzcfaf+24NarwnYC+T4rFBHnRZsnBefjNXHtefthEGAlEDyjH5EDlPSPyyQHSDOOmKOzpCGEmMBW0QKJfyjMk+//VgU1zeskNvKZElpMyUW7GD7UTF1jZJpHGWzAD0XgjdAc+HgYBOoVudStBni/spGjhW/aqmQmD5Bgk2tC1CSgnMgwBL6FX6iRtnykL3GCt/X1hoyfPLw9Wy28qUshNnk9CM9MnuYVrJTzoBHxsHUTs0kBd1eyTE7O+lipuw6qPSwAv+LPefIbzISNaj010uZSnuYwew1sNjBhkvXtEUW/aNYkTkBno/1KTtMQebTQnSs4k1go50pIybc=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(39860400002)(366004)(346002)(396003)(376002)(136003)(66446008)(38100700002)(83380400001)(26005)(9686003)(76116006)(66946007)(53546011)(41300700001)(8676002)(7696005)(122000001)(86362001)(52536014)(186003)(82960400001)(8936002)(5660300002)(2906002)(64756008)(55016003)(316002)(38070700005)(33656002)(110136005)(478600001)(6506007)(71200400001)(66476007)(66556008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?cHvP4xOEaBfI024CzlyKKMyPfZ9fBSZEhy8M/Cw+1ErF8J4cOUpMYOTVhq9O?=
+ =?us-ascii?Q?mIBOsw4GQzM+7vREK1a8WGpQC0llb+Jw2aJO7/Wz3o7mukwOibdh9wp2s8Ls?=
+ =?us-ascii?Q?3yt/CgPgTJZC5Pzxe4RC3qSg7V2Ra83+RNTZDefZVZRC/Z3KMRVQHqmnuuu4?=
+ =?us-ascii?Q?wQh5OIit+Z6hrYT+t9xgwCG4b+CwkXf99/hTcymWrVTv/sRxCCLQqNG18Yli?=
+ =?us-ascii?Q?5AJ6iH8/U+8gTUiNELXHPapJM3h2xqvq3hQz0qnQLiyKBvBitMaHLVByR9oS?=
+ =?us-ascii?Q?CCVl/V+tZZWAz7bRGA3hW0Hj3FqOZo/t2QVIDgTMqaiq6eclG9z5snmtdJEN?=
+ =?us-ascii?Q?FunGgxJPPtCIYatRb9AUQbk39GOCZP09kJHMQKL+mMnLoOOy2QAtoy7Co2+O?=
+ =?us-ascii?Q?fIRv8aNibsOdtF/x8VhETvsrmPpEZ3pwiNLrKHmn0Fc6FP4T0PjtpYOwyPaf?=
+ =?us-ascii?Q?5/vNXiGehJST0m8EAuCb+bttNaTYHCaLs7FP/78qyzFvuRoYHFtaU7ijiemU?=
+ =?us-ascii?Q?mGduvIia9cHT98tRX63mTrPAldmz03VUrJQSflI0AqQGCcdlXrqqfRpEvNsu?=
+ =?us-ascii?Q?KT4XkrthctqsHnb0dXmJUNvel4R5duzLFw/+eijUTi/Yy6cmHaQxRInlbkWw?=
+ =?us-ascii?Q?kHa1eNPHyKvcDMEy9m5tyEEB3PUkycq7K9GzDIk0ZuV26GCfMbOftGo9uvis?=
+ =?us-ascii?Q?MRi6Y5w2zUhb20o3eZWJFJqeQuDTSas4j37aCe40AJALv0/lGgyyK2iIKdY7?=
+ =?us-ascii?Q?KnPk7xdXST/civNCLX19ZdfAgMhyt5OPO8Vxu3t27Uzr+2cTwVahYEz6gbhS?=
+ =?us-ascii?Q?U1n2pE/Hq5MOXado86Yr/AHGfOkqXwUJu1Uyi++p6XWYaMQDp/XN6ajzQcwQ?=
+ =?us-ascii?Q?8TWtt4ZOKkWemic7/ehJ1ndpNKx+WTPW6xFgP+a7dXL/yBRwojQyIiwXHonD?=
+ =?us-ascii?Q?6V6wKsp2SAz8he/LOV0VZAkMe0kNlChLuf32ia4MPmhJR+mVmE/4cLtsdpS4?=
+ =?us-ascii?Q?hphrbiyRl3QzlZjPmphq3qCokPFCTS79Me98uXvzOqR6jV1BNht0RRJqbIKT?=
+ =?us-ascii?Q?zKp6hVSOVZ8Xpr/j9RlBmeqbfLA1zlilGr8lEd/7j+Yzvbq2g3rlpRvOHsvi?=
+ =?us-ascii?Q?CaYq5YKa4y2WRDnkvloLQX+cYVfwqO4fSsH7wVYPZ1R7h9xySwnWu6QZVPoe?=
+ =?us-ascii?Q?rr+iXx7TqJNa49WMOrutoy4+NttTRT260yPqTxEj4KqX5Ra9gctpa4vkvtN6?=
+ =?us-ascii?Q?Wz9LzA9/iAYDHqGgBM5+GTm6gSQXty7wyi2MJLB+8mghk8x3209f+eHT70rd?=
+ =?us-ascii?Q?dL5K2UbGpXDL/MzDuN4MyIQflpGO3rMOrQX9IwQOrQUHUupTqRRNm4aczym5?=
+ =?us-ascii?Q?8AaPvyw+cMKwQ35/aHMRvdCbuKsgQnea3ebKpYVF7I7z3IapuUKXnaOO3qdH?=
+ =?us-ascii?Q?EwI+hcdC/9tuzRpfXBCqHD2oQko4T0DGB2gzgdvrwuF2uHXUvUFkdahOMDm5?=
+ =?us-ascii?Q?MVIJi8ZsOUris9H2qI+UAHneA3CpouIMUR3bBQuBVvw1iNkQwHaOGKSJXAFj?=
+ =?us-ascii?Q?oXPojnxSxvBI0aLvKstQGjRqNI35OsjF1XmTChxt?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4d19cdc1-accf-4c12-4792-08da7b8acef9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2022 11:15:33.3868 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rXoWRMhEBzswWvl+RTgRRMa3EGWYfkA3xbCdL96cagjX5/L1F0DdB0gLaz3E2yyOdKVlDlLvzT3Xpelo8DMlsg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3052
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660212615; x=1691748615;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ZFssylSqagYxkYqv1/sXVS6iZfaM465mybS4gvwOLFY=;
- b=jWPFopFJc1kg3+rgShNWUzxw5MtbykYAyxE5dZVou2mzG0u/PbNzRHaf
- zAsKsFEn0mSQ1uZvItiHF/0z8VrtpE4qd28HNX/ZrwioRfI3P77drpXWb
- Q+Mc6W+uzqAH8BNrZYqX4mxHMRXv8ER3V9PnFiyBSde34HKE/0WKcGoCq
- 12TXeA5UNyipvEf8vGZSv/Sn+s+LNHUnHCDQiEXfv4ftEd89b2JErQ1cJ
- KhnsDPcbED+N5ZmAkAv3wX24KuzQcdt/SMDRVmRBkbGz6wxGvX33nN3kU
- P8yfOG3yj4zIrcfGSkI2DR/aET4fVx5Jitd0bMy5Je679b5lQ3RQBWjNM
+ t=1660216541; x=1691752541;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=NCXBASbrRcAfnEwfuTEVEAbZQ9uPhnFUOOrPkvckEtc=;
+ b=Yd3yBseQus4be5oXM6QBrV67mMbMECC7EHqVJ4NKO6bUKlg6nYueh8QF
+ 2Uhl0iCjMRZKe5hgU8bLOIC+Mawr0RZ6W4adJC7wGDyt2h9eBsGruwzDT
+ zR9cmFzbud2g+AcEX3R6w7qYgRX7kU4OC8LvWaBzI+tZMl2BA9i+esX+o
+ +lqmDkr0Fn03qKgHBbyAe4+Jm7xasLjcaW/vOB/xyTYQj62Hpzb6Y8I5X
+ xpay5cqaWgqItMqi7a2TZi/Vns6LrdunAz7U8tki+STquRj90LLkpaVP0
+ E0MIZUuxlEYIELn4FKwpfL0W5LPkkhBq+Nqp307LG+LL3g5ZYBsyxLdpH
  Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jWPFopFJ
-Subject: [Intel-wired-lan] [PATCH net v1] ice: Fix DMA mappings leak
+ header.a=rsa-sha256 header.s=Intel header.b=Yd3yBseQ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
+ recovery if GLOBR fails
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,233 +183,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 
-Fix leak, when user changes ring parameters.
-During reallocation of RX buffers, new DMA mappings are created for
-those buffers. New buffers with different RX ring count should
-substitute older ones, but those buffers were freed in ice_vsi_cfg_rxq
-and reallocated again with ice_alloc_rx_buf. kfree on rx_buf caused
-leak of already mapped DMA.
-Reallocate ZC with xdp_buf struct, when BPF program loads. Reallocate
-back to rx_buf, when BPF program unloads.
-If BPF program is loaded/unloaded and XSK pools are created, reallocate
-RX queues accordingly in XDP_SETUP_XSK_POOL handler.
 
-Steps for reproduction:
-while :
-do
-	for ((i=0; i<=8160; i=i+32))
-	do
-		ethtool -G enp130s0f0 rx $i tx $i
-		sleep 0.5
-		ethtool -g enp130s0f0
-	done
-done
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Mateusz Palczewski
+> Sent: Tuesday, August 2, 2022 1:49 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix to stop tx_timeout
+> recovery if GLOBR fails
+> 
+> From: Alan Brady <alan.brady@intel.com>
+> 
+> When a tx_timeout fires, the PF attempts to recover by incrementally
+> resetting.  First we try a PFR, then CORER and finally a GLOBR.  If the GLOBR
+> fails, then we keep hitting the tx_timeout and incrementing the recovery
+> level and issuing dmesgs, which is both annoying to the user and
+> accomplishes nothing.
+> 
+> If the GLOBR fails, then we're pretty much totally hosed, and there's not
+> much else we can do to recover, so this makes it such that we just kill the VSI
+> and stop hitting the tx_timeout in such a case.
+> 
+> Fixes: 41c445ff0f48 ("i40e: main driver core")
+> Signed-off-by: Alan Brady <alan.brady@intel.com>
+> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> ---
+>  v2: Changed the author
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
 
-Fixes: 617f3e1b588c ("ice: xsk: allocate separate memory for XDP SW ring")
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c | 17 ------
- drivers/net/ethernet/intel/ice/ice_main.c |  8 +++
- drivers/net/ethernet/intel/ice/ice_xsk.c  | 63 +++++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_xsk.h  |  7 +++
- 4 files changed, 78 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 136d7911adb4..1e3243808178 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -7,18 +7,6 @@
- #include "ice_dcb_lib.h"
- #include "ice_sriov.h"
- 
--static bool ice_alloc_rx_buf_zc(struct ice_rx_ring *rx_ring)
--{
--	rx_ring->xdp_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->xdp_buf), GFP_KERNEL);
--	return !!rx_ring->xdp_buf;
--}
--
--static bool ice_alloc_rx_buf(struct ice_rx_ring *rx_ring)
--{
--	rx_ring->rx_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->rx_buf), GFP_KERNEL);
--	return !!rx_ring->rx_buf;
--}
--
- /**
-  * __ice_vsi_get_qs_contig - Assign a contiguous chunk of queues to VSI
-  * @qs_cfg: gathered variables needed for PF->VSI queues assignment
-@@ -519,11 +507,8 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
- 			xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
- 					 ring->q_index, ring->q_vector->napi.napi_id);
- 
--		kfree(ring->rx_buf);
- 		ring->xsk_pool = ice_xsk_pool(ring);
- 		if (ring->xsk_pool) {
--			if (!ice_alloc_rx_buf_zc(ring))
--				return -ENOMEM;
- 			xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
- 
- 			ring->rx_buf_len =
-@@ -538,8 +523,6 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
- 			dev_info(dev, "Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring %d\n",
- 				 ring->q_index);
- 		} else {
--			if (!ice_alloc_rx_buf(ring))
--				return -ENOMEM;
- 			if (!xdp_rxq_info_is_reg(&ring->xdp_rxq))
- 				/* coverity[check_return] */
- 				xdp_rxq_info_reg(&ring->xdp_rxq,
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f37b89189a9d..aa33f41fb09a 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2885,10 +2885,18 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
- 			if (xdp_ring_err)
- 				NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
- 		}
-+		/* reallocate RX queues that are used for zero-copy */
-+		xdp_ring_err = ice_realloc_zc_buf(vsi, true);
-+		if (xdp_ring_err)
-+			NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Rx resources failed");
- 	} else if (ice_is_xdp_ena_vsi(vsi) && !prog) {
- 		xdp_ring_err = ice_destroy_xdp_rings(vsi);
- 		if (xdp_ring_err)
- 			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Tx resources failed");
-+		/* reallocate RX queues that were used for zero-copy */
-+		xdp_ring_err = ice_realloc_zc_buf(vsi, false);
-+		if (xdp_ring_err)
-+			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Rx resources failed");
- 	} else {
- 		/* safe to call even when prog == vsi->xdp_prog as
- 		 * dev_xdp_install in net/core/dev.c incremented prog's
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 34d851d3e767..41cd66fcfb27 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -192,6 +192,7 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
- 	err = ice_vsi_ctrl_one_rx_ring(vsi, false, q_idx, true);
- 	if (err)
- 		return err;
-+	ice_clean_rx_ring(rx_ring);
- 
- 	ice_qvec_toggle_napi(vsi, q_vector, false);
- 	ice_qp_clean_rings(vsi, q_idx);
-@@ -316,6 +317,62 @@ ice_xsk_pool_enable(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
- 	return 0;
- }
- 
-+/**
-+ * ice_realloc_rx_xdp_bufs - reallocate for either XSK or normal buffer
-+ * @vsi: Current VSI
-+ * @pool_present: is pool for XSK present
-+ *
-+ * Try allocating memory and return ENOMEM, if failed to allocate.
-+ * If allocation was successful, substitute buffer with allocated one.
-+ * Returns 0 on success, negative on failure
-+ */
-+static int ice_realloc_rx_xdp_bufs(struct ice_rx_ring *rx_ring,
-+				   bool pool_present)
-+{
-+	size_t elem_size = pool_present ? sizeof(*rx_ring->xdp_buf) :
-+					  sizeof(*rx_ring->rx_buf);
-+	void *sw_ring = kcalloc(rx_ring->count, elem_size, GFP_KERNEL);
-+
-+	if (!sw_ring)
-+		return -ENOMEM;
-+
-+	if (pool_present) {
-+		kfree(rx_ring->rx_buf);
-+		rx_ring->rx_buf = NULL;
-+		rx_ring->xdp_buf = sw_ring;
-+	} else {
-+		kfree(rx_ring->xdp_buf);
-+		rx_ring->xdp_buf = NULL;
-+		rx_ring->rx_buf = sw_ring;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_realloc_zc_buf - reallocate xdp zc queue pairs
-+ * @vsi: Current VSI
-+ * @zc: is zero copy set
-+ *
-+ * Reallocate buffer for rx_rings that might be used by XSK.
-+ * XDP requires more memory, than rx_buf provides.
-+ * Returns 0 on success, negative on failure
-+ */
-+int ice_realloc_zc_buf(struct ice_vsi *vsi, bool zc)
-+{
-+	struct ice_rx_ring *rx_ring;
-+	unsigned long q;
-+
-+	for_each_set_bit(q, vsi->af_xdp_zc_qps,
-+			 max_t(int, vsi->alloc_txq, vsi->alloc_rxq)) {
-+		rx_ring = vsi->rx_rings[q];
-+		if (ice_realloc_rx_xdp_bufs(rx_ring, zc))
-+			return -ENOMEM;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_xsk_pool_setup - enable/disable a buffer pool region depending on its state
-  * @vsi: Current VSI
-@@ -339,11 +396,17 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
- 	if_running = netif_running(vsi->netdev) && ice_is_xdp_ena_vsi(vsi);
- 
- 	if (if_running) {
-+		struct ice_rx_ring *rx_ring = vsi->rx_rings[qid];
-+
- 		ret = ice_qp_dis(vsi, qid);
- 		if (ret) {
- 			netdev_err(vsi->netdev, "ice_qp_dis error = %d\n", ret);
- 			goto xsk_pool_if_up;
- 		}
-+
-+		ret = ice_realloc_rx_xdp_bufs(rx_ring, pool_present);
-+		if (ret)
-+			goto xsk_pool_if_up;
- 	}
- 
- 	pool_failure = pool_present ? ice_xsk_pool_enable(vsi, pool, qid) :
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
-index 21faec8e97db..8012d747f1bb 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.h
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
-@@ -27,6 +27,7 @@ bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
- void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring);
- void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring);
- bool ice_xmit_zc(struct ice_tx_ring *xdp_ring, u32 budget, int napi_budget);
-+int ice_realloc_zc_buf(struct ice_vsi *vsi, bool zc);
- #else
- static inline bool
- ice_xmit_zc(struct ice_tx_ring __always_unused *xdp_ring,
-@@ -72,5 +73,11 @@ ice_xsk_wakeup(struct net_device __always_unused *netdev,
- 
- static inline void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring) { }
- static inline void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring) { }
-+
-+static inline int ice_realloc_zc_buf(struct ice_vsi __always_unused *vsi,
-+				     bool __always_unused zc)
-+{
-+	return 0;
-+}
- #endif /* CONFIG_XDP_SOCKETS */
- #endif /* !_ICE_XSK_H_ */
--- 
-2.27.0
-
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
