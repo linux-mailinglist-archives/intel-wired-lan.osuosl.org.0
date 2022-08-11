@@ -1,85 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 759E558FA5B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 12:02:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55ACC58FA7F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Aug 2022 12:10:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E75D640220;
-	Thu, 11 Aug 2022 10:02:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E75D640220
+	by smtp3.osuosl.org (Postfix) with ESMTP id C583E60B5B;
+	Thu, 11 Aug 2022 10:10:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C583E60B5B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660212150;
-	bh=AcrNhQ8hQnBQpQQjxtTcrDMIuvG76c3dBOqWWsocpek=;
+	s=default; t=1660212622;
+	bh=ohNZQoY8+rErxLwDtelhk9KEd4+Dqqp6V3ClYAfT3IY=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=rrBQGiJ6aXIyiY/L7kZBkCJDPJ18LgmH+8QEFUYF25s0l4DfUZXZgyxWnTEeKy5ZK
-	 3sQBOn7uH53sy+e0YKXc9wBC5qCFIdMxuPMXfGcbpENqbrQ/EeG+Q3sqO1oiIsOTTx
-	 YF5S+vATP63Gb/ghPVxPvKBu1nCN09HjBmua7rhjySCaMCBI2nfrM701k24swc0Hh5
-	 UOAz34bl7fDHwWpVd61MIyITkYprso4h613Wvm09mumr8wdU+9e+6VPp62oJ3Df/1I
-	 qkCC7fzxppSWB7gzVrlTyw7ILIfRBtNV8MMxkPNk7xn/SglRaXK/VFSDW4ZgNHH6pe
-	 dDt3Rp9BMFA+A==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g8s4Fstl6hdh; Thu, 11 Aug 2022 10:02:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 874C040132;
-	Thu, 11 Aug 2022 10:02:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 874C040132
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A686A1BF414
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:02:25 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 76A0560AAE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:02:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 76A0560AAE
+	b=utv+XeNtwKDYrOiUNN/S+wQzpk5DN2qHaaFu8xGOBDUVqLIunQ63J1JFo/UIvQ/c6
+	 XWewQyyT6lV15qf6B+jwM3jAMkKszcCXyJ6aN5gKQyXYzqnEYhixtO1gYD7K+2aman
+	 s9UbGhGSSlGZwkvJWpNCOCyZQohMWgkMO4OKIqFeZ8pUreYhug2x+xmoHmr/pkl+/M
+	 BSbwgn8Nc3vomV7yLRnAri03I+mIh+AH4Vkx5TDtf/AZR96RoP5nJ+HESQk+M5SaB4
+	 JlYVI1gaHWcarALQtlD7VOhPxzIqJ8EaUN3pHx2kKE8VaxFE/8wyNlDfLTm8/ujU4N
+	 tNDRZmUPRLV5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3SXy-kYObM1a for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Aug 2022 10:02:24 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hhgF1-nTLm50; Thu, 11 Aug 2022 10:10:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7B01460AAE;
+	Thu, 11 Aug 2022 10:10:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B01460AAE
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A37E11BF403
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7DA5B40871
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7DA5B40871
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Eb5eeR0thmAi for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Aug 2022 10:10:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FE0560A9B
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2FE0560A9B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:02:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="271694675"
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="271694675"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2022 03:02:14 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1177B4086F
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1177B4086F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Aug 2022 10:10:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="292569826"
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="292569826"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2022 03:10:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="665308176"
+X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="556073921"
 Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
  ([10.102.18.68])
- by fmsmga008.fm.intel.com with ESMTP; 11 Aug 2022 03:02:13 -0700
+ by orsmga003.jf.intel.com with ESMTP; 11 Aug 2022 03:10:13 -0700
 From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 11 Aug 2022 12:01:22 +0200
-Message-Id: <20220811100122.1536531-1-mateusz.palczewski@intel.com>
+Date: Thu, 11 Aug 2022 12:09:22 +0200
+Message-Id: <20220811100922.1540016-1-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660212144; x=1691748144;
+ t=1660212615; x=1691748615;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=7evZ01KYEtSlXTI/m6947SQDO9GKDIzy+llVDBsnl2M=;
- b=nozAXkYdF8m9vYDtewvXwZeR1bQn+LDa7nasdFGF2WIW85DwxYPWUgs6
- c1CKJdTlKJpphpdxk0IxDAT9MyOItfQuoWIW1jCc9N1wR6YU73YLrlpHJ
- 4A/YJ6OlHqx9taewKtkDMFsV3oCoZGL5vKV+jeIbGn6VQ2BQDOMcaeUpE
- h38CDomYo35rVhFRhIFtNtpiJBd8TLXHLW9ptr3zg6oxLVNbIcZLidrEh
- TeZ8dCbyQy/VaAniC437T+0PrGMOTZKHHhj8jfph4vm7dRGioQ4Q6GRah
- +441D+sv9v+TkMNMvm+SkzpwAg/tlcD4Z47/6lPKKYelzEbLptTyKV6GP
+ bh=ZFssylSqagYxkYqv1/sXVS6iZfaM465mybS4gvwOLFY=;
+ b=jWPFopFJc1kg3+rgShNWUzxw5MtbykYAyxE5dZVou2mzG0u/PbNzRHaf
+ zAsKsFEn0mSQ1uZvItiHF/0z8VrtpE4qd28HNX/ZrwioRfI3P77drpXWb
+ Q+Mc6W+uzqAH8BNrZYqX4mxHMRXv8ER3V9PnFiyBSde34HKE/0WKcGoCq
+ 12TXeA5UNyipvEf8vGZSv/Sn+s+LNHUnHCDQiEXfv4ftEd89b2JErQ1cJ
+ KhnsDPcbED+N5ZmAkAv3wX24KuzQcdt/SMDRVmRBkbGz6wxGvX33nN3kU
+ P8yfOG3yj4zIrcfGSkI2DR/aET4fVx5Jitd0bMy5Je679b5lQ3RQBWjNM
  Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nozAXkYd
-Subject: [Intel-wired-lan] [PATCH net v1] iavf: Fix race between iavf_close
- and iavf_reset_task
+ header.a=rsa-sha256 header.s=Intel header.b=jWPFopFJ
+Subject: [Intel-wired-lan] [PATCH net v1] ice: Fix DMA mappings leak
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,294 +91,230 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Jaron <michalx.jaron@intel.com>
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Jaron <michalx.jaron@intel.com>
+From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 
-During stress tests with adding VF to namespace and changing vf's
-trust there was a race between iavf_reset_task and iavf_close.
-Sometimes when IAVF_FLAG_AQ_DISABLE_QUEUES from iavf_close was sent
-to PF after reset and before IAVF_AQ_GET_CONFIG was sent then PF
-returns error IAVF_NOT_SUPPORTED to disable queues request and
-following requests. There is need to get_config before other
-aq_required will be send but iavf_close clears all flags, if
-get_config was not sent before iavf_close, then it will not be send
-at all.
+Fix leak, when user changes ring parameters.
+During reallocation of RX buffers, new DMA mappings are created for
+those buffers. New buffers with different RX ring count should
+substitute older ones, but those buffers were freed in ice_vsi_cfg_rxq
+and reallocated again with ice_alloc_rx_buf. kfree on rx_buf caused
+leak of already mapped DMA.
+Reallocate ZC with xdp_buf struct, when BPF program loads. Reallocate
+back to rx_buf, when BPF program unloads.
+If BPF program is loaded/unloaded and XSK pools are created, reallocate
+RX queues accordingly in XDP_SETUP_XSK_POOL handler.
 
-In case when IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS was sent before
-IAVF_FLAG_AQ_DISABLE_QUEUES then there was rtnl_lock deadlock
-between iavf_close and iavf_adminq_task until iavf_close timeouts
-and disable queues was sent after iavf_close ends.
+Steps for reproduction:
+while :
+do
+	for ((i=0; i<=8160; i=i+32))
+	do
+		ethtool -G enp130s0f0 rx $i tx $i
+		sleep 0.5
+		ethtool -g enp130s0f0
+	done
+done
 
-There was also a problem with sending delete/add filters.
-Sometimes when filters was not yet added to PF and in
-iavf_close all filters was set to remove there might be a try
-to remove nonexistent filters on PF.
-
-Add aq_required_tmp to save aq_required flags and send them after
-disable_queues will be handled. Clear flags given to iavf_down
-different than IAVF_FLAG_AQ_GET_CONFIG as this flag is necessary
-to sent other aq_required. Remove some flags that we don't
-want to send as we are in iavf_close and we want to disable
-interface. Remove filters which was not yet sent and send del
-filters flags only when there are filters to remove.
-
-Fixes: 53d0b3ae2590 ("i40evf: refactor shutdown code")
-Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
+Fixes: 617f3e1b588c ("ice: xsk: allocate separate memory for XDP SW ring")
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 177 ++++++++++++++++----
- 1 file changed, 141 insertions(+), 36 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_base.c | 17 ------
+ drivers/net/ethernet/intel/ice/ice_main.c |  8 +++
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 63 +++++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_xsk.h  |  7 +++
+ 4 files changed, 78 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 35dcb1ce12b6..9cfcab5e68e5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1270,66 +1270,138 @@ static void iavf_up_complete(struct iavf_adapter *adapter)
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 136d7911adb4..1e3243808178 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -7,18 +7,6 @@
+ #include "ice_dcb_lib.h"
+ #include "ice_sriov.h"
  
+-static bool ice_alloc_rx_buf_zc(struct ice_rx_ring *rx_ring)
+-{
+-	rx_ring->xdp_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->xdp_buf), GFP_KERNEL);
+-	return !!rx_ring->xdp_buf;
+-}
+-
+-static bool ice_alloc_rx_buf(struct ice_rx_ring *rx_ring)
+-{
+-	rx_ring->rx_buf = kcalloc(rx_ring->count, sizeof(*rx_ring->rx_buf), GFP_KERNEL);
+-	return !!rx_ring->rx_buf;
+-}
+-
  /**
-- * iavf_down - Shutdown the connection processing
-+ * iavf_clear_mac_vlan_filters - Remove mac and vlan filters not sent to PF
-+ * yet and mark other to be removed.
-  * @adapter: board private structure
-- *
-- * Expects to be called while holding the __IAVF_IN_CRITICAL_TASK bit lock.
-  **/
--void iavf_down(struct iavf_adapter *adapter)
-+static void iavf_clear_mac_vlan_filters(struct iavf_adapter *adapter)
- {
--	struct net_device *netdev = adapter->netdev;
--	struct iavf_vlan_filter *vlf;
--	struct iavf_cloud_filter *cf;
--	struct iavf_fdir_fltr *fdir;
--	struct iavf_mac_filter *f;
--	struct iavf_adv_rss *rss;
--
--	if (adapter->state <= __IAVF_DOWN_PENDING)
--		return;
--
--	netif_carrier_off(netdev);
--	netif_tx_disable(netdev);
--	adapter->link_up = false;
--	iavf_napi_disable_all(adapter);
--	iavf_irq_disable(adapter);
-+	struct iavf_vlan_filter *vlf, *vlftmp;
-+	struct iavf_mac_filter *f, *ftmp;
+  * __ice_vsi_get_qs_contig - Assign a contiguous chunk of queues to VSI
+  * @qs_cfg: gathered variables needed for PF->VSI queues assignment
+@@ -519,11 +507,8 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
+ 			xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+ 					 ring->q_index, ring->q_vector->napi.napi_id);
  
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
--
- 	/* clear the sync flag on all filters */
- 	__dev_uc_unsync(adapter->netdev, NULL);
- 	__dev_mc_unsync(adapter->netdev, NULL);
+-		kfree(ring->rx_buf);
+ 		ring->xsk_pool = ice_xsk_pool(ring);
+ 		if (ring->xsk_pool) {
+-			if (!ice_alloc_rx_buf_zc(ring))
+-				return -ENOMEM;
+ 			xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
  
- 	/* remove all MAC filters */
--	list_for_each_entry(f, &adapter->mac_filter_list, list) {
--		f->remove = true;
-+	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list,
-+				 list) {
-+		if (f->add) {
-+			list_del(&f->list);
-+			kfree(f);
-+		} else {
-+			f->remove = true;
-+		}
- 	}
+ 			ring->rx_buf_len =
+@@ -538,8 +523,6 @@ int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
+ 			dev_info(dev, "Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring %d\n",
+ 				 ring->q_index);
+ 		} else {
+-			if (!ice_alloc_rx_buf(ring))
+-				return -ENOMEM;
+ 			if (!xdp_rxq_info_is_reg(&ring->xdp_rxq))
+ 				/* coverity[check_return] */
+ 				xdp_rxq_info_reg(&ring->xdp_rxq,
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index f37b89189a9d..aa33f41fb09a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2885,10 +2885,18 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
+ 			if (xdp_ring_err)
+ 				NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
+ 		}
++		/* reallocate RX queues that are used for zero-copy */
++		xdp_ring_err = ice_realloc_zc_buf(vsi, true);
++		if (xdp_ring_err)
++			NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Rx resources failed");
+ 	} else if (ice_is_xdp_ena_vsi(vsi) && !prog) {
+ 		xdp_ring_err = ice_destroy_xdp_rings(vsi);
+ 		if (xdp_ring_err)
+ 			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Tx resources failed");
++		/* reallocate RX queues that were used for zero-copy */
++		xdp_ring_err = ice_realloc_zc_buf(vsi, false);
++		if (xdp_ring_err)
++			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Rx resources failed");
+ 	} else {
+ 		/* safe to call even when prog == vsi->xdp_prog as
+ 		 * dev_xdp_install in net/core/dev.c incremented prog's
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 34d851d3e767..41cd66fcfb27 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -192,6 +192,7 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+ 	err = ice_vsi_ctrl_one_rx_ring(vsi, false, q_idx, true);
+ 	if (err)
+ 		return err;
++	ice_clean_rx_ring(rx_ring);
  
- 	/* remove all VLAN filters */
--	list_for_each_entry(vlf, &adapter->vlan_filter_list, list) {
--		vlf->remove = true;
-+	list_for_each_entry_safe(vlf, vlftmp, &adapter->vlan_filter_list,
-+				 list) {
-+		if (vlf->add) {
-+			list_del(&vlf->list);
-+			kfree(vlf);
-+		} else {
-+			vlf->remove = true;
-+		}
- 	}
--
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+}
-+
-+/**
-+ * iavf_clear_cloud_filters - Remove cloud filters not sent to PF yet and
-+ * mark other to be removed.
-+ * @adapter: board private structure
-+ **/
-+static void iavf_clear_cloud_filters(struct iavf_adapter *adapter)
-+{
-+	struct iavf_cloud_filter *cf, *cftmp;
- 
- 	/* remove all cloud filters */
- 	spin_lock_bh(&adapter->cloud_filter_list_lock);
--	list_for_each_entry(cf, &adapter->cloud_filter_list, list) {
--		cf->del = true;
-+	list_for_each_entry_safe(cf, cftmp, &adapter->cloud_filter_list,
-+				 list) {
-+		if (cf->add) {
-+			list_del(&cf->list);
-+			kfree(cf);
-+			adapter->num_cloud_filters--;
-+		} else {
-+			cf->del = true;
-+		}
- 	}
- 	spin_unlock_bh(&adapter->cloud_filter_list_lock);
-+}
-+
-+/**
-+ * iavf_clear_fdir_filters - Remove fdir filters not sent to PF yet and mark
-+ * other to be removed.
-+ * @adapter: board private structure
-+ **/
-+static void iavf_clear_fdir_filters(struct iavf_adapter *adapter)
-+{
-+	struct iavf_fdir_fltr *fdir, *fdirtmp;
- 
- 	/* remove all Flow Director filters */
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
--	list_for_each_entry(fdir, &adapter->fdir_list_head, list) {
--		fdir->state = IAVF_FDIR_FLTR_DEL_REQUEST;
-+	list_for_each_entry_safe(fdir, fdirtmp, &adapter->fdir_list_head,
-+				 list) {
-+		if (fdir->state == IAVF_FDIR_FLTR_ADD_REQUEST) {
-+			list_del(&fdir->list);
-+			kfree(fdir);
-+			adapter->fdir_active_fltr--;
-+		} else {
-+			fdir->state = IAVF_FDIR_FLTR_DEL_REQUEST;
-+		}
- 	}
- 	spin_unlock_bh(&adapter->fdir_fltr_lock);
-+}
-+
-+/**
-+ * iavf_clear_adv_rss_conf - Remove adv rss conf not sent to PF yet and mark
-+ * other to be removed.
-+ * @adapter: board private structure
-+ **/
-+static void iavf_clear_adv_rss_conf(struct iavf_adapter *adapter)
-+{
-+	struct iavf_adv_rss *rss, *rsstmp;
- 
- 	/* remove all advance RSS configuration */
- 	spin_lock_bh(&adapter->adv_rss_lock);
--	list_for_each_entry(rss, &adapter->adv_rss_list_head, list)
--		rss->state = IAVF_ADV_RSS_DEL_REQUEST;
-+	list_for_each_entry_safe(rss, rsstmp, &adapter->adv_rss_list_head,
-+				 list) {
-+		if (rss->state == IAVF_ADV_RSS_ADD_REQUEST) {
-+			list_del(&rss->list);
-+			kfree(rss);
-+		} else {
-+			rss->state = IAVF_ADV_RSS_DEL_REQUEST;
-+		}
-+	}
- 	spin_unlock_bh(&adapter->adv_rss_lock);
-+}
-+
-+/**
-+ * iavf_down - Shutdown the connection processing
-+ * @adapter: board private structure
-+ *
-+ * Expects to be called while holding the __IAVF_IN_CRITICAL_TASK bit lock.
-+ **/
-+void iavf_down(struct iavf_adapter *adapter)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+
-+	if (adapter->state <= __IAVF_DOWN_PENDING)
-+		return;
-+
-+	netif_carrier_off(netdev);
-+	netif_tx_disable(netdev);
-+	adapter->link_up = false;
-+	iavf_napi_disable_all(adapter);
-+	iavf_irq_disable(adapter);
-+
-+	iavf_clear_mac_vlan_filters(adapter);
-+	iavf_clear_cloud_filters(adapter);
-+	iavf_clear_fdir_filters(adapter);
-+	iavf_clear_adv_rss_conf(adapter);
- 
- 	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)) {
- 		/* cancel any current operation */
-@@ -1338,11 +1410,16 @@ void iavf_down(struct iavf_adapter *adapter)
- 		 * here for this to complete. The watchdog is still running
- 		 * and it will take care of this.
- 		 */
--		adapter->aq_required = IAVF_FLAG_AQ_DEL_MAC_FILTER;
--		adapter->aq_required |= IAVF_FLAG_AQ_DEL_VLAN_FILTER;
--		adapter->aq_required |= IAVF_FLAG_AQ_DEL_CLOUD_FILTER;
--		adapter->aq_required |= IAVF_FLAG_AQ_DEL_FDIR_FILTER;
--		adapter->aq_required |= IAVF_FLAG_AQ_DEL_ADV_RSS_CFG;
-+		if (!list_empty(&adapter->mac_filter_list))
-+			adapter->aq_required |= IAVF_FLAG_AQ_DEL_MAC_FILTER;
-+		if (!list_empty(&adapter->vlan_filter_list))
-+			adapter->aq_required |= IAVF_FLAG_AQ_DEL_VLAN_FILTER;
-+		if (!list_empty(&adapter->cloud_filter_list))
-+			adapter->aq_required |= IAVF_FLAG_AQ_DEL_CLOUD_FILTER;
-+		if (!list_empty(&adapter->fdir_list_head))
-+			adapter->aq_required |= IAVF_FLAG_AQ_DEL_FDIR_FILTER;
-+		if (!list_empty(&adapter->adv_rss_list_head))
-+			adapter->aq_required |= IAVF_FLAG_AQ_DEL_ADV_RSS_CFG;
- 		adapter->aq_required |= IAVF_FLAG_AQ_DISABLE_QUEUES;
- 	}
- 
-@@ -4164,6 +4241,7 @@ static int iavf_open(struct net_device *netdev)
- static int iavf_close(struct net_device *netdev)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-+	u64 aq_to_restore;
- 	int status;
- 
- 	mutex_lock(&adapter->crit_lock);
-@@ -4176,6 +4254,29 @@ static int iavf_close(struct net_device *netdev)
- 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state);
- 	if (CLIENT_ENABLED(adapter))
- 		adapter->flags |= IAVF_FLAG_CLIENT_NEEDS_CLOSE;
-+	/* We cannot send IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS before
-+	 * IAVF_FLAG_AQ_DISABLE_QUEUES because in such case there is rtnl
-+	 * deadlock with adminq_task() until iavf_close timeouts. We must send
-+	 * IAVF_FLAG_AQ_GET_CONFIG before IAVF_FLAG_AQ_DISABLE_QUEUES to make
-+	 * disable queues possible for vf. Give only necessary flags to
-+	 * iavf_down and save other to set them right before iavf_close()
-+	 * returns, when IAVF_FLAG_AQ_DISABLE_QUEUES will be already sent and
-+	 * iavf will be in DOWN state.
-+	 */
-+	aq_to_restore = adapter->aq_required;
-+	adapter->aq_required &= IAVF_FLAG_AQ_GET_CONFIG;
-+
-+	/* Remove flags which we do not want to send after close or we want to
-+	 * send before disable queues.
-+	 */
-+	aq_to_restore &= ~(IAVF_FLAG_AQ_GET_CONFIG		|
-+			   IAVF_FLAG_AQ_ENABLE_QUEUES		|
-+			   IAVF_FLAG_AQ_CONFIGURE_QUEUES	|
-+			   IAVF_FLAG_AQ_ADD_VLAN_FILTER		|
-+			   IAVF_FLAG_AQ_ADD_MAC_FILTER		|
-+			   IAVF_FLAG_AQ_ADD_CLOUD_FILTER	|
-+			   IAVF_FLAG_AQ_ADD_FDIR_FILTER		|
-+			   IAVF_FLAG_AQ_ADD_ADV_RSS_CFG);
- 
- 	iavf_down(adapter);
- 	iavf_change_state(adapter, __IAVF_DOWN_PENDING);
-@@ -4199,6 +4300,10 @@ static int iavf_close(struct net_device *netdev)
- 				    msecs_to_jiffies(500));
- 	if (!status)
- 		netdev_warn(netdev, "Device resources not yet released\n");
-+
-+	mutex_lock(&adapter->crit_lock);
-+	adapter->aq_required |= aq_to_restore;
-+	mutex_unlock(&adapter->crit_lock);
+ 	ice_qvec_toggle_napi(vsi, q_vector, false);
+ 	ice_qp_clean_rings(vsi, q_idx);
+@@ -316,6 +317,62 @@ ice_xsk_pool_enable(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
  	return 0;
  }
  
++/**
++ * ice_realloc_rx_xdp_bufs - reallocate for either XSK or normal buffer
++ * @vsi: Current VSI
++ * @pool_present: is pool for XSK present
++ *
++ * Try allocating memory and return ENOMEM, if failed to allocate.
++ * If allocation was successful, substitute buffer with allocated one.
++ * Returns 0 on success, negative on failure
++ */
++static int ice_realloc_rx_xdp_bufs(struct ice_rx_ring *rx_ring,
++				   bool pool_present)
++{
++	size_t elem_size = pool_present ? sizeof(*rx_ring->xdp_buf) :
++					  sizeof(*rx_ring->rx_buf);
++	void *sw_ring = kcalloc(rx_ring->count, elem_size, GFP_KERNEL);
++
++	if (!sw_ring)
++		return -ENOMEM;
++
++	if (pool_present) {
++		kfree(rx_ring->rx_buf);
++		rx_ring->rx_buf = NULL;
++		rx_ring->xdp_buf = sw_ring;
++	} else {
++		kfree(rx_ring->xdp_buf);
++		rx_ring->xdp_buf = NULL;
++		rx_ring->rx_buf = sw_ring;
++	}
++
++	return 0;
++}
++
++/**
++ * ice_realloc_zc_buf - reallocate xdp zc queue pairs
++ * @vsi: Current VSI
++ * @zc: is zero copy set
++ *
++ * Reallocate buffer for rx_rings that might be used by XSK.
++ * XDP requires more memory, than rx_buf provides.
++ * Returns 0 on success, negative on failure
++ */
++int ice_realloc_zc_buf(struct ice_vsi *vsi, bool zc)
++{
++	struct ice_rx_ring *rx_ring;
++	unsigned long q;
++
++	for_each_set_bit(q, vsi->af_xdp_zc_qps,
++			 max_t(int, vsi->alloc_txq, vsi->alloc_rxq)) {
++		rx_ring = vsi->rx_rings[q];
++		if (ice_realloc_rx_xdp_bufs(rx_ring, zc))
++			return -ENOMEM;
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_xsk_pool_setup - enable/disable a buffer pool region depending on its state
+  * @vsi: Current VSI
+@@ -339,11 +396,17 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+ 	if_running = netif_running(vsi->netdev) && ice_is_xdp_ena_vsi(vsi);
+ 
+ 	if (if_running) {
++		struct ice_rx_ring *rx_ring = vsi->rx_rings[qid];
++
+ 		ret = ice_qp_dis(vsi, qid);
+ 		if (ret) {
+ 			netdev_err(vsi->netdev, "ice_qp_dis error = %d\n", ret);
+ 			goto xsk_pool_if_up;
+ 		}
++
++		ret = ice_realloc_rx_xdp_bufs(rx_ring, pool_present);
++		if (ret)
++			goto xsk_pool_if_up;
+ 	}
+ 
+ 	pool_failure = pool_present ? ice_xsk_pool_enable(vsi, pool, qid) :
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
+index 21faec8e97db..8012d747f1bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.h
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
+@@ -27,6 +27,7 @@ bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
+ void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring);
+ void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring);
+ bool ice_xmit_zc(struct ice_tx_ring *xdp_ring, u32 budget, int napi_budget);
++int ice_realloc_zc_buf(struct ice_vsi *vsi, bool zc);
+ #else
+ static inline bool
+ ice_xmit_zc(struct ice_tx_ring __always_unused *xdp_ring,
+@@ -72,5 +73,11 @@ ice_xsk_wakeup(struct net_device __always_unused *netdev,
+ 
+ static inline void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring) { }
+ static inline void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring) { }
++
++static inline int ice_realloc_zc_buf(struct ice_vsi __always_unused *vsi,
++				     bool __always_unused zc)
++{
++	return 0;
++}
+ #endif /* CONFIG_XDP_SOCKETS */
+ #endif /* !_ICE_XSK_H_ */
 -- 
 2.27.0
 
