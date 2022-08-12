@@ -1,87 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89D0B591382
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Aug 2022 18:07:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E569E5916A4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Aug 2022 23:12:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C805A4193B;
-	Fri, 12 Aug 2022 16:07:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C805A4193B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 613F44190A;
+	Fri, 12 Aug 2022 21:12:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 613F44190A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660320465;
-	bh=4B5ggyWt/4cED31TgvDen+uwRrWNEfz7lqTta6GOsvg=;
+	s=default; t=1660338733;
+	bh=eZtRtwrBE34x/JlQM+6Ahx23/+CGxmyCGDOwX21joA4=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=nMStRr/AMZMBcp6i9Bmxfqx9mjxn6ZeHdulcqhS1DohdITaJM/KV8cYTCgY9W8vMt
-	 3m/Y7q1o7tAEj9z2bluSV3O/RsJSVQx8S0m8iOllowZhMMGZP4cVUG5SiKEDpJKGrb
-	 KpAtxsfuUTaJ/h7KE464mzKS979vttmX6PMD0xhQuS9IGin1ikjWVjsszu8GjBDVcP
-	 pyQS1DZ3JASsazYCD3zo4VXZu/7zgOfE1diTvTPbGeue/0qOxqHK0lGWJn8asFxhVA
-	 JUqDUhxDDJeVs+ykpNzzndOIVy0ewlZMdvB2meHsyEIaNguQSHp807X1jWQeJnG5DL
-	 Wek6obj463obg==
+	b=dVKDmYl9gYElZ5E4CI/o28CcojZ5E6bqpXcG6YtuOHwP5HYk6/385bAawtywtN/oX
+	 Z/rj+YPtB/oBOfepihAS1FkTHwohQ6of/kzISAXuGFP5yldUy2EqdVA8Ggqf11e3b+
+	 eh6N7FDSqCELfIiwP+HGZzIKgODbAECwSrN73ShHXzlZ5mFL/59CM7nZ7CqJC52gOM
+	 kJv/tAzB6NLxWaJvJaeiNtX6M1THNLWN3GZGgxeyjHDaFhVAa3HWG2VBBa1aU6rrNd
+	 b6GuFbaewf8K3/hAhtRC/NpVHMfpwe/s4fsB1mJoOzKdKp+BmLmZMJBwrHm7NRhcLZ
+	 tIqKaAJg+tT5g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bc3TNV2uf7jj; Fri, 12 Aug 2022 16:07:44 +0000 (UTC)
+	with ESMTP id lYDPosRkxJeB; Fri, 12 Aug 2022 21:12:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 672484193A;
-	Fri, 12 Aug 2022 16:07:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 672484193A
+	by smtp4.osuosl.org (Postfix) with ESMTP id B03C8418DD;
+	Fri, 12 Aug 2022 21:12:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B03C8418DD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 08C691BF5AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 16:07:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E62FD1BF280
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 12:50:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D568640C19
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 16:07:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D568640C19
+ by smtp4.osuosl.org (Postfix) with ESMTP id CBF1841906
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 12:50:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBF1841906
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B6AAPn9sNafK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Aug 2022 16:07:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81F184052A
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 81F184052A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 16:07:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="317594928"
-X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="317594928"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2022 09:07:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="634688909"
-Received: from irvmail001.ir.intel.com ([10.43.11.63])
- by orsmga008.jf.intel.com with ESMTP; 12 Aug 2022 09:07:35 -0700
-Received: from kord.igk.intel.com (kord.igk.intel.com [10.123.220.9])
- by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
- 27CG7YcP019107; Fri, 12 Aug 2022 17:07:34 +0100
-From: Mikael Barsehyan <mikael.barsehyan@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 12 Aug 2022 18:07:49 +0200
-Message-Id: <20220812160749.68579-1-mikael.barsehyan@intel.com>
-X-Mailer: git-send-email 2.35.3
-MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660320457; x=1691856457;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=4M8Jy714RNTYMz7B06OXdnaU0oymuj8+7aqWVeaEzdM=;
- b=A86KXOrxWCTwKNB+qb7Vi7kOXIW2IumMM9TLpxM1YOGYF65MSBmgiLQw
- XKVLyySvT2RqG+iN1gtPNqc1aPKSQmX4ps6/znNiP1MXYkIJLwfqrY/oO
- WNdOgz4WBVTUJBzGqg6gV2hNLPGm69EqY7GBMFZnFV62r3bmyJq2b/0GA
- mFYdmNcW2YZF23/WpBAvK5TRfkteiflg5Z1UWqBFChuwjCdjvpPalsFn8
- /5dNl35iceAsKLLGGnl1oiv1rN7xlhLeCmGF3ucVxhO3P/xJ2DV8dnv4X
- wMOUxmPNzld9P/c+55wXZojE+k6VjrsrHuyOKCYyVn9o5z3dDKyt32g8I
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=A86KXOrx
-Subject: [Intel-wired-lan] [PATCH net-next v5] ice: remove non-inclusive
- language from codebase
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5-90REcJIVOK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Aug 2022 12:50:50 +0000 (UTC)
+X-Greylist: delayed 00:11:11 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3AAF4418EB
+Received: from mail-m11877.qiye.163.com (mail-m11877.qiye.163.com
+ [115.236.118.77])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3AAF4418EB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Aug 2022 12:50:49 +0000 (UTC)
+Received: from localhost.localdomain (unknown
+ [IPV6:240e:3b7:3273:7840:a495:c635:2164:c7e1])
+ by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 44D44400934;
+ Fri, 12 Aug 2022 20:39:34 +0800 (CST)
+From: Ding Hui <dinghui@sangfor.com.cn>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
+Date: Fri, 12 Aug 2022 20:39:33 +0800
+Message-Id: <20220812123933.5481-1-dinghui@sangfor.com.cn>
+X-Mailer: git-send-email 2.17.1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+ tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHk5KVkpDQh8eHUtNTUNOGFUTARMWGhIXJBQOD1
+ lXWRgSC1lBWUlPSx5BSBlMQUhJTEhBTENPS0EaT0JOQRhNSE5BSUpNT0EYTB5KWVdZFhoPEhUdFF
+ lBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Kz46Lzo*ND0#FRkzFgE3Ng8W
+ DD0KC1FVSlVKTU1LSEtMQkxOS0hDVTMWGhIXVR8SFRwTDhI7CBoVHB0UCVUYFBZVGBVFWVdZEgtZ
+ QVlJT0seQUgZTEFISUxIQUxDT0tBGk9CTkEYTUhOQUlKTU9BGEweSllXWQgBWUFDQ0pDNwY+
+X-HM-Tid: 0a82921129ba2eb3kusn44d44400934
+X-Mailman-Approved-At: Fri, 12 Aug 2022 21:12:04 +0000
+Subject: [Intel-wired-lan] [PATCH] ice: avoid improper tc config for queue
+ map
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,100 +81,198 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mikael Barsehyan <mikael.barsehyan@intel.com>
+Cc: netdev@vger.kernel.org, Ding Hui <dinghui@sangfor.com.cn>,
+ linux-kernel@vger.kernel.org, anatolii.gerasymenko@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove non-inclusive language from the driver where
-possible; replace "master" with "primary"; replace
-"slave" with "secondary".
+There are problems if allocated queues less than Traffic Classes.
 
-Signed-off-by: Mikael Barsehyan <mikael.barsehyan@intel.com>
+Commit a632b2a4c920 ("ice: ethtool: Prohibit improper channel config
+for DCB") already disallow setting less queues than TCs.
+
+Another case is if we first set less queues, and later update more TCs
+config due to LLDP, ice_vsi_cfg_tc() will failed but left wrong
+num_txq/rxq and tc_cfg in vsi, that will cause invalid porinter access.
+
+[   95.968089] ice 0000:3b:00.1: More TCs defined than queues/rings allocated.
+[   95.968092] ice 0000:3b:00.1: Trying to use more Rx queues (8), than were allocated (1)!
+[   95.968093] ice 0000:3b:00.1: Failed to config TC for VSI index: 0
+[   95.969621] general protection fault: 0000 [#1] SMP NOPTI
+[   95.969705] CPU: 1 PID: 58405 Comm: lldpad Kdump: loaded Tainted: G     U  W  O     --------- -t - 4.18.0 #1
+[   95.969867] Hardware name: O.E.M/BC11SPSCB10, BIOS 8.23 12/30/2021
+[   95.969992] RIP: 0010:devm_kmalloc+0xa/0x60
+[   95.970052] Code: 5c ff ff ff 31 c0 5b 5d 41 5c c3 b8 f4 ff ff ff eb f4 0f 1f 40 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 89 d1 <8b> 97 60 02 00 00 48 8d 7e 18 48 39 f7 72 3f 55 89 ce 53 48 8b 4c
+[   95.970344] RSP: 0018:ffffc9003f553888 EFLAGS: 00010206
+[   95.970425] RAX: dead000000000200 RBX: ffffea003c425b00 RCX: 00000000006080c0
+[   95.970536] RDX: 00000000006080c0 RSI: 0000000000000200 RDI: dead000000000200
+[   95.970648] RBP: dead000000000200 R08: 00000000000463c0 R09: ffff888ffa900000
+[   95.970760] R10: 0000000000000000 R11: 0000000000000002 R12: ffff888ff6b40100
+[   95.970870] R13: ffff888ff6a55018 R14: 0000000000000000 R15: ffff888ff6a55460
+[   95.970981] FS:  00007f51b7d24700(0000) GS:ffff88903ee80000(0000) knlGS:0000000000000000
+[   95.971108] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   95.971197] CR2: 00007fac5410d710 CR3: 0000000f2c1de002 CR4: 00000000007606e0
+[   95.971309] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   95.971419] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   95.971530] PKRU: 55555554
+[   95.971573] Call Trace:
+[   95.971622]  ice_setup_rx_ring+0x39/0x110 [ice]
+[   95.971695]  ice_vsi_setup_rx_rings+0x54/0x90 [ice]
+[   95.971774]  ice_vsi_open+0x25/0x120 [ice]
+[   95.971843]  ice_open_internal+0xb8/0x1f0 [ice]
+[   95.971919]  ice_ena_vsi+0x4f/0xd0 [ice]
+[   95.971987]  ice_dcb_ena_dis_vsi.constprop.5+0x29/0x90 [ice]
+[   95.972082]  ice_pf_dcb_cfg+0x29a/0x380 [ice]
+[   95.972154]  ice_dcbnl_setets+0x174/0x1b0 [ice]
+[   95.972220]  dcbnl_ieee_set+0x89/0x230
+[   95.972279]  ? dcbnl_ieee_del+0x150/0x150
+[   95.972341]  dcb_doit+0x124/0x1b0
+[   95.972392]  rtnetlink_rcv_msg+0x243/0x2f0
+[   95.972457]  ? dcb_doit+0x14d/0x1b0
+[   95.972510]  ? __kmalloc_node_track_caller+0x1d3/0x280
+[   95.972591]  ? rtnl_calcit.isra.31+0x100/0x100
+[   95.972661]  netlink_rcv_skb+0xcf/0xf0
+[   95.972720]  netlink_unicast+0x16d/0x220
+[   95.972781]  netlink_sendmsg+0x2ba/0x3a0
+[   95.975891]  sock_sendmsg+0x4c/0x50
+[   95.979032]  ___sys_sendmsg+0x2e4/0x300
+[   95.982147]  ? kmem_cache_alloc+0x13e/0x190
+[   95.985242]  ? __wake_up_common_lock+0x79/0x90
+[   95.988338]  ? __check_object_size+0xac/0x1b0
+[   95.991440]  ? _copy_to_user+0x22/0x30
+[   95.994539]  ? move_addr_to_user+0xbb/0xd0
+[   95.997619]  ? __sys_sendmsg+0x53/0x80
+[   96.000664]  __sys_sendmsg+0x53/0x80
+[   96.003747]  do_syscall_64+0x5b/0x1d0
+[   96.006862]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+
+Only update num_txq/rxq when passed check, and restore tc_cfg if setup
+queue map failed.
+
+Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
 ---
-v5: update commit message to include "slave"
-v4: replace master/slave with primary/secondary in ice_lag.c
+ drivers/net/ethernet/intel/ice/ice_lib.c | 42 +++++++++++++++---------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
 
- drivers/net/ethernet/intel/ice/ice_lag.c | 16 ++++++++--------
- drivers/net/ethernet/intel/ice/ice_lag.h |  2 +-
- 2 files changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index c9f7393b783d..ee5b36941ba3 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -61,13 +61,13 @@ static void ice_lag_set_backup(struct ice_lag *lag)
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index a830f7f9aed0..6e64cca30351 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -914,7 +914,7 @@ static void ice_set_dflt_vsi_ctx(struct ice_hw *hw, struct ice_vsi_ctx *ctxt)
   */
- static void ice_display_lag_info(struct ice_lag *lag)
+ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
  {
--	const char *name, *peer, *upper, *role, *bonded, *master;
-+	const char *name, *peer, *upper, *role, *bonded, *primary;
- 	struct device *dev = &lag->pf->pdev->dev;
+-	u16 offset = 0, qmap = 0, tx_count = 0, pow = 0;
++	u16 offset = 0, qmap = 0, tx_count = 0, rx_count = 0, pow = 0;
+ 	u16 num_txq_per_tc, num_rxq_per_tc;
+ 	u16 qcount_tx = vsi->alloc_txq;
+ 	u16 qcount_rx = vsi->alloc_rxq;
+@@ -981,23 +981,25 @@ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 	 * at least 1)
+ 	 */
+ 	if (offset)
+-		vsi->num_rxq = offset;
++		rx_count = offset;
+ 	else
+-		vsi->num_rxq = num_rxq_per_tc;
++		rx_count = num_rxq_per_tc;
  
- 	name = lag->netdev ? netdev_name(lag->netdev) : "unset";
- 	peer = lag->peer_netdev ? netdev_name(lag->peer_netdev) : "unset";
- 	upper = lag->upper_netdev ? netdev_name(lag->upper_netdev) : "unset";
--	master = lag->master ? "TRUE" : "FALSE";
-+	primary = lag->primary ? "TRUE" : "FALSE";
- 	bonded = lag->bonded ? "BONDED" : "UNBONDED";
- 
- 	switch (lag->role) {
-@@ -87,8 +87,8 @@ static void ice_display_lag_info(struct ice_lag *lag)
- 		role = "ERROR";
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	if (rx_count > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			rx_count, vsi->alloc_rxq);
+ 		return -EINVAL;
  	}
  
--	dev_dbg(dev, "%s %s, peer:%s, upper:%s, role:%s, master:%s\n", name,
--		bonded, peer, upper, role, master);
-+	dev_dbg(dev, "%s %s, peer:%s, upper:%s, role:%s, primary:%s\n", name,
-+		bonded, peer, upper, role, primary);
- }
- 
- /**
-@@ -119,7 +119,7 @@ static void ice_lag_info_event(struct ice_lag *lag, void *ptr)
+-	vsi->num_txq = tx_count;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	if (tx_count > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			tx_count, vsi->alloc_txq);
+ 		return -EINVAL;
  	}
  
- 	if (strcmp(bonding_info->slave.slave_name, lag_netdev_name)) {
--		netdev_dbg(lag->netdev, "Bonding event recv, but slave info not for us\n");
-+		netdev_dbg(lag->netdev, "Bonding event recv, but secondary info not for us\n");
- 		goto lag_out;
++	vsi->num_txq = tx_count;
++	vsi->num_rxq = rx_count;
++
+ 	if (vsi->type == ICE_VSI_VF && vsi->num_txq != vsi->num_rxq) {
+ 		dev_dbg(ice_pf_to_dev(vsi->back), "VF VSI should have same number of Tx and Rx queues. Hence making them equal\n");
+ 		/* since there is a chance that num_rxq could have been changed
+@@ -3492,6 +3494,7 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 	int tc0_qcount = vsi->mqprio_qopt.qopt.count[0];
+ 	u8 netdev_tc = 0;
+ 	int i;
++	u16 new_txq, new_rxq;
+ 
+ 	vsi->tc_cfg.ena_tc = ena_tc ? ena_tc : 1;
+ 
+@@ -3530,21 +3533,24 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 		}
  	}
  
-@@ -164,8 +164,8 @@ ice_lag_link(struct ice_lag *lag, struct netdev_notifier_changeupper_info *info)
- 	lag->bonded = true;
- 	lag->role = ICE_LAG_UNSET;
- 
--	/* if this is the first element in an LAG mark as master */
--	lag->master = !!(peers == 1);
-+	/* if this is the first element in an LAG mark as primary */
-+	lag->primary = !!(peers == 1);
- }
- 
- /**
-@@ -264,7 +264,7 @@ static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
- 	netdev_dbg(netdev, "bonding %s\n", info->linking ? "LINK" : "UNLINK");
- 
- 	if (!netif_is_lag_master(info->upper_dev)) {
--		netdev_dbg(netdev, "changeupper rcvd, but not master. bail\n");
-+		netdev_dbg(netdev, "changeupper rcvd, but not primary. bail\n");
- 		return;
+-	/* Set actual Tx/Rx queue pairs */
+-	vsi->num_txq = offset + qcount_tx;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	new_txq = offset + qcount_tx;
++	if (new_txq > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			new_txq, vsi->alloc_txq);
+ 		return -EINVAL;
  	}
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
-index c2e3688dd8fd..51b5cf467ce2 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.h
-@@ -24,7 +24,7 @@ struct ice_lag {
- 	struct net_device *upper_netdev; /* upper bonding netdev */
- 	struct notifier_block notif_block;
- 	u8 bonded:1; /* currently bonded */
--	u8 master:1; /* this is a master */
-+	u8 primary:1; /* this is primary */
- 	u8 handler:1; /* did we register a rx_netdev_handler */
- 	/* each thing blocking bonding will increment this value by one.
- 	 * If this value is zero, then bonding is allowed.
+-	vsi->num_rxq = offset + qcount_rx;
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	new_rxq = offset + qcount_rx;
++	if (new_rxq > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			new_rxq, vsi->alloc_rxq);
+ 		return -EINVAL;
+ 	}
+ 
++	/* Set actual Tx/Rx queue pairs */
++	vsi->num_txq = new_txq;
++	vsi->num_rxq = new_rxq;
++
+ 	/* Setup queue TC[0].qmap for given VSI context */
+ 	ctxt->info.tc_mapping[0] = cpu_to_le16(qmap);
+ 	ctxt->info.q_mapping[0] = cpu_to_le16(vsi->rxq_map[0]);
+@@ -3580,6 +3586,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	struct device *dev;
+ 	int i, ret = 0;
+ 	u8 num_tc = 0;
++	struct ice_tc_cfg old_tc_cfg;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (vsi->tc_cfg.ena_tc == ena_tc &&
+@@ -3600,6 +3607,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 			max_txqs[i] = vsi->num_txq;
+ 	}
+ 
++	memcpy(&old_tc_cfg, &vsi->tc_cfg, sizeof(old_tc_cfg));
+ 	vsi->tc_cfg.ena_tc = ena_tc;
+ 	vsi->tc_cfg.numtc = num_tc;
+ 
+@@ -3616,8 +3624,10 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	else
+ 		ret = ice_vsi_setup_q_map(vsi, ctx);
+ 
+-	if (ret)
++	if (ret) {
++		memcpy(&vsi->tc_cfg, &old_tc_cfg, sizeof(vsi->tc_cfg));
+ 		goto out;
++	}
+ 
+ 	/* must to indicate which section of VSI context are being modified */
+ 	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
 -- 
-2.35.3
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
