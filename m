@@ -2,88 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77B1A5917BA
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 Aug 2022 02:06:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 086755918E2
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 Aug 2022 07:38:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0D06C41918;
-	Sat, 13 Aug 2022 00:06:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0D06C41918
+	by smtp4.osuosl.org (Postfix) with ESMTP id E88E840893;
+	Sat, 13 Aug 2022 05:38:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E88E840893
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660349163;
-	bh=ZiwLGSxrjVshFT11sFrEQhWbrANF1Qwveg302jQlgsQ=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=pUiUsD1j50UUQeDe6zopUjoUXTKvoHvp0HcgOQccPmMtaI+ZrdHCrmPQOyP8b7jR4
-	 jnB5mbzFuZrCvikYRbPx4T9BkN/3XauZPC3DvPu5XghQseRa7Krs8wA7NkbH9NXyGt
-	 cZIfdJHaGMqs04pLyNi1d0x6BuxOzPeM6RYQKPMrD1Ki2jGSMaW24J7SwNdQChBH8g
-	 p4Fw6mCZj87SJngnHkv9g0rIhei3cXpDH2V7eHNjE0d0cpYCcFiNBPlDy8qw1pZaQ1
-	 z6gz6huSyDw53S/zE7pmRHjQSGtVvQ4kdies1Zr7FWSSe5MYQ+hWpmlfKuugL35+wh
-	 xm0R86aH7I8rQ==
+	s=default; t=1660369100;
+	bh=iI8up3G7spj7H5QmEWRxRma5xV67+qg9mZ7S1LPVqRk=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=yU/uuzlZAxVGN5YWtHuPUwbKNBIYMo/E5Y6WAy8iD4Ai6NZaQaXa5co3PiqidYPbK
+	 ofDrCbTHeScRKNjEsf6T2K7C+RRUtpjqW2GKo82Y984bfMMzwmk+L6anjlzypsju/v
+	 /mRNxRbLFEqYyBT/fKu+J/ASAwmIyxcQj8e5myMeb9K67sviKbH27GUCfSEPtJUnQ9
+	 ERo3fkfcZKjEaXp3z3HJoi9wOaIMSbsdbPm16HLgp9xIhewkoqzsC8iYlVwEvTDcms
+	 r8dvVSDRFuTti2qIxoEFv2P/tVzfuYEDS6Wk5gCxl/uQzCOjw0VrBuWNY1ekvBsliw
+	 X2UMl9amczGzg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9jYXmUn2RvZg; Sat, 13 Aug 2022 00:06:02 +0000 (UTC)
+	with ESMTP id UkGNTk16wCja; Sat, 13 Aug 2022 05:38:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9C137418D2;
-	Sat, 13 Aug 2022 00:06:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C137418D2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8530140867;
+	Sat, 13 Aug 2022 05:38:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8530140867
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1FB081BF27A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 00:05:56 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C7EE11BF82F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 05:38:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E4EF383490
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 00:05:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4EF383490
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9D41460D6E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 05:38:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D41460D6E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q1V1y9KFiC6w for <intel-wired-lan@lists.osuosl.org>;
- Sat, 13 Aug 2022 00:05:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ne-fPWxuvLVd for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 13 Aug 2022 05:38:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D59C583409
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D59C583409
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 00:05:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="289280228"
-X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="289280228"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2022 17:05:52 -0700
-X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="933897974"
-Received: from vedsingh-mobl1.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.209.2.208])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2022 17:05:52 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: James Hogan <jhogan@kernel.org>
-In-Reply-To: <4759452.31r3eYUQgx@saruman>
-References: <20220811151342.19059-1-vinicius.gomes@intel.com>
- <20220811202524.78323-1-vinicius.gomes@intel.com>
- <4759452.31r3eYUQgx@saruman>
-Date: Fri, 12 Aug 2022 21:05:41 -0300
-Message-ID: <87o7wpxb1m.fsf@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C40C60D4F
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7C40C60D4F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Aug 2022 05:38:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="271502828"
+X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="271502828"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Aug 2022 22:38:10 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,233,1654585200"; d="scan'208";a="732441170"
+Received: from lkp-server02.sh.intel.com (HELO 8745164cafc7) ([10.239.97.151])
+ by orsmga004.jf.intel.com with ESMTP; 12 Aug 2022 22:38:09 -0700
+Received: from kbuild by 8745164cafc7 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oMjqb-0001Lr-03;
+ Sat, 13 Aug 2022 05:38:09 +0000
+Date: Sat, 13 Aug 2022 13:37:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <62f738b1.yrQmpLweUw8kD7P9%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660349154; x=1691885154;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=/unn/GWSSxZQI3S+V3HdZHplY4oCOpStK/WAzsbYOiU=;
- b=atm2TGLlNvcdZTAdN2SOqKYmtLRXPB3S9BP7v/tbaQ3FyV+W3oO4g+1D
- IjVUSd3lV2nCUb7cEzBMVsSMlzVpGXC/FSgQ8bEw3ouuYKa4Ru6L87+l1
- hz3Pg5ICt3i7m4P2b9d916/PW5DKart26t7HyNc0AmyKRLjwpj9rw077B
- TxGM81MmwLi8D0U1Kl18G0fVi+aJjxYuSGlmawCz87lfkLO0qfAEs5xJf
- wnH0MJJHztEVu9hjIoGu2/OB6LqQnzBPTnOKv10LptaZbNkzY742ObdjY
- MzpEaDZv60MS193UtFOkFtGlo+xy1LX/i+zXcgOSHtwSlcYFC040fM6iQ
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1660369092; x=1691905092;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ykccb1dcgIKDdUoczB3LkcppJuRmF8r/e1onSPw0+QY=;
+ b=kwxqDAa8ULGf/yBvQzYLXt8/6155TD44y9PDnU4z98dvd9MBV6VG0ziN
+ lz9msmoLtkCCGC1pe1J5hIcAy7JhGuSwl2jEE5botP/L9iTZmDLDVjTgW
+ fD/D7QGrNfgRJ27rO44AXvtMDpX7BB0UJyKLOZFAbEErUW92CzG2T3aLw
+ nOeXywnZtqE5tGmeiHDw+R72yBlFUtDQLIarBdRMCMqqbYXuBXizzftJV
+ a78jPshAvuSvP7iEaUyrG2kPKckpXfARd6vF4RG7wxazBU5iZREVdZoB8
+ n/nrV+5MFSu/uQaHxIcONDhGU8zWrJfBs99EvFqX1ihwRF4elJecsfuI6
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=atm2TGLl
-Subject: Re: [Intel-wired-lan] [WIP v2] igc: fix deadlock caused by taking
- RTNL in RPM resume path
+ header.a=rsa-sha256 header.s=Intel header.b=kwxqDAa8
+Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
+ cbe9e51126305832cf407ee6bb556ce831488ffe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,54 +94,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi James,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 40GbE
+branch HEAD: cbe9e51126305832cf407ee6bb556ce831488ffe  iavf: Fix deadlock in initialization
 
-James Hogan <jhogan@kernel.org> writes:
+elapsed time: 720m
 
-> On Thursday, 11 August 2022 21:25:24 BST Vinicius Costa Gomes wrote:
->> It was reported a RTNL deadlock in the igc driver that was causing
->> problems during suspend/resume.
->> 
->> The solution is similar to commit ac8c58f5b535 ("igb: fix deadlock
->> caused by taking RTNL in RPM resume path").
->> 
->> Reported-by: James Hogan <jhogan@kernel.org>
->> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->> ---
->> Sorry for the noise earlier, my kernel config didn't have runtime PM
->> enabled.
->
-> Thanks for looking into this.
->
-> This is identical to the patch I've been running for the last week. The 
-> deadlock is avoided, however I now occasionally see an assertion from 
-> netif_set_real_num_tx_queues due to the lock not being taken in some cases via 
-> the runtime_resume path, and a suspicious rcu_dereference_protected() warning 
-> (presumably due to the same issue of the lock not being taken). See here for 
-> details:
-> https://lore.kernel.org/netdev/4765029.31r3eYUQgx@saruman/
+configs tested: 53
+configs skipped: 2
 
-Oh, sorry. I missed the part that the rtnl assert splat was already
-using similar/identical code to what I got/copied from igb.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-So what this seems to be telling us is that the "fix" from igb is only
-hiding the issue, and we would need to remove the need for taking the
-RTNL for the suspend/resume paths in igc and igb? (as someone else said
-in that igb thread, iirc)
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+powerpc                           allnoconfig
+arc                  randconfig-r043-20220812
+i386                                defconfig
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+sh                               allmodconfig
+x86_64                        randconfig-a015
+s390                 randconfig-r044-20220812
+riscv                randconfig-r042-20220812
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+x86_64                    rhel-8.3-kselftests
+arm                                 defconfig
+i386                             allyesconfig
+x86_64                        randconfig-a002
+i386                          randconfig-a001
+alpha                            allyesconfig
+x86_64                           rhel-8.3-syz
+i386                          randconfig-a003
+x86_64                           rhel-8.3-kvm
+arc                              allyesconfig
+i386                          randconfig-a005
+x86_64                        randconfig-a004
+x86_64                        randconfig-a006
+arm64                            allyesconfig
+arm                              allyesconfig
+x86_64                              defconfig
+i386                          randconfig-a014
+i386                          randconfig-a012
+x86_64                               rhel-8.3
+i386                          randconfig-a016
+m68k                             allyesconfig
+m68k                             allmodconfig
+x86_64                           allyesconfig
+ia64                             allmodconfig
 
+clang tested configs:
+hexagon              randconfig-r045-20220812
+hexagon              randconfig-r041-20220812
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+x86_64                        randconfig-a003
+i386                          randconfig-a004
+x86_64                        randconfig-a005
+i386                          randconfig-a006
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
 
-Cheers,
 -- 
-Vinicius
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
