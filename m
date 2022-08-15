@@ -1,90 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 894CE591EDB
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Aug 2022 09:06:19 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD703593042
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Aug 2022 15:53:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B688C611B2;
-	Sun, 14 Aug 2022 07:06:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B688C611B2
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1FCEF8269C;
+	Mon, 15 Aug 2022 13:53:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1FCEF8269C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660460776;
-	bh=ViDpX3VkAaAtHHcpNxnS86xUmdkWntnDMfMJTIfJoCM=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=vr8VMKq9xR5nzWl3d7a2LGHCFnrsnOkjDgkWqDn5U8Nq7dDLhVmSgL6DhUq25sHbL
-	 rggMF3Zs9AL/X0yftkKq7yREWY/pF7+2EQ3gVtmHU/nDCd05qxIPlskE2ATOXdH/Gz
-	 MARZizHv+4T0KvqEZ3/nRIbpc/LQ+4dVRdUk8pYPho/MCAjx9YsrDiS+aQlVQcaEK9
-	 MyTXZ0VGpT2zyJD/I3lDj0S5uaeVSBGLRjhuJUL3fBP7GWKKwz/MdB7Ufpz5sVD2Ar
-	 qwoOqOUOl2+yJ4D1g1Sxnj3XirIERWagmisv2M1rVaC99V4ll/uDaPIu9QGOZhCoM4
-	 x8idNmDDtf4Zg==
+	s=default; t=1660571603;
+	bh=FwkSU6HTqke9LaCRFlw+Dx2+w49Wuqjf9BiON+QZ6PY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=j7i45s2TTxMCXvr+CMcvPSB7QPzUpZSFDvsYFsVUReCZYX8ISYnc2EgyDu7+hAsYb
+	 ZY6Z8ygFRr+LBuNJGaQGfhpMcpZwulqmreuRrDC4df92hsRTiq8dia07xSKWfr3Kgq
+	 4qdFMgNUruBb2wXDR6UBOpsxoKPdy9bw8oBfTgjRyVPb+rVpOPqFQjiHoKlxiNbvP3
+	 Tq8OlH8EnfbI5uVj+tuu92URHAVQvrjKOLVqKAUX7/RcjKN9VJStQKT90TDuKH+JMo
+	 fh87mYtm40jdBuqd4DTLJIXm1w13nwjIEiGtoZM/Pmp0Wp7h63Q1jnFDbe05ra+Ueq
+	 cdV3e6CYePhkA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cdVVXkH_7fT3; Sun, 14 Aug 2022 07:06:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bMKwQESdiJLR; Mon, 15 Aug 2022 13:53:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BA88560B9F;
-	Sun, 14 Aug 2022 07:06:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA88560B9F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 46D4583F65;
+	Mon, 15 Aug 2022 13:53:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 46D4583F65
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1797D1BF393
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Aug 2022 07:06:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 90B261BF21A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Aug 2022 01:19:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DC1FB60B9F
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Aug 2022 07:06:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DC1FB60B9F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 67D8282741
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Aug 2022 01:19:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 67D8282741
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7qeYoWI_TVFK for <intel-wired-lan@lists.osuosl.org>;
- Sun, 14 Aug 2022 07:06:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1AF73607FE
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1AF73607FE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Aug 2022 07:06:09 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="317781445"
-X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; d="scan'208";a="317781445"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2022 00:06:07 -0700
-X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; d="scan'208";a="666308652"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.13.121])
- ([10.13.13.121])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2022 00:06:06 -0700
-Message-ID: <7007cb14-433d-c75b-aa0e-ef234e67bf4b@linux.intel.com>
-Date: Sun, 14 Aug 2022 10:05:53 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Content-Language: en-US
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20220808102421.1651482-1-sasha.neftin@intel.com>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20220808102421.1651482-1-sasha.neftin@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660460770; x=1691996770;
- h=message-id:date:mime-version:subject:to:references:from:
- in-reply-to:content-transfer-encoding;
- bh=7NrMvxUlv/gzOXTCSs4kCW56jufLxC7tCxlyMHoQzLU=;
- b=ItW9y2Hx44cb2sNeLo/REh79fFgM+w3XblAypj7bplZ/In0//ldZL9AW
- xcbT6T8gJ70QnoA+Wo6qyN/pq6PfcmSvgTlDmjXyZNBsoycJRujW2i73Q
- GOmJonHzUs0fTEbfImW4ekq/5BQBU064Ecz+ycE9RN7XJid0fzukhx0x8
- A8S4ZsCdQJFv111EYA8UW4/55HOpDcfCXStDn101w0430cKE1ZNY76sfF
- MSkyDfDgc5jaSRj7ssKevfZ3+GlyX37kB++9wijY11MgJIaMh7iUkdqMC
- pAHuMEoli2W4k3uGFKswRMkDkpP6RaosSN3KOftbPlx0KJPxpgsmxc5cZ
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ItW9y2Hx
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove IGC_MDIC_INT_EN
- definition
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l2BWYeA0SWj8 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Aug 2022 01:19:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4180681D47
+Received: from mail-m11877.qiye.163.com (mail-m11877.qiye.163.com
+ [115.236.118.77])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4180681D47
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Aug 2022 01:19:28 +0000 (UTC)
+Received: from localhost.localdomain (unknown
+ [IPV6:240e:3b7:327c:32d0:6dfa:22b5:6014:e591])
+ by mail-m11877.qiye.163.com (Hmail) with ESMTPA id F00C040038C;
+ Mon, 15 Aug 2022 09:19:22 +0800 (CST)
+From: Ding Hui <dinghui@sangfor.com.cn>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, keescook@chromium.org, intel-wired-lan@lists.osuosl.org
+Date: Mon, 15 Aug 2022 09:18:44 +0800
+Message-Id: <20220815011844.22193-1-dinghui@sangfor.com.cn>
+X-Mailer: git-send-email 2.17.1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+ tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaHx5LVhhLTUoeTUpOSk4ZSlUTARMWGhIXJBQOD1
+ lXWRgSC1lBWUlPSx5BSBlMQUhJTBhBSEkfS0FNHx0aQUlJGU5BTUtKT0EeTkJKWVdZFhoPEhUdFF
+ lBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PQg6GSo4Fz0yQh9OSyESLU0L
+ KSoaCjlVSlVKTU1LTklNSE1IQkpDVTMWGhIXVR8SFRwTDhI7CBoVHB0UCVUYFBZVGBVFWVdZEgtZ
+ QVlJT0seQUgZTEFISUwYQUhJH0tBTR8dGkFJSRlOQU1LSk9BHk5CSllXWQgBWUFCSk9KNwY+
+X-HM-Tid: 0a829f1582df2eb3kusnf00c040038c
+X-Mailman-Approved-At: Mon, 15 Aug 2022 13:53:17 +0000
+Subject: [Intel-wired-lan] [net v2 1/1] ice: Fix crash by keep old cfg when
+ update TCs more than queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,20 +81,208 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, anatolii.gerasymenko@intel.com,
+ Ding Hui <dinghui@sangfor.com.cn>, linux-kernel@vger.kernel.org,
+ linux-hardening@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 8/8/2022 13:24, Sasha Neftin wrote:
-> IGC_MDIC_INT_EN defnition is not used. This patch comes to tidy up the
-> driver code.
-> 
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_defines.h | 1 -
->   1 file changed, 1 deletion(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+There are problems if allocated queues less than Traffic Classes.
+
+Commit a632b2a4c920 ("ice: ethtool: Prohibit improper channel config
+for DCB") already disallow setting less queues than TCs.
+
+Another case is if we first set less queues, and later update more TCs
+config due to LLDP, ice_vsi_cfg_tc() will failed but left dirty
+num_txq/rxq and tc_cfg in vsi, that will cause invalid porinter access.
+
+[   95.968089] ice 0000:3b:00.1: More TCs defined than queues/rings allocated.
+[   95.968092] ice 0000:3b:00.1: Trying to use more Rx queues (8), than were allocated (1)!
+[   95.968093] ice 0000:3b:00.1: Failed to config TC for VSI index: 0
+[   95.969621] general protection fault: 0000 [#1] SMP NOPTI
+[   95.969705] CPU: 1 PID: 58405 Comm: lldpad Kdump: loaded Tainted: G     U  W  O     --------- -t - 4.18.0 #1
+[   95.969867] Hardware name: O.E.M/BC11SPSCB10, BIOS 8.23 12/30/2021
+[   95.969992] RIP: 0010:devm_kmalloc+0xa/0x60
+[   95.970052] Code: 5c ff ff ff 31 c0 5b 5d 41 5c c3 b8 f4 ff ff ff eb f4 0f 1f 40 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 89 d1 <8b> 97 60 02 00 00 48 8d 7e 18 48 39 f7 72 3f 55 89 ce 53 48 8b 4c
+[   95.970344] RSP: 0018:ffffc9003f553888 EFLAGS: 00010206
+[   95.970425] RAX: dead000000000200 RBX: ffffea003c425b00 RCX: 00000000006080c0
+[   95.970536] RDX: 00000000006080c0 RSI: 0000000000000200 RDI: dead000000000200
+[   95.970648] RBP: dead000000000200 R08: 00000000000463c0 R09: ffff888ffa900000
+[   95.970760] R10: 0000000000000000 R11: 0000000000000002 R12: ffff888ff6b40100
+[   95.970870] R13: ffff888ff6a55018 R14: 0000000000000000 R15: ffff888ff6a55460
+[   95.970981] FS:  00007f51b7d24700(0000) GS:ffff88903ee80000(0000) knlGS:0000000000000000
+[   95.971108] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   95.971197] CR2: 00007fac5410d710 CR3: 0000000f2c1de002 CR4: 00000000007606e0
+[   95.971309] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   95.971419] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   95.971530] PKRU: 55555554
+[   95.971573] Call Trace:
+[   95.971622]  ice_setup_rx_ring+0x39/0x110 [ice]
+[   95.971695]  ice_vsi_setup_rx_rings+0x54/0x90 [ice]
+[   95.971774]  ice_vsi_open+0x25/0x120 [ice]
+[   95.971843]  ice_open_internal+0xb8/0x1f0 [ice]
+[   95.971919]  ice_ena_vsi+0x4f/0xd0 [ice]
+[   95.971987]  ice_dcb_ena_dis_vsi.constprop.5+0x29/0x90 [ice]
+[   95.972082]  ice_pf_dcb_cfg+0x29a/0x380 [ice]
+[   95.972154]  ice_dcbnl_setets+0x174/0x1b0 [ice]
+[   95.972220]  dcbnl_ieee_set+0x89/0x230
+[   95.972279]  ? dcbnl_ieee_del+0x150/0x150
+[   95.972341]  dcb_doit+0x124/0x1b0
+[   95.972392]  rtnetlink_rcv_msg+0x243/0x2f0
+[   95.972457]  ? dcb_doit+0x14d/0x1b0
+[   95.972510]  ? __kmalloc_node_track_caller+0x1d3/0x280
+[   95.972591]  ? rtnl_calcit.isra.31+0x100/0x100
+[   95.972661]  netlink_rcv_skb+0xcf/0xf0
+[   95.972720]  netlink_unicast+0x16d/0x220
+[   95.972781]  netlink_sendmsg+0x2ba/0x3a0
+[   95.975891]  sock_sendmsg+0x4c/0x50
+[   95.979032]  ___sys_sendmsg+0x2e4/0x300
+[   95.982147]  ? kmem_cache_alloc+0x13e/0x190
+[   95.985242]  ? __wake_up_common_lock+0x79/0x90
+[   95.988338]  ? __check_object_size+0xac/0x1b0
+[   95.991440]  ? _copy_to_user+0x22/0x30
+[   95.994539]  ? move_addr_to_user+0xbb/0xd0
+[   95.997619]  ? __sys_sendmsg+0x53/0x80
+[   96.000664]  __sys_sendmsg+0x53/0x80
+[   96.003747]  do_syscall_64+0x5b/0x1d0
+[   96.006862]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+
+Only update num_txq/rxq when passed check, and restore tc_cfg if setup
+queue map failed.
+
+Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 42 +++++++++++++++---------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+
+---
+v1:
+https://patchwork.kernel.org/project/netdevbpf/patch/20220812123933.5481-1-dinghui@sangfor.com.cn/
+
+v2:
+  rewrite subject
+  rebase to net
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index a830f7f9aed0..6e64cca30351 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -914,7 +914,7 @@ static void ice_set_dflt_vsi_ctx(struct ice_hw *hw, struct ice_vsi_ctx *ctxt)
+  */
+ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ {
+-	u16 offset = 0, qmap = 0, tx_count = 0, pow = 0;
++	u16 offset = 0, qmap = 0, tx_count = 0, rx_count = 0, pow = 0;
+ 	u16 num_txq_per_tc, num_rxq_per_tc;
+ 	u16 qcount_tx = vsi->alloc_txq;
+ 	u16 qcount_rx = vsi->alloc_rxq;
+@@ -981,23 +981,25 @@ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 	 * at least 1)
+ 	 */
+ 	if (offset)
+-		vsi->num_rxq = offset;
++		rx_count = offset;
+ 	else
+-		vsi->num_rxq = num_rxq_per_tc;
++		rx_count = num_rxq_per_tc;
+ 
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	if (rx_count > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			rx_count, vsi->alloc_rxq);
+ 		return -EINVAL;
+ 	}
+ 
+-	vsi->num_txq = tx_count;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	if (tx_count > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			tx_count, vsi->alloc_txq);
+ 		return -EINVAL;
+ 	}
+ 
++	vsi->num_txq = tx_count;
++	vsi->num_rxq = rx_count;
++
+ 	if (vsi->type == ICE_VSI_VF && vsi->num_txq != vsi->num_rxq) {
+ 		dev_dbg(ice_pf_to_dev(vsi->back), "VF VSI should have same number of Tx and Rx queues. Hence making them equal\n");
+ 		/* since there is a chance that num_rxq could have been changed
+@@ -3492,6 +3494,7 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 	int tc0_qcount = vsi->mqprio_qopt.qopt.count[0];
+ 	u8 netdev_tc = 0;
+ 	int i;
++	u16 new_txq, new_rxq;
+ 
+ 	vsi->tc_cfg.ena_tc = ena_tc ? ena_tc : 1;
+ 
+@@ -3530,21 +3533,24 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 		}
+ 	}
+ 
+-	/* Set actual Tx/Rx queue pairs */
+-	vsi->num_txq = offset + qcount_tx;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	new_txq = offset + qcount_tx;
++	if (new_txq > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			new_txq, vsi->alloc_txq);
+ 		return -EINVAL;
+ 	}
+ 
+-	vsi->num_rxq = offset + qcount_rx;
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	new_rxq = offset + qcount_rx;
++	if (new_rxq > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			new_rxq, vsi->alloc_rxq);
+ 		return -EINVAL;
+ 	}
+ 
++	/* Set actual Tx/Rx queue pairs */
++	vsi->num_txq = new_txq;
++	vsi->num_rxq = new_rxq;
++
+ 	/* Setup queue TC[0].qmap for given VSI context */
+ 	ctxt->info.tc_mapping[0] = cpu_to_le16(qmap);
+ 	ctxt->info.q_mapping[0] = cpu_to_le16(vsi->rxq_map[0]);
+@@ -3580,6 +3586,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	struct device *dev;
+ 	int i, ret = 0;
+ 	u8 num_tc = 0;
++	struct ice_tc_cfg old_tc_cfg;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (vsi->tc_cfg.ena_tc == ena_tc &&
+@@ -3600,6 +3607,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 			max_txqs[i] = vsi->num_txq;
+ 	}
+ 
++	memcpy(&old_tc_cfg, &vsi->tc_cfg, sizeof(old_tc_cfg));
+ 	vsi->tc_cfg.ena_tc = ena_tc;
+ 	vsi->tc_cfg.numtc = num_tc;
+ 
+@@ -3616,8 +3624,10 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	else
+ 		ret = ice_vsi_setup_q_map(vsi, ctx);
+ 
+-	if (ret)
++	if (ret) {
++		memcpy(&vsi->tc_cfg, &old_tc_cfg, sizeof(vsi->tc_cfg));
+ 		goto out;
++	}
+ 
+ 	/* must to indicate which section of VSI context are being modified */
+ 	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
