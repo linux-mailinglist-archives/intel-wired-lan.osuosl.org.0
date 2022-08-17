@@ -1,74 +1,197 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55AD5596D0A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Aug 2022 12:54:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5510C597368
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Aug 2022 17:59:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E3F5D41A1E;
-	Wed, 17 Aug 2022 10:54:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3F5D41A1E
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD677610AB;
+	Wed, 17 Aug 2022 15:59:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD677610AB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660733672;
-	bh=+xhZZdpodR8HL+otk13XNeckYvVgJhFhRj6htoYDohI=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=XlfNvd1U8j9Yl68UGPtk1ljuOPa+5Ib8H3VqHeRwgNRD+GMIMi7Pbwnep6+UnYTNS
-	 4sHikS/t6fHNzIieK7opBZWlWYGtYNEssoiQFqDXcecwbZUgaaeotG0uhgdw+qWK8Z
-	 u7rcwxpfB0dk3gQrKzpIXSlrbiSFfFyLjqvqWuEsBtJOd4TSvEilvHfqc4ALy9F5ez
-	 0f34x2bkEG34BTQ85nqKc1OJUVZyWRiRgw0VfATpL4sekbm8H728tOA1spId4eMlyL
-	 7VqDLZE+5OTgPNnMNf0Y+zDtIJRdWoZkQyfgLNiI9YGUhhuhdDGIA2T2drIFBZ5sGJ
-	 UjdxnJG0uFrdg==
+	s=default; t=1660751958;
+	bh=I7bmUwQCmm7PNFOact3JrzYEc3inaGPSAhSdmXa3YJU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=820mG9XCNkT4wA6lpR5/AE6JHj/xcy0hpBJ4iwEdDjWrBzlfqLEmg1/Rto2P7vbVj
+	 LCJXU5vaqtNK0L/bJqWIs3VfztlNOzHprqAXuz+jVJSXATz2TUEVl7Kvx5UiRLnGlb
+	 Iq5lAOQ5ng7X1DLjxk5u0YqtQxDCg7Iue/YjReHLuxiNRDTJpX91hwy5Oh309tKfiO
+	 +7vDTJPPIWCPH3maS9fIkxCGNm6NwHa9uYOREAxkRXMYlFNTxC6WyQi1M//7a657FE
+	 WBs+XMxvSQhCOdPBPhvRmX0LKfhK3LUOZYQ8/zNfEyxX55aYW7SiVgmPRAk0pMrLYU
+	 +32V656IPnnZg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Izr4JcpUtLu; Wed, 17 Aug 2022 10:54:31 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GOE6jPUrh5kD; Wed, 17 Aug 2022 15:59:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED7D2418B6;
-	Wed, 17 Aug 2022 10:54:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED7D2418B6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9EF4C610C6;
+	Wed, 17 Aug 2022 15:59:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9EF4C610C6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 90D021BF377
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B61DA1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 15:59:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 700C6831C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 700C6831C1
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8F61D610C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 15:59:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F61D610C6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zs8woSwvMYFj for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Aug 2022 10:54:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57A27831BD
-Received: from mail-m11877.qiye.163.com (mail-m11877.qiye.163.com
- [115.236.118.77])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 57A27831BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:19 +0000 (UTC)
-Received: from localhost.localdomain (unknown
- [IPV6:240e:3b7:3274:d420:a98e:150b:8782:dcdb])
- by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 3A25E4006B3;
- Wed, 17 Aug 2022 18:54:15 +0800 (CST)
-From: Ding Hui <dinghui@sangfor.com.cn>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, keescook@chromium.org, intel-wired-lan@lists.osuosl.org,
- anatolii.gerasymenko@intel.com
-Date: Wed, 17 Aug 2022 18:53:18 +0800
-Message-Id: <20220817105318.5426-1-dinghui@sangfor.com.cn>
-X-Mailer: git-send-email 2.17.1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZSU4ZVk9KThgZGk9OH0sYGFUTARMWGhIXJBQOD1
- lXWRgSC1lBWUlPSx5BSBlMQUhJTE9BH09JS0EaQkMeQUpOSxlBQ0xDSUEfGB8ZWVdZFhoPEhUdFF
- lBWU9LSFVKSktISkNVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pio6KAw4IT03QhI9TBESTjhW
- Ch9PChZVSlVKTU1LTEhITU5NS0hPVTMWGhIXVR8SFRwTDhI7CBoVHB0UCVUYFBZVGBVFWVdZEgtZ
- QVlJT0seQUgZTEFISUxPQR9PSUtBGkJDHkFKTksZQUNMQ0lBHxgfGVlXWQgBWUFCTk9MNwY+
-X-HM-Tid: 0a82ab708a232eb3kusn3a25e4006b3
-Subject: [Intel-wired-lan] [net v3 1/1] ice: Fix crash by keep old cfg when
- update TCs more than queues
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VPjpjJfYXOLF for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Aug 2022 15:59:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A0D5610AB
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3A0D5610AB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 15:59:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10442"; a="354276909"
+X-IronPort-AV: E=Sophos;i="5.93,243,1654585200"; d="scan'208";a="354276909"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Aug 2022 08:59:10 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,243,1654585200"; d="scan'208";a="558175293"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga003.jf.intel.com with ESMTP; 17 Aug 2022 08:59:08 -0700
+Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Wed, 17 Aug 2022 08:59:07 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28; Wed, 17 Aug 2022 08:59:07 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.28 via Frontend Transport; Wed, 17 Aug 2022 08:59:07 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.28; Wed, 17 Aug 2022 08:59:06 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fJZYlh7Mxe0GIOTrEoTOoZnsHsfu5+f5kOtUAAj1tqF82/zgwi5X3JCnH1ak5Rx0n7kw9PB5yUSBRRe3owM6BxZQqzuZ95TLTTbN5IjZ4mnKjARcd2Xl4R1Ki/cPQ64wzMTiEkwY5nhK4LyaRH32fUxYZT7EDDjgLJE9GCrwjdm2wqGGRsOQSyNogYbUeRbnI4CA6ihjs514npV+9qWJFaK+U+TWlnucuj7HENk3P38IKpKPSOxEFrf2X3LGVbPYesH5Xdj2pe9RQ5jY1ww90YFKrKMnhnDkoqQ8m/5zsdZ2WGjkldbS+7INBf68jIssQSwmbBk4xAKyBiOmlSkicg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/ri3sP9YZJVhVUEwKpuvE7ana99RWRTgAljZFfibYnc=;
+ b=FWI5TI/rl+S4SrMH295cLT008X3eee0HEhwO/gnpEN/CvZ/ZziAyITcgn6Dzue4SYHXF+2y8XXo2NOdZSAEmcIBKrKQOs7zX2aJ6MSYHiQXujSRSm5YymYqV5JnwNRk+/2JnSMxDJmtWO1OppC5hQlqjmSmqZH1KPkwCreHtmrA0oRhcnHdprPIq3gzrzM4mJwXlC773yBdGuecdzQ7w4AUR+Jr8U3iDcfIiVX1kt4WF7h5lF5KOLU1Ty7fDrXGJeFzb4Fo+vlpplK669MPs1kcDBV97OXZPyZ0W0T0oRTRFr5S9QlxOt8HRVeWxDwEzuQU010BlQwU3NQZS8n6dhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by DM5PR11MB1659.namprd11.prod.outlook.com (2603:10b6:4:6::20) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5504.17; Wed, 17 Aug 2022 15:59:05 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::9d3b:23bc:a1e8:2475%7]) with mapi id 15.20.5504.016; Wed, 17 Aug 2022
+ 15:59:05 +0000
+Message-ID: <2151f504-5244-5680-1d70-1fcd8ecd7022@intel.com>
+Date: Wed, 17 Aug 2022 08:59:01 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Content-Language: en-US
+To: Thorsten Leemhuis <regressions@leemhuis.info>, "Wilczynski, Michal"
+ <michal.wilczynski@intel.com>, Jaroslav Pulchart
+ <jaroslav.pulchart@gooddata.com>, "Siwik, Grzegorz"
+ <grzegorz.siwik@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+References: <CAK8fFZ7m-KR57M_rYX6xZN39K89O=LGooYkKsu6HKt0Bs+x6xQ@mail.gmail.com>
+ <2596b2c6-71e4-543f-799f-b4b174c21f31@leemhuis.info>
+ <CAK8fFZ6hS69JMtnvFnLVt9aiWEivZ9-izNgMHtB+KeAWAfaXaQ@mail.gmail.com>
+ <6f52ccd2-8411-0c53-2deb-885bb1234ce5@leemhuis.info>
+ <c89c993e-7a7a-15df-85ef-8d9b7be16b71@intel.com>
+ <35814f70-26ad-8007-9381-e8edf4a6d77f@leemhuis.info>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <35814f70-26ad-8007-9381-e8edf4a6d77f@leemhuis.info>
+X-ClientProxiedBy: BY5PR13CA0021.namprd13.prod.outlook.com
+ (2603:10b6:a03:180::34) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 5e7a58f7-571b-424b-7f89-08da80696930
+X-MS-TrafficTypeDiagnostic: DM5PR11MB1659:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: wGp0IYx4MLABt0mlC9C197YEyXQPXHKPiYBcgY/OpW52Y+mP+BidwQpjECgBHsakJvSx8xHuG684QD3X/U0+OGYT1HjR/ka4/BmEiFZ2K6Uf/z7Fdy8IOtjTb4rB8ZDGh4bNOdw0aXoaHDoHwvNMNniHygVmaJUGYcafim6iujPLKkvOXmOVBRqGHz1oN1U7J8GMJnalUVXte9cFm/OEOKHW+uHhREy1/91iEudKraokVGjJu0N7YSO0nJAwWOjLJwbuIoC01d4YMKqvrcUczSeJ47T8Y6agFUextrzcjVQQPrEnudRCG7w2/U8zQKu+zSKy0wdrDA2gRtKOVg2M7ybZ/DeJ0L/Kbx310i3/jJ/T5B6DOOub0Nrsmb8AixrVUeFeeWf5/zhW1KJl8/V5ktUIT9hAMCXASHLPpLBcPgFctbCcxGz2IcbPnx4tvT6WDtwJK6SHFAjD2KMtmdzBkWKBYk4wPH6kaKWsxhcN7+qmjOQ8QoFkjjb9zHDaeVLr2Bn7QaEVXfWAfK0RzbwTDV8gGYbXvxU6ifz/Uw9wOZ9mN4/5wnECHPP90k8gW3oENykRuGjfVxdvHVK2TVYl9vntT1JihrftZXcRFXveVXu9vlA5PfwYDA40ALB+k0iTE/rDEIEENYGflwtmEUS5nO78UT5F245tQeEbO8PozUWFP34Fttzy1qi/yaivi8NpgVDMo5gENv7vzvQs94cKdz7YnP+O30AxrPFr2Thz6qiFrtXs9Ezna7rZVmZ5qn2gc5OFlHMYU4YztpmffeaNrMGJTZPSKL3Z5maCHstFViLlw31MTgpBNYtNtJzmVP6j+xv5yIFGBSdoTIqeD4gb5AtK2cUh7+OiDkbn0CriKiVytSlK8zs7wS84VQU9gk8AJBUEcokEaIGtReeOhqGBZA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(136003)(346002)(376002)(39860400002)(396003)(366004)(6512007)(6506007)(6666004)(6636002)(86362001)(316002)(31696002)(54906003)(110136005)(6486002)(966005)(53546011)(38100700002)(26005)(186003)(41300700001)(478600001)(83380400001)(82960400001)(8936002)(36756003)(5660300002)(2616005)(31686004)(66946007)(66476007)(8676002)(4326008)(2906002)(66556008)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NEJmSTRhTFp6NEFjVUNFa1ZReFFmSHZJLzQyWFhneFVMN3MxQ1NpVDBQVno2?=
+ =?utf-8?B?alpZRUlvNVU5dDJjMGFRcGdrSTFsN29QYi9WTERtakdtdXUzNFZGS3dwUmpD?=
+ =?utf-8?B?TGlMQUVwTmRrNnVCdkFRazJTT2t2dER4dWs5dHRjeHQ2TlYvVE0wM3BWR2Ji?=
+ =?utf-8?B?RmtvYXdRTm9RWk9Bc1BFOWRCQ1VpYlZTMjlpUmN5STZpcFZQZXZnQ3RxcFlW?=
+ =?utf-8?B?LzlCWTk5R3Y3NjlVVCs0YjlPM2lQMHQ4VlhWRDJDVkhGSVVnWFh0cW1QRlRX?=
+ =?utf-8?B?MytwQmphcVdMRVlWNjNOYzZ1Y3BybWRqYjIyS3huN2ZsTTJWRFdOTVJvSVRV?=
+ =?utf-8?B?OFQzdnFtQksyWDluRGFYMHR1SkxoSnUwRytpMkpQaHd1bklkVDdZTG5xaGUw?=
+ =?utf-8?B?UzJzN1UzQm8wdUNsK3JoNUVkamp2VHJBUEVIQXRVMFlqTTIrR2t2Zy9ZQm5O?=
+ =?utf-8?B?aHZBK3UxUFdVUGQvMzVEVUlZZkFMdXZvbUxGK3F1cjNIRHo3RTY0VzFBejlG?=
+ =?utf-8?B?N09JMUpMNGlXVEN6SzZLNG9zWmJTRy9RNTN6ZU1UQThZSnIwN2Y5WUJ0a01W?=
+ =?utf-8?B?NXhLYW0xd2lYNFJqdWRUcDY5amxtVDMxS0pqdEx2Y1Z1c3ZBSWVxNjRlZmhi?=
+ =?utf-8?B?dlNFMkZ5dkM2T0JPcmRnQno0cDAwUURxcWtyL3VoQkVrNXIwT1VkdzRIVkUy?=
+ =?utf-8?B?NnJTQi9yVXl3eHcxVW9jM1RPNkdXc1JaRlJxZTVCcGJ5Vlp2NXZlUkZOU0Qr?=
+ =?utf-8?B?SlFWLy9KbGVCdms4T3E5RzhYQ3E3TmJJTlhpZktkR0JPWFB2RHhHU1A5U0d6?=
+ =?utf-8?B?YmZxUDg2akhtR3NGYnV5VHJOb3BPeSt4TENmd3dvcStEK3B2L3JmcEZNMTBh?=
+ =?utf-8?B?SGFNVGZKYStIM1lCM0NBSzFCVUMzVnZKdmw2MzhlRVBXSXZhcThsT3pKdGFh?=
+ =?utf-8?B?VEt6emJ4d21KejZQM2ZSMm1QdHR4Y3lPcExaTkZXemxuNjFvWXF1eFhmQWR5?=
+ =?utf-8?B?ZWxOZkJXWjhoYmNleW0wbm55TFFKRFZyWGZjWU5EbW01Vmw0c3k5cjVldmtr?=
+ =?utf-8?B?dEk4N0NQL2I1cEFiK0NRL0RzOGdpdGZLaU1pa05hekNxdjJzSGUyRnJYaGxN?=
+ =?utf-8?B?UnRjMGtjS05heHcvTmdZQnBCYUtVU0U5TW5FcTlzaDdaWExPOXk4eVkzVCtP?=
+ =?utf-8?B?VzdLemRJRWpTdXdrdUtaTHA4VkhRYmNKalBJV2J6VzZYWmx6WTdMSnlmQ1pz?=
+ =?utf-8?B?QXVHK3lGRk83OFlSYWMzZkJUSEg1ODMzZlhoS1RCN0Vsamtvdzl3NUlMcDZQ?=
+ =?utf-8?B?V28zV25iMUdpbGNnOU9yWjV2WDhRUGNxdVlRZ0QwbkVCNlpnWnZCQnYxcGMy?=
+ =?utf-8?B?YmFiYk85MXU2Z0FUaUpkKzlaRnhYd2RwVGpJa3hZdkwrWnZSOFhDREFZV3Z2?=
+ =?utf-8?B?SVp5c2g3NUFpN0VxMVZXa296eU5WU2NJcEF5VzZITXhpZm5CRmtkblN0Z3o0?=
+ =?utf-8?B?OUp5L1JLRGF4eGVmNWZQc3kyZktkYUJvQnMyc2dGRlN1VmJRUm9YY0ErR200?=
+ =?utf-8?B?c3FKTXZYc0IvdW1XRW9xRmR5cFUySXYrMFU4ZWJGTklJZUJSeWRKYUI3MHg5?=
+ =?utf-8?B?NzhSN2Q0V2M5ck5EeWJLWGRYS2N1dkZrRjVVNGlFUUw0RCt6TUJpYTI2azdu?=
+ =?utf-8?B?NVZKU3pSMTI2TVlIQzRYSjBjb2txMll5S0NlUVNCQ1N5QnNZeWNRZFJUOGJP?=
+ =?utf-8?B?d3dGRjNoSnZ5MGE0UnArQ2pZckRrL0tGN3FhUWFDY3JMTWVJNmJ5RHVyOTlk?=
+ =?utf-8?B?RlJGYXF2WTlzcGgzNDFzWEg2UWFGTENxQjdzb0tBRytKd3M5dS9VS1pITUI1?=
+ =?utf-8?B?c1pBL3hzdng2SGZOZ3BaYjFqMHhRQ0VPa2JHUVRTK1JhYXJ0QmVFVnBQVnZD?=
+ =?utf-8?B?ditqNWszcUc5NVdVN3dKOUh6bEhWa09sZWRFMTNMOWRjQlpWTm9zWVlod2hP?=
+ =?utf-8?B?T2NlUlFmTHFicWRzRTVLMDcrcHRiRHBraFNSYnMxMWVVTUpjR2NjNHo3aUNa?=
+ =?utf-8?B?aDRHamVQeG1NcUxJZWorenV6MVdpZGw1ZXBsbTNMV0gvRmJSRXdxVkc0OUgz?=
+ =?utf-8?B?eVFKcW1FaUI5TmluYkxnQlNJQVhJM3A2QTlYdTVQd2pXS1lIbnh0TUxIQXB1?=
+ =?utf-8?B?cGc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5e7a58f7-571b-424b-7f89-08da80696930
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Aug 2022 15:59:05.2616 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: twtVrQuHDTRrhvIM1GMetIf2goStGKleen6Rj6bu0Mr9fxlet2cT9AUddXi2mlu4i1hQAGMi8O/LL5omalk3vnMqaayeztX9i/1kwbIM1Q4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1659
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1660751951; x=1692287951;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=91GbsnkTwuSxA5JAezQjrzp9a0LgDSl6VWYQxZ99y5I=;
+ b=TCyrdvRPHiK8rIMmwvepROROiFAQVasCgL6H/5Mlmf+l24up07k7Vznm
+ fpP8x11iR913+SyQ/MpZ2p+F3MM83lOw9+qIroDwY/6DxIBXI+GxsVX3q
+ PDflN3QAtsaQRJe1qKqHWP80QoWNFpvRdwQ/OP77Tzv0jB0trgUuyOqvm
+ qJQtE940GRQuE38LOucKlxEhFIHzDKkvWUvpZfaga3wP6tcohvgmrvO7F
+ F7jvbuJNU9JrlevWQP7owCO2cfYjzdcd0skEcUGbpFKPuj4osOGbcnr8q
+ ZM1MumtYpRsMw5oHuzdU9QfYNm4yXsgwk/uYg8/g5gKjM5XC+3VNRs+jH
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=TCyrdvRP
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] ice: Error setting promisc mode on VSI 6
+ (rc=-17) @ 5.18.x
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,215 +204,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Ding Hui <dinghui@sangfor.com.cn>,
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: LKML <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There are problems if allocated queues less than Traffic Classes.
-
-Commit a632b2a4c920 ("ice: ethtool: Prohibit improper channel config
-for DCB") already disallow setting less queues than TCs.
-
-Another case is if we first set less queues, and later update more TCs
-config due to LLDP, ice_vsi_cfg_tc() will failed but left dirty
-num_txq/rxq and tc_cfg in vsi, that will cause invalid porinter access.
-
-[   95.968089] ice 0000:3b:00.1: More TCs defined than queues/rings allocated.
-[   95.968092] ice 0000:3b:00.1: Trying to use more Rx queues (8), than were allocated (1)!
-[   95.968093] ice 0000:3b:00.1: Failed to config TC for VSI index: 0
-[   95.969621] general protection fault: 0000 [#1] SMP NOPTI
-[   95.969705] CPU: 1 PID: 58405 Comm: lldpad Kdump: loaded Tainted: G     U  W  O     --------- -t - 4.18.0 #1
-[   95.969867] Hardware name: O.E.M/BC11SPSCB10, BIOS 8.23 12/30/2021
-[   95.969992] RIP: 0010:devm_kmalloc+0xa/0x60
-[   95.970052] Code: 5c ff ff ff 31 c0 5b 5d 41 5c c3 b8 f4 ff ff ff eb f4 0f 1f 40 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 89 d1 <8b> 97 60 02 00 00 48 8d 7e 18 48 39 f7 72 3f 55 89 ce 53 48 8b 4c
-[   95.970344] RSP: 0018:ffffc9003f553888 EFLAGS: 00010206
-[   95.970425] RAX: dead000000000200 RBX: ffffea003c425b00 RCX: 00000000006080c0
-[   95.970536] RDX: 00000000006080c0 RSI: 0000000000000200 RDI: dead000000000200
-[   95.970648] RBP: dead000000000200 R08: 00000000000463c0 R09: ffff888ffa900000
-[   95.970760] R10: 0000000000000000 R11: 0000000000000002 R12: ffff888ff6b40100
-[   95.970870] R13: ffff888ff6a55018 R14: 0000000000000000 R15: ffff888ff6a55460
-[   95.970981] FS:  00007f51b7d24700(0000) GS:ffff88903ee80000(0000) knlGS:0000000000000000
-[   95.971108] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   95.971197] CR2: 00007fac5410d710 CR3: 0000000f2c1de002 CR4: 00000000007606e0
-[   95.971309] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[   95.971419] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[   95.971530] PKRU: 55555554
-[   95.971573] Call Trace:
-[   95.971622]  ice_setup_rx_ring+0x39/0x110 [ice]
-[   95.971695]  ice_vsi_setup_rx_rings+0x54/0x90 [ice]
-[   95.971774]  ice_vsi_open+0x25/0x120 [ice]
-[   95.971843]  ice_open_internal+0xb8/0x1f0 [ice]
-[   95.971919]  ice_ena_vsi+0x4f/0xd0 [ice]
-[   95.971987]  ice_dcb_ena_dis_vsi.constprop.5+0x29/0x90 [ice]
-[   95.972082]  ice_pf_dcb_cfg+0x29a/0x380 [ice]
-[   95.972154]  ice_dcbnl_setets+0x174/0x1b0 [ice]
-[   95.972220]  dcbnl_ieee_set+0x89/0x230
-[   95.972279]  ? dcbnl_ieee_del+0x150/0x150
-[   95.972341]  dcb_doit+0x124/0x1b0
-[   95.972392]  rtnetlink_rcv_msg+0x243/0x2f0
-[   95.972457]  ? dcb_doit+0x14d/0x1b0
-[   95.972510]  ? __kmalloc_node_track_caller+0x1d3/0x280
-[   95.972591]  ? rtnl_calcit.isra.31+0x100/0x100
-[   95.972661]  netlink_rcv_skb+0xcf/0xf0
-[   95.972720]  netlink_unicast+0x16d/0x220
-[   95.972781]  netlink_sendmsg+0x2ba/0x3a0
-[   95.975891]  sock_sendmsg+0x4c/0x50
-[   95.979032]  ___sys_sendmsg+0x2e4/0x300
-[   95.982147]  ? kmem_cache_alloc+0x13e/0x190
-[   95.985242]  ? __wake_up_common_lock+0x79/0x90
-[   95.988338]  ? __check_object_size+0xac/0x1b0
-[   95.991440]  ? _copy_to_user+0x22/0x30
-[   95.994539]  ? move_addr_to_user+0xbb/0xd0
-[   95.997619]  ? __sys_sendmsg+0x53/0x80
-[   96.000664]  __sys_sendmsg+0x53/0x80
-[   96.003747]  do_syscall_64+0x5b/0x1d0
-[   96.006862]  entry_SYSCALL_64_after_hwframe+0x65/0xca
-
-Only update num_txq/rxq when passed check, and restore tc_cfg if setup
-queue map failed.
-
-Fixes: a632b2a4c920 ("ice: ethtool: Prohibit improper channel config for DCB")
-Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
-Reviewed-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_lib.c | 42 +++++++++++++++---------
- 1 file changed, 26 insertions(+), 16 deletions(-)
-
----
-v1:
-https://patchwork.kernel.org/project/netdevbpf/patch/20220812123933.5481-1-dinghui@sangfor.com.cn/
-
-v2:
-https://patchwork.kernel.org/project/netdevbpf/patch/20220815011844.22193-1-dinghui@sangfor.com.cn/
-  rewrite subject
-  rebase to net
-
-v3:
-  add Fixes tag
-  follow Reverse Christmas Tree convention
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 0d4dbca88964..990375cf8603 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -914,7 +914,7 @@ static void ice_set_dflt_vsi_ctx(struct ice_hw *hw, struct ice_vsi_ctx *ctxt)
-  */
- static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
- {
--	u16 offset = 0, qmap = 0, tx_count = 0, pow = 0;
-+	u16 offset = 0, qmap = 0, tx_count = 0, rx_count = 0, pow = 0;
- 	u16 num_txq_per_tc, num_rxq_per_tc;
- 	u16 qcount_tx = vsi->alloc_txq;
- 	u16 qcount_rx = vsi->alloc_rxq;
-@@ -981,23 +981,25 @@ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
- 	 * at least 1)
- 	 */
- 	if (offset)
--		vsi->num_rxq = offset;
-+		rx_count = offset;
- 	else
--		vsi->num_rxq = num_rxq_per_tc;
-+		rx_count = num_rxq_per_tc;
- 
--	if (vsi->num_rxq > vsi->alloc_rxq) {
-+	if (rx_count > vsi->alloc_rxq) {
- 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
--			vsi->num_rxq, vsi->alloc_rxq);
-+			rx_count, vsi->alloc_rxq);
- 		return -EINVAL;
- 	}
- 
--	vsi->num_txq = tx_count;
--	if (vsi->num_txq > vsi->alloc_txq) {
-+	if (tx_count > vsi->alloc_txq) {
- 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
--			vsi->num_txq, vsi->alloc_txq);
-+			tx_count, vsi->alloc_txq);
- 		return -EINVAL;
- 	}
- 
-+	vsi->num_txq = tx_count;
-+	vsi->num_rxq = rx_count;
-+
- 	if (vsi->type == ICE_VSI_VF && vsi->num_txq != vsi->num_rxq) {
- 		dev_dbg(ice_pf_to_dev(vsi->back), "VF VSI should have same number of Tx and Rx queues. Hence making them equal\n");
- 		/* since there is a chance that num_rxq could have been changed
-@@ -3490,6 +3492,7 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
- 	u16 pow, offset = 0, qcount_tx = 0, qcount_rx = 0, qmap;
- 	u16 tc0_offset = vsi->mqprio_qopt.qopt.offset[0];
- 	int tc0_qcount = vsi->mqprio_qopt.qopt.count[0];
-+	u16 new_txq, new_rxq;
- 	u8 netdev_tc = 0;
- 	int i;
- 
-@@ -3530,21 +3533,24 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
- 		}
- 	}
- 
--	/* Set actual Tx/Rx queue pairs */
--	vsi->num_txq = offset + qcount_tx;
--	if (vsi->num_txq > vsi->alloc_txq) {
-+	new_txq = offset + qcount_tx;
-+	if (new_txq > vsi->alloc_txq) {
- 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
--			vsi->num_txq, vsi->alloc_txq);
-+			new_txq, vsi->alloc_txq);
- 		return -EINVAL;
- 	}
- 
--	vsi->num_rxq = offset + qcount_rx;
--	if (vsi->num_rxq > vsi->alloc_rxq) {
-+	new_rxq = offset + qcount_rx;
-+	if (new_rxq > vsi->alloc_rxq) {
- 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
--			vsi->num_rxq, vsi->alloc_rxq);
-+			new_rxq, vsi->alloc_rxq);
- 		return -EINVAL;
- 	}
- 
-+	/* Set actual Tx/Rx queue pairs */
-+	vsi->num_txq = new_txq;
-+	vsi->num_rxq = new_rxq;
-+
- 	/* Setup queue TC[0].qmap for given VSI context */
- 	ctxt->info.tc_mapping[0] = cpu_to_le16(qmap);
- 	ctxt->info.q_mapping[0] = cpu_to_le16(vsi->rxq_map[0]);
-@@ -3576,6 +3582,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- {
- 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
- 	struct ice_pf *pf = vsi->back;
-+	struct ice_tc_cfg old_tc_cfg;
- 	struct ice_vsi_ctx *ctx;
- 	struct device *dev;
- 	int i, ret = 0;
-@@ -3600,6 +3607,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- 			max_txqs[i] = vsi->num_txq;
- 	}
- 
-+	memcpy(&old_tc_cfg, &vsi->tc_cfg, sizeof(old_tc_cfg));
- 	vsi->tc_cfg.ena_tc = ena_tc;
- 	vsi->tc_cfg.numtc = num_tc;
- 
-@@ -3616,8 +3624,10 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- 	else
- 		ret = ice_vsi_setup_q_map(vsi, ctx);
- 
--	if (ret)
-+	if (ret) {
-+		memcpy(&vsi->tc_cfg, &old_tc_cfg, sizeof(vsi->tc_cfg));
- 		goto out;
-+	}
- 
- 	/* must to indicate which section of VSI context are being modified */
- 	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
--- 
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gOC8xNy8yMDIyIDI6MDggQU0sIFRob3JzdGVuIExlZW1odWlzIHdyb3RlOgo+IE9uIDA1LjA3
+LjIyIDE1OjUxLCBXaWxjenluc2tpLCBNaWNoYWwgd3JvdGU6Cj4+Cj4+IEFkZGluZyBHcnplZ29y
+eiBTaXdpayzCoCBzaW5jZSBoZSBpcyB3b3JraW5nIG9uIHNpbWlsYXIgaXNzdWUgYW5kIGFscmVh
+ZHkKPj4gaGFzIGEgcGF0Y2ggdGhhdCBpcyBiZWluZyB0ZXN0ZWQvcmV2aWV3ZWQgaW50ZXJuYWxs
+eSBhdCB0aGUgbW9tZW50Lgo+Pgo+PiBIZSBjYW4geW91IGEgc2VuZCBwYXRjaCB0b21vcnJvdyBz
+byB5b3UgY2FuIHRlc3QgaWYgaXQgYWxzbyBmaXhlcyB5b3VyCj4+IHByb2JsZW0uCj4gCj4gVG9u
+eSwgSmVzc2UsIEkgaGF2ZSB0byB3b25kZXI6IHdoeSBpcyBpdCB0YWtlbiBzbyBsb25nIHRvIGdl
+dCB0aGlzCj4gcmVncmVzc2lvbiBmaXhlZD8gVGhlIHJlZ3Jlc3Npb24gd2FzIHJlcG9ydGVkIDY5
+IGRheXMgYWdvIGFuZCB0aGUgZmlyc3QKPiBwYXRjaGVzIHRvIGZpeCB0aGlzIHdlbnQgb3V0IDQw
+IGRheXMgYWdvLiBUaGF0J3MgZmFyIGZyb20gaWRlYWwuCgpIaSBUaG9yc3RlbiwKCk91ciB2YWxp
+ZGF0aW9uIGZvdW5kIGlzc3VlcyB3aGVuIHRlc3RpbmcgdGhlIG9yaWdpbmFsIGZpeCB3aGljaCBj
+YXVzZWQgCnRoZSBkZWxheXMgYXMgdGhlIG5ldyBpc3N1ZXMgd2VyZSBiZWluZyB3b3JrZWQgb3V0
+LgoKPiBSZW1pbmRlcjogdGhpcyByZWdyZXNzaW9uIGlkZWFsbHkgc2hvdWxkIGhhdmUgYmVlbiBm
+aXhlZCB3aXRoaW4gdHdvCj4gd2Vla3MgYWZ0ZXIgdGhlIHJlcG9ydCwgYXMgZXhwbGFpbmVkIGhl
+cmU6Cj4gaHR0cHM6Ly9kb2NzLmtlcm5lbC5vcmcvcHJvY2Vzcy9oYW5kbGluZy1yZWdyZXNzaW9u
+cy5odG1sCj4gCj4gRldJVywgaW4gY2FzZSBhbnlvbmUgd29uZGVyczogdGhlIGxhdGVzdCBwYXRj
+aC1zZXJpZXMgdG8gZml4IHRoaXMgY2FuIGJlCj4gZm91bmQgaGVyZToKPiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9pbnRlbC13aXJlZC1sYW4vMTY2MDMxMDc1MC0yOTA5NDMtMS1naXQtc2VuZC1l
+bWFpbC1ncnplZ29yei5zaXdpa0BpbnRlbC5jb20vCgpJIHdhcyBnb2luZyB0byBwb2ludCB5b3Ug
+dG8gdGhlIG5ld2VzdCBwYXRjaGVzLCBidXQgeW91IGxvY2F0ZWQgdGhlbS4gCk91ciB2YWxpZGF0
+aW9uIGZpbmlzaGVkIHRlc3RpbmcgdGhlbSB5ZXN0ZXJkYXkgc28gdGhlIHB1bGwgcmVxdWVzdCBm
+b3IgCnRoZXNlIHdpbGwgYmUgZ29pbmcgb3V0IHRvIG5ldGRldiB0b2RheS4KClRoYW5rcywKVG9u
+eQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13
+aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8v
+bGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
