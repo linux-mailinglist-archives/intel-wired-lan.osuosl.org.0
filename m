@@ -2,79 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 499AC596BCB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Aug 2022 11:09:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 55AD5596D0A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Aug 2022 12:54:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B2230416B4;
-	Wed, 17 Aug 2022 09:09:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2230416B4
+	by smtp4.osuosl.org (Postfix) with ESMTP id E3F5D41A1E;
+	Wed, 17 Aug 2022 10:54:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3F5D41A1E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1660727345;
-	bh=yx8rDLqwr32QAYft9ASpPneKd6ZOsZIhvH+uBiHbY1E=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=eGhphhZczkG9nwGviQ818gnRLyJaRiJVyY/VOw4CuisjdiS0pcY6dtOEaCY9+Iuoe
-	 b0AO1ARtqmLVz47ObexGjbfqqNNKhExuETjBI6D6eeeHVZdGncy578gcnIQ8XxPRLX
-	 zuCnMCXr1nXr/8+MldygGlEaz8orxXQNAfnjFsxZPX7iaf39TmJ8jTGApqoQiU+CEF
-	 /B8ncyD7784Wa9mC4TMHQ4bTWoRPjrDzoTlKT2mBpNIwzMonbPGfryatLl1BVMgA8s
-	 Zv8ETkF036YBdOXWMj92/3It1V8wrW/B7+uC1hBJSz2s0Czvb3T439vohul38Vc6nn
-	 lZlwoiyJl1e1Q==
+	s=default; t=1660733672;
+	bh=+xhZZdpodR8HL+otk13XNeckYvVgJhFhRj6htoYDohI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=XlfNvd1U8j9Yl68UGPtk1ljuOPa+5Ib8H3VqHeRwgNRD+GMIMi7Pbwnep6+UnYTNS
+	 4sHikS/t6fHNzIieK7opBZWlWYGtYNEssoiQFqDXcecwbZUgaaeotG0uhgdw+qWK8Z
+	 u7rcwxpfB0dk3gQrKzpIXSlrbiSFfFyLjqvqWuEsBtJOd4TSvEilvHfqc4ALy9F5ez
+	 0f34x2bkEG34BTQ85nqKc1OJUVZyWRiRgw0VfATpL4sekbm8H728tOA1spId4eMlyL
+	 7VqDLZE+5OTgPNnMNf0Y+zDtIJRdWoZkQyfgLNiI9YGUhhuhdDGIA2T2drIFBZ5sGJ
+	 UjdxnJG0uFrdg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fIHdTuBU5Wfm; Wed, 17 Aug 2022 09:09:04 +0000 (UTC)
+	with ESMTP id 2Izr4JcpUtLu; Wed, 17 Aug 2022 10:54:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CFB21410C1;
-	Wed, 17 Aug 2022 09:09:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CFB21410C1
+	by smtp4.osuosl.org (Postfix) with ESMTP id ED7D2418B6;
+	Wed, 17 Aug 2022 10:54:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED7D2418B6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 145191BF3E3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 09:08:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 90D021BF377
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E21D78140D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 09:08:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E21D78140D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 700C6831C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 700C6831C1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I2zYn9ZbZQyL for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Aug 2022 09:08:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 726C5813B2
-Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
- [IPv6:2a01:488:42:1000:50ed:8234::])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 726C5813B2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 09:08:57 +0000 (UTC)
-Received: from [2a02:8108:963f:de38:eca4:7d19:f9a2:22c5]; authenticated
- by wp530.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- id 1oOF2h-0002Up-4y; Wed, 17 Aug 2022 11:08:51 +0200
-Message-ID: <35814f70-26ad-8007-9381-e8edf4a6d77f@leemhuis.info>
-Date: Wed, 17 Aug 2022 11:08:50 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.0
-Content-Language: en-US
-To: "Wilczynski, Michal" <michal.wilczynski@intel.com>,
- Thorsten Leemhuis <regressions@leemhuis.info>,
- Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>,
- "Siwik, Grzegorz" <grzegorz.siwik@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
-References: <CAK8fFZ7m-KR57M_rYX6xZN39K89O=LGooYkKsu6HKt0Bs+x6xQ@mail.gmail.com>
- <2596b2c6-71e4-543f-799f-b4b174c21f31@leemhuis.info>
- <CAK8fFZ6hS69JMtnvFnLVt9aiWEivZ9-izNgMHtB+KeAWAfaXaQ@mail.gmail.com>
- <6f52ccd2-8411-0c53-2deb-885bb1234ce5@leemhuis.info>
- <c89c993e-7a7a-15df-85ef-8d9b7be16b71@intel.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-In-Reply-To: <c89c993e-7a7a-15df-85ef-8d9b7be16b71@intel.com>
-X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1660727337;
- c9289b39; 
-X-HE-SMSGID: 1oOF2h-0002Up-4y
-Subject: Re: [Intel-wired-lan] ice: Error setting promisc mode on VSI 6
- (rc=-17) @ 5.18.x
+ with ESMTP id zs8woSwvMYFj for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Aug 2022 10:54:19 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57A27831BD
+Received: from mail-m11877.qiye.163.com (mail-m11877.qiye.163.com
+ [115.236.118.77])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 57A27831BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Aug 2022 10:54:19 +0000 (UTC)
+Received: from localhost.localdomain (unknown
+ [IPV6:240e:3b7:3274:d420:a98e:150b:8782:dcdb])
+ by mail-m11877.qiye.163.com (Hmail) with ESMTPA id 3A25E4006B3;
+ Wed, 17 Aug 2022 18:54:15 +0800 (CST)
+From: Ding Hui <dinghui@sangfor.com.cn>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, keescook@chromium.org, intel-wired-lan@lists.osuosl.org,
+ anatolii.gerasymenko@intel.com
+Date: Wed, 17 Aug 2022 18:53:18 +0800
+Message-Id: <20220817105318.5426-1-dinghui@sangfor.com.cn>
+X-Mailer: git-send-email 2.17.1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+ tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZSU4ZVk9KThgZGk9OH0sYGFUTARMWGhIXJBQOD1
+ lXWRgSC1lBWUlPSx5BSBlMQUhJTE9BH09JS0EaQkMeQUpOSxlBQ0xDSUEfGB8ZWVdZFhoPEhUdFF
+ lBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pio6KAw4IT03QhI9TBESTjhW
+ Ch9PChZVSlVKTU1LTEhITU5NS0hPVTMWGhIXVR8SFRwTDhI7CBoVHB0UCVUYFBZVGBVFWVdZEgtZ
+ QVlJT0seQUgZTEFISUxPQR9PSUtBGkJDHkFKTksZQUNMQ0lBHxgfGVlXWQgBWUFCTk9MNwY+
+X-HM-Tid: 0a82ab708a232eb3kusn3a25e4006b3
+Subject: [Intel-wired-lan] [net v3 1/1] ice: Fix crash by keep old cfg when
+ update TCs more than queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,136 +81,215 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: LKML <linux-kernel@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
- "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: netdev@vger.kernel.org, Ding Hui <dinghui@sangfor.com.cn>,
+ linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMDUuMDcuMjIgMTU6NTEsIFdpbGN6eW5za2ksIE1pY2hhbCB3cm90ZToKPiAKPiBBZGRpbmcg
-R3J6ZWdvcnogU2l3aWsswqAgc2luY2UgaGUgaXMgd29ya2luZyBvbiBzaW1pbGFyIGlzc3VlIGFu
-ZCBhbHJlYWR5Cj4gaGFzIGEgcGF0Y2ggdGhhdCBpcyBiZWluZyB0ZXN0ZWQvcmV2aWV3ZWQgaW50
-ZXJuYWxseSBhdCB0aGUgbW9tZW50Lgo+Cj4gSGUgY2FuIHlvdSBhIHNlbmQgcGF0Y2ggdG9tb3Jy
-b3cgc28geW91IGNhbiB0ZXN0IGlmIGl0IGFsc28gZml4ZXMgeW91cgo+IHByb2JsZW0uCgpUb255
-LCBKZXNzZSwgSSBoYXZlIHRvIHdvbmRlcjogd2h5IGlzIGl0IHRha2VuIHNvIGxvbmcgdG8gZ2V0
-IHRoaXMKcmVncmVzc2lvbiBmaXhlZD8gVGhlIHJlZ3Jlc3Npb24gd2FzIHJlcG9ydGVkIDY5IGRh
-eXMgYWdvIGFuZCB0aGUgZmlyc3QKcGF0Y2hlcyB0byBmaXggdGhpcyB3ZW50IG91dCA0MCBkYXlz
-IGFnby4gVGhhdCdzIGZhciBmcm9tIGlkZWFsLgoKUmVtaW5kZXI6IHRoaXMgcmVncmVzc2lvbiBp
-ZGVhbGx5IHNob3VsZCBoYXZlIGJlZW4gZml4ZWQgd2l0aGluIHR3bwp3ZWVrcyBhZnRlciB0aGUg
-cmVwb3J0LCBhcyBleHBsYWluZWQgaGVyZToKaHR0cHM6Ly9kb2NzLmtlcm5lbC5vcmcvcHJvY2Vz
-cy9oYW5kbGluZy1yZWdyZXNzaW9ucy5odG1sCgpGV0lXLCBpbiBjYXNlIGFueW9uZSB3b25kZXJz
-OiB0aGUgbGF0ZXN0IHBhdGNoLXNlcmllcyB0byBmaXggdGhpcyBjYW4gYmUKZm91bmQgaGVyZToK
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvaW50ZWwtd2lyZWQtbGFuLzE2NjAzMTA3NTAtMjkwOTQz
-LTEtZ2l0LXNlbmQtZW1haWwtZ3J6ZWdvcnouc2l3aWtAaW50ZWwuY29tLwoKVGh4IGZvciB3b3Jr
-aW5nIG9uIGl0IEdyemVnb3J6ISBTaWRlIG5vdGU6IG1pZ2h0IGJlIGdvb2QgdG8gYWRkIGEKIlJl
-cG9ydGVkLWJ5IiwgYnV0IGl0J3Mgbm90IHJlYWxseSBpbXBvcnRhbnQgSSBndWVzcy4KCkNpYW8s
-IFRob3JzdGVuICh3ZWFyaW5nIGhpcyAndGhlIExpbnV4IGtlcm5lbCdzIHJlZ3Jlc3Npb24gdHJh
-Y2tlcicgaGF0KQoKUC5TLjogQXMgdGhlIExpbnV4IGtlcm5lbCdzIHJlZ3Jlc3Npb24gdHJhY2tl
-ciBJIGRlYWwgd2l0aCBhIGxvdCBvZgpyZXBvcnRzIGFuZCBzb21ldGltZXMgbWlzcyBzb21ldGhp
-bmcgaW1wb3J0YW50IHdoZW4gd3JpdGluZyBtYWlscyBsaWtlCnRoaXMuIElmIHRoYXQncyB0aGUg
-Y2FzZSBoZXJlLCBkb24ndCBoZXNpdGF0ZSB0byB0ZWxsIG1lIGluIGEgcHVibGljCnJlcGx5LCBp
-dCdzIGluIGV2ZXJ5b25lJ3MgaW50ZXJlc3QgdG8gc2V0IHRoZSBwdWJsaWMgcmVjb3JkIHN0cmFp
-Z2h0LgoKQlRXLCBsZXQgbWUgdXBkYXRlIHRoZSByZWd6Ym90IHN0YXR1czoKCiNyZWd6Ym90IGlu
-dHJvZHVjZTogNWVkYThhZmQ2YmNjCiNyZWd6Ym90IHBva2UKCj4gT24gNy81LzIwNWVkYThhZmQ2
-YmNjMjIgMTE6NDMgQU0sIFRob3JzdGVuIExlZW1odWlzIHdyb3RlOgo+PiBbYWRkaW5nIE1pY2hh
-bCB0byB0aGUgcmVjaXBpZW50c10KPj4KPj4gSGksIHRoaXMgaXMgeW91ciBMaW51eCBrZXJuZWwg
-cmVncmVzc2lvbiB0cmFja2VyLiBUb3AtcG9zdGluZyBmb3Igb25jZSwKPj4gdG8gbWFrZSB0aGlz
-IGVhc2lseSBhY2Nlc3NpYmxlIHRvIGV2ZXJ5b25lLgo+Pgo+PiBJbnRlbCBuZXR3b3JrIG1haW50
-YWluZXJzLCBoZWxwIG1lIG91dCBoZXJlIHBsZWFzZS4gSGFzIGFueXRoaW5nIGJlZW4KPj4gZG9u
-ZSB0byBhZGRyZXNzIHRoaXMgcmVncmVzc2lvbj8gSXQgbG9va3MgbGlrZSBKYXJvc2xhdiBkaWRu
-J3QgZXZlbiBnZXQKPj4gYSBzaW5nbGUgcmVwbHkuIFdoYXQncyB1cCB0aGVyZT8KPj4KPj4gQlRX
-LCB0b29rIGEgcXVpY2sgbG9vayBpbnRvIHRoZSBpc3N1ZSBhbmQgbm90aWNlZCBhIHRoZSBwYXRj
-aCAiaWNlOiBGaXgKPj4gcHJvbWlzY3VvdXMgbW9kZSBub3QgdHVybmluZyBvZmYiIGZyb20gTWlj
-aGFsOgo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMjA3MDQxMzEyMjcuMjk2NjE2
-MC0zLW1pY2hhbC53aWxjenluc2tpQGludGVsLmNvbS8KPj4KPj4gSXMgdGhpcyBtYXliZSBmaXhp
-bmcgdGhpcz8gVGhlbiBpdCB3b3VsZCBiZSBnb29kIHRvIGFkZCBMaW5rIGFuZAo+PiBSZXBvcnRl
-ZC1ieSB0YWdzIHRvIHRoYXQgcGF0Y2guCj4+Cj4+IE9yIGlzIHRoaXMgc29tZXRoaW5nIGVsc2Ug
-YW5kIEphcm9zbGF2IG5lZWRzIHRvIGJpc2VjdD8KPj4KPj4gQ2lhbywgVGhvcnN0ZW4gKHdlYXJp
-bmcgaGlzICd0aGUgTGludXgga2VybmVsJ3MgcmVncmVzc2lvbiB0cmFja2VyJyBoYXQpCj4+Cj4+
-IFAuUy46IEFzIHRoZSBMaW51eCBrZXJuZWwncyByZWdyZXNzaW9uIHRyYWNrZXIgSSBkZWFsIHdp
-dGggYSBsb3Qgb2YKPj4gcmVwb3J0cyBhbmQgc29tZXRpbWVzIG1pc3Mgc29tZXRoaW5nIGltcG9y
-dGFudCB3aGVuIHdyaXRpbmcgbWFpbHMgbGlrZQo+PiB0aGlzLiBJZiB0aGF0J3MgdGhlIGNhc2Ug
-aGVyZSwgZG9uJ3QgaGVzaXRhdGUgdG8gdGVsbCBtZSBpbiBhIHB1YmxpYwo+PiByZXBseSwgaXQn
-cyBpbiBldmVyeW9uZSdzIGludGVyZXN0IHRvIHNldCB0aGUgcHVibGljIHJlY29yZCBzdHJhaWdo
-dC4KPj4KPj4gI3JlZ3pib3QgcG9rZQo+Pgo+PiBPbiAxOS4wNi4yMiAxOTowMCwgSmFyb3NsYXYg
-UHVsY2hhcnQgd3JvdGU6Cj4+PiBIZWxsbywKPj4+Cj4+PiB5ZXMsIEkgcmV2ZXJ0IHRoYXQgY29t
-bWl0LiBTdGlsbCB0aGUgcHJvbWlzY3MgY2Fubm90IGJlIHNldCBhbmQgdGhlCj4+PiBkbWVzZwo+
-Pj4gZXJyb3IgbWVzc2FnZSBjaGFuZ2VkIHRvOgo+Pj4gLS0tLS0tLS0tLS0tLS0tCj4+PiAkIGlw
-IGxpbmsgc2V0IGVtMSBwcm9taXNjIG9uCj4+PiAkIGRtZXNnCj4+PiAuLi4KPj4+IGljZSAwMDAw
-OjYzOjAwLjAgZW0xOiBFcnJvciBzZXR0aW5nIE11bHRpY2FzdCBwcm9taXNjdW91cyBtb2RlIG9u
-IFZTSSA2Cj4+PiAuLi4KPj4+IC0tLS0tLS0tLS0tLS0tLQo+Pj4KPj4+IEphcm9zbGF2IFAuCj4+
-Pgo+Pj4gbmUgMTkuIDYuIDIwMjIgdiAxMzo1MSBvZGVzw61sYXRlbCBUaG9yc3RlbiBMZWVtaHVp
-cwo+Pj4gPHJlZ3Jlc3Npb25zQGxlZW1odWlzLmluZm8+IG5hcHNhbDoKPj4+Cj4+Pj4gW1RMRFI6
-IEknbSBhZGRpbmcgdGhpcyByZWdyZXNzaW9uIHJlcG9ydCB0byB0aGUgbGlzdCBvZiB0cmFja2Vk
-Cj4+Pj4gcmVncmVzc2lvbnM7IGFsbCB0ZXh0IGZyb20gbWUgeW91IGZpbmQgYmVsb3cgaXMgYmFz
-ZWQgb24gYSBmZXcKPj4+PiB0ZW1wbGF0ZXMKPj4+PiBwYXJhZ3JhcGhzIHlvdSBtaWdodCBoYXZl
-IGVuY291bnRlcmVkIGFscmVhZHkgYWxyZWFkeSBpbiBzaW1pbGFyIGZvcm0uXQo+Pj4+Cj4+Pj4g
-SGksIHRoaXMgaXMgeW91ciBMaW51eCBrZXJuZWwgcmVncmVzc2lvbiB0cmFja2VyLgo+Pj4+Cj4+
-Pj4gT24gMDkuMDYuMjIgMDg6NTgsIEphcm9zbGF2IFB1bGNoYXJ0IHdyb3RlOgo+Pj4+PiBJJ20g
-c3RydWdnbGluZyB3aXRoIGJyb2tlbiBuZXR3b3JrIGNvbm5lY3Rpdml0eSBhdCBWTXMgdXNpbmcg
-bGludXgKPj4+Pj4gYnJpZGdlIGF0IGhvc3QgYWZ0ZXIgdXBkYXRlIG9mIGtlcm5lbCBmcm9tIDUu
-MTcueCB0byA1LjE4LnggQCBEZWxsCj4+Pj4+IFI3NTAgc2VydmVyIHdpdGggRTgxMC1YWFYgTklD
-cy4KPj4+Pj4KPj4+Pj4gSSBub3RpY2VkIHRoZSBrZXJuZWwgcmVwb3J0cyAiRXJyb3Igc2V0dGlu
-ZyBwcm9taXNjIG1vZGUiIGluIGRtZXNnLgo+Pj4+Pgo+Pj4+PiAjIGRtZXNnwqAgfCBncmVwICdF
-cnJvciBzZXR0aW5nIHByb21pc2MnCj4+Pj4+IFvCoMKgIDI0Ljg2MzU1N10gaWNlIDAwMDA6MzE6
-MDAuMDogRXJyb3Igc2V0dGluZyBwcm9taXNjIG1vZGUgb24gVlNJCj4+Pj4+IDYgKHJjPS0xNykK
-Pj4+Pj4gW8KgwqAgMjQuODc4MzY5XSBpY2UgMDAwMDozMTowMC4wOiBFcnJvciBzZXR0aW5nIHBy
-b21pc2MgbW9kZSBvbiBWU0kKPj4+Pj4gNiAocmM9LTE3KQo+Pj4+PiBbwqDCoCAyNS4wNDU4MzRd
-IGljZSAwMDAwOjMxOjAwLjA6IEVycm9yIHNldHRpbmcgcHJvbWlzYyBtb2RlIG9uIFZTSQo+Pj4+
-PiA2IChyYz0tMTcpCj4+Pj4+IFvCoMKgIDI1LjEyOTg0MF0gaWNlIDAwMDA6YjE6MDAuMDogRXJy
-b3Igc2V0dGluZyBwcm9taXNjIG1vZGUgb24gVlNJCj4+Pj4+IDYgKHJjPS0xNykKPj4+Pj4gW8Kg
-wqAgMjUuMTQ0NDQwXSBpY2UgMDAwMDpiMTowMC4wOiBFcnJvciBzZXR0aW5nIHByb21pc2MgbW9k
-ZSBvbiBWU0kKPj4+Pj4gNiAocmM9LTE3KQo+Pj4+Pgo+Pj4+PiAjIGxzcGNpIC1zIDAwMDA6MzE6
-MDAuMAo+Pj4+PiAzMTowMC4wIEV0aGVybmV0IGNvbnRyb2xsZXI6IEludGVsIENvcnBvcmF0aW9u
-IEV0aGVybmV0IENvbnRyb2xsZXIKPj4+Pj4gRTgxMC1YWFYgZm9yIFNGUCAocmV2IDAyKQo+Pj4+
-PiAjIGxzcGNpIC1zIDAwMDA6YjE6MDAuMAo+Pj4+PiBiMTowMC4wIEV0aGVybmV0IGNvbnRyb2xs
-ZXI6IEludGVsIENvcnBvcmF0aW9uIEV0aGVybmV0IENvbnRyb2xsZXIKPj4+Pj4gRTgxMC1YWFYg
-Zm9yIFNGUCAocmV2IDAyKQo+Pj4+Pgo+Pj4+PiBJdCBpcyBlYXN5IHRvIHJlcHJvZHVjZSBieToK
-Pj4+Pj4gwqDCoCAjIGlwIGxpbmsgc2V0IGVtMSBwcm9taXNjIG9uCj4+Pj4+IMKgwqAgIyBkbWVz
-ZyAtVCB8IHRhaWwgLW4gMQo+Pj4+PiDCoMKgIFtUaHUgSnVuwqAgOSAwODo0ODoxOSAyMDIyXSBp
-Y2UgMDAwMDozMTowMC4wOiBFcnJvciBzZXR0aW5nIHByb21pc2MKPj4+Pj4gbW9kZSBvbiBWU0kg
-NiAocmM9LTE3KQo+Pj4+Pgo+Pj4+PiBDb3VsZCBpdCBiZSBhbiAnaWNlJyBkcml2ZXIgYnVnIGlu
-dHJvZHVjZWQgaW4gdGhlIDUuMTgga2VybmVsPwo+Pj4+IENDaW5nIHRoZSByZWdyZXNzaW9uIG1h
-aWxpbmcgbGlzdCwgYXMgaXQgc2hvdWxkIGJlIGluIHRoZSBsb29wIGZvciBhbGwKPj4+PiByZWdy
-ZXNzaW9ucywgYXMgZXhwbGFpbmVkIGhlcmU6Cj4+Pj4gaHR0cHM6Ly93d3cua2VybmVsLm9yZy9k
-b2MvaHRtbC9sYXRlc3QvYWRtaW4tZ3VpZGUvcmVwb3J0aW5nLWlzc3Vlcy5odG1sCj4+Pj4KPj4+
-PiBKYXJvc2xhdiwgZGlkIHlvdSB0cnkgdG8gcmV2ZXJ0IHRoZSBjaGFuZ2UgdGhhdCB3YXMgc3Vn
-Z2VzdGVkIHRvIHlvdSBpbgo+Pj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC9kOTkzYmJi
-Ni1lNTgzLTVkOTEtNzZjMC04NDFjYzVkYTg2YWZAcm9lY2stdXMubmV0Lwo+Pj4+IERpZCBpdCBo
-ZWxwPwo+Pj4+Cj4+Pj4gQW55d2F5OiBUbyBiZSBzdXJlIGJlbG93IGlzc3VlIGRvZXNuJ3QgZmFs
-bCB0aHJvdWdoIHRoZSBjcmFja3MKPj4+PiB1bm5vdGljZWQsIEknbSBhZGRpbmcgaXQgdG8gcmVn
-emJvdCwgbXkgTGludXgga2VybmVsIHJlZ3Jlc3Npb24KPj4+PiB0cmFja2luZwo+Pj4+IGJvdDoK
-Pj4+Pgo+Pj4+ICNyZWd6Ym90IF5pbnRyb2R1Y2VkIHY1LjE3IHRvIHY1LjE4Cj4+Pj4gI3JlZ3pi
-b3QgdGl0bGUgbmV0OiBpY2U6IEVycm9yIHNldHRpbmcgcHJvbWlzYyBtb2RlIG9uIFZTSSA2IChy
-Yz0tMTcpIEAKPj4+PiA1LjE4LngKPj4+PiAjcmVnemJvdCBtb25pdG9yCj4+Pj4gaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvYWxsL0NBSzhmRlo2OCt4WjJaMHZEV25paEY4UGVKS0VtRXdDeXlGLThX
-OVBDWkpUZDh6ZnAtQUBtYWlsLmdtYWlsLmNvbS8KPj4+PiAjcmVnemJvdCBtb25pdG9yCj4+Pj4g
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL0NBSzhmRlo2MW1RM0FZcGRXald0eVVYenJzLVJW
-TVc2MW1CTHJqUkRYQnhCLUY5R3piQUBtYWlsLmdtYWlsLmNvbS8KPj4+PiAjcmVnemJvdCBpZ25v
-cmUtYWN0aXZpdHkKPj4+Pgo+Pj4+IFRoaXMgaXNuJ3QgYSByZWdyZXNzaW9uPyBUaGlzIGlzc3Vl
-IG9yIGEgZml4IGZvciBpdCBhcmUgYWxyZWFkeQo+Pj4+IGRpc2N1c3NlZCBzb21ld2hlcmUgZWxz
-ZT8gSXQgd2FzIGZpeGVkIGFscmVhZHk/IFlvdSB3YW50IHRvIGNsYXJpZnkKPj4+PiB3aGVuCj4+
-Pj4gdGhlIHJlZ3Jlc3Npb24gc3RhcnRlZCB0byBoYXBwZW4/IE9yIHBvaW50IG91dCBJIGdvdCB0
-aGUgdGl0bGUgb3IKPj4+PiBzb21ldGhpbmcgZWxzZSB0b3RhbGx5IHdyb25nPyBUaGVuIGp1c3Qg
-cmVwbHkgLS0gaWRlYWxseSB3aXRoIGFsc28KPj4+PiB0ZWxsaW5nIHJlZ3pib3QgYWJvdXQgaXQs
-IGFzIGV4cGxhaW5lZCBoZXJlOgo+Pj4+IGh0dHBzOi8vbGludXgtcmVndHJhY2tpbmcubGVlbWh1
-aXMuaW5mby90cmFja2VkLXJlZ3Jlc3Npb24vCj4+Pj4KPj4+PiBSZW1pbmRlciBmb3IgZGV2ZWxv
-cGVyczogV2hlbiBmaXhpbmcgdGhlIGlzc3VlLCBhZGQgJ0xpbms6JyB0YWdzCj4+Pj4gcG9pbnRp
-bmcgdG8gdGhlIHJlcG9ydCAodGhlIG1haWwgdGhpcyBvbmUgcmVwbGllZCB0byksIGFzIHRoZSBr
-ZXJuZWwncwo+Pj4+IGRvY3VtZW50YXRpb24gY2FsbCBmb3I7IGFib3ZlIHBhZ2UgZXhwbGFpbnMg
-d2h5IHRoaXMgaXMgaW1wb3J0YW50IGZvcgo+Pj4+IHRyYWNrZWQgcmVncmVzc2lvbnMuCj4+Pj4K
-Pj4+PiBDaWFvLCBUaG9yc3RlbiAod2VhcmluZyBoaXMgJ3RoZSBMaW51eCBrZXJuZWwncyByZWdy
-ZXNzaW9uIHRyYWNrZXInCj4+Pj4gaGF0KQo+Pj4+Cj4+Pj4gUC5TLjogQXMgdGhlIExpbnV4IGtl
-cm5lbCdzIHJlZ3Jlc3Npb24gdHJhY2tlciBJIGRlYWwgd2l0aCBhIGxvdCBvZgo+Pj4+IHJlcG9y
-dHMgYW5kIHNvbWV0aW1lcyBtaXNzIHNvbWV0aGluZyBpbXBvcnRhbnQgd2hlbiB3cml0aW5nIG1h
-aWxzIGxpa2UKPj4+PiB0aGlzLiBJZiB0aGF0J3MgdGhlIGNhc2UgaGVyZSwgZG9uJ3QgaGVzaXRh
-dGUgdG8gdGVsbCBtZSBpbiBhIHB1YmxpYwo+Pj4+IHJlcGx5LCBpdCdzIGluIGV2ZXJ5b25lJ3Mg
-aW50ZXJlc3QgdG8gc2V0IHRoZSBwdWJsaWMgcmVjb3JkIHN0cmFpZ2h0Lgo+Pj4KPiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IEludGVsLXdpcmVkLWxh
-biBtYWlsaW5nIGxpc3QKPiBJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwo+IGh0dHBzOi8vbGlz
-dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
-bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+There are problems if allocated queues less than Traffic Classes.
+
+Commit a632b2a4c920 ("ice: ethtool: Prohibit improper channel config
+for DCB") already disallow setting less queues than TCs.
+
+Another case is if we first set less queues, and later update more TCs
+config due to LLDP, ice_vsi_cfg_tc() will failed but left dirty
+num_txq/rxq and tc_cfg in vsi, that will cause invalid porinter access.
+
+[   95.968089] ice 0000:3b:00.1: More TCs defined than queues/rings allocated.
+[   95.968092] ice 0000:3b:00.1: Trying to use more Rx queues (8), than were allocated (1)!
+[   95.968093] ice 0000:3b:00.1: Failed to config TC for VSI index: 0
+[   95.969621] general protection fault: 0000 [#1] SMP NOPTI
+[   95.969705] CPU: 1 PID: 58405 Comm: lldpad Kdump: loaded Tainted: G     U  W  O     --------- -t - 4.18.0 #1
+[   95.969867] Hardware name: O.E.M/BC11SPSCB10, BIOS 8.23 12/30/2021
+[   95.969992] RIP: 0010:devm_kmalloc+0xa/0x60
+[   95.970052] Code: 5c ff ff ff 31 c0 5b 5d 41 5c c3 b8 f4 ff ff ff eb f4 0f 1f 40 00 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 89 d1 <8b> 97 60 02 00 00 48 8d 7e 18 48 39 f7 72 3f 55 89 ce 53 48 8b 4c
+[   95.970344] RSP: 0018:ffffc9003f553888 EFLAGS: 00010206
+[   95.970425] RAX: dead000000000200 RBX: ffffea003c425b00 RCX: 00000000006080c0
+[   95.970536] RDX: 00000000006080c0 RSI: 0000000000000200 RDI: dead000000000200
+[   95.970648] RBP: dead000000000200 R08: 00000000000463c0 R09: ffff888ffa900000
+[   95.970760] R10: 0000000000000000 R11: 0000000000000002 R12: ffff888ff6b40100
+[   95.970870] R13: ffff888ff6a55018 R14: 0000000000000000 R15: ffff888ff6a55460
+[   95.970981] FS:  00007f51b7d24700(0000) GS:ffff88903ee80000(0000) knlGS:0000000000000000
+[   95.971108] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   95.971197] CR2: 00007fac5410d710 CR3: 0000000f2c1de002 CR4: 00000000007606e0
+[   95.971309] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   95.971419] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   95.971530] PKRU: 55555554
+[   95.971573] Call Trace:
+[   95.971622]  ice_setup_rx_ring+0x39/0x110 [ice]
+[   95.971695]  ice_vsi_setup_rx_rings+0x54/0x90 [ice]
+[   95.971774]  ice_vsi_open+0x25/0x120 [ice]
+[   95.971843]  ice_open_internal+0xb8/0x1f0 [ice]
+[   95.971919]  ice_ena_vsi+0x4f/0xd0 [ice]
+[   95.971987]  ice_dcb_ena_dis_vsi.constprop.5+0x29/0x90 [ice]
+[   95.972082]  ice_pf_dcb_cfg+0x29a/0x380 [ice]
+[   95.972154]  ice_dcbnl_setets+0x174/0x1b0 [ice]
+[   95.972220]  dcbnl_ieee_set+0x89/0x230
+[   95.972279]  ? dcbnl_ieee_del+0x150/0x150
+[   95.972341]  dcb_doit+0x124/0x1b0
+[   95.972392]  rtnetlink_rcv_msg+0x243/0x2f0
+[   95.972457]  ? dcb_doit+0x14d/0x1b0
+[   95.972510]  ? __kmalloc_node_track_caller+0x1d3/0x280
+[   95.972591]  ? rtnl_calcit.isra.31+0x100/0x100
+[   95.972661]  netlink_rcv_skb+0xcf/0xf0
+[   95.972720]  netlink_unicast+0x16d/0x220
+[   95.972781]  netlink_sendmsg+0x2ba/0x3a0
+[   95.975891]  sock_sendmsg+0x4c/0x50
+[   95.979032]  ___sys_sendmsg+0x2e4/0x300
+[   95.982147]  ? kmem_cache_alloc+0x13e/0x190
+[   95.985242]  ? __wake_up_common_lock+0x79/0x90
+[   95.988338]  ? __check_object_size+0xac/0x1b0
+[   95.991440]  ? _copy_to_user+0x22/0x30
+[   95.994539]  ? move_addr_to_user+0xbb/0xd0
+[   95.997619]  ? __sys_sendmsg+0x53/0x80
+[   96.000664]  __sys_sendmsg+0x53/0x80
+[   96.003747]  do_syscall_64+0x5b/0x1d0
+[   96.006862]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+
+Only update num_txq/rxq when passed check, and restore tc_cfg if setup
+queue map failed.
+
+Fixes: a632b2a4c920 ("ice: ethtool: Prohibit improper channel config for DCB")
+Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+Reviewed-by: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 42 +++++++++++++++---------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+
+---
+v1:
+https://patchwork.kernel.org/project/netdevbpf/patch/20220812123933.5481-1-dinghui@sangfor.com.cn/
+
+v2:
+https://patchwork.kernel.org/project/netdevbpf/patch/20220815011844.22193-1-dinghui@sangfor.com.cn/
+  rewrite subject
+  rebase to net
+
+v3:
+  add Fixes tag
+  follow Reverse Christmas Tree convention
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 0d4dbca88964..990375cf8603 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -914,7 +914,7 @@ static void ice_set_dflt_vsi_ctx(struct ice_hw *hw, struct ice_vsi_ctx *ctxt)
+  */
+ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ {
+-	u16 offset = 0, qmap = 0, tx_count = 0, pow = 0;
++	u16 offset = 0, qmap = 0, tx_count = 0, rx_count = 0, pow = 0;
+ 	u16 num_txq_per_tc, num_rxq_per_tc;
+ 	u16 qcount_tx = vsi->alloc_txq;
+ 	u16 qcount_rx = vsi->alloc_rxq;
+@@ -981,23 +981,25 @@ static int ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 	 * at least 1)
+ 	 */
+ 	if (offset)
+-		vsi->num_rxq = offset;
++		rx_count = offset;
+ 	else
+-		vsi->num_rxq = num_rxq_per_tc;
++		rx_count = num_rxq_per_tc;
+ 
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	if (rx_count > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			rx_count, vsi->alloc_rxq);
+ 		return -EINVAL;
+ 	}
+ 
+-	vsi->num_txq = tx_count;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	if (tx_count > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			tx_count, vsi->alloc_txq);
+ 		return -EINVAL;
+ 	}
+ 
++	vsi->num_txq = tx_count;
++	vsi->num_rxq = rx_count;
++
+ 	if (vsi->type == ICE_VSI_VF && vsi->num_txq != vsi->num_rxq) {
+ 		dev_dbg(ice_pf_to_dev(vsi->back), "VF VSI should have same number of Tx and Rx queues. Hence making them equal\n");
+ 		/* since there is a chance that num_rxq could have been changed
+@@ -3490,6 +3492,7 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 	u16 pow, offset = 0, qcount_tx = 0, qcount_rx = 0, qmap;
+ 	u16 tc0_offset = vsi->mqprio_qopt.qopt.offset[0];
+ 	int tc0_qcount = vsi->mqprio_qopt.qopt.count[0];
++	u16 new_txq, new_rxq;
+ 	u8 netdev_tc = 0;
+ 	int i;
+ 
+@@ -3530,21 +3533,24 @@ ice_vsi_setup_q_map_mqprio(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt,
+ 		}
+ 	}
+ 
+-	/* Set actual Tx/Rx queue pairs */
+-	vsi->num_txq = offset + qcount_tx;
+-	if (vsi->num_txq > vsi->alloc_txq) {
++	new_txq = offset + qcount_tx;
++	if (new_txq > vsi->alloc_txq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Tx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_txq, vsi->alloc_txq);
++			new_txq, vsi->alloc_txq);
+ 		return -EINVAL;
+ 	}
+ 
+-	vsi->num_rxq = offset + qcount_rx;
+-	if (vsi->num_rxq > vsi->alloc_rxq) {
++	new_rxq = offset + qcount_rx;
++	if (new_rxq > vsi->alloc_rxq) {
+ 		dev_err(ice_pf_to_dev(vsi->back), "Trying to use more Rx queues (%u), than were allocated (%u)!\n",
+-			vsi->num_rxq, vsi->alloc_rxq);
++			new_rxq, vsi->alloc_rxq);
+ 		return -EINVAL;
+ 	}
+ 
++	/* Set actual Tx/Rx queue pairs */
++	vsi->num_txq = new_txq;
++	vsi->num_rxq = new_rxq;
++
+ 	/* Setup queue TC[0].qmap for given VSI context */
+ 	ctxt->info.tc_mapping[0] = cpu_to_le16(qmap);
+ 	ctxt->info.q_mapping[0] = cpu_to_le16(vsi->rxq_map[0]);
+@@ -3576,6 +3582,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ {
+ 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
+ 	struct ice_pf *pf = vsi->back;
++	struct ice_tc_cfg old_tc_cfg;
+ 	struct ice_vsi_ctx *ctx;
+ 	struct device *dev;
+ 	int i, ret = 0;
+@@ -3600,6 +3607,7 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 			max_txqs[i] = vsi->num_txq;
+ 	}
+ 
++	memcpy(&old_tc_cfg, &vsi->tc_cfg, sizeof(old_tc_cfg));
+ 	vsi->tc_cfg.ena_tc = ena_tc;
+ 	vsi->tc_cfg.numtc = num_tc;
+ 
+@@ -3616,8 +3624,10 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	else
+ 		ret = ice_vsi_setup_q_map(vsi, ctx);
+ 
+-	if (ret)
++	if (ret) {
++		memcpy(&vsi->tc_cfg, &old_tc_cfg, sizeof(vsi->tc_cfg));
+ 		goto out;
++	}
+ 
+ 	/* must to indicate which section of VSI context are being modified */
+ 	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_RXQ_MAP_VALID);
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
