@@ -1,82 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2279C59CD92
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Aug 2022 03:06:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F4EA59D0A2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Aug 2022 07:41:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EF8BE81589;
-	Tue, 23 Aug 2022 01:06:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EF8BE81589
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1F1224036F;
+	Tue, 23 Aug 2022 05:41:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F1224036F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1661216766;
-	bh=jSjw5fJOyabpadINelQSjcGp0iHrIFufqeXyyWZvjZc=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=anzmgwEoD7cAGD4okTIxJoxtEvXoB+s79SFL74qrgD30Dxxo4wie5BrESzJge3d2W
-	 B0B9D7xrpJFsaaQg3yVQT7vnoiD7VHtiymJ1xNj9BGSu9h6DcGNngtVla3zqoLlzgQ
-	 kge3uCPOctCdhQFPq99lK5qstgmjU1kKSeXM5VBCKL5LQlJgfRCFuS34sjxwWP4/l3
-	 hLWpaWXap4Pvi1qG9Tr0vSPLmLiKzw5sNq3YKQK6RrSEvpDxHmMeGRQn9PqCI7fVSB
-	 /AuFFxbPlxADzJKK/GiHyyqoEtW9hr5Nmu9+81AE+ZZGdFY2C3xq1fIWL6uVMh03LC
-	 1lAGdFDXZ/ahQ==
+	s=default; t=1661233285;
+	bh=ye5w+bag/LfPFJwqZ/vx6nFMNoQPa1rr/3l0TI5wccg=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=8l9pL7gXrfN0542iOH5e7mOZf+TXAjvJBhRaFKreFK9ZUQmZGqHtFLNxA/YM8zStg
+	 Oss/APaKKffCWsACkJKJQvtuyVdJFmDgSSzkw0jnixkooSuhl1rnb3uWKnolD5eey5
+	 /qNbyUcmwSRxsxQQIjqG57v0l0IhypFF6cD+YQyht0cMqtKJ2gs957yJRCwCLogg+b
+	 /HnwQAwSHOPxl9rCaoM/6fNJUAoB9RLxtNkIGAFWvh4FkVC9WBssVfdOvFDc9IX0M7
+	 H2tgofFeeC6v3wA1+EuJdc/+yJpUcVlisgrdQBIcJkJMsqqAHPdTdwFZOFKOF9TbRO
+	 AmUV28A9z5TpQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bwwnJOzni_0x; Tue, 23 Aug 2022 01:06:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ugSAiVWY-YYx; Tue, 23 Aug 2022 05:41:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BA7FE81501;
-	Tue, 23 Aug 2022 01:06:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA7FE81501
+	by smtp2.osuosl.org (Postfix) with ESMTP id DB2A540323;
+	Tue, 23 Aug 2022 05:41:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB2A540323
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3AC0E1BF345
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 01:06:00 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B26F31BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 05:41:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1F7C840895
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 01:06:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1F7C840895
+ by smtp1.osuosl.org (Postfix) with ESMTP id 963B981463
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 05:41:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 963B981463
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3aCYS8GuIqLR for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Aug 2022 01:05:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DoLBIjKy56_i for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Aug 2022 05:41:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AF7D440894
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AF7D440894
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 01:05:58 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C773660FB9;
- Tue, 23 Aug 2022 01:05:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1BD6C433D6;
- Tue, 23 Aug 2022 01:05:51 +0000 (UTC)
-Date: Mon, 22 Aug 2022 18:05:51 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Message-ID: <20220822180551.160c2a0b@kernel.org>
-In-Reply-To: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
-References: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9D6F481457
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9D6F481457
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Aug 2022 05:41:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10447"; a="292338433"
+X-IronPort-AV: E=Sophos;i="5.93,256,1654585200"; d="scan'208";a="292338433"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2022 22:41:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,256,1654585200"; d="scan'208";a="669868890"
+Received: from lkp-server01.sh.intel.com (HELO 5b31f6010e99) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 22 Aug 2022 22:41:07 -0700
+Received: from kbuild by 5b31f6010e99 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oQMex-00001j-0v;
+ Tue, 23 Aug 2022 05:41:07 +0000
+Date: Tue, 23 Aug 2022 13:40:45 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6304685d.mSeMf4BlyqTDSU4M%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1661216757;
- bh=rLzGcuELxlw6wzYQ32smCo931y+93Ix6heiyYta6PuM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=MR96DcUf7/mwpakCtex8peSxXSqw3SkmRpheR1Y9yV9bbsHlS+ylCyc6+FzPARBgs
- Dr3pPRLQ+sNVLvh4ozvPIloaIC16Ch13S1QNULTYZYxAIf7HCot8K/HyKwcznycDHt
- FFEnCEvqAgrohThuq5DZktMpvxleT+WdES/F+E9iEpwJ22tMbCYIdiD/iC+zHPPPwS
- HdJHWKJxW9//GpH/e/xez+EK8EsiOAF9mByy9EBfJnkGqONB0+VKYiP3TIXyiSFaH4
- uxFnUaJAdXByRNMSXCmUJZdLn9vOc6s/svAFBhv4wjVkERTxSIyx64fuHvXXcVmkE1
- Unzt3mUFsASlw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=MR96DcUf
-Subject: Re: [Intel-wired-lan] [PATCH] net: move from strlcpy with unused
- retval to strscpy
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1661233277; x=1692769277;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=SuMV4nvvkyqPueCbVfQdnsdBN5RUCLdFNlshz7KS4C8=;
+ b=FFfWWFAYz9AGdgx6/U+wdUClhXikTSmKEk5h877WrYzFPsrPGjmrhJt4
+ XKO0x8quIp6lGYfLIO+ZdNSDCokHXdd3nV/TrhEuEaiINaLAtkFInhwDk
+ RxhRgrzan5KLIvfsQ6mg46cySjh7YQ4x7GvFS3Cr8KDze3hfAjFa8rhUT
+ ali2UaRRxIqf9lYEriIR/OapkmoA2zrSqJ4NEgwoPEqqElN1rSATXp7wf
+ v9NDIumMSA3BKuR6YuNHVndZK+jTt0BVABwZ9OJcIU5PvLjuP96YSBaV5
+ fX6hWsNUqbFg5/eBp/NCM5dxhi0FRkl4SbVn7ai/p93gpAz71Dz+kpsMq
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=FFfWWFAY
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ 9ead7e74bfd6dd54db12ef133b8604add72511de
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,133 +94,164 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Igor Russkikh <irusskikh@marvell.com>,
- Kevin Brace <kevinbrace@bracecomputerlab.com>,
- Somnath Kotur <somnath.kotur@broadcom.com>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
- linux-stm32@st-md-mailman.stormreply.com, Andy Gospodarek <andy@greyhouse.net>,
- Wei Liu <wei.liu@kernel.org>, Manish Chopra <manishc@marvell.com>,
- Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Madalin Bucur <madalin.bucur@nxp.com>,
- Christian Lamparter <chunkeey@googlemail.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Jose Abreu <joabreu@synopsys.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Franky Lin <franky.lin@broadcom.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Chris Lee <christopher.lee@cspi.com>, Nick Child <nnac123@linux.ibm.com>,
- Jiri Pirko <jiri@resnulli.us>, Jay Vosburgh <j.vosburgh@gmail.com>,
- Vinay Kumar Yadav <vinay.yadav@chelsio.com>,
- Arend van Spriel <aspriel@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Igor Mitsyanko <imitsyanko@quantenna.com>, Krzysztof Halasa <khalasa@piap.pl>,
- Shay Agroskin <shayagr@amazon.com>, linux-omap@vger.kernel.org,
- Petr Machata <petrm@nvidia.com>, libertas-dev@lists.infradead.org,
- Rasesh Mody <rmody@marvell.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Douglas Miller <dougmill@linux.ibm.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Ralf Baechle <ralf@linux-mips.org>,
- Vivien Didelot <vivien.didelot@gmail.com>, Ion Badulescu <ionut@badula.org>,
- Hartley Sweeten <hsweeten@visionengravers.com>,
- Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
- Vladimir Oltean <olteanv@gmail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Christian Benvenuti <benve@cisco.com>, Samuel Chessman <chessman@tux.org>,
- linux-usb@vger.kernel.org, Ronak Doshi <doshir@vmware.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Chris Snook <chris.snook@gmail.com>, Denis Kirjanov <kda@linux-powerpc.org>,
- Prashant Sreedharan <prashant@broadcom.com>, linux-kernel@vger.kernel.org,
- Daniele Venzano <venza@brownhat.org>, Eric Dumazet <edumazet@google.com>,
- Zhu Yanjun <zyjzyj2000@gmail.com>,
- Pantelis Antoniou <pantelis.antoniou@gmail.com>,
- Arthur Kiyanovski <akiyano@amazon.com>, Leon Romanovsky <leon@kernel.org>,
- "David S. Miller" <davem@davemloft.net>,
- Sergey Matyukevich <geomatsi@gmail.com>,
- Rain River <rain.1986.08.12@gmail.com>, Veaceslav Falico <vfalico@gmail.com>,
- Martin Habets <habetsm.xilinx@gmail.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Wolfgang Grandegger <wg@grandegger.com>,
- Steve Glendinning <steve.glendinning@shawell.net>,
- Tom Lendacky <thomas.lendacky@amd.com>,
- Michael Hennerich <michael.hennerich@analog.com>,
- Ido Schimmel <idosch@nvidia.com>, Sean Wang <sean.wang@mediatek.com>,
- linuxppc-dev@lists.ozlabs.org, linux-can@vger.kernel.org,
- Siva Reddy Kallam <siva.kallam@broadcom.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Doug Berger <opendmb@gmail.com>,
- Simon Kelley <simon@thekelleys.org.uk>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-arm-kernel@lists.infradead.org, Mirko Lindner <mlindner@marvell.com>,
- Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
- Nicolas Pitre <nico@fluxnic.net>, David Arinzon <darinzon@amazon.com>,
- Rohit Maheshwari <rohitm@chelsio.com>, Tariq Toukan <tariqt@nvidia.com>,
- Sudarsana Kalluru <skalluru@marvell.com>, Taras Chornyi <tchornyi@marvell.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- linux-mediatek@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>,
- linux-wireless@vger.kernel.org, Ajit Khaparde <ajit.khaparde@broadcom.com>,
- Petko Manolov <petkan@nucleusys.com>, Andreas Larsson <andreas@gaisler.com>,
- Jason Wang <jasowang@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>,
- linux-hyperv@vger.kernel.org, oss-drivers@corigine.com, netdev@vger.kernel.org,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Hin-Tak Leung <htl10@users.sourceforge.net>,
- Jassi Brar <jaswinder.singh@linaro.org>, Noam Dagan <ndagan@amazon.com>,
- Stanislaw Gruszka <stf_xl@wp.pl>, Ajay Singh <ajay.kathat@microchip.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Dave Jiang <dave.jiang@intel.com>,
- linux-rdma@vger.kernel.org, Guo-Fu Tseng <cooldavid@cooldavid.org>,
- Dexuan Cui <decui@microsoft.com>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- b43-dev@lists.infradead.org, Simon Horman <simon.horman@corigine.com>,
- Paolo Abeni <pabeni@redhat.com>, Allen Hubbe <allenbh@gmail.com>,
- Shahed Shaikh <shshaikh@marvell.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>, Byungho An <bh74.an@samsung.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Hante Meuleman <hante.meuleman@broadcom.com>,
- Vladimir Zapolskiy <vz@mleia.com>, Don Fry <pcnet32@frontier.com>,
- John Crispin <john@phrozen.org>, Michael Chan <michael.chan@broadcom.com>,
- virtualization@lists.linux-foundation.org,
- Ishizaki Kou <kou.ishizaki@toshiba.co.jp>,
- Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
- linux-parisc@vger.kernel.org, Geoff Levand <geoff@infradead.org>,
- linux-sunxi@lists.linux.dev, Edward Cree <ecree.xilinx@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- Saeed Bishara <saeedb@amazon.com>, Mark Einon <mark.einon@gmail.com>,
- Geetha sowjanya <gakula@marvell.com>, Oliver Neukum <oneukum@suse.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Govindarajulu Varadarajan <_govind@gmx.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Ayush Sawal <ayush.sawal@chelsio.com>, UNGLinuxDriver@microchip.com,
- linux-acenic@sunsite.dk, Herton Ronaldo Krzesinski <herton@canonical.com>,
- Rahul Verma <rahulv@marvell.com>, Russell King <linux@armlinux.org.uk>,
- SHA-cyfmac-dev-list@infineon.com, Lino Sanfilippo <LinoSanfilippo@gmx.de>,
- intel-wired-lan@lists.osuosl.org, Steffen Klassert <klassert@kernel.org>,
- Sunil Goutham <sgoutham@marvell.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Jes Sorensen <jes@trained-monkey.org>, nic_swsd@realtek.com,
- Ariel Elior <aelior@marvell.com>, Jouni Malinen <j@w1.fi>,
- Kalle Valo <kvalo@kernel.org>, Marc Kleine-Budde <mkl@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Marcin Wojtas <mw@semihalf.com>,
- brcm80211-dev-list.pdl@broadcom.com, David Ahern <dsahern@kernel.org>,
- linux-mips@vger.kernel.org, Li Yang <leoyang.li@nxp.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- hariprasad <hkelam@marvell.com>, ntb@lists.linux.dev,
- Raju Rangoju <rajur@chelsio.com>, Larry Finger <Larry.Finger@lwfinger.net>,
- Saeed Mahameed <saeedm@nvidia.com>, Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 18 Aug 2022 23:00:34 +0200 Wolfram Sang wrote:
->  261 files changed, 568 insertions(+), 568 deletions(-)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: 9ead7e74bfd6dd54db12ef133b8604add72511de  ice: xsk: use Rx ring's XDP ring when picking NAPI context
 
-Unfortunately looks like patchwork was unable to ingest this change :(
-Not sure why.
+elapsed time: 727m
 
-Would you mind splitting it into 3 chunks - wireless, ethernet,
-everything else, and resending? Let's see if that'll be small enough..
+configs tested: 134
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+sh                               allmodconfig
+arc                  randconfig-r043-20220821
+arc                  randconfig-r043-20220822
+riscv                randconfig-r042-20220822
+s390                 randconfig-r044-20220822
+x86_64               randconfig-a012-20220822
+x86_64               randconfig-a013-20220822
+x86_64               randconfig-a011-20220822
+x86_64               randconfig-a016-20220822
+x86_64               randconfig-a014-20220822
+x86_64               randconfig-a015-20220822
+csky                              allnoconfig
+alpha                             allnoconfig
+arc                               allnoconfig
+riscv                             allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+m68k                             allmodconfig
+alpha                            allyesconfig
+arc                              allyesconfig
+i386                 randconfig-a015-20220822
+i386                 randconfig-a016-20220822
+i386                 randconfig-a011-20220822
+i386                 randconfig-a013-20220822
+i386                 randconfig-a014-20220822
+i386                 randconfig-a012-20220822
+x86_64                           rhel-8.3-kvm
+x86_64                          rhel-8.3-func
+x86_64                           rhel-8.3-syz
+x86_64                    rhel-8.3-kselftests
+x86_64                         rhel-8.3-kunit
+m68k                             allyesconfig
+x86_64                        randconfig-a011
+x86_64                        randconfig-a013
+x86_64                        randconfig-a015
+powerpc                    amigaone_defconfig
+arc                           tb10x_defconfig
+arc                 nsimosci_hs_smp_defconfig
+m68k                          amiga_defconfig
+sparc                               defconfig
+powerpc                      ppc6xx_defconfig
+sh                          rsk7269_defconfig
+arm                          exynos_defconfig
+ia64                            zx1_defconfig
+arm                        oxnas_v6_defconfig
+loongarch                           defconfig
+loongarch                         allnoconfig
+i386                          randconfig-c001
+powerpc                        cell_defconfig
+sh                                  defconfig
+sh                          rsk7264_defconfig
+powerpc                    sam440ep_defconfig
+xtensa                  audio_kc705_defconfig
+sh                               j2_defconfig
+m68k                        mvme147_defconfig
+xtensa                  nommu_kc705_defconfig
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+sh                   sh7724_generic_defconfig
+arm                      footbridge_defconfig
+arm                         axm55xx_defconfig
+powerpc                 mpc85xx_cds_defconfig
+loongarch                 loongson3_defconfig
+mips                           xway_defconfig
+i386                          debian-10.3-kvm
+i386                        debian-10.3-kunit
+i386                         debian-10.3-func
+arm                         assabet_defconfig
+powerpc                     asp8347_defconfig
+powerpc                     tqm8548_defconfig
+openrisc                    or1ksim_defconfig
+arc                              alldefconfig
+arc                                 defconfig
+x86_64                        randconfig-c001
+arm                  randconfig-c002-20220823
+ia64                             allmodconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+
+clang tested configs:
+hexagon              randconfig-r041-20220822
+hexagon              randconfig-r045-20220822
+hexagon              randconfig-r045-20220821
+hexagon              randconfig-r041-20220821
+riscv                randconfig-r042-20220821
+s390                 randconfig-r044-20220821
+x86_64               randconfig-a002-20220822
+x86_64               randconfig-a004-20220822
+x86_64               randconfig-a003-20220822
+x86_64               randconfig-a001-20220822
+x86_64               randconfig-a005-20220822
+x86_64               randconfig-a006-20220822
+i386                 randconfig-a002-20220822
+i386                 randconfig-a005-20220822
+i386                 randconfig-a001-20220822
+i386                 randconfig-a006-20220822
+i386                 randconfig-a003-20220822
+i386                 randconfig-a004-20220822
+x86_64                        randconfig-k001
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+arm                     am200epdkit_defconfig
+powerpc                 mpc8313_rdb_defconfig
+powerpc                     mpc5200_defconfig
+powerpc                        fsp2_defconfig
+arm                          sp7021_defconfig
+powerpc                 mpc832x_mds_defconfig
+powerpc                    gamecube_defconfig
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+powerpc                     tqm5200_defconfig
+arm                          pxa168_defconfig
+arm                          ixp4xx_defconfig
+arm                         palmz72_defconfig
+mips                malta_qemu_32r6_defconfig
+mips                           rs90_defconfig
+arm                         s3c2410_defconfig
+arm                                 defconfig
+arm                   milbeaut_m10v_defconfig
+arm                        neponset_defconfig
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
