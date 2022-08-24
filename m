@@ -1,85 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC31B59F8AE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Aug 2022 13:38:16 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D408459F903
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Aug 2022 14:07:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2B60E60F24;
-	Wed, 24 Aug 2022 11:38:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2B60E60F24
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9FCA780C67;
+	Wed, 24 Aug 2022 12:07:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FCA780C67
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1661341095;
-	bh=nBbciwQq4Tb7qFOVMR1IdzO8ZnTwJRAjOmQLh+AAPIw=;
+	s=default; t=1661342862;
+	bh=/BN7yjndgzHsvSvVSFhZSnDOdHqQye5sLE06F9Zm4X8=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=upQtVMX+KlZzbj7svfPuwABLrswTvLeQ5/RpJGu/jveUjTthj8rqHu3Xt6dQu4mhZ
-	 NynsRIlM9fkeoEdBNKz/2uWF0gNd9takOWa2XJzXBZ/NwBC/Gsm0ynm6nNNzyxMAB9
-	 t1rqr+6bdlt/zZJ6/e/lx5+JS/UlvUgRuKEWumQXRRKKl7ybGpEMmBAYDOquEoRhBD
-	 emcAriGKFLmqSKNjxibkxvRV0gfoIJs5y+QPkP+Al6dksnKuV87FxWMyQhsISaRoXH
-	 xQJQH+zNy1Y4ZJX2VInmUf0Pxc8lkoTmKBUAyiYGVTe8VsTSSBhL+yFF3XsoTgFABB
-	 xIRaaNCSTjCtw==
+	b=LY5MhogFYGvypgPfvg01dvZ9PZkbO7FgvtWYAw/WKXou3vnz89Rkn5xuCZFIRz064
+	 TB+IR/bJJCwsZRg+k2k5hqbGzlTM90oOJ/+4bwPlgqJxWX/Dnph0pVZiP6zgdew/ey
+	 d7X1EwcIWLDkTRzb6HDxrtpcPnIg57aeUmU7QihkPux8rq05cLWJ8vDwRB0Y4W+vEI
+	 SxotCBjmhI8zSVB1QjNjRU3N8UY14u4EyvA6NsXk2CBv7AH1lkCSCtmC+NQg1oJqwk
+	 7VK6UG72uOtVq/pxs5ptuCzSvRBYMXBn7GIZr7XEksofyrfoB6K+sS4vJpGv6u0tqh
+	 PISjyg21MbUjQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f-iVEnp5qYTi; Wed, 24 Aug 2022 11:38:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HkpoklOY56f4; Wed, 24 Aug 2022 12:07:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0912660E6B;
-	Wed, 24 Aug 2022 11:38:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0912660E6B
+	by smtp1.osuosl.org (Postfix) with ESMTP id AB2F081B52;
+	Wed, 24 Aug 2022 12:07:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB2F081B52
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D8FC91BF407
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 11:38:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ECD761BF29A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 12:07:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AFF6481A5F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 11:38:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AFF6481A5F
+ by smtp1.osuosl.org (Postfix) with ESMTP id D2D0881B36
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 12:07:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2D0881B36
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id htImltz9d6Ul for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Aug 2022 11:38:09 +0000 (UTC)
+ with ESMTP id iDPqTqxOBiiV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Aug 2022 12:07:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4FCB81A50
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E36C680C67
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D4FCB81A50
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 11:38:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10448"; a="319999484"
-X-IronPort-AV: E=Sophos;i="5.93,260,1654585200"; d="scan'208";a="319999484"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E36C680C67
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Aug 2022 12:07:34 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10448"; a="320004498"
+X-IronPort-AV: E=Sophos;i="5.93,260,1654585200"; d="scan'208";a="320004498"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Aug 2022 04:38:08 -0700
+ 24 Aug 2022 05:07:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,260,1654585200"; d="scan'208";a="606001380"
-Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
- ([10.102.18.68])
- by orsmga007.jf.intel.com with ESMTP; 24 Aug 2022 04:38:05 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+X-IronPort-AV: E=Sophos;i="5.93,260,1654585200"; d="scan'208";a="678021252"
+Received: from propan.igk.intel.com ([10.211.8.82])
+ by fmsmga004.fm.intel.com with ESMTP; 24 Aug 2022 05:07:33 -0700
+From: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 24 Aug 2022 13:37:09 +0200
-Message-Id: <20220824113709.3085878-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.27.0
+Date: Wed, 24 Aug 2022 14:07:26 +0200
+Message-Id: <20220824120728.1384453-1-anatolii.gerasymenko@intel.com>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661341088; x=1692877088;
+ t=1661342855; x=1692878855;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=a6Y89l1XZqojSqs7J+Uwn+7t8+Jz+1v8+psB4hVuRsU=;
- b=AS4inoUQqoi5JhB5gd3+PzSg1wzZZmqm2odPuqM9E2+jp3sp4OLCz/C5
- rA6tMfF+y9rbNrI+0Y6sCLDruSkN799XQDUZ1XqiZSIx/sfX9K+EAsBZb
- G4rjIQJuOBonpGfum7aoy8qxpMxxCeXv5qtZxEFKKvLihM/Mv3iqWFd5M
- XjqBXY/n7RyCseUP3m7mrNy0Mhmy4b43psquFpC4Hm4MHJd76KaErrFUX
- VLvSdhagrs1YhC4xP8OP9zBDWorqdmlqwGHDMrwu2MiLC4FfMTdNG7JK+
- JdU8FfMLyHTIdLI33sZaoWoBHsCMPOfVx8e0yOzs3VFmlQuETAPHt2fku
+ bh=C5BUx9ml19wR8TtWQTXielxkyhdwr0HC7fA3MATrchA=;
+ b=mz07E727ntPKhTMK5X1X4c8Oa1B+NbvOImnZp/RBVn5XCaIhWk9ccr7Q
+ 80D8N86lyuLsqDLYbgzT3nXNMlp3oiOwqjxw/ZGuLqvjuNsj4JGM+UuMl
+ E15Vp8k1eAYSw736mRBFwhujuryL4OJFlLm0yZ9KG0DwNOqcKHhxWxiwp
+ 3bVQfVhYx0noN3YIeQkVFTPrB+7dwBYFhp7qjvdPK3SHA2tFzIA1uoNo6
+ Al45Z/pWSz/5a92wDzkkJ5B0fHR6LSxMhsDkODQtiumURyraBcU/Gy0L+
+ wRwHszRG5kEw0sMcugsDRwNzRIvcx4RGcRxjC22O+8UZm/YnoFOv0F2Z3
  g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AS4inoUQ
-Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix ethtool rx-flow-hash
- setting for X722
+ header.a=rsa-sha256 header.s=Intel header.b=mz07E727
+Subject: [Intel-wired-lan] [PATCH net-next v4 0/2] ice: Implement LLDP MIB
+ Pending change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,127 +91,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Jaron <michalx.jaron@intel.com>,
- Slawomir Laba <slawomirx.laba@intel.com>
+Cc: Anatolii Gerasymenko <anatolii.gerasymenko@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Jaron <michalx.jaron@intel.com>
+If the RDMA traffic class is removed, then our Control QP (RDMA Admin QP)
+may not receive completions and would hang RDMA processing. Which would
+translate into requests for reset on the card after receiving such
+changes from the switch.
 
-When enabling flow type for RSS hash via ethtool:
+To solve above problem FW will no longer remove TC nodes for the
+applicable TC instead allowing RDMA to destroy QP markers. After RDMA
+finish outstanding operations notification needs to be sent to FW to
+finish DCB configuration change.
 
-ethtool -N $pf rx-flow-hash tcp4|tcp6|udp4|udp6 s|d
+v4: Squash patch 2 and 3 together, because ice_get_dcb_cfg_from_mib_change()
+	is now used for Pending changes only
 
-the driver would fail to setup this setting on X722
-device since it was using the mask on the register
-dedicated for X710 devices.
+Anatolii Gerasymenko (1):
+  ice: Handle LLDP MIB Pending change
+v2: Remove inline hint for ice_dcb_is_mib_change_pending()
+v3: Handle only local LLDP MIB Pending change
+v4: Use the old way to get MIB content for non-Pending changes, because
+	the MIB Change event will not always contain a correct MIB.
 
-Implement a bitmap to collect the flow pc types that
-shall be applied on the inset and hena registers.
-Apply a different mask on the register when setting the
-RSS hash for the X722 device.
+Tsotne Chakhvadze (1):
+  ice: Add 'Execute Pending LLDP MIB' Admin Queue command
+v4: Fix incorrect defines for DCBx IEEE and CEE modes
 
-When displaying the flow types enabled via ethtool:
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 18 ++++-
+ drivers/net/ethernet/intel/ice/ice_common.c   | 13 ++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_dcb.c      | 39 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_dcb.h      |  2 +
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  | 68 +++++++++++++++----
+ 6 files changed, 124 insertions(+), 17 deletions(-)
 
-ethtool -n $pf rx-flow-hash tcp4|tcp6|udp4|udp6
-
-the driver would print wrong values for X722 device.
-
-Fix this issue by testing masks for X722 device in
-i40e_get_rss_hash_opts function.
-
-Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
-Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- v3: Split the patch series and send only this to net and refactor
- to next
----
- .../net/ethernet/intel/i40e/i40e_ethtool.c    | 30 ++++++++++++++-----
- drivers/net/ethernet/intel/i40e/i40e_type.h   |  4 +++
- 2 files changed, 26 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index e9cd0fa6a0d2..57577294f39f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -3188,10 +3188,17 @@ static int i40e_get_rss_hash_opts(struct i40e_pf *pf, struct ethtool_rxnfc *cmd)
- 
- 		if (cmd->flow_type == TCP_V4_FLOW ||
- 		    cmd->flow_type == UDP_V4_FLOW) {
--			if (i_set & I40E_L3_SRC_MASK)
--				cmd->data |= RXH_IP_SRC;
--			if (i_set & I40E_L3_DST_MASK)
--				cmd->data |= RXH_IP_DST;
-+			if (hw->mac.type == I40E_MAC_X722) {
-+				if (i_set & I40E_X722_L3_SRC_MASK)
-+					cmd->data |= RXH_IP_SRC;
-+				if (i_set & I40E_X722_L3_DST_MASK)
-+					cmd->data |= RXH_IP_DST;
-+			} else {
-+				if (i_set & I40E_L3_SRC_MASK)
-+					cmd->data |= RXH_IP_SRC;
-+				if (i_set & I40E_L3_DST_MASK)
-+					cmd->data |= RXH_IP_DST;
-+			}
- 		} else if (cmd->flow_type == TCP_V6_FLOW ||
- 			  cmd->flow_type == UDP_V6_FLOW) {
- 			if (i_set & I40E_L3_V6_SRC_MASK)
-@@ -3554,7 +3561,9 @@ static int i40e_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
-  *
-  * Returns value of bits to be set per user request
-  **/
--static u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
-+static u64 i40e_get_rss_hash_bits(struct i40e_hw *hw,
-+				  struct ethtool_rxnfc *nfc,
-+				  u64 i_setc)
- {
- 	u64 i_set = i_setc;
- 	u64 src_l3 = 0, dst_l3 = 0;
-@@ -3573,8 +3582,13 @@ static u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
- 		dst_l3 = I40E_L3_V6_DST_MASK;
- 	} else if (nfc->flow_type == TCP_V4_FLOW ||
- 		  nfc->flow_type == UDP_V4_FLOW) {
--		src_l3 = I40E_L3_SRC_MASK;
--		dst_l3 = I40E_L3_DST_MASK;
-+		if (hw->mac.type == I40E_MAC_X722) {
-+			src_l3 = I40E_X722_L3_SRC_MASK;
-+			dst_l3 = I40E_X722_L3_DST_MASK;
-+		} else {
-+			src_l3 = I40E_L3_SRC_MASK;
-+			dst_l3 = I40E_L3_DST_MASK;
-+		}
- 	} else {
- 		/* Any other flow type are not supported here */
- 		return i_set;
-@@ -3689,7 +3703,7 @@ static int i40e_set_rss_hash_opt(struct i40e_pf *pf, struct ethtool_rxnfc *nfc)
- 					       flow_pctype)) |
- 			((u64)i40e_read_rx_ctl(hw, I40E_GLQF_HASH_INSET(1,
- 					       flow_pctype)) << 32);
--		i_set = i40e_get_rss_hash_bits(nfc, i_setc);
-+		i_set = i40e_get_rss_hash_bits(&pf->hw, nfc, i_setc);
- 		i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(0, flow_pctype),
- 				  (u32)i_set);
- 		i40e_write_rx_ctl(hw, I40E_GLQF_HASH_INSET(1, flow_pctype),
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
-index 7b3f30beb757..388c3d36d96a 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_type.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
-@@ -1404,6 +1404,10 @@ struct i40e_lldp_variables {
- #define I40E_PFQF_CTL_0_HASHLUTSIZE_512	0x00010000
- 
- /* INPUT SET MASK for RSS, flow director, and flexible payload */
-+#define I40E_X722_L3_SRC_SHIFT		49
-+#define I40E_X722_L3_SRC_MASK		(0x3ULL << I40E_X722_L3_SRC_SHIFT)
-+#define I40E_X722_L3_DST_SHIFT		41
-+#define I40E_X722_L3_DST_MASK		(0x3ULL << I40E_X722_L3_DST_SHIFT)
- #define I40E_L3_SRC_SHIFT		47
- #define I40E_L3_SRC_MASK		(0x3ULL << I40E_L3_SRC_SHIFT)
- #define I40E_L3_V6_SRC_SHIFT		43
 -- 
-2.27.0
+2.37.1
 
 _______________________________________________
 Intel-wired-lan mailing list
