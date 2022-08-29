@@ -1,87 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85EAB5A3599
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 27 Aug 2022 09:30:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6609B5A43A3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Aug 2022 09:20:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 653184175E;
-	Sat, 27 Aug 2022 07:30:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 653184175E
+	by smtp4.osuosl.org (Postfix) with ESMTP id E16D1408CE;
+	Mon, 29 Aug 2022 07:20:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E16D1408CE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1661585400;
-	bh=Tv6/MhdEtqzGFxoTF2rNx48pg3uYQq651Fy6t+/Pg2I=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=J8Og5fy1vCBeDZJa+hm2RsBizKH7GRoAzGyT3ydZ07oCdDJSNxtNAQMhhI1LqFadR
-	 YySS2a8dnxxsol3XGynuhd+RslQPZS4m2AXU7DNAvmWboILc7UvYNrKdBnCqlajfZV
-	 g2bNCLXF4BBLw3LFS+zELwrTXVfCt/aiWC0RPumNKQiRbFfSZ1cQIbU7xMa5EjCfBI
-	 +9DDhtuWkPyI9WrlGZWKFYUQGHbfT15wpyd7gAqUDniQcV67fcYEMC65vHI5t3UgKL
-	 56bqvCoLl4q+8qfaeoi6ZGRG6PIWxDQxFTH3MjG0x8wKs7lrmVGl7mRSRH9BEmoU/C
-	 GOdzyM+wxFw6w==
+	s=default; t=1661757605;
+	bh=dkxOI/uEljBPbQyZOT7lkp/Xua9SdRKOB7hflmlpMRo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=6WMDGFeM0gWEAA/bjyhRGA60AV0xa3Rk9Ehu/rmJTDQdapozOcJC/7TUrHXBBC5ZE
+	 zNVe7GjHKNNIQ9v+f7Flvx4Afqc6Nz9x+ZcvOXRcKcBRHgroWC06nuhr4UtELmrWE9
+	 qTW7SbB2HVzWqmzTNQPoFcDIY0oL370dqHbvzNgg4koZM6bT/dFawihVkbHVUwb063
+	 g7ImOdOvDKfcYjXIQMgmZUVe52aeZmUJiFNF2tqrygwh1yi9KY07QJMKdcEXWig3O+
+	 H9QqebzshVu92rakhAlcGvEbESrw9ZWUH7qSO1d/u7JCFN6W0s04yPz/8yDvCMbpa+
+	 7U5fOhYUc6UqQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3dDNDrnsc1RY; Sat, 27 Aug 2022 07:29:59 +0000 (UTC)
+	with ESMTP id hhQy9N-TgojH; Mon, 29 Aug 2022 07:20:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDB464175C;
-	Sat, 27 Aug 2022 07:29:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDB464175C
+	by smtp4.osuosl.org (Postfix) with ESMTP id 32E564088F;
+	Mon, 29 Aug 2022 07:20:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 32E564088F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 736301BF853
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Aug 2022 07:29:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2951E1BF2FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Aug 2022 07:19:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4C0BD40144
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Aug 2022 07:29:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4C0BD40144
+ by smtp3.osuosl.org (Postfix) with ESMTP id 02A9D60B77
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Aug 2022 07:19:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 02A9D60B77
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6cohr1QXe5md for <intel-wired-lan@lists.osuosl.org>;
- Sat, 27 Aug 2022 07:29:52 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8AYX_ewcyULw for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 29 Aug 2022 07:19:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2A4CE40017
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2A4CE40017
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Aug 2022 07:29:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10451"; a="320756891"
-X-IronPort-AV: E=Sophos;i="5.93,267,1654585200"; d="scan'208";a="320756891"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2022 00:29:43 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8AF3560B1E
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8AF3560B1E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Aug 2022 07:19:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10453"; a="281801214"
+X-IronPort-AV: E=Sophos;i="5.93,272,1654585200"; d="scan'208";a="281801214"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2022 00:19:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,267,1654585200"; d="scan'208";a="640330810"
-Received: from lkp-server01.sh.intel.com (HELO 71b0d3b5b1bc) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 27 Aug 2022 00:29:41 -0700
-Received: from kbuild by 71b0d3b5b1bc with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oRqGD-000167-0m;
- Sat, 27 Aug 2022 07:29:41 +0000
-Date: Sat, 27 Aug 2022 15:29:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6309c7c5.ld4JO2Pk9HNg9ulC%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.93,272,1654585200"; d="scan'208";a="939477224"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmsmga005.fm.intel.com with ESMTP; 29 Aug 2022 00:19:30 -0700
+From: Andrii Staikov <andrii.staikov@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 29 Aug 2022 09:19:24 +0200
+Message-Id: <20220829071924.278755-1-andrii.staikov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661585392; x=1693121392;
- h=date:from:to:subject:message-id:mime-version:
+ t=1661757594; x=1693293594;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=aRA6NoiEIE2J83F0yc1lh7ph56ulMqiV8vv7UJiXDok=;
- b=ak3V3hc/GGQZx0PDxwa1cm0nBY/uOQKfnuJD0NIJLwi+X1EE9KrMfhox
- CME1i17uGOYvHRBwvmB6EbgNi7lZMZv04gaU2zH3DUvShrisgpjoMSYjK
- SCDnYqHyeSzij73eIwGuMU1pZfH4MjtzL1YN92pHHfkSxgzYZC05bLHoZ
- zAuMiNo1YBcS1xp6xjEGiMRPgHJCCwv/kiObgrA3aCPtjKMsSd6Yvd/vZ
- BUnO83HZYeXet4Dt1cci5ffctfElfPnKixCZ6SCecDTTh1/F3xbUiar0L
- rZLRl3YbBk68H2HUBkDKnXgg382y15mJZxwQyMHh/4fcy95TZ6khy/SaG
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=2yrBJBMZqmUcgemi3jUMLpaagavgDVHQ/ild+0IPoC4=;
+ b=gqfw85sslCYVQs7vLVeMffpFSB/KTrgH6Bel21HfmRGaxYubpOD7sEmJ
+ y4I/5cmB/Qlxw7DtozVVpBBaxAMWPwGQvqRFH970G6xjz0NbiwT3umkz8
+ GS0RQcPqt0wecTyxDIusQf+VxnFPNgYm5BuRRlHNxtnvvGtHIEsg5rrsY
+ epheXKeHpGv9e+oyiyNhGYpPIFvYWLiAB5VgYAXf+0O5g4VfxKqTvJzb0
+ rtn5fPD21WVrCy/pnwghv6zJCmuQ3ehIarZTl6C2EjgZTtM71JeXcBwXk
+ oqAlRQYYaUdkOg4T9GJCUp0Y4gPZafbchVxxQE9HbMDTU7q6mBJxccXMk
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ak3V3hc/
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- ed92b8cc9c6f634db556c973260c15782bb96adc
+ header.a=rsa-sha256 header.s=Intel header.b=gqfw85ss
+Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix set max_tx_rate when it
+ is lower than 1 Mbps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,141 +91,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Michal Jaron <michalx.jaron@intel.com>,
+ Andrii Staikov <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: ed92b8cc9c6f634db556c973260c15782bb96adc  ice: add helper function to check FW API version
+From: Michal Jaron <michalx.jaron@intel.com>
 
-elapsed time: 724m
+Value max_tx_rate is converted from bytes to Mbps.
+When max_tx_rate was set to lower than 125000 bytes (1 Mbps)
+it was cut to 0 because of this conversion.
 
-configs tested: 111
-configs skipped: 3
+The visual behavior without this fix:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+qdisc mqprio 8057: root  tc 3 map 0 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0
+             queues:(0:1) (2:3) (4:5)
+             mode: channel
+             shaper:bw_rlimit   max_rate:10Kbit 10Kbit 10Kbit
+qdisc fq_codel 0: parent 8057:6 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc fq_codel 0: parent 8057:5 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc fq_codel 0: parent 8057:4 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc fq_codel 0: parent 8057:3 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc fq_codel 0: parent 8057:2 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc fq_codel 0: parent 8057:1 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn
+qdisc ingress ffff: parent ffff:fff1 ----------------
 
-gcc tested configs:
-loongarch                         allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-loongarch                           defconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-i386                                defconfig
-s390                                defconfig
-x86_64                              defconfig
-s390                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-x86_64                               rhel-8.3
-arm                                 defconfig
-alpha                            allyesconfig
-x86_64                        randconfig-a004
-x86_64                        randconfig-a013
-x86_64                           allyesconfig
-i386                             allyesconfig
-powerpc                           allnoconfig
-x86_64                        randconfig-a011
-i386                          randconfig-a001
-m68k                             allyesconfig
-mips                             allyesconfig
-x86_64                        randconfig-a015
-x86_64                        randconfig-a002
-i386                          randconfig-a003
-powerpc                          allmodconfig
-i386                          randconfig-a005
-sh                               allmodconfig
-i386                          randconfig-a014
-x86_64                          rhel-8.3-func
-x86_64                        randconfig-a006
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                    rhel-8.3-kselftests
-i386                          randconfig-a012
-x86_64                           rhel-8.3-syz
-arc                  randconfig-r043-20220824
-riscv                randconfig-r042-20220824
-i386                          randconfig-a016
-s390                 randconfig-r044-20220826
-s390                 randconfig-r044-20220824
-arm                              allyesconfig
-arc                  randconfig-r043-20220823
-arm64                            allyesconfig
-riscv                randconfig-r042-20220826
-arc                  randconfig-r043-20220826
-arc                  randconfig-r043-20220825
-parisc                              defconfig
-nios2                               defconfig
-nios2                            allyesconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-riscv                            allmodconfig
-powerpc                          allyesconfig
-riscv                            allyesconfig
-riscv                               defconfig
-i386                          debian-10.3-kvm
-i386                        debian-10.3-kunit
-i386                         debian-10.3-func
-csky                              allnoconfig
-alpha                             allnoconfig
-arc                               allnoconfig
-riscv                             allnoconfig
-ia64                             allmodconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-sh                          rsk7203_defconfig
-parisc                generic-32bit_defconfig
-arm                            xcep_defconfig
-openrisc                  or1klitex_defconfig
-ia64                            zx1_defconfig
+Add a check that if max_tx_rate is lower than 1 Mbps
+set this to minimum usable value of 50 Mbps.
 
-clang tested configs:
-i386                          randconfig-a013
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-x86_64                        randconfig-a012
-i386                          randconfig-a015
-x86_64                        randconfig-a005
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-x86_64                        randconfig-a001
-hexagon              randconfig-r041-20220825
-hexagon              randconfig-r041-20220823
-x86_64                        randconfig-a003
-i386                          randconfig-a011
-hexagon              randconfig-r045-20220825
-hexagon              randconfig-r041-20220824
-hexagon              randconfig-r045-20220824
-s390                 randconfig-r044-20220823
-hexagon              randconfig-r045-20220826
-hexagon              randconfig-r041-20220826
-riscv                randconfig-r042-20220825
-s390                 randconfig-r044-20220825
-riscv                randconfig-r042-20220823
-hexagon              randconfig-r045-20220823
-powerpc                      obs600_defconfig
-arm                                 defconfig
-arm                         bcm2835_defconfig
-hexagon              randconfig-r045-20220827
-riscv                randconfig-r042-20220827
-hexagon              randconfig-r041-20220827
-s390                 randconfig-r044-20220827
-arm                           sama7_defconfig
-riscv                            alldefconfig
-arm                         mv78xx0_defconfig
-x86_64                        randconfig-k001
+Add defined constants.
 
+Fixes: 5ecae4120a6b ("i40e: Refactor VF BW rate limiting")
+Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+---
+ v3: Providing the visual behavior without the fix.
+---
+ v2: Changing author, adding fixes tag, changing commit message.
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 32 +++++++++++++++++----
+ 1 file changed, 26 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 10c1e1ea83a1..e3d9804aeb25 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -5908,6 +5908,26 @@ static int i40e_get_link_speed(struct i40e_vsi *vsi)
+ 	}
+ }
+ 
++/**
++ * i40e_bw_bytes_to_mbits - Convert max_tx_rate from bytes to mbits
++ * @vsi: Pointer to vsi structure
++ * @max_tx_rate: max TX rate in bytes to be converted into Mbits
++ *
++ * Helper function to convert units before send to set BW limit
++ **/
++static u64 i40e_bw_bytes_to_mbits(struct i40e_vsi *vsi, u64 max_tx_rate)
++{
++	if (max_tx_rate < I40E_BW_MBPS_DIVISOR) {
++		dev_warn(&vsi->back->pdev->dev,
++			 "Setting max tx rate to minimum usable value of 50Mbps.\n");
++		max_tx_rate = I40E_BW_CREDIT_DIVISOR;
++	} else {
++		do_div(max_tx_rate, I40E_BW_MBPS_DIVISOR);
++	}
++
++	return max_tx_rate;
++}
++
+ /**
+  * i40e_set_bw_limit - setup BW limit for Tx traffic based on max_tx_rate
+  * @vsi: VSI to be configured
+@@ -5930,10 +5950,10 @@ int i40e_set_bw_limit(struct i40e_vsi *vsi, u16 seid, u64 max_tx_rate)
+ 			max_tx_rate, seid);
+ 		return -EINVAL;
+ 	}
+-	if (max_tx_rate && max_tx_rate < 50) {
++	if (max_tx_rate && max_tx_rate < I40E_BW_CREDIT_DIVISOR) {
+ 		dev_warn(&pf->pdev->dev,
+ 			 "Setting max tx rate to minimum usable value of 50Mbps.\n");
+-		max_tx_rate = 50;
++		max_tx_rate = I40E_BW_CREDIT_DIVISOR;
+ 	}
+ 
+ 	/* Tx rate credits are in values of 50Mbps, 0 is disabled */
+@@ -8224,9 +8244,9 @@ static int i40e_setup_tc(struct net_device *netdev, void *type_data)
+ 
+ 	if (i40e_is_tc_mqprio_enabled(pf)) {
+ 		if (vsi->mqprio_qopt.max_rate[0]) {
+-			u64 max_tx_rate = vsi->mqprio_qopt.max_rate[0];
++			u64 max_tx_rate = i40e_bw_bytes_to_mbits(vsi,
++						  vsi->mqprio_qopt.max_rate[0]);
+ 
+-			do_div(max_tx_rate, I40E_BW_MBPS_DIVISOR);
+ 			ret = i40e_set_bw_limit(vsi, vsi->seid, max_tx_rate);
+ 			if (!ret) {
+ 				u64 credits = max_tx_rate;
+@@ -10971,10 +10991,10 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
+ 	}
+ 
+ 	if (vsi->mqprio_qopt.max_rate[0]) {
+-		u64 max_tx_rate = vsi->mqprio_qopt.max_rate[0];
++		u64 max_tx_rate = i40e_bw_bytes_to_mbits(vsi,
++						  vsi->mqprio_qopt.max_rate[0]);
+ 		u64 credits = 0;
+ 
+-		do_div(max_tx_rate, I40E_BW_MBPS_DIVISOR);
+ 		ret = i40e_set_bw_limit(vsi, vsi->seid, max_tx_rate);
+ 		if (ret)
+ 			goto end_unlock;
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.25.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
