@@ -1,66 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E91265A6F54
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Aug 2022 23:43:26 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 178585A6F55
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Aug 2022 23:43:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B648440BF4;
-	Tue, 30 Aug 2022 21:43:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B648440BF4
+	by smtp3.osuosl.org (Postfix) with ESMTP id A558A60E48;
+	Tue, 30 Aug 2022 21:43:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A558A60E48
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1661895804;
+	s=default; t=1661895808;
 	bh=WOgdaiLP2am7wU7PfF51BoFh+JrBQKTh9U4jL5itUFM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=lyXXhzMDfgCZRyXrfcYF9KMnygxfu4frdUIMbxLwgJy6NavAXocqj/ApBffrZeZGI
-	 1HCNxiooHFziYbZh3zv8vUbc7uST2gc33Gcic+TpfV8Z9xNiGy78RooCHI0HFqe/Xu
-	 mVfmFHpFNaJzkXLNqc14b62ht1U557ZHxFV8zBlJhBUPyQZv3tZh/HpySUoAVa3DQC
-	 mUselmNHNea4JuSeBGeBKV2fwyAF068OyiDiLeOX86cuj09F/1fWDvmCN182FCMAGL
-	 zT5wlxDWIlNZ3ZF1ff/pXzKfAZL2xz9i0kv6k2qIbB5hDnMeikA4Ptyrh/cnFQgV3h
-	 Ok6NqWpDdu+PQ==
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=CIKbZCmy68Zu60sZGzuUuYEwJzJ5enlI/Qz3Fv6xubxqYdqtipgBM3uAZEqaVJkXy
+	 ZCFYaY5CcfFRyfvuQ/a4UveYdZnlDLQGwfPFHJeIr4eQtIQzbmXmP7L3+Uq/pn35K2
+	 tWSQUPFVzoz98+y3BB1YotfzrPZhQL0w8nWIMFCeNA5L7VbgvtnsVEubKCJvkcE/Xv
+	 E+zXq4+8hIZVhlfcfWhR5BItd2FBdCk+zpuv+abBb8Wve2jn+bXsIYrmxZue0lb/s/
+	 jyEcTv0SXroNEQtjg2/+jGmYHFnzsRHAqHEVcX8yWZsLzjkXT1Weh+cn0Gny+SGYA0
+	 UiRNW1HFV04rw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a_F_0LI2boVm; Tue, 30 Aug 2022 21:43:23 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QNxD96jJFv0G; Tue, 30 Aug 2022 21:43:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 302A440193;
-	Tue, 30 Aug 2022 21:43:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 302A440193
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3525A61007;
+	Tue, 30 Aug 2022 21:43:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3525A61007
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C2B271BF9B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0DB291BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AA64240BF4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA64240BF4
+ by smtp2.osuosl.org (Postfix) with ESMTP id DD6D340BF6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DD6D340BF6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w_epK5CKf8an for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Aug 2022 21:43:17 +0000 (UTC)
+ with ESMTP id yCZhG8tBghyW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Aug 2022 21:43:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1ADCA40193
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A5DC240BD9
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1ADCA40193
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A5DC240BD9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 21:43:18 +0000 (UTC)
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-544-tsngv6PEMhmtsjPx4QfRhQ-1; Tue, 30 Aug 2022 17:43:12 -0400
-X-MC-Unique: tsngv6PEMhmtsjPx4QfRhQ-1
+ us-mta-496-4uKP6pM4O_uYQBQbLLyfJA-1; Tue, 30 Aug 2022 17:43:14 -0400
+X-MC-Unique: 4uKP6pM4O_uYQBQbLLyfJA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DE9C73804061;
- Tue, 30 Aug 2022 21:43:11 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BF57429AB3FF;
+ Tue, 30 Aug 2022 21:43:13 +0000 (UTC)
 Received: from swamp.redhat.com (unknown [10.40.194.110])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5CCC91410F37;
- Tue, 30 Aug 2022 21:43:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6946C1415117;
+ Tue, 30 Aug 2022 21:43:12 +0000 (UTC)
 From: Petr Oros <poros@redhat.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -70,23 +71,26 @@ To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
  netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
  linux-kernel@vger.kernel.org (open list)
-Date: Tue, 30 Aug 2022 23:43:08 +0200
-Message-Id: <20220830214309.3813378-1-poros@redhat.com>
+Date: Tue, 30 Aug 2022 23:43:09 +0200
+Message-Id: <20220830214309.3813378-2-poros@redhat.com>
+In-Reply-To: <20220830214309.3813378-1-poros@redhat.com>
+References: <20220830214309.3813378-1-poros@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1661895795;
+ s=mimecast20190719; t=1661895797;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
  bh=zFRR0acvkckiwuQhdIkt5k47ZpuUerQuvus48A9VabU=;
- b=M37YsIU8BgRjWOK2h0i90ZOJpLw5u15ZtpgH2rta6r15TV1jKgQgh0LO0wSnJGld1f+g7f
- YtnBZC6/WynNoU4xOI5BXtisWcCvw2EL1XEnFD/I7GPwYB9+jBSwXbsfNB4eJMcH3y1OeG
- AREHHYaxnEuwy/29DV8awv0mtX3v1eI=
+ b=hyRbIDMt22mqiDUTTIjnkGonGdV2nfsap+SYsGKQbvoVm608iFGb18kvLP1xS/AnA8FXOB
+ ucbI8hiXoaWBv/reqyDiqyHPUbyQyDFdy0Bp1Vb+y919F400OnAluieG08DsCeF/mrrtug
+ sft+OfumPmro8VS1Aw/eH/sS2yrJTiQ=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=M37YsIU8
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=hyRbIDMt
 Subject: [Intel-wired-lan] [PATCH] Revert "iavf: Add waiting for response
  from PF in set mac"
 X-BeenThere: intel-wired-lan@osuosl.org
