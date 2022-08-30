@@ -1,83 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB14A5A6389
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Aug 2022 14:38:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A57A15A6393
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Aug 2022 14:38:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ADB1D8174C;
-	Tue, 30 Aug 2022 12:38:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADB1D8174C
+	by smtp4.osuosl.org (Postfix) with ESMTP id F154E4023F;
+	Tue, 30 Aug 2022 12:38:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F154E4023F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1661863105;
-	bh=KBRxiYD0dbk1Qql5Olmn7WQxItA/18JZhXLWv5fombk=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=NOthTVU4CUZ5u3O4uCyq8zCjaVq55f/HNH8LYadJXRjfRiDUAn9GqoxvHjv+IA64Q
-	 Swf2eCQyaE2cZ71G9GRo82fLSyjvRAu+d0BOWIkt4gs3LZRVgXxwo6mo0dOEFwo3rl
-	 lltrenQswdka9VwuH48JK7yF6Uz+t2DCDD++Gpx3QcoeWNfQVPD3E2oLgKfIAwIS+w
-	 a/W2PmjzEb+EeEa+Q3ZCmUvdrue1Cux7z4KDEoUOtWRJOEBKfXVIkhTFQ+FxIMIXa9
-	 cGLDkE6peN1DeeRyGTf6P+joVlnx5HNBbQTTPyNKh3k8vaGNNrXj6yEfzBI9n9WpT1
-	 uYInQHzJfA+Hg==
+	s=default; t=1661863111;
+	bh=rnDsjmGJjaIB7D26jtBWUZYOr8HQiQiRjKGdrbhI67I=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=WCh+psslF6U/FqfXX/fEZiCAM+1qiguRtQtfGHyIg+Gg5UviYNOe7KpQDgayZL1qa
+	 mH31ohb4Kj9VvVYiM/383tqe9f8IDASKQOWR+VqddsQ8i+0d06KtZ00w5IRn64mJCc
+	 TCYmdZmIk28Gf1SlXitF/wTDvevVkdO2aGE9Q7W33uDB4gOCvrVauMSZ6eEDvlBvsb
+	 UFUxMsN+lUOUhvfwIic+i0Ve4Ypr6z83WLBi5o0oKuIsNQ/6psFotiFbMU1U/S4MS8
+	 2iG6NCgHi5TJx/blVn8gfLSmtwJkMgHUMmTQmqgNxdCXoQTvXQWQyinJVNrW29Nypn
+	 lrQ5sWVSnCAwA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O49NTmEWAnmR; Tue, 30 Aug 2022 12:38:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hWOSptxDL7vn; Tue, 30 Aug 2022 12:38:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 92D2581759;
-	Tue, 30 Aug 2022 12:38:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92D2581759
+	by smtp4.osuosl.org (Postfix) with ESMTP id 257C04019A;
+	Tue, 30 Aug 2022 12:38:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 257C04019A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0DE781BF3E9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9711D1BF3E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DABB860FB0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DABB860FB0
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6ECF260FAC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6ECF260FAC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VEJGjE6LAopz for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Aug 2022 12:38:18 +0000 (UTC)
+ with ESMTP id wGUsX6M8UBBY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Aug 2022 12:38:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19FB060FA4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1F5ED60FA4
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 19FB060FA4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10454"; a="295943118"
-X-IronPort-AV: E=Sophos;i="5.93,274,1654585200"; d="scan'208";a="295943118"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1F5ED60FA4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Aug 2022 12:38:18 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10454"; a="295943122"
+X-IronPort-AV: E=Sophos;i="5.93,274,1654585200"; d="scan'208";a="295943122"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2022 05:38:16 -0700
+ 30 Aug 2022 05:38:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,274,1654585200"; d="scan'208";a="588585167"
+X-IronPort-AV: E=Sophos;i="5.93,274,1654585200"; d="scan'208";a="588585199"
 Received: from boxer.igk.intel.com ([10.102.20.173])
- by orsmga006.jf.intel.com with ESMTP; 30 Aug 2022 05:38:15 -0700
+ by orsmga006.jf.intel.com with ESMTP; 30 Aug 2022 05:38:17 -0700
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 30 Aug 2022 14:38:01 +0200
-Message-Id: <20220830123803.9361-1-maciej.fijalkowski@intel.com>
+Date: Tue, 30 Aug 2022 14:38:02 +0200
+Message-Id: <20220830123803.9361-2-maciej.fijalkowski@intel.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20220830123803.9361-1-maciej.fijalkowski@intel.com>
+References: <20220830123803.9361-1-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1661863098; x=1693399098;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ar3h548rpaRpqxHgVz0lKjqIVfTKSVBgjMXjddGtLcY=;
- b=m/g0W4e6ijkphf/yfV7Vr3fwpul+moQDo3qibLGvS2/pC3OoJipHRGX9
- IL6BfEciwSwAuoyL5Yy7rr0VadH0TyQfE1rNVgkYOO8KDJ0gmW4aA2oaq
- dsEtwjaHjyII52enAA4pRY/0ooYavc+SdwaD1STBhiO/vb76iMJgjNu2r
- ZnUCq9acXaINjacYX0TEKl+wQI2J67XsXutDAkdA9UJCZIalSLu+BEH0/
- romLGE96OzsKhZXGIJFOA0hgDKHVm3cCO6VXKDmqAEjI6apkIzvp4rXaN
- Q1+i3orb0yrjfe2qHBWhGrvVOlZq3BtzGp9egV727+Xu+adU9s2Gop0er
- A==;
+ t=1661863099; x=1693399099;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=90P7fGfuhj3K+stD+JFr7Exph53pJwV1li4UPbJ6Kg4=;
+ b=Bw/L6ZTpSMUlG0R77FbPdjRui6DmDhekkzQUcHr/CA2XCP9RvwSiDIO/
+ 0b/Xe+J/hFNoNlr78S2pnYgmBl7iACGshSP6IWVCNpRS3B73X/GgcSCah
+ McOPWvz/2O+AWm2z2aLtlDr4MTNDg7juV8qDOHHe/yq3hbfgr378DoPHm
+ VKgEtizQtxoT5UhJDLlO/9I9FWf1DCn5ywBWuiXTVR2DoQ0LcowFMgJF/
+ OAIvicop1JsgAprYrJwUTSx6VVAftRQ+2yTI/mBgDLB+xubJPmAIgmzn0
+ montuBivmU7BOV/X2hb6l9lYfdIrZsMwyyLA/osq/SMh/oLHmsrXzrt5f
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=m/g0W4e6
-Subject: [Intel-wired-lan] [PATCH intel-net 0/2] ice: xsk: ZC changes
+ header.a=rsa-sha256 header.s=Intel header.b=Bw/L6ZTp
+Subject: [Intel-wired-lan] [PATCH intel-net 1/2] ice: xsk: change batched Tx
+ descriptor cleaning
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,29 +100,294 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+AF_XDP Tx descriptor cleaning in ice driver currently works in a "lazy"
+way - descriptors are not cleaned immediately after send. We rather hold
+on with cleaning until we see that free space in ring drops below
+particular threshold. This was supposed to reduce the amount of
+unnecessary work related to cleaning and instead of keeping the ring
+empty, ring was rather saturated.
 
-this set consists of two fixes to issues that were either pointed out on
-indirectly (John was reviewing AF_XDP selftests that were testing ice's
-ZC support) mailing list or were directly reported by customers.
+In AF_XDP realm cleaning Tx descriptors implies producing them to CQ.
+This is a way of letting know user space that particular descriptor has
+been sent, as John points out in [0].
 
-First patch allows user space to see done descriptor in CQ even after a
-single frame being transmitted and second patch removes the need for
-having HW rings sized to power of 2 number of descriptors when used
-against AF_XDP.
+We tried to implement serial descriptor cleaning which would be used in
+conjunction with batched cleaning but it made code base more convoluted
+and probably harder to maintain in future. Therefore we step away from
+batched cleaning in a current form in favor of an approach where we set
+RS bit on every last descriptor from a batch and clean always at the
+beginning of ice_xmit_zc().
 
-Thanks!
-Maciej
+This means that we give up a bit of Tx performance, but this doesn't
+hurt l2fwd scenario due to the fact that Tx side is much faster than Rx
+and Rx is the one that has to catch Tx up. txonly can be treaten as
+AF_XDP based packet generator.
 
-Maciej Fijalkowski (2):
-  ice: xsk: change batched Tx descriptor cleaning
-  ice: xsk: drop power of 2 ring size restriction for AF_XDP
+FWIW Tx descriptors are still produced in a batched way.
 
+Fixes: 126cdfe1007a ("ice: xsk: Improve AF_XDP ZC Tx and use batching API")
+[0]: https://lore.kernel.org/bpf/62b0a20232920_3573208ab@john.notmuch/
+
+Fixes: 126cdfe1007a ("ice: xsk: Improve AF_XDP ZC Tx and use batching API")
+Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+---
  drivers/net/ethernet/intel/ice/ice_txrx.c |   2 +-
- drivers/net/ethernet/intel/ice/ice_xsk.c  | 165 +++++++++-------------
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 143 +++++++++-------------
  drivers/net/ethernet/intel/ice/ice_xsk.h  |   7 +-
- 3 files changed, 72 insertions(+), 102 deletions(-)
+ 3 files changed, 64 insertions(+), 88 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 836dce840712..b97d34d0741f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1464,7 +1464,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
+ 		bool wd;
+ 
+ 		if (tx_ring->xsk_pool)
+-			wd = ice_xmit_zc(tx_ring, ICE_DESC_UNUSED(tx_ring), budget);
++			wd = ice_xmit_zc(tx_ring);
+ 		else if (ice_ring_is_xdp(tx_ring))
+ 			wd = true;
+ 		else
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 49ba8bfdbf04..46efe72d1342 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -719,69 +719,57 @@ ice_clean_xdp_tx_buf(struct ice_tx_ring *xdp_ring, struct ice_tx_buf *tx_buf)
+ }
+ 
+ /**
+- * ice_clean_xdp_irq_zc - Reclaim resources after transmit completes on XDP ring
+- * @xdp_ring: XDP ring to clean
+- * @napi_budget: amount of descriptors that NAPI allows us to clean
+- *
+- * Returns count of cleaned descriptors
++ * ice_clean_xdp_irq_zc - produce AF_XDP descriptors to CQ
++ * @xdp_ring: XDP Tx ring
+  */
+-static u16 ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring, int napi_budget)
++static void ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring)
+ {
+-	u16 tx_thresh = ICE_RING_QUARTER(xdp_ring);
+-	int budget = napi_budget / tx_thresh;
+-	u16 next_dd = xdp_ring->next_dd;
+-	u16 ntc, cleared_dds = 0;
+-
+-	do {
+-		struct ice_tx_desc *next_dd_desc;
+-		u16 desc_cnt = xdp_ring->count;
+-		struct ice_tx_buf *tx_buf;
+-		u32 xsk_frames;
+-		u16 i;
+-
+-		next_dd_desc = ICE_TX_DESC(xdp_ring, next_dd);
+-		if (!(next_dd_desc->cmd_type_offset_bsz &
+-		    cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE)))
+-			break;
++	u16 ntc = xdp_ring->next_to_clean;
++	struct ice_tx_desc *tx_desc;
++	u16 cnt = xdp_ring->count;
++	struct ice_tx_buf *tx_buf;
++	u16 xsk_frames = 0;
++	u16 last_rs;
++	int i;
+ 
+-		cleared_dds++;
+-		xsk_frames = 0;
+-		if (likely(!xdp_ring->xdp_tx_active)) {
+-			xsk_frames = tx_thresh;
+-			goto skip;
+-		}
++	last_rs = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : cnt - 1;
++	tx_desc = ICE_TX_DESC(xdp_ring, last_rs);
++	if ((tx_desc->cmd_type_offset_bsz &
++	    cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE))) {
++		if (last_rs >= ntc)
++			xsk_frames = last_rs - ntc + 1;
++		else
++			xsk_frames = last_rs + cnt - ntc + 1;
++	}
+ 
+-		ntc = xdp_ring->next_to_clean;
++	if (!xsk_frames)
++		return;
+ 
+-		for (i = 0; i < tx_thresh; i++) {
+-			tx_buf = &xdp_ring->tx_buf[ntc];
++	if (likely(!xdp_ring->xdp_tx_active))
++		goto skip;
+ 
+-			if (tx_buf->raw_buf) {
+-				ice_clean_xdp_tx_buf(xdp_ring, tx_buf);
+-				tx_buf->raw_buf = NULL;
+-			} else {
+-				xsk_frames++;
+-			}
++	ntc = xdp_ring->next_to_clean;
++	for (i = 0; i < xsk_frames; i++) {
++		tx_buf = &xdp_ring->tx_buf[ntc];
+ 
+-			ntc++;
+-			if (ntc >= xdp_ring->count)
+-				ntc = 0;
++		if (tx_buf->raw_buf) {
++			ice_clean_xdp_tx_buf(xdp_ring, tx_buf);
++			tx_buf->raw_buf = NULL;
++		} else {
++			xsk_frames++;
+ 		}
++
++		ntc++;
++		if (ntc >= xdp_ring->count)
++			ntc = 0;
++	}
+ skip:
+-		xdp_ring->next_to_clean += tx_thresh;
+-		if (xdp_ring->next_to_clean >= desc_cnt)
+-			xdp_ring->next_to_clean -= desc_cnt;
+-		if (xsk_frames)
+-			xsk_tx_completed(xdp_ring->xsk_pool, xsk_frames);
+-		next_dd_desc->cmd_type_offset_bsz = 0;
+-		next_dd = next_dd + tx_thresh;
+-		if (next_dd >= desc_cnt)
+-			next_dd = tx_thresh - 1;
+-	} while (--budget);
+-
+-	xdp_ring->next_dd = next_dd;
+-
+-	return cleared_dds * tx_thresh;
++	tx_desc->cmd_type_offset_bsz = 0;
++	xdp_ring->next_to_clean += xsk_frames;
++	if (xdp_ring->next_to_clean >= cnt)
++		xdp_ring->next_to_clean -= cnt;
++	if (xsk_frames)
++		xsk_tx_completed(xdp_ring->xsk_pool, xsk_frames);
+ }
+ 
+ /**
+@@ -816,7 +804,6 @@ static void ice_xmit_pkt(struct ice_tx_ring *xdp_ring, struct xdp_desc *desc,
+ static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *descs,
+ 			       unsigned int *total_bytes)
+ {
+-	u16 tx_thresh = ICE_RING_QUARTER(xdp_ring);
+ 	u16 ntu = xdp_ring->next_to_use;
+ 	struct ice_tx_desc *tx_desc;
+ 	u32 i;
+@@ -836,13 +823,6 @@ static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *de
+ 	}
+ 
+ 	xdp_ring->next_to_use = ntu;
+-
+-	if (xdp_ring->next_to_use > xdp_ring->next_rs) {
+-		tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_rs);
+-		tx_desc->cmd_type_offset_bsz |=
+-			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+-		xdp_ring->next_rs += tx_thresh;
+-	}
+ }
+ 
+ /**
+@@ -855,7 +835,6 @@ static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *de
+ static void ice_fill_tx_hw_ring(struct ice_tx_ring *xdp_ring, struct xdp_desc *descs,
+ 				u32 nb_pkts, unsigned int *total_bytes)
+ {
+-	u16 tx_thresh = ICE_RING_QUARTER(xdp_ring);
+ 	u32 batched, leftover, i;
+ 
+ 	batched = ALIGN_DOWN(nb_pkts, PKTS_PER_BATCH);
+@@ -864,54 +843,54 @@ static void ice_fill_tx_hw_ring(struct ice_tx_ring *xdp_ring, struct xdp_desc *d
+ 		ice_xmit_pkt_batch(xdp_ring, &descs[i], total_bytes);
+ 	for (; i < batched + leftover; i++)
+ 		ice_xmit_pkt(xdp_ring, &descs[i], total_bytes);
++}
+ 
+-	if (xdp_ring->next_to_use > xdp_ring->next_rs) {
+-		struct ice_tx_desc *tx_desc;
++/**
++ * ice_set_rs_bit - set RS bit on last produced descriptor (one behind current NTU)
++ * @xdp_ring: XDP ring to produce the HW Tx descriptors on
++ */
++static void ice_set_rs_bit(struct ice_tx_ring *xdp_ring)
++{
++	u16 ntu = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : xdp_ring->count - 1;
++	struct ice_tx_desc *tx_desc;
+ 
+-		tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_rs);
+-		tx_desc->cmd_type_offset_bsz |=
+-			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+-		xdp_ring->next_rs += tx_thresh;
+-	}
++	tx_desc = ICE_TX_DESC(xdp_ring, ntu);
++	tx_desc->cmd_type_offset_bsz |=
++		cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+ }
+ 
+ /**
+  * ice_xmit_zc - take entries from XSK Tx ring and place them onto HW Tx ring
+  * @xdp_ring: XDP ring to produce the HW Tx descriptors on
+- * @budget: number of free descriptors on HW Tx ring that can be used
+- * @napi_budget: amount of descriptors that NAPI allows us to clean
+  *
+  * Returns true if there is no more work that needs to be done, false otherwise
+  */
+-bool ice_xmit_zc(struct ice_tx_ring *xdp_ring, u32 budget, int napi_budget)
++bool ice_xmit_zc(struct ice_tx_ring *xdp_ring)
+ {
+ 	struct xdp_desc *descs = xdp_ring->xsk_pool->tx_descs;
+-	u16 tx_thresh = ICE_RING_QUARTER(xdp_ring);
+ 	u32 nb_pkts, nb_processed = 0;
+ 	unsigned int total_bytes = 0;
++	int budget;
++
++	ice_clean_xdp_irq_zc(xdp_ring);
+ 
+-	if (budget < tx_thresh)
+-		budget += ice_clean_xdp_irq_zc(xdp_ring, napi_budget);
++	budget = ICE_DESC_UNUSED(xdp_ring);
++	budget = min_t(u16, budget, ICE_RING_QUARTER(xdp_ring));
+ 
+ 	nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, budget);
+ 	if (!nb_pkts)
+ 		return true;
+ 
+ 	if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
+-		struct ice_tx_desc *tx_desc;
+-
+ 		nb_processed = xdp_ring->count - xdp_ring->next_to_use;
+ 		ice_fill_tx_hw_ring(xdp_ring, descs, nb_processed, &total_bytes);
+-		tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_rs);
+-		tx_desc->cmd_type_offset_bsz |=
+-			cpu_to_le64(ICE_TX_DESC_CMD_RS << ICE_TXD_QW1_CMD_S);
+-		xdp_ring->next_rs = tx_thresh - 1;
+ 		xdp_ring->next_to_use = 0;
+ 	}
+ 
+ 	ice_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed,
+ 			    &total_bytes);
+ 
++	ice_set_rs_bit(xdp_ring);
+ 	ice_xdp_ring_update_tail(xdp_ring);
+ 	ice_update_tx_ring_stats(xdp_ring, nb_pkts, total_bytes);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
+index 21faec8e97db..35dd3c57c4df 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.h
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
+@@ -26,12 +26,9 @@ bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count);
+ bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
+ void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring);
+ void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring);
+-bool ice_xmit_zc(struct ice_tx_ring *xdp_ring, u32 budget, int napi_budget);
++bool ice_xmit_zc(struct ice_tx_ring *xdp_ring);
+ #else
+-static inline bool
+-ice_xmit_zc(struct ice_tx_ring __always_unused *xdp_ring,
+-	    u32 __always_unused budget,
+-	    int __always_unused napi_budget)
++ice_xmit_zc(struct ice_tx_ring __always_unused *xdp_ring)
+ {
+ 	return false;
+ }
 -- 
 2.34.1
 
