@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 146845A99A0
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Sep 2022 16:03:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52A165A99A1
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Sep 2022 16:03:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 140F38137F;
-	Thu,  1 Sep 2022 14:03:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 140F38137F
+	by smtp4.osuosl.org (Postfix) with ESMTP id ED21D41B3A;
+	Thu,  1 Sep 2022 14:03:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED21D41B3A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1662040994;
-	bh=d4NLzEa72XqpYntdH9Cv7F6plHYKtlftSQ7FNQsig4k=;
+	s=default; t=1662040999;
+	bh=PxY4bfkM6ihIiK1eNXxiuW56ySfplv5CgOYZL5sFLYw=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ncat8TowNO/bl90DYGyVw/Dg3T1rkhnvn/MBaA7B1UrNZL3+970MQXHTC6SDjHbs1
-	 g9UyhK8r6R3fTkCYuUY0zgEmqUbWMtyL7JJLUT+h3URbuMIlp6Pde0z6fXsVHCtD7k
-	 i8vqEGhmeJBC+RKoUqOPP0B4V61+/r+w9+Z4OlWjJL7kjnRLTJ22dIdKj4541/V6vR
-	 705mV7X0CxyanrfGFO5jqJDCpaXJejUZlpnqSQTfAhxdk4OzfVZIesSBdYjaE5z8dU
-	 bcM+RJa9Eomtlt2bPGyb62BE08pa2lCm2jXdAmyOT0gcvTybVBcZkAxtp4Q7h1MaKo
-	 WRpQgfDuULbjQ==
+	 Cc:From;
+	b=vNF8zPqhajjq2o05m+/KTa6IyUoyoLQE46APsLxc+LuBMOR4rockPkLrgHoS9lbnX
+	 +j2FcNmyPe0wd2nNYod3jbX8MV0CI5OLuErtJn5crOeQmlcS1lwgZEm+yAn7A0Dq+6
+	 +du9dKuMq5CxTJs1534iuWpuIZdful8HUDg2bmAS0JbGveqyxp5yPPYECRBBi2dIOC
+	 7AaPTInEa/vN/s0+OtWKIba45OOadmw8JD+Jrac4LdUM2yNMTMvsj97JWi+T2D8cKI
+	 gGGBcBt8gGsBPB3aLcP0CotORC+vaeifjH0/2TKW2u2n7E/oNijiqL8xNIhC47Or6J
+	 hcdcxLHhMWv5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 758orw0rknHW; Thu,  1 Sep 2022 14:03:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rWlCY2MiFnUu; Thu,  1 Sep 2022 14:03:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 37BDF81097;
-	Thu,  1 Sep 2022 14:03:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37BDF81097
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E4CB41A5E;
+	Thu,  1 Sep 2022 14:03:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E4CB41A5E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 55F721BF301
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 89EE11BF301
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:56:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 36D0B41916
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 36D0B41916
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6CB2241916
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:56:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CB2241916
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l-TJZhCv-uoc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Sep 2022 09:55:21 +0000 (UTC)
+ with ESMTP id MrjiSR7pievK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Sep 2022 09:56:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52A46418FE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AAFE418FE
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 52A46418FE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:21 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10456"; a="295679916"
-X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="295679916"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2AAFE418FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:56:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10456"; a="295680270"
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="295680270"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Sep 2022 02:55:15 -0700
+ 01 Sep 2022 02:56:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="716046857"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga002.fm.intel.com with ESMTP; 01 Sep 2022 02:55:15 -0700
-Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="788180545"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga005.jf.intel.com with ESMTP; 01 Sep 2022 02:56:52 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 1 Sep 2022 02:55:15 -0700
+ 15.1.2375.31; Thu, 1 Sep 2022 02:56:52 -0700
 Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 1 Sep 2022 02:55:14 -0700
+ 15.1.2375.31; Thu, 1 Sep 2022 02:56:52 -0700
 Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
  orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Thu, 1 Sep 2022 02:55:14 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.106)
+ 15.1.2375.31 via Frontend Transport; Thu, 1 Sep 2022 02:56:52 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.104)
  by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Thu, 1 Sep 2022 02:55:14 -0700
+ 15.1.2375.31; Thu, 1 Sep 2022 02:56:51 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZA0L11MxefnquFchI3Uzy/3ybtxtUkoSFY/OG8kfv/gDQOWPhorqaW41GjPYUZREtKzIED6o/hA9TrVK+pI/rvDlFPgWhwCNRgtuI0c63+WRPs5c6Hh9HBcSXk4ICErAT7FjXd2ANJ99OS7zo74SiycuRQY4xFDDLV2aLElk7Qq9ViTG+P4G15mv0MeGURu60quR6bToN4OaD+qvZtfwW0qqQp8KEjQV7yqba+pGMnlFHE2khmh4mqNpPT0q8UVRaYT0xEvDj3IY/G7rw1KSDPXnW8xwsYDubhFfnJR38Pkk4/UsIiGO6vn99kdHRf1GfWkiZkQkyMkUUmBZtUMYSw==
+ b=cAlEjgUywZ71ql0t2wkdiygNOwEKig/YPsBIDdT3xH+ID4hxPxf+J8dOWxFIU5VaIHW//xtGP8bAnDJQx8YErAdwApg8YXkJsjsxeENZxYnzgwvf8XXF+hc9X+H3JMGfb5npx75SrYIvy2j4MxrlRErw26EsY7EZywp/AQwIRsI1VL13Zu5wPDK1OT3cAkDpTLpohcZL28z/qHe2A5k9maY7czVmgqmZ/+UOoF/b/m/gKWwSyXJZn37TRY/7hLtFzrZmurYLz4GUAJrZ/CHcw4xSpPlylFcjA0PJVaJR0MQd2fLEUScXrRARIF2/1sLiasaPwz8PM80PyYrc+hRgjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dRdgNwA2HGVViB6KxiNWiEiAPyK/UtyCph3L6SRC8Ys=;
- b=C0H8Yw7zRfr5c27vBpitTrbdVb4BHDfK/Vam8pDAdeQHp0U873/ql2VbT6BbmNlWXsbWLCLSh9xDLswB9riqcfNa1r4pDVoxjybFjYECPGnmb8/lzGiftaxs1UzNH1JYexGaYNyAqJEPU8PSgh9C+q1ANCL+7AOu5gUVIsnAg06ba1yNGepFiaWCnL9k6YN8a/QiKnDR1+A2hN8ZgdTYu6tS1MwLP8SqG9pnts8Pexmz4iJtiQaV1jhHmiCWMwH9iOnG5BWOy6ksyP6ZtGGQTqT+ALmLVirqKlXtYN+PoGsoTtsBgh4/05c+ZTnLXDMXmdw2i8r8WccSbgbCbiLwag==
+ bh=iPBjR46RmSohfmn3XPyRc2buztJF+7POjQVH7QkmbhM=;
+ b=lHIH4oqXCs4vWXR2fHS/7moESz7gApBFytJoBAZ6fQobnP2M3ypVOeGXN8tAOlSzpR/qGfYGC8oLleM+uQjEkgFV14xQuLK7bMlZAbMj9guFI5zfRCoAP28TvbxkQ03N/Aahga5eKiobJfvKvv22ENntaI+AHi0FYHJSEw72yhPbsIwoHs/4g0He9z5Ug8qJvEEmGBJ40RMo1A7MUeqbS5diySAXeU68XVXK6cwgl0Ime5uWyU+z4C52xSRx1+xIvT5CPDh7LjaIezACyyFubgBDCBMbADD7gzJUqzWIqlMAlRTh80oBb62Fnr09FmC3vJHbG5aPlnuwkagdivsLbQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -86,21 +86,20 @@ Received: from BYAPR11MB2983.namprd11.prod.outlook.com (2603:10b6:a03:88::22)
  by DM6PR11MB3577.namprd11.prod.outlook.com (2603:10b6:5:137::31) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5566.15; Thu, 1 Sep
- 2022 09:55:12 +0000
+ 2022 09:56:49 +0000
 Received: from BYAPR11MB2983.namprd11.prod.outlook.com
  ([fe80::e8f8:5cab:24b3:1c8]) by BYAPR11MB2983.namprd11.prod.outlook.com
  ([fe80::e8f8:5cab:24b3:1c8%4]) with mapi id 15.20.5588.010; Thu, 1 Sep 2022
- 09:55:12 +0000
+ 09:56:49 +0000
 From: "Dubel, Helena Anna" <helena.anna.dubel@intel.com>
-To: "Ertman, David M" <david.m.ertman@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux on
- peer initiated reset
-Thread-Index: AQHYrBTz/Nvhb3eAd0etDpH8ELjeDq3Kd8vg
-Date: Thu, 1 Sep 2022 09:55:12 +0000
-Message-ID: <BYAPR11MB2983DC4EFE6CEC213FF41F0BBE7B9@BYAPR11MB2983.namprd11.prod.outlook.com>
-References: <20220809172423.1967513-1-david.m.ertman@intel.com>
-In-Reply-To: <20220809172423.1967513-1-david.m.ertman@intel.com>
+To: ivecera <ivecera@redhat.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+Thread-Topic: [PATCH net] i40e: Fix kernel crash during module removal
+Thread-Index: AQHYsYx+3xIczkZuwU6Gew5dabQ5p63KbuBg
+Date: Thu, 1 Sep 2022 09:56:49 +0000
+Message-ID: <BYAPR11MB298374F50259D6FF3C815B16BE7B9@BYAPR11MB2983.namprd11.prod.outlook.com>
+References: <20220816162230.3486915-1-ivecera@redhat.com>
+In-Reply-To: <20220816162230.3486915-1-ivecera@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -109,76 +108,77 @@ dlp-product: dlpe-windows
 dlp-version: 11.6.500.17
 dlp-reaction: no-action
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5d63dc5d-d669-455c-37b4-08da8c000fdd
+x-ms-office365-filtering-correlation-id: aaa0d7ea-3015-44e8-d6c4-08da8c0049c2
 x-ms-traffictypediagnostic: DM6PR11MB3577:EE_
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: qOsntrg8u6WDJSgHOxIroBTUOaxcMYCVsxsYvgcspaoicn58htq50+yQoYvpom3qX0AzKpo0A6vzMmAPpMke2CaCZiT0HrTOSwr46nxfKk9Yjko4vlYsfqAyLn2T3Ak3IuSP8jcPWcuwaAzc9OTe2YwXvt0nbF+RX2Tyijq40SEBz3c9YEPMOkQY+2puDlUjnd+GIFVkqmmoa96o2WR8lttzvGeGbFBPZEgCljdIMjnDC7okBAld9+XlHXqOK3qS49TNqHt+j1i+bCfGFRe+LTZocHfCAX+V31WIHoOiepIdfLIPWFQGO7EB4GEjUINObODsywGYHqCgVCeC6qrBA6Lxa2BPEctNqGBSumgbsqU3SrILjD0gCfYpt+AbPLJvhY/UDy3x6m0Axl7Mzz8eFeYtl32wSPxxHHPE8Z6+j9BdIDVGNugmN5FjjazZaoZc108EpOOpCojR9Da3eMAfQIP4g/TRFfuuWEavbsR/BUF75WGeXQ1UB4Nx6Z2ZkgeDzCuQ5H0KH2sntvIO49uuTuYhCFnkAU0E/VXFIyM7HmPWhNcSMehj5gY0S0AZd5o6TX/MmOKav5yzY1K9/xMyI3bcHvCLppBDIKgwYvhDDcFVTFyC/m1Yphs3MeZ2rwPKriK+yB7pGCRxeRTgJ/iBy8KhtbSqqeEKJSeRYSy+EOUzEqP02K3ysTxHVl4Mj3LR8DFJJbyPUdDnwUQ7jNMqtRDXnbP4NQsliWgLCs169AFZrMLQWgD1fIcEVmomIl8OIENvuMxyruItKEuyAL2SmA==
+x-microsoft-antispam-message-info: 76qi9tGAyogZmpedhla0ZvzbCa9dwmo30FJp1xsRMcusp0mY5JgqSWrG5VRwc/Iz7kwQQ1+ArmUdHOb/4jd63jjrPs3ShR0PRBiJf0KD2NnImgXphi81Dz8xfhGnGFdua3hgaUBOb4sKDtqSdzJ1BL2dhkHR9yiV9GIeZX1x4/uJ5R9WKcOKYfQR1FCsxzu0Juzp3RfB4jcnjV4BXbuGcBvU5++MklZdZepUA296G/b4gx8R/h2PpYmf4nUR6tiaXU87kHRBlc7/zH5ci9sYAL7nf4/qMVrAJzM1MRK/4BUNwq8a615L8YPfgq/BBEItcUgJqRK/QKPTQlhiPBobepUzRE023QdLEzXGnXMvgXQD8g89psow/ges542igpEVRcaYktiqLsE0/LSv9eOVNzqbdEuWCzp6Mc7wQDtu+LPdrwWhU8cnrrWTEPfjCEsDJGf5UYhkRJfekcnluj7vQGGsBXLSypQGFSRLDpUhq5dJhL50FfuPn2JpHGpABYErAG3ng9XilXqrmFPKc+RQ0xNNSZTCMlk3OxCaKP4iQeV7VdR8rEu9gDgE6jqynNJ+fr9dxudCPom/W85Gsxw3FkAzQMpxQBkfF++rn94hAJ0CPmoj2VZ/onzZeL9crCtcnDvvgqPnJ57pHOlCbo8ksRhkkQgaNv94qGH5uS7ohorhkkL79XwUKKUYD2v1VTkZeIQvSSEshjHd+KzD+wB1bltkUjGXjLjCqVNlcnRQdyItIUgYgsAy9KeeB1N5zVkHvYkzH7a7wmV2997TEKN1hA==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR11MB2983.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(376002)(39860400002)(346002)(396003)(366004)(136003)(316002)(66446008)(64756008)(7696005)(76116006)(478600001)(83380400001)(66946007)(186003)(26005)(86362001)(9686003)(8676002)(71200400001)(53546011)(66556008)(41300700001)(110136005)(82960400001)(45080400002)(66476007)(38070700005)(122000001)(2906002)(6506007)(33656002)(5660300002)(8936002)(52536014)(55016003)(38100700002);
+ SFS:(13230016)(376002)(39860400002)(346002)(396003)(366004)(136003)(316002)(66446008)(64756008)(7696005)(76116006)(4326008)(478600001)(83380400001)(66946007)(186003)(26005)(86362001)(9686003)(8676002)(71200400001)(53546011)(66556008)(41300700001)(110136005)(54906003)(82960400001)(66476007)(38070700005)(122000001)(2906002)(6506007)(33656002)(5660300002)(8936002)(52536014)(55016003)(38100700002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?385Riq7LtaJGM40vTOKnbKMxO/3r9dsfb/mssIMfgeSvPBbJ2YNrphQXvF0D?=
- =?us-ascii?Q?pWgzujmVJe6+VbyDO66klEkEi4/0Gll9NQu5nOq7WRXZnT5Ul9vZ7uTUJ8hG?=
- =?us-ascii?Q?OGC/lbX8XYlD0WnmpFR6TntFJEA6uITvpkGxKrbzAGImLWF924FD49p7VkI0?=
- =?us-ascii?Q?iCBFKeqVx8FBJoOxPrvLK2VHzID7o+D3tjbGcyBFmO5BUwHGEjsx834+83Ln?=
- =?us-ascii?Q?m86x/zcZj1Dh4o+NwkxlRENn3YL0gTaJHh42njalabzfeTFS381c1KMv5Sna?=
- =?us-ascii?Q?sg8kJvvlU7hLl9BbOl9PtVDhju541A9KXBkNYxw3ZoTpDt/zawHLKKqU+KQx?=
- =?us-ascii?Q?/J1U9ItdvztO797GAGWgb28HVsBTqy8QMRsOjk5VuBVyHfdhxX49JghjorE3?=
- =?us-ascii?Q?u95aHFeUcLmwLeKqJVTTb5AMUbozc4dbMXIOL4YjQdS387ec8KeaM9cTxdtJ?=
- =?us-ascii?Q?s10CElnP8rEAmmm+D/k9TbRmdK4uRj7p9zQ6pp2zO7Qb5Jp0dB4r3qSFbxST?=
- =?us-ascii?Q?ifzl+/epgh3FBlTwGeo9AKzLTEB5ld1IVwkoUUNlICbVIUb/HFEgjNpyTbo5?=
- =?us-ascii?Q?SJ+9VywUTJanjUUDZjWuf1VrNZvOjhKHzm8W2uDxgMeguwdrBjnyvyT/maEC?=
- =?us-ascii?Q?nQX//o3lOV9FsUAREIC4tAgu6NfofGPV80U9HZGxn8cPRYrHD2ojk+0DpkpH?=
- =?us-ascii?Q?/xKV/A96TRbV+fqnN7SDVhcdqzJt5CbUe5ekFJNn80H3yTGxodmztWOYAfA8?=
- =?us-ascii?Q?yneWg6amoesIu4XXPySYHgl3S1O/D2HnmZrYTVDrjRRlB+h/FcsIs8NkE/it?=
- =?us-ascii?Q?kv465wjM3s98ATVdj2v87x+/fTp/aQeRrv/CGVzvuSGZYv0Y170z58BipfCb?=
- =?us-ascii?Q?rD8ZyW5VT86GqVXTxosmxrtMuJxOiJGGj6QSvYdhuxd2KmxF8k5xpz/u57i8?=
- =?us-ascii?Q?LnkQjGjoyAGTyF5rBfOIOzyaExAf2LEnSQ8U+/2HITFGQ08xni7HbiH7+ylX?=
- =?us-ascii?Q?OPUfSFprGkJwzDRy7WvpzI5xVmeYLwtckGLNM0O3FZ07wF6202y3l28rJYFm?=
- =?us-ascii?Q?6GExpKBHZmvOxKYdkxt9oujO+XugE1GXkbHpFaykq42qInQ+acrS2QN04SyO?=
- =?us-ascii?Q?tDt0rZ7g2KuWpy1L2pmmMgs3HENZmNco1BPhscP1gD8uG7W07NnW0jarhWyo?=
- =?us-ascii?Q?WvA5clA5NdR73Hzh4AFXpKxQK9q9LmGLYjmelAIhw25M9fY538nAyeAoXPP4?=
- =?us-ascii?Q?yX8BOcXE2DwFEKvBF1fODAXbkZKcmmpWEvNt02L6osy2s68fWrq3rMrxOhgj?=
- =?us-ascii?Q?VzHO4hMXksnUaXykGbgIBceMPP2zAUZsYvBvS13lpVg58WphjozjdVFcSf7o?=
- =?us-ascii?Q?Y8tsaBXHG2gRmQs/5ov6zZ3rQvzd2iSXrAfmd5G7BLOiD/kkIx8d2VTmBDTx?=
- =?us-ascii?Q?goxvIUGJyxP2U8wulyUEHmAUnyG52cI78g880IjNJ3Fa9l3RiYpSUP+gnOmi?=
- =?us-ascii?Q?ypYAdaYckTVy/MI5XxWU10PuEhjMtKlFZUvH11ju65UIGKKBCV46XEzm61tC?=
- =?us-ascii?Q?x3/3aygpIaPWqBhjrMmdhdecZFfKCk700annQPFE?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?YYjCJiesmcyQndhAyK5pH0fuKn+Xmy6npx/pt1kYy6vZSfEV1T41e9i25R1O?=
+ =?us-ascii?Q?WXyCBnFxVgi+Gkcduor6MdcmMavuehilpv7Q1iymigytcNYkztTjSs5uEQ+K?=
+ =?us-ascii?Q?JRNVxI6ic6d0ea1j+75msfplrNL3/C/bZCjpvaxEs/MAhY+UyymMGWlLcF//?=
+ =?us-ascii?Q?NSJ9RNWsbJe2mJVoOGI6Dsu4qhC64db96nx/C4YN57JCI+BMneDU3KHH9vCa?=
+ =?us-ascii?Q?xuGM1T4TARH2bw6eiioPK64KVjkRChLk+u6fLVI87W6tLdGE9rEeL3BLcDqA?=
+ =?us-ascii?Q?mMPYReYgTFLHN/xb0LY8Vs9Lm1131SsPf+aHNeWTR4vvbrnmuHKr3XgBWIrZ?=
+ =?us-ascii?Q?95DsD8jNJK0N61h6z9BB2AS247L4eoeCP7hr3sFgidpJT08FvR6+i7aPyYuK?=
+ =?us-ascii?Q?wUp53tvvLdl9IXNNIAZ6Uj2ZASGuWd++7f2AdZdWHnMGSVsBcAGVRFjx8P1F?=
+ =?us-ascii?Q?1BICMomf6ggl2ADFUCD8junKj1EVA72xLXLFPfbuFjGYTJObEHONJcEAFx0R?=
+ =?us-ascii?Q?ztfTgL6rL+VIpEplfBWI/Hf9QhjEph08vXVnJK1hNBnpfzM24Nl4/ubQk+Il?=
+ =?us-ascii?Q?qWO3kNv8uVapscTgu7zlwmk1t/Dn5UgQ/3353H58ltib8B68m+6aWAqR6UpH?=
+ =?us-ascii?Q?O0X3peew7/5K954WU3Rtaq3E9gguSTyE5dlHse4EYvR63hOFjpBSRYRhtMBe?=
+ =?us-ascii?Q?/yj2cPC74LlCjrtze1Nzu0W6uUWS4w4Tk3kURVv7ig38T4bxI66I5h6yMoqw?=
+ =?us-ascii?Q?41qPboQUtG6sNLhDEL9TsFB4yFYRcHWlm1k+lcZ49FJdNE8BIJzdbjFmu9LA?=
+ =?us-ascii?Q?W1XH0X89crTFSMIXEmsulozyE8JP09Uwijn5+8m/6VZX00zyCh5E1Ly76kmz?=
+ =?us-ascii?Q?ud9W2OIppCA77IrCL6gGwjLVIMCMGSKEwgtAuUdCHIyb0pP7Jz4WYjNno4ar?=
+ =?us-ascii?Q?ez7qQU+Wzu53oveHbLmGGF2z177k1ZwJHQioKVHc3qEz4xmyh9dzN6rrSOeS?=
+ =?us-ascii?Q?/o5WP3yFeRJ6kbnv/SwkpYc4xHyt2DcXSQR7PyfLVktxxfjcZNk4VsL88zLh?=
+ =?us-ascii?Q?jL7GkyzyHHVDBdQ+JCY4o8SBJEha+icbPuoGfFFFTI63Kt4y+hy7Iv7Af7FE?=
+ =?us-ascii?Q?kxXvij+2rvMuJXXeZENb0hsagzimtiPPXvzSIYqSnq+9ARn9tRzzFXvXOc7u?=
+ =?us-ascii?Q?WOLxMx5VsNQRS59U/Gm/PJNaJ7Ns91nrBVzoVFmr7qXTsrpGHGhT72a5nZBS?=
+ =?us-ascii?Q?XFJv2fwuqg1H8XJsqFo0c7vr2HpRzLEAmM9A1cOGfGtmxY4ma3ZCFqAzvX6h?=
+ =?us-ascii?Q?nBxMmCUSjdXGAzgq67fmF+6SY/fryG1zAZB07EH5oTHOPZGn36GVYChUzXqV?=
+ =?us-ascii?Q?gU0jTvSc7AhSubGd7LL2nO4XGhosWjkSaN9Hio04oTQ/bJ+3YryCdDWRNxAV?=
+ =?us-ascii?Q?3LOkv2xoC6aN7vud/QHsXyNqA5x7wwVoXnpGQ1fgNcY2cJMvOQ1gKD2DMEQ6?=
+ =?us-ascii?Q?98J855m16uTPkGrHJzH6aRpX/vlohD7hWlYlXqQ7xM/qpm3i6RxobE+r5Umm?=
+ =?us-ascii?Q?F55Z079AN7KOC7kvD4XHnAmPp8w+VE8oiM9vOqpc?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2983.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d63dc5d-d669-455c-37b4-08da8c000fdd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2022 09:55:12.0234 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: aaa0d7ea-3015-44e8-d6c4-08da8c0049c2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2022 09:56:49.1584 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Lntzc6G5rTm+Gmr+EDRMKxk7fCSPUC1s4Igjer65dloK1vNopkG6jq9VG5M2RNyOr2UYyIG2pt2uDcQGqI0tftANZcEQHhyhIoJTJFFihg0=
+X-MS-Exchange-CrossTenant-userprincipalname: H74aaxBzxzG2+qQBt6csxCeJCgqO1sz2lWikVDe+WTAbJ3Cyj4Vf/j/SXGnkPDY6HC19rWrV2iPWfKyo7y7OmRnJoIqpafzGAHmoNEfDOAA=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3577
 X-OriginatorOrg: intel.com
 X-Mailman-Approved-At: Thu, 01 Sep 2022 14:03:07 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1662026121; x=1693562121;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=IFlTZK+VEhc2yWI/+A6et9yd06PtmC8tXNysQIT1A6M=;
- b=dFJncarN6IFQEmIFoMABOAMJ1DwBH0iM/w7JVP8qxWLHZd6+HBeiSi3L
- Jf6TYByxALqljQ2Wj6DsnQBUVRrKogSM4ouvKxO39L5kV/rLa11/GFi2+
- WFSMoaFd32A3X+VDSbri/rlSd9ZbgISNxmRL7T8KXUWUFexlTUUYRvNqC
- CQtfNjjfDzmwvgpae2YI7F77OHRjcj4rArjhEfvYQmUL9RwFC4v1sNLXu
- 4LK/c2ZVpKczXRhn8b2qUPPR1r6Iw8164zzqa7OzXm3su/DizRoWx6yIX
- ikl6oBmVg4NGsC/oVDgoheKvD1KECbMJKXnrP6ClO/7uGCae/g9cRq4Vd
- g==;
+ t=1662026214; x=1693562214;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=XtU3m3IJSt+naltWxPPMwX1WjN5dYYA9EOvoiHs3m70=;
+ b=iNjdy4OWbxTOVG7ArltR0VfpqCVP+Ito+i1zD9BY4diPPLuACWWrLVgj
+ xpi+1cjm+Z/DyKREGJuOjGO0RowJFXfz/IMj0lufr9r5QW0c0yPq6flS6
+ eQOn0Pyf+Oh518iEl/zMASM481HEr6u4Y4x+6ws7ok7G83Np1/cvVRZgW
+ 85sn9Fm4E9STLKwSny7wFcEvhbx8mX5EelcyfFabtrJJpG/mqIaG0c7EZ
+ mZHV7XE8FgIdICUD3WdXmFaRIrP+JrZbCY7N/1i+FBs+3WQpTtMJzPjG6
+ m99GF2rnAkpwIbIpoukbCYShu8gqQq77S4n47Nq6Pcn+UF6XSOh+D5gAw
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dFJncarN
+ header.a=rsa-sha256 header.s=Intel header.b=iNjdy4OW
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux
- on peer initiated reset
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Fix kernel crash during
+ module removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -191,6 +191,13 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Eric Dumazet <edumazet@google.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "Williams, Mitch A" <mitch.a.williams@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, "Piotrowski,
+ Patryk" <patryk.piotrowski@intel.com>, Jeff
+ Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -198,148 +205,88 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 > -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Ertman, David M
-> Sent: wtorek, 9 sierpnia 2022 19:24
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux on
-> peer initiated reset
+> From: ivecera <ivecera@redhat.com>
+> Sent: wtorek, 16 sierpnia 2022 18:23
+> To: netdev@vger.kernel.org
+> Cc: Piotrowski, Patryk <patryk.piotrowski@intel.com>; Brandeburg, Jesse
+> <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
+> Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
+> Paolo Abeni <pabeni@redhat.com>; Williams, Mitch A
+> <mitch.a.williams@intel.com>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>;
+> Keller, Jacob E <jacob.e.keller@intel.com>; moderated list:INTEL ETHERNET
+> DRIVERS <intel-wired-lan@lists.osuosl.org>; open list <linux-
+> kernel@vger.kernel.org>
+> Subject: [PATCH net] i40e: Fix kernel crash during module removal
 > 
-> In the IDC callback that is accessed when the aux drivers request a reset, the
-> function to unplug the aux devices is called.  This function is also called in the
-> ice_prepare_for_reset function. This double call is causing a "scheduling
-> while atomic" BUG.
+> The driver incorrectly frees client instance and subsequent i40e module
+> removal leads to kernel crash.
 > 
-> [  662.676430] ice 0000:4c:00.0 rocep76s0: cqp opcode = 0x1 maj_err_code =
-> 0xffff min_err_code = 0x8003
+> Reproducer:
+> 1. Do ethtool offline test followed immediately by another one host# ethtool
+> -t eth0 offline; ethtool -t eth0 offline 2. Remove recursively irdma module
+> that also removes i40e module host# modprobe -r irdma
 > 
-> [  662.676609] ice 0000:4c:00.0 rocep76s0: [Modify QP Cmd Error][op_code=8]
-> status=-29 waiting=1 completion_err=1 maj=0xffff min=0x8003
+> Result:
+> [ 8675.035651] i40e 0000:3d:00.0 eno1: offline testing starting [ 8675.193774]
+> i40e 0000:3d:00.0 eno1: testing finished [ 8675.201316] i40e 0000:3d:00.0
+> eno1: offline testing starting [ 8675.358921] i40e 0000:3d:00.0 eno1: testing
+> finished [ 8675.496921] i40e 0000:3d:00.0: IRDMA hardware initialization
+> FAILED init_state=2 status=-110 [ 8686.188955] i40e 0000:3d:00.1:
+> i40e_ptp_stop: removed PHC on eno2 [ 8686.943890] i40e 0000:3d:00.1:
+> Deleted LAN device PF1 bus=0x3d dev=0x00 func=0x01 [ 8686.952669] i40e
+> 0000:3d:00.0: i40e_ptp_stop: removed PHC on eno1 [ 8687.761787] BUG:
+> kernel NULL pointer dereference, address: 0000000000000030 [ 8687.768755]
+> #PF: supervisor read access in kernel mode [ 8687.773895] #PF:
+> error_code(0x0000) - not-present page [ 8687.779034] PGD 0 P4D 0 [
+> 8687.781575] Oops: 0000 [#1] PREEMPT SMP NOPTI
+> [ 8687.785935] CPU: 51 PID: 172891 Comm: rmmod Kdump: loaded Tainted: G
+> W I        5.19.0+ #2
+> [ 8687.794800] Hardware name: Intel Corporation S2600WFD/S2600WFD,
+> BIOS SE5C620.86B.0X.02.0001.051420190324 05/14/2019 [ 8687.805222] RIP:
+> 0010:i40e_lan_del_device+0x13/0xb0 [i40e] [ 8687.810719] Code: d4 84 c0 0f
+> 84 b8 25 01 00 e9 9c 25 01 00 41 bc f4 ff ff ff eb 91 90 0f 1f 44 00 00 41 54 55 53
+> 48 8b 87 58 08 00 00 48 89 fb <48> 8b 68 30 48 89 ef e8 21 8a 0f d5 48 89 ef e8
+> a9 78 0f d5 48 8b [ 8687.829462] RSP: 0018:ffffa604072efce0 EFLAGS: 00010202
+> [ 8687.834689] RAX: 0000000000000000 RBX: ffff8f43833b2000 RCX:
+> 0000000000000000 [ 8687.841821] RDX: 0000000000000000 RSI:
+> ffff8f4b0545b298 RDI: ffff8f43833b2000 [ 8687.848955] RBP: ffff8f43833b2000
+> R08: 0000000000000001 R09: 0000000000000000 [ 8687.856086] R10:
+> 0000000000000000 R11: 000ffffffffff000 R12: ffff8f43833b2ef0 [ 8687.863218]
+> R13: ffff8f43833b2ef0 R14: ffff915103966000 R15: ffff8f43833b2008 [
+> 8687.870342] FS:  00007f79501c3740(0000) GS:ffff8f4adffc0000(0000)
+> knlGS:0000000000000000 [ 8687.878427] CS:  0010 DS: 0000 ES: 0000 CR0:
+> 0000000080050033 [ 8687.884174] CR2: 0000000000000030 CR3:
+> 000000014276e004 CR4: 00000000007706e0 [ 8687.891306] DR0:
+> 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 [
+> 8687.898441] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7:
+> 0000000000000400 [ 8687.905572] PKRU: 55555554 [ 8687.908286] Call Trace:
+> [ 8687.910737]  <TASK>
+> [ 8687.912843]  i40e_remove+0x2c0/0x330 [i40e] [ 8687.917040]
+> pci_device_remove+0x33/0xa0 [ 8687.920962]
+> device_release_driver_internal+0x1aa/0x230
+> [ 8687.926188]  driver_detach+0x44/0x90
+> [ 8687.929770]  bus_remove_driver+0x55/0xe0 [ 8687.933693]
+> pci_unregister_driver+0x2a/0xb0 [ 8687.937967]
+> i40e_exit_module+0xc/0xf48 [i40e]
 > 
-> [  662.815006] ice 0000:4c:00.0 rocep76s0: ICE OICR event notification: oicr =
-> 0x10000003
+> Two offline tests cause IRDMA driver failure (ETIMEDOUT) and this failure is
+> indicated back to i40e_client_subtask() that calls
+> i40e_client_del_instance() to free client instance referenced by pf->cinst and
+> sets this pointer to NULL. During the module removal i40e_remove() calls
+> i40e_lan_del_device() that dereferences
+> pf->cinst that is NULL -> crash.
+> Do not remove client instance when client open callbacks fails and just clear
+> __I40E_CLIENT_INSTANCE_OPENED bit. The driver also needs to take care
+> about this situation (when netdev is up and client is NOT opened) in
+> i40e_notify_client_of_netdev_close() and calls client close callback only
+> when __I40E_CLIENT_INSTANCE_OPENED is set.
 > 
-> [  662.815014] ice 0000:4c:00.0 rocep76s0: critical PE Error,
-> GLPE_CRITERR=0x00011424
-> 
-> [  662.815017] ice 0000:4c:00.0 rocep76s0: Requesting a reset
-> 
-> [  662.815475] BUG: scheduling while atomic: swapper/37/0/0x00010002
-> 
-> [  662.815475] BUG: scheduling while atomic: swapper/37/0/0x00010002 [
-> 662.815477] Modules linked in: rpcsec_gss_krb5 auth_rpcgss nfsv4
-> dns_resolver nfs lockd grace fscache netfs rfkill 8021q garp mrp stp llc vfat fat
-> rpcrdma intel_rapl_msr intel_rapl_common sunrpc i10nm_edac rdma_ucm
-> nfit ib_srpt libnvdimm ib_isert iscsi_target_mod x86_pkg_temp_thermal
-> intel_powerclamp coretemp target_core_mod snd_hda_intel ib_iser
-> snd_intel_dspcfg libiscsi snd_intel_sdw_acpi scsi_transport_iscsi kvm_intel
-> iTCO_wdt rdma_cm snd_hda_codec kvm iw_cm ipmi_ssif
-> iTCO_vendor_support snd_hda_core irqbypass crct10dif_pclmul
-> crc32_pclmul ghash_clmulni_intel snd_hwdep snd_seq snd_seq_device rapl
-> snd_pcm snd_timer isst_if_mbox_pci pcspkr isst_if_mmio irdma
-> intel_uncore idxd acpi_ipmi joydev isst_if_common snd mei_me idxd_bus
-> ipmi_si soundcore i2c_i801 mei ipmi_devintf i2c_smbus i2c_ismt
-> ipmi_msghandler acpi_power_meter acpi_pad rv(OE) ib_uverbs ib_cm
-> ib_core xfs libcrc32c ast i2c_algo_bit drm_vram_helper drm_kms_helper
-> syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helpe  r ttm [
-> 662.815546]  nvme nvme_core ice drm crc32c_intel i40e t10_pi wmi
-> pinctrl_emmitsburg dm_mirror dm_region_hash dm_log dm_mod fuse [
-> 662.815557] Preemption disabled at:
-> [  662.815558] [<0000000000000000>] 0x0
-> [  662.815563] CPU: 37 PID: 0 Comm: swapper/37 Kdump: loaded Tainted: G S
-> OE     5.17.1 #2
-> [  662.815566] Hardware name: Intel Corporation D50DNP/D50DNP, BIOS
-> SE5C6301.86B.6624.D18.2111021741 11/02/2021 [  662.815568] Call Trace:
-> [  662.815572]  <IRQ>
-> [  662.815574]  dump_stack_lvl+0x33/0x42 [  662.815581]
-> __schedule_bug.cold.147+0x7d/0x8a [  662.815588]
-> __schedule+0x798/0x990 [  662.815595]  schedule+0x44/0xc0 [  662.815597]
-> schedule_preempt_disabled+0x14/0x20
-> [  662.815600]  __mutex_lock.isra.11+0x46c/0x490 [  662.815603]  ?
-> __ibdev_printk+0x76/0xc0 [ib_core] [  662.815633]  device_del+0x37/0x3d0 [
-> 662.815639]  ice_unplug_aux_dev+0x1a/0x40 [ice] [  662.815674]
-> ice_schedule_reset+0x3c/0xd0 [ice] [  662.815693]
-> irdma_iidc_event_handler.cold.7+0xb6/0xd3 [irdma] [  662.815712]  ?
-> bitmap_find_next_zero_area_off+0x45/0xa0
-> [  662.815719]  ice_send_event_to_aux+0x54/0x70 [ice] [  662.815741]
-> ice_misc_intr+0x21d/0x2d0 [ice] [  662.815756]
-> __handle_irq_event_percpu+0x4c/0x180
-> [  662.815762]  handle_irq_event_percpu+0xf/0x40 [  662.815764]
-> handle_irq_event+0x34/0x60 [  662.815766]  handle_edge_irq+0x9a/0x1c0 [
-> 662.815770]  __common_interrupt+0x62/0x100 [  662.815774]
-> common_interrupt+0xb4/0xd0 [  662.815779]  </IRQ> [  662.815780]  <TASK>
-> [  662.815780]  asm_common_interrupt+0x1e/0x40 [  662.815785] RIP:
-> 0010:cpuidle_enter_state+0xd6/0x380
-> [  662.815789] Code: 49 89 c4 0f 1f 44 00 00 31 ff e8 65 d7 95 ff 45 84 ff 74 12 9c
-> 58 f6 c4 02 0f 85 64 02 00 00 31 ff e8 ae c5 9c ff fb 45 85 f6 <0f> 88 12 01 00 00
-> 49 63 d6 4c 2b 24 24 48 8d 04 52 48 8d 04 82 49 [  662.815791] RSP:
-> 0018:ff2c2c4f18edbe80 EFLAGS: 00000202 [  662.815793] RAX:
-> ff280805df140000 RBX: 0000000000000002 RCX: 000000000000001f [
-> 662.815795] RDX: 0000009a52da2d08 RSI: ffffffff93f8240b RDI:
-> ffffffff93f53ee7 [  662.815796] RBP: ff5e2bd11ff41928 R08: 0000000000000000
-> R09: 000000000002f8c0 [  662.815797] R10: 0000010c3f18e2cf R11:
-> 000000000000000f R12: 0000009a52da2d08 [  662.815798] R13:
-> ffffffff94ad7e20 R14: 0000000000000002 R15: 0000000000000000 [
-> 662.815801]  cpuidle_enter+0x29/0x40 [  662.815803]  do_idle+0x261/0x2b0 [
-> 662.815807]  cpu_startup_entry+0x19/0x20 [  662.815809]
-> start_secondary+0x114/0x150 [  662.815813]
-> secondary_startup_64_no_verify+0xd5/0xdb
-> [  662.815818]  </TASK>
-> [  662.815846] bad: scheduling from the idle thread!
-> [  662.815849] CPU: 37 PID: 0 Comm: swapper/37 Kdump: loaded Tainted: G S
-> W  OE     5.17.1 #2
-> [  662.815852] Hardware name: Intel Corporation D50DNP/D50DNP, BIOS
-> SE5C6301.86B.6624.D18.2111021741 11/02/2021 [  662.815853] Call Trace:
-> [  662.815855]  <IRQ>
-> [  662.815856]  dump_stack_lvl+0x33/0x42 [  662.815860]
-> dequeue_task_idle+0x20/0x30 [  662.815863]  __schedule+0x1c3/0x990 [
-> 662.815868]  schedule+0x44/0xc0 [  662.815871]
-> schedule_preempt_disabled+0x14/0x20
-> [  662.815873]  __mutex_lock.isra.11+0x3a8/0x490 [  662.815876]  ?
-> __ibdev_printk+0x76/0xc0 [ib_core] [  662.815904]  device_del+0x37/0x3d0 [
-> 662.815909]  ice_unplug_aux_dev+0x1a/0x40 [ice] [  662.815937]
-> ice_schedule_reset+0x3c/0xd0 [ice] [  662.815961]
-> irdma_iidc_event_handler.cold.7+0xb6/0xd3 [irdma] [  662.815979]  ?
-> bitmap_find_next_zero_area_off+0x45/0xa0
-> [  662.815985]  ice_send_event_to_aux+0x54/0x70 [ice] [  662.816011]
-> ice_misc_intr+0x21d/0x2d0 [ice] [  662.816033]
-> __handle_irq_event_percpu+0x4c/0x180
-> [  662.816037]  handle_irq_event_percpu+0xf/0x40 [  662.816039]
-> handle_irq_event+0x34/0x60 [  662.816042]  handle_edge_irq+0x9a/0x1c0 [
-> 662.816045]  __common_interrupt+0x62/0x100 [  662.816048]
-> common_interrupt+0xb4/0xd0 [  662.816052]  </IRQ> [  662.816053]  <TASK>
-> [  662.816054]  asm_common_interrupt+0x1e/0x40 [  662.816057] RIP:
-> 0010:cpuidle_enter_state+0xd6/0x380
-> [  662.816060] Code: 49 89 c4 0f 1f 44 00 00 31 ff e8 65 d7 95 ff 45 84 ff 74 12 9c
-> 58 f6 c4 02 0f 85 64 02 00 00 31 ff e8 ae c5 9c ff fb 45 85 f6 <0f> 88 12 01 00 00
-> 49 63 d6 4c 2b 24 24 48 8d 04 52 48 8d 04 82 49 [  662.816063] RSP:
-> 0018:ff2c2c4f18edbe80 EFLAGS: 00000202 [  662.816065] RAX:
-> ff280805df140000 RBX: 0000000000000002 RCX: 000000000000001f [
-> 662.816067] RDX: 0000009a52da2d08 RSI: ffffffff93f8240b RDI:
-> ffffffff93f53ee7 [  662.816068] RBP: ff5e2bd11ff41928 R08: 0000000000000000
-> R09: 000000000002f8c0 [  662.816070] R10: 0000010c3f18e2cf R11:
-> 000000000000000f R12: 0000009a52da2d08 [  662.816071] R13:
-> ffffffff94ad7e20 R14: 0000000000000002 R15: 0000000000000000 [
-> 662.816075]  cpuidle_enter+0x29/0x40 [  662.816077]  do_idle+0x261/0x2b0 [
-> 662.816080]  cpu_startup_entry+0x19/0x20 [  662.816083]
-> start_secondary+0x114/0x150 [  662.816087]
-> secondary_startup_64_no_verify+0xd5/0xdb
-> [  662.816091]  </TASK>
-> [  662.816169] bad: scheduling from the idle thread!
-> 
-> The correct place to unplug the aux devices for a reset is in the
-> prepare_for_reset function, as this is a common place for all reset flows.
-> It also has built in protection from being called twice in a single reset instance
-> before the aux devices are replugged.
-> 
-> Fixes: f9f5301e7e2d4 ("ice: Register auxiliary device to provide RDMA")
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Fixes: 0ef2d5afb12d ("i40e: KISS the client interface")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 > ---
-> v2 - changed commit message to include BUG message and remove extra
-> space
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 2 --
->  1 file changed, 2 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_client.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 > 
 
 Tested-by: Helena Anna Dubel <helena.anna.dubel@intel.com>
