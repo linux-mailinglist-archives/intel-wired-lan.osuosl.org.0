@@ -1,181 +1,184 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ACF35A9787
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Sep 2022 14:58:31 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 146845A99A0
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Sep 2022 16:03:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E9BA161167;
-	Thu,  1 Sep 2022 12:58:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E9BA161167
+	by smtp1.osuosl.org (Postfix) with ESMTP id 140F38137F;
+	Thu,  1 Sep 2022 14:03:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 140F38137F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1662037110;
-	bh=B4h8scJSIEQ8/IU3PCNzl56Jir1McMq504Aoy/RZJ+A=;
+	s=default; t=1662040994;
+	bh=d4NLzEa72XqpYntdH9Cv7F6plHYKtlftSQ7FNQsig4k=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Yx8SBT30HO1uN46IRZq7p1cTr0rwAv2IQdRSu9MxW8oRujM9sST085Au+6XaEbCLS
-	 BBPAi70nsSvu/HvLdRTzaXIkNK0OPlgg5OsZgN+t5r7pVSljV/YoV6tDjgdslxiPXa
-	 VuyJvo13w63GDjxHn6ubc5xLDP0BVQi7qsAE2Yn/94kV2HjE9nrz5wHSuXiBvzvhSk
-	 gw5RKeQqqDTMRW6OArp3ea822Ae4x8HMXrq1/kgFSpTR6LxafDGUVoHk2M7mcBdn0P
-	 ix32jrFPspDeHOR5Io6p34W3VWHcBCxpc6y/BrGwSSEvs9gwsh36xbGdJJYMWEO/2x
-	 +33nPb9slVkOQ==
+	 From;
+	b=ncat8TowNO/bl90DYGyVw/Dg3T1rkhnvn/MBaA7B1UrNZL3+970MQXHTC6SDjHbs1
+	 g9UyhK8r6R3fTkCYuUY0zgEmqUbWMtyL7JJLUT+h3URbuMIlp6Pde0z6fXsVHCtD7k
+	 i8vqEGhmeJBC+RKoUqOPP0B4V61+/r+w9+Z4OlWjJL7kjnRLTJ22dIdKj4541/V6vR
+	 705mV7X0CxyanrfGFO5jqJDCpaXJejUZlpnqSQTfAhxdk4OzfVZIesSBdYjaE5z8dU
+	 bcM+RJa9Eomtlt2bPGyb62BE08pa2lCm2jXdAmyOT0gcvTybVBcZkAxtp4Q7h1MaKo
+	 WRpQgfDuULbjQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QjZYb2_sZUw8; Thu,  1 Sep 2022 12:58:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 758orw0rknHW; Thu,  1 Sep 2022 14:03:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C221560A8D;
-	Thu,  1 Sep 2022 12:58:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C221560A8D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 37BDF81097;
+	Thu,  1 Sep 2022 14:03:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37BDF81097
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 72D661BF356
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 12:58:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 55F721BF301
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 59057607CA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 12:58:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59057607CA
+ by smtp4.osuosl.org (Postfix) with ESMTP id 36D0B41916
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 36D0B41916
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w8n-gPj341gG for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Sep 2022 12:58:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l-TJZhCv-uoc for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Sep 2022 09:55:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4520D60A8D
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4520D60A8D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 12:58:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10457"; a="282684707"
-X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="282684707"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Sep 2022 05:58:22 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52A46418FE
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 52A46418FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Sep 2022 09:55:21 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10456"; a="295679916"
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="295679916"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Sep 2022 02:55:15 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="589488919"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga006.jf.intel.com with ESMTP; 01 Sep 2022 05:58:22 -0700
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.93,280,1654585200"; d="scan'208";a="716046857"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmsmga002.fm.intel.com with ESMTP; 01 Sep 2022 02:55:15 -0700
+Received: from orsmsx608.amr.corp.intel.com (10.22.229.21) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 1 Sep 2022 05:58:22 -0700
+ 15.1.2375.31; Thu, 1 Sep 2022 02:55:15 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX608.amr.corp.intel.com (10.22.229.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 1 Sep 2022 02:55:14 -0700
 Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
  orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Thu, 1 Sep 2022 05:58:22 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
+ 15.1.2375.31 via Frontend Transport; Thu, 1 Sep 2022 02:55:14 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.106)
  by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Thu, 1 Sep 2022 05:58:21 -0700
+ 15.1.2375.31; Thu, 1 Sep 2022 02:55:14 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MShuQXa8ft7gB//oU2yS8lgAjYa1kCwbrTGsRxg6fy1hej/rwcIk7jjydKFjnf1PXfE2FW0rgnwR+R3RY5VjYoy116zS/7opJEYZzj7C3cU5vANZ1tzG1paUFO2ovKa/b4VtFdocV403PISbH6wb/l6SMfi2xceKFuS/96QZz/3Sh+eGNKCKorQbBLQIxzd6wtz4jcK9tEb9qBNTDyoTeH6lzYrG4ss3HZEEGiaM0JpQd+ZdACoXx+HLeSRQKfO3uZZykFsH2K//4YSPdzTpM+NWcXh46/tJLL/j1vYScLxHJmAjTyEzeYLD1txJ7Y8ilpEV3nn/WREPgEdd3okm9Q==
+ b=ZA0L11MxefnquFchI3Uzy/3ybtxtUkoSFY/OG8kfv/gDQOWPhorqaW41GjPYUZREtKzIED6o/hA9TrVK+pI/rvDlFPgWhwCNRgtuI0c63+WRPs5c6Hh9HBcSXk4ICErAT7FjXd2ANJ99OS7zo74SiycuRQY4xFDDLV2aLElk7Qq9ViTG+P4G15mv0MeGURu60quR6bToN4OaD+qvZtfwW0qqQp8KEjQV7yqba+pGMnlFHE2khmh4mqNpPT0q8UVRaYT0xEvDj3IY/G7rw1KSDPXnW8xwsYDubhFfnJR38Pkk4/UsIiGO6vn99kdHRf1GfWkiZkQkyMkUUmBZtUMYSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HFuj2VcXesE/8xmMlO+9uOvOmzEKoayzrWu1AmGT6Rg=;
- b=VYpzmOhOD6JdC19/f7GFnwhjZkKI+m1YrVc3hR3uhmE3wDwvMQ1qvE3EwKV9nmYABG/lnC/9RFXcKFHmEJpWtezC4zWxxfCfidtM9oXQeEAdCF6jDekyu0Dov+TLvruaKearguMKwIJGc+XAhAmS21ZzXtYzj1dGp+xOkwChC3ROyGZ+Jon93Wo2cUDiOwFzAUU8PRjxT5VtDf30/MMepFia0wyWXvk0aFxfrlRhjIbKX69DMq3V7NPuHrOguHmVOSheTCPbK2e0V2w7BgrIRpk7I9TAHwKL6pkzeoH2yvsIbDDyTzapireSZxeKaEw9+rkxECN9HCZ+yie8RCIzhA==
+ bh=dRdgNwA2HGVViB6KxiNWiEiAPyK/UtyCph3L6SRC8Ys=;
+ b=C0H8Yw7zRfr5c27vBpitTrbdVb4BHDfK/Vam8pDAdeQHp0U873/ql2VbT6BbmNlWXsbWLCLSh9xDLswB9riqcfNa1r4pDVoxjybFjYECPGnmb8/lzGiftaxs1UzNH1JYexGaYNyAqJEPU8PSgh9C+q1ANCL+7AOu5gUVIsnAg06ba1yNGepFiaWCnL9k6YN8a/QiKnDR1+A2hN8ZgdTYu6tS1MwLP8SqG9pnts8Pexmz4iJtiQaV1jhHmiCWMwH9iOnG5BWOy6ksyP6ZtGGQTqT+ALmLVirqKlXtYN+PoGsoTtsBgh4/05c+ZTnLXDMXmdw2i8r8WccSbgbCbiLwag==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by MN2PR11MB4174.namprd11.prod.outlook.com (2603:10b6:208:154::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.10; Thu, 1 Sep
- 2022 12:58:19 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::545c:d283:fbee:973b]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::545c:d283:fbee:973b%6]) with mapi id 15.20.5566.015; Thu, 1 Sep 2022
- 12:58:19 +0000
-From: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-To: Guillaume Nault <gnault@redhat.com>
-Thread-Topic: [RFC PATCH net-next v3 2/5] flow_dissector: Add L2TPv3 dissectors
-Thread-Index: AQHYvf9joIHu5V/zpUWj3dYTAgm0pq3KiCbg
-Date: Thu, 1 Sep 2022 12:58:19 +0000
-Message-ID: <MW4PR11MB5776B6030D3EB7ADBB1D9612FD7B9@MW4PR11MB5776.namprd11.prod.outlook.com>
-References: <20220901120131.1373568-1-wojciech.drewek@intel.com>
- <20220901120131.1373568-3-wojciech.drewek@intel.com>
- <20220901123527.GA3398@debian.home>
-In-Reply-To: <20220901123527.GA3398@debian.home>
-Accept-Language: pl-PL, en-US
+Received: from BYAPR11MB2983.namprd11.prod.outlook.com (2603:10b6:a03:88::22)
+ by DM6PR11MB3577.namprd11.prod.outlook.com (2603:10b6:5:137::31) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5566.15; Thu, 1 Sep
+ 2022 09:55:12 +0000
+Received: from BYAPR11MB2983.namprd11.prod.outlook.com
+ ([fe80::e8f8:5cab:24b3:1c8]) by BYAPR11MB2983.namprd11.prod.outlook.com
+ ([fe80::e8f8:5cab:24b3:1c8%4]) with mapi id 15.20.5588.010; Thu, 1 Sep 2022
+ 09:55:12 +0000
+From: "Dubel, Helena Anna" <helena.anna.dubel@intel.com>
+To: "Ertman, David M" <david.m.ertman@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux on
+ peer initiated reset
+Thread-Index: AQHYrBTz/Nvhb3eAd0etDpH8ELjeDq3Kd8vg
+Date: Thu, 1 Sep 2022 09:55:12 +0000
+Message-ID: <BYAPR11MB2983DC4EFE6CEC213FF41F0BBE7B9@BYAPR11MB2983.namprd11.prod.outlook.com>
+References: <20220809172423.1967513-1-david.m.ertman@intel.com>
+In-Reply-To: <20220809172423.1967513-1-david.m.ertman@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-dlp-version: 11.6.500.17
 dlp-product: dlpe-windows
+dlp-version: 11.6.500.17
 dlp-reaction: no-action
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 583d8eea-77b7-4bd4-1a48-08da8c19a4de
-x-ms-traffictypediagnostic: MN2PR11MB4174:EE_
+x-ms-office365-filtering-correlation-id: 5d63dc5d-d669-455c-37b4-08da8c000fdd
+x-ms-traffictypediagnostic: DM6PR11MB3577:EE_
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MPZFZUOrc/p9c5DN/AiOEDL7voLLcMtqHT9uNYacedWvtAlEUG9cbVDtXLVvnD66MPYb9sHyhzbMEnwVIc/dq2+mQNhbANuHYt+7Xze9ArFCKvj+2aOht0FPTP4kK41TQNVpWkaCt3obBl4ouCT+5xTOq3Ak6GJ4FOofO3qvqCeWyCZxSG+8WbhVvQF1HhysaOgVgdBGZ+N/A/LsLQ2bQJJICjEPQZgHYb2/RUxzoWSvQKpnGTUCTI0pYlhwn9RfiKDQgTrBC+4z0wwQ3WwMF8QWKTkbvmVeD8wqR+CfD0RFIvrF5YybAUCkAktQi1nZCUdeVkWsPAxvGQ/dcWbMoaj4mo0DcGydvEmVNOVNjHHnv5e34WXbVqFVm+Sksu7ywEIse+EC+W8GjosfkGL7LTDa2AEYvhyjjV1JFC4yGT/d2L3q8FO9f597fNfsI8bobX1i8BH+fyX2sJxH6L+1gyWXTre76Ia8t1uZcCcVD1KzAnp97mrrSHQvWPM7h90C+7s/H9CdwwGHX04chfAO5iK/fDbwxqopPhfaWdwxe7FAd1r4xlOvYKjKRjGJDw2gNH41Sanc5O8xtPHHESxvZfD6iyHzJyFC9UuSr1Jg2m7QDexlxzih0koUNVU1agxoTpdZ7d/jToeapwsjHGCEuRU3YwFQxc8GtM0M4d2bKDpeMmGfCiKv6sfcY7sTPMBkq9iFiaWhR6/PqE47CconHjJL/tQk0jvcpn2IkjiVhhX1d8i++iy3hZSr2o2suum2AYLAS/vX0lr6SIu8oq4cuQ==
+x-microsoft-antispam-message-info: qOsntrg8u6WDJSgHOxIroBTUOaxcMYCVsxsYvgcspaoicn58htq50+yQoYvpom3qX0AzKpo0A6vzMmAPpMke2CaCZiT0HrTOSwr46nxfKk9Yjko4vlYsfqAyLn2T3Ak3IuSP8jcPWcuwaAzc9OTe2YwXvt0nbF+RX2Tyijq40SEBz3c9YEPMOkQY+2puDlUjnd+GIFVkqmmoa96o2WR8lttzvGeGbFBPZEgCljdIMjnDC7okBAld9+XlHXqOK3qS49TNqHt+j1i+bCfGFRe+LTZocHfCAX+V31WIHoOiepIdfLIPWFQGO7EB4GEjUINObODsywGYHqCgVCeC6qrBA6Lxa2BPEctNqGBSumgbsqU3SrILjD0gCfYpt+AbPLJvhY/UDy3x6m0Axl7Mzz8eFeYtl32wSPxxHHPE8Z6+j9BdIDVGNugmN5FjjazZaoZc108EpOOpCojR9Da3eMAfQIP4g/TRFfuuWEavbsR/BUF75WGeXQ1UB4Nx6Z2ZkgeDzCuQ5H0KH2sntvIO49uuTuYhCFnkAU0E/VXFIyM7HmPWhNcSMehj5gY0S0AZd5o6TX/MmOKav5yzY1K9/xMyI3bcHvCLppBDIKgwYvhDDcFVTFyC/m1Yphs3MeZ2rwPKriK+yB7pGCRxeRTgJ/iBy8KhtbSqqeEKJSeRYSy+EOUzEqP02K3ysTxHVl4Mj3LR8DFJJbyPUdDnwUQ7jNMqtRDXnbP4NQsliWgLCs169AFZrMLQWgD1fIcEVmomIl8OIENvuMxyruItKEuyAL2SmA==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230016)(366004)(396003)(376002)(346002)(39860400002)(136003)(26005)(2906002)(6506007)(38100700002)(83380400001)(55016003)(6916009)(316002)(9686003)(33656002)(7696005)(71200400001)(8936002)(186003)(7416002)(52536014)(41300700001)(53546011)(86362001)(5660300002)(478600001)(122000001)(38070700005)(54906003)(4326008)(8676002)(82960400001)(64756008)(66556008)(76116006)(66946007)(66446008)(66476007);
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB2983.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230016)(376002)(39860400002)(346002)(396003)(366004)(136003)(316002)(66446008)(64756008)(7696005)(76116006)(478600001)(83380400001)(66946007)(186003)(26005)(86362001)(9686003)(8676002)(71200400001)(53546011)(66556008)(41300700001)(110136005)(82960400001)(45080400002)(66476007)(38070700005)(122000001)(2906002)(6506007)(33656002)(5660300002)(8936002)(52536014)(55016003)(38100700002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?Ej5ZWU9PdROKRzsOUUFxsW1AOx8Mmzinnk2RZ6ztNVNMkp9JPmtBaIcE5e?=
- =?iso-8859-2?Q?6lO1o7q4emgbP5T4RZIbGL6zX9YUzRAp5Y9UoC+YjxoONqaU3HGvDseUe3?=
- =?iso-8859-2?Q?DpfuaNycFcoKefL8EG7eVbep5HXoklDtV39u/J8Q7lrlQeGtc4eDD9H8hI?=
- =?iso-8859-2?Q?6X1FoSPjualMud1xsE4i8UsUbvcR16dS/1hs8vuUc1296lNFTQFY/BZlcF?=
- =?iso-8859-2?Q?433PQanEV4GYB1MIJXK6QCwAtPDocJqMlLKI5c9nftyQ/ukp5qhqPCMlYo?=
- =?iso-8859-2?Q?XyzrH6v/Y39tM66M05zALX5V484+/x0DQnbKbE2NvymH1KoaTFLS1G3nZh?=
- =?iso-8859-2?Q?4vJ5yngz2pJdJBgHJ1/OtReu6wP1rfywZbz9Sk/UZlDoYyoGllStkJfzgd?=
- =?iso-8859-2?Q?Bs+EYQPeqdOKkdGKByxw9qPFVQvU1hP/e1gEsc9Zcac+dJ5prlHXeDwyu/?=
- =?iso-8859-2?Q?chExMC8/Dnj5iPpX8GAyKcOkHHNLUHmi9rimptmLrezB4QwHFu4YyMc9a6?=
- =?iso-8859-2?Q?QnAC/GrQVmBfPMgxdx5mETw/4tVwYqXMOhhAznLiJR/47YVeDjZKtW+8w5?=
- =?iso-8859-2?Q?EcA4zoWMSwrQF6XghEUsyD1E8VrxjDCk5djFV82pHyZ5HVCKGRuxtzEhPX?=
- =?iso-8859-2?Q?ohORl+OXRBemx8MMsIa7xUf10XHkAyFvvzcDkq68vhx+/gEjtHo81BcLwH?=
- =?iso-8859-2?Q?+NnRWh9Za9khu+b4LSvgl5FC3+nz2PY/+rGD9S35Dt7GIX8ByUjXqarihX?=
- =?iso-8859-2?Q?zl/zfnOB5P1fH45UVkE0iS0kvqHJDwuGwQVabb36rQno6c8K1yQlnD0Nfy?=
- =?iso-8859-2?Q?qJZsGzDBpOesjnwDkw1ViHHvNM0mO70CHrFzlGfi2/liVaZefptMMxT/Qo?=
- =?iso-8859-2?Q?hmvKxwSi/H7Pp0jxPwcNpX7GEJy1p8Fb3BPh+cJeflvSN4+F991IiWe7gX?=
- =?iso-8859-2?Q?vUNDiHOhC+VwsDMZjl2rKFkgPEjab1iPyJd9WP7htOciVTfQYD4zAnXw7k?=
- =?iso-8859-2?Q?2/uFSARI99UjAflxYhW2Vxo2L/+0MynCeR+6VSXWdSaohNX5uGYKne44mC?=
- =?iso-8859-2?Q?W/1CzKlGruQXW+2FlifauDuQpa+p0PXB7LdHb7eLgTfD2RJiKmlMvQyYzd?=
- =?iso-8859-2?Q?uw33MXwcGyNHgFfHtKwHvNgRwGLRFeGzpQP5g4E8SN8e194b+3lP4+i2em?=
- =?iso-8859-2?Q?ecKZBVgzJRMcNm4bzO6/oCW0eEE7ofOY4EshZSlXWKIoJKwtc4DYpcWH9v?=
- =?iso-8859-2?Q?+HNJ3j7BUnLqTyx3y84QkcdhfYs/3kYNIs/wQWrDjcHSRFPNoYbdPr9iZs?=
- =?iso-8859-2?Q?XHwiPQFr07vVeyY4rAZAY64JRZc1IbmtZrIj80ycQUNammGcceqc7EHiTR?=
- =?iso-8859-2?Q?QLBeVZW1wPQKp2zQGD4s6WqSNOaYj3peY2av+Xslt+mrM+ZedLL84pF8Lm?=
- =?iso-8859-2?Q?wFdJr/Pmhy0YmpaRyt4lfg2e/iF/DiBpgO5Gi/IsZivP6RCgmdH/97loZR?=
- =?iso-8859-2?Q?P0iHes23fOk+SPeBCAKXEtIBA1Yb5x/RFUy8SCcsthoUhAu3HtGiXi8qiB?=
- =?iso-8859-2?Q?LfR8PKeelQg6Wy0YhFmS04RztQe6KdY3tWPLS06piKvtdWwPisjh24bR/g?=
- =?iso-8859-2?Q?cukTu9zjF8fTxVlPT0ZIthuLFXB7rIkElKzkXFHKIcDzTSYUpN/uTnBQ?=
- =?iso-8859-2?Q?=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?385Riq7LtaJGM40vTOKnbKMxO/3r9dsfb/mssIMfgeSvPBbJ2YNrphQXvF0D?=
+ =?us-ascii?Q?pWgzujmVJe6+VbyDO66klEkEi4/0Gll9NQu5nOq7WRXZnT5Ul9vZ7uTUJ8hG?=
+ =?us-ascii?Q?OGC/lbX8XYlD0WnmpFR6TntFJEA6uITvpkGxKrbzAGImLWF924FD49p7VkI0?=
+ =?us-ascii?Q?iCBFKeqVx8FBJoOxPrvLK2VHzID7o+D3tjbGcyBFmO5BUwHGEjsx834+83Ln?=
+ =?us-ascii?Q?m86x/zcZj1Dh4o+NwkxlRENn3YL0gTaJHh42njalabzfeTFS381c1KMv5Sna?=
+ =?us-ascii?Q?sg8kJvvlU7hLl9BbOl9PtVDhju541A9KXBkNYxw3ZoTpDt/zawHLKKqU+KQx?=
+ =?us-ascii?Q?/J1U9ItdvztO797GAGWgb28HVsBTqy8QMRsOjk5VuBVyHfdhxX49JghjorE3?=
+ =?us-ascii?Q?u95aHFeUcLmwLeKqJVTTb5AMUbozc4dbMXIOL4YjQdS387ec8KeaM9cTxdtJ?=
+ =?us-ascii?Q?s10CElnP8rEAmmm+D/k9TbRmdK4uRj7p9zQ6pp2zO7Qb5Jp0dB4r3qSFbxST?=
+ =?us-ascii?Q?ifzl+/epgh3FBlTwGeo9AKzLTEB5ld1IVwkoUUNlICbVIUb/HFEgjNpyTbo5?=
+ =?us-ascii?Q?SJ+9VywUTJanjUUDZjWuf1VrNZvOjhKHzm8W2uDxgMeguwdrBjnyvyT/maEC?=
+ =?us-ascii?Q?nQX//o3lOV9FsUAREIC4tAgu6NfofGPV80U9HZGxn8cPRYrHD2ojk+0DpkpH?=
+ =?us-ascii?Q?/xKV/A96TRbV+fqnN7SDVhcdqzJt5CbUe5ekFJNn80H3yTGxodmztWOYAfA8?=
+ =?us-ascii?Q?yneWg6amoesIu4XXPySYHgl3S1O/D2HnmZrYTVDrjRRlB+h/FcsIs8NkE/it?=
+ =?us-ascii?Q?kv465wjM3s98ATVdj2v87x+/fTp/aQeRrv/CGVzvuSGZYv0Y170z58BipfCb?=
+ =?us-ascii?Q?rD8ZyW5VT86GqVXTxosmxrtMuJxOiJGGj6QSvYdhuxd2KmxF8k5xpz/u57i8?=
+ =?us-ascii?Q?LnkQjGjoyAGTyF5rBfOIOzyaExAf2LEnSQ8U+/2HITFGQ08xni7HbiH7+ylX?=
+ =?us-ascii?Q?OPUfSFprGkJwzDRy7WvpzI5xVmeYLwtckGLNM0O3FZ07wF6202y3l28rJYFm?=
+ =?us-ascii?Q?6GExpKBHZmvOxKYdkxt9oujO+XugE1GXkbHpFaykq42qInQ+acrS2QN04SyO?=
+ =?us-ascii?Q?tDt0rZ7g2KuWpy1L2pmmMgs3HENZmNco1BPhscP1gD8uG7W07NnW0jarhWyo?=
+ =?us-ascii?Q?WvA5clA5NdR73Hzh4AFXpKxQK9q9LmGLYjmelAIhw25M9fY538nAyeAoXPP4?=
+ =?us-ascii?Q?yX8BOcXE2DwFEKvBF1fODAXbkZKcmmpWEvNt02L6osy2s68fWrq3rMrxOhgj?=
+ =?us-ascii?Q?VzHO4hMXksnUaXykGbgIBceMPP2zAUZsYvBvS13lpVg58WphjozjdVFcSf7o?=
+ =?us-ascii?Q?Y8tsaBXHG2gRmQs/5ov6zZ3rQvzd2iSXrAfmd5G7BLOiD/kkIx8d2VTmBDTx?=
+ =?us-ascii?Q?goxvIUGJyxP2U8wulyUEHmAUnyG52cI78g880IjNJ3Fa9l3RiYpSUP+gnOmi?=
+ =?us-ascii?Q?ypYAdaYckTVy/MI5XxWU10PuEhjMtKlFZUvH11ju65UIGKKBCV46XEzm61tC?=
+ =?us-ascii?Q?x3/3aygpIaPWqBhjrMmdhdecZFfKCk700annQPFE?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 583d8eea-77b7-4bd4-1a48-08da8c19a4de
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2022 12:58:19.3968 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2983.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5d63dc5d-d669-455c-37b4-08da8c000fdd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2022 09:55:12.0234 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: JQy3GySDs3FeI99ZwutTcJLnb9MEd+GZHxAcdwhbz4Wr2srhUU30Fl2sFln3HYM9bVvgm8O0z3r2dx8+EXQbQ7NcPwqj0olb1Fn+tO+ju0c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4174
+X-MS-Exchange-CrossTenant-userprincipalname: Lntzc6G5rTm+Gmr+EDRMKxk7fCSPUC1s4Igjer65dloK1vNopkG6jq9VG5M2RNyOr2UYyIG2pt2uDcQGqI0tftANZcEQHhyhIoJTJFFihg0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3577
 X-OriginatorOrg: intel.com
+X-Mailman-Approved-At: Thu, 01 Sep 2022 14:03:07 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1662037103; x=1693573103;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=ZpB8TBaaEY2/Q0OaCT2eFB8p8p2ywd4aHuC5d3XXI5E=;
- b=dm71vM6lA3osSabETVsJs+z6u049bhxZsvWoT9MQB67Vl8A+ZvX8lXPl
- xUZlK1mMnAAgw3hxKTsPDxiZNcEYmCbo6TAQMNsW3Mq4y8fQDbEHjdlTm
- q7xD4QBLC1RMwrTGLVOVQ1YubAyDoU5KbcpeAvuwb1WuMBiZH9Gfk4vk/
- H6h4J8IzF5pUe54E6y5c/90zBYZI4flK4vLaN94dIzEbuua1H2NEaqmii
- N+FUmnSMnLWM1K48FDHuReheKPrO2UZfLyBCn2Wnmx1BZEDVqAMwfvcYT
- 6qriAnquHmM2DpZSJZW0KlOsahINzrg2y5eesIQwmuSqzEaY+30z/Q/zj
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1662026121; x=1693562121;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=IFlTZK+VEhc2yWI/+A6et9yd06PtmC8tXNysQIT1A6M=;
+ b=dFJncarN6IFQEmIFoMABOAMJ1DwBH0iM/w7JVP8qxWLHZd6+HBeiSi3L
+ Jf6TYByxALqljQ2Wj6DsnQBUVRrKogSM4ouvKxO39L5kV/rLa11/GFi2+
+ WFSMoaFd32A3X+VDSbri/rlSd9ZbgISNxmRL7T8KXUWUFexlTUUYRvNqC
+ CQtfNjjfDzmwvgpae2YI7F77OHRjcj4rArjhEfvYQmUL9RwFC4v1sNLXu
+ 4LK/c2ZVpKczXRhn8b2qUPPR1r6Iw8164zzqa7OzXm3su/DizRoWx6yIX
+ ikl6oBmVg4NGsC/oVDgoheKvD1KECbMJKXnrP6ClO/7uGCae/g9cRq4Vd
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dm71vM6l
+ header.a=rsa-sha256 header.s=Intel header.b=dFJncarN
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v3 2/5] flow_dissector:
- Add L2TPv3 dissectors
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux
+ on peer initiated reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,159 +191,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "simon.horman@corigine.com" <simon.horman@corigine.com>,
- "kurt@linutronix.de" <kurt@linutronix.de>,
- "komachi.yoshiki@gmail.com" <komachi.yoshiki@gmail.com>,
- "jchapman@katalix.com" <jchapman@katalix.com>,
- "edumazet@google.com" <edumazet@google.com>,
- "boris.sukholitko@broadcom.com" <boris.sukholitko@broadcom.com>,
- "louis.peens@corigine.com" <louis.peens@corigine.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "vladbu@nvidia.com" <vladbu@nvidia.com>, "kuba@kernel.org" <kuba@kernel.org>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "pablo@netfilter.org" <pablo@netfilter.org>,
- "baowen.zheng@corigine.com" <baowen.zheng@corigine.com>,
- "maksym.glubokiy@plvision.eu" <maksym.glubokiy@plvision.eu>,
- "jiri@resnulli.us" <jiri@resnulli.us>, "paulb@nvidia.com" <paulb@nvidia.com>,
- "jhs@mojatatu.com" <jhs@mojatatu.com>,
- "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-
 > -----Original Message-----
-> From: Guillaume Nault <gnault@redhat.com>
-> Sent: czwartek, 1 wrze=B6nia 2022 14:35
-> To: Drewek, Wojciech <wojciech.drewek@intel.com>
-> Cc: netdev@vger.kernel.org; Lobakin, Alexandr <alexandr.lobakin@intel.com=
->; Brandeburg, Jesse <jesse.brandeburg@intel.com>;
-> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; davem@davemloft.net; edum=
-azet@google.com; kuba@kernel.org;
-> pabeni@redhat.com; jhs@mojatatu.com; xiyou.wangcong@gmail.com; jiri@resnu=
-lli.us; marcin.szycik@linux.intel.com;
-> michal.swiatkowski@linux.intel.com; kurt@linutronix.de; boris.sukholitko@=
-broadcom.com; vladbu@nvidia.com;
-> komachi.yoshiki@gmail.com; paulb@nvidia.com; baowen.zheng@corigine.com; l=
-ouis.peens@corigine.com;
-> simon.horman@corigine.com; pablo@netfilter.org; maksym.glubokiy@plvision.=
-eu; intel-wired-lan@lists.osuosl.org;
-> jchapman@katalix.com
-> Subject: Re: [RFC PATCH net-next v3 2/5] flow_dissector: Add L2TPv3 disse=
-ctors
-> =
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Ertman, David M
+> Sent: wtorek, 9 sierpnia 2022 19:24
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH net v2] ice: Don't double unplug aux on
+> peer initiated reset
+> 
+> In the IDC callback that is accessed when the aux drivers request a reset, the
+> function to unplug the aux devices is called.  This function is also called in the
+> ice_prepare_for_reset function. This double call is causing a "scheduling
+> while atomic" BUG.
+> 
+> [  662.676430] ice 0000:4c:00.0 rocep76s0: cqp opcode = 0x1 maj_err_code =
+> 0xffff min_err_code = 0x8003
+> 
+> [  662.676609] ice 0000:4c:00.0 rocep76s0: [Modify QP Cmd Error][op_code=8]
+> status=-29 waiting=1 completion_err=1 maj=0xffff min=0x8003
+> 
+> [  662.815006] ice 0000:4c:00.0 rocep76s0: ICE OICR event notification: oicr =
+> 0x10000003
+> 
+> [  662.815014] ice 0000:4c:00.0 rocep76s0: critical PE Error,
+> GLPE_CRITERR=0x00011424
+> 
+> [  662.815017] ice 0000:4c:00.0 rocep76s0: Requesting a reset
+> 
+> [  662.815475] BUG: scheduling while atomic: swapper/37/0/0x00010002
+> 
+> [  662.815475] BUG: scheduling while atomic: swapper/37/0/0x00010002 [
+> 662.815477] Modules linked in: rpcsec_gss_krb5 auth_rpcgss nfsv4
+> dns_resolver nfs lockd grace fscache netfs rfkill 8021q garp mrp stp llc vfat fat
+> rpcrdma intel_rapl_msr intel_rapl_common sunrpc i10nm_edac rdma_ucm
+> nfit ib_srpt libnvdimm ib_isert iscsi_target_mod x86_pkg_temp_thermal
+> intel_powerclamp coretemp target_core_mod snd_hda_intel ib_iser
+> snd_intel_dspcfg libiscsi snd_intel_sdw_acpi scsi_transport_iscsi kvm_intel
+> iTCO_wdt rdma_cm snd_hda_codec kvm iw_cm ipmi_ssif
+> iTCO_vendor_support snd_hda_core irqbypass crct10dif_pclmul
+> crc32_pclmul ghash_clmulni_intel snd_hwdep snd_seq snd_seq_device rapl
+> snd_pcm snd_timer isst_if_mbox_pci pcspkr isst_if_mmio irdma
+> intel_uncore idxd acpi_ipmi joydev isst_if_common snd mei_me idxd_bus
+> ipmi_si soundcore i2c_i801 mei ipmi_devintf i2c_smbus i2c_ismt
+> ipmi_msghandler acpi_power_meter acpi_pad rv(OE) ib_uverbs ib_cm
+> ib_core xfs libcrc32c ast i2c_algo_bit drm_vram_helper drm_kms_helper
+> syscopyarea sysfillrect sysimgblt fb_sys_fops drm_ttm_helpe  r ttm [
+> 662.815546]  nvme nvme_core ice drm crc32c_intel i40e t10_pi wmi
+> pinctrl_emmitsburg dm_mirror dm_region_hash dm_log dm_mod fuse [
+> 662.815557] Preemption disabled at:
+> [  662.815558] [<0000000000000000>] 0x0
+> [  662.815563] CPU: 37 PID: 0 Comm: swapper/37 Kdump: loaded Tainted: G S
+> OE     5.17.1 #2
+> [  662.815566] Hardware name: Intel Corporation D50DNP/D50DNP, BIOS
+> SE5C6301.86B.6624.D18.2111021741 11/02/2021 [  662.815568] Call Trace:
+> [  662.815572]  <IRQ>
+> [  662.815574]  dump_stack_lvl+0x33/0x42 [  662.815581]
+> __schedule_bug.cold.147+0x7d/0x8a [  662.815588]
+> __schedule+0x798/0x990 [  662.815595]  schedule+0x44/0xc0 [  662.815597]
+> schedule_preempt_disabled+0x14/0x20
+> [  662.815600]  __mutex_lock.isra.11+0x46c/0x490 [  662.815603]  ?
+> __ibdev_printk+0x76/0xc0 [ib_core] [  662.815633]  device_del+0x37/0x3d0 [
+> 662.815639]  ice_unplug_aux_dev+0x1a/0x40 [ice] [  662.815674]
+> ice_schedule_reset+0x3c/0xd0 [ice] [  662.815693]
+> irdma_iidc_event_handler.cold.7+0xb6/0xd3 [irdma] [  662.815712]  ?
+> bitmap_find_next_zero_area_off+0x45/0xa0
+> [  662.815719]  ice_send_event_to_aux+0x54/0x70 [ice] [  662.815741]
+> ice_misc_intr+0x21d/0x2d0 [ice] [  662.815756]
+> __handle_irq_event_percpu+0x4c/0x180
+> [  662.815762]  handle_irq_event_percpu+0xf/0x40 [  662.815764]
+> handle_irq_event+0x34/0x60 [  662.815766]  handle_edge_irq+0x9a/0x1c0 [
+> 662.815770]  __common_interrupt+0x62/0x100 [  662.815774]
+> common_interrupt+0xb4/0xd0 [  662.815779]  </IRQ> [  662.815780]  <TASK>
+> [  662.815780]  asm_common_interrupt+0x1e/0x40 [  662.815785] RIP:
+> 0010:cpuidle_enter_state+0xd6/0x380
+> [  662.815789] Code: 49 89 c4 0f 1f 44 00 00 31 ff e8 65 d7 95 ff 45 84 ff 74 12 9c
+> 58 f6 c4 02 0f 85 64 02 00 00 31 ff e8 ae c5 9c ff fb 45 85 f6 <0f> 88 12 01 00 00
+> 49 63 d6 4c 2b 24 24 48 8d 04 52 48 8d 04 82 49 [  662.815791] RSP:
+> 0018:ff2c2c4f18edbe80 EFLAGS: 00000202 [  662.815793] RAX:
+> ff280805df140000 RBX: 0000000000000002 RCX: 000000000000001f [
+> 662.815795] RDX: 0000009a52da2d08 RSI: ffffffff93f8240b RDI:
+> ffffffff93f53ee7 [  662.815796] RBP: ff5e2bd11ff41928 R08: 0000000000000000
+> R09: 000000000002f8c0 [  662.815797] R10: 0000010c3f18e2cf R11:
+> 000000000000000f R12: 0000009a52da2d08 [  662.815798] R13:
+> ffffffff94ad7e20 R14: 0000000000000002 R15: 0000000000000000 [
+> 662.815801]  cpuidle_enter+0x29/0x40 [  662.815803]  do_idle+0x261/0x2b0 [
+> 662.815807]  cpu_startup_entry+0x19/0x20 [  662.815809]
+> start_secondary+0x114/0x150 [  662.815813]
+> secondary_startup_64_no_verify+0xd5/0xdb
+> [  662.815818]  </TASK>
+> [  662.815846] bad: scheduling from the idle thread!
+> [  662.815849] CPU: 37 PID: 0 Comm: swapper/37 Kdump: loaded Tainted: G S
+> W  OE     5.17.1 #2
+> [  662.815852] Hardware name: Intel Corporation D50DNP/D50DNP, BIOS
+> SE5C6301.86B.6624.D18.2111021741 11/02/2021 [  662.815853] Call Trace:
+> [  662.815855]  <IRQ>
+> [  662.815856]  dump_stack_lvl+0x33/0x42 [  662.815860]
+> dequeue_task_idle+0x20/0x30 [  662.815863]  __schedule+0x1c3/0x990 [
+> 662.815868]  schedule+0x44/0xc0 [  662.815871]
+> schedule_preempt_disabled+0x14/0x20
+> [  662.815873]  __mutex_lock.isra.11+0x3a8/0x490 [  662.815876]  ?
+> __ibdev_printk+0x76/0xc0 [ib_core] [  662.815904]  device_del+0x37/0x3d0 [
+> 662.815909]  ice_unplug_aux_dev+0x1a/0x40 [ice] [  662.815937]
+> ice_schedule_reset+0x3c/0xd0 [ice] [  662.815961]
+> irdma_iidc_event_handler.cold.7+0xb6/0xd3 [irdma] [  662.815979]  ?
+> bitmap_find_next_zero_area_off+0x45/0xa0
+> [  662.815985]  ice_send_event_to_aux+0x54/0x70 [ice] [  662.816011]
+> ice_misc_intr+0x21d/0x2d0 [ice] [  662.816033]
+> __handle_irq_event_percpu+0x4c/0x180
+> [  662.816037]  handle_irq_event_percpu+0xf/0x40 [  662.816039]
+> handle_irq_event+0x34/0x60 [  662.816042]  handle_edge_irq+0x9a/0x1c0 [
+> 662.816045]  __common_interrupt+0x62/0x100 [  662.816048]
+> common_interrupt+0xb4/0xd0 [  662.816052]  </IRQ> [  662.816053]  <TASK>
+> [  662.816054]  asm_common_interrupt+0x1e/0x40 [  662.816057] RIP:
+> 0010:cpuidle_enter_state+0xd6/0x380
+> [  662.816060] Code: 49 89 c4 0f 1f 44 00 00 31 ff e8 65 d7 95 ff 45 84 ff 74 12 9c
+> 58 f6 c4 02 0f 85 64 02 00 00 31 ff e8 ae c5 9c ff fb 45 85 f6 <0f> 88 12 01 00 00
+> 49 63 d6 4c 2b 24 24 48 8d 04 52 48 8d 04 82 49 [  662.816063] RSP:
+> 0018:ff2c2c4f18edbe80 EFLAGS: 00000202 [  662.816065] RAX:
+> ff280805df140000 RBX: 0000000000000002 RCX: 000000000000001f [
+> 662.816067] RDX: 0000009a52da2d08 RSI: ffffffff93f8240b RDI:
+> ffffffff93f53ee7 [  662.816068] RBP: ff5e2bd11ff41928 R08: 0000000000000000
+> R09: 000000000002f8c0 [  662.816070] R10: 0000010c3f18e2cf R11:
+> 000000000000000f R12: 0000009a52da2d08 [  662.816071] R13:
+> ffffffff94ad7e20 R14: 0000000000000002 R15: 0000000000000000 [
+> 662.816075]  cpuidle_enter+0x29/0x40 [  662.816077]  do_idle+0x261/0x2b0 [
+> 662.816080]  cpu_startup_entry+0x19/0x20 [  662.816083]
+> start_secondary+0x114/0x150 [  662.816087]
+> secondary_startup_64_no_verify+0xd5/0xdb
+> [  662.816091]  </TASK>
+> [  662.816169] bad: scheduling from the idle thread!
+> 
+> The correct place to unplug the aux devices for a reset is in the
+> prepare_for_reset function, as this is a common place for all reset flows.
+> It also has built in protection from being called twice in a single reset instance
+> before the aux devices are replugged.
+> 
+> Fixes: f9f5301e7e2d4 ("ice: Register auxiliary device to provide RDMA")
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> ---
+> v2 - changed commit message to include BUG message and remove extra
+> space
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
 
-> On Thu, Sep 01, 2022 at 02:01:28PM +0200, Wojciech Drewek wrote:
-> > Allow to dissect L2TPv3 specific field which is:
-> > - session ID (32 bits)
-> >
-> > L2TPv3 might be transported over IP or over UDP,
-> > this ipmplementation is only about L2TPv3 over IP.
-> > IP protocold carries L2TPv3 when ip_proto is
-> =
-
-> Nit: you didn't fix the spelling of "protocold". It's probably not
-> worth to send a new version just because of this typo though.
-
-Sorry, of course  I forgot about something.
-It will be fixed in the PR.
-
-> =
-
-> > Acked-by: Guillaume Nault <gnault@redhat.com>
-> > Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> > ---
-> > v3: move !dissector_uses_key() check before calling
-> >     __skb_header_pointer
-> > ---
-> >  include/net/flow_dissector.h |  9 +++++++++
-> >  net/core/flow_dissector.c    | 28 ++++++++++++++++++++++++++++
-> >  2 files changed, 37 insertions(+)
-> >
-> > diff --git a/include/net/flow_dissector.h b/include/net/flow_dissector.h
-> > index 6c74812d64b2..5ccf52ef8809 100644
-> > --- a/include/net/flow_dissector.h
-> > +++ b/include/net/flow_dissector.h
-> > @@ -289,6 +289,14 @@ struct flow_dissector_key_pppoe {
-> >  	__be16 type;
-> >  };
-> >
-> > +/**
-> > + * struct flow_dissector_key_l2tpv3:
-> > + * @session_id: identifier for a l2tp session
-> > + */
-> > +struct flow_dissector_key_l2tpv3 {
-> > +	__be32 session_id;
-> > +};
-> > +
-> >  enum flow_dissector_key_id {
-> >  	FLOW_DISSECTOR_KEY_CONTROL, /* struct flow_dissector_key_control */
-> >  	FLOW_DISSECTOR_KEY_BASIC, /* struct flow_dissector_key_basic */
-> > @@ -320,6 +328,7 @@ enum flow_dissector_key_id {
-> >  	FLOW_DISSECTOR_KEY_HASH, /* struct flow_dissector_key_hash */
-> >  	FLOW_DISSECTOR_KEY_NUM_OF_VLANS, /* struct flow_dissector_key_num_of_=
-vlans */
-> >  	FLOW_DISSECTOR_KEY_PPPOE, /* struct flow_dissector_key_pppoe */
-> > +	FLOW_DISSECTOR_KEY_L2TPV3, /* struct flow_dissector_key_l2tpv3 */
-> >
-> >  	FLOW_DISSECTOR_KEY_MAX,
-> >  };
-> > diff --git a/net/core/flow_dissector.c b/net/core/flow_dissector.c
-> > index 764c4cb3fe8f..8180e65ab8e2 100644
-> > --- a/net/core/flow_dissector.c
-> > +++ b/net/core/flow_dissector.c
-> > @@ -204,6 +204,30 @@ static void __skb_flow_dissect_icmp(const struct s=
-k_buff *skb,
-> >  	skb_flow_get_icmp_tci(skb, key_icmp, data, thoff, hlen);
-> >  }
-> >
-> > +static void __skb_flow_dissect_l2tpv3(const struct sk_buff *skb,
-> > +				      struct flow_dissector *flow_dissector,
-> > +				      void *target_container, const void *data,
-> > +				      int nhoff, int hlen)
-> > +{
-> > +	struct flow_dissector_key_l2tpv3 *key_l2tpv3;
-> > +	struct {
-> > +		__be32 session_id;
-> > +	} *hdr, _hdr;
-> > +
-> > +	if (!dissector_uses_key(flow_dissector, FLOW_DISSECTOR_KEY_L2TPV3))
-> > +		return;
-> > +
-> > +	hdr =3D __skb_header_pointer(skb, nhoff, sizeof(_hdr), data, hlen, &_=
-hdr);
-> > +	if (!hdr)
-> > +		return;
-> > +
-> > +	key_l2tpv3 =3D skb_flow_dissector_target(flow_dissector,
-> > +					       FLOW_DISSECTOR_KEY_L2TPV3,
-> > +					       target_container);
-> > +
-> > +	key_l2tpv3->session_id =3D hdr->session_id;
-> > +}
-> > +
-> >  void skb_flow_dissect_meta(const struct sk_buff *skb,
-> >  			   struct flow_dissector *flow_dissector,
-> >  			   void *target_container)
-> > @@ -1497,6 +1521,10 @@ bool __skb_flow_dissect(const struct net *net,
-> >  		__skb_flow_dissect_icmp(skb, flow_dissector, target_container,
-> >  					data, nhoff, hlen);
-> >  		break;
-> > +	case IPPROTO_L2TP:
-> > +		__skb_flow_dissect_l2tpv3(skb, flow_dissector, target_container,
-> > +					  data, nhoff, hlen);
-> > +		break;
-> >
-> >  	default:
-> >  		break;
-> > --
-> > 2.31.1
-> >
-
+Tested-by: Helena Anna Dubel <helena.anna.dubel@intel.com>
+-------------------------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173, 80-298 Gdansk
+KRS 101882, NIP 957-07-52-316
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
