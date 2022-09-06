@@ -1,88 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA4EC5AE3EE
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Sep 2022 11:15:44 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DBB85AE3F0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Sep 2022 11:15:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7E39282D0C;
-	Tue,  6 Sep 2022 09:15:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E39282D0C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 617A940017;
+	Tue,  6 Sep 2022 09:15:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 617A940017
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1662455742;
-	bh=yHsqjSUi+ICug+flMY2xK4O0hkUK2pECgQQE83E0+40=;
+	s=default; t=1662455746;
+	bh=IOL7eJsEddNY++ZBAbRHlLN4R7W3emSXU2Snj9XQYcA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=TowUgAUQAZoOPwGYRMc/mksbiNCfjZTS7d6Zn2EnjzXND3UjLfbJRmSt7QOG+mRc/
-	 hf/nPvDjrCRHXaxAD0gNjnDZesBKC9bE9L22E17L5jIygjLt+Rs8Uyosy9iY3yKd/j
-	 hc7hGxJjNGvT9v8yYZCR3ZAGE8ESpZUt9wOmCj1dgO9ksnNCN4ehlf39nOF2JvxJvl
-	 HTxU5WXkN1hJ7/1OtiuOLH7Tfv03Xq9UntoA25RYnmsNqh9YzhxAbPw2lWn9SP2cku
-	 XvD7NW2q991TA20723YlnUf92PnoLGGMnMo0COmmh6coNmqYB5CVkW6Ry3HMXdMQvR
-	 EbcQwFtci6MJw==
+	b=NDMDMUznpeeZGAlio06qSvTDKQZml2Ehg1Rvr4BLCybZdgcwvWBlL4pr2T36WEPnB
+	 1RJfadO8f2Ht+ueyIIq256A1HFWBGSNNcKSKjoZXQ0l0NVvArImDIXUBFlJ8kQ503i
+	 2vAY5BgJUTlaLEzWsNd69t/7AxkhbHJHRv8LUZIMWRXb74QYJAGvsNRyiFIW6JC+8f
+	 otiDOd7dWq2Z2qVUXSzYCPxSOGL4OMI/YxBAghzIonXnmuZ+2ENgtDngYdirBKliBE
+	 r0+2FxM4fK0H467aYrlnMMyxQLfV5uqTjTMCAmL4rbNTWaG2VBkD2D6qptr6tjQ9l8
+	 QoOHs9WvyHI2A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K2X0h4_1Nhn9; Tue,  6 Sep 2022 09:15:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NVjJb8YfA-My; Tue,  6 Sep 2022 09:15:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5A24D82CEC;
-	Tue,  6 Sep 2022 09:15:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A24D82CEC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5B16440BC5;
+	Tue,  6 Sep 2022 09:15:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B16440BC5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A2FC91BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 253111BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 892D1404AA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 892D1404AA
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0B94F404AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0B94F404AA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NSLTr6kORa_O for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Sep 2022 09:15:29 +0000 (UTC)
+ with ESMTP id hweWx1JFXKbt for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Sep 2022 09:15:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 481364175B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 27DDC417B6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 481364175B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10461"; a="297331018"
-X-IronPort-AV: E=Sophos;i="5.93,293,1654585200"; d="scan'208";a="297331018"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 27DDC417B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Sep 2022 09:15:31 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10461"; a="297331021"
+X-IronPort-AV: E=Sophos;i="5.93,293,1654585200"; d="scan'208";a="297331021"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2022 02:15:29 -0700
+ 06 Sep 2022 02:15:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,293,1654585200"; d="scan'208";a="647164008"
+X-IronPort-AV: E=Sophos;i="5.93,293,1654585200"; d="scan'208";a="647164020"
 Received: from amlin-018-068.igk.intel.com (HELO localhost.igk.intel.com)
  ([10.102.18.68])
- by orsmga001.jf.intel.com with ESMTP; 06 Sep 2022 02:15:28 -0700
+ by orsmga001.jf.intel.com with ESMTP; 06 Sep 2022 02:15:29 -0700
 From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  6 Sep 2022 11:14:10 +0200
-Message-Id: <20220906091411.910107-2-mateusz.palczewski@intel.com>
+Date: Tue,  6 Sep 2022 11:14:11 +0200
+Message-Id: <20220906091411.910107-3-mateusz.palczewski@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20220906091411.910107-1-mateusz.palczewski@intel.com>
 References: <20220906091411.910107-1-mateusz.palczewski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1662455729; x=1693991729;
+ t=1662455731; x=1693991731;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=KKwM9ounRw9PM8wZzMt5PpJQe1TO43ZM9ybvhxZP9Lo=;
- b=YLTEf6RnAP0vZ3fMoNO0pbx9/tpMHZK9NOwv0K6PJwXqTkaGPV6sMvIJ
- 10F/b4B3WwWO1g3ZPp6AFUegzkpnZbWjJ/aBfN4VLdwTurFfGyYeFO6aU
- Wa4nAbylDxkS9EghUdCx6tybWKoqSzbURudl5SCEdhRgBnJwnbo67G+Nc
- E8QXOgMLMQVNG7c8IAUnl4KNU4KxPy7PSI8CBfUVgK9NI0gce6+q55phq
- A7Nw++udAbTeDpoznwqdyiD6OGriz/NvwKA+F3IsBUmgmNqkpWHr13RAZ
- D6QhSDqgHbr7qnrtlrvQ2CTwFflMI7WH/uZdzrAjvm8Lzp31wVIbZ9vUF
- w==;
+ bh=pdJveiyrm7qjTTdY1vThNij44ZwuIL7ua9wqoHwhVw0=;
+ b=UFQsoc8P5bkXfCAuYdasEfV26//Y9+WgZKyeVXYdR/d5Qqm1B15I65cW
+ wZQh7eyCuiqcI+Yv1kmEYNSurQfWnPnIUmOwjvIS42KQbnYFxHsK1qHW/
+ lMZZYy+aQ4fWBP7riWXyG7KXLF7Vxy8attXHOtaODYKnBCME+FGtfNwuu
+ dEXxQYA9nmm32RHO5JJFoAx8YEcqXSl2m4GM18XD6Y0oQ5/3FbVAZc4hc
+ 5ScK5SiNt19K+R3wZCmdT+M5EJAXgUoeyuW9aAgSd/dbFsZRRQQ1amgsk
+ xX+dug75Yc4hSrUgT6LKgENRFkGkTgoo6pm6McqTf0eHFZl3MbdxDV+lI
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YLTEf6Rn
-Subject: [Intel-wired-lan] [PATCH net v1 1/2] iavf: Fix vf set max mtu size
- with port vlan and jumbo frames
+ header.a=rsa-sha256 header.s=Intel header.b=UFQsoc8P
+Subject: [Intel-wired-lan] [PATCH net v1 2/2] i40e: Fix vf set max mtu size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,50 +102,58 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Michal Jaron <michalx.jaron@intel.com>
 
-After setting port vlan and mtu 9000 on vf with ice driver there
-was an iavf error
-"PF returned error -5 (IAVF_ERR_PARAM) to our request 6".
-It was caused by that during queues configuration vf's max packet
-size was set to IAVF_MAX_RXBUFFER but on ice max frame size was
-smaller by VLAN_HLEN due to making some space for port vlan as VF
-is not aware whether it's in a port VLAN. This mismatch in sizes
-caused that ice rejects queues configuration with ERR_PARAM error.
-Proper max_mtu is send from ice pf to vf with GET_VF_RESOURCES msg
-but vf does not look at this.
+Max mtu sent to vf is set to 0 during memory allocation. It cause
+that max mtu on VF is changed to IAVF_MAX_RXBUFFER and does not
+depend on data from hw.
 
-In iavf change max_frame from IAVF_MAX_RXBUFFER to max_mtu
-received from pf with GET_VF_RESOURCES msg to make vf's
-max_frame_size dependent from pf. Add check if received max_mtu is
-not in eligible range then set it to IAVF_MAX_RXBUFFER.
+Set max_mtu field in virtchnl_vf_resource struct to inform
+vf in GET_VF_RESOURCES msg what size should be max frame.
 
 Fixes: dab86afdbbd1 ("i40e/i40evf: Change the way we limit the maximum frame size for Rx")
 Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 15ee85dc33bd..e468f1324541 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -269,11 +269,14 @@ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
- void iavf_configure_queues(struct iavf_adapter *adapter)
- {
- 	struct virtchnl_vsi_queue_config_info *vqci;
--	struct virtchnl_queue_pair_info *vqpi;
-+	int i, max_frame = adapter->vf_res->max_mtu;
- 	int pairs = adapter->num_active_queues;
--	int i, max_frame = IAVF_MAX_RXBUFFER;
-+	struct virtchnl_queue_pair_info *vqpi;
- 	size_t len;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 4f184c50f6e8..7e9f6a69eb10 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2038,6 +2038,25 @@ static void i40e_del_qch(struct i40e_vf *vf)
+ 	}
+ }
  
-+	if (max_frame > IAVF_MAX_RXBUFFER || max_frame < 64)
-+		max_frame = IAVF_MAX_RXBUFFER;
++/**
++ * i40e_vc_get_max_frame_size
++ * @vf: pointer to the VF
++ *
++ * Max frame size is determined based on the current port's max frame size and
++ * whether a port VLAN is configured on this VF. The VF is not aware whether
++ * it's in a port VLAN so the PF needs to account for this in max frame size
++ * checks and sending the max frame size to the VF.
++ **/
++static u16 i40e_vc_get_max_frame_size(struct i40e_vf *vf)
++{
++	u16 max_frame_size = vf->pf->hw.phy.link_info.max_frame_size;
 +
- 	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
- 		/* bail because we already have a command pending */
- 		dev_err(&adapter->pdev->dev, "Cannot configure queues, command %d pending\n",
++	if (vf->port_vlan_id)
++		max_frame_size -= VLAN_HLEN;
++
++	return max_frame_size;
++}
++
+ /**
+  * i40e_vc_get_vf_resources_msg
+  * @vf: pointer to the VF info
+@@ -2139,6 +2158,7 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
+ 	vfres->max_vectors = pf->hw.func_caps.num_msix_vectors_vf;
+ 	vfres->rss_key_size = I40E_HKEY_ARRAY_SIZE;
+ 	vfres->rss_lut_size = I40E_VF_HLUT_ARRAY_SIZE;
++	vfres->max_mtu = i40e_vc_get_max_frame_size(vf);
+ 
+ 	if (vf->lan_vsi_idx) {
+ 		vfres->vsi_res[0].vsi_id = vf->lan_vsi_id;
 -- 
 2.27.0
 
