@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E93E5B197E
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Sep 2022 11:59:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F00B25B1AAC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Sep 2022 12:54:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1EBDC83F8E;
-	Thu,  8 Sep 2022 09:59:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1EBDC83F8E
+	by smtp4.osuosl.org (Postfix) with ESMTP id D307E41B6D;
+	Thu,  8 Sep 2022 10:54:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D307E41B6D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1662631166;
-	bh=sl5G1vIZZWrmrkOLKOQv3KnxyQ0ZH3KjW+iI/Bl3Wrw=;
+	s=default; t=1662634497;
+	bh=IIa401lYZo6rSuENA09tCoYTOQOyhJ6UMJaepVMiFXI=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=FvhVYFpGo8KFXobic2grE/y+38KW7qEnNbnKQnqfjWTIjYAgrDO5tUe5hCc/6+gb0
-	 pGKu7kQ4sB22JKh37PMwZYq6krrwAuhQ6OO+or7NFXm7ZPcBJoHigq/LrYc7yNcTCF
-	 vI+RCQy7eZbsLl6JgVfxU3dUNuknxwLu3GxUdKH8FCgklPz47Y5E22V4oLIt9aLEHj
-	 N50WJ9NeEFQSGalk1uxx628RJwVSZ90fPuKVy85wfsyphsJJa4h+oTEfmhhBzvscs0
-	 /MCNtSRhBMTJvL1w/vugo++efIkAz1mpw5pv+q2I+9EvTJq8Rr6/fxKZo1hq/B0339
-	 hKIyIG0eQdqdg==
+	 List-Post:List-Help:List-Subscribe:From;
+	b=rxlwVqamNzHy6eMRHMb6pvnX0/GWGkfmQ/IG9SuT/W2Fkp4+Db6vJFrMUBAMoHcQZ
+	 hAV4YMz2UE3gBc2KZkvQBbL0bpDshyfAEDW/wVbU1Tn7/Q8NxXgwBe0SNZrffVdfVT
+	 shJQwCmMLMKe/Twie5teswk8cgm848ncRaGd062zOpRcaKiOLRV7/0qab5bwJ5vKDd
+	 fPTgm3CzOPzP0BoNPV/q/jgR2In1P53hn7acBf0qJlBGJG9HtisgDp18GSG9JV/ZN+
+	 kqHVhjQXzSchqEXVlq9C/PFS4efccc0oZ2hsFqD4aZ0yqSA/2WoCnLAW1pwv2BTXgA
+	 uLO2nci61Ph4Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dXElN2nYGzKR; Thu,  8 Sep 2022 09:59:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mq0Klrtuw2Uy; Thu,  8 Sep 2022 10:54:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0757C83F62;
-	Thu,  8 Sep 2022 09:59:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0757C83F62
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6F17141A3D;
+	Thu,  8 Sep 2022 10:54:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F17141A3D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B0D831BF20B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 09:59:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0D6301BF5A1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 10:54:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 951B383F62
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 09:59:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 951B383F62
+ by smtp1.osuosl.org (Postfix) with ESMTP id DC2438407B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 10:54:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC2438407B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h1Txzq7IlFNp for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Sep 2022 09:59:19 +0000 (UTC)
+ with ESMTP id dCF_ScXwXjY6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Sep 2022 10:54:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9DF4C83F5D
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9DF4C83F5D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 09:59:18 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10463"; a="358857117"
-X-IronPort-AV: E=Sophos;i="5.93,299,1654585200"; d="scan'208";a="358857117"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2022 02:59:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,299,1654585200"; d="scan'208";a="676618100"
-Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
- by fmsmga008.fm.intel.com with ESMTP; 08 Sep 2022 02:59:16 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 22D3F83EF2
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 22D3F83EF2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Sep 2022 10:54:49 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10463"; a="323329280"
+X-IronPort-AV: E=Sophos;i="5.93,299,1654585200"; d="scan'208";a="323329280"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2022 03:54:40 -0700
+X-IronPort-AV: E=Sophos;i="5.93,299,1654585200"; d="scan'208";a="645033264"
+Received: from moradin.igk.intel.com ([10.123.220.12])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2022 03:54:37 -0700
+From: Michal Wilczynski <michal.wilczynski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Sep 2022 11:58:52 +0200
-Message-Id: <20220908095852.30389-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
+Date: Thu,  8 Sep 2022 12:54:22 +0200
+Message-Id: <20220908105427.183225-1-michal.wilczynski@intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1662631158; x=1694167158;
+ t=1662634490; x=1694170490;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=ICCRkS6FFLSQMamSmX/EJhTk27aUVawS4a4uOH9SiBo=;
- b=TkdHUXfiQEg0Ey6RsjE2x8DV+ylQ5feZe53Jcfx2iJeBX/523oS49cyA
- dIz5GN8DZqiF1TYuXHB8WFigYzG1SWLHQNYELkaxJpVhvai8NqkZrsnyo
- VyZ+2kT0TYGD2N2zYNPfVCjEninAtjpxOsp6Qfc0RdD7s6Xt6XtEiD3fz
- 5OCUczzpYfIXlEESekqmcA+b7WpTxnZpJmD+E+RpxVxrR7+x6J01w06Uv
- KTfJ7zUGy607KsF6b9UPvOlPB2bKzXdvbBcz2DFS+H9MK+fTKOvWyV1xo
- Edbwh3EVd9L2D8k8uK4+Dcl2HAKctOnBBEXzYFrG+94alFIn5QABpvzWR
- w==;
+ bh=TlEfkHULFZcLOYoyvESSmwcNVOYlg0aHlmSnSm0VFi4=;
+ b=P6yJPqyQiMGDvWaT0/v7zMTLqKJtMTsKVMS/vNLjxllXPkDVJ1AEy/TY
+ h6zzf0fHecmIuBgi5S0LKICb6E0006FMGo99rS1UZmZ0blz/wTnqCWOON
+ ke7BtzAbtCv/KDrSrwRCiHr2XiEqvxDYW6t+CTv7OysmgGwuRqGnymRT4
+ GUly9/FVB7aviXfWPvaXsaSm3yad24ZcYAKihgXPuKOjEMsFBksU8IFr6
+ TGduej0dO3dJnpj9cPT8dBPSuuUCZjFzP4ngscRgY06CZLn79sIkW5eWF
+ 1NTq72bF1G8eSWeOAReivRS8pvsdh6aiXcKz33HWJX/8x95PCRJfGFza0
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TkdHUXfi
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Merge pin initialization of
- E810 and E810T adapters
+ header.a=rsa-sha256 header.s=Intel header.b=P6yJPqyQ
+Subject: [Intel-wired-lan] [PATCH net-next v9 0/5] ice: Support 5 layer tx
+ scheduler topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,113 +91,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Machnikowski <maciej.machnikowski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove separate function initializing pins for E810T-based adapters
-and initialize pins based on feature bits.
+For performance reasons there is a need to have support for selectable
+tx scheduler topology. Currently firmware supports only the default
+9-layer and 5-layer topology. This patch series enables switch from
+default to 5-layer topology, if user decides to opt-in.
 
-Signed-off-by: Maciej Machnikowski <maciej.machnikowski@intel.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp.c | 47 +++++-------------------
- drivers/net/ethernet/intel/ice/ice_ptp.h |  4 +-
- 2 files changed, 12 insertions(+), 39 deletions(-)
+v9: Nothing changed, this is a re-send per validation request
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 5e41e99e91a5..011b727ab190 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2217,49 +2217,26 @@ ice_ptp_setup_sma_pins_e810t(struct ice_pf *pf, struct ptp_clock_info *info)
- }
- 
- /**
-- * ice_ptp_setup_pins_e810t - Setup PTP pins in sysfs
-+ * ice_ptp_setup_pins_e810 - Setup PTP pins in sysfs
-  * @pf: pointer to the PF instance
-  * @info: PTP clock capabilities
-  */
- static void
--ice_ptp_setup_pins_e810t(struct ice_pf *pf, struct ptp_clock_info *info)
-+ice_ptp_setup_pins_e810(struct ice_pf *pf, struct ptp_clock_info *info)
- {
--	/* Check if SMA controller is in the netlist */
--	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL) &&
--	    !ice_is_pca9575_present(&pf->hw))
--		ice_clear_feature_support(pf, ICE_F_SMA_CTRL);
--
--	if (!ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
--		info->n_ext_ts = N_EXT_TS_E810_NO_SMA;
--		info->n_per_out = N_PER_OUT_E810T_NO_SMA;
--		return;
--	}
-+	info->n_per_out = N_PER_OUT_E810;
- 
--	info->n_per_out = N_PER_OUT_E810T;
-+	if (ice_is_feature_supported(pf, ICE_F_PTP_EXTTS))
-+		info->n_ext_ts = N_EXT_TS_E810;
- 
--	if (ice_is_feature_supported(pf, ICE_F_PTP_EXTTS)) {
-+	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
- 		info->n_ext_ts = N_EXT_TS_E810;
- 		info->n_pins = NUM_PTP_PINS_E810T;
- 		info->verify = ice_verify_pin_e810t;
--	}
--
--	/* Complete setup of the SMA pins */
--	ice_ptp_setup_sma_pins_e810t(pf, info);
--}
--
--/**
-- * ice_ptp_setup_pins_e810 - Setup PTP pins in sysfs
-- * @pf: pointer to the PF instance
-- * @info: PTP clock capabilities
-- */
--static void ice_ptp_setup_pins_e810(struct ice_pf *pf, struct ptp_clock_info *info)
--{
--	info->n_per_out = N_PER_OUT_E810;
- 
--	if (!ice_is_feature_supported(pf, ICE_F_PTP_EXTTS))
--		return;
--
--	info->n_ext_ts = N_EXT_TS_E810;
-+		/* Complete setup of the SMA pins */
-+		ice_ptp_setup_sma_pins_e810t(pf, info);
-+	}
- }
- 
- /**
-@@ -2296,11 +2273,7 @@ static void
- ice_ptp_set_funcs_e810(struct ice_pf *pf, struct ptp_clock_info *info)
- {
- 	info->enable = ice_ptp_gpio_enable_e810;
--
--	if (ice_is_e810t(&pf->hw))
--		ice_ptp_setup_pins_e810t(pf, info);
--	else
--		ice_ptp_setup_pins_e810(pf, info);
-+	ice_ptp_setup_pins_e810(pf, info);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 170ab35fb5c1..7c1f43bd6335 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -235,8 +235,8 @@ struct ice_ptp {
- #define N_EXT_TS_E810			3
- #define N_PER_OUT_E810			4
- #define N_PER_OUT_E810T			3
--#define N_PER_OUT_E810T_NO_SMA		2
--#define N_EXT_TS_E810_NO_SMA		2
-+#define N_PER_OUT_NO_SMA_E810T		2
-+#define N_EXT_TS_NO_SMA_E810T		2
- #define ETH_GLTSYN_ENA(_i)		(0x03000348 + ((_i) * 4))
- 
- #if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
+Lukasz Czapnik (1):
+  ice: Add txbalancing devlink param
+v6: Added this commit
+v7: Fixed nitpicks, checkpatch issue, changed functions to static
+
+Michal Wilczynski (2):
+  ice: Enable switching default tx scheduler topology
+v2:
+- Moved definitions of scheduling layers to other commit
+v3:
+- Removed wrong tags
+- Added blank line
+- Indented a comment
+- Moved parts of code to separate commit
+- Removed unnecessary initializations
+- Change from unnecessary devm_kmemdup to kmemdup
+v5:
+- Changed freeing to kfree
+- Changed commit message to clarify that parameter change is not yet
+  upstream
+
+  ice: Document txbalancing parameter
+v7: Added this commit
+
+Raj Victor (2):
+  ice: Support 5 layer topology
+v2:
+- Added example of performance decrease in commit message
+- Reworded commit message for imperative mood
+- Removed unnecessary tags
+- Refactored duplicated function call
+- Fixed RCT
+- Fixed unnecessary call to devm_kfree
+- Defined constants
+v3:
+- Changed title
+- Changes in commit description, added versions of DDP
+  and firmware, also added test methodology
+- Removed unnecessary defines
+- Added a newline for define separation
+- Did s/tx/Tx in comments
+- Removed newline between error check
+v8:
+- Removed msleep's in the loops
+
+  ice: Adjust the VSI/Aggregator layers
+v3:
+- Added this commit
+- Removed unnecessary 'else'
+
+
+ Documentation/networking/devlink/ice.rst      |  17 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  31 +++
+ drivers/net/ethernet/intel/ice/ice_common.c   |   5 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 161 ++++++++++++++
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    | 200 ++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_flex_type.h    |  17 +-
+ .../net/ethernet/intel/ice/ice_fw_update.c    |   7 +-
+ .../net/ethernet/intel/ice/ice_fw_update.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 113 ++++++++--
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |   4 +
+ drivers/net/ethernet/intel/ice/ice_sched.c    |  35 +--
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ 14 files changed, 556 insertions(+), 43 deletions(-)
+
 -- 
 2.27.0
 
