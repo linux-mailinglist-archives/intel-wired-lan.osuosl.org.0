@@ -1,86 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E68FB5B85E7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Sep 2022 12:04:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E99605B8910
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Sep 2022 15:23:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5E11241764;
-	Wed, 14 Sep 2022 10:04:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E11241764
+	by smtp2.osuosl.org (Postfix) with ESMTP id 243A340BF5;
+	Wed, 14 Sep 2022 13:23:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 243A340BF5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663149883;
-	bh=dEOSnaK1HNELbd/Uf0ySjtQmfOVP7IRx6RhFQuzamOc=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=swhojFVtC/IXty8Icou+3cnfcCmspv6rKo4XyofL1Q6Rpdq9X8tksl7QAqb+mcZD0
-	 1OaK+5kQXpE/0WWPWYSrLGqB2ozuPo5LzL5aNZWP6cV003ZKKkGogO9TltBS9QSLlM
-	 6aEExEbNlzWDjHtpZliigvsrtepOPREOgQ/YGzvJ7M7MKVBZLrHHsabU8tFgT5mP7N
-	 lXorh6iz+acWGnSChI5C3bFZhA/5Y/a5fmY6o0XixLWPajLr10fOM70tb90tvbE3GY
-	 wbHWUXohr2CrAkYVgrES4YCel2OKg30iCknxF65zCkfIbGbfskEcPkF26L7rJhJoxB
-	 NrAEFU5P0zKcQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uJjXhq1qJTIG; Wed, 14 Sep 2022 10:04:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC388416FA;
-	Wed, 14 Sep 2022 10:04:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC388416FA
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BDD911BF5E9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 10:04:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 949FF40B4D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 10:04:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 949FF40B4D
+	s=default; t=1663161796;
+	bh=MDxdcw5pfXREM/LaKoUwTugYArLMkRUZf84DSKxAHDs=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1uC8kmBsqj2H9MxmgSF3ziVr5Z8xiWjneVPBnxNe00+RgWGux++/7TV0efmblRwxM
+	 UG0sgszDx4K9Sz0JqvpVjxJdgGXL9CSw0UFIRWJMRTY0hm19b6c0BNUp+5AqiXOX61
+	 AywBWK1CxWzBNl91/VH9IMXYEVrX0UtHiY0neW59N1ZD9PI1zey28/WRx59A8pqv2u
+	 OLFuOl0dr0I5wi1Fn4a7jigh8Vf15hlUFHEJ9wtHf7R3zis3kbSG1yP24nhatCI4uI
+	 wgejtdaYfZwRlpib3QezwC2kuiOeyTlaAeG+1uQoT/kPDIoMFLp7cSvm+wcv8slFRq
+	 G+UgYW3I+cbqA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p2uXlrbQ-jNZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Sep 2022 10:04:34 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZgRwbzR17Aos; Wed, 14 Sep 2022 13:23:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id D7BFE40BEB;
+	Wed, 14 Sep 2022 13:23:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D7BFE40BEB
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6EFAB1BF3BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 13:23:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3367C81D3A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 13:23:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3367C81D3A
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id w7e69Yz0-88s for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Sep 2022 13:23:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A342E404F4
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A342E404F4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 10:04:34 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10469"; a="298389717"
-X-IronPort-AV: E=Sophos;i="5.93,315,1654585200"; d="scan'208";a="298389717"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Sep 2022 03:04:33 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1A9BA81C40
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1A9BA81C40
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Sep 2022 13:23:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10470"; a="281458358"
+X-IronPort-AV: E=Sophos;i="5.93,315,1654585200"; d="scan'208";a="281458358"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2022 06:23:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,315,1654585200"; d="scan'208";a="945455007"
-Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
- by fmsmga005.fm.intel.com with ESMTP; 14 Sep 2022 03:04:32 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 14 Sep 2022 12:04:29 +0200
-Message-Id: <20220914100429.261290-1-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.34.1
+X-IronPort-AV: E=Sophos;i="5.93,315,1654585200"; d="scan'208";a="568008715"
+Received: from lkp-server01.sh.intel.com (HELO d6e6b7c4e5a2) ([10.239.97.150])
+ by orsmga003.jf.intel.com with ESMTP; 14 Sep 2022 06:23:05 -0700
+Received: from kbuild by d6e6b7c4e5a2 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oYSM4-0000Ec-26;
+ Wed, 14 Sep 2022 13:23:04 +0000
+Date: Wed, 14 Sep 2022 21:22:20 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6321d58c.VpYf6BlodGagyEU+%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1663149874; x=1694685874;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1663161787; x=1694697787;
+ h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=EP1t/mVLBhTFzyJCs5rvrchhrKM37OHMO8zvS7Pv5Rw=;
- b=fZTQTgthKBbO+jxVAWdiRyA3t/l2Ahr6r+r40WVZAT+Ytl5sr2TrAvF6
- DqHp8AK91Ak6A+ctSmzftu9yjq+1QkeJKf90WE5TkRG/YiOW9ilPyBL5r
- 25gYMHNnVEl7WHYd7IMc/iHoZ88Ox75sKw2EOdL2BeYtKhLtYGpzPUui4
- KI3+xMRrgpx9E/iWci3C/t7/xzPNSG+W5XZjcbEyUVDEF8YETNIvwISVk
- BbOD5JikvWzCHMbwB4YZ/m7+Hb9aHQMIF4V2wNSAazN3+mdIiUKpGMkhb
- aiw1vwN1/9NU+O/60Njp96yXsPlDJm64oOFe6pSXpIpOr4kb7tS46WNik
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=azFQWcp2O8/8m6MOP+XHeaq13bfKgvxg4MGQoprBWPw=;
+ b=iWezZ+eZdbW4CgLbpK7R8NKy7tOv8D33m/nNZ5cnYtvhBWskXd71RwOf
+ sf4WNk0VZUVr4pfFuqlNEUH0kB+ONuIXxHU/722zANnfDGhLHrRyp+965
+ 1AVaFXkxukTtQJl5cTXx/4ZNcBrbydL9rq+SGwYbhMyPkHPYfCH7tbEoz
+ 8A6wKwbFqBf0O+mNbGwbQol/n5Cz8drpWsUcQdYhAp/Q46NOCS26QweoR
+ 6uj54lNpCdVV6F3i7SQ3KmANkrkTCoQoV182t6jpRxsTCbWyR/0AXfcAa
+ bJ8U/+ZDW1a10z3WhiNtNSXZlpvSTpHq8G3YNnXbe3tlVksDEecqB/iyh
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fZTQTgth
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Add GPIO pin support for
- E823 products
+ header.a=rsa-sha256 header.s=Intel header.b=iWezZ+eZ
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 189a79207ab4e0e7e5566551bdad49fae944bb1a
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,168 +94,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Karol Kolacinski <karol.kolacinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add GPIO pin setup for E823, which is only 1PPS input and output.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 189a79207ab4e0e7e5566551bdad49fae944bb1a  i40e: Add appropriate error message logged for incorrect duplex setting
 
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_common.c | 25 ++++++++
- drivers/net/ethernet/intel/ice/ice_common.h |  1 +
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 64 +++++++++++++++++++++
- 3 files changed, 90 insertions(+)
+elapsed time: 727m
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 2a4b68ef7d55..11cc17372b74 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -193,6 +193,31 @@ bool ice_is_e810t(struct ice_hw *hw)
- 	return false;
- }
- 
-+/**
-+ * ice_is_e823
-+ * @hw: pointer to the hardware structure
-+ *
-+ * returns true if the device is E823-L or E823-C based, false if not.
-+ */
-+bool ice_is_e823(struct ice_hw *hw)
-+{
-+	switch (hw->device_id) {
-+	case ICE_DEV_ID_E823L_BACKPLANE:
-+	case ICE_DEV_ID_E823L_SFP:
-+	case ICE_DEV_ID_E823L_10G_BASE_T:
-+	case ICE_DEV_ID_E823L_1GBE:
-+	case ICE_DEV_ID_E823L_QSFP:
-+	case ICE_DEV_ID_E823C_BACKPLANE:
-+	case ICE_DEV_ID_E823C_QSFP:
-+	case ICE_DEV_ID_E823C_SFP:
-+	case ICE_DEV_ID_E823C_10G_BASE_T:
-+	case ICE_DEV_ID_E823C_SGMII:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- /**
-  * ice_clear_pf_cfg - Clear PF configuration
-  * @hw: pointer to the hardware structure
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index f339bdc48062..858b89a39cb6 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -198,6 +198,7 @@ void
- ice_stat_update32(struct ice_hw *hw, u32 reg, bool prev_stat_loaded,
- 		  u64 *prev_stat, u64 *cur_stat);
- bool ice_is_e810t(struct ice_hw *hw);
-+bool ice_is_e823(struct ice_hw *hw);
- int
- ice_sched_query_elem(struct ice_hw *hw, u32 node_teid,
- 		     struct ice_aqc_txsched_elem_data *buf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 011b727ab190..408beddc1210 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1788,6 +1788,38 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 	return err;
- }
- 
-+/**
-+ * ice_ptp_gpio_enable_e823 - Enable/disable ancillary features of PHC
-+ * @info: the driver's PTP info structure
-+ * @rq: The requested feature to change
-+ * @on: Enable/disable flag
-+ */
-+static int ice_ptp_gpio_enable_e823(struct ptp_clock_info *info,
-+				    struct ptp_clock_request *rq, int on)
-+{
-+	struct ice_pf *pf = ptp_info_to_pf(info);
-+	struct ice_perout_channel clk_cfg = {0};
-+	int err;
-+
-+	switch (rq->type) {
-+	case PTP_CLK_REQ_PPS:
-+		clk_cfg.gpio_pin = PPS_PIN_INDEX;
-+		clk_cfg.period = NSEC_PER_SEC;
-+		clk_cfg.ena = !!on;
-+
-+		err = ice_ptp_cfg_clkout(pf, PPS_CLK_GEN_CHAN, &clk_cfg, true);
-+		break;
-+	case PTP_CLK_REQ_EXTTS:
-+		err = ice_ptp_cfg_extts(pf, !!on, rq->extts.index,
-+					TIME_SYNC_PIN_INDEX, rq->extts.flags);
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return err;
-+}
-+
- /**
-  * ice_ptp_gettimex64 - Get the time of the clock
-  * @info: the driver's PTP info structure
-@@ -2239,6 +2271,19 @@ ice_ptp_setup_pins_e810(struct ice_pf *pf, struct ptp_clock_info *info)
- 	}
- }
- 
-+/**
-+ * ice_ptp_setup_pins_e823 - Setup PTP pins in sysfs
-+ * @pf: pointer to the PF instance
-+ * @info: PTP clock capabilities
-+ */
-+static void
-+ice_ptp_setup_pins_e823(struct ice_pf *pf, struct ptp_clock_info *info)
-+{
-+	info->pps = 1;
-+	info->n_per_out = 0;
-+	info->n_ext_ts = 1;
-+}
-+
- /**
-  * ice_ptp_set_funcs_e822 - Set specialized functions for E822 support
-  * @pf: Board private structure
-@@ -2276,6 +2321,23 @@ ice_ptp_set_funcs_e810(struct ice_pf *pf, struct ptp_clock_info *info)
- 	ice_ptp_setup_pins_e810(pf, info);
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e823 - Set specialized functions for E823 support
-+ * @pf: Board private structure
-+ * @info: PTP info to fill
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E823 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for e823
-+ * devices.
-+ */
-+static void
-+ice_ptp_set_funcs_e823(struct ice_pf *pf, struct ptp_clock_info *info)
-+{
-+	info->enable = ice_ptp_gpio_enable_e823;
-+	ice_ptp_setup_pins_e823(pf, info);
-+}
-+
- /**
-  * ice_ptp_set_caps - Set PTP capabilities
-  * @pf: Board private structure
-@@ -2296,6 +2358,8 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 
- 	if (ice_is_e810(&pf->hw))
- 		ice_ptp_set_funcs_e810(pf, info);
-+	else if (ice_is_e823(&pf->hw))
-+		ice_ptp_set_funcs_e823(pf, info);
- 	else
- 		ice_ptp_set_funcs_e822(pf, info);
- }
+configs tested: 58
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+i386                                defconfig
+i386                 randconfig-a001-20220912
+i386                 randconfig-a002-20220912
+i386                 randconfig-a003-20220912
+powerpc                           allnoconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                          rhel-8.3-func
+arm                                 defconfig
+x86_64                         rhel-8.3-kunit
+i386                 randconfig-a005-20220912
+x86_64                           rhel-8.3-kvm
+i386                 randconfig-a004-20220912
+x86_64                           rhel-8.3-syz
+i386                 randconfig-a006-20220912
+x86_64               randconfig-a001-20220912
+x86_64               randconfig-a002-20220912
+x86_64               randconfig-a003-20220912
+m68k                             allmodconfig
+x86_64                              defconfig
+arm64                            allyesconfig
+x86_64               randconfig-a004-20220912
+riscv                randconfig-r042-20220911
+i386                             allyesconfig
+arm                              allyesconfig
+x86_64                           allyesconfig
+x86_64               randconfig-a005-20220912
+arc                  randconfig-r043-20220912
+x86_64               randconfig-a006-20220912
+x86_64                               rhel-8.3
+arc                              allyesconfig
+arc                  randconfig-r043-20220911
+sh                               allmodconfig
+s390                 randconfig-r044-20220911
+mips                             allyesconfig
+powerpc                          allmodconfig
+m68k                             allyesconfig
+alpha                            allyesconfig
+ia64                             allmodconfig
+
+clang tested configs:
+x86_64               randconfig-a011-20220912
+i386                 randconfig-a013-20220912
+x86_64               randconfig-a012-20220912
+hexagon              randconfig-r041-20220912
+i386                 randconfig-a011-20220912
+x86_64               randconfig-a013-20220912
+hexagon              randconfig-r045-20220911
+i386                 randconfig-a012-20220912
+x86_64               randconfig-a014-20220912
+i386                 randconfig-a014-20220912
+x86_64               randconfig-a016-20220912
+hexagon              randconfig-r041-20220911
+i386                 randconfig-a015-20220912
+hexagon              randconfig-r045-20220912
+x86_64               randconfig-a015-20220912
+s390                 randconfig-r044-20220912
+riscv                randconfig-r042-20220912
+i386                 randconfig-a016-20220912
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
