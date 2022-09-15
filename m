@@ -1,84 +1,110 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 373CE5B9A9D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Sep 2022 14:21:22 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B5425B9B1A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Sep 2022 14:41:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C9CDC418E6;
-	Thu, 15 Sep 2022 12:21:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9CDC418E6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9B7E241061;
+	Thu, 15 Sep 2022 12:41:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9B7E241061
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663244478;
-	bh=knYkJOJJdQhCfhPxR+VOc8bQ9LLn4RE05+O7vAkPGcI=;
+	s=default; t=1663245713;
+	bh=XeRx6wnRtxhQAP6wf7gZI5El3TPplOWM85gCpi7c3DQ=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=TUxRMUSlie51c/gUi8nzLMgjj6PiGXWH2klllxbgu+uRPqQi9eDbNM3F6hqslgwWI
-	 0glUgJ0lsEymlqBlGALKvuUGY+elRe/fMIJt0xbtqMmhWQhtTKOuazKrwcWZQKXEo4
-	 TVS6i9gTfAXHrN8qzNtF0jcUCG9oi8mA+gvoLTdRqh9M2DDFlIGtDGsNq7pRAvvPc8
-	 jNeTLqdXZAYqVYK9+3m2fmpyDjVQhbiimPbFhhcw1RF5Dc7f2fd2hUpgnv/46cJSeC
-	 UxjyWvFa6UOTzzVwk9SUFagAXiZvZ/GoQvLefd1MlnJsFok/v513pasiYABBDN8+vb
-	 yLLuOoaR1F2qg==
+	b=lH23qxd1YmSQelKAi66N9uT5oQ0ehEy6s1VMg+HlSCi7cF6PhoNH2AidxzQhbHAMX
+	 k+zM0KVf027N4vykxxxncyDebSMBi6XvqTU4ocFqkkRHEYU6Wsy5bNj8p6pSqMvWB5
+	 NK5FfpVmES0A9wHlMgkh6eTAnvUGiKfCkZZmiXAKPH6Hx/wpYMbnoSk6kouBFhrOMW
+	 9D71r1KORiHn09Mg0iM5bZTtWOxPY2OhJ7MYKb2esYLq3bP3sq3oq1jVxKK/IiTare
+	 uHhD78FWXm+3JwQYMqG5IYKw/0oizTyI/u8WkW6ytDG5Yta3bh5Y2hjd5D7qWg70K7
+	 Zv1gsmZht7vdA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7z4IAWnTgLms; Thu, 15 Sep 2022 12:21:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6PR54L5gFm10; Thu, 15 Sep 2022 12:41:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 15151402CE;
-	Thu, 15 Sep 2022 12:21:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 15151402CE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 75B3E41058;
+	Thu, 15 Sep 2022 12:41:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 75B3E41058
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 79E851BF32A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:21:10 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D8C001BF32A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:41:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5EF54402CE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:21:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5EF54402CE
+ by smtp3.osuosl.org (Postfix) with ESMTP id B9E4260FA9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:41:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B9E4260FA9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lyAD4AYkKTv4 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Sep 2022 12:21:08 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 081FC4195B
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 081FC4195B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:21:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10470"; a="298692571"
-X-IronPort-AV: E=Sophos;i="5.93,318,1654585200"; d="scan'208";a="298692571"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Sep 2022 05:20:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,318,1654585200"; d="scan'208";a="759619446"
-Received: from enterprise.igk.intel.com ([10.102.20.175])
- by fmsmga001.fm.intel.com with ESMTP; 15 Sep 2022 05:20:54 -0700
-From: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 15 Sep 2022 14:14:34 +0200
-Message-Id: <20220915121433.15561-1-martyna.szapar-mudlaw@linux.intel.com>
-X-Mailer: git-send-email 2.36.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id j-B6NUTURxQz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Sep 2022 12:41:46 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BB94E60F4B
+Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
+ [IPv6:2a00:1450:4864:20::62a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BB94E60F4B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 12:41:45 +0000 (UTC)
+Received: by mail-ej1-x62a.google.com with SMTP id a26so13124892ejc.4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Sep 2022 05:41:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date;
+ bh=tzmtfB02Kll9bwoDnqvoio0j7mPs1ux70CIafG7WcfU=;
+ b=KpN3bnRF2n7CUMSLUxpTskYtNTLcV3/iXc+y/1bPPmnnDAyWS3tE4VIXIeomcnIl8H
+ OC2YxlrjJdyqPRswaR6ard8jMSffLIDhjxEe00c8Gqxm5AhdQ63eS+6ULeBdQsABa4LK
+ 2rsC1f33sSNzh7pvXLMFJiMN2gI/U1OUCIwUoRVDBcaNRvwzDKoWWGQhfUlNKZ4YYkZ/
+ mm/7Nh+5VN/fAfYZ77K1K5FzTy+jQOX4R2iMyjHtiYpwOllf/F/cf2wT4ymIJfYpsDXY
+ lmFulY1ZXUu7fSNjCXpccAtHblGRu5EljfFjlDIhjLQh3w7uHBaWOjo/S4wcu9hSLTmv
+ ce3Q==
+X-Gm-Message-State: ACgBeo2rrLdY/DTC9mGGff4u3oMmgwhd2n0IB0f7ObqwJsvnIb7mzv6D
+ pW0l+xY6IsA099O4muaja0A=
+X-Google-Smtp-Source: AA6agR6OETBFpaXizZkBzwGuLb/nSX3ng6zwpvWStvpMjub1lzTuDLEeGZHPr04IhJAIRKoFkOF22g==
+X-Received: by 2002:a17:906:8c7:b0:730:c1a9:e187 with SMTP id
+ o7-20020a17090608c700b00730c1a9e187mr29400332eje.55.1663245703722; 
+ Thu, 15 Sep 2022 05:41:43 -0700 (PDT)
+Received: from localhost.localdomain
+ (host-95-251-45-225.retail.telecomitalia.it. [95.251.45.225])
+ by smtp.gmail.com with ESMTPSA id
+ b18-20020a1709063cb200b007778c9b7629sm9056305ejh.34.2022.09.15.05.41.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Sep 2022 05:41:42 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org,
+ linux-hwmon@vger.kernel.org
+Date: Thu, 15 Sep 2022 14:40:12 +0200
+Message-Id: <20220915124012.28811-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1663244468; x=1694780468;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=+x3SGFChhmVQ7nu+7mVtbYYIJL4KZ2n4RQfyGCmnzm4=;
- b=OuM8Q0IV5AM4qcExm6tL0vq7avGqTHCUpOLq5NSTm+Z0JeQpASbgne9/
- V4Ze5EZ27iHJn+lQsLwLF61xf+/yGAKkztIFlqKhYZf6xq18DbC3hX7v5
- yAS+pBuWxtlXzjkTKVQgQKKEr81Gv656Se70dVW8AwMAdrG75TDS6oO9U
- 6jK7zFMZbIsCzELdBLo3NAls260/tV2l7JvvF8kbmmcq4rIiK8TuObZIr
- ghFn/FrFGM4oLtI4caIwb/tKHJMmfb59fsX86SqiTQuqlj7ZZVls8O3Ck
- /5LfQ7IrD8po1k5gChpT/Vv6F23NV3EWbue/pjLWchWYiu4CGrfMYWyd5
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OuM8Q0IV
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Add support for VLAN
- priority filters in switchdev
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date;
+ bh=tzmtfB02Kll9bwoDnqvoio0j7mPs1ux70CIafG7WcfU=;
+ b=atzRGS0IEVvnd6WXWC1rlccaFpBQ2yFXqBqZ0xtSuNwYZbyh6YLVXuYzo5VlCf3iMP
+ BXWfOqj/F/1zmWoyB2Ve1b4rG8wV4V0nXNPRF2ttYQZHs5S+vgVt5aY8tk9kzZEKkCGp
+ 99SPE2OCnrsp7ChpLRX6eFj/7iiUngJWcWymqH8Vf3Qh5/8epbpknxNhTWsZD+pPH0kl
+ 8q57dvY2+qmbkMehptiFXjeo8CWidirKYdwZ1kovxRZGLbsHsxjaOqqcaSrGOvJCGK+R
+ RYD31Gyww66Ch62fGeb1WerCHHiTxFWaTjfIwREbvvYEBrsMvYShWfKyvxogNPSQVbAY
+ U1LQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=atzRGS0I
+Subject: [Intel-wired-lan] [RESEND PATCH] ixgbe: Don't call kmap() on page
+ allocated with GFP_ATOMIC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,190 +117,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Cc: Ira Weiny <ira.weiny@intel.com>,
+ "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Enable support for adding TC rules that filter on the VLAN priority
-in switchdev mode.
+Pages allocated with GFP_ATOMIC cannot come from Highmem. This is why
+there is no need to call kmap() on them.
 
-VLAN priority are the first 3 bits of 16b switch field vector word
-which contain also vlan id value within its last 12 bits.
-When getting vlan priority value from tc match.key it
-has to be shifted first to proper bits positions (by VLAN_PRIO_SHIFT)
-and then can be added to the joint 'vlan' field in ice_vlan_hdr
-in lookup element.
+Therefore, don't call kmap() on rx_buffer->page() and instead use a
+plain page_address() to get the kernel address.
 
-The mask of lookup changes accordingly.
-0x0FFF - when only vlan id is added in filter
-0xE000 - when only vlan priority is added in filter
-0xEFFF - when both these values are specified
-
-Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-
+Suggested-by: Ira Weiny <ira.weiny@intel.com>
+Suggested-by: Alexander Duyck <alexander.duyck@gmail.com>
+Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+Reviewed-by: Alexander Duyck <alexander.duyck@gmail.com>
+Tested-by: Gurucharan <gurucharanx.g@intel.com>
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 73 ++++++++++++++++-----
- drivers/net/ethernet/intel/ice/ice_tc_lib.h |  4 +-
- 2 files changed, 60 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 42df686e0215..e359e7548e70 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -51,11 +51,11 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 		lkups_cnt++;
+I send again this patch because it was submitted more than two months ago,
+Monday 4th July 2022, but for one or more (good?) reasons it has not yet
+reached Linus' tree. In the meantime I am also forwarding two "Reviewed-by"
+and one "Tested-by" tags (thanks a lot to Ira, Alexander, Gurucharan).
+Obviously I have not made any changes to the code.
+
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 04f453eabef6..cb5c707538a5 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -1964,15 +1964,13 @@ static bool ixgbe_check_lbtest_frame(struct ixgbe_rx_buffer *rx_buffer,
  
- 	/* is VLAN specified? */
--	if (flags & ICE_TC_FLWR_FIELD_VLAN)
-+	if (flags & (ICE_TC_FLWR_FIELD_VLAN | ICE_TC_FLWR_FIELD_VLAN_PRIO))
- 		lkups_cnt++;
+ 	frame_size >>= 1;
  
- 	/* is CVLAN specified? */
--	if (flags & ICE_TC_FLWR_FIELD_CVLAN)
-+	if (flags & (ICE_TC_FLWR_FIELD_CVLAN | ICE_TC_FLWR_FIELD_CVLAN_PRIO))
- 		lkups_cnt++;
+-	data = kmap(rx_buffer->page) + rx_buffer->page_offset;
++	data = page_address(rx_buffer->page) + rx_buffer->page_offset;
  
- 	/* are PPPoE options specified? */
-@@ -385,7 +385,7 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 	}
+ 	if (data[3] != 0xFF ||
+ 	    data[frame_size + 10] != 0xBE ||
+ 	    data[frame_size + 12] != 0xAF)
+ 		match = false;
  
- 	/* copy VLAN info */
--	if (flags & ICE_TC_FLWR_FIELD_VLAN) {
-+	if (flags & (ICE_TC_FLWR_FIELD_VLAN | ICE_TC_FLWR_FIELD_VLAN_PRIO)) {
- 		vlan_tpid = be16_to_cpu(headers->vlan_hdr.vlan_tpid);
- 		rule_info->vlan_type =
- 				ice_check_supported_vlan_tpid(vlan_tpid);
-@@ -394,15 +394,45 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 			list[i].type = ICE_VLAN_EX;
- 		else
- 			list[i].type = ICE_VLAN_OFOS;
--		list[i].h_u.vlan_hdr.vlan = headers->vlan_hdr.vlan_id;
--		list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xFFFF);
-+
-+		if (flags & ICE_TC_FLWR_FIELD_VLAN) {
-+			list[i].h_u.vlan_hdr.vlan = headers->vlan_hdr.vlan_id;
-+			list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0x0FFF);
-+		}
-+
-+		if (flags & ICE_TC_FLWR_FIELD_VLAN_PRIO) {
-+			if (flags & ICE_TC_FLWR_FIELD_VLAN) {
-+				list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xEFFF);
-+			} else {
-+				list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xE000);
-+				list[i].h_u.vlan_hdr.vlan = 0;
-+			}
-+			list[i].h_u.vlan_hdr.vlan |=
-+				headers->vlan_hdr.vlan_prio;
-+		}
-+
- 		i++;
- 	}
- 
--	if (flags & ICE_TC_FLWR_FIELD_CVLAN) {
-+	if (flags & (ICE_TC_FLWR_FIELD_CVLAN | ICE_TC_FLWR_FIELD_CVLAN_PRIO)) {
- 		list[i].type = ICE_VLAN_IN;
--		list[i].h_u.vlan_hdr.vlan = headers->cvlan_hdr.vlan_id;
--		list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xFFFF);
-+
-+		if (flags & ICE_TC_FLWR_FIELD_CVLAN) {
-+			list[i].h_u.vlan_hdr.vlan = headers->cvlan_hdr.vlan_id;
-+			list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0x0FFF);
-+		}
-+
-+		if (flags & ICE_TC_FLWR_FIELD_CVLAN_PRIO) {
-+			if (flags & ICE_TC_FLWR_FIELD_CVLAN) {
-+				list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xEFFF);
-+			} else {
-+				list[i].m_u.vlan_hdr.vlan = cpu_to_be16(0xE000);
-+				list[i].h_u.vlan_hdr.vlan = 0;
-+			}
-+			list[i].h_u.vlan_hdr.vlan |=
-+				headers->cvlan_hdr.vlan_prio;
-+		}
-+
- 		i++;
- 	}
- 
-@@ -1264,16 +1294,22 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		if (match.mask->vlan_id) {
- 			if (match.mask->vlan_id == VLAN_VID_MASK) {
- 				fltr->flags |= ICE_TC_FLWR_FIELD_VLAN;
-+				headers->vlan_hdr.vlan_id =
-+					cpu_to_be16(match.key->vlan_id &
-+						    VLAN_VID_MASK);
- 			} else {
- 				NL_SET_ERR_MSG_MOD(fltr->extack, "Bad VLAN mask");
- 				return -EINVAL;
- 			}
- 		}
- 
--		headers->vlan_hdr.vlan_id =
--				cpu_to_be16(match.key->vlan_id & VLAN_VID_MASK);
--		if (match.mask->vlan_priority)
--			headers->vlan_hdr.vlan_prio = match.key->vlan_priority;
-+		if (match.mask->vlan_priority) {
-+			fltr->flags |= ICE_TC_FLWR_FIELD_VLAN_PRIO;
-+			headers->vlan_hdr.vlan_prio =
-+				cpu_to_be16((match.key->vlan_priority <<
-+					     VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK);
-+		}
-+
- 		if (match.mask->vlan_tpid)
- 			headers->vlan_hdr.vlan_tpid = match.key->vlan_tpid;
- 	}
-@@ -1291,6 +1327,9 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 		if (match.mask->vlan_id) {
- 			if (match.mask->vlan_id == VLAN_VID_MASK) {
- 				fltr->flags |= ICE_TC_FLWR_FIELD_CVLAN;
-+				headers->cvlan_hdr.vlan_id =
-+					cpu_to_be16(match.key->vlan_id &
-+						    VLAN_VID_MASK);
- 			} else {
- 				NL_SET_ERR_MSG_MOD(fltr->extack,
- 						   "Bad CVLAN mask");
-@@ -1298,10 +1337,12 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 			}
- 		}
- 
--		headers->cvlan_hdr.vlan_id =
--				cpu_to_be16(match.key->vlan_id & VLAN_VID_MASK);
--		if (match.mask->vlan_priority)
--			headers->cvlan_hdr.vlan_prio = match.key->vlan_priority;
-+		if (match.mask->vlan_priority) {
-+			fltr->flags |= ICE_TC_FLWR_FIELD_CVLAN_PRIO;
-+			headers->cvlan_hdr.vlan_prio =
-+				cpu_to_be16((match.key->vlan_priority <<
-+					     VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK);
-+		}
- 	}
- 
- 	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_PPPOE)) {
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index f397ed02606d..adf4d4c45f33 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -30,6 +30,8 @@
- #define ICE_TC_FLWR_FIELD_IP_TTL		BIT(23)
- #define ICE_TC_FLWR_FIELD_ENC_IP_TOS		BIT(24)
- #define ICE_TC_FLWR_FIELD_ENC_IP_TTL		BIT(25)
-+#define ICE_TC_FLWR_FIELD_VLAN_PRIO		BIT(26)
-+#define ICE_TC_FLWR_FIELD_CVLAN_PRIO		BIT(27)
- 
- #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
- 
-@@ -48,7 +50,7 @@ struct ice_tc_flower_action {
- 
- struct ice_tc_vlan_hdr {
- 	__be16 vlan_id; /* Only last 12 bits valid */
--	u16 vlan_prio; /* Only last 3 bits valid (valid values: 0..7) */
-+	__be16 vlan_prio; /* Only last 3 bits valid (valid values: 0..7) */
- 	__be16 vlan_tpid;
- };
+-	kunmap(rx_buffer->page);
+-
+ 	return match;
+ }
  
 -- 
-2.36.1
+2.37.2
 
 _______________________________________________
 Intel-wired-lan mailing list
