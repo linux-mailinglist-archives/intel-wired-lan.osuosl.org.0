@@ -1,87 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CF105E59C8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 06:01:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 308715E5AA8
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 07:26:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3EB29400EA;
-	Thu, 22 Sep 2022 04:01:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3EB29400EA
+	by smtp1.osuosl.org (Postfix) with ESMTP id CCD5083112;
+	Thu, 22 Sep 2022 05:26:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CCD5083112
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663819271;
-	bh=dj1QfWTkKVeJACf12B5PLYF3mu3tCMyrxnhEN9hZfy0=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=TO1OerNTBtlecmlUh0czQrMaEB8DaseUIOKIiCPoPjqJOndLyPwCWWZTDBA9fbX5O
-	 xrvYPZrSfEI7O8HrbPwrmlaxZ/LY8inRztOC1ar9UypPf6Hg2uCqtm1RC797tIlV9e
-	 qhzFU+ExuFf0P1Quuq6rCQJVYqNorKBnPd5b2P27pQThNTw2JoWbSqInAW+qKxGciC
-	 YT9VSABQtIQzmzYjsK02lMdfZKixAMFRQRQMS0pBzwPVJr8yDONGvMQhLlZE5OcgmU
-	 hKd7lSKfH/EV09kM+GmRJ52f57OqGCs5VkBqT17sjqrsOdnZTrdTC9cW2w8b+tPWa0
-	 BfE+87GLGAJjQ==
+	s=default; t=1663824397;
+	bh=Bc0ViiHZtAzTOZ6fYLIJMryDR+qGeZqnlrfmeb4z8TA=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=C0GpTOm2QwE4+1JrPU/hCLM6kZOus1CJmFCq5qtPwLJglv0ejroqh0RXXvxrlpuFS
+	 REjlLQYUL6JTp8KlpbwBqVwm3vt3TwB6Nb9/Sec6/GcGJxry44lrur+AELakqwusTb
+	 aL1obOhir3YkO3Sk8SiSbPtMLpPtZ5UkJAvyNjoWN711/Tm/hVSl55x9xRpnpMp1b5
+	 MEHPX8ujQq/hz7jCX0NG/6aKTlnsE+X/cVsOD87zaIcU9d+T0E7pi/UV69YR7hboi/
+	 3Ylx02L1VUR5eLss+GBGgxOaHShGTC/JIRkP324Hot1yQUFHGSlUGXVdyWxhODmZON
+	 7ZW3R5wDi3nbg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q4RAPhA6n1HJ; Thu, 22 Sep 2022 04:01:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UvY7NO_SxRx4; Thu, 22 Sep 2022 05:26:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DAAA04047C;
-	Thu, 22 Sep 2022 04:01:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DAAA04047C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9652383104;
+	Thu, 22 Sep 2022 05:26:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9652383104
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 23E9B1BF397
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 04:01:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D34801BF95C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 09DE041707
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 04:01:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 09DE041707
+ by smtp2.osuosl.org (Postfix) with ESMTP id ACE0540639
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ACE0540639
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lFreJfHwZSfJ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Sep 2022 04:01:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B95C541704
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B95C541704
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 04:01:02 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10477"; a="287269263"
-X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="287269263"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Sep 2022 21:01:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="688134298"
-Received: from lkp-server01.sh.intel.com (HELO c0a60f19fe7e) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 21 Sep 2022 21:00:59 -0700
-Received: from kbuild by c0a60f19fe7e with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1obDOV-0004H3-10;
- Thu, 22 Sep 2022 04:00:59 +0000
-Date: Thu, 22 Sep 2022 12:00:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <632bdde5.v/BC1StKEDcwi5xF%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mI4fUc1lEdKa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Sep 2022 05:26:29 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 86E17400CB
+Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com
+ [IPv6:2607:f8b0:4864:20::432])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 86E17400CB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:29 +0000 (UTC)
+Received: by mail-pf1-x432.google.com with SMTP id c198so8149646pfc.13
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Sep 2022 22:26:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=1AAj0jz/3WOf/ZinmBg4e5WZyKIExnDIP+4ApRXDWXk=;
+ b=WtHOtOCKPYmvHRGxJNPX8N75z9Di7O4XiSKRFOpuXdCRHcUgT18l59Y8kkbEn7cC+S
+ HBc2KieGuwjC4onT3uQx7Z6NCRhRK04Z6BaWLN3y4YFn2oh+nDQqbcXxm5hkA5wmHByx
+ AtBf9AhjCOVuIoxr8V8jOyn3OqXC4ZTur635cE2YoYGoTGcqqwT5RxeqccDHmE/Ka+a7
+ 5BLJ+tIXgDy+s5yrsMUFzgLwZqdT1WpwCblH8WysDkXC0dVWKeXXpBQ2WlOJNMZFp0X0
+ B3QCTywEXyv49lmRujvTW5KX7MGwp8ORVYSOcJQ/n4TvZFlk1yLA/FxLmxF3KRKm9CtM
+ jU/w==
+X-Gm-Message-State: ACrzQf3KrhHu3J+99E6cTuowqoMFtxU4ImH9vlnSQZHv6gdWQVtB7jIr
+ UvW9muNQoBJQwHbgqOPU6Ob2Dw==
+X-Google-Smtp-Source: AMsMyM4a+GHcnQt0UeqKstHRefYZ2pfi5aegxBG+GRLeLtm77LwF22DDWI605QZJjTDKHxZFsdcd6w==
+X-Received: by 2002:a63:cf56:0:b0:439:41ed:78fc with SMTP id
+ b22-20020a63cf56000000b0043941ed78fcmr1597609pgj.419.1663824388949; 
+ Wed, 21 Sep 2022 22:26:28 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id
+ l10-20020a170903120a00b0016f196209c9sm3102876plh.123.2022.09.21.22.26.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Sep 2022 22:26:28 -0700 (PDT)
+Date: Wed, 21 Sep 2022 22:26:27 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Kalle Valo <kvalo@kernel.org>
+Message-ID: <202209212224.A2F1DB798@keescook>
+References: <20220922031013.2150682-1-keescook@chromium.org>
+ <20220922031013.2150682-11-keescook@chromium.org>
+ <87fsgk6nys.fsf@kernel.org>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1663819262; x=1695355262;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=Wbq7MAJA/N9cwKSHiF+gpckZOpEgIHrU/w0ZyKXyKN0=;
- b=iD/4hvy60tix4isvFHMUbmpIsTVlu+4BvS5pMJcHnT9ZrqeMJpc9tNzD
- 9Eb9Fg/lihUOdydV81TsqG8b2OWgL7hxg+VralpeqXgKl+wSm/bgyFLu/
- UlMn+jAL35C9a2IMqxxZubIfTbh8WjVKMvmBzsxvgDOxj4HVepnJjLvI7
- x+Kb8B2WHYkp2ksOE3Qh5zal6O1oEFlS4UTJ/kY/5eWpJ59r1cvq8/Rm9
- pfBaC0ROF7HUf70Ikt4XK/y8r46jsf9zYe/ZO2KzEpXQjRyt17Mddvood
- DiQTixxjMhQut2kyUNeOHGfBX8QqZvV8N5u61zpT0eBKXXRYc++2M1Z8C
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iD/4hvy6
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- ae16ce9c89b49b5787c0fbb7f02bee5895bee216
+Content-Disposition: inline
+In-Reply-To: <87fsgk6nys.fsf@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=chromium.org; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=1AAj0jz/3WOf/ZinmBg4e5WZyKIExnDIP+4ApRXDWXk=;
+ b=E6vw8sjIHY/i68R43dGnMLa/5LLUaNZd7XsoFQWcc3w5wUJdtXNsxsEfsPht7kxdNG
+ JJ1tXBTf3XQqnlgOex/RZ+o0XMhSMgfcjsVoIr6koV6H3KyiaZ1lUXPNyODzP4yferwZ
+ bLRSqfuB8yrx2QNr5YGtL8EgG0hPZHJq7V7xk=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
+ header.a=rsa-sha256 header.s=google header.b=E6vw8sjI
+Subject: Re: [Intel-wired-lan] [PATCH 10/12] iwlwifi: Track scan_cmd
+ allocation size explicitly
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,87 +107,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-wireless@vger.kernel.org, llvm@lists.linux.dev,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
+ Gregory Greenman <gregory.greenman@intel.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
+ intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
+ Jacob Shin <jacob.shin@amd.com>, Marco Elver <elver@google.com>,
+ Johannes Berg <johannes.berg@intel.com>, Josef Bacik <josef@toxicpanda.com>,
+ linaro-mm-sig@lists.linaro.org, Yonghong Song <yhs@fb.com>,
+ David Sterba <dsterba@suse.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Vlastimil Babka <vbabka@suse.cz>, Alex Elder <elder@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ Pekka Enberg <penberg@kernel.org>, Daniel Micay <danielmicay@gmail.com>,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ Joonsoo Kim <iamjoonsoo.kim@lge.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: ae16ce9c89b49b5787c0fbb7f02bee5895bee216  e1000e: Remove unnecessary use of kmap_atomic()
+On Thu, Sep 22, 2022 at 07:18:51AM +0300, Kalle Valo wrote:
+> Kees Cook <keescook@chromium.org> writes:
+> 
+> > In preparation for reducing the use of ksize(), explicitly track the
+> > size of scan_cmd allocations. This also allows for noticing if the scan
+> > size changes unexpectedly. Note that using ksize() was already incorrect
+> > here, in the sense that ksize() would not match the actual allocation
+> > size, which would trigger future run-time allocation bounds checking.
+> > (In other words, memset() may know how large scan_cmd was allocated for,
+> > but ksize() will return the upper bounds of the actually allocated memory,
+> > causing a run-time warning about an overflow.)
+> >
+> > Cc: Gregory Greenman <gregory.greenman@intel.com>
+> > Cc: Kalle Valo <kvalo@kernel.org>
+> > Cc: Johannes Berg <johannes.berg@intel.com>
+> > Cc: linux-wireless@vger.kernel.org
+> > Cc: netdev@vger.kernel.org
+> > Signed-off-by: Kees Cook <keescook@chromium.org>
+> 
+> Via which tree is this iwlwifi patch going? Normally via wireless-next
+> or something else?
 
-elapsed time: 724m
-
-configs tested: 58
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-mips                             allyesconfig
-sh                               allmodconfig
-arc                  randconfig-r043-20220921
-riscv                randconfig-r042-20220921
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-x86_64                        randconfig-a011
-s390                                defconfig
-s390                 randconfig-r044-20220921
-x86_64                        randconfig-a013
-s390                             allyesconfig
-x86_64                        randconfig-a015
-arm                                 defconfig
-arm                              allyesconfig
-arm64                            allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                        randconfig-a004
-x86_64                           rhel-8.3-syz
-x86_64                        randconfig-a002
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                        randconfig-a006
-i386                                defconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a005
-i386                          randconfig-a016
-x86_64                              defconfig
-x86_64                           allyesconfig
-i386                             allyesconfig
-x86_64                               rhel-8.3
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-ia64                             allmodconfig
-
-clang tested configs:
-hexagon              randconfig-r041-20220921
-hexagon              randconfig-r045-20220921
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-x86_64                        randconfig-a005
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-i386                          randconfig-a002
-i386                          randconfig-a013
-i386                          randconfig-a004
-i386                          randconfig-a011
-i386                          randconfig-a015
-i386                          randconfig-a006
+This doesn't depend on the kmalloc_size_roundup() helper at all, so I
+would be happy for it to go via wireless-next if the patch seems
+reasonable.
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Kees Cook
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
