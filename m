@@ -2,99 +2,179 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 308715E5AA8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 07:26:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EBB035E5B04
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 07:55:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CCD5083112;
-	Thu, 22 Sep 2022 05:26:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CCD5083112
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D394831CB;
+	Thu, 22 Sep 2022 05:55:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D394831CB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663824397;
-	bh=Bc0ViiHZtAzTOZ6fYLIJMryDR+qGeZqnlrfmeb4z8TA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1663826129;
+	bh=fFnGXKOJ0AOXHGabHb+RovUbMxe+TASZTT7epjHCc/I=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=C0GpTOm2QwE4+1JrPU/hCLM6kZOus1CJmFCq5qtPwLJglv0ejroqh0RXXvxrlpuFS
-	 REjlLQYUL6JTp8KlpbwBqVwm3vt3TwB6Nb9/Sec6/GcGJxry44lrur+AELakqwusTb
-	 aL1obOhir3YkO3Sk8SiSbPtMLpPtZ5UkJAvyNjoWN711/Tm/hVSl55x9xRpnpMp1b5
-	 MEHPX8ujQq/hz7jCX0NG/6aKTlnsE+X/cVsOD87zaIcU9d+T0E7pi/UV69YR7hboi/
-	 3Ylx02L1VUR5eLss+GBGgxOaHShGTC/JIRkP324Hot1yQUFHGSlUGXVdyWxhODmZON
-	 7ZW3R5wDi3nbg==
+	b=AD2fmzzr7Gn/BZgaNYqo3IjWba4Oi16s03R1mozAAEilhe7N2VlC5oSSa2dN/LASd
+	 Ck0iztdcjbH55pd/MbYHxb7kYVbkNT7/a3nThjf0KCAPx4BMBOykUB8X5Bn9qrUwW3
+	 TrVd2iwGaLQ9hVwGIX4jBupdo5GHZEiQTKkoV5dk5sqHsGuH4LVoJzdLsYN/C8HWB5
+	 sFQRdqjuvZogTVTt6N5kk+4tWTnAVAZo/pwL7/HdZPHuT3MUwr14A5DCtMPKiGt2GZ
+	 sab4kat5Y5dvoz2hPyWE2eAx+9zAI/MBs516mwcmV8jXi07u3cTvo0/kHcO1lu1kPQ
+	 M1EzQob/zaWJg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UvY7NO_SxRx4; Thu, 22 Sep 2022 05:26:37 +0000 (UTC)
+	with ESMTP id JAvh4poYXKxB; Thu, 22 Sep 2022 05:55:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9652383104;
-	Thu, 22 Sep 2022 05:26:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9652383104
+	by smtp1.osuosl.org (Postfix) with ESMTP id B74E7831A9;
+	Thu, 22 Sep 2022 05:55:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B74E7831A9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D34801BF95C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E8F01BF95C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:55:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id ACE0540639
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ACE0540639
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4508F415FD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:55:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4508F415FD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mI4fUc1lEdKa for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Sep 2022 05:26:29 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 86E17400CB
-Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com
- [IPv6:2607:f8b0:4864:20::432])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 86E17400CB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:26:29 +0000 (UTC)
-Received: by mail-pf1-x432.google.com with SMTP id c198so8149646pfc.13
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Sep 2022 22:26:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=1AAj0jz/3WOf/ZinmBg4e5WZyKIExnDIP+4ApRXDWXk=;
- b=WtHOtOCKPYmvHRGxJNPX8N75z9Di7O4XiSKRFOpuXdCRHcUgT18l59Y8kkbEn7cC+S
- HBc2KieGuwjC4onT3uQx7Z6NCRhRK04Z6BaWLN3y4YFn2oh+nDQqbcXxm5hkA5wmHByx
- AtBf9AhjCOVuIoxr8V8jOyn3OqXC4ZTur635cE2YoYGoTGcqqwT5RxeqccDHmE/Ka+a7
- 5BLJ+tIXgDy+s5yrsMUFzgLwZqdT1WpwCblH8WysDkXC0dVWKeXXpBQ2WlOJNMZFp0X0
- B3QCTywEXyv49lmRujvTW5KX7MGwp8ORVYSOcJQ/n4TvZFlk1yLA/FxLmxF3KRKm9CtM
- jU/w==
-X-Gm-Message-State: ACrzQf3KrhHu3J+99E6cTuowqoMFtxU4ImH9vlnSQZHv6gdWQVtB7jIr
- UvW9muNQoBJQwHbgqOPU6Ob2Dw==
-X-Google-Smtp-Source: AMsMyM4a+GHcnQt0UeqKstHRefYZ2pfi5aegxBG+GRLeLtm77LwF22DDWI605QZJjTDKHxZFsdcd6w==
-X-Received: by 2002:a63:cf56:0:b0:439:41ed:78fc with SMTP id
- b22-20020a63cf56000000b0043941ed78fcmr1597609pgj.419.1663824388949; 
- Wed, 21 Sep 2022 22:26:28 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id
- l10-20020a170903120a00b0016f196209c9sm3102876plh.123.2022.09.21.22.26.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Sep 2022 22:26:28 -0700 (PDT)
-Date: Wed, 21 Sep 2022 22:26:27 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Kalle Valo <kvalo@kernel.org>
-Message-ID: <202209212224.A2F1DB798@keescook>
-References: <20220922031013.2150682-1-keescook@chromium.org>
- <20220922031013.2150682-11-keescook@chromium.org>
- <87fsgk6nys.fsf@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n2gmxhqkAi8G for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Sep 2022 05:55:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1FC1E415F8
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1FC1E415F8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 05:55:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10477"; a="279927393"
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="279927393"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2022 22:55:20 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="948458827"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga005.fm.intel.com with ESMTP; 21 Sep 2022 22:55:20 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Wed, 21 Sep 2022 22:55:20 -0700
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Wed, 21 Sep 2022 22:55:20 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Wed, 21 Sep 2022 22:55:20 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.104)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Wed, 21 Sep 2022 22:55:19 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Cgtnblu5BFAsq4mHOdgXaCVSsMUpJABoH345pXT0QZUkkXAJUD08xPq04zZawzhaFEXEAFXXtWfy1fX3vWE2O9hIeBivXOnH2IFfrBjKcg7CCbG3cUmFcnurwj5VV/8qbdUxVEia0zf+RrtCoL8MP1EkL+D2iLMUhiCX13Y8bPy8mqH55M5MQtBHo+zQQxVWRaDVQdTld1yYeUF0hRCJv+NtGTUxBmkloA5xl9QUK2IZrMVWNLFK18e4zXkN9aqvDgi/boTsTBM7Zxxsb6iJWkw2+5KWb78h3s5+MA2Ib8R3YAAzDTzTgF9DJkMlCrkhYha+thjJoS+a0e8vD3aIkg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ijFEtLL1bgwQDt2DuU7EDcZg+WyDN8Lr43UHEshxlMw=;
+ b=mJeFq8sGiU1rlg3lIPlFMBGpRZzPJ2i9cF3A3Um2lnlcKPFJ1bK87J9L2qM/9ReASJS4pUErOTJ1MOWDduSRwQEmy/zWNjWqi8j/j3BCxEKE4/ZGeSC38U2dEwGTNZosKw3IfBaYkH52XnHRYnbxV/UhB8Pr5gKQ1rnE2+dkTRiUZ2YHWQB+5Xvj4NNcUMyen8TXgmOb6PJPmKo5xCb7WlplXf0a4wHPxb/1NGDoGz5t+K/vf4P+w9/ujU0z4xejeE8XdrjLYPSUwlf7g4n1A96vPu7ZGdNHrV2q9bHhCWVAUeaHPeOv+hnMB+F+RWjbc/HlVUIDJ6PQAtnL7kHNtQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by BL1PR11MB5336.namprd11.prod.outlook.com (2603:10b6:208:316::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.17; Thu, 22 Sep
+ 2022 05:55:15 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::b26:8c78:fd62:300d]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::b26:8c78:fd62:300d%7]) with mapi id 15.20.5632.021; Thu, 22 Sep 2022
+ 05:55:15 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: "Maziarz, Kamil" <kamil.maziarz@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e: Fix not setting xps_cpus
+ after reset
+Thread-Index: AQHYx3mGmC6bTBUPmEWqIXs35/gaja3rAI1w
+Date: Thu, 22 Sep 2022 05:55:15 +0000
+Message-ID: <BYAPR11MB3367065CCBB94C1D63B7B287FC4E9@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20220913140206.64330-1-kamil.maziarz@intel.com>
+In-Reply-To: <20220913140206.64330-1-kamil.maziarz@intel.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|BL1PR11MB5336:EE_
+x-ms-office365-filtering-correlation-id: 98fd6704-2f77-403e-2783-08da9c5f0584
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: uK7jNpIk61PqiiLw4+viYwXakmkE3ej5TXX4ny8Ai9PJ0U10QfaCU7ZPhhf0H7oJmfp1aFvOyG68VmrGwREkqxgGtiVZKQWhkPeU+m+a2HxHo2Evtijz64OzN1Pg5u7qoVwCyuT3vYTC3vMPwLNZyYh74Gw/BJbmI6fkRhHwHKJSyJS0ggHq1OJLKN8dESUFA5/42t9lgmwu1HK9T2lui40H7Sd8CH6SLfnj5VNUzfC5Oqk7Ccd6P01pVqy3wTWsUyZPE0/5zG+aCOTCTrZFPi/KbIgjyOofUjX2jAA8YTcVHmm0VYasupPukTqBmfVc/5lPtRf7p/EOUEhExN6xnAoXh+ndUk4AAXs4+Hy98cTq4jx8TIEbYmVRpIVwGh/AMVeGk/0RKYwGFyRrZyNcr6eWgpFDueofF5kBPljtAP+ld7m5mrx95KEN6Ugum0wkdA5eij7lorrsRtMlDBhefcgwEJqRkTgWV7da29FWoi0YKD6ZaxTD6QAiQ+91D2Od0FVymaxzqLmkpRUaoJdV9xpLmtQB6cJVQ5FOED1gED4uvoFAlnb1IwpPTnZp/c8PiHRUB+L6FWXFsQhqyWgeW61ERH3fkHEeA4z6RdUikyxIH2FzlsEGVeka7Eiaw/2LURXDvJT3d3wZGAJwJ4WIXKv5xrmsTrSgwKRahyvwzoteH1Ib06tNKSQEHb8oJu+T++QWCOO+KUzr99rzQ45luDipUfldyqVteDXUCURCW//kGA50woEecQ3jHL3M+BJFoWNY/rErzZqkKNlLDzQV1A==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(376002)(346002)(366004)(396003)(136003)(39860400002)(451199015)(83380400001)(71200400001)(53546011)(41300700001)(26005)(9686003)(76116006)(5660300002)(2906002)(107886003)(55016003)(86362001)(316002)(54906003)(110136005)(4326008)(122000001)(6506007)(478600001)(186003)(33656002)(52536014)(82960400001)(38070700005)(66476007)(66556008)(66446008)(64756008)(66946007)(38100700002)(8936002)(7696005)(8676002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?fSGtN2Nk7BnGSh8h3lECdbxbzHyRKoUnBGK99FZVuSj6MFzm7WzAx02jh6+I?=
+ =?us-ascii?Q?iJrMGec34jWlVfjCILvgrN3B7Tx1pJb76ATb12YaUyMsgj/JOhomti3+fxGX?=
+ =?us-ascii?Q?AZy9dr3DNVP+sXgeSevV0SX3NWSG2HxM08MF3etwduzhkUS7xFfTMCTJzzFJ?=
+ =?us-ascii?Q?mbTwuS0ugXQ5sN9hbBPP0iNOs2f/uHA88DNUBvIpgx2ZF8MJUqIBO66tZHG1?=
+ =?us-ascii?Q?w7AS5pp5S8dxQNp0CZtUCjnQzAYZIJ3cZQuvOgUU0yK06uvfVsmctB+dwmx4?=
+ =?us-ascii?Q?sTABGxC4dA8vYaw4xAinKrPtltwBz7hByuDZCDfDUnfza2GNbb/pWrA0lSjo?=
+ =?us-ascii?Q?sUythGpVFHPPA1ymkroXpgqtyyBN4ryGusp7UkruHPaEM0n7akJcYUUW1T29?=
+ =?us-ascii?Q?5BLbHeKjtkzngagUEOpF+AMR4hAMb0N0QJVhVMwjTNaVf6t0gEwp6lGdx80s?=
+ =?us-ascii?Q?FrTzxzdUqhSzxHtT6nvzBOf7WjunVK+xkxLkasfLkxKjD0f1omrhULWbT5gE?=
+ =?us-ascii?Q?mnFbMC4qYt1Hs6IQ2TXaFvLnNZ8PZ/flTtJDNlyhpZgfAe4xIUjK3RfDN06y?=
+ =?us-ascii?Q?u80/E31qTajXOtmYcozzJ6jUJ+9NGZR/dKozM2LypX9JIOfE1ucOXFBrnf/8?=
+ =?us-ascii?Q?MB4UesXyjxu7Q7bls/AK99rU2lDWFf5IqSnEgPP+2TzUsZXpCblDK88ZtWcG?=
+ =?us-ascii?Q?x3OeNgcCVItojX0FEGZ9lUPcrysjwUlbCYBuSFfrQAgp32W4oTWsvwSKalnz?=
+ =?us-ascii?Q?uOyAMTWzUhoPmSi2lKcKD9yXwJ6KBwNXEOY6kHYeML5Qi0DxM3uG9OrAREA1?=
+ =?us-ascii?Q?uOWU17i9UcVOcUJwwTNfgM1fvTrqO8SihwDrVYJJ4SVQvpEIreCOXjX8xgZ9?=
+ =?us-ascii?Q?kW1h/7Z7t4tJxFAOXzXxltweyOKS50XtY0N3hBtT9FHnxtn/5tae1eH+ye/H?=
+ =?us-ascii?Q?7gJCPU4g3unQhUlf0Hw5UP22wIlqdxFiDa6EioK7e54lLbOmNFyIQHUYUVVf?=
+ =?us-ascii?Q?dDBAiocbiwgYNVAOKNYdmu+PfOWrRnacQIqQkZiXDbrWLTogrYsmPr6kxjGV?=
+ =?us-ascii?Q?jRuYCb3QGcwUTVVblGynPbetpZq0JodVRMzHU03S02xh7XSVFHaw5gf/WHsC?=
+ =?us-ascii?Q?rbkfH0UnCiLMjyO8Cz4SkJUzrgdW3e7Gqy31AUdOsMNiTQdRivImfhZgTdtV?=
+ =?us-ascii?Q?VGfaWVW4rjC4hOXR8dgco9fDJkZa9GTQW3D6bvdMYTNgfxs8fsk6EhPqib0g?=
+ =?us-ascii?Q?Szn6mVOlC9C9njd+kKBFyVUiMwfrw0ktTCVC4jQc9zCtPRAzeN1qs0bCiQqC?=
+ =?us-ascii?Q?nZUNQPbSE5xCeYhjw0TJJxNMD3OUZ4vCOgosb2OLfWGRGPtFE0h98wR8q/jV?=
+ =?us-ascii?Q?hDpZipawsOPv4w0Gj5jM1pqehoDZyVR+AdDDxi7bX6uBXg8OR/tIOQYgUddn?=
+ =?us-ascii?Q?Xd6CXvETEok5N6E+f1Odz1/mk4WscZVORnhMdBP4mNf42Ga501CO7aGeSQCV?=
+ =?us-ascii?Q?J3D926SZNzP1MrRD/cULZwhhQ/WE2h5TW8Jox2x4rJfrFg5t7eQ049eq+ggS?=
+ =?us-ascii?Q?Mb3rQAc1kxVCjoGBJzb23ouLCe764pdNktyZlsou?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87fsgk6nys.fsf@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=chromium.org; s=google;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=1AAj0jz/3WOf/ZinmBg4e5WZyKIExnDIP+4ApRXDWXk=;
- b=E6vw8sjIHY/i68R43dGnMLa/5LLUaNZd7XsoFQWcc3w5wUJdtXNsxsEfsPht7kxdNG
- JJ1tXBTf3XQqnlgOex/RZ+o0XMhSMgfcjsVoIr6koV6H3KyiaZ1lUXPNyODzP4yferwZ
- bLRSqfuB8yrx2QNr5YGtL8EgG0hPZHJq7V7xk=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
- header.a=rsa-sha256 header.s=google header.b=E6vw8sjI
-Subject: Re: [Intel-wired-lan] [PATCH 10/12] iwlwifi: Track scan_cmd
- allocation size explicitly
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98fd6704-2f77-403e-2783-08da9c5f0584
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2022 05:55:15.4094 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: KzuzeYuQBC04wwFBOCm/ytFhHJL+8Q0OGcn8/jB/RfhshSNZBz1Eqwr9mgTyMldjnhpHAoi+MZtToV+hKI8xYQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5336
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1663826121; x=1695362121;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=MX5q/oCD9GNTiVquqgza3hUalYIrcXfWmVdC3Qz0v9w=;
+ b=Y/ZKge+G5YssBCetu74GEl/DXfIXYJGulodi4kLP/wEPusUJ3llj3LsA
+ 5MTXgL051eJP7P12ZtJ34O++GMBbq9mGQWdXjnfKs31y9W1MwNaMPM4YI
+ RH9wbHm38lek2XzIj+vkpfZXp2LpK+f5fwsbDcbRGhbKKVlgNRntM2OJ0
+ csDA8Cf8iDC9QKdpMauUivfgoNOPNhPv+hpVVTHXqNs8tQUvbU9QR7W9A
+ 1bqiWKuj1yIXrZJa9N18Lw6xpayolnPZhRsWEtrZnX7vK5upma8949Vhk
+ 4rXc9YYaJzLzK/ayS2PAAuJcBIVMTEoC59KGRrAkVfjM363+BxOhh6cBE
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Y/ZKge+G
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Fix not setting xps_cpus
+ after reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,59 +187,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, llvm@lists.linux.dev,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
- Gregory Greenman <gregory.greenman@intel.com>,
- Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
- Jacob Shin <jacob.shin@amd.com>, Marco Elver <elver@google.com>,
- Johannes Berg <johannes.berg@intel.com>, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Yonghong Song <yhs@fb.com>,
- David Sterba <dsterba@suse.com>, Andrew Morton <akpm@linux-foundation.org>,
- Vlastimil Babka <vbabka@suse.cz>, Alex Elder <elder@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- Pekka Enberg <penberg@kernel.org>, Daniel Micay <danielmicay@gmail.com>,
- netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- Joonsoo Kim <iamjoonsoo.kim@lge.com>, "David S. Miller" <davem@davemloft.net>,
- linux-btrfs@vger.kernel.org
+Cc: "Jaron, MichalX" <michalx.jaron@intel.com>, "Maziarz,
+ Kamil" <kamil.maziarz@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 22, 2022 at 07:18:51AM +0300, Kalle Valo wrote:
-> Kees Cook <keescook@chromium.org> writes:
-> 
-> > In preparation for reducing the use of ksize(), explicitly track the
-> > size of scan_cmd allocations. This also allows for noticing if the scan
-> > size changes unexpectedly. Note that using ksize() was already incorrect
-> > here, in the sense that ksize() would not match the actual allocation
-> > size, which would trigger future run-time allocation bounds checking.
-> > (In other words, memset() may know how large scan_cmd was allocated for,
-> > but ksize() will return the upper bounds of the actually allocated memory,
-> > causing a run-time warning about an overflow.)
-> >
-> > Cc: Gregory Greenman <gregory.greenman@intel.com>
-> > Cc: Kalle Valo <kvalo@kernel.org>
-> > Cc: Johannes Berg <johannes.berg@intel.com>
-> > Cc: linux-wireless@vger.kernel.org
-> > Cc: netdev@vger.kernel.org
-> > Signed-off-by: Kees Cook <keescook@chromium.org>
-> 
-> Via which tree is this iwlwifi patch going? Normally via wireless-next
-> or something else?
 
-This doesn't depend on the kmalloc_size_roundup() helper at all, so I
-would be happy for it to go via wireless-next if the patch seems
-reasonable.
 
--- 
-Kees Cook
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Kamil Maziarz
+> Sent: Tuesday, September 13, 2022 7:32 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Jaron, MichalX <michalx.jaron@intel.com>; Maziarz, Kamil
+> <kamil.maziarz@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix not setting xps_cpus after
+> reset
+> 
+> From: Michal Jaron <michalx.jaron@intel.com>
+> 
+> During tx rings configuration default XPS queue config is set and
+> __I40E_TX_XPS_INIT_DONE is locked. XPS CPUs maps are cleared in every
+> reset by netdev_set_num_tc() call regardless it was set by user or driver. If
+> reset with reinit occurs __I40E_TX_XPS_INIT_DONE flag is removed and XPS
+> mapping is set to default again but after reset without reinit this flag is still set
+> and XPS CPUs to queues mapping stays cleared.
+> 
+> Add code to preserve xps_cpus mapping as cpumask for every queue and
+> restore those mapping at the end of reset.
+> 
+> Fixes: 6f853d4f8e93 ("i40e: allow XPS with QoS enabled")
+> Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
+> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e.h      |   6 ++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 109
+> ++++++++++++++++++++
+>  2 files changed, 115 insertions(+)
+> 
+
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
