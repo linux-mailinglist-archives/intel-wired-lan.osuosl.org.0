@@ -1,102 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60EB95E6465
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 15:57:03 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F9B45E61EC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 14:05:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3900C83E92;
-	Thu, 22 Sep 2022 13:57:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3900C83E92
+	by smtp3.osuosl.org (Postfix) with ESMTP id E0588610F0;
+	Thu, 22 Sep 2022 12:05:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E0588610F0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663855021;
-	bh=B0OnQB6/MTqedvwiQTTvHeVgieH59E7SMRiPHw93qC8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=AAqSKMvhExii+uvhFJFxJHyFNF60sVp65UhWN1f+AiHxpEOVdoWEFj4gqMIUU9Tqn
-	 RFR2eP4C2zFVcqN++tbR19ND9BHDmyt4RiiBbjea06f7d6pUCYgLSL6HHWvNyDlMDI
-	 j4Cj7+aN0WwjbUAs89nsaRJvRBgIDHntQFuJBYyFl1NiV5q9tW0qBswN5/bRaD/GWT
-	 8lDsFiIgE6cUWiOQLXkARHv7zv6LMmNGZIo0ZQNwUk9GCXM3pqvpGNKKHNI8YSCJYh
-	 Qha7553ZTul4YyWeRvfJWDclu+fOtC9ZSN1Moc5I0TpxhvIxDkDXfMonVe7kyOBPO4
-	 z9yDIkwDa/C2w==
+	s=default; t=1663848336;
+	bh=hOGuZcS7BXkUrL4bN88tgZ1RXR6RKTwWi6UjuJ4xILI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=jOr1WgnWRAyPgjfd0nonA54AC7HfOd6Vyq2cFgHNDjZFTLUA1vGs8T0IrO1ss9HTP
+	 iTu9/H+XT7R/rYYoXxwaGLW0Eaya8cXjrUX+ypBxcL8tPkv2n6fxNH9SN7wVeDIKnx
+	 L4xdjY9FRimalL255ntNFRQeIdshjfapKIcypk1ASuBwomzFk+y3M3DmJN/xWN2ypi
+	 F+63Sge1UnQOzXlwslpS9jTmSTrMz/JnfjVruIbWNpg0kXKqZiQC4LYus68OrcZZqv
+	 1mqWrSgSbTh72SYnFlyioDKtFwe50BNqSdsjGbDAN3VKk3LabmxtgeMrc4wef33NbT
+	 nGE7pR7jTrKHA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bATZny_k4hX4; Thu, 22 Sep 2022 13:57:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZXcYcZGBDRmC; Thu, 22 Sep 2022 12:05:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C24F183E8D;
-	Thu, 22 Sep 2022 13:56:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C24F183E8D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CAAD60AED;
+	Thu, 22 Sep 2022 12:05:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CAAD60AED
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EA2EC1BF409
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 11:12:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 118E91BF381
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 12:05:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BCE4960A6B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 11:12:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCE4960A6B
+ by smtp3.osuosl.org (Postfix) with ESMTP id DD28460AED
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 12:05:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD28460AED
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kHkFMC5jnilO for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Sep 2022 11:12:33 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9353D60B51
-Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
- [IPv6:2607:f8b0:4864:20::62b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9353D60B51
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 11:12:33 +0000 (UTC)
-Received: by mail-pl1-x62b.google.com with SMTP id w13so8490658plp.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 04:12:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=RZ+48UnAa8eecJxdZq6BiMyqwT/Ym9f2NYlp6Dy1smw=;
- b=qEq2n9AbpQqQ4yo1K9xk/Jk0NZqTMewEDdlkyBw4XfiY/fIuxFfoU0ojPYsoK8Bat8
- 9FcsgHOeKkvpMNtCBOa32qvoo0Nx6KBU8HoFcoWuPhXggTAi+2dJ2EpQiclJVuTMlNsS
- LxW1GlAiuLVRr5eMC/H7iYbIlnVcpGP+dfeXXZnRwMDM2BwfITXtpBUuf535IZcdiWXT
- UsOI/BH7R5Nem2RsfhxJdbeJNgnk1AwdQv9cxeP4YIwDIpZaGKbyReQYI4/+eoM4LS77
- DevGGK9N+dBhMgRA17840e5OdYRiOMt04hMEfmrb1JL+tMhdYGfCnVPbiaSJWC6ke2SV
- KK7Q==
-X-Gm-Message-State: ACrzQf1Q3Hhwi3cQfeGhWeo+ocChKZG26HwaxAf0sspOat9HTh95l56b
- IAxR0dYHkBniBvl4nxvHQ7A=
-X-Google-Smtp-Source: AMsMyM71qTO+0u9YewSNaiOe7OR50cbfyQkUWC6xIKoR/xE2vrqrOeMi/1IfaO5sjL4VCWr3VgDTkw==
-X-Received: by 2002:a17:90a:e513:b0:200:2275:2d27 with SMTP id
- t19-20020a17090ae51300b0020022752d27mr3211649pjy.162.1663845152925; 
- Thu, 22 Sep 2022 04:12:32 -0700 (PDT)
-Received: from hyeyoo ([114.29.91.56]) by smtp.gmail.com with ESMTPSA id
- p189-20020a62d0c6000000b00541196bd2d9sm4098278pfg.68.2022.09.22.04.12.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Sep 2022 04:12:32 -0700 (PDT)
-Date: Thu, 22 Sep 2022 20:12:21 +0900
-From: Hyeonggon Yoo <42.hyeyoo@gmail.com>
-To: Kees Cook <keescook@chromium.org>
-Message-ID: <YyxDFfKmSNNkHBFi@hyeyoo>
-References: <20220922031013.2150682-1-keescook@chromium.org>
- <20220922031013.2150682-2-keescook@chromium.org>
+ with ESMTP id uzXiCyiJLsGY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Sep 2022 12:05:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3A2D60ABE
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A3A2D60ABE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 12:05:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10477"; a="362044430"
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="362044430"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Sep 2022 05:05:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="745357086"
+Received: from s240.igk.intel.com (HELO s048.nql.local) ([10.102.18.202])
+ by orsmga004.jf.intel.com with ESMTP; 22 Sep 2022 05:05:14 -0700
+From: Jan Sokolowski <jan.sokolowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 22 Sep 2022 14:07:43 +0200
+Message-Id: <20220922120743.1937-1-jan.sokolowski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220922031013.2150682-2-keescook@chromium.org>
-X-Mailman-Approved-At: Thu, 22 Sep 2022 13:56:46 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=RZ+48UnAa8eecJxdZq6BiMyqwT/Ym9f2NYlp6Dy1smw=;
- b=G+jaEnK2EsNrSXni7xo2A5prc1siifdzoFue4z79INVmISHoJzmEC9GR9nYFQgsDIb
- I+dMTg2A+izoX3axTWSo/iYs6MjIzCmcdzB7dXax8chtAJiUZBX99VUNdhdppKGneXWq
- kYGXC1GYOzs1VjWq4+vqWobAy7LlMsBZFdMkrUYk942Mo7xIHHo97tyiWe9mlgU2Ni4u
- sX/UfkevtZ8mMh6n5HaMsQp+ivfAaex3bVTBLEN+6BskHMGics2YtdYw6Rq+h1kBbGkY
- geXieByTrSvc7tahia6awNomWGRXvkXfKN0rMilgYg11CJ2HrHEklB8Oi0KpiF2sgY/f
- QqoQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1663848328; x=1695384328;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=9qcHv/PO5jOTXOyZ+E/oXsb6vKosIaebEiIX4bT8x2Q=;
+ b=KgwQ9lPdglXCnlJW+2lQ+BWYFQHyFonfcsNLZOe60xwvs1ZufUTpITra
+ RAP483VK1QliRxSiWACGsqBWR/zHbb31kDAB86ttsqKZmIBilgaXmpSww
+ 68BHWBZQUnzWqnckxIAI94VRDgGFBDlV+teB9DFAIbg3GIX6bf15KkAOI
+ am9Ev8h0p5j66xvvEkymdwdeGmnfSLGtvC8oDuEik35A3uZHATxxkAO/i
+ 1LqL4MsVXWodzrdL4hRobGGt6pKE8TineGYwP4N/yEXNOXx/R6O8iev5j
+ ebPmCgZUPn/9GY8Gy5rPhaS5EICCnlWRawLoDKcCoPFGnz85GeJXlQi1J
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=G+jaEnK2
-Subject: Re: [Intel-wired-lan] [PATCH 01/12] slab: Introduce
- kmalloc_size_roundup()
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=KgwQ9lPd
+Subject: [Intel-wired-lan] [PATCH net v5] i40e: Fix DMA mappings leak
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,197 +90,270 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, Feng Tang <feng.tang@intel.com>,
- Jacob Shin <jacob.shin@amd.com>, llvm@lists.linux.dev,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
- Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- Miguel Ojeda <ojeda@kernel.org>, Yonghong Song <yhs@fb.com>,
- Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
- Marco Elver <elver@google.com>, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Jakub Kicinski <kuba@kernel.org>,
- David Sterba <dsterba@suse.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>,
- Vlastimil Babka <vbabka@suse.cz>, Alex Elder <elder@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, Pekka Enberg <penberg@kernel.org>,
- Daniel Micay <danielmicay@gmail.com>, netdev@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
- linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 21, 2022 at 08:10:02PM -0700, Kees Cook wrote:
-> In the effort to help the compiler reason about buffer sizes, the
-> __alloc_size attribute was added to allocators. This improves the scope
-> of the compiler's ability to apply CONFIG_UBSAN_BOUNDS and (in the near
-> future) CONFIG_FORTIFY_SOURCE. For most allocations, this works well,
-> as the vast majority of callers are not expecting to use more memory
-> than what they asked for.
-> 
-> There is, however, one common exception to this: anticipatory resizing
-> of kmalloc allocations. These cases all use ksize() to determine the
-> actual bucket size of a given allocation (e.g. 128 when 126 was asked
-> for). This comes in two styles in the kernel:
-> 
-> 1) An allocation has been determined to be too small, and needs to be
->    resized. Instead of the caller choosing its own next best size, it
->    wants to minimize the number of calls to krealloc(), so it just uses
->    ksize() plus some additional bytes, forcing the realloc into the next
->    bucket size, from which it can learn how large it is now. For example:
-> 
-> 	data = krealloc(data, ksize(data) + 1, gfp);
-> 	data_len = ksize(data);
-> 
-> 2) The minimum size of an allocation is calculated, but since it may
->    grow in the future, just use all the space available in the chosen
->    bucket immediately, to avoid needing to reallocate later. A good
->    example of this is skbuff's allocators:
-> 
-> 	data = kmalloc_reserve(size, gfp_mask, node, &pfmemalloc);
-> 	...
-> 	/* kmalloc(size) might give us more room than requested.
-> 	 * Put skb_shared_info exactly at the end of allocated zone,
-> 	 * to allow max possible filling before reallocation.
-> 	 */
-> 	osize = ksize(data);
->         size = SKB_WITH_OVERHEAD(osize);
-> 
-> In both cases, the "how large is the allocation?" question is answered
-> _after_ the allocation, where the compiler hinting is not in an easy place
-> to make the association any more. This mismatch between the compiler's
-> view of the buffer length and the code's intention about how much it is
-> going to actually use has already caused problems[1]. It is possible to
-> fix this by reordering the use of the "actual size" information.
-> 
-> We can serve the needs of users of ksize() and still have accurate buffer
-> length hinting for the compiler by doing the bucket size calculation
-> _before_ the allocation. Code can instead ask "how large an allocation
-> would I get for a given size?".
-> 
-> Introduce kmalloc_size_roundup(), to serve this function so we can start
-> replacing the "anticipatory resizing" uses of ksize().
->
+During reallocation of RX buffers, new DMA mappings are created for
+those buffers. New buffers with different RX ring count should
+substitute older ones, but those buffers were freed in
+i40e_configure_rx_ring and reallocated again with i40e_alloc_rx_bi,
+thus kfree on rx_bi caused leak of already mapped DMA.
 
-Cc-ing Feng Tang who may welcome this series ;)
+In case of non XDP ring, do not free rx_bi and reuse already existing
+buffer, move kfree to XDP rings only, remove unused i40e_alloc_rx_bi
+function.
 
-> [1] https://github.com/ClangBuiltLinux/linux/issues/1599
->     https://github.com/KSPP/linux/issues/183
-> 
-> Cc: Vlastimil Babka <vbabka@suse.cz>
-> Cc: Pekka Enberg <penberg@kernel.org>
-> Cc: David Rientjes <rientjes@google.com>
-> Cc: Joonsoo Kim <iamjoonsoo.kim@lge.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: linux-mm@kvack.org
-> Signed-off-by: Kees Cook <keescook@chromium.org>
-> ---
->  include/linux/slab.h | 31 +++++++++++++++++++++++++++++++
->  mm/slab_common.c     | 17 +++++++++++++++++
->  2 files changed, 48 insertions(+)
-> 
-> diff --git a/include/linux/slab.h b/include/linux/slab.h
-> index 0fefdf528e0d..4fc41e4ed4a2 100644
-> --- a/include/linux/slab.h
-> +++ b/include/linux/slab.h
-> @@ -188,7 +188,21 @@ void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __a
->  void kfree(const void *objp);
->  void kfree_sensitive(const void *objp);
->  size_t __ksize(const void *objp);
-> +
-> +/**
-> + * ksize - Report actual allocation size of associated object
-> + *
-> + * @objp: Pointer returned from a prior kmalloc()-family allocation.
-> + *
-> + * This should not be used for writing beyond the originally requested
-> + * allocation size. Either use krealloc() or round up the allocation size
-> + * with kmalloc_size_roundup() prior to allocation. If this is used to
-> + * access beyond the originally requested allocation size, UBSAN_BOUNDS
-> + * and/or FORTIFY_SOURCE may trip, since they only know about the
-> + * originally allocated size via the __alloc_size attribute.
-> + */
->  size_t ksize(const void *objp);
+steps for reproduction:
+while :
+do
+for ((i=0; i<=8160; i=i+32))
+do
+ethtool -G enp130s0f0 rx $i tx $i
+sleep 0.5
+ethtool -g enp130s0f0
+done
+done
 
-When users call ksize(), slab expects that it may access
-beyond the originally requested allocation size.
+Fixes: be1222b585fd ("i40e: Separate kernel allocated rx_bi rings from AF_XDP rings")
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+---
+v2: Fixed improper kerneldoc that resulted in a warning
+v3: Applied commit msg fixes reported during a review
+v4: Applied code style and formatting fixes to i40e_xsk.c
+reported during a review
+v5: Removed WARN_ON as it was an artifact from a previous
+method of rx_bi allocation and is no longer necessary
+(see commit 27b6b5c9a79c ("i40e: warn on double free")
 
-(i.e. KASAN unpoisons the whole object.)
-Maybe don't let KASAN unpoison to catch such users?
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  3 -
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 13 ++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 13 ++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  1 -
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    | 67 ++++++++++++++++---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.h    |  2 +-
+ 6 files changed, 71 insertions(+), 28 deletions(-)
 
-> +
->  #ifdef CONFIG_PRINTK
->  bool kmem_valid_obj(void *object);
->  void kmem_dump_obj(void *object);
-> @@ -779,6 +793,23 @@ extern void kvfree(const void *addr);
->  extern void kvfree_sensitive(const void *addr, size_t len);
->  
->  unsigned int kmem_cache_size(struct kmem_cache *s);
-> +
-> +/**
-> + * kmalloc_size_roundup - Report allocation bucket size for the given size
-> + *
-> + * @size: Number of bytes to round up from.
-> + *
-> + * This returns the number of bytes that would be available in a kmalloc()
-> + * allocation of @size bytes. For example, a 126 byte request would be
-> + * rounded up to the next sized kmalloc bucket, 128 bytes. (This is strictly
-> + * for the general-purpose kmalloc()-based allocations, and is not for the
-> + * pre-sized kmem_cache_alloc()-based allocations.)
-> + *
-> + * Use this to kmalloc() the full bucket size ahead of time instead of using
-> + * ksize() to query the size after an allocation.
-> + */
-> +unsigned int kmalloc_size_roundup(size_t size);
-> +
->  void __init kmem_cache_init_late(void);
->  
->  #if defined(CONFIG_SMP) && defined(CONFIG_SLAB)
-> diff --git a/mm/slab_common.c b/mm/slab_common.c
-> index 17996649cfe3..132d91a0f8c7 100644
-> --- a/mm/slab_common.c
-> +++ b/mm/slab_common.c
-> @@ -721,6 +721,23 @@ struct kmem_cache *kmalloc_slab(size_t size, gfp_t flags)
->  	return kmalloc_caches[kmalloc_type(flags)][index];
->  }
->  
-> +unsigned int kmalloc_size_roundup(size_t size)
-> +{
-> +	struct kmem_cache *c;
-> +
-> +	/* Short-circuit the 0 size case. */
-> +	if (size == 0)
-> +		return 0;
-> +	/* Above the smaller buckets, size is a multiple of page size. */
-> +	if (size > KMALLOC_MAX_CACHE_SIZE)
-> +		return PAGE_SIZE << get_order(size);
-> +
-> +	/* The flags don't matter since size_index is common to all. */
-> +	c = kmalloc_slab(size, GFP_KERNEL);
-> +	return c ? c->object_size : 0;
-> +}
-> +EXPORT_SYMBOL(kmalloc_size_roundup);
-
-This looks okay.
-
-Thanks!
-
-> +
->  #ifdef CONFIG_ZONE_DMA
->  #define KMALLOC_DMA_NAME(sz)	.name[KMALLOC_DMA] = "dma-kmalloc-" #sz,
->  #else
-> -- 
-> 2.34.1
-> 
-> 
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index e518aaa2c0ca..0f2042f1597c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -2181,9 +2181,6 @@ static int i40e_set_ringparam(struct net_device *netdev,
+ 			 */
+ 			rx_rings[i].tail = hw->hw_addr + I40E_PRTGEN_STATUS;
+ 			err = i40e_setup_rx_descriptors(&rx_rings[i]);
+-			if (err)
+-				goto rx_unwind;
+-			err = i40e_alloc_rx_bi(&rx_rings[i]);
+ 			if (err)
+ 				goto rx_unwind;
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 452ed104766e..e8d1fb8a966b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3565,12 +3565,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 	if (ring->vsi->type == I40E_VSI_MAIN)
+ 		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
+ 
+-	kfree(ring->rx_bi);
+ 	ring->xsk_pool = i40e_xsk_pool(ring);
+ 	if (ring->xsk_pool) {
+-		ret = i40e_alloc_rx_bi_zc(ring);
+-		if (ret)
+-			return ret;
+ 		ring->rx_buf_len =
+ 		  xsk_pool_get_rx_frame_size(ring->xsk_pool);
+ 		/* For AF_XDP ZC, we disallow packets to span on
+@@ -3588,9 +3584,6 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 			 ring->queue_index);
+ 
+ 	} else {
+-		ret = i40e_alloc_rx_bi(ring);
+-		if (ret)
+-			return ret;
+ 		ring->rx_buf_len = vsi->rx_buf_len;
+ 		if (ring->vsi->type == I40E_VSI_MAIN) {
+ 			ret = xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+@@ -13413,6 +13406,11 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+ 		i40e_reset_and_rebuild(pf, true, true);
+ 	}
+ 
++	if (!i40e_enabled_xdp_vsi(vsi) && prog)
++		i40e_realloc_rx_bi_zc(vsi, true);
++	else if (i40e_enabled_xdp_vsi(vsi) && !prog)
++		i40e_realloc_rx_bi_zc(vsi, false);
++
+ 	for (i = 0; i < vsi->num_queue_pairs; i++)
+ 		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
+ 
+@@ -13645,6 +13643,7 @@ int i40e_queue_pair_disable(struct i40e_vsi *vsi, int queue_pair)
+ 
+ 	i40e_queue_pair_disable_irq(vsi, queue_pair);
+ 	err = i40e_queue_pair_toggle_rings(vsi, queue_pair, false /* off */);
++	i40e_clean_rx_ring(vsi->rx_rings[queue_pair]);
+ 	i40e_queue_pair_toggle_napi(vsi, queue_pair, false /* off */);
+ 	i40e_queue_pair_clean_rings(vsi, queue_pair);
+ 	i40e_queue_pair_reset_stats(vsi, queue_pair);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 69e67eb6aea7..b97c95f89fa0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -1457,14 +1457,6 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
+ 	return -ENOMEM;
+ }
+ 
+-int i40e_alloc_rx_bi(struct i40e_ring *rx_ring)
+-{
+-	unsigned long sz = sizeof(*rx_ring->rx_bi) * rx_ring->count;
+-
+-	rx_ring->rx_bi = kzalloc(sz, GFP_KERNEL);
+-	return rx_ring->rx_bi ? 0 : -ENOMEM;
+-}
+-
+ static void i40e_clear_rx_bi(struct i40e_ring *rx_ring)
+ {
+ 	memset(rx_ring->rx_bi, 0, sizeof(*rx_ring->rx_bi) * rx_ring->count);
+@@ -1593,6 +1585,11 @@ int i40e_setup_rx_descriptors(struct i40e_ring *rx_ring)
+ 
+ 	rx_ring->xdp_prog = rx_ring->vsi->xdp_prog;
+ 
++	rx_ring->rx_bi =
++		kcalloc(rx_ring->count, sizeof(*rx_ring->rx_bi), GFP_KERNEL);
++	if (!rx_ring->rx_bi)
++		return -ENOMEM;
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index 41f86e9535a0..768290dc6f48 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -469,7 +469,6 @@ int __i40e_maybe_stop_tx(struct i40e_ring *tx_ring, int size);
+ bool __i40e_chk_linearize(struct sk_buff *skb);
+ int i40e_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
+ 		  u32 flags);
+-int i40e_alloc_rx_bi(struct i40e_ring *rx_ring);
+ 
+ /**
+  * i40e_get_head - Retrieve head from head writeback
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 6d4009e0cbd6..790aaeff1b47 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -10,14 +10,6 @@
+ #include "i40e_txrx_common.h"
+ #include "i40e_xsk.h"
+ 
+-int i40e_alloc_rx_bi_zc(struct i40e_ring *rx_ring)
+-{
+-	unsigned long sz = sizeof(*rx_ring->rx_bi_zc) * rx_ring->count;
+-
+-	rx_ring->rx_bi_zc = kzalloc(sz, GFP_KERNEL);
+-	return rx_ring->rx_bi_zc ? 0 : -ENOMEM;
+-}
+-
+ void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring)
+ {
+ 	memset(rx_ring->rx_bi_zc, 0,
+@@ -29,6 +21,58 @@ static struct xdp_buff **i40e_rx_bi(struct i40e_ring *rx_ring, u32 idx)
+ 	return &rx_ring->rx_bi_zc[idx];
+ }
+ 
++/**
++ * i40e_realloc_rx_xdp_bi - reallocate for either XSK or normal buffer
++ * @rx_ring: Current rx ring
++ * @pool_present: is pool for XSK present
++ *
++ * Try allocating memory and return ENOMEM, if failed to allocate.
++ * If allocation was successful, substitute buffer with allocated one.
++ * Returns 0 on success, negative on failure
++ */
++static int i40e_realloc_rx_xdp_bi(struct i40e_ring *rx_ring, bool pool_present)
++{
++	size_t elem_size = pool_present ? sizeof(*rx_ring->rx_bi_zc) :
++					  sizeof(*rx_ring->rx_bi);
++	void *sw_ring = kcalloc(rx_ring->count, elem_size, GFP_KERNEL);
++
++	if (!sw_ring)
++		return -ENOMEM;
++
++	if (pool_present) {
++		kfree(rx_ring->rx_bi);
++		rx_ring->rx_bi = NULL;
++		rx_ring->rx_bi_zc = sw_ring;
++	} else {
++		kfree(rx_ring->rx_bi_zc);
++		rx_ring->rx_bi_zc = NULL;
++		rx_ring->rx_bi = sw_ring;
++	}
++	return 0;
++}
++
++/**
++ * i40e_realloc_rx_bi_zc - reallocate xdp queue pairs
++ * @vsi: Current VSI
++ * @zc: is zero copy set
++ *
++ * Reallocate buffer for rx_rings that might be used by XSK.
++ * XDP requires more memory, than rx_buf provides.
++ * Returns 0 on success, negative on failure
++ */
++int i40e_realloc_rx_bi_zc(struct i40e_vsi *vsi, bool zc)
++{
++	struct i40e_ring *rx_ring;
++	unsigned long q;
++
++	for_each_set_bit(q, vsi->af_xdp_zc_qps, vsi->alloc_queue_pairs) {
++		rx_ring = vsi->rx_rings[q];
++		if (i40e_realloc_rx_xdp_bi(rx_ring, zc))
++			return -ENOMEM;
++	}
++	return 0;
++}
++
+ /**
+  * i40e_xsk_pool_enable - Enable/associate an AF_XDP buffer pool to a
+  * certain ring/qid
+@@ -69,6 +113,10 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
+ 		if (err)
+ 			return err;
+ 
++		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], true);
++		if (err)
++			return err;
++
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+ 			return err;
+@@ -113,6 +161,9 @@ static int i40e_xsk_pool_disable(struct i40e_vsi *vsi, u16 qid)
+ 	xsk_pool_dma_unmap(pool, I40E_RX_DMA_ATTR);
+ 
+ 	if (if_running) {
++		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], false);
++		if (err)
++			return err;
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+ 			return err;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.h b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+index bb962987f300..821df248f8be 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+@@ -32,7 +32,7 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget);
+ 
+ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring);
+ int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+-int i40e_alloc_rx_bi_zc(struct i40e_ring *rx_ring);
++int i40e_realloc_rx_bi_zc(struct i40e_vsi *vsi, bool zc);
+ void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring);
+ 
+ #endif /* _I40E_XSK_H_ */
 -- 
-Thanks,
-Hyeonggon
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
