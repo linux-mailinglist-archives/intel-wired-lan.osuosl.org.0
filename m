@@ -1,96 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF5FF5E5E72
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 11:24:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91A9D5E6001
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Sep 2022 12:37:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 23C1A404EC;
-	Thu, 22 Sep 2022 09:24:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 23C1A404EC
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5F46D41526;
+	Thu, 22 Sep 2022 10:37:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F46D41526
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663838645;
-	bh=Man8nfgqEzQb9lgGc804ZyMQz+sBm5wf7EYQemaBSA4=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=o9QppyyLPdBYQpalg79Url7x6Z8HGgYt3BF7tWGUtzVSoAEjxzD3l20kBYEvxbcNc
-	 nT+MX2ZCM3knue1E7XS8AimY3qYtFZfCLegMvl6d3y9UnvD58eki8s0qfOlK98PsCv
-	 vfbQMoWF66mnxvLrUlldhskoJLzprtp3PrEhnWStap9LjgeMbQ6CPIpNJ7LkkhglS8
-	 eSgi339NTCEr4Gi02Ql1MOZmyWG/qYcNOKCMF7ppi+v5SCD6NuZhHTT8CZag2C3kZs
-	 upT49bU2aP132FoLVToLteVdRSItefXpSDDkvsEvUaMAGsgxQNrMQPXVka/P4oYvxP
-	 DF/2R5ecVxsbw==
+	s=default; t=1663843064;
+	bh=lLFHV1Zj3RzlBsJ/f7N2/G4bQ0yTEBik0V6UrtvinvM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=BU823Yx5bAAG+6tL+AThwrjmrwJ+nQk2exdJ6P7WIf3mxp4oXsBOKQY8/jV9MtD/k
+	 NxQTRISOVbz70TVdy6MYxDhFakaoKCQA6L3A8CvUGL9e8TnsdJsUePxDCa0DWmDPfV
+	 eJDLLS+MFpUHHlzGHEjvNJfVuAMRxLtanimhnzPcwy+4DlmRQDWjsAMQNrbl1FMRwp
+	 vDi6CwUmR0om0PewDW7TgD03gIg4oVFKC0UFF9d9yZWf+0hjbwJnGAbDKxshtJrSqG
+	 10HPoUkWX605CoiObXEusJPov9F82j+3JyJHHHAJVN5BBnUlyNLqiSNwewpmgQK5tV
+	 z5KYlsY1/vgPw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id caDxYSHD9VQy; Thu, 22 Sep 2022 09:24:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PZ9Opg1e0nVm; Thu, 22 Sep 2022 10:37:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1FC0A404A6;
-	Thu, 22 Sep 2022 09:24:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1FC0A404A6
+	by smtp4.osuosl.org (Postfix) with ESMTP id DAA314150F;
+	Thu, 22 Sep 2022 10:37:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DAA314150F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3EEE61BF956
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 09:23:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 240201BF36C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 10:37:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1901D404A6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 09:23:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1901D404A6
+ by smtp1.osuosl.org (Postfix) with ESMTP id EB49F83298
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 10:37:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB49F83298
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xwkUVIUefStc for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Sep 2022 09:23:58 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 67B3F40385
-Received: from mail-io1-xd2e.google.com (mail-io1-xd2e.google.com
- [IPv6:2607:f8b0:4864:20::d2e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 67B3F40385
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 09:23:58 +0000 (UTC)
-Received: by mail-io1-xd2e.google.com with SMTP id 138so7162768iou.9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 02:23:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date;
- bh=eq1ulTtXYhBmIV3Hec+MzaFRLDXw1vSRF6+bOMmPhJ4=;
- b=pwjCkiDlQOuau6BG7qfwEaO38QW/VuF4j3ELkfuMk0vak9TFdqv+rjNhesF+TAFwDw
- A0Hukq58G2JkoPbKM2QVFIKlBBBJocyn4tdwdsec9W2N9aZjWwxP3y0SFii6MoXvYo2m
- e6dC8WCDr0t68vpvwA3Pq65Nb8hqVSpN50eUumDj1sDBFXZrJoWM3JFVgHI69C89ET1s
- 5kCGyTUzO8bGXd08eGyvioUeXkbcQs/AV1MU+BZnPGsntv4GffTFOeBTUOWR/Nq1WWyi
- dEKRxiBI7KFqgfUk+XrQSD3FfYd/6W9Vhh1nHuOi6/cpj56h64Z6omg/brnCMxdy3qnf
- pnxw==
-X-Gm-Message-State: ACrzQf0njGwLZ4hu3wtdLm380dh0wXkJw8vUxN3kagIJzxAkKbz9oKzq
- ZwA7pMpJK1MRVQwDY/09QzE7OvDlGQdW9iQyfeU=
-X-Google-Smtp-Source: AMsMyM4VmAwcaT5Lc+Ww++2Y7GpjHXOf8JO1cC9hLR1vHps4lN+vAXggqFNSedolxw1DncuzKFlDGIHvcmXTBzRY/kM=
-X-Received: by 2002:a05:6638:dcc:b0:35a:7ba6:ad51 with SMTP id
- m12-20020a0566380dcc00b0035a7ba6ad51mr1404409jaj.256.1663838637536; Thu, 22
- Sep 2022 02:23:57 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id J0nJSa6qYOMg for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Sep 2022 10:37:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4968681450
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4968681450
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Sep 2022 10:37:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10477"; a="298978407"
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="298978407"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Sep 2022 03:37:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; d="scan'208";a="597381833"
+Received: from kkolacin-desk1.igk.intel.com ([172.22.229.172])
+ by orsmga006.jf.intel.com with ESMTP; 22 Sep 2022 03:37:35 -0700
+From: Karol Kolacinski <karol.kolacinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 22 Sep 2022 12:37:32 +0200
+Message-Id: <20220922103732.19324-1-karol.kolacinski@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20220922031013.2150682-1-keescook@chromium.org>
- <20220922031013.2150682-12-keescook@chromium.org>
-In-Reply-To: <20220922031013.2150682-12-keescook@chromium.org>
-From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Date: Thu, 22 Sep 2022 11:23:46 +0200
-Message-ID: <CANiq72=m9VngFH9jE3s0RV7MpjX0a=ekJN4pZwcDksBkSRR_1w@mail.gmail.com>
-To: Kees Cook <keescook@chromium.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date;
- bh=eq1ulTtXYhBmIV3Hec+MzaFRLDXw1vSRF6+bOMmPhJ4=;
- b=bE2W6qfxPeZ5hG8th9HBte8uWTQjYuCcr36yI1hhiheOM64/zofTi1amyoUC/YRb+J
- NgesQGAjTL00GMSehk4Np33KVgoKvpm/Mh3RSzMdF+EkL5Y4k9K6GB3q17DXyKsUm/6E
- tSUleWEaIUryrEiqLEE56d9SYCS/YFMrs6gU37f7Pqu7tr26K2zmBNy6tAGoGVxQ5f+n
- DlMD1/oSQBrQp/QHyG7CgFktY+50H+Wm33tTFaH8FxMf0iDQdWTe9OU6Ok7FDH/xYrVm
- +Y17qm2jbLBl43Ckz4h9g/NlAB7oNcZMDPJUHArvKPR8Jrr0Y7Jjk4kBCdA2lo60DN3B
- Aphg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=bE2W6qfx
-Subject: Re: [Intel-wired-lan] [PATCH 11/12] slab: Remove __malloc attribute
- from realloc functions
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1663843057; x=1695379057;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=1/ftRoMjCKZECNNNIZZKqQbNg4GIrlfOrokXg0y7y+s=;
+ b=Z63y4zypCZB5HWVBb9TxT20s9uIJSLJvwRg7j7O0bGRr7V8NWXoHpwNF
+ 9XzEonC5oaUVh3BjrkDKSFzqo0HktVmqOKZixyFZtv3hWg7y/ggTzJwVU
+ T39u4kZADe8GldAAyIsm5uzeRNz2ztgcikTMVUY4JEwoyk7vVi8CMKH+a
+ Btnb9llootYsEekGDKAumqGj3pU4SXXnNnWbyrIm0aXmTi6ImXEc9Mu9T
+ gCCQa7CPncQMQnwG+IWI1HS1dXdVr2C2P4F/xYLJ0CT1Q24/Hw//sIs+A
+ EXw9q/Kd48XHGqlwZLZimrqu3N0iui27OSUFww9o1g0+ceEp4o514HtyV
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Z63y4zyp
+Subject: [Intel-wired-lan] [PATCH net-next] ice: Add crosstimestamping on
+ E823 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,44 +94,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-wireless@vger.kernel.org, Jacob Shin <jacob.shin@amd.com>,
- llvm@lists.linux.dev, dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
- Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- Miguel Ojeda <ojeda@kernel.org>, Yonghong Song <yhs@fb.com>,
- Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
- Marco Elver <elver@google.com>, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Jakub Kicinski <kuba@kernel.org>,
- David Sterba <dsterba@suse.com>, Andrew Morton <akpm@linux-foundation.org>,
- Vlastimil Babka <vbabka@suse.cz>, Hao Luo <haoluo@google.com>,
- Alex Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, Pekka Enberg <penberg@kernel.org>,
- Daniel Micay <danielmicay@gmail.com>, netdev@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, Joonsoo Kim <iamjoonsoo.kim@lge.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- linux-btrfs@vger.kernel.org
+Cc: Karol Kolacinski <karol.kolacinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 22, 2022 at 5:10 AM Kees Cook <keescook@chromium.org> wrote:
->
-> -#ifdef __alloc_size__
-> -# define __alloc_size(x, ...)  __alloc_size__(x, ## __VA_ARGS__) __malloc
-> -#else
-> -# define __alloc_size(x, ...)  __malloc
-> -#endif
-> +#define __alloc_size(x, ...)   __alloc_size__(x, ## __VA_ARGS__) __malloc
-> +#define __realloc_size(x, ...) __alloc_size__(x, ## __VA_ARGS__)
+E823 devices on supported platforms can generate a cross timestamp
+between the platform ART and the device time. This process allows for
+very precise measurement of the difference between the PTP hardware
+clock and the platform time.
 
-These look unconditional now, so we could move it to
-`compiler_attributes.h` in a later patch (or an independent series).
+This is only supported if we know the TSC frequency relative to ART, so
+we do not enable this unless the boot CPU has a known TSC frequency (as
+required by convert_art_ns_to_tsc).
 
-Cheers,
-Miguel
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 408beddc1210..9d1afeca9624 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2036,7 +2036,7 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
+ }
+ 
+ /**
+- * ice_ptp_getcrosststamp_e822 - Capture a device cross timestamp
++ * ice_ptp_getcrosststamp_e82x - Capture a device cross timestamp
+  * @info: the driver's PTP info structure
+  * @cts: The memory to fill the cross timestamp info
+  *
+@@ -2044,14 +2044,14 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
+  * clock. Fill the cross timestamp information and report it back to the
+  * caller.
+  *
+- * This is only valid for E822 devices which have support for generating the
+- * cross timestamp via PCIe PTM.
++ * This is only valid for E822 and E823 devices which have support for
++ * generating the cross timestamp via PCIe PTM.
+  *
+  * In order to correctly correlate the ART timestamp back to the TSC time, the
+  * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
+  */
+ static int
+-ice_ptp_getcrosststamp_e822(struct ptp_clock_info *info,
++ice_ptp_getcrosststamp_e82x(struct ptp_clock_info *info,
+ 			    struct system_device_crosststamp *cts)
+ {
+ 	struct ice_pf *pf = ptp_info_to_pf(info);
+@@ -2300,7 +2300,7 @@ ice_ptp_set_funcs_e822(struct ice_pf *pf, struct ptp_clock_info *info)
+ #ifdef CONFIG_ICE_HWTS
+ 	if (boot_cpu_has(X86_FEATURE_ART) &&
+ 	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
+-		info->getcrosststamp = ice_ptp_getcrosststamp_e822;
++		info->getcrosststamp = ice_ptp_getcrosststamp_e82x;
+ #endif /* CONFIG_ICE_HWTS */
+ }
+ 
+@@ -2334,6 +2334,12 @@ ice_ptp_set_funcs_e810(struct ice_pf *pf, struct ptp_clock_info *info)
+ static void
+ ice_ptp_set_funcs_e823(struct ice_pf *pf, struct ptp_clock_info *info)
+ {
++#ifdef CONFIG_ICE_HWTS
++	if (boot_cpu_has(X86_FEATURE_ART) &&
++	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
++		info->getcrosststamp = ice_ptp_getcrosststamp_e82x;
++#endif /* CONFIG_ICE_HWTS */
++
+ 	info->enable = ice_ptp_gpio_enable_e823;
+ 	ice_ptp_setup_pins_e823(pf, info);
+ }
+-- 
+2.34.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
