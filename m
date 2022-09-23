@@ -2,110 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD7705E8386
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Sep 2022 22:28:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B9495E8383
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Sep 2022 22:28:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C89E41A62;
-	Fri, 23 Sep 2022 20:28:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C89E41A62
+	by smtp4.osuosl.org (Postfix) with ESMTP id 59C7841578;
+	Fri, 23 Sep 2022 20:28:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59C7841578
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663964924;
-	bh=jAsrjYEwEEnEv74cevrJWoJEOADERALYLz+SblBeTSs=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=COnBpnu3uJHrXwKAD1RztcQRlj4gnBt+CCuIKU6xjC/wJ78CyjJLyrFQKWeTgHjZ9
-	 3plhbMs9i5cgr2kwI32vF1h3+4oemX1Dv0g+zMDLhp+RWWijmBpURzsnuuBkgaTW98
-	 huQ1Yxgon3UuqGH864TB9CVsKKWrsEO8Xl/WCDlq9dulkjxcpa9CAm/2GRvphP0vjy
-	 AaSIUP/ZVDhiYramYduClu2rxOLYRMulPic9P+5USzea8VHQTKAemw6aYcS8223sJe
-	 TchO5F3Z6S1+70qNxpZd0mE6a0/3thLbsPZr2MUwkuEc7Polgwk+wn/nJCspWYjQJn
-	 bNJQpqVpalI6Q==
+	s=default; t=1663964916;
+	bh=K/EuB93BLVBUARi2567PY5qEQeEvc6PW9axWWfOUjx0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=0yQC32cS+Xu+K5s8cpzX+EHIiymffjMtJMswx5FaUxDGUvwjJ6JP58rF6VlZgzALV
+	 1V9su7NoZq59i8GUBsqMCdbdgg8agTUCNs0/u4xMYvhMNoIXt7ciEWoYlFDo27Tb29
+	 sDyqTFVNCAM6Ggc6Mz+hLQaHAdioQfGSs1JFhaqOaFu9iGzfnDi6EAT05KRPeaaMMg
+	 9KnaN1aN0z2WNnguZf5vQcuRYieUp9fDeHdsEzFr29XS3NuF9qgXXTLzEbennY0HrT
+	 /9y6yOvDbyUJsp9Z2rSAaXsPrpR4Hf72Mq15t9Mitf+qOLX8KB7W03udqdAyZwqQvv
+	 7kR/qDwigURog==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wo5r9UneJD1B; Fri, 23 Sep 2022 20:28:42 +0000 (UTC)
+	with ESMTP id SMzVE97v_N9O; Fri, 23 Sep 2022 20:28:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1014840908;
-	Fri, 23 Sep 2022 20:28:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1014840908
+	by smtp4.osuosl.org (Postfix) with ESMTP id 14ED5408D1;
+	Fri, 23 Sep 2022 20:28:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14ED5408D1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 264E81C2744
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0EF1640122
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0EF1640122
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ab_NdXUjJBCl for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Sep 2022 20:28:27 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AEAC400C4
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
- [IPv6:2607:f8b0:4864:20::102d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2AEAC400C4
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F32F11BF8A8
  for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:27 +0000 (UTC)
-Received: by mail-pj1-x102d.google.com with SMTP id
- j6-20020a17090a694600b00200bba67dadso1232185pjm.5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 13:28:27 -0700 (PDT)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id CE3C660B73
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE3C660B73
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id O6vLLucHxgcN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Sep 2022 20:28:26 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7264E60ABF
+Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
+ [IPv6:2607:f8b0:4864:20::62b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7264E60ABF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:26 +0000 (UTC)
+Received: by mail-pl1-x62b.google.com with SMTP id w10so1147650pll.11
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 13:28:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date;
- bh=WK0bGuD2tAxqqCEo+J+Vcp/Ca26AMBReT0rLu9mHjWo=;
- b=nBSd1+A4hbevGG5kOXJ5jA/b+//zqEYKOgYxowlTr1+2g5oWOhKPfIZ9edEHZUeOXL
- E5cYywzVMLjavL4n5c7w/XE75mLpd2uqV0d00zDg+Vrhye8xHvd46pVb19WZGo6WYNMl
- vJRblQMkpv0bI//St1QuMqQ2Gd9cpgwfJw1T3PvQpL2Vk50GqY6/2b7Cs0UTJqlwt5GR
- MJpFlzs9Iqk1+I0gjWglmci0MpdDqb/CGYtXqjYCNdIGTT9vheaoHF4FI1xOU+WUHHRA
- SqmP6N2xCNcwwcb/oNmjzvZIHm/QjxsMjaanje/YiPzRDvMCpZt+GcAaf8gVUcTTPRuk
- WygA==
-X-Gm-Message-State: ACrzQf0emLmyYIAbhuwcMf1qLtAc0mC9OgYaMrCbCINvIxx3Td+yNbij
- +w6g36y0/6z1s/1LXKycxbIy0w==
-X-Google-Smtp-Source: AMsMyM72+AZrvCjzG0TpHX1QWIyqlT+yIJNjqD6XgzhlX4O0lN7py3H0HnAbWO3N8SQjTT6PAgNtPQ==
-X-Received: by 2002:a17:90b:17cf:b0:202:95a2:e310 with SMTP id
- me15-20020a17090b17cf00b0020295a2e310mr23778042pjb.76.1663964906615; 
- Fri, 23 Sep 2022 13:28:26 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=YGvtsu71vtHcP1IwH8KHiY99VHKmYF+/gM9Vu/q9kHU=;
+ b=HdL+VwjfLpBxXjsVJCbLcOXuEDENZbswwlKvM2AefxUxoDyPTw9WeQ7V0M7DoogfDU
+ NP/MVomtMqItz7Ot+MGh2paWe1v4zOM1EzAtFx87WbtrkojFchK8PwBZh7J62rmxDnPL
+ shBRmaK7VX3Aq6fP5gYnztAwvYwTMOea/xuR4Ya7un1gcrbK7EfcD/c4+0yjHzkko+hB
+ N8aOKlxLr0orScxTYgFDtfn1OHSjktMGSgJoERlgB1ltMs2iUjlPXnfcuFzNlleFYxFZ
+ OIxLEo/ql0xZpBu45zg/sTF8I7PqEyJI9VHQON54Isma4LZKMLnxMMtHw9SINCt8adwF
+ BmuQ==
+X-Gm-Message-State: ACrzQf268tE1scu+3pexdvbAh9G4Y+Ua3Yyqva6e76UfQcPm/+z7jsws
+ lCtPD6cAkKjKqEnaENj3BaHXQw==
+X-Google-Smtp-Source: AMsMyM4GlI4eTJyA9jGLi9lKSnvEwSBc6wqIcYDsgYSV7Hnp4hgp4C2mRxXo8b79UHawMzdaoq59kQ==
+X-Received: by 2002:a17:90a:e7c5:b0:200:ab1a:f32 with SMTP id
+ kb5-20020a17090ae7c500b00200ab1a0f32mr22617314pjb.100.1663964905845; 
+ Fri, 23 Sep 2022 13:28:25 -0700 (PDT)
 Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
  by smtp.gmail.com with ESMTPSA id
- t2-20020aa79462000000b0053639773ad8sm6832080pfq.119.2022.09.23.13.28.24
+ q9-20020a17090311c900b0017829f986a5sm6477104plh.133.2022.09.23.13.28.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 23 Sep 2022 13:28:25 -0700 (PDT)
 From: Kees Cook <keescook@chromium.org>
 To: Vlastimil Babka <vbabka@suse.cz>
-Date: Fri, 23 Sep 2022 13:28:06 -0700
-Message-Id: <20220923202822.2667581-1-keescook@chromium.org>
+Date: Fri, 23 Sep 2022 13:28:07 -0700
+Message-Id: <20220923202822.2667581-2-keescook@chromium.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220923202822.2667581-1-keescook@chromium.org>
+References: <20220923202822.2667581-1-keescook@chromium.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3290; h=from:subject;
- bh=6t8CTnxnusXxlhLGNxOhRs5l2789SVRbReUcmZgsVm4=;
- b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBjLhbjKWBYYij171TDp3TdZmoZXSs7dXXkRN1eGod1
- 9RjCiP+JAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCYy4W4wAKCRCJcvTf3G3AJnMrD/
- 9AYEfZWXDOv2krdFVvtjQthCuAcgKZVOWzfaX/ZBtQRlYjuppFlG2ED1IEpuIhD0Ir80c5xPT0sC6o
- NsiMZw3mMRacDRN1JKTgZIg3s63bBHGPVJzr9Ms7LrhbLULxcInTn8Kmx1m+j/SOpIaVQbOz2eMMkZ
- hq15TaNyE7pBLM9SdfCtAyTs9eRAtVTuYrwZqvgSDjZ61SXuxi2k37cjMCmPHUTq/sIlGgP+BbmYVU
- h4TXPtyeel8GsxvMTh+ZJLwcMIm74VL8RdFIlqhUbTT1t2IHy48AtxwQQhaVX0FoQuaeRVIHGZ6W3H
- G8nJ1wcWlIzz3bYBH022dj7eQTsTkVCk6mdVQzd0tBA9yKVcNDoLBacX1DCakWCtJtW9hB3nI7wGSo
- dddWD44+KFc7CqbVkUJUBWKf0KFDD+RBxraKtYUvKQrLMx0oq545fsuTe+Wx85iePymCMknPsuIu7T
- RqpkKnn423yOsp7n6oWGz2jCxpOIGyTubVpWH5O/cuXKNmrDFZz8jsL8Js/2Of2DYZ5nq9YGQsiXeg
- 2S+DEM7sXnFtd9YfGznNOceTXn0B6askh1+E8cTpDv624NJQscze/0hYjyKnnV10f4gf0FRf/X6SzA
- azwQEVgyfXgzY00yn92DXcmjocb95A4MMqEAG/m2SLnjQl6aJMp6R561rcig==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4158; h=from:subject;
+ bh=MMNKX5wNJYq+FFEmxyLeG88Y0pnaYb/m5JRZI7mnarg=;
+ b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBjLhbj8zMWKpgfJIfLMPzhNCTicodYe34AHw5xM3H6
+ j5Q5e5iJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCYy4W4wAKCRCJcvTf3G3AJkqXEA
+ C0CZsQPuFBR2/YBQC6kBOKXs3AnUbDd1vBqtB/SiXvO/znjATFPdq/AAaSBC59HBiMKMePM5lvoiuf
+ aYrT/n/J7UMzadTeGJDsCFyc95mxXFpunUjeXGaTgZojjSgAVg4DABiW54DaumW0lAWFAYegD26yeW
+ JBuJYikNr/QTKW2lM4rlUyCE6YeklCEU+t6NysjAG5alyIx4W0dgH5pUSaAsO6hX65jz8XnK6X4gIg
+ /ftbvkJQdCA8yp6HbKj3bRnJNwHhei3Ew8kR8tRkxr/QCstK0qco60yvO2mmfdDhJOTt8ljlhX+99P
+ ki8iAJ2IUxqLrohWV0+vBNh/UwJAT/E2xl9J7vSz0a5lE1JDaJni0l7B9aWJ6wdTRIlb2RIw/25CU3
+ 2jH0hGLqeXUGTIW8ZuajWL/FWv6nUhF3N+Zql34CZfjXaiVB/8urV6hGJYu0PjR4RhPJtooFtvcGnc
+ NN4P/rvByw1L7/4EGJFqF8KQolNWMu558pdQ29AecI/zn4E9FW41pu2k0zXuekf9ZHdzPr//MRq0VK
+ jji3tNn5ZbZXQWzbxXbbkECT6CK1qfq6Re4GlmJrjPbAnkWCC4gXdw7JW6JIg/Km6CtttHx519iZge
+ eYs/03ai/ytBwKoKeQmOX9IHVAAm1pTNUYNBd0RtV+OAb1aVL8B7TsN5Okig==
 X-Developer-Key: i=keescook@chromium.org; a=openpgp;
  fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=chromium.org; s=google;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date;
- bh=WK0bGuD2tAxqqCEo+J+Vcp/Ca26AMBReT0rLu9mHjWo=;
- b=Bq646OyB58An4Ya0i1tJSWid5B14G8+Igfn3fxCST+TPDeet6KAginBjtHf1G+96pP
- KMbRLvXh6hUd7mw6RJpRt7mflnBYm9ibc+vu8XY4rLIHczU3FqSb/xj3tEHFFGtr1oRe
- sICyRsZLX9/FsK6U8cZvA0aX8m/YlImy46ePk=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+ bh=YGvtsu71vtHcP1IwH8KHiY99VHKmYF+/gM9Vu/q9kHU=;
+ b=IFb3o6XSbaR/uQunXfgk/OAgUcbyiUG/neLZN7u63Mb8Dqi7z6PDoN9BNOVaTqa26y
+ SRlzwgeKQKd7R1FctE6Aq8Of9Rx/sgZevcaBDxM7zwYZdr/ifKEynY9SIWqMo8+dRdxg
+ Y1YODqFn9CHpITGWx8VNcWimDUOWaa7761v9Y=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
- header.a=rsa-sha256 header.s=google header.b=Bq646OyB
-Subject: [Intel-wired-lan] [PATCH v2 00/16] slab: Introduce
- kmalloc_size_roundup()
+ header.a=rsa-sha256 header.s=google header.b=IFb3o6XS
+Subject: [Intel-wired-lan] [PATCH v2 01/16] slab: Remove __malloc attribute
+ from realloc functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,103 +121,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: llvm@lists.linux.dev, dri-devel@lists.freedesktop.org, "Ruhl,
- Michael J" <michael.j.ruhl@intel.com>, Eric Dumazet <edumazet@google.com>,
- linux-hardening@vger.kernel.org, Hyeonggon Yoo <42.hyeyoo@gmail.com>,
- Christoph Lameter <cl@linux.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- dev@openvswitch.org, x86@kernel.org, intel-wired-lan@lists.osuosl.org,
- David Rientjes <rientjes@google.com>, Miguel Ojeda <ojeda@kernel.org>,
- Yonghong Song <yhs@fb.com>, Paolo Abeni <pabeni@redhat.com>,
- linux-media@vger.kernel.org, Marco Elver <elver@google.com>,
+Cc: Roman Gushchin <roman.gushchin@linux.dev>, dri-devel@lists.freedesktop.org,
+ "Ruhl, Michael J" <michael.j.ruhl@intel.com>,
+ Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
+ Hyeonggon Yoo <42.hyeyoo@gmail.com>, Christoph Lameter <cl@linux.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
+ intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
+ Miguel Ojeda <ojeda@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
+ Marco Elver <elver@google.com>, llvm@lists.linux.dev,
  Kees Cook <keescook@chromium.org>, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Jakub Kicinski <kuba@kernel.org>,
+ linaro-mm-sig@lists.linaro.org, Yonghong Song <yhs@fb.com>,
  David Sterba <dsterba@suse.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>,
  Alex Elder <elder@kernel.org>, linux-mm@kvack.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, Pekka Enberg <penberg@kernel.org>,
- Daniel Micay <danielmicay@gmail.com>, netdev@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
  =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
- linux-btrfs@vger.kernel.org
+ Pekka Enberg <penberg@kernel.org>, Daniel Micay <danielmicay@gmail.com>,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ "David S. Miller" <davem@davemloft.net>, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+The __malloc attribute should not be applied to "realloc" functions, as
+the returned pointer may alias the storage of the prior pointer. Instead
+of splitting __malloc from __alloc_size, which would be a huge amount of
+churn, just create __realloc_size for the few cases where it is needed.
 
-The main details on this series are in patch #2's commit log. It's long,
-so I won't repeat it again here for the v2. As before, I've tried to
-trim the CC list.
+Additionally removes the conditional test for __alloc_size__, which is
+always defined now.
 
-v2:
-- _keep_ ksize(), but remove instrumentation (makes patch series smaller)
-- reorganized skbuff logic to avoid yet more copy/paste code
-- added a WARN to a separate skbuff ksize usage
-- add new refactorings: bpf, openvswitch, devres, mempool, kasan
-- dropped "independent" patches: iwlwifi, x86/microcode/AMD (sent separately)
-v1: https://lore.kernel.org/lkml/20220922031013.2150682-1-keescook@chromium.org
+Cc: Christoph Lameter <cl@linux.com>
+Cc: Pekka Enberg <penberg@kernel.org>
+Cc: David Rientjes <rientjes@google.com>
+Cc: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: Roman Gushchin <roman.gushchin@linux.dev>
+Cc: Hyeonggon Yoo <42.hyeyoo@gmail.com>
+Cc: Marco Elver <elver@google.com>
+Cc: linux-mm@kvack.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+---
+ include/linux/compiler_types.h | 13 +++++--------
+ include/linux/slab.h           | 12 ++++++------
+ mm/slab_common.c               |  4 ++--
+ 3 files changed, 13 insertions(+), 16 deletions(-)
 
-Notes:
-
-Originally when I was going to entirely remove ksize(), there were a
-handful for refactorings that just needed to do ksize -> __ksize. In
-the end, it was cleaner to actually leave ksize() as a real function,
-just without the kasan instrumentation. I wonder, however, if it should
-be converted into a static inline now?
-
-I dropped Jakub's Ack because I refactored that code a bunch more.
-
-The 2 patches that didn't need to call kmalloc_size_roundup() don't need
-to be part of this series. (One is already in -next, actually.)
-
-I'd like to land at least the first two patches in the coming v6.1 merge
-window so that the per-subsystem patches can be sent to their various
-subsystems directly. Vlastimil, what you think?
-
-Thanks!
-
--Kees
-
-
-Kees Cook (16):
-  slab: Remove __malloc attribute from realloc functions
-  slab: Introduce kmalloc_size_roundup()
-  skbuff: Proactively round up to kmalloc bucket size
-  skbuff: Phase out ksize() fallback for frag_size
-  net: ipa: Proactively round up to kmalloc bucket size
-  igb: Proactively round up to kmalloc bucket size
-  btrfs: send: Proactively round up to kmalloc bucket size
-  dma-buf: Proactively round up to kmalloc bucket size
-  coredump: Proactively round up to kmalloc bucket size
-  openvswitch: Use kmalloc_size_roundup() to match ksize() usage
-  bpf: Use kmalloc_size_roundup() to match ksize() usage
-  devres: Use kmalloc_size_roundup() to match ksize() usage
-  mempool: Use kmalloc_size_roundup() to match ksize() usage
-  kasan: Remove ksize()-related tests
-  mm: Make ksize() a reporting-only function
-  slab: Restore __alloc_size attribute to __kmalloc_track_caller
-
- drivers/base/devres.c                     |  3 +
- drivers/dma-buf/dma-resv.c                |  9 ++-
- drivers/net/ethernet/intel/igb/igb_main.c |  5 +-
- drivers/net/ipa/gsi_trans.c               |  7 +-
- fs/btrfs/send.c                           | 11 +--
- fs/coredump.c                             |  7 +-
- include/linux/compiler_types.h            | 13 ++--
- include/linux/skbuff.h                    |  5 +-
- include/linux/slab.h                      | 46 +++++++++++--
- kernel/bpf/verifier.c                     | 49 +++++++++-----
- lib/test_kasan.c                          | 42 ------------
- mm/kasan/shadow.c                         |  4 +-
- mm/mempool.c                              |  2 +-
- mm/slab.c                                 |  9 ++-
- mm/slab_common.c                          | 62 ++++++++++-------
- net/core/skbuff.c                         | 82 ++++++++++++-----------
- net/openvswitch/flow_netlink.c            |  2 +-
- 17 files changed, 192 insertions(+), 166 deletions(-)
-
+diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
+index 4f2a819fd60a..f141a6f6b9f6 100644
+--- a/include/linux/compiler_types.h
++++ b/include/linux/compiler_types.h
+@@ -271,15 +271,12 @@ struct ftrace_likely_data {
+ 
+ /*
+  * Any place that could be marked with the "alloc_size" attribute is also
+- * a place to be marked with the "malloc" attribute. Do this as part of the
+- * __alloc_size macro to avoid redundant attributes and to avoid missing a
+- * __malloc marking.
++ * a place to be marked with the "malloc" attribute, except those that may
++ * be performing a _reallocation_, as that may alias the existing pointer.
++ * For these, use __realloc_size().
+  */
+-#ifdef __alloc_size__
+-# define __alloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__) __malloc
+-#else
+-# define __alloc_size(x, ...)	__malloc
+-#endif
++#define __alloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__) __malloc
++#define __realloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__)
+ 
+ #ifndef asm_volatile_goto
+ #define asm_volatile_goto(x...) asm goto(x)
+diff --git a/include/linux/slab.h b/include/linux/slab.h
+index 0fefdf528e0d..41bd036e7551 100644
+--- a/include/linux/slab.h
++++ b/include/linux/slab.h
+@@ -184,7 +184,7 @@ int kmem_cache_shrink(struct kmem_cache *s);
+ /*
+  * Common kmalloc functions provided by all allocators
+  */
+-void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __alloc_size(2);
++void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __realloc_size(2);
+ void kfree(const void *objp);
+ void kfree_sensitive(const void *objp);
+ size_t __ksize(const void *objp);
+@@ -647,10 +647,10 @@ static inline __alloc_size(1, 2) void *kmalloc_array(size_t n, size_t size, gfp_
+  * @new_size: new size of a single member of the array
+  * @flags: the type of memory to allocate (see kmalloc)
+  */
+-static inline __alloc_size(2, 3) void * __must_check krealloc_array(void *p,
+-								    size_t new_n,
+-								    size_t new_size,
+-								    gfp_t flags)
++static inline __realloc_size(2, 3) void * __must_check krealloc_array(void *p,
++								      size_t new_n,
++								      size_t new_size,
++								      gfp_t flags)
+ {
+ 	size_t bytes;
+ 
+@@ -774,7 +774,7 @@ static inline __alloc_size(1, 2) void *kvcalloc(size_t n, size_t size, gfp_t fla
+ }
+ 
+ extern void *kvrealloc(const void *p, size_t oldsize, size_t newsize, gfp_t flags)
+-		      __alloc_size(3);
++		      __realloc_size(3);
+ extern void kvfree(const void *addr);
+ extern void kvfree_sensitive(const void *addr, size_t len);
+ 
+diff --git a/mm/slab_common.c b/mm/slab_common.c
+index 17996649cfe3..457671ace7eb 100644
+--- a/mm/slab_common.c
++++ b/mm/slab_common.c
+@@ -1134,8 +1134,8 @@ module_init(slab_proc_init);
+ 
+ #endif /* CONFIG_SLAB || CONFIG_SLUB_DEBUG */
+ 
+-static __always_inline void *__do_krealloc(const void *p, size_t new_size,
+-					   gfp_t flags)
++static __always_inline __realloc_size(2) void *
++__do_krealloc(const void *p, size_t new_size, gfp_t flags)
+ {
+ 	void *ret;
+ 	size_t ks;
 -- 
 2.34.1
 
