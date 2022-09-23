@@ -1,115 +1,114 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAED85E8395
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Sep 2022 22:29:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E8AD5E839C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Sep 2022 22:29:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 469DE41090;
-	Fri, 23 Sep 2022 20:29:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 469DE41090
+	by smtp4.osuosl.org (Postfix) with ESMTP id 510CC41CBD;
+	Fri, 23 Sep 2022 20:29:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 510CC41CBD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1663964958;
-	bh=H+xeqo3EybTPkukIaY6f7PqQuPURa14hfQ7E1VOxLDU=;
+	s=default; t=1663964970;
+	bh=7oh1MPG4fQO9t1NfmQlLuMutkwthB0pYPx+nE5Sn+UU=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uMHqYrE8jcLKgIBTZJq18ilEV13MYmRzdvQDdgFw6qGURZ2hwNUYSNqjxC1hun/hA
-	 WzHdLO1CHSCsftd/VwUmC8R5Uz/XdBVHdka8rQFf1/C+VjT690Pjk7k6HpI/bT8rDx
-	 Br4JlKcK+24jauQeBx2/+FGC0Vz7lii1w45GaNqybaFRtZmqaFdtk0kZloidNqeQJw
-	 Ov4s8oHcPXqtPUJ04TLCLn+DnHZP3Qzt3SMzpN0SnRBH8PHbcstkGET0Vpa8dTjXmg
-	 w8nDOnavAVwMM+qSVP5NbneKut1Wle01Ffb1AQ8mk87faseFwl55NI5zMWIDu07aOi
-	 qvzHKPdhvGj3g==
+	b=w2jBXZtKacZpdshafrQmwTY+WuFvTPv9vxHiEJOfvuF/Ks2JiyWCB3G3IXhqls8eY
+	 lS9AM9wjl45y18BVdytIqi9ERDnXHy0LLk0nUsVzHuCpdW+6tJPDXHh7PvW7n2bOWu
+	 V6eb0wUDeXmGTr9fPobjQ6tBOjZ+Eg+ogJYC92qXslNQTrgX0kb+8X0zvsjn7RFG84
+	 Rn2tqEojTFkIw+vCx3GF+1X2oSok/XGU06xB0za3FkvM0h2YOwPzHHY5aPTT97vdEd
+	 nR2uwwX5FNelBJrKo1fQuAuIihJjqXFHo2L6dR9xwPG6ig1PoJOkcXHgN4DRuuw9Jf
+	 oxWOQrIyXirFA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4niFQJOx-lnv; Fri, 23 Sep 2022 20:29:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ugmAVo5nsmgv; Fri, 23 Sep 2022 20:29:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EBBD0415D0;
-	Fri, 23 Sep 2022 20:29:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EBBD0415D0
+	by smtp4.osuosl.org (Postfix) with ESMTP id DB25941B57;
+	Fri, 23 Sep 2022 20:29:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB25941B57
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 18F381BF8A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 28CC31BF8A8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E2F4400C4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E2F4400C4
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0B8996059F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B8996059F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WPDqcaifZw0C for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Sep 2022 20:28:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MjxNdATIy1eP for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Sep 2022 20:28:31 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0B4740122
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
- [IPv6:2607:f8b0:4864:20::102d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D0B4740122
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:28 +0000 (UTC)
-Received: by mail-pj1-x102d.google.com with SMTP id
- g1-20020a17090a708100b00203c1c66ae3so1274292pjk.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 13:28:28 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F25A260B73
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F25A260B73
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 20:28:30 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id q3so1064020pjg.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Sep 2022 13:28:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date;
- bh=EL9n9wbZi9fyT3aGiQZS2LpEJMU3d55TaSniCttQvBQ=;
- b=2D2/V86vxB/R6zGgCDsl/t8BQzR0o4V0xcKTyuvqm62t6WWSXqkF9GkThzkKlJZ0Ju
- I7AUOkhBfYUW30xkVEILjOIyxTIzNnxMvdntAEFYHmQIvGiFa66pq46u9XP6xGLQRNEE
- AblyObZZQeBpvkhcuFlVGPQ9apP21jFyfCnD9uQ/kWm7flw/OEiOiybtdOtBqq9Sf5W6
- 6C5eughKGy8LIUBdoc3SWCRSSvCjMZYYYXAEYbQIwBGcSnLkAPbM165+PBTOVrlE5weL
- x8XypFY3pLiyW87ZHIMvralaT7A0whutnt8yQEzG/AIbBXAAxAt4YVdkxoTbCABpaGUh
- rstw==
-X-Gm-Message-State: ACrzQf2z2QErCDhig6fkkvrkH/io+UUeTYl3fKTuA8BjrCftrN4Kx9Yn
- ofQIly+7H4t06VtoEBo7h6i6lQ==
-X-Google-Smtp-Source: AMsMyM7eoJHZKH3YSKsY5YkDiy457iONKP31BWBrEV5/G3nKELCTwmbb5LPc9LXMuh274JI0xAYzRw==
-X-Received: by 2002:a17:90b:5096:b0:202:df4f:89a with SMTP id
- rt22-20020a17090b509600b00202df4f089amr11673659pjb.25.1663964908260; 
- Fri, 23 Sep 2022 13:28:28 -0700 (PDT)
+ bh=k0IswvXpcAvdiLZPIXN3c5DjnsYKqakODd7BbfXTQEI=;
+ b=TAh3Uhn+j12q6R/jgX1prvUfKodpAl3Laf8DMK/HTVG+vGkf9ksSpOiTy8rqPHBxVv
+ PLH3OMpyct4Wz0WwPx6gsgAObXKFfhQ/mhmrJ2Uh2S4BFE3HS68jSSyVBW/Yz8WFFKcg
+ rk6gB02y6tSbZDiJEnZFCp7RdvVpcbPO+q+wtw79tCITOqCO6iIMYxzpfnNxVXuzm4g3
+ X8erQVQfds2Uc0OBPejMWEAsQFDVxD7WEetfYxiUKb3gAK0DaS0Z46oZcIlIZJh+OBhh
+ N0cks4C8GuJzWCC3YeM8ywmLtPY6YXa6uFRt1xeK6ImnuwlfUJTFLWJedB7U/gaqagdN
+ nlkQ==
+X-Gm-Message-State: ACrzQf3Dr9r7TFD21btxCjz+ww3F1gNjlog6FHVjrIvswovsVTXJjFIY
+ dILd6cC9UH430GE8bbTRshbLTw==
+X-Google-Smtp-Source: AMsMyM5hUgD6utpVMAl6ShfvZOmvi4K16Slmi0TDE2X8XGDljCU6xLMJTIptVSCg6vqu21Nf0Aqn/w==
+X-Received: by 2002:a17:90b:1c09:b0:203:af4d:ed6 with SMTP id
+ oc9-20020a17090b1c0900b00203af4d0ed6mr22702155pjb.243.1663964910372; 
+ Fri, 23 Sep 2022 13:28:30 -0700 (PDT)
 Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
  by smtp.gmail.com with ESMTPSA id
- t13-20020a17090a2f8d00b002005114fbf5sm1954043pjd.22.2022.09.23.13.28.25
+ v11-20020a17090ad58b00b001fd77933fb3sm2032999pju.17.2022.09.23.13.28.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Sep 2022 13:28:25 -0700 (PDT)
+ Fri, 23 Sep 2022 13:28:28 -0700 (PDT)
 From: Kees Cook <keescook@chromium.org>
 To: Vlastimil Babka <vbabka@suse.cz>
-Date: Fri, 23 Sep 2022 13:28:10 -0700
-Message-Id: <20220923202822.2667581-5-keescook@chromium.org>
+Date: Fri, 23 Sep 2022 13:28:11 -0700
+Message-Id: <20220923202822.2667581-6-keescook@chromium.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220923202822.2667581-1-keescook@chromium.org>
 References: <20220923202822.2667581-1-keescook@chromium.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3087; h=from:subject;
- bh=G1YS7lvbIYUjmUGwno5SYLunWPBrx5E5JtrQIsKL8KI=;
- b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBjLhbk7fSVXcqHZwwHnEeVt5B6a48oJZB6JZP86UHM
- ZPzL6leJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCYy4W5AAKCRCJcvTf3G3AJgnSD/
- 9W8qNAP6Zy5DglrKDnwHBrzpsDiEdH/wfMvohIguBt7D/fftewFQ4tqvtjrxneIk1J3RM14QXLiprH
- MUqZq5kdW9AT1gvmup3TGoweA6Yx2DkGWfJS/v54NRzjRIE4dACjOblKj7iXYFfF8t8R+Eq4nBKII9
- TtYqLSNdRoXH3/bTtnUl7LTmAdi/LlTAD5DefO14HYsKFvyt4sCVHmhAxt18rY+VU63ZvvyAm75jOE
- ZR2xW54lIyrI0P7sO/seLIt5lpZoTOmLb/2IuExPeQiVWZFeDBI6TgHBjXJ5TOb6BsMRqG8sI9zSyc
- 6MhJzTpE707Aaq04PeuqtOYkHPiet/lPnkzL7Jf3YqGCLil4ZfuartpWRK5sXfMjIprr+a8J/H57il
- rl0UdHycAw6+EZw2Ra62Z127chdyksyXQQxNCS8S2c1TeagVM0kidDWKmLOnnDdNUnMbfbAVlHUTHR
- rF5BX3KXr4Ue1fmCW5vyKzPqxV9i4JLKOP4MtwhcXHPRjwtzQFVVUnUTb599qTIHj79TLsip/gadnE
- 1mfwmisADtH54xLJA8r6vchWr5+CdtzvV8R+im9byluK6q2JHt8Z0ggZ0ffFpYPDovV1P8s8oO7xSv
- C3cPN3vqpfjit9qEKLh+sCGFKp0EMfSwbJWaKupNHO2K/+ug5RCFyPYhfwhw==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1843; h=from:subject;
+ bh=IY1ALzn2CwEEDJeKMCN2d2RSu1qSDYHH3sl/8qGPuY0=;
+ b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBjLhbk0/S4oiPoPLUr2gK0zbu5nD58CBtVyli7/b9z
+ b2gIR0qJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCYy4W5AAKCRCJcvTf3G3AJg5DD/
+ 49Q+Vbxd75ylphO0zAoxF1E8P7/YQRC083ZhpstciRAvjCqnpLi5zdF920rTUU+1hjspMRJaMkLZZ5
+ bK5uDN9URaJ1VBwYD+6+cHrxZwypqnLzdn14wwH8UG1QuBQhNDvUuCFwvkUBf9/Bp+0g8k8JGKzhTu
+ 6eWxuatrO7c1lHLgNshKa4CHOwSIXGl1Q8U+crVj889yJ+3vaBJUKAFLpG7i9/BXIbxLtC96UzXJeG
+ NpqcAteIRbx3lZMeVrME7GvP1FKrpZi+5WLpqgRlT3zHEnEjOfHgoh+/WIeqHjr5vo7twX5652tP2N
+ Mx8LmRcy1QGFOC7cJrUAt1lxtEm2xDE0DDTWbtrLD/urw/SDcZInXg9OaQJScBgPEF5EimBTanoAdX
+ npz666oA+SsIyft7lopXirXDXC9dc2tpNbbWXNbUbi/8SOXb4M64nUSj261gX1dFmmdiMTVkMJi6k9
+ jkjF4KkszF50l/ZyuXITZfH/g97qx+FCiVCme/NzouQsbRqcFRQc4aqwS5nAJR5semKAPwFBzi4o8K
+ IAGeXk3wxbSLA2xKLlfWqmWPjgqVVs0+TV5yEo1uzFYRf9/vtUmqFEKouB6fcB43xqHMU/prp6VRKO
+ cZ5pTG4vUmHBldHcHEO1sFYR/POcX3tBkkrlcVrJzjuOaTUmZSZ3vpMsCr9Q==
 X-Developer-Key: i=keescook@chromium.org; a=openpgp;
  fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=chromium.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
- bh=EL9n9wbZi9fyT3aGiQZS2LpEJMU3d55TaSniCttQvBQ=;
- b=KSB0ryauelIrE7oREtJPxrYTfb46QmB7O8hzK0+cy+92LZCq5Nz63nwaqh+78ACaPs
- Olaj8m72mRzC/PVKFU0FisO8X9DWDdQZNFNkYIUifwiQsMgCUkFHt+ReTq+9Up6aPWOW
- bZkQ8bZsmvsZxcYJ3ShxN6tlH5c8ZEFyuIKz8=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=k0IswvXpcAvdiLZPIXN3c5DjnsYKqakODd7BbfXTQEI=;
+ b=QrmiCQX9GiyAvK9+mKup1boveHjE9itEI0YZkgCTiluR2mt+7uynIg0wgHzS0fo3Kt
+ s8lgk0G0b7iFD6G/bf8SXd7GtoYB2il63LkywVZCSQDCieP6Y6mrV2z2ASYtCsyN6DKS
+ xeEqLxywxC671K6eBmRXgIzL8IhhLMZaUYHMc=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
- header.a=rsa-sha256 header.s=google header.b=KSB0ryau
-Subject: [Intel-wired-lan] [PATCH v2 04/16] skbuff: Phase out ksize()
- fallback for frag_size
+ header.a=rsa-sha256 header.s=google header.b=QrmiCQX9
+Subject: [Intel-wired-lan] [PATCH v2 05/16] net: ipa: Proactively round up
+ to kmalloc bucket size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,11 +129,11 @@ Cc: llvm@lists.linux.dev, dri-devel@lists.freedesktop.org, "Ruhl,
  David Rientjes <rientjes@google.com>, Miguel Ojeda <ojeda@kernel.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  linux-media@vger.kernel.org, Marco Elver <elver@google.com>,
- Kees Cook <keescook@chromium.org>, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Yonghong Song <yhs@fb.com>,
- David Sterba <dsterba@suse.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>,
- Alex Elder <elder@kernel.org>, linux-mm@kvack.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kees Cook <keescook@chromium.org>, Alex Elder <elder@linaro.org>,
+ Josef Bacik <josef@toxicpanda.com>, linaro-mm-sig@lists.linaro.org,
+ Yonghong Song <yhs@fb.com>, David Sterba <dsterba@suse.com>,
+ Joonsoo Kim <iamjoonsoo.kim@lge.com>, Alex Elder <elder@kernel.org>,
+ linux-mm@kvack.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
  "David S. Miller" <davem@davemloft.net>, Pekka Enberg <penberg@kernel.org>,
  Daniel Micay <danielmicay@gmail.com>, netdev@vger.kernel.org,
@@ -146,81 +145,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-All callers of APIs that allowed a 0-sized frag_size appear to be
-passing actual size information already, so this use of ksize() can
-be removed. However, just in case there is something still depending
-on this behavior, issue a WARN and fall back to as before to ksize()
-which means we'll also potentially get KASAN warnings.
+Instead of discovering the kmalloc bucket size _after_ allocation, round
+up proactively so the allocation is explicitly made for the full size,
+allowing the compiler to correctly reason about the resulting size of
+the buffer through the existing __alloc_size() hint.
 
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Eric Dumazet <edumazet@google.com>
 Cc: Jakub Kicinski <kuba@kernel.org>
 Cc: Paolo Abeni <pabeni@redhat.com>
 Cc: netdev@vger.kernel.org
+Reviewed-by: Alex Elder <elder@linaro.org>
+Link: https://lore.kernel.org/lkml/4d75a9fd-1b94-7208-9de8-5a0102223e68@ieee.org
 Signed-off-by: Kees Cook <keescook@chromium.org>
 ---
- net/core/skbuff.c | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+ drivers/net/ipa/gsi_trans.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 0b30fbdbd0d0..84ca89c781cd 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -195,7 +195,11 @@ static void __build_skb_around(struct sk_buff *skb, void *data,
- 			       unsigned int frag_size)
+diff --git a/drivers/net/ipa/gsi_trans.c b/drivers/net/ipa/gsi_trans.c
+index 18e7e8c405be..eeec149b5d89 100644
+--- a/drivers/net/ipa/gsi_trans.c
++++ b/drivers/net/ipa/gsi_trans.c
+@@ -88,6 +88,7 @@ struct gsi_tre {
+ int gsi_trans_pool_init(struct gsi_trans_pool *pool, size_t size, u32 count,
+ 			u32 max_alloc)
  {
- 	struct skb_shared_info *shinfo;
--	unsigned int size = frag_size ? : ksize(data);
-+	unsigned int size = frag_size;
-+
-+	/* All callers should be setting frag size now? */
-+	if (WARN_ON_ONCE(size == 0))
-+		size = ksize(data);
++	size_t alloc_size;
+ 	void *virt;
  
- 	size -= SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
+ 	if (!size)
+@@ -104,13 +105,15 @@ int gsi_trans_pool_init(struct gsi_trans_pool *pool, size_t size, u32 count,
+ 	 * If there aren't enough entries starting at the free index,
+ 	 * we just allocate free entries from the beginning of the pool.
+ 	 */
+-	virt = kcalloc(count + max_alloc - 1, size, GFP_KERNEL);
++	alloc_size = size_mul(count + max_alloc - 1, size);
++	alloc_size = kmalloc_size_roundup(alloc_size);
++	virt = kzalloc(alloc_size, GFP_KERNEL);
+ 	if (!virt)
+ 		return -ENOMEM;
  
-@@ -220,12 +224,10 @@ static void __build_skb_around(struct sk_buff *skb, void *data,
- /**
-  * __build_skb - build a network buffer
-  * @data: data buffer provided by caller
-- * @frag_size: size of data, or 0 if head was kmalloced
-+ * @frag_size: size of data
-  *
-  * Allocate a new &sk_buff. Caller provides space holding head and
-- * skb_shared_info. @data must have been allocated by kmalloc() only if
-- * @frag_size is 0, otherwise data should come from the page allocator
-- *  or vmalloc()
-+ * skb_shared_info.
-  * The return is the new skb buffer.
-  * On a failure the return is %NULL, and @data is not freed.
-  * Notes :
-@@ -272,7 +274,7 @@ EXPORT_SYMBOL(build_skb);
-  * build_skb_around - build a network buffer around provided skb
-  * @skb: sk_buff provide by caller, must be memset cleared
-  * @data: data buffer provided by caller
-- * @frag_size: size of data, or 0 if head was kmalloced
-+ * @frag_size: size of data
-  */
- struct sk_buff *build_skb_around(struct sk_buff *skb,
- 				 void *data, unsigned int frag_size)
-@@ -294,7 +296,7 @@ EXPORT_SYMBOL(build_skb_around);
- /**
-  * __napi_build_skb - build a network buffer
-  * @data: data buffer provided by caller
-- * @frag_size: size of data, or 0 if head was kmalloced
-+ * @frag_size: size of data
-  *
-  * Version of __build_skb() that uses NAPI percpu caches to obtain
-  * skbuff_head instead of inplace allocation.
-@@ -318,7 +320,7 @@ static struct sk_buff *__napi_build_skb(void *data, unsigned int frag_size)
- /**
-  * napi_build_skb - build a network buffer
-  * @data: data buffer provided by caller
-- * @frag_size: size of data, or 0 if head was kmalloced
-+ * @frag_size: size of data
-  *
-  * Version of __napi_build_skb() that takes care of skb->head_frag
-  * and skb->pfmemalloc when the data is a page or page fragment.
+ 	pool->base = virt;
+ 	/* If the allocator gave us any extra memory, use it */
+-	pool->count = ksize(pool->base) / size;
++	pool->count = alloc_size / size;
+ 	pool->free = 0;
+ 	pool->max_alloc = max_alloc;
+ 	pool->size = size;
 -- 
 2.34.1
 
