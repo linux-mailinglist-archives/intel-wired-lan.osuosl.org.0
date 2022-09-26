@@ -1,180 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0710A5EAB9A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Sep 2022 17:49:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46D885EAE9D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Sep 2022 19:50:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39C0E41811;
-	Mon, 26 Sep 2022 15:49:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39C0E41811
+	by smtp1.osuosl.org (Postfix) with ESMTP id 80E6182E1A;
+	Mon, 26 Sep 2022 17:50:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 80E6182E1A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664207361;
-	bh=VcpsHm8c1uv/htJWnABHpRrlnP/COtJz+Kqyd05G4AY=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1664214647;
+	bh=nZgpUbjGz98f0KMtVy0ddzl+96Mv9gpJA/myGTtOQJ4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=LndmR1yfQWNMME4mP3pyeOw94A3wkcY/wkbkSSDeUfofp+pR8DfjbfAcdTURzpgB+
-	 MtBJygWeeGzmr0TU+4qiBeXq2XZpk8ZOnQl/waIDFWpVeVpeYaFwL7zOBDbWgWKI7O
-	 sIXvkp1pL2QgV4wqpaGDX1p3NkAY1TqQy+NWODpC9yEKhkss9rN8vXVDLVnGdvq0US
-	 jMRyqp+/I/BBhqZzmI/aS7mqDv+y/nDxfq0LLPvqEP3zokIVB6te/iQSQ1SfROUlhF
-	 ObclwV6/pFHRQq3TVbNbnhYztPcbn8GcE7CQgNE2ZsQj0NBWFoX2913gZsPATprsjh
-	 k+HenDBcQyyow==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3SQ42Tw21nns; Mon, 26 Sep 2022 15:49:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BC145417CC;
-	Mon, 26 Sep 2022 15:49:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC145417CC
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D28A01BF3A6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 15:49:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BA08482A28
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 15:49:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA08482A28
+	b=ERwejWxNVOtRPCQBr7adZNyBlAppXYWnjLAQi+aZe6okbM/DbbNZiVLVJZO7BoQKU
+	 leVwt+E09WbfKM1AxsjA9WjYmzH5Vb3MCCPJzpi17fB2qEyiaIW0IAphzsbI62UFkd
+	 ACbJDDrEV7y0tMv7GE/2M+CX2UJwKt/s/4rKshU2PrId2xpP957Khc7p3dbh3er0Ao
+	 kvK0Gpqbahzj0/dpk+gTGgZSZcDZYrvFc+ectBY2CUY/bGOlDU3iI47c1XGwyAI74z
+	 2AllzoHM7Iie+ndDWcaHdCdK9VdU0qtTIhecN1g2DGx2Ay4qnhsyF3XFxCmEiCXdmV
+	 bSZ4mObfJPrBA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HSAa_JJP45AQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Sep 2022 15:49:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F0F3C82A56
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F0F3C82A56
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 15:49:13 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10482"; a="284180668"
-X-IronPort-AV: E=Sophos;i="5.93,346,1654585200"; d="scan'208";a="284180668"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Sep 2022 08:49:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10482"; a="651872904"
-X-IronPort-AV: E=Sophos;i="5.93,346,1654585200"; d="scan'208";a="651872904"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga008.jf.intel.com with ESMTP; 26 Sep 2022 08:49:04 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Mon, 26 Sep 2022 08:49:04 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Mon, 26 Sep 2022 08:49:04 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.172)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Mon, 26 Sep 2022 08:49:04 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hhtVrnV1hWrZFMrW6hu+L0FvMm3efW1jV51BgXpDWUPYs92/cWrcS/NaHyp1AkTateGEmJ0rWmbKLghV347RQUlusnKQqDRoBx1ofdB3B6+Gr/2FFlS2Hvigns85tH74mj8Pfp+M8UzVeB5tj9kefJ7RonQ+iidia75muDq0WZmd7W1HHNPyutpemM0mQ2ZMI/WUP5TiebfZXT/EuxLlX04pk1XuTPb5tCpL66td5BdCSWKk00qUe7mqdU6ZxCrMqXSVHR1+xVUUl17Q2fI7WlOdW48kkuAutWAvadPVLvo2RO5CT017btgVcpcnRauIEVC0QltEa8qRpQB1zyKV7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fofTDFGBoNvMPEw1Dpr0xEP1PSg2NB2o1FENz4SGW6I=;
- b=Gjy8JkG/wFQ6bItH6RmDqCdYDrgE73YEiTXqndxOrZB7iLKF4fjqQ8OzEca/83b8O/JETI2JlFZtvYXcd9zP162MyRwysVuN06/zgbZ9kl3x2AixZ/LV1s6UyvONWapsDmXH8LWCyNylv1VJgPU+KC/kkC7lcggq1YsGPIXOvAN9zXIu/NEFDjGrSo8ECnrdW+5Az7bUA02c3apZxRU8E8cbzlHIN4/ezhWYQpd63LnELgKQGpOe84Daq/xXxYcF8Xkt7Monz1Ju8FXwBq4U6bJT24XIL7pinutnheTde/q/rrh8tHW6hrQNPnMFHs9UmJZ0CtJRzUSdGDEfl/szvA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM5PR11MB1324.namprd11.prod.outlook.com (2603:10b6:3:15::14) by
- BL1PR11MB5221.namprd11.prod.outlook.com (2603:10b6:208:310::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25; Mon, 26 Sep
- 2022 15:49:02 +0000
-Received: from DM5PR11MB1324.namprd11.prod.outlook.com
- ([fe80::7992:6033:ae1f:3e08]) by DM5PR11MB1324.namprd11.prod.outlook.com
- ([fe80::7992:6033:ae1f:3e08%11]) with mapi id 15.20.5654.025; Mon, 26 Sep
- 2022 15:49:02 +0000
-From: "Ruhl, Michael J" <michael.j.ruhl@intel.com>
-To: Kees Cook <keescook@chromium.org>, Vlastimil Babka <vbabka@suse.cz>
-Thread-Topic: [PATCH v2 06/16] igb: Proactively round up to kmalloc bucket size
-Thread-Index: AQHYz4sQnGagtDAy5Ey39TamNoTGUK3x3q/A
-Date: Mon, 26 Sep 2022 15:49:02 +0000
-Message-ID: <DM5PR11MB13241141BB4C863F1A01D958C1529@DM5PR11MB1324.namprd11.prod.outlook.com>
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id a0Bvggcv1Jnu; Mon, 26 Sep 2022 17:50:46 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id E055E82CE4;
+	Mon, 26 Sep 2022 17:50:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E055E82CE4
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 50FA81BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 17:50:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2BDF660FB5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 17:50:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2BDF660FB5
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c91l1MjEdvc5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Sep 2022 17:50:39 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B868660F69
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
+ [IPv6:2607:f8b0:4864:20::634])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B868660F69
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 17:50:39 +0000 (UTC)
+Received: by mail-pl1-x634.google.com with SMTP id z20so38157plb.10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 10:50:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+ bh=TNDUsCjQ4zB2/5GZ7X+uS9zeoK4Uz9rg4Dmc7gG+Kts=;
+ b=5LNjE9WPXJhRx6j7EjFqBZ0jVse5RYNtvdXNj/W2H9pCRiRAWm5iw9NfKkxEdHlV51
+ JiH2dvFcqwRnRbHEvLUvqnYlbNsUm46fHGFxE9i5+fHV4iFSvgyZK2ppADrRuN7yrA2Q
+ 0N4TiOJ5TvNOixXhgKGOmuWInulI9xnS1FwuCvumO39t+Ix38xvqfWHMfQt6DsKALz9e
+ QdQdAmYc5d3YIbLqypji/bsdJHfDb8fjhAPCscfx6h+CBQ0lcvstHsD5IxLe21QywKuO
+ fjIUzZmfS4DxTyqRCNQsXxFKJtsmHclnIMV3Bw85bsjMvWuSQCynEbSqJDqG1hEb4xhG
+ sbGw==
+X-Gm-Message-State: ACrzQf20YcD3aIikviIq+fwqf6A3dUlYDIeVzm47JR3Je8rtfo2z4d8I
+ i7HHHOxt2ct4wHlmK9ic0H/3vg==
+X-Google-Smtp-Source: AMsMyM53HUNBt6kGZBRWVtwFK3cgJAVMJrfeOBQoCVB2uG4qpYwM3FiGKu6g/YmgMRQUrRqqychKmQ==
+X-Received: by 2002:a17:90a:a09:b0:202:ab93:2afb with SMTP id
+ o9-20020a17090a0a0900b00202ab932afbmr37124281pjo.60.1664214639071; 
+ Mon, 26 Sep 2022 10:50:39 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id
+ g13-20020aa79f0d000000b00536097dd45bsm12539497pfr.134.2022.09.26.10.50.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Sep 2022 10:50:37 -0700 (PDT)
+Date: Mon, 26 Sep 2022 10:50:36 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Vlastimil Babka <vbabka@suse.cz>
+Message-ID: <202209261050.560459B@keescook>
 References: <20220923202822.2667581-1-keescook@chromium.org>
- <20220923202822.2667581-7-keescook@chromium.org>
-In-Reply-To: <20220923202822.2667581-7-keescook@chromium.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.6.500.17
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM5PR11MB1324:EE_|BL1PR11MB5221:EE_
-x-ms-office365-filtering-correlation-id: 3b13f607-4bfa-4e36-51e6-08da9fd6a282
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: B30/mdLOatQAiRtXoSU9ThH7GMZqYobdTBoeUkupZqB8NQQzuiPufJRt+xUV9Mlphn9XaKTnwqkNVNJYRggptoA7kAxQvFhbc886EY3QlyT85/yj2C9zMjalS8Oy3TxjiS1jxCYsURNDSOcF0CAtyMDEjDeR16pObo4J4GfAgrrBAfednKnZ4/UR5BexfId7wivgzrr0QJFp43FV0FfBml2iSePSFbIFhd6VJ6VlpqDv+vydQazHYB7x5HY6d998BLlU1gRMVWXMJjeHv56alVS4Jr+IChnCXsJBE0rwxcmxcK6x1i9NbeiK5O8Yyj7n1nIMoeHuiLZy1hXX9TrOgJ/3TNWzRNuawYp9dMZ5YK2tQpO2GBObKlkt8acIM8Z9sUnzvKkvzAFUppLLMAaSpjo2do6OJLvjLsOC6WKCI7NAIbC2p57ErD8qmMPk0NegJkC5r7ormJKghC2TEuT/FqquQUqboirfhYhQ73+Vfm1CEr0gbtGpqkFDmDPMc4yBZNNdgDnCZTGIJpUOUw1WIcZf7YPVAjE6mniGb3R91hxwArP8PiKJZ73Z56uMBcKCTnmdreIlQxtlZ/wBWSghZVDMizzvlS1bLOEtNGocg2LMDaoBsabjFQ2AdUS1huJUSi7SJ6bbygE2+oP5q5BSvVmPV/JDMVxRjqv0KNo5btFhVfQo3lMG1e7/IZhZpStakQ+oisI/VOrD0OOGC4B/OYmvHx2LNU1uF+rSIkXZw+tPpmcJy5oB+JFibzQStJRlsmH5pGQEmYEKhkyBBkoCdw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR11MB1324.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(346002)(366004)(396003)(376002)(39860400002)(136003)(451199015)(54906003)(71200400001)(110136005)(316002)(478600001)(83380400001)(66556008)(76116006)(66946007)(8676002)(4326008)(66476007)(66446008)(41300700001)(7696005)(6506007)(52536014)(64756008)(5660300002)(9686003)(7416002)(26005)(7406005)(38070700005)(2906002)(8936002)(33656002)(186003)(66574015)(82960400001)(122000001)(38100700002)(55016003)(86362001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?AIGrTDbDFItjn4Ryzw80Jp36y9fRnr/BqJ50poZHfHifbpx3TK4GxN3wLw?=
- =?iso-8859-1?Q?Wf/aeQeLRJCZ9P5nh/rDr4nnMOpahTfkkC+fUPq1MpEbJ46lY873by7FdU?=
- =?iso-8859-1?Q?J2cw3+PkOjZqr952qdBoDP4n8mZoRkqMrL3atK9pR8sqRNdtu8xwFT0Ry4?=
- =?iso-8859-1?Q?E3VFxUQN0aHmYndJtE6YUJtZ4cpUGhWpXPZD00EUFIAfWs08f8yaGjDJ9l?=
- =?iso-8859-1?Q?ncSm+xyxBD1R4/PxRVSYc0Nv1V9aOu4YjTqzAldndhWBHvVFrrUM0YBu3b?=
- =?iso-8859-1?Q?af2gbglzyB5yMA9V3vitzkoMMgO8yH5TSr3W3bosOAoIvAItjDFoqmuFVq?=
- =?iso-8859-1?Q?lLYN8jq4h95OEmiGeFteIAiZBIe6HUlX/nH7LDhl/blo8scMmaAOVsQrdf?=
- =?iso-8859-1?Q?olupVt356KLQ0Og0nB+ecMlN6EbqZPEcruA31MZSZ0lz76ubOChyHrIXXm?=
- =?iso-8859-1?Q?jHkYwR+Uhn03JA8wgBMLgoSpIL/+9dAQVGpMap0j3Rexm/8z40UtGBnVXj?=
- =?iso-8859-1?Q?CSovMeYyGmi4CHXoXfiXuo3glmED68t9C2lq9S75RTDhFTCK3auRcDWbyM?=
- =?iso-8859-1?Q?d/cMOsEr2vc8L7gNrbyI+W6m4b5QRggJ+22xh9hKaVesQMAlW4dMMG8A6T?=
- =?iso-8859-1?Q?79rzTmOGWj3/L5TcmkntS31AB9ZDukDEXFaNXQ8XYUfsbM/Rx1cGQMW3CN?=
- =?iso-8859-1?Q?H4GfFka+AdbGR54KnJFSl8qRL98dkmy1jtk7Z2cZauT0NIx0vppc4KiWN9?=
- =?iso-8859-1?Q?TC0XaITbgjREt+/EAfFGYS0bOszJ704Wv3Npd2AMTav6nAXhl2vVv74sAG?=
- =?iso-8859-1?Q?wFbhbVmou/FcES5nolt2Xb/FVQCwFfBxPv9MwJhdFu8RYUJQiAQaWVx+g2?=
- =?iso-8859-1?Q?7/4zjzaoUy/aYLnulenNzKyEL8bFpR/VOi76HPQP9x2Wl1tqUuvSKT4pWv?=
- =?iso-8859-1?Q?qW6AFEFivC3KSZVhkj58dSSpuDzp+sM/dnUHbL7BG5ppTcdEIxId1G+sD3?=
- =?iso-8859-1?Q?5ALS8UTSqkyW1SRqDYyMNlhsuBzKDRXOD1cKVLu6gO1YcfHYIhczsj5lde?=
- =?iso-8859-1?Q?jm5GeWXoMq2/sovZ2XCfk1kxMWV3r9O2lm7pc3YY6Ng5ImU9MDEmaHmFeP?=
- =?iso-8859-1?Q?kyLvTTPKI+oYCmZwHPWnpnkFDvdvqe0Kc7Qe3rBQXXgOhQdKP+eXbm+V0X?=
- =?iso-8859-1?Q?wxHazAY51hizH4umUdbO69bZRz1m5c/TJnY+lOYaQjLPWDJZwhk7QIydxY?=
- =?iso-8859-1?Q?rstGMoJHAM8AJzg6le3U0UXgLXoDSj8DzopjPGJTNbwzFHBAcNAPhp9Z/M?=
- =?iso-8859-1?Q?c2vlGWNZh56Z0wqfS3JdYCkq34Z4rSx6F/ABopOEmhytlzV18ZBGBsW4mL?=
- =?iso-8859-1?Q?bot2lCu7Fek8tSBGBVu1HOoveRb69bFXLcpJYo7fcCdEN42FqkLUXnSPL1?=
- =?iso-8859-1?Q?a0Khc3p2AVe1ETebA6FZH6M+4n0+tAgeeXDi7VWkVMqWd7NkvM/R7oDBkR?=
- =?iso-8859-1?Q?RP8WRKpGbcG09Tewj1uc4knl1D2rr/kKYIPNzWnPl1jPZ2Uq54QsXg87jf?=
- =?iso-8859-1?Q?P9kG9GzfXxaMwRKkPrnDxOfX5ElS5WaqBWzSNIT9TDPfiacjrff3Z9bYNW?=
- =?iso-8859-1?Q?EZE+iFekeX83uHYvQWK9qhM/5NwWK8ZZLM?=
+ <20220923202822.2667581-3-keescook@chromium.org>
+ <e0326835-9b0d-af1b-bd22-2aadb178bd25@suse.cz>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR11MB1324.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b13f607-4bfa-4e36-51e6-08da9fd6a282
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Sep 2022 15:49:02.4457 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: QQDp/xFXJV7+d1QXhc5KT5kx9GvtnmEuu3UiJvVwVZaI8oGr7EdbJa6J1WFxdP4+VJW3h7gYwvRDgb0M5HM3n6atR7KeFrBgeExOURDbMX0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5221
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1664207354; x=1695743354;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=cVdSevvhDIWDYS8iV0bUsmnd4ZtdDXW1rzPl0O1tgDg=;
- b=WQTdqSfb9syGzjiFq8bEIAvGFhHp4higVQY/hpV+XWVL4oAusklzybH8
- 2PCCChQmkhN/9kIHkfbcdNp+2Ye/D0lDgme/ufZZTO9/sqkFyDHzPbK4R
- CbZLQuOWSJqQtyIDao2vcONc3G/huJiOo16NJf7jv2hrQqC0TdZKA6NfZ
- Ls5ZP96CyVKLrUB/KMEnE5Om5DJGwwMZh9Q8FtOTmnf5r/6urU8Xul5Pt
- nEr6+sFwlu8K+MGdHGcs7/VX5czNn7sGbCtA0/IPj/vb3fbrbbb8TNzk8
- aG5iuhVDUQLxLCmd1OsDxVXYTS3arOLr21ldoKPGV/aISL8PA3h3TPF7D
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WQTdqSfb
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 06/16] igb: Proactively round up to
- kmalloc bucket size
+Content-Disposition: inline
+In-Reply-To: <e0326835-9b0d-af1b-bd22-2aadb178bd25@suse.cz>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=chromium.org; s=google;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date;
+ bh=TNDUsCjQ4zB2/5GZ7X+uS9zeoK4Uz9rg4Dmc7gG+Kts=;
+ b=diPFMelUGqg5Olz6I8z2UqQgP/qT0p6U2CTPr1IKXAPPQDlXjIbGiW+Mq8ZW/AJerP
+ YVtmTqGjAus4WfzbTh4Tizc48Roo/vvFh6ncx714UJ4hLWN/DikhBXoZzoyhCy7LE6Y/
+ 3OYOMIYymLSLRxuRHD8IaRlLtQ4iFKBE+1Png=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
+ header.a=rsa-sha256 header.s=google header.b=diPFMelU
+Subject: Re: [Intel-wired-lan] [PATCH v2 02/16] slab: Introduce
+ kmalloc_size_roundup()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -187,131 +107,229 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "llvm@lists.linux.dev" <llvm@lists.linux.dev>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>, Eric
- Dumazet <edumazet@google.com>,
- "linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>,
- Hyeonggon Yoo <42.hyeyoo@gmail.com>, Christoph
- Lameter <cl@linux.com>, Sumit
- Semwal <sumit.semwal@linaro.org>, "dev@openvswitch.org" <dev@openvswitch.org>,
- "x86@kernel.org" <x86@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+Cc: llvm@lists.linux.dev, dri-devel@lists.freedesktop.org, "Ruhl,
+ Michael J" <michael.j.ruhl@intel.com>, Eric Dumazet <edumazet@google.com>,
+ linux-hardening@vger.kernel.org, Hyeonggon Yoo <42.hyeyoo@gmail.com>,
+ Christoph Lameter <cl@linux.com>, Sumit Semwal <sumit.semwal@linaro.org>,
+ dev@openvswitch.org, x86@kernel.org, intel-wired-lan@lists.osuosl.org,
  David Rientjes <rientjes@google.com>, Miguel Ojeda <ojeda@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- Marco Elver <elver@google.com>, Josef Bacik <josef@toxicpanda.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, Yonghong
- Song <yhs@fb.com>, David Sterba <dsterba@suse.com>,
+ Yonghong Song <yhs@fb.com>, Paolo Abeni <pabeni@redhat.com>,
+ linux-media@vger.kernel.org, Marco Elver <elver@google.com>,
+ Josef Bacik <josef@toxicpanda.com>, linaro-mm-sig@lists.linaro.org,
+ Jakub Kicinski <kuba@kernel.org>, David Sterba <dsterba@suse.com>,
  Joonsoo Kim <iamjoonsoo.kim@lge.com>, Alex Elder <elder@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Pekka Enberg <penberg@kernel.org>,
- Daniel Micay <danielmicay@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
+ linux-mm@kvack.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ Pekka Enberg <penberg@kernel.org>, Daniel Micay <danielmicay@gmail.com>,
+ netdev@vger.kernel.org, linux-fsdevel@vger.kernel.org,
  Andrew Morton <akpm@linux-foundation.org>,
- =?iso-8859-1?Q?Christian_K=F6nig?= <christian.koenig@amd.com>,
- "linux-btrfs@vger.kernel.org" <linux-btrfs@vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ "David S. Miller" <davem@davemloft.net>, linux-btrfs@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->-----Original Message-----
->From: Kees Cook <keescook@chromium.org>
->Sent: Friday, September 23, 2022 4:28 PM
->To: Vlastimil Babka <vbabka@suse.cz>
->Cc: Kees Cook <keescook@chromium.org>; Brandeburg, Jesse
-><jesse.brandeburg@intel.com>; Nguyen, Anthony L
-><anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
->Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
->Paolo Abeni <pabeni@redhat.com>; intel-wired-lan@lists.osuosl.org;
->netdev@vger.kernel.org; Ruhl, Michael J <michael.j.ruhl@intel.com>;
->Hyeonggon Yoo <42.hyeyoo@gmail.com>; Christoph Lameter
-><cl@linux.com>; Pekka Enberg <penberg@kernel.org>; David Rientjes
-><rientjes@google.com>; Joonsoo Kim <iamjoonsoo.kim@lge.com>; Andrew
->Morton <akpm@linux-foundation.org>; Greg Kroah-Hartman
-><gregkh@linuxfoundation.org>; Nick Desaulniers
-><ndesaulniers@google.com>; Alex Elder <elder@kernel.org>; Josef Bacik
-><josef@toxicpanda.com>; David Sterba <dsterba@suse.com>; Sumit Semwal
-><sumit.semwal@linaro.org>; Christian K=F6nig <christian.koenig@amd.com>;
->Daniel Micay <danielmicay@gmail.com>; Yonghong Song <yhs@fb.com>;
->Marco Elver <elver@google.com>; Miguel Ojeda <ojeda@kernel.org>; linux-
->kernel@vger.kernel.org; linux-mm@kvack.org; linux-btrfs@vger.kernel.org;
->linux-media@vger.kernel.org; dri-devel@lists.freedesktop.org; linaro-mm-
->sig@lists.linaro.org; linux-fsdevel@vger.kernel.org; dev@openvswitch.org;
->x86@kernel.org; llvm@lists.linux.dev; linux-hardening@vger.kernel.org
->Subject: [PATCH v2 06/16] igb: Proactively round up to kmalloc bucket size
->
->In preparation for removing the "silently change allocation size"
->users of ksize(), explicitly round up all q_vector allocations so that
->allocations can be correctly compared to ksize().
->
->Additionally fix potential use-after-free in the case of new allocation
->failure: only free memory if the replacement allocation succeeds.
->
->Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
->Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
->Cc: "David S. Miller" <davem@davemloft.net>
->Cc: Eric Dumazet <edumazet@google.com>
->Cc: Jakub Kicinski <kuba@kernel.org>
->Cc: Paolo Abeni <pabeni@redhat.com>
->Cc: intel-wired-lan@lists.osuosl.org
->Cc: netdev@vger.kernel.org
->Signed-off-by: Kees Cook <keescook@chromium.org>
->---
-> drivers/net/ethernet/intel/igb/igb_main.c | 5 +++--
-> 1 file changed, 3 insertions(+), 2 deletions(-)
->
->diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
->b/drivers/net/ethernet/intel/igb/igb_main.c
->index 2796e81d2726..eb51e531c096 100644
->--- a/drivers/net/ethernet/intel/igb/igb_main.c
->+++ b/drivers/net/ethernet/intel/igb/igb_main.c
->@@ -1195,15 +1195,16 @@ static int igb_alloc_q_vector(struct igb_adapter
->*adapter,
-> 		return -ENOMEM;
->
-> 	ring_count =3D txr_count + rxr_count;
->-	size =3D struct_size(q_vector, ring, ring_count);
->+	size =3D kmalloc_size_roundup(struct_size(q_vector, ring, ring_count));
+On Mon, Sep 26, 2022 at 03:15:22PM +0200, Vlastimil Babka wrote:
+> On 9/23/22 22:28, Kees Cook wrote:
+> > In the effort to help the compiler reason about buffer sizes, the
+> > __alloc_size attribute was added to allocators. This improves the scope
+> > of the compiler's ability to apply CONFIG_UBSAN_BOUNDS and (in the near
+> > future) CONFIG_FORTIFY_SOURCE. For most allocations, this works well,
+> > as the vast majority of callers are not expecting to use more memory
+> > than what they asked for.
+> > 
+> > There is, however, one common exception to this: anticipatory resizing
+> > of kmalloc allocations. These cases all use ksize() to determine the
+> > actual bucket size of a given allocation (e.g. 128 when 126 was asked
+> > for). This comes in two styles in the kernel:
+> > 
+> > 1) An allocation has been determined to be too small, and needs to be
+> >     resized. Instead of the caller choosing its own next best size, it
+> >     wants to minimize the number of calls to krealloc(), so it just uses
+> >     ksize() plus some additional bytes, forcing the realloc into the next
+> >     bucket size, from which it can learn how large it is now. For example:
+> > 
+> > 	data = krealloc(data, ksize(data) + 1, gfp);
+> > 	data_len = ksize(data);
+> > 
+> > 2) The minimum size of an allocation is calculated, but since it may
+> >     grow in the future, just use all the space available in the chosen
+> >     bucket immediately, to avoid needing to reallocate later. A good
+> >     example of this is skbuff's allocators:
+> > 
+> > 	data = kmalloc_reserve(size, gfp_mask, node, &pfmemalloc);
+> > 	...
+> > 	/* kmalloc(size) might give us more room than requested.
+> > 	 * Put skb_shared_info exactly at the end of allocated zone,
+> > 	 * to allow max possible filling before reallocation.
+> > 	 */
+> > 	osize = ksize(data);
+> >          size = SKB_WITH_OVERHEAD(osize);
+> > 
+> > In both cases, the "how much was actually allocated?" question is answered
+> > _after_ the allocation, where the compiler hinting is not in an easy place
+> > to make the association any more. This mismatch between the compiler's
+> > view of the buffer length and the code's intention about how much it is
+> > going to actually use has already caused problems[1]. It is possible to
+> > fix this by reordering the use of the "actual size" information.
+> > 
+> > We can serve the needs of users of ksize() and still have accurate buffer
+> > length hinting for the compiler by doing the bucket size calculation
+> > _before_ the allocation. Code can instead ask "how large an allocation
+> > would I get for a given size?".
+> > 
+> > Introduce kmalloc_size_roundup(), to serve this function so we can start
+> > replacing the "anticipatory resizing" uses of ksize().
+> > 
+> > [1] https://github.com/ClangBuiltLinux/linux/issues/1599
+> >      https://github.com/KSPP/linux/issues/183
+> > 
+> > Cc: Vlastimil Babka <vbabka@suse.cz>
+> > Cc: Christoph Lameter <cl@linux.com>
+> > Cc: Pekka Enberg <penberg@kernel.org>
+> > Cc: David Rientjes <rientjes@google.com>
+> > Cc: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+> > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > Cc: linux-mm@kvack.org
+> > Signed-off-by: Kees Cook <keescook@chromium.org>
+> 
+> OK, added patch 1+2 to slab.git for-next branch.
+> Had to adjust this one a bit, see below.
+> 
+> > ---
+> >   include/linux/slab.h | 31 +++++++++++++++++++++++++++++++
+> >   mm/slab.c            |  9 ++++++---
+> >   mm/slab_common.c     | 20 ++++++++++++++++++++
+> >   3 files changed, 57 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/include/linux/slab.h b/include/linux/slab.h
+> > index 41bd036e7551..727640173568 100644
+> > --- a/include/linux/slab.h
+> > +++ b/include/linux/slab.h
+> > @@ -188,7 +188,21 @@ void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __r
+> >   void kfree(const void *objp);
+> >   void kfree_sensitive(const void *objp);
+> >   size_t __ksize(const void *objp);
+> > +
+> > +/**
+> > + * ksize - Report actual allocation size of associated object
+> > + *
+> > + * @objp: Pointer returned from a prior kmalloc()-family allocation.
+> > + *
+> > + * This should not be used for writing beyond the originally requested
+> > + * allocation size. Either use krealloc() or round up the allocation size
+> > + * with kmalloc_size_roundup() prior to allocation. If this is used to
+> > + * access beyond the originally requested allocation size, UBSAN_BOUNDS
+> > + * and/or FORTIFY_SOURCE may trip, since they only know about the
+> > + * originally allocated size via the __alloc_size attribute.
+> > + */
+> >   size_t ksize(const void *objp);
+> > +
+> >   #ifdef CONFIG_PRINTK
+> >   bool kmem_valid_obj(void *object);
+> >   void kmem_dump_obj(void *object);
+> > @@ -779,6 +793,23 @@ extern void kvfree(const void *addr);
+> >   extern void kvfree_sensitive(const void *addr, size_t len);
+> >   unsigned int kmem_cache_size(struct kmem_cache *s);
+> > +
+> > +/**
+> > + * kmalloc_size_roundup - Report allocation bucket size for the given size
+> > + *
+> > + * @size: Number of bytes to round up from.
+> > + *
+> > + * This returns the number of bytes that would be available in a kmalloc()
+> > + * allocation of @size bytes. For example, a 126 byte request would be
+> > + * rounded up to the next sized kmalloc bucket, 128 bytes. (This is strictly
+> > + * for the general-purpose kmalloc()-based allocations, and is not for the
+> > + * pre-sized kmem_cache_alloc()-based allocations.)
+> > + *
+> > + * Use this to kmalloc() the full bucket size ahead of time instead of using
+> > + * ksize() to query the size after an allocation.
+> > + */
+> > +size_t kmalloc_size_roundup(size_t size);
+> > +
+> >   void __init kmem_cache_init_late(void);
+> >   #if defined(CONFIG_SMP) && defined(CONFIG_SLAB)
+> > diff --git a/mm/slab.c b/mm/slab.c
+> > index 10e96137b44f..2da862bf6226 100644
+> > --- a/mm/slab.c
+> > +++ b/mm/slab.c
+> > @@ -4192,11 +4192,14 @@ void __check_heap_object(const void *ptr, unsigned long n,
+> >   #endif /* CONFIG_HARDENED_USERCOPY */
+> >   /**
+> > - * __ksize -- Uninstrumented ksize.
+> > + * __ksize -- Report full size of underlying allocation
+> >    * @objp: pointer to the object
+> >    *
+> > - * Unlike ksize(), __ksize() is uninstrumented, and does not provide the same
+> > - * safety checks as ksize() with KASAN instrumentation enabled.
+> > + * This should only be used internally to query the true size of allocations.
+> > + * It is not meant to be a way to discover the usable size of an allocation
+> > + * after the fact. Instead, use kmalloc_size_roundup(). Using memory beyond
+> > + * the originally requested allocation size may trigger KASAN, UBSAN_BOUNDS,
+> > + * and/or FORTIFY_SOURCE.
+> >    *
+> >    * Return: size of the actual memory used by @objp in bytes
+> >    */
+> > diff --git a/mm/slab_common.c b/mm/slab_common.c
+> > index 457671ace7eb..d7420cf649f8 100644
+> > --- a/mm/slab_common.c
+> > +++ b/mm/slab_common.c
+> > @@ -721,6 +721,26 @@ struct kmem_cache *kmalloc_slab(size_t size, gfp_t flags)
+> >   	return kmalloc_caches[kmalloc_type(flags)][index];
+> >   }
+> > +size_t kmalloc_size_roundup(size_t size)
+> > +{
+> > +	struct kmem_cache *c;
+> > +
+> > +	/* Short-circuit the 0 size case. */
+> > +	if (unlikely(size == 0))
+> > +		return 0;
+> > +	/* Short-circuit saturated "too-large" case. */
+> > +	if (unlikely(size == SIZE_MAX))
+> > +		return SIZE_MAX;
+> > +	/* Above the smaller buckets, size is a multiple of page size. */
+> > +	if (size > KMALLOC_MAX_CACHE_SIZE)
+> > +		return PAGE_SIZE << get_order(size);
+> > +
+> > +	/* The flags don't matter since size_index is common to all. */
+> > +	c = kmalloc_slab(size, GFP_KERNEL);
+> > +	return c ? c->object_size : 0;
+> > +}
+> > +EXPORT_SYMBOL(kmalloc_size_roundup);
+> 
+> We need a SLOB version too as it's not yet removed... I added this:
+> 
+> diff --git a/mm/slob.c b/mm/slob.c
+> index 2bd4f476c340..5dbdf6ad8bcc 100644
+> --- a/mm/slob.c
+> +++ b/mm/slob.c
+> @@ -574,6 +574,20 @@ void kfree(const void *block)
+>  }
+>  EXPORT_SYMBOL(kfree);
+> +size_t kmalloc_size_roundup(size_t size)
+> +{
+> +       /* Short-circuit the 0 size case. */
+> +       if (unlikely(size == 0))
+> +               return 0;
+> +       /* Short-circuit saturated "too-large" case. */
+> +       if (unlikely(size == SIZE_MAX))
+> +               return SIZE_MAX;
+> +
+> +       return ALIGN(size, ARCH_KMALLOC_MINALIGN);
+> +}
+> +
+> +EXPORT_SYMBOL(kmalloc_size_roundup);
 
-This looks good to me...
+Ah, perfect! Thanks for catching that. :)
 
-> 	/* allocate q_vector and rings */
-> 	q_vector =3D adapter->q_vector[v_idx];
-> 	if (!q_vector) {
-> 		q_vector =3D kzalloc(size, GFP_KERNEL);
-> 	} else if (size > ksize(q_vector)) {
->-		kfree_rcu(q_vector, rcu);
-> 		q_vector =3D kzalloc(size, GFP_KERNEL);
->+		if (q_vector)
->+			kfree_rcu(q_vector, rcu);
+FWIW:
 
-Even though this is in the ksize part, this seems like an unrelated change?
- Should this be in a different patch?
+Reviewed-by: Kees Cook <keescook@chromium.org>
 
-Also, the kfree_rcu will free q_vector after the RCU grace period?
-
-Is that what you want to do?
-
-How does rcu distinguish between the original q_vector, and the newly kzall=
-oced one?
-
-Thanks,
-
-Mike
-
-
-
-> 	} else {
-> 		memset(q_vector, 0, size);
-> 	}
->--
->2.34.1
-
+-- 
+Kees Cook
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
