@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 230E25EC793
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Sep 2022 17:24:12 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D179E5EC792
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Sep 2022 17:24:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0430261084;
-	Tue, 27 Sep 2022 15:24:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0430261084
+	by smtp1.osuosl.org (Postfix) with ESMTP id B60A481987;
+	Tue, 27 Sep 2022 15:24:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B60A481987
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664292249;
+	s=default; t=1664292244;
 	bh=AnmI/ulDMr9ji04wwTh51g3VGUx9OLXA/2EKB43+IuA=;
 	h=From:In-Reply-To:Date:References:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HPPoGS3gvpDOpIFhNsJDobjU/DqP67HiM+mF6zdrBH75svkuiwblA/ZspFuOrYTp3
-	 e5GglF30UUcA00KkEgxVkcPR9pHm54cR5AgG13fH2Hg7Q+decEipvaapuVsXMGfdNr
-	 g1LUxNv+0aubY5Dz/IE8cKH8j96Zl6rOJh8ubQPuYl66qt31Si1p1PUJkMMA4lGw6l
-	 3sizI43WR6BVn2HsL2JV1mxztBysOeAXSl/VZ9MjTbzDgAEeSrYWeean3XpipdjyjI
-	 vQgGxRnC8SNX2NYtOMn3F/L7kWL94jI+V6Amcp6qWvrANoGWhBg7L8bcU/c/VOp3NE
-	 zNnl9WCNCiI8g==
+	b=huCndPCYZuvAeTJRt0BExDDpEUP9kvSx8W7zzDI8YQBm3VXTQ3xzXJ6iu9qVN/rdG
+	 lM7ga04vyqrAVZpNQN3gigk+IqHmcM1FDJ4mR867kJ+chbskhdFQUufOk7efxl5z3f
+	 zEJ3MgzWm5Jl2+ObUmtXWVROE36QlUk6XWsT0ytS1OfW34vQRkF0KDOg2EuXe4pL16
+	 BVXCIYKPDQ0o8XwW0Zet0UJ8z1bTQlCzKfk1DVolYzYel7ldltggy7jeIhc/hPpNpT
+	 8WImvdZ2NbVui9mKEFA/NGJg9wXVied0yzrCVpSs19ZhO6uNS6ySnMB9JbaEjW06HR
+	 HyWtMr0HddhZg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j6LMDcbvXpIe; Tue, 27 Sep 2022 15:24:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SWk7qw1yjTke; Tue, 27 Sep 2022 15:24:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7B34260BC7;
-	Tue, 27 Sep 2022 15:24:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B34260BC7
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2BB4781934;
+	Tue, 27 Sep 2022 15:24:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BB4781934
+X-Original-To: Intel-wired-lan@osuosl.org
+Delivered-To: Intel-wired-lan@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 874F71BF29D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 101331BF9C6
+ for <Intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 04:44:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 68CC141887
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68CC141887
+ by smtp4.osuosl.org (Postfix) with ESMTP id DC4EA4189D
+ for <Intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 04:44:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC4EA4189D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5obY5wCIoyJf for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id Pnfz4owfQXIb for <Intel-wired-lan@osuosl.org>;
  Tue, 27 Sep 2022 04:44:14 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 28C7D41890
-Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
- [IPv6:2a00:1450:4864:20::633])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 28C7D41890
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:13 +0000 (UTC)
-Received: by mail-ej1-x633.google.com with SMTP id sb3so18180338ejb.9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 21:44:13 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1635C41887
+Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
+ [IPv6:2a00:1450:4864:20::62a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1635C41887
+ for <Intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 04:44:14 +0000 (UTC)
+Received: by mail-ej1-x62a.google.com with SMTP id lc7so18337323ejb.0
+ for <Intel-wired-lan@osuosl.org>; Mon, 26 Sep 2022 21:44:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=to:references:message-id:content-transfer-encoding:cc:date
  :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
  :subject:date;
  bh=l1wBi+6umvncLDBKieZ1XfXH8kSugLZm2o3CnBG1w44=;
- b=VJRR0SAWRNxKm8yjb95IScOLvmvp0aMNXAj7kIPmZ3Ml2cNMjp0Yxb8aWeuIpMw6/4
- Mgu65zJ6ms6yfPTnvwIg8LM8L39CMnMQhnGtKZcUp2X/fWaEztEeA6VFytqGqcsnxm5V
- 4L5plvsZHPRkFI+QlZgtXkzHUgZsFCTxk06+8iSIFim5VbXIA1wINEf7LpftWK8jXr9H
- DBc1Qp1HDiybte0t0nLgQw0gvzfXPbQGSlVBlqlDonWlUtJMQPXkyazLPABX7FhJPbW/
- j2xOYZ0oluF7DVU8Bu3+S7oAJJxtcY31mrIqSPSC93wNovj4euVMq8LLwpfPSJO1Y1wo
- Upsw==
-X-Gm-Message-State: ACrzQf37GTTIPhiQdCsE7bBR7dXaO1BfqvdAIVlgXW4aZlQMUp3V10Jl
- tTwfGco8xvk8JOE/WN2KFUc=
+ b=aRqsla7UU3bIKRuhNlyMC0BOgbuXl+6KhdPO5aJQqJNWYcI3sZw5oQSkPZEOZKP/Nn
+ yswRTI4h/cFYTJBgJeAWZB2Mz3JVlHV6f2XxcKRyMWgDTSeR9tgbZRGXrAMF43XyIK78
+ aTEblugDSSeUusBXvk8G1prquRGQR489N9Llybt2m3+P2Ax0IsmmJ/SeYQStFyAXa4Sj
+ /HYwWF4exEFK+TCihW2xZq3MG4LN3NZaYPADGnFjBoCCybJihaLlaz64+LrJvYlhN9pU
+ unANxwHnX/5OewI4ziDFg4NAIMiq/4vNnJvCba1mMx3q/EUNDLKGjZT5e4YmFYv6nT8r
+ bXBA==
+X-Gm-Message-State: ACrzQf0CKrGOgEk5t/kzjJg+TY3tAr7/iuTrdB/zHmg3rqIzOb8HBkVL
+ tUbwMrwcycV14fQjviXCYHM=
 X-Google-Smtp-Source: AMsMyM7TxU0q3RRO4eY7tXMJeGNLQWWlQeC1LFjKN1GQmdpFh4FtYwyNG7CaaC+7bAATwY9bl/oH5A==
 X-Received: by 2002:a17:906:974c:b0:784:d96c:b4fa with SMTP id
  o12-20020a170906974c00b00784d96cb4famr970916ejy.391.1664253852194; 
