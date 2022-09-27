@@ -1,87 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 595A55EC3B5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Sep 2022 15:08:25 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 230E25EC793
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Sep 2022 17:24:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 99C2960594;
-	Tue, 27 Sep 2022 13:08:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 99C2960594
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0430261084;
+	Tue, 27 Sep 2022 15:24:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0430261084
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664284103;
-	bh=Qiiqmcv5RlxThc6sk0Mj0Tw2UmW6P5HpkQ1/OdtBrSs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1664292249;
+	bh=AnmI/ulDMr9ji04wwTh51g3VGUx9OLXA/2EKB43+IuA=;
+	h=From:In-Reply-To:Date:References:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6+2qt4DA/NdLQSjTJBbB/h+WoffEkV6ljhRkHQdFD0hM+piT5gFpuoZb98Vo8wN7P
-	 4d3e+PAC/yYfEAlwc4jbB1echS3aSoiYq7UJB8crvZZbrTwSXzairww9r9fDM4w9l5
-	 wR53X/0/Q0iV9nWcc9sLGh7dMFHkQuXe+FwdGJUKJhbFDbXoz5JkH4T+yjKDSQOlHt
-	 MfZ/GxNUM62Qj4TiFXPKM5Oo3yOlr2K5603gseEe8S83H0xglewqYOZ9O8R9Xw5tlQ
-	 bOZcDTYhcwMs7022zvID5fY4/PGJTRB2czWxUbqubWzIM9krn2JKbMk5dCtqrs29mh
-	 5YuMhEUgIyTFw==
+	b=HPPoGS3gvpDOpIFhNsJDobjU/DqP67HiM+mF6zdrBH75svkuiwblA/ZspFuOrYTp3
+	 e5GglF30UUcA00KkEgxVkcPR9pHm54cR5AgG13fH2Hg7Q+decEipvaapuVsXMGfdNr
+	 g1LUxNv+0aubY5Dz/IE8cKH8j96Zl6rOJh8ubQPuYl66qt31Si1p1PUJkMMA4lGw6l
+	 3sizI43WR6BVn2HsL2JV1mxztBysOeAXSl/VZ9MjTbzDgAEeSrYWeean3XpipdjyjI
+	 vQgGxRnC8SNX2NYtOMn3F/L7kWL94jI+V6Amcp6qWvrANoGWhBg7L8bcU/c/VOp3NE
+	 zNnl9WCNCiI8g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GnNwlWrdKyBu; Tue, 27 Sep 2022 13:08:22 +0000 (UTC)
+	with ESMTP id j6LMDcbvXpIe; Tue, 27 Sep 2022 15:24:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 82D9961072;
-	Tue, 27 Sep 2022 13:08:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 82D9961072
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E5E031BF47A
- for <intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 13:08:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7B34260BC7;
+	Tue, 27 Sep 2022 15:24:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B34260BC7
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 874F71BF29D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C18AE826BF
- for <intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 13:08:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C18AE826BF
+ by smtp4.osuosl.org (Postfix) with ESMTP id 68CC141887
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68CC141887
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F8Nl0A1JCupL for <intel-wired-lan@osuosl.org>;
- Tue, 27 Sep 2022 13:08:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A5835825B9
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A5835825B9
- for <intel-wired-lan@osuosl.org>; Tue, 27 Sep 2022 13:08:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10483"; a="327667777"
-X-IronPort-AV: E=Sophos;i="5.93,349,1654585200"; d="scan'208";a="327667777"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Sep 2022 06:08:06 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10483"; a="689984956"
-X-IronPort-AV: E=Sophos;i="5.93,349,1654585200"; d="scan'208";a="689984956"
-Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga004.fm.intel.com with ESMTP; 27 Sep 2022 06:08:03 -0700
-From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Tue, 27 Sep 2022 21:06:56 +0800
-Message-Id: <20220927130656.32567-5-muhammad.husaini.zulkifli@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220927130656.32567-1-muhammad.husaini.zulkifli@intel.com>
-References: <20220927130656.32567-1-muhammad.husaini.zulkifli@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1664284086; x=1695820086;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=c3+msq/2FisQRAngg7DD893rNAxDf1zOzNzJekBmVuo=;
- b=WF+NJgXwqJ+MsybrHdwUIh6Qj+sEDPdlCD+KIAVKGw9mZwtqEZ96yYN0
- LaQ8+hiNktSJmxZkiYvZyp0bHKMVf9UcxrraIzGT5nX8tCUtjwanV/GLR
- g+VPUYjcbFwcHmuMBoJXBdfrya5XCpTA+zWkTUxH8ZH1PAuOvnrr+9S0R
- RWjT3WmDoGf3Clm7rL0ObCMDWq1ZU0iZvOgNVsk/pvhJLogAmsHqSkraq
- +sGBVeM8ufIKHw4W41BFmnTgCH0aXhTIB9+JSOtWfm5TLQqwgLV8RioCX
- uVP1fiytMAJlIxhO3tHK+SOlNvViLtrjcVX/lV/aOQTBgXP9WuwBf4bCi
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WF+NJgXw
-Subject: [Intel-wired-lan] [PATCH v1 4/4] igc: Add support for DMA timestamp
- for non-PTP packets
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5obY5wCIoyJf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Sep 2022 04:44:14 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 28C7D41890
+Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
+ [IPv6:2a00:1450:4864:20::633])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 28C7D41890
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Sep 2022 04:44:13 +0000 (UTC)
+Received: by mail-ej1-x633.google.com with SMTP id sb3so18180338ejb.9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Sep 2022 21:44:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date;
+ bh=l1wBi+6umvncLDBKieZ1XfXH8kSugLZm2o3CnBG1w44=;
+ b=VJRR0SAWRNxKm8yjb95IScOLvmvp0aMNXAj7kIPmZ3Ml2cNMjp0Yxb8aWeuIpMw6/4
+ Mgu65zJ6ms6yfPTnvwIg8LM8L39CMnMQhnGtKZcUp2X/fWaEztEeA6VFytqGqcsnxm5V
+ 4L5plvsZHPRkFI+QlZgtXkzHUgZsFCTxk06+8iSIFim5VbXIA1wINEf7LpftWK8jXr9H
+ DBc1Qp1HDiybte0t0nLgQw0gvzfXPbQGSlVBlqlDonWlUtJMQPXkyazLPABX7FhJPbW/
+ j2xOYZ0oluF7DVU8Bu3+S7oAJJxtcY31mrIqSPSC93wNovj4euVMq8LLwpfPSJO1Y1wo
+ Upsw==
+X-Gm-Message-State: ACrzQf37GTTIPhiQdCsE7bBR7dXaO1BfqvdAIVlgXW4aZlQMUp3V10Jl
+ tTwfGco8xvk8JOE/WN2KFUc=
+X-Google-Smtp-Source: AMsMyM7TxU0q3RRO4eY7tXMJeGNLQWWlQeC1LFjKN1GQmdpFh4FtYwyNG7CaaC+7bAATwY9bl/oH5A==
+X-Received: by 2002:a17:906:974c:b0:784:d96c:b4fa with SMTP id
+ o12-20020a170906974c00b00784d96cb4famr970916ejy.391.1664253852194; 
+ Mon, 26 Sep 2022 21:44:12 -0700 (PDT)
+Received: from smtpclient.apple ([178.254.237.20])
+ by smtp.gmail.com with ESMTPSA id
+ x3-20020a1709064a8300b0078082f95e5csm122080eju.204.2022.09.26.21.44.10
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 26 Sep 2022 21:44:11 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+From: Martin Zaharinov <micron10@gmail.com>
+In-Reply-To: <20220926151939.GG12777@breakpoint.cc>
+Date: Tue, 27 Sep 2022 07:44:09 +0300
+Message-Id: <D304A05C-D535-43D0-AC70-D5943CE66D89@gmail.com>
+References: <20220926083139.48069-1-fw@strlen.de>
+ <YzFp4H/rbdov7iDg@dhcp22.suse.cz> <20220926151939.GG12777@breakpoint.cc>
+To: Florian Westphal <fw@strlen.de>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
+X-Mailman-Approved-At: Tue, 27 Sep 2022 15:23:57 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date;
+ bh=l1wBi+6umvncLDBKieZ1XfXH8kSugLZm2o3CnBG1w44=;
+ b=im7Sx2Cfiel3Nb1P60hkLEkIwjc956AdHjop3aTwDymCONtuBpYwtcVtbY6UdAEcZh
+ 4NhgCFrnvJpGu5miRNQijeaE5rRvu3VoaA5U+W+NZgcCsFdcFctuXVCvP5cwyoyFdFCv
+ a3NC+ObvcHP4WDiZtBtcDIz7H/oZ88/FZzJXzgR1tR4tjrcgLaaz2y7rPN6v6c7+At8T
+ AvZjatw90+uVLHIaa3uVbijbPUMC+nWB0zeTnzy56B/k+tRpe6V8KpINlrLw14o5kH7y
+ K1GjMO84zXy2RI8w0ijgBr9p1YIlm8HD+gXeLlOoaYkpoq6HXaor2dVUOUZ1KCwmXjtg
+ tTWg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=im7Sx2Cf
+Subject: Re: [Intel-wired-lan] [PATCH net] rhashtable: fix crash due to mm
+ api change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,376 +111,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, edumazet@google.com,
- noor.azura.ahmad.tarmizi@intel.com, kuba@kernel.org,
- muhammad.husaini.zulkifli@intel.com, davem@davemloft.net
-MIME-Version: 1.0
+Cc: Intel-wired-lan@osuosl.org, Michal Hocko <mhocko@suse.com>,
+ herbert@gondor.apana.org.au, kvm@vger.kernel.org,
+ netdev <netdev@vger.kernel.org>,
+ "linux-kernel@vger kernel. org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, urezki@gmail.com,
+ intel-wired-lan@lists.osuosl.org, Paolo Bonzini <pbonzini@redhat.com>,
+ tgraf@suug.ch, Jakub Kicinski <kuba@kernel.org>, akpm@linux-foundation.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Add intel 
+And one more from last min:
 
-For PTP traffic, timestamp is retrieved from TXSTMP register.
-For all other packets, DMA time stamp field of the Transmit
-Descriptor Write-back is used.
 
-If the TXSTAMPO register is used for both PTP and non-PTP packets,
-there is a significant possibility that the time stamp for a PTP packet
-will be lost when there is a lot of traffic.
+Sep 27 06:28:58 [ 1715.463514][   C28] ------------[ cut here ]------------
+Sep 27 06:28:58 [ 1715.464245][   C28] NETDEV WATCHDOG: eth0 (i40e): transmit queue 0 timed out
+Sep 27 06:28:58 [ 1715.465216][   C28] WARNING: CPU: 28 PID: 0 at net/sched/sch_generic.c:529 dev_watchdog+0x167/0x170
+Sep 27 06:28:58 [ 1715.466459][   C28] Modules linked in: nft_limit nf_conntrack_netlink pppoe pppox ppp_generic slhc nft_ct nft_nat nft_chain_nat team_mode_loadbalance team nf_tables netconsole coretemp i40e nf_nat_sip nf_conntrack_sip nf_nat_pptp nf_conntrack_pptp nf_nat_tftp nf_conntrack_tftp nf_nat_ftp nf_conntrack_ftp nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 acpi_ipmi ipmi_si ipmi_devintf ipmi_msghandler rtc_cmos [last unloaded: nf_flow_table]
+Sep 27 06:28:58 [ 1715.472099][   C28] CPU: 28 PID: 0 Comm: swapper/28 Tainted: G           O      5.19.11 #1
+Sep 27 06:28:58 [ 1715.473225][   C28] Hardware name: Supermicro SYS-5038MR-H8TRF/X10SRD-F, BIOS 3.3 10/28/2020
+Sep 27 06:28:58 [ 1715.474377][   C28] RIP: 0010:dev_watchdog+0x167/0x170
+Sep 27 06:28:58 [ 1715.475081][   C28] Code: 28 e9 77 ff ff ff 48 89 df c6 05 63 57 c4 00 01 e8 de 59 fb ff 48 89 c2 44 89 e1 48 89 de 48 c7 c7 08 c7 ec 98 e8 52 c6 13 00 <0f> 0b eb 85 0f 1f 44 00 00 41 55 41 54 55 53 48 8b 47 50 4c 8b 28
+Sep 27 06:28:58 [ 1715.477736][   C28] RSP: 0018:ffffa93c806b8ee8 EFLAGS: 00010292
+Sep 27 06:28:58 [ 1715.478542][   C28] RAX: 0000000000000038 RBX: ffffa01591bb0000 RCX: 0000000000000001
+Sep 27 06:28:58 [ 1715.479608][   C28] RDX: 00000000ffffffea RSI: 00000000fff7ffff RDI: 00000000fff7ffff
+Sep 27 06:28:58 [ 1715.480674][   C28] RBP: ffffa01591bb03c0 R08: 0000000000000001 R09: 00000000fff7ffff
+Sep 27 06:28:58 [ 1715.481741][   C28] R10: ffffa01cdae00000 R11: 0000000000000003 R12: 0000000000000000
+Sep 27 06:28:58 [ 1715.482807][   C28] R13: 0000000000000001 R14: ffffa01cdfd207a8 R15: 0000000000000082
+Sep 27 06:28:58 [ 1715.483876][   C28] FS:  0000000000000000(0000) GS:ffffa01cdfd00000(0000) knlGS:0000000000000000
+Sep 27 06:28:58 [ 1715.485072][   C28] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+Sep 27 06:28:58 [ 1715.485949][   C28] CR2: 000000c000c19010 CR3: 00000001974a4005 CR4: 00000000003706e0
+Sep 27 06:28:58 [ 1715.487018][   C28] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+Sep 27 06:28:58 [ 1715.488084][   C28] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+Sep 27 06:28:58 [ 1715.489151][   C28] Call Trace:
+Sep 27 06:28:58 [ 1715.489582][   C28]  <IRQ>
+Sep 27 06:28:58 [ 1715.489949][   C28]  ? pfifo_fast_destroy+0x30/0x30
+Sep 27 06:28:58 [ 1715.490615][   C28]  call_timer_fn.constprop.0+0x14/0x70
+Sep 27 06:28:58 [ 1715.491342][   C28]  __run_timers.part.0+0x164/0x190
+Sep 27 06:28:58 [ 1715.492019][   C28]  ? ktime_get+0x30/0x90
+Sep 27 06:28:58 [ 1715.492576][   C28]  run_timer_softirq+0x21/0x50
+Sep 27 06:28:58 [ 1715.493204][   C28]  __do_softirq+0xaf/0x1d7
+Sep 27 06:28:58 [ 1715.493788][   C28]  __irq_exit_rcu+0x9a/0xd0
+Sep 27 06:28:58 [ 1715.494383][   C28]  sysvec_apic_timer_interrupt+0x66/0x80
+Sep 27 06:28:58 [ 1715.495131][   C28]  </IRQ>
+Sep 27 06:28:58 [ 1715.495509][   C28]  <TASK>
+Sep 27 06:28:58 [ 1715.495887][   C28]  asm_sysvec_apic_timer_interrupt+0x16/0x20
+Sep 27 06:28:58 [ 1715.496683][   C28] RIP: 0010:cpuidle_enter_state+0xb3/0x290
+Sep 27 06:28:58 [ 1715.497455][   C28] Code: e8 12 25 b0 ff 31 ff 49 89 c5 e8 c8 80 af ff 45 84 ff 74 12 9c 58 f6 c4 02 0f 85 cf 01 00 00 31 ff e8 c1 cb b3 ff fb 45 85 f6 <0f> 88 d0 00 00 00 49 63 ce 48 6b f1 68 48 8b 04 24 4c 89 ea 48 29
+Sep 27 06:28:58 [ 1715.500111][   C28] RSP: 0018:ffffa93c801cfe98 EFLAGS: 00000202
+Sep 27 06:28:58 [ 1715.500916][   C28] RAX: ffffa01cdfd26800 RBX: ffffa01580bff000 RCX: 000000000000001f
+Sep 27 06:28:58 [ 1715.501983][   C28] RDX: 0000018f6997dcb8 RSI: 00000000313b13b1 RDI: 0000000000000000
+Sep 27 06:28:58 [ 1715.503050][   C28] RBP: 0000000000000001 R08: 0000000000000002 R09: ffffa01cdfd25724
+Sep 27 06:28:58 [ 1715.504118][   C28] R10: 0000000000000018 R11: 000000000000007b R12: ffffffff99222da0
+Sep 27 06:28:58 [ 1715.536292][   C28] R13: 0000018f6997dcb8 R14: 0000000000000001 R15: 0000000000000000
+Sep 27 06:28:58 [ 1715.568539][   C28]  ? cpuidle_enter_state+0x98/0x290
+Sep 27 06:28:58 [ 1715.600850][   C28]  cpuidle_enter+0x24/0x40
+Sep 27 06:28:58 [ 1715.632878][   C28]  cpuidle_idle_call+0xbb/0x100
+Sep 27 06:28:58 [ 1715.664572][   C28]  do_idle+0x76/0xc0
+Sep 27 06:28:58 [ 1715.695803][   C28]  cpu_startup_entry+0x14/0x20
+Sep 27 06:28:58 [ 1715.726582][   C28]  start_secondary+0xd6/0xe0
+Sep 27 06:28:58 [ 1715.756507][   C28]  secondary_startup_64_no_verify+0xd3/0xdb
+Sep 27 06:28:58 [ 1715.785770][   C28]  </TASK>
+Sep 27 06:28:58 [ 1715.813710][   C28] ---[ end trace 0000000000000000 ]---
+Sep 27 06:28:58 [ 1715.840988][   C28] i40e 0000:03:00.0 eth0: tx_timeout: VSI_seid: 390, Q 0, NTC: 0x697, HWB: 0x78c, NTU: 0x78c, TAIL: 0x78c, INT: 0x0
+Sep 27 06:28:58 [ 1715.896233][   C28] i40e 0000:03:00.0 eth0: tx_timeout recovery level 1, txqueue 0
 
-This patch introduce to use the DMA Time Stamp for non PTP packet to
-solve the current issue. User application can add new SOF_TIMESTAMPING flag
-SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH when configure the
-hwtstamp_config for the socket option if require DMA Time Stamp.
 
-Before:
 
-ptp4l: rms    2 max    5 freq  -3404 +/-   3 delay     1 +/-   0
-ptp4l: rms    3 max    6 freq  -3400 +/-   3 delay     1 +/-   0
-ptp4l: rms    2 max    4 freq  -3400 +/-   3 delay     1 +/-   0
-ptp4l: timed out while polling for tx timestamp
-ptp4l: increasing tx_timestamp_timeout may correct this issue,
-but it is likely caused by a driver bug
-ptp4l: port 1 (enp170s0.vlan): send peer delay response failed
-ptp4l: port 1 (enp170s0.vlan): SLAVE to FAULTY on FAULT_DETECTED
-ptp4l: port 1 (enp170s0.vlan): FAULTY to LISTENING on INIT_COMPLETE
-ptp4l: port 1 (enp170s0.vlan): LISTENING to MASTER on
-ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
-ptp4l: selected local clock aa00aa.fffe.00aa00 as best master
-ptp4l: port 1 (enp170s0.vlan): assuming the grand master role
-ptp4l: port 1 (enp170s0.vlan): new foreign master 22bb22.fffe.bb22bb-1
-ptp4l: selected best master clock 22bb22.fffe.bb22bb
-ptp4l: port 1 (enp170s0.vlan): MASTER to UNCALIBRATED on RS_SLAVE
-ptp4l: port 1 (enp170s0.vlan): UNCALIBRATED to SLAVE on
-MASTER_CLOCK_SELECTED
-ptp4l: rms   39 max   66 freq  -3355 +/-  45 delay     1 +/-   0
-ptp4l: rms   20 max   36 freq  -3339 +/-  12 delay     1 +/-   0
-ptp4l: rms   11 max   18 freq  -3371 +/-  11 delay     1 +/-   0
-ptp4l: rms   10 max   16 freq  -3384 +/-   2 delay     1 +/-   0
-ptp4l: rms    1 max    2 freq  -3375 +/-   2 delay     1 +/-   0
-ptp4l: rms    3 max    6 freq  -3373 +/-   4 delay     0 +/-   0
-
-After:
-
-ptp4l: rms    3 max    4 freq  -3386 +/-   4 delay     0 +/-   0
-ptp4l: rms    3 max    7 freq  -3380 +/-   3 delay     0 +/-   0
-ptp4l: rms    3 max    6 freq  -3380 +/-   3 delay     0 +/-   0
-ptp4l: rms    1 max    3 freq  -3381 +/-   2 delay     0 +/-   0
-ptp4l: rms    3 max    5 freq  -3377 +/-   2 delay     0 +/-   0
-ptp4l: rms    2 max    3 freq  -3377 +/-   2 delay     0 +/-   0
-ptp4l: rms    3 max    6 freq  -3375 +/-   4 delay     0 +/-   0
-ptp4l: rms    2 max    4 freq  -3380 +/-   2 delay     1 +/-   0
-ptp4l: rms    4 max    7 freq  -3385 +/-   3 delay     0 +/-   0
-ptp4l: rms    2 max    3 freq  -3384 +/-   2 delay     0 +/-   0
-ptp4l: rms    4 max    7 freq  -3376 +/-   2 delay     0 +/-   0
-ptp4l: rms    3 max    5 freq  -3376 +/-   4 delay     0 +/-   0
-ptp4l: rms    3 max    5 freq  -3382 +/-   2 delay     0 +/-   0
-ptp4l: rms    5 max    7 freq  -3389 +/-   2 delay     0 +/-   0
-ptp4l: rms    3 max    4 freq  -3388 +/-   3 delay     1 +/-   0
-ptp4l: rms    3 max    5 freq  -3387 +/-   4 delay     1 +/-   0
-ptp4l: rms    5 max    8 freq  -3395 +/-   3 delay     1 +/-   0
-ptp4l: rms    5 max    8 freq  -3399 +/-   4 delay     0 +/-   0
-ptp4l: rms    2 max    5 freq  -3397 +/-   3 delay     1 +/-   0
-ptp4l: rms    2 max    4 freq  -3397 +/-   3 delay     1 +/-   0
-ptp4l: rms    2 max    3 freq  -3397 +/-   2 delay     1 +/-   0
-ptp4l: rms    3 max    5 freq  -3391 +/-   2 delay     2 +/-   0
-
-Test Setup:
-back-to-back communication between Host and DUT. Host will act as
-transmitter and DUT will become receiver. Host will generate the
-packet using sample application with timestamping_flag of
-SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH and hwtstamp_config flag of
-HWTSTAMP_FLAG_DMA_TIMESTAMP.
-
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Co-developed-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-Co-developed-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
-Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
-Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h         | 10 +++
- drivers/net/ethernet/intel/igc/igc_base.h    |  2 +-
- drivers/net/ethernet/intel/igc/igc_defines.h |  2 +
- drivers/net/ethernet/intel/igc/igc_ethtool.c |  5 +-
- drivers/net/ethernet/intel/igc/igc_main.c    | 24 ++++--
- drivers/net/ethernet/intel/igc/igc_ptp.c     | 83 ++++++++++++++++++++
- 6 files changed, 119 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 1e7e7071f64d..38a24b5260d1 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -348,6 +348,12 @@ extern char igc_driver_name[];
- #define IGC_I225_RX_LATENCY_1000	300
- #define IGC_I225_RX_LATENCY_2500	1485
- 
-+/* Transmit latency (for DMA timestamps) in nanosecond */
-+#define IGC_I225_TX_DMA_LATENCY_10	13100
-+#define IGC_I225_TX_DMA_LATENCY_100	1410
-+#define IGC_I225_TX_DMA_LATENCY_1000	285
-+#define IGC_I225_TX_DMA_LATENCY_2500	1485
-+
- /* RX and TX descriptor control thresholds.
-  * PTHRESH - MAC will consider prefetch if it has fewer than this number of
-  *           descriptors available in its onboard memory.
-@@ -410,6 +416,8 @@ enum igc_tx_flags {
- 	/* olinfo flags */
- 	IGC_TX_FLAGS_IPV4	= 0x10,
- 	IGC_TX_FLAGS_CSUM	= 0x20,
-+
-+	IGC_TX_FLAGS_DMA_TSTAMP	= 0x200,
- };
- 
- enum igc_boards {
-@@ -627,6 +635,8 @@ void igc_ptp_reset(struct igc_adapter *adapter);
- void igc_ptp_suspend(struct igc_adapter *adapter);
- void igc_ptp_stop(struct igc_adapter *adapter);
- ktime_t igc_ptp_rx_pktstamp(struct igc_adapter *adapter, __le32 *buf);
-+void igc_ptp_tx_dma_tstamp(struct igc_adapter *adapter,
-+			   struct sk_buff *skb, u64 tstamp);
- int igc_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
- int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
- void igc_ptp_tx_hang(struct igc_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/igc/igc_base.h b/drivers/net/ethernet/intel/igc/igc_base.h
-index ce530f5fd7bd..672cf2d92165 100644
---- a/drivers/net/ethernet/intel/igc/igc_base.h
-+++ b/drivers/net/ethernet/intel/igc/igc_base.h
-@@ -16,7 +16,7 @@ union igc_adv_tx_desc {
- 		__le32 olinfo_status;
- 	} read;
- 	struct {
--		__le64 rsvd;       /* Reserved */
-+		__le64 dma_tstamp;
- 		__le32 nxtseq_seed;
- 		__le32 status;
- 	} wb;
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index f7311aeb293b..baedf48b4e2e 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -312,6 +312,7 @@
- #define IGC_TXD_CMD_DEXT	0x20000000 /* Desc extension (0 = legacy) */
- #define IGC_TXD_CMD_VLE		0x40000000 /* Add VLAN tag */
- #define IGC_TXD_STAT_DD		0x00000001 /* Descriptor Done */
-+#define IGC_TXD_STAT_TS_STAT    0x00000002 /* DMA Timestamp in packet */
- #define IGC_TXD_CMD_TCP		0x01000000 /* TCP packet */
- #define IGC_TXD_CMD_IP		0x02000000 /* IP packet */
- #define IGC_TXD_CMD_TSE		0x04000000 /* TCP Seg enable */
-@@ -520,6 +521,7 @@
- /* Transmit Scheduling */
- #define IGC_TQAVCTRL_TRANSMIT_MODE_TSN	0x00000001
- #define IGC_TQAVCTRL_ENHANCED_QAV	0x00000008
-+#define IGC_TQAVCTRL_1588_STAT_EN	0x00000004
- 
- #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
- #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 8cc077b712ad..7d198fb6d619 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1532,7 +1532,8 @@ static int igc_ethtool_get_ts_info(struct net_device *dev,
- 			SOF_TIMESTAMPING_SOFTWARE |
- 			SOF_TIMESTAMPING_TX_HARDWARE |
- 			SOF_TIMESTAMPING_RX_HARDWARE |
--			SOF_TIMESTAMPING_RAW_HARDWARE;
-+			SOF_TIMESTAMPING_RAW_HARDWARE |
-+			SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH;
- 
- 		info->tx_types =
- 			BIT(HWTSTAMP_TX_OFF) |
-@@ -1541,6 +1542,8 @@ static int igc_ethtool_get_ts_info(struct net_device *dev,
- 		info->rx_filters = BIT(HWTSTAMP_FILTER_NONE);
- 		info->rx_filters |= BIT(HWTSTAMP_FILTER_ALL);
- 
-+		info->flag = HWTSTAMP_FLAG_DMA_TIMESTAMP;
-+
- 		return 0;
- 	default:
- 		return -EOPNOTSUPP;
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 97b9edb5153e..afcf98cd6117 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -1415,6 +1415,7 @@ static int igc_tso(struct igc_ring *tx_ring,
- static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
- 				       struct igc_ring *tx_ring)
- {
-+	struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
- 	u16 count = TXD_USE_COUNT(skb_headlen(skb));
- 	__be16 protocol = vlan_get_protocol(skb);
- 	struct igc_tx_buffer *first;
-@@ -1445,16 +1446,14 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
- 	first->bytecount = skb->len;
- 	first->gso_segs = 1;
- 
--	if (unlikely(skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)) {
--		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
--
-+	if (unlikely((skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP) &&
-+		     !(skb_shinfo(skb)->tx_flags & SKBTX_HW_DMA_TSTAMP))) {
- 		/* FIXME: add support for retrieving timestamps from
- 		 * the other timer registers before skipping the
- 		 * timestamping request.
- 		 */
- 		if (adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON &&
--		    !test_and_set_bit_lock(__IGC_PTP_TX_IN_PROGRESS,
--					   &adapter->state)) {
-+		    !test_and_set_bit_lock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state))	{
- 			skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
- 			tx_flags |= IGC_TX_FLAGS_TSTAMP;
- 
-@@ -1463,6 +1462,14 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
- 		} else {
- 			adapter->tx_hwtstamp_skipped++;
- 		}
-+	} else if (unlikely(skb_shinfo(skb)->tx_flags & SKBTX_HW_DMA_TSTAMP)) {
-+		if (adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON &&
-+		    adapter->tstamp_config.flags == HWTSTAMP_FLAG_DMA_TIMESTAMP) {
-+			skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
-+			tx_flags |= IGC_TX_FLAGS_DMA_TSTAMP;
-+		} else {
-+			adapter->tx_hwtstamp_skipped++;
-+		}
- 	}
- 
- 	if (skb_vlan_tag_present(skb)) {
-@@ -2741,6 +2748,13 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 		if (!(eop_desc->wb.status & cpu_to_le32(IGC_TXD_STAT_DD)))
- 			break;
- 
-+		if (eop_desc->wb.status & cpu_to_le32(IGC_TXD_STAT_TS_STAT) &&
-+		    tx_buffer->tx_flags & IGC_TX_FLAGS_DMA_TSTAMP) {
-+			u64 tstamp = le64_to_cpu(eop_desc->wb.dma_tstamp);
-+
-+			igc_ptp_tx_dma_tstamp(adapter, tx_buffer->skb, tstamp);
-+		}
-+
- 		/* clear next_to_watch to prevent false hangs */
- 		tx_buffer->next_to_watch = NULL;
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 8dbb9f903ca7..631972d7e97b 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -432,6 +432,29 @@ static void igc_ptp_systim_to_hwtstamp(struct igc_adapter *adapter,
- 	}
- }
- 
-+static void igc_ptp_dma_time_to_hwtstamp(struct igc_adapter *adapter,
-+					 struct skb_shared_hwtstamps *hwtstamps,
-+					 u64 systim)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 sec, nsec;
-+
-+	nsec = rd32(IGC_SYSTIML);
-+	sec = rd32(IGC_SYSTIMH);
-+
-+	if (unlikely(nsec < (systim & 0xFFFFFFFF)))
-+		--sec;
-+
-+	switch (adapter->hw.mac.type) {
-+	case igc_i225:
-+		memset(hwtstamps, 0, sizeof(*hwtstamps));
-+		hwtstamps->hwtstamp = ktime_set(sec, systim & 0xFFFFFFFF);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
- /**
-  * igc_ptp_rx_pktstamp - Retrieve timestamp from Rx packet buffer
-  * @adapter: Pointer to adapter the packet buffer belongs to
-@@ -549,6 +572,28 @@ static void igc_ptp_enable_tx_timestamp(struct igc_adapter *adapter)
- 	rd32(IGC_TXSTMPH);
- }
- 
-+static void igc_ptp_disable_dma_timestamp(struct igc_adapter *adapter)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 tqavctrl;
-+
-+	tqavctrl = rd32(IGC_TQAVCTRL);
-+	tqavctrl &= ~IGC_TQAVCTRL_1588_STAT_EN;
-+
-+	wr32(IGC_TQAVCTRL, tqavctrl);
-+}
-+
-+static void igc_ptp_enable_dma_timestamp(struct igc_adapter *adapter)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 tqavctrl;
-+
-+	tqavctrl = rd32(IGC_TQAVCTRL);
-+	tqavctrl |= IGC_TQAVCTRL_1588_STAT_EN;
-+
-+	wr32(IGC_TQAVCTRL, tqavctrl);
-+}
-+
- /**
-  * igc_ptp_set_timestamp_mode - setup hardware for timestamping
-  * @adapter: networking device structure
-@@ -562,9 +607,14 @@ static int igc_ptp_set_timestamp_mode(struct igc_adapter *adapter,
- 	switch (config->tx_type) {
- 	case HWTSTAMP_TX_OFF:
- 		igc_ptp_disable_tx_timestamp(adapter);
-+		igc_ptp_disable_dma_timestamp(adapter);
- 		break;
- 	case HWTSTAMP_TX_ON:
- 		igc_ptp_enable_tx_timestamp(adapter);
-+
-+		/* Ensure that flag only can be used during HWTSTAMP_TX_ON */
-+		if (config->flags == HWTSTAMP_FLAG_DMA_TIMESTAMP)
-+			igc_ptp_enable_dma_timestamp(adapter);
- 		break;
- 	default:
- 		return -ERANGE;
-@@ -683,6 +733,39 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
- 	dev_kfree_skb_any(skb);
- }
- 
-+void igc_ptp_tx_dma_tstamp(struct igc_adapter *adapter,
-+			   struct sk_buff *skb, u64 tstamp)
-+{
-+	struct skb_shared_hwtstamps shhwtstamps;
-+	int adjust = 0;
-+
-+	if (!(skb_shinfo(skb)->tx_flags & SKBTX_IN_PROGRESS))
-+		return;
-+
-+	igc_ptp_dma_time_to_hwtstamp(adapter, &shhwtstamps, tstamp);
-+
-+	switch (adapter->link_speed) {
-+	case SPEED_10:
-+		adjust = IGC_I225_TX_DMA_LATENCY_10;
-+		break;
-+	case SPEED_100:
-+		adjust = IGC_I225_TX_DMA_LATENCY_100;
-+		break;
-+	case SPEED_1000:
-+		adjust = IGC_I225_TX_DMA_LATENCY_1000;
-+		break;
-+	case SPEED_2500:
-+		adjust = IGC_I225_TX_DMA_LATENCY_2500;
-+		break;
-+	}
-+
-+	shhwtstamps.hwtstamp =
-+		ktime_add_ns(shhwtstamps.hwtstamp, adjust);
-+
-+	/* Notify the stack and free the skb after we've unlocked */
-+	skb_tstamp_tx(skb, &shhwtstamps);
-+}
-+
- /**
-  * igc_ptp_tx_work
-  * @work: pointer to work struct
--- 
-2.17.1
+> On 26 Sep 2022, at 18:19, Florian Westphal <fw@strlen.de> wrote:
+> 
+> Michal Hocko <mhocko@suse.com> wrote:
+>> On Mon 26-09-22 10:31:39, Florian Westphal wrote:
+>>> Martin Zaharinov reports BUG() in mm land for 5.19.10 kernel:
+>>> kernel BUG at mm/vmalloc.c:2437!
+>>> invalid opcode: 0000 [#1] SMP
+>>> CPU: 28 PID: 0 Comm: swapper/28 Tainted: G        W  O      5.19.9 #1
+>>> [..]
+>>> RIP: 0010:__get_vm_area_node+0x120/0x130
+>>>  __vmalloc_node_range+0x96/0x1e0
+>>>  kvmalloc_node+0x92/0xb0
+>>>  bucket_table_alloc.isra.0+0x47/0x140
+>>>  rhashtable_try_insert+0x3a4/0x440
+>>>  rhashtable_insert_slow+0x1b/0x30
+>>> [..]
+>>> 
+>>> bucket_table_alloc uses kvzalloc(GPF_ATOMIC).  If kmalloc fails, this now
+>>> falls through to vmalloc and hits code paths that assume GFP_KERNEL.
+>>> 
+>>> I sent a patch to restore GFP_ATOMIC support in kvmalloc but mm
+>>> maintainers rejected it.
+>>> 
+>>> This patch is partial revert of
+>>> commit 93f976b5190d ("lib/rhashtable: simplify bucket_table_alloc()"),
+>>> to avoid kvmalloc for ATOMIC case.
+>>> 
+>>> As kvmalloc doesn't warn when used with ATOMIC, kernel will only crash
+>>> once vmalloc fallback occurs, so we may see more crashes in other areas
+>>> in the future.
+>>> 
+>>> Most other callers seem ok but kvm_mmu_topup_memory_cache looks like it
+>>> might be affected by the same breakage, so Cc kvm@.
+>>> 
+>>> Reported-by: Martin Zaharinov <micron10@gmail.com>
+>>> Fixes: a421ef303008 ("mm: allow !GFP_KERNEL allocations for kvmalloc")
+>>> Link: https://lore.kernel.org/linux-mm/Yy3MS2uhSgjF47dy@pc636/T/#t
+>>> Cc: Michal Hocko <mhocko@suse.com>
+>>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>>> Cc: kvm@vger.kernel.org
+>>> Signed-off-by: Florian Westphal <fw@strlen.de>
+>> 
+>> Please continue in the original email thread until we sort out the most
+>> reasonable solution for this.
+> 
+> I've submitted a v2 using Michals proposed fix for kvmalloc api, if
+> thats merged no fixes are required in the callers, so this rhashtable
+> patch can be discarded.
 
 _______________________________________________
 Intel-wired-lan mailing list
