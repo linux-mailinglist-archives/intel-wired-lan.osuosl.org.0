@@ -1,83 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D71575EF6F7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Sep 2022 15:56:32 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF10A5EF7CF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Sep 2022 16:40:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5F173408AC;
-	Thu, 29 Sep 2022 13:56:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F173408AC
+	by smtp4.osuosl.org (Postfix) with ESMTP id AFF0241B3A;
+	Thu, 29 Sep 2022 14:40:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFF0241B3A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664459791;
-	bh=BXAtECk6XX6UKaD7N7DDO4cuCO7zmY2v2vjk1NuSKVU=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=rQfB35i8msxJppy8/qwa/w7YroB+lYc71C1Z5kRJjWHiugOSY730sUL1klphGGPhi
-	 D1qOEc6WwgJJ+BIXNlwh09fNKS1YImaFBhSbBFDwNkrKnPjvxy0ujB06BK54MMTM34
-	 H3U4+AOeA7VB6chX4aw2rgVx7JEpJB0BEF58kZmfKTx3OQFbO8QMA6yPZykbjirE+x
-	 Ad5leF4XQntrPGWQRuMA8HhRjXG5QNyK1jHyGP/5B+j19MAfhzyTJJBg3FrlTKbK+C
-	 miH0l2WXiCHhwbFX5dViWLllp/g1SLEt4TRTACsjGO6e01zD/PDoA8F+gWSHQWERJ+
-	 nzqmJBX/oGAEg==
+	s=default; t=1664462452;
+	bh=zqblDymT0HAxrDjOBsUVrsW2nyccl2JDMNfxetSh4wo=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Yjpq72KkNN019D3cP9PurT3lgnASyw0iSGh49dQFp3XQy7RtGBbn6Ad4nxf6ODrZB
+	 l44iY3uLyqIOECLu7WrSpg9Gmy/6vL+CcnPJrR3LteRXHC2pGugR8lIR4fqCP6wds6
+	 7pMZuerMc5gwNVBfF/gpEFMAniXy6zoL5+PX9ZqWAS60pIYCQmioENDnjw1tLmz7T9
+	 92PJwnyBNBEKxWKsx3d6hspeQO+4IkG/6XjUR+tHH77xqsrf/L0VbWX3QxOrqTD4Gt
+	 LoXvyCeVx+q+mw5rWlWQlVtS5N0NKsDmDWPD/48COiUhXI/YDBKA2Bs9pOfwBJWEey
+	 09jM0KNUdWphQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JtautkuzX6pc; Thu, 29 Sep 2022 13:56:30 +0000 (UTC)
+	with ESMTP id 3EsZSIgNn5El; Thu, 29 Sep 2022 14:40:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A823240275;
-	Thu, 29 Sep 2022 13:56:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A823240275
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 607221BF2B4
- for <intel-wired-lan@osuosl.org>; Thu, 29 Sep 2022 13:56:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 281B941B3B;
+	Thu, 29 Sep 2022 14:40:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 281B941B3B
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B8EF1BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 14:40:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3AD5B60BC6
- for <intel-wired-lan@osuosl.org>; Thu, 29 Sep 2022 13:56:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AD5B60BC6
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2347441050
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 14:40:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2347441050
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rPqtBN7EFoUn for <intel-wired-lan@osuosl.org>;
- Thu, 29 Sep 2022 13:56:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id q-1joEjvauPX for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Sep 2022 14:40:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C03C60B77
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0C03C60B77
- for <intel-wired-lan@osuosl.org>; Thu, 29 Sep 2022 13:56:22 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 16663CE21B8;
- Thu, 29 Sep 2022 13:56:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEF16C433D7;
- Thu, 29 Sep 2022 13:56:16 +0000 (UTC)
-Date: Thu, 29 Sep 2022 06:56:15 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-Message-ID: <20220929065615.0a717655@kernel.org>
-In-Reply-To: <SJ1PR11MB6180CAE122C465AB7CB58B1BB8579@SJ1PR11MB6180.namprd11.prod.outlook.com>
-References: <20220927130656.32567-1-muhammad.husaini.zulkifli@intel.com>
- <20220927170919.3a1dbcc3@kernel.org>
- <SJ1PR11MB6180CAE122C465AB7CB58B1BB8579@SJ1PR11MB6180.namprd11.prod.outlook.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 956D04015A
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 956D04015A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 14:40:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="300631197"
+X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="300631197"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Sep 2022 07:40:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="653137984"
+X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="653137984"
+Received: from lkp-server01.sh.intel.com (HELO 6126f2790925) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 29 Sep 2022 07:40:36 -0700
+Received: from kbuild by 6126f2790925 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oduiJ-0001DS-1n;
+ Thu, 29 Sep 2022 14:40:35 +0000
+Date: Thu, 29 Sep 2022 22:40:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <6335ae4e.IY9Il3fxmnLIm4jl%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1664459777;
- bh=IZWkitAl8YosjSaE9485+Ts9rzl3eqH6rjc4QjpoN4A=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=G6tA1GhDnbVOPoE6tUOI0ARB6k/YpO9OJ/U1X/nVWM77qvrnhK0sdC5yyv2BUmM08
- gAo95DKwjiiqb+mlBSUciUfi+gG9ZR7lXBfkz2vfAOe3y4hQccERC/mRBvnUy5+vMb
- OrQgy01zJytwjpgVmnCoFzNekZOxsm9U01ZJHsHgYjmW+X3gsGpDwT0mRYQnmA1PSc
- vZraNuEslZisd9JSoW2IBbyUF+AG32znE3oastoA/D/nUfuHt+e2ZzoeqqNSJ7zrHT
- LHvP5wf+a/xvrSb2QLXQfZWqmAhEYs1e8HME1wxGv7Ss2SleaxWTE6io4MCaOapSyh
- mhSUJZbDp0pJA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=G6tA1GhD
-Subject: Re: [Intel-wired-lan] [PATCH v1 0/4] Add support for DMA timestamp
- for non-PTP packets
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1664462442; x=1695998442;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vrtubKNDhx7Z1UdruvGhzOYzmMZNLU7bsWVxH8BObv4=;
+ b=bBAHFalWo76ag2vvc/FhEDrsazx8UNB1EOLRiEAE0vHId1rmodUgWLy0
+ eqZ+7+MBwPwf9EFRljGAhxZr1SDsGipVPimOK24NH5CU912DNypnCBtAN
+ wfELalulNgOQx13aRsnJSp3eCGCRM4D7bXFWKMHVSBNzV7/0q7fIGXn8v
+ 3j532H5FZqJ4sMM+Qn4FAXJ2IjoXVQAT3ieS+Ab++YHXCfQu4xIHb1iWO
+ jxVqnGziS/EYI1zjDz5gcsgx7+SvrXmriFL/rZJNJhlJ/urVDIjiP8ADy
+ 52ZfWPNo7L/tSS8CfRJaBdd36YDkEAVedg/2BBfqQ8PpFgcSRCqQIXdvS
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=bBAHFalW
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ 929a6cdfaeac9de6a1004eb18999e1439527cfb4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,66 +95,144 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "leon@kernel.org" <leon@kernel.org>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>,
- Richard Cochran <richardcochran@gmail.com>, Saeed Mahameed <saeed@kernel.org>,
- "edumazet@google.com" <edumazet@google.com>, Gal Pressman <gal@nvidia.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Michael Chan <michael.chan@broadcom.com>,
- "davem@davemloft.net" <davem@davemloft.net>,
- Andy Gospodarek <andy@greyhouse.net>, "Ahmad Tarmizi,
- Noor Azura" <noor.azura.ahmad.tarmizi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 29 Sep 2022 02:35:29 +0000 Zulkifli, Muhammad Husaini wrote:
-> > High level tho, are we assuming that the existing HW timestamps are always
-> > PTP-quality, i.e. captured when SFD crosses the RS layer, or whatnot? I'm
-> > afraid some NICs already report PCI stamps as the HW ones.  
-> 
-> Yes. HW timestamps always can be assume equivalent to PTP quality.
-> Could you provide additional information regarding SFD crosses the RS layer?
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
+branch HEAD: 929a6cdfaeac9de6a1004eb18999e1439527cfb4  Merge branch 'master' of git://git.kernel.org/pub/scm/linux/kernel/git/netfilter/nf-next
 
-I mean true PTP timestamps, rather than captured somewhere in the NIC
-pipeline or at the DMA engine.
+elapsed time: 1258m
 
-> According to what I observed, The HW Timestamps will be requested if the application side 
-> specifies tx type = HWTSTAMP TX ON and timestamping flags = SOF TIMESTAMPING TX HARDWARE.
-> So it depends on how the application used it.
-> 
-> > So the existing HW stamps are conceptually of "any" type, if we want to be
-> > 100% sure NIC actually stamps at the PHY we'd need another tx_type to
-> > express that.  
-> 
-> Yes, you're right. Are you suggesting that we add a new tx_type to specify
-> Only MAC/PHY timestamp ? Ex. HWTSTAMP_TX_PHY/MAC_ON.
+configs tested: 115
+configs skipped: 2
 
-Perhaps we can call them HWTSTAMP_TX_PTP_* ? Was the general time
-stamping requirement specified in IEEE 1588 or 802.1 (AS?)? 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Both MAC and PHY can provide the time stamps IIUC, so picking one of
-those will not be entirely fortunate. In fact perhaps embedded folks
-will use this opportunity to disambiguate the two..
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+arc                                 defconfig
+alpha                               defconfig
+s390                                defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+arc                  randconfig-r043-20220925
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                randconfig-r042-20220925
+arc                  randconfig-r043-20220926
+s390                 randconfig-r044-20220925
+x86_64               randconfig-a002-20220926
+x86_64               randconfig-a004-20220926
+x86_64               randconfig-a001-20220926
+x86_64               randconfig-a003-20220926
+x86_64               randconfig-a005-20220926
+x86_64                           rhel-8.3-kvm
+x86_64                           rhel-8.3-syz
+x86_64                         rhel-8.3-kunit
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+powerpc                           allnoconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+m68k                        m5407c3_defconfig
+powerpc                      chrp32_defconfig
+powerpc                 mpc8540_ads_defconfig
+riscv                    nommu_k210_defconfig
+x86_64               randconfig-a006-20220926
+m68k                             allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+i386                 randconfig-a003-20220926
+i386                 randconfig-a001-20220926
+i386                 randconfig-a006-20220926
+i386                 randconfig-a004-20220926
+i386                 randconfig-a005-20220926
+i386                 randconfig-a002-20220926
+i386                          randconfig-c001
+i386                             allyesconfig
+i386                                defconfig
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+csky                              allnoconfig
+alpha                             allnoconfig
+arc                               allnoconfig
+riscv                             allnoconfig
+xtensa                  audio_kc705_defconfig
+sh                         ap325rxa_defconfig
+xtensa                generic_kc705_defconfig
+sh                          urquell_defconfig
+arm                         nhk8815_defconfig
+sh                          landisk_defconfig
+sh                           sh2007_defconfig
+sh                            hp6xx_defconfig
+sh                      rts7751r2d1_defconfig
+i386                          debian-10.3-kvm
+i386                        debian-10.3-kunit
+i386                         debian-10.3-func
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+x86_64                        randconfig-c001
+arm                  randconfig-c002-20220925
+m68k                         amcore_defconfig
+mips                           xway_defconfig
+sh                          lboxre2_defconfig
+nios2                            allyesconfig
+nios2                               defconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+sh                  sh7785lcr_32bit_defconfig
+powerpc                      ppc6xx_defconfig
+arm                           tegra_defconfig
+powerpc                      tqm8xx_defconfig
+ia64                             allmodconfig
 
-> Sorry about the naming here. Just so you know, the DMA timestamp does not
-> quite match the PTP's level timestamping. The DMA timestamp will be capture when
-> DMA request to fetch the data from the memory. 
-> 
-> > 
-> > Same story on the Rx - what do you plan to do there? We'll need to configure
-> > the filters per type, but that's likely to mean two new filters, because the
-> > current one gives no guarantee.  
-> 
-> Current I225 HW only allow to retrieve the dma time for TX packets only. 
-> So as of now based on our HW, on RX side we just requesting rx filter to timestamps any incoming packets.
-> We always allocating additional bytes in the packet buffer for the receive packets for timestamp. 
-> It is a 1588 PTP level kind of timestamping accuracy here.
+clang tested configs:
+i386                          randconfig-a013
+i386                          randconfig-a011
+hexagon              randconfig-r045-20220925
+i386                          randconfig-a015
+hexagon              randconfig-r041-20220926
+hexagon              randconfig-r045-20220926
+hexagon              randconfig-r041-20220925
+riscv                randconfig-r042-20220926
+x86_64               randconfig-a013-20220926
+s390                 randconfig-r044-20220926
+x86_64               randconfig-a011-20220926
+x86_64               randconfig-a014-20220926
+x86_64               randconfig-a016-20220926
+x86_64               randconfig-a012-20220926
+x86_64               randconfig-a015-20220926
+i386                 randconfig-a011-20220926
+i386                 randconfig-a015-20220926
+i386                 randconfig-a014-20220926
+i386                 randconfig-a012-20220926
+i386                 randconfig-a013-20220926
+i386                 randconfig-a016-20220926
+x86_64                        randconfig-k001
+hexagon                          alldefconfig
+mips                      malta_kvm_defconfig
+hexagon                             defconfig
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
 
-I see. I think datacenter NICs can provide DMA stamps for Rx as well.
-Intel, Mellanox, Broadcom folks, could you confirm if your NIC can do Rx
-DMA stamps?
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
