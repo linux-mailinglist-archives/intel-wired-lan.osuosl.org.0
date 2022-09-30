@@ -1,178 +1,182 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C2525F00D2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Sep 2022 00:41:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F44B5F06EB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Sep 2022 10:54:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 84B73611E2;
-	Thu, 29 Sep 2022 22:41:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 84B73611E2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 076A841D3C;
+	Fri, 30 Sep 2022 08:54:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 076A841D3C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664491276;
-	bh=wzL5YF7OXSskX3Tx4+GLlG+yfW370+q8Grp6jCCkke4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1664528072;
+	bh=cvW3br4etNkG70kFt6IVe+oefMCS8UWafsrbabPy5GI=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=688+cZ+PG0+c2UDAtldG6mbDEsWjXtoRLVu3fy5qU4VBgaME6KfZnEJv5Kwjryq2F
-	 6Cgrqq66vVgrU5nZdFEl0psAiqZbNlqoCVyIfR5zoZUX88v2t6eo6cpRo6CV45mDa/
-	 7Mu1r4MKPOvagpTLKVfQB1CL/1ns9FPLNkuXqRjXoElFTVq+2an5x9JvAhcmn7op+3
-	 vM+q9XD2N8uVt4MXJUrBfo9hKQwxRBKZoBTNGk6raDMk1IjD5VFq2CB9UceegNRv0k
-	 gL5LKLxzzvRnbAme4kcBsRLHGvfxPWf2HkaIzAS+MKNKYKkY7bSbo9s/n7+CkYbIbE
-	 3dVBMNAsGHdVw==
+	b=Vd6/kuCTBetm+0O3FlD5+FHI1W4Gj09NuaQSY9WQUg9BoOD4ZD5jyyN52JXGZfdEf
+	 ag6unBypGYTg3hHVESJPFLdgrDCo9wD9lBnjFM8qwTxH+lZEAzC6KasQGq+dFGG/lV
+	 qOgGa3n7+ZteFOf9qT1jQFXEEZYVD+Ns+nLB+5yDziwP9UqFYCcV0Y1v+X/T1NnS31
+	 2akyeM4I9GUeIapz/EMPgjHuEDYUvSuahb4SS/L9+2OEySgW9+GI24Uyub1HKu/UhG
+	 dh73+zvlz6pfTKPnGXnvk87HX6CwMQc1Tw5JCgbk0mHy/Oa4UZNeb2VvN9VEM14Vja
+	 aEIyMmeFUFPjw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B7JLEZmBzETx; Thu, 29 Sep 2022 22:41:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7vDcvAA2m2IR; Fri, 30 Sep 2022 08:54:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 735C2611C4;
-	Thu, 29 Sep 2022 22:41:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 735C2611C4
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5AA0B41C76;
+	Fri, 30 Sep 2022 08:54:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5AA0B41C76
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 567431BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 22:41:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 61AA01BF2A5
+ for <intel-wired-lan@osuosl.org>; Fri, 30 Sep 2022 08:54:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2FDDC611C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 22:41:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FDDC611C4
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A88260B16
+ for <intel-wired-lan@osuosl.org>; Fri, 30 Sep 2022 08:54:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A88260B16
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R_wOghBInV5F for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Sep 2022 22:41:09 +0000 (UTC)
+ with ESMTP id tJkmnA94SXAP for <intel-wired-lan@osuosl.org>;
+ Fri, 30 Sep 2022 08:54:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5ADC9611C1
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5ADC9611C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Sep 2022 22:41:09 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="285183754"
-X-IronPort-AV: E=Sophos;i="5.93,356,1654585200"; d="scan'208";a="285183754"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Sep 2022 15:41:01 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3B00961220
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3B00961220
+ for <intel-wired-lan@osuosl.org>; Fri, 30 Sep 2022 08:54:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="363986129"
+X-IronPort-AV: E=Sophos;i="5.93,357,1654585200"; d="scan'208";a="363986129"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Sep 2022 01:52:42 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="797744007"
-X-IronPort-AV: E=Sophos;i="5.93,356,1654585200"; d="scan'208";a="797744007"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga005.jf.intel.com with ESMTP; 29 Sep 2022 15:41:01 -0700
-Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="726783861"
+X-IronPort-AV: E=Sophos;i="5.93,357,1654585200"; d="scan'208";a="726783861"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga002.fm.intel.com with ESMTP; 30 Sep 2022 01:52:41 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 29 Sep 2022 15:41:00 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
+ 15.1.2375.31; Fri, 30 Sep 2022 01:52:40 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 29 Sep 2022 15:41:00 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Thu, 29 Sep 2022 15:41:00 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.49) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2375.31 via Frontend Transport; Fri, 30 Sep 2022 01:52:40 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.170)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Thu, 29 Sep 2022 15:41:00 -0700
+ 15.1.2375.31; Fri, 30 Sep 2022 01:52:40 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D4of+tHqw0jsSGbRB9XdIxJYSSc9f9dmYR710midBS89JCC9oONZfHPcIRXmQIwB4qLXduah2KkBWN4uZjiju4/WTO481/ZDqrL8ySVkSIsnW5/ck4qs07DS9mUa7tr+7vuonVDEEE3UbX5glir35bQEgmwK5uFccZQVN/0ooTVC5p8k9UsdauaBZvBr8n6k2K4lZEmuUPZZG6jafB2ZoFR9c5qXPe573l1/2dMuG9YZffEZnO2U0HsU/+mOU103046Y5Q4dqVk6OWadW9YCxqsY8k5QMHexC4AllW7WEdN4krfvu/C2AdTchehIrnhGKQKcGxPqfM9vAZ+7zOsy2w==
+ b=mw7Hkn902tVjEpxWzKM83/no6mxsRA0l0MtjphWUyTcloP8DiIfHujrmtxFysABMNG7WUlNPNBYlSWajoosgnvSS/XDWe/tI7VCuXEtr7eDCt4JWWkg5hKEhykBTtaMLWZXMoOJh388mOwb03jBWD+zPHjmJG41M0HW/Cd/fM/FP+EXz5jWGYrywaFtm82CbPUX1Sxsjdg72BXqEcxVd+qwmi2gA3f4L8I2IDnRRghNNAbjocjzPQ0jhECCxsTG5R61na2teqagCWE09suTEtpAaM28DR996KotPx96dJM3EqIOG1AxMJ/ic8547OTgS6VodGtToDah7fxOvh++8Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4MTC6/QhOQSD51XlAiD1AyC8NReUyiXaVkuOb145Twg=;
- b=dXV1yl2gay1mA/tuMeRet/KbvQ0EWeMyNzFePdN4qEu9N1aWhLZA1gjXUYFN5u1slyuIAva28sZNMn/3mQeDm7JLAM8lU5hLdYhcQiwp00qza86b7V8SAWka6ruxOeoEaDelj4KCHeiXWTUxnYSoDm1Mh8QaWYaG/3hZbNE9rrSBfRfZhlgu8gLlM38zyN1tTAH/9rih2wR6TaGwYhAHxyZ1Fj2F5Zyw9NU2LUMVuxN5R8Z26tpYDqGQYRpsVhfl4sJT/j514Hy24w6I7luyyTz/ZEaBCTXOuWbXlPlcGmLDkqa6JaWKvKtz2+stTNOCFgNoKvoYv5u8S/Tl5v6tYw==
+ bh=P98jsfE4nr6h8EdI+4xbGPy7gs6+gvJhFsqOJKcyrxE=;
+ b=E7KPF8Phd3+YLzzurpiDI2/l/pK8BuzJkYZQOlOqve6YdyRRUujsCqYtrFMZgiVcvjo1/9CMIsgWEtkzw2IBhpM7uDDWJvJOAuyjGQbVAmg+LJcwvklP/gLrC0KVtBBhB65NqMy/2Q2sYQxls+E4cWO7BGzMpg9rBoOGSsbVUlku1MLEmS+iTBggLnkkPG6Zxnjf0EsN0h7NaNnz7tHNNepUNKbhTJVS9IoGtPeWkEMrn8YVjukSYCSKSuCtTRlGsXQe3zaO3Rn//ugWhBzHmwWwnUcB4VDPi84txLs0ZGVnURVGSCsy4Kww18TmVERff51yDBWEA7FZ53jUBlFmFA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SA1PR11MB6733.namprd11.prod.outlook.com (2603:10b6:806:25c::17)
- by BL1PR11MB5317.namprd11.prod.outlook.com (2603:10b6:208:309::21)
+Received: from SJ1PR11MB6180.namprd11.prod.outlook.com (2603:10b6:a03:459::14)
+ by IA1PR11MB6396.namprd11.prod.outlook.com (2603:10b6:208:3ab::10)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.20; Thu, 29 Sep
- 2022 22:40:58 +0000
-Received: from SA1PR11MB6733.namprd11.prod.outlook.com
- ([fe80::b572:2e32:300b:d14a]) by SA1PR11MB6733.namprd11.prod.outlook.com
- ([fe80::b572:2e32:300b:d14a%3]) with mapi id 15.20.5654.026; Thu, 29 Sep 2022
- 22:40:58 +0000
-Date: Thu, 29 Sep 2022 15:40:54 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-Message-ID: <YzYe9h8gbgmNDzK7@iweiny-desk3>
-References: <20220919180949.388785-1-anirudh.venkataramanan@intel.com>
- <20220919180949.388785-2-anirudh.venkataramanan@intel.com>
-Content-Disposition: inline
-In-Reply-To: <20220919180949.388785-2-anirudh.venkataramanan@intel.com>
-X-ClientProxiedBy: BY3PR05CA0050.namprd05.prod.outlook.com
- (2603:10b6:a03:39b::25) To SA1PR11MB6733.namprd11.prod.outlook.com
- (2603:10b6:806:25c::17)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA1PR11MB6733:EE_|BL1PR11MB5317:EE_
-X-MS-Office365-Filtering-Correlation-Id: de112783-5fb1-453e-a13e-08daa26bad82
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VVOmC1a8xiDzRrbjLyohwphGMpnAeh8doSA/nRgPH9FDxkr14m65EeZDjRNlqy1A0hHuKxsy4KvuO2NPbvQnvZ2j9/zUu72pMTYX95Vi12Cwh28n7D/qVhPHsTJTgquqWbtxNAFOm90MGPnrAJzDcoxkdcG8Roc7PULgbcZHKY1G+/82DwK4wWISHJoKmL6iDB3yRCuRBydPo8iK0GNT1OolZR+zTj+ExGMSzIg+c8P26/+pn8C/Wmzxmg0mCQ4nMQz1IhvYfTLsPYCcwsIxLFC7ps7paimMJ+5YiV5bn6llk+dfbabpMeqRttaI7KGr9Cx+oJb+BWUocxNdg6Is23tVpjzpcmVfVG020kETTLc0J6SRSGlt9Z2z5wBPUoIsVp92Lb09q1FfIghOYjpfBmx410D6NMXUdC/+IYxIbnwm1OnK3Xi455TQ6lMoPSvavWR2qQNyEbocUxHbpZBUnO2KfbOpWActUi9ZIFSZx55kn8ET3i4W/u8mxCR/DlD0Syt/quJJxU65TeUXIvRjNIxcaGQ7c1DB3sjNIzT8j2uV3WTfSf8QErusftwezsFpA1ykk3qXRD2g4Co9+Lyi1Pc4j1+tpiVEF5tiiITWlaS5LtR+PgK81weYNY3wzoZVgf+uuPLZ5ZwBNAdkSYIzq0Aep53YkNVYaaCyxEKqV5FrCJHBJc32qU9Be2S9lozD6yWaEDBKSLGXay0QRo7kpQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SA1PR11MB6733.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(7916004)(39860400002)(366004)(396003)(346002)(376002)(136003)(451199015)(44832011)(2906002)(26005)(9686003)(6512007)(82960400001)(33716001)(38100700002)(41300700001)(8676002)(4326008)(66476007)(66556008)(86362001)(186003)(66946007)(6636002)(54906003)(8936002)(316002)(6862004)(5660300002)(83380400001)(107886003)(6666004)(6486002)(6506007)(478600001);
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25; Fri, 30 Sep
+ 2022 08:52:38 +0000
+Received: from SJ1PR11MB6180.namprd11.prod.outlook.com
+ ([fe80::7c03:1c40:3ea3:7b42]) by SJ1PR11MB6180.namprd11.prod.outlook.com
+ ([fe80::7c03:1c40:3ea3:7b42%5]) with mapi id 15.20.5676.020; Fri, 30 Sep 2022
+ 08:52:38 +0000
+From: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Thread-Topic: [PATCH v1 0/4] Add support for DMA timestamp for non-PTP packets
+Thread-Index: AQHY0nIwdgyUAXnuBEqr/9DPT40VFK3z+DeAgAG3sRCAAMGugIABJtcA
+Date: Fri, 30 Sep 2022 08:52:38 +0000
+Message-ID: <SJ1PR11MB61808A055419C257F6B653CCB8569@SJ1PR11MB6180.namprd11.prod.outlook.com>
+References: <20220927130656.32567-1-muhammad.husaini.zulkifli@intel.com>
+ <20220927170919.3a1dbcc3@kernel.org>
+ <SJ1PR11MB6180CAE122C465AB7CB58B1BB8579@SJ1PR11MB6180.namprd11.prod.outlook.com>
+ <20220929065615.0a717655@kernel.org>
+In-Reply-To: <20220929065615.0a717655@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ1PR11MB6180:EE_|IA1PR11MB6396:EE_
+x-ms-office365-filtering-correlation-id: c8036c4f-5b29-4a99-1f94-08daa2c120ad
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: /HuJ7ym489hckhqjlDVRGjrSh+7rjP2LTkbJhHflQiOp5UgDR+QBYwOrVY5oFwvsqTEpPjd3vi0eOnwTXYLsJESNY3dSF6WR/Tbt2k/Ywa4h5xYXtaR6PDYqj0BhhmimFx04cGp1QOAUqjoC+GMz59z51K7x1RYxMqugKB29NQmofGw9nN1EyVoNKtti4RT8uBjAscWDsOcf0xumD44BxlYdW3q6VxXJAG6bFLn+Yz6ErJnaaip9zVATzM5Ec0UEej1Kqkg7LybXe1Qm+r40yNX5vGsXVom7INWaf+jnsiIR1LEEmUY0lnfIy9bTQt7MxAFxRP5EYVCa1VUl8KPbcUkTJxgniY0kE6hTSYGpbJT6iNftElyIfsJiR1hxDZgWR98fnGVmwlIn+5vfZqPWMif7McYkugbqkmuhKqQJmhhjCSxpnRDV9Xvuo8Jr/MrOQSS2IDbtR2aY7clv0c+EWZvevHvRS4gP4rmYbhALClmBPM7x7zYIY+KfxuPuj9sPyCEwMitVfKMwPEMaGs2yUHYwnvsHV8cqKhdLYAK8vh/L2pfnpedb/8eVe3zKtoQEWA5UtcY0xNlzh4K2RxVqdrTyLjXBGSxv7llTrpPn1vTby4lRwq5bONFvpLyv08MyITPqOcn9UUe7IozE0YH0/Ta0T43ijIORyjqfG8IOdSKIu9fwNUF4Z1z2XPPBfvAxryva0uyDGw1LW2xfURlij/XuM2p8Qb63JJPl5LlQcbCW20r3DzyjIbOkktvsc/3ivOeAaXDPcUn/y7NKaM9J23LSSg7AGlammk688I0r8Jk=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ1PR11MB6180.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(346002)(366004)(396003)(39860400002)(136003)(376002)(451199015)(33656002)(7696005)(64756008)(66446008)(8676002)(66556008)(4326008)(5660300002)(8936002)(66946007)(38100700002)(86362001)(38070700005)(82960400001)(2906002)(66476007)(9686003)(186003)(26005)(52536014)(71200400001)(41300700001)(478600001)(54906003)(53546011)(122000001)(6506007)(76116006)(6916009)(316002)(7416002)(83380400001)(55016003)(60764002);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9FqP5VI+HkIn9v+J7vLhy99wud7ZAB2AU37prOVR5jRoLmik7QThxJ6t1x0i?=
- =?us-ascii?Q?go3HWpEjZAGkqFON6qMXkmvpuZCD1DFrOpsYoLe2FsqHEGZMlMsCqo+KoyJ1?=
- =?us-ascii?Q?7yBISrmnNkg87H2uPBAazsprv5XZvKmg9S7NK2PJ347WgzR/V8FMhli8IQz1?=
- =?us-ascii?Q?6Z26Pyy8dUdQ8NwJwZbLYUHxXEsGp7mTL4ylxNDAvjEqTVVUiTg9DjpQ4C8k?=
- =?us-ascii?Q?s0cE7N5gcoNC0Cj6ChIcC36LpwxWl94q7BIYaociu1DdXdYIVQZg3qmL3u4V?=
- =?us-ascii?Q?BJnpRwTaEIb1XWOfC1JF/191m6t7FWwKccLP8LC+4fKY/XpVP9xD2cfnk/2z?=
- =?us-ascii?Q?YM8gcP0W/LxE1shm6Rtd5061WWt8oZ5Kr9l+XW+voT+q3t6p3j2g2B2Ka64R?=
- =?us-ascii?Q?upnFjakGpdTNAlu4WFaM1KH8SeIRBltQyqVWSQrfNOybkbJEPXaQZR68kKZw?=
- =?us-ascii?Q?thI5eBpfw6QVm4806TNjqO1BkZJrIz/gFF3naU7ykGniZBG1vKm2p/wSwYo3?=
- =?us-ascii?Q?YBqKa2rhEw/zvlXAME/NHAVCkMQEkuV4hoCL2flcnWAwaSsYg9idMTMMWW8h?=
- =?us-ascii?Q?xfBs0y2ziUidaGsyPWSbEga7yF557N+JVFNtEEiJqF6XiURuhBb6LQ9ionXz?=
- =?us-ascii?Q?V/bvvjNf2ENm1PJZM2r2LKqxxovF4o4zxsuOM/sl4v2g+YzX5uXOQJR1AArB?=
- =?us-ascii?Q?kF8sw8Xv4QiO41ClC4wA9DhTtER43ajxZgIJpNhANAvMfq10XCwAJJy45TvF?=
- =?us-ascii?Q?cvjVOlFLB7YG3IP0csgGmkx+++k3ZGIGJ4pFoLLhXfGzLrHf1MYWMkSE1e+f?=
- =?us-ascii?Q?kTL2wI9YC1L0PzHAGJRKNQpYjfk586gLr4FjVhPtjl2cU32LJqaerZqLFmVm?=
- =?us-ascii?Q?72OUsa9WaNOUP1Anl9SpYyedUqluZAp6qDgbtnkH/8VYQdcVjRHR1dGZJ0B+?=
- =?us-ascii?Q?LP9hX0a1bhDWMps/hwGjUFb4J4tyg7Qt14mwqNi0HUEca7HodzvbNwB5mnPi?=
- =?us-ascii?Q?2uTXchqk1fpEQYk3kEFea2WhJanhEvw0UzuPisM7ueIFoexptA+EOT8Qr5pK?=
- =?us-ascii?Q?XaH6NIvw2MvYPrKXksPmRE0E6z2wMhuhXDY2DgeXkDAIf6BTlaAoZRCI9Cc8?=
- =?us-ascii?Q?dDvMzrlu+X8NMTthn9Yp0CAztCy8XJGc6yG1RGJNqU2VaBglb9IX/wZ27jCy?=
- =?us-ascii?Q?r05HuQSNdHCq2LP4v5TGr9pmo6M7l9C1GRisaHJiirGI6+jTyy+9zw/tMgK9?=
- =?us-ascii?Q?EFIkrLog3OABbLHjHWC2MyCVrT8TIXfX2U4ev+IJHGj7oDCC3Db2l+KrFgLN?=
- =?us-ascii?Q?3smr2MnoLr2+eaau6n1KUqL2+yrMazqK1eRn0ULSXMozI3m8HuAqAqjrpksO?=
- =?us-ascii?Q?+GyOnDDD12sET+DOqZ5cLwzJ6nqrv+0+sKrvACMsdqrXbpoge+VgBk7I6PNh?=
- =?us-ascii?Q?lfZEdaZ4enqQe/csgY6MDd5MayYymUD8KweK/Eu8+vHG7Y9HuCJbVd+3jihz?=
- =?us-ascii?Q?DuGKE24QEo8UdMkA0Nq8LDcQIFGg13bkD5rKhi+r3/o3gB4MSr1KMY20Q9SF?=
- =?us-ascii?Q?Gbdwoz01rfNbjHbeRbdOR3yuNOuxP1FjJftmwQOX?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: de112783-5fb1-453e-a13e-08daa26bad82
-X-MS-Exchange-CrossTenant-AuthSource: SA1PR11MB6733.namprd11.prod.outlook.com
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Z6iIPMBM40awQ5noYA8ycY+Y9cRbwycGFMxW3tC2H0RjpPEUXtRCON7ETGYA?=
+ =?us-ascii?Q?MrZZMiaMyr4n0etLqtrASnensMgeGlqRD5J6uoJ1eBmP1PTiIONiSWemVAUK?=
+ =?us-ascii?Q?urNVkwiv4nM4wJQRWMWaq0Odj1AJVzGr4EELpsMtNxiuVZjDbgo+80AMjLaR?=
+ =?us-ascii?Q?90/VplTJjesRLl+CwQgJKrkyctcXTx62lO2+/Guw8wFsjn4hT/ZPIYFYtyEt?=
+ =?us-ascii?Q?g073PE06tMT4vbGiXhtA+pzB9EaC8lG30crlhMsKXG5zMTo59oljOMU3cFG+?=
+ =?us-ascii?Q?8P0TfUQLYo7PuY6wpoZcA0csgzRh6D+/te42zZ5eHwEoWO2WdMbzamaLMO5V?=
+ =?us-ascii?Q?5MDa5sAcC8lNlUvQLYGVNjlccBEv5TbXEF9IYlTxXGv1siph5AejY04uZ088?=
+ =?us-ascii?Q?ntVMNLIOukMi1QJeDHZ1iHslunrdmwcaHr4N5bwl04gfcnV4ctpzKPayJ5Za?=
+ =?us-ascii?Q?3UqjyqH6yDaGigvcc3kbU6yBqMhAyAPdOGvi0hike7JFXj7/1pqtlcn7yh0M?=
+ =?us-ascii?Q?wxtSksY9BvYcvCeEdDDvmy3EahBP6n0p2ByWNiYw/T4eVI9nqAvBpX2scPP1?=
+ =?us-ascii?Q?n+cLl+vhrhXhscTMOSavHuKXkbCSxnXlQSAd/mYjtHLL+TJjqs8h4jWVZv1T?=
+ =?us-ascii?Q?ZCfJ+YYk/LlsIj9MHKSg3KxrtKzNX3CTHQcNmJvfF70Fu4mRJURT+42ZYSuI?=
+ =?us-ascii?Q?RGmB8xgPSnDYT6p6hTFbNXDrJ8ZT1fK1mjvdoacpUGENWxnfXHTBWCSWNWJL?=
+ =?us-ascii?Q?09lkJWPYtemwH9yfqFJnIY78rhr5aeTfvd70s9e4Bow0F0AjWitGo1FBiWJR?=
+ =?us-ascii?Q?uqaEgqS5Lrc1k5e4hvx970uOVs5ptA8kjhaz4e61HbzjyrpoQLG8Ajgf9EI5?=
+ =?us-ascii?Q?DFXZ2DkG3YvZiI0p9f1TVlzxR8+7wMg9GF73HJscjrcKrkhrAF5DG3TkmwS6?=
+ =?us-ascii?Q?i6yIpKEBuRWXHj8hupZB9SXJorWdPQLFIHW1tgpz4G+WmCzcoEdD6gHLyZRq?=
+ =?us-ascii?Q?RNIAzlE/VhxICPbl3AAz5ti+tUzRBGQjx3anEcp+N8wnM4xNw6UuuP737imV?=
+ =?us-ascii?Q?mCqFHBMMKbe3duK/AsfqBvwKGa558OgZ5bbGvqpaZZnxSW1MWxq64xtYjVIq?=
+ =?us-ascii?Q?wauHQGbpFDU/LtVU1cDaBNtirE/ffZ5KGuR7fkHdt/wbQ8XASq8dII6Bg6CT?=
+ =?us-ascii?Q?wKNbf0Du/Yz60oHjtS64Iq7h4uJrmjw2r7oCri+pX8a/PcL2+Z5aISlm5s27?=
+ =?us-ascii?Q?/dtq8tc8GtwjP4SzZKkubu213CW0vYvtJOrLg1Shqdpan7UyNb3Nr3f3wLoA?=
+ =?us-ascii?Q?cS04MNogO1KUwFevI8fsU4Ep0ddxVI9eoJQTItyEBAMPRcRg+ON1oTZQvT42?=
+ =?us-ascii?Q?ursINm2uQ8EFmCR6CwCzvcdZXrPKI4188UrJhDf2pu3ieZwf5qDFadPe+Qaj?=
+ =?us-ascii?Q?77eXw6vlQ9Gb226UUB5lmF2zsOxGe9EvLPnRIweedjuVjxcjNi+o1UPKpjP+?=
+ =?us-ascii?Q?fTX7veh8FEeKQepVTWJ/7ivwdKg5X6Bda3qVlsK179X9PItOa3xoi5Lu0kv1?=
+ =?us-ascii?Q?WZEppf7aK0lyufJQmkBVgwtNXouNaigUpg1wRjRJU2xrNuGAE/c/1ISugnEM?=
+ =?us-ascii?Q?o6qHmoYREJMRJIb2zaaAfH8=3D?=
+MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2022 22:40:58.4284 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /WYAoBQsC496y0IzTNrzpKSGqh7n8uo+dcCjmo8bV6tktrIsm2T4DZnidx/bBL6Xy0rrnh4dG3PjqSArllmuXA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5317
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6180.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8036c4f-5b29-4a99-1f94-08daa2c120ad
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2022 08:52:38.6482 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: NxmlNTQyRWnBGZtqe6Q8uTD2lTZDCF4aSVNTAcVX9RCKwIah/4VbspQ7gdVR0RJft9JA+UWFJVB1Du83U89GGYrAayHNJVAwRosyeYb/cosY5Gk3cI0SayOy93d5byPc
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6396
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1664491269; x=1696027269;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=I/y3BqCNgxnbITP1IqGY8excokeOtr/u+87w+m6zJrg=;
- b=mRX5ev0lNsfCa9DB9P4xVL6GCKoamkRl8EbJk9UM5jOS/R7VJ9gkBi7z
- sYY+9bmERbsQOc1RPoHUU+vXN7d5HMFGQx5z9tY3A8nJjOmSoMTyR1EYL
- NEQ7bJVOCTTmyHj5LHVS+SmRIcl01hV8cYgI+/Nr8FhyTO9UPmirkCV7w
- x5cci4XgMsGnzeLJSI7/8rUhjPsM6KSUfweuPGD6vhqBlFX66ZzdOYzYn
- N73/sPw9RPwEA4pbX7MTAQ7Aydi6cgJ2drpcxD80haHCdbsPBNc9qMtYe
- gUrJ1vxPFXT4GpxI/1Ev9fbdeRsMU6wrIQAZixGEQ9eprxdL8eU7ky0bE
- w==;
+ t=1664528064; x=1696064064;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=P98jsfE4nr6h8EdI+4xbGPy7gs6+gvJhFsqOJKcyrxE=;
+ b=irIbekkKNrchUVLUzSC6aAyMb3PYjlU690SA3A9rjj3iGwI5pk2ibsKC
+ wktHsn2NpqmcePToUqxlrR4tMEeJZOdRC04aIb6YqnW4KUQN2xXc4hGob
+ NcvppYX1G9fUjHZikB5Knvu6GYtmUhVW8RvWVXplCJApnp+Go8wydV4s2
+ 7eOMgE4FjuFdApZQoEH540pN3s5Ckpy1nJdQK5wkgC6hFAiNL2RySdgMY
+ YwtGZwEIIaNzVjT5ppkw9RRKJtcnZCCFV8shFTvve/Sxc03+tIOwCAq/0
+ OcF5uukV5VYEv2h3EG2wg4DAKwr+iffn0KDI9qPcM/+q0z64nK0zsr/za
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mRX5ev0l
+ header.a=rsa-sha256 header.s=Intel header.b=irIbekkK
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [RESEND PATCH net-next 2/2] e1000e: Remove
- unnecessary use of kmap_atomic()
+Subject: Re: [Intel-wired-lan] [PATCH v1 0/4] Add support for DMA timestamp
+ for non-PTP packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,99 +189,105 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Fabio M . De Francesco" <fmdefrancesco@gmail.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: "leon@kernel.org" <leon@kernel.org>,
+ "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>,
+ Richard Cochran <richardcochran@gmail.com>, Saeed Mahameed <saeed@kernel.org>,
+ "edumazet@google.com" <edumazet@google.com>, Gal Pressman <gal@nvidia.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Michael Chan <michael.chan@broadcom.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ Andy Gospodarek <andy@greyhouse.net>, "Ahmad Tarmizi,
+ Noor Azura" <noor.azura.ahmad.tarmizi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 19, 2022 at 11:09:49AM -0700, Venkataramanan, Anirudh wrote:
-> alloc_rx_buf() allocates ps_page->page and buffer_info->page using either
-> GFP_ATOMIC or GFP_KERNEL. Memory allocated with GFP_KERNEL/GFP_ATOMIC can't
-> come from highmem and so there's no need to kmap() them. Just use
-> page_address().
+
+
+> -----Original Message-----
+> From: Jakub Kicinski <kuba@kernel.org>
+> Sent: Thursday, 29 September, 2022 9:56 PM
+> To: Zulkifli, Muhammad Husaini <muhammad.husaini.zulkifli@intel.com>
+> Cc: intel-wired-lan@osuosl.org; netdev@vger.kernel.org;
+> davem@davemloft.net; edumazet@google.com; Gomes, Vinicius
+> <vinicius.gomes@intel.com>; Gunasekaran, Aravindhan
+> <aravindhan.gunasekaran@intel.com>; Ahmad Tarmizi, Noor Azura
+> <noor.azura.ahmad.tarmizi@intel.com>; Richard Cochran
+> <richardcochran@gmail.com>; Gal Pressman <gal@nvidia.com>; Saeed
+> Mahameed <saeed@kernel.org>; leon@kernel.org; Michael Chan
+> <michael.chan@broadcom.com>; Andy Gospodarek <andy@greyhouse.net>
+> Subject: Re: [PATCH v1 0/4] Add support for DMA timestamp for non-PTP
+> packets
 > 
-> I don't have access to a 32-bit system so did some limited testing on qemu
-> (qemu-system-i386 -m 4096 -smp 4 -device e1000e) with a 32-bit Debian 11.04
-> image.
+> On Thu, 29 Sep 2022 02:35:29 +0000 Zulkifli, Muhammad Husaini wrote:
+> > > High level tho, are we assuming that the existing HW timestamps are
+> > > always PTP-quality, i.e. captured when SFD crosses the RS layer, or
+> > > whatnot? I'm afraid some NICs already report PCI stamps as the HW
+> ones.
+> >
+> > Yes. HW timestamps always can be assume equivalent to PTP quality.
+> > Could you provide additional information regarding SFD crosses the RS
+> layer?
 > 
-> Cc: Ira Weiny <ira.weiny@intel.com>
-> Cc: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
-> Suggested-by: Ira Weiny <ira.weiny@intel.com>
-> Suggested-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 17 ++++-------------
->  1 file changed, 4 insertions(+), 13 deletions(-)
+> I mean true PTP timestamps, rather than captured somewhere in the NIC
+> pipeline or at the DMA engine.
+
+When SOF_TIMESTAMPING_TX_HARDWARE is been used, we guaranteed a PTP quality
+Timestamps (timestamp capture when packet leave the wire upon sensing the SFD).
+As of SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH, it is not a PTP quality because
+the HW timestamp reported in this case, is a time when the data is DMA'ed into the NIC packet buffer.
+
 > 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 321f2a9..05a59e5 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -1393,21 +1393,14 @@ static bool e1000_clean_rx_irq_ps(struct e1000_ring *rx_ring, int *work_done,
->  			 */
-
-The comment just above here says this:
-
-1389                         /* page alloc/put takes too long and effects small                     
-1390                          * packet throughput, so unsplit small packets and
-1391                          * save the alloc/put only valid in softirq (napi)
-1392                          * context to call kmap_*
-1393                          */
-
-I'm unable to grok what that means exactly but I feel like the kmap part is no
-longer appropriate?
-
-Maybe just delete ... 'to call kmap_*'?
-
-The code itself looks ok.  With some clean up to that comment:
-
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
-
-Ira
-
->  			if (l1 && (l1 <= copybreak) &&
->  			    ((length + l1) <= adapter->rx_ps_bsize0)) {
-> -				u8 *vaddr;
-> -
->  				ps_page = &buffer_info->ps_pages[0];
->  
-> -				/* there is no documentation about how to call
-> -				 * kmap_atomic, so we can't hold the mapping
-> -				 * very long
-> -				 */
->  				dma_sync_single_for_cpu(&pdev->dev,
->  							ps_page->dma,
->  							PAGE_SIZE,
->  							DMA_FROM_DEVICE);
-> -				vaddr = kmap_atomic(ps_page->page);
-> -				memcpy(skb_tail_pointer(skb), vaddr, l1);
-> -				kunmap_atomic(vaddr);
-> +				memcpy(skb_tail_pointer(skb),
-> +				       page_address(ps_page->page), l1);
->  				dma_sync_single_for_device(&pdev->dev,
->  							   ps_page->dma,
->  							   PAGE_SIZE,
-> @@ -1607,11 +1600,9 @@ static bool e1000_clean_jumbo_rx_irq(struct e1000_ring *rx_ring, int *work_done,
->  				 */
->  				if (length <= copybreak &&
->  				    skb_tailroom(skb) >= length) {
-> -					u8 *vaddr;
-> -					vaddr = kmap_atomic(buffer_info->page);
-> -					memcpy(skb_tail_pointer(skb), vaddr,
-> +					memcpy(skb_tail_pointer(skb),
-> +					       page_address(buffer_info->page),
->  					       length);
-> -					kunmap_atomic(vaddr);
->  					/* re-use the page, so don't erase
->  					 * buffer_info->page
->  					 */
-> -- 
-> 2.37.2
+> > According to what I observed, The HW Timestamps will be requested if
+> > the application side specifies tx type = HWTSTAMP TX ON and
+> timestamping flags = SOF TIMESTAMPING TX HARDWARE.
+> > So it depends on how the application used it.
+> >
+> > > So the existing HW stamps are conceptually of "any" type, if we want
+> > > to be 100% sure NIC actually stamps at the PHY we'd need another
+> > > tx_type to express that.
+> >
+> > Yes, you're right. Are you suggesting that we add a new tx_type to
+> > specify Only MAC/PHY timestamp ? Ex. HWTSTAMP_TX_PHY/MAC_ON.
 > 
+> Perhaps we can call them HWTSTAMP_TX_PTP_* ? Was the general time
+> stamping requirement specified in IEEE 1588 or 802.1 (AS?)?
+> 
+> Both MAC and PHY can provide the time stamps IIUC, so picking one of those
+> will not be entirely fortunate. In fact perhaps embedded folks will use this
+> opportunity to disambiguate the two..
+
+With the help of SOF_TIMESTAMPING_TX_HARDWARE, we will get the 
+PHY level timestamp(PTP quality) while using SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH,
+we will get the timestamp at a point in the NIC pipeline.
+
+Linuxptp application uses SOF_TIMESTAMPING_TX_HARDWARE for their socket option.
+And this can guarantee a PTP quality timestamp. 
+
+Can we just use a SOF_TIMESTAMPING to identify which timestamp that we want rather 
+than creating a new tx_type?
+
+> 
+> > Sorry about the naming here. Just so you know, the DMA timestamp does
+> > not quite match the PTP's level timestamping. The DMA timestamp will
+> > be capture when DMA request to fetch the data from the memory.
+> >
+> > >
+> > > Same story on the Rx - what do you plan to do there? We'll need to
+> > > configure the filters per type, but that's likely to mean two new
+> > > filters, because the current one gives no guarantee.
+> >
+> > Current I225 HW only allow to retrieve the dma time for TX packets only.
+> > So as of now based on our HW, on RX side we just requesting rx filter to
+> timestamps any incoming packets.
+> > We always allocating additional bytes in the packet buffer for the receive
+> packets for timestamp.
+> > It is a 1588 PTP level kind of timestamping accuracy here.
+> 
+> I see. I think datacenter NICs can provide DMA stamps for Rx as well.
+> Intel, Mellanox, Broadcom folks, could you confirm if your NIC can do Rx
+> DMA stamps?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
