@@ -1,102 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A2465F318A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Oct 2022 15:53:55 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A06FF5F318B
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Oct 2022 15:54:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6CB4E81419;
-	Mon,  3 Oct 2022 13:53:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6CB4E81419
+	by smtp4.osuosl.org (Postfix) with ESMTP id B57DC408CC;
+	Mon,  3 Oct 2022 13:53:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B57DC408CC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664805233;
-	bh=epExBJQUu0Jfqy9esaF37bLeXLsBOQged9f0qwAiLX0=;
+	s=default; t=1664805238;
+	bh=i4plenIG+iIE8M+Nn0wVwTwVsF8mZGXGM2iEOm5Y27c=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=eP7yOnuujurnSGsCvZnxL8QIRPKc2utcMdxfW9ziKFw0uK3v9v3jEZN/K0id8fudU
-	 7HfngRgmg9kN8j9IRfwGwFYJJ2XoAe/eCHwXROeu3Z37qy3U35tUtNAWGuWABoHltz
-	 iZexBBNNKRFwJc8wP39yvOOc2ZFyrj+p5mD8euF4q0DXlF+FGCJornhW/gAlhOdDBp
-	 BRaOuwIGxZVtm4LkUkN769SG3g5rPU4lXtWZujstoydCZK7BNFSiaksPVQDerlmQh1
-	 Ed+ZhXezzKKTN+e2expeMnBT9zbeJdRP4RR/HadCD2JbkSLNEe+PB74NZDdVPSpt+H
-	 vv76XNY0Bg/nQ==
+	b=VGPYWTcg6D4qfAMw0GXgNO8hNMgEBHmx+HhieXClJAFtEbvVbqPqymt7TawjFtyc6
+	 Kqnkz5cbMzZqi6UCm4iPkcQ3B6iLk9LowE9kHpmninXoXVNRpbryHBf+Fh9UciFyAo
+	 ewOSEM43XjotmajXqlk0khuvZ3UwCtx3G//LUGg0Pl9Pw7NZICWB9SwEU8KHm8e3Ds
+	 iUnpMvl7Oam5O8GPLURlWFcdtcGQeLU3557fhQreDbsZ/zZ73UhTdlYJdOxbFnTYFn
+	 0V3qaiM6yeM4helcMrhYnkdBH5vFVS63t1hM37rm/zyGVfWLnU3EovOtL5ASuMhaXA
+	 kcWZ9Wd02s3ug==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T8O2KWgBkTHX; Mon,  3 Oct 2022 13:53:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2OQguyIN7HZN; Mon,  3 Oct 2022 13:53:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 11298812D9;
-	Mon,  3 Oct 2022 13:53:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 11298812D9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9D5A640267;
+	Mon,  3 Oct 2022 13:53:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9D5A640267
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D33601BF59C
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:10:01 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 07F791BF59C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:28:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ACFC060E81
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:10:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACFC060E81
+ by smtp2.osuosl.org (Postfix) with ESMTP id D500E40BA5
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:28:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D500E40BA5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pZ2TV10lsu4E for <intel-wired-lan@lists.osuosl.org>;
- Sat,  1 Oct 2022 16:10:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aHzLjT-9otW5 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  1 Oct 2022 16:28:42 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB34C60E7A
-Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
- [IPv6:2607:f8b0:4864:20::62c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EB34C60E7A
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:10:00 +0000 (UTC)
-Received: by mail-pl1-x62c.google.com with SMTP id w20so6346837ply.12
- for <intel-wired-lan@lists.osuosl.org>; Sat, 01 Oct 2022 09:10:00 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C63C540017
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C63C540017
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Oct 2022 16:28:42 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id 129so6513935pgc.5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 01 Oct 2022 09:28:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
- bh=ZFt50GDqlKIYM4l8mECHUWC3f4w34q3ItwBbk2NFmik=;
- b=nA+LhctcWdCt3C+HOjFvOrp0ufmWm4glV/2q/4ZVZ7NbYKZibcj+5cZ8/0hXzpdmq/
- 6oPTxMEidq5xGrfIMMPhOiTkMIlyA7xSKa2/kvdFu21R+4eSFTc5pTBavJdnlicbpA3G
- MF9NHI0W9you2XL8NjV/BVb/9Rf1Ht4hgZCfByueZyOAd2J6wsy1yVBgPhkZ8B9U8cIh
- WhnKgKBC50GjGGqzGor//Y6uANOfY1h/b48OXwf3L/iCB5VvKXnsdkhk70yuMYMrVJgT
- tx8wSVj0S5hMz7IMYyhet+HihdjNhMOg57gBbvGvZFDyGx0tM5a+50vJAi62UN8bCL/A
- b4EA==
-X-Gm-Message-State: ACrzQf2O2LHrczEAP6CTFB4JQ6n/JxAnxnVPHkkAJxeMyMYomJIZcnMT
- oGqoZvSs1uzoodU8pzhjUnc=
-X-Google-Smtp-Source: AMsMyM4LFEW8r3bJhaCxZm3hZ+BJ6mFgt6vMylhuSPGZuSYFmA+LZrM5m1U3puB9ewICj0JZLSgwTQ==
-X-Received: by 2002:a17:903:246:b0:179:96b5:1ad2 with SMTP id
- j6-20020a170903024600b0017996b51ad2mr14161925plh.37.1664640600299; 
- Sat, 01 Oct 2022 09:10:00 -0700 (PDT)
+ bh=R2aHD+6cNWC3HBn0zEy8lfhSMETzy6xsa81iQFM1gFI=;
+ b=JF1W2n+Bdrm+SzMGKo8NDeQ9OPhFdoA/GdNLkEM83DUbB7JX6qM2o3tPrikWFTUGXK
+ PWTU1ItD8qIjNeuyRQydDW6Up/YSOgOtj2XiLHU731hHvkJ8eeo8du8zPqjuui+MBfEW
+ IIBhrAhuLHkJwffIpBtj5sNLuo/tLumd3cdMKH9CG8/h0g5ZgOsEVxPWUrkihKX2opO3
+ bmbwa85LffxbLSX9lECJnmTyD3o306dUT4wG4M/9AIO/W8SrUYk8odsMf7JJHqwipZnc
+ NEAjlFGxHOYKKyzKrxtQccqwW75/BXcP3z7vPxm77lqc5HB+9/+rtsifKJLodqZCAfqK
+ CWhg==
+X-Gm-Message-State: ACrzQf1qz15CRQQCSpryFN3xZZ0j6WIanagJErqN1PRMp1odR/mG/Qix
+ 4RFABhnSkXSLzVNK77cnuLs=
+X-Google-Smtp-Source: AMsMyM48mu3JqsMIftzSaQxBhnp0gnxIuN2YeQjS74Ood1zBecUmQ9aA0E1zLhZxhlZVNlJyuKM6YA==
+X-Received: by 2002:a63:8a43:0:b0:44b:5c1b:6213 with SMTP id
+ y64-20020a638a43000000b0044b5c1b6213mr1050682pgd.532.1664641722092; 
+ Sat, 01 Oct 2022 09:28:42 -0700 (PDT)
 Received: from hyeyoo ([114.29.91.56]) by smtp.gmail.com with ESMTPSA id
- y9-20020a17090a474900b0020a28156e11sm3000108pjg.26.2022.10.01.09.09.51
+ cp24-20020a17090afb9800b00205f4f7a3b3sm3554434pjb.21.2022.10.01.09.28.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 01 Oct 2022 09:09:59 -0700 (PDT)
-Date: Sun, 2 Oct 2022 01:09:47 +0900
+ Sat, 01 Oct 2022 09:28:41 -0700 (PDT)
+Date: Sun, 2 Oct 2022 01:28:30 +0900
 From: Hyeonggon Yoo <42.hyeyoo@gmail.com>
 To: Kees Cook <keescook@chromium.org>
-Message-ID: <YzhmSxKFzOXhUZ2Z@hyeyoo>
+Message-ID: <Yzhqrmpmo8/sGI3g@hyeyoo>
 References: <20220923202822.2667581-1-keescook@chromium.org>
- <20220923202822.2667581-2-keescook@chromium.org>
+ <20220923202822.2667581-3-keescook@chromium.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220923202822.2667581-2-keescook@chromium.org>
+In-Reply-To: <20220923202822.2667581-3-keescook@chromium.org>
 X-Mailman-Approved-At: Mon, 03 Oct 2022 13:53:46 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date;
- bh=ZFt50GDqlKIYM4l8mECHUWC3f4w34q3ItwBbk2NFmik=;
- b=K3if3PVJ5bvcTJ9M0NPajRsS9R22PhUV8mt1DF9aSjhi92xxGX68nw1fQOdsnfeW88
- RYDbvN3GquD6aYJG58Lch5x17v+7Fbew3pLZMAkWt1+ooRJfi37RQADA2PXlVWpJ0CkC
- Tph9mkBw10QRI/4GlEXa2GIU/ewaCJw+Q5bhNbWEldyfKXsiimIOVSMffXQx+3tGU4Mj
- dJvzomia0B+Wj46FPagEpyfhrlYIDzrrtNbXqmnTPZIsHCWjn0Q7IxiKUPw+lNuqO8YW
- mhgisps0Go9/DKTKISmZAxZzmxBVutsjUNJDrnOyzW3IiQoFEADN8PzV+SFx5mJvo2bv
- Sq2A==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=R2aHD+6cNWC3HBn0zEy8lfhSMETzy6xsa81iQFM1gFI=;
+ b=CnfTxBe3WqNAdyY553znsd4WFFospJ6nV0IeY7yOw8ZjreQMj2OLZItT3LNcrhOnkf
+ aTThdwcf5BzNMP0qDDY/4EyAErr2QFgwqecT3rScHeE4Dl680Tfv2aL3bzk/kErOtmDq
+ grZRxtc1sYP1QttyJJx/QFXNIFEo3QXiuFowAUw9css/YVFum1/u/RnTMULPxJbt9+VK
+ lSYflZML/wX23jxWTMvD7+5lIskYWo/IrjY1Q4VK/fvR33rrFJwRLISddVM2AmOEuNqB
+ palf3qfWNF/+0DGlnyERowoZTmQklznRMX0Q+E6r9DyAzcYUAphN52Qgls8SK33d36+V
+ 80iw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=K3if3PVJ
-Subject: Re: [Intel-wired-lan] [PATCH v2 01/16] slab: Remove __malloc
- attribute from realloc functions
+ header.a=rsa-sha256 header.s=20210112 header.b=CnfTxBe3
+Subject: Re: [Intel-wired-lan] [PATCH v2 02/16] slab: Introduce
+ kmalloc_size_roundup()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,16 +109,15 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Roman Gushchin <roman.gushchin@linux.dev>, dri-devel@lists.freedesktop.org,
- "Ruhl, Michael J" <michael.j.ruhl@intel.com>,
- Eric Dumazet <edumazet@google.com>, linux-hardening@vger.kernel.org,
- Christoph Lameter <cl@linux.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- dev@openvswitch.org, x86@kernel.org, intel-wired-lan@lists.osuosl.org,
- David Rientjes <rientjes@google.com>, Miguel Ojeda <ojeda@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- linux-media@vger.kernel.org, Marco Elver <elver@google.com>,
- llvm@lists.linux.dev, Josef Bacik <josef@toxicpanda.com>,
- linaro-mm-sig@lists.linaro.org, Yonghong Song <yhs@fb.com>,
+Cc: llvm@lists.linux.dev, dri-devel@lists.freedesktop.org, "Ruhl,
+ Michael J" <michael.j.ruhl@intel.com>, Eric Dumazet <edumazet@google.com>,
+ linux-hardening@vger.kernel.org, Christoph Lameter <cl@linux.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, dev@openvswitch.org, x86@kernel.org,
+ intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
+ Miguel Ojeda <ojeda@kernel.org>, Yonghong Song <yhs@fb.com>,
+ Paolo Abeni <pabeni@redhat.com>, linux-media@vger.kernel.org,
+ Marco Elver <elver@google.com>, Josef Bacik <josef@toxicpanda.com>,
+ linaro-mm-sig@lists.linaro.org, Jakub Kicinski <kuba@kernel.org>,
  David Sterba <dsterba@suse.com>, Andrew Morton <akpm@linux-foundation.org>,
  Vlastimil Babka <vbabka@suse.cz>, Alex Elder <elder@kernel.org>,
  linux-mm@kvack.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -133,118 +132,185 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Sep 23, 2022 at 01:28:07PM -0700, Kees Cook wrote:
-> The __malloc attribute should not be applied to "realloc" functions, as
-> the returned pointer may alias the storage of the prior pointer. Instead
-> of splitting __malloc from __alloc_size, which would be a huge amount of
-> churn, just create __realloc_size for the few cases where it is needed.
+On Fri, Sep 23, 2022 at 01:28:08PM -0700, Kees Cook wrote:
+> In the effort to help the compiler reason about buffer sizes, the
+> __alloc_size attribute was added to allocators. This improves the scope
+> of the compiler's ability to apply CONFIG_UBSAN_BOUNDS and (in the near
+> future) CONFIG_FORTIFY_SOURCE. For most allocations, this works well,
+> as the vast majority of callers are not expecting to use more memory
+> than what they asked for.
 > 
-> Additionally removes the conditional test for __alloc_size__, which is
-> always defined now.
+> There is, however, one common exception to this: anticipatory resizing
+> of kmalloc allocations. These cases all use ksize() to determine the
+> actual bucket size of a given allocation (e.g. 128 when 126 was asked
+> for). This comes in two styles in the kernel:
 > 
+> 1) An allocation has been determined to be too small, and needs to be
+>    resized. Instead of the caller choosing its own next best size, it
+>    wants to minimize the number of calls to krealloc(), so it just uses
+>    ksize() plus some additional bytes, forcing the realloc into the next
+>    bucket size, from which it can learn how large it is now. For example:
+> 
+> 	data = krealloc(data, ksize(data) + 1, gfp);
+> 	data_len = ksize(data);
+> 
+> 2) The minimum size of an allocation is calculated, but since it may
+>    grow in the future, just use all the space available in the chosen
+>    bucket immediately, to avoid needing to reallocate later. A good
+>    example of this is skbuff's allocators:
+> 
+> 	data = kmalloc_reserve(size, gfp_mask, node, &pfmemalloc);
+> 	...
+> 	/* kmalloc(size) might give us more room than requested.
+> 	 * Put skb_shared_info exactly at the end of allocated zone,
+> 	 * to allow max possible filling before reallocation.
+> 	 */
+> 	osize = ksize(data);
+>         size = SKB_WITH_OVERHEAD(osize);
+> 
+> In both cases, the "how much was actually allocated?" question is answered
+> _after_ the allocation, where the compiler hinting is not in an easy place
+> to make the association any more. This mismatch between the compiler's
+> view of the buffer length and the code's intention about how much it is
+> going to actually use has already caused problems[1]. It is possible to
+> fix this by reordering the use of the "actual size" information.
+> 
+> We can serve the needs of users of ksize() and still have accurate buffer
+> length hinting for the compiler by doing the bucket size calculation
+> _before_ the allocation. Code can instead ask "how large an allocation
+> would I get for a given size?".
+> 
+> Introduce kmalloc_size_roundup(), to serve this function so we can start
+> replacing the "anticipatory resizing" uses of ksize().
+> 
+> [1] https://github.com/ClangBuiltLinux/linux/issues/1599
+>     https://github.com/KSPP/linux/issues/183
+> 
+> Cc: Vlastimil Babka <vbabka@suse.cz>
 > Cc: Christoph Lameter <cl@linux.com>
 > Cc: Pekka Enberg <penberg@kernel.org>
 > Cc: David Rientjes <rientjes@google.com>
 > Cc: Joonsoo Kim <iamjoonsoo.kim@lge.com>
 > Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Vlastimil Babka <vbabka@suse.cz>
-> Cc: Roman Gushchin <roman.gushchin@linux.dev>
-> Cc: Hyeonggon Yoo <42.hyeyoo@gmail.com>
-> Cc: Marco Elver <elver@google.com>
 > Cc: linux-mm@kvack.org
 > Signed-off-by: Kees Cook <keescook@chromium.org>
 > ---
->  include/linux/compiler_types.h | 13 +++++--------
->  include/linux/slab.h           | 12 ++++++------
->  mm/slab_common.c               |  4 ++--
->  3 files changed, 13 insertions(+), 16 deletions(-)
+>  include/linux/slab.h | 31 +++++++++++++++++++++++++++++++
+>  mm/slab.c            |  9 ++++++---
+>  mm/slab_common.c     | 20 ++++++++++++++++++++
+>  3 files changed, 57 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
-> index 4f2a819fd60a..f141a6f6b9f6 100644
-> --- a/include/linux/compiler_types.h
-> +++ b/include/linux/compiler_types.h
-> @@ -271,15 +271,12 @@ struct ftrace_likely_data {
->  
->  /*
->   * Any place that could be marked with the "alloc_size" attribute is also
-> - * a place to be marked with the "malloc" attribute. Do this as part of the
-> - * __alloc_size macro to avoid redundant attributes and to avoid missing a
-> - * __malloc marking.
-> + * a place to be marked with the "malloc" attribute, except those that may
-> + * be performing a _reallocation_, as that may alias the existing pointer.
-> + * For these, use __realloc_size().
->   */
-> -#ifdef __alloc_size__
-> -# define __alloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__) __malloc
-> -#else
-> -# define __alloc_size(x, ...)	__malloc
-> -#endif
-> +#define __alloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__) __malloc
-> +#define __realloc_size(x, ...)	__alloc_size__(x, ## __VA_ARGS__)
->  
->  #ifndef asm_volatile_goto
->  #define asm_volatile_goto(x...) asm goto(x)
 > diff --git a/include/linux/slab.h b/include/linux/slab.h
-> index 0fefdf528e0d..41bd036e7551 100644
+> index 41bd036e7551..727640173568 100644
 > --- a/include/linux/slab.h
 > +++ b/include/linux/slab.h
-> @@ -184,7 +184,7 @@ int kmem_cache_shrink(struct kmem_cache *s);
->  /*
->   * Common kmalloc functions provided by all allocators
->   */
-> -void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __alloc_size(2);
-> +void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __realloc_size(2);
+> @@ -188,7 +188,21 @@ void * __must_check krealloc(const void *objp, size_t new_size, gfp_t flags) __r
 >  void kfree(const void *objp);
 >  void kfree_sensitive(const void *objp);
 >  size_t __ksize(const void *objp);
-> @@ -647,10 +647,10 @@ static inline __alloc_size(1, 2) void *kmalloc_array(size_t n, size_t size, gfp_
->   * @new_size: new size of a single member of the array
->   * @flags: the type of memory to allocate (see kmalloc)
->   */
-> -static inline __alloc_size(2, 3) void * __must_check krealloc_array(void *p,
-> -								    size_t new_n,
-> -								    size_t new_size,
-> -								    gfp_t flags)
-> +static inline __realloc_size(2, 3) void * __must_check krealloc_array(void *p,
-> +								      size_t new_n,
-> +								      size_t new_size,
-> +								      gfp_t flags)
->  {
->  	size_t bytes;
->  
-> @@ -774,7 +774,7 @@ static inline __alloc_size(1, 2) void *kvcalloc(size_t n, size_t size, gfp_t fla
->  }
->  
->  extern void *kvrealloc(const void *p, size_t oldsize, size_t newsize, gfp_t flags)
-> -		      __alloc_size(3);
-> +		      __realloc_size(3);
->  extern void kvfree(const void *addr);
+> +
+> +/**
+> + * ksize - Report actual allocation size of associated object
+> + *
+> + * @objp: Pointer returned from a prior kmalloc()-family allocation.
+> + *
+> + * This should not be used for writing beyond the originally requested
+> + * allocation size. Either use krealloc() or round up the allocation size
+> + * with kmalloc_size_roundup() prior to allocation. If this is used to
+> + * access beyond the originally requested allocation size, UBSAN_BOUNDS
+> + * and/or FORTIFY_SOURCE may trip, since they only know about the
+> + * originally allocated size via the __alloc_size attribute.
+> + */
+>  size_t ksize(const void *objp);
+> +
+
+With this now we have two conflicting kernel-doc comments
+about ksize in mm/slab_common.c and include/linux/slab.h.
+
+>  #ifdef CONFIG_PRINTK
+>  bool kmem_valid_obj(void *object);
+>  void kmem_dump_obj(void *object);
+> @@ -779,6 +793,23 @@ extern void kvfree(const void *addr);
 >  extern void kvfree_sensitive(const void *addr, size_t len);
 >  
+>  unsigned int kmem_cache_size(struct kmem_cache *s);
+> +
+> +/**
+> + * kmalloc_size_roundup - Report allocation bucket size for the given size
+> + *
+> + * @size: Number of bytes to round up from.
+> + *
+> + * This returns the number of bytes that would be available in a kmalloc()
+> + * allocation of @size bytes. For example, a 126 byte request would be
+> + * rounded up to the next sized kmalloc bucket, 128 bytes. (This is strictly
+> + * for the general-purpose kmalloc()-based allocations, and is not for the
+> + * pre-sized kmem_cache_alloc()-based allocations.)
+> + *
+> + * Use this to kmalloc() the full bucket size ahead of time instead of using
+> + * ksize() to query the size after an allocation.
+> + */
+> +size_t kmalloc_size_roundup(size_t size);
+> +
+>  void __init kmem_cache_init_late(void);
+>  
+>  #if defined(CONFIG_SMP) && defined(CONFIG_SLAB)
+> diff --git a/mm/slab.c b/mm/slab.c
+> index 10e96137b44f..2da862bf6226 100644
+> --- a/mm/slab.c
+> +++ b/mm/slab.c
+> @@ -4192,11 +4192,14 @@ void __check_heap_object(const void *ptr, unsigned long n,
+>  #endif /* CONFIG_HARDENED_USERCOPY */
+>  
+>  /**
+> - * __ksize -- Uninstrumented ksize.
+> + * __ksize -- Report full size of underlying allocation
+>   * @objp: pointer to the object
+>   *
+> - * Unlike ksize(), __ksize() is uninstrumented, and does not provide the same
+> - * safety checks as ksize() with KASAN instrumentation enabled.
+> + * This should only be used internally to query the true size of allocations.
+> + * It is not meant to be a way to discover the usable size of an allocation
+> + * after the fact. Instead, use kmalloc_size_roundup(). Using memory beyond
+> + * the originally requested allocation size may trigger KASAN, UBSAN_BOUNDS,
+> + * and/or FORTIFY_SOURCE.
+>   *
+>   * Return: size of the actual memory used by @objp in bytes
+>   */
 > diff --git a/mm/slab_common.c b/mm/slab_common.c
-> index 17996649cfe3..457671ace7eb 100644
+> index 457671ace7eb..d7420cf649f8 100644
 > --- a/mm/slab_common.c
 > +++ b/mm/slab_common.c
-> @@ -1134,8 +1134,8 @@ module_init(slab_proc_init);
+> @@ -721,6 +721,26 @@ struct kmem_cache *kmalloc_slab(size_t size, gfp_t flags)
+>  	return kmalloc_caches[kmalloc_type(flags)][index];
+>  }
 >  
->  #endif /* CONFIG_SLAB || CONFIG_SLUB_DEBUG */
->  
-> -static __always_inline void *__do_krealloc(const void *p, size_t new_size,
-> -					   gfp_t flags)
-> +static __always_inline __realloc_size(2) void *
-> +__do_krealloc(const void *p, size_t new_size, gfp_t flags)
->  {
->  	void *ret;
->  	size_t ks;
+> +size_t kmalloc_size_roundup(size_t size)
+> +{
+> +	struct kmem_cache *c;
+> +
+> +	/* Short-circuit the 0 size case. */
+> +	if (unlikely(size == 0))
+> +		return 0;
+> +	/* Short-circuit saturated "too-large" case. */
+> +	if (unlikely(size == SIZE_MAX))
+> +		return SIZE_MAX;
+> +	/* Above the smaller buckets, size is a multiple of page size. */
+> +	if (size > KMALLOC_MAX_CACHE_SIZE)
+> +		return PAGE_SIZE << get_order(size);
+> +
+> +	/* The flags don't matter since size_index is common to all. */
+> +	c = kmalloc_slab(size, GFP_KERNEL);
+> +	return c ? c->object_size : 0;
+> +}
+> +EXPORT_SYMBOL(kmalloc_size_roundup);
+> +
+>  #ifdef CONFIG_ZONE_DMA
+>  #define KMALLOC_DMA_NAME(sz)	.name[KMALLOC_DMA] = "dma-kmalloc-" #sz,
+>  #else
 > -- 
 > 2.34.1
-> 
 
-This is now squashed with later one. (so undefined __alloc_size__ issues are fixed)
-for the latest version of this patch:
-
-Looks good to me,
-Acked-by: Hyeonggon Yoo <42.hyeyoo@gmail.com>
+Otherwise looks good!
 
 -- 
 Thanks,
