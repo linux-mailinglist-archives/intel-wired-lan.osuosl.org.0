@@ -1,77 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0865B5F21CE
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  2 Oct 2022 09:52:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F2D15F2278
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  2 Oct 2022 12:00:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3AEAD828B5;
-	Sun,  2 Oct 2022 07:52:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3AEAD828B5
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB6BB40E46;
+	Sun,  2 Oct 2022 10:00:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB6BB40E46
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664697169;
-	bh=dSMLa5Y/a3yzJbqxfqh2AX389Tlrmn4rICM+9QOno60=;
+	s=default; t=1664704841;
+	bh=hEgp8ky5bKwmjTjtoJo+n/R197PTZGT93UF/4yTHsXc=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=KVr73NE6H0XYW0wzI5k0DMfN0YZKYyMIJqi7g8JGzCavH31zsjT0dGv6yuyri15Z9
-	 gcRqvaJP4Dv5GO8I3vNMOU0pDZ2ugv2K8dq2BJ3L6qudnERwRVijgb98smRHIzJrWe
-	 8mLHkIZvbbfQsUwI91ij647k+gMAI3UF/Y7TbrF1h8OlxPvR9cfrJU15YlMHCm8Gvu
-	 34OgqW6OXVs2NClFso3xMwXtvmMf8mWPh85mAqxqmO6lQ9COW19Mu+GTyiwOhv2uA7
-	 lKrIq+ded+KQr3zp7ygv/hJWoL6R1gFJVAWIVPaMvnPWesLEhRKhQUvJ3kOHnYpipF
-	 DS4XVM6ffj2Hg==
+	 From;
+	b=s1NCHcdID732UcsdlPjR9BEjxlldhKqQE1UUhyH6Twx7R8X8G7HHTxI4ETBeaTwnM
+	 T652U4ty0zRpDOT9EQ1BcWAjTYDRk9PX9h1h697gQFRB7rjlx9zwOBEheApqUQmvai
+	 fPMD/ENVKf16O9tT75G27FmzjSnDETENEtOd3NvjDcjB+wMtGSGO0aMvPu+FNSKwAl
+	 80xC1JHyFwe+ffwbkt4lOEAwaLgBV8vfjZvGZBmB5oW9SpxW6wcCKMsrTDvffKJ9L0
+	 cAs3CYsY1ARWNLC2JRR52I1vU1MnTMYQ/m2gI7Ma6zyQmytfuCJhyJuDE1kPUnRE20
+	 i1W5eHc4+yQDA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ehWqD7SZ5BLP; Sun,  2 Oct 2022 07:52:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JM9leGV3Mrbe; Sun,  2 Oct 2022 10:00:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AE2B98284B;
-	Sun,  2 Oct 2022 07:52:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE2B98284B
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4DD0140A01;
+	Sun,  2 Oct 2022 10:00:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DD0140A01
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 147A81BF403
- for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Oct 2022 07:52:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C7EE71BF283
+ for <intel-wired-lan@osuosl.org>; Sun,  2 Oct 2022 10:00:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DE8C0605D6
- for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Oct 2022 07:52:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DE8C0605D6
+ by smtp3.osuosl.org (Postfix) with ESMTP id A254A60B8D
+ for <intel-wired-lan@osuosl.org>; Sun,  2 Oct 2022 10:00:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A254A60B8D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j_MYOtaDgfRR for <intel-wired-lan@lists.osuosl.org>;
- Sun,  2 Oct 2022 07:52:40 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 396A96059D
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 396A96059D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Oct 2022 07:52:40 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5ae8b9.dynamic.kabel-deutschland.de
- [95.90.232.185])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 0364961EA192A;
- Sun,  2 Oct 2022 09:52:36 +0200 (CEST)
-Content-Type: multipart/mixed; boundary="------------U26DupcPsJrIPHqh0aVUPDXE"
-Message-ID: <3f675a1c-0a24-85b5-acad-eaad3fe7e38f@molgen.mpg.de>
-Date: Sun, 2 Oct 2022 09:52:36 +0200
+ with ESMTP id tnK_i76HVNe7 for <intel-wired-lan@osuosl.org>;
+ Sun,  2 Oct 2022 10:00:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB13F60B12
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CB13F60B12
+ for <intel-wired-lan@osuosl.org>; Sun,  2 Oct 2022 10:00:32 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10487"; a="301183801"
+X-IronPort-AV: E=Sophos;i="5.93,361,1654585200"; d="scan'208";a="301183801"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Oct 2022 03:00:32 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10487"; a="618441386"
+X-IronPort-AV: E=Sophos;i="5.93,361,1654585200"; d="scan'208";a="618441386"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.5])
+ ([10.13.12.5])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Oct 2022 03:00:31 -0700
+Message-ID: <6a7e7ea7-27d8-aa78-4646-5c46058c9326@linux.intel.com>
+Date: Sun, 2 Oct 2022 13:00:28 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-To: "Neftin, Sasha" <sasha.neftin@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Amir Avivi <amir.avivi@intel.com>,
- Dima Ruinskiy <dima.ruinskiy@intel.com>,
- Devora Fuxbrumer <devora.fuxbrumer@intel.com>
-References: <53c37a6f-c8cd-63d6-696f-6b50b70f78ea@molgen.mpg.de>
- <d287a371-2a26-04f7-9adc-c7d8a19bfc14@intel.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
 Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <d287a371-2a26-04f7-9adc-c7d8a19bfc14@intel.com>
-Subject: Re: [Intel-wired-lan] Link does not come up after resuming from
- ACPI S3
+To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
+ intel-wired-lan@osuosl.org
+References: <20220914144942.22700-1-muhammad.husaini.zulkifli@intel.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20220914144942.22700-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1664704832; x=1696240832;
+ h=message-id:date:mime-version:subject:to:references:from:
+ in-reply-to:content-transfer-encoding;
+ bh=+J13VLCkq1A+pxu84cRb2HUZ2HecShBcMNIBnWuGWFk=;
+ b=HuupzNm4lGS/JrmK+3hHLFGiQ0KV3u1lZQp5ov+vSsJD5+9KcLnTR7Ze
+ sxWfxEwty/erfGNCxqxRjV9puyL5Z9yjRqOIldFEDqpZN49m3YU+rQcoh
+ L69k5L6SQqnxj9w5iQEaN6mPu383lMGj8MyjK84aAj9MvJ5zw6r4rzbJD
+ W5ZWumoRqB+3fJN55tMVypuMruFOnBADtEuucQGvU4MsUpb2H4wGCp1Hn
+ KYv1HZU6I23p+1QjtRSqUuEq3fmJkQP+8+Go5qpGXgUmVQYRq3tqGc8Qf
+ tUQQ68K9dvX/ciOXSbRwYz5Hek6Zc8v/Cdm4rKE1V4MH7piqKwxCRnxq0
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=HuupzNm4
+Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Fix kernel NULL pointer
+ dereference
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,227 +99,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a multi-part message in MIME format.
---------------U26DupcPsJrIPHqh0aVUPDXE
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-
-Dear Sasha,
-
-
-Thank you for your reply.
-
-Am 02.10.22 um 08:57 schrieb Neftin, Sasha:
-> On 9/30/2022 18:56, Paul Menzel wrote:
-
->> On a Dell Latitude E7250 with Debian sid/unstable, resuming Linux 
->> 5.19.6 and connecting an Ethernet cable, the link did not come up.
-
-> What is the device ID you tried to operate on your board? Could you 
-> provide whole lspci output and particular for:
-> lspci -s 0000:00:19.0 -vvv and lspci -s 0000:00:1f.6 -vvv?
-
-Please find it attached from a boot where the problem did not happen, as 
-I am unable to reproduce the issue. Device 0:1f.6 does not exist.
-
-> I've added the PAE expert (Amir).
-
-Awesome.
-
-
-Thank you and kind regards,
-
-Paul
->>      $ lspci -s 02:00.0 -nn
->>      02:00.0 Network controller [0280]: Intel Corporation Wireless 7265 [8086:095a] (rev 59)
-
-Sorry for posting the wrong device:
-
-     00:19.0 Ethernet controller [0200]: Intel Corporation Ethernet 
-Connection (3) I218-LM [8086:15a2] (rev 03)
-
-
-Kind rnegards,
-
-Paul
-
-
->> ```
->> […]
->> [263232.060912] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> [263237.160937] e1000e 0000:00:19.0 eno1: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
->> [263238.142253] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> [263245.687208] iwlwifi 0000:02:00.0: RF_KILL bit toggled to disable radio.
->> [263245.687212] iwlwifi 0000:02:00.0: reporting RF_KILL (radio disabled)
->> [263245.699263] iwlwifi 0000:02:00.0: Disabled INTA bits 0x10000000 were pending
->> [263246.796994] e1000e 0000:00:19.0 eno1: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
->> [263247.778192] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> [263252.770667] e1000e 0000:00:19.0 eno1: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
->> [263253.751948] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> […]
->> ```
->>
->> Enabling the debug message with
->>
->>      echo "module e1000e +p" | sudo tee /sys/kernel/debug/dynamic_debug/control
->>
->> there is
->>
->> ```
->> [263463.845944] e1000e 0000:00:19.0 eno1: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
->> [263464.839339] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> [263469.658556] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263469.658616] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263471.542403] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263471.542480] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.454131] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.454212] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.454280] e1000e 0000:00:19.0 eno1: 1000 Mbps, Full Duplex
->> [263473.454298] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.454360] e1000e 0000:00:19.0 eno1: writing PHY page 0 (or 0x0 shifted) reg 0x10
->> [263473.454420] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.454479] e1000e 0000:00:19.0 eno1: writing PHY page 0 (or 0x0 shifted) reg 0x11
->> [263473.454538] e1000e 0000:00:19.0 eno1: Setting page 0x6080
->> [263473.454596] e1000e 0000:00:19.0 eno1: reading PHY page 772 (or 0x6080 shifted) reg 0x1c
->> [263473.454656] e1000e 0000:00:19.0 eno1: Setting page 0x6080
->> [263473.454714] e1000e 0000:00:19.0 eno1: writing PHY page 772 (or 0x6080 shifted) reg 0x1c
->> [263473.454773] e1000e 0000:00:19.0 eno1: Setting page 0x6040
->> [263473.454831] e1000e 0000:00:19.0 eno1: reading PHY page 770 (or  0x6040 shifted) reg 0x11
->> [263473.454890] e1000e 0000:00:19.0 eno1: Setting page 0x6040
->> [263473.454948] e1000e 0000:00:19.0 eno1: writing PHY page 770 (or 0x6040 shifted) reg 0x11
->> [263473.455059] e1000e 0000:00:19.0 eno1: 1000 Mbps, Full Duplex
->> [263473.455073] e1000e 0000:00:19.0 eno1: Setting page 0x6080
->> [263473.455131] e1000e 0000:00:19.0 eno1: reading PHY page 772 (or 0x6080 shifted) reg 0x14
->> [263473.455190] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455248] e1000e 0000:00:19.0 eno1: writing PHY page 0 (or 0x0 shifted) reg 0x10
->> [263473.455307] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455365] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x11
->> [263473.455424] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455482] e1000e 0000:00:19.0 eno1: writing PHY page 0 (or 0x0 shifted) reg 0x10
->> [263473.455541] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455599] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x11
->> [263473.455658] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x5
->> [263473.455716] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455774] e1000e 0000:00:19.0 eno1: writing PHY page 0 (or 0x0 shifted) reg 0x10
->> [263473.455833] e1000e 0000:00:19.0 eno1: Setting page 0x0
->> [263473.455891] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x11
->> [263473.455950] e1000e 0000:00:19.0 eno1: Setting page 0x6080
->> [263473.456008] e1000e 0000:00:19.0 eno1: writing PHY page 772 (or 0x6080 shifted) reg 0x14
->> [263473.456071] e1000e 0000:00:19.0 eno1: hw->fc.current_mode = 3
->> [263473.456078] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.456140] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.456201] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x4
->> [263473.456262] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x5
->> [263473.456322] e1000e 0000:00:19.0 eno1: Flow Control = FULL.
->> [263473.456326] e1000e 0000:00:19.0 eno1: 1000 Mbps, Full Duplex
->> [263473.456330] e1000e 0000:00:19.0 eno1: hw->fc.current_mode = 3
->> [263473.456340] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x0
->> [263473.456401] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263473.456463] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x4
->> [263473.456524] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x5
->> [263473.456585] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x6
->> [263473.456646] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x9
->> [263473.456708] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0xa
->> [263473.456769] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0xf
->> [263473.456829] e1000e 0000:00:19.0 eno1: 1000 Mbps, Full Duplex
->> [263473.456836] e1000e 0000:00:19.0 eno1: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
->> [263474.458100] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263474.458169] e1000e 0000:00:19.0 eno1: reading PHY page 0 (or 0x0 shifted) reg 0x1
->> [263474.458233] e1000e 0000:00:19.0 eno1: NIC Link is Down
->> ```
->>
->> Removing and loading the module *e1000e* did not help. Suspending and 
->> resume did not either. Only powering off the system (maybe restart 
->> would have worked too).
->>
->> The 8 MB output of `dmesg` (still missing the early messages) [1] 
->> contains more lines from the subsequent tries.
->>
->> It only happened once, and I am unable to reproduce it.
->>
->>
->> Kind regards,
->>
->> Paul
->>
->>
->> [1]: https://owww.molgen.mpg.de/~pmenzel/linux-5.19.6--messages.txt
---------------U26DupcPsJrIPHqh0aVUPDXE
-Content-Type: text/plain; charset=UTF-8; name="lspci-s0190-vvv.txt"
-Content-Disposition: attachment; filename="lspci-s0190-vvv.txt"
-Content-Transfer-Encoding: base64
-
-MDA6MTkuMCBFdGhlcm5ldCBjb250cm9sbGVyOiBJbnRlbCBDb3Jwb3JhdGlvbiBFdGhlcm5l
-dCBDb25uZWN0aW9uICgzKSBJMjE4LUxNIChyZXYgMDMpCglEZXZpY2VOYW1lOiAgT25ib2Fy
-ZCBMQU4KCVN1YnN5c3RlbTogRGVsbCBFdGhlcm5ldCBDb25uZWN0aW9uICgzKSBJMjE4LUxN
-CglDb250cm9sOiBJL08tIE1lbSsgQnVzTWFzdGVyKyBTcGVjQ3ljbGUtIE1lbVdJTlYtIFZH
-QVNub29wLSBQYXJFcnItIFN0ZXBwaW5nLSBTRVJSLSBGYXN0QjJCLSBEaXNJTlR4KwoJU3Rh
-dHVzOiBDYXArIDY2TUh6LSBVREYtIEZhc3RCMkItIFBhckVyci0gREVWU0VMPWZhc3QgPlRB
-Ym9ydC0gPFRBYm9ydC0gPE1BYm9ydC0gPlNFUlItIDxQRVJSLSBJTlR4LQoJTGF0ZW5jeTog
-MAoJSW50ZXJydXB0OiBwaW4gQSByb3V0ZWQgdG8gSVJRIDQ3CglJT01NVSBncm91cDogNQoJ
-UmVnaW9uIDA6IE1lbW9yeSBhdCBmNzIwMDAwMCAoMzItYml0LCBub24tcHJlZmV0Y2hhYmxl
-KSBbc2l6ZT0xMjhLXQoJUmVnaW9uIDE6IE1lbW9yeSBhdCBmNzI0MzAwMCAoMzItYml0LCBu
-b24tcHJlZmV0Y2hhYmxlKSBbc2l6ZT00S10KCVJlZ2lvbiAyOiBJL08gcG9ydHMgYXQgZjA4
-MCBbZGlzYWJsZWRdIFtzaXplPTMyXQoJQ2FwYWJpbGl0aWVzOiBbYzhdIFBvd2VyIE1hbmFn
-ZW1lbnQgdmVyc2lvbiAyCgkJRmxhZ3M6IFBNRUNsay0gRFNJKyBEMS0gRDItIEF1eEN1cnJl
-bnQ9MG1BIFBNRShEMCssRDEtLEQyLSxEM2hvdCssRDNjb2xkKykKCQlTdGF0dXM6IEQwIE5v
-U29mdFJzdC0gUE1FLUVuYWJsZS0gRFNlbD0wIERTY2FsZT0xIFBNRS0KCUNhcGFiaWxpdGll
-czogW2QwXSBNU0k6IEVuYWJsZSsgQ291bnQ9MS8xIE1hc2thYmxlLSA2NGJpdCsKCQlBZGRy
-ZXNzOiAwMDAwMDAwMGZlZTAwMmY4ICBEYXRhOiAwMDAwCglDYXBhYmlsaXRpZXM6IFtlMF0g
-UENJIEFkdmFuY2VkIEZlYXR1cmVzCgkJQUZDYXA6IFRQKyBGTFIrCgkJQUZDdHJsOiBGTFIt
-CgkJQUZTdGF0dXM6IFRQLQoJS2VybmVsIGRyaXZlciBpbiB1c2U6IGUxMDAwZQoJS2VybmVs
-IG1vZHVsZXM6IGUxMDAwZQoK
---------------U26DupcPsJrIPHqh0aVUPDXE
-Content-Type: text/plain; charset=UTF-8; name="lspci-nn.txt"
-Content-Disposition: attachment; filename="lspci-nn.txt"
-Content-Transfer-Encoding: base64
-
-MDA6MDAuMCBIb3N0IGJyaWRnZSBbMDYwMF06IEludGVsIENvcnBvcmF0aW9uIEJyb2Fkd2Vs
-bC1VIEhvc3QgQnJpZGdlIC1PUEkgWzgwODY6MTYwNF0gKHJldiAwOSkKMDA6MDIuMCBWR0Eg
-Y29tcGF0aWJsZSBjb250cm9sbGVyIFswMzAwXTogSW50ZWwgQ29ycG9yYXRpb24gSEQgR3Jh
-cGhpY3MgNTUwMCBbODA4NjoxNjE2XSAocmV2IDA5KQowMDowMy4wIEF1ZGlvIGRldmljZSBb
-MDQwM106IEludGVsIENvcnBvcmF0aW9uIEJyb2Fkd2VsbC1VIEF1ZGlvIENvbnRyb2xsZXIg
-WzgwODY6MTYwY10gKHJldiAwOSkKMDA6MDQuMCBTaWduYWwgcHJvY2Vzc2luZyBjb250cm9s
-bGVyIFsxMTgwXTogSW50ZWwgQ29ycG9yYXRpb24gQnJvYWR3ZWxsLVUgUHJvY2Vzc29yIFRo
-ZXJtYWwgU3Vic3lzdGVtIFs4MDg2OjE2MDNdIChyZXYgMDkpCjAwOjE0LjAgVVNCIGNvbnRy
-b2xsZXIgWzBjMDNdOiBJbnRlbCBDb3Jwb3JhdGlvbiBXaWxkY2F0IFBvaW50LUxQIFVTQiB4
-SENJIENvbnRyb2xsZXIgWzgwODY6OWNiMV0gKHJldiAwMykKMDA6MTYuMCBDb21tdW5pY2F0
-aW9uIGNvbnRyb2xsZXIgWzA3ODBdOiBJbnRlbCBDb3Jwb3JhdGlvbiBXaWxkY2F0IFBvaW50
-LUxQIE1FSSBDb250cm9sbGVyICMxIFs4MDg2OjljYmFdIChyZXYgMDMpCjAwOjE5LjAgRXRo
-ZXJuZXQgY29udHJvbGxlciBbMDIwMF06IEludGVsIENvcnBvcmF0aW9uIEV0aGVybmV0IENv
-bm5lY3Rpb24gKDMpIEkyMTgtTE0gWzgwODY6MTVhMl0gKHJldiAwMykKMDA6MWIuMCBBdWRp
-byBkZXZpY2UgWzA0MDNdOiBJbnRlbCBDb3Jwb3JhdGlvbiBXaWxkY2F0IFBvaW50LUxQIEhp
-Z2ggRGVmaW5pdGlvbiBBdWRpbyBDb250cm9sbGVyIFs4MDg2OjljYTBdIChyZXYgMDMpCjAw
-OjFjLjAgUENJIGJyaWRnZSBbMDYwNF06IEludGVsIENvcnBvcmF0aW9uIFdpbGRjYXQgUG9p
-bnQtTFAgUENJIEV4cHJlc3MgUm9vdCBQb3J0ICMxIFs4MDg2OjljOTBdIChyZXYgZTMpCjAw
-OjFjLjMgUENJIGJyaWRnZSBbMDYwNF06IEludGVsIENvcnBvcmF0aW9uIFdpbGRjYXQgUG9p
-bnQtTFAgUENJIEV4cHJlc3MgUm9vdCBQb3J0ICM0IFs4MDg2OjljOTZdIChyZXYgZTMpCjAw
-OjFkLjAgVVNCIGNvbnRyb2xsZXIgWzBjMDNdOiBJbnRlbCBDb3Jwb3JhdGlvbiBXaWxkY2F0
-IFBvaW50LUxQIFVTQiBFSENJIENvbnRyb2xsZXIgWzgwODY6OWNhNl0gKHJldiAwMykKMDA6
-MWYuMCBJU0EgYnJpZGdlIFswNjAxXTogSW50ZWwgQ29ycG9yYXRpb24gV2lsZGNhdCBQb2lu
-dC1MUCBMUEMgQ29udHJvbGxlciBbODA4Njo5Y2MzXSAocmV2IDAzKQowMDoxZi4yIFNBVEEg
-Y29udHJvbGxlciBbMDEwNl06IEludGVsIENvcnBvcmF0aW9uIFdpbGRjYXQgUG9pbnQtTFAg
-U0FUQSBDb250cm9sbGVyIFtBSENJIE1vZGVdIFs4MDg2OjljODNdIChyZXYgMDMpCjAwOjFm
-LjMgU01CdXMgWzBjMDVdOiBJbnRlbCBDb3Jwb3JhdGlvbiBXaWxkY2F0IFBvaW50LUxQIFNN
-QnVzIENvbnRyb2xsZXIgWzgwODY6OWNhMl0gKHJldiAwMykKMDE6MDAuMCBTRCBIb3N0IGNv
-bnRyb2xsZXIgWzA4MDVdOiBPMiBNaWNybywgSW5jLiBTRC9NTUMgQ2FyZCBSZWFkZXIgQ29u
-dHJvbGxlciBbMTIxNzo4NTIwXSAocmV2IDAxKQowMjowMC4wIE5ldHdvcmsgY29udHJvbGxl
-ciBbMDI4MF06IEludGVsIENvcnBvcmF0aW9uIFdpcmVsZXNzIDcyNjUgWzgwODY6MDk1YV0g
-KHJldiA1OSkK
-
---------------U26DupcPsJrIPHqh0aVUPDXE
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+On 9/14/2022 17:49, Muhammad Husaini Zulkifli wrote:
+> This patch fix the null pointer dereference when dereference the pointer
+> that is expected to be valid but is NULL, typically will cause kernel
+> crash as below:
+> 
+>   45.369206] BUG: kernel NULL pointer dereference, address: 0000000000000004
+> [   45.376153] #PF: supervisor read access in kernel mode
+> [   45.381281] #PF: error_code(0x0000) - not-present page
+> [   45.386414] PGD 0 P4D 0
+> [   45.388955] Oops: 0000 [#1] PREEMPT SMP NOPTI
+> [   45.393311] CPU: 1 PID: 3290 Comm: tc Tainted: G     U  W          6.0.0-rc2-intel-ese-standard-lts+ #3
+> [   45.402668] Hardware name: Intel Corporation Tiger Lake Client Platform/TigerLake U DDR4 SODIMM RVP, BIOS TGLIFUI1.R00.4204.A00.2105270302 05/27/2021
+> [   45.415996] RIP: 0010:igc_setup_tc+0x2d4/0x602 [igc]
+> [   45.420971] Code: 48 c7 c1 f0 a0 6b c0 48 c7 c7 10 c5 6b c0 48 89 54 24 08 e8 58 b6 cb cc 48 8b 54 24 08 41 b8 e7 16 00 00 48 c7 c1 f0 a0 6b c0 <41> 23 57 04 44 89 ee 48 c7 c7 d8 cf 6b c0 e8 33 b6 cb cc 44 8b 0c
+> [   45.439655] RSP: 0018:ffffac2840f83850 EFLAGS: 00010246
+> [   45.444875] RAX: 0000000000000025 RBX: 0000000000000000 RCX: ffffffffc06ba0f0
+> [   45.451987] RDX: 0000000000000001 RSI: ffffffff8dc44719 RDI: 00000000ffffffff
+> [   45.459106] RBP: ffffac2840f838d0 R08: 00000000000016e7 R09: ffffac2840f83700
+> [   45.466224] R10: 0000000000000001 R11: 0000000000000001 R12: ffff9fc947765708
+> [   45.473334] R13: 0000000000000000 R14: ffff9fc947765730 R15: 0000000000000000
+> [   45.480450] FS:  00007f5139f4d740(0000) GS:ffff9fd090a80000(0000) knlGS:0000000000000000
+> [   45.488515] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [   45.494254] CR2: 0000000000000004 CR3: 0000000106588006 CR4: 0000000000770ee0
+> [   45.501369] PKRU: 55555554
+> [   45.504086] Call Trace:
+> [   45.506542]  <TASK>
+> [   45.508657]  taprio_change+0x4ef/0xba0 [sch_taprio]
+> [   45.513537]  qdisc_create.isra.0+0x13b/0x510
+> [   45.517806]  tc_modify_qdisc+0x121/0x7e0
+> [   45.521728]  rtnetlink_rcv_msg+0x141/0x3c0
+> [   45.525827]  ? _copy_to_iter+0x1ba/0x5a0
+> [   45.529753]  ? rtnl_calcit.isra.0+0x140/0x140
+> [   45.534109]  netlink_rcv_skb+0x4e/0x100
+> [   45.537949]  netlink_unicast+0x197/0x240
+> [   45.541869]  netlink_sendmsg+0x246/0x4a0
+> [   45.545799]  sock_sendmsg+0x5f/0x70
+> [   45.549293]  ____sys_sendmsg+0x20f/0x280
+> [   45.553214]  ? copy_msghdr_from_user+0x72/0xb0
+> [   45.557655]  ___sys_sendmsg+0x7c/0xc0
+> [   45.561319]  ? __handle_mm_fault+0x937/0x1380
+> [   45.565677]  __sys_sendmsg+0x59/0xa0
+> [   45.569256]  do_syscall_64+0x40/0x90
+> [   45.572836]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
+> [   45.577882] RIP: 0033:0x7f513a077707
+> [   45.581461] Code: 0e 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b9 0f 1f 00 f3 0f 1e fa 64 8b 04 25 18 00 00 00 85 c0 75 10 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 51 c3 48 83 ec 28 89 54 24 1c 48 89 74 24 10
+> [   45.600143] RSP: 002b:00007ffc640095e8 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+> [   45.607693] RAX: ffffffffffffffda RBX: 000000006321873a RCX: 00007f513a077707
+> [   45.614812] RDX: 0000000000000000 RSI: 00007ffc64009650 RDI: 0000000000000003
+> [   45.621925] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000000
+> [   45.629043] R10: 000055de7f26c960 R11: 0000000000000246 R12: 0000000000000001
+> [   45.636161] R13: 000055de7ecfa476 R14: 000055de7ecfa48a R15: 000055de7ed21f40
+> [   45.643273]  </TASK>
+> [   45.645468] Modules linked in: sch_taprio bnep 8021q bluetooth ecdh_generic ecc ecryptfs nfsd sch_fq_codel uio uhid i915 x86_pkg_temp_thermal kvm_intel kvm hid_sensor_accel_3d hid_sensor_magn_3d hid_sensor_als hid_sensor_incl_3d hid_sensor_gyro_3d hid_sensor_trigger hid_sensor_iio_common dwmac_intel hid_sensor_custom hid_sensor_hub stmmac e1000e mei_wdt intel_ishtp_hid mei_hdcp dwc3 igc ax88179_178a mei_me atkbd usbnet udc_core libps2 pcs_xpcs vivaldi_fmap mii spi_pxa2xx_platform phylink mei tpm_crb irqbypass dw_dmac intel_ish_ipc ptp tpm_tis dw_dmac_core tpm_tis_core wdat_wdt pps_core igen6_edac i2c_i801 intel_ishtp intel_rapl_msr pcspkr i2c_smbus tpm edac_core thermal i8042 parport_pc intel_pmc_core dwc3_pci parport video drm_buddy ttm drm_display_helper fuse configfs snd_hda_intel snd_intel_dspcfg snd_intel_sdw_acpi snd_hda_codec snd_hda_core snd_pcm snd_timer snd soundcore
+> [   45.722706] CR2: 0000000000000004
+> [   45.726025] ---[ end trace 0000000000000000 ]---
+> 
+> Fixes: a5fd39464a40 ("igc: Lift TAPRIO schedule restriction")
+> Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---------------U26DupcPsJrIPHqh0aVUPDXE--
