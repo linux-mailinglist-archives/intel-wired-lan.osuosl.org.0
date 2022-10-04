@@ -1,88 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C7D15F3CA7
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Oct 2022 08:10:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D52C5F42C5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Oct 2022 14:15:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4ED6381DAB;
-	Tue,  4 Oct 2022 06:10:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4ED6381DAB
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6588A41734;
+	Tue,  4 Oct 2022 12:15:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6588A41734
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664863836;
-	bh=Rq8bKWVb7051EjjAx/wNuzbuEmcN11doCTEPDetu5pM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=B18he24jy5mzD4W3/QooZL7GKSHJzbUZuNUpKC/2OqMzFO1R0Vc7CV4/zxdW5Wbg/
-	 UVrNirw1yZalvmJw7nWY1/6M1EpkXjJSut1/rfa5bkoZQKXhVkChT96OjkXjKxh93e
-	 AYVZg7VGVRFnqN9Y3ZutgfA7VxZ3NOiDY6aG1Qreubwa0+b1Umf0aX38YFTlZehWI6
-	 3P3Fp7grkSww0sTzHwFHDRB8OWve4bkaBDJwreXDhse+kCGfGSwoIEzEfctPf5tQB2
-	 jzwm5beZZbRtsWPAtut74/SUMFEFkrPdaDR/NwIm6lTfk0E/YlfnOeGEVVuzKL4V+T
-	 rntFIfal1GG3g==
+	s=default; t=1664885736;
+	bh=FVYSLOY2sPkzm+45t2k1SLu8JXwVI0dT745gQaHpR7E=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=7NGVtoTUWcvjxiNO2xbaBxG2KusQIJMUs7Aam5F5QsyKopGD6s2z5TMs2t1dD7Nn/
+	 Uii0Gz9wJy9QiOukvJ3ADQd2ev5IzqKh5dRoto75eGPbVa+yC6+Z64LrFj+b0i9FOD
+	 GA0szzP8LPfcxo6vPGEAX97rRBf+WkfPITFZUuPAHbc+G3fT7amwmffM3yikPidfbf
+	 O7bUwY9nPfMbkkZxw2bo3zVCClGc081psuhrwphTnrFRz81mKSpgwyNcQrUdBBbBa4
+	 ID4CcAGqgwdCMXI8uI4EmTy/iEDTRHOBQH3ujFbWAgou29ZTn37CfT4/KcEq5icb2h
+	 BD5VQY499DIOw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FCuJBM5jFZNE; Tue,  4 Oct 2022 06:10:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kfmyiCzY4sFk; Tue,  4 Oct 2022 12:15:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B87AF824B4;
-	Tue,  4 Oct 2022 06:10:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B87AF824B4
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3A7E241729;
+	Tue,  4 Oct 2022 12:15:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A7E241729
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 24F581BF2EF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 06:10:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B4221BF846
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 12:15:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E9E43824B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 06:10:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E9E43824B4
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6E59B41731
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 12:15:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E59B41731
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 278NhMEgrIsI for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Oct 2022 06:10:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id K9ZfqTxGbGCn for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Oct 2022 12:15:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C51081DAB
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6C51081DAB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 06:10:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="366934810"
-X-IronPort-AV: E=Sophos;i="5.93,367,1654585200"; d="scan'208";a="366934810"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Oct 2022 23:10:27 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6471841727
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6471841727
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Oct 2022 12:15:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="290113752"
+X-IronPort-AV: E=Sophos;i="5.93,157,1654585200"; d="scan'208";a="290113752"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2022 05:15:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="749268196"
-X-IronPort-AV: E=Sophos;i="5.93,367,1654585200"; d="scan'208";a="749268196"
-Received: from lkp-server01.sh.intel.com (HELO 14cc182da2d0) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 03 Oct 2022 23:10:26 -0700
-Received: from kbuild by 14cc182da2d0 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ofb8L-0005Nk-2N;
- Tue, 04 Oct 2022 06:10:25 +0000
-Date: Tue, 04 Oct 2022 14:09:42 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <633bce26.kP16kUwaeYyWaIpZ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10489"; a="712990584"
+X-IronPort-AV: E=Sophos;i="5.93,157,1654585200"; d="scan'208";a="712990584"
+Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
+ by FMSMGA003.fm.intel.com with ESMTP; 04 Oct 2022 05:15:25 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  4 Oct 2022 08:13:41 -0400
+Message-Id: <20221004121341.663007-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1664863828; x=1696399828;
- h=date:from:to:subject:message-id:mime-version:
+ t=1664885727; x=1696421727;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=ipziRWLGqa6+GNOpgxzA3tmUa87sw/W4j1mP+BMl924=;
- b=ipA5nCmH0Sgo9EzhhbuIYsBeCLFBIjvCXW0rvoKjOvIGH5n8K5vloS+J
- 9JNKtk8eA4mlrTbyYWoPECszsCfRzb8jnvOPNMVGeOegi2WrhNJbktOji
- 489zNwbOGFi5BWZvyAMEVIcjgpHR2a+VvQrQriSOjSQMK6DaYfnnH92rB
- pRiIByVKRdYu2aiGRU7EL0LXtBwtw2HocuZLbckzKD3GY3f06xIbxMxA5
- mEtqlyPlaxam0/RyL9QU+po5tAvYAgMprtNZeAbj7YKo2t2/PPL/An74/
- vGPh+uUc2yKu70Tva0jMwtavTlVKK6tM9lWF9OFQvDNO/xkdYTfG2ruS8
+ bh=4ZtpkbQkG+b9UcxBu00ds9PIeO/e136RkZADUafy+RY=;
+ b=SYxgZ7yJtEGUGIKLkzDHh4GeY0Jl61qUzXwzOyJhVcN2BCuAdu5mpaZm
+ U7SaUqGIIUZMJCa/ZUHsr7DL2DXglY5QZ1AsX9cVtiYE+OQ8e7VWEmKSb
+ vXgX9mXw7C6cM0XMIaPbYbJTQJaCC56w2eK/f2ioSTw1YPaT9l/uQ7R9S
+ Oen3XWXZrHiGyk3OusJ3YFFUXMQMOTVlIkB8YY2vAMwrE1CWJ7nZ44Wej
+ htLQx9DshCBdStb0sjrEt6CAWupflUWn4usiREJ5ygUrmxbkiTxgLPi+f
+ uwMJZZ0dhd+LDTFI2UMl1StLHwWgURdc3HlENm4Zb7KtSeKvyMSDCswWB
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ipA5nCmH
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 76c908058f942f5ad479b092556717d37e9461cb
+ header.a=rsa-sha256 header.s=Intel header.b=SYxgZ7yJ
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix VF hang when reset is
+ triggered on another VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,92 +92,152 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 76c908058f942f5ad479b092556717d37e9461cb  e1000e: Remove unnecessary use of kmap_atomic()
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 
-elapsed time: 728m
+When a reset was triggered on one VF with i40e_reset_vf
+global PF state __I40E_VF_DISABLE was set on a PF until
+the reset finished. If immediately after triggering reset
+on one VF there is a request to reset on another
+it will cause a hang on VF side because VF will be notified
+of incoming reset but the reset will never happen because
+of this global state, we will get such error message:
 
-configs tested: 63
-configs skipped: 2
+[  +4.890195] iavf 0000:86:02.1: Never saw reset
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+and VF will hang waiting for the reset to be triggered.
 
-gcc tested configs:
-x86_64                              defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                               rhel-8.3
-i386                                defconfig
-powerpc                          allmodconfig
-mips                             allyesconfig
-powerpc                           allnoconfig
-x86_64                           allyesconfig
-arc                              allyesconfig
-sh                               allmodconfig
-x86_64                          rhel-8.3-func
-alpha                            allyesconfig
-x86_64                    rhel-8.3-kselftests
-arm                                 defconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-m68k                             allmodconfig
-x86_64               randconfig-a011-20221003
-arc                                 defconfig
-m68k                             allyesconfig
-x86_64               randconfig-a012-20221003
-alpha                               defconfig
-x86_64               randconfig-a013-20221003
-x86_64               randconfig-a015-20221003
-x86_64               randconfig-a014-20221003
-x86_64               randconfig-a016-20221003
-s390                                defconfig
-s390                             allmodconfig
-i386                             allyesconfig
-arm                              allyesconfig
-arm64                            allyesconfig
-s390                             allyesconfig
-i386                 randconfig-a011-20221003
-i386                 randconfig-a012-20221003
-i386                 randconfig-a013-20221003
-i386                 randconfig-a015-20221003
-i386                 randconfig-a016-20221003
-riscv                randconfig-r042-20221003
-i386                 randconfig-a014-20221003
-arc                  randconfig-r043-20221003
-arc                  randconfig-r043-20221002
-s390                 randconfig-r044-20221003
-ia64                             allmodconfig
+Fix this by introducing new VF state I40E_VF_STATE_RESETTING
+that will be set on a VF if it is currently resetting instead of
+the global __I40E_VF_DISABLE PF state.
 
-clang tested configs:
-i386                 randconfig-a004-20221003
-i386                 randconfig-a005-20221003
-i386                 randconfig-a003-20221003
-i386                 randconfig-a002-20221003
-i386                 randconfig-a001-20221003
-i386                 randconfig-a006-20221003
-hexagon              randconfig-r041-20221003
-hexagon              randconfig-r041-20221002
-s390                 randconfig-r044-20221002
-hexagon              randconfig-r045-20221002
-hexagon              randconfig-r045-20221003
-riscv                randconfig-r042-20221002
-x86_64               randconfig-a003-20221003
-x86_64               randconfig-a005-20221003
-x86_64               randconfig-a002-20221003
-x86_64               randconfig-a001-20221003
-x86_64               randconfig-a004-20221003
-x86_64               randconfig-a006-20221003
+Fixes: 3ba9bcb4b68f ("i40e: add locking around VF reset")
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+---
+ v2: Fixed some typos in commit message
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 43 ++++++++++++++-----
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  1 +
+ 2 files changed, 33 insertions(+), 11 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 7e9f6a69eb10..72ddcefc45b1 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -1536,10 +1536,12 @@ bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
+ 	if (test_bit(__I40E_VF_RESETS_DISABLED, pf->state))
+ 		return true;
+ 
+-	/* If the VFs have been disabled, this means something else is
+-	 * resetting the VF, so we shouldn't continue.
+-	 */
+-	if (test_and_set_bit(__I40E_VF_DISABLE, pf->state))
++	/* Bail out if VFs are disabled. */
++	if (test_bit(__I40E_VF_DISABLE, pf->state))
++		return true;
++
++	/* If VF is being reset already we don't need to continue. */
++	if (test_and_set_bit(I40E_VF_STATE_RESETTING, &vf->vf_states))
+ 		return true;
+ 
+ 	i40e_trigger_vf_reset(vf, flr);
+@@ -1576,7 +1578,7 @@ bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
+ 	i40e_cleanup_reset_vf(vf);
+ 
+ 	i40e_flush(hw);
+-	clear_bit(__I40E_VF_DISABLE, pf->state);
++	clear_bit(I40E_VF_STATE_RESETTING, &vf->vf_states);
+ 
+ 	return true;
+ }
+@@ -1609,8 +1611,12 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 		return false;
+ 
+ 	/* Begin reset on all VFs at once */
+-	for (v = 0; v < pf->num_alloc_vfs; v++)
+-		i40e_trigger_vf_reset(&pf->vf[v], flr);
++	for (v = 0; v < pf->num_alloc_vfs; v++) {
++		vf = &pf->vf[v];
++		/* If VF is being reset no need to trigger reset again */
++		if (!test_bit(I40E_VF_STATE_RESETTING, &vf->vf_states))
++			i40e_trigger_vf_reset(&pf->vf[v], flr);
++	}
+ 
+ 	/* HW requires some time to make sure it can flush the FIFO for a VF
+ 	 * when it resets it. Poll the VPGEN_VFRSTAT register for each VF in
+@@ -1626,9 +1632,11 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 		 */
+ 		while (v < pf->num_alloc_vfs) {
+ 			vf = &pf->vf[v];
+-			reg = rd32(hw, I40E_VPGEN_VFRSTAT(vf->vf_id));
+-			if (!(reg & I40E_VPGEN_VFRSTAT_VFRD_MASK))
+-				break;
++			if (!test_bit(I40E_VF_STATE_RESETTING, &vf->vf_states)) {
++				reg = rd32(hw, I40E_VPGEN_VFRSTAT(vf->vf_id));
++				if (!(reg & I40E_VPGEN_VFRSTAT_VFRD_MASK))
++					break;
++			}
+ 
+ 			/* If the current VF has finished resetting, move on
+ 			 * to the next VF in sequence.
+@@ -1656,6 +1664,10 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 		if (pf->vf[v].lan_vsi_idx == 0)
+ 			continue;
+ 
++		/* If VF is reset in another thread just continue */
++		if (test_bit(I40E_VF_STATE_RESETTING, &vf->vf_states))
++			continue;
++
+ 		i40e_vsi_stop_rings_no_wait(pf->vsi[pf->vf[v].lan_vsi_idx]);
+ 	}
+ 
+@@ -1667,6 +1679,10 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 		if (pf->vf[v].lan_vsi_idx == 0)
+ 			continue;
+ 
++		/* If VF is reset in another thread just continue */
++		if (test_bit(I40E_VF_STATE_RESETTING, &vf->vf_states))
++			continue;
++
+ 		i40e_vsi_wait_queues_disabled(pf->vsi[pf->vf[v].lan_vsi_idx]);
+ 	}
+ 
+@@ -1676,8 +1692,13 @@ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr)
+ 	mdelay(50);
+ 
+ 	/* Finish the reset on each VF */
+-	for (v = 0; v < pf->num_alloc_vfs; v++)
++	for (v = 0; v < pf->num_alloc_vfs; v++) {
++		/* If VF is reset in another thread just continue */
++		if (test_bit(I40E_VF_STATE_RESETTING, &vf->vf_states))
++			continue;
++
+ 		i40e_cleanup_reset_vf(&pf->vf[v]);
++	}
+ 
+ 	i40e_flush(hw);
+ 	clear_bit(__I40E_VF_DISABLE, pf->state);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index a554d0a0b09b..358bbdb58795 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -39,6 +39,7 @@ enum i40e_vf_states {
+ 	I40E_VF_STATE_MC_PROMISC,
+ 	I40E_VF_STATE_UC_PROMISC,
+ 	I40E_VF_STATE_PRE_ENABLE,
++	I40E_VF_STATE_RESETTING
+ };
+ 
+ /* VF capabilities */
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
