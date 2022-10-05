@@ -1,104 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84B1B5F59F7
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Oct 2022 20:40:36 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2E0A5F5A13
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Oct 2022 20:47:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E1F2C41731;
-	Wed,  5 Oct 2022 18:40:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1F2C41731
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9F03C827C6;
+	Wed,  5 Oct 2022 18:47:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F03C827C6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664995232;
-	bh=D2M2PcN1ehbEi2jS8633UW/FKFWMwfo1YzgD6t2vDPg=;
+	s=default; t=1664995659;
+	bh=B+Jm0F9Ujkh/kiB4w6pNc9OI6dRqSBjTn1VqIOTELcI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=fg+F1WrUsv7p/B8r4O7vcksOXiwOGJ3MoyvM0EMROOCpLbyME69ekyJ+e6N3RMUiB
-	 QWX3G2G6zs3KI0sAkZMIisJonILTv98QKZ+OJM7MaJE83pI/pyXvSugToXDsVVuIrF
-	 XGDcxb202ZqH+13HPY8Qfrbwl5BGXOygG0M/7lbmFQ3eHK8nbXmM5bAIlcXRtLwZxQ
-	 mSkxDFkb9k8YhSI6LZ/B+Nf7ohdv2nEtoRUMz37HUW3GdCLM6YswgqdVZLrIJHU5WX
-	 fDBf6gHNnQQndqmDZKxDOAGSvjRxVAxY0DmpxlMR459WtVkimBMdmOudSWfcbQrhtZ
-	 yRPgoPJKQJ0cQ==
+	b=heVgP3q/87LyqqzM/Apg9yZVlAb4ldZELIDgDGhQ5Hjzj6VdHze/HsztB4OkYD3g8
+	 gOrIHZIbIqpoeY56kjO8+yTU+3s+kYrzRLIu+C3OqAUYa+xODbnQ2UoP/u3SWnfnvL
+	 sMEv3uUlWFlSsP2Y+WdI4oR65DzGhH/h0mC8Jz70DntPhQbDnRfiVNKesEtrdVdNBj
+	 NjoklGhlwgyDWe5BUgb0gSQONWjwxx6WQ+pyqNN5jVn7NERjx//qcNm5i5PCoqJVIu
+	 ZV8+LHlFZ+vN1XW+RR+Zpaemta6I3nmurPX0jQGzDrhatn6pJ6O8AK1bijcCEBWM6g
+	 FQQvm8pFsHnkg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EMGaG0LNZ3JI; Wed,  5 Oct 2022 18:40:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bjyVmpkJEYKf; Wed,  5 Oct 2022 18:47:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 68A0B409F3;
-	Wed,  5 Oct 2022 18:40:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68A0B409F3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 65E7681826;
+	Wed,  5 Oct 2022 18:47:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65E7681826
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA7031BF23C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:40:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 63F7B1BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:47:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C1B8740232
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:40:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1B8740232
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3DC5281839
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:47:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3DC5281839
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XQ3ju6fn8a9v for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Oct 2022 18:40:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TIZMbFbj13-X for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Oct 2022 18:47:32 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFA8940142
-Received: from mail-pj1-x1034.google.com (mail-pj1-x1034.google.com
- [IPv6:2607:f8b0:4864:20::1034])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DFA8940142
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:40:25 +0000 (UTC)
-Received: by mail-pj1-x1034.google.com with SMTP id
- t10-20020a17090a4e4a00b0020af4bcae10so1748804pjl.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Oct 2022 11:40:25 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3609E81826
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3609E81826
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 18:47:32 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id 129so15989581pgc.5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Oct 2022 11:47:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date;
- bh=dB/mLDPvddSrAOBjDKTbLlR3uh0ZH57qh/dtZrjjag8=;
- b=EJqR13jOAAa4v7nrt5yTEjj7XUBcDW3EX6UNXxAioGMOhSA7p53U9eEEH3UAYqgbUX
- pdVL3kH412cFJUwfy0pf1GiZr8aywcOvqF9tyBOY5eaQQ7oK0Sl7qKMX6QZ5c7qL9jem
- QCilWiW5hZlpmtDKRCtynoZfLagdF/zaU9P7BfnXMNOJMrEupr+bRl8ZyoQ52e0Xx6uW
- jzP+R+djoWtsoyerI58CRxY0dRtZzjLTaRf+aZs7lFposPB3hZUk4YAiynOexMoeewET
- POTIvrA1R2q8e6W2vcmwcZ3DEUTAJD8oyY7OuQ2iMhJNerd+lFBJHXqNbpV8Qu9qgDSL
- Ya0A==
-X-Gm-Message-State: ACrzQf3eqt3uf/8FNX6M03o/up/x8rsYumWN61wNHxhXZHpCFeiGC5KY
- kcawrBmfZP7UzIQeEv9ej2sh0A==
-X-Google-Smtp-Source: AMsMyM7gwXg6Gwz4+ig5i+7VvjMOLYrh5xTxKqZzZpNNN8dTdPMmCkAEsKOWi7nPRryVxYIfXVB1Zw==
-X-Received: by 2002:a17:902:b693:b0:178:5fa6:4b3 with SMTP id
- c19-20020a170902b69300b001785fa604b3mr712778pls.63.1664995225034; 
- Wed, 05 Oct 2022 11:40:25 -0700 (PDT)
+ bh=k6pyucbE+OWdAQAbLegTBFSSrsILTlfWNpf/Da7WMt0=;
+ b=sE0mnh9k5MbjXR/y3HO8YnOyAFVLxERVrqFfWU3Y4mHLd5n8NO3TcZNKuWr5j2yIsV
+ 8ebM5MEE6TzT2BcXYrNpEwPuzJTlglAkUGp8N3C98iO4zE2p9zUUjjjgW9uxFf1XFnz/
+ 8Cw50Yk6SDNCyBw+kzy03iF5+5+O8mQIw2Vq06lqFVwPO1gzrPxD3y0o2J1oEDS4PxJU
+ 2vH/ID32xNriNLxvfQd0PoyUcwNWdaONR+0+TCj1QSuU1uaEmVPjZtzmYxZ+RT8RKvZR
+ LR3V1jDv/Obqx/kCNkYDHOUUS1Io8LSLr9pR7CaLI0JDYkmVzNpCEyvxdsOjc15NEy2e
+ 0XFw==
+X-Gm-Message-State: ACrzQf3KpRjZksB/WjO9XUMDmurFrQ+QC3RQk3OeAE4qgw+nDKumJP5N
+ +P1Zhg38Wq0an0ayo8XlYUiJkmB26VHtHg==
+X-Google-Smtp-Source: AMsMyM76Lp/13pWlYLtX6lidA/f/8Z38f1izSXJztC+pp9vxojZ+hudfmLI5Xg5tQwOJii6T3q6y9g==
+X-Received: by 2002:a63:1508:0:b0:438:eb90:52d1 with SMTP id
+ v8-20020a631508000000b00438eb9052d1mr1061157pgl.252.1664995651526; 
+ Wed, 05 Oct 2022 11:47:31 -0700 (PDT)
 Received: from fastly.com (c-73-223-190-181.hsd1.ca.comcast.net.
  [73.223.190.181]) by smtp.gmail.com with ESMTPSA id
- b9-20020a630c09000000b00434e1d3b2ecsm45380pgl.79.2022.10.05.11.40.24
+ a15-20020a170902b58f00b0017849a2b56asm10816338pls.46.2022.10.05.11.47.30
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 05 Oct 2022 11:40:24 -0700 (PDT)
-Date: Wed, 5 Oct 2022 11:40:22 -0700
+ Wed, 05 Oct 2022 11:47:31 -0700 (PDT)
+Date: Wed, 5 Oct 2022 11:47:28 -0700
 From: Joe Damato <jdamato@fastly.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20221005184021.GA15277@fastly.com>
+Message-ID: <20221005184728.GB15277@fastly.com>
 References: <1664958703-4224-1-git-send-email-jdamato@fastly.com>
- <1664958703-4224-2-git-send-email-jdamato@fastly.com>
- <Yz1chBm4F8vJPkl2@boxer> <20221005170019.GA6629@fastly.com>
- <aab58471-096d-db50-36f2-493a14e0e6da@intel.com>
+ <1664958703-4224-3-git-send-email-jdamato@fastly.com>
+ <Yz1gh6ezOuc1tzH+@boxer> <20221005175031.GA11626@fastly.com>
+ <e352426f-7a43-6353-5c1d-aa3480f64860@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aab58471-096d-db50-36f2-493a14e0e6da@intel.com>
+In-Reply-To: <e352426f-7a43-6353-5c1d-aa3480f64860@intel.com>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=fastly.com; s=google;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:from:to:cc:subject:date;
- bh=dB/mLDPvddSrAOBjDKTbLlR3uh0ZH57qh/dtZrjjag8=;
- b=HPh3rH28cH1ISMMyraM/Zk/HU3Vf4F4itg1n1ginrO9IEW808laa6i4YjatABM4XsD
- /yzJvBou5oGm2E2bU8DgudA+2IwhTFXaTVtRmmtyBB6YTcssDXqvlxLB6BN+GJhIa+/W
- 79pekj24nQTZhhGy0Xl2SR3IEe4PQCrz+SwEA=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=k6pyucbE+OWdAQAbLegTBFSSrsILTlfWNpf/Da7WMt0=;
+ b=c6EA7lfRsgXS6ekMKFNVy943Y0b1ViE+xoxIpQOEfE6M86G4bm8gWZlxJNsiyPOiuD
+ +cMfAjGzkdwzUz/ghgiVVj36EmXestd48oQWCLeTpv4zDDza1iJMDIHspGdO60cmrZkV
+ mXW4GqP9ragjPSOADBIZoITVTc0c4EsJq5dyk=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=fastly.com header.i=@fastly.com
- header.a=rsa-sha256 header.s=google header.b=HPh3rH28
-Subject: Re: [Intel-wired-lan] [next-queue 1/3] i40e: Store the irq number
- in i40e_q_vector
+ header.a=rsa-sha256 header.s=google header.b=c6EA7lfR
+Subject: Re: [Intel-wired-lan] [next-queue 2/3] i40e: i40e_clean_tx_irq
+ returns work done
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,103 +117,138 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 05, 2022 at 11:25:32AM -0700, Jesse Brandeburg wrote:
-> On 10/5/2022 10:00 AM, Joe Damato wrote:
-> >On Wed, Oct 05, 2022 at 12:29:24PM +0200, Maciej Fijalkowski wrote:
-> >>On Wed, Oct 05, 2022 at 01:31:41AM -0700, Joe Damato wrote:
-> >>>Make it easy to figure out the IRQ number for a particular i40e_q_vector by
-> >>>storing the assigned IRQ in the structure itself.
+On Wed, Oct 05, 2022 at 11:33:23AM -0700, Jesse Brandeburg wrote:
+> On 10/5/2022 10:50 AM, Joe Damato wrote:
+> >On Wed, Oct 05, 2022 at 12:46:31PM +0200, Maciej Fijalkowski wrote:
+> >>On Wed, Oct 05, 2022 at 01:31:42AM -0700, Joe Damato wrote:
+> >>>Adjust i40e_clean_tx_irq to return the actual number of packets cleaned
+> >>>and adjust the logic in i40e_napi_poll to check this value.
+> 
+> it's fine to return the number cleaned but let's keep that data and changes
+> to itself instead of changing the flow of the routine.
+> 
+> 
 > >>>
 > >>>Signed-off-by: Joe Damato <jdamato@fastly.com>
 > >>>---
-> >>>  drivers/net/ethernet/intel/i40e/i40e.h      | 1 +
-> >>>  drivers/net/ethernet/intel/i40e/i40e_main.c | 1 +
-> >>>  2 files changed, 2 insertions(+)
+> >>>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 24 +++++++++++++-----------
+> >>>  drivers/net/ethernet/intel/i40e/i40e_xsk.c  | 12 ++++++------
+> >>>  drivers/net/ethernet/intel/i40e/i40e_xsk.h  |  2 +-
+> >>>  3 files changed, 20 insertions(+), 18 deletions(-)
 > >>>
-> >>>diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-> >>>index 9926c4e..8e1f395 100644
-> >>>--- a/drivers/net/ethernet/intel/i40e/i40e.h
-> >>>+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-> >>>@@ -992,6 +992,7 @@ struct i40e_q_vector {
-> >>>  	struct rcu_head rcu;	/* to avoid race with update stats on free */
-> >>>  	char name[I40E_INT_NAME_STR_LEN];
-> >>>  	bool arm_wb_state;
-> >>>+	int irq_num;		/* IRQ assigned to this q_vector */
+> >>>diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> >>>index b97c95f..ed88309 100644
+> >>>--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> >>>+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> >>>@@ -924,10 +924,10 @@ void i40e_detect_recover_hung(struct i40e_vsi *vsi)
+> >>>   * @tx_ring: Tx ring to clean
+> >>>   * @napi_budget: Used to determine if we are in netpoll
+> >>>   *
+> >>>- * Returns true if there's any budget left (e.g. the clean is finished)
+> >>>+ * Returns the number of packets cleaned
+> >>>   **/
+> >>>-static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
+> >>>-			      struct i40e_ring *tx_ring, int napi_budget)
+> >>>+static int i40e_clean_tx_irq(struct i40e_vsi *vsi,
+> >>>+			     struct i40e_ring *tx_ring, int napi_budget)
+> >>>  {
+> >>>  	int i = tx_ring->next_to_clean;
+> >>>  	struct i40e_tx_buffer *tx_buf;
+> >>>@@ -1026,7 +1026,7 @@ static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
+> >>>  	i40e_arm_wb(tx_ring, vsi, budget);
+> >>>  	if (ring_is_xdp(tx_ring))
+> >>>-		return !!budget;
+> >>>+		return total_packets;
+> >>>  	/* notify netdev of completed buffers */
+> >>>  	netdev_tx_completed_queue(txring_txq(tx_ring),
+> >>>@@ -1048,7 +1048,7 @@ static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
+> >>>  		}
+> >>>  	}
+> >>>-	return !!budget;
+> >>>+	return total_packets;
+> >>>  }
+> >>>  /**
+> >>>@@ -2689,10 +2689,12 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
+> >>>  			       container_of(napi, struct i40e_q_vector, napi);
+> >>>  	struct i40e_vsi *vsi = q_vector->vsi;
+> >>>  	struct i40e_ring *ring;
+> >>>+	bool tx_clean_complete = true;
+> >>>  	bool clean_complete = true;
+> >>>  	bool arm_wb = false;
+> >>>  	int budget_per_ring;
+> >>>  	int work_done = 0;
+> >>>+	int tx_wd = 0;
+> >>>  	if (test_bit(__I40E_VSI_DOWN, vsi->state)) {
+> >>>  		napi_complete(napi);
+> >>>@@ -2703,12 +2705,12 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
+> >>>  	 * budget and be more aggressive about cleaning up the Tx descriptors.
+> >>>  	 */
+> >>>  	i40e_for_each_ring(ring, q_vector->tx) {
+> >>>-		bool wd = ring->xsk_pool ?
+> >>>-			  i40e_clean_xdp_tx_irq(vsi, ring) :
+> >>>-			  i40e_clean_tx_irq(vsi, ring, budget);
+> >>>+		tx_wd = ring->xsk_pool ?
+> >>>+			i40e_clean_xdp_tx_irq(vsi, ring) :
+> >>>+			i40e_clean_tx_irq(vsi, ring, budget);
+> >>>-		if (!wd) {
+> >>>-			clean_complete = false;
+> >>>+		if (tx_wd >= budget) {
+> >>>+			tx_clean_complete = false;
 > >>
-> >>This struct looks like a mess in terms of members order. Can you check
-> >>with pahole how your patch affects the layout of it? Maybe while at it you
-> >>could pack it in a better way?
+> >>This will break for AF_XDP Tx ZC. AF_XDP Tx ZC in intel drivers ignores
+> >>budget given by NAPI. If you look at i40e_xmit_zc():
+> >>
+> >>func def:
+> >>static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
+> >>
+> >>callsite:
+> >>	return i40e_xmit_zc(tx_ring, I40E_DESC_UNUSED(tx_ring));
+> >>
+> >>we give free ring space as a budget and with your change we would be
+> >>returning the amount of processed tx descriptors which you will be
+> >>comparing against NAPI budget (64, unless you have busy poll enabled with
+> >>a different batch size). Say you start with empty ring and your HW rings
+> >>are sized to 1k but there was only 512 AF_XDP descriptors ready for Tx.
+> >>You produced all of them successfully to ring and you return 512 up to
+> >>i40e_napi_poll.
 > >
-> >OK, sure. I used pahole and asked it to reorganize the struct members,
-> >which saves 24 bytes.
-> 
-> Hi Joe, thanks for your patches,
-> 
-> Saving 24 bytes is admirable, but these structures are generally optimized
-> in access pattern order (most used at the top) and not so much for "packing
-> efficiency" especially since it has that alignment directive at the bottom
-> which causes each struct to start at it's own cacheline anyway.
-> 
-> 
+> >Good point, my bad.
 > >
-> >I'll update this commit to include the following reorganization in the v2 of
-> >this set:
+> >I've reworked this for the v2 and have given i40e_clean_tx_irq,
+> >and i40e_clean_xdp_tx_irq an out parameter which will record the number
+> >TXes cleaned.
 > >
-> >$ pahole -R -C i40e_q_vector i40e.ko
+> >I tweaked i40e_xmit_zc to return the number of packets (nb_pkts) and moved
+> >the boolean to check if that's under the "budget"
+> >(I40E_DESC_UNUSED(tx_ring)) into i40e_clean_xdp_tx_irq.
 > >
-> >struct i40e_q_vector {
-> >	struct i40e_vsi *          vsi;                  /*     0     8 */
-> >	u16                        v_idx;                /*     8     2 */
-> >	u16                        reg_idx;              /*    10     2 */
-> >	u8                         num_ringpairs;        /*    12     1 */
-> >	u8                         itr_countdown;        /*    13     1 */
-> >	bool                       arm_wb_state;         /*    14     1 */
-> >
-> >	/* XXX 1 byte hole, try to pack */
-> >
-> >	struct napi_struct         napi;                 /*    16   400 */
-> >	/* --- cacheline 6 boundary (384 bytes) was 32 bytes ago --- */
-> >	struct i40e_ring_container rx;                   /*   416    32 */
-> >	/* --- cacheline 7 boundary (448 bytes) --- */
-> >	struct i40e_ring_container tx;                   /*   448    32 */
-> >	cpumask_t                  affinity_mask;        /*   480    24 */
-> >	struct irq_affinity_notify affinity_notify;      /*   504    56 */
-> >	/* --- cacheline 8 boundary (512 bytes) was 48 bytes ago --- */
-> >	struct callback_head       rcu;                  /*   560    16 */
-> >	/* --- cacheline 9 boundary (576 bytes) --- */
-> >	char                       name[32];             /*   576    32 */
-> >
-> >	/* XXX 4 bytes hole, try to pack */
-> >
-> >	int                        irq_num;              /*   612     4 */
+> >I think that might solve the issues you've described.
 > 
-> The right spot for this debug item is at the end of the struct, so that part
-> is good.
+> Please don't change the flow of this function, transmit clean ups are so
+> cheap that we don't bother counting them or limiting them beyond a maximum
+> (so they don't clean forever)
 > 
-> >
-> >	/* size: 616, cachelines: 10, members: 14 */
-> >	/* sum members: 611, holes: 2, sum holes: 5 */
-> >	/* last cacheline: 40 bytes */
-> >};   /* saved 24 bytes! */
+> Basically transmits should not be counted when exiting NAPI, besides that we
+> did "at least one". The only thing that matters to the budget is that we
+> "finished" transmit cleanup or not, which would make sure we rescheduled
+> napi if we weren't finished cleaning (for instance on a 8160 entry tx ring)
+> transmits.
 > 
-> I'd prefer it if you don't do two things at once in a single patch (add
-> members / reorganize).
+> I'd much rather you kept this series to a simple return count of tx cleaned
+> in "out" as you've said you'd do in v2, and then use that data *only* in the
+> context of the new trace event.
 > 
-> I know Maciej said this is a mess and I kind of agree with him, but I'm not
-> sure it's a priority for your patch set to fix it now, especially since
-> you're trying to add a debugging assist, and not performance tuning the
-> code.
-> 
-> If you're really wanting to reorganize these structs I'd prefer a bit more
-> diligent effort to prove no inadvertent side effects (like maybe by turning
-> up the interrupt rate and looking at perf data while receiving 512 byte
-> packets. The rate should remain the same (or better) and the number of cache
-> misses on these structs should remain roughly the same. Maybe a seperate
-> patch series?
+> That way you're not changing the flow and introducing tough to debug issues
+> in the hot path.
 
-I honestly did think that reorganizing the struct was probably out of scope
-of this change, so if you agree so I'll drop this change from the v2 and
-keep the original which adds irq_num to the end of the struct.
+In the v2 I've been hacking on I've added out params to i40e_clean_tx_irq and
+i40e_clean_xdp_tx_irq, but I avoided adding an out param in i40e_xmit_zc,
+since lifting the boolean out seemed pretty straightforward.
+
+I'll drop that though in favor of an out param in i40e_xmit_zc, as well, to
+avoid changing the flow of the code.
+
+Thanks for taking a look.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
