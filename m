@@ -1,72 +1,179 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 011795F5123
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Oct 2022 10:46:03 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFDEE5F528D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Oct 2022 12:27:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E855340524;
-	Wed,  5 Oct 2022 08:46:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E855340524
+	by smtp1.osuosl.org (Postfix) with ESMTP id D2F6882F0F;
+	Wed,  5 Oct 2022 10:27:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2F6882F0F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1664959561;
-	bh=xp7u97H0LRASF87+yHRB0/BfPO0x/Rreyqw2j9siDug=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1664965672;
+	bh=6MS6JU1tAGlYliUXvDRTWEqCGujnsxIac65TErSqO3M=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0rvQqx2nRbjqCko53z3fY3GtR+YEvmkMJBnjiYF2qaoEN8owabJKDxWmi8dLjc10p
-	 7J23XtMkEbHu3dYH9lD8qwTNIW82rTHAg4oDIE5mEOPIF77WwLGFQeLrKo/Ui8/R+r
-	 Ivgvw8uXWddnkfZyhmKUURW0ZWFzVn9FDSM6zUTa24p93LQ4z0Gjj8CPLUZ83OfXIp
-	 GP5CewrJAvQDOZXEW2j7V28DFKHE2qYuxbdt45p188RZa/YJl2S7g6fiuRhhyn3U8i
-	 ppK4tvwOjGwVrqN1Z7XunB2JelrM5bplHMIBCyHLiMMv4zL3g5w9ShOHhcxbB3Rpk3
-	 1ex2M1rjgntLg==
+	b=SrpyJgTu8922peqFJ+rGT8Xi1WMN02dEKG2Im39carH9ZoSs6d+SMi8WVrASh5pyE
+	 Inw8OPqLiRvvGtXOnvXiWZVt/bswHFqa9OpwMGfOrMvJAq6KKPygw5WuUVlK9vWNyX
+	 qY/23WIZZOKq/LIkTM9eTQMgZJwIZwgXzI62ooR6I7bcAv+0Hd9PyOJPHPBXDb0Upo
+	 dbloCqU1jpKMyNP1AtltSEfcU0Xs+jQa24LdweXFOFYeZIOi98COtVqmiQYWV8HcsC
+	 VxORDkB/Bw0dZti3aDiTxFj4NqlYtSjXvZj+fUAKYB9R/H0Ny8+B2I2BqTqNmLcq59
+	 bBfJsC1fTfHkA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CEYYkG318Irh; Wed,  5 Oct 2022 08:46:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Mk5lj_hlm3mo; Wed,  5 Oct 2022 10:27:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7D2324016D;
-	Wed,  5 Oct 2022 08:45:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D2324016D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8CAB08186E;
+	Wed,  5 Oct 2022 10:27:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8CAB08186E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9005A1BF422
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 08:45:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A4DAC1BF361
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 10:27:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 69555416B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 08:45:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69555416B5
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7CBD6402D1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 10:27:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7CBD6402D1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e_Ru-z7V54l3 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Oct 2022 08:45:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5764841725
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5764841725
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 08:45:52 +0000 (UTC)
-Received: from [141.14.12.24] (g024.RadioFreeInternet.molgen.mpg.de
- [141.14.12.24])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5E18B61EA192D;
- Wed,  5 Oct 2022 10:45:49 +0200 (CEST)
-Message-ID: <8ad4099c-d6e8-bc83-2708-a01181e024cc@molgen.mpg.de>
-Date: Wed, 5 Oct 2022 10:45:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Content-Language: en-US
+ with ESMTP id lbe6jQ1665am for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Oct 2022 10:27:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C38740287
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1C38740287
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Oct 2022 10:27:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10490"; a="389418345"
+X-IronPort-AV: E=Sophos;i="5.95,159,1661842800"; d="scan'208";a="389418345"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Oct 2022 03:27:44 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10490"; a="575365143"
+X-IronPort-AV: E=Sophos;i="5.95,159,1661842800"; d="scan'208";a="575365143"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga003.jf.intel.com with ESMTP; 05 Oct 2022 03:27:43 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Wed, 5 Oct 2022 03:27:43 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Wed, 5 Oct 2022 03:27:42 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Wed, 5 Oct 2022 03:27:42 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.42) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Wed, 5 Oct 2022 03:27:42 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Vk8+5AEzJanCzTwc91U4RPKMDfNdi8ipJM3nS78kxmrMRuO1/XS7JT495KqGcjFdb7nkQfplLPimbvHRmeDOKitclTt4NBsJMfVHvSueeFBlIJcujNVd86HdshcYcCQ5g+RDFT0+hSnw/mIAj+tUTqfUxRHWiJkp7cshUHlhqOZ4CDx80bq34xqC4xXSlaF+XKJoCG5yRKgZBhYTYfrnUx5fHgwRbWsvEz5I1xKrWjGNoWtDwMs3h7ZyfsTwDLTkxPt+dBkIzeWCmBUdZFuAqi4GEa66hKwkXDuiJayYVGgHytwur4UQWYB25RmEJclu0lcyuWmF15XxcAZhZmWL9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iL6wlWh0ZvJs0btMI0NgnmMLKRQuU7w4z4ei0z38BUA=;
+ b=MnBcUIlkfGO//z6KXSj5CxAmwb5Z7frg9HHOzcK3Fg5rsyzXMKzS48/S/ZD/b4/2EQEeu4Nccmjfgwljw7vH3ex0doZbkdnvBy3uYFJmw9a13iVFYRRM6irwr8oexCyQ+8u+cDFMVrnZzSxLzKvgbZmhbFlqKewkJ6ozZ7XPNVK7KxHMiHNlLSK59MocbBkvr7zTPtDuv/0vNU7H6tLtEL060OvK4Tv0Lyn+2HW+UNWvxHAqZb6bO0T4nxmZHHTpNQToFn8isMvnqyBVMsuIj/o2diHJByd7VFEZ9YtuqYEob/vsJV75iSVYpS9okW+V0m6hG6ND/ySl/aSzePuZVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ IA1PR11MB6097.namprd11.prod.outlook.com (2603:10b6:208:3d7::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.28; Wed, 5 Oct
+ 2022 10:27:41 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::6ae9:91fd:f3e0:7923]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::6ae9:91fd:f3e0:7923%4]) with mapi id 15.20.5676.028; Wed, 5 Oct 2022
+ 10:27:41 +0000
+Date: Wed, 5 Oct 2022 12:27:30 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: Joe Damato <jdamato@fastly.com>
+Message-ID: <Yz1cEtPLzbPkBCtV@boxer>
 References: <1664958703-4224-1-git-send-email-jdamato@fastly.com>
- <1664958703-4224-3-git-send-email-jdamato@fastly.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <1664958703-4224-3-git-send-email-jdamato@fastly.com>
-Subject: Re: [Intel-wired-lan] [next-queue 2/3] i40e: i40e_clean_tx_irq
- returns work done
+ <1664958703-4224-4-git-send-email-jdamato@fastly.com>
+Content-Disposition: inline
+In-Reply-To: <1664958703-4224-4-git-send-email-jdamato@fastly.com>
+X-ClientProxiedBy: FR0P281CA0137.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:96::13) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|IA1PR11MB6097:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2ed8a085-8886-4aec-7b35-08daa6bc3b74
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: mh+DacG9LKmQDXPh/4+z1xowCVnyhcFE0HH3tvpZVtg+0xUSB1Cry+d6zNm3n2fRZwovqsvggeN5ijO8t+CGza4BHFeDin6maEupxMtbE6ab1GekRGc8Cb1Ahw9rvAYS15qFn1d7AAKQmWUC4RnqGgBgizrglYjOjoKuH07zj9xdgLBh/jCMulCxuCCc34X2fGDfPjF0n8RUDg92jZAK+tzJfbnNRUTgafIvrDt6tjcnEAmxK0uUgbvWpHgB3/CwLejVahNSa4k/Y3XYX3OgGtw4z8ein0EKPLNoJqwlo1fNOz3xJWuM1FE/7HQHeZNL9qI8xADzCOmnpla9QfWCFuoKWT6l8tr7uN1c12YmhetWSVSz7E72FrAVI9Cjk/xNq91DiXH04fhEmpyJGqI+06KpLN97G+eAMK9XUzKeyUgIhadqifVCUyQ6vBxz/UA41gpIwE/dS+u0THpxLk7mn2MiNn4szTmk7pvalRTYOWQu4qTGTX+2ZE566RLOtXFTRn8ZNtnhd1OIkBuuMRjnhuPpL9RFazCrKvbdXQmblmTmZZXmTgFD9vVVyNUzeixFP/Pronx/56Xsw078egshGQ4VkFPYdiK9Doc9gH2SxNn0KBVZ9+QJM038Te30w6At4ogZHLq5JC/KGRM/IWXHE5Nxyz1lrtG1ySZpykyBeS3yhH9RcYjX3lO2OZg80IzemWYN/RUuh+Lzo5QR8lVAbQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(7916004)(39860400002)(376002)(396003)(366004)(136003)(346002)(451199015)(66946007)(66476007)(41300700001)(83380400001)(66556008)(8676002)(316002)(478600001)(6916009)(4326008)(8936002)(107886003)(6666004)(86362001)(6506007)(26005)(9686003)(6512007)(5660300002)(186003)(33716001)(82960400001)(2906002)(38100700002)(6486002)(44832011);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vCyefIB8v6g/Q3bEm+31itMHGHpQz3aDLz8vqnu9mxKiRJqlGU3jKyww0opQ?=
+ =?us-ascii?Q?poQk4yIwDZqroKAvUJ6m52C9jYUYm/wJdlavqH1r+xtHNVuaa2kSQX478wIN?=
+ =?us-ascii?Q?rmzpk5mQ6o2ReTWxikOkxqVNaCk0FKVgRsp3nNOFy7mIu1xUvEDJyH0HtB5q?=
+ =?us-ascii?Q?m8r7Mvca2iAPT2Q1b9mnvaRllZggqhk03B4at7u3NO0LOlffbePvLgDOL5A6?=
+ =?us-ascii?Q?YpzuRbgwjz8o8IWnC1zdusga3yQZrUgZ6ydramVkmqJoWJfLaVt/3sgu7F+k?=
+ =?us-ascii?Q?ndrW7WSEglEdPnD7vUzjg1RtA4Kpu/V3rhGisLo8DQ9TOEVbU+ur3GH4PPER?=
+ =?us-ascii?Q?R885M9NtmsvVDoFMHLboAul8XSjGNGT7YMPcX27kAKDar6SVPgEryRCANm55?=
+ =?us-ascii?Q?KjawisXS8bITBVjWKtJdTNpEAiDNNyNMzmU6X8FW45wDHgO46VriWynWT891?=
+ =?us-ascii?Q?XSqAadmUsj5JN+PEy1hIZxZ7qF3Kqc+8L/PbIwNxM/02DehhPLHlYbsZOMx/?=
+ =?us-ascii?Q?b+g1SvMJTZbOlOxZnNdV0orfNJwe0uZTCMcJVwG0+1DbHQGEfFmXJDH2MJLP?=
+ =?us-ascii?Q?7BR7+YhxWYAClZTU6+f6KfaeJwe5Tx8wyWstG5MTO4Wj0MS6NOfmDYnm11ba?=
+ =?us-ascii?Q?6eefIFdtppBsQT9xqrvFVgykaIJyyFzLhKQWkZzhKOybKLMlus215rj9QJJw?=
+ =?us-ascii?Q?Ls5XjAy42ymrrkcayx6DYUBD5UypLYAiY4u9KfFuY1gc+11KqsOqwt8UqURP?=
+ =?us-ascii?Q?mqUtKvhPyfUah3FnTi2A+gPgrfsblZ0vTm77XWduIK62x348FPVGSkYZD9Ri?=
+ =?us-ascii?Q?gMmHdd5kZg+DVGkBYJGT2UPoWYwYkbLG8b87evTue75mCtl9LS3C7bJ9Kr+h?=
+ =?us-ascii?Q?MwWYQMnwbz5+PAoQduODSXGjw5cWZHOgxGj0yy5zy/pyal3/HqfV0/pHmujo?=
+ =?us-ascii?Q?4n3vM2+NSYcfW4EwZTIOHYT3V84bST1R22mNTMAANnr4qiRyd1fzsXalBGa6?=
+ =?us-ascii?Q?NUn59uFOS0GVNjtKPbrQd7YdK0QgtYf/spLmIQySkvORmNZLN55nM4W40lxu?=
+ =?us-ascii?Q?xvTWBVfVAflINEQ5h/D2DDnGU/CwXzTGZm085cn7ScgABqit6lOTVivNCW6V?=
+ =?us-ascii?Q?TFbp6utCsiTw3q2/wKbxI5BQ7ek+RiX1iYadNbNQRVGWzqWY/hLZgIcrtxq3?=
+ =?us-ascii?Q?ve+w+etnH+Td28LINlgOdH6R924R5DXTx2IyJ7FBUvXz1IImAcM3rRXoKYH3?=
+ =?us-ascii?Q?AG3/mqlKgQrGMzUuHbV7DiW+RXMhKvPZXhcH6geUqn43uqWKmOwIlYAqkcXc?=
+ =?us-ascii?Q?iPs6kDYcbagPFVwdAG3kK9+yGFwwdnd++/saWTHH1v9VgY1ZRZLfU4Q7xlkc?=
+ =?us-ascii?Q?qG+jxopjgHRZWNDZL5EJD5LRLfkDwydBfxzoYWV5MDT12qO9xg3p9/5jvO+Q?=
+ =?us-ascii?Q?ZbV9eWt3nAgqGQvDKQLjDkJlUVUW1TxO8cT/d8mZ76mfJzA0jga4d+ubxDlz?=
+ =?us-ascii?Q?ZWmMMRhgoBKhkK+gCXJMFHO8wabvuIsS1L+kx+TmDW/PZxI2NXznAxAS/tlA?=
+ =?us-ascii?Q?+nHDiyuDywOSLA4wGhDy5VnPtAoqJRghmuQVetQsLXzuXThKho3G14g+aYK1?=
+ =?us-ascii?Q?Ig=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ed8a085-8886-4aec-7b35-08daa6bc3b74
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Oct 2022 10:27:40.9304 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: RR1K9+d3y52bCTAIj+DSGXgPw03byH6TEV5ZETMmlRURXaAdV3sQtVEeEcBqokjXPKwpKMjXp6qKeI8MsaSUf0Oqe/n7i9C4zNng6c1sM2E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6097
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1664965665; x=1696501665;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=yhvj4iauZC2g7vyGiVueCm/BtGPavzt5JF3xNT5HlSU=;
+ b=k/VK7XwYq6iyOWCrt+tjRnLBr+K8+GGa4KJOZACCMgI/DIcduPCEMNr5
+ nKG1bgHydtFLDt+ZUHTOBT6+CJTOZDvOfl545ESbsQtlZsEEgqmsIaBrq
+ xsqujMz/krluJS+iEaBSH++9F0ZkDqc5ovakc7JuU8mh0txcQTi1ztMge
+ yQM4jf1yGKsGGH+f7lYpvUFJD73djaDU9gVNP7s6iTkwJx73ir5UYzyjl
+ 8izCYhKphwb/hrBUINtfNY7t+8nruyc9aw8ZwxkZy+38tLGr5UvtwbLiM
+ XzDZg54J+Qp1qeXmEjkLxmhQHzpDgKz/JvzX2ZQcYs/COtOihB0/AnT3j
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=k/VK7XwY
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [next-queue 3/3] i40e: Add i40e_napi_poll
+ tracepoint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,176 +186,154 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- davem@davemloft.net, kuba@kernel.org
+Cc: netdev@vger.kernel.org, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Joe,
+On Wed, Oct 05, 2022 at 01:31:43AM -0700, Joe Damato wrote:
 
+Hi Joe,
 
-Thank you for the patch.
+> Add a tracepoint for i40e_napi_poll that allows users to get detailed
+> information about the amount of work done. This information can help users
+> better tune the correct NAPI parameters (like weight and budget), as well
+> as debug NIC settings like rx-usecs and tx-usecs, etc.
+> 
+> An example of the output from this tracepoint:
+> 
+> [...snip...]
+> 
+> 1029.268 :0/0 i40e:i40e_napi_poll(i40e_napi_poll on dev eth1 q
+> i40e-eth1-TxRx-30 irq 172 irq_mask
+> 00000000,00000000,00000000,00000010,00000000,00000000 curr_cpu 68 budget
+> 64 bpr 64 work_done 0 tx_work_done 2 clean_complete 1 tx_clean_complete
+> 1)
+> 	i40e_napi_poll ([i40e])
+> 	i40e_napi_poll ([i40e])
+> 	__napi_poll ([kernel.kallsyms])
+> 	net_rx_action ([kernel.kallsyms])
+> 	__do_softirq ([kernel.kallsyms])
+> 	common_interrupt ([kernel.kallsyms])
+> 	asm_common_interrupt ([kernel.kallsyms])
+> 	intel_idle_irq ([kernel.kallsyms])
+> 	cpuidle_enter_state ([kernel.kallsyms])
+> 	cpuidle_enter ([kernel.kallsyms])
+> 	do_idle ([kernel.kallsyms])
+> 	cpu_startup_entry ([kernel.kallsyms])
+> 	[0x243fd8] ([kernel.kallsyms])
+> 	secondary_startup_64_no_verify ([kernel.kallsyms])
 
-Am 05.10.22 um 10:31 schrieb Joe Damato:
-> Adjust i40e_clean_tx_irq to return the actual number of packets cleaned
-> and adjust the logic in i40e_napi_poll to check this value.
+maybe you could also include how to configure this tracepoint for future
+readers?
 
-Nit for the summary/title:
-
-i40e: Return number of cleaned packets in i40e_clean_tx_irq
-
+> 
 > Signed-off-by: Joe Damato <jdamato@fastly.com>
 > ---
->   drivers/net/ethernet/intel/i40e/i40e_txrx.c | 24 +++++++++++++-----------
->   drivers/net/ethernet/intel/i40e/i40e_xsk.c  | 12 ++++++------
->   drivers/net/ethernet/intel/i40e/i40e_xsk.h  |  2 +-
->   3 files changed, 20 insertions(+), 18 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_trace.h | 50 ++++++++++++++++++++++++++++
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c  |  3 ++
+>  2 files changed, 53 insertions(+)
 > 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_trace.h b/drivers/net/ethernet/intel/i40e/i40e_trace.h
+> index b5b1229..779d046 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_trace.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_trace.h
+> @@ -55,6 +55,56 @@
+>   * being built from shared code.
+>   */
+>  
+> +#define NO_DEV "(i40e no_device)"
+> +
+> +TRACE_EVENT(i40e_napi_poll,
+> +
+> +	TP_PROTO(struct napi_struct *napi, struct i40e_q_vector *q, int budget,
+> +		 int budget_per_ring, int work_done, int tx_work_done, bool clean_complete,
+> +		 bool tx_clean_complete),
+> +
+> +	TP_ARGS(napi, q, budget, budget_per_ring, work_done, tx_work_done,
+> +		clean_complete, tx_clean_complete),
+> +
+> +	TP_STRUCT__entry(
+> +		__field(int, budget)
+> +		__field(int, budget_per_ring)
+> +		__field(int, work_done)
+> +		__field(int, tx_work_done)
+> +		__field(int, clean_complete)
+> +		__field(int, tx_clean_complete)
+> +		__field(int, irq_num)
+> +		__field(int, curr_cpu)
+> +		__string(qname, q->name)
+> +		__string(dev_name, napi->dev ? napi->dev->name : NO_DEV)
+> +		__bitmask(irq_affinity,	nr_cpumask_bits)
+> +	),
+> +
+> +	TP_fast_assign(
+> +		__entry->budget = budget;
+> +		__entry->budget_per_ring = budget_per_ring;
+> +		__entry->work_done = work_done;
+
+What if rx clean routines failed to do allocation of new rx bufs? then
+this would be misinterpreted. maybe we should change the API to
+
+static bool
+i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+		  unsigned int *processed_pkts);
+
+so you would return failure and at the end do
+	*processed_pkts = total_rx_packets;
+
+then also i would change the naming of tracepoint entry. I'm not a native
+english speaker but having 'done' within the variable name suggests to me
+that it is rather a boolean. what about something like 'rx_cleaned_pkts'
+instead?
+
+Generally I think this is useful, personally I was in need of tracing the
+next_to_clean and next_to_use ring indexes a lot, but that is probably out
+of the scope in here.
+
+> +		__entry->tx_work_done = tx_work_done;
+> +		__entry->clean_complete = clean_complete;
+> +		__entry->tx_clean_complete = tx_clean_complete;
+> +		__entry->irq_num = q->irq_num;
+> +		__entry->curr_cpu = get_cpu();
+> +		__assign_str(qname, q->name);
+> +		__assign_str(dev_name, napi->dev ? napi->dev->name : NO_DEV);
+> +		__assign_bitmask(irq_affinity, cpumask_bits(&q->affinity_mask),
+> +				 nr_cpumask_bits);
+> +	),
+> +
+> +	TP_printk("i40e_napi_poll on dev %s q %s irq %d irq_mask %s curr_cpu %d "
+> +		  "budget %d bpr %d work_done %d tx_work_done %d "
+> +		  "clean_complete %d tx_clean_complete %d",
+> +		__get_str(dev_name), __get_str(qname), __entry->irq_num,
+> +		__get_bitmask(irq_affinity), __entry->curr_cpu, __entry->budget,
+> +		__entry->budget_per_ring, __entry->work_done,
+> +		__entry->tx_work_done,
+> +		__entry->clean_complete, __entry->tx_clean_complete)
+> +);
+> +
+>  /* Events related to a vsi & ring */
+>  DECLARE_EVENT_CLASS(
+>  	i40e_tx_template,
 > diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index b97c95f..ed88309 100644
+> index ed88309..8b72f1b 100644
 > --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
 > +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -924,10 +924,10 @@ void i40e_detect_recover_hung(struct i40e_vsi *vsi)
->    * @tx_ring: Tx ring to clean
->    * @napi_budget: Used to determine if we are in netpoll
->    *
-> - * Returns true if there's any budget left (e.g. the clean is finished)
-> + * Returns the number of packets cleaned
->    **/
-> -static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
-> -			      struct i40e_ring *tx_ring, int napi_budget)
-> +static int i40e_clean_tx_irq(struct i40e_vsi *vsi,
-> +			     struct i40e_ring *tx_ring, int napi_budget)
->   {
->   	int i = tx_ring->next_to_clean;
->   	struct i40e_tx_buffer *tx_buf;
-> @@ -1026,7 +1026,7 @@ static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
->   	i40e_arm_wb(tx_ring, vsi, budget);
->   
->   	if (ring_is_xdp(tx_ring))
-> -		return !!budget;
-> +		return total_packets;
->   
->   	/* notify netdev of completed buffers */
->   	netdev_tx_completed_queue(txring_txq(tx_ring),
-> @@ -1048,7 +1048,7 @@ static bool i40e_clean_tx_irq(struct i40e_vsi *vsi,
->   		}
->   	}
->   
-> -	return !!budget;
-> +	return total_packets;
->   }
->   
->   /**
-> @@ -2689,10 +2689,12 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
->   			       container_of(napi, struct i40e_q_vector, napi);
->   	struct i40e_vsi *vsi = q_vector->vsi;
->   	struct i40e_ring *ring;
-> +	bool tx_clean_complete = true;
->   	bool clean_complete = true;
->   	bool arm_wb = false;
->   	int budget_per_ring;
->   	int work_done = 0;
-> +	int tx_wd = 0;
-
-Is it necessary to initialize the variable?
-
-
-Kind regards,
-
-Paul
-
->   
->   	if (test_bit(__I40E_VSI_DOWN, vsi->state)) {
->   		napi_complete(napi);
-> @@ -2703,12 +2705,12 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
->   	 * budget and be more aggressive about cleaning up the Tx descriptors.
->   	 */
->   	i40e_for_each_ring(ring, q_vector->tx) {
-> -		bool wd = ring->xsk_pool ?
-> -			  i40e_clean_xdp_tx_irq(vsi, ring) :
-> -			  i40e_clean_tx_irq(vsi, ring, budget);
-> +		tx_wd = ring->xsk_pool ?
-> +			i40e_clean_xdp_tx_irq(vsi, ring) :
-> +			i40e_clean_tx_irq(vsi, ring, budget);
->   
-> -		if (!wd) {
-> -			clean_complete = false;
-> +		if (tx_wd >= budget) {
-> +			tx_clean_complete = false;
->   			continue;
->   		}
->   		arm_wb |= ring->arm_wb;
-> @@ -2742,7 +2744,7 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
->   	}
->   
->   	/* If work not completed, return budget and polling will return */
-> -	if (!clean_complete) {
-> +	if (!clean_complete || !tx_clean_complete) {
->   		int cpu_id = smp_processor_id();
->   
->   		/* It is possible that the interrupt affinity has changed but,
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> index 790aaeff..925682c 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> @@ -531,9 +531,9 @@ static void i40e_set_rs_bit(struct i40e_ring *xdp_ring)
->    * @xdp_ring: XDP Tx ring
->    * @budget: NAPI budget
->    *
-> - * Returns true if the work is finished.
-> + * Returns number of packets cleaned
->    **/
-> -static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
-> +static int i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   {
->   	struct xdp_desc *descs = xdp_ring->xsk_pool->tx_descs;
->   	u32 nb_pkts, nb_processed = 0;
-> @@ -541,7 +541,7 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   
->   	nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, budget);
->   	if (!nb_pkts)
-> -		return true;
-> +		return 0;
->   
->   	if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
->   		nb_processed = xdp_ring->count - xdp_ring->next_to_use;
-> @@ -558,7 +558,7 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   
->   	i40e_update_tx_stats(xdp_ring, nb_pkts, total_bytes);
->   
-> -	return nb_pkts < budget;
-> +	return nb_pkts;
->   }
->   
->   /**
-> @@ -582,9 +582,9 @@ static void i40e_clean_xdp_tx_buffer(struct i40e_ring *tx_ring,
->    * @vsi: Current VSI
->    * @tx_ring: XDP Tx ring
->    *
-> - * Returns true if cleanup/tranmission is done.
-> + * Returns number of packets cleaned
->    **/
-> -bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring)
-> +int i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring)
->   {
->   	struct xsk_buff_pool *bp = tx_ring->xsk_pool;
->   	u32 i, completed_frames, xsk_frames = 0;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.h b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> index 821df24..4e810c2 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> @@ -30,7 +30,7 @@ int i40e_xsk_pool_setup(struct i40e_vsi *vsi, struct xsk_buff_pool *pool,
->   bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 cleaned_count);
->   int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget);
->   
-> -bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring);
-> +int i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring);
->   int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
->   int i40e_realloc_rx_bi_zc(struct i40e_vsi *vsi, bool zc);
->   void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring);
+> @@ -2743,6 +2743,9 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
+>  			clean_complete = false;
+>  	}
+>  
+> +	trace_i40e_napi_poll(napi, q_vector, budget, budget_per_ring, work_done, tx_wd,
+> +			     clean_complete, tx_clean_complete);
+> +
+>  	/* If work not completed, return budget and polling will return */
+>  	if (!clean_complete || !tx_clean_complete) {
+>  		int cpu_id = smp_processor_id();
+> -- 
+> 2.7.4
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
