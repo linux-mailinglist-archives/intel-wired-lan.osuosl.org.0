@@ -1,181 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 770EE5FAFCD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Oct 2022 11:59:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06A215FB03C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Oct 2022 12:14:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5694440B5A;
-	Tue, 11 Oct 2022 09:59:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5694440B5A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4D49960FE8;
+	Tue, 11 Oct 2022 10:14:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D49960FE8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1665482360;
-	bh=LB/d3Q7amEN3/AnQ13IOrD6wUpcwcaBmG2zKEdHzWec=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=3cudAlM3Q4pnH82ipQDr8WdgT3N62jgWP65+/DgbIED2zA4k2H8zsn5NO0DPjWKuv
-	 u6QvEcsiJzlhICFOQ9uXiPExFVR7QH4DK6yKnwdg8eokIBa4re7WJbEeWiuYLw3263
-	 9r8sX3B3mqkshca6GMkjUUTXnMKr0jLEETpavwvKrxZrTFqWjnwzWFTCFqGxdw/AAx
-	 VbpNORtOyo/5rBEj5HQ+99dTQtqZiuU8URwbrqV8cX6GalWYH3i3iFWj6FJ4VvTR5J
-	 hKnYnJ+YojIfzidbQW0yFGm1/uhIKtT2EAOwDgVy54UIScI8COKvPF3b+QXJcrM1KF
-	 JAypIKL40qmAg==
+	s=default; t=1665483287;
+	bh=LdHFugMkih4ksSwdu8reBqHRuByavJUrcbVPNSLlEg0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=sSroevEvxmWX7VxSfAzsk2qCRW7Wkdzr6PqqlWNu7n3nHrrGTSU2EVquCIZHOdlin
+	 I2cBDGq/390mUEToLSquIBYB3G4Z18RbiOGvq9jCoh062iVUTH3Lzqss1EFsiGxVqN
+	 PMBFtNuwBozecRwxxxeeoybDM4Mk9pZJBcHMRL3Q/oIg/uXxl4ru2vt24hrnp6ApwJ
+	 k5FynM1rVkoMq2VHilLMfGDhhFE7fzly/9G/pUkrE5zCo46bdm0L0XDwlar8Tn1MOJ
+	 p9lcjhwlSIZL4/Z52XLO9r2y/psodo57dftwGfQe9/YON+d5pZ9jKwRgcixnKAu0Ct
+	 eyvh0a6xG4DfQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fG2jHiOxBhzS; Tue, 11 Oct 2022 09:59:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fSzVXPbYmU3m; Tue, 11 Oct 2022 10:14:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3791E4017B;
-	Tue, 11 Oct 2022 09:59:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3791E4017B
+	by smtp3.osuosl.org (Postfix) with ESMTP id F2B9F60FDE;
+	Tue, 11 Oct 2022 10:14:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F2B9F60FDE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9717B1BF20D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 09:59:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B843A1BF299
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 10:14:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6E55140B6D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 09:59:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E55140B6D
+ by smtp4.osuosl.org (Postfix) with ESMTP id 86EC6417D2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 10:14:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 86EC6417D2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pxYReXV2X6k1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Oct 2022 09:59:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jU5yQO-zKxgV for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Oct 2022 10:14:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3BA5440B69
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3BA5440B69
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 09:59:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="368626484"
-X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; d="scan'208";a="368626484"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2022 02:59:11 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 162AC41758
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 162AC41758
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Oct 2022 10:14:38 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="306089258"
+X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; d="scan'208";a="306089258"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Oct 2022 03:14:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="626304327"
-X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; d="scan'208";a="626304327"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga002.jf.intel.com with ESMTP; 11 Oct 2022 02:59:11 -0700
-Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 11 Oct 2022 02:59:10 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Tue, 11 Oct 2022 02:59:10 -0700
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.45) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Tue, 11 Oct 2022 02:59:10 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=k+0utMBlXgdoJ4p1XgKap6HvTuk0w3ZSBrlKiWVVRDaTLl4tfS/e4sC2Kih44Zm34VKAsV+fs0jWEO2SXJtTlRxrMWHCh9OrwYIZaJ225AgOsfYVre/sEtuc+mSRTCH/2BlAN6+Z49+GVHD7j6Ud+ri15kZa7BSuzxUPq6uOwfDM5u4J7RgHBUZWLH8TBgyRhbKCCs3JSK8bCnIHFrOPStfmtKvnf+k7tG6/t9GHxax2lPk3Hn7NCvG7SF3R4or5cV2U12a/HuE9hRiFbENmDNotry4DjukWB0z7FkYH/8ng4XFxNMw0TolD+wGwKTiv1RSu9IT3gIaIbv5F+8Buaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=k0duFcUTuxreZ6mKaSg6ZyYb8rhcD2eTLKHZqliFiFs=;
- b=agGPDgke+aWkMKJ9yADcuUrvq6STNuaCEqM5ke66iGaQGg9c+alT8U2WnSy1gtjpM9D/Vt/b1ceNcEN75WugzXF6gliV+7fP0HZXYNkeWsLSIAGs5pK856cOeQ2NtYrqyWfRFxEYHLXeuScnzl9mf2x6Dz+tVOyferOIL6xSfj0SuRReHDwoo4Hg5RJijjuhkqqK1yP6nDqsE/X9RrEYyjCilAC+h8KI4O3wgJI+pX9WPfAUpblLPV1oRiyaCMw/3RSTzySUjaxlruZfdF8zCKhcsjOW50l3z9N/QWLxFbQAW6AUA0iheTug7Dbw2ajW2/deTRWVGuKKwPpDQ+vv5A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com (2603:10b6:8:38::14) by
- CH0PR11MB5362.namprd11.prod.outlook.com (2603:10b6:610:b9::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5676.28; Tue, 11 Oct 2022 09:59:09 +0000
-Received: from DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::bee8:7fe2:4402:6ab6]) by DM8PR11MB5621.namprd11.prod.outlook.com
- ([fe80::bee8:7fe2:4402:6ab6%3]) with mapi id 15.20.5709.015; Tue, 11 Oct 2022
- 09:59:09 +0000
-From: "Jankowski, Konrad0" <konrad0.jankowski@intel.com>
-To: "Sokolowski, Jan" <jan.sokolowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v2] ixgbevf: Add error
- messages on vlan error
-Thread-Index: AQHY2YECm1LBxK+CzkmKT1NWxek5za4I/RHQ
-Date: Tue, 11 Oct 2022 09:59:09 +0000
-Message-ID: <DM8PR11MB562167DDC8FEC108AC899E01AB239@DM8PR11MB5621.namprd11.prod.outlook.com>
-References: <20221006124408.15485-1-jan.sokolowski@intel.com>
-In-Reply-To: <20221006124408.15485-1-jan.sokolowski@intel.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.500.17
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM8PR11MB5621:EE_|CH0PR11MB5362:EE_
-x-ms-office365-filtering-correlation-id: 672261ea-ee23-4b1a-7f9c-08daab6f3dd2
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 0PK4+rNZIK5ykRmx9c+SJgR6yBDQWcYAoTmr1QsDWaM42D0xyQ8PyvJpJeDq09sa81S/SiK/Wm/joMiUdrWcHVY3XZHubsHYZo9hi+hF+0m8hI3Kt6LL3WonOXvA+Ei1OxAx/zk06CXG0EhoOzrJYy/T517rxPc2TdOdZf1ypYBGFTLlbJsCE8bgZqxtALxqoZNhLvlXUO3hBO9rNMm+pp22hs7V+J/5a9n8QbYOHsx2rcpBv14yeOigIAqXMTlnUOzk7MKThqPw9SMA1QQG5Oeh1GMjXPSlRijGkJmNvo1SVgZPVaf0/xtpoT21Jf7BbGJArDebqBaBfVwxql9WVmO9Opavg9iPtqaKf3B9ECo6DEDJ+YOc62tUynp2aF4Mr7gXD2K6L0mFAkTSnWBR595qXQC5g4X3CP9mfcZZJsDkChIvj/poABIicy6mpFZcGQa4/V7A8r9D2hfli2clUG5grAPqcHasLxdpws+lWVVyJngmYcyzbXxpxyCpdeDVNXWnJrkwApn1XvmLtbwyI0koH6ISJkUDjc+AAJ6mpqHoeAYz7h76lWKjgFwQruHfmZQoLbvI5OOt7IsPtP0ufi36WR0bE9Gt3qzDxhShB6x7FXYxhYI92+KfrlFbEJkjQmLIGprZnz11XfgqvUmvRCO8uqlY1OST1CiRGThwzXEx4qPYZTxmRvsV/an08+BNr8SHAsoKbPOZ9pb677coXB5H99Bct7tA4PEVPnLjv7A0UvIEc4J2AtsMLP4srLHfUHfZdFUk7/sLiIjIY7X+rQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM8PR11MB5621.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(39860400002)(366004)(376002)(396003)(346002)(136003)(451199015)(8936002)(38100700002)(38070700005)(186003)(15650500001)(4744005)(86362001)(122000001)(41300700001)(64756008)(26005)(9686003)(53546011)(82960400001)(7696005)(66476007)(5660300002)(316002)(478600001)(8676002)(6506007)(2906002)(52536014)(66946007)(71200400001)(110136005)(55016003)(66446008)(83380400001)(33656002)(66556008)(76116006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oic3EaL8mt3atCa75pzBMsDaKgKicfmwkPBpnmn+fVgNfj8Z4+6+40mOG52o?=
- =?us-ascii?Q?cCNPu0JO+W5Ns47pjObKFA7iyM8HT5QcDQRbdRLXDKSNfvfK1yM5v7+LauI8?=
- =?us-ascii?Q?RXwF6PhuHiaCMc1kJPduyxtSYmTwOUvkKPQdrYoUJ2Y1fxzehMeMchPkioN2?=
- =?us-ascii?Q?PPPVNw9xofw2CJut5RhGTDZdueU4L+ykg0K6v85+nS5GrHxDzUxBpIA2LVSY?=
- =?us-ascii?Q?j1BbrP4Dl94vvuNR5YGKFrno6axTfWizB31f2ApxrunBjLl6t2gDZEyyJr/d?=
- =?us-ascii?Q?6dc+o0V64GJqo46jeljWGCAzF0oQ6S40ybQp7Pdb+vM94dbBVy7zCCNM5yoz?=
- =?us-ascii?Q?PLiYo0FQ+GarUFSNzaowE/Qs283eL7MFi3/NGE1I9cByQ5UEi3XdcB1dSos4?=
- =?us-ascii?Q?tGj2sZN4D4fP1uTPVnpm4+WQ4XnLTkLRaoAj+7yYIkm/Z0aEMwhsXOGnSjzr?=
- =?us-ascii?Q?Wc7w9nK+ImEK1mNhWX+yR6QNHZqzaksHD8wmY1GfaQa3J0sz+3zZ6UItZdNm?=
- =?us-ascii?Q?bivTb1bXsML37vHW1KW5VjMPkzFFfvMV3PpZctrkswuvxTk/NiyMlvteV8Qn?=
- =?us-ascii?Q?oNSRGHDrq79SdjnytsfDZzwpn5dvU4JfC0+utbzQIpbidxbMXIHwHHelGFDi?=
- =?us-ascii?Q?qmLry9uB62xEPMjg3rZq46V9LNFkvDu4yo1XF9lpCFxSNVmk/iTDPi5sFAC4?=
- =?us-ascii?Q?8fHdgX70Srde5iC/KXP8kYWW+DrxO+RULP/tmwtxsZa/ZpwqxV5nEudYbbaG?=
- =?us-ascii?Q?4m9G1s536uRJOZ5ZQocLCtVfo5qlVge1Tfo6PVwFjw6ojy4D0SZWNSk98Nf2?=
- =?us-ascii?Q?P66kHTrnqs2RVxCmpQkoTRJQZ7l0t+mP34HUtH3fulmCEGSdlQVYrLyhzZcT?=
- =?us-ascii?Q?G3l2tC6Zweknn0nsy+aHkWW+9Ihoxs3ta9pnwSoXu4eR2r8lbHF+fMs8/2p3?=
- =?us-ascii?Q?xBy5+EEqWGIM9GVQxMlxZFxOuxvwL7iobKiT81rhNsE0dA1JhGqGln76Rqxa?=
- =?us-ascii?Q?xu/vthB2/EYkLJI7PZCWsdK+R11bkesDE/lXkj7GQzGn3FDIgXhZQcJSExxH?=
- =?us-ascii?Q?OEG8JBzkUTbwwGyBT3K2yMNDAPJxdI9Wf1xz92An1wFFMj3ciwhVuviseoEP?=
- =?us-ascii?Q?I2Nz3yTFg/lbrTUwx/KIoRdGwTnmBFuAOsdfxaehVf3BuM6ZPPisFAlW4iUD?=
- =?us-ascii?Q?dL1FSSmC3/X1NZ73NV5CafVTYooko1XT02ONbJD5wFzR0b/eYknxeSjNmpkH?=
- =?us-ascii?Q?AdRgTVFAnMXxFMheFkUpV4TlAJT4k1mlX4tPH5PjbftN/zGF61unwl/uVBkx?=
- =?us-ascii?Q?Kr7goVA3GXicxf3PwHe5BbOPv3RW4xy2O4+tP/3mD8jnopgjSmwh7EangbNq?=
- =?us-ascii?Q?WGq0kXP9WbUooZpu5qxQ+NvBT+Yyk0QFv0onu7u0R73BUowHHCu73DIrgVOn?=
- =?us-ascii?Q?SpSd5Ok/7BsSl6FdENzWhPOQvdIm/oNGc3R1rg5rSn9UVYzWlKfpWQxWrSLu?=
- =?us-ascii?Q?3kAonX8X0rtGTwiXIrL7fCEZS3xYAqzgKs4sL1fTvDGh5KXi5KsFJ2/XWANF?=
- =?us-ascii?Q?fSWWy4WDvXSrCBPkgpPvMYJKemiemC5BrYqV4r5ag9MwIDduypCIS01V1Mq5?=
- =?us-ascii?Q?iA=3D=3D?=
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="628640572"
+X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; d="scan'208";a="628640572"
+Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
+ by fmsmga007.fm.intel.com with ESMTP; 11 Oct 2022 03:14:36 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 11 Oct 2022 06:12:48 -0400
+Message-Id: <20221011101248.683540-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM8PR11MB5621.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 672261ea-ee23-4b1a-7f9c-08daab6f3dd2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Oct 2022 09:59:09.2802 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kFA/HYli9gY2SGUwdAOxo2l5nX/hxuBCpddDPeJd7ewCyYvYFy0jQxiTcRyGrvdYWNwH1+GyIqYtqBiFBjPgOl8nbUOLOWrDKzCuYcjoXAI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5362
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1665482352; x=1697018352;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=WKx/oPRykGnQ3TJRkOv4u8GheCjyxdPVDr8OOA7dvco=;
- b=jkDbRrItcW3pxU8ZXtWjSvLGZKAH05+/PRnxU97p3UVBgnT6+ZhvLkar
- ykJZsF+Z/L4/5SgVuo0SP5xKynt9YFqeUxs/O2mU+RT7ptGTDLk/Rwf9V
- W+0EATYROZYF1RzPJGjbjXiYTySV61PFyTub1x3VjZLMC2NKwiUU3Ni4v
- 43iUU62DsddftiQidzRVTfYVRduqKu1j85MTQNxVmnEJTw3uRPTp5GLJF
- 7zLcd1WQj27rC1zxBEGVITyHediLZPWur/aEULJq3vEtwdlks0mq8g7Fw
- WFyjOeB0HZjD3k/skJGiyoxV7yKdE1uyBiZsHAPCJ/R0AcR04NN6y5Kzs
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1665483279; x=1697019279;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=d76L674Y/Qr2GkFcm2heH2eSi2+o/HvgS+I/UfXtR9g=;
+ b=i1GDbXFuKZDAwbHIssw6RSwZHoR3zZARTfm4Iq7/n6e3mAf20rkNktXN
+ NknU0eFQWKoFHTlnmR1LpaIQPvqMQp/sJeHkgtq39fF9scjdEr3DNCKme
+ /LbaVjEdxjAOGXycOJNUPKEWFPb/RPTIoD/PB4Lcte1PGxwOwXW94/d3Z
+ ++BuPukooMi38a08B3jbCRzJxEuc+JSOQvbJG6Mt122ApFOb7weCH/xwD
+ sfYdH8KlqsfG1B4aUZbaFlrXn88AFc1cC3WQfgq1MT3ad7mBHFPTsdnEQ
+ Xk0vMAww6h0+yvmhcK95vyh21a9i5SbInOnPcKinGNKbP0PUy2xtZa+fR
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jkDbRrIt
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ixgbevf: Add error
- messages on vlan error
+ header.a=rsa-sha256 header.s=Intel header.b=i1GDbXFu
+Subject: [Intel-wired-lan] [PATCH net v6] i40e: Fix DMA mappings leak
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,41 +91,332 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Chandan <chandanx.rout@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Jan Sokolowski <jan.sokolowski@intel.com>
 
+During reallocation of RX buffers, new DMA mappings are created for
+those buffers.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Jan Sokolowski
-> Sent: Thursday, October 6, 2022 2:44 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH net-next v2] ixgbevf: Add error messages
-> on vlan error
-> 
-> From: "Jan Sokolowski" <jan.sokolowski@intel.com>
-> 
-> ixgbevf did not provide an error in dmesg if VLAN addition failed.
-> 
-> Add two descriptive failure messages in the kernel log.
-> 
-> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
-> ---
-> v2: Reworded commit message
->  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c   | 17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> index 2f12fbe229c1..f1e5809f4d22 100644
-> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> @@ -2044,12 +2044,16 @@ static int ixgbevf_vlan_rx_add_vid(struct
+steps for reproduction:
+while :
+do
+for ((i=0; i<=8160; i=i+32))
+do
+ethtool -G enp130s0f0 rx $i tx $i
+sleep 0.5
+ethtool -g enp130s0f0
+done
+done
 
-Tested-by: Konrad Jankowski <konrad0.jankowski@intel.com>
+This resulted in crash:
+i40e 0000:01:00.1: Unable to allocate memory for the Rx descriptor ring, size=65536
+Driver BUG
+WARNING: CPU: 0 PID: 4300 at net/core/xdp.c:141 xdp_rxq_info_unreg+0x43/0x50
+Call Trace:
+i40e_free_rx_resources+0x70/0x80 [i40e]
+i40e_set_ringparam+0x27c/0x800 [i40e]
+ethnl_set_rings+0x1b2/0x290
+genl_family_rcv_msg_doit.isra.15+0x10f/0x150
+genl_family_rcv_msg+0xb3/0x160
+? rings_fill_reply+0x1a0/0x1a0
+genl_rcv_msg+0x47/0x90
+? genl_family_rcv_msg+0x160/0x160
+netlink_rcv_skb+0x4c/0x120
+genl_rcv+0x24/0x40
+netlink_unicast+0x196/0x230
+netlink_sendmsg+0x204/0x3d0
+sock_sendmsg+0x4c/0x50
+__sys_sendto+0xee/0x160
+? handle_mm_fault+0xbe/0x1e0
+? syscall_trace_enter+0x1d3/0x2c0
+__x64_sys_sendto+0x24/0x30
+do_syscall_64+0x5b/0x1a0
+entry_SYSCALL_64_after_hwframe+0x65/0xca
+RIP: 0033:0x7f5eac8b035b
+Missing register, driver bug
+WARNING: CPU: 0 PID: 4300 at net/core/xdp.c:119 xdp_rxq_info_unreg_mem_model+0x69/0x140
+Call Trace:
+xdp_rxq_info_unreg+0x1e/0x50
+i40e_free_rx_resources+0x70/0x80 [i40e]
+i40e_set_ringparam+0x27c/0x800 [i40e]
+ethnl_set_rings+0x1b2/0x290
+genl_family_rcv_msg_doit.isra.15+0x10f/0x150
+genl_family_rcv_msg+0xb3/0x160
+? rings_fill_reply+0x1a0/0x1a0
+genl_rcv_msg+0x47/0x90
+? genl_family_rcv_msg+0x160/0x160
+netlink_rcv_skb+0x4c/0x120
+genl_rcv+0x24/0x40
+netlink_unicast+0x196/0x230
+netlink_sendmsg+0x204/0x3d0
+sock_sendmsg+0x4c/0x50
+__sys_sendto+0xee/0x160
+? handle_mm_fault+0xbe/0x1e0
+? syscall_trace_enter+0x1d3/0x2c0
+__x64_sys_sendto+0x24/0x30
+do_syscall_64+0x5b/0x1a0
+entry_SYSCALL_64_after_hwframe+0x65/0xca
+RIP: 0033:0x7f5eac8b035b
+
+This was caused because of new buffers with different RX ring count should
+substitute older ones, but those buffers were freed in
+i40e_configure_rx_ring and reallocated again with i40e_alloc_rx_bi,
+thus kfree on rx_bi caused leak of already mapped DMA.
+
+Fix this by reallocating ZC with rx_bi_zc struct when BPF program loads. Additionally
+reallocate back to rx_bi when BPF program unloads.
+
+If BPF program is loaded/unloaded and XSK pools are created, reallocate
+RX queues accordingly in XSP_SETUP_XSK_POOL handler.
+
+Fixes: be1222b585fd ("i40e: Separate kernel allocated rx_bi rings from AF_XDP rings")
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Tested-by: Chandan <chandanx.rout@intel.com> (A Contingent Worker at Intel)
+---
+ v2: Fixed improper kerneldoc that resulted in a warning
+ v3: Applied commit msg fixes reported during a review
+ v4: Applied i40e_xsk.c fixes reported during a review
+ v5: applied commit message and general fixes reported by
+ Maciej Fijalkowski's review.
+ v6: Since Jan is on vacation I have rewritten commit
+ message to be more accurate and reflect on whi this patch
+ was created, what it fixes this and how it does it.
+--- 
+.../net/ethernet/intel/i40e/i40e_ethtool.c    |  3 -
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 15 +++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 13 ++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  1 -
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    | 67 ++++++++++++++++---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.h    |  2 +-
+ 6 files changed, 73 insertions(+), 28 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index ae51901e671d..4a6a6e48c615 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -2181,9 +2181,6 @@ static int i40e_set_ringparam(struct net_device *netdev,
+ 			 */
+ 			rx_rings[i].tail = hw->hw_addr + I40E_PRTGEN_STATUS;
+ 			err = i40e_setup_rx_descriptors(&rx_rings[i]);
+-			if (err)
+-				goto rx_unwind;
+-			err = i40e_alloc_rx_bi(&rx_rings[i]);
+ 			if (err)
+ 				goto rx_unwind;
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 2c07fa8ecfc8..9c4f7fad5fd2 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3566,12 +3566,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 	if (ring->vsi->type == I40E_VSI_MAIN)
+ 		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
+ 
+-	kfree(ring->rx_bi);
+ 	ring->xsk_pool = i40e_xsk_pool(ring);
+ 	if (ring->xsk_pool) {
+-		ret = i40e_alloc_rx_bi_zc(ring);
+-		if (ret)
+-			return ret;
+ 		ring->rx_buf_len =
+ 		  xsk_pool_get_rx_frame_size(ring->xsk_pool);
+ 		/* For AF_XDP ZC, we disallow packets to span on
+@@ -3589,9 +3585,6 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 			 ring->queue_index);
+ 
+ 	} else {
+-		ret = i40e_alloc_rx_bi(ring);
+-		if (ret)
+-			return ret;
+ 		ring->rx_buf_len = vsi->rx_buf_len;
+ 		if (ring->vsi->type == I40E_VSI_MAIN) {
+ 			ret = xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+@@ -13296,6 +13289,13 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+ 		i40e_reset_and_rebuild(pf, true, true);
+ 	}
+ 
++	if (!i40e_enabled_xdp_vsi(vsi) && prog)
++		if (i40e_realloc_rx_bi_zc(vsi, true))
++			return -ENOMEM;
++	else if (i40e_enabled_xdp_vsi(vsi) && !prog)
++		if (i40e_realloc_rx_bi_zc(vsi, false))
++			return -ENOMEM;
++
+ 	for (i = 0; i < vsi->num_queue_pairs; i++)
+ 		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
+ 
+@@ -13528,6 +13528,7 @@ int i40e_queue_pair_disable(struct i40e_vsi *vsi, int queue_pair)
+ 
+ 	i40e_queue_pair_disable_irq(vsi, queue_pair);
+ 	err = i40e_queue_pair_toggle_rings(vsi, queue_pair, false /* off */);
++	i40e_clean_rx_ring(vsi->rx_rings[queue_pair]);
+ 	i40e_queue_pair_toggle_napi(vsi, queue_pair, false /* off */);
+ 	i40e_queue_pair_clean_rings(vsi, queue_pair);
+ 	i40e_queue_pair_reset_stats(vsi, queue_pair);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 69e67eb6aea7..b97c95f89fa0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -1457,14 +1457,6 @@ int i40e_setup_tx_descriptors(struct i40e_ring *tx_ring)
+ 	return -ENOMEM;
+ }
+ 
+-int i40e_alloc_rx_bi(struct i40e_ring *rx_ring)
+-{
+-	unsigned long sz = sizeof(*rx_ring->rx_bi) * rx_ring->count;
+-
+-	rx_ring->rx_bi = kzalloc(sz, GFP_KERNEL);
+-	return rx_ring->rx_bi ? 0 : -ENOMEM;
+-}
+-
+ static void i40e_clear_rx_bi(struct i40e_ring *rx_ring)
+ {
+ 	memset(rx_ring->rx_bi, 0, sizeof(*rx_ring->rx_bi) * rx_ring->count);
+@@ -1593,6 +1585,11 @@ int i40e_setup_rx_descriptors(struct i40e_ring *rx_ring)
+ 
+ 	rx_ring->xdp_prog = rx_ring->vsi->xdp_prog;
+ 
++	rx_ring->rx_bi =
++		kcalloc(rx_ring->count, sizeof(*rx_ring->rx_bi), GFP_KERNEL);
++	if (!rx_ring->rx_bi)
++		return -ENOMEM;
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index 41f86e9535a0..768290dc6f48 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -469,7 +469,6 @@ int __i40e_maybe_stop_tx(struct i40e_ring *tx_ring, int size);
+ bool __i40e_chk_linearize(struct sk_buff *skb);
+ int i40e_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
+ 		  u32 flags);
+-int i40e_alloc_rx_bi(struct i40e_ring *rx_ring);
+ 
+ /**
+  * i40e_get_head - Retrieve head from head writeback
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 6d4009e0cbd6..cd7b52fb6b46 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -10,14 +10,6 @@
+ #include "i40e_txrx_common.h"
+ #include "i40e_xsk.h"
+ 
+-int i40e_alloc_rx_bi_zc(struct i40e_ring *rx_ring)
+-{
+-	unsigned long sz = sizeof(*rx_ring->rx_bi_zc) * rx_ring->count;
+-
+-	rx_ring->rx_bi_zc = kzalloc(sz, GFP_KERNEL);
+-	return rx_ring->rx_bi_zc ? 0 : -ENOMEM;
+-}
+-
+ void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring)
+ {
+ 	memset(rx_ring->rx_bi_zc, 0,
+@@ -29,6 +21,58 @@ static struct xdp_buff **i40e_rx_bi(struct i40e_ring *rx_ring, u32 idx)
+ 	return &rx_ring->rx_bi_zc[idx];
+ }
+ 
++/**
++ * i40e_realloc_rx_xdp_bi - reallocate SW ring for either XSK or normal buffer
++ * @rx_ring: Current rx ring
++ * @pool_present: is pool for XSK present
++ *
++ * Try allocating memory and return ENOMEM, if failed to allocate.
++ * If allocation was successful, substitute buffer with allocated one.
++ * Returns 0 on success, negative on failure
++ */
++static int i40e_realloc_rx_xdp_bi(struct i40e_ring *rx_ring, bool pool_present)
++{
++	size_t elem_size = pool_present ? sizeof(*rx_ring->rx_bi_zc) :
++					  sizeof(*rx_ring->rx_bi);
++	void *sw_ring = kcalloc(rx_ring->count, elem_size, GFP_KERNEL);
++
++	if (!sw_ring)
++		return -ENOMEM;
++
++	if (pool_present) {
++		kfree(rx_ring->rx_bi);
++		rx_ring->rx_bi = NULL;
++		rx_ring->rx_bi_zc = sw_ring;
++	} else {
++		kfree(rx_ring->rx_bi_zc);
++		rx_ring->rx_bi_zc = NULL;
++		rx_ring->rx_bi = sw_ring;
++	}
++	return 0;
++}
++
++/**
++ * i40e_realloc_rx_bi_zc - reallocate rx SW rings
++ * @vsi: Current VSI
++ * @zc: is zero copy set
++ *
++ * Reallocate buffer for rx_rings that might be used by XSK.
++ * XDP requires more memory, than rx_buf provides.
++ * Returns 0 on success, negative on failure
++ */
++int i40e_realloc_rx_bi_zc(struct i40e_vsi *vsi, bool zc)
++{
++	struct i40e_ring *rx_ring;
++	unsigned long q;
++
++	for_each_set_bit(q, vsi->af_xdp_zc_qps, vsi->alloc_queue_pairs) {
++		rx_ring = vsi->rx_rings[q];
++		if (i40e_realloc_rx_xdp_bi(rx_ring, zc))
++			return -ENOMEM;
++	}
++	return 0;
++}
++
+ /**
+  * i40e_xsk_pool_enable - Enable/associate an AF_XDP buffer pool to a
+  * certain ring/qid
+@@ -69,6 +113,10 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
+ 		if (err)
+ 			return err;
+ 
++		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], true);
++		if (err)
++			return err;
++
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+ 			return err;
+@@ -113,6 +161,9 @@ static int i40e_xsk_pool_disable(struct i40e_vsi *vsi, u16 qid)
+ 	xsk_pool_dma_unmap(pool, I40E_RX_DMA_ATTR);
+ 
+ 	if (if_running) {
++		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], false);
++		if (err)
++			return err;
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+ 			return err;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.h b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+index bb962987f300..821df248f8be 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+@@ -32,7 +32,7 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget);
+ 
+ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring);
+ int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+-int i40e_alloc_rx_bi_zc(struct i40e_ring *rx_ring);
++int i40e_realloc_rx_bi_zc(struct i40e_vsi *vsi, bool zc);
+ void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring);
+ 
+ #endif /* _I40E_XSK_H_ */
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
