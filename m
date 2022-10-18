@@ -1,83 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E42A60202B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Oct 2022 03:09:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CA4760202C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Oct 2022 03:09:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DAC8860FAD;
-	Tue, 18 Oct 2022 01:09:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DAC8860FAD
+	by smtp4.osuosl.org (Postfix) with ESMTP id E472140289;
+	Tue, 18 Oct 2022 01:09:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E472140289
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1666055353;
-	bh=5b/VAz5G4Bf0bcg5jnqCA+HBPuxtmYiRVpzYfg49FiU=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=10rCpezshnAw4SNuwTHExqFkJCpx6V4wk/MCP6MkGC8WPX/S4znhSpme3aWEfSuHw
-	 Hx0EmYy8bTkFSUuoHjXHHFM5KXarsMlsykAGvywVvCoGZZZ3b+uqlzRxGDMK8YyQr/
-	 GzYWmoGGtDkQ8qWq5F31Iu0kU6m59EMy/ZGw8eRHrr9MiHp5ZKSMYxmeoGO1nWi+dK
-	 UG9+QG8qzLt7Xn37BSLFMUE8yjgkMING2D+yKlVG8eaxRt7PRLmHrD4c3xG/odgWS0
-	 oHwtbmO4Z2Aee9R2ni8y9IxXFV+6DB1X0RMszPOaf50keiyDDsezQ3ZVbmwNu+v1mv
-	 /CwhH0bMj47gQ==
+	s=default; t=1666055358;
+	bh=p/HQlLWaBwIASjvEVPCDKleZWnJGSA2QziTOEjZiVFo=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=TCbyAZACbnQhLiY7RgQiTfrHcJbwjQ2JVuZoQc5L5hcl4hV9MRzne4XJP5t2oroVW
+	 lJSX56V+6eEpSfAHygtWCz+TPJKES9ua8ZkSp8ifM+wWB1offvXT2y+WrPPUywxK/H
+	 A/ZxIgGllYhT5kR4wkTc2+kILGHwgzzAf9+0ErH7pdnQ+nY+fDAavmnhzKXItVrxvP
+	 Ab/5o+yhXXwfEqb7bhoJSZhlQCsUmg+wK/juqAWYJuxD5vuIjH7ySX/mFiWAoWK2G2
+	 n/0NctX8jEObo1FE/ovhZwNYLicnvMMBsUZIvMvQjkGOzNV+ARRI8ZAN2vZEXvHJSP
+	 9EBlGmsA7hYYA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9e5I1al-t2ub; Tue, 18 Oct 2022 01:09:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M6pisnNM_JBJ; Tue, 18 Oct 2022 01:09:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C10F860FA1;
-	Tue, 18 Oct 2022 01:09:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C10F860FA1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 15F77404CC;
+	Tue, 18 Oct 2022 01:09:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 15F77404CC
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B09791BF399
- for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A2B861BF399
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8B891607C0
- for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B891607C0
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7DF8C60FA3
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DF8C60FA3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CteQbD7ohdkA for <intel-wired-lan@osuosl.org>;
- Tue, 18 Oct 2022 01:09:06 +0000 (UTC)
+ with ESMTP id aAJkT56rqER0 for <intel-wired-lan@osuosl.org>;
+ Tue, 18 Oct 2022 01:09:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2417260776
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC17560776
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2417260776
- for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="307624101"
-X-IronPort-AV: E=Sophos;i="5.95,192,1661842800"; d="scan'208";a="307624101"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AC17560776
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Oct 2022 01:09:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="307624112"
+X-IronPort-AV: E=Sophos;i="5.95,192,1661842800"; d="scan'208";a="307624112"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Oct 2022 18:09:05 -0700
+ 17 Oct 2022 18:09:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="717704389"
-X-IronPort-AV: E=Sophos;i="5.95,192,1661842800"; d="scan'208";a="717704389"
+X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="717704404"
+X-IronPort-AV: E=Sophos;i="5.95,192,1661842800"; d="scan'208";a="717704404"
 Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by FMSMGA003.fm.intel.com with ESMTP; 17 Oct 2022 18:09:01 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 17 Oct 2022 18:09:05 -0700
 From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Tue, 18 Oct 2022 09:07:28 +0800
-Message-Id: <20221018010733.4765-1-muhammad.husaini.zulkifli@intel.com>
+Date: Tue, 18 Oct 2022 09:07:29 +0800
+Message-Id: <20221018010733.4765-2-muhammad.husaini.zulkifli@intel.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20221018010733.4765-1-muhammad.husaini.zulkifli@intel.com>
+References: <20221018010733.4765-1-muhammad.husaini.zulkifli@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1666055346; x=1697591346;
- h=from:to:cc:subject:date:message-id;
- bh=0D9zTvrp8loy1p/wd/7ypz6za/bgpsN3QKuD9hC9aM4=;
- b=BPnXJDLhHsAvy3ZoT0/+YcriRO6/NPe0ofGIG1Uhskwf5ckDEq00f4Fr
- aEMXCEMzhTCYHpM2ZsLWmz5ZWtbq/yrsl6ufqbajKgUCQStYmzMOMhZWt
- y3SqBBergYpWExdPA3ZWg43j3MduPJ9DHoPhtJlXPVT/d+cI3mRUHUV1W
- cbMdH1Jic8gXpy+Hvf9PNQ7uajoZ1lKksi4NMtkTkPHxk1rENjbYpXmtw
- ofDwKtq3nNj36nTEevQXEcC2too9soufhFwVjZ+AiiqhdIFNWKTjOJp4L
- ms4b4DIpTIHMm9lx/aXkzw9pflJoqapMAtOFQAp5Das+oRHPJ5+WVNXxD
- A==;
+ t=1666055348; x=1697591348;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references;
+ bh=upmt3pZyDTQiw3ANIcvU53NO5MogN8byOr+ynwpMONE=;
+ b=NBwyNaINNVYA7zjzPSMXenIVX9da0thMzBBSAg0CZEdX6r1CX4RqRY6d
+ NmoNeNzN8TV6IlaKTq30yG7cOgwA7QYvm5vyHmcxBZYpOdr/DxfBC9kmD
+ O3JU0KB5mf/9L1GeAgf0lOEIUK+dOV6IeZ7NIPaNq8CoR9yJbyK13cKkj
+ 99ocZK3SJtg0lsXeBnBHOaU7yA/uZbRt/adOLjAu/Q54BBFKW4SQHWKzA
+ bqex5ohZyI9aDTtcWedtrlnx6I2mvdOx8HyKsMtWm7s8ICMVnNC/CFaQ1
+ 0s8SRpoikt1u1A+pNhJ3ghx+D3yV8evnVVIchxrxk0jU07f6HuY6kaVu1
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BPnXJDLh
-Subject: [Intel-wired-lan] [PATCH v2 0/5] Add support for DMA timestamp for
- non-PTP packets
+ header.a=rsa-sha256 header.s=Intel header.b=NBwyNaIN
+Subject: [Intel-wired-lan] [PATCH v2 1/5] ethtool: Add new hwtstamp flag
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,82 +103,173 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The HW TX timestamps created by the NIC via socket options can be
-requested using the current network timestamps generation capability of
-SOF_TIMESTAMPING_TX_HARDWARE. The most common users of this socket flag
-is PTP, however other packet applications that require tx timestamps might
-also ask for it.
+This add patch add a new DMA Time Stamp flag. User can configure
+hwtstamp_config with this flag if they want to use DMA time stamp.
 
-The problem is that, when there is a lot of traffic, there is a high chance
-that the timestamps for a PTP packet will be lost if both PTP and Non-PTP
-packets use the same SOF TIMESTAMPING TX HARDWARE causing the tx timeout.
+Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+---
+ include/uapi/linux/ethtool.h         |  3 +++
+ include/uapi/linux/ethtool_netlink.h |  1 +
+ include/uapi/linux/net_tstamp.h      |  5 ++++-
+ net/ethtool/common.c                 |  6 ++++++
+ net/ethtool/common.h                 |  2 ++
+ net/ethtool/strset.c                 |  5 +++++
+ net/ethtool/tsinfo.c                 | 17 +++++++++++++++++
+ 7 files changed, 38 insertions(+), 1 deletion(-)
 
-DMA timestamps through socket options are not currently available to
-the user. Because if the user wants to, they can configure the hwtstamp
-config option to use the new introduced DMA Time Stamp flag through the
-setsockopt().
-
-With these additional socket options, users can continue to utilise
-HW timestamps for PTP while specifying non-PTP packets to use DMA
-timestamps if the NIC can support them.
-
-This patch series also add a new HWTSTAMP_FILTER_DMA_TIMESTAMP receive
-filters. This filter can be configured for devices that support/allow the
-DMA timestamp retrieval on receive side.
-
-Any socket application can be use to verify this.
-TSN Ref SW application is been used for testing by changing as below:
-
-	int timestamping_flags = SOF_TIMESTAMPING_TX_HARDWARE_DMA_FETCH;
-
-	strncpy(hwtstamp.ifr_name, opt->ifname, sizeof(hwtstamp.ifr_name)-1);
-	hwtstamp.ifr_data = (void *)&hwconfig;
-	hwconfig.tx_type = HWTSTAMP_TX_ON;
-	hwconfig.flags = HWTSTAMP_FLAG_DMA_TIMESTAMP;
-	hwconfig.rx_filter = HWTSTAMP_FILTER_ALL;
-
-	if (ioctl(sock, SIOCSHWTSTAMP, &hwtstamp) < 0) {
-		fprintf(stderr, "%s: %s\n", "ioctl", strerror(errno));
-		exit(1);
-	}
-
-	if (setsockopt(sock, SOL_SOCKET, SO_TIMESTAMPING, &timestamping_flags,
-			sizeof(timestamping_flags)) < 0)
-		exit_with_error("setsockopt SO_TIMESTAMPING");
-
-v1 -> v2:
-	- Move to the end for the new enum.
-	- Add new HWTSTAMP_FILTER_DMA_TIMESTAMP receive filters.
-
-Muhammad Husaini Zulkifli (4):
-  ethtool: Add new hwtstamp flag
-  net-timestamp: Increase the size of tsflags
-  net: sock: extend SO_TIMESTAMPING for DMA Fetch
-  ethtool: Add support for HWTSTAMP_FILTER_DMA_TIMESTAMP
-
-Vinicius Costa Gomes (1):
-  igc: Add support for DMA timestamp for non-PTP packets
-
- drivers/net/ethernet/intel/igc/igc.h         | 10 +++
- drivers/net/ethernet/intel/igc/igc_base.h    |  2 +-
- drivers/net/ethernet/intel/igc/igc_defines.h |  2 +
- drivers/net/ethernet/intel/igc/igc_ethtool.c |  5 +-
- drivers/net/ethernet/intel/igc/igc_main.c    | 24 ++++--
- drivers/net/ethernet/intel/igc/igc_ptp.c     | 84 ++++++++++++++++++++
- include/linux/skbuff.h                       |  3 +
- include/net/sock.h                           | 12 +--
- include/uapi/linux/ethtool.h                 |  3 +
- include/uapi/linux/ethtool_netlink.h         |  1 +
- include/uapi/linux/net_tstamp.h              | 14 +++-
- net/core/dev_ioctl.c                         |  1 +
- net/ethtool/common.c                         |  8 ++
- net/ethtool/common.h                         |  2 +
- net/ethtool/strset.c                         |  5 ++
- net/ethtool/tsinfo.c                         | 17 ++++
- net/socket.c                                 |  5 +-
- 17 files changed, 181 insertions(+), 17 deletions(-)
-
---
+diff --git a/include/uapi/linux/ethtool.h b/include/uapi/linux/ethtool.h
+index dc2aa3d75b39..a3c60e2bde36 100644
+--- a/include/uapi/linux/ethtool.h
++++ b/include/uapi/linux/ethtool.h
+@@ -683,6 +683,7 @@ enum ethtool_link_ext_substate_module {
+  * @ETH_SS_STATS_ETH_MAC: names of IEEE 802.3 MAC statistics
+  * @ETH_SS_STATS_ETH_CTRL: names of IEEE 802.3 MAC Control statistics
+  * @ETH_SS_STATS_RMON: names of RMON statistics
++ * @ETH_SS_HWTSTAMP_FLAG: timestamping flags
+  *
+  * @ETH_SS_COUNT: number of defined string sets
+  */
+@@ -708,6 +709,7 @@ enum ethtool_stringset {
+ 	ETH_SS_STATS_ETH_MAC,
+ 	ETH_SS_STATS_ETH_CTRL,
+ 	ETH_SS_STATS_RMON,
++	ETH_SS_HWTSTAMP_FLAG,
+ 
+ 	/* add new constants above here */
+ 	ETH_SS_COUNT
+@@ -1416,6 +1418,7 @@ struct ethtool_ts_info {
+ 	__u32	tx_reserved[3];
+ 	__u32	rx_filters;
+ 	__u32	rx_reserved[3];
++	__u32	flag;
+ };
+ 
+ /*
+diff --git a/include/uapi/linux/ethtool_netlink.h b/include/uapi/linux/ethtool_netlink.h
+index bb57084ac524..4b7bd7554a3b 100644
+--- a/include/uapi/linux/ethtool_netlink.h
++++ b/include/uapi/linux/ethtool_netlink.h
+@@ -458,6 +458,7 @@ enum {
+ 	ETHTOOL_A_TSINFO_TX_TYPES,			/* bitset */
+ 	ETHTOOL_A_TSINFO_RX_FILTERS,			/* bitset */
+ 	ETHTOOL_A_TSINFO_PHC_INDEX,			/* u32 */
++	ETHTOOL_A_TSINFO_FLAG,				/* bitset */
+ 
+ 	/* add new constants above here */
+ 	__ETHTOOL_A_TSINFO_CNT,
+diff --git a/include/uapi/linux/net_tstamp.h b/include/uapi/linux/net_tstamp.h
+index 55501e5e7ac8..4966d5ca521f 100644
+--- a/include/uapi/linux/net_tstamp.h
++++ b/include/uapi/linux/net_tstamp.h
+@@ -89,7 +89,10 @@ enum hwtstamp_flags {
+ 	HWTSTAMP_FLAG_BONDED_PHC_INDEX = (1<<0),
+ #define HWTSTAMP_FLAG_BONDED_PHC_INDEX	HWTSTAMP_FLAG_BONDED_PHC_INDEX
+ 
+-	HWTSTAMP_FLAG_LAST = HWTSTAMP_FLAG_BONDED_PHC_INDEX,
++	HWTSTAMP_FLAG_DMA_TIMESTAMP = (1<<1),
++#define HWTSTAMP_FLAG_DMA_TIMESTAMP	HWTSTAMP_FLAG_DMA_TIMESTAMP
++
++	HWTSTAMP_FLAG_LAST = HWTSTAMP_FLAG_DMA_TIMESTAMP,
+ 	HWTSTAMP_FLAG_MASK = (HWTSTAMP_FLAG_LAST - 1) | HWTSTAMP_FLAG_LAST
+ };
+ 
+diff --git a/net/ethtool/common.c b/net/ethtool/common.c
+index 566adf85e658..f2a178d162ef 100644
+--- a/net/ethtool/common.c
++++ b/net/ethtool/common.c
+@@ -406,6 +406,12 @@ const char sof_timestamping_names[][ETH_GSTRING_LEN] = {
+ };
+ static_assert(ARRAY_SIZE(sof_timestamping_names) == __SOF_TIMESTAMPING_CNT);
+ 
++const char ts_flag_names[][ETH_GSTRING_LEN] = {
++	[const_ilog2(HWTSTAMP_FLAG_BONDED_PHC_INDEX)]	= "bonded-phc-index",
++	[const_ilog2(HWTSTAMP_FLAG_DMA_TIMESTAMP)]	= "dma-time-stamp",
++};
++static_assert(ARRAY_SIZE(ts_flag_names) == __HWTSTAMP_FLAG_CNT);
++
+ const char ts_tx_type_names[][ETH_GSTRING_LEN] = {
+ 	[HWTSTAMP_TX_OFF]		= "off",
+ 	[HWTSTAMP_TX_ON]		= "on",
+diff --git a/net/ethtool/common.h b/net/ethtool/common.h
+index c1779657e074..0161e04d4de8 100644
+--- a/net/ethtool/common.h
++++ b/net/ethtool/common.h
+@@ -13,6 +13,7 @@
+ 	ETHTOOL_LINK_MODE_ ## speed ## base ## type ## _ ## duplex ## _BIT
+ 
+ #define __SOF_TIMESTAMPING_CNT (const_ilog2(SOF_TIMESTAMPING_LAST) + 1)
++#define __HWTSTAMP_FLAG_CNT (const_ilog2(HWTSTAMP_FLAG_LAST) + 1)
+ 
+ struct link_mode_info {
+ 	int				speed;
+@@ -36,6 +37,7 @@ extern const char sof_timestamping_names[][ETH_GSTRING_LEN];
+ extern const char ts_tx_type_names[][ETH_GSTRING_LEN];
+ extern const char ts_rx_filter_names[][ETH_GSTRING_LEN];
+ extern const char udp_tunnel_type_names[][ETH_GSTRING_LEN];
++extern const char ts_flag_names[][ETH_GSTRING_LEN];
+ 
+ int __ethtool_get_link(struct net_device *dev);
+ 
+diff --git a/net/ethtool/strset.c b/net/ethtool/strset.c
+index 3f7de54d85fb..b3fb1b1c516c 100644
+--- a/net/ethtool/strset.c
++++ b/net/ethtool/strset.c
+@@ -105,6 +105,11 @@ static const struct strset_info info_template[] = {
+ 		.count		= __ETHTOOL_A_STATS_RMON_CNT,
+ 		.strings	= stats_rmon_names,
+ 	},
++	[ETH_SS_HWTSTAMP_FLAG] = {
++		.per_dev	= false,
++		.count		= __HWTSTAMP_FLAG_CNT,
++		.strings	= ts_flag_names,
++	},
+ };
+ 
+ struct strset_req_info {
+diff --git a/net/ethtool/tsinfo.c b/net/ethtool/tsinfo.c
+index 63b5814bd460..af5acf7bf561 100644
+--- a/net/ethtool/tsinfo.c
++++ b/net/ethtool/tsinfo.c
+@@ -52,6 +52,7 @@ static int tsinfo_reply_size(const struct ethnl_req_info *req_base,
+ 	BUILD_BUG_ON(__SOF_TIMESTAMPING_CNT > 32);
+ 	BUILD_BUG_ON(__HWTSTAMP_TX_CNT > 32);
+ 	BUILD_BUG_ON(__HWTSTAMP_FILTER_CNT > 32);
++	BUILD_BUG_ON(__HWTSTAMP_FLAG_CNT > 32);
+ 
+ 	if (ts_info->so_timestamping) {
+ 		ret = ethnl_bitset32_size(&ts_info->so_timestamping, NULL,
+@@ -79,6 +80,14 @@ static int tsinfo_reply_size(const struct ethnl_req_info *req_base,
+ 	}
+ 	if (ts_info->phc_index >= 0)
+ 		len += nla_total_size(sizeof(u32));	/* _TSINFO_PHC_INDEX */
++	if (ts_info->flag) {
++		ret = ethnl_bitset32_size(&ts_info->flag, NULL,
++					  __HWTSTAMP_FLAG_CNT,
++					  ts_flag_names, compact);
++		if (ret < 0)
++			return ret;
++		len += ret;	/* _TSINFO_FLAG */
++	}
+ 
+ 	return len;
+ }
+@@ -119,6 +128,14 @@ static int tsinfo_fill_reply(struct sk_buff *skb,
+ 	if (ts_info->phc_index >= 0 &&
+ 	    nla_put_u32(skb, ETHTOOL_A_TSINFO_PHC_INDEX, ts_info->phc_index))
+ 		return -EMSGSIZE;
++	if (ts_info->flag) {
++		ret = ethnl_put_bitset32(skb, ETHTOOL_A_TSINFO_FLAG,
++					 &ts_info->flag, NULL,
++					 __HWTSTAMP_FLAG_CNT,
++					 ts_flag_names, compact);
++		if (ret < 0)
++			return ret;
++	}
+ 
+ 	return 0;
+ }
+-- 
 2.17.1
 
 _______________________________________________
