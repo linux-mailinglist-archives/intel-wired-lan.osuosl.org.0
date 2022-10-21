@@ -1,104 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CED5607747
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Oct 2022 14:48:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 767F2607A52
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Oct 2022 17:16:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D23A60E51;
-	Fri, 21 Oct 2022 12:48:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D23A60E51
+	by smtp4.osuosl.org (Postfix) with ESMTP id DBBBB42221;
+	Fri, 21 Oct 2022 15:16:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DBBBB42221
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1666356535;
-	bh=Vmgq0KuLQ97lO5B37me93vEIOV6OlfwHG350anM0uHA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1666365411;
+	bh=oKGpIS3nNQOl5MAggaLv0983vwy/wbeeQ8kUizbxUH8=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mmvZKo5eJJYSqmLbEm99cKQHTw2+bPqBYzn5RjlO3jKrHJx3KPNFYoCzSeIztXmpV
-	 C0gcUeiam6CgTAvUbBRGGNWZOeBEcJYexbmUminZvOJ7Qij26iImiMCXjC0l+wgYlD
-	 STpHHuRDAIYWVRHUuzHGbNZ4GJK4468lu8DjdgMA6yZWaPxxN1P/gM1v0efnsImH3z
-	 ahmsejNPNxvYTsYntdszZCO3SWXywEn5dAMjMiWBotcmPfSXprfjs23lSd2pRNMf8I
-	 2WZbMHkYIVgpmX1XvWv/Wgn8nKhGeR5pYEyYB04OP4QXWODgunK+EGYuzsd8mniT60
-	 BT2dREQzC6c4Q==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2FeBNAe0FTAZ; Fri, 21 Oct 2022 12:48:54 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6B77D60BB0;
-	Fri, 21 Oct 2022 12:48:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6B77D60BB0
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8A37E1BF2B4
- for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 12:48:49 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6359C418C0
- for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 12:48:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6359C418C0
+	b=6qXwYKcZ9FRmvm4Wqubg2l9eCS6ZIpewitNU3wurn8yrkWo7pVJw6aA0aoG2Jcvc9
+	 C+ejmQA28ibyN5atFOZXQxk1OBvRhnazg9Ee6fmr36PO9s4xqdtg3v4M+09iFpSiMO
+	 xYgp7QMHQDwgHAo/tGpVm9atX/Fn23qWWaX/bhvCmkIJzE3VaqmdvpeiqCBFYwMY6h
+	 QP0Gsqzjq2NQJ+JZf7hFW2f/jPdKK4RpcIgHx+xcRj1aOkKCR5bQcIpBYDrWMJ6KHa
+	 I+UAo/0Y39nLNDd/3a0dwt4k1lHAejcZGy5OGpaRjBSiPdoaSYjgTSqjDijTH3t4uo
+	 eArbBweDmtS+Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kgEkQHL7EIJt for <intel-wired-lan@osuosl.org>;
- Fri, 21 Oct 2022 12:48:48 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9B284418B6
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com
- [IPv6:2607:f8b0:4864:20::42c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9B284418B6
- for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 12:48:48 +0000 (UTC)
-Received: by mail-pf1-x42c.google.com with SMTP id i3so2458521pfk.9
- for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 05:48:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5C3AVO3KQTZSkl5k56jSXrjjeWkXIjKnpVmOu2WKA+w=;
- b=YrkSMeSqjSjd0gunZWoT67sUiX/KNcj1are9nqKA37u/QRq6tq6WMAgM9qz+y5U10K
- P8OaXoCAXNt3Zt/ExkIwNeeh3+/NLuVRERwwfgjzvIAz9iibwT4kpeZdlapE4kuAb2mV
- ykO7fAT+Fyf1fVd2WOU9P4yze4NviUfqPXhdgqxFOC3q2U8cDS8D08laLO5MvCA5Jq6O
- CBEvJM5H2c/F3T1NEzIKwjZSfR+TDJS8/7rgeBpZnEUlIfNniwTmqI4FyY9h9IStw5T+
- n8j7D3Qn/ipTx55kz2LH2cfK9xFSPoBQjTgmHpWrliQRt4G8dt+y8gUPGOdSAjzfD6nJ
- Hd1Q==
-X-Gm-Message-State: ACrzQf1CXXccxIVHXi7hL66nFkfzMmg/qrPh+Tww/nydHofesBqi53mr
- ACCpsTuQokSNUJEI2LSnP6s=
-X-Google-Smtp-Source: AMsMyM7l2QhXJZ8XnYp2zbPdQYvi0a48z/41cisCjeTh1CWC1Gzh62rJ3VQlyrUmnMeZriZmp84M+A==
-X-Received: by 2002:a05:6a00:15ce:b0:562:cafb:2844 with SMTP id
- o14-20020a056a0015ce00b00562cafb2844mr19223942pfu.75.1666356527930; 
- Fri, 21 Oct 2022 05:48:47 -0700 (PDT)
-Received: from hoboy.vegasvil.org ([2601:640:8200:33:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id
- a15-20020a170902710f00b0017f8290fcc0sm14489927pll.252.2022.10.21.05.48.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Oct 2022 05:48:46 -0700 (PDT)
-Date: Fri, 21 Oct 2022 05:48:44 -0700
-From: Richard Cochran <richardcochran@gmail.com>
-To: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-Message-ID: <Y1KVLAR2Qi6JeSBj@hoboy.vegasvil.org>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OLVCP31YnXYa; Fri, 21 Oct 2022 15:16:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A3BE41A5B;
+	Fri, 21 Oct 2022 15:16:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A3BE41A5B
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FED71BF288
+ for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 15:16:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id EAB80842AA
+ for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 15:16:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EAB80842AA
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f9wUiILUodDr for <intel-wired-lan@osuosl.org>;
+ Fri, 21 Oct 2022 15:16:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A7CC8406D
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2A7CC8406D
+ for <intel-wired-lan@osuosl.org>; Fri, 21 Oct 2022 15:16:43 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 4748EB82C87;
+ Fri, 21 Oct 2022 15:16:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DC14C433D6;
+ Fri, 21 Oct 2022 15:16:38 +0000 (UTC)
+Date: Fri, 21 Oct 2022 08:16:37 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Richard Cochran <richardcochran@gmail.com>
+Message-ID: <20221021081637.5195953b@kernel.org>
+In-Reply-To: <Y1KVLAR2Qi6JeSBj@hoboy.vegasvil.org>
 References: <20221018010733.4765-1-muhammad.husaini.zulkifli@intel.com>
  <Y06RzWQnTw2RJGPr@hoboy.vegasvil.org>
  <SJ1PR11MB618053D058C8171AAC4D3FADB8289@SJ1PR11MB6180.namprd11.prod.outlook.com>
  <Y09i12Wcqr0whToP@hoboy.vegasvil.org>
  <SJ1PR11MB6180F00C9051443BCEA22AB2B82D9@SJ1PR11MB6180.namprd11.prod.outlook.com>
+ <Y1KVLAR2Qi6JeSBj@hoboy.vegasvil.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SJ1PR11MB6180F00C9051443BCEA22AB2B82D9@SJ1PR11MB6180.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=5C3AVO3KQTZSkl5k56jSXrjjeWkXIjKnpVmOu2WKA+w=;
- b=j1MjZpD+ug0V6KhohONi2vJRizcJYRla7DkjaDonrhtb6ZWMDlcQe/1dN2rp8x4Rxp
- 1IdL9k7mW5V3S29XHgxgn3eM/CQ+W6noeMlQR2kn3rUhNbPF0ukRzBBhtmgdQZc7AzrH
- 8oFLnpLfLqpoTYBXTWXL7k0tC4ZnwD5slQW9fhjhPBDQMiOxav15pEuULmzftJLzttav
- 2yTGq75fNO6nWxvBmXN0jxYf08giZO0gVe3N84hfeYJC3LMK1QxPTsdmZeK+UwHv28pd
- eeq8+GlNd+kxF0wCR0HmhT7pp1syG/sjuZiKdwYEN3Y/K0UaNwMSgc/2sjMVmClMpDq9
- 6mJQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=j1MjZpD+
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1666365399;
+ bh=rkVYIFg2K7PlTr6JQ7UFxz4FZNgle+eLu4pZ7sU4gX0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=bAIebSUqM9giQkjUrSo/xPocD7OwYDevTwlp6w2EzNtajPf64YkIva06TS0Kj38K6
+ /PeznQG/F+d9kLf+YmnQWPdN2x7VIu4J97mQUI66oCvQO7vuknpG+dX6dBobymBuPh
+ sgnFvyqdIUJgx1JeHkXFUM0OX5wPi070ea2n9CKvVV8CxDyRoGu7vvKuwABiXJ0OtR
+ +WLCKbKAEZyvKHmICaZxuV1B2tLAy60ZEUpbDMKswSjqKGU90ZAFuW+g8eeeAt0J8a
+ SPmmOxENh9K8MWs2kDFpT9SF1VyzP8J70FVAFDq2EXO/4NVlJ5NfhJgQpWazJuM1Dc
+ VEK3rMjCfwDDw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=bAIebSUq
 Subject: Re: [Intel-wired-lan] [PATCH v2 0/5] Add support for DMA timestamp
  for non-PTP packets
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -118,8 +99,8 @@ Cc: "leon@kernel.org" <leon@kernel.org>,
  "gal@nvidia.com" <gal@nvidia.com>, "saeed@kernel.org" <saeed@kernel.org>,
  "edumazet@google.com" <edumazet@google.com>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "michael.chan@broadcom.com" <michael.chan@broadcom.com>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>, "Zulkifli,
+ Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>,
  "davem@davemloft.net" <davem@davemloft.net>,
  "andy@greyhouse.net" <andy@greyhouse.net>
 Content-Type: text/plain; charset="us-ascii"
@@ -127,25 +108,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Oct 21, 2022 at 12:25:13AM +0000, Zulkifli, Muhammad Husaini wrote:
+On Fri, 21 Oct 2022 05:48:44 -0700 Richard Cochran wrote:
+> > Could you please provide additional details about this? What do you meant by 
+> > offering 1 HW Timestamp with many SW timestamps?   
+> 
+> - Let the PTP stack use hardware time stamps.
+> 
+> - Let all other applications use software time stamps.
 
-> Sorry for misinterpreting SOFTWARE as HARDWARE in my previous reply.
-> DMA Timestamping is definitely better than SOFTWARE timestamp because 
-> we sample the time at the controller MAC level.
-
-Do you have numbers to back up this claim?
-
-> Could you please provide additional details about this? What do you meant by 
-> offering 1 HW Timestamp with many SW timestamps? 
-
-- Let the PTP stack use hardware time stamps.
-
-- Let all other applications use software time stamps.
-
-Hm?
-
-Thanks,
-Richard
+We do need HW stamps for congestion control, the Rx ring queuing 
+(as well as Tx ring scheduling jitter) is very often in 10s of msec.
+Comparing the SW stamp to the HW stamp is where we derive the signal
+that the system is under excessive load.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
