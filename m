@@ -1,71 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CAEA60C6B0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Oct 2022 10:41:04 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01BB560CE4D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Oct 2022 16:05:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A5EF81304;
-	Tue, 25 Oct 2022 08:41:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A5EF81304
+	by smtp4.osuosl.org (Postfix) with ESMTP id E9B26400BA;
+	Tue, 25 Oct 2022 14:05:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9B26400BA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1666687262;
-	bh=rxZ1+75LEJsCZ6EIBiAbvDem4MgPurEVrhN0SRo76xg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=xKQ7VzMI9eOu+FsrbwGaDTu5t8UCwUHqoeUx6IlWJGJyH6I+u/cj6j6sy57Gxhl5Z
-	 h3p0+QjW9yDRgbsyBszExrOVWY9JsyahBsNc1GsKHOBuXE0+QrkroTOi9aiYQpRwvm
-	 OyeLQqREHoera03CvinmkghSHIBPJCMYqpmVr36CnZ7jb+wD90l3kAKpbXb9e9JH58
-	 xv2YJCIAl9GOduJi7Jj6XQEav10zeaicnptfc+kE+lBiVCLpntHB4eKhpTVCYkWKiA
-	 JmmyobAnMN1lN4oxq83xtT36y+n0woYAtJAlZbBK+2JzC4atQB0KVTB19XCEez8N0l
-	 cVTniil0PARjA==
+	s=default; t=1666706703;
+	bh=kg7Mmj+gz0V7cN0m2ZcReaLy81rUOGkv6l4lscB7B6c=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=aCj62qsFYgsxhrg0zRd0+14rsYn39ake5dFTJ+9250XLH06ZCGX6nSgZ+arq3Bisa
+	 n+VjPeDlKgk4XNjYGWwIvNrlkHOLy5sHsB4xWSAXyQ+tDABg0i8dcoXu1I5UgXLD24
+	 Xz4g0HSu3d4Wjstb9fBDF4Np4sX8IprmMpsxPLUZBrP+UVhZizzfcpZcCoF5GMLNVX
+	 UNuuwqBcJt08EMMYfftVU4mOncqXjPnKO31OEraR5oumNfVZ4nDzAkGHID2q8v/+Ei
+	 8u15oaEU6Mp+WMMiEPGeOYJKIWWytTVYcYn7bcDcy59a2E3IsmmfuJ251IO5gs3PQH
+	 +lZtEAuepm1mw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OCzaJu00bBKB; Tue, 25 Oct 2022 08:41:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Aku7_lPy-CfZ; Tue, 25 Oct 2022 14:05:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 55318812D4;
-	Tue, 25 Oct 2022 08:41:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 55318812D4
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9AC571BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Oct 2022 08:40:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DF43D40067;
+	Tue, 25 Oct 2022 14:05:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF43D40067
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E81B1BF5E6
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Oct 2022 14:04:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 74FF360B10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Oct 2022 08:40:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74FF360B10
+ by smtp4.osuosl.org (Postfix) with ESMTP id 380DF400B4
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Oct 2022 14:04:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 380DF400B4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nh7XCsxgxOCC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Oct 2022 08:40:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 22F2660AEA
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 22F2660AEA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Oct 2022 08:40:51 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 0231961EA1934;
- Tue, 25 Oct 2022 10:40:49 +0200 (CEST)
-Message-ID: <38508641-6127-97df-304f-c85477f2a9eb@molgen.mpg.de>
-Date: Tue, 25 Oct 2022 10:40:48 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.3
-Content-Language: en-US
-To: Andrii Staikov <andrii.staikov@intel.com>,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-References: <20221025072705.1270255-1-andrii.staikov@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20221025072705.1270255-1-andrii.staikov@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix crash when rebuild
- failed in i40e_xdp_setup
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gAJR8qMmXNv9 for <intel-wired-lan@osuosl.org>;
+ Tue, 25 Oct 2022 14:04:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F59E40067
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F59E40067
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Oct 2022 14:04:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="305294970"
+X-IronPort-AV: E=Sophos;i="5.95,212,1661842800"; d="scan'208";a="305294970"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Oct 2022 07:04:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="664917445"
+X-IronPort-AV: E=Sophos;i="5.95,212,1661842800"; d="scan'208";a="664917445"
+Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
+ by orsmga001.jf.intel.com with ESMTP; 25 Oct 2022 07:04:46 -0700
+From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Tue, 25 Oct 2022 22:03:07 +0800
+Message-Id: <20221025140307.2330-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailer: git-send-email 2.17.1
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1666706693; x=1698242693;
+ h=from:to:cc:subject:date:message-id;
+ bh=vZLSkJVvaMu6IyY7LCp7l+dxLo4G8RCCcaWC/QaezZ0=;
+ b=ZCsEu7ELUTtcQUYDIncnjA+h42ZaXQuyDVCP+orCZ6v6UuQMSY9JcQZY
+ unJNxOZXoJQDOKAehNkXwRb73vnUFETDgriYQuhB4461fvN2YqZqgTKym
+ xhHG8QTQepkeWlmjtzN0RoxwSs6G9ffbptMrg9MV0MMDNCgrTCV32VjIV
+ xeTHJTQ4eADvJNfoI5A+fw9X9G3b5b6BD7cjKSzU8wZIUPjDbp2uYOzbc
+ 3ck3CnMjJZgTYMy76LjLg96EwguyPrhNbAGlq3kT/GDeDVqmPMRB7sMz1
+ 45qBN7goBU9JhUTs0zfAdIJiQSamKKRKnN9IyLH4EfWnR+LLhVQn3UGHD
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ZCsEu7EL
+Subject: [Intel-wired-lan] [PATCH v2] igc: Enhance Qbv scheduling by using
+ first flag bit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,203 +90,456 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: pmenzel@molgen.mpg.de, muhammad.husaini.zulkifli@intel.com,
+ mallikarjuna.chilakala@intel.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBBbmRyaWksIGRlYXIgU3lsd2VzdGVyLAoKClRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLgoK
-CkFtIDI1LjEwLjIyIHVtIDA5OjI3IHNjaHJpZWIgQW5kcmlpIFN0YWlrb3Y6Cj4gRnJvbTogU3ls
-d2VzdGVyIER6aWVkeml1Y2ggPHN5bHdlc3RlcnguZHppZWR6aXVjaEBpbnRlbC5jb20+CgpJbiB0
-aGUgc3VtbWFyeS90aXRsZSwgbWF5YmUgdXNlOgoK4oCmIHJlYnVpbGQgZmFpbHMg4oCmCgo+IFdo
-ZW4gYXR0YWNoaW5nIFhEUCBwcm9ncmFtIG9uIGk0MGUgZHJpdmVyIHRoZXJlIHdhcyBhCj4gcmVz
-ZXQgYW5kIHJlYnVpbGQgb2YgdGhlIGludGVyZmFjZSB0byByZWNvbmZpZ3VyZSB0aGUKPiBxdWV1
-ZXMgZm9yIFhEUCBvcGVyYXRpb24uIElmIG9uZSBvZiB0aGUgc3RlcHMgb2YgcmVidWlsZAo+IGZh
-aWxlZCB0aGVuIHRoZSBpbnRlcmZhY2Ugd2FzIGxlZnQgaW4gaW5jb3JyZWN0IHN0YXRlCj4gdGhh
-dCBjb3VsZCBsZWFkIHRvIGEgY3Jhc2guIElmIHJlYnVpbGQgZmFpbGVkIHdoaWxlCj4gZ2V0dGlu
-ZyBjYXBhYmlsaXRpZXMgZnJvbSBIVyBzdWNoIGNyYXNoIG9jY3VyczoKClBsZWFzZSByZWZsb3cg
-Zm9yIDc1IGNoYXJhY3RlcnMgcGVyIGxpbmUuCgo+IGNhcGFiaWxpdHkgZGlzY292ZXJ5IGZhaWxl
-ZCwgZXJyIEk0MEVfRVJSX0FETUlOX1FVRVVFX1RJTUVPVVQgYXFfZXJyIE9LCj4gQlVHOiB1bmFi
-bGUgdG8gaGFuZGxlIGtlcm5lbCBOVUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UgYXQgMDAwMDAwMDAw
-MDAwMDAwMAo+IENhbGwgVHJhY2U6Cj4gPyBpNDBlX3JlY29uZmlnX3Jzc19xdWV1ZXMrMHgxMjAv
-MHgxMjAgW2k0MGVdCj4gICAgZGV2X3hkcF9pbnN0YWxsKzB4NzAvMHgxMDAKPiAgICBkZXZfeGRw
-X2F0dGFjaCsweDFkNy8weDUzMAo+ICAgIGRldl9jaGFuZ2VfeGRwX2ZkKzB4MWY0LzB4MjMwCj4g
-ICAgZG9fc2V0bGluaysweDQ1Zi8weGYzMAo+ICAgID8gaXJxX3dvcmtfaW50ZXJydXB0KzB4YS8w
-eDIwCj4gICAgPyBfX25sYV92YWxpZGF0ZV9wYXJzZSsweDEyZC8weDFhMAo+ICAgIHJ0bmxfc2V0
-bGluaysweGI1LzB4MTIwCj4gICAgcnRuZXRsaW5rX3Jjdl9tc2crMHgyYjEvMHgzNjAKPiAgICA/
-IHNvY2tfaGFzX3Blcm0rMHg4MC8weGEwCj4gICAgPyBydG5sX2NhbGNpdC5pc3JhLjQyKzB4MTIw
-LzB4MTIwCj4gICAgbmV0bGlua19yY3Zfc2tiKzB4NGMvMHgxMjAKPiAgICBuZXRsaW5rX3VuaWNh
-c3QrMHgxOTYvMHgyMzAKPiAgICBuZXRsaW5rX3NlbmRtc2crMHgyMDQvMHgzZDAKPiAgICBzb2Nr
-X3NlbmRtc2crMHg0Yy8weDUwCj4gICAgX19zeXNfc2VuZHRvKzB4ZWUvMHgxNjAKPiAgICA/IGhh
-bmRsZV9tbV9mYXVsdCsweGMxLzB4MWUwCj4gICAgPyBzeXNjYWxsX3RyYWNlX2VudGVyKzB4MWZi
-LzB4MmMwCj4gICAgPyBfX3N5c19zZXRzb2Nrb3B0KzB4ZDYvMHgxZDAKPiAgICBfX3g2NF9zeXNf
-c2VuZHRvKzB4MjQvMHgzMAo+ICAgIGRvX3N5c2NhbGxfNjQrMHg1Yi8weDFhMAo+ICAgIGVudHJ5
-X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDY1LzB4Y2EKPiAgICBSSVA6IDAwMzM6MHg3ZjM1
-MzVkOTk3ODEKPiAKPiBGaXggdGhpcyBieSByZW1vdmluZyByZXNldCBhbmQgcmVidWlsZCBmcm9t
-IGk0MGVfeGRwX3NldHVwCj4gYW5kIHJlcGxhY2UgaXQgYnkgaW50ZXJmYWNlIGRvd24sIHJlY29u
-ZmlndXJlIHF1ZXVlcyBhbmQKPiBpbnRlcmZhY2UgdXAuIFRoaXMgd2F5IGlmIGFueSBzdGVwIGZh
-aWxzIHRoZSBpbnRlcmZhY2UKPiB3aWxsIHJlbWFpbiBpbiBhIGNvcnJlY3Qgc3RhdGUuCgpIb3cg
-bXVjaCBsb25nZXIgZG9lcyB0aGlzIHRha2U/CgpDYW4geW91IGdpdmUgYSBzaW1wbGUgWERQIHRv
-IHJlcHJvZHVjZSB0aGlzPwoKPiBGaXhlczogMGM4NDkzZDkwYjZiICgiaTQwZTogYWRkIFhEUCBz
-dXBwb3J0IGZvciBwYXNzIGFuZCBkcm9wIGFjdGlvbnMiKQo+IFRpdGxlOiBpNDBlOiBGaXggY3Jh
-c2ggd2hlbiByZWJ1aWxkIGZhaWxlZCBpbiBpNDBlX3hkcF9zZXR1cAo+IENoYW5nZS10eXBlOiBE
-ZWZlY3RSZXNvbHV0aW9uCgpUaGUgdHdvIHRhZ3MgYWJvdmUgYXJlIG5vdCB1c2VmdWwgZm9yIHRo
-ZSB1cHN0cmVhbSBMaW51eCBrZXJuZWwsIHJpZ2h0PwoKPiBTaWduZWQtb2ZmLWJ5OiBTeWx3ZXN0
-ZXIgRHppZWR6aXVjaCA8c3lsd2VzdGVyeC5kemllZHppdWNoQGludGVsLmNvbT4KPiBTaWduZWQt
-b2ZmLWJ5OiBBbmRyaWkgU3RhaWtvdiA8YW5kcmlpLnN0YWlrb3ZAaW50ZWwuY29tPgo+IC0tLQo+
-ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYyB8IDE1NSArKysr
-KysrKysrKysrKy0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDExMiBpbnNlcnRpb25zKCspLCA0
-MyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaTQwZS9pNDBlX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
-ZV9tYWluLmMKPiBpbmRleCA0YjNiNmU1YjYxMmQuLjY4YjM0M2E3Yjc3ZSAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jCj4gKysrIGIvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYwo+IEBAIC01MCw2ICs1MCw4
-IEBAIHN0YXRpYyBpbnQgaTQwZV92ZWJfZ2V0X2J3X2luZm8oc3RydWN0IGk0MGVfdmViICp2ZWIp
-Owo+ICAgc3RhdGljIGludCBpNDBlX2dldF9jYXBhYmlsaXRpZXMoc3RydWN0IGk0MGVfcGYgKnBm
-LAo+ICAgCQkJCSBlbnVtIGk0MGVfYWRtaW5fcXVldWVfb3BjIGxpc3RfdHlwZSk7Cj4gICBzdGF0
-aWMgYm9vbCBpNDBlX2lzX3RvdGFsX3BvcnRfc2h1dGRvd25fZW5hYmxlZChzdHJ1Y3QgaTQwZV9w
-ZiAqcGYpOwo+ICtzdGF0aWMgc3RydWN0IGk0MGVfdnNpICppNDBlX3ZzaV9yZWluaXRfc2V0dXAo
-c3RydWN0IGk0MGVfdnNpICp2c2ksCj4gKwkJCQkJICAgICAgYm9vbCBpc194ZHApOwo+ICAgCj4g
-ICAvKiBpNDBlX3BjaV90YmwgLSBQQ0kgRGV2aWNlIElEIFRhYmxlCj4gICAgKgo+IEBAIC0zNTYz
-LDExICszNTY1LDE3IEBAIHN0YXRpYyBpbnQgaTQwZV9jb25maWd1cmVfcnhfcmluZyhzdHJ1Y3Qg
-aTQwZV9yaW5nICpyaW5nKQo+ICAgCS8qIGNsZWFyIHRoZSBjb250ZXh0IHN0cnVjdHVyZSBmaXJz
-dCAqLwo+ICAgCW1lbXNldCgmcnhfY3R4LCAwLCBzaXplb2YocnhfY3R4KSk7Cj4gICAKPiAtCWlm
-IChyaW5nLT52c2ktPnR5cGUgPT0gSTQwRV9WU0lfTUFJTikKPiAtCQl4ZHBfcnhxX2luZm9fdW5y
-ZWdfbWVtX21vZGVsKCZyaW5nLT54ZHBfcnhxKTsKPiArCWlmIChyaW5nLT52c2ktPnR5cGUgPT0g
-STQwRV9WU0lfTUFJTikgewo+ICsJCWlmICgheGRwX3J4cV9pbmZvX2lzX3JlZygmcmluZy0+eGRw
-X3J4cSkpCj4gKwkJCXhkcF9yeHFfaW5mb19yZWcoJnJpbmctPnhkcF9yeHEsIHJpbmctPm5ldGRl
-diwKPiArCQkJCQkgcmluZy0+cXVldWVfaW5kZXgsCj4gKwkJCQkJIHJpbmctPnFfdmVjdG9yLT5u
-YXBpLm5hcGlfaWQpOwo+ICsJfQo+ICAgCj4gICAJcmluZy0+eHNrX3Bvb2wgPSBpNDBlX3hza19w
-b29sKHJpbmcpOwo+ICAgCWlmIChyaW5nLT54c2tfcG9vbCkgewo+ICsJCXhkcF9yeHFfaW5mb191
-bnJlZ19tZW1fbW9kZWwoJnJpbmctPnhkcF9yeHEpOwo+ICsKPiAgIAkJcmluZy0+cnhfYnVmX2xl
-biA9Cj4gICAJCSAgeHNrX3Bvb2xfZ2V0X3J4X2ZyYW1lX3NpemUocmluZy0+eHNrX3Bvb2wpOwo+
-ICAgCQkvKiBGb3IgQUZfWERQIFpDLCB3ZSBkaXNhbGxvdyBwYWNrZXRzIHRvIHNwYW4gb24KPiBA
-QCAtMTMyNjksNiArMTMyNzcsNDIgQEAgc3RhdGljIG5ldGRldl9mZWF0dXJlc190IGk0MGVfZmVh
-dHVyZXNfY2hlY2soc3RydWN0IHNrX2J1ZmYgKnNrYiwKPiAgIAlyZXR1cm4gZmVhdHVyZXMgJiB+
-KE5FVElGX0ZfQ1NVTV9NQVNLIHwgTkVUSUZfRl9HU09fTUFTSyk7Cj4gICB9Cj4gICAKPiArLyoq
-Cj4gKyAqIGk0MGVfdnNpX2Fzc2lnbl9icGZfcHJvZyAtIHNldCBvciBjbGVhciBicGYgcHJvZyBw
-b2ludGVyIG9uIFZTSQo+ICsgKiBAdnNpOiBWU0kgdG8gY2hhbmdlZAo+ICsgKiBAcHJvZzogWERQ
-IHByb2dyYW0KPiArICoqLwo+ICtzdGF0aWMgc3RydWN0IGJwZl9wcm9nICppNDBlX3ZzaV9hc3Np
-Z25fYnBmX3Byb2coc3RydWN0IGk0MGVfdnNpICp2c2ksCj4gKwkJCQkJCSBzdHJ1Y3QgYnBmX3By
-b2cgKnByb2cpCj4gK3sKPiArCXN0cnVjdCBicGZfcHJvZyAqb2xkX3Byb2c7Cj4gKwlpbnQgaTsK
-ClBsZWFzZSBjaGVjaywgaWYgYHVuc2lnbmVkIGludGAgY2FuIGJlIHVzZWQgZm9yIGxvb3AgdmFy
-aWFibGVzLiAoWW91IGNhbiAKY2hlY2sgd2l0aCBgc2NyaXB0cy9ibG9hdC1vLW1ldGVyYC4KCgpL
-aW5kIHJlZ2FyZHMsCgpQYXVsCgoKPiArCj4gKwlvbGRfcHJvZyA9IHhjaGcoJnZzaS0+eGRwX3By
-b2csIHByb2cpOwo+ICsKPiArCWZvciAoaSA9IDA7IGkgPCB2c2ktPm51bV9xdWV1ZV9wYWlyczsg
-aSsrKQo+ICsJCVdSSVRFX09OQ0UodnNpLT5yeF9yaW5nc1tpXS0+eGRwX3Byb2csIHZzaS0+eGRw
-X3Byb2cpOwo+ICsKPiArCWlmIChvbGRfcHJvZykKPiArCQlicGZfcHJvZ19wdXQob2xkX3Byb2cp
-Owo+ICsKPiArCXJldHVybiBvbGRfcHJvZzsKPiArfQo+ICsKPiArLyoqCj4gKyAqIGk0MGVfdnNp
-X3J4X25hcGlfc2NoZWR1bGUgLSBTY2hlZHVsZSBuYXBpIG9uIFJYIHF1ZXVlcyBmcm9tIFZTSQo+
-ICsgKiBAdnNpOiBWU0kgdG8gc2NoZWR1bGUgbmFwaSBvbgo+ICsgKi8KPiArc3RhdGljIHZvaWQg
-aTQwZV92c2lfcnhfbmFwaV9zY2hlZHVsZShzdHJ1Y3QgaTQwZV92c2kgKnZzaSkKPiArewo+ICsJ
-aW50IGk7Cj4gKwo+ICsJZm9yIChpID0gMDsgaSA8IHZzaS0+bnVtX3F1ZXVlX3BhaXJzOyBpKysp
-Cj4gKwkJaWYgKHZzaS0+eGRwX3JpbmdzW2ldLT54c2tfcG9vbCkKPiArCQkJKHZvaWQpaTQwZV94
-c2tfd2FrZXVwKHZzaS0+bmV0ZGV2LCBpLAo+ICsJCQkJCSAgICAgIFhEUF9XQUtFVVBfUlgpOwo+
-ICt9Cj4gKwo+ICAgLyoqCj4gICAgKiBpNDBlX3hkcF9zZXR1cCAtIGFkZC9yZW1vdmUgYW4gWERQ
-IHByb2dyYW0KPiAgICAqIEB2c2k6IFZTSSB0byBjaGFuZ2VkCj4gQEAgLTEzMjc5LDEwICsxMzMy
-MywxMSBAQCBzdGF0aWMgaW50IGk0MGVfeGRwX3NldHVwKHN0cnVjdCBpNDBlX3ZzaSAqdnNpLCBz
-dHJ1Y3QgYnBmX3Byb2cgKnByb2csCj4gICAJCQkgIHN0cnVjdCBuZXRsaW5rX2V4dF9hY2sgKmV4
-dGFjaykKPiAgIHsKPiAgIAlpbnQgZnJhbWVfc2l6ZSA9IHZzaS0+bmV0ZGV2LT5tdHUgKyBFVEhf
-SExFTiArIEVUSF9GQ1NfTEVOICsgVkxBTl9ITEVOOwo+ICsJYm9vbCBpc194ZHBfZW5hYmxlZCA9
-IGk0MGVfZW5hYmxlZF94ZHBfdnNpKHZzaSk7Cj4gKwlib29sIGlmX3J1bm5pbmcgPSBuZXRpZl9y
-dW5uaW5nKHZzaS0+bmV0ZGV2KTsKPiAgIAlzdHJ1Y3QgaTQwZV9wZiAqcGYgPSB2c2ktPmJhY2s7
-Cj4gICAJc3RydWN0IGJwZl9wcm9nICpvbGRfcHJvZzsKPiAtCWJvb2wgbmVlZF9yZXNldDsKPiAt
-CWludCBpOwo+ICsJaW50IHJldCA9IDA7Cj4gICAKPiAgIAkvKiBEb24ndCBhbGxvdyBmcmFtZXMg
-dGhhdCBzcGFuIG92ZXIgbXVsdGlwbGUgYnVmZmVycyAqLwo+ICAgCWlmIChmcmFtZV9zaXplID4g
-aTQwZV9jYWxjdWxhdGVfdnNpX3J4X2J1Zl9sZW4odnNpKSkgewo+IEBAIC0xMzI5MCw0OSArMTMz
-MzUsNjkgQEAgc3RhdGljIGludCBpNDBlX3hkcF9zZXR1cChzdHJ1Y3QgaTQwZV92c2kgKnZzaSwg
-c3RydWN0IGJwZl9wcm9nICpwcm9nLAo+ICAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgIAl9Cj4gICAK
-PiAtCS8qIFdoZW4gdHVybmluZyBYRFAgb24tPm9mZi9vZmYtPm9uIHdlIHJlc2V0IGFuZCByZWJ1
-aWxkIHRoZSByaW5ncy4gKi8KPiAtCW5lZWRfcmVzZXQgPSAoaTQwZV9lbmFibGVkX3hkcF92c2ko
-dnNpKSAhPSAhIXByb2cpOwo+IC0KPiAtCWlmIChuZWVkX3Jlc2V0KQo+IC0JCWk0MGVfcHJlcF9m
-b3JfcmVzZXQocGYpOwo+IC0KPiAgIAkvKiBWU0kgc2hhbGwgYmUgZGVsZXRlZCBpbiBhIG1vbWVu
-dCwganVzdCByZXR1cm4gRUlOVkFMICovCj4gICAJaWYgKHRlc3RfYml0KF9fSTQwRV9JTl9SRU1P
-VkUsIHBmLT5zdGF0ZSkpCj4gICAJCXJldHVybiAtRUlOVkFMOwo+ICAgCj4gLQlvbGRfcHJvZyA9
-IHhjaGcoJnZzaS0+eGRwX3Byb2csIHByb2cpOwo+ICsJaWYgKGlmX3J1bm5pbmcgJiYgIXRlc3Rf
-YW5kX3NldF9iaXQoX19JNDBFX1ZTSV9ET1dOLCB2c2ktPnN0YXRlKSkKPiArCQlpNDBlX2Rvd24o
-dnNpKTsKPiAgIAo+IC0JaWYgKG5lZWRfcmVzZXQpIHsKPiAtCQlpZiAoIXByb2cpCj4gLQkJCS8q
-IFdhaXQgdW50aWwgbmRvX3hza193YWtldXAgY29tcGxldGVzLiAqLwo+IC0JCQlzeW5jaHJvbml6
-ZV9yY3UoKTsKPiAtCQlpNDBlX3Jlc2V0X2FuZF9yZWJ1aWxkKHBmLCB0cnVlLCB0cnVlKTsKPiAr
-CW9sZF9wcm9nID0gaTQwZV92c2lfYXNzaWduX2JwZl9wcm9nKHZzaSwgcHJvZyk7Cj4gKwo+ICsJ
-dnNpID0gaTQwZV92c2lfcmVpbml0X3NldHVwKHZzaSwgdHJ1ZSk7Cj4gKwo+ICsJaWYgKCF2c2kp
-IHsKPiArCQlOTF9TRVRfRVJSX01TR19NT0QoZXh0YWNrLCAiRmFpbGVkIHRvIHJlaW5pdGlhbGl6
-ZSBWU0kgZHVyaW5nIFhEUCBzZXR1cCIpOwo+ICsJCWdvdG8gZXJyX3ZzaV9zZXR1cDsKPiAgIAl9
-Cj4gICAKPiAtCWlmICghaTQwZV9lbmFibGVkX3hkcF92c2kodnNpKSAmJiBwcm9nKSB7Cj4gLQkJ
-aWYgKGk0MGVfcmVhbGxvY19yeF9iaV96Yyh2c2ksIHRydWUpKQo+IC0JCQlyZXR1cm4gLUVOT01F
-TTsKPiAtCX0gZWxzZSBpZiAoaTQwZV9lbmFibGVkX3hkcF92c2kodnNpKSAmJiAhcHJvZykgewo+
-IC0JCWlmIChpNDBlX3JlYWxsb2NfcnhfYmlfemModnNpLCBmYWxzZSkpCj4gLQkJCXJldHVybiAt
-RU5PTUVNOwo+ICsJLyogYWxsb2NhdGUgZGVzY3JpcHRvcnMgKi8KPiArCXJldCA9IGk0MGVfdnNp
-X3NldHVwX3R4X3Jlc291cmNlcyh2c2kpOwo+ICsJaWYgKHJldCkgewo+ICsJCU5MX1NFVF9FUlJf
-TVNHX01PRChleHRhY2ssICJGYWlsZWQgdG8gY29uZmlndXJlIFRYIHJlc291cmNlcyBkdXJpbmcg
-WERQIHNldHVwIik7Cj4gKwkJZ290byBlcnJfc2V0dXBfdHg7Cj4gKwl9Cj4gKwlyZXQgPSBpNDBl
-X3ZzaV9zZXR1cF9yeF9yZXNvdXJjZXModnNpKTsKPiArCWlmIChyZXQpIHsKPiArCQlOTF9TRVRf
-RVJSX01TR19NT0QoZXh0YWNrLCAiRmFpbGVkIHRvIGNvbmZpZ3VyZSBSWCByZXNvdXJjZXMgZHVy
-aW5nIFhEUCBzZXR1cCIpOwo+ICsJCWdvdG8gZXJyX3NldHVwX3J4Owo+ICAgCX0KPiAgIAo+IC0J
-Zm9yIChpID0gMDsgaSA8IHZzaS0+bnVtX3F1ZXVlX3BhaXJzOyBpKyspCj4gLQkJV1JJVEVfT05D
-RSh2c2ktPnJ4X3JpbmdzW2ldLT54ZHBfcHJvZywgdnNpLT54ZHBfcHJvZyk7Cj4gKwlpZiAoIWlz
-X3hkcF9lbmFibGVkICYmIHByb2cpCj4gKwkJcmV0ID0gaTQwZV9yZWFsbG9jX3J4X2JpX3pjKHZz
-aSwgdHJ1ZSk7Cj4gKwllbHNlIGlmIChpc194ZHBfZW5hYmxlZCAmJiAhcHJvZykKPiArCQlyZXQg
-PSBpNDBlX3JlYWxsb2NfcnhfYmlfemModnNpLCBmYWxzZSk7Cj4gICAKPiAtCWlmIChvbGRfcHJv
-ZykKPiAtCQlicGZfcHJvZ19wdXQob2xkX3Byb2cpOwo+ICsJaWYgKHJldCkgewo+ICsJCU5MX1NF
-VF9FUlJfTVNHX01PRChleHRhY2ssICJGYWlsZWQgdG8gcmVhbGxvY2F0ZSBSWCByZXNvdXJjZXMg
-ZHVyaW5nIFhEUCBzZXR1cCIpOwo+ICsJCWdvdG8gZXJyX3JlYWxsb2M7Cj4gKwl9Cj4gICAKPiAt
-CS8qIEtpY2sgc3RhcnQgdGhlIE5BUEkgY29udGV4dCBpZiB0aGVyZSBpcyBhbiBBRl9YRFAgc29j
-a2V0IG9wZW4KPiAtCSAqIG9uIHRoYXQgcXVldWUgaWQuIFRoaXMgc28gdGhhdCByZWNlaXZpbmcg
-d2lsbCBzdGFydC4KPiAtCSAqLwo+IC0JaWYgKG5lZWRfcmVzZXQgJiYgcHJvZykKPiAtCQlmb3Ig
-KGkgPSAwOyBpIDwgdnNpLT5udW1fcXVldWVfcGFpcnM7IGkrKykKPiAtCQkJaWYgKHZzaS0+eGRw
-X3JpbmdzW2ldLT54c2tfcG9vbCkKPiAtCQkJCSh2b2lkKWk0MGVfeHNrX3dha2V1cCh2c2ktPm5l
-dGRldiwgaSwKPiAtCQkJCQkJICAgICAgWERQX1dBS0VVUF9SWCk7Cj4gKwlpZiAoaWZfcnVubmlu
-ZykKPiArCQlyZXQgPSBpNDBlX3VwKHZzaSk7Cj4gICAKPiAtCXJldHVybiAwOwo+ICsJaWYgKHJl
-dCkgewo+ICsJCU5MX1NFVF9FUlJfTVNHX01PRChleHRhY2ssICJGYWlsZWQgdG8gb3BlbiBWU0kg
-ZHVyaW5nIFhEUCBzZXR1cCIpOwo+ICsJCWdvdG8gZXJyX3JlYWxsb2M7Cj4gKwl9IGVsc2UgaWYg
-KHByb2cpIHsKPiArCQkvKiBLaWNrIHN0YXJ0IHRoZSBOQVBJIGNvbnRleHQgaWYgdGhlcmUgaXMg
-YW4gQUZfWERQIHNvY2tldCBvcGVuCj4gKwkJICogb24gdGhhdCBxdWV1ZSBpZC4gVGhpcyBzbyB0
-aGF0IHJlY2VpdmluZyB3aWxsIHN0YXJ0Lgo+ICsJCSAqLwo+ICsJCWk0MGVfdnNpX3J4X25hcGlf
-c2NoZWR1bGUodnNpKTsKPiArCX0KPiArCj4gKwlyZXR1cm4gcmV0Owo+ICsKPiArZXJyX3NldHVw
-X3J4Ogo+ICsJaTQwZV92c2lfZnJlZV9yeF9yZXNvdXJjZXModnNpKTsKPiArZXJyX3NldHVwX3R4
-Ogo+ICsJaTQwZV92c2lfZnJlZV90eF9yZXNvdXJjZXModnNpKTsKPiArZXJyX3ZzaV9zZXR1cDoK
-PiArCWlmICh2c2kgPT0gcGYtPnZzaVtwZi0+bGFuX3ZzaV0pCj4gKwkJaTQwZV9kb19yZXNldChw
-ZiwgSTQwRV9QRl9SRVNFVF9GTEFHLCB0cnVlKTsKPiArZXJyX3JlYWxsb2M6Cj4gKwlpNDBlX3Zz
-aV9hc3NpZ25fYnBmX3Byb2codnNpLCBvbGRfcHJvZyk7Cj4gKwlyZXR1cm4gcmV0Owo+ICAgfQo+
-ICAgCj4gICAvKioKPiBAQCAtMTQyNzQsMTMgKzE0MzM5LDE0IEBAIHN0YXRpYyBpbnQgaTQwZV92
-c2lfc2V0dXBfdmVjdG9ycyhzdHJ1Y3QgaTQwZV92c2kgKnZzaSkKPiAgIC8qKgo+ICAgICogaTQw
-ZV92c2lfcmVpbml0X3NldHVwIC0gcmV0dXJuIGFuZCByZWFsbG9jYXRlIHJlc291cmNlcyBmb3Ig
-YSBWU0kKPiAgICAqIEB2c2k6IHBvaW50ZXIgdG8gdGhlIHZzaS4KPiArICogQGlzX3hkcDogZmxh
-ZyBpbmRpY2F0aW5nIGlmIHRoaXMgaXMgcmVpbml0IGR1cmluZyBYRFAgc2V0dXAKPiAgICAqCj4g
-ICAgKiBUaGlzIHJlLWFsbG9jYXRlcyBhIHZzaSdzIHF1ZXVlIHJlc291cmNlcy4KPiAgICAqCj4g
-ICAgKiBSZXR1cm5zIHBvaW50ZXIgdG8gdGhlIHN1Y2Nlc3NmdWxseSBhbGxvY2F0ZWQgYW5kIGNv
-bmZpZ3VyZWQgVlNJIHN3IHN0cnVjdAo+ICAgICogb24gc3VjY2Vzcywgb3RoZXJ3aXNlIHJldHVy
-bnMgTlVMTCBvbiBmYWlsdXJlLgo+ICAgICoqLwo+IC1zdGF0aWMgc3RydWN0IGk0MGVfdnNpICpp
-NDBlX3ZzaV9yZWluaXRfc2V0dXAoc3RydWN0IGk0MGVfdnNpICp2c2kpCj4gK3N0YXRpYyBzdHJ1
-Y3QgaTQwZV92c2kgKmk0MGVfdnNpX3JlaW5pdF9zZXR1cChzdHJ1Y3QgaTQwZV92c2kgKnZzaSwg
-Ym9vbCBpc194ZHApCj4gICB7Cj4gICAJdTE2IGFsbG9jX3F1ZXVlX3BhaXJzOwo+ICAgCXN0cnVj
-dCBpNDBlX3BmICpwZjsKPiBAQCAtMTQzMTYsMTIgKzE0MzgyLDE0IEBAIHN0YXRpYyBzdHJ1Y3Qg
-aTQwZV92c2kgKmk0MGVfdnNpX3JlaW5pdF9zZXR1cChzdHJ1Y3QgaTQwZV92c2kgKnZzaSkKPiAg
-IAkvKiBVcGRhdGUgdGhlIEZXIHZpZXcgb2YgdGhlIFZTSS4gRm9yY2UgYSByZXNldCBvZiBUQyBh
-bmQgcXVldWUKPiAgIAkgKiBsYXlvdXQgY29uZmlndXJhdGlvbnMuCj4gICAJICovCj4gLQllbmFi
-bGVkX3RjID0gcGYtPnZzaVtwZi0+bGFuX3ZzaV0tPnRjX2NvbmZpZy5lbmFibGVkX3RjOwo+IC0J
-cGYtPnZzaVtwZi0+bGFuX3ZzaV0tPnRjX2NvbmZpZy5lbmFibGVkX3RjID0gMDsKPiAtCXBmLT52
-c2lbcGYtPmxhbl92c2ldLT5zZWlkID0gcGYtPm1haW5fdnNpX3NlaWQ7Cj4gLQlpNDBlX3ZzaV9j
-b25maWdfdGMocGYtPnZzaVtwZi0+bGFuX3ZzaV0sIGVuYWJsZWRfdGMpOwo+IC0JaWYgKHZzaS0+
-dHlwZSA9PSBJNDBFX1ZTSV9NQUlOKQo+IC0JCWk0MGVfcm1fZGVmYXVsdF9tYWNfZmlsdGVyKHZz
-aSwgcGYtPmh3Lm1hYy5wZXJtX2FkZHIpOwo+ICsJaWYgKCFpc194ZHApIHsKPiArCQllbmFibGVk
-X3RjID0gcGYtPnZzaVtwZi0+bGFuX3ZzaV0tPnRjX2NvbmZpZy5lbmFibGVkX3RjOwo+ICsJCXBm
-LT52c2lbcGYtPmxhbl92c2ldLT50Y19jb25maWcuZW5hYmxlZF90YyA9IDA7Cj4gKwkJcGYtPnZz
-aVtwZi0+bGFuX3ZzaV0tPnNlaWQgPSBwZi0+bWFpbl92c2lfc2VpZDsKPiArCQlpNDBlX3ZzaV9j
-b25maWdfdGMocGYtPnZzaVtwZi0+bGFuX3ZzaV0sIGVuYWJsZWRfdGMpOwo+ICsJCWlmICh2c2kt
-PnR5cGUgPT0gSTQwRV9WU0lfTUFJTikKPiArCQkJaTQwZV9ybV9kZWZhdWx0X21hY19maWx0ZXIo
-dnNpLCBwZi0+aHcubWFjLnBlcm1fYWRkcik7Cj4gKwl9Cj4gICAKPiAgIAkvKiBhc3NpZ24gaXQg
-c29tZSBxdWV1ZXMgKi8KPiAgIAlyZXQgPSBpNDBlX2FsbG9jX3JpbmdzKHZzaSk7Cj4gQEAgLTE1
-MDg3LDcgKzE1MTU1LDggQEAgc3RhdGljIGludCBpNDBlX3NldHVwX3BmX3N3aXRjaChzdHJ1Y3Qg
-aTQwZV9wZiAqcGYsIGJvb2wgcmVpbml0LCBib29sIGxvY2tfYWNxdWkKPiAgIAkJaWYgKHBmLT5s
-YW5fdnNpID09IEk0MEVfTk9fVlNJKQo+ICAgCQkJdnNpID0gaTQwZV92c2lfc2V0dXAocGYsIEk0
-MEVfVlNJX01BSU4sIHVwbGlua19zZWlkLCAwKTsKPiAgIAkJZWxzZSBpZiAocmVpbml0KQo+IC0J
-CQl2c2kgPSBpNDBlX3ZzaV9yZWluaXRfc2V0dXAocGYtPnZzaVtwZi0+bGFuX3ZzaV0pOwo+ICsJ
-CQl2c2kgPSBpNDBlX3ZzaV9yZWluaXRfc2V0dXAocGYtPnZzaVtwZi0+bGFuX3ZzaV0sCj4gKwkJ
-CQkJCSAgICBmYWxzZSk7Cj4gICAJCWlmICghdnNpKSB7Cj4gICAJCQlkZXZfaW5mbygmcGYtPnBk
-ZXYtPmRldiwgInNldHVwIG9mIE1BSU4gVlNJIGZhaWxlZFxuIik7Cj4gICAJCQlpNDBlX2Nsb3Vk
-X2ZpbHRlcl9leGl0KHBmKTsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1
-b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
-aXJlZC1sYW4K
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+
+The I225 hardware has a limitation that packets can only be scheduled
+in the [0, cycle-time] interval. So, scheduling a packet to the start
+of the next cycle doesn't usually work.
+
+To overcome this, we use the Transmit Descriptor first flag to indicates
+that a packet should be the first packet (from a queue) in a cycle
+according to the section 7.5.2.9.3.4 The First Packet on Each QBV Cycle
+in Intel Discrete I225/6 User Manual.
+
+But this only works if there was any packet from that queue during the
+current cycle, to avoid this issue, we issue an empty packet if that's
+not the case. Also require one more descriptor to be available, to take
+into account the empty packet that might be issued.
+
+Test Setup:
+
+Talker: Use l2_tai to generate the launchtime into packet load.
+
+Listener: Use timedump.c to compute the delta between packet arrival
+and LaunchTime packet payload.
+
+Test Result:
+
+Before:
+
+1666000610127300000,1666000610127300096,96,621273
+1666000610127400000,1666000610127400192,192,621274
+1666000610127500000,1666000610127500032,32,621275
+1666000610127600000,1666000610127600128,128,621276
+1666000610127700000,1666000610127700224,224,621277
+1666000610127800000,1666000610127800064,64,621278
+1666000610127900000,1666000610127900160,160,621279
+1666000610128000000,1666000610128000000,0,621280
+1666000610128100000,1666000610128100096,96,621281
+1666000610128200000,1666000610128200192,192,621282
+1666000610128300000,1666000610128300032,32,621283
+1666000610128400000,1666000610128301056,-98944,621284
+1666000610128500000,1666000610128302080,-197920,621285
+1666000610128600000,1666000610128302848,-297152,621286
+1666000610128700000,1666000610128303872,-396128,621287
+1666000610128800000,1666000610128304896,-495104,621288
+1666000610128900000,1666000610128305664,-594336,621289
+1666000610129000000,1666000610128306688,-693312,621290
+1666000610129100000,1666000610128307712,-792288,621291
+1666000610129200000,1666000610128308480,-891520,621292
+1666000610129300000,1666000610128309504,-990496,621293
+1666000610129400000,1666000610128310528,-1089472,621294
+1666000610129500000,1666000610128311296,-1188704,621295
+1666000610129600000,1666000610128312320,-1287680,621296
+1666000610129700000,1666000610128313344,-1386656,621297
+1666000610129800000,1666000610128314112,-1485888,621298
+1666000610129900000,1666000610128315136,-1584864,621299
+1666000610130000000,1666000610128316160,-1683840,621300
+1666000610130100000,1666000610128316928,-1783072,621301
+1666000610130200000,1666000610128317952,-1882048,621302
+1666000610130300000,1666000610128318976,-1981024,621303
+1666000610130400000,1666000610128319744,-2080256,621304
+1666000610130500000,1666000610128320768,-2179232,621305
+1666000610130600000,1666000610128321792,-2278208,621306
+1666000610130700000,1666000610128322816,-2377184,621307
+1666000610130800000,1666000610128323584,-2476416,621308
+1666000610130900000,1666000610128324608,-2575392,621309
+1666000610131000000,1666000610128325632,-2674368,621310
+1666000610131100000,1666000610128326400,-2773600,621311
+1666000610131200000,1666000610128327424,-2872576,621312
+1666000610131300000,1666000610128328448,-2971552,621313
+1666000610131400000,1666000610128329216,-3070784,621314
+1666000610131500000,1666000610131500032,32,621315
+1666000610131600000,1666000610131600128,128,621316
+1666000610131700000,1666000610131700224,224,621317
+
+After:
+
+1666073510646200000,1666073510646200064,64,2676462
+1666073510646300000,1666073510646300160,160,2676463
+1666073510646400000,1666073510646400256,256,2676464
+1666073510646500000,1666073510646500096,96,2676465
+1666073510646600000,1666073510646600192,192,2676466
+1666073510646700000,1666073510646700032,32,2676467
+1666073510646800000,1666073510646800128,128,2676468
+1666073510646900000,1666073510646900224,224,2676469
+1666073510647000000,1666073510647000064,64,2676470
+1666073510647100000,1666073510647100160,160,2676471
+1666073510647200000,1666073510647200256,256,2676472
+1666073510647300000,1666073510647300096,96,2676473
+1666073510647400000,1666073510647400192,192,2676474
+1666073510647500000,1666073510647500032,32,2676475
+1666073510647600000,1666073510647600128,128,2676476
+1666073510647700000,1666073510647700224,224,2676477
+1666073510647800000,1666073510647800064,64,2676478
+1666073510647900000,1666073510647900160,160,2676479
+1666073510648000000,1666073510648000000,0,2676480
+1666073510648100000,1666073510648100096,96,2676481
+1666073510648200000,1666073510648200192,192,2676482
+1666073510648300000,1666073510648300032,32,2676483
+1666073510648400000,1666073510648400128,128,2676484
+1666073510648500000,1666073510648500224,224,2676485
+1666073510648600000,1666073510648600064,64,2676486
+1666073510648700000,1666073510648700160,160,2676487
+1666073510648800000,1666073510648800000,0,2676488
+1666073510648900000,1666073510648900096,96,2676489
+1666073510649000000,1666073510649000192,192,2676490
+1666073510649100000,1666073510649100032,32,2676491
+1666073510649200000,1666073510649200128,128,2676492
+1666073510649300000,1666073510649300224,224,2676493
+1666073510649400000,1666073510649400064,64,2676494
+1666073510649500000,1666073510649500160,160,2676495
+1666073510649600000,1666073510649600000,0,2676496
+1666073510649700000,1666073510649700096,96,2676497
+1666073510649800000,1666073510649800192,192,2676498
+1666073510649900000,1666073510649900032,32,2676499
+1666073510650000000,1666073510650000128,128,2676500
+
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Co-developed-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Co-developed-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Malli C <mallikarjuna.chilakala@intel.com>
+Reported-by: kernel test robot <lkp@intel.com>
+
+---
+V1 -> V2: Fix error when compile with W=1 and rename the title/summary
+---
+---
+ drivers/net/ethernet/intel/igc/igc.h         |   2 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |   2 +
+ drivers/net/ethernet/intel/igc/igc_main.c    | 185 ++++++++++++++++---
+ 3 files changed, 161 insertions(+), 28 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 1e7e7071f64d..66a57636d329 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -94,6 +94,8 @@ struct igc_ring {
+ 	u8 queue_index;                 /* logical index of the ring*/
+ 	u8 reg_idx;                     /* physical index of the ring */
+ 	bool launchtime_enable;         /* true if LaunchTime is enabled */
++	ktime_t last_tx_cycle;          /* end of the cycle with a launchtime transmission */
++	ktime_t last_ff_cycle;          /* Last cycle with an active first flag */
+
+ 	u32 start_time;
+ 	u32 end_time;
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index f7311aeb293b..a7b22639cfcd 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -321,6 +321,8 @@
+ #define IGC_ADVTXD_L4LEN_SHIFT	8  /* Adv ctxt L4LEN shift */
+ #define IGC_ADVTXD_MSS_SHIFT	16 /* Adv ctxt MSS shift */
+
++#define IGC_ADVTXD_TSN_CNTX_FIRST	0x00000080
++
+ /* Transmit Control */
+ #define IGC_TCTL_EN		0x00000002 /* enable Tx */
+ #define IGC_TCTL_PSP		0x00000008 /* pad short packets */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 671255edf3c2..4c3beb425ae1 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1000,31 +1000,126 @@ static int igc_write_mc_addr_list(struct net_device *netdev)
+ 	return netdev_mc_count(netdev);
+ }
+
+-static __le32 igc_tx_launchtime(struct igc_adapter *adapter, ktime_t txtime)
++static __le32 igc_tx_launchtime(struct igc_ring *ring, ktime_t txtime,
++				bool *first_flag, bool *insert_empty)
+ {
++	struct igc_adapter *adapter = netdev_priv(ring->netdev);
+ 	ktime_t cycle_time = adapter->cycle_time;
+ 	ktime_t base_time = adapter->base_time;
++	ktime_t now = ktime_get_clocktai();
++	ktime_t baset_est, end_of_cycle;
+ 	u32 launchtime;
++	s64 n;
+
+-	/* FIXME: when using ETF together with taprio, we may have a
+-	 * case where 'delta' is larger than the cycle_time, this may
+-	 * cause problems if we don't read the current value of
+-	 * IGC_BASET, as the value writen into the launchtime
+-	 * descriptor field may be misinterpreted.
++	n = div64_s64(ktime_sub_ns(now, base_time), cycle_time);
++
++	baset_est = ktime_add_ns(base_time, cycle_time * (n));
++	end_of_cycle = ktime_add_ns(baset_est, cycle_time);
++
++	if (ktime_compare(txtime, end_of_cycle) >= 0) {
++		if (baset_est != ring->last_ff_cycle) {
++			*first_flag = true;
++			ring->last_ff_cycle = baset_est;
++
++			if (ktime_compare(txtime, ring->last_tx_cycle) > 0)
++				*insert_empty = true;
++		}
++	}
++
++	/* Introducing a window at end of cycle on which packets
++	 * potentially not honor launchtime. Window of 5us chosen
++	 * considering software update the tail pointer and packets
++	 * are dma'ed to packet buffer.
+ 	 */
+-	div_s64_rem(ktime_sub_ns(txtime, base_time), cycle_time, &launchtime);
++	if ((ktime_sub_ns(end_of_cycle, now) < 5 * NSEC_PER_USEC)) {
++		netdev_warn(ring->netdev, "Packet with txtime=%llu may not be honoured\n",
++			    txtime);
++	}
++
++	ring->last_tx_cycle = end_of_cycle;
++
++	launchtime = ktime_sub_ns(txtime, baset_est);
++	if (launchtime > 0)
++		div_s64_rem(launchtime, cycle_time, &launchtime);
++	else
++		launchtime = 0;
+
+ 	return cpu_to_le32(launchtime);
+ }
+
++static int igc_init_empty_frame(struct igc_ring *ring,
++				struct igc_tx_buffer *buffer,
++				struct sk_buff *skb)
++{
++	dma_addr_t dma;
++	unsigned int size;
++
++	size = skb_headlen(skb);
++
++	dma = dma_map_single(ring->dev, skb->data, size, DMA_TO_DEVICE);
++	if (dma_mapping_error(ring->dev, dma)) {
++		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
++		return -ENOMEM;
++	}
++
++	buffer->skb = skb;
++	buffer->protocol = 0;
++	buffer->bytecount = skb->len;
++	buffer->gso_segs = 1;
++	buffer->time_stamp = jiffies;
++	dma_unmap_len_set(buffer, len, skb->len);
++	dma_unmap_addr_set(buffer, dma, dma);
++
++	return 0;
++}
++
++static int igc_init_tx_empty_descriptor(struct igc_ring *ring,
++					struct sk_buff *skb,
++					struct igc_tx_buffer *first)
++{
++	union igc_adv_tx_desc *desc;
++	u32 cmd_type, olinfo_status;
++	int err;
++
++	if (!igc_desc_unused(ring))
++		return -EBUSY;
++
++	err = igc_init_empty_frame(ring, first, skb);
++	if (err)
++		return err;
++
++	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
++		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
++		   first->bytecount;
++	olinfo_status = first->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
++
++	desc = IGC_TX_DESC(ring, ring->next_to_use);
++	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
++	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
++	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(first, dma));
++
++	netdev_tx_sent_queue(txring_txq(ring), skb->len);
++
++	first->next_to_watch = desc;
++
++	ring->next_to_use++;
++	if (ring->next_to_use == ring->count)
++		ring->next_to_use = 0;
++
++	return 0;
++}
++
++#define IGC_EMPTY_FRAME_SIZE 60
++
+ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+-			    struct igc_tx_buffer *first,
++			    __le32 launch_time, bool first_flag,
+ 			    u32 vlan_macip_lens, u32 type_tucmd,
+ 			    u32 mss_l4len_idx)
+ {
+ 	struct igc_adv_tx_context_desc *context_desc;
+-	u16 i = tx_ring->next_to_use;
++	u16 i;
+
++	i = tx_ring->next_to_use;
+ 	context_desc = IGC_TX_CTXTDESC(tx_ring, i);
+
+ 	i++;
+@@ -1037,26 +1132,26 @@ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+ 	if (test_bit(IGC_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
+ 		mss_l4len_idx |= tx_ring->reg_idx << 4;
+
++	if (first_flag)
++		mss_l4len_idx |= IGC_ADVTXD_TSN_CNTX_FIRST;
++
+ 	context_desc->vlan_macip_lens	= cpu_to_le32(vlan_macip_lens);
+ 	context_desc->type_tucmd_mlhl	= cpu_to_le32(type_tucmd);
+ 	context_desc->mss_l4len_idx	= cpu_to_le32(mss_l4len_idx);
++	context_desc->launch_time	= launch_time;
++}
+
+-	/* We assume there is always a valid Tx time available. Invalid times
+-	 * should have been handled by the upper layers.
+-	 */
+-	if (tx_ring->launchtime_enable) {
+-		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
+-		ktime_t txtime = first->skb->tstamp;
++static inline bool igc_ipv6_csum_is_sctp(struct sk_buff *skb)
++{
++	unsigned int offset = 0;
+
+-		skb_txtime_consumed(first->skb);
+-		context_desc->launch_time = igc_tx_launchtime(adapter,
+-							      txtime);
+-	} else {
+-		context_desc->launch_time = 0;
+-	}
++	ipv6_find_hdr(skb, &offset, IPPROTO_SCTP, NULL, NULL);
++
++	return offset == skb_checksum_start_offset(skb);
+ }
+
+-static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
++static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first,
++			__le32 launch_time, bool first_flag)
+ {
+ 	struct sk_buff *skb = first->skb;
+ 	u32 vlan_macip_lens = 0;
+@@ -1096,7 +1191,8 @@ static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
+ 	vlan_macip_lens |= skb_network_offset(skb) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens, type_tucmd, 0);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, 0);
+ }
+
+ static int __igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
+@@ -1320,6 +1416,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+
+ static int igc_tso(struct igc_ring *tx_ring,
+ 		   struct igc_tx_buffer *first,
++		   __le32 launch_time, bool first_flag,
+ 		   u8 *hdr_len)
+ {
+ 	u32 vlan_macip_lens, type_tucmd, mss_l4len_idx;
+@@ -1406,8 +1503,8 @@ static int igc_tso(struct igc_ring *tx_ring,
+ 	vlan_macip_lens |= (ip.hdr - skb->data) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens,
+-			type_tucmd, mss_l4len_idx);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, mss_l4len_idx);
+
+ 	return 1;
+ }
+@@ -1415,11 +1512,14 @@ static int igc_tso(struct igc_ring *tx_ring,
+ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 				       struct igc_ring *tx_ring)
+ {
++	bool first_flag = false, insert_empty = false;
+ 	u16 count = TXD_USE_COUNT(skb_headlen(skb));
+ 	__be16 protocol = vlan_get_protocol(skb);
+ 	struct igc_tx_buffer *first;
++	__le32 launch_time = 0;
+ 	u32 tx_flags = 0;
+ 	unsigned short f;
++	ktime_t txtime;
+ 	u8 hdr_len = 0;
+ 	int tso = 0;
+
+@@ -1433,11 +1533,40 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 		count += TXD_USE_COUNT(skb_frag_size(
+ 						&skb_shinfo(skb)->frags[f]));
+
+-	if (igc_maybe_stop_tx(tx_ring, count + 3)) {
++	if (igc_maybe_stop_tx(tx_ring, count + 5)) {
+ 		/* this is a hard error */
+ 		return NETDEV_TX_BUSY;
+ 	}
+
++	if (!tx_ring->launchtime_enable)
++		goto done;
++
++	txtime = skb->tstamp;
++	skb->tstamp = ktime_set(0, 0);
++	launch_time = igc_tx_launchtime(tx_ring, txtime, &first_flag, &insert_empty);
++
++	if (insert_empty) {
++		struct igc_tx_buffer *empty_info;
++		struct sk_buff *empty;
++		void *data;
++
++		empty_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
++		empty = alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
++		if (!empty)
++			goto done;
++
++		data = skb_put(empty, IGC_EMPTY_FRAME_SIZE);
++		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
++
++		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
++
++		if (igc_init_tx_empty_descriptor(tx_ring,
++						 empty,
++						 empty_info) < 0)
++			dev_kfree_skb_any(empty);
++	}
++
++done:
+ 	/* record the location of the first descriptor for this packet */
+ 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+ 	first->type = IGC_TX_BUFFER_TYPE_SKB;
+@@ -1474,11 +1603,11 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 	first->tx_flags = tx_flags;
+ 	first->protocol = protocol;
+
+-	tso = igc_tso(tx_ring, first, &hdr_len);
++	tso = igc_tso(tx_ring, first, launch_time, first_flag, &hdr_len);
+ 	if (tso < 0)
+ 		goto out_drop;
+ 	else if (!tso)
+-		igc_tx_csum(tx_ring, first);
++		igc_tx_csum(tx_ring, first, launch_time, first_flag);
+
+ 	igc_tx_map(tx_ring, first, hdr_len);
+
+--
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
