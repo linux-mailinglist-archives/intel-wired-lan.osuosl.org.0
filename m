@@ -1,70 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 132A6610E09
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Oct 2022 12:01:26 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E34A611214
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Oct 2022 15:00:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED283414FA;
-	Fri, 28 Oct 2022 10:01:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED283414FA
+	by smtp3.osuosl.org (Postfix) with ESMTP id B0E7960AC0;
+	Fri, 28 Oct 2022 13:00:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0E7960AC0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1666951282;
-	bh=1qDmSGtRqHwN/3Ghd9cuhGu7DUm1QWsiTnuIRrICcRM=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=M7fiPTLSzRy+T+U2x4o4vJWwnE1r+UW5YFcAirMCR068sxFqm1eF8UizvrgLU6Ivz
-	 o0mvSefjcQlsrVYX36t92GQ+B6AA7S0e3btYbka29ySMf4bxs/fbvf4eVJ5+R3xpIq
-	 1BPJWX5/i6SOGPUcqnCPW7YUmC5RKPN6tR3rsPFVdhGWGc7EcgNiZjrRcaUcsuLmDp
-	 dOvNRB4Wf3cSgszRFX9Spkf6ABmJcfv0/PPdJyjwrla6vg8HsoIKqcYOG4kQYL7gRX
-	 iMAYrvKxkRiGeF9nIhsKdmYmyja8FqpSduTBa0AigwvHAKWwX5r38mdsZ3yK5zow6F
-	 H4teajYcbOtxg==
+	s=default; t=1666962049;
+	bh=JKvytGsmFagbLNgQUa1zdxOWCkBD8nk7zlqKADTPg0c=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=CEduhZYMtOBR27IPdDaBB2KU0DEI7HgpQxHxAR2k+9JY2FfOC9TYe0ubtxfUGaMQ5
+	 nvYauZLTvGQi2t2YwtjFxrXyr4EG9RfraTdxbHrzDPE8phZBtxh4GvuQ1yGJrt4ug9
+	 XbPggzThI9Fv6gICXHblvsPhr9GYVtSHzC6oIew5gU9MIQUXLkUMuPmtCy0vzPqzdB
+	 0ecmEF/S7CiWyuPtJvL2Yjlu4piR/LjylCLMBulGxuRxvWET3ZLhec28M9BsDHFYkZ
+	 B3L9rf5Hr6xIYnMq/7PvFr7NqcpN4gww3Yum818MEPVfCklo/ahVKpFSkE5rtcGrr4
+	 zYHNYSL9joRlA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 29bJtk8S43tX; Fri, 28 Oct 2022 10:01:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R3o_R4_XX_iB; Fri, 28 Oct 2022 13:00:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B9E53409B2;
-	Fri, 28 Oct 2022 10:01:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9E53409B2
+	by smtp3.osuosl.org (Postfix) with ESMTP id A84F760A9E;
+	Fri, 28 Oct 2022 13:00:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A84F760A9E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A441B1BF3E0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 10:01:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F2F001BF32B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 13:00:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 80FCF4014E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 10:01:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 80FCF4014E
+ by smtp3.osuosl.org (Postfix) with ESMTP id CD49060A9E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 13:00:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD49060A9E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UW9rKhvNffgH for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Oct 2022 10:01:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0642400AF
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C0642400AF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 10:01:13 +0000 (UTC)
-Received: from [141.14.13.43] (g298.RadioFreeInternet.molgen.mpg.de
- [141.14.13.43])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 870D161EA192A;
- Fri, 28 Oct 2022 12:01:10 +0200 (CEST)
-Message-ID: <1bd57adb-49f1-3b90-541c-8d3d10963ccb@molgen.mpg.de>
-Date: Fri, 28 Oct 2022 12:01:10 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 875X99cVCk9b for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Oct 2022 13:00:29 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D351460A7E
+Received: from mail-qv1-xf31.google.com (mail-qv1-xf31.google.com
+ [IPv6:2607:f8b0:4864:20::f31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D351460A7E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 13:00:28 +0000 (UTC)
+Received: by mail-qv1-xf31.google.com with SMTP id h10so3985340qvq.7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Oct 2022 06:00:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5iJgtqpqiJVn//zhOfDmx7Kv+t48Z9oElzV8cQV4k8Q=;
+ b=25BQN3MA8gocaqx6lAZ950P8aFjgKhLWnPR0qtxvIdNbdloUg6+zAlcJlccMn+th02
+ wUk9jU1IvdbMmrFnM9oYoVY6W3tlRS+Kme5SujU5ulLPSDk93BwhYUB5aNUkxmMFofO5
+ kKpY1FS2rnyENeAYUHrDaXN8lkStm89qwOx3owgyfBpTxtUlZqkistV8k3ldgwAywxGg
+ jEfjgDqheis7QFwqvFrQdTME2rbcZfJwkyW838SHtjKhocnvmogsAOpQJZJAGIthguIc
+ DACIq95655SoMVcB6dlexjeQNmJhFFi2/okg+jttWE/ZvsL3FlNFnTiusi0sd2Q5FbD+
+ fSQA==
+X-Gm-Message-State: ACrzQf26J2KWn7/K7lETv/g/SRxzSKZ9/L9Qp/Gqk3wCdKhoEFuADBzQ
+ ZSUOMHwMpyViaSxXXqSikmUyaApBM1kWriOt
+X-Google-Smtp-Source: AMsMyM7PmTVcA7PMinrbHKlUjxdSN3EiXgN4d3rE8Fu3scAMRdj2UzkM3odDl9Tmj7UjN9XWOSa9DA==
+X-Received: by 2002:a17:902:b90b:b0:186:8a4d:d4b7 with SMTP id
+ bf11-20020a170902b90b00b001868a4dd4b7mr33134131plb.129.1666962015777; 
+ Fri, 28 Oct 2022 06:00:15 -0700 (PDT)
+Received: from fedora.flets-east.jp ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ by smtp.gmail.com with ESMTPSA id
+ v19-20020a17090ac91300b002036006d65bsm2512524pjt.39.2022.10.28.06.00.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Oct 2022 06:00:15 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+To: 
+Date: Fri, 28 Oct 2022 22:00:00 +0900
+Message-Id: <20221028130000.7318-1-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.0
-Content-Language: en-US
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-References: <20221013050044.11862-1-akihiko.odaki@daynix.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20221013050044.11862-1-akihiko.odaki@daynix.com>
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Fix TX dispatch condition
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=5iJgtqpqiJVn//zhOfDmx7Kv+t48Z9oElzV8cQV4k8Q=;
+ b=OYyI1D0//SYHg7b9sDx9vjzWuMkJE0shNqa2Ap8f/NCqkVLJzjc+VklmLtIPloaXN/
+ bcAk4bSk4VpzlPj13/R1bBnPUM5Qm8iMvZq8utmw3hiV1k1tRJwDYZBeAOJsOVPTm75I
+ CKSRzSfgiTeWhtkm5GuQVZpD+1iTHJp6chiq+v7s0ZFpqU53u4FTWEMoLqUFCnL/KqCl
+ x0nm9C4ORjC47udpZ2tXLPfgAA28yQHwo9lh29uFutgVJ4jdNWR8r4qtc+xVra76ILdX
+ QMwFkn5XQReuxrsDbdnzfuCipMkOxzzpTFJNiNbGt5NWk16rMldf2cpA5MYmxASsmzn9
+ QPOQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=daynix-com.20210112.gappssmtp.com
+ header.i=@daynix-com.20210112.gappssmtp.com header.a=rsa-sha256
+ header.s=20210112 header.b=OYyI1D0/
+Subject: [Intel-wired-lan] [PATCH v2] e1000e: Fix TX dispatch condition
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,56 +106,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Yuri Benditovich <yuri.benditovich@daynix.com>,
  Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
  Yan Vugenfirer <yan@daynix.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBBa2loaWtvLAoKClRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHRoZSBwYXRjaC4KCkFtIDEz
-LjEwLjIyIHVtIDA3OjAwIHNjaHJpZWIgQWtpaGlrbyBPZGFraToKPiBlMTAwMF94bWl0X2ZyYW1l
-IGlzIGV4cGVjdGVkIHRvIHN0b3AgdGhlIHF1ZXVlIGFuZCBkaXNwYXRjaCBmcmFtZXMgdG8KPiBo
-YXJkd2FyZSBpZiB0aGVyZSBpcyBub3Qgc3VmZmljaWVudCBzcGFjZSBmb3IgdGhlIG5leHQgZnJh
-bWUgaW4gdGhlCj4gYnVmZmVyLCBidXQgc29tZXRpbWVzIGl0IGZhaWxlZCB0byBkbyBzbyBiZWNh
-dXNlIHRoZSBlc3RpbWF0ZWQgbWF4bWl1bQo+IHNpemUgb2YgZnJhbWUgd2FzIHdyb25nLiBBcyB0
-aGUgY29uc2VxdWVuY2UsIHRoZSBsYXRlciBpbnZvY2F0aW9uIG9mCj4gZTEwMDBfeG1pdF9mcmFt
-ZSBmYWlsZWQgd2l0aCBORVRERVZfVFhfQlVTWSwgYW5kIHRoZSBmcmFtZSBpbiB0aGUgYnVmZmVy
-Cj4gcmVtYWluZWQgZm9yZXZlciwgcmVzdWx0aW5nIGluIGEgd2F0Y2hkb2cgZmFpbHVyZS4KPiAK
-PiBUaGlzIGNoYW5nZSBmaXhlcyB0aGUgZXN0aW1hdGVkIHNpemUgYnkgbWFraW5nIGl0IG1hdGNo
-IHdpdGggdGhlCj4gY29uZGl0aW9uIGZvciBORVRERVZfVFhfQlVTWS4gQXBwYXJlbnRseSwgdGhl
-IG9sZCBlc3RpbWF0aW9uIGZhaWxlZCB0bwo+IGFjY291bnQgZm9yIHRoZSBmb2xsb3dpbmcgbGlu
-ZXMgd2hpY2ggZGV0ZXJtaW5lcyB0aGUgc3BhY2UgcmVxdWlyZW1lbnQKPiBmb3Igbm90IGNhdXNp
-bmcgTkVUREVWX1RYX0JVU1k6Cj4+IAkvKiByZXNlcnZlIGEgZGVzY3JpcHRvciBmb3IgdGhlIG9m
-ZmxvYWQgY29udGV4dCAqLwo+PiAJaWYgKChtc3MpIHx8IChza2ItPmlwX3N1bW1lZCA9PSBDSEVD
-S1NVTV9QQVJUSUFMKSkKPj4gCQljb3VudCsrOwo+PiAJY291bnQrKzsKPj4KPj4gCWNvdW50ICs9
-IERJVl9ST1VORF9VUChsZW4sIGFkYXB0ZXItPnR4X2ZpZm9fbGltaXQpOwoKSeKAmWQganVzdCB1
-c2UgTWFya2Rvd24gc3ludGF4LCBhbmQgaW5kZW50IGJ5IGZvdXIgc3BhY2VzIHdpdGhvdXQgPiBm
-b3IgCmNpdGF0aW9uLgoKPiBUaGlzIGlzc3VlIHdhcyBmb3VuZCB3aXRoIGh0dHAtc3RyZXNzMDIg
-dGVzdCBpbmNsdWRlZCBpbiBMaW51eCBUZXN0Cj4gUHJvamVjdCAyMDIyMDkzMC4KClNvIGl0IHdh
-cyByZXByb2R1Y2VkIGluIFFFTVU/IEZvciBjb252ZW5pZW5jZSwgaXTigJlkIGJlIGdyZWF0IGlm
-IHlvdSAKYWRkZWQgdGhlIFFFTVUgY29tbWFuZC4KCkFsc28sIGRvIHlvdSBrbm93IGlmIHRoaXMg
-aXMgYSByZWdyZXNzaW9uPyBJZiBzbywgaXTigJlkIGJlIGdyZWF0IGlmIHlvdSAKYWRkZWQgdGhl
-IEZpeGVzOiB0YWcuCgoKS2luZCByZWdhcmRzLAoKUGF1bAoKCj4gU2lnbmVkLW9mZi1ieTogQWtp
-aGlrbyBPZGFraSA8YWtpaGlrby5vZGFraUBkYXluaXguY29tPgo+IC0tLQo+ICAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIHwgNCArKy0tCj4gICAxIGZpbGUgY2hh
-bmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMgYi9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMKPiBpbmRleCAzMjFmMmE5NWFlM2EuLmRhMTEz
-ZjUwMTFlOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
-bmV0ZGV2LmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2
-LmMKPiBAQCAtNTkzNiw5ICs1OTM2LDkgQEAgc3RhdGljIG5ldGRldl90eF90IGUxMDAwX3htaXRf
-ZnJhbWUoc3RydWN0IHNrX2J1ZmYgKnNrYiwKPiAgIAkJZTEwMDBfdHhfcXVldWUodHhfcmluZywg
-dHhfZmxhZ3MsIGNvdW50KTsKPiAgIAkJLyogTWFrZSBzdXJlIHRoZXJlIGlzIHNwYWNlIGluIHRo
-ZSByaW5nIGZvciB0aGUgbmV4dCBzZW5kLiAqLwo+ICAgCQllMTAwMF9tYXliZV9zdG9wX3R4KHR4
-X3JpbmcsCj4gLQkJCQkgICAgKE1BWF9TS0JfRlJBR1MgKgo+ICsJCQkJICAgICgoTUFYX1NLQl9G
-UkFHUyArIDEpICoKPiAgIAkJCQkgICAgIERJVl9ST1VORF9VUChQQUdFX1NJWkUsCj4gLQkJCQkJ
-CSAgYWRhcHRlci0+dHhfZmlmb19saW1pdCkgKyAyKSk7Cj4gKwkJCQkJCSAgYWRhcHRlci0+dHhf
-Zmlmb19saW1pdCkgKyA0KSk7Cj4gICAKPiAgIAkJaWYgKCFuZXRkZXZfeG1pdF9tb3JlKCkgfHwK
-PiAgIAkJICAgIG5ldGlmX3htaXRfc3RvcHBlZChuZXRkZXZfZ2V0X3R4X3F1ZXVlKG5ldGRldiwg
-MCkpKSB7Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCklu
-dGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0
-cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+e1000_xmit_frame is expected to stop the queue and dispatch frames to
+hardware if there is not sufficient space for the next frame in the
+buffer, but sometimes it failed to do so because the estimated maxmium
+size of frame was wrong. As the consequence, the later invocation of
+e1000_xmit_frame failed with NETDEV_TX_BUSY, and the frame in the buffer
+remained forever, resulting in a watchdog failure.
+
+This change fixes the estimated size by making it match with the
+condition for NETDEV_TX_BUSY. Apparently, the old estimation failed to
+account for the following lines which determines the space requirement
+for not causing NETDEV_TX_BUSY:
+    ```
+    	/* reserve a descriptor for the offload context */
+    	if ((mss) || (skb->ip_summed == CHECKSUM_PARTIAL))
+    		count++;
+    	count++;
+
+    	count += DIV_ROUND_UP(len, adapter->tx_fifo_limit);
+    ```
+
+This issue was found when running http-stress02 test included in Linux
+Test Project 20220930 on QEMU with the following commandline:
+```
+qemu-system-x86_64 -M q35,accel=kvm -m 8G -smp 8
+	-drive if=virtio,format=raw,file=root.img,file.locking=on
+	-device e1000e,netdev=netdev
+	-netdev tap,script=ifup,downscript=no,id=netdev
+```
+
+Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 49e926959ad3..55cf2f62bb30 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -5936,9 +5936,9 @@ static netdev_tx_t e1000_xmit_frame(struct sk_buff *skb,
+ 		e1000_tx_queue(tx_ring, tx_flags, count);
+ 		/* Make sure there is space in the ring for the next send. */
+ 		e1000_maybe_stop_tx(tx_ring,
+-				    (MAX_SKB_FRAGS *
++				    ((MAX_SKB_FRAGS + 1) *
+ 				     DIV_ROUND_UP(PAGE_SIZE,
+-						  adapter->tx_fifo_limit) + 2));
++						  adapter->tx_fifo_limit) + 4));
+ 
+ 		if (!netdev_xmit_more() ||
+ 		    netif_xmit_stopped(netdev_get_tx_queue(netdev, 0))) {
+-- 
+2.37.3
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
