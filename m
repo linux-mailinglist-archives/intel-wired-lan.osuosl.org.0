@@ -1,66 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22CCE612762
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Oct 2022 05:55:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05230612763
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Oct 2022 05:56:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2842F40442;
-	Sun, 30 Oct 2022 04:55:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2842F40442
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8D8348136A;
+	Sun, 30 Oct 2022 04:56:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D8348136A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667105757;
-	bh=zxN0zIVUO4I0ewRqmdhljU+0RGSs4FiF93k2PvslNzA=;
+	s=default; t=1667105760;
+	bh=m38cJ4VfQWC2BhL423BZLU3wj8R+MjCp4ynD8/u/1b4=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yt82fs+bD2WM6FeKW0yxubGsJz3lRYBScensBPCAUmNlOScLt/ZZbllvSu6uRMgFB
-	 VL+JfNFuHGNInAW95hsZ97rHYI7yW5zNmOnL8Vce0Loq1XIxL6rI6Ipti3XLl+TwiA
-	 g7hdBBdtesbaEcHyoSg2FlnxIwFL8t/hABs/HeR3HI4kDAHUb0CtYBZOBSbwRBsIPF
-	 TEaE5SDrm7d46MnOA2Vdp9cZ3TpwAXqxKXHoBal55+NPIZAdW6WrFPgzs/HUQmjZeW
-	 PwlThHhjovClwgytJ03bgOO2+SlJ3Had0wvk4SW5uvJHqGZt/X4hbOSn+RjGGXtDRI
-	 UGc8Sj9GoQqlg==
+	b=BMIcc/NbSVjrNc6wcZt2M4uvYndaeXKX8ms5Y3OMX7sEdKQWUMrC8BK0UJC66BIy/
+	 JanFKi/PJanHMMyoZU7ba5o/1ZsL4eRBZVGB7qFMEFDDoX5G2G8Mvkm6hWj1MtlCAy
+	 C/RlOxt9VQiVdntM/XZB6v3+fj8r3HVGdAtdK8n21wTbnNAqLeSSBnwfDmYQRp0r07
+	 eJb0YHAXVxXquOa4fvWf0rDqQbISTCCcjXhxZhMtdJigNqhSoQtQWxse8sY4lCgQBI
+	 JoDPn6x71U7M7+oByGslgd6BNvo1OJj4vV1iT/LINVKp+ijITa1OY+aWsVJnnEe9s2
+	 yKnyrkzl3SVYw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iqrexgt43PZb; Sun, 30 Oct 2022 04:55:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Z6FTFh_sUsKm; Sun, 30 Oct 2022 04:55:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9C4F040330;
-	Sun, 30 Oct 2022 04:55:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C4F040330
+	by smtp1.osuosl.org (Postfix) with ESMTP id 99D6781344;
+	Sun, 30 Oct 2022 04:55:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 99D6781344
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA62F1BF36A
- for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EB2421BF36A
+ for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0984A4046A
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3DAF64046B
  for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0984A4046A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DAF64046B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H--1ajM23fMC for <intel-wired-lan@osuosl.org>;
+ with ESMTP id tnVxj711YkLk for <intel-wired-lan@osuosl.org>;
  Sun, 30 Oct 2022 04:55:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 367E140489
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 48EC9404DF
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 367E140489
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 48EC9404DF
  for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="335367897"
-X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="335367897"
+X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="335367899"
+X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="335367899"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2022 21:55:18 -0700
+ 29 Oct 2022 21:55:20 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="635707901"
-X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="635707901"
+X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="635707905"
+X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="635707905"
 Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga007.fm.intel.com with ESMTP; 29 Oct 2022 21:55:17 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 29 Oct 2022 21:55:18 -0700
 From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Sun, 30 Oct 2022 12:53:23 +0800
-Message-Id: <20221030045324.25207-5-muhammad.husaini.zulkifli@intel.com>
+Date: Sun, 30 Oct 2022 12:53:24 +0800
+Message-Id: <20221030045324.25207-6-muhammad.husaini.zulkifli@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20221030045324.25207-1-muhammad.husaini.zulkifli@intel.com>
 References: <20221030045324.25207-1-muhammad.husaini.zulkifli@intel.com>
@@ -69,19 +69,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1667105737; x=1698641737;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references;
- bh=KCXuuDdh4Ms5WBXfMyv3BXg661TcxbcBOY7uN31EVmY=;
- b=gVt7gISb23xlbSsuvD0ju5Ndi89cdpQ4/Iujzyu1tiCpz7EkOIIg0Ikw
- Uyovm1TTSRHYOWgYFTk2FT2VVPdko3alKalNvgHe4BweNfPv8YtsGutBi
- mMrt2I0EXUGQDsq9AZY3SUax5y+AEc2oU1861dXOueWCIJ8gxS3Zu69on
- cSpwQOS+0z41tv9J38OsJq3Enu+n7mpwh3kxY1ZwC4dA0EEZjd7vngLYd
- 4UBJVAY3Ya0T/8HGV4An30GWijWifQjds3QLKe+nbf6vSzfucIQqVrSdL
- qstm2rKLq8uKqeVS9n0Ha4mQsTIJGfsCHYJhKYXzCfuMQ2Lu7Ny75i2bb
+ bh=0FfqC7/W+AwOcM5405J9hZdI+BhYQD5j5JLUvFMFp/I=;
+ b=ah2aU5rpXcL+R01R3xTfGFR1uLQhA1bVqq0cI9Ay7ZznOB62Cs7WA8HL
+ eOOJhgBzvCD8POFbmUvyHCuFEg1wUK/ZVqcz5jAoodwijKlqQ/qzpzsJT
+ tuXfgSyNlCgnyYXUijvgdWfgF/lqJf1mOefbGK/EYKCs1nLr5eSiiyepR
+ P7d/3ZOSjLFOYc7d4puYaMjEsptX+QlxAenZ1/UrWnuE7BwaSmd1yfjBg
+ AMWD+89Qo+KDuYXZqWuGzF1N01kz2OAup+mvqtkmW/aOLfSb7hQ4VloHH
+ A69L+LvfSEOfN/4TWO+v+YyI8NNiiH0iUa7wxPHVZyorlDc7EhhCBrUYs
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gVt7gISb
-Subject: [Intel-wired-lan] [PATCH 4/5] igc: enable Qbv configuration for 2nd
- GCL
+ header.a=rsa-sha256 header.s=Intel header.b=ah2aU5rp
+Subject: [Intel-wired-lan] [PATCH 5/5] igc: Set Qbv start_time and end_time
+ to end_time if not being configured in GCL
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,122 +103,58 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Tan Tee Min <tee.min.tan@linux.intel.com>
 
-Make reset task only executes for i225 and Qbv disabling to allow
-i226 configure for 2nd GCL without resetting the adapter.
+The default setting of end_time minus start_time is whole 1 second.
+Thus, if it's not being configured in any GCL entry then it will be
+staying at original 1 second.
 
-In i226, Tx won't hang if there is a GCL is already running, so in
-this case we don't need to set FutScdDis bit.
+This patch is changing the start_time and end_time to be end_time as
+if setting zero will be having weird HW behavior where the gate will
+not be fully closed.
 
 Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
 Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c |  9 +++++----
- drivers/net/ethernet/intel/igc/igc_tsn.c  | 13 +++++++++----
- drivers/net/ethernet/intel/igc/igc_tsn.h  |  2 +-
- 3 files changed, 15 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 9784af3afc57..0b05d889db7d 100644
+index 0b05d889db7d..3dfed282f726 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5901,7 +5901,7 @@ static int igc_tsn_enable_launchtime(struct igc_adapter *adapter,
- 	if (err)
- 		return err;
- 
--	return igc_tsn_offload_apply(adapter);
-+	return igc_tsn_offload_apply(adapter, qopt->enable);
- }
- 
- static int igc_tsn_clear_schedule(struct igc_adapter *adapter)
-@@ -5925,6 +5925,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 				 struct tc_taprio_qopt_offload *qopt)
- {
- 	bool queue_configured[IGC_MAX_TX_QUEUES] = { };
-+	struct igc_hw *hw = &adapter->hw;
+@@ -5928,6 +5928,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 	struct igc_hw *hw = &adapter->hw;
  	u32 start_time = 0, end_time = 0;
  	size_t n;
++	int i;
  
-@@ -5933,7 +5934,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 	if (!qopt->enable)
- 		return igc_tsn_clear_schedule(adapter);
+ 	adapter->qbv_enable = qopt->enable;
  
--	if (adapter->base_time)
-+	if (igc_is_device_id_i225(hw) && adapter->base_time)
- 		return -EALREADY;
+@@ -5945,7 +5946,6 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
  
- 	if (!validate_schedule(adapter, qopt))
-@@ -5999,7 +6000,7 @@ static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
- 	if (err)
- 		return err;
+ 	for (n = 0; n < qopt->num_entries; n++) {
+ 		struct tc_taprio_sched_entry *e = &qopt->entries[n];
+-		int i;
  
--	return igc_tsn_offload_apply(adapter);
-+	return igc_tsn_offload_apply(adapter, qopt->enable);
- }
+ 		end_time += e->interval;
  
- static int igc_save_cbs_params(struct igc_adapter *adapter, int queue,
-@@ -6067,7 +6068,7 @@ static int igc_tsn_enable_cbs(struct igc_adapter *adapter,
- 	if (err)
- 		return err;
- 
--	return igc_tsn_offload_apply(adapter);
-+	return igc_tsn_offload_apply(adapter, qopt->enable);
- }
- 
- static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index d7832cf1bc5b..fffea07fa05e 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -232,7 +232,7 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		wr32(IGC_TXQCTL(i), txqctl);
+@@ -5984,6 +5984,18 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 		start_time += e->interval;
  	}
  
--	tqavctrl = rd32(IGC_TQAVCTRL);
-+	tqavctrl = rd32(IGC_TQAVCTRL) & ~(IGC_TQAVCTRL_FUTSCDDIS);
- 	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
- 
- 	cycle = adapter->cycle_time;
-@@ -249,8 +249,11 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 	} else {
- 		/* According to datasheet section 7.5.2.9.3.3, FutScdDis bit
- 		 * has to be configured before the cycle time and base time.
-+		 * Tx won't hang if there is a GCL is already running,
-+		 * so in this case we don't need to set FutScdDis.
- 		 */
--		if (igc_is_device_id_i226(hw))
-+		if (igc_is_device_id_i226(hw) &&
-+		    !(rd32(IGC_BASET_H) || rd32(IGC_BASET_L)))
- 			tqavctrl |= IGC_TQAVCTRL_FUTSCDDIS;
- 	}
- 
-@@ -293,11 +296,13 @@ int igc_tsn_reset(struct igc_adapter *adapter)
- 	return err;
++	/* Check whether a queue gets configured.
++	 * If not, set the start and end time to be end time.
++	 */
++	for (i = 0; i < adapter->num_tx_queues; i++) {
++		if (!queue_configured[i]) {
++			struct igc_ring *ring = adapter->tx_ring[i];
++
++			ring->start_time = end_time;
++			ring->end_time = end_time;
++		}
++	}
++
+ 	return 0;
  }
- 
--int igc_tsn_offload_apply(struct igc_adapter *adapter)
-+int igc_tsn_offload_apply(struct igc_adapter *adapter, bool enable)
- {
-+	struct igc_hw *hw = &adapter->hw;
- 	int err;
- 
--	if (netif_running(adapter->netdev)) {
-+	if (netif_running(adapter->netdev) &&
-+	    (igc_is_device_id_i225(hw) || !enable)) {
- 		schedule_work(&adapter->reset_task);
- 		return 0;
- 	}
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-index b53e6af560b7..631222bb6eb5 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-@@ -4,7 +4,7 @@
- #ifndef _IGC_TSN_H_
- #define _IGC_TSN_H_
- 
--int igc_tsn_offload_apply(struct igc_adapter *adapter);
-+int igc_tsn_offload_apply(struct igc_adapter *adapter, bool enable);
- int igc_tsn_reset(struct igc_adapter *adapter);
- void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter);
  
 -- 
 2.17.1
