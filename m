@@ -1,87 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05230612763
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Oct 2022 05:56:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A4F0612A53
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Oct 2022 12:24:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8D8348136A;
-	Sun, 30 Oct 2022 04:56:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D8348136A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 905EC403BF;
+	Sun, 30 Oct 2022 11:24:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 905EC403BF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667105760;
-	bh=m38cJ4VfQWC2BhL423BZLU3wj8R+MjCp4ynD8/u/1b4=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1667129075;
+	bh=0jeZxo69v4iYKceVY1wfF3mWV3gWOpTLpajgV+5bcQk=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=BMIcc/NbSVjrNc6wcZt2M4uvYndaeXKX8ms5Y3OMX7sEdKQWUMrC8BK0UJC66BIy/
-	 JanFKi/PJanHMMyoZU7ba5o/1ZsL4eRBZVGB7qFMEFDDoX5G2G8Mvkm6hWj1MtlCAy
-	 C/RlOxt9VQiVdntM/XZB6v3+fj8r3HVGdAtdK8n21wTbnNAqLeSSBnwfDmYQRp0r07
-	 eJb0YHAXVxXquOa4fvWf0rDqQbISTCCcjXhxZhMtdJigNqhSoQtQWxse8sY4lCgQBI
-	 JoDPn6x71U7M7+oByGslgd6BNvo1OJj4vV1iT/LINVKp+ijITa1OY+aWsVJnnEe9s2
-	 yKnyrkzl3SVYw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z6FTFh_sUsKm; Sun, 30 Oct 2022 04:55:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 99D6781344;
-	Sun, 30 Oct 2022 04:55:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 99D6781344
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB2421BF36A
- for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3DAF64046B
- for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DAF64046B
+	b=vzdElPf6pZRjOwRQwUApmXWL+tfRQQq1wu3DT79L6Q2VdSC5b0qKRXQqlMqB8MvnL
+	 LYZilZEIxUXwtJOIydlY/italevBoDmSgqLePGxDT04834FfvbS8FB+5Oyg/ip5X+D
+	 dJISTqMiVghLIhHiedHuOXJxhiCTodnvHgTipufZpr7eBLV/tU9mCxfTB8vJetSEmM
+	 JW+6b8oqVxhkxpkBmtDNd9GN0nlcqBUHjNZGivAYKJdzH2AO4sPLOvxYFkCNqTE/Fm
+	 kns7n7ILxc3PKmz5GZaewat8P4neMLqoXPrevfEYgNTXuCCVePfPrq5UhkGrmc0Hpu
+	 03q9T8RyFV3eg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tnVxj711YkLk for <intel-wired-lan@osuosl.org>;
- Sun, 30 Oct 2022 04:55:37 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4x2Zfte3Myfs; Sun, 30 Oct 2022 11:24:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id ABE5A40399;
+	Sun, 30 Oct 2022 11:24:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ABE5A40399
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4226D1BF2EB
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Oct 2022 11:24:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1802640355
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Oct 2022 11:24:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1802640355
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bHBnkqbLO4nW for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 30 Oct 2022 11:24:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 48EC9404DF
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 48EC9404DF
- for <intel-wired-lan@osuosl.org>; Sun, 30 Oct 2022 04:55:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="335367899"
-X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="335367899"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2022 21:55:20 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="635707905"
-X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="635707905"
-Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga007.fm.intel.com with ESMTP; 29 Oct 2022 21:55:18 -0700
-From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Sun, 30 Oct 2022 12:53:24 +0800
-Message-Id: <20221030045324.25207-6-muhammad.husaini.zulkifli@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20221030045324.25207-1-muhammad.husaini.zulkifli@intel.com>
-References: <20221030045324.25207-1-muhammad.husaini.zulkifli@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2F5B5402FD
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2F5B5402FD
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Oct 2022 11:24:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="307464263"
+X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="307464263"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2022 04:24:27 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10515"; a="758550970"
+X-IronPort-AV: E=Sophos;i="5.95,225,1661842800"; d="scan'208";a="758550970"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.214.234.205])
+ ([10.214.234.205])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2022 04:24:24 -0700
+Message-ID: <fe7ce0bb-35b6-e16f-d86c-766a040b76df@linux.intel.com>
+Date: Sun, 30 Oct 2022 13:24:14 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Content-Language: en-US
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+References: <20221013050044.11862-1-akihiko.odaki@daynix.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20221013050044.11862-1-akihiko.odaki@daynix.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667105737; x=1698641737;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=0FfqC7/W+AwOcM5405J9hZdI+BhYQD5j5JLUvFMFp/I=;
- b=ah2aU5rpXcL+R01R3xTfGFR1uLQhA1bVqq0cI9Ay7ZznOB62Cs7WA8HL
- eOOJhgBzvCD8POFbmUvyHCuFEg1wUK/ZVqcz5jAoodwijKlqQ/qzpzsJT
- tuXfgSyNlCgnyYXUijvgdWfgF/lqJf1mOefbGK/EYKCs1nLr5eSiiyepR
- P7d/3ZOSjLFOYc7d4puYaMjEsptX+QlxAenZ1/UrWnuE7BwaSmd1yfjBg
- AMWD+89Qo+KDuYXZqWuGzF1N01kz2OAup+mvqtkmW/aOLfSb7hQ4VloHH
- A69L+LvfSEOfN/4TWO+v+YyI8NNiiH0iUa7wxPHVZyorlDc7EhhCBrUYs
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1667129068; x=1698665068;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=ZDwLt1JxlL7tE7yCgnQ84ANfngwDWA+sGuiJcNf49J0=;
+ b=V/WX6BUm8C60H1EeydmCKrrxRXBWhoaQTtJSIq+0CQs5/BStxcZuc70z
+ +sdhX1JdTiX6iCgtQ7GblbWVYGlh6IWpe1lxtrMffwRy/v0e/+2b7Sdgj
+ HYRa9b/lSqtQzKuQe/Ku3jhIqFzNt+OGGEI+FX/KDrTzH2bEINLN4DGT3
+ +cLNJ7I3giiPv+mFwXqxJ4qJK2k+NI1usRaZlYz95xE89UYu0KmESNyf1
+ l9aBmp8tDfGQUSKhJQsYzzAPElPPrS9DZeX+ZujEGSctS0yjZqsCyWUMg
+ LGepxhHrunQQ7sQuF64Bgd0JLVyuglT4LU15vnmi9TU6Hgj7rhSajEh/E
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ah2aU5rp
-Subject: [Intel-wired-lan] [PATCH 5/5] igc: Set Qbv start_time and end_time
- to end_time if not being configured in GCL
+ header.a=rsa-sha256 header.s=Intel header.b=V/WX6BUm
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Fix TX dispatch condition
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,71 +97,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: muhammad.husaini.zulkifli@intel.com, tee.min.tan@linux.intel.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Yuri Benditovich <yuri.benditovich@daynix.com>,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Yan Vugenfirer <yan@daynix.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Tan Tee Min <tee.min.tan@linux.intel.com>
-
-The default setting of end_time minus start_time is whole 1 second.
-Thus, if it's not being configured in any GCL entry then it will be
-staying at original 1 second.
-
-This patch is changing the start_time and end_time to be end_time as
-if setting zero will be having weird HW behavior where the gate will
-not be fully closed.
-
-Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
-Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 0b05d889db7d..3dfed282f726 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5928,6 +5928,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 start_time = 0, end_time = 0;
- 	size_t n;
-+	int i;
- 
- 	adapter->qbv_enable = qopt->enable;
- 
-@@ -5945,7 +5946,6 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 
- 	for (n = 0; n < qopt->num_entries; n++) {
- 		struct tc_taprio_sched_entry *e = &qopt->entries[n];
--		int i;
- 
- 		end_time += e->interval;
- 
-@@ -5984,6 +5984,18 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 		start_time += e->interval;
- 	}
- 
-+	/* Check whether a queue gets configured.
-+	 * If not, set the start and end time to be end time.
-+	 */
-+	for (i = 0; i < adapter->num_tx_queues; i++) {
-+		if (!queue_configured[i]) {
-+			struct igc_ring *ring = adapter->tx_ring[i];
-+
-+			ring->start_time = end_time;
-+			ring->end_time = end_time;
-+		}
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.17.1
-
+On 10/13/2022 08:00, Akihiko Odaki wrote:
+> e1000_xmit_frame is expected to stop the queue and dispatch frames to
+> hardware if there is not sufficient space for the next frame in the
+> buffer, but sometimes it failed to do so because the estimated maxmium
+> size of frame was wrong. As the consequence, the later invocation of
+> e1000_xmit_frame failed with NETDEV_TX_BUSY, and the frame in the buffer
+> remained forever, resulting in a watchdog failure.
+> 
+> This change fixes the estimated size by making it match with the
+> condition for NETDEV_TX_BUSY. Apparently, the old estimation failed to
+> account for the following lines which determines the space requirement
+> for not causing NETDEV_TX_BUSY:
+>> 	/* reserve a descriptor for the offload context */
+>> 	if ((mss) || (skb->ip_summed == CHECKSUM_PARTIAL))
+>> 		count++;
+>> 	count++;
+>>
+>> 	count += DIV_ROUND_UP(len, adapter->tx_fifo_limit);
+> 
+> This issue was found with http-stress02 test included in Linux Test
+> Project 20220930.
+> 
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>   drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
