@@ -1,85 +1,180 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 762DF613BE7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Oct 2022 18:09:33 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61486613F23
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Oct 2022 21:42:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9A6EE60C33;
-	Mon, 31 Oct 2022 17:09:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9A6EE60C33
+	by smtp1.osuosl.org (Postfix) with ESMTP id D505F812A5;
+	Mon, 31 Oct 2022 20:42:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D505F812A5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667236171;
-	bh=S5tT0KKTLo+LKTxPt9VgXbEVjglVn/oeXxjiCOOSg4k=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=d3LjMgMURYV+iThudn2mA6ijfatv+siRnDs6j8kf7K9MgiWHtg9cAowtzAZs0RiBE
-	 2crcYsyuPq0C9FIe5jM7ZAcs9/jZeGE6Fyskmmjno7ZgQeurv2gIiumFaZwMfB6ShC
-	 pShj70pPA/eHF/8IckGfqXq5dfzH55tViaNGE4IqCEDt+vUf0Sc19ivjA5fsMDY9RJ
-	 EmnupdSEc2TKQ5GywjWV6xCdSa1w0oHwrhtdK6IxqT5jmXJpvQmx7Ua39dThlDYCdp
-	 tJ5Dp8NAbGHYrI50SbibY0NfTogBxbweGPni+dQTsBNGHVS8ccEuGDcmIb5nc/VbLF
-	 ZOLcqbAMpWFOw==
+	s=default; t=1667248975;
+	bh=3EoIIUTeSbHYNQvfcIYY+MT+YXIkUcXO/mARmUqy3dc=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Bv7POYnvYVpZq6w5y3U9UZGkcwwXOn+F+G0pT5GLZGC47ko/4X/64EJm6RsZYhsWl
+	 yhEdVMtsogJTxKI6QPuzBhFUH1npHqu5vbEXcj462gxgAJsdDt+ve+vLiBecSM5um+
+	 fq9FBkD9RjrJJhUw+nel4ArIyrht3TaulvmAYwi9zK28wHayMvYOT9YCpwi0k648os
+	 l1ts8+xXzGMtaNYoWWvX8QeUOedqgDF50WVvaLrFkGqaVGUjfdZ0wOYK8iN2pTPDk+
+	 EDg6WKQNQ88f0Ax021Xd4K/1DIUDimVc3E3OareKmQKVLvZrY6gKYVaXzsiBGR4bar
+	 SpylBsA7k4M1A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lEUiD2BUDhtP; Mon, 31 Oct 2022 17:09:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xt4OU7gu0TBM; Mon, 31 Oct 2022 20:42:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5EAB060B1F;
-	Mon, 31 Oct 2022 17:09:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EAB060B1F
+	by smtp1.osuosl.org (Postfix) with ESMTP id B0EEA80C40;
+	Mon, 31 Oct 2022 20:42:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0EEA80C40
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8AD291BF327
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 17:09:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 639CE1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 20:42:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6446440400
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 17:09:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6446440400
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4980580C40
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 20:42:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4980580C40
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eTir2m41LwnR for <intel-wired-lan@lists.osuosl.org>;
- Mon, 31 Oct 2022 17:09:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U3k06oKlouN8 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 31 Oct 2022 20:42:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E15BA403CA
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E15BA403CA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 17:09:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="296370481"
-X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; d="scan'208";a="296370481"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Oct 2022 10:09:23 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="962847231"
-X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; d="scan'208";a="962847231"
-Received: from jbrandeb-coyote30.jf.intel.com ([10.166.29.19])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Oct 2022 10:09:22 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 31 Oct 2022 10:09:12 -0700
-Message-Id: <20221031170912.1719253-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.31.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A38480C21
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5A38480C21
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Oct 2022 20:42:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="335656790"
+X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; d="scan'208";a="335656790"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Oct 2022 13:42:39 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10517"; a="758963536"
+X-IronPort-AV: E=Sophos;i="5.95,228,1661842800"; d="scan'208";a="758963536"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga004.jf.intel.com with ESMTP; 31 Oct 2022 13:42:38 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 31 Oct 2022 13:42:38 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Mon, 31 Oct 2022 13:42:38 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Mon, 31 Oct 2022 13:42:37 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PmBGrhQWfdGjCzfuMCvi9Gc2K/Xwu3szS1cUYjHUtBTMha7zGkq9SpF+CJftKXQk756glfCjfhOX1+GqEOn6WgDvrjs0rLNJOaqqdgPTw9/X69/Rkq1DY+1rP6p6n+fmH2KZhbADznzGi6dV4HnLX6nl7yWDxgipFmZoDpP7ufFoBbp6HvXjg1iIVNrvxMqAiNstVcDs3XiqCN4tqbp902qbHOaQHJ8Fl9WvUIucEd2lrvVLlNF+wQolQWYD1HhaRqBPtqWcauZ59+YsFIkNH6Tq3EbZF5rqE5wQZGcEmdX77JLbJ9nVHPjR/0C82sxDC2IXx59WWMpvmuj/M+JrgA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qsNbgQ2gyvB+TzSr5wDNoprlDgM9rDf01jcJWXsoRpg=;
+ b=OiQNktqDV+Kb5IoGMHHlFeMAlWMa4T90P2A7SIpKsVsJt8e/JwUfkKst4sXNF+EUhLw2wvvLpiWVqugVPdwUI7tnS+rnpf2AlNlOukedmLMtcQMqLhLDo6K94ftP8tiGMXbG01P9tKbup3DUkUMgSB71MmCaJ7Su9Q0MvbKNrR1U+KNr9iZZ4Rw2SJLhIMSRptS6J8r6/JGATolbbcma9Z+b+TUAXJbBmnVjU1vK7wsiYPtbckBHTyLBfGC7e6+U4eLwe1uWsev5gIZu/oOSAHbjlnqE0siuJY5Oqy2vIQ7+95fMaUS12JUyI7kIg+yVd5Jp45owR7VdngCiiHW3Ug==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM5PR11MB1324.namprd11.prod.outlook.com (2603:10b6:3:15::14) by
+ IA0PR11MB7308.namprd11.prod.outlook.com (2603:10b6:208:436::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.28; Mon, 31 Oct
+ 2022 20:42:36 +0000
+Received: from DM5PR11MB1324.namprd11.prod.outlook.com
+ ([fe80::793f:3870:4550:8aee]) by DM5PR11MB1324.namprd11.prod.outlook.com
+ ([fe80::793f:3870:4550:8aee%8]) with mapi id 15.20.5769.019; Mon, 31 Oct 2022
+ 20:42:36 +0000
+From: "Ruhl, Michael J" <michael.j.ruhl@intel.com>
+To: Kees Cook <keescook@chromium.org>
+Thread-Topic: [PATCH v3 2/2] igb: Proactively round up to kmalloc bucket size
+Thread-Index: AQHY60UEuvCQ5/6nqkOEi2jDwjCFAa4o+uNA
+Date: Mon, 31 Oct 2022 20:42:36 +0000
+Message-ID: <DM5PR11MB1324802F3F2098CB3239CF36C1379@DM5PR11MB1324.namprd11.prod.outlook.com>
+References: <20221018092340.never.556-kees@kernel.org>
+ <20221018092526.4035344-2-keescook@chromium.org>
+ <202210282013.82F28AE92@keescook>
+In-Reply-To: <202210282013.82F28AE92@keescook>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.6.500.17
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM5PR11MB1324:EE_|IA0PR11MB7308:EE_
+x-ms-office365-filtering-correlation-id: 22ccda69-7be9-4a51-2fba-08dabb807195
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: in6LOzqzJc8skxjOH6x1MtEY1hn6VJHD7UMwlF1SCslNSL61lIFCPwcbk/Iqa8L9x0XhYw91YqYXenRlQw4EQa5KDIX0vdlGW4L9ZE1k3bqQNICaEja9zbH8nt4lMdIIpLk1Ld1pHmd6/PXptRt5oApcU6et2X9puy+tzqnBxthviH3Q8xPrySvD8/4xP8TwdGnxUDmO+r5gdMjn7TaNoWL+r1SWCIGnhcWBY0r61JeicyQGGOXizr4tl8eb6Add4UwbqFcW4LpFOU4Zripsk3bdWGzAcR/Rrc8g5FMFyqSthWl75VsMIUAoFyGFT6cxibWXLyvrZlUtupvaR+PaZae6prWRS1gFluxCzF0QPAg66xUecvsyDwvUHaecWiK3jjLTyDrrA46FE57Wp/N6nC3jO0oidJrvpZHlo7uz9qpK7bYJdXOi3pcwLEkchPl89/VXSJGkro8lVenaO64MYLW+cAJ9lFn6F7DWLZGsuA3Wa5q8wo/WpD3TUACPzPAL0yW1qSv6E8XsDmWUYaklme09OSVUjGMdC9msZkcCYKrnjARaLywPDWr1sdy60kq12qj9uAl8AwsXE385TPn2ciMR1O0x5liekeaE/u1ZTphcoswnFql/K5drEllXJiG8H4IlLaoVsg4EMr2tUE9NBnJIFdwn2tj3Z27DsdMcKdHeGv983VAaWIwGF+Piqdv9HGK3o+A7DG90ClVnesF4J6vrtwG9eMbWtPXH6aYB6QImZiSZGDVNBGeBoTR1DITcpo6Q+sD99Q/BHDJIDoIWlg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM5PR11MB1324.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(396003)(366004)(376002)(346002)(136003)(39860400002)(451199015)(66446008)(33656002)(86362001)(6506007)(54906003)(38100700002)(64756008)(82960400001)(76116006)(66476007)(66946007)(38070700005)(8676002)(316002)(6916009)(4326008)(2906002)(9686003)(5660300002)(41300700001)(83380400001)(55016003)(66556008)(186003)(8936002)(26005)(71200400001)(7696005)(478600001)(52536014)(122000001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?FKTYgNaaEsiphb5sztbkXowSiWl7kv2Jq7vA7jys1ps9G4BQrez0RLtdaSXe?=
+ =?us-ascii?Q?+5Fk+9U0OMIixbueS68Brr/1yxcM6MOkeUlZORPYh0Fe1nbORraPL45pkGZ7?=
+ =?us-ascii?Q?3Qo9+E2I3Ck9RrQusy1rBLqDjDmVveG+EneBjTYye8uJRuIyLcV4BR81kOs0?=
+ =?us-ascii?Q?58icYiAAXlQxuL92k8/hdHxNy1Nh4Fmvi4dVzIRIU9ZnHgE8ufCJlO4ghB7I?=
+ =?us-ascii?Q?5K0Hool1BRbzRJ2YB74lj4ZR5Ihguw5GQOiiSlyPOzDOsx7rjhwltwsizWbn?=
+ =?us-ascii?Q?ydoydOsy2NXf6IxE1jmVn+C7G+IahEEVyalqpM9OKPT76sxVKZnhFkAkq3e7?=
+ =?us-ascii?Q?26VY6jAMJac/vrzk1CgPUHjb7lioZ+Z/Bk0B7fA4Vh2iqRLBkcb2G+UdfJ6W?=
+ =?us-ascii?Q?UmaIihQR3tbfkjIPtUxMcPJLTrC40pljegBznzG0U9lUM2zNmnCw/sVRH0Ak?=
+ =?us-ascii?Q?dPqi0Unz6xk7Xjh8W3PTtWV13cIwvHtwSWdyLDf3nK9Pd8fJJCDs6lgV5Xx/?=
+ =?us-ascii?Q?8Fj8Z9SwFL0y0Ik8E8e8WjuVGClavjqqZp6U3/5oYZ2JORMdgDqTHl9UV6PN?=
+ =?us-ascii?Q?8Pth90BsckzC+cMePu6jsGwO3fQnUMQ2ipCKEnsjbRt7F1ZKO3Cd3+j/jrJh?=
+ =?us-ascii?Q?shwarUK7UfVNpOKMkZOCMjlCNxhbeGzLK2GsmP4I1Gq+oY4g9N7A2gErBsll?=
+ =?us-ascii?Q?RTZeg8ZsjSp4xLy6SC1xl5UoFzO8an+vohyfrIx3ZhMGNScsKCxRzbunRXBC?=
+ =?us-ascii?Q?d2zFbUqP94QHBjarq1c3oac4DKHyI9LEDxbJpUuyo54eRb+p3XXu6aYTufbb?=
+ =?us-ascii?Q?tgw1CAKfiqq/7y97+eTNT7wTYazHH85pUEd3+Q/FOtnx5Zwb50g+8/YJoLkA?=
+ =?us-ascii?Q?us7Sek/g4M4IIU7Vsy9t9Qp2cGUulFbRpTkeOs1ay9UhXLVaggywNq/f1pOO?=
+ =?us-ascii?Q?CKnw0T60i09XSVqAczLY8HYj+VkWpVkDYGmXGck7q2GmLxdsJf+9otXToCjD?=
+ =?us-ascii?Q?jZdj2pjnNWfUoFoF9r3iP8mdGh4QN9YsRBvNIcbODlDEtSmu3d9d4meKkq1g?=
+ =?us-ascii?Q?0jPN9rF4Ot5FtpAbaeBXZM0iQRojKX2yGeuxEifLo9CemaiZs4l18H68H3t5?=
+ =?us-ascii?Q?uxSCKCipor8n8wlPeu9exqI6DUtsDJ10X3Rg2k9PhdSxve0EK5XNuDi7VQq+?=
+ =?us-ascii?Q?qu74vNxhlxCxcjJRgB1vtHxJKslTaT156vWRnqJmTZ9KyJK9Rr83tRkX85nO?=
+ =?us-ascii?Q?WBlNxEwoF7mF8NqpP/r3BXbfTP0KJg7skoiNopH807oQgujij2CAjQsL2ftQ?=
+ =?us-ascii?Q?NlaiIqRnVnj+albZhsDA2nF6yLkURd87HpaUf0SkqU51FCqwTXReoNRUOlOU?=
+ =?us-ascii?Q?5dK8vpYLcHoWXvpD0JZikKCnZrmXCqJANllLM8wwn++txEqLqgteB2RKxeRV?=
+ =?us-ascii?Q?AUoJs3f2m5A4XW/UnBz4urFszvMR6iece0o0qEV8OtXYSjtdC0vjnbAw/Kik?=
+ =?us-ascii?Q?etK1h9ebSbOYloqfSqcLZFH6cjSDz3x1FxbPKKz+QirLWW+wFLV9tl54H237?=
+ =?us-ascii?Q?Mzfla7UcNaF4dW3ZyiSCoKWJhklkV7wwP0lIjbH5?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR11MB1324.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 22ccda69-7be9-4a51-2fba-08dabb807195
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2022 20:42:36.1532 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 45vzYJEP+rbvdCZa8CnTnP4y7HqkkXfDZk9jVSB83b0oP+bbO79sxcEpc+WUwmMstkx9oYHcZFIrY8elZJ6uyzWk/gtnGkE91wtbEIdRoEE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7308
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667236163; x=1698772163;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=OUxyCENeFrp6miszrxTgslR4n2SLZJVjLwQBsyFXv/0=;
- b=ZGTFfnSCVoLeIuiFLd3RnffdC9g809JxKJoVIbxF0iBVMbwNezyW5QW4
- OMlfN1JVANs3lWPFQZ4Y2rdFcJB7mASQsQkLMix3n/E2gDykrCmVf+5MD
- CRDvURr0Brg6dL0bPVGMx7HToBamRcZrsRElLkV0uwtA5NDiOwgIRYFGY
- xphPyLMnWiKWb+Yf7MSttJs5whN2oUEqWD3hZFMA/Qptd3unYj9Gfe0vL
- G/zl/YLJCU1jtxaP6jfHcMggGhQfmysjgJAZlNfxOYOuPwv+kHu3as/HJ
- 0FTYrcDvXHpDZBkG88VrCQFXf5SqNLOpXUdFkszylH9yVjgTSY0jNanpA
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1667248968; x=1698784968;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=7JmZd5Uj5itffLh5NvtGKdgGKInw8OcUyBiIL6nhYXk=;
+ b=ER/fhlaH+B+UqehdNo7aZ/6hS0rmmVAWTBiWM0Vz4ddL2T1PsOsG/1xp
+ UnFvb+COj+HvuNkfWIbsqxOnSn6fGw7yCfJMBsodskhMD8SWhidR2C0QP
+ N9rOn5qjaNt1pqAH7zIaERPUz2QCrQCUhrWp+zzXE7z1CW/euEQi1mtjN
+ qWtWprlA0XwNmfkzbOGgE7eVYmsK8tXskK4fIuxmfV8yUQMJq3q1bWLtm
+ /X8zf8jb0lEXjx13hAtj/RCLYPL0KfdZjyltK/OpBBwWNTfwSuY115ZVP
+ oSN9x1hCSjP7NX6Tc/9IbXltXy/bMX/LUiwlbBLyLAoJIDKaSJSLGFmT9
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZGTFfnSC
-Subject: [Intel-wired-lan] [PATCH net-next:dev-queue v1] ice: Remove and
- replace ice speed defines with ethtool.h versions
+ header.a=rsa-sha256 header.s=Intel header.b=ER/fhlaH
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v3 2/2] igb: Proactively round up to
+ kmalloc bucket size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,300 +187,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Brett Creeley <brett.creeley@intel.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eric
+ Dumazet <edumazet@google.com>,
+ "linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+>-----Original Message-----
+>From: Kees Cook <keescook@chromium.org>
+>Sent: Friday, October 28, 2022 11:18 PM
+>To: Ruhl, Michael J <michael.j.ruhl@intel.com>
+>Cc: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+><anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
+>Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
+>Paolo Abeni <pabeni@redhat.com>; intel-wired-lan@lists.osuosl.org;
+>netdev@vger.kernel.org; linux-kernel@vger.kernel.org; linux-
+>hardening@vger.kernel.org
+>Subject: Re: [PATCH v3 2/2] igb: Proactively round up to kmalloc bucket size
+>
+>On Tue, Oct 18, 2022 at 02:25:25AM -0700, Kees Cook wrote:
+>> In preparation for removing the "silently change allocation size"
+>> users of ksize(), explicitly round up all q_vector allocations so that
+>> allocations can be correctly compared to ksize().
+>>
+>> Signed-off-by: Kees Cook <keescook@chromium.org>
+>
+>Hi! Any feedback on this part of the patch pair?
+>
+>> ---
+>>  drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
+>b/drivers/net/ethernet/intel/igb/igb_main.c
+>> index 6256855d0f62..7a3a41dc0276 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+>> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+>> @@ -1195,7 +1195,7 @@ static int igb_alloc_q_vector(struct igb_adapter
+>*adapter,
+>>  		return -ENOMEM;
+>>
+>>  	ring_count = txr_count + rxr_count;
+>> -	size = struct_size(q_vector, ring, ring_count);
+>> +	size = kmalloc_size_roundup(struct_size(q_vector, ring, ring_count));
+>>
+>>  	/* allocate q_vector and rings */
+>>  	q_vector = adapter->q_vector[v_idx];
 
-The driver is currently using ICE_LINK_SPEED_* defines that mirror what
-ethtool.h defines, with one exception ICE_LINK_SPEED_UNKNOWN.
+Hi Kees,
 
-This issue is fixed by the following changes:
+Looking at the size usage (from elixir), I see:
 
-1. replace ICE_LINK_SPEED_UNKNOWN with 0 because SPEED_UNKNOWN in
-   ethtool.h is "-1" and that doesn't match the driver's expected behavior
-2. transform ICE_LINK_SPEED_*MBPS to SPEED_* using static tables and
-   fls()-1 to convert from BIT() to an index in a table.
+--
+	if (!q_vector) {
+		q_vector = kzalloc(size, GFP_KERNEL);
+	} else if (size > ksize(q_vector)) {
+		kfree_rcu(q_vector, rcu);
+		q_vector = kzalloc(size, GFP_KERNEL);
+	} else {
+		memset(q_vector, 0, size);
+	}
+--
 
-Suggested-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Co-developed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
-bloat-o-meter results of change:
-add/remove: 3/0 grow/shrink: 2/3 up/down: 158/-652 (-494)
-Function                                     old     new   delta
-ice_legacy_aq_to_vc_speed                      -      60     +60
-ice_aq_to_link_speed                           -      60     +60
-ice_get_link_speed                             -      20     +20
-ice_set_min_bw_limit                         329     338      +9
-ice_set_max_bw_limit                         334     343      +9
-ice_get_link_speed_kbps                      195      40    -155
-ice_get_link_speed_mbps                      195      29    -166
-ice_conv_link_speed_to_virtchnl              382      51    -331
-Total: Before=536449, After=535955, chg -0.09%
----
- drivers/net/ethernet/intel/ice/ice_common.c   | 41 ++++++++-
- drivers/net/ethernet/intel/ice/ice_common.h   |  1 +
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    | 12 ---
- drivers/net/ethernet/intel/ice/ice_lib.c      | 32 +------
- drivers/net/ethernet/intel/ice/ice_vf_mbx.c   | 92 +++++--------------
- 5 files changed, 69 insertions(+), 109 deletions(-)
+If the size is rounded up, will the (size > ksize()) check ever be true?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 9f77bfc15fce..3a345071b61a 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -2975,8 +2975,8 @@ bool ice_is_100m_speed_supported(struct ice_hw *hw)
-  * Note: In the structure of [phy_type_low, phy_type_high], there should
-  * be one bit set, as this function will convert one PHY type to its
-  * speed.
-- * If no bit gets set, ICE_LINK_SPEED_UNKNOWN will be returned
-- * If more than one bit gets set, ICE_LINK_SPEED_UNKNOWN will be returned
-+ * If no bit gets set, ICE_AQ_LINK_SPEED_UNKNOWN will be returned
-+ * If more than one bit gets set, ICE_AQ_LINK_SPEED_UNKNOWN will be returned
-  */
- static u16
- ice_get_link_speed_based_on_phy_type(u64 phy_type_low, u64 phy_type_high)
-@@ -5555,3 +5555,40 @@ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw)
- 				     ICE_FW_API_REPORT_DFLT_CFG_MIN,
- 				     ICE_FW_API_REPORT_DFLT_CFG_PATCH);
- }
-+
-+/* each of the indexes into the following array match the speed of a return
-+ * value from the list of AQ returned speeds like the range:
-+ * ICE_AQ_LINK_SPEED_10MB .. ICE_AQ_LINK_SPEED_100GB excluding
-+ * ICE_AQ_LINK_SPEED_UNKNOWN which is BIT(15) and maps to BIT(14) in this
-+ * array. The array is defined as 15 elements long because the link_speed
-+ * returned by the firmware is a 16 bit * value, but is indexed
-+ * by [fls(speed) - 1]
-+ */
-+static const u32 ice_aq_to_link_speed[15] = {
-+	SPEED_10,	/* BIT(0) */
-+	SPEED_100,
-+	SPEED_1000,
-+	SPEED_2500,
-+	SPEED_5000,
-+	SPEED_10000,
-+	SPEED_20000,
-+	SPEED_25000,
-+	SPEED_40000,
-+	SPEED_50000,
-+	SPEED_100000,	/* BIT(10) */
-+	0,
-+	0,
-+	0,
-+	0		/* BIT(14) */
-+};
-+
-+/**
-+ * ice_get_link_speed - get integer speed from table
-+ * @index: array index from fls(aq speed) - 1
-+ *
-+ * Returns: u32 value containing integer speed
-+ */
-+u32 ice_get_link_speed(u16 index)
-+{
-+	return ice_aq_to_link_speed[index];
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index 858b89a39cb6..6a7898565072 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -163,6 +163,7 @@ int
- ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
- 		  u16 mem_addr, u8 page, u8 set_page, u8 *data, u8 length,
- 		  bool write, struct ice_sq_cd *cd);
-+u32 ice_get_link_speed(u16 index);
- 
- int
- ice_cfg_vsi_rdma(struct ice_port_info *pi, u16 vsi_handle, u16 tc_bitmap,
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index b3baf7c3f910..89f986a75cc8 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -908,17 +908,5 @@ static inline struct ice_rx_ptype_decoded ice_decode_rx_desc_ptype(u16 ptype)
- 	return ice_ptype_lkup[ptype];
- }
- 
--#define ICE_LINK_SPEED_UNKNOWN		0
--#define ICE_LINK_SPEED_10MBPS		10
--#define ICE_LINK_SPEED_100MBPS		100
--#define ICE_LINK_SPEED_1000MBPS		1000
--#define ICE_LINK_SPEED_2500MBPS		2500
--#define ICE_LINK_SPEED_5000MBPS		5000
--#define ICE_LINK_SPEED_10000MBPS	10000
--#define ICE_LINK_SPEED_20000MBPS	20000
--#define ICE_LINK_SPEED_25000MBPS	25000
--#define ICE_LINK_SPEED_40000MBPS	40000
--#define ICE_LINK_SPEED_50000MBPS	50000
--#define ICE_LINK_SPEED_100000MBPS	100000
- 
- #endif /* _ICE_LAN_TX_RX_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 803c14d3da55..49dc1ec36e58 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -4097,33 +4097,11 @@ int ice_clear_dflt_vsi(struct ice_vsi *vsi)
-  */
- int ice_get_link_speed_mbps(struct ice_vsi *vsi)
- {
--	switch (vsi->port_info->phy.link_info.link_speed) {
--	case ICE_AQ_LINK_SPEED_100GB:
--		return SPEED_100000;
--	case ICE_AQ_LINK_SPEED_50GB:
--		return SPEED_50000;
--	case ICE_AQ_LINK_SPEED_40GB:
--		return SPEED_40000;
--	case ICE_AQ_LINK_SPEED_25GB:
--		return SPEED_25000;
--	case ICE_AQ_LINK_SPEED_20GB:
--		return SPEED_20000;
--	case ICE_AQ_LINK_SPEED_10GB:
--		return SPEED_10000;
--	case ICE_AQ_LINK_SPEED_5GB:
--		return SPEED_5000;
--	case ICE_AQ_LINK_SPEED_2500MB:
--		return SPEED_2500;
--	case ICE_AQ_LINK_SPEED_1000MB:
--		return SPEED_1000;
--	case ICE_AQ_LINK_SPEED_100MB:
--		return SPEED_100;
--	case ICE_AQ_LINK_SPEED_10MB:
--		return SPEED_10;
--	case ICE_AQ_LINK_SPEED_UNKNOWN:
--	default:
--		return 0;
--	}
-+	unsigned int link_speed;
-+
-+	link_speed = vsi->port_info->phy.link_info.link_speed;
-+
-+	return (int)ice_get_link_speed(fls(link_speed) - 1);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-index fc8c93fa4455..d4a4001b6e5d 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-@@ -39,6 +39,24 @@ ice_aq_send_msg_to_vf(struct ice_hw *hw, u16 vfid, u32 v_opcode, u32 v_retval,
- 	return ice_sq_send_cmd(hw, &hw->mailboxq, &desc, msg, msglen, cd);
- }
- 
-+static const u32 ice_legacy_aq_to_vc_speed[15] = {
-+	VIRTCHNL_LINK_SPEED_100MB,	/* BIT(0) */
-+	VIRTCHNL_LINK_SPEED_100MB,
-+	VIRTCHNL_LINK_SPEED_1GB,
-+	VIRTCHNL_LINK_SPEED_1GB,
-+	VIRTCHNL_LINK_SPEED_1GB,
-+	VIRTCHNL_LINK_SPEED_10GB,
-+	VIRTCHNL_LINK_SPEED_20GB,
-+	VIRTCHNL_LINK_SPEED_25GB,
-+	VIRTCHNL_LINK_SPEED_40GB,
-+	VIRTCHNL_LINK_SPEED_40GB,
-+	VIRTCHNL_LINK_SPEED_40GB,
-+	VIRTCHNL_LINK_SPEED_UNKNOWN,
-+	VIRTCHNL_LINK_SPEED_UNKNOWN,
-+	VIRTCHNL_LINK_SPEED_UNKNOWN,
-+	VIRTCHNL_LINK_SPEED_UNKNOWN	/* BIT(14) */
-+};
-+
- /**
-  * ice_conv_link_speed_to_virtchnl
-  * @adv_link_support: determines the format of the returned link speed
-@@ -55,79 +73,17 @@ u32 ice_conv_link_speed_to_virtchnl(bool adv_link_support, u16 link_speed)
- {
- 	u32 speed;
- 
--	if (adv_link_support)
--		switch (link_speed) {
--		case ICE_AQ_LINK_SPEED_10MB:
--			speed = ICE_LINK_SPEED_10MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_100MB:
--			speed = ICE_LINK_SPEED_100MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_1000MB:
--			speed = ICE_LINK_SPEED_1000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_2500MB:
--			speed = ICE_LINK_SPEED_2500MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_5GB:
--			speed = ICE_LINK_SPEED_5000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_10GB:
--			speed = ICE_LINK_SPEED_10000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_20GB:
--			speed = ICE_LINK_SPEED_20000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_25GB:
--			speed = ICE_LINK_SPEED_25000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_40GB:
--			speed = ICE_LINK_SPEED_40000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_50GB:
--			speed = ICE_LINK_SPEED_50000MBPS;
--			break;
--		case ICE_AQ_LINK_SPEED_100GB:
--			speed = ICE_LINK_SPEED_100000MBPS;
--			break;
--		default:
--			speed = ICE_LINK_SPEED_UNKNOWN;
--			break;
--		}
--	else
-+	if (adv_link_support) {
-+		/* convert a BIT() value into an array index */
-+		speed = ice_get_link_speed(fls(link_speed) - 1);
-+	} else {
- 		/* Virtchnl speeds are not defined for every speed supported in
- 		 * the hardware. To maintain compatibility with older AVF
- 		 * drivers, while reporting the speed the new speed values are
- 		 * resolved to the closest known virtchnl speeds
- 		 */
--		switch (link_speed) {
--		case ICE_AQ_LINK_SPEED_10MB:
--		case ICE_AQ_LINK_SPEED_100MB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_100MB;
--			break;
--		case ICE_AQ_LINK_SPEED_1000MB:
--		case ICE_AQ_LINK_SPEED_2500MB:
--		case ICE_AQ_LINK_SPEED_5GB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_1GB;
--			break;
--		case ICE_AQ_LINK_SPEED_10GB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_10GB;
--			break;
--		case ICE_AQ_LINK_SPEED_20GB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_20GB;
--			break;
--		case ICE_AQ_LINK_SPEED_25GB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_25GB;
--			break;
--		case ICE_AQ_LINK_SPEED_40GB:
--		case ICE_AQ_LINK_SPEED_50GB:
--		case ICE_AQ_LINK_SPEED_100GB:
--			speed = (u32)VIRTCHNL_LINK_SPEED_40GB;
--			break;
--		default:
--			speed = (u32)VIRTCHNL_LINK_SPEED_UNKNOWN;
--			break;
--		}
-+		speed = ice_legacy_aq_to_vc_speed[fls(link_speed) - 1];
-+	}
- 
- 	return speed;
- }
--- 
-2.31.1
+I.e. have you eliminated this check (and maybe getting rid of the need for first patch?)?
 
+Thanks,
+
+Mike
+
+
+>
+>Thanks! :)
+>
+>-Kees
+>
+>--
+>Kees Cook
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
