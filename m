@@ -1,84 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0364C61A03B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 19:47:47 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 669AB61A0DA
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 20:22:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D4D1541992;
-	Fri,  4 Nov 2022 18:47:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4D1541992
+	by smtp3.osuosl.org (Postfix) with ESMTP id 56CAF610E6;
+	Fri,  4 Nov 2022 19:22:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 56CAF610E6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667587664;
-	bh=dGV78sWcu6KQNkg2KZGJNnIFD5Z9fpOSFTD9SfL+5Zw=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1667589763;
+	bh=sPWVzunYXw266fuHglBcAEpUVuYty7d7l+N9mrSHAPc=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zeFCXKKJuMxMn7s8xothL/RrV0+G6kvWlp2TcLbXZ3jGrRqj+RoFh3lWGrc/D14jD
-	 z624VYrDWjB7UpMsqzV4V3QF6PpoxTWvBhzXVKLRWSGnLJ8UyPYQaEs7aQdSjX+lVe
-	 iUnOpRzMLqQFvWGuuxefACYZ3IMuzawklwZU/6eDHJ/dpdQ43STHVSAEdG/6eZjHY/
-	 ZNdG45Ou5Zxwyb1qEaCthhBIPD3GhynDUQHWgkN7M+Bz1ExTTSOTq9Ta6kaRU1V4XC
-	 1MuBz0ALRvn0kKJBJ/SlUhcnzKgvEXcwqrDs5mGNY8G5/F9Eq3JTpo9zUSdfF7ZEZJ
-	 T2I4HOs49VW6g==
+	b=dTvKzogkJKxzLr2BzkzlBndhJLjFJMVPRwRmmFQzxxpA6WKHCJc8AjhMUNJnr9zXJ
+	 nspFFRqlO+he6Y6hcE+lhFXXbxGvjQe1XUy4Ohv9+TOR4Jv5jOVWSMKba4PhiUx8zE
+	 A9F4nBmubfbGWfbGl/4EsmKN6EzQ8LaLIHtEJvqeGGiRbkKv/zJjQKm/oQxRJHFwt3
+	 ic59svfO9TTWS9p14Xy8c4ToIFgZ/wkLBxX7IXBeLBIa2tLnru+098z3uJEsSrCzLq
+	 aB822Iw6XwFYWiSeLdeQ6L/bVy1AXPSAvCExpyihTGJBAbfqFco3hK4/rdE8qgTKy4
+	 792726rSuwndg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bQjRc1yUEb9F; Fri,  4 Nov 2022 18:47:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id drzizK_-dMWF; Fri,  4 Nov 2022 19:22:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9456A41990;
-	Fri,  4 Nov 2022 18:47:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9456A41990
+	by smtp3.osuosl.org (Postfix) with ESMTP id 58E6360ACE;
+	Fri,  4 Nov 2022 19:22:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58E6360ACE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 830F71BF5E9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 18:47:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 03C221BF488
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 19:22:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6631B403CA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 18:47:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6631B403CA
+ by smtp2.osuosl.org (Postfix) with ESMTP id CA930403D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 19:22:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA930403D6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n6aXYOww0pNR for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Nov 2022 18:47:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 86F474011F
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 86F474011F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 18:47:37 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 93AD1CE2D8B;
- Fri,  4 Nov 2022 18:47:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7088FC433C1;
- Fri,  4 Nov 2022 18:47:31 +0000 (UTC)
-Date: Fri, 4 Nov 2022 11:47:30 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <20221104114730.42294e1c@kernel.org>
-In-Reply-To: <003bc385-dc14-12ba-d3d6-53de3712a5dc@intel.com>
-References: <20221031114456.10482-1-jirislaby@kernel.org>
- <20221102204110.26a6f021@kernel.org>
- <bf584d22-8aca-3867-5e3a-489d62a61929@kernel.org>
- <003bc385-dc14-12ba-d3d6-53de3712a5dc@intel.com>
+ with ESMTP id 1DrGJ4bDxcC8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Nov 2022 19:22:36 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 12F9640184
+Received: from mail-oi1-x230.google.com (mail-oi1-x230.google.com
+ [IPv6:2607:f8b0:4864:20::230])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 12F9640184
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 19:22:36 +0000 (UTC)
+Received: by mail-oi1-x230.google.com with SMTP id s206so6184712oie.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Nov 2022 12:22:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+CrrtBZaWaBIBfDEz9a9BacRZtXiPhURWnCTyiBknKU=;
+ b=JZjW+zMVlLGOiOm12v1zXUn5bSUx4yEN9yAluugS6pUbzijoJK3uQco9J2sGkd4epb
+ 8rYW87ACO+UDQWOV/OcKR/0U+RSJy0TDfT8nkKpRVCcAr2MiT0pwmQ5clA0CA8f9wjPc
+ ks+gjfAiNQwXQlPGl4gXbx/nyCf38lKhE44PnWSUWE9JbWa6qrT3CSSEQ7XTAwqMyKYC
+ kJWx/48iKTRoOQsmzUvOclI7sbwMpNi3/+lGyOyNGLZSj33Qsi9ROOhTOZ4zkrZnEX7y
+ 3TfRmyJcS7usrv2WKDwJwKnHsctQnBbiC5s79hJO9kRxxQ1quZpQjX65yEt6+Gxdl8Mr
+ N8iw==
+X-Gm-Message-State: ACrzQf0nhQL1sdGTAEs8T4vGqfTMjSYxzwNR4m4SZulXdbiBYBwt3U7z
+ JpVMnblixWa+QYW0IxuQ0bY=
+X-Google-Smtp-Source: AMsMyM5j57nGJ6ihP9Jnolnn5vAnBZp3njFzbqkVuO45h5Gs91zBtM7qMBV3ZTA/jEfxwCmFGOBzYQ==
+X-Received: by 2002:aca:2819:0:b0:359:f8a7:c88 with SMTP id
+ 25-20020aca2819000000b00359f8a70c88mr260428oix.278.1667589755023; 
+ Fri, 04 Nov 2022 12:22:35 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ n132-20020acabd8a000000b003547a3401e6sm1729901oif.43.2022.11.04.12.22.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Nov 2022 12:22:34 -0700 (PDT)
+Date: Fri, 4 Nov 2022 12:22:32 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Steven Rostedt <rostedt@goodmis.org>
+Message-ID: <20221104192232.GA2520396@roeck-us.net>
+References: <20221104054053.431922658@goodmis.org>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1667587651;
- bh=FCVLnWzagH7Ltd74TWHda9yHbM/ThxqIP+R6QjDXusQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=K8hlD+njx6G0TqbVm5Fth4CASD4xRSsQn3RzlPzp94KN29oCnPq1QW9c+GhArw0lr
- IQV8gpSUILgpCglcGFRxTTIEVu1IfaPnMuRSqcLulzeSRZBwyFfxm5DPY3KkKH/1XE
- iSDtWmLg+4zjj/QSfMgcNWeO3kXacE7WifGznlQF/rfapUXZUCNb5sTi8cpbbuhm8u
- HDBnUcSH2d2i2GM6C12emCculNjc1Ze801WOqR9G0RSVwKLF9LR4+kmtJKjfLRjvNe
- JlJHOrX1NojuKHc1moNVg0FzATcdR3XD0Y6vUNrtrNaoZcn0EO03RExhAOesjgH+tw
- 83q/IgxOqpz1w==
+Content-Disposition: inline
+In-Reply-To: <20221104054053.431922658@goodmis.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+CrrtBZaWaBIBfDEz9a9BacRZtXiPhURWnCTyiBknKU=;
+ b=f7SabvhELt4tvu58wD/HGUQtx2q3c42bp4689l/poRMwjHONs2y+uJybLQ6btnBic8
+ iSYK/T680hWQ8YubanyiQ/jk4TxtOOSgyzZyzTjBStaumbjkRAc3PTfrEP9z1ET4ppjL
+ os0cjm+F8kyIi27l3gX1TCu+EYDnb6I6sC6rEheSVAEJvEJuF1rkSUHHVYhQ9PjtWNZC
+ /KoHUhscmHo/jN1PCMTUxC8NT4KR3QukfsWt+gbIkumzBVh1p3Sny9bKzJeet5110tpk
+ HzVFo5k5iKj3j88DvNf1ucVPdH/av+bU0vEDu76g9bGVlHfWhJDUhqHlYTifQBH3QuBi
+ oWFg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=K8hlD+nj
-Subject: Re: [Intel-wired-lan] [PATCH] i40e (gcc13): synchronize
- allocate/free functions return type & values
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=f7SabvhE
+Subject: Re: [Intel-wired-lan] [RFC][PATCH v3 00/33] timers: Use
+ timer_shutdown*() before freeing timers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,31 +110,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Slaby <jirislaby@kernel.org>, linux-kernel@vger.kernel.org, "Loktionov,
- Aleksandr" <aleksandr.loktionov@intel.com>, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, Martin Liska <mliska@suse.cz>,
- "David S. Miller" <davem@davemloft.net>
+Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
+ linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linaro-mm-sig@lists.linaro.org, Thomas Gleixner <tglx@linutronix.de>,
+ linux-leds@vger.kernel.org, drbd-dev@lists.linbit.com,
+ linux-s390@vger.kernel.org, linux-nilfs@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-sh@vger.kernel.org,
+ linux-atm-general@lists.sourceforge.net, linux-afs@lists.infradead.org,
+ lvs-devel@vger.kernel.org, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-ext4@vger.kernel.org,
+ linux-media@vger.kernel.org, bridge@lists.linux-foundation.org,
+ linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org, rcu@vger.kernel.org,
+ cgroups@vger.kernel.org, openipmi-developer@lists.sourceforge.net,
+ Anna-Maria Gleixner <anna-maria@linutronix.de>, linux-edac@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-parisc@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linus Torvalds <torvalds@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 4 Nov 2022 11:33:07 -0700 Tony Nguyen wrote:
-> As Jiri mentioned, this is propagated up throughout the driver. We could 
-> change this function to return int but all the callers would then need 
-> to convert these errors to i40e_status to propagate. This doesn't really 
-> gain much other than having this function return int. To adjust the 
-> entire call chain is going to take more work. As this is resolving a 
-> valid warning and returning what is currently expected, what are your 
-> thoughts on taking this now to resolve the issue and our i40e team will 
-> take the work on to convert the functions to use the standard errnos?
+On Fri, Nov 04, 2022 at 01:40:53AM -0400, Steven Rostedt wrote:
+> 
+> Back in April, I posted an RFC patch set to help mitigate a common issue
+> where a timer gets armed just before it is freed, and when the timer
+> goes off, it crashes in the timer code without any evidence of who the
+> culprit was. I got side tracked and never finished up on that patch set.
+> Since this type of crash is still our #1 crash we are seeing in the field,
+> it has become a priority again to finish it.
+> 
+> This is v3 of that patch set. Thomas Gleixner posted an untested version
+> that makes timer->function NULL as the flag that it is shutdown. I took that
+> code, tested it (fixed it up), added more comments, and changed the
+> name to timer_shutdown_sync(). I also converted it to use WARN_ON_ONCE()
+> instead of just WARN_ON() as Linus asked for.
+> 
 
-My thoughts on your OS abstraction layers should be pretty evident.
-If anything I'd like to be more vigilant about less flagrant cases.
+Unfortunately the renaming caused some symbol conflicts.
 
-I don't think this is particularly difficult, let's patch it up
-best we can without letting the "status" usage grow.
+Global definition: timer_shutdown
+
+  File             Line
+0 time.c            93 static inline void timer_shutdown(struct clock_event_device *evt)
+1 arm_arch_timer.c 690 static __always_inline int timer_shutdown(const int access,
+2 timer-fttmr010.c 105 int (*timer_shutdown)(struct clock_event_device *evt);
+3 timer-sp804.c    158 static inline void timer_shutdown(struct clock_event_device *evt)
+4 timer.h          239 static inline int timer_shutdown(struct timer_list *timer)
+
+Guenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
