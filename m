@@ -1,104 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6169661A26F
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 21:42:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE8C061A291
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 21:43:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 90A9560644;
-	Fri,  4 Nov 2022 20:42:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 90A9560644
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2D55741970;
+	Fri,  4 Nov 2022 20:43:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2D55741970
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667594529;
-	bh=D6MGl4MrFFFpeWpuMurAOwORk01WgJIS3FD1VSZ1wdo=;
+	s=default; t=1667594581;
+	bh=t7g5Ygvh5leDpoqqR1lmfQzA0p3a+4FAlLdU3XqHH7M=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=hqVN9NO50+k9oBjMqae0zG/fOmLS4TfCT4hfkJiSbZTTXqkGkDkE8LisgxMEq/KUj
-	 ADBtUE9YapozU7VitBSGIGQFc5eRnnMYSvA5nLF+dEPIsJHw/MwpxZDhk4gIN2hdzp
-	 aHmpEp2uaFnk271ShbcM+Cp3ZEuDcn4Urj3Qrm2RJk0SzR8h7UYnvvWp2A1SOqGx7e
-	 AmbRToxKVKcBT8suHNxsQkGYt3i9eAGSJnOZ07Q2or6K3BgxkounihTgsx2uihCx7J
-	 szi0Wz7qL/UrlWWN1kCOjwrzeMhGfjFiTjmfNZ/7G2MJykQSA7S8Nx9yWxAZY65e8d
-	 rMQpvfXEBnkyA==
+	b=KMvBE8HiutWtV7r8HLjGpvp4nCRosidhCdpJzpZvmund0CafsgxjQW4Wjyz/CTu+J
+	 Xco3iuwJVh+V4mhsQCrLSbGBglZPrXjjeqjTskiaczcalta5itVO5MolUCmWEqWGj1
+	 umDR5OxnB4kVkdywlALdJNshtVQRJwBWq2EI6VznsLHDaymIev7fnMyE7d8k83zKpf
+	 rhNQNO2EsrjBGFZmss6GD5WdPdPUCjrFaQH3o93ROwcmD0b7DUEsPLeevxNygVzhvf
+	 cvdCdULT7gi43c95aSkVHpMh/6rVOOisVn9Tq8baTRkMyK4cKvZeWd8XhT/CMnKYg7
+	 Ri2iiv4MH43WQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Cr_Ej8qm_If8; Fri,  4 Nov 2022 20:42:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5oFGz2LmIFDG; Fri,  4 Nov 2022 20:43:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 97682610C3;
-	Fri,  4 Nov 2022 20:42:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97682610C3
+	by smtp4.osuosl.org (Postfix) with ESMTP id D47AD4190A;
+	Fri,  4 Nov 2022 20:42:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D47AD4190A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8D69D1BF5E0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DD47D1BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5DC2761043
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5DC2761043
+ by smtp2.osuosl.org (Postfix) with ESMTP id B405E403EA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B405E403EA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pcTcziH03UPV for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Nov 2022 20:42:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id r-Kz8O7H0fFX for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9A08060644
-Received: from mail-oa1-x29.google.com (mail-oa1-x29.google.com
- [IPv6:2001:4860:4864:20::29])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9A08060644
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:02 +0000 (UTC)
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-13b103a3e5dso6808445fac.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Nov 2022 13:42:02 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2614B40184
+Received: from mail-oi1-x229.google.com (mail-oi1-x229.google.com
+ [IPv6:2607:f8b0:4864:20::229])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2614B40184
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
+Received: by mail-oi1-x229.google.com with SMTP id y67so6394886oiy.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Nov 2022 13:42:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LPWTHAu4vAKpdYGymfUO7xJHpj+KFNZBd9yee/lAZWg=;
- b=qvRQEU8P2WBDfgpUbKdZ+l09iT960Ihv+fTyMfAqXN4gd6Lmp6bSwGgvHWqZCZKZfC
- glDAjJPlAEEJW2JelmN4k4EcI9ubEFQiftukOMByy8u2vgEgWsZ8U+3jfLJ9dlVjEZLU
- izoDMKPrIkOqRiP5QWS94Z6rFJkkbHm5nVSJwQ+KYl9qgwF01A5SP2Qsjp+Q03i1u8uO
- oOEpoT1mdmzxm+iT7jDYENjiyHZSmAacobWJneGRrqE42+uLv9rOGn3obQ/O060Rqlsq
- gdQcySy/v/1hf7XtuKVXCUUlMdwbFsMHCk1HhKkcFe4YCzGqcmQAEGzbt0wI/DSPvNWI
- 317A==
-X-Gm-Message-State: ACrzQf2yOi0E6BYYiKTqi4l3tKxSYmPiu0fjBh6+SSKkCbDWgeILzeJv
- LaMi4zk9ciPpAUafg+0wcvQ=
-X-Google-Smtp-Source: AMsMyM4YoEr7WxXxO25Opwv5nzrxjGmv3HfOq/bk78IdaTMObaueZEnFddqxBoG0u+KT3n0Hv+LaGQ==
-X-Received: by 2002:a05:6870:9597:b0:13a:f95a:2bc1 with SMTP id
- k23-20020a056870959700b0013af95a2bc1mr32722633oao.292.1667594521690; 
- Fri, 04 Nov 2022 13:42:01 -0700 (PDT)
+ bh=jQ4gXr1turouEQ95+x3UakyDrVi4g3dT0y7NpfH0qPs=;
+ b=DW3mfKiCHCJpeRZJglE8RcRmfIZ1BQ80iBw3NCB08hjZ13H22bY3ExQcL/rF+doOHw
+ eEG2MGlIDhjf278nL6omVVCML5VdsmL0Tld7UEVUCH2J9TLQ/ibnDVPftBKUN+VcOZf5
+ Qh06kba6cY6sWCG91BlALbxy104Fli/cP4GBJPMoWCXTBx9RBaKq6NTOSW9nJ3jPaqyf
+ 76dXwE0Pewaep5Lz/wTzRok+k+X4fqAqfNp+9O6l4VrRzFPJA+S8WVAYFJFJ36k0NzVw
+ PIJvHvFzjNgujRFxD3aCt0hdgN5uMt8SJ4o6BCbJaa59zm0b3ZRAbsfZOgeOoa67nQ6P
+ SvWA==
+X-Gm-Message-State: ACrzQf3MNsHuROjwGBZGL+5l2tcP7coFQaKjsWjr5Q6jJs5YdOdXwNfT
+ Se3DPZ3tIE2DWdRCUZvnTsU=
+X-Google-Smtp-Source: AMsMyM6uhfbCXJb2q3AkwRuMO9Mjf9xHTKiSSXkljdTFDkgQ9gIWK1vZZlSecO9utfeB4MFPxnhffw==
+X-Received: by 2002:a54:4587:0:b0:359:c737:b2e8 with SMTP id
+ z7-20020a544587000000b00359c737b2e8mr20212921oib.234.1667594573223; 
+ Fri, 04 Nov 2022 13:42:53 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- a9-20020a544e09000000b00359ad661d3csm43433oiy.30.2022.11.04.13.42.00
+ f1-20020a056830204100b006619483182csm162608otp.18.2022.11.04.13.42.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Nov 2022 13:42:00 -0700 (PDT)
-Date: Fri, 4 Nov 2022 13:41:59 -0700
+ Fri, 04 Nov 2022 13:42:52 -0700 (PDT)
+Date: Fri, 4 Nov 2022 13:42:51 -0700
 From: Guenter Roeck <linux@roeck-us.net>
 To: Steven Rostedt <rostedt@goodmis.org>
-Message-ID: <20221104204159.GA506794@roeck-us.net>
+Message-ID: <20221104204251.GB506794@roeck-us.net>
 References: <20221104054053.431922658@goodmis.org>
  <20221104192232.GA2520396@roeck-us.net>
  <20221104154209.21b26782@rorschach.local.home>
+ <20221104154355.578ab689@rorschach.local.home>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221104154209.21b26782@rorschach.local.home>
+In-Reply-To: <20221104154355.578ab689@rorschach.local.home>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
  :reply-to;
- bh=LPWTHAu4vAKpdYGymfUO7xJHpj+KFNZBd9yee/lAZWg=;
- b=lOkZpKJZGrRdTwW1q1n3PYtNavkFYrwxfV2GFvR6YWuaVKwLPk4VJ5U5ZDx0nuSETe
- 4J0qx8jESJCo6y+3k5I/RIDeXo7Y6jSgRRXz2DJFkzXiePACdAOetFhkjtL5bcgp83ac
- L9LEH/9+5kOlP36xHlU1S0A9pTTFCmy4MsC6KZRblm7eTmGH17TdH1F+e+pVpfC6YibP
- OD0bbJB9hlpboqehpl8hGHOw6SotGw7ZzxTK+J5+Bkycl7auUJR59DVXhb+Lm2qdFRIM
- WNNsyFThpDNs5XVQPsJWiyibl8FySITsqyv8EbD5o54HP3A3J+dpKDkJeIuzl/+kIUVP
- 0S2g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=jQ4gXr1turouEQ95+x3UakyDrVi4g3dT0y7NpfH0qPs=;
+ b=lSF8e6DLqbKKv+/YhmRhAK/T1efgb2O636TOXNjLfcC0viXP62NhHdxomxLJWtIe7d
+ 2JndYje5nsRNFlqIXElcBPkKCNEcFme9PlK3C7Q1VMpYaqUkgV/gQHQcIxtcw2fILMZW
+ OKJ4E8wSXhLBL3J9S3NnNPs9rdwe6KKkDhBPqcY/XDJgpqSUigUMcqCvapDa55nrN05q
+ GmtiLLrP+Y0lcIHCsefgW4EhiR9DSJnDXwmLBbW8A31Y89yswej4P9L3XtJNKO8bMaw7
+ 4czQwKTd2lx34+qzGmcV/Exm8IIRhuHeavJKESaaJd5m9cQQb9K2fLTxromO6yhuwk2D
+ Ci4w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=lOkZpKJZ
+ header.a=rsa-sha256 header.s=20210112 header.b=lSF8e6DL
 Subject: Re: [Intel-wired-lan] [RFC][PATCH v3 00/33] timers: Use
  timer_shutdown*() before freeing timers
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -139,48 +139,24 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 04, 2022 at 03:42:09PM -0400, Steven Rostedt wrote:
-> On Fri, 4 Nov 2022 12:22:32 -0700
-> Guenter Roeck <linux@roeck-us.net> wrote:
+On Fri, Nov 04, 2022 at 04:38:34PM -0400, Steven Rostedt wrote:
+> On Fri, 4 Nov 2022 15:42:09 -0400
+> Steven Rostedt <rostedt@goodmis.org> wrote:
 > 
-> > Unfortunately the renaming caused some symbol conflicts.
-> > 
-> > Global definition: timer_shutdown
-> > 
-> >   File             Line
-> > 0 time.c            93 static inline void timer_shutdown(struct clock_event_device *evt)
-> > 1 arm_arch_timer.c 690 static __always_inline int timer_shutdown(const int access,
-> > 2 timer-fttmr010.c 105 int (*timer_shutdown)(struct clock_event_device *evt);
-> > 3 timer-sp804.c    158 static inline void timer_shutdown(struct clock_event_device *evt)
-> > 4 timer.h          239 static inline int timer_shutdown(struct timer_list *timer)
+[ ... ]
 > 
-> $ git grep '\btimer_shutdown'
-> arch/arm/mach-spear/time.c:static inline void timer_shutdown(struct clock_event_device *evt)
-> arch/arm/mach-spear/time.c:     timer_shutdown(evt);
-> arch/arm/mach-spear/time.c:     timer_shutdown(evt);
-> arch/arm/mach-spear/time.c:     timer_shutdown(evt);
-> drivers/clocksource/arm_arch_timer.c:static __always_inline int timer_shutdown(const int access,
-> drivers/clocksource/arm_arch_timer.c:   return timer_shutdown(ARCH_TIMER_VIRT_ACCESS, clk);
-> drivers/clocksource/arm_arch_timer.c:   return timer_shutdown(ARCH_TIMER_PHYS_ACCESS, clk);
-> drivers/clocksource/arm_arch_timer.c:   return timer_shutdown(ARCH_TIMER_MEM_VIRT_ACCESS, clk);
-> drivers/clocksource/arm_arch_timer.c:   return timer_shutdown(ARCH_TIMER_MEM_PHYS_ACCESS, clk);
-> drivers/clocksource/timer-fttmr010.c:   int (*timer_shutdown)(struct clock_event_device *evt);
-> drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = ast2600_timer_shutdown;
-> drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = fttmr010_timer_shutdown;
-> drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.set_state_shutdown = fttmr010->timer_shutdown;
-> drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.tick_resume = fttmr010->timer_shutdown;
-> drivers/clocksource/timer-sp804.c:static inline void timer_shutdown(struct clock_event_device *evt)
-> drivers/clocksource/timer-sp804.c:      timer_shutdown(evt);
-> drivers/clocksource/timer-sp804.c:      timer_shutdown(evt);
+> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
+> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
+> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
+> > drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = ast2600_timer_shutdown;
+> > drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = fttmr010_timer_shutdown;
+> > drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.set_state_shutdown = fttmr010->timer_shutdown;
+> > drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.tick_resume = fttmr010->timer_shutdown;
 > 
-> Honestly, I think these need to be renamed, as "timer_shutdown()"
-> should be specific to the timer code, and not individual timers.
+> I won't touch structure fields though.
+> 
 
-Yes, that is what I did locally. I am repeating my test now with that
-change made.
+Agreed, same here.
 
 Guenter
 _______________________________________________
