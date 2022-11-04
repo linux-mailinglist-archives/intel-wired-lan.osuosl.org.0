@@ -1,106 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE8C061A291
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 21:43:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 92F1061A2C2
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 21:54:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2D55741970;
-	Fri,  4 Nov 2022 20:43:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2D55741970
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1588C61156;
+	Fri,  4 Nov 2022 20:54:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1588C61156
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667594581;
-	bh=t7g5Ygvh5leDpoqqR1lmfQzA0p3a+4FAlLdU3XqHH7M=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1667595275;
+	bh=/L38yOl7+qPuMDFLN4cbXXgPTMceVemIl9fDAuG3ObY=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=KMvBE8HiutWtV7r8HLjGpvp4nCRosidhCdpJzpZvmund0CafsgxjQW4Wjyz/CTu+J
-	 Xco3iuwJVh+V4mhsQCrLSbGBglZPrXjjeqjTskiaczcalta5itVO5MolUCmWEqWGj1
-	 umDR5OxnB4kVkdywlALdJNshtVQRJwBWq2EI6VznsLHDaymIev7fnMyE7d8k83zKpf
-	 rhNQNO2EsrjBGFZmss6GD5WdPdPUCjrFaQH3o93ROwcmD0b7DUEsPLeevxNygVzhvf
-	 cvdCdULT7gi43c95aSkVHpMh/6rVOOisVn9Tq8baTRkMyK4cKvZeWd8XhT/CMnKYg7
-	 Ri2iiv4MH43WQ==
+	b=eDHbBCIpMObTuTJ22mewUYxvswBX8iQ7Q2sBIA5l++fVSdXLrDHqnZOd4hS5wFMFL
+	 lCslFmwNKRwxZUCge498KC08BDl74RBSFExgVc5sBsDMnbwkClkwi1vqrfFmyw6CFL
+	 ARsUbx+3tMjaVDAVgMZdMmGWBh3j5rfv/1rCI5pqT00x2ha6CCVPY7oM0hc0PDW/k2
+	 j8NBgUV8LmIfC602DNmRX2Pr3P7T2xRMY0+jkLxovUZPy7Kb9FsfZJAUqdd3kmm2My
+	 SeDhbKMkRgAh+Jf45wN62ElARYKf57xxIjV/AtGUQJRxhqrgavuvoqDrViTgyNXHMX
+	 fzyptWVsACTxw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5oFGz2LmIFDG; Fri,  4 Nov 2022 20:43:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ahAeGQCsgPmU; Fri,  4 Nov 2022 20:54:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D47AD4190A;
-	Fri,  4 Nov 2022 20:42:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D47AD4190A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 205B261151;
+	Fri,  4 Nov 2022 20:54:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 205B261151
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DD47D1BF5E0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D443B1BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:54:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B405E403EA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B405E403EA
+ by smtp4.osuosl.org (Postfix) with ESMTP id AD7CC419AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:54:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD7CC419AE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r-Kz8O7H0fFX for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2614B40184
-Received: from mail-oi1-x229.google.com (mail-oi1-x229.google.com
- [IPv6:2607:f8b0:4864:20::229])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2614B40184
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:42:54 +0000 (UTC)
-Received: by mail-oi1-x229.google.com with SMTP id y67so6394886oiy.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Nov 2022 13:42:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=jQ4gXr1turouEQ95+x3UakyDrVi4g3dT0y7NpfH0qPs=;
- b=DW3mfKiCHCJpeRZJglE8RcRmfIZ1BQ80iBw3NCB08hjZ13H22bY3ExQcL/rF+doOHw
- eEG2MGlIDhjf278nL6omVVCML5VdsmL0Tld7UEVUCH2J9TLQ/ibnDVPftBKUN+VcOZf5
- Qh06kba6cY6sWCG91BlALbxy104Fli/cP4GBJPMoWCXTBx9RBaKq6NTOSW9nJ3jPaqyf
- 76dXwE0Pewaep5Lz/wTzRok+k+X4fqAqfNp+9O6l4VrRzFPJA+S8WVAYFJFJ36k0NzVw
- PIJvHvFzjNgujRFxD3aCt0hdgN5uMt8SJ4o6BCbJaa59zm0b3ZRAbsfZOgeOoa67nQ6P
- SvWA==
-X-Gm-Message-State: ACrzQf3MNsHuROjwGBZGL+5l2tcP7coFQaKjsWjr5Q6jJs5YdOdXwNfT
- Se3DPZ3tIE2DWdRCUZvnTsU=
-X-Google-Smtp-Source: AMsMyM6uhfbCXJb2q3AkwRuMO9Mjf9xHTKiSSXkljdTFDkgQ9gIWK1vZZlSecO9utfeB4MFPxnhffw==
-X-Received: by 2002:a54:4587:0:b0:359:c737:b2e8 with SMTP id
- z7-20020a544587000000b00359c737b2e8mr20212921oib.234.1667594573223; 
- Fri, 04 Nov 2022 13:42:53 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- f1-20020a056830204100b006619483182csm162608otp.18.2022.11.04.13.42.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Nov 2022 13:42:52 -0700 (PDT)
-Date: Fri, 4 Nov 2022 13:42:51 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Steven Rostedt <rostedt@goodmis.org>
-Message-ID: <20221104204251.GB506794@roeck-us.net>
-References: <20221104054053.431922658@goodmis.org>
- <20221104192232.GA2520396@roeck-us.net>
- <20221104154209.21b26782@rorschach.local.home>
- <20221104154355.578ab689@rorschach.local.home>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BIxof_-w7JNC for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Nov 2022 20:54:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF10F419A8
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BF10F419A8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 20:54:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10521"; a="290458060"
+X-IronPort-AV: E=Sophos;i="5.96,138,1665471600"; d="scan'208";a="290458060"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2022 13:54:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10521"; a="637716217"
+X-IronPort-AV: E=Sophos;i="5.96,138,1665471600"; d="scan'208";a="637716217"
+Received: from anguy11-desk2.jf.intel.com ([10.166.244.147])
+ by fmsmga007.fm.intel.com with ESMTP; 04 Nov 2022 13:54:26 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ edumazet@google.com
+Date: Fri,  4 Nov 2022 13:54:13 -0700
+Message-Id: <20221104205414.2354973-6-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20221104205414.2354973-1-anthony.l.nguyen@intel.com>
+References: <20221104205414.2354973-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221104154355.578ab689@rorschach.local.home>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jQ4gXr1turouEQ95+x3UakyDrVi4g3dT0y7NpfH0qPs=;
- b=lSF8e6DLqbKKv+/YhmRhAK/T1efgb2O636TOXNjLfcC0viXP62NhHdxomxLJWtIe7d
- 2JndYje5nsRNFlqIXElcBPkKCNEcFme9PlK3C7Q1VMpYaqUkgV/gQHQcIxtcw2fILMZW
- OKJ4E8wSXhLBL3J9S3NnNPs9rdwe6KKkDhBPqcY/XDJgpqSUigUMcqCvapDa55nrN05q
- GmtiLLrP+Y0lcIHCsefgW4EhiR9DSJnDXwmLBbW8A31Y89yswej4P9L3XtJNKO8bMaw7
- 4czQwKTd2lx34+qzGmcV/Exm8IIRhuHeavJKESaaJd5m9cQQb9K2fLTxromO6yhuwk2D
- Ci4w==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=lSF8e6DL
-Subject: Re: [Intel-wired-lan] [RFC][PATCH v3 00/33] timers: Use
- timer_shutdown*() before freeing timers
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1667595267; x=1699131267;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=GL6EiV8AgKlN/bhF/elK8GKsQY8r77fRd+rJ9Jlq9J8=;
+ b=UvGIrZhlAjITnRk7ZQurtZT5WktE3TElTUcNvUnyaUMEDQC98y8eM8a1
+ jYvLTwodP9qR387leyQwXCCbgOWMeg2hFeShpA3qsE8//5f9CvinMTctC
+ XWl6yNOB6NWloVjEXb9lPGdekyxnKHd9gRR/1ckphyA4lEqfdIGWJE6Qo
+ AnKuTVBDwy6r3a0SxP7soFMWNqhTosu0Tfuy3xmfiJro5OLUAT6kEGMh6
+ gWY1+H4EmlgVjuCmid1SFaTeZfvE51KKfkraFUwb6QLpaFEabGS7ehm/x
+ 2hjLUKENJtPkX7C/pw/6qoqjeBXOVK0k9TGOVij8bidjjUyFHKnmQb1os
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UvGIrZhl
+Subject: [Intel-wired-lan] [PATCH net-next 5/6] igb: Do not free q_vector
+ unless new one was allocated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,52 +96,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
- linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, Thomas Gleixner <tglx@linutronix.de>,
- linux-leds@vger.kernel.org, drbd-dev@lists.linbit.com,
- linux-s390@vger.kernel.org, linux-nilfs@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, linux-afs@lists.infradead.org,
- lvs-devel@vger.kernel.org, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-ext4@vger.kernel.org,
- linux-media@vger.kernel.org, bridge@lists.linux-foundation.org,
- linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org, rcu@vger.kernel.org,
- cgroups@vger.kernel.org, openipmi-developer@lists.sourceforge.net,
- Anna-Maria Gleixner <anna-maria@linutronix.de>, linux-edac@vger.kernel.org,
- linux-block@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-parisc@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
+Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
+ "Michael J . Ruhl" <michael.j.ruhl@intel.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 04, 2022 at 04:38:34PM -0400, Steven Rostedt wrote:
-> On Fri, 4 Nov 2022 15:42:09 -0400
-> Steven Rostedt <rostedt@goodmis.org> wrote:
-> 
-[ ... ]
-> 
-> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> > drivers/clocksource/timer-fttmr010.c:   fttmr010->timer_shutdown(evt);
-> > drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = ast2600_timer_shutdown;
-> > drivers/clocksource/timer-fttmr010.c:           fttmr010->timer_shutdown = fttmr010_timer_shutdown;
-> > drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.set_state_shutdown = fttmr010->timer_shutdown;
-> > drivers/clocksource/timer-fttmr010.c:   fttmr010->clkevt.tick_resume = fttmr010->timer_shutdown;
-> 
-> I won't touch structure fields though.
-> 
+From: Kees Cook <keescook@chromium.org>
 
-Agreed, same here.
+Avoid potential use-after-free condition under memory pressure. If the
+kzalloc() fails, q_vector will be freed but left in the original
+adapter->q_vector[v_idx] array position.
 
-Guenter
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: Michael J. Ruhl <michael.j.ruhl@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index d6c1c2e66f26..c2bb658198bf 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -1202,8 +1202,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+ 	if (!q_vector) {
+ 		q_vector = kzalloc(size, GFP_KERNEL);
+ 	} else if (size > ksize(q_vector)) {
+-		kfree_rcu(q_vector, rcu);
+-		q_vector = kzalloc(size, GFP_KERNEL);
++		struct igb_q_vector *new_q_vector;
++
++		new_q_vector = kzalloc(size, GFP_KERNEL);
++		if (new_q_vector)
++			kfree_rcu(q_vector, rcu);
++		q_vector = new_q_vector;
+ 	} else {
+ 		memset(q_vector, 0, size);
+ 	}
+-- 
+2.35.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
