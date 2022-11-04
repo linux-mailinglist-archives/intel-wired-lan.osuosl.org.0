@@ -1,181 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2738D6190C3
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 07:14:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C280761911E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 07:32:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4882981FD2;
-	Fri,  4 Nov 2022 06:14:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4882981FD2
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42F1160797;
+	Fri,  4 Nov 2022 06:32:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42F1160797
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667542452;
-	bh=RxQoGY+/Ttb4DNiZHL5Dug9Dd98IC/hx5mhE4y2iBKk=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=eaZpsye8COFIQ9bi9/4uKIH5Q2BrWHNiAmhJKFRpk4OdOHogMNajNTwrr1b18IpHg
-	 IL4MQkOujNTKsQa9dukN9cN4P/vIxByIO+QIzn4pxrVgj3W3IXtcCY4/z7ers4bDG1
-	 o5OEf3OhOXGQ8h0kSR/AykFAyjuSitjQ2guE8TQjZrY9rYRnAqe3vjMKj/08BUp33p
-	 NevQXfgKa5lRIIWjrQ+wNnOSwXUpHPMw7rpHqIINe6wijI5jnzlpHHd6icCpJF7Y9l
-	 X9731SGjgOlxfJYMLK1NEnQy9CdIK21jJAoPTNgS1EbgDnPsTuvEzSk1NpmmFfW6On
-	 yvVaAoVdYvCfg==
+	s=default; t=1667543576;
+	bh=vuqoDvxLM7bgvadn2vctL1uHta0K2T6EBbOk6RKMk4I=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=6xwpTFzjVxfuxdB3FlxA4djoiLNrvszpDj2/H1wdPYeg3G7jJjcYChkaOomjE7WqC
+	 mSV0xWYWNZctVbdA5oRQowTijvBiilFp8LWDaQt+u5RAQC4YBqOTH+hZJE2rjjzC+z
+	 2WfXdVGdeu5Zubhr2JHPf/H42p/yrou+F7t4SB6vtbNrJmwmpScvQ9+pT+V2iKKwRM
+	 2xRUEiRuFltan1UZ6GsyC7cMu8Lm4O8kNjZQouiqDgn+k+ytZj1PAXyzQq0upxafRN
+	 uGSrFXUoCgGS5sHf14304eM3iQFjPwen8j3PNuKVEMZFfMfo+SaDhxyxR/M6YtAPOw
+	 v9hNkkSGj2W0g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PVvRAv_-uiVM; Fri,  4 Nov 2022 06:14:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8c5oRxa1JmdM; Fri,  4 Nov 2022 06:32:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4CEC181FC8;
-	Fri,  4 Nov 2022 06:14:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4CEC181FC8
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 609B01BF584
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 38CF861025;
+	Fri,  4 Nov 2022 06:32:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 38CF861025
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 140BE1BF976
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Nov 2022 06:32:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3A6B74015E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A6B74015E
+ by smtp3.osuosl.org (Postfix) with ESMTP id E22B961025
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Nov 2022 06:32:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E22B961025
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rzTWVAjf2tLJ for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Nov 2022 06:14:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ux_nedtthohx for <intel-wired-lan@osuosl.org>;
+ Fri,  4 Nov 2022 06:32:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3360840124
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3360840124
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="396190820"
-X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="396190820"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2022 23:14:03 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F78F60797
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5F78F60797
+ for <intel-wired-lan@osuosl.org>; Fri,  4 Nov 2022 06:32:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="374131536"
+X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="374131536"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2022 23:32:45 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="760222356"
-X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="760222356"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga004.jf.intel.com with ESMTP; 03 Nov 2022 23:14:03 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 3 Nov 2022 23:14:02 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Thu, 3 Nov 2022 23:14:01 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Thu, 3 Nov 2022 23:14:01 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Thu, 3 Nov 2022 23:14:01 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=P2VogmsK7bjM6Qx2o3o6gSl9JyBJhMh27cTI8uFzXvm9brCc1CutO4heASemXhbTqe2YWG1tkSSbSRi9O/arUXw3X+x5FvINvP/LFSzZ+8ucW0SC+dMbnBBXtoYG5h16Vy/u6hkRa07fmrhGgAvn9cLIeA0S74wk2v1JbQuijcofGXHJAO7Uixkc+k6yBC68Ekzkp5oZ64D4UGgERtkeYyRJtDN1rkrbkoy/eX9OOwLN+U0u7+QG6J2FSblJr0Se1nI5hq/HymHhNqvL4EWq8YwzXRkptZOHEAG+Dyz7O9MWdjQkTFsqLLna+DlEsnVPY48Z7p7Q1xRy8accqx9hGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=b2aKHMp4qMKQkxGrLDKDh+fR9G0JVYcMOSr0IPl8MSM=;
- b=CE78K1SI07pu+Bi0sxfEY+SYPLeoPo1tYeucL8gUSOp7XhlXEy7MTICdhRrBbfBmlNalJbyg7gNpeep1kN8HuOPmNQczBiaHXM1pmPrcna+pL2IiKWb0M4PzXpLxIMi9Ju7LqMj2bVKmNYbYWkv8XxJQZZtgZMAjpa62PIbto2mFgyincxDaYAQ8zmu1VPt0hQMjpvaugEtqvG9AmMm7y/wD0otDPGqcAriyLZEiOyNotaBSUgx+8910YYHPIG94iUmtTydfkzRIRbaQGpWBtvGntdj2jev/o3eyiakKqn3Bhb+X2RdA8Ej4BdNF7FQ2bZKdaPM4yj2eJ4SoA3FZHA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by CH0PR11MB5345.namprd11.prod.outlook.com (2603:10b6:610:b8::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.15; Fri, 4 Nov
- 2022 06:13:59 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::888:2df7:7c31:e1e5]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::888:2df7:7c31:e1e5%7]) with mapi id 15.20.5769.021; Fri, 4 Nov 2022
- 06:13:59 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Maziarz, Kamil" <kamil.maziarz@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
- xps_cpus after reset
-Thread-Index: AQHY54GJY7ox3np3pEunCGut1MXhKq4uWheQ
-Date: Fri, 4 Nov 2022 06:13:59 +0000
-Message-ID: <BYAPR11MB3367C479D73F9EEE5846B8A1FC3B9@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20221024081942.34809-1-kamil.maziarz@intel.com>
-In-Reply-To: <20221024081942.34809-1-kamil.maziarz@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|CH0PR11MB5345:EE_
-x-ms-office365-filtering-correlation-id: 72eb3926-bacf-449d-0457-08dabe2bc35c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: U0p2M3q5hWl1dPJYV+4YMIkOhsTeQJBBO6np+OLXkpKPNnar9HfUvIFQjzFbSLU/48ZnqpeA4DNN08MHC1EaDZg7JffSw9awVMxFtne+soM05D/jQmFu73K0iiViNP4saNM5XKoBt/UYdlWR+DfvRfJMcoWl4aBqq2O5vD/SH8g+F/CPssztjEpRe7WH4HtmkqZiWK942czdW18NnPBqk3/LrmXnn1d+cIiZ9t9S58JWtzuRKzjzjd2BGKsGAGBQ2zBptIv2G7cqLRo5w8nuRmRlE2guoH6BhQkhb9fsEPRl6bzN3rPJo5zaoQz1HbcTHMPE1K59fO8kH7w13GOGXUOo75rbdx92CZBNrtvTqJMkvI0rScPwTRIS4B8BbTtGSYaD9Ad+KZriWXNyh7/B2K4tVs5nzIUqx9JY6IjxKqHvaktbxCZdO+MSgA4ypLDs4xLif0ZzaGKTRYgqdyH0S/Yigf6HZBpWU5c//EyQ1YpSaTC9+dl5ILQ7yWNFfW3BM1piyELuadVJ9e0v7cOIohPjCFPdyNwZ1jQaoZ9qDgwgZnOLJQSPjUCuZvPYz9NnSSRs6YsVDvtA0wFqaxQNt307OgJILNR9uuXjPGy7mDtDy8aOuEWjCpPuc8VcwX8db4+fZMuE5UY3paCNQ6qGme+X8Q/cDBJ90xVSYZ+AuYY522EYwBwsqzOobvVsbpf6nCiyFjkp7Nnr4S2bENJ29GQd4gchU+zs3kcPwt+lvzWLtGxscIexInWT60wFxrxpxdgw+EZGLBkc5nSiueEQkg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(366004)(136003)(396003)(39860400002)(376002)(346002)(451199015)(86362001)(122000001)(33656002)(38070700005)(38100700002)(82960400001)(6506007)(26005)(4326008)(186003)(107886003)(478600001)(9686003)(55016003)(7696005)(53546011)(64756008)(71200400001)(76116006)(110136005)(41300700001)(2906002)(66556008)(8676002)(83380400001)(66946007)(316002)(66476007)(54906003)(66446008)(5660300002)(8936002)(52536014);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?2cZVM8otmtMVtlxTIym6fsU9H3Q8v5osXWzMSIRj2A84B5aO38slCLKvWudQ?=
- =?us-ascii?Q?4Pz+pt9JmiMyPcCHjUCqI/dOA7iK82i9BrhK8tHaBkQhlGjJzVG+XOZlqKOO?=
- =?us-ascii?Q?f1pY5jJyi3Nu7BAsM2h36hr3CuH/NBF9z7Lr3Im1Ht7X8TZri/HM1D6/3Jwy?=
- =?us-ascii?Q?JdcjZfffNBv5b7GNV6zPmPCB90xJrAIP7YhWBdrM+ena3j+4huZ5oDRUEolp?=
- =?us-ascii?Q?2hylGV+fWNN00ymagJapzYYynu9gDQ/67xhjE8KSmjtorJQBVzXc2hgoZ/S3?=
- =?us-ascii?Q?29esB/9ySjfVpDDGdGCdUNZz+PgZy/jSXZ4lWlmoCz6F04D5Uilk5LjpdKC2?=
- =?us-ascii?Q?yiC92aWTfOskr8HM4ZXj//1XzGp0AdNS8/dIEcIDNU6Qi50cHtJT8cjBoS6L?=
- =?us-ascii?Q?gCrDaQqcyl0g8MCNL/OceyozmO95ZPhNkJdHZFTHX7n8AOhKmR2jUq5xfkte?=
- =?us-ascii?Q?FnAyz/a4psRRpyo2h8kBvPaSF+oy7oSE0op1+F3b/MdqibuNzRvjkH1DpBa6?=
- =?us-ascii?Q?eerDnthZ1U7GXXpiviZXf8+t1fj35DYG+xqUNoV0Nzgy9fC0suvk5/c5Cdcr?=
- =?us-ascii?Q?dcHlWvE+wMpiIYrWlOJVbq/5Dueu5uvMxtUn7dk2Ll+aGWgEib8ieP+m6knD?=
- =?us-ascii?Q?fiXaiQMHDSmKBxoyppU93tZRyNgGJ6yMoaRt9dGcopHC6Um5/aSprUNQjVob?=
- =?us-ascii?Q?Kfd3ZS6yWN4LBjMkroawV9rBs9jaBwtqpk44y/f5jcW+mQZl7t/9rlf7uyka?=
- =?us-ascii?Q?2pjBwOFL1kIveIHDgosl93usO6W0T2LUFGBtnU87ysx3NkN2BO8n08QyVObI?=
- =?us-ascii?Q?uIM3QTMIlURFOC7dZjEgxblLo6zJsRhraCIxjiKIFp6z5eMfwJR1LCtSvXKX?=
- =?us-ascii?Q?h32v+jx0hgtOWk6Xaj61Y3TOsfCaLOiR4h5olMupxJrZ+DQBMCw37F1AuO0z?=
- =?us-ascii?Q?AFYnZkFlIUtVIsFAbdAKSvhJk0vM4vfXjBVtZhbnkCmzRPTXB/z/hnb7cZYp?=
- =?us-ascii?Q?LQRW3WDxALhQjzLTPDm3FBhDxI0mAFS4jJiOTDwi80AIl/EUJCCmo9oqfi/B?=
- =?us-ascii?Q?L9XlG2Z16X11cMju6kfUmS7MibTMLl+/8qcSYipmvLBEKDIrEd+OA7+xO6BU?=
- =?us-ascii?Q?e/YNn5aB+Q/Q2C+UivtgbTeuBk5Y6SXWFxZY9fOJa/Eyk28GdLN4/Q1pClC7?=
- =?us-ascii?Q?FLo0885FM83MrtAATzWJjk8jJZGKAxkWCFve+xXd0CLaC/CUjm3a3ckDasjd?=
- =?us-ascii?Q?tRQJ3fGO4qroGsNERnx4b11m/kiXHCTvUmUWrFxzFl09zYmOgwv8qgbwmplg?=
- =?us-ascii?Q?LhNE58OjaUVmulhzI+GH3/p5dzBYHQsQlYO7gqLbmw69FeKdoof5c2sY5egi?=
- =?us-ascii?Q?NU//0pwLhALRl0HOWGNHmbkvC16q26daPXZQLOrRqzdtojyebGv5KZghropY?=
- =?us-ascii?Q?MTQrX1C81TMwPXzaLPRPyCET+5ZYM9W8Q7aJOl/7fyhINklELlV8VXu3mOdK?=
- =?us-ascii?Q?SLrdSdGN4lbOTHB61zLLSZfaRyb3VX9KsxPyxT5ovIKox62Yux08CUIWIbjZ?=
- =?us-ascii?Q?z4nUZUah0VuOdMqgvy1K/2181fU+gVVk8uQ1DUv5?=
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72eb3926-bacf-449d-0457-08dabe2bc35c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2022 06:13:59.6648 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Xd/koQFhlaRn4OjETCKkZ5Civ6434jAqgAhQshZHqahk1Ud5eR2jiSERSH/6jH01/SMorpOqt0KTbfu1u9W4ug==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5345
-X-OriginatorOrg: intel.com
+X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="809959423"
+X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="809959423"
+Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
+ by orsmga005.jf.intel.com with ESMTP; 03 Nov 2022 23:32:42 -0700
+From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Fri,  4 Nov 2022 14:30:48 +0800
+Message-Id: <20221104063048.18979-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667542445; x=1699078445;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=/h9AaQvhjFl1XJ/TQ5GIl3dL+44UT5B3xsXKPbjkrfI=;
- b=BF8MdbUC/KFmydLXdz1bZklhw/9/jLpocAwd3WsxHDSi10BhTrRiHjeP
- s7OitDCsKMoJhghx9lvhIYR3gplpH7CkOZ9LAmOL0yoDDuudDddyum0l1
- OQcf99HOKNGPoHCEobvpqEx0EAV3R1y+B3Yd6iHt9soTVUO6WqxwG/XUy
- LurQ6C3B+uthz/lsXF/uRww6RFmzsdfo6E9jPZpgHgW0r67wo6MaYLV4Z
- Adf6wXyxqInsh4crXRB9MRJsvei5K6PP5b0s3sdAEPH5ZjqC7puJ9d2Sn
- QcLPET2sr67Nm55nc+MCGD6npN4jmUs7j0fXHDCGQt5pF+ji0JG9d24Uq
+ t=1667543567; x=1699079567;
+ h=from:to:cc:subject:date:message-id;
+ bh=8e8UYWktloxq8iWKhsEFlj9gSyEHirSo5H0ikfvpMK0=;
+ b=l7cvU4123Rfh0Mt5K7XM7o2QlN2x+xnFxpO0o4YcJTokroFQ+Tvi3dxT
+ +mVGpmQULYUTZkBjxhogsholIXot5kSgBJiJ9Gruf4+AL2WoEz1p+NN4d
+ IeKhOGMWHsKRxbFQByw41kJY9IuQeFDZS1rNYEcbNWJhF5XZE+THdrIIx
+ ViG0NPw17mwHDmCmn/tMoPClqZY61bFID/AYUOL14w1XQKV5CrecjGwmt
+ eywy9Ux0JDumBaLJCXj0juijlWHFNInEr7KdVR2YINn+w91p/9ETQdN2r
+ t7+vC4s/x8F3PDRqjS/HCny3bNhIhgeqIPJtXDS5NJ5HKWlDZ9w1BoLP8
  A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BF8MdbUC
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
- xps_cpus after reset
+ header.a=rsa-sha256 header.s=Intel header.b=l7cvU412
+Subject: [Intel-wired-lan] [PATCH v3] igc: Enhance Qbv scheduling by using
+ first flag bit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,48 +90,440 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Jaron, MichalX" <michalx.jaron@intel.com>, "Maziarz,
- Kamil" <kamil.maziarz@intel.com>
+Cc: pmenzel@molgen.mpg.de, mallikarjuna.chilakala@intel.com,
+ muhammad.husaini.zulkifli@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
+The I225 hardware has a limitation that packets can only be scheduled
+in the [0, cycle-time] interval. So, scheduling a packet to the start
+of the next cycle doesn't usually work.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Kamil Maziarz
-> Sent: Monday, October 24, 2022 1:50 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Jaron, MichalX <michalx.jaron@intel.com>; Maziarz, Kamil
-> <kamil.maziarz@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
-> xps_cpus after reset
-> 
-> From: Michal Jaron <michalx.jaron@intel.com>
-> 
-> During tx rings configuration default XPS queue config is set and
-> __I40E_TX_XPS_INIT_DONE is locked. __I40E_TX_XPS_INIT_DONE state is
-> cleared and set again with default mapping only during queues build, it
-> means after first setup or reset with queues rebuild. (i.e.
-> ethtool -L <interface> combined <number>) After other resets (i.e.
-> ethtool -t <interface>) XPS_INIT_DONE is not cleared and those default
-> maps cannot be set again. It results in cleared xps_cpus mapping until
-> queues are not rebuild or mapping is not set by user.
-> 
-> Add clearing __I40E_TX_XPS_INIT_DONE state during reset to let the driver
-> set xps_cpus to defaults again after it was cleared.
-> 
-> Fixes: 6f853d4f8e93 ("i40e: allow XPS with QoS enabled")
-> Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
-> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 19 ++++++++++++++++++-
->  1 file changed, 18 insertions(+), 1 deletion(-)
-> 
+To overcome this, we use the Transmit Descriptor first flag to indicates
+that a packet should be the first packet (from a queue) in a cycle
+according to the section 7.5.2.9.3.4 The First Packet on Each QBV Cycle
+in Intel Discrete I225/6 User Manual.
 
-Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+But this only works if there was any packet from that queue during the
+current cycle, to avoid this issue, we issue an empty packet if that's
+not the case. Also require one more descriptor to be available, to take
+into account the empty packet that might be issued.
+
+Test Setup:
+
+Talker: Use l2_tai to generate the launchtime into packet load.
+
+Listener: Use timedump.c to compute the delta between packet arrival
+and LaunchTime packet payload.
+
+Test Result:
+
+Before:
+
+1666000610127300000,1666000610127300096,96,621273
+1666000610127400000,1666000610127400192,192,621274
+1666000610127500000,1666000610127500032,32,621275
+1666000610127600000,1666000610127600128,128,621276
+1666000610127700000,1666000610127700224,224,621277
+1666000610127800000,1666000610127800064,64,621278
+1666000610127900000,1666000610127900160,160,621279
+1666000610128000000,1666000610128000000,0,621280
+1666000610128100000,1666000610128100096,96,621281
+1666000610128200000,1666000610128200192,192,621282
+1666000610128300000,1666000610128300032,32,621283
+1666000610128400000,1666000610128301056,-98944,621284
+1666000610128500000,1666000610128302080,-197920,621285
+1666000610128600000,1666000610128302848,-297152,621286
+1666000610128700000,1666000610128303872,-396128,621287
+1666000610128800000,1666000610128304896,-495104,621288
+1666000610128900000,1666000610128305664,-594336,621289
+1666000610129000000,1666000610128306688,-693312,621290
+1666000610129100000,1666000610128307712,-792288,621291
+1666000610129200000,1666000610128308480,-891520,621292
+1666000610129300000,1666000610128309504,-990496,621293
+1666000610129400000,1666000610128310528,-1089472,621294
+1666000610129500000,1666000610128311296,-1188704,621295
+1666000610129600000,1666000610128312320,-1287680,621296
+1666000610129700000,1666000610128313344,-1386656,621297
+1666000610129800000,1666000610128314112,-1485888,621298
+1666000610129900000,1666000610128315136,-1584864,621299
+1666000610130000000,1666000610128316160,-1683840,621300
+1666000610130100000,1666000610128316928,-1783072,621301
+1666000610130200000,1666000610128317952,-1882048,621302
+1666000610130300000,1666000610128318976,-1981024,621303
+1666000610130400000,1666000610128319744,-2080256,621304
+1666000610130500000,1666000610128320768,-2179232,621305
+1666000610130600000,1666000610128321792,-2278208,621306
+1666000610130700000,1666000610128322816,-2377184,621307
+1666000610130800000,1666000610128323584,-2476416,621308
+1666000610130900000,1666000610128324608,-2575392,621309
+1666000610131000000,1666000610128325632,-2674368,621310
+1666000610131100000,1666000610128326400,-2773600,621311
+1666000610131200000,1666000610128327424,-2872576,621312
+1666000610131300000,1666000610128328448,-2971552,621313
+1666000610131400000,1666000610128329216,-3070784,621314
+1666000610131500000,1666000610131500032,32,621315
+1666000610131600000,1666000610131600128,128,621316
+1666000610131700000,1666000610131700224,224,621317
+
+After:
+
+1666073510646200000,1666073510646200064,64,2676462
+1666073510646300000,1666073510646300160,160,2676463
+1666073510646400000,1666073510646400256,256,2676464
+1666073510646500000,1666073510646500096,96,2676465
+1666073510646600000,1666073510646600192,192,2676466
+1666073510646700000,1666073510646700032,32,2676467
+1666073510646800000,1666073510646800128,128,2676468
+1666073510646900000,1666073510646900224,224,2676469
+1666073510647000000,1666073510647000064,64,2676470
+1666073510647100000,1666073510647100160,160,2676471
+1666073510647200000,1666073510647200256,256,2676472
+1666073510647300000,1666073510647300096,96,2676473
+1666073510647400000,1666073510647400192,192,2676474
+1666073510647500000,1666073510647500032,32,2676475
+1666073510647600000,1666073510647600128,128,2676476
+1666073510647700000,1666073510647700224,224,2676477
+1666073510647800000,1666073510647800064,64,2676478
+1666073510647900000,1666073510647900160,160,2676479
+1666073510648000000,1666073510648000000,0,2676480
+1666073510648100000,1666073510648100096,96,2676481
+1666073510648200000,1666073510648200192,192,2676482
+1666073510648300000,1666073510648300032,32,2676483
+1666073510648400000,1666073510648400128,128,2676484
+1666073510648500000,1666073510648500224,224,2676485
+1666073510648600000,1666073510648600064,64,2676486
+1666073510648700000,1666073510648700160,160,2676487
+1666073510648800000,1666073510648800000,0,2676488
+1666073510648900000,1666073510648900096,96,2676489
+1666073510649000000,1666073510649000192,192,2676490
+1666073510649100000,1666073510649100032,32,2676491
+1666073510649200000,1666073510649200128,128,2676492
+1666073510649300000,1666073510649300224,224,2676493
+1666073510649400000,1666073510649400064,64,2676494
+1666073510649500000,1666073510649500160,160,2676495
+1666073510649600000,1666073510649600000,0,2676496
+1666073510649700000,1666073510649700096,96,2676497
+1666073510649800000,1666073510649800192,192,2676498
+1666073510649900000,1666073510649900032,32,2676499
+1666073510650000000,1666073510650000128,128,2676500
+
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Co-developed-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Co-developed-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Malli C <mallikarjuna.chilakala@intel.com>
+Reported-by: kernel test robot <lkp@intel.com>
+
+---
+V2 -> V3: Fix review comments from Anthony
+V1 -> V2: Fix error when compile with W=1
+---
+---
+ drivers/net/ethernet/intel/igc/igc.h         |   2 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |   2 +
+ drivers/net/ethernet/intel/igc/igc_main.c    | 176 ++++++++++++++++---
+ 3 files changed, 151 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 1e7e7071f64d2..66a57636d329a 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -94,6 +94,8 @@ struct igc_ring {
+ 	u8 queue_index;                 /* logical index of the ring*/
+ 	u8 reg_idx;                     /* physical index of the ring */
+ 	bool launchtime_enable;         /* true if LaunchTime is enabled */
++	ktime_t last_tx_cycle;          /* end of the cycle with a launchtime transmission */
++	ktime_t last_ff_cycle;          /* Last cycle with an active first flag */
+ 
+ 	u32 start_time;
+ 	u32 end_time;
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index f7311aeb293b9..a7b22639cfcd9 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -321,6 +321,8 @@
+ #define IGC_ADVTXD_L4LEN_SHIFT	8  /* Adv ctxt L4LEN shift */
+ #define IGC_ADVTXD_MSS_SHIFT	16 /* Adv ctxt MSS shift */
+ 
++#define IGC_ADVTXD_TSN_CNTX_FIRST	0x00000080
++
+ /* Transmit Control */
+ #define IGC_TCTL_EN		0x00000002 /* enable Tx */
+ #define IGC_TCTL_PSP		0x00000008 /* pad short packets */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 4f98e0a5ccd38..15385df5cb2e7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1000,25 +1000,118 @@ static int igc_write_mc_addr_list(struct net_device *netdev)
+ 	return netdev_mc_count(netdev);
+ }
+ 
+-static __le32 igc_tx_launchtime(struct igc_adapter *adapter, ktime_t txtime)
++static __le32 igc_tx_launchtime(struct igc_ring *ring, ktime_t txtime,
++				bool *first_flag, bool *insert_empty)
+ {
++	struct igc_adapter *adapter = netdev_priv(ring->netdev);
+ 	ktime_t cycle_time = adapter->cycle_time;
+ 	ktime_t base_time = adapter->base_time;
++	ktime_t now = ktime_get_clocktai();
++	ktime_t baset_est, end_of_cycle;
+ 	u32 launchtime;
++	s64 n;
+ 
+-	/* FIXME: when using ETF together with taprio, we may have a
+-	 * case where 'delta' is larger than the cycle_time, this may
+-	 * cause problems if we don't read the current value of
+-	 * IGC_BASET, as the value writen into the launchtime
+-	 * descriptor field may be misinterpreted.
++	n = div64_s64(ktime_sub_ns(now, base_time), cycle_time);
++
++	baset_est = ktime_add_ns(base_time, cycle_time * (n));
++	end_of_cycle = ktime_add_ns(baset_est, cycle_time);
++
++	if (ktime_compare(txtime, end_of_cycle) >= 0) {
++		if (baset_est != ring->last_ff_cycle) {
++			*first_flag = true;
++			ring->last_ff_cycle = baset_est;
++
++			if (ktime_compare(txtime, ring->last_tx_cycle) > 0)
++				*insert_empty = true;
++		}
++	}
++
++	/* Introducing a window at end of cycle on which packets
++	 * potentially not honor launchtime. Window of 5us chosen
++	 * considering software update the tail pointer and packets
++	 * are dma'ed to packet buffer.
+ 	 */
+-	div_s64_rem(ktime_sub_ns(txtime, base_time), cycle_time, &launchtime);
++	if ((ktime_sub_ns(end_of_cycle, now) < 5 * NSEC_PER_USEC))
++		netdev_warn(ring->netdev, "Packet with txtime=%llu may not be honoured\n",
++			    txtime);
++
++	ring->last_tx_cycle = end_of_cycle;
++
++	launchtime = ktime_sub_ns(txtime, baset_est);
++	if (launchtime > 0)
++		div_s64_rem(launchtime, cycle_time, &launchtime);
++	else
++		launchtime = 0;
+ 
+ 	return cpu_to_le32(launchtime);
+ }
+ 
++static int igc_init_empty_frame(struct igc_ring *ring,
++				struct igc_tx_buffer *buffer,
++				struct sk_buff *skb)
++{
++	unsigned int size;
++	dma_addr_t dma;
++
++	size = skb_headlen(skb);
++
++	dma = dma_map_single(ring->dev, skb->data, size, DMA_TO_DEVICE);
++	if (dma_mapping_error(ring->dev, dma)) {
++		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
++		return -ENOMEM;
++	}
++
++	buffer->skb = skb;
++	buffer->protocol = 0;
++	buffer->bytecount = skb->len;
++	buffer->gso_segs = 1;
++	buffer->time_stamp = jiffies;
++	dma_unmap_len_set(buffer, len, skb->len);
++	dma_unmap_addr_set(buffer, dma, dma);
++
++	return 0;
++}
++
++static int igc_init_tx_empty_descriptor(struct igc_ring *ring,
++					struct sk_buff *skb,
++					struct igc_tx_buffer *first)
++{
++	union igc_adv_tx_desc *desc;
++	u32 cmd_type, olinfo_status;
++	int err;
++
++	if (!igc_desc_unused(ring))
++		return -EBUSY;
++
++	err = igc_init_empty_frame(ring, first, skb);
++	if (err)
++		return err;
++
++	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
++		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
++		   first->bytecount;
++	olinfo_status = first->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
++
++	desc = IGC_TX_DESC(ring, ring->next_to_use);
++	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
++	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
++	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(first, dma));
++
++	netdev_tx_sent_queue(txring_txq(ring), skb->len);
++
++	first->next_to_watch = desc;
++
++	ring->next_to_use++;
++	if (ring->next_to_use == ring->count)
++		ring->next_to_use = 0;
++
++	return 0;
++}
++
++#define IGC_EMPTY_FRAME_SIZE 60
++
+ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+-			    struct igc_tx_buffer *first,
++			    __le32 launch_time, bool first_flag,
+ 			    u32 vlan_macip_lens, u32 type_tucmd,
+ 			    u32 mss_l4len_idx)
+ {
+@@ -1037,26 +1130,17 @@ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+ 	if (test_bit(IGC_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
+ 		mss_l4len_idx |= tx_ring->reg_idx << 4;
+ 
++	if (first_flag)
++		mss_l4len_idx |= IGC_ADVTXD_TSN_CNTX_FIRST;
++
+ 	context_desc->vlan_macip_lens	= cpu_to_le32(vlan_macip_lens);
+ 	context_desc->type_tucmd_mlhl	= cpu_to_le32(type_tucmd);
+ 	context_desc->mss_l4len_idx	= cpu_to_le32(mss_l4len_idx);
+-
+-	/* We assume there is always a valid Tx time available. Invalid times
+-	 * should have been handled by the upper layers.
+-	 */
+-	if (tx_ring->launchtime_enable) {
+-		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
+-		ktime_t txtime = first->skb->tstamp;
+-
+-		skb_txtime_consumed(first->skb);
+-		context_desc->launch_time = igc_tx_launchtime(adapter,
+-							      txtime);
+-	} else {
+-		context_desc->launch_time = 0;
+-	}
++	context_desc->launch_time	= launch_time;
+ }
+ 
+-static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
++static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first,
++			__le32 launch_time, bool first_flag)
+ {
+ 	struct sk_buff *skb = first->skb;
+ 	u32 vlan_macip_lens = 0;
+@@ -1096,7 +1180,8 @@ static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
+ 	vlan_macip_lens |= skb_network_offset(skb) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+ 
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens, type_tucmd, 0);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, 0);
+ }
+ 
+ static int __igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
+@@ -1320,6 +1405,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 
+ static int igc_tso(struct igc_ring *tx_ring,
+ 		   struct igc_tx_buffer *first,
++		   __le32 launch_time, bool first_flag,
+ 		   u8 *hdr_len)
+ {
+ 	u32 vlan_macip_lens, type_tucmd, mss_l4len_idx;
+@@ -1406,8 +1492,8 @@ static int igc_tso(struct igc_ring *tx_ring,
+ 	vlan_macip_lens |= (ip.hdr - skb->data) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+ 
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens,
+-			type_tucmd, mss_l4len_idx);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, mss_l4len_idx);
+ 
+ 	return 1;
+ }
+@@ -1415,11 +1501,14 @@ static int igc_tso(struct igc_ring *tx_ring,
+ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 				       struct igc_ring *tx_ring)
+ {
++	bool first_flag = false, insert_empty = false;
+ 	u16 count = TXD_USE_COUNT(skb_headlen(skb));
+ 	__be16 protocol = vlan_get_protocol(skb);
+ 	struct igc_tx_buffer *first;
++	__le32 launch_time = 0;
+ 	u32 tx_flags = 0;
+ 	unsigned short f;
++	ktime_t txtime;
+ 	u8 hdr_len = 0;
+ 	int tso = 0;
+ 
+@@ -1433,11 +1522,40 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 		count += TXD_USE_COUNT(skb_frag_size(
+ 						&skb_shinfo(skb)->frags[f]));
+ 
+-	if (igc_maybe_stop_tx(tx_ring, count + 3)) {
++	if (igc_maybe_stop_tx(tx_ring, count + 5)) {
+ 		/* this is a hard error */
+ 		return NETDEV_TX_BUSY;
+ 	}
+ 
++	if (!tx_ring->launchtime_enable)
++		goto done;
++
++	txtime = skb->tstamp;
++	skb->tstamp = ktime_set(0, 0);
++	launch_time = igc_tx_launchtime(tx_ring, txtime, &first_flag, &insert_empty);
++
++	if (insert_empty) {
++		struct igc_tx_buffer *empty_info;
++		struct sk_buff *empty;
++		void *data;
++
++		empty_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
++		empty = alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
++		if (!empty)
++			goto done;
++
++		data = skb_put(empty, IGC_EMPTY_FRAME_SIZE);
++		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
++
++		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
++
++		if (igc_init_tx_empty_descriptor(tx_ring,
++						 empty,
++						 empty_info) < 0)
++			dev_kfree_skb_any(empty);
++	}
++
++done:
+ 	/* record the location of the first descriptor for this packet */
+ 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+ 	first->type = IGC_TX_BUFFER_TYPE_SKB;
+@@ -1474,11 +1592,11 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 	first->tx_flags = tx_flags;
+ 	first->protocol = protocol;
+ 
+-	tso = igc_tso(tx_ring, first, &hdr_len);
++	tso = igc_tso(tx_ring, first, launch_time, first_flag, &hdr_len);
+ 	if (tso < 0)
+ 		goto out_drop;
+ 	else if (!tso)
+-		igc_tx_csum(tx_ring, first);
++		igc_tx_csum(tx_ring, first, launch_time, first_flag);
+ 
+ 	igc_tx_map(tx_ring, first, hdr_len);
+ 
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
