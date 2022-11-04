@@ -1,69 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BE0761903B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 06:49:01 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2738D6190C3
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Nov 2022 07:14:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B621261038;
-	Fri,  4 Nov 2022 05:48:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B621261038
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4882981FD2;
+	Fri,  4 Nov 2022 06:14:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4882981FD2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667540938;
-	bh=m21GDT9iT+55F9k7XlqmXnHuPqzO7dNn/wWMxZPqXdc=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=VExBpYidQO3uum+duJ/Mu/FH3nFeSG7m7AOB/vt/QpajA9uFL9aOJ157Gywdo5h3y
-	 yciHWhxLHi6rmLj9IPCZ2Gz6tu/quvkTBcXe2+FuDbp7/mUIJtu/8+S/vnJ88zMhNo
-	 2OcEkH4e7T0+ydgRfPoimBQGSci5nrRezIx5XT7ZVUYvedFy0+e/maaNvL3cbskUqV
-	 x5dtIPS7Zp1uLWTQCgnB3U6evJ8aGOdZYap61Ak7GYuDxRPC7MgSvoezVuuvVFjw2/
-	 F/Qrupfw62b81BjbLT5MVTzRL0mvtjMGcKipKHz5sNfFe6foSy+e4Kt3w8uc2m8op9
-	 fa49fHznJFjTw==
+	s=default; t=1667542452;
+	bh=RxQoGY+/Ttb4DNiZHL5Dug9Dd98IC/hx5mhE4y2iBKk=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=eaZpsye8COFIQ9bi9/4uKIH5Q2BrWHNiAmhJKFRpk4OdOHogMNajNTwrr1b18IpHg
+	 IL4MQkOujNTKsQa9dukN9cN4P/vIxByIO+QIzn4pxrVgj3W3IXtcCY4/z7ers4bDG1
+	 o5OEf3OhOXGQ8h0kSR/AykFAyjuSitjQ2guE8TQjZrY9rYRnAqe3vjMKj/08BUp33p
+	 NevQXfgKa5lRIIWjrQ+wNnOSwXUpHPMw7rpHqIINe6wijI5jnzlpHHd6icCpJF7Y9l
+	 X9731SGjgOlxfJYMLK1NEnQy9CdIK21jJAoPTNgS1EbgDnPsTuvEzSk1NpmmFfW6On
+	 yvVaAoVdYvCfg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FRlZdyB6d-t8; Fri,  4 Nov 2022 05:48:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PVvRAv_-uiVM; Fri,  4 Nov 2022 06:14:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8366461043;
-	Fri,  4 Nov 2022 05:48:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8366461043
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4CEC181FC8;
+	Fri,  4 Nov 2022 06:14:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4CEC181FC8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5EFC91BF3AA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 05:48:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 609B01BF584
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2DAC94186B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 05:48:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2DAC94186B
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3A6B74015E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A6B74015E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vLa-mmQNsn2O for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Nov 2022 05:48:49 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rzTWVAjf2tLJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Nov 2022 06:14:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2376E4186A
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2376E4186A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 05:48:48 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 32B4AB82BE6;
- Fri,  4 Nov 2022 05:48:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4911C433D6;
- Fri,  4 Nov 2022 05:48:45 +0000 (UTC)
-Received: from rostedt by gandalf.local.home with local (Exim 4.96)
- (envelope-from <rostedt@goodmis.org>) id 1oqpZo-0070xm-08;
- Fri, 04 Nov 2022 01:49:12 -0400
-Message-ID: <20221104054053.431922658@goodmis.org>
-User-Agent: quilt/0.66
-Date: Fri, 04 Nov 2022 01:40:53 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: linux-kernel@vger.kernel.org
-Subject: [Intel-wired-lan] [RFC][PATCH v3 00/33] timers: Use
- timer_shutdown*() before freeing timers
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3360840124
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3360840124
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Nov 2022 06:14:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="396190820"
+X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="396190820"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2022 23:14:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="760222356"
+X-IronPort-AV: E=Sophos;i="5.96,136,1665471600"; d="scan'208";a="760222356"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga004.jf.intel.com with ESMTP; 03 Nov 2022 23:14:03 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 3 Nov 2022 23:14:02 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 3 Nov 2022 23:14:01 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Thu, 3 Nov 2022 23:14:01 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Thu, 3 Nov 2022 23:14:01 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=P2VogmsK7bjM6Qx2o3o6gSl9JyBJhMh27cTI8uFzXvm9brCc1CutO4heASemXhbTqe2YWG1tkSSbSRi9O/arUXw3X+x5FvINvP/LFSzZ+8ucW0SC+dMbnBBXtoYG5h16Vy/u6hkRa07fmrhGgAvn9cLIeA0S74wk2v1JbQuijcofGXHJAO7Uixkc+k6yBC68Ekzkp5oZ64D4UGgERtkeYyRJtDN1rkrbkoy/eX9OOwLN+U0u7+QG6J2FSblJr0Se1nI5hq/HymHhNqvL4EWq8YwzXRkptZOHEAG+Dyz7O9MWdjQkTFsqLLna+DlEsnVPY48Z7p7Q1xRy8accqx9hGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=b2aKHMp4qMKQkxGrLDKDh+fR9G0JVYcMOSr0IPl8MSM=;
+ b=CE78K1SI07pu+Bi0sxfEY+SYPLeoPo1tYeucL8gUSOp7XhlXEy7MTICdhRrBbfBmlNalJbyg7gNpeep1kN8HuOPmNQczBiaHXM1pmPrcna+pL2IiKWb0M4PzXpLxIMi9Ju7LqMj2bVKmNYbYWkv8XxJQZZtgZMAjpa62PIbto2mFgyincxDaYAQ8zmu1VPt0hQMjpvaugEtqvG9AmMm7y/wD0otDPGqcAriyLZEiOyNotaBSUgx+8910YYHPIG94iUmtTydfkzRIRbaQGpWBtvGntdj2jev/o3eyiakKqn3Bhb+X2RdA8Ej4BdNF7FQ2bZKdaPM4yj2eJ4SoA3FZHA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by CH0PR11MB5345.namprd11.prod.outlook.com (2603:10b6:610:b8::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.15; Fri, 4 Nov
+ 2022 06:13:59 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::888:2df7:7c31:e1e5]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::888:2df7:7c31:e1e5%7]) with mapi id 15.20.5769.021; Fri, 4 Nov 2022
+ 06:13:59 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: "Maziarz, Kamil" <kamil.maziarz@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
+ xps_cpus after reset
+Thread-Index: AQHY54GJY7ox3np3pEunCGut1MXhKq4uWheQ
+Date: Fri, 4 Nov 2022 06:13:59 +0000
+Message-ID: <BYAPR11MB3367C479D73F9EEE5846B8A1FC3B9@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20221024081942.34809-1-kamil.maziarz@intel.com>
+In-Reply-To: <20221024081942.34809-1-kamil.maziarz@intel.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|CH0PR11MB5345:EE_
+x-ms-office365-filtering-correlation-id: 72eb3926-bacf-449d-0457-08dabe2bc35c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: U0p2M3q5hWl1dPJYV+4YMIkOhsTeQJBBO6np+OLXkpKPNnar9HfUvIFQjzFbSLU/48ZnqpeA4DNN08MHC1EaDZg7JffSw9awVMxFtne+soM05D/jQmFu73K0iiViNP4saNM5XKoBt/UYdlWR+DfvRfJMcoWl4aBqq2O5vD/SH8g+F/CPssztjEpRe7WH4HtmkqZiWK942czdW18NnPBqk3/LrmXnn1d+cIiZ9t9S58JWtzuRKzjzjd2BGKsGAGBQ2zBptIv2G7cqLRo5w8nuRmRlE2guoH6BhQkhb9fsEPRl6bzN3rPJo5zaoQz1HbcTHMPE1K59fO8kH7w13GOGXUOo75rbdx92CZBNrtvTqJMkvI0rScPwTRIS4B8BbTtGSYaD9Ad+KZriWXNyh7/B2K4tVs5nzIUqx9JY6IjxKqHvaktbxCZdO+MSgA4ypLDs4xLif0ZzaGKTRYgqdyH0S/Yigf6HZBpWU5c//EyQ1YpSaTC9+dl5ILQ7yWNFfW3BM1piyELuadVJ9e0v7cOIohPjCFPdyNwZ1jQaoZ9qDgwgZnOLJQSPjUCuZvPYz9NnSSRs6YsVDvtA0wFqaxQNt307OgJILNR9uuXjPGy7mDtDy8aOuEWjCpPuc8VcwX8db4+fZMuE5UY3paCNQ6qGme+X8Q/cDBJ90xVSYZ+AuYY522EYwBwsqzOobvVsbpf6nCiyFjkp7Nnr4S2bENJ29GQd4gchU+zs3kcPwt+lvzWLtGxscIexInWT60wFxrxpxdgw+EZGLBkc5nSiueEQkg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(366004)(136003)(396003)(39860400002)(376002)(346002)(451199015)(86362001)(122000001)(33656002)(38070700005)(38100700002)(82960400001)(6506007)(26005)(4326008)(186003)(107886003)(478600001)(9686003)(55016003)(7696005)(53546011)(64756008)(71200400001)(76116006)(110136005)(41300700001)(2906002)(66556008)(8676002)(83380400001)(66946007)(316002)(66476007)(54906003)(66446008)(5660300002)(8936002)(52536014);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?2cZVM8otmtMVtlxTIym6fsU9H3Q8v5osXWzMSIRj2A84B5aO38slCLKvWudQ?=
+ =?us-ascii?Q?4Pz+pt9JmiMyPcCHjUCqI/dOA7iK82i9BrhK8tHaBkQhlGjJzVG+XOZlqKOO?=
+ =?us-ascii?Q?f1pY5jJyi3Nu7BAsM2h36hr3CuH/NBF9z7Lr3Im1Ht7X8TZri/HM1D6/3Jwy?=
+ =?us-ascii?Q?JdcjZfffNBv5b7GNV6zPmPCB90xJrAIP7YhWBdrM+ena3j+4huZ5oDRUEolp?=
+ =?us-ascii?Q?2hylGV+fWNN00ymagJapzYYynu9gDQ/67xhjE8KSmjtorJQBVzXc2hgoZ/S3?=
+ =?us-ascii?Q?29esB/9ySjfVpDDGdGCdUNZz+PgZy/jSXZ4lWlmoCz6F04D5Uilk5LjpdKC2?=
+ =?us-ascii?Q?yiC92aWTfOskr8HM4ZXj//1XzGp0AdNS8/dIEcIDNU6Qi50cHtJT8cjBoS6L?=
+ =?us-ascii?Q?gCrDaQqcyl0g8MCNL/OceyozmO95ZPhNkJdHZFTHX7n8AOhKmR2jUq5xfkte?=
+ =?us-ascii?Q?FnAyz/a4psRRpyo2h8kBvPaSF+oy7oSE0op1+F3b/MdqibuNzRvjkH1DpBa6?=
+ =?us-ascii?Q?eerDnthZ1U7GXXpiviZXf8+t1fj35DYG+xqUNoV0Nzgy9fC0suvk5/c5Cdcr?=
+ =?us-ascii?Q?dcHlWvE+wMpiIYrWlOJVbq/5Dueu5uvMxtUn7dk2Ll+aGWgEib8ieP+m6knD?=
+ =?us-ascii?Q?fiXaiQMHDSmKBxoyppU93tZRyNgGJ6yMoaRt9dGcopHC6Um5/aSprUNQjVob?=
+ =?us-ascii?Q?Kfd3ZS6yWN4LBjMkroawV9rBs9jaBwtqpk44y/f5jcW+mQZl7t/9rlf7uyka?=
+ =?us-ascii?Q?2pjBwOFL1kIveIHDgosl93usO6W0T2LUFGBtnU87ysx3NkN2BO8n08QyVObI?=
+ =?us-ascii?Q?uIM3QTMIlURFOC7dZjEgxblLo6zJsRhraCIxjiKIFp6z5eMfwJR1LCtSvXKX?=
+ =?us-ascii?Q?h32v+jx0hgtOWk6Xaj61Y3TOsfCaLOiR4h5olMupxJrZ+DQBMCw37F1AuO0z?=
+ =?us-ascii?Q?AFYnZkFlIUtVIsFAbdAKSvhJk0vM4vfXjBVtZhbnkCmzRPTXB/z/hnb7cZYp?=
+ =?us-ascii?Q?LQRW3WDxALhQjzLTPDm3FBhDxI0mAFS4jJiOTDwi80AIl/EUJCCmo9oqfi/B?=
+ =?us-ascii?Q?L9XlG2Z16X11cMju6kfUmS7MibTMLl+/8qcSYipmvLBEKDIrEd+OA7+xO6BU?=
+ =?us-ascii?Q?e/YNn5aB+Q/Q2C+UivtgbTeuBk5Y6SXWFxZY9fOJa/Eyk28GdLN4/Q1pClC7?=
+ =?us-ascii?Q?FLo0885FM83MrtAATzWJjk8jJZGKAxkWCFve+xXd0CLaC/CUjm3a3ckDasjd?=
+ =?us-ascii?Q?tRQJ3fGO4qroGsNERnx4b11m/kiXHCTvUmUWrFxzFl09zYmOgwv8qgbwmplg?=
+ =?us-ascii?Q?LhNE58OjaUVmulhzI+GH3/p5dzBYHQsQlYO7gqLbmw69FeKdoof5c2sY5egi?=
+ =?us-ascii?Q?NU//0pwLhALRl0HOWGNHmbkvC16q26daPXZQLOrRqzdtojyebGv5KZghropY?=
+ =?us-ascii?Q?MTQrX1C81TMwPXzaLPRPyCET+5ZYM9W8Q7aJOl/7fyhINklELlV8VXu3mOdK?=
+ =?us-ascii?Q?SLrdSdGN4lbOTHB61zLLSZfaRyb3VX9KsxPyxT5ovIKox62Yux08CUIWIbjZ?=
+ =?us-ascii?Q?z4nUZUah0VuOdMqgvy1K/2181fU+gVVk8uQ1DUv5?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 72eb3926-bacf-449d-0457-08dabe2bc35c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2022 06:13:59.6648 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Xd/koQFhlaRn4OjETCKkZ5Civ6434jAqgAhQshZHqahk1Ud5eR2jiSERSH/6jH01/SMorpOqt0KTbfu1u9W4ug==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5345
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1667542445; x=1699078445;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=/h9AaQvhjFl1XJ/TQ5GIl3dL+44UT5B3xsXKPbjkrfI=;
+ b=BF8MdbUC/KFmydLXdz1bZklhw/9/jLpocAwd3WsxHDSi10BhTrRiHjeP
+ s7OitDCsKMoJhghx9lvhIYR3gplpH7CkOZ9LAmOL0yoDDuudDddyum0l1
+ OQcf99HOKNGPoHCEobvpqEx0EAV3R1y+B3Yd6iHt9soTVUO6WqxwG/XUy
+ LurQ6C3B+uthz/lsXF/uRww6RFmzsdfo6E9jPZpgHgW0r67wo6MaYLV4Z
+ Adf6wXyxqInsh4crXRB9MRJsvei5K6PP5b0s3sdAEPH5ZjqC7puJ9d2Sn
+ QcLPET2sr67Nm55nc+MCGD6npN4jmUs7j0fXHDCGQt5pF+ji0JG9d24Uq
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=BF8MdbUC
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
+ xps_cpus after reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,225 +188,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
- linux-doc@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, Thomas Gleixner <tglx@linutronix.de>,
- linux-leds@vger.kernel.org, drbd-dev@lists.linbit.com,
- linux-s390@vger.kernel.org, linux-nilfs@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, linux-afs@lists.infradead.org,
- lvs-devel@vger.kernel.org, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-ext4@vger.kernel.org,
- Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
- bridge@lists.linux-foundation.org, linux-pm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, rcu@vger.kernel.org, cgroups@vger.kernel.org,
- openipmi-developer@lists.sourceforge.net,
- Anna-Maria Gleixner <anna-maria@linutronix.de>, linux-edac@vger.kernel.org,
- linux-block@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-parisc@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, netfilter-devel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
-MIME-Version: 1.0
+Cc: "Jaron, MichalX" <michalx.jaron@intel.com>, "Maziarz,
+ Kamil" <kamil.maziarz@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-Back in April, I posted an RFC patch set to help mitigate a common issue
-where a timer gets armed just before it is freed, and when the timer
-goes off, it crashes in the timer code without any evidence of who the
-culprit was. I got side tracked and never finished up on that patch set.
-Since this type of crash is still our #1 crash we are seeing in the field,
-it has become a priority again to finish it.
 
-This is v3 of that patch set. Thomas Gleixner posted an untested version
-that makes timer->function NULL as the flag that it is shutdown. I took that
-code, tested it (fixed it up), added more comments, and changed the
-name to timer_shutdown_sync(). I also converted it to use WARN_ON_ONCE()
-instead of just WARN_ON() as Linus asked for.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Kamil Maziarz
+> Sent: Monday, October 24, 2022 1:50 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Jaron, MichalX <michalx.jaron@intel.com>; Maziarz, Kamil
+> <kamil.maziarz@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix not setting default
+> xps_cpus after reset
+> 
+> From: Michal Jaron <michalx.jaron@intel.com>
+> 
+> During tx rings configuration default XPS queue config is set and
+> __I40E_TX_XPS_INIT_DONE is locked. __I40E_TX_XPS_INIT_DONE state is
+> cleared and set again with default mapping only during queues build, it
+> means after first setup or reset with queues rebuild. (i.e.
+> ethtool -L <interface> combined <number>) After other resets (i.e.
+> ethtool -t <interface>) XPS_INIT_DONE is not cleared and those default
+> maps cannot be set again. It results in cleared xps_cpus mapping until
+> queues are not rebuild or mapping is not set by user.
+> 
+> Add clearing __I40E_TX_XPS_INIT_DONE state during reset to let the driver
+> set xps_cpus to defaults again after it was cleared.
+> 
+> Fixes: 6f853d4f8e93 ("i40e: allow XPS with QoS enabled")
+> Signed-off-by: Michal Jaron <michalx.jaron@intel.com>
+> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 19 ++++++++++++++++++-
+>  1 file changed, 18 insertions(+), 1 deletion(-)
+> 
 
-I then created a trivial coccinelle script to find where del_timer*()
-is called before being freed, and converted them all to timer_shutdown*()
-(There was a couple that still used del_timer() instead of del_timer_sync()).
-
-I also updated DEBUG_OBJECTS_TIMERS to check from where the timer is ever
-armed, to calling of timer_shutdown_sync(), and it will trigger if a timer
-is freed in between. The current way is to only check if the timer is armed,
-but that means it only triggers if the race condition is hit, and with
-experience, it's not run on enough machines to catch all of them. By triggering
-it from the time the timer is armed to the time it is shutdown, it catches
-all potential cases even if the race condition is not hit.
-
-I went though the result of the cocinelle script, and updated the locations.
-Some locations were caught by DEBUG_OBJECTS_TIMERS as the coccinelle script
-only checked for timers being freed in the same function as the del_timer*().
-
-Ideally, I would have the first patch go into this rc cycle, which is mostly
-non functional as it will allow the other patches to come in via the respective
-subsystems in the next merge window.
-
-Changes since v2: https://lore.kernel.org/all/20221027150525.753064657@goodmis.org/
-
- - Talking with Thomas Gleixner, he wanted a better name space and to remove
-   the "del_" portion of the API.
-
- - Since there's now a shutdown interface that does not synchronize, to keep
-   it closer to del_timer() and del_timer_sync(), the API is now:
-
-    timer_shutdown() - same as del_timer() but deactivates the timer.
-
-    timer_shutdown_sync() - same as del_timer_sync() but deactivates the timer.
-
- - Added a few more locations that got converted.
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/linux-trace.git
-trace/timers
-
-Head SHA1: 25106f0bb7968b3e8c746a7853f44b51840746c3
-
-
-Steven Rostedt (Google) (33):
-      timers: Add timer_shutdown_sync() and timer_shutdown() to be called before freeing timers
-      timers: s390/cmm: Use timer_shutdown_sync() before freeing timer
-      timers: sh: Use timer_shutdown_sync() before freeing timer
-      timers: block: Use timer_shutdown_sync() before freeing timer
-      timers: ACPI: Use timer_shutdown_sync() before freeing timer
-      timers: atm: Use timer_shutdown_sync() before freeing timer
-      timers: PM: Use timer_shutdown_sync()
-      timers: Bluetooth: Use timer_shutdown_sync() before freeing timer
-      timers: hangcheck: Use timer_shutdown_sync() before freeing timer
-      timers: ipmi: Use timer_shutdown_sync() before freeing timer
-      random: use timer_shutdown_sync() before freeing timer
-      timers: dma-buf: Use timer_shutdown_sync() before freeing timer
-      timers: drm: Use timer_shutdown_sync() before freeing timer
-      timers: HID: Use timer_shutdown_sync() before freeing timer
-      timers: Input: Use timer_shutdown_sync() before freeing timer
-      timers: mISDN: Use timer_shutdown_sync() before freeing timer
-      timers: leds: Use timer_shutdown_sync() before freeing timer
-      timers: media: Use timer_shutdown_sync() before freeing timer
-      timers: net: Use timer_shutdown_sync() before freeing timer
-      timers: usb: Use timer_shutdown_sync() before freeing timer
-      timers: cgroup: Use timer_shutdown_sync() before freeing timer
-      timers: workqueue: Use timer_shutdown_sync() before freeing timer
-      timers: nfc: pn533: Use timer_shutdown_sync() before freeing timer
-      timers: pcmcia: Use timer_shutdown_sync() before freeing timer
-      timers: scsi: Use timer_shutdown_sync() and timer_shutdown() before freeing timer
-      timers: tty: Use timer_shutdown_sync() before freeing timer
-      timers: ext4: Use timer_shutdown_sync() before freeing timer
-      timers: fs/nilfs2: Use timer_shutdown_sync() before freeing timer
-      timers: ALSA: Use timer_shutdown_sync() before freeing timer
-      timers: jbd2: Use timer_shutdown() before freeing timer
-      timers: sched/psi: Use timer_shutdown_sync() before freeing timer
-      timers: x86/mce: Use __init_timer() for resetting timers
-      timers: Expand DEBUG_OBJECTS_TIMER to check if it ever was used
-
-----
- .../RCU/Design/Requirements/Requirements.rst       |   2 +-
- Documentation/core-api/local_ops.rst               |   2 +-
- Documentation/kernel-hacking/locking.rst           |   5 +
- arch/s390/mm/cmm.c                                 |   4 +-
- arch/sh/drivers/push-switch.c                      |   2 +-
- arch/x86/kernel/cpu/mce/core.c                     |  14 ++-
- block/blk-iocost.c                                 |   2 +-
- block/blk-iolatency.c                              |   2 +-
- block/blk-stat.c                                   |   2 +-
- block/blk-throttle.c                               |   2 +-
- block/kyber-iosched.c                              |   2 +-
- drivers/acpi/apei/ghes.c                           |   2 +-
- drivers/atm/idt77105.c                             |   4 +-
- drivers/atm/idt77252.c                             |   4 +-
- drivers/atm/iphase.c                               |   2 +-
- drivers/base/power/wakeup.c                        |   7 +-
- drivers/block/drbd/drbd_main.c                     |   2 +-
- drivers/block/loop.c                               |   2 +-
- drivers/block/sunvdc.c                             |   2 +-
- drivers/bluetooth/hci_bcsp.c                       |   2 +-
- drivers/bluetooth/hci_h5.c                         |   2 +-
- drivers/bluetooth/hci_qca.c                        |   4 +-
- drivers/char/hangcheck-timer.c                     |   4 +-
- drivers/char/ipmi/ipmi_msghandler.c                |   2 +-
- drivers/char/ipmi/ipmi_ssif.c                      |   4 +-
- drivers/char/random.c                              |   2 +-
- drivers/dma-buf/st-dma-fence.c                     |   2 +-
- drivers/gpu/drm/gud/gud_pipe.c                     |   2 +-
- drivers/gpu/drm/i915/i915_sw_fence.c               |   2 +-
- drivers/hid/hid-wiimote-core.c                     |   2 +-
- drivers/input/keyboard/locomokbd.c                 |   2 +-
- drivers/input/keyboard/omap-keypad.c               |   2 +-
- drivers/input/mouse/alps.c                         |   2 +-
- drivers/input/serio/hil_mlc.c                      |   2 +-
- drivers/input/serio/hp_sdc.c                       |   2 +-
- drivers/isdn/hardware/mISDN/hfcmulti.c             |   6 +-
- drivers/isdn/mISDN/l1oip_core.c                    |   4 +-
- drivers/isdn/mISDN/timerdev.c                      |   4 +-
- drivers/leds/trigger/ledtrig-activity.c            |   2 +-
- drivers/leds/trigger/ledtrig-heartbeat.c           |   2 +-
- drivers/leds/trigger/ledtrig-pattern.c             |   2 +-
- drivers/leds/trigger/ledtrig-transient.c           |   2 +-
- drivers/media/pci/ivtv/ivtv-driver.c               |   2 +-
- drivers/media/usb/pvrusb2/pvrusb2-hdw.c            |  18 ++--
- drivers/media/usb/s2255/s2255drv.c                 |   4 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c        |   6 +-
- drivers/net/ethernet/marvell/sky2.c                |   2 +-
- drivers/net/ethernet/sun/sunvnet.c                 |   2 +-
- drivers/net/usb/sierra_net.c                       |   2 +-
- drivers/net/wireless/intel/iwlwifi/iwl-dbg-tlv.c   |   2 +-
- drivers/net/wireless/intersil/hostap/hostap_ap.c   |   2 +-
- drivers/net/wireless/marvell/mwifiex/main.c        |   2 +-
- drivers/net/wireless/microchip/wilc1000/hif.c      |   8 +-
- drivers/nfc/pn533/pn533.c                          |   2 +-
- drivers/nfc/pn533/uart.c                           |   2 +-
- drivers/pcmcia/bcm63xx_pcmcia.c                    |   2 +-
- drivers/pcmcia/electra_cf.c                        |   2 +-
- drivers/pcmcia/omap_cf.c                           |   2 +-
- drivers/pcmcia/pd6729.c                            |   4 +-
- drivers/pcmcia/yenta_socket.c                      |   4 +-
- drivers/scsi/qla2xxx/qla_edif.c                    |   4 +-
- drivers/scsi/scsi_lib.c                            |   1 +
- drivers/staging/media/atomisp/i2c/atomisp-lm3554.c |   2 +-
- drivers/tty/n_gsm.c                                |   2 +-
- drivers/tty/sysrq.c                                |   2 +-
- drivers/usb/gadget/udc/m66592-udc.c                |   2 +-
- drivers/usb/serial/garmin_gps.c                    |   2 +-
- drivers/usb/serial/mos7840.c                       |   2 +-
- fs/ext4/super.c                                    |   2 +-
- fs/jbd2/journal.c                                  |   2 +
- fs/nilfs2/segment.c                                |   2 +-
- include/linux/timer.h                              | 100 +++++++++++++++++--
- include/linux/workqueue.h                          |   4 +-
- kernel/cgroup/cgroup.c                             |   2 +-
- kernel/sched/psi.c                                 |   1 +
- kernel/time/timer.c                                | 106 ++++++++++++++-------
- kernel/workqueue.c                                 |   4 +-
- net/802/garp.c                                     |   2 +-
- net/802/mrp.c                                      |   2 +-
- net/bridge/br_multicast.c                          |   6 +-
- net/bridge/br_multicast_eht.c                      |   4 +-
- net/core/gen_estimator.c                           |   2 +-
- net/core/neighbour.c                               |   2 +
- net/ipv4/inet_connection_sock.c                    |   2 +-
- net/ipv4/inet_timewait_sock.c                      |   3 +-
- net/ipv4/ipmr.c                                    |   2 +-
- net/ipv6/ip6mr.c                                   |   2 +-
- net/mac80211/mesh_pathtbl.c                        |   2 +-
- net/netfilter/ipset/ip_set_list_set.c              |   2 +-
- net/netfilter/ipvs/ip_vs_lblc.c                    |   2 +-
- net/netfilter/ipvs/ip_vs_lblcr.c                   |   2 +-
- net/netfilter/xt_LED.c                             |   2 +-
- net/rxrpc/conn_object.c                            |   2 +-
- net/sched/cls_flow.c                               |   2 +-
- net/sunrpc/svc.c                                   |   2 +-
- net/sunrpc/xprt.c                                  |   2 +-
- net/tipc/discover.c                                |   2 +-
- net/tipc/monitor.c                                 |   2 +-
- sound/i2c/other/ak4117.c                           |   2 +-
- sound/synth/emux/emux.c                            |   2 +-
- 100 files changed, 310 insertions(+), 175 deletions(-)
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
