@@ -1,101 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70A0761DDC9
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 20:31:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E651061DE2B
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 22:03:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F0BF360AE0;
-	Sat,  5 Nov 2022 19:31:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F0BF360AE0
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7205160A66;
+	Sat,  5 Nov 2022 21:03:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7205160A66
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667676701;
-	bh=riPGI/Gtkx7ATouNePPnjweRtn1kzN1fIXakx6q3taQ=;
+	s=default; t=1667682221;
+	bh=EGfF5mx+lH/QRFcFg0SI6Y3AhisYPwGzxoil1+CNZw4=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YfR70TjZuMmIaCO5nhEG8+bo5ZbAD225Mh3Am/86k0l0Y7fbHWRbsaW7yldmQ8fbb
-	 Rn4og5w+F7JE91mqJM4TKgaTSlcyp0O45SkzTL81ECJflYwQ0wnLGjtvnTDFpuDT//
-	 K82MazSfSzdnucR6uQigFgYaCid0JJ6yjiYOiHgiLIWYVt4dqhtQzRJlrzgh3og9RH
-	 sCT0bVdkheKmwmlM8YJhx61+lStxQ+7Y/lKzxlPnltekNUS0yG9GJN5Z7OALVn0FuI
-	 REIVL+yCGk6B5CTNBJpyFDDUFx3hPucZcRLb1khpiEUAmFBBWred5d9ucc3CMBnTQg
-	 YJXoandau0byg==
+	b=YGwbFDwQGcMPw8dZWE6eGI7o6/GvdGkGFPEyMrTtJ0Veci/9r5sF/ABxqqAmPIDn1
+	 NThprVnTaB/ZKrQ7J+zwg93b6Yo3MyaJAITJkwWm8uLHD9GzyLZ76qC5tbl0X8JqDG
+	 5+6HE0ZREEADG7b6MjKPbsv3HqAGd2oCm0QLBQPawxw4cZHAfc1UXEJ97lFvPdb4xq
+	 +2mOoMXXIEf6yRshKfLjpRgG1jsECKWZJjw0t+/y0ztwbXLJe2ZjNYNEO4QK/isfUL
+	 ZBrOfipr/1PhMxmaJCa81/1zu/PXOJedlhLphup3GbkSj2e0NBL2dvZrC5jo/WYXag
+	 9LIWPKqNNMohg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OULRfUGrv7D4; Sat,  5 Nov 2022 19:31:40 +0000 (UTC)
+	with ESMTP id 9VJbmiZoVatC; Sat,  5 Nov 2022 21:03:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F058760AAE;
-	Sat,  5 Nov 2022 19:31:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F058760AAE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 650C760687;
+	Sat,  5 Nov 2022 21:03:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 650C760687
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9B90D1BF403
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 19:31:34 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B592D1BF283
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:03:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7258F40222
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 19:31:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7258F40222
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8F8B360803
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:03:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F8B360803
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z_TgoYG4QTQT for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Nov 2022 19:31:33 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 80FEA400D9
-Received: from mail-oi1-x22b.google.com (mail-oi1-x22b.google.com
- [IPv6:2607:f8b0:4864:20::22b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 80FEA400D9
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 19:31:33 +0000 (UTC)
-Received: by mail-oi1-x22b.google.com with SMTP id y67so8468532oiy.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 05 Nov 2022 12:31:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CTlAHc9k7qwIZyOhFoXagieaQq5pwRyAvyi0mAOE5RE=;
- b=W7tUVuLLEdxrOWpwVMKedmsaAjFaK0gf7E+o7e0l1Oy8+25PqdBUSpZ8UWg0Q3nOQ2
- aN4vvpjfFbqKO+aszpLBfYYbT40R3Kg+G6mlyTNP0Khg6w2AbDSNaLPwHXI6CjTJ7O7g
- jryUasGjAvDNdVpC5e6LghgnE0sIyw67TMoaL2fHBvQJJ7n3Fq+VmGQTTM82j3oB8TTk
- F9IgXweJsFDmxH4OBRX+Ef0oxOmF5HepgCdOpK6afPh/cFK3940LxQ+Yt8Fxx62NUG3X
- Q6D4NFveNla+BjUkZj7pvmRdMv+2Xr3a9qsa9O+a1zThf9iJtZ85wPYRt8Egs3Ifss3P
- SuLg==
-X-Gm-Message-State: ACrzQf0f6/HQ98/bgJ0ov0lT9YIPHRnAo1lZmlE5bPLV5KUdKB7KkqI9
- NbGlqyG38YaA5Ec+hVb0Ydw=
-X-Google-Smtp-Source: AMsMyM7VRYR4ja1354r4nOb4sGsFC9SF+e+FSsFCXSIKNyBk3irIl03bXoaveyKZeBBPlTvKUXlEMQ==
-X-Received: by 2002:a05:6808:1708:b0:351:728b:3a03 with SMTP id
- bc8-20020a056808170800b00351728b3a03mr22106906oib.275.1667676692450; 
- Sat, 05 Nov 2022 12:31:32 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- l14-20020a4ac60e000000b00499499a8e18sm834040ooq.5.2022.11.05.12.31.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Nov 2022 12:31:31 -0700 (PDT)
-Date: Sat, 5 Nov 2022 12:31:29 -0700
-From: Guenter Roeck <linux@roeck-us.net>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aCwvu1osYzIb for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Nov 2022 21:03:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63B6260687
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 63B6260687
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:03:33 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 5B12CB808C4;
+ Sat,  5 Nov 2022 21:03:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69FADC433D6;
+ Sat,  5 Nov 2022 21:03:26 +0000 (UTC)
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id f7ca4808
+ (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO); 
+ Sat, 5 Nov 2022 21:03:23 +0000 (UTC)
+Date: Sat, 5 Nov 2022 22:03:18 +0100
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
 To: Steven Rostedt <rostedt@goodmis.org>
-Message-ID: <20221105193129.GA1487775@roeck-us.net>
+Message-ID: <Y2bPlllkHo5DUmLY@zx2c4.com>
 References: <20221105060024.598488967@goodmis.org>
+ <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
+ <20221105123642.596371c7@rorschach.local.home>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20221105060024.598488967@goodmis.org>
+In-Reply-To: <20221105123642.596371c7@rorschach.local.home>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CTlAHc9k7qwIZyOhFoXagieaQq5pwRyAvyi0mAOE5RE=;
- b=jURw19XL/xOvCrYwmv2aWUKdeAoWjP9YO+FTg9LO7kNLGP2qrxnNI/DeaM/hhYlqsP
- YdQYptnzjKsYbbyAKOY5T5QWBhSSLuRj9tx/h3x3Iolz6OENad9xOgpnNTl3bQfF4abr
- IGnRZ+gwoVhjhy8eDyzb76gdYWeTNG8HbYJzf+upnNf3q7GfCqhXHTbMnctQM+lT4ISN
- LgN+zILvYp/x3cxyWSBN67VcIOLSthpIiMe3XVQLxJ5DNQbV3DpA0r2y4Xi6Om/6kI/T
- +bTGJHJtUOpMMkvOkxDlr0Z5JMnZYu43sVpFgzYDCR/HFlqDOFJ8Z5bQFtUlln66Rbqg
- ggdQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=jURw19XL
+ d=zx2c4.com; s=20210105; t=1667682204;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=eqdLYS8BDcnZ1CTVSLTL2V9mpBrsInljjeWX569KabI=;
+ b=Ek158U/IwAdzp/7JgxH8/niYIDD2c7iDpM/q00frrsf+kptgL3uCiSQ7Xlb7SIQ9YvTtg5
+ hlBVvQrg9GahoQxIsHXxgh/CGzM4sTACdo/WX2PYJwuZbLx0SZ+njeVN3snq9LgpG5MQMr
+ EBxmnADIwq+lyFhZU+rPI7l5k3bHDuo=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.a=rsa-sha256 header.s=20210105 header.b=Ek158U/I
+X-Mailman-Original-Authentication-Results: smtp.kernel.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.b="Ek158U/I"
 Subject: Re: [Intel-wired-lan] [PATCH v4a 00/38] timers: Use
  timer_shutdown*() before freeing timers
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -120,9 +106,10 @@ Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
  lvs-devel@vger.kernel.org, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
  intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
  tipc-discussion@lists.sourceforge.net, linux-ext4@vger.kernel.org,
- linux-media@vger.kernel.org, bridge@lists.linux-foundation.org,
- linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org, rcu@vger.kernel.org,
- cgroups@vger.kernel.org, openipmi-developer@lists.sourceforge.net,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ bridge@lists.linux-foundation.org, linux-pm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, rcu@vger.kernel.org, cgroups@vger.kernel.org,
+ openipmi-developer@lists.sourceforge.net,
  Anna-Maria Gleixner <anna-maria@linutronix.de>, linux-edac@vger.kernel.org,
  linux-block@vger.kernel.org, linux-nfs@vger.kernel.org,
  linux-parisc@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
@@ -136,38 +123,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Nov 05, 2022 at 02:00:24AM -0400, Steven Rostedt wrote:
-> 
-> Back in April, I posted an RFC patch set to help mitigate a common issue
-> where a timer gets armed just before it is freed, and when the timer
-> goes off, it crashes in the timer code without any evidence of who the
-> culprit was. I got side tracked and never finished up on that patch set.
-> Since this type of crash is still our #1 crash we are seeing in the field,
-> it has become a priority again to finish it.
-> 
-> The last version of that patch set is here:
-> 
->   https://lore.kernel.org/all/20221104054053.431922658@goodmis.org/
-> 
-> I'm calling this version 4a as it only has obvious changes were the timer that
-> is being shutdown is in the same function where it will be freed or released,
-> as this series should be "safe" for adding. I'll be calling the other patches
-> 4b for the next merge window.
-> 
+On Sat, Nov 05, 2022 at 12:36:42PM -0400, Steven Rostedt wrote:
+> ----------------------8<------------------------
+> @@
+> identifier ptr, timer, rfield, slab;
+> @@
+> (
+> -	del_timer(&ptr->timer);
+> +	timer_shutdown(&ptr->timer);
+> |
+> -	del_timer_sync(&ptr->timer);
+> +	timer_shutdown_sync(&ptr->timer);
+> )
+>     ...
+> (
+> 	kfree_rcu(ptr, rfield);
+> |
+> 	kmem_cache_free(slab, ptr);
+> |
+> 	kfree(ptr);
+> )
+> ---------------------->8------------------------
 
-For the series, as far as my testbed goes:
+Something that might help here is changing the `...` into
+`... when exists` or into `... when != ptr` or similar.
+See this section of the manual:
+https://coccinelle.gitlabpages.inria.fr/website/docs/main_grammar004.html
 
-Build results:
-	total: 152 pass: 152 fail: 0
-Qemu test results:
-	total: 500 pass: 500 fail: 0
-
-No runtime crashes or warnings observed.
-
-Tested-by: Guenter Roeck <linux@roeck-us.net>
-
-Guenter
-
+Jason
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
