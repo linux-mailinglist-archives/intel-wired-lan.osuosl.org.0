@@ -1,105 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62C0961DBD2
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 17:00:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9498361DC0A
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 17:36:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7EEE260AC6;
-	Sat,  5 Nov 2022 16:00:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7EEE260AC6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 14C0260B24;
+	Sat,  5 Nov 2022 16:36:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 14C0260B24
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667664020;
-	bh=NGp5GP3ohZmZuom19DfS6drIXQsuuzPmBNy1u4E1Lt8=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1667666215;
+	bh=2W8SLzhIimNbTDGxPyGwH/0I6/GSQW4gRWbXwCNiabI=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=e6Q4c/0Ohr1AQqFks7sQ462Tn4Oi+XAstoHh3CVtSJQjnXOs65YzmrXLdLbEmTpZR
-	 88w+n5pn0zKB9Wippp74C+UWfACsp/whk+C6xeX39pZHQ9YZ0Dqo+SYxOSHFjRGBPX
-	 eS2epJ80978/6iFvmWrCw6CA8weOaeYnp7gvHO3NskXXmUdFdxN+eZL1kGejA2uos4
-	 fGLW3PX9SLbEfBmLYBZwd6jlvTmTMkayF1xoh4F0oS9aYTs7KIJ5pPYq6vu7/hMqpS
-	 XC5wobH3H8zmsH3pyjmlNfUjzw4GMUkjf51I9F5RjlemGOqAcT+75R7JDz15onk8ic
-	 imd8oqkFSisLA==
+	b=GPtJFD1fqEHYQy79oW/COiz+0fZ2cbYNVVEWDliLA+9yAg+i3ZIZmIvL/2TK0pDEs
+	 SfQv8xTOa9YNMUYNx8Ryk6cbc+oziHT7pPaOtuUkBNjysn+jFb0ClHk/08PVB3IwYW
+	 umXNm/2+7vRCt62OQQxv118MT3URfTP0KJ7R7NG/Lz8DQL5SzwkkBMG1KiN59yP2D7
+	 fXyPBbS94CLww+1t4WGtWSrIvHmcK1MnmJ5m2hlmZ2nCBJr669/9pcVh9iood9zW5j
+	 oYgv7ZjTBB04bbWBQPH8TI+Pk56ReRF0aRHF7Gt+y/dnVEExopGjbit0NWzmRroTiG
+	 2OImSWhg1m/Ug==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZV5c-rarCH1b; Sat,  5 Nov 2022 16:00:19 +0000 (UTC)
+	with ESMTP id YY15bwJr7vt1; Sat,  5 Nov 2022 16:36:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 789FE60797;
-	Sat,  5 Nov 2022 16:00:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 789FE60797
+	by smtp3.osuosl.org (Postfix) with ESMTP id E28D760AEB;
+	Sat,  5 Nov 2022 16:36:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E28D760AEB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1B12E1BF285
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:00:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C62991BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:36:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E9EB640364
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:00:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9EB640364
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9FE2260A84
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:36:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FE2260A84
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DX7fP1sxdz39 for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Nov 2022 16:00:13 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FF0C40148
-Received: from mail-qt1-x82a.google.com (mail-qt1-x82a.google.com
- [IPv6:2607:f8b0:4864:20::82a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9FF0C40148
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:00:13 +0000 (UTC)
-Received: by mail-qt1-x82a.google.com with SMTP id c15so4878641qtw.8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 05 Nov 2022 09:00:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GP8p4dRzNVpyUotOfaypMmYTGE9lsMcq6qB3gjhmc04=;
- b=SDK1mNtSRBqbSHlSOSzBL+0AQsNvDxmO4SnFb4Pi1qmdlhbHlIF7G7E9Ly4C412Nc9
- t4HYd2UXtff5kCxSpeNipkyJCJB18aULC0EWr6EVn20GUXOigYTvkDCh8Bl5yFVWiGhy
- Y8g857zjfXJQmqVZiIP/AkQpPOVBGJSFlWZ1UDN/SNf5x7zfDm8dhgEfnlLFg8Zf7Pi+
- EFALCyj5Z3xkCxqjQ6qxMPQIHgSNOISDk72+8Y0/MxWEesF4aEtZk6tdEaQZF5rnS1Pv
- dbWMUDpVQAKhcnZTCblRtfnIJCEAkV5Tmcmr0nS4IOlTWwR4JRZHXX5PYKFo2MTt40Qg
- qvVA==
-X-Gm-Message-State: ANoB5pmkXeeGuKE9H5XfY/LogefhDo7cg3guz/ihECb5G8mD139YRXc3
- iwAhhFz4Bh7z4WbL3KITIvb/9GUC8AWoIw==
-X-Google-Smtp-Source: AA0mqf7h9uRmRn+cFeQPPovlMYTCLod5zsxae1r4AFiVJppYfQpDue4UVQkouD4yWyedrh9yAiZK0w==
-X-Received: by 2002:a05:622a:1393:b0:3a5:82ea:9033 with SMTP id
- o19-20020a05622a139300b003a582ea9033mr211676qtk.549.1667664012142; 
- Sat, 05 Nov 2022 09:00:12 -0700 (PDT)
-Received: from mail-yw1-f174.google.com (mail-yw1-f174.google.com.
- [209.85.128.174]) by smtp.gmail.com with ESMTPSA id
- l9-20020a37f909000000b006e8f8ca8287sm2056670qkj.120.2022.11.05.09.00.03
- for <intel-wired-lan@lists.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 05 Nov 2022 09:00:07 -0700 (PDT)
-Received: by mail-yw1-f174.google.com with SMTP id
- 00721157ae682-3704852322fso68687197b3.8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 05 Nov 2022 09:00:03 -0700 (PDT)
-X-Received: by 2002:a81:114e:0:b0:36a:fc80:fa62 with SMTP id
- 75-20020a81114e000000b0036afc80fa62mr40431421ywr.58.1667663992806; Sat, 05
- Nov 2022 08:59:52 -0700 (PDT)
-MIME-Version: 1.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Nbjy2va1ZcXC for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Nov 2022 16:36:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7587A60A7D
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7587A60A7D
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 16:36:47 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 776326092A;
+ Sat,  5 Nov 2022 16:36:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75343C433C1;
+ Sat,  5 Nov 2022 16:36:44 +0000 (UTC)
+Date: Sat, 5 Nov 2022 12:36:42 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <20221105123642.596371c7@rorschach.local.home>
+In-Reply-To: <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
 References: <20221105060024.598488967@goodmis.org>
-In-Reply-To: <20221105060024.598488967@goodmis.org>
-From: Linus Torvalds <torvalds@linux-foundation.org>
-Date: Sat, 5 Nov 2022 08:59:36 -0700
-X-Gmail-Original-Message-ID: <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
-Message-ID: <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
-To: Steven Rostedt <rostedt@goodmis.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux-foundation.org; s=google;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GP8p4dRzNVpyUotOfaypMmYTGE9lsMcq6qB3gjhmc04=;
- b=iIDJL03zNkH0lS9YORaCB4Nnx18G1RT5PAxkqTBkren7bOYLdVGnhhilx+OlS481lw
- gQr71gF/2R0QtX/qOni1Pt9vrqOkIr43rj0MZrH/uG69dzQgSBZeGC3nRHzTa1HEb5Zv
- OhEAlIPPkZmfK8ER3fSUpMd0BmaBeM97bdw94=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=linux-foundation.org
- header.i=@linux-foundation.org header.a=rsa-sha256 header.s=google
- header.b=iIDJL03z
+ <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH v4a 00/38] timers: Use
  timer_shutdown*() before freeing timers
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -140,85 +104,189 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 4, 2022 at 11:01 PM Steven Rostedt <rostedt@goodmis.org> wrote:
->
-> Patch 1 fixes an issue with sunrpc/xprt where it incorrectly uses
-> del_singleshot_timer_sync() for something that is not a oneshot timer. As this
-> will be converted to shutdown, this needs to be fixed first.
+On Sat, 5 Nov 2022 08:59:36 -0700
+Linus Torvalds <torvalds@linux-foundation.org> wrote:
 
-So this is the kind of thing that I would *not* want to get eartly.
+> On Fri, Nov 4, 2022 at 11:01 PM Steven Rostedt <rostedt@goodmis.org> wrote:
+> >
+> > Patch 1 fixes an issue with sunrpc/xprt where it incorrectly uses
+> > del_singleshot_timer_sync() for something that is not a oneshot timer. As this
+> > will be converted to shutdown, this needs to be fixed first.  
+> 
+> So this is the kind of thing that I would *not* want to get eartly.
 
-I really would want to get just the infrastructure in to let people
-start doing conversions.
+So I'll have to break up patch 5 to not update the
+del_singleshot_timer_sync() to a timer_shutdown_sync(), because that
+breaks this code.
 
-And then the "mindlessly obvious patches that are done by scripting
-and can not possibly matter".
+Hmm, since that is a functional change, it probably should wait till
+the merge window. I'll move this patch and that part of patch 5 to the
+second part of the series for the merge window.
 
-The kinds that do not *need* review, because they are mechanical, and
-that just cause pointless noise for the rest of the patches that *do*
-want review.
+> 
+> I really would want to get just the infrastructure in to let people
+> start doing conversions.
+> 
+> And then the "mindlessly obvious patches that are done by scripting
+> and can not possibly matter".
+> 
+> The kinds that do not *need* review, because they are mechanical, and
+> that just cause pointless noise for the rest of the patches that *do*
+> want review.
+> 
+> Not this kind of thing that is so subtle that you have to explain it.
+> That's not a "scripted patch for no semantic change".
+> 
+> So leave the del_singleshot_timer_sync() cases alone, they are
+> irrelevant for the new infrastructure and for the "mindless scripted
+> conversion" patches.
+> 
+> > Patches 2-4 changes existing timer_shutdown() functions used locally in ARM and
+> > some drivers to better namespace names.  
+> 
+> Ok, these are relevant.
+> 
+> > Patch 5 implements the new timer_shutdown() and timer_shutdown_sync() functions
+> > that disable re-arming the timer after they are called.  
+> 
+> This is obviously what I'd want early so that people can start doign
+> this in their trees.
 
-Not this kind of thing that is so subtle that you have to explain it.
-That's not a "scripted patch for no semantic change".
+But will need to remove the part that it changes del_singleshot_timer_sync().
 
-So leave the del_singleshot_timer_sync() cases alone, they are
-irrelevant for the new infrastructure and for the "mindless scripted
-conversion" patches.
 
-> Patches 2-4 changes existing timer_shutdown() functions used locally in ARM and
-> some drivers to better namespace names.
+> 
+> > Patches 6-28 change all the locations where there's a kfree(), kfree_rcu(),
+> > kmem_cache_free() and one call_rcu() call where the RCU function frees the
+> > timer (the workqueue patch) in the same function as the del_timer{,_sync}() is
+> > called on that timer, and there's no extra exit path between the del_timer and
+> > freeing of the timer.  
+> 
+> So honestly, I was literally hoping for a "this is the coccinelle
+> script" kind of patch.
 
-Ok, these are relevant.
+The above actual was, but I walked through them manually too, because I
+don't trust my conccinelle skills. All but the call_rcu() one was
+caught by conccinelle. That's why I pointed out the worqueue one. I'll
+remove that from this series.
 
-> Patch 5 implements the new timer_shutdown() and timer_shutdown_sync() functions
-> that disable re-arming the timer after they are called.
+> 
+> Now there seems to be a number of patches here that are actualyl
+> really hard to see that they are "obviously correct" and I can't tell
+> if they are actually scripted or not.
 
-This is obviously what I'd want early so that people can start doign
-this in their trees.
+Yes they are. The script that found these were:
 
-> Patches 6-28 change all the locations where there's a kfree(), kfree_rcu(),
-> kmem_cache_free() and one call_rcu() call where the RCU function frees the
-> timer (the workqueue patch) in the same function as the del_timer{,_sync}() is
-> called on that timer, and there's no extra exit path between the del_timer and
-> freeing of the timer.
+----------------------8<------------------------
+@@
+identifier ptr, timer, rfield, slab;
+@@
+(
+-	del_timer(&ptr->timer);
++	timer_shutdown(&ptr->timer);
+|
+-	del_timer_sync(&ptr->timer);
++	timer_shutdown_sync(&ptr->timer);
+)
+    ...
+(
+	kfree_rcu(ptr, rfield);
+|
+	kmem_cache_free(slab, ptr);
+|
+	kfree(ptr);
+)
+---------------------->8------------------------
 
-So honestly, I was literally hoping for a "this is the coccinelle
-script" kind of patch.
+So any function that had a del_timer*(&obj->timer) and then that obj
+was freed with kfree(), kfree_rcu() or kmem_cache_free() was updated.
 
-Now there seems to be a number of patches here that are actualyl
-really hard to see that they are "obviously correct" and I can't tell
-if they are actually scripted or not.
+What I did manually was to make sure there was no exit of the routine
+between those two calls. I'm sure coccinelle could do that too, but I'm
+not good enough at it to add that feature.
 
-They don't *look* scripted, but I can't really tell.  I looked at the
-patches with ten lines of context, and I didn't see the immediately
-following kfree() even in that expanded patch context, so it's fairly
-far away.
+The reason the patches don't look obvious is because the distance
+between the del_timer() and the free may be quite far. I walked through
+these patches at least 3 times manually to make sure they are all OK.
 
-Others in the series were *definitely* not scripted, doing clearly
-manual cleanups:
 
--    if (dch->timer.function) {
--        del_timer(&dch->timer);
--        dch->timer.function = NULL;
--    }
-+    timer_shutdown(&dch->timer);
+> 
+> They don't *look* scripted, but I can't really tell.  I looked at the
+> patches with ten lines of context, and I didn't see the immediately
+> following kfree() even in that expanded patch context, so it's fairly
+> far away.
 
-so no, this does *not* make me feel "ok, this is all trivial".
+Yes, some are like a 100 lines away.
 
-IOW, I'd really want *just* the infrastructure and *just* the provably
-trivial stuff. If it wasn't some scripted really obvious thing that
-cannot possibly change anything and that wasn't then edited manually
-for some reason, I really don't want it early.
+> 
+> Others in the series were *definitely* not scripted, doing clearly
+> manual cleanups:
+> 
+> -    if (dch->timer.function) {
+> -        del_timer(&dch->timer);
+> -        dch->timer.function = NULL;
+> -    }
+> +    timer_shutdown(&dch->timer);
+> 
+> so no, this does *not* make me feel "ok, this is all trivial".
 
-IOW, any early conversions I'd take are literally about removing pure
-mindless noise. Not about doing conversions.
+Sorry, I'll remove that. It's basically open-coding the
+timer_shutdown() as the way it shuts down the timer is simply by
+setting the timer.function to NULL.
 
-And I wouldn't mind it as a single conversion patch that has the
-coccinelle script as the explanation.
+> 
+> IOW, I'd really want *just* the infrastructure and *just* the provably
+> trivial stuff. If it wasn't some scripted really obvious thing that
+> cannot possibly change anything and that wasn't then edited manually
+> for some reason, I really don't want it early.
+> 
+> IOW, any early conversions I'd take are literally about removing pure
+> mindless noise. Not about doing conversions.
+> 
+> And I wouldn't mind it as a single conversion patch that has the
+> coccinelle script as the explanation.
 
-Really just THAT kind of "100% mindless conversion".
+I'll need to update the coccinelle script (or ask someone to give me a
+fix) that catches the case of:
 
-               Linus
+	del_timer(&obj->timer);
+
+	if (x)
+		goto out;
+
+	kfree(obj);
+
+out:
+	return;
+
+
+I'm sure it's a trivial change. I'll look into it some more.
+
+I'm guessing you don't care about the case of:
+
+	del_timer(&obj->timer);
+
+	if (x)
+		goto label;
+
+label:
+
+	kfree(obj);
+
+As that's a bit more complex if we avoid the first goto case?
+Even though the second case is obviously correct.
+
+I believe both of these cases exist in the kernel. I manually removed
+the places that my script found for the first case.
+
+> 
+> Really just THAT kind of "100% mindless conversion".
+
+I'll look at making the most obviously correct case, where del_timer
+and kfree have no goto or returns between them. We can always add the
+rest in the merge window.
+
+-- Steve
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
