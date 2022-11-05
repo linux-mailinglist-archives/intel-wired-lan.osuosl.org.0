@@ -1,63 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFB8A61DED0
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 22:45:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4760661DEFA
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Nov 2022 22:48:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5525B408CB;
-	Sat,  5 Nov 2022 21:45:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5525B408CB
+	by smtp2.osuosl.org (Postfix) with ESMTP id BFD8440414;
+	Sat,  5 Nov 2022 21:48:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BFD8440414
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667684758;
-	bh=4uoL7/N6y3wefekeE1B0Afc5rI8d+GuNuUMh9QnqElw=;
+	s=default; t=1667684896;
+	bh=W5Swd7xzpqATB05TWl3Vj8TbiF/TjqoEhIFYtdLmlo0=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=crSlNFtOjnWlNhDjv1326mA0qkc0dMqLV15un7R8mlyRt22jkx70z3YxtOpAZeDhj
-	 Ax3empA7LL0atOzBDTsASJS8KhlACt0sYFIbZ636wDzXuVz2hvqdezwZbThJUZOFB5
-	 CLkzKTd4yPQawpgFYJm9ImeCDnYiJP4JBuz/G0p6Enr846XImzNMYGHairQE0Z7TxY
-	 SWPXqxNBfW/rcfsoQRtg/2RQ82B0ND5nJCANjgAUC+8HfzZHiur17mqmcYHPBzgl8B
-	 mQz/bR3md3FpwtRRt4w8LAIu0gPrpAYrt7PmXZYwooqycOxIBSOxdzhGcS2me4in7G
-	 98qpQ5cjWDjKQ==
+	b=78ITpry4lUJQi4+bWcEQDwiNBb083/1znI+/CDVIsTITjY73k+tgQVNPtBdewifDf
+	 nSoErMcGuq1ebBhwQ6PEupKMlWWALpwOh95zJJ7cFUK9tsNHOC3rrikL2RtsjGJ8tg
+	 s/ypwC0ISqQj/ATNDje87M8R6oxRO5FjYQr0xVYOCGFVLB++6BcXbqRtPX/cqvtst/
+	 SkhAEjL0iIEe0UUTI3c2+GDdeBfykt44AsTT9LlXyzaTFPTW8Hc4S0rqiOl2c9iOxI
+	 zVrQhA808V4XLI/gbTSQe6RFGXlocBDjGWggDs+xh14tImm3aWxUbDN/ArT/FYot+8
+	 0y7XigeIt+Lmg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PhtRGYJenXDk; Sat,  5 Nov 2022 21:45:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VU5ON1eq_afz; Sat,  5 Nov 2022 21:48:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 104024089B;
-	Sat,  5 Nov 2022 21:45:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 104024089B
+	by smtp2.osuosl.org (Postfix) with ESMTP id C18C840393;
+	Sat,  5 Nov 2022 21:48:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C18C840393
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 46B4B1BF283
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:45:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 12FDB1BF283
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:48:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1CEFF60A7D
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:45:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CEFF60A7D
+ by smtp1.osuosl.org (Postfix) with ESMTP id EEA1981E22
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:48:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EEA1981E22
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GDlgYI1Rlkeb for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Nov 2022 21:45:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l7MUPJmeIU5A for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Nov 2022 21:48:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 355CC607CE
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 355CC607CE
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:45:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1BA3A81926
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1BA3A81926
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Nov 2022 21:48:01 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 8A73FCE069C;
- Sat,  5 Nov 2022 21:45:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74BDDC433D6;
- Sat,  5 Nov 2022 21:45:44 +0000 (UTC)
-Date: Sat, 5 Nov 2022 17:45:42 -0400
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 383BD60B9E;
+ Sat,  5 Nov 2022 21:48:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37383C433D6;
+ Sat,  5 Nov 2022 21:47:58 +0000 (UTC)
+Date: Sat, 5 Nov 2022 17:47:56 -0400
 From: Steven Rostedt <rostedt@goodmis.org>
 To: Linus Torvalds <torvalds@linux-foundation.org>
-Message-ID: <20221105174542.21bd7e86@rorschach.local.home>
+Message-ID: <20221105174756.38062fce@rorschach.local.home>
 In-Reply-To: <CAHk-=wjkkomrdcrAxxFijs-Lih6vHze+A2TgM+v7-Z7ZkXT+WA@mail.gmail.com>
 References: <20221105060024.598488967@goodmis.org>
  <CAHk-=wi95dGkg7DiuOZ27gGW+mxJipn9ykB6LHB-HrbbLG6OMQ@mail.gmail.com>
@@ -109,43 +109,22 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 On Sat, 5 Nov 2022 14:13:14 -0700
 Linus Torvalds <torvalds@linux-foundation.org> wrote:
 
-> And trying "when != ptr->timer" actually does the right thing in that
-> it gets rid of the case where the timer is modified outside of the
-> del_timer() case, *but* it also causes odd other changes to the
-> output.
-> 
-> Look at what it generates for that
-> 
->    drivers/media/usb/pvrusb2/pvrusb2-hdw.c
-> 
-> file, which finds a lot of triggers with the "when !=  ptr->timer",
-> but only does one without it.
+> (Comparing output is also fun because the ordering of the patches is
+> random, so consecutive runs with the same rule will give different
+> patches. I assume that it's just because it's done in parallel, but it
+> doesn't help the "try to see what changes when you change the script"
+> ;)
 
-I added an expression, and it appears to work:
+What I do to compare is:
 
-At least for this case.
+ patch -p1 < cocci1.patch
+ git commit -a
+ git show | patch -p1 -R
+ patch -p1 < cocci2.patch
+ git diff
 
-@@
-expression E;
-identifier ptr, timer, rfield, slab;
-@@
-(
--       del_timer(&ptr->timer);
-+       timer_shutdown(&ptr->timer);
-|
--       del_timer_sync(&ptr->timer);
-+       timer_shutdown_sync(&ptr->timer);
-)
-  ... when != ptr->timer.function = E;
-(
-        kfree_rcu(ptr, rfield);
-|
-        kmem_cache_free(slab, ptr);
-|
-        kfree(ptr);
-)
-
-Now I need to add return and goto cases here.
+Then I see how things changed. This is how I was able to show you the
+tweaks I made.
 
 -- Steve
 _______________________________________________
