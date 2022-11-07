@@ -1,84 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88EF761EB50
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Nov 2022 08:03:22 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CF1261F138
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Nov 2022 11:55:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5870B4023D;
-	Mon,  7 Nov 2022 07:03:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5870B4023D
+	by smtp4.osuosl.org (Postfix) with ESMTP id D7CEA402B9;
+	Mon,  7 Nov 2022 10:55:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D7CEA402B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667804599;
-	bh=NbMpoqAABX4mK/uVLAaApan3zHsZzbBgIH7kTdbnkS0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1667818502;
+	bh=2JSTiJ7rEyMWpxw4r8IF3mkxacevp0ZLFRwo1f1UveQ=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=N322S2m2KKwiKu3meSx+U5JwCZlHNe4jkCowZeqdlMDdtHBTsMiPRIWpd5QrgZy/m
-	 MlqAoLHEpSSh52GcTh0IvxzgVbFSYkHy2je3J8E2QimWhTAtF4K9Y6wCD2m91SqHmw
-	 9qRjhJApZKkBu5u18NoMTSPJPS1jNk4qxGB0JOleeUksSzv8D/s26lN/uN81x/4FKD
-	 bTL4fsdcZPEgMYMBqsU/o3+ylgpW19Ml0ilfr29cO4qAVXuSjJpQgE46dyBHWtK4Kf
-	 gR56V4Dd8sINOkjw3T9YvTQrOi5SnoK0e6D51AfZ5TEDCDyJkTU0WEszeQMuei3ENP
-	 me+lG1x8PLMOg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YeEIaqBkYZYI; Mon,  7 Nov 2022 07:03:18 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 361C1400EF;
-	Mon,  7 Nov 2022 07:03:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 361C1400EF
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9EE171BF2C0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 07:03:13 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7806E4077D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 07:03:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7806E4077D
+	b=5sm7dUMVBsfXByULC5+TsBtOg7isrpedvinQQkaBEEWnQ89ECdjllbDvKeFQuvhnA
+	 4zVQnVBmBz1QlR4DmcsB8SsOsiL7x6ksFT12XBriNg6B2WReU8ik/q6zvB+sEUnB8U
+	 azKyDQ3q6BFSEzWtIHaZQ4er8Ap/9wbPJpAA/uA7JEnQPifbGqFkiPrMxXMhuib+N4
+	 j9bU+l9pJO1J4dcsSgNgFth/CKrlRpMt4E2Ldd9cElsUo908YAq8crRqDhRdmci3V9
+	 ZZDbnUdm0iPRD01NV7EFrE0TaK8oKCg9agGWYfmF1JUG+DkEhACGmuk8oaodKBlZzl
+	 P4XKCJU4V+3fg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bfRFtCQE9M1H for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Nov 2022 07:03:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2F07406E0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B2F07406E0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 07:03:12 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 9985E60DFD;
- Mon,  7 Nov 2022 07:03:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E8F0C433D6;
- Mon,  7 Nov 2022 07:03:09 +0000 (UTC)
-Date: Mon, 7 Nov 2022 09:03:06 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <Y2itqqGQm6uZ/2Wf@unreal>
-References: <20221104205414.2354973-1-anthony.l.nguyen@intel.com>
- <20221104205414.2354973-6-anthony.l.nguyen@intel.com>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kwoxH8PtAxRE; Mon,  7 Nov 2022 10:55:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7583C40247;
+	Mon,  7 Nov 2022 10:55:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7583C40247
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7ED241BF410
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 10:54:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 58E0D400E4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 10:54:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 58E0D400E4
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XcaIfjdWjTRe for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Nov 2022 10:54:55 +0000 (UTC)
+X-Greylist: delayed 00:07:47 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B333400DD
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0B333400DD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Nov 2022 10:54:54 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: Steven Rostedt <rostedt@goodmis.org>, Linus Torvalds
+ <torvalds@linux-foundation.org>
+In-Reply-To: <20221106223256.4bbdb018@rorschach.local.home>
+References: <20221106223256.4bbdb018@rorschach.local.home>
+Date: Mon, 07 Nov 2022 11:47:04 +0100
+Message-ID: <87pmdzvy6v.ffs@tglx>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221104205414.2354973-6-anthony.l.nguyen@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1667804591;
- bh=NeucI/3zqp+akpMtsKu8R5lV8B05UIL+na/Byd+Rj9g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GMvWpZHfpUKMMWUVUlKvnZB87GZ1jI+LOXMNEJvAZbHo6nun/AOioT4iEc4OKutbD
- wXkSt40Wq/l+BrusYHPbp2TRdql1hLANQMlnU3prqbCJdAr+H9yinixOjX0jycFIBd
- 4EISOmaemvn+xCNBazGkpR34HJ1tJUahVWK4AMRNmXPJP+K8osrJI3IEc5rWTCAaBa
- F+paCNr9MRyjXOArxcC0zgjMXl4BJU1W9+uLi9/iBMrqW5gOkgM3ajzHos8XgtmfKC
- kN+a7tScDKHRIbBHw50P23O/HmWXwT040oKGrMxMKeH6qKPwWl2Gh8+H8Qd4wv9My/
- wW83dKy3Qv2Mg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=GMvWpZHf
-Subject: Re: [Intel-wired-lan] [PATCH net-next 5/6] igb: Do not free
- q_vector unless new one was allocated
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1667818024;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=qnhu/C4/dTNGh+9YxTAUPF0AHXOgpdZiA4TofS1TDao=;
+ b=m8gFAB2FYV5B4BIkkbSCrPl5kngI1vwmC89wOqBJ/q73+RRLDUvN8153YBd0ancpYaUudU
+ +fTzmJoLwRrrXw9ulhVtc41yRIMLNrOmB9kVLUOAn2xwOs861TQYPTmwfVqoXOpGOLsPn5
+ hNBacxD9XN6Mi6tXS/NIbwjqzso2C6oqm6/L/mt2cpmfqfHELnCL8o8Pn38Ir7+eD8OVqk
+ Lj3kRr5Ls1MIF7+wsJc3Ym/BQIZf8UhWrd8aE7FpoY/qhjIfIvELeoa8/ZXUqY5eKhjinO
+ ZF4FT08X0F8jeyihKYji9kBCreFY8X9nEznXEcECfWmIcYVRm4zXH9JmYOmiiQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1667818024;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=qnhu/C4/dTNGh+9YxTAUPF0AHXOgpdZiA4TofS1TDao=;
+ b=bzVvnuX1mysTSSrkmkIGsLumN3FZV+biUwiIDeLZdScudMhEXojJ3c4U7ytkUdHNPdLCjD
+ NbhAMzPLE4OU4lBA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=m8gFAB2F; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=bzVvnuX1
+Subject: Re: [Intel-wired-lan] [GIT PULL] treewide: timers: Use
+ timer_shutdown*() before freeing timers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,72 +94,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
- "Michael J . Ruhl" <michael.j.ruhl@intel.com>, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
+ linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-afs@lists.infradead.org, linux-leds@vger.kernel.org,
+ drbd-dev@lists.linbit.com, linux-nilfs@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
+ lvs-devel@vger.kernel.org, linux-acpi@vger.kernel.org, coreteam@netfilter.org,
+ intel-wired-lan@lists.osuosl.org, linux-input@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, linux-ext4@vger.kernel.org,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ bridge@lists.linux-foundation.org, intel-gfx@lists.freedesktop.org,
+ linux-block@vger.kernel.org, cgroups@vger.kernel.org,
+ Anna-Maria Gleixner <anna-maria@linutronix.de>, linux-nfs@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>, netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Julia Lawall <Julia.Lawall@inria.fr>,
+ linux-bluetooth@vger.kernel.org, netfilter-devel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 04, 2022 at 01:54:13PM -0700, Tony Nguyen wrote:
-> From: Kees Cook <keescook@chromium.org>
-> 
-> Avoid potential use-after-free condition under memory pressure. If the
-> kzalloc() fails, q_vector will be freed but left in the original
-> adapter->q_vector[v_idx] array position.
-> 
-> Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: Eric Dumazet <edumazet@google.com>
-> Cc: Jakub Kicinski <kuba@kernel.org>
-> Cc: Paolo Abeni <pabeni@redhat.com>
-> Cc: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org
-> Signed-off-by: Kees Cook <keescook@chromium.org>
-> Reviewed-by: Michael J. Ruhl <michael.j.ruhl@intel.com>
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Linus,
 
-You should use first and last names here.
+On Sun, Nov 06 2022 at 22:32, Steven Rostedt wrote:
+> As discussed here:
+>
+>   https://lore.kernel.org/all/20221106212427.739928660@goodmis.org/
 
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index d6c1c2e66f26..c2bb658198bf 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -1202,8 +1202,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
->  	if (!q_vector) {
->  		q_vector = kzalloc(size, GFP_KERNEL);
->  	} else if (size > ksize(q_vector)) {
-> -		kfree_rcu(q_vector, rcu);
-> -		q_vector = kzalloc(size, GFP_KERNEL);
-> +		struct igb_q_vector *new_q_vector;
-> +
-> +		new_q_vector = kzalloc(size, GFP_KERNEL);
-> +		if (new_q_vector)
-> +			kfree_rcu(q_vector, rcu);
-> +		q_vector = new_q_vector;
+Please hold off. It's only nits, but tip has documented rules and random
+pull requests are not making them go away.
 
-I wonder if this is correct.
-1. if new_q_vector is NULL, you will overwrite q_vector without releasing it.
-2. kfree_rcu() doesn't immediately release memory, but after grace
-period, but here you are overwriting the pointer which is not release
-yet.
+Thanks,
 
-
->  	} else {
->  		memset(q_vector, 0, size);
->  	}
-> -- 
-> 2.35.1
-> 
+        tglx
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
