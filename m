@@ -1,186 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FBA26219A5
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Nov 2022 17:41:07 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59D1C621EC0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Nov 2022 22:57:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BB8578137B;
-	Tue,  8 Nov 2022 16:41:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BB8578137B
+	by smtp4.osuosl.org (Postfix) with ESMTP id BEF67416C8;
+	Tue,  8 Nov 2022 21:57:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BEF67416C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667925665;
-	bh=rLBcY/3KdarZXF1weWinY28B9ybvKn1HUs4HMNLrTHI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=z9/KlRD15Ky+7noo25cE1E96BwoQAbo+FdTu/5+YVEbpUe8xOvB/9K6YbVojbMv1d
-	 eB2zj390IzUnA+hygF70rtZzvysQST9+xUS4JetC2MtWuqZuF5NY+BQUGWZtviH3WZ
-	 jo17g9oYpvX7gsR+vd5S0Plvt8heFJYalwAiJps2k8PYTgg3s3fVpMdwp1l9liSSvC
-	 2HcwRuNtOEgb+KaxWBbbyXCXxkLugZoUQuzeLJRGP2fAbG+dVn9pokCPILROqPvO4o
-	 BgSOkPGDt70nLbWL/M+h5+9CJpcclvI2a5AQNk0+Of/7PtoqdTvjUoHo7JdD0BKHq9
-	 3LYitpDF3NALQ==
+	s=default; t=1667944638;
+	bh=qfCcsaaopg7+NlY3P0vYBf+5JVDC4Lg3hJ4UhZHaCFg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=3I5H6ZFQf0lEvFH+sH1pmBgGV2dijeqaBwBVywtNMLLvCUAK91N60Y2kbqWBiNIHM
+	 T5/vSGTL7j+geIieoal9o2bFF+1/r0kzjnk9SX1fD04RYSJFQ+DtpKuFpuMHG6VC3O
+	 NIN+1mko9lnpTihblF72oiYZYRK72awBKFfq0Zv4oxOBjIQMMvCTXp6RaabW/Y6uIc
+	 dVhf67SuLyBqUn77XE05CgaDvfkDKMvb/x4EIUWMIt4RMD8KdnME3ja0WRGYHRiRQN
+	 7AWANxpjxi4MSM9190ytyX4HleJPJK89h1WsNoQac5Gu0H8XOlalrHIvcL2xaJArU+
+	 P9MwrTmBE6FfA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kKjAuceFDifj; Tue,  8 Nov 2022 16:41:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UoGHHBFpND4S; Tue,  8 Nov 2022 21:57:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CC99181358;
-	Tue,  8 Nov 2022 16:41:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC99181358
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2DB531BF3D0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Nov 2022 16:40:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68DEB41682;
+	Tue,  8 Nov 2022 21:57:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68DEB41682
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 631741BF5EA
+ for <intel-wired-lan@osuosl.org>; Tue,  8 Nov 2022 21:57:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 10CC981358
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Nov 2022 16:40:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 10CC981358
+ by smtp2.osuosl.org (Postfix) with ESMTP id 49311404F0
+ for <intel-wired-lan@osuosl.org>; Tue,  8 Nov 2022 21:57:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 49311404F0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GW1Pqj8w3tJz for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Nov 2022 16:40:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YfQPlgJTgcsn for <intel-wired-lan@osuosl.org>;
+ Tue,  8 Nov 2022 21:57:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C1378134C
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3C1378134C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Nov 2022 16:40:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="298261275"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="298261275"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4465640502
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4465640502
+ for <intel-wired-lan@osuosl.org>; Tue,  8 Nov 2022 21:57:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="375091836"
+X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="375091836"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2022 08:40:52 -0800
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Nov 2022 13:57:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="667651952"
-X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="667651952"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga008.jf.intel.com with ESMTP; 08 Nov 2022 08:40:52 -0800
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 8 Nov 2022 08:40:51 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Tue, 8 Nov 2022 08:40:51 -0800
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.108)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Tue, 8 Nov 2022 08:40:51 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Xcvy76SujcxCSHpr/jYC8YP5cIDZ8BhLG+Tj3eV4/5EXEjpUxY9JT+0Ie4Li7rjxi3OSIdgqzB1gyZnHcyykpxSYUSxOLkWmpAUu2fBxnUd1GPQte9nzYWdqwL0bHiaZGoWCQvtpVmH5h3RCpPy+UAS6KbtXoqi7KCbTSqnslp363bnaN4OH2TCEyFfyCoLranVA6oaRNcesgmRVvXsT2ELt5g/OYdp8LlZ5XdatkOj2BOrBWnqGNb/PGxo5Y2Xncxr5jHpY2F9gNu1+aH5QjEKzcPtK5dAsVs4XVNhQ9c7+oHAqWEbgxv8HmU9s18si9hfGOvdvQ9ciq4kaywtBMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dZ02cxx6UOb5/8zkvVXUWqCvaK03/pH3FOgptEM036E=;
- b=iVYQNW2T+pHLM35x+rkiuV/L4GQih090hawJ3PIDYuiZQ38NSwTElwiADcd9phJsm6Wy1wynGrQ+u29aA51JojU2q+wXCopVzIWolJcgvQndPMyJMxnMh0W1KrN+ytB0m2j1X6oSkGF3wI0cc58SHGnRMaEu8weKmHeW/bcTGzL7l/SvhtpWoqJm/wXAyD+4GhTHHA1fgtOc/NpUOpfnXzMofXpqtiCxQo4cHuM783MOasjbosjVGlaW0HH9fpr+BFelAGC4gTXBmH8+XsWqY3QRYsbkoHHbjNZMeQ5iLKH6HwNic3hGUx/MD2CVayPuF+4q5/LhSS+AyfxcYWpLuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by IA1PR11MB6442.namprd11.prod.outlook.com (2603:10b6:208:3a9::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.27; Tue, 8 Nov
- 2022 16:40:47 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::9e54:f368:48d1:7a28]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::9e54:f368:48d1:7a28%3]) with mapi id 15.20.5791.027; Tue, 8 Nov 2022
- 16:40:47 +0000
-Message-ID: <7bec731c-f650-3c03-05d3-d1d430751179@intel.com>
-Date: Tue, 8 Nov 2022 08:40:44 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.1
-Content-Language: en-US
-To: Ivan Vecera <ivecera@redhat.com>, <netdev@vger.kernel.org>
-References: <20221108102502.2147389-1-ivecera@redhat.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <20221108102502.2147389-1-ivecera@redhat.com>
-X-ClientProxiedBy: SJ0P220CA0007.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:a03:41b::15) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="667748327"
+X-IronPort-AV: E=Sophos;i="5.96,148,1665471600"; d="scan'208";a="667748327"
+Received: from anambiarhost.jf.intel.com ([10.166.29.163])
+ by orsmga008.jf.intel.com with ESMTP; 08 Nov 2022 13:57:10 -0800
+From: Amritha Nambiar <amritha.nambiar@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Tue, 08 Nov 2022 14:08:12 -0800
+Message-ID: <166794529250.21494.1449975741002040158.stgit@anambiarhost.jf.intel.com>
+User-Agent: StGit/unknown-version
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|IA1PR11MB6442:EE_
-X-MS-Office365-Filtering-Correlation-Id: 535a79e9-8ead-4229-5a01-08dac1a7fd0f
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /IdsIEjO0flFHRCRir7Mh13gR5EbeBJGuZACme0Up2xnaffqmGuN3TGNOMKw1o9NPFChcegHGfG9ABH98wBcczcj4rr+CoJcpxR9naQH9dJDE9LHsDEv4JwGrKXTgU+MLEW4JtWiuWaRDHsBOM3NZlWDSegerquePZi37VMfwuEDPcMz/sLfw7ukzTM16MxKPvWKzJD3XRSq44cIToKbeOU8MmLC/wsiGPFUUGvlh2W4gN/KLu9u1iG+ZY4pnEB3d7ma6ha51Xq/04dh2FK19yCNmKDZR5GbYChQM6WZQcDZk8h4qf7SSKXU5bFFJdKVamrNE0tBvtDq0Ymrz2fnl5j4eQILYZq5i+57ifHDhSbvPx0cm3KabgrPmHxA8UnBMy3i6/2w9GkK3pCJskVW6L7qgry+CfhykUSqoBK41+2/dWr6mCBCKAf64/CPUVa+5UzrQo9nGN58Ncru18Q1Y33+jY2Z9+DDBaiW2tcOnaS7qFg80MGUoF+xInsSUGy7PAZ3rY8i1RWz8lPYdXxY0/Be12eQ56NPLlFcLbDcctgMkyDhA58FLfqjWcoaMKZIZww0VNa1B1PAkHTIbCXiMlweTzdtX+bxRc8ZBQjWZkK/2yaS6vJM2p3vh9DL2q4fSkY/mRT1f/sq5hRAWOntUSM7LhpymUCGyF490I8MKLTQHGGecS4PVZLwOvRcgUBGvG68/oL2AO7z7mCVEtTdw2BtPqVW9dkwMLpvjl96KA3FQBF7NuNrloifLJFVQgNwC5X0E34Ewj09l61Rt5qaxdGe8BPouaQui4Hhrqd+p8k=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(39860400002)(396003)(376002)(136003)(346002)(366004)(451199015)(316002)(4326008)(6486002)(66476007)(66946007)(66556008)(36756003)(8676002)(478600001)(2906002)(53546011)(8936002)(38100700002)(41300700001)(2616005)(26005)(6506007)(6512007)(6666004)(31686004)(86362001)(83380400001)(54906003)(4744005)(82960400001)(31696002)(5660300002)(186003)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YnpXaWFtYlY2VFVmMUFOY1JUcGdpZ0liNjBBSVBUdlNaaGRZWXRYQS95bVRh?=
- =?utf-8?B?dXZOOWRyTDJPbU5ObzRlV2g2Q1pPbU9VZmFvZnlOaUg0Rm8ySzNHc2g0aHZ2?=
- =?utf-8?B?UkpzWHhmUHdJYlhkdWRSUWU4Y24wZmZyNTRtdGUrcHF6V3pNVHcrelcrTDM2?=
- =?utf-8?B?T05GOHFycFlOWkptWVVVUSsyMmhTUnJTbzduWHpLbFdDcmhYS2xmWTMyMXN0?=
- =?utf-8?B?dEkxMjhYdEJGNE1NU1hEdVYzd1d1VHdSbUI0SFB1UmttMHFMVXB6UmlpdndU?=
- =?utf-8?B?b1pKWTB6dXdCbnQvOXRpUS9oYzFScVhVc3NlSm1HRlpYN3lHSVJocFo3Zloy?=
- =?utf-8?B?QlAwL0t5d2J3SXdTRUFTdVR5U01UMkRXd0tuVDdHWDNzamJQaHhBblI5aXU1?=
- =?utf-8?B?TTFQYXg1cFVoWXo3WjlHdnJyTzFSZVdkcHRmR2tyVjdWSWpFL29nOGY1R2Nz?=
- =?utf-8?B?MXpOYzA1UmNxaFQ1S3kzY1J4UVBkbDNxNktqSzI5Z0pXSHZlT21ISW12aW1V?=
- =?utf-8?B?RXJUK05PVEdRN3pZZ1g1MllzeUQwSzNEZ3BMbHgrVzVMZy9BdWQzVlViVGNu?=
- =?utf-8?B?VjIyMVFqODNiUGhBQzN1Qy9LRlF6UjFqR1ppV25nZmZaWG5NSTVzcVBHZ3NN?=
- =?utf-8?B?cjRFc0FiOU9uNFlidk9kSmpkQzVDbWJhL1FzenZMR1dqdFpPc3lwYjVvbkU4?=
- =?utf-8?B?N1dNdlNBRjRDNFVmN0Rya3dZTUNzaHIrNXk5UEVCZDNLZTdKY3JNTjR4T3Y0?=
- =?utf-8?B?Q25EaU5pVDhJQkRGL0hoZVpjaTZJenpvTXA1MXRSQkFONmpIdnZMb1VGdXJv?=
- =?utf-8?B?OTdHbGd0RlAwdzZ6bnRuMmNPSGhJTnRCNGs5MlZqdUhqZHBZcmtQWDVnTnBa?=
- =?utf-8?B?bVdOaElkUmNlejhDeFJ4Und5N1M1aFZCUmdqdmxYMHkzVEx1bHp4YnBQL3ZQ?=
- =?utf-8?B?eE42TGliK3hsaVAwZFczVVRZU3hvR3JlaXJPM2gveXBVaVc5L2Q0U3JqMG1C?=
- =?utf-8?B?Y3hzVEkyVFFyRlFDU3VPbTZMRFMweFJzSkg1N3ZEUTRTME9hRUdONmtpYjNH?=
- =?utf-8?B?eVRPdk5TWUI5Q0ZoTzFYenlCcXFWRnYzakV2RXRCblNFRldQejFzNksvbWsr?=
- =?utf-8?B?SmtKL2paaXY1NlZ4U3VQUHZLb2dadkNtZjRWYWVlNytUUldvTCtHbGhIUXgw?=
- =?utf-8?B?bllBMVpaM1dJRjRwanBoVkZ1SHQ0b1VEZmNIMGVHRXVmZnFZNVpkbXdYUUJX?=
- =?utf-8?B?UmhmMW9hM0RDR2ZIMXgrYVNRZU1oWTI2MWYycHJXUTVHK2RNODYwb2p2UDdp?=
- =?utf-8?B?eWFFdWU3ZTQ1UU1CaFVaUG5XYVZNSkxHK0tPRm84ekwxUDYvcXZ4Ym5Bb1Qw?=
- =?utf-8?B?SXFmazJpN09oeDQ0M016SGxJQ3hGUi9sUFpSTThxUFZ5Wk1iS1pFMkUzUWd2?=
- =?utf-8?B?SWR2VXU1TTZlYlViYUdyVFAzSktrVUdNQjkzNDdEWWZYZ3Y0aFRvdGkrYmdq?=
- =?utf-8?B?bXdXMlJ0eXN2VndIWHFjaU5zVkRUVU9jQjRHWXpQZEhPQXVXNjY3ajFIa0Rq?=
- =?utf-8?B?QVMyTDR6c2pLNi9HcVpGTzVNSkFNdkw1bk1sNXNadUVKUm0zditZNVcxNG16?=
- =?utf-8?B?ZVFGZXlRbmFXRGJsbm14T2tkT2xZanVKL1RRRGcxTWhpKzB1dnN5THQrTkxF?=
- =?utf-8?B?ZWpqRDY2ckRXSUNsN0ZETHplaUpBbitXdE90eithZzlZOHR0Z3g2cFZOSVlq?=
- =?utf-8?B?V21iV0hpVWlEUzFCcG1uMjlobXY0NFErWC91THFFbFRtVHMrT3oyNUFtTmln?=
- =?utf-8?B?TDhobytPa3JTT0ZjUEZ1emc1Qk10azIxY1ZmMmxDdzU5WktCQ2hMUmJyazlI?=
- =?utf-8?B?eFFXeXRZaFJ4L3dlMmpWaXk4OWg4S2JJaDZucVNDb0RwTkZQKzJMMFBDam0z?=
- =?utf-8?B?ZUV1OTJEK2pPdlBMMWtFRlU3WThKVHlaTzE4VzViRGtVSFJHVXpCWEVlRUZG?=
- =?utf-8?B?NTZtenR5cFJlOS90anpMSVAxbUxEbnFMS0pnRjFvVzR6TzVNeVhIbVRGajZm?=
- =?utf-8?B?N3VBbklESVU4d002TFREQlo0aVVna3NjSG5ibjVmV1pWcFBpN2hqUG9MZ1h5?=
- =?utf-8?B?bDFqR0VCb0NIb0ttZjFTMXhRT29QRXJWN09nMlVncnJiR1VUTDRzRytqT3h1?=
- =?utf-8?B?VGc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 535a79e9-8ead-4229-5a01-08dac1a7fd0f
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Nov 2022 16:40:47.7262 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: b3E4fONHEmplPHkxYFCq4Rxy2+0pvs3P5dY9WZbl/vtladofMdaI+nsXyDuVN4p4E0z+BsspXHJKRKpO/U4NjgXjN8ydI2ua4TL637kznUs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6442
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667925658; x=1699461658;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=DqX+IB53Gc5DmuxOjXYS9pS/ijKLpSAz51zrX+0wSQg=;
- b=F9HVxaCq6Lwt47rByBlGbi7q/WMXzSe/tJLqkRBBBMa05rbVOB8LJBsZ
- USz9TU/+tkxceIRapcrUtCv9PGSJgjB0ocGHNMSTO5XwBLtQ1eS4zB6ES
- xKvJ5NQjcvIWyAJuzh9zHA52bve2dzMnMCOjE6VL5vsuMWw4p/Z5M1fvC
- g1LGJdsMc8E7ilC/Um1WcUe49atKkwkZ/miIEIpVCqKfNFthmwwUEEFy2
- Dkp3jmkaIF/4A7fsTxGXXABOCKaYopv0P32Ca/3CGJocosua1hYCC5LFn
- y1BjikLV/bMiCnQhrZYRK8tiB0dgL9tABwDdp4+5kx3sd0VHTJAxRGCa2
+ t=1667944631; x=1699480631;
+ h=subject:from:to:cc:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XVb4cQI4uroI6cMfwLjv0rtF4gScvdHZrdK3DczNsvE=;
+ b=Suqb3XLZ/2ix9exuP/gafNIJlZV2jNmOtyZCE+gOheRE/dNTF6Osm/bf
+ pnbue9vuRmY/5RWBIBh6a/zd3MDpX3g97ErBm47XhIaOmu3NJuiWjN9D+
+ V3QwIAQkY/hV3RTfAuBLx6WZQGRYdriFlfEkj5GVyBxU+q3GHOgItB7Gi
+ LJvBWfE2C5wULUsbiP/OViXsGgL/wLEaAw5s1Hd7l9LknX34L2XOf+vfe
+ 60Xc7mXZrhZiEaT/njACQMNPubYUBj9Md52krZC+ueBEPiKlafCoA04dK
+ dydPlAwV2nxyL5Uk87c3WdB96cZpNSr1LABcw8KBbbnNnLLgY/Ijp8VPJ
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=F9HVxaCq
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net] iavf: Do not restart Tx queues
- after reset task failure
+ header.a=rsa-sha256 header.s=Intel header.b=Suqb3XLZ
+Subject: [Intel-wired-lan] [net-next PATCH v1] ice: Support drop action
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -193,39 +91,194 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: SlawomirX Laba <slawomirx.laba@intel.com>,
- Eric Dumazet <edumazet@google.com>, "moderated
- list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>,
- Patryk Piotrowski <patryk.piotrowski@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>, sassmann@redhat.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Currently the drop action is supported only in switchdev mode.
+Add support for offloading receive filters with action drop
+in ADQ/non-ADQ modes. This is in addition to other actions
+such as forwarding to a VSI (ADQ) or a queue (ADQ/non-ADQ).
 
+Also renamed 'ch_vsi' to 'dest_vsi' as it is valid for multiple
+actions such as forward to vsi/queue which may/may not create a
+channel vsi.
 
-On 11/8/2022 2:25 AM, Ivan Vecera wrote:
-> After commit aa626da947e9 ("iavf: Detach device during reset task")
-> the device is detached during reset task and re-attached at its end.
-> The problem occurs when reset task fails because Tx queues are
-> restarted during device re-attach and this leads later to a crash.
-> 
-> To resolve this issue properly close the net device in cause of
-> failure in reset task to avoid restarting of tx queues at the end.
-> Also replace the hacky manipulation with IFF_UP flag by device close
-> that clears properly both IFF_UP and __LINK_STATE_START flags.
-> In these case iavf_close() does not do anything because the adapter
-> state is already __IAVF_DOWN.
+Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+Signed-off-by: Amritha Nambiar <amritha.nambiar@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c |   50 ++++++++++++++++-----------
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h |   10 +++++
+ 2 files changed, 40 insertions(+), 20 deletions(-)
 
-Thanks for fixing this. I thought we'd removed the last such use of 
-incorrect IFF_UP munging in 7d59706dbef8 ("Revert "iavf: Fix deadlock 
-occurrence during resetting VF interface""), but apparently we had 
-missed one...
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index faba0f857cd9..80706f7330f4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -792,7 +792,7 @@ static struct ice_vsi *
+ ice_tc_forward_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *tc_fltr)
+ {
+ 	struct ice_rx_ring *ring = NULL;
+-	struct ice_vsi *ch_vsi = NULL;
++	struct ice_vsi *dest_vsi = NULL;
+ 	struct ice_pf *pf = vsi->back;
+ 	struct device *dev;
+ 	u32 tc_class;
+@@ -810,7 +810,7 @@ ice_tc_forward_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *tc_fltr)
+ 			return ERR_PTR(-EOPNOTSUPP);
+ 		}
+ 		/* Locate ADQ VSI depending on hw_tc number */
+-		ch_vsi = vsi->tc_map_vsi[tc_class];
++		dest_vsi = vsi->tc_map_vsi[tc_class];
+ 		break;
+ 	case ICE_FWD_TO_Q:
+ 		/* Locate the Rx queue */
+@@ -824,7 +824,7 @@ ice_tc_forward_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *tc_fltr)
+ 		/* Determine destination VSI even though the action is
+ 		 * FWD_TO_QUEUE, because QUEUE is associated with VSI
+ 		 */
+-		ch_vsi = tc_fltr->dest_vsi;
++		dest_vsi = tc_fltr->dest_vsi;
+ 		break;
+ 	default:
+ 		dev_err(dev,
+@@ -832,13 +832,13 @@ ice_tc_forward_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *tc_fltr)
+ 			tc_fltr->action.fltr_act);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+-	/* Must have valid ch_vsi (it could be main VSI or ADQ VSI) */
+-	if (!ch_vsi) {
++	/* Must have valid dest_vsi (it could be main VSI or ADQ VSI) */
++	if (!dest_vsi) {
+ 		dev_err(dev,
+ 			"Unable to add filter because specified destination VSI doesn't exist\n");
+ 		return ERR_PTR(-EINVAL);
+ 	}
+-	return ch_vsi;
++	return dest_vsi;
+ }
+ 
+ /**
+@@ -860,7 +860,7 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 	struct ice_pf *pf = vsi->back;
+ 	struct ice_hw *hw = &pf->hw;
+ 	u32 flags = tc_fltr->flags;
+-	struct ice_vsi *ch_vsi;
++	struct ice_vsi *dest_vsi;
+ 	struct device *dev;
+ 	u16 lkups_cnt = 0;
+ 	u16 l4_proto = 0;
+@@ -883,9 +883,11 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 	}
+ 
+ 	/* validate forwarding action VSI and queue */
+-	ch_vsi = ice_tc_forward_action(vsi, tc_fltr);
+-	if (IS_ERR(ch_vsi))
+-		return PTR_ERR(ch_vsi);
++	if (ice_is_forward_action(tc_fltr->action.fltr_act)) {
++		dest_vsi = ice_tc_forward_action(vsi, tc_fltr);
++		if (IS_ERR(dest_vsi))
++			return PTR_ERR(dest_vsi);
++	}
+ 
+ 	lkups_cnt = ice_tc_count_lkups(flags, headers, tc_fltr);
+ 	list = kcalloc(lkups_cnt, sizeof(*list), GFP_ATOMIC);
+@@ -904,7 +906,7 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 
+ 	switch (tc_fltr->action.fltr_act) {
+ 	case ICE_FWD_TO_VSI:
+-		rule_info.sw_act.vsi_handle = ch_vsi->idx;
++		rule_info.sw_act.vsi_handle = dest_vsi->idx;
+ 		rule_info.priority = ICE_SWITCH_FLTR_PRIO_VSI;
+ 		rule_info.sw_act.src = hw->pf_id;
+ 		rule_info.rx = true;
+@@ -915,7 +917,7 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 	case ICE_FWD_TO_Q:
+ 		/* HW queue number in global space */
+ 		rule_info.sw_act.fwd_id.q_id = tc_fltr->action.fwd.q.hw_queue;
+-		rule_info.sw_act.vsi_handle = ch_vsi->idx;
++		rule_info.sw_act.vsi_handle = dest_vsi->idx;
+ 		rule_info.priority = ICE_SWITCH_FLTR_PRIO_QUEUE;
+ 		rule_info.sw_act.src = hw->pf_id;
+ 		rule_info.rx = true;
+@@ -923,14 +925,15 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 			tc_fltr->action.fwd.q.queue,
+ 			tc_fltr->action.fwd.q.hw_queue, lkups_cnt);
+ 		break;
+-	default:
+-		rule_info.sw_act.flag |= ICE_FLTR_TX;
+-		/* In case of Tx (LOOKUP_TX), src needs to be src VSI */
+-		rule_info.sw_act.src = vsi->idx;
+-		/* 'Rx' is false, direction of rule(LOOKUPTRX) */
+-		rule_info.rx = false;
++	case ICE_DROP_PACKET:
++		rule_info.sw_act.flag |= ICE_FLTR_RX;
++		rule_info.sw_act.src = hw->pf_id;
++		rule_info.rx = true;
+ 		rule_info.priority = ICE_SWITCH_FLTR_PRIO_VSI;
+ 		break;
++	default:
++		ret = -EOPNOTSUPP;
++		goto exit;
+ 	}
+ 
+ 	ret = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info, &rule_added);
+@@ -953,11 +956,11 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 	tc_fltr->dest_vsi_handle = rule_added.vsi_handle;
+ 	if (tc_fltr->action.fltr_act == ICE_FWD_TO_VSI ||
+ 	    tc_fltr->action.fltr_act == ICE_FWD_TO_Q) {
+-		tc_fltr->dest_vsi = ch_vsi;
++		tc_fltr->dest_vsi = dest_vsi;
+ 		/* keep track of advanced switch filter for
+ 		 * destination VSI
+ 		 */
+-		ch_vsi->num_chnl_fltr++;
++		dest_vsi->num_chnl_fltr++;
+ 
+ 		/* keeps track of channel filters for PF VSI */
+ 		if (vsi->type == ICE_VSI_PF &&
+@@ -978,6 +981,10 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
+ 			tc_fltr->action.fwd.q.hw_queue, rule_added.rid,
+ 			rule_added.rule_id);
+ 		break;
++	case ICE_DROP_PACKET:
++		dev_dbg(dev, "added switch rule (lkups_cnt %u, flags 0x%x), action is drop, rid %u, rule_id %u\n",
++			lkups_cnt, flags, rule_added.rid, rule_added.rule_id);
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -1712,6 +1719,9 @@ ice_tc_parse_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr,
+ 	case FLOW_ACTION_RX_QUEUE_MAPPING:
+ 		/* forward to queue */
+ 		return ice_tc_forward_to_queue(vsi, fltr, act);
++	case FLOW_ACTION_DROP:
++		fltr->action.fltr_act = ICE_DROP_PACKET;
++		return 0;
+ 	default:
+ 		NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported TC action");
+ 		return -EOPNOTSUPP;
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
+index d916d1e92aa3..8d5e22ac7023 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
+@@ -211,4 +211,14 @@ ice_del_cls_flower(struct ice_vsi *vsi, struct flow_cls_offload *cls_flower);
+ void ice_replay_tc_fltrs(struct ice_pf *pf);
+ bool ice_is_tunnel_supported(struct net_device *dev);
+ 
++static inline bool ice_is_forward_action(enum ice_sw_fwd_act_type fltr_act)
++{
++	switch (fltr_act) {
++	case ICE_FWD_TO_VSI:
++	case ICE_FWD_TO_Q:
++		return true;
++	default:
++		return false;
++	}
++}
+ #endif /* _ICE_TC_LIB_H_ */
 
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
