@@ -1,177 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6538D6225FA
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Nov 2022 09:57:41 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC5B362280D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Nov 2022 11:09:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BACA440AFC;
-	Wed,  9 Nov 2022 08:57:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BACA440AFC
+	by smtp4.osuosl.org (Postfix) with ESMTP id F31F341763;
+	Wed,  9 Nov 2022 10:09:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F31F341763
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1667984259;
-	bh=L75USB5siuBPA4Ce4RE9OIzUXez1EljGe5GpbLI1Jvo=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=qX9DjOdmPr8agSxUHzmj05hU0aPCMCjviez0LVzEWFTk7QuK3yvK5UQSMCmV4Nkq1
-	 wdidsyUtfyIOjdW369JY5OdAaElr3rQIDuMKi+QsigXJ6k/+9mfLAlxrcMSUU8236o
-	 fNO4v/R+GQAuWKosMfVxWOaJJ7KD+ZwTCT+E+z/SjfQwZ3lIH0DrR5wGmBakBHBM05
-	 kYvFiSrfV92YpWLDT3oqnWOULbKoud3BFx4lZHcgnTT6g9Rb5CDhSygpan99iPY7dK
-	 /k8fueE4OWk9Tr3r5e8dBCxiao14l7eb8JkrKLFpQa3t3uRWGFJWwGoVmDyv4w4uiH
-	 TitGx0RrMc/6Q==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ov5Db8__tlZN; Wed,  9 Nov 2022 08:57:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C7A8540AE2;
-	Wed,  9 Nov 2022 08:57:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C7A8540AE2
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C20FA1BF301
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 08:57:33 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 99B0B416CE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 08:57:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99B0B416CE
+	s=default; t=1667988544;
+	bh=YHi0BocPr2kACa3UsGZ6BemHM5JZr1JaO52ZlxmuVho=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=tja7RPm1a8GdXinhaoisLZKa9TERQ+QgQWu7IA9juBuaTr2TAR7MapNznJkUa0ym5
+	 NhyZ+oMZDG0AQ3zwoNYj5X7WwIV8kbAm34v2LwhMTQae8n6ugbBhH3tqREoUhGvT8n
+	 HbLxmbILSwM7Vu5ptiwo/iB7iChO61UBGvQQw12U7GWpWlSrGnoYAHKUBjJifUK3ia
+	 MvaEznjoB4PMFolpLgWF7o2OFMtjAF9FwlMkO0Xrp72dScbieAs5UFfVw1QgYbubnM
+	 momiQwNp9FwXvNMuOsQT8kbEMgj8zXm+moy036X2wmnes+oy0WxMQ8lOpZpsRB2pEC
+	 lGD/M3IFfQb6w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LNMvZB1NTj1O for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Nov 2022 08:57:32 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AAm0DTLYlwoq; Wed,  9 Nov 2022 10:09:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4174041746;
+	Wed,  9 Nov 2022 10:09:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4174041746
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C4B7F1BF616
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 10:08:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 94953605E3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 10:08:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 94953605E3
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 85Mw7FueHOzM for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Nov 2022 10:08:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C998416C9
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8C998416C9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 08:57:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="312726080"
-X-IronPort-AV: E=Sophos;i="5.96,150,1665471600"; d="scan'208";a="312726080"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2022 00:57:27 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4C986605AB
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4C986605AB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 10:08:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="309651799"
+X-IronPort-AV: E=Sophos;i="5.96,150,1665471600"; d="scan'208";a="309651799"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Nov 2022 02:08:42 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="705638470"
-X-IronPort-AV: E=Sophos;i="5.96,150,1665471600"; d="scan'208";a="705638470"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga004.fm.intel.com with ESMTP; 09 Nov 2022 00:57:24 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Wed, 9 Nov 2022 00:57:24 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31 via Frontend Transport; Wed, 9 Nov 2022 00:57:24 -0800
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.46) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2375.31; Wed, 9 Nov 2022 00:57:24 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Efvl5Kd94XdYx10/qcRGpotkDluu8R3FYnmXOgJUGdZC8V2UlSd5UMvD9JYv12f274z7AUI124hVCmToejDZlA+yqjcgwfGZs+YNvYiZ8k8RfiSlmCFzUdpMwjs6uSlHOVXVJMd3vbGQCdlwBcUvrK5EA/r6+y7mSMnYGqTOtkUim48/zD04KPbIkULuVkm0JIJ5D/sCbgAgr2mjO7Xiv9+9ts0JiFBPqBFQJkI6mtb+0tFTpuKKSK4nJeU1eujJefI1JOgXxBvfSnqYzx5agTqK3Jq5j6lFtBgs6yJmk+txnDpXtmG+NV6XYhzxoVCIVzrvfecDAU0Unhx52toAKA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+MHVAnvg+f6iwO9O+4lVY6wDOLDIGcutZnXe4Z0Qu/w=;
- b=PoBM7jbH46Wr4L4TPCxdzKvFJHcc3Y5SB82NIewX7pZirevJqkqcmcacLSXyLlIaJ7sfIK+mBCBMDiPEzJNL30gqJtJK1ue5dE/bdELOf6kGf8o4OyKBX1pG5SSKgIeFAPrzX8ifDFl2ycjqCgY5gdWYG29QM+aJlUQM9Q+OVf5lxtHNinEuYj3ZRXDZ/65CASAjykqU0uGeuH/J9Ebha4GS2Qme1EYc228L0/TZM3Eh2MkRhiq9DchBkp48WavSq4IR0n4qPcQjwYHNUhiwU4XIJA23wGiukM2XUAUaoLxKsrqk8WRk3eE2RbeslWW+moz34ePsvIm8XsZHLZyYLA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5822.namprd11.prod.outlook.com (2603:10b6:303:185::9)
- by PH0PR11MB5829.namprd11.prod.outlook.com (2603:10b6:510:140::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.26; Wed, 9 Nov
- 2022 08:57:22 +0000
-Received: from MW4PR11MB5822.namprd11.prod.outlook.com
- ([fe80::3462:9d66:b748:499]) by MW4PR11MB5822.namprd11.prod.outlook.com
- ([fe80::3462:9d66:b748:499%7]) with mapi id 15.20.5791.027; Wed, 9 Nov 2022
- 08:57:22 +0000
-From: "Nagaraju, Shwetha" <shwetha.nagaraju@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v1] i40e: Fix failure message when
- XDP is configured in TX only mode
-Thread-Index: AQHY2h5WNOXNscPxDkmwXTsD7sDdra42fRjg
-Date: Wed, 9 Nov 2022 08:57:22 +0000
-Message-ID: <MW4PR11MB582278F26040225FD92A6BE7903E9@MW4PR11MB5822.namprd11.prod.outlook.com>
-References: <20221007072424.83543-1-mateusz.palczewski@intel.com>
-In-Reply-To: <20221007072424.83543-1-mateusz.palczewski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB5822:EE_|PH0PR11MB5829:EE_
-x-ms-office365-filtering-correlation-id: e6b8bcaf-3248-4e7c-45b5-08dac2306a5b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: qBjMIGhY0iWWO+xMqqppRddFQsRLBz3oSORGE1vkHLkUnZATtbFsavMxZEhZfwNcBfWaboShUjD8aerv2OHhlGI2uzAV/Am2bJkh+u54ZU9Db/AUE6JQiLStzx4NXsPEXnsGLhWAfGgmyCQ3jwvCi23aI0bjZgqBnMGFQPX8lQhG8iopFB0/CfbWm8kWhT27lpwpWivVHfnkVo52wB856rpr2QRlOqfh4N5h1F3xFY6eSp4Gk6DzVacNOl9Cc3sSB5xCAa8TBIZUHxO3dJYufurgeIGc0AWCsc3YIJgGFjZApA0uv+JA48nzK7iUTWzSCpX6geRyF2VOFYAHDEUEyCODNQxKCSfUgxJow155FWqxTSMV6v7UOyzUC3fKIN9Gf72H3UclmrBypzpEkBiHi4SMlotAWI/1k29CNQOgJMh0p32D/mvZK2UIRE9b6Y12KsjXlA5/LIP0z/ObXwWQv/zzpTjDsqxDd+YbgCPzHLSBGwrDpB1QBm2B3D9VL15AOYtsk0DZV9YN8Y/IJTMRhWsvM3zCeo+Pl5kAJvxtE3ynAkKYMSHsbB/4ggdaT2VKjQ1dDUqabYZm4BhEaabakaTcHumCe8F4GdR4wbKSfK8Z54TYzHMrNRwh0N+wpX/M/858fih9ay9ql4aOourIYx4bAbBbjzTLY3m+Vg+jzymRGpr6E8PXUogaQqAqeYHvuzNYmLjJAWBEgicj86lW2eZLjoV0WZ44BfRn/ORU49gfanCw0KE/JZSNF5fIIw5l7l1ocBalrTreqDBAGm1B0g==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5822.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(366004)(376002)(396003)(136003)(39860400002)(346002)(451199015)(55016003)(122000001)(6916009)(82960400001)(38100700002)(66476007)(86362001)(66946007)(316002)(76116006)(66446008)(66556008)(64756008)(52536014)(15650500001)(41300700001)(5660300002)(8676002)(2906002)(478600001)(8936002)(83380400001)(33656002)(7696005)(71200400001)(9686003)(6506007)(38070700005)(53546011)(26005)(186003)(55236004);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?fCB41GdU6+fsBFrcjpuQNJ/v7ht/+zL1sbpn1wz6zJeFc/Vy7gQBgDdRPkA/?=
- =?us-ascii?Q?+lxrCsuandmeADrvTmbv96dngf7CxrNIPCft0bvzZ/QHmBrOgub2lpWMZXAi?=
- =?us-ascii?Q?LcxLDM6dXm2U9yI6AEmInp3jK3Q85i/EDG2eO1T5YdlQgUdm5f+f5qZxdZ5X?=
- =?us-ascii?Q?2Jhc5lbdZplx9LdxkkhvsrgtcC7K3spRDI29onVP/APaMH4hBYqZOy6niKYa?=
- =?us-ascii?Q?KfCV+3RO722BJpHDTWRnnswVoAQ4OmaVp958bfrosJIKxgfZwR17qKReUCF1?=
- =?us-ascii?Q?YDKVEx1UbxrLnmbes0/qeAjv62YDFkdEwNxKqi9LmBPLI4Ravrp5Y2H6Qui8?=
- =?us-ascii?Q?RPdzFbY95kRHnBSQSUn64l924ysfsMjPe7ja9jw7guEqf6BpCnV0oG+EfOXN?=
- =?us-ascii?Q?du3Q0gEuZasx69AGnWDYoPOm4ba/ZnJgfDpyuqW2OHFU5Ufyk1KOaQ0ishjp?=
- =?us-ascii?Q?tw6s8TuPb2aBqzwlPx9PCKHyfuE7XVw1bdF1MUtJdnYg/I2D/iMPki4G/sB0?=
- =?us-ascii?Q?gMD6Zl53TaQZMANT+OW32XYHqwDj+uJCqUYzBoD1rVJjCC/Z3mWBLZMR8NTp?=
- =?us-ascii?Q?NKSiG72zZspluhulhOp4hiDTdwQzcvR+Vd+ibnCwU/cIgnzPW4DjNPqUZrfn?=
- =?us-ascii?Q?+yqriVuF5NZe/ZRMx8BuERSxR6Nqugof2qBAo/IijSYUQHhLMSj+g2G+/CaX?=
- =?us-ascii?Q?lsh5tqvi0GpiBkgZFcaraHicqW0WzD4z/kWzD0yyL/wtL103VDQcytWjdUEB?=
- =?us-ascii?Q?+45sIEEyAw2nT02OjlVmGnf37fShdYdsKF2HFxqUNK5RO5+d34GavJ6VQVqO?=
- =?us-ascii?Q?dDacUi5tm9nF10v70YGj+CUm0ngvzT6qWkOUH+z9wQpXRwmHrX9g/8r0Lp07?=
- =?us-ascii?Q?lvrvoWLBxtMn/0Dw5kXIeUD36kFbQf+1Bf1uzHNk5VqjA6Jd8GfjsRdiB8e9?=
- =?us-ascii?Q?T+b5EbOKiRuFSlM93ZSezCPFzval0ZBKQf1JrHO+ctjbKsKUnD/+mFy3i9PK?=
- =?us-ascii?Q?3PMmBwW+EaGwdL6CYJiSpGT5AtEsuLMsaXa1K4F4N9aQ9GQWyZ1hVdgNpbW5?=
- =?us-ascii?Q?9BgOD+SVmftwv0Qa87+RRiQheY9nT8BHxipDlT8EJkqmd3W1ffE91URGKAl3?=
- =?us-ascii?Q?HEUp0j11vy1uzgV7Ceh75Cy3dk1P6UVQQn2sLPFlrJosBpc1Qv4VLhgr04Ki?=
- =?us-ascii?Q?PHQ0dtWqGMxpHGD/294o0MTfRXuXy7fqMIt4de9vw37oIj1O2ab0YipQ7UP0?=
- =?us-ascii?Q?+TO+8nzSIEu07A19jFvjAe3rsE4raGuqabW2abSoThqiPuDA6TyNPBW6sIFS?=
- =?us-ascii?Q?IAvZaqyjQTWtEDbPr8ut0YA6277pdiyWUNuMWHeYJJypTp3epNCghtibZwN2?=
- =?us-ascii?Q?cfJIUqZYHso1P0skLOpUvriYNuht7dnUjF3NQiFm22FlTZM2mhVZOG4cGsgl?=
- =?us-ascii?Q?mMqb2yY6a4rmMrmohpuoKW7yl8WARSNIbvRj05i2prNaOCoRasY4NVL5XV1A?=
- =?us-ascii?Q?01NoOp21UKkVheYTe95S6qQqjSBC8p17u/OaV4WPLdN7VtQxBjV7wPrLsrWN?=
- =?us-ascii?Q?GhFvXrEjPWRHaCYQLfOQIpeMjjj9GyvMd6P9sDqIW8Tx7OGO9jvCBKAIeNvw?=
- =?us-ascii?Q?OQ=3D=3D?=
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="631203845"
+X-IronPort-AV: E=Sophos;i="5.96,150,1665471600"; d="scan'208";a="631203845"
+Received: from lajkonik.igk.intel.com ([10.211.8.72])
+ by orsmga007.jf.intel.com with ESMTP; 09 Nov 2022 02:08:40 -0800
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  9 Nov 2022 11:05:48 +0100
+Message-Id: <20221109100548.8990-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.34.3
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5822.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e6b8bcaf-3248-4e7c-45b5-08dac2306a5b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Nov 2022 08:57:22.4307 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1Fw+H58wTdTGPyILuVc8NUQreBd9W7vPV9X15VeAxiNcym22k/GARZE1v1O2aFt5ci0jW8BxC93RAlK6MaR8+rObpV1hS5lb7JlDT2iZtwI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5829
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1667984252; x=1699520252;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=d7htqTNBHudVDXpeivq0xeh26Ut8kbfHw6tip8Rbluw=;
- b=CkwytSwFi5aZc01CdSTNbkoFQV1xQep1872ELU6RjBfjZ4bzrCFbodvL
- ONLLGkRAQ9EWkUlyr4Z986pRfOe1/FVlbk0c0kvfGQLGECvJZwf8nvvzv
- dmDqVXLMUol6aZcaH49NIu8rLw27EqnD1wzYqQm9M495Aca60Y4nP/q7/
- 757SoT5smbUfRDO1OWCKX9d94XNdJahFZEO2KdiXf93CYKmVoQc7yaALg
- E31opI5LNkCtGLaBSJAIAVGieEQUpjdDTr8EOMNBexFIRu/ISLUSetSII
- YimNpgBo9fA+Sc24rnDYIt47EOioHOHBn5D3byQMRAe/nqQW7ptrI3fuJ
+ t=1667988533; x=1699524533;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=oqJjs9KCuXrWhgo0LG7INaIhiaJVb32UYhTyWSGYlt0=;
+ b=mXDpxlNTGqoFrfX9LMHJF5DcVj0Zbv8aqwt1HGDXJ985mDq+LaDYPUJB
+ 5is7obI+quBMMLTTxfxokUDkPcAHP9oD0U8YHmaO8PgfpLDwHvxDv1/09
+ 0NHfW9zQlHgSif7EIr37SgyQkUWmHiST5PCw6+buMeYfStEp1N3TIBn9/
+ UpiAjCAp3OtFNyvAQ4rVk6sHpvZIz+ugDwgYWo4XvNGE4cQpsvGl9Jh2f
+ V5X8cGlC6UnGDS4EmEiif89TvO8ewazKR3c2EcUDFoPJMTxHI2Piv+JbS
+ wuUzm/pYLgteDo1j5ZG+mqBCmr3N/Pj5STgwVPprE9fwN5HEWo2q++uvJ
  A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CkwytSwF
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Fix failure message when
- XDP is configured in TX only mode
+ header.a=rsa-sha256 header.s=Intel header.b=mXDpxlNT
+Subject: [Intel-wired-lan] [PATCH next v9] ice: use GNSS subsystem instead
+ of TTY
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -184,46 +92,768 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Karol Kolacinski <karol.kolacinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Previously support for GNSS was implemented as a TTY driver, it allowed
+to access GNSS receiver on /dev/ttyGNSS_<bus><func>.
 
+Use generic GNSS subsystem API instead of implementing own TTY driver.
+The receiver is accessible on /dev/gnss<id>. In case of multiple
+receivers in the OS, correct device can be found by enumerating either:
+- /sys/class/net/<eth port>/device/gnss/
+- /sys/class/gnss/gnss<id>/device/
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Mateusz Palczewski
-> Sent: Friday, October 7, 2022 12:54 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Dziedziuch, SylwesterX <sylwesterx.dziedziuch@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net v1] i40e: Fix failure message when XDP
-> is configured in TX only mode
-> 
-> From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> 
-> When starting xdpsock program in TX only mode:
-> 
-> samples/bpf/xdpsock -i <interface> -t
-> 
-> there was an error on i40e driver:
-> 
-> Failed to allocate some buffers on AF_XDP ZC enabled Rx ring 0 (pf_q 81)
-> 
-> It was caused by trying to allocate RX buffers even though no RX buffers are
-> available because we run in TX only mode.
-> 
-> Fix this by checking for number of available buffers for RX queue when
-> allocating buffers during XDP setup.
-> 
-> Fixes: 0a714186d3c0 ("i40e: add AF_XDP zero-copy Rx support")
-> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-> Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-Tested-by: Shwetha Nagaraju <Shwetha.nagaraju@intel.com>
+User expecting onboard GNSS receiver support is required to enable
+CONFIG_GNSS=y/m in kernel config.
+
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+v9:
+- fix GNSS ifeq(..) in Makefile, add ICE_GNSS in Kconfig
+- remove IS_REACHABLE macro
+- fix 'TTY' from trace indicating GNSS was initialized or failure
+
+v8:
+- fix example path to gnss device in commit message
+
+v7:
+- add blank lines around 'GNSS module' paragraph in ice.rst
+- mark '/dev/gnss<id>' as a code in ice.rst
+
+v6:
+- enable support for CONFIG_GNSS=m
+- improve commit message
+
+v5:
+- fix "ifeq" in Makefile (wrong usage of string)
+- fix description in "#endif" to IS_BUILDIN
+
+v4: change Makefile to build ice_gnss.c only if CONFIG_GNSS is set
+
+v3:
+- remove unnecessary #include,
+- change the IS_ENABLED to IS_BUILTIN - right now if GNSS kernel subsystem
+  is not enabled, we also won't enable it in our ice driver.
+
+v2: fix sparse check warning, remove fixes tags, fix commit title
+
+ .../device_drivers/ethernet/intel/ice.rst     |  16 +-
+ drivers/net/ethernet/intel/Kconfig            |   3 +
+ drivers/net/ethernet/intel/ice/Makefile       |   2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   6 +-
+ drivers/net/ethernet/intel/ice/ice_gnss.c     | 375 +++++++-----------
+ drivers/net/ethernet/intel/ice/ice_gnss.h     |  18 +-
+ 6 files changed, 158 insertions(+), 262 deletions(-)
+
+diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
+index dc2e60ced927..1aa029d08cb1 100644
+--- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
++++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
+@@ -901,15 +901,17 @@ To enable/disable UDP Segmentation Offload, issue the following command::
+ 
+   # ethtool -K <ethX> tx-udp-segmentation [off|on]
+ 
++
+ GNSS module
+ -----------
+-Allows user to read messages from the GNSS module and write supported commands.
+-If the module is physically present, driver creates 2 TTYs for each supported
+-device in /dev, ttyGNSS_<device>:<function>_0 and _1. First one (_0) is RW and
+-the second one is RO.
+-The protocol of write commands is dependent on the GNSS module as the driver
+-writes raw bytes from the TTY to the GNSS i2c. Please refer to the module
+-documentation for details.
++Requires kernel compiled with CONFIG_GNSS=y or CONFIG_GNSS=m.
++Allows user to read messages from the GNSS hardware module and write supported
++commands. If the module is physically present, a GNSS device is spawned:
++``/dev/gnss<id>``.
++The protocol of write command is dependent on the GNSS hardware module as the
++driver writes raw bytes by the GNSS object to the receiver through i2c. Please
++refer to the hardware GNSS module documentation for configuration details.
++
+ 
+ Performance Optimization
+ ========================
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 3facb55b7161..a3c84bf05e44 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -337,6 +337,9 @@ config ICE_HWTS
+ 	  the PTP clock driver precise cross-timestamp ioctl
+ 	  (PTP_SYS_OFFSET_PRECISE).
+ 
++config ICE_GNSS
++	def_bool GNSS = y || GNSS = ICE
++
+ config FM10K
+ 	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
+ 	default n
+diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+index 9183d480b70b..02a448406777 100644
+--- a/drivers/net/ethernet/intel/ice/Makefile
++++ b/drivers/net/ethernet/intel/ice/Makefile
+@@ -42,8 +42,8 @@ ice-$(CONFIG_PCI_IOV) +=	\
+ 	ice_vf_vsi_vlan_ops.o	\
+ 	ice_vf_lib.o
+ ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o
+-ice-$(CONFIG_TTY) += ice_gnss.o
+ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+ ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
+ ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
+ ice-$(CONFIG_ICE_SWITCHDEV) += ice_eswitch.o
++ice-$(CONFIG_GNSS) += ice_gnss.o
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 2f0b604abc5e..ae93ae488bc2 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -39,6 +39,7 @@
+ #include <linux/avf/virtchnl.h>
+ #include <linux/cpu_rmap.h>
+ #include <linux/dim.h>
++#include <linux/gnss.h>
+ #include <net/pkt_cls.h>
+ #include <net/tc_act/tc_mirred.h>
+ #include <net/tc_act/tc_gact.h>
+@@ -565,9 +566,8 @@ struct ice_pf {
+ 	struct mutex adev_mutex;	/* lock to protect aux device access */
+ 	u32 msg_enable;
+ 	struct ice_ptp ptp;
+-	struct tty_driver *ice_gnss_tty_driver;
+-	struct tty_port *gnss_tty_port[ICE_GNSS_TTY_MINOR_DEVICES];
+-	struct gnss_serial *gnss_serial[ICE_GNSS_TTY_MINOR_DEVICES];
++	struct gnss_serial *gnss_serial;
++	struct gnss_device *gnss_dev;
+ 	u16 num_rdma_msix;		/* Total MSIX vectors for RDMA driver */
+ 	u16 rdma_base_vector;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+index b5a7f246d230..855e4d76bebc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.c
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+@@ -3,15 +3,18 @@
+ 
+ #include "ice.h"
+ #include "ice_lib.h"
+-#include <linux/tty_driver.h>
+ 
+ /**
+- * ice_gnss_do_write - Write data to internal GNSS
++ * ice_gnss_do_write - Write data to internal GNSS receiver
+  * @pf: board private structure
+  * @buf: command buffer
+  * @size: command buffer size
+  *
+  * Write UBX command data to the GNSS receiver
++ *
++ * Return:
++ * * number of bytes written - success
++ * * negative - error code
+  */
+ static unsigned int
+ ice_gnss_do_write(struct ice_pf *pf, unsigned char *buf, unsigned int size)
+@@ -82,6 +85,12 @@ static void ice_gnss_write_pending(struct kthread_work *work)
+ 						write_work);
+ 	struct ice_pf *pf = gnss->back;
+ 
++	if (!pf)
++		return;
++
++	if (!test_bit(ICE_FLAG_GNSS, pf->flags))
++		return;
++
+ 	if (!list_empty(&gnss->queue)) {
+ 		struct gnss_write_buf *write_buf = NULL;
+ 		unsigned int bytes;
+@@ -102,16 +111,14 @@ static void ice_gnss_write_pending(struct kthread_work *work)
+  * ice_gnss_read - Read data from internal GNSS module
+  * @work: GNSS read work structure
+  *
+- * Read the data from internal GNSS receiver, number of bytes read will be
+- * returned in *read_data parameter.
++ * Read the data from internal GNSS receiver, write it to gnss_dev.
+  */
+ static void ice_gnss_read(struct kthread_work *work)
+ {
+ 	struct gnss_serial *gnss = container_of(work, struct gnss_serial,
+ 						read_work.work);
++	unsigned int i, bytes_read, data_len, count;
+ 	struct ice_aqc_link_topo_addr link_topo;
+-	unsigned int i, bytes_read, data_len;
+-	struct tty_port *port;
+ 	struct ice_pf *pf;
+ 	struct ice_hw *hw;
+ 	__be16 data_len_b;
+@@ -120,14 +127,15 @@ static void ice_gnss_read(struct kthread_work *work)
+ 	int err = 0;
+ 
+ 	pf = gnss->back;
+-	if (!pf || !gnss->tty || !gnss->tty->port) {
++	if (!pf) {
+ 		err = -EFAULT;
+ 		goto exit;
+ 	}
+ 
+-	hw = &pf->hw;
+-	port = gnss->tty->port;
++	if (!test_bit(ICE_FLAG_GNSS, pf->flags))
++		return;
+ 
++	hw = &pf->hw;
+ 	buf = (char *)get_zeroed_page(GFP_KERNEL);
+ 	if (!buf) {
+ 		err = -ENOMEM;
+@@ -159,7 +167,6 @@ static void ice_gnss_read(struct kthread_work *work)
+ 	}
+ 
+ 	data_len = min_t(typeof(data_len), data_len, PAGE_SIZE);
+-	data_len = tty_buffer_request_room(port, data_len);
+ 	if (!data_len) {
+ 		err = -ENOMEM;
+ 		goto exit_buf;
+@@ -179,12 +186,11 @@ static void ice_gnss_read(struct kthread_work *work)
+ 			goto exit_buf;
+ 	}
+ 
+-	/* Send the data to the tty layer for users to read. This doesn't
+-	 * actually push the data through unless tty->low_latency is set.
+-	 */
+-	tty_insert_flip_string(port, buf, i);
+-	tty_flip_buffer_push(port);
+-
++	count = gnss_insert_raw(pf->gnss_dev, buf, i);
++	if (count != i)
++		dev_warn(ice_pf_to_dev(pf),
++			 "gnss_insert_raw ret=%d size=%d\n",
++			 count, i);
+ exit_buf:
+ 	free_page((unsigned long)buf);
+ 	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work,
+@@ -195,11 +201,16 @@ static void ice_gnss_read(struct kthread_work *work)
+ }
+ 
+ /**
+- * ice_gnss_struct_init - Initialize GNSS structure for the TTY
++ * ice_gnss_struct_init - Initialize GNSS receiver
+  * @pf: Board private structure
+- * @index: TTY device index
++ *
++ * Initialize GNSS structures and workers.
++ *
++ * Return:
++ * * pointer to initialized gnss_serial struct - success
++ * * NULL - error
+  */
+-static struct gnss_serial *ice_gnss_struct_init(struct ice_pf *pf, int index)
++static struct gnss_serial *ice_gnss_struct_init(struct ice_pf *pf)
+ {
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct kthread_worker *kworker;
+@@ -209,17 +220,12 @@ static struct gnss_serial *ice_gnss_struct_init(struct ice_pf *pf, int index)
+ 	if (!gnss)
+ 		return NULL;
+ 
+-	mutex_init(&gnss->gnss_mutex);
+-	gnss->open_count = 0;
+ 	gnss->back = pf;
+-	pf->gnss_serial[index] = gnss;
++	pf->gnss_serial = gnss;
+ 
+ 	kthread_init_delayed_work(&gnss->read_work, ice_gnss_read);
+ 	INIT_LIST_HEAD(&gnss->queue);
+ 	kthread_init_work(&gnss->write_work, ice_gnss_write_pending);
+-	/* Allocate a kworker for handling work required for the GNSS TTY
+-	 * writes.
+-	 */
+ 	kworker = kthread_create_worker(0, "ice-gnss-%s", dev_name(dev));
+ 	if (IS_ERR(kworker)) {
+ 		kfree(gnss);
+@@ -232,276 +238,186 @@ static struct gnss_serial *ice_gnss_struct_init(struct ice_pf *pf, int index)
+ }
+ 
+ /**
+- * ice_gnss_tty_open - Initialize GNSS structures on TTY device open
+- * @tty: pointer to the tty_struct
+- * @filp: pointer to the file
++ * ice_gnss_open - Open GNSS device
++ * @gdev: pointer to the gnss device struct
+  *
+- * This routine is mandatory. If this routine is not filled in, the attempted
+- * open will fail with ENODEV.
++ * Open GNSS device and start filling the read buffer for consumer.
++ *
++ * Return:
++ * * 0 - success
++ * * negative - error code
+  */
+-static int ice_gnss_tty_open(struct tty_struct *tty, struct file *filp)
++static int ice_gnss_open(struct gnss_device *gdev)
+ {
++	struct ice_pf *pf = gnss_get_drvdata(gdev);
+ 	struct gnss_serial *gnss;
+-	struct ice_pf *pf;
+ 
+-	pf = (struct ice_pf *)tty->driver->driver_state;
+ 	if (!pf)
+ 		return -EFAULT;
+ 
+-	/* Clear the pointer in case something fails */
+-	tty->driver_data = NULL;
+-
+-	/* Get the serial object associated with this tty pointer */
+-	gnss = pf->gnss_serial[tty->index];
+-	if (!gnss) {
+-		/* Initialize GNSS struct on the first device open */
+-		gnss = ice_gnss_struct_init(pf, tty->index);
+-		if (!gnss)
+-			return -ENOMEM;
+-	}
++	if (!test_bit(ICE_FLAG_GNSS, pf->flags))
++		return -EFAULT;
+ 
+-	mutex_lock(&gnss->gnss_mutex);
++	gnss = pf->gnss_serial;
++	if (!gnss)
++		return -ENODEV;
+ 
+-	/* Save our structure within the tty structure */
+-	tty->driver_data = gnss;
+-	gnss->tty = tty;
+-	gnss->open_count++;
+ 	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, 0);
+ 
+-	mutex_unlock(&gnss->gnss_mutex);
+-
+ 	return 0;
+ }
+ 
+ /**
+- * ice_gnss_tty_close - Cleanup GNSS structures on tty device close
+- * @tty: pointer to the tty_struct
+- * @filp: pointer to the file
++ * ice_gnss_close - Close GNSS device
++ * @gdev: pointer to the gnss device struct
++ *
++ * Close GNSS device, cancel worker, stop filling the read buffer.
+  */
+-static void ice_gnss_tty_close(struct tty_struct *tty, struct file *filp)
++static void ice_gnss_close(struct gnss_device *gdev)
+ {
+-	struct gnss_serial *gnss = tty->driver_data;
+-	struct ice_pf *pf;
+-
+-	if (!gnss)
+-		return;
++	struct ice_pf *pf = gnss_get_drvdata(gdev);
++	struct gnss_serial *gnss;
+ 
+-	pf = (struct ice_pf *)tty->driver->driver_state;
+ 	if (!pf)
+ 		return;
+ 
+-	mutex_lock(&gnss->gnss_mutex);
+-
+-	if (!gnss->open_count) {
+-		/* Port was never opened */
+-		dev_err(ice_pf_to_dev(pf), "GNSS port not opened\n");
+-		goto exit;
+-	}
++	gnss = pf->gnss_serial;
++	if (!gnss)
++		return;
+ 
+-	gnss->open_count--;
+-	if (gnss->open_count <= 0) {
+-		/* Port is in shutdown state */
+-		kthread_cancel_delayed_work_sync(&gnss->read_work);
+-	}
+-exit:
+-	mutex_unlock(&gnss->gnss_mutex);
++	kthread_cancel_work_sync(&gnss->write_work);
++	kthread_cancel_delayed_work_sync(&gnss->read_work);
+ }
+ 
+ /**
+- * ice_gnss_tty_write - Write GNSS data
+- * @tty: pointer to the tty_struct
++ * ice_gnss_write - Write to GNSS device
++ * @gdev: pointer to the gnss device struct
+  * @buf: pointer to the user data
+- * @count: the number of characters queued to be sent to the HW
++ * @count: size of the buffer to be sent to the GNSS device
+  *
+- * The write function call is called by the user when there is data to be sent
+- * to the hardware. First the tty core receives the call, and then it passes the
+- * data on to the tty driver's write function. The tty core also tells the tty
+- * driver the size of the data being sent.
+- * If any errors happen during the write call, a negative error value should be
+- * returned instead of the number of characters queued to be written.
++ * Return:
++ * * number of written bytes - success
++ * * negative - error code
+  */
+ static int
+-ice_gnss_tty_write(struct tty_struct *tty, const unsigned char *buf, int count)
++ice_gnss_write(struct gnss_device *gdev, const unsigned char *buf,
++	       size_t count)
+ {
++	struct ice_pf *pf = gnss_get_drvdata(gdev);
+ 	struct gnss_write_buf *write_buf;
+ 	struct gnss_serial *gnss;
+ 	unsigned char *cmd_buf;
+-	struct ice_pf *pf;
+ 	int err = count;
+ 
+ 	/* We cannot write a single byte using our I2C implementation. */
+ 	if (count <= 1 || count > ICE_GNSS_TTY_WRITE_BUF)
+ 		return -EINVAL;
+ 
+-	gnss = tty->driver_data;
+-	if (!gnss)
+-		return -EFAULT;
+-
+-	pf = (struct ice_pf *)tty->driver->driver_state;
+ 	if (!pf)
+ 		return -EFAULT;
+ 
+-	/* Only allow to write on TTY 0 */
+-	if (gnss != pf->gnss_serial[0])
+-		return -EIO;
+-
+-	mutex_lock(&gnss->gnss_mutex);
++	if (!test_bit(ICE_FLAG_GNSS, pf->flags))
++		return -EFAULT;
+ 
+-	if (!gnss->open_count) {
+-		err = -EINVAL;
+-		goto exit;
+-	}
++	gnss = pf->gnss_serial;
++	if (!gnss)
++		return -ENODEV;
+ 
+ 	cmd_buf = kcalloc(count, sizeof(*buf), GFP_KERNEL);
+-	if (!cmd_buf) {
+-		err = -ENOMEM;
+-		goto exit;
+-	}
++	if (!cmd_buf)
++		return -ENOMEM;
+ 
+ 	memcpy(cmd_buf, buf, count);
+-
+-	/* Send the data out to a hardware port */
+ 	write_buf = kzalloc(sizeof(*write_buf), GFP_KERNEL);
+-	if (!write_buf) {
+-		err = -ENOMEM;
+-		goto exit;
+-	}
++	if (!write_buf)
++		return -ENOMEM;
+ 
+ 	write_buf->buf = cmd_buf;
+ 	write_buf->size = count;
+ 	INIT_LIST_HEAD(&write_buf->queue);
+ 	list_add_tail(&write_buf->queue, &gnss->queue);
+ 	kthread_queue_work(gnss->kworker, &gnss->write_work);
+-exit:
+-	mutex_unlock(&gnss->gnss_mutex);
++
+ 	return err;
+ }
+ 
++static const struct gnss_operations ice_gnss_ops = {
++	.open = ice_gnss_open,
++	.close = ice_gnss_close,
++	.write_raw = ice_gnss_write,
++};
++
+ /**
+- * ice_gnss_tty_write_room - Returns the numbers of characters to be written.
+- * @tty: pointer to the tty_struct
++ * ice_gnss_register - Register GNSS receiver
++ * @pf: Board private structure
++ *
++ * Allocate and register GNSS receiver in the Linux GNSS subsystem.
+  *
+- * This routine returns the numbers of characters the tty driver will accept
+- * for queuing to be written or 0 if either the TTY is not open or user
+- * tries to write to the TTY other than the first.
++ * Return:
++ * * 0 - success
++ * * negative - error code
+  */
+-static unsigned int ice_gnss_tty_write_room(struct tty_struct *tty)
++static int ice_gnss_register(struct ice_pf *pf)
+ {
+-	struct gnss_serial *gnss = tty->driver_data;
+-
+-	/* Only allow to write on TTY 0 */
+-	if (!gnss || gnss != gnss->back->gnss_serial[0])
+-		return 0;
+-
+-	mutex_lock(&gnss->gnss_mutex);
+-
+-	if (!gnss->open_count) {
+-		mutex_unlock(&gnss->gnss_mutex);
+-		return 0;
++	struct gnss_device *gdev = NULL;
++	int ret;
++
++	gdev = gnss_allocate_device(ice_pf_to_dev(pf));
++	if (!gdev) {
++		dev_err(ice_pf_to_dev(pf),
++			"gnss_allocate_device returns NULL\n");
++		return -ENOMEM;
+ 	}
+ 
+-	mutex_unlock(&gnss->gnss_mutex);
+-	return ICE_GNSS_TTY_WRITE_BUF;
++	gdev->ops = &ice_gnss_ops;
++	gdev->type = GNSS_TYPE_UBX;
++	gnss_set_drvdata(gdev, pf);
++	ret = gnss_register_device(gdev);
++	if (ret)
++		dev_err(ice_pf_to_dev(pf), "gnss_register_device err=%d\n",
++			ret);
++	else
++		pf->gnss_dev = gdev;
++
++	return ret;
+ }
+ 
+-static const struct tty_operations tty_gps_ops = {
+-	.open =		ice_gnss_tty_open,
+-	.close =	ice_gnss_tty_close,
+-	.write =	ice_gnss_tty_write,
+-	.write_room =	ice_gnss_tty_write_room,
+-};
+-
+ /**
+- * ice_gnss_create_tty_driver - Create a TTY driver for GNSS
++ * ice_gnss_deregister - Deregister GNSS receiver
+  * @pf: Board private structure
++ *
++ * Deregister GNSS receiver from the Linux GNSS subsystem,
++ * release its resources.
+  */
+-static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
++static void ice_gnss_deregister(struct ice_pf *pf)
+ {
+-	struct device *dev = ice_pf_to_dev(pf);
+-	const int ICE_TTYDRV_NAME_MAX = 14;
+-	struct tty_driver *tty_driver;
+-	char *ttydrv_name;
+-	unsigned int i;
+-	int err;
+-
+-	tty_driver = tty_alloc_driver(ICE_GNSS_TTY_MINOR_DEVICES,
+-				      TTY_DRIVER_REAL_RAW);
+-	if (IS_ERR(tty_driver)) {
+-		dev_err(dev, "Failed to allocate memory for GNSS TTY\n");
+-		return NULL;
+-	}
+-
+-	ttydrv_name = kzalloc(ICE_TTYDRV_NAME_MAX, GFP_KERNEL);
+-	if (!ttydrv_name) {
+-		tty_driver_kref_put(tty_driver);
+-		return NULL;
+-	}
+-
+-	snprintf(ttydrv_name, ICE_TTYDRV_NAME_MAX, "ttyGNSS_%02x%02x_",
+-		 (u8)pf->pdev->bus->number, (u8)PCI_SLOT(pf->pdev->devfn));
+-
+-	/* Initialize the tty driver*/
+-	tty_driver->owner = THIS_MODULE;
+-	tty_driver->driver_name = dev_driver_string(dev);
+-	tty_driver->name = (const char *)ttydrv_name;
+-	tty_driver->type = TTY_DRIVER_TYPE_SERIAL;
+-	tty_driver->subtype = SERIAL_TYPE_NORMAL;
+-	tty_driver->init_termios = tty_std_termios;
+-	tty_driver->init_termios.c_iflag &= ~INLCR;
+-	tty_driver->init_termios.c_iflag |= IGNCR;
+-	tty_driver->init_termios.c_oflag &= ~OPOST;
+-	tty_driver->init_termios.c_lflag &= ~ICANON;
+-	tty_driver->init_termios.c_cflag &= ~(CSIZE | CBAUD | CBAUDEX);
+-	/* baud rate 9600 */
+-	tty_termios_encode_baud_rate(&tty_driver->init_termios, 9600, 9600);
+-	tty_driver->driver_state = pf;
+-	tty_set_operations(tty_driver, &tty_gps_ops);
+-
+-	for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++) {
+-		pf->gnss_tty_port[i] = kzalloc(sizeof(*pf->gnss_tty_port[i]),
+-					       GFP_KERNEL);
+-		pf->gnss_serial[i] = NULL;
+-
+-		tty_port_init(pf->gnss_tty_port[i]);
+-		tty_port_link_device(pf->gnss_tty_port[i], tty_driver, i);
+-	}
+-
+-	err = tty_register_driver(tty_driver);
+-	if (err) {
+-		dev_err(dev, "Failed to register TTY driver err=%d\n", err);
+-
+-		for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++) {
+-			tty_port_destroy(pf->gnss_tty_port[i]);
+-			kfree(pf->gnss_tty_port[i]);
+-		}
+-		kfree(ttydrv_name);
+-		tty_driver_kref_put(pf->ice_gnss_tty_driver);
+-
+-		return NULL;
++	if (pf->gnss_dev) {
++		gnss_deregister_device(pf->gnss_dev);
++		gnss_put_device(pf->gnss_dev);
++		pf->gnss_dev = NULL;
+ 	}
+-
+-	for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++)
+-		dev_info(dev, "%s%d registered\n", ttydrv_name, i);
+-
+-	return tty_driver;
+ }
+ 
+ /**
+- * ice_gnss_init - Initialize GNSS TTY support
++ * ice_gnss_init - Initialize GNSS support
+  * @pf: Board private structure
+  */
+ void ice_gnss_init(struct ice_pf *pf)
+ {
+-	struct tty_driver *tty_driver;
++	int ret;
+ 
+-	tty_driver = ice_gnss_create_tty_driver(pf);
+-	if (!tty_driver)
++	pf->gnss_serial = ice_gnss_struct_init(pf);
++	if (!pf->gnss_serial)
+ 		return;
+ 
+-	pf->ice_gnss_tty_driver = tty_driver;
+-
+-	set_bit(ICE_FLAG_GNSS, pf->flags);
+-	dev_info(ice_pf_to_dev(pf), "GNSS TTY init successful\n");
++	ret = ice_gnss_register(pf);
++	if (!ret) {
++		set_bit(ICE_FLAG_GNSS, pf->flags);
++		dev_info(ice_pf_to_dev(pf), "GNSS init successful\n");
++	} else {
++		ice_gnss_exit(pf);
++		dev_err(ice_pf_to_dev(pf), "GNSS init failure\n");
++	}
+ }
+ 
+ /**
+@@ -510,31 +426,20 @@ void ice_gnss_init(struct ice_pf *pf)
+  */
+ void ice_gnss_exit(struct ice_pf *pf)
+ {
+-	unsigned int i;
++	ice_gnss_deregister(pf);
++	clear_bit(ICE_FLAG_GNSS, pf->flags);
+ 
+-	if (!test_bit(ICE_FLAG_GNSS, pf->flags) || !pf->ice_gnss_tty_driver)
+-		return;
+-
+-	for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++) {
+-		if (pf->gnss_tty_port[i]) {
+-			tty_port_destroy(pf->gnss_tty_port[i]);
+-			kfree(pf->gnss_tty_port[i]);
+-		}
++	if (pf->gnss_serial) {
++		struct gnss_serial *gnss = pf->gnss_serial;
+ 
+-		if (pf->gnss_serial[i]) {
+-			struct gnss_serial *gnss = pf->gnss_serial[i];
++		kthread_cancel_work_sync(&gnss->write_work);
++		kthread_cancel_delayed_work_sync(&gnss->read_work);
++		kthread_destroy_worker(gnss->kworker);
++		gnss->kworker = NULL;
+ 
+-			kthread_cancel_work_sync(&gnss->write_work);
+-			kthread_cancel_delayed_work_sync(&gnss->read_work);
+-			kfree(gnss);
+-			pf->gnss_serial[i] = NULL;
+-		}
++		kfree(gnss);
++		pf->gnss_serial = NULL;
+ 	}
+-
+-	tty_unregister_driver(pf->ice_gnss_tty_driver);
+-	kfree(pf->ice_gnss_tty_driver->name);
+-	tty_driver_kref_put(pf->ice_gnss_tty_driver);
+-	pf->ice_gnss_tty_driver = NULL;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/ethernet/intel/ice/ice_gnss.h
+index f454dd1d9285..4d49e5b0b4b8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.h
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
+@@ -4,15 +4,8 @@
+ #ifndef _ICE_GNSS_H_
+ #define _ICE_GNSS_H_
+ 
+-#include <linux/tty.h>
+-#include <linux/tty_flip.h>
+-
+ #define ICE_E810T_GNSS_I2C_BUS		0x2
+ #define ICE_GNSS_TIMER_DELAY_TIME	(HZ / 10) /* 0.1 second per message */
+-/* Create 2 minor devices, both using the same GNSS module. First one is RW,
+- * second one RO.
+- */
+-#define ICE_GNSS_TTY_MINOR_DEVICES	2
+ #define ICE_GNSS_TTY_WRITE_BUF		250
+ #define ICE_MAX_I2C_DATA_SIZE		FIELD_MAX(ICE_AQC_I2C_DATA_SIZE_M)
+ #define ICE_MAX_I2C_WRITE_BYTES		4
+@@ -36,13 +29,9 @@ struct gnss_write_buf {
+ 	unsigned char *buf;
+ };
+ 
+-
+ /**
+  * struct gnss_serial - data used to initialize GNSS TTY port
+  * @back: back pointer to PF
+- * @tty: pointer to the tty for this device
+- * @open_count: number of times this port has been opened
+- * @gnss_mutex: gnss_mutex used to protect GNSS serial operations
+  * @kworker: kwork thread for handling periodic work
+  * @read_work: read_work function for handling GNSS reads
+  * @write_work: write_work function for handling GNSS writes
+@@ -50,16 +39,13 @@ struct gnss_write_buf {
+  */
+ struct gnss_serial {
+ 	struct ice_pf *back;
+-	struct tty_struct *tty;
+-	int open_count;
+-	struct mutex gnss_mutex; /* protects GNSS serial structure */
+ 	struct kthread_worker *kworker;
+ 	struct kthread_delayed_work read_work;
+ 	struct kthread_work write_work;
+ 	struct list_head queue;
+ };
+ 
+-#if IS_ENABLED(CONFIG_TTY)
++#if IS_ENABLED(CONFIG_GNSS)
+ void ice_gnss_init(struct ice_pf *pf);
+ void ice_gnss_exit(struct ice_pf *pf);
+ bool ice_gnss_is_gps_present(struct ice_hw *hw);
+@@ -70,5 +56,5 @@ static inline bool ice_gnss_is_gps_present(struct ice_hw *hw)
+ {
+ 	return false;
+ }
+-#endif /* IS_ENABLED(CONFIG_TTY) */
++#endif /* IS_ENABLED(CONFIG_GNSS) */
+ #endif /* _ICE_GNSS_H_ */
+-- 
+2.34.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
