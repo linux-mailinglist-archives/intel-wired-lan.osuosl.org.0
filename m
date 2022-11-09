@@ -2,88 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76C2A62302D
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Nov 2022 17:30:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 147AA62310B
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Nov 2022 18:06:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A18B560AFE;
-	Wed,  9 Nov 2022 16:30:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A18B560AFE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8BF3460BFD;
+	Wed,  9 Nov 2022 17:06:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BF3460BFD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668011448;
-	bh=bOPoaU7t6JsYeaNgFan2j7EA8nCw+l72a6YncUJKU0U=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=15vDyTAfmLgH0EHSvA/ROl9+BOMPbaWJVBhx7HUm1FWJNSDpIBDtGhfWbyD9vjgML
-	 QAmjMLTSao6z/L/e/UDUTpmMYLKaQR/ZdhyJ6QaBR33JbByS8CADOoJM0RhLvNQBe0
-	 zLO550vI4PbUuyXqQoZ2x15VsPpKh7e0BKhhwjWrRAZ6AtzDyCpUEEZszt2dnN/EA2
-	 yLMebyE61N2dKwHmYm7Gc3/bsivuDWGLWDGKTJc3BiQLGZcIAgGPdew/O+m8UMjbpT
-	 04jbTtC1gcGypg6EZWqU6R/TAHHvjaeRfVtnCcmE67bSENY7J/7/dl8X2JM87eLStA
-	 In0+rRZ8huXdg==
+	s=default; t=1668013597;
+	bh=SIVjoFStvB3pK07C4GNU+4WkOMi9WwP1PL2Nmdy5IRo=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=rHyMaclqsK629v42b4bROfc+/06yFaVsVdJkuj5GzIvfHzPClEzqO92gtkMf4A5vy
+	 A+tUCOJl087VXicae56avhWDnWr+/FCMNm5kv9THYTyHSoPEo4OkphzD6bkIqRj5Wq
+	 A1ebI6ReMY1xy4FLIZzELN7wWvp+HN/XAndxUxmqMElVGccPdOMUaUwtou8xBikY0l
+	 p68zUNQE7soIs0fX8gAHs3hKCqEbNgLMkEZB9j/+yG1Cl1s7y6Jf8j9p29qk7UYvTf
+	 /b9J1MC4YLCN49of8G9cfftmojJjrgre6JxlrR46sIJeX4iBrWVlNtVQhocUccVusG
+	 /nOuimXL6KbpA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wQ7Zw7dMnokT; Wed,  9 Nov 2022 16:30:47 +0000 (UTC)
+	with ESMTP id zZACMMRGuaod; Wed,  9 Nov 2022 17:06:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 736FA60AA3;
-	Wed,  9 Nov 2022 16:30:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 736FA60AA3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 954C060BA8;
+	Wed,  9 Nov 2022 17:06:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 954C060BA8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DF2F01BF29A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 15:37:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9FFE41BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 17:06:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C6045401EA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 15:37:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C6045401EA
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6EBCB40977
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 17:06:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6EBCB40977
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gS6uZsM9Mvwj for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Nov 2022 15:37:21 +0000 (UTC)
+ with ESMTP id T2nx9FwYlW8i for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Nov 2022 17:06:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A5718401E9
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A5718401E9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 15:37:21 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="294381708"
-X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="294381708"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2022 07:33:20 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="668025673"
-X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="668025673"
-Received: from unknown (HELO paamrpdk12-S2600BPB.aw.intel.com)
- ([10.228.151.145])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2022 07:33:18 -0800
-From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
-To: tirtha@gmail.com, magnus.karlsson@intel.com,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- maciej.fijalkowski@intel.com
-Date: Wed,  9 Nov 2022 20:50:16 +0530
-Message-Id: <20221109152016.66326-1-tirthendu.sarkar@intel.com>
-X-Mailer: git-send-email 2.34.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A5A81404F4
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A5A81404F4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 17:06:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="312197161"
+X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="312197161"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Nov 2022 09:05:59 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="614757062"
+X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="614757062"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga006.jf.intel.com with ESMTP; 09 Nov 2022 09:05:56 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 2A9H5tHv007416; Wed, 9 Nov 2022 17:05:55 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+Date: Wed,  9 Nov 2022 18:02:10 +0100
+Message-Id: <20221109170210.1155273-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221109152016.66326-1-tirthendu.sarkar@intel.com>
+References: <20221109152016.66326-1-tirthendu.sarkar@intel.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 09 Nov 2022 16:30:43 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668008241; x=1699544241;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=j8ohFXTDf5LbUAkuSQef8+KA/jlhlC9ARroEqvsIzkc=;
- b=IgwEhvGPi/gK/aHKDdujLe3jJxtL+gI1P3ca8Zluhx5MLEBeNxdb6Ncm
- RsdjJLmGHFAeW5C4FxG9TQqSLtjRW0bdj2JxA0c+9/F67OWqGc1cRRZY9
- 1tOIgMVxsxcprGase7MkYUKVTEvwZkKazBXD+KJ+4oJBWdx9K4MvOp6hD
- 5XALHT4QtC7DrBawTxDPsjl376Isa2cw3PU47DtG10X7mfECQqCT1n+uC
- TIiZDyy8RMpY1ERMC5cGctOiEKqoCeZdyIe/6Mk02SGhVpKhSTW8dWWlg
- nas75EmzBR4c170/xbibhExfvWKYg7lXmp/aynPDyQvX9vXO6ocud//yE
- A==;
+ t=1668013589; x=1699549589;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=jUB98y9lDg/2WtNPN7G6LrAoGSJw8m7DnhcvXdCGarE=;
+ b=frRtVDqUDhHSVu5FpmgWZLBrMCE0a2gFvP59aRlpLDn5HGbTRdtu1bPJ
+ eAcAXDYP2JAcPl2XE9xrVhCPngswoHhPhO6vQqwF3R6gpbIlK7vQRB4MY
+ xHoak/AZaqCRSc+X31NmpYgwZ9sU8P08tR4peEPAfVGV1imVMVz9Jw6fo
+ TZ498d+pFb6t6+t54QueDEpnIG4rlF6DElwqYNtvfLGwi7wWKmJOrpUAa
+ euI4nzmulH7bln5LgqlZT8uYK+X2r3er3HXfMplXKARM0dFQJhwQkWDAs
+ NbbzcF2YCauMOq1MdVFaKPpvLq3RS1x960gJpbqWgIVabo493mRyyPGUK
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=IgwEhvGP
-Subject: [Intel-wired-lan] [PATCH intel-next] i40e: allow toggling loopback
- mode via
+ header.a=rsa-sha256 header.s=Intel header.b=frRtVDqU
+Subject: Re: [Intel-wired-lan] [PATCH intel-next] i40e: allow toggling
+ loopback mode via
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,130 +99,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org
+Cc: tirtha@gmail.com, netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for NETIF_F_LOOPBACK. This feature can be set via:
-$ ethtool -K eth0 loopback <on|off>
+From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+Date: Wed,  9 Nov 2022 20:50:16 +0530
 
-This sets the MAC Tx->Rx loopback.
+> Add support for NETIF_F_LOOPBACK. This feature can be set via:
+> $ ethtool -K eth0 loopback <on|off>
+> 
+> This sets the MAC Tx->Rx loopback.
+> 
+> This feature is used for the xsk selftests, and might have other uses
+> too.
+> 
+> Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_common.c | 22 +++++++++++++++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 28 +++++++++++++++++++
+>  .../net/ethernet/intel/i40e/i40e_prototype.h  |  3 ++
+>  3 files changed, 53 insertions(+)
 
-This feature is used for the xsk selftests, and might have other uses
-too.
+[...]
 
-Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_common.c | 22 +++++++++++++++
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 28 +++++++++++++++++++
- .../net/ethernet/intel/i40e/i40e_prototype.h  |  3 ++
- 3 files changed, 53 insertions(+)
+> @@ -13721,6 +13747,8 @@ static int i40e_config_netdev(struct i40e_vsi *vsi)
+>  	if (!(pf->flags & I40E_FLAG_MFP_ENABLED))
+>  		hw_features |= NETIF_F_NTUPLE | NETIF_F_HW_TC;
+>  
+> +	hw_features |= NETIF_F_LOOPBACK;
+> +
+>  	netdev->hw_features |= hw_features;
+>  
+>  	netdev->features |= hw_features | NETIF_F_HW_VLAN_CTAG_FILTER;
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index 4f01e2a6b6bb..73d2c700dc35 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -1830,6 +1830,28 @@ i40e_status i40e_aq_set_phy_int_mask(struct i40e_hw *hw,
- 	return status;
- }
- 
-+/**
-+ * i40e_aq_set_mac_loopback
-+ * @hw: pointer to the HW struct
-+ * @ena_lpbk: Enable or Disable loopback
-+ * @cmd_details: pointer to command details structure or NULL
-+ *
-+ * Enable/disable loopback on a given port
-+ */
-+i40e_status i40e_aq_set_mac_loopback(struct i40e_hw *hw, bool ena_lpbk,
-+				     struct i40e_asq_cmd_details *cmd_details)
-+{
-+	struct i40e_aq_desc desc;
-+	struct i40e_aqc_set_lb_mode *cmd =
-+		(struct i40e_aqc_set_lb_mode *)&desc.params.raw;
-+
-+	i40e_fill_default_direct_cmd_desc(&desc, i40e_aqc_opc_set_lb_modes);
-+	if (ena_lpbk)
-+		cmd->lb_mode = cpu_to_le16(I40E_AQ_LB_MAC_LOCAL);
-+
-+	return i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
-+}
-+
- /**
-  * i40e_aq_set_phy_debug
-  * @hw: pointer to the hw struct
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 1a1fab94205d..04d2922f7646 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -12919,6 +12919,28 @@ static void i40e_clear_rss_lut(struct i40e_vsi *vsi)
- 	}
- }
- 
-+/**
-+ * i40e_set_loopback - turn on/off loopback mode on underlying PF
-+ * @vsi: ptr to VSI
-+ * @ena: flag to indicate the on/off setting
-+ */
-+static int i40e_set_loopback(struct i40e_vsi *vsi, bool ena)
-+{
-+	bool if_running = netif_running(vsi->netdev);
-+	int ret;
-+
-+	if (if_running && !test_and_set_bit(__I40E_VSI_DOWN, vsi->state))
-+		i40e_down(vsi);
-+
-+	ret = i40e_aq_set_mac_loopback(&vsi->back->hw, ena, NULL);
-+	if (ret)
-+		netdev_err(vsi->netdev, "Failed to toggle loopback state\n");
-+	if (if_running)
-+		i40e_up(vsi);
-+
-+	return ret;
-+}
-+
- /**
-  * i40e_set_features - set the netdev feature flags
-  * @netdev: ptr to the netdev being adjusted
-@@ -12959,6 +12981,10 @@ static int i40e_set_features(struct net_device *netdev,
- 	if (need_reset)
- 		i40e_do_reset(pf, I40E_PF_RESET_FLAG, true);
- 
-+	if (features & NETIF_F_LOOPBACK)
-+		if (i40e_set_loopback(vsi, !!(features & NETIF_F_LOOPBACK)))
-+			return -EINVAL;
-+
- 	return 0;
- }
- 
-@@ -13721,6 +13747,8 @@ static int i40e_config_netdev(struct i40e_vsi *vsi)
- 	if (!(pf->flags & I40E_FLAG_MFP_ENABLED))
- 		hw_features |= NETIF_F_NTUPLE | NETIF_F_HW_TC;
- 
-+	hw_features |= NETIF_F_LOOPBACK;
-+
- 	netdev->hw_features |= hw_features;
- 
- 	netdev->features |= hw_features | NETIF_F_HW_VLAN_CTAG_FILTER;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-index ebdcde6f1aeb..9a71121420c3 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-@@ -105,6 +105,9 @@ enum i40e_status_code i40e_aq_set_phy_config(struct i40e_hw *hw,
- 				struct i40e_asq_cmd_details *cmd_details);
- enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
- 				  bool atomic_reset);
-+i40e_status i40e_aq_set_mac_loopback(struct i40e_hw *hw,
-+				     bool ena_lpbk,
-+				     struct i40e_asq_cmd_details *cmd_details);
- i40e_status i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask,
- 				     struct i40e_asq_cmd_details *cmd_details);
- i40e_status i40e_aq_clear_pxe_mode(struct i40e_hw *hw,
--- 
-2.34.1
+So here it will be enabled by default, which shouldn't happen as it
+breaks traffic flow.
+Just add it directly to netdev->hw_features one line above.
 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> index ebdcde6f1aeb..9a71121420c3 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> @@ -105,6 +105,9 @@ enum i40e_status_code i40e_aq_set_phy_config(struct i40e_hw *hw,
+>  				struct i40e_asq_cmd_details *cmd_details);
+>  enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
+>  				  bool atomic_reset);
+> +i40e_status i40e_aq_set_mac_loopback(struct i40e_hw *hw,
+> +				     bool ena_lpbk,
+> +				     struct i40e_asq_cmd_details *cmd_details);
+>  i40e_status i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask,
+>  				     struct i40e_asq_cmd_details *cmd_details);
+>  i40e_status i40e_aq_clear_pxe_mode(struct i40e_hw *hw,
+> -- 
+> 2.34.1
+
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
