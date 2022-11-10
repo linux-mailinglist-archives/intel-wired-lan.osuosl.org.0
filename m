@@ -1,76 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD02D6243FE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 15:15:04 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33F6A6244C1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 15:52:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9AF1C60F37;
-	Thu, 10 Nov 2022 14:15:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9AF1C60F37
+	by smtp1.osuosl.org (Postfix) with ESMTP id 72C8A81E14;
+	Thu, 10 Nov 2022 14:52:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72C8A81E14
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668089701;
-	bh=D/LCB9Gur+m1yynWhp0ZHDbkLrTmCBcJ3ib6k9k/Bpk=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=jwKSD0E4ALrMlD3R8Qq7Ag/YnVSfAqg4BdjnisKOrhXgnG9ROZvt+x8bqBe5LO3mx
-	 ppLFGisG0PwVKqONOixp2cXyt/O8cfSMQY3vwAB5oqyr63UXBr4nJjd3Rd9PJoaKSr
-	 9eOCH1l8OuxszLRYbU4Zh4b3ob//MDpZbjDo7NKqpwnENSXnS38sLIpKQXAdiTj+UH
-	 g8l+UyUuETL3Yi2zOpsJkvA+0KSbTnESTUgU7yxddNTYyL6nOcj9TIKfG48xV1HVi8
-	 4kqM8XZPyhLcia3fovFLDIiIWRm98jNx/cBquJlTOUgBmFdA6KucYfx/5kTqbX2mLJ
-	 nb9ierrJF6+tw==
+	s=default; t=1668091922;
+	bh=810kRd6JpObv5wr2spBt7vhba/NBEnK/C0LQwcDJxtU=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=K6cKhzvucm5kS1qUsCpiL1qaPHbAQw1YgwLGvBJoTsFyaU82+Uxjer7163/3cipea
+	 pZtpu9C3lEiwb0EpL3eIHzbPvDHPEqI2kgQL2pC2GUI/Kq2Hho2qjewLEMoZYo4bkd
+	 a3spVWaBXJ3ajXndPU40CYv9oaXtVBN07zc9SnIxwMVSxpUTYM/R9UgCRukS9Fuqqy
+	 Sca2/pc0RVZ7G8d/9znn741O2SW8qSTPNiIQn3Ll8qelfmg5QTiIfslfTRpuyYySP6
+	 gKxcOM8MiR/9CbCfX3ayIakXlkire4PhN9YEN447RRLW8BoiHSuONMGHboTR/u7Qwa
+	 oiDM4bLiB4CcA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uhlzyX2bzmcV; Thu, 10 Nov 2022 14:15:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 10DBOrUjdJXQ; Thu, 10 Nov 2022 14:52:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 805CF60B21;
-	Thu, 10 Nov 2022 14:15:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 805CF60B21
+	by smtp1.osuosl.org (Postfix) with ESMTP id 68BC781D5F;
+	Thu, 10 Nov 2022 14:52:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 68BC781D5F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F2AA91BF39F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E13161BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:51:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CBBC54160F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBBC54160F
+ by smtp2.osuosl.org (Postfix) with ESMTP id C512B402F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:51:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C512B402F6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7zHXi_d6bxK4 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Nov 2022 14:14:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B47D415E0
-Received: from us-smtp-delivery-44.mimecast.com
- (us-smtp-delivery-44.mimecast.com [205.139.111.44])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5B47D415E0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mHAZWL_0MmKo for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Nov 2022 14:51:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2704040289
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2704040289
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:51:56 +0000 (UTC)
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-282-tYU5zWHKOVyRvehJvvCKmQ-1; Thu, 10 Nov 2022 09:14:48 -0500
-X-MC-Unique: tYU5zWHKOVyRvehJvvCKmQ-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ us-mta-648-fovA9puiPdCfkCA7I0Rovg-1; Thu, 10 Nov 2022 09:51:51 -0500
+X-MC-Unique: fovA9puiPdCfkCA7I0Rovg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 95FB5381A731;
- Thu, 10 Nov 2022 14:14:47 +0000 (UTC)
-Received: from p1.redhat.com (unknown [10.39.193.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8C4E54A9256;
- Thu, 10 Nov 2022 14:14:46 +0000 (UTC)
-From: Stefan Assmann <sassmann@kpanic.de>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 10 Nov 2022 15:14:44 +0100
-Message-Id: <20221110141444.1308237-1-sassmann@kpanic.de>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2ACFC381078F;
+ Thu, 10 Nov 2022 14:51:51 +0000 (UTC)
+Received: from p1.luc.cera.cz (ovpn-193-136.brq.redhat.com [10.40.193.136])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 15BAE2166B29;
+ Thu, 10 Nov 2022 14:51:47 +0000 (UTC)
+Date: Thu, 10 Nov 2022 15:51:47 +0100
+From: Ivan Vecera <ivecera@redhat.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>
+Message-ID: <20221110155147.1a2c57f6@p1.luc.cera.cz>
+In-Reply-To: <CO1PR11MB508996B0D00B5FE6187AF085D63E9@CO1PR11MB5089.namprd11.prod.outlook.com>
+References: <20221108102502.2147389-1-ivecera@redhat.com>
+ <Y2vvbwkvAIOdtZaA@unreal>
+ <CO1PR11MB508996B0D00B5FE6187AF085D63E9@CO1PR11MB5089.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: kpanic.de
-Subject: [Intel-wired-lan] [PATCH net] iavf: remove INITIAL_MAC_SET to allow
- gARP to work properly
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1668091915;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=omYoFDdizbothqM1y6x7ltgbHGFmerjPUiCe70Zk9cs=;
+ b=PdRMNZ8fPY0ZfdlG1v8LYb2cDmRxKNwNQpe+ei0X68Hmtme5vNWN1j+ugI+rjm2bu1VRUe
+ 9YoZsG6aYcrzO1nHi1uDDB3Ed6HXP9ebQmEaE95guGcC2wbTxiBre1QgQVINvT4kF9Qzuh
+ FK81Vn9eBokrgim2gX0MzjPhwqWEk7k=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=PdRMNZ8f
+Subject: Re: [Intel-wired-lan] [PATCH net] iavf: Do not restart Tx queues
+ after reset task failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,81 +100,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, patryk.piotrowski@intel.com, sassmann@kpanic.de
+Cc: SlawomirX Laba <slawomirx.laba@intel.com>,
+ Leon Romanovsky <leon@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>, "Piotrowski,
+ Patryk" <patryk.piotrowski@intel.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "sassmann@redhat.com" <sassmann@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-IAVF_FLAG_INITIAL_MAC_SET prevents waiting on iavf_is_mac_set_handled()
-the first time the MAC is set. This breaks gratuitous ARP because the
-MAC address has not been updated yet when the gARP packet is sent out.
+On Wed, 9 Nov 2022 20:11:55 +0000
+"Keller, Jacob E" <jacob.e.keller@intel.com> wrote:
 
-Current behaviour:
-$ echo 1 > /sys/class/net/ens4f0/device/sriov_numvfs
-iavf 0000:88:02.0: MAC address: ee:04:19:14:ec:ea
-$ ip addr add 192.168.1.1/24 dev ens4f0v0
-$ ip link set dev ens4f0v0 up
-$ echo 1 > /proc/sys/net/ipv4/conf/ens4f0v0/arp_notify
-$ ip link set ens4f0v0 addr 00:11:22:33:44:55
-07:23:41.676611 ee:04:19:14:ec:ea > ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: Request who-has 192.168.1.1 tell 192.168.1.1, length 28
+> > Sorry for my naive question, I see this pattern a lot (including RDMA),
+> > so curious. Everyone checks netif_running() outside of rtnl_lock, while
+> > dev_close() changes state bit __LINK_STATE_START. Shouldn't rtnl_lock()
+> > placed before netif_running()?  
+> 
+> Yes I think you're right. A ton of people check it without the lock but I think thats not strictly safe. Is dev_close safe to call when netif_running is false? Why not just remove the check and always call dev_close then.
+> 
+> Thanks,
+> Jake
 
-With IAVF_FLAG_INITIAL_MAC_SET removed:
-$ echo 1 > /sys/class/net/ens4f0/device/sriov_numvfs
-iavf 0000:88:02.0: MAC address: 3e:8a:16:a2:37:6d
-$ ip addr add 192.168.1.1/24 dev ens4f0v0
-$ ip link set dev ens4f0v0 up
-$ echo 1 > /proc/sys/net/ipv4/conf/ens4f0v0/arp_notify
-$ ip link set ens4f0v0 addr 00:11:22:33:44:55
-07:28:01.836608 00:11:22:33:44:55 > ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: Request who-has 192.168.1.1 tell 192.168.1.1, length 28
+Check for a bit value (like netif_runnning()) is much cheaper than unconditionally
+taking global lock like RTNL.
 
-Fixes: 35a2443d0910 ("iavf: Add waiting for response from PF in set mac")
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
----
- drivers/net/ethernet/intel/iavf/iavf.h      | 1 -
- drivers/net/ethernet/intel/iavf/iavf_main.c | 8 --------
- 2 files changed, 9 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 3f6187c16424..0d1bab4ac1b0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -298,7 +298,6 @@ struct iavf_adapter {
- #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
- #define IAVF_FLAG_SETUP_NETDEV_FEATURES		BIT(18)
- #define IAVF_FLAG_REINIT_MSIX_NEEDED		BIT(20)
--#define IAVF_FLAG_INITIAL_MAC_SET		BIT(23)
- /* duplicates for common code */
- #define IAVF_FLAG_DCB_ENABLED			0
- 	/* flags for admin queue service task */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 258bdf8906dd..5fc47ca1b17c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1087,12 +1087,6 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
- 	if (ret)
- 		return ret;
- 
--	/* If this is an initial set MAC during VF spawn do not wait */
--	if (adapter->flags & IAVF_FLAG_INITIAL_MAC_SET) {
--		adapter->flags &= ~IAVF_FLAG_INITIAL_MAC_SET;
--		return 0;
--	}
--
- 	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue,
- 					       iavf_is_mac_set_handled(netdev, addr->sa_data),
- 					       msecs_to_jiffies(2500));
-@@ -2605,8 +2599,6 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 		ether_addr_copy(netdev->perm_addr, adapter->hw.mac.addr);
- 	}
- 
--	adapter->flags |= IAVF_FLAG_INITIAL_MAC_SET;
--
- 	adapter->tx_desc_count = IAVF_DEFAULT_TXD;
- 	adapter->rx_desc_count = IAVF_DEFAULT_RXD;
- 	err = iavf_init_interrupt_scheme(adapter);
--- 
-2.37.3
+Ivan
 
 _______________________________________________
 Intel-wired-lan mailing list
