@@ -1,89 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA7AB62376C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 00:27:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA89A623E6B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 10:17:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 457DC8141C;
-	Wed,  9 Nov 2022 23:27:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 457DC8141C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6E00F60E62;
+	Thu, 10 Nov 2022 09:17:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6E00F60E62
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668036440;
-	bh=NZlPpdM7hyRBJJPFw6+kwSHvnsVXYfNSb4JDpgjDc+g=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1668071845;
+	bh=CSAa0dribSNu1T7S8gNAxgH9jE5PNHSk3UOYQSn/jho=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mTsk3H78i33Uj9VBG3YL970lgWLn2KS1GmuLVc7U/UOcBBMtP/MfsKdZlOcsjzdHM
-	 2+G+JKBekiyI6gRrtcOUJfevPbByQc0tkLkLgP0QEkKaML/vytVeCr8GTfyp9BRxtS
-	 Ff/lPSWIqIbcsgdWcXgBScAgw3vj6pUfDI6nbYmWEi+9XDmn4r/8k+xxY+IznPvaXU
-	 fsNY5bLdgXgx6Ur2JkOO3BMf10qprr2no2DEiXm2wGsu7GKNMNC2h8wzbAa3T1egmj
-	 oQ047RrO95wzX7QSuvaU4bXvom47+nQaBlz3F0pzfPh/QQUGslRnzR8b6GiwPAwImZ
-	 Zts/0xDz0UhzA==
+	b=BR72NoHxGYSuUTMF+YNhzf+D/Us7gfWO8T137r8yk74itpvCi75jr3GJo5eMDxEas
+	 7/DQT5bVQJwrktTjBLgdnNw1HMAjSX/QCkIYUue80a06MRQ2aiMBWTJAsg9Mzhi5wW
+	 Vf1LRB5k1Ao79JvgblRTZw0veC7a1QMXi3Z9u2BClMzN3k56X/b838xoVJx+2n29Mu
+	 ww5vIsJ8MVWKTy0DL3oIIRv1000HNVgnKjDDrVC407VulvQYphmiwEt6W7YYf6TWeY
+	 CpYAaFL2FBxZ+zZVTqJ3Su7YckyHA8N5XEcONXltJnztaSJ6aRS4MHSMnl7/oMjNAp
+	 n94yVx7/TgnFA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x0li87yVFTiY; Wed,  9 Nov 2022 23:27:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bXOm4xy9s1yt; Thu, 10 Nov 2022 09:17:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5A9828126C;
-	Wed,  9 Nov 2022 23:27:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A9828126C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6A9E560E60;
+	Thu, 10 Nov 2022 09:17:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A9E560E60
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E0A3E1BF282
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 19:33:08 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3FB531BF35D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 09:17:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B62CF818D7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 19:33:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B62CF818D7
+ by smtp3.osuosl.org (Postfix) with ESMTP id 13A6560E60
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 09:17:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13A6560E60
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WjrCZC62paWl for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Nov 2022 19:33:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Vn_H2HOxieHm for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Nov 2022 09:17:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15A90818BE
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 15A90818BE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Nov 2022 19:33:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="373225144"
-X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="373225144"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2022 11:33:05 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="636868575"
-X-IronPort-AV: E=Sophos;i="5.96,151,1665471600"; d="scan'208";a="636868575"
-Received: from axxiablr1.iind.intel.com ([10.190.162.100])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Nov 2022 11:33:03 -0800
-From: Siddaraju DH <siddaraju.dh@intel.com>
-To: jacob.e.keller@intel.com
-Date: Thu, 10 Nov 2022 01:02:52 +0530
-Message-Id: <20221109193252.15594-1-siddaraju.dh@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221103220145.1851114-1-jacob.e.keller@intel.com>
-References: <20221103220145.1851114-1-jacob.e.keller@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 99F4760E5F
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 99F4760E5F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 09:17:18 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BE606B82126;
+ Thu, 10 Nov 2022 09:17:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0ADDC433C1;
+ Thu, 10 Nov 2022 09:17:13 +0000 (UTC)
+Date: Thu, 10 Nov 2022 11:17:09 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>
+Message-ID: <Y2zBlcpKZooaQhtL@unreal>
+References: <20221108102502.2147389-1-ivecera@redhat.com>
+ <Y2vvbwkvAIOdtZaA@unreal>
+ <CO1PR11MB508996B0D00B5FE6187AF085D63E9@CO1PR11MB5089.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 09 Nov 2022 23:27:14 +0000
+Content-Disposition: inline
+In-Reply-To: <CO1PR11MB508996B0D00B5FE6187AF085D63E9@CO1PR11MB5089.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668022387; x=1699558387;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=0ohSmFWlVC7Npi2aBGpek0kdJN0Fd4Pb84oxfFOSCbM=;
- b=UQi5oR1Ctc9VtPp5yIc18kK5GmiAwYTwHzHpAANM4Jn6UBF6XPRnQWex
- ILDaI7YVuFXKbKBqQo6+uV3SCnePkIO2+po3lfjTRk68kJniQaFUw63B7
- /yaECwinrYwrQ+kTlz5ZLVdFZ1ATgk5xB2e8PO0FJx9fu81ty2qi+64Rt
- ErLemEBgPiO928RCU8dCnqGBrTbfl47yPNkdZD0/JYq0DEAF0XuSxZRKK
- NGmZ6IJ4AG8A0Isk2hUx9fNyXIDnlrtIrFTUzdFcmrWl5Tjy3XM0a7xxf
- 5t43Xiyo7T00Dhkt+77XVkYDU6QbenmA/wM8a5Ln0uM9+9C62uvUwTn9L
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UQi5oR1C
-Subject: [Intel-wired-lan] [PATCH net-next v2 00/15] ice: improve Tx
- timestamp corner cases
+ d=kernel.org; s=k20201202; t=1668071834;
+ bh=6TJNnSviLlX563oQpc85BIYcQat1cVbnGv4v0Qc+vJk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nuErvBV+JiX3N5HtvK2D1LR6w1MiTqz7BX5r2A6wKtpNtZxMsDPZj7y69xuhyTrD3
+ BUuHNxOElpY18O+P3jV6r/vZL6mlUcfRAjl+enMvT2qbPtgbmZkiEtspmxeUt+1w7n
+ q4uZwOiaNepckD00u0BL2SBfyOBikhzIxoi3VjYOaJgOrlyf6ktk7M8di8qVtZzIab
+ OXbOV+mAGv40umA6nNEOja5M8uFKT8hIhlrr6pd8XGadKRJv0LVic4dCy1Q9h/nomD
+ H/P/X+7S3skPgOh5bRAlJxAdvunajMCzS7uhQBOTp9dcUiexSdwcxlhpp/lEFb9DHM
+ kM6oHKUX4Cm5Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=nuErvBV+
+Subject: Re: [Intel-wired-lan] [PATCH net] iavf: Do not restart Tx queues
+ after reset task failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,14 +92,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Siddaraju DH <siddaraju.dh@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: ivecera <ivecera@redhat.com>, SlawomirX Laba <slawomirx.laba@intel.com>,
+ Eric Dumazet <edumazet@google.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>, "Piotrowski,
+ Patryk" <patryk.piotrowski@intel.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "sassmann@redhat.com" <sassmann@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Reviewed-by: Siddaraju DH <siddaraju.dh@intel.com>
+On Wed, Nov 09, 2022 at 08:11:55PM +0000, Keller, Jacob E wrote:
+> 
+> 
+> > -----Original Message-----
+> > From: Leon Romanovsky <leon@kernel.org>
+> > Sent: Wednesday, November 9, 2022 10:21 AM
+> > To: ivecera <ivecera@redhat.com>
+> > Cc: netdev@vger.kernel.org; sassmann@redhat.com; Keller, Jacob E
+> > <jacob.e.keller@intel.com>; Piotrowski, Patryk <patryk.piotrowski@intel.com>;
+> > SlawomirX Laba <slawomirx.laba@intel.com>; Brandeburg, Jesse
+> > <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Eric
+> > Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
+> > Abeni <pabeni@redhat.com>; moderated list:INTEL ETHERNET DRIVERS <intel-
+> > wired-lan@lists.osuosl.org>; open list <linux-kernel@vger.kernel.org>
+> > Subject: Re: [PATCH net] iavf: Do not restart Tx queues after reset task failure
+> > 
+> > On Tue, Nov 08, 2022 at 11:25:02AM +0100, Ivan Vecera wrote:
+> > > After commit aa626da947e9 ("iavf: Detach device during reset task")
+> > > the device is detached during reset task and re-attached at its end.
+> > > The problem occurs when reset task fails because Tx queues are
+> > > restarted during device re-attach and this leads later to a crash.
+> > 
+> > <...>
+> > 
+> > > +	if (netif_running(netdev)) {
+> > > +		/* Close device to ensure that Tx queues will not be started
+> > > +		 * during netif_device_attach() at the end of the reset task.
+> > > +		 */
+> > > +		rtnl_lock();
+> > > +		dev_close(netdev);
+> > > +		rtnl_unlock();
+> > > +	}
+> > 
+> > Sorry for my naive question, I see this pattern a lot (including RDMA),
+> > so curious. Everyone checks netif_running() outside of rtnl_lock, while
+> > dev_close() changes state bit __LINK_STATE_START. Shouldn't rtnl_lock()
+> > placed before netif_running()?
+> 
+> Yes I think you're right. A ton of people check it without the lock but I think thats not strictly safe. Is dev_close safe to call when netif_running is false? Why not just remove the check and always call dev_close then.
 
+I honestly don't know.
+
+To remove any doubts, this patch is LGTM.
+
+Thanks,
+Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
