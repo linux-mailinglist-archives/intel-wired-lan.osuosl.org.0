@@ -1,88 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F421C624379
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 14:44:40 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD02D6243FE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Nov 2022 15:15:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0FCC2404E0;
-	Thu, 10 Nov 2022 13:44:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0FCC2404E0
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9AF1C60F37;
+	Thu, 10 Nov 2022 14:15:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9AF1C60F37
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668087879;
-	bh=W4LZbpyPCP4c2d6coi2en0b6D8MDHSI6Z611oQYcZUY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Ld4Dy/gRY8ihuyuvLbusAZHbOsD2GFf7NDwLIPtwq1XiID9hH9d2/Dw57SwgLVDWr
-	 rB93RIYigbmHM00Tcc7+MIqZNecIqzvWn3a9S+OSogscsYgliwO4FlS93P9JroxqDW
-	 8HSfcCS8oPD7yuGbt1Rc/I3ePl1RHW8UeFdGPB0rlzD9W5KcwIYnjv7BxRxp9kJpRX
-	 p77Ug2kgdHkBtLv3HDI+lZnr7vjB+D5/YaDewh7XDxeQx9o36vp27/N9t/qmz1tPbx
-	 q0abAX+dZweKYDatbSYei1P7rZCN2e/f0DQcgVwofq7bEGsx7C9bAPwT3zqwhPooeS
-	 3KG+U/knWoABg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Gdfir4VG2J5p; Thu, 10 Nov 2022 13:44:38 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1BA25403E0;
-	Thu, 10 Nov 2022 13:44:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1BA25403E0
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 800811BF393
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 13:44:33 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5735C60F23
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 13:44:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5735C60F23
+	s=default; t=1668089701;
+	bh=D/LCB9Gur+m1yynWhp0ZHDbkLrTmCBcJ3ib6k9k/Bpk=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=jwKSD0E4ALrMlD3R8Qq7Ag/YnVSfAqg4BdjnisKOrhXgnG9ROZvt+x8bqBe5LO3mx
+	 ppLFGisG0PwVKqONOixp2cXyt/O8cfSMQY3vwAB5oqyr63UXBr4nJjd3Rd9PJoaKSr
+	 9eOCH1l8OuxszLRYbU4Zh4b3ob//MDpZbjDo7NKqpwnENSXnS38sLIpKQXAdiTj+UH
+	 g8l+UyUuETL3Yi2zOpsJkvA+0KSbTnESTUgU7yxddNTYyL6nOcj9TIKfG48xV1HVi8
+	 4kqM8XZPyhLcia3fovFLDIiIWRm98jNx/cBquJlTOUgBmFdA6KucYfx/5kTqbX2mLJ
+	 nb9ierrJF6+tw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K_EJQlhKvy8k for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Nov 2022 13:44:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 39D3060F20
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 39D3060F20
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 13:44:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="397603867"
-X-IronPort-AV: E=Sophos;i="5.96,153,1665471600"; d="scan'208";a="397603867"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2022 05:44:25 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10526"; a="588178055"
-X-IronPort-AV: E=Sophos;i="5.96,153,1665471600"; d="scan'208";a="588178055"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2022 05:44:23 -0800
-Date: Thu, 10 Nov 2022 14:44:15 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <Y20ALyOpF2HbtuzU@localhost.localdomain>
-References: <20221110130353.3040-1-wojciech.drewek@intel.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uhlzyX2bzmcV; Thu, 10 Nov 2022 14:15:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 805CF60B21;
+	Thu, 10 Nov 2022 14:15:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 805CF60B21
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F2AA91BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id CBBC54160F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBBC54160F
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7zHXi_d6bxK4 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Nov 2022 14:14:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B47D415E0
+Received: from us-smtp-delivery-44.mimecast.com
+ (us-smtp-delivery-44.mimecast.com [205.139.111.44])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5B47D415E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Nov 2022 14:14:52 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-282-tYU5zWHKOVyRvehJvvCKmQ-1; Thu, 10 Nov 2022 09:14:48 -0500
+X-MC-Unique: tYU5zWHKOVyRvehJvvCKmQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 95FB5381A731;
+ Thu, 10 Nov 2022 14:14:47 +0000 (UTC)
+Received: from p1.redhat.com (unknown [10.39.193.54])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C4E54A9256;
+ Thu, 10 Nov 2022 14:14:46 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 10 Nov 2022 15:14:44 +0100
+Message-Id: <20221110141444.1308237-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221110130353.3040-1-wojciech.drewek@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668087872; x=1699623872;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=xN2fMduQuvuDcANpZLhE401+lgc97SUOjafOsx/p7m0=;
- b=gVIcaoS/RhrAvP861KtEfE7CiEwprFSbddAdZ0Vv0/V5jEWPWiMvny6G
- gOzkNWjwKcULleleTti8lNBbdEbOmE/aSlKuQiosj0hHIWe1B/Ql/7x1x
- uQKJv1IFvxcS6xHVwfy7qQV9+Zl6VO8HlpmRHmZWbRk9QDTg9XwQwJwGo
- yDIcw0awZ/WLfzlArf7byCUI6NQOvkYdVam9UoGNk8oTtyAOQMNHMhTAj
- j7ZxBL7KP/G8WoFGrzoNXNH5gtedb7YcFnz2XCPm2o3WKJGrSF2Bx0/8q
- QQFVqOjhi5Ark+E2rLCbSzzATkWJvWnCC9ur0hKomV8Mt69FFHB7vO4JM
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gVIcaoS/
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: virtchnl rss hena
- support
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: kpanic.de
+Subject: [Intel-wired-lan] [PATCH net] iavf: remove INITIAL_MAC_SET to allow
+ gARP to work properly
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,53 +83,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, patryk.piotrowski@intel.com, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Nov 10, 2022 at 02:03:53PM +0100, Wojciech Drewek wrote:
-> From: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
-> 
-> Add support for 2 virtchnl msgs:
-> VIRTCHNL_OP_SET_RSS_HENA
-> VIRTCHNL_OP_GET_RSS_HENA_CAPS
-> 
-> The first one allows VFs to clear all previously programmed
-> RSS configuration and customize it. The second one returns
-> the RSS HENA bits allowed by the hardware.
-> 
-> Introduce ice_err_to_virt_err which converts kernel
-> specific errors to virtchnl errors.
-> 
-> Signed-off-by: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  24 ++++
->  .../ethernet/intel/ice/ice_vf_lib_private.h   |   1 +
->  drivers/net/ethernet/intel/ice/ice_virtchnl.c | 112 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_virtchnl.h |   2 +
->  4 files changed, 139 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> index dfcf23cc7e55..2eaaa452f847 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> @@ -699,6 +699,30 @@ void ice_dis_vf_qs(struct ice_vf *vf)
->  	ice_set_vf_state_qs_dis(vf);
->  }
-> 
-[...]
+IAVF_FLAG_INITIAL_MAC_SET prevents waiting on iavf_is_mac_set_handled()
+the first time the MAC is set. This breaks gratuitous ARP because the
+MAC address has not been updated yet when the gARP packet is sent out.
 
-looks good;
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Current behaviour:
+$ echo 1 > /sys/class/net/ens4f0/device/sriov_numvfs
+iavf 0000:88:02.0: MAC address: ee:04:19:14:ec:ea
+$ ip addr add 192.168.1.1/24 dev ens4f0v0
+$ ip link set dev ens4f0v0 up
+$ echo 1 > /proc/sys/net/ipv4/conf/ens4f0v0/arp_notify
+$ ip link set ens4f0v0 addr 00:11:22:33:44:55
+07:23:41.676611 ee:04:19:14:ec:ea > ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: Request who-has 192.168.1.1 tell 192.168.1.1, length 28
 
-Thanks
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+With IAVF_FLAG_INITIAL_MAC_SET removed:
+$ echo 1 > /sys/class/net/ens4f0/device/sriov_numvfs
+iavf 0000:88:02.0: MAC address: 3e:8a:16:a2:37:6d
+$ ip addr add 192.168.1.1/24 dev ens4f0v0
+$ ip link set dev ens4f0v0 up
+$ echo 1 > /proc/sys/net/ipv4/conf/ens4f0v0/arp_notify
+$ ip link set ens4f0v0 addr 00:11:22:33:44:55
+07:28:01.836608 00:11:22:33:44:55 > ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 42: Request who-has 192.168.1.1 tell 192.168.1.1, length 28
+
+Fixes: 35a2443d0910 ("iavf: Add waiting for response from PF in set mac")
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h      | 1 -
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 8 --------
+ 2 files changed, 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 3f6187c16424..0d1bab4ac1b0 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -298,7 +298,6 @@ struct iavf_adapter {
+ #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
+ #define IAVF_FLAG_SETUP_NETDEV_FEATURES		BIT(18)
+ #define IAVF_FLAG_REINIT_MSIX_NEEDED		BIT(20)
+-#define IAVF_FLAG_INITIAL_MAC_SET		BIT(23)
+ /* duplicates for common code */
+ #define IAVF_FLAG_DCB_ENABLED			0
+ 	/* flags for admin queue service task */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 258bdf8906dd..5fc47ca1b17c 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -1087,12 +1087,6 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
+ 	if (ret)
+ 		return ret;
+ 
+-	/* If this is an initial set MAC during VF spawn do not wait */
+-	if (adapter->flags & IAVF_FLAG_INITIAL_MAC_SET) {
+-		adapter->flags &= ~IAVF_FLAG_INITIAL_MAC_SET;
+-		return 0;
+-	}
+-
+ 	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue,
+ 					       iavf_is_mac_set_handled(netdev, addr->sa_data),
+ 					       msecs_to_jiffies(2500));
+@@ -2605,8 +2599,6 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
+ 		ether_addr_copy(netdev->perm_addr, adapter->hw.mac.addr);
+ 	}
+ 
+-	adapter->flags |= IAVF_FLAG_INITIAL_MAC_SET;
+-
+ 	adapter->tx_desc_count = IAVF_DEFAULT_TXD;
+ 	adapter->rx_desc_count = IAVF_DEFAULT_RXD;
+ 	err = iavf_init_interrupt_scheme(adapter);
+-- 
+2.37.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
