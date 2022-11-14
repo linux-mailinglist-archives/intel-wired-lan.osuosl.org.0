@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C80536286B2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Nov 2022 18:10:05 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70B7A628714
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Nov 2022 18:29:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2E7694157B;
-	Mon, 14 Nov 2022 17:10:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E7694157B
+	by smtp4.osuosl.org (Postfix) with ESMTP id ECAA241685;
+	Mon, 14 Nov 2022 17:29:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ECAA241685
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668445804;
-	bh=S0IXBfshnwV7wrPY5eTLLXShejwB1JPzY1RK17HUDH8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=BlpJIZ/f0Fj+cssxzXlf5unKpc3bHVorsTARhvPSHlt+NHEhR6NsastuKXcqE58Qj
-	 1Y8n665LsMjgWkhkoNWEea+uQZyjEnCdZ333scgTFNk8PSOL36iN7gK/oOLJ38WUGl
-	 ay88bd4TDaAPYTXOSRZhS3q9CvPspwG7xDQOHgYRbVUhaB9vO0R/iDglyx1HlPhC60
-	 2drjjaizXm7wdo36I8gpoA9gR8oiD5yaSKBjoVIMUeaXuXhAiBGZ2lOcuYiVdCX50k
-	 v2uyr/IfLhIyhP4987jYQTGEGx5HBhkDXjkWOgD1DkIssH+Q3YzKB/kUysIGIRwPES
-	 w5y4MqedFoO/Q==
+	s=default; t=1668446987;
+	bh=sDPrazTD1CDcGpA1c6sRbcJBjpJCiOBmCk2utfMoLiQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=3vt4kTGRt5B0STLGmfkl2FVGL9gStmsRzkK4y9bFlHO5Ovj7ssM+VE7u88Uy3rf81
+	 CtIxmRziflbwUvabALXBs0OseT3Gsadi2qM4sk5gBcYLzr+cNezdeGTTziwv5Lf+na
+	 3YsvOufrWwHCxNEFx72ryfIdvDhjHHmpA2eedjbXcGS3GOR+GmkQanqTMQsUZ1ov8i
+	 WQIidsyzs89Rx1gFTgZLcT/fyEzchLwmX9IayQaxQ2M5JLT+Oq2VbOdu1p7B/XnFOm
+	 oAY9sjoe9G1Aq90eBlGrDIg93z6ByAqeHCl+rNKeufDYnKCeKGoUubJCFSRu/aPNt+
+	 EdVuT4hx7450A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2ytQ8FilO2IN; Mon, 14 Nov 2022 17:10:03 +0000 (UTC)
+	with ESMTP id 7fnFNNo1BtCU; Mon, 14 Nov 2022 17:29:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE32841673;
-	Mon, 14 Nov 2022 17:10:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE32841673
+	by smtp4.osuosl.org (Postfix) with ESMTP id A9145415E3;
+	Mon, 14 Nov 2022 17:29:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A9145415E3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 98AAD1BF31F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:09:57 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EFDBD1BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:29:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 72E0A812F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:09:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72E0A812F2
+ by smtp4.osuosl.org (Postfix) with ESMTP id C08AB415E3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:29:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C08AB415E3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zun42ZHzwivM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Nov 2022 17:09:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NOG_DU812beC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Nov 2022 17:29:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 363B9812D7
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 363B9812D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:09:56 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 7420BB8109E;
- Mon, 14 Nov 2022 17:09:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EA47C433C1;
- Mon, 14 Nov 2022 17:09:45 +0000 (UTC)
-Date: Mon, 14 Nov 2022 19:09:36 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>
-Message-ID: <Y3J2UEPHDKNL2n4O@unreal>
-References: <20221114125755.13659-1-michal.swiatkowski@linux.intel.com>
- <Y3JBaQ7+p5ncsjuW@unreal>
- <49e2792d-7580-e066-8d4e-183a9c826e68@intel.com>
- <CO1PR11MB5089C5B17D186C6FF17C5599D6059@CO1PR11MB5089.namprd11.prod.outlook.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7449A4155E
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7449A4155E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Nov 2022 17:29:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="398320874"
+X-IronPort-AV: E=Sophos;i="5.96,164,1665471600"; d="scan'208";a="398320874"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2022 09:29:35 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="727609629"
+X-IronPort-AV: E=Sophos;i="5.96,164,1665471600"; d="scan'208";a="727609629"
+Received: from dmert-dev.jf.intel.com ([10.166.241.14])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2022 09:29:35 -0800
+From: Dave Ertman <david.m.ertman@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 14 Nov 2022 09:30:04 -0800
+Message-Id: <20221114173004.658320-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CO1PR11MB5089C5B17D186C6FF17C5599D6059@CO1PR11MB5089.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1668445786;
- bh=jYbYmoprDMwjHZyve4ywpayxL3MS9T/r4BhXWYCqDWE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KbHc1p8mxGLg7cS256Odl4lab10WR8HXTL4mzgYRf4hlcCK3/MSmyFjKz0tUXJd20
- tEgg5ihseQrm2NyJ4Sb93RouPnNdGpQfNk+d1YpIPjlBPNycKSjJEcsjeF4Vfx4sDt
- mjsqHdgMg2x7CxLIvRp6xkVFHJibbTqautnrMBoNvgC+1P4wpl62UzKBQ5UhTIX294
- EmzEkwREYogB54Pl5wgFBeviddU1xEaRxczbK/GTxCnFGGUMUML27dh96YMq0dv4B+
- UEWPz8jw9lHVZGJ56Jdj0TdJLQ9IMKV4qZad4HPwAPI4uAqAiRDS1wLQuU3aCYsQdt
- +YJ63G6NpKxfw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=KbHc1p8m
-Subject: Re: [Intel-wired-lan] [PATCH net-next 00/13] resource management
- using devlink reload
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1668446976; x=1699982976;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=TAhAs//9x/gQJaQzhQ+fqoIP1GirMJieXFEXB7HqRGk=;
+ b=lDvAo8rWHTN6bXiPKhCOMt0jQF7tCiwwF8WdhMdGLAPNs7YjCkp/R3FM
+ C3BQeKEqPxNCGiiumh7tmCIL1xYiqXWXGfOV9jlb09zpEw9WHf5InoG7S
+ wvMe19eUCLVNOO5mjy6j4qxF1mqk2JMjtDnLRzjMhmwrSpyUBEyiwk1FN
+ yMtq6mtTMbtAG0AATxR4Kpx5jMYajSJaBEi0jjf2yNr4wiamAPQAHVYwi
+ NLjZru8wZWbk9EF4DMGT0NT+IYsQfiMFFcoda/dVzKz7ZMt17i5l2EMfE
+ 3Ou17JTX/6+W7r4gUUZLhlYyT46DMkK7RlGhFbhEC71RCMFMaRYHh3JK3
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=lDvAo8rW
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Correctly handle aux device
+ when num channels change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,84 +92,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "jiri@nvidia.com" <jiri@nvidia.com>, "Kaliszczuk,
- Leszek" <leszek.kaliszczuk@intel.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "edumazet@google.com" <edumazet@google.com>, "Ismail,
- Mustafa" <mustafa.ismail@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
- "Saleem, Shiraz" <shiraz.saleem@intel.com>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 14, 2022 at 04:58:57PM +0000, Keller, Jacob E wrote:
-> 
-> 
-> > -----Original Message-----
-> > From: Samudrala, Sridhar <sridhar.samudrala@intel.com>
-> > Sent: Monday, November 14, 2022 7:31 AM
-> > To: Leon Romanovsky <leon@kernel.org>; Michal Swiatkowski
-> > <michal.swiatkowski@linux.intel.com>
-> > Cc: netdev@vger.kernel.org; davem@davemloft.net; kuba@kernel.org;
-> > pabeni@redhat.com; edumazet@google.com; intel-wired-lan@lists.osuosl.org;
-> > jiri@nvidia.com; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Lobakin,
-> > Alexandr <alexandr.lobakin@intel.com>; Drewek, Wojciech
-> > <wojciech.drewek@intel.com>; Czapnik, Lukasz <lukasz.czapnik@intel.com>;
-> > Saleem, Shiraz <shiraz.saleem@intel.com>; Brandeburg, Jesse
-> > <jesse.brandeburg@intel.com>; Ismail, Mustafa <mustafa.ismail@intel.com>;
-> > Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Raczynski, Piotr
-> > <piotr.raczynski@intel.com>; Keller, Jacob E <jacob.e.keller@intel.com>; Ertman,
-> > David M <david.m.ertman@intel.com>; Kaliszczuk, Leszek
-> > <leszek.kaliszczuk@intel.com>
-> > Subject: Re: [PATCH net-next 00/13] resource management using devlink reload
-> > 
-> > On 11/14/2022 7:23 AM, Leon Romanovsky wrote:
-> > > On Mon, Nov 14, 2022 at 01:57:42PM +0100, Michal Swiatkowski wrote:
-> > >> Currently the default value for number of PF vectors is number of CPUs.
-> > >> Because of that there are cases when all vectors are used for PF
-> > >> and user can't create more VFs. It is hard to set default number of
-> > >> CPUs right for all different use cases. Instead allow user to choose
-> > >> how many vectors should be used for various features. After implementing
-> > >> subdevices this mechanism will be also used to set number of vectors
-> > >> for subfunctions.
-> > >>
-> > >> The idea is to set vectors for eth or VFs using devlink resource API.
-> > >> New value of vectors will be used after devlink reinit. Example
-> > >> commands:
-> > >> $ sudo devlink resource set pci/0000:31:00.0 path msix/msix_eth size 16
-> > >> $ sudo devlink dev reload pci/0000:31:00.0
-> > >> After reload driver will work with 16 vectors used for eth instead of
-> > >> num_cpus.
-> > > By saying "vectors", are you referring to MSI-X vectors?
-> > > If yes, you have specific interface for that.
-> > > https://lore.kernel.org/linux-pci/20210314124256.70253-1-leon@kernel.org/
-> > 
-> > This patch series is exposing a resources API to split the device level MSI-X vectors
-> > across the different functions supported by the device (PF, RDMA, SR-IOV VFs
-> > and
-> > in future subfunctions). Today this is all hidden in a policy implemented within
-> > the PF driver.
-> > 
-> > The patch you are referring to seems to be providing an interface to change the
-> > msix count for a particular VF. This patch is providing a interface to set the total
-> > msix count for all the possible VFs from the available device level pool of
-> > msix-vectors.
-> > 
-> 
-> It looks like we should implement both: resources to configure the "pool" of available vectors for each VF, and the sysfs VF Interface to allow configuring individual VFs.
+When the number of channels/queues changes on an interface, it is necessary
+to change how those resources are distributed to the auxiliary device for
+maintaining RDMA functionality.  To do this, the best way is to unplug, and
+then re-plug the auxiliary device.  This will cause all current resource
+allocation to be released, and then re-requested under the new state.
 
-Yes, to be aligned with PCI spec and see coherent lspci output for VFs.
+Since the set_channel command from ethtool comes in while holding the RTNL
+lock, it is necessary to offset the plugging and unplugging of auxiliary
+device to another context.  For this purpose, set the flags for UNPLUG and
+PLUG in the PF state, then respond to them in the service task.
 
-Thanks
+Also, since the auxiliary device will be unplugged/plugged at the end of
+the flow, it is better to not send the event for TCs changing in the
+middle of the flow.  This will prevent a timing issue between the events
+and the probe/release calls conflicting.
 
-> 
-> Thanks,
-> Jake
+Fixes: 348048e724a0 ("ice: Implement iidc operations")
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h         | 2 ++
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 6 ++++++
+ drivers/net/ethernet/intel/ice/ice_idc.c     | 3 +++
+ drivers/net/ethernet/intel/ice/ice_main.c    | 3 +++
+ 4 files changed, 14 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 001500afc4a6..092e572768fe 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -281,6 +281,7 @@ enum ice_pf_state {
+ 	ICE_FLTR_OVERFLOW_PROMISC,
+ 	ICE_VF_DIS,
+ 	ICE_CFG_BUSY,
++	ICE_SET_CHANNELS,
+ 	ICE_SERVICE_SCHED,
+ 	ICE_SERVICE_DIS,
+ 	ICE_FD_FLUSH_REQ,
+@@ -485,6 +486,7 @@ enum ice_pf_flags {
+ 	ICE_FLAG_VF_VLAN_PRUNING,
+ 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
+ 	ICE_FLAG_PLUG_AUX_DEV,
++	ICE_FLAG_UNPLUG_AUX_DEV,
+ 	ICE_FLAG_MTU_CHANGED,
+ 	ICE_FLAG_GNSS,			/* GNSS successfully initialized */
+ 	ICE_PF_FLAGS_NBITS		/* must be last */
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index b7be84bbe72d..37e174a19860 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3536,6 +3536,8 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 		return -EINVAL;
+ 	}
+ 
++	set_bit(ICE_SET_CHANNELS, pf->state);
++
+ 	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
+ 
+ 	if (!netif_is_rxfh_configured(dev))
+@@ -3543,6 +3545,10 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 
+ 	/* Update rss_size due to change in Rx queues */
+ 	vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
++	clear_bit(ICE_SET_CHANNELS, pf->state);
++
++	set_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags);
++	set_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
+index 895c32bcc8b5..9bf6fa5ed4c8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_idc.c
++++ b/drivers/net/ethernet/intel/ice/ice_idc.c
+@@ -37,6 +37,9 @@ void ice_send_event_to_aux(struct ice_pf *pf, struct iidc_event *event)
+ 	if (WARN_ON_ONCE(!in_task()))
+ 		return;
+ 
++	if (test_bit(ICE_SET_CHANNELS, pf->state))
++		return;
++
+ 	mutex_lock(&pf->adev_mutex);
+ 	if (!pf->adev)
+ 		goto finish;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 0f6718719453..b066148b210c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2300,6 +2300,9 @@ static void ice_service_task(struct work_struct *work)
+ 		}
+ 	}
+ 
++	if (test_and_clear_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags))
++		ice_unplug_aux_dev(pf);
++
+ 	if (test_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags)) {
+ 		/* Plug aux device per request */
+ 		ice_plug_aux_dev(pf);
+-- 
+2.37.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
