@@ -1,88 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CD2F62990A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 13:39:37 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2A8D62993E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 13:52:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BBAB160C0B;
-	Tue, 15 Nov 2022 12:39:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BBAB160C0B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 483CB81ABB;
+	Tue, 15 Nov 2022 12:52:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 483CB81ABB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668515975;
-	bh=SJMCM6shah9/Db4MzZPpq74dqPaGZRCnbu1C8hRSgjk=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=wbqGAvY34VE921mll/RhlVNs00N7/VedD2CwvvI/b6/YKE/B5WBTjctxaAUq3EkBi
-	 ShIKmT/7kZq5/1oafPG+7GiI8EW6+XNbzLmuh709Y/Zc05P6TEh+Zvl1negQxCfz8g
-	 +UQqKyOKTADWSbRvyPvCseV7+c6JephkEY8lr32wDabwLQg2xt7cJeO8tJM6uoz56z
-	 QKCOvb9W59RNEbw8uHAl+Cj6h2R3XJw+mkmTscQqcfpRn5hVejYmYkniSbX+7hbKdf
-	 82WyUBI6T7s82+F/CdROWAg/wfOMO8AcImbqDndj+FELrg+OZhxRxifmaBmnzkcTCv
-	 EIxEqDMEIJHcQ==
+	s=default; t=1668516761;
+	bh=tN4+IUdlezx9sP4od7q9bHT/whH1eBL7nNQVDy1VOPs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=PX7LYELSfseSqmPdOhU1pH8f/HJmkpA5XZ6rzciDHdP3zm80kQklcds/mOBhMiA2N
+	 uYUlIapYDpFuociw6cKjZf9T1k3walxN1R2RNnm0fM2RJbg3FJ0PtaHuQtKJkXSc02
+	 kQFuUgyAWuOgSM1GqULYc4tRUi71W+9iVchUhM/kp1NETSGrXEnPowojtfpazVBzh2
+	 o5Np0p9IqG6IPUFkbwLsT9XYAA5CagCaO1Nu6Zcv7CRtES1rzZIkRzTxUq+XLq2hK3
+	 gY1isxjyDE+kqtDmDcFzByK327970sw9CRWoZJ+gva81iDdbdKPjrX72DAk0FtonlQ
+	 SICYphbCp3D+w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lyFdCsSkOimS; Tue, 15 Nov 2022 12:39:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wM5i8A9b3_Jt; Tue, 15 Nov 2022 12:52:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A9CE060C14;
-	Tue, 15 Nov 2022 12:39:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A9CE060C14
+	by smtp1.osuosl.org (Postfix) with ESMTP id 378F8813DF;
+	Tue, 15 Nov 2022 12:52:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 378F8813DF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B75BA1BF348
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:39:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E3FC71BF348
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:52:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8858C60DDF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:39:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8858C60DDF
+ by smtp1.osuosl.org (Postfix) with ESMTP id BE5BE813DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:52:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE5BE813DF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pgBirj87wO20 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Nov 2022 12:39:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZvT4GceDWkRD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Nov 2022 12:52:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C49960C0B
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7C49960C0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:39:27 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="299765709"
-X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="299765709"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Nov 2022 04:39:07 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EF8A5812BB
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EF8A5812BB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:52:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="312248954"
+X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="312248954"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Nov 2022 04:52:33 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="638929928"
-X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="638929928"
-Received: from lkp-server01.sh.intel.com (HELO ebd99836cbe0) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 15 Nov 2022 04:39:06 -0800
-Received: from kbuild by ebd99836cbe0 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ouvDV-0001MN-2L;
- Tue, 15 Nov 2022 12:39:05 +0000
-Date: Tue, 15 Nov 2022 20:38:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63738837.2v54SLGkS4xNGKl6%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="589778425"
+X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="589778425"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by orsmga003.jf.intel.com with ESMTP; 15 Nov 2022 04:52:31 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 15 Nov 2022 13:38:56 +0100
+Message-Id: <20221115123856.11737-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668515967; x=1700051967;
- h=date:from:to:subject:message-id:mime-version:
+ t=1668516753; x=1700052753;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=MJW7Cg9hVsHoEd41phc3iGUFgMuEH7sLTmZQRiHm7h0=;
- b=L97Jds5qqMie62dYQNp0HDuapbzeWtFH27u0ezwfgsvHIkYtGGcjTgBH
- ltxLa5TAzzla5lsBE6LK7iCk6vnPw4FbSsMycjGqdKQIS8g4NKO0R9glc
- pXYYOU6T3hXB5qSKGJO5w3VbhwI6AXoxq1jtyx7XVzKrlpBd+W2Dv/O2k
- nWvOjhDi6J/7UVQe9P7DLnZbYjb/vPga5071u0tZAKD3tXMp972XgJZkN
- TdT/GfqkhVVP+/k+dtQq7/+HssFcZA1bgf1PlWY2YtlCU0L93Vp1wRwwb
- YN6+iYp6OD5PkaPQ22Jp4tBsAQOa5kZVxCn9sjCgYgYeUkMEBdZeOKZa3
+ bh=VjD2YLBa57s7dF/YnBcdNph+aP2ye8yErSmf3gL768s=;
+ b=IXS28zR7BOzcao5MprtL7MRy9dhpOLfb+EPqocIwmLDGfwfwamJly5w/
+ anm+VwYBqnaIz+aX/J0lNQ6I0DG/GnuFiTbSTtZkBhlF9KhKT0qjRTLoU
+ Qcw2yba4+7TPpgfFeNdpvVY8ta4po+miPUVyt22/vX5lGQh2KdLB6FA8B
+ AVX1uryv7F/8/q10rjz51zx+G/bTf16FUQ37JeRAxyiaEUFuFxG/ksPyL
+ 3OFzdpsXsbI/cRskIDj0Y0igaWFK066Z1sjuY9+9WzZ4CNCmvdJ4vpVQ1
+ Z6kwfc6F+X3sYTjNvhjUg4t4BlsYbjLDmzpUZXUeXQLalT5oP+I/YwGij
  Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=L97Jds5q
-Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
- de69f75a7714fb3656ce814fa42583a1916cb98e
+ header.a=rsa-sha256 header.s=Intel header.b=IXS28zR7
+Subject: [Intel-wired-lan] [PATCH rdma v2] RDMA/irdma: change name of
+ interrupts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,133 +92,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: mustafa.ismail@intel.com, shiraz.saleem@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 40GbE
-branch HEAD: de69f75a7714fb3656ce814fa42583a1916cb98e  i40e: fix xdp_redirect logs error message when testing with MTU=1500
+Add more information in interrupt names.
 
-elapsed time: 720m
+Before this patch it was:
+irdma
+CEQ
+CEQ
+...
 
-configs tested: 104
-configs skipped: 3
+Now:
+irdma-0000:18:00.0-AEQ
+irdma-0000:18:00.0-CEQ-0
+irdma-0000:18:00.0-CEQ-1
+...
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Suggested-by: Piotr Raczynski <piotr.raczynski@intel.com>
+---
+ drivers/infiniband/hw/irdma/defs.h |  2 ++
+ drivers/infiniband/hw/irdma/hw.c   | 14 +++++++++++---
+ drivers/infiniband/hw/irdma/main.h |  1 +
+ 3 files changed, 14 insertions(+), 3 deletions(-)
 
-gcc tested configs:
-arc                                 defconfig
-alpha                               defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-s390                             allmodconfig
-s390                                defconfig
-s390                             allyesconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64                            allnoconfig
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-sh                               allmodconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-m68k                             allmodconfig
-alpha                            allyesconfig
-arc                              allyesconfig
-m68k                             allyesconfig
-x86_64                           rhel-8.3-kvm
-i386                             allyesconfig
-i386                                defconfig
-ia64                             allmodconfig
-parisc                generic-32bit_defconfig
-sh                     magicpanelr2_defconfig
-mips                           gcw0_defconfig
-xtensa                         virt_defconfig
-sh                            shmin_defconfig
-xtensa                              defconfig
-mips                        vocore2_defconfig
-i386                 randconfig-a002-20221114
-i386                 randconfig-a004-20221114
-i386                 randconfig-a003-20221114
-i386                 randconfig-a005-20221114
-i386                 randconfig-a006-20221114
-i386                 randconfig-a001-20221114
-arm                           sunxi_defconfig
-arm                               allnoconfig
-loongarch                 loongson3_defconfig
-arc                         haps_hs_defconfig
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-mips                  decstation_64_defconfig
-powerpc                    sam440ep_defconfig
-sh                            hp6xx_defconfig
-sparc64                          alldefconfig
-powerpc                     stx_gp3_defconfig
-sh                           sh2007_defconfig
-loongarch                        allmodconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-sh                               j2_defconfig
-arm                           stm32_defconfig
-parisc                           alldefconfig
-arm                         assabet_defconfig
-arc                               allnoconfig
-x86_64               randconfig-a003-20221114
-x86_64               randconfig-a005-20221114
-x86_64               randconfig-a004-20221114
-x86_64               randconfig-a002-20221114
-x86_64               randconfig-a001-20221114
-x86_64               randconfig-a006-20221114
-i386                 randconfig-c001-20221114
-i386                          debian-10.3-kvm
-i386                        debian-10.3-kunit
-i386                         debian-10.3-func
-m68k                       m5249evb_defconfig
-sh                            titan_defconfig
-sparc                       sparc64_defconfig
-riscv                            allmodconfig
-loongarch                           defconfig
-loongarch                         allnoconfig
-x86_64                        randconfig-c001
-i386                          randconfig-c001
-arm                  randconfig-c002-20221115
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-
-clang tested configs:
-s390                 randconfig-r044-20221114
-riscv                randconfig-r042-20221114
-hexagon              randconfig-r041-20221114
-hexagon              randconfig-r045-20221114
-x86_64               randconfig-a012-20221114
-x86_64               randconfig-a013-20221114
-x86_64               randconfig-a016-20221114
-x86_64               randconfig-a014-20221114
-x86_64               randconfig-a015-20221114
-x86_64               randconfig-a011-20221114
-arm                        multi_v5_defconfig
-arm                       aspeed_g4_defconfig
-powerpc                     kmeter1_defconfig
-i386                 randconfig-a015-20221114
-i386                 randconfig-a013-20221114
-i386                 randconfig-a011-20221114
-i386                 randconfig-a016-20221114
-i386                 randconfig-a012-20221114
-i386                 randconfig-a014-20221114
-hexagon              randconfig-r041-20221115
-hexagon              randconfig-r045-20221115
-x86_64               randconfig-k001-20221114
-arm                        magician_defconfig
-
+diff --git a/drivers/infiniband/hw/irdma/defs.h b/drivers/infiniband/hw/irdma/defs.h
+index c1906cab5c8a..2f15d510e39d 100644
+--- a/drivers/infiniband/hw/irdma/defs.h
++++ b/drivers/infiniband/hw/irdma/defs.h
+@@ -20,6 +20,8 @@
+ #define IRDMA_IRD_HW_SIZE_128	3
+ #define IRDMA_IRD_HW_SIZE_256	4
+ 
++#define IRDMA_IRQ_NAME_STR_LEN (64)
++
+ enum irdma_protocol_used {
+ 	IRDMA_ANY_PROTOCOL = 0,
+ 	IRDMA_IWARP_PROTOCOL_ONLY = 1,
+diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
+index ab246447520b..d2a215ec531c 100644
+--- a/drivers/infiniband/hw/irdma/hw.c
++++ b/drivers/infiniband/hw/irdma/hw.c
+@@ -1087,14 +1087,20 @@ static int irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
+ 	int status;
+ 
+ 	if (rf->msix_shared && !ceq_id) {
++		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
++			 "irdma-%s-AEQCEQ-%d",
++			 dev_name(&rf->pcidev->dev), ceq_id);
+ 		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
+ 		status = request_irq(msix_vec->irq, irdma_irq_handler, 0,
+-				     "AEQCEQ", rf);
++				     msix_vec->name, rf);
+ 	} else {
++		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
++			 "irdma-%s-CEQ-%d",
++			 dev_name(&rf->pcidev->dev), ceq_id);
+ 		tasklet_setup(&iwceq->dpc_tasklet, irdma_ceq_dpc);
+ 
+ 		status = request_irq(msix_vec->irq, irdma_ceq_handler, 0,
+-				     "CEQ", iwceq);
++				     msix_vec->name, iwceq);
+ 	}
+ 	cpumask_clear(&msix_vec->mask);
+ 	cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
+@@ -1123,9 +1129,11 @@ static int irdma_cfg_aeq_vector(struct irdma_pci_f *rf)
+ 	u32 ret = 0;
+ 
+ 	if (!rf->msix_shared) {
++		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
++			 "irdma-%s-AEQ", dev_name(&rf->pcidev->dev));
+ 		tasklet_setup(&rf->dpc_tasklet, irdma_dpc);
+ 		ret = request_irq(msix_vec->irq, irdma_irq_handler, 0,
+-				  "irdma", rf);
++				  msix_vec->name, rf);
+ 	}
+ 	if (ret) {
+ 		ibdev_dbg(&rf->iwdev->ibdev, "ERR: aeq irq config fail\n");
+diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
+index 65e966ad3453..2872c7df6e88 100644
+--- a/drivers/infiniband/hw/irdma/main.h
++++ b/drivers/infiniband/hw/irdma/main.h
+@@ -212,6 +212,7 @@ struct irdma_msix_vector {
+ 	u32 cpu_affinity;
+ 	u32 ceq_id;
+ 	cpumask_t mask;
++	char name[IRDMA_IRQ_NAME_STR_LEN];
+ };
+ 
+ struct irdma_mc_table_info {
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.36.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
