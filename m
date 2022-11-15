@@ -1,86 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C397562945C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 10:32:29 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B8986294FC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 10:57:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A8E6A40182;
-	Tue, 15 Nov 2022 09:32:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8E6A40182
+	by smtp4.osuosl.org (Postfix) with ESMTP id CBA0640984;
+	Tue, 15 Nov 2022 09:57:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBA0640984
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668504747;
-	bh=kUvfesloYg62jpKVzyTWwaYp2HV8tKG3hdG5498+itk=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1668506226;
+	bh=4qu9V+h+7MwAIhtLDa7MDBfSshBuL16oN0D9L/2WoTQ=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vY/DZu/RR4ag/vT8Gg7x/T4hoC71HEgkMZleeZzda9v+bDFkPLE0nz+5u1j/IBxpN
-	 XxAjuCKgoCfU4lMZ3VpPQ9qsTXSqOjf+JMzUYrNio68+oiVzkSSOTRhLG0OW96PYv3
-	 Ggw/NKkpnxk+HfmnJAPY1vhSYwSQkUqlL27l2iDScGmijM7+wJYIvJLcocXCc6S0CR
-	 BZX28x6Q1kY8P5/y/8zkra/Ii7GyXgrE1WJUEJ69npSAujGX38LkyBawDVSc/MiEE/
-	 tzbjvagNwynrDAAHTbkbPwhhLRZzM64WcrRnVjtOIImBfp+WF5QzSp5O/9f3+RyFi5
-	 CGmkaDNX5zC8g==
+	b=RhdU0Oqodkaez4gROeh8PS6DFIXYB96S1Ls8SQRIqqXjPICTpgwvsM+Vi988UCV/b
+	 AOcGjD+OC7X4k+mUYjESxAWm9lKSgE/wUpeD+OiHuQfi8NaJGPFRucgvQSC4yMtGHX
+	 xKIAS6VhrK1dXGao7SjEUFZIrQ+UopKgfAPh1H+bs6vtNdkBtif+Mohr4NYlM9th8z
+	 2swq/O++95nji8VdVcnmzCXRLGTmFhez59NVn4uGj8OEmTa7OeuWAyKlXgzJFCf/V2
+	 Fmj8LCUJMyzXmnf+AzJzk0lw7yucjXyKX05o1tQPyK7UDwNVIPit5rtMtQi/V0ACjl
+	 m5g2o2b0uqyWg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VLkIDela6ccU; Tue, 15 Nov 2022 09:32:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aHmJqMvdJ1x8; Tue, 15 Nov 2022 09:57:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 78688400AF;
-	Tue, 15 Nov 2022 09:32:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78688400AF
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7571040990;
+	Tue, 15 Nov 2022 09:57:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7571040990
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4BDE01BF847
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:32:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B9FCD1BF2A0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:57:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 337A7401B1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:32:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 337A7401B1
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9422E813BC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:57:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9422E813BC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QH7JMW9YqbpD for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Nov 2022 09:32:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B391400AF
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0B391400AF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:32:20 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D1A246159E;
- Tue, 15 Nov 2022 09:32:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7191EC433D6;
- Tue, 15 Nov 2022 09:32:18 +0000 (UTC)
-Date: Tue, 15 Nov 2022 11:32:14 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <Y3NcnnNtmL+SSLU+@unreal>
-References: <20221114125755.13659-1-michal.swiatkowski@linux.intel.com>
- <Y3JBaQ7+p5ncsjuW@unreal>
- <49e2792d-7580-e066-8d4e-183a9c826e68@intel.com>
- <Y3J16ueuhwYeDaww@unreal> <Y3M79CuAQNLkFV0S@localhost.localdomain>
- <Y3NJnhxetoSIvqYV@unreal> <Y3NWMVF2LV/0lqJX@localhost.localdomain>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FL7vZhRph1Ju for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Nov 2022 09:56:59 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2756D812D6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2756D812D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 09:56:58 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 019DC61EA1930;
+ Tue, 15 Nov 2022 10:56:56 +0100 (CET)
+Message-ID: <da5ff524-d93a-2aeb-cfe3-56295785e14d@molgen.mpg.de>
+Date: Tue, 15 Nov 2022 10:56:55 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Y3NWMVF2LV/0lqJX@localhost.localdomain>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1668504739;
- bh=wPyDIlafVi9vwn2PVi5AiLba67I8BO9eLvWZrnYixeA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Bc60fjHO2SboRDsO85q+8M7zLw9VYFXIlIZpVJtINa/lKO37dUEMMgxYX0RaEjS8K
- eJKoecQRnvNJWmg7qzvC7A/MuhAyC1+20pN/V4EkHLjaG3l1JPvTDpKiQvXlskekux
- XAdw+bO8H8PiamM/aPT9fTr/j9sw4Kn0ZqB7CljIS/J9QvGE+NHvV+4V4EM9LYgGik
- 9GCZLXe8QHfwSWRUQYb/+3DyQ86zoyFd8s9+dW99zedlS46BbyT+lBPvAzxRlOnT/G
- EZzj7GM2ugb0GZ5Z18LJT9n0a3URunZQMyzO0p6YStyuX9ruk4dXq7TjE9WNeF7qSX
- dsboRdnVKznMw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Bc60fjHO
-Subject: Re: [Intel-wired-lan] [PATCH net-next 00/13] resource management
- using devlink reload
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+To: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ Kamil Maziarz <kamil.maziarz@intel.com>
+References: <20221115084925.2489227-1-kamil.maziarz@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20221115084925.2489227-1-kamil.maziarz@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net v3] i40e: Disallow ip4 and ip6
+ l4_4_bytes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,119 +78,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@nvidia.com, leszek.kaliszczuk@intel.com, przemyslaw.kitszel@intel.com,
- edumazet@google.com, mustafa.ismail@intel.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
- pabeni@redhat.com, shiraz.saleem@intel.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Nov 15, 2022 at 10:04:49AM +0100, Michal Swiatkowski wrote:
-> On Tue, Nov 15, 2022 at 10:11:10AM +0200, Leon Romanovsky wrote:
-> > On Tue, Nov 15, 2022 at 08:12:52AM +0100, Michal Swiatkowski wrote:
-> > > On Mon, Nov 14, 2022 at 07:07:54PM +0200, Leon Romanovsky wrote:
-> > > > On Mon, Nov 14, 2022 at 09:31:11AM -0600, Samudrala, Sridhar wrote:
-> > > > > On 11/14/2022 7:23 AM, Leon Romanovsky wrote:
-> > > > > > On Mon, Nov 14, 2022 at 01:57:42PM +0100, Michal Swiatkowski wrote:
-> > > > > > > Currently the default value for number of PF vectors is number of CPUs.
-> > > > > > > Because of that there are cases when all vectors are used for PF
-> > > > > > > and user can't create more VFs. It is hard to set default number of
-> > > > > > > CPUs right for all different use cases. Instead allow user to choose
-> > > > > > > how many vectors should be used for various features. After implementing
-> > > > > > > subdevices this mechanism will be also used to set number of vectors
-> > > > > > > for subfunctions.
-> > > > > > > 
-> > > > > > > The idea is to set vectors for eth or VFs using devlink resource API.
-> > > > > > > New value of vectors will be used after devlink reinit. Example
-> > > > > > > commands:
-> > > > > > > $ sudo devlink resource set pci/0000:31:00.0 path msix/msix_eth size 16
-> > > > > > > $ sudo devlink dev reload pci/0000:31:00.0
-> > > > > > > After reload driver will work with 16 vectors used for eth instead of
-> > > > > > > num_cpus.
-> > > > > > By saying "vectors", are you referring to MSI-X vectors?
-> > > > > > If yes, you have specific interface for that.
-> > > > > > https://lore.kernel.org/linux-pci/20210314124256.70253-1-leon@kernel.org/
-> > > > > 
-> > > > > This patch series is exposing a resources API to split the device level MSI-X vectors
-> > > > > across the different functions supported by the device (PF, RDMA, SR-IOV VFs and
-> > > > > in future subfunctions). Today this is all hidden in a policy implemented within
-> > > > > the PF driver.
-> > > > 
-> > > > Maybe we are talking about different VFs, but if you refer to PCI VFs,
-> > > > the amount of MSI-X comes from PCI config space for that specific VF.
-> > > > 
-> > > > You shouldn't set any value through netdev as it will cause to
-> > > > difference in output between lspci (which doesn't require any driver)
-> > > > and your newly set number.
-> > > 
-> > > If I understand correctly, lspci shows the MSI-X number for individual
-> > > VF. Value set via devlink is the total number of MSI-X that can be used
-> > > when creating VFs. 
-> > 
-> > Yes and no, lspci shows how much MSI-X vectors exist from HW point of
-> > view. Driver can use less than that. It is exactly as your proposed
-> > devlink interface.
-> > 
-> > 
-> 
-> Ok, I have to take a closer look at it. So, are You saing that we should
-> drop this devlink solution and use sysfs interface fo VFs or are You
-> fine with having both? What with MSI-X allocation for subfunction?
-
-You should drop for VFs and PFs and keep it for SFs only.
-
-> 
-> > > As Jake said I will fix the code to track both values. Thanks for pointing the patch.
-> > > 
-> > > > 
-> > > > Also in RDMA case, it is not clear what will you achieve by this
-> > > > setting too.
-> > > >
-> > > 
-> > > We have limited number of MSI-X (1024) in the device. Because of that
-> > > the amount of MSI-X for each feature is set to the best values. Half for
-> > > ethernet, half for RDMA. This patchset allow user to change this values.
-> > > If he wants more MSI-X for ethernet, he can decrease MSI-X for RDMA.
-> > 
-> > RDMA devices doesn't have PCI logic and everything is controlled through
-> > you main core module. It means that when you create RDMA auxiliary device,
-> > it will be connected to netdev (RoCE and iWARP) and that netdev should
-> > deal with vectors. So I still don't understand what does it mean "half
-> > for RDMA".
-> >
-> 
-> Yes, it is controlled by module, but during probe, MSI-X vectors for RDMA
-> are reserved and can't be used by ethernet. For example I have
-> 64 CPUs, when loading I get 64 vectors from HW for ethernet and 64 for
-> RDMA. The vectors for RDMA will be consumed by irdma driver, so I won't
-> be able to use it in ethernet and vice versa.
-> 
-> By saing it can't be used I mean that irdma driver received the MSI-X
-> vectors number and it is using them (connected them with RDMA interrupts).
-> 
-> Devlink resource is a way to change the number of MSI-X vectors that
-> will be reserved for RDMA. You wrote that netdev should deal with
-> vectors, but how netdev will know how many vectors should go to RDMA aux
-> device? Does there an interface for setting the vectors amount for RDMA
-> device?
-
-When RDMA core adds device, it calls to irdma_init_rdma_device() and
-num_comp_vectors is actually the number of MSI-X vectors which you want
-to give to that device.
-
-I'm trying to say that probably you shouldn't reserve specific vectors
-for both ethernet and RDMA and simply share same vectors. RDMA applications
-that care about performance set comp_vector through user space verbs anyway.
-
-Thanks
-
-> 
-> Thanks
-> 
-> > Thanks
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+W0NjOiArSmFjb2JdCgpEZWFyIFByemVteXNsYXcsIGRlYXIgS2FtaWwsCgoKQW0gMTUuMTEuMjIg
+dW0gMDk6NDkgc2NocmllYiBLYW1pbCBNYXppYXJ6Ogo+IEZyb206IFByemVteXNsYXcgUGF0eW5v
+d3NraSA8cHJ6ZW15c2xhd3gucGF0eW5vd3NraUBpbnRlbC5jb20+Cj4gCj4gUmV0dXJuIC1FT1BO
+T1RTVVBQLCB3aGVuIHVzZXIgcmVxdWVzdHMgbDRfNF9ieXRlcyBmb3IgcmF3IElQNCBvcgo+IElQ
+NiBmbG93IGRpcmVjdG9yIGZpbHRlcnMuIEZsb3cgZGlyZWN0b3IgZG9lcyBub3Qgc3VwcG9ydCBm
+aWx0ZXJpbmcKPiBvbiBsNCBieXRlcyBmb3IgUENUWVBFcyB1c2VkIGJ5IElQNCBhbmQgSVA2IGZp
+bHRlcnMuCj4gV2l0aG91dCB0aGlzIHBhdGNoLCB1c2VyIGNvdWxkIGNyZWF0ZSBmaWx0ZXJzIHdp
+dGggbDRfNF9ieXRlcyBmaWVsZHMsCj4gd2hpY2ggZGlkIG5vdCBkbyBhbnkgZmlsdGVyaW5nIG9u
+IEw0LCBidXQgb25seSBvbiBMMyBmaWVsZHMuCj4gCj4gRml4ZXM6IDM2Nzc3ZDlmYTI0YyAoImk0
+MGU6IGNoZWNrIGN1cnJlbnQgY29uZmlndXJlZCBpbnB1dCBzZXQgd2hlbiBhZGRpbmcgbnR1cGxl
+IGZpbHRlcnMiKQoKQXJlIHlvdSBzdXJlIHRoYXQgaXMgdGhlIGNvcnJlY3QgY29tbWl0LiBJdCBv
+bmx5IHNlZW1zIHRvIGhhdmUgCnJlZmFjdG9yZWQgc3R1ZmYsIOKApgoKPiBTaWduZWQtb2ZmLWJ5
+OiBQcnplbXlzbGF3IFBhdHlub3dza2kgPHByemVteXNsYXd4LnBhdHlub3dza2lAaW50ZWwuY29t
+Pgo+IFNpZ25lZC1vZmYtYnk6IEthbWlsIE1hemlhcnogIDxrYW1pbC5tYXppYXJ6QGludGVsLmNv
+bT4KPiAtLS0KPiAgIHYzOiByZW1vdmVkIGZvb3RlciBhbmQgYWRkZWQgRml4ZXMgdGFnCj4gLS0t
+Cj4gICB2MjogY2hhbmdlZCBhdXRob3IgYW5kIHRyZWUKPiAtLS0KPiAgIGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2k0MGUvaTQwZV9ldGh0b29sLmMgfCAxMiArKy0tLS0tLS0tLS0KPiAgIDEg
+ZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfZXRodG9vbC5jIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYwo+IGluZGV4IDE1
+NmU5MmM0Mzc4MC4uNjY5NWRiZTYxYTA0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2k0MGUvaTQwZV9ldGh0b29sLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pNDBlL2k0MGVfZXRodG9vbC5jCj4gQEAgLTQ0NDcsMTEgKzQ0NDcsNyBAQCBzdGF0
+aWMgaW50IGk0MGVfY2hlY2tfZmRpcl9pbnB1dF9zZXQoc3RydWN0IGk0MGVfdnNpICp2c2ksCj4g
+ICAJCQlyZXR1cm4gLUVPUE5PVFNVUFA7Cj4gICAKPiAgIAkJLyogRmlyc3QgNCBieXRlcyBvZiBM
+NCBoZWFkZXIgKi8KPiAtCQlpZiAodXNyX2lwNF9zcGVjLT5sNF80X2J5dGVzID09IGh0b25sKDB4
+RkZGRkZGRkYpKQo+IC0JCQluZXdfbWFzayB8PSBJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9E
+U1RfTUFTSzsKPiAtCQllbHNlIGlmICghdXNyX2lwNF9zcGVjLT5sNF80X2J5dGVzKQo+IC0JCQlu
+ZXdfbWFzayAmPSB+KEk0MEVfTDRfU1JDX01BU0sgfCBJNDBFX0w0X0RTVF9NQVNLKTsKPiAtCQll
+bHNlCj4gKwkJaWYgKHVzcl9pcDRfc3BlYy0+bDRfNF9ieXRlcykKPiAgIAkJCXJldHVybiAtRU9Q
+Tk9UU1VQUDsKCmFuZCB0aGUgY29uZGl0aW9uIGJlZm9yZSB3YXMKCiAgICAgaWYgKCF0Y3BfaXA0
+X3NwZWMtPmlwNGRzdCB8fCB+dGNwX2lwNF9zcGVjLT5pcDRkc3QpCgo+ICAgCj4gICAJCS8qIEZp
+bHRlcmluZyBvbiBUeXBlIG9mIFNlcnZpY2UgaXMgbm90IHN1cHBvcnRlZC4gKi8KPiBAQCAtNDQ5
+MCwxMSArNDQ4Niw3IEBAIHN0YXRpYyBpbnQgaTQwZV9jaGVja19mZGlyX2lucHV0X3NldChzdHJ1
+Y3QgaTQwZV92c2kgKnZzaSwKPiAgIAkJZWxzZQo+ICAgCQkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+
+ICAgCj4gLQkJaWYgKHVzcl9pcDZfc3BlYy0+bDRfNF9ieXRlcyA9PSBodG9ubCgweEZGRkZGRkZG
+KSkKPiAtCQkJbmV3X21hc2sgfD0gSTQwRV9MNF9TUkNfTUFTSyB8IEk0MEVfTDRfRFNUX01BU0s7
+Cj4gLQkJZWxzZSBpZiAoIXVzcl9pcDZfc3BlYy0+bDRfNF9ieXRlcykKPiAtCQkJbmV3X21hc2sg
+Jj0gfihJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1RfTUFTSyk7Cj4gLQkJZWxzZQo+ICsJ
+CWlmICh1c3JfaXA2X3NwZWMtPmw0XzRfYnl0ZXMpCj4gICAJCQlyZXR1cm4gLUVPUE5PVFNVUFA7
+Cj4gICAKPiAgIAkJLyogRmlsdGVyaW5nIG9uIFRyYWZmaWMgY2xhc3MgaXMgbm90IHN1cHBvcnRl
+ZC4gKi8KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
+ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
+Zm8vaW50ZWwtd2lyZWQtbGFuCg==
