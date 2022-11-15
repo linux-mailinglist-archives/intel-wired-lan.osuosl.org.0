@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F5E062992A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 13:47:49 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 292C8629B51
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Nov 2022 14:59:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D3B9A403C8;
-	Tue, 15 Nov 2022 12:47:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3B9A403C8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 50AF240A87;
+	Tue, 15 Nov 2022 13:59:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 50AF240A87
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668516467;
-	bh=KqJWxf6F6gzCYyr/qqJwP18yFRcIxUwax7z2WoobSI0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=veqmEw41+U6k/3TbB6TRgBgQQ6HyR0UsEBRsnuxuN8ZRamx21jhChIAov5iu/IxJ9
-	 ThPSq+AL2HYrAa/Ad9g/kq72TB/4CEeUxnd5CnJ0Yu3jE9qafq6QOkfTZdnd8i9cAC
-	 t7dvPC8fRH1l52gFDG0gFu2EfP3jSlLPYfJvZRU8zLgeeW3+reFp04mASwQ5r0GTfV
-	 g6QTtJBJkHiwmz+XxJuZVxwzAdT6AotG0ym3/Uv6yfAKAvqRQNw0+xvKLHUvZjLQg1
-	 +OGlsaz1CMZooECNV/pqRku+UtVA07VHb7Fn0Kg3wEr11OmiCLKjqv9WTizMbC1oGY
-	 cmEejz2FPPgbQ==
+	s=default; t=1668520757;
+	bh=+9XWqoC14EM/wK2VzowijVpH8sC8yAPRindLW5wxoSs=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=cIcsL8saQg7cdB2mb7nsCGXB1aj6V6E6yrieReAGFgNrckyJ6LmcSWXLorUl/up5D
+	 nj+qtffFXH1T+P0dGrdbfKa0ezCqc2gjlwiy5lP+d8b+GYcudWmpinNHcBzDHrT8BU
+	 9CKToi6kzpt1nrR5pVJU/BCiQW3C9VrkKzUc7JNB1QA6BNO0axAnVQmPnIbse2nyi/
+	 yZibqBA9YEHllPgxcPPC0eFtbgE64oEVi1oa2vxtHNmfduZGar+lT+2Va1nb9woJR7
+	 j1sXb7sLw4LCULGyzIpYA+FCAPqaraEWS+kYoPeL71sA2HwEYgqHq8VtAN10kSsfzZ
+	 rd6066MCFjHVg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XEPFa1la2VNv; Tue, 15 Nov 2022 12:47:47 +0000 (UTC)
+	with ESMTP id 2MbMFqlvK1ud; Tue, 15 Nov 2022 13:59:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C58A54038B;
-	Tue, 15 Nov 2022 12:47:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C58A54038B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3AAE440179;
+	Tue, 15 Nov 2022 13:59:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3AAE440179
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 285851BF348
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:47:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4E41B1BF232
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 13:59:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F00EB6066D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:47:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F00EB6066D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2614760E3A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 13:59:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2614760E3A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pX7J7YlLa0Qc for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Nov 2022 12:47:41 +0000 (UTC)
+ with ESMTP id rpweHcGi4LXC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Nov 2022 13:59:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4511A605A0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4511A605A0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 12:47:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="295608170"
-X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="295608170"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Nov 2022 04:47:40 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="707723978"
-X-IronPort-AV: E=Sophos;i="5.96,165,1665471600"; d="scan'208";a="707723978"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Nov 2022 04:47:38 -0800
-Date: Tue, 15 Nov 2022 13:47:35 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Saleem, Shiraz" <shiraz.saleem@intel.com>
-Message-ID: <Y3OKZx8eAj3KwHB9@localhost.localdomain>
-References: <20221114082048.9704-1-michal.swiatkowski@linux.intel.com>
- <MWHPR11MB002973559040490B1377165BE9059@MWHPR11MB0029.namprd11.prod.outlook.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 357B760E3D
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 357B760E3D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Nov 2022 13:59:10 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="292651563"
+X-IronPort-AV: E=Sophos;i="5.96,166,1665471600"; d="scan'208";a="292651563"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Nov 2022 05:59:09 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10531"; a="813688303"
+X-IronPort-AV: E=Sophos;i="5.96,166,1665471600"; d="scan'208";a="813688303"
+Received: from lkp-server01.sh.intel.com (HELO ebd99836cbe0) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 15 Nov 2022 05:59:08 -0800
+Received: from kbuild by ebd99836cbe0 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1ouwSx-0001PH-1q;
+ Tue, 15 Nov 2022 13:59:07 +0000
+Date: Tue, 15 Nov 2022 21:58:37 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <63739b0d.c/lFxblH8MbMS9KB%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <MWHPR11MB002973559040490B1377165BE9059@MWHPR11MB0029.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668516461; x=1700052461;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=dN8tgK9VdZSHBBwihF3mxVF86MUSbhbkxmTmwLu5qoE=;
- b=fk452euYLa/AW6Y7Ne30SnFyp3TpqhxhUO/B1guBV7Sihjfgwr8MGCs9
- Ma7DqmiNeZtY1OZAdM2FKOiUw6Mp9IUJ1pt0vTZkHJkSLYMzJFrJGmzdR
- fosVfe+2ZQ6cK8DCpGVv60Vsbz4SC8PF5aFASU/gn/B+O+yZz830wBcww
- eXnr7CzVO3MuukBFw9xJw55BS/1tlCLnwHRETnLahNWeePUceiOGVXinZ
- mBw9k7Cw/3kKvuVYuVQmqCMVhZBh1Wg3iLyFFDHKy/3xgm1spSoRUZ0av
- o6R9UE+FeS9u7Ag7HfOpRQpcGEmwssIUoVv6uidosl4NVbAZgVabmwvFH
+ t=1668520750; x=1700056750;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=CjAOF1PRX9XTGpFGzywEA6mIS1NYgdUsTrTFBvXod60=;
+ b=jB4gICJOD5FFiLpnG3ZJpP5SxF9HdOlvkERm5BOqg2nMxsyIwssQBSK6
+ 4WKHu0sOJArT/IYLLlWLbNfwod+gDy7mkmqugPXDvTVDzImk/Wj5O4/W7
+ /ow3E/MBcbUyxwwv7GSWB8YhdMYgZJOXeuLrWclaKBsHUTsgHFF1OHUje
+ a4acm7Ne7085BZURnBnw0gvGEheiVrk+bu39xql9I5/OV+CHCKxVptku/
+ B0c/Z9v9KvB3Gszu/ZEEJjfNNhhK8VquVG1gkaougVzJ8eyBQEuQRnhoi
+ TUDW9gNiHAhD57sucoOs7JJTmuBIiOzv5hTz7nZmEWpToVBBN5HqAvoLn
  g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fk452euY
-Subject: Re: [Intel-wired-lan] [net-next] irdma: change name of interrupts
+ header.a=rsa-sha256 header.s=Intel header.b=jB4gICJO
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ c1cc97bbd9da07261ab841780768e11a882e8198
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,99 +95,123 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Ismail, Mustafa" <mustafa.ismail@intel.com>, "Bednarz,
- Christopher N" <christopher.n.bednarz@intel.com>, "Barrera,
- Ivan D" <ivan.d.barrera@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 14, 2022 at 04:19:20PM +0000, Saleem, Shiraz wrote:
-> > Subject: [net-next] irdma: change name of interrupts
-> > 
-> 
-> This cant go through net-next. It needs to go through the rdma tree. I will co-ordinate w. Tony on it.
-> 
-> Use "RDMA/irdma: change name of interrupts" for the subject.
->
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: c1cc97bbd9da07261ab841780768e11a882e8198  iavf: Do not restart Tx queues after reset task failure
 
-I will remember, is "rdma" the name of tree?
+elapsed time: 725m
 
-> > Add more information in interrupt names.
-> > 
-> > Before this patch it was:
-> > irdma
-> > CEQ
-> > CEQ
-> > ...
-> > 
-> > Now:
-> > irdma-ice-AEQ
-> > irdma-ice-CEQ-0
-> > irdma-ice-CEQ-1
-> 
-> This is better for sure. But we need to add the device name. Not sure if adding "ice" is adding any value.
-> 
-> Ideally, for the RDMA drivers, this should be ib_device name. But there is a limitation in RDMA subsystem that doesn't
-> set the name till after the ib device is registered which happens later in the drv.probe() flow.
-> 
-> So I think our best option is to use the PCI device name.
-> 
+configs tested: 94
+configs skipped: 3
 
-Sure, will change it, thanks.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> > ...
-> > 
-> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> > Suggested-by: Piotr Raczynski <piotr.raczynski@intel.com>
-> > ---
-> >  drivers/infiniband/hw/irdma/defs.h |  2 ++
-> >  drivers/infiniband/hw/irdma/hw.c   | 14 +++++++++++---
-> >  drivers/infiniband/hw/irdma/main.h |  1 +
-> >  3 files changed, 14 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/infiniband/hw/irdma/defs.h b/drivers/infiniband/hw/irdma/defs.h
-> > index c1906cab5c8a..09e4aba31b64 100644
-> > --- a/drivers/infiniband/hw/irdma/defs.h
-> > +++ b/drivers/infiniband/hw/irdma/defs.h
-> > @@ -20,6 +20,8 @@
-> >  #define IRDMA_IRD_HW_SIZE_128	3
-> >  #define IRDMA_IRD_HW_SIZE_256	4
-> > 
-> > +#define IRDMA_INT_NAME_STR_LEN (32)
-> 
-> INT to IRQ which is more used in this driver to reflect interrupt. Drop the (). And move to this main.h where the irdma_msix_vector struct is defined.
->
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+arc                                 defconfig
+alpha                               defconfig
+s390                             allmodconfig
+s390                                defconfig
+s390                             allyesconfig
+arc                  randconfig-r043-20221114
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+powerpc                           allnoconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+i386                                defconfig
+x86_64               randconfig-a002-20221114
+x86_64                         rhel-8.3-kunit
+x86_64               randconfig-a001-20221114
+x86_64               randconfig-a004-20221114
+x86_64                           rhel-8.3-kvm
+i386                             allyesconfig
+x86_64                              defconfig
+x86_64               randconfig-a003-20221114
+x86_64               randconfig-a005-20221114
+x86_64               randconfig-a006-20221114
+x86_64                           rhel-8.3-syz
+i386                 randconfig-a001-20221114
+x86_64                               rhel-8.3
+ia64                             allmodconfig
+x86_64                           allyesconfig
+i386                 randconfig-a002-20221114
+i386                 randconfig-a003-20221114
+i386                 randconfig-a004-20221114
+i386                 randconfig-a005-20221114
+i386                 randconfig-a006-20221114
+x86_64                            allnoconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+xtensa                         virt_defconfig
+sh                            shmin_defconfig
+xtensa                              defconfig
+mips                        vocore2_defconfig
+parisc                generic-32bit_defconfig
+sh                     magicpanelr2_defconfig
+mips                           gcw0_defconfig
+powerpc                     stx_gp3_defconfig
+sh                           sh2007_defconfig
+loongarch                        allmodconfig
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-c001
+arm                           sunxi_defconfig
+arm                               allnoconfig
+loongarch                 loongson3_defconfig
+arc                         haps_hs_defconfig
+arm                          pxa3xx_defconfig
+m68k                       m5475evb_defconfig
+sh                            hp6xx_defconfig
+mips                  decstation_64_defconfig
+powerpc                    sam440ep_defconfig
+sparc64                          alldefconfig
+sparc64                             defconfig
+ia64                         bigsur_defconfig
+ia64                             allyesconfig
+m68k                          atari_defconfig
+powerpc                      ppc6xx_defconfig
+powerpc                        cell_defconfig
 
-Done
+clang tested configs:
+hexagon              randconfig-r045-20221114
+hexagon              randconfig-r041-20221114
+s390                 randconfig-r044-20221114
+riscv                randconfig-r042-20221114
+x86_64               randconfig-a012-20221114
+x86_64               randconfig-a015-20221114
+x86_64               randconfig-a013-20221114
+x86_64               randconfig-a011-20221114
+x86_64               randconfig-a014-20221114
+x86_64               randconfig-a016-20221114
+i386                 randconfig-a011-20221114
+i386                 randconfig-a014-20221114
+i386                 randconfig-a013-20221114
+i386                 randconfig-a012-20221114
+i386                 randconfig-a015-20221114
+i386                 randconfig-a016-20221114
+arm                        magician_defconfig
+x86_64               randconfig-k001-20221114
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
 
-> > +
-> >  enum irdma_protocol_used {
-> >  	IRDMA_ANY_PROTOCOL = 0,
-> >  	IRDMA_IWARP_PROTOCOL_ONLY = 1,
-> > diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
-> > index ab246447520b..46665624e515 100644
-> > --- a/drivers/infiniband/hw/irdma/hw.c
-> > +++ b/drivers/infiniband/hw/irdma/hw.c
-> > @@ -1087,14 +1087,20 @@ static int irdma_cfg_ceq_vector(struct irdma_pci_f *rf,
-> > struct irdma_ceq *iwceq,
-> >  	int status;
-> > 
-> >  	if (rf->msix_shared && !ceq_id) {
-> > +		snprintf(msix_vec->name, sizeof(msix_vec->name) - 1,
-> > +			 "irdma-%s-AEQCEQ-%d",
-> > +			 dev_driver_string(&rf->pcidev->dev), ceq_id);
-> 
-> As per previous comment, I think dev_name((&rf->pcidev->dev) is better. Given this should we make the msix_vec.name be a 64b variable?
->
-
-Yeah, it looks better, thanks. I changed name to 64b.
-
-> Shiraz
-> 
-> 
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
