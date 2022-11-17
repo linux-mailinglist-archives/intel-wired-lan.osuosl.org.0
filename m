@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45E6362D946
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Nov 2022 12:20:11 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C6D962D9BD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Nov 2022 12:45:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C6ADF404B3;
-	Thu, 17 Nov 2022 11:20:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C6ADF404B3
+	by smtp1.osuosl.org (Postfix) with ESMTP id D1AA682088;
+	Thu, 17 Nov 2022 11:45:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D1AA682088
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668684009;
-	bh=HsJGhn6sm3DFizxGGfq0RpW+O8IO3g3JWilfU9xI51E=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=3o0aMBxBgNeFJLTeentZMegU5mhgIIT6T0xT8PqdvuKNtnE/GiB5t1FEaB1Kv0R6U
-	 8a2vNr0yYxMvdoBIJrq+AFIGOLOmkAPx27Lvr1JHmft7FTPcw1rb9hwcKirfrO239l
-	 mkQsDqxCWpkoIvfpP2IgUE2k6oR/xkDFV70PmoXSHz3//Y56Nu4cAbq14itIGsJj/z
-	 +8rB+4kA+vwDAQ1MwQRjMVLjfHtvWDdZdzCo3gvmdglG+uaiUXJsWBnWnzTHqmri5a
-	 UglsqmoEdTAolhD5m+1xNXMEkCAgTAY2DwTI5FjAuCuholofH3e/Ww1YI3xlW3oc9H
-	 L/Vr7iwJET4bA==
+	s=default; t=1668685552;
+	bh=8mdb4rP153VodQ3QoOjumWWzrRNfQgrBq+hGhEhsacs=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=wd5sgwdHHTJ9MX3KMDmtQoAN8iGnR4llghjkdef0nbgB62DKdpvnZM2FSMsZ0eg55
+	 YNJ/ibwrb6qWKEjxJ21e7IFp94qJ+m0M0BK512gLeH2AwgCWxGspfIZWhF8rPLp7en
+	 ZNbzFwWVKQl/gnZuiCsD/VQIOCpDlTwvW/Bs45/Mso2o+sLq67i9GxQbrOEZX4CVCx
+	 b26e/jLo71pDVLcI1a4aCdqlh6OwDFN5nS5m1P4EQwHny26YwbsVhYXbIUX02aUl34
+	 B7hkQefkFCY77XPj5vDbu5cOaq16RxOrI94GaZAJHCL9hgyADel0PnXj8uuEjMkBhw
+	 mhkyFTOXN18CQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y9WuS50PQGaP; Thu, 17 Nov 2022 11:20:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uxpOiRVmyIuQ; Thu, 17 Nov 2022 11:45:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D5533402FE;
-	Thu, 17 Nov 2022 11:20:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5533402FE
+	by smtp1.osuosl.org (Postfix) with ESMTP id B34C68207D;
+	Thu, 17 Nov 2022 11:45:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B34C68207D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9C6FC1BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:19:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 153D81BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:45:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 897986102F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:19:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 897986102F
+ by smtp2.osuosl.org (Postfix) with ESMTP id E3C9D40154
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:45:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E3C9D40154
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dp1FI6YFGZlB for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Nov 2022 11:19:56 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EDX9jG6ZdnKL for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Nov 2022 11:45:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA4346103F
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AA4346103F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:19:56 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10533"; a="377090250"
-X-IronPort-AV: E=Sophos;i="5.96,171,1665471600"; d="scan'208";a="377090250"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Nov 2022 03:19:55 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10533"; a="708579076"
-X-IronPort-AV: E=Sophos;i="5.96,171,1665471600"; d="scan'208";a="708579076"
-Received: from lkp-server01.sh.intel.com (HELO 55744f5052f8) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 17 Nov 2022 03:19:53 -0800
-Received: from kbuild by 55744f5052f8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ovcvw-0000Fb-2i;
- Thu, 17 Nov 2022 11:19:52 +0000
-Date: Thu, 17 Nov 2022 19:19:02 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <637618a6.r/NmH7mja2X8D/Z5%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F19E3400C4
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F19E3400C4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 11:45:43 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 3FB14613E9;
+ Thu, 17 Nov 2022 11:45:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6B7FC433C1;
+ Thu, 17 Nov 2022 11:45:41 +0000 (UTC)
+Date: Thu, 17 Nov 2022 13:45:38 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Message-ID: <Y3Ye4kwmtPrl33VW@unreal>
+References: <Y3NcnnNtmL+SSLU+@unreal> <Y3NnGk7DCo/1KfpD@localhost.localdomain>
+ <Y3OCHLiCzOUKLlHa@unreal> <Y3OcAJBfzgggVll9@localhost.localdomain>
+ <Y3PS9e9MJEZo++z5@unreal>
+ <be2954f2-e09c-d2ef-c84a-67b8e6fc3967@intel.com>
+ <Y3R9iAMtkk8zGyaC@unreal> <Y3TR1At4In5Q98OG@localhost.localdomain>
+ <Y3UlD499Yxj77vh3@unreal> <Y3YWkT/lMmYU5T+3@localhost.localdomain>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <Y3YWkT/lMmYU5T+3@localhost.localdomain>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668683996; x=1700219996;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=ZM2tL0o7NklACXq2PxktdfA7Hh/DSeWtxKxHv/xD1hE=;
- b=QKy832orVoiR+zaCXpXQBPNoF7/jpxLr+jmhWE9YDeE7UEbv17Bmkfa/
- ZlAr9KRCzUeZEx4I0+JwasvI2j5vSPQR82Rrq8Qb2xuSsegmCTlHRrHHm
- fiaPid7Y1kWLITBxsKQMgdY/ZVHhtIYDrCUsrxzvuN7srbf/OwyK7u/D3
- oNkZYfRhU/RLH8cbCSX+cX/arZQaC3BR3o6jWH+N9+ikCHY4rCkdCAurI
- pEpDY0ZtVnxtx2jMzBfXt2DeVpUJXYjJlUSAH/fc1juJDZh6gEM+dCGXg
- ZHp5iZNbFoBHXKkbAR697IJW4yYlmTIwNqjxbC7c+Z3qlT5HANi4jwdR1
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QKy832or
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 4f6b088aba561ca3ba6df11d11e2b12dee83db32
+ d=kernel.org; s=k20201202; t=1668685542;
+ bh=n8ULLxOjtzLBSAcRlVkEAznvxfo0rZ7CDIdUFmtIgaU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=CkaREezB1nvadw1x6sKQuO5Fw3w+f8epdD66RHZ3pbXEYg6BvGuBeeVgnHr/fVzn4
+ CIJF0YbMmvFmVvQLgVFXhxuJ5ofR+IyavcknAy5RFwak0818C/ZNAJyaHlhZP9ymiH
+ izJ4fzzGTy1McS9uJMzvqdQVwrgvd6T8z7juBShemz3CTa6Me3rmFy8aWvoZZulzVT
+ 4DtlpjeZL3GW3ESYXNxBKI/w1LTOe0Q70gUqoSMB0wFb2aREtK+W09DT5mpoun35Zw
+ 9Fi5LJAYe9uYjJ5gvpi+2/iikvJPtRp7aOMoDmrdAtofR5yFsjqGIsj3ggUt5qhI+9
+ rXaP1LFu+9k0w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=CkaREezB
+Subject: Re: [Intel-wired-lan] [PATCH net-next 00/13] resource management
+ using devlink reload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,115 +95,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: jiri@nvidia.com, leszek.kaliszczuk@intel.com, przemyslaw.kitszel@intel.com,
+ edumazet@google.com, mustafa.ismail@intel.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
+ pabeni@redhat.com, shiraz.saleem@intel.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 4f6b088aba561ca3ba6df11d11e2b12dee83db32  iavf: Fix a crash during reset task
+On Thu, Nov 17, 2022 at 12:10:21PM +0100, Michal Swiatkowski wrote:
+> On Wed, Nov 16, 2022 at 07:59:43PM +0200, Leon Romanovsky wrote:
+> > On Wed, Nov 16, 2022 at 01:04:36PM +0100, Michal Swiatkowski wrote:
+> > > On Wed, Nov 16, 2022 at 08:04:56AM +0200, Leon Romanovsky wrote:
+> > > > On Tue, Nov 15, 2022 at 07:59:06PM -0600, Samudrala, Sridhar wrote:
+> > > > > On 11/15/2022 11:57 AM, Leon Romanovsky wrote:
+> > > > 
+> > > > <...>
+> > > > 
+> > > > > > > In case of ice driver lspci -vs shows:
+> > > > > > > Capabilities: [70] MSI-X: Enable+ Count=1024 Masked
+> > > > > > > 
+> > > > > > > so all vectors that hw supports (PFs, VFs, misc, etc). Because of that
+> > > > > > > total number of MSI-X in the devlink example from cover letter is 1024.
+> > > > > > > 
+> > > > > > > I see that mellanox shows:
+> > > > > > > Capabilities: [9c] MSI-X: Enable+ Count=64 Masked
+> > > > > > > 
+> > > > > > > I assume that 64 is in this case MSI-X ony for this one PF (it make
+> > > > > > > sense).
+> > > > > > Yes and PF MSI-X count can be changed through FW configuration tool, as
+> > > > > > we need to write new value when the driver is unbound and we need it to
+> > > > > > be persistent. Users are expecting to see "stable" number any time they
+> > > > > > reboot the server. It is not the case for VFs, as they are explicitly
+> > > > > > created after reboots and start "fresh" after every boot.
+> > > > > > 
+> > > > > > So we set large enough but not too large value as a default for PFs.
+> > > > > > If you find sane model of how to change it through kernel, you can count
+> > > > > > on our support.
+> > > > > 
+> > > > > I guess one main difference is that in case of ice, PF driver manager resources
+> > > > > for all its associated functions, not the FW. So the MSI-X count reported for PF
+> > > > > shows the total vectors(PF netdev, VFs, rdma, SFs). VFs talk to PF over a mailbox
+> > > > > to get their MSI-X vector information.
+> > > > 
+> > > > What is the output of lspci for ice VF when the driver is not bound?
+> > > > 
+> > > > Thanks
+> > > > 
+> > > 
+> > > It is the same after creating and after unbonding:
+> > > Capabilities: [70] MSI-X: Enable- Count=17 Masked-
+> > > 
+> > > 17, because 16 for traffic and 1 for mailbox.
+> > 
+> > Interesting, I think that your PF violates PCI spec as it always
+> > uses word "function" and not "device" while talks about MSI-X related
+> > registers.
+> > 
+> > Thanks
+> > 
+> 
+> I made mistake in one comment. 1024 isn't MSI-X amount for device. On
+> ice we have 2048 for the whole device. On two ports card each PF have
+> 1024 MSI-X. Our control register mapping to the internal space looks
+> like that (Assuming two port card; one VF with 5 MSI-X created):
+> INT[PF0].FIRST	0
+> 		1
+> 		2
+> 		
+> 		.
+> 		.
+> 		.
+> 
+> 		1019	INT[VF0].FIRST	__
+> 		1020			  | interrupts used
+> 		1021			  | by VF on PF0
+> 		1022			  |
+> INT[PF0].LAST	1023	INT[VF0].LAST	__|
+> INT[PF1].FIRST	1024
+> 		1025
+> 		1026
+> 
+> 		.
+> 		.
+> 		.
+> 		
+> INT[PF1].LAST	2047
+> 
+> MSI-X entry table size for PF0 is 1024, but entry table for VF is a part
+> of PF0 physical space.
+> 
+> Do You mean that "sharing" the entry between PF and VF is a violation of
+> PCI spec? 
 
-elapsed time: 728m
+You should consult with your PCI specification experts. It was my
+spec interpretation, which can be wrong.
 
-configs tested: 86
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> Sum of MSI-X count on all function within device shouldn't be
+> grater than 2048? 
 
-gcc tested configs:
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                          allmodconfig
-mips                             allyesconfig
-powerpc                           allnoconfig
-sh                               allmodconfig
-ia64                             allmodconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-i386                          randconfig-a005
-x86_64                        randconfig-a002
-arc                  randconfig-r043-20221117
-riscv                randconfig-r042-20221117
-x86_64                        randconfig-a004
-s390                 randconfig-r044-20221117
-x86_64                        randconfig-a006
-x86_64                           rhel-8.3-kvm
-x86_64                         rhel-8.3-kunit
-i386                                defconfig
-x86_64                           rhel-8.3-syz
-i386                             allyesconfig
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                            allnoconfig
-x86_64                        randconfig-a015
-sh                          sdk7786_defconfig
-arm                            zeus_defconfig
-openrisc                            defconfig
-i386                          randconfig-a014
-i386                          randconfig-a012
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-alpha                            allyesconfig
-i386                          randconfig-a016
-s390                                defconfig
-s390                             allmodconfig
-arc                                 defconfig
-alpha                               defconfig
-s390                             allyesconfig
-um                               alldefconfig
-sh                           se7722_defconfig
-sh                         ap325rxa_defconfig
-i386                          randconfig-c001
-m68k                             allmodconfig
-arc                              allyesconfig
-m68k                             allyesconfig
-powerpc                      bamboo_defconfig
-powerpc                     mpc83xx_defconfig
-openrisc                 simple_smp_defconfig
-sh                        sh7757lcr_defconfig
-sh                        sh7785lcr_defconfig
-arm                            hisi_defconfig
-sh                  sh7785lcr_32bit_defconfig
-arc                               allnoconfig
-powerpc                    klondike_defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-arm                       omap2plus_defconfig
-arm                           stm32_defconfig
-sh                           se7705_defconfig
-powerpc                       maple_defconfig
-sh                        edosk7705_defconfig
+No, it is 2K per-control message/per-function.
 
-clang tested configs:
-i386                          randconfig-a006
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-hexagon              randconfig-r041-20221117
-hexagon              randconfig-r045-20221117
-x86_64                        randconfig-a005
-x86_64                        randconfig-a012
-i386                          randconfig-a013
-powerpc                          g5_defconfig
-x86_64                        randconfig-a014
-i386                          randconfig-a011
-i386                          randconfig-a015
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a004
-x86_64                        randconfig-k001
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> It is hard to find sth about this in spec. I only read
+> that: "MSI-X supports a maximum table size of 2048 entries". I will
+> continue searching for information about that.
+> 
+> I don't think that from driver perspective we can change the table size
+> located in message control register.
+
+No, you can't, unless you decide explicitly violate spec.
+
+> 
+> I assume in mlnx the tool that You mentioned can modify this table size?
+
+Yes, it is FW configuration tool.
+
+Thanks
+
+> 
+> Thanks
+> 
+> > > 
+> > > Thanks
+> > > > > 
+> > > > > 
+> > > > > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
