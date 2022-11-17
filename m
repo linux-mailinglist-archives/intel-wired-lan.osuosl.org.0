@@ -1,103 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D787D62E1F8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Nov 2022 17:34:25 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA88162E14C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Nov 2022 17:16:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3E7B46102F;
-	Thu, 17 Nov 2022 16:34:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E7B46102F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 36DB182136;
+	Thu, 17 Nov 2022 16:16:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 36DB182136
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668702864;
-	bh=wyMBJURmIWNKF9P9CSwc2zbgwAYFuVg/wZBc97OOQBY=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1668701765;
+	bh=p5JzP8qBDfSGCFMQ1SjCnI8MBWSUAGBNgoXl/MxEPws=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Wb3aa3ggvjoKw2O2vKi8OGHKlsl55fPa16D/t7QLpFOvKrL4mWjRHSsf8m9FVdhPT
-	 TT6bvIrNQhNbn307YlBI6m/S8G6JxUeSEiBgMJkyf9d0KYi1I8LNP7jsabSHfYvokR
-	 IV3owfS8RswGk3iQZKdasI/Sa/w0M5NF2YcVuUrM+B5Bh4h6CTQWy0sei2kbmH+7DZ
-	 HP9KfvfRs1RTRfpne83dFnlq/uBIMWH2Dr820i2/sYRmGq+1iIQZCL5RXqscSbBQ1O
-	 s0md9iTGNpFR3GVUJQqQdU79MPM8ZI22eS99KjENI1vRrzc3R3tEi2xC6c3gRs79E+
-	 XyCuchP7MwPrQ==
+	b=KxPbcpqOYD0FXnaNISdR+IaQGFh8mwIimfCxUE6LHzn0YKLbSyuiTZYXCzVr6GdxG
+	 /OXprANo8I751o4TohXziFzwyaJRgnON57psz97tpqRgTayfxgr5oupaoGf3y2i84s
+	 6LDduLWhznIXa7prB22h2Z3E3WOgKQzF9+BL4AI1FRM68mMsCpT6ePMeq6TM7Wn2L0
+	 sux+0uMgnVjtkESyUDCzdxBJuwbvyar+MrqbZKEt2yRDcDZBF2uPslvTw4W9PyNVvN
+	 4RzYOkmrvfAFVTtvInxTNaiikobPjrYu/M1dUjxy8G83XwM3iYXIh9Vca1VGDPiOEy
+	 KLfDiFLmjCdgg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yLYsu9--YBJU; Thu, 17 Nov 2022 16:34:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XjJHgxKIY47p; Thu, 17 Nov 2022 16:16:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C5A1C605B3;
-	Thu, 17 Nov 2022 16:34:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C5A1C605B3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 12C5782134;
+	Thu, 17 Nov 2022 16:16:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 12C5782134
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 50ECB1BF473
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Nov 2022 22:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C3471BF599
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 16:15:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2B4934011A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Nov 2022 22:24:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B4934011A
+ by smtp3.osuosl.org (Postfix) with ESMTP id E6DEF6106F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 16:15:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E6DEF6106F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AXCBFwsKZUOh for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Nov 2022 22:24:11 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2D4B400B8
-Received: from mail-yw1-x112c.google.com (mail-yw1-x112c.google.com
- [IPv6:2607:f8b0:4864:20::112c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B2D4B400B8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Nov 2022 22:24:10 +0000 (UTC)
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-376596ae449so1890287b3.5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Nov 2022 14:24:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1WROgMiJgwI0Vii6m/6H76t0lNKyX4ZB0Pefwy6NBOk=;
- b=26I6SYP3XcTZ4Lq22QV7r4BU4W/VExhT8TSfwofmdH1wJvD9ORyXhJ910n+Nm/rcw3
- OrhHSWqcTO3Rf9P4eFEIvpjASCOcK3Ne+FcdcxRxB0uxXrXq0rowJLf2vqHbKCOG7AVV
- hhFw9rlVKSaaXQs/jOAdeqjygX717H5FAFEv3NHKmcVdE+0/ssR7Otd31SwXKjfu9jMw
- tJyjbHnxhRfAgjvpba07D3n0UTqt5ttlKOtoGOODp7u9eqsr+0DRHyAN2qnJmnkBcFuW
- Jy/e7YstzvfzjjcIkbud9WQZ/pfji3k/pwp3gIW9WLgaTvz7eyfT8byQ85j0M7mt9Xls
- IfhA==
-X-Gm-Message-State: ANoB5pkJ7KEH118eUtHqHCh6QXEgbkxTecrI2GiWCpHRionQFfnxX5YM
- TdFAY0EHg7VNSuobp50NxZ3lpq5PerIfVIcVeog=
-X-Google-Smtp-Source: AA0mqf4VCRMT4iatoGrn5fz6KD4ZrK6ahzzD1HDijIvh/4vcMmOMZU915GIc3yKanwnNP/5n8luy07Jg0lmQobz5Dms=
-X-Received: by 2002:a81:4893:0:b0:367:b8fd:62ba with SMTP id
- v141-20020a814893000000b00367b8fd62bamr24205693ywa.403.1668637449241; Wed, 16
- Nov 2022 14:24:09 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MmxRDets5oEq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Nov 2022 16:15:58 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC9236106A
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CC9236106A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Nov 2022 16:15:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10534"; a="339724392"
+X-IronPort-AV: E=Sophos;i="5.96,171,1665471600"; d="scan'208";a="339724392"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Nov 2022 08:15:56 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10534"; a="745597938"
+X-IronPort-AV: E=Sophos;i="5.96,171,1665471600"; d="scan'208";a="745597938"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by fmsmga002.fm.intel.com with ESMTP; 17 Nov 2022 08:15:55 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 2AHGFsgg004324; Thu, 17 Nov 2022 16:15:54 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+To: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+Date: Thu, 17 Nov 2022 17:15:18 +0100
+Message-Id: <20221117161518.3450087-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221116164709.9201-1-tirthendu.sarkar@intel.com>
+References: <20221116164709.9201-1-tirthendu.sarkar@intel.com>
 MIME-Version: 1.0
-References: <CAPAtJa_o5q-sU+AD=G3y43H_5pBKnOZTQGXM99uszPXNkn8Z9A@mail.gmail.com>
- <20221031170535.77be0eb5@kernel.org>
- <03f7dc73-3e7c-1e6d-275f-85539493cd7f@intel.com>
- <CAPAtJa8qupPZZ0AiMWSxNKSd-WMg0MQDQeZcCO_Z-GGBu3jZCg@mail.gmail.com>
- <CAPAtJa_-yMusW5-C3BDivMu=MOyfKF9VQkxQotX3L_P+Q48oMA@mail.gmail.com>
- <CAPAtJa_nL5edyiN61ghXZxVUSDBFQQR3uiYJM0uo9mEao=RC0w@mail.gmail.com>
-In-Reply-To: <CAPAtJa_nL5edyiN61ghXZxVUSDBFQQR3uiYJM0uo9mEao=RC0w@mail.gmail.com>
-From: Ivan Smirnov <isgsmirnov@gmail.com>
-Date: Wed, 16 Nov 2022 14:23:57 -0800
-Message-ID: <CAPAtJa_hbFbVXQbiNnb_byLqtZ-Dy_EBcvTFH9GyPqt__dFmLQ@mail.gmail.com>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>
-X-Mailman-Approved-At: Thu, 17 Nov 2022 16:34:18 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1WROgMiJgwI0Vii6m/6H76t0lNKyX4ZB0Pefwy6NBOk=;
- b=RmAzN2ZmRtmhNEnyhQ/FkdKVHoehl0Q4kr9R6xguad5VSQHXle1MNFbXQ+I4K2993F
- GP0Yq+Iw7s99/UcQM6T1jxVoY8zKKEfSahAqSR2DmMYSkNYOfkN5jg/Gcx2VTxgMyQwy
- MylQ1l/6Mjm2vXhlE+Zjo463CgVe8JSAvYWDYQlO8qCQ+NpleobyffoiDOASKQKSY022
- juOgehDYc8xz6R4eQlwwN/JB/+bToEWkIR7l7kHheoLBT90J+3A5PUP4D2d1xkAfFYTR
- VQj6XdGCWYIf2rgubhJCyql3kwr9WRBuv+cR2JfpQnNL7hm9GUCZa7cqQ4UwHH8Lvno9
- bk9A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=RmAzN2Zm
-Subject: Re: [Intel-wired-lan] igc kernel module crashes on new hardware
- (Intel Ethernet I225-V)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1668701757; x=1700237757;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=5v3zHBia4Ks3Qtrh/XRhhD0ZANV2CcggzZB25D8knjE=;
+ b=CcTo/FnTn+XKt36tOS0LwtGyLTwNYKNRTOCjJJ288X21+l92/Amfz+n5
+ R+e1YGzz7uPuDEKxJcbWbbIRROAjt+6vfNXn552Yo95VC1k5E2vWj2p+H
+ kWk4LCYX712c/cqOs9Oi6oykl4fxUvsa5TKrZeSQ7g+YX8jeCTCZ9szGu
+ 0oqDktOnBI3bWq1IWGHNCJXkdferEwbedRrpJ6rxadTErSW/jT2QEfn21
+ UF3qx3bNlP48QvRbYCmYtqA79TtpzJXvi3kIL0T11zng60x46AK/0134+
+ yFPnOl5kGgOCZAnv8oRma1toOzgYv1VabgS4kHat2XLlSeAZYpJGTRlHX
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=CcTo/FnT
+Subject: Re: [Intel-wired-lan] [PATCH intel-next v3] i40e: allow toggling
+ loopback mode via ndo_set_features callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,374 +99,185 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>, "Ruinskiy,
- Dima" <dima.ruinskiy@intel.com>, "Avivi, Amir" <amir.avivi@intel.com>
-Content-Type: multipart/mixed; boundary="===============7648031622453308266=="
+Cc: tirtha@gmail.com, netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7648031622453308266==
-Content-Type: multipart/alternative; boundary="0000000000006bcc2105ed9deeba"
+From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+Date: Wed, 16 Nov 2022 22:17:09 +0530
 
---0000000000006bcc2105ed9deeba
-Content-Type: text/plain; charset="UTF-8"
+> Add support for NETIF_F_LOOPBACK. This feature can be set via:
+> $ ethtool -K eth0 loopback <on|off>
+> 
+> This sets the MAC Tx->Rx loopback.
+> 
+> This feature is used for the xsk selftests, and might have other uses
+> too.
+> 
+> Changelog:
+>     v2 -> v3:
+>      - Fixed loopback macros as per NVM version 6.01+.
+>      - Renamed existing macros as *_LEGACY
+>      - Based on NVM verison appropriate macro is used for MAC loopback.
+> 
+>     v1 -> v2:
+>      - Moved loopback to netdev's hardware features as suggested by
+>        Alexandr Lobakin.
+> 
+> Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+> ---
+>  .../net/ethernet/intel/i40e/i40e_adminq_cmd.h | 10 +++++--
+>  drivers/net/ethernet/intel/i40e/i40e_common.c | 26 +++++++++++++++++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 28 ++++++++++++++++++-
+>  .../net/ethernet/intel/i40e/i40e_prototype.h  |  3 ++
+>  4 files changed, 63 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> index 60f9e0a6aaca..7532553a6982 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> @@ -1795,9 +1795,13 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_an_advt_reg);
+>  /* Set Loopback mode (0x0618) */
+>  struct i40e_aqc_set_lb_mode {
+>  	__le16	lb_mode;
+> -#define I40E_AQ_LB_PHY_LOCAL	0x01
+> -#define I40E_AQ_LB_PHY_REMOTE	0x02
+> -#define I40E_AQ_LB_MAC_LOCAL	0x04
+> +#define I40E_LEGACY_LOOPBACK_NVM_VER	0x6000
+> +#define I40E_AQ_LB_MAC_LOCAL		0x01
+> +#define I40E_AQ_LB_PHY_LOCAL		0x05
+> +#define I40E_AQ_LB_PHY_REMOTE		0x06
+> +#define I40E_AQ_LB_PHY_LOCAL_LEGACY   	0x01
+> +#define I40E_AQ_LB_PHY_REMOTE_LEGACY  	0x02
+> +#define I40E_AQ_LB_MAC_LOCAL_LEGACY   	0x04
 
-Hi folks,
+Do you need any of those, apart from MAC_LOCAL{,_LEGACY}? I think
+it's better to keep only the values you actually use.
 
-Is there any update for the community? More and more folks are asking. We
-are all techies and happy to help debug.
+>  	u8	reserved[14];
+>  };
+>  
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> index 4f01e2a6b6bb..8f764ff5c990 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> @@ -1830,6 +1830,32 @@ i40e_status i40e_aq_set_phy_int_mask(struct i40e_hw *hw,
+>  	return status;
+>  }
+>  
+> +/**
+> + * i40e_aq_set_mac_loopback
+> + * @hw: pointer to the HW struct
+> + * @ena_lpbk: Enable or Disable loopback
+> + * @cmd_details: pointer to command details structure or NULL
+> + *
+> + * Enable/disable loopback on a given port
+> + */
+> +i40e_status i40e_aq_set_mac_loopback(struct i40e_hw *hw, bool ena_lpbk,
+> +				     struct i40e_asq_cmd_details *cmd_details)
+> +{
+> +	struct i40e_aq_desc desc;
+> +	struct i40e_aqc_set_lb_mode *cmd =
+> +		(struct i40e_aqc_set_lb_mode *)&desc.params.raw;
+> +
+> +	i40e_fill_default_direct_cmd_desc(&desc, i40e_aqc_opc_set_lb_modes);
+> +	if (ena_lpbk) {
+> +		if (hw->nvm.version <= I40E_LEGACY_LOOPBACK_NVM_VER)
+> +			cmd->lb_mode = cpu_to_le16(I40E_AQ_LB_MAC_LOCAL_LEGACY);
+> +		else
+> +			cmd->lb_mode = cpu_to_le16(I40E_AQ_LB_MAC_LOCAL);
+> +	}
+> +
+> +	return i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
+> +}
+> +
+>  /**
+>   * i40e_aq_set_phy_debug
+>   * @hw: pointer to the hw struct
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 4880b740fa6e..1941715b6223 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -12920,6 +12920,28 @@ static void i40e_clear_rss_lut(struct i40e_vsi *vsi)
+>  	}
+>  }
+>  
+> +/**
+> + * i40e_set_loopback - turn on/off loopback mode on underlying PF
+> + * @vsi: ptr to VSI
+> + * @ena: flag to indicate the on/off setting
+> + */
+> +static int i40e_set_loopback(struct i40e_vsi *vsi, bool ena)
+> +{
+> +	bool if_running = netif_running(vsi->netdev);
+> +	int ret;
+> +
+> +	if (if_running && !test_and_set_bit(__I40E_VSI_DOWN, vsi->state))
+> +		i40e_down(vsi);
+> +
+> +	ret = i40e_aq_set_mac_loopback(&vsi->back->hw, ena, NULL);
+> +	if (ret)
+> +		netdev_err(vsi->netdev, "Failed to toggle loopback state\n");
+> +	if (if_running)
+> +		i40e_up(vsi);
 
-Thank you kindly,
-- Ivan
+You do i40e_down() only if %__I40E_VSI_DOWN was not set. So I guess
+you need to do ifup only if you did ifdown. So I think the function
+start must be a bit differen? Like:
 
-On Thu, Nov 10, 2022 at 03:44 Ivan Smirnov <isgsmirnov@gmail.com> wrote:
+	if (if_running && !test_and_set_bit())
+		i40e_down();
+	else
+		if_running = false;
 
-> Some more data from another user. Do you guys have any preliminary
-> investigation you could share back with the community?
->
-> Same issue, been struggling with it for a last month or so: both with
-> Ubuntu and Arch Linux. I have a dual-boot system with Windows 11, and did
-> not notice any issues with ethernet or wifi on Windows. So this indeed
-> seems like a firmware issue, particularly in igc. Not the adapter itself
->
-> Running on Arch Linux kernel 6.0.7, same motherboard as in your post
->
-> https://gist.github.com/LilDojd/2f030ecc5c5b6f8c3285725adfb8c456
->
->
->
->
-> On Thu, Nov 3, 2022 at 05:53 Ivan Smirnov <isgsmirnov@gmail.com> wrote:
->
->> Here is the gist from one reddit user:
->> https://gist.github.com/DarkArc/50ffca5fc343e2ff8166bc81d3ff8335
->>
->> Here are my gists (crash free for now):
->> https://gist.github.com/issmirnov/b9ac74d232e1865ae849a3e64dce2afe
->>
->> --
->> Ivan Smirnov
->> https://ivans.io/ | https://blog.ivansmirnov.name/
->> https://www.linkedin.com/in/ismirnov |
->> *https://ivansmirnov.name/ <https://ivansmirnov.name/>*
->> *https://github.com/issmirnov <https://ivansmirnov.name/>*
->>
->>
->> On Wed, Nov 2, 2022 at 10:54 AM Ivan Smirnov <isgsmirnov@gmail.com>
->> wrote:
->>
->>> Hi folks,
->>>
->>> As usual, the computers know when the experts join the chat... I haven't
->>> been able to reproduce the issue for the past few days. Yay for stability,
->>> boo for debugging.
->>>
->>> I posted on the reddit thread
->>> <https://www.reddit.com/r/buildapc/comments/xypn1m/network_card_intel_ethernet_controller_i225v_igc/> asking
->>> other users to post their output. I'll do my best to keep an eye out for
->>> this issue and get you the logs ASAP once I repro the crash.
->>>
->>> Thank you for your responsiveness - will keep you posted!
->>>
->>> Best,
->>> - Ivan
->>> --
->>> Ivan Smirnov
->>> https://ivans.io/ | https://blog.ivansmirnov.name/
->>> https://www.linkedin.com/in/ismirnov |
->>> *https://ivansmirnov.name/ <https://ivansmirnov.name/>*
->>> *https://github.com/issmirnov <https://ivansmirnov.name/>*
->>>
->>>
->>> On Tue, Nov 1, 2022 at 10:21 AM Neftin, Sasha <sasha.neftin@intel.com>
->>> wrote:
->>>
->>>> On 11/1/2022 02:05, Jakub Kicinski wrote:
->>>> > CC: intel-wired
->>>> >
->>>> > On Sun, 30 Oct 2022 14:44:57 -0600 Ivan Smirnov wrote:
->>>> >> Hi folks,
->>>> >>
->>>> >> I found your commits on the linux kernel igc
->>>> >> <
->>>> https://github.com/torvalds/linux/commits/master/drivers/net/ethernet/intel/igc
->>>> >
->>>> >> folder. There appears to be a bug with the igc kernel module on Intel
->>>> >> I225-V chips.
->>>> >>
->>>> >> Specifically, the probe fails at startup with error: "igc: probe of
->>>> >> 0000:06:00.0 failed with error -13". When it does load, it crashes
->>>> after a
->>>> >> few hours with error "igc failed to read reg 0xc030".
->>>> >>
->>>> Could you provide dmesg -w -T | grep -i igc on the boot stage? ethtool
->>>> -i?
->>>> I've cc'd our PAE expert Amir who also could try to look at this
->>>> problem.
->>>>
->>>> >> There are several affected users posting on
->>>> >>
->>>> https://www.reddit.com/r/buildapc/comments/xypn1m/network_card_intel_ethernet_controller_i225v_igc/
->>>> >> with more details.
->>>> >>
->>>> >> Could I help you debug this? This problem has been reproduced on the
->>>> >> following setups:
->>>> >>
->>>> >> 1. Asus TUF-GAMING-Z690-PLUS-WIFI-D4
->>>> >> <
->>>> https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z690-plus-wifi-d4/
->>>> >
->>>> >> on
->>>> >> Arch Linux, kernel 6.0.2-arch1-1
->>>> >> 2. rog strix x670e-e gaming wifi
->>>> >> <
->>>> https://rog.asus.com/us/motherboards/rog-strix/rog-strix-x670e-e-gaming-wifi-model/
->>>> >
->>>> >> on
->>>> >> Proxmox 7, as well as Ubuntu Linux (kernel 5.19, I believe)
->>>> >>
->>>> >> I'm happy to load any debug modules or provide additional logs as per
->>>> >> your request.
->>>> >>
->>>> >> Thank you
->>>> >>
->>>> >>
->>>> >>
->>>> >>
->>>> >> --
->>>> >> Ivan Smirnov
->>>> >> https://ivans.io/ | https://blog.ivansmirnov.name/
->>>> >> https://www.linkedin.com/in/ismirnov |
->>>> >> *https://ivansmirnov.name/ <https://ivansmirnov.name/>*
->>>> >> *https://github.com/issmirnov <https://ivansmirnov.name/>*
->>>> >
->>>>
->>>> --
-> --
-> Ivan Smirnov
-> https://ivans.io/ | https://blog.ivansmirnov.name/
-> https://www.linkedin.com/in/ismirnov |
-> *https://ivansmirnov.name/ <https://ivansmirnov.name/>*
-> *https://github.com/issmirnov <https://ivansmirnov.name/>*
->
--- 
---
-Ivan Smirnov
-https://ivans.io/ | https://blog.ivansmirnov.name/
-https://www.linkedin.com/in/ismirnov |
-*https://ivansmirnov.name/ <https://ivansmirnov.name/>*
-*https://github.com/issmirnov <https://ivansmirnov.name/>*
+To not do an ifup when it wasn't you who did an ifdown?
 
---0000000000006bcc2105ed9deeba
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> +
+> +	return ret;
+> +}
+> +
+>  /**
+>   * i40e_set_features - set the netdev feature flags
+>   * @netdev: ptr to the netdev being adjusted
+> @@ -12960,6 +12982,10 @@ static int i40e_set_features(struct net_device *netdev,
+>  	if (need_reset)
+>  		i40e_do_reset(pf, I40E_PF_RESET_FLAG, true);
+>  
+> +	if (netdev->hw_features & NETIF_F_LOOPBACK)
 
-<div dir=3D"auto">Hi folks,</div><div dir=3D"auto"><br></div><div dir=3D"au=
-to">Is there any update for the community? More and more folks are asking. =
-We are all techies and happy to help debug.</div><div dir=3D"auto"><br></di=
-v><div dir=3D"auto">Thank you kindly,</div><div dir=3D"auto">- Ivan</div><d=
-iv><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On =
-Thu, Nov 10, 2022 at 03:44 Ivan Smirnov &lt;<a href=3D"mailto:isgsmirnov@gm=
-ail.com">isgsmirnov@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border=
--left-style:solid;padding-left:1ex;border-left-color:rgb(204,204,204)"><div=
- dir=3D"auto">Some more data from another user. Do you guys have any prelim=
-inary investigation you could share back with the community?</div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">Same issue, been struggling with it f=
-or a last month or so: both with Ubuntu and Arch Linux. I have a dual-boot =
-system with Windows 11, and did not notice any issues with ethernet or wifi=
- on Windows. So this indeed seems like a firmware issue, particularly in ig=
-c. Not the adapter itself</div><div style=3D"border-color:rgb(255,255,255)"=
- dir=3D"auto"><br></div><div style=3D"border-color:rgb(255,255,255)" dir=3D=
-"auto">Running on Arch Linux kernel 6.0.7, same motherboard as in your post=
-</div><div style=3D"border-color:rgb(255,255,255)" dir=3D"auto"><br></div><=
-div style=3D"border-color:rgb(255,255,255)" dir=3D"auto"><a href=3D"https:/=
-/gist.github.com/LilDojd/2f030ecc5c5b6f8c3285725adfb8c456" target=3D"_blank=
-">https://gist.github.com/LilDojd/2f030ecc5c5b6f8c3285725adfb8c456</a></div=
-><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto">=
-<br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gma=
-il_attr">On Thu, Nov 3, 2022 at 05:53 Ivan Smirnov &lt;<a href=3D"mailto:is=
-gsmirnov@gmail.com" target=3D"_blank">isgsmirnov@gmail.com</a>&gt; wrote:<b=
-r></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex=
-;border-left-width:1px;border-left-style:solid;padding-left:1ex;border-left=
--color:rgb(204,204,204)"><div dir=3D"ltr">Here is the gist from one reddit =
-user:=C2=A0<a href=3D"https://gist.github.com/DarkArc/50ffca5fc343e2ff8166b=
-c81d3ff8335" target=3D"_blank">https://gist.github.com/DarkArc/50ffca5fc343=
-e2ff8166bc81d3ff8335</a><div><br></div><div>Here are my gists (crash free f=
-or now):=C2=A0<a href=3D"https://gist.github.com/issmirnov/b9ac74d232e1865a=
-e849a3e64dce2afe" target=3D"_blank">https://gist.github.com/issmirnov/b9ac7=
-4d232e1865ae849a3e64dce2afe</a></div></div><div dir=3D"ltr"><div><br clear=
-=3D"all"><div><div dir=3D"ltr" data-smartmail=3D"gmail_signature"><div dir=
-=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr=
-"><div><font style=3D"color:rgb(102,102,102)">--</font></div><div><font sty=
-le=3D"color:rgb(102,102,102)">Ivan Smirnov</font></div><div><font style=3D"=
-color:rgb(102,102,102)"><a href=3D"https://ivans.io/" target=3D"_blank">htt=
-ps://ivans.io/</a>=C2=A0|=C2=A0<a href=3D"https://blog.ivansmirnov.name/" t=
-arget=3D"_blank">https://blog.ivansmirnov.name/</a><br></font></div><div><f=
-ont style=3D"color:rgb(102,102,102)"><a href=3D"https://www.linkedin.com/in=
-/ismirnov" target=3D"_blank">https://www.linkedin.com/in/ismirnov</a>=C2=A0=
-</font><span style=3D"color:rgb(102,102,102)">|=C2=A0</span><font style=3D"=
-color:rgb(0,0,238)"><u><a href=3D"https://ivansmirnov.name/" target=3D"_bla=
-nk">https://ivansmirnov.name/<br></a></u></font></div><div><font style=3D"c=
-olor:rgb(0,0,238)"><u><a href=3D"https://ivansmirnov.name/" target=3D"_blan=
-k">https://github.com/issmirnov</a></u></font></div></div></div></div></div=
-></div></div></div><br></div></div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">On Wed, Nov 2, 2022 at 10:54 AM Ivan Smirnov =
-&lt;<a href=3D"mailto:isgsmirnov@gmail.com" target=3D"_blank">isgsmirnov@gm=
-ail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padd=
-ing-left:1ex;border-left-color:rgb(204,204,204)"><div dir=3D"ltr">Hi folks,=
-<div><br></div><div>As usual, the computers know when the experts join the =
-chat... I haven&#39;t been able to reproduce the issue for the past few day=
-s. Yay for stability, boo for debugging.</div><div><br></div><div>I posted =
-on the=C2=A0<a href=3D"https://www.reddit.com/r/buildapc/comments/xypn1m/ne=
-twork_card_intel_ethernet_controller_i225v_igc/" target=3D"_blank">reddit t=
-hread</a>=C2=A0asking other users to post their output. I&#39;ll do my best=
- to keep an eye out for this issue and get you the logs ASAP once I repro t=
-he crash.</div><div><br></div><div>Thank you for your responsiveness - will=
- keep you=C2=A0posted!</div><div><br></div><div>Best,</div><div>- Ivan<br c=
-lear=3D"all"><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div d=
-ir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><font style=3D"color:rgb(=
-102,102,102)">--</font></div><div><font style=3D"color:rgb(102,102,102)">Iv=
-an Smirnov</font></div><div><font style=3D"color:rgb(102,102,102)"><a href=
-=3D"https://ivans.io/" target=3D"_blank">https://ivans.io/</a>=C2=A0|=C2=A0=
-<a href=3D"https://blog.ivansmirnov.name/" target=3D"_blank">https://blog.i=
-vansmirnov.name/</a><br></font></div><div><font style=3D"color:rgb(102,102,=
-102)"><a href=3D"https://www.linkedin.com/in/ismirnov" target=3D"_blank">ht=
-tps://www.linkedin.com/in/ismirnov</a>=C2=A0</font><span style=3D"color:rgb=
-(102,102,102)">|=C2=A0</span><font style=3D"color:rgb(0,0,238)"><u><a href=
-=3D"https://ivansmirnov.name/" target=3D"_blank">https://ivansmirnov.name/<=
-br></a></u></font></div><div><font style=3D"color:rgb(0,0,238)"><u><a href=
-=3D"https://ivansmirnov.name/" target=3D"_blank">https://github.com/issmirn=
-ov</a></u></font></div></div></div></div></div></div></div></div><br></div>=
-</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
-On Tue, Nov 1, 2022 at 10:21 AM Neftin, Sasha &lt;<a href=3D"mailto:sasha.n=
-eftin@intel.com" target=3D"_blank">sasha.neftin@intel.com</a>&gt; wrote:<br=
-></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;=
-border-left-width:1px;border-left-style:solid;padding-left:1ex;border-left-=
-color:rgb(204,204,204)">On 11/1/2022 02:05, Jakub Kicinski wrote:<br>
-&gt; CC: intel-wired<br>
-&gt; <br>
-&gt; On Sun, 30 Oct 2022 14:44:57 -0600 Ivan Smirnov wrote:<br>
-&gt;&gt; Hi folks,<br>
-&gt;&gt;<br>
-&gt;&gt; I found your commits on the linux kernel igc<br>
-&gt;&gt; &lt;<a href=3D"https://github.com/torvalds/linux/commits/master/dr=
-ivers/net/ethernet/intel/igc" rel=3D"noreferrer" target=3D"_blank">https://=
-github.com/torvalds/linux/commits/master/drivers/net/ethernet/intel/igc</a>=
-&gt;<br>
-&gt;&gt; folder. There appears to be a bug with the igc kernel module on In=
-tel<br>
-&gt;&gt; I225-V chips.<br>
-&gt;&gt;<br>
-&gt;&gt; Specifically, the probe fails at startup with error: &quot;igc: pr=
-obe of<br>
-&gt;&gt; 0000:06:00.0 failed with error -13&quot;. When it does load, it cr=
-ashes after a<br>
-&gt;&gt; few hours with error &quot;igc failed to read reg 0xc030&quot;.<br=
->
-&gt;&gt;<br>
-Could you provide dmesg -w -T | grep -i igc on the boot stage? ethtool -i?<=
-br>
-I&#39;ve cc&#39;d our PAE expert Amir who also could try to look at this pr=
-oblem.<br>
-<br>
-&gt;&gt; There are several affected users posting on<br>
-&gt;&gt; <a href=3D"https://www.reddit.com/r/buildapc/comments/xypn1m/netwo=
-rk_card_intel_ethernet_controller_i225v_igc/" rel=3D"noreferrer" target=3D"=
-_blank">https://www.reddit.com/r/buildapc/comments/xypn1m/network_card_inte=
-l_ethernet_controller_i225v_igc/</a><br>
-&gt;&gt; with more details.<br>
-&gt;&gt;<br>
-&gt;&gt; Could I help you debug this? This problem has been reproduced on t=
-he<br>
-&gt;&gt; following setups:<br>
-&gt;&gt;<br>
-&gt;&gt; 1. Asus TUF-GAMING-Z690-PLUS-WIFI-D4<br>
-&gt;&gt; &lt;<a href=3D"https://www.asus.com/motherboards-components/mother=
-boards/tuf-gaming/tuf-gaming-z690-plus-wifi-d4/" rel=3D"noreferrer" target=
-=3D"_blank">https://www.asus.com/motherboards-components/motherboards/tuf-g=
-aming/tuf-gaming-z690-plus-wifi-d4/</a>&gt;<br>
-&gt;&gt; on<br>
-&gt;&gt; Arch Linux, kernel 6.0.2-arch1-1<br>
-&gt;&gt; 2. rog strix x670e-e gaming wifi<br>
-&gt;&gt; &lt;<a href=3D"https://rog.asus.com/us/motherboards/rog-strix/rog-=
-strix-x670e-e-gaming-wifi-model/" rel=3D"noreferrer" target=3D"_blank">http=
-s://rog.asus.com/us/motherboards/rog-strix/rog-strix-x670e-e-gaming-wifi-mo=
-del/</a>&gt;<br>
-&gt;&gt; on<br>
-&gt;&gt; Proxmox 7, as well as Ubuntu Linux (kernel 5.19, I believe)<br>
-&gt;&gt;<br>
-&gt;&gt; I&#39;m happy to load any debug modules or provide additional logs=
- as per<br>
-&gt;&gt; your request.<br>
-&gt;&gt;<br>
-&gt;&gt; Thank you<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; --<br>
-&gt;&gt; Ivan Smirnov<br>
-&gt;&gt; <a href=3D"https://ivans.io/" rel=3D"noreferrer" target=3D"_blank"=
->https://ivans.io/</a> | <a href=3D"https://blog.ivansmirnov.name/" rel=3D"=
-noreferrer" target=3D"_blank">https://blog.ivansmirnov.name/</a><br>
-&gt;&gt; <a href=3D"https://www.linkedin.com/in/ismirnov" rel=3D"noreferrer=
-" target=3D"_blank">https://www.linkedin.com/in/ismirnov</a> |<br>
-&gt;&gt; *<a href=3D"https://ivansmirnov.name/" rel=3D"noreferrer" target=
-=3D"_blank">https://ivansmirnov.name/</a> &lt;<a href=3D"https://ivansmirno=
-v.name/" rel=3D"noreferrer" target=3D"_blank">https://ivansmirnov.name/</a>=
-&gt;*<br>
-&gt;&gt; *<a href=3D"https://github.com/issmirnov" rel=3D"noreferrer" targe=
-t=3D"_blank">https://github.com/issmirnov</a> &lt;<a href=3D"https://ivansm=
-irnov.name/" rel=3D"noreferrer" target=3D"_blank">https://ivansmirnov.name/=
-</a>&gt;*<br>
-&gt; <br>
-<br>
-</blockquote></div>
-</blockquote></div>
-</blockquote></div></div>-- <br><div dir=3D"ltr" data-smartmail=3D"gmail_si=
-gnature"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr=
-"><div dir=3D"ltr"><div><font style=3D"color:rgb(102,102,102)">--</font></d=
-iv><div><font style=3D"color:rgb(102,102,102)">Ivan Smirnov</font></div><di=
-v><font style=3D"color:rgb(102,102,102)"><a href=3D"https://ivans.io/" targ=
-et=3D"_blank">https://ivans.io/</a>=C2=A0|=C2=A0<a href=3D"https://blog.iva=
-nsmirnov.name/" target=3D"_blank">https://blog.ivansmirnov.name/</a><br></f=
-ont></div><div><font style=3D"color:rgb(102,102,102)"><a href=3D"https://ww=
-w.linkedin.com/in/ismirnov" target=3D"_blank">https://www.linkedin.com/in/i=
-smirnov</a>=C2=A0</font><span style=3D"color:rgb(102,102,102)">|=C2=A0</spa=
-n><font style=3D"color:rgb(0,0,238)"><u><a href=3D"https://ivansmirnov.name=
-/" target=3D"_blank">https://ivansmirnov.name/<br></a></u></font></div><div=
-><font style=3D"color:rgb(0,0,238)"><u><a href=3D"https://ivansmirnov.name/=
-" target=3D"_blank">https://github.com/issmirnov</a></u></font></div></div>=
-</div></div></div></div></div>
-</blockquote></div></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" =
-data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div dir=3D"ltr"><div d=
-ir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><font color=3D"#666666">-=
--</font></div><div><font color=3D"#666666">Ivan Smirnov</font></div><div><f=
-ont color=3D"#666666"><a href=3D"https://ivans.io/" target=3D"_blank">https=
-://ivans.io/</a>=C2=A0|=C2=A0<a href=3D"https://blog.ivansmirnov.name/" tar=
-get=3D"_blank">https://blog.ivansmirnov.name/</a><br></font></div><div><fon=
-t color=3D"#666666"><a href=3D"https://www.linkedin.com/in/ismirnov" target=
-=3D"_blank">https://www.linkedin.com/in/ismirnov</a>=C2=A0</font><span styl=
-e=3D"color:rgb(102,102,102)">|=C2=A0</span><font color=3D"#0000ee"><u><a hr=
-ef=3D"https://ivansmirnov.name/" target=3D"_blank">https://ivansmirnov.name=
-/<br></a></u></font></div><div><font color=3D"#0000ee"><u><a href=3D"https:=
-//ivansmirnov.name/" target=3D"_blank">https://github.com/issmirnov</a></u>=
-</font></div></div></div></div></div></div></div>
+Isn't that condition redundant? I think you add %NETIF_F_LOOPBACK
+to ::hw_features unconditionally, it's always there?
 
---0000000000006bcc2105ed9deeba--
+> +		if (i40e_set_loopback(vsi, !!(features & NETIF_F_LOOPBACK)))
 
---===============7648031622453308266==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+The double negation is redundant as the second argument is bool.
 
+> +			return -EINVAL;
+
+Why don't you propagate return value from i40e_set_loopback() and
+return only 0 or -%EINVAL? If you don't need the actual return code,
+just make set_loopback() return bool, otherwise
+
+	if (changed_features & NETIF_F_LOOPBACK)
+		return i40e_set_loopback(vsi, features & NETIF_F_LOOPBACK);
+
+	return 0;
+
+> +
+>  	return 0;
+>  }
+
+[...]
+
+> -- 
+> 2.34.1
+
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7648031622453308266==--
