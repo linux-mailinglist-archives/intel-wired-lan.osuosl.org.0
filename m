@@ -1,85 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 137D56312F8
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Nov 2022 09:15:34 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC492631356
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Nov 2022 11:32:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 43BBC40412;
-	Sun, 20 Nov 2022 08:15:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43BBC40412
+	by smtp4.osuosl.org (Postfix) with ESMTP id D898E409E6;
+	Sun, 20 Nov 2022 10:32:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D898E409E6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1668932132;
-	bh=iVX7aLRYju0zvLJhexJqLFxot7KORxSmnsjo5hoO48I=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=UcoundB9QOcmbloYj2RGqGWPU8o04QdlYQqOtGoQtO013AgLXaNwWsIHkwatbG21+
-	 wd+yyXZax+ch3+R27LgePhwzFpHHUamzPSu30/H66gD3O2e4ei8d2kJx4M6uOfk8Pk
-	 c0LfBdRV8XOrTjlrg5YY186Iyyhc2fSErSpo7Zi6lYuw+ly5ugeEp31WBzNAk3Vzoj
-	 7+XMqcqPTejiR2jFm+7d4Wja6wN0jH6YWoBWnxV+PnW6Q39iDtLxxgByBKf5/kS4Nv
-	 nOxAnEwL2cxv1RFopUqZ7sX+Eq4NJEfpzsCw1pNhRKq1glU3TZgUjuaFycodnhDJix
-	 IeRevQ7HKCWeQ==
+	s=default; t=1668940373;
+	bh=DkvqRn0bfFxq//KBS3zFBbXe/kx0iRQeCI2uDSwG3OI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=v94sfa8IA1AL70TwGeITqDVpfrgphjvE79uG+uQSgk3e0DM352pjeXs1MEJbC/yZT
+	 IiYAminP+9W33+08umvudYpBJ5J+dv/+Txu3PPq2p52O9zRMdMHWrRn0I0i0WzPooQ
+	 /fJRFW7i0KUKPkgIXAzJtUi2u8YVzwns3ka5zkPTvSrEKZZLFadi6k1y6MkU7wBHuW
+	 YniIxDaVKcV8sV90EICNDyIAIaacBj4j4fhEohP6gKzEmRnuq99yvC9M4dBbFQZMF3
+	 Lv51ZjBZ/7tNjeIYYXqh6lz3R/KrEhse+9oJXZQBlb9/sG5PQd0++OntGBxyr46MrN
+	 MtcujGXcory9Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6G5mcXttDAvd; Sun, 20 Nov 2022 08:15:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hyzM1vxvTawg; Sun, 20 Nov 2022 10:32:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3419840143;
-	Sun, 20 Nov 2022 08:15:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3419840143
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7581A4098C;
+	Sun, 20 Nov 2022 10:32:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7581A4098C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4AA871BF488
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 08:15:27 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E4F311BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 10:32:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 20C6881772
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 08:15:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20C6881772
+ by smtp4.osuosl.org (Postfix) with ESMTP id BC1AA409DB
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 10:32:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC1AA409DB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GiFmHrWZOD_W for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Nov 2022 08:15:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FZG8oDF4xBYC for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 20 Nov 2022 10:32:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C29E281766
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C29E281766
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 08:15:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10536"; a="314530114"
-X-IronPort-AV: E=Sophos;i="5.96,179,1665471600"; d="scan'208";a="314530114"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Nov 2022 00:15:21 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10536"; a="634870994"
-X-IronPort-AV: E=Sophos;i="5.96,178,1665471600"; d="scan'208";a="634870994"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.129])
- by orsmga007.jf.intel.com with ESMTP; 20 Nov 2022 00:15:20 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Sun, 20 Nov 2022 10:15:11 +0200
-Message-Id: <20221120081511.4136778-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6FD9E4098C
+Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
+ [IPv6:2a01:488:42:1000:50ed:8234::])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6FD9E4098C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 10:32:45 +0000 (UTC)
+Received: from [2a02:8108:963f:de38:eca4:7d19:f9a2:22c5]; authenticated
+ by wp530.webpack.hosteurope.de running ExIM with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ id 1owhcr-00035t-Kz; Sun, 20 Nov 2022 11:32:37 +0100
+Message-ID: <8117aac8-947e-49ca-c2b1-ef45c2914975@leemhuis.info>
+Date: Sun, 20 Nov 2022 11:32:36 +0100
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1668932125; x=1700468125;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=sElocw8NOHPAeM08w6r9czswoVHjJyvBluQMuycbjXs=;
- b=b32qmfq9mRTOW3Yxx9hgADVvY6A/7MgqO/uIQQc/CEOn0RE3OssQocVU
- pG/DjORsn0XXAiqEC4PivAv842ZVCEIPYY3OKfGW2RPzWrU64d2b0IbGk
- BMAsH5Q+R24qRI3nPoxZ5WYaBA6l7rbV4vlmg5fnj8vobiK/ajGHTKVFj
- XM2MCPj8a3wCRF/J/oNE7wohl2N3N3cgANSJfBcWjKRYWrPr640GWuB3K
- uYyVsZQC5ZSFLjrR+F/uHuWAZ/lG/BfJSRTnaS7eafIOYvU7oLGeqiB9M
- MTDKF90yq/2JWDjG7qaBaw53prBfdKnqDTfKbEMzfQYbD2mj4QPoxXmxX
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=b32qmfq9
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Clean up and optimize
- watchdog task
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+Content-Language: en-US, de-DE
+To: Conor Dooley <conor@kernel.org>, Jakub Kicinski <kuba@kernel.org>
+References: <CAPAtJa_o5q-sU+AD=G3y43H_5pBKnOZTQGXM99uszPXNkn8Z9A@mail.gmail.com>
+ <20221031170535.77be0eb5@kernel.org>
+ <03f7dc73-3e7c-1e6d-275f-85539493cd7f@intel.com>
+ <CAPAtJa8qupPZZ0AiMWSxNKSd-WMg0MQDQeZcCO_Z-GGBu3jZCg@mail.gmail.com>
+ <CAPAtJa_-yMusW5-C3BDivMu=MOyfKF9VQkxQotX3L_P+Q48oMA@mail.gmail.com>
+ <CAPAtJa_nL5edyiN61ghXZxVUSDBFQQR3uiYJM0uo9mEao=RC0w@mail.gmail.com>
+ <CAPAtJa_hbFbVXQbiNnb_byLqtZ-Dy_EBcvTFH9GyPqt__dFmLQ@mail.gmail.com>
+ <Y3gKkYeijrAIhxjc@spud> <20221118145443.427ecf10@kernel.org>
+ <Y3gTdsg4l71L0vz9@spud>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+In-Reply-To: <Y3gTdsg4l71L0vz9@spud>
+X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1668940365;
+ 77741396; 
+X-HE-SMSGID: 1owhcr-00035t-Kz
+Subject: Re: [Intel-wired-lan] igc kernel module crashes on new hardware
+ (Intel Ethernet I225-V)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,67 +87,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>,
+ regressions@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+ Ivan Smirnov <isgsmirnov@gmail.com>, "Ruinskiy,
+ Dima" <dima.ruinskiy@intel.com>, "Avivi, Amir" <amir.avivi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i225/i226 parts used only one media type copper. The copper media type is
-not replaceable. Clean up the code accordingly, and remove the obsolete
-media replacement and reset options.
+On 19.11.22 00:21, Conor Dooley wrote:
+> On Fri, Nov 18, 2022 at 02:54:43PM -0800, Jakub Kicinski wrote:
+>> On Fri, 18 Nov 2022 22:43:29 +0000 Conor Dooley wrote:
+>>>> Is there any update for the community? More and more folks are asking. We
+>>>> are all techies and happy to help debug.  
+>>>
+>>> Vested interest since I am suffering from the same issue (X670E-F
+>>> Gaming), but is it okay to add this to regzbot? Not sure whether it
+>>> counts as a regression or not since it's new hw with the existing driver,
+>>> but this seems to be falling through the cracks without a response for
+>>> several weeks.
+>>
+>> Dunno, Thorsten's will decide. The line has to be drawn somewhere
+>> on "vendor doesn't care about Linux support" vs "we broke uAPI".
+>> This is the kind of situation I was alluding to in my line of
+>> questioning at the maintainer summit: https://lwn.net/Articles/908324/
+> 
+> Yeah & it is /regression/ tracking which I don't (or rather didn't)
+> consider this situation to be.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      |  2 --
- drivers/net/ethernet/intel/igc/igc_main.c | 17 -----------------
- 2 files changed, 19 deletions(-)
+Yeah, looks like this is not something that look track-worthy for
+regzbot -- at least for now, maybe it one day makes sense to use and
+improved regzbot for bug reports as well, but I'd like to focus on
+establishing regression tracking properly first, which still requires a
+lot of work.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index df3e26c0cf01..5da8d162cd38 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -292,8 +292,6 @@ extern char igc_driver_name[];
- #define IGC_FLAG_PTP			BIT(8)
- #define IGC_FLAG_WOL_SUPPORTED		BIT(8)
- #define IGC_FLAG_NEED_LINK_UPDATE	BIT(9)
--#define IGC_FLAG_MEDIA_RESET		BIT(10)
--#define IGC_FLAG_MAS_ENABLE		BIT(12)
- #define IGC_FLAG_HAS_MSIX		BIT(13)
- #define IGC_FLAG_EEE			BIT(14)
- #define IGC_FLAG_VLAN_PROMISC		BIT(15)
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 7388741eee26..7c8dd51014e2 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5546,25 +5546,8 @@ static void igc_watchdog_task(struct work_struct *work)
- 				mod_timer(&adapter->phy_info_timer,
- 					  round_jiffies(jiffies + 2 * HZ));
- 
--			/* link is down, time to check for alternate media */
--			if (adapter->flags & IGC_FLAG_MAS_ENABLE) {
--				if (adapter->flags & IGC_FLAG_MEDIA_RESET) {
--					schedule_work(&adapter->reset_task);
--					/* return immediately */
--					return;
--				}
--			}
- 			pm_schedule_suspend(netdev->dev.parent,
- 					    MSEC_PER_SEC * 5);
--
--		/* also check for alternate media here */
--		} else if (!netif_carrier_ok(netdev) &&
--			   (adapter->flags & IGC_FLAG_MAS_ENABLE)) {
--			if (adapter->flags & IGC_FLAG_MEDIA_RESET) {
--				schedule_work(&adapter->reset_task);
--				/* return immediately */
--				return;
--			}
- 		}
- 	}
- 
--- 
-2.25.1
+> I'm generally a little unsure as to when
+> I should trigger regzbot in general:
+> - immediately when I find something?
 
+Yes, ideally, as documented here:
+https://docs.kernel.org/admin-guide/reporting-regressions.html
+
+> - only if it goes a while with nothing constructive?
+
+But that is fine as well. But FWIW, we all don't want bureaucracy. Even
+I don't add each and every regression I see to the tracking yet.
+
+> - is it okay to use it outside of "this used to work and now doesnt"?
+
+Guess I should clarify that this is unwanted in above doc.
+
+Ciao, Thorsten
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
