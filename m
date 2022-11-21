@@ -1,91 +1,178 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEA21632A05
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Nov 2022 17:50:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3F4B632BB6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Nov 2022 19:05:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 555D0416F7;
-	Mon, 21 Nov 2022 16:50:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 555D0416F7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5532D60F36;
+	Mon, 21 Nov 2022 18:05:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5532D60F36
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669049441;
-	bh=TsBkbwlDrscOl2CcZKVY7HGaTuQajZ6HnHZlt+Tjdps=;
+	s=default; t=1669053951;
+	bh=8ylVQ54OFFy9WjMj+WqeT3K0CL5+Oba6e2ai/trhR4Q=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=4SRHhPAQZe+JNyGm20/QERoNeL0t0FHDY9ZasLYXRdyMWDWfvDGKINC2bLwmicY25
-	 0uQNjfDiJ5Bh5UrEyTd9NBIC6ANyyuFh0bbnJStqzBWD5wheXEK7NDacIkGyxZ0F2p
-	 ViIzqi/RV+iwSc66BihMYPv2BjdQW8EcS1sy7JCpO2W7vBcIMhm+725njDicImKRF7
-	 ZbaY5U/khybjMLakEgVxgNRefXFPHeV6joKTigi8I79lmNUmzXspzjylYlcqhUd929
-	 JVAzc10uOt1wIYtuVH0C+6XRcGqyuTNp93vTz7rwpJInmDdUv+EMwV7rfPyVqblv56
-	 9JxTlyUlhMx8g==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mbmDg58QvZqz; Mon, 21 Nov 2022 16:50:40 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C9EA4416CD;
-	Mon, 21 Nov 2022 16:50:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9EA4416CD
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ABD6B1BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 19:55:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 85F1D60BE1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 19:55:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 85F1D60BE1
+	b=wKEaWM0vkzuXyUqfXlfDnmOvjK6w0nC6QyklR19+09LMYFbComYaFAqaQ78gGOVD5
+	 SCn+cd3rTpLt3i/7CgJT44d/sCZ/I3XEhj3b7Yn7JolAVBkdwpNOiMeEKBZPAI2IKm
+	 1DLZkqTyO9J54Z1l6s4wMarbMeFjSYKYw8PyxB1eGLNb5jQXzOfJB3ip7/p0ZTcLPY
+	 HrKuU3Y6yqluRhNqPq90RcG+2VdzJGIHMGANpBPfoZklWo50wcXEE8jUtTCX7VjqJs
+	 rhhKTgt6HOiimY9F3DeDZTBF3p8tTjoi0qc1+97/Ds55uXNhxRIygsrByT2Xr2w9H0
+	 JwYjq0P95gFRA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jd7_xMcexQ4I for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Nov 2022 19:55:19 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4wdg9QDN_N6N; Mon, 21 Nov 2022 18:05:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 439C360757;
+	Mon, 21 Nov 2022 18:05:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 439C360757
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 96A381BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Nov 2022 18:05:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6CDD4401F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Nov 2022 18:05:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6CDD4401F3
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wODF6AuMmJZ2 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Nov 2022 18:05:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40E8F60AC9
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 40E8F60AC9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Nov 2022 19:55:19 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BF0CDB80B4D;
- Sun, 20 Nov 2022 19:55:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B57BC433D6;
- Sun, 20 Nov 2022 19:55:12 +0000 (UTC)
-Date: Sun, 20 Nov 2022 19:55:09 +0000
-From: Conor Dooley <conor@kernel.org>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <Y3qGHROcvdL1vKip@spud>
-References: <20221031170535.77be0eb5@kernel.org>
- <03f7dc73-3e7c-1e6d-275f-85539493cd7f@intel.com>
- <CAPAtJa8qupPZZ0AiMWSxNKSd-WMg0MQDQeZcCO_Z-GGBu3jZCg@mail.gmail.com>
- <CAPAtJa_-yMusW5-C3BDivMu=MOyfKF9VQkxQotX3L_P+Q48oMA@mail.gmail.com>
- <CAPAtJa_nL5edyiN61ghXZxVUSDBFQQR3uiYJM0uo9mEao=RC0w@mail.gmail.com>
- <CAPAtJa_hbFbVXQbiNnb_byLqtZ-Dy_EBcvTFH9GyPqt__dFmLQ@mail.gmail.com>
- <Y3gKkYeijrAIhxjc@spud> <20221118145443.427ecf10@kernel.org>
- <Y3gTdsg4l71L0vz9@spud>
- <a15508df-eab4-ce00-7340-69323c462fdc@intel.com>
-MIME-Version: 1.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 06B2F400AC
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 06B2F400AC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Nov 2022 18:05:43 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10538"; a="314772863"
+X-IronPort-AV: E=Sophos;i="5.96,182,1665471600"; d="scan'208";a="314772863"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Nov 2022 10:05:41 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10538"; a="635261007"
+X-IronPort-AV: E=Sophos;i="5.96,182,1665471600"; d="scan'208";a="635261007"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga007.jf.intel.com with ESMTP; 21 Nov 2022 10:05:41 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 21 Nov 2022 10:05:41 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Mon, 21 Nov 2022 10:05:40 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Mon, 21 Nov 2022 10:05:40 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Mon, 21 Nov 2022 10:05:40 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NteMs+RGrAfNcKf6AbJcdI2Sp7rTASQ9LQks3whEpJ4XKYtiLG1etWzOQxDSlrDSrW+XV6MuChrIy+GpzoTZAUCR1tlGmgz3tebYhKxUJFyrCmTFe2uH54cjB8zDfPNwzzHWOMM8FHbcQ2pngHQeVtzRAsSiK+HdA5zb5ZvsX5TmeGM5kwMjzl6ptDSRRgmrUvaPyfsKGNWqPgyN6xYzTvoUYnf66p9DE0Zvu1SKdvKPnhGO5W+dzGstV1AE3Kpe6Wtg3ywvDgTEANDhayek8uUWA/mhVe2rabThIDrZNcmhMTIR+ey3rr+vtt/cAcNnettycbNQEcshVZ2aAHMC9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ubtBNfw02JlzFrev6CoLhjQdy9mHSRDzb2wBJ1ZFjC8=;
+ b=JLTeeBBULVLEdpGQWOiS27uN+QsoaEgMJHEdL080Hil5pvo2wsnyFeToRYmk9i+pjKua4+asl/Pj/ae/6XYM1qvuTHMPX+ugFHnjD5q/Nt4lYNAStCQ8RjL/b0exC+B3kRpH1oWldoLIZUUNNwFoLmhZ9vetpkcx3LgF/GlPAiJgh4W3++WnpAG2xp9pfKCPm8MdkdvZ/wrxDP5Ch0H8YePiu+yS77zJlbFvm5fTJqTA9Jr8j//7PECxfua4zRs9zE1pm/+zj+zjgZh7l+GqEILhbnU6cS5bAWBGs6F2DwegOS7gISk5dUChno0EkQmebtq4uVVjPhHZUe6SNonG2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ DS0PR11MB7444.namprd11.prod.outlook.com (2603:10b6:8:146::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5813.16; Mon, 21 Nov 2022 18:05:37 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::5f39:1ef:13a5:38b6]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::5f39:1ef:13a5:38b6%6]) with mapi id 15.20.5834.009; Mon, 21 Nov 2022
+ 18:05:37 +0000
+Date: Mon, 21 Nov 2022 19:05:25 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Gaosheng Cui <cuigaosheng1@huawei.com>
+Message-ID: <Y3u95fVsT/7zXQQp@boxer>
+References: <20221120061757.264242-1-cuigaosheng1@huawei.com>
 Content-Disposition: inline
-In-Reply-To: <a15508df-eab4-ce00-7340-69323c462fdc@intel.com>
-X-Mailman-Approved-At: Mon, 21 Nov 2022 16:50:22 +0000
+In-Reply-To: <20221120061757.264242-1-cuigaosheng1@huawei.com>
+X-ClientProxiedBy: FR0P281CA0083.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:1e::18) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|DS0PR11MB7444:EE_
+X-MS-Office365-Filtering-Correlation-Id: 07f67d67-b289-40ce-f354-08dacbeafe53
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: wXDR9V2nqA7p5YANWMBVMKdQqqg+z7I4mT2TAiDJFRLyxNZM+vGkxZbaZFFw9KfHd20FLoWsee1nWpHDe/2o8UA4/5hQUCkKNaBRqJuDaxd4A7k5Huagv7fP7BNvlHiy4I7Xsn3sfqhvQkOWEdGGlXARlJKLE8uzOjqGJuBNhX/lD1Lf9BCNVwcQU6F46D/3Sdll9iaogoZ8nLqnIig4jmdcSPbiCV+8ZPbmh+XH7kK1j2uB35bIpdzcPPSMAmVIRm9n3Dks/13U9xLQrnmfS6ITzIyB8LEdgzpZCTlEAn/9XYwTZzNlj1Roef206JkhhYmNRnltw/Bn1ncoKsjzxZWelmJa8vz42yAr3+0oV0V+vwAQv5A2ggp14WnN3UvKZ9DbOw9QlijB0YXvO4zAussBJ58MzJvxnSHjGLQHBDnsluu/UnAmpJP0MqedL+runAcufJDP485NRE8Y5EnQmB7HhBEzGF4jrQntW8B87pftx2NemFn4ShAdnsPGLqsqSgDnl6G4F7UlOk8RXtE7bk4sDUqnBbQVHgdRK8R14Y/I1/noR62Cu1hqmKPMnTURno2mZH6JgGBdW/S0PsQdLYhUAwSW0MbsSDbfUZ73lpe2CQfN8hnzr84hBjuHr85ROu6/dt3/LLkiRHzREp3fjQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(7916004)(136003)(376002)(346002)(366004)(39860400002)(396003)(451199015)(41300700001)(8936002)(54906003)(6916009)(4326008)(5660300002)(316002)(66476007)(66556008)(66946007)(8676002)(44832011)(478600001)(2906002)(6506007)(186003)(6486002)(9686003)(26005)(6512007)(6666004)(33716001)(38100700002)(82960400001)(83380400001)(86362001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?DfgVEUFfKJMhiqB2RTaOOJHmr9V0rCB5PKVcITDZM4nmTwSgXkCQXtkq6ezn?=
+ =?us-ascii?Q?P5xbZSrLFFjHCCtYh6SjKSNTTVrrB4u7eqt7DNqoykwyFLBCKYZ9yrF0GO6S?=
+ =?us-ascii?Q?DLOFc6QPvFaNU1qyrWNlE/Vmzf+3QyGF+SUCbcAYSxehvLLfYX4giWpPXgTz?=
+ =?us-ascii?Q?GL8YKVAf0MtHPIKRPhxQgwjSweDAt3VYQD2LlwYMuNWGGATaeIMTuT5wp8Dk?=
+ =?us-ascii?Q?POjjdlkLDVRTxpUwbSGQRmRr4R1icyFYRK1oXPAcoyCuvJ5UctmEAt22VgmR?=
+ =?us-ascii?Q?z36YG1ynN+PKdh1LTB6Lj8PNk/rLtGfCn8ax8RSfRYKj/nhHJNp+kzrn+vAA?=
+ =?us-ascii?Q?QVo9XtfNj6cv5HpH/Octow/8CQPa7yxLUqrGSvPrGeQ4Q4e1z3pAsgyvu7qn?=
+ =?us-ascii?Q?zb7Y8sbE/RlyfLch8QgE/SHdCXtNqMWMEZ/3FHxVSixSFpB7gURWfTNhO4f6?=
+ =?us-ascii?Q?4hBgojMNVHL7ZfhZIFLUGkMYuEOneM7vKVF+6X8tnTT7HjtuMC0L10qyJlqS?=
+ =?us-ascii?Q?sAbTAHhsdw0NzbMQG1y7LspRgElF1kQPieSkk7hm7abiBc3BUBFcMTUUC9Io?=
+ =?us-ascii?Q?smKqVZVHg19o2TYAFvdt4ag3fP47w8EhVGSUHEX3QEPfLoXefjqUWNeFwqhm?=
+ =?us-ascii?Q?sKUFpMgZIGYUNoVFp5UNqGGJe0dQwI0gX8JRrCnNCvuiFbkxlxzf9K8wviNZ?=
+ =?us-ascii?Q?/18dkiWMbUedvuNjOLoP3gkcd15QZvC6mhP5Ty2Phugh3oT2yNsQP0Uj0Z4D?=
+ =?us-ascii?Q?Fowe2asupJAfctA+C+NVZ12fbTUcbrkgTLRK+xG4SnvCj/X6B6cD4d6M0s3s?=
+ =?us-ascii?Q?QPFcnbNqZ8NEqwZZzQzfxppif8uuoz1b+ApInhRRAYQtdhbdUlmXDNA/gxtF?=
+ =?us-ascii?Q?qnZccBDMlntcEwJj+ny5ms+zKLuhA3NSnz103VU7ImQKxmVANow2czdoULlJ?=
+ =?us-ascii?Q?NfZW/P07ck1ejkSKnZ1Bjf8oKov6pGu1aua+N5MkuJY7W2KsJa9BNEW8f5FC?=
+ =?us-ascii?Q?V0EP6GZmc6G+bdnmUGlLOCvGlc7sSsv5kj1HSfEGsyXh3QOvla20+N7KXUSD?=
+ =?us-ascii?Q?zdjIFMvty9PWuzx6ii8YIugOOKd5gt6EvWo74f5EAdyJl7MQB3/dPuWaEGmx?=
+ =?us-ascii?Q?ZwsrRVTswOr0pZECkZ+no/jTYTgwfgVAwDJS9c7YCCEolRI039+EP9mMqt6L?=
+ =?us-ascii?Q?cTJzxfk+vVidlQAWN1LMzhu7OR4Urln1cVLJ1r4xfJ0onetIcJ8tOiDi9R62?=
+ =?us-ascii?Q?MPMtjKckVxGV1M3Tt2FJA31WfVuC2+tvnY5EmA09Lxk5M2dbOiCDTVh+OiSv?=
+ =?us-ascii?Q?Y7F2sS3+9Zy5/9i3SmJjOaciVwEC+NFoEqSVI22/OVnBFsF4TeMMT6ZjX8Ch?=
+ =?us-ascii?Q?hknrXmTeX98HdrqcDsmX716Md3qQDEzqR1Y9jOBhAtt2iCZ4EjfdRTRIe+mz?=
+ =?us-ascii?Q?JeYdw+gvGwspt4pDbMThrSOlOFAO9vv54XA8UsMX+ZEND0QPwqcEVFVb6LPD?=
+ =?us-ascii?Q?QvkXhhMiQMdZUfeqLe521iXxrmTLokcDLkjT6po2Cdf5FdyzApXhEVW6n22R?=
+ =?us-ascii?Q?uXvReiXYBFDkohRks1hInOqYxfmbBD5Ih1H/euVl0S8MH6VmrX9fq7UU0cAB?=
+ =?us-ascii?Q?cw=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 07f67d67-b289-40ce-f354-08dacbeafe53
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Nov 2022 18:05:37.7296 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1VIciI97CCeZHJwJubL2Xq1/kaxPP+UiujBUKl4R5PyQc1Zqs7K8WJGTDIIQQtpm20c4Cx52nTfQ+vQjIcoITdwcB5efnZDdBNr2dZyAqCs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7444
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1668974114;
- bh=cZSsOS0Ut8voiTgIShxVOA/3PE9RyEeZw1A6qbjGPEw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dUJdRvrrH2yLSWj8iU8OHJfSjnr1ObIajAVyUx2Nu6SYErL5TUPYMBohdlndbxsUb
- Okz/NpXPAisDEIULZ0r39WwtLmMZgiN3fSCfZzV9ol+P55Bez+/rfcuQIYINT5hW8Z
- Q2qqOwHn6Li9E6meaCcoLoC1LSJ9BKHQ0OXWoip8xjdgKSX9dLRBCYjdDACmgKVGfW
- L5wikFtz64V4GgzG+HBM6JXnsdmBJsacbeoF2AMErHMSBewMbBNo47O8fJLvgZ3S3k
- +AkAGaS8xUQbDpmTo1zyuwRPZg9v0xrO0dFU7+C4Fxfp4BIpLbB95bzcJjb8xBQGoC
- L27S9Ve46G5xw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=dUJdRvrr
-Subject: Re: [Intel-wired-lan] igc kernel module crashes on new hardware
- (Intel Ethernet I225-V)
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1669053944; x=1700589944;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=4brfBwP5/Nu1yASFmCEdAWEysRPv7AfX+li7GJ64rb4=;
+ b=H/NB1L3IFbgY8X73jeEN3zi79RutY05DouWgQFogxUzfgFQgTvf+wB1T
+ nt7Wm8q2mpX+vC9lqMZGYe8HLw9Aad7A48hUGntXc+pgKIGqacfmNGzl1
+ uibwiA2JozDauw5ElAEgAD1zkD76ucm2oKu5AHdc9RJgNt99TcfjoCLKV
+ z3Zu/WnOu2rnKs+9ZpQuz9NzW1oGaOqj++xoLEsUopjGhb+eFPv2N98BW
+ GCYPTgflUA8eZWImxyKLUeCgF0OPUqMDnPlQxMA3O3hHpR46/egF/EhSS
+ byvmOnfOZldF2ZUR0DhtT5AkauHzoUnN6ooPErF6tcN99dSNbMOe2kpMc
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=H/NB1L3I
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net] intel/igbvf: free irq on the
+ error path in igbvf_request_msix()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,98 +185,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>,
- regressions@lists.linux.dev, "Meir, NaamaX" <naamax.meir@intel.com>,
- Ivan Smirnov <isgsmirnov@gmail.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
- "Avivi, Amir" <amir.avivi@intel.com>
+Cc: "alexander.h.duyck@intel.com" <alexander.h.duyck@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "jeffrey.t.kirsher@intel.com" <jeffrey.t.kirsher@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Nov 19, 2022 at 08:06:05PM +0200, Neftin, Sasha wrote:
-> On 11/19/2022 01:21, Conor Dooley wrote:
-> > On Fri, Nov 18, 2022 at 02:54:43PM -0800, Jakub Kicinski wrote:
-> > > On Fri, 18 Nov 2022 22:43:29 +0000 Conor Dooley wrote:
-> > > > > Is there any update for the community? More and more folks are asking. We
-> > > > > are all techies and happy to help debug.
-> > > > 
-> > > > Vested interest since I am suffering from the same issue (X670E-F
-> > > > Gaming), but is it okay to add this to regzbot? Not sure whether it
-> > > > counts as a regression or not since it's new hw with the existing driver,
-> > > > but this seems to be falling through the cracks without a response for
-> > > > several weeks.
-> > > 
-> > > Dunno, Thorsten's will decide. The line has to be drawn somewhere
-> > > on "vendor doesn't care about Linux support" vs "we broke uAPI".
-> > > This is the kind of situation I was alluding to in my line of
-> > > questioning at the maintainer summit: https://lwn.net/Articles/908324/
-> > 
-> > Yeah & it is /regression/ tracking which I don't (or rather didn't)
-> > consider this situation to be. I'm generally a little unsure as to when
-> > I should trigger regzbot in general:
-> > - immediately when I find something?
-> > - only if it goes a while with nothing constructive?
-> > - is it okay to use it outside of "this used to work and now doesnt"?
-> > 
-> > Either way, but I did some more googling and found this reddit thread:
-> > https://www.reddit.com/r/intel/comments/lqb4km/for_people_having_i225v_connection_issues/
-> > 
-> > That's being reported against windows & I dunno if the dude is using
-> > firmware and driver interchangeably etc. But the disabling power saving
-> > etc sounds oddly like the issue we have here, since that was a proposed
-> > workaround in Ivan's 2022 reddit thread.
-> > 
-> > Supposedly I am on firmware-version 1082:8770, but /I/ I have no idea
-> > how that corresponds to windows versioning. That may lend some credence
-> > to your assertion about firmware being the source of many issues.
-> > 
-> > > Finding a kernel release which does not suffer from the problem
-> > > would certainly strengthen your case.
-> > 
-> > Aye, likely to be a little difficult to do a meaningful bisection for
-> > me at least, since the motherboard I have with the problem is an AM5
-> > one for the new Zen4 stuff. I'm not an x86 person, so not entirely
-> > sure when that support landed. I may do some poking tomorrow..
-> > 
-> I do not think we can resolve this problem on this forum.
-> In early Ivan's report was reported error to netdev "PCIe link lost, device
-> now detached"). Since the PCIe link unexpectedly drops it could lead to many
-> problems (not only crashes).
+On Sun, Nov 20, 2022 at 07:17:57AM +0100, Gaosheng Cui wrote:
+> In igbvf_request_msix(), irqs have not been freed on the err path,
+> we need to free it. Fix it.
+> 
+> Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual functions")
+> Signed-off-by: Gaosheng Cui <cuigaosheng1@huawei.com>
 
-Hmm, I'll take a look at what mine spits out next time it dies, but I
-would imagine that you're correct and I see it too.
+Hi,
 
-> Before you go to SW/FW bisection (change FW(NVM), go back with a kernel
-> version) - please, contact your board vendor (ASUS). Why PCIe link drop?
+> ---
+>  drivers/net/ethernet/intel/igbvf/netdev.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+> index 3a32809510fc..e212ca16df00 100644
+> --- a/drivers/net/ethernet/intel/igbvf/netdev.c
+> +++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+> @@ -1074,7 +1074,7 @@ static int igbvf_request_msix(struct igbvf_adapter *adapter)
+>  			  igbvf_intr_msix_rx, 0, adapter->rx_ring->name,
+>  			  netdev);
+>  	if (err)
+> -		goto out;
+> +		goto free_irq1;
 
-I dunno, I suppose it just entered a lower power state!
+s/free_irq1/free_irq_tx ?
 
-> Circuit problem on board, the system performs power management flows and
-> does not stop the driver.
+>  
+>  	adapter->rx_ring->itr_register = E1000_EITR(vector);
+>  	adapter->rx_ring->itr_val = adapter->current_itr;
+> @@ -1083,10 +1083,14 @@ static int igbvf_request_msix(struct igbvf_adapter *adapter)
+>  	err = request_irq(adapter->msix_entries[vector].vector,
+>  			  igbvf_msix_other, 0, netdev->name, netdev);
+>  	if (err)
+> -		goto out;
+> +		goto free_irq2;
 
-My GPU and other PCI devices are returning from lower power modes properly.
-I wonder what's different about this specific device. As I said, not too
-familiar with x86 stuff - is there someone from AMD worth poking as the
-output from lspci is a wall of AMD bridges w/ endpoints mixed in.
+s/free_irq2/free_irq_rx ?
 
-Doing a cursory look at other x670 stuff - the non-asus ones that I
-looked at are not using Intel ethernet.
+>  
+>  	igbvf_configure_msix(adapter);
+>  	return 0;
+> +free_irq2:
+> +	free_irq(adapter->msix_entries[--vector].vector, netdev);
+> +free_irq1:
+> +	free_irq(adapter->msix_entries[--vector].vector, netdev);
+>  out:
+>  	return err;
 
-> "failed to read reg 0xc030" (just symptom) happen after PCIe link lost.
+Besides above suggestions, change LGTM.
 
-Per 47e16692b26b ("igb/igc: warn when fatal read failure happens"), it
-looks as though this is not a *new* problem though as you guys have seen
-this while testing.
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 
-I've got a 1 G NIC, I like my dev machine to "just work" so I'll probably
-throw that in and see how far that gets me. IIRC it's an igb one so will
-at least make for a datapoint.
-
-Thanks,
-Conor.
-
+>  }
+> -- 
+> 2.25.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
