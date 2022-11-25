@@ -1,88 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A17363839B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Nov 2022 06:47:08 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE31363869A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Nov 2022 10:48:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 853FA40235;
-	Fri, 25 Nov 2022 05:47:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 853FA40235
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9D926404DB;
+	Fri, 25 Nov 2022 09:48:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D926404DB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669355226;
-	bh=jDvaM3EsQUHw2NUku78IgP8s/oQRsY2rhdIgwNp1WgE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=pIgdwi/XFeqdV1twnhHO5H0GlAe3rhiIu8di4W/rB3lHXI427YsJnzjfvt65f3oWs
-	 bP2k11KjshBMiyExsbMpZNj8b5YNjrssoiwTmHF6GGzsCaIV13wvp8LAgPHme42C48
-	 AkjwNSjxxPGq5OPcM3FFhrksrzpd/Cqtb0tFOBw8SJbeiTttC6ygNsmHX9szmTFudf
-	 gL9lmzAXJA3KadoDCIFYgWCN9cGx0PMSDBEUV/dtCDUx/JxPe6jwMgC40yyjVkxJU2
-	 zWhF7Sy1OQ2AqCqjKUeywdjzOuv0tps3VsU1nI7Zxl9XYzioAXHjTW04jENOqxpvyq
-	 upkZlM+PWsGTg==
+	s=default; t=1669369731;
+	bh=zwfnw+lWQGYGZKoyJBlxSXAoyp8QfCYn57E1RUfqpLI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=arXDViWwi+PgAd2ifpuT21YpjjS7/Oiz8DDrepNPDopn/QssSD7xeojgop9aptBuw
+	 63QeuNRVgcqrcVUryzFwUrM+7WaPAX/iDlY2T2zu0hHdBdMVKDT3ALlZRc6+PizfSV
+	 0h2qqQOhQdd/tZN70/UybWzDPeejS2Aq3iMmE7AcqqeqXePuWMFepx0I3RvaA6bhq8
+	 wjVB/2M6g3ycy8XY755cI+daex04nYNSINqs6iwtVF5ph/OYuEtjmu4RiGAgSXutA3
+	 pZ1nai+CqxIK9FjK3ZRoGaN3VdBDAIMGkpJRTrdabcs28hUZp1uhUhKfnVcZI++27k
+	 Ald5895p7QB7w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wPLiHS-i4PSi; Fri, 25 Nov 2022 05:47:05 +0000 (UTC)
+	with ESMTP id k-fZ1kpo6UQC; Fri, 25 Nov 2022 09:48:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7829940242;
-	Fri, 25 Nov 2022 05:47:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7829940242
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9012540459;
+	Fri, 25 Nov 2022 09:48:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9012540459
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 10CD81BF2B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 05:47:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ED7161BF2B4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 09:48:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DEB9160E8F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 05:47:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DEB9160E8F
+ by smtp3.osuosl.org (Postfix) with ESMTP id C468A60BB8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 09:48:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C468A60BB8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id axL21IL3ru7d for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Nov 2022 05:46:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A902C60DB7
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A902C60DB7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 05:46:59 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10541"; a="297772591"
-X-IronPort-AV: E=Sophos;i="5.96,192,1665471600"; d="scan'208";a="297772591"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2022 21:46:58 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10541"; a="705963152"
-X-IronPort-AV: E=Sophos;i="5.96,192,1665471600"; d="scan'208";a="705963152"
-Received: from lkp-server01.sh.intel.com (HELO 64a2d449c951) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 24 Nov 2022 21:46:57 -0800
-Received: from kbuild by 64a2d449c951 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oyRY8-0004iY-2F;
- Fri, 25 Nov 2022 05:46:56 +0000
-Date: Fri, 25 Nov 2022 13:45:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63805697.gczpCgPff5ZVEo2Z%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id vA4IrjfDXH79 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Nov 2022 09:48:44 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D72160AD1
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
+ [IPv6:2607:f8b0:4864:20::631])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6D72160AD1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 09:48:44 +0000 (UTC)
+Received: by mail-pl1-x631.google.com with SMTP id k7so3529760pll.6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Nov 2022 01:48:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fh9lKt/Ex1PEWTAeH6nLeKPXEkO8R8rkyg+dYswqgEE=;
+ b=hz64i/bK4NPqQ1HD5uExJbi77tKoMFMINK2gRQ0hFEhC5g7bjrym1qr70d1C9loLuk
+ E+zhyTh0+tABAbdU7FgUwoL0xIVjgq8kFzG3EJWs+eskgp0H/aSNivY8h+oj62ft7QU6
+ Fue8riBNkVMCxhVdQLxPeBZkoAXRmUjaEThC9FwaBifWS901pweJpDSV858bAstgJl2R
+ n/EeSne+Rmy90R1XzxByOJMWqhIWCjLxCMP3b9ucKX3DBJdtTqmrL+3QNRpnWsknfRvz
+ ByhK43huweolelg0MHEq2hzn8s6tinsPW9kFLL3VaUlEROj1PEAtmoLZmb/7b1dldll1
+ lqdQ==
+X-Gm-Message-State: ANoB5pn3jpsv2ySdX5A/X8aKFZ45KnIGC9LH1APistuArEsPRBbGITbW
+ tFUbVfOkb36sGIF5An5ZZn0tRw==
+X-Google-Smtp-Source: AA0mqf7lZaeE4yg7AW0Zyy+PHMsdV0xTaeowycIugKV0CyHIEnPfVIYVEXLDovr2cbvx7/bzEry1XA==
+X-Received: by 2002:a17:903:40c4:b0:188:4f86:e4ea with SMTP id
+ t4-20020a17090340c400b001884f86e4eamr18503460pld.59.1669369723802; 
+ Fri, 25 Nov 2022 01:48:43 -0800 (PST)
+Received: from ?IPV6:2400:4050:c360:8200:8ae8:3c4:c0da:7419?
+ ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ by smtp.gmail.com with ESMTPSA id
+ r17-20020a63ce51000000b0045751ef6423sm2273887pgi.87.2022.11.25.01.48.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Nov 2022 01:48:43 -0800 (PST)
+Message-ID: <4a2d4e3e-5b15-2c58-dc49-92908ab80ad0@daynix.com>
+Date: Fri, 25 Nov 2022 18:48:38 +0900
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1669355219; x=1700891219;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=BhC9+DieigZTQ6IbAEXNk0AS4oYcGKTCRCvZ/Tnufmk=;
- b=WpCxWPqiuqfwyo+rDg7u1rj+Fb0Djku4L0fOTF6A7U87lSc78ChVokR/
- OpjDLnO1/aK9oeoSYuVrjfqpTUBVQA72Xn6g8cFswFALyf+3GPrFAXinA
- vKeCclBKxnLYTqjx7GD/oRFgXrH68FiWrYcubdVHEc1Q1HpRT7xeyVdhx
- QQUsvViS2cOXCYG+4siZKJvtLdtnkvnkIDLHud3GlRkm5XIPq7PLP6fm1
- 73P152WvfAQwzVhgGtCl8wFpv9c+5Oi3++EB32QN+oqfoOv8V5v0GehEW
- aDprI9PjmFxnuJ1GGZg6ukxcTY2UpuWUtKngZykp6pUIImg4RTKcDlFPP
- w==;
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+References: <20221123010926.7924-1-akihiko.odaki@daynix.com>
+ <Y34/LDxCnYd6VGJ2@boxer>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <Y34/LDxCnYd6VGJ2@boxer>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fh9lKt/Ex1PEWTAeH6nLeKPXEkO8R8rkyg+dYswqgEE=;
+ b=vDysZeeLfQomwf6B75nRI+HaGjwrhHZIUs5fdZIrRPKP/VbWvL7yQ0ALrxn4dZl7j9
+ n+kpaP41Wst0rPmTeoFnCi1nUcqjnbvqBwdn69zyBwUV/DX4wxKIvJ/vlrfJ8V/DUNmg
+ Je7abb6o1fqWw+0Owl7vUd5QNv/AEvpp0VaHOT+SOBNUcA8KkJzgDrlQyWWRtEjH6YMb
+ id+oeuDWgcYSLAEolbcBqs864ZePbxbPDZZmCwSYUqNYf8Dqrw1ah3nxPAIp87+ybaEc
+ OMNm7FyX6fB7gDrl5TTgsNRtySjRrC+DRrN1m5r/w9nqR06/zETDgWY+DnOLP/hj/z9L
+ dRJg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WpCxWPqi
-Subject: [Intel-wired-lan] [tnguy-net-queue:10GbE] BUILD SUCCESS
- 45605c75c52c7ae7bfe902214343aabcfe5ba0ff
+ dkim=pass (2048-bit key) header.d=daynix-com.20210112.gappssmtp.com
+ header.i=@daynix-com.20210112.gappssmtp.com header.a=rsa-sha256
+ header.s=20210112 header.b=vDysZeeL
+Subject: Re: [Intel-wired-lan] [PATCH v3] igb: Allocate MSI-X vector when
+ testing
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,83 +115,89 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Yuri Benditovich <yuri.benditovich@daynix.com>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Yan Vugenfirer <yan@daynix.com>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 10GbE
-branch HEAD: 45605c75c52c7ae7bfe902214343aabcfe5ba0ff  e100: Fix possible use after free in e100_xmit_prepare
 
-elapsed time: 2021m
 
-configs tested: 54
-configs skipped: 2
+On 2022/11/24 0:41, Maciej Fijalkowski wrote:
+> On Wed, Nov 23, 2022 at 10:09:26AM +0900, Akihiko Odaki wrote:
+>> Without this change, the interrupt test fail with MSI-X environment:
+>>
+>> $ sudo ethtool -t enp0s2 offline
+>> [   43.921783] igb 0000:00:02.0: offline testing starting
+>> [   44.855824] igb 0000:00:02.0 enp0s2: igb: enp0s2 NIC Link is Down
+>> [   44.961249] igb 0000:00:02.0 enp0s2: igb: enp0s2 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX/TX
+>> [   51.272202] igb 0000:00:02.0: testing shared interrupt
+>> [   56.996975] igb 0000:00:02.0 enp0s2: igb: enp0s2 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX/TX
+>> The test result is FAIL
+>> The test extra info:
+>> Register test  (offline)	 0
+>> Eeprom test    (offline)	 0
+>> Interrupt test (offline)	 4
+>> Loopback test  (offline)	 0
+>> Link test   (on/offline)	 0
+>>
+>> Here, "4" means an expected interrupt was not delivered.
+>>
+>> To fix this, route IRQs correctly to the first MSI-X vector by setting
+>> IVAR_MISC. Also, set bit 0 of EIMS so that the vector will not be
+>> masked. The interrupt test now runs properly with this change:
+> 
+> Much better!
+> 
+>>
+>> $ sudo ethtool -t enp0s2 offline
+>> [   42.762985] igb 0000:00:02.0: offline testing starting
+>> [   50.141967] igb 0000:00:02.0: testing shared interrupt
+>> [   56.163957] igb 0000:00:02.0 enp0s2: igb: enp0s2 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX/TX
+>> The test result is PASS
+>> The test extra info:
+>> Register test  (offline)	 0
+>> Eeprom test    (offline)	 0
+>> Interrupt test (offline)	 0
+>> Loopback test  (offline)	 0
+>> Link test   (on/offline)	 0
+>>
+>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> 
+> Same comment as on other patch - justify why there is no fixes tag and
+> specify the tree in subject.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I couldn't identify what commit introduced the problem. Please see:
+https://lore.kernel.org/netdev/f2457229-865a-57a0-94a1-c5c63b2f30a5@daynix.com/
 
-gcc tested configs:
-arc                                 defconfig
-um                             i386_defconfig
-alpha                               defconfig
-um                           x86_64_defconfig
-s390                                defconfig
-s390                             allmodconfig
-s390                             allyesconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-ia64                             allmodconfig
-x86_64                           rhel-8.3-kvm
-arc                              allyesconfig
-alpha                            allyesconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arc                  randconfig-r043-20221124
-x86_64                        randconfig-a015
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                              defconfig
-x86_64                        randconfig-a006
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-i386                                defconfig
-x86_64                               rhel-8.3
-x86_64                           allyesconfig
-i386                             allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-arm64                            allyesconfig
+Regards,
+Akihiko Odaki
 
-clang tested configs:
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-riscv                randconfig-r042-20221124
-hexagon              randconfig-r041-20221124
-hexagon              randconfig-r045-20221124
-s390                 randconfig-r044-20221124
-x86_64                        randconfig-a014
-x86_64                        randconfig-a012
-x86_64                        randconfig-a016
-x86_64                        randconfig-a005
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> 
+>> ---
+>>   drivers/net/ethernet/intel/igb/igb_ethtool.c | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> index e5f3e7680dc6..ff911af16a4b 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> @@ -1413,6 +1413,8 @@ static int igb_intr_test(struct igb_adapter *adapter, u64 *data)
+>>   			*data = 1;
+>>   			return -1;
+>>   		}
+>> +		wr32(E1000_IVAR_MISC, E1000_IVAR_VALID << 8);
+>> +		wr32(E1000_EIMS, BIT(0));
+>>   	} else if (adapter->flags & IGB_FLAG_HAS_MSI) {
+>>   		shared_int = false;
+>>   		if (request_irq(irq,
+>> -- 
+>> 2.38.1
+>>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
