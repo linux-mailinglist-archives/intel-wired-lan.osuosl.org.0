@@ -2,82 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 093A663ADC4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 17:32:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6F7A63ADC5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 17:32:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 92A9B60C2D;
-	Mon, 28 Nov 2022 16:32:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92A9B60C2D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 773E360C23;
+	Mon, 28 Nov 2022 16:32:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 773E360C23
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669653131;
-	bh=9siVnbbobq5oMQF5rMqVsUcHBe9xwp8nXT/PFOM/zsQ=;
+	s=default; t=1669653135;
+	bh=ID7BkEE7eU804EtlrdTJmi4Ba/kVlYaUs/hgD8aTmZA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=34rLRirKyRnZrSkxjKOrEcenHz9s5nluR3Nmp8lrDV6gRmHfR9Hn4IOnN/xvQGqqT
-	 DWNJ+oElPnBxV0rtKeAYS/WsbLLzJPxfYwznoXQ4+BSEDLTrbEF2UBhJSeMVv525jQ
-	 /kfbxrb5K7PChw+0lvpnRwvNidefhL+BC9iDEdvsEFG28McXdL3DvhEYU2Opw0okFu
-	 4RdfbzLqhpw3S9avHDrzcnHIaRjYf/sUWXx8tG93vcsQlmdYwf2nzVNeTA7+yci+NK
-	 wWBNbGYhUv/RiXA3xHmyS3GKfTO/aQQ8kymqFoP5nTwdBV7oZPCq8xVhc7JNSsGbKe
-	 PijmRlr+gIOhg==
+	b=0EOhFe1Hu9LzgwjOnjdJ4MOZA/epDsKZi2sU0ptoqsgiPnMgc2181HJf/5sYKqBCQ
+	 6ovjafXATAV08WozArKi32Wrlt3DGSFDNQw7jOSBv2xqAlKXDwVXbWe677ilRio6nX
+	 UOeyc5jCDo9fG2QT+Mdz5URfEYCGirq3uaWrUj5w1nGQMLQa6Y3ybqkWeg1FVmI9/C
+	 m79iOT3jdP1dCaP/fcgBkDXac4i+vr0I1oXovzxEmW61415BdNMiW++AnLstrfD5Up
+	 HW9hMAYvFeKhXb0J+9ZCLj5FR1R+pOkIjm5GGZa1w4HzFx9iAvCbb5gyM4Tx7KNmiM
+	 fm31Zm6Qw40Ag==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6-uK8k9gpI2R; Mon, 28 Nov 2022 16:32:10 +0000 (UTC)
+	with ESMTP id 8XIIV4QNmlIw; Mon, 28 Nov 2022 16:32:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A8C7960C2E;
-	Mon, 28 Nov 2022 16:32:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A8C7960C2E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82C4E60BF3;
+	Mon, 28 Nov 2022 16:32:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 82C4E60BF3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AA35D1BF470
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 58F3A1BF470
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8200140292
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8200140292
+ by smtp4.osuosl.org (Postfix) with ESMTP id 40864415EF
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40864415EF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l08RKwnXe7H5 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Nov 2022 08:16:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UpwUw6cF-THw for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Nov 2022 08:16:47 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AF98B400D2
-Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
- [IPv6:2607:f8b0:4864:20::635])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AF98B400D2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:38 +0000 (UTC)
-Received: by mail-pl1-x635.google.com with SMTP id p12so7506190plq.4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 00:16:38 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2608C415E5
+Received: from mail-pl1-x632.google.com (mail-pl1-x632.google.com
+ [IPv6:2607:f8b0:4864:20::632])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2608C415E5
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 08:16:47 +0000 (UTC)
+Received: by mail-pl1-x632.google.com with SMTP id j12so7498287plj.5
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 00:16:47 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=O3+WXaZIvwYScbYyJSTwVsoviigX0ePJBx5g3Z25JEw=;
- b=GrfDwZahdQPAujmJJ1Y5RAY7mNoWCs6PRMIMfD+mdCyWYcslkVhpyUKwxnpckYC0O9
- M/UiLkBHJIMbjhs8hcvuHcJq2dGaEdjlPLjPnxsYuLU+4wrYq3ZZXZGbFogFpNYLDCTc
- +QjZCt1k5DIgqpEJ4qD5qEuvF7j4iCA9BG/jRvplL0iNFpm83YGDQGB12b9ujoaPZ06a
- zIJEAyFYaK9ye+J0HRPngOmssdFbtHOirpWoVjfnKUEWos2Xl39PIF6+JW1ax7WGQpmZ
- Bojnmrw26OcrI5SsJi5PftR/uj11nph6ADRxmCUVTA+5aSgAlvWWblF1mV231NU/vsym
- E8iw==
-X-Gm-Message-State: ANoB5pm5DVMDS4HPYFO/kMqd5UvnkAQtWdW0HtKpMZLtNjJT6/4xEanv
- MqMq3+LRskuoCS3CO8XpkAk=
-X-Google-Smtp-Source: AA0mqf72PtiKgQCQ5U/TWFIjiYeil/wnUg9CH++1HBOr4Nodobp5EzgkVDru4n4Du1IhGRoQuwhBwQ==
-X-Received: by 2002:a17:902:a601:b0:189:8001:b54f with SMTP id
- u1-20020a170902a60100b001898001b54fmr3122555plq.37.1669536998039; 
- Sun, 27 Nov 2022 00:16:38 -0800 (PST)
+ bh=uaOXK+3zj1VRT6U3g5h3Ky+R8tcH0ZCUYvy33QfB7vM=;
+ b=o5eWIUrxVpBiZm0vW+bpOJ7jPRZJmqRGV7gkV5WAj9C9L9rb1/pxJ3zn3KTYVo8M7R
+ w6oMGbTBPRu8RiZEWSJhVox5S6/RPXJJvbLr1NMU28T7Am5qv30sji3xW7CwEOHyB22n
+ ICkfnd3qTnwaEy5j405g39eMDPLfHgDeU4GjuKJwOq9HsoozoQXAkE4FwXPyTvNOXCZI
+ S9sWHicKASZXAORu2JhBLly5bjLl3yV+NrySh2v6/HrqsNs4a2iGAX0nKFNOdsakL4Zg
+ zY/Xv5gPxaNXhybW+kRUfqnn9NZPl0dD18dDCODwY+tZRQndXdZNLbfS9RjNmIevm40h
+ YNoQ==
+X-Gm-Message-State: ANoB5pmzYclK9VlhdT1BMDlq/+6+bfAjLRWZoZAwI3mpe6niMGoUxScm
+ ylA5D/WPwNiR3LRiyzukcTM=
+X-Google-Smtp-Source: AA0mqf5VHz3WzW4yABHf3SMGky4I1aN6x5psCE6vYqJXlVtP74c71tuH5yn2LW5vSPh7UnwtWVA+Cg==
+X-Received: by 2002:a17:902:a989:b0:188:d6c7:e7b7 with SMTP id
+ bh9-20020a170902a98900b00188d6c7e7b7mr26560851plb.16.1669537006426; 
+ Sun, 27 Nov 2022 00:16:46 -0800 (PST)
 Received: from localhost.localdomain (124x33x176x97.ap124.ftth.ucom.ne.jp.
  [124.33.176.97]) by smtp.gmail.com with ESMTPSA id
- a3-20020aa794a3000000b00572c12a1e91sm5799915pfl.48.2022.11.27.00.16.29
+ a3-20020aa794a3000000b00572c12a1e91sm5799915pfl.48.2022.11.27.00.16.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Nov 2022 00:16:37 -0800 (PST)
+ Sun, 27 Nov 2022 00:16:46 -0800 (PST)
 From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 To: Jiri Pirko <jiri@nvidia.com>, netdev@vger.kernel.org,
  Jakub Kicinski <kuba@kernel.org>
-Date: Sun, 27 Nov 2022 17:16:00 +0900
-Message-Id: <20221127081604.5242-2-mailhol.vincent@wanadoo.fr>
+Date: Sun, 27 Nov 2022 17:16:01 +0900
+Message-Id: <20221127081604.5242-3-mailhol.vincent@wanadoo.fr>
 X-Mailer: git-send-email 2.37.4
 In-Reply-To: <20221127081604.5242-1-mailhol.vincent@wanadoo.fr>
 References: <20221122154934.13937-1-mailhol.vincent@wanadoo.fr>
@@ -89,18 +89,18 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=O3+WXaZIvwYScbYyJSTwVsoviigX0ePJBx5g3Z25JEw=;
- b=SzYATP/WvbrMPMeCmP13X7/vxMj9pdZXQOcaUDB61TKbTZD2j/3L/fcK89A5FdCNDB
- beyDVDaBw/Orpqr9oVtEOHrXHffe1lMYorIUUfNX5wisADjYBwBjvKLDRWltJ3iM7hGt
- j6Ur3plBe2qiKKzLGyyDNF+6c69LNJtw7woa6EkXwcKvuIrhq7Y4ppByK3LgaRHtOElv
- bhvswFat/v3oISyh03365opnwQRRkaFlOyEuoXaVpXik0GGSz4BDtvTVsiq4VpaIJhnp
- lwY7CoBZ/q3hW/AwPaE6a+gzbEea+cRSlAljPpT4rOCTjblu21Mg12GI2G+XlzIforVh
- Ya3g==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=uaOXK+3zj1VRT6U3g5h3Ky+R8tcH0ZCUYvy33QfB7vM=;
+ b=ifVBNcP32bWIkNZkPVHGPmhBD7EYsQ8f4oy3RqHII0Z8/SwDG7tbP1hOmyJ+RX9RWI
+ +N1FmQkYpl9q5DzO6JWt26CrMNcA3QOT//FHn0TOSL3knf4EikL7CxKVhwKVfjlgUtZd
+ bsFIK5/jXRJxZiCHv7tBPt97OljhUlcunJpoBbiTCWh2K4hyRsXe6CiTBPh56QmLhfZa
+ gtq/OFeQVdLsfUArQRaYV/NLO1dUjVVPF5eJgZF4McINAxYOpoDRZD+TfkHPlBnn6UkN
+ fHI0f3jrLJ4rVz3Y6pyWc7bgIIK5+ilcWDWno5TduNkmqv0mhNEvphXo3O7C7k63cMvA
+ AsrA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=SzYATP/W
-Subject: [Intel-wired-lan] [PATCH net-next v2 1/5] mlxsw: minimal: fix
- mlxsw_m_module_get_drvinfo() to correctly report driver name
+ header.a=rsa-sha256 header.s=20210112 header.b=ifVBNcP3
+Subject: [Intel-wired-lan] [PATCH net-next v2 2/5] mlxsw: core: fix
+ mlxsw_devlink_info_get() to correctly report driver name
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,38 +141,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, mlxsw_m_module_get_drvinfo() reports the device_kind. The
+Currently, mlxsw_devlink_info_get() reports the device_kind. The
 device_kind is not necessarily the same as the device_name. For
 example, the mlxsw_i2c implementation sets up the device_kind as
 ic2_client::name in [1] which indicates the type of the device
-(e.g. chip name), not the actual driver name.
+(e.g. chip name).
 
 Fix it so that it correctly reports the driver name.
 
 [1] https://elixir.bootlin.com/linux/v6.1-rc1/source/drivers/net/ethernet/mellanox/mlxsw/i2c.c#L714
 
-Fixes: 9bbd7efbc055 ("mlxsw: i2c: Extend initialization with querying firmware info")
+Fixes: a9c8336f6544 ("mlxsw: core: Add support for devlink info command")
 CC: Shalom Toledo <shalomt@mellanox.com>
 CC: Ido Schimmel <idosch@mellanox.com>
 CC: Vadim Pasternak <vadimp@mellanox.com>
 Signed-off-by: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 ---
- drivers/net/ethernet/mellanox/mlxsw/minimal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/mellanox/mlxsw/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mellanox/mlxsw/minimal.c b/drivers/net/ethernet/mellanox/mlxsw/minimal.c
-index 6b56eadd736e..9b37ddbe0cba 100644
---- a/drivers/net/ethernet/mellanox/mlxsw/minimal.c
-+++ b/drivers/net/ethernet/mellanox/mlxsw/minimal.c
-@@ -92,7 +92,7 @@ static void mlxsw_m_module_get_drvinfo(struct net_device *dev,
- 	struct mlxsw_m_port *mlxsw_m_port = netdev_priv(dev);
- 	struct mlxsw_m *mlxsw_m = mlxsw_m_port->mlxsw_m;
+diff --git a/drivers/net/ethernet/mellanox/mlxsw/core.c b/drivers/net/ethernet/mellanox/mlxsw/core.c
+index a83f6bc30072..d8b1bb03cdb0 100644
+--- a/drivers/net/ethernet/mellanox/mlxsw/core.c
++++ b/drivers/net/ethernet/mellanox/mlxsw/core.c
+@@ -1453,6 +1453,7 @@ mlxsw_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 		       struct netlink_ext_ack *extack)
+ {
+ 	struct mlxsw_core *mlxsw_core = devlink_priv(devlink);
++	struct device *dev = mlxsw_core->bus_info->dev;
+ 	char fw_info_psid[MLXSW_REG_MGIR_FW_INFO_PSID_SIZE];
+ 	u32 hw_rev, fw_major, fw_minor, fw_sub_minor;
+ 	char mgir_pl[MLXSW_REG_MGIR_LEN];
+@@ -1460,7 +1461,7 @@ mlxsw_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 	int err;
  
--	strscpy(drvinfo->driver, mlxsw_m->bus_info->device_kind,
-+	strscpy(drvinfo->driver, dev_driver_string(dev->dev.parent),
- 		sizeof(drvinfo->driver));
- 	snprintf(drvinfo->fw_version, sizeof(drvinfo->fw_version),
- 		 "%d.%d.%d",
+ 	err = devlink_info_driver_name_put(req,
+-					   mlxsw_core->bus_info->device_kind);
++					   dev_driver_string(dev->parent));
+ 	if (err)
+ 		return err;
+ 
 -- 
 2.37.4
 
