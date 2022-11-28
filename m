@@ -1,86 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D9BB63ADD2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 17:33:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA04763ADD3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 17:33:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8C7E4817D3;
-	Mon, 28 Nov 2022 16:33:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C7E4817D3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 86F3360D56;
+	Mon, 28 Nov 2022 16:33:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86F3360D56
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669653188;
-	bh=zSuVXGKBDg4ySUs3w8hyICF3SU88v3PV1ZSk8qhZDOI=;
+	s=default; t=1669653193;
+	bh=52V79GnWWqat6wFpE8JNTXtck3dgt1/dHq8+/mKsZl0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=geJLCNJzk/GezPcgMx+p0n286/URRwao77/y1XIAI4Sj5bP1t26fX7EbsDy4zht8N
-	 vY+qy6VOiKPMPXRlz4lK/wRhwZoZXNboWLEcFYNAZr2e9zf46K7PWeswYRR283hL/R
-	 /K0IslY6rcQ+mqhFS8g2teGQR0X1sbe8LGBgtvhBODjHGyyuVLNtuXjhMU24VO9daH
-	 S6dy002jiu8d6AXNUxUxVuPUYujQzxyiC6fT36hhMCpS/39EyUTfvGAk7obPJJ6H8D
-	 oPHUBBTzyREoq9FyGrk8J5J/l+ciArq8/QnSTkXfpR5hDDWGXsLDSGIXu4jzNYKj/J
-	 Mjd5VZQpJ58/A==
+	b=LiFefUXj7IqVXNYUSJPxQiu7YX5pml6VEAU/lbAFH98VDal+DQDFjpfpWQe6o+k/I
+	 RKUPAlFv+JSzv1rOQBnLtk8Vte9zckquMMPCXSU6EwzhO4O1hrj65N39tpl7Tg8Tat
+	 mTzLq2Xve9SyEcJOt276euKdvwLgrHFzVUYu9J8V6mpI6SN/yJCISATfpjMYh/hQqR
+	 lmKqkgSzqwvLemu2IQPj/smp1LT9c+sftIYFEdKu1ms1EOuf9YIbkkp7ti9v4Q6tyf
+	 Bnol0T3E5nHfuXtf9S1DQjGT58gnewuFG6gAX8wzVbu1Tw0wmFmNu8Cv334I8J2X4C
+	 mXspFL70Apt2g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sSckhgHQKitD; Mon, 28 Nov 2022 16:33:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4Qz6LR_DS1fl; Mon, 28 Nov 2022 16:33:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3F25E81421;
-	Mon, 28 Nov 2022 16:33:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F25E81421
+	by smtp3.osuosl.org (Postfix) with ESMTP id B54F660C2D;
+	Mon, 28 Nov 2022 16:33:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B54F660C2D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 762EC1BF360
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 33BEA1BF360
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4BDE641522
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4BDE641522
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0E1A841523
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E1A841523
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gfNimCjaWesa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Nov 2022 04:16:01 +0000 (UTC)
+ with ESMTP id MHoNiT9oIOiv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Nov 2022 04:16:11 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D5BE541523
-Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
- [IPv6:2607:f8b0:4864:20::62a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D5BE541523
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:01 +0000 (UTC)
-Received: by mail-pl1-x62a.google.com with SMTP id jn7so8988144plb.13
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 20:16:01 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E06A41522
+Received: from mail-pf1-x432.google.com (mail-pf1-x432.google.com
+ [IPv6:2607:f8b0:4864:20::432])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3E06A41522
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 04:16:11 +0000 (UTC)
+Received: by mail-pf1-x432.google.com with SMTP id 130so9277846pfu.8
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Nov 2022 20:16:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=fftJz4AB+rFDwIMwIlKqAAN7H0L4lfd82kzQzOVU4Gg=;
- b=F1m9saBIYR2zWgUC2iyPz6gMYEJZ8JzJeCIpCjfdcMrZYyTyRBvpQcleL3VV7g1TRw
- a8TSnAfNeJLN5A1goeviJWLfKbOH7D7Mh3uMsFUmO1Swp5yoUbNRTf4NG/IGUDTb/re4
- N0FaF5HkGG3HzUPBxjxZeqbmGckdJqQdFGq8NCgGWWi3fg8kG/jQv1c5fCPfMCsh1AIB
- pqjtUwnIVosW+MrgHUjwnVmOfJByMUmo0lK3nn8rfaTu3wZB1G8iK4KUGWG+KgEbQhvT
- rLiWS4eztGaYJiO/Cj8ZN4/NVBO0hoq3BqbPui9OQ2qQC/XI8++jA6WQaOLn3BaeA2xS
- WSbw==
-X-Gm-Message-State: ANoB5pnVhmBn4YHVyO54xw5+8hjewr/LU+S/iaPtmY05TV9pn1OwonDE
- tiCjvZ/avnRFJ41MA0xjH78=
-X-Google-Smtp-Source: AA0mqf4ciOZDTvidLPv1soaNH75grQPJ6cjfMpmq5sf8Q0v0sGYGoZlfFiaAPKvlgjSYeKj7BHNUpw==
-X-Received: by 2002:a17:902:bb84:b0:184:e4db:e3e with SMTP id
- m4-20020a170902bb8400b00184e4db0e3emr33849618pls.47.1669608961120; 
- Sun, 27 Nov 2022 20:16:01 -0800 (PST)
+ bh=t+rsbAkupzt5naPqfnQMyBtHeNiFpBEICkYi0Wev8cY=;
+ b=xcHz62wc3qkLBnTAviQx4zwenAoGO6NnR+bmocAQAOFKTAEplpkzvaeISB0SxCkHEq
+ I4jmZETaOs/NA4Lu0HM38+f3eGkf3BbKNaA5tQZCshWV5mxSQc+QP5oymKdaaqONS1yR
+ amzfZ70zITG6FDL8JCdJn76JWi6nfXu/LLW1kggHCMyZhw8/Z6XD1RqmJ7irVMQRe2zW
+ A4i1EV5AgmGgFxgGN+rSJuQoTGZVc83qjTmozBlIPoaqFaEXSd0gTb6bhO+GaubLR6QO
+ SdVv51nYba8MQbvDaHWDS2E9918X4U6Wi7WAODJ6Xf86yMixysG5AgRkSWrXg9pP7AVm
+ Vd4w==
+X-Gm-Message-State: ANoB5pmICzWytuLamJP+6pFeg6mDktJHqtLSvlLOlanCi1Cm8jfcRUOv
+ ktgoqts+NOQzC6UAZAZhPSg=
+X-Google-Smtp-Source: AA0mqf4nRBJmeSmVB56Xvi5dAv4s3XMrtb8rs/cD+tpyxhHWI75FlQIAx1maS7XNR8vdK2F0+BROEA==
+X-Received: by 2002:a63:d04f:0:b0:46e:c41c:e4bf with SMTP id
+ s15-20020a63d04f000000b0046ec41ce4bfmr26045415pgi.123.1669608970499; 
+ Sun, 27 Nov 2022 20:16:10 -0800 (PST)
 Received: from XH22050090-L.ad.ts.tri-ad.global ([103.175.111.222])
  by smtp.gmail.com with ESMTPSA id
- z5-20020aa79f85000000b0056bbebbcafbsm6927107pfr.100.2022.11.27.20.15.51
+ z5-20020aa79f85000000b0056bbebbcafbsm6927107pfr.100.2022.11.27.20.16.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Nov 2022 20:16:00 -0800 (PST)
+ Sun, 27 Nov 2022 20:16:10 -0800 (PST)
 From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 To: Jiri Pirko <jiri@nvidia.com>, netdev@vger.kernel.org,
  Jakub Kicinski <kuba@kernel.org>
-Date: Mon, 28 Nov 2022 13:15:42 +0900
-Message-Id: <20221128041545.3170897-1-mailhol.vincent@wanadoo.fr>
+Date: Mon, 28 Nov 2022 13:15:43 +0900
+Message-Id: <20221128041545.3170897-2-mailhol.vincent@wanadoo.fr>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221122154934.13937-1-mailhol.vincent@wanadoo.fr>
+In-Reply-To: <20221128041545.3170897-1-mailhol.vincent@wanadoo.fr>
 References: <20221122154934.13937-1-mailhol.vincent@wanadoo.fr>
+ <20221128041545.3170897-1-mailhol.vincent@wanadoo.fr>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Nov 2022 16:31:50 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -88,18 +89,18 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fftJz4AB+rFDwIMwIlKqAAN7H0L4lfd82kzQzOVU4Gg=;
- b=OiUcbYE7eSGDuCBF/80zSFenq+kBVmjsl2Yg5JZ+Pp6tiF5N78hJXPnTNs7AVh9j5N
- gjqHsL9ezu7FdIbVhHPZ56PW7Tp31ho8YcU0DNkqFTQYxVM8uqQJ4SzrvvBzeHiXFHQm
- Ud70Zes85hJ+borYwZnXzyrlYz4UCHpteTkwNkkBeYWkSN0X2vRr/oX/xRtAVvdFWIoK
- D/8tBS418Nvkioi3IZhz46WRQiwBPSShJgeaWV6qpGB7Ti7LC9yDBbCqF+/vS12Lyn4+
- 8izeF6ysCcgaK2uCRieclRJvKLx3lYRR3hCSN1VrIsBqe6C6+jIQKlssVVHNfSsG2/T8
- LMXA==
+ bh=t+rsbAkupzt5naPqfnQMyBtHeNiFpBEICkYi0Wev8cY=;
+ b=GGb2KGurB7MfT8e7cucwmDkOYpvYg6u8bmPlLlwomczvdOwGlcNFnprAFvIuleMk9r
+ VDM9e6Be1FAZeGh3Dypi2/7XViJ6D7Kt7y0TEps2vhUQMeK6bOhdzG44629FKd49hHLw
+ /K7Q3FTB1EymC0IA02l0F28L/cscrvWxSlSCh486hsJhJHtxQ+pzSfFL2dar0m0iJWy0
+ uTlmKs2bP0oaZog+funwtHdgEjs+c7HHRikO4aYol9jG0oX7y8/bWfvjxS+5DH8ITQyL
+ WEYO7AEAqfpX4ZKp2vEZQVc8M0/AD7Qk2kzl5lQS6tk880oMvHxi8JRRSq8a8EMkWCe/
+ S5EQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=OiUcbYE7
-Subject: [Intel-wired-lan] [PATCH net-next v4 0/3] net: devlink: return the
- driver name in devlink_nl_info_fill
+ header.a=rsa-sha256 header.s=20210112 header.b=GGb2KGur
+Subject: [Intel-wired-lan] [PATCH net-next v4 1/3] net: devlink: let the
+ core report the driver name instead of the drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,84 +149,412 @@ The driver name is available in device_driver::name. Right now,
 drivers still have to report this piece of information themselves in
 their devlink_ops::info_get callback function.
 
-The goal of this series is to have the devlink core to report this
-information instead of the drivers.
+In order to factorize code, make devlink_nl_info_fill() add the driver
+name attribute.
 
-The first patch fulfills the actual goal of this series: modify
-devlink core to report the driver name and clean-up all drivers. Both
-have to be done in an atomic change to avoid attribute duplication.
+nla_put() does not check if an attribute already exists and
+unconditionally reserves new space, c.f. [1]. To avoid attribute
+duplication, clean-up all the drivers which are currently reporting
+the driver name in their callback.
 
-The second patch removes the devlink_info_driver_name_put() function
-to prevent future drivers from reporting the driver name themselves.
+[1] __nla_put() from lib/nlattr.c
+Link: https://elixir.bootlin.com/linux/v6.0/source/lib/nlattr.c#L993
 
-Finally, the third and last patch allows the core to call
-devlink_nl_info_fill() even if the devlink_ops::info_get() callback is
-NULL. This allows to do further more clean up in the drivers.
+Signed-off-by: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 ---
-* Changelog *
+ .../crypto/marvell/octeontx2/otx2_cpt_devlink.c |  4 ----
+ drivers/net/dsa/hirschmann/hellcreek.c          |  5 -----
+ drivers/net/dsa/mv88e6xxx/devlink.c             |  5 -----
+ drivers/net/dsa/sja1105/sja1105_devlink.c       | 12 +++---------
+ .../net/ethernet/broadcom/bnxt/bnxt_devlink.c   |  4 ----
+ .../freescale/dpaa2/dpaa2-eth-devlink.c         | 11 +----------
+ .../ethernet/fungible/funeth/funeth_devlink.c   |  2 +-
+ .../hisilicon/hns3/hns3pf/hclge_devlink.c       |  5 -----
+ .../hisilicon/hns3/hns3vf/hclgevf_devlink.c     |  5 -----
+ drivers/net/ethernet/intel/ice/ice_devlink.c    |  6 ------
+ .../ethernet/marvell/octeontx2/af/rvu_devlink.c |  2 +-
+ .../marvell/octeontx2/nic/otx2_devlink.c        |  9 +--------
+ .../marvell/prestera/prestera_devlink.c         |  5 -----
+ .../net/ethernet/mellanox/mlx5/core/devlink.c   |  4 ----
+ drivers/net/ethernet/mellanox/mlxsw/core.c      |  5 -----
+ .../net/ethernet/netronome/nfp/nfp_devlink.c    |  4 ----
+ .../net/ethernet/pensando/ionic/ionic_devlink.c |  4 ----
+ drivers/net/ethernet/qlogic/qed/qed_devlink.c   |  4 ----
+ drivers/net/netdevsim/dev.c                     |  3 ---
+ drivers/ptp/ptp_ocp.c                           |  4 ----
+ net/core/devlink.c                              | 17 +++++++++++++++++
+ 21 files changed, 24 insertions(+), 96 deletions(-)
 
-v3 -> v4
-
-  * Ido pointed out that the mlxsw did not need to be fixed:
-    https://lore.kernel.org/netdev/Y4ONgD4dAj8yU2%2F+@shredder/
-    Remove the first two patches from the series.
-
-v2 -> v3
-
-  * [PATCH 3/5] remove the call to devlink_info_driver_name_put() in
-    mlxsw driver as well (this was missing in v2, making the build
-    fail... sorry for the noise).
-
-  * add additional people in CC as pointed by netdev patchwork CI:
-    https://patchwork.kernel.org/project/netdevbpf/list/?series=699451
-
-  * use the "Link:" prefix before URL to silence checkpatch's line
-    length warning.
-
-
-RFC v1 -> v2
-
-  * drop the RFC tag
-
-  * big rework following the discussion on RFC:
-    https://lore.kernel.org/netdev/20221122154934.13937-1-mailhol.vincent@wanadoo.fr/
-    Went from one patch to a series of five patches:
-
-  * drop the idea to report the USB serial number following Greg's
-    comment:
-    https://lore.kernel.org/linux-usb/Y3+VfNdt%2FK7UtRcw@kroah.com/
-
-
-Vincent Mailhol (3):
-  net: devlink: let the core report the driver name instead of the
-    drivers
-  net: devlink: remove devlink_info_driver_name_put()
-  net: devlink: make the devlink_ops::info_get() callback optional
-
- .../marvell/octeontx2/otx2_cpt_devlink.c      |  4 ---
- drivers/net/dsa/hirschmann/hellcreek.c        |  5 ---
- drivers/net/dsa/mv88e6xxx/devlink.c           |  5 ---
- drivers/net/dsa/sja1105/sja1105_devlink.c     | 12 ++-----
- .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |  4 ---
- .../freescale/dpaa2/dpaa2-eth-devlink.c       | 11 +-----
- .../ethernet/fungible/funeth/funeth_devlink.c |  7 ----
- .../hisilicon/hns3/hns3pf/hclge_devlink.c     |  5 ---
- .../hisilicon/hns3/hns3vf/hclgevf_devlink.c   |  5 ---
- drivers/net/ethernet/intel/ice/ice_devlink.c  |  6 ----
- .../marvell/octeontx2/af/rvu_devlink.c        |  7 ----
- .../marvell/octeontx2/nic/otx2_devlink.c      | 15 --------
- .../marvell/prestera/prestera_devlink.c       |  5 ---
- .../net/ethernet/mellanox/mlx5/core/devlink.c |  4 ---
- drivers/net/ethernet/mellanox/mlxsw/core.c    |  5 ---
- .../net/ethernet/netronome/nfp/nfp_devlink.c  |  4 ---
- .../ethernet/pensando/ionic/ionic_devlink.c   |  4 ---
- drivers/net/ethernet/qlogic/qed/qed_devlink.c |  4 ---
- drivers/net/netdevsim/dev.c                   |  3 --
- drivers/ptp/ptp_ocp.c                         |  4 ---
- include/net/devlink.h                         |  2 --
- net/core/devlink.c                            | 35 ++++++++++++-------
- 22 files changed, 26 insertions(+), 130 deletions(-)
-
+diff --git a/drivers/crypto/marvell/octeontx2/otx2_cpt_devlink.c b/drivers/crypto/marvell/octeontx2/otx2_cpt_devlink.c
+index 7503f6b18ac5..a2aba0b0d68a 100644
+--- a/drivers/crypto/marvell/octeontx2/otx2_cpt_devlink.c
++++ b/drivers/crypto/marvell/octeontx2/otx2_cpt_devlink.c
+@@ -76,10 +76,6 @@ static int otx2_cpt_devlink_info_get(struct devlink *dl,
+ 	struct otx2_cptpf_dev *cptpf = cpt_dl->cptpf;
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req, "rvu_cptpf");
+-	if (err)
+-		return err;
+-
+ 	err = otx2_cpt_dl_info_firmware_version_put(req, cptpf->eng_grps.grp,
+ 						    "fw.ae", OTX2_CPT_AE_TYPES);
+ 	if (err)
+diff --git a/drivers/net/dsa/hirschmann/hellcreek.c b/drivers/net/dsa/hirschmann/hellcreek.c
+index 951f7935c872..595a548bb0a8 100644
+--- a/drivers/net/dsa/hirschmann/hellcreek.c
++++ b/drivers/net/dsa/hirschmann/hellcreek.c
+@@ -1176,11 +1176,6 @@ static int hellcreek_devlink_info_get(struct dsa_switch *ds,
+ 				      struct netlink_ext_ack *extack)
+ {
+ 	struct hellcreek *hellcreek = ds->priv;
+-	int ret;
+-
+-	ret = devlink_info_driver_name_put(req, "hellcreek");
+-	if (ret)
+-		return ret;
+ 
+ 	return devlink_info_version_fixed_put(req,
+ 					      DEVLINK_INFO_VERSION_GENERIC_ASIC_ID,
+diff --git a/drivers/net/dsa/mv88e6xxx/devlink.c b/drivers/net/dsa/mv88e6xxx/devlink.c
+index 1266eabee086..a08dab75e0c0 100644
+--- a/drivers/net/dsa/mv88e6xxx/devlink.c
++++ b/drivers/net/dsa/mv88e6xxx/devlink.c
+@@ -821,11 +821,6 @@ int mv88e6xxx_devlink_info_get(struct dsa_switch *ds,
+ 			       struct netlink_ext_ack *extack)
+ {
+ 	struct mv88e6xxx_chip *chip = ds->priv;
+-	int err;
+-
+-	err = devlink_info_driver_name_put(req, "mv88e6xxx");
+-	if (err)
+-		return err;
+ 
+ 	return devlink_info_version_fixed_put(req,
+ 					      DEVLINK_INFO_VERSION_GENERIC_ASIC_ID,
+diff --git a/drivers/net/dsa/sja1105/sja1105_devlink.c b/drivers/net/dsa/sja1105/sja1105_devlink.c
+index 10c6fea1227f..da532614f34a 100644
+--- a/drivers/net/dsa/sja1105/sja1105_devlink.c
++++ b/drivers/net/dsa/sja1105/sja1105_devlink.c
+@@ -120,16 +120,10 @@ int sja1105_devlink_info_get(struct dsa_switch *ds,
+ 			     struct netlink_ext_ack *extack)
+ {
+ 	struct sja1105_private *priv = ds->priv;
+-	int rc;
+-
+-	rc = devlink_info_driver_name_put(req, "sja1105");
+-	if (rc)
+-		return rc;
+ 
+-	rc = devlink_info_version_fixed_put(req,
+-					    DEVLINK_INFO_VERSION_GENERIC_ASIC_ID,
+-					    priv->info->name);
+-	return rc;
++	return devlink_info_version_fixed_put(req,
++					      DEVLINK_INFO_VERSION_GENERIC_ASIC_ID,
++					      priv->info->name);
+ }
+ 
+ int sja1105_devlink_setup(struct dsa_switch *ds)
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
+index 8a6f788f6294..26913dc816d3 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c
+@@ -892,10 +892,6 @@ static int bnxt_dl_info_get(struct devlink *dl, struct devlink_info_req *req,
+ 	u32 ver = 0;
+ 	int rc;
+ 
+-	rc = devlink_info_driver_name_put(req, DRV_MODULE_NAME);
+-	if (rc)
+-		return rc;
+-
+ 	if (BNXT_PF(bp) && (bp->flags & BNXT_FLAG_DSN_VALID)) {
+ 		sprintf(buf, "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
+ 			bp->dsn[7], bp->dsn[6], bp->dsn[5], bp->dsn[4],
+diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
+index 5c6dd3029e2f..76f808d38066 100644
+--- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
++++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth-devlink.c
+@@ -37,18 +37,9 @@ static int dpaa2_eth_dl_info_get(struct devlink *devlink,
+ 	struct dpaa2_eth_devlink_priv *dl_priv = devlink_priv(devlink);
+ 	struct dpaa2_eth_priv *priv = dl_priv->dpaa2_priv;
+ 	char buf[10];
+-	int err;
+-
+-	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (err)
+-		return err;
+ 
+ 	scnprintf(buf, 10, "%d.%d", priv->dpni_ver_major, priv->dpni_ver_minor);
+-	err = devlink_info_version_running_put(req, "dpni", buf);
+-	if (err)
+-		return err;
+-
+-	return 0;
++	return devlink_info_version_running_put(req, "dpni", buf);
+ }
+ 
+ static struct dpaa2_eth_trap_item *
+diff --git a/drivers/net/ethernet/fungible/funeth/funeth_devlink.c b/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
+index d50c222948b4..6668375edff6 100644
+--- a/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
++++ b/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
+@@ -6,7 +6,7 @@
+ static int fun_dl_info_get(struct devlink *dl, struct devlink_info_req *req,
+ 			   struct netlink_ext_ack *extack)
+ {
+-	return devlink_info_driver_name_put(req, KBUILD_MODNAME);
++	return 0;
+ }
+ 
+ static const struct devlink_ops fun_dl_ops = {
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
+index 4c441e6a5082..3d3b69605423 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_devlink.c
+@@ -13,11 +13,6 @@ static int hclge_devlink_info_get(struct devlink *devlink,
+ 	struct hclge_devlink_priv *priv = devlink_priv(devlink);
+ 	char version_str[HCLGE_DEVLINK_FW_STRING_LEN];
+ 	struct hclge_dev *hdev = priv->hdev;
+-	int ret;
+-
+-	ret = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (ret)
+-		return ret;
+ 
+ 	snprintf(version_str, sizeof(version_str), "%lu.%lu.%lu.%lu",
+ 		 hnae3_get_field(hdev->fw_version, HNAE3_FW_VERSION_BYTE3_MASK,
+diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c b/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
+index fdc19868b818..a6c3c5e8f0ab 100644
+--- a/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
++++ b/drivers/net/ethernet/hisilicon/hns3/hns3vf/hclgevf_devlink.c
+@@ -13,11 +13,6 @@ static int hclgevf_devlink_info_get(struct devlink *devlink,
+ 	struct hclgevf_devlink_priv *priv = devlink_priv(devlink);
+ 	char version_str[HCLGEVF_DEVLINK_FW_STRING_LEN];
+ 	struct hclgevf_dev *hdev = priv->hdev;
+-	int ret;
+-
+-	ret = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (ret)
+-		return ret;
+ 
+ 	snprintf(version_str, sizeof(version_str), "%lu.%lu.%lu.%lu",
+ 		 hnae3_get_field(hdev->fw_version, HNAE3_FW_VERSION_BYTE3_MASK,
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 1d638216484d..ba74977e75dc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -311,12 +311,6 @@ static int ice_devlink_info_get(struct devlink *devlink,
+ 		}
+ 	}
+ 
+-	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (err) {
+-		NL_SET_ERR_MSG_MOD(extack, "Unable to set driver name");
+-		goto out_free_ctx;
+-	}
+-
+ 	ice_info_get_dsn(pf, ctx);
+ 
+ 	err = devlink_info_serial_number_put(req, ctx->buf);
+diff --git a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
+index 88dee589cb21..f15439d26d21 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
++++ b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
+@@ -1550,7 +1550,7 @@ static int rvu_devlink_eswitch_mode_set(struct devlink *devlink, u16 mode,
+ static int rvu_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 				struct netlink_ext_ack *extack)
+ {
+-	return devlink_info_driver_name_put(req, DRV_NAME);
++	return 0;
+ }
+ 
+ static const struct devlink_ops rvu_devlink_ops = {
+diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
+index 777a27047c8e..5cc6416cf1a6 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
++++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
+@@ -77,18 +77,11 @@ static const struct devlink_param otx2_dl_params[] = {
+ 			     otx2_dl_mcam_count_validate),
+ };
+ 
+-/* Devlink OPs */
+ static int otx2_devlink_info_get(struct devlink *devlink,
+ 				 struct devlink_info_req *req,
+ 				 struct netlink_ext_ack *extack)
+ {
+-	struct otx2_devlink *otx2_dl = devlink_priv(devlink);
+-	struct otx2_nic *pfvf = otx2_dl->pfvf;
+-
+-	if (is_otx2_vf(pfvf->pcifunc))
+-		return devlink_info_driver_name_put(req, "rvu_nicvf");
+-
+-	return devlink_info_driver_name_put(req, "rvu_nicpf");
++	return 0;
+ }
+ 
+ static const struct devlink_ops otx2_devlink_ops = {
+diff --git a/drivers/net/ethernet/marvell/prestera/prestera_devlink.c b/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
+index 84ad05c9f12d..2a4c9df4eb79 100644
+--- a/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
++++ b/drivers/net/ethernet/marvell/prestera/prestera_devlink.c
+@@ -355,11 +355,6 @@ static int prestera_dl_info_get(struct devlink *dl,
+ {
+ 	struct prestera_switch *sw = devlink_priv(dl);
+ 	char buf[16];
+-	int err;
+-
+-	err = devlink_info_driver_name_put(req, PRESTERA_DRV_NAME);
+-	if (err)
+-		return err;
+ 
+ 	snprintf(buf, sizeof(buf), "%d.%d.%d",
+ 		 sw->dev->fw_rev.maj,
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
+index cc2ae427dcb0..751bc4a9edcf 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/devlink.c
+@@ -46,10 +46,6 @@ mlx5_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 	u32 running_fw, stored_fw;
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (err)
+-		return err;
+-
+ 	err = devlink_info_version_fixed_put(req, "fw.psid", dev->board_id);
+ 	if (err)
+ 		return err;
+diff --git a/drivers/net/ethernet/mellanox/mlxsw/core.c b/drivers/net/ethernet/mellanox/mlxsw/core.c
+index a83f6bc30072..a0a06e2eff82 100644
+--- a/drivers/net/ethernet/mellanox/mlxsw/core.c
++++ b/drivers/net/ethernet/mellanox/mlxsw/core.c
+@@ -1459,11 +1459,6 @@ mlxsw_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 	char buf[32];
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req,
+-					   mlxsw_core->bus_info->device_kind);
+-	if (err)
+-		return err;
+-
+ 	mlxsw_reg_mgir_pack(mgir_pl);
+ 	err = mlxsw_reg_query(mlxsw_core, MLXSW_REG(mgir), mgir_pl);
+ 	if (err)
+diff --git a/drivers/net/ethernet/netronome/nfp/nfp_devlink.c b/drivers/net/ethernet/netronome/nfp/nfp_devlink.c
+index 8bfd48d50ef0..4c601ff09cd3 100644
+--- a/drivers/net/ethernet/netronome/nfp/nfp_devlink.c
++++ b/drivers/net/ethernet/netronome/nfp/nfp_devlink.c
+@@ -239,10 +239,6 @@ nfp_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 	char *buf = NULL;
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req, "nfp");
+-	if (err)
+-		return err;
+-
+ 	vendor = nfp_hwinfo_lookup(pf->hwinfo, "assembly.vendor");
+ 	part = nfp_hwinfo_lookup(pf->hwinfo, "assembly.partno");
+ 	sn = nfp_hwinfo_lookup(pf->hwinfo, "assembly.serial");
+diff --git a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
+index 567f778433e2..e6ff757895ab 100644
+--- a/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
++++ b/drivers/net/ethernet/pensando/ionic/ionic_devlink.c
+@@ -26,10 +26,6 @@ static int ionic_dl_info_get(struct devlink *dl, struct devlink_info_req *req,
+ 	char buf[16];
+ 	int err = 0;
+ 
+-	err = devlink_info_driver_name_put(req, IONIC_DRV_NAME);
+-	if (err)
+-		return err;
+-
+ 	err = devlink_info_version_running_put(req,
+ 					       DEVLINK_INFO_VERSION_GENERIC_FW,
+ 					       idev->dev_info.fw_version);
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_devlink.c b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
+index 6bb4e165b592..922c47797af6 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_devlink.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_devlink.c
+@@ -162,10 +162,6 @@ static int qed_devlink_info_get(struct devlink *devlink,
+ 
+ 	dev_info = &cdev->common_dev_info;
+ 
+-	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (err)
+-		return err;
+-
+ 	memcpy(buf, cdev->hwfns[0].hw_info.part_num, sizeof(cdev->hwfns[0].hw_info.part_num));
+ 	buf[sizeof(cdev->hwfns[0].hw_info.part_num)] = 0;
+ 
+diff --git a/drivers/net/netdevsim/dev.c b/drivers/net/netdevsim/dev.c
+index e14686594a71..b962fc8e1397 100644
+--- a/drivers/net/netdevsim/dev.c
++++ b/drivers/net/netdevsim/dev.c
+@@ -994,9 +994,6 @@ static int nsim_dev_info_get(struct devlink *devlink,
+ {
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req, DRV_NAME);
+-	if (err)
+-		return err;
+ 	err = devlink_info_version_stored_put_ext(req, "fw.mgmt", "10.20.30",
+ 						  DEVLINK_INFO_VERSION_TYPE_COMPONENT);
+ 	if (err)
+diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
+index 154d58cbd9ce..4bbaccd543ad 100644
+--- a/drivers/ptp/ptp_ocp.c
++++ b/drivers/ptp/ptp_ocp.c
+@@ -1647,10 +1647,6 @@ ptp_ocp_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+ 	char buf[32];
+ 	int err;
+ 
+-	err = devlink_info_driver_name_put(req, KBUILD_MODNAME);
+-	if (err)
+-		return err;
+-
+ 	fw_image = bp->fw_loader ? "loader" : "fw";
+ 	sprintf(buf, "%d.%d", bp->fw_tag, bp->fw_version);
+ 	err = devlink_info_version_running_put(req, fw_image, buf);
+diff --git a/net/core/devlink.c b/net/core/devlink.c
+index cea154ddce7a..6478135d9ba1 100644
+--- a/net/core/devlink.c
++++ b/net/core/devlink.c
+@@ -6749,11 +6749,24 @@ int devlink_info_version_running_put_ext(struct devlink_info_req *req,
+ }
+ EXPORT_SYMBOL_GPL(devlink_info_version_running_put_ext);
+ 
++static int devlink_nl_driver_info_get(struct device_driver *drv,
++				      struct devlink_info_req *req)
++{
++	if (!drv)
++		return 0;
++
++	if (drv->name[0])
++		return devlink_info_driver_name_put(req, drv->name);
++
++	return 0;
++}
++
+ static int
+ devlink_nl_info_fill(struct sk_buff *msg, struct devlink *devlink,
+ 		     enum devlink_command cmd, u32 portid,
+ 		     u32 seq, int flags, struct netlink_ext_ack *extack)
+ {
++	struct device *dev = devlink_to_dev(devlink);
+ 	struct devlink_info_req req = {};
+ 	void *hdr;
+ 	int err;
+@@ -6771,6 +6784,10 @@ devlink_nl_info_fill(struct sk_buff *msg, struct devlink *devlink,
+ 	if (err)
+ 		goto err_cancel_msg;
+ 
++	err = devlink_nl_driver_info_get(dev->driver, &req);
++	if (err)
++		goto err_cancel_msg;
++
+ 	genlmsg_end(msg, hdr);
+ 	return 0;
+ 
 -- 
 2.25.1
 
