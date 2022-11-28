@@ -1,88 +1,187 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA6B163B470
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 22:48:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED33963B49B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Nov 2022 23:08:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 62AE540A1D;
-	Mon, 28 Nov 2022 21:48:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 62AE540A1D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7140560B9C;
+	Mon, 28 Nov 2022 22:08:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7140560B9C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669672101;
-	bh=s7z4i0ik4mrS5nFzkW9lqSZkJVSrhXSCh5KWK1s4wz0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1669673282;
+	bh=daKkE3KjR2kHAk+JZjXKbhC1OUtLiZFq6gWVE4mRJKU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=5FXYPWOO1+zo+eoTS9JwbCkgzz599+HpOHN2G9MzWvjT4NWgVH73Zs62N07ERvf7c
-	 2EyaUb0c5AubCg6JJ/axE+bu83CKi5TxgdE8RhDgc7tiCtWE5Iw7h1lr2j+6oS2Zc1
-	 ksED/1Segp3o7de7UBm1M69FR/plxRgJ0fdYJIGNkKRRJJgV4fAKSJxYwQtW5jBe8o
-	 +HC6x8oYHxCQDJCh6NqecrGZDUxYMKkaOiBmdSRcPrEr4xjN+nIaYLD1O3sTZIGY/R
-	 eCmELxNZ689UPOAZKaFJmJTqzVOIx2SwBgdB9W/Us6mEcGn6jDg4x9RVtX3nodoWMi
-	 +czFa0wLm2UKg==
+	 Cc:From;
+	b=nJdpwb7jcC5gY6e55wTXpkfbWTQk0V+Hq0RlQz/ZCiiv5X5Qk/6i81R3MWwgGLWhw
+	 qGA2WXF/ywlPAnx1FcLskERlWyJodGxsYQnCNosrraMEQvOaNec1RF6DtytDRo074i
+	 xNitRa6qS+iKQjSYKFPG9eTiP5RQHIrmXWjjcl6U9TWynPLIYQmBcM9xE+GZ6JQbhL
+	 WHVw1RWv19gk3cS0yaGuJudxXClXTQWvniYsvOahSa7yOGTiHAZV5Z461QBn5BOI1i
+	 /rVwqlfqRVIG9j82aMtTnFPT4UVTLGLMxKj0qNOF0zrORyOy4Y3LotPB/AN7tnc30Q
+	 ZjuZKS+Mxd0lg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UnHNls5dJQhI; Mon, 28 Nov 2022 21:48:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ugpmB2HP-JKk; Mon, 28 Nov 2022 22:08:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0280540A5D;
-	Mon, 28 Nov 2022 21:48:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0280540A5D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6C86860AED;
+	Mon, 28 Nov 2022 22:08:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6C86860AED
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B7C4E1BF86C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 21:47:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 297901BF276
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 22:07:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BAFBC40A1D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 21:47:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BAFBC40A1D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0C6EE81A24
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 22:07:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C6EE81A24
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pzO29iRfyMcZ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Nov 2022 21:47:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JEXwvXq5dP9l for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Nov 2022 22:07:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B49040A1B
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4B49040A1B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 21:47:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="401240391"
-X-IronPort-AV: E=Sophos;i="5.96,201,1665471600"; d="scan'208";a="401240391"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Nov 2022 13:47:52 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="972430293"
-X-IronPort-AV: E=Sophos;i="5.96,201,1665471600"; d="scan'208";a="972430293"
-Received: from pmstillw-desk1.amr.corp.intel.com ([10.213.170.9])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Nov 2022 13:47:52 -0800
-From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 28 Nov 2022 13:47:49 -0800
-Message-Id: <20221128214749.110-6-paul.m.stillwell.jr@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221128214749.110-1-paul.m.stillwell.jr@intel.com>
-References: <20221128214749.110-1-paul.m.stillwell.jr@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B27CB81A0D
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B27CB81A0D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Nov 2022 22:07:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="341875256"
+X-IronPort-AV: E=Sophos;i="5.96,201,1665471600"; d="scan'208";a="341875256"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Nov 2022 14:07:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10545"; a="888599243"
+X-IronPort-AV: E=Sophos;i="5.96,201,1665471600"; d="scan'208";a="888599243"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga006.fm.intel.com with ESMTP; 28 Nov 2022 14:07:53 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 28 Nov 2022 14:07:53 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 28 Nov 2022 14:07:53 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.175)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 28 Nov 2022 14:07:52 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MWXhJdUWc6aSKsFFFHPYrHnNnSDTHAy7sGwZ4k9kmdOsaqMloe+b3fBmRcd5HtnuLZgJ5FCR01UZ1frxJl5snKTlbcpnQUVPyX6Uj9QaMbAzDt8blFm48dh/7qNyLkHxkyCKwnaH9jVDB3R5s6YQAX4d0lioR2QmoUtVka3hZLo1c+5dtqnli8qSnSmGRkBx5EjlgaXm4C6MSsiEsFKnSfMPtermMmO5nIOodiLtdMjXgvUC+XDNB0aufKVlxc2uMRl3M93//u5Q39CTtkJkyCEnd81gGSHREZ//he4F4mjTA6Aq6J/5q+5cM2Jq274MxTE/YPpSO4mJ3yeUY8Sr+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F+My0ii7tkg/WOsYOiKFs8fr7yyVvyDiIzM9+cEU+No=;
+ b=iTgk6sQ2DDvqGd6kcPa6Hadd7wkhfSm65MPNnaT7x8eNzeK4BKz/GIYIfAx6HRikvxtBf37OISi8969nJgexhQI3QyNonucRARrNIELk7wWy1fxIqnFKOwc5W8gO1bXsFbqukpxykma/XcriIUcbWsVTtSQLmzRrCB7j19K3NTCcgqS7mAM/mxY71XGGkDn4thKxQuGc0DicondWf6GoDB86MUALDvs/0vf4KA7VfoQ6pUE3vCdwaDjDQrnZz1DdP34eJdHfNOIXGYmmRiyQPd3m28hcqUUt3GFrP4FcvPbo1myolMqqeFzLHyBFy/VfZhTw/Idx9WoPPyQFDGcKdw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by MW3PR11MB4588.namprd11.prod.outlook.com (2603:10b6:303:54::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.23; Mon, 28 Nov
+ 2022 22:07:50 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5%5]) with mapi id 15.20.5857.023; Mon, 28 Nov 2022
+ 22:07:50 +0000
+Message-ID: <80e17b57-6d76-d72a-f8c9-fc0e20a994e5@intel.com>
+Date: Mon, 28 Nov 2022 14:07:47 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Content-Language: en-US
+To: Akihiko Odaki <akihiko.odaki@daynix.com>, Maciej Fijalkowski
+ <maciej.fijalkowski@intel.com>
+References: <20221122152630.76190-1-akihiko.odaki@daynix.com>
+ <Y3z3Y5kpz2EgN3uq@boxer> <f2457229-865a-57a0-94a1-c5c63b2f30a5@daynix.com>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <f2457229-865a-57a0-94a1-c5c63b2f30a5@daynix.com>
+X-ClientProxiedBy: SJ0PR05CA0107.namprd05.prod.outlook.com
+ (2603:10b6:a03:334::22) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|MW3PR11MB4588:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1d0fa63e-4fab-4664-8e74-08dad18cfd77
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: /ProB2NstBaD96lPH5I59gz/xp+si5BpWjmG3Rw1Fh/3NfCsO2gzQL1chfdjJHZo1iys4piT7NT4NfKO9XJKp0t6BbqRK9qVauZV2s070rBrBOGEZ91sxT6Ci1fMXqLp3FTiK+0w3RDy+WHXNDE0EBvLC8vA7ru4a3TqgSngJuud7IDwPASlZsaPNYbHg5w6ExurLz1BsYU08ijYcz+prEJTENqJhvnOhRuPVh84dRCA6rbV1MNNAL0fRohO4zAxjxV2PTyQIZ9k9ZZma4pqX4QJB9p26nTq112zeN9/ZyXswV0wnr74Jy/85moES8QtAjkutyIY2n1V2PZLAD1ei9uDvku8qUXE40z2DvoWnSqO5SyEC+NbS5nnf0LW3HkDAya242IOtKtbZrDJifc15+ctrqm8qZ1VNQoYvYVLM3eMcyYtG1hmWrJfbl0aXLrKj9UiH0UqjQqN6CWkMzca4Ak+bb6gX8/Gk+HBu1YJS5UtvysaNogq5j98abCycLSKDa45DO1iO8RchNUXGHSAMR7XW0Ob1bPbDNWMVfLa4QOypLNOc/uY8QlcymCc3XEoAA/3U6ovFup8SCaS1sNQ3gFhoJcF+gnWdLeXG3ttO0SDbmBmTOnZlkMj3xsbWHqVyDJSSQbiIT4vpaW+bApPUaA77Yb/1KVHojUnMNx9BkDphbhVR0QPphNZQ5W1DT0HVLLnnPFSq/zK4WocL9BTHWA7oEXI7SyEaqxuJZwBIHtKByA9SHEwQHp7y4mR+pFu
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(366004)(136003)(39860400002)(376002)(396003)(346002)(451199015)(2616005)(31686004)(2906002)(83380400001)(82960400001)(26005)(38100700002)(966005)(66476007)(8676002)(66946007)(66556008)(41300700001)(53546011)(36756003)(6486002)(6506007)(478600001)(6512007)(6666004)(186003)(8936002)(5660300002)(6636002)(4326008)(86362001)(31696002)(316002)(54906003)(110136005)(7416002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Mzh6K0VnSlR0NzNTc2tqYk05UW92b2xEMmdPdUc5bGcwanh0N0tLVzk4bUVy?=
+ =?utf-8?B?NDBvZzgra25GcTFleE4yU2RqMGJvTEpoeWh2WDRyMlZqOTdaTkNzUUREQ2Rr?=
+ =?utf-8?B?bUJHVU5LVm5WL2dkVFVGNTBtM016cEVVY0FXaHFlN0Z3bzYyeGh4Vy80U0sx?=
+ =?utf-8?B?b1l5RWt5WG5BQmU4UnQ1UEpqUHBobkdvNEVKQ3N4dWdWSDhzeE1xWkNFNHV1?=
+ =?utf-8?B?NHg1TjRMaytKYXh6ZjVLS3JrdytQN3A4V0NZamtKSHRwL2NxbFZpN2pXdWZ2?=
+ =?utf-8?B?aS9rK1pJRGtNRmJkMm80cThpdkFaZnBjMExIaEdDNzRiSDRkZFNwYVp1NTJr?=
+ =?utf-8?B?eHRxR0RCN0hZU0tRcTlucTRVZWlTK3krZ2NKZi8yMitrbjc1bDhvYjVaWGFt?=
+ =?utf-8?B?cXA1RkV4YnZEUHp0M2V4TmVPUXhyek1LQzJpcjFoTnZQeHI5aTdsbmw1M2p0?=
+ =?utf-8?B?blN1QmpUU0o1cjFDb2wrMHpFaTU0Ukl1aVBvL2VuYzhwb1pXbzk2MVFSVWo1?=
+ =?utf-8?B?SzlpSmtWNTI2T1c1ZWJ3RVZNTXRUTnE5ZG1IV0VaN0tpL2w5ZnhRK3pjb2JM?=
+ =?utf-8?B?Sjl2QmFSMXNBZGNqUFlFNlpyUklLTzJiT0Fsa0llWTJ1dnFoQmlEM051UUl5?=
+ =?utf-8?B?YlJRc0QxNm9aV2lFeUdpOFRhT2NraFJoM3BSS1Bzb0tDTVh3NUlVSS83TEFJ?=
+ =?utf-8?B?NnUxZ1o0N0w2dit1Kzk4eWNHVmRFdEZlUVliZkhTWE5zc05hRGd2WVR2djRp?=
+ =?utf-8?B?UDJFdmRmNjBUWktvV1NNS3ptQ1FQZFZuQmdKRWI0dVNiR1ZIVm9lYk1obWZR?=
+ =?utf-8?B?RmNIL2trVmlidHBkWjN5Z0VTbnVGanlheXU3WEZpRlFQbURUZFVGb3NVNi84?=
+ =?utf-8?B?anpBcE5Fb2kraEEvd3dnVitiUy9kS1ZXcjA5ajZQVFZnd1JkekJRaFRiVWhY?=
+ =?utf-8?B?UFFmd3luVzFHeWJBRzQzMkxPNVEyS2xWM1I5ZHhleTlYcTd5OGZiSkRNbGFS?=
+ =?utf-8?B?dDdFUVpxM1Y3K0ZIcGl6eWFrNU5XWlhlUTYyaFc1OUQxR250anRvc0dVQVk2?=
+ =?utf-8?B?akJ4Z0xxWFh2MGY3YzJFWldWbWlYdExqLzY4Q3VkUU9BakhwMTNHVTZ5OUF2?=
+ =?utf-8?B?MEx4c2EwLzJrRTQ4Z21ySTZ2eldFd2JKYUV3d2hoYkNCSnVIS2hHSzByczBy?=
+ =?utf-8?B?cDlaV1IwSWVHM0toaXlxalo5T0tYeXIwM2tCYnBEZlJGSXUydTNQWVhvWVpq?=
+ =?utf-8?B?Zy9JU0tLaHZTTGNPS0g4bi96dWpMcjRmU0RFUFdaQlMwYUF0ZzAzTURONEZW?=
+ =?utf-8?B?N204RGg1Rzk5dGNyWVFsekxhMmNZeGtURWtyTlBXTU1MeDlmYmoyWExiU2Zn?=
+ =?utf-8?B?ZjdHQ3ZvQ3YxdjRQUWFGMmUvOWdtQUcwNktCT3NManR6Q0hLdWZWQkNySjBV?=
+ =?utf-8?B?cWZIZzJ6Q2xob2pFbU9VYmRVY1M2T1FWSWdXbjB3K2tOUkZ4OTFWVkxxRWoz?=
+ =?utf-8?B?KzhoMFcrV0g4b0lTWXp1eXJUOXU0bkhoUEx0UDB2MnhndWlWa1p5b1MyVXZ2?=
+ =?utf-8?B?L090ODJnclRsMWgza1czQkJEVkF2SFNsL3JtMUhwdnd5UE1TdjdiS3dTOVBR?=
+ =?utf-8?B?UEJaZWwycVJnYmU1VVBOQ210VFZYQytzS3Y1VHl0SE5XMk1WK0hWbVVJYnRw?=
+ =?utf-8?B?UHk2WWxyVDY0ZWFkOEhwSmdnNFFhdHpnelp3QXNqU3k0Y2xnQjRLYTRYSmhL?=
+ =?utf-8?B?cHMvWVFiUGE0cXFpRCs2THdNNitkVWVPd1BWdjBveEZlMTVvcGlMTUZnSDJm?=
+ =?utf-8?B?dlhlS1hvV1BlWng0WFFMWkVGWDJMQkhmazQyY2J6RUVIUHdMOFpraS9IdWtV?=
+ =?utf-8?B?c0FWSUZEbnR6VDVadFpEZ3Z1OG42MGxCV0poMlZWam9YOVRFZ3BHdDVlZmp6?=
+ =?utf-8?B?WjhPdXVaMFVwV21hdS9TSzBOZUJ3dG9PcVNrQWNxaWxWWExqSGlTR1NRbTRj?=
+ =?utf-8?B?Qmt6aUlIaElwbDY1VUF5a1pCb2tSR1pGUTZKVDhubGUzMHVHdlR1RTB6TnFY?=
+ =?utf-8?B?QnYzNGRSaXd0VDlGUm1LVk1rekg3NWdyQitqZFpJN1ZnRnhBd3IwQnNuNHZ1?=
+ =?utf-8?B?ZnpQZmRpQTVBd3ZUMHJNNFN3aEpDTUU2ZnhGb2dvUHRzeTFYK2tSS2VmWjNr?=
+ =?utf-8?B?L0E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1d0fa63e-4fab-4664-8e74-08dad18cfd77
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2022 22:07:50.6318 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xBUY1Vg/uz+jkm7X8yYFJ/uQTFlMyfOdkfYj0ClhlOCMfWebGCFtf7uZ3OEnCpoAmCjmY0fdCFXmJ6m3IDkJ0lIB87ZoU9eaQYFMAmqYedo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4588
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1669672073; x=1701208073;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ifcjtgvEyaQ8nao5URmujoCiqHnPBNjKinc9/XDDZMU=;
- b=hnEtrA5tkXe+19ASX7TYMCfx2JspbfxTOVjtbOd37ufxgT5MgtxlvsQm
- Fk+/1SMTuhPOUxFvTl+6R/OVKSzvWa7Ms2296oQ4NUS8CjdLrTQmzi3S7
- uTnDFIWYVetQsdnYw5VbDe4AlCFeIm7T4lmorIWlQgvloPROG03jbeMte
- hi4D0wKKznavTRVpXkqCjk12s+hXNslTk5siSabUKab+fBx/D/vLCPgL0
- yj+OBOt0+WroplxWIw0IQwiyKT79X1RYeMqPFDlU1o+Qd7S8ljFPypCgT
- sapjC/vSxtViUf+2XZ3TfFynTvqOFPxN11+zm3I2ksqZHDyDbG+gm8Jtm
+ t=1669673274; x=1701209274;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=ygRoIDuIHvZFApg2Vvr65Laa0jpYdcfgaEMPqPWlBMI=;
+ b=Ih/NkvZ1kqthDpcGF1j0OvuJtVclIFBo9Beklk+PwF/zNlZZ02FxoaqJ
+ ds8rMF4kyd20nww7jBLSrsLwMNkrWsXJ/49ZRNCJTFARCmYOXiGOnB+I0
+ k1dA94+IPyGReDcWzv+UsxCWszDsHbuHtHSpMVavVF5dcuVF7XDIAQ2wU
+ cD6Z4taLAQwjXJ5hembdLvNu2EAOiQMJyjdp4v3r5PoD8J/8h7aNnxtq4
+ XxZNiqMJFhFTI5oKrrk/5SCBBf8+oeQO11IJE6u8fWd6jnY/jfen2uBNY
+ DDubu84Yr/fxoKojdz18uv0oQPCIeaq73+JdZ+ubI0XJOSI3RMsCfl9Bc
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hnEtrA5t
-Subject: [Intel-wired-lan] [PATCH net-next 5/5] ice: use debugfs to output
- FW log data
+ header.a=rsa-sha256 header.s=Intel header.b=Ih/NkvZ1
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v2] igbvf: Regard vf reset nack as
+ success
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,424 +194,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Yuri Benditovich <yuri.benditovich@daynix.com>,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Yan Vugenfirer <yan@daynix.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The FW log data can be quite large so we don't want to use syslog.
-Instead take advantage of debugfs to write the data to.
+On 11/22/2022 5:04 PM, Akihiko Odaki wrote:
+> Hi,
+> 
+> On 2022/11/23 1:22, Maciej Fijalkowski wrote:
+>> On Wed, Nov 23, 2022 at 12:26:30AM +0900, Akihiko Odaki wrote:
+>>> vf reset nack actually represents the reset operation itself is
+>>> performed but no address is assigned. Therefore, e1000_reset_hw_vf
+>>> should fill the "perm_addr" with the zero address and return success on
+>>> such an occasion. This prevents its callers in netdev.c from saying PF
+>>> still resetting, and instead allows them to correctly report that no
+>>> address is assigned.
+>>
+>> What's the v1->v2 diff?
+> 
+> Sorry, I mistakenly added you to CC (and didn't tell you the context). 
+> The diff is only in the message. For details, please look at:
+> https://patchew.org/linux/20221122092707.30981-1-akihiko.odaki@daynix.com/#647a4053-bae0-6c06-3049-274d389c2bdd@daynix.com
+> 
+>> Probably route to net and add fixes tag?
+> It is hard to determine the cause of the bug because it is about 
+> undocumented ABI. Linux introduced E1000_VF_RESET | 
+> E1000_VT_MSGTYPE_NACK response with commit 6ddbc4cf1f4d ("igb: Indicate 
+> failure on vf reset for empty mac address") so one can say it is the 
+> cause of the bug.
+ >
+> However, the PF may be driven by someone else Linux (Windows in 
+> particular), and if such system have already had E1000_VF_RESET | 
+> E1000_VT_MSGTYPE_NACK response defined, it can be said the bug existed 
+> even before Linux changes how the PF responds to E1000_VF_RESET request.
 
-Also, a previous patch addded codde to disable FW logging when
-the driver was unloaded. The code was added to
-ice_devlink_unregister(), which didn't seem correct so move the
-disabling of FW logging on driver unload to a better place.
+As best as you can find is ok; the one you point to seems reasonable. We 
+can only control this OS so we should point to the responsible patch 
+within the kernel. It's better to go with a best-effort Fixes and get 
+applied to some stable kernels then go without one and not (and would 
+require later effort).
 
-Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
----
- drivers/net/ethernet/intel/ice/Makefile       |   3 +-
- drivers/net/ethernet/intel/ice/ice.h          |  24 ++++
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_debugfs.c  | 109 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_devlink.c  |  20 ----
- drivers/net/ethernet/intel/ice/ice_main.c     |  98 ++++++++++++++++
- 6 files changed, 235 insertions(+), 21 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
-
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 750fed7e07d7..5e0013330c46 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -33,7 +33,8 @@ ice-y := ice_main.o	\
- 	 ice_ethtool.o  \
- 	 ice_repr.o	\
- 	 ice_tc_lib.o	\
--	 ice_fwlog.o
-+	 ice_fwlog.o	\
-+	 ice_debugfs.o
- ice-$(CONFIG_PCI_IOV) +=	\
- 	ice_sriov.o		\
- 	ice_virtchnl.o		\
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index ea64bcff108a..c8f1f34b8fbc 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -552,6 +552,9 @@ struct ice_pf {
- 	struct ice_vsi_stats **vsi_stats;
- 	struct ice_sw *first_sw;	/* first switch created by firmware */
- 	u16 eswitch_mode;		/* current mode of eswitch */
-+#ifdef CONFIG_DEBUG_FS
-+	struct dentry *ice_debugfs_pf;
-+#endif /* CONFIG_DEBUG_FS */
- 	struct ice_vfs vfs;
- 	DECLARE_BITMAP(features, ICE_F_MAX);
- 	DECLARE_BITMAP(state, ICE_STATE_NBITS);
-@@ -634,6 +637,8 @@ struct ice_pf {
- #define ICE_VF_AGG_NODE_ID_START	65
- #define ICE_MAX_VF_AGG_NODES		32
- 	struct ice_agg_node vf_agg_node[ICE_MAX_VF_AGG_NODES];
-+	struct list_head fwlog_data_list;
-+	u8 fwlog_list_count;
- };
- 
- struct ice_netdev_priv {
-@@ -648,6 +653,15 @@ struct ice_netdev_priv {
- 	struct list_head tc_indr_block_priv_list;
- };
- 
-+struct ice_fwlog_data {
-+	struct list_head list;
-+	u16 data_size;
-+	u8 *data;
-+};
-+
-+/* define the maximum number of items that can be in the list */
-+#define ICE_FWLOG_MAX_SIZE	64
-+
- /**
-  * ice_vector_ch_enabled
-  * @qv: pointer to q_vector, can be NULL
-@@ -872,6 +886,16 @@ static inline bool ice_is_adq_active(struct ice_pf *pf)
- 	return false;
- }
- 
-+#ifdef CONFIG_DEBUG_FS
-+void ice_debugfs_fwlog_init(struct ice_pf *pf);
-+void ice_debugfs_init(void);
-+void ice_debugfs_exit(void);
-+#else
-+static inline void ice_debugfs_fwlog_init(struct ice_pf *pf) { }
-+static inline void ice_debugfs_init(void) { }
-+static inline void ice_debugfs_exit(void) { }
-+#endif /* CONFIG_DEBUG_FS */
-+
- bool netif_is_ice(struct net_device *dev);
- int ice_vsi_setup_tx_rings(struct ice_vsi *vsi);
- int ice_vsi_setup_rx_rings(struct ice_vsi *vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 8fa18bc5d441..d17bcc778bdd 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -2406,11 +2406,13 @@ enum ice_adminq_opc {
- 
- 	/* Standalone Commands/Events */
- 	ice_aqc_opc_event_lan_overflow			= 0x1001,
-+
- 	/* FW Logging Commands */
- 	ice_aqc_opc_fw_logs_config			= 0xFF30,
- 	ice_aqc_opc_fw_logs_register			= 0xFF31,
- 	ice_aqc_opc_fw_logs_query			= 0xFF32,
- 	ice_aqc_opc_fw_logs_event			= 0xFF33,
-+	ice_aqc_opc_fw_logs_get				= 0xFF34,
- };
- 
- #endif /* _ICE_ADMINQ_CMD_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
-new file mode 100644
-index 000000000000..767df937f56a
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
-@@ -0,0 +1,109 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2018, Intel Corporation. */
-+
-+#include <linux/fs.h>
-+#include <linux/debugfs.h>
-+#include <linux/random.h>
-+#include "ice.h"
-+
-+static struct dentry *ice_debugfs_root;
-+
-+/**
-+ * ice_debugfs_command_read - read from command datum
-+ * @filp: the opened file
-+ * @buffer: where to write the data for the user to read
-+ * @count: the size of the user's buffer
-+ * @ppos: file position offset
-+ */
-+static ssize_t ice_debugfs_command_read(struct file *filp, char __user *buffer,
-+					size_t count, loff_t *ppos)
-+{
-+	struct ice_pf *pf = filp->private_data;
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_fwlog_data *log, *tmp_log;
-+	int data_copied = 0;
-+
-+	if (list_empty(&pf->fwlog_data_list)) {
-+		dev_info(dev, "FW log is empty\n");
-+		return 0;
-+	}
-+
-+	list_for_each_entry_safe(log, tmp_log, &pf->fwlog_data_list, list) {
-+		u16 cur_buf_len = log->data_size;
-+		int retval;
-+
-+		if (cur_buf_len > count)
-+			break;
-+
-+		retval = copy_to_user(buffer, log->data, cur_buf_len);
-+		if (retval)
-+			return -EFAULT;
-+
-+		data_copied += cur_buf_len;
-+		buffer += cur_buf_len;
-+		count -= cur_buf_len;
-+		*ppos += cur_buf_len;
-+
-+		/* don't delete the list element until we know it got copied */
-+		kfree(log->data);
-+		list_del(&log->list);
-+		kfree(log);
-+		pf->fwlog_list_count--;
-+	}
-+
-+	return data_copied;
-+}
-+
-+static const struct file_operations ice_debugfs_command_fops = {
-+	.owner = THIS_MODULE,
-+	.open  = simple_open,
-+	.read = ice_debugfs_command_read,
-+};
-+
-+/**
-+ * ice_debugfs_fwlog_init - setup the debugfs directory
-+ * @pf: the ice that is starting up
-+ */
-+void ice_debugfs_fwlog_init(struct ice_pf *pf)
-+{
-+	const char *name = pci_name(pf->pdev);
-+	struct dentry *pfile;
-+
-+	/* only support fw log commands on PF 0 */
-+	if (pf->hw.bus.func)
-+		return;
-+
-+	pf->ice_debugfs_pf = debugfs_create_dir(name, ice_debugfs_root);
-+	if (IS_ERR(pf->ice_debugfs_pf))
-+		return;
-+
-+	pfile = debugfs_create_file("fwlog", 0400, pf->ice_debugfs_pf, pf,
-+				    &ice_debugfs_command_fops);
-+	if (!pfile)
-+		goto create_failed;
-+
-+	return;
-+
-+create_failed:
-+	dev_err(ice_pf_to_dev(pf), "debugfs dir/file for %s failed\n", name);
-+	debugfs_remove_recursive(pf->ice_debugfs_pf);
-+}
-+
-+/**
-+ * ice_debugfs_init - create root directory for debugfs entries
-+ */
-+void ice_debugfs_init(void)
-+{
-+	ice_debugfs_root = debugfs_create_dir(KBUILD_MODNAME, NULL);
-+	if (IS_ERR(ice_debugfs_root))
-+		pr_info("init of debugfs failed\n");
-+}
-+
-+/**
-+ * ice_debugfs_exit - remove debugfs entries
-+ */
-+void ice_debugfs_exit(void)
-+{
-+	debugfs_remove_recursive(ice_debugfs_root);
-+	ice_debugfs_root = NULL;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 923556e6ae79..148902b515bf 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -1739,26 +1739,6 @@ void ice_devlink_register(struct ice_pf *pf)
-  */
- void ice_devlink_unregister(struct ice_pf *pf)
- {
--	struct ice_hw *hw = &pf->hw;
--
--	/* make sure FW logging is disabled to not put the FW in a weird state
--	 * for the next driver load
--	 */
--	if (hw->fwlog_ena) {
--		int status;
--
--		hw->fwlog_cfg.options &= ~ICE_FWLOG_OPTION_ARQ_ENA;
--		status = ice_fwlog_set(hw, &hw->fwlog_cfg);
--		if (status)
--			dev_warn(ice_pf_to_dev(pf), "Unable to turn off FW logging, status: %d\n",
--				 status);
--
--		status = ice_fwlog_unregister(hw);
--		if (status)
--			dev_warn(ice_pf_to_dev(pf), "Unable to unregister FW logging, status: %d\n",
--				 status);
--	}
--
- 	devlink_unregister(priv_to_devlink(pf));
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 517702af327c..01cf4cb78009 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1213,6 +1213,45 @@ ice_handle_link_event(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	return status;
- }
- 
-+/**
-+ * ice_get_fwlog_data - copy the FW log data from ARQ event
-+ * @pf: PF that the FW log event is associated with
-+ * @event: event structure containing FW log data
-+ */
-+static void
-+ice_get_fwlog_data(struct ice_pf *pf, struct ice_rq_event_info *event)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_fwlog_data *fwlog;
-+
-+	if (pf->fwlog_list_count >= ICE_FWLOG_MAX_SIZE) {
-+		dev_info(dev, "Reached max list size for fwlog list!\n");
-+		return;
-+	}
-+
-+	fwlog = kzalloc(sizeof(*fwlog), GFP_KERNEL);
-+	if (!fwlog) {
-+		dev_warn(dev, "Couldn't allocate memory for FWlog element\n");
-+		return;
-+	}
-+
-+	INIT_LIST_HEAD(&fwlog->list);
-+
-+	fwlog->data_size = le16_to_cpu(event->desc.datalen);
-+	fwlog->data = kzalloc(fwlog->data_size, GFP_KERNEL);
-+	if (!fwlog->data) {
-+		dev_warn(dev, "Couldn't allocate memory for FWlog data\n");
-+		kfree(fwlog);
-+		return;
-+	}
-+
-+	memcpy(fwlog->data, event->msg_buf, fwlog->data_size);
-+
-+	list_add_tail(&fwlog->list, &pf->fwlog_data_list);
-+
-+	pf->fwlog_list_count++;
-+}
-+
- enum ice_aq_task_state {
- 	ICE_AQ_TASK_WAITING = 0,
- 	ICE_AQ_TASK_COMPLETE,
-@@ -1486,6 +1525,9 @@ static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
- 			if (!ice_is_malicious_vf(pf, &event, i, pending))
- 				ice_vc_process_vf_msg(pf, &event);
- 			break;
-+		case ice_aqc_opc_fw_logs_event:
-+			ice_get_fwlog_data(pf, &event);
-+			break;
- 		case ice_aqc_opc_lldp_set_mib_change:
- 			ice_dcb_process_lldp_set_mib_change(pf, &event);
- 			break;
-@@ -4688,6 +4730,52 @@ static int ice_register_netdev(struct ice_pf *pf)
- 	return err;
- }
- 
-+/**
-+ * ice_pf_fwlog_init - initialize FW logging on device init
-+ * @pf: pointer to the PF struct
-+ *
-+ * This should always be called after ice_hw_init().
-+ */
-+static void
-+ice_pf_fwlog_init(struct ice_pf *pf)
-+{
-+	INIT_LIST_HEAD(&pf->fwlog_data_list);
-+}
-+
-+/**
-+ * ice_pf_fwlog_deinit - clear FW logging metadata on device exit
-+ * @pf: pointer to the PF struct
-+ */
-+static void
-+ice_pf_fwlog_deinit(struct ice_pf *pf)
-+{
-+	struct ice_fwlog_data *fwlog, *fwlog_tmp;
-+	struct ice_hw *hw = &pf->hw;
-+
-+	/* make sure FW logging is disabled to not put the FW in a weird state
-+	 * for the next driver load
-+	 */
-+	if (hw->fwlog_ena) {
-+		int status;
-+
-+		hw->fwlog_cfg.options &= ~ICE_FWLOG_OPTION_ARQ_ENA;
-+		status = ice_fwlog_set(hw, &hw->fwlog_cfg);
-+		if (status)
-+			dev_warn(ice_pf_to_dev(pf), "Unable to turn off FW logging, status: %d\n",
-+				 status);
-+
-+		status = ice_fwlog_unregister(hw);
-+		if (status)
-+			dev_warn(ice_pf_to_dev(pf), "Unable to unregister FW logging, status: %d\n",
-+				 status);
-+	}
-+
-+	list_for_each_entry_safe(fwlog, fwlog_tmp, &pf->fwlog_data_list, list) {
-+		kfree(fwlog->data);
-+		kfree(fwlog);
-+	}
-+}
-+
- /**
-  * ice_probe - Device initialization routine
-  * @pdev: PCI device information struct
-@@ -4773,8 +4861,12 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 		goto err_exit_unroll;
- 	}
- 
-+	ice_pf_fwlog_init(pf);
-+
- 	ice_init_feature_support(pf);
- 
-+	ice_debugfs_fwlog_init(pf);
-+
- 	err = ice_init_ddp_config(hw, pf);
- 
- 	/* during topology change ice_init_hw may fail */
-@@ -5139,6 +5231,8 @@ static void ice_remove(struct pci_dev *pdev)
- 		msleep(100);
- 	}
- 
-+	ice_pf_fwlog_deinit(pf);
-+
- 	ice_tc_indir_block_remove(pf);
- 
- 	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
-@@ -5620,10 +5714,13 @@ static int __init ice_module_init(void)
- 		return -ENOMEM;
- 	}
- 
-+	ice_debugfs_init();
-+
- 	status = pci_register_driver(&ice_driver);
- 	if (status) {
- 		pr_err("failed to register PCI driver, err %d\n", status);
- 		destroy_workqueue(ice_wq);
-+		ice_debugfs_exit();
- 	}
- 
- 	return status;
-@@ -5640,6 +5737,7 @@ static void __exit ice_module_exit(void)
- {
- 	pci_unregister_driver(&ice_driver);
- 	destroy_workqueue(ice_wq);
-+	ice_debugfs_exit();
- 	pr_info("module unloaded\n");
- }
- module_exit(ice_module_exit);
--- 
-2.35.1
-
+Thanks,
+Tony
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
