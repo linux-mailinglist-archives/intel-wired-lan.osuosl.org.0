@@ -1,83 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E65F63C52B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Nov 2022 17:30:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87EEC63C52D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Nov 2022 17:30:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1578F81E40;
-	Tue, 29 Nov 2022 16:30:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1578F81E40
+	by smtp3.osuosl.org (Postfix) with ESMTP id 24BC760FB8;
+	Tue, 29 Nov 2022 16:30:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 24BC760FB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669739418;
-	bh=m68hia4UIfixGv6ObO7GoLLHAueftM21b7BW7D64Kwo=;
+	s=default; t=1669739422;
+	bh=4xthUmRE6ZlfnJWqhhOCLPRVVmTNq4DFR6psWKDVGzk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QOSQh/BVsWgdYs05Rp7VxxXdnC6NzQ2M79kaTyOKgd91Oze5oFs56q33t5qISROOt
-	 ldtYGcON1Z8IAWKOpUoNvfowXhQKsywf6Dxr5NJcnSD8Ig2YXOvO1cuH6sAjPm2xZN
-	 +XTyDwvAZjrltcDvkfDv1vi/sc3jjGJmSaEDBYHtTynU1/xHy4C3oGHLVSTs0QXVDU
-	 sIRryZq/DjP5DbwGn2NRoTrX2hjWV6ZLEbD7FKIsmIJbNfm29ytBlOkspeBTsTePXQ
-	 CeubjpHMTf3rmmGoUQnLk9eOSlB6CEXvYQDUq1nnzK/5zY87fJlpM3U+5xmkJW1eCw
-	 7OY9OzYYxOY7Q==
+	b=ZBMD3L87b7PlWxrqjFiWpUa0wrcNF3uxkglhQO8T41gOyGyfMTW1yH7HcDofEo0Xp
+	 Lq5zS8C8E1ieEkVPOv/Un7FH2HAIjv7D5LdV8VlcL/diD8Dm9kc4RoJ8rgSHF/wLzG
+	 aYfY2qFcxjVHXXJtDeVY92EsDXQOBb0UImMK7tqGCdSCd+aTE0lSkzVjbHXFffeY6p
+	 qSPdmwn4B3FabVyduJzYBEIvNNNhzBt8jvlwXUYt9ZkEXiNDoBp/IuzV13ShL1TDD1
+	 KhrFKGV50E4rW9fa1nE4j8GEW+JzzgJXzjcQE/n/6mrLP+TBF/C3VC1DsNtBXQmlHF
+	 COp2tGJIJPuUg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RTmUg0ojqH91; Tue, 29 Nov 2022 16:30:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MJh5qWhcHzO3; Tue, 29 Nov 2022 16:30:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 19ED781E4F;
-	Tue, 29 Nov 2022 16:30:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19ED781E4F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 151CD60C08;
+	Tue, 29 Nov 2022 16:30:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 151CD60C08
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8D75B1BF2A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CBF391BF2A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7529C607F5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7529C607F5
+ by smtp3.osuosl.org (Postfix) with ESMTP id A7189607F5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7189607F5
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vEesApE5jXFQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Nov 2022 09:52:45 +0000 (UTC)
+ with ESMTP id QJq5JwACP0R3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Nov 2022 09:52:54 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F062607E1
-Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com
- [IPv6:2607:f8b0:4864:20::62e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4F062607E1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:45 +0000 (UTC)
-Received: by mail-pl1-x62e.google.com with SMTP id w23so12868001ply.12
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 01:52:45 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B2131607E1
+Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com
+ [IPv6:2607:f8b0:4864:20::52b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B2131607E1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 09:52:54 +0000 (UTC)
+Received: by mail-pg1-x52b.google.com with SMTP id q71so12503683pgq.8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Nov 2022 01:52:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=q+HcPAfOXUEhgB8t67wP/cjouMyhjRZQn2uzLIUxtrM=;
- b=AilN0wkHoI3koazNHo3tZ+sCyWmKMOIAtyaTLOyzgyYBbjOQE4bByxrr9oCoJiHdg9
- BA9AWpr6xKdX4AlIFbMBAbbCzTEUVJVRjAQAEp6dq3ad2Y9hqvjFjEF1+eHATWxAJ0Rc
- i40+P01pIRjKUnfug4/n3K3+yIffxuTcEtl8YAv9GkPvG3WK1WfZZZdGrFNyWuNvucPb
- 8GYyNyTF19opFbvW4i0W0svEMRYBuXMnLfRpRPImOB1XALPF9bOLuxoIp4Qo5lYKUOs7
- yM5MySBdCQei6f1tCmzro+HWb2q5j8+VBN7Qe+9AucU+lUidm3aH0tY6wJ8aTmSl2n4N
- 5+jg==
-X-Gm-Message-State: ANoB5pnl5+Nhzo3stVdleSqxx9MlKCciYPyuRHqmNwD5WI9HYHvM+/TU
- NedYK6Fr3Lw0GzSVd/t5ArE=
-X-Google-Smtp-Source: AA0mqf4Lw/qQGGFmSQRFNytTLBUGv/AQ65WV04fGbUW4eia7yU4P2vgjBbDaOFgMNltEoNBsP5lZEg==
-X-Received: by 2002:a17:903:2683:b0:186:6f1e:5087 with SMTP id
- jf3-20020a170903268300b001866f1e5087mr37426289plb.119.1669715564331; 
- Tue, 29 Nov 2022 01:52:44 -0800 (PST)
+ bh=sRMinq7k8Rp6x2pTL5xVUf/39/IR4pJUwqlpijwhsQ8=;
+ b=pNb50QitezypfmxjHd5ExaIMh0sb7i8eKZQOhXVv/n3YNDX4c6O+446rhirlizzlze
+ 0zlhL7+iOnFfYLs2aX4cjihNTV16wWgc8HjFnevO5YZHPfywx5mVqPMoy3Lx0e/EduyA
+ LM0E1Rd9tm3qy5EK6hd6jQfkGJEVhjuXBP57ycMls7G50y3ynZmhSpxIf2fi560gzBnw
+ rR1moA/SI0UO2FTLh0j/2Wx6yROu8NK/42qq3Y9f70VbldIY52UvBM76XC08vGF6BYLz
+ f+NuNAywq8awwKwSEgnJR0JN9VO7Xz0DAuC7fiIMKHVp9NElALeLcSuKgOcj6+k7KDyK
+ vNkg==
+X-Gm-Message-State: ANoB5pmR/NcWVBbsUSQifBntOX+OP8As2EFU/xiaTLxcyvZkpj1oRfli
+ wle/Q0jjx9C3F+CYTacayoA=
+X-Google-Smtp-Source: AA0mqf5u6z67DbifkBMUy3hi5AKKsu673ZUUXV8SFZGZ6XVPZWR3+A17osZujQsrllkqhTg1QnkiyA==
+X-Received: by 2002:a63:4944:0:b0:44e:466f:4759 with SMTP id
+ y4-20020a634944000000b0044e466f4759mr31555695pgk.194.1669715574047; 
+ Tue, 29 Nov 2022 01:52:54 -0800 (PST)
 Received: from XH22050090-L.ad.ts.tri-ad.global ([103.175.111.222])
  by smtp.gmail.com with ESMTPSA id
- mv15-20020a17090b198f00b0021937b2118bsm941346pjb.54.2022.11.29.01.52.35
+ mv15-20020a17090b198f00b0021937b2118bsm941346pjb.54.2022.11.29.01.52.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Nov 2022 01:52:44 -0800 (PST)
+ Tue, 29 Nov 2022 01:52:53 -0800 (PST)
 From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 To: Jiri Pirko <jiri@nvidia.com>, netdev@vger.kernel.org,
  Jakub Kicinski <kuba@kernel.org>
-Date: Tue, 29 Nov 2022 18:51:39 +0900
-Message-Id: <20221129095140.3913303-3-mailhol.vincent@wanadoo.fr>
+Date: Tue, 29 Nov 2022 18:51:40 +0900
+Message-Id: <20221129095140.3913303-4-mailhol.vincent@wanadoo.fr>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221129095140.3913303-1-mailhol.vincent@wanadoo.fr>
 References: <20221129095140.3913303-1-mailhol.vincent@wanadoo.fr>
@@ -88,18 +88,18 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=q+HcPAfOXUEhgB8t67wP/cjouMyhjRZQn2uzLIUxtrM=;
- b=J6WKtTXnQV8Zq71pPB0zFZTPxvL6UGEHTzjmMv3xN5MdjdEeV+BVL0xkN+cTUImBbc
- xEuh14jXCXMW/vxptpV8xn5uTAN24mkhL3e00X7OZOHFHOklnIlTi7FSH4CDbQKN562L
- L/HY799r3W7BrlGIF5dysbYYYQddrtfWUkjgt8hWScl7T9NbiiFMLeHNP/bSEcVYmMGv
- a2RxTPOr1PC859By7i+Xyb7gShL7lGKM5b4Ks7h6se7EK+MyqaazlL0Exy1klJkW7Nr5
- d7/qxZQ2XlvtIPaVH35oJfZmayG1gyKAAUV2ArzX8yLz8S4NbxX8ZUWhCivaDF0MpmSp
- +HjQ==
+ bh=sRMinq7k8Rp6x2pTL5xVUf/39/IR4pJUwqlpijwhsQ8=;
+ b=oqIH2yTunmVjjXDHYNlUinxnxGW49OErAZelZct0jEWFO6BnXwKg1vfD2dGKmHWxmB
+ un+UxeNiqOuQByawttlpYgSjjkKR1FPnyJ5lXb/c42Da2r7PaZw+1XUjlmtSknDD2EqB
+ o5j8cQtrV2woKecwlFsgTJmX6xbYthyJrrEqgucmgov7sZ1mQL/uXSNxnzPdzQf1JBqR
+ g7TLtCYviUD8oCSuMHwd78bHpb1+RKtVQ+UrNLNIgLAXfBiLhPvylbIHZsIKDYkBaxxO
+ kScM/2yVWzC3YMSVYizokfzZcVQpOSjpAmEEi5tjdrOMmw5LeiA6UjOljlQaTW1iPhfI
+ pUmw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=J6WKtTXn
-Subject: [Intel-wired-lan] [PATCH net-next v6 2/3] net: devlink: make the
- devlink_ops::info_get() callback optional
+ header.a=rsa-sha256 header.s=20210112 header.b=oqIH2yTu
+Subject: [Intel-wired-lan] [PATCH net-next v6 3/3] net: devlink: clean-up
+ empty devlink_ops::info_get()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,65 +144,79 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Some drivers only reported the driver name in their
-devlink_ops::info_get() callback. Now that the core provides this
-information, the callback became empty. For such drivers, just
-removing the callback would prevent the core from executing
-devlink_nl_info_fill() meaning that "devlink dev info" would not
-return anything.
+devlink_ops::info_get() is now optional and devlink will continue to
+report information even if that callback gets removed.
 
-Make the callback function optional by executing
-devlink_nl_info_fill() even if devlink_ops::info_get() is NULL.
-
-N.B.: the drivers with devlink support which previously did not
-implement devlink_ops::info_get() will now also be able to report
-the driver name.
+Remove all the empty devlink_ops::info_get() callbacks from the
+drivers.
 
 Signed-off-by: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
 Reviewed-by: Jacob Keller  <jacob.e.keller@intel.com>
 Reviewed-by: Jiri Pirko <jiri@nvidia.com>
 ---
- net/core/devlink.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/fungible/funeth/funeth_devlink.c     | 7 -------
+ drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c   | 7 -------
+ drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c | 8 --------
+ 3 files changed, 22 deletions(-)
 
-diff --git a/net/core/devlink.c b/net/core/devlink.c
-index 3babc16eeb6b..817d978bb729 100644
---- a/net/core/devlink.c
-+++ b/net/core/devlink.c
-@@ -6773,9 +6773,11 @@ devlink_nl_info_fill(struct sk_buff *msg, struct devlink *devlink,
- 		goto err_cancel_msg;
+diff --git a/drivers/net/ethernet/fungible/funeth/funeth_devlink.c b/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
+index 6668375edff6..4fbeb3fd71a8 100644
+--- a/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
++++ b/drivers/net/ethernet/fungible/funeth/funeth_devlink.c
+@@ -3,14 +3,7 @@
+ #include "funeth.h"
+ #include "funeth_devlink.h"
  
- 	req.msg = msg;
--	err = devlink->ops->info_get(devlink, &req, extack);
--	if (err)
--		goto err_cancel_msg;
-+	if (devlink->ops->info_get) {
-+		err = devlink->ops->info_get(devlink, &req, extack);
-+		if (err)
-+			goto err_cancel_msg;
-+	}
- 
- 	err = devlink_nl_driver_info_get(dev->driver, &req);
- 	if (err)
-@@ -6796,9 +6798,6 @@ static int devlink_nl_cmd_info_get_doit(struct sk_buff *skb,
- 	struct sk_buff *msg;
- 	int err;
- 
--	if (!devlink->ops->info_get)
--		return -EOPNOTSUPP;
+-static int fun_dl_info_get(struct devlink *dl, struct devlink_info_req *req,
+-			   struct netlink_ext_ack *extack)
+-{
+-	return 0;
+-}
 -
- 	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
- 	if (!msg)
- 		return -ENOMEM;
-@@ -6824,7 +6823,7 @@ static int devlink_nl_cmd_info_get_dumpit(struct sk_buff *msg,
- 	int err = 0;
+ static const struct devlink_ops fun_dl_ops = {
+-	.info_get = fun_dl_info_get,
+ };
  
- 	devlinks_xa_for_each_registered_get(sock_net(msg->sk), index, devlink) {
--		if (idx < start || !devlink->ops->info_get)
-+		if (idx < start)
- 			goto inc;
+ struct devlink *fun_devlink_alloc(struct device *dev)
+diff --git a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
+index f15439d26d21..bda1a6fa2ec4 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
++++ b/drivers/net/ethernet/marvell/octeontx2/af/rvu_devlink.c
+@@ -1547,14 +1547,7 @@ static int rvu_devlink_eswitch_mode_set(struct devlink *devlink, u16 mode,
+ 	return 0;
+ }
  
- 		devl_lock(devlink);
+-static int rvu_devlink_info_get(struct devlink *devlink, struct devlink_info_req *req,
+-				struct netlink_ext_ack *extack)
+-{
+-	return 0;
+-}
+-
+ static const struct devlink_ops rvu_devlink_ops = {
+-	.info_get = rvu_devlink_info_get,
+ 	.eswitch_mode_get = rvu_devlink_eswitch_mode_get,
+ 	.eswitch_mode_set = rvu_devlink_eswitch_mode_set,
+ };
+diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
+index 5cc6416cf1a6..63ef7c41d18d 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
++++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_devlink.c
+@@ -77,15 +77,7 @@ static const struct devlink_param otx2_dl_params[] = {
+ 			     otx2_dl_mcam_count_validate),
+ };
+ 
+-static int otx2_devlink_info_get(struct devlink *devlink,
+-				 struct devlink_info_req *req,
+-				 struct netlink_ext_ack *extack)
+-{
+-	return 0;
+-}
+-
+ static const struct devlink_ops otx2_devlink_ops = {
+-	.info_get = otx2_devlink_info_get,
+ };
+ 
+ int otx2_register_dl(struct otx2_nic *pfvf)
 -- 
 2.25.1
 
