@@ -1,88 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4A7063ED26
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Dec 2022 11:03:30 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4370E63ED80
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Dec 2022 11:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 79B2C40393;
-	Thu,  1 Dec 2022 10:03:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 79B2C40393
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4BDF1418B8;
+	Thu,  1 Dec 2022 10:20:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4BDF1418B8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1669889009;
-	bh=RB6xLhFdKYdRGotMzayKcBKEw2888n9WxhGDq4gPx8g=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Rt9gIZhMWvlHa/LvYymPn+DtuY/ht4KK6SM8qXI4KVSNXpFK3kf0JipAX3n6CQwbV
-	 wtIfSGqIXJi+wjzbPbtI+ZjJxxR+b77b3118RINbK4WzaJLUhER2Y8r1MUqk3iWDar
-	 aFUOPaODiQ6UmQLnGx5u4Mj2ffbrvxDQcWZZRuzDpK42kgqaqFsZuMkgx3K+crYG7m
-	 r7kTn3EIiaEDp8Okm6E5BIpSbD4HDx8xWu1NnKs4ejCR5+q7mFdq/OikeS6+eBIl6T
-	 XjgHtigjXrp3CqkzL0ZTH/XDrdF0SCSdIQG96KZbhII+ZMj8nj6tvV2QqU+eSYYHFT
-	 Z4zzd9to+zLPg==
+	s=default; t=1669890024;
+	bh=S44UkwFEcWVgNa5c7iJPnNl6Tql2qN4YYT2hyjJ5iU4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=7ei9BFHmy84BUs3PetPoFr+z0FobbPyFoUMffdEpTLXrKKvSXU1Yg/2G7vUnZ+muF
+	 gQfu02vOISza3I8+TsRiQsaje3O/9OxCWEX5CSThMljCo1TXNrZEplyY8kqf8obpJZ
+	 bhEIKyHmXHaM1uyr++6AYeOa6KNiwSpjfMNw1w0IXWLpYFKm1hp31Abw77nmQr88d0
+	 UN893zFEduBTZ6oNSLA4iNybLperUgJuQcEQTpe5ypV6YqF8+j78hvLNrl2kIB2UfX
+	 5/4uz9dxEc8UwBievPgInuc5XYCcvyPRi0lM77T35Bq0VXj0IUdzEvvZ1INK5qeYN+
+	 76DNw91O3WQwg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bnQptuPdHxpe; Thu,  1 Dec 2022 10:03:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id h2eOZxYA75XA; Thu,  1 Dec 2022 10:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7AD8840157;
-	Thu,  1 Dec 2022 10:03:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7AD8840157
+	by smtp4.osuosl.org (Postfix) with ESMTP id 05F08418AC;
+	Thu,  1 Dec 2022 10:20:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05F08418AC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 99D7C1BF844
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:03:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2CD281BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:20:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7120A81F32
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:03:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7120A81F32
+ by smtp4.osuosl.org (Postfix) with ESMTP id 059EC418AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:20:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 059EC418AD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kxl-PfS1oqeG for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Dec 2022 10:03:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 793E981F31
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 793E981F31
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:03:22 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10547"; a="299011531"
-X-IronPort-AV: E=Sophos;i="5.96,209,1665471600"; d="scan'208";a="299011531"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2022 02:03:21 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10547"; a="818985947"
-X-IronPort-AV: E=Sophos;i="5.96,209,1665471600"; d="scan'208";a="818985947"
-Received: from lkp-server01.sh.intel.com (HELO 64a2d449c951) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 01 Dec 2022 02:03:20 -0800
-Received: from kbuild by 64a2d449c951 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p0gPX-000CQx-2j;
- Thu, 01 Dec 2022 10:03:19 +0000
-Date: Thu, 01 Dec 2022 18:02:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63887bc4.KzrXB6o8z0C+UAS3%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id suHrNHCZP44o for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Dec 2022 10:20:16 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3D048418AC
+Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com
+ [IPv6:2607:f8b0:4864:20::52e])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3D048418AC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Dec 2022 10:20:16 +0000 (UTC)
+Received: by mail-pg1-x52e.google.com with SMTP id q1so1256372pgl.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 01 Dec 2022 02:20:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=j+iNLgZBHVFYVqAiKpaqYdWWjZFUYRy5zBVAjX1O+nQ=;
+ b=elo59nv95exqdjguqi2apvtYeva2nQV8YOuTsGaNOy13FQV45KaOVOW8Rxrmt9K6RU
+ Pd4ENe4AbhStAnrQUo5t1IlgHdame3Cg4TAHS5euzwz8yLJ007Pvo5yFSQ2qAafetPXt
+ m++X06h2b4/6e75BksarHj8x+ZPjunwm/3AxR86WTAMM0adytMdBXjCVknpWVhM+GVCe
+ HzIohJ9oZKkv81mphJRXL2TFYv6hfnVlpstma8rOMXpX29+XcEcE4Nr5LW3+OxlNDmRD
+ yt2wd5fPeJP2ZhIjaVoQMJSdf0AV9sPn+8G72ZBz/UJv/qkPB95CHnR316oMvn+JTVyx
+ TVKQ==
+X-Gm-Message-State: ANoB5pmXwzM+VbZQmVmxVbwv/NHHwP8EeFZCjmb4R8sYbEKlIXz5mVX1
+ lGzYyRwc8YlCft+6L0q4IFhOPg==
+X-Google-Smtp-Source: AA0mqf7fksbSZOyCBni3D+9eCcjk09sHMqEqioylnSOV7zMZWndYABL6qD4HKFDypG6UJN8iiAW1zw==
+X-Received: by 2002:a05:6a00:324e:b0:575:871f:2e7a with SMTP id
+ bn14-20020a056a00324e00b00575871f2e7amr11661250pfb.35.1669890015643; 
+ Thu, 01 Dec 2022 02:20:15 -0800 (PST)
+Received: from alarm.flets-east.jp ([2400:4050:c360:8200:7b99:f7c3:d084:f1e2])
+ by smtp.gmail.com with ESMTPSA id
+ j5-20020a170902690500b001708c4ebbaesm3164914plk.309.2022.12.01.02.20.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Dec 2022 02:20:15 -0800 (PST)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+To: 
+Date: Thu,  1 Dec 2022 19:20:03 +0900
+Message-Id: <20221201102003.67861-1-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1669889002; x=1701425002;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=Whi/oyD+xBV6xbubMIVO9Sspo/oKxitm8Dnv4XctSOE=;
- b=bE8vaiTgbmhkZHGUE0BnkL4h1zmN7alxfbIbFLjtqtxmSRuT2YwXCpCv
- 1+lI1UFWLsLWk71mib3eFrvel1yhTPeDlMf64AwTA0yh3FJSoaQLoSBGv
- 6D7NcC804ghL6pmFXWcl3TlbX/XKwA4/DlAHaBy6cSgLFqUDRfKjpBysN
- nS1MH5uV7e8ZCZnvFd83eYRwkfiuwlNnjOQzaDO9cagNwhQpF7ddnHK2h
- r14tSYueobOdVnxI+LAkKbFTdJZNrXJbj6sn1h3t0OH+/xgIEn+6Sj9f/
- bBUnKVp5IO8+ZirnVIk4ia4sXfJdjdDNHen1vTaca4eJdlYolwlai1pSk
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bE8vaiTg
-Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
- 28e96556baca7056d11d9fb3cdd0aba4483e00d8
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=j+iNLgZBHVFYVqAiKpaqYdWWjZFUYRy5zBVAjX1O+nQ=;
+ b=YJWv5iOEvqI+beFxfLWL+0HTOZlErkbrpNcTf4vFnDqxK8klrn+BorJpFEMBEdaVLs
+ cnCCj3rLdSXDQQpIXtvi5IZ7L4kV0eNf0/7SnUv1LJ4zNJPZhpvV5JO/ZCxYMaXa2eWC
+ 9h40Nv/9x6dEHPPbDONVxIfvE0i5uvkLJN2wuvPy1QGl6Hfd15fAjY+1t4Xjw91U/SV0
+ stIl21nN9reZb88gtoWcLzg7DMyQPFCjx5bplFUAQ3bvD7iw+3a7RswoQ0Qjg2yNtSI1
+ xtk4wemqixDdUN9oYzTPthVUSg0LtfIkVFHL9KuLyxDwgnb2AIpkyHAfm+elNiZFtLY0
+ 6CZg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=daynix-com.20210112.gappssmtp.com
+ header.i=@daynix-com.20210112.gappssmtp.com header.a=rsa-sha256
+ header.s=20210112 header.b=YJWv5iOE
+Subject: [Intel-wired-lan] [PATCH net v4] igbvf: Regard vf reset nack as
+ success
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,76 +107,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, Leon Romanovsky <leon@kernel.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Yuri Benditovich <yuri.benditovich@daynix.com>,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Yan Vugenfirer <yan@daynix.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
-branch HEAD: 28e96556baca7056d11d9fb3cdd0aba4483e00d8  igb: Allocate MSI-X vector when testing
+vf reset nack actually represents the reset operation itself is
+performed but no address is assigned. Therefore, e1000_reset_hw_vf
+should fill the "perm_addr" with the zero address and return success on
+such an occasion. This prevents its callers in netdev.c from saying PF
+still resetting, and instead allows them to correctly report that no
+address is assigned.
 
-elapsed time: 720m
+Fixes: 6ddbc4cf1f4d ("igb: Indicate failure on vf reset for empty mac address")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+V3 -> V4: Removed blank lines between cases
+V2 -> V3: Added Fixes: tag
 
-configs tested: 47
-configs skipped: 2
+ drivers/net/ethernet/intel/igbvf/vf.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                            allnoconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-s390                                defconfig
-s390                             allmodconfig
-arc                                 defconfig
-alpha                               defconfig
-s390                             allyesconfig
-powerpc                           allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              defconfig
-ia64                             allmodconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-x86_64                               rhel-8.3
-x86_64                           allyesconfig
-sh                               allmodconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-i386                             allyesconfig
-i386                                defconfig
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                 randconfig-a001-20221128
-i386                 randconfig-a005-20221128
-i386                 randconfig-a006-20221128
-i386                 randconfig-a004-20221128
-i386                 randconfig-a003-20221128
-i386                 randconfig-a002-20221128
-
-clang tested configs:
-s390                 randconfig-r044-20221128
-hexagon              randconfig-r041-20221128
-riscv                randconfig-r042-20221128
-hexagon              randconfig-r045-20221128
-x86_64               randconfig-k001-20221128
-i386                 randconfig-a014-20221128
-i386                 randconfig-a011-20221128
-i386                 randconfig-a013-20221128
-i386                 randconfig-a016-20221128
-i386                 randconfig-a012-20221128
-i386                 randconfig-a015-20221128
-
+diff --git a/drivers/net/ethernet/intel/igbvf/vf.c b/drivers/net/ethernet/intel/igbvf/vf.c
+index b8ba3f94c363..a47a2e3e548c 100644
+--- a/drivers/net/ethernet/intel/igbvf/vf.c
++++ b/drivers/net/ethernet/intel/igbvf/vf.c
+@@ -1,6 +1,8 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /* Copyright(c) 2009 - 2018 Intel Corporation. */
+ 
++#include <linux/etherdevice.h>
++
+ #include "vf.h"
+ 
+ static s32 e1000_check_for_link_vf(struct e1000_hw *hw);
+@@ -131,11 +133,16 @@ static s32 e1000_reset_hw_vf(struct e1000_hw *hw)
+ 		/* set our "perm_addr" based on info provided by PF */
+ 		ret_val = mbx->ops.read_posted(hw, msgbuf, 3);
+ 		if (!ret_val) {
+-			if (msgbuf[0] == (E1000_VF_RESET |
+-					  E1000_VT_MSGTYPE_ACK))
++			switch (msgbuf[0]) {
++			case E1000_VF_RESET | E1000_VT_MSGTYPE_ACK:
+ 				memcpy(hw->mac.perm_addr, addr, ETH_ALEN);
+-			else
++				break;
++			case E1000_VF_RESET | E1000_VT_MSGTYPE_NACK:
++				eth_zero_addr(hw->mac.perm_addr);
++				break;
++			default:
+ 				ret_val = -E1000_ERR_MAC_INIT;
++			}
+ 		}
+ 	}
+ 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.38.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
