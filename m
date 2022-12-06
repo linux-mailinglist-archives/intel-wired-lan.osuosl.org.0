@@ -1,83 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAB49644950
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Dec 2022 17:34:51 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C944D644951
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Dec 2022 17:34:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 35CCA60E18;
-	Tue,  6 Dec 2022 16:34:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 35CCA60E18
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A90840580;
+	Tue,  6 Dec 2022 16:34:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A90840580
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670344490;
-	bh=++8WSMv3aSuCMzszL0WdoegdB6b04XhxL5kavS0Ct/s=;
+	s=default; t=1670344494;
+	bh=XugRdjCNeRXZqJwPPtvJcrJWgpJkF0bP/pF3s/jRMyk=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=nffXT8ILpm8sUxWzrT31OxrB5Yr0tbP+tIr9SSVUvqYvKw6X2pgZTLhmaECOzBEBs
-	 VAzBQ3VGwVSSd1AJt7L6FKewDTOSNtLC+kI9YIUGnaHn/BhbcfTP6KPVip5+UuddJq
-	 WANPhBDK3tuQ+6/NcvWTIdGiBBdHmFkAb4OFkOs/O94wps4fiUzQFud/9rKzSLpiUS
-	 AixaMTADqz+uUHWwPVIgPtJdKzjsRUmaI9K0tgtTiRt2QpMbVkAIPBkd29pbG68mqL
-	 dFuB+BUBtklPTVaiVTSzRZ3Qt4TjEMzVqEm4W8Ycl+RkyqhT7nMXyLExy1pc25Rhmn
-	 QkatFFgzovnBA==
+	b=atFumXW9hqNLYzVvuzUWJwj3RwTCIMzScXbMJjAbw4FiJIXDq+GYg7w0KPrlaC8a0
+	 FoRgmcivOCtY09jsvZTF77dKeyeSSGBqn2AX3thSqA0kwTLg9RjfKbGoZrnQ1E307M
+	 GurSj5slLjspTV1Q4Zpra7PyzEEniJ4p7+FSoDazCBwEaQ9BfH0E1f6ec88ZA/Jiay
+	 Kzg+/DzYETfiSjuhn1k1H/msEwYliTdM00rpUkcYIrYXlEGjzPKtO0Rzmnpm0TUHM3
+	 +ihKha+dz1r/5ZDt2ucUbtsxK6cOeMPJg/XZURfKQwbpeiE4qgtOHEhAcC1/zv4bTj
+	 uwZ+M9jz9b0rw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z_QFGEoz6vTt; Tue,  6 Dec 2022 16:34:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id t8jD4JddPJ95; Tue,  6 Dec 2022 16:34:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 34388605AD;
-	Tue,  6 Dec 2022 16:34:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34388605AD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4257F40317;
+	Tue,  6 Dec 2022 16:34:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4257F40317
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D638B1BF487
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 03:14:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F52D1BF289
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 09:41:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A6173605A4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 03:14:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A6173605A4
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0A74A60B06
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 09:41:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0A74A60B06
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jjIiyJZBUdmf for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Dec 2022 03:14:32 +0000 (UTC)
-X-Greylist: delayed 00:06:12 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06FEB600B6
-Received: from cstnet.cn (smtp23.cstnet.cn [159.226.251.23])
- by smtp3.osuosl.org (Postfix) with ESMTP id 06FEB600B6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 03:14:31 +0000 (UTC)
-Received: from localhost.localdomain (unknown [124.16.138.125])
- by APP-03 (Coremail) with SMTP id rQCowABXX5cWso5jFUbkBA--.26373S2;
- Tue, 06 Dec 2022 11:08:06 +0800 (CST)
-From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com
-Date: Tue,  6 Dec 2022 11:08:05 +0800
-Message-Id: <20221206030805.15934-1-jiasheng@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id tcHnTZ-4xS2N for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Dec 2022 09:41:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0A1DA60A6D
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0A1DA60A6D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Dec 2022 09:41:03 +0000 (UTC)
+Received: from dggpeml500024.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4NRFkz0PNWzRpnF;
+ Tue,  6 Dec 2022 17:40:11 +0800 (CST)
+Received: from huawei.com (10.175.112.208) by dggpeml500024.china.huawei.com
+ (7.185.36.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Tue, 6 Dec
+ 2022 17:28:37 +0800
+From: Yuan Can <yuancan@huawei.com>
+To: <jesse.brandeburg@intel.com>, <anthony.l.nguyen@intel.com>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <jeffrey.t.kirsher@intel.com>,
+ <alice.michael@intel.com>, <piotr.marczak@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>
+Date: Tue, 6 Dec 2022 09:26:13 +0000
+Message-ID: <20221206092613.122952-1-yuancan@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowABXX5cWso5jFUbkBA--.26373S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7CFWrur4rKw1fKF4DGw4fuFg_yoW8Xr4rpa
- n8JFyjvrW8Jr4UWr9xXF4qyFZ8Wa4xJ34Sga9rX398ZF1Dtr15t3WDKryYyr1rGrW3ZFsI
- yF45AF13uF92vw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUvm14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
- 6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
- 0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
- jxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr
- 1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
- n2IY04v7MxkIecxEwVAFwVW8GwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJV
- W8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF
- 1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6x
- IIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvE
- x4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnU
- UI43ZEXa7VUjQBMtUUUUU==
-X-Originating-IP: [124.16.138.125]
-X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
+X-Originating-IP: [10.175.112.208]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpeml500024.china.huawei.com (7.185.36.10)
+X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Tue, 06 Dec 2022 16:34:43 +0000
-Subject: [Intel-wired-lan] [PATCH net] ice: Add check for kzalloc
+Subject: [Intel-wired-lan] [PATCH] intel/i40e: Fix potential memory leak in
+ i40e_init_recovery_mode()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,56 +82,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jiasheng Jiang <jiasheng@iscas.ac.cn>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Cc: yuancan@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As kzalloc may fail and return NULL pointer,
-it should be better to check the return value
-in order to avoid the NULL pointer dereference.
+If i40e_vsi_mem_alloc() failed in i40e_init_recovery_mode(), the pf will be
+freed with the pf->vsi leaked.
+Fix by free pf->vsi in the error handling path.
 
-Fixes: d6b98c8d242a ("ice: add write functionality for GNSS TTY")
-Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Fixes: 4ff0ee1af016 ("i40e: Introduce recovery mode support")
+Signed-off-by: Yuan Can <yuancan@huawei.com>
 ---
- drivers/net/ethernet/intel/ice/ice_gnss.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
-index b5a7f246d230..6d3d5e75726b 100644
---- a/drivers/net/ethernet/intel/ice/ice_gnss.c
-+++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
-@@ -421,7 +421,7 @@ static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
- 	const int ICE_TTYDRV_NAME_MAX = 14;
- 	struct tty_driver *tty_driver;
- 	char *ttydrv_name;
--	unsigned int i;
-+	unsigned int i, j;
- 	int err;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index b5dcd15ced36..d23081c224d6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15536,6 +15536,7 @@ static int i40e_init_recovery_mode(struct i40e_pf *pf, struct i40e_hw *hw)
+ 	pci_disable_pcie_error_reporting(pf->pdev);
+ 	pci_release_mem_regions(pf->pdev);
+ 	pci_disable_device(pf->pdev);
++	kfree(pf->vsi);
+ 	kfree(pf);
  
- 	tty_driver = tty_alloc_driver(ICE_GNSS_TTY_MINOR_DEVICES,
-@@ -462,6 +462,17 @@ static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
- 					       GFP_KERNEL);
- 		pf->gnss_serial[i] = NULL;
- 
-+		if (!pf->gnss_tty_port[i]) {
-+			for (j = 0; j < i; j++) {
-+				tty_port_destroy(pf->gnss_tty_port[j]);
-+				kfree(pf->gnss_tty_port[j]);
-+			}
-+			kfree(ttydrv_name);
-+			tty_driver_kref_put(pf->ice_gnss_tty_driver);
-+
-+			return NULL;
-+		}
-+
- 		tty_port_init(pf->gnss_tty_port[i]);
- 		tty_port_link_device(pf->gnss_tty_port[i], tty_driver, i);
- 	}
+ 	return err;
 -- 
-2.25.1
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
