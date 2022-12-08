@@ -1,79 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33E4A647444
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Dec 2022 17:28:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DE0B647445
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Dec 2022 17:28:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B05116115D;
-	Thu,  8 Dec 2022 16:28:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B05116115D
+	by smtp2.osuosl.org (Postfix) with ESMTP id A4C3A40C0C;
+	Thu,  8 Dec 2022 16:28:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4C3A40C0C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670516917;
-	bh=gQQTSUtvzKxcXSYm7uqfGN1vAnjMTG8WOMXsX5cMKms=;
+	s=default; t=1670516921;
+	bh=b9E12N+JDWWzJTrfeYmFjov9a6lNRXuSyieQZzwFBRk=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zx40gGQs8jZttfUNxpUaD8lVvzprLeplMtjNe0FKOJKJvhBcTsuT6aWND3i9UKK+2
-	 l7aVGOaQvCnGg6ECfRq1bl1MHaWuijua4fjH6Dsi2o70BPcTVCucxkzwE/HC3PXIx1
-	 rLHTKEmono16tTvFmwzcK8GI3PfS2mObIGBY+7sMk2+/yZhWScqS8XsO7gKHbHu+k3
-	 FsyZL82LyuHpelVjqsv2baHY6jPi5A1PinFtTWStf4wrRX2mk49kT2wqlqzD5buOnO
-	 vEVABTUXynSwTV9EjU/T0wD0M0gvjJhbE+QE0IPZpztLCTYEJcYpJsqw/k6h8DX4XT
-	 TE/3PH5Vj6KMQ==
+	b=uALsUbvolQgnw/X/3F70vo2ol3bZDcpRDH1udo+TlFkLzcAKKyUxiiFmC5qQCPMdn
+	 7aiKZywP7Jutyy1rE6lmWTFR28O8mmsgwQ7v87g+AWDBJAWmNrNcLWx6YHTgKYuTn8
+	 PVAA+BE3tZs78cIXN7sxrc1IniqFzVpgLbMWSWjzDELghHyX6AJXFBE7jfEqCL7gi9
+	 bffF2sIVmFksqxrF3q+ypiCmcUzUJzIleeUM0AozMJ6ygzzwoZfIu1eYF1P40A4yHW
+	 9N6RBjmWbF1Mvj5a02ix+yB1GQFm7g/Pz5u89rDCnpckfWvVa0jlKZ+yg3KWnxwzlK
+	 Khp6Kh19FgZlA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aZoOyH-EjQlS; Thu,  8 Dec 2022 16:28:37 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IC8E2ukDQg5l; Thu,  8 Dec 2022 16:28:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BB80E61141;
-	Thu,  8 Dec 2022 16:28:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BB80E61141
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9433B4014E;
+	Thu,  8 Dec 2022 16:28:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9433B4014E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 644EC1BF313
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:52:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 816FE1BF313
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:58:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3ECE260B16
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:52:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3ECE260B16
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5591660B1B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:58:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5591660B1B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x9NNiXrGXG1x for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Dec 2022 12:52:26 +0000 (UTC)
+ with ESMTP id CPuKQNIvpING for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Dec 2022 12:58:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E51B605AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07A2A60760
 Received: from cstnet.cn (smtp84.cstnet.cn [159.226.251.84])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0E51B605AE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:52:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 07A2A60760
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Dec 2022 12:58:55 +0000 (UTC)
 Received: from localhost.localdomain (unknown [124.16.138.125])
- by APP-05 (Coremail) with SMTP id zQCowABXr+z73ZFjRwTKBQ--.40875S2;
- Thu, 08 Dec 2022 20:52:11 +0800 (CST)
+ by APP-05 (Coremail) with SMTP id zQCowABHZ8yH35FjhEHKBQ--.43615S2;
+ Thu, 08 Dec 2022 20:58:47 +0800 (CST)
 From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 To: jiri@resnulli.us
-Date: Thu,  8 Dec 2022 20:52:00 +0800
-Message-Id: <20221208125200.13263-1-jiasheng@iscas.ac.cn>
+Date: Thu,  8 Dec 2022 20:58:47 +0800
+Message-Id: <20221208125847.45342-1-jiasheng@iscas.ac.cn>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowABXr+z73ZFjRwTKBQ--.40875S2
-X-Coremail-Antispam: 1UD129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
- VFW2AGmfu7bjvjm3AaLaJ3UjIYCTnIWjp_UUUYf7AC8VAFwI0_Gr0_Xr1l1xkIjI8I6I8E
- 6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28Cjx
- kF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVWUCVW8JwA2z4x0Y4vE2Ix0cI8I
- cVCY1x0267AKxVW8JVWxJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2js
- IEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE
- 5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r4j6F4UMcvjeV
- CFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1l
- FIxGxcIEc7CjxVA2Y2ka0xkIwI1lc2xSY4AK67AK6ryUMxAIw28IcxkI7VAKI48JMxC20s
- 026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_
- JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14
- v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xva
- j40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JV
- W8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUjsjjDUUUUU==
+X-CM-TRANSID: zQCowABHZ8yH35FjhEHKBQ--.43615S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7CrW5uw4Uur4xAFWxKw43GFg_yoW8ZrWrpa
+ 13JryYyrW8Ar4UWrnxXF1jvFW5uayxJ3409ay3J3sxZF1qyr4rt3WqyryYkr1rGrW2va9x
+ tF15AFZrCasFvr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUvG14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+ rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+ 1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+ 6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+ Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+ I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r
+ 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+ n2kIc2xKxwCY02Avz4vE14v_Xr1l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr
+ 0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY
+ 17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcV
+ C0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY
+ 6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa
+ 73UjIFyTuYvjfUeWlkDUUUU
 X-Originating-IP: [124.16.138.125]
 X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-Mailman-Approved-At: Thu, 08 Dec 2022 16:28:28 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Add check for kzalloc
+Subject: [Intel-wired-lan] [PATCH net v3] ice: Add check for kzalloc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,21 +98,76 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 08, 2022 at 07:17:59PM +0800, Leon Romanovsky wrote:
->>>> +err_out:
->>>> +	for (j = 0; j < i; j++) {
->>> 
->>> You don't need an extra variable, "while(i--)" will do the trick.
->>
->>No, the right range is [0, i - 1], but the "while(i--)" is [1, i].
-> 
-> Are you sure??
+As kzalloc may return NULL pointer, the return value should
+be checked and return error if fails in order to avoid the
+NULL pointer dereference.
+Moreover, use the goto-label to share the clean code.
 
-Yes, you are right.
-I will submit a v3 to add this change.
+Fixes: d6b98c8d242a ("ice: add write functionality for GNSS TTY")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+---
+Changelog:
 
-Thanks,
-Jiang
+v2 -> v3:
+
+1. Use "while (i--)" to simplify the code.
+
+v1 -> v2:
+
+1. Use goto-label to share the clean code.
+---
+ drivers/net/ethernet/intel/ice/ice_gnss.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+index b5a7f246d230..90c620c26516 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.c
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+@@ -462,6 +462,9 @@ static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
+ 					       GFP_KERNEL);
+ 		pf->gnss_serial[i] = NULL;
+ 
++		if (!pf->gnss_tty_port[i])
++			goto err_out;
++
+ 		tty_port_init(pf->gnss_tty_port[i]);
+ 		tty_port_link_device(pf->gnss_tty_port[i], tty_driver, i);
+ 	}
+@@ -469,21 +472,23 @@ static struct tty_driver *ice_gnss_create_tty_driver(struct ice_pf *pf)
+ 	err = tty_register_driver(tty_driver);
+ 	if (err) {
+ 		dev_err(dev, "Failed to register TTY driver err=%d\n", err);
+-
+-		for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++) {
+-			tty_port_destroy(pf->gnss_tty_port[i]);
+-			kfree(pf->gnss_tty_port[i]);
+-		}
+-		kfree(ttydrv_name);
+-		tty_driver_kref_put(pf->ice_gnss_tty_driver);
+-
+-		return NULL;
++		goto err_out;
+ 	}
+ 
+ 	for (i = 0; i < ICE_GNSS_TTY_MINOR_DEVICES; i++)
+ 		dev_info(dev, "%s%d registered\n", ttydrv_name, i);
+ 
+ 	return tty_driver;
++
++err_out:
++	while (i--) {
++		tty_port_destroy(pf->gnss_tty_port[i]);
++		kfree(pf->gnss_tty_port[i]);
++	}
++	kfree(ttydrv_name);
++	tty_driver_kref_put(pf->ice_gnss_tty_driver);
++
++	return NULL;
+ }
+ 
+ /**
+-- 
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
