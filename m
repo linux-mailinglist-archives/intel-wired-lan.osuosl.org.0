@@ -1,83 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C50A6647CE5
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Dec 2022 05:18:14 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EF2A647CE6
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Dec 2022 05:18:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4789A81F38;
-	Fri,  9 Dec 2022 04:18:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4789A81F38
+	by smtp2.osuosl.org (Postfix) with ESMTP id 77A4840275;
+	Fri,  9 Dec 2022 04:18:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 77A4840275
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670559493;
-	bh=FpvKSNqdxW9Z3HXbrXaxy+aRgVqvZ2UKLfbbi30d+KQ=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=yXBLgluFoSUjhOC/zgGFRGFr86vfPrvtZ2p6d4shNwx0XEPkemzI4WqpG2n2S7YY7
-	 PpuQZ0MyEBu0kqaNkYt9Y2UFnlrQ4CPgPavBU82iGi869ubtpni2zGBjZHh2V0EBdl
-	 av3YGxt5ofgXtRPvrfLS7tV0Nz64uFxYpVeNqbdzX0OdJnul7mMZdcs5bnUyd8bp+C
-	 80l050f5UHbIZxA6dNqrWVumCKylwaB6OcKHYUZ2kC04QUWzKVuLtDiiR1ZIUImBcu
-	 v7asGjNE2YRHOKm+xAQcbrLtN74nl15j12cHoryjXLvxD+A3aFevYUfgqfCY7NPM8b
-	 qBkGXdQEhOKRw==
+	s=default; t=1670559498;
+	bh=qo8ls2FmEsMPfkMwg+SM7eQhFQVpZhhzMLWJZtCI+sI=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=9TmaZqcuxMWJvAUt0EitqsFK3seKiNx8BItzYLwiWMNI9QJzThY6jhwdwcusnIIwy
+	 fX12+5bFmic1xPOKcSDI2nWnjH/+WTeyJyVwmkCahBIFOZnpH3hIHfa2YZzOavdhMP
+	 B2PWKcEVf6ygfzt4KhGGAzg/k5DxFlkZbX6lnH9EdfsfwZZNzHwUhTNsr1UAYMcC0W
+	 +vPbcIMNSw8tm0JmbQFHzYa2zWNIWMxFMg6L38GxD5GEx+ociYAxTRZIdvQr2Qc4C+
+	 QDDepTq5OolAwOYPkqsBQdh5gisf9gBP3KCWY4pMtOgSR3YTBeRhuAmn+i1DUztR9m
+	 hRwKUolFVBxmQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id laA2TRsuvm5K; Fri,  9 Dec 2022 04:18:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yn-oczcUWYY8; Fri,  9 Dec 2022 04:18:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1197181F9C;
-	Fri,  9 Dec 2022 04:18:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1197181F9C
+	by smtp2.osuosl.org (Postfix) with ESMTP id E24434012E;
+	Fri,  9 Dec 2022 04:18:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E24434012E
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E8D681BF3A9
- for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F03851BF3A9
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B344981FDB
- for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B344981FDB
+ by smtp1.osuosl.org (Postfix) with ESMTP id D96A981FF6
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D96A981FF6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7j3Cfnm6Ex9W for <intel-wired-lan@osuosl.org>;
- Fri,  9 Dec 2022 04:18:05 +0000 (UTC)
+ with ESMTP id FK3c-_kvVwh1 for <intel-wired-lan@osuosl.org>;
+ Fri,  9 Dec 2022 04:18:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57F0C81F9C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 82FF181FCD
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 57F0C81F9C
- for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="300796317"
-X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="300796317"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 82FF181FCD
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Dec 2022 04:18:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="300796321"
+X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="300796321"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2022 20:18:04 -0800
+ 08 Dec 2022 20:18:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="649427510"
-X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="649427510"
+X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="649427522"
+X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="649427522"
 Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga007.fm.intel.com with ESMTP; 08 Dec 2022 20:18:02 -0800
+ by fmsmga007.fm.intel.com with ESMTP; 08 Dec 2022 20:18:04 -0800
 From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 To: intel-wired-lan@osuosl.org,
 	vinicius.gomes@intel.com
-Date: Fri,  9 Dec 2022 12:15:16 +0800
-Message-Id: <20221209041522.30153-1-muhammad.husaini.zulkifli@intel.com>
+Date: Fri,  9 Dec 2022 12:15:17 +0800
+Message-Id: <20221209041522.30153-2-muhammad.husaini.zulkifli@intel.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20221209041522.30153-1-muhammad.husaini.zulkifli@intel.com>
+References: <20221209041522.30153-1-muhammad.husaini.zulkifli@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670559485; x=1702095485;
- h=from:to:cc:subject:date:message-id;
- bh=LbezhMLjQGsvElS/FnXRf72YbpuU4/B2af0FSaaxUAU=;
- b=A59hhXJjhKJQ7ihB40EbkBpqdnmD9yeEryI6sv83SdwCAvm1y0baT7iM
- leBdiYYHTlyL9jEs/vnjySAqs2VYvjdFOnGxM4YBRPBUoar4TuIPIwaBL
- aRZ45OeJaPZE5FwvJmNzQOyVmDEZTU9CDPBu/1DJXC/fWXaiMxdklV4je
- qzUnwPJj581MfEJBXWsbUULeeGyfL2/+XBYOUN7AaiFwQI0tSlMZfJstA
- qLiLShtDngMHhkrnMF7SEpwpqS9p3nlKa0WbhlYhjbmPXw7kAwXQGBAqA
- iFTP6Ix6U3yjd7jISO2xbUJHCnHEHBJ50lHz8ATZIOMYKerWbh1UpkF5N
- w==;
+ t=1670559486; x=1702095486;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references;
+ bh=NUmXsY7rMMRkwEvods85g5gXSBVA2zkc/hnKLBViIs4=;
+ b=SDLYenjwFaqPIigAiY+0/PiKNcvgbBQfO41jetF0fhNYBv9NBhBTXugv
+ Z7CwhoI8PVma3ai9I1d9YmrHKWYzWWlYYxG8U1gSOkLB7FjTMB0aICiqy
+ BVC5uxwOuSzd7qdQfQbnjq732mRSB/+qIsNlJjtEL/UvogV4A1zHMRjF9
+ fNxtRgA2XHvL1UODWAXvyfepQuYb0qdpAN5ng05JsKG8+0HVLAnn3eCOO
+ LtAdLKOMSxcVjZLbEJpWXtVn2Io1ZLVSlwzK3zuEb5MIKqmkBPgq7lyy3
+ bvQ3IOXxuQ7u9UgtbC2mD4XRh18kHzKZl7miqca4nAJhYEW8MEp2hzctf
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=A59hhXJj
-Subject: [Intel-wired-lan] [PATCH net v1 0/6] igc: Fix for Qbv features
+ header.a=rsa-sha256 header.s=Intel header.b=SDLYenjw
+Subject: [Intel-wired-lan] [PATCH net v1 1/6] igc: Enhance Qbv scheduling by
+ using first flag bit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,42 +103,425 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello!
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
-This patch series fixed the bugs for the Time-Sensitive Networking(TSN)
-Qbv Scheduling features.
+The I225 hardware has a limitation that packets can only be scheduled
+in the [0, cycle-time] interval. So, scheduling a packet to the start
+of the next cycle doesn't usually work.
 
-An overview of each patch series is given below:
+To overcome this, we use the Transmit Descriptor first flag to indicates
+that a packet should be the first packet (from a queue) in a cycle
+according to the section 7.5.2.9.3.4 The First Packet on Each QBV Cycle
+in Intel Discrete I225/6 User Manual.
 
-Patch 1: Using a first flag bit to schedule a packet to the next cycle if
-packet cannot fit in current Qbv cycle.
-Patch 2: Enable strict cycle for Qbv scheduling.
-Patch 3: Prevent user to set basetime less than zero during tc config.
-Patch 4: Allow the basetime enrollment with zero value.
-Patch 5: Calculate the new end time value to exclude the time interval that
-exceed the cycle time as user can specify the cycle time in tc config.
-Patch 6: Resolve the HW bugs where the gate is not fully closed.
+But this only works if there was any packet from that queue during the
+current cycle, to avoid this issue, we issue an empty packet if that's
+not the case. Also require one more descriptor to be available, to take
+into account the empty packet that might be issued.
 
-Muhammad Husaini Zulkifli (1):
-  igc: Add checking for basetime less than zero
+Test Setup:
 
-Tan Tee Min (3):
-  igc: allow BaseTime 0 enrollment for Qbv
-  igc: recalculate Qbv end_time by considering cycle time
-  igc: Set Qbv start_time and end_time to end_time if not being
-    configured in GCL
+Talker: Use l2_tai to generate the launchtime into packet load.
 
-Vinicius Costa Gomes (2):
-  igc: Enhance Qbv scheduling by using first flag bit
-  igc: Use strict cycles for Qbv scheduling
+Listener: Use timedump.c to compute the delta between packet arrival
+and LaunchTime packet payload.
 
- drivers/net/ethernet/intel/igc/igc.h         |   3 +
+Test Result:
+
+Before:
+
+1666000610127300000,1666000610127300096,96,621273
+1666000610127400000,1666000610127400192,192,621274
+1666000610127500000,1666000610127500032,32,621275
+1666000610127600000,1666000610127600128,128,621276
+1666000610127700000,1666000610127700224,224,621277
+1666000610127800000,1666000610127800064,64,621278
+1666000610127900000,1666000610127900160,160,621279
+1666000610128000000,1666000610128000000,0,621280
+1666000610128100000,1666000610128100096,96,621281
+1666000610128200000,1666000610128200192,192,621282
+1666000610128300000,1666000610128300032,32,621283
+1666000610128400000,1666000610128301056,-98944,621284
+1666000610128500000,1666000610128302080,-197920,621285
+1666000610128600000,1666000610128302848,-297152,621286
+1666000610128700000,1666000610128303872,-396128,621287
+1666000610128800000,1666000610128304896,-495104,621288
+1666000610128900000,1666000610128305664,-594336,621289
+1666000610129000000,1666000610128306688,-693312,621290
+1666000610129100000,1666000610128307712,-792288,621291
+1666000610129200000,1666000610128308480,-891520,621292
+1666000610129300000,1666000610128309504,-990496,621293
+1666000610129400000,1666000610128310528,-1089472,621294
+1666000610129500000,1666000610128311296,-1188704,621295
+1666000610129600000,1666000610128312320,-1287680,621296
+1666000610129700000,1666000610128313344,-1386656,621297
+1666000610129800000,1666000610128314112,-1485888,621298
+1666000610129900000,1666000610128315136,-1584864,621299
+1666000610130000000,1666000610128316160,-1683840,621300
+1666000610130100000,1666000610128316928,-1783072,621301
+1666000610130200000,1666000610128317952,-1882048,621302
+1666000610130300000,1666000610128318976,-1981024,621303
+1666000610130400000,1666000610128319744,-2080256,621304
+1666000610130500000,1666000610128320768,-2179232,621305
+1666000610130600000,1666000610128321792,-2278208,621306
+1666000610130700000,1666000610128322816,-2377184,621307
+1666000610130800000,1666000610128323584,-2476416,621308
+1666000610130900000,1666000610128324608,-2575392,621309
+1666000610131000000,1666000610128325632,-2674368,621310
+1666000610131100000,1666000610128326400,-2773600,621311
+1666000610131200000,1666000610128327424,-2872576,621312
+1666000610131300000,1666000610128328448,-2971552,621313
+1666000610131400000,1666000610128329216,-3070784,621314
+1666000610131500000,1666000610131500032,32,621315
+1666000610131600000,1666000610131600128,128,621316
+1666000610131700000,1666000610131700224,224,621317
+
+After:
+
+1666073510646200000,1666073510646200064,64,2676462
+1666073510646300000,1666073510646300160,160,2676463
+1666073510646400000,1666073510646400256,256,2676464
+1666073510646500000,1666073510646500096,96,2676465
+1666073510646600000,1666073510646600192,192,2676466
+1666073510646700000,1666073510646700032,32,2676467
+1666073510646800000,1666073510646800128,128,2676468
+1666073510646900000,1666073510646900224,224,2676469
+1666073510647000000,1666073510647000064,64,2676470
+1666073510647100000,1666073510647100160,160,2676471
+1666073510647200000,1666073510647200256,256,2676472
+1666073510647300000,1666073510647300096,96,2676473
+1666073510647400000,1666073510647400192,192,2676474
+1666073510647500000,1666073510647500032,32,2676475
+1666073510647600000,1666073510647600128,128,2676476
+1666073510647700000,1666073510647700224,224,2676477
+1666073510647800000,1666073510647800064,64,2676478
+1666073510647900000,1666073510647900160,160,2676479
+1666073510648000000,1666073510648000000,0,2676480
+1666073510648100000,1666073510648100096,96,2676481
+1666073510648200000,1666073510648200192,192,2676482
+1666073510648300000,1666073510648300032,32,2676483
+1666073510648400000,1666073510648400128,128,2676484
+1666073510648500000,1666073510648500224,224,2676485
+1666073510648600000,1666073510648600064,64,2676486
+1666073510648700000,1666073510648700160,160,2676487
+1666073510648800000,1666073510648800000,0,2676488
+1666073510648900000,1666073510648900096,96,2676489
+1666073510649000000,1666073510649000192,192,2676490
+1666073510649100000,1666073510649100032,32,2676491
+1666073510649200000,1666073510649200128,128,2676492
+1666073510649300000,1666073510649300224,224,2676493
+1666073510649400000,1666073510649400064,64,2676494
+1666073510649500000,1666073510649500160,160,2676495
+1666073510649600000,1666073510649600000,0,2676496
+1666073510649700000,1666073510649700096,96,2676497
+1666073510649800000,1666073510649800192,192,2676498
+1666073510649900000,1666073510649900032,32,2676499
+1666073510650000000,1666073510650000128,128,2676500
+
+Fixes: 82faa9b79950 ("igc: Add support for ETF offloading")
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Co-developed-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+Co-developed-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Signed-off-by: Malli C <mallikarjuna.chilakala@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h         |   2 +
  drivers/net/ethernet/intel/igc/igc_defines.h |   2 +
- drivers/net/ethernet/intel/igc/igc_main.c    | 210 ++++++++++++++++---
- drivers/net/ethernet/intel/igc/igc_tsn.c     |  13 +-
- 4 files changed, 188 insertions(+), 40 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c    | 176 ++++++++++++++++---
+ 3 files changed, 151 insertions(+), 29 deletions(-)
 
---
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 7c8ebf6eeacf..7e90f93bdda8 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -94,6 +94,8 @@ struct igc_ring {
+ 	u8 queue_index;                 /* logical index of the ring*/
+ 	u8 reg_idx;                     /* physical index of the ring */
+ 	bool launchtime_enable;         /* true if LaunchTime is enabled */
++	ktime_t last_tx_cycle;          /* end of the cycle with a launchtime transmission */
++	ktime_t last_ff_cycle;          /* Last cycle with an active first flag */
+ 
+ 	u32 start_time;
+ 	u32 end_time;
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index f7311aeb293b..a7b22639cfcd 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -321,6 +321,8 @@
+ #define IGC_ADVTXD_L4LEN_SHIFT	8  /* Adv ctxt L4LEN shift */
+ #define IGC_ADVTXD_MSS_SHIFT	16 /* Adv ctxt MSS shift */
+ 
++#define IGC_ADVTXD_TSN_CNTX_FIRST	0x00000080
++
+ /* Transmit Control */
+ #define IGC_TCTL_EN		0x00000002 /* enable Tx */
+ #define IGC_TCTL_PSP		0x00000008 /* pad short packets */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index c51fddbbe256..524f330230d7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1000,25 +1000,118 @@ static int igc_write_mc_addr_list(struct net_device *netdev)
+ 	return netdev_mc_count(netdev);
+ }
+ 
+-static __le32 igc_tx_launchtime(struct igc_adapter *adapter, ktime_t txtime)
++static __le32 igc_tx_launchtime(struct igc_ring *ring, ktime_t txtime,
++				bool *first_flag, bool *insert_empty)
+ {
++	struct igc_adapter *adapter = netdev_priv(ring->netdev);
+ 	ktime_t cycle_time = adapter->cycle_time;
+ 	ktime_t base_time = adapter->base_time;
++	ktime_t now = ktime_get_clocktai();
++	ktime_t baset_est, end_of_cycle;
+ 	u32 launchtime;
++	s64 n;
+ 
+-	/* FIXME: when using ETF together with taprio, we may have a
+-	 * case where 'delta' is larger than the cycle_time, this may
+-	 * cause problems if we don't read the current value of
+-	 * IGC_BASET, as the value writen into the launchtime
+-	 * descriptor field may be misinterpreted.
++	n = div64_s64(ktime_sub_ns(now, base_time), cycle_time);
++
++	baset_est = ktime_add_ns(base_time, cycle_time * (n));
++	end_of_cycle = ktime_add_ns(baset_est, cycle_time);
++
++	if (ktime_compare(txtime, end_of_cycle) >= 0) {
++		if (baset_est != ring->last_ff_cycle) {
++			*first_flag = true;
++			ring->last_ff_cycle = baset_est;
++
++			if (ktime_compare(txtime, ring->last_tx_cycle) > 0)
++				*insert_empty = true;
++		}
++	}
++
++	/* Introducing a window at end of cycle on which packets
++	 * potentially not honor launchtime. Window of 5us chosen
++	 * considering software update the tail pointer and packets
++	 * are dma'ed to packet buffer.
+ 	 */
+-	div_s64_rem(ktime_sub_ns(txtime, base_time), cycle_time, &launchtime);
++	if ((ktime_sub_ns(end_of_cycle, now) < 5 * NSEC_PER_USEC))
++		netdev_warn(ring->netdev, "Packet with txtime=%llu may not be honoured\n",
++			    txtime);
++
++	ring->last_tx_cycle = end_of_cycle;
++
++	launchtime = ktime_sub_ns(txtime, baset_est);
++	if (launchtime > 0)
++		div_s64_rem(launchtime, cycle_time, &launchtime);
++	else
++		launchtime = 0;
+ 
+ 	return cpu_to_le32(launchtime);
+ }
+ 
++static int igc_init_empty_frame(struct igc_ring *ring,
++				struct igc_tx_buffer *buffer,
++				struct sk_buff *skb)
++{
++	unsigned int size;
++	dma_addr_t dma;
++
++	size = skb_headlen(skb);
++
++	dma = dma_map_single(ring->dev, skb->data, size, DMA_TO_DEVICE);
++	if (dma_mapping_error(ring->dev, dma)) {
++		netdev_err_once(ring->netdev, "Failed to map DMA for TX\n");
++		return -ENOMEM;
++	}
++
++	buffer->skb = skb;
++	buffer->protocol = 0;
++	buffer->bytecount = skb->len;
++	buffer->gso_segs = 1;
++	buffer->time_stamp = jiffies;
++	dma_unmap_len_set(buffer, len, skb->len);
++	dma_unmap_addr_set(buffer, dma, dma);
++
++	return 0;
++}
++
++static int igc_init_tx_empty_descriptor(struct igc_ring *ring,
++					struct sk_buff *skb,
++					struct igc_tx_buffer *first)
++{
++	union igc_adv_tx_desc *desc;
++	u32 cmd_type, olinfo_status;
++	int err;
++
++	if (!igc_desc_unused(ring))
++		return -EBUSY;
++
++	err = igc_init_empty_frame(ring, first, skb);
++	if (err)
++		return err;
++
++	cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
++		   IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
++		   first->bytecount;
++	olinfo_status = first->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
++
++	desc = IGC_TX_DESC(ring, ring->next_to_use);
++	desc->read.cmd_type_len = cpu_to_le32(cmd_type);
++	desc->read.olinfo_status = cpu_to_le32(olinfo_status);
++	desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(first, dma));
++
++	netdev_tx_sent_queue(txring_txq(ring), skb->len);
++
++	first->next_to_watch = desc;
++
++	ring->next_to_use++;
++	if (ring->next_to_use == ring->count)
++		ring->next_to_use = 0;
++
++	return 0;
++}
++
++#define IGC_EMPTY_FRAME_SIZE 60
++
+ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+-			    struct igc_tx_buffer *first,
++			    __le32 launch_time, bool first_flag,
+ 			    u32 vlan_macip_lens, u32 type_tucmd,
+ 			    u32 mss_l4len_idx)
+ {
+@@ -1037,26 +1130,17 @@ static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
+ 	if (test_bit(IGC_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
+ 		mss_l4len_idx |= tx_ring->reg_idx << 4;
+ 
++	if (first_flag)
++		mss_l4len_idx |= IGC_ADVTXD_TSN_CNTX_FIRST;
++
+ 	context_desc->vlan_macip_lens	= cpu_to_le32(vlan_macip_lens);
+ 	context_desc->type_tucmd_mlhl	= cpu_to_le32(type_tucmd);
+ 	context_desc->mss_l4len_idx	= cpu_to_le32(mss_l4len_idx);
+-
+-	/* We assume there is always a valid Tx time available. Invalid times
+-	 * should have been handled by the upper layers.
+-	 */
+-	if (tx_ring->launchtime_enable) {
+-		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
+-		ktime_t txtime = first->skb->tstamp;
+-
+-		skb_txtime_consumed(first->skb);
+-		context_desc->launch_time = igc_tx_launchtime(adapter,
+-							      txtime);
+-	} else {
+-		context_desc->launch_time = 0;
+-	}
++	context_desc->launch_time	= launch_time;
+ }
+ 
+-static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
++static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first,
++			__le32 launch_time, bool first_flag)
+ {
+ 	struct sk_buff *skb = first->skb;
+ 	u32 vlan_macip_lens = 0;
+@@ -1096,7 +1180,8 @@ static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
+ 	vlan_macip_lens |= skb_network_offset(skb) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+ 
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens, type_tucmd, 0);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, 0);
+ }
+ 
+ static int __igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
+@@ -1320,6 +1405,7 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 
+ static int igc_tso(struct igc_ring *tx_ring,
+ 		   struct igc_tx_buffer *first,
++		   __le32 launch_time, bool first_flag,
+ 		   u8 *hdr_len)
+ {
+ 	u32 vlan_macip_lens, type_tucmd, mss_l4len_idx;
+@@ -1406,8 +1492,8 @@ static int igc_tso(struct igc_ring *tx_ring,
+ 	vlan_macip_lens |= (ip.hdr - skb->data) << IGC_ADVTXD_MACLEN_SHIFT;
+ 	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
+ 
+-	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens,
+-			type_tucmd, mss_l4len_idx);
++	igc_tx_ctxtdesc(tx_ring, launch_time, first_flag,
++			vlan_macip_lens, type_tucmd, mss_l4len_idx);
+ 
+ 	return 1;
+ }
+@@ -1415,11 +1501,14 @@ static int igc_tso(struct igc_ring *tx_ring,
+ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 				       struct igc_ring *tx_ring)
+ {
++	bool first_flag = false, insert_empty = false;
+ 	u16 count = TXD_USE_COUNT(skb_headlen(skb));
+ 	__be16 protocol = vlan_get_protocol(skb);
+ 	struct igc_tx_buffer *first;
++	__le32 launch_time = 0;
+ 	u32 tx_flags = 0;
+ 	unsigned short f;
++	ktime_t txtime;
+ 	u8 hdr_len = 0;
+ 	int tso = 0;
+ 
+@@ -1433,11 +1522,40 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 		count += TXD_USE_COUNT(skb_frag_size(
+ 						&skb_shinfo(skb)->frags[f]));
+ 
+-	if (igc_maybe_stop_tx(tx_ring, count + 3)) {
++	if (igc_maybe_stop_tx(tx_ring, count + 5)) {
+ 		/* this is a hard error */
+ 		return NETDEV_TX_BUSY;
+ 	}
+ 
++	if (!tx_ring->launchtime_enable)
++		goto done;
++
++	txtime = skb->tstamp;
++	skb->tstamp = ktime_set(0, 0);
++	launch_time = igc_tx_launchtime(tx_ring, txtime, &first_flag, &insert_empty);
++
++	if (insert_empty) {
++		struct igc_tx_buffer *empty_info;
++		struct sk_buff *empty;
++		void *data;
++
++		empty_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
++		empty = alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
++		if (!empty)
++			goto done;
++
++		data = skb_put(empty, IGC_EMPTY_FRAME_SIZE);
++		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
++
++		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
++
++		if (igc_init_tx_empty_descriptor(tx_ring,
++						 empty,
++						 empty_info) < 0)
++			dev_kfree_skb_any(empty);
++	}
++
++done:
+ 	/* record the location of the first descriptor for this packet */
+ 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+ 	first->type = IGC_TX_BUFFER_TYPE_SKB;
+@@ -1474,11 +1592,11 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 	first->tx_flags = tx_flags;
+ 	first->protocol = protocol;
+ 
+-	tso = igc_tso(tx_ring, first, &hdr_len);
++	tso = igc_tso(tx_ring, first, launch_time, first_flag, &hdr_len);
+ 	if (tso < 0)
+ 		goto out_drop;
+ 	else if (!tso)
+-		igc_tx_csum(tx_ring, first);
++		igc_tx_csum(tx_ring, first, launch_time, first_flag);
+ 
+ 	igc_tx_map(tx_ring, first, hdr_len);
+ 
+-- 
 2.17.1
 
 _______________________________________________
