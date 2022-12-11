@@ -1,88 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B907648E7D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Dec 2022 12:43:58 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4783764926B
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Dec 2022 06:14:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6F0C7415DC;
-	Sat, 10 Dec 2022 11:43:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F0C7415DC
+	by smtp4.osuosl.org (Postfix) with ESMTP id EE66D4109B;
+	Sun, 11 Dec 2022 05:13:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE66D4109B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670672636;
-	bh=p0DBOwGIqoqhhuwt4CpdTCcSGGLLFxPfleTWsG8zP44=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=lkmwoGdFqbF9GV9PQLIz/FrXWU2VQy8AEmTkpWz0PwJ1vB1Hp2uFxUptim0S6xAcK
-	 KA276V1sPqc4hi4/lx4lySIvd2S27u3JdYx5R/C8U3cDmImetKxQsqR3tm7zlg62t1
-	 UQFS6wBlsV7OVQMTqhSbVJnlsKpbNvQWIuL4RuVLvSiyoN50imTa3mskCSByy7twug
-	 bdcwfyuEVe0y8cLH9dCm6YEejmgVANrODmSwuyhijbIxxV6q1NCURWLByNxzcPlxWP
-	 UEYJwM4UO1n29owwYZBmnwIbwopUWcY4sanP+ovE+V4piXjUHJvj3hiSYzzEaA4lVh
-	 u4uw4upuIvOpQ==
+	s=default; t=1670735638;
+	bh=QC82YO3eyDMTezEiT5VrIvre2c5VY8eWT15ffJGbXEs=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=1/TCD9VP1yK97HS83fIxgi1kXtU5PEFSd0O9S2mb9lmUrkUPUZD/wWwvNxVE2XiiZ
+	 Q5LJPIiSKBifdfEHPxWnknpczjmgkRFkSvOIs35aQWqI77f5wephsBUKVHPlcjFAMW
+	 5s23QjP1fLltI8kuMcuCeiCmx0xFDBPoNreUSMvWx07EHzy/4UQYRkZN/sDZmpZRfv
+	 r5QifEobBYmstRppW4RneeIaqmk9RQtZ7NCJ0+N2bgcnwDN1zjsdkSue6KeDUl5SUW
+	 cTtJVVTaDFG7Jxu09b3s98FHkBkIW4XdD2hgg94LqU6v0Qal0HWgK6zOUGL9uh6Vwp
+	 yK31Bj8hBzCNg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M8WROoWed62g; Sat, 10 Dec 2022 11:43:55 +0000 (UTC)
+	with ESMTP id WyoAsdLfsRjg; Sun, 11 Dec 2022 05:13:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 22CBA41553;
-	Sat, 10 Dec 2022 11:43:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22CBA41553
+	by smtp4.osuosl.org (Postfix) with ESMTP id 769D240AB9;
+	Sun, 11 Dec 2022 05:13:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 769D240AB9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D63BB1BF41F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Dec 2022 11:43:49 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6243E1BF410
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Dec 2022 05:13:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BDDD760736
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Dec 2022 11:43:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BDDD760736
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3C37D81916
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Dec 2022 05:13:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C37D81916
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N-3oNXVmPveY for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Dec 2022 11:43:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1597F6059F
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1597F6059F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Dec 2022 11:43:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10556"; a="305258121"
-X-IronPort-AV: E=Sophos;i="5.96,232,1665471600"; d="scan'208";a="305258121"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2022 03:43:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10556"; a="892953269"
-X-IronPort-AV: E=Sophos;i="5.96,232,1665471600"; d="scan'208";a="892953269"
-Received: from lkp-server01.sh.intel.com (HELO b5d47979f3ad) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 10 Dec 2022 03:43:46 -0800
-Received: from kbuild by b5d47979f3ad with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p3yGf-0002Pv-1E;
- Sat, 10 Dec 2022 11:43:45 +0000
-Date: Sat, 10 Dec 2022 19:43:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <639470e6.3hqhvEZQB8qk+GOI%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 64z8PB2In9p7 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Dec 2022 05:13:48 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 477BB80DB3
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 477BB80DB3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Dec 2022 05:13:48 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ w4-20020a17090ac98400b002186f5d7a4cso12314970pjt.0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Dec 2022 21:13:48 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=qrm7Wn3n9bSSX0cI8P5fGqBYc3VZDsLai0m/rO+s15c=;
+ b=R3SEJES7Asxim6zItsAfB3y8hBPGh0U69bfx1RpGkrN7tsMxzmwfjuICb8qIsdO8Jg
+ R1wQn8nAk31NFUeCrIBhqsmYIVE3dEOibGFGz5i+yfLCicbmIfChrbujOVRvUQjEQ0D+
+ M8GJDQ8o5n1LHiqZIiwKjTIEKxpmLeH3KLsszIUa9dMAYeTPjnjAVulAVjx0FsJP+nvO
+ TvsbRpZlSSb+mYrzpn5rdXCKqsSy66WmSjsN6SWejELHvV6Fp0pqKHpfthW+PFjRgY7k
+ 7DMYM1abkX0rUNLvjzhmBLhzVi4IXViqL1YrsfpSoaJ/wpKb3o4oxTo+K3Z3GZd/dzEP
+ KqnQ==
+X-Gm-Message-State: ANoB5pkr06b5hCqIbHAjoAyvQjAfaADvP9X0DByvqti/bE9zAg3Ts5/y
+ agTwmkS6D/N/ZdV9uGXUwE7iqw==
+X-Google-Smtp-Source: AA0mqf5umapYdQPgfv5n4Uccqr/DjhFtCup0SCdI99aEg8Ebg1HNKIxfucGbEC+Hue1mLYiiF/cOdw==
+X-Received: by 2002:a05:6a20:3ca7:b0:a5:df86:eea0 with SMTP id
+ b39-20020a056a203ca700b000a5df86eea0mr19352719pzj.34.1670735627654; 
+ Sat, 10 Dec 2022 21:13:47 -0800 (PST)
+Received: from ?IPV6:2400:4050:c360:8200:8ae8:3c4:c0da:7419?
+ ([2400:4050:c360:8200:8ae8:3c4:c0da:7419])
+ by smtp.gmail.com with ESMTPSA id
+ o1-20020a63fb01000000b00477bfac06b7sm3030014pgh.34.2022.12.10.21.13.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 10 Dec 2022 21:13:47 -0800 (PST)
+Message-ID: <06e2f754-957b-d28a-547a-09626f7048e3@daynix.com>
+Date: Sun, 11 Dec 2022 14:13:44 +0900
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670672628; x=1702208628;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=Ch12Jz98eo8ZkYdbFggS76Cl4/yCyfo0iPVqzkFjub4=;
- b=TQpqpUN5FgkAURihnXQBysTy18lIgVTK/NV67+y1vIW8DlSHuPkI5JpI
- RH2wbEUk/hQ+7kUkYjcUT6wrIVsC5CyACXb6wPWecZTtQY/KhTKsYZgSE
- eM+w+0YUTnRWTlqKDsAXNuI6Gt2wrO1zt1kJ/0LLI2js7hKCRFWGje0ev
- akdDU7XKh5YX9hsl+Ou4ZFFgmM6E/iffXB+0ehQeXTupVahLNZ4C2Dln5
- 4mMbZ5v8ytXnP5TPgIajpOHH9a/4vNMlQK8XHvsBvwWnSkna+EONhFnpy
- A76wRGaFIW098UMsrTpx8URwI7pK2QgN0CtDnhmd9f8d5bTfaT5M6RazC
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TQpqpUN5
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 5eba11e8c8d43bebc6e78e17fa1760773bb30cec
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.1
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20221208211028.824-1-anthony.l.nguyen@intel.com>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20221208211028.824-1-anthony.l.nguyen@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20210112.gappssmtp.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=qrm7Wn3n9bSSX0cI8P5fGqBYc3VZDsLai0m/rO+s15c=;
+ b=NsbYT6hauNpQsDkpM2w6T7pWHrppa0mUgWlTf5BL23jp2P/f6vTsGNhkb8rPBvGOCv
+ 81jNvXw+bVUolnalHiNlLAh3zjJiQ+7Q+8ONYOUJe/k4CaSylzx24Eb8e4BtTSmDrLBl
+ 8DBai+400NppnGOQblfyRgTwIJzKqmDii7lHAU/sxfBmHDhTF7u8vFkDvSG92/WevO/H
+ UmZ0A2/4yOs7hC5E391jUWWiBcMl3Na8x4Uwkrv9T4vZmMBUTNP7JByWad0wqhUNS9xB
+ ZpI1ofNsF+JMWlKOqVXsrospIATqDXfyMhFWMdIlbHfk4X/R2jA9/W+Ofg4WlbHaAs49
+ NMiA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=daynix-com.20210112.gappssmtp.com
+ header.i=@daynix-com.20210112.gappssmtp.com header.a=rsa-sha256
+ header.s=20210112 header.b=NsbYT6ha
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: Initialize mailbox message
+ for VF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,90 +115,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 5eba11e8c8d43bebc6e78e17fa1760773bb30cec  igb: conditionalize I2C bit banging on external thermal sensor support
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-elapsed time: 796m
-
-configs tested: 61
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                           allnoconfig
-arc                                 defconfig
-alpha                               defconfig
-arm                                 defconfig
-i386                                defconfig
-x86_64                           rhel-8.3-bpf
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                              defconfig
-x86_64                           rhel-8.3-kvm
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-m68k                             allyesconfig
-m68k                             allmodconfig
-x86_64                          rhel-8.3-rust
-arm64                            allyesconfig
-arc                              allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                               rhel-8.3
-arm                              allyesconfig
-alpha                            allyesconfig
-x86_64                          rhel-8.3-func
-s390                                defconfig
-ia64                             allmodconfig
-x86_64                        randconfig-a004
-s390                             allmodconfig
-x86_64                           allyesconfig
-x86_64                        randconfig-a002
-s390                             allyesconfig
-s390                 randconfig-r044-20221209
-riscv                randconfig-r042-20221209
-x86_64                        randconfig-a006
-arc                  randconfig-r043-20221209
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-sh                               allmodconfig
-x86_64                        randconfig-a015
-i386                             allyesconfig
-mips                             allyesconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-powerpc                          allmodconfig
-
-clang tested configs:
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-arm                  randconfig-r046-20221209
-hexagon              randconfig-r041-20221209
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-hexagon              randconfig-r045-20221209
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+On 2022/12/09 6:10, Tony Nguyen wrote:
+> When a MAC address is not assigned to the VF, that portion of the message
+> sent to the VF is not set. The memory, however, is allocated from the
+> stack meaning that information may be leaked to the VM. Initialize the
+> message buffer to 0 so that no information is passed to the VM in this
+> case.
+> 
+> Fixes: 6ddbc4cf1f4d ("igb: Indicate failure on vf reset for empty mac address")
+> Reported-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 97290fc0fddd..3c0c35ecea10 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -7525,7 +7525,7 @@ static void igb_vf_reset_msg(struct igb_adapter *adapter, u32 vf)
+>   {
+>   	struct e1000_hw *hw = &adapter->hw;
+>   	unsigned char *vf_mac = adapter->vf_data[vf].vf_mac_addresses;
+> -	u32 reg, msgbuf[3];
+> +	u32 reg, msgbuf[3] = {};
+>   	u8 *addr = (u8 *)(&msgbuf[1]);
+>   
+>   	/* process all the same items cleared in a function level reset */
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
