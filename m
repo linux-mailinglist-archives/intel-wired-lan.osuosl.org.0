@@ -1,88 +1,180 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 573E8649DEE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Dec 2022 12:33:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B22FC64A0D1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Dec 2022 14:31:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 51F0560D5B;
-	Mon, 12 Dec 2022 11:33:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 51F0560D5B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4413B405EF;
+	Mon, 12 Dec 2022 13:31:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4413B405EF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670844817;
-	bh=yQ3PONhMRsDGb6/JQa5Ge2kyyKvzca9Q5pFfCArtoZY=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1670851885;
+	bh=mTAs/BHCK42AmT9/QcW1PzxRoeIIAsXMeKo4AvCMpvA=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=hct4cGfOj0bPLLhudEQ8j+2GzUkX31tvjPay02SrgHfFOExIbtpw7NfZjAt57zHg/
-	 3F5je29GQRqZZYO+VX1mpyamBQoYuW3oZiuj2XXCulczq8PL7wiGZEdeJZsVs9ZT97
-	 /o8CCbpPQ0pPzRRl6iJHoFA5qNQT8yedstQDMhmzufUzhD4H9wdCznheMunFVJ2Rc8
-	 HHA99gwZI8+haKl7AtmrNhfFpAm+21ZTaSFKkAe68A5HhgmKNkbzgTaShaK/X9r+vI
-	 lhsu23cbx+J41/kdN42GOyZnClkD6a0CCRtR0gsgHawWGDegp/v+iB9aXMSpcXUMSd
-	 pCrTzukUsDY8w==
+	b=Rv9VPJH4YHJwFspNszSxdfnX7PavbP4dhtrUAWq59+oT+wYOtYdK3+5YTVc4N7xFr
+	 eiU12iV2eQpJ97cyXZpBUH7Z58inUCb8TiVdWsQhGODj1bRMHN08GShi2DyVUXzgmC
+	 qHaNXeiuliEhzt4pTeZlxVM2QzNtzppMmyZtZcnGqKYi8QnHdtV3OGcvTmeOoVsVJg
+	 W+OymKq21Qljh247kBLTT3JCnoUFWFt/vN98rrdZgILOLAREmWCu1ejJLO76N9cdWF
+	 beEi8zWk2byvqM6eqCFlxjhg5OCswfLQa4jsd62+M+2edMT5doOWo0DbOBrnjVtco7
+	 WiqYVYBrmYoLg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zs9I6nD8zzek; Mon, 12 Dec 2022 11:33:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8CwMUxI4PZ2T; Mon, 12 Dec 2022 13:31:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3017760AAC;
-	Mon, 12 Dec 2022 11:33:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3017760AAC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3CC21405E3;
+	Mon, 12 Dec 2022 13:31:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3CC21405E3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 53B301BF2B6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:33:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8110E1BF389
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 13:31:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3BB7E813C3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:33:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3BB7E813C3
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5776080C93
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 13:31:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5776080C93
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Pua5is1S9D1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Dec 2022 11:33:28 +0000 (UTC)
+ with ESMTP id F27uoTPNb0rf for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Dec 2022 13:31:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E7FE813B7
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6E7FE813B7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:33:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="317861571"
-X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="317861571"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Dec 2022 03:33:28 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8385D80C60
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8385D80C60
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 13:31:18 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="382160461"
+X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="382160461"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2022 05:31:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="893459888"
-X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="893459888"
-Received: from wasp.igk.intel.com ([10.102.20.192])
- by fmsmga006.fm.intel.com with ESMTP; 12 Dec 2022 03:33:24 -0800
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 12 Dec 2022 12:16:45 +0100
-Message-Id: <20221212111645.1198680-11-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20221212111645.1198680-1-michal.swiatkowski@linux.intel.com>
-References: <20221212111645.1198680-1-michal.swiatkowski@linux.intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="790492550"
+X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="790492550"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga001.fm.intel.com with ESMTP; 12 Dec 2022 05:31:17 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 12 Dec 2022 05:31:16 -0800
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 12 Dec 2022 05:31:16 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 12 Dec 2022 05:31:16 -0800
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.46) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 12 Dec 2022 05:31:09 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KSltx78lzmk7sqz/ns4mWcWYFDdRjeHpH6Cf3wsV6yHcnAE1FQeJdcisdHYoxL4pFXZUpkhBgjwuBAPPVaf3MBZuvUn6/4xbWGSZQn6TXXB4StUqh8TozUK4mmZ4+G+M7qFRSXRGgC7vlplIOmv7xtfhhV3HeEXAhC9MmboLnLvpFV5e97A6MA5A2RfMhoXcQfYAFn0IQFO6rSqYpW9HGhD5z7pWgQE45Uw31IKPaR5Bg6gO13y1OIE8i+P/NdNoU860zbzMx+1ahxydhetQw4VssQ8eozcRQH05RhJbFUGsf6EuD0IkYYVnNKF8xRPB1hFAdNxIA4Y+uxOIYO6FPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ymmy0syuDcEJivHi27XKmr7KWFgNc3l86v0w2YlFWJI=;
+ b=N+Y+36VDBI/LMkDiQLmDeFV0oQxG8xAne/4HXB4ZVAAqfYtzVwvRqXxg4OQqzmCprbZ7xKj3Sa2CjR+4fYI/+dvVyXioLxPJtr4kYByTeDHbaL5jBN/BgK+v1BUPkD0nWnBBGhfDsEeXi7Wg6WvZy/2oHidTgERC0pRd1tbyfu5rDlAHUNcUDmt9r3AR/C/3y9d9sdOLjh6D1wkDBnc1O7T6s1FJfwiIm0j7qT4j+8EvHcHaEQo63h7lvbIO+hzR+iAPKtUS5v/9ILyHn+Sib22rQHHDkadWYTCr9vaFPt+DtZErwF4625Ftgsq/AizQc8Q66/6vxJUGVpHN6WkEQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MN2PR11MB4045.namprd11.prod.outlook.com (2603:10b6:208:135::27)
+ by DM4PR11MB7352.namprd11.prod.outlook.com (2603:10b6:8:103::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.19; Mon, 12 Dec
+ 2022 13:31:07 +0000
+Received: from MN2PR11MB4045.namprd11.prod.outlook.com
+ ([fe80::39f1:b5ed:24d2:fa46]) by MN2PR11MB4045.namprd11.prod.outlook.com
+ ([fe80::39f1:b5ed:24d2:fa46%6]) with mapi id 15.20.5880.019; Mon, 12 Dec 2022
+ 13:31:07 +0000
+From: "Rout, ChandanX" <chandanx.rout@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH intel-net] ice: xsk: do not use
+ xdp_return_frame() on tx_buf->raw_buf
+Thread-Index: AQHZBBW+KIGY5txjtkCr0WXxPHf3XK5qUyqA
+Date: Mon, 12 Dec 2022 13:31:07 +0000
+Message-ID: <MN2PR11MB4045CEA69F84E8BE0A9C0D27EAE29@MN2PR11MB4045.namprd11.prod.outlook.com>
+References: <20221129171125.4092238-1-maciej.fijalkowski@intel.com>
+In-Reply-To: <20221129171125.4092238-1-maciej.fijalkowski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN2PR11MB4045:EE_|DM4PR11MB7352:EE_
+x-ms-office365-filtering-correlation-id: da3cd534-1c2a-4f32-7073-08dadc451fd2
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Qe4MGt3DainFLlf0L9xNLHxewAAJWoDojlFex/ZLoujSlhIvzJCKG7J8ZyiPd5YvtzV6+8mDRaoQsMxO1zr2jWGGwVrE9ULStEXpgAbXlqD+cHBYoOkb+YHKe5zv/MRxish8Wxu6XaVf8v+Sld6Y9/KZEfZQ4aWOR0khw+oyzzMU+9xLOzC0YbRYrAj0hs1mqkLxOfrZNc7riQDrHelTUklJ15P1El9QqDu6B+gaQC3HPA+1zdqe8cgYvpf7ELVGIJawaD6GkUzEJLj6a5Ifk3L4lKa3nPyMB9HH/54fRB1aUbbo09yz4jcpn9ti9NH85NRYAbz166sh5hXb2CZpdWZvo6gbuD6UUSFio8H8MxVi4QnfInq86zD2oYJoDHlY8fjfDsnjmOyrtEA4HoxshXdxv44e1bURULtpYPwqPwaeNEZUntxmP1m5+GAnxbvAJOz2N6Hh7Jr4oYvirYBhcGwPd6tc14o78JGGZ22zHnvhpOWrRi0jgNeNAApyoXNeAd4j27/5JElrBaa6rEGa3trUsdghvg0GPJEaVB2jBymReCiLGNpwN20B9jKqgSVLXi/AQgtOwupG1cDH59+giKuEwUUD8UPY7r1QybLY/tpAf8mT4h5Hb5vMc6UQrzGbDngbXwaDhrQm/uN2sbjNuW9u0BnZaCkukj1QR8aPYxaTNyokHaQiomanB4FHXtAek9FWv9ELkl13wKnX9CP6Qg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR11MB4045.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(396003)(136003)(376002)(39860400002)(346002)(366004)(451199015)(2906002)(82960400001)(38100700002)(55016003)(122000001)(26005)(6506007)(86362001)(107886003)(9686003)(7696005)(41300700001)(76116006)(66556008)(4326008)(8936002)(54906003)(6916009)(5660300002)(52536014)(316002)(64756008)(8676002)(38070700005)(66446008)(66476007)(66946007)(478600001)(71200400001)(186003)(83380400001)(33656002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7WfISEZtXimEP73VxZ9oW+TY324u3IF4DDch/zOH9C4ROyFIh1y0heurP7Yb?=
+ =?us-ascii?Q?r5IN8+nqaXqbfrbtOw3DCEhNHLc3zoTlk15q6p5970eeKbN3bgb0DDFF0vyH?=
+ =?us-ascii?Q?NEf1GnFkXFcMn8sSvjxgr0fohBfjzvJ1bkZkw2vWJyNOdYPoiYUTKE9HHQYJ?=
+ =?us-ascii?Q?RIZTlLP4C2KkNf684FRWsf4c905IFnmZrAE/mpbDWlVHfTOCE+kathqFryMS?=
+ =?us-ascii?Q?brXe9PPRYCPtDvqH87MUfo/CGlIn+PuYaZ/wHCKNrh5kXUhtdhCwkFbxUhjK?=
+ =?us-ascii?Q?ZxG7aiKCEkuXQVWRyvIVgcWDXwbPPeDlnKQndnJredtw/vuYWQOndynocSSp?=
+ =?us-ascii?Q?oaOxzNpW0c+eoIWENMW673S5q43W3YuTCJSFUio70xPJsl/qHVfo/ySgTmyM?=
+ =?us-ascii?Q?y1ENP5HWYka/T5p9BJSJMPXVA1l9wA40XkzqJmK8m3IqUc6uiakDELtNk9Vg?=
+ =?us-ascii?Q?1PrDTaXoz35KYxvliyeBoX61CbQOHKse8Fr+DGIXF3deXK75lgrlGCMQ7/xB?=
+ =?us-ascii?Q?heEKCrwv7DkhGCt/1SOHsM8vCNXYUTssO0SJmKJywK6YKKcAd8d8sBfMqt1m?=
+ =?us-ascii?Q?mxzNTjjYNWIvW/c1YpOugcDgS+KR12LiZqi+M5vbKpOuc94KHmnWxfZCioKv?=
+ =?us-ascii?Q?H2e15G/Z9CJ/1gVPNb/oGOLnvS1k6OULq7GxrRt75jAJKmdX8ZRNEA3WPuiD?=
+ =?us-ascii?Q?es9U+BKZ0RXLUo2E0yFc0hfLHYnmajkOtpC4cGeh2weFbde2WICaPNphMvwJ?=
+ =?us-ascii?Q?oSVHid1zq2epJThkTHg9BUyqXyrrO2NyVtgxl2gNnt6h5+vP59cYUb00aldz?=
+ =?us-ascii?Q?dL2kDpbXVEfcN8Y+wj1zllsjQXDu4RbP4uOoX6e8uV/DXxhoDZxnE+9Zuj87?=
+ =?us-ascii?Q?61RdhXdh8SSgsJGLLshaxKVp3rUnJTjqG+o0HnxDSR9QfHIlbHpKppd/9jY9?=
+ =?us-ascii?Q?CKmA3yB8csKCnpJqSj8BS4JgVv9D5VsfhoOO1icaY/xHJDZdldI0eIPRtwNC?=
+ =?us-ascii?Q?paMp/UaGztgp0yia2SelQSlIC0uWnn6ITV3jwIRyBm9uaTw9xI1OLvVjhl0q?=
+ =?us-ascii?Q?v+VZ1KwjwkHuohMrAxnVsXAoLgq+ldFddY9BQTd3Ye+4tzIruGJALtk9p225?=
+ =?us-ascii?Q?p3EaVUWhh1Vhh+rybvfEG372BwBauMs0HKmZCS1Wk4iYyGqYrjbm/UWl8DJv?=
+ =?us-ascii?Q?lTJRMhksyj1MDY0jvf1Ao0l4W95Qbmo0yO6w6X6M2vO+cXYL8LqI3kkBrEWq?=
+ =?us-ascii?Q?I7hmI7taTHxywmCdfMxMpkd4xeE7S4Daj/uKvJG8Jdzc84rwrAlJ797pC4mW?=
+ =?us-ascii?Q?gf1st+/IPs3FpVrKsNcxAv1cfowJH1VVNjOF4UnvzAxll0K//CtSsNelTbYv?=
+ =?us-ascii?Q?mU1Ng31iqFpELziUGjrb+CpdfyMCJwhajQH9eUccSGZiRWjuHi5yDMKDK/Nc?=
+ =?us-ascii?Q?9BoNDx4s+l+QYelPmqoI1hLYfnjZRrMhhG1fIR2FCaANNFZ/DLK+A7PkMitw?=
+ =?us-ascii?Q?T6ThezsyuSqdLigIWz6KGIPXWmyftAkOarsAv9ySMR+W5gLvU8LlwvKk37JH?=
+ =?us-ascii?Q?GwCTgXP3vBaLljTu+LOC+yQhKsBCkJwIJ/Vbcwkc?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB4045.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: da3cd534-1c2a-4f32-7073-08dadc451fd2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Dec 2022 13:31:07.0616 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: P1mk99JUcSv/LgGS8PIsQUwdIq1Yo4LAu9oEdQ9+YaCCmak0x39qfZ56tMVs2gJleSA9zQh6L+LZTZYBByApLA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7352
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670844808; x=1702380808;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=k7F0RsBShYShjyyust5V+qOrYvPPyL755O2kv+7WwHo=;
- b=hqDmQZ4ovcdF3If4K0T4bp/RLc2kYCiEdIZ1dJZ20ekeCjDMBuFUz6Z7
- 3VgBPxGsmKXjsDpBi9FycQlzJGzvToUQYoMMhvwhX5VQBL2yXQqUqG86j
- 9HPDKlxShjrFqDQ2imVkNSd413KVRN5/+/0V74LipVm2cWMTiK64rN7Vl
- l+XWdvD2DW/RELD4bJoBvc8goqgsC9Q+Vyl2qG3uTWeGCpDknYTjcpk9R
- qWRRcwBS/lD2+60nOn4qlqo9xEbkr1CKnNsQQN6DVMUHOXqgd8QyD4XUL
- wahtM8hCmDW+bBxwVpRcQsbwX2rCwUUecMYoEXhRyvV409FE/8txYjVnH
- A==;
+ t=1670851878; x=1702387878;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=ymmy0syuDcEJivHi27XKmr7KWFgNc3l86v0w2YlFWJI=;
+ b=L9gkc3hfjGE0jJa0LAG8A8VlAF742xckj+hYDGBT2L84uVqbV8wDBaTP
+ rkpa5TW8eSSFBaTLMtewjeG9L1IH5IH6pVYT4GDperB8FYncmMHPLznnn
+ 8Tgi1msigTIy7O+gmgSyJum/an4bXcwQG6wGmwoDTIPpNHgnMDTpZVQEu
+ XAOawUvn+jNkalLArs3NJEannA67MSAf/tI1bBTCcVxjW1kG+mBctckyb
+ HmeRqDMy/P/iEA1ElKUSPcLQKmm4D2G17dg7cp3a00ZoPBIuCsv6v1MOk
+ EW8HrhT2PCepkT/Q1n0uCQiYLJ3fpKVKK5uT9Kk15TKBaZhw2W5d3iRN4
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hqDmQZ4o
-Subject: [Intel-wired-lan] [PATCH net-next v1 10/10] ice: implement devlink
- reinit action
+ header.a=rsa-sha256 header.s=Intel header.b=L9gkc3hf
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH intel-net] ice: xsk: do not use
+ xdp_return_frame() on tx_buf->raw_buf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,181 +187,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mustafa.ismail@intel.com, leon@kernel.org, benjamin.mikailenko@intel.com,
- jesse.brandeburg@intel.com, leszek.kaliszczuk@intel.com, kuba@kernel.org,
- netdev@vger.kernel.org, przemyslaw.kitszel@intel.com, shiraz.saleem@intel.com
+Cc: "Nagraj, Shravan" <shravan.nagraj@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Call ice_unload() and ice_load() in driver reinit flow.
 
-Block reinit when switchdev, ADQ or SRIOV is active. In reload path we
-don't want to rebuild all features. Ask user to remove them instead of
-quitely removing it in reload path.
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice_devlink.c | 103 +++++++++++++++----
- 1 file changed, 81 insertions(+), 22 deletions(-)
+>-----Original Message-----
+>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>Fijalkowski, Maciej
+>Sent: 29 November 2022 22:41
+>To: intel-wired-lan@lists.osuosl.org
+>Cc: Cowley, Robin <robin.cowley@thehutgroup.com>;
+>netdev@vger.kernel.org; bpf@vger.kernel.org; Karlsson, Magnus
+><magnus.karlsson@intel.com>
+>Subject: [Intel-wired-lan] [PATCH intel-net] ice: xsk: do not use
+>xdp_return_frame() on tx_buf->raw_buf
+>
+>Previously ice XDP xmit routine was changed in a way that it avoids xdp_buff-
+>>xdp_frame conversion as it is simply not needed for handling XDP_TX action
+>and what is more it saves us CPU cycles. This routine is re-used on ZC driver to
+>handle XDP_TX action.
+>
+>Although for XDP_TX on Rx ZC xdp_buff that comes from xsk_buff_pool is
+>converted to xdp_frame, xdp_frame itself is not stored inside ice_tx_buf, we
+>only store raw data pointer. Casting this pointer to xdp_frame and calling
+>against it xdp_return_frame in
+>ice_clean_xdp_tx_buf() results in undefined behavior.
+>
+>To fix this, simply call page_frag_free() on tx_buf->raw_buf.
+>Later intention is to remove the buff->frame conversion in order to simplify
+>the codebase and improve XDP_TX performance on ZC.
+>
+>Fixes: 126cdfe1007a ("ice: xsk: Improve AF_XDP ZC Tx and use batching API")
+>Reported-and-tested-by: Robin Cowley <robin.cowley@thehutgroup.com>
+>Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+>---
+> drivers/net/ethernet/intel/ice/ice_xsk.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 3d109193b7ea..77ae1e0ed734 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -525,10 +525,7 @@ static int ice_devlink_txbalance_validate(struct devlink *devlink, u32 id,
- 
- /**
-  * ice_devlink_reload_empr_start - Start EMP reset to activate new firmware
-- * @devlink: pointer to the devlink instance to reload
-- * @netns_change: if true, the network namespace is changing
-- * @action: the action to perform. Must be DEVLINK_RELOAD_ACTION_FW_ACTIVATE
-- * @limit: limits on what reload should do, such as not resetting
-+ * @pf: pointer to the pf instance
-  * @extack: netlink extended ACK structure
-  *
-  * Allow user to activate new Embedded Management Processor firmware by
-@@ -541,12 +538,9 @@ static int ice_devlink_txbalance_validate(struct devlink *devlink, u32 id,
-  * any source.
-  */
- static int
--ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
--			      enum devlink_reload_action action,
--			      enum devlink_reload_limit limit,
-+ice_devlink_reload_empr_start(struct ice_pf *pf,
- 			      struct netlink_ext_ack *extack)
- {
--	struct ice_pf *pf = devlink_priv(devlink);
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw *hw = &pf->hw;
- 	u8 pending;
-@@ -584,12 +578,52 @@ ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
- 	return 0;
- }
- 
-+/**
-+ * ice_devlink_reload_down - prepare for reload
-+ * @devlink: pointer to the devlink instance to reload
-+ * @netns_change: if true, the network namespace is changing
-+ * @action: the action to perform
-+ * @limit: limits on what reload should do, such as not resetting
-+ * @extack: netlink extended ACK structure
-+ */
-+static int
-+ice_devlink_reload_down(struct devlink *devlink, bool netns_change,
-+			enum devlink_reload_action action,
-+			enum devlink_reload_limit limit,
-+			struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+
-+	switch (action) {
-+	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
-+		if (ice_is_eswitch_mode_switchdev(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Go to legacy mode before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		if (ice_is_adq_active(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Turn off ADQ before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		if (ice_has_vfs(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Remove all VFs before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		ice_unload(pf);
-+		return 0;
-+	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
-+		return ice_devlink_reload_empr_start(pf, extack);
-+	default:
-+		WARN_ON(1);
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- /**
-  * ice_devlink_reload_empr_finish - Wait for EMP reset to finish
-- * @devlink: pointer to the devlink instance reloading
-- * @action: the action requested
-- * @limit: limits imposed by userspace, such as not resetting
-- * @actions_performed: on return, indicate what actions actually performed
-+ * @pf: pointer to the pf instance
-  * @extack: netlink extended ACK structure
-  *
-  * Wait for driver to finish rebuilding after EMP reset is completed. This
-@@ -597,17 +631,11 @@ ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
-  * for the driver's rebuild to complete.
-  */
- static int
--ice_devlink_reload_empr_finish(struct devlink *devlink,
--			       enum devlink_reload_action action,
--			       enum devlink_reload_limit limit,
--			       u32 *actions_performed,
-+ice_devlink_reload_empr_finish(struct ice_pf *pf,
- 			       struct netlink_ext_ack *extack)
- {
--	struct ice_pf *pf = devlink_priv(devlink);
- 	int err;
- 
--	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
--
- 	err = ice_wait_for_reset(pf, 60 * HZ);
- 	if (err) {
- 		NL_SET_ERR_MSG_MOD(extack, "Device still resetting after 1 minute");
-@@ -1346,12 +1374,43 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
- 	return status;
- }
- 
-+/**
-+ * ice_devlink_reload_up - do reload up after reinit
-+ * @devlink: pointer to the devlink instance reloading
-+ * @action: the action requested
-+ * @limit: limits imposed by userspace, such as not resetting
-+ * @actions_performed: on return, indicate what actions actually performed
-+ * @extack: netlink extended ACK structure
-+ */
-+static int
-+ice_devlink_reload_up(struct devlink *devlink,
-+		      enum devlink_reload_action action,
-+		      enum devlink_reload_limit limit,
-+		      u32 *actions_performed,
-+		      struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+
-+	switch (action) {
-+	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
-+		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT);
-+		return ice_load(pf);
-+	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
-+		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
-+		return ice_devlink_reload_empr_finish(pf, extack);
-+	default:
-+		WARN_ON(1);
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- static const struct devlink_ops ice_devlink_ops = {
- 	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
--	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
-+	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT) |
-+			  BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
- 	/* The ice driver currently does not support driver reinit */
--	.reload_down = ice_devlink_reload_empr_start,
--	.reload_up = ice_devlink_reload_empr_finish,
-+	.reload_down = ice_devlink_reload_down,
-+	.reload_up = ice_devlink_reload_up,
- 	.port_split = ice_devlink_port_split,
- 	.port_unsplit = ice_devlink_port_unsplit,
- 	.eswitch_mode_get = ice_eswitch_mode_get,
--- 
-2.36.1
-
+Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com> (A Contingent Worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
