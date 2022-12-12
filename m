@@ -1,86 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D473064A48E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Dec 2022 17:08:08 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62B3664A491
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Dec 2022 17:08:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 677B88186A;
-	Mon, 12 Dec 2022 16:08:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 677B88186A
+	by smtp1.osuosl.org (Postfix) with ESMTP id E675C81926;
+	Mon, 12 Dec 2022 16:08:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E675C81926
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670861287;
-	bh=kKQAqih5Ji1EkD7wc/yGCQfRX0PpsHfiyMpZGBXGCDs=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=nfEjUpsJs4fQKbD8hUKv5eega0R0oNJz2RlvGw7KRfCJV06llCrwE0WW3nQKr5ZOP
-	 n+l348jaw2RPhkr99SbM3AAN+TFbAMOqdBqpU+iwIRFiEztWBJzVyNypmhsu1e9CGC
-	 KLe3KZvIVxnH/PpjlyQH+9rJvkNX7vQMahSFpUCa6iCzgw2LePdvEGOY8S7gzV0ykh
-	 f81VCDs2FmUpk6ZOrUAC2N00Bg95WSYomRWDUIsjwc6dugSePcTepK7jPXBulJbrWj
-	 Ckny7Ddq+Nzkv0YAzlrhXintBDZTAGkciuEKquO5Mpqnu+kTo8ngUWUX/qiT9rKdcd
-	 R1TJVifftxhCQ==
+	s=default; t=1670861290;
+	bh=M2Zn3aPXGVjOHAOisKhEzkTnvuc2gKGQAIiiWpq81I8=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Il6vw2dfNLmMPoqKFZ/bfa/jO58TrhGsuNQSeM9Ojf3+An7HWhwB6MKf6SxzFjkqG
+	 3HBVjibggJNA5FNINGoSBlTuJL0nptldQ8cI2g8lS4i8YJHCK89VlCLAneBQcUq8UR
+	 hYfijSh0CNvBoSoq1Hnx8YaMWPC0hssp73HYcUavv+p5PpEUmYtBlxzAYWzaXadAcz
+	 JoTFj6XMjHLqJaSD/rgooiGbw2PSo9jQJGpg1bjEiEOIycmEeixsqnxgAShALEA1FL
+	 xdBEfbba6KYd3gnanvheAfsIRYpUZVoe4Teb5ct8MB5QLaqaxKt6IMNGuuZklPGIvu
+	 EcvkCFxF56E6A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QGIKboEhtuxb; Mon, 12 Dec 2022 16:08:06 +0000 (UTC)
+	with ESMTP id b_vjEOIf_VEA; Mon, 12 Dec 2022 16:08:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F1D6D8188B;
-	Mon, 12 Dec 2022 16:08:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F1D6D8188B
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBAFA80D0F;
+	Mon, 12 Dec 2022 16:08:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBAFA80D0F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 80A501BF20B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 09:59:57 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EA9FA1BF398
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:55:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5AE5680C4D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 09:59:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5AE5680C4D
+ by smtp3.osuosl.org (Postfix) with ESMTP id C511460C2A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:55:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C511460C2A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kB7-G20Bw2WE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Dec 2022 09:59:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9EC1F80C3B
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9EC1F80C3B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 09:59:56 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="317846022"
-X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="317846022"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Dec 2022 01:59:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="648109904"
-X-IronPort-AV: E=Sophos;i="5.96,238,1665471600"; d="scan'208";a="648109904"
-Received: from sczapladev.igk.intel.com ([10.237.94.132])
- by orsmga002.jf.intel.com with ESMTP; 12 Dec 2022 01:59:52 -0800
-From: Sebastian Czapla <sebastianx.czapla@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 12 Dec 2022 10:59:38 +0100
-Message-Id: <20221212095938.2477336-1-sebastianx.czapla@intel.com>
-X-Mailer: git-send-email 2.31.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n4hN37lfYKkw for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Dec 2022 11:55:40 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0797960C19
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com
+ [209.85.218.47])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0797960C19
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 11:55:39 +0000 (UTC)
+Received: by mail-ej1-f47.google.com with SMTP id m18so27279793eji.5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Dec 2022 03:55:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9agZglOKPdWwX0fuJjm0Z+bcOfHu+FauaBqawzsErgU=;
+ b=S9IQSk3LbLFa2dnajlR2Cw/lJpYI6I+89qUvcHV9uNFxyFDYxHwnfrdzVTsOExSmiz
+ rsJnD5wBPn6uSNCbLOhxLU80QWKeyEI0ycYNheSTbxHkCxPeLNwEFTQ69Qqm1Vm7jPGI
+ Ei/9piO71EDlGb72Xope4Kiwo8aKge/iSsiBDQTJZIQSssxsEH40OR7GndmcWs/rVVIS
+ CHjkiUtYVaIZaQcxDYHb+7WOsbzAj5KZ9Spq4SeAVzHYkhrXJwcsUHPqqEOBko8QPTcG
+ GTccZ94cZGblYMdaXsYIw7jfumUA6kzj5epxX3dgxdYzwJ3HQ/YZobW7mtxImxWMA+Nj
+ PrTg==
+X-Gm-Message-State: ANoB5pnr8a13Qb5MaHLRLq8M67MZQ8+lNRtJdfJj9sBqvpunDnMwBjPY
+ YQNY372kgCTqVFSgd7K64XI=
+X-Google-Smtp-Source: AA0mqf4ZIX1732j+6YhMn9QhXq8AGAnZTjX5jhF114NHcHM0q0+s9okxNdxs5OhjYtxDzMhQzfnxlg==
+X-Received: by 2002:a17:906:8543:b0:7c0:d88e:4b37 with SMTP id
+ h3-20020a170906854300b007c0d88e4b37mr11320312ejy.52.1670846138130; 
+ Mon, 12 Dec 2022 03:55:38 -0800 (PST)
+Received: from ?IPV6:2a0b:e7c0:0:107::aaaa:49? ([2a0b:e7c0:0:107::aaaa:49])
+ by smtp.gmail.com with ESMTPSA id
+ kz21-20020a17090777d500b007b2a58e31dasm3242433ejc.145.2022.12.12.03.55.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Dec 2022 03:55:37 -0800 (PST)
+Message-ID: <5fb6ba13-3300-917a-4e7b-e8b7a1e71e45@kernel.org>
+Date: Mon, 12 Dec 2022 12:55:35 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Content-Language: en-US
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>
+References: <20221031114456.10482-1-jirislaby@kernel.org>
+ <20221102204110.26a6f021@kernel.org>
+ <bf584d22-8aca-3867-5e3a-489d62a61929@kernel.org>
+ <003bc385-dc14-12ba-d3d6-53de3712a5dc@intel.com>
+ <20221104114730.42294e1c@kernel.org>
+ <eb9c26db-d265-33c1-5c25-daf9f06f91d4@intel.com>
+From: Jiri Slaby <jirislaby@kernel.org>
+In-Reply-To: <eb9c26db-d265-33c1-5c25-daf9f06f91d4@intel.com>
 X-Mailman-Approved-At: Mon, 12 Dec 2022 16:08:01 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670839196; x=1702375196;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=LnjEMRXXtO2laiiZzfR3ZD8semZyx6E0dVgybxi1/rQ=;
- b=MAoadWFXuO4DYISp9ZrfataFHzK7lF9PpK3uRwZV9sntK7XsiQA6+pFJ
- BqPQuzWmXu54LzHnhBFIT/AmtkmL0vbCaXj6f9+WpE2ufqQEKiNNXPWzx
- bBzjrPbXFZXpgBJRsEcoYxtb0uST+0JHpzSRNSGaHURzMRfCnjYHOLmdz
- sSXWU6zmVFprpHFfT5zFUz5wSKRwOzCy3196KhtGDGhRU17G3dc9WwlAJ
- /0gCQnUdkaPqnmbr3I5OHvVzRUzFU41X13PYVKTN87yn5qIn6YIQzreKe
- Kl6hULEL49846/ZkpepwlT/HcIOafk/uhVGWBeaUFTOs/CL1tlrNdT3u1
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MAoadWFX
-Subject: [Intel-wired-lan] [PATCH net-next v1] ixgbe: Filter out spurious
- link up indication
+Subject: Re: [Intel-wired-lan] [PATCH] i40e (gcc13): synchronize
+ allocate/free functions return type & values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,69 +103,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sebastian Czapla <sebastianx.czapla@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, "Loktionov,
+ Aleksandr" <aleksandr.loktionov@intel.com>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ Martin Liska <mliska@suse.cz>, "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add delayed link state recheck to filter false link up indication
-caused by transceiver with no fiber cable attached.
+On 04. 11. 22, 21:28, Tony Nguyen wrote:
+> 
+> 
+> On 11/4/2022 11:47 AM, Jakub Kicinski wrote:
+>> On Fri, 4 Nov 2022 11:33:07 -0700 Tony Nguyen wrote:
+>>> As Jiri mentioned, this is propagated up throughout the driver. We could
+>>> change this function to return int but all the callers would then need
+>>> to convert these errors to i40e_status to propagate. This doesn't really
+>>> gain much other than having this function return int. To adjust the
+>>> entire call chain is going to take more work. As this is resolving a
+>>> valid warning and returning what is currently expected, what are your
+>>> thoughts on taking this now to resolve the issue and our i40e team will
+>>> take the work on to convert the functions to use the standard errnos?
+>>
+>> My thoughts on your OS abstraction layers should be pretty evident.
+>> If anything I'd like to be more vigilant about less flagrant cases.
+>>
+>> I don't think this is particularly difficult, let's patch it up
+>> best we can without letting the "status" usage grow.
+> 
+> Ok thanks will do.
 
-Signed-off-by: Sebastian Czapla <sebastianx.czapla@intel.com>
----
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   | 21 ++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+Just heads-up: have you managed to remove the abstraction yet?
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index 38c4609bd429..878dd8dff528 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -3292,13 +3292,14 @@ static bool ixgbe_need_crosstalk_fix(struct ixgbe_hw *hw)
- s32 ixgbe_check_mac_link_generic(struct ixgbe_hw *hw, ixgbe_link_speed *speed,
- 				 bool *link_up, bool link_up_wait_to_complete)
- {
-+	bool crosstalk_fix_active = ixgbe_need_crosstalk_fix(hw);
- 	u32 links_reg, links_orig;
- 	u32 i;
- 
- 	/* If Crosstalk fix enabled do the sanity check of making sure
- 	 * the SFP+ cage is full.
- 	 */
--	if (ixgbe_need_crosstalk_fix(hw)) {
-+	if (crosstalk_fix_active) {
- 		u32 sfp_cage_full;
- 
- 		switch (hw->mac.type) {
-@@ -3346,10 +3347,24 @@ s32 ixgbe_check_mac_link_generic(struct ixgbe_hw *hw, ixgbe_link_speed *speed,
- 			links_reg = IXGBE_READ_REG(hw, IXGBE_LINKS);
- 		}
- 	} else {
--		if (links_reg & IXGBE_LINKS_UP)
-+		if (links_reg & IXGBE_LINKS_UP) {
-+			if (crosstalk_fix_active) {
-+				/* Check the link state again after a delay
-+				 * to filter out spurious link up
-+				 * notifications.
-+				 */
-+				mdelay(5);
-+				links_reg = IXGBE_READ_REG(hw, IXGBE_LINKS);
-+				if (!(links_reg & IXGBE_LINKS_UP)) {
-+					*link_up = false;
-+					*speed = IXGBE_LINK_SPEED_UNKNOWN;
-+					return 0;
-+				}
-+			}
- 			*link_up = true;
--		else
-+		} else {
- 			*link_up = false;
-+		}
- 	}
- 
- 	switch (links_reg & IXGBE_LINKS_SPEED_82599) {
+thanks,
 -- 
-2.31.1
+js
+suse labs
 
 _______________________________________________
 Intel-wired-lan mailing list
