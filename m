@@ -1,74 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3612E64B92C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Dec 2022 17:02:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A13264B90C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Dec 2022 16:58:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BB5934097E;
-	Tue, 13 Dec 2022 16:02:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BB5934097E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0FDFF60F4C;
+	Tue, 13 Dec 2022 15:58:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0FDFF60F4C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670947321;
-	bh=aHf5WVTs/zgHmyTmI99b55OpZGv2JtAsTSjZv96dbIc=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=rU8mzdWfOcIWNd69qG3ZsUjzQ8kmqVPw5qx5ojrbI+PZkMbqTMZjapI7+sg2qY6U+
-	 J9RU95nfIVYqyj46OLsOjLNcg6jSIYORNis6uHYy1FLjcdQd/GhBJK2IQrgSJXS/42
-	 tQnI+lGT1T0t19CsTLhxMSPe8RottcIlbD6CfRhf/LhK7Jb3h5fYvuIXqX35CnrMp4
-	 OT58NiQoNf+ddIaj9YyOu4w3nuY33Ektg4Nk1tae+4z5v1HKa/ZZ05jgB1KxZcTkLh
-	 a/UkfaQkEuhqBaZdDA9pJYg1DOEBXUmjXMk1BvYh0+wsRcaIWy48aBrbmqE4fW/oT8
-	 qyAH+ZVQgb3jA==
+	s=default; t=1670947108;
+	bh=Tqn4mJEaRbhTlI8doOd0+cvouDPGRvQKI0kAbV1jDX0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=ZriLiE5ZQd476g1Hn7rCfk67mAvYbyIhhqdRxbU/3gD3LzwwRQcsZCI1Vvsp4y3+9
+	 sNmfSYKGCocEE+8368Fw9YgfAavibFOpCVdOtNlsPbMVe6d9Ztk9JeMJlCbKR3jM2k
+	 S+/+3hqAQPmjwY7KIakyKeWBp1uaGQtLPOTDnpylimdzeoTTRuxKXdEWYf1q2T93SK
+	 PWp2Bw7n/tHU7ycyybdatDN0PIdVQs5URvLiBkpdlMhMX38ASF8Bf5FzVdwH0b7nY1
+	 hOdCjJAYA6yy8M1u016S5BJfkMEimXQhJmOlnP9RhIYqrrd0k0KSPiFUqYhA1yEG+G
+	 /qMQy1ljeE89g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hmXd1QNpSaGo; Tue, 13 Dec 2022 16:02:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rUN8DAmIJYHH; Tue, 13 Dec 2022 15:58:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B521F40A93;
-	Tue, 13 Dec 2022 16:02:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B521F40A93
+	by smtp3.osuosl.org (Postfix) with ESMTP id 25BFA60A8B;
+	Tue, 13 Dec 2022 15:58:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 25BFA60A8B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 154201BF328
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 14:29:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 040491BF3A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 15:58:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F150A600D1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 14:29:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F150A600D1
+ by smtp3.osuosl.org (Postfix) with ESMTP id D238B60A8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 15:58:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D238B60A8B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zNbwQS8clBOy for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Dec 2022 14:29:23 +0000 (UTC)
-X-Greylist: delayed 00:25:35 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C4D48600C4
-Received: from crumpet.qq2.net (crumpet.qq2.net [80.247.17.44])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C4D48600C4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 14:29:22 +0000 (UTC)
-Received: from mail-ej1-f46.google.com ([209.85.218.46])
- by crumpet.qq2.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <geoff@defgeoff.co.uk>)
- id 1p55sg-0002AC-OR
- for intel-wired-lan@lists.osuosl.org ; Tue, 13 Dec 2022 14:03:39 +0000
-Received: by mail-ej1-f46.google.com with SMTP id x22so36688546ejs.11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 06:03:38 -0800 (PST)
-X-Gm-Message-State: ANoB5pljHl0Qo0EiYmj41wLXmQQ0J9yQf8GuWTBucdUl7SNf+McIMRoL
- E735QSbQ+SaiW7YftgEBlCyKZIhphEMSVVkgLw==
-X-Google-Smtp-Source: AA0mqf44DZC3XSxEHv6iGMapoaat3mGiKZr8QpKTUF36zBbnLw/VJi0Kp6H2FTWCMnLM1fjo07e8YquY+d5dlayNj7A=
-X-Received: by 2002:a17:906:79d0:b0:7c1:6091:e7b with SMTP id
- m16-20020a17090679d000b007c160910e7bmr829522ejo.513.1670940218051; Tue, 13
- Dec 2022 06:03:38 -0800 (PST)
+ with ESMTP id HXD47Gpo1IX9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Dec 2022 15:58:22 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F09A607C7
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3F09A607C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 15:58:22 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id w23so172955ply.12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Dec 2022 07:58:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=L2KwEdJdz8SZz3waYhraeZmfXbWgedoNQcqshGcRjyQ=;
+ b=mWOT1FySTkjktHwxGjT4qxQ5BwzLf/HjY7GEpxYIxR3kkN3dUzkz/oSCU9CZE6MBQx
+ 8Rry2YpAXSMzBpZwSQN9DTFgOibpZRlEPtfSTn1a55DxbaZWRr//FBxsJMtkbQhjRr6P
+ +NtmKoH9X+ndr79y3GMU2LfIX8/vUnwSHWoBlneUZl0pftDdv89/NmZDjRaVI1zVnN1V
+ fjpnNb+pUYP9HMlq80KdIw2Eu1IhLeaqEIwH5FIaAT5qiNys9riRa/3VyNyfgN9m5aJM
+ WVSwmmdW1TNAMzvEJ6kOYJqWM9t79IMRm8UbAkxRRHnvkn8I7xSLuNpGIHgdeXqsLcOg
+ X54Q==
+X-Gm-Message-State: ANoB5pkOWNsI2oMDPlL+0ExFwZyoH6pLngJ3qJsc1/J8eY1fv5lUIKvs
+ QpcM3Ik8WT8uoQX504PjGh8=
+X-Google-Smtp-Source: AA0mqf4ASAm91c18uzbgdF0yT/tzLVd89/CZlvbaX4MOqMjsoYKxBEikl31a3JskKH0GZN9iwuRcgg==
+X-Received: by 2002:a17:902:9a43:b0:187:16c2:d52c with SMTP id
+ x3-20020a1709029a4300b0018716c2d52cmr19322313plv.50.1670947101435; 
+ Tue, 13 Dec 2022 07:58:21 -0800 (PST)
+Received: from [192.168.0.128] ([98.97.42.38])
+ by smtp.googlemail.com with ESMTPSA id
+ ix17-20020a170902f81100b001895f7c8a71sm71952plb.97.2022.12.13.07.58.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Dec 2022 07:58:21 -0800 (PST)
+Message-ID: <cf6f03d04c8f2ad2627a924f7ee66645d661d746.camel@gmail.com>
+From: Alexander H Duyck <alexander.duyck@gmail.com>
+To: Tirthendu Sarkar <tirthendu.sarkar@intel.com>, tirtha@gmail.com, 
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net,  edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, ast@kernel.org,  daniel@iogearbox.net, hawk@kernel.org,
+ john.fastabend@gmail.com,  intel-wired-lan@lists.osuosl.org
+Date: Tue, 13 Dec 2022 07:58:19 -0800
+In-Reply-To: <20221213105023.196409-1-tirthendu.sarkar@intel.com>
+References: <20221213105023.196409-1-tirthendu.sarkar@intel.com>
+User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
 MIME-Version: 1.0
-From: Geoff Winkless <geoff@defgeoff.co.uk>
-Date: Tue, 13 Dec 2022 14:03:26 +0000
-X-Gmail-Original-Message-ID: <CAEzk6ffEcOFx0N3sXJovy6CbNdeg95bWHmPw1Hy5+v2Dgng7iQ@mail.gmail.com>
-Message-ID: <CAEzk6ffEcOFx0N3sXJovy6CbNdeg95bWHmPw1Hy5+v2Dgng7iQ@mail.gmail.com>
-To: intel-wired-lan@lists.osuosl.org
-Content-Type: multipart/mixed; boundary="00000000000023675005efb61638"
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-Mailman-Approved-At: Tue, 13 Dec 2022 16:01:27 +0000
-Subject: [Intel-wired-lan] e1000e eeprom_bad_csum_allow option
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=L2KwEdJdz8SZz3waYhraeZmfXbWgedoNQcqshGcRjyQ=;
+ b=KnUh26J7JZRs5EIrjhCuhTh0mR4I4x0Ew2N5op3jpJnsa4Yw+nMuPEPNwrYmve9DTD
+ mVQP6RtncAKCTBt/N9udvh3n2Qzj+/bV0YsglSLWzr1jOJzGDAAu4jCbHzIxoO5L/vOo
+ bL0jAUFUW9baIcGA/BE9WAmdLJv6nCApYuhn5ngTkmwBewEjIK1QFFVlW1PHyDZ3/g2L
+ p2M3F4A5vCD7qzRU9rger8MO4NszpALiP3uT4bDvSdrEtRF4eAFwjW1oL6uS0bHFrElt
+ zIqvH2Dv7YdSjr/Sr0V/pdNih3GwgqcB6iHueHlz7D7VqIs92IBbm/lOTGO5+EFC34L7
+ 1bxw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=KnUh26J7
+Subject: Re: [Intel-wired-lan] [PATCH intel-next 0/5] i40e: support XDP
+ multi-buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,108 +114,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ magnus.karlsson@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---00000000000023675005efb61638
-Content-Type: text/plain; charset="UTF-8"
+On Tue, 2022-12-13 at 16:20 +0530, Tirthendu Sarkar wrote:
+> This patchset adds multi-buffer support for XDP. The first four patches
+> are prepatory patches while the fifth one contains actual multi-buffer
+> changes. 
+> 
+> Tirthendu Sarkar (5):
+>   i40e: add pre-xdp page_count in rx_buffer
+>   i40e: avoid per buffer next_to_clean access from i40e_ring
+>   i40e: introduce next_to_process to i40e_ring
+>   i40e: pull out rx buffer allocation to end of i40e_clean_rx_irq()
+>   i40e: add support for XDP multi-buffer Rx
+> 
+>  drivers/net/ethernet/intel/i40e/i40e_main.c |  18 +-
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 378 ++++++++++++++------
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.h |  13 +-
+>  3 files changed, 280 insertions(+), 129 deletions(-)
+> 
 
-Hi
+This approach seems kind of convoluted to me. Basically you are trying
+to clean the ring without cleaning the ring in the cases where you
+encounter a non EOP descriptor.
 
-First off, apologies if this is the wrong place to send this email, in
-which case please do point me in the right direction.
-
-We recently came across an issue with an embedded system that
-historically ran 2.6.x and which we've (in beta) updated to kernel
-5.14.5 (since that's the version we're running on our more recent
-devices, and I wanted to standardise): after an unexpected power
-cycle, the e1000e came up with apparently-corrupted MAC, and the unit
-didn't appear on the network.
-
-e1000e: Intel(R) PRO/1000 Network Driver
-e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-e1000e 0000:01:00.0: Interrupt Throttling Rate (ints/sec) set to
-dynamic conservative mode
-e1000e 0000:01:00.0: Invalid MAC Address: 00:00:00:00:00:00
-e1000e: probe of 0000:01:00.0 failed with error -5
-
-Now the old e1000 driver accepts this broken MAC, albeit while
-complaining about it, allowing userspace to force a MAC address and
-continue, but the e1000e just drops out and rejects it.
-
-Is there any reason why the e1000e couldn't do the same (and also with
-the probably-related NVM checksum failure), as per the attached patch
-based on the e1000 code?
-
-I took out the dump_eeprom function the e1000 uses because a) I didn't
-need it and b) I don't have the time to gain enough understanding of
-the differences between the e1000 and e1000e drivers to port it
-without (almost certainly) messing it up.
-
-Oddly enough, booting with 2.6 seemed to fix the problem (it came up
-with its normal MAC and would then subsequently boot fine into 5.14.5)
-which leaves me wondering if there's something else the e1000 driver
-does that we should also consider porting. It could just have been a
-coincidence, though.
-
-Thanks
-
-Geoff
-
---00000000000023675005efb61638
-Content-Type: application/octet-stream; name="e1000e-ignore-nvm.patch"
-Content-Disposition: attachment; filename="e1000e-ignore-nvm.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_lbma87940>
-X-Attachment-Id: f_lbma87940
-
-ZGlmZiAtYkJyIC1VIDMgZTEwMDBlLW9yaWcvbGludXgtNi4xL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2UxMDAwZS9uZXRkZXYuYyBlMTAwMGUtcGF0Y2hlZC9saW51eC02LjEvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCi0tLSBlMTAwMGUtb3JpZy9saW51eC02
-LjEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCTIwMjItMTItMTEg
-MjI6MTU6MTguMDAwMDAwMDAwICswMDAwCisrKyBlMTAwMGUtcGF0Y2hlZC9saW51eC02LjEvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCTIwMjItMTItMTMgMTM6MDU6
-NDcuMTU0Nzk1NTM1ICswMDAwCkBAIC03NTY4LDMxICs3NTY4LDM2IEBACiAJICogYXR0ZW1wdC4g
-TGV0J3MgZ2l2ZSBpdCBhIGZldyB0cmllcwogCSAqLwogCWZvciAoaSA9IDA7OyBpKyspIHsKLQkJ
-aWYgKGUxMDAwX3ZhbGlkYXRlX252bV9jaGVja3N1bSgmYWRhcHRlci0+aHcpID49IDApCisJCWlm
-IChlMTAwMF92YWxpZGF0ZV9udm1fY2hlY2tzdW0oJmFkYXB0ZXItPmh3KSA+PSAwKSB7CisJCS8q
-IGNvcHkgdGhlIE1BQyBhZGRyZXNzICovCisJCQlpZiAoZTEwMDBlX3JlYWRfbWFjX2FkZHIoJmFk
-YXB0ZXItPmh3KSkKKwkJCQlkZXZfZXJyKCZwZGV2LT5kZXYsCisJCQkJIk5WTSBSZWFkIEVycm9y
-IHdoaWxlIHJlYWRpbmcgTUFDIGFkZHJlc3NcbiIpOwogCQkJYnJlYWs7CisJCX0KIAkJaWYgKGkg
-PT0gMikgewogCQkJZGV2X2VycigmcGRldi0+ZGV2LCAiVGhlIE5WTSBDaGVja3N1bSBJcyBOb3Qg
-VmFsaWRcbiIpOwotCQkJZXJyID0gLUVJTzsKLQkJCWdvdG8gZXJyX2VlcHJvbTsKKwkJLyoKKyAJ
-CSAqIHNldCBNQUMgYWRkcmVzcyB0byBhbGwgemVyb2VzIHRvIGludmFsaWRhdGUgYW5kIHRlbXBv
-cmFyeQorIAkJICogZGlzYWJsZSB0aGlzIGRldmljZSBmb3IgdGhlIHVzZXIuIFRoaXMgYmxvY2tz
-IHJlZ3VsYXIKKyAJCSAqIHRyYWZmaWMgd2hpbGUgc3RpbGwgcGVybWl0dGluZyBldGh0b29sIGlv
-Y3RscyBmcm9tIHJlYWNoaW5nCisgCQkgKiB0aGUgaGFyZHdhcmUgYXMgd2VsbCBhcyBhbGxvd2lu
-ZyB0aGUgdXNlciB0byBydW4gdGhlCisgCQkgKiBpbnRlcmZhY2UgYWZ0ZXIgbWFudWFsbHkgc2V0
-dGluZyBhIGh3IGFkZHIgdXNpbmcKKyAJCSAqIGBpcCBzZXQgYWRkcmVzc2AKKyAJCSAqLworCQkJ
-bWVtc2V0KGFkYXB0ZXItPmh3Lm1hYy5hZGRyLCAwLCBzaXplb2YoYWRhcHRlci0+aHcubWFjLmFk
-ZHIpKTsKIAkJfQogCX0KIAotCWUxMDAwX2VlcHJvbV9jaGVja3MoYWRhcHRlcik7Ci0KLQkvKiBj
-b3B5IHRoZSBNQUMgYWRkcmVzcyAqLwotCWlmIChlMTAwMGVfcmVhZF9tYWNfYWRkcigmYWRhcHRl
-ci0+aHcpKQotCQlkZXZfZXJyKCZwZGV2LT5kZXYsCi0JCQkiTlZNIFJlYWQgRXJyb3Igd2hpbGUg
-cmVhZGluZyBNQUMgYWRkcmVzc1xuIik7Ci0KIAlldGhfaHdfYWRkcl9zZXQobmV0ZGV2LCBhZGFw
-dGVyLT5ody5tYWMuYWRkcik7CiAKKy8qIGRvbid0IGJsb2NrIGluaXRhbGl6YXRpb24gaGVyZSBk
-dWUgdG8gYmFkIE1BQyBhZGRyZXNzICovCiAJaWYgKCFpc192YWxpZF9ldGhlcl9hZGRyKG5ldGRl
-di0+ZGV2X2FkZHIpKSB7CiAJCWRldl9lcnIoJnBkZXYtPmRldiwgIkludmFsaWQgTUFDIEFkZHJl
-c3M6ICVwTVxuIiwKIAkJCW5ldGRldi0+ZGV2X2FkZHIpOwotCQllcnIgPSAtRUlPOwotCQlnb3Rv
-IGVycl9lZXByb207CiAJfQogCisJZTEwMDBfZWVwcm9tX2NoZWNrcyhhZGFwdGVyKTsKIAl0aW1l
-cl9zZXR1cCgmYWRhcHRlci0+d2F0Y2hkb2dfdGltZXIsIGUxMDAwX3dhdGNoZG9nLCAwKTsKIAl0
-aW1lcl9zZXR1cCgmYWRhcHRlci0+cGh5X2luZm9fdGltZXIsIGUxMDAwX3VwZGF0ZV9waHlfaW5m
-bywgMCk7CiAKQEAgLTc2OTYsNyArNzcwMSw3IEBACiBlcnJfcmVnaXN0ZXI6CiAJaWYgKCEoYWRh
-cHRlci0+ZmxhZ3MgJiBGTEFHX0hBU19BTVQpKQogCQllMTAwMGVfcmVsZWFzZV9od19jb250cm9s
-KGFkYXB0ZXIpOwotZXJyX2VlcHJvbToKKy8vZXJyX2VlcHJvbToKIAlpZiAoaHctPnBoeS5vcHMu
-Y2hlY2tfcmVzZXRfYmxvY2sgJiYgIWh3LT5waHkub3BzLmNoZWNrX3Jlc2V0X2Jsb2NrKGh3KSkK
-IAkJZTEwMDBfcGh5X2h3X3Jlc2V0KCZhZGFwdGVyLT5odyk7CiBlcnJfaHdfaW5pdDoK
---00000000000023675005efb61638
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Why not just replace the skb pointer with an xdp_buff in the ring? Then
+you just build an xdp_buff w/ frags and then convert it after after
+i40e_is_non_eop? You should then still be able to use all the same page
+counting tricks and the pages would just be dropped into the shared
+info of an xdp_buff instead of an skb and function the same assuming
+you have all the logic in place to clean them up correctly.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---00000000000023675005efb61638--
