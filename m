@@ -1,79 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F56064C1B0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Dec 2022 02:15:11 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9A3964C1B8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Dec 2022 02:18:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E8DB760B1C;
-	Wed, 14 Dec 2022 01:15:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E8DB760B1C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1355B40B42;
+	Wed, 14 Dec 2022 01:18:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1355B40B42
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1670980510;
-	bh=0gDm1i9sdXA7GL+TmaeIULMMzeeaDD/XYHo2JANXr80=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=pL3+h1A2CpHwzCrAbgaIgJjaazXgRnE802xK7nuNKl+Wpaj2NkrcTppZhq54eV+IJ
-	 kRSx0BCnDW3nye0diM/RtwWDxA8E5vSO06pvKmCiieTYxWcBgTQYoprCjKohUlluP2
-	 9Ev84u5cySnCz/JLMX5vkiOcrA37+rde6e5U4dupm+G+UJ4SpPND56qLuwqmXSb8zK
-	 wzJ46zBj8gmhcLKk595i1Zw4DlLjpFFiWCCOV9BTW9qxbMZgxTBAil3UoWuEwnz5a0
-	 AExCNiRRoxuZ8Pn8QAhOhfVyii4rpOyqA7WTg1g8LXht5Yj3ZK/m/LRg9/7PSMbsZ3
-	 KySy/bXlQXnqg==
+	s=default; t=1670980726;
+	bh=RkRObQtEfAalAzR3fioAhhzLET0Moaz+LXruC9nf568=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=8WSt7C0XnCHEXsTSsTeyIqfi2uJlOAVqeO0xDw+Y8BQY0R98C1wvRAquQhrgvEblp
+	 p6IUgcLG2ZXFIjUFaY1hmwmQo+D3gV6NaRyQFaZfbYhcV3ZdHQgNRB8tlWFwpA1VIg
+	 DvJYiIMx8fIq58ZSMClUYGe+Sa0ae31KEcd/2dhv5rzW852EOn7rk0C9DjMnscu3xN
+	 1zBFkHR5lJ4TQCCelY/nvJ1YtA1rOJLxRkU8hKcUL4faCfjl5QzM7/DgdZbzLs7gbM
+	 UmVmtfaoF7d3BnzJYFVf/0RJ5va9Npy8PQf1vCo5YUvEM3zh1cf2YjfZuPpYL+7rm/
+	 L4lzcdkMmvYFg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H86JHLKuKNe8; Wed, 14 Dec 2022 01:15:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GeK91yOvWiCd; Wed, 14 Dec 2022 01:18:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D7BB160B11;
-	Wed, 14 Dec 2022 01:15:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7BB160B11
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2130940159;
+	Wed, 14 Dec 2022 01:18:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2130940159
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 55D501BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:15:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3067B1BF3CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:18:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2AF7960A94
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:15:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2AF7960A94
+ by smtp4.osuosl.org (Postfix) with ESMTP id 08B5A4180B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:18:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08B5A4180B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4J8PddOZjfJj for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Dec 2022 01:15:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NXETKjgj_M4B for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Dec 2022 01:18:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B96D260B11
-Received: from m15112.mail.126.com (m15112.mail.126.com [220.181.15.112])
- by smtp3.osuosl.org (Postfix) with ESMTP id B96D260B11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:15:01 +0000 (UTC)
-Received: from localhost.localdomain (unknown [117.136.79.146])
- by smtp2 (Coremail) with SMTP id DMmowADHz7MtI5lj3iuJEw--.5203S2;
- Wed, 14 Dec 2022 09:13:20 +0800 (CST)
-From: Lixue Liang <lianglixuehao@126.com>
-To: anthony.l.nguyen@intel.com, kuba@kernel.org, linux-kernel@vger.kernel.org
-Date: Wed, 14 Dec 2022 01:12:14 +0000
-Message-Id: <20221214011214.51836-1-lianglixuehao@126.com>
-X-Mailer: git-send-email 2.27.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0E9841809
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D0E9841809
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Dec 2022 01:18:37 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9B8C06178E;
+ Wed, 14 Dec 2022 01:18:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4593EC433EF;
+ Wed, 14 Dec 2022 01:18:35 +0000 (UTC)
+Date: Tue, 13 Dec 2022 17:18:34 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Message-ID: <20221213171834.682641c3@kernel.org>
+In-Reply-To: <Y5gdpoif/1zBUKDB@localhost.localdomain>
+References: <20221212111645.1198680-1-michal.swiatkowski@linux.intel.com>
+ <20221212101505.403a4084@kernel.org>
+ <f0078f0a-acbc-a9bd-effd-6d04507e71e2@intel.com>
+ <Y5gdpoif/1zBUKDB@localhost.localdomain>
 MIME-Version: 1.0
-X-CM-TRANSID: DMmowADHz7MtI5lj3iuJEw--.5203S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZw1ruFWxAr17Ar43tF4xJFb_yoW5uF4Upa
- y0gF43Wryktr47Zw4kWw4xZF95W3WDJ3yfGa9xZw1F9FnIv34DArW8K343Jry0qrZYkayx
- Jr17ZFZ7ua1qva7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UR89NUUUUU=
-X-Originating-IP: [117.136.79.146]
-X-CM-SenderInfo: xold0w5ol03vxkdrqiyswou0bp/xtbBGgnXFl-HaSMZAgAAsb
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=126.com; 
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=5ip81
- +wNz5xtBTBVts1Fb1RLCzaC6pg2EyPJm4Juic8=; b=WEOsSfCUJD0aqoNqa9gyi
- zDrK9ScOUzX3F9KIH7ev+bBMnNOouQ9wRY6ki/oEBZYLLRFa/ljjipw9ZAuzNkOv
- 7VgYDPCGBxDRTsgj57247iUifpDQcz/GzSqySG0HpY6PS4Ml+5AhGJwhuVh7b58v
- inMlebLPIF68I1w7v8+0G0=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=126.com header.i=@126.com
- header.a=rsa-sha256 header.s=s110527 header.b=WEOsSfCU
-Subject: [Intel-wired-lan] [PATCH v7] igb: Assign random MAC address instead
- of fail in case of invalid one
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1670980716;
+ bh=WiALcN65WD76Sc/d2db5t1KHDlgXmLL6qNzHhKRn6P4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=M1u7F7pc4gzZ0Bgxzp+j1mwIcuPel1g8DLwnRXPTRfGIdpXuuSIxBRXZJQgRFb6oX
+ ghnK9faYmSgGt+yV53A96EiUr129kWtShaZYpcuFWwckmpgCJiQpnPH+AtyCtqb2JS
+ lGCtIHFdTC58e+lMT8xsfnUGI8o20YRrKZBMFpACNYEHKCmWu2JugR+VfUGmVLmaEI
+ mRaaRWyGjnf81VF2PXA9/UwtRURFgi6VSs2q6/q1ApVMTOBAGCaEgafG5PPPsdiICZ
+ O3mOhoABZWkfVBxKXPxnfhsAnJvzyJclKnBzTIHXjzhtuuIP+EmtwEijLxwGNhNLD2
+ EpvteU+6G1bDQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=M1u7F7pc
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 00/10] implement devlink
+ reload in ice
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,103 +92,20 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lianglixue@greatwall.com.cn, netdev@vger.kernel.org,
- richardcochran@gmail.com, jesse.brandeburg@intel.com, ast@kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: mustafa.ismail@intel.com, leon@kernel.org, benjamin.mikailenko@intel.com,
+ jesse.brandeburg@intel.com, leszek.kaliszczuk@intel.com,
+ netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
+ intel-wired-lan@lists.osuosl.org, shiraz.saleem@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Lixue Liang <lianglixue@greatwall.com.cn>
+On Tue, 13 Dec 2022 07:37:26 +0100 Michal Swiatkowski wrote:
+> It was targeted to Tony dev-queue to allow some tests as Jake said.
+> Sorry, probably I should point it out in cover letter.
 
-Add the module parameter "allow_invalid_mac_address" to control the
-behavior. When set to true, a random MAC address is assigned, and the
-driver can be loaded, allowing the user to correct the invalid MAC address.
-
-Signed-off-by: Lixue Liang <lianglixue@greatwall.com.cn>
----
-Changelog:
-* v7:
-  - To group each parameter together
-Suggested-by Tony Nguyen <anthony.l.nguyen@intel.com>
-* v6:
-  - Modify commit messages and naming of module parameters
-  - [PATCH v6] link:
-    https://lore.kernel.org/netdev/20220610023922.74892-1-lianglixuehao@126.com/
-Suggested-by Paul <pmenzel@molgen.mpg.de>
-* v5:
-  - Through the setting of module parameters, it is allowed to complete
-    the loading of the igb network card driver with an invalid MAC address.
-  - [PATCH v5] link:
-    https://lore.kernel.org/netdev/20220609083904.91778-1-lianglixuehao@126.com/
-Suggested-by <alexander.duyck@gmail.com>
-* v4:
-  - Change the igb_mian in the title to igb
-  - Fix dev_err message: replace "already assigned random MAC address"
-    with "Invalid MAC address. Assigned random MAC address"
-  - [PATCH v4] link:
-    https://lore.kernel.org/netdev/20220601150428.33945-1-lianglixuehao@126.com/
-Suggested-by Tony <anthony.l.nguyen@intel.com>
-
-* v3:
-  - Add space after comma in commit message
-  - Correct spelling of MAC address
-  - [PATCH v3] link:
-    https://lore.kernel.org/netdev/20220530105834.97175-1-lianglixuehao@126.com/
-Suggested-by Paul <pmenzel@molgen.mpg.de>
-
-* v2:
-  - Change memcpy to ether_addr_copy
-  - Change dev_info to dev_err
-  - Fix the description of the commit message
-  - Change eth_random_addr to eth_hw_addr_random
-  - [PATCH v2] link:
-    https://lore.kernel.org/netdev/20220512093918.86084-1-lianglixue@greatwall.com.cn/
-Reported-by: kernel test robot <lkp@intel.com>
-
- drivers/net/ethernet/intel/igb/igb_main.c | 17 ++++++++++++++---
- 1 file changed, 14 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index f8e32833226c..8ff0c698383c 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -241,6 +241,10 @@ static int debug = -1;
- module_param(debug, int, 0);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
-+static bool allow_invalid_mac_address;
-+module_param(allow_invalid_mac_address, bool, 0);
-+MODULE_PARM_DESC(allow_invalid_mac_address, "Allow NIC driver to be loaded with invalid MAC address");
-+
- struct igb_reg_info {
- 	u32 ofs;
- 	char *name;
-@@ -3358,9 +3362,16 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	eth_hw_addr_set(netdev, hw->mac.addr);
- 
- 	if (!is_valid_ether_addr(netdev->dev_addr)) {
--		dev_err(&pdev->dev, "Invalid MAC Address\n");
--		err = -EIO;
--		goto err_eeprom;
-+		if (!allow_invalid_mac_address) {
-+			dev_err(&pdev->dev, "Invalid MAC address\n");
-+			err = -EIO;
-+			goto err_eeprom;
-+		} else {
-+			eth_hw_addr_random(netdev);
-+			ether_addr_copy(hw->mac.addr, netdev->dev_addr);
-+			dev_err(&pdev->dev,
-+				"Invalid MAC address. Assigned random MAC address\n");
-+		}
- 	}
- 
- 	igb_set_default_mac_filter(adapter);
--- 
-2.27.0
-
+You can tag as intel-next, iwl-next or some such, to avoid confusion.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
