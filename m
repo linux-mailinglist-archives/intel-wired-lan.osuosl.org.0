@@ -1,91 +1,178 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51C8A64DE3C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Dec 2022 17:12:14 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 468D664E0C0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Dec 2022 19:27:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 24BE861017;
-	Thu, 15 Dec 2022 16:12:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 24BE861017
+	by smtp4.osuosl.org (Postfix) with ESMTP id 672CF41B2C;
+	Thu, 15 Dec 2022 18:27:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 672CF41B2C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671120731;
-	bh=MEqrHqqfHV2tgbKURO6ehjO7fr4A419aLb1604zHAIc=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1671128873;
+	bh=DJroLkOf8e5KageCyc3Omyp+XUqgoqvLEOCojO1mzuw=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YXPZAc2midyN6tHbnrGSGZ50SoQLThf26/Fir3X1Yal9lgx+6Lg2RwZreSP6Ni1WM
-	 s1nPck401qnVdkyjUZMCzHjSYK8RoyL1Ok7WW/s21M4dEb28PeDecNcqYOq6474aQ0
-	 O4mEfWlx43NoZoR5rpF/wDzuDMf8nW8qNInhBS/0FwhQ1zKppzeOUQklqsrB+J8sG6
-	 CGvXV2aDKNOpu4PCu7I17/DGNhecfT32t6EtrCjOP/Ax20zT2jRnpls/TPhh0bMpie
-	 kxnuN3etlCRzhcdD5XZR+DWhIe9SsEheNGTtFOwcJNhVmlUyfsa3qbP047Y45DamnW
-	 fQHsWgfGGgRow==
+	b=Lv9IrlQtgvy4NP1h2FbANVlew1uYHXdZEAb567LqNpBuf7K0XLq53pjhpnJM1fX/w
+	 y4Y32f9uaB9Qq+26uSNLaL5UuhXeJZ5P9AziI2/wXtrph7scoDO44KftinmSKTeFOI
+	 S44YFwJWv5e7BmTZ8CHRaptY1+49wuv+WHM76kQzcrqpTmLYN2e7mjYAQz5UX0Mn2J
+	 om7rldHUXX0KMl0OZfY8O2A+dzo9AcdEBwOBl8ZYxGTCX2L0GRNjJlLyPgFci1nMtO
+	 sECgsMjnoOzcoIJYqcMKCVkGPN7YgrSES7Pzs8urXIAIkHVgm5pMwtKW5MEY094U0u
+	 fhAYEFNERC30w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IKcWNJilCdkX; Thu, 15 Dec 2022 16:12:10 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id G6pbZpNvVOZN; Thu, 15 Dec 2022 18:27:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CDF0560B25;
-	Thu, 15 Dec 2022 16:12:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDF0560B25
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EFF8B1BF3BE
- for <intel-wired-lan@osuosl.org>; Thu, 15 Dec 2022 16:12:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 038CC41A66;
+	Thu, 15 Dec 2022 18:27:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 038CC41A66
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 593C31BF334
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Dec 2022 18:27:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C55CE60A7A
- for <intel-wired-lan@osuosl.org>; Thu, 15 Dec 2022 16:12:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C55CE60A7A
+ by smtp4.osuosl.org (Postfix) with ESMTP id 299AA41A66
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Dec 2022 18:27:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 299AA41A66
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c2inxupE6Vu3 for <intel-wired-lan@osuosl.org>;
- Thu, 15 Dec 2022 16:12:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id X5hSZz7Ox4v7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Dec 2022 18:27:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD69060B25
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BD69060B25
- for <intel-wired-lan@osuosl.org>; Thu, 15 Dec 2022 16:12:03 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="316352520"
-X-IronPort-AV: E=Sophos;i="5.96,247,1665471600"; d="scan'208";a="316352520"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2022 08:04:46 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="651585479"
-X-IronPort-AV: E=Sophos;i="5.96,247,1665471600"; d="scan'208";a="651585479"
-Received: from nikitana-mobl.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.212.87.186])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2022 08:04:43 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-In-Reply-To: <SJ1PR11MB61804722400A816E3DB0AD51B8E19@SJ1PR11MB6180.namprd11.prod.outlook.com>
-References: <20221214144514.15931-1-muhammad.husaini.zulkifli@intel.com>
- <87tu1xc3bz.fsf@intel.com>
- <SJ1PR11MB61804722400A816E3DB0AD51B8E19@SJ1PR11MB6180.namprd11.prod.outlook.com>
-Date: Thu, 15 Dec 2022 13:04:40 -0300
-Message-ID: <87ilicbqlj.fsf@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F40B741A47
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F40B741A47
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Dec 2022 18:27:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="298433988"
+X-IronPort-AV: E=Sophos;i="5.96,248,1665471600"; d="scan'208";a="298433988"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2022 10:27:41 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="773829222"
+X-IronPort-AV: E=Sophos;i="5.96,248,1665471600"; d="scan'208";a="773829222"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga004.jf.intel.com with ESMTP; 15 Dec 2022 10:27:27 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 15 Dec 2022 10:27:26 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Thu, 15 Dec 2022 10:27:26 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.109)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Thu, 15 Dec 2022 10:27:26 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WRRQlqLCeaC1WYneWyq9GPlO6AjtRzaRufEXf55GfDQBhH2ASCO7UK36EMyG1S/qCZFU3J+PwnMrVmyng8rEGW+TCAtPtHYF9kauAAhdOXF5UNrJqk58/iwiLU93Dka+ZpECFPTkTZja/zAxRwXbmttpVqLbFwpInnsY4BTLcFViHIbUghZvC4DQMNRmGgHDw/KX2RGepjzyC02HeBuchAhEjJw8cV1dtqevyY44al6HRa69BP9NB7Fe4lZUvu+adE5z3AHodyviNmAh+gP/va45uQmauwdbQHkwQ+KgrfU+xJ6tgO5EXCCRfDfRMYoZk3whpY8cN3X8jJHZPhgHVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8HOREjm1R4/dT5+RNQVamlXCsKaPO8c5J1H9kS8Jk18=;
+ b=QlCk9l2byRrHCa51CXm5efw61pOehJPvvgtpQv9sCT/jJSYAj2ci7QZHPx57wIH770wpnbgr+79874EEBk6NFCMMXZStdH2cbISoU96+Iw7FzQx4zNgFUKQp/ktl1guwdsXz3lBnmdZm2xuKuC5pwhB/3Kg9OQpc+nB/VK2oqFUuHDEAvu0Bqrd+GSTKB0K6V4upvAiG2uGFwiI1Cxokv9tri5D2sv54lLrGxUr4dQHmwSf2z3KHOlPaNhP+2j83bJa0vWBx/gOoT1gJoJqlghj2L1pEK5Fk54p3LZkWKhYoI6eokUMpSr3hJOje1wbKvZCB1G6v9TBEEb4/jACjYQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by DS7PR11MB6175.namprd11.prod.outlook.com (2603:10b6:8:99::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.12; Thu, 15 Dec
+ 2022 18:27:24 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5%5]) with mapi id 15.20.5924.011; Thu, 15 Dec 2022
+ 18:27:24 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Split ice_flex_pipe.c
+ into DDP and flexible processing parts
+Thread-Index: AQHZDkQGruKO+oQ4I0OqN9Skj8neMK5vSMEw
+Date: Thu, 15 Dec 2022 18:27:24 +0000
+Message-ID: <SN6PR11MB3229871FF71B20D81D029F7AC6E19@SN6PR11MB3229.namprd11.prod.outlook.com>
+References: <20221212155240.1316504-1-sergey.temerkhanov@intel.com>
+In-Reply-To: <20221212155240.1316504-1-sergey.temerkhanov@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SN6PR11MB3229:EE_|DS7PR11MB6175:EE_
+x-ms-office365-filtering-correlation-id: 7c0ace47-82e1-4bf4-5ea3-08dadeca033f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 13SHB5x5LSEohugpztdevjRDsVRHAS+yxi+7d3PjRFfLxdK9iZ1aF/R4zz0TPtSjOvJL3GtVvUu9jHAKjpK80IoEC0Ha2xR+/xMGf0eQTOXu2Xh6FxTZ5rFZ68bRNSA6U8zMGLaoeTX8A7/E5GBPfrMNiJJzpMCg+/8bEKh5x2WGugfi7oLeHTAbcOcFg3keb1XIGPQQNsYKVp+tYFXAcngFygEg6pvr4CSlMWqYWsF2erTxYugMK0rGyMquz3j95R4jyVSViC+Zj7Z1O4499DQ3BGbcROzKNqXksqOqHFWE/ESzs7rtR7Va10Ly+cKebQXX2cnLrh67AEpQ7Ru/Hs9PqJTxdNCryR1Q5SvU1BFMJmqDXGnJuy1Mqu5bkAc07m6I9URgrYHRebj1KGEAW/v9x5wX0VhPfF94ViUxAfQA3UkUz3diixWQ2Xztqg6jmdncUX6Z/JkqxICjBv0bGSwU1o9l+RuYO+C3Z2YPNkuPg1KjygplorcFrbOb4EL2Lk9NKYINTc4i9xjIv45JtOeocBQWulzfFbvyl8YEohybO2NtfYc3sODcimMhrwRLk1YJaFYNilOao6mYt73fiEyQ7HDnyHZhJQT2D6KS7gZuhvgnaRe1ZoDIZSVCGzee6mXaQpBk5osO01eHJginqDuoGWK3Tx+/NAm/t6L2PYJw7PCJ4MPsXWnBc66CLWGwSL0mUfP6sCyxg+5RZCYs7g==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(39860400002)(136003)(396003)(366004)(376002)(346002)(451199015)(33656002)(8676002)(53546011)(4326008)(76116006)(66946007)(26005)(9686003)(186003)(6506007)(107886003)(7696005)(38100700002)(122000001)(52536014)(5660300002)(82960400001)(38070700005)(86362001)(2906002)(55016003)(66556008)(71200400001)(478600001)(110136005)(316002)(64756008)(83380400001)(66446008)(66476007)(41300700001)(8936002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?FX/+OKOo2DvAdLlJY90QFHU4niQ+SIJeTmia5K+wmzjF7a2TLypYRi7goImW?=
+ =?us-ascii?Q?/df/Jm77x3CKyT6hNn+ukKM1pYWgmWeissEOd0qO4qQHGpPNryMJg/qYY5v3?=
+ =?us-ascii?Q?BYuUWm2JVyovPuacIf5yUCJJyarcMDPtuUpKGLGxb/0RuMMyASDViutYi0P4?=
+ =?us-ascii?Q?lSdpNMruZ2/zX8h9oxPmJtbNNqIEeN5UQWy7juaE3H665cu3uZLbzS66g+Uh?=
+ =?us-ascii?Q?zlLx8lVZHU+EtFTmUZ29uPlXF9alAuzsY2akkL8XTm8QeUc32tfSELU6WNDk?=
+ =?us-ascii?Q?dxU52Y8Z4DeNxBQzsbRAS5FQ5Ur8ea5zqMXTu6cfcRcyHQduoPH5fMitllwz?=
+ =?us-ascii?Q?c7+5CfMdiJ/1QPlggHDRWr14Xds2aYpB97rYPmcQv/w5GP2oghsnzC4i6sC5?=
+ =?us-ascii?Q?1I4kVpIHrV71+DJSutP3cwXT+LbPL1vv75csePKVDafs4Id7sQMffZYyh2Lb?=
+ =?us-ascii?Q?kEnCicdE0eri1fR9BU2BlSZMj2a99wGCAtZ1HPPnsT5bUz/VGSSte+ygSw5F?=
+ =?us-ascii?Q?2/U3FlY1t/qPuoyEwcSg8gzU+R935x8zyIPo9XkyHmcUaxPkGD6ZbrQ5mCka?=
+ =?us-ascii?Q?7VTgMXWj7JVVlffG4VwQjEyMkJNO9nu4elxd1b+wgPkteT/Y3xi98quuVTQ+?=
+ =?us-ascii?Q?Ib3yI6ruuvYfqbmIh8XsvrSkifn74bZzRahpdgj/zkshnN5hOWHrNJnt3XqS?=
+ =?us-ascii?Q?6BtF/igJj+jeca6PW+KlGTeD9MUvOvEVra13A9n6837TXfW9D0pzGzv1hdoQ?=
+ =?us-ascii?Q?cMo6jK4eiCSWA3lWd27dBEDc1UDx+XQRjBBsXgFmH54nZdVCbV7OwBI8gDyZ?=
+ =?us-ascii?Q?fVQsGC1FKpR7gISs6+Krz1Th38SpNLQl4L1hyJ17sXVOF9aN7W7iQ/xJdX6w?=
+ =?us-ascii?Q?GpYvTzX25Z1hFRdXBY/8RNLfpMUdDszYD3WaI5MxI1xNJp1FogDJ5+qw2WfY?=
+ =?us-ascii?Q?sDSkeq0pt5HD1FOHeqTFB4ip8lELauYyMmdzrzNL24gt4NwsgSP42YMOOmhz?=
+ =?us-ascii?Q?+LV8K2lcvbmSGMEk0MqvMN56ot+lO0KOZtMhkjJ8oGc/ItzycJDsUPmTFZO9?=
+ =?us-ascii?Q?wDhI91IobeJML15CsZs0UZ+9OGBKJyVQCFqp2ljz4jCo5zSW1LuNkxdkcwrv?=
+ =?us-ascii?Q?ioRLPnX90y+hmW4PyhBQVGqy653K+IFO3s5u03AGGBLf+iqDzSJAsn22/JAo?=
+ =?us-ascii?Q?QV0EXiBBD8d5HY1uKNBQ6o2YrfCIEf+0NhMJWyZ4g3/BLGwkTQTqgfsDrmcY?=
+ =?us-ascii?Q?xIlmITPTXanHpQ/I1e7r0uMery5acm4kJcN1r5Whl1ga0gq41Pc0flUI9+3k?=
+ =?us-ascii?Q?N0R60u/ZrHMv35KsOZPNDm+cSgYrQWD+RajrvbOxvU+HnoKCyflP4GDiMOy9?=
+ =?us-ascii?Q?eb+2e3LEQRnA7kGZio4tHKNUDgDiWlIx4QS0ogOIYxOi/q4dFWhkqC3lF5vy?=
+ =?us-ascii?Q?LO/P4ZqN5RY8+gpcvTU3Tz27E3amAzWwSKKIs0aTGJ99yiRtGscrftBg0UqR?=
+ =?us-ascii?Q?qi/uq7qMwO/Xid5vl0DgTqEpcjs63+yr3fPJ+/1mi84yHQGLrcojBrE1dlUm?=
+ =?us-ascii?Q?BDofJTPS5umZfvN3QCyfHceKmQ/hAN3uc9PZ7DsJXt94IhZrFel4oSVg/s6v?=
+ =?us-ascii?Q?6A=3D=3D?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c0ace47-82e1-4bf4-5ea3-08dadeca033f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Dec 2022 18:27:24.4966 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qkHu8JjAN54ifH8UCj0mZi+27Dd6dUAoWUOysFL9h6DytyQK45CQcqKVMBuZ0CARHwRD6NDhOMu9RnGEh+lLlBle0JVE3mbAhXucoPfmVNA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6175
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671120723; x=1702656723;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=Q9kv+MsdAnsAc58+1nylMk7S0A7SHKAhCdv85+TqGdw=;
- b=LB5U9mybe63W59aXeuts0Dd4nBLbLM4D473W6SVJFOc2Qz8JWXFefsiw
- 5GYLA78kf0lj9VetNnNq7fpzz2egf1bwH43f9ZwWvw8TxL+6q2j3MZ77L
- z25G534tEKN3HE4MNHE8JvaAopy89J+jfN3xdzGT9Msxhm8cTmss372Og
- Cx6jHpiJC1mn+DHAaRgukBUsSP1BmvrFplo+4S/Rq9774PjpPX/I40p1x
- C6rODdcTw1b60LfCRvfS/VCwuWuCUJ/iubGlEIzGKhKtD9gWuDKHSMWm7
- XA8nTvRb7OA+5BVR8M0oMtKZ5LvjxVnjnCfaABmHAuiv2O/EAnQl3MwGI
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1671128865; x=1702664865;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8HOREjm1R4/dT5+RNQVamlXCsKaPO8c5J1H9kS8Jk18=;
+ b=YIoSEjQ9haxgxcm+t8gvLTN02eH/oHcSVvJ7ocmmKXo/bUCnwmNQeQdE
+ 0fq4MyDxmx/85k+CHJBtvBfbEj1tJUf9jXXCYB7tPE7Ai8LBn2GJBX+9H
+ ZJVVpAVeZ/DA8xC2jb0AXc9AaCb88QTCIXlV8tRWwNv6t386jKo30EXg9
+ 0OnI30G56v+9gKUBnTa1rUnnuSi/mCUPYnOLz9kwzxo7isGUEQ6GCAIH/
+ mZFeY4MNbOzmLYjQ9JRUDI8QG5t4pSxiSFdQ6g0M++6bDEzJ1kIXflpBU
+ NGWTFP2tQ2ptdbRfI46slrkNPZrgnmtQhA5jM5p2e23EWiKI6MV3dRAf8
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LB5U9myb
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] igc: offload queue max
- SDU from tc-taprio
+ header.a=rsa-sha256 header.s=Intel header.b=YIoSEjQ9
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: Split ice_flex_pipe.c
+ into DDP and flexible processing parts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,248 +185,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "tee.min.tan@linux.intel.com" <tee.min.tan@linux.intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen, Anthony
- L" <anthony.l.nguyen@intel.com>, "kuba@kernel.org" <kuba@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Husaini,
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Sergey Temerkhanov
+> Sent: Monday, December 12, 2022 7:53 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Temerkhanov, Sergey <sergey.temerkhanov@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net-next] ice: Split ice_flex_pipe.c into DDP
+> and flexible processing parts
+> 
+> Move the DDP functionality from ice_flex_pipe.c to ice_ddp.c.
+> This enables loading of the DDP package without the rest of the
+> flexible packet processing support code
 
-"Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-writes:
+Could you elaborate on this? Won't both pieces of code still have to be loaded?
 
-> Hi Vinicius,
->
->> -----Original Message-----
->> From: Gomes, Vinicius <vinicius.gomes@intel.com>
->> Sent: Thursday, 15 December, 2022 1:17 AM
->> To: Zulkifli, Muhammad Husaini <muhammad.husaini.zulkifli@intel.com>;
->> intel-wired-lan@osuosl.org
->> Cc: tee.min.tan@linux.intel.com; davem@davemloft.net; kuba@kernel.org;
->> netdev@vger.kernel.org; Zulkifli, Muhammad Husaini
->> <muhammad.husaini.zulkifli@intel.com>; naamax.meir@linux.intel.com;
->> Nguyen, Anthony L <anthony.l.nguyen@intel.com>
->> Subject: Re: [PATCH net-next v1] igc: offload queue max SDU from tc-taprio
->> 
->> Hi,
->> 
->> Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com> writes:
->> 
->> > From: Tan Tee Min <tee.min.tan@linux.intel.com>
->> >
->> > Add support for configuring the max SDU for each Tx queue.
->> > If not specified, keep the default.
->> >
->> > Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
->> > Signed-off-by: Muhammad Husaini Zulkifli
->> > <muhammad.husaini.zulkifli@intel.com>
->> > ---
->> >  drivers/net/ethernet/intel/igc/igc.h      |  1 +
->> >  drivers/net/ethernet/intel/igc/igc_main.c | 45
->> +++++++++++++++++++++++
->> >  include/net/pkt_sched.h                   |  1 +
->> >  net/sched/sch_taprio.c                    |  4 +-
->> >  4 files changed, 50 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/drivers/net/ethernet/intel/igc/igc.h
->> > b/drivers/net/ethernet/intel/igc/igc.h
->> > index 5da8d162cd38..ce9e88687d8c 100644
->> > --- a/drivers/net/ethernet/intel/igc/igc.h
->> > +++ b/drivers/net/ethernet/intel/igc/igc.h
->> > @@ -99,6 +99,7 @@ struct igc_ring {
->> >
->> >  	u32 start_time;
->> >  	u32 end_time;
->> > +	u32 max_sdu;
->> >
->> >  	/* CBS parameters */
->> >  	bool cbs_enable;                /* indicates if CBS is enabled */
->> > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
->> > b/drivers/net/ethernet/intel/igc/igc_main.c
->> > index e07287e05862..7ce05c31e371 100644
->> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
->> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
->> > @@ -1508,6 +1508,7 @@ static netdev_tx_t igc_xmit_frame_ring(struct
->> sk_buff *skb,
->> >  	__le32 launch_time = 0;
->> >  	u32 tx_flags = 0;
->> >  	unsigned short f;
->> > +	u32 max_sdu = 0;
->> >  	ktime_t txtime;
->> >  	u8 hdr_len = 0;
->> >  	int tso = 0;
->> > @@ -1527,6 +1528,16 @@ static netdev_tx_t igc_xmit_frame_ring(struct
->> sk_buff *skb,
->> >  		return NETDEV_TX_BUSY;
->> >  	}
->> >
->> > +	if (tx_ring->max_sdu > 0) {
->> > +		if (skb_vlan_tagged(skb))
->> > +			max_sdu = tx_ring->max_sdu + VLAN_HLEN;
->> > +		else
->> > +			max_sdu = tx_ring->max_sdu;
->> 
->> perhaps this?
->>     max_sdu = tx_ring->max_sdu + (skb_vlan_tagged(skb) ? VLAN_HLEN : 0);
->> 
->> Totally optional.
->
-> Sure. We can change to above suggestion.
->
->> 
->> > +
->> > +		if (skb->len > max_sdu)
->> > +			goto skb_drop;
->> > +	}
->> > +
->> 
->> I don't think the overhead would be measurable for the pkt/s rates that a
->> 2.5G link can handle. But a test and a note in the commit message confirming
->> that would be nice.
->
-> IMHO, it should not depends on the link speed but the packet size only.
-> If we detect packet size greater than max_sdu, we will just drop it.
->
+> Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+> ---
 
-I was thinking more about the added conditional on the hot path, if it
-had some performance impact for the case when packets are not dropped. I
-really don't think there will be any, but it's nice to have some numbers
-to confirm that.
+[...]
 
->> 
->> >  	if (!tx_ring->launchtime_enable)
->> >  		goto done;
->> >
->> > @@ -1606,6 +1617,12 @@ static netdev_tx_t igc_xmit_frame_ring(struct
->> sk_buff *skb,
->> >  	dev_kfree_skb_any(first->skb);
->> >  	first->skb = NULL;
->> >
->> > +	return NETDEV_TX_OK;
->> > +
->> > +skb_drop:
->> > +	dev_kfree_skb_any(skb);
->> > +	skb = NULL;
->> > +
->> >  	return NETDEV_TX_OK;
->> >  }
->> >
->> > @@ -6015,6 +6032,7 @@ static int igc_tsn_clear_schedule(struct
->> > igc_adapter *adapter)
->> >
->> >  		ring->start_time = 0;
->> >  		ring->end_time = NSEC_PER_SEC;
->> > +		ring->max_sdu = 0;
->> >  	}
->> >
->> >  	return 0;
->> > @@ -6097,6 +6115,15 @@ static int igc_save_qbv_schedule(struct
->> igc_adapter *adapter,
->> >  		}
->> >  	}
->> >
->> > +	for (i = 0; i < adapter->num_tx_queues; i++) {
->> > +		struct igc_ring *ring = adapter->tx_ring[i];
->> > +
->> > +		if (qopt->max_frm_len[i] == U32_MAX)
->> > +			ring->max_sdu = 0;
->> > +		else
->> > +			ring->max_sdu = qopt->max_frm_len[i];
->> > +	}
->> > +
->> >  	return 0;
->> >  }
->> >
->> > @@ -6184,12 +6211,30 @@ static int igc_tsn_enable_cbs(struct igc_adapter
->> *adapter,
->> >  	return igc_tsn_offload_apply(adapter);  }
->> >
->> > +static int igc_tsn_query_caps(struct tc_query_caps_base *base) {
->> > +	switch (base->type) {
->> > +	case TC_SETUP_QDISC_TAPRIO: {
->> > +		struct tc_taprio_caps *caps = base->caps;
->> > +
->> > +		caps->supports_queue_max_sdu = true;
->> > +
->> > +		return 0;
->> > +	}
->> > +	default:
->> > +		return -EOPNOTSUPP;
->> > +	}
->> > +}
->> > +
->> >  static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
->> >  			void *type_data)
->> >  {
->> >  	struct igc_adapter *adapter = netdev_priv(dev);
->> >
->> >  	switch (type) {
->> > +	case TC_QUERY_CAPS:
->> > +		return igc_tsn_query_caps(type_data);
->> > +
->> >  	case TC_SETUP_QDISC_TAPRIO:
->> >  		return igc_tsn_enable_qbv_scheduling(adapter, type_data);
->> >
->> > diff --git a/include/net/pkt_sched.h b/include/net/pkt_sched.h index
->> > 38207873eda6..d2539b1f6529 100644
->> > --- a/include/net/pkt_sched.h
->> > +++ b/include/net/pkt_sched.h
->> > @@ -178,6 +178,7 @@ struct tc_taprio_qopt_offload {
->> >  	u64 cycle_time;
->> >  	u64 cycle_time_extension;
->> >  	u32 max_sdu[TC_MAX_QUEUE];
->> > +	u32 max_frm_len[TC_MAX_QUEUE];
->> >
->> 
->> 'max_frm_len' is an internal taprio optimization, to simplify the code where
->> the underlying HW doesn't support offload.
->
-> The max_sdu only comes with MTU payload size. The reason why we are using 
-> this max_frm_len is to get the header + MTU size together. 
->
-> We can use max_sdu + header in the igc_save_qbv_schedule() and remove 
-> this piece of code from pkt_sched.h
+> ---------------------------------------------------------------------
+> Intel Technology Poland sp. z o.o.
+> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII
+> Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-
+> 07-52-316 | Kapital zakladowy 200.000 PLN.
+> Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu
+> ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym opoznieniom w
+> transakcjach handlowych.
+> 
+> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego
+> adresata i moze zawierac informacje poufne. W razie przypadkowego
+> otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale
+> jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest
+> zabronione.
+> This e-mail and any attachments may contain confidential material for the
+> sole use of the intended recipient(s). If you are not the intended recipient,
+> please contact the sender and delete all copies; any review or distribution by
+> others is strictly prohibited.
 
-This sounds better, only exposing max_sdu to the drivers, even if it
-causes a bit of duplicated code.
-
->
->> 
->> For offloading, only 'max_sdu' should be used. Unless you have a strong
->> reason. If you have that reason, it should be a separate commit.
->> 
->> >  	size_t num_entries;
->> >  	struct tc_taprio_sched_entry entries[]; diff --git
->> > a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c index
->> > 570389f6cdd7..d39164074756 100644
->> > --- a/net/sched/sch_taprio.c
->> > +++ b/net/sched/sch_taprio.c
->> > @@ -1263,8 +1263,10 @@ static int taprio_enable_offload(struct
->> net_device *dev,
->> >  	offload->enable = 1;
->> >  	taprio_sched_to_offload(dev, sched, offload);
->> >
->> > -	for (tc = 0; tc < TC_MAX_QUEUE; tc++)
->> > +	for (tc = 0; tc < TC_MAX_QUEUE; tc++) {
->> >  		offload->max_sdu[tc] = q->max_sdu[tc];
->> > +		offload->max_frm_len[tc] = q->max_frm_len[tc];
->> > +	}
->> >
->> >  	err = ops->ndo_setup_tc(dev, TC_SETUP_QDISC_TAPRIO, offload);
->> >  	if (err < 0) {
->> > --
->> > 2.17.1
->> >
->> 
->> --
->> Vinicius
-
--- 
-Vinicius
+ Please remove this footer.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
