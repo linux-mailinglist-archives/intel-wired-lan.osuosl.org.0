@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F3F464E864
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Dec 2022 09:59:16 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7E1F64E9FA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Dec 2022 12:06:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F1D3141BBE;
-	Fri, 16 Dec 2022 08:59:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1D3141BBE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6395161136;
+	Fri, 16 Dec 2022 11:06:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6395161136
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671181155;
-	bh=d9WnSh4sTvthDdxYKfPqLy8MfyySzGJ5sIs2Nqathkg=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=G9bGB1EwXL1GzY5/UJNhTgRejxKC2SXywFqslPZE+DjLRABLflvTFnjNfUvtrpYsm
-	 vvVd3N3I7m7aUNEiBUmZC3e6Ha90DhikRjih/8fbFoJmbfGlFbjBjXUIBhjcldA1nC
-	 QRaP2H8X5LdXYSU3M6g3HWk2gORN0/RmbilV+UwCd96sfljgixdxnaYHypHtrpoeZV
-	 CDimBYaaTu209CQxbwfT64ehsIMq++DlDxxU0IO99sbS91IVr29EsEw/jwDuNwzu7w
-	 OZYbYE7KoIKpy23485vQgRzcTFAvd3EXdXXys34ChRdeYZdnB6lyU2yyX3uw2vjE5r
-	 ZGTSX7yBmoJuw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IHZ00ErtxUKZ; Fri, 16 Dec 2022 08:59:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96BF041B9A;
-	Fri, 16 Dec 2022 08:59:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96BF041B9A
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ED1A71BF3B5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 08:58:51 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C90D36110B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 08:58:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C90D36110B
+	s=default; t=1671188803;
+	bh=xmKFl28gZdW8BIqOPzdcIBdUbjC0Ra5M8liaiGh8mrE=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=k5ClQntPPWT31g1ULd9mpM9cKizq8lIvibngaDxWetOuUgTGqj7JaKpvdgJpAsv9B
+	 Wy5fHWQoGtHEUN7ILdqmp9Y4xvqZm9sn1F7Ynl/hcgxMOA6BhC09oVtgMHaY3ExJrS
+	 dLr1w9PNYKOmSSAjPOkCMcR2ra82/zhFcQjZ3MeK3+dJEcW0pPNOLfTVk0LH9JZ79A
+	 /hEKrRy5v3tB8loKAB0Js1b/YUXLRclPnSIGIwiVvOEG5gMyQ5NEMJNcASiJ2qv4Z/
+	 ZCMzmnsBzfowesqATxhIIQ58PwgWDyShsSkuZpYOG9gPOF1PK9IkcrPLq/fg85EasF
+	 x13oHE0OW4pRA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wEBRgZCOpCNt for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Dec 2022 08:58:51 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id q5XNHBJ5hvPs; Fri, 16 Dec 2022 11:06:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F2D361124;
+	Fri, 16 Dec 2022 11:06:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F2D361124
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F2231BF2EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 11:06:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id F0B0E41A3C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 11:06:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0B0E41A3C
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iUKiRD7hoCEx for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Dec 2022 11:06:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E53AB61106
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E53AB61106
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 08:58:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="383256841"
-X-IronPort-AV: E=Sophos;i="5.96,249,1665471600"; d="scan'208";a="383256841"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2022 00:58:49 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF40441A1C
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DF40441A1C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 11:06:31 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="306621446"
+X-IronPort-AV: E=Sophos;i="5.96,249,1665471600"; d="scan'208";a="306621446"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2022 03:06:30 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="738471900"
-X-IronPort-AV: E=Sophos;i="5.96,249,1665471600"; d="scan'208";a="738471900"
-Received: from wasp.igk.intel.com ([10.102.20.192])
- by FMSMGA003.fm.intel.com with ESMTP; 16 Dec 2022 00:58:45 -0800
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 16 Dec 2022 09:43:19 +0100
-Message-Id: <20221216084319.11699-11-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20221216084319.11699-1-michal.swiatkowski@linux.intel.com>
-References: <20221216084319.11699-1-michal.swiatkowski@linux.intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10562"; a="978575376"
+X-IronPort-AV: E=Sophos;i="5.96,249,1665471600"; d="scan'208";a="978575376"
+Received: from lkp-server01.sh.intel.com (HELO b5d47979f3ad) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 16 Dec 2022 03:06:29 -0800
+Received: from kbuild by b5d47979f3ad with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1p68Xs-000780-2G;
+ Fri, 16 Dec 2022 11:06:28 +0000
+Date: Fri, 16 Dec 2022 19:05:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <639c50fd.dblO71PIj/ABEP+p%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671181131; x=1702717131;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Fd96qaNzore6qACdHLhmzTBnidmGv7hbLMIVyb2WeUQ=;
- b=emK4GseFzu7F2cKsye0yQaBwIInQA4/xZXxjlnj0cfjz5FZrMlZ9GlVN
- rehVmZtKDPU8VDZf9yrlVv4iBpHGmbYgMaUyeqEl5L/wS2Z9VCb+b7cad
- v20s607UxozsoRrrcHCSyq8/5NJWMSZ4mcLfMP9GUHH2Jn5Kfikz4f/ox
- jw9dpbEv7JvbRcph+b/+X1Nyv3pQKTuFvPV2loVxpJFFTafg3Ac2lzSO8
- qBsXYZmFpuzxOuksCcVjOPu/VY4/HIB/67KawMgqXfa4G9hb6y4lRiNz9
- 7JMRZbPWSJgyDe1w+ioxpXIAYiunWncaeh5JYz5LaBpIjY+p7JDb7fGlc
+ t=1671188791; x=1702724791;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=qc9nmasHlEHiqXAJmJ7hhwNg1LWs39hmGTVrmleD23U=;
+ b=O/F+ISzeCvUNjrxYJ79MEchzbuiTDaxGFjzWJe7a0eyBU5HNeTFBIXUp
+ v3yeYFbwQLYgUXS4o03NfQ23RkhmLIWBMHUwYidmAEaJhvBonHAcKKqpy
+ WtHbgu8ehrGws10rxaJZoDeilvO2vMu/g66nUgYxmrtxWpqGrqCoBcQJQ
+ jLCPJFkQKcdeiX39ojZIJZiyVz4Y5j7FcrcUUCrejJ5ykAEoF3JMdLtdT
+ gn60GwBnBsfnHlB8KKw0nNI+yQHN04Fc31k9+bG6Zyd4abdZi6wqxk2kk
+ mwK0eUbePUN2m/itj4V60Kiah7ru7j+2EDuyQHTXW8yS6rnkZv+IhhHhN
  w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=emK4GseF
-Subject: [Intel-wired-lan] [PATCH net-next v2 10/10] ice: implement devlink
- reinit action
+ header.a=rsa-sha256 header.s=Intel header.b=O/F+ISze
+Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
+ 72abeedd83982c1bc6023f631e412db78374d9b4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,181 +95,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mustafa.ismail@intel.com, benjamin.mikailenko@intel.com,
- jesse.brandeburg@intel.com, leszek.kaliszczuk@intel.com,
- przemyslaw.kitszel@intel.com, shiraz.saleem@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Call ice_unload() and ice_load() in driver reinit flow.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
+branch HEAD: 72abeedd83982c1bc6023f631e412db78374d9b4  igc: Set Qbv start_time and end_time to end_time if not being configured in GCL
 
-Block reinit when switchdev, ADQ or SRIOV is active. In reload path we
-don't want to rebuild all features. Ask user to remove them instead of
-quitely removing it in reload path.
+elapsed time: 725m
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice_devlink.c | 103 +++++++++++++++----
- 1 file changed, 81 insertions(+), 22 deletions(-)
+configs tested: 62
+configs skipped: 2
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 8286e47b4bae..24023852a1d7 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -371,10 +371,7 @@ static int ice_devlink_info_get(struct devlink *devlink,
- 
- /**
-  * ice_devlink_reload_empr_start - Start EMP reset to activate new firmware
-- * @devlink: pointer to the devlink instance to reload
-- * @netns_change: if true, the network namespace is changing
-- * @action: the action to perform. Must be DEVLINK_RELOAD_ACTION_FW_ACTIVATE
-- * @limit: limits on what reload should do, such as not resetting
-+ * @pf: pointer to the pf instance
-  * @extack: netlink extended ACK structure
-  *
-  * Allow user to activate new Embedded Management Processor firmware by
-@@ -387,12 +384,9 @@ static int ice_devlink_info_get(struct devlink *devlink,
-  * any source.
-  */
- static int
--ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
--			      enum devlink_reload_action action,
--			      enum devlink_reload_limit limit,
-+ice_devlink_reload_empr_start(struct ice_pf *pf,
- 			      struct netlink_ext_ack *extack)
- {
--	struct ice_pf *pf = devlink_priv(devlink);
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw *hw = &pf->hw;
- 	u8 pending;
-@@ -430,12 +424,52 @@ ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
- 	return 0;
- }
- 
-+/**
-+ * ice_devlink_reload_down - prepare for reload
-+ * @devlink: pointer to the devlink instance to reload
-+ * @netns_change: if true, the network namespace is changing
-+ * @action: the action to perform
-+ * @limit: limits on what reload should do, such as not resetting
-+ * @extack: netlink extended ACK structure
-+ */
-+static int
-+ice_devlink_reload_down(struct devlink *devlink, bool netns_change,
-+			enum devlink_reload_action action,
-+			enum devlink_reload_limit limit,
-+			struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+
-+	switch (action) {
-+	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
-+		if (ice_is_eswitch_mode_switchdev(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Go to legacy mode before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		if (ice_is_adq_active(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Turn off ADQ before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		if (ice_has_vfs(pf)) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Remove all VFs before doing reinit\n");
-+			return -EOPNOTSUPP;
-+		}
-+		ice_unload(pf);
-+		return 0;
-+	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
-+		return ice_devlink_reload_empr_start(pf, extack);
-+	default:
-+		WARN_ON(1);
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- /**
-  * ice_devlink_reload_empr_finish - Wait for EMP reset to finish
-- * @devlink: pointer to the devlink instance reloading
-- * @action: the action requested
-- * @limit: limits imposed by userspace, such as not resetting
-- * @actions_performed: on return, indicate what actions actually performed
-+ * @pf: pointer to the pf instance
-  * @extack: netlink extended ACK structure
-  *
-  * Wait for driver to finish rebuilding after EMP reset is completed. This
-@@ -443,17 +477,11 @@ ice_devlink_reload_empr_start(struct devlink *devlink, bool netns_change,
-  * for the driver's rebuild to complete.
-  */
- static int
--ice_devlink_reload_empr_finish(struct devlink *devlink,
--			       enum devlink_reload_action action,
--			       enum devlink_reload_limit limit,
--			       u32 *actions_performed,
-+ice_devlink_reload_empr_finish(struct ice_pf *pf,
- 			       struct netlink_ext_ack *extack)
- {
--	struct ice_pf *pf = devlink_priv(devlink);
- 	int err;
- 
--	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
--
- 	err = ice_wait_for_reset(pf, 60 * HZ);
- 	if (err) {
- 		NL_SET_ERR_MSG_MOD(extack, "Device still resetting after 1 minute");
-@@ -1192,12 +1220,43 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
- 	return status;
- }
- 
-+/**
-+ * ice_devlink_reload_up - do reload up after reinit
-+ * @devlink: pointer to the devlink instance reloading
-+ * @action: the action requested
-+ * @limit: limits imposed by userspace, such as not resetting
-+ * @actions_performed: on return, indicate what actions actually performed
-+ * @extack: netlink extended ACK structure
-+ */
-+static int
-+ice_devlink_reload_up(struct devlink *devlink,
-+		      enum devlink_reload_action action,
-+		      enum devlink_reload_limit limit,
-+		      u32 *actions_performed,
-+		      struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+
-+	switch (action) {
-+	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
-+		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT);
-+		return ice_load(pf);
-+	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
-+		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
-+		return ice_devlink_reload_empr_finish(pf, extack);
-+	default:
-+		WARN_ON(1);
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- static const struct devlink_ops ice_devlink_ops = {
- 	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
--	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
-+	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT) |
-+			  BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
- 	/* The ice driver currently does not support driver reinit */
--	.reload_down = ice_devlink_reload_empr_start,
--	.reload_up = ice_devlink_reload_empr_finish,
-+	.reload_down = ice_devlink_reload_down,
-+	.reload_up = ice_devlink_reload_up,
- 	.port_split = ice_devlink_port_split,
- 	.port_unsplit = ice_devlink_port_unsplit,
- 	.eswitch_mode_get = ice_eswitch_mode_get,
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+arc                                 defconfig
+alpha                               defconfig
+powerpc                           allnoconfig
+arc                  randconfig-r043-20221215
+arm                  randconfig-r046-20221215
+s390                                defconfig
+s390                             allmodconfig
+ia64                             allmodconfig
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+s390                             allyesconfig
+x86_64                        randconfig-a015
+m68k                             allyesconfig
+sh                               allmodconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-a014
+i386                          randconfig-a012
+x86_64                        randconfig-a006
+i386                          randconfig-a016
+arm                                 defconfig
+i386                          randconfig-a001
+i386                          randconfig-a003
+arm                              allyesconfig
+arm64                            allyesconfig
+i386                          randconfig-a005
+i386                                defconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-bpf
+x86_64                           rhel-8.3-syz
+x86_64                         rhel-8.3-kunit
+x86_64                           rhel-8.3-kvm
+x86_64                              defconfig
+i386                             allyesconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+x86_64                            allnoconfig
+
+clang tested configs:
+hexagon              randconfig-r041-20221215
+hexagon              randconfig-r045-20221215
+riscv                randconfig-r042-20221215
+s390                 randconfig-r044-20221215
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+i386                          randconfig-a013
+i386                          randconfig-a011
+x86_64                        randconfig-a005
+i386                          randconfig-a015
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+x86_64                          rhel-8.3-rust
+
 -- 
-2.36.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
