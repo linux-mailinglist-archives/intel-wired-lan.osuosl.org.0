@@ -2,84 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BBF464F3A9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Dec 2022 23:01:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 904E664F7A9
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Dec 2022 05:59:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A6FD640BFA;
-	Fri, 16 Dec 2022 22:01:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A6FD640BFA
+	by smtp2.osuosl.org (Postfix) with ESMTP id C2FF340535;
+	Sat, 17 Dec 2022 04:59:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C2FF340535
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671228116;
-	bh=PVhS3Gi3trlwQWSbLytQgj/QqZ6vW5ISd0jXm353RHw=;
+	s=default; t=1671253158;
+	bh=JfXzp60uMNhodfulLOZnNMebrqTES7J7htcehdc07BI=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=ZdDJeM/GoLxLmBSGxl+wDRUnTYFLb9y5hlL7gzTiDDSgAPva86U78TUqRoB+nvQhM
-	 zl3B3hILaq3i5Bg0kLmrcOi2fQS1UEqu+/p/0pPoSiUtGc4LZzAcz34gM6N4DESasC
-	 4hJ525xQDPXJJm9jpW/xGDmjicm1udhjaH9F/XHQy9S4A4ORboEvgZ+LYJ6AtOCi3W
-	 /fnTDv+m6OJxoYFkssL5f8mpqdNc4zyuymmO69uuocOk4ItevgroHfYVXeexn0s9mA
-	 HWOFhrB08TJX9QmbawoA2p5PiVUSPRo9s53LSA/lT1ApseVQrSwOmHMUYg/6fbhDwh
-	 bncdlq0+xfsDQ==
+	b=Smiry9KMFfTTWGSxsjRcIciqBTlwgj49/aIe1Gxct6N39XQTt5pWd0U0CmBxi+Qdy
+	 8op6FE1fyfKrk2+Yenu0VoKceATsgFYWqLlPdYxiQaDo1e6L38oAPLasT+SpYN9K8d
+	 VoR4QDVcxMwzQekoBD4qg8qVi+TPa/xDWEBtNJ0/4Xz2tVt8ULrs96HwU9hX3hJrOX
+	 FR/+z3LhRnH1jpL9IAKitRkT2eQUrkNRJMXYAul5yoDtukoP/LmjB6ByomGmBHjgmN
+	 wH6GknJFxxN2m3+DRaNzsOzeSyoq2ywafg979iJTjTF74HviGuJ0VnzAn6tNT9zg8Y
+	 +akQF8VZ12ZfQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tB2g_Q-bd4ng; Fri, 16 Dec 2022 22:01:55 +0000 (UTC)
+	with ESMTP id efEnJwEodnwC; Sat, 17 Dec 2022 04:59:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A32414015F;
-	Fri, 16 Dec 2022 22:01:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A32414015F
+	by smtp2.osuosl.org (Postfix) with ESMTP id A4ADE40472;
+	Sat, 17 Dec 2022 04:59:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4ADE40472
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D70511BF5B4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 22:01:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ED7AE1BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Dec 2022 04:59:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A83FA419A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 22:01:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A83FA419A8
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5E453611A1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Dec 2022 04:59:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E453611A1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4wIYEOnriAzJ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Dec 2022 22:01:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qGyVqejLHXq5 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 17 Dec 2022 04:59:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9D194199D
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B9D194199D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Dec 2022 22:01:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10563"; a="298736186"
-X-IronPort-AV: E=Sophos;i="5.96,251,1665471600"; d="scan'208";a="298736186"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2022 14:01:30 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10563"; a="652076064"
-X-IronPort-AV: E=Sophos;i="5.96,251,1665471600"; d="scan'208";a="652076064"
-Received: from dmert-dev.jf.intel.com ([10.166.241.14])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2022 14:01:30 -0800
-From: Dave Ertman <david.m.ertman@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1749B60BE9
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1749B60BE9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Dec 2022 04:58:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10563"; a="317795015"
+X-IronPort-AV: E=Sophos;i="5.96,252,1665471600"; d="scan'208";a="317795015"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2022 20:58:58 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10563"; a="627772669"
+X-IronPort-AV: E=Sophos;i="5.96,252,1665471600"; d="scan'208";a="627772669"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.213.163.232])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2022 20:58:57 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 16 Dec 2022 14:02:03 -0800
-Message-Id: <20221216220203.1025661-1-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.37.3
+Date: Fri, 16 Dec 2022 20:58:23 -0800
+Message-Id: <20221217045828.222-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671228108; x=1702764108;
- h=from:to:subject:date:message-id:mime-version:
+ t=1671253140; x=1702789140;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=NSLfDmMnoC2xwG/eU/SYpGblXj5Sy3KNERxYSIjTes4=;
- b=Afb6/hoRavHson36aN4lbD0NsQrV4+HqnABRN2gqouo7DPuT5nIc7T7W
- ddkDjZFA6S/lm+ObvQu3OK5uTqHI8M1ImHqw05GhDg2ADUcTcByAso4fz
- sXd+HimPJkWSfAA3jJpnSzK3tOdVQs/KeOClcaf12QHps43je0gp331pv
- Gh4Q1tyJuG+ulxue4b4favXSfXY0MnbPQP71rg/vO/7k0tTIyPTROSHDZ
- Jvxy5ms7Z0S8yhriXBqHi5OtXOq1otoagUixEWYN0rWle9XajKyaM0gX+
- 0LUXEFPdMIu2QFHjUrnUIZ7C9SKRRjrVxXKHJW41FStZKkYwumhpA8E/V
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=FuAkPY8AYA+/3OQEPLDRL7r9uOzQXkR4DlCQzm6e9hc=;
+ b=DiEtMIJqf7JX4dhbMkpcY+7f/kV2RUN7bABGcNIxcoBlVPPgrmasV8gj
+ qpnEMRUJtstTK+rM/a5g+aeQ/N+YlgSl6uvJkJt5jGgNmgojyEolXJTDT
+ 51XHlxIKdd1SWXyHo4GHqdxswjA9GY+CMYKznILpp8qiNKCDGDGlFcq5v
+ niG/J7y64JbdfRgAc6eCMZ3o3F5BMDOjY1rumCzQjo4nq7aNSxumd9ol0
+ /1+IIAslhHbzTdJD7mPJsPJdqnI4brUodM38L/QjrB8UYTI3FR4VX0bPQ
+ 3Wkk8TelHIip/cRqHPm2+LJ6YB8WugwmVcn8nXVnOOvPdOdb6Bk1cYpc+
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Afb6/hoR
-Subject: [Intel-wired-lan] [PATCH net v2] ice: Prevent set_channel from
- changing queues while RDMA active
+ header.a=rsa-sha256 header.s=Intel header.b=DiEtMIJq
+Subject: [Intel-wired-lan] [PATCH net-next v3 0/5] add v2 FW logging for ice
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,62 +97,91 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The PF controls the set of queues that the RDMA auxiliary_driver requests
-resources from.  The set_channel command will alter that pool and trigger a
-reconfiguration of the VSI, which breaks RDMA functionality.
+FW log support was added to the ice driver, but that version is no
+longer supported. There is a newer version of FW logging (v2) that
+adds more controls knobs to get the exact data out of the FW
+for debugging.
 
-Prevent set_channel from executing when RDMA driver bound to auxiliary
-device.
+Additionally, instead of dumping the FW log output to syslog,
+dump it to debugfs. The FW log data is really just binary
+data that the FW log team decodes to determine what happens so the
+translation from binary to some text output just slows things down
+and results in potential dropped data. The structure for the debugfs
+entry is: /sys/kernel/debug/ice/<pci device>/fwlog
 
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Once enabled the FW log data is received as ARQ events that the driver
+processes.
+
+The FW logging is across all the PFs on the device, so restrict the
+commands to only PF0.
+
+The following new device parameters are added:
+- fwlog_supported (read-only): does the FW support FW logging
+- fwlog_enabled (read/write): is FW logging currently running
+- fwlog_level (read/write): the log level enabled, valid values are
+    Each level includes the messages from the previous/lower level
+	0 - no logging
+	1 - error logging
+	2 - warning logging
+	3 - normal logging
+	4 - verbose logging
+- fwlog_resolution (read/write): the number of log messages to included
+  in a single ARQ event. The range is 1-128 (1 means push every log
+  message, 128 means push only when the max AQ command buffer is full).
+  The suggested value is 10.
+
+This patch series adds the following set of devlink commands:
+
+devlink dev param set <pci dev> name fwlog_enabled value <true/false> cmode runtime
+devlink dev param set <pci dev> name fwlog_level value <0-4> cmode runtime
+devlink dev param set <pci dev> name fwlog_resolution value <1-128> cmode runtime
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index b7be84bbe72d..5839fd3775ca 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3473,6 +3473,7 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 	struct ice_pf *pf = vsi->back;
- 	int new_rx = 0, new_tx = 0;
- 	u32 curr_combined;
-+	int ret = 0;
- 
- 	/* do not support changing channels in Safe Mode */
- 	if (ice_is_safe_mode(pf)) {
-@@ -3536,15 +3537,26 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 		return -EINVAL;
- 	}
- 
-+	mutex_lock(&pf->adev_mutex);
-+	if (pf->adev->dev.driver) {
-+		netdev_err(dev, "Cannot change channels when RDMA is active\n");
-+		ret = -EINVAL;
-+		goto adev_unlock;
-+	}
-+
- 	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
- 
--	if (!netif_is_rxfh_configured(dev))
--		return ice_vsi_set_dflt_rss_lut(vsi, new_rx);
-+	if (!netif_is_rxfh_configured(dev)) {
-+		ret = ice_vsi_set_dflt_rss_lut(vsi, new_rx);
-+		goto adev_unlock;
-+	}
- 
- 	/* Update rss_size due to change in Rx queues */
- 	vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
- 
--	return 0;
-+adev_unlock:
-+	mutex_unlock(&pf->adev_mutex);
-+	return ret;
- }
- 
- /**
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: enable devlink to check FW logging status
+  ice: add ability to query/set FW log level and resolution
+  ice: disable FW logging on driver unload
+  ice: use debugfs to output FW log data
+
+ Documentation/networking/devlink/ice.rst      |  39 ++
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  22 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 160 +++----
+ drivers/net/ethernet/intel/ice/ice_common.c   | 218 +---------
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 109 +++++
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 200 ++++++++-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 392 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  57 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     |  97 ++++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
+ 12 files changed, 1005 insertions(+), 317 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
+
 -- 
-2.37.3
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
