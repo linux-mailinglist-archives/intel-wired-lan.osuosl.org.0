@@ -1,85 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D6FF64FFF4
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Dec 2022 17:07:42 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12B33650013
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Dec 2022 17:09:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF92860706;
-	Sun, 18 Dec 2022 16:07:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF92860706
+	by smtp4.osuosl.org (Postfix) with ESMTP id 48F9540929;
+	Sun, 18 Dec 2022 16:09:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 48F9540929
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671379660;
-	bh=VjKbixySqJjgU4NBYHaXv0ZREihQJIxnCUoS7eLrqbc=;
+	s=default; t=1671379763;
+	bh=2c5opwGmDpkGyg7bncAP3zTx9Fy7nWSZLK01zw5MC80=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=7ngf8XH9P/lTkj0/xgXHrvfRlqfoju24pdvzWdiFtVp+TPEW18yilIuAchZpDEMF/
-	 w+PCUIKX+7c7tOsA3ziWGqnysWNC7PBUNOtc50kdERNZRoQa8w1kE9GerBSiGdzc9E
-	 /awc02p+SqsPbQ8v/3bL0wUN/81ohHMWtKJ2aHTxTWCbDu1YWoPhTY/sl8F8hsnAHg
-	 C+0iVQRiJC0nlZIdPKlR9eIZ1ezXmdpY/ZZNQEwwGXyLU6MvYLOR+FzXPsSU1RgShG
-	 cYy0Yl+C/tH1euRu0bZkywLOxCdhKjZO3wpLA39y/M5JFLEwptGWQAiT5EuqTsXtyL
-	 70DWw2SGFrGzA==
+	b=UWOgDU9iGKRvxb48QNHscboes02SN2NzE0M21IZHpKtzxoSNLqraU+rSQd4uTDy1b
+	 gcyAtXu//SFUsOM3NbK/g+xiQKSqVneABrTGvqV87Ue6ebTF+zcuJDFYDZgw95kq2z
+	 ibsv5nemMkDw4nKZuAC0x/+XMMkQstige7HUS9ECiWsLNvQow/ghrU+x2fN1ChvuJ3
+	 6t+/476foVzgl9ayunCTXof3FsCXNqj+lsijiEgYpc8jlJAzr6KaObNRO5c8XGob5y
+	 D/NMk/F6tYa7Cq2Df84Eh0dlP5grIbMMZPufE4WmQVpFngyzb/84Kl7XH8991KB3jm
+	 SU3lvEN217gyA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MpgJcxo5rhvy; Sun, 18 Dec 2022 16:07:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WRKxDlmmBdzB; Sun, 18 Dec 2022 16:09:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B0269606AA;
-	Sun, 18 Dec 2022 16:07:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0269606AA
+	by smtp4.osuosl.org (Postfix) with ESMTP id F2DBC400D0;
+	Sun, 18 Dec 2022 16:09:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F2DBC400D0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B3F71BF3A3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:07:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CEE6C1BF3A3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:09:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2B58B81421
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:07:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2B58B81421
+ by smtp1.osuosl.org (Postfix) with ESMTP id B624380B59
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:09:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B624380B59
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z6FX3TaIwwO2 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 18 Dec 2022 16:07:33 +0000 (UTC)
+ with ESMTP id X6Rjz-GefWaw for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 18 Dec 2022 16:09:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 600CC81420
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 600CC81420
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:07:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 04D1980B57
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 04D1980B57
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:09:15 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A278260DD5;
- Sun, 18 Dec 2022 16:07:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20F50C43392;
- Sun, 18 Dec 2022 16:07:31 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 311F1B803F1;
+ Sun, 18 Dec 2022 16:09:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61497C433D2;
+ Sun, 18 Dec 2022 16:09:11 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun, 18 Dec 2022 11:01:39 -0500
-Message-Id: <20221218160142.925394-82-sashal@kernel.org>
+Date: Sun, 18 Dec 2022 11:06:53 -0500
+Message-Id: <20221218160741.927862-25-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221218160142.925394-1-sashal@kernel.org>
-References: <20221218160142.925394-1-sashal@kernel.org>
+In-Reply-To: <20221218160741.927862-1-sashal@kernel.org>
+References: <20221218160741.927862-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1671379652;
- bh=B6WGf5Mz8SgeST3xpYSXXRbwW/Ae6pRLshq8wjtPeVs=;
+ d=kernel.org; s=k20201202; t=1671379752;
+ bh=DFaV2Rh52BNZIwNztmOcMLb8eRv5d5fEaA3prV5aXxU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nhhmFe7qXdEkto1DevrmIZzhvsT1Ai/QpdMT+7P2e169zaRPQuttvulOVsTAPqeiT
- BTKh7Fzojgn30brKc7TwVcL/HJWuWTI7M0TsRsZMRJQ2zNiPY6DRuUMxjfsnWFI83M
- c20C0NpIfu3AA99Fx3eZqFMDk4QEjLGMpc9gY6xHuQFIKW1FMldHqWvOMLl/cUiQy2
- 4aPMfZeggJZkzvnfC2Yw6ZWipTsfudrWOdPW3solCHuXyyyLYPjhYYeEpCXxgUqZm8
- e92E+Vif1rupmYj+AAoxo6auPItXAshsTmeBEAc8DioNH4xrnaJH9rOeDgw4rWyAnT
- zIcvJ/YqvQjUw==
+ b=R0sKvgBpNxT5pIe5itT7RwNJJroSl21kJjGxteTYVg1uIQZj076Md+SrctsRSkHAc
+ mOQc34/T36nf0IQaxPfbt32e8Rkk0pjyqhjbcsmXggkr9eklBVxXFy14bYhN8Q1jt+
+ Bo0HbV4aKtz7qVxyXc6WeYvjyAT/JYSzrEm9POqJ8wv9KyYCh26MxAraiQ8DHSwRHG
+ SN/F8DJn8Aj3q1vnKzrLPe79ys9AGGloKtHLjn6z+NYE7xAseu2Z3nm9ZUEkAt3nZz
+ oqOYnVFex6vVy9yogMHsGC9oqRvNw1QaHtPMiSN9qx4JSMTPkFCfsakhrBFV+m1Qgl
+ J5txk1g9SLqng==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=nhhmFe7q
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.1 82/85] ice: synchronize the
- misc IRQ when tearing down Tx tracker
+ header.a=rsa-sha256 header.s=k20201202 header.b=R0sKvgBp
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.0 25/73] igb: Do not free
+ q_vector unless new one was allocated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,85 +93,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
- richardcochran@gmail.com, jesse.brandeburg@intel.com, edumazet@google.com,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
+Cc: Sasha Levin <sashal@kernel.org>, Kees Cook <keescook@chromium.org>,
+ intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ "Michael J . Ruhl" <michael.j.ruhl@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+From: Kees Cook <keescook@chromium.org>
 
-[ Upstream commit f0ae124019faaa03f8b4c3fbe52ae35ab3a8dbda ]
+[ Upstream commit 0668716506ca66f90d395f36ccdaebc3e0e84801 ]
 
-Since commit 1229b33973c7 ("ice: Add low latency Tx timestamp read") the
-ice driver has used a threaded IRQ for handling Tx timestamps. This change
-did not add a call to synchronize_irq during ice_ptp_release_tx_tracker.
-Thus it is possible that an interrupt could occur just as the tracker is
-being removed. This could lead to a use-after-free of the Tx tracker
-structure data.
+Avoid potential use-after-free condition under memory pressure. If the
+kzalloc() fails, q_vector will be freed but left in the original
+adapter->q_vector[v_idx] array position.
 
-Fix this by calling sychronize_irq in ice_ptp_release_tx_tracker after
-we've cleared the init flag. In addition, make sure that we re-check the
-init flag at the end of ice_ptp_tx_tstamp before we exit ensuring that we
-will stop polling for new timestamps once the tracker de-initialization has
-begun.
-
-Refactor the ts_handled variable into "more_timestamps" so that we can
-simply directly assign this boolean instead of relying on an initialized
-value of true. This makes the new combined check easier to read.
-
-With this change, the ice_ptp_release_tx_tracker function will now wait for
-the threaded interrupt to complete if it was executing while the init flag
-was cleared.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: Michael J. Ruhl <michael.j.ruhl@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 0f668468d141..53fec5bbe6e0 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -639,7 +639,7 @@ static u64 ice_ptp_extend_40b_ts(struct ice_pf *pf, u64 in_tstamp)
- static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- {
- 	struct ice_ptp_port *ptp_port;
--	bool ts_handled = true;
-+	bool more_timestamps;
- 	struct ice_pf *pf;
- 	u8 idx;
- 
-@@ -701,11 +701,10 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- 	 * poll for remaining timestamps.
- 	 */
- 	spin_lock(&tx->lock);
--	if (!bitmap_empty(tx->in_use, tx->len))
--		ts_handled = false;
-+	more_timestamps = tx->init && !bitmap_empty(tx->in_use, tx->len);
- 	spin_unlock(&tx->lock);
- 
--	return ts_handled;
-+	return !more_timestamps;
- }
- 
- /**
-@@ -776,6 +775,9 @@ ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
- {
- 	tx->init = 0;
- 
-+	/* wait for potentially outstanding interrupt to complete */
-+	synchronize_irq(pf->msix_entries[pf->oicr_idx].vector);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 2796e81d2726..5f3a35b217b7 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -1202,8 +1202,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+ 	if (!q_vector) {
+ 		q_vector = kzalloc(size, GFP_KERNEL);
+ 	} else if (size > ksize(q_vector)) {
+-		kfree_rcu(q_vector, rcu);
+-		q_vector = kzalloc(size, GFP_KERNEL);
++		struct igb_q_vector *new_q_vector;
 +
- 	ice_ptp_flush_tx_tracker(pf, tx);
- 
- 	kfree(tx->tstamps);
++		new_q_vector = kzalloc(size, GFP_KERNEL);
++		if (new_q_vector)
++			kfree_rcu(q_vector, rcu);
++		q_vector = new_q_vector;
+ 	} else {
+ 		memset(q_vector, 0, size);
+ 	}
 -- 
 2.35.1
 
