@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EE866500CD
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Dec 2022 17:19:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 405EF6500EA
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Dec 2022 17:21:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0FF6F607E3;
-	Sun, 18 Dec 2022 16:19:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0FF6F607E3
+	by smtp4.osuosl.org (Postfix) with ESMTP id C09C840902;
+	Sun, 18 Dec 2022 16:20:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C09C840902
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671380362;
-	bh=k/0+I26zi/POjc2D6ts/RiJQh7+9MmGT00XuTcGrUqA=;
+	s=default; t=1671380459;
+	bh=EcPBjFIYPrEowetUCGtgz78c9unOll6cvMz/f9r2Les=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=S4u9avmysDac7AwkPeiItthCoDgcoZCeLMbSb0AucJUtL0Fbqcyvr5YofOUdZke6Z
-	 Nqd1cyj/P5WhsVHDXbaaekZr3SI3Nm3NGc/kIbL8usca7Fz+O9LhBHhffvL5lNqBCl
-	 RHzpBTErtLg7mqXN8BUY0oGZD2q/2Mgzsqht7NBEi53y0ZVpZ8WnSp7fUrYLptf+Ba
-	 8MQ7/H/mL3qS7TGkzfqjIKtBOON8GnYx5UkjNz/tA6W9h3dK5Al5U2pqv54/tXAB2e
-	 WJEvfG/l70GEnNLz5uzNPYo4wyh21neEct9oMdsBYhPmVS6xOmwJNElaBKXMmIwLyb
-	 CpusuDf+Jwmyw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GU9DPMhOpmpV; Sun, 18 Dec 2022 16:19:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0DCA46061B;
-	Sun, 18 Dec 2022 16:19:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DCA46061B
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4F4FC1BF3A3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:19:16 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 34D0240576
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:19:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34D0240576
+	b=Xz/cpDQdgKzrgFxaAtFRI58NXJYzMretCpYw/981iDvA2WLxjdiBX9WMdgtnGj27n
+	 j6GVvhss2ZbE/t36DYPU9jrjMcTnGXT/symaauFpBds9PN6OSKEhEOU8BM4iiceB4O
+	 jwkMtsSpEmmzLz+W8CMMZo5YzFia6gf3ECdipYwMJg4sSijTWYLhIOgfAB7ioScWRf
+	 uxVCn2+t9QvAOl3fBRqMntyOOXKP6Sk16lK3pVj0pbE/ODewFQqYFUBS5Z8cnJqFEw
+	 SJR+WW1s+h6j3634etlFNtAaTTJ3dz4db57beoyAKleO1r5G05q/J6S1fcNibPuhpE
+	 Tqe0GvpXykr+A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kiZnGXqKZqon for <intel-wired-lan@lists.osuosl.org>;
- Sun, 18 Dec 2022 16:19:15 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ALDhkz9hKnV3; Sun, 18 Dec 2022 16:20:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 67CE5408DD;
+	Sun, 18 Dec 2022 16:20:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 67CE5408DD
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 191F31BF3A3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:20:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id E6C5940179
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:20:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E6C5940179
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 01N59qa4-eUO for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 18 Dec 2022 16:20:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B873404ED
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5B873404ED
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:19:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 16DAB400D3
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 16DAB400D3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Dec 2022 16:20:52 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id BBFE860C99;
- Sun, 18 Dec 2022 16:19:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20E32C43443;
- Sun, 18 Dec 2022 16:19:13 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 9ABC1CE0BAE;
+ Sun, 18 Dec 2022 16:20:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 734BBC433F0;
+ Sun, 18 Dec 2022 16:20:44 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun, 18 Dec 2022 11:18:16 -0500
-Message-Id: <20221218161836.933697-11-sashal@kernel.org>
+Date: Sun, 18 Dec 2022 11:19:59 -0500
+Message-Id: <20221218162016.934280-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221218161836.933697-1-sashal@kernel.org>
-References: <20221218161836.933697-1-sashal@kernel.org>
+In-Reply-To: <20221218162016.934280-1-sashal@kernel.org>
+References: <20221218162016.934280-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1671380354;
- bh=CYFCy9x7yJd5X+PG94szVTvrV8aExaRAAvBUGpgSx+Y=;
+ d=kernel.org; s=k20201202; t=1671380445;
+ bh=m1Mc5qOwWbevjwIDVviRoAA1sdd/8Mku0Ppl+6xVL0Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=KyFxveIJQLGJjre3/vpYJ2PJ1Tvww7is3O6a5/h3qqrklsymnJ5qWPh5k6z1swNvG
- 8bLc4l+rUEr7VXNL4CY/3uxxPf6csZuoYFAfrY7DCXmwa95/ie+B57HMEw9aoY5CBN
- /fOGrohdwbm3NNc/XjX7io6Ehrg7tyVa947hQnr0cJC84h8TIS1mflSF1bKqIFEfS+
- niNvf5HXVf+uBYfFuP9bxmKGvaYBj9AqZd60gSxOdxgvbxRPmTMxF1Yl1cRYXP6fAl
- QPbQdJGaxNHP4qYJ85RitzJ3UdJgipQ/Rp2Bi72fQ0jKNUUvmIZtGTzNTQ1gIVGbBI
- 9V2z/2dGqkrpQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=mJbw0CoW/AMO2aI50KMdYglqv8NHLLFrzpt4sry5os0I4z8W+ZI3RIUse+U8DMp3Y
+ O49NQbyINoAx69R99QlaCDxpUDRppJzfomUfb4AHTDLChvhFbEkSueP4dl/YuRRZBa
+ gAhA+L4ttSRXl3pPxpL50AngoOKOjTiAAOEsim/Ydhgrcp7kZGVzqxHOYiymGUoVw+
+ 6RWSjp6XCawy933FXV8B8ajES7IetLbf9o1TW1tdc6syJGj6qTcwy+VvOM1gvBvyZY
+ RiSVYzDfgKlDpqrziyspR2Yjw0JWMG/gnb8eOKKu4FnLYFNe8UdRePunlzMPwqLWXB
+ elnTZWr4Xzpcg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=KyFxveIJ
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 11/30] igb: Do not free
+ header.a=rsa-sha256 header.s=k20201202 header.b=mJbw0CoW
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 09/26] igb: Do not free
  q_vector unless new one was allocated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -131,10 +131,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index f718eadd8774..666676445d57 100644
+index aacfa5fcdc40..caef04a87a70 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -1213,8 +1213,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+@@ -1211,8 +1211,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
  	if (!q_vector) {
  		q_vector = kzalloc(size, GFP_KERNEL);
  	} else if (size > ksize(q_vector)) {
