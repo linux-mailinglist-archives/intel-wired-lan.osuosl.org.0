@@ -1,181 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3A776508F5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Dec 2022 09:57:42 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 718F9650D02
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Dec 2022 15:07:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 358184091B;
-	Mon, 19 Dec 2022 08:57:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 358184091B
+	by smtp2.osuosl.org (Postfix) with ESMTP id EA8A84019D;
+	Mon, 19 Dec 2022 14:07:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EA8A84019D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671440261;
-	bh=Pj3E8sVKsTPUAaN1PIV5mYDhSp4emoErUR+Wnfa7GTw=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=eZEBQaY+6d3C3QeMlsX+I3A/H2FOL3eqgCowQpKd3YkXqdfTadsWnWkvxjgCmr7Hh
-	 5lkGQm+qwQZawkqjZj+PC6tbyN3b3v1gzdWSfx/MNeTUecpZD9WhDNCdYRMkliesP4
-	 irrjmpteKIQxPH7nfe/9W1J10P/2deKYEznikeuIc3qtjUK5wuX1k4v1A0ujX0gTzc
-	 SHzefpojQs+7s9MeKZrA9lEUpyEO2h/LiQPzOXFhuhBXIovq84AsFxq5hQcyQAPldc
-	 ue9iWbm3xMmCtx7KWofRfiF0zmUwftVX1XNOr18g83bsLtRoz2Cr8/hFf+z9ekO3xp
-	 h/yK390ZQ05hw==
+	s=default; t=1671458834;
+	bh=tBlfCgzzAwJVipG+A6fyoJpc6Hzx69+NFzlJ1J8ZubU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=WfVeoOXEg9jmExz3ZRvHzs8q9/8zMCFntnRvzEr2aEvsTd+0G7IY+tQPybgs8i2WY
+	 uLUjM6BiCnPfkb01AZA6WH/aPHdrLnXVU8YdeoOBRpJChwr4/crrbXMoqE6BuOoawt
+	 2bwImYbcajyy2vN+5hrNshKPF32wcEGJCRCiMnnSqsc/q6LS8hTseiwANMgrTkZRZX
+	 zEa2jjl11vFItJMUNwisL0AGAjpPV/tDE0u8fp1wh9KuN4eMXHcKd8z80ZUa6W0HKu
+	 Cz3n+fNhL657Ib3Ubniwz1pyZc3q8iHCnU1+5WsJ5YPcLdr7ELl3jF7tQlSi8YIhbX
+	 i/cnv/7/yOTkQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XgewgaTsgQhY; Mon, 19 Dec 2022 08:57:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SwfMMqZwUcmB; Mon, 19 Dec 2022 14:07:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D892D40907;
-	Mon, 19 Dec 2022 08:57:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D892D40907
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A7E84016C;
+	Mon, 19 Dec 2022 14:07:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A7E84016C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 030C11BF31B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 08:57:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5DA7D1BF2C9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 14:07:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D0B9B813B3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 08:57:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D0B9B813B3
+ by smtp1.osuosl.org (Postfix) with ESMTP id 431EA8144A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 14:07:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 431EA8144A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id okkXX5Bc9ilJ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Dec 2022 08:57:34 +0000 (UTC)
+ with ESMTP id CSZpHpi0lK6A for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Dec 2022 14:07:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 428C1813A9
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 428C1813A9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 08:57:33 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10565"; a="306979381"
-X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="306979381"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2022 00:57:32 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E82B81416
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1E82B81416
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 14:07:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="302779437"
+X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="302779437"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2022 06:07:05 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10565"; a="895975807"
-X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="895975807"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga006.fm.intel.com with ESMTP; 19 Dec 2022 00:57:31 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Mon, 19 Dec 2022 00:57:31 -0800
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Mon, 19 Dec 2022 00:57:31 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Mon, 19 Dec 2022 00:57:31 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Mon, 19 Dec 2022 00:57:30 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZJGZctkWpI32w6ecKztJLrlu76Sy2zg0C4lOF1dij5z1lSo2+d85S7seItacGebMBRThyIMUuP90sC7rr5kMiHx4aI6QEXV+42aI5vR7KFFvkndA6dpEqLgzilYvfb7vpifQOakEh8IqtJGG03x1CNxQ3f+OdQNw1jL5dp06tHDmbAM+KQrLDM2ofFeV1zlgq0ajKb+OOYLSBGnMtGynuQe0Y3KA/yuhuzQOp7+DooP36LphczCEkSrLcf+cFQ1Q6eQJ7PMiVIXoKiSRYzgVAMuhUK/+k09/DsMqIU/KM6OOWv17TCL4AeJdp+35yyLWBlRbcZb8RHsKu6++pCIOyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=m7MowKfnQ9HE7huxY/z7Ek4dFDb/Nqt4jTfUGEzPd6I=;
- b=G/fowl2nGLL0SAGObvCPGV7cmBDN/uBANx00YQfZL5MdNdGZCAqjTVT5dDdvGqVNPr1BMFva1Y+UfDM0bOdBKZ4HCuQY9M89X7EMXsmqUhTt6Y8hdqELVkWjYUKRnS02PtuYgy3K7QU4dL4/A+QIb7BHpfEExqIpX5UnTQcAE16wgZd9XVsCR5fiWvpwDwk6kyJY5c9L80OS6wDAPlBHZfK4FxZ2o7NmRrs7n29+ggAoB8yTr/R9VYESsKUNyZT9A0U7NwGbgQ34xkR4Ys5+1QBJwUhJhucV5Broj1AmcGDGO6bxHsWUFsXWgB3DGPRf5/pn7P8sf2ECoXbSnB6rLQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by CH3PR11MB7915.namprd11.prod.outlook.com (2603:10b6:610:12f::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.16; Mon, 19 Dec
- 2022 08:57:28 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44%5]) with mapi id 15.20.5924.016; Mon, 19 Dec 2022
- 08:57:28 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "D H, Siddaraju" <siddaraju.dh@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 1/1] ice: restrict PTP HW clock freq
- adjustments to 100, 000, 000 PPB
-Thread-Index: AQHY+Q9uyhs6a9F+REWObmk2q/98Za51HYLw
-Date: Mon, 19 Dec 2022 08:57:28 +0000
-Message-ID: <BYAPR11MB3367941112E7C3A9898E5B88FCE59@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20221115094135.147659-1-siddaraju.dh@intel.com>
-In-Reply-To: <20221115094135.147659-1-siddaraju.dh@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|CH3PR11MB7915:EE_
-x-ms-office365-filtering-correlation-id: 18b48dc4-85d2-45b4-a869-08dae19f0e77
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: /eioINWei6RFdp+CIlSDwTYdz+AgesjJ5fSF1nzfCKy3TTMW5WbkhOQpfl1364nBMJsxM9oWzaavfm47wSZyvOdH/gAMu1J+hfd7F1+XQUsEH71Vx89r43TGYgA72iCVypxm9SGhv1Pe3KmIaCkcMNthRL3+ke2/EvULaEpsNo79xwvmNw37F97kw+HDGJvfCpej95wIzKVM6cmSHQvzSncx2tNVxzsLVZNBc88nToX/CDPmiHMHpqIAFLB0w3WUHpQLKIV7AHEyF9GsqQXT1X+QIL0STWA9/09qeX6WNcMWEaeC0xP7g6fGGV2bGGwazXn74vH5+QUMakCgdhUJTZo0S2/PVrSjzGJ8M0wFIiIkJS9ufEjYjerLwQ/CMj8IgFwIAN2yDGfu5DIe0zGoL9XUmxGYqkqrQR3CyWZeOM2z6g0ZRm8q3AqDJIQLT4xmTqZHedGpdf3E8Q/sUgzMQYfTnmqhd8KNQgNqQFCji4sMLJSE9CcxlLeFbxsy80szfQR93JE3a5S+YBAMpVA8Z1cc6UaHupzLFDvGAG6P+M3F5XIM57LWBGbuKFDhT3Bj+e4WP4NAJ2bjapjmvznqxCrdUkCjafvjJiDc1Nof35TjmhcIHrYFga5/DjN14b/479IzxDbO+g/3ixY+VBpUPCqKA9mjPGWsOLaIYVpUvem9S2/sU9gq8zo+N9Yc2P1KrHdaEOfjTLL016d3GHSRIQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(376002)(39860400002)(366004)(136003)(346002)(396003)(451199015)(66476007)(71200400001)(33656002)(55016003)(86362001)(76116006)(4326008)(64756008)(8676002)(9686003)(26005)(41300700001)(52536014)(478600001)(53546011)(6506007)(107886003)(7696005)(2906002)(316002)(122000001)(110136005)(82960400001)(38070700005)(38100700002)(8936002)(83380400001)(66556008)(66446008)(66946007)(186003)(5660300002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8Z5nLkjUs3ppeZQlIwwUtkV9VVZ0ExlY+TtiQGtPeofsKMeyvPh2JzUT864C?=
- =?us-ascii?Q?sglkBYqW92yFxDG9eFge2qlt8GzpWVqP7UpXE5Khexywx/qLoQRzP1SSQ1FN?=
- =?us-ascii?Q?m65vVHol3FwxzCatjIVDEtJGeYmr8befMltddE/SR6ZIXUusX5vgrIyi5+E1?=
- =?us-ascii?Q?d7rlVNlXvCAe+zSro/O7z+Cv6OIGfmHmSASCT6UAtpi5V92ffD7NVpf08nFe?=
- =?us-ascii?Q?0BS8A68kNhDIa3xm774qOKT7OjdF6BnH4M3uV0RZ20LglwoHyEd0O3NHwvgf?=
- =?us-ascii?Q?LZaSOAhXgl94SIM/dJ6aEzxZ1bRXJJl884yZDn78tHHnhWetcJ4MWvP0MuhK?=
- =?us-ascii?Q?C/g14oCBRp58mdYMujjdzfxYP4bg7n/BJsQhOa+ly9GNBYqAx9uK2UvNmQha?=
- =?us-ascii?Q?isFCdAEjCIPy2FGpWMSmW75gXJ8bvitIfOUhaYV9Uc5N5Y3l+6Vl+K2Xw3+A?=
- =?us-ascii?Q?rJeo7I/epwWGXKAxlbqLYHNPzWnjNaLPMeJhezLiKJEu7eA0W40XGhF+Ao4z?=
- =?us-ascii?Q?7axxNQfg8jiFNQMhkUhBEzmOngXu5LC0dE6AMo06kd9bHLrf/90sNypLLGke?=
- =?us-ascii?Q?7zFswglrSXotQF5uYye6bf1idUJ+B6Rz+kWayrwui3ctjn71+5e+eQBQ4hMu?=
- =?us-ascii?Q?jZUBtcPgaNdR5jjhGIkCkVqURYfWprsVMRY61Qw+Ugi9/53fmg2vOZ/rH4NH?=
- =?us-ascii?Q?01hcGgywQrY0MQhOk4XLlMNXPZkO5RRcAP0tpNI+LW6Cxi0rvxuShp2oa7iT?=
- =?us-ascii?Q?OCdS5854MpBjIih53xRXzWIru3woJ1dmyJXe6COrCMTR7y+79GLyiKvIs9z+?=
- =?us-ascii?Q?/2j2K+F1u31wFE2gPoTE4Kxsc8fSmvTSRxzJS/S2741Md2iou8rNGdDxKKMG?=
- =?us-ascii?Q?eO5H4IWWzttjMlRi9lBFBfw7KXvO9mUBhxgtJJIJAQ7ONh7Me5NnO4ocIJzC?=
- =?us-ascii?Q?Gcu5D4JaLCOVv1nVXdFlvlqLM4D+9lKuMctmXXt/BDPmitReXMpCaz4TwKud?=
- =?us-ascii?Q?CeqSBWbcdtSZRPdrMNHrQgUof4P2uhUbwVSgEB4EDqhXx5r/pGNE+sT2QPlh?=
- =?us-ascii?Q?hE/FnoLpohpGWlzhZnccowiCad0xL7aq2Yg09TeoxI4MyHYhikSyzxGaV1L1?=
- =?us-ascii?Q?TpN99zP+NVp8pp8sW5cwqXKg3tyWhx9m51A1BPtc5ehT0eTk7OXdn6ZMbrEL?=
- =?us-ascii?Q?dpGPCuzw+wURYTy25idDYCbg+mokR/RTRQxaCPJ2NU6Qce5j/7XQgNtT7B4k?=
- =?us-ascii?Q?zKVpK1ek54kxn6mrsRt02nSqdSyTLJwLS1je4a5WJNe2ekbxnAUS+mw0RDRf?=
- =?us-ascii?Q?C60ltH97TS6wXkFNoWXL3i1sdr3hcFUdV5ahpJ9j+OW5dVFUpPugGUzBKhxP?=
- =?us-ascii?Q?vUi7wWIIQURYSPJgPPhiThyCK5CUVUxKS+bXOsBUWAzb4O+U1/nbuGwSogpd?=
- =?us-ascii?Q?t1ma7a+QZwqL8zGY45vRd4rYCjIpPePpPdAbqnOvHF3cHL7eWrMhiEEMXVKX?=
- =?us-ascii?Q?MPg4ogXddhvjNF5I2I/dVIbunh/xKb+9v397kUSdQPkMUeJSilD+F3476mko?=
- =?us-ascii?Q?UWqouhZ8paqqKu2kW42587CYi7lO63IG5LswR16Q?=
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="652703255"
+X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="652703255"
+Received: from unknown (HELO fedora.igk.intel.com) ([10.123.220.50])
+ by fmsmga007.fm.intel.com with ESMTP; 19 Dec 2022 06:07:03 -0800
+From: Kalyan Kodamagula <kalyan.kodamagula@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 19 Dec 2022 15:07:00 +0100
+Message-Id: <20221219140700.26496-1-kalyan.kodamagula@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 18b48dc4-85d2-45b4-a869-08dae19f0e77
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Dec 2022 08:57:28.4650 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WkPn7TBpqWDO0T3CR/+fRO8YczsWp62/bs7MVLHzNribYbfuBrhkQNQLQcxbAuZFWPIfmcseQB3m2C5QQGdjZw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7915
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671440253; x=1702976253;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=4+0/mz4uamhpyax/+Qc1omfYE68TVy0rJGMNzVITb9w=;
- b=alzqcnjjoDGxAlQzifZa330Uh5zbX6hemPtg3Xp/A1aIMS3/ccCEtf5v
- kvGEO15rcGLWt39hbwHjpA/lfmW/3ryfITDKWQ9AjlXYzQ3Z1ZnpBjQ3c
- IlCR+KmuDqzuk1u0RIbtDJpI6sYLmy+4All2iCk96GCczK4mK9LwlIrUl
- Ufyu5RHo7g/ThOKNLtr1MUKEOd28EVaV1mapHYh9DX2tw6SDF8/vkVMWc
- 1nhOnIMeHKyQpoOpe1NoLcKmmNYsaFeWNvA9Ykua3pBekpBxYWg5H7i4o
- deb0ATEyzTmhgNTkalNkBzKuN3OA7p74OEsdms2DRo8+8h8HzJbf4sFdv
+ t=1671458826; x=1702994826;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=CORlX+336JBXQAeRVtu44KhUDSsh0218DitqUjoeVzg=;
+ b=LOccJ2lJFDIWob3v24RIGvc0vaN/FdGKLWanSZRyAsP4hJ6Nz0bBexLQ
+ GMIJLueTT+JI9U+AmP13cNsu0vqy+u6hK5K2JQe4QqffAMbLZtmuMrRP1
+ soQsS3ww+66OyNI8+WCYapbX9hV8i8eeZ/7qgYRFC+7DKjfWzMiVzlxR9
+ i3FPLdRenmPshFJIWReFUND5q/DeXylr9yKNBj1jxB4bBmYRT5h7Pdf/y
+ oRc+AdOjCArwTZxll4FoYqEWRIws+RcfMFsxYvkPel1nRgAB0gT5Vvjme
+ OxA49U1Cujugyugf5K94rjr41cXS4iZb7EW7JwvgT05Bx0+JdthLrUFwM
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=alzqcnjj
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH 1/1] ice: restrict PTP HW clock freq
- adjustments to 100, 000, 000 PPB
+ header.a=rsa-sha256 header.s=Intel header.b=LOccJ2lJ
+Subject: [Intel-wired-lan] [PATCH net-next] ice-: Add MDD logging via
+ devlink health
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,54 +92,350 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "D H, Siddaraju" <siddaraju.dh@intel.com>
+Cc: Ben Shelton <benjamin.h.shelton@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Ben Shelton <benjamin.h.shelton@intel.com>
 
+- Enable DEVLINK_SUPPORT for ice_sw build.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Siddaraju DH
-> Sent: Tuesday, November 15, 2022 3:12 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: D H, Siddaraju <siddaraju.dh@intel.com>
-> Subject: [Intel-wired-lan] [PATCH 1/1] ice: restrict PTP HW clock freq
-> adjustments to 100, 000, 000 PPB
-> 
-> The PHY provides only 39b timestamp. With current timing implementation,
-> we discard lower 7b, leaving 32b timestamp.
-> The driver reconstructs the full 64b timestamp by correlating the 32b
-> timestamp with cached_time for performance. The reconstruction algorithm
-> does both forward & backward interpolation.
-> 
-> The 32b timeval has overflow duration of 2^32 counts ~= 4.23 second.
-> Due to interpolation in both direction, its now ~= 2.125 second IIRC, going
-> with at least half a duration, the cached_time is updated with periodic thread
-> of 1 second (worst-case) periodicity.
-> 
-> But the 1 second periodicity is based on System-timer.
-> With PPB adjustments, if the 1588 timers increments at say double the rate,
-> (2s in-place of 1s), the Nyquist rate/half duration sampling/update of
-> cached_time with 1 second periodic thread will lead to incorrect
-> interpolations.
-> 
-> Hence we should restrict the PPB adjustments to at least half duration of
-> cached_time update which translates to 500,000,000 PPB.
-> 
-> Since the periodicity of the cached-time system thread can vary, it is good to
-> have some buffer time and considering practicality of PPB adjustments,
-> limiting the max_adj to 100,000,000.
-> 
-> Signed-off-by: Siddaraju DH <siddaraju.dh@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+- Add a devlink health reporter for MDD events. The 'dump' handler will
+  return the information captured in each call to
+  ice_handle_mdd_event(). A device reset (CORER/PFR) will put the
+  reporter back in healthy state.
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
+Signed-off-by: Kalyan Kodamagula <kalyan.kodamagula@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h         |  24 +++
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 189 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_devlink.h |   6 +
+ drivers/net/ethernet/intel/ice/ice_main.c    |  10 +
+ 4 files changed, 229 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 001500afc4a6..433c514e73fb 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -503,6 +503,29 @@ struct ice_agg_node {
+ 	u8 valid;
+ };
+ 
++enum ice_mdd_src {
++	ICE_MDD_SRC_NONE = 0,
++	ICE_MDD_SRC_TX_PQM,
++	ICE_MDD_SRC_TX_TCLAN,
++	ICE_MDD_SRC_TX_TDPU,
++	ICE_MDD_SRC_RX
++};
++
++struct ice_mdd_event {
++	struct list_head list;
++	enum ice_mdd_src src;
++	u8 pf_num;
++	u16 vf_num;
++	u8 event;
++	u16 queue;
++};
++
++struct ice_mdd_reporter {
++	struct devlink_health_reporter *reporter;
++	u16 count;
++	struct list_head event_list;
++};
++
+ struct ice_pf {
+ 	struct pci_dev *pdev;
+ 
+@@ -512,6 +535,7 @@ struct ice_pf {
+ 
+ 	/* devlink port data */
+ 	struct devlink_port devlink_port;
++	struct ice_mdd_reporter mdd_reporter;
+ 
+ 	/* OS reserved IRQ details */
+ 	struct msix_entry *msix_entries;
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index e6ec20079ced..79a12cd94110 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -1364,3 +1364,192 @@ void ice_devlink_destroy_regions(struct ice_pf *pf)
+ 	if (pf->devcaps_region)
+ 		devlink_region_destroy(pf->devcaps_region);
+ }
++
++#define ICE_MDD_SRC_TO_STR(_src) \
++	((_src) == ICE_MDD_SRC_NONE ? "none"            \
++	: (_src) == ICE_MDD_SRC_TX_PQM ? "tx_pqm"      \
++	: (_src) == ICE_MDD_SRC_TX_TCLAN ? "tx_tclan"  \
++	: (_src) == ICE_MDD_SRC_TX_TDPU ? "tx_tdpu"    \
++	: (_src) == ICE_MDD_SRC_RX ? "rx"              \
++	: "invalid")
++
++static int
++ice_mdd_reporter_dump(struct devlink_health_reporter *reporter,
++		      struct devlink_fmsg *fmsg, void *priv_ctx,
++		      struct netlink_ext_ack __always_unused *extack)
++{
++	struct ice_pf *pf = devlink_health_reporter_priv(reporter);
++	struct ice_mdd_reporter *mdd_reporter = &pf->mdd_reporter;
++	struct ice_mdd_event *mdd_event;
++	int err;
++
++	err = devlink_fmsg_u32_pair_put(fmsg, "count",
++					mdd_reporter->count);
++	if (err)
++		return err;
++
++	list_for_each_entry(mdd_event, &mdd_reporter->event_list, list) {
++		char *src;
++
++		err = devlink_fmsg_obj_nest_start(fmsg);
++		if (err)
++			return err;
++
++		src = ICE_MDD_SRC_TO_STR(mdd_event->src);
++
++		err = devlink_fmsg_string_pair_put(fmsg, "src", src);
++		if (err)
++			return err;
++
++		err = devlink_fmsg_u8_pair_put(fmsg, "pf_num",
++					       mdd_event->pf_num);
++		if (err)
++			return err;
++
++		err = devlink_fmsg_u32_pair_put(fmsg, "mdd_vf_num",
++						mdd_event->vf_num);
++		if (err)
++			return err;
++
++		err = devlink_fmsg_u8_pair_put(fmsg, "mdd_event",
++					       mdd_event->event);
++		if (err)
++			return err;
++
++		err = devlink_fmsg_u32_pair_put(fmsg, "mdd_queue",
++						mdd_event->queue);
++		if (err)
++			return err;
++
++		err = devlink_fmsg_obj_nest_end(fmsg);
++		if (err)
++			return err;
++	}
++
++	return 0;
++}
++
++static const struct devlink_health_reporter_ops ice_mdd_reporter_ops = {
++	.name = "mdd",
++	.dump = ice_mdd_reporter_dump,
++};
++
++/**
++ * ice_devlink_init_mdd_reporter - Initialize MDD devlink health reporter
++ * @pf: the PF device structure
++ *
++ * Create devlink health reporter used to handle MDD events.
++ */
++void ice_devlink_init_mdd_reporter(struct ice_pf *pf)
++{
++	struct devlink *devlink = priv_to_devlink(pf);
++	struct device *dev = ice_pf_to_dev(pf);
++
++	INIT_LIST_HEAD(&pf->mdd_reporter.event_list);
++
++	pf->mdd_reporter.reporter =
++		devlink_health_reporter_create(devlink,
++					       &ice_mdd_reporter_ops,
++					       0, /* graceful period */
++					       pf); /* private data */
++
++	if (IS_ERR(pf->mdd_reporter.reporter)) {
++		dev_err(dev, "failed to create devlink MDD health reporter");
++	}
++}
++
++/**
++ * ice_devlink_destroy_mdd_reporter - Destroy MDD devlink health reporter
++ * @pf: the PF device structure
++ *
++ * Remove previously created MDD health reporter for this PF.
++ */
++void ice_devlink_destroy_mdd_reporter(struct ice_pf *pf)
++{
++	if (pf->mdd_reporter.reporter)
++		devlink_health_reporter_destroy(pf->mdd_reporter.reporter);
++}
++
++/**
++ * ice_devlink_report_mdd_event - Report an MDD event through devlink health
++ * @pf: the PF device structure
++ * @src: the HW block that was the source of this MDD event
++ * @pf_num: the pf_num on which the MDD event occurred
++ * @vf_num: the vf_num on which the MDD event occurred
++ * @event: the event type of the MDD event
++ * @queue: the queue on which the MDD event occurred
++ *
++ * Report an MDD event that has occurred on this PF.
++ */
++void
++ice_devlink_report_mdd_event(struct ice_pf *pf, enum ice_mdd_src src,
++			     u8 pf_num, u16 vf_num, u8 event, u16 queue)
++{
++	struct ice_mdd_reporter *mdd_reporter = &pf->mdd_reporter;
++	struct ice_mdd_event *mdd_event;
++	int err;
++
++	if (!mdd_reporter->reporter)
++		return;
++
++	mdd_reporter->count++;
++
++	mdd_event = devm_kzalloc(ice_pf_to_dev(pf), sizeof(*mdd_event),
++				 GFP_KERNEL);
++	if (!mdd_event)
++		return;
++
++	mdd_event->src = src;
++	mdd_event->pf_num = pf_num;
++	mdd_event->vf_num = vf_num;
++	mdd_event->event = event;
++	mdd_event->queue = queue;
++
++	list_add_tail(&mdd_event->list, &mdd_reporter->event_list);
++
++	mdd_event = devm_kzalloc(ice_pf_to_dev(pf), sizeof(*mdd_event),
++				 GFP_KERNEL);
++	if (!mdd_event)
++		return;
++
++	mdd_event->src = src;
++	mdd_event->pf_num = pf_num;
++	mdd_event->vf_num = vf_num;
++	mdd_event->event = event;
++	mdd_event->queue = queue;
++
++	list_add_tail(&mdd_event->list, &mdd_reporter->event_list);
++
++	err = devlink_health_report(mdd_reporter->reporter,
++				    "Malicious Driver Detection event\n",
++				    pf);
++	if (err)
++		dev_err(ice_pf_to_dev(pf),
++			"failed to report MDD via devlink health\n");
++}
++
++/**
++ * ice_devlink_clear_after_reset - clear devlink health issues after a reset
++ * @pf: the PF device structure
++ *
++ * Mark the PF in healthy state again after a reset has completed.
++ */
++void ice_devlink_clear_after_reset(struct ice_pf *pf)
++{
++	struct ice_mdd_reporter *mdd_reporter = &pf->mdd_reporter;
++	enum devlink_health_reporter_state new_state =
++		DEVLINK_HEALTH_REPORTER_STATE_HEALTHY;
++	struct ice_mdd_event *mdd_event, *tmp;
++
++	if (!mdd_reporter->reporter)
++		return;
++
++	devlink_health_reporter_state_update(mdd_reporter->reporter,
++					     new_state);
++	pf->mdd_reporter.count = 0;
++
++	list_for_each_entry_safe(mdd_event, tmp, &mdd_reporter->event_list,
++				 list) {
++	list_del(&mdd_event->list);
++	}
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.h b/drivers/net/ethernet/intel/ice/ice_devlink.h
+index fe006d9946f8..5632d23b6518 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.h
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.h
+@@ -18,4 +18,10 @@ void ice_devlink_destroy_vf_port(struct ice_vf *vf);
+ void ice_devlink_init_regions(struct ice_pf *pf);
+ void ice_devlink_destroy_regions(struct ice_pf *pf);
+ 
++void ice_devlink_init_mdd_reporter(struct ice_pf *pf);
++void ice_devlink_destroy_mdd_reporter(struct ice_pf *pf);
++void ice_devlink_report_mdd_event(struct ice_pf *pf, enum ice_mdd_src src,
++				  u8 pf_num, u16 vf_num, u8 event, u16 queue);
++void ice_devlink_clear_after_reset(struct ice_pf *pf);
++
+ #endif /* _ICE_DEVLINK_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 0f6718719453..a55ce7887c1b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1720,6 +1720,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 		if (netif_msg_tx_err(pf))
+ 			dev_info(dev, "Malicious Driver Detection event %d on TX queue %d PF# %d VF# %d\n",
+ 				 event, queue, pf_num, vf_num);
++		ice_devlink_report_mdd_event(pf, ICE_MDD_SRC_TX_PQM, pf_num,
++					     vf_num, event, queue);
+ 		wr32(hw, GL_MDET_TX_PQM, 0xffffffff);
+ 	}
+ 
+@@ -1737,6 +1739,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 		if (netif_msg_tx_err(pf))
+ 			dev_info(dev, "Malicious Driver Detection event %d on TX queue %d PF# %d VF# %d\n",
+ 				 event, queue, pf_num, vf_num);
++		ice_devlink_report_mdd_event(pf, ICE_MDD_SRC_TX_TCLAN, pf_num,
++					     vf_num, event, queue);
+ 		wr32(hw, GL_MDET_TX_TCLAN, 0xffffffff);
+ 	}
+ 
+@@ -1754,6 +1758,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 		if (netif_msg_rx_err(pf))
+ 			dev_info(dev, "Malicious Driver Detection event %d on RX queue %d PF# %d VF# %d\n",
+ 				 event, queue, pf_num, vf_num);
++		ice_devlink_report_mdd_event(pf, ICE_MDD_SRC_RX, pf_num,
++					     vf_num, event, queue);
+ 		wr32(hw, GL_MDET_RX, 0xffffffff);
+ 	}
+ 
+@@ -4731,6 +4737,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	}
+ 
+ 	ice_devlink_init_regions(pf);
++	ice_devlink_init_mdd_reporter(pf);
+ 
+ 	pf->hw.udp_tunnel_nic.set_port = ice_udp_tunnel_set_port;
+ 	pf->hw.udp_tunnel_nic.unset_port = ice_udp_tunnel_unset_port;
+@@ -4960,6 +4967,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	devm_kfree(dev, pf->vsi);
+ err_init_pf_unroll:
+ 	ice_deinit_pf(pf);
++	ice_devlink_destroy_mdd_reporter(pf);
+ 	ice_devlink_destroy_regions(pf);
+ 	ice_deinit_hw(hw);
+ err_exit_unroll:
+@@ -5079,6 +5087,7 @@ static void ice_remove(struct pci_dev *pdev)
+ 		ice_vsi_free_q_vectors(pf->vsi[i]);
+ 	}
+ 	ice_deinit_pf(pf);
++	ice_devlink_destroy_mdd_reporter(pf);
+ 	ice_devlink_destroy_regions(pf);
+ 	ice_deinit_hw(&pf->hw);
+ 
+@@ -7265,6 +7274,7 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 
+ 	/* if we get here, reset flow is successful */
+ 	clear_bit(ICE_RESET_FAILED, pf->state);
++	ice_devlink_clear_after_reset(pf);
+ 
+ 	ice_plug_aux_dev(pf);
+ 	return;
+-- 
+2.38.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
