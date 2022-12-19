@@ -1,98 +1,190 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D369D651397
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Dec 2022 21:03:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B769C6514CD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Dec 2022 22:24:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F05A7410A4;
-	Mon, 19 Dec 2022 20:03:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F05A7410A4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2D18F60C13;
+	Mon, 19 Dec 2022 21:24:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D18F60C13
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671480200;
-	bh=I5+T86/5cgMhvD8L9bjBTtjEp4n/F/PBWlU3xz4OGNI=;
-	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
+	s=default; t=1671485086;
+	bh=1pemu+bKXXkFb55ZYhTIfRqqXCqTix3DU6kroN0tFuY=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=PluCr+B3Jzlr5QJSo9Q2XzEEoZQr3S/S8FmYbAQJAtvc/YH/OFBGd/EnCXaFSDrFX
-	 MQ4ZcNTXrYj6DFLEc0b/BVs62K5b9J45/eLAB1/xJmaAFXLgMf9JjII25evVCxIU5Y
-	 nQaNxwT4x1hAbNQqeuy0xWvje0gQgGAQmDv4cbW3u8lg9TN/6e9jKr8phh8wWoLtKw
-	 ONsGjI4Zz/7ESA9mAhrtA5BCryBoQkALdhpCeYbBTpEYdd2pi0LMXxRJeCLU2qxCnI
-	 Jm1cJw6RQauxdEDiDJs562+WJ6QUwXdJHj99kDDtWKI//qEILK3FiF13v7KgPkSJSr
-	 f0OWdc78mr3gw==
+	b=AnG/pj47gq7yKslfRyxxjxlbI/5ddJeXZtRSFfoMOOo+hwr56F7LfnaocvxhIrEXY
+	 OriEpfFF99w2dT1KPNS0TjxmKgQz2u13iHavFVUm3fR6yCNICom1YoTA1Jdc6GgoeL
+	 8iT1NI9Ke3m89Kjv2xYnL5KLjCC6guMHT28mIEQgqL5BAtE2LrPwMA7XEeNW12eO/t
+	 OE21gVlNpVHVS6ngKUTn84bmMQrz2QnRXbQQ7i67QoIYVVyXd1NbaZXc8RmeNzJ2yJ
+	 /B2+ozkS7LW9RNObIami1XBOHKzR79MYuX3/6/OScRQKCAUMj0OTkLrX5C5jKoSthd
+	 RFJAlevlVMuvQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r1ZsRmUNmF4T; Mon, 19 Dec 2022 20:03:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1GmM7ZXeVUdL; Mon, 19 Dec 2022 21:24:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 20E8C410A2;
-	Mon, 19 Dec 2022 20:03:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20E8C410A2
+	by smtp3.osuosl.org (Postfix) with ESMTP id 39CF76059B;
+	Mon, 19 Dec 2022 21:24:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 39CF76059B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 756F21BF36E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 20:03:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 249C41BF368
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 21:24:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5C3E940127
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 20:03:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C3E940127
+ by smtp3.osuosl.org (Postfix) with ESMTP id 096E96059B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 21:24:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 096E96059B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id to50n8P9Y-_T for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Dec 2022 20:03:12 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 28A66400FC
-Received: from mail-pg1-x549.google.com (mail-pg1-x549.google.com
- [IPv6:2607:f8b0:4864:20::549])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 28A66400FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 20:03:12 +0000 (UTC)
-Received: by mail-pg1-x549.google.com with SMTP id
- r126-20020a632b84000000b004393806c06eso6029909pgr.4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 12:03:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=B93Ere0lh6/8aqm4JgiAxJ/jdGiP7qSbPB4CT/66Oaw=;
- b=fGFSP1AW68DVF5lFD3UOvSogVAy1Jf4gLv6kpu6pUY/jDs3s8C1po/ZMoazRpy8Ngs
- UCC2E860Z4FjnK43JL1WSPRjoSDf51d+Bw8+iqLMtBpAgzJhnXlpv13g/0XIm5ZZiW4O
- H9tovzPf34uls+NKk/afSUyEpjA5qO6Rbn24g01oBeu/kwFR6ckx5+QlcvDF3ZFC2beh
- HXblDHOTOrYEUxm02fDVDEQ8+86ixZQwB1uIrxCpEl3s6wPRUkhf1OaDsTm16GTZNnyR
- ho+5eAqaPvJTmGNltm1+jP6zkYJKNe4+yDnNIDU0E8KEx6on2vrPRagDXhIN2wtHubVR
- dcWQ==
-X-Gm-Message-State: AFqh2krZEiWKVhJgT4m9vGHlQ0FR3RaM69o0lJ3YXKxwyXA/3A6sQUCl
- AOXHrCwbdHMga+ATVKudJcpxrTQ=
-X-Google-Smtp-Source: AMrXdXsx6noD2wWH0DbWT6pPsOKfsqEWhJ1gVTk9BKTO1WPgvZTY40rYjG+JjMQVgVQdmbqLwC1d8MY=
-X-Received: from sdf.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:5935])
- (user=sdf job=sendgmr) by 2002:a17:90b:4ccf:b0:219:b015:58cd with SMTP id
- nd15-20020a17090b4ccf00b00219b01558cdmr2486553pjb.40.1671480191438; Mon, 19
- Dec 2022 12:03:11 -0800 (PST)
-Date: Mon, 19 Dec 2022 12:03:09 -0800
-In-Reply-To: <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
-Mime-Version: 1.0
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
-Message-ID: <Y6DDfVhOWRybVNUt@google.com>
-From: sdf@google.com
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=B93Ere0lh6/8aqm4JgiAxJ/jdGiP7qSbPB4CT/66Oaw=;
- b=Lfpguxg1frG0D7dBTC/sOSV3iTGWzZIjjDjX6GxO7UKgIrGgBPdsfwUdoEBGDy0FSu
- iykv3g6pFQCM42WgaFvwRxGSbrXnW8tAhGOYI9u/xolNJBGDmtrhUrkDgeOgWEEr0oIj
- +NS4+pDhy0gtzlJavgnMxdRGv6VdNKIbP+sv2zg7ZgzIWKK9Mx4iOfEWpWzZ1gZZyVap
- D9HHaHZWdJhqWrXxf1nAWWr9ly3kbh2qgEB/ojs7xGwvbryXkLKBfIbAFJMxi0GSVFRY
- kBdKreYqeMUfeMxKntBFLivjwMGky6b5Gzjp+1zwomL1hg7/TmfjHOQcTUhYzKI6wYim
- XSLg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20210112 header.b=Lfpguxg1
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 2/8] net: introduce XDP
- features flag
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wUBQAFSKJVTd for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Dec 2022 21:24:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 991A46058B
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 991A46058B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Dec 2022 21:24:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="307134188"
+X-IronPort-AV: E=Sophos;i="5.96,257,1665471600"; d="scan'208";a="307134188"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2022 13:24:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="896163644"
+X-IronPort-AV: E=Sophos;i="5.96,257,1665471600"; d="scan'208";a="896163644"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga006.fm.intel.com with ESMTP; 19 Dec 2022 13:24:36 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 19 Dec 2022 13:24:36 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 19 Dec 2022 13:24:35 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 19 Dec 2022 13:24:35 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.175)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 19 Dec 2022 13:24:34 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=V46yUAuY/XqdHngg1bL2c7O6it9AxhrHft+w5AFzvgFG6DsItrl/JzQzGY5LrBF1/49ZMxUCznDq41naJPxsSa+b3o/8N0cPx9NNBHQIcG2Jju0zGnNWaziSRu8RdoBQCGxGBNyzperrso/gdVhaQv4Wp3oBFX1d2ef4XV9focJbgGmGFfRS6YHIUVurE4MpQTBXeAqdJpKwfBpANmc74Sj+x7c2qQ8ba2eY+FcL9I413X1TFweGMCe8RzN9+OWNuhdZCmzr57xTqfVLy39meWWGWcmTBhvNEnO/XUgTYQSEX0ctynh6Mxq+8iOvLKnqa3o2r0PE7HRdzBcAM2mvng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ujOJmELF+XZWbWvr7gl8KFVetZvYYJ2YF6vyzaFIqfw=;
+ b=Z4+rqHBeZbyVsac8DvzALWxmB1xUlQW6bNGr3cD5YPrZ9lCCOm0j5c5ij6IDvnLBlES0hWHXU5F6gFqygtlZCwAFBCfb7LcetlZATGL+rhSae9Dnr+rmdwDtYl6KfIZwzjN3poG0IYo8/GplktfDb575VZCWLbM3jzbJ3p7VH5ERrqcJO1x3tF5EWISuQCXy3DnNYT/l+iK0sWHRbNlllDv9e0h24NXhrQQ981VhQBGOcMn2y1l9Fy+e+20J6O+RLrJeMBk/dwaf/WoZH4T5ivsenrt+gfiGJ3MiwdyHCrMXwN6nZFV5ppufcZzNMniwOQs5dG/t+0An1WMop85B0g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by DS0PR11MB7787.namprd11.prod.outlook.com (2603:10b6:8:de::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.16; Mon, 19 Dec
+ 2022 21:24:33 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5%5]) with mapi id 15.20.5924.016; Mon, 19 Dec 2022
+ 21:24:33 +0000
+Message-ID: <9198499b-8bfc-6405-e6a9-00af6f28e506@intel.com>
+Date: Mon, 19 Dec 2022 13:24:30 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Content-Language: en-US
+To: Daniil Tatianin <d-tatianin@yandex-team.ru>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>
+References: <20221216091326.1457454-1-d-tatianin@yandex-team.ru>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20221216091326.1457454-1-d-tatianin@yandex-team.ru>
+X-ClientProxiedBy: BYAPR06CA0001.namprd06.prod.outlook.com
+ (2603:10b6:a03:d4::14) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|DS0PR11MB7787:EE_
+X-MS-Office365-Filtering-Correlation-Id: ed8152b9-afcb-4992-392a-08dae2076c15
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IlXZEW2ETx43PLckw75HZo7aze00+mfiIvEA8bEkSQrjlkaDAT41l2Tvyx8m0XntwmrRcldZ1MvvOlH8CLO+a/J4VnLAv78OJNjbzmdUB20zsbWv6Z2o5Ce5LtYmaa1no1kB6rzlZE8lygVoqo6LiDWzhh4myl6PaXS/f+kBNm6w8DmOl87URy51EWdPrwx//yNYryfqo3TDB8ixpEhW2VwmwhJAzovi50KqJzd12ET2NvUvOgLzETOpnFCRpjghY/EXtSlRSTT2R0DMITZB/IihRKJZ2hEUIQu0DQMiCbuPgpgAlGuP2Gsj19obFbRJFReB6RHAiopsm3FFBODQwEsnDEe+jkbEnDg71itt1NYzf3EehAxVpO8GlqLf/ROhu3FCY3lb4r8d4ciXmh2nzxP7di6aH0/uXF55SqKIVbDoYHSVzR4B5HGfNEaozn9pEfZkyJQtrah0IvMvKPyP12CUVTQ6QHDkxiT6GMgiFk3/uLtNhRQb4HPZB44eiLQ+vca89J3Un/Nn9p39awVah4nL7EHntdomqQrl/UoF2OvX88buvSEH5yqUIVpK6Q64cEwUI9mvjhST/hKKfMtZsG2gFLcJ796dnhAu+4yFSK6aNllRerTEMfAxwpAZw3UvfabtAIn753chiRHAzygQNlSaqnYVUAAfKfw+wn+pEm4yWwcZee9NPctgaSqRlgMJiOWoJdAgvaoxncjufk9z5erwQII3K1i7kRnDVaHbZ/M=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(39860400002)(396003)(346002)(366004)(136003)(376002)(451199015)(38100700002)(86362001)(82960400001)(31686004)(2616005)(53546011)(26005)(6512007)(2906002)(186003)(6506007)(36756003)(478600001)(6486002)(110136005)(316002)(8936002)(54906003)(6636002)(66946007)(66476007)(8676002)(66556008)(31696002)(41300700001)(83380400001)(5660300002)(4326008)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eUpRMjNYYVBZLzAyUkdwZUpoY2EyZWdjdi9TbW1BNmhhZ294bDVoSklJa3hD?=
+ =?utf-8?B?Tk1aU1NrZGlFNVhQQlhOYzZzdVhnOHNtZUJNLzdQWHZuL00zUDhxazU1eFI3?=
+ =?utf-8?B?RTlKdnhhNHdiWFdlQWJoNnhqVUhDODNkSGZseW9CWWhVZklGQU9WTktnd1Jm?=
+ =?utf-8?B?Wm5qUTNCL2NURzE3bGExVFNwYmJ4VHdkczkxeFVFMTJWMHQxYXUyLzVzYktJ?=
+ =?utf-8?B?NHJGb01zOG1tK0I4dlV2UlQ3WDk5NzZLRW91bDh3c3ZlRXM4VDAzTzJwVjBG?=
+ =?utf-8?B?QlFOM1drWTl1blUwN2liRTVKYmhzd1pyVXM0VlVGNXAxd1pZVVVSZkcvKzZq?=
+ =?utf-8?B?VHJwNnd5OElIWG9nMndQV3lFd21MTXFhS2QvMU9wTFpmY0VFQ3NGQlNFTGpN?=
+ =?utf-8?B?SHp1TDFJS3kyWmZ3L1JWMGdGSEN0YWNqWGt6eWdpeCt1M09OaVdURm9lSkIx?=
+ =?utf-8?B?Ry9haDlFNDFMWkJmRnpGNXJKOFJGamswUFRyUE50R0NzOVhnNEl0T1Vtbk1s?=
+ =?utf-8?B?R052MmlMYjBOaWxrR0p5TGxoOFc5Z3Q5VUdNdUg0MXlxQmw1YkFtRWRod3dY?=
+ =?utf-8?B?NWlodnJMRWJKcVg0UE1JeHNCVWdlSHBzb1ZmRnRNNXVNY0VLYTRobjlnUEwv?=
+ =?utf-8?B?d2ZqUFpHRlBzQUEzVEljQkY3dkNoUVlsekVhd3JOUVFIUmp0M2doaXNVc21x?=
+ =?utf-8?B?eCsrR3AyMWZVQi8rYTdqOUo4cjNPZWphdW5pSGxQcjh1b25xU3ZEUTBRaXlE?=
+ =?utf-8?B?VVo4dEZvdDhVV29Ncm9MZGx4Q0pDR1A1QnlzZVU5eEhvNEd2bnJ1L2VPQUtz?=
+ =?utf-8?B?RXpOMUNDcVhCb24rVkpQb0JvcHIvVllpd3NTRlRlbk0yb1ZldG1hNitmV2V3?=
+ =?utf-8?B?OTJEUTdzNkpqNE5vQ3p5SlNWRGJOSVJ6aFJUNnBRbE4wRjgva2JrbkZqRXZM?=
+ =?utf-8?B?cXFxMU9EWTlubmxab3BReTV1TnFuTGpHRjNaRFJIYkZyZkcrNFZ1T1Yyd3dl?=
+ =?utf-8?B?NzZRUlVOL2MxbTNHUEYyK2hkZTBaWTJyY3UrbXVxMkoxYUFtR2tUazc5SHpu?=
+ =?utf-8?B?NlJYNjlMYlBPcnYyUThSbkFtS1lEMGF5dEo5ako1REo3OGxqMmhnTm1vQklG?=
+ =?utf-8?B?QUhlVmVQRi9PMUl3Q3B3dnl2Q3E1VEZsaTljV3RoSGRjZnRvYjZJVDJDMFBt?=
+ =?utf-8?B?eGh3a0VuZUJBd2lCME41VVl1VGZmMGJGVy82UzVabDRpL1dEQVNnZkt5L1VY?=
+ =?utf-8?B?YVpNTEp1QzZLaWVxS0E1a1dmT1pTS1NTcWFMeVJSa3F3emVKZURqSmFaVWlI?=
+ =?utf-8?B?akN4YVNVcG1sKzFMYTZtcC8rUVVqTHl1Vm5CZTBXUlY4dEpYNGkyWWtmS3hV?=
+ =?utf-8?B?RCtJVnF5STRYY0pnZFM2Q2VIajJZWnhVUUFyWXpaZk5ZMkgwYzA2NXR2b3N3?=
+ =?utf-8?B?NWZaZUJHNmw0c1VHdHdHRmR0WVpVTjRSWTEyTEQzRGVTQ3ppazRHZXFkUWxI?=
+ =?utf-8?B?QTBuSytNZFlGTWtpWW9peW1wcEdtczd1VFcwcm9FNFR5cFQrQnp3OHFHYzJF?=
+ =?utf-8?B?TFlpaWIyU3NZTUNiQ3VhNklqOElmT3NINE40OEthZ0k1TkNBRCtXVzlTTk5T?=
+ =?utf-8?B?S1dxd0o1djFpWEZjZkhnb2ZUNTNOQjdDMWRnWUhzTmx2MWVBU2ZTYmVCMHlO?=
+ =?utf-8?B?QStVTlhwY3hNbmhlOXRCYmswUzZwNFFEaEhIU3Y4UzlDdngzdTFGU2NJKzRs?=
+ =?utf-8?B?V08wbkhScnlHcHpJS2w0WWJZbEc4U2NVZGFIa0E2UkVIT2M0T1dTYmh4aWR3?=
+ =?utf-8?B?TmJnTVdEYmEwSHVjY2k4M1JKUExwNUJuUmc5SXZCN0J0QnpxUklseVZPKzZu?=
+ =?utf-8?B?RGUzcUw4TnMwOVdjZWEyaDB6QzJXYzhSaDBFT20zM3Y1ZU5xOGNwcFkxTjda?=
+ =?utf-8?B?UXJkZDF5ZzF2b3FlSUtINHRGOWQ3YXg5T0k1S2ZSbWhYTXhzVFFNbk5STkcw?=
+ =?utf-8?B?L0UwNzhyMkxvZFY1QmVSUm1nRm90aWhzZldBbXJadFJ4R280cXJVWmt0b3ZR?=
+ =?utf-8?B?bjFKZ1RqbU9YcGxtMlpZUXdOU2xYZXBlaDlXV1ptSjdEaDJZM2tIODJMRU0w?=
+ =?utf-8?B?bkFNcExQV0xhbmtuUDRjbSsrWGVUbGZJeW5WUXMvR0tYNXg1NHU1RHJNVGEx?=
+ =?utf-8?B?aUE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed8152b9-afcb-4992-392a-08dae2076c15
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Dec 2022 21:24:33.4356 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: aHI05apzoF7WW/r+sy1iYM6fuxAzPno4RjgBFmCjfh+oTL6EwDIrnhVlg4d13lbelrVGUrdxqhwcSkdWPkZtp0casG4fd4JVTRby/LcGrxs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7787
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671485077; x=1703021077;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=DMYT3xX/RiRE05Mad6Uw3L5jMKC/w/4DQPlmRddV5cQ=;
+ b=VuuGf8HPfThvKytsUXC9yCOKzsx1diwhCmMpxELLuzn8M79ovepX6y9q
+ /R/Au1IgDk+9rw4syEist+kBEJ38bVIBp+dEV72hMM3tUTwDXARx20Ine
+ iYDVeq93BJ30Lec8D1vLEwit16blVLOOCMo7OohkJo4FdlxGeRBr8PG79
+ HHf00uz0mAAB5+waMdfJSANXFb+YIuBq744KTHr/m0ylL2K/OfCWXCrJI
+ S6LFR3Lbdnm39qZdvWhUcjpXZBF1+E5wZY3+8L3JdwntPAjA8DhqOoX0x
+ kii+lCptQkD/yZL1pVvxBea8kx94XTRccw2qYzMoap2lNGwt5W+oy94mC
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=VuuGf8HP
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v1] iavfs/iavf_main: actually log
+ ->src mask when talking about it
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,443 +197,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, grygorii.strashko@ti.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/19, Lorenzo Bianconi wrote:
-> From: Marek Majtyka <alardam@gmail.com>
+On 12/16/2022 1:13 AM, Daniil Tatianin wrote:
 
-> Implement support for checking what kind of XDP features a netdev
-> supports. Previously, there was no way to do this other than to try to
-> create an AF_XDP socket on the interface or load an XDP program and see
-> if it worked. This commit changes this by adding a new variable which
-> describes all xdp supported functions on pretty detailed level:
+A couple of nits.
 
->   - aborted
->   - drop
->   - pass
->   - tx
->   - redirect
->   - sock_zerocopy
->   - hw_offload
->   - redirect_target
->   - tx_lock
->   - frag_rx
->   - frag_target
+For the title, s/iavfs/iavf
 
-> Zerocopy mode requires that redirect XDP operation is implemented in a
-> driver and the driver supports also zero copy mode. Full mode requires
-> that all XDP operation are implemented in the driver. Basic mode is just
-> full mode without redirect operation. Frag target requires
-> redirect_target one is supported by the driver.
+> This fixes a copy-paste issue where dev_err would log the dst mask even
+> though it is clearly talking about src.
+> 
+> Found by Linux Verification Center (linuxtesting.org) with the SVACE
+> static analysis tool.
+> 
+> Fixes: 0075fa0fadd0a ("i40evf: Add support to apply cloud filters")
 
-Can you share more about _why_ is it needed? If we can already obtain
-most of these signals via probing, why export the flags?
+This should just be 12 chars:
 
-> Initially, these new flags are disabled for all drivers by default.
+WARNING: Please use correct Fixes: style 'Fixes: <12 chars of sha1> 
+("<title line>")' - ie: 'Fixes: 0075fa0fadd0 ("i40evf: Add support to 
+apply cloud filters")'
 
-> Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Marek Majtyka <alardam@gmail.com>
+> Signed-off-by: Daniil Tatianin <d-tatianin@yandex-team.ru>
 > ---
->   .../networking/netdev-xdp-features.rst        | 60 +++++++++++++++++
->   include/linux/netdevice.h                     |  2 +
->   include/linux/xdp_features.h                  | 64 +++++++++++++++++++
->   include/uapi/linux/if_link.h                  |  7 ++
->   include/uapi/linux/xdp_features.h             | 34 ++++++++++
->   net/core/rtnetlink.c                          | 34 ++++++++++
->   tools/include/uapi/linux/if_link.h            |  7 ++
->   tools/include/uapi/linux/xdp_features.h       | 34 ++++++++++
->   8 files changed, 242 insertions(+)
->   create mode 100644 Documentation/networking/netdev-xdp-features.rst
->   create mode 100644 include/linux/xdp_features.h
->   create mode 100644 include/uapi/linux/xdp_features.h
->   create mode 100644 tools/include/uapi/linux/xdp_features.h
-
-> diff --git a/Documentation/networking/netdev-xdp-features.rst  
-> b/Documentation/networking/netdev-xdp-features.rst
-> new file mode 100644
-> index 000000000000..1dc803fe72dd
-> --- /dev/null
-> +++ b/Documentation/networking/netdev-xdp-features.rst
-> @@ -0,0 +1,60 @@
-> +.. SPDX-License-Identifier: GPL-2.0
-> +
-> +=====================
-> +Netdev XDP features
-> +=====================
-> +
-> + * XDP FEATURES FLAGS
-> +
-> +Following netdev xdp features flags can be retrieved over route netlink
-> +interface (compact form) - the same way as netdev feature flags.
-> +These features flags are read only and cannot be change at runtime.
-> +
-> +*  XDP_ABORTED
-> +
-> +This feature informs if netdev supports xdp aborted action.
-> +
-> +*  XDP_DROP
-> +
-> +This feature informs if netdev supports xdp drop action.
-> +
-> +*  XDP_PASS
-> +
-> +This feature informs if netdev supports xdp pass action.
-> +
-> +*  XDP_TX
-> +
-> +This feature informs if netdev supports xdp tx action.
-> +
-> +*  XDP_REDIRECT
-> +
-> +This feature informs if netdev supports xdp redirect action.
-> +It assumes the all beforehand mentioned flags are enabled.
-> +
-> +*  XDP_SOCK_ZEROCOPY
-> +
-> +This feature informs if netdev driver supports xdp zero copy.
-> +It assumes the all beforehand mentioned flags are enabled.
-> +
-> +*  XDP_HW_OFFLOAD
-> +
-> +This feature informs if netdev driver supports xdp hw oflloading.
-> +
-> +*  XDP_TX_LOCK
-> +
-> +This feature informs if netdev ndo_xdp_xmit function requires locking.
-> +
-> +*  XDP_REDIRECT_TARGET
-> +
-> +This feature informs if netdev implements ndo_xdp_xmit callback.
-> +
-> +*  XDP_FRAG_RX
-> +
-> +This feature informs if netdev implements non-linear xdp buff support in
-> +the driver napi callback.
-> +
-> +*  XDP_FRAG_TARGET
-> +
-> +This feature informs if netdev implements non-linear xdp buff support in
-> +ndo_xdp_xmit callback. XDP_FRAG_TARGET requires XDP_REDIRECT_TARGET is  
-> properly
-> +supported.
-> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> index aad12a179e54..ae5a8564383b 100644
-> --- a/include/linux/netdevice.h
-> +++ b/include/linux/netdevice.h
-> @@ -43,6 +43,7 @@
->   #include <net/xdp.h>
-
->   #include <linux/netdev_features.h>
-> +#include <linux/xdp_features.h>
->   #include <linux/neighbour.h>
->   #include <uapi/linux/netdevice.h>
->   #include <uapi/linux/if_bonding.h>
-> @@ -2362,6 +2363,7 @@ struct net_device {
->   	struct rtnl_hw_stats64	*offload_xstats_l3;
-
->   	struct devlink_port	*devlink_port;
-> +	xdp_features_t		xdp_features;
->   };
->   #define to_net_dev(d) container_of(d, struct net_device, dev)
-
-> diff --git a/include/linux/xdp_features.h b/include/linux/xdp_features.h
-> new file mode 100644
-> index 000000000000..4e72a86ef329
-> --- /dev/null
-> +++ b/include/linux/xdp_features.h
-> @@ -0,0 +1,64 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +/*
-> + * Network device xdp features.
-> + */
-> +#ifndef _LINUX_XDP_FEATURES_H
-> +#define _LINUX_XDP_FEATURES_H
-> +
-> +#include <linux/types.h>
-> +#include <linux/bitops.h>
-> +#include <asm/byteorder.h>
-> +#include <uapi/linux/xdp_features.h>
-> +
-> +typedef u32 xdp_features_t;
-> +
-> +#define __XDP_F_BIT(bit)	((xdp_features_t)1 << (bit))
-> +#define __XDP_F(name)		__XDP_F_BIT(XDP_F_##name##_BIT)
-> +
-> +#define XDP_F_ABORTED		__XDP_F(ABORTED)
-> +#define XDP_F_DROP		__XDP_F(DROP)
-> +#define XDP_F_PASS		__XDP_F(PASS)
-> +#define XDP_F_TX		__XDP_F(TX)
-> +#define XDP_F_REDIRECT		__XDP_F(REDIRECT)
-> +#define XDP_F_REDIRECT_TARGET	__XDP_F(REDIRECT_TARGET)
-> +#define XDP_F_SOCK_ZEROCOPY	__XDP_F(SOCK_ZEROCOPY)
-> +#define XDP_F_HW_OFFLOAD	__XDP_F(HW_OFFLOAD)
-> +#define XDP_F_TX_LOCK		__XDP_F(TX_LOCK)
-> +#define XDP_F_FRAG_RX		__XDP_F(FRAG_RX)
-> +#define XDP_F_FRAG_TARGET	__XDP_F(FRAG_TARGET)
-> +
-> +#define XDP_F_BASIC		(XDP_F_ABORTED | XDP_F_DROP |	\
-> +				 XDP_F_PASS | XDP_F_TX)
-> +
-> +#define XDP_F_FULL		(XDP_F_BASIC | XDP_F_REDIRECT)
-> +
-> +#define XDP_F_FULL_ZC		(XDP_F_FULL | XDP_F_SOCK_ZEROCOPY)
-> +
-> +#define XDP_FEATURES_ABORTED_STR		"xdp-aborted"
-> +#define XDP_FEATURES_DROP_STR			"xdp-drop"
-> +#define XDP_FEATURES_PASS_STR			"xdp-pass"
-> +#define XDP_FEATURES_TX_STR			"xdp-tx"
-> +#define XDP_FEATURES_REDIRECT_STR		"xdp-redirect"
-> +#define XDP_FEATURES_REDIRECT_TARGET_STR	"xdp-redirect-target"
-> +#define XDP_FEATURES_SOCK_ZEROCOPY_STR		"xdp-sock-zerocopy"
-> +#define XDP_FEATURES_HW_OFFLOAD_STR		"xdp-hw-offload"
-> +#define XDP_FEATURES_TX_LOCK_STR		"xdp-tx-lock"
-> +#define XDP_FEATURES_FRAG_RX_STR		"xdp-frag-rx"
-> +#define XDP_FEATURES_FRAG_TARGET_STR		"xdp-frag-target"
-> +
-> +#define DECLARE_XDP_FEATURES_TABLE(name, length)				\
-> +	const char name[][length] = {						\
-> +		[XDP_F_ABORTED_BIT] = XDP_FEATURES_ABORTED_STR,			\
-> +		[XDP_F_DROP_BIT] = XDP_FEATURES_DROP_STR,			\
-> +		[XDP_F_PASS_BIT] = XDP_FEATURES_PASS_STR,			\
-> +		[XDP_F_TX_BIT] = XDP_FEATURES_TX_STR,				\
-> +		[XDP_F_REDIRECT_BIT] = XDP_FEATURES_REDIRECT_STR,		\
-> +		[XDP_F_REDIRECT_TARGET_BIT] = XDP_FEATURES_REDIRECT_TARGET_STR,	\
-> +		[XDP_F_SOCK_ZEROCOPY_BIT] = XDP_FEATURES_SOCK_ZEROCOPY_STR,	\
-> +		[XDP_F_HW_OFFLOAD_BIT] = XDP_FEATURES_HW_OFFLOAD_STR,		\
-> +		[XDP_F_TX_LOCK_BIT] = XDP_FEATURES_TX_LOCK_STR,			\
-> +		[XDP_F_FRAG_RX_BIT] = XDP_FEATURES_FRAG_RX_STR,			\
-> +		[XDP_F_FRAG_TARGET_BIT] = XDP_FEATURES_FRAG_TARGET_STR,		\
-> +	}
-> +
-> +#endif /* _LINUX_XDP_FEATURES_H */
-> diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-> index 1021a7e47a86..971c658ceaea 100644
-> --- a/include/uapi/linux/if_link.h
-> +++ b/include/uapi/linux/if_link.h
-> @@ -374,6 +374,8 @@ enum {
-
->   	IFLA_DEVLINK_PORT,
-
-> +	IFLA_XDP_FEATURES,
-> +
->   	__IFLA_MAX
->   };
-
-> @@ -1318,6 +1320,11 @@ enum {
-
->   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
-
-> +enum {
-> +	IFLA_XDP_FEATURES_WORD_UNSPEC = 0,
-> +	IFLA_XDP_FEATURES_BITS_WORD,
-> +};
-> +
->   enum {
->   	IFLA_EVENT_NONE,
->   	IFLA_EVENT_REBOOT,		/* internal reset / reboot */
-> diff --git a/include/uapi/linux/xdp_features.h  
-> b/include/uapi/linux/xdp_features.h
-> new file mode 100644
-> index 000000000000..48eb42069bcd
-> --- /dev/null
-> +++ b/include/uapi/linux/xdp_features.h
-> @@ -0,0 +1,34 @@
-> +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-> +/*
-> + * Copyright (c) 2020 Intel
-> + */
-> +
-> +#ifndef __UAPI_LINUX_XDP_FEATURES__
-> +#define __UAPI_LINUX_XDP_FEATURES__
-> +
-> +enum {
-> +	XDP_F_ABORTED_BIT,
-> +	XDP_F_DROP_BIT,
-> +	XDP_F_PASS_BIT,
-> +	XDP_F_TX_BIT,
-> +	XDP_F_REDIRECT_BIT,
-> +	XDP_F_REDIRECT_TARGET_BIT,
-> +	XDP_F_SOCK_ZEROCOPY_BIT,
-> +	XDP_F_HW_OFFLOAD_BIT,
-> +	XDP_F_TX_LOCK_BIT,
-> +	XDP_F_FRAG_RX_BIT,
-> +	XDP_F_FRAG_TARGET_BIT,
-> +	/*
-> +	 * Add your fresh new property above and remember to update
-> +	 * documentation.
-> +	 */
-> +	XDP_FEATURES_COUNT,
-> +};
-> +
-> +#define XDP_FEATURES_WORDS			((XDP_FEATURES_COUNT + 32 - 1) / 32)
-> +#define XDP_FEATURES_WORD(blocks, index)	((blocks)[(index) / 32U])
-> +#define XDP_FEATURES_FIELD_FLAG(index)		(1U << (index) % 32U)
-> +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
-> +	(XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLAG(index))
-> +
-> +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
-> diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-> index 64289bc98887..1c299746b614 100644
-> --- a/net/core/rtnetlink.c
-> +++ b/net/core/rtnetlink.c
-> @@ -1016,6 +1016,14 @@ static size_t rtnl_xdp_size(void)
->   	return xdp_size;
->   }
-
-> +static size_t rtnl_xdp_features_size(void)
-> +{
-> +	size_t xdp_size = nla_total_size(0) +	/* nest IFLA_XDP_FEATURES */
-> +			  XDP_FEATURES_WORDS * nla_total_size(4);
-> +
-> +	return xdp_size;
-> +}
-> +
->   static size_t rtnl_prop_list_size(const struct net_device *dev)
->   {
->   	struct netdev_name_node *name_node;
-> @@ -1103,6 +1111,7 @@ static noinline size_t if_nlmsg_size(const struct  
-> net_device *dev,
->   	       + rtnl_prop_list_size(dev)
->   	       + nla_total_size(MAX_ADDR_LEN) /* IFLA_PERM_ADDRESS */
->   	       + rtnl_devlink_port_size(dev)
-> +	       + rtnl_xdp_features_size() /* IFLA_XDP_FEATURES */
->   	       + 0;
->   }
-
-> @@ -1546,6 +1555,27 @@ static int rtnl_xdp_fill(struct sk_buff *skb,  
-> struct net_device *dev)
->   	return err;
->   }
-
-> +static int rtnl_xdp_features_fill(struct sk_buff *skb, struct net_device  
-> *dev)
-> +{
-> +	struct nlattr *attr;
-> +
-> +	attr = nla_nest_start_noflag(skb, IFLA_XDP_FEATURES);
-> +	if (!attr)
-> +		return -EMSGSIZE;
-> +
-> +	BUILD_BUG_ON(XDP_FEATURES_WORDS != 1);
-> +	if (nla_put_u32(skb, IFLA_XDP_FEATURES_BITS_WORD, dev->xdp_features))
-> +		goto err_cancel;
-> +
-> +	nla_nest_end(skb, attr);
-> +
-> +	return 0;
-> +
-> +err_cancel:
-> +	nla_nest_cancel(skb, attr);
-> +	return -EMSGSIZE;
-> +}
-> +
->   static u32 rtnl_get_event(unsigned long event)
->   {
->   	u32 rtnl_event_type = IFLA_EVENT_NONE;
-> @@ -1904,6 +1934,9 @@ static int rtnl_fill_ifinfo(struct sk_buff *skb,
->   	if (rtnl_fill_devlink_port(skb, dev))
->   		goto nla_put_failure;
-
-> +	if (rtnl_xdp_features_fill(skb, dev))
-> +		goto nla_put_failure;
-> +
->   	nlmsg_end(skb, nlh);
->   	return 0;
-
-> @@ -1968,6 +2001,7 @@ static const struct nla_policy  
-> ifla_policy[IFLA_MAX+1] = {
->   	[IFLA_TSO_MAX_SIZE]	= { .type = NLA_REJECT },
->   	[IFLA_TSO_MAX_SEGS]	= { .type = NLA_REJECT },
->   	[IFLA_ALLMULTI]		= { .type = NLA_REJECT },
-> +	[IFLA_XDP_FEATURES]	= { .type = NLA_NESTED },
->   };
-
->   static const struct nla_policy ifla_info_policy[IFLA_INFO_MAX+1] = {
-> diff --git a/tools/include/uapi/linux/if_link.h  
-> b/tools/include/uapi/linux/if_link.h
-> index 82fe18f26db5..994228e9909a 100644
-> --- a/tools/include/uapi/linux/if_link.h
-> +++ b/tools/include/uapi/linux/if_link.h
-> @@ -354,6 +354,8 @@ enum {
-
->   	IFLA_DEVLINK_PORT,
-
-> +	IFLA_XDP_FEATURES,
-> +
->   	__IFLA_MAX
->   };
-
-> @@ -1222,6 +1224,11 @@ enum {
-
->   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
-
-> +enum {
-> +	IFLA_XDP_FEATURES_WORD_UNSPEC = 0,
-> +	IFLA_XDP_FEATURES_BITS_WORD,
-> +};
-> +
->   enum {
->   	IFLA_EVENT_NONE,
->   	IFLA_EVENT_REBOOT,		/* internal reset / reboot */
-> diff --git a/tools/include/uapi/linux/xdp_features.h  
-> b/tools/include/uapi/linux/xdp_features.h
-> new file mode 100644
-> index 000000000000..48eb42069bcd
-> --- /dev/null
-> +++ b/tools/include/uapi/linux/xdp_features.h
-> @@ -0,0 +1,34 @@
-> +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-> +/*
-> + * Copyright (c) 2020 Intel
-> + */
-> +
-> +#ifndef __UAPI_LINUX_XDP_FEATURES__
-> +#define __UAPI_LINUX_XDP_FEATURES__
-> +
-> +enum {
-> +	XDP_F_ABORTED_BIT,
-> +	XDP_F_DROP_BIT,
-> +	XDP_F_PASS_BIT,
-> +	XDP_F_TX_BIT,
-> +	XDP_F_REDIRECT_BIT,
-> +	XDP_F_REDIRECT_TARGET_BIT,
-> +	XDP_F_SOCK_ZEROCOPY_BIT,
-> +	XDP_F_HW_OFFLOAD_BIT,
-> +	XDP_F_TX_LOCK_BIT,
-> +	XDP_F_FRAG_RX_BIT,
-> +	XDP_F_FRAG_TARGET_BIT,
-> +	/*
-> +	 * Add your fresh new property above and remember to update
-> +	 * documentation.
-> +	 */
-> +	XDP_FEATURES_COUNT,
-> +};
-> +
-> +#define XDP_FEATURES_WORDS			((XDP_FEATURES_COUNT + 32 - 1) / 32)
-> +#define XDP_FEATURES_WORD(blocks, index)	((blocks)[(index) / 32U])
-> +#define XDP_FEATURES_FIELD_FLAG(index)		(1U << (index) % 32U)
-> +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
-> +	(XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLAG(index))
-> +
-> +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
-> --
-> 2.38.1
-
+>   drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index c4e451ef7942..adc02adef83a 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -3850,7 +3850,7 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>   				field_flags |= IAVF_CLOUD_FIELD_IIP;
+>   			} else {
+>   				dev_err(&adapter->pdev->dev, "Bad ip src mask 0x%08x\n",
+> -					be32_to_cpu(match.mask->dst));
+> +					be32_to_cpu(match.mask->src));
+>   				return -EINVAL;
+>   			}
+>   		}
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
