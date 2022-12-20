@@ -1,103 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADCA66525F1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 19:04:16 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30BBA652697
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 19:51:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 34B48416EE;
-	Tue, 20 Dec 2022 18:04:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34B48416EE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 36CEE402CE;
+	Tue, 20 Dec 2022 18:51:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 36CEE402CE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671559455;
-	bh=0wGM01k9SJklRR9x9rH9nXewo3Ff1qGhX+pHrdmSwEg=;
+	s=default; t=1671562301;
+	bh=Rc0WpGdAWLa7UG6VbxFIr8sVoP/IAzjTY09ngrUEZuA=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=IjBmyVV+OkkbbxoADfdx1z77ALCWAzTYxlqAFkVQpYX59tAvdS05JtmxAMQY62Vqr
-	 RO6egSj1IyEQJ5sBeMW/Gfau6wZ+jM31ByK0LEtvq8xIqgzRtrb3zpmdTtxOVukl6j
-	 9VHpJRZm6eS4cpRMxMa4BR5RnOcEhladiSuVuA1h+pcBY/79COcu3mKKwTi51e4LNV
-	 rNu4nv+aDPdl2gfOxD67BCdyAbOIwkDXBFBobVTH/nQS5Jx7vams9Ob1pmQPl3qetP
-	 wc2FEoHtoCG0zOCOf28OLomUydQ37nyphsaFZ4HRUTKMTFSulf7XPx8zT7dklWRK/+
-	 e96EaWhBKTEBg==
+	b=nbvT1qb9cO8ZxlbnhrcuAY5tk/8ryNTDZOJZrX2RZyR6ly+YD35TkDPyTy+eHx8mL
+	 MLm4iFi0FCQq8Fssn9F6LBeIknO3wJnQ6DPl/WL31AKUWUkz6hotWfltlCV8KDH0wf
+	 xQcvxSrOgS0YcNyGbtldq6ahJLQ8MsNSut7RCTcbiW46DMqNEWUYrj4wExo/dIL4mk
+	 MvYe62oa+GvHVT7tGlYI9cAjnNfgNejLagqbuT5bbiP2cLJ6yCYNc5omrUEl26O3+v
+	 SwfVw9wIQW/+dZmgae7MNQ5smhjAQqBjcU45GBUv9bsUq9zu/XglbaauJykkUOvkUv
+	 mwmMyDvL3TFvQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-lFS5sK0B9A; Tue, 20 Dec 2022 18:04:13 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3M_DwBUFlIO8; Tue, 20 Dec 2022 18:51:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B922B416D6;
-	Tue, 20 Dec 2022 18:04:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B922B416D6
+	by smtp2.osuosl.org (Postfix) with ESMTP id A24E840126;
+	Tue, 20 Dec 2022 18:51:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A24E840126
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7B9691BF2AA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:04:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BD351BF36A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:29:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 48E2C81E2A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:04:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 48E2C81E2A
+ by smtp4.osuosl.org (Postfix) with ESMTP id 647FB40265
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:29:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 647FB40265
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GUa__EakCPmh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Dec 2022 18:04:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GOOfjYoCRPlf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Dec 2022 18:29:53 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A665081E21
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A665081E21
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:04:05 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id
- w4-20020a17090ac98400b002186f5d7a4cso17345864pjt.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 10:04:05 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AAB540257
+Received: from mail-vs1-xe2a.google.com (mail-vs1-xe2a.google.com
+ [IPv6:2607:f8b0:4864:20::e2a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6AAB540257
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 18:29:53 +0000 (UTC)
+Received: by mail-vs1-xe2a.google.com with SMTP id h26so12580447vsr.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 10:29:53 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IcvmIEl+h9O4r5jncDZCIpYSoGFtqZq0m+e/kc7OgtI=;
- b=BwqQki8OnP+qpgHX1gDdtHkoPCrVO3JxOwDz9Yb+q12GF9GM0clX8DGxwnpn3mzFAV
- tEP2WRV0TOIY4z8H+gzh0smyG/sfBHtgUT74XXPdxEJ/cdsEk7F9aBUiTUeycmFUscnU
- Yqiocpz62g0ZcTga8hDVwawFgOC1IcbuyDX8gvRjGDmivei1ttJKpN3iGaQEDgJMdIF+
- HXDpUUYWZ3ZuAmqJHJZy2UIPHM2njIFLic9+Q35DQYhoOPaofre8OyZZDMwwBbBh7xQ1
- 9Pr97z3eHRo7LfJ5rND5Ohkrl6pYIux4BQFE1RQc1C1duSbKB2YhcFvK/+ldJjEIRYbv
- emXA==
-X-Gm-Message-State: AFqh2krZNFkeh7SF46q7FAvgx5lAOAHkpBFnhUhChvBMP3PLtXTicFsT
- +IvL/OqVT/V5UXNJH7cI2d792Ef4KqIw5yXicC1SXg==
-X-Google-Smtp-Source: AMrXdXu6g+QamaoflbkZZt4hICzjLYj/TRV4VJlXPRLxj2JBpeuOz1ggH/gKIlJ6ObK/0WmJEvjPa75xEfpnpC0Xjg0=
-X-Received: by 2002:a17:902:b488:b0:191:283d:612e with SMTP id
- y8-20020a170902b48800b00191283d612emr318875plr.88.1671559444699; Tue, 20 Dec
- 2022 10:04:04 -0800 (PST)
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rtqqzZnb48SyLZzNizQ2wbW4A0rGVeELO1Mn43Etf/o=;
+ b=s+2gTgBlFlfpKCfTGD9/DAy8E+aPuUJuBund07JSY36c4iJUz26AEEJUve+xgYAQrv
+ tL92YNtV2hH0AJp/WfPoS+Jp7+WLQPV0ZHXAqSJeOnZiallKx5E2U/ORNxpj5leEPBr6
+ LsYBlXzPcPClBZgNqQdi92qwEiCBYzq1WlQ0tAaEfD6c2iiMn5hgauMcL6FrPrLTW0XT
+ kNll+lSv5DZL3b5UIq/q4EZw84UPujpsfGkhWH3+XnBL9KZtoYF8DONZtTAMwYtBtqiX
+ qagbHcoqF/o3gj1qyFsgCP/b2NR4hau/xJtkMG422OfTNh53z1cd28WZvsb/idyJwRok
+ DxzQ==
+X-Gm-Message-State: ANoB5pkMv7+bQJoPoDlK0WmnBNCs3Cj0QHMu8Bu2EbgY0AQRYOEVbhTc
+ bOoRq68pcBPqgqTwCvG88fVNUwdc2MTkqjzjXp8=
+X-Google-Smtp-Source: AA0mqf6NJ7Cs3feQbWQd29qEM23PqK9LVgqKlYzFffzYNJ9FOtrJhIb89dQaF8idXXfNG1BHy2zCRErc9Z4oWlpLPPY=
+X-Received: by 2002:a05:6102:1c6:b0:3b2:eefc:4630 with SMTP id
+ s6-20020a05610201c600b003b2eefc4630mr11985831vsq.18.1671560992142; Tue, 20
+ Dec 2022 10:29:52 -0800 (PST)
 MIME-Version: 1.0
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
- <Y6DDfVhOWRybVNUt@google.com>
- <CAAOQfrFGArAYPyBX_kw4ZvFrTjKXf-jG-2F2y69nOs-oQ8Onwg@mail.gmail.com>
- <CAKH8qBuktjBcY_CuqqkWs74oBB8Mnkm638Cb=sF38H4kPAx3NQ@mail.gmail.com>
- <Y6GKN/1iOC9eTsEE@lore-desk>
-In-Reply-To: <Y6GKN/1iOC9eTsEE@lore-desk>
-From: Stanislav Fomichev <sdf@google.com>
-Date: Tue, 20 Dec 2022 10:03:52 -0800
-Message-ID: <CAKH8qBts19wxSDAKk0SBk76ftvdK+sW6d3ufcBWoV5cMa2ENpA@mail.gmail.com>
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+References: <CACsaVZL6ykbsVvEaV2Cv3r6m_jKt04MEUOw5=mSnR5AYTyE7qg@mail.gmail.com>
+ <a752422c-4630-e53d-c9cd-cc9ed866f853@intel.com>
+In-Reply-To: <a752422c-4630-e53d-c9cd-cc9ed866f853@intel.com>
+From: Kyle Sanderson <kyle.leet@gmail.com>
+Date: Tue, 20 Dec 2022 10:29:40 -0800
+Message-ID: <CACsaVZJXqkWGOQhe-GzRKJSfYn-3+dZTyHNZC97npCxzqr+R9g@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+X-Mailman-Approved-At: Tue, 20 Dec 2022 18:51:35 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IcvmIEl+h9O4r5jncDZCIpYSoGFtqZq0m+e/kc7OgtI=;
- b=m945mNfsuHL3sNDzGFwEDaX7tLbuZcmfJwNGlT4PGRugSN2+wsw2pbSAX8GXOTewwq
- YSOenR1XpDPiBGPIdsBMjnzhlIbeo8LiBeUsaxQTnVgrHMFMfwi4yPwkNYdlzjIrjaep
- R4jkYHalzI+vno4Wh6fGIaJ2fph1mzFZMhciRVQCzqAVC5EupCHl9sOqOC8/Z6v+n8V6
- S32ybOLFJ4YT5eSDuK+qXxGiBoCpEKq+zWjHXuokHJSy5n7PNvO3WYhY4LqE9GvdrH0t
- j7srCR0AQVF+gsBwrrf4EkSgSkTvdSQVBLJM21fcF1AWwr+wcrrpWAeLSRJYV9B5dXjO
- u79A==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20210112 header.b=m945mNfs
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 2/8] net: introduce XDP
- features flag
+ d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=rtqqzZnb48SyLZzNizQ2wbW4A0rGVeELO1Mn43Etf/o=;
+ b=bchNpIj9zhCRWaJDm0Oyv465Z4NyMbTtHD6sEgkOAkvMfVePw2sTbXCM+3uyutjWJy
+ IEjBgg/L67Gwi2qa/XDgHDUNtvmGUzsdyTzzBoygit7ULFTe0t/iwnQDNt+rrboIZG7b
+ 6LZvp23lv7QtfcxBe3v4p53HBF+biu15uTflIBUw3D0rQfe1h/UisagJbDOp7225LyE4
+ yh4wQ9jXVCgQJE8UsY2RFrh3FLTeVBSd728RjLlbxjCuoJXq4lY/sW3MWh4qdcqIsWZb
+ H/ZIdhucFOTl2s4wxiTgRFiTkjEbhlgA6APP9Wvcbxe0ZtqHpM3QomcejCPY5Yp61pf3
+ dAKA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=bchNpIj9
+Subject: Re: [Intel-wired-lan] igc: 5.10.146 Kernel BUG at 0xffffffff813ce19f
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,501 +104,286 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- grygorii.strashko@ti.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
- ecree.xilinx@gmail.com, Marek Majtyka <alardam@gmail.com>, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Cc: netdev@vger.kernel.org, Linux-Kernal <linux-kernel@vger.kernel.org>,
+ jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ anthony.l.nguyen@intel.com, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>, "Avivi,
+ Amir" <amir.avivi@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 20, 2022 at 2:11 AM Lorenzo Bianconi
-<lorenzo.bianconi@redhat.com> wrote:
+re-sending as plain text - my apologies.
+
+> On Sun, 18 Dec 2022, 23:31 Neftin, Sasha wrote:
+> What is a board in use (LAN on board or NIC)?
+> What is lspci, lspci -t and lspci -s 0000:[lan bus:device.function] -vvv output?
+
+It's embedded on the board, could very well be on a bridge though as a
+card. The box has 6 ports, 2 were in-use while testing.
+
+00:00.0 Host bridge: Intel Corporation Device 4522 (rev 01)
+00:02.0 VGA compatible controller: Intel Corporation Elkhart Lake [UHD
+Graphics Gen11 16EU] (rev 01)
+00:08.0 System peripheral: Intel Corporation Device 4511 (rev 01)
+00:14.0 USB controller: Intel Corporation Device 4b7d (rev 11)
+00:14.2 RAM memory: Intel Corporation Device 4b7f (rev 11)
+00:16.0 Communication controller: Intel Corporation Device 4b70 (rev 11)
+00:17.0 SATA controller: Intel Corporation Device 4b63 (rev 11)
+00:1c.0 PCI bridge: Intel Corporation Device 4b38 (rev 11)
+00:1c.1 PCI bridge: Intel Corporation Device 4b39 (rev 11)
+00:1c.2 PCI bridge: Intel Corporation Device 4b3a (rev 11)
+00:1c.3 PCI bridge: Intel Corporation Device 4b3b (rev 11)
+00:1c.4 PCI bridge: Intel Corporation Device 4b3c (rev 11)
+00:1c.6 PCI bridge: Intel Corporation Device 4b3e (rev 11)
+00:1f.0 ISA bridge: Intel Corporation Device 4b00 (rev 11)
+00:1f.3 Audio device: Intel Corporation Device 4b58 (rev 11)
+00:1f.4 SMBus: Intel Corporation Device 4b23 (rev 11)
+00:1f.5 Serial bus controller: Intel Corporation Device 4b24 (rev 11)
+01:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+02:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+03:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+04:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+05:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+06:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+
+-[0000:00]-+-00.0
+           +-02.0
+           +-08.0
+           +-14.0
+           +-14.2
+           +-16.0
+           +-17.0
+           +-1c.0-[01]----00.0
+           +-1c.1-[02]----00.0
+           +-1c.2-[03]----00.0
+           +-1c.3-[04]----00.0
+           +-1c.4-[05]----00.0
+           +-1c.6-[06]----00.0
+           +-1f.0
+           +-1f.3
+           +-1f.4
+           \-1f.5
+
+
+01:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
+ Subsystem: Intel Corporation Device 0000
+ Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr-
+Stepping- SERR- FastB2B- DisINTx+
+ Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+ Latency: 0
+ Interrupt: pin A routed to IRQ 16
+ Region 0: Memory at 80600000 (32-bit, non-prefetchable) [size=1M]
+ Region 3: Memory at 80700000 (32-bit, non-prefetchable) [size=16K]
+ Capabilities: [40] Power Management version 3
+  Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+  Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
+ Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+  Address: 0000000000000000 Data: 0000
+  Masking: 00000000 Pending: 00000000
+ Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
+  Vector table: BAR=3 offset=00000000
+  PBA: BAR=3 offset=00002000
+ Capabilities: [a0] Express (v2) Endpoint, MSI 00
+  DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s <512ns, L1 <64us
+   ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
+  DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+   RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+   MaxPayload 128 bytes, MaxReadReq 512 bytes
+  DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+  LnkCap: Port #0, Speed 5GT/s, Width x1, ASPM L1, Exit Latency L1 <4us
+   ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+  LnkCtl: ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
+   ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+  LnkSta: Speed 5GT/s, Width x1
+   TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+  DevCap2: Completion Timeout: Range ABCD, TimeoutDis+ NROPrPrP- LTR+
+    10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
+    EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+    FRS- TPHComp- ExtTPHComp-
+    AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+  DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+
+10BitTagReq- OBFF Disabled,
+    AtomicOpsCtl: ReqEn-
+  LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+    Transmit Margin: Normal Operating Range, EnterModifiedCompliance-
+ComplianceSOS-
+    Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
+  LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete-
+EqualizationPhase1-
+    EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
+    Retimer- 2Retimers- CrosslinkRes: unsupported
+ Capabilities: [100 v2] Advanced Error Reporting
+  UESta: DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF-
+MalfTLP- ECRC- UnsupReq- ACSViol-
+  UEMsk: DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF-
+MalfTLP- ECRC- UnsupReq- ACSViol-
+  UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+
+MalfTLP+ ECRC- UnsupReq- ACSViol-
+  CESta: RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+  CEMsk: RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+  AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+   MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+  HeaderLog: 00000000 00000000 00000000 00000000
+ Capabilities: [140 v1] Device Serial Number e4-3a-6e-ff-ff-5d-bb-54
+ Capabilities: [1c0 v1] Latency Tolerance Reporting
+  Max snoop latency: 3145728ns
+  Max no snoop latency: 3145728ns
+ Capabilities: [1f0 v1] Precision Time Measurement
+  PTMCap: Requester:+ Responder:- Root:-
+  PTMClockGranularity: 4ns
+  PTMControl: Enabled:- RootSelected:-
+  PTMEffectiveGranularity: Unknown
+ Capabilities: [1e0 v1] L1 PM Substates
+  L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+ L1_PM_Substates+
+     PortCommonModeRestoreTime=55us PortTPowerOnTime=70us
+  L1SubCtl1: PCI-PM_L1.2- PCI-PM_L1.1- ASPM_L1.2- ASPM_L1.1-
+      T_CommonMode=0us LTR1.2_Threshold=81920ns
+  L1SubCtl2: T_PwrOn=50us
+ Kernel driver in use: igc
+ Kernel modules: igc
+
+On Sun, Dec 18, 2022 at 10:31 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
 >
-> On Dec 19, Stanislav Fomichev wrote:
-> > On Mon, Dec 19, 2022 at 3:51 PM Marek Majtyka <alardam@gmail.com> wrote:
-> > >
-> > > At the time of writing, I wanted to be able to read additional information about the XDP capabilities of each network interface using ethtool. This change was intended for Linux users/admins, and not for XDP experts who mostly don't need it and prefer tasting XDP with netlink and bpf rather than reading network interface features with ethtool.
+> On 12/16/2022 00:28, Kyle Sanderson wrote:
+> > (Un)fortunately I can reproduce this bug by simply removing the
+> > ethernet cable from the box while there is traffic flowing. kprint
+> > below from a console line. Please CC / to me for any additional
+> > information I can provide for this panic.
+> What is a board in use (LAN on board or NIC)? What is lspci, lspci -t
+> and lspci -s 0000:[lan bus:device.function] -vvv output?
 > >
-> > Anything preventing ethtool from doing probing similar to 'bpftool
-> > feature probe'?
-> > The problem with these feature bits is that they might diverge and/or
-> > not work at all for the backported patches (where the fix/feature has
-> > been backported, but the part that exports the bit hasn't) :-(
-> > OTOH, I'm not sure we can probe everything from your list, but we
-> > might try and see what's missing..
->
-> Hi Stanislav,
->
-> I have not added the ethtool support to this series yet since userspace part is
-> still missing but I think we can consider XDP as a sort of sw offload so it
-> would be nice for the user/sysadmin (not xdp or bpf developer) to check the NIC
-> XDP capabilities similar to what we can already do for other hw offload
-> features.
-
-[..]
-
-> Moreover let's consider XDP_REDIRECT of a scatter-gather XDP frame into a
-> devmap. I do not think there is a way to test if the 'target' device supports
-> SG and so we are forced to disable this feature until all drivers support it.
-
-See below for more questions, but why "target device has prog
-installed and the aux->xdp_has_frags == true" won't work for the
-internal kernel consumers?
-
-> Introducing XDP features we can enable it on per-driver basis.
-> I think the same apply for other capabilities as well and just assuming a given
-> feature is not supported if an e2e test is not working seems a bit inaccurate.
-
-Ok, I see that these bits are used in the later patches in xsk and
-devmap. But I guess I'm still confused about why we add all these
-flags, but only use mostly XDP_F_REDIRECT_TARGET; maybe start with
-that one? And why does it have to be exposed to the userspace?
-(userspace can still probe per-device features by trying to load
-different progs?)
-
-Also, it seems like XDP_F_REDIRECT_TARGET really means "the bpf
-program has been installed on this device". Instead of a flag, why not
-explicitly check whether the target device has a prog installed (and,
-if needed, whether the installed program has frags support)?
-
-> Regards,
-> Lorenzo
->
+> > [  156.707054] igc 0000:01:00.0 eth0: NIC Link is Down
+> > [  156.712981] br-lan: port 1(eth0) entered disabled state
+> > [  156.719246] igc 0000:01:00.0 eth0: Register Dump
+> > [  156.724784] igc 0000:01:00.0 eth0: Register Name   Value
+> > [  156.731067] igc 0000:01:00.0 eth0: CTRL            181c0641
+> > [  156.737607] igc 0000:01:00.0 eth0: STATUS          00380681
+> > [  156.744133] igc 0000:01:00.0 eth0: CTRL_EXT        100000c0
+> > [  156.750759] igc 0000:01:00.0 eth0: MDIC            18017949
+> > [  156.757258] igc 0000:01:00.0 eth0: ICR             00000001
+> > [  156.763785] igc 0000:01:00.0 eth0: RCTL            0440803a
+> > [  156.770324] igc 0000:01:00.0 eth0: RDLEN[0-3]      00001000
+> > 00001000 00001000 00001000
+> > [  156.779457] igc 0000:01:00.0 eth0: RDH[0-3]        000000ef
+> > 000000a1 00000092 000000ba
+> > [  156.788500] igc 0000:01:00.0 eth0: RDT[0-3]        000000ee
+> > 000000a0 00000091 000000b9
+> > [  156.797650] igc 0000:01:00.0 eth0: RXDCTL[0-3]     02040808
+> > 02040808 02040808 02040808
+> > [  156.806688] igc 0000:01:00.0 eth0: RDBAL[0-3]      02f43000
+> > 02180000 02e7f000 02278000
+> > [  156.815781] igc 0000:01:00.0 eth0: RDBAH[0-3]      00000001
+> > 00000001 00000001 00000001
+> > [  156.824928] igc 0000:01:00.0 eth0: TCTL            a503f0fa
+> > [  156.831587] igc 0000:01:00.0 eth0: TDBAL[0-3]      02f43000
+> > 02180000 02e7f000 02278000
+> > [  156.840637] igc 0000:01:00.0 eth0: TDBAH[0-3]      00000001
+> > 00000001 00000001 00000001
+> > [  156.849753] igc 0000:01:00.0 eth0: TDLEN[0-3]      00001000
+> > 00001000 00001000 00001000
+> > [  156.858760] igc 0000:01:00.0 eth0: TDH[0-3]        000000d4
+> > 0000003d 000000af 0000002a
+> > [  156.867771] igc 0000:01:00.0 eth0: TDT[0-3]        000000e4
+> > 0000005a 000000c8 0000002a
+> > [  156.876864] igc 0000:01:00.0 eth0: TXDCTL[0-3]     02100108
+> > 02100108 02100108 02100108
+> > [  156.885905] igc 0000:01:00.0 eth0: Reset adapter
+> > [  160.307195] igc 0000:01:00.0 eth0: NIC Link is Up 1000 Mbps Full
+> > Duplex, Flow Control: RX/TX
+> > [  160.317974] br-lan: port 1(eth0) entered blocking state
+> > [  160.324532] br-lan: port 1(eth0) entered forwarding state
+> > [  161.197263] ------------[ cut here ]------------
+> > [  161.202669] Kernel BUG at 0xffffffff813ce19f [verbose debug info unavailable]
+> > [  161.210769] invalid opcode: 0000 [#1] SMP NOPTI
+> > [  161.216022] CPU: 1 PID: 0 Comm: swapper/1 Not tainted 5.10.146 #0
+> > [  161.222980] Hardware name: Default string Default string/Default
+> > string, BIOS 5.19 09/23/2022
+> > [  161.232546] RIP: 0010:0xffffffff813ce19f
+> > [  161.237167] Code: 03 01 4c 89 48 58 e9 2f ff ff ff 85 db 41 0f 95
+> > c2 45 39 d9 41 0f 95 c1 45 84 ca 74 05 45 85 e4 78 0a 44 89 c2 e9 10
+> > ff ff ff <0f> 0b 01 d2 45 89 c1 41 29 d1 ba 00 00 00 00 44 0f 48 ca eb
+> > 80 cc
+> > [  161.258651] RSP: 0018:ffffc90000118e88 EFLAGS: 00010283
+> > [  161.264736] RAX: ffff888101f8f200 RBX: ffffc900006f9bd0 RCX: 000000000000050e
+> > [  161.272837] RDX: ffff888101fec000 RSI: 0000000000000a1c RDI: 0000000000061a10
+> > [  161.280942] RBP: ffffc90000118ef8 R08: 0000000000000000 R09: 0000000000061502
+> > [  161.289089] R10: 0000000000000000 R11: 0000000000000000 R12: 00000000ffffff3f
+> > [  161.297229] R13: ffff888101f8f140 R14: 0000000000000000 R15: ffff888100ad9b00
+> > [  161.305345] FS:  0000000000000000(0000) GS:ffff88903fe80000(0000)
+> > knlGS:00000 00000000000
+> > [  161.314492] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> > [  161.321139] CR2: 00007f941ad43a9b CR3: 000000000340a000 CR4: 0000000000350ee0
+> > [  161.329284] Call Trace:
+> > [  161.332373]  <IRQ>
+> > [  161.334981]  ? 0xffffffffa0185f78 [igc@00000000f400031b+0x13000]
+> > [  161.341949]  0xffffffff8185b047
+> > [  161.345797]  0xffffffff8185b2ca
+> > [  161.349637]  0xffffffff81e000bb
+> > [  161.353465]  0xffffffff81c0109f
+> > [  161.357304]  </IRQ>
+> > [  161.359988]  0xffffffff8102cdac
+> > [  161.363783]  0xffffffff810bfdaf
+> > [  161.367584]  0xffffffff81a2e616
+> > [  161.371374]  0xffffffff81c00c9e
+> > [  161.375192] RIP: 0010:0xffffffff817e331b
+> > [  161.379840] Code: 21 90 ff 65 8b 3d 45 23 83 7e e8 80 20 90 ff 31
+> > ff 49 89 c6 e8 26 2d 90 ff 80 7d d7 00 0f 85 9e 01 00 00 fb 66 0f 1f
+> > 44 00 00 <45> 85 ff 0f 88 cf 00 00 00 49 63 cf 48 8d 04 49 48 8d 14 81
+> > 48 c1
+> > [  161.401397] RSP: 0018:ffffc900000d3e80 EFLAGS: 00000246
+> > [  161.407493] RAX: ffff88903fea5180 RBX: ffff88903feadf00 RCX: 000000000000001f
+> > [  161.415648] RDX: 0000000000000000 RSI: 0000000046ec0743 RDI: 0000000000000000
+> > [  161.423811] RBP: ffffc900000d3eb8 R08: 00000025881a3b81 R09: ffff888100317340
+> > [  161.432003] R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000003
+> > [  161.440154] R13: ffffffff824c7bc0 R14: 00000025881a3b81 R15: 0000000000000003
+> > [  161.448285]  0xffffffff817e357f
+> > [  161.452123]  0xffffffff810e6258
+> > [  161.455938]  0xffffffff810e63fb
+> > [  161.459746]  0xffffffff8104bec0
+> > [  161.463526]  0xffffffff810000f5
+> > [  161.467290] Modules linked in: pppoe ppp_async nft_fib_inet
+> > nf_flow_table_ipv 6 nf_flow_table_ipv4 nf_flow_table_inet wireguard
+> > pppox ppp_generic nft_reject_i pv6 nft_reject_ipv4 nft_reject_inet
+> > nft_reject nft_redir nft_quota nft_objref nf t_numgen nft_nat nft_masq
+> > nft_log nft_limit nft_hash nft_flow_offload nft_fib_ip v6 nft_fib_ipv4
+> > nft_fib nft_ct nft_counter nft_chain_nat nf_tables nf_nat nf_flo
+> > w_table nf_conntrack libchacha20poly1305 curve25519_x86_64
+> > chacha_x86_64 slhc r8 169 poly1305_x86_64 nfnetlink nf_reject_ipv6
+> > nf_reject_ipv4 nf_log_ipv6 nf_log_i pv4 nf_log_common nf_defrag_ipv6
+> > nf_defrag_ipv4 libcurve25519_generic libcrc32c libchacha igc forcedeth
+> > e1000e crc_ccitt bnx2 i2c_dev ixgbe e1000 amd_xgbe ip6_u dp_tunnel
+> > udp_tunnel mdio nls_utf8 ena kpp nls_iso8859_1 nls_cp437 vfat fat igb
+> > button_hotplug tg3 ptp realtek pps_core mii
+> > [  161.550507] ---[ end trace b1cb18ab2d1741bd ]---
+> > [  161.555938] RIP: 0010:0xffffffff813ce19f
+> > [  161.560634] Code: 03 01 4c 89 48 58 e9 2f ff ff ff 85 db 41 0f 95
+> > c2 45 39 d9 41 0f 95 c1 45 84 ca 74 05 45 85 e4 78 0a 44 89 c2 e9 10
+> > ff ff ff <0f> 0b 01 d2 45 89 c1 41 29 d1 ba 00 00 00 00 44 0f 48 ca eb
+> > 80 cc
+> > [  161.582281] RSP: 0018:ffffc90000118e88 EFLAGS: 00010283
+> > [  161.588426] RAX: ffff888101f8f200 RBX: ffffc900006f9bd0 RCX: 000000000000050e
+> > [  161.596668] RDX: ffff888101fec000 RSI: 0000000000000a1c RDI: 0000000000061a10
+> > [  161.604860] RBP: ffffc90000118ef8 R08: 0000000000000000 R09: 0000000000061502
+> > [  161.613052] R10: 0000000000000000 R11: 0000000000000000 R12: 00000000ffffff3f
+> > [  161.621291] R13: ffff888101f8f140 R14: 0000000000000000 R15: ffff888100ad9b00
+> > [  161.629505] FS:  0000000000000000(0000) GS:ffff88903fe80000(0000)
+> > knlGS:00000 00000000000
+> > [  161.638781] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> > [  161.645549] CR2: 00007f941ad43a9b CR3: 000000000340a000 CR4: 0000000000350ee0
+> > [  161.653841] Kernel panic - not syncing: Fatal exception in interrupt
+> > [  161.661287] Kernel Offset: disabled
+> > [  161.665644] Rebooting in 3 seconds..
+> > [  164.670313] ACPI MEMORY or I/O RESET_REG.
 > >
-> > > On Mon, Dec 19, 2022 at 9:03 PM <sdf@google.com> wrote:
-> > >>
-> > >> On 12/19, Lorenzo Bianconi wrote:
-> > >> > From: Marek Majtyka <alardam@gmail.com>
-> > >>
-> > >> > Implement support for checking what kind of XDP features a netdev
-> > >> > supports. Previously, there was no way to do this other than to try to
-> > >> > create an AF_XDP socket on the interface or load an XDP program and see
-> > >> > if it worked. This commit changes this by adding a new variable which
-> > >> > describes all xdp supported functions on pretty detailed level:
-> > >>
-> > >> >   - aborted
-> > >> >   - drop
-> > >> >   - pass
-> > >> >   - tx
-> > >> >   - redirect
-> > >> >   - sock_zerocopy
-> > >> >   - hw_offload
-> > >> >   - redirect_target
-> > >> >   - tx_lock
-> > >> >   - frag_rx
-> > >> >   - frag_target
-> > >>
-> > >> > Zerocopy mode requires that redirect XDP operation is implemented in a
-> > >> > driver and the driver supports also zero copy mode. Full mode requires
-> > >> > that all XDP operation are implemented in the driver. Basic mode is just
-> > >> > full mode without redirect operation. Frag target requires
-> > >> > redirect_target one is supported by the driver.
-> > >>
-> > >> Can you share more about _why_ is it needed? If we can already obtain
-> > >> most of these signals via probing, why export the flags?
-> > >>
-> > >> > Initially, these new flags are disabled for all drivers by default.
-> > >>
-> > >> > Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > >> > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > >> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > >> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > >> > Signed-off-by: Marek Majtyka <alardam@gmail.com>
-> > >> > ---
-> > >> >   .../networking/netdev-xdp-features.rst        | 60 +++++++++++++++++
-> > >> >   include/linux/netdevice.h                     |  2 +
-> > >> >   include/linux/xdp_features.h                  | 64 +++++++++++++++++++
-> > >> >   include/uapi/linux/if_link.h                  |  7 ++
-> > >> >   include/uapi/linux/xdp_features.h             | 34 ++++++++++
-> > >> >   net/core/rtnetlink.c                          | 34 ++++++++++
-> > >> >   tools/include/uapi/linux/if_link.h            |  7 ++
-> > >> >   tools/include/uapi/linux/xdp_features.h       | 34 ++++++++++
-> > >> >   8 files changed, 242 insertions(+)
-> > >> >   create mode 100644 Documentation/networking/netdev-xdp-features.rst
-> > >> >   create mode 100644 include/linux/xdp_features.h
-> > >> >   create mode 100644 include/uapi/linux/xdp_features.h
-> > >> >   create mode 100644 tools/include/uapi/linux/xdp_features.h
-> > >>
-> > >> > diff --git a/Documentation/networking/netdev-xdp-features.rst
-> > >> > b/Documentation/networking/netdev-xdp-features.rst
-> > >> > new file mode 100644
-> > >> > index 000000000000..1dc803fe72dd
-> > >> > --- /dev/null
-> > >> > +++ b/Documentation/networking/netdev-xdp-features.rst
-> > >> > @@ -0,0 +1,60 @@
-> > >> > +.. SPDX-License-Identifier: GPL-2.0
-> > >> > +
-> > >> > +=====================
-> > >> > +Netdev XDP features
-> > >> > +=====================
-> > >> > +
-> > >> > + * XDP FEATURES FLAGS
-> > >> > +
-> > >> > +Following netdev xdp features flags can be retrieved over route netlink
-> > >> > +interface (compact form) - the same way as netdev feature flags.
-> > >> > +These features flags are read only and cannot be change at runtime.
-> > >> > +
-> > >> > +*  XDP_ABORTED
-> > >> > +
-> > >> > +This feature informs if netdev supports xdp aborted action.
-> > >> > +
-> > >> > +*  XDP_DROP
-> > >> > +
-> > >> > +This feature informs if netdev supports xdp drop action.
-> > >> > +
-> > >> > +*  XDP_PASS
-> > >> > +
-> > >> > +This feature informs if netdev supports xdp pass action.
-> > >> > +
-> > >> > +*  XDP_TX
-> > >> > +
-> > >> > +This feature informs if netdev supports xdp tx action.
-> > >> > +
-> > >> > +*  XDP_REDIRECT
-> > >> > +
-> > >> > +This feature informs if netdev supports xdp redirect action.
-> > >> > +It assumes the all beforehand mentioned flags are enabled.
-> > >> > +
-> > >> > +*  XDP_SOCK_ZEROCOPY
-> > >> > +
-> > >> > +This feature informs if netdev driver supports xdp zero copy.
-> > >> > +It assumes the all beforehand mentioned flags are enabled.
-> > >> > +
-> > >> > +*  XDP_HW_OFFLOAD
-> > >> > +
-> > >> > +This feature informs if netdev driver supports xdp hw oflloading.
-> > >> > +
-> > >> > +*  XDP_TX_LOCK
-> > >> > +
-> > >> > +This feature informs if netdev ndo_xdp_xmit function requires locking.
-> > >> > +
-> > >> > +*  XDP_REDIRECT_TARGET
-> > >> > +
-> > >> > +This feature informs if netdev implements ndo_xdp_xmit callback.
-> > >> > +
-> > >> > +*  XDP_FRAG_RX
-> > >> > +
-> > >> > +This feature informs if netdev implements non-linear xdp buff support in
-> > >> > +the driver napi callback.
-> > >> > +
-> > >> > +*  XDP_FRAG_TARGET
-> > >> > +
-> > >> > +This feature informs if netdev implements non-linear xdp buff support in
-> > >> > +ndo_xdp_xmit callback. XDP_FRAG_TARGET requires XDP_REDIRECT_TARGET is
-> > >> > properly
-> > >> > +supported.
-> > >> > diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> > >> > index aad12a179e54..ae5a8564383b 100644
-> > >> > --- a/include/linux/netdevice.h
-> > >> > +++ b/include/linux/netdevice.h
-> > >> > @@ -43,6 +43,7 @@
-> > >> >   #include <net/xdp.h>
-> > >>
-> > >> >   #include <linux/netdev_features.h>
-> > >> > +#include <linux/xdp_features.h>
-> > >> >   #include <linux/neighbour.h>
-> > >> >   #include <uapi/linux/netdevice.h>
-> > >> >   #include <uapi/linux/if_bonding.h>
-> > >> > @@ -2362,6 +2363,7 @@ struct net_device {
-> > >> >       struct rtnl_hw_stats64  *offload_xstats_l3;
-> > >>
-> > >> >       struct devlink_port     *devlink_port;
-> > >> > +     xdp_features_t          xdp_features;
-> > >> >   };
-> > >> >   #define to_net_dev(d) container_of(d, struct net_device, dev)
-> > >>
-> > >> > diff --git a/include/linux/xdp_features.h b/include/linux/xdp_features.h
-> > >> > new file mode 100644
-> > >> > index 000000000000..4e72a86ef329
-> > >> > --- /dev/null
-> > >> > +++ b/include/linux/xdp_features.h
-> > >> > @@ -0,0 +1,64 @@
-> > >> > +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> > >> > +/*
-> > >> > + * Network device xdp features.
-> > >> > + */
-> > >> > +#ifndef _LINUX_XDP_FEATURES_H
-> > >> > +#define _LINUX_XDP_FEATURES_H
-> > >> > +
-> > >> > +#include <linux/types.h>
-> > >> > +#include <linux/bitops.h>
-> > >> > +#include <asm/byteorder.h>
-> > >> > +#include <uapi/linux/xdp_features.h>
-> > >> > +
-> > >> > +typedef u32 xdp_features_t;
-> > >> > +
-> > >> > +#define __XDP_F_BIT(bit)     ((xdp_features_t)1 << (bit))
-> > >> > +#define __XDP_F(name)                __XDP_F_BIT(XDP_F_##name##_BIT)
-> > >> > +
-> > >> > +#define XDP_F_ABORTED                __XDP_F(ABORTED)
-> > >> > +#define XDP_F_DROP           __XDP_F(DROP)
-> > >> > +#define XDP_F_PASS           __XDP_F(PASS)
-> > >> > +#define XDP_F_TX             __XDP_F(TX)
-> > >> > +#define XDP_F_REDIRECT               __XDP_F(REDIRECT)
-> > >> > +#define XDP_F_REDIRECT_TARGET        __XDP_F(REDIRECT_TARGET)
-> > >> > +#define XDP_F_SOCK_ZEROCOPY  __XDP_F(SOCK_ZEROCOPY)
-> > >> > +#define XDP_F_HW_OFFLOAD     __XDP_F(HW_OFFLOAD)
-> > >> > +#define XDP_F_TX_LOCK                __XDP_F(TX_LOCK)
-> > >> > +#define XDP_F_FRAG_RX                __XDP_F(FRAG_RX)
-> > >> > +#define XDP_F_FRAG_TARGET    __XDP_F(FRAG_TARGET)
-> > >> > +
-> > >> > +#define XDP_F_BASIC          (XDP_F_ABORTED | XDP_F_DROP |   \
-> > >> > +                              XDP_F_PASS | XDP_F_TX)
-> > >> > +
-> > >> > +#define XDP_F_FULL           (XDP_F_BASIC | XDP_F_REDIRECT)
-> > >> > +
-> > >> > +#define XDP_F_FULL_ZC                (XDP_F_FULL | XDP_F_SOCK_ZEROCOPY)
-> > >> > +
-> > >> > +#define XDP_FEATURES_ABORTED_STR             "xdp-aborted"
-> > >> > +#define XDP_FEATURES_DROP_STR                        "xdp-drop"
-> > >> > +#define XDP_FEATURES_PASS_STR                        "xdp-pass"
-> > >> > +#define XDP_FEATURES_TX_STR                  "xdp-tx"
-> > >> > +#define XDP_FEATURES_REDIRECT_STR            "xdp-redirect"
-> > >> > +#define XDP_FEATURES_REDIRECT_TARGET_STR     "xdp-redirect-target"
-> > >> > +#define XDP_FEATURES_SOCK_ZEROCOPY_STR               "xdp-sock-zerocopy"
-> > >> > +#define XDP_FEATURES_HW_OFFLOAD_STR          "xdp-hw-offload"
-> > >> > +#define XDP_FEATURES_TX_LOCK_STR             "xdp-tx-lock"
-> > >> > +#define XDP_FEATURES_FRAG_RX_STR             "xdp-frag-rx"
-> > >> > +#define XDP_FEATURES_FRAG_TARGET_STR         "xdp-frag-target"
-> > >> > +
-> > >> > +#define DECLARE_XDP_FEATURES_TABLE(name, length)                             \
-> > >> > +     const char name[][length] = {                                           \
-> > >> > +             [XDP_F_ABORTED_BIT] = XDP_FEATURES_ABORTED_STR,                 \
-> > >> > +             [XDP_F_DROP_BIT] = XDP_FEATURES_DROP_STR,                       \
-> > >> > +             [XDP_F_PASS_BIT] = XDP_FEATURES_PASS_STR,                       \
-> > >> > +             [XDP_F_TX_BIT] = XDP_FEATURES_TX_STR,                           \
-> > >> > +             [XDP_F_REDIRECT_BIT] = XDP_FEATURES_REDIRECT_STR,               \
-> > >> > +             [XDP_F_REDIRECT_TARGET_BIT] = XDP_FEATURES_REDIRECT_TARGET_STR, \
-> > >> > +             [XDP_F_SOCK_ZEROCOPY_BIT] = XDP_FEATURES_SOCK_ZEROCOPY_STR,     \
-> > >> > +             [XDP_F_HW_OFFLOAD_BIT] = XDP_FEATURES_HW_OFFLOAD_STR,           \
-> > >> > +             [XDP_F_TX_LOCK_BIT] = XDP_FEATURES_TX_LOCK_STR,                 \
-> > >> > +             [XDP_F_FRAG_RX_BIT] = XDP_FEATURES_FRAG_RX_STR,                 \
-> > >> > +             [XDP_F_FRAG_TARGET_BIT] = XDP_FEATURES_FRAG_TARGET_STR,         \
-> > >> > +     }
-> > >> > +
-> > >> > +#endif /* _LINUX_XDP_FEATURES_H */
-> > >> > diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-> > >> > index 1021a7e47a86..971c658ceaea 100644
-> > >> > --- a/include/uapi/linux/if_link.h
-> > >> > +++ b/include/uapi/linux/if_link.h
-> > >> > @@ -374,6 +374,8 @@ enum {
-> > >>
-> > >> >       IFLA_DEVLINK_PORT,
-> > >>
-> > >> > +     IFLA_XDP_FEATURES,
-> > >> > +
-> > >> >       __IFLA_MAX
-> > >> >   };
-> > >>
-> > >> > @@ -1318,6 +1320,11 @@ enum {
-> > >>
-> > >> >   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
-> > >>
-> > >> > +enum {
-> > >> > +     IFLA_XDP_FEATURES_WORD_UNSPEC = 0,
-> > >> > +     IFLA_XDP_FEATURES_BITS_WORD,
-> > >> > +};
-> > >> > +
-> > >> >   enum {
-> > >> >       IFLA_EVENT_NONE,
-> > >> >       IFLA_EVENT_REBOOT,              /* internal reset / reboot */
-> > >> > diff --git a/include/uapi/linux/xdp_features.h
-> > >> > b/include/uapi/linux/xdp_features.h
-> > >> > new file mode 100644
-> > >> > index 000000000000..48eb42069bcd
-> > >> > --- /dev/null
-> > >> > +++ b/include/uapi/linux/xdp_features.h
-> > >> > @@ -0,0 +1,34 @@
-> > >> > +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-> > >> > +/*
-> > >> > + * Copyright (c) 2020 Intel
-> > >> > + */
-> > >> > +
-> > >> > +#ifndef __UAPI_LINUX_XDP_FEATURES__
-> > >> > +#define __UAPI_LINUX_XDP_FEATURES__
-> > >> > +
-> > >> > +enum {
-> > >> > +     XDP_F_ABORTED_BIT,
-> > >> > +     XDP_F_DROP_BIT,
-> > >> > +     XDP_F_PASS_BIT,
-> > >> > +     XDP_F_TX_BIT,
-> > >> > +     XDP_F_REDIRECT_BIT,
-> > >> > +     XDP_F_REDIRECT_TARGET_BIT,
-> > >> > +     XDP_F_SOCK_ZEROCOPY_BIT,
-> > >> > +     XDP_F_HW_OFFLOAD_BIT,
-> > >> > +     XDP_F_TX_LOCK_BIT,
-> > >> > +     XDP_F_FRAG_RX_BIT,
-> > >> > +     XDP_F_FRAG_TARGET_BIT,
-> > >> > +     /*
-> > >> > +      * Add your fresh new property above and remember to update
-> > >> > +      * documentation.
-> > >> > +      */
-> > >> > +     XDP_FEATURES_COUNT,
-> > >> > +};
-> > >> > +
-> > >> > +#define XDP_FEATURES_WORDS                   ((XDP_FEATURES_COUNT + 32 - 1) / 32)
-> > >> > +#define XDP_FEATURES_WORD(blocks, index)     ((blocks)[(index) / 32U])
-> > >> > +#define XDP_FEATURES_FIELD_FLAG(index)               (1U << (index) % 32U)
-> > >> > +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
-> > >> > +     (XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLAG(index))
-> > >> > +
-> > >> > +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
-> > >> > diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-> > >> > index 64289bc98887..1c299746b614 100644
-> > >> > --- a/net/core/rtnetlink.c
-> > >> > +++ b/net/core/rtnetlink.c
-> > >> > @@ -1016,6 +1016,14 @@ static size_t rtnl_xdp_size(void)
-> > >> >       return xdp_size;
-> > >> >   }
-> > >>
-> > >> > +static size_t rtnl_xdp_features_size(void)
-> > >> > +{
-> > >> > +     size_t xdp_size = nla_total_size(0) +   /* nest IFLA_XDP_FEATURES */
-> > >> > +                       XDP_FEATURES_WORDS * nla_total_size(4);
-> > >> > +
-> > >> > +     return xdp_size;
-> > >> > +}
-> > >> > +
-> > >> >   static size_t rtnl_prop_list_size(const struct net_device *dev)
-> > >> >   {
-> > >> >       struct netdev_name_node *name_node;
-> > >> > @@ -1103,6 +1111,7 @@ static noinline size_t if_nlmsg_size(const struct
-> > >> > net_device *dev,
-> > >> >              + rtnl_prop_list_size(dev)
-> > >> >              + nla_total_size(MAX_ADDR_LEN) /* IFLA_PERM_ADDRESS */
-> > >> >              + rtnl_devlink_port_size(dev)
-> > >> > +            + rtnl_xdp_features_size() /* IFLA_XDP_FEATURES */
-> > >> >              + 0;
-> > >> >   }
-> > >>
-> > >> > @@ -1546,6 +1555,27 @@ static int rtnl_xdp_fill(struct sk_buff *skb,
-> > >> > struct net_device *dev)
-> > >> >       return err;
-> > >> >   }
-> > >>
-> > >> > +static int rtnl_xdp_features_fill(struct sk_buff *skb, struct net_device
-> > >> > *dev)
-> > >> > +{
-> > >> > +     struct nlattr *attr;
-> > >> > +
-> > >> > +     attr = nla_nest_start_noflag(skb, IFLA_XDP_FEATURES);
-> > >> > +     if (!attr)
-> > >> > +             return -EMSGSIZE;
-> > >> > +
-> > >> > +     BUILD_BUG_ON(XDP_FEATURES_WORDS != 1);
-> > >> > +     if (nla_put_u32(skb, IFLA_XDP_FEATURES_BITS_WORD, dev->xdp_features))
-> > >> > +             goto err_cancel;
-> > >> > +
-> > >> > +     nla_nest_end(skb, attr);
-> > >> > +
-> > >> > +     return 0;
-> > >> > +
-> > >> > +err_cancel:
-> > >> > +     nla_nest_cancel(skb, attr);
-> > >> > +     return -EMSGSIZE;
-> > >> > +}
-> > >> > +
-> > >> >   static u32 rtnl_get_event(unsigned long event)
-> > >> >   {
-> > >> >       u32 rtnl_event_type = IFLA_EVENT_NONE;
-> > >> > @@ -1904,6 +1934,9 @@ static int rtnl_fill_ifinfo(struct sk_buff *skb,
-> > >> >       if (rtnl_fill_devlink_port(skb, dev))
-> > >> >               goto nla_put_failure;
-> > >>
-> > >> > +     if (rtnl_xdp_features_fill(skb, dev))
-> > >> > +             goto nla_put_failure;
-> > >> > +
-> > >> >       nlmsg_end(skb, nlh);
-> > >> >       return 0;
-> > >>
-> > >> > @@ -1968,6 +2001,7 @@ static const struct nla_policy
-> > >> > ifla_policy[IFLA_MAX+1] = {
-> > >> >       [IFLA_TSO_MAX_SIZE]     = { .type = NLA_REJECT },
-> > >> >       [IFLA_TSO_MAX_SEGS]     = { .type = NLA_REJECT },
-> > >> >       [IFLA_ALLMULTI]         = { .type = NLA_REJECT },
-> > >> > +     [IFLA_XDP_FEATURES]     = { .type = NLA_NESTED },
-> > >> >   };
-> > >>
-> > >> >   static const struct nla_policy ifla_info_policy[IFLA_INFO_MAX+1] = {
-> > >> > diff --git a/tools/include/uapi/linux/if_link.h
-> > >> > b/tools/include/uapi/linux/if_link.h
-> > >> > index 82fe18f26db5..994228e9909a 100644
-> > >> > --- a/tools/include/uapi/linux/if_link.h
-> > >> > +++ b/tools/include/uapi/linux/if_link.h
-> > >> > @@ -354,6 +354,8 @@ enum {
-> > >>
-> > >> >       IFLA_DEVLINK_PORT,
-> > >>
-> > >> > +     IFLA_XDP_FEATURES,
-> > >> > +
-> > >> >       __IFLA_MAX
-> > >> >   };
-> > >>
-> > >> > @@ -1222,6 +1224,11 @@ enum {
-> > >>
-> > >> >   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
-> > >>
-> > >> > +enum {
-> > >> > +     IFLA_XDP_FEATURES_WORD_UNSPEC = 0,
-> > >> > +     IFLA_XDP_FEATURES_BITS_WORD,
-> > >> > +};
-> > >> > +
-> > >> >   enum {
-> > >> >       IFLA_EVENT_NONE,
-> > >> >       IFLA_EVENT_REBOOT,              /* internal reset / reboot */
-> > >> > diff --git a/tools/include/uapi/linux/xdp_features.h
-> > >> > b/tools/include/uapi/linux/xdp_features.h
-> > >> > new file mode 100644
-> > >> > index 000000000000..48eb42069bcd
-> > >> > --- /dev/null
-> > >> > +++ b/tools/include/uapi/linux/xdp_features.h
-> > >> > @@ -0,0 +1,34 @@
-> > >> > +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-> > >> > +/*
-> > >> > + * Copyright (c) 2020 Intel
-> > >> > + */
-> > >> > +
-> > >> > +#ifndef __UAPI_LINUX_XDP_FEATURES__
-> > >> > +#define __UAPI_LINUX_XDP_FEATURES__
-> > >> > +
-> > >> > +enum {
-> > >> > +     XDP_F_ABORTED_BIT,
-> > >> > +     XDP_F_DROP_BIT,
-> > >> > +     XDP_F_PASS_BIT,
-> > >> > +     XDP_F_TX_BIT,
-> > >> > +     XDP_F_REDIRECT_BIT,
-> > >> > +     XDP_F_REDIRECT_TARGET_BIT,
-> > >> > +     XDP_F_SOCK_ZEROCOPY_BIT,
-> > >> > +     XDP_F_HW_OFFLOAD_BIT,
-> > >> > +     XDP_F_TX_LOCK_BIT,
-> > >> > +     XDP_F_FRAG_RX_BIT,
-> > >> > +     XDP_F_FRAG_TARGET_BIT,
-> > >> > +     /*
-> > >> > +      * Add your fresh new property above and remember to update
-> > >> > +      * documentation.
-> > >> > +      */
-> > >> > +     XDP_FEATURES_COUNT,
-> > >> > +};
-> > >> > +
-> > >> > +#define XDP_FEATURES_WORDS                   ((XDP_FEATURES_COUNT + 32 - 1) / 32)
-> > >> > +#define XDP_FEATURES_WORD(blocks, index)     ((blocks)[(index) / 32U])
-> > >> > +#define XDP_FEATURES_FIELD_FLAG(index)               (1U << (index) % 32U)
-> > >> > +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
-> > >> > +     (XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLAG(index))
-> > >> > +
-> > >> > +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
-> > >> > --
-> > >> > 2.38.1
-> > >>
-> >
+> > Kyle.
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
