@@ -1,88 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A11F7651BFB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 08:50:49 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6883651D25
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 10:20:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 204E681959;
-	Tue, 20 Dec 2022 07:50:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 204E681959
+	by smtp2.osuosl.org (Postfix) with ESMTP id 680E14013C;
+	Tue, 20 Dec 2022 09:20:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 680E14013C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671522648;
-	bh=Q1494joUkLjQwBWGYeycya3kPm+gr0KH24w8nss6HY4=;
+	s=default; t=1671528053;
+	bh=+dsJGjSyUOYcT9DHigziOkFhVkC3wSjYS52d16ocdlQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ljVpTtdVpFB+ELCqRpmf761+fj5LPfzg5SkFlZXTnD472IAVPFkOAZ4sHTBcsF3eW
-	 sxmot0DdRlrq3qA+mbEOD7CB2fx4J9mnebP3ueTeKsw+uiIWQykISylhO+10K8kxmo
-	 cOYSV478qC5uKX0IWCI76BgoCuxRjff0JUhgG3WgJq6X8pNvwwoIBtkSepFGqdwnH9
-	 aLa83lAyo2L04FfcX3QGP8bLaXAtYcpy/k3fM7VCfHyDbPeXuSAkeadpAcTy9MEztt
-	 hoaiJKkqi+HLrPs4CCFuPYcBkwPaWx/fMkY4tSR9JBs7sPsyzbIZdTvyI0ru2/YxKm
-	 KNtesYPk+Tzxg==
+	b=FFeEjanNggKTch0dvDBom4IjshUTFU+DkxIHtFnRRGaHmVphb0O/I5rSyQ6mb9GDy
+	 QMYKHeth1Qkyy9iDAmTj+IKvohhzUveikJ/JmVweTCLaIuNbJDNsa7zAO4JmzLQ4IC
+	 Fw3l8NJtMsxqKd4v8TRhIgNHzOtUXxmV01/E9dx8bXloOykyUW6SKec0fbB0fNdoXF
+	 7yuVEbL99Ji5FI0GQ9eXfTdnJ+OFQcnQmUt7iJlqP4KwclPDXeTQ0uAX3gyTLki+ks
+	 e0nnbygxl5rr5OWcdor3aRn7nszEnIkyXUXcg0MHfnTyuV3bbO41Rm/jmKQ40Q5u+l
+	 9rEBsiwipHBOQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 10d2gbFAuqpZ; Tue, 20 Dec 2022 07:50:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cT6q5cFVcilk; Tue, 20 Dec 2022 09:20:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23803818C9;
-	Tue, 20 Dec 2022 07:50:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23803818C9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 41ACF40134;
+	Tue, 20 Dec 2022 09:20:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 41ACF40134
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A57F71BF300
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D65681BF421
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 09:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8C38A60AA0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C38A60AA0
+ by smtp2.osuosl.org (Postfix) with ESMTP id AFDE640134
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 09:20:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFDE640134
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TKBiFAVhsGVK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ovj24LSXsQvb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Dec 2022 09:20:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF57E60A6A
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EF57E60A6A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="405802824"
-X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; d="scan'208";a="405802824"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2022 23:50:41 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="739663471"
-X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; d="scan'208";a="739663471"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2022 23:50:38 -0800
-Date: Tue, 20 Dec 2022 08:50:28 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Daniil Tatianin <d-tatianin@yandex-team.ru>
-Message-ID: <Y6FpRFt0A3NrabS8@localhost.localdomain>
-References: <20221220063246.1593327-1-d-tatianin@yandex-team.ru>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70DEF400D9
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 70DEF400D9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 09:20:42 +0000 (UTC)
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-631-XX-UxJ1NNzWAlBf4GECc5w-1; Tue, 20 Dec 2022 04:20:37 -0500
+X-MC-Unique: XX-UxJ1NNzWAlBf4GECc5w-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ bg25-20020a05600c3c9900b003cf3ed7e27bso6289328wmb.4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 01:20:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ujmnLoyVJXLiCxEsBRx4BmSv6UWqVaJvSMF8bKF07KM=;
+ b=NIeukQ7/E0NMAeQdaGnNDX72r4qpvu/yoiBFLwRynk2rTGFdxKKaBTWbPWc7DxOh6f
+ zWeXPrbsHtuKTQVgTIaXIFCV3HShR60VkZMEdvUwB/qNYsqFNhiU/xY1mXeaz0/Co1fw
+ 9d30l0lsYfpfLqrIa7zkrDP2UXeeRW1okncH/MJmBmsFsqPwTlxdHMyYg1aiq6hDdxHC
+ 9aNXpVAus7gvqYoPTAnXjseIz0TBNt6KvKIkqkWwb0el3rpE8iJEGxFLyhnuaEd8WPJI
+ Hz79+CAIEx3lkT43wvboHRUm+8emXr0oj4T0qGz+HGYG3Mt4dYVythpZRsZTszIHDPLG
+ cpYA==
+X-Gm-Message-State: AFqh2kpQyEe5K/6PY/HpVAtjt2567gk8QJdsJFjMqbTdlkzUV85FOYD1
+ jxgI2i6F78HPrpZ1rW2m6iqTdNcJJPXG/s/ArRNW7pEpytbDnV/XxVi7z8JQB54t0EuMxrte0LG
+ nXAq2WrbQqzV/FmOj0xmPLcDrX3B/kg==
+X-Received: by 2002:a05:6000:883:b0:236:70ab:4bbb with SMTP id
+ ca3-20020a056000088300b0023670ab4bbbmr14407711wrb.1.1671528036275; 
+ Tue, 20 Dec 2022 01:20:36 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXsivxyPNqa4ow7Gezj3o5cxRM8MurV1PJ518/If0yw9qu5gJmc6Iixr5Kz6J+CWQZYsy58Uaw==
+X-Received: by 2002:a05:6000:883:b0:236:70ab:4bbb with SMTP id
+ ca3-20020a056000088300b0023670ab4bbbmr14407667wrb.1.1671528035950; 
+ Tue, 20 Dec 2022 01:20:35 -0800 (PST)
+Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it.
+ [188.216.77.84]) by smtp.gmail.com with ESMTPSA id
+ ck5-20020a5d5e85000000b00257795ffcc8sm12288226wrb.73.2022.12.20.01.20.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Dec 2022 01:20:34 -0800 (PST)
+Date: Tue, 20 Dec 2022 10:20:32 +0100
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <Y6F+YJSkI19m/kMv@lore-desk>
+References: <cover.1671462950.git.lorenzo@kernel.org>
+ <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
+ <20221219171321.7a67002b@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20221220063246.1593327-1-d-tatianin@yandex-team.ru>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671522641; x=1703058641;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=y7kzW7wiQHNQKgWsYnF0m+caBPul5zY67fLc8pu5Ed0=;
- b=VlcdIWfxC4iflPYlY4W+zOn0vjR/B5n76OYcE5nbV2AvKHlbkxkiEtay
- XdZCLKJkR0tk0NUBhSyP743lwEIQFWCngCdgsua3dtml8Gwq5Em/KR2fY
- zyrGDGkpHwfgvU6f9kfQqApYqsillZ0i07SEigTu6VVrNZ7ho7CP3XK/5
- HYU/ifgUMlc8CEb3+C+RcDEonf3S9xRp9Wzud3G5nVAvNAoJfodpG6wdq
- xEyKYSrgDu6MTRQYnAjHcFseciknfPJmizjKQtAmFBVGf7lTMbr8f/e1/
- fMDwoi6XpeCJbb0r4NVH44LtfpfFfV6Eom9GOwKpNCJzmfYyKEfDyXwBx
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VlcdIWfx
-Subject: Re: [Intel-wired-lan] [PATCH v2] iavf/iavf_main: actually log ->src
- mask when talking about it
+In-Reply-To: <20221219171321.7a67002b@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1671528041;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ujmnLoyVJXLiCxEsBRx4BmSv6UWqVaJvSMF8bKF07KM=;
+ b=CxuFmB+h66cP3Iy9GqPotuBXQEXy4eY6+6JYGrNV7btDGlpuOTA4K3I+ZXszNwAfHENADb
+ zyDofUTEPxX7MsaNQ4we9+1VRGNsawCVBt1dXtcFXVIrk6U6aPuOPBMuuwfh1QYzADvi6w
+ pHliB1Xe86LIVUAmHx6l8xPoXMEgQHc=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=CxuFmB+h
+Subject: Re: [Intel-wired-lan] [RFC bpf-next 2/8] net: introduce XDP
+ features flag
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,53 +119,160 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
+ grygorii.strashko@ti.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============4780419319838906862=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 20, 2022 at 09:32:46AM +0300, Daniil Tatianin wrote:
-> This fixes a copy-paste issue where dev_err would log the dst mask even
-> though it is clearly talking about src.
-> 
-> Found by Linux Verification Center (linuxtesting.org) with the SVACE
-> static analysis tool.
-> 
-> Fixes: 0075fa0fadd0 ("i40evf: Add support to apply cloud filters")
-> Signed-off-by: Daniil Tatianin <d-tatianin@yandex-team.ru>
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index c4e451ef7942..adc02adef83a 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -3850,7 +3850,7 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
->  				field_flags |= IAVF_CLOUD_FIELD_IIP;
->  			} else {
->  				dev_err(&adapter->pdev->dev, "Bad ip src mask 0x%08x\n",
-> -					be32_to_cpu(match.mask->dst));
-> +					be32_to_cpu(match.mask->src));
->  				return -EINVAL;
->  			}
->  		}
-> -- 
-> 2.25.1
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+--===============4780419319838906862==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GGYTRaTKhvn+rvn6"
+Content-Disposition: inline
 
-It is good practise to include changelog in message when You send
-another version. For example:
 
-v1:
- * change fix tag to 12 chars
+--GGYTRaTKhvn+rvn6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On Mon, 19 Dec 2022 16:41:31 +0100 Lorenzo Bianconi wrote:
+> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > +Netdev XDP features
+> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > +
+> > + * XDP FEATURES FLAGS
+> > +
+> > +Following netdev xdp features flags can be retrieved over route netlink
+> > +interface (compact form) - the same way as netdev feature flags.
+>=20
+> How likely is it that I'll be able to convince you that cramming more
+> stuff in rtnl is a bad idea? I can convert this for you to a YAML-
+> -compatible genetlink family for you in a jiffy, just say yes :S
+>=20
+> rtnl is hard to parse, and already overloaded with random stuff.
+> And the messages are enormous.
+
+Hi Jakub,
+
+I am fine to use YAML for this, but I will let Marek comment since he is the
+original author of this patch.
+
+>=20
+> > +These features flags are read only and cannot be change at runtime.
+> > +
+> > +*  XDP_ABORTED
+> > +
+> > +This feature informs if netdev supports xdp aborted action.
+> > +
+> > +*  XDP_DROP
+> > +
+> > +This feature informs if netdev supports xdp drop action.
+> > +
+> > +*  XDP_PASS
+> > +
+> > +This feature informs if netdev supports xdp pass action.
+> > +
+> > +*  XDP_TX
+> > +
+> > +This feature informs if netdev supports xdp tx action.
+> > +
+> > +*  XDP_REDIRECT
+> > +
+> > +This feature informs if netdev supports xdp redirect action.
+> > +It assumes the all beforehand mentioned flags are enabled.
+> > +
+> > +*  XDP_SOCK_ZEROCOPY
+> > +
+> > +This feature informs if netdev driver supports xdp zero copy.
+> > +It assumes the all beforehand mentioned flags are enabled.
+>=20
+> Why is this "assumption" worth documenting?
+
+I guess we can remove it.
+@Marek: any comment?
+
+>=20
+> > +*  XDP_HW_OFFLOAD
+> > +
+> > +This feature informs if netdev driver supports xdp hw oflloading.
+> > +
+> > +*  XDP_TX_LOCK
+> > +
+> > +This feature informs if netdev ndo_xdp_xmit function requires locking.
+>=20
+> Why is it relevant to the user?
+
+Probably not, I kept it since it was in Marek's original patch.
+@Marek: any comment?
+
+>=20
+> > +*  XDP_REDIRECT_TARGET
+> > +
+> > +This feature informs if netdev implements ndo_xdp_xmit callback.
+>=20
+> Does it make sense to rename XDP_REDIRECT -> XDP_REDIRECT_SOURCE then?
+
+yes, naming is always hard :)
+
+>=20
+> > +*  XDP_FRAG_RX
+> > +
+> > +This feature informs if netdev implements non-linear xdp buff support =
+in
+> > +the driver napi callback.
+>=20
+> Who's the target audience? Maybe FRAG is not the best name?
+> Scatter-gather or multi-buf may be more widely understood.
+
+ack, fine. I will rename it in the formal series.
+
+Regards,
+Lorenzo
+
+>=20
+> > +*  XDP_FRAG_TARGET
+> > +
+> > +This feature informs if netdev implements non-linear xdp buff support =
+in
+> > +ndo_xdp_xmit callback. XDP_FRAG_TARGET requires XDP_REDIRECT_TARGET is=
+ properly
+> > +supported.
+>=20
+
+--GGYTRaTKhvn+rvn6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6F+YAAKCRA6cBh0uS2t
+rDNnAP9RoSpPR93+gszTrBsVMLSSp5AzTlLLx7YHUTxLsyMxxgD+IN8mb+rWF7B+
+XNQZPdvh0IgYgn1cKAUKey2wbHrjrAw=
+=5s7n
+-----END PGP SIGNATURE-----
+
+--GGYTRaTKhvn+rvn6--
+
+
+--===============4780419319838906862==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4780419319838906862==--
+
