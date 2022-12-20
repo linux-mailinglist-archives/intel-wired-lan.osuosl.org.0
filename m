@@ -2,74 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 751B1652728
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 20:40:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A2AE16528EA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 23:25:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 029D4404EE;
-	Tue, 20 Dec 2022 19:40:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 029D4404EE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 33781417FA;
+	Tue, 20 Dec 2022 22:25:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 33781417FA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671565208;
-	bh=iWSEE8Cjjl6fwA86u4R3W5xljq5hrEzVhvFcXrBap/8=;
+	s=default; t=1671575146;
+	bh=T/1YkOb/gypoeUFgC1tvmpfA97VKOj0Bkr8HFCGaSpg=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rA4ON0163l2lUEkMfus20RR+R/L5lGdLy4C0018a1WBRMJC8a52zCVlDHQKRdYFKM
-	 t6j6JAo+8WS8Ga6BkDACkDUUmEc1e8shhLr27yW6XFar+617pY60p8E1U4ADmAqxyI
-	 Yxl2uaMQnpZb/Kb/cOBiBKNHFPb4iKUXVRus3l66MRcGjRRhfcudBHj0H05Tsu3T1R
-	 WWF4HB0q4Me9M8bLU5t2rU/vOEmLEeuCtSoyhB52ZSDO0Mmvdj+LjSBzu9LWPH8DLu
-	 RhIwArPuEmyHiNsveJEkonWkL+OOOQkI8fv6R0Vf27ohBC62x+oRMyHvL3J34mhm5F
-	 vAqUso/ysYmJA==
+	b=PK29RFvDZdOM+/t+nOm39xn7onKV9sOypfBvhtgVyfQQ7oeNadv0fgjg2xryJxrjO
+	 0rneZf7tpKN05JPk8Kr+wkPk45xPRb7wH52o2dfBvvpeC1QgU43WSRKB3wKxx2sX0+
+	 3CUUpSaK8ipoCfzmaRhE0NwoPf0l6wnH6eURBaaPyvICHniD3JCeLV0Z6PyhV2gQxx
+	 BljUhcCO1cyoEPGHfwTr2gxg1esAdhRQT/Yhmlf8mCnaj7njN5y8ysByvszj2ogJJ7
+	 +5uM6msk9uIa1bQezONvm0KHfRKhoQ5Pz48aV/ovM5QZk/wUJDfFGf0xvOesOFZSvF
+	 EDLZwD68woXzA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BDF9ya4sYBdi; Tue, 20 Dec 2022 19:40:06 +0000 (UTC)
+	with ESMTP id kisp43JG3PDH; Tue, 20 Dec 2022 22:25:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A59640276;
-	Tue, 20 Dec 2022 19:40:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A59640276
+	by smtp4.osuosl.org (Postfix) with ESMTP id E334E415BF;
+	Tue, 20 Dec 2022 22:25:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E334E415BF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C6F501BF59B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 19:40:01 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C66BD1BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 22:25:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AE87860FB6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 19:40:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE87860FB6
+ by smtp1.osuosl.org (Postfix) with ESMTP id A012D81E19
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 22:25:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A012D81E19
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8XGdkcVoXsnt for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Dec 2022 19:40:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id A9ydPc59jo6s for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Dec 2022 22:25:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A0A360A99
-Received: from jabberwock.ucw.cz (jabberwock.ucw.cz [46.255.230.98])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3A0A360A99
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 19:40:00 +0000 (UTC)
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
- id 8D0971C09F9; Tue, 20 Dec 2022 20:39:56 +0100 (CET)
-Date: Tue, 20 Dec 2022 20:39:56 +0100
-From: Pavel Machek <pavel@ucw.cz>
-To: Steven Rostedt <rostedt@goodmis.org>
-Message-ID: <Y6IPjC9mpnoquL8S@duo.ucw.cz>
-References: <20221220134519.3dd1318b@gandalf.local.home>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D51ED81DF8
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D51ED81DF8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 22:25:36 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id B3151B819DB;
+ Tue, 20 Dec 2022 22:25:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98090C433D2;
+ Tue, 20 Dec 2022 22:25:31 +0000 (UTC)
+Date: Tue, 20 Dec 2022 23:25:27 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Stanislav Fomichev <sdf@google.com>
+Message-ID: <Y6I2VyBCz7YRxxTR@localhost.localdomain>
+References: <cover.1671462950.git.lorenzo@kernel.org>
+ <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
+ <Y6DDfVhOWRybVNUt@google.com>
+ <CAAOQfrFGArAYPyBX_kw4ZvFrTjKXf-jG-2F2y69nOs-oQ8Onwg@mail.gmail.com>
+ <CAKH8qBuktjBcY_CuqqkWs74oBB8Mnkm638Cb=sF38H4kPAx3NQ@mail.gmail.com>
+ <Y6GKN/1iOC9eTsEE@lore-desk>
+ <CAKH8qBts19wxSDAKk0SBk76ftvdK+sW6d3ufcBWoV5cMa2ENpA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20221220134519.3dd1318b@gandalf.local.home>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ucw.cz; s=gen1; t=1671565196;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Z6Z4LV97YlfeiHNsI0GPtvBWuPiFBia9iXHj9p0V7f4=;
- b=iSK/6k6YdYfe0pf3QIaGF0m9os72nxF3CAqc4kVpFydNcBeDZyAXwLd29ygI3aWdCD/P4E
- hjb1tP04xpxvEqTGSku5jVwZ3Ze5vyiRMUS/PfukmleXTPDA24OIQLtf5lIYLLX2i19Nc9
- ctnIK+xkRK2AK199jxQW3iEge/uxrTY=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=ucw.cz header.i=@ucw.cz header.a=rsa-sha256
- header.s=gen1 header.b=iSK/6k6Y
-Subject: Re: [Intel-wired-lan] [PATCH] treewide: Convert del_timer*() to
- timer_shutdown*()
+In-Reply-To: <CAKH8qBts19wxSDAKk0SBk76ftvdK+sW6d3ufcBWoV5cMa2ENpA@mail.gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1671575132;
+ bh=/WLECdTWypMK29cx8baP/3PviucI5f926j7QQ7kIpWM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jN17SU3eEeEq72Wc07MXrAXVN4QYdX4hwE01ZHx7LxpzkECzT2aHGT1aeNWVNhwEI
+ BeLPOFqFdqO/lYXavYNyIvuw+5zrLkh0GtMWazQ92ysgDrjqpNIfmisqs+lfKh+ufr
+ 4EL57lxUsT3wvHUp8wh5pCNOS1HWwqqRPTZjpUYXWxpQaIftJM/V/mv8DuwzUzH0Q8
+ 6pNzdcuvWGRFWGTLIjXtnhDzOnwLc69YUfcEo1P/B+APbSU4GX91h6mKirvAX+JzpG
+ rC53b0FQfKV9cUp3wzNLSuQTTfOy+tGsVhbnn3TdpaYMyM5z3NHjkIsKdmy+US3JpT
+ SuJU2N6Cx3Pew==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jN17SU3e
+Subject: Re: [Intel-wired-lan] [RFC bpf-next 2/8] net: introduce XDP
+ features flag
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,97 +95,617 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-staging@lists.linux.dev,
- linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-leds@vger.kernel.org, drbd-dev@lists.linbit.com,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, lvs-devel@vger.kernel.org,
- linux-acpi@vger.kernel.org, SHA-cyfmac-dev-list@infineon.com,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-input@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-ext4@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
- linux-media@vger.kernel.org, bridge@lists.linux-foundation.org,
- intel-gfx@lists.freedesktop.org, linux-nfs@vger.kernel.org,
- linux-block@vger.kernel.org, cgroups@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- Anna-Maria Gleixner <anna-maria@linutronix.de>,
- brcm80211-dev-list.pdl@broadcom.com, Stephen Boyd <sboyd@kernel.org>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- Julia Lawall <Julia.Lawall@inria.fr>, linux-bluetooth@vger.kernel.org,
- netfilter-devel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- Linus Torvalds <torvalds@linux-foundation.org>
-Content-Type: multipart/mixed; boundary="===============0169596105498197662=="
+Cc: mst@redhat.com, simon.horman@corigine.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, vladimir.oltean@nxp.com,
+ kuba@kernel.org, pabeni@redhat.com, grygorii.strashko@ti.com,
+ aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
+ memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
+ magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
+ toke@redhat.com, ecree.xilinx@gmail.com, Marek Majtyka <alardam@gmail.com>,
+ gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============1339987235843552724=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============0169596105498197662==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Q4QndSuPZQc8d5xp"
+--===============1339987235843552724==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2lNipPbgN3x5Io4s"
 Content-Disposition: inline
 
 
---Q4QndSuPZQc8d5xp
+--2lNipPbgN3x5Io4s
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue 2022-12-20 13:45:19, Steven Rostedt wrote:
-> [
->   Linus,
+> On Tue, Dec 20, 2022 at 2:11 AM Lorenzo Bianconi
+> <lorenzo.bianconi@redhat.com> wrote:
+> >
+> > On Dec 19, Stanislav Fomichev wrote:
+> > > On Mon, Dec 19, 2022 at 3:51 PM Marek Majtyka <alardam@gmail.com> wro=
+te:
+> > > >
+> > > > At the time of writing, I wanted to be able to read additional info=
+rmation about the XDP capabilities of each network interface using ethtool.=
+ This change was intended for Linux users/admins, and not for XDP experts w=
+ho mostly don't need it and prefer tasting XDP with netlink and bpf rather =
+than reading network interface features with ethtool.
+> > >
+> > > Anything preventing ethtool from doing probing similar to 'bpftool
+> > > feature probe'?
+> > > The problem with these feature bits is that they might diverge and/or
+> > > not work at all for the backported patches (where the fix/feature has
+> > > been backported, but the part that exports the bit hasn't) :-(
+> > > OTOH, I'm not sure we can probe everything from your list, but we
+> > > might try and see what's missing..
+> >
+> > Hi Stanislav,
+> >
+> > I have not added the ethtool support to this series yet since userspace=
+ part is
+> > still missing but I think we can consider XDP as a sort of sw offload s=
+o it
+> > would be nice for the user/sysadmin (not xdp or bpf developer) to check=
+ the NIC
+> > XDP capabilities similar to what we can already do for other hw offload
+> > features.
 >=20
->     I ran the script against your latest master branch:
->     commit b6bb9676f2165d518b35ba3bea5f1fcfc0d969bf
+> [..]
 >=20
->     As the timer_shutdown*() code is now in your tree, I figured
->     we can start doing the conversions. At least add the trivial ones
->     now as Thomas suggested that this gets applied at the end of the
->     merge window, to avoid conflicts with linux-next during the
->     development cycle. I can wait to Friday to run it again, and
->     resubmit.
+> > Moreover let's consider XDP_REDIRECT of a scatter-gather XDP frame into=
+ a
+> > devmap. I do not think there is a way to test if the 'target' device su=
+pports
+> > SG and so we are forced to disable this feature until all drivers suppo=
+rt it.
 >=20
->     What is the best way to handle this?
-> ]
->=20
-> From: "Steven Rostedt (Google)" <rostedt@goodmis.org>
->=20
-> Due to several bugs caused by timers being re-armed after they are
-> shutdown and just before they are freed, a new state of timers was added
-> called "shutdown". After a timer is set to this state, then it can no
-> longer be re-armed.
->=20
-> The following script was run to find all the trivial locations where
-> del_timer() or del_timer_sync() is called in the same function that the
-> object holding the timer is freed. It also ignores any locations where the
-> timer->function is modified between the del_timer*() and the free(), as
-> that is not considered a "trivial" case.
->=20
-> This was created by using a coccinelle script and the following
-commands:
+> See below for more questions, but why "target device has prog
+> installed and the aux->xdp_has_frags =3D=3D true" won't work for the
+> internal kernel consumers?
 
-LED parts looks good to me.
+There are some drivers (e.g. all intel ones) that currently do not support
+non-linear xdp buff in the driver napi callback (XDP_FRAG_RX) but implement
+non-linear xdp buff support in ndo_xdp_xmit callback (XDP_FRAG_TARGET).
+Moreover, I guess for a sysadmin it would be better to check NIC capabiliti=
+es in
+the same way he/she is used to with other features (e.g. ethool -k ...).
 
-Getting it in just before -rc1 would be best solution for me.
+>=20
+> > Introducing XDP features we can enable it on per-driver basis.
+> > I think the same apply for other capabilities as well and just assuming=
+ a given
+> > feature is not supported if an e2e test is not working seems a bit inac=
+curate.
+>=20
+> Ok, I see that these bits are used in the later patches in xsk and
+> devmap. But I guess I'm still confused about why we add all these
+> flags, but only use mostly XDP_F_REDIRECT_TARGET; maybe start with
+> that one? And why does it have to be exposed to the userspace?
+> (userspace can still probe per-device features by trying to load
+> different progs?)
 
-Best regards,
-								Pavel
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
+There are some drivers (e.g. ixgbevf or cavium thunder) that do not support
+XDP_REDIRECT but just XDP_PASS, XDP_DROP and XDP_TX, so I think we should
+differentiate between XDP_BASIC (XDP_PASS | XDP_DROP | XDP_TX) and XDP_FULL
+(XDP_BASIC | XDP_REDIRECT).
 
---Q4QndSuPZQc8d5xp
+>=20
+> Also, it seems like XDP_F_REDIRECT_TARGET really means "the bpf
+> program has been installed on this device". Instead of a flag, why not
+> explicitly check whether the target device has a prog installed (and,
+> if needed, whether the installed program has frags support)?
+
+XDP_F_REDIRECT_TARGET is used to inform if netdev implements ndo_xdp_xmit
+callback (most of the XDP drivers do not require to load a bpf program to
+XDP_REDIRECT into them).
+
+Regards,
+Lorenzo
+
+>=20
+> > Regards,
+> > Lorenzo
+> >
+> > >
+> > > > On Mon, Dec 19, 2022 at 9:03 PM <sdf@google.com> wrote:
+> > > >>
+> > > >> On 12/19, Lorenzo Bianconi wrote:
+> > > >> > From: Marek Majtyka <alardam@gmail.com>
+> > > >>
+> > > >> > Implement support for checking what kind of XDP features a netdev
+> > > >> > supports. Previously, there was no way to do this other than to =
+try to
+> > > >> > create an AF_XDP socket on the interface or load an XDP program =
+and see
+> > > >> > if it worked. This commit changes this by adding a new variable =
+which
+> > > >> > describes all xdp supported functions on pretty detailed level:
+> > > >>
+> > > >> >   - aborted
+> > > >> >   - drop
+> > > >> >   - pass
+> > > >> >   - tx
+> > > >> >   - redirect
+> > > >> >   - sock_zerocopy
+> > > >> >   - hw_offload
+> > > >> >   - redirect_target
+> > > >> >   - tx_lock
+> > > >> >   - frag_rx
+> > > >> >   - frag_target
+> > > >>
+> > > >> > Zerocopy mode requires that redirect XDP operation is implemente=
+d in a
+> > > >> > driver and the driver supports also zero copy mode. Full mode re=
+quires
+> > > >> > that all XDP operation are implemented in the driver. Basic mode=
+ is just
+> > > >> > full mode without redirect operation. Frag target requires
+> > > >> > redirect_target one is supported by the driver.
+> > > >>
+> > > >> Can you share more about _why_ is it needed? If we can already obt=
+ain
+> > > >> most of these signals via probing, why export the flags?
+> > > >>
+> > > >> > Initially, these new flags are disabled for all drivers by defau=
+lt.
+> > > >>
+> > > >> > Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> > > >> > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> > > >> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > >> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > >> > Signed-off-by: Marek Majtyka <alardam@gmail.com>
+> > > >> > ---
+> > > >> >   .../networking/netdev-xdp-features.rst        | 60 +++++++++++=
+++++++
+> > > >> >   include/linux/netdevice.h                     |  2 +
+> > > >> >   include/linux/xdp_features.h                  | 64 +++++++++++=
+++++++++
+> > > >> >   include/uapi/linux/if_link.h                  |  7 ++
+> > > >> >   include/uapi/linux/xdp_features.h             | 34 ++++++++++
+> > > >> >   net/core/rtnetlink.c                          | 34 ++++++++++
+> > > >> >   tools/include/uapi/linux/if_link.h            |  7 ++
+> > > >> >   tools/include/uapi/linux/xdp_features.h       | 34 ++++++++++
+> > > >> >   8 files changed, 242 insertions(+)
+> > > >> >   create mode 100644 Documentation/networking/netdev-xdp-feature=
+s.rst
+> > > >> >   create mode 100644 include/linux/xdp_features.h
+> > > >> >   create mode 100644 include/uapi/linux/xdp_features.h
+> > > >> >   create mode 100644 tools/include/uapi/linux/xdp_features.h
+> > > >>
+> > > >> > diff --git a/Documentation/networking/netdev-xdp-features.rst
+> > > >> > b/Documentation/networking/netdev-xdp-features.rst
+> > > >> > new file mode 100644
+> > > >> > index 000000000000..1dc803fe72dd
+> > > >> > --- /dev/null
+> > > >> > +++ b/Documentation/networking/netdev-xdp-features.rst
+> > > >> > @@ -0,0 +1,60 @@
+> > > >> > +.. SPDX-License-Identifier: GPL-2.0
+> > > >> > +
+> > > >> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > > >> > +Netdev XDP features
+> > > >> > +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > > >> > +
+> > > >> > + * XDP FEATURES FLAGS
+> > > >> > +
+> > > >> > +Following netdev xdp features flags can be retrieved over route=
+ netlink
+> > > >> > +interface (compact form) - the same way as netdev feature flags.
+> > > >> > +These features flags are read only and cannot be change at runt=
+ime.
+> > > >> > +
+> > > >> > +*  XDP_ABORTED
+> > > >> > +
+> > > >> > +This feature informs if netdev supports xdp aborted action.
+> > > >> > +
+> > > >> > +*  XDP_DROP
+> > > >> > +
+> > > >> > +This feature informs if netdev supports xdp drop action.
+> > > >> > +
+> > > >> > +*  XDP_PASS
+> > > >> > +
+> > > >> > +This feature informs if netdev supports xdp pass action.
+> > > >> > +
+> > > >> > +*  XDP_TX
+> > > >> > +
+> > > >> > +This feature informs if netdev supports xdp tx action.
+> > > >> > +
+> > > >> > +*  XDP_REDIRECT
+> > > >> > +
+> > > >> > +This feature informs if netdev supports xdp redirect action.
+> > > >> > +It assumes the all beforehand mentioned flags are enabled.
+> > > >> > +
+> > > >> > +*  XDP_SOCK_ZEROCOPY
+> > > >> > +
+> > > >> > +This feature informs if netdev driver supports xdp zero copy.
+> > > >> > +It assumes the all beforehand mentioned flags are enabled.
+> > > >> > +
+> > > >> > +*  XDP_HW_OFFLOAD
+> > > >> > +
+> > > >> > +This feature informs if netdev driver supports xdp hw oflloadin=
+g.
+> > > >> > +
+> > > >> > +*  XDP_TX_LOCK
+> > > >> > +
+> > > >> > +This feature informs if netdev ndo_xdp_xmit function requires l=
+ocking.
+> > > >> > +
+> > > >> > +*  XDP_REDIRECT_TARGET
+> > > >> > +
+> > > >> > +This feature informs if netdev implements ndo_xdp_xmit callback.
+> > > >> > +
+> > > >> > +*  XDP_FRAG_RX
+> > > >> > +
+> > > >> > +This feature informs if netdev implements non-linear xdp buff s=
+upport in
+> > > >> > +the driver napi callback.
+> > > >> > +
+> > > >> > +*  XDP_FRAG_TARGET
+> > > >> > +
+> > > >> > +This feature informs if netdev implements non-linear xdp buff s=
+upport in
+> > > >> > +ndo_xdp_xmit callback. XDP_FRAG_TARGET requires XDP_REDIRECT_TA=
+RGET is
+> > > >> > properly
+> > > >> > +supported.
+> > > >> > diff --git a/include/linux/netdevice.h b/include/linux/netdevice=
+=2Eh
+> > > >> > index aad12a179e54..ae5a8564383b 100644
+> > > >> > --- a/include/linux/netdevice.h
+> > > >> > +++ b/include/linux/netdevice.h
+> > > >> > @@ -43,6 +43,7 @@
+> > > >> >   #include <net/xdp.h>
+> > > >>
+> > > >> >   #include <linux/netdev_features.h>
+> > > >> > +#include <linux/xdp_features.h>
+> > > >> >   #include <linux/neighbour.h>
+> > > >> >   #include <uapi/linux/netdevice.h>
+> > > >> >   #include <uapi/linux/if_bonding.h>
+> > > >> > @@ -2362,6 +2363,7 @@ struct net_device {
+> > > >> >       struct rtnl_hw_stats64  *offload_xstats_l3;
+> > > >>
+> > > >> >       struct devlink_port     *devlink_port;
+> > > >> > +     xdp_features_t          xdp_features;
+> > > >> >   };
+> > > >> >   #define to_net_dev(d) container_of(d, struct net_device, dev)
+> > > >>
+> > > >> > diff --git a/include/linux/xdp_features.h b/include/linux/xdp_fe=
+atures.h
+> > > >> > new file mode 100644
+> > > >> > index 000000000000..4e72a86ef329
+> > > >> > --- /dev/null
+> > > >> > +++ b/include/linux/xdp_features.h
+> > > >> > @@ -0,0 +1,64 @@
+> > > >> > +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> > > >> > +/*
+> > > >> > + * Network device xdp features.
+> > > >> > + */
+> > > >> > +#ifndef _LINUX_XDP_FEATURES_H
+> > > >> > +#define _LINUX_XDP_FEATURES_H
+> > > >> > +
+> > > >> > +#include <linux/types.h>
+> > > >> > +#include <linux/bitops.h>
+> > > >> > +#include <asm/byteorder.h>
+> > > >> > +#include <uapi/linux/xdp_features.h>
+> > > >> > +
+> > > >> > +typedef u32 xdp_features_t;
+> > > >> > +
+> > > >> > +#define __XDP_F_BIT(bit)     ((xdp_features_t)1 << (bit))
+> > > >> > +#define __XDP_F(name)                __XDP_F_BIT(XDP_F_##name##=
+_BIT)
+> > > >> > +
+> > > >> > +#define XDP_F_ABORTED                __XDP_F(ABORTED)
+> > > >> > +#define XDP_F_DROP           __XDP_F(DROP)
+> > > >> > +#define XDP_F_PASS           __XDP_F(PASS)
+> > > >> > +#define XDP_F_TX             __XDP_F(TX)
+> > > >> > +#define XDP_F_REDIRECT               __XDP_F(REDIRECT)
+> > > >> > +#define XDP_F_REDIRECT_TARGET        __XDP_F(REDIRECT_TARGET)
+> > > >> > +#define XDP_F_SOCK_ZEROCOPY  __XDP_F(SOCK_ZEROCOPY)
+> > > >> > +#define XDP_F_HW_OFFLOAD     __XDP_F(HW_OFFLOAD)
+> > > >> > +#define XDP_F_TX_LOCK                __XDP_F(TX_LOCK)
+> > > >> > +#define XDP_F_FRAG_RX                __XDP_F(FRAG_RX)
+> > > >> > +#define XDP_F_FRAG_TARGET    __XDP_F(FRAG_TARGET)
+> > > >> > +
+> > > >> > +#define XDP_F_BASIC          (XDP_F_ABORTED | XDP_F_DROP |   \
+> > > >> > +                              XDP_F_PASS | XDP_F_TX)
+> > > >> > +
+> > > >> > +#define XDP_F_FULL           (XDP_F_BASIC | XDP_F_REDIRECT)
+> > > >> > +
+> > > >> > +#define XDP_F_FULL_ZC                (XDP_F_FULL | XDP_F_SOCK_Z=
+EROCOPY)
+> > > >> > +
+> > > >> > +#define XDP_FEATURES_ABORTED_STR             "xdp-aborted"
+> > > >> > +#define XDP_FEATURES_DROP_STR                        "xdp-drop"
+> > > >> > +#define XDP_FEATURES_PASS_STR                        "xdp-pass"
+> > > >> > +#define XDP_FEATURES_TX_STR                  "xdp-tx"
+> > > >> > +#define XDP_FEATURES_REDIRECT_STR            "xdp-redirect"
+> > > >> > +#define XDP_FEATURES_REDIRECT_TARGET_STR     "xdp-redirect-targ=
+et"
+> > > >> > +#define XDP_FEATURES_SOCK_ZEROCOPY_STR               "xdp-sock-=
+zerocopy"
+> > > >> > +#define XDP_FEATURES_HW_OFFLOAD_STR          "xdp-hw-offload"
+> > > >> > +#define XDP_FEATURES_TX_LOCK_STR             "xdp-tx-lock"
+> > > >> > +#define XDP_FEATURES_FRAG_RX_STR             "xdp-frag-rx"
+> > > >> > +#define XDP_FEATURES_FRAG_TARGET_STR         "xdp-frag-target"
+> > > >> > +
+> > > >> > +#define DECLARE_XDP_FEATURES_TABLE(name, length)               =
+              \
+> > > >> > +     const char name[][length] =3D {                           =
+                \
+> > > >> > +             [XDP_F_ABORTED_BIT] =3D XDP_FEATURES_ABORTED_STR, =
+                \
+> > > >> > +             [XDP_F_DROP_BIT] =3D XDP_FEATURES_DROP_STR,       =
+                \
+> > > >> > +             [XDP_F_PASS_BIT] =3D XDP_FEATURES_PASS_STR,       =
+                \
+> > > >> > +             [XDP_F_TX_BIT] =3D XDP_FEATURES_TX_STR,           =
+                \
+> > > >> > +             [XDP_F_REDIRECT_BIT] =3D XDP_FEATURES_REDIRECT_STR=
+,               \
+> > > >> > +             [XDP_F_REDIRECT_TARGET_BIT] =3D XDP_FEATURES_REDIR=
+ECT_TARGET_STR, \
+> > > >> > +             [XDP_F_SOCK_ZEROCOPY_BIT] =3D XDP_FEATURES_SOCK_ZE=
+ROCOPY_STR,     \
+> > > >> > +             [XDP_F_HW_OFFLOAD_BIT] =3D XDP_FEATURES_HW_OFFLOAD=
+_STR,           \
+> > > >> > +             [XDP_F_TX_LOCK_BIT] =3D XDP_FEATURES_TX_LOCK_STR, =
+                \
+> > > >> > +             [XDP_F_FRAG_RX_BIT] =3D XDP_FEATURES_FRAG_RX_STR, =
+                \
+> > > >> > +             [XDP_F_FRAG_TARGET_BIT] =3D XDP_FEATURES_FRAG_TARG=
+ET_STR,         \
+> > > >> > +     }
+> > > >> > +
+> > > >> > +#endif /* _LINUX_XDP_FEATURES_H */
+> > > >> > diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/i=
+f_link.h
+> > > >> > index 1021a7e47a86..971c658ceaea 100644
+> > > >> > --- a/include/uapi/linux/if_link.h
+> > > >> > +++ b/include/uapi/linux/if_link.h
+> > > >> > @@ -374,6 +374,8 @@ enum {
+> > > >>
+> > > >> >       IFLA_DEVLINK_PORT,
+> > > >>
+> > > >> > +     IFLA_XDP_FEATURES,
+> > > >> > +
+> > > >> >       __IFLA_MAX
+> > > >> >   };
+> > > >>
+> > > >> > @@ -1318,6 +1320,11 @@ enum {
+> > > >>
+> > > >> >   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
+> > > >>
+> > > >> > +enum {
+> > > >> > +     IFLA_XDP_FEATURES_WORD_UNSPEC =3D 0,
+> > > >> > +     IFLA_XDP_FEATURES_BITS_WORD,
+> > > >> > +};
+> > > >> > +
+> > > >> >   enum {
+> > > >> >       IFLA_EVENT_NONE,
+> > > >> >       IFLA_EVENT_REBOOT,              /* internal reset / reboot=
+ */
+> > > >> > diff --git a/include/uapi/linux/xdp_features.h
+> > > >> > b/include/uapi/linux/xdp_features.h
+> > > >> > new file mode 100644
+> > > >> > index 000000000000..48eb42069bcd
+> > > >> > --- /dev/null
+> > > >> > +++ b/include/uapi/linux/xdp_features.h
+> > > >> > @@ -0,0 +1,34 @@
+> > > >> > +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+> > > >> > +/*
+> > > >> > + * Copyright (c) 2020 Intel
+> > > >> > + */
+> > > >> > +
+> > > >> > +#ifndef __UAPI_LINUX_XDP_FEATURES__
+> > > >> > +#define __UAPI_LINUX_XDP_FEATURES__
+> > > >> > +
+> > > >> > +enum {
+> > > >> > +     XDP_F_ABORTED_BIT,
+> > > >> > +     XDP_F_DROP_BIT,
+> > > >> > +     XDP_F_PASS_BIT,
+> > > >> > +     XDP_F_TX_BIT,
+> > > >> > +     XDP_F_REDIRECT_BIT,
+> > > >> > +     XDP_F_REDIRECT_TARGET_BIT,
+> > > >> > +     XDP_F_SOCK_ZEROCOPY_BIT,
+> > > >> > +     XDP_F_HW_OFFLOAD_BIT,
+> > > >> > +     XDP_F_TX_LOCK_BIT,
+> > > >> > +     XDP_F_FRAG_RX_BIT,
+> > > >> > +     XDP_F_FRAG_TARGET_BIT,
+> > > >> > +     /*
+> > > >> > +      * Add your fresh new property above and remember to update
+> > > >> > +      * documentation.
+> > > >> > +      */
+> > > >> > +     XDP_FEATURES_COUNT,
+> > > >> > +};
+> > > >> > +
+> > > >> > +#define XDP_FEATURES_WORDS                   ((XDP_FEATURES_COU=
+NT + 32 - 1) / 32)
+> > > >> > +#define XDP_FEATURES_WORD(blocks, index)     ((blocks)[(index) =
+/ 32U])
+> > > >> > +#define XDP_FEATURES_FIELD_FLAG(index)               (1U << (in=
+dex) % 32U)
+> > > >> > +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
+> > > >> > +     (XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLA=
+G(index))
+> > > >> > +
+> > > >> > +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
+> > > >> > diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+> > > >> > index 64289bc98887..1c299746b614 100644
+> > > >> > --- a/net/core/rtnetlink.c
+> > > >> > +++ b/net/core/rtnetlink.c
+> > > >> > @@ -1016,6 +1016,14 @@ static size_t rtnl_xdp_size(void)
+> > > >> >       return xdp_size;
+> > > >> >   }
+> > > >>
+> > > >> > +static size_t rtnl_xdp_features_size(void)
+> > > >> > +{
+> > > >> > +     size_t xdp_size =3D nla_total_size(0) +   /* nest IFLA_XDP=
+_FEATURES */
+> > > >> > +                       XDP_FEATURES_WORDS * nla_total_size(4);
+> > > >> > +
+> > > >> > +     return xdp_size;
+> > > >> > +}
+> > > >> > +
+> > > >> >   static size_t rtnl_prop_list_size(const struct net_device *dev)
+> > > >> >   {
+> > > >> >       struct netdev_name_node *name_node;
+> > > >> > @@ -1103,6 +1111,7 @@ static noinline size_t if_nlmsg_size(const=
+ struct
+> > > >> > net_device *dev,
+> > > >> >              + rtnl_prop_list_size(dev)
+> > > >> >              + nla_total_size(MAX_ADDR_LEN) /* IFLA_PERM_ADDRESS=
+ */
+> > > >> >              + rtnl_devlink_port_size(dev)
+> > > >> > +            + rtnl_xdp_features_size() /* IFLA_XDP_FEATURES */
+> > > >> >              + 0;
+> > > >> >   }
+> > > >>
+> > > >> > @@ -1546,6 +1555,27 @@ static int rtnl_xdp_fill(struct sk_buff *=
+skb,
+> > > >> > struct net_device *dev)
+> > > >> >       return err;
+> > > >> >   }
+> > > >>
+> > > >> > +static int rtnl_xdp_features_fill(struct sk_buff *skb, struct n=
+et_device
+> > > >> > *dev)
+> > > >> > +{
+> > > >> > +     struct nlattr *attr;
+> > > >> > +
+> > > >> > +     attr =3D nla_nest_start_noflag(skb, IFLA_XDP_FEATURES);
+> > > >> > +     if (!attr)
+> > > >> > +             return -EMSGSIZE;
+> > > >> > +
+> > > >> > +     BUILD_BUG_ON(XDP_FEATURES_WORDS !=3D 1);
+> > > >> > +     if (nla_put_u32(skb, IFLA_XDP_FEATURES_BITS_WORD, dev->xdp=
+_features))
+> > > >> > +             goto err_cancel;
+> > > >> > +
+> > > >> > +     nla_nest_end(skb, attr);
+> > > >> > +
+> > > >> > +     return 0;
+> > > >> > +
+> > > >> > +err_cancel:
+> > > >> > +     nla_nest_cancel(skb, attr);
+> > > >> > +     return -EMSGSIZE;
+> > > >> > +}
+> > > >> > +
+> > > >> >   static u32 rtnl_get_event(unsigned long event)
+> > > >> >   {
+> > > >> >       u32 rtnl_event_type =3D IFLA_EVENT_NONE;
+> > > >> > @@ -1904,6 +1934,9 @@ static int rtnl_fill_ifinfo(struct sk_buff=
+ *skb,
+> > > >> >       if (rtnl_fill_devlink_port(skb, dev))
+> > > >> >               goto nla_put_failure;
+> > > >>
+> > > >> > +     if (rtnl_xdp_features_fill(skb, dev))
+> > > >> > +             goto nla_put_failure;
+> > > >> > +
+> > > >> >       nlmsg_end(skb, nlh);
+> > > >> >       return 0;
+> > > >>
+> > > >> > @@ -1968,6 +2001,7 @@ static const struct nla_policy
+> > > >> > ifla_policy[IFLA_MAX+1] =3D {
+> > > >> >       [IFLA_TSO_MAX_SIZE]     =3D { .type =3D NLA_REJECT },
+> > > >> >       [IFLA_TSO_MAX_SEGS]     =3D { .type =3D NLA_REJECT },
+> > > >> >       [IFLA_ALLMULTI]         =3D { .type =3D NLA_REJECT },
+> > > >> > +     [IFLA_XDP_FEATURES]     =3D { .type =3D NLA_NESTED },
+> > > >> >   };
+> > > >>
+> > > >> >   static const struct nla_policy ifla_info_policy[IFLA_INFO_MAX+=
+1] =3D {
+> > > >> > diff --git a/tools/include/uapi/linux/if_link.h
+> > > >> > b/tools/include/uapi/linux/if_link.h
+> > > >> > index 82fe18f26db5..994228e9909a 100644
+> > > >> > --- a/tools/include/uapi/linux/if_link.h
+> > > >> > +++ b/tools/include/uapi/linux/if_link.h
+> > > >> > @@ -354,6 +354,8 @@ enum {
+> > > >>
+> > > >> >       IFLA_DEVLINK_PORT,
+> > > >>
+> > > >> > +     IFLA_XDP_FEATURES,
+> > > >> > +
+> > > >> >       __IFLA_MAX
+> > > >> >   };
+> > > >>
+> > > >> > @@ -1222,6 +1224,11 @@ enum {
+> > > >>
+> > > >> >   #define IFLA_XDP_MAX (__IFLA_XDP_MAX - 1)
+> > > >>
+> > > >> > +enum {
+> > > >> > +     IFLA_XDP_FEATURES_WORD_UNSPEC =3D 0,
+> > > >> > +     IFLA_XDP_FEATURES_BITS_WORD,
+> > > >> > +};
+> > > >> > +
+> > > >> >   enum {
+> > > >> >       IFLA_EVENT_NONE,
+> > > >> >       IFLA_EVENT_REBOOT,              /* internal reset / reboot=
+ */
+> > > >> > diff --git a/tools/include/uapi/linux/xdp_features.h
+> > > >> > b/tools/include/uapi/linux/xdp_features.h
+> > > >> > new file mode 100644
+> > > >> > index 000000000000..48eb42069bcd
+> > > >> > --- /dev/null
+> > > >> > +++ b/tools/include/uapi/linux/xdp_features.h
+> > > >> > @@ -0,0 +1,34 @@
+> > > >> > +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+> > > >> > +/*
+> > > >> > + * Copyright (c) 2020 Intel
+> > > >> > + */
+> > > >> > +
+> > > >> > +#ifndef __UAPI_LINUX_XDP_FEATURES__
+> > > >> > +#define __UAPI_LINUX_XDP_FEATURES__
+> > > >> > +
+> > > >> > +enum {
+> > > >> > +     XDP_F_ABORTED_BIT,
+> > > >> > +     XDP_F_DROP_BIT,
+> > > >> > +     XDP_F_PASS_BIT,
+> > > >> > +     XDP_F_TX_BIT,
+> > > >> > +     XDP_F_REDIRECT_BIT,
+> > > >> > +     XDP_F_REDIRECT_TARGET_BIT,
+> > > >> > +     XDP_F_SOCK_ZEROCOPY_BIT,
+> > > >> > +     XDP_F_HW_OFFLOAD_BIT,
+> > > >> > +     XDP_F_TX_LOCK_BIT,
+> > > >> > +     XDP_F_FRAG_RX_BIT,
+> > > >> > +     XDP_F_FRAG_TARGET_BIT,
+> > > >> > +     /*
+> > > >> > +      * Add your fresh new property above and remember to update
+> > > >> > +      * documentation.
+> > > >> > +      */
+> > > >> > +     XDP_FEATURES_COUNT,
+> > > >> > +};
+> > > >> > +
+> > > >> > +#define XDP_FEATURES_WORDS                   ((XDP_FEATURES_COU=
+NT + 32 - 1) / 32)
+> > > >> > +#define XDP_FEATURES_WORD(blocks, index)     ((blocks)[(index) =
+/ 32U])
+> > > >> > +#define XDP_FEATURES_FIELD_FLAG(index)               (1U << (in=
+dex) % 32U)
+> > > >> > +#define XDP_FEATURES_BIT_IS_SET(blocks, index)        \
+> > > >> > +     (XDP_FEATURES_WORD(blocks, index) & XDP_FEATURES_FIELD_FLA=
+G(index))
+> > > >> > +
+> > > >> > +#endif  /* __UAPI_LINUX_XDP_FEATURES__ */
+> > > >> > --
+> > > >> > 2.38.1
+> > > >>
+> > >
+
+--2lNipPbgN3x5Io4s
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCY6IPjAAKCRAw5/Bqldv6
-8qFnAJ4h7/YkgMmaMAi5FTo4aeUHj64lowCgv7jO/1JyimzJx+06JHTOXFlIAIk=
-=01ne
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY6I2UwAKCRA6cBh0uS2t
+rI8SAP0Rks4RjZXJgMS9v+cDn/l5aBpGeaG6xJdEAbiCiJ3mgAEArOzUwXGj3kR/
+oVilRuZdDqan/DvK+NRXbXCmWrNu6wg=
+=5QFn
 -----END PGP SIGNATURE-----
 
---Q4QndSuPZQc8d5xp--
+--2lNipPbgN3x5Io4s--
 
---===============0169596105498197662==
+--===============1339987235843552724==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -183,4 +716,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============0169596105498197662==--
+--===============1339987235843552724==--
