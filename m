@@ -1,71 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCBE1651BB7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 08:31:48 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A11F7651BFB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Dec 2022 08:50:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 53070818C9;
-	Tue, 20 Dec 2022 07:31:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 53070818C9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 204E681959;
+	Tue, 20 Dec 2022 07:50:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 204E681959
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671521507;
-	bh=ynu/CawuXmu2vnX5qEl6wOqOag2w5v8PVWBmTvTPUqs=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1671522648;
+	bh=Q1494joUkLjQwBWGYeycya3kPm+gr0KH24w8nss6HY4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=BarZOrbCC9qIDWcJBPeZ5BwZ7It7CmwaH8GW5ZRPDjtu+5fCXzMHi1Dka/+6RA/TZ
-	 QfLxZymF8+cSbSH0rOuV60sepN6l4rzfnM9+iEw/OFOJT2gTX9NCYbPq4rkHnFYqq/
-	 eYffS8a/WQhzilgZ3PvB+o9M8r8j+IqgGS8eCLJM69sRwNVhiE0FmvvRTbRY6FPlxV
-	 es0vReYGkxZ8oAs9G/p5L52DWth+ybgLWgW68nPeceK6sWS9JTmInHyx0yXItqZvDK
-	 BY30HN+Ri3d5GKLWWQ/WIDEeYNINc0nzjsBGfLZZsTIIzIjLZrIc1lcbCnzs8CDl2j
-	 3lPHWQ0mUHC3g==
+	b=ljVpTtdVpFB+ELCqRpmf761+fj5LPfzg5SkFlZXTnD472IAVPFkOAZ4sHTBcsF3eW
+	 sxmot0DdRlrq3qA+mbEOD7CB2fx4J9mnebP3ueTeKsw+uiIWQykISylhO+10K8kxmo
+	 cOYSV478qC5uKX0IWCI76BgoCuxRjff0JUhgG3WgJq6X8pNvwwoIBtkSepFGqdwnH9
+	 aLa83lAyo2L04FfcX3QGP8bLaXAtYcpy/k3fM7VCfHyDbPeXuSAkeadpAcTy9MEztt
+	 hoaiJKkqi+HLrPs4CCFuPYcBkwPaWx/fMkY4tSR9JBs7sPsyzbIZdTvyI0ru2/YxKm
+	 KNtesYPk+Tzxg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b6vCv-hFNQg4; Tue, 20 Dec 2022 07:31:46 +0000 (UTC)
+	with ESMTP id 10d2gbFAuqpZ; Tue, 20 Dec 2022 07:50:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 61E16818C4;
-	Tue, 20 Dec 2022 07:31:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61E16818C4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 23803818C9;
+	Tue, 20 Dec 2022 07:50:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23803818C9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 788111BF300
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:31:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A57F71BF300
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 521D2400E2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:31:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 521D2400E2
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8C38A60AA0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C38A60AA0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TdWFFPeQtzZ9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Dec 2022 07:31:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A8FB400D9
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9A8FB400D9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:31:39 +0000 (UTC)
-Received: from [192.168.0.185] (ip5f5aea0a.dynamic.kabel-deutschland.de
- [95.90.234.10])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5A60561CCD7B0;
- Tue, 20 Dec 2022 08:31:36 +0100 (CET)
-Message-ID: <a0868876-60a6-047f-f783-3ef9b5690a96@molgen.mpg.de>
-Date: Tue, 20 Dec 2022 08:31:35 +0100
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TKBiFAVhsGVK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Dec 2022 07:50:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF57E60A6A
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EF57E60A6A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Dec 2022 07:50:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="405802824"
+X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; d="scan'208";a="405802824"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2022 23:50:41 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="739663471"
+X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; d="scan'208";a="739663471"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2022 23:50:38 -0800
+Date: Tue, 20 Dec 2022 08:50:28 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Daniil Tatianin <d-tatianin@yandex-team.ru>
+Message-ID: <Y6FpRFt0A3NrabS8@localhost.localdomain>
+References: <20221220063246.1593327-1-d-tatianin@yandex-team.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Content-Language: en-US
-To: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-References: <20221219220546.3683358-1-sergey.temerkhanov@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20221219220546.3683358-1-sergey.temerkhanov@intel.com>
-Subject: Re: [Intel-wired-lan] [net-next v3 1/1] ice: Move support DDP code
- out of ice_flex_pipe.c
+Content-Disposition: inline
+In-Reply-To: <20221220063246.1593327-1-d-tatianin@yandex-team.ru>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671522641; x=1703058641;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=y7kzW7wiQHNQKgWsYnF0m+caBPul5zY67fLc8pu5Ed0=;
+ b=VlcdIWfxC4iflPYlY4W+zOn0vjR/B5n76OYcE5nbV2AvKHlbkxkiEtay
+ XdZCLKJkR0tk0NUBhSyP743lwEIQFWCngCdgsua3dtml8Gwq5Em/KR2fY
+ zyrGDGkpHwfgvU6f9kfQqApYqsillZ0i07SEigTu6VVrNZ7ho7CP3XK/5
+ HYU/ifgUMlc8CEb3+C+RcDEonf3S9xRp9Wzud3G5nVAvNAoJfodpG6wdq
+ xEyKYSrgDu6MTRQYnAjHcFseciknfPJmizjKQtAmFBVGf7lTMbr8f/e1/
+ fMDwoi6XpeCJbb0r4NVH44LtfpfFfV6Eom9GOwKpNCJzmfYyKEfDyXwBx
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=VlcdIWfx
+Subject: Re: [Intel-wired-lan] [PATCH v2] iavf/iavf_main: actually log ->src
+ mask when talking about it
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,25 +95,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTZXJnZXksCgoKVGhhbmsgeW91IGZvciB5b3VyIHBhdGNoLgoKQW0gMTkuMTIuMjIgdW0g
-MjM6MDUgc2NocmllYiBTZXJnZXkgVGVtZXJraGFub3Y6Cj4gQ3VycmVudGx5LCBpY2VfZmxleF9w
-aXBlLmMgaW5jbHVkZXMgdGhlIEREUCBsb2FkaW5nIGZ1bmN0aW9ucwo+IGFuZCBoYXMgZ3Jvd24g
-bGFyZ2UuIEFsdGhvdWdoIGZsZXhpYmxlIHByb2Nlc3Npbmcgc3VwcG9ydAo+IGNvZGUgaXMgcmVs
-YXRlZCB0byBERFAgbG9hZGluZywgdGhlc2UgcGFydHMgYXJlIGRpc3RpbmN0Lgo+IE1vdmUgdGhl
-IEREUCBsb2FkaW5nIGZ1bmN0aW9uYWxpdHkgZnJvbSBpY2VfZmxleF9waXBlLmMgdG8KPiBhIHNl
-cGFyYXRlIGZpbGUuCgpQbGVhc2UgcmVmbG93IGZvciA3NSAoYXQgbGVhc3QgNzIpIGNoYXJhY3Rl
-cnMgcGVyIGxpbmUsIHNvIGxlc3MgbGluZXMgCmFyZSB1c2VkLiBGb3IgdGhlIGdpdCBjb21taXQg
-bWVzc2FnZSBzdW1tYXJ5IEkgc3VnZ2VzdDoKCj4gaWNlOiBNb3ZlIEREUCBjb2RlIGZyb20gaWNl
-X2ZsZXhfcGlwZS5jIGludG8gaWNlX2RkcC5jCgo+IFNpZ25lZC1vZmYtYnk6IFNlcmdleSBUZW1l
-cmtoYW5vdiA8c2VyZ2V5LnRlbWVya2hhbm92QGludGVsLmNvbT4KClvigKZdCgpUaGUgcmVzdCBs
-b29rcyBnb29kLgoKQWNrZWQtYnk6IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+
-CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
-bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
-dGVsLXdpcmVkLWxhbgo=
+On Tue, Dec 20, 2022 at 09:32:46AM +0300, Daniil Tatianin wrote:
+> This fixes a copy-paste issue where dev_err would log the dst mask even
+> though it is clearly talking about src.
+> 
+> Found by Linux Verification Center (linuxtesting.org) with the SVACE
+> static analysis tool.
+> 
+> Fixes: 0075fa0fadd0 ("i40evf: Add support to apply cloud filters")
+> Signed-off-by: Daniil Tatianin <d-tatianin@yandex-team.ru>
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index c4e451ef7942..adc02adef83a 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -3850,7 +3850,7 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  				field_flags |= IAVF_CLOUD_FIELD_IIP;
+>  			} else {
+>  				dev_err(&adapter->pdev->dev, "Bad ip src mask 0x%08x\n",
+> -					be32_to_cpu(match.mask->dst));
+> +					be32_to_cpu(match.mask->src));
+>  				return -EINVAL;
+>  			}
+>  		}
+> -- 
+> 2.25.1
+
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+
+It is good practise to include changelog in message when You send
+another version. For example:
+
+v1:
+ * change fix tag to 12 chars
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
