@@ -1,69 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B31E0653392
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Dec 2022 16:40:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83A7C653428
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Dec 2022 17:37:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4499440BCA;
-	Wed, 21 Dec 2022 15:40:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4499440BCA
+	by smtp1.osuosl.org (Postfix) with ESMTP id 25ECA81FF5;
+	Wed, 21 Dec 2022 16:37:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 25ECA81FF5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671637258;
-	bh=LFryccx/cC6eIRedbe+SvmXUF317oQFjU/jSgNStfos=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1671640659;
+	bh=89eghagxbEyb4JTzefgYXLfexO101wRzi1z3fsTLC+4=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QU7J4M0tbrBSuy3sYm9p9JJdNeL+MFNsa6n23ava3+yZWQg9tNoZhPDjp2u3wVLnY
-	 OSbeii+8581bm7pAt5e4K2KUt5Phf+zVvVLxNFcQtZHxr943cZXmBCtEu2J+HjXdFZ
-	 n1fIcLDfQzVgM+FBw/dp/gBOFn0ol+1kw8XhxVaDCeeyb5Rs8Iz2KLVfT6bpkFvOU5
-	 kVk3nTBhlAEbpcuBU8Xko76x3gDdHnZZ6tyKiDLlcVPbMZ+/Vme/PxrGjw66u4EPfM
-	 CktpzPSeIh3QwVLNltgK523xNa96XJ3cG0jDwld3yH4YCnc+VGHXuWX/TzX0pvVhzU
-	 luZ4FNUl74g0w==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zl9ovO_6RM9u; Wed, 21 Dec 2022 15:40:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1822D40BBB;
-	Wed, 21 Dec 2022 15:40:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1822D40BBB
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 427F61BF232
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 15:40:52 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 29C9F82099
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 15:40:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29C9F82099
+	b=EmaFhGyO1nBVPWCcPj4QfHJtGIh7z2B7dDPKoqtTyEExVj5Y+T418uk6tZDvAgp7j
+	 7WAMV0edRb9Cm6vRyQX/yIekBBJ4ZpLoMkQpNh2HGkfNYUo3rPEeW4eweYMBtfJH7J
+	 cEUPUItFLBKabaCepL3nKb/OVhBliko1QC3PaCuM5KrGDuhKiTZP9DrXo89PQpE51s
+	 pbt+VjooVE9tEkbwHhno77PwLrg5tReAuoAirpVgochK3iizeVhXrCDlng1qjZHiNZ
+	 YOZCQKV/T3/pK0MT2J0uCu9xmGBUWhX+u/TuRMkqOypcIW/qh5afiYpnN6ekJzfAmD
+	 z7Al+oWgf9lSg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P3klpOHkLp6X for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Dec 2022 15:40:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 121FA82097
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 121FA82097
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 15:40:49 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 6D8DB60027FC0;
- Wed, 21 Dec 2022 16:40:47 +0100 (CET)
-Message-ID: <5ad1d659-8401-e23e-42a9-f1fdae2d5f75@molgen.mpg.de>
-Date: Wed, 21 Dec 2022 16:40:47 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gyXsT1LpHC_m; Wed, 21 Dec 2022 16:37:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0DC5381F14;
+	Wed, 21 Dec 2022 16:37:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DC5381F14
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9310E1BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 16:37:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6CF6240519
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 16:37:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6CF6240519
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FzZp4Kyj4vP5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Dec 2022 16:37:32 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 73D2940516
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 73D2940516
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 16:37:32 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10568"; a="321830062"
+X-IronPort-AV: E=Sophos;i="5.96,263,1665471600"; d="scan'208";a="321830062"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2022 08:37:29 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10568"; a="644901748"
+X-IronPort-AV: E=Sophos;i="5.96,263,1665471600"; d="scan'208";a="644901748"
+Received: from irvmail001.ir.intel.com ([10.43.11.63])
+ by orsmga007.jf.intel.com with ESMTP; 21 Dec 2022 08:37:28 -0800
+Received: from newjersey.igk.intel.com (newjersey.igk.intel.com
+ [10.102.20.203])
+ by irvmail001.ir.intel.com (8.14.3/8.13.6/MailSET/Hub) with ESMTP id
+ 2BLGbRnV005512; Wed, 21 Dec 2022 16:37:27 GMT
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Date: Wed, 21 Dec 2022 17:37:26 +0100
+Message-Id: <20221221163726.1189622-1-alexandr.lobakin@intel.com>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20221221092746.39234-1-michal.swiatkowski@linux.intel.com>
 References: <20221221092746.39234-1-michal.swiatkowski@linux.intel.com>
- <d40220f5-d4b7-7abc-5425-85bf5ff6cfde@molgen.mpg.de>
-In-Reply-To: <d40220f5-d4b7-7abc-5425-85bf5ff6cfde@molgen.mpg.de>
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671640652; x=1703176652;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=32H4DgDIS8LkIEJp/cFlecIun/x1mtOLzysAeoVpQhE=;
+ b=n7V675DJt+rAMKk1kmq6UN853TJUemkTGBuWlMJSOauocJQlmyUffHEB
+ 3HWbdy/9YF93QJ8Uw85TSS/tohS4i37vaBl+gTX0msSSKdzmufHGcV6Dz
+ V4VR3Yf6Yrt/jkqxrfvPEoDmeGz90hze0qsYstrNUX9ycxrXx6JTXng5x
+ ERB32jBuk/YOQbWoSeEicgVN/CUZfshMebQ8Vg4hZ5156xbT+HTy6jiUz
+ u+Cs+Dy+vx9q0hbcE13c82sgf2UtW1TSFpHJ2swHd81jZ5tSOwaeZXebO
+ 92DfW/yHmrGYyW37xPdH3RyCcnE0O96UaaWhiW0L4Hce8LKyKkxDPlpuW
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=n7V675DJ
 Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix out-of-bounds KASAN
  warining in virtchnl
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -78,115 +99,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-W0NjOiAtQnJldHQgYXMgYGhvc3QgbWdhMDQuaW50ZWwuY29tWzE5Mi41NS41Mi4xMjBdIHNhaWQ6
-IDU1MCAjNS4xLjAgCkFkZHJlc3MgcmVqZWN0ZWQuYCwgK0FsZXhhbmRlciwgK0d1cnVjaGFyYW4g
-Zm9yIHJlYWxdCgpBbSAyMS4xMi4yMiB1bSAxNjozNyBzY2hyaWViIFBhdWwgTWVuemVsOgo+IFtD
-QzogK0JyZXR0LCArQWxleGFuZGVyLCArSmVzc2UsICtHdXJ1Y2hhcmFuXQo+IAo+IERlYXIgTWlj
-aGFsLAo+IAo+IAo+IFRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KPiAKPiAKPiBBbSAyMS4xMi4y
-MiB1bSAxMDoyNyBzY2hyaWViIE1pY2hhbCBTd2lhdGtvd3NraToKPiAKPiBJbiB0aGUgc3VtbWFy
-eSwgSSBub3JtYWxseSBwcmVmZXIgdG8gbm90IHRoZSBhY3Rpb24uIChUaGVyZSBpcyBhbHNvIGEg
-Cj4gdHlwbyBpbiAqd2FybmluZyouCj4gCj4+IEtBU0FOIHJlcG9ydGVkOgo+PiBbIDk3OTMuNzA4
-ODY3XSBCVUc6IEtBU0FOOiBnbG9iYWwtb3V0LW9mLWJvdW5kcyBpbiBpY2VfZ2V0X2xpbmtfc3Bl
-ZWQrMHgxNi8weDMwIFtpY2VdCj4+IFsgOTc5My43MDkyMDVdIFJlYWQgb2Ygc2l6ZSA0IGF0IGFk
-ZHIgZmZmZmZmZmZjMTI3MWIxYyBieSB0YXNrIGt3b3JrZXIvNjoxLzQwMgo+Pgo+PiBbIDk3OTMu
-NzA5MjIyXSBDUFU6IDYgUElEOiA0MDIgQ29tbToga3dvcmtlci82OjEgS2R1bXA6IGxvYWRlZCBU
-YWludGVkOiBHwqDCoMKgIELCoMKgwqDCoMKgIE9FwqDCoMKgwqDCoCA2LjEuMCsgIzMKPj4gWyA5
-NzkzLjcwOTIzNV0gSGFyZHdhcmUgbmFtZTogSW50ZWwgQ29ycG9yYXRpb24gUzI2MDBXRlQvUzI2
-MDBXRlQsIEJJT1MgU0U1QzYyMC44NkIuMDAuMDEuMDAxNC4wNzA5MjAxODA4NDcgMDcvMDkvMjAx
-OAo+PiBbIDk3OTMuNzA5MjQ1XSBXb3JrcXVldWU6IGljZSBpY2Vfc2VydmljZV90YXNrIFtpY2Vd
-Cj4+IFsgOTc5My43MDk1NzVdIENhbGwgVHJhY2U6Cj4+IFsgOTc5My43MDk1ODJdwqAgPFRBU0s+
-Cj4+IFsgOTc5My43MDk1ODhdwqAgZHVtcF9zdGFja19sdmwrMHg0NC8weDVjCj4+IFsgOTc5My43
-MDk2MTNdwqAgcHJpbnRfcmVwb3J0KzB4MTdmLzB4NDdiCj4+IFsgOTc5My43MDk2MzJdwqAgPyBf
-X2NwdWlkbGVfdGV4dF9lbmQrMHg1LzB4NQo+PiBbIDk3OTMuNzA5NjUzXcKgID8gaWNlX2dldF9s
-aW5rX3NwZWVkKzB4MTYvMHgzMCBbaWNlXQo+PiBbIDk3OTMuNzA5OTg2XcKgID8gaWNlX2dldF9s
-aW5rX3NwZWVkKzB4MTYvMHgzMCBbaWNlXQo+PiBbIDk3OTMuNzEwMzE3XcKgIGthc2FuX3JlcG9y
-dCsweGI3LzB4MTQwCj4+IFsgOTc5My43MTAzMzVdwqAgPyBpY2VfZ2V0X2xpbmtfc3BlZWQrMHgx
-Ni8weDMwIFtpY2VdCj4+IFsgOTc5My43MTA2NzNdwqAgaWNlX2dldF9saW5rX3NwZWVkKzB4MTYv
-MHgzMCBbaWNlXQo+PiBbIDk3OTMuNzExMDA2XcKgIGljZV92Y19ub3RpZnlfdmZfbGlua19zdGF0
-ZSsweDE0Yy8weDE2MCBbaWNlXQo+PiBbIDk3OTMuNzExMzUxXcKgID8gaWNlX3ZjX3JlcHJfY2Zn
-X3Byb21pc2N1b3VzX21vZGUrMHgxMjAvMHgxMjAgW2ljZV0KPj4gWyA5NzkzLjcxMTY5OF3CoCBp
-Y2VfdmNfcHJvY2Vzc192Zl9tc2crMHg3YTcvMHhjMDAgW2ljZV0KPj4gWyA5NzkzLjcxMjA3NF3C
-oCBfX2ljZV9jbGVhbl9jdHJscSsweDk4Zi8weGQyMCBbaWNlXQo+PiBbIDk3OTMuNzEyNTM0XcKg
-ID8gaWNlX2JyaWRnZV9zZXRsaW5rKzB4NDEwLzB4NDEwIFtpY2VdCj4+IFsgOTc5My43MTI5Nzld
-wqAgPyBfX3JlcXVlc3RfbW9kdWxlKzB4MzIwLzB4NTIwCj4+IFsgOTc5My43MTMwMTRdwqAgPyBp
-Y2VfcHJvY2Vzc192ZmxyX2V2ZW50KzB4MjcvMHgxMzAgW2ljZV0KPj4gWyA5NzkzLjcxMzQ4OV3C
-oCBpY2Vfc2VydmljZV90YXNrKzB4MTFjZi8weDE5NTAgW2ljZV0KPj4gWyA5NzkzLjcxMzk0OF3C
-oCA/IGlvX3NjaGVkdWxlX3RpbWVvdXQrMHhiMC8weGIwCj4+IFsgOTc5My43MTM5NzJdwqAgcHJv
-Y2Vzc19vbmVfd29yaysweDNkMC8weDZhMAo+PiBbIDk3OTMuNzE0MDAzXcKgIHdvcmtlcl90aHJl
-YWQrMHg4YS8weDYxMAo+PiBbIDk3OTMuNzE0MDMxXcKgID8gcHJvY2Vzc19vbmVfd29yaysweDZh
-MC8weDZhMAo+PiBbIDk3OTMuNzE0MDQ5XcKgIGt0aHJlYWQrMHgxNjQvMHgxYTAKPj4gWyA5Nzkz
-LjcxNDA3MV3CoCA/IGt0aHJlYWRfY29tcGxldGVfYW5kX2V4aXQrMHgyMC8weDIwCj4+IFsgOTc5
-My43MTQxMDBdwqAgcmV0X2Zyb21fZm9yaysweDFmLzB4MzAKPj4gWyA5NzkzLjcxNDEzN13CoCA8
-L1RBU0s+Cj4+Cj4+IFsgOTc5My43MTQxNTFdIFRoZSBidWdneSBhZGRyZXNzIGJlbG9uZ3MgdG8g
-dGhlIHZhcmlhYmxlOgo+PiBbIDk3OTMuNzE0MTU4XcKgIGljZV9hcV90b19saW5rX3NwZWVkKzB4
-M2MvMHhmZmZmZmZmZmZmZmYzNTIwIFtpY2VdCj4+Cj4+IFsgOTc5My43MTQ2MzJdIE1lbW9yeSBz
-dGF0ZSBhcm91bmQgdGhlIGJ1Z2d5IGFkZHJlc3M6Cj4+IFsgOTc5My43MTQ2NDJdwqAgZmZmZmZm
-ZmZjMTI3MWEwMDogZjkgZjkgZjkgZjkgMDAgMDAgMDUgZjkgZjkgZjkgZjkgZjkgMDAgMDAgMDIg
-ZjkKPj4gWyA5NzkzLjcxNDY1Nl3CoCBmZmZmZmZmZmMxMjcxYTgwOiBmOSBmOSBmOSBmOSAwMCAw
-MCAwNCBmOSBmOSBmOSBmOSBmOSAwMCAwMCAwMCAwMAo+PiBbIDk3OTMuNzE0NjcwXSA+ZmZmZmZm
-ZmZjMTI3MWIwMDogMDAgMDAgMDAgMDQgZjkgZjkgZjkgZjkgMDQgZjkgZjkgZjkgZjkgZjkgZjkg
-ZjkKPj4gWyA5NzkzLjcxNDY4MF3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBeCj4+IFsgOTc5My43MTQ2OTBdwqAgZmZmZmZmZmZjMTI3MWI4
-MDogMDAgMDAgMDAgMDAgMDAgMDQgZjkgZjkgZjkgZjkgZjkgZjkgMDAgMDAgMDAgMDAKPj4gWyA5
-NzkzLjcxNDcwNF3CoCBmZmZmZmZmZmMxMjcxYzAwOiAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAw
-MCAwMCAwMCAwMCAwMCAwMCAwMCAwMAo+IAo+IERvIHlvdSBuZWVkIHRvIGRvIHNvbWV0aGluZyBz
-cGVjaWFsIHRvIHRyaWdnZXIgdGhpcz8gSSBhbSBjdXJpb3VzLCB3aHkgCj4gdGhpcyB3YXNu4oCZ
-dCBmb3VuZCwgd2hlbiBpdCBoYXMgYSBgVGVzdGVkLWJ5YCB0YWcuCj4gCj4+IFRoZSBJQ0VfQVFf
-TElOS19TUEVFRF9VTktOT1dOIGRlZmluZSBpcyBCSVQoMTUpLiBUaGUgdmFsdWUgaXMgYmlnZ2Vy
-Cj4+IHRoYW4gYm90aCBsZWdhY3kgYW5kIG5vcm1hbCBsaW5rIHNwZWVkIHRhYmxlcy4gQWRkIG9u
-ZSBlbGVtZW50ICgwIC0KPj4gdW5rbm93bikgdG8gYm90aCB0YWJsZXMuIFRoZXJlIGlzIG5vIG5l
-ZWQgdG8gZXhwbGljaXQgc2V0IHRhYmxlIHNpemUsCj4gCj4gZXhwbGljaXQqbHkqPwo+IAo+PiBs
-ZWF2ZSBpdCBlbXB0eS4KPj4KPj4gRml4ZXM6IDFkMGUyOGE5YmUxZiAoImljZTogUmVtb3ZlIGFu
-ZCByZXBsYWNlIGljZSBzcGVlZCBkZWZpbmVzIHdpdGggCj4+IGV0aHRvb2wuaCB2ZXJzaW9ucyIp
-Cj4gCj4gVGhpcyBpcyBpbiBuZXh0LTIwMjIxMjAyLiAoQ2FuIGNvbW1pdHMgaW4gbGludXgtbmV4
-dCBiZSBhbWVuZGVkPyAKPiBQcm9iYWJseSBub3QuKQo+IAo+PiBTaWduZWQtb2ZmLWJ5OiBNaWNo
-YWwgU3dpYXRrb3dza2kgPG1pY2hhbC5zd2lhdGtvd3NraUBsaW51eC5pbnRlbC5jb20+Cj4+IC0t
-LQo+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2NvbW1vbi5jIHwgNSAr
-KystLQo+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3ZmX21ieC5jIHwg
-NSArKystLQo+PiDCoCAyIGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlv
-bnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfY29tbW9uLmMgCj4+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9jb21t
-b24uYwo+PiBpbmRleCA0Yjc4YmZiMGQ3ZjkuLmEyNGI1Y2I5NTAzOSAxMDA2NDQKPj4gLS0tIGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9jb21tb24uYwo+PiArKysgYi9kcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2NvbW1vbi5jCj4+IEBAIC01NTYyLDcgKzU1
-NjIsNyBAQCBib29sIGljZV9md19zdXBwb3J0c19yZXBvcnRfZGZsdF9jZmcoc3RydWN0IAo+PiBp
-Y2VfaHcgKmh3KQo+PiDCoMKgICogcmV0dXJuZWQgYnkgdGhlIGZpcm13YXJlIGlzIGEgMTYgYml0
-ICogdmFsdWUsIGJ1dCBpcyBpbmRleGVkCj4+IMKgwqAgKiBieSBbZmxzKHNwZWVkKSAtIDFdCj4+
-IMKgwqAgKi8KPj4gLXN0YXRpYyBjb25zdCB1MzIgaWNlX2FxX3RvX2xpbmtfc3BlZWRbMTVdID0g
-ewo+PiArc3RhdGljIGNvbnN0IHUzMiBpY2VfYXFfdG9fbGlua19zcGVlZFtdID0gewo+PiDCoMKg
-wqDCoMKgIFNQRUVEXzEwLMKgwqDCoCAvKiBCSVQoMCkgKi8KPj4gwqDCoMKgwqDCoCBTUEVFRF8x
-MDAsCj4+IMKgwqDCoMKgwqAgU1BFRURfMTAwMCwKPj4gQEAgLTU1NzcsNyArNTU3Nyw4IEBAIHN0
-YXRpYyBjb25zdCB1MzIgaWNlX2FxX3RvX2xpbmtfc3BlZWRbMTVdID0gewo+PiDCoMKgwqDCoMKg
-IDAsCj4+IMKgwqDCoMKgwqAgMCwKPj4gwqDCoMKgwqDCoCAwLAo+PiAtwqDCoMKgIDDCoMKgwqDC
-oMKgwqDCoCAvKiBCSVQoMTQpICovCj4+ICvCoMKgwqAgMCwKPj4gK8KgwqDCoCAwwqDCoMKgwqDC
-oMKgwqAgLyogQklUKDE1KSAqLwo+PiDCoCB9Owo+PiDCoCAvKioKPj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdmZfbWJ4LmMgCj4+IGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV92Zl9tYnguYwo+PiBpbmRleCBkNGE0MDAxYjZlNWQu
-LjVmNzU0ZDQxZjM0NSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlL2ljZV92Zl9tYnguYwo+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2Uv
-aWNlX3ZmX21ieC5jCj4+IEBAIC0zOSw3ICszOSw3IEBAIGljZV9hcV9zZW5kX21zZ190b192Zihz
-dHJ1Y3QgaWNlX2h3ICpodywgdTE2IHZmaWQsIAo+PiB1MzIgdl9vcGNvZGUsIHUzMiB2X3JldHZh
-bCwKPj4gwqDCoMKgwqDCoCByZXR1cm4gaWNlX3NxX3NlbmRfY21kKGh3LCAmaHctPm1haWxib3hx
-LCAmZGVzYywgbXNnLCBtc2dsZW4sIGNkKTsKPj4gwqAgfQo+PiAtc3RhdGljIGNvbnN0IHUzMiBp
-Y2VfbGVnYWN5X2FxX3RvX3ZjX3NwZWVkWzE1XSA9IHsKPj4gK3N0YXRpYyBjb25zdCB1MzIgaWNl
-X2xlZ2FjeV9hcV90b192Y19zcGVlZFtdID0gewo+PiDCoMKgwqDCoMKgIFZJUlRDSE5MX0xJTktf
-U1BFRURfMTAwTUIswqDCoMKgIC8qIEJJVCgwKSAqLwo+PiDCoMKgwqDCoMKgIFZJUlRDSE5MX0xJ
-TktfU1BFRURfMTAwTUIsCj4+IMKgwqDCoMKgwqAgVklSVENITkxfTElOS19TUEVFRF8xR0IsCj4+
-IEBAIC01NCw3ICs1NCw4IEBAIHN0YXRpYyBjb25zdCB1MzIgaWNlX2xlZ2FjeV9hcV90b192Y19z
-cGVlZFsxNV0gPSB7Cj4+IMKgwqDCoMKgwqAgVklSVENITkxfTElOS19TUEVFRF9VTktOT1dOLAo+
-PiDCoMKgwqDCoMKgIFZJUlRDSE5MX0xJTktfU1BFRURfVU5LTk9XTiwKPj4gwqDCoMKgwqDCoCBW
-SVJUQ0hOTF9MSU5LX1NQRUVEX1VOS05PV04sCj4+IC3CoMKgwqAgVklSVENITkxfTElOS19TUEVF
-RF9VTktOT1dOwqDCoMKgIC8qIEJJVCgxNCkgKi8KPj4gK8KgwqDCoCBWSVJUQ0hOTF9MSU5LX1NQ
-RUVEX1VOS05PV04sCj4+ICvCoMKgwqAgVklSVENITkxfTElOS19TUEVFRF9VTktOT1dOwqDCoMKg
-IC8qIEJJVCgxNSkgKi8KPj4gwqAgfTsKPj4gwqAgLyoqCj4gCj4gVGhlIHJlc3QgbG9va3MgZ29v
-ZC4KPiAKPiAKPiBLaW5kIHJlZ2FyZHMsCj4gCj4gUGF1bApfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cklu
-dGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Date: Wed, 21 Dec 2022 10:27:46 +0100
+
+> KASAN reported:
+> [ 9793.708867] BUG: KASAN: global-out-of-bounds in ice_get_link_speed+0x16/0x30 [ice]
+> [ 9793.709205] Read of size 4 at addr ffffffffc1271b1c by task kworker/6:1/402
+> 
+> [ 9793.709222] CPU: 6 PID: 402 Comm: kworker/6:1 Kdump: loaded Tainted: G    B      OE      6.1.0+ #3
+> [ 9793.709235] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.00.01.0014.070920180847 07/09/2018
+> [ 9793.709245] Workqueue: ice ice_service_task [ice]
+
+[...]
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 4b78bfb0d7f9..a24b5cb95039 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -5562,7 +5562,7 @@ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw)
+>   * returned by the firmware is a 16 bit * value, but is indexed
+>   * by [fls(speed) - 1]
+>   */
+> -static const u32 ice_aq_to_link_speed[15] = {
+> +static const u32 ice_aq_to_link_speed[] = {
+>  	SPEED_10,	/* BIT(0) */
+>  	SPEED_100,
+>  	SPEED_1000,
+> @@ -5577,7 +5577,8 @@ static const u32 ice_aq_to_link_speed[15] = {
+>  	0,
+>  	0,
+>  	0,
+> -	0		/* BIT(14) */
+> +	0,
+> +	0		/* BIT(15) */
+>  };
+
+I warned Jesse that no index check might cause out-of-bounds walks
+and here they are. I suggested the following back then:
+
+1) Don't define any zeroed elements and elements with
+   %VIRTCHNL_LINK_SPEED_UNKNOWN. Don't define explicit array bounds.
+
+2) In ice_get_link_speed():
+
+	if (index >= ARRAY_SIZE(ice_aq_to_link_speed))
+		return 0;
+
+	return ice_aq_to_link_speed[index];
+
+3) Same in ice_conv_link_speed_to_virtchnl():
+
+	u32 index = fls(link_speed) - 1;
+
+	if (adv_link_support)
+		return ice_get_link_speed(index);
+	else if (index < ARRAY_SIZE(ice_legacy_aq_to_vc_speed))
+		return ice_legacy_aq_to_vc_speed[index];
+	else
+		return VIRTCHNL_LINK_SPEED_UNKNOWN;
+
+This could go as a fix to net with no problems.
+
+>  
+>  /**
+> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+> index d4a4001b6e5d..5f754d41f345 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+
+[...]
+
+> -- 
+> 2.36.1
+
+Thanks,
+Olek
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
