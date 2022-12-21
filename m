@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FA81652C20
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Dec 2022 05:41:15 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BAA6652EBE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Dec 2022 10:42:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9BD88417D1;
-	Wed, 21 Dec 2022 04:41:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9BD88417D1
+	by smtp3.osuosl.org (Postfix) with ESMTP id A16A860AC3;
+	Wed, 21 Dec 2022 09:42:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A16A860AC3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1671597673;
-	bh=vpEutYLtGvj1peV4xXeKzJd89vGnPUXkfEIqzarQ+GU=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=fSN30cpgLE0A5N/9cUrAnt2bTwFV2W5rYIghfCXkfyqN9HRXOOq9RsSERrjUG+gGB
-	 Y5+7xrxbI039WG94y63C28TltK6Vdtj96iJRp7DmWdZJkB+nG+aZdugLFjCJON8638
-	 bu6URkeGI7vd1rfRQjF5WPjMkSrrMSUJ3W2Q7C3QAeSIk+nVaJ1fIFKZF2qs+KPhMX
-	 EJDawGXZ1DHqFWVcJXYwShE9ZwK+IflyH1mb12Is7+Ms9RaobiSaYnB9xRUMGhIc2A
-	 LMrnHdv3iRVuQ8HO9GuCUmEVTpNvvSpGnEIFgaKgCFWKwOC0c3Tp/2Tq4EcKSwGHh4
-	 M+nMXVdOaa8OA==
+	s=default; t=1671615767;
+	bh=slSqvLoOCW8xSEsTNcmJk8ibfzqqCvXvi4DlbtKr5sc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Q8hdoc+TxsetvQZ8xaB5lSoE4nKFKzNsorX6sHlribWXxsvYbCB7Cg1c5LpBA7wLr
+	 S8dy6Kygp+HGaZ3a50rsSSWLsSUQ5Wv6eMvOplII9d5s19qw1QVHVR712K9NbR5FGn
+	 100vlsI/kOdR3VOmNrSM8FiBf97ZtK9cmrIJz1TNSj/bYGyZMn9YoA+kXwLyvFGGhW
+	 CWZI0kEcVaq/VY9aSdOCaNPEqJBb8hZSfSEj8DZHg+vMZF0CjV7t9bHCccPaOWrorC
+	 UfUTK8j8kh6uzpeJ8s2GRGMjhH2gko7KUFFbchngV5KCNKAIP91xZPA0RRyHtpotMn
+	 kw88nLNYLJGRg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id muo9qXBX7cU4; Wed, 21 Dec 2022 04:41:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VFygyLWFI9VL; Wed, 21 Dec 2022 09:42:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 759674155F;
-	Wed, 21 Dec 2022 04:41:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 759674155F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 96D4D60ABB;
+	Wed, 21 Dec 2022 09:42:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96D4D60ABB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 04DF01BF47A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 04:41:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0072E1BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 09:42:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D289F61006
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 04:41:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D289F61006
+ by smtp3.osuosl.org (Postfix) with ESMTP id CDFC760ABB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 09:42:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDFC760ABB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L2l1N7maeBDT for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Dec 2022 04:41:06 +0000 (UTC)
+ with ESMTP id oRbsMOuETLP5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Dec 2022 09:42:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A35CE60AE4
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A35CE60AE4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 04:41:06 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 74B9F615E3;
- Wed, 21 Dec 2022 04:41:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD2D0C433D2;
- Wed, 21 Dec 2022 04:41:03 +0000 (UTC)
-Date: Tue, 20 Dec 2022 20:41:02 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Marek Majtyka <alardam@gmail.com>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-Message-ID: <20221220204102.5e516196@kernel.org>
-In-Reply-To: <20221220153903.3fb7a54b@kernel.org>
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <43c340d440d8a87396198b301c5ffbf5ab56f304.1671462950.git.lorenzo@kernel.org>
- <20221219171321.7a67002b@kernel.org> <Y6F+YJSkI19m/kMv@lore-desk>
- <CAAOQfrF963NoMhQUTdGXyzLMdAjHfUmvzvxpOL0A1Cv4NhY97w@mail.gmail.com>
- <20221220153903.3fb7a54b@kernel.org>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1BCDA605E3
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1BCDA605E3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Dec 2022 09:42:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="321742806"
+X-IronPort-AV: E=Sophos;i="5.96,262,1665471600"; d="scan'208";a="321742806"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2022 01:42:40 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="719889531"
+X-IronPort-AV: E=Sophos;i="5.96,262,1665471600"; d="scan'208";a="719889531"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by fmsmga004.fm.intel.com with ESMTP; 21 Dec 2022 01:42:38 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 21 Dec 2022 10:27:46 +0100
+Message-Id: <20221221092746.39234-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1671597664;
- bh=wSFQUgGJzXV6d5gMKnkYoaOMkAFlJRLD40jAU2lzBgU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ZTCajLEr95mk1dWWzJXkTGmclB8AP4Zp2iWzv3qqntF4IvSFPWU2u7Jv2+FAfjq3Z
- MUyjmRfJofbtS8XOGhBuSyuxLeSH7CNbjePGL74xNqiFanX7HoG6pk9kYKpPCsByrN
- EAaXCSfqLTZGSt2RrqE4zj6KOiky4ibeAx+itHxrNhXODSZ0vWYNCHAm9ROLTVF5Kn
- ARbP74GOV/K0ufsNySJsmafg/tk3BrUJGKI9+VETAw1pAsXNeRP9/M2j7Ei/x9dY6o
- kNLzDSXsxKro9YUINkN8yiSVnTmVtgsFVeTdkeM1XuDEORsmSi1NIAsgrj+fzT/hg3
- AmW1FFr+sZatw==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671615761; x=1703151761;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=pmyuD+7myiGbzY5C/uJNcKQVPLKCRyqeVYLiLj35xHI=;
+ b=ULQKzpgLEIZdPDIjzVTSwtkwEH9IuH4GPqJXp6JXQgzXYGYE1YrrRJh2
+ be8VzLS/icNaIkZ52xgr9SspHQUgYrsywiqwrMkpbbrdBu6/hl0zY8hm9
+ hGoyGVOL0lRtxgz7MVgiZCkgiL/i4gvclWnE7jtj0Xg2FqEFbRbyZ0xxx
+ hu7YKyREtFa+hlaLz/zyq0I/3E4O3RmSZyODCdP7Eyu/Hk1fCe5UtvPZ6
+ cxX0RqZ9NpP6yTORN76HHII6tjqg/yL+9oeg75PV0NrWO/9zeVSa7XrGV
+ QGpEhm5yymIT2EjEr+RZai3ahF4AfwTB+NW3x15J7eRMshE8sfgzcEbW+
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ZTCajLEr
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 2/8] net: introduce XDP
- features flag
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ULQKzpgL
+Subject: [Intel-wired-lan] [PATCH net] ice: fix out-of-bounds KASAN warining
+ in virtchnl
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,36 +92,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- grygorii.strashko@ti.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bpf@vger.kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
- netdev@vger.kernel.org, toke@redhat.com, ecree.xilinx@gmail.com,
- bjorn@kernel.org, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
- nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 20 Dec 2022 15:39:03 -0800 Jakub Kicinski wrote:
-> On Tue, 20 Dec 2022 23:51:31 +0100 Marek Majtyka wrote:
-> > Everybody is allowed to make a good use of it. Every improvement is
-> > highly appreciated. Thanks Lorenzo for taking this over.  
-> 
-> IIUC this comment refers to the rtnl -> genl/yaml conversion.
-> In which case, unless someone objects, I'll take a stab at it 
-> in an hour or two and push the result out my kernel.org tree ...
+KASAN reported:
+[ 9793.708867] BUG: KASAN: global-out-of-bounds in ice_get_link_speed+0x16/0x30 [ice]
+[ 9793.709205] Read of size 4 at addr ffffffffc1271b1c by task kworker/6:1/402
 
-I pushed something here:
+[ 9793.709222] CPU: 6 PID: 402 Comm: kworker/6:1 Kdump: loaded Tainted: G    B      OE      6.1.0+ #3
+[ 9793.709235] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.00.01.0014.070920180847 07/09/2018
+[ 9793.709245] Workqueue: ice ice_service_task [ice]
+[ 9793.709575] Call Trace:
+[ 9793.709582]  <TASK>
+[ 9793.709588]  dump_stack_lvl+0x44/0x5c
+[ 9793.709613]  print_report+0x17f/0x47b
+[ 9793.709632]  ? __cpuidle_text_end+0x5/0x5
+[ 9793.709653]  ? ice_get_link_speed+0x16/0x30 [ice]
+[ 9793.709986]  ? ice_get_link_speed+0x16/0x30 [ice]
+[ 9793.710317]  kasan_report+0xb7/0x140
+[ 9793.710335]  ? ice_get_link_speed+0x16/0x30 [ice]
+[ 9793.710673]  ice_get_link_speed+0x16/0x30 [ice]
+[ 9793.711006]  ice_vc_notify_vf_link_state+0x14c/0x160 [ice]
+[ 9793.711351]  ? ice_vc_repr_cfg_promiscuous_mode+0x120/0x120 [ice]
+[ 9793.711698]  ice_vc_process_vf_msg+0x7a7/0xc00 [ice]
+[ 9793.712074]  __ice_clean_ctrlq+0x98f/0xd20 [ice]
+[ 9793.712534]  ? ice_bridge_setlink+0x410/0x410 [ice]
+[ 9793.712979]  ? __request_module+0x320/0x520
+[ 9793.713014]  ? ice_process_vflr_event+0x27/0x130 [ice]
+[ 9793.713489]  ice_service_task+0x11cf/0x1950 [ice]
+[ 9793.713948]  ? io_schedule_timeout+0xb0/0xb0
+[ 9793.713972]  process_one_work+0x3d0/0x6a0
+[ 9793.714003]  worker_thread+0x8a/0x610
+[ 9793.714031]  ? process_one_work+0x6a0/0x6a0
+[ 9793.714049]  kthread+0x164/0x1a0
+[ 9793.714071]  ? kthread_complete_and_exit+0x20/0x20
+[ 9793.714100]  ret_from_fork+0x1f/0x30
+[ 9793.714137]  </TASK>
 
-https://github.com/kuba-moo/ynl/commits/xdp-features
+[ 9793.714151] The buggy address belongs to the variable:
+[ 9793.714158]  ice_aq_to_link_speed+0x3c/0xffffffffffff3520 [ice]
 
-without replacing all you have. But it should give enough of an idea 
-to comment on.
+[ 9793.714632] Memory state around the buggy address:
+[ 9793.714642]  ffffffffc1271a00: f9 f9 f9 f9 00 00 05 f9 f9 f9 f9 f9 00 00 02 f9
+[ 9793.714656]  ffffffffc1271a80: f9 f9 f9 f9 00 00 04 f9 f9 f9 f9 f9 00 00 00 00
+[ 9793.714670] >ffffffffc1271b00: 00 00 00 04 f9 f9 f9 f9 04 f9 f9 f9 f9 f9 f9 f9
+[ 9793.714680]                             ^
+[ 9793.714690]  ffffffffc1271b80: 00 00 00 00 00 04 f9 f9 f9 f9 f9 f9 00 00 00 00
+[ 9793.714704]  ffffffffc1271c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+The ICE_AQ_LINK_SPEED_UNKNOWN define is BIT(15). The value is bigger
+than both legacy and normal link speed tables. Add one element (0 -
+unknown) to both tables. There is no need to explicit set table size,
+leave it empty.
+
+Fixes: 1d0e28a9be1f ("ice: Remove and replace ice speed defines with ethtool.h versions")
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.c | 5 +++--
+ drivers/net/ethernet/intel/ice/ice_vf_mbx.c | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 4b78bfb0d7f9..a24b5cb95039 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -5562,7 +5562,7 @@ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw)
+  * returned by the firmware is a 16 bit * value, but is indexed
+  * by [fls(speed) - 1]
+  */
+-static const u32 ice_aq_to_link_speed[15] = {
++static const u32 ice_aq_to_link_speed[] = {
+ 	SPEED_10,	/* BIT(0) */
+ 	SPEED_100,
+ 	SPEED_1000,
+@@ -5577,7 +5577,8 @@ static const u32 ice_aq_to_link_speed[15] = {
+ 	0,
+ 	0,
+ 	0,
+-	0		/* BIT(14) */
++	0,
++	0		/* BIT(15) */
+ };
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+index d4a4001b6e5d..5f754d41f345 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+@@ -39,7 +39,7 @@ ice_aq_send_msg_to_vf(struct ice_hw *hw, u16 vfid, u32 v_opcode, u32 v_retval,
+ 	return ice_sq_send_cmd(hw, &hw->mailboxq, &desc, msg, msglen, cd);
+ }
+ 
+-static const u32 ice_legacy_aq_to_vc_speed[15] = {
++static const u32 ice_legacy_aq_to_vc_speed[] = {
+ 	VIRTCHNL_LINK_SPEED_100MB,	/* BIT(0) */
+ 	VIRTCHNL_LINK_SPEED_100MB,
+ 	VIRTCHNL_LINK_SPEED_1GB,
+@@ -54,7 +54,8 @@ static const u32 ice_legacy_aq_to_vc_speed[15] = {
+ 	VIRTCHNL_LINK_SPEED_UNKNOWN,
+ 	VIRTCHNL_LINK_SPEED_UNKNOWN,
+ 	VIRTCHNL_LINK_SPEED_UNKNOWN,
+-	VIRTCHNL_LINK_SPEED_UNKNOWN	/* BIT(14) */
++	VIRTCHNL_LINK_SPEED_UNKNOWN,
++	VIRTCHNL_LINK_SPEED_UNKNOWN	/* BIT(15) */
+ };
+ 
+ /**
+-- 
+2.36.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
