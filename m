@@ -1,82 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C8156583AB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Dec 2022 17:49:55 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13DA3657E5B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Dec 2022 16:53:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D457C4033F;
-	Wed, 28 Dec 2022 16:49:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D457C4033F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 03B0A4031B;
+	Wed, 28 Dec 2022 15:53:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03B0A4031B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1672246193;
-	bh=l1qooxH5EI2zAciLRpFosPaMZdIVIc1B8xoPTA7Hz5c=;
+	s=default; t=1672242784;
+	bh=deZ5hMypfUk/X4kCxFxSAKWMa5WHVAP9YbYsvAKDxJM=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=19Vq4QnpEr26ndwn64rHHpJLn1C8yDFb1sttGQFnjncizbGHr2Z9jrTL1GO5/c2Ez
-	 i48YKt55CxoJDBAJJJRrKjM0ZxYAWGxxK98NjGmmdsp7pvuKarmH2LKK2tYC+P+mGc
-	 QnjrCKoQ4Xt/T05bXy2J9K2dhbCnPfBwA/9hFvsSOHVOLi158NeVOVQB0172l1P0az
-	 1s2D9+ZXCS92y+KIcJgVHljhjXbHHqKHf8x9Y9dpc+kS0l6wZQyqB4wEz0A3p1DWaD
-	 7m4Tsc4efK8OoPbvTe578MB0ti3pNQbSrz7XYrX3jdO1XCpyE9DxNyrYJWUsiVjvYS
-	 MFx8fGj2OEM/g==
+	b=v0PsBMP7jpphMqO+4AQc30hihenHlECQS77jnSEgl5Ubfv7VpDCsII14/KHhSJ10n
+	 wdzCaui3hIZtQ58aqTnAbDNA+x1RxsRjR2NJBaG//pMEz2IFWT+qAbgzIXT8RQpVE1
+	 yOFFySKpfMntc4XordQhhiDW0iMWux4Y3HHMUSCr9jF7Or5fNpAxx+tglLOGaOQSGQ
+	 Lq+aSAAiU/qVQl+AoWWbnR88gCl2O9mtSkzd7E5XdnXxGqm78aKOnX+fP190efSfo9
+	 eSD6hV9uyM9Sdsj7lwaUD5edwbr0lLlxtqpaKR4lmlxf2Ev6ABhToMOh3i107WT3ED
+	 cDWEf62m9SM2Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UH53sUTzupew; Wed, 28 Dec 2022 16:49:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id m6Oto4dZc698; Wed, 28 Dec 2022 15:53:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BE954403F8;
-	Wed, 28 Dec 2022 16:49:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE954403F8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A919402EF;
+	Wed, 28 Dec 2022 15:53:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A919402EF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 012C71BF3AA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 16:49:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 64E7D1BF3C2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 15:52:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CB37280F73
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 16:49:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB37280F73
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3EAFA812DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 15:52:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3EAFA812DB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v41Ay2k6QFAd for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Dec 2022 16:49:46 +0000 (UTC)
+ with ESMTP id yVFHGXjIRPo8 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Dec 2022 15:52:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0595780C2D
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0595780C2D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 16:49:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 68977812AB
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 68977812AB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Dec 2022 15:52:56 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 2551EB81729;
- Wed, 28 Dec 2022 16:49:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 539E5C433EF;
- Wed, 28 Dec 2022 16:49:42 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 6D87BB81730;
+ Wed, 28 Dec 2022 15:52:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A3FDC433EF;
+ Wed, 28 Dec 2022 15:52:50 +0000 (UTC)
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: stable@vger.kernel.org
-Date: Wed, 28 Dec 2022 15:42:13 +0100
-Message-Id: <20221228144357.366454227@linuxfoundation.org>
+Date: Wed, 28 Dec 2022 15:42:30 +0100
+Message-Id: <20221228144315.148014413@linuxfoundation.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20221228144330.180012208@linuxfoundation.org>
-References: <20221228144330.180012208@linuxfoundation.org>
+In-Reply-To: <20221228144256.536395940@linuxfoundation.org>
+References: <20221228144256.536395940@linuxfoundation.org>
 User-Agent: quilt/0.67
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=linuxfoundation.org; 
- s=korg; t=1672246182;
- bh=2H7iW4kVyojt67OLaGBKKyCKy4p556pE4MJIqK6mm7I=;
+ s=korg; t=1672242771;
+ bh=M+k0+5VQoTiQ28+qOM0SuLz5NZ4u1yl9Hi3eY/xvBAo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=smL13GMeT82AMSCLGxjqHbSbdql0Utb7Tk/Q25guxQlc0Cq7nwq+VkJAGKk1j6mr4
- cTNX0MRdY/VvTc4NsGIspSj9wu0RsS18PrdQsPmF4ne/+P2v2MtCSIqBjJcFcQnbMx
- nMLHjeBVffWkx0AYp8zdesU3FEH4S4RTANRdHtBw=
+ b=GowJcS2S2btxdjrr8VsIVQa7Ijk5KFRHxcX3uLOdr9wpzvbEz9uxID0UPmRL2A13l
+ eMmU70xBM/WPWlBf3kvov0kF+ZY/Ljk2swP9sGvUkZmcHrbii3EQv4aXPBYWfiphRN
+ S3SQTbN5DlCd4Hyev+wtzYQcOHicKmgfRMxdtGQU=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=linuxfoundation.org
  header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
- header.b=smL13GMe
-Subject: [Intel-wired-lan] [PATCH 6.1 0994/1146] igb: Do not free q_vector
+ header.b=GowJcS2S
+Subject: [Intel-wired-lan] [PATCH 5.15 643/731] igb: Do not free q_vector
  unless new one was allocated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -130,10 +129,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 473158c09f1d..24a6ae19ad8e 100644
+index 70667b46858a..b246ff8b7c20 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -1202,8 +1202,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+@@ -1204,8 +1204,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
  	if (!q_vector) {
  		q_vector = kzalloc(size, GFP_KERNEL);
  	} else if (size > ksize(q_vector)) {
