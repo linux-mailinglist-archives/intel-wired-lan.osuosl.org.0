@@ -2,91 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D9C565A9C3
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  1 Jan 2023 12:29:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F19D65A9C4
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  1 Jan 2023 12:31:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8FD6440993;
-	Sun,  1 Jan 2023 11:29:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8FD6440993
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E72F409AF;
+	Sun,  1 Jan 2023 11:31:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1E72F409AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1672572594;
-	bh=VZcSLhPZUN1Po6Tx35HgU12qE7GsefymcoIS0XVC53A=;
+	s=default; t=1672572689;
+	bh=cOH4dXkvGdbzu520lQ6b7pN9Yhu3xyKtXiNDFhPVWQM=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=dh22pgE4RxZLCkTCc8MN8rycsUwSYzgSE7soyda3dMpunHLqWA3H25/VEOO5TgYv6
-	 nUlnPsnoiEBaC5ZHMaUmO4pbTlc92T54H1S0N1Jo1iIl7ygqDjnQ6NNUsDWi4arduT
-	 o4cfQHslnpmxLB9liJLkH/5YBmRrqY7qzSHOaS3755fLv90ijbfE2Up58NyTm4BAo7
-	 +idahtBT8j48b4JVnz/MJTRnrdodfU3lGLpTMdroIGRx2JwT4fxUGR+zv1c43dENzO
-	 SuCy9JXHeQ0+W3NUDf5X5hbtoaC8cTSCJva1q9qcEkBhrK2Z6QONcmu4N2NPul6+df
-	 45HqdHqfdn9NQ==
+	b=DoVsMNCtzqzqeFJuoc8A8oZs5rO5vvnKXreAPIS4+P7hgrLBJ5Se9nZZv8vjexris
+	 VUO13UK5Le+KQumYli7NxCFZAZDr1uCKJFqt/RHOawlDCMq1GzROsXYLfFvKoc0bsI
+	 q0Ssl5uV7kimGzfRke+CKrUFKFWR9Jr5/z845rs2OdhGSDFw+d15K++JHNo3UmdFbD
+	 3V9xr6p8xluGicHDARSCwfH4X3zRL+q580bHJy8u8dbQRxwp22+C1u6GngNbMY2zXF
+	 Qi+D9Hx0DHpOdn9LSBTNu0orXpNu2tyfz1lN7htYeg7QYs6FrDipJacaAh8O6WulWb
+	 Hc0rvMI6mn05w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 142qc5tZT3Ao; Sun,  1 Jan 2023 11:29:53 +0000 (UTC)
+	with ESMTP id MDOYAsyHSl6A; Sun,  1 Jan 2023 11:31:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 66902408CC;
-	Sun,  1 Jan 2023 11:29:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 66902408CC
+	by smtp4.osuosl.org (Postfix) with ESMTP id D540C4099F;
+	Sun,  1 Jan 2023 11:31:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D540C4099F
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 004D11BF392
- for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:29:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7831B1BF2AF
+ for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:31:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CB418404D5
- for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:29:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CB418404D5
+ by smtp2.osuosl.org (Postfix) with ESMTP id 51927404FE
+ for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:31:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51927404FE
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2vsMa_C4dLAb for <intel-wired-lan@osuosl.org>;
- Sun,  1 Jan 2023 11:29:47 +0000 (UTC)
+ with ESMTP id 5sf2pd2PKwyx for <intel-wired-lan@osuosl.org>;
+ Sun,  1 Jan 2023 11:31:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10975400E7
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 10975400E7
- for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:29:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10577"; a="321444651"
-X-IronPort-AV: E=Sophos;i="5.96,292,1665471600"; d="scan'208";a="321444651"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jan 2023 03:29:46 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10577"; a="684863803"
-X-IronPort-AV: E=Sophos;i="5.96,292,1665471600"; d="scan'208";a="684863803"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 99A37404F6
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 99A37404F6
+ for <intel-wired-lan@osuosl.org>; Sun,  1 Jan 2023 11:31:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10577"; a="383679124"
+X-IronPort-AV: E=Sophos;i="5.96,292,1665471600"; d="scan'208";a="383679124"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jan 2023 03:31:21 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10577"; a="742967824"
+X-IronPort-AV: E=Sophos;i="5.96,292,1665471600"; d="scan'208";a="742967824"
 Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.11.251])
  ([10.13.11.251])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jan 2023 03:29:44 -0800
-Message-ID: <bd5acfc0-35b8-84d7-003f-231b87bda7e5@linux.intel.com>
-Date: Sun, 1 Jan 2023 13:29:42 +0200
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jan 2023 03:31:19 -0800
+Message-ID: <c4127a7a-da23-41f9-6e3b-e2a15794975d@linux.intel.com>
+Date: Sun, 1 Jan 2023 13:31:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
 Content-Language: en-US
 To: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
  intel-wired-lan@osuosl.org, vinicius.gomes@intel.com
-References: <20221214081038.1720-1-muhammad.husaini.zulkifli@intel.com>
+References: <20221214162909.22856-1-muhammad.husaini.zulkifli@intel.com>
+ <20221214162909.22856-2-muhammad.husaini.zulkifli@intel.com>
 From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20221214081038.1720-1-muhammad.husaini.zulkifli@intel.com>
+In-Reply-To: <20221214162909.22856-2-muhammad.husaini.zulkifli@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672572586; x=1704108586;
+ t=1672572682; x=1704108682;
  h=message-id:date:mime-version:subject:to:cc:references:
  from:in-reply-to:content-transfer-encoding;
- bh=oUbmi5mFMpGaYjX3acw45ijGaN9eXMGq3dnmo8nmedY=;
- b=DWTLBHB8BnprtXFDYyh13EyaqvMVTek0JDCsnNyFmy2ogGh4qXfemYmP
- wFdtSlX9+nu/J6VBi3JiiuJnyRcbN4mUBhdq9s9x0y+UoGcOKwX+sB/Vs
- Dy304WWk7Iqm6n5F0UntPsf6fQJXv0qnbnijbn+DUoQ78Re+QlJ5Jffun
- zWNCct9a/zZpz2ZsDcMaak0OJfCEffq2zWX+rRAQgMOzfgb+Nm6r4oRoO
- OaO/z0A1oLpera8QNt2mHQjU+1+NhSc9sFHkYIMYz/K30iowjF0P1AgDd
- ZtJoUpXf3F8I/MkbLOiAKt5kLo7RbQUjVLfombPWfcK3pqAPa2UsVXlSu
- A==;
+ bh=gOO7pZHrFaM4U21kq8W0Z4X6NlTSBazxKiHEt3/S3rQ=;
+ b=Cj5wVocCxUAgWmlWjSpWoAuU+Ctgt1Rl2cPVRgh8UvU/T9lmMfmsBgM9
+ jBwi9RV6RN2tFXLrEQNyqLpbOfddWtlIbrx/yh6Ymk0KEZljl3grntUn9
+ JYSNWHK2l9wp2Gor5fvzXmcjv4/eNpq3T1qnoyEam23Hdzt1lZrGH3kzN
+ TJOW9FQWpj3CHfz6GpzTF+nnaQxMrvLS3z/W2tK/j/dQOE/Sk5gqD9KKl
+ 0Ho6a7X2Jg3PD/aDPxJukweYXaXtFTUCK2Gpd4MYRmg5IIDbN6UoXcZ6+
+ HaZg1+7khPLE5IPNHVQVpN6yA6E7MOpsYyfrU/dEVTD1DvQHk6B3D50sF
+ g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DWTLBHB8
-Subject: Re: [Intel-wired-lan] [PATCH net v1] igc: Fix PPS delta between two
- synchronized end-points
+ header.a=rsa-sha256 header.s=Intel header.b=Cj5wVocC
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/3] igc: remove I226 Qbv
+ BaseTime restriction
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,44 +100,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: christopher.s.hall@intel.com, anthony.l.nguyen@intel.com
+Cc: anthony.l.nguyen@intel.com, tee.min.tan@linux.intel.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/14/2022 10:10, Muhammad Husaini Zulkifli wrote:
-> From: Christopher S Hall <christopher.s.hall@intel.com>
+On 12/14/2022 18:29, Muhammad Husaini Zulkifli wrote:
+> Remove the Qbv BaseTime restriction for I226 so that the BaseTime can be
+> scheduled to the future time. A new register bit of Tx Qav Control
+> (Bit-7: FutScdDis) was introduced to allow I226 scheduling future time as
+> Qbv BaseTime and not having the Tx hang timeout issue.
 > 
-> This patch fix the pulse per second output delta between
-> two synchronized end-points.
+> Besides, according to datasheet section 7.5.2.9.3.3, FutScdDis bit has to
+> be configured first before the cycle time and base time.
 > 
-> Based on Intel Discrete I225 Software User Manual Section
-> 4.2.15 TimeSync Auxiliary Control Register, ST0[Bit 4] and
-> ST1[Bit 7] must be set to ensure that clock output will be
-> toggles based on frequency value defined. This is to ensure
-> that output of the PPS is aligned with the clock.
+> Indeed the FutScdDis bit is only active on re-configuration, thus we have
+> to set the BASET_L to zero and then only set it to the desired value.
 > 
-> How to test:
+> Please also note that the Qbv configuration flow is moved around based on
+> the Qbv programming guideline that is documented in the latest datasheet.
 > 
-> 1) Running time synchronization on both end points.
-> Ex: ptp4l --step_threshold=1 -m -f gPTP.cfg -i <interface name>
-> 
-> 2) Configure PPS output using below command for both end-points
-> Ex: SDP0 on I225 REV4 SKU variant
-> 
-> ./testptp -d /dev/ptp0 -L 0,2
-> ./testptp -d /dev/ptp0 -p 1000000000
-> 
-> 3) Measure the output using analyzer for both end-points
-> 
-> Fixes: 87938851b6ef ("igc: enable auxiliary PHC functions for the i225")
-> Signed-off-by: Christopher S Hall <christopher.s.hall@intel.com>
+> Co-developed-by: Tan Tee Min <tee.min.tan@linux.intel.com>
+> Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
 > Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 > ---
->   drivers/net/ethernet/intel/igc/igc_defines.h |  2 ++
->   drivers/net/ethernet/intel/igc/igc_ptp.c     | 10 ++++++----
->   2 files changed, 8 insertions(+), 4 deletions(-)
+>   drivers/net/ethernet/intel/igc/igc_base.c    | 29 +++++++++++++
+>   drivers/net/ethernet/intel/igc/igc_base.h    |  2 +
+>   drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
+>   drivers/net/ethernet/intel/igc/igc_main.c    |  5 ++-
+>   drivers/net/ethernet/intel/igc/igc_tsn.c     | 44 +++++++++++++-------
+>   5 files changed, 65 insertions(+), 16 deletions(-)
 Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
