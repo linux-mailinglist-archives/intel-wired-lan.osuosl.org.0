@@ -1,84 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1717A65EA70
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Jan 2023 13:09:16 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8731565EC43
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Jan 2023 14:07:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3B03C60E7E;
-	Thu,  5 Jan 2023 12:09:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3B03C60E7E
+	by smtp3.osuosl.org (Postfix) with ESMTP id AEE6D60DFA;
+	Thu,  5 Jan 2023 13:07:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AEE6D60DFA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1672920554;
-	bh=h/AIafncursKudQI9FDsqCDWm6rEkyU7wx+bdE05nPA=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=WgOCSrzN1X14bIlM75dqlljacAiBGSejo/QpXkWxNggVqqGowNqP97F4XeRx1ipOy
-	 4rJNLHdvCLcQBntIlJaKRhEL2+/ZokwEBU5REiwywEyCQtm/PV/OdgY4z5WRCXeRVC
-	 m7sm5owomKSSjhAw2jI379M/EU7UZZk1/R7x6axKIZ0AxkKpzYB0LfukAIFhw8DcXG
-	 TZ/w0vwD1V06hAXpPE90f0T/qZ8ILhhCLVAXJC5f/++KvMhnL3mUN0NbhQiQ7ddCi2
-	 fmFiXTuhUwF4Bx0kx8y+wwpltOWlwZbvkfWgMm+cjJ/S2+LoRSjg9L/wy4iLmWCtFL
-	 0hOayERUsz6jg==
+	s=default; t=1672924067;
+	bh=5Ez0ygSqWj8wcinZYZTkm8Kp8A6bBnoZXmGLEjYGXts=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=8pZRVnmN0E6R0q4HoSBsqC/5SC9NGYN3xTEmTPV9f73o5kca6cYu1PUxcwchPxkGj
+	 J+/dDCfCxNFbTgU2QHIW5WlieNb/j1gq1dBnFKLoOe4g2d2uXWfffT/6s5ErFOLa+9
+	 hl7OQU8Jwykgjchtm60hton3l/+59onsGsLYDxqMIAwX9xDunfzOKvzSN0ISqExeYa
+	 ph7TO9Y0CW8pTJJytgnnaW4RmsuDRt7KBHsUumpeD8gPvp4tBsJuumMw72i5nW64ub
+	 LoGM7nRjlQzwCEWp2UhyKNRqcPGq8vvwRamvxjzQIyWAU7DxTjez8Hp3Oykwu+Y+ZF
+	 Qm3q77SVP5bNw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AgpD2TE26kZY; Thu,  5 Jan 2023 12:09:13 +0000 (UTC)
+	with ESMTP id 9aiBxkhf-6bd; Thu,  5 Jan 2023 13:07:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 399E660E19;
-	Thu,  5 Jan 2023 12:09:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 399E660E19
+	by smtp3.osuosl.org (Postfix) with ESMTP id BFF5960D89;
+	Thu,  5 Jan 2023 13:07:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFF5960D89
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8C0A91BF318
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 12:09:08 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A4BD41BF409
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 13:07:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 65FBC82010
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 12:09:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65FBC82010
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7EBF960D89
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 13:07:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7EBF960D89
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id naZgeF7dBEmG for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Jan 2023 12:09:07 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A68EF8143A
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A68EF8143A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 12:09:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="320896280"
-X-IronPort-AV: E=Sophos;i="5.96,302,1665471600"; d="scan'208";a="320896280"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2023 04:09:06 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="763109126"
-X-IronPort-AV: E=Sophos;i="5.96,302,1665471600"; d="scan'208";a="763109126"
-Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by fmsmga002.fm.intel.com with ESMTP; 05 Jan 2023 04:09:05 -0800
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  5 Jan 2023 07:05:18 -0500
-Message-Id: <20230105120518.29776-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.31.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8mtgKY5KR3yL for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Jan 2023 13:07:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C7657605EE
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C7657605EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 13:07:40 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4FB5D619FF;
+ Thu,  5 Jan 2023 13:07:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25C08C433D2;
+ Thu,  5 Jan 2023 13:07:38 +0000 (UTC)
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: stable@vger.kernel.org
+Date: Thu,  5 Jan 2023 13:55:30 +0100
+Message-Id: <20230105125343.661094256@linuxfoundation.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230105125334.727282894@linuxfoundation.org>
+References: <20230105125334.727282894@linuxfoundation.org>
+User-Agent: quilt/0.67
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672920547; x=1704456547;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=tEdtkacBWgPOX605RJin9EqOtDc84r190wA88mhrugc=;
- b=VeY/+JwZTQK353QnpeBZ+qH+Gzei9UuuFwO8RlhAcayDymNn4NdsPM8D
- KjBrLuWRd6SPsIf4qCI9NVrCtLVKRRzE4PK4pc9V9Lc6BUGAjC4hXh38T
- 5NygZCGy7SJ9xSRyLW0Q/dycSh4yhEKyTuUlP5zZKsWaRA3RaruM0EWfN
- 0vfxi3+lQpKVsYO05eSzswwb5Uf8GUl0Xl0fCpX29abxk5NkyJWg3o2+S
- U6CWn4hn4f7L9mmAIG89gZJ6OO3KovDjERoUkWldg3iRl9TqUoyLQEuvJ
- hm/LzQbt4DIB8kPEwUbnooRgxofCUoVIXWW6+SGyFm17tNqUAY80Ysh2z
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VeY/+JwZ
-Subject: [Intel-wired-lan] [PATCH net v2] ice: Fix deadlock on the rtnl_mutex
+ d=linuxfoundation.org; 
+ s=korg; t=1672924058;
+ bh=VakV6NWYyoDAL3aJMqaoBAEhLsNBck/45qgFfLzV3kY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=ioHHhZ8wpNuECTwV4k0g+bSnAm8/t8c3LtyXFl+YXWcOaHuk6EZt1pLni6pd4cx3X
+ WfEEv0xCEnyI10RO0B3SA4xs+fo3VJif6t8s+C7gDoVZdiBMJy7S3Gs/FcpnVU9dQu
+ 3zyAavOxv26i0e4tEb6iYBOqBFQAFQ8L8RpbyjIA=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+ header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
+ header.b=ioHHhZ8w
+Subject: [Intel-wired-lan] [PATCH 4.9 193/251] igb: Do not free q_vector
+ unless new one was allocated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,101 +90,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, leon@kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, Kees Cook <keescook@chromium.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, patches@lists.linux.dev,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ "Michael J. Ruhl" <michael.j.ruhl@intel.com>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There is a deadlock on rtnl_mutex when attempting to take the lock
-in unregister_netdev() after it has already been taken by
-ethnl_set_channels(). This happened when unregister_netdev() was
-called inside of ice_vsi_rebuild().
-Fix that by removing the unregister_netdev() usage and replace it with
-ice_vsi_clear_rings() that deallocates the tx and rx rings for the VSI.
+From: Kees Cook <keescook@chromium.org>
 
-Fixes: df0f847915b4 ("ice: Move common functions out of ice_main.c part 6/7")
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- v2: Fixed goto unwind to remove code redundancy
----
- drivers/net/ethernet/intel/ice/ice_lib.c | 35 ++++++++++++------------
- 1 file changed, 17 insertions(+), 18 deletions(-)
+[ Upstream commit 0668716506ca66f90d395f36ccdaebc3e0e84801 ]
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 94aa834cd9a6..e5e96dad3563 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3479,8 +3479,10 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
- 		ice_vsi_set_num_qs(vsi, NULL);
- 
- 	ret = ice_vsi_alloc_arrays(vsi);
--	if (ret < 0)
--		goto err_vsi;
-+	if (ret < 0){
-+		ice_vsi_clear(vsi);
-+		goto err_reset;
-+	}
- 
- 	ice_vsi_get_qs(vsi);
- 
-@@ -3489,16 +3491,19 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
- 
- 	/* Initialize VSI struct elements and create VSI in FW */
- 	ret = ice_vsi_init(vsi, init_vsi);
--	if (ret < 0)
--		goto err_vsi;
--
-+	if (ret < 0){
-+		ice_vsi_clear(vsi);
-+		goto err_reset;
-+	}
- 	switch (vtype) {
- 	case ICE_VSI_CTRL:
- 	case ICE_VSI_SWITCHDEV_CTRL:
- 	case ICE_VSI_PF:
- 		ret = ice_vsi_alloc_q_vectors(vsi);
--		if (ret)
--			goto err_rings;
-+		if (ret){
-+			ice_vsi_clear_rings(vsi);
-+			goto err_reset;
-+		}
- 
- 		ret = ice_vsi_setup_vector_base(vsi);
- 		if (ret)
-@@ -3544,8 +3549,10 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
- 		break;
- 	case ICE_VSI_VF:
- 		ret = ice_vsi_alloc_q_vectors(vsi);
--		if (ret)
--			goto err_rings;
-+		if (ret){
-+			ice_vsi_clear_rings(vsi);
-+			goto err_reset;
-+		}
- 
- 		ret = ice_vsi_set_q_vectors_reg_idx(vsi);
- 		if (ret)
-@@ -3618,15 +3625,7 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
- 
- err_vectors:
- 	ice_vsi_free_q_vectors(vsi);
--err_rings:
--	if (vsi->netdev) {
--		vsi->current_netdev_flags = 0;
--		unregister_netdev(vsi->netdev);
--		free_netdev(vsi->netdev);
--		vsi->netdev = NULL;
--	}
--err_vsi:
--	ice_vsi_clear(vsi);
-+err_reset:
- 	set_bit(ICE_RESET_FAILED, pf->state);
- 	kfree(coalesce);
- 	return ret;
+Avoid potential use-after-free condition under memory pressure. If the
+kzalloc() fails, q_vector will be freed but left in the original
+adapter->q_vector[v_idx] array position.
+
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Signed-off-by: Kees Cook <keescook@chromium.org>
+Reviewed-by: Michael J. Ruhl <michael.j.ruhl@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Tested-by: Gurucharan <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 2e713e5f75cd..bbca786f0427 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -1219,8 +1219,12 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+ 	if (!q_vector) {
+ 		q_vector = kzalloc(size, GFP_KERNEL);
+ 	} else if (size > ksize(q_vector)) {
+-		kfree_rcu(q_vector, rcu);
+-		q_vector = kzalloc(size, GFP_KERNEL);
++		struct igb_q_vector *new_q_vector;
++
++		new_q_vector = kzalloc(size, GFP_KERNEL);
++		if (new_q_vector)
++			kfree_rcu(q_vector, rcu);
++		q_vector = new_q_vector;
+ 	} else {
+ 		memset(q_vector, 0, size);
+ 	}
 -- 
-2.31.1
+2.35.1
+
+
 
 _______________________________________________
 Intel-wired-lan mailing list
