@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47A2D65F48E
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Jan 2023 20:34:20 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2820965F68B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Jan 2023 23:14:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8CB6A40C5D;
-	Thu,  5 Jan 2023 19:34:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8CB6A40C5D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8DB2541BEA;
+	Thu,  5 Jan 2023 22:14:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8DB2541BEA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1672947258;
-	bh=7RV2RmAuoZtYvxKaYGRX8qsA0oT4CzrL7+DJjftljkI=;
+	s=default; t=1672956872;
+	bh=NUDnLXStrurayU0lTrb/ZouzpzG9lmTWhpJG4wJG/aQ=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zUujRHCSx3Pa9Ufe7jg0Z+hTP7D0T27KiBzE6xTxdvuEYmbm9DBJ4UqVhJA+C37m8
-	 ctqJQ6WYCSOZksi/AJeoEXRx3j/cI8Qxfhrr3Z372/PBNHpE/MhdwYeaG2UWKr6eq7
-	 Crr6F67Pp1jRjeQNmMxTzv5cjX3CtJUV58kV9EadIQZQoREqVNUWtBIAG61uBOxBHs
-	 VaD1EwYf6sJR0htyvwWEfgshhx1thkFK1gqilHlLFJqOV/eyswuxWNBpaXWmDHaaZ8
-	 M3S6wbwEvVAkthqjBwRuqtA+PICb7/bDr73yLylmAhm+M2ClogyTcz8Hv75i3+TPF7
-	 4pDKZX+Dc5ugQ==
+	 List-Post:List-Help:List-Subscribe:From;
+	b=eSf8mdNcHRp0i8lyG60uauRon1cy9WiFsI2oaBDF0UnS5At3kN3vUzjJIQbe6QI/i
+	 UHeOjE0FWDmYXvDeyQe/EanpsLCPbrhwH0qA6VkWbcGjuEOqnc9k2tiCb/sSilekdR
+	 6wi0frNRTdnBv3E2XJAX5CfS5vWV2eTJi01oBNxQKOPUdCZEfglGtqg0GX97toxStP
+	 yaaljRWz8SiRzPjSgCk9UoNXB+3UCS/+QWW9pf0dAuceT3HLlEBCzzChQXoTHUOlUx
+	 5phyl/NDqxFZ2PKLv2cDM2g6vjxZJLQCoisSpQifIvHgQBEAnCgydGTJEAjcEge85A
+	 zM3uISQFJCX6Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pRpVS_NXw1nu; Thu,  5 Jan 2023 19:34:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 99HKSzvhimVZ; Thu,  5 Jan 2023 22:14:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6158840C5E;
-	Thu,  5 Jan 2023 19:34:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6158840C5E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 19F5441BE3;
+	Thu,  5 Jan 2023 22:14:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 19F5441BE3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C22C51BF2C5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 19:34:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 61B601BF295
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 22:14:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 955EB40480
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 19:34:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 955EB40480
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4611E82015
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 22:14:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4611E82015
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tDKIELybqCDW for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Jan 2023 19:34:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l5sg8VxWKxfy for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Jan 2023 22:14:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AB8AC40C5D
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AB8AC40C5D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 19:34:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10581"; a="324327075"
-X-IronPort-AV: E=Sophos;i="5.96,303,1665471600"; d="scan'208";a="324327075"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BD8F181FEE
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BD8F181FEE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Jan 2023 22:14:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10581"; a="320044006"
+X-IronPort-AV: E=Sophos;i="5.96,303,1665471600"; d="scan'208";a="320044006"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2023 11:34:09 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10581"; a="718941153"
-X-IronPort-AV: E=Sophos;i="5.96,303,1665471600"; d="scan'208";a="718941153"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.241.12])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jan 2023 14:14:23 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10581"; a="718982724"
+X-IronPort-AV: E=Sophos;i="5.96,303,1665471600"; d="scan'208";a="718982724"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.212.84.239])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jan 2023 11:34:09 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	benjamin.mikailenko@intel.com
-Date: Thu,  5 Jan 2023 11:33:11 -0800
-Message-Id: <20230105193311.79528-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+ 05 Jan 2023 14:14:23 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  5 Jan 2023 14:14:15 -0800
+Message-Id: <20230105221415.15394-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672947250; x=1704483250;
+ t=1672956864; x=1704492864;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=f8HXvV0MsXLbhnEUTFfVy1XryztyhUtN9Hsr+C5wVyI=;
- b=Xq0NTSwXs731vhcoHdTCPqDJDLTKx9AjR2WcDkXy0xXeBVEeJ/sBM0Ja
- pFOX7ZW1CkBu9IwyDvOmO80sTbQM3OddBhNS6anvcffHRK1ihcRLfq59t
- jUwvq+4jnAQ6bIGg9B0aDKJhDmmszytLrCE6epkYfvil67zTh6WioLZeS
- Sd/PHjRuo743jKBl55k/o3BqYn54a7FWzMlIHAw02KKPnjkT1/hNmQS8u
- YCakHRoOwWkaOSxNU1G9JXQtzR2s7u50QNYHNdd5qRcb1r5gSQm0uu0J7
- AGClKZOZp+yQJhxXQW67UebJKmmUR2GoGfuM6vKwQ5HikqdfUZ+Ng9tqN
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=t3UgUoT4z+gtDsAc1QvN0cKyINQ0tT9uA6sM+s1H5zQ=;
+ b=gljvC68Y0ioNWYsCCcbRaTGqMYgosk8gcrZhiJXWNyXPWJcfgCaAnI0Z
+ sJv3tZXPlmYoe4vlRuxYqwrwqIGXM6X1+11nEgZd0uC+ALzeF3i87RlIT
+ SJM7zed7ZiPGFZxrzX/8fQ6VwAV+PEZUfE3G17mll2eS8+8WFrQUCiKVs
+ 9xRcqIXXbwRWNxchdc3rVl8ZfKMidfiBkVny9xEYiKUcw2iaV/C0jInoN
+ gpojrLO7AhQQBq9/AZkpewXM+kbXXAVbGBBxUp4rEJdY7WJTq3+8IllMe
+ 118IBipAYYyP6pLD1rXE/jezU6BC+CRwYG0X7CvvyHKa7NrXFiMSHym0S
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Xq0NTSwX
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Change
- ice_vsi_realloc_stat_arrays() to void
+ header.a=rsa-sha256 header.s=Intel header.b=gljvC68Y
+Subject: [Intel-wired-lan] [PATCH net v4] ice: move devlink port
+ creation/deletion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,72 +92,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-smatch reports:
+Commit a286ba738714 ("ice: reorder PF/representor devlink
+port register/unregister flows") moved the code to create
+and destroy the devlink PF port. This was fine, but created
+a corner case issue in the case of ice_register_netdev()
+failing. In that case, the driver would end up calling
+ice_devlink_destroy_pf_port() twice.
 
-smatch warnings:
-drivers/net/ethernet/intel/ice/ice_lib.c:3612 ice_vsi_rebuild() warn: missing error code 'ret'
+Additionally, it makes no sense to tie creation of the devlink
+PF port to the creation of the netdev so separate out the
+code to create/destroy the devlink PF port from the netdev
+code. This makes it a cleaner interface.
 
-If an error is encountered for ice_vsi_realloc_stat_arrays(), ret is not
-assigned an error value so the goto error path would return success. The
-function, however, only returns 0 so an error will never be reported; due
-to this, change the function to return void.
-
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Fixes: a286ba738714 ("ice: reorder PF/representor devlink port register/unregister flows")
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c  |  3 ---
+ drivers/net/ethernet/intel/ice/ice_main.c | 25 +++++++++++++++--------
+ 2 files changed, 17 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 716ade0e43a9..a09cb4ac39e4 100644
+index 22bcb414546a..6e30c176e6f1 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3439,7 +3439,7 @@ ice_vsi_rebuild_set_coalesce(struct ice_vsi *vsi,
-  * @prev_txq: Number of Tx rings before ring reallocation
-  * @prev_rxq: Number of Rx rings before ring reallocation
-  */
--static int
-+static void
- ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
- {
- 	struct ice_vsi_stats *vsi_stat;
-@@ -3447,9 +3447,9 @@ ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
- 	int i;
- 
- 	if (!prev_txq || !prev_rxq)
--		return 0;
-+		return;
- 	if (vsi->type == ICE_VSI_CHNL)
--		return 0;
-+		return;
- 
- 	vsi_stat = pf->vsi_stats[vsi->idx];
- 
-@@ -3470,8 +3470,6 @@ ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
- 			}
+@@ -3235,9 +3235,6 @@ int ice_vsi_release(struct ice_vsi *vsi)
  		}
  	}
+ 
+-	if (vsi->type == ICE_VSI_PF)
+-		ice_devlink_destroy_pf_port(pf);
 -
--	return 0;
+ 	if (vsi->type == ICE_VSI_VF &&
+ 	    vsi->agg_node && vsi->agg_node->valid)
+ 		vsi->agg_node->num_vsis--;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index a9a7f8b52140..237ede2cffb0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4590,7 +4590,7 @@ static void ice_print_wake_reason(struct ice_pf *pf)
  }
  
  /**
-@@ -3521,8 +3519,7 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, int init_vsi)
- 		}
- 	}
+- * ice_register_netdev - register netdev and devlink port
++ * ice_register_netdev - register netdev
+  * @pf: pointer to the PF struct
+  */
+ static int ice_register_netdev(struct ice_pf *pf)
+@@ -4602,11 +4602,6 @@ static int ice_register_netdev(struct ice_pf *pf)
+ 	if (!vsi || !vsi->netdev)
+ 		return -EIO;
  
--	if (ice_vsi_realloc_stat_arrays(vsi, prev_txq, prev_rxq))
--		goto err_vsi_cfg_tc_lan;
-+	ice_vsi_realloc_stat_arrays(vsi, prev_txq, prev_rxq);
+-	err = ice_devlink_create_pf_port(pf);
+-	if (err)
+-		goto err_devlink_create;
+-
+-	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
+ 	err = register_netdev(vsi->netdev);
+ 	if (err)
+ 		goto err_register_netdev;
+@@ -4617,8 +4612,6 @@ static int ice_register_netdev(struct ice_pf *pf)
  
- 	ice_vsi_rebuild_set_coalesce(vsi, coalesce, prev_num_q_vectors);
- 	kfree(coalesce);
+ 	return 0;
+ err_register_netdev:
+-	ice_devlink_destroy_pf_port(pf);
+-err_devlink_create:
+ 	free_netdev(vsi->netdev);
+ 	vsi->netdev = NULL;
+ 	clear_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
+@@ -4636,6 +4629,7 @@ static int
+ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ {
+ 	struct device *dev = &pdev->dev;
++	struct ice_vsi *vsi;
+ 	struct ice_pf *pf;
+ 	struct ice_hw *hw;
+ 	int i, err;
+@@ -4918,6 +4912,18 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	pcie_print_link_status(pf->pdev);
+ 
+ probe_done:
++	err = ice_devlink_create_pf_port(pf);
++	if (err)
++		goto err_create_pf_port;
++
++	vsi = ice_get_main_vsi(pf);
++	if (!vsi || !vsi->netdev) {
++		err = -EINVAL;
++		goto err_netdev_reg;
++	}
++
++	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
++
+ 	err = ice_register_netdev(pf);
+ 	if (err)
+ 		goto err_netdev_reg;
+@@ -4955,6 +4961,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ err_devlink_reg_param:
+ 	ice_devlink_unregister_params(pf);
+ err_netdev_reg:
++	ice_devlink_destroy_pf_port(pf);
++err_create_pf_port:
+ err_send_version_unroll:
+ 	ice_vsi_release_all(pf);
+ err_alloc_sw_unroll:
+@@ -5083,6 +5091,7 @@ static void ice_remove(struct pci_dev *pdev)
+ 	ice_setup_mc_magic_wake(pf);
+ 	ice_vsi_release_all(pf);
+ 	mutex_destroy(&(&pf->hw)->fdir_fltr_lock);
++	ice_devlink_destroy_pf_port(pf);
+ 	ice_set_wake(pf);
+ 	ice_free_irq_msix_misc(pf);
+ 	ice_for_each_vsi(pf, i) {
 -- 
 2.35.1
 
