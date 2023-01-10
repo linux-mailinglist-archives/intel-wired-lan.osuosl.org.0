@@ -2,102 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D5C0662EC0
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jan 2023 19:22:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1077566387F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Jan 2023 06:11:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 049A94167D;
-	Mon,  9 Jan 2023 18:22:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 049A94167D
+	by smtp4.osuosl.org (Postfix) with ESMTP id CD4234086C;
+	Tue, 10 Jan 2023 05:11:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD4234086C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673288552;
-	bh=ZxIOqnI6bfJgD35w05EJ5rQ+nrzM5nndNcjfr7hE/b8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=zi/MTGbDBR6ioty4e8pZUXYSoZmnp039J7Ri7FraiFkuIRLdyFGIyefxsxbyE3snT
-	 aWqjImnIoOUh2eBahj98IR5kMCui9HixHqFdhcA2+9x38TNdJfzMzwZCxWLoHJCTlR
-	 b60JlIyjKS/eAXHdL4JG137SZ9mCXpkTk4ROX6fyRGRNPR1llXfUXojdHxbQ/5LKLh
-	 cbKxwZJLFri6TkaAA51QZLu6+YZAuG3I8vr9mcxdrKrSTPq82b/SL9KruTbQoIagF6
-	 ZMtxAdKZgZSUwoKc61ktpziRtUkieSHIPGw3qBcaZy4ueFDdhkiUXzeEG+E3y6kf49
-	 sBZxrlEqQPePw==
+	s=default; t=1673327475;
+	bh=L5OYNMabfH6KggqPKXoVsKchbUnGo2T0fg+bZ+mWwSE=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=2YH4lwT0FG9UT8Lr225eh/hWVAb6Qnk3EIXQ/gapWfIhgxInbBpxwwRiv6Hoqep81
+	 /Eve0Fr5q3isqMpygoRVaIWknAPwvj/B7iyC6DSkFztZCOaCh6Sgf+G5hRpR1tbseq
+	 TqiMwxff05HAaM6mbP2zjHCqVVhS0Qonq3A6UEVIh0YwMbP/YVVZD49UXf71orMvpB
+	 Z82MNRlld/mOskwB801roCW2Xrya9oy58KRwzziWU/t4/CIJX1o67mth5etQeLGDac
+	 cKTTpeSv1wQZB4zMQEHekoIMPF+fbb9b+ZL3qemoRPIGA2FE52A6nFBfkJwzy+HUWV
+	 gz6eSF42fUBYw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lF9R-XRd1yYA; Mon,  9 Jan 2023 18:22:30 +0000 (UTC)
+	with ESMTP id EnwBAurMHk0s; Tue, 10 Jan 2023 05:11:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 95252410D7;
-	Mon,  9 Jan 2023 18:22:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 95252410D7
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 389351BF2F3
- for <intel-wired-lan@osuosl.org>; Mon,  9 Jan 2023 18:22:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 783EE40868;
+	Tue, 10 Jan 2023 05:11:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 783EE40868
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 12BBB1BF2BA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:11:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 14221819BC
- for <intel-wired-lan@osuosl.org>; Mon,  9 Jan 2023 18:22:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14221819BC
+ by smtp4.osuosl.org (Postfix) with ESMTP id DF3E040868
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:11:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF3E040868
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6PCWdNgu3KOj for <intel-wired-lan@osuosl.org>;
- Mon,  9 Jan 2023 18:22:24 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4DC918184F
-Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com
- [IPv6:2607:f8b0:4864:20::42e])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4DC918184F
- for <intel-wired-lan@osuosl.org>; Mon,  9 Jan 2023 18:22:24 +0000 (UTC)
-Received: by mail-pf1-x42e.google.com with SMTP id k19so6789308pfg.11
- for <intel-wired-lan@osuosl.org>; Mon, 09 Jan 2023 10:22:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qxbeiZFgELN7gMzS/vrU3V/EU9TFLbTxrex7BL3X+Iw=;
- b=fJEif4+xOoasc8CTPbegJwE6l7ctytznd9GfbKh8hPE2GU7i89GkKRWhVhp3wxGrCz
- FkmMX1x8BxKGCJs57eURiH9w4ySDdotZ4u4FyyT9C7WLXi9sO1QZaGeeiSSufLP5CokG
- aTT6rtKC7OalpINWYciG41sy2UoXPCi5WjVS+1PPwmzKhBWyX9vxH7kq0STBsIqvldPj
- 2xQg7qCZGbezj6AvP1UiQ5OqZ4SAPSPOF724XmoySEIhqxwbfWU6GAIex0qRGNoTRMgR
- WXSEu5TNbZYjtJPEkxGbF7Fr5O2O2cdBPEeBo6N1sYPgdMqDhYs6tyn442I7tquaS0UF
- SY0Q==
-X-Gm-Message-State: AFqh2kpLZasckjx48cU7bqlPWhrfVj7bRH7jsjDdyxdnqR7FUi13iX7k
- Z//DGJSOWNM1HnVcWuTW5k0=
-X-Google-Smtp-Source: AMrXdXuEO8Y3nF4mJkj5it9C1Kh43xBUeKz8ggzpCHopILax+hPckXie3+Ub1ody3NuJdm2tqNNqSg==
-X-Received: by 2002:a62:ee0e:0:b0:578:f6f:efab with SMTP id
- e14-20020a62ee0e000000b005780f6fefabmr71116606pfi.11.1673288543572; 
- Mon, 09 Jan 2023 10:22:23 -0800 (PST)
-Received: from [192.168.0.128] ([98.97.43.196])
- by smtp.googlemail.com with ESMTPSA id
- y12-20020a62640c000000b005819313269csm6340524pfb.124.2023.01.09.10.22.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jan 2023 10:22:23 -0800 (PST)
-Message-ID: <9b68abc5e8613e02207e9c0c3619b1b07bc5bb8c.camel@gmail.com>
-From: Alexander H Duyck <alexander.duyck@gmail.com>
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>, netdev@vger.kernel.org
-Date: Mon, 09 Jan 2023 10:22:22 -0800
-In-Reply-To: <20230109161833.223510-1-pawel.chmielewski@intel.com>
-References: <20230109161833.223510-1-pawel.chmielewski@intel.com>
-User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3n5UiLXhLWuy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Jan 2023 05:11:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E566340865
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E566340865
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:11:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10585"; a="303424748"
+X-IronPort-AV: E=Sophos;i="5.96,314,1665471600"; d="scan'208";a="303424748"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jan 2023 21:11:01 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10585"; a="902248405"
+X-IronPort-AV: E=Sophos;i="5.96,314,1665471600"; d="scan'208";a="902248405"
+Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
+ by fmsmga006.fm.intel.com with ESMTP; 09 Jan 2023 21:10:45 -0800
+Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pF6uK-0007bD-2r;
+ Tue, 10 Jan 2023 05:10:44 +0000
+Date: Tue, 10 Jan 2023 13:10:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <63bcf331.kDz0I6QwE35Zcf1P%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
- :date:message-id:reply-to;
- bh=qxbeiZFgELN7gMzS/vrU3V/EU9TFLbTxrex7BL3X+Iw=;
- b=NE7e4jk5FBzhgvraSsRC/XY6hS70w2wXFjn+1GlMA6gdRuiDnfx5cUymZGEh/tYOqA
- /IHui3I2F1i6OF2LfmXxCwj/LOXOziqvEZsHe8V0yABO5IfF4ZtYR8ssFMlq1LiflwBf
- qT0WB1W8bthSSIQKdcNXCyzkBaX8dOXALOdauYSDy9Aza+fSZCAQi+P22hYni10v/Sm1
- OnTHTLxhka0FHdAXxwlaihOlo08g4Cfnw1csGLHMmM5kTc6S7fo2l3NHbrA2PthsCB9z
- BRnp8qOmyplljQmIHIAp/kpLBRWDVfbwkdGCPi71asW0jtcI5k7d7P/Vuyy4lybVI/gR
- GIqQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=NE7e4jk5
-Subject: Re: [Intel-wired-lan] [PATCH 1/1] ice: WiP support for BIG TCP
- packets
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1673327464; x=1704863464;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=wuNAy3o4cZDy/sDQiqJG88YIeJjr+259RI6SpBfjOmA=;
+ b=DZG5nQ5AKT+lVg1ncFZjMERSvBfAjsmK3GzPapjoPwXaRB6DaWaoAdgs
+ YqhDeRAuffyavg+CCvb7ye0HP98Qbg2N1B59hlDFqywAcDDW9VXf7g6xJ
+ gUpb2i4oZ9hkUbgZLhGJVeJfkrheItXa5S19AktlP+4TOCsb7aTaSNayP
+ ycIsdGp7MmL9oaurBJdM6r4aprVwfM9NjFw8K+kUMBm8qFIpddrm/qYsd
+ d8o9toeMgqKoaSCbV/iWNsvXSFmVdcJ3xp8iicKBmsU4wqUXTKGN5E+IR
+ /81s6Jf1pM+xSJkZrY+I7UJ5nKbMrcygW9YO2x51NghoE6lAiD5tMjUcO
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=DZG5nQ5A
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 4cb425d20a6ddbf9fd40989c31f5c6f8f304dc35
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,102 +95,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2023-01-09 at 17:18 +0100, Pawel Chmielewski wrote:
-> This patch is a proof of concept for testing BIG TCP feature in ice driver.
-> Please see letter below.
-> 
-> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-> ---
-> Hi All
-> I'm writing on the list, as you may be able to provide me some feedback.
-> I want to enable BIG TCP feature in intel ice drive, but I think I'm 
-> missing something.
-> In the code itself, I've set 128k as a maximum tso size for the netif,
-> and added stripping the HBH option from the header.
-> For testing purposes, gso_max_size & gro_max_size were set to 128k and 
-> mtu to 9000.
-> I've assumed that the ice tso offload will do the rest of the job.
-> However- while running netperf TCP_RR and TCP_STREAM tests,
-> I saw that only up to ~20% of the transmitted test packets have 
-> the specified size. 
-> Other packets to be transmitted, appear from the stack as splitted.
-> 
-> I've been running the following testcases:
-> netperf -t TCP_RR -H 2001:db8:0:f101::1  -- -r80000,80000 -O MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
-> netperf -l-1 -t TCP_STREAM -H 2001:db8:0:f101::1  -- -m 128K -O MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
-> I suspected a shrinking tcp window size, but sniffing with tcpdump showed rather big scaling factor (usually 128x).
-> Apart from using netperf, I also tried a simple IPv6 user space application
-> (with SO_SNDBUF option set to 192k and TCP_WINDOW_CLAMP to 96k) - similar results.
-> 
-> I'd be very grateful for any feedback/suggestions
-> 
-> Pawel
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
->  drivers/net/ethernet/intel/ice/ice_txrx.c | 9 +++++++++
->  2 files changed, 13 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index 2b23b4714a26..4e657820e55d 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -48,6 +48,8 @@ static DEFINE_IDA(ice_aux_ida);
->  DEFINE_STATIC_KEY_FALSE(ice_xdp_locking_key);
->  EXPORT_SYMBOL(ice_xdp_locking_key);
->  
-> +#define ICE_MAX_TSO_SIZE 131072
-> +
->  /**
->   * ice_hw_to_dev - Get device pointer from the hardware structure
->   * @hw: pointer to the device HW structure
-> @@ -3422,6 +3424,8 @@ static void ice_set_netdev_features(struct net_device *netdev)
->  	 * be changed at runtime
->  	 */
->  	netdev->hw_features |= NETIF_F_RXFCS;
-> +
-> +	netif_set_tso_max_size(netdev, ICE_MAX_TSO_SIZE);
->  }
->  
->  /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> index 086f0b3ab68d..7e0ac483cad9 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> @@ -23,6 +23,9 @@
->  #define FDIR_DESC_RXDID 0x40
->  #define ICE_FDIR_CLEAN_DELAY 10
->  
-> +#define HBH_HDR_SIZE sizeof(struct hop_jumbo_hdr)
-> +#define HBH_OFFSET ETH_HLEN + sizeof(struct ipv6hdr)
-> +
->  /**
->   * ice_prgm_fdir_fltr - Program a Flow Director filter
->   * @vsi: VSI to send dummy packet
-> @@ -2300,6 +2303,12 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
->  
->  	ice_trace(xmit_frame_ring, tx_ring, skb);
->  
-> +	if (ipv6_has_hopopt_jumbo(skb)) {
-> +		memmove(skb->data + HBH_HDR_SIZE, skb->data, HBH_OFFSET);
-> +		__skb_pull(skb, HBH_HDR_SIZE);
-> +		skb_reset_mac_header(skb);
-> +	}
-> +
->  	count = ice_xmit_desc_count(skb);
->  	if (ice_chk_linearize(skb, count)) {
->  		if (__skb_linearize(skb))
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 4cb425d20a6ddbf9fd40989c31f5c6f8f304dc35  ice: fix out-of-bounds KASAN warning in virtchnl
 
-Your removal code here is forgetting to handle the network header. As a
-result your frames will be pointer mangled in terms of header location.
+elapsed time: 723m
 
-You might be better off using ipv6_hopopt_jumbo_remove() rather than
-just coding your own bit to remove it.
+configs tested: 84
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+x86_64                            allnoconfig
+arc                                 defconfig
+alpha                               defconfig
+powerpc                           allnoconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+alpha                            allyesconfig
+s390                             allmodconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+s390                                defconfig
+m68k                             allyesconfig
+x86_64                              defconfig
+s390                             allyesconfig
+i386                                defconfig
+arm                                 defconfig
+i386                             allyesconfig
+x86_64               randconfig-a011-20230109
+x86_64               randconfig-a013-20230109
+i386                 randconfig-a011-20230109
+x86_64               randconfig-a012-20230109
+sh                               allmodconfig
+i386                 randconfig-a013-20230109
+x86_64                           rhel-8.3-bpf
+x86_64                               rhel-8.3
+x86_64               randconfig-a014-20230109
+x86_64               randconfig-a016-20230109
+x86_64               randconfig-a015-20230109
+ia64                             allmodconfig
+x86_64                           allyesconfig
+i386                 randconfig-a012-20230109
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+x86_64                         rhel-8.3-kunit
+x86_64                          rhel-8.3-func
+i386                 randconfig-a014-20230109
+x86_64                           rhel-8.3-kvm
+i386                 randconfig-a016-20230109
+i386                 randconfig-a015-20230109
+mips                             allyesconfig
+powerpc                          allmodconfig
+arm64                            allyesconfig
+arm                              allyesconfig
+riscv                randconfig-r042-20230109
+s390                 randconfig-r044-20230109
+arm                  randconfig-r046-20230108
+arc                  randconfig-r043-20230108
+arc                  randconfig-r043-20230109
+i386                          randconfig-c001
+arm                        trizeps4_defconfig
+arm                         s3c6400_defconfig
+sh                               alldefconfig
+ia64                                defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+m68k                           sun3_defconfig
+parisc                generic-32bit_defconfig
+sh                     sh7710voipgw_defconfig
+mips                            gpr_defconfig
+
+clang tested configs:
+i386                 randconfig-a004-20230109
+x86_64               randconfig-a003-20230109
+x86_64               randconfig-a002-20230109
+x86_64                          rhel-8.3-rust
+x86_64               randconfig-a004-20230109
+hexagon              randconfig-r045-20230109
+i386                 randconfig-a002-20230109
+x86_64               randconfig-a005-20230109
+i386                 randconfig-a003-20230109
+x86_64               randconfig-a001-20230109
+arm                  randconfig-r046-20230109
+riscv                randconfig-r042-20230108
+x86_64               randconfig-a006-20230109
+hexagon              randconfig-r041-20230108
+i386                 randconfig-a006-20230109
+i386                 randconfig-a001-20230109
+hexagon              randconfig-r041-20230109
+i386                 randconfig-a005-20230109
+hexagon              randconfig-r045-20230108
+s390                 randconfig-r044-20230108
+x86_64                        randconfig-k001
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
