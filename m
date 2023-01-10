@@ -2,83 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E39E6638BA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Jan 2023 06:48:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B0DA663A54
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Jan 2023 09:00:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5518F8137B;
-	Tue, 10 Jan 2023 05:48:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5518F8137B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 534B981583;
+	Tue, 10 Jan 2023 08:00:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 534B981583
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673329735;
-	bh=mUp0QT0iwH8KBfS0LDFavoLNc8aSJgGAU7DZrFkHWvk=;
+	s=default; t=1673337652;
+	bh=Ig5enXlf2+ZXdZ3fxZaW0KY/XyiHRAfax4fVkF/MyMA=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=014LFxECQa/SromXoWeHkmUmUH6RrkndRHnFuLvwzv+XchUpVDY3g5Zl5D3SclG6s
-	 2P6jAiSSEOKMPgzjKTh+l9Met/BqGEtIduA8UfTqOc5/bl2KVqNmKwLooSlAbx5mnk
-	 LCzS6fw+bGNw65TSkCYTOxHNaDuqd2+E9fvhwWv9vn5k96opzrIhLZieZla887S2ij
-	 kp3TBkIDAvzJi/eJBqPJN9UhUhKZ/1ntLsvU3kL7Vh3KkRKgmVA6qKNeknKnQyZWEK
-	 rIvJV7Q10NqnBYjGyHSh61n+ZwGRIrvucTgSV8Mr1W+u4gvrivLTPy++2wPMuuCf3u
-	 c12i7YyxcLPpQ==
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=26ee4Ooe28VuG2CpB2SG3ZiZ5qUbFL18bRb95drCFq1CnCWhdEhWuxDttoBXR3gtw
+	 gASWwvGlQxkWX9Zo/Z1cZYOczVSkCUtkHnzpheHuqjvQKjxRgpWVB168WtKwOSF4TP
+	 HajnVBUToO5bcjAibd2J0VU7Ye2uPtmsVssQ+HEX6if/njUyu2iN01rJnULvjW4IC9
+	 Al/17Do/oSoe6JTWFehc2d6pZnUnqE5HI4WlIMSL2IaDgwZx/LDxE0oeCFJLaW+jEi
+	 0xewJuL0gblDYmUINX9ENt5gdYAX7gOShkYnLzbPixMoQAN9D0LIxIb6+FGE3G+U/R
+	 l3q0v5FXRwUVw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uXzdBujFVRmW; Tue, 10 Jan 2023 05:48:54 +0000 (UTC)
+	with ESMTP id 2ma_BLDfh8ON; Tue, 10 Jan 2023 08:00:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6172A81314;
-	Tue, 10 Jan 2023 05:48:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6172A81314
+	by smtp1.osuosl.org (Postfix) with ESMTP id 539FA81417;
+	Tue, 10 Jan 2023 08:00:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 539FA81417
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 470CF1BF2BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:48:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 696A41BF284
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 08:00:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2C980408EE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:48:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C980408EE
+ by smtp2.osuosl.org (Postfix) with ESMTP id 439354023B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 08:00:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 439354023B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GD1dGF5RiHUq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Jan 2023 05:48:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qj7g6uKB6xQK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Jan 2023 08:00:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7092408E3
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A7092408E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 05:48:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10585"; a="409312098"
-X-IronPort-AV: E=Sophos;i="5.96,314,1665471600"; d="scan'208";a="409312098"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jan 2023 21:48:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10585"; a="650249735"
-X-IronPort-AV: E=Sophos;i="5.96,314,1665471600"; d="scan'208";a="650249735"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.129])
- by orsmga007.jf.intel.com with ESMTP; 09 Jan 2023 21:48:45 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D1B04018A
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7D1B04018A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 08:00:45 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-608-pOTG5Lg-PH-Bf9xfhBrWlg-1; Tue, 10 Jan 2023 03:00:39 -0500
+X-MC-Unique: pOTG5Lg-PH-Bf9xfhBrWlg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 763AE1C07581;
+ Tue, 10 Jan 2023 08:00:39 +0000 (UTC)
+Received: from p1.redhat.com (unknown [10.39.192.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D068240C2064;
+ Tue, 10 Jan 2023 08:00:37 +0000 (UTC)
+From: Stefan Assmann <sassmann@redhat.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 10 Jan 2023 07:48:41 +0200
-Message-Id: <20230110054841.1857688-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+Date: Tue, 10 Jan 2023 09:00:18 +0100
+Message-Id: <20230110080018.2838769-1-sassmann@redhat.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673329727; x=1704865727;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=nBsNfEq+9i8QmMbZVYQRYicz4T/QADeH6lpv3JneleI=;
- b=QXOnbKAaJbBU3Wz4GGbfutNSGX+yPDakwdDOrKna8Wceuwg6Dpbjy610
- 9tUFFSJXc6JSgYqH4QjrzPCoafYQG2p2aG+nrNta+3P1THi/wTz6Pml5D
- TVNCRsDBolwqIvLnU9zHBMHRMOKGIKLXez/PTYouUOBolSdM9iAh5PWQx
- NIbz8jqBvcVePk7Sqh01oV9ZPBWw6ta4APuglnWBPEjF+T12xbbTQw2GY
- b7p/dMTJnbZ51/ZCcX8OItDx3D5pGKjl/wtSH/MAcZXsTjLJa2a0+F4jH
- asYpwocC/Mfwqtq/NtOURdGaOuTgv+iJi2SvJoXX7IdOnRdA6kqViW69f
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QXOnbKAa
-Subject: [Intel-wired-lan] [PATCH net v1 1/1] igc: Add ndo_tx_timeout support
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1673337644;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=VbV+3mBuPRg5iwF3LHk2SJLW0Ekjn5LgQSo5mIGhQwE=;
+ b=jWT5ROaKeH3FhzchNL0GA+n1Qver0tLoij7CO7NZew5vQ2GelePPfS+Q5lvVB2UNC6/2+B
+ ayVnHTPDy8WA06V4kP+lIh7fF1oV0PGFjprq0ZywkB9973wOcQoUsTord6mbzQIHYyR5US
+ wqvUrJZdn2PQ+p3V+W/iDS9/1bQCnwM=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=jWT5ROaK
+Subject: [Intel-wired-lan] [PATCH net-queue] iavf: schedule watchdog
+ immediately when changing primary MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,90 +94,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, patryk.piotrowski@intel.com,
+ anthony.l.nguyen@intel.com, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On some platforms, 100/1000/2500 speeds seem to have sometimes problems
-reporting false positive tx unit hang during stressful UDP traffic. Likely
-other Intel drivers introduce responses to a tx hang. Update the 'tx hang'
-comparator with the comparison of the head and tail of ring pointers and
-restore the tx_timeout_factor to the previous value (one).
+From: Stefan Assmann <sassmann@kpanic.de>
 
-This can be test by using netperf or iperf3 applications.
-Example:
-iperf3 -s -p 5001
-iperf3 -c 192.168.0.2 --udp -p 5001 --time 600 -b 0
+iavf_replace_primary_mac() utilizes queue_work() to schedule the
+watchdog task but that only ensures that the watchdog task is queued
+to run. To make sure the watchdog is executed asap use
+mod_delayed_work().
 
-netserver -p 16604
-netperf -H 192.168.0.2 -l 600 -p 16604 -t UDP_STREAM -- -m 64000
+Without this patch it may take up to 2s until the watchdog task gets
+executed, which may cause long delays when setting the MAC address.
 
-Fixes: b27b8dc77b5e ("igc: Increase timeout value for Speed 100/1000/2500")
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Fixes: a3e839d539e0 ("iavf: Add usage of new virtchnl format to set default MAC")
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 25 +++++++++++++++++++++--
- 1 file changed, 23 insertions(+), 2 deletions(-)
+Depends on net-queue patch
+ca7facb6602f iavf: fix temporary deadlock and failure to set MAC address
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 13088b5bcf5b..b1031d5b32bc 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2957,7 +2957,9 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 		if (tx_buffer->next_to_watch &&
- 		    time_after(jiffies, tx_buffer->time_stamp +
- 		    (adapter->tx_timeout_factor * HZ)) &&
--		    !(rd32(IGC_STATUS) & IGC_STATUS_TXOFF)) {
-+		    !(rd32(IGC_STATUS) & IGC_STATUS_TXOFF) &&
-+		    (rd32(IGC_TDH(tx_ring->reg_idx)) !=
-+		    readl(tx_ring->tail))) {
- 			/* detected Tx unit hang */
- 			netdev_err(tx_ring->netdev,
- 				   "Detected Tx Unit Hang\n"
-@@ -5083,6 +5085,24 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
- 	return 0;
- }
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index fff06f876c2c..1d3aa740caea 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -1033,7 +1033,7 @@ int iavf_replace_primary_mac(struct iavf_adapter *adapter,
  
-+/**
-+ * igc_tx_timeout - Respond to a Tx Hang
-+ * @netdev: network interface device structure
-+ * @txqueue: queue number that timed out
-+ **/
-+static void igc_tx_timeout(struct net_device *netdev,
-+			   unsigned int __always_unused txqueue)
-+{
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct igc_hw *hw = &adapter->hw;
-+
-+	/* Do the reset outside of interrupt context */
-+	adapter->tx_timeout_count++;
-+	schedule_work(&adapter->reset_task);
-+	wr32(IGC_EICS,
-+	     (adapter->eims_enable_mask & ~adapter->eims_other));
-+}
-+
- /**
-  * igc_get_stats64 - Get System Network Statistics
-  * @netdev: network interface device structure
-@@ -5510,7 +5530,7 @@ static void igc_watchdog_task(struct work_struct *work)
- 			case SPEED_100:
- 			case SPEED_1000:
- 			case SPEED_2500:
--				adapter->tx_timeout_factor = 7;
-+				adapter->tx_timeout_factor = 1;
- 				break;
- 			}
- 
-@@ -6352,6 +6372,7 @@ static const struct net_device_ops igc_netdev_ops = {
- 	.ndo_set_rx_mode	= igc_set_rx_mode,
- 	.ndo_set_mac_address	= igc_set_mac,
- 	.ndo_change_mtu		= igc_change_mtu,
-+	.ndo_tx_timeout		= igc_tx_timeout,
- 	.ndo_get_stats64	= igc_get_stats64,
- 	.ndo_fix_features	= igc_fix_features,
- 	.ndo_set_features	= igc_set_features,
+ 	/* schedule the watchdog task to immediately process the request */
+ 	if (f) {
+-		queue_work(adapter->wq, &adapter->watchdog_task.work);
++		mod_delayed_work(adapter->wq, &adapter->watchdog_task, 0);
+ 		return 0;
+ 	}
+ 	return -ENOMEM;
 -- 
-2.25.1
+2.38.1
 
 _______________________________________________
 Intel-wired-lan mailing list
