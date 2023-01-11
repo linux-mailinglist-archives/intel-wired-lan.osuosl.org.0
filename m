@@ -1,100 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D235665FDF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jan 2023 17:00:04 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A912665EC4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jan 2023 16:07:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1ADF540C90;
-	Wed, 11 Jan 2023 16:00:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1ADF540C90
+	by smtp4.osuosl.org (Postfix) with ESMTP id AC276419C7;
+	Wed, 11 Jan 2023 15:07:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC276419C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673452803;
-	bh=pDkcOeyhog8P/LYbniFSkdObfF0ajP5zldnwFD7XIOc=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=tGnr7pXWGEBQPXr98AGhPS2T5OhRk9dOPck1enMyAqMfmd1CxjRctDBp51S/MkB3q
-	 PIgaW6fri/duDP73vSGYld7zFwXzpT3KuUqYnLW6ofnGh6bT8/LIP62krBMgu/6sPp
-	 EHZbofArSkxIGc9kxHOIsQbhvjaP+6L/u91ZHKy6mhVxEndcivQV+v5UmQAIsdFxiU
-	 Z/bSKDl3Ni8oPQzoN5dw17Xnbxqcp5FloXsLH1wtj/LpaPWmNc6YZI0bCcawjztHDp
-	 E0XpaGGD6Fdpnrcjcknbe7Ghzv1JlTARvhQYgVUZgcznT79PKqm6IUYlQnSpMQ8qF4
-	 ViT+zGiSWZq+Q==
+	s=default; t=1673449659;
+	bh=aw9MpNsdBoIf3s+61mv5PKo81v64y4rtUXwMxiRR2V0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Cttzaxmz4o7NFjB+WEUqwjCl1mfrW/znUAuMU+oXU8G35ON2xoKCqidn8kxIovpDn
+	 a7mEMqanOxbNoXmjVY2qWXo27uRLUm66Lqnjr3t3/zgHzky70+ZjswjzcKs5Qw1sbW
+	 gJZj6xc9gfM1K9fmc4q3U436/PpHkOv56gauJ1uzHY+9fQsiM4Rgq2ch9vqCPBr966
+	 8m+zne/dS+dkSWhnt9vD/MTIrUVq2i6xoCGn1sp2goK1w58NekTXl+/OmCDsfI/eyD
+	 KuEBBgo5bGUCHllMK26lOLoespveTyw40kziALtsjS2JcgPW8NS0/Lf3Nu4rfpoXp4
+	 YEuweuCvMJV+A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6D5WICFvrsCe; Wed, 11 Jan 2023 16:00:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 99qSQ2JKdnBC; Wed, 11 Jan 2023 15:07:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C0D6C40424;
-	Wed, 11 Jan 2023 16:00:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0D6C40424
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B82A419BC;
+	Wed, 11 Jan 2023 15:07:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B82A419BC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 671CD1BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 04:22:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 457061BF3C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3E1C440AB7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 04:22:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3E1C440AB7
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1F54881FD2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F54881FD2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ME9FL4umSRzF for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Jan 2023 04:22:42 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1977D40232
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com
- [IPv6:2a00:1450:4864:20::32a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1977D40232
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 04:22:41 +0000 (UTC)
-Received: by mail-wm1-x32a.google.com with SMTP id ja17so10266910wmb.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 20:22:41 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ftLAYv4HnjcIlKeQoEpxqzr+3v92yi3++RYeCqxlnJc=;
- b=Pcu/ckECSHcsTpczK2LpdHBl7mqk2d30EeD+kzfzeJORtbFTEUAuleSJCLkQYsFD1b
- ifPmd/oY9K92P0vbJhQGQO4NZ6Wgxy79FqAwkjykZPQGjyHFX1hImhkiKMZm2esipAW4
- 8mxyMDmhkOyF/0GeZ23JJ7PJ2jT6vhx56E7O/lB+//icsyn5FPLwwvPpHniFeAWPqUm5
- ZV4W+CaDFrwyUlf9I8F2l7AF8lQk5G8gWNdyXCxduTiOWXbbHWYFxhkSbqNXJ8Z8lxLy
- a5GuCOlQop6zcOzn5C95HaD1j/v/riAQvTZVn3WavDKPFqU3jhCORyL57BGewQo/ocs8
- ncig==
-X-Gm-Message-State: AFqh2koQ5wfD63RFkF3nYf3swfaqVnkLV17LLjN0+IVTxoAReiLpUx52
- zSWtybFP7s+5i31jj27GyW0=
-X-Google-Smtp-Source: AMrXdXseySAzzfHhzIYdq8leghK75uUQJJOUq/9/uz9rpM1DqtYDQkEf5MTt+yD2JhiNTMJn8doiHw==
-X-Received: by 2002:a05:600c:34cf:b0:3d0:7415:c5a9 with SMTP id
- d15-20020a05600c34cf00b003d07415c5a9mr52585728wmq.21.1673410960237; 
- Tue, 10 Jan 2023 20:22:40 -0800 (PST)
-Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
- u16-20020a05600c00d000b003cf4eac8e80sm20333621wmm.23.2023.01.10.20.22.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Jan 2023 20:22:39 -0800 (PST)
-Date: Wed, 11 Jan 2023 07:22:37 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: oe-kbuild@lists.linux.dev,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <202301110916.nD8vny59-lkp@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sbP6j_sh8KQX for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jan 2023 15:07:31 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8E4E820EE
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B8E4E820EE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:31 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E1349B81ACA;
+ Wed, 11 Jan 2023 15:07:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDE85C433EF;
+ Wed, 11 Jan 2023 15:07:26 +0000 (UTC)
+Date: Wed, 11 Jan 2023 16:07:24 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Wang Hai <wanghai38@huawei.com>
+Message-ID: <Y77QrFNIQrKB8xvV@kroah.com>
+References: <20221220012143.52141-1-wanghai38@huawei.com>
+ <54066d0e-ef50-183f-74fe-551bb99741eb@huawei.com>
+ <Y7vtbayi+2GfkhEa@kroah.com>
+ <6fcc6c81-96fb-112f-3aa9-3e2d58ecb2c8@huawei.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-X-Mailman-Approved-At: Wed, 11 Jan 2023 15:59:52 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ftLAYv4HnjcIlKeQoEpxqzr+3v92yi3++RYeCqxlnJc=;
- b=ED1rkAEszLf1w0JP8ZRcNvQ/TdUg5LvnQmq/Oo5bFtBzx9Y0tJZGZL3bf1ww7A5u9X
- hKVqH/T8DHCiAUgRRzfjeRDH/ocsItkjK5UxqrABF7PVrJPVQqX4dqkyjsCjLvfc0ylt
- AW5+90nnswOuIAkMBByhJLMb1Ff1/HFTcnY2GboDrvojBOBeexuowo45ygszFJZnMoVy
- 11i4MIr1U1wH4mycySUpKchb53Gaecro21axhjI+5EEqAw4HiGcd/PSyYLqnaL+vXedG
- PKFdt7LNVZl+dRQdzJ9Z9yfjG+JRy2nfY8Fpb2X6AJqu9NoTlzcXOJjrZiYwtBJ/Ogw8
- LrFw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=ED1rkAEs
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 50/62]
- drivers/net/ethernet/intel/ice/ice_lib.c:571 ice_vsi_alloc_stat_arrays()
- warn: possible memory leak of 'vsi_stat'
+In-Reply-To: <6fcc6c81-96fb-112f-3aa9-3e2d58ecb2c8@huawei.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=linuxfoundation.org; 
+ s=korg; t=1673449647;
+ bh=aFrvoqKWG153xIDPgIDZp4R1sSPgs+OyQK/bgpbZFjE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=V1Zt1eHKFeGTo6EMQ/caKrK+6KQgb78mOIMzztorWNFbzBGiqJwPFdRyC1IN7n8H0
+ TUInbFJ2uvaJgm3b8l8uJzbYE3ESrbHNfjlCPWaabC3lCxsyIFzBZOpDh6LEyzE/Dd
+ /SkKcuicMD3XO5Z8Kyd6lnqH+T6lN53WisMufKrs=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+ header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
+ header.b=V1Zt1eHK
+Subject: Re: [Intel-wired-lan] [PATCH v2] kobject: Fix slab-out-of-bounds in
+ fill_kobj_path()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,87 +91,20 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- oe-kbuild-all@lists.linux.dev
+Cc: rafael@kernel.org, jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ alice.chao@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-head:   c9ebfbece30b59350bc6879be8ed954cecc6be05
-commit: f833ce48581cfdf4b086d7c79cef79191b0a21d2 [50/62] ice: split ice_vsi_setup into smaller functions
-config: x86_64-randconfig-m001-20230109
-compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
+On Mon, Jan 09, 2023 at 07:15:05PM +0800, Wang Hai wrote:
+> Thanks, I thought you had forgotten about it. I hope I'm not disturbing you.
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <error27@gmail.com>
+No bother at all, it's now added to my tree, thanks!
 
-New smatch warnings:
-drivers/net/ethernet/intel/ice/ice_lib.c:571 ice_vsi_alloc_stat_arrays() warn: possible memory leak of 'vsi_stat'
-drivers/net/ethernet/intel/ice/ice_lib.c:2846 ice_vsi_cfg_def() warn: missing error code 'ret'
-
-Old smatch warnings:
-drivers/net/ethernet/intel/ice/ice_lib.c:437 ice_vsi_alloc_ring_stats() warn: inconsistent indenting
-drivers/net/ethernet/intel/ice/ice_lib.c:3527 ice_vsi_rebuild() warn: missing error code 'ret'
-
-vim +/vsi_stat +571 drivers/net/ethernet/intel/ice/ice_lib.c
-
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  555  static int ice_vsi_alloc_stat_arrays(struct ice_vsi *vsi)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  556  {
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  557  	struct ice_vsi_stats *vsi_stat;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  558  	struct ice_pf *pf = vsi->back;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  559  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  560  	if (vsi->type == ICE_VSI_CHNL)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  561  		return 0;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  562  	if (!pf->vsi_stats)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  563  		return -ENOENT;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  564  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  565  	vsi_stat = kzalloc(sizeof(*vsi_stat), GFP_KERNEL);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  566  	if (!vsi_stat)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  567  		return -ENOMEM;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  568  
-f833ce48581cfd Michal Swiatkowski  2022-12-21  569  	if (vsi_stat->tx_ring_stats && vsi_stat->rx_ring_stats)
-f833ce48581cfd Michal Swiatkowski  2022-12-21  570  	/* realloc will happen in rebuild path */
-f833ce48581cfd Michal Swiatkowski  2022-12-21 @571  		return 0;
-
-
-These aren't allocated until the next line so the return is impossible.
-Just delete.  But Smatch is correct that it doesn't have a kfree() on
-this path...
-
-f833ce48581cfd Michal Swiatkowski  2022-12-21  572  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  573  	vsi_stat->tx_ring_stats =
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  574  		kcalloc(vsi->alloc_txq, sizeof(*vsi_stat->tx_ring_stats),
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  575  			GFP_KERNEL);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  576  	if (!vsi_stat->tx_ring_stats)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  577  		goto err_alloc_tx;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  578  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  579  	vsi_stat->rx_ring_stats =
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  580  		kcalloc(vsi->alloc_rxq, sizeof(*vsi_stat->rx_ring_stats),
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  581  			GFP_KERNEL);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  582  	if (!vsi_stat->rx_ring_stats)
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  583  		goto err_alloc_rx;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  584  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  585  	pf->vsi_stats[vsi->idx] = vsi_stat;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  586  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  587  	return 0;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  588  
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  589  err_alloc_rx:
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  590  	kfree(vsi_stat->rx_ring_stats);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  591  err_alloc_tx:
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  592  	kfree(vsi_stat->tx_ring_stats);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  593  	kfree(vsi_stat);
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  594  	pf->vsi_stats[vsi->idx] = NULL;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  595  	return -ENOMEM;
-288ecf491b1654 Benjamin Mikailenko 2022-11-18  596  }
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-
+greg k-h
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
