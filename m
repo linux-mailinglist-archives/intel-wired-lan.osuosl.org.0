@@ -1,83 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAC5E664766
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Jan 2023 18:27:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E17D6657D2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jan 2023 10:42:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3E673416A5;
-	Tue, 10 Jan 2023 17:27:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E673416A5
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0543B610F1;
+	Wed, 11 Jan 2023 09:42:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0543B610F1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673371621;
-	bh=A268/MvLC3WA1ZIokYg1l96FzG4xofIHPZ90CTTQqL0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1673430175;
+	bh=2UfQlNNLFdm9SYdN64uTRIq+Z2Zt4XDinSK6Hv/MdG0=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=E4EQtECJKTagDunTMkXeVROtQe2+YELi1XqRSAeIaTWtC0NOmUtcdzPt5+TsmgNU5
-	 gSmVYfNIFREmOnRmQY5ggP+tOUYeaLQ1PQ1cTIrlJacjSdYcfvrYFL1dURVofEKFv8
-	 99hnqkvsr7E8/4eRjCeConKGKcFOsyAVUOfC/QlxFx8pyXiTiYeDzYC+plpBLhnDfK
-	 x9Vct2hORDdz17fUCMaCklC79FFaEqKwGZWp+9Erwh7zzn+12PJQ2rZ4NlvteImdHy
-	 65Wa8sMvnfXi/WTs+8nQo7445lwtGl6HBqPDhsOoCwJW0jI1hnkc/73KH5txwBB/F+
-	 252AFThhWuHzA==
+	b=6mBI4ok51bGJ/eK797izLJRs5ksl7S3LzXAMFWNIJETMmeebOwSjOTt/Q0PEwxpeO
+	 r6rQizd+dcFdyS9T9bHphKzCJhABlS5OSaFxO1VkaK4wqlea7OccnUq/QmTBzIHO05
+	 wyUpG/a8TO/Dx8PEd9KhhhkkC0iY7F2FFERj6AoTW8BLzBTtYsYv9BVw5wS7hpT4qG
+	 QH9baP9Gt6kpmzA/bAeWaRsv1CT3ewh6ItZ8pB7wHbUc3/uwjc3Wcc8Js6bS3lcH5s
+	 rph8zDBOl7QPc/pVRn9HEI4SmaiI+jJclxPtJpiU8IbHqeCjUjIfDVIC3iAd1DUcbP
+	 Pv1oHoogMaeCw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KnKaUaL-CXHr; Tue, 10 Jan 2023 17:27:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 032JZCHpGRVm; Wed, 11 Jan 2023 09:42:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A781140544;
-	Tue, 10 Jan 2023 17:26:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A781140544
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C96D610E7;
+	Wed, 11 Jan 2023 09:42:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C96D610E7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A1B2B1BF28B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 17:26:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B1AA1BF2B3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 09:42:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8888081E8E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 17:26:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8888081E8E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 61C28820D0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 09:42:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61C28820D0
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W9YGuc7AVjWN for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Jan 2023 17:26:53 +0000 (UTC)
+ with ESMTP id f-7yKGiU6S5a for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jan 2023 09:42:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D25981E8B
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7D25981E8B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Jan 2023 17:26:53 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 72B77B818EB;
- Tue, 10 Jan 2023 17:26:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CE3FC433EF;
- Tue, 10 Jan 2023 17:26:48 +0000 (UTC)
-Date: Tue, 10 Jan 2023 18:26:45 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrii Nakryiko <andrii.nakryiko@gmail.com>
-Message-ID: <Y72f1U2/dw8jo0/0@lore-desk>
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <6cce9b15a57345402bb94366434a5ac5609583b8.1671462951.git.lorenzo@kernel.org>
- <CAEf4BzbOF-S3kjbNVXCZR-K=TGarfi06ZwG1cbNF=HSSodwEfg@mail.gmail.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96D0281FB8
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 96D0281FB8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 09:42:47 +0000 (UTC)
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-502-XRZMJZ1XNbSsvlInv2-Cbg-1; Wed, 11 Jan 2023 04:42:45 -0500
+X-MC-Unique: XRZMJZ1XNbSsvlInv2-Cbg-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ q10-20020a056402518a00b0048e5bc8cb74so9545982edd.5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 01:42:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+mXlqHLDOLyFJjraZrLr0BXsWr/xXhYE6HGBmC7wCe0=;
+ b=KznF8Z/Rbnj0Om3190xcX0wk6NzUJQFsqsxmi3FkxNpLqEUWhPPI1h3QmAeq3Sma1Y
+ x3l8kobjCcVrvyYzUtmppwgVwV4IwhJPn58x+IEdIUKs8A6c9DagBdqZvLgzlt5SiO7i
+ YfvRt5hsJzbU0gbai/gHuO7p+RP9/eNUjVI/My38uydA3TQJZCahQeEtEd1lVWJG135c
+ qtADb/9vbyrC0cTpT5tk4jcPJrl5K7bvu8wz8vshOdd2t5jF1XXlU/BDHFBh2sJvgRjB
+ FCiUfySf9RwRPZtGhnILvQufOTGzSyE2fT7R7GdofmHFftAxvU2cghpwRNDH3rwXVGGA
+ YPRA==
+X-Gm-Message-State: AFqh2koNUIOG4UNpolm4Hoe0NiAS49s+zcfc2jed2wEChYRpUrChukFG
+ hARcRR2f0tMozzi2JCmEwDaEjoT0JCIuy+RYLRn64lBKK7ztmS1JWc8TgpuGlgTPd+CI7LnZ8LL
+ 2gYAFwRh7NfQuW7PrKbTF8CYvodj4Yj/BjUn7Rvd6nHKlOA==
+X-Received: by 2002:a17:906:f218:b0:828:75be:fd81 with SMTP id
+ gt24-20020a170906f21800b0082875befd81mr7274791ejb.360.1673430164003; 
+ Wed, 11 Jan 2023 01:42:44 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtpXNHT4W4d5mnoYX9i6t0hHg6a7iscVqYz7rIF7qFPWDkZ14oPFi5o8iBEJ9v/6qp+913JljQ931hxedkpl78=
+X-Received: by 2002:a17:906:f218:b0:828:75be:fd81 with SMTP id
+ gt24-20020a170906f21800b0082875befd81mr7274785ejb.360.1673430163746; Wed, 11
+ Jan 2023 01:42:43 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAEf4BzbOF-S3kjbNVXCZR-K=TGarfi06ZwG1cbNF=HSSodwEfg@mail.gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1673371609;
- bh=qIMUHEEcxEFfEbsuapq6m8UyQ8u7bBrd1f5qfus81vM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dWyQOYB751j90pvk6Be/N7sAgq8S/NdKvGo/Pq2IDrJqjFRcd8WnRYiAeB2CbdIBX
- PITITR+KfDlhRYo5Nw1srNwDh74Pt76tjHudW8N7HIOqk/VPc0ZAT45XHOhshPmt8j
- dJnDfjxZMtytRAdM7/kfzrtTBzDZUd/Hhx+Ohg8/hW4StQBgh3uqYFG908DIEFDJSy
- 3+MHv9rINr7sNPbZtzjWZgw6IjGRy+L5rmq5qmdEPtXjVLoBrzkQhauov1Y3jRkTNd
- PQxX3XiUUF5rV2bJDbRzwLyYtV/S6IB7p2sTL85OTn4Qcvff22DYtsq9gw2oSON908
- 8Vrts9C9Ma5IQ==
+References: <20230110080018.2838769-1-sassmann@redhat.com>
+In-Reply-To: <20230110080018.2838769-1-sassmann@redhat.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Wed, 11 Jan 2023 10:42:32 +0100
+Message-ID: <CADEbmW2LLTfZ6h=Cdkbc70Z61BuBKYMbaLYq-c=STP03VJ_O2g@mail.gmail.com>
+To: Stefan Assmann <sassmann@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1673430166;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=+mXlqHLDOLyFJjraZrLr0BXsWr/xXhYE6HGBmC7wCe0=;
+ b=F3JIK7ACzxJtCCQGQNDf63HMfWfVAaXX8+a+ALcPMSB+RdJuvMAUOhKzr9gXhHSfgFxnjV
+ LmoEW3U5ol91lxl6rPGBP9c5cTrWjzC+1RBLHFmRgMNUTdCJWxP6TMuEu1Ck3zTumjDHPL
+ R7k9c04tIZ3T9VjmN3trcasQ2lN8XQc=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=dWyQOYB7
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 6/8] libbpf: add API to get
- XDP/XSK supported features
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=F3JIK7AC
+Subject: Re: [Intel-wired-lan] [PATCH net-queue] iavf: schedule watchdog
+ immediately when changing primary MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,130 +114,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, grygorii.strashko@ti.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============1375928884433435590=="
+Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ patryk.piotrowski@intel.com, intel-wired-lan@lists.osuosl.org,
+ sassmann@kpanic.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, Jan 10, 2023 at 9:01 AM Stefan Assmann <sassmann@redhat.com> wrote:
+>
+> From: Stefan Assmann <sassmann@kpanic.de>
+>
+> iavf_replace_primary_mac() utilizes queue_work() to schedule the
+> watchdog task but that only ensures that the watchdog task is queued
+> to run. To make sure the watchdog is executed asap use
+> mod_delayed_work().
+>
+> Without this patch it may take up to 2s until the watchdog task gets
+> executed, which may cause long delays when setting the MAC address.
+>
+> Fixes: a3e839d539e0 ("iavf: Add usage of new virtchnl format to set default MAC")
+> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+> ---
+> Depends on net-queue patch
+> ca7facb6602f iavf: fix temporary deadlock and failure to set MAC address
+>
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index fff06f876c2c..1d3aa740caea 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -1033,7 +1033,7 @@ int iavf_replace_primary_mac(struct iavf_adapter *adapter,
+>
+>         /* schedule the watchdog task to immediately process the request */
+>         if (f) {
+> -               queue_work(adapter->wq, &adapter->watchdog_task.work);
+> +               mod_delayed_work(adapter->wq, &adapter->watchdog_task, 0);
+>                 return 0;
+>         }
+>         return -ENOMEM;
+> --
+> 2.38.1
 
---===============1375928884433435590==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="aGzNKNmdiT3FYYot"
-Content-Disposition: inline
+Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
+Tested-by: Michal Schmidt <mschmidt@redhat.com>
 
-
---aGzNKNmdiT3FYYot
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Mon, Dec 19, 2022 at 7:42 AM Lorenzo Bianconi <lorenzo@kernel.org> wro=
-te:
-> >
-> > From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> >
-> > Add functions to get XDP/XSK supported function of netdev over route
-> > netlink interface. These functions provide functionalities that are
-> > going to be used in upcoming change.
-> >
-> > The newly added bpf_xdp_query_features takes a fflags_cnt parameter,
-> > which denotes the number of elements in the output fflags array. This
-> > must be at least 1 and maybe greater than XDP_FEATURES_WORDS. The
-> > function only writes to words which is min of fflags_cnt and
-> > XDP_FEATURES_WORDS.
-> >
-> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Co-developed-by: Marek Majtyka <alardam@gmail.com>
-> > Signed-off-by: Marek Majtyka <alardam@gmail.com>
-> > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > ---
-> >  tools/lib/bpf/libbpf.h   |  1 +
-> >  tools/lib/bpf/libbpf.map |  1 +
-> >  tools/lib/bpf/netlink.c  | 62 ++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 64 insertions(+)
-> >
-> > diff --git a/tools/lib/bpf/libbpf.h b/tools/lib/bpf/libbpf.h
-> > index eee883f007f9..9d102eb5007e 100644
-> > --- a/tools/lib/bpf/libbpf.h
-> > +++ b/tools/lib/bpf/libbpf.h
-> > @@ -967,6 +967,7 @@ LIBBPF_API int bpf_xdp_detach(int ifindex, __u32 fl=
-ags,
-> >                               const struct bpf_xdp_attach_opts *opts);
-> >  LIBBPF_API int bpf_xdp_query(int ifindex, int flags, struct bpf_xdp_qu=
-ery_opts *opts);
-> >  LIBBPF_API int bpf_xdp_query_id(int ifindex, int flags, __u32 *prog_id=
-);
-> > +LIBBPF_API int bpf_xdp_query_features(int ifindex, __u32 *fflags, __u3=
-2 *fflags_cnt);
->=20
-> no need to add new API, just extend bpf_xdp_query()?
-
-Hi Andrii,
-
-AFAIK libbpf supports just NETLINK_ROUTE protocol. In order to connect with=
- the
-genl family code shared by Jakub we need to add NETLINK_GENERIC protocol su=
-pport
-to libbf. Is it ok to introduce a libmnl or libnl dependency in libbpf or d=
-o you
-prefer to add open code to just what we need?
-I guess we should have a dedicated API to dump xdp features in this case si=
-nce
-all the other code relies on NETLINK_ROUTE protocol. What do you think?
-
-Regards,
-Lorenzo
-
->=20
-> >
-> >  /* TC related API */
-> >  enum bpf_tc_attach_point {
-> > diff --git a/tools/lib/bpf/libbpf.map b/tools/lib/bpf/libbpf.map
-> > index 71bf5691a689..9c2abb58fa4b 100644
-> > --- a/tools/lib/bpf/libbpf.map
-> > +++ b/tools/lib/bpf/libbpf.map
-> > @@ -362,6 +362,7 @@ LIBBPF_1.0.0 {
-> >                 bpf_program__set_autoattach;
-> >                 btf__add_enum64;
-> >                 btf__add_enum64_value;
-> > +               bpf_xdp_query_features;
-> >                 libbpf_bpf_attach_type_str;
-> >                 libbpf_bpf_link_type_str;
-> >                 libbpf_bpf_map_type_str;
->=20
-> [...]
-
---aGzNKNmdiT3FYYot
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY72f1QAKCRA6cBh0uS2t
-rGtIAQD9CU+tItECNI3dIRiliqYGAXnkOOl6g7JU3GkonqJsxAD9EbSrhAp9DY7o
-++BFm5/bt/xOJUm02tX2yaQq43S72gQ=
-=/rJB
------END PGP SIGNATURE-----
-
---aGzNKNmdiT3FYYot--
-
---===============1375928884433435590==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Beautiful! On my test machine, this takes the time needed to bring up
+64 VFs from 92 s down to 7 s.
+Michal
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============1375928884433435590==--
