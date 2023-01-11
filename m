@@ -1,84 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A912665EC4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jan 2023 16:07:41 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 515B26662CC
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jan 2023 19:31:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AC276419C7;
-	Wed, 11 Jan 2023 15:07:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC276419C7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F69B60E3F;
+	Wed, 11 Jan 2023 18:31:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F69B60E3F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673449659;
-	bh=aw9MpNsdBoIf3s+61mv5PKo81v64y4rtUXwMxiRR2V0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Cttzaxmz4o7NFjB+WEUqwjCl1mfrW/znUAuMU+oXU8G35ON2xoKCqidn8kxIovpDn
-	 a7mEMqanOxbNoXmjVY2qWXo27uRLUm66Lqnjr3t3/zgHzky70+ZjswjzcKs5Qw1sbW
-	 gJZj6xc9gfM1K9fmc4q3U436/PpHkOv56gauJ1uzHY+9fQsiM4Rgq2ch9vqCPBr966
-	 8m+zne/dS+dkSWhnt9vD/MTIrUVq2i6xoCGn1sp2goK1w58NekTXl+/OmCDsfI/eyD
-	 KuEBBgo5bGUCHllMK26lOLoespveTyw40kziALtsjS2JcgPW8NS0/Lf3Nu4rfpoXp4
-	 YEuweuCvMJV+A==
+	s=default; t=1673461881;
+	bh=lVD29dQO2+41GS8qZDAC9prd9zaCFKiQe9bmlesVNtE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=8H3c4F0y+dcLHTBihAZpJxP/JZuwUTNegw6N0/g17wl4VZb5Nl2PYvpKB6Kqcji0Q
+	 A1Lyv1oA3FkqOxpdzOkXvw0JYM6V5FGktHHbHtYD6NBerpGqOsE/i4eP6ftoqWeO1l
+	 ZirTV4SICKpI1NEC2JMTVY/xVUyEbyNj2o0xjzrM5EwxhMb+0J9luK8eIK5YTVPouQ
+	 JsTA9XLQccmL35l6M9KYRSUkwobUYOG3cK2HpV7oBENGiz7xClgFeWqDRAiP2m3CSs
+	 k6RuaoFErpYbV0N9aoqflHsFmL6KTWuSyEBr+MMeKjZFJON+bQqdxBEazS8KpxpJMp
+	 9vWZ1tnqLR5VQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 99qSQ2JKdnBC; Wed, 11 Jan 2023 15:07:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VM6_KBX2oaDr; Wed, 11 Jan 2023 18:31:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5B82A419BC;
-	Wed, 11 Jan 2023 15:07:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B82A419BC
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5EE0960BC5;
+	Wed, 11 Jan 2023 18:31:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EE0960BC5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 457061BF3C0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:33 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1908D1BF331
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 18:31:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1F54881FD2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F54881FD2
+ by smtp3.osuosl.org (Postfix) with ESMTP id E7A2760BC5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 18:31:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E7A2760BC5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sbP6j_sh8KQX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Jan 2023 15:07:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8E4E820EE
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B8E4E820EE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 15:07:31 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E1349B81ACA;
- Wed, 11 Jan 2023 15:07:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDE85C433EF;
- Wed, 11 Jan 2023 15:07:26 +0000 (UTC)
-Date: Wed, 11 Jan 2023 16:07:24 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Wang Hai <wanghai38@huawei.com>
-Message-ID: <Y77QrFNIQrKB8xvV@kroah.com>
-References: <20221220012143.52141-1-wanghai38@huawei.com>
- <54066d0e-ef50-183f-74fe-551bb99741eb@huawei.com>
- <Y7vtbayi+2GfkhEa@kroah.com>
- <6fcc6c81-96fb-112f-3aa9-3e2d58ecb2c8@huawei.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1RjD1JyYJe2p for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jan 2023 18:31:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C7A8E60B27
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C7A8E60B27
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jan 2023 18:31:13 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="385813062"
+X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; d="scan'208";a="385813062"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2023 10:31:12 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="726019175"
+X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; d="scan'208";a="726019175"
+Received: from dmert-dev.jf.intel.com ([10.166.241.14])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2023 10:31:12 -0800
+From: Dave Ertman <david.m.ertman@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 11 Jan 2023 10:31:45 -0800
+Message-Id: <20230111183145.1497367-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6fcc6c81-96fb-112f-3aa9-3e2d58ecb2c8@huawei.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=linuxfoundation.org; 
- s=korg; t=1673449647;
- bh=aFrvoqKWG153xIDPgIDZp4R1sSPgs+OyQK/bgpbZFjE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=V1Zt1eHKFeGTo6EMQ/caKrK+6KQgb78mOIMzztorWNFbzBGiqJwPFdRyC1IN7n8H0
- TUInbFJ2uvaJgm3b8l8uJzbYE3ESrbHNfjlCPWaabC3lCxsyIFzBZOpDh6LEyzE/Dd
- /SkKcuicMD3XO5Z8Kyd6lnqH+T6lN53WisMufKrs=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
- header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
- header.b=V1Zt1eHK
-Subject: Re: [Intel-wired-lan] [PATCH v2] kobject: Fix slab-out-of-bounds in
- fill_kobj_path()
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1673461873; x=1704997873;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=kXBivkX4v0ExncVZo+iA3Q9vKkxQz0944A3kdmR9AkU=;
+ b=SRretsnNEeU8Ynp34fsiKZwyU+fOaGmENbLVn0r8OJJ/kp6jzrFBGlfP
+ lfNYJ43ogK2EWD546tAUhT/aqxN0qbBqsDUS44wLayfgjOPeLddSttufd
+ /XouT1yoB9DlyLt10+/KPAApHApPkS/dI1iEGZfqZwhc4ljOKGrSnI1We
+ LHKBZPUHSA/EzT7+Z+L6WiBAsGloBpT3TuCgOvKOHaGh/LDEFIyznOv93
+ hpQ6oK/ltduIALm1T9AgF0tHjfjfIVSebqnEQPVoySH4DrNLkx1bn+XUI
+ SATri5A7KbknumuLHrXjjKQPx6X03kJqBhst3WXTOsdAlPuayiRpi8Fmk
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=SRretsnN
+Subject: [Intel-wired-lan] [PATCH net] ice: avoid bonding causing auxiliary
+ plug/unplug under RTNL lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,20 +92,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: rafael@kernel.org, jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- alice.chao@mediatek.com
+Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jan 09, 2023 at 07:15:05PM +0800, Wang Hai wrote:
-> Thanks, I thought you had forgotten about it. I hope I'm not disturbing you.
+RDMA is not supported in ice on a PF that has been added to a bonded
+interface. To enforce this, when an interface enters a bond, we unplug
+the auxiliary device that supports RDMA functionality.  This unplug
+currently happens in the context of handling the netdev bonding event.
+This event is sent to the ice driver under RTNL context.  This is causing
+a deadlock where the RDMA driver is waiting for the RTNL lock to complete
+the removal.
 
-No bother at all, it's now added to my tree, thanks!
+Defer the unplugging/re-plugging of the auxiliary device to the service
+task so that it is not performed under the RTNL lock context.
 
-greg k-h
+Reported-by: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+Link: https://lore.kernel.org/linux-rdma/68b14b11-d0c7-65c9-4eeb-0487c95e395d@leemhuis.info/
+Fixes: 5cb1ebdbc434 ("ice: Fix race condition during interface enslave")
+Fixes: 425c9bd06b7a ("RDMA/irdma: Report the correct link speed")
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h      | 14 +++++---------
+ drivers/net/ethernet/intel/ice/ice_main.c | 17 +++++++----------
+ 2 files changed, 12 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 2f0b604abc5e..0ad9bab84617 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -506,6 +506,7 @@ enum ice_pf_flags {
+ 	ICE_FLAG_VF_VLAN_PRUNING,
+ 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
+ 	ICE_FLAG_PLUG_AUX_DEV,
++	ICE_FLAG_UNPLUG_AUX_DEV,
+ 	ICE_FLAG_MTU_CHANGED,
+ 	ICE_FLAG_GNSS,			/* GNSS successfully initialized */
+ 	ICE_PF_FLAGS_NBITS		/* must be last */
+@@ -950,16 +951,11 @@ static inline void ice_set_rdma_cap(struct ice_pf *pf)
+  */
+ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
+ {
+-	/* We can directly unplug aux device here only if the flag bit
+-	 * ICE_FLAG_PLUG_AUX_DEV is not set because ice_unplug_aux_dev()
+-	 * could race with ice_plug_aux_dev() called from
+-	 * ice_service_task(). In this case we only clear that bit now and
+-	 * aux device will be unplugged later once ice_plug_aux_device()
+-	 * called from ice_service_task() finishes (see ice_service_task()).
++	/* defer unplug to service task to avoid RTNL lock and
++	 * clear PLUG bit so that pending plugs don't interfere
+ 	 */
+-	if (!test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+-		ice_unplug_aux_dev(pf);
+-
++	clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags);
++	set_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags);
+ 	clear_bit(ICE_FLAG_RDMA_ENA, pf->flags);
+ }
+ #endif /* _ICE_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index a9a7f8b52140..e2bc1340833e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2290,18 +2290,15 @@ static void ice_service_task(struct work_struct *work)
+ 		}
+ 	}
+ 
+-	if (test_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags)) {
+-		/* Plug aux device per request */
++	/* Plug aux device per request */
++	if (test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+ 		ice_plug_aux_dev(pf);
+ 
+-		/* Mark plugging as done but check whether unplug was
+-		 * requested during ice_plug_aux_dev() call
+-		 * (e.g. from ice_clear_rdma_cap()) and if so then
+-		 * plug aux device.
+-		 */
+-		if (!test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+-			ice_unplug_aux_dev(pf);
+-	}
++	/* unplug aux dev per request, if an unplug request came in
++	 * while processing a plug request, this will handle it
++	 */
++	if (test_and_clear_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags))
++		ice_unplug_aux_dev(pf);
+ 
+ 	if (test_and_clear_bit(ICE_FLAG_MTU_CHANGED, pf->flags)) {
+ 		struct iidc_event *event;
+-- 
+2.37.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
