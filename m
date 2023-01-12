@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FE8E666EDE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jan 2023 11:00:56 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81BEA66702D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jan 2023 11:49:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC7B160B48;
-	Thu, 12 Jan 2023 10:00:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC7B160B48
+	by smtp2.osuosl.org (Postfix) with ESMTP id 20D2240522;
+	Thu, 12 Jan 2023 10:49:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20D2240522
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673517654;
-	bh=lW49t1QdnNJreCnwiFoHusucC1OWANPMenV90ffXYfI=;
+	s=default; t=1673520568;
+	bh=tqN7/Fqk4nNYtMke34snldi4kRpCBc5EZ/1fOnD38g8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=4jEMDAnXx4l8q5Qc9IjvBeX9HxKD36vMMQ0BJAYFVq9+nPYqWP6OQro7RkWaY+nQh
-	 t2RxhaSnDcCM7BlzNAITFiP4SVb+lg06vWdQ72H1HerUYX53bnP4cOlJV8xph/VOPn
-	 5GehRH0e4jH0W9SxeZQdT2N2MrAqI2hYbWFoH2placSNu7IXxLrz5p3o6KLFEM0nWl
-	 ySzoDvg3NNhA0hkd8dRelvbFkJ/GenrV7TWCEIe6fg0tlijVXl4GlgHUEDpgwG4N6w
-	 IAtjtfT2J1A1AorSdohLI9xTYaODKRW8uEMpPvfM0iAhC4xYbZLD53AsVnJtj7mlHw
-	 FChX5mgkKYHzA==
+	b=T65GelIkNhyjqTe7pJj1J14OM1X+16NuD8eYBEhKgUr4zc4CMnLJp/TJe1dhmVsS5
+	 aQdUf6Ek5JCJduENWCsia5dIl/9AWjlz2Da0tbOweQhfcJyyH6wCp1d0TsxL8ebuAE
+	 DKVv3DNr0SRbdviq8vRZVjSYbY5SyNpwbmq8CreI9RKoqPPyhfTa17tfeOn9rJidww
+	 bXMkZKEhOsMEbtYmDysx93WE+NAN0t7tUfDEL1/aZT9CljVyAxaH/Z+pqhjRxFDhqT
+	 QUujyT/W1A3cfCUiqLJNf+J+0/4fHixX2Sa+PFV8nynhMjx83YrDpyX/JKXFbJv81z
+	 jryYuRfJFuB3w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SQqm30L5RlKU; Thu, 12 Jan 2023 10:00:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IsLTGgKCZXaA; Thu, 12 Jan 2023 10:49:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B93D760B35;
-	Thu, 12 Jan 2023 10:00:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B93D760B35
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1FE734014D;
+	Thu, 12 Jan 2023 10:49:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1FE734014D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 332E81BF3DB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:00:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 43DAE1BF476
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:49:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 19F3A81410
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:00:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19F3A81410
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1DFE54014D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:49:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DFE54014D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CU242zr7nC4A for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Jan 2023 10:00:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T4nCpcAOGXi5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Jan 2023 10:49:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C8B581419
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0C8B581419
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:00:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="304038743"
-X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; d="scan'208";a="304038743"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2023 02:00:41 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="903120433"
-X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; d="scan'208";a="903120433"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D1D66400D0
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D1D66400D0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jan 2023 10:49:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="409911331"
+X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; d="scan'208";a="409911331"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2023 02:49:12 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="765557911"
+X-IronPort-AV: E=Sophos;i="5.96,319,1665471600"; d="scan'208";a="765557911"
 Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2023 02:00:18 -0800
-Date: Thu, 12 Jan 2023 11:00:14 +0100
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2023 02:49:11 -0800
+Date: Thu, 12 Jan 2023 11:49:08 +0100
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
-Message-ID: <Y7/aLiP5b3oWSV+R@localhost.localdomain>
+Message-ID: <Y7/lpDzq6q+SWRxK@localhost.localdomain>
 References: <20230111191906.131-1-paul.m.stillwell.jr@intel.com>
- <20230111191906.131-4-paul.m.stillwell.jr@intel.com>
+ <20230111191906.131-5-paul.m.stillwell.jr@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230111191906.131-4-paul.m.stillwell.jr@intel.com>
+In-Reply-To: <20230111191906.131-5-paul.m.stillwell.jr@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673517647; x=1705053647;
+ t=1673520560; x=1705056560;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=eWSW1xgpMvN93wkxU3YaDWac6pG4pepBm6pJ1q4QIgw=;
- b=GrULu+YC3N8vQmF41ajncAd6n8oR0cnSQvnwwtgsjPhTVkQ7krWjBEG4
- Aa8kffnRNd5bXxJ79Lo5qfIzleFV/ED+8PmU+t+7NQhlKgG3kZrJEVhK3
- TlJNikB1ETJWAbmXROoHWlvdEifdmAKKXtbYnY2XqnQnOoEmZIgX7pGOL
- V/oD2iM3HxDRNavTz0yqjWpSmSCwV4lNrvu0VRZiBnJx5XWo6oPhwOiQn
- zoslnInZw0wrvj22i9Ihj99UaiFF/e8sfh0M/K6/FTNmanMxruoCqijvb
- RQTWASBBEleb3oGle706i+je1QgP9JPbjKYfvO6njHAip1RYNXr9tXEM4
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=HPb1jmCEaJ+C888CxgAHmzZ1FaYfc9Gz40sm8p1Nqn4=;
+ b=HvGqavVruBDgC27li1buw91bvgDJ7kLVufRDklnDzkaHFrmCHHBbXvN3
+ LmsRNfKT3BAILg6ySm0qzO9FkJxyQLLWPT40nHAvz7lZREw3Ltb/h4cO3
+ uG4HEw5eP7uCb7viL6G1qH6Dp0SwA2N3yV/dIasu15XYsiT1ygOxuRdCF
+ dyTEz9SNxHd5HGe3OxBsEP07ArkYj5YhCDDRDlYKV098gKBIapbTrC4iY
+ xxezbIvcSrqwtAgY1/O8DqLUYIxD14Zj0yZIlrt/fEwk03rpwu0Bg/uFy
+ 9/cVcVffMhscFtSpc14SDN06IuQgAvsFivYfPzuFznEAva11JcYpWEYEa
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=GrULu+YC
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 3/5] ice: add ability to
- query/set FW log level and resolution
+ header.a=rsa-sha256 header.s=Intel header.b=HvGqavVr
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 4/5] ice: disable FW
+ logging on driver unload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,158 +102,75 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jan 11, 2023 at 11:19:04AM -0800, Paul M Stillwell Jr wrote:
-> The E8xx has the ability to change the FW log level and
-> the granularity at which the logs get output. Enable
-> the ability to see what the current values are and to
-> change them.
+On Wed, Jan 11, 2023 at 11:19:05AM -0800, Paul M Stillwell Jr wrote:
+> The FW is running in it's own context irregardless of what the driver
+> is doing. In this case, if the driver previously registered for FW
+> log events and then the driver unloads without informing the FW to
+> unregister for FW log events then the FW still has a timer running to
+> output FW logs.
 > 
-> The following devlink commands are now supported:
+> The next time the driver loads and tries to register for FW log events
+> then the FW returns an error, but still enables the continued
+> outputting of FW logs. This causes an IO error to devlink which isn't
+> intuitive since the logs are still being output.
 > 
-> devlink dev param set <pci dev> name fwlog_enabled value <true/false> cmode runtime
-> devlink dev param set <pci dev> name fwlog_level value <0-4> cmode runtime
-> devlink dev param set <pci dev> name fwlog_resolution value <1-128> cmode runtime
+> Fix this by disabling FW logging when the driver is being unloaded.
 > 
 > Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 > ---
->  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
->  drivers/net/ethernet/intel/ice/ice_common.c   |   4 +-
->  drivers/net/ethernet/intel/ice/ice_devlink.c  | 131 ++++++++-
->  drivers/net/ethernet/intel/ice/ice_fwlog.c    | 278 +++++++++++++++++-
->  drivers/net/ethernet/intel/ice/ice_fwlog.h    |   5 +
->  drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
->  6 files changed, 416 insertions(+), 5 deletions(-)
->  
-[...]
-> diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c b/drivers/net/ethernet/intel/ice/ice_fwlog.c
-> index efea71b6c9f8..6973f01749f9 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
-> @@ -4,6 +4,165 @@
->  #include "ice_common.h"
->  #include "ice_fwlog.h"
+>  drivers/net/ethernet/intel/ice/ice_main.c | 29 +++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index 1b5debc3109d..593efc064f5b 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -4500,6 +4500,33 @@ static void ice_unregister_netdev(struct ice_vsi *vsi)
+>  	clear_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
+>  }
 >  
 > +/**
-> + * cache_cfg - Cache FW logging config
-> + * @hw: pointer to the HW structure
-> + * @cfg: config to cache
+> + * ice_pf_fwlog_deinit - clear FW logging metadata on device exit
+> + * @pf: pointer to the PF struct
 > + */
-> +static void cache_cfg(struct ice_hw *hw, struct ice_fwlog_cfg *cfg)
+> +static void ice_pf_fwlog_deinit(struct ice_pf *pf)
 > +{
-> +	hw->fwlog_cfg = *cfg;
-> +}
+> +	struct ice_hw *hw = &pf->hw;
 > +
-> +/**
-> + * valid_module_entries - validate all the module entry IDs and log levels
-> + * @hw: pointer to the HW structure
-> + * @entries: entries to validate
-> + * @num_entries: number of entries to validate
-> + */
-> +static bool
-> +valid_module_entries(struct ice_hw *hw, struct ice_fwlog_module_entry *entries,
-> +		     u16 num_entries)
-> +{
-> +	int i;
+> +	/* make sure FW logging is disabled to not put the FW in a weird state
+> +	 * for the next driver load
+> +	 */
+> +	if (hw->fwlog_ena) {
+> +		int status;
 > +
-> +	if (!entries) {
-> +		ice_debug(hw, ICE_DBG_FW_LOG, "Null ice_fwlog_module_entry array\n");
-> +		return false;
-> +	}
-> +
-> +	if (!num_entries) {
-> +		ice_debug(hw, ICE_DBG_FW_LOG, "num_entries must be non-zero\n");
-> +		return false;
-> +	}
-> +
-> +	for (i = 0; i < num_entries; i++) {
-> +		struct ice_fwlog_module_entry *entry = &entries[i];
-> +
-> +		if (entry->module_id >= ICE_AQC_FW_LOG_ID_MAX) {
-> +			ice_debug(hw, ICE_DBG_FW_LOG, "Invalid module_id %u, max valid module_id is %u\n",
-> +				  entry->module_id, ICE_AQC_FW_LOG_ID_MAX - 1);
-> +			return false;
-> +		}
-> +
-> +		if (entry->log_level >= ICE_FWLOG_LEVEL_INVALID) {
-> +			ice_debug(hw, ICE_DBG_FW_LOG, "Invalid log_level %u, max valid log_level is %u\n",
-> +				  entry->log_level,
-> +				  ICE_AQC_FW_LOG_ID_MAX - 1);
-> +			return false;
-> +		}
-> +	}
-> +
-> +	return true;
-> +}
-> +
-> +/**
-> + * valid_cfg - validate entire configuration
-> + * @hw: pointer to the HW structure
-> + * @cfg: config to validate
-> + */
-> +static bool valid_cfg(struct ice_hw *hw, struct ice_fwlog_cfg *cfg)
-> +{
-> +	if (!cfg) {
-> +		ice_debug(hw, ICE_DBG_FW_LOG, "Null ice_fwlog_cfg\n");
-> +		return false;
-> +	}
-> +
-> +	if (cfg->log_resolution < ICE_AQC_FW_LOG_MIN_RESOLUTION ||
-> +	    cfg->log_resolution > ICE_AQC_FW_LOG_MAX_RESOLUTION) {
-> +		ice_debug(hw, ICE_DBG_FW_LOG, "Unsupported log_resolution %u, must be between %u and %u\n",
-> +			  cfg->log_resolution, ICE_AQC_FW_LOG_MIN_RESOLUTION,
-> +			  ICE_AQC_FW_LOG_MAX_RESOLUTION);
-> +		return false;
-> +	}
-> +
-> +	if (!valid_module_entries(hw, cfg->module_entries,
-> +				  ICE_AQC_FW_LOG_ID_MAX))
-> +		return false;
-> +
-> +	return true;
-return valid_module_entries();
-
-> +}
-> +
-> +/**
-> + * ice_fwlog_init - Initialize FW logging variables
-> + * @hw: pointer to the HW structure
-> + *
-> + * This function should be called on driver initialization during
-> + * ice_init_hw().
-> + */
-> +int ice_fwlog_init(struct ice_hw *hw)
-> +{
-> +	int status;
-> +
-> +	ice_fwlog_set_supported(hw);
-> +
-> +	if (ice_fwlog_supported(hw)) {
-> +		struct ice_fwlog_cfg *cfg;
-> +
-> +		cfg = kzalloc(sizeof(*cfg), GFP_KERNEL);
-I don't understand why hw->cfg can't be used here? It will simplify all
-this cache_cfg. Is there any reason to alloc config and than set hw->cfg
-to it in get flow?
-
-When config parameters are being set from devlink context hw->cfg is
-used instead of new allocated config like here (and than casched).
-
-> +		if (!cfg)
-> +			return -ENOMEM;
-> +
-> +		/* read the current config from the FW and store it */
-> +		status = ice_fwlog_get(hw, cfg);
+> +		hw->fwlog_cfg.options &= ~ICE_FWLOG_OPTION_ARQ_ENA;
+> +		status = ice_fwlog_set(hw, &hw->fwlog_cfg);
 > +		if (status)
-> +			return status;
-Shouldn't cfg be free here? If ice_fwlog_get fails cfg isn't casched.
+> +			dev_warn(ice_pf_to_dev(pf), "Unable to turn off FW logging, status: %d\n",
+> +				 status);
+> +
+> +		status = ice_fwlog_unregister(hw);
+> +		if (status)
+> +			dev_warn(ice_pf_to_dev(pf), "Unable to unregister FW logging, status: %d\n",
+> +				 status);
+Shouldn't hw->fwlog_cfg be free on deinit? Or if not here, where does
+this happen?
 
 > +	}
-> +
-> +	return 0;
 > +}
 > +
-[...]
+>  /**
+>   * ice_cfg_netdev - Allocate, configure and register a netdev
+>   * @vsi: the VSI associated with the new netdev
+> @@ -5237,6 +5264,8 @@ static void ice_remove(struct pci_dev *pdev)
+>  		msleep(100);
+>  	}
 >  
+> +	ice_pf_fwlog_deinit(pf);
+> +
+>  	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
+>  		set_bit(ICE_VF_RESETS_DISABLED, pf->state);
+>  		ice_free_vfs(pf);
 > -- 
 > 2.35.1
 > 
