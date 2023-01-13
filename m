@@ -1,99 +1,122 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D6D766A1E0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 19:23:01 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A69866A267
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 19:53:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 35552821E6;
-	Fri, 13 Jan 2023 18:22:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 35552821E6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 93914415AF;
+	Fri, 13 Jan 2023 18:53:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 93914415AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673634178;
-	bh=dPH66x+mShwrQ8EWm+MUBnRNYkp/RmV01B9ZTmMZxq8=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1673635988;
+	bh=7C35LMNbTl09EjbxRNU+3Rh7d1WjMP2yypBg113T80E=;
+	h=From:To:In-reply-to:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uQacNpyi3aVLZ58G2BGoN4DsQq3UkBSRfyahyuxOmLG8idRsRuWd6G6HAzJdwEz58
-	 yUIGDHCT/PKiGJk/NA5R9WdWyMGOGMS9UkAB3X1jpxpOJ9kkOUdz5RodZ0ZuBRuzpD
-	 64NfRk2m8hyShLFYQcn2l0AVUBSZGsTO3gA2NsTXFXb+TyOAkLwvEfAJJBofvTOku7
-	 2WAfgjgxJ1wB0cgTQTf9hCs+idOJacVOMEbO90qRPJcRCRNApq7OaigNZ+ngseVwPz
-	 ywMIuERu15FY/6GkibXjXO7hKWDJekt7l8g9AU5nnnIprsuMzUq/VvJKeUVLp4+Ftb
-	 lbLR0JdRuPNXw==
+	b=FBwlT2zK7FoZavAHxbS3YJYt56/41gh8y3jBX2jcItvGcmiNAxAvrqIDtM24cQOfm
+	 MStaD9o8wh3rzvc6p5uG09DY0EESWLd1LCX3RpFQb66r/NULwEli+KpdtfU9RkkG7v
+	 VeOAtMPTKKqXP2JZR1faeR7b5GTftGJ9ovW7Nl5vIpPW+QwdM5ra+FDjvSim0j2gxJ
+	 UJjbpPKb97W//EECAxh9Ug+aui/riJrB76Wm0+ylfXrcZUAbRTwH9ZKfm++I7ql+kn
+	 38DVe+NJVxzaoiU1+sT4506PsQE0iwKpikbkBynnhmRoP6FTTND6dWnAhoxK8gI30A
+	 joJ5z0im5DFSg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kJKVl_Zv7G17; Fri, 13 Jan 2023 18:22:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NCLd0y3D7dXq; Fri, 13 Jan 2023 18:53:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1F5C982169;
-	Fri, 13 Jan 2023 18:22:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F5C982169
+	by smtp2.osuosl.org (Postfix) with ESMTP id 580D4415AC;
+	Fri, 13 Jan 2023 18:53:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 580D4415AC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 585111BF3EC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:22:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5D0D31BF3EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:53:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 32A2D41593
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:22:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 32A2D41593
+ by smtp2.osuosl.org (Postfix) with ESMTP id 366CA40571
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:53:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 366CA40571
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BcV8qFBaJRBz for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jan 2023 18:22:51 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 467D2414E6
-Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
- [IPv6:2a00:1450:4864:20::631])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 467D2414E6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:22:51 +0000 (UTC)
-Received: by mail-ej1-x631.google.com with SMTP id qk9so54215388ejc.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 10:22:51 -0800 (PST)
+ with ESMTP id 1grcjzVnrvBe for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jan 2023 18:53:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EADB1400CB
+Received: from smtp-relay-internal-1.canonical.com
+ (smtp-relay-internal-1.canonical.com [185.125.188.123])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EADB1400CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:53:00 +0000 (UTC)
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 03F5D4166F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 18:52:55 +0000 (UTC)
+Received: by mail-pl1-f198.google.com with SMTP id
+ n1-20020a170902e54100b00192cc6850ffso15352298plf.18
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 10:52:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=SwxEeoGBgqRIV/iTuXNna3YResob5aMiHbzkuhRkD6k=;
- b=i7uj5ibzyg2KCHZULCEcyzkGHMbk7u4DqymM2KmGZl+1Lebq8A4EDc7bvzEPl2rl6e
- 0O82T9DHJ0l4D1DLgjkbAQL9DsOmX6wWjoGBWDcF/jByfNADfSAvVXDFhymjdYwi7O0U
- mNmFo5ckUh3xWdWSMxVpIhhz+HAKQb562CZSpcNxqpHukoBdqXT/h8Qr9nbxBKbuaURL
- 7ckJ32TNxU0WFia7FLWW05GACfTJA3Cr8SDw9+wB6kbH6hsPZilMfKtfQcOTdv9wcI+w
- oFpc7glYGf6CKh2JgXJ18528EXJ/GT+LuYftwHdkflCsTtSQJW+ayVJMra82k+i76eQC
- 71/A==
-X-Gm-Message-State: AFqh2ko1NSM+idYEW//dBRWsWUiWJGA7O9BnY2Mjr6YiuQG+PSQWEtTH
- YO92j3VZCDgpRnKsW13qh8k+IDP8nsytwgm2njg=
-X-Google-Smtp-Source: AMrXdXtDQ5zbeXxwiqexSN7tlDEbCSIXvSEfo9MUWeOCXq3VPu76R7iqDQmEY6zHzqbrZU0+ecj+i45QIdtFWZ+WGwc=
-X-Received: by 2002:a17:906:75a:b0:855:d6ed:60d8 with SMTP id
- z26-20020a170906075a00b00855d6ed60d8mr1030695ejb.302.1673634169384; Fri, 13
- Jan 2023 10:22:49 -0800 (PST)
+ h=message-id:date:content-transfer-encoding:content-id:mime-version
+ :comments:references:in-reply-to:subject:cc:to:from
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GJsolzbzM5eU/x28np1ztagSjdJzYA40UM8agFVJZz4=;
+ b=Y2y3ZzR2viFzvF7IEJhcsP1utjOyPDI8kbC5Byzkn65wu7/MKfqhRAGkI8/cwcJFhT
+ C8wr9hCW+IzPhacyOsy9YGfaO2neB+FGggDfYHVT4mf6s3RjRbPMUWODzdgDMy4H8vo7
+ S2nos8bnPOb3a9AcsoKnASEHx0ye3BQmxr0QpWjo97/Pi7aRC9gZjUDEXCyfJHthBakW
+ QvmDMQHCkWSnaF5nsjqB4r7ENdf3k4g/6+GQef9gms6qyJ53KIBjmyyeGXKTwALf9uVd
+ 8sJN/jnoW2Pzt/qI6wIlLVKIlCvjg1PJuFBp5jxr2lStaeE9JiWiVifKEa0bdCjfiTvC
+ Djtw==
+X-Gm-Message-State: AFqh2kow8eY5S/ELAls3TwqRNTpAtWfCbTFejjehPT3qT2EtJUNqDdHP
+ ZJs2UbRGeaJuYhN7HK1KD7gnG6jtUcnvyEXPCLOAks2SZOPGXFl45hPaJZQEgwkLahoHJGegR8k
+ wEfIZwAGle6qEGSOygvD2jwpMLOC1V5kY3vrIU+bNjOB3/Zg=
+X-Received: by 2002:a17:902:7688:b0:192:ce01:7d82 with SMTP id
+ m8-20020a170902768800b00192ce017d82mr41406195pll.52.1673635973583; 
+ Fri, 13 Jan 2023 10:52:53 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtQVcGNaNjRtZGwUO5rHF9l3TyYPLYCcrz9zVnw0DBB4zE3gt6/puojujZ7+/y+INnq1kNsTg==
+X-Received: by 2002:a17:902:7688:b0:192:ce01:7d82 with SMTP id
+ m8-20020a170902768800b00192ce017d82mr41406182pll.52.1673635973282; 
+ Fri, 13 Jan 2023 10:52:53 -0800 (PST)
+Received: from famine.localdomain ([50.125.80.253])
+ by smtp.gmail.com with ESMTPSA id
+ u16-20020a170902e5d000b00172fad607b3sm14424151plf.207.2023.01.13.10.52.52
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 13 Jan 2023 10:52:52 -0800 (PST)
+Received: by famine.localdomain (Postfix, from userid 1000)
+ id 6B8505FEAC; Fri, 13 Jan 2023 10:52:52 -0800 (PST)
+Received: from famine (localhost [127.0.0.1])
+ by famine.localdomain (Postfix) with ESMTP id 63B0F9FB5C;
+ Fri, 13 Jan 2023 10:52:52 -0800 (PST)
+From: Jay Vosburgh <jay.vosburgh@canonical.com>
+To: Dave Ertman <david.m.ertman@intel.com>
+In-reply-to: <20230111183145.1497367-1-david.m.ertman@intel.com>
+References: <20230111183145.1497367-1-david.m.ertman@intel.com>
+Comments: In-reply-to Dave Ertman <david.m.ertman@intel.com>
+ message dated "Wed, 11 Jan 2023 10:31:45 -0800."
+X-Mailer: MH-E 8.6+git; nmh 1.6; Emacs 29.0.50
 MIME-Version: 1.0
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <6cce9b15a57345402bb94366434a5ac5609583b8.1671462951.git.lorenzo@kernel.org>
- <CAEf4BzbOF-S3kjbNVXCZR-K=TGarfi06ZwG1cbNF=HSSodwEfg@mail.gmail.com>
- <Y72f1U2/dw8jo0/0@lore-desk>
-In-Reply-To: <Y72f1U2/dw8jo0/0@lore-desk>
-From: Andrii Nakryiko <andrii.nakryiko@gmail.com>
-Date: Fri, 13 Jan 2023 10:22:37 -0800
-Message-ID: <CAEf4BzawqXs6q18U8e5GD5d+9v1_w2+QOJYqmEpNb9rZ40E1Tw@mail.gmail.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
+Content-ID: <30464.1673635972.1@famine>
+Date: Fri, 13 Jan 2023 10:52:52 -0800
+Message-ID: <30465.1673635972@famine>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SwxEeoGBgqRIV/iTuXNna3YResob5aMiHbzkuhRkD6k=;
- b=qrUJyijRNovU1IU30Vqk0MDytJbYIrCDe+OrzY8r2B4HvjGDXaETA9j1xBZPQcrRyw
- lCQZ55u//NbIUmrKleGsDP742Lmxmdk5dSwrm9rFkHry5YqZQa2/CP5Ur6Da/a/iHqiP
- Sj0OAU9aYU3OC9HxwMV2FWdJicVaAY7KrwVCCjUe88QFVWHfoLG+G+IijWkdsKTQSgNI
- Vgq8HapnzEAqUXZ5b3B3TOScfQAuZT8jQgxizfPPowxJ/ocSti634/M+SH7jySsbBsVe
- +SnU8Pigbn6pL+U///bJs1il7DueHjH6vYVjQoR0qltcmxPeFiTuLdM4FpVwEpOm7a+X
- Dxsg==
+ d=canonical.com; s=20210705; t=1673635975;
+ bh=GJsolzbzM5eU/x28np1ztagSjdJzYA40UM8agFVJZz4=;
+ h=From:To:cc:Subject:In-reply-to:References:MIME-Version:
+ Content-Type:Date:Message-ID;
+ b=WxPi9s/s52OrrK0ry0nnwsP+VjeUALwkQMd4S8PuutwlphPNSfJaU5NuYUbcJJpBR
+ R+G0vyvgzBgnASLP6M2uav8DxjOb5pr6xKGNXSGlS9u7yW85s4kdUcmeVqw5ldFrFt
+ OQ4/Fn8H5Rb3CObCZKbikD202gTi5fkTttprsxgbNtWVJZcOK1EbBmflDLA791Y34b
+ wzFUJsI1fbAvvhrPv09XefY+sPQiRcGs+5I7t13Jpu59bUqoOKGu1Wr8O+NpuDNsVw
+ Wzhc2sD9ueZa6mISLT5yZj4JTyk7O3AEHVcsi+d8c3oyvXp5/rmMTaEtIu+N8BUDiM
+ MWkTFYnyxmhKQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=qrUJyijR
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 6/8] libbpf: add API to get
- XDP/XSK supported features
+ dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=WxPi9s/s
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: avoid bonding causing
+ auxiliary plug/unplug under RTNL lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,103 +129,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, grygorii.strashko@ti.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 10, 2023 at 9:26 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
->
-> > On Mon, Dec 19, 2022 at 7:42 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
-> > >
-> > > From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > >
-> > > Add functions to get XDP/XSK supported function of netdev over route
-> > > netlink interface. These functions provide functionalities that are
-> > > going to be used in upcoming change.
-> > >
-> > > The newly added bpf_xdp_query_features takes a fflags_cnt parameter,
-> > > which denotes the number of elements in the output fflags array. This
-> > > must be at least 1 and maybe greater than XDP_FEATURES_WORDS. The
-> > > function only writes to words which is min of fflags_cnt and
-> > > XDP_FEATURES_WORDS.
-> > >
-> > > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > Co-developed-by: Marek Majtyka <alardam@gmail.com>
-> > > Signed-off-by: Marek Majtyka <alardam@gmail.com>
-> > > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > > ---
-> > >  tools/lib/bpf/libbpf.h   |  1 +
-> > >  tools/lib/bpf/libbpf.map |  1 +
-> > >  tools/lib/bpf/netlink.c  | 62 ++++++++++++++++++++++++++++++++++++++++
-> > >  3 files changed, 64 insertions(+)
-> > >
-> > > diff --git a/tools/lib/bpf/libbpf.h b/tools/lib/bpf/libbpf.h
-> > > index eee883f007f9..9d102eb5007e 100644
-> > > --- a/tools/lib/bpf/libbpf.h
-> > > +++ b/tools/lib/bpf/libbpf.h
-> > > @@ -967,6 +967,7 @@ LIBBPF_API int bpf_xdp_detach(int ifindex, __u32 flags,
-> > >                               const struct bpf_xdp_attach_opts *opts);
-> > >  LIBBPF_API int bpf_xdp_query(int ifindex, int flags, struct bpf_xdp_query_opts *opts);
-> > >  LIBBPF_API int bpf_xdp_query_id(int ifindex, int flags, __u32 *prog_id);
-> > > +LIBBPF_API int bpf_xdp_query_features(int ifindex, __u32 *fflags, __u32 *fflags_cnt);
-> >
-> > no need to add new API, just extend bpf_xdp_query()?
->
-> Hi Andrii,
->
-> AFAIK libbpf supports just NETLINK_ROUTE protocol. In order to connect with the
-> genl family code shared by Jakub we need to add NETLINK_GENERIC protocol support
-> to libbf. Is it ok to introduce a libmnl or libnl dependency in libbpf or do you
-> prefer to add open code to just what we need?
+Dave Ertman <david.m.ertman@intel.com> wrote:
 
-I'd very much like to avoid any extra dependencies. But I also have no
-clue how much new code we are talking about, tbh. Either way, the less
-dependencies, the better, if the result is an acceptable amount of
-extra code to maintain.
+>RDMA is not supported in ice on a PF that has been added to a bonded
+>interface. To enforce this, when an interface enters a bond, we unplug
+>the auxiliary device that supports RDMA functionality.  This unplug
+>currently happens in the context of handling the netdev bonding event.
+>This event is sent to the ice driver under RTNL context.  This is causing
+>a deadlock where the RDMA driver is waiting for the RTNL lock to complete
+>the removal.
 
-> I guess we should have a dedicated API to dump xdp features in this case since
-> all the other code relies on NETLINK_ROUTE protocol. What do you think?
+	Why is RDMA disallowed on interfaces that are members of a bond?
+Is this something specific to ice, or a generic problem with RDMA in
+general?
+
+	-J
+
+>Defer the unplugging/re-plugging of the auxiliary device to the service
+>task so that it is not performed under the RTNL lock context.
 >
-
-From API standpoint it looks like an extension to bpf_xdp_query()
-family of APIs, which is already extendable through opts. Which is why
-I suggested that there is no need for new API. NETLINK_ROUTE vs
-NETLINK_GENERIC seems like an internal implementation detail (but
-again, I spent literally zero time trying to understand what's going
-on here).
-
-> Regards,
-> Lorenzo
+>Reported-by: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+>Link: https://lore.kernel.org/linux-rdma/68b14b11-d0c7-65c9-4eeb-0487c95e395d@leemhuis.info/
+>Fixes: 5cb1ebdbc434 ("ice: Fix race condition during interface enslave")
+>Fixes: 425c9bd06b7a ("RDMA/irdma: Report the correct link speed")
+>Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+>---
+> drivers/net/ethernet/intel/ice/ice.h      | 14 +++++---------
+> drivers/net/ethernet/intel/ice/ice_main.c | 17 +++++++----------
+> 2 files changed, 12 insertions(+), 19 deletions(-)
 >
-> >
-> > >
-> > >  /* TC related API */
-> > >  enum bpf_tc_attach_point {
-> > > diff --git a/tools/lib/bpf/libbpf.map b/tools/lib/bpf/libbpf.map
-> > > index 71bf5691a689..9c2abb58fa4b 100644
-> > > --- a/tools/lib/bpf/libbpf.map
-> > > +++ b/tools/lib/bpf/libbpf.map
-> > > @@ -362,6 +362,7 @@ LIBBPF_1.0.0 {
-> > >                 bpf_program__set_autoattach;
-> > >                 btf__add_enum64;
-> > >                 btf__add_enum64_value;
-> > > +               bpf_xdp_query_features;
-> > >                 libbpf_bpf_attach_type_str;
-> > >                 libbpf_bpf_link_type_str;
-> > >                 libbpf_bpf_map_type_str;
-> >
-> > [...]
+>diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+>index 2f0b604abc5e..0ad9bab84617 100644
+>--- a/drivers/net/ethernet/intel/ice/ice.h
+>+++ b/drivers/net/ethernet/intel/ice/ice.h
+>@@ -506,6 +506,7 @@ enum ice_pf_flags {
+> 	ICE_FLAG_VF_VLAN_PRUNING,
+> 	ICE_FLAG_LINK_LENIENT_MODE_ENA,
+> 	ICE_FLAG_PLUG_AUX_DEV,
+>+	ICE_FLAG_UNPLUG_AUX_DEV,
+> 	ICE_FLAG_MTU_CHANGED,
+> 	ICE_FLAG_GNSS,			/* GNSS successfully initialized */
+> 	ICE_PF_FLAGS_NBITS		/* must be last */
+>@@ -950,16 +951,11 @@ static inline void ice_set_rdma_cap(struct ice_pf *pf)
+>  */
+> static inline void ice_clear_rdma_cap(struct ice_pf *pf)
+> {
+>-	/* We can directly unplug aux device here only if the flag bit
+>-	 * ICE_FLAG_PLUG_AUX_DEV is not set because ice_unplug_aux_dev()
+>-	 * could race with ice_plug_aux_dev() called from
+>-	 * ice_service_task(). In this case we only clear that bit now and
+>-	 * aux device will be unplugged later once ice_plug_aux_device()
+>-	 * called from ice_service_task() finishes (see ice_service_task()).
+>+	/* defer unplug to service task to avoid RTNL lock and
+>+	 * clear PLUG bit so that pending plugs don't interfere
+> 	 */
+>-	if (!test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+>-		ice_unplug_aux_dev(pf);
+>-
+>+	clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags);
+>+	set_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags);
+> 	clear_bit(ICE_FLAG_RDMA_ENA, pf->flags);
+> }
+> #endif /* _ICE_H_ */
+>diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+>index a9a7f8b52140..e2bc1340833e 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_main.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_main.c
+>@@ -2290,18 +2290,15 @@ static void ice_service_task(struct work_struct *work)
+> 		}
+> 	}
+> 
+>-	if (test_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags)) {
+>-		/* Plug aux device per request */
+>+	/* Plug aux device per request */
+>+	if (test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+> 		ice_plug_aux_dev(pf);
+> 
+>-		/* Mark plugging as done but check whether unplug was
+>-		 * requested during ice_plug_aux_dev() call
+>-		 * (e.g. from ice_clear_rdma_cap()) and if so then
+>-		 * plug aux device.
+>-		 */
+>-		if (!test_and_clear_bit(ICE_FLAG_PLUG_AUX_DEV, pf->flags))
+>-			ice_unplug_aux_dev(pf);
+>-	}
+>+	/* unplug aux dev per request, if an unplug request came in
+>+	 * while processing a plug request, this will handle it
+>+	 */
+>+	if (test_and_clear_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags))
+>+		ice_unplug_aux_dev(pf);
+> 
+> 	if (test_and_clear_bit(ICE_FLAG_MTU_CHANGED, pf->flags)) {
+> 		struct iidc_event *event;
+>-- 
+>2.37.3
+>
+>_______________________________________________
+>Intel-wired-lan mailing list
+>Intel-wired-lan@osuosl.org
+>https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
