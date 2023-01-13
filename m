@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84C96669827
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 14:14:31 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EE77669ADD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 15:49:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C6C6441594;
-	Fri, 13 Jan 2023 13:14:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C6C6441594
+	by smtp2.osuosl.org (Postfix) with ESMTP id EC317402F2;
+	Fri, 13 Jan 2023 14:48:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EC317402F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673615669;
-	bh=3wCFmCHIr3lzFWrG9BDJJblhvCBYoIScRSnhMFa9avs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1673621340;
+	bh=CDa8E4c4F04aJcAdwzvUZ921L/g19UfGZC10cqlvG5I=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Xnj2SYevQ1iD5oh1FLwLypPSPIAZRId7197+FSxOy8vo00Ajh829qW6mk9hncc9Qf
-	 A+3AA9BPvggOwwtnWVgbyYheIw3elQ/qHCPWPV0kODihq2jLONM4TUTMJbLaNdm+cQ
-	 vzXYYIrc82THU6OxdDSde8cRkzhH1Khtwd9BWn46bp4278Kj5MeZsLMgZ58nR6WrBx
-	 jxgc5t2aJMVGL9hAoRcUyKdS9trJVi1CHrNTymw9hpx6twrqfUof4Wc9bZkxgIfF9s
-	 XY7Kv+CoPkF/7Y5zxHHiNZOUfcqvey3z60eT+DjTOX43k9JONdkWvaj9D4e6wAzd3C
-	 Y5KSBNFUgNVxw==
+	b=6r+Z9KLwJPV3Yv8X/tP0CuCtUjvKifpY9Db6Tik/6gbJE1AGuJIOwD1LOnrOIPzW4
+	 c8or8/aa/4LZvAs60PCKNfLf87BUA0rKXg/fGmGKSgLiENLqskdIoM/zLmJfz4wIFd
+	 bm1I3g+KO7pYWeXEe3ac0FQJhihqNL2wCOcOhcXaXrQu/SrUyEmdQ+VNhJawJiEzcK
+	 eo8mYOlUayg8m1QzqDmPmi/spVRLismXKZWQ6Ek8ZBe4XGzntVTrtBinAVsYFt7dZ3
+	 IRRcR+5ZAk6BThRFk6fs6exnzXgLXguDOIZGwJl3qThmlf6DJY25PB8Ut40Iqs3Z/O
+	 0vpDCG2X98UHA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S2DyM1nR-OTm; Fri, 13 Jan 2023 13:14:29 +0000 (UTC)
+	with ESMTP id GBuavlWAewsB; Fri, 13 Jan 2023 14:48:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7EE50414F7;
-	Fri, 13 Jan 2023 13:14:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7EE50414F7
+	by smtp2.osuosl.org (Postfix) with ESMTP id CF2F9400FD;
+	Fri, 13 Jan 2023 14:48:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CF2F9400FD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E2C051BF31C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A263D1BF291
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 14:48:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BE0DC4158B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE0DC4158B
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7C39060AF6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 14:48:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C39060AF6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jEfbUEV9eFFE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jan 2023 13:14:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XIim1ii4oQ6W for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jan 2023 14:48:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 17C704158D
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 17C704158D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:22 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="410224438"
-X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="410224438"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2023 05:14:21 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="766011526"
-X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="766011526"
-Received: from s240.igk.intel.com (HELO s048.nql.local) ([10.102.18.202])
- by fmsmga002.fm.intel.com with ESMTP; 13 Jan 2023 05:14:20 -0800
-From: Jan Sokolowski <jan.sokolowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 13 Jan 2023 14:17:17 +0100
-Message-Id: <20230113131717.186154-2-jan.sokolowski@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20230113131717.186154-1-jan.sokolowski@intel.com>
-References: <20230113131717.186154-1-jan.sokolowski@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3347760AA0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3347760AA0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 14:48:52 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="321700132"
+X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="321700132"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2023 06:48:50 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="658236652"
+X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="658236652"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2023 06:48:49 -0800
+Date: Fri, 13 Jan 2023 15:48:40 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Karen Ostrowska <karen.ostrowska@intel.com>
+Message-ID: <Y8FvSJyn8pSUmxET@localhost.localdomain>
+References: <20230112145434.770847-1-karen.ostrowska@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230112145434.770847-1-karen.ostrowska@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673615662; x=1705151662;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=sGdapHECn0TvSNqzmZH095pQLhdRpM/T0zm1lADHxoA=;
- b=Y1wicEQMH+rwxEtFkXhmFLr9YGuS1foXPunlGoo5SqKFZQG4yC8a0CSp
- CPX637PTFb8aYjCbTEmx2RjNxeqsfB4FGW61OATY4nLChm6J02MRytyhr
- ntNM1CLjagrxNRFB13W8WHHNh8i48EHPLIob5YajEYqHQuoKaGwehTiCr
- Zw9goM/4owk6pkYgWKzb5uaA8V43uty7i03fZA4MXjcBFYAhtAVYAoUCU
- YyX6DgrMTVScP00SSLcZ5N6Cusd80egpPl4RpDJxY+Z0fzUa9HpFcVZ11
- Nznr8llAKZXpzkXivlo0pKYTG2/ZIJj4YW1sNZIROMY+OjhM6XiwpAiTW
+ t=1673621332; x=1705157332;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=cW9uqxA4YH61oyODJ+N93Su/31DweGbC9z02mSYIWKE=;
+ b=kY9D+ulptg+8M38IwCEvTBe0Bodvytr97lGd0mTYWp+yg5rUzolH3vEg
+ Qt8/EQP7KQLmrw4AkIvmwNtXl6CGPzZvpGxRak6A++8tnulYyhcIUQfKS
+ 2e8u0NIdNfVu9bAIIeYNrA2CMGOix2/CwUa8HWQ0x3JWcBc2mkHr1Q5G9
+ tq/X/Tmc45bjbikS24WbwC8fC5ZYUlmGVmkUpVEbe8nI98X0cCJMbDyWX
+ nTyDBrwmVZvZAk4pWnKK9eZJaQ3X3go4z7qt0UMeCiqbWcCCwZAK8f9mG
+ dGAXqjAnTIeKMepiafWG4ivv/s2frHPhJrjGV75oU8NrMvhWneeAkL5KC
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Y1wicEQM
-Subject: [Intel-wired-lan] [PATCH net-next v3 2/2] i40e: Only MACs from host
- must be preserved
+ header.a=rsa-sha256 header.s=Intel header.b=kY9D+ulp
+Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: Fix disabling Rx VLAN
+ filtering with port VLAN enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,150 +95,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>,
- Kamil Maziarz <kamil.maziarz@intel.com>
+Cc: Brett Creeley <brett.creeley@intel.com>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+On Thu, Jan 12, 2023 at 03:54:34PM +0100, Karen Ostrowska wrote:
+> From: Brett Creeley <brett.creeley@intel.com>
+> 
+> If the user turns on the vf-true-promiscuous-support flag, then Rx VLAN
+> filtering will be disabled if the VF requests to enable promiscuous
+> mode. When the VF is in a port VLAN, this is the incorrect behavior
+> because it will allow the VF to receive traffic outside of its port VLAN
+> domain. Fortunately this only resulted in the VF(s) receiving broadcast
+> traffic outside of the VLAN domain because all of the VLAN promiscuous
+> rules are based on the port VLAN ID. Fix this by setting the
+> .disable_rx_filtering VLAN op to a no-op when a port VLAN is enabled on
+> the VF.
+> 
+> Also, make sure to make this fix for both Single VLAN Mode and Double
+> VLAN Mode enabled devices.
+> 
+> Fixes: c31af68a1b94 ("ice: Add outer_vlan_ops and VSI specific VLAN ops
+> implementations")
+> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> Signed-off-by: Karen Ostrowska <karen.ostrowska@intel.com>
+> ---
+>  .../net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
 
-Only MACs assigned from host must be preserved after VF reset/reload.
-Added vm MAC list to filter vm MAC request from others then
-vm MACs do not preserved by host during VF reset/reload.
-This list is used to filter the MAC addresses list restored after reset.
-Without this patch host automatically restore all the MAC addresses
-after VF reset/reload.
+Looks fine, thanks
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-Co-Developed-by: Kamil Maziarz <kamil.maziarz@intel.com>
-Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
-Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
----
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 64 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  9 +++
- 2 files changed, 72 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 6654a230b035..6af627db71a7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -1045,6 +1045,66 @@ static void i40e_disable_vf_mappings(struct i40e_vf *vf)
- 	i40e_flush(hw);
- }
- 
-+/**
-+ * i40e_add_vmmac_to_list
-+ * @vf: pointer to the VF info
-+ * @macaddr: pointer to the MAC address
-+ *
-+ * add MAC address into the MAC list for VM
-+ **/
-+static int i40e_add_vmmac_to_list(struct i40e_vf *vf,
-+				  const u8 *macaddr)
-+{
-+	struct i40e_vm_mac *mac_elem;
-+
-+	mac_elem = kzalloc(sizeof(*mac_elem), GFP_ATOMIC);
-+	if (!mac_elem)
-+		return -ENOMEM;
-+	ether_addr_copy(mac_elem->macaddr, macaddr);
-+	INIT_LIST_HEAD(&mac_elem->list);
-+	list_add(&mac_elem->list, &vf->vm_mac_list);
-+	return 0;
-+}
-+
-+/**
-+ * i40e_del_vmmac_from_list
-+ * @vf: pointer to the VF info
-+ * @macaddr: pointer to the MAC address
-+ *
-+ * delete MAC address from the MAC list for VM
-+ **/
-+static void i40e_del_vmmac_from_list(struct i40e_vf *vf, const u8 *macaddr)
-+{
-+	struct i40e_vm_mac *entry, *tmp;
-+
-+	list_for_each_entry_safe(entry, tmp, &vf->vm_mac_list, list) {
-+		if (ether_addr_equal(macaddr, entry->macaddr)) {
-+			list_del(&entry->list);
-+			kfree(entry);
-+			break;
-+		}
-+	}
-+}
-+
-+/**
-+ * i40e_free_vmmac_list
-+ * @vf: pointer to the VF info
-+ *
-+ * remove whole list of MAC addresses for VM
-+ **/
-+static void i40e_free_vmmac_list(struct i40e_vf *vf)
-+{
-+	struct i40e_vm_mac *entry, *tmp;
-+
-+	if (list_empty(&vf->vm_mac_list))
-+		return;
-+
-+	list_for_each_entry_safe(entry, tmp, &vf->vm_mac_list, list) {
-+		list_del(&entry->list);
-+		kfree(entry);
-+	}
-+}
-+
- /**
-  * i40e_free_vf_res
-  * @vf: pointer to the VF info
-@@ -1120,6 +1180,9 @@ static void i40e_free_vf_res(struct i40e_vf *vf)
- 		wr32(hw, reg_idx, reg);
- 		i40e_flush(hw);
- 	}
-+
-+	i40e_free_vmmac_list(vf);
-+
- 	/* reset some of the state variables keeping track of the resources */
- 	vf->num_queue_pairs = 0;
- 	clear_bit(I40E_VF_STATE_MC_PROMISC, &vf->vf_states);
-@@ -2975,7 +3038,6 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
- }
- 
- /**
-- * i40e_vc_add_mac_addr_msg
-  * i40e_vc_ether_addr_type - get type of virtchnl_ether_addr
-  * @vc_ether_addr: used to extract the type
-  **/
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index a0bd12dd0939..f0e67a0d4ecf 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -67,6 +67,12 @@ struct i40e_time_mac {
- 	u8 addr[ETH_ALEN];
- };
- 
-+/* used for MAC list 'vm_mac_list' to recognize MACs added by VM */
-+struct i40e_vm_mac {
-+	struct list_head list;
-+	u8 macaddr[ETH_ALEN];
-+};
-+
- /* VF information structure */
- struct i40e_vf {
- 	struct i40e_pf *pf;
-@@ -111,6 +117,9 @@ struct i40e_vf {
- 	bool spoofchk;
- 	u16 num_vlan;
- 
-+	/* MAC list created by VM */
-+	struct list_head vm_mac_list;
-+
- 	/* ADq related variables */
- 	bool adq_enabled; /* flag to enable adq */
- 	u8 num_tc;
--- 
-2.31.1
-
+> 
+> -- 
+> 2.31.1
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
