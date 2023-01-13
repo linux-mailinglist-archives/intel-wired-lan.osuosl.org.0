@@ -1,88 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E8B3668BE8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 06:54:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B982668C71
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 07:21:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B66BF81ECD;
-	Fri, 13 Jan 2023 05:54:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B66BF81ECD
+	by smtp4.osuosl.org (Postfix) with ESMTP id C8DC54183B;
+	Fri, 13 Jan 2023 06:21:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C8DC54183B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673589261;
-	bh=edmwDSqmyKFT2jal/RbHuNvzeyipUIdvs1wFoN157do=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1673590883;
+	bh=a8ePNdj/lxYaIaKhQsr4s0WtZY/kB0cXV5anfFT7/6Y=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=6QI7g6/eX9y2PHlxWBDHlsETBdgsKkI4jXUVhrkSd/i2tfxmcT9xkAaAhfhAFk0NG
-	 e6B946cj5wcZTCe1qL6E1hezmaM7wpp4CBHnaOrZ5mOBoVUUuA4tuQFDr7KUKh1NDy
-	 RxabuOE2NfhdkhOoYCtS7lakOWfFyWyU/9jeJ5F4u6h7xZU7vDa+VR8+/zN5LlU1um
-	 MPjxZfdgUjf9Eb5idcY7fbFL7dCbWsZ6/cZkhsAKMJPPFKRjO0723ToIYWojOUMEfD
-	 km9N/aeWhtfTau24ddV40HL2TAU30U1Tq+6J4ttBnPSV4YgOxFnUfec5xISbswWZfV
-	 TWN5vhKHRh9cA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8Gva54NvYbmp; Fri, 13 Jan 2023 05:54:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AB327813E4;
-	Fri, 13 Jan 2023 05:54:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB327813E4
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AE0671BF28F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 05:54:15 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7877E4098C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 05:54:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7877E4098C
+	b=Gv0UcgRP6SuITZqzX1sY3EzwbvFEgG7dNl3aFOvdfV7jMSnBLwNH9LAlRTenlFMB9
+	 ltj6nd6ajw0z8onnWMOolsP4w3W3c57HfxNSJuW2pOyHBRJbrmWS5sF7Td0TBIO/Wq
+	 KHHFhkHmOnRIgC5A99OchXYxHT/IkPRS7YoKDK06CiAiY1yM14RqkB/2AnQiyygJXw
+	 LePifPwjcxG7akhMc+Om4q8rh0GRuiQn51Sc2jfgr/T0uIJVx2D01GG7TR/Da2MfH+
+	 yPN5qCF+cYdwrhbKneeu4Yy0a3QiQzAPzqHUZGMKGvBaVi3jdWICnj/Fqgky9m+kEz
+	 o/t5KAPlSMHgw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cv3eXUnDTXWQ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jan 2023 05:54:14 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FHLyGyKa42Ly; Fri, 13 Jan 2023 06:21:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 76297417B9;
+	Fri, 13 Jan 2023 06:21:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76297417B9
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D178C1BF83B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 06:21:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id A95AB60F35
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 06:21:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A95AB60F35
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fqi6RLWfRwLL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jan 2023 06:21:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E277408EB
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3E277408EB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 05:54:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="323980771"
-X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="323980771"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2023 21:54:12 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE63660F1C
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BE63660F1C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 06:21:16 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="321624032"
+X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="321624032"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2023 22:21:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="688630268"
-X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="688630268"
-Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
- by orsmga008.jf.intel.com with ESMTP; 12 Jan 2023 21:54:11 -0800
-Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pGD0w-000AnG-0l;
- Fri, 13 Jan 2023 05:54:06 +0000
-Date: Fri, 13 Jan 2023 13:53:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63c0f1df.TasmV4iUFJc+QZ7w%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="986881407"
+X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="986881407"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by fmsmga005.fm.intel.com with ESMTP; 12 Jan 2023 22:21:09 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 13 Jan 2023 07:05:19 +0100
+Message-Id: <20230113060519.194217-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673589254; x=1705125254;
- h=date:from:to:subject:message-id:mime-version:
+ t=1673590876; x=1705126876;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=lLjcP2UtZhDW9HnstF3YMbi2+VR8CuZf6jtWcPmjRuk=;
- b=b5IkvI8f8lChBiUpTKK5s/DL7R+HsEry5d/VDvmzyCLj4w0aVzvsSPwn
- y7SLKDUOtj8zhPugdV4SdN+3KNyxpmyTkLKhrfiEZ/ksIsriEjBZs6oxv
- OJ2eSJlVoPLiswX8/o4jrdyqlHi6Tp9iuQBvtE9+++kyCG38OevG7Bijb
- mFGgW8Vb2XgbWk/k3N7O0Bi/X1sH2PPxztZfv1STXxkbkUg+bJFCHp//x
- /hawnrVgZQqgHFnTqvFBzfQuF2LRKARf7ww8NWsrttm9sCE9RpgFA727S
- ebbJoyNCaiw4agdGkbtsIWL+DCSofQcO1IMEK+SkylC9HxBLjFz4I+sOE
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=RoAfhN9z2YmemrLntCyV3keOPUJqieA9r91HpOuKtjo=;
+ b=QtWjqYbo4DpVhASML3sZXSdofBVqQ/piJdcyUJ0eo/J07VO/E0QrrAmO
+ 0A38qWmrvzezIQRPO35j/91dgbtGlJC5GfQLfHs3tP1tB2A+rr1XxPV4r
+ BEZKQqn8q99mVwYF0R25K9md3ktTJtSKkpb3G+XmmU2d7JqKcVTOpXOAd
+ 6Og4YU4bsSc5dYPjHbWeiEcPJgEIxN5U4/JBTwQPBePK5667sFRtXZLxX
+ rcEHE37DWGiVfZojkdqYn5AqK6/NAnGiC4w2W8r4tnvuLVKZeOuVSgr/F
+ pzNB5V5iEC+T++9E9tu877PIU08tb5H7NPVeX7wUc58ewGzDdPguKSIEe
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=b5IkvI8f
-Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
- 55b98837e37da723c8b73ec0b48fe68c682b57d7
+ header.a=rsa-sha256 header.s=Intel header.b=QtWjqYbo
+Subject: [Intel-wired-lan] [PATCH net v2] ice: double lock on adev_mutex
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,118 +96,77 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
-branch HEAD: 55b98837e37da723c8b73ec0b48fe68c682b57d7  Merge branch 'vsock-update-tools-and-error-handling'
+Call trace:
+ice_set_channel() --> mutex_lock(adev_mutex)
+ice_vsi_recfg_qs()
+ice_pf_dcb_recfg()
+ice_send_event_to_aux() --> another mutex_lock(adev_mutex)
 
-elapsed time: 939m
+This call trace is reached when user try to change queues amount using
+ethtool:
+$ ethtool -L enp24s0f0np0 tx 64 rx 32
 
-configs tested: 94
-configs skipped: 4
+Avoid double lock by unlocking after checking if RDMA is active.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Fixes: a49a2713f00e ("ice: Prevent set_channel from changing queues while RDMA active")
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Reviewed-by: Dave Ertman <david.m.ertman@intel.com>
+---
+v1 --> v2:
+ * As mutex_unlock happens before other error handling there is no need
+ to have ret variable, remove it
 
-gcc tested configs:
-x86_64                            allnoconfig
-ia64                             allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-arm                           h3600_defconfig
-arm                           sama5_defconfig
-arc                        nsimosci_defconfig
-sh                      rts7751r2d1_defconfig
-sh                          landisk_defconfig
-sh                            titan_defconfig
-arc                  randconfig-r043-20230112
-s390                 randconfig-r044-20230112
-riscv                randconfig-r042-20230112
-s390                                defconfig
-s390                             allmodconfig
-arc                                 defconfig
-alpha                               defconfig
-s390                             allyesconfig
-arm                      integrator_defconfig
-sh                           se7721_defconfig
-m68k                          atari_defconfig
-arc                          axs103_defconfig
-m68k                       bvme6000_defconfig
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-syz
-x86_64                           rhel-8.3-bpf
-x86_64                         rhel-8.3-kunit
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
-i386                             allyesconfig
-i386                                defconfig
-sparc                               defconfig
-xtensa                           allyesconfig
-csky                                defconfig
-sparc                            allyesconfig
-x86_64                                  kexec
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-x86_64                        randconfig-a011
-x86_64                        randconfig-a006
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-i386                          randconfig-a003
-i386                          randconfig-a005
-i386                          randconfig-a001
-powerpc                      mgcoge_defconfig
-sh                          urquell_defconfig
-sh                           se7712_defconfig
-nios2                            allyesconfig
-nios2                               defconfig
-parisc                              defconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-mips                     decstation_defconfig
-powerpc                        cell_defconfig
-sh                           se7705_defconfig
-powerpc                 mpc834x_mds_defconfig
-arm                           viper_defconfig
+To be squash with:
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20221219181803.1060129-1-david.m.ertman@intel.com/
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
-clang tested configs:
-arm                  randconfig-r046-20230112
-hexagon              randconfig-r041-20230112
-hexagon              randconfig-r045-20230112
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-powerpc                          g5_defconfig
-mips                          malta_defconfig
-powerpc                 mpc8272_ads_defconfig
-powerpc               mpc834x_itxgp_defconfig
-mips                      maltaaprp_defconfig
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-k001
-x86_64                          rhel-8.3-rust
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 263d59929602..936f0e0c553d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3662,7 +3662,6 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 	struct ice_pf *pf = vsi->back;
+ 	int new_rx = 0, new_tx = 0;
+ 	u32 curr_combined;
+-	int ret = 0;
+ 
+ 	/* do not support changing channels in Safe Mode */
+ 	if (ice_is_safe_mode(pf)) {
+@@ -3729,23 +3728,20 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 	mutex_lock(&pf->adev_mutex);
+ 	if (pf->adev && pf->adev->dev.driver) {
+ 		netdev_err(dev, "Cannot change channels when RDMA is active\n");
+-		ret = -EINVAL;
+-		goto adev_unlock;
++		mutex_unlock(&pf->adev_mutex);
++		return -EINVAL;
+ 	}
++	mutex_unlock(&pf->adev_mutex);
+ 
+ 	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
+ 
+-	if (!netif_is_rxfh_configured(dev)) {
+-		ret = ice_vsi_set_dflt_rss_lut(vsi, new_rx);
+-		goto adev_unlock;
+-	}
++	if (!netif_is_rxfh_configured(dev))
++		return ice_vsi_set_dflt_rss_lut(vsi, new_rx);
+ 
+ 	/* Update rss_size due to change in Rx queues */
+ 	vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
+ 
+-adev_unlock:
+-	mutex_unlock(&pf->adev_mutex);
+-	return ret;
++	return 0;
+ }
+ 
+ /**
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.36.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
