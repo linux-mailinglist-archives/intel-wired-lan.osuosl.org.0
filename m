@@ -1,178 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 177FE6694F1
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 12:01:07 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDBBB669826
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 14:14:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 497888212A;
-	Fri, 13 Jan 2023 11:01:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 497888212A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1AEAA60B91;
+	Fri, 13 Jan 2023 13:14:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1AEAA60B91
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673607665;
-	bh=GFG+b/p74eaf0vh887/tkyszSUjwXnQo/LcBeEUzhVY=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=L6DPIKHN6aCkP/tdeW5DutC/H5VVuhdvHD5m5hGfo5v4EzRkDGMUsDNBVsyAyYRP4
-	 C4LJtnVprafrBU1KTcNHjq0qIx8vMcL2EoEQWOOo4ev8jHqx6LxVf4rFRaEV5W7jre
-	 bxndLEfgxKZUX8WBQ6YW4AXWKrpq/RPs8r/Xlh/G1QwSaeJLKfK3s26Hk+aXEIUeR0
-	 WPAwynFA7ZXj/DxsDEnPbAAV+zxMsehrA7LeBjOXdh5Qq0zYwbaryjqmCpRDxhRGjA
-	 +L96rbpFlngr+X2kIuUyRHETov5I8VGL/Q8NTYhrZlHpLQHTZiZbsEXCSLcikYmZDT
-	 e9CpN+kzt0S/A==
+	s=default; t=1673615666;
+	bh=V1v3Ph1Pg7sjhR1po8hR9vGNSA1w0aQf4E23oqDX72w=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=zYEVNvMOfh3cPM7c6Rh3XVFVJlO6JZgkaiu4DH+52lXmOtsjIBdP/ysq/MkxPgHpX
+	 jypIrIx8n0tNShVHIUptfnHzcvRvfutLIilkhlZcgmRSQnq/vrkPgpbFUGU5uIvWEw
+	 etGKc5Yqm7Yo4g2BaAMkPgHnYkB4NepsS8HdHjpQ/uRzNmU92YARQnrR4sCTCU5hYu
+	 MHCujhHxDmA8Le0km6f2yD1uPNqzjgqVtFC8s8LgVK+MIY3lbO7cYnUE6yFd4Vp+Bj
+	 Thy4PaYO081wWEubxrRJIpyXANzM4yb9RUvjgrwhJLO2V5Bbl1+UjMYAc+D+1jf49a
+	 QwL6pMTsJC6vA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZO0psGb45lwA; Fri, 13 Jan 2023 11:01:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VGOZsZFaLRm5; Fri, 13 Jan 2023 13:14:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4942C8209A;
-	Fri, 13 Jan 2023 11:01:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4942C8209A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2E08260ABE;
+	Fri, 13 Jan 2023 13:14:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2E08260ABE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CA6B81BF32C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 11:00:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2772D1BF31C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B09A08207F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 11:00:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B09A08207F
+ by smtp2.osuosl.org (Postfix) with ESMTP id EC52E4158A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EC52E4158A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8TC7cQHlxcVc for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jan 2023 11:00:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yZCEiXKaSHG0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jan 2023 13:14:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C3B88817A9
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C3B88817A9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 11:00:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="311822027"
-X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="311822027"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2023 03:00:56 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5842F414E6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5842F414E6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 13:14:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="410224426"
+X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="410224426"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2023 05:14:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="660176804"
-X-IronPort-AV: E=Sophos;i="5.97,213,1669104000"; d="scan'208";a="660176804"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga007.fm.intel.com with ESMTP; 13 Jan 2023 03:00:55 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 13 Jan 2023 03:00:55 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Fri, 13 Jan 2023 03:00:55 -0800
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.174)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Fri, 13 Jan 2023 03:00:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YmZH8LjKvJM99f1A1wbEVgHK57xqNJx6RagkYqSwZLr3EE9ywmZf1kCWFBt0SM5A0VIRJEnRNQTtybfuLwoqdiM7Rha6yHG9ezDVxjQfajS51JxVEnCyysv3aFU9l06DnpYPdVhH8qwuuLvDtTKp/FMB6yJlqya2+JSAK6emTr//d9/LyqOPj78QX5f6tNYasEot++O7UKac6cT1Sw9vURqQM+nkTvNb+ucHwXM/vx4o4WS7qnTQqukoHDZ8uGzXWth13F6EapnrQZFuP7KoaxFAKm+IXuDtrkd9HfCDc3hQ++Wkl6pdIQFUAoixE4XUkb7Mxl4A63wLgSuLIY1O4A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sLeBgGc/DqyAItsH4TLfkOqgPzg5r3pecApGcHw4CLE=;
- b=S8GFmdsa0bDpLGMJtVsKKV/dJ5bnqOm+yAvIW3HqQgRE/0dNnCX0kU0PkRPpRQy0nyYrIco5+qfEhLAzg0GiLX0nOwd153Lop0FMNUftR/NUwk2mW/BY/XBovXHwHGBi+S4ImoBL5esqOHJIi2+d1VEhmwwPgimmvt4O/OuwWg85N9JgLWKyUsxIi27kvKj6kv1fQIx3MgtD6ZnbYPa1wsgMBqP3NoxmXd+C9j7D7Xdu1v7YzjF9tImWB8+FRlZZai5Pee/ihn7FPnLudp+wCyGAHsrN64T/ZJ0y9TaZvHhUQPLqvKeAGuchlISSKaZxf0XdsUISM7RCreyP2RgesA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by MW4PR11MB7080.namprd11.prod.outlook.com (2603:10b6:303:21a::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Fri, 13 Jan
- 2023 11:00:52 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44%4]) with mapi id 15.20.5986.019; Fri, 13 Jan 2023
- 11:00:52 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Mikailenko, Benjamin" <benjamin.mikailenko@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Change
- ice_vsi_realloc_stat_arrays() to void
-Thread-Index: AQHZITzOAl0yyHI9oEi1g88ohGO+zq6cOfsQ
-Date: Fri, 13 Jan 2023 11:00:52 +0000
-Message-ID: <BYAPR11MB3367BC516AF9A23F471DAC8FFCC29@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20230105193311.79528-1-anthony.l.nguyen@intel.com>
-In-Reply-To: <20230105193311.79528-1-anthony.l.nguyen@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|MW4PR11MB7080:EE_
-x-ms-office365-filtering-correlation-id: 05cfc92f-1241-4230-94b2-08daf5556fd7
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 1MU2T3+067uS2sZQmOZsc9Fim5u2lf/FmRMkwpyGaIjZ6dEZo0IYGIAKnmiU1HpZJWE15tYyg+dgdfQZzJPe+k1V0FZqvfCa2HGumZeBMLR3NVFhPJ/QBD0mh62CoHLqHiWK0kGbgxAmV0hS6dP7L1qCpKL9am6pZywge0u+VQntS4tYhvVsH89nxv29hTKoZrSSE6E3iIi31fX9lYctAlw+onpX/b+eKSkuiBSkEWF9PyD5y7NPLMNgcBnz4bEUNglPYSfCnEv6zi3/V/GAOw9ughwU9lGxJzDI/nHOaoi+Zi/AYaqISsaTVV4V8eC1RQYKCt7LmbqRsoDOqzkz+2WeHg9LZRyncxCvIaCzwWta2543bmGzqARD/26jFHldjDNn0Z4cg5XK/DQSKGmW9JaXp4ZAAAW26qBFbEhb9Gyk7sVBSEMafxAjOvfu2mIgZ81f/OsmRUGhIr4M29MN6nM3AOBqkOMy3iP/rjjZIzqKrg1EUE7ONEkklBkOr/CFdOCKHS9TAsvI4A9Qv3oHBIAkWBzIEptP29lfXS06ACnKoL98Q2dr2m4jE1O0f+1UdDOW4yY536wyhIi2i7znrr03GoxJ6sNLEwW3pA60WdmLBEOmEXfAL1nthSareESB5x0QI0dKHkD1DUH34l5Ix9zzDbBIfNSB3/UGgf4nI31D4QP01Rp3H/AR24AIu1fn99ykyhenBND+oakvKcSqWw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(376002)(346002)(136003)(39860400002)(396003)(366004)(451199015)(52536014)(83380400001)(8936002)(6506007)(41300700001)(107886003)(7696005)(53546011)(71200400001)(33656002)(66556008)(66476007)(8676002)(76116006)(6636002)(64756008)(66446008)(4326008)(66946007)(110136005)(86362001)(316002)(186003)(9686003)(26005)(82960400001)(38070700005)(478600001)(4744005)(5660300002)(38100700002)(122000001)(2906002)(55016003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Yl8xfakb6SLnpwie0AWNcMSMX9uuWL3XShUQIVzV0oLdzw7Ajovw4YX8THcf?=
- =?us-ascii?Q?EnBv6V6nkEb0BPFc6dQLlthNx7DX5WhXN5nlC0ybhBQE6RhEwkcLURIftoKr?=
- =?us-ascii?Q?fnSyfSaje4kj3nrhrywMr/mAwkB+UZyFpKCWmxUxMshv8EbemjbRjU4TKGz+?=
- =?us-ascii?Q?/3Dd2FAcVS1tfT0VqKjWqymko96MSbPJXJguU3GM72PTmn1BW/YQUx785mXW?=
- =?us-ascii?Q?W4jDysJztQpD4zx/JTHqpT0mEntrkuKtnxqhxJrMbLypcYx4ubdaD1XOTZ1d?=
- =?us-ascii?Q?vEYo+SOYwBtlXpbmJFsOgYFNwA5tHwmfxyXh55uHvzGxC147eL/Th8S5JP46?=
- =?us-ascii?Q?VC2+6DxhSOri3inLsBnLOLxTFP6bnRkHdXvtVmDnuMy1ItQjFjwntSCU7tVr?=
- =?us-ascii?Q?M3O8shBm8wOiz2x4Dl5od7vx5qBi0o/Ac0w0DrlED8sJw4f7ien3KTSkeNv5?=
- =?us-ascii?Q?q949zLS/93x7qpodvPWyLn2LfOm7m6k0AK9hRVlkKNDYiRFgG2XV7YMhdu5x?=
- =?us-ascii?Q?FPCat8MgCMoAE5c/W82DftrcpXTO4JUQV55fviMZamjHU+DCiud9lOuveYW0?=
- =?us-ascii?Q?7BwK6+uQV/p4od6hn/DRNB9WlTGF1c4Z8+Pkgp234c4VxBktlgrxtskSicn2?=
- =?us-ascii?Q?A/V/E/7OUb6l5lViupMRCE0xR0l+UJqvLv3vRbyvtFJ7O4qj4NOuX3y1Kkob?=
- =?us-ascii?Q?nw4MEN7OWobXdWD3lmJyYZ6fiQDnkpeT5DdLHovYIPSPRqh5T6KPBLLO0M03?=
- =?us-ascii?Q?XeSpzw4H+i9PW2vn2Ii0fditm7fVF/0UjUqw35LC/6tnIuYauGA3ux8OSJWb?=
- =?us-ascii?Q?+gMNRXTyOD5+UFs/AmXqgxYEfGU5Y4kr2gmxUeA/e7iZIxlrX08fdAYL70Gc?=
- =?us-ascii?Q?OcIdZBDjaKydvCfhZ33SyP/ENfarBxcNhq+kpMEXX/967dqpimHZ9WjunQHa?=
- =?us-ascii?Q?093J0bw5mX3LnU9GQU0PRQ+VUgy1w9apKF42sDj38Lo2izi/UEnpDsewuD3O?=
- =?us-ascii?Q?TlQH7v7qhPmiOYFCIZiQO5/iZ8iSTazs8Qvytj02THu9Tzu9B/8X5hNlRroj?=
- =?us-ascii?Q?aCbTZB3FZ4JV5EDvo55RHE9hvbbpLBaQdt4iwXGhsw9zxSeWCFAkxbWZAJZp?=
- =?us-ascii?Q?aDYe1WzfCsCCiwBNAN8GI61rsGEgHnB2QfBw8fh9Spx6D2ZZtFpPnmVSEoze?=
- =?us-ascii?Q?La45AdMAObVDNdWll3T959IM8awPnV1772lCJezIlp2v92SWbEPQZeqU9cMv?=
- =?us-ascii?Q?3tTAT6nbtFpMvAcFKXYAljvIiGb0K02XJD0rAdZbMLJkj7E92TUQEtZJ+MjE?=
- =?us-ascii?Q?EYrlFhhjid9ThUFOpunW4NnGZKXK0COlbxtD3bS9VZIIiaRDxEm3jZJ8qTSJ?=
- =?us-ascii?Q?t9PtCspEmQxKTg0dTzcq9GC6xidVd3PyV1gUpvi1WbsHcbMWg0KIxCCzbdNz?=
- =?us-ascii?Q?yg2ZoQET8DxYUJ6KN009bPH9MQs5RFgLvDfqGdKckCOtX2/L1FQ+XttVdpEV?=
- =?us-ascii?Q?uwCqSrupC3Uo3Zj0fYSbnQVFC+Z7wWAlJo0QB5dzjhnxew+aFc0D98mu+wtf?=
- =?us-ascii?Q?2rp6BaCYz35Q6+qwegVXiUXcaTR+5NUpIeIGVhHZ?=
+X-IronPort-AV: E=McAfee;i="6500,9779,10588"; a="766011521"
+X-IronPort-AV: E=Sophos;i="5.97,214,1669104000"; d="scan'208";a="766011521"
+Received: from s240.igk.intel.com (HELO s048.nql.local) ([10.102.18.202])
+ by fmsmga002.fm.intel.com with ESMTP; 13 Jan 2023 05:14:15 -0800
+From: Jan Sokolowski <jan.sokolowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 13 Jan 2023 14:17:16 +0100
+Message-Id: <20230113131717.186154-1-jan.sokolowski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05cfc92f-1241-4230-94b2-08daf5556fd7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jan 2023 11:00:52.3458 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: i4J1nqZ/duTOFNfd0t7l9xZ6YPie9EGrQYkbmI66ruo45dwRq8tyZ00HH8PA4BEVu3hpvU+RIvr1NRGnawzaDg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB7080
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673607657; x=1705143657;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=eWakAyoLa9SWOfUanVY9OfHuifLb3yyvkqgohd7vOGE=;
- b=dfqkrjlWaZq7ZoPLvFxM17f35Xu/U45ufqbjHQi4Tdd3BzI/ZstyB851
- 2fcMGvV7pLvXznutHZ7IQmDOnNZBWXTks/+5oo5xkW8zee8tY7wJw/d5b
- Ieqd5c4FHtthdjhEnpq1aV3WZn39sLGW2rfPgiazm+52PeVubdjGSf9Wx
- 2VVJdR8cT9DfRMKVvy8cTGvU5juTuVSeR0Wck4VUycS5SkJ3JNcwWImSb
- QIkMMx0kMG2+YYH0XkebRGdg5uijzYXkl+tAzZybVSUFYtPvCtE+8BQt9
- ffhXT7FRi/uWoeWeG+pGNSJPyJmVANpFXADq5E7srd7Xo9S2EOnGsbEso
+ t=1673615657; x=1705151657;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ROIi/7UUOWQMu0PxaZiQSdV6lwrQ2b54Bli3ZDKqLto=;
+ b=ggfY0FbF53xXXWzHSw7s+bFuzJKTgg3QSx0E2UhZs4G9xkHrdfLBzxW5
+ RFB9ctcZjpRGH3sFo9Y7FvmpzFP/9cd08wweaIj+2pKLN0Up3/iB+akV2
+ CFQIhkJGyOXoEROnUb4uHp5+pwmT249OEV5Vvo+sSZeXuMncMN6qp5a1a
+ N8grVOsEmytF21jAZbb76dp9AI3XZd+QGEMO0xry4P0IoOZH8hWG68o9I
+ LuKDkZIWVeASi9BBsqeMIOZQOzDBcvXqVd7YVF8HRlWsyD3KKYolCr4Ok
+ akqceSXGKWsDUrbCBjVxaQwAjgKmE0JsBnPFMzxlJoyQIP1ewRCvdBUxV
  g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dfqkrjlW
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: Change
- ice_vsi_realloc_stat_arrays() to void
+ header.a=rsa-sha256 header.s=Intel header.b=ggfY0FbF
+Subject: [Intel-wired-lan] [PATCH net-next v3 1/2] i40e: Add ability to
+ change VFs default MAC address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,43 +92,436 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Kamil Maziarz <kamil.maziarz@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 
+Currently there is no way for a VF driver to specify if it wants to
+change it's hardware address. New bits are being added to virtchnl.h
+in struct virtchnl_ether_addr that allow the VF to correctly
+communicate this information. However, legacy VF drivers that don't
+support the new virtchnl.h bits still need to be supported. Make a
+best effort attempt at saving the VF's primary/device address in the
+legacy case and depend on the VIRTCHNL_ETHER_ADDR_PRIMARY type for
+the new case.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Friday, January 6, 2023 1:03 AM
-> To: intel-wired-lan@lists.osuosl.org; Mikailenko, Benjamin
-> <benjamin.mikailenko@intel.com>
-> Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next] ice: Change
-> ice_vsi_realloc_stat_arrays() to void
-> 
-> smatch reports:
-> 
-> smatch warnings:
-> drivers/net/ethernet/intel/ice/ice_lib.c:3612 ice_vsi_rebuild() warn: missing
-> error code 'ret'
-> 
-> If an error is encountered for ice_vsi_realloc_stat_arrays(), ret is not
-> assigned an error value so the goto error path would return success. The
-> function, however, only returns 0 so an error will never be reported; due to
-> this, change the function to return void.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_lib.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
-> 
+Legacy case - If a unicast MAC is being added and the
+default_lan_addr.addr is empty, then populate it. This assumes that the
+address is the VF's hardware address. If unicast MAC is being deleted
+and it matches the default_lan_addr.addr save the time when it happened
+and replace it with the last MAC address on the MAC filter list.
+If a unicast MAC is being added and the default_lan_addr.addr is not
+empty,
+then check if default MAC address was deleted shortly before adding
+if yes then update the default_lan_addr.addr.
+This is done because we cannot guarantee the order of
+VIRTCHNL_OP_ADD_ETH_ADDR and VIRTCHNL_OP_DEL_ETH_ADDR.
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+New case - If a unicast MAC is being added and it's specified as
+VIRTCHNL_ETHER_ADDR_PRIMARY, then replace the current
+default_lan_addr.addr. If a unicast MAC is being deleted and it's type
+is specified as VIRTCHNL_ETHER_ADDR_PRIMARY, then zero the
+hw_lan_addr.addr.
+
+Untrusted VFs - Only allow above legacy/new changes to their
+hardware address if the PF has not set it administratively via
+iproute2.
+
+Trusted VFs - Always allow above legacy/new changes to their
+hardware address even if the PF has administratively set it via
+iproute2.
+
+Co-Developed-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+---
+v2: previous version had been reported to not build under
+some kernel configuration.
+v3: fixed minor kerneldoc misspelling
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 264 ++++++++++++++----
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   9 +
+ 2 files changed, 217 insertions(+), 56 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index c2141f0c9adb..6654a230b035 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2976,26 +2976,112 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 
+ /**
+  * i40e_vc_add_mac_addr_msg
++ * i40e_vc_ether_addr_type - get type of virtchnl_ether_addr
++ * @vc_ether_addr: used to extract the type
++ **/
++static inline u8
++i40e_vc_ether_addr_type(struct virtchnl_ether_addr *vc_ether_addr)
++{
++	return vc_ether_addr->type & VIRTCHNL_ETHER_ADDR_TYPE_MASK;
++}
++
++/**
++ * i40e_is_vc_addr_legacy
++ * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
++ *
++ * check if the MAC address is from an older VF
++ **/
++static inline bool
++i40e_is_vc_addr_legacy(struct virtchnl_ether_addr __maybe_unused *vc_ether_addr)
++{
++	return i40e_vc_ether_addr_type(vc_ether_addr) ==
++		VIRTCHNL_ETHER_ADDR_LEGACY;
++}
++
++/**
++ * i40e_is_vc_addr_primary
++ * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
++ *
++ * check if the MAC address is the VF's primary MAC
++ * This function should only be called when the MAC address in
++ * virtchnl_ether_addr is a valid unicast MAC
++ **/
++static inline bool
++i40e_is_vc_addr_primary(struct virtchnl_ether_addr
++			__maybe_unused *vc_ether_addr)
++{
++	return i40e_vc_ether_addr_type(vc_ether_addr) ==
++		VIRTCHNL_ETHER_ADDR_PRIMARY;
++}
++
++/**
++ * i40e_is_legacy_umac_expired
++ * @time_last_added_umac: time since the last delete of VFs default MAC
++ *
++ * check if last added legacy unicast MAC expired
++ **/
++static inline bool
++i40e_is_legacy_umac_expired(unsigned long time_last_added_umac)
++{
++#define I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME  msecs_to_jiffies(3000)
++	return time_is_before_jiffies(time_last_added_umac +
++		I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME);
++}
++
++/**
++ * i40e_update_vf_mac_addr
++ * @vf: VF to update
++ * @vc_ether_addr: structure from VIRTCHNL with MAC to add
++ *
++ * update the VF's cached hardware MAC if allowed
++ **/
++static void
++i40e_update_vf_mac_addr(struct i40e_vf *vf,
++			struct virtchnl_ether_addr *vc_ether_addr)
++{
++	u8 *mac_addr = vc_ether_addr->addr;
++
++	if (!is_valid_ether_addr(mac_addr))
++		return;
++
++	/* if request to add MAC filter is a primary request
++	 * update its default MAC address with the requested one
++	 *
++	 * if it is a legacy request then check if current default is empty
++	 * if so update the default MAC
++	 * otherwise save it in case it is followed by a delete request
++	 * meaning VF wants to change its default MAC which will be updated
++	 * in the delete path
++	 */
++	if (i40e_is_vc_addr_primary(vc_ether_addr)) {
++		ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
++	} else {
++		if (is_zero_ether_addr(vf->default_lan_addr.addr)) {
++			ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
++		} else {
++			ether_addr_copy(vf->legacy_last_added_umac.addr,
++					mac_addr);
++			vf->legacy_last_added_umac.time_modified = jiffies;
++		}
++	}
++}
++
++/**
++ * i40e_add_vf_mac_filters
+  * @vf: pointer to the VF info
+- * @msg: pointer to the msg buffer
++ * @is_quiet: set true for printing msg without opcode info, false otherwise
++ * @al: pointer to the address list of MACs to add
+  *
+  * add guest mac address filter
+  **/
+-static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++static int i40e_add_vf_mac_filters(struct i40e_vf *vf, bool *is_quiet,
++				   struct virtchnl_ether_addr_list *al)
+ {
+-	struct virtchnl_ether_addr_list *al =
+-	    (struct virtchnl_ether_addr_list *)msg;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+-	i40e_status ret = 0;
++	int ret = 0;
+ 	int i;
+ 
+-	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+-	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+-		ret = I40E_ERR_PARAM;
+-		goto error_param;
+-	}
+-
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+ 	/* Lock once, because all function inside for loop accesses VSI's
+@@ -3016,20 +3102,23 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 		f = i40e_find_mac(vsi, al->list[i].addr);
+ 		if (!f) {
+ 			f = i40e_add_mac_filter(vsi, al->list[i].addr);
+-
+ 			if (!f) {
+ 				dev_err(&pf->pdev->dev,
+ 					"Unable to add MAC filter %pM for VF %d\n",
+ 					al->list[i].addr, vf->vf_id);
+-				ret = I40E_ERR_PARAM;
++				ret = -EINVAL;
++				spin_unlock_bh(&vsi->mac_filter_hash_lock);
++				goto error_param;
++			}
++
++			ret = i40e_add_vmmac_to_list(vf, al->list[i].addr);
++			if (ret) {
+ 				spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 				goto error_param;
+ 			}
+-			if (is_valid_ether_addr(al->list[i].addr) &&
+-			    is_zero_ether_addr(vf->default_lan_addr.addr))
+-				ether_addr_copy(vf->default_lan_addr.addr,
+-						al->list[i].addr);
+ 		}
++
++		i40e_update_vf_mac_addr(vf, &al->list[i]);
+ 	}
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 
+@@ -3038,82 +3127,145 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	if (ret)
+ 		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+ 			vf->vf_id, ret);
+-
+ error_param:
+-	/* send the response to the VF */
+-	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+-				      ret, NULL, 0);
++	return ret;
+ }
+ 
+ /**
+- * i40e_vc_del_mac_addr_msg
++ * i40e_vc_add_mac_addr_msg
+  * @vf: pointer to the VF info
+  * @msg: pointer to the msg buffer
+  *
+- * remove guest mac address filter
++ * add guest mac address filter
+  **/
+-static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_ether_addr_list *al =
+ 	    (struct virtchnl_ether_addr_list *)msg;
+-	bool was_unimac_deleted = false;
+-	struct i40e_pf *pf = vf->pf;
+-	struct i40e_vsi *vsi = NULL;
+-	i40e_status ret = 0;
+-	int i;
++	bool is_quiet = false;
++	int ret = 0;
+ 
+ 	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+ 	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+-		ret = I40E_ERR_PARAM;
++		ret = -EINVAL;
+ 		goto error_param;
+ 	}
+ 
+-	for (i = 0; i < al->num_elements; i++) {
+-		if (is_broadcast_ether_addr(al->list[i].addr) ||
+-		    is_zero_ether_addr(al->list[i].addr)) {
+-			dev_err(&pf->pdev->dev, "Invalid MAC addr %pM for VF %d\n",
+-				al->list[i].addr, vf->vf_id);
+-			ret = I40E_ERR_INVALID_MAC_ADDR;
+-			goto error_param;
++	ret = i40e_add_vf_mac_filters(vf, &is_quiet, al);
++
++error_param:
++	/* send the response to the VF */
++	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
++					 ret, NULL, 0);
++}
++
++/**
++ * i40e_vf_clear_default_mac_addr
++ * @vf: pointer to the VF info
++ * @is_legacy_unimac: is request to delete a legacy request
++ *
++ * clear VFs default MAC address
++ **/
++static void i40e_vf_clear_default_mac_addr(struct i40e_vf *vf,
++					   bool is_legacy_unimac)
++{
++	eth_zero_addr(vf->default_lan_addr.addr);
++
++	if (is_legacy_unimac) {
++		unsigned long time_added =
++			vf->legacy_last_added_umac.time_modified;
++
++		if (!i40e_is_legacy_umac_expired(time_added)) {
++			ether_addr_copy(vf->default_lan_addr.addr,
++					vf->legacy_last_added_umac.addr);
+ 		}
+-		if (ether_addr_equal(al->list[i].addr, vf->default_lan_addr.addr))
+-			was_unimac_deleted = true;
+ 	}
++}
++
++/**
++ * i40e_del_vf_mac_filters
++ * @vf: pointer to the VF info
++ * @al: pointer to the address list of MACs to delete
++ *
++ * remove guest mac address filters
++ **/
++static int i40e_del_vf_mac_filters(struct i40e_vf *vf,
++				   struct virtchnl_ether_addr_list *al)
++{
++	bool was_unimac_deleted = false;
++	bool is_legacy_unimac = false;
++	struct i40e_pf *pf = vf->pf;
++	struct i40e_vsi *vsi = NULL;
++	int ret = 0;
++	int i;
++
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+ 	spin_lock_bh(&vsi->mac_filter_hash_lock);
+ 	/* delete addresses from the list */
+-	for (i = 0; i < al->num_elements; i++)
+-		if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+-			ret = I40E_ERR_INVALID_MAC_ADDR;
++	for (i = 0; i < al->num_elements; i++) {
++		if (ether_addr_equal(al->list[i].addr,
++				     vf->default_lan_addr.addr)) {
++			if (!(vf->trusted || !vf->pf_set_mac)) {
++				dev_err(&pf->pdev->dev,
++					"VF attempting to override administratively set MAC address\n");
++				ret = -EPERM;
++				spin_unlock_bh(&vsi->mac_filter_hash_lock);
++				goto error_param;
++			} else {
++				was_unimac_deleted = true;
++				is_legacy_unimac =
++					i40e_is_vc_addr_legacy(&al->list[i]);
++			}
++		}
++
++		if (is_broadcast_ether_addr(al->list[i].addr) ||
++		    is_zero_ether_addr(al->list[i].addr) ||
++		    i40e_del_mac_filter(vsi, al->list[i].addr)) {
++			dev_err(&pf->pdev->dev, "Invalid MAC addr %pM for VF %d\n",
++				al->list[i].addr, vf->vf_id);
++			ret = -EINVAL;
+ 			spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 			goto error_param;
+ 		}
+ 
++		i40e_del_vmmac_from_list(vf, al->list[i].addr);
++	}
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 
++	if (was_unimac_deleted)
++		i40e_vf_clear_default_mac_addr(vf, is_legacy_unimac);
++
+ 	/* program the updated filter list */
+ 	ret = i40e_sync_vsi_filters(vsi);
+ 	if (ret)
+ 		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+ 			vf->vf_id, ret);
++error_param:
++	return ret;
++}
+ 
+-	if (vf->trusted && was_unimac_deleted) {
+-		struct i40e_mac_filter *f;
+-		struct hlist_node *h;
+-		u8 *macaddr = NULL;
+-		int bkt;
++/**
++ * i40e_vc_del_mac_addr_msg
++ * @vf: pointer to the VF info
++ * @msg: pointer to the msg buffer
++ *
++ * remove guest mac address filter
++ **/
++static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++{
++	struct virtchnl_ether_addr_list *al =
++	    (struct virtchnl_ether_addr_list *)msg;
++	int ret = 0;
+ 
+-		/* set last unicast mac address as default */
+-		spin_lock_bh(&vsi->mac_filter_hash_lock);
+-		hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
+-			if (is_valid_ether_addr(f->macaddr))
+-				macaddr = f->macaddr;
+-		}
+-		if (macaddr)
+-			ether_addr_copy(vf->default_lan_addr.addr, macaddr);
+-		spin_unlock_bh(&vsi->mac_filter_hash_lock);
++	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
++	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
++		ret = -EINVAL;
++		goto error_param;
+ 	}
++
++	ret = i40e_del_vf_mac_filters(vf, al);
++
+ error_param:
+ 	/* send the response to the VF */
+ 	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR, ret);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 755f29cb0131..a0bd12dd0939 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -62,6 +62,11 @@ struct i40evf_channel {
+ 	u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+ };
+ 
++struct i40e_time_mac {
++	unsigned long time_modified;
++	u8 addr[ETH_ALEN];
++};
++
+ /* VF information structure */
+ struct i40e_vf {
+ 	struct i40e_pf *pf;
+@@ -77,6 +82,10 @@ struct i40e_vf {
+ 	u16 stag;
+ 
+ 	struct virtchnl_ether_addr default_lan_addr;
++
++	/* keeps last added MAC address */
++	struct i40e_time_mac legacy_last_added_umac;
++
+ 	u16 port_vlan_id;
+ 	bool pf_set_mac;	/* The VMM admin set the VF MAC address */
+ 	bool trusted;
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
