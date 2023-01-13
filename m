@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB7D866A613
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 23:38:35 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2345766A615
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jan 2023 23:38:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F81C415D3;
-	Fri, 13 Jan 2023 22:38:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7F81C415D3
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5E9160A46;
+	Fri, 13 Jan 2023 22:38:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5E9160A46
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673649514;
-	bh=/aMQE1dyZXf5jcECPZUC0qqqRAYQnQwl54mugE7XeIg=;
+	s=default; t=1673649522;
+	bh=AEWJojlIGJerC3gPo1+ut1aiMrlWst4cTd05ceTNXdQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=AW2E1phlinrrADnPsKSSleO554jXvnbffATEkyZkY2me7t+bmNte84ucgFFQVagAU
-	 V3x30F3JfcRLkUMLCNDSkt8Wnx9GRWb+5lE0cj+YNvGtoDteNA6+OXLri+stgF9Lgu
-	 sPQrsE8n3tx2oUTnk2eQ5G3RKy29erRYgntfm3e/LZ/9Rswms7xJcVs6E8f4l5J8JN
-	 6py+wOUnM5iFXJK1X6erg4GtiesXtwYyeq5Pg6pkhL4Oon6m9zO2SFI9RsXdU7hPJe
-	 bSDvuFEhpNntN3qUYFF4GcLbWodwoCXhwNRj7ys2ZIEYbm2IRVw1xgWKk59j71Zg+u
-	 3z0aUaATG+tow==
+	b=x1g7/K7CsmHn7OsBvLIvcvNnUAEE0XoFgGhc+ocLvcp4i53efPFommupurtJ21a/G
+	 NpDhHUdJy/BnRZ8jvMuQ3hcFHnY3Bx8LHaasjKI3vZKGPpyVU4OuoDvpHI/fzyUTQR
+	 LjY8uTdQxhOJvLUxiOhVfK+Se/IO8Bho6/1a8+l5ao9srZbqIBWl8m3/fjmIajSGs9
+	 0P9DxploeT7bmbFqf5SAyiUSnl08bAjFGnlGYQbz5GhrxObU2C0jDwR7m41Ck30dzU
+	 2We1XzwCtNHX37VIBfIEpl3MP8RkYSP+1fztFBkrSqt4LS2tml5ukvPhN+GK22oqbT
+	 2PupbUnaiKMlg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vyy0ATXDLoET; Fri, 13 Jan 2023 22:38:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NCw-xFJj5vbw; Fri, 13 Jan 2023 22:38:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 78278400C8;
-	Fri, 13 Jan 2023 22:38:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78278400C8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4C8A960864;
+	Fri, 13 Jan 2023 22:38:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4C8A960864
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 394FA1BF399
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4E0C11BF399
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D66A941B6B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D66A941B6B
+ by smtp4.osuosl.org (Postfix) with ESMTP id EFC5941B51
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFC5941B51
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iH-0UG0YODon for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 0pASOgK68rmM for <intel-wired-lan@lists.osuosl.org>;
  Fri, 13 Jan 2023 22:37:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03FD941B69
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9BD7D41B5B
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 03FD941B69
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="351354074"
-X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="351354074"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9BD7D41B5B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jan 2023 22:37:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="351354079"
+X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="351354079"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2023 14:37:46 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="726859794"
-X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="726859794"
+ 13 Jan 2023 14:37:47 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="726859797"
+X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="726859797"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.1])
  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  13 Jan 2023 14:37:46 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Fri, 13 Jan 2023 14:37:34 -0800
-Message-Id: <20230113223735.2514364-13-jacob.e.keller@intel.com>
+Date: Fri, 13 Jan 2023 14:37:35 -0800
+Message-Id: <20230113223735.2514364-14-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.38.1.420.g319605f8f00e
 In-Reply-To: <20230113223735.2514364-1-jacob.e.keller@intel.com>
 References: <20230113223735.2514364-1-jacob.e.keller@intel.com>
@@ -71,19 +71,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1673649467; x=1705185467;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4QaEbEfpRTYoMU+n9eMPwNZKbcfKdvHABklGpDwm9bA=;
- b=fw2i5PxPzeDVbSi/3mWT7NFAw30mgLglfc0pK+a+8H/puPs0lQ7HN5bx
- nohZyKbTASTy1qHi5SMYg/QtNAeHqc2EoTYdESgOVd0i6keM2WxNWtP4h
- UrABp90HOxBTOxFa1uv0KVul4bOx7041/Uxrrbfvf2PwXg0gGtjSofVfd
- pmvcP0KRy2xdHjPmNCdbEI+RdCDVCaepTqlDHSmc3ppXLgS5iKiSx5Any
- RIu4NUCkTdFBmOi157wV41hsAOYDdUqzFAMGPKSMtI3tAYz2CjqJgfabW
- vCC1uT1Y5MAjlU/qZjN/O+J/spPHcLJy2oe6S8PuQTwx3OMEvA9HhK2K+
- w==;
+ bh=eFw4VJXiBprB4LodFCqp8KLkG7pO4CQJOczxXQzwwOs=;
+ b=UPkiLWeTQ/iTa1/gGljSiCejCZ5S8kRxVaAqS1oE4yGqJK9vNgxXdCET
+ D9CxbqGDtz6aJNrxbgDG0Uhp1WXWHTak4cTCElmgPOK+KCUbwyOeTCkKr
+ hqoD24Df4nxryYO+OoA/8uBDfK2ud15WZ459BqJV03+n+cM1ODqnWiYE1
+ J/Ma3xzM0qGlDlOwlz2LRI6yO5bKrwW+TnUZ4hL/FNnkuAEP1hBS7rJd0
+ HdX0R4Rq1rLmmCs3VFRIjxbg2AtWlTPu4Y4i66b0RXIxU/DlnKOFIGDv+
+ HWBkZBM4LFS+n3caBUsvxuJnw3a+m0HRjimXg19wQhnE6pKW8rWBarneb
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fw2i5PxP
-Subject: [Intel-wired-lan] [PATCH net-next 12/13] ice: introduce .irq_close
- VF operation
+ header.a=rsa-sha256 header.s=Intel header.b=UPkiLWeT
+Subject: [Intel-wired-lan] [PATCH net-next 13/13] ice: remove unnecessary
+ virtchnl_ether_addr struct use
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,63 +102,278 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The Scalable IOV implementation will require notifying the VDCM driver when
-an IRQ must be closed. This allows the VDCM to handle releasing stale IRQ
-context values and properly reconfigure.
-
-To handle this, introduce a new optional .irq_close callback to the VF
-operations structure. This will be implemented by Scalable IOV to handle
-the shutdown of the IRQ context.
-
-Since the SR-IOV implementation does not need this, we must check that its
-non-NULL before calling it.
+The dev_lan_addr and hw_lan_addr members of ice_vf are used only to store
+the MAC address for the VF. They are defined using virtchnl_ether_addr, but
+only the .addr sub-member is actually used. Drop the use of
+virtchnl_ether_addr and just use a u8 array of length [ETH_ALEN].
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_sriov.c  | 1 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.c | 4 ++++
- drivers/net/ethernet/intel/ice/ice_vf_lib.h | 1 +
- 3 files changed, 6 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 18 +++++++-------
+ drivers/net/ethernet/intel/ice/ice_sriov.c    | 16 ++++++-------
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  8 +++----
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 24 +++++++++----------
+ 5 files changed, 35 insertions(+), 35 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index f9f15acae90a..076a6edd6d7b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -71,17 +71,17 @@ void ice_eswitch_replay_vf_mac_rule(struct ice_vf *vf)
+ 	if (!ice_is_switchdev_running(vf->pf))
+ 		return;
+ 
+-	if (is_valid_ether_addr(vf->hw_lan_addr.addr)) {
++	if (is_valid_ether_addr(vf->hw_lan_addr)) {
+ 		err = ice_eswitch_add_vf_mac_rule(vf->pf, vf,
+-						  vf->hw_lan_addr.addr);
++						  vf->hw_lan_addr);
+ 		if (err) {
+ 			dev_err(ice_pf_to_dev(vf->pf), "Failed to add MAC %pM for VF %d\n, error %d\n",
+-				vf->hw_lan_addr.addr, vf->vf_id, err);
++				vf->hw_lan_addr, vf->vf_id, err);
+ 			return;
+ 		}
+ 		vf->num_mac++;
+ 
+-		ether_addr_copy(vf->dev_lan_addr.addr, vf->hw_lan_addr.addr);
++		ether_addr_copy(vf->dev_lan_addr, vf->hw_lan_addr);
+ 	}
+ }
+ 
+@@ -237,7 +237,7 @@ ice_eswitch_release_reprs(struct ice_pf *pf, struct ice_vsi *ctrl_vsi)
+ 		ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
+ 		metadata_dst_free(vf->repr->dst);
+ 		vf->repr->dst = NULL;
+-		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr.addr,
++		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr,
+ 					       ICE_FWD_TO_VSI);
+ 
+ 		netif_napi_del(&vf->repr->q_vector->napi);
+@@ -265,14 +265,14 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 						   GFP_KERNEL);
+ 		if (!vf->repr->dst) {
+ 			ice_fltr_add_mac_and_broadcast(vsi,
+-						       vf->hw_lan_addr.addr,
++						       vf->hw_lan_addr,
+ 						       ICE_FWD_TO_VSI);
+ 			goto err;
+ 		}
+ 
+ 		if (ice_vsi_update_security(vsi, ice_vsi_ctx_clear_antispoof)) {
+ 			ice_fltr_add_mac_and_broadcast(vsi,
+-						       vf->hw_lan_addr.addr,
++						       vf->hw_lan_addr,
+ 						       ICE_FWD_TO_VSI);
+ 			metadata_dst_free(vf->repr->dst);
+ 			vf->repr->dst = NULL;
+@@ -281,7 +281,7 @@ static int ice_eswitch_setup_reprs(struct ice_pf *pf)
+ 
+ 		if (ice_vsi_add_vlan_zero(vsi)) {
+ 			ice_fltr_add_mac_and_broadcast(vsi,
+-						       vf->hw_lan_addr.addr,
++						       vf->hw_lan_addr,
+ 						       ICE_FWD_TO_VSI);
+ 			metadata_dst_free(vf->repr->dst);
+ 			vf->repr->dst = NULL;
+@@ -338,7 +338,7 @@ void ice_eswitch_update_repr(struct ice_vsi *vsi)
+ 
+ 	ret = ice_vsi_update_security(vsi, ice_vsi_ctx_clear_antispoof);
+ 	if (ret) {
+-		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr.addr, ICE_FWD_TO_VSI);
++		ice_fltr_add_mac_and_broadcast(vsi, vf->hw_lan_addr, ICE_FWD_TO_VSI);
+ 		dev_err(ice_pf_to_dev(pf), "Failed to update VF %d port representor",
+ 			vsi->vf->vf_id);
+ 	}
 diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 58eb35504c27..c466d15697a7 100644
+index c466d15697a7..38c6f26df5fa 100644
 --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
 +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -802,6 +802,7 @@ static const struct ice_vf_ops ice_sriov_vf_ops = {
- 	.trigger_reset_register = ice_sriov_trigger_reset_register,
- 	.poll_reset_status = ice_sriov_poll_reset_status,
- 	.clear_reset_trigger = ice_sriov_clear_reset_trigger,
-+	.irq_close = NULL,
- 	.create_vsi = ice_sriov_create_vsi,
- 	.post_vsi_rebuild = ice_sriov_post_vsi_rebuild,
- };
+@@ -1237,7 +1237,7 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 		goto out_put_vf;
+ 
+ 	ivi->vf = vf_id;
+-	ether_addr_copy(ivi->mac, vf->hw_lan_addr.addr);
++	ether_addr_copy(ivi->mac, vf->hw_lan_addr);
+ 
+ 	/* VF configuration for VLAN and applicable QoS */
+ 	ivi->vlan = ice_vf_get_port_vlan_id(vf);
+@@ -1285,8 +1285,8 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 		return -EINVAL;
+ 
+ 	/* nothing left to do, unicast MAC already set */
+-	if (ether_addr_equal(vf->dev_lan_addr.addr, mac) &&
+-	    ether_addr_equal(vf->hw_lan_addr.addr, mac)) {
++	if (ether_addr_equal(vf->dev_lan_addr, mac) &&
++	    ether_addr_equal(vf->hw_lan_addr, mac)) {
+ 		ret = 0;
+ 		goto out_put_vf;
+ 	}
+@@ -1300,8 +1300,8 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 	/* VF is notified of its new MAC via the PF's response to the
+ 	 * VIRTCHNL_OP_GET_VF_RESOURCES message after the VF has been reset
+ 	 */
+-	ether_addr_copy(vf->dev_lan_addr.addr, mac);
+-	ether_addr_copy(vf->hw_lan_addr.addr, mac);
++	ether_addr_copy(vf->dev_lan_addr, mac);
++	ether_addr_copy(vf->hw_lan_addr, mac);
+ 	if (is_zero_ether_addr(mac)) {
+ 		/* VF will send VIRTCHNL_OP_ADD_ETH_ADDR message with its MAC */
+ 		vf->pf_set_mac = false;
+@@ -1702,7 +1702,7 @@ void ice_print_vf_rx_mdd_event(struct ice_vf *vf)
+ 
+ 	dev_info(dev, "%d Rx Malicious Driver Detection events detected on PF %d VF %d MAC %pM. mdd-auto-reset-vfs=%s\n",
+ 		 vf->mdd_rx_events.count, pf->hw.pf_id, vf->vf_id,
+-		 vf->dev_lan_addr.addr,
++		 vf->dev_lan_addr,
+ 		 test_bit(ICE_FLAG_MDD_AUTO_RESET_VF, pf->flags)
+ 			  ? "on" : "off");
+ }
+@@ -1746,7 +1746,7 @@ void ice_print_vfs_mdd_events(struct ice_pf *pf)
+ 
+ 			dev_info(dev, "%d Tx Malicious Driver Detection events detected on PF %d VF %d MAC %pM.\n",
+ 				 vf->mdd_tx_events.count, hw->pf_id, vf->vf_id,
+-				 vf->dev_lan_addr.addr);
++				 vf->dev_lan_addr);
+ 		}
+ 	}
+ 	mutex_unlock(&pf->vfs.table_lock);
+@@ -1836,7 +1836,7 @@ ice_is_malicious_vf(struct ice_pf *pf, struct ice_rq_event_info *event,
+ 
+ 			if (pf_vsi)
+ 				dev_warn(dev, "VF MAC %pM on PF MAC %pM is generating asynchronous messages and may be overflowing the PF message queue. Please see the Adapter User Guide for more information\n",
+-					 &vf->dev_lan_addr.addr[0],
++					 &vf->dev_lan_addr[0],
+ 					 pf_vsi->netdev->dev_addr);
+ 		}
+ 	}
 diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index f9ac76d4826a..90b7b0d16b23 100644
+index 90b7b0d16b23..8e2b64943331 100644
 --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -237,6 +237,10 @@ static void ice_vf_clear_counters(struct ice_vf *vf)
-  */
- static void ice_vf_pre_vsi_rebuild(struct ice_vf *vf)
- {
-+	/* Close any IRQ mapping now */
-+	if (vf->vf_ops->irq_close)
-+		vf->vf_ops->irq_close(vf);
-+
- 	ice_vf_clear_counters(vf);
- 	vf->vf_ops->clear_reset_trigger(vf);
- }
+@@ -1008,18 +1008,18 @@ static int ice_vf_rebuild_host_mac_cfg(struct ice_vf *vf)
+ 
+ 	vf->num_mac++;
+ 
+-	if (is_valid_ether_addr(vf->hw_lan_addr.addr)) {
+-		status = ice_fltr_add_mac(vsi, vf->hw_lan_addr.addr,
++	if (is_valid_ether_addr(vf->hw_lan_addr)) {
++		status = ice_fltr_add_mac(vsi, vf->hw_lan_addr,
+ 					  ICE_FWD_TO_VSI);
+ 		if (status) {
+ 			dev_err(dev, "failed to add default unicast MAC filter %pM for VF %u, error %d\n",
+-				&vf->hw_lan_addr.addr[0], vf->vf_id,
++				&vf->hw_lan_addr[0], vf->vf_id,
+ 				status);
+ 			return status;
+ 		}
+ 		vf->num_mac++;
+ 
+-		ether_addr_copy(vf->dev_lan_addr.addr, vf->hw_lan_addr.addr);
++		ether_addr_copy(vf->dev_lan_addr, vf->hw_lan_addr);
+ 	}
+ 
+ 	return 0;
 diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index 2085d1a6cd7c..69301f5baf87 100644
+index 69301f5baf87..acabca011150 100644
 --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
 +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -61,6 +61,7 @@ struct ice_vf_ops {
- 	void (*trigger_reset_register)(struct ice_vf *vf, bool is_vflr);
- 	bool (*poll_reset_status)(struct ice_vf *vf);
- 	void (*clear_reset_trigger)(struct ice_vf *vf);
-+	void (*irq_close)(struct ice_vf *vf);
- 	int (*create_vsi)(struct ice_vf *vf);
- 	void (*post_vsi_rebuild)(struct ice_vf *vf);
- };
+@@ -98,8 +98,8 @@ struct ice_vf {
+ 	struct ice_sw *vf_sw_id;	/* switch ID the VF VSIs connect to */
+ 	struct virtchnl_version_info vf_ver;
+ 	u32 driver_caps;		/* reported by VF driver */
+-	struct virtchnl_ether_addr dev_lan_addr;
+-	struct virtchnl_ether_addr hw_lan_addr;
++	u8 dev_lan_addr[ETH_ALEN];
++	u8 hw_lan_addr[ETH_ALEN];
+ 	struct ice_time_mac legacy_last_added_umac;
+ 	DECLARE_BITMAP(txq_ena, ICE_MAX_RSS_QS_PER_VF);
+ 	DECLARE_BITMAP(rxq_ena, ICE_MAX_RSS_QS_PER_VF);
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index dab3cd5d300e..e24e3f5017ca 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -507,7 +507,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 	vfres->vsi_res[0].vsi_type = VIRTCHNL_VSI_SRIOV;
+ 	vfres->vsi_res[0].num_queue_pairs = vsi->num_txq;
+ 	ether_addr_copy(vfres->vsi_res[0].default_mac_addr,
+-			vf->hw_lan_addr.addr);
++			vf->hw_lan_addr);
+ 
+ 	/* match guest capabilities */
+ 	vf->driver_caps = vfres->vf_cap_flags;
+@@ -1802,10 +1802,10 @@ ice_vfhw_mac_add(struct ice_vf *vf, struct virtchnl_ether_addr *vc_ether_addr)
+ 	 * was correctly specified over VIRTCHNL
+ 	 */
+ 	if ((ice_is_vc_addr_legacy(vc_ether_addr) &&
+-	     is_zero_ether_addr(vf->hw_lan_addr.addr)) ||
++	     is_zero_ether_addr(vf->hw_lan_addr)) ||
+ 	    ice_is_vc_addr_primary(vc_ether_addr)) {
+-		ether_addr_copy(vf->dev_lan_addr.addr, mac_addr);
+-		ether_addr_copy(vf->hw_lan_addr.addr, mac_addr);
++		ether_addr_copy(vf->dev_lan_addr, mac_addr);
++		ether_addr_copy(vf->hw_lan_addr, mac_addr);
+ 	}
+ 
+ 	/* hardware and device MACs are already set, but its possible that the
+@@ -1836,7 +1836,7 @@ ice_vc_add_mac_addr(struct ice_vf *vf, struct ice_vsi *vsi,
+ 	int ret;
+ 
+ 	/* device MAC already added */
+-	if (ether_addr_equal(mac_addr, vf->dev_lan_addr.addr))
++	if (ether_addr_equal(mac_addr, vf->dev_lan_addr))
+ 		return 0;
+ 
+ 	if (is_unicast_ether_addr(mac_addr) && !ice_can_vf_change_mac(vf)) {
+@@ -1891,8 +1891,8 @@ ice_update_legacy_cached_mac(struct ice_vf *vf,
+ 	    ice_is_legacy_umac_expired(&vf->legacy_last_added_umac))
+ 		return;
+ 
+-	ether_addr_copy(vf->dev_lan_addr.addr, vf->legacy_last_added_umac.addr);
+-	ether_addr_copy(vf->hw_lan_addr.addr, vf->legacy_last_added_umac.addr);
++	ether_addr_copy(vf->dev_lan_addr, vf->legacy_last_added_umac.addr);
++	ether_addr_copy(vf->hw_lan_addr, vf->legacy_last_added_umac.addr);
+ }
+ 
+ /**
+@@ -1906,15 +1906,15 @@ ice_vfhw_mac_del(struct ice_vf *vf, struct virtchnl_ether_addr *vc_ether_addr)
+ 	u8 *mac_addr = vc_ether_addr->addr;
+ 
+ 	if (!is_valid_ether_addr(mac_addr) ||
+-	    !ether_addr_equal(vf->dev_lan_addr.addr, mac_addr))
++	    !ether_addr_equal(vf->dev_lan_addr, mac_addr))
+ 		return;
+ 
+ 	/* allow the device MAC to be repopulated in the add flow and don't
+-	 * clear the hardware MAC (i.e. hw_lan_addr.addr) here as that is meant
++	 * clear the hardware MAC (i.e. hw_lan_addr) here as that is meant
+ 	 * to be persistent on VM reboot and across driver unload/load, which
+ 	 * won't work if we clear the hardware MAC here
+ 	 */
+-	eth_zero_addr(vf->dev_lan_addr.addr);
++	eth_zero_addr(vf->dev_lan_addr);
+ 
+ 	ice_update_legacy_cached_mac(vf, vc_ether_addr);
+ }
+@@ -1934,7 +1934,7 @@ ice_vc_del_mac_addr(struct ice_vf *vf, struct ice_vsi *vsi,
+ 	int status;
+ 
+ 	if (!ice_can_vf_change_mac(vf) &&
+-	    ether_addr_equal(vf->dev_lan_addr.addr, mac_addr))
++	    ether_addr_equal(vf->dev_lan_addr, mac_addr))
+ 		return 0;
+ 
+ 	status = ice_fltr_remove_mac(vsi, mac_addr, ICE_FWD_TO_VSI);
+@@ -3733,7 +3733,7 @@ static int ice_vc_repr_add_mac(struct ice_vf *vf, u8 *msg)
+ 		int result;
+ 
+ 		if (!is_unicast_ether_addr(mac_addr) ||
+-		    ether_addr_equal(mac_addr, vf->hw_lan_addr.addr))
++		    ether_addr_equal(mac_addr, vf->hw_lan_addr))
+ 			continue;
+ 
+ 		if (vf->pf_set_mac) {
 -- 
 2.38.1.420.g319605f8f00e
 
