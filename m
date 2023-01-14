@@ -1,114 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D82D66AC1F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Jan 2023 16:33:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B0B666AC42
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Jan 2023 16:55:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C1B2640591;
-	Sat, 14 Jan 2023 15:33:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C1B2640591
+	by smtp1.osuosl.org (Postfix) with ESMTP id D3BCE81F2B;
+	Sat, 14 Jan 2023 15:54:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3BCE81F2B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673710407;
-	bh=fixJEYQvD/2yuVwuAmIYWLy318cQgQYiYCTMGjr7tic=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=MiCjoo2eN+RJqQmA62wNu/IjAChFqVgY5DMrF6z+NPRrVCkYTyGQICzUa2k38udgb
-	 aMO13/8z8swRi3/hpkowPVS000bHZCw2mfXSfpgWgjKUet2oxdjcW06WVn0fYnzx5C
-	 g0mDYyRViCiqEg0vyth83sR1ID/nxR+qw7gkwGZMov70D5NcaHrvO+B0BRXU0q2ar+
-	 hfG99tX0UqOsF/4dkqhUIYcyy8g04Bl1e/SXeZASSB2Z1gNxKUcY+SXbYiuaYlphxk
-	 6bPrBsDIYBgZf9kTpO7MaoNgpGiLKmiStxz+92XL3lZKJLv6nHFyrSxeIq4LT22tdY
-	 d7/r+WqQR+fqQ==
+	s=default; t=1673711698;
+	bh=tWUN1ckwyYwwhpkjRgLlOSqCcWr6u0YZzrLDzHLR2qI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=JLP/+xL5oPQNXRNZ7PZJud7YMT07ta5+nuZbr+i8In3hfAxkmlLwxpQrASkbAuXMO
+	 pkc5dzFNNuj5GyOiMPO8Fp5CET040rAIzOS3W/jr9xpUf8kHUbILLXY4anxw8bWrwh
+	 5hCSGRSaNP9XzZO0/NvMUQxcEjZkl62w9xctSvCihMzwggXjnL6i8F0v7ZOjODZqs6
+	 Wyvu7OHy5RMOA4Uvxgwavsxlo5wZHFQuUSL/8iNUIcpf+JWaSHBycujSNHIxs3L6GH
+	 6QLcCMmEiOzj0Llrep07dvZnAFhFtUwAT8u7otz3RYY5zylvV9XFFEbFNe/Lut7naA
+	 F3GdLSrsTruOA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MUepSXxX4ZGk; Sat, 14 Jan 2023 15:33:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LFeT46i3CemL; Sat, 14 Jan 2023 15:54:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3ECF4402C5;
-	Sat, 14 Jan 2023 15:33:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3ECF4402C5
+	by smtp1.osuosl.org (Postfix) with ESMTP id B71A281F27;
+	Sat, 14 Jan 2023 15:54:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B71A281F27
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7D6A31BF3FB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:33:21 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DC60F1BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:54:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 64DA640576
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:33:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64DA640576
+ by smtp1.osuosl.org (Postfix) with ESMTP id ADAF981F0D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:54:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADAF981F0D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CWcgfRqgNIlK for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Jan 2023 15:33:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id t2qo2nxr6aCs for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Jan 2023 15:54:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F303B4038D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F303B4038D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:33:19 +0000 (UTC)
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-192-j0PCv006P9eXQHerGVfopg-1; Sat, 14 Jan 2023 10:33:16 -0500
-X-MC-Unique: j0PCv006P9eXQHerGVfopg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- l31-20020a05600c1d1f00b003da8b330db2so440647wms.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 07:33:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rocdlOE7cHWC1zE1mEMZfdO9OdSReGB8PfyH9d+AaeU=;
- b=2HeMq5QoSBYM0ckUdUwbTMCG1P6U8+CrPWxMoR05Unry7QArHtEGQC2VEIIe0Dnxgc
- 9+3KmDQPx5QpWzpshTdal5wWwy0uscRp0vFprRQvwBQxhP7H2Z9fbC/TvdczAWEF5rUH
- Y5ymprwIats8K+qhCpV5nZzr1CE0gREZw47HiMU8PxAb+ragwfoQp5YjeLSxKrPXoxeA
- QqO6w1lNLah8nwRj5G7yJqtx95yDwAH3PHuEN+hG41mcSizIKDcStDJfwyAL0879Wzpq
- FL6aCV0vjdJOWXNxt5LBxO9kcT+9bFz2CJwdgaZ0GT4mY9vybDn2Lpst5leJ5biw7FIR
- wjpw==
-X-Gm-Message-State: AFqh2ko6eskjyQfCtxDYmKQNstTW/bZLDYGEsqdBvAL7bvnJcu7pw0MQ
- Z0xTpeLmCQDOm+6aRQonT06s011t/jxP4ZhgQjRsYjoex0fUIhZU323tgFFnd653Q/I5hJrapn+
- OsxU6rjM8q+JUJ2VrjB6CoimqDnZaZA==
-X-Received: by 2002:a05:600c:331d:b0:3d6:ecc4:6279 with SMTP id
- q29-20020a05600c331d00b003d6ecc46279mr2876540wmp.27.1673710395576; 
- Sat, 14 Jan 2023 07:33:15 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvW1I48o8cgiyW4Lk1zD/zOvGZMEH2HKEq45sGbIyCQoT2K7GCZqzn0n1PQCFPsX8CzChG+pA==
-X-Received: by 2002:a05:600c:331d:b0:3d6:ecc4:6279 with SMTP id
- q29-20020a05600c331d00b003d6ecc46279mr2876501wmp.27.1673710395255; 
- Sat, 14 Jan 2023 07:33:15 -0800 (PST)
-Received: from localhost (net-188-216-77-84.cust.vodafonedsl.it.
- [188.216.77.84]) by smtp.gmail.com with ESMTPSA id
- i8-20020a1c5408000000b003da065105c9sm12488884wmb.40.2023.01.14.07.33.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Jan 2023 07:33:14 -0800 (PST)
-Date: Sat, 14 Jan 2023 16:33:11 +0100
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: Andrii Nakryiko <andrii.nakryiko@gmail.com>
-Message-ID: <Y8LLN5qiTDlLNQcK@lore-desk>
-References: <cover.1671462950.git.lorenzo@kernel.org>
- <6cce9b15a57345402bb94366434a5ac5609583b8.1671462951.git.lorenzo@kernel.org>
- <CAEf4BzbOF-S3kjbNVXCZR-K=TGarfi06ZwG1cbNF=HSSodwEfg@mail.gmail.com>
- <Y72f1U2/dw8jo0/0@lore-desk>
- <CAEf4BzawqXs6q18U8e5GD5d+9v1_w2+QOJYqmEpNb9rZ40E1Tw@mail.gmail.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D287D81F05
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D287D81F05
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 15:54:51 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 79B6260AB6;
+ Sat, 14 Jan 2023 15:54:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61159C433EF;
+ Sat, 14 Jan 2023 15:54:49 +0000 (UTC)
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: bpf@vger.kernel.org
+Date: Sat, 14 Jan 2023 16:54:30 +0100
+Message-Id: <cover.1673710866.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-In-Reply-To: <CAEf4BzawqXs6q18U8e5GD5d+9v1_w2+QOJYqmEpNb9rZ40E1Tw@mail.gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1673710398;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rocdlOE7cHWC1zE1mEMZfdO9OdSReGB8PfyH9d+AaeU=;
- b=WEHyMsI/Ot0/h32F/IgPOhM3e5eO08uQfsNOu4JXGddM4kFD3niDO4pBAkRFuIHR0zBsUp
- HfxCCH7kFDi7JkBSid7h8SL+OO0ISF57IBR2vz2GGFlz1Q+BLBB/12A8qIH8p0HfGXv0DE
- /uaVD8SHgVOhVlbbE7e0T1mc51ZQerU=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=WEHyMsI/
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 6/8] libbpf: add API to get
- XDP/XSK supported features
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1673711689;
+ bh=0XsFX5+Nf/HbVNXbDthICixMussrs0CTbjxqS+eyO/g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Zn1wNrvgj+W+ax91IFuEaB4zzRvTgHwmu2Lv7RsQ1AXYenvT/kGvn9VJcXE6qMM0x
+ jPPXK+9zzt1X1iMW1CZLjKNbPEaj43TSfg3Gfem/wzccQqmV/RfyZXAr1duIwqGrav
+ hjpLdT/dxizpheDtzkYezg3nohcSVTDDNt53WDahxzIXH6Rao359dOU4VacOZ6UCIl
+ 6kIwojOn64JGGJ2LrCh+pCT0v/d2GDNYJyH41IeMsPYzSwRrpKfhuvDa0/ba59GJfN
+ 0RRwwyp0O6Qq+sxD7yb0YnuxhXRqh83jOv1DXsmIMm4MXK5Ht0j5vJiWJYGcfN6ybc
+ yoD/dmag8OscQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Zn1wNrvg
+Subject: [Intel-wired-lan] [RFC v2 bpf-next 0/7] xdp: introduce xdp-feature
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,161 +90,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
  edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
  andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- grygorii.strashko@ti.com, aelior@marvell.com, hawk@kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
  christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============0261658562618289000=="
+ bjorn@kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
+ netdev@vger.kernel.org, toke@redhat.com, ecree.xilinx@gmail.com,
+ alardam@gmail.com, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
+ nbd@nbd.name
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Introduce the capability to export the XDP features supported by the NIC.
+Introduce a XDP compliance test tool (xdp_features) to check the features
+exported by the NIC match the real features supported by the driver.
+Allow XDP_REDIRECT of non-linear XDP frames into a devmap.
+Export XDP features for each XDP capable driver.
+Extend libbpf netlink implementation in order to support netlink_generic
+protocol.
+Introduce a simple generic netlink family for netdev data.
 
---===============0261658562618289000==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="n89kErnvPkHUjfpP"
-Content-Disposition: inline
+Changes since RFCv1:
+- Introduce netdev-genl implementation and get rid of rtnl one.
+- Introduce netlink_generic support in libbpf netlink implementation
+- Rename XDP_FEATURE_* in NETDEV_XDP_ACT_*
+- Rename XDP_FEATURE_REDIRECT_TARGET in NETDEV_XDP_ACT_NDO_XMIT
+- Rename XDP_FEATURE_FRAG_RX in NETDEV_XDP_ACT_RX_SG
+- Rename XDP_FEATURE_FRAG_TARFET in NETDEV_XDP_ACT_NDO_XMIT
+- Get rid of XDP_LOCK feature.
+- Move xdp_feature field in a netdevice struct hole in the 4th cacheline.
 
+Jakub Kicinski (1):
+  netdev-genl: create a simple family for netdev stuff
 
---n89kErnvPkHUjfpP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Lorenzo Bianconi (4):
+  libbpf: add the capability to specify netlink proto in
+    libbpf_netlink_send_recv
+  libbpf: add API to get XDP/XSK supported features
+  bpf: devmap: check XDP features in bpf_map_update_elem and
+    __xdp_enqueue
+  selftests/bpf: introduce XDP compliance test tool
 
-> On Tue, Jan 10, 2023 at 9:26 AM Lorenzo Bianconi <lorenzo@kernel.org> wro=
-te:
-> >
-> > > On Mon, Dec 19, 2022 at 7:42 AM Lorenzo Bianconi <lorenzo@kernel.org>=
- wrote:
-> > > >
-> > > > From: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > > >
-> > > > Add functions to get XDP/XSK supported function of netdev over route
-> > > > netlink interface. These functions provide functionalities that are
-> > > > going to be used in upcoming change.
-> > > >
-> > > > The newly added bpf_xdp_query_features takes a fflags_cnt parameter,
-> > > > which denotes the number of elements in the output fflags array. Th=
-is
-> > > > must be at least 1 and maybe greater than XDP_FEATURES_WORDS. The
-> > > > function only writes to words which is min of fflags_cnt and
-> > > > XDP_FEATURES_WORDS.
-> > > >
-> > > > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > Co-developed-by: Marek Majtyka <alardam@gmail.com>
-> > > > Signed-off-by: Marek Majtyka <alardam@gmail.com>
-> > > > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > > > ---
-> > > >  tools/lib/bpf/libbpf.h   |  1 +
-> > > >  tools/lib/bpf/libbpf.map |  1 +
-> > > >  tools/lib/bpf/netlink.c  | 62 ++++++++++++++++++++++++++++++++++++=
-++++
-> > > >  3 files changed, 64 insertions(+)
-> > > >
-> > > > diff --git a/tools/lib/bpf/libbpf.h b/tools/lib/bpf/libbpf.h
-> > > > index eee883f007f9..9d102eb5007e 100644
-> > > > --- a/tools/lib/bpf/libbpf.h
-> > > > +++ b/tools/lib/bpf/libbpf.h
-> > > > @@ -967,6 +967,7 @@ LIBBPF_API int bpf_xdp_detach(int ifindex, __u3=
-2 flags,
-> > > >                               const struct bpf_xdp_attach_opts *opt=
-s);
-> > > >  LIBBPF_API int bpf_xdp_query(int ifindex, int flags, struct bpf_xd=
-p_query_opts *opts);
-> > > >  LIBBPF_API int bpf_xdp_query_id(int ifindex, int flags, __u32 *pro=
-g_id);
-> > > > +LIBBPF_API int bpf_xdp_query_features(int ifindex, __u32 *fflags, =
-__u32 *fflags_cnt);
-> > >
-> > > no need to add new API, just extend bpf_xdp_query()?
-> >
-> > Hi Andrii,
-> >
-> > AFAIK libbpf supports just NETLINK_ROUTE protocol. In order to connect =
-with the
-> > genl family code shared by Jakub we need to add NETLINK_GENERIC protoco=
-l support
-> > to libbf. Is it ok to introduce a libmnl or libnl dependency in libbpf =
-or do you
-> > prefer to add open code to just what we need?
->=20
-> I'd very much like to avoid any extra dependencies. But I also have no
-> clue how much new code we are talking about, tbh. Either way, the less
-> dependencies, the better, if the result is an acceptable amount of
-> extra code to maintain.
+Marek Majtyka (2):
+  drivers: net: turn on XDP features
+  xsk: add usage of XDP features flags
 
-ack, I avoided to introduce an extra dependencies since most of the protocol
-is already implemented in libbpf and I added just few code.
+ Documentation/netlink/specs/netdev.yaml       |  72 ++
+ drivers/net/ethernet/amazon/ena/ena_netdev.c  |   5 +
+ .../net/ethernet/aquantia/atlantic/aq_nic.c   |   4 +
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |   2 +
+ drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c |   2 +
+ .../net/ethernet/cavium/thunder/nicvf_main.c  |   2 +
+ .../net/ethernet/freescale/dpaa/dpaa_eth.c    |   2 +
+ .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  |   2 +
+ .../net/ethernet/freescale/enetc/enetc_pf.c   |   2 +
+ .../ethernet/fungible/funeth/funeth_main.c    |   6 +
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |   9 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   5 +
+ drivers/net/ethernet/intel/igb/igb_main.c     |   9 +-
+ drivers/net/ethernet/intel/igc/igc_main.c     |   2 +
+ drivers/net/ethernet/intel/igc/igc_xdp.c      |   5 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   5 +
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |   1 +
+ drivers/net/ethernet/marvell/mvneta.c         |   2 +
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |   3 +
+ .../ethernet/marvell/octeontx2/nic/otx2_pf.c  |   9 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |   5 +
+ .../net/ethernet/mellanox/mlx4/en_netdev.c    |   2 +
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |   9 +
+ drivers/net/ethernet/microsoft/mana/mana_en.c |   1 +
+ .../ethernet/netronome/nfp/nfp_net_common.c   |   4 +
+ drivers/net/ethernet/qlogic/qede/qede_main.c  |   2 +
+ drivers/net/ethernet/sfc/efx.c                |   3 +
+ drivers/net/ethernet/sfc/siena/efx.c          |   3 +
+ drivers/net/ethernet/socionext/netsec.c       |   2 +
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |   1 +
+ drivers/net/ethernet/ti/cpsw.c                |   2 +
+ drivers/net/ethernet/ti/cpsw_new.c            |   3 +
+ drivers/net/hyperv/netvsc_drv.c               |   2 +
+ drivers/net/netdevsim/netdev.c                |   1 +
+ drivers/net/tun.c                             |   4 +
+ drivers/net/veth.c                            |   3 +
+ drivers/net/virtio_net.c                      |   5 +
+ drivers/net/xen-netfront.c                    |   1 +
+ include/linux/netdevice.h                     |   2 +
+ include/net/xdp.h                             |  42 +
+ include/uapi/linux/netdev.h                   |  66 ++
+ kernel/bpf/devmap.c                           |  25 +-
+ net/core/Makefile                             |   3 +-
+ net/core/filter.c                             |  13 +-
+ net/core/netdev-genl-gen.c                    |  48 ++
+ net/core/netdev-genl-gen.h                    |  23 +
+ net/core/netdev-genl.c                        | 179 +++++
+ net/xdp/xsk_buff_pool.c                       |   3 +-
+ tools/include/uapi/linux/netdev.h             |  66 ++
+ tools/lib/bpf/libbpf.h                        |   3 +-
+ tools/lib/bpf/netlink.c                       | 120 ++-
+ tools/lib/bpf/nlattr.h                        |  12 +
+ tools/testing/selftests/bpf/Makefile          |   5 +-
+ .../selftests/bpf/progs/test_xdp_features.c   | 237 ++++++
+ .../selftests/bpf/test_xdp_features.sh        |  99 +++
+ tools/testing/selftests/bpf/xdp_features.c    | 743 ++++++++++++++++++
+ 56 files changed, 1858 insertions(+), 33 deletions(-)
+ create mode 100644 Documentation/netlink/specs/netdev.yaml
+ create mode 100644 include/uapi/linux/netdev.h
+ create mode 100644 net/core/netdev-genl-gen.c
+ create mode 100644 net/core/netdev-genl-gen.h
+ create mode 100644 net/core/netdev-genl.c
+ create mode 100644 tools/include/uapi/linux/netdev.h
+ create mode 100644 tools/testing/selftests/bpf/progs/test_xdp_features.c
+ create mode 100755 tools/testing/selftests/bpf/test_xdp_features.sh
+ create mode 100644 tools/testing/selftests/bpf/xdp_features.c
 
->=20
-> > I guess we should have a dedicated API to dump xdp features in this cas=
-e since
-> > all the other code relies on NETLINK_ROUTE protocol. What do you think?
-> >
->=20
-> From API standpoint it looks like an extension to bpf_xdp_query()
-> family of APIs, which is already extendable through opts. Which is why
-> I suggested that there is no need for new API. NETLINK_ROUTE vs
-> NETLINK_GENERIC seems like an internal implementation detail (but
-> again, I spent literally zero time trying to understand what's going
-> on here).
-
-ack, I extended bpf_xdp_query routine instead of adding a new API.
-
-Regards,
-Lorenzo
-
->=20
-> > Regards,
-> > Lorenzo
-> >
-> > >
-> > > >
-> > > >  /* TC related API */
-> > > >  enum bpf_tc_attach_point {
-> > > > diff --git a/tools/lib/bpf/libbpf.map b/tools/lib/bpf/libbpf.map
-> > > > index 71bf5691a689..9c2abb58fa4b 100644
-> > > > --- a/tools/lib/bpf/libbpf.map
-> > > > +++ b/tools/lib/bpf/libbpf.map
-> > > > @@ -362,6 +362,7 @@ LIBBPF_1.0.0 {
-> > > >                 bpf_program__set_autoattach;
-> > > >                 btf__add_enum64;
-> > > >                 btf__add_enum64_value;
-> > > > +               bpf_xdp_query_features;
-> > > >                 libbpf_bpf_attach_type_str;
-> > > >                 libbpf_bpf_link_type_str;
-> > > >                 libbpf_bpf_map_type_str;
-> > >
-> > > [...]
->=20
-
---n89kErnvPkHUjfpP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY8LLNwAKCRA6cBh0uS2t
-rHQpAP9S1nRxJxn6VI8kE+ZgcmpcM4bn41k/iKTInZDlJMnuRgD/UDwB7wgWf7IR
-N84yItCjaXrkRBsk+05kHyYqvmSVTwI=
-=5cEs
------END PGP SIGNATURE-----
-
---n89kErnvPkHUjfpP--
-
-
---===============0261658562618289000==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.39.0
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0261658562618289000==--
-
