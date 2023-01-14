@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10A4466E36A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 17:23:20 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BDE866E36D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 17:23:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4BFCE8200F;
-	Tue, 17 Jan 2023 16:23:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4BFCE8200F
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC64C402E8;
+	Tue, 17 Jan 2023 16:23:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC64C402E8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673972598;
-	bh=+ZcWgFBmzyp8a9Ay87Mfu4nB7vB0c3HMywxisFXFqVE=;
+	s=default; t=1673972603;
+	bh=bwqWUeDDt4Eq8sWEBWyKTQFkPmPsdOxWeHE7wbf///E=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Evr5JTMoMva7fao+RHMaquna5Ov3TYeXlM3pcRIVekc4vBYBTvXz/Tafd6wVBTOju
-	 afIrXiUvjNBJPQAtctpvBEwV97joaKvotzHzrQfu2i1l4A+1a0bD9KAy6vTTlmNmdU
-	 o2UA4DB4NmEIIiFSuWDv8qe3AuiplVICgm85cxvvLHKcSkdzNLLcLh3H1CBTy9jCUc
-	 CYtISf6O828BFRlsQiU02VgmQtbnLYGhiqAmWbG/sPS4o0yIuzZpbZLT9jJpXKEgk2
-	 BeZMSL5XdRn6MXmJXIkw0VueW674vnwFSMLzpeWyiO8QiheRd+114/iAlDVUwUyc/J
-	 Wb3V0lPoIAviw==
+	b=QsMWRMIFx47vFDpk+N+ZSGr3fHEfFNpQW7ktUVLHtO12WWPsRcSrbrgQPlqXOCHHD
+	 dGVDqCxJTxrWcfi6eeBTvxeplERQrceYJKvtqdR+LM4zCDLZXPhZF8lKafbPJzCJty
+	 dz5VV8j/bYqP+9d7JgtWcjNZ5DhS+VZoRrX7MSmxZ52ffgyNooRQobyrgn7LNHJ1xY
+	 IUOUm+kpwIW5YYVaPew4pjUkqORC5m1ij2GeJVQ/832Baxx9oXTzimWXH34G8IVUV6
+	 suRPkzFeBxcqxsxOpypqFsmQXXq8bg/RgctO70FBH7R5VvXdUaeJc0U3xlxwjOcMV2
+	 IMvQfqP+A+MTQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nYH90VZQhqtM; Tue, 17 Jan 2023 16:23:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Y-SDSyt0ojiD; Tue, 17 Jan 2023 16:23:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2DD7680C97;
-	Tue, 17 Jan 2023 16:23:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2DD7680C97
+	by smtp4.osuosl.org (Postfix) with ESMTP id 45A4940211;
+	Tue, 17 Jan 2023 16:23:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 45A4940211
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A22B11BF3C3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 00:37:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9EC1F1BF5A4
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 01:17:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7A5C7400C8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 00:37:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A5C7400C8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6D6A9401A1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 01:17:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6D6A9401A1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IH-cIF6bvpv3 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Jan 2023 00:37:26 +0000 (UTC)
+ with ESMTP id IvS74ffmMkvq for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Jan 2023 01:17:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B63FA4019D
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B63FA4019D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 00:37:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="386482893"
-X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="386482893"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2023 16:37:25 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4622400C8
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A4622400C8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jan 2023 01:17:52 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="321846192"
+X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="321846192"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2023 17:17:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="651703889"
-X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="651703889"
+X-IronPort-AV: E=McAfee;i="6500,9779,10589"; a="688929868"
+X-IronPort-AV: E=Sophos;i="5.97,215,1669104000"; d="scan'208";a="688929868"
 Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 13 Jan 2023 16:37:21 -0800
+ by orsmga008.jf.intel.com with ESMTP; 13 Jan 2023 17:17:48 -0800
 Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pGUXx-000BZ0-0D;
- Sat, 14 Jan 2023 00:37:21 +0000
-Date: Sat, 14 Jan 2023 08:37:06 +0800
+ (envelope-from <lkp@intel.com>) id 1pGVB4-000Bb4-2k;
+ Sat, 14 Jan 2023 01:17:46 +0000
+Date: Sat, 14 Jan 2023 09:17:34 +0800
 From: kernel test robot <lkp@intel.com>
 To: Jacob Keller <jacob.e.keller@intel.com>,
  Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202301140834.6XVKiwMy-lkp@intel.com>
-References: <20230113223735.2514364-6-jacob.e.keller@intel.com>
+Message-ID: <202301140926.TrUy4lNp-lkp@intel.com>
+References: <20230113223735.2514364-12-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="Hvp4zmDNZZBL5Rog"
+Content-Type: multipart/mixed; boundary="WnXEfPqFVnJxP/AG"
 Content-Disposition: inline
-In-Reply-To: <20230113223735.2514364-6-jacob.e.keller@intel.com>
+In-Reply-To: <20230113223735.2514364-12-jacob.e.keller@intel.com>
 X-Mailman-Approved-At: Tue, 17 Jan 2023 16:23:09 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673656646; x=1705192646;
+ t=1673659072; x=1705195072;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=CZiT/1KR5nV/pLLRFYpITSaUJnnRaTxvokaTtv62uTs=;
- b=fUghNAGDjk0mH6bH0X1v1HHKi4xEkqJfU6qx7l/cHwC2AbXHqV8gksyH
- psVN5Z0/m5AkVEX04iXkno8HgGvWREPAFQVTQtWB9h5kZh30yZNLE4pI8
- rS+NhB2FKBcfoeFyb4QzcUNQ9c3L5JHIrZTuEvCGBr4+W74hiHItHGZjR
- a8zYznXhmdsz7z7n7U/EL2TIs6LQUmQpHG2bdaiXFqk+CnpwRytiX0Ga8
- RtQ6AbgnatRf1kVw2CE3m2vnyzIZB+z2NWvzONKpY7d4QlmqPkIvipUWc
- 7W1UUhOTQwjYxdo+MVVllYmnz5mxapQ0TLGed1SLPLA8dQ63hQ59NpEiT
- w==;
+ bh=owld+zqCKrdjz5dZ8GeHzzI30rsMUMf0eKSuDDQM8ho=;
+ b=b6z585DxXnNo3tVO6QshF9ATVYR5YkSvwMSAmNeUV36eMPUqTh1r+wBI
+ MVojeyEd0dY5ZwfnHEoFUF/7NGKpIJ9Jof9BNeT7YKuLjTmXcsqRZoR9N
+ 1n7HFMLI4J38GAydC23SEJMuIY3USVuXRKSQB8KsIbv4g8g+Rcl+Ywm4J
+ UOu9r69dj4mSecvn7ycGn0Hqyb2a4+zueeIA5SqQkoWW7FJpwk5Xdid/g
+ HS7Pm9p2sWJDt7TfiD+xMwm13ghnUHd21t9Efsv0p9R5FjBVOQBHVmgBz
+ UxBnG3nKIt05UbqArf7p+Cg//DCfQFc9RRKqLtXJe9v2+7T39HTaDVe7i
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fUghNAGD
-Subject: Re: [Intel-wired-lan] [PATCH net-next 05/13] ice: Fix RDMA latency
- issue by allowing write-combining
+ header.a=rsa-sha256 header.s=Intel header.b=b6z585Dx
+Subject: Re: [Intel-wired-lan] [PATCH net-next 11/13] ice: introduce
+ clear_reset_state operation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,20 +107,20 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---Hvp4zmDNZZBL5Rog
+--WnXEfPqFVnJxP/AG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Jacob,
 
-I love your patch! Perhaps something to improve:
+I love your patch! Yet something to improve:
 
-[auto build test WARNING on c20aabd571649b632197cfe392eacf46a24c4c6a]
+[auto build test ERROR on c20aabd571649b632197cfe392eacf46a24c4c6a]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Jacob-Keller/ice-fix-function-comment-referring-to-ice_vsi_alloc/20230114-064026
 base:   c20aabd571649b632197cfe392eacf46a24c4c6a
-patch link:    https://lore.kernel.org/r/20230113223735.2514364-6-jacob.e.keller%40intel.com
-patch subject: [Intel-wired-lan] [PATCH net-next 05/13] ice: Fix RDMA latency issue by allowing write-combining
+patch link:    https://lore.kernel.org/r/20230113223735.2514364-12-jacob.e.keller%40intel.com
+patch subject: [Intel-wired-lan] [PATCH net-next 11/13] ice: introduce clear_reset_state operation
 config: powerpc-randconfig-r001-20230114
 compiler: clang version 16.0.0 (https://github.com/llvm/llvm-project 8d9828ef5aa9688500657d36cd2aefbe12bbd162)
 reproduce (this is a W=1 build):
@@ -128,10 +128,10 @@ reproduce (this is a W=1 build):
         chmod +x ~/bin/make.cross
         # install powerpc cross compiling tool for clang build
         # apt-get install binutils-powerpc-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/c7cecfd9d5d77d271297a76423056a07dfff1c8c
+        # https://github.com/intel-lab-lkp/linux/commit/3cb2a8cc80f288ac6362bc22b25f50e005742b91
         git remote add linux-review https://github.com/intel-lab-lkp/linux
         git fetch --no-tags linux-review Jacob-Keller/ice-fix-function-comment-referring-to-ice_vsi_alloc/20230114-064026
-        git checkout c7cecfd9d5d77d271297a76423056a07dfff1c8c
+        git checkout 3cb2a8cc80f288ac6362bc22b25f50e005742b91
         # save the config file
         mkdir build_dir && cp config build_dir/.config
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=powerpc olddefconfig
@@ -140,9 +140,16 @@ reproduce (this is a W=1 build):
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
->> drivers/net/ethernet/intel/ice/ice_main.c:623:5: warning: format specifies type 'unsigned long long' but the argument has type 'resource_size_t' (aka 'unsigned int') [-Wformat]
+>> drivers/net/ethernet/intel/ice/ice_main.c:540:3: error: call to undeclared function 'ice_set_vf_state_dis'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                   ice_set_vf_state_dis(vf);
+                   ^
+   drivers/net/ethernet/intel/ice/ice_main.c:540:3: note: did you mean 'ice_set_vf_state_qs_dis'?
+   drivers/net/ethernet/intel/ice/ice_vf_lib.h:264:20: note: 'ice_set_vf_state_qs_dis' declared here
+   static inline void ice_set_vf_state_qs_dis(struct ice_vf *vf)
+                      ^
+   drivers/net/ethernet/intel/ice/ice_main.c:623:5: warning: format specifies type 'unsigned long long' but the argument has type 'resource_size_t' (aka 'unsigned int') [-Wformat]
                      reg);
                      ^~~
    include/asm-generic/bug.h:181:57: note: expanded from macro 'WARN_ONCE'
@@ -169,47 +176,113 @@ All warnings (new ones prefixed by >>):
    include/linux/dev_printk.h:110:23: note: expanded from macro 'dev_printk_index_wrap'
                    _p_func(dev, fmt, ##__VA_ARGS__);                       \
                                 ~~~    ^~~~~~~~~~~
-   2 warnings generated.
+   drivers/net/ethernet/intel/ice/ice_main.c:5243:39: warning: shift count >= width of type [-Wshift-count-overflow]
+           err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(64));
+                                                ^~~~~~~~~~~~~~~~
+   include/linux/dma-mapping.h:76:54: note: expanded from macro 'DMA_BIT_MASK'
+   #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
+                                                        ^ ~~~
+   3 warnings and 1 error generated.
 
 
-vim +623 drivers/net/ethernet/intel/ice/ice_main.c
+vim +/ice_set_vf_state_dis +540 drivers/net/ethernet/intel/ice/ice_main.c
 
+   509	
+   510	/**
+   511	 * ice_prepare_for_reset - prep for reset
+   512	 * @pf: board private structure
+   513	 * @reset_type: reset type requested
+   514	 *
+   515	 * Inform or close all dependent features in prep for reset.
+   516	 */
+   517	static void
+   518	ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+   519	{
+   520		struct ice_hw *hw = &pf->hw;
+   521		struct ice_vsi *vsi;
+   522		struct ice_vf *vf;
+   523		unsigned int bkt;
+   524	
+   525		dev_dbg(ice_pf_to_dev(pf), "reset_type=%d\n", reset_type);
+   526	
+   527		/* already prepared for reset */
+   528		if (test_bit(ICE_PREPARED_FOR_RESET, pf->state))
+   529			return;
+   530	
+   531		ice_unplug_aux_dev(pf);
+   532	
+   533		/* Notify VFs of impending reset */
+   534		if (ice_check_sq_alive(hw, &hw->mailboxq))
+   535			ice_vc_notify_reset(pf);
+   536	
+   537		/* Disable VFs until reset is completed */
+   538		mutex_lock(&pf->vfs.table_lock);
+   539		ice_for_each_vf(pf, bkt, vf)
+ > 540			ice_set_vf_state_dis(vf);
+   541		mutex_unlock(&pf->vfs.table_lock);
+   542	
+   543		if (ice_is_eswitch_mode_switchdev(pf)) {
+   544			if (reset_type != ICE_RESET_PFR)
+   545				ice_clear_sw_switch_recipes(pf);
+   546		}
+   547	
+   548		/* release ADQ specific HW and SW resources */
+   549		vsi = ice_get_main_vsi(pf);
+   550		if (!vsi)
+   551			goto skip;
+   552	
+   553		/* to be on safe side, reset orig_rss_size so that normal flow
+   554		 * of deciding rss_size can take precedence
+   555		 */
+   556		vsi->orig_rss_size = 0;
+   557	
+   558		if (test_bit(ICE_FLAG_TC_MQPRIO, pf->flags)) {
+   559			if (reset_type == ICE_RESET_PFR) {
+   560				vsi->old_ena_tc = vsi->all_enatc;
+   561				vsi->old_numtc = vsi->all_numtc;
+   562			} else {
+   563				ice_remove_q_channels(vsi, true);
+   564	
+   565				/* for other reset type, do not support channel rebuild
+   566				 * hence reset needed info
+   567				 */
+   568				vsi->old_ena_tc = 0;
+   569				vsi->all_enatc = 0;
+   570				vsi->old_numtc = 0;
+   571				vsi->all_numtc = 0;
+   572				vsi->req_txq = 0;
+   573				vsi->req_rxq = 0;
+   574				clear_bit(ICE_FLAG_TC_MQPRIO, pf->flags);
+   575				memset(&vsi->mqprio_qopt, 0, sizeof(vsi->mqprio_qopt));
+   576			}
+   577		}
+   578	skip:
+   579	
+   580		/* clear SW filtering DB */
+   581		ice_clear_hw_tbls(hw);
+   582		/* disable the VSIs and their queues that are not already DOWN */
+   583		ice_pf_dis_all_vsi(pf, false);
+   584	
+   585		if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+   586			ice_ptp_prepare_for_reset(pf);
+   587	
+   588		if (ice_is_feature_supported(pf, ICE_F_GNSS))
+   589			ice_gnss_exit(pf);
+   590	
+   591		if (hw->port_info)
+   592			ice_sched_clear_port(hw->port_info);
+   593	
+   594		ice_shutdown_all_ctrlq(hw);
+   595	
+   596		set_bit(ICE_PREPARED_FOR_RESET, pf->state);
+   597	}
    598	
-   599	/**
-   600	 * ice_get_hw_addr - Get memory address for a given device register
-   601	 * @hw: pointer to the HW struct
-   602	 * @reg: the register to get address of
-   603	 *
-   604	 * Convert a register offset into the appropriate memory mapped kernel
-   605	 * address.
-   606	 *
-   607	 * Returns the pointer address or an ERR_PTR on failure.
-   608	 */
-   609	void __iomem *ice_get_hw_addr(struct ice_hw *hw, resource_size_t reg)
-   610	{
-   611		struct ice_hw_addr *hw_addr = (struct ice_hw_addr *)hw->hw_addr;
-   612		struct ice_hw_addr_map *map;
-   613		unsigned int i;
-   614	
-   615		if (WARN_ON(!hw_addr))
-   616			return (void __iomem *)ERR_PTR(-EIO);
-   617	
-   618		for (i = 0, map = hw_addr->maps; i < hw_addr->nr; i++, map++)
-   619			if (reg >= map->start && reg < map->end)
-   620				return (u8 __iomem *)map->addr + (reg - map->start);
-   621	
-   622		WARN_ONCE(1, "Unable to map register address 0x%0llx to kernel address",
- > 623			  reg);
-   624	
-   625		return (void __iomem *)ERR_PTR(-EFAULT);
-   626	}
-   627	
 
 -- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests
 
---Hvp4zmDNZZBL5Rog
+--WnXEfPqFVnJxP/AG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: attachment; filename=config
 
@@ -7019,7 +7092,7 @@ CONFIG_ARCH_USE_MEMTEST=y
 # CONFIG_WARN_ABI_ERRORS is not set
 # end of Kernel hacking
 
---Hvp4zmDNZZBL5Rog
+--WnXEfPqFVnJxP/AG
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -7030,4 +7103,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---Hvp4zmDNZZBL5Rog--
+--WnXEfPqFVnJxP/AG--
