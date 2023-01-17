@@ -1,97 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C86666E37E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 17:24:18 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B03EF66E384
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 17:24:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 071A361099;
-	Tue, 17 Jan 2023 16:24:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 071A361099
+	by smtp4.osuosl.org (Postfix) with ESMTP id 381284085B;
+	Tue, 17 Jan 2023 16:24:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 381284085B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673972657;
-	bh=s7cXdcamo2wR/JZIkLnLjJ7XUK5zvmGsQOyUPpikPzg=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=LB7rlTPGkSktqvwszMQv7L9AhHC8WTIz70fgRMa8hF8TVVB6qI92PuiyuuIvOKwG9
-	 VEde29HfuUztHc536AYK3jT9uaC58dZh1Tj4yTlLmFOwNSA/ObA6oq12BsqIgQ+8r3
-	 jCVDHhwFzaCCDtQkL4Vff67gbTLl7ov/95PB9wBJEZdCqj2DCKbKKHavK6fdysEbr7
-	 gw3T+HS2fd5n+0l9UTfw1UOOfGWCOSEYdyVWZwuDfUqi9wcafDw6mwlVj0yDul1Hnd
-	 AIQG5OxcU0iHbjQeQd9PrxFj24YvK4P/RNjHINlqJECUWD1wzrbyhgDaN6OBHB2EXA
-	 TVGwq5KGqi1EA==
+	s=default; t=1673972674;
+	bh=4dWn9yI1by3HiRN586K//eN8t+JTylcnkq7/okWjeTs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=9AkY6psIV+rqCleO56YFOgM42OgB+P93O1KMup1tEPnmW+yr052541b2PyGvM5pYP
+	 yVecJUgVRiqrCISMwxgsGDRJKgvrRUAtLf9ooMGQsq7uHLXepHxUcBWAqsqOtzvM01
+	 BfQCi67ft00C7L/ktmDXcpaUb4QDG3dt8WKD8S53u9o/PfvTrUZK0YnZEqOaCW8RTO
+	 adX1eNFc7FDcQNjq6bmFv2Zh0dufv/7ZWC8nd2iKLf+xrbsEE4dujJbHoriN9OA8wG
+	 fLxERbrMLLxmwuOVcqihTq1C323/UT4jiEMrsjlZ9itXXCdU0hC353gidv8G1UNjNl
+	 UytbtAzQkWjcQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5o3sscc6DXWz; Tue, 17 Jan 2023 16:24:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DoVw6sEXfjYe; Tue, 17 Jan 2023 16:24:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF03361084;
-	Tue, 17 Jan 2023 16:24:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF03361084
+	by smtp4.osuosl.org (Postfix) with ESMTP id C0C614028D;
+	Tue, 17 Jan 2023 16:24:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0C614028D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 332831BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 00:03:45 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4D5601BF283
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 10:27:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0F93380E17
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 00:03:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0F93380E17
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1D0A04026A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 10:27:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1D0A04026A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tIeUCBVqPO17 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Jan 2023 00:03:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 492B580CB8
-Received: from mail.3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 492B580CB8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 00:03:44 +0000 (UTC)
-Received: from mwalle01.sab.local (unknown [213.135.10.150])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.3ffe.de (Postfix) with ESMTPSA id 377561AA3;
- Tue, 17 Jan 2023 00:52:51 +0100 (CET)
-From: Michael Walle <michael@walle.cc>
-Date: Tue, 17 Jan 2023 00:52:27 +0100
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oeiJvdUHNkQ8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Jan 2023 10:27:34 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4D10340101
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4D10340101
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 10:27:34 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id b17so25556521pld.7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 02:27:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kmOnku77wCpJTbZOm6646yTM8PiOjj7loFTP8/nFzXY=;
+ b=NgnoXGehvhLxDNkYQe/nD+J3TIWdEEHeOY2TXDDP0Rce+qkbFhbxvmN2xqwLm2wXYC
+ uKSfm0DbhdtNBc9WLWzKI95i1HRXSiRu/994b6kwGgS3teKsQzfWwD/998Tz8ttgJ7TB
+ +1SNNNo/fRp0km6/hjhPzBS/GrbncJRosJ0Hj4+dzOfxWx/qZew54EcoFrlTkksYNY9M
+ XlCQFxxTRsTBIzmUWW+WpTeMxupQG1QA2wn2dqqhXJZI0vjpAoWsYqDyKtfgBaxs69x9
+ evindYQDofXUot6uJJ4jot62foSfWEwqyrJHGieN8OsqMR06C8MqeDJEVSFPh52QipTg
+ 36BA==
+X-Gm-Message-State: AFqh2kpFswRZvF58d68Xa5MNQTQdUyeM8aWTWpwQRGcLof4ELUv4zfAv
+ rwTUC1/44BUbWDvPoRzj6t0=
+X-Google-Smtp-Source: AMrXdXvLAqhc4oGk1i82O5NAA03rkDUCOFcyZ1urDuBJ7SYLHLU0Pr+NOGlOoGVyVwxRluvgf7o48w==
+X-Received: by 2002:a17:902:7106:b0:194:66db:7789 with SMTP id
+ a6-20020a170902710600b0019466db7789mr18287556pll.50.1673951253720; 
+ Tue, 17 Jan 2023 02:27:33 -0800 (PST)
+Received: from li540-143.members.linode.com ([2600:3c01::f03c:92ff:fe6e:f0f6])
+ by smtp.gmail.com with ESMTPSA id
+ q11-20020a170902eb8b00b00189c93ce5easm20796153plg.166.2023.01.17.02.27.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Jan 2023 02:27:33 -0800 (PST)
+From: Jiajia Liu <liujia6264@gmail.com>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com
+Date: Tue, 17 Jan 2023 10:26:46 +0000
+Message-Id: <20230117102645.24920-1-liujia6264@gmail.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-Message-Id: <20230116-net-next-c45-seperation-part-3-v1-12-0c53afa56aad@walle.cc>
-References: <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
-In-Reply-To: <20230116-net-next-c45-seperation-part-3-v1-0-0c53afa56aad@walle.cc>
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Byungho An <bh74.an@samsung.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, 
- Tom Lendacky <thomas.lendacky@amd.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Sergey Shtylyov <s.shtylyov@omp.ru>
-X-Mailer: b4 0.11.1
 X-Mailman-Approved-At: Tue, 17 Jan 2023 16:23:09 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=walle.cc; s=mail2022082101; t=1673913171;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VAC3lvYePixzcXebo4E3nrWp2H/ZNlz8TyV8NSReGQs=;
- b=GX7X6H8lc5xEN2+bG0vGPNrbHpUIAQOgt5cogS4U1N7qThjjN2kBzzYQp/8KzT84ti0igo
- xSB7LtanZuOWOoFLF//R6xu0DEVnKAgh2gmiPE8/wZoeTLTCRdhRpTvFILbtntC9hLuBLj
- CnLtT1FJ5lt9YoGY5oDs0zZjipTZSuzptW13uvMVmynj6dYqNfnd42XKFSNgMGotGTUKE8
- BXzciw/3UQuIntlC/9InYkjZ7/KD6wG+fCP+B75yawvNq2My4riw29+tbN+fKgvqe1mdeQ
- IY10rHas3nLp7tewG0aHGrt5ZwAbQkMfxwLieYn3rr2+MYMWJ09/jxb5QTziBA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=walle.cc header.i=@walle.cc
- header.a=rsa-sha256 header.s=mail2022082101 header.b=GX7X6H8l
-Subject: [Intel-wired-lan] [PATCH net-next 12/12] net: ethernet: renesas:
- rswitch: C45 only transactions
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kmOnku77wCpJTbZOm6646yTM8PiOjj7loFTP8/nFzXY=;
+ b=JaR9n1yIXU8Xys+G0tkz6C7PSqR9i0vQP6wK/Qb4e6Bby8BKdUMQFaniTYM+6DXD+U
+ +meRrjihC59W7zV8CV2T60XZGmhVcOAIlX207PcQhlxwyLB71sqSqq7CoW1TfxQ+WklD
+ vpeSGibDIK4/k5TDmZI0uIYTOfuPWayTKOlWMTVSmngoQjlM3Bxl3VyQFCadUor8azxp
+ pR8R1EQFXa/ArWCTgLm1ONwDPwjRoksC1bUCQTYvKRyozLphC/P7n0fMbldW40qLqj1b
+ Ds5Dazv2fMlTFQ43RwOt06CBvQXRVFzItzBXT7rfmJIVN6MUHnJqY8vlL90U+dQgrybX
+ 3qiA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=JaR9n1yI
+Subject: [Intel-wired-lan] [PATCH] e1000e: Add ADP_I219_LM17 to ME S0ix
+ blacklist
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,81 +109,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Michael Walle <michael@walle.cc>, intel-wired-lan@lists.osuosl.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: netdev@vger.kernel.org, Jiajia Liu <liujia6264@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The rswitch MDIO bus driver only supports C45 transfers. Update the
-function names to make this clear, pass the mmd as a parameter, and
-register the accessors to the _c45 ops of the bus driver structure.
+I219 on HP EliteOne 840 All in One cannot work after s2idle resume
+when the link speed is Gigabit, Wake-on-LAN is enabled and then set
+the link down before suspend. No issue found when requesting driver
+to configure S0ix. Add workround to let ADP_I219_LM17 use the dirver
+configured S0ix.
 
-Signed-off-by: Michael Walle <michael@walle.cc>
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=216926
+Signed-off-by: Jiajia Liu <liujia6264@gmail.com>
 ---
- drivers/net/ethernet/renesas/rswitch.c | 28 ++++++----------------------
- 1 file changed, 6 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/net/ethernet/renesas/rswitch.c b/drivers/net/ethernet/renesas/rswitch.c
-index 6441892636db..885fdb077b62 100644
---- a/drivers/net/ethernet/renesas/rswitch.c
-+++ b/drivers/net/ethernet/renesas/rswitch.c
-@@ -1024,34 +1024,18 @@ static int rswitch_etha_set_access(struct rswitch_etha *etha, bool read,
- 	return ret;
- }
- 
--static int rswitch_etha_mii_read(struct mii_bus *bus, int addr, int regnum)
-+static int rswitch_etha_mii_read_c45(struct mii_bus *bus, int addr, int devad,
-+				     int regad)
- {
- 	struct rswitch_etha *etha = bus->priv;
--	int mode, devad, regad;
--
--	mode = regnum & MII_ADDR_C45;
--	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	regad = regnum & MII_REGADDR_C45_MASK;
--
--	/* Not support Clause 22 access method */
--	if (!mode)
--		return -EOPNOTSUPP;
- 
- 	return rswitch_etha_set_access(etha, true, addr, devad, regad, 0);
- }
- 
--static int rswitch_etha_mii_write(struct mii_bus *bus, int addr, int regnum, u16 val)
-+static int rswitch_etha_mii_write_c45(struct mii_bus *bus, int addr, int devad,
-+				      int regad, u16 val)
- {
- 	struct rswitch_etha *etha = bus->priv;
--	int mode, devad, regad;
--
--	mode = regnum & MII_ADDR_C45;
--	devad = (regnum >> MII_DEVADDR_C45_SHIFT) & 0x1f;
--	regad = regnum & MII_REGADDR_C45_MASK;
--
--	/* Not support Clause 22 access method */
--	if (!mode)
--		return -EOPNOTSUPP;
- 
- 	return rswitch_etha_set_access(etha, false, addr, devad, regad, val);
- }
-@@ -1142,8 +1126,8 @@ static int rswitch_mii_register(struct rswitch_device *rdev)
- 	mii_bus->name = "rswitch_mii";
- 	sprintf(mii_bus->id, "etha%d", rdev->etha->index);
- 	mii_bus->priv = rdev->etha;
--	mii_bus->read = rswitch_etha_mii_read;
--	mii_bus->write = rswitch_etha_mii_write;
-+	mii_bus->read_c45 = rswitch_etha_mii_read_c45;
-+	mii_bus->write_c45 = rswitch_etha_mii_write_c45;
- 	mii_bus->parent = &rdev->priv->pdev->dev;
- 
- 	mdio_np = rswitch_get_mdio_node(rdev);
+It's regarding the bug above, it looks it's causued by the ME S0ix.
+And is there a method to make the ME S0ix path work?
 
+ drivers/net/ethernet/intel/e1000e/netdev.c | 25 ++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 04acd1a992fa..7ee759dbd09d 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6330,6 +6330,23 @@ static void e1000e_flush_lpic(struct pci_dev *pdev)
+ 	pm_runtime_put_sync(netdev->dev.parent);
+ }
+ 
++static u16 me_s0ix_blacklist[] = {
++	E1000_DEV_ID_PCH_ADP_I219_LM17,
++	0
++};
++
++static bool e1000e_check_me_s0ix_blacklist(const struct e1000_adapter *adapter)
++{
++	u16 *list;
++
++	for (list = me_s0ix_blacklist; *list; list++) {
++		if (*list == adapter->pdev->device)
++			return true;
++	}
++
++	return false;
++}
++
+ /* S0ix implementation */
+ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+ {
+@@ -6337,6 +6354,9 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+ 	u32 mac_data;
+ 	u16 phy_data;
+ 
++	if (e1000e_check_me_s0ix_blacklist(adapter))
++		goto req_driver;
++
+ 	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
+ 	    hw->mac.type >= e1000_pch_adp) {
+ 		/* Request ME configure the device for S0ix */
+@@ -6346,6 +6366,7 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+ 		trace_e1000e_trace_mac_register(mac_data);
+ 		ew32(H2ME, mac_data);
+ 	} else {
++req_driver:
+ 		/* Request driver configure the device to S0ix */
+ 		/* Disable the periodic inband message,
+ 		 * don't request PCIe clock in K1 page770_17[10:9] = 10b
+@@ -6488,6 +6509,9 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+ 	u16 phy_data;
+ 	u32 i = 0;
+ 
++	if (e1000e_check_me_s0ix_blacklist(adapter))
++		goto req_driver;
++
+ 	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
+ 	    hw->mac.type >= e1000_pch_adp) {
+ 		/* Keep the GPT clock enabled for CSME */
+@@ -6523,6 +6547,7 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+ 		else
+ 			e_dbg("DPG_EXIT_DONE cleared after %d msec\n", i * 10);
+ 	} else {
++req_driver:
+ 		/* Request driver unconfigure the device from S0ix */
+ 
+ 		/* Disable the Dynamic Power Gating in the MAC */
 -- 
 2.30.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
