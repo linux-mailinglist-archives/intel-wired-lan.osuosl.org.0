@@ -1,191 +1,186 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F15E66E70A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 20:35:24 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E2D3966E75D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Jan 2023 21:03:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 821FA410B8;
-	Tue, 17 Jan 2023 19:35:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 821FA410B8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 183834052A;
+	Tue, 17 Jan 2023 20:03:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 183834052A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1673984122;
-	bh=IllcejDTwnYkFxfPLfw1c5u90qJO87HTrWo2aMrJTek=;
+	s=default; t=1673985821;
+	bh=zQ2N50Ergp62tg5Qc4LDedygpXJMV+1R7gEyBW+U1No=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aqwUa2bJ1mwrwvmBM/nROMjBIgnOx8yIMElI0Ck1UrQao5rrFXK7oePzGMHLnFMCx
-	 Vj6BG0qUopoE+CdUOiEaJbsi6mo+JwniqbpnHRo5dmHN0x/CDjgM1qTWRRQA3iaJkY
-	 froIY27LfnTSB+N5VsgQZQacQ0WVgX9n7IfFG9s3l+xnp/1nCOCCIPocTF00oopjzb
-	 tPU4dFDiEqy6k1lCjbrn1g4W0BnRLlYxqOGCQ5x5vNmuZCA9jlQJ3GUt6kbQ9mZewg
-	 0BSHt9BZ/P2g7EbtplRTQQPihY+y/T5oHNZ1ZZ4oRCxtlRy+aC1g56vPKnRPiVMO9/
-	 zVHogJGP5fp3A==
+	b=2KXhiEjguoiMz9wmLcwq59riGtfirT4MYP/r9Sk9dzjPwW+H4npeCNJb+kgtOoJze
+	 E8YT3D4P6RSiNwJMOUaIY3yUag/lMapx6ZsR/Z40XozdnGzcqX/qHhfTSfy5EfMHMV
+	 svCp7nI1JBw8me3/+vmI8ZgEs7jsjA8u2ovk1yH9rOc1+W0RjxMGUwHuzUJ+y4qqhl
+	 boXGbjFxqBZZUDrUz0Xn22VptNASicj6/MTatqF74FZwj4uuQ8I+bcbufEhxjR9ZMn
+	 v73bwo1mAXlk1r8Nd6g+aA4RiZojK40tOrhVNqjfahDyBNThKnEkqJxOPpP8x4w4tU
+	 0kFwLizSf5eYw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LU5f22gTUSeJ; Tue, 17 Jan 2023 19:35:21 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MG4IVWlaChIH; Tue, 17 Jan 2023 20:03:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 03529408DF;
-	Tue, 17 Jan 2023 19:35:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03529408DF
+	by smtp2.osuosl.org (Postfix) with ESMTP id D0BCD408CA;
+	Tue, 17 Jan 2023 20:03:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0BCD408CA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 22FA11BF2EF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 19:35:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C937A1BF2EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 20:03:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F06C44048C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 19:35:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F06C44048C
+ by smtp2.osuosl.org (Postfix) with ESMTP id A2E764036F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 20:03:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A2E764036F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lBZy3LzSS1SR for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Jan 2023 19:35:15 +0000 (UTC)
+ with ESMTP id XsmL-e0bRQ6L for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Jan 2023 20:03:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E2D5F400B8
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E2D5F400B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 19:35:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="326870785"
-X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="326870785"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2023 11:34:56 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 903D840187
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 903D840187
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Jan 2023 20:03:31 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="324855368"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="324855368"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2023 12:03:30 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="727892201"
-X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="727892201"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga004.fm.intel.com with ESMTP; 17 Jan 2023 11:34:55 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="722801340"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="722801340"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga008.fm.intel.com with ESMTP; 17 Jan 2023 12:03:30 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 11:34:55 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.16; Tue, 17 Jan 2023 12:03:30 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 11:34:54 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 11:34:54 -0800
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 12:03:30 -0800
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.174)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 17 Jan 2023 11:34:53 -0800
+ 15.1.2507.16; Tue, 17 Jan 2023 12:03:29 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kg48naTDkV8iDINqWwCJCIKcZZIwwExxnTnk2tdoK1RbJKXbrvrtv3GaVeUtj6rIH7UiuYnbRsAEfhYgqGtkU2p/4c4Ktl7LMKlcPqYOPJTKBVqTmRMqkaQ/edJl2MEqtfnHtwyqrd+g8zJfqIpmWXS8z4TWy0wbMUdSOPPwUrf0FfvRaxwMIN39SH4ev7+x/RWXdp2BivdPv1S7sownPBdU5U+b9USLq62akG3wAwcpce5zAJ0dV1xotBCUk/jJK96+bP35GpK+sbRrHb+aWnnq79+CZnIYf4fN4Xp4dqGkwEwsGPo8fXReUTwsGyBbIKEV/lAdjIWYNmO1liXVcw==
+ b=SjFpczdKfa1p0EiEHVKM6P8csM5O8FpZFSV/VKuRZDjWhi8aEIDI+enRvZthsIs44MgeehhJFTuzhzJzacuiGMAh5vncO24b5uxesylJh1HVApmOItDs4lYGp61yN/qkJM1IZTKTJfG6UNAqA2/pOaLs8t804utZynynU4zF/q/BUueeEE1zz//g0y1JNuAQnDQSkAaRT5NIYI+5TRzF7KXdnaFt4BctZcVLf1/ydZMzwQVt4SMLY7w3hfoS9o0XtXXUdKwsJP3yD7fCe6e5wQ3LKdGglJEsNHl1G6ngtPn/sHWocvyJHRGaad2rzBZ1I9HDdAplXhVLhraptUk8xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2W1FDYuvss1aVNatPuW7gkvf/ipluQC2DBLDHb+NqVU=;
- b=gyYFB3zstsuraM5/53GkCFq6szWCVndxKkm9xDvBcHhiY4phSa9f8QfPZV9cBVjg0yJpaYj/gq1jpLpJHhQPdTg/euWqkiR/NxqT7JPMDWIh3vuKNPZ0hqd71syXYfaLITNZdtdHfy/cM7fmDy6xKCF8hUvmObkWDxCHvAklA40aRj+PDqawpbYWg7yrIt3DVq8FDNzr8aVuc2vElLoH6MKTE68jQWsXix57Bwq6mFNSvLO5Ar6+OWs+X24oUNhMlPz2/LRqisJeSRHWFk1jo+iH5rG+JUgZX4sb+pu5WYZH5in7qB/yHHxhRncdhERg4xE2ugQLBiPijJ2YdkuX8A==
+ bh=lnwNdeFO2gFC+O8Wimsr/eAoe0eccR7GygLgJ+NHW7M=;
+ b=PlCwleHD+g2ltOM7rhaQwfC0EmhBurwJfkbNZlJg9/A1028GC0dpMWe8jA0aS/J2GkcytabK7AfxVTSEe7SQ7Bd8s8ZBnQJO5bbWNxiT77kydsc8MIWjWmbKrLpQOkNVH+W0zwDlrpkHmhNoekDQ0t+2jt7wMLsQh8/ULTWsyCCNkRjkVsJpmaQ5p5dhylVxadZq+lOhlEC1gw5TWBoLsrFo+SwJ/oyDzwlO7QFMg67re17Tgq4Hd9JY4J/cUfsH/qvbA2NsIEh+FvHDQmpNwS0g6NsziROaC002HQd0b/ChICiHatOXHIxMYv/4tPF75eW75NTF5AzxmyBkeS72/g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by DS7PR11MB6127.namprd11.prod.outlook.com (2603:10b6:8:9d::15) with
- Microsoft SMTP Server (version=TLS1_2,
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by CY8PR11MB7133.namprd11.prod.outlook.com (2603:10b6:930:63::11)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Tue, 17 Jan
- 2023 19:34:51 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::5697:a11e:691e:6acf]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::5697:a11e:691e:6acf%5]) with mapi id 15.20.5986.023; Tue, 17 Jan 2023
- 19:34:51 +0000
-Message-ID: <9f29ff29-62bb-c92b-6d69-ccc86938929e@intel.com>
-Date: Tue, 17 Jan 2023 11:34:48 -0800
+ 2023 20:03:26 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::933:90f8:7128:f1c5%5]) with mapi id 15.20.5986.023; Tue, 17 Jan 2023
+ 20:03:26 +0000
+Message-ID: <2156a274-3224-440f-ee68-3f359a3a7b9a@intel.com>
+Date: Tue, 17 Jan 2023 12:03:23 -0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.1
 Content-Language: en-US
-To: Jiajia Liu <liujia6264@gmail.com>, <jesse.brandeburg@intel.com>,
- <anthony.l.nguyen@intel.com>, <davem@davemloft.net>, <edumazet@google.com>,
- <kuba@kernel.org>, <pabeni@redhat.com>
-References: <20230117102645.24920-1-liujia6264@gmail.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <20230117102645.24920-1-liujia6264@gmail.com>
-X-ClientProxiedBy: BY5PR16CA0021.namprd16.prod.outlook.com
- (2603:10b6:a03:1a0::34) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
+To: Jan Sokolowski <jan.sokolowski@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20230113131717.186154-1-jan.sokolowski@intel.com>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20230113131717.186154-1-jan.sokolowski@intel.com>
+X-ClientProxiedBy: BY5PR17CA0026.namprd17.prod.outlook.com
+ (2603:10b6:a03:1b8::39) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|DS7PR11MB6127:EE_
-X-MS-Office365-Filtering-Correlation-Id: c15e16fd-5933-4685-5688-08daf8c1e706
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|CY8PR11MB7133:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5b3d5085-d1ac-4918-b114-08daf8c5e51b
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: P/oYMccYc3NWRC7uYvLq7UYbabJjNM7aRLFbRE8daSFBA8TNLkPja6NFHMII49pWgi2S4VNJpToZFT2nraBpwNscNjdSmIkiCGGHeHFO/JHY/XMTe+BkAgXpFAOUiRofBxeut1R9+KcPtna1iBfAxGo4q7sI19H7ZXzHr0Zv1noiyoNz7XQu7cbM48vX9uTBF1fMtIu95Q+IuIqWQAOedo6yYolpKj+MwM8WzbbHqWKaQ9Y8/9KREh2ottlXjho015ZBfc+gQQEyNDjbN+IeGvtt12igp0gvTYhaLqVMXbQodGuh3ES5R0qBUaHsxjfJaSYGVSGxcE5+DtrIIYsH+bjr8WBNope/NHJij/nJQYDpuEdfn0r/5KVM3NgH1xZfGrOdpl02d6kcv15rvjGaVC1boroX7BhWqbUrjYd37ICsUpsPg2KJCl+v7zBSsangI4Po+Fwd+tM3UHpkdULpvG3dh741b3nl2NjQic/e3yv0xbZ93Q5MC2kGfRpXlQ4rN0FEeR70hV4gUyEMeXa34sjIUYIYz/mXKE/7Y7vAC0hnf/2w7xJDlHx3z5h7s6jaM1JJZ9u6QMVcKzUgqg403xP/pjO6SfSv4Q/BbN42GHRgb9aKEpM113SY1PerTdwntVbhvKG134dlLaMmPCrXiVXuJhnbweLkC8O1FptZtNFoLSf1m6zz1M58wIKDAdg+QKK/DcwcxxGf2WVgD52l3VXy3NbZvIwpw7/9MtjnmR0P6OOJW0iep0DcKtvMQkx6L40TyNJpBuW7Qw5pafGmW5mkrrCACQ1xpbzMS64ez4I=
+X-Microsoft-Antispam-Message-Info: rKrdTHibbMwEBQ4Qcw/z8ilZDY6ygIB3rTjTvFLx5K4CYnC+2TMfOLNf8U7FMn20+AbYqbOG6PcZ2I0RYJeOwUwN3nVA3xbtYKz3VFJN6SsxnLlI0thqJKyKQ0RT73baJgoZ0KyzgSj/XyedpvO0nHNHQCmcxOQQh4npmqI3/P8TdIcWszAo1EU7IBoIAxopphlIE7gVAJh2xvi1StZwVuLOT7KqlMnTkjCEua46sCw62N8mAfp8K+X2xVlObVlXjewqtNvE4io0itSkx+8uEmddS9xe3Nug7siS3zM34Lrtbz0rdOYxwxcjo1Y57jTqUbsS+PeaZwhSIVx1yet/AR5SmCA0/jJtRVrB54Gg9LQ47D1DJc4nv8cCbfTx8VAnuAYYHgyH0O62X2K2VyQ6NYG2e/JL/ClQrYUKeFFr/LSb8iJNR1tGRUaW9rlrE4gKYjuG9XkpZp1MsyW5Q+LbI6n4gIWmSWGbcXz1fxG/5eg8R+RARGhBYtwfE1yBTapz/GmpoSt1OZ9O9to4+kQmovkClq8Dy4R69B37Sem4pZognOUgAXE4niIyw0HSkEt7Hmmh4ukdxOz3AHmjTY9TWetcGfLbeyFIq87CF3fO904kOyNtkLUIpcPDOfqzgRd+7TTx0hWBkZuwMxn861JfY+RIM04GUCwFfIIsY7DQYqu9isJEnDsCgKU3jz7YWMkq0gjzi0+kXbx9FXWNiclFXUet2GbOME3FVy28xXk8kZJuj8ufdyIi9OC1FgEvk5tv
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(366004)(39860400002)(346002)(376002)(396003)(136003)(451199015)(36756003)(478600001)(82960400001)(31696002)(316002)(966005)(2906002)(6666004)(53546011)(6506007)(2616005)(83380400001)(6512007)(186003)(26005)(6486002)(86362001)(66946007)(4326008)(66476007)(8676002)(8936002)(66556008)(41300700001)(31686004)(38100700002)(5660300002)(32563001)(45980500001)(43740500002);
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(39860400002)(136003)(376002)(396003)(346002)(366004)(451199015)(36756003)(83380400001)(41300700001)(8936002)(2616005)(8676002)(54906003)(4326008)(316002)(53546011)(5660300002)(38100700002)(86362001)(82960400001)(31696002)(2906002)(66556008)(66946007)(30864003)(66476007)(186003)(478600001)(6486002)(966005)(6512007)(26005)(31686004)(107886003)(6666004)(6506007)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aU81Q1dsenBoQWx5T25uMjdXZ2lnVGs0Z3FkZThQMWFqSzBHdlpiU294VGVl?=
- =?utf-8?B?L1JmbDlWK3pCclhFeWVkV1lqbUlNb3FvTmRlZlhKNGNrR2tpZjlPaTQrQ0RM?=
- =?utf-8?B?bUFZRE9VZXQvbDhjZHJJL0RSVjVwUnh2Y2l6TGlHbnJrbkpDZTNjWndnSlVW?=
- =?utf-8?B?djIxT0Z0ay9uM1drNXRSZWZ0ZFlXSXZ0OGFBMklZK0k3T1NJNUJHbXRtT2Fo?=
- =?utf-8?B?QnNwWE5XWGpIcS85bW93dWRiY0l2OHFKVFlqYS9BSVBTeDlIQU95WmxKTEhY?=
- =?utf-8?B?MC9rSG9zck9XdG9JTFAxRVIzRGtzSFRiNXo1Z0RoSUFDNnpMUUxQcXV5QUdY?=
- =?utf-8?B?c1M3VmdqbDFiZVpIUFdkeVE5UDJwTkxtdGlYY052Q2t5dHFHRTVJWmpRdTRp?=
- =?utf-8?B?TEJYREg5c2d4TzJJdnRXL1hHUEJpUG5VSGRMd1VxSkprSmJuUlFDNC8vVTVS?=
- =?utf-8?B?QW01OWxiQ3NJZFFUSmRvdFg4QjIwTS9tOWIxa1grbjJRSlNBZTZQYndRbkhM?=
- =?utf-8?B?bmRvZVo4VHlHWHY4MVR0OStvNFQ4QlVTNUUvZGNPODRQWllQT2RsaVc3VGxv?=
- =?utf-8?B?R1IrMGtMaHprZjlmWnN4NkZTT1NHZ3JSRHp6NWgydXcva2hnMUVFWTNrL29X?=
- =?utf-8?B?bW9iRlZWT2xyVW01bEdiM0pSZ3dMNUdUL3J1bDkxbzJ6RVI0VEgxQStOQXhu?=
- =?utf-8?B?b05OOUpiN3VxVFFhaXByeDF6OUt1aFFJWkdRMHk0NDBaeit4Mjc0TDJBbnNz?=
- =?utf-8?B?RklveWoyRVNsUitSN1RRMm5KaERsZjNQWUtiVGJ4bW9VVlpwdWZaWDRpZDJp?=
- =?utf-8?B?ZUtldUU0STNMMFVqV3Z3bHJGVHBQVDVUSFZCYTViWkQvL2tHVW93TlVJdjZ6?=
- =?utf-8?B?VVNqbHZOTnFoRFVIQm8yazBSa01CQS9LaW5uN081aE5nWjBjRjBWbGtSZks1?=
- =?utf-8?B?WGJWVWNDdXpIUVBQTGg2dTNQYmtGZFRvTEw5bUREZnNyMVREMjZvbXRHNDZW?=
- =?utf-8?B?Qk50SnYxVkNWZFFtbVg0ZWZpcHlKQnJncmZpTjF6Tm1Id3JFQ3F5N0RGaEdW?=
- =?utf-8?B?aGNlV0VtTzdqS3RsamY3YTA2S21IM0wxMXBBcDNUZW55dWJzelA5VE1DT0xy?=
- =?utf-8?B?V0NiVmNKR2tpY2lSeFpQK1VkMTR6cDJFME1YSmtlUVlodTk0MEgwOER1WDBJ?=
- =?utf-8?B?QUEwNnQ1VWNtc25GMGN6c3kwbUFnY1VYWnR5Skw4cjR6UTZ5NTNJWUlDVVFS?=
- =?utf-8?B?RDNyT0NyelRYckR0enNwNWh5b0xDeks5eHhjTFFwQVdGM2k1dkxLSlZqVnlu?=
- =?utf-8?B?bHVrWFIwUmxmN25nenhjMEVUVUF2WGlqNHVjMzlndE9nSi95dmlodFhjQm9t?=
- =?utf-8?B?QWpzRjlERlNtRWVRYmFYdUE5Nkg2cGtwSXkwZDNQSkczY0NZcE0rNmE1dm54?=
- =?utf-8?B?alZRdCtSak9jckpORno3TEJ5M0gyakYrVk5uYi9NUGNhVTBjL2ZjYVpEVFR0?=
- =?utf-8?B?cVJwc2JwakpPL3lhWUpid1JkamViYmVRZnlrendRa0R1a2tCZDE0OEp4WkZD?=
- =?utf-8?B?WlkrakhtZGFnMUgzZE1BaGVVM3JiRjlJWGdXSkJ1WGZKRTVSVVJPWW4vZEZh?=
- =?utf-8?B?eUppT1l3V29qNkVOVk5BY1FyVkhRMHdadXlOQlNYNVl3OXhVclRCeEs0Z1Fv?=
- =?utf-8?B?WU9LS09jRXYxcDcvcmhGekpaWWpWT0pkL2dTRFR4MTZGWUovTTEzRmQvWTBE?=
- =?utf-8?B?YjF4aFZrVDlZcUFhQUt5cy8vMWE5YXg3ZFFhRkowTlh5cWR5MnZiY3E3c1hk?=
- =?utf-8?B?cWUrbWs0UjBRRE1SdDBtbDNob0dqVDJLb3dvVFJVeDNJaE5meHpTT2R6K1RC?=
- =?utf-8?B?b2M3UnlrU1NrZkxjRU5PMlRGTmVub3dWakFBRXhrdkRnbCtpc09wbnFhYmU5?=
- =?utf-8?B?c1lJQXN4SW9PWTVwV0NGTENMazFIRCt1emVGSzh6VjlNa2IxUmZpUWpFY2Jp?=
- =?utf-8?B?MnZTNmF3MUxBV2JCSFNlVXRMNzQ4Y2hLL3RPL3oxQUpNK1ZaTmkzdXZRSjVN?=
- =?utf-8?B?NExXNnNYdnB0Zkk5T0NId3lmb0xoR0tJWHVCVFF0OEJielVEY1pIamZFWWNr?=
- =?utf-8?B?UHFQL2N0MFhsVE5leVNESi91WS9Jd0I4RU85VUtTeE1FWlFITnlKVnlMY1c0?=
- =?utf-8?B?c0E9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: c15e16fd-5933-4685-5688-08daf8c1e706
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZGU4ZEhqUjArVWIzUlREY2RNOU9zUzJFODdGVXBkbHZrWWxBSUo2RzlYUXRa?=
+ =?utf-8?B?SmtSMjNMd2ZyUkpRWXdYbDc2ZXYvVFB3UzhOZkZvVzkvNWN4SEpwZ0M5WEQ0?=
+ =?utf-8?B?VWRGYnRzUTM1aG5waVFFT29reTlrUGpudzZMbWJOeUo0Y3RKNEtSLzA3NVlY?=
+ =?utf-8?B?KzNSbnV6emgyWktGZzNYN1c3TVJMKzlSb096TTZQNk5GTmxON3RPaTYyTjg0?=
+ =?utf-8?B?K2Fva09YVVJ6TkNRaHlmakVjM2RQSDNIREJOT21ldi9NQU5BREprN0poNXJG?=
+ =?utf-8?B?NDRGTG1rK2dwS252anE3OVpzWDJNYllkUnpTTGhvZVRTM1IvQ1QxeXEyRFJw?=
+ =?utf-8?B?WDIwVHArRXZNbkJTcFlDRVJkdDd2aDRVWGtxVWtIK2htZ0RwMEx5U2FaaHZW?=
+ =?utf-8?B?TVI4T0J4UWpQdjk3cFg2K1dxZGRpajdPZ3prYS9lbmlLOWdNSXkvdW5iRFhw?=
+ =?utf-8?B?cE9xak9GV0d6TWtMK3NZZDF6emhUTlVFbWJodjVWUXlJR2hWQ3RNUTl6RXZu?=
+ =?utf-8?B?NmpBaDNMdHhKNDMxWitOZVVlN01JMXRaU0dselBHRGdMYTBYL1czVVNWd1dr?=
+ =?utf-8?B?aHI2eVdROE9RZjJZbndjYittOWxaQXBnRW9WVjZvazAvTVZGUXQ0SVN1eEtT?=
+ =?utf-8?B?OUhoU09YVDhpZFlVRVpobXlqaUxrb0gxMXJ4clF3cGIwWGJKdXFWTlhQQkM2?=
+ =?utf-8?B?WDYwSDZTY3AxTnUzU0hCMkZtOEdRcFZROEtiVGg3cU1JcTR6eTUxNDlSNUtT?=
+ =?utf-8?B?RmQ0NUJMZVFIYTJ2S0hWdndNbDkrT0FLQ3JPdTBKWWhIZVF4eG94eWU5VC9X?=
+ =?utf-8?B?aHdaaXcvcFJYUTRIZVhFbFVaMEhpQXZXdVZ0OHNjaWJyZkxxTktjTm1BeEZO?=
+ =?utf-8?B?Zk9wb3ZwTnFXc3h4OUVYMUVaV3pubnRxWHk2UW5wamY3QjI2bGdzSjExaE05?=
+ =?utf-8?B?dnpPdEVETlpRdEVSdkdYc0ZDeTlIbkhGTlp6cGJ0NGtwL3MzTkZWRlpiTzl3?=
+ =?utf-8?B?dy8yQ1BoRWxKeURUeHh4SHVGTTZ3MDRXelVUcWlPY3JaS1JqVDlsdXZYUmlE?=
+ =?utf-8?B?S01JeG5UNWZtWEdIZEpkVmNITUZER0dzMk9aN2E5NmIwYlNsdGg1anl6VGFt?=
+ =?utf-8?B?OEJVUnV4ZmQwZGI4S3R1WlhaSnhYRFk1cU5oZDlYN2FpSHVycHEvNmxFRmtr?=
+ =?utf-8?B?Y3dWNkxOaXZyR2VYaWJSU3FySFllczJqd1VkdklTNUJYOXE4aVRBVWVrVGQz?=
+ =?utf-8?B?V3d6YStUeW5Ea3hrbFBXUUgvZEpJT2FHMGVYR1pyVlZiamNFL1NKcElXTzNS?=
+ =?utf-8?B?aHpUM0lHNXhYSFV5M3pNdEVwNENuSHVqY0R1b1JjUkNiMForWVdKNzBKa3E2?=
+ =?utf-8?B?K1drNjg4cEJyV1F2NU4zdGNYb2grOTl0eXlCUWJuRG40UzJPSndNYUxJUXNM?=
+ =?utf-8?B?c05XeXU0MStkdldUZmRORGRIdy9OVkRLQ05jZzBQb3JjTUp1UUNCNnd1cjA5?=
+ =?utf-8?B?dEhSRDllYzUva0FKNnY4WmZZeGpjdXBaTjl6ZXdYTGQ2M0VnY0ZOZVZNekxU?=
+ =?utf-8?B?RlBWejlMREEwNWtabmFqRlVnQ3YybXVsUUpQTDFOeXpmb3VtYjMrY3o2QWxW?=
+ =?utf-8?B?b3FoWk8rS2lMeHh6cG9jejN5RnZrTHhhTW95elBuZHJOMnVjMkd4N09HUUdl?=
+ =?utf-8?B?cEFqUHIvM2R1Z1pSVDF6KzZCcndnSVY2RUFFZkc1VnJSU0ptcWNEUHdIWWU2?=
+ =?utf-8?B?SzJ0Q2FJOXY2MWJMamE2dUNLVFhWOUxlallHYzlpV1BzY2RBKzI0K0ZyMjBs?=
+ =?utf-8?B?VHpPVS9udmxRRkJkTUVBbDNrZHM1VlBMclcyU0d0WmdWaUM4czVDaEJWT0xH?=
+ =?utf-8?B?RWhIaGdOclpYSjUrSzUwL0hyRVdHRUFmZ2dyRTQvZkkrRFZFMU41UnRvSWdN?=
+ =?utf-8?B?KzdVZkRKSXFVb1oxWnhSNGYwRk5kNm5pRzhXV2lOakVPOU4yS2pjZXJVYVFs?=
+ =?utf-8?B?L05BMzhXdjc5aEZLNDN4R3RLMElRZTBmNXZFTW1yTFd0ZXB4ZGVQUUVDdWR6?=
+ =?utf-8?B?MkpKQ3JVZWpyd0JpZTA0dm5iL2V2NlJ0SlJkY01PdFA3Q3FDc1J5N2hzdGRm?=
+ =?utf-8?B?WEtOdDJnNTJQaVZSdTk3UkkyU1l4MlIxZmtZL0t5UDUzZVlublNYdktJZldY?=
+ =?utf-8?B?aVE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b3d5085-d1ac-4918-b114-08daf8c5e51b
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2023 19:34:51.6237 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2023 20:03:26.4264 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /++/hWwwtsG5h8AMuKf/oogFmKjtZ0hSte20FcBxghZHOKMHWH47QU9NTXPhKvm6+0teSQI8plnoU9+SSBqbSBn1gzKEoaeKAbEKg/XMM34=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6127
+X-MS-Exchange-CrossTenant-UserPrincipalName: Zl2/RK5PWvyIfP9rUXGta3yzkq1DmeMf/PrlXr69vB9xSaLeV5/sugwnj+Tj0eHe1MvWdLHzseSHvFIUMcyEojwS/pE53POz4dh0qOOoJAQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7133
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673984114; x=1705520114;
+ t=1673985811; x=1705521811;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=AXcJSZehasHV7V5RMT3wteWiPBkSmKd8ANsFlDQZYxU=;
- b=jkvjQuesAa+u9nyWHtL0gBm32W3SBxm62WofD4BLSo5scRB6Du10qMCj
- OmmbU3H6ty6H0pCwflIH9DuKjAnQNpyRaFCHTZQOTnv+NNudCOwELshf8
- YsCpGdOFB5gWRquQRP7+/Iv49OwQm/BxY0gZGV510WivsNx1liC1d+88Y
- xgmPxcM2osvNkQbYi/aBgnR/I7isu+TkBzDSJNk7lFVxDVgp6FBBeqOM3
- 9z2L1g2x21mEEtoR6lnmeAG6vXECd0Okh+PcMijrHQ8FV4qGXW9wtD7HQ
- Zh1QmU0YyqDUQSJ2iuvv3H4cvIQz53Y46hEWnmW+/1cdCBZrU8OuNoCG0
+ bh=DWDMxbvRM/GJmQL7RDPXjRRe8LjHw9sZ3Crz9thwXJ8=;
+ b=RHejKBo3Jzz2dFRFpDUhWi+NjuJ8zIqgvvu9u1hm3jdXhRaQJ2LTgDSO
+ ZvN6CrNWwpjoFaaRudeDdNQCeTwvhSg+IjIAq1pn6llEXNs3cXXaXTm/X
+ OgW/jYlPtL/BNOiSn0p5I0ZW9E9QpugcUBEYXxXiKhC2D0MXCxhka+Z5Y
+ 5eatGf1piVVPhPyuIQpt16Jiuc1O6D5k4xUWrumbwdYXC9veCL+royj2d
+ vRA47AVh4CHotQXOuRrHquRf/F5cOxaGApk5WhF+fEcUY7cTM6C3Pa0mR
+ ylkEXTP/vftqoBfMWcs26YfCaK/Y1YAsxKujzWxm9PC1JAmKt6BdfhN/g
  w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jkvjQues
+ header.a=rsa-sha256 header.s=Intel header.b=RHejKBo3
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Add ADP_I219_LM17 to ME S0ix
- blacklist
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/2] i40e: Add ability to
+ change VFs default MAC address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,114 +193,461 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Kamil Maziarz <kamil.maziarz@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 1/17/2023 2:26 AM, Jiajia Liu wrote:
-> I219 on HP EliteOne 840 All in One cannot work after s2idle resume
-> when the link speed is Gigabit, Wake-on-LAN is enabled and then set
-> the link down before suspend. No issue found when requesting driver
-> to configure S0ix. Add workround to let ADP_I219_LM17 use the dirver
-> configured S0ix.
+On 1/13/2023 5:17 AM, Jan Sokolowski wrote:
+> From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 > 
-> Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=216926
-> Signed-off-by: Jiajia Liu <liujia6264@gmail.com>
+> Currently there is no way for a VF driver to specify if it wants to
+> change it's hardware address. New bits are being added to virtchnl.h
+> in struct virtchnl_ether_addr that allow the VF to correctly
+> communicate this information. 
+
+This was added with eb550f53099b ("virtchnl: Use pad byte in 
+virtchnl_ether_addr to specify MAC type") which landed in 5.14. I'm not 
+sure that's "new bits being added".
+
+> However, legacy VF drivers that don't
+> support the new virtchnl.h bits still need to be supported. Make a
+> best effort attempt at saving the VF's primary/device address in the
+> legacy case and depend on the VIRTCHNL_ETHER_ADDR_PRIMARY type for
+> the new case.
+
+This whole paragraph probably needs to be reworded.
+
+> Legacy case - If a unicast MAC is being added and the
+> default_lan_addr.addr is empty, then populate it. This assumes that the
+> address is the VF's hardware address. If unicast MAC is being deleted
+> and it matches the default_lan_addr.addr save the time when it happened
+> and replace it with the last MAC address on the MAC filter list.
+> If a unicast MAC is being added and the default_lan_addr.addr is not
+> empty,
+> then check if default MAC address was deleted shortly before adding
+> if yes then update the default_lan_addr.addr.
+> This is done because we cannot guarantee the order of
+> VIRTCHNL_OP_ADD_ETH_ADDR and VIRTCHNL_OP_DEL_ETH_ADDR.
+> 
+> New case - If a unicast MAC is being added and it's specified as
+> VIRTCHNL_ETHER_ADDR_PRIMARY, then replace the current
+> default_lan_addr.addr. If a unicast MAC is being deleted and it's type
+> is specified as VIRTCHNL_ETHER_ADDR_PRIMARY, then zero the
+> hw_lan_addr.addr.
+> 
+> Untrusted VFs - Only allow above legacy/new changes to their
+> hardware address if the PF has not set it administratively via
+> iproute2.
+> 
+> Trusted VFs - Always allow above legacy/new changes to their
+> hardware address even if the PF has administratively set it via
+> iproute2.
+> 
+> Co-Developed-by: Kamil Maziarz <kamil.maziarz@intel.com>
+> Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+
+Please fix ordering. Author should be first. Immediately following 
+Co-developed should be the co-developer's Sign-off. Co-developed-by is 
+preferred over Co-Developed-by
+
+> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
 > ---
-> 
-> It's regarding the bug above, it looks it's causued by the ME S0ix.
-> And is there a method to make the ME S0ix path work?
-> 
+> v2: previous version had been reported to not build under
+> some kernel configuration.
+> v3: fixed minor kerneldoc misspelling
 
-No idea. It does seem better to disable S0ix if it doesn't work properly
-first though...
+I don't recall seeing v1 and v2 on this list(?)
 
->  drivers/net/ethernet/intel/e1000e/netdev.c | 25 ++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
+> ---
+>   .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 264 ++++++++++++++----
+>   .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   9 +
+>   2 files changed, 217 insertions(+), 56 deletions(-)
+
+Patches don't apply, please rebase.
+
 > 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 04acd1a992fa..7ee759dbd09d 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6330,6 +6330,23 @@ static void e1000e_flush_lpic(struct pci_dev *pdev)
->  	pm_runtime_put_sync(netdev->dev.parent);
->  }
->  
-> +static u16 me_s0ix_blacklist[] = {
-> +	E1000_DEV_ID_PCH_ADP_I219_LM17,
-> +	0
-> +};
-> +
-> +static bool e1000e_check_me_s0ix_blacklist(const struct e1000_adapter *adapter)
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> index c2141f0c9adb..6654a230b035 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> @@ -2976,26 +2976,112 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+>   
+>   /**
+>    * i40e_vc_add_mac_addr_msg
+
+Should this be deleted?
+
+> + * i40e_vc_ether_addr_type - get type of virtchnl_ether_addr
+> + * @vc_ether_addr: used to extract the type
+> + **/
+> +static inline u8
+
+No inline in c files.
+
+> +i40e_vc_ether_addr_type(struct virtchnl_ether_addr *vc_ether_addr)
 > +{
-> +	u16 *list;
-> +
-> +	for (list = me_s0ix_blacklist; *list; list++) {
-> +		if (*list == adapter->pdev->device)
-> +			return true;
-> +	}
-> +
-> +	return false;
+> +	return vc_ether_addr->type & VIRTCHNL_ETHER_ADDR_TYPE_MASK;
 > +}
-
-The name of this function seems odd..? "check_me"? It also seems like we
-could just do a simple switch/case on the device ID or similar.
-
-Maybe: "e1000e_device_supports_s0ix"?
-
 > +
->  /* S0ix implementation */
->  static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->  {
-> @@ -6337,6 +6354,9 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->  	u32 mac_data;
->  	u16 phy_data;
->  
-> +	if (e1000e_check_me_s0ix_blacklist(adapter))
-> +		goto req_driver;
+> +/**
+> + * i40e_is_vc_addr_legacy
+> + * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
+> + *
+> + * check if the MAC address is from an older VF
+> + **/
+> +static inline bool
+
+same here
+
+> +i40e_is_vc_addr_legacy(struct virtchnl_ether_addr __maybe_unused *vc_ether_addr)
+
+Why '__maybe_unused'?
+
+> +{
+> +	return i40e_vc_ether_addr_type(vc_ether_addr) ==
+> +		VIRTCHNL_ETHER_ADDR_LEGACY;
+> +}
 > +
->  	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
->  	    hw->mac.type >= e1000_pch_adp) {
->  		/* Request ME configure the device for S0ix */
+> +/**
+> + * i40e_is_vc_addr_primary
+> + * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
+> + *
+> + * check if the MAC address is the VF's primary MAC
+> + * This function should only be called when the MAC address in
+> + * virtchnl_ether_addr is a valid unicast MAC
+> + **/
+> +static inline bool
 
+again, no inline. Pleas audit the rest of the patch for this.
 
-The related code also seems to already perform some set of mac checks
-here...
+> +i40e_is_vc_addr_primary(struct virtchnl_ether_addr
+> +			__maybe_unused *vc_ether_addr)
 
-> @@ -6346,6 +6366,7 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
->  		trace_e1000e_trace_mac_register(mac_data);
->  		ew32(H2ME, mac_data);
->  	} else {
-> +req_driver:>  		/* Request driver configure the device to S0ix */
->  		/* Disable the periodic inband message,
->  		 * don't request PCIe clock in K1 page770_17[10:9] = 10b
-> @@ -6488,6 +6509,9 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
->  	u16 phy_data;
->  	u32 i = 0;
->  
-> +	if (e1000e_check_me_s0ix_blacklist(adapter))
-> +		goto req_driver;
+__maybe_unused?
+
+> +{
+> +	return i40e_vc_ether_addr_type(vc_ether_addr) ==
+> +		VIRTCHNL_ETHER_ADDR_PRIMARY;
+> +}
 > +
+> +/**
+> + * i40e_is_legacy_umac_expired
+> + * @time_last_added_umac: time since the last delete of VFs default MAC
+> + *
+> + * check if last added legacy unicast MAC expired
+> + **/
+> +static inline bool
+> +i40e_is_legacy_umac_expired(unsigned long time_last_added_umac)
+> +{
+> +#define I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME  msecs_to_jiffies(3000)
 
-Why not just combine this check into the statement below rather than
-adding a goto?
+Please move the define out of the function.
 
->  	if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
->  	    hw->mac.type >= e1000_pch_adp) {
->  		/* Keep the GPT clock enabled for CSME */
-> @@ -6523,6 +6547,7 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
->  		else
->  			e_dbg("DPG_EXIT_DONE cleared after %d msec\n", i * 10);
->  	} else {
-> +req_driver:
->  		/* Request driver unconfigure the device from S0ix */
->  
->  		/* Disable the Dynamic Power Gating in the MAC */
+> +	return time_is_before_jiffies(time_last_added_umac +
+> +		I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME);
+> +}
+> +
+> +/**
+> + * i40e_update_vf_mac_addr
+> + * @vf: VF to update
+> + * @vc_ether_addr: structure from VIRTCHNL with MAC to add
+> + *
+> + * update the VF's cached hardware MAC if allowed
+> + **/
+> +static void
+> +i40e_update_vf_mac_addr(struct i40e_vf *vf,
+> +			struct virtchnl_ether_addr *vc_ether_addr)
+> +{
+> +	u8 *mac_addr = vc_ether_addr->addr;
+> +
+> +	if (!is_valid_ether_addr(mac_addr))
+> +		return;
+> +
+> +	/* if request to add MAC filter is a primary request
+> +	 * update its default MAC address with the requested one
+> +	 *
+> +	 * if it is a legacy request then check if current default is empty
+> +	 * if so update the default MAC
+> +	 * otherwise save it in case it is followed by a delete request
+> +	 * meaning VF wants to change its default MAC which will be updated
+> +	 * in the delete path
+> +	 */
+> +	if (i40e_is_vc_addr_primary(vc_ether_addr)) {
+> +		ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
+> +	} else {
+> +		if (is_zero_ether_addr(vf->default_lan_addr.addr)) {
+> +			ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
+> +		} else {
+> +			ether_addr_copy(vf->legacy_last_added_umac.addr,
+> +					mac_addr);
+> +			vf->legacy_last_added_umac.time_modified = jiffies;
+> +		}
+> +	}
+> +}
+> +
+> +/**
+> + * i40e_add_vf_mac_filters
+>    * @vf: pointer to the VF info
+> - * @msg: pointer to the msg buffer
+> + * @is_quiet: set true for printing msg without opcode info, false otherwise
+> + * @al: pointer to the address list of MACs to add
+>    *
+>    * add guest mac address filter
+>    **/
+> -static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+> +static int i40e_add_vf_mac_filters(struct i40e_vf *vf, bool *is_quiet,
+> +				   struct virtchnl_ether_addr_list *al)
+>   {
+> -	struct virtchnl_ether_addr_list *al =
+> -	    (struct virtchnl_ether_addr_list *)msg;
+>   	struct i40e_pf *pf = vf->pf;
+>   	struct i40e_vsi *vsi = NULL;
+> -	i40e_status ret = 0;
+
+How does this exist after the i40_status removal [1]? Seems like you are 
+on the wrong tree, branch, or are not rebased.
+
+Also, looks existing, but some of the vsi and ret initializations look 
+to be unneeded (below as well).
+
+> +	int ret = 0;
+>   	int i;
+>   
+> -	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+> -	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+> -		ret = I40E_ERR_PARAM;
+> -		goto error_param;
+> -	}
+> -
+>   	vsi = pf->vsi[vf->lan_vsi_idx];
+>   
+>   	/* Lock once, because all function inside for loop accesses VSI's
+> @@ -3016,20 +3102,23 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+>   		f = i40e_find_mac(vsi, al->list[i].addr);
+>   		if (!f) {
+>   			f = i40e_add_mac_filter(vsi, al->list[i].addr);
+> -
+>   			if (!f) {
+>   				dev_err(&pf->pdev->dev,
+>   					"Unable to add MAC filter %pM for VF %d\n",
+>   					al->list[i].addr, vf->vf_id);
+> -				ret = I40E_ERR_PARAM;
+> +				ret = -EINVAL;
+> +				spin_unlock_bh(&vsi->mac_filter_hash_lock);
+> +				goto error_param;
+> +			}
+> +
+> +			ret = i40e_add_vmmac_to_list(vf, al->list[i].addr);
+
+This function isn't added until patch 2. Does this patch compile?
+
+> +			if (ret) {
+>   				spin_unlock_bh(&vsi->mac_filter_hash_lock);
+>   				goto error_param;
+>   			}
+> -			if (is_valid_ether_addr(al->list[i].addr) &&
+> -			    is_zero_ether_addr(vf->default_lan_addr.addr))
+> -				ether_addr_copy(vf->default_lan_addr.addr,
+> -						al->list[i].addr);
+>   		}
+> +
+> +		i40e_update_vf_mac_addr(vf, &al->list[i]);
+>   	}
+>   	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+>   
+> @@ -3038,82 +3127,145 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+>   	if (ret)
+>   		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+>   			vf->vf_id, ret);
+> -
+>   error_param:
+> -	/* send the response to the VF */
+> -	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+> -				      ret, NULL, 0);
+> +	return ret;
+>   }
+>   
+>   /**
+> - * i40e_vc_del_mac_addr_msg
+> + * i40e_vc_add_mac_addr_msg
+>    * @vf: pointer to the VF info
+>    * @msg: pointer to the msg buffer
+>    *
+> - * remove guest mac address filter
+> + * add guest mac address filter
+>    **/
+> -static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+> +static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+>   {
+>   	struct virtchnl_ether_addr_list *al =
+>   	    (struct virtchnl_ether_addr_list *)msg;
+> -	bool was_unimac_deleted = false;
+> -	struct i40e_pf *pf = vf->pf;
+> -	struct i40e_vsi *vsi = NULL;
+> -	i40e_status ret = 0;
+> -	int i;
+> +	bool is_quiet = false;
+> +	int ret = 0;
+>   
+>   	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+>   	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+> -		ret = I40E_ERR_PARAM;
+> +		ret = -EINVAL;
+>   		goto error_param;
+>   	}
+>   
+> -	for (i = 0; i < al->num_elements; i++) {
+> -		if (is_broadcast_ether_addr(al->list[i].addr) ||
+> -		    is_zero_ether_addr(al->list[i].addr)) {
+> -			dev_err(&pf->pdev->dev, "Invalid MAC addr %pM for VF %d\n",
+> -				al->list[i].addr, vf->vf_id);
+> -			ret = I40E_ERR_INVALID_MAC_ADDR;
+> -			goto error_param;
+> +	ret = i40e_add_vf_mac_filters(vf, &is_quiet, al);
+> +
+> +error_param:
+> +	/* send the response to the VF */
+> +	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+> +					 ret, NULL, 0);
+> +}
+> +
+> +/**
+> + * i40e_vf_clear_default_mac_addr
+> + * @vf: pointer to the VF info
+> + * @is_legacy_unimac: is request to delete a legacy request
+> + *
+> + * clear VFs default MAC address
+> + **/
+> +static void i40e_vf_clear_default_mac_addr(struct i40e_vf *vf,
+> +					   bool is_legacy_unimac)
+> +{
+> +	eth_zero_addr(vf->default_lan_addr.addr);
+> +
+> +	if (is_legacy_unimac) {
+> +		unsigned long time_added =
+> +			vf->legacy_last_added_umac.time_modified;
+> +
+> +		if (!i40e_is_legacy_umac_expired(time_added)) {
+> +			ether_addr_copy(vf->default_lan_addr.addr,
+> +					vf->legacy_last_added_umac.addr);
+>   		}
+> -		if (ether_addr_equal(al->list[i].addr, vf->default_lan_addr.addr))
+> -			was_unimac_deleted = true;
+>   	}
+> +}
+> +
+> +/**
+> + * i40e_del_vf_mac_filters
+> + * @vf: pointer to the VF info
+> + * @al: pointer to the address list of MACs to delete
+> + *
+> + * remove guest mac address filters
+> + **/
+> +static int i40e_del_vf_mac_filters(struct i40e_vf *vf,
+> +				   struct virtchnl_ether_addr_list *al)
+> +{
+> +	bool was_unimac_deleted = false;
+> +	bool is_legacy_unimac = false;
+> +	struct i40e_pf *pf = vf->pf;
+> +	struct i40e_vsi *vsi = NULL;
+> +	int ret = 0;
+> +	int i;
+> +
+>   	vsi = pf->vsi[vf->lan_vsi_idx];
+>   
+>   	spin_lock_bh(&vsi->mac_filter_hash_lock);
+>   	/* delete addresses from the list */
+> -	for (i = 0; i < al->num_elements; i++)
+> -		if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+> -			ret = I40E_ERR_INVALID_MAC_ADDR;
+> +	for (i = 0; i < al->num_elements; i++) {
+> +		if (ether_addr_equal(al->list[i].addr,
+> +				     vf->default_lan_addr.addr)) {
+> +			if (!(vf->trusted || !vf->pf_set_mac)) {
+> +				dev_err(&pf->pdev->dev,
+> +					"VF attempting to override administratively set MAC address\n");
+> +				ret = -EPERM;
+> +				spin_unlock_bh(&vsi->mac_filter_hash_lock);
+> +				goto error_param;
+> +			} else {
+> +				was_unimac_deleted = true;
+> +				is_legacy_unimac =
+> +					i40e_is_vc_addr_legacy(&al->list[i]);
+> +			}
+> +		}
+> +
+> +		if (is_broadcast_ether_addr(al->list[i].addr) ||
+> +		    is_zero_ether_addr(al->list[i].addr) ||
+> +		    i40e_del_mac_filter(vsi, al->list[i].addr)) {
+> +			dev_err(&pf->pdev->dev, "Invalid MAC addr %pM for VF %d\n",
+> +				al->list[i].addr, vf->vf_id);
+> +			ret = -EINVAL;
+>   			spin_unlock_bh(&vsi->mac_filter_hash_lock);
+>   			goto error_param;
+>   		}
+>   
+> +		i40e_del_vmmac_from_list(vf, al->list[i].addr);
+> +	}
+>   	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+>   
+> +	if (was_unimac_deleted)
+> +		i40e_vf_clear_default_mac_addr(vf, is_legacy_unimac);
+> +
+>   	/* program the updated filter list */
+>   	ret = i40e_sync_vsi_filters(vsi);
+>   	if (ret)
+>   		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+>   			vf->vf_id, ret);
+> +error_param:
+> +	return ret;
+> +}
+>   
+> -	if (vf->trusted && was_unimac_deleted) {
+> -		struct i40e_mac_filter *f;
+> -		struct hlist_node *h;
+> -		u8 *macaddr = NULL;
+> -		int bkt;
+> +/**
+> + * i40e_vc_del_mac_addr_msg
+> + * @vf: pointer to the VF info
+> + * @msg: pointer to the msg buffer
+> + *
+> + * remove guest mac address filter
+> + **/
+> +static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+> +{
+> +	struct virtchnl_ether_addr_list *al =
+> +	    (struct virtchnl_ether_addr_list *)msg;
+> +	int ret = 0;
+>   
+> -		/* set last unicast mac address as default */
+> -		spin_lock_bh(&vsi->mac_filter_hash_lock);
+> -		hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
+> -			if (is_valid_ether_addr(f->macaddr))
+> -				macaddr = f->macaddr;
+> -		}
+> -		if (macaddr)
+> -			ether_addr_copy(vf->default_lan_addr.addr, macaddr);
+> -		spin_unlock_bh(&vsi->mac_filter_hash_lock);
+> +	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+> +	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+> +		ret = -EINVAL;
+> +		goto error_param;
+>   	}
+> +
+> +	ret = i40e_del_vf_mac_filters(vf, al);
+> +
+>   error_param:
+>   	/* send the response to the VF */
+>   	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR, ret);
+
+
+[1] 
+https://lore.kernel.org/intel-wired-lan/20230109141120.3197817-1-jan.sokolowski@intel.com/
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
