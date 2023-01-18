@@ -1,89 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4C6A67214D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 16:31:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7202867218B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 16:41:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4616481D24;
-	Wed, 18 Jan 2023 15:31:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4616481D24
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6471960FA9;
+	Wed, 18 Jan 2023 15:41:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6471960FA9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674055880;
-	bh=ynvA1a6x2nkCXw3Sf7kLG++DJwpVH0719VoxxVT7v8E=;
+	s=default; t=1674056502;
+	bh=7Pto4kbGtYsaZq96vRHhhzw/EeCQA/D2/qrEZlgJv+E=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=LVz3ufyYv0EQp7UOVQA+tya57eJ3+1Hw8q7C5N5oS9SdPnbtEsQg6eqcGVNy2xMca
-	 aePzrNXfmBVvnnB8zlcqoSFAfZjEH5rGxB508c8h2FNBHbjzRqu1dum1/5pTzPOSfb
-	 kmkoYc09BeTP8wwYIMDSAx4PxUnl+aDdhR9XOYDWfZp6bw2gmrK9nRByGydp4a84/2
-	 GXxEAmJ0PEOS7woHaZs4MdGq7qaaNUKn6xfHlEss4FznosVjF+8oOKmcS6LH3Pj9sj
-	 Z2zDsgu5ThlmfaaAyELCNSCavYFXJBZul9c8puitKZmljhbk/nHkEVF/6zwA9e7BhT
-	 +iosn2eQ/+GBg==
+	b=k9NSUqOj8j8PDiLaa9uVgm84KkbBqiAOb0DPLsajs37TSu9cww+nD7CZ2KWc5S0nc
+	 38SrryBoExMo4wlxLHrt7FqTo/1MhmhhDiM72Nc+WY5LnI43nIyQGS+SCDzC06Vcex
+	 lbTjqU8vn6zmyjfuHC11ca6ZX+QzxhcPE4QelDBOHmMNkTqZfkV1Sw0aaEG6A5ykvO
+	 RkXLTA8dL7AoRxioO7Lzg3tjky2XTaRDOi1uPmiBVWFI3sNRVL/oMlmRwGkbchrXga
+	 sAR09qS3mw4cKTo+cG90gzJ1ZxYX90M9oOgYr5+4DXteKnzEBSx4qu3aMsbKu420uI
+	 aqWhjuGES/4bg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mrualolxnbR3; Wed, 18 Jan 2023 15:31:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k-mXNa6e146E; Wed, 18 Jan 2023 15:41:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06A5D81C0A;
-	Wed, 18 Jan 2023 15:31:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06A5D81C0A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2107260F82;
+	Wed, 18 Jan 2023 15:41:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2107260F82
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3E4F11BF312
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D8A511BF312
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 18F5240AA3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18F5240AA3
+ by smtp4.osuosl.org (Postfix) with ESMTP id B2C074168F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2C074168F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4D_bE1UorIGO for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jan 2023 15:31:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ycM_oeAHhgfD for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jan 2023 15:41:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71B07400FD
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 71B07400FD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="322696729"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="322696729"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2023 07:31:08 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18488415E5
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 18488415E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304692815"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304692815"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2023 07:39:34 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="661752415"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="661752415"
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="767790967"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="767790967"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmsmga007.fm.intel.com with ESMTP; 18 Jan 2023 07:31:07 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 18 Jan 2023 07:39:32 -0800
 From: Kamil Maziarz <kamil.maziarz@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 18 Jan 2023 16:31:02 +0100
-Message-Id: <20230118153102.1325350-1-kamil.maziarz@intel.com>
+Date: Wed, 18 Jan 2023 16:39:26 +0100
+Message-Id: <20230118153926.1335517-1-kamil.maziarz@intel.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674055872; x=1705591872;
+ t=1674056494; x=1705592494;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=0GFCmivVKx7LovgFRdvHl1IMsMA/Pl91Vj41dejmMIw=;
- b=mOUf8RaQm+TkrlOxfYvRL0Vk4AcxieIcKdcYKfWNzK3NMrh8LDru350Z
- OFha/XTFkZJITaI6BxkkognNIUpKaLZ+XatNhb/A3eVIU1rOhs8Lfb6BP
- c35Tr/R2Z8NaRODbF/yV/ZTF8zt+616yNnDE+jHzSYIn85TTs9B6G58nB
- 8bxP0+vsTdNAptU2aEM6sPFiVMhNviY0/q8SuQFgOk9Cq1i7URNcWUKwh
- eDqb35QeVMRURzIMSW7MdD7OgO/iYvc8nknC7cjhsm8yiHRUYfGCQFQwk
- KDv6SZ/znLc5fyQKug/P/kETYgxpErDOt57uLl69rHQSrDktxgzRQi6cm
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=wCBNnICQw8npUui83+26xA8hWF54Hb2Rjpp/stpQZDk=;
+ b=BI9xLJeNksdw9P3ZvsK9bnsQWyYqRxwJnmkUuh4dfGti2CXDM9sU/w0H
+ dLREEeeIowAblTnuiTK6InqkG2mjKB6kvn6wQwfQ4+j7uFvqyt64FLphc
+ v5T3VqbS4Hv5B9/wTrGRZQpmcZ/QdfDul45Daxd41U7gl14gy1JC1KYE9
+ Jlxo2GFMliIci4TIdARcC43zpBVV2amfmhncwI+N0RHRIK9kV0GYEQ7a0
+ nZ17emBNlFlrDLzbdvmDfxIeOh7oEDHin+3UQqqRu2vTH4z7BWbRbllw4
+ Pj/H8bqThCHWcH8xcHvaudjA2dIObkIWHed3+iSCgFIm19xgo2wuVKC4L
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mOUf8RaQ
-Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix crash when rebuild fails
- in i40e_xdp_setup When attaching XDP program on i40e driver there was a
- reset and rebuild of the interface to reconfigure the queues for XDP
- operation. If one of the steps of rebuild failed then the interface was
- left in incorrect state that could lead to a crash. If rebuild failed while
- getting capabilities from HW such crash occurs:
+ header.a=rsa-sha256 header.s=Intel header.b=BI9xLJeN
+Subject: [Intel-wired-lan] [PATCH net v4] i40e: Fix crash when rebuild fails
+ in i40e_xdp_setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,6 +101,12 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+
+When attaching XDP program on i40e driver there was a reset and rebuild of
+the interface to reconfigure the queues for XDP operation. If one of the
+steps of rebuild failed then the interface was left in incorrect state that
+could lead to a crash. If rebuild failed while getting capabilities from HW
+such crash occurs:
 
 capability discovery failed, err I40E_ERR_ADMIN_QUEUE_TIMEOUT aq_err OK
 BUG: unable to handle kernel NULL pointer dereference at
@@ -146,6 +148,8 @@ Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
 v2: don't reinitialize rings while hotswapping program
 ---
 v3: error code 'ret' set to -EIO
+---
+v4: fixed the subject
 ---
  drivers/net/ethernet/intel/i40e/i40e_main.c | 145 +++++++++++++++-----
  1 file changed, 109 insertions(+), 36 deletions(-)
