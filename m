@@ -1,109 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EB68672335
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 17:29:09 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4C6A67214D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 16:31:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7AB5F404CC;
-	Wed, 18 Jan 2023 16:29:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7AB5F404CC
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4616481D24;
+	Wed, 18 Jan 2023 15:31:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4616481D24
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674059347;
-	bh=akMFMvjERwO8LTrQWl1iznmXexrLgHbJww8XLWtjI6A=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=UmB99OwNpBRr0ZGbNOyrnF1N2e1JvP6kdX8YcopFZIWpZxoOZc1EvnhDFRLE4gAFp
-	 LXXuoATDCxRf/TTKiz2TGQFFAsB3wmhmnazuAyW+OuVmlEtGNTIKj0at4UXr+Qd/9Q
-	 KXQMUF82EQ1sWxYLzO2s2+yTCkkJ3+TfI92GVGWqap2ApMLUroyJoetPcTW1loliYz
-	 ycO4XL+tS0c6MGJfNoJ+VUh/2rpjlcw6i57KQ3ZaFCSsv3ElcgXLAZ1HBcKX8/M4f4
-	 jtZZyu/6cRFU/gbS/rkCI1FXNiOvwO32TJWma5+USscnnQ0HeyUdMtm8g20Sa3Xk00
-	 gNqpui1P/GjHw==
+	s=default; t=1674055880;
+	bh=ynvA1a6x2nkCXw3Sf7kLG++DJwpVH0719VoxxVT7v8E=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=LVz3ufyYv0EQp7UOVQA+tya57eJ3+1Hw8q7C5N5oS9SdPnbtEsQg6eqcGVNy2xMca
+	 aePzrNXfmBVvnnB8zlcqoSFAfZjEH5rGxB508c8h2FNBHbjzRqu1dum1/5pTzPOSfb
+	 kmkoYc09BeTP8wwYIMDSAx4PxUnl+aDdhR9XOYDWfZp6bw2gmrK9nRByGydp4a84/2
+	 GXxEAmJ0PEOS7woHaZs4MdGq7qaaNUKn6xfHlEss4FznosVjF+8oOKmcS6LH3Pj9sj
+	 Z2zDsgu5ThlmfaaAyELCNSCavYFXJBZul9c8puitKZmljhbk/nHkEVF/6zwA9e7BhT
+	 +iosn2eQ/+GBg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V04KU3QaWzjr; Wed, 18 Jan 2023 16:29:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mrualolxnbR3; Wed, 18 Jan 2023 15:31:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B29DE40448;
-	Wed, 18 Jan 2023 16:29:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B29DE40448
+	by smtp1.osuosl.org (Postfix) with ESMTP id 06A5D81C0A;
+	Wed, 18 Jan 2023 15:31:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06A5D81C0A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 23AEC1BF312
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:15:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3E4F11BF312
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F203760F8C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:15:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F203760F8C
+ by smtp2.osuosl.org (Postfix) with ESMTP id 18F5240AA3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18F5240AA3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nU96JT35y3CQ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jan 2023 15:15:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4D_bE1UorIGO for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jan 2023 15:31:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 32CA360F56
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 32CA360F56
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:15:00 +0000 (UTC)
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-468-zv13HUa9N0GqRCfwMZjaCw-1; Wed, 18 Jan 2023 10:14:57 -0500
-X-MC-Unique: zv13HUa9N0GqRCfwMZjaCw-1
-Received: by mail-pl1-f200.google.com with SMTP id
- j16-20020a170902da9000b00194c056109eso538952plx.18
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 07:14:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LwZ/8Z3ryIfv1IBb1wT6f51xYsnVszpzUcMeJ1HqjCw=;
- b=uKm/bhaY28cT+rTEVIImN6IVzQ0seeozFqPlqEsnPaOecAn0MmJMwaNeEFvBlGrtTb
- zXYwCIqgisWfZR9mqTkuTB9hegSC9pG2wJDkNdPW8x6JDIERJXUueqmkiGCMKHIlAY5W
- PY3yPZsCSzTSs/CPFwl+4IxckgoXna/vT2e7Nhxk609reF88/oE/OXaqFw4Ee4HGpova
- O7zR7gv2LFRU9Us7hRDzVRg+xC47etpuawJUk6VZ7CmujngElGA7w0sHeXQqBViqNvhK
- IlZpxoJfZsKiiqh1dSaQENUxpdYymvFc5oEX+puLzZC37AqsLOSXJYJFRkgK/xhn4PEJ
- QW3A==
-X-Gm-Message-State: AFqh2koPNWCKivDHU0bxnn/HxxHELxhUvluGXGOGscqWYqYiFyl6FYCL
- f4SLFdUybacR0JQQSd+suN7I5cVXDO9PTy99tqIyKno9ZwuJ7JlrxUniYagGCaF5TI4265E4+w6
- ikge7CyhXQyyNM+mprJqCjVu8Gj7pcc2JvifUrxGfNpKy8Q==
-X-Received: by 2002:a17:903:2614:b0:194:78f2:a4df with SMTP id
- jd20-20020a170903261400b0019478f2a4dfmr683462plb.74.1674054893217; 
- Wed, 18 Jan 2023 07:14:53 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXum/92rV7C+BB6nn9ripD8VYwZgvk4rDoffnGL/mpGbigHjNhkkju7o/H1fejOoHUDaD423ZgtyI3/115yIEkg=
-X-Received: by 2002:a17:903:2614:b0:194:78f2:a4df with SMTP id
- jd20-20020a170903261400b0019478f2a4dfmr683456plb.74.1674054892810; Wed, 18
- Jan 2023 07:14:52 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71B07400FD
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 71B07400FD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:31:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="322696729"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="322696729"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2023 07:31:08 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="661752415"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="661752415"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmsmga007.fm.intel.com with ESMTP; 18 Jan 2023 07:31:07 -0800
+From: Kamil Maziarz <kamil.maziarz@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 18 Jan 2023 16:31:02 +0100
+Message-Id: <20230118153102.1325350-1-kamil.maziarz@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230117181533.2350335-1-neelx@redhat.com>
- <2bdeb975-6d45-67bb-3017-f19df62fe7af@intel.com>
-In-Reply-To: <2bdeb975-6d45-67bb-3017-f19df62fe7af@intel.com>
-From: Daniel Vacek <neelx@redhat.com>
-Date: Wed, 18 Jan 2023 16:14:15 +0100
-Message-ID: <CACjP9X-hKf8g2UqitV8_G7WQW7u6Js5EsCNutsAMA4WD7YYSwA@mail.gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Approved-At: Wed, 18 Jan 2023 16:28:51 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1674054899;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LwZ/8Z3ryIfv1IBb1wT6f51xYsnVszpzUcMeJ1HqjCw=;
- b=DAYIEy+Ph0G8C4laXwKy3ocd/kWb+H+ILC61wm8C+jDtJ+A6aM0E+xGDMBN6umzctwD1Zh
- nRzzTRHHepBPYFJGDRJ6xWioZuhjUBM6eObic+N+XWSTRYN208jMPA2KPiX6Zly2X2OAgR
- xkA1Q10VUuUC1EnD7muArLE+Aq8P5n0=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=DAYIEy+P
-Subject: Re: [Intel-wired-lan] [PATCH] ice/ptp: fix the PTP worker retrying
- indefinitely if the link went down
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674055872; x=1705591872;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=0GFCmivVKx7LovgFRdvHl1IMsMA/Pl91Vj41dejmMIw=;
+ b=mOUf8RaQm+TkrlOxfYvRL0Vk4AcxieIcKdcYKfWNzK3NMrh8LDru350Z
+ OFha/XTFkZJITaI6BxkkognNIUpKaLZ+XatNhb/A3eVIU1rOhs8Lfb6BP
+ c35Tr/R2Z8NaRODbF/yV/ZTF8zt+616yNnDE+jHzSYIn85TTs9B6G58nB
+ 8bxP0+vsTdNAptU2aEM6sPFiVMhNviY0/q8SuQFgOk9Cq1i7URNcWUKwh
+ eDqb35QeVMRURzIMSW7MdD7OgO/iYvc8nknC7cjhsm8yiHRUYfGCQFQwk
+ KDv6SZ/znLc5fyQKug/P/kETYgxpErDOt57uLl69rHQSrDktxgzRQi6cm
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=mOUf8RaQ
+Subject: [Intel-wired-lan] [PATCH net v3] i40e: Fix crash when rebuild fails
+ in i40e_xdp_setup When attaching XDP program on i40e driver there was a
+ reset and rebuild of the interface to reconfigure the queues for XDP
+ operation. If one of the steps of rebuild failed then the interface was
+ left in incorrect state that could lead to a crash. If rebuild failed while
+ getting capabilities from HW such crash occurs:
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,441 +96,297 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Kolacinski, Karol" <karol.kolacinski@intel.com>, netdev@vger.kernel.org,
- Richard Cochran <richardcochran@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Siddaraju <siddaraju.dh@intel.com>
+Cc: Kamil Maziarz <kamil.maziarz@intel.com>,
+ Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Andrii Staikov <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 17, 2023 at 7:47 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
-> On 1/17/2023 10:15 AM, Daniel Vacek wrote:
-> > When the link goes down the ice_ptp_tx_tstamp_work() may loop forever trying
-> > to process the packets. In this case it makes sense to just drop them.
-> >
->
-> Hi,
->
-> Do you have some more details on what situation caused this state? Or is
-> this just based on code review?
->
-> It won't loop forever because if link is down for more than 2 seconds
-> we'll discard the old timestamps which we assume are not going to arrive.
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 
-Oh, my bad. I should have improved the commit message. This
-comes from RHEL 8.4 where we do not have commit 0dd9286263923
-("ice: handle discarding old Tx requests in ice_ptp_tx_tstamp")
-yet.
+capability discovery failed, err I40E_ERR_ADMIN_QUEUE_TIMEOUT aq_err OK
+BUG: unable to handle kernel NULL pointer dereference at
+0000000000000000 Call Trace:
+? i40e_reconfig_rss_queues+0x120/0x120 [i40e]
+  dev_xdp_install+0x70/0x100
+  dev_xdp_attach+0x1d7/0x530
+  dev_change_xdp_fd+0x1f4/0x230
+  do_setlink+0x45f/0xf30
+  ? irq_work_interrupt+0xa/0x20
+  ? __nla_validate_parse+0x12d/0x1a0
+  rtnl_setlink+0xb5/0x120
+  rtnetlink_rcv_msg+0x2b1/0x360
+  ? sock_has_perm+0x80/0xa0
+  ? rtnl_calcit.isra.42+0x120/0x120
+  netlink_rcv_skb+0x4c/0x120
+  netlink_unicast+0x196/0x230
+  netlink_sendmsg+0x204/0x3d0
+  sock_sendmsg+0x4c/0x50
+  __sys_sendto+0xee/0x160
+  ? handle_mm_fault+0xc1/0x1e0
+  ? syscall_trace_enter+0x1fb/0x2c0
+  ? __sys_setsockopt+0xd6/0x1d0
+  __x64_sys_sendto+0x24/0x30
+  do_syscall_64+0x5b/0x1a0
+  entry_SYSCALL_64_after_hwframe+0x65/0xca
+  RIP: 0033:0x7f3535d99781
 
-Though, I still consider 2 seconds being 'forever like'.
+Fix this by removing reset and rebuild from i40e_xdp_setup and replace it by
+interface down, reconfigure queues and interface up. This way if any step fails
+the interface will remain in a correct state.
 
-What really happened is that after the link went down, the
-kthread worker 'ice-ptp-0000:10' being a high prio RT class
-task kept looping on CPU 33 for almost three minutes starving
-other tasks with lower priority. This resulted in RCU stall
-and finally in panic due to hung tasks.
+Fixes: 0c8493d90b6b ("i40e: add XDP support for pass and drop actions")
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+---
+v2: don't reinitialize rings while hotswapping program
+---
+v3: error code 'ret' set to -EIO
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 145 +++++++++++++++-----
+ 1 file changed, 109 insertions(+), 36 deletions(-)
 
-The machine is using the E810 NIC.
-
-> [1193024.082447] ice 0000:10:00.1 ens1f1: NIC Link is Down
-> [1193024.087861] iavf 0000:10:09.1 net1: NIC Link is Down
-> [1193024.093077] iavf 0000:10:09.2 llsm1: NIC Link is Down
-> [1193024.099324] iavf 0000:10:09.3 llsm1: NIC Link is Down
-> [1193060.630500] ice 0000:10:00.2 ens1f2: NIC Link is up 25 Gbps Full Duplex, Requested FEC: RS-FEC, Negotiated FEC: RS-FEC, Autoneg Advertised: Off, Autoneg Negotiated: False, Flow Contr>
-> [1193060.647921] iavf 0000:10:11.1 llsm2: NIC Link is Up Speed is 25 Gbps Full Duplex
-> [1193060.655575] iavf 0000:10:11.2 net2: NIC Link is Up Speed is 25 Gbps Full Duplex
-> [1193060.663140] iavf 0000:10:11.3 llsm2: NIC Link is Up Speed is 25 Gbps Full Duplex
-> [1193084.383798] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
-> [1193084.383799] rcu:   Tasks blocked on level-1 rcu_node (CPUs 32-47): P183189
-> [1193084.383804]        (detected by 0, t=60002 jiffies, g=379331397, q=294595)
-> [1193084.383807] runc            R  running task        0 183189 183175 0x00084080
-> [1193088.721408] rcu: INFO: rcu_preempt detected expedited stalls on CPUs/tasks: { P161097 P183189 } 63616 jiffies s: 1074129 root: 0x4/.
-> [1193089.074856] rcu: blocking rcu_node structures: l=1:32-47:0x0/T
->
-> [1193199.313106] INFO: task xfsaild/sda4:1428 blocked for more than 120 seconds.
->
-> [1193201.399021] NMI backtrace for cpu 33
-> [1193201.399021] CPU: 33 PID: 1354 Comm: ice-ptp-0000:10 Kdump: loaded Tainted: G        W        --------- -  - 4.18.0-305.49.1.rt7.121.el8_4.x86_64 #1
->
-> [1193201.399050] Kernel panic - not syncing: hung_task: blocked tasks
-> [1193201.399052] CPU: 63 PID: 559 Comm: khungtaskd Kdump: loaded Tainted: G        W        --------- -  - 4.18.0-305.49.1.rt7.121.el8_4.x86_64 #1
-
-> crash> bc 33
-> PID: 1354     TASK: ff48df6f2c5c8000  CPU: 33   COMMAND: "ice-ptp-0000:10"
->  #0 [fffffe000069ce38] crash_nmi_callback+0x33 at ffffffffb664cb63
->  #1 [fffffe000069ce40] nmi_handle+0x5b at ffffffffb661c68b
->  #2 [fffffe000069ce98] default_do_nmi+0x72 at ffffffffb6f4a562
->  #3 [fffffe000069cec0] do_nmi+0x18d at ffffffffb661cd1d
->  #4 [fffffe000069cef0] end_repeat_nmi+0x16 at ffffffffb7001544
->     [exception RIP: delay_tsc+0x6d]
->     RIP: ffffffffb6f4794d  RSP: ff7daf7a4aa2fd48  RFLAGS: 00000246
->     RAX: 000000008cf66cff  RBX: 0006582e8cf66caf  RCX: 0000000000000000
->     RDX: 000000000006582e  RSI: ffffffffb76eefe3  RDI: ffffffffb76d1b60
->     RBP: 0006582e8cf5ef89   R8: 000000000000000c   R9: 0000000000000000
->     R10: 0000000000000000  R11: 0000000000000000  R12: 00000000000249f2
->     R13: 0000000000000021  R14: ff48df63ec9aa3e0  R15: ff48df57541d0300
->     ORIG_RAX: ffffffffffffffff  CS: 0010  SS: 0018
-> --- <NMI exception stack> ---
->  #5 [ff7daf7a4aa2fd48] delay_tsc+0x6d at ffffffffb6f4794d
->  ## [  endcall jmp 68] __const_udelay+0x37 at ffffffffb6f477f7
->  #6 [ff7daf7a4aa2fd68] ice_sq_send_cmd+0x356 at ffffffffc0612ee6 [ice]
->  ## [  inlined     c0] ice_sbq_send_cmd at drivers/net/ethernet/intel/ice/ice_common.c:1407
->  #7 [ff7daf7a4aa2fdc0] ice_sbq_rw_reg+0xc4 at ffffffffc06147e4 [ice]
->  #8 [ff7daf7a4aa2fe18] ice_read_phy_reg_e810+0x4d at ffffffffc0655b0d [ice]
->  ## [  inlined     50] ice_read_phy_tstamp_e810 at drivers/net/ethernet/intel/ice/ice_ptp_hw.c:2608
->  #9 [ff7daf7a4aa2fe50] ice_read_phy_tstamp+0x5a at ffffffffc06584ca [ice]
->
-> #10 [ff7daf7a4aa2fe90] ice_ptp_tx_tstamp_work+0x95 at ffffffffc0654185 [ice]
-> #11 [ff7daf7a4aa2fee0] kthread_worker_fn+0xab at ffffffffb6701c4b
-> #12 [ff7daf7a4aa2ff10] kthread+0x15d at ffffffffb6701b7d
->
-> crash> delay_fn
-> delay_fn = (void (*)(u64)) 0xffffffffb6f478e0 <delay_tsc>
->
-> crash> bc 33 | grep -o 'R[BDA1][PX2]: 0[^ ]*'
-> RAX: 000000008cf66cff
-> RBX: 0006582e8cf66caf
-> RDX: 000000000006582e
-> RBP: 0006582e8cf5ef89
-> R12: 00000000000249f2
->
->         249f2 r12     cycles (150002)
-> 6582e8cf5ef89 rbp     bclock
-> 6582e8cf66cff rdx:rax now
-> 6582e8cf66caf rbx     last
->
->  962 ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
-> --
->  965 {
-> --
-> 1063         do {
-> 1064                 if (ice_sq_done(hw, cq))
-> 1065                         break;
-> 1066
-> 1067                 udelay(ICE_CTL_Q_SQ_CMD_USEC);
-> 1068                 total_delay++;
-> 1069         } while (total_delay < cq->sq_cmd_timeout);
->
->  19 /* 0x10c7 is 2**32 / 1000000 (rounded up) */
->  20 #define udelay(n)                                                       \
-> --
->  26                                 __const_udelay((n) * 0x10c7ul);         \
->
-> crash> pd loops_per_jiffy
-> loops_per_jiffy = 1500000
->
-> #define ICE_CTL_Q_SQ_CMD_USEC           100   /* Check every 100usec */
->
-> crash> pd (100*0x10c7*4*250*loops_per_jiffy>>32)+1
-> 150002
->
-> crash> p 100*0x10c7ul
-> 0x68dbc
->
-> crash> dis ice_sq_send_cmd+0x346 13
-> 0xffffffffc0612ed6 <ice_sq_send_cmd+0x346>: jmp    0xffffffffc0612eef <ice_sq_send_cmd+0x35f>
->
-> 0xffffffffc0612ed8 <ice_sq_send_cmd+0x348>: mov    $0x68dbc,%edi
-> 0xffffffffc0612edd <ice_sq_send_cmd+0x34d>: add    $0x1,%r13d
-> 0xffffffffc0612ee1 <ice_sq_send_cmd+0x351>: call   0xffffffffb6f477c0 <__const_udelay>
-> 0xffffffffc0612ee6 <ice_sq_send_cmd+0x356>: cmp    %r13d,0xc8(%rbp)
-> 0xffffffffc0612eed <ice_sq_send_cmd+0x35d>: jbe    0xffffffffc0612f05 <ice_sq_send_cmd+0x375>
->
-> 0xffffffffc0612eef <ice_sq_send_cmd+0x35f>: mov    0xa0(%rbp),%eax
-> 0xffffffffc0612ef5 <ice_sq_send_cmd+0x365>: add    (%rbx),%rax
-> 0xffffffffc0612ef8 <ice_sq_send_cmd+0x368>: mov    (%rax),%edx
-> 0xffffffffc0612efa <ice_sq_send_cmd+0x36a>: movzwl 0x9a(%rbp),%eax
-> 0xffffffffc0612f01 <ice_sq_send_cmd+0x371>: cmp    %eax,%edx
-> 0xffffffffc0612f03 <ice_sq_send_cmd+0x373>: jne    0xffffffffc0612ed8 <ice_sq_send_cmd+0x348>
->
-> 0xffffffffc0612f05 <ice_sq_send_cmd+0x375>: mov    0xa0(%rbp),%eax
->
-> crash> dis delay_tsc 2
-> 0xffffffffb6f478e0 <delay_tsc>: nopl   0x0(%rax,%rax,1) [FTRACE NOP]
-> 0xffffffffb6f478e5 <delay_tsc+0x5>: push   %r13
->
-> crash> rx ff7daf7a4aa2fd60
-> ff7daf7a4aa2fd60:  0000000000000001    // total_delay
-
-It's the first time the loop in function ice_sq_send_cmd() is being iterated.
-The ice_sq_send_cmd() has to be called all over again.
-
-> crash> dis ice_sq_send_cmd+0x2d
-> 0xffffffffc0612bbd <ice_sq_send_cmd+0x2d>: mov    %rsi,%rbp
->
-> crash> dis delay_tsc 6
-> 0xffffffffb6f478e0 <delay_tsc>: nopl   0x0(%rax,%rax,1) [FTRACE NOP]
-> 0xffffffffb6f478e5 <delay_tsc+0x5>: push   %r13
-> 0xffffffffb6f478e7 <delay_tsc+0x7>: push   %r12
-> 0xffffffffb6f478e9 <delay_tsc+0x9>: mov    %rdi,%r12
-> 0xffffffffb6f478ec <delay_tsc+0xc>: mov    $0x1,%edi
-> 0xffffffffb6f478f1 <delay_tsc+0x11>: push   %rbp
->
-> crash> rx ff7daf7a4aa2fd50
-> ff7daf7a4aa2fd50:  ff48df6f05dd6730
->
-> crash> ice_ctl_q_info.sq_cmd_timeout,sq.head,sq.next_to_use ff48df6f05dd6730
->   sq_cmd_timeout = 0x2710 = 10000,
->   sq.head = 0x80300,
->   sq.next_to_use = 0x20,
-
-
-> crash> runqc 33
-> CPU 33 RUNQUEUE: ff48df6f3f86c380
->   CURRENT: PID: 1354     TASK: ff48df6f2c5c8000  COMMAND: "ice-ptp-0000:10"
->   RT PRIO_ARRAY: ff48df6f3f86c5c0
->      [ 89] PID: 1354     TASK: ff48df6f2c5c8000  COMMAND: "ice-ptp-0000:10"
->      [ 98] PID: 161097   TASK: ff48df634a111ec0  COMMAND: "handler111"
->   CFS RB_ROOT: ff48df6f3f86c430
->      [100] PID: 583      TASK: ff48df6f37845c40  COMMAND: "kworker/33:1H"
->      [120] PID: 4113728  TASK: ff48df5055db9ec0  COMMAND: "kworker/33:6"
->      [120] PID: 183189   TASK: ff48df5d24aa8000  COMMAND: "runc"
->
-> crash> ps -m 1354 161097 583 4113728 183189
-> [ 0 00:02:56.990] [RU]  PID: 1354     TASK: ff48df6f2c5c8000  CPU: 33   COMMAND: "ice-ptp-0000:10"
-> [ 0 00:02:56.990] [RU]  PID: 161097   TASK: ff48df634a111ec0  CPU: 33   COMMAND: "handler111"
-> [ 0 00:02:56.991] [RU]  PID: 4113728  TASK: ff48df5055db9ec0  CPU: 33   COMMAND: "kworker/33:6"
-> [ 0 00:02:57.015] [RU]  PID: 183189   TASK: ff48df5d24aa8000  CPU: 33   COMMAND: "runc"
-> [ 0 00:02:57.030] [RU]  PID: 583      TASK: ff48df6f37845c40  CPU: 33   COMMAND: "kworker/33:1H"
-
-These runnable tasks have lower prio and hence they are being starved.
-
-> crash> ps -mC33 | head -13
-> CPU: 33
-> [ 0 00:02:56.990] [RU]  PID: 1354     TASK: ff48df6f2c5c8000  CPU: 33   COMMAND: "ice-ptp-0000:10"
-> [ 0 00:02:56.990] [RU]  PID: 161097   TASK: ff48df634a111ec0  CPU: 33   COMMAND: "handler111"
-> [ 0 00:02:56.991] [RU]  PID: 4113728  TASK: ff48df5055db9ec0  CPU: 33   COMMAND: "kworker/33:6"
-> [ 0 00:02:56.991] [IN]  PID: 278      TASK: ff48df504fd08000  CPU: 33   COMMAND: "ksoftirqd/33"
-> [ 0 00:02:57.014] [IN]  PID: 277      TASK: ff48df504fcebd80  CPU: 33   COMMAND: "rcuc/33"
-> [ 0 00:02:57.015] [RU]  PID: 183189   TASK: ff48df5d24aa8000  CPU: 33   COMMAND: "runc"
-> [ 0 00:02:57.016] [IN]  PID: 146      TASK: ff48df5040268000  CPU: 33   COMMAND: "rcuop/16"
-> [ 0 00:02:57.020] [IN]  PID: 276      TASK: ff48df504fce8000  CPU: 33   COMMAND: "migration/33"
-> [ 0 00:02:57.024] [IN]  PID: 413      TASK: ff48df504f971ec0  CPU: 33   COMMAND: "rcuop/49"
-> [ 0 00:02:57.024] [IN]  PID: 494      TASK: ff48df504f43bd80  CPU: 33   COMMAND: "rcuop/59"
-> [ 0 00:02:57.029] [UN]  PID: 183233   TASK: ff48df5193618000  CPU: 33   COMMAND: "exe"
-> [ 0 00:02:57.030] [RU]  PID: 583      TASK: ff48df6f37845c40  CPU: 33   COMMAND: "kworker/33:1H"
-
-> crash> ice_pf.pdev,int_name ff48df6f05dd4180
->   pdev = 0xff48df6f37fe6000,
->   int_name = "ice-0000:10:00.1:misc",
->
-> crash> ice_hw.mac_type ff48df6f05dd4dc0
->   mac_type = ICE_MAC_E810,
-
-> crash> ice_ptp_tx.work.func,len,in_use,quad,quad_offset ff48df6f05dd44e0
->   work.func = 0xffffffffc06540f0 <ice_ptp_tx_tstamp_work>,
->   len = 0x40,
->   in_use = 0xff48df63d0354cc0,
->   quad = 0x1,
->   quad_offset = 0x0,
->
-> crash> rx 0xff48df63d0354cc0
-> ff48df63d0354cc0:  0000000000000001
-
-> crash> ice_ptp_tx.tstamps ff48df6f05dd44e0
->   tstamps = 0xff48df62d6e69800,
->
-> crash> ice_tx_tstamp.start,cached_tstamp,skb 0xff48df62d6e69800
->   start = 0x14717935c,
->   cached_tstamp = 0xbe9c63f31b
->   skb = 0xff48df5e20552f00,
->
-> crash> pd jiffies-0x14717935c
-> 177354
-
-The packet is waiting for almost three minutes. The mentioned
-commit 0dd9286263923 would definitely skip it and clear it's
-bit in the tx->in_use mask. But still only two seconds too late
-which needs to be addressed. And since the link went down
-I guess just dropping the packets is a reasonable approach.
-
-Checking the latest upstream code in v6.2-rc4 I *guess* this
-can still happen as described above. Just not looping forever
-but rather only for 2 seconds. But doing nothing for two
-seconds is just as bad really. Hence the patch I'm suggesting.
-
-> The trouble is that if a timestamp *does* arrive late, we need to ensure
-> that we never assign the captured time to the wrong packet, and that for
-> E822 devices we always read the correct number of timestamps (otherwise
-> we can get the logic for timestamp interrupt generation broken).
->
-> Consider for example this flow for e810:
->
-> 1) a tx packet with a timestamp request is scheduled to hw
-> 2) the packet begins being transmitted
-> 3) link goes down
-> 4) interrupt triggers, ice_ptp_tx_tstamp is run
-> 5) link is down, so we skip reading this timestamp. Since we don't read
-> the timestamp, we just discard the skb and we don't update the cached tx
-> timestamp value
-> 6) link goes up
-> 7) 2 tx packets with a timestamp request are sent and one of them is on
-> the same index as the packet in (1)
-> 8) the other tx packet completes and we get an interrupt
-> 9) the loop reads both timestamps. Since the tx packet in slot (1)
-> doesn't match its cached value it looks "new" so the function reports
-> the old timestamp to the wrong packet.
-
-I don't really fully understand the HW nor the driver to be honest.
-For sure I can see it kept looping as the work is being re-queued
-due to tx->in_use bitmap not being cleared. And that can only
-happen when ice_read_phy_tstamp() returns with error or the
-returned &raw_tstamp is not valid or it matches the cached value
-(considering our version of ice_ptp_tx_tstamp() looks like the
-one in v5.15 stable tree). And that said the v5.15 stable needs
-backport of this fix as well I guess.
-
-> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/net/ethernet/intel/ice/ice_ptp.c?h=v5.15.88#n1170
-
-> Consider this flow for e822:
->
-> 1) 2 tx packets with a timestamp request are scheduled to hw
-> 2) the packets begin being transmitted
-> 3) link goes down
-> 4) an interrupt for the Tx timestamp is triggered, but we don't read the
-> timestamps because we have link down and we skipped the ts_read.
-> 5) the internal e822 hardware counter is not decremented due to no reads
-> 6) no more timestamp interrupts will be triggered by hardware until we
-> read the appropriate number of timestamps
->
-> I am not sure if link going up will properly reset and re-initialize the
-> Tx timestamp block but I suspect it does not. @Karol, @Siddaraju,
-> @Michal, do you recall more details on this?
->
-> I understand the desire to avoid polling when unnecessary, but I am
-> worried because the hardware and firmware interactions here are pretty
-> complex and its easy to get this wrong. (see: all of the previous
-> patches and bug fixes we've been working on... we got this wrong a LOT
-> already...)
-
-I see. Here my favorite quote applies: "Everybody falls the first time."
-
-I totally understand and I cannot imagine developing and maintaining this
-without a solid test suite. On the other hand, some things (like especially
-races) could be tricky to reproduce.
-
-> Without a more concrete explanation of what this fixes I'm worried about
-> this change :(
-
-Hopefully I already managed to shed a bit more light here. Again, I'm sorry
-about the brief commit message.
-
-> At a minimum I think I would only set drop_ts but not not goto skip_ts_read.
-
-IIUC, that would still fail to clear the tx->in_use bit in case
-ice_read_phy_tstamp()
-returns with error. It would only work for the other case where no error is
-returned but rather the returned &raw_tstamp is invalid. I'll send a v2 of
-this fix trying to address the goto concern.
-
-> crash> ice_sbq_msg_input ff7daf7a4aa2fe2c
-> struct ice_sbq_msg_input {
->   dest_dev = 0x2,
->   opcode = 0x0,
->   msg_addr_low = 0x1000,
->   msg_addr_high = 0x309,
->   data = 0x0
-> }
-> crash> ice_sbq_msg_req ff7daf7a4aa2fdc8
-> struct ice_sbq_msg_req {
->   dest_dev = 0x2,
->   src_dev = 0x0,
->   opcode = 0x0,
->   flags = 0x40,
->   sbe_fbe = 0xf,
->   func_id = 0x0,
->   msg_addr_low = 0x1000,
->   msg_addr_high = 0x309,
->   data = 0x0
-> }
-> crash> ice_sbq_cmd_desc ff7daf7a4aa2fdd8
-> struct ice_sbq_cmd_desc {
->   flags = 0x1400,
->   opcode = 0xc00,
->   datalen = 0x0,
->   cmd_retval = 0x0,
->   cookie_high = 0x0,
->   cookie_low = 0x0,
->   param0 = {
->     cmd_len = 0xc,
->     cmpl_len = 0xc
->   },
->   reserved = "",
->   addr_high = 0x0,
->   addr_low = 0x0
-> }
-
-I see commit 1229b33973c7b ("ice: Add low latency Tx timestamp read") got
-rid of that kthread_work in favor of threaded irq. But the
-ice_misc_intr_thread_fn()
-keeps waking itself in the same manner as the work did keep re-queuing itself.
-So the loop still needs to be broken (i.e. the tx->in_use bitmap cleared). Even
-for v6.2-rc4.
-
-> That way if we happen to have a ready timestamp (for E822) we'll still
-> read it and avoid the miscounting from not reading a completed timestamp.
->
-> This also ensures that on e810 the cached timestamp value is updated and
-> that we avoid the other situation.
->
-> I'd still prefer if you have a bug report or more details on the failure
-> case. I believe even if we poll it should be no more than 2 seconds for
-> an old timestamp that never got sent to be discarded.
-
-Unfortunately I only have this one report with a dump from customer's testing.
-The uptime was almost 14 days, so I'm not sure how easy it is to reproduce.
-
-Again, hopefully the above covers enough details. I'm happy to share more
-if I missed some. But looping in a softirq (or worker thread) for two seconds
-is not really acceptable. That's just a wrong design. Right?
-
---nX
-
-> > Signed-off-by: Daniel Vacek <neelx@redhat.com>
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice_ptp.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> > index d63161d73eb16..c313177ba6676 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> > @@ -680,6 +680,7 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
-> >       struct ice_pf *pf;
-> >       struct ice_hw *hw;
-> >       u64 tstamp_ready;
-> > +     bool link_up;
-> >       int err;
-> >       u8 idx;
-> >
-> > @@ -695,6 +696,8 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
-> >       if (err)
-> >               return false;
-> >
-> > +     link_up = hw->port_info->phy.link_info.link_info & ICE_AQ_LINK_UP;
-> > +
-> >       for_each_set_bit(idx, tx->in_use, tx->len) {
-> >               struct skb_shared_hwtstamps shhwtstamps = {};
-> >               u8 phy_idx = idx + tx->offset;
-> > @@ -702,6 +705,12 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
-> >               bool drop_ts = false;
-> >               struct sk_buff *skb;
-> >
-> > +             /* Drop packets if the link went down */
-> > +             if (!link_up) {
-> > +                     drop_ts = true;
-> > +                     goto skip_ts_read;
-> > +             }
-> > +
-> >               /* Drop packets which have waited for more than 2 seconds */
-> >               if (time_is_before_jiffies(tx->tstamps[idx].start + 2 * HZ)) {
-> >                       drop_ts = true;
->
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 53d0083e35da..94ff72d38e06 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -50,6 +50,8 @@ static int i40e_veb_get_bw_info(struct i40e_veb *veb);
+ static int i40e_get_capabilities(struct i40e_pf *pf,
+ 				 enum i40e_admin_queue_opc list_type);
+ static bool i40e_is_total_port_shutdown_enabled(struct i40e_pf *pf);
++static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi,
++					      bool is_xdp);
+ 
+ /* i40e_pci_tbl - PCI Device ID Table
+  *
+@@ -3563,11 +3565,17 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 	/* clear the context structure first */
+ 	memset(&rx_ctx, 0, sizeof(rx_ctx));
+ 
+-	if (ring->vsi->type == I40E_VSI_MAIN)
+-		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
++	if (ring->vsi->type == I40E_VSI_MAIN) {
++		if (!xdp_rxq_info_is_reg(&ring->xdp_rxq))
++			xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
++					 ring->queue_index,
++					 ring->q_vector->napi.napi_id);
++	}
+ 
+ 	ring->xsk_pool = i40e_xsk_pool(ring);
+ 	if (ring->xsk_pool) {
++		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
++
+ 		ring->rx_buf_len =
+ 		  xsk_pool_get_rx_frame_size(ring->xsk_pool);
+ 		/* For AF_XDP ZC, we disallow packets to span on
+@@ -13305,6 +13313,34 @@ static netdev_features_t i40e_features_check(struct sk_buff *skb,
+ 	return features & ~(NETIF_F_CSUM_MASK | NETIF_F_GSO_MASK);
+ }
+ 
++/**
++ * i40e_vsi_assign_bpf_prog - set or clear bpf prog pointer on VSI
++ * @vsi: VSI to changed
++ * @prog: XDP program
++ **/
++static void i40e_vsi_assign_bpf_prog(struct i40e_vsi *vsi,
++						 struct bpf_prog *prog)
++{
++	int i;
++
++	for (i = 0; i < vsi->num_queue_pairs; i++)
++		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
++}
++
++/**
++ * i40e_vsi_rx_napi_schedule - Schedule napi on RX queues from VSI
++ * @vsi: VSI to schedule napi on
++ */
++static void i40e_vsi_rx_napi_schedule(struct i40e_vsi *vsi)
++{
++	int i;
++
++	for (i = 0; i < vsi->num_queue_pairs; i++)
++		if (vsi->xdp_rings[i]->xsk_pool)
++			(void)i40e_xsk_wakeup(vsi->netdev, i,
++					      XDP_WAKEUP_RX);
++}
++
+ /**
+  * i40e_xdp_setup - add/remove an XDP program
+  * @vsi: VSI to changed
+@@ -13315,10 +13351,12 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+ 			  struct netlink_ext_ack *extack)
+ {
+ 	int frame_size = vsi->netdev->mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
++	bool is_xdp_enabled = i40e_enabled_xdp_vsi(vsi);
++	bool if_running = netif_running(vsi->netdev);
++	bool need_reinit = is_xdp_enabled != !!prog;
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct bpf_prog *old_prog;
+-	bool need_reset;
+-	int i;
++	int ret = 0;
+ 
+ 	/* Don't allow frames that span over multiple buffers */
+ 	if (frame_size > i40e_calculate_vsi_rx_buf_len(vsi)) {
+@@ -13326,35 +13364,59 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+ 		return -EINVAL;
+ 	}
+ 
+-	/* When turning XDP on->off/off->on we reset and rebuild the rings. */
+-	need_reset = (i40e_enabled_xdp_vsi(vsi) != !!prog);
+-
+-	if (need_reset)
+-		i40e_prep_for_reset(pf);
+-
+ 	/* VSI shall be deleted in a moment, just return EINVAL */
+ 	if (test_bit(__I40E_IN_REMOVE, pf->state))
+ 		return -EINVAL;
+ 
+ 	old_prog = xchg(&vsi->xdp_prog, prog);
+ 
+-	if (need_reset) {
+-		if (!prog)
+-			/* Wait until ndo_xsk_wakeup completes. */
+-			synchronize_rcu();
+-		i40e_reset_and_rebuild(pf, true, true);
++	if (!need_reinit)
++		goto assign_prog;
++
++	if (if_running && !test_and_set_bit(__I40E_VSI_DOWN, vsi->state))
++		i40e_down(vsi);
++
++	vsi = i40e_vsi_reinit_setup(vsi, true);
++
++	if (!vsi) {
++		NL_SET_ERR_MSG_MOD(extack, "Failed to reinitialize VSI during XDP setup");
++		ret = -EIO;
++		goto err_vsi_setup;
+ 	}
+ 
+-	if (!i40e_enabled_xdp_vsi(vsi) && prog) {
+-		if (i40e_realloc_rx_bi_zc(vsi, true))
+-			return -ENOMEM;
+-	} else if (i40e_enabled_xdp_vsi(vsi) && !prog) {
+-		if (i40e_realloc_rx_bi_zc(vsi, false))
+-			return -ENOMEM;
++	/* allocate descriptors */
++	ret = i40e_vsi_setup_tx_resources(vsi);
++	if (ret) {
++		NL_SET_ERR_MSG_MOD(extack, "Failed to configure TX resources during XDP setup");
++		goto err_setup_tx;
++	}
++	ret = i40e_vsi_setup_rx_resources(vsi);
++	if (ret) {
++		NL_SET_ERR_MSG_MOD(extack, "Failed to configure RX resources during XDP setup");
++		goto err_setup_rx;
+ 	}
+ 
+-	for (i = 0; i < vsi->num_queue_pairs; i++)
+-		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
++	if (!is_xdp_enabled && prog)
++		ret = i40e_realloc_rx_bi_zc(vsi, true);
++	else if (is_xdp_enabled && !prog)
++		ret = i40e_realloc_rx_bi_zc(vsi, false);
++
++	if (ret) {
++		NL_SET_ERR_MSG_MOD(extack, "Failed to reallocate RX resources during XDP setup");
++		goto err_vsi_setup;
++	}
++
++	if (if_running) {
++		ret = i40e_up(vsi);
++
++		if (ret) {
++			NL_SET_ERR_MSG_MOD(extack, "Failed to open VSI during XDP setup");
++			goto err_vsi_setup;
++		}
++	}
++
++assign_prog:
++	i40e_vsi_assign_bpf_prog(vsi, prog);
+ 
+ 	if (old_prog)
+ 		bpf_prog_put(old_prog);
+@@ -13362,13 +13424,20 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+ 	/* Kick start the NAPI context if there is an AF_XDP socket open
+ 	 * on that queue id. This so that receiving will start.
+ 	 */
+-	if (need_reset && prog)
+-		for (i = 0; i < vsi->num_queue_pairs; i++)
+-			if (vsi->xdp_rings[i]->xsk_pool)
+-				(void)i40e_xsk_wakeup(vsi->netdev, i,
+-						      XDP_WAKEUP_RX);
++	if (need_reinit && prog)
++		i40e_vsi_rx_napi_schedule(vsi);
+ 
+ 	return 0;
++
++err_setup_rx:
++	i40e_vsi_free_rx_resources(vsi);
++err_setup_tx:
++	i40e_vsi_free_tx_resources(vsi);
++err_vsi_setup:
++	i40e_do_reset(pf, I40E_PF_RESET_FLAG, true);
++	i40e_vsi_assign_bpf_prog(vsi, old_prog);
++
++	return ret;
+ }
+ 
+ /**
+@@ -14310,13 +14379,14 @@ static int i40e_vsi_setup_vectors(struct i40e_vsi *vsi)
+ /**
+  * i40e_vsi_reinit_setup - return and reallocate resources for a VSI
+  * @vsi: pointer to the vsi.
++ * @is_xdp: flag indicating if this is reinit during XDP setup
+  *
+  * This re-allocates a vsi's queue resources.
+  *
+  * Returns pointer to the successfully allocated and configured VSI sw struct
+  * on success, otherwise returns NULL on failure.
+  **/
+-static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
++static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi, bool is_xdp)
+ {
+ 	u16 alloc_queue_pairs;
+ 	struct i40e_pf *pf;
+@@ -14352,12 +14422,14 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
+ 	/* Update the FW view of the VSI. Force a reset of TC and queue
+ 	 * layout configurations.
+ 	 */
+-	enabled_tc = pf->vsi[pf->lan_vsi]->tc_config.enabled_tc;
+-	pf->vsi[pf->lan_vsi]->tc_config.enabled_tc = 0;
+-	pf->vsi[pf->lan_vsi]->seid = pf->main_vsi_seid;
+-	i40e_vsi_config_tc(pf->vsi[pf->lan_vsi], enabled_tc);
+-	if (vsi->type == I40E_VSI_MAIN)
+-		i40e_rm_default_mac_filter(vsi, pf->hw.mac.perm_addr);
++	if (!is_xdp) {
++		enabled_tc = pf->vsi[pf->lan_vsi]->tc_config.enabled_tc;
++		pf->vsi[pf->lan_vsi]->tc_config.enabled_tc = 0;
++		pf->vsi[pf->lan_vsi]->seid = pf->main_vsi_seid;
++		i40e_vsi_config_tc(pf->vsi[pf->lan_vsi], enabled_tc);
++		if (vsi->type == I40E_VSI_MAIN)
++			i40e_rm_default_mac_filter(vsi, pf->hw.mac.perm_addr);
++	}
+ 
+ 	/* assign it some queues */
+ 	ret = i40e_alloc_rings(vsi);
+@@ -15123,7 +15195,8 @@ static int i40e_setup_pf_switch(struct i40e_pf *pf, bool reinit, bool lock_acqui
+ 		if (pf->lan_vsi == I40E_NO_VSI)
+ 			vsi = i40e_vsi_setup(pf, I40E_VSI_MAIN, uplink_seid, 0);
+ 		else if (reinit)
+-			vsi = i40e_vsi_reinit_setup(pf->vsi[pf->lan_vsi]);
++			vsi = i40e_vsi_reinit_setup(pf->vsi[pf->lan_vsi],
++						    false);
+ 		if (!vsi) {
+ 			dev_info(&pf->pdev->dev, "setup of MAIN VSI failed\n");
+ 			i40e_cloud_filter_exit(pf);
+-- 
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
