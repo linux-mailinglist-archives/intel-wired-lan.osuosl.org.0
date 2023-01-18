@@ -1,191 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 750416727E7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 20:11:54 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C78767295A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 21:30:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D33361084;
-	Wed, 18 Jan 2023 19:11:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D33361084
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52D258216D;
+	Wed, 18 Jan 2023 20:30:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52D258216D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674069112;
-	bh=3Q3VjZQJ4H7EONtM299af4klLoI2rUthtiuNgiAk28A=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1674073852;
+	bh=TygRu3TFi9FK7oRSpCgKJ2HkYhwkOArCzLtQlnQ9+XU=;
+	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=h5iSghNOIDz9NJ/+HOADCe2bPj4OdgDYNd92De+vrcJGtZ7f6zUOwCLR8L5TO8M99
-	 cicLzMOgR5vXn7hm9T+tMmAy0wMLP+XeJCjHpB0xIS2kjBYCbCOX0s+p+VRoxlUGOh
-	 QySOthZkOcz33YFI607PbZYR0ow+Y7Czl20aycZsBjjd2fTA0vWXZJSTrshnjffw7u
-	 kTi3jarDAdnwZmq88Pw6Ta6E+bktjsHKSI4Dltpplt/LoYlUCKYV28Y2RvqI1729fe
-	 ho7jq4s+9AoQoAb/6NP1rktJUoJmfwIPzsjM5Jk91uLUPYQdkIrZkEJDhwcfmzPapG
-	 dKJ8toLu97P8Q==
+	 Cc:From;
+	b=6ghmgRz/cPC3aN7wdCSnCfYntDQRpbfa0X9zwDbOp1/PCxgTGHc3fFLwanxI372C2
+	 vO5uG5wp+oPkI8IK+UMUkTHzx0A4bubXE4efGdlsgtgwl/bT6Yh+RYHIaOuBJD7g2C
+	 kDX636KlZkzgpKGLz+REOmrfMEkpXP/iRB0lmkKGUZlTqR+Bv7VDLsGsoORbvUvfxG
+	 fHFv8tIwiCn0/SEYhO+fyGWj9eSS0yGU72cdqXEKYpsu62iH0OWU1Gl0Jxdo5XjJwY
+	 4AQki+IUjQw+h1lif3L6VHVB/gaUAeNDx/sKeVqnke6Fx5nFhnKVECV10/9+cxRv69
+	 q1v3xwU7GiwPA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mP490lG33KSq; Wed, 18 Jan 2023 19:11:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uZqp-78J-F1f; Wed, 18 Jan 2023 20:30:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4191F6107B;
-	Wed, 18 Jan 2023 19:11:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4191F6107B
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4DC921BF429
- for <intel-wired-lan@osuosl.org>; Wed, 18 Jan 2023 19:11:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 043EB8217A;
+	Wed, 18 Jan 2023 20:30:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 043EB8217A
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3EB291BF28B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 20:30:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 278356107B
- for <intel-wired-lan@osuosl.org>; Wed, 18 Jan 2023 19:11:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 278356107B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 199AE418AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 20:30:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 199AE418AA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OIJxmql-HdEn for <intel-wired-lan@osuosl.org>;
- Wed, 18 Jan 2023 19:11:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2ABC461064
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2ABC461064
- for <intel-wired-lan@osuosl.org>; Wed, 18 Jan 2023 19:11:44 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="387424377"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="387424377"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2023 11:11:43 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="692124197"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="692124197"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga001.jf.intel.com with ESMTP; 18 Jan 2023 11:11:43 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 18 Jan 2023 11:11:43 -0800
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 18 Jan 2023 11:11:42 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Wed, 18 Jan 2023 11:11:42 -0800
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.43) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Wed, 18 Jan 2023 11:11:40 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Iqjsef19BTvDcJD3DbiA3PbfpSyfDnBzbs315QrQFyYIU5u0W3Q7wKqBGVTVV3ImR9o4l+OIWDhpmgtRGfC27327D/yUSHJCS40pxgTXThK4f14eD0aO9W+BKsiAc4gHwuhSgImk2UkOIeA0b1B3gmY+btGABxZ5cO0jGmHOyxmjlWp/c+qHFHctuk6SWGPVJwfBLLu4SINOipoz5o7NrFtJj3m6WHp4GM6b6WVCh83yE9/DSNswhj1iJ8yvsS39GPq8Tke/A2BFA4UdfVHWhFnSAfKbsaGSBdwISGHY8RkpU8TRjig0IhPeXrVxwmNzIe+cC7a+wGDZg3ysUUv2xw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lLWtEyNfdmwAVNDt0ESl3isqttzO63fDi1kDaS323U8=;
- b=lpZ6NFQ+ClCy3sLHwbymN2q0/9OKP7rU9OEDN3/+Jd9Skf71k4sjhCQf/6yOjdMHeXmj/r4UzwyyScmzjvcc20hMxhHnK/eGn/FPDO6QuBQRGZVaWK+UXd1cT2FF9+ae9YHMlBFDq7+nX0d9hrJawuxHF1n4BcZ3G8SCjqXS2ju9MD2qgg5woS8BRMX/i1UVjUTxCUO9cmSPiEKEYZSKgfLQWnn0lcdIa2soCOocxN9Kly5n0PWDHuhZtBMpwvqegLvgp8VeIot5dUzc4rA+FvIVSp31j8Il+AwJGwK2qy6cPTsRQk8gZZr1qq+cQH9h2f7tx5hHVGOQEL7iI1OebA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO6PR11MB5636.namprd11.prod.outlook.com (2603:10b6:5:357::21)
- by SA1PR11MB6917.namprd11.prod.outlook.com (2603:10b6:806:2bd::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.23; Wed, 18 Jan
- 2023 19:11:37 +0000
-Received: from CO6PR11MB5636.namprd11.prod.outlook.com
- ([fe80::ae83:22d0:852a:34f7]) by CO6PR11MB5636.namprd11.prod.outlook.com
- ([fe80::ae83:22d0:852a:34f7%9]) with mapi id 15.20.6002.013; Wed, 18 Jan 2023
- 19:11:37 +0000
-Message-ID: <aa49973f-4d0c-49fa-9cea-db43ee124e21@intel.com>
-Date: Wed, 18 Jan 2023 11:11:35 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: <intel-wired-lan@osuosl.org>
-References: <20230113222319.111-1-paul.m.stillwell.jr@intel.com>
- <20230113222319.111-5-paul.m.stillwell.jr@intel.com>
- <ba037a29-15bd-ade7-8b3e-551f4bc7e53e@intel.com>
-From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
-In-Reply-To: <ba037a29-15bd-ade7-8b3e-551f4bc7e53e@intel.com>
-X-ClientProxiedBy: SJ0PR13CA0031.namprd13.prod.outlook.com
- (2603:10b6:a03:2c2::6) To CO6PR11MB5636.namprd11.prod.outlook.com
- (2603:10b6:5:357::21)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO6PR11MB5636:EE_|SA1PR11MB6917:EE_
-X-MS-Office365-Filtering-Correlation-Id: 937c61c4-57da-44d8-c8ff-08daf987d271
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MEj4r4kxRowwE134uV7YtF86k50eqa4kVNjouV/iRbH38KQ0gjDbnDbtQVcxtKw2299JtYURhUlv+Cw0t3M4WKBPvpimfoxHCFW5lJ1/wihqOZ46GTQ+IKJXbR8paNVmBniy5kM2bJVrMnGbmwF15RhpkbhUdKRsj33h7dy/rq6rhGzE/ExNugSq8kulpV/mHW/Db6oWorAkPV0v+moSBYg6QYaUTo874uxQvOxU4Bylzd03M1/hzQyaKDZNb1oOTPs3uxjD8DIWRRPRwW3FSjcYAVgV5BSpHhWcIq0F1s2rR44/Fyv4Wid79GWtGZdIKS+psBhYBhE762ws2ZW6Mkxc566LOb97aiqGX1cUcOTX9xV6x7W1vyD22yaFSVYMttRgeGhnqWMcdM3/jbcdOiTo/VpvoRkvbSk+1fLBCypq3pW59OsZQsnUaAYNb+1qqZQWlp7uGpuJGj2TplpWlLIXHnNw+pNYn5O3Z4K9hNlc3XKYE5bYj6NUuNlp5maVI1zCaw6klxi/340jr7gTNC9bouJ4FaPoabWPU46goR8M7ciKNl5aeMfP4qV5Tn3KMJ4cINEQan8Nwza93yisyhp85qnfESJTulecch+UIrOz8w6Pv1Mif4z3E9kPgqwhK7cbq7YDnr5Rw5ooLv54N+8F0FVrzuqeWssePZjVYyoqn0gX2OELzo4TYz2Md6g662UMho5Nh8SuL2Wz4lQfulS8pyx5r6Oo02VcIpO+b0UbXLtv9+/I7JH/x+qiUl0/
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO6PR11MB5636.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(376002)(366004)(136003)(346002)(39860400002)(396003)(451199015)(966005)(478600001)(36756003)(53546011)(86362001)(38100700002)(6506007)(6486002)(31696002)(186003)(82960400001)(26005)(2616005)(6512007)(83380400001)(31686004)(8936002)(8676002)(5660300002)(66556008)(2906002)(66476007)(6916009)(41300700001)(66946007)(316002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L014VUVIcDJoWTBSd251UktjcE00Zkh3WCtad0t6MngxMnY0VjIyV2VHaGdF?=
- =?utf-8?B?L09UanFqd0dSUytYOEZvY3VvcG9TSTkvek5DYVFPZWFpRVhyRlJPYU5qZUEy?=
- =?utf-8?B?dDFzTmFLQ2l0aFRSUE41TmhOeTJEbmxUOTVWdzlPMXVYQlJiNGlRZ2xOS1Va?=
- =?utf-8?B?TmI1QWZIRmJicEFyQkdBaFkvWmc5RWFIQS9YcjdFOXlaRzRwMm1MTzYzTE1C?=
- =?utf-8?B?UzhJS0VES25aZ0o4dEFkMFZzVlpFSGVQZlUyT0xuSHJDdVYrM3N0enVBbkRT?=
- =?utf-8?B?K2lubDg4aEptdjRld1JucUhxb3BTRG9BVmlpRG1YTFpVRTZRTzlZMFo4M0U3?=
- =?utf-8?B?cUgvME5HSjNOQ0dwT3luZzdSQXdtbWNJQzdzUWVvbTFKenNpNkNwcUJiTmRH?=
- =?utf-8?B?QSsyaFI5aHZsc3J0Yk5RdjdvUUZWQVRjdjgxN0crb3YvQW5ibUVsSjFCeWpv?=
- =?utf-8?B?NlpjVXN6cDhlWVJpV2tkV05qRXVJdnIyV0FpbXZwM0ZVcytwc21Qcit0WDZJ?=
- =?utf-8?B?aFhXRmhwdDJ6RXhZMnJjeWhtaXhSaWNQMjdQY3ByUkVWN2x6T25qL3pGTTRa?=
- =?utf-8?B?OGRaTjVEUjVMRU1hZTRkaktwOUhRTjVNU2Z2T0UwWUs4QlE1b1JURHZiV3li?=
- =?utf-8?B?Q3ZsbVNLZTR5Vkw4WURieTFKZzRSWGJyZEVKSTJvT3k3K2lRdEpLdmdJM1Q1?=
- =?utf-8?B?RGgxWTh1WGpuOWlLNnMzWU8wNHNCMGN1Zjc2KzV4VmtQSmxqZFRjS0ovOUUz?=
- =?utf-8?B?UjlhVGF1b212TVRITVhMckdTb0pJdkJ5ampPSmJPb3FqenRBVnp5ZTlCclZ1?=
- =?utf-8?B?ekRQTnkrOW1tMkFVUlZqSEpsSVptQjRPZFAzK043Uk9rMVV3d25lOTNLd1dO?=
- =?utf-8?B?K2hnMVVtQ2RjRGppaHFJY3RCYmt6NXRnN1pyNVBqU21USmNuTllUOW5QM1Zn?=
- =?utf-8?B?TEZPZ3BiTnhlMnFwWmlEcU5WMUxQN2VJb1duQmh3aFlab3V1ekJGYjhLS2JV?=
- =?utf-8?B?T09OYTQwelRySWh1Q21ZbFRGdTN4MWhrNWFDc09jcnBqSTFJZm5sYXc4cXpX?=
- =?utf-8?B?b3ovTzFIT05SdUFsNDEvaVE4d01qdEZmWXlOandxREFxNXdZRkMvL1lIbG1a?=
- =?utf-8?B?R3VTVEpDS3NkU2ZPVFU0dWtkUWc5a0x5YUxMK3doRUVIdXFaWk5NcnRIdVh1?=
- =?utf-8?B?bEQxMU01T1gybHRVUEVVWlJhMEVIR1ZkN2UzeFNteFlZUndISkxjRTBtdC95?=
- =?utf-8?B?V1gwNDdmL3cwZEU4cVZNZGZiL0lmdDdSekZKV3djZkZ4UnJxNVNDYUliam9M?=
- =?utf-8?B?YXh6MG5aQm11YmwxdHVDbHJYV2lPUmF0MGFjUXhxcVNDcDh4R05XYkl2bkNs?=
- =?utf-8?B?bTQ0dko0N3pCOUdyeGRNK0c5UXE0RTdSS1htTkxSeC9KdG0vNnhvNlRFSkU1?=
- =?utf-8?B?ZUF1SFNyYmFqaUg5TGNsbDJVdHF1eUdxcDV6R25lVjUrZU1HcDlaYUY1Z1kw?=
- =?utf-8?B?Vm9MSUtsZlkzUGJoN0FOelp4OElrM0VobVQzN0R4L0RYNUJSUFIwM3ZId3Js?=
- =?utf-8?B?dEVCR0NCQVVLTXAyZUJhZ1VxWDQ2bnRpd1RwRHU3eXdRNStoVEt6cHE0a0dn?=
- =?utf-8?B?ZEQ0R0xWVUl4anhpK2dTQ2JSTkx4c2gySVk3OC9NQlA2V1hzYmhjTlJzU2xj?=
- =?utf-8?B?WVVwNW5Ra3Z1UUdUVlJNWmdQNUFSTlRONlJVZVJWa084WFRBMGV1QTh3REs2?=
- =?utf-8?B?UXE3aVhuR21IaGtkT3U4eDIraXAvaUVrNHFNNW1zelJEMm9JQmhwd2EyS3VO?=
- =?utf-8?B?YWZlc2dJTGw4aUZVSmtPVE5WYUJ4TndSaVRTYU4yV2xMSy81Y3FGdFVDVjc2?=
- =?utf-8?B?MlNvTUdna0hFUFp1VHNNalUxaSsyYUVjVm1USkdORGFwTGw1Z3JldWpQUktv?=
- =?utf-8?B?cEZ0SGxjckhwNkZRenFkdXVrOWZyRDhLR0NaVzJrT1JMMHpwbVdMSHJ6c1JI?=
- =?utf-8?B?RkZMTFpUNVNid0tuZnYrbkZNTWVDU1FtOEV1OUg4MU1pZm5mRDBVa2Y4Tjdn?=
- =?utf-8?B?WmQ1SVJNWmg5YjBPY01GcFh1NmtFL0ZBcVFlZkYxeXM5RktDVVoxSlFMd25X?=
- =?utf-8?B?Q3BOTFRsRnVjalJuOVZLUTdNMWVacXlSb0NMcEtZb3B4RlBVM0VObXIwTTk5?=
- =?utf-8?B?MkE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 937c61c4-57da-44d8-c8ff-08daf987d271
-X-MS-Exchange-CrossTenant-AuthSource: CO6PR11MB5636.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jan 2023 19:11:37.4794 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fMrae2QTi8qV6/Oi9KggUho60A8aUH0FsgG+4hgurmx5MMVg43/3keS1zFPQq7YZJHUKe33PvN+KpVykUbwRMghaREzKoB3DG6Amx3jgS2k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6917
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674069104; x=1705605104;
- h=message-id:date:subject:to:references:from:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=n6qR6tdPHao0kDK/7E8z5MGJakvD6z+TenTnRTQXW5Q=;
- b=KW+BHj4fuTAzNA3y9M5L38PW8M0VOYAIlx8dXwCR/cFwzA++HYP0ZdFN
- 4/WtVY3JaUdrGtUld1tHfIyZY6VKtTymabwDHpL7+boF6KBEzB9RoxoEq
- OmlUrLVDjp/aFQLy0z32uEQjfgMAEr5CrFBWhR6GRmhBpydg7JcTdlOkZ
- ajABeFUF5bIEo3NtwAkOWVAI3MGUZ8yNG5127blxW6O528yfS/j93fHkG
- 2p/vXmeXL5I87ANj6itC/8ULbOM3b49bNF9gNcvYHNa6622K9G2oI5QYI
- Z40Jk396ZeLaQdWuNR6GaR304ufphLnS52iD6E/JxFZWMx0mdUdOX3nRI
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KW+BHj4f
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 4/5] ice: disable FW
- logging on driver unload
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XJnRUyXJLRrx for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jan 2023 20:30:42 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9C71418A9
+Received: from mail-pl1-x649.google.com (mail-pl1-x649.google.com
+ [IPv6:2607:f8b0:4864:20::649])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C9C71418A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 20:30:42 +0000 (UTC)
+Received: by mail-pl1-x649.google.com with SMTP id
+ l15-20020a170902f68f00b001948ddc7cddso110608plg.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 12:30:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7v0wLp5ycWle8qpGfDoJHQuiKVi/e1OPLT5qZNS7n/o=;
+ b=66RwQnYzVqJndz1wPK3lbWaGBaJ7BooprSkIzCufhyeDFzKSsFm+wj2M3lddhVXSql
+ 6OJe6+hBKOg7dpdL4lumAEZTLMT2Yhm0v64HkEcA73pZuvOtsGCwx67Cwe3M3WHUirqT
+ PdAivjw2TCWhytiNw9qoQ6YX9s5gcczabrZIx6ukiJMxm001M+lNzvXSKxsYZuchfTYa
+ hgVZzfI1aMbvCez3+FvMHQsSBmton4eiARywITyrVbh4zVVyW3A/tDACY6Hx+3wGqsJG
+ vgHUsAaPp5QIUk+KgKEpNW7Ud/DCydpU4qiXYnxSHl1LPdOz6yfzm+4F1NsFkYJe0dQr
+ vlFg==
+X-Gm-Message-State: AFqh2kouWMe+c7AYzAWKut2RfdoXxoHgZLoXBDeAb8dFLyKc3tGfNynD
+ HLFxrQ6u/50Lz09rh6q+eKK+n1w=
+X-Google-Smtp-Source: AMrXdXvOetuVRarAlElYqi1lN83nTXOm8WSQt7/mnEUHUakcTRqNLpl1Wq+/IpNBktF7U6tgjgiNe3o=
+X-Received: from sdf.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:5935])
+ (user=sdf job=sendgmr) by 2002:a17:90a:4bc7:b0:229:3505:d48e with SMTP id
+ u7-20020a17090a4bc700b002293505d48emr714918pjl.22.1674073841974; Wed, 18 Jan
+ 2023 12:30:41 -0800 (PST)
+Date: Wed, 18 Jan 2023 12:30:40 -0800
+In-Reply-To: <b606e729c9baf36a28be246bf0bfa4d21cc097fb.1673710867.git.lorenzo@kernel.org>
+Mime-Version: 1.0
+References: <cover.1673710866.git.lorenzo@kernel.org>
+ <b606e729c9baf36a28be246bf0bfa4d21cc097fb.1673710867.git.lorenzo@kernel.org>
+Message-ID: <Y8hW8IqJTa0zE2aS@google.com>
+From: sdf@google.com
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20210112;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=7v0wLp5ycWle8qpGfDoJHQuiKVi/e1OPLT5qZNS7n/o=;
+ b=VpcIlXmbmlN7i5UsKNB/vetMRz9kSrMQintaE14rv9yBpyGS3C6XHgychrgP0OFguA
+ bx+3th7TGSrQNeJlt4YpKJfVuCgWafPD1tH9Yqn8JhBkLm1pjyoSsCMPhcx3TuJQzDPm
+ Vz36ZH0yfjQcJgB2Be4meY0oej08/omdG/PmPQWwVmdeR7ADx7higQQb6WGDjmzXVboI
+ zjpdyLc4I6FDLlp89osAwvCthSsnkad8kqma2tijcdg1F61lGP54uM8yyuayFjsshePx
+ dpO2IvqRaBeP3G0sQUSFLtUXrC/t9rLOGEQHxO0gpVMuF209xHXRzsBzrzGyb36lPQzC
+ hP/A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20210112 header.b=VpcIlXmb
+Subject: Re: [Intel-wired-lan] [RFC v2 bpf-next 2/7] drivers: net: turn on
+ XDP features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,112 +105,951 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/13/2023 4:24 PM, Jacob Keller wrote:
-> 
-> 
-> On 1/13/2023 2:23 PM, Paul M Stillwell Jr wrote:
->> The FW is running in it's own context irregardless of what the driver
->> is doing. In this case, if the driver previously registered for FW
->> log events and then the driver unloads without informing the FW to
->> unregister for FW log events then the FW still has a timer running to
->> output FW logs.
->>
->> The next time the driver loads and tries to register for FW log events
->> then the FW returns an error, but still enables the continued
->> outputting of FW logs. This causes an IO error to devlink which isn't
->> intuitive since the logs are still being output.
->>
-> 
-> You could also catch this IO error and handle it if that is the only way
-> to get IO error? 
+On 01/14, Lorenzo Bianconi wrote:
+> From: Marek Majtyka <alardam@gmail.com>
 
-I'm not sure if this is the only way to get this error or not. The error 
-comes when we register for FW logging events. The documentation doesn't 
-provide any info on what could cause an error or what errors we might 
-see so I'm nervous on relying on this since other things may return the 
-same error.
+> A summary of the flags being set for various drivers is given below.
+> Note that XDP_F_REDIRECT_TARGET and XDP_F_FRAG_TARGET are features
+> that can be turned off and on at runtime. This means that these flags
+> may be set and unset under RTNL lock protection by the driver. Hence,
+> READ_ONCE must be used by code loading the flag value.
 
-> Is there a way to check if firmware logging is already
-> active after a driver reload? That might still be useful in the event
-> that firmware logging gets enabled via some other version of the driver
-> which doesn't disable it on unload...
+> Also, these flags are not used for synchronization against the  
+> availability
+> of XDP resources on a device. It is merely a hint, and hence the read
+> may race with the actual teardown of XDP resources on the device. This
+> may change in the future, e.g. operations taking a reference on the XDP
+> resources of the driver, and in turn inhibiting turning off this flag.
+> However, for now, it can only be used as a hint to check whether device
+> supports becoming a redirection target.
 
-Yes, but by the time we would check that (when we register for FW lgging 
-events), we wouldn't know it without introducing some other flag for 
-that purpose. I'm not sure it's worth adding a flag just for this...
+> Turn 'hw-offload' feature flag on for:
+>   - netronome (nfp)
+>   - netdevsim.
 
-> 
-> Something like checking the adminq error and if its EIO then confirm
-> that we are enabled and report success in that case.
-> 
-> Thanks,
-> Jake
-> 
->> Fix this by disabling FW logging when the driver is being unloaded.
->>
->> Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
->> ---
->>   drivers/net/ethernet/intel/ice/ice_main.c | 29 +++++++++++++++++++++++
->>   1 file changed, 29 insertions(+)
->>
->> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
->> index 9e610827966f..f24693e42e35 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->> @@ -4497,6 +4497,33 @@ static void ice_unregister_netdev(struct ice_vsi *vsi)
->>   	clear_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
->>   }
->>   
->> +/**
->> + * ice_pf_fwlog_deinit - clear FW logging metadata on device exit
->> + * @pf: pointer to the PF struct
->> + */
->> +static void ice_pf_fwlog_deinit(struct ice_pf *pf)
->> +{
->> +	struct ice_hw *hw = &pf->hw;
->> +
->> +	/* make sure FW logging is disabled to not put the FW in a weird state
->> +	 * for the next driver load
->> +	 */
->> +	if (hw->fwlog_ena) {
->> +		int status;
->> +
->> +		hw->fwlog_cfg.options &= ~ICE_FWLOG_OPTION_ARQ_ENA;
->> +		status = ice_fwlog_set(hw, &hw->fwlog_cfg);
->> +		if (status)
->> +			dev_warn(ice_pf_to_dev(pf), "Unable to turn off FW logging, status: %d\n",
->> +				 status);
->> +
->> +		status = ice_fwlog_unregister(hw);
->> +		if (status)
->> +			dev_warn(ice_pf_to_dev(pf), "Unable to unregister FW logging, status: %d\n",
->> +				 status);
->> +	}
->> +}
->> +
->>   /**
->>    * ice_cfg_netdev - Allocate, configure and register a netdev
->>    * @vsi: the VSI associated with the new netdev
->> @@ -5234,6 +5261,8 @@ static void ice_remove(struct pci_dev *pdev)
->>   		msleep(100);
->>   	}
->>   
->> +	ice_pf_fwlog_deinit(pf);
->> +
->>   	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
->>   		set_bit(ICE_VF_RESETS_DISABLED, pf->state);
->>   		ice_free_vfs(pf);
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> Turn 'native' and 'zerocopy' features flags on for:
+>   - intel (i40e, ice, ixgbe, igc)
+>   - mellanox (mlx5).
+>   - stmmac
+
+> Turn 'native' features flags on for:
+>   - amazon (ena)
+>   - broadcom (bnxt)
+>   - freescale (dpaa, dpaa2, enetc)
+>   - funeth
+>   - intel (igb)
+>   - marvell (mvneta, mvpp2, octeontx2)
+>   - mellanox (mlx4)
+>   - qlogic (qede)
+>   - sfc
+>   - socionext (netsec)
+>   - ti (cpsw)
+>   - tap
+>   - veth
+>   - xen
+>   - virtio_net.
+
+> Turn 'basic' (tx, pass, aborted and drop) features flags on for:
+>   - netronome (nfp)
+>   - cavium (thunder)
+>   - hyperv.
+
+> Turn 'tx_lock' feature flag on for:
+>   - aquantia
+>   - freescale (dpaa2)
+>   - intel (igb)
+>   - marvell (mvneta, mvpp2)
+>   - microsoft (mana)
+>   - mediatek
+>   - qlogic (qede)
+>   - socionext (netsec)
+>   - ti (cpsw)
+>   - tap
+>   - veth
+>   - xen
+
+> Turn 'redirect_target' feature flag on for:
+>   - amanzon (ena)
+>   - broadcom (bnxt)
+>   - freescale (dpaa, dpaa2)
+>   - intel (i40e, ice, igb, ixgbe)
+>   - ti (cpsw)
+>   - marvell (mvneta, mvpp2)
+>   - sfc
+>   - socionext (netsec)
+>   - qlogic (qede)
+>   - mellanox (mlx5)
+>   - tap
+>   - veth
+>   - virtio_net
+>   - xen
+
+> Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Marek Majtyka <alardam@gmail.com>
+> ---
+>   drivers/net/ethernet/amazon/ena/ena_netdev.c  |  5 +++
+>   .../net/ethernet/aquantia/atlantic/aq_nic.c   |  4 ++
+>   drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  2 +
+>   drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c |  2 +
+>   .../net/ethernet/cavium/thunder/nicvf_main.c  |  2 +
+>   .../net/ethernet/freescale/dpaa/dpaa_eth.c    |  2 +
+>   .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  |  2 +
+>   .../net/ethernet/freescale/enetc/enetc_pf.c   |  2 +
+>   .../ethernet/fungible/funeth/funeth_main.c    |  6 +++
+>   drivers/net/ethernet/intel/i40e/i40e_main.c   |  9 ++++-
+>   drivers/net/ethernet/intel/ice/ice_main.c     |  5 +++
+>   drivers/net/ethernet/intel/igb/igb_main.c     |  9 ++++-
+>   drivers/net/ethernet/intel/igc/igc_main.c     |  2 +
+>   drivers/net/ethernet/intel/igc/igc_xdp.c      |  5 +++
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  5 +++
+>   .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  1 +
+>   drivers/net/ethernet/marvell/mvneta.c         |  2 +
+>   .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  3 ++
+>   .../ethernet/marvell/octeontx2/nic/otx2_pf.c  |  9 ++++-
+>   drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  5 +++
+>   .../net/ethernet/mellanox/mlx4/en_netdev.c    |  2 +
+>   .../net/ethernet/mellanox/mlx5/core/en_main.c |  9 +++++
+>   drivers/net/ethernet/microsoft/mana/mana_en.c |  1 +
+>   .../ethernet/netronome/nfp/nfp_net_common.c   |  4 ++
+>   drivers/net/ethernet/qlogic/qede/qede_main.c  |  2 +
+>   drivers/net/ethernet/sfc/efx.c                |  3 ++
+>   drivers/net/ethernet/sfc/siena/efx.c          |  3 ++
+>   drivers/net/ethernet/socionext/netsec.c       |  2 +
+>   .../net/ethernet/stmicro/stmmac/stmmac_main.c |  1 +
+>   drivers/net/ethernet/ti/cpsw.c                |  2 +
+>   drivers/net/ethernet/ti/cpsw_new.c            |  3 ++
+>   drivers/net/hyperv/netvsc_drv.c               |  2 +
+>   drivers/net/netdevsim/netdev.c                |  1 +
+>   drivers/net/tun.c                             |  4 ++
+>   drivers/net/veth.c                            |  3 ++
+>   drivers/net/virtio_net.c                      |  5 +++
+>   drivers/net/xen-netfront.c                    |  1 +
+>   include/net/xdp.h                             | 39 +++++++++++++++++++
+>   38 files changed, 164 insertions(+), 5 deletions(-)
+
+> diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c  
+> b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> index e8ad5ea31aff..e8aeae70675a 100644
+> --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> @@ -597,7 +597,10 @@ static int ena_xdp_set(struct net_device *netdev,  
+> struct netdev_bpf *bpf)
+>   				if (rc)
+>   					return rc;
+>   			}
+> +			__xdp_features_set_redirect_target(&netdev->xdp_features,
+> +							   NETDEV_XDP_ACT_NDO_XMIT);
+>   		} else if (old_bpf_prog) {
+> +			xdp_features_clear_redirect_target(&netdev->xdp_features);
+>   			rc = ena_destroy_and_free_all_xdp_queues(adapter);
+>   			if (rc)
+>   				return rc;
+> @@ -4103,6 +4106,8 @@ static void ena_set_conf_feat_params(struct  
+> ena_adapter *adapter,
+>   	/* Set offload features */
+>   	ena_set_dev_offloads(feat, netdev);
+
+> +	netdev->xdp_features = NETDEV_XDP_ACT_FULL;
+> +
+>   	adapter->max_mtu = feat->dev_attr.max_mtu;
+>   	netdev->max_mtu = adapter->max_mtu;
+>   	netdev->min_mtu = ENA_MIN_MTU;
+> diff --git a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c  
+> b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> index 06508eebb585..3fc9a702083c 100644
+> --- a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> +++ b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> @@ -384,6 +384,10 @@ void aq_nic_ndev_init(struct aq_nic_s *self)
+>   	self->ndev->mtu = aq_nic_cfg->mtu - ETH_HLEN;
+>   	self->ndev->max_mtu = aq_hw_caps->mtu - ETH_FCS_LEN - ETH_HLEN;
+
+> +	self->ndev->xdp_features = NETDEV_XDP_ACT_FULL |
+> +				   NETDEV_XDP_ACT_NDO_XMIT |
+> +				   NETDEV_XDP_ACT_RX_SG |
+> +				   NETDEV_XDP_ACT_NDO_XMIT_SG;
+>   }
+
+>   void aq_nic_set_tx_ring(struct aq_nic_s *self, unsigned int idx,
+> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c  
+> b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> index 16ce7a90610c..333636d83620 100644
+> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> @@ -13686,6 +13686,8 @@ static int bnxt_init_one(struct pci_dev *pdev,  
+> const struct pci_device_id *ent)
+
+>   	netif_set_tso_max_size(dev, GSO_MAX_SIZE);
+
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_RX_SG;
+> +
+>   #ifdef CONFIG_BNXT_SRIOV
+>   	init_waitqueue_head(&bp->sriov_cfg_wait);
+>   #endif
+> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c  
+> b/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> index 36d5202c0aee..b701d6b5a405 100644
+> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> @@ -422,9 +422,11 @@ static int bnxt_xdp_set(struct bnxt *bp, struct  
+> bpf_prog *prog)
+
+>   	if (prog) {
+>   		bnxt_set_rx_skb_mode(bp, true);
+> +		xdp_features_set_redirect_target(&dev->xdp_features);
+>   	} else {
+>   		int rx, tx;
+
+> +		xdp_features_clear_redirect_target(&dev->xdp_features);
+>   		bnxt_set_rx_skb_mode(bp, false);
+>   		bnxt_get_max_rings(bp, &rx, &tx, true);
+>   		if (rx > 1) {
+> diff --git a/drivers/net/ethernet/cavium/thunder/nicvf_main.c  
+> b/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> index f2f95493ec89..8b25313c7f6b 100644
+> --- a/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> +++ b/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> @@ -2218,6 +2218,8 @@ static int nicvf_probe(struct pci_dev *pdev, const  
+> struct pci_device_id *ent)
+>   	netdev->netdev_ops = &nicvf_netdev_ops;
+>   	netdev->watchdog_timeo = NICVF_TX_TIMEOUT;
+
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC;
+> +
+>   	/* MTU range: 64 - 9200 */
+>   	netdev->min_mtu = NIC_HW_MIN_FRS;
+>   	netdev->max_mtu = NIC_HW_MAX_FRS;
+> diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c  
+> b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> index 3f8032947d86..f6e1b270b6d0 100644
+> --- a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> +++ b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> @@ -244,6 +244,8 @@ static int dpaa_netdev_init(struct net_device  
+> *net_dev,
+>   	net_dev->features |= net_dev->hw_features;
+>   	net_dev->vlan_features = net_dev->features;
+
+> +	net_dev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	if (is_valid_ether_addr(mac_addr)) {
+>   		memcpy(net_dev->perm_addr, mac_addr, net_dev->addr_len);
+>   		eth_hw_addr_set(net_dev, mac_addr);
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c  
+> b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> index 0c35abb7d065..8c51c59d3c86 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> @@ -4593,6 +4593,8 @@ static int dpaa2_eth_netdev_init(struct net_device  
+> *net_dev)
+>   			    NETIF_F_LLTX | NETIF_F_HW_TC | NETIF_F_TSO;
+>   	net_dev->gso_max_segs = DPAA2_ETH_ENQUEUE_MAX_FDS;
+>   	net_dev->hw_features = net_dev->features;
+> +	net_dev->xdp_features = NETDEV_XDP_ACT_FULL_ZC |
+> +				NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	if (priv->dpni_attrs.vlan_filter_entries)
+>   		net_dev->hw_features |= NETIF_F_HW_VLAN_CTAG_FILTER;
+> diff --git a/drivers/net/ethernet/freescale/enetc/enetc_pf.c  
+> b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> index 9f6c4f5c0a6c..5f481985d3c1 100644
+> --- a/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> +++ b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> @@ -825,6 +825,8 @@ static void enetc_pf_netdev_setup(struct enetc_si  
+> *si, struct net_device *ndev,
+>   		ndev->hw_features |= NETIF_F_RXHASH;
+
+>   	ndev->priv_flags |= IFF_UNICAST_FLT;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT |
+> +			     NETDEV_XDP_ACT_RX_SG | NETDEV_XDP_ACT_NDO_XMIT_SG;
+
+>   	if (si->hw_features & ENETC_SI_F_PSFP && !enetc_psfp_enable(priv)) {
+>   		priv->active_offloads |= ENETC_F_QCI;
+> diff --git a/drivers/net/ethernet/fungible/funeth/funeth_main.c  
+> b/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> index b4cce30e526a..003411b33a92 100644
+> --- a/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> +++ b/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> @@ -1160,6 +1160,11 @@ static int fun_xdp_setup(struct net_device *dev,  
+> struct netdev_bpf *xdp)
+>   			WRITE_ONCE(rxqs[i]->xdp_prog, prog);
+>   	}
+
+> +	if (prog)
+> +		xdp_features_set_redirect_target(&dev->xdp_features);
+> +	else
+> +		xdp_features_clear_redirect_target(&dev->xdp_features);
+> +
+>   	dev->max_mtu = prog ? XDP_MAX_MTU : FUN_MAX_MTU;
+>   	old_prog = xchg(&fp->xdp_prog, prog);
+>   	if (old_prog)
+> @@ -1765,6 +1770,7 @@ static int fun_create_netdev(struct fun_ethdev *ed,  
+> unsigned int portid)
+>   	netdev->vlan_features = netdev->features & VLAN_FEAT;
+>   	netdev->mpls_features = netdev->vlan_features;
+>   	netdev->hw_enc_features = netdev->hw_features;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_FULL;
+
+>   	netdev->min_mtu = ETH_MIN_MTU;
+>   	netdev->max_mtu = FUN_MAX_MTU;
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c  
+> b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 53d0083e35da..39f8ab2a22e6 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -13339,9 +13339,11 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi,  
+> struct bpf_prog *prog,
+>   	old_prog = xchg(&vsi->xdp_prog, prog);
+
+>   	if (need_reset) {
+> -		if (!prog)
+> +		if (!prog) {
+> +			xdp_features_clear_redirect_target(&vsi->netdev->xdp_features);
+>   			/* Wait until ndo_xsk_wakeup completes. */
+>   			synchronize_rcu();
+> +		}
+>   		i40e_reset_and_rebuild(pf, true, true);
+>   	}
+
+> @@ -13362,11 +13364,13 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi,  
+> struct bpf_prog *prog,
+>   	/* Kick start the NAPI context if there is an AF_XDP socket open
+>   	 * on that queue id. This so that receiving will start.
+>   	 */
+> -	if (need_reset && prog)
+> +	if (need_reset && prog) {
+>   		for (i = 0; i < vsi->num_queue_pairs; i++)
+>   			if (vsi->xdp_rings[i]->xsk_pool)
+>   				(void)i40e_xsk_wakeup(vsi->netdev, i,
+>   						      XDP_WAKEUP_RX);
+> +		xdp_features_set_redirect_target(&vsi->netdev->xdp_features);
+> +	}
+
+>   	return 0;
+>   }
+> @@ -13783,6 +13787,7 @@ static int i40e_config_netdev(struct i40e_vsi  
+> *vsi)
+>   	netdev->hw_enc_features |= NETIF_F_TSO_MANGLEID;
+
+>   	netdev->features &= ~NETIF_F_HW_TC;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_ZC;
+
+>   	if (vsi->type == I40E_VSI_MAIN) {
+>   		SET_NETDEV_DEV(netdev, &pf->pdev->dev);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c  
+> b/drivers/net/ethernet/intel/ice/ice_main.c
+> index a9a7f8b52140..0c9c75fa2349 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -22,6 +22,7 @@
+>   #include "ice_eswitch.h"
+>   #include "ice_tc_lib.h"
+>   #include "ice_vsi_vlan_ops.h"
+> +#include <net/xdp_sock_drv.h>
+
+>   #define DRV_SUMMARY	"Intel(R) Ethernet Connection E800 Series Linux  
+> Driver"
+>   static const char ice_driver_string[] = DRV_SUMMARY;
+> @@ -2899,11 +2900,14 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct  
+> bpf_prog *prog,
+>   			if (xdp_ring_err)
+>   				NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
+>   		}
+> +		__xdp_features_set_redirect_target(&vsi->netdev->xdp_features,
+> +						   NETDEV_XDP_ACT_NDO_XMIT);
+>   		/* reallocate Rx queues that are used for zero-copy */
+>   		xdp_ring_err = ice_realloc_zc_buf(vsi, true);
+>   		if (xdp_ring_err)
+>   			NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Rx resources failed");
+>   	} else if (ice_is_xdp_ena_vsi(vsi) && !prog) {
+> +		xdp_features_clear_redirect_target(&vsi->netdev->xdp_features);
+>   		xdp_ring_err = ice_destroy_xdp_rings(vsi);
+>   		if (xdp_ring_err)
+>   			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Tx resources failed");
+> @@ -3446,6 +3450,7 @@ static int ice_cfg_netdev(struct ice_vsi *vsi)
+>   	np->vsi = vsi;
+
+>   	ice_set_netdev_features(netdev);
+> +	netdev->xdp_features = NETDEV_XDP_ACT_ZC;
+
+>   	ice_set_ops(netdev);
+
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c  
+> b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 3c0c35ecea10..a20cc52a52d6 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -2871,8 +2871,14 @@ static int igb_xdp_setup(struct net_device *dev,  
+> struct netdev_bpf *bpf)
+>   		bpf_prog_put(old_prog);
+
+>   	/* bpf is just replaced, RXQ and MTU are already setup */
+> -	if (!need_reset)
+> +	if (!need_reset) {
+>   		return 0;
+> +	} else {
+> +		if (prog)
+> +			xdp_features_set_redirect_target(&dev->xdp_features);
+> +		else
+> +			xdp_features_clear_redirect_target(&dev->xdp_features);
+> +	}
+
+>   	if (running)
+>   		igb_open(dev);
+> @@ -3317,6 +3323,7 @@ static int igb_probe(struct pci_dev *pdev, const  
+> struct pci_device_id *ent)
+>   	netdev->priv_flags |= IFF_SUPP_NOFCS;
+
+>   	netdev->priv_flags |= IFF_UNICAST_FLT;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_FULL;
+
+>   	/* MTU range: 68 - 9216 */
+>   	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c  
+> b/drivers/net/ethernet/intel/igc/igc_main.c
+> index e86b15efaeb8..3702c3cea383 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -6533,6 +6533,8 @@ static int igc_probe(struct pci_dev *pdev,
+>   	netdev->mpls_features |= NETIF_F_HW_CSUM;
+>   	netdev->hw_enc_features |= netdev->vlan_features;
+
+> +	netdev->xdp_features = NETDEV_XDP_ACT_ZC;
+> +
+>   	/* MTU range: 68 - 9216 */
+>   	netdev->min_mtu = ETH_MIN_MTU;
+>   	netdev->max_mtu = MAX_STD_JUMBO_FRAME_SIZE;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c  
+> b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> index aeeb34e64610..570170a29e3a 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_xdp.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> @@ -29,6 +29,11 @@ int igc_xdp_set_prog(struct igc_adapter *adapter,  
+> struct bpf_prog *prog,
+>   	if (old_prog)
+>   		bpf_prog_put(old_prog);
+
+> +	if (prog)
+> +		xdp_features_set_redirect_target(&dev->xdp_features);
+> +	else
+> +		xdp_features_clear_redirect_target(&dev->xdp_features);
+> +
+>   	if (if_running)
+>   		igc_open(dev);
+
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c  
+> b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index ab8370c413f3..ae018a80d140 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -10301,6 +10301,8 @@ static int ixgbe_xdp_setup(struct net_device  
+> *dev, struct bpf_prog *prog)
+>   			rcu_assign_pointer(adapter->xdp_prog, old_prog);
+>   			return -EINVAL;
+>   		}
+> +		if (!prog)
+> +			xdp_features_clear_redirect_target(&dev->xdp_features);
+>   	} else {
+>   		for (i = 0; i < adapter->num_rx_queues; i++)
+>   			(void)xchg(&adapter->rx_ring[i]->xdp_prog,
+> @@ -10320,6 +10322,7 @@ static int ixgbe_xdp_setup(struct net_device  
+> *dev, struct bpf_prog *prog)
+>   			if (adapter->xdp_ring[i]->xsk_pool)
+>   				(void)ixgbe_xsk_wakeup(adapter->netdev, i,
+>   						       XDP_WAKEUP_RX);
+> +		xdp_features_set_redirect_target(&dev->xdp_features);
+>   	}
+
+>   	return 0;
+> @@ -11017,6 +11020,8 @@ static int ixgbe_probe(struct pci_dev *pdev,  
+> const struct pci_device_id *ent)
+>   	netdev->priv_flags |= IFF_UNICAST_FLT;
+>   	netdev->priv_flags |= IFF_SUPP_NOFCS;
+
+> +	netdev->xdp_features = NETDEV_XDP_ACT_ZC;
+> +
+>   	/* MTU range: 68 - 9710 */
+>   	netdev->min_mtu = ETH_MIN_MTU;
+>   	netdev->max_mtu = IXGBE_MAX_JUMBO_FRAME_SIZE - (ETH_HLEN + ETH_FCS_LEN);
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c  
+> b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> index ea0a230c1153..a44e4bd56142 100644
+> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> @@ -4634,6 +4634,7 @@ static int ixgbevf_probe(struct pci_dev *pdev,  
+> const struct pci_device_id *ent)
+>   			    NETIF_F_HW_VLAN_CTAG_TX;
+
+>   	netdev->priv_flags |= IFF_UNICAST_FLT;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC;
+
+>   	/* MTU range: 68 - 1504 or 9710 */
+>   	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/drivers/net/ethernet/marvell/mvneta.c  
+> b/drivers/net/ethernet/marvell/mvneta.c
+> index f8925cac61e4..7ca49753d618 100644
+> --- a/drivers/net/ethernet/marvell/mvneta.c
+> +++ b/drivers/net/ethernet/marvell/mvneta.c
+> @@ -5612,6 +5612,8 @@ static int mvneta_probe(struct platform_device  
+> *pdev)
+>   			NETIF_F_TSO | NETIF_F_RXCSUM;
+>   	dev->hw_features |= dev->features;
+>   	dev->vlan_features |= dev->features;
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT |
+> +			    NETDEV_XDP_ACT_RX_SG | NETDEV_XDP_ACT_NDO_XMIT_SG;
+>   	dev->priv_flags |= IFF_LIVE_ADDR_CHANGE;
+>   	netif_set_tso_max_segs(dev, MVNETA_MAX_TSO_SEGS);
+
+> diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c  
+> b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> index 4da45c5abba5..826423541d7a 100644
+> --- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> +++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> @@ -6866,6 +6866,9 @@ static int mvpp2_port_probe(struct platform_device  
+> *pdev,
+
+>   	dev->vlan_features |= features;
+>   	netif_set_tso_max_segs(dev, MVPP2_MAX_TSO_SEGS);
+> +
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	dev->priv_flags |= IFF_UNICAST_FLT;
+
+>   	/* MTU range: 68 - 9704 */
+> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c  
+> b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> index c1ea60bc2630..dd53bb315100 100644
+> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> @@ -2512,10 +2512,14 @@ static int otx2_xdp_setup(struct otx2_nic *pf,  
+> struct bpf_prog *prog)
+>   	/* Network stack and XDP shared same rx queues.
+>   	 * Use separate tx queues for XDP and network stack.
+>   	 */
+> -	if (pf->xdp_prog)
+> +	if (pf->xdp_prog) {
+>   		pf->hw.xdp_queues = pf->hw.rx_queues;
+> -	else
+> +		__xdp_features_set_redirect_target(&dev->xdp_features,
+> +						   NETDEV_XDP_ACT_NDO_XMIT);
+> +	} else {
+>   		pf->hw.xdp_queues = 0;
+> +		xdp_features_clear_redirect_target(&dev->xdp_features);
+> +	}
+
+>   	pf->hw.tot_tx_queues += pf->hw.xdp_queues;
+
+> @@ -2878,6 +2882,7 @@ static int otx2_probe(struct pci_dev *pdev, const  
+> struct pci_device_id *id)
+>   	netdev->watchdog_timeo = OTX2_TX_TIMEOUT;
+
+>   	netdev->netdev_ops = &otx2_netdev_ops;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_FULL;
+
+>   	netdev->min_mtu = OTX2_MIN_MTU;
+>   	netdev->max_mtu = otx2_get_max_mtu(pf);
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c  
+> b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index e3de9a53b2d9..d960dd3841d7 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -4186,6 +4186,11 @@ static int mtk_add_mac(struct mtk_eth *eth, struct  
+> device_node *np)
+>   		register_netdevice_notifier(&mac->device_notifier);
+>   	}
+
+> +	if (mtk_page_pool_enabled(eth))
+> +		eth->netdev[id]->xdp_features = NETDEV_XDP_ACT_FULL |
+> +						NETDEV_XDP_ACT_NDO_XMIT |
+> +						NETDEV_XDP_ACT_NDO_XMIT_SG;
+> +
+>   	return 0;
+
+>   free_netdev:
+> diff --git a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c  
+> b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> index 8800d3f1f55c..77957db600cb 100644
+> --- a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> +++ b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> @@ -3410,6 +3410,8 @@ int mlx4_en_init_netdev(struct mlx4_en_dev *mdev,  
+> int port,
+>   		priv->rss_hash_fn = ETH_RSS_HASH_TOP;
+>   	}
+
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL;
+> +
+>   	/* MTU range: 68 - hw-specific max */
+>   	dev->min_mtu = ETH_MIN_MTU;
+>   	dev->max_mtu = priv->max_mtu;
+> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c  
+> b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> index cff5f2e29e1e..f50988c5d636 100644
+> --- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> @@ -4776,6 +4776,13 @@ static int mlx5e_xdp_set(struct net_device  
+> *netdev, struct bpf_prog *prog)
+>   	if (old_prog)
+>   		bpf_prog_put(old_prog);
+
+> +	if (reset) {
+> +		if (prog)
+> +			xdp_features_set_redirect_target(&netdev->xdp_features);
+> +		else
+> +			xdp_features_clear_redirect_target(&netdev->xdp_features);
+> +	}
+> +
+>   	if (!test_bit(MLX5E_STATE_OPENED, &priv->state) || reset)
+>   		goto unlock;
+
+> @@ -5170,6 +5177,8 @@ static void mlx5e_build_nic_netdev(struct  
+> net_device *netdev)
+>   	netdev->features         |= NETIF_F_HIGHDMA;
+>   	netdev->features         |= NETIF_F_HW_VLAN_STAG_FILTER;
+
+> +	netdev->xdp_features = NETDEV_XDP_ACT_ZC | NETDEV_XDP_ACT_RX_SG;
+> +
+>   	netdev->priv_flags       |= IFF_UNICAST_FLT;
+
+>   	netif_set_tso_max_size(netdev, GSO_MAX_SIZE);
+> diff --git a/drivers/net/ethernet/microsoft/mana/mana_en.c  
+> b/drivers/net/ethernet/microsoft/mana/mana_en.c
+> index 2f6a048dee90..25f21942aa20 100644
+> --- a/drivers/net/ethernet/microsoft/mana/mana_en.c
+> +++ b/drivers/net/ethernet/microsoft/mana/mana_en.c
+> @@ -2160,6 +2160,7 @@ static int mana_probe_port(struct mana_context *ac,  
+> int port_idx,
+>   	ndev->hw_features |= NETIF_F_RXHASH;
+>   	ndev->features = ndev->hw_features;
+>   	ndev->vlan_features = 0;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	err = register_netdev(ndev);
+>   	if (err) {
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c  
+> b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> index 18fc9971f1c8..5a8ddeaff74d 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> @@ -2529,10 +2529,14 @@ static void nfp_net_netdev_init(struct nfp_net  
+> *nn)
+>   	netdev->features &= ~NETIF_F_HW_VLAN_STAG_RX;
+>   	nn->dp.ctrl &= ~NFP_NET_CFG_CTRL_RXQINQ;
+
+> +	nn->dp.netdev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				      NETDEV_XDP_ACT_HW_OFFLOAD;
+> +
+>   	/* Finalise the netdev setup */
+>   	switch (nn->dp.ops->version) {
+>   	case NFP_NFD_VER_NFD3:
+>   		netdev->netdev_ops = &nfp_nfd3_netdev_ops;
+> +		nn->dp.netdev->xdp_features |= NETDEV_XDP_ACT_XSK_ZEROCOPY;
+>   		break;
+>   	case NFP_NFD_VER_NFDK:
+>   		netdev->netdev_ops = &nfp_nfdk_netdev_ops;
+> diff --git a/drivers/net/ethernet/qlogic/qede/qede_main.c  
+> b/drivers/net/ethernet/qlogic/qede/qede_main.c
+> index 953f304b8588..a8ad2b8386d3 100644
+> --- a/drivers/net/ethernet/qlogic/qede/qede_main.c
+> +++ b/drivers/net/ethernet/qlogic/qede/qede_main.c
+> @@ -892,6 +892,8 @@ static void qede_init_ndev(struct qede_dev *edev)
+
+>   	ndev->hw_features = hw_features;
+
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	/* MTU range: 46 - 9600 */
+>   	ndev->min_mtu = ETH_ZLEN - ETH_HLEN;
+>   	ndev->max_mtu = QEDE_MAX_JUMBO_PACKET_SIZE;
+> diff --git a/drivers/net/ethernet/sfc/efx.c  
+> b/drivers/net/ethernet/sfc/efx.c
+> index 0556542d7a6b..60b2183681ce 100644
+> --- a/drivers/net/ethernet/sfc/efx.c
+> +++ b/drivers/net/ethernet/sfc/efx.c
+> @@ -1078,6 +1078,9 @@ static int efx_pci_probe(struct pci_dev *pci_dev,
+
+>   	pci_info(pci_dev, "Solarflare NIC detected\n");
+
+> +	efx->net_dev->xdp_features = NETDEV_XDP_ACT_FULL |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	if (!efx->type->is_vf)
+>   		efx_probe_vpd_strings(efx);
+
+> diff --git a/drivers/net/ethernet/sfc/siena/efx.c  
+> b/drivers/net/ethernet/sfc/siena/efx.c
+> index 60e5b7c8ccf9..175c999bebc1 100644
+> --- a/drivers/net/ethernet/sfc/siena/efx.c
+> +++ b/drivers/net/ethernet/sfc/siena/efx.c
+> @@ -1048,6 +1048,9 @@ static int efx_pci_probe(struct pci_dev *pci_dev,
+
+>   	pci_info(pci_dev, "Solarflare NIC detected\n");
+
+> +	efx->net_dev->xdp_features = NETDEV_XDP_ACT_FULL |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	if (!efx->type->is_vf)
+>   		efx_probe_vpd_strings(efx);
+
+> diff --git a/drivers/net/ethernet/socionext/netsec.c  
+> b/drivers/net/ethernet/socionext/netsec.c
+> index 9b46579b5a10..4d6f17efa227 100644
+> --- a/drivers/net/ethernet/socionext/netsec.c
+> +++ b/drivers/net/ethernet/socionext/netsec.c
+> @@ -2104,6 +2104,8 @@ static int netsec_probe(struct platform_device  
+> *pdev)
+>   				NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
+>   	ndev->hw_features = ndev->features;
+
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   	priv->rx_cksum_offload_flag = true;
+
+>   	ret = netsec_register_mdio(priv, phy_addr);
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  
+> b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> index c6951c976f5d..316574ce3aa0 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> @@ -7145,6 +7145,7 @@ int stmmac_dvr_probe(struct device *device,
+
+>   	ndev->hw_features = NETIF_F_SG | NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM |
+>   			    NETIF_F_RXCSUM;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	ret = stmmac_tc_init(priv, priv);
+>   	if (!ret) {
+> diff --git a/drivers/net/ethernet/ti/cpsw.c  
+> b/drivers/net/ethernet/ti/cpsw.c
+> index 13c9c2d6b79b..68b89c56d8b6 100644
+> --- a/drivers/net/ethernet/ti/cpsw.c
+> +++ b/drivers/net/ethernet/ti/cpsw.c
+> @@ -1458,6 +1458,7 @@ static int cpsw_probe_dual_emac(struct cpsw_priv  
+> *priv)
+>   	priv_sl2->emac_port = 1;
+>   	cpsw->slaves[1].ndev = ndev;
+>   	ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER | NETIF_F_HW_VLAN_CTAG_RX;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	ndev->netdev_ops = &cpsw_netdev_ops;
+>   	ndev->ethtool_ops = &cpsw_ethtool_ops;
+> @@ -1635,6 +1636,7 @@ static int cpsw_probe(struct platform_device *pdev)
+>   	cpsw->slaves[0].ndev = ndev;
+
+>   	ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER | NETIF_F_HW_VLAN_CTAG_RX;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	ndev->netdev_ops = &cpsw_netdev_ops;
+>   	ndev->ethtool_ops = &cpsw_ethtool_ops;
+> diff --git a/drivers/net/ethernet/ti/cpsw_new.c  
+> b/drivers/net/ethernet/ti/cpsw_new.c
+> index 83596ec0c7cb..1cf8c6202e05 100644
+> --- a/drivers/net/ethernet/ti/cpsw_new.c
+> +++ b/drivers/net/ethernet/ti/cpsw_new.c
+> @@ -1405,6 +1405,9 @@ static int cpsw_create_ports(struct cpsw_common  
+> *cpsw)
+>   		ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER |
+>   				  NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_NETNS_LOCAL | NETIF_F_HW_TC;
+
+> +		ndev->xdp_features = NETDEV_XDP_ACT_FULL |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   		ndev->netdev_ops = &cpsw_netdev_ops;
+>   		ndev->ethtool_ops = &cpsw_ethtool_ops;
+>   		SET_NETDEV_DEV(ndev, dev);
+> diff --git a/drivers/net/hyperv/netvsc_drv.c  
+> b/drivers/net/hyperv/netvsc_drv.c
+> index f9b219e6cd58..c7c1ce6ca201 100644
+> --- a/drivers/net/hyperv/netvsc_drv.c
+> +++ b/drivers/net/hyperv/netvsc_drv.c
+> @@ -2559,6 +2559,8 @@ static int netvsc_probe(struct hv_device *dev,
+
+>   	netdev_lockdep_set_classes(net);
+
+> +	net->xdp_features = NETDEV_XDP_ACT_FULL;
+> +
+>   	/* MTU range: 68 - 1500 or 65521 */
+>   	net->min_mtu = NETVSC_MTU_MIN;
+>   	if (nvdev->nvsp_version >= NVSP_PROTOCOL_VERSION_2)
+> diff --git a/drivers/net/netdevsim/netdev.c  
+> b/drivers/net/netdevsim/netdev.c
+> index 6db6a75ff9b9..35fa1ca98671 100644
+> --- a/drivers/net/netdevsim/netdev.c
+> +++ b/drivers/net/netdevsim/netdev.c
+> @@ -286,6 +286,7 @@ static void nsim_setup(struct net_device *dev)
+>   			 NETIF_F_TSO;
+>   	dev->hw_features |= NETIF_F_HW_TC;
+>   	dev->max_mtu = ETH_MAX_MTU;
+> +	dev->xdp_features = NETDEV_XDP_ACT_HW_OFFLOAD;
+>   }
+
+>   static int nsim_init_netdevsim(struct netdevsim *ns)
+> diff --git a/drivers/net/tun.c b/drivers/net/tun.c
+> index a7d17c680f4a..fc041cff75e4 100644
+> --- a/drivers/net/tun.c
+> +++ b/drivers/net/tun.c
+> @@ -1401,6 +1401,10 @@ static void tun_net_initialize(struct net_device  
+> *dev)
+
+>   		eth_hw_addr_random(dev);
+
+> +		/* Currently tun does not support XDP, only tap does. */
+> +		dev->xdp_features = NETDEV_XDP_ACT_FULL |
+> +				    NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>   		break;
+>   	}
+
+> diff --git a/drivers/net/veth.c b/drivers/net/veth.c
+> index dfc7d87fad59..01f7b38888a0 100644
+> --- a/drivers/net/veth.c
+> +++ b/drivers/net/veth.c
+> @@ -1649,6 +1649,9 @@ static void veth_setup(struct net_device *dev)
+>   	dev->hw_enc_features = VETH_FEATURES;
+>   	dev->mpls_features = NETIF_F_HW_CSUM | NETIF_F_GSO_SOFTWARE;
+>   	netif_set_tso_max_size(dev, GSO_MAX_SIZE);
+> +
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT |
+> +			    NETDEV_XDP_ACT_RX_SG | NETDEV_XDP_ACT_NDO_XMIT_SG;
+>   }
+
+>   /*
+> diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
+> index 7723b2a49d8e..0721dff8c82c 100644
+> --- a/drivers/net/virtio_net.c
+> +++ b/drivers/net/virtio_net.c
+> @@ -3155,7 +3155,11 @@ static int virtnet_xdp_set(struct net_device *dev,  
+> struct bpf_prog *prog,
+>   			if (i == 0 && !old_prog)
+>   				virtnet_clear_guest_offloads(vi);
+>   		}
+> +		if (!old_prog)
+> +			__xdp_features_set_redirect_target(&dev->xdp_features,
+> +							   NETDEV_XDP_ACT_NDO_XMIT);
+>   	} else {
+> +		xdp_features_clear_redirect_target(&dev->xdp_features);
+>   		vi->xdp_enabled = false;
+>   	}
+
+> @@ -3785,6 +3789,7 @@ static int virtnet_probe(struct virtio_device *vdev)
+>   		dev->hw_features |= NETIF_F_GRO_HW;
+
+>   	dev->vlan_features = dev->features;
+> +	dev->xdp_features = NETDEV_XDP_ACT_FULL;
+
+>   	/* MTU range: 68 - 65535 */
+>   	dev->min_mtu = MIN_MTU;
+> diff --git a/drivers/net/xen-netfront.c b/drivers/net/xen-netfront.c
+> index 14aec417fa06..58f0cbbadc90 100644
+> --- a/drivers/net/xen-netfront.c
+> +++ b/drivers/net/xen-netfront.c
+> @@ -1741,6 +1741,7 @@ static struct net_device *xennet_create_dev(struct  
+> xenbus_device *dev)
+>            * negotiate with the backend regarding supported features.
+>            */
+>   	netdev->features |= netdev->hw_features;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_FULL | NETDEV_XDP_ACT_NDO_XMIT;
+
+>   	netdev->ethtool_ops = &xennet_ethtool_ops;
+>   	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/include/net/xdp.h b/include/net/xdp.h
+> index 3d37460f0bdb..c3a8f17c0310 100644
+> --- a/include/net/xdp.h
+> +++ b/include/net/xdp.h
+> @@ -410,6 +410,45 @@ struct netdev_bpf;
+>   void xdp_attachment_setup(struct xdp_attachment_info *info,
+>   			  struct netdev_bpf *bpf);
+
+> +#if defined(CONFIG_NET) && defined(CONFIG_BPF_SYSCALL)
+> +
+> +static inline void
+> +__xdp_features_set_redirect_target(xdp_features_t *xdp_features, u32  
+> flags)
+> +{
+> +	flags &= (NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_NDO_XMIT_SG);
+> +	WRITE_ONCE(*xdp_features, *xdp_features | flags);
+
+Maybe stupid question: why do we need WRITE_ONCE here?
+And if we do need it, do we need READ_ONCE as well?
+
+WRITE_ONCE(*xdp_features, READ_ONCE(*xdp_features) | flags);
+
+?
+
+Also, would it make sense to drop this __xdp_features_set_redirect_target
+and just define the following:
+
+static inline void
+xdp_features_set_redirect_target(xdp_features_t *xdp_features, bool  
+support_sg)
+{
+	xdp_features_t flags = NETDEV_XDP_ACT_NDO_XMIT;
+
+	if (support_sg)
+		flags |= NETDEV_XDP_ACT_NDO_XMIT_SG;
+	*xdp_features |= flags; /* or WRITE_ONCE */
+}
+
+This should avoid having two different sets of functions. Or does it
+look worse because of that 'naked' true/false argument in the call
+sites?
+
+
+> +}
+> +
+> +static inline void
+> +xdp_features_clear_redirect_target(xdp_features_t *xdp_features)
+> +{
+> +	WRITE_ONCE(*xdp_features,
+> +		   *xdp_features & ~(NETDEV_XDP_ACT_NDO_XMIT |
+> +				     NETDEV_XDP_ACT_NDO_XMIT_SG));
+> +}
+> +
+> +#else
+> +
+> +static inline void
+> +__xdp_features_set_redirect_target(xdp_features_t *xdp_features, u32  
+> flags)
+> +{
+> +}
+> +
+> +static inline void
+> +xdp_features_clear_redirect_target(xdp_features_t *xdp_features)
+> +{
+> +}
+> +
+> +#endif
+> +
+> +static inline void
+> +xdp_features_set_redirect_target(xdp_features_t *xdp_features)
+> +{
+> +	__xdp_features_set_redirect_target(xdp_features,
+> +					   NETDEV_XDP_ACT_NDO_XMIT |
+> +					   NETDEV_XDP_ACT_NDO_XMIT_SG);
+> +}
+> +
+>   #define DEV_MAP_BULK_SIZE XDP_BULK_QUEUE_SIZE
+
+>   #endif /* __LINUX_NET_XDP_H__ */
+> --
+> 2.39.0
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
