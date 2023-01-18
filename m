@@ -1,85 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7202867218B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 16:41:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F4B9672336
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 17:29:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6471960FA9;
-	Wed, 18 Jan 2023 15:41:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6471960FA9
+	by smtp3.osuosl.org (Postfix) with ESMTP id BFDAD60FCD;
+	Wed, 18 Jan 2023 16:29:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFDAD60FCD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674056502;
-	bh=7Pto4kbGtYsaZq96vRHhhzw/EeCQA/D2/qrEZlgJv+E=;
+	s=default; t=1674059349;
+	bh=RLYYLk4c1PCeL/UYJ2RVcqnhRKqR5HsKgGO61e3aUyw=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=k9NSUqOj8j8PDiLaa9uVgm84KkbBqiAOb0DPLsajs37TSu9cww+nD7CZ2KWc5S0nc
-	 38SrryBoExMo4wlxLHrt7FqTo/1MhmhhDiM72Nc+WY5LnI43nIyQGS+SCDzC06Vcex
-	 lbTjqU8vn6zmyjfuHC11ca6ZX+QzxhcPE4QelDBOHmMNkTqZfkV1Sw0aaEG6A5ykvO
-	 RkXLTA8dL7AoRxioO7Lzg3tjky2XTaRDOi1uPmiBVWFI3sNRVL/oMlmRwGkbchrXga
-	 sAR09qS3mw4cKTo+cG90gzJ1ZxYX90M9oOgYr5+4DXteKnzEBSx4qu3aMsbKu420uI
-	 aqWhjuGES/4bg==
+	 List-Post:List-Help:List-Subscribe:Reply-To:Cc:From;
+	b=FjBIXaVt7cCeTpa2B0C7gd8KCNOQonKmrWJpPm2trf7ycWMNoMT6HzQj0L3WVVkh6
+	 xGA7RJAX2EWYvOik9oTVMzh3odNl1Zf06cWwbpslImO86cPKxcBEzy3gZ1GZ6NBoKs
+	 nT6wmS0uAsh/kPsLHEKXLIUEqlAGqljvOHsIwpJobscIr3UzGa7TfrLb604dfqtNK1
+	 qAmmGDJ0DtuDP/nwBy0e5cePK25gr+eWyF9SEVou0aTRXJhlb8KsZNy46CajXvngFJ
+	 xcTghaMbE23QXT+V6g/h1lAtJHmSYeNhrWaOR6qTQuwJOrQ8+4V2JslPGiHtW44znx
+	 llgQM+6EDSAjA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k-mXNa6e146E; Wed, 18 Jan 2023 15:41:41 +0000 (UTC)
+	with ESMTP id JnILBfJksvWc; Wed, 18 Jan 2023 16:29:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2107260F82;
-	Wed, 18 Jan 2023 15:41:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2107260F82
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD00960FD6;
+	Wed, 18 Jan 2023 16:29:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD00960FD6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D8A511BF312
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:35 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F9FD1BF578
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 16:17:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B2C074168F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2C074168F
+ by smtp1.osuosl.org (Postfix) with ESMTP id EB25A8209A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 16:17:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB25A8209A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ycM_oeAHhgfD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jan 2023 15:41:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DFEXNkyB_r4D for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jan 2023 16:17:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18488415E5
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 18488415E5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 15:41:33 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304692815"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304692815"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2023 07:39:34 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="767790967"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="767790967"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmsmga002.fm.intel.com with ESMTP; 18 Jan 2023 07:39:32 -0800
-From: Kamil Maziarz <kamil.maziarz@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 18 Jan 2023 16:39:26 +0100
-Message-Id: <20230118153926.1335517-1-kamil.maziarz@intel.com>
-X-Mailer: git-send-email 2.25.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 02E3982096
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 02E3982096
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 16:17:49 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-435-ZFMX-FN7OVCPNumI5uwNgg-1; Wed, 18 Jan 2023 11:17:47 -0500
+X-MC-Unique: ZFMX-FN7OVCPNumI5uwNgg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AE2B91C05AB7;
+ Wed, 18 Jan 2023 16:17:46 +0000 (UTC)
+Received: from metal.redhat.com (ovpn-192-69.brq.redhat.com [10.40.192.69])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 531EE2026D4B;
+ Wed, 18 Jan 2023 16:17:44 +0000 (UTC)
+From: Daniel Vacek <neelx@redhat.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>
+Date: Wed, 18 Jan 2023 17:17:26 +0100
+Message-Id: <20230118161727.2485457-1-neelx@redhat.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674056494; x=1705592494;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=wCBNnICQw8npUui83+26xA8hWF54Hb2Rjpp/stpQZDk=;
- b=BI9xLJeNksdw9P3ZvsK9bnsQWyYqRxwJnmkUuh4dfGti2CXDM9sU/w0H
- dLREEeeIowAblTnuiTK6InqkG2mjKB6kvn6wQwfQ4+j7uFvqyt64FLphc
- v5T3VqbS4Hv5B9/wTrGRZQpmcZ/QdfDul45Daxd41U7gl14gy1JC1KYE9
- Jlxo2GFMliIci4TIdARcC43zpBVV2amfmhncwI+N0RHRIK9kV0GYEQ7a0
- nZ17emBNlFlrDLzbdvmDfxIeOh7oEDHin+3UQqqRu2vTH4z7BWbRbllw4
- Pj/H8bqThCHWcH8xcHvaudjA2dIObkIWHed3+iSCgFIm19xgo2wuVKC4L
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BI9xLJeN
-Subject: [Intel-wired-lan] [PATCH net v4] i40e: Fix crash when rebuild fails
- in i40e_xdp_setup
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-Mailman-Approved-At: Wed, 18 Jan 2023 16:28:51 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1674058668;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=pU6AC9cRWg3g9Q98YLxAbBqb6BOxub7aw+UutKP+hlQ=;
+ b=ZdxE4kzXcMexKkw98+0NLM6Uw2HiMmUkdyArZVjFkfE8bjC2HUZEE6GQ/27a2gN35g+D9T
+ ZaavnlG+5RlS+z5ft4N4ijKRnb+KxWB+Mm0VO3Nfh6UK9Sra1I/qphea80FHu3JTTy/SFa
+ bP6ECyhtZybVD7MM69/9byDs0p4YR38=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=ZdxE4kzX
+Subject: [Intel-wired-lan] [PATCH v2] ice/ptp: fix the PTP worker retrying
+ indefinitely if the link went down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,305 +99,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kamil Maziarz <kamil.maziarz@intel.com>,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Andrii Staikov <andrii.staikov@intel.com>
+Reply-To: 20230117181533.2350335-1-neelx@redhat.com
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Daniel Vacek <neelx@redhat.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+When the link goes down the ice_ptp_tx_tstamp() may loop re-trying to
+process the packets till the 2 seconds timeout finally drops them.
+In such a case it makes sense to just drop them right away.
 
-When attaching XDP program on i40e driver there was a reset and rebuild of
-the interface to reconfigure the queues for XDP operation. If one of the
-steps of rebuild failed then the interface was left in incorrect state that
-could lead to a crash. If rebuild failed while getting capabilities from HW
-such crash occurs:
-
-capability discovery failed, err I40E_ERR_ADMIN_QUEUE_TIMEOUT aq_err OK
-BUG: unable to handle kernel NULL pointer dereference at
-0000000000000000 Call Trace:
-? i40e_reconfig_rss_queues+0x120/0x120 [i40e]
-  dev_xdp_install+0x70/0x100
-  dev_xdp_attach+0x1d7/0x530
-  dev_change_xdp_fd+0x1f4/0x230
-  do_setlink+0x45f/0xf30
-  ? irq_work_interrupt+0xa/0x20
-  ? __nla_validate_parse+0x12d/0x1a0
-  rtnl_setlink+0xb5/0x120
-  rtnetlink_rcv_msg+0x2b1/0x360
-  ? sock_has_perm+0x80/0xa0
-  ? rtnl_calcit.isra.42+0x120/0x120
-  netlink_rcv_skb+0x4c/0x120
-  netlink_unicast+0x196/0x230
-  netlink_sendmsg+0x204/0x3d0
-  sock_sendmsg+0x4c/0x50
-  __sys_sendto+0xee/0x160
-  ? handle_mm_fault+0xc1/0x1e0
-  ? syscall_trace_enter+0x1fb/0x2c0
-  ? __sys_setsockopt+0xd6/0x1d0
-  __x64_sys_sendto+0x24/0x30
-  do_syscall_64+0x5b/0x1a0
-  entry_SYSCALL_64_after_hwframe+0x65/0xca
-  RIP: 0033:0x7f3535d99781
-
-Fix this by removing reset and rebuild from i40e_xdp_setup and replace it by
-interface down, reconfigure queues and interface up. This way if any step fails
-the interface will remain in a correct state.
-
-Fixes: 0c8493d90b6b ("i40e: add XDP support for pass and drop actions")
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
-Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
-Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Signed-off-by: Daniel Vacek <neelx@redhat.com>
 ---
-v2: don't reinitialize rings while hotswapping program
----
-v3: error code 'ret' set to -EIO
----
-v4: fixed the subject
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 145 +++++++++++++++-----
- 1 file changed, 109 insertions(+), 36 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 53d0083e35da..94ff72d38e06 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -50,6 +50,8 @@ static int i40e_veb_get_bw_info(struct i40e_veb *veb);
- static int i40e_get_capabilities(struct i40e_pf *pf,
- 				 enum i40e_admin_queue_opc list_type);
- static bool i40e_is_total_port_shutdown_enabled(struct i40e_pf *pf);
-+static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi,
-+					      bool is_xdp);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index d63161d73eb16..cb776a7199839 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -680,6 +680,7 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
+ 	struct ice_pf *pf;
+ 	struct ice_hw *hw;
+ 	u64 tstamp_ready;
++	bool link_up;
+ 	int err;
+ 	u8 idx;
  
- /* i40e_pci_tbl - PCI Device ID Table
-  *
-@@ -3563,11 +3565,17 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
- 	/* clear the context structure first */
- 	memset(&rx_ctx, 0, sizeof(rx_ctx));
+@@ -695,11 +696,14 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
+ 	if (err)
+ 		return false;
  
--	if (ring->vsi->type == I40E_VSI_MAIN)
--		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
-+	if (ring->vsi->type == I40E_VSI_MAIN) {
-+		if (!xdp_rxq_info_is_reg(&ring->xdp_rxq))
-+			xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
-+					 ring->queue_index,
-+					 ring->q_vector->napi.napi_id);
-+	}
++	/* Drop packets if the link went down */
++	link_up = hw->port_info->phy.link_info.link_info & ICE_AQ_LINK_UP;
++
+ 	for_each_set_bit(idx, tx->in_use, tx->len) {
+ 		struct skb_shared_hwtstamps shhwtstamps = {};
+ 		u8 phy_idx = idx + tx->offset;
+ 		u64 raw_tstamp = 0, tstamp;
+-		bool drop_ts = false;
++		bool drop_ts = !link_up;
+ 		struct sk_buff *skb;
  
- 	ring->xsk_pool = i40e_xsk_pool(ring);
- 	if (ring->xsk_pool) {
-+		xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
-+
- 		ring->rx_buf_len =
- 		  xsk_pool_get_rx_frame_size(ring->xsk_pool);
- 		/* For AF_XDP ZC, we disallow packets to span on
-@@ -13305,6 +13313,34 @@ static netdev_features_t i40e_features_check(struct sk_buff *skb,
- 	return features & ~(NETIF_F_CSUM_MASK | NETIF_F_GSO_MASK);
- }
+ 		/* Drop packets which have waited for more than 2 seconds */
+@@ -728,7 +732,7 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
+ 		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
  
-+/**
-+ * i40e_vsi_assign_bpf_prog - set or clear bpf prog pointer on VSI
-+ * @vsi: VSI to changed
-+ * @prog: XDP program
-+ **/
-+static void i40e_vsi_assign_bpf_prog(struct i40e_vsi *vsi,
-+						 struct bpf_prog *prog)
-+{
-+	int i;
-+
-+	for (i = 0; i < vsi->num_queue_pairs; i++)
-+		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
-+}
-+
-+/**
-+ * i40e_vsi_rx_napi_schedule - Schedule napi on RX queues from VSI
-+ * @vsi: VSI to schedule napi on
-+ */
-+static void i40e_vsi_rx_napi_schedule(struct i40e_vsi *vsi)
-+{
-+	int i;
-+
-+	for (i = 0; i < vsi->num_queue_pairs; i++)
-+		if (vsi->xdp_rings[i]->xsk_pool)
-+			(void)i40e_xsk_wakeup(vsi->netdev, i,
-+					      XDP_WAKEUP_RX);
-+}
-+
- /**
-  * i40e_xdp_setup - add/remove an XDP program
-  * @vsi: VSI to changed
-@@ -13315,10 +13351,12 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
- 			  struct netlink_ext_ack *extack)
- {
- 	int frame_size = vsi->netdev->mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
-+	bool is_xdp_enabled = i40e_enabled_xdp_vsi(vsi);
-+	bool if_running = netif_running(vsi->netdev);
-+	bool need_reinit = is_xdp_enabled != !!prog;
- 	struct i40e_pf *pf = vsi->back;
- 	struct bpf_prog *old_prog;
--	bool need_reset;
--	int i;
-+	int ret = 0;
+ 		err = ice_read_phy_tstamp(hw, tx->block, phy_idx, &raw_tstamp);
+-		if (err)
++		if (err && !drop_ts)
+ 			continue;
  
- 	/* Don't allow frames that span over multiple buffers */
- 	if (frame_size > i40e_calculate_vsi_rx_buf_len(vsi)) {
-@@ -13326,35 +13364,59 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
- 		return -EINVAL;
- 	}
- 
--	/* When turning XDP on->off/off->on we reset and rebuild the rings. */
--	need_reset = (i40e_enabled_xdp_vsi(vsi) != !!prog);
--
--	if (need_reset)
--		i40e_prep_for_reset(pf);
--
- 	/* VSI shall be deleted in a moment, just return EINVAL */
- 	if (test_bit(__I40E_IN_REMOVE, pf->state))
- 		return -EINVAL;
- 
- 	old_prog = xchg(&vsi->xdp_prog, prog);
- 
--	if (need_reset) {
--		if (!prog)
--			/* Wait until ndo_xsk_wakeup completes. */
--			synchronize_rcu();
--		i40e_reset_and_rebuild(pf, true, true);
-+	if (!need_reinit)
-+		goto assign_prog;
-+
-+	if (if_running && !test_and_set_bit(__I40E_VSI_DOWN, vsi->state))
-+		i40e_down(vsi);
-+
-+	vsi = i40e_vsi_reinit_setup(vsi, true);
-+
-+	if (!vsi) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to reinitialize VSI during XDP setup");
-+		ret = -EIO;
-+		goto err_vsi_setup;
- 	}
- 
--	if (!i40e_enabled_xdp_vsi(vsi) && prog) {
--		if (i40e_realloc_rx_bi_zc(vsi, true))
--			return -ENOMEM;
--	} else if (i40e_enabled_xdp_vsi(vsi) && !prog) {
--		if (i40e_realloc_rx_bi_zc(vsi, false))
--			return -ENOMEM;
-+	/* allocate descriptors */
-+	ret = i40e_vsi_setup_tx_resources(vsi);
-+	if (ret) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to configure TX resources during XDP setup");
-+		goto err_setup_tx;
-+	}
-+	ret = i40e_vsi_setup_rx_resources(vsi);
-+	if (ret) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to configure RX resources during XDP setup");
-+		goto err_setup_rx;
- 	}
- 
--	for (i = 0; i < vsi->num_queue_pairs; i++)
--		WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
-+	if (!is_xdp_enabled && prog)
-+		ret = i40e_realloc_rx_bi_zc(vsi, true);
-+	else if (is_xdp_enabled && !prog)
-+		ret = i40e_realloc_rx_bi_zc(vsi, false);
-+
-+	if (ret) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to reallocate RX resources during XDP setup");
-+		goto err_vsi_setup;
-+	}
-+
-+	if (if_running) {
-+		ret = i40e_up(vsi);
-+
-+		if (ret) {
-+			NL_SET_ERR_MSG_MOD(extack, "Failed to open VSI during XDP setup");
-+			goto err_vsi_setup;
-+		}
-+	}
-+
-+assign_prog:
-+	i40e_vsi_assign_bpf_prog(vsi, prog);
- 
- 	if (old_prog)
- 		bpf_prog_put(old_prog);
-@@ -13362,13 +13424,20 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
- 	/* Kick start the NAPI context if there is an AF_XDP socket open
- 	 * on that queue id. This so that receiving will start.
- 	 */
--	if (need_reset && prog)
--		for (i = 0; i < vsi->num_queue_pairs; i++)
--			if (vsi->xdp_rings[i]->xsk_pool)
--				(void)i40e_xsk_wakeup(vsi->netdev, i,
--						      XDP_WAKEUP_RX);
-+	if (need_reinit && prog)
-+		i40e_vsi_rx_napi_schedule(vsi);
- 
- 	return 0;
-+
-+err_setup_rx:
-+	i40e_vsi_free_rx_resources(vsi);
-+err_setup_tx:
-+	i40e_vsi_free_tx_resources(vsi);
-+err_vsi_setup:
-+	i40e_do_reset(pf, I40E_PF_RESET_FLAG, true);
-+	i40e_vsi_assign_bpf_prog(vsi, old_prog);
-+
-+	return ret;
- }
- 
- /**
-@@ -14310,13 +14379,14 @@ static int i40e_vsi_setup_vectors(struct i40e_vsi *vsi)
- /**
-  * i40e_vsi_reinit_setup - return and reallocate resources for a VSI
-  * @vsi: pointer to the vsi.
-+ * @is_xdp: flag indicating if this is reinit during XDP setup
-  *
-  * This re-allocates a vsi's queue resources.
-  *
-  * Returns pointer to the successfully allocated and configured VSI sw struct
-  * on success, otherwise returns NULL on failure.
-  **/
--static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
-+static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi, bool is_xdp)
- {
- 	u16 alloc_queue_pairs;
- 	struct i40e_pf *pf;
-@@ -14352,12 +14422,14 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
- 	/* Update the FW view of the VSI. Force a reset of TC and queue
- 	 * layout configurations.
- 	 */
--	enabled_tc = pf->vsi[pf->lan_vsi]->tc_config.enabled_tc;
--	pf->vsi[pf->lan_vsi]->tc_config.enabled_tc = 0;
--	pf->vsi[pf->lan_vsi]->seid = pf->main_vsi_seid;
--	i40e_vsi_config_tc(pf->vsi[pf->lan_vsi], enabled_tc);
--	if (vsi->type == I40E_VSI_MAIN)
--		i40e_rm_default_mac_filter(vsi, pf->hw.mac.perm_addr);
-+	if (!is_xdp) {
-+		enabled_tc = pf->vsi[pf->lan_vsi]->tc_config.enabled_tc;
-+		pf->vsi[pf->lan_vsi]->tc_config.enabled_tc = 0;
-+		pf->vsi[pf->lan_vsi]->seid = pf->main_vsi_seid;
-+		i40e_vsi_config_tc(pf->vsi[pf->lan_vsi], enabled_tc);
-+		if (vsi->type == I40E_VSI_MAIN)
-+			i40e_rm_default_mac_filter(vsi, pf->hw.mac.perm_addr);
-+	}
- 
- 	/* assign it some queues */
- 	ret = i40e_alloc_rings(vsi);
-@@ -15123,7 +15195,8 @@ static int i40e_setup_pf_switch(struct i40e_pf *pf, bool reinit, bool lock_acqui
- 		if (pf->lan_vsi == I40E_NO_VSI)
- 			vsi = i40e_vsi_setup(pf, I40E_VSI_MAIN, uplink_seid, 0);
- 		else if (reinit)
--			vsi = i40e_vsi_reinit_setup(pf->vsi[pf->lan_vsi]);
-+			vsi = i40e_vsi_reinit_setup(pf->vsi[pf->lan_vsi],
-+						    false);
- 		if (!vsi) {
- 			dev_info(&pf->pdev->dev, "setup of MAIN VSI failed\n");
- 			i40e_cloud_filter_exit(pf);
+ 		ice_trace(tx_tstamp_fw_done, tx->tstamps[idx].skb, idx);
 -- 
-2.25.1
+2.39.0
 
 _______________________________________________
 Intel-wired-lan mailing list
