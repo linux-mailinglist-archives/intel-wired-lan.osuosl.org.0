@@ -1,152 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23045672333
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 17:28:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38570672334
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jan 2023 17:29:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B92D040B22;
-	Wed, 18 Jan 2023 16:28:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B92D040B22
+	by smtp1.osuosl.org (Postfix) with ESMTP id B1A75813B5;
+	Wed, 18 Jan 2023 16:29:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B1A75813B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674059337;
-	bh=pBAPiL1PNno4x1/r7hz283HPNLGoxnLO1E+ELm87Ieg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1674059341;
+	bh=11ucqV1vhY0oPi6DBU6o3Bk4gl41+qiYXJOfyrdMlrQ=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Qy20x4uUaJgglwv9HQ5BTCuR66xu5zBK3mHr4yhVQMNlDW1j7Eoyk5aRM/XwmiXzD
-	 Zo41DP2+8Y/U980lUncUyGZs8EiXL9wvomHtHGDMZf2gRBODfoG2zPTncvyTlYZjMx
-	 h3GQxpQ2oL9fKA5kYDVz19c5A8F7zukBto/Zig81twP7yBJP06rFeYDMprqMa5iWwT
-	 EgyTKZQjulME5fah8MSJFpu0vHDaqZDcm9tt/EJ8OTaUnXTvWg/6FELQWMfNHfNOeG
-	 dflPlIHwDSjW4cPHcYz3+eMFJUTjvAeKD7yJI67MFfWiLwUtwHM4Z6MQ2nxRmAmWJk
-	 P+desumkEm+Yg==
+	b=A7MJNgnoHy9OS9vP9sVuDYsQhhaXVweAzHHUBD9aI2GznXmlNAP8GIgJzD/oJC4BH
+	 cEj/TGHVfBlUrfABXop2ryKn4/JdVIEDYcLT9fw6tUDGg2rG1BX9or1TLfsY3BU8DP
+	 dmJ7s6DthY+JL2gzIY3ERRI/KYxH+AKzpWNg4lHTeNZTMkw3Z4VXYWTxq7XNasBMdt
+	 ltPouRa2bmMEwboOkB0JbZxl9fVtf8gYJzkRvMui5VanSDqxsG2d8bRHDiTyqd5NQv
+	 Lz2FnU7jUNQ9Y45qwbqr7ZLSPVnFjuxLnnhS1uTxIppN1giTf57nedMdmPnJe1Iz+h
+	 ULten7vrVB84A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jpFAJrAeYgaU; Wed, 18 Jan 2023 16:28:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id X9iu_gP2Y6_e; Wed, 18 Jan 2023 16:29:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9A86E40B05;
-	Wed, 18 Jan 2023 16:28:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A86E40B05
+	by smtp1.osuosl.org (Postfix) with ESMTP id 84F4E81257;
+	Wed, 18 Jan 2023 16:29:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 84F4E81257
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5723D1BF425
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 08:51:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D26721BF3F4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 09:09:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2C0A140377
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 08:51:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C0A140377
+ by smtp3.osuosl.org (Postfix) with ESMTP id AC88E60EFE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 09:09:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC88E60EFE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j9crG89Dweix for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jan 2023 08:51:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id V9hhw0q2Alj5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jan 2023 09:08:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA3B1400AF
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2100.outbound.protection.outlook.com [40.107.236.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CA3B1400AF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 08:51:11 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ThbJw0NVN+gb74XrjIYjcamA/OGPRQTxbgLs39j/cmeKUTLF2iadzQNQqSjzSXQnXb2MUhmGjuOaFnxpQFbpitOgdrktfzNGO4n00T+Jo0kxIWkOaRDRlenuYzn5x0WbgNSMG+QZxlRghN/qwDpdKXK42CBPqK1p3HV8l/VW9D3Sm7PoNLzqAca4EAFN5tlo4+2bZHaQigvio6VnabN50OPOIvBs8hzBsJJQmcv7e4SCubw9Uvtqc84Y2V23zlrpQDQwCgmkYz3YeeHkJgflesUop8cfFMZOf+aP2LeA2U5c+/3hFeICqd/zrxNLM86o/E/U/W7czMHUNZVick9hTA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lNPNchCe3qPJwRBtuDTPPZ5vZFfOWodutanIKrZso2c=;
- b=BEEt4fthH8ZNg1QJV1wNoNtlgFpmyL6DUG3GnrvnWuzlAtLi2Cy+2xiagYSsbS+zFcmHMEOZQiMAI+SSJxH18mea3CWcSTZBtWhV7ByxOTxuuON8QiFHptmv2SAxjKP+qNOIR0jwiTO2vrM0xEsvMLuLwrttNwx/4zL2S425XgHPYXz+XjGt/ZjFq1cKc1dEAtklC1zLXVdhUWG0PnB110FatSBr5Rdp21i/oGZXViQ6P0I3Lb+wGqyNIgpVNBqj+uGjcdczEvEiJxWy5R/BqYtLxXaCm2WLC8dWjqyJFQWjJcSaDibi/yzHx552bRjal9B3Xm3D+tnDKNeY3m8xew==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from SJ0PR13MB6037.namprd13.prod.outlook.com (2603:10b6:a03:3e2::9)
- by DM6PR13MB4049.namprd13.prod.outlook.com (2603:10b6:5:2a3::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.13; Wed, 18 Jan
- 2023 08:51:09 +0000
-Received: from SJ0PR13MB6037.namprd13.prod.outlook.com
- ([fe80::a17f:495a:6870:18c0]) by SJ0PR13MB6037.namprd13.prod.outlook.com
- ([fe80::a17f:495a:6870:18c0%9]) with mapi id 15.20.6002.024; Wed, 18 Jan 2023
- 08:51:09 +0000
-Date: Wed, 18 Jan 2023 09:50:53 +0100
-From: Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@corigine.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Message-ID: <Y8ey7Sg3BcPfsU9d@sleipner.dyn.berto.se>
-References: <cover.1673710866.git.lorenzo@kernel.org>
- <b606e729c9baf36a28be246bf0bfa4d21cc097fb.1673710867.git.lorenzo@kernel.org>
- <Y8cTKOmCBbMEZK8D@sleipner.dyn.berto.se>
- <Y8czKD8/yXywbl+f@lore-desk>
-Content-Disposition: inline
-In-Reply-To: <Y8czKD8/yXywbl+f@lore-desk>
-X-ClientProxiedBy: FR3P281CA0094.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a1::9) To SJ0PR13MB6037.namprd13.prod.outlook.com
- (2603:10b6:a03:3e2::9)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57C7160E84
+Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
+ [IPv6:2a00:1450:4864:20::52b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 57C7160E84
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 09:08:59 +0000 (UTC)
+Received: by mail-ed1-x52b.google.com with SMTP id s21so4481514edi.12
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jan 2023 01:08:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TK3qq2DIZCRKV3EaJMeG+kJeMf3Jk06Hg2r49DutS2I=;
+ b=YFxxXKQT1A3DtsAv0Pa12rYVZDrpmxK9tvJbIM5nI9/W9YtpxCd7Dipg2U12D3Gtnc
+ c+k1hoGzqJooCuTRx7Ssc8JhmXWL0tRKCWiE7+6yLVsSIEeL0Dzx/6KgoPRyd2L8pqpu
+ 6CS7vxRzkWDpl17wYT2i/9iO56GyYSvo0CG35CIC7YwD4obhVnnc14m96HX3pjaGiPGN
+ 47jTqMzt6ZL85kK5M6qqFP6101EkX5x5B7xr0N/M99WxZLq1fBmk3I18+uuw/l3vNn9Q
+ qRQVxuYqWyRCl+9ztVCKGwulW07dsCsaqST7XWPcQWRDxsHRxC6iagneUb/MpjM4mIsQ
+ FayA==
+X-Gm-Message-State: AFqh2kpaQ7Dorg3b1xZbRhhFiFuJQI4OCth4ht2c+o99iYljLytQuC6L
+ iy1FszLumWbiX6FvE0H91P1ouLWpWKcmYDYD3HM=
+X-Google-Smtp-Source: AMrXdXt27Qm/P0OJ9NMULTf9tfxamPk7OkdvmaUnXQRQHp04wzC5i7h6K1ynpktCZZ9IKafJhd1jCUT26YRgag+pB0Y=
+X-Received: by 2002:a05:6402:643:b0:46f:77af:10ff with SMTP id
+ u3-20020a056402064300b0046f77af10ffmr808049edx.178.1674032937213; Wed, 18 Jan
+ 2023 01:08:57 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ0PR13MB6037:EE_|DM6PR13MB4049:EE_
-X-MS-Office365-Filtering-Correlation-Id: f2bbde9f-a473-47b3-031b-08daf93124c9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 4XaM9lp+GFn7RTX2ceMQD9SXfg3S4CB9o2CFtk0lFBd0NBDoCS0sjQjR4nweEb1WFOQsSBIw56C/Ds0h7cyvynZQWVmmEXgKVo/Ks/83S4/WBZcrFu/jr3a3eV11bMQe4G96e1bsqMro4NkpgL2RBDNxcMpH1tnvANXnOgqaO2h4E6B9XnZ8SJgdz5ejpYQFxET9diCdDqw3/nfTf9AwbNqjG3Clh4um/3hcQRA3ib7VjdtAjsTBae2e+fAkiOrbcxsGM7P1oCsjKsyaZmF29YJI9fw9UjdXBmzY7n97ERowvLo1Hhkt6ntSP+N0RcfqwbKVS/HblBpUzA0ZvMLCEFo781HBDeji9s+683+3AOeST1Fww6Y3UmttFxDP5fug+N3db9GF+xl3t8fDsvCUxlhN2C+6RP4si/r1IMCb369HLpn+aJxIkCSkyNs/p8Bn/z0mGji1+XMERGVE8L0wG3phhfs4iXkMD2dEntdtCvX8BhFwRc12nNs69nViChx5pCgeCy/RVzfOH09FnJBks1rAYSqwHUYoW06UsZV8UAUrlOStJiQW0Jw7BtvbToyxtL99BxD7Z/H0ZwUsDx/3m678S890/pRt0rogZUmJEKDl5bEHHF5uEwnhV6ah7M76cKM89XvC8n+485r9n6lw371CkU7xhNCSpKuImVRfEPEg7jBdiOFTV0uNwxWDRdu2
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR13MB6037.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(366004)(136003)(346002)(39840400004)(376002)(396003)(451199015)(478600001)(52116002)(6486002)(6512007)(9686003)(6506007)(6666004)(2906002)(26005)(8936002)(53546011)(316002)(41300700001)(5660300002)(7416002)(66946007)(6916009)(7406005)(4326008)(66556008)(66476007)(8676002)(38100700002)(186003)(38350700002)(86362001)(66574015);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?+q3sNeG7ICGrdWyTiPIYw2pw5O6FxNOCfajs6uikLmH+OIR9K9K7bkvO1Z?=
- =?iso-8859-1?Q?JZegmjl54H//vV6qw3k54KwWsdoYOIlZM7zXABI2Xiksel2Miq4wDmleFn?=
- =?iso-8859-1?Q?N+c36ssboenBeexUnv9I4sJ9tkqoyAh4nVhqfnZqLQp41J2n37UBRS6vP2?=
- =?iso-8859-1?Q?Og0K/asxl5qPiSABgVVmj2bzrP+8c0ZPZXxj4pP39dRqvmYbSBk7N7oALw?=
- =?iso-8859-1?Q?GzFrx8wTaP/5O97y+SgSIBYSo4yu32DWZp6zpkXDYBGvkDfbAmKeRPTLWg?=
- =?iso-8859-1?Q?ZAlIg0fstzIoQRxofGAoRwa0ozP5by/f5/PmpCuDyomGDa0AnxPadnZ2VH?=
- =?iso-8859-1?Q?UBRDRF5FP5yizMJG54h5OQLUjXPzwJ8+ZW8zNxymncWFYWxgZUBVf76ElD?=
- =?iso-8859-1?Q?MdlwIwGOBRKSeTJW1J0YalfLUTtvIHA0Yk9iqsxiCG2AEq+gsI/MED1IgR?=
- =?iso-8859-1?Q?THLB+jgdsHdfGR8wZnIM9SZzfcaZ0hNbIPzYaqP+ZFzkbaYbLfCp38G0nV?=
- =?iso-8859-1?Q?xA5uH1Trha5iCvR5ymCf9fjMvlEccmEqaxqGEU0cf9KWWLq+dBXbC85aYw?=
- =?iso-8859-1?Q?2Tau5EOkZw+f1VvsntPZgwFLmWK5Rkvp2CLO/yv4nSCErDeH6xCFrKsBkX?=
- =?iso-8859-1?Q?juE9YoCHOTDjkFCSe4zlrzm4xUYIVbl9R4JS/1mT8DY0NHaXOGK8jVxNbW?=
- =?iso-8859-1?Q?v8vSE5qXcy2U+s5/XXZI2vxdHcPmG3EXOIpLtsnTQLQmuDxMLJnj2JdqvU?=
- =?iso-8859-1?Q?GyctlF/MO2zI61xMFuzH+XpsPHgiPcFiaIZw7wAsSaENl6G0tGCyQGmzU2?=
- =?iso-8859-1?Q?GK1iDY5w9tcLe4CfRsw/PQrx2cHw4PJMntGR/6FxGQ9XduudWybLe7QFPw?=
- =?iso-8859-1?Q?o2r4mhg9wF7/piGBGvKK+E7/pu76YZOI/h3XT5X3RMgNZBSFtdIl5/DeMP?=
- =?iso-8859-1?Q?XrI/hWiPmcsrCNnmUq/j/TA40VM9LwvDXLfLmfCdsmxAeEQMj4Bxlq5Jiq?=
- =?iso-8859-1?Q?GA1KQNXI5ZpVODD/ekWwI8GnRlFv/mApR6PSXZmD6Lw0Rew1Tvj6ZZz4q1?=
- =?iso-8859-1?Q?CXlg6U1Bt+Tm613NAvwcfRHB7T+mHFYEL4oruWaVOdhghkFewZ/+sjQnwr?=
- =?iso-8859-1?Q?47u9MoSGp4cBj5BZifHMVtH/Z35MwBDLsGuROMdH9cQU/AsNSVfatlj/lB?=
- =?iso-8859-1?Q?2ZJXbHJ29qMTxNTOADTuMFZmEaNHjm7mrx/UL6TMVy2QNoRUB0ZiLDTzgS?=
- =?iso-8859-1?Q?HEZ0ipwDUZ2pQuhoe161Buc1Vn91/PivX2XXIfqNuEiAND59gnbgZ2RcMF?=
- =?iso-8859-1?Q?GijGWH+Lc4RpAKdYODxek8Grd///iEjyeLn9UGUA+zZxhnyqNStkIT66qK?=
- =?iso-8859-1?Q?6nv6p2FNv72H5dj4mWiI14rhOsdgMy3vIUUQpMDma0DsvsfDkisPje+pM5?=
- =?iso-8859-1?Q?4qxbgP+ax8zd/b8ZTX8d+1CEZjvbHRzdubmEADtzcJz7pnTqWbBV0+Mvgd?=
- =?iso-8859-1?Q?Bhey2IcOz8ovV3GbgZocOcvXLnHZUy9Qr64yLm/hkHjdznQLo7BzMYZfQF?=
- =?iso-8859-1?Q?Q8O5Iju+sfYGauf5drI9bvHEY6O70sDOgCCYe5RRlpfsie0ke7vGFGRgBa?=
- =?iso-8859-1?Q?KEi/sMDGRVJL9y2A5VQWzOTVAIuRPbat02mhNApMCmkDiJic2xNR75+A?=
- =?iso-8859-1?Q?=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f2bbde9f-a473-47b3-031b-08daf93124c9
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR13MB6037.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jan 2023 08:51:09.4556 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: J8UVxIGA7uXee0xu4r9bCkl6/pNtPzstziV1/OtXoxoPM7UR8L+jTsTcQYcyohVo3VNnjFO3Uzyc+CRvGtRdVQZGvMlrosn4lh+pxiTeSCU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR13MB4049
+References: <20230117102645.24920-1-liujia6264@gmail.com>
+ <9f29ff29-62bb-c92b-6d69-ccc86938929e@intel.com>
+ <5d96deeb-a59d-366d-dbb2-d88623cdfa2d@intel.com>
+In-Reply-To: <5d96deeb-a59d-366d-dbb2-d88623cdfa2d@intel.com>
+From: Jia Liu <liujia6264@gmail.com>
+Date: Wed, 18 Jan 2023 17:08:45 +0800
+Message-ID: <CA+eZsiZ81+AL1-mLb4mONZnMqO=uUPFcw=QWFhEY36_jg9MpiQ@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
 X-Mailman-Approved-At: Wed, 18 Jan 2023 16:28:51 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lNPNchCe3qPJwRBtuDTPPZ5vZFfOWodutanIKrZso2c=;
- b=vMYHQ7CiwOZbBvr0hw59pgRDQ8JiGtCL85+7NMqLoKPwkpGwx3BvAm30IYzxYXl80jzgZRy80N9v3ChKsNl2wlytgz6ioChVq4+xAUA3/Y7U60zpN+VZbSKwFATR0B9+dB3jrD9lJYEJxeQOjP11zHBLz5lXzAPPVipZxorPsoM=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=fail reason="signature verification failed" (1024-bit key)
- header.d=corigine.onmicrosoft.com header.i=@corigine.onmicrosoft.com
- header.a=rsa-sha256 header.s=selector2-corigine-onmicrosoft-com
- header.b=vMYHQ7Ci
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [RFC v2 bpf-next 2/7] drivers: net: turn on
- XDP features
+ d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=TK3qq2DIZCRKV3EaJMeG+kJeMf3Jk06Hg2r49DutS2I=;
+ b=beBW8UEmmiP/XEulFLyOZ8zULhs3O8kJR1mGKaz5IB7yWI5puDGvj/ibNDyYEz7wBM
+ nAZKmm9wcEV2x5zFbxRUnQ5pLAG+BTk2GpTGoL03kSsiKLO733Fk2VOr+DYVfL5LsLog
+ B6Xrth4yzvh6vHP9MtKHZ1Xxz9oO2sW+nEvw80LX8HDY9qXgnPNvSZOhz3Lg0nTGKJhX
+ j/E03chxWNiHVijx08eZk4b7lZ7ImA/7ZXTaW4U45g5hriSyJMk51unWYPrdC2mrmsoy
+ ynG+Xud40Jjv0Yq590LD2jlCo76XukSunhXttKqSb4Newy8URoxnuj0+glfLQC4GS9zk
+ MNaw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=beBW8UEm
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Add ADP_I219_LM17 to ME S0ix
+ blacklist
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,165 +106,145 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: "Ruinskiy, Dima" <dima.ruinskiy@intel.com>, netdev@vger.kernel.org,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Lorenzo,
+On Wed, Jan 18, 2023 at 1:20 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
+>
+> On 1/17/2023 21:34, Jacob Keller wrote:
+> >
+> >
+> > On 1/17/2023 2:26 AM, Jiajia Liu wrote:
+> >> I219 on HP EliteOne 840 All in One cannot work after s2idle resume
+> >> when the link speed is Gigabit, Wake-on-LAN is enabled and then set
+> >> the link down before suspend. No issue found when requesting driver
+> >> to configure S0ix. Add workround to let ADP_I219_LM17 use the dirver
+> >> configured S0ix.
+> >>
+> >> Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=216926
+> >> Signed-off-by: Jiajia Liu <liujia6264@gmail.com>
+> >> ---
+> >>
+> >> It's regarding the bug above, it looks it's causued by the ME S0ix.
+> >> And is there a method to make the ME S0ix path work?
+> No. This is a fragile approach. ME must get the message from us
+> (unconfigure the device from s0ix). Otherwise, ME will continue to
+> access LAN resources and the controller could get stuck.
+> I see two ways:
+> 1. you always can skip s0ix flow by priv_flag
+> 2. Especially in this case (HP platform) - please, contact HP (what is
+> the ME version on this system, and how was it released...). HP will open
+> a ticket with Intel. (then we can involve the ME team)
 
-On 2023-01-18 00:45:44 +0100, Lorenzo Bianconi wrote:
-> > Hi Lorenzo and Marek,
-> > =
+HP released BIOS including ME firmware on their website HP.com at
+https://support.hp.com/my-en/drivers/selfservice/hp-eliteone-840-23.8-inch-g9-all-in-one-desktop-pc/2101132389.
+There is upgrade interface on the BIOS setup menu which can connect
+HP.com and upgrade to newer BIOS.
 
-> > Thanks for your work.
-> > =
+The initial ME version was v16.0.15.1735 from BIOS 02.03.04.
+Then I upgraded to the latest one v16.1.25.1932v3 from BIOS 02.06.01
+released on Nov 28, 2022. Both of them can produce this issue.
 
-> > On 2023-01-14 16:54:32 +0100, Lorenzo Bianconi wrote:
-> > =
+I have only one setup. Is it possible to try on your system which has the
+same I219-LM to see if it's platform specific or not?
 
-> > [...]
-> > =
-
-> > > =
-
-> > > Turn 'hw-offload' feature flag on for:
-> > >  - netronome (nfp)
-> > >  - netdevsim.
-> > =
-
-> > Is there a definition of the 'hw-offload' written down somewhere? From =
-
-> > reading this series I take it is the ability to offload a BPF program?  =
-
-> =
-
-> correct
-> =
-
-> > It would also be interesting to read documentation for the other flags =
-
-> > added in this series.
-> =
-
-> maybe we can add definitions in Documentation/netlink/specs/netdev.yaml?
-> =
-
-> > =
-
-> > [...]
-> > =
-
-> > > diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c =
-
-> > > b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-> > > index 18fc9971f1c8..5a8ddeaff74d 100644
-> > > --- a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-> > > +++ b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-> > > @@ -2529,10 +2529,14 @@ static void nfp_net_netdev_init(struct nfp_ne=
-t *nn)
-> > >  	netdev->features &=3D ~NETIF_F_HW_VLAN_STAG_RX;
-> > >  	nn->dp.ctrl &=3D ~NFP_NET_CFG_CTRL_RXQINQ;
-> > >  =
-
-> > > +	nn->dp.netdev->xdp_features =3D NETDEV_XDP_ACT_BASIC |
-> > > +				      NETDEV_XDP_ACT_HW_OFFLOAD;
-> > =
-
-> > If my assumption about the 'hw-offload' flag above is correct I think =
-
-> > NETDEV_XDP_ACT_HW_OFFLOAD should be conditioned on that the BPF firmwar=
-e =
-
-> > flavor is in use.
-> > =
-
-> >     nn->dp.netdev->xdp_features =3D NETDEV_XDP_ACT_BASIC;
-> > =
-
-> >     if (nn->app->type->id =3D=3D NFP_APP_BPF_NIC)
-> >         nn->dp.netdev->xdp_features |=3D NETDEV_XDP_ACT_HW_OFFLOAD;
-> =
-
-> ack, I will fix it.
-
-Thanks. I have just been informed from Yinjun Zhang that this check is =
-
-not enough as this function is reused for VF where nn->app is not set. I =
-
-think a better check would be
-
-    if (nn->app && nn->app->type->id =3D=3D NFP_APP_BPF_NIC)
-
-Yinjun also informed me that you can make this code a bit neater by,
-
-    s/nn->dp.netdev->xdp_features/netdev->xdp_features/
-
-Thanks again for your work.
-
-> =
-
-> > =
-
-> > > +
-> > >  	/* Finalise the netdev setup */
-> > >  	switch (nn->dp.ops->version) {
-> > >  	case NFP_NFD_VER_NFD3:
-> > >  		netdev->netdev_ops =3D &nfp_nfd3_netdev_ops;
-> > > +		nn->dp.netdev->xdp_features |=3D NETDEV_XDP_ACT_XSK_ZEROCOPY;
-> > >  		break;
-> > >  	case NFP_NFD_VER_NFDK:
-> > >  		netdev->netdev_ops =3D &nfp_nfdk_netdev_ops;
-> > =
-
-> > This is also a wrinkle I would like to understand. Currently NFP suppor=
-t =
-
-> > zero-copy on NFD3, but not for offloaded BPF programs. But with the BPF =
-
-> > firmware flavor running the device can still support zero-copy for =
-
-> > non-offloaded programs.
-> > =
-
-> > Is it a problem that the driver advertises support for both =
-
-> > hardware-offload _and_ zero-copy at the same time, even if they can't b=
-e =
-
-> > used together but separately?
-> =
-
-> xdp_features should export NIC supported features in the current
-> configuration and it is expected they can be used concurrently.
-> =
-
-> Regards,
-> Lorenzo
-> =
-
-> > =
-
-> > -- =
-
-> > Kind Regards,
-> > Niklas S=F6derlund
-
-
-
--- =
-
-Kind Regards,
-Niklas S=F6derlund
+> >>
+> >
+> > No idea. It does seem better to disable S0ix if it doesn't work properly
+> > first though...
+> >
+> >>   drivers/net/ethernet/intel/e1000e/netdev.c | 25 ++++++++++++++++++++++
+> >>   1 file changed, 25 insertions(+)
+> >>
+> >> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> >> index 04acd1a992fa..7ee759dbd09d 100644
+> >> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> >> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> >> @@ -6330,6 +6330,23 @@ static void e1000e_flush_lpic(struct pci_dev *pdev)
+> >>      pm_runtime_put_sync(netdev->dev.parent);
+> >>   }
+> >>
+> >> +static u16 me_s0ix_blacklist[] = {
+> >> +    E1000_DEV_ID_PCH_ADP_I219_LM17,
+> >> +    0
+> >> +};
+> >> +
+> >> +static bool e1000e_check_me_s0ix_blacklist(const struct e1000_adapter *adapter)
+> >> +{
+> >> +    u16 *list;
+> >> +
+> >> +    for (list = me_s0ix_blacklist; *list; list++) {
+> >> +            if (*list == adapter->pdev->device)
+> >> +                    return true;
+> >> +    }
+> >> +
+> >> +    return false;
+> >> +}
+> >
+> > The name of this function seems odd..? "check_me"? It also seems like we
+> > could just do a simple switch/case on the device ID or similar.
+> >
+> > Maybe: "e1000e_device_supports_s0ix"?
+> >
+> >> +
+> >>   /* S0ix implementation */
+> >>   static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+> >>   {
+> >> @@ -6337,6 +6354,9 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+> >>      u32 mac_data;
+> >>      u16 phy_data;
+> >>
+> >> +    if (e1000e_check_me_s0ix_blacklist(adapter))
+> >> +            goto req_driver;
+> >> +
+> >>      if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
+> >>          hw->mac.type >= e1000_pch_adp) {
+> >>              /* Request ME configure the device for S0ix */
+> >
+> >
+> > The related code also seems to already perform some set of mac checks
+> > here...
+> >
+> >> @@ -6346,6 +6366,7 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+> >>              trace_e1000e_trace_mac_register(mac_data);
+> >>              ew32(H2ME, mac_data);
+> >>      } else {
+> >> +req_driver:>                /* Request driver configure the device to S0ix */
+> >>              /* Disable the periodic inband message,
+> >>               * don't request PCIe clock in K1 page770_17[10:9] = 10b
+> >> @@ -6488,6 +6509,9 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+> >>      u16 phy_data;
+> >>      u32 i = 0;
+> >>
+> >> +    if (e1000e_check_me_s0ix_blacklist(adapter))
+> >> +            goto req_driver;
+> >> +
+> >
+> > Why not just combine this check into the statement below rather than
+> > adding a goto?
+> >
+> >>      if (er32(FWSM) & E1000_ICH_FWSM_FW_VALID &&
+> >>          hw->mac.type >= e1000_pch_adp) {
+> >>              /* Keep the GPT clock enabled for CSME */
+> >> @@ -6523,6 +6547,7 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
+> >>              else
+> >>                      e_dbg("DPG_EXIT_DONE cleared after %d msec\n", i * 10);
+> >>      } else {
+> >> +req_driver:
+> >>              /* Request driver unconfigure the device from S0ix */
+> >>
+> >>              /* Disable the Dynamic Power Gating in the MAC */
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
