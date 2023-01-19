@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF128672DF2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 02:17:30 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3323E672DF6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 02:17:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B7E5182200;
-	Thu, 19 Jan 2023 01:17:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7E5182200
+	by smtp3.osuosl.org (Postfix) with ESMTP id B578D610C0;
+	Thu, 19 Jan 2023 01:17:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B578D610C0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674091048;
-	bh=BxJ9HERa4bMgFHkt6I8AhY4d+4U3GsHMQk1/3JumXPI=;
+	s=default; t=1674091065;
+	bh=EXxQ7QqTrD9alSVJ4OKdZ4hhVdszeY6JHGrTxTGmUoQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rMACpVnzg+an0ShguF6zwNAVbg/wSxju9tlaSNI5LdwY+A8yB164Hu4L4eU1Rm3VQ
-	 5643hE/NeyV0recarVOsNb48yazt2Sg19oi5ZoX8QUKi67If6Nr+qfb+aUcsubVzGA
-	 urmVYPzGT5gnHo6T0mtIGSEbWpNcdg2s+j31UQtnwZeVD4l4rMFqvXwXroTtGyi9i6
-	 aJH8u0dJ2cvQHOACLuRVL86Wu1zOwvlUWTdbcMLCfr4X+iGEgBxX9NfJxKuKYHKfP9
-	 q1sps1lvAeUl6b4La6C+s8cAtgshUIPNIoK5Lge6kqQhlNb5LsJ9+O/tULZJxjjXHF
-	 ZGKTX0gGMM3gw==
+	b=DnnRquBjgk7CbmJZ4uY6uXfjW6KpernWQjKPlKDHHrrpdvnys26dGFzHLqXtPmp06
+	 AHeCfMahRgFaclqXBu5iEYjjPQwwVZl45y+bdzwgekUOQvydvjCxizIA8sI85G030l
+	 E4NJ/WBvicXXnAmJk3QfdhQPC/0oZPs2Bm16Xk5EDv/OqMQ9ohC2cRnqOMTMixpPmp
+	 FEDVvis4z7Njxn0qjZVyQ53FKW4TFnG1sG6hqbaSnTlMmeo5MOvrELWwf7KU0J3NNv
+	 bQCaXO8WzMobsknnL0p/X3p3Yntqwdc3OxisnRkWoLOSazit79JA5JxJjODPXciH/h
+	 gozj9ci4BoZrQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c-RwF4WsXwI0; Thu, 19 Jan 2023 01:17:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 86PJDQjst6ka; Thu, 19 Jan 2023 01:17:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ACB5F821BA;
-	Thu, 19 Jan 2023 01:17:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACB5F821BA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9F38C6107E;
+	Thu, 19 Jan 2023 01:17:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F38C6107E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 46FCA1BF95F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8AED51BF95F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 658D8418A4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 658D8418A4
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4E65341922
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E65341922
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uR4Aec4c30ZW for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 0Bq6M2TfOoL6 for <intel-wired-lan@lists.osuosl.org>;
  Thu, 19 Jan 2023 01:17:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F406A41922
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 23CC241923
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F406A41922
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304840726"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304840726"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 23CC241923
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304840727"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304840727"
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jan 2023 17:17:03 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="783881873"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="783881873"
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="783881876"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="783881876"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.1])
  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jan 2023 17:17:02 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 18 Jan 2023 17:16:46 -0800
-Message-Id: <20230119011653.311675-7-jacob.e.keller@intel.com>
+Date: Wed, 18 Jan 2023 17:16:47 -0800
+Message-Id: <20230119011653.311675-8-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.39.1.405.gd4c25cc71f83
 In-Reply-To: <20230119011653.311675-1-jacob.e.keller@intel.com>
 References: <20230119011653.311675-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674091024; x=1705627024;
+ t=1674091025; x=1705627025;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=SZ6akesSzEQTFuN9G5sjPH9FETHD3gYgWuQMhs5rsJM=;
- b=HwYaWtvCLD7RGHnN0W+z6ctwaB3PmoOFG9Z9dndMxUVBBZZZFl4LciCc
- eqVIdPbcFTp6SWkRE3N2V5px14rH+YAyFNhYlo2p1GRIT/X8QFeaXuTzM
- W4BMGKMeExCIn//8OOAsNcGrgAxGvWDFHA4Njkt6TRFIC6PqWhzzTJY24
- grTG25i5z0W4M33HKTCaX8QcG8yW/SR5+3zT4QizeQ4XUqcu8ckSApjw/
- Ae/0sHNLsqwipTFOIzK0BlLDJtuABitMzFFvUrg8dZpDBOUk7tcYW3PfE
- 1nq0d2O2cO0FA8CBI0a7cPHvzVL5vCnlr2i3/RafJ0OEMV9aW0YDvw+cs
- Q==;
+ bh=gVDDRXYe6VILOMv9qusLAC5k/hg0VQ8iO06+bWLABLY=;
+ b=IwdFyn4rkrMYHJP/3Y/yX3Qs+I5gMP19hA0o7Jwws+QKWKiJcymmFjim
+ C4TxtGe6VtTNHvbvSDnF8Rmlqhf1+68DsteWQ7/fVcAA8YNR6WvMPoFx9
+ 33AIB7dltvEbPebvRQS3oBgPk1yesHilOHQU8Qo6nL80XZ3v/0XKthBGw
+ Fg4L2PN0xO/fJcpcunBu8SHJqWdVDsRurptZG3kbfORYIpdNaPLH+KON6
+ eTL2w693nU0ivq3B3N1OnBpKr50KYDuVDy2K5QYoWc1kwMOtafQBxRtoM
+ hJEZ/8BadZcC03bPqjrY2C28ctPSSndUjF41xiVJi8/1YVj3qTw/YLenP
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HwYaWtvC
-Subject: [Intel-wired-lan] [PATCH net-next v2 06/13] ice: move
- ice_vf_vsi_release into ice_vf_lib.c
+ header.a=rsa-sha256 header.s=Intel header.b=IwdFyn4r
+Subject: [Intel-wired-lan] [PATCH net-next v2 07/13] ice: Pull common tasks
+ into ice_vf_post_vsi_rebuild
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,86 +102,84 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_vf_vsi_release function will be used in a future change to
-refactor the .vsi_rebuild function. Move this over to ice_vf_lib.c so
-that it can be used there.
+The Single Root IOV implementation of .post_vsi_rebuild performs some tasks
+that will ultimately need to be shared with the Scalable IOV implementation
+such as rebuilding the host configuration.
+
+Refactor by introducing a new wrapper function, ice_vf_post_vsi_rebuild
+which performs the tasks that will be shared between SR-IOV and Scalable
+IOV. Move the ice_vf_rebuild_host_cfg and ice_vf_set_initialized calls into
+this wrapper. Then call the implementation specific post_vsi_rebuild
+handler afterwards.
+
+This ensures that we will properly re-initialize filters and expected
+settings for both SR-IOV and Scalable IOV.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
-No changes since v1.
+No Changes since v1.
 
- drivers/net/ethernet/intel/ice/ice_sriov.c     | 15 ---------------
- drivers/net/ethernet/intel/ice/ice_vf_lib.c    | 18 ++++++++++++++++++
- .../ethernet/intel/ice/ice_vf_lib_private.h    |  1 +
- 3 files changed, 19 insertions(+), 15 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sriov.c  |  2 --
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c | 19 +++++++++++++++++--
+ 2 files changed, 17 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index a101768b1cc5..de20e50623d7 100644
+index de20e50623d7..6ff29be974c5 100644
 --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
 +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -40,21 +40,6 @@ static void ice_free_vf_entries(struct ice_pf *pf)
- 	}
+@@ -816,8 +816,6 @@ static int ice_sriov_vsi_rebuild(struct ice_vf *vf)
+  */
+ static void ice_sriov_post_vsi_rebuild(struct ice_vf *vf)
+ {
+-	ice_vf_rebuild_host_cfg(vf);
+-	ice_vf_set_initialized(vf);
+ 	ice_ena_vf_mappings(vf);
+ 	wr32(&vf->pf->hw, VFGEN_RSTAT(vf->vf_id), VIRTCHNL_VFR_VFACTIVE);
  }
- 
--/**
-- * ice_vf_vsi_release - invalidate the VF's VSI after freeing it
-- * @vf: invalidate this VF's VSI after freeing it
-- */
--static void ice_vf_vsi_release(struct ice_vf *vf)
--{
--	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
--
--	if (WARN_ON(!vsi))
--		return;
--
--	ice_vsi_release(vsi);
--	ice_vf_invalidate_vsi(vf);
--}
--
- /**
-  * ice_free_vf_res - Free a VF's resources
-  * @vf: pointer to the VF info
 diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index 1b7e919b9275..5fecbec55f54 100644
+index 5fecbec55f54..624c7de8b205 100644
 --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -1143,6 +1143,24 @@ void ice_vf_invalidate_vsi(struct ice_vf *vf)
- 	vf->lan_vsi_num = ICE_NO_VSI;
+@@ -270,6 +270,21 @@ static int ice_vf_rebuild_vsi(struct ice_vf *vf)
+ 	return 0;
  }
  
 +/**
-+ * ice_vf_vsi_release - Release the VF VSI and invalidate indexes
-+ * @vf: pointer to the VF structure
++ * ice_vf_post_vsi_rebuild - Reset tasks that occur after VSI rebuild
++ * @vf: the VF being reset
 + *
-+ * Release the VF associated with this VSI and then invalidate the VSI
-+ * indexes.
++ * Perform reset tasks which must occur after the VSI has been re-created or
++ * rebuilt during a VF reset.
 + */
-+void ice_vf_vsi_release(struct ice_vf *vf)
++static void ice_vf_post_vsi_rebuild(struct ice_vf *vf)
 +{
-+	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
++	ice_vf_rebuild_host_cfg(vf);
++	ice_vf_set_initialized(vf);
 +
-+	if (WARN_ON(!vsi))
-+		return;
-+
-+	ice_vsi_release(vsi);
-+	ice_vf_invalidate_vsi(vf);
++	vf->vf_ops->post_vsi_rebuild(vf);
 +}
 +
  /**
-  * ice_vf_set_initialized - VF is ready for VIRTCHNL communication
-  * @vf: VF to set in initialized state
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
-index 9c8ef2b01f0f..a0f204746f4e 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
-@@ -36,6 +36,7 @@ void ice_vf_ctrl_invalidate_vsi(struct ice_vf *vf);
- void ice_vf_ctrl_vsi_release(struct ice_vf *vf);
- struct ice_vsi *ice_vf_ctrl_vsi_setup(struct ice_vf *vf);
- void ice_vf_invalidate_vsi(struct ice_vf *vf);
-+void ice_vf_vsi_release(struct ice_vf *vf);
- void ice_vf_set_initialized(struct ice_vf *vf);
+  * ice_is_any_vf_in_unicast_promisc - check if any VF(s)
+  * are in unicast promiscuous mode
+@@ -495,7 +510,7 @@ void ice_reset_all_vfs(struct ice_pf *pf)
  
- #endif /* _ICE_VF_LIB_PRIVATE_H_ */
+ 		ice_vf_pre_vsi_rebuild(vf);
+ 		ice_vf_rebuild_vsi(vf);
+-		vf->vf_ops->post_vsi_rebuild(vf);
++		ice_vf_post_vsi_rebuild(vf);
+ 
+ 		mutex_unlock(&vf->cfg_lock);
+ 	}
+@@ -646,7 +661,7 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
+ 		goto out_unlock;
+ 	}
+ 
+-	vf->vf_ops->post_vsi_rebuild(vf);
++	ice_vf_post_vsi_rebuild(vf);
+ 	vsi = ice_get_vf_vsi(vf);
+ 	if (WARN_ON(!vsi)) {
+ 		err = -EINVAL;
 -- 
 2.39.1.405.gd4c25cc71f83
 
