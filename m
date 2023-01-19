@@ -1,73 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 758D4673B7E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 15:16:00 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49151673B9A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 15:23:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DDED660F3C;
-	Thu, 19 Jan 2023 14:15:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDED660F3C
+	by smtp2.osuosl.org (Postfix) with ESMTP id C945940591;
+	Thu, 19 Jan 2023 14:23:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C945940591
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674137758;
-	bh=UC3vPPvRdb07eg+CqMtxFYVuiWMxC9XJ0H6liZx6pWI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1674138224;
+	bh=ABWTwdlPxRJAhPCMe0yjh/LZcEWrpXqJmnKrHRO29dI=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QB4OEr+M+ZI20QvJaDbmZuQR+8vU5J+uiZg+u1Wz1QRwI0CRZGm8x4E+6MG/seROE
-	 4mzGASYwkwqyb/Twe+NTBPW5O9JaOLwgRY5bZwYBcutqGKAtMu+LcCPYGtUM0a40mV
-	 3VX5Qkth92TLxgFMoKsefLR856GTC8Q/0mBVO17u1nIrOlEQCMHy56EOIHRfHfTS1X
-	 ISamLlugw9ogDB0yBsjVwzaP84rGa/TM0axHpuhiVzvRnbt1CaUcSvTP9vSrRd99b8
-	 spBKCWWJaVf67og3XDMAU5QWAzG6B7o5z8vdPuxPOs80m/fC2PgfHiCYXDzG2DjO9X
-	 M+KgLHQ3Mykcg==
+	b=GjTf8PwUgwLMQj180jq1RIgioEl8HwnmpInNZ8B1p/isjD5Rgl0hiKL81LtFacRaF
+	 bQA2iz+0Vf8DarETf9kowrww6KVuafGpbtaRwgvTQLUKk6awAvJ9liuM19QiIixuls
+	 VLZzscObG77fVhiXLQeR6IbC8LTy7dFjSFZvIa3DHuKJK917G6eqGhyqX76iawGE0M
+	 8KFRSf6AXslVysYbJSyKIi6HHhE5sKBx+rxRH4VjdwhlGkjNrA2kB1VrhWC1JxP4+y
+	 qxG+JmBHN9rUzGUpz/TGyyIMOP3hs4PbX9IfdVDMFcDiJojdyITQPfG5+hUuQgSaOS
+	 1TUEDvQJ9+XlQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4KZua-_PH5uk; Thu, 19 Jan 2023 14:15:58 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oTFbF1YSPOD4; Thu, 19 Jan 2023 14:23:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CD86D60F35;
-	Thu, 19 Jan 2023 14:15:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD86D60F35
+	by smtp2.osuosl.org (Postfix) with ESMTP id A422F404D1;
+	Thu, 19 Jan 2023 14:23:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A422F404D1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A35AF1BF372
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:15:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BBDE91BF372
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:23:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7D4BB60F35
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:15:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7D4BB60F35
+ by smtp3.osuosl.org (Postfix) with ESMTP id 243AB60FE7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:23:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 243AB60FE7
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l4cxpXS2iw8C for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Jan 2023 14:15:51 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8098E60EF2
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8098E60EF2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:15:51 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5ae989.dynamic.kabel-deutschland.de
- [95.90.233.137])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 14DBB61CC40F9;
- Thu, 19 Jan 2023 15:15:48 +0100 (CET)
-Message-ID: <53168857-3dd4-17fe-67cb-15ab0c005ca5@molgen.mpg.de>
-Date: Thu, 19 Jan 2023 15:15:47 +0100
+ with ESMTP id QMrVX47M8Mzi for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Jan 2023 14:23:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE61260E27
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BE61260E27
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 14:23:36 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id AE99C615C6;
+ Thu, 19 Jan 2023 14:23:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91C19C433EF;
+ Thu, 19 Jan 2023 14:23:34 +0000 (UTC)
+Date: Thu, 19 Jan 2023 15:23:31 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sdf@google.com
+Message-ID: <Y8lSY2rfx5woNJOu@lore-desk>
+References: <cover.1673710866.git.lorenzo@kernel.org>
+ <b606e729c9baf36a28be246bf0bfa4d21cc097fb.1673710867.git.lorenzo@kernel.org>
+ <Y8hW8IqJTa0zE2aS@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-To: Sasha Neftin <sasha.neftin@intel.com>
-References: <bff5f4d7-bb85-e3fa-b8b1-76d1b8e0133a@molgen.mpg.de>
- <9505bc04-edbd-ab64-bc95-a06150bbba38@intel.com>
- <20e6d930-c50f-45b7-f98e-3d11c35a09d1@molgen.mpg.de>
- <9a5af9c0-e58a-250c-b030-05e3b73035b9@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <9a5af9c0-e58a-250c-b030-05e3b73035b9@intel.com>
-Subject: Re: [Intel-wired-lan] I218-LM uses > 1 W with low traffic
+In-Reply-To: <Y8hW8IqJTa0zE2aS@google.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1674138215;
+ bh=jF//NUpq1HN0b0Ns8y/1mrIp01dJ2M8KP6bnPkFL0Pw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QP5CbJkXPMLvndjLQvNjPZre9nwiEdaj8L8gv34aK3Otf9uzVr3hRZ07gRufUbIEY
+ agchRoYYSlcIUq9G5scJxX0rzXcs/lFAWB3cp/Oj62rwhVMjo/HpOYmCEl2EwvUFB7
+ KKevnkP85UC19IYIzAsWLig0fWUz/ZTU4LW0ysYU28O0JTjUu9Lc0nezYpX3KAijfx
+ a8NA9sFCnvv4kaFoFAD8qhrlaGfx4tuBdLwZB6UzDu2FDYfm2E/EMO0MNPwyuyvYO4
+ WVUwASBd+0RyvrOBxsX5H56Lovom6n7fsFtYcUrrzqORTaNrvdzXwZJfkDVl+lvklp
+ 7fOk1h5EobDWQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=QP5CbJkX
+Subject: Re: [Intel-wired-lan] [RFC v2 bpf-next 2/7] drivers: net: turn on
+ XDP features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,50 +90,138 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Devora Fuxbrumer <devora.fuxbrumer@intel.com>,
- Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============4766052422205452276=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTYXNoYSwKCgpBbSAxNC4wNC4yMiB1bSAwOTowNyBzY2hyaWViIE5lZnRpbiwgU2FzaGE6
-Cj4gT24gNC83LzIwMjIgMTg6NTgsIFBhdWwgTWVuemVsIHdyb3RlOgoKPj4gQW0gMDcuMDQuMjIg
-dW0gMTM6MDMgc2NocmllYiBOZWZ0aW4sIFNhc2hhOgo+Pj4gT24gNC82LzIwMjIgMTM6MDksIFBh
-dWwgTWVuemVsIHdyb3RlOgo+Pgo+Pj4+IE9uIGEgRGVsbCBMYXRpdHVkZSBFNzI1MCB3aXRoIERl
-YmlhbiBzaWQvdW5zdGFibGUsIFBvd2VyVE9QIDIuMTQgCj4+Pj4gcmVwb3J0cyB0aGUgbmV0d29y
-ayBkZXZpY2UgdXNlcyBvdmVyIDEuNSBXYXR0LCB3aGljaCBpcyBhbG1vc3QgdGVuIAo+Pj4+IHBl
-cmNlbnQgb2YgdGhlIHdob2xlIHN5c3RlbS4KPj4+Pgo+Pj4+IMKgwqDCoMKgwqDCoCAxLjYyIFfC
-oMKgwqAgNDM1LDkgcGt0cy9zwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIERldmljZSBO
-ZXR6d2Vya3NjaG5pdHRzdGVsbGU6IGVubzEgKGUxMDAwZSkKPj4+Pgo+Pj4+IMKgwqDCoMKgICQg
-bHNwY2kgLW5uIHwgZ3JlcCBFdGhlcgo+Pj4+IMKgwqDCoMKgIDAwOjE5LjAgRXRoZXJuZXQgY29u
-dHJvbGxlciBbMDIwMF06IEludGVsIENvcnBvcmF0aW9uIEV0aGVybmV0IENvbm5lY3Rpb24gKDMp
-IEkyMTgtTE0gWzgwODY6MTVhMl0gKHJldiAwMykKPj4+PiDCoMKgwqDCoCAkIHVuYW1lIC1hCj4+
-Pj4gwqDCoMKgwqAgTGludXggZXJzYXR6IDUuMTcuMC10cnVuay1hbWQ2NCAjMSBTTVAgUFJFRU1Q
-VCBEZWJpYW4gNS4xNy4xLTF+ZXhwMSAoMjAyMi0wMy0yOSkgeDg2XzY0IEdOVS9MaW51eAo+Pj4+
-Cj4+Pj4gwqBGcm9tIGF0b3A6Cj4+Pj4KPj4+PiDCoMKgwqDCoCBORVQgfMKgIGVubzHCoMKgwqDC
-oMKgIDAlIHzCoCBwY2tpwqDCoMKgIDI0MjEgfMKgIHBja2/CoMKgwqAgMjE5NCB8wqAgc3AgMTAw
-MCBNYnBzIHzCoCBzaSAxNTAxIEticHPCoCB8IHNvwqAgMTQwIEticHPCoCB8IGVycmnCoMKgwqDC
-oMKgwqAgMMKgIHwgZXJyb8KgwqDCoMKgwqDCoCAwIHwgZHJwbyDCoMKgwqDCoMKgIDDCoCB8Cj4+
-Pj4KPj4+PiBTbyBJIHJlY2VpdmUgMS41IE1icHMsIGFuZCBzZW5kIDAuMTQgTWJwcy4KPj4+Pgo+
-Pj4+IElzIHN1Y2ggaGlnaCBlbmVyZ3kgdXNhZ2UgZXhwZWN0ZWQgb2YgdGhlIG5ldHdvcmsgaGFy
-ZHdhcmU/Cj4+Cj4+PiBJdCBpcyBub3QgdGhlIHBvd2VyIGNvbnN1bXB0aW9uIHdlIGV4cGVjdGVk
-LkhvdyBkbyB5b3UgbWVhc3VyZSBpdD8gCj4+PiAoYXMgSSBrbm93IHBvd2VydG9wIGRvZXMgbm90
-IHNob3cgaXQpCj4+Cj4+IE9uIG15IHN5c3RlbSwgUG93ZXJUT1Agc2hvd3MgaXQuIFRob3VnaCBt
-YXliZSBpdOKAmXMgYSBidWcgaW4gUG93ZXJUT1DigJlzIAo+PiBwb3dlciB1c2FnZSBlc3RpbWF0
-aW9uIGFsZ29yaXRobS4gTm8gaWRlYS4gQXQgbGVhc3Qgd2l0aCBubyBuZXR3b3JrIAo+PiBjYWJs
-ZSBjb25uZWN0ZWQsIGl0IHNob3dzIHplcm8gV2F0dHMgYmVpbmcgdXNlZC4KPj4KPj4gwqDCoMKg
-wqDCoMKgwqDCoCAwIG1XwqDCoMKgwqDCoCAwLDAgcGt0cy9zwqAgTmV0endlcmtzY2huaXR0c3Rl
-bGxlOiBlbm8xIChlMTAwMGUpCj4+Cj4+Cj4+PiBXZSB3aWxsIHRyeSB0byBmaW5kIG91dCBhYm91
-dCBwb3dlciBjb25zdW1wdGlvbi4KPj4KPj4gVGhhbmsgeW91IHZlcnkgbXVjaC4KPiAKPiBUaGUg
-cG93ZXIgY29uc3VtcHRpb24gZHVyaW5nIG5vcm1hbCBvcGVyYXRpb24gbW9kZSBleHBlY3RlZCB0
-byBiZSB+NjAwbVcuCgpXaXRoIExpbnV4IDYuMS40IEkgc3RpbGwgc2VlIGhpZ2ggcG93ZXIgdXNh
-Z2U6CgogICAgICAgNC4wMSBXICAgICAyNiwwIHBrdHMvcyAgICAgICAgICAgICAgICBEZXZpY2Ug
-Ck5ldHp3ZXJrc2Nobml0dHN0ZWxsZTogZW5vMSAoZTEwMDBlKQoKRGlzY29ubmVjdGluZyB0aGUg
-Y2FibGUsIGl0IHN0aWxsIHNob3dzIGhpZ2ggdXNhZ2U6CgogICAgICAgNS4zNCBXICAgICAgMCww
-IHBrdHMvcyAgICAgICAgICAgICAgICBEZXZpY2UgCk5ldHp3ZXJrc2Nobml0dHN0ZWxsZTogZW5v
-MSAoZTEwMDBlKQoKV2VyZSB5b3UgYWJsZSB0byByZXByb2R1Y2UgaXQgb24geW91ciB0ZXN0IHN5
-c3RlbXM/CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
-cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2ludGVsLXdpcmVkLWxhbgo=
+
+--===============4766052422205452276==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="DGAPQT9oFXfrtSAg"
+Content-Disposition: inline
+
+
+--DGAPQT9oFXfrtSAg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On 01/14, Lorenzo Bianconi wrote:
+> > From: Marek Majtyka <alardam@gmail.com>
+>=20
+
+[...]
+
+>=20
+> Maybe stupid question: why do we need WRITE_ONCE here?
+> And if we do need it, do we need READ_ONCE as well?
+>=20
+> WRITE_ONCE(*xdp_features, READ_ONCE(*xdp_features) | flags);
+
+This part is from the Marek's original series. I will let him to comment on=
+ it.
+
+>=20
+> ?
+>=20
+> Also, would it make sense to drop this __xdp_features_set_redirect_target
+> and just define the following:
+>=20
+> static inline void
+> xdp_features_set_redirect_target(xdp_features_t *xdp_features, bool
+> support_sg)
+> {
+> 	xdp_features_t flags =3D NETDEV_XDP_ACT_NDO_XMIT;
+>=20
+> 	if (support_sg)
+> 		flags |=3D NETDEV_XDP_ACT_NDO_XMIT_SG;
+> 	*xdp_features |=3D flags; /* or WRITE_ONCE */
+> }
+>=20
+> This should avoid having two different sets of functions. Or does it
+> look worse because of that 'naked' true/false argument in the call
+> sites?
+
+I did this way because we will mainly run it with support_sg set to false,
+but I do not have a strong opinion on it, I am fine both ways. I will fix i=
+t.
+
+Regards,
+Lorenzo
+
+>=20
+>=20
+> > +}
+> > +
+> > +static inline void
+> > +xdp_features_clear_redirect_target(xdp_features_t *xdp_features)
+> > +{
+> > +	WRITE_ONCE(*xdp_features,
+> > +		   *xdp_features & ~(NETDEV_XDP_ACT_NDO_XMIT |
+> > +				     NETDEV_XDP_ACT_NDO_XMIT_SG));
+> > +}
+> > +
+> > +#else
+> > +
+> > +static inline void
+> > +__xdp_features_set_redirect_target(xdp_features_t *xdp_features, u32
+> > flags)
+> > +{
+> > +}
+> > +
+> > +static inline void
+> > +xdp_features_clear_redirect_target(xdp_features_t *xdp_features)
+> > +{
+> > +}
+> > +
+> > +#endif
+> > +
+> > +static inline void
+> > +xdp_features_set_redirect_target(xdp_features_t *xdp_features)
+> > +{
+> > +	__xdp_features_set_redirect_target(xdp_features,
+> > +					   NETDEV_XDP_ACT_NDO_XMIT |
+> > +					   NETDEV_XDP_ACT_NDO_XMIT_SG);
+> > +}
+> > +
+> >   #define DEV_MAP_BULK_SIZE XDP_BULK_QUEUE_SIZE
+>=20
+> >   #endif /* __LINUX_NET_XDP_H__ */
+> > --
+> > 2.39.0
+>=20
+
+--DGAPQT9oFXfrtSAg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY8lSYwAKCRA6cBh0uS2t
+rJtrAPwK/+nlrw98yKOdg+WYuzD06o+yaCcuTx3jjb6lFn3v+wEA6kHNa8gGGDXU
+RHgliiOFhY71LPPYr2/wItwtHw9/3Ak=
+=s5kN
+-----END PGP SIGNATURE-----
+
+--DGAPQT9oFXfrtSAg--
+
+--===============4766052422205452276==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4766052422205452276==--
