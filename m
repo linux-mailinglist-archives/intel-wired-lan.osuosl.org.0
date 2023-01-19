@@ -1,99 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EF4A6742BA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 20:25:24 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83E74674352
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 21:10:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CD87D82342;
-	Thu, 19 Jan 2023 19:25:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CD87D82342
+	by smtp2.osuosl.org (Postfix) with ESMTP id 40BC4409B5;
+	Thu, 19 Jan 2023 20:10:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 40BC4409B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674156322;
-	bh=FI215vmL5y9iQ/q3+DAsinZxh7YYNnYzqQcLY/MYTDM=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1674159049;
+	bh=CF/UWX3DNHNYlE5Qa7L2WS/+yoneHP+KzqZIGiQlYMQ=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZnwEoRJTwtq9s7giHEEzUxM7ZrkLSk+h8r/LM9tLNIGTXWBPklV1qxFd2FQ5VjZ8Z
-	 UuWOGclDtY0Ymd4Xkp9+g40Dm9v9K+0J/nt7Fsj8Bx3wVLsPQrRmSJbvec2XnSXYLn
-	 V5pge8sxobnEXLEr0PgEZUT8+1P63uX93NnzMhHfGQ8+RgE+KKJ1UuJpWB3v0WrbS5
-	 assEwSAJbBuCh9PPzN6MDR0/iSHzCF7snYMkYfQ5NYFxRnA9x+s4OyZjP2ZNS+L0vr
-	 xle+X13VMRMeaTvkWbV1xg/cXVqtc8tm6f+P9c4EuzJV6uvaic1Qd1Bt7q1xt2NQKw
-	 JVzA7p6I07jkg==
+	b=sVop5OAViJOg5B54ZGPb6Fds9gxKNzp76NKjYkgjrWT86fUGKQIPJOrOIv+Fz02cQ
+	 9HJe4e3jkwvSZK48u1NZBxzx6p5VrzsaLm/d75ejKD+5TtnvURuZyWGy+tKFI7kDtJ
+	 pZFRuqWkLww2Ru4cXM3nkfJQ6e8QxVxMyaB6QOkKsTiuHhe8Rnm22YJYoiBiC63BKx
+	 +B1cHyZTct0s/p3ZrCMiQHc57FfdCIX75FSh5pCeo3UNKHIRekYzr5bAcVhoWhSGoU
+	 afdLy7lihlSQOXJxH0QndNGl2tNbLfDdmE1XOh+yRNyhzhZkwhiUmwpDzSNgjpOn3O
+	 CMW98FSPVoUjg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZTyT8ODHS2u6; Thu, 19 Jan 2023 19:25:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id uBnkSNTEmvVh; Thu, 19 Jan 2023 20:10:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD94682341;
-	Thu, 19 Jan 2023 19:25:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD94682341
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21E5F409B0;
+	Thu, 19 Jan 2023 20:10:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21E5F409B0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1BC4D1BF3B5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 19:25:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B7551BF2BD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:08:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 01DB8611D1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 19:25:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 01DB8611D1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 153CF410D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:08:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 153CF410D8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ku1F_6Dy5Eyq for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Jan 2023 19:25:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QoDDRoBvUfEh for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Jan 2023 20:08:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 143B9611CD
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 143B9611CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 19:25:15 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="313286186"
-X-IronPort-AV: E=Sophos;i="5.97,229,1669104000"; d="scan'208";a="313286186"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2023 11:25:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="768354360"
-X-IronPort-AV: E=Sophos;i="5.97,229,1669104000"; d="scan'208";a="768354360"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga002.fm.intel.com with ESMTP; 19 Jan 2023 11:25:05 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 19 Jan 2023 11:25:05 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Thu, 19 Jan 2023 11:25:05 -0800
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.47) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Thu, 19 Jan 2023 11:25:04 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XuEi4l2eIwj+aGn63QbmFlESsyv76cT7keb22StA+NGi/+3BN28p3LDRRIQZgkQg604eBTqp8+GJpR7ufjoctxQ1pyxgF3jj0tx9XflEy5gH2DDoss3IH0nCrx6SptNhP8JZOaos3s+X9qi3RBAhCJFY1uDbPRZs6IKt0hpbVyUMC2SjNt1qXgVxAQH9l2c864MifLYDoZOraVqa894DsKOZtQ5ieFeiS8t+TMSdRAAWqnsOMBUd4cthw+hph0NOf+mwQoo9X9qLqcik1sHyigVpxz0dqkT6jHy5EvVXNeZH946tZGMx9WRTSCSfODFemYZTnF7P2OeODHeQNWSFfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jcTb23CYQ/mRE5eRuTgt2B1RkxSt8yv+sMGWYBLqV2s=;
- b=cChBoHMvvGr50N2cTpKoF2Vk69CEwNfpGrJa91vuWgBEaMYwrssgEv0icwKORp/TOi/1MYz1pYPgI9lca31VPhhY8G9QVcqyS/mfZ+okBs/zlqvdaKCdtg441SjojmvJ1KbqRI/VhNQNaPm2PREFaKu02VNBM+9mCXAInCPe/c/bzwiDHJEmQEofnT3oqDnaC8DQ9snbRY0V9RroMSWXB8KLC/C/wMWiL92tW49rvJaV3WScOkvwyEBbhHcCmJJd55GTVA/r4PtQfcWnUP6Fg8V0E6KB+ZBtMiI2j8bFwxCDmFaXMQLfkTkV0+VPkXIbOROqyKA1VpeLIeBdiwqnCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by PH7PR11MB7004.namprd11.prod.outlook.com (2603:10b6:510:20b::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.26; Thu, 19 Jan
- 2023 19:25:02 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::5697:a11e:691e:6acf]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::5697:a11e:691e:6acf%5]) with mapi id 15.20.6002.024; Thu, 19 Jan 2023
- 19:25:02 +0000
-Message-ID: <423a29e2-886d-2c41-16d4-a8fca5537c2e@intel.com>
-Date: Thu, 19 Jan 2023 11:24:59 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: Daniel Vacek <neelx@redhat.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9765414C9
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C9765414C9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:08:41 +0000 (UTC)
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-480-qC97NcFBMm-DmyiRiK5k-w-1; Thu, 19 Jan 2023 15:08:39 -0500
+X-MC-Unique: qC97NcFBMm-DmyiRiK5k-w-1
+Received: by mail-pg1-f199.google.com with SMTP id
+ g7-20020a636b07000000b004d1c5988521so1486962pgc.22
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 12:08:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=PggIzfygRD9QgTxjyyjnr/C8VTVpVGfqEDvg752Zp0M=;
+ b=aRV4jMEKcgTxPQQc/v/wAQuWgwh40vp+PLYA9PKKUMlXnQhX3Kld/AR7xNWW++OvzO
+ gI9y63LlTdf+22giyHbwru06gyhIYLMD3uD0YTIvjdZbFpfWnbN+Aj8DTjxMWD3ksCAA
+ faLyvBSncsjZiuDCjaw7xwJU6Y8BVdv3bBHtMcSEkKdznPBn/3JGfqvrXiDcdMDtlApY
+ Z/jNV41Vi9rTUxOTxjGld3w4ch5ZmJtfapb8lflBlxI9SqBacAVQEZcSuKYVbISjv1/Z
+ rF8uiKxKinXgmVZEmVk8XLiM5XclA3fYoYCd05swYr+PQHEgIt0aEmtsleTCHYFup9hr
+ 2yVQ==
+X-Gm-Message-State: AFqh2koanSkCi5CpRESD2mfwIWH2WEX9vyhoFhgYXD4mef1PwYizGAFX
+ 7Q1HWR8wgwxnzE6OtJrwJ7KVLnZL10xywXb2DrLAmY5H7I08kZvVlGY1Cdfaux3oyGEtmKwVatN
+ ZMzo2+oaqS9DLwY9ilYFTXFM2ic3tEh/TQ/01vaUYhT3ywQ==
+X-Received: by 2002:a17:90b:187:b0:226:f8dc:b230 with SMTP id
+ t7-20020a17090b018700b00226f8dcb230mr1387630pjs.227.1674158918011; 
+ Thu, 19 Jan 2023 12:08:38 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtINLEsUn4AGw4oV584OPWe9mWjhWHelFifskuQ1poGCUHOYupjz59bzO972Ny1TiIOn7Hlp/JYMe1BV5mDjR0=
+X-Received: by 2002:a17:90b:187:b0:226:f8dc:b230 with SMTP id
+ t7-20020a17090b018700b00226f8dcb230mr1387616pjs.227.1674158917773; Thu, 19
+ Jan 2023 12:08:37 -0800 (PST)
+MIME-Version: 1.0
 References: <20230117181533.2350335-1-neelx@redhat.com>
  <2bdeb975-6d45-67bb-3017-f19df62fe7af@intel.com>
  <CACjP9X-hKf8g2UqitV8_G7WQW7u6Js5EsCNutsAMA4WD7YYSwA@mail.gmail.com>
@@ -101,89 +86,28 @@ References: <20230117181533.2350335-1-neelx@redhat.com>
  <CACjP9X8SHZAd_+HSLJCxYxSRQuRmq3r48id13r17n2ehrec2YQ@mail.gmail.com>
  <820cf397-a99e-44d4-cf9e-3ad6876e4d06@intel.com>
  <CACjP9X_v9AFVNRgz2a-qJce+ZqR0TzRzyd4gPFufESoRXmCdJQ@mail.gmail.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <CACjP9X_v9AFVNRgz2a-qJce+ZqR0TzRzyd4gPFufESoRXmCdJQ@mail.gmail.com>
-X-ClientProxiedBy: SJ0PR13CA0221.namprd13.prod.outlook.com
- (2603:10b6:a03:2c1::16) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|PH7PR11MB7004:EE_
-X-MS-Office365-Filtering-Correlation-Id: fa04be6c-271f-4ec2-ea79-08dafa52dcc1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: KlgE4qA9TdQ2hS3kteQ15zIVjZqOf7MT4uagkTrdNqS6TykdmY+bOK0ocQ9Yl9ptDSso8WFTgBh/RKk1pI/7KyfZk+ZC2GX0Kv9MoqrP2gNQJj2xqJGBj+CptT6bGL9vtqzjM2/xPHt+ieLcgvO+mkQ+8JaD40Z3mJX9iEYhfm/N9Gag5sK51y+j2ti7rFZZHoMiCQxy/XJRO9FgYDHFSOUhkwNPAR71g1ng/QhnyEuJvtuMaVS9zv4XV1SC6gu2IVGVjIg4RznukNCJ8tqjEMpvIVMkC9/z7zISmhtIY1Y7PEH0FyGL2fYNxBqH8UoM4FzL/cIIa2NVgjhf5Hat1s21LDwZZK4lsulmcxAdlEMooce3kl0u7RBB5Cjnm/PX6bp1nzRlTfTTpylj2HjpjuETR8F/ojo5M32Ik3Uj5zHN+o6D5S04qoxY6OqHFaMa763/5EzPWKQmyKikhVngDENctYo9veTOxC91YJOVsbgKV4deeOElU1zsjhcc2TRawEP3o4xekq4KuNFN3kUfH4J9m1+qfUAzd1hSpSX4xH2xlA/tHXKCF963yGytlktMWPjH8k/m0diEAfl3tMMGKvq7N3sIMr9HeC5CXibIC+eCmAjHvpYuHA/P/K7ZiZW3tJqzn9SE8A1+tEPVoScwUzSrCp/sfn3wE6f78VVpwmRqzyhUdwzjQrRPRJH5NihblQj9aLuJyjcghlAVNxIefv4jL3V0x2HDj1LiIhKuDKQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(346002)(366004)(136003)(376002)(39860400002)(396003)(451199015)(6486002)(5660300002)(31696002)(6666004)(8936002)(86362001)(36756003)(316002)(82960400001)(66556008)(478600001)(66476007)(6506007)(8676002)(66946007)(4326008)(6916009)(38100700002)(54906003)(53546011)(31686004)(2906002)(41300700001)(83380400001)(2616005)(6512007)(186003)(26005)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SVpESVo5Tk55K2RNZDcvdnFBUVlZd1pIZ1h6TzY0V1k0MmhtemNFYlh6NWxa?=
- =?utf-8?B?b3FwWDViWlBIdC9ZWTQwVWxXOG95eGVtL2phZ1R6ZmFmT2xqOGtOQ0c0ZitS?=
- =?utf-8?B?VWRwVUErcm9JUzVGRVlmNXZLQ0o1bnl6dHNHVnpsSkUyOWV6NzV2dW9IQzBD?=
- =?utf-8?B?d2grSkRpUFhZR1FHQnZ2eEZaajJqbTJCcCtROUp3ajc0RjFKUVFLTUZ5Rkp5?=
- =?utf-8?B?eXdBZVdPb3RJUGdLTzJ1dFB6anJTbEtzR1FJaEcrc1Bxc0Z5bUV0M2JoVXRW?=
- =?utf-8?B?M2ZxWjhndGNkbGRLVVRZdkVBMEtoRnlpbmt3MVROMy9UbjIwcXlVM2c2bVB0?=
- =?utf-8?B?TjZWaENJR1lHeWVNSmVoZkNDMU84aExaZFpJMlh2UStzL3hhRjNkY01weGs1?=
- =?utf-8?B?U3FtUmJ5Q2FvRFc5c2hyUXhITENRVWF4VDM3RmNYZTUxeHFZUEZZUnhsWHM3?=
- =?utf-8?B?QUNKcE9zd0hXZ0l0akpuTG5LcjRycy9MYjlmd2J5VWRhOGF5L2ltUkh0ODcr?=
- =?utf-8?B?UzZWYTdqckhQb1d3ZTlMZk54ejArWnF4MVYrckZXa1NuQURTV05kZndWaGhy?=
- =?utf-8?B?dzJrWCs0S2UwMXN5RG9iblUvU0hYVThNODlOYnR0eTlzR3M3amRRdlJhZkJo?=
- =?utf-8?B?clc5b3hnYXVvZ0VYdFZZdGxLRFlzekRVNmE3eklOdkNPdVV2b293MVdoT2Na?=
- =?utf-8?B?SGR6ZXV6Ukd0TllFSXRlTmt2cEErdVRqdCt1UXBjb1Zqa2ZCUVNHRjVBdGdp?=
- =?utf-8?B?MjFYUXlXS1g4b09xcHA0N2JDQkRmc1h4d0hoTXJsYVkwK0p4ZXAwWjhsdnhP?=
- =?utf-8?B?S1ZBVVBIS2VvL1JTOUxHTXJIWnNRYmQzc1RNa3VrRmsxOGxpMkRQQUR0ODR5?=
- =?utf-8?B?TUNuVkd5VFljMlpzM2g1UTRTN1BreldMSVlmVHFjdGYvMms0NVh0UTNxZ3Ax?=
- =?utf-8?B?bmV3cFZ0M1FJdVM5cTl1QzMxZnVhVU00VGMrUmZzTElHdkdaRmNRaEgzVHd5?=
- =?utf-8?B?Nnk0M3lKQjAwTnV1ejgzSlJBeWFBd0wybjhPL012akI1U1drSHcrMVJ3UW5R?=
- =?utf-8?B?RldwRXFnTUxGV012TG8vT0dTNWFnSHNURXdzcDl1czNMdCtwSzV5ejk0MDFC?=
- =?utf-8?B?TjZURERWQU1WSVMrb1hmNDBpNk0yaVRtbnJFVnkxRE43R0RsWU5ocHR6Vm9Y?=
- =?utf-8?B?Y3ZENGpQNEkra0U1VGhSdXdzbk15S2NORXVob0dJdURZeWZ2bnY3TjlIbFcy?=
- =?utf-8?B?YVRIZEQrUlhlUzVBaVZCaFE5THg5MWM1L0ZYUE5Zb29wQ2FqSVJmNzFyK25L?=
- =?utf-8?B?WG9QS0VWZUpOWGQ1Q0FMZUxYNzVvOGhXOWlLQU5lTzVyMVFvS01LL3p2dHg2?=
- =?utf-8?B?N1JlRFJaaE54YVA0S2pVQVZVdW9KeTlWbENISCtURkxTWW1jSjdnOEZaTjJn?=
- =?utf-8?B?VzI1THdCOXZLc3RvRkNVMjE0WGhPV2dtREhTVXB2dmgxZkF3bzRMTU14V21p?=
- =?utf-8?B?Y0pUYWVDTUJQS0IvTW5EbXFEMkVLbEhpTXZubkZxaHNyZWtDOWJRVVJsYm14?=
- =?utf-8?B?cHVlcjZXcEUrNEh4VU80d3ZpZVNRdklpWS96dzdvZ3h0VXExSTQveFp1dDcz?=
- =?utf-8?B?c3J4ZWZDNnRwaSsyLzZOcDkzUzZ5MnZ0K2N0TVZ0Y09XOU5mY3pFNXFQbndV?=
- =?utf-8?B?b1dPNHVhQXZNenZaaUJOckk5cVhxRWVUVWU3c0IySkJINFBaN0RuelYvdUU1?=
- =?utf-8?B?TTR3WEQ2azJzY1pvOEtJQXhjZFBPVmIzMXRLRzdraHBOcHhPKzFwNGhaL1U1?=
- =?utf-8?B?MmJock1JUHk4dWpTcHJvYjhHZ1R0RjBDd0lTbjJtaERBa3JlUnZueldWREwy?=
- =?utf-8?B?MURZVFVlTHNVdzBsRktZcmZvNkxIOGk4eGZWZllIQlA1azdTVm9DWDJEVjYy?=
- =?utf-8?B?akh6VTFWMkNndk5DUVlrWEg1ZVRiME1EY1pjWHFXd2tTZTBRZDRIa1puT3hQ?=
- =?utf-8?B?U1ZCWDNuNGxidi9lUjRiSjgvTS9wOG1YYXVoQW5yck5yNWpsN3pxUFpqNGpY?=
- =?utf-8?B?ZVFTaisrSU9ETkw1dmpva3Y3Sy9ma3RZdmh0UnJlSWM1dGs2bG1IU3V4S01B?=
- =?utf-8?B?R1dvQTJhU1A5dGVKTlR6UlY1ejRTbnNwMzc1TnlqaTRxcmwvOWdlaFdwWkNB?=
- =?utf-8?B?Tmc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fa04be6c-271f-4ec2-ea79-08dafa52dcc1
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2023 19:25:02.5879 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Fic6CLutbGa30bkYzqcnTUIJQNLNmLuEq2C0SWKs1WfVKKo+SR7P9AYVXYGpDwJVx0aoDjNDNgBZwgki9AH4dLYX8rz4OXIG71RpiMdAnz0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7004
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674156316; x=1705692316;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=xg6Z6grL6hfmjFVEfl2Vwj4vd4sc8QwfvqinASTX//0=;
- b=mDr6GYEZXLhXFTJKjzc/SPqN+rKaM2gnSuSvuMWgqpPFvsWCpFZDGLn0
- 9xiL3P3dhOkaw3PbO5SkvGPXxG9dz3nx6u1h7/x/WBHJ5evSHxlfys54g
- UVjn/YHYfgnJcOnYpnKt17Nfh1Wa57emgfkmgUelf84fd2MN1XjM2eoi7
- Bbq49tGExzcgErYHCb3M+/xuvrZQyj2I5NApdIc+CExuNy8b3YxI9Iydd
- ZEVfJm1GS/ywHszJY9CO3e2Y7HKfCNLyEd8aiJC5Tw/+QeXTSIk5D0SXV
- sB1WUrz5CtcR9m0XmRJZl2+z35tzaUjdSvSSjp0Eugsn2gZwKRsh3VMU5
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mDr6GYEZ
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
+ <423a29e2-886d-2c41-16d4-a8fca5537c2e@intel.com>
+In-Reply-To: <423a29e2-886d-2c41-16d4-a8fca5537c2e@intel.com>
+From: Daniel Vacek <neelx@redhat.com>
+Date: Thu, 19 Jan 2023 21:08:01 +0100
+Message-ID: <CACjP9X-Ab76We7SVie7rpyykvKjiPuNktWeVa9y3Wb6i6oo4mg@mail.gmail.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Approved-At: Thu, 19 Jan 2023 20:10:43 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1674158920;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=PggIzfygRD9QgTxjyyjnr/C8VTVpVGfqEDvg752Zp0M=;
+ b=eJSV+lBKb0BrTqp7ePQaetMiF4Hn8xErHrzIdDk3sA7jIoWYpPJRBpMBQn1qT+45VM1zhV
+ fykm9tjU83RAdp+DFW3fNRv6ALbcbN2FBoqCgDVgAQwX1p6GcVO8cbTrx8WpWrVxFvpAju
+ zqxB1w4/dfKEww8WHv4mgXBB1JVKrKc=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=eJSV+lBK
 Subject: Re: [Intel-wired-lan] [PATCH] ice/ptp: fix the PTP worker retrying
  indefinitely if the link went down
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -201,8 +125,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: "Kolacinski, Karol" <karol.kolacinski@intel.com>, netdev@vger.kernel.org,
  Richard Cochran <richardcochran@gmail.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric
- Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
  intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
  Siddaraju <siddaraju.dh@intel.com>
@@ -211,95 +134,102 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Thu, Jan 19, 2023 at 8:25 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
+> On 1/19/2023 1:38 AM, Daniel Vacek wrote:
+> > On Wed, Jan 18, 2023 at 11:22 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
+> >> On 1/18/2023 2:11 PM, Daniel Vacek wrote:
+> >>> On Wed, Jan 18, 2023 at 9:59 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
+> >>>> On 1/18/2023 7:14 AM, Daniel Vacek wrote:
+> >>>> 1) request tx timestamp
+> >>>> 2) timestamp occurs
+> >>>> 3) link goes down while processing
+> >>>
+> >>> I was thinking this is the case we got reported. But then again, I'm
+> >>> not really experienced in this field.
+> >>>
+> >>
+> >> I think it might be, or at least something similar to this.
+> >>
+> >> I think that can be fixed with the link check you added. I think we
+> >> actually have a copy of the current link status in the ice_ptp or
+> >> ice_ptp_tx structure which could be used instead of having to check back
+> >> to the other structure.
+> >
+> > If you're talking about ptp_port->link_up that one is always false no
+> > matter the actual NIC link status. First I wanted to use it but
+> > checking all the 8 devices available in the dump data it just does not
+> > match the net_dev->state or the port_info->phy.link_info.link_info
+> >
+> > crash> net_device.name,state 0xff48df6f0c553000
+> >   name = "ens1f1",
+> >   state = 0x7,    // DOWN
+> > crash> ice_port_info.phy.link_info.link_info 0xff48df6f05dca018
+> >   phy.link_info.link_info = 0xc0,    // DOWN
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f05dd44e0
+> >   port_num = 0x1
+> >   link_up = 0x0,    // False
+> >
+> > crash> net_device.name,state 0xff48df6f25e3f000
+> >   name = "ens1f0",
+> >   state = 0x3,    // UP
+> > crash> ice_port_info.phy.link_info.link_info 0xff48df6f070a3018
+> >   phy.link_info.link_info = 0xe1,    // UP
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f063184e0
+> >   port_num = 0x0
+> >   link_up = 0x0,    // False
+> >
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f25b844e0
+> >   port_num = 0x2
+> >   link_up = 0x0,    // False even this device is UP
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f140384e0
+> >   port_num = 0x3
+> >   link_up = 0x0,    // False even this device is UP
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f055044e0
+> >   port_num = 0x0
+> >   link_up = 0x0,    // False even this device is UP
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f251cc4e0
+> >   port_num = 0x1
+> >   link_up = 0x0,
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f33a9c4e0
+> >   port_num = 0x2
+> >   link_up = 0x0,
+> > crash> ice_ptp_port.port_num,link_up 0xff48df6f3bb7c4e0
+> >   port_num = 0x3
+> >   link_up = 0x0,
+> >
+> > In other words, the ice_ptp_port.link_up is always false and cannot be
+> > used. That's why I had to fall back to
+> > hw->port_info->phy.link_info.link_info
+> >
+>
+> Hmm. We call ice_ptp_link_change in ice_link_event which is called from
+> ice_handle_link_event...
+>
+> In ice_link_event, a local link_up field is set based on
+> phy_info->link_info.link_info & ICE_AQ_LINK_UP
+>
+> What kernel are you testing on? Does it include 6b1ff5d39228 ("ice:
+> always call ice_ptp_link_change and make it void")?
+>
+> Prior to this commit the field was only valid for E822 devices, but I
+> fixed that as it was used for other checks as well.
+>
+> I am guessing that the Red Hat kernel you are using lacks several of
+> these clean ups and fixes.
 
+Yeah, makes perfect sense. We don't have that commit in 8.4. All the data
+I have and present here are from 4.18.0-305.49.1.rt7.121.el8_4.x86_64
 
-On 1/19/2023 1:38 AM, Daniel Vacek wrote:
-> On Wed, Jan 18, 2023 at 11:22 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
->> On 1/18/2023 2:11 PM, Daniel Vacek wrote:
->>> On Wed, Jan 18, 2023 at 9:59 PM Jacob Keller <jacob.e.keller@intel.com> wrote:
->>>> On 1/18/2023 7:14 AM, Daniel Vacek wrote:
->>>> 1) request tx timestamp
->>>> 2) timestamp occurs
->>>> 3) link goes down while processing
->>>
->>> I was thinking this is the case we got reported. But then again, I'm
->>> not really experienced in this field.
->>>
->>
->> I think it might be, or at least something similar to this.
->>
->> I think that can be fixed with the link check you added. I think we
->> actually have a copy of the current link status in the ice_ptp or
->> ice_ptp_tx structure which could be used instead of having to check back
->> to the other structure.
-> 
-> If you're talking about ptp_port->link_up that one is always false no
-> matter the actual NIC link status. First I wanted to use it but
-> checking all the 8 devices available in the dump data it just does not
-> match the net_dev->state or the port_info->phy.link_info.link_info
-> 
-> crash> net_device.name,state 0xff48df6f0c553000
->   name = "ens1f1",
->   state = 0x7,    // DOWN
-> crash> ice_port_info.phy.link_info.link_info 0xff48df6f05dca018
->   phy.link_info.link_info = 0xc0,    // DOWN
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f05dd44e0
->   port_num = 0x1
->   link_up = 0x0,    // False
-> 
-> crash> net_device.name,state 0xff48df6f25e3f000
->   name = "ens1f0",
->   state = 0x3,    // UP
-> crash> ice_port_info.phy.link_info.link_info 0xff48df6f070a3018
->   phy.link_info.link_info = 0xe1,    // UP
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f063184e0
->   port_num = 0x0
->   link_up = 0x0,    // False
-> 
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f25b844e0
->   port_num = 0x2
->   link_up = 0x0,    // False even this device is UP
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f140384e0
->   port_num = 0x3
->   link_up = 0x0,    // False even this device is UP
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f055044e0
->   port_num = 0x0
->   link_up = 0x0,    // False even this device is UP
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f251cc4e0
->   port_num = 0x1
->   link_up = 0x0,
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f33a9c4e0
->   port_num = 0x2
->   link_up = 0x0,
-> crash> ice_ptp_port.port_num,link_up 0xff48df6f3bb7c4e0
->   port_num = 0x3
->   link_up = 0x0,
-> 
-> In other words, the ice_ptp_port.link_up is always false and cannot be
-> used. That's why I had to fall back to
-> hw->port_info->phy.link_info.link_info
-> 
+> For the current code in the net-next kernel I believe we can safely use
+> the ptp_port->link_up field.
 
-Hmm. We call ice_ptp_link_change in ice_link_event which is called from
-ice_handle_link_event...
+I'll fix that up and drop you a v3. Thank you for the review.
 
-In ice_link_event, a local link_up field is set based on
-phy_info->link_info.link_info & ICE_AQ_LINK_UP
+--nX
 
-What kernel are you testing on? Does it include 6b1ff5d39228 ("ice:
-always call ice_ptp_link_change and make it void")?
+> Thanks,
+> Jake
 
-Prior to this commit the field was only valid for E822 devices, but I
-fixed that as it was used for other checks as well.
-
-I am guessing that the Red Hat kernel you are using lacks several of
-these clean ups and fixes.
-
-For the current code in the net-next kernel I believe we can safely use
-the ptp_port->link_up field.
-
-Thanks,
-Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
