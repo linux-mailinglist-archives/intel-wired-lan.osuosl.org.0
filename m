@@ -1,96 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADFEF674402
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 22:10:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5F46674423
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 22:16:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8CAA4611B5;
-	Thu, 19 Jan 2023 21:10:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8CAA4611B5
+	by smtp4.osuosl.org (Postfix) with ESMTP id B147D41C72;
+	Thu, 19 Jan 2023 21:16:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B147D41C72
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674162638;
-	bh=fs97i41oGLORnS/K2Y5eAEHtuRyVy3KXYROywiSg0WQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=SuXlS0Y9vvEpTRBka6RhMSYKgCG2HbH4XPR/SJtCkQUwZxXDxS1OQ9k0V1XsyX/Xj
-	 Juss8SeTnA/T4lJIiz0Y/s0IpIldUggSpkNzzOMs+S4+rO7Ly6sTCxkjqi4QozvWw7
-	 FKFs+JWcBM4d/DHZX9CikaBpmzBmOEDouwTep4UysMd3Azof3YcDOGLbCHVopd+D7p
-	 E9vvYQ3jUe5LWDIJLjdQUlD+cWR8SKb2osEt/F6vZyTQtXFyC6nX3qoea5VPX6sXrg
-	 JOhpjOI7fa3vbsageZ0BDpXrSfb/unYejmvBHFyAJv1f7lXoxi7TfBSzHyZbns8MS3
-	 uQrYkWnHf45QA==
+	s=default; t=1674162962;
+	bh=QxfE1qAK1Sf8gXo9szt0ul3prlbNam9R8OJN2Rc9Hd4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ppBi91VbVQlJ+zFBReSjjmVp0CygHblYULgR727+7PdJH6ReOqRjShhCgvihDmQ95
+	 jWspE82BXZco2si/0D3cgqm0tQ2vB9+Eru7fxExooEnx59au6gxDbXFuoDZvT0YI8t
+	 cAFJXurScX7KdhxqZA0Tw4vzGTVKoJ0vWeptjD6qt2xe1iQu3vRrqJFquMjUEE5EEq
+	 6HVtXfruFoHjknlZgU08AEa9oZShoiclEWnRlPSaNbc/K2YDK6WuiTFBRqcd5d8FQO
+	 D0QmiZlIeTtonp1PSyVKVYeJHkAJEH/lLsFUV3b6Gz23e7MSvY4kqM1TLnWjx0wE/1
+	 5Mz3cOowTl7ng==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D0-Vcdz_YZog; Thu, 19 Jan 2023 21:10:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oYjLdH1yIqq0; Thu, 19 Jan 2023 21:16:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 948EC60DED;
-	Thu, 19 Jan 2023 21:10:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 948EC60DED
+	by smtp4.osuosl.org (Postfix) with ESMTP id A4B8E41C6B;
+	Thu, 19 Jan 2023 21:16:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A4B8E41C6B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A2C2F1BF2BD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:23:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BDBE61BF2F1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 21:15:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7CCC460B20
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:23:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7CCC460B20
+ by smtp4.osuosl.org (Postfix) with ESMTP id A40E241C6B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 21:15:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A40E241C6B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3X8OexgmL-s0 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Jan 2023 20:23:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0Nou9nfirzD4 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Jan 2023 21:15:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C851560AF4
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C851560AF4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 20:23:33 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-477-pXzxzMvAN1C6_QctN5KchA-1; Thu, 19 Jan 2023 15:23:29 -0500
-X-MC-Unique: pXzxzMvAN1C6_QctN5KchA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A1DE138149C1;
- Thu, 19 Jan 2023 20:23:28 +0000 (UTC)
-Received: from metal.redhat.com (ovpn-192-69.brq.redhat.com [10.40.192.69])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9336040C2064;
- Thu, 19 Jan 2023 20:23:26 +0000 (UTC)
-From: Daniel Vacek <neelx@redhat.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>
-Date: Thu, 19 Jan 2023 21:23:16 +0100
-Message-Id: <20230119202317.2741092-1-neelx@redhat.com>
-In-Reply-To: <20230117181533.2350335-1-neelx@redhat.com>
-References: <20230117181533.2350335-1-neelx@redhat.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2103F41C66
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2103F41C66
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 21:15:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="305794360"
+X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; d="scan'208";a="305794360"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2023 13:15:53 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="690782441"
+X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; d="scan'208";a="690782441"
+Received: from anguy11-upstream.jf.intel.com ([10.166.9.133])
+ by orsmga008.jf.intel.com with ESMTP; 19 Jan 2023 13:15:53 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 19 Jan 2023 13:16:08 -0800
+Message-Id: <20230119211608.2105338-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-Mailman-Approved-At: Thu, 19 Jan 2023 21:10:33 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1674159812;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=chrJCnGKSxZ+Gqnkqp1hMJQsXXkdPAS4UelZoHmwcGY=;
- b=fNdizY8JDN+O5ERC0Nr0nOcJ8LW8D4eVD2yaVszdR3tnC5Zb1BGA/yIjUHPj3WvSM3PKhN
- +arVR5hhUAROajqq9Ozm9gM+gAe9i4EeCBjHv/QPg+1l0s9YPfqnyvbAzoKIup78Y5ST7F
- kprMqmer5IqCHQB3j6DKkjsReVSdhJE=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fNdizY8J
-Subject: [Intel-wired-lan] [PATCH v3] ice/ptp: fix the PTP worker retrying
- indefinitely if the link went down
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674162954; x=1705698954;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=l8lwEhIkFPpZ3XQNm+iFdhPT5xVAnqB2Xn7KkE3hQDI=;
+ b=fL0VmLQXfAcPA+lzpk3L1YvLZ10ZnteIq1QLG+HE04G6He0UqqrfhRWr
+ j0eeR6XnSTjNneYstYBmj4ofHtDyh8iqsRvDzx0yvjJTRVT3LLUAs6awP
+ vQtPkanUEr420JdT3ikrl/XNnrKi8hNLlgu2QenOJhPUot0HrKSiQAPFl
+ VGRgNN2rA075bjvt7pZYuUHDZ/Y+3ZpXHx+2xOsjj0CtKofpospTxyFTP
+ 3a8bKGX+A2ooQDXcBdLWhfJVLBouK5uUPY8o4a/AdgpDs3geYeJZXOcet
+ qC7DFC930H6UiP/jv2k8EFwXMTA+LwmHfhrZGODtSw8XHmVQ5LwG9EvtM
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=fL0VmLQX
+Subject: [Intel-wired-lan] [net-queue v4 1/1] ice: Do not use WQ_MEM_RECLAIM
+ flag for workqueue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,61 +92,115 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Daniel Vacek <neelx@redhat.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the link goes down the ice_ptp_tx_tstamp() may loop re-trying to
-process the packets till the 2 seconds timeout finally drops them.
-In such a case it makes sense to just drop them right away.
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Signed-off-by: Daniel Vacek <neelx@redhat.com>
+When both ice and the irdma driver are loaded, a warning
+in check_flush_dependency is being triggered. This seems
+to be because of the ice driver workqueue is allocated with
+the WQ_MEM_RECLAIM flag, and the irdma one is not.
+
+Looking at the kernel documentation, it doesn't seem like
+the ice driver needs to use WQ_MEM_RECLAIM. Remove it.
+
+Example trace:
+
+[  +0.000004] workqueue: WQ_MEM_RECLAIM ice:ice_service_task [ice] is flushing !WQ_MEM_RECLAIM infiniband:0x0
+[  +0.000139] WARNING: CPU: 0 PID: 728 at kernel/workqueue.c:2632 check_flush_dependency+0x178/0x1a0
+[  +0.000011] Modules linked in: bonding tls xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 nft_compat nft_cha
+in_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge stp llc rfkill vfat fat intel_rapl_msr intel
+_rapl_common isst_if_common skx_edac nfit libnvdimm x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm irqbypass crct1
+0dif_pclmul crc32_pclmul ghash_clmulni_intel rapl intel_cstate rpcrdma sunrpc rdma_ucm ib_srpt ib_isert iscsi_target_mod target_
+core_mod ib_iser libiscsi scsi_transport_iscsi rdma_cm ib_cm iw_cm iTCO_wdt iTCO_vendor_support ipmi_ssif irdma mei_me ib_uverbs
+ib_core intel_uncore joydev pcspkr i2c_i801 acpi_ipmi mei lpc_ich i2c_smbus intel_pch_thermal ioatdma ipmi_si acpi_power_meter
+acpi_pad xfs libcrc32c sd_mod t10_pi crc64_rocksoft crc64 sg ahci ixgbe libahci ice i40e igb crc32c_intel mdio i2c_algo_bit liba
+ta dca wmi dm_mirror dm_region_hash dm_log dm_mod ipmi_devintf ipmi_msghandler fuse
+[  +0.000161]  [last unloaded: bonding]
+[  +0.000006] CPU: 0 PID: 728 Comm: kworker/0:2 Tainted: G S                 6.2.0-rc2_next-queue-13jan-00458-gc20aabd57164 #1
+[  +0.000006] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.02.01.0010.010620200716 01/06/2020
+[  +0.000003] Workqueue: ice ice_service_task [ice]
+[  +0.000127] RIP: 0010:check_flush_dependency+0x178/0x1a0
+[  +0.000005] Code: 89 8e 02 01 e8 49 3d 40 00 49 8b 55 18 48 8d 8d d0 00 00 00 48 8d b3 d0 00 00 00 4d 89 e0 48 c7 c7 e0 3b 08
+9f e8 bb d3 07 01 <0f> 0b e9 be fe ff ff 80 3d 24 89 8e 02 00 0f 85 6b ff ff ff e9 06
+[  +0.000004] RSP: 0018:ffff88810a39f990 EFLAGS: 00010282
+[  +0.000005] RAX: 0000000000000000 RBX: ffff888141bc2400 RCX: 0000000000000000
+[  +0.000004] RDX: 0000000000000001 RSI: dffffc0000000000 RDI: ffffffffa1213a80
+[  +0.000003] RBP: ffff888194bf3400 R08: ffffed117b306112 R09: ffffed117b306112
+[  +0.000003] R10: ffff888bd983088b R11: ffffed117b306111 R12: 0000000000000000
+[  +0.000003] R13: ffff888111f84d00 R14: ffff88810a3943ac R15: ffff888194bf3400
+[  +0.000004] FS:  0000000000000000(0000) GS:ffff888bd9800000(0000) knlGS:0000000000000000
+[  +0.000003] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  +0.000003] CR2: 000056035b208b60 CR3: 000000017795e005 CR4: 00000000007706f0
+[  +0.000003] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  +0.000003] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  +0.000002] PKRU: 55555554
+[  +0.000003] Call Trace:
+[  +0.000002]  <TASK>
+[  +0.000003]  __flush_workqueue+0x203/0x840
+[  +0.000006]  ? mutex_unlock+0x84/0xd0
+[  +0.000008]  ? __pfx_mutex_unlock+0x10/0x10
+[  +0.000004]  ? __pfx___flush_workqueue+0x10/0x10
+[  +0.000006]  ? mutex_lock+0xa3/0xf0
+[  +0.000005]  ib_cache_cleanup_one+0x39/0x190 [ib_core]
+[  +0.000174]  __ib_unregister_device+0x84/0xf0 [ib_core]
+[  +0.000094]  ib_unregister_device+0x25/0x30 [ib_core]
+[  +0.000093]  irdma_ib_unregister_device+0x97/0xc0 [irdma]
+[  +0.000064]  ? __pfx_irdma_ib_unregister_device+0x10/0x10 [irdma]
+[  +0.000059]  ? up_write+0x5c/0x90
+[  +0.000005]  irdma_remove+0x36/0x90 [irdma]
+[  +0.000062]  auxiliary_bus_remove+0x32/0x50
+[  +0.000007]  device_release_driver_internal+0xfa/0x1c0
+[  +0.000005]  bus_remove_device+0x18a/0x260
+[  +0.000007]  device_del+0x2e5/0x650
+[  +0.000005]  ? __pfx_device_del+0x10/0x10
+[  +0.000003]  ? mutex_unlock+0x84/0xd0
+[  +0.000004]  ? __pfx_mutex_unlock+0x10/0x10
+[  +0.000004]  ? _raw_spin_unlock+0x18/0x40
+[  +0.000005]  ice_unplug_aux_dev+0x52/0x70 [ice]
+[  +0.000160]  ice_service_task+0x1309/0x14f0 [ice]
+[  +0.000134]  ? __pfx___schedule+0x10/0x10
+[  +0.000006]  process_one_work+0x3b1/0x6c0
+[  +0.000008]  worker_thread+0x69/0x670
+[  +0.000005]  ? __kthread_parkme+0xec/0x110
+[  +0.000007]  ? __pfx_worker_thread+0x10/0x10
+[  +0.000005]  kthread+0x17f/0x1b0
+[  +0.000005]  ? __pfx_kthread+0x10/0x10
+[  +0.000004]  ret_from_fork+0x29/0x50
+[  +0.000009]  </TASK>
+
+Fixes: 940b61af02f4 ("ice: Initialize PF and setup miscellaneous interrupt")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+v4:
+Change target to net
+Update kernel splat
+v3: added example trace
+v2: fixed From tag
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index d63161d73eb16..3c39ae3ed2426 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -680,6 +680,7 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- 	struct ice_pf *pf;
- 	struct ice_hw *hw;
- 	u64 tstamp_ready;
-+	bool link_up;
- 	int err;
- 	u8 idx;
+
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 031668698655..96c71bfec29d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5537,7 +5537,7 @@ static int __init ice_module_init(void)
+ 	pr_info("%s\n", ice_driver_string);
+ 	pr_info("%s\n", ice_copyright);
  
-@@ -695,11 +696,14 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- 	if (err)
- 		return false;
- 
-+	/* Drop packets if the link went down */
-+	link_up = ptp_port->link_up;
-+
- 	for_each_set_bit(idx, tx->in_use, tx->len) {
- 		struct skb_shared_hwtstamps shhwtstamps = {};
- 		u8 phy_idx = idx + tx->offset;
- 		u64 raw_tstamp = 0, tstamp;
--		bool drop_ts = false;
-+		bool drop_ts = !link_up;
- 		struct sk_buff *skb;
- 
- 		/* Drop packets which have waited for more than 2 seconds */
-@@ -728,7 +732,7 @@ static bool ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
- 		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
- 
- 		err = ice_read_phy_tstamp(hw, tx->block, phy_idx, &raw_tstamp);
--		if (err)
-+		if (err && !drop_ts)
- 			continue;
- 
- 		ice_trace(tx_tstamp_fw_done, tx->tstamps[idx].skb, idx);
+-	ice_wq = alloc_workqueue("%s", WQ_MEM_RECLAIM, 0, KBUILD_MODNAME);
++	ice_wq = alloc_workqueue("%s", 0, 0, KBUILD_MODNAME);
+ 	if (!ice_wq) {
+ 		pr_err("Failed to create workqueue\n");
+ 		return -ENOMEM;
 -- 
-2.39.0
+2.38.1
 
 _______________________________________________
 Intel-wired-lan mailing list
