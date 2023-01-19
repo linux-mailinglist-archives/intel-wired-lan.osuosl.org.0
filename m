@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9941C672DFA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 02:18:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF128672DF2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jan 2023 02:17:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 25B3240C39;
-	Thu, 19 Jan 2023 01:18:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25B3240C39
+	by smtp1.osuosl.org (Postfix) with ESMTP id B7E5182200;
+	Thu, 19 Jan 2023 01:17:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7E5182200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674091082;
-	bh=El5HGLSTAoUmsJy9GOtD+qhpLVtuPZxLO67v9bbtm4Q=;
+	s=default; t=1674091048;
+	bh=BxJ9HERa4bMgFHkt6I8AhY4d+4U3GsHMQk1/3JumXPI=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ow3WiXj7v44GCgDLX4DZf517srTr5yBjlzALAAIuqaLuiX6uocOYRghXZ1qVssUJV
-	 vW96CnFqX26ZbORwzlGurDDDKrZbsu+0Yl28kGgqt1pMz/VgdsuQbUg+C/3VDjvtZm
-	 eDafkSdKaMKGUDibWp1G39bWB59DW7c0S4L5el9AvMPgQEIk67LAHAEsgTVLaGUwnn
-	 uz0hfiLIqN1xE4CBrmfLwKL5jYeOItITagBA4K91wM0vLejC2bk4qCTLdWK4Lg2mUb
-	 yP9vMjaO7EeKXRFp1hb99eyo7MbDkyJ/U/6tXWlVsV3Vi9CwHM9GMwbwo1hxH89piP
-	 0XsMIcFNgcK4Q==
+	b=rMACpVnzg+an0ShguF6zwNAVbg/wSxju9tlaSNI5LdwY+A8yB164Hu4L4eU1Rm3VQ
+	 5643hE/NeyV0recarVOsNb48yazt2Sg19oi5ZoX8QUKi67If6Nr+qfb+aUcsubVzGA
+	 urmVYPzGT5gnHo6T0mtIGSEbWpNcdg2s+j31UQtnwZeVD4l4rMFqvXwXroTtGyi9i6
+	 aJH8u0dJ2cvQHOACLuRVL86Wu1zOwvlUWTdbcMLCfr4X+iGEgBxX9NfJxKuKYHKfP9
+	 q1sps1lvAeUl6b4La6C+s8cAtgshUIPNIoK5Lge6kqQhlNb5LsJ9+O/tULZJxjjXHF
+	 ZGKTX0gGMM3gw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2HxDxDjHvhIz; Thu, 19 Jan 2023 01:18:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id c-RwF4WsXwI0; Thu, 19 Jan 2023 01:17:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A7A940C30;
-	Thu, 19 Jan 2023 01:18:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A7A940C30
+	by smtp1.osuosl.org (Postfix) with ESMTP id ACB5F821BA;
+	Thu, 19 Jan 2023 01:17:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACB5F821BA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B556F1BF95F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 46FCA1BF95F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 65B024191B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65B024191B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 658D8418A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 658D8418A4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zSffpHaRrs5S for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Jan 2023 01:17:05 +0000 (UTC)
+ with ESMTP id uR4Aec4c30ZW for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Jan 2023 01:17:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DFAAF41921
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F406A41922
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DFAAF41921
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F406A41922
  for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jan 2023 01:17:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304840725"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304840725"
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="304840726"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="304840726"
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jan 2023 17:17:03 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="783881870"
-X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="783881870"
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="783881873"
+X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; d="scan'208";a="783881873"
 Received: from jekeller-desk.amr.corp.intel.com (HELO
  jekeller-desk.jekeller.internal) ([10.166.241.1])
  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jan 2023 17:17:02 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 18 Jan 2023 17:16:45 -0800
-Message-Id: <20230119011653.311675-6-jacob.e.keller@intel.com>
+Date: Wed, 18 Jan 2023 17:16:46 -0800
+Message-Id: <20230119011653.311675-7-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.39.1.405.gd4c25cc71f83
 In-Reply-To: <20230119011653.311675-1-jacob.e.keller@intel.com>
 References: <20230119011653.311675-1-jacob.e.keller@intel.com>
@@ -71,19 +71,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1674091024; x=1705627024;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=xAMP0fr5qggukQRLWZYYd3ocbNfxIwjbzlKV8/x5DuI=;
- b=NZbho/9f2X5w19i2BuCVo3wOfR0e8Lb1UFZO6KvvdlaJYOQrcESm4szQ
- 9CkXEy3S1ZKpnbgJL0pybrK9jleDWmpwO/R2KQKg+6ME6QCFo8cBbK64c
- jnwzBOADlZ9wRAOevs/dZa9E7A1P5VFk9fA5bgUUsr2lya2u3p4C8wOOm
- IXg3Ll+EC7mjjZkhILjyEPW3KqgGr0CjD0kcbAY5uWx5Ra/5oY9mkIv2d
- KlLv90apSgekF8P7NW4tMTXA1ayLOPxgMRvEFek/Sv0XZHoSKtK4hgETM
- 6Adog3wfbHuSd8nePJmVMV4E9mtoWRuAt6Cq85IiAInr5n4xSNNd4t7HL
- w==;
+ bh=SZ6akesSzEQTFuN9G5sjPH9FETHD3gYgWuQMhs5rsJM=;
+ b=HwYaWtvCLD7RGHnN0W+z6ctwaB3PmoOFG9Z9dndMxUVBBZZZFl4LciCc
+ eqVIdPbcFTp6SWkRE3N2V5px14rH+YAyFNhYlo2p1GRIT/X8QFeaXuTzM
+ W4BMGKMeExCIn//8OOAsNcGrgAxGvWDFHA4Njkt6TRFIC6PqWhzzTJY24
+ grTG25i5z0W4M33HKTCaX8QcG8yW/SR5+3zT4QizeQ4XUqcu8ckSApjw/
+ Ae/0sHNLsqwipTFOIzK0BlLDJtuABitMzFFvUrg8dZpDBOUk7tcYW3PfE
+ 1nq0d2O2cO0FA8CBI0a7cPHvzVL5vCnlr2i3/RafJ0OEMV9aW0YDvw+cs
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NZbho/9f
-Subject: [Intel-wired-lan] [PATCH net-next v2 05/13] ice: Fix RDMA latency
- issue by allowing write-combining
+ header.a=rsa-sha256 header.s=Intel header.b=HwYaWtvC
+Subject: [Intel-wired-lan] [PATCH net-next v2 06/13] ice: move
+ ice_vf_vsi_release into ice_vf_lib.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,437 +102,86 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current method of mapping the entire BAR region as a single uncacheable
-region does not allow RDMA to use write combining (WC). This results in
-increased latency with RDMA.
+The ice_vf_vsi_release function will be used in a future change to
+refactor the .vsi_rebuild function. Move this over to ice_vf_lib.c so
+that it can be used there.
 
-To fix this, we initially planned to reduce the size of the map made by the
-PF driver to include only up to the beginning of the RDMA space.
-Unfortunately this will not work in the future as there are some hardware
-features which use registers beyond the RDMA area. This includes Scalable
-IOV, a virtualization feature being worked on currently.
-
-Instead of simply reducing the size of the map, we need a solution which
-will allow access to all areas of the address space while leaving the RDMA
-area open to be mapped with write combining.
-
-To allow for this, and fix the RMDA latency issue without blocking the
-higher areas of the BAR, we need to create multiple separate memory maps.
-Doing so will create a sparse mapping rather than a contiguous single area.
-
-Replace the void *hw_addr with a special ice_hw_addr structure which
-represents the multiple mappings as a flexible array.
-
-Based on the available BAR size, map up to 3 regions:
-
- * The space before the RDMA section
- * The RDMA section which wants write combining behavior
- * The space after the RDMA section
-
-Add an ice_get_hw_addr function which converts a register offset into the
-appropriate kernel address based on which chunk it falls into. This does
-cost us slightly more computation overhead for register access as we now
-must check the table each access. However, we can pre-compute the addresses
-where this would most be a problem.
-
-With this change, the RDMA driver is now free to map the RDMA register
-section as write-combined without impacting access to other device
-registers used by the main PF driver.
-
-Reported-by: Dave Ertman <david.m.ertman@intel.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
-Changes since v1:
-* Export ice_get_hw_addr
-* Use ice_get_hw_addr in iRDMA driver
-* Fix the WARN_ON to use %pa instead of %llx for printing a resource_size_t
+No changes since v1.
 
- drivers/infiniband/hw/irdma/main.c           |   2 +-
- drivers/net/ethernet/intel/ice/ice.h         |   4 +-
- drivers/net/ethernet/intel/ice/ice_base.c    |   5 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c |   3 +-
- drivers/net/ethernet/intel/ice/ice_main.c    | 177 +++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_osdep.h   |  48 ++++-
- drivers/net/ethernet/intel/ice/ice_txrx.h    |   2 +-
- drivers/net/ethernet/intel/ice/ice_type.h    |   2 +-
- 8 files changed, 219 insertions(+), 24 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sriov.c     | 15 ---------------
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c    | 18 ++++++++++++++++++
+ .../ethernet/intel/ice/ice_vf_lib_private.h    |  1 +
+ 3 files changed, 19 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
-index 514453777e07..37a2650abbbb 100644
---- a/drivers/infiniband/hw/irdma/main.c
-+++ b/drivers/infiniband/hw/irdma/main.c
-@@ -228,7 +228,7 @@ static void irdma_fill_device_info(struct irdma_device *iwdev, struct ice_pf *pf
- 	rf->cdev = pf;
- 	rf->gen_ops.register_qset = irdma_lan_register_qset;
- 	rf->gen_ops.unregister_qset = irdma_lan_unregister_qset;
--	rf->hw.hw_addr = pf->hw.hw_addr;
-+	rf->hw.hw_addr = ice_get_hw_addr(&pf->hw, 0);
- 	rf->pcidev = pf->pdev;
- 	rf->msix_count =  pf->num_rdma_msix;
- 	rf->pf_id = pf->hw.pf_id;
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 51a1a89f7b5a..cd81974822cc 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -75,7 +75,9 @@
- #include "ice_vsi_vlan_ops.h"
- #include "ice_gnss.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index a101768b1cc5..de20e50623d7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -40,21 +40,6 @@ static void ice_free_vf_entries(struct ice_pf *pf)
+ 	}
+ }
  
--#define ICE_BAR0		0
-+#define ICE_BAR0			0
-+#define ICE_BAR_RDMA_WC_START		0x0800000
-+#define ICE_BAR_RDMA_WC_END		0x1000000
- #define ICE_REQ_DESC_MULTIPLE	32
- #define ICE_MIN_NUM_DESC	64
- #define ICE_MAX_NUM_DESC	8160
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 554095b25f44..332d5a1b326c 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -480,7 +480,7 @@ static int ice_setup_rx_ctx(struct ice_rx_ring *ring)
- 	ring->rx_offset = ice_rx_offset(ring);
- 
- 	/* init queue specific tail register */
--	ring->tail = hw->hw_addr + QRX_TAIL(pf_q);
-+	ring->tail = ice_get_hw_addr(hw, QRX_TAIL(pf_q));
- 	writel(0, ring->tail);
- 
- 	return 0;
-@@ -790,8 +790,7 @@ ice_vsi_cfg_txq(struct ice_vsi *vsi, struct ice_tx_ring *ring,
- 	/* init queue specific tail reg. It is referred as
- 	 * transmit comm scheduler queue doorbell.
- 	 */
--	ring->tail = hw->hw_addr + QTX_COMM_DBELL(pf_q);
+-/**
+- * ice_vf_vsi_release - invalidate the VF's VSI after freeing it
+- * @vf: invalidate this VF's VSI after freeing it
+- */
+-static void ice_vf_vsi_release(struct ice_vf *vf)
+-{
+-	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
 -
-+	ring->tail = ice_get_hw_addr(hw, QTX_COMM_DBELL(pf_q));
- 	if (IS_ENABLED(CONFIG_DCB))
- 		tc = ring->dcb_tc;
- 	else
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 936f0e0c553d..b54f470be8d7 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3085,7 +3085,8 @@ ice_set_ringparam(struct net_device *netdev, struct ethtool_ringparam *ring,
- 		/* this is to allow wr32 to have something to write to
- 		 * during early allocation of Rx buffers
- 		 */
--		rx_rings[i].tail = vsi->back->hw.hw_addr + PRTGEN_STATUS;
-+		rx_rings[i].tail = ice_get_hw_addr(&vsi->back->hw,
-+						   PRTGEN_STATUS);
- 
- 		err = ice_setup_rx_ring(&rx_rings[i]);
- 		if (err)
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 4165fde0106d..3b98721fd9d8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -596,6 +596,163 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	set_bit(ICE_PREPARED_FOR_RESET, pf->state);
+-	if (WARN_ON(!vsi))
+-		return;
+-
+-	ice_vsi_release(vsi);
+-	ice_vf_invalidate_vsi(vf);
+-}
+-
+ /**
+  * ice_free_vf_res - Free a VF's resources
+  * @vf: pointer to the VF info
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index 1b7e919b9275..5fecbec55f54 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -1143,6 +1143,24 @@ void ice_vf_invalidate_vsi(struct ice_vf *vf)
+ 	vf->lan_vsi_num = ICE_NO_VSI;
  }
  
 +/**
-+ * ice_get_hw_addr - Get memory address for a given device register
-+ * @hw: pointer to the HW struct
-+ * @reg: the register to get address of
++ * ice_vf_vsi_release - Release the VF VSI and invalidate indexes
++ * @vf: pointer to the VF structure
 + *
-+ * Convert a register offset into the appropriate memory mapped kernel
-+ * address.
-+ *
-+ * Returns the pointer address or an ERR_PTR on failure.
++ * Release the VF associated with this VSI and then invalidate the VSI
++ * indexes.
 + */
-+void __iomem *ice_get_hw_addr(struct ice_hw *hw, resource_size_t reg)
++void ice_vf_vsi_release(struct ice_vf *vf)
 +{
-+	struct ice_hw_addr *hw_addr = (struct ice_hw_addr *)hw->hw_addr;
-+	struct ice_hw_addr_map *map;
-+	unsigned int i;
++	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
 +
-+	if (WARN_ON(!hw_addr))
-+		return (void __iomem *)ERR_PTR(-EIO);
-+
-+	for (i = 0, map = hw_addr->maps; i < hw_addr->nr; i++, map++)
-+		if (reg >= map->start && reg < map->end)
-+			return (u8 __iomem *)map->addr + (reg - map->start);
-+
-+	WARN_ONCE(1, "Unable to map register address %pa to kernel address",
-+		  &reg);
-+
-+	return (void __iomem *)ERR_PTR(-EFAULT);
-+}
-+EXPORT_SYMBOL_GPL(ice_get_hw_addr);
-+
-+/**
-+ * ice_map_hw_addr - map a region of device registers to memory
-+ * @pdev: the PCI device
-+ * @map: the address map structure
-+ *
-+ * Map the specified section of the hardware registers into memory, storing
-+ * the memory mapped address in the provided structure.
-+ *
-+ * Returns 0 on success or an error code on failure.
-+ */
-+static int ice_map_hw_addr(struct pci_dev *pdev, struct ice_hw_addr_map *map)
-+{
-+	struct device *dev = &pdev->dev;
-+	resource_size_t size, base;
-+	void __iomem *addr;
-+
-+	if (WARN_ON(map->end <= map->start))
-+		return -EIO;
-+
-+	size = map->end - map->start;
-+	base = pci_resource_start(pdev, map->bar) + map->start;
-+	addr = ioremap(base, size);
-+	if (!addr) {
-+		dev_err(dev, "%s: remap at offset %llu failed\n",
-+			__func__, map->start);
-+		return -EIO;
-+	}
-+
-+	map->addr = addr;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_map_all_hw_addr - Request and map PCI BAR memory
-+ * @pf: pointer to the PF structure
-+ *
-+ * Request and reserve all PCI BAR regions. Memory map chunks of the PCI BAR
-+ * 0 into a sparse memory map to allow the RDMA region to be mapped with write
-+ * combining.
-+ *
-+ * Returns 0 on success or an error code on failure.
-+ */
-+static int ice_map_all_hw_addr(struct ice_pf *pf)
-+{
-+	struct pci_dev *pdev = pf->pdev;
-+	struct device *dev = &pdev->dev;
-+	struct ice_hw_addr *hw_addr;
-+	resource_size_t bar_len;
-+	unsigned int nr_maps;
-+	int err;
-+
-+	bar_len = pci_resource_len(pdev, 0);
-+	if (bar_len > ICE_BAR_RDMA_WC_END)
-+		nr_maps = 2;
-+	else
-+		nr_maps = 1;
-+
-+	hw_addr = kzalloc(struct_size(hw_addr, maps, nr_maps), GFP_KERNEL);
-+	if (!hw_addr)
-+		return -ENOMEM;
-+
-+	hw_addr->nr = nr_maps;
-+
-+	err = pci_request_mem_regions(pdev, dev_driver_string(dev));
-+	if (err) {
-+		dev_err(dev, "pci_request_mem_regions failed, err %pe\n",
-+			ERR_PTR(err));
-+		goto err_free_hw_addr;
-+	}
-+
-+	/* Map the start of the BAR as uncachable */
-+	hw_addr->maps[0].bar = 0;
-+	hw_addr->maps[0].start = 0;
-+	hw_addr->maps[0].end = min_t(resource_size_t, bar_len,
-+				     ICE_BAR_RDMA_WC_START);
-+	err = ice_map_hw_addr(pdev, &hw_addr->maps[0]);
-+	if (err)
-+		goto err_release_mem_regions;
-+
-+	/* Map everything past the RDMA section as uncachable */
-+	if (nr_maps > 1) {
-+		hw_addr->maps[1].bar = 0;
-+		hw_addr->maps[1].start = ICE_BAR_RDMA_WC_END;
-+		hw_addr->maps[1].end = bar_len;
-+		err = ice_map_hw_addr(pdev, &hw_addr->maps[1]);
-+		if (err)
-+			goto err_unmap_bar_start;
-+	}
-+
-+	pf->hw.hw_addr = (typeof(pf->hw.hw_addr))hw_addr;
-+
-+	return 0;
-+
-+err_unmap_bar_start:
-+	iounmap(hw_addr->maps[0].addr);
-+err_release_mem_regions:
-+	pci_release_mem_regions(pdev);
-+err_free_hw_addr:
-+	kfree(hw_addr);
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_unmap_all_hw_addr - Release device register memory maps
-+ * @pf: pointer to the PF structure
-+ *
-+ * Release all PCI memory maps and regions.
-+ */
-+static void ice_unmap_all_hw_addr(struct ice_pf *pf)
-+{
-+	struct ice_hw_addr *hw_addr = (struct ice_hw_addr *)pf->hw.hw_addr;
-+	struct pci_dev *pdev = pf->pdev;
-+	unsigned int i;
-+
-+	if (WARN_ON(!hw_addr))
++	if (WARN_ON(!vsi))
 +		return;
 +
-+	pf->hw.hw_addr = NULL;
-+	for (i = 0; i < hw_addr->nr; i++)
-+		iounmap(hw_addr->maps[i].addr);
-+	kfree(hw_addr);
-+
-+	pci_release_mem_regions(pdev);
++	ice_vsi_release(vsi);
++	ice_vf_invalidate_vsi(vf);
 +}
 +
  /**
-  * ice_do_reset - Initiate one of many types of resets
-  * @pf: board private structure
-@@ -5101,19 +5258,10 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 		return -EINVAL;
- 	}
+  * ice_vf_set_initialized - VF is ready for VIRTCHNL communication
+  * @vf: VF to set in initialized state
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
+index 9c8ef2b01f0f..a0f204746f4e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
+@@ -36,6 +36,7 @@ void ice_vf_ctrl_invalidate_vsi(struct ice_vf *vf);
+ void ice_vf_ctrl_vsi_release(struct ice_vf *vf);
+ struct ice_vsi *ice_vf_ctrl_vsi_setup(struct ice_vf *vf);
+ void ice_vf_invalidate_vsi(struct ice_vf *vf);
++void ice_vf_vsi_release(struct ice_vf *vf);
+ void ice_vf_set_initialized(struct ice_vf *vf);
  
--	/* this driver uses devres, see
--	 * Documentation/driver-api/driver-model/devres.rst
--	 */
--	err = pcim_enable_device(pdev);
-+	err = pci_enable_device(pdev);
- 	if (err)
- 		return err;
- 
--	err = pcim_iomap_regions(pdev, BIT(ICE_BAR0), dev_driver_string(dev));
--	if (err) {
--		dev_err(dev, "BAR0 I/O map error %d\n", err);
--		return err;
--	}
--
- 	pf = ice_allocate_pf(dev);
- 	if (!pf)
- 		return -ENOMEM;
-@@ -5138,7 +5286,11 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	set_bit(ICE_SERVICE_DIS, pf->state);
- 
- 	hw = &pf->hw;
--	hw->hw_addr = pcim_iomap_table(pdev)[ICE_BAR0];
-+
-+	err = ice_map_all_hw_addr(pf);
-+	if (err)
-+		goto err_init_iomap_fail;
-+
- 	pci_save_state(pdev);
- 
- 	hw->back = pf;
-@@ -5186,6 +5338,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- err_init_eth:
- 	ice_deinit(pf);
- err_init:
-+	ice_unmap_all_hw_addr(pf);
-+err_init_iomap_fail:
- 	pci_disable_pcie_error_reporting(pdev);
- 	pci_disable_device(pdev);
- 	return err;
-@@ -5295,6 +5449,7 @@ static void ice_remove(struct pci_dev *pdev)
- 	 */
- 	ice_reset(&pf->hw, ICE_RESET_PFR);
- 	pci_wait_for_pending_transaction(pdev);
-+	ice_unmap_all_hw_addr(pf);
- 	pci_disable_pcie_error_reporting(pdev);
- 	pci_disable_device(pdev);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_osdep.h b/drivers/net/ethernet/intel/ice/ice_osdep.h
-index 82bc54fec7f3..4b16ff489c3a 100644
---- a/drivers/net/ethernet/intel/ice/ice_osdep.h
-+++ b/drivers/net/ethernet/intel/ice/ice_osdep.h
-@@ -18,10 +18,49 @@
- #endif
- #include <net/udp_tunnel.h>
- 
--#define wr32(a, reg, value)	writel((value), ((a)->hw_addr + (reg)))
--#define rd32(a, reg)		readl((a)->hw_addr + (reg))
--#define wr64(a, reg, value)	writeq((value), ((a)->hw_addr + (reg)))
--#define rd64(a, reg)		readq((a)->hw_addr + (reg))
-+struct ice_hw;
-+
-+/**
-+ * struct ice_hw_addr_map - a single hardware address memory map
-+ * @addr: iomem address of the start of this map
-+ * @start: register offset at the start of this map, inclusive bound
-+ * @end: register offset at the end of this map, exclusive bound
-+ * @bar: the BAR this map is for
-+ *
-+ * Structure representing one map of a device BAR register space. Stored as
-+ * part of the ice_hw_addr structure in an array ordered by the start offset.
-+ *
-+ * The addr value is an iomem address returned by ioremap. The start indicates
-+ * the first register offset this map is valid for. The end indicates the end
-+ * of the map, and is an exclusive bound.
-+ */
-+struct ice_hw_addr_map {
-+	void __iomem *addr;
-+	resource_size_t start;
-+	resource_size_t end;
-+	int bar;
-+};
-+
-+/**
-+ * struct ice_hw_addr - a list of hardware address memory maps
-+ * @nr: the number of maps made
-+ * @maps: flexible array of maps made during device initialization
-+ *
-+ * Structure representing a series of sparse maps of the device BAR 0 address
-+ * space to kernel addresses. Users must convert a register offset to an iomem
-+ * address using ice_get_hw_addr.
-+ */
-+struct ice_hw_addr {
-+	unsigned int nr;
-+	struct ice_hw_addr_map maps[];
-+};
-+
-+void __iomem *ice_get_hw_addr(struct ice_hw *hw, resource_size_t reg);
-+
-+#define wr32(a, reg, value)	writel((value), ice_get_hw_addr((a), (reg)))
-+#define rd32(a, reg)		readl(ice_get_hw_addr((a), (reg)))
-+#define wr64(a, reg, value)	writeq((value), ice_get_hw_addr((a), (reg)))
-+#define rd64(a, reg)		readq(ice_get_hw_addr((a), (reg)))
- 
- #define ice_flush(a)		rd32((a), GLGEN_STAT)
- #define ICE_M(m, s)		((m) << (s))
-@@ -32,7 +71,6 @@ struct ice_dma_mem {
- 	size_t size;
- };
- 
--struct ice_hw;
- struct device *ice_hw_to_dev(struct ice_hw *hw);
- 
- #ifdef CONFIG_DYNAMIC_DEBUG
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index 4fd0e5d0a313..3d2834673903 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -272,7 +272,7 @@ struct ice_rx_ring {
- 	struct net_device *netdev;	/* netdev ring maps to */
- 	struct ice_vsi *vsi;		/* Backreference to associated VSI */
- 	struct ice_q_vector *q_vector;	/* Backreference to associated vector */
--	u8 __iomem *tail;
-+	void __iomem *tail;
- 	union {
- 		struct ice_rx_buf *rx_buf;
- 		struct xdp_buff **xdp_buf;
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index e3f622cad425..f34975efeed7 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -821,7 +821,7 @@ struct ice_mbx_data {
- 
- /* Port hardware description */
- struct ice_hw {
--	u8 __iomem *hw_addr;
-+	void *hw_addr;
- 	void *back;
- 	struct ice_aqc_layer_props *layer_info;
- 	struct ice_port_info *port_info;
+ #endif /* _ICE_VF_LIB_PRIVATE_H_ */
 -- 
 2.39.1.405.gd4c25cc71f83
 
