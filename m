@@ -1,83 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E785675B04
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jan 2023 18:18:00 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E06D86761A3
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Jan 2023 00:35:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D0EDE41D25;
-	Fri, 20 Jan 2023 17:17:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0EDE41D25
+	by smtp2.osuosl.org (Postfix) with ESMTP id 804D9416E0;
+	Fri, 20 Jan 2023 23:35:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 804D9416E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674235078;
-	bh=EYbjuHHS6SXbQJqY3OM+YQfFqNpn3WOiOzTAY6MrQ1M=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=3yemH8qSCe5pPAUo9j528hY/F0e5nDvJRjTGDohcGHgZxKxAgSlAQQKyEIIh+Y6pJ
-	 fCfVSRK6lJtP3HSf6nLNT9g++T809olVH3+jCk7gHczb0EgBGI/CrP3GYY2oW/Yy1N
-	 bdzMcNRSH/57KyinE0TUa2u7UtE8Us3O0y7lCaqfC/oAJhfM6xbt7HPZKO+fq9X+xx
-	 qCcgoB3kcU7Ka4Cnamm+CfGr9ibuRq6DxnGAmf5h603KywdSFsxYriBHCa/fDNae+H
-	 7uFDkIeO4OqiHbxcJddrHtkIqjaap2YObzsYa2lPT6MKEGaj08vWnLL0imk6Eu2a8c
-	 ok41u/8QGalmA==
+	s=default; t=1674257733;
+	bh=cyrEp88CltvLngrNQS3sf5CL6N64m6Xl/aFO8glS2pw=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=cjyc2ir25uefh/ilCUF7jwzp0UGz5e0JbMPkcXRelkliEMc+PnlHReHLaaBa32DTm
+	 Ga78mnoIKSd5uXCktCWZkVsV+IPSXcLoSw8A5kkd4MEKyWg/mhesbnANt65LPZGQRu
+	 eQ2NbAcSzjj8VUKESHGC5AmoAiTO4O7R6ffrGJCkXjRj3Px+QM0edgWi923bmZLPZy
+	 l+R/2jD/MzGM/sry4VLk8qcd2CfccbxRbOiU5Qm55UeMmrgwxzL8LzZXIk7FaePN8n
+	 q8ctuhq6My5Jw9jrWihrMQ1rSwlZ2yHZin5LKd723wz/SCBTSzIS8vog86Pq4JxS8s
+	 Xki5yC1FlcWxw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FjRQfMfpaTwJ; Fri, 20 Jan 2023 17:17:56 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZYV9PF9u50qo; Fri, 20 Jan 2023 23:35:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1810441CFD;
-	Fri, 20 Jan 2023 17:17:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1810441CFD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 51B62409EF;
+	Fri, 20 Jan 2023 23:35:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51B62409EF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4762C1BF584
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:50 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 13E7E1BF4D5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 23:35:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2212D41CFD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2212D41CFD
+ by smtp2.osuosl.org (Postfix) with ESMTP id 92B58416D5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 23:35:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 92B58416D5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K4rm6pIXcYv2 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Jan 2023 17:17:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wLwCSc6qVffQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Jan 2023 23:35:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2EE7941C8F
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2EE7941C8F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:45 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 39D9DB82956;
- Fri, 20 Jan 2023 17:17:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3818DC4339C;
- Fri, 20 Jan 2023 17:17:41 +0000 (UTC)
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: bpf@vger.kernel.org
-Date: Fri, 20 Jan 2023 18:16:56 +0100
-Message-Id: <986321f8621e9367653e21b35566e7cda976b886.1674234430.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <cover.1674234430.git.lorenzo@kernel.org>
-References: <cover.1674234430.git.lorenzo@kernel.org>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EC178409E9
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EC178409E9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 23:35:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10596"; a="327813065"
+X-IronPort-AV: E=Sophos;i="5.97,233,1669104000"; d="scan'208";a="327813065"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2023 15:35:20 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10596"; a="784714833"
+X-IronPort-AV: E=Sophos;i="5.97,233,1669104000"; d="scan'208";a="784714833"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.209.130.224])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2023 15:35:19 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 20 Jan 2023 15:35:06 -0800
+Message-Id: <20230120233511.131-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674235061;
- bh=OtYXY9RsERgGnqbRSvyI5IfDkPXYyxPy0hiuAlHTeq4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=c/YTWDyBwmNKDKBmisXZD5k2qCNvY8St5eKYwPbcdiFj30XNSWuscrb9pUY/WkYnj
- /cO9WPs4qg6umtsj1llEtwhqP3NvU7RG+zWQaAabGcs33MTQFP5qq4x60AR+/Uge2V
- muNhf2BhPogv7KrLIj1zDefmurUHBSVZ8ssjznCQ1sZihoou8zaA2cMHJwJdA5d7z2
- vrnowldqjlED9rxKFzh872RIGDYx6vFHOgLvS/bvV5EVtx+MlHRpk7F2+ZM/DHAXOC
- VhmEyxx6sTk5Kw22STfiCQLidM2QAeq3Hgo571h+E/NZSmbRSGNzn3vBwNxfvN8OIl
- hMf+53kPTR2wQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=c/YTWDyB
-Subject: [Intel-wired-lan] [PATCH bpf-next 7/7] selftests/bpf: introduce XDP
- compliance test tool
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674257721; x=1705793721;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=6OFyxcR0jud3HcJKHbkIkNjP8xa4YRSfL9DRx5/fQ0E=;
+ b=JQxZ/T0Z243nPJmDXJXHFV/3X0JV36F2pbDpN+JWnoBOoD63gJGuubI+
+ Vnm6Ffm1SOf3wTkbF8BH59BYn1Ueut/LvIarPtmhixwazRMEBfg9P4MKJ
+ jQL/jxNWfPitsG06MzkDx6YltWgrFMhc6/wJJH1gUxCtwvtxEBW5ZgRXB
+ we3MvDK82Wv4VYPcg+Uc3ymYlv/ZoO+E9xzjVMzSpifFuSd3NqxoWibU4
+ XRbU03ffKGWZRBzOPxZdQyiu9fQHsaGcT2qV6zU8Oa4ZlnERt/7PhT4IU
+ u0ZZb9lX437Tl/SkFb0g2/WDD9NX3PQtRavZKdJK0EQ8p3vExEbsagX26
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=JQxZ/T0Z
+Subject: [Intel-wired-lan] [PATCH net-next v7 0/5] add v2 FW logging for ice
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,1172 +92,114 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- niklas.soderlund@corigine.com, andrii@kernel.org,
- intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, kuba@kernel.org,
- pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
- netdev@vger.kernel.org, toke@redhat.com, ecree.xilinx@gmail.com,
- alardam@gmail.com, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
- nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce xdp_features tool in order to test XDP features supported by
-the NIC and match them against advertised ones.
-In order to test supported/advertised XDP features, xdp_features must
-run on the Device Under Test (DUT) and on a Tester device.
-xdp_features opens a control TCP channel between DUT and Tester devices
-to send control commands from Tester to the DUT and a UDP data channel
-where the Tester sends UDP 'echo' packets and the DUT is expected to
-reply back with the same packet. DUT installs multiple XDP programs on the
-NIC to test XDP capabilities and reports back to the Tester some XDP stats.
-Currently xdp_features supports the following XDP features:
-- XDP_DROP
-- XDP_PASS
-- XDP_TX
-- XDP_REDIRECT
-- XDP_REDIRECT_TARGET
+FW log support was added to the ice driver, but that version is no
+longer supported. There is a newer version of FW logging (v2) that
+adds more control knobs to get the exact data out of the FW
+for debugging.
 
-Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Additionally, instead of dumping the FW log output to syslog,
+dump it to debugfs. The FW log data is really just binary
+data that the FW log team decodes to determine what happens so the
+translation from binary to some text output just slows things down
+and results in potential dropped data. The structure for the debugfs
+entry is: /sys/kernel/debug/ice/<pci device>/fwlog
+
+Once enabled the FW log data is received as ARQ events that the driver
+processes.
+
+The FW logging is across all the PFs on the device, so restrict the
+commands to only PF0.
+
+The following new device parameters are added:
+- fwlog_supported (read-only): does the FW support FW logging
+- fwlog_enabled (read/write): is FW logging currently running
+- fwlog_level (read/write): the log level enabled, valid values are
+    Each level includes the messages from the previous/lower level
+	0 - no logging
+	1 - error logging
+	2 - warning logging
+	3 - normal logging
+	4 - verbose logging
+- fwlog_resolution (read/write): the number of log messages to included
+  in a single ARQ event. The range is 1-128 (1 means push every log
+  message, 128 means push only when the max AQ command buffer is full).
+  The suggested value is 10.
+
+This patch series adds the following set of devlink commands:
+
+devlink dev param set <pci dev> name fwlog_enabled value <true/false> cmode runtime
+devlink dev param set <pci dev> name fwlog_level value <0-4> cmode runtime
+devlink dev param set <pci dev> name fwlog_resolution value <1-128> cmode runtime
 ---
- tools/testing/selftests/bpf/Makefile          |   5 +-
- .../selftests/bpf/progs/test_xdp_features.c   | 237 ++++++
- .../selftests/bpf/test_xdp_features.sh        |  99 +++
- tools/testing/selftests/bpf/xdp_features.c    | 743 ++++++++++++++++++
- 4 files changed, 1082 insertions(+), 2 deletions(-)
- create mode 100644 tools/testing/selftests/bpf/progs/test_xdp_features.c
- create mode 100755 tools/testing/selftests/bpf/test_xdp_features.sh
- create mode 100644 tools/testing/selftests/bpf/xdp_features.c
+v7:
+- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
+- refactored ice_debugfs_command_read() to split the copying of the data and
+  the freeing of the buffers. This allows for better error recovery in case
+  the copy_to_user() fails
+- changed allocation of fwlog buffers and structure from kernel memory to
+  virtual memory (vmalloc/vzalloc)
+- fixed a compile bug
+v6:
+- removed cache_cfg() based on feedback
+- a couple of other minor changes based on feedback
+v5:
+- handle devlink reload path correctly so debugfs directories don't get
+  added twice
+- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
+  compile issues with multiple defines
+v4:
+- actually changed the modes in ice.rst for new params
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
 
-diff --git a/tools/testing/selftests/bpf/Makefile b/tools/testing/selftests/bpf/Makefile
-index 22533a18705e..071cd064625d 100644
---- a/tools/testing/selftests/bpf/Makefile
-+++ b/tools/testing/selftests/bpf/Makefile
-@@ -73,7 +73,8 @@ TEST_PROGS := test_kmod.sh \
- 	test_bpftool.sh \
- 	test_bpftool_metadata.sh \
- 	test_doc_build.sh \
--	test_xsk.sh
-+	test_xsk.sh \
-+	test_xdp_features.sh
- 
- TEST_PROGS_EXTENDED := with_addr.sh \
- 	with_tunnels.sh ima_setup.sh verify_sig_setup.sh \
-@@ -83,7 +84,7 @@ TEST_PROGS_EXTENDED := with_addr.sh \
- TEST_GEN_PROGS_EXTENDED = test_sock_addr test_skb_cgroup_id_user \
- 	flow_dissector_load test_flow_dissector test_tcp_check_syncookie_user \
- 	test_lirc_mode2_user xdping test_cpp runqslower bench bpf_testmod.ko \
--	xskxceiver xdp_redirect_multi xdp_synproxy veristat
-+	xskxceiver xdp_redirect_multi xdp_synproxy veristat xdp_features
- 
- TEST_CUSTOM_PROGS = $(OUTPUT)/urandom_read $(OUTPUT)/sign-file
- TEST_GEN_FILES += liburandom_read.so
-diff --git a/tools/testing/selftests/bpf/progs/test_xdp_features.c b/tools/testing/selftests/bpf/progs/test_xdp_features.c
-new file mode 100644
-index 000000000000..40f2a3e8c4e9
---- /dev/null
-+++ b/tools/testing/selftests/bpf/progs/test_xdp_features.c
-@@ -0,0 +1,237 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+#include <stdbool.h>
-+#include <linux/bpf.h>
-+#include <linux/netdev.h>
-+#include <bpf/bpf_helpers.h>
-+#include <bpf/bpf_endian.h>
-+#include <bpf/bpf_tracing.h>
-+#include <linux/if_ether.h>
-+#include <linux/ip.h>
-+#include <linux/in.h>
-+#include <linux/udp.h>
-+#include <asm-generic/errno-base.h>
-+
-+#define BIT(x)	(1 << (x))
-+
-+struct xdp_cpumap_stats {
-+	unsigned int redirect;
-+	unsigned int pass;
-+	unsigned int drop;
-+};
-+
-+struct {
-+	__uint(type, BPF_MAP_TYPE_ARRAY);
-+	__type(key, __u32);
-+	__type(value, __u32);
-+	__uint(max_entries, 1);
-+} stats SEC(".maps");
-+
-+struct {
-+	__uint(type, BPF_MAP_TYPE_ARRAY);
-+	__type(key, __u32);
-+	__type(value, __u32);
-+	__uint(max_entries, 1);
-+} dut_stats SEC(".maps");
-+
-+struct {
-+	__uint(type, BPF_MAP_TYPE_CPUMAP);
-+	__uint(key_size, sizeof(__u32));
-+	__uint(value_size, sizeof(struct bpf_cpumap_val));
-+	__uint(max_entries, 1);
-+} cpu_map SEC(".maps");
-+
-+struct {
-+	__uint(type, BPF_MAP_TYPE_DEVMAP);
-+	__uint(key_size, sizeof(__u32));
-+	__uint(value_size, sizeof(struct bpf_devmap_val));
-+	__uint(max_entries, 1);
-+} dev_map SEC(".maps");
-+
-+const volatile __u32 expected_feature = NETDEV_XDP_ACT_PASS;
-+const volatile __be32 tester_ip;
-+const volatile __be32 dut_ip;
-+
-+#define ECHO_PORT	12346
-+
-+/* test commands */
-+enum test_commands {
-+	CMD_STOP,		/* CMD */
-+	CMD_START,		/* CMD + xdp feature */
-+	CMD_ECHO,		/* CMD */
-+	CMD_ACK,		/* CMD + data */
-+	CMD_GET_XDP_CAP,	/* CMD */
-+	CMD_GET_STATS,		/* CMD */
-+};
-+
-+struct tlv_hdr {
-+	__be16 type;
-+	__be16 len;
-+	__be32 data[];
-+};
-+
-+static __always_inline int xdp_process_echo_packet(struct xdp_md *xdp, bool dut)
-+{
-+	void *data_end = (void *)(long)xdp->data_end;
-+	__be32 saddr = dut ? tester_ip : dut_ip;
-+	__be32 daddr = dut ? dut_ip : tester_ip;
-+	void *data = (void *)(long)xdp->data;
-+	struct ethhdr *eh = data;
-+	struct tlv_hdr *tlv;
-+	struct udphdr *uh;
-+	struct iphdr *ih;
-+	__be16 port;
-+	__u8 *cmd;
-+
-+	if (eh + 1 > (struct ethhdr *)data_end)
-+		return -EINVAL;
-+
-+	if (eh->h_proto != bpf_htons(ETH_P_IP))
-+		return -EINVAL;
-+
-+	ih = (struct iphdr *)(eh + 1);
-+	if (ih + 1 > (struct iphdr *)data_end)
-+		return -EINVAL;
-+
-+	if (saddr != ih->saddr)
-+		return -EINVAL;
-+
-+	if (daddr != ih->daddr)
-+		return -EINVAL;
-+
-+	if (ih->protocol != IPPROTO_UDP)
-+		return -EINVAL;
-+
-+	uh = (struct udphdr *)(ih + 1);
-+	if (uh + 1 > (struct udphdr *)data_end)
-+		return -EINVAL;
-+
-+	port = dut ? uh->dest : uh->source;
-+	if (port != bpf_htons(ECHO_PORT))
-+		return -EINVAL;
-+
-+	tlv = (struct tlv_hdr *)(uh + 1);
-+	if (tlv + 1 > data_end)
-+		return -EINVAL;
-+
-+	return bpf_htons(tlv->type) == CMD_ECHO ? 0 : -EINVAL;
-+}
-+
-+SEC("xdp")
-+int xdp_tester(struct xdp_md *xdp)
-+{
-+	__u32 *val, key = 0;
-+
-+	switch (expected_feature) {
-+	case NETDEV_XDP_ACT_NDO_XMIT:
-+	case NETDEV_XDP_ACT_TX:
-+		if (xdp_process_echo_packet(xdp, true))
-+			goto out;
-+		break;
-+	case NETDEV_XDP_ACT_DROP:
-+	case NETDEV_XDP_ACT_PASS:
-+	case NETDEV_XDP_ACT_REDIRECT:
-+		if (xdp_process_echo_packet(xdp, false))
-+			goto out;
-+		break;
-+	default:
-+		goto out;
-+	}
-+
-+	val = bpf_map_lookup_elem(&stats, &key);
-+	if (val)
-+		__sync_add_and_fetch(val, 1);
-+
-+out:
-+	return XDP_PASS;
-+}
-+
-+SEC("xdp")
-+int xdp_do_pass(struct xdp_md *xdp)
-+{
-+	__u32 *val, key = 0;
-+
-+	val = bpf_map_lookup_elem(&dut_stats, &key);
-+	if (val)
-+		__sync_add_and_fetch(val, 1);
-+
-+	return XDP_PASS;
-+}
-+
-+SEC("xdp")
-+int xdp_do_drop(struct xdp_md *xdp)
-+{
-+	__u32 *val, key = 0;
-+
-+	if (xdp_process_echo_packet(xdp, true))
-+		return XDP_PASS;
-+
-+	val = bpf_map_lookup_elem(&dut_stats, &key);
-+	if (val)
-+		__sync_add_and_fetch(val, 1);
-+
-+	return XDP_DROP;
-+}
-+
-+SEC("xdp")
-+int xdp_do_tx(struct xdp_md *xdp)
-+{
-+	void *data = (void *)(long)xdp->data;
-+	struct ethhdr *eh = data;
-+	__u8 tmp_mac[ETH_ALEN];
-+	__u32 *val, key = 0;
-+
-+	if (xdp_process_echo_packet(xdp, true))
-+		return XDP_PASS;
-+
-+	__builtin_memcpy(tmp_mac, eh->h_source, ETH_ALEN);
-+	__builtin_memcpy(eh->h_source, eh->h_dest, ETH_ALEN);
-+	__builtin_memcpy(eh->h_dest, tmp_mac, ETH_ALEN);
-+
-+	val = bpf_map_lookup_elem(&dut_stats, &key);
-+	if (val)
-+		__sync_add_and_fetch(val, 1);
-+
-+	return XDP_TX;
-+}
-+
-+SEC("xdp")
-+int xdp_do_redirect(struct xdp_md *xdp)
-+{
-+	if (xdp_process_echo_packet(xdp, true))
-+		return XDP_PASS;
-+
-+	return bpf_redirect_map(&cpu_map, 0, 0);
-+}
-+
-+SEC("tp_btf/xdp_cpumap_kthread")
-+int BPF_PROG(tp_xdp_cpumap_kthread, int map_id, unsigned int processed,
-+	     unsigned int drops, int sched, struct xdp_cpumap_stats *xdp_stats)
-+{
-+	__u32 *val, key = 0;
-+
-+	val = bpf_map_lookup_elem(&dut_stats, &key);
-+	if (val)
-+		__sync_add_and_fetch(val, 1);
-+
-+	return 0;
-+}
-+
-+SEC("xdp/cpumap")
-+int xdp_do_redirect_cpumap(struct xdp_md *xdp)
-+{
-+	void *data = (void *)(long)xdp->data;
-+	struct ethhdr *eh = data;
-+	__u8 tmp_mac[ETH_ALEN];
-+
-+	if (xdp_process_echo_packet(xdp, true))
-+		return XDP_PASS;
-+
-+	__builtin_memcpy(tmp_mac, eh->h_source, ETH_ALEN);
-+	__builtin_memcpy(eh->h_source, eh->h_dest, ETH_ALEN);
-+	__builtin_memcpy(eh->h_dest, tmp_mac, ETH_ALEN);
-+
-+	return bpf_redirect_map(&dev_map, 0, 0);
-+}
-+
-+char _license[] SEC("license") = "GPL";
-diff --git a/tools/testing/selftests/bpf/test_xdp_features.sh b/tools/testing/selftests/bpf/test_xdp_features.sh
-new file mode 100755
-index 000000000000..98b8fd2b6c16
---- /dev/null
-+++ b/tools/testing/selftests/bpf/test_xdp_features.sh
-@@ -0,0 +1,99 @@
-+#!/bin/bash
-+# SPDX-License-Identifier: GPL-2.0
-+
-+# Create 2 namespaces with two veth peers, and
-+# check reported and detected XDP capabilities
-+#
-+#   NS0(v00)              NS1(v11)
-+#       |                     |
-+#       |                     |
-+# (v01, id:111)  ------  (v10,id:222)
-+
-+readonly NS0="ns1-$(mktemp -u XXXXXX)"
-+readonly NS1="ns2-$(mktemp -u XXXXXX)"
-+ret=1
-+
-+setup() {
-+	{
-+		ip netns add ${NS0}
-+		ip netns add ${NS1}
-+
-+		ip link add v01 index 111 type veth peer name v00 netns ${NS0}
-+		ip link add v10 index 222 type veth peer name v11 netns ${NS1}
-+
-+		ip link set v01 up
-+		ip addr add 10.10.0.1/24 dev v01
-+		ip link set v01 address 00:11:22:33:44:55
-+		ip -n ${NS0} link set dev v00 up
-+		ip -n ${NS0} addr add 10.10.0.11/24 dev v00
-+		ip -n ${NS0} route add default via 10.10.0.1
-+		ip -n ${NS0} link set v00 address 00:12:22:33:44:55
-+
-+		ip link set v10 up
-+		ip addr add 10.10.1.1/24 dev v10
-+		ip link set v10 address 00:13:22:33:44:55
-+		ip -n ${NS1} link set dev v11 up
-+		ip -n ${NS1} addr add 10.10.1.11/24 dev v11
-+		ip -n ${NS1} route add default via 10.10.1.1
-+		ip -n ${NS1} link set v11 address 00:14:22:33:44:55
-+
-+		sysctl -w net.ipv4.ip_forward=1
-+		# Enable XDP mode
-+		ethtool -K v01 gro on
-+		ethtool -K v01 tx-checksumming off
-+		ip netns exec ${NS0} ethtool -K v00 gro on
-+		ip netns exec ${NS0} ethtool -K v00 tx-checksumming off
-+		ethtool -K v10 gro on
-+		ethtool -K v10 tx-checksumming off
-+		ip netns exec ${NS1} ethtool -K v11 gro on
-+		ip netns exec ${NS1} ethtool -K v11 tx-checksumming off
-+	} > /dev/null 2>&1
-+}
-+
-+cleanup() {
-+	ip link del v01 2> /dev/null
-+	ip link del v10 2> /dev/null
-+	ip netns del ${NS0} 2> /dev/null
-+	ip netns del ${NS1} 2> /dev/null
-+	[ "$(pidof xdp_features)" = "" ] || kill $(pidof xdp_features) 2> /dev/null
-+}
-+
-+test_xdp_features() {
-+	setup
-+
-+	## XDP_PASS
-+	ip netns exec ${NS1} ./xdp_features -f XDP_PASS -D 10.10.1.11 -T 10.10.0.11 v11 &
-+	ip netns exec ${NS0} ./xdp_features -t -f XDP_PASS -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-+
-+	[ $? -ne 0 ] && exit
-+
-+	# XDP_DROP
-+	ip netns exec ${NS1} ./xdp_features -f XDP_DROP -D 10.10.1.11 -T 10.10.0.11 v11 &
-+	ip netns exec ${NS0} ./xdp_features -t -f XDP_DROP -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-+
-+	[ $? -ne 0 ] && exit
-+
-+	## XDP_TX
-+	./xdp_features -f XDP_TX -D 10.10.0.1 -T 10.10.0.11 v01 &
-+	ip netns exec ${NS0} ./xdp_features -t -f XDP_TX -D 10.10.0.1 -C 10.10.0.1 -T 10.10.0.11 v00
-+
-+	## XDP_REDIRECT
-+	ip netns exec ${NS1} ./xdp_features -f XDP_REDIRECT -D 10.10.1.11 -T 10.10.0.11 v11 &
-+	ip netns exec ${NS0} ./xdp_features -t -f XDP_REDIRECT -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-+
-+	[ $? -ne 0 ] && exit
-+
-+	## XDP_NDO_XMIT
-+	./xdp_features -f XDP_NDO_XMIT -D 10.10.0.1 -T 10.10.0.11 v01 &
-+	ip netns exec ${NS0} ./xdp_features -t -f XDP_NDO_XMIT -D 10.10.0.1 -C 10.10.0.1 -T 10.10.0.11 v00
-+
-+	ret=$?
-+	cleanup
-+}
-+
-+set -e
-+trap cleanup 2 3 6 9
-+
-+test_xdp_features
-+
-+exit $ret
-diff --git a/tools/testing/selftests/bpf/xdp_features.c b/tools/testing/selftests/bpf/xdp_features.c
-new file mode 100644
-index 000000000000..5f1146b1b532
---- /dev/null
-+++ b/tools/testing/selftests/bpf/xdp_features.c
-@@ -0,0 +1,743 @@
-+// SPDX-License-Identifier: GPL-2.0
-+#include <uapi/linux/bpf.h>
-+#include <uapi/linux/netdev.h>
-+#include <linux/if_link.h>
-+#include <signal.h>
-+#include <argp.h>
-+#include <net/if.h>
-+#include <sys/socket.h>
-+#include <netinet/in.h>
-+#include <netinet/tcp.h>
-+#include <unistd.h>
-+#include <arpa/inet.h>
-+#include <bpf/bpf.h>
-+#include <bpf/libbpf.h>
-+#include <pthread.h>
-+
-+#include "test_xdp_features.skel.h"
-+
-+#define BIT(x)		(1 << (x))
-+#define RED(str)	"\033[0;31m" str "\033[0m"
-+#define GREEN(str)	"\033[0;32m" str "\033[0m"
-+#define YELLOW(str)	"\033[0;33m" str "\033[0m"
-+
-+static struct env {
-+	bool verbosity;
-+	int ifindex;
-+	unsigned int feature;
-+	bool tester;
-+	in_addr_t dut_ctrl_ip;
-+	in_addr_t dut_ip;
-+	in_addr_t tester_ip;
-+} env;
-+
-+#define DUT_CTRL_PORT	12345
-+#define DUT_ECHO_PORT	12346
-+
-+/* test commands */
-+enum test_commands {
-+	CMD_STOP,		/* CMD */
-+	CMD_START,		/* CMD + xdp feature */
-+	CMD_ECHO,		/* CMD */
-+	CMD_ACK,		/* CMD + data */
-+	CMD_GET_XDP_CAP,	/* CMD */
-+	CMD_GET_STATS,		/* CMD */
-+};
-+
-+struct tlv_hdr {
-+	__be16 type;
-+	__be16 len;
-+	__be32 data[];
-+};
-+
-+#define BUFSIZE		128
-+
-+static int libbpf_print_fn(enum libbpf_print_level level,
-+			   const char *format, va_list args)
-+{
-+	if (level == LIBBPF_DEBUG && !env.verbosity)
-+		return 0;
-+	return vfprintf(stderr, format, args);
-+}
-+
-+static volatile bool exiting;
-+
-+static void sig_handler(int sig)
-+{
-+	exiting = true;
-+}
-+
-+const char *argp_program_version = "xdp-features 0.0";
-+const char argp_program_doc[] =
-+"XDP features detecion application.\n"
-+"\n"
-+"XDP features application checks the XDP advertised features match detected ones.\n"
-+"\n"
-+"USAGE: ./xdp-features [-vt] [-f <xdp-feature>] [-D <dut-data-ip>] [-T <tester-data-ip>] [-C <dut-ctrl-ip>] <iface-name>\n"
-+"\n"
-+"XDP features\n:"
-+"- XDP_PASS\n"
-+"- XDP_DROP\n"
-+"- XDP_ABORTED\n"
-+"- XDP_REDIRECT\n"
-+"- XDP_NDO_XMIT\n"
-+"- XDP_TX\n";
-+
-+static const struct argp_option opts[] = {
-+	{ "verbose", 'v', NULL, 0, "Verbose debug output" },
-+	{ "tester", 't', NULL, 0, "Tester mode" },
-+	{ "feature", 'f', "XDP-FEATURE", 0, "XDP feature to test" },
-+	{ "dut_data_ip", 'D', "DUT-DATA-IP", 0, "DUT IP data channel" },
-+	{ "dut_ctrl_ip", 'C', "DUT-CTRL-IP", 0, "DUT IP control channel" },
-+	{ "tester_data_ip", 'T', "TESTER-DATA-IP", 0, "Tester IP data channel" },
-+	{},
-+};
-+
-+static int get_xdp_feature(const char *arg)
-+{
-+	if (!strcmp(arg, "XDP_PASS"))
-+		return NETDEV_XDP_ACT_PASS;
-+	else if (!strcmp(arg, "XDP_DROP"))
-+		return NETDEV_XDP_ACT_DROP;
-+	else if (!strcmp(arg, "XDP_ABORTED"))
-+		return NETDEV_XDP_ACT_ABORTED;
-+	else if (!strcmp(arg, "XDP_REDIRECT"))
-+		return NETDEV_XDP_ACT_REDIRECT;
-+	else if (!strcmp(arg, "XDP_NDO_XMIT"))
-+		return NETDEV_XDP_ACT_NDO_XMIT;
-+	else if (!strcmp(arg, "XDP_TX"))
-+		return NETDEV_XDP_ACT_TX;
-+
-+	return -EINVAL;
-+}
-+
-+static char *get_xdp_feature_str(int feature)
-+{
-+	switch (feature) {
-+	case NETDEV_XDP_ACT_PASS:
-+		return YELLOW("XDP_PASS");
-+	case NETDEV_XDP_ACT_DROP:
-+		return YELLOW("XDP_DROP");
-+	case NETDEV_XDP_ACT_ABORTED:
-+		return YELLOW("XDP_ABORTED");
-+	case NETDEV_XDP_ACT_TX:
-+		return YELLOW("XDP_TX");
-+	case NETDEV_XDP_ACT_REDIRECT:
-+		return YELLOW("XDP_REDIRECT");
-+	case NETDEV_XDP_ACT_NDO_XMIT:
-+		return YELLOW("XDP_NDO_XMIT");
-+	default:
-+		return "";
-+	}
-+}
-+
-+static error_t parse_arg(int key, char *arg, struct argp_state *state)
-+{
-+	switch (key) {
-+	case 'v':
-+		env.verbosity = true;
-+		break;
-+	case 't':
-+		env.tester = true;
-+		break;
-+	case 'f':
-+		env.feature = get_xdp_feature(arg);
-+		if (env.feature < 0) {
-+			fprintf(stderr, "Invalid xdp feature: %s\n", arg);
-+			argp_usage(state);
-+			return ARGP_ERR_UNKNOWN;
-+		}
-+		break;
-+	case 'D':
-+		env.dut_ip = inet_addr(arg);
-+		if (env.dut_ip < 0)
-+			return ARGP_ERR_UNKNOWN;
-+		break;
-+	case 'C':
-+		env.dut_ctrl_ip = inet_addr(arg);
-+		if (env.dut_ctrl_ip < 0)
-+			return ARGP_ERR_UNKNOWN;
-+		break;
-+	case 'T':
-+		env.tester_ip = inet_addr(arg);
-+		if (env.tester_ip < 0)
-+			return ARGP_ERR_UNKNOWN;
-+		break;
-+	case ARGP_KEY_ARG:
-+		errno = 0;
-+		if (strlen(arg) >= IF_NAMESIZE) {
-+			fprintf(stderr, "Invalid device name: %s\n", arg);
-+			argp_usage(state);
-+			return ARGP_ERR_UNKNOWN;
-+		}
-+
-+		env.ifindex = if_nametoindex(arg);
-+		if (!env.ifindex)
-+			env.ifindex = strtoul(arg, NULL, 0);
-+		if (!env.ifindex) {
-+			fprintf(stderr,
-+				"Bad interface index or name (%d): %s\n",
-+				errno, strerror(errno));
-+			argp_usage(state);
-+			return ARGP_ERR_UNKNOWN;
-+		}
-+		break;
-+	default:
-+		return ARGP_ERR_UNKNOWN;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct argp argp = {
-+	.options = opts,
-+	.parser = parse_arg,
-+	.doc = argp_program_doc,
-+};
-+
-+static void set_env_defaul(void)
-+{
-+	env.feature = NETDEV_XDP_ACT_PASS;
-+	env.ifindex = -ENODEV;
-+	env.dut_ctrl_ip = inet_addr("127.0.0.1");
-+	env.dut_ip = inet_addr("127.0.0.1");
-+	env.tester_ip = inet_addr("127.0.0.1");
-+}
-+
-+static void *dut_echo_thread(void *arg)
-+{
-+	unsigned char buf[sizeof(struct tlv_hdr)];
-+	int sockfd = *(int *)arg;
-+
-+	while (!exiting) {
-+		unsigned int len = sizeof(struct sockaddr_in);
-+		struct sockaddr_in addr;
-+		struct tlv_hdr *tlv = (struct tlv_hdr *)buf;
-+		size_t n;
-+
-+		n = recvfrom(sockfd, buf, sizeof(buf), MSG_WAITALL,
-+			     (struct sockaddr *)&addr, &len);
-+		if (n != ntohs(tlv->len))
-+			continue;
-+
-+		if (ntohs(tlv->type) != CMD_ECHO)
-+			continue;
-+
-+		sendto(sockfd, buf, sizeof(buf), MSG_NOSIGNAL | MSG_CONFIRM,
-+		       (struct sockaddr *)&addr, sizeof(addr));
-+	}
-+
-+	pthread_exit((void *)0);
-+	close(sockfd);
-+
-+	return NULL;
-+}
-+
-+static int dut_run_echo_thread(pthread_t *t, int *echo_sockfd)
-+{
-+	struct sockaddr_in addr = {
-+		.sin_family = AF_INET,
-+		.sin_addr.s_addr = htonl(INADDR_ANY),
-+		.sin_port = htons(DUT_ECHO_PORT),
-+	};
-+	int err, sockfd, optval = 1;
-+
-+	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-+	if (sockfd < 0) {
-+		fprintf(stderr, "Failed to create echo socket\n");
-+		return -errno;
-+	}
-+
-+	err = setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &optval,
-+			 sizeof(optval));
-+	if (err < 0) {
-+		fprintf(stderr, "Failed sockopt on echo socket\n");
-+		return -errno;
-+	}
-+
-+	err = bind(sockfd, (struct sockaddr *)&addr, sizeof(addr));
-+	if (err) {
-+		fprintf(stderr, "Failed to bind echo socket\n");
-+		return -errno;
-+	}
-+
-+	/* start echo channel */
-+	*echo_sockfd = sockfd;
-+	err = pthread_create(t, NULL, dut_echo_thread, echo_sockfd);
-+	if (err) {
-+		fprintf(stderr, "Failed creating dut_echo thread: %s\n",
-+			strerror(-err));
-+		close(sockfd);
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int dut_attach_xdp_prog(struct test_xdp_features *skel, int feature,
-+			       int flags)
-+{
-+	struct bpf_program *prog;
-+	unsigned int key = 0;
-+	int err, fd = 0;
-+
-+	switch (feature) {
-+	case NETDEV_XDP_ACT_TX:
-+		prog = skel->progs.xdp_do_tx;
-+		break;
-+	case NETDEV_XDP_ACT_DROP:
-+	case NETDEV_XDP_ACT_ABORTED:
-+		prog = skel->progs.xdp_do_drop;
-+		break;
-+	case NETDEV_XDP_ACT_PASS:
-+		prog = skel->progs.xdp_do_pass;
-+		break;
-+	case NETDEV_XDP_ACT_NDO_XMIT: {
-+		struct bpf_devmap_val entry = {
-+			.ifindex = env.ifindex,
-+		};
-+
-+		err = bpf_map__update_elem(skel->maps.dev_map,
-+					   &key, sizeof(key),
-+					   &entry, sizeof(entry), 0);
-+		if (err < 0)
-+			return err;
-+
-+		fd = bpf_program__fd(skel->progs.xdp_do_redirect_cpumap);
-+	}
-+	case NETDEV_XDP_ACT_REDIRECT: {
-+		struct bpf_cpumap_val entry = {
-+			.qsize = 2048,
-+			.bpf_prog.fd = fd,
-+		};
-+
-+		err = bpf_map__update_elem(skel->maps.cpu_map,
-+					   &key, sizeof(key),
-+					   &entry, sizeof(entry), 0);
-+		if (err < 0)
-+			return err;
-+
-+		prog = skel->progs.xdp_do_redirect;
-+		break;
-+	}
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	err = bpf_xdp_attach(env.ifindex, bpf_program__fd(prog), flags, NULL);
-+	if (err)
-+		fprintf(stderr,
-+			"Failed to attach XDP program to ifindex %d\n",
-+			env.ifindex);
-+	return err;
-+}
-+
-+static int __recv_msg(int sockfd, void *buf, size_t bufsize,
-+		      unsigned int *val, unsigned int val_size)
-+{
-+	struct tlv_hdr *tlv = (struct tlv_hdr *)buf;
-+	int len, n = sizeof(*tlv), i = 0;
-+
-+	len = recv(sockfd, buf, bufsize, 0);
-+	if (len != ntohs(tlv->len))
-+		return -EINVAL;
-+
-+	while (n < len && i < val_size) {
-+		val[i] = ntohl(tlv->data[i]);
-+		n += sizeof(tlv->data[0]);
-+		i++;
-+	}
-+
-+	return i;
-+}
-+
-+static int recv_msg(int sockfd, void *buf, size_t bufsize)
-+{
-+	return __recv_msg(sockfd, buf, bufsize, NULL, 0);
-+}
-+
-+static int dut_run(struct test_xdp_features *skel)
-+{
-+	int flags = XDP_FLAGS_UPDATE_IF_NOEXIST | XDP_FLAGS_DRV_MODE;
-+	int state, err, sockfd, ctrl_sockfd, echo_sockfd, optval = 1;
-+	struct sockaddr_in ctrl_addr, addr = {
-+		.sin_family = AF_INET,
-+		.sin_addr.s_addr = htonl(INADDR_ANY),
-+		.sin_port = htons(DUT_CTRL_PORT),
-+	};
-+	unsigned int len = sizeof(ctrl_addr);
-+	pthread_t dut_thread;
-+
-+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-+	if (sockfd < 0) {
-+		fprintf(stderr, "Failed to create DUT socket\n");
-+		return -errno;
-+	}
-+
-+	err = setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &optval,
-+			 sizeof(optval));
-+	if (err < 0) {
-+		fprintf(stderr, "Failed sockopt on DUT socket\n");
-+		return -errno;
-+	}
-+
-+	err = bind(sockfd, (struct sockaddr *)&addr, sizeof(addr));
-+	if (err < 0) {
-+		fprintf(stderr, "Failed to bind DUT socket\n");
-+		return -errno;
-+	}
-+
-+	err = listen(sockfd, 5);
-+	if (err) {
-+		fprintf(stderr, "Failed to listen DUT socket\n");
-+		return -errno;
-+	}
-+
-+	ctrl_sockfd = accept(sockfd, (struct sockaddr *)&ctrl_addr, &len);
-+	if (ctrl_sockfd < 0) {
-+		fprintf(stderr, "Failed to accept connection on DUT socket\n");
-+		close(sockfd);
-+		return -errno;
-+	}
-+
-+	/* CTRL loop */
-+	while (!exiting) {
-+		unsigned char buf[BUFSIZE] = {};
-+		struct tlv_hdr *tlv = (struct tlv_hdr *)buf;
-+
-+		err = recv_msg(ctrl_sockfd, buf, BUFSIZE);
-+		if (err)
-+			continue;
-+
-+		switch (ntohs(tlv->type)) {
-+		case CMD_START: {
-+			if (state == CMD_START)
-+				continue;
-+
-+			state = CMD_START;
-+			/* Load the XDP program on the DUT */
-+			err = dut_attach_xdp_prog(skel, ntohl(tlv->data[0]), flags);
-+			if (err)
-+				goto out;
-+
-+			err = dut_run_echo_thread(&dut_thread, &echo_sockfd);
-+			if (err < 0)
-+				goto out;
-+
-+			tlv->type = htons(CMD_ACK);
-+			tlv->len = htons(sizeof(*tlv));
-+			err = send(ctrl_sockfd, buf, sizeof(*tlv), 0);
-+			if (err < 0)
-+				goto end_thread;
-+			break;
-+		}
-+		case CMD_STOP:
-+			if (state != CMD_START)
-+				break;
-+
-+			state = CMD_STOP;
-+
-+			exiting = true;
-+			bpf_xdp_detach(env.ifindex, flags, NULL);
-+
-+			tlv->type = htons(CMD_ACK);
-+			tlv->len = htons(sizeof(*tlv));
-+			err = send(ctrl_sockfd, buf, sizeof(*tlv), 0);
-+			goto end_thread;
-+		case CMD_GET_XDP_CAP: {
-+			LIBBPF_OPTS(bpf_xdp_query_opts, opts);
-+			size_t n;
-+
-+			err = bpf_xdp_query(env.ifindex, XDP_FLAGS_DRV_MODE,
-+					    &opts);
-+			if (err) {
-+				fprintf(stderr,
-+					"Failed to query XDP cap for ifindex %d\n",
-+					env.ifindex);
-+				goto end_thread;
-+			}
-+
-+			tlv->type = htons(CMD_ACK);
-+			n = sizeof(*tlv) + sizeof(opts.fflags);
-+			tlv->len = htons(n);
-+			tlv->data[0] = htonl(opts.fflags);
-+
-+			err = send(ctrl_sockfd, buf, n, 0);
-+			if (err < 0)
-+				goto end_thread;
-+			break;
-+		}
-+		case CMD_GET_STATS: {
-+			unsigned int key = 0, val;
-+			size_t n;
-+
-+			err = bpf_map__lookup_elem(skel->maps.dut_stats,
-+						   &key, sizeof(key),
-+						   &val, sizeof(val), 0);
-+			if (err) {
-+				fprintf(stderr, "bpf_map_lookup_elem failed\n");
-+				goto end_thread;
-+			}
-+
-+			tlv->type = htons(CMD_ACK);
-+			n = sizeof(*tlv) + sizeof(val);
-+			tlv->len = htons(n);
-+			tlv->data[0] = htonl(val);
-+
-+			err = send(ctrl_sockfd, buf, n, 0);
-+			if (err < 0)
-+				goto end_thread;
-+			break;
-+		}
-+		default:
-+			break;
-+		}
-+	}
-+
-+end_thread:
-+	pthread_join(dut_thread, NULL);
-+out:
-+	bpf_xdp_detach(env.ifindex, flags, NULL);
-+	close(ctrl_sockfd);
-+	close(sockfd);
-+
-+	return err;
-+}
-+
-+static bool tester_collect_advertised_cap(unsigned int cap)
-+{
-+	return cap & env.feature;
-+}
-+
-+static bool tester_collect_detected_cap(struct test_xdp_features *skel,
-+					unsigned int dut_stats)
-+{
-+	unsigned int err, key = 0, val;
-+
-+	if (!dut_stats)
-+		return false;
-+
-+	err = bpf_map__lookup_elem(skel->maps.stats, &key, sizeof(key),
-+				   &val, sizeof(val), 0);
-+	if (err) {
-+		fprintf(stderr, "bpf_map_lookup_elem failed\n");
-+		return false;
-+	}
-+
-+	switch (env.feature) {
-+	case NETDEV_XDP_ACT_PASS:
-+	case NETDEV_XDP_ACT_TX:
-+	case NETDEV_XDP_ACT_REDIRECT:
-+	case NETDEV_XDP_ACT_NDO_XMIT:
-+		return val > 0;
-+	case NETDEV_XDP_ACT_DROP:
-+	case NETDEV_XDP_ACT_ABORTED:
-+		return val == 0;
-+	default:
-+		return false;
-+	}
-+}
-+
-+static int __send_and_recv_msg(int sockfd, enum test_commands cmd,
-+			       unsigned int *val, unsigned int val_size)
-+{
-+	unsigned char buf[BUFSIZE] = {};
-+	struct tlv_hdr *tlv = (struct tlv_hdr *)buf;
-+	int n = sizeof(*tlv), err;
-+
-+	tlv->type = htons(cmd);
-+	switch (cmd) {
-+	case CMD_START:
-+		tlv->data[0] = htonl(env.feature);
-+		n += sizeof(*val);
-+		break;
-+	default:
-+		break;
-+	}
-+	tlv->len = htons(n);
-+
-+	err = send(sockfd, buf, n, 0);
-+	if (err < 0)
-+		return err;
-+
-+	err = __recv_msg(sockfd, buf, BUFSIZE, val, val_size);
-+	if (err < 0)
-+		return err;
-+
-+	return ntohs(tlv->type) == CMD_ACK ? 0 : -EINVAL;
-+}
-+
-+static int send_and_recv_msg(int sockfd, enum test_commands cmd)
-+{
-+	return __send_and_recv_msg(sockfd, cmd, NULL, 0);
-+}
-+
-+static int send_echo_msg(void)
-+{
-+	struct sockaddr_in addr = {
-+		.sin_family = AF_INET,
-+		.sin_addr.s_addr = env.dut_ip,
-+		.sin_port = htons(DUT_ECHO_PORT),
-+	};
-+	unsigned char buf[sizeof(struct tlv_hdr)];
-+	struct tlv_hdr *tlv = (struct tlv_hdr *)buf;
-+	int sockfd, n;
-+
-+	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-+	if (sockfd < 0) {
-+		fprintf(stderr, "Failed to create echo socket\n");
-+		return -errno;
-+	}
-+
-+	tlv->type = htons(CMD_ECHO);
-+	tlv->len = htons(sizeof(*tlv));
-+
-+	n = sendto(sockfd, buf, sizeof(*tlv), MSG_NOSIGNAL | MSG_CONFIRM,
-+		   (struct sockaddr *)&addr, sizeof(addr));
-+	close(sockfd);
-+
-+	return n == ntohs(tlv->len) ? 0 : -EINVAL;
-+}
-+
-+static int tester_run(struct test_xdp_features *skel)
-+{
-+	int flags = XDP_FLAGS_UPDATE_IF_NOEXIST | XDP_FLAGS_DRV_MODE;
-+	struct sockaddr_in addr = {
-+		.sin_family = AF_INET,
-+		.sin_addr.s_addr = env.dut_ctrl_ip,
-+		.sin_port = htons(DUT_CTRL_PORT),
-+	};
-+	bool advertised_cap;
-+	int i, err, sockfd;
-+	bool detected_cap;
-+	unsigned int val[1];
-+
-+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-+	if (sockfd < 0) {
-+		fprintf(stderr, "Failed to create tester socket\n");
-+		return -errno;
-+	}
-+
-+	for (i = 0; i < 10; i++) {
-+		/* connect ctrl channel */
-+		if (!connect(sockfd, (struct sockaddr *)&addr, sizeof(addr)))
-+			break;
-+		sleep(1);
-+	}
-+
-+	if (i == 10) {
-+		fprintf(stderr, "Failed to connect to the DUT\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	err = __send_and_recv_msg(sockfd, CMD_GET_XDP_CAP, val, ARRAY_SIZE(val));
-+	if (err < 0) {
-+		close(sockfd);
-+		return err;
-+	}
-+
-+	advertised_cap = tester_collect_advertised_cap(val[0]);
-+
-+	err = bpf_xdp_attach(env.ifindex,
-+			     bpf_program__fd(skel->progs.xdp_tester),
-+			     flags, NULL);
-+	if (err) {
-+		fprintf(stderr, "Failed to attach XDP program to ifindex %d\n",
-+			env.ifindex);
-+		goto out;
-+	}
-+
-+	err = send_and_recv_msg(sockfd, CMD_START);
-+	if (err)
-+		goto out;
-+
-+	for (i = 0; i < 10 && !exiting; i++) {
-+		err = send_echo_msg();
-+		if (err < 0)
-+			goto out;
-+
-+		sleep(1);
-+	}
-+
-+	err = __send_and_recv_msg(sockfd, CMD_GET_STATS, val, ARRAY_SIZE(val));
-+	if (err)
-+		goto out;
-+
-+	/* stop the test */
-+	err = send_and_recv_msg(sockfd, CMD_STOP);
-+	/* send a new echo message to wake echo thread of the dut */
-+	send_echo_msg();
-+
-+	detected_cap = tester_collect_detected_cap(skel, val[0]);
-+
-+	fprintf(stdout, "Feature %s: [%s][%s]\n", get_xdp_feature_str(env.feature),
-+		detected_cap ? GREEN("DETECTED") : RED("NOT DETECTED"),
-+		advertised_cap ? GREEN("ADVERTISED") : RED("NOT ADVERTISED"));
-+out:
-+	bpf_xdp_detach(env.ifindex, flags, NULL);
-+	close(sockfd);
-+	return err < 0 ? err : 0;
-+}
-+
-+int main(int argc, char **argv)
-+{
-+	struct test_xdp_features *skel;
-+	int err;
-+
-+	libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
-+	libbpf_set_print(libbpf_print_fn);
-+
-+	signal(SIGINT, sig_handler);
-+	signal(SIGTERM, sig_handler);
-+
-+	set_env_defaul();
-+
-+	/* Parse command line arguments */
-+	err = argp_parse(&argp, argc, argv, 0, NULL, NULL);
-+	if (err)
-+		return err;
-+
-+	if (env.ifindex < 0) {
-+		fprintf(stderr, "Invalid ifindex\n");
-+		return -ENODEV;
-+	}
-+
-+	/* Load and verify BPF application */
-+	skel = test_xdp_features__open();
-+	if (!skel) {
-+		fprintf(stderr, "Failed to open and load BPF skeleton\n");
-+		return -EINVAL;
-+	}
-+
-+	skel->rodata->expected_feature = env.feature;
-+	skel->rodata->dut_ip = env.dut_ip;
-+	skel->rodata->tester_ip = env.tester_ip;
-+
-+	/* Load & verify BPF programs */
-+	err = test_xdp_features__load(skel);
-+	if (err) {
-+		fprintf(stderr, "Failed to load and verify BPF skeleton\n");
-+		goto cleanup;
-+	}
-+
-+	err = test_xdp_features__attach(skel);
-+	if (err) {
-+		fprintf(stderr, "Failed to attach BPF skeleton\n");
-+		goto cleanup;
-+	}
-+
-+	if (env.tester) {
-+		/* Tester */
-+		fprintf(stdout, "Starting tester on device %d\n", env.ifindex);
-+		err = tester_run(skel);
-+	} else {
-+		/* DUT */
-+		fprintf(stdout, "Starting DUT on device %d\n", env.ifindex);
-+		err = dut_run(skel);
-+	}
-+
-+cleanup:
-+	test_xdp_features__destroy(skel);
-+
-+	return err < 0 ? -err : 0;
-+}
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: enable devlink to check FW logging status
+  ice: add ability to query/set FW log level and resolution
+  ice: disable FW logging on driver unload
+  ice: use debugfs to output FW log data
+
+ Documentation/networking/devlink/ice.rst      |  39 ++
+ drivers/net/ethernet/intel/ice/Makefile       |   5 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  22 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 160 ++++----
+ drivers/net/ethernet/intel/ice/ice_common.c   | 218 +----------
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 115 ++++++
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 200 +++++++++-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 367 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  57 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     | 100 ++++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
+ 12 files changed, 990 insertions(+), 317 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
+
 -- 
-2.39.0
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
