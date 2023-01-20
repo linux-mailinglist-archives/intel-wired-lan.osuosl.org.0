@@ -1,82 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED451675B00
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jan 2023 18:17:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 607FB675AFD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jan 2023 18:17:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4C24182B34;
-	Fri, 20 Jan 2023 17:17:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C24182B34
+	by smtp1.osuosl.org (Postfix) with ESMTP id 60D5782B53;
+	Fri, 20 Jan 2023 17:17:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 60D5782B53
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674235066;
-	bh=jCoBpHMjgymb6rqeUxPXNxH3nMQuftqmOWn8nGT0bu0=;
+	s=default; t=1674235062;
+	bh=v9PPa3zHCSOVzvkP64XIHPWShtJE9HR1B5jIsNwf818=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5KzKENt1uhrZefEV63h7p66K+gDDHpXZ8HVM29qRm6zpsN09Ws8XLb3K9CNJCJT7N
-	 0Thutj1puxuncTKKHk5X1McO8kWbbhfUHGDi6PB9uHXlvZ9k5BX3hEoluI+8e90VPw
-	 /NaF3eUL9oktrJbPrOrFbkW2FfilqDzO+VKmF7IMFHtwL7s2xIWYvDztUtzO5eI1RK
-	 7SNeSIA6NK0WCKKKXUwf4zjmRqRiZIxXJQIp4YPwyRmq16eK30byUzFUj5r+NwjWy1
-	 jEvQNjLTuVL8qSaaO/QDtAFKAEDCmt0dhd9IqwHrk3ZHaZJe7BfQ/mConYAYmxmFuc
-	 Jd558a8iBeDAQ==
+	b=iOBiH/J5uB7O4UOqBciIt+3HSkvV36KE2t7fFgjCMHHttFAOUn+BsoKHZttg9F8H8
+	 fVqsQolRhn+D41Zh74GA2cPX01+raHEJVnwYPmBw+AY9t7MSkXdR/8MZ08fFw09tOn
+	 OuHH6rHfxJKq0PIPnRgZ+54Clv+MKCmFYl1cCV5fL8Tu8ZbUvbGg8ru/bX7aZPEWrC
+	 /0zs0WC02zbDA3AnbFnzGBHa1VeowX5v6znjpkt3qua7okRaC5xjgbmiD2VF1Bkxs6
+	 wTyhhFlndOOP+8nbvdP7pyyWK/WNbbqy2rrl7HxU/yyi9JpR4/4lmIWs7cAkHVyQfh
+	 RAAhjl/GQI+XQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rqoTfX4d7XQo; Fri, 20 Jan 2023 17:17:45 +0000 (UTC)
+	with ESMTP id lSo4uYsvUBp7; Fri, 20 Jan 2023 17:17:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2795482B94;
-	Fri, 20 Jan 2023 17:17:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2795482B94
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3E50482B8C;
+	Fri, 20 Jan 2023 17:17:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E50482B8C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EB8761BF584
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7CD981BF584
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C778B612AF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C778B612AF
+ by smtp4.osuosl.org (Postfix) with ESMTP id 574BC41D58
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 574BC41D58
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FeHdOfY8aZgE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Jan 2023 17:17:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ppwj2n6rBTf9 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Jan 2023 17:17:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B658612B1
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1B658612B1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2D2D941D4C
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2D2D941D4C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 17:17:35 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BA18CB82952;
- Fri, 20 Jan 2023 17:17:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0FBEC433D2;
- Fri, 20 Jan 2023 17:17:29 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 75CFD6201F;
+ Fri, 20 Jan 2023 17:17:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC87DC433EF;
+ Fri, 20 Jan 2023 17:17:33 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: bpf@vger.kernel.org
-Date: Fri, 20 Jan 2023 18:16:53 +0100
-Message-Id: <dd429eee8932e74439c161a589356db102454dbe.1674234430.git.lorenzo@kernel.org>
+Date: Fri, 20 Jan 2023 18:16:54 +0100
+Message-Id: <31e46f564a30e0d3d1e06edb27045be9f318ff0b.1674234430.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.39.0
 In-Reply-To: <cover.1674234430.git.lorenzo@kernel.org>
 References: <cover.1674234430.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674235050;
- bh=PfYzcL0XK5JhoGv80VxXF7DlN2HDONwLvwe8btuT22A=;
+ d=kernel.org; s=k20201202; t=1674235054;
+ bh=ColmZYBJ0fO2vfqesazOOXMupfR8q2S0iR8aryGd35A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ExZmrCuRZ4+/jLkxpFns448nBXBLp7DSlLBw1tosruA6J0h9KBhAB2WOkA5dy/JAJ
- uTs0JlZpnPRwARvBJVJOlEUmwU11BlpRjIhMrIN0CfYEKaJ5Owb2pgUNPBUb8ZleEy
- o6e178Pvoqjc6JAKEPnQbFFHqfLUjDkk3XriFAHzA/x3OTi01eC3tcKS2cLAFVd05R
- ap5vgnXZkmO4zjW5V4lCHi0egT8bMbUKmZsoCTI9VIZVxV0G+U5MZ9LI8w/oiRJoYT
- h/j1iIWUHr+ywwlXnL4RUgTmskqf6IGYVpbNdraExktYcRPDb4UZzsV55rumYklhuX
- JXE44kbEbgTDw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=r2C0BuWVtsUjzPuuEijJeV1H1ZUW6eOHdNjDecuA7Phcq2ZGgWLG2Rm1RzYYNVZDw
+ pDBLhREvbnrbU14WhuXL5mvZ6Xik80RQCtDpmGNAyGRYqbbNL6bFyJ+nXAho+G+hNc
+ m5wlePfnh2mvK7gMk/t/WzAbK9pLQXFOLfI/TrS7aTe2hJQthpGE2qlRCIkXuwwwv9
+ 8948qLOcQ9frLq0G+73FlNkHQXHp4y8LA6122epPhrHcWjTsu9EZGOzqr/ZK8sqwrJ
+ 088FLqz3TJypTbT/WgmxaUOk/CfztgPEu7MtYmsuROxJs9uJNQkxx/d9S56DNeXi9V
+ hFkerQTf1Nwow==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ExZmrCuR
-Subject: [Intel-wired-lan] [PATCH bpf-next 4/7] libbpf: add the capability
- to specify netlink proto in libbpf_netlink_send_recv
+ header.a=rsa-sha256 header.s=k20201202 header.b=r2C0BuWV
+Subject: [Intel-wired-lan] [PATCH bpf-next 5/7] libbpf: add API to get
+ XDP/XSK supported features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,109 +104,218 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a preliminary patch in order to introduce netlink_generic
-protocol support to libbpf.
+Extend bpf_xdp_query routine in order to get XDP/XSK supported features
+of netdev over route netlink interface.
+Extend libbpf netlink implementation in order to support netlink_generic
+protocol.
 
+Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Co-developed-by: Marek Majtyka <alardam@gmail.com>
+Signed-off-by: Marek Majtyka <alardam@gmail.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- tools/lib/bpf/netlink.c | 22 ++++++++++++----------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+ tools/lib/bpf/libbpf.h  |  3 +-
+ tools/lib/bpf/netlink.c | 99 +++++++++++++++++++++++++++++++++++++++++
+ tools/lib/bpf/nlattr.h  | 12 +++++
+ 3 files changed, 113 insertions(+), 1 deletion(-)
 
+diff --git a/tools/lib/bpf/libbpf.h b/tools/lib/bpf/libbpf.h
+index 898db26e42e9..29cb7040fa77 100644
+--- a/tools/lib/bpf/libbpf.h
++++ b/tools/lib/bpf/libbpf.h
+@@ -982,9 +982,10 @@ struct bpf_xdp_query_opts {
+ 	__u32 hw_prog_id;	/* output */
+ 	__u32 skb_prog_id;	/* output */
+ 	__u8 attach_mode;	/* output */
++	__u64 fflags;		/* output */
+ 	size_t :0;
+ };
+-#define bpf_xdp_query_opts__last_field attach_mode
++#define bpf_xdp_query_opts__last_field fflags
+ 
+ LIBBPF_API int bpf_xdp_attach(int ifindex, int prog_fd, __u32 flags,
+ 			      const struct bpf_xdp_attach_opts *opts);
 diff --git a/tools/lib/bpf/netlink.c b/tools/lib/bpf/netlink.c
-index 35104580870c..d2468a04a6c3 100644
+index d2468a04a6c3..67d6795f4c0a 100644
 --- a/tools/lib/bpf/netlink.c
 +++ b/tools/lib/bpf/netlink.c
-@@ -41,7 +41,7 @@ struct xdp_id_md {
+@@ -9,6 +9,7 @@
+ #include <linux/if_ether.h>
+ #include <linux/pkt_cls.h>
+ #include <linux/rtnetlink.h>
++#include <linux/netdev.h>
+ #include <sys/socket.h>
+ #include <errno.h>
+ #include <time.h>
+@@ -39,6 +40,12 @@ struct xdp_id_md {
+ 	int ifindex;
+ 	__u32 flags;
  	struct xdp_link_info info;
++	__u64 fflags;
++};
++
++struct xdp_features_md {
++	int ifindex;
++	__u64 flags;
  };
  
--static int libbpf_netlink_open(__u32 *nl_pid)
-+static int libbpf_netlink_open(__u32 *nl_pid, int proto)
+ static int libbpf_netlink_open(__u32 *nl_pid, int proto)
+@@ -238,6 +245,43 @@ static int libbpf_netlink_send_recv(struct libbpf_nla_req *req,
+ 	return ret;
+ }
+ 
++static int parse_genl_family_id(struct nlmsghdr *nh, libbpf_dump_nlmsg_t fn,
++				void *cookie)
++{
++	struct genlmsghdr *gnl = NLMSG_DATA(nh);
++	struct nlattr *na = (struct nlattr *)((void *)gnl + GENL_HDRLEN);
++	struct nlattr *tb[CTRL_ATTR_FAMILY_ID + 1];
++	__u16 *id = cookie;
++
++	libbpf_nla_parse(tb, CTRL_ATTR_FAMILY_ID, na,
++			 NLMSG_PAYLOAD(nh, sizeof(*gnl)), NULL);
++	if (!tb[CTRL_ATTR_FAMILY_ID])
++		return NL_CONT;
++
++	*id = libbpf_nla_getattr_u16(tb[CTRL_ATTR_FAMILY_ID]);
++	return NL_DONE;
++}
++
++static int libbpf_netlink_resolve_genl_family_id(const char *name,
++						 __u16 len, __u16 *id)
++{
++	struct libbpf_nla_req req = {
++		.nh.nlmsg_len	= NLMSG_LENGTH(GENL_HDRLEN),
++		.nh.nlmsg_type	= GENL_ID_CTRL,
++		.nh.nlmsg_flags	= NLM_F_REQUEST,
++		.gnl.cmd	= CTRL_CMD_GETFAMILY,
++		.gnl.version	= 1,
++	};
++	int err;
++
++	err = nlattr_add(&req, CTRL_ATTR_FAMILY_NAME, name, len);
++	if (err < 0)
++		return err;
++
++	return libbpf_netlink_send_recv(&req, NETLINK_GENERIC,
++					parse_genl_family_id, NULL, id);
++}
++
+ static int __bpf_set_link_xdp_fd_replace(int ifindex, int fd, int old_fd,
+ 					 __u32 flags)
  {
- 	struct sockaddr_nl sa;
- 	socklen_t addrlen;
-@@ -51,7 +51,7 @@ static int libbpf_netlink_open(__u32 *nl_pid)
- 	memset(&sa, 0, sizeof(sa));
- 	sa.nl_family = AF_NETLINK;
- 
--	sock = socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, NETLINK_ROUTE);
-+	sock = socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, proto);
- 	if (sock < 0)
- 		return -errno;
- 
-@@ -212,14 +212,14 @@ static int libbpf_netlink_recv(int sock, __u32 nl_pid, int seq,
+@@ -357,6 +401,29 @@ static int get_xdp_info(void *cookie, void *msg, struct nlattr **tb)
+ 	return 0;
  }
  
- static int libbpf_netlink_send_recv(struct libbpf_nla_req *req,
--				    __dump_nlmsg_t parse_msg,
-+				    int proto, __dump_nlmsg_t parse_msg,
- 				    libbpf_dump_nlmsg_t parse_attr,
- 				    void *cookie)
++static int parse_xdp_features(struct nlmsghdr *nh, libbpf_dump_nlmsg_t fn,
++			      void *cookie)
++{
++	struct genlmsghdr *gnl = NLMSG_DATA(nh);
++	struct nlattr *na = (struct nlattr *)((void *)gnl + GENL_HDRLEN);
++	struct nlattr *tb[NETDEV_CMD_MAX + 1];
++	struct xdp_features_md *md = cookie;
++	__u32 ifindex;
++
++	libbpf_nla_parse(tb, NETDEV_CMD_MAX, na,
++			 NLMSG_PAYLOAD(nh, sizeof(*gnl)), NULL);
++
++	if (!tb[NETDEV_A_DEV_IFINDEX] || !tb[NETDEV_A_DEV_XDP_FEATURES])
++		return NL_CONT;
++
++	ifindex = libbpf_nla_getattr_u32(tb[NETDEV_A_DEV_IFINDEX]);
++	if (ifindex != md->ifindex)
++		return NL_CONT;
++
++	md->flags = libbpf_nla_getattr_u64(tb[NETDEV_A_DEV_XDP_FEATURES]);
++	return NL_DONE;
++}
++
+ int bpf_xdp_query(int ifindex, int xdp_flags, struct bpf_xdp_query_opts *opts)
  {
- 	__u32 nl_pid = 0;
- 	int sock, ret;
+ 	struct libbpf_nla_req req = {
+@@ -393,6 +460,38 @@ int bpf_xdp_query(int ifindex, int xdp_flags, struct bpf_xdp_query_opts *opts)
+ 	OPTS_SET(opts, skb_prog_id, xdp_id.info.skb_prog_id);
+ 	OPTS_SET(opts, attach_mode, xdp_id.info.attach_mode);
  
--	sock = libbpf_netlink_open(&nl_pid);
-+	sock = libbpf_netlink_open(&nl_pid, proto);
- 	if (sock < 0)
- 		return sock;
- 
-@@ -271,7 +271,7 @@ static int __bpf_set_link_xdp_fd_replace(int ifindex, int fd, int old_fd,
- 	}
- 	nlattr_end_nested(&req, nla);
- 
--	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
-+	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
++	if (OPTS_HAS(opts, fflags)) {
++		struct xdp_features_md md = {
++			.ifindex = ifindex,
++		};
++		__u16 id;
++
++		err = libbpf_netlink_resolve_genl_family_id("netdev",
++							    sizeof("netdev"),
++							    &id);
++		if (err < 0)
++			return libbpf_err(err);
++
++		memset(&req, 0, sizeof(req));
++		req.nh.nlmsg_len = NLMSG_LENGTH(GENL_HDRLEN);
++		req.nh.nlmsg_flags = NLM_F_REQUEST;
++		req.nh.nlmsg_type = id;
++		req.gnl.cmd = NETDEV_CMD_DEV_GET;
++		req.gnl.version = 1;
++
++		err = nlattr_add(&req, NETDEV_A_DEV_IFINDEX, &ifindex,
++				 sizeof(ifindex));
++		if (err < 0)
++			return err;
++
++		err = libbpf_netlink_send_recv(&req, NETLINK_GENERIC,
++					       parse_xdp_features, NULL, &md);
++		if (err)
++			return libbpf_err(err);
++
++		opts->fflags = md.flags;
++	}
++
+ 	return 0;
  }
  
- int bpf_xdp_attach(int ifindex, int prog_fd, __u32 flags, const struct bpf_xdp_attach_opts *opts)
-@@ -382,7 +382,7 @@ int bpf_xdp_query(int ifindex, int xdp_flags, struct bpf_xdp_query_opts *opts)
- 	xdp_id.ifindex = ifindex;
- 	xdp_id.flags = xdp_flags;
+diff --git a/tools/lib/bpf/nlattr.h b/tools/lib/bpf/nlattr.h
+index 4d15ae2ff812..d92d1c1de700 100644
+--- a/tools/lib/bpf/nlattr.h
++++ b/tools/lib/bpf/nlattr.h
+@@ -14,6 +14,7 @@
+ #include <errno.h>
+ #include <linux/netlink.h>
+ #include <linux/rtnetlink.h>
++#include <linux/genetlink.h>
  
--	err = libbpf_netlink_send_recv(&req, __dump_link_nlmsg,
-+	err = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, __dump_link_nlmsg,
- 				       get_xdp_info, &xdp_id);
- 	if (err)
- 		return libbpf_err(err);
-@@ -493,7 +493,7 @@ static int tc_qdisc_modify(struct bpf_tc_hook *hook, int cmd, int flags)
- 	if (ret < 0)
- 		return ret;
- 
--	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
-+	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
+ /* avoid multiple definition of netlink features */
+ #define __LINUX_NETLINK_H
+@@ -58,6 +59,7 @@ struct libbpf_nla_req {
+ 	union {
+ 		struct ifinfomsg ifinfo;
+ 		struct tcmsg tc;
++		struct genlmsghdr gnl;
+ 	};
+ 	char buf[128];
+ };
+@@ -89,11 +91,21 @@ static inline uint8_t libbpf_nla_getattr_u8(const struct nlattr *nla)
+ 	return *(uint8_t *)libbpf_nla_data(nla);
  }
  
- static int tc_qdisc_create_excl(struct bpf_tc_hook *hook)
-@@ -673,7 +673,8 @@ int bpf_tc_attach(const struct bpf_tc_hook *hook, struct bpf_tc_opts *opts)
- 
- 	info.opts = opts;
- 
--	ret = libbpf_netlink_send_recv(&req, get_tc_info, NULL, &info);
-+	ret = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, get_tc_info, NULL,
-+				       &info);
- 	if (ret < 0)
- 		return libbpf_err(ret);
- 	if (!info.processed)
-@@ -739,7 +740,7 @@ static int __bpf_tc_detach(const struct bpf_tc_hook *hook,
- 			return ret;
- 	}
- 
--	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
-+	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
++static inline uint16_t libbpf_nla_getattr_u16(const struct nlattr *nla)
++{
++	return *(uint16_t *)libbpf_nla_data(nla);
++}
++
+ static inline uint32_t libbpf_nla_getattr_u32(const struct nlattr *nla)
+ {
+ 	return *(uint32_t *)libbpf_nla_data(nla);
  }
  
- int bpf_tc_detach(const struct bpf_tc_hook *hook,
-@@ -804,7 +805,8 @@ int bpf_tc_query(const struct bpf_tc_hook *hook, struct bpf_tc_opts *opts)
- 
- 	info.opts = opts;
- 
--	ret = libbpf_netlink_send_recv(&req, get_tc_info, NULL, &info);
-+	ret = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, get_tc_info, NULL,
-+				       &info);
- 	if (ret < 0)
- 		return libbpf_err(ret);
- 	if (!info.processed)
++static inline uint64_t libbpf_nla_getattr_u64(const struct nlattr *nla)
++{
++	return *(uint64_t *)libbpf_nla_data(nla);
++}
++
+ static inline const char *libbpf_nla_getattr_str(const struct nlattr *nla)
+ {
+ 	return (const char *)libbpf_nla_data(nla);
 -- 
 2.39.0
 
