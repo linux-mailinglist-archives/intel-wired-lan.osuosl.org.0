@@ -1,82 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4644674C7A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jan 2023 06:36:10 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2301674CAD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jan 2023 06:40:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7CECB41D80;
-	Fri, 20 Jan 2023 05:36:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7CECB41D80
+	by smtp2.osuosl.org (Postfix) with ESMTP id E75204059B;
+	Fri, 20 Jan 2023 05:40:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E75204059B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674192968;
-	bh=HN8FB91B9/T3wXMlJKPQhQBrZDeZXbtxv7dzrZpviDY=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=qk7cPzFZkRPH3n2aWUvb73LKGH1aoPMUh16OMvpyVXX1n47GAwCMAXNm4xIL47OEC
-	 IfU8KSO8iO4ok4efNWyNWn1qC1CbEcichzZ54AHJJKsOagxb0+9m2d5a3LwK8ZzWa1
-	 cIeu56jk2QIqqblkGSPVtESU2if2y4391VKvtOQX+X4NtMjE+VoT+PoCF5ia/YwkP4
-	 LvLJd53mqg7hLbIQvCVwydvMSn0/GvrmWa9zatc9wKIybECnXwhNp3F+PvE3kybIF6
-	 hE8eleuUhihOJBBIoOXysRRgKBOhmyS+TwUVAO82NvKlite+7kFaOsGozy4PEhxew9
-	 vf4dQHkcxHLmg==
+	s=default; t=1674193250;
+	bh=9quEKdoyDksdLsDf4RxSta01a49lYdnTkaiozhcLGiI=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=u8hn3VrdHV7/f/4IOKxJ+m+pPJ8Rfs8K/grjarHrzPqh7lfakX1wkGw3/PsMtTOXr
+	 UpvpvNnjaNAuP0oIK2Ub1QedJDykjxl7VjL2PfqO5J1B82+uN1FXk5RaGZEC8Op9JX
+	 83WFYs0kZel8vXNOVgR8hEGpx+1EhAOfT2pY69RA4/rIOeeEKhzf1XEPzkPOOSArpD
+	 ibUzbQcEDAY4RpMAjP/Vc5DZ8l03vpVmpj7c9arYidQfWI6FxzYal6SMYab7pcLPVE
+	 ZbioERbFCJ2lhVa8piLpk913MptJEORvjFMwzThvrhmWGY9D6Mil2AkYtxZ0ZuJCqV
+	 E75LhdGXmR5Tw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S1-rRU8WyBV3; Fri, 20 Jan 2023 05:36:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pdV2BErT08-l; Fri, 20 Jan 2023 05:40:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 423EA41D6C;
-	Fri, 20 Jan 2023 05:36:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 423EA41D6C
+	by smtp2.osuosl.org (Postfix) with ESMTP id C846E4048D;
+	Fri, 20 Jan 2023 05:40:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C846E4048D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7341A1BF397
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:36:01 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 12D5E1BF397
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:40:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 43A7F41D7D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:36:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 43A7F41D7D
+ by smtp1.osuosl.org (Postfix) with ESMTP id EDD50827A8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:40:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EDD50827A8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1LBXG8EA--Vm for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Jan 2023 05:36:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id X0WIUmFR-tBN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Jan 2023 05:40:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 729DD41D6C
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 729DD41D6C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:36:00 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 592F361E1D;
- Fri, 20 Jan 2023 05:35:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61686C433D2;
- Fri, 20 Jan 2023 05:35:58 +0000 (UTC)
-Date: Thu, 19 Jan 2023 21:35:57 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <20230119213557.57598e8f@kernel.org>
-In-Reply-To: <2c722338-c113-14a1-040b-70326e2e2451@intel.com>
-References: <20230119184045.GA482553@bhelgaas>
- <2c722338-c113-14a1-040b-70326e2e2451@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E334782735
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E334782735
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jan 2023 05:40:43 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="309088116"
+X-IronPort-AV: E=Sophos;i="5.97,231,1669104000"; d="scan'208";a="309088116"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2023 21:40:43 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="729011151"
+X-IronPort-AV: E=Sophos;i="5.97,231,1669104000"; d="scan'208";a="729011151"
+Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 19 Jan 2023 21:40:41 -0800
+Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pIk8n-0002E4-0o;
+ Fri, 20 Jan 2023 05:40:41 +0000
+Date: Fri, 20 Jan 2023 13:40:20 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <63ca2944.4gG9ku1g0+wHrenz%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674192958;
- bh=8fStNEoSsGqotQjU+mQkrtNKHP0mDcCwZkH9P+/tZzk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Nia8b2pq9XxzIMd3lyGpEAN0Pu2CG6R/GrdcTOZCV4rgawIEe5u3WFJu2zMwOjyZG
- 8eEBY+03XA+j95KK5CCOiiWA9sXNPWwz2vFhJzWV3mNQotav9sq+K0i/IZJ/Cr6itK
- q1pRC7CcHDb23n3UfaPPtScqf9+o5Y9UBXKndLHQRiR7KKYi4BfKO6EIjltz9VBnHe
- ORM8i89pvcJDHieagLHpp1wDMAZCl8BnxhP/qDOrPJfe+bxGoUK/FpTrjLrFUv5JmJ
- qpfaAS6LoYjQeyVqWaQEbykyPEh8BPopyy8Jop/IBYEorFcFoXeAlfgN6kfHfE8lsX
- n5v0uF+zOoXUQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Nia8b2pq
-Subject: Re: [Intel-wired-lan] [PATCH 2/9] e1000e: Remove redundant
- pci_enable_pcie_error_reporting()
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674193243; x=1705729243;
+ h=date:from:to:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=oOhJAuUC9MDEuYKvNmTg7SDR1jlOYXqEfc9TWF7WN2Y=;
+ b=jHtvbnywpYCYN2UorValMtNRJ0azrcmzsl50OyPdhCfg3KmMghekQm4W
+ VmXNGCS2KCpYQtDvf1WLpK8k5Ue7b0G+N/hCh+6enQ78mKvtj7uK9cCjQ
+ CPJQUGsj5y5kPM4tvGrAScDnyPlVqR77j07lXj3ActAHpFCY82mfHd/lM
+ 2aJ86txvmJQAjjF4pe2viHzdiPTpIgr9gDjuMKVrAmm/wEcofjirfSssd
+ ZhNe39fuI9yuw6NENb8LlBKt5fwTHj8QGmxyg0y9ssd7XnCGCe1OCfz2D
+ 31A4gXhb6Yxjc9EYsC/LNBSkRSSgPVbXq4gDcEggJjf1X7UVaoqzgY2SP
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=jHtvbnyw
+Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
+ 3ef4a8c8963b29813170177899f84ffb93f1a8f1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,35 +95,89 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sathyanarayanan Kuppuswamy <sathyanarayanan.kuppuswamy@linux.intel.com>,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>, Bjorn Helgaas <helgaas@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 19 Jan 2023 13:31:39 -0800 Tony Nguyen wrote:
-> > Thanks a million for taking a look at these, Tony!
-> > 
-> > These driver patches are all independent and have no dependency on the
-> > 1/9 PCI/AER patch.  What's your opinion on merging these?  Should they
-> > go via netdev?  Should they be squashed into a single patch that does
-> > all the Intel drivers at once?
-> > 
-> > I'm happy to squash them and/or merge them via the PCI tree, whatever
-> > is easiest.  
-> 
-> Since there's no dependency, IMO, it'd make sense to go through 
-> Intel-wired-lan/netdev. Keeping them per driver is fine.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
+branch HEAD: 3ef4a8c8963b29813170177899f84ffb93f1a8f1  Merge branch 'net-phy-remove-probe_capabilities'
 
-Ah, damn, I spammed Bjorn with the same question because email was
-pooped most of the day :/ Reportedly not vger, email in general but 
-fool me once...
+elapsed time: 797m
 
-Tony, if you could take these via your tree that'd be best.
+configs tested: 60
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+x86_64                            allnoconfig
+i386                          randconfig-a016
+arm                  randconfig-r046-20230119
+arc                  randconfig-r043-20230119
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           rhel-8.3-kvm
+x86_64                           rhel-8.3-syz
+x86_64                           rhel-8.3-bpf
+x86_64                         rhel-8.3-kunit
+ia64                             allmodconfig
+i386                             allyesconfig
+i386                                defconfig
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                               rhel-8.3
+arc                                 defconfig
+alpha                               defconfig
+powerpc                           allnoconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+s390                             allmodconfig
+s390                                defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+s390                             allyesconfig
+i386                          randconfig-a003
+i386                          randconfig-a001
+i386                          randconfig-a005
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+i386                          randconfig-c001
+sh                          rsk7264_defconfig
+m68k                          multi_defconfig
+nios2                               defconfig
+arm                           corgi_defconfig
+
+clang tested configs:
+hexagon              randconfig-r045-20230119
+hexagon              randconfig-r041-20230119
+riscv                randconfig-r042-20230119
+s390                 randconfig-r044-20230119
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+x86_64                        randconfig-k001
+x86_64                          rhel-8.3-rust
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
