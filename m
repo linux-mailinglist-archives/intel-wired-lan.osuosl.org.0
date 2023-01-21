@@ -1,89 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E7A1677DC0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 15:15:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 710A4677FEC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 16:37:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D6A4E81F27;
-	Mon, 23 Jan 2023 14:15:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D6A4E81F27
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E2BC60E9D;
+	Mon, 23 Jan 2023 15:37:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E2BC60E9D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674483320;
-	bh=ePvDQ9XXe00aRq4fhexbFVAK2oCEjm1X3LZBbHV8scY=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=iBZ/OfxL0Bzqndlq1SMn98OPCqGBt+SRzXs007tt0gfO9Z/bPZJgl1TnehzSXxhbh
-	 WvRYa0Vgo9itMF6PBzgBP3dCS2oaPTrPkBfCbR64tpFrLn/ZQjnFZ7+ssn5IYV0BYm
-	 f4b9uspvNr1SC2mQ0iQ+tQf4Gf3jm4g8Ev7zhBcxrWtXyVDLSsVPFpzBNkHKLJfMeE
-	 zkKMC5uccExbTKRZvhu7lJjH5tUBsNnUkaOCd98XJUzZWWLXLsgpRL4t9MJFyiYUg0
-	 7m9sgyGxjRb5a18LwJAHowh9YZRmOKRPcNx2UxsGD3THGM9vhsyxzoO++Squkw8rxd
-	 Szu9oxnUMtXPQ==
+	s=default; t=1674488243;
+	bh=7h1hrnLDJahCFCnBDz54F7/zMXYXBqiQnJ+i/028amc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=PPrY5/EI2FHHMcL5hnK2CkxC7r1tI9UYg8Ej9ffgjWoBBeVuPUfj3VNJkOWlCi37N
+	 af1UznppIEr+2iW+5VjWFKeRZEVIx73RHF3OAPq80jIKrID7fNyFwFqw/u+vQgaqqc
+	 itXPMcUbHc3h8CqHETM9oEwmT19e092Dq6VzQp0Xc2HaatK3YWW37ZzR8kWIuwv2iY
+	 2cwLorqLhQwzed+0PyTn05iyakIMhTLstgA/eY1nYplO/hSLIFNdASNxIRQWb9RMua
+	 eDtn36FsaboQFbzx91RSTGRYn18fQ8nRgLQm1f+fWc6VIjms5drCmRodGmh0ya1W8K
+	 UtszxjCKkJ1Ug==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EJBycjRK2n5A; Mon, 23 Jan 2023 14:15:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HkIXh7a7hcDA; Mon, 23 Jan 2023 15:37:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F5E981EFB;
-	Mon, 23 Jan 2023 14:15:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8F5E981EFB
+	by smtp3.osuosl.org (Postfix) with ESMTP id 08E9760C2A;
+	Mon, 23 Jan 2023 15:37:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 08E9760C2A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 37EA51BF57B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:15:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 343571BF30B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 02:09:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1D780416DE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:15:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D780416DE
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0CDF14047C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 02:09:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CDF14047C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1VvFJfCwTjkL for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Jan 2023 14:15:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E8434168A
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9E8434168A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:15:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="305706170"
-X-IronPort-AV: E=Sophos;i="5.97,239,1669104000"; d="scan'208";a="305706170"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2023 06:15:11 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="692167644"
-X-IronPort-AV: E=Sophos;i="5.97,239,1669104000"; d="scan'208";a="692167644"
-Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 23 Jan 2023 06:15:09 -0800
-Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pJxbJ-0005gW-0n;
- Mon, 23 Jan 2023 14:15:09 +0000
-Date: Mon, 23 Jan 2023 22:14:29 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <202301232259.PLN1vLGM-lkp@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id x24LY0aIRcMD for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Jan 2023 02:09:32 +0000 (UTC)
+X-Greylist: delayed 00:07:01 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 913684029B
+Received: from out2.migadu.com (out2.migadu.com [IPv6:2001:41d0:2:aacc::])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 913684029B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 02:09:32 +0000 (UTC)
+Message-ID: <d0232e99-862b-3255-aeac-7c04486cb773@linux.dev>
+Date: Fri, 20 Jan 2023 18:02:18 -0800
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674483312; x=1706019312;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=EVI4+3AA6iG3XzYduRkdkEHiXiBVMdOEvJGxLAPkLDU=;
- b=Q9o5nN2YE1LiHR3bjFnbx/DMLf1zNDM0pxS0cQVloJYiRwXflkh6MwGs
- iPckQ0h+u3Dp6eeQ0nITrAuv5Es7ydlBY+JNSd8j8MCQsgpKtBcm3v85y
- 2qWgryYzmRBjCH+IhtoPK6xcw0vF8Y7qgbLgjK9WJ745lVST7trT2Agru
- EMgGwHLkKemOkfxOoD+yG6pHXT4fsntMS/aFPKPJxPhXG3EVtPedp9kvI
- V9HUvO05Pm4EoNV7wv5/jhr4ywvvBJUPvzYZRODPp832GlqsY0tb2FbAE
- B3/Q6EsEZRefv367K5IGx+jg1VJ1MH6Z+TgpcKSQCf3UtpsNWijPsdt6+
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q9o5nN2Y
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 56/72]
- drivers/net/ethernet/intel/ice/ice_main.c:652:30: warning: format '%llu'
- expects argument of type 'long long unsigned int',
- but argument 4 has type 'resource_size_t' {aka 'unsigned int'}
+Content-Language: en-US
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+References: <cover.1674234430.git.lorenzo@kernel.org>
+ <acc9460e6e29dfe02cf474735277e196b500d2ef.1674234430.git.lorenzo@kernel.org>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Martin KaFai Lau <martin.lau@linux.dev>
+In-Reply-To: <acc9460e6e29dfe02cf474735277e196b500d2ef.1674234430.git.lorenzo@kernel.org>
+X-Migadu-Flow: FLOW_OUT
+X-Mailman-Approved-At: Mon, 23 Jan 2023 15:37:16 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux.dev; s=key1; t=1674266546;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AQqw4MaC7sDy3U78U5FoOgEOrGLlK0bh/i/vClev/8k=;
+ b=pLWjGNAsHVCXTKCyIdGQJ7wmhWbpo++mHOOIhWUum9kXoZXVre8rTHFRo5tH3qANtpoWBi
+ EN2B4rYWjt5IpA7EDqfuVGn3+uFTX85mvM7nPXnB5gJs16vytOz53WC9BHbE18TLq+lMO5
+ iO+8OE6+DEJJWG1y4qtX9m/+YTaKyL0=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
+ header.s=key1 header.b=pLWjGNAs
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/7] bpf: devmap: check XDP
+ features in bpf_map_update_elem and __xdp_enqueue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,104 +88,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="us-ascii"
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ niklas.soderlund@corigine.com, andrii@kernel.org,
+ intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, kuba@kernel.org,
+ pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-head:   65cdfcc3e172e7aa64ed4f881b053b4f6232d064
-commit: 9df85f44b2d8f5a783fc6888536ed7c900b75745 [56/72] ice: Fix RDMA latency issue by allowing write-combining
-config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20230123/202301232259.PLN1vLGM-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/commit/?id=9df85f44b2d8f5a783fc6888536ed7c900b75745
-        git remote add tnguy-next-queue https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
-        git fetch --no-tags tnguy-next-queue dev-queue
-        git checkout 9df85f44b2d8f5a783fc6888536ed7c900b75745
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/net/ethernet/intel/ice/
+On 1/20/23 9:16 AM, Lorenzo Bianconi wrote:
+> ---
+>   kernel/bpf/devmap.c | 25 +++++++++++++++++++++----
+>   net/core/filter.c   | 13 +++++--------
+>   2 files changed, 26 insertions(+), 12 deletions(-)
+> 
+> diff --git a/kernel/bpf/devmap.c b/kernel/bpf/devmap.c
+> index d01e4c55b376..69ceecc792df 100644
+> --- a/kernel/bpf/devmap.c
+> +++ b/kernel/bpf/devmap.c
+> @@ -474,7 +474,11 @@ static inline int __xdp_enqueue(struct net_device *dev, struct xdp_frame *xdpf,
+>   {
+>   	int err;
+>   
+> -	if (!dev->netdev_ops->ndo_xdp_xmit)
+> +	if (!(dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT))
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
+The current "dev->netdev_ops->ndo_xdp_xmit" check is self explaining.
+Any plan to put some document for the NETDEV_XDP_ACT_* values?
 
-All warnings (new ones prefixed by >>):
-
-   In file included from include/linux/device.h:15,
-                    from include/linux/dma-mapping.h:7,
-                    from include/linux/skbuff.h:31,
-                    from include/net/net_namespace.h:43,
-                    from include/linux/netdevice.h:38,
-                    from drivers/net/ethernet/intel/ice/ice.h:12,
-                    from drivers/net/ethernet/intel/ice/ice_main.c:9:
-   drivers/net/ethernet/intel/ice/ice_main.c: In function 'ice_map_hw_addr':
->> drivers/net/ethernet/intel/ice/ice_main.c:652:30: warning: format '%llu' expects argument of type 'long long unsigned int', but argument 4 has type 'resource_size_t' {aka 'unsigned int'} [-Wformat=]
-     652 |                 dev_err(dev, "%s: remap at offset %llu failed\n",
-         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
-     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                              ^~~
-   include/linux/dev_printk.h:144:56: note: in expansion of macro 'dev_fmt'
-     144 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                                                        ^~~~~~~
-   drivers/net/ethernet/intel/ice/ice_main.c:652:17: note: in expansion of macro 'dev_err'
-     652 |                 dev_err(dev, "%s: remap at offset %llu failed\n",
-         |                 ^~~~~~~
-   drivers/net/ethernet/intel/ice/ice_main.c:652:54: note: format string is defined here
-     652 |                 dev_err(dev, "%s: remap at offset %llu failed\n",
-         |                                                   ~~~^
-         |                                                      |
-         |                                                      long long unsigned int
-         |                                                   %u
-
-
-vim +652 drivers/net/ethernet/intel/ice/ice_main.c
-
-   628	
-   629	/**
-   630	 * ice_map_hw_addr - map a region of device registers to memory
-   631	 * @pdev: the PCI device
-   632	 * @map: the address map structure
-   633	 *
-   634	 * Map the specified section of the hardware registers into memory, storing
-   635	 * the memory mapped address in the provided structure.
-   636	 *
-   637	 * Returns 0 on success or an error code on failure.
-   638	 */
-   639	static int ice_map_hw_addr(struct pci_dev *pdev, struct ice_hw_addr_map *map)
-   640	{
-   641		struct device *dev = &pdev->dev;
-   642		resource_size_t size, base;
-   643		void __iomem *addr;
-   644	
-   645		if (WARN_ON(map->end <= map->start))
-   646			return -EIO;
-   647	
-   648		size = map->end - map->start;
-   649		base = pci_resource_start(pdev, map->bar) + map->start;
-   650		addr = ioremap(base, size);
-   651		if (!addr) {
- > 652			dev_err(dev, "%s: remap at offset %llu failed\n",
-   653				__func__, map->start);
-   654			return -EIO;
-   655		}
-   656	
-   657		map->addr = addr;
-   658	
-   659		return 0;
-   660	}
-   661	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
