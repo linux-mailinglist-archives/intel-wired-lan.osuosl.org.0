@@ -1,82 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BC72676344
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Jan 2023 04:12:08 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E2953676354
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Jan 2023 04:21:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0B65161307;
-	Sat, 21 Jan 2023 03:12:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B65161307
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1B9B141707;
+	Sat, 21 Jan 2023 03:21:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B9B141707
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674270726;
-	bh=NyDlCZqKC/mkfnVWHKiNKjm8JsXMBQIm2aVhjU1XEfg=;
+	s=default; t=1674271272;
+	bh=rOiru3VJXWchYnj7qC+b6y3WesXLer9D5a+9WJi76C4=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3bEH+Mvw1EikzcAsFuxfBOGGy6h9YL9Bo2UtTJw+9NDeAGqpEzt09Oq9xksYWG9Tz
-	 B9wQrX8m1dCAuiz6h7/D0ddlPYPhji5sO17pMIVsP7ce7XIXqLBxGGhDUg4c90KCkb
-	 NuaqyzsgbDQ66O0Ws4KdpcvuIAWCY3JEjWtd5I3O7kI/nSl1Aj3cmGdbIw3xA+Byyd
-	 nTHep2fYJvad3TKMNI7NZ0ST5MWmvYdVoOifnnuQltbDEg51pqGtr5ATbxQjFPbuuX
-	 9CJGeOZwdOUaZaT66E0MT3qdNxlXrL2aIUHrj40H8b8rmbgZ5cHx+2Cbj73vzLFGJq
-	 +tHDBf/F8HpCw==
+	b=p02DpYUlGcWWPHB8PuvhyG0aUE6YiJAcuJFgaQO+yVu2VhJ/r62G1ztkH2dcniuhf
+	 4azckueb4XKBfWRrPgTlYPT/KlCdwJlGK+0D/rQP09zIDpvodZGwqv9X0NqH13hKAN
+	 05toMDXbfnH2UQweHpUhZ60YhCtZj5f72/d4idcoOsacm5y4gkYSojj1tWc0Om/qXL
+	 eQ46Sngq2heqUL0+N2jsH8PeqHW++PSCf4pDD8yR/AMLTZ5BtHvCj4E9fVIQScN+8v
+	 tXBjvBI+x0hx448ZB/VoQTcNecd6cUfxerAx6rtSFHm4JgZ0ikMWxE19ipc2Vm17SN
+	 RjT/jWbWi/tNA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iLpd7AL-reCk; Sat, 21 Jan 2023 03:12:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j_POQGNP-9Tf; Sat, 21 Jan 2023 03:21:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 714E0612EF;
-	Sat, 21 Jan 2023 03:12:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 714E0612EF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2652541706;
+	Sat, 21 Jan 2023 03:21:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2652541706
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F019E1BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:11:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 02FC61BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C911741D94
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:11:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C911741D94
+ by smtp1.osuosl.org (Postfix) with ESMTP id DA5788300C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DA5788300C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DlfA2zo8wGEg for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Jan 2023 03:11:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CTiZJ8Rw3hpw for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Jan 2023 03:21:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3E1541D95
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E3E1541D95
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:11:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14CF882FCE
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 14CF882FCE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:04 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 1118EB82B88;
- Sat, 21 Jan 2023 03:11:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E036C433D2;
- Sat, 21 Jan 2023 03:11:53 +0000 (UTC)
-Date: Fri, 20 Jan 2023 19:11:52 -0800
+ by ams.source.kernel.org (Postfix) with ESMTPS id 22C6DB829E4;
+ Sat, 21 Jan 2023 03:21:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80ED8C433D2;
+ Sat, 21 Jan 2023 03:21:00 +0000 (UTC)
+Date: Fri, 20 Jan 2023 19:20:59 -0800
 From: Jakub Kicinski <kuba@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
-Message-ID: <20230120191152.44d29bb1@kernel.org>
-In-Reply-To: <861224c406f78694530fde0d52c49d92e1e990a2.1674234430.git.lorenzo@kernel.org>
+Message-ID: <20230120192059.66d058bf@kernel.org>
+In-Reply-To: <31e46f564a30e0d3d1e06edb27045be9f318ff0b.1674234430.git.lorenzo@kernel.org>
 References: <cover.1674234430.git.lorenzo@kernel.org>
- <861224c406f78694530fde0d52c49d92e1e990a2.1674234430.git.lorenzo@kernel.org>
+ <31e46f564a30e0d3d1e06edb27045be9f318ff0b.1674234430.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674270714;
- bh=+ECSThDtgHq6VGg+SpyqaVTiA6kkOP5Gz3WruwdxuCs=;
+ d=kernel.org; s=k20201202; t=1674271261;
+ bh=u03+9YLGMyAzqxcb5WaZli1ywOy/8WEW6RNhJoamwIo=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Q7fCzHWAYbDwT4PYu3HePieOlwppJsOEOFtdfUuolfJPWgFq0jBNXAdrvnAOgquy8
- O1XVFROVjdXeWMYkxtLP1j+W4W2I78YxWIkhGt3aKVVJdE5ryRxRXvQR4hNIseKnmy
- paFDe+9oEu9pVRQgkWYhkeTw4M8zsMmwf0x4eDo8qXG2JOfmYZ/Kuh8PxFkYaX9c+R
- w9UyryL+dHSOi3qRsGfVWZLeyhpsKJ1i1yczFjpFeL8w7oKhVCBzk51CR/FzJ2UXWd
- 6SIwaIz7a8BrPWmEE3ICu9TKPSQvrod+3UPzt9Lj5yB5x0ygjpkNavxF01pdY+ihlf
- f63olYqn4KsrQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=vR4XX4lUj0i+3xjnU1BnPKvauCzYT21UFbkmulmoN9Xgq6ejTNw4ngaONIdMErLoa
+ i9C4R1RWMe2cSIjHTY1Zq4OtKBeG+PkJKC9EIUZFnpHsLPrrV5WoreK3FB6206v9/z
+ uL/XWRNpynCvvxTgXf0q+xsgx+Z58t44S59N0A2uVEY1wLW3tGIqsR1WmpXBjmMRIf
+ /hO5eetXGlwhAOd9Pv51ZSH2BRva+8cD2LVwhXrBOMIwiRkUuTkW42qtzawX3G0Wbe
+ 6tga7Kcv8FiEmrFhpMV2a0RAEkCatwYYiL2NVXfdISQ4IwCuaA6ls9D4hQfwFDiFDl
+ +UqR+c3mQ6lOQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Q7fCzHWA
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 2/7] drivers: net: turn on
- XDP features
+ header.a=rsa-sha256 header.s=k20201202 header.b=vR4XX4lU
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 5/7] libbpf: add API to get
+ XDP/XSK supported features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,24 +104,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 20 Jan 2023 18:16:51 +0100 Lorenzo Bianconi wrote:
-> +static inline void
-> +xdp_features_set_redirect_target(xdp_features_t *xdp_features, bool support_sg)
+On Fri, 20 Jan 2023 18:16:54 +0100 Lorenzo Bianconi wrote:
+> +static int libbpf_netlink_resolve_genl_family_id(const char *name,
+> +						 __u16 len, __u16 *id)
 > +{
-> +	*xdp_features |= NETDEV_XDP_ACT_NDO_XMIT;
-> +	if (support_sg)
-> +		*xdp_features |= NETDEV_XDP_ACT_NDO_XMIT_SG;
-> +}
-> +
-> +static inline void
-> +xdp_features_clear_redirect_target(xdp_features_t *xdp_features)
-> +{
-> +	*xdp_features &= ~(NETDEV_XDP_ACT_NDO_XMIT |
-> +			   NETDEV_XDP_ACT_NDO_XMIT_SG);
-> +}
-> +
+> +	struct libbpf_nla_req req = {
+> +		.nh.nlmsg_len	= NLMSG_LENGTH(GENL_HDRLEN),
+> +		.nh.nlmsg_type	= GENL_ID_CTRL,
+> +		.nh.nlmsg_flags	= NLM_F_REQUEST,
+> +		.gnl.cmd	= CTRL_CMD_GETFAMILY,
+> +		.gnl.version	= 1,
 
-Shouldn't these generate netlink notifications?
+nlctrl is version 2, shouldn't matter in practice
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
