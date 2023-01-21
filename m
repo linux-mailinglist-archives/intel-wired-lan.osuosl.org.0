@@ -1,83 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2953676354
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Jan 2023 04:21:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38EA86763DB
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Jan 2023 05:43:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B9B141707;
-	Sat, 21 Jan 2023 03:21:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B9B141707
+	by smtp3.osuosl.org (Postfix) with ESMTP id A692F60FEB;
+	Sat, 21 Jan 2023 04:43:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A692F60FEB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674271272;
-	bh=rOiru3VJXWchYnj7qC+b6y3WesXLer9D5a+9WJi76C4=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1674276189;
+	bh=0+DTokZkPAT4NSlOPuFDI3FnaGnlwEdwxTchJKhHd64=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=p02DpYUlGcWWPHB8PuvhyG0aUE6YiJAcuJFgaQO+yVu2VhJ/r62G1ztkH2dcniuhf
-	 4azckueb4XKBfWRrPgTlYPT/KlCdwJlGK+0D/rQP09zIDpvodZGwqv9X0NqH13hKAN
-	 05toMDXbfnH2UQweHpUhZ60YhCtZj5f72/d4idcoOsacm5y4gkYSojj1tWc0Om/qXL
-	 eQ46Sngq2heqUL0+N2jsH8PeqHW++PSCf4pDD8yR/AMLTZ5BtHvCj4E9fVIQScN+8v
-	 tXBjvBI+x0hx448ZB/VoQTcNecd6cUfxerAx6rtSFHm4JgZ0ikMWxE19ipc2Vm17SN
-	 RjT/jWbWi/tNA==
+	b=nVxirpmfBee9DHfZuCjSwP74hHa8wA+7gTTHIG+2ESawxJiB4XmCripR2ltENMvr6
+	 oNvfvxCo3Av7IBGS3ZRI+8Y5M64hmeieWpQzSyB3wdDq+bkxdOldnosNaDqh8d7rM8
+	 glWq68sfYeXPRvlXqJxbXQMIAhMBhVZLZb4bfM7OgCvaMKHG22nIIrnPhmF4PC/g+R
+	 rXSbZJQBcye8oZjxqjhNJ0xwa0uKzKtMCMsAwAql0HfH00fyDq2ACE69/4bXJd5CfY
+	 9jK3Za6pjBCFdVWh7JgMNTUCyQ3JyRZbFBPgHpSkyrbnq42lEn1eoM+bUo1DYPHImj
+	 +toit43e7ornA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j_POQGNP-9Tf; Sat, 21 Jan 2023 03:21:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jBWRkdKMdcPn; Sat, 21 Jan 2023 04:43:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2652541706;
-	Sat, 21 Jan 2023 03:21:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2652541706
+	by smtp3.osuosl.org (Postfix) with ESMTP id 216B660F98;
+	Sat, 21 Jan 2023 04:43:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 216B660F98
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 02FC61BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:06 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B024B1BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 04:43:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DA5788300C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DA5788300C
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7C82260F98
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 04:43:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C82260F98
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CTiZJ8Rw3hpw for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Jan 2023 03:21:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hbIwW_vpEiQ8 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Jan 2023 04:43:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14CF882FCE
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 14CF882FCE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 03:21:04 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 22C6DB829E4;
- Sat, 21 Jan 2023 03:21:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80ED8C433D2;
- Sat, 21 Jan 2023 03:21:00 +0000 (UTC)
-Date: Fri, 20 Jan 2023 19:20:59 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Message-ID: <20230120192059.66d058bf@kernel.org>
-In-Reply-To: <31e46f564a30e0d3d1e06edb27045be9f318ff0b.1674234430.git.lorenzo@kernel.org>
-References: <cover.1674234430.git.lorenzo@kernel.org>
- <31e46f564a30e0d3d1e06edb27045be9f318ff0b.1674234430.git.lorenzo@kernel.org>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E287160E27
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E287160E27
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Jan 2023 04:43:00 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10596"; a="306117900"
+X-IronPort-AV: E=Sophos;i="5.97,234,1669104000"; d="scan'208";a="306117900"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2023 20:42:59 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10596"; a="662767035"
+X-IronPort-AV: E=Sophos;i="5.97,234,1669104000"; d="scan'208";a="662767035"
+Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 20 Jan 2023 20:42:52 -0800
+Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pJ5iN-0003Uc-0g;
+ Sat, 21 Jan 2023 04:42:51 +0000
+Date: Sat, 21 Jan 2023 12:42:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, bpf@vger.kernel.org
+Message-ID: <202301211259.eI8T3TMB-lkp@intel.com>
+References: <272fa19f57de2d14e9666b4cd9b1ae8a61a94807.1674234430.git.lorenzo@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <272fa19f57de2d14e9666b4cd9b1ae8a61a94807.1674234430.git.lorenzo@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674271261;
- bh=u03+9YLGMyAzqxcb5WaZli1ywOy/8WEW6RNhJoamwIo=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=vR4XX4lUj0i+3xjnU1BnPKvauCzYT21UFbkmulmoN9Xgq6ejTNw4ngaONIdMErLoa
- i9C4R1RWMe2cSIjHTY1Zq4OtKBeG+PkJKC9EIUZFnpHsLPrrV5WoreK3FB6206v9/z
- uL/XWRNpynCvvxTgXf0q+xsgx+Z58t44S59N0A2uVEY1wLW3tGIqsR1WmpXBjmMRIf
- /hO5eetXGlwhAOd9Pv51ZSH2BRva+8cD2LVwhXrBOMIwiRkUuTkW42qtzawX3G0Wbe
- 6tga7Kcv8FiEmrFhpMV2a0RAEkCatwYYiL2NVXfdISQ4IwCuaA6ls9D4hQfwFDiFDl
- +UqR+c3mQ6lOQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=vR4XX4lU
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 5/7] libbpf: add API to get
- XDP/XSK supported features
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674276180; x=1705812180;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=arVUT2kp7AxZby4p5kBezOJfzOwcbkW2d3m7DdS4uug=;
+ b=Nszm4R0yvUvW/1c02Fd7PpO3sc6DLeYPL943r1si5MnQm4cXVlb/ZG1M
+ UVUIh1P7Dn+Ljw65XL2TYrjG1l3DV2ENIbNjkHQJ/swK/6tTD1G3OH7YV
+ QlOmc6hbkeG35pSRMGshb3pI7pwaxLG0w9K0gn2LRPRMBGFuZKC5wiHbG
+ sdV+TtxlgeBMNGn70c1lHq1l7+xi7CyhQT+Kr7XsYK9OzOG3dZ/AhRpNd
+ b9jFNt3TZWjzf6kwjasWBUjqiuPyS1vuijg61yKZZWR98AQ++xvRk8Ugg
+ aUr+CMc4CfMhiVirNCKL5R9m7A9Ur4xu/0a05BWS4XdNlRYpUvoCdYOTg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Nszm4R0y
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 1/7] netdev-genl: create a
+ simple family for netdev stuff
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,32 +98,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, john@phrozen.org, ast@kernel.org,
  edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- niklas.soderlund@corigine.com, andrii@kernel.org,
- intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, pabeni@redhat.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, oe-kbuild-all@lists.linux.dev,
+ bjorn@kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
+ netdev@vger.kernel.org, toke@redhat.com, ecree.xilinx@gmail.com,
+ alardam@gmail.com, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
+ nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 20 Jan 2023 18:16:54 +0100 Lorenzo Bianconi wrote:
-> +static int libbpf_netlink_resolve_genl_family_id(const char *name,
-> +						 __u16 len, __u16 *id)
-> +{
-> +	struct libbpf_nla_req req = {
-> +		.nh.nlmsg_len	= NLMSG_LENGTH(GENL_HDRLEN),
-> +		.nh.nlmsg_type	= GENL_ID_CTRL,
-> +		.nh.nlmsg_flags	= NLM_F_REQUEST,
-> +		.gnl.cmd	= CTRL_CMD_GETFAMILY,
-> +		.gnl.version	= 1,
+Hi Lorenzo,
 
-nlctrl is version 2, shouldn't matter in practice
+I love your patch! Perhaps something to improve:
+
+[auto build test WARNING on bpf-next/master]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/netdev-genl-create-a-simple-family-for-netdev-stuff/20230121-011957
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git master
+patch link:    https://lore.kernel.org/r/272fa19f57de2d14e9666b4cd9b1ae8a61a94807.1674234430.git.lorenzo%40kernel.org
+patch subject: [PATCH bpf-next 1/7] netdev-genl: create a simple family for netdev stuff
+config: x86_64-rhel-8.3-syz (https://download.01.org/0day-ci/archive/20230121/202301211259.eI8T3TMB-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/bab8ed890888146e07283e2ae27174b3562b6931
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Lorenzo-Bianconi/netdev-genl-create-a-simple-family-for-netdev-stuff/20230121-011957
+        git checkout bab8ed890888146e07283e2ae27174b3562b6931
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        make W=1 O=build_dir ARCH=x86_64 olddefconfig
+        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash net/core/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   net/core/netdev-genl.c: In function 'netdev_nl_dev_fill':
+>> net/core/netdev-genl.c:16:13: warning: unused variable 'err' [-Wunused-variable]
+      16 |         int err;
+         |             ^~~
+
+
+vim +/err +16 net/core/netdev-genl.c
+
+    10	
+    11	static int
+    12	netdev_nl_dev_fill(struct net_device *netdev, struct sk_buff *rsp,
+    13			   u32 portid, u32 seq, int flags, u32 cmd)
+    14	{
+    15		void *hdr;
+  > 16		int err;
+    17	
+    18		hdr = genlmsg_put(rsp, portid, seq, &netdev_nl_family, flags, cmd);
+    19		if (!hdr)
+    20			return -EMSGSIZE;
+    21	
+    22		if (nla_put_u32(rsp, NETDEV_A_DEV_IFINDEX, netdev->ifindex) ||
+    23		    nla_put_u64_64bit(rsp, NETDEV_A_DEV_XDP_FEATURES,
+    24				      netdev->xdp_features, NETDEV_A_DEV_PAD)) {
+    25			genlmsg_cancel(rsp, hdr);
+    26			return -EINVAL;
+    27		}
+    28	
+    29		genlmsg_end(rsp, hdr);
+    30	
+    31		return 0;
+    32	}
+    33	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
