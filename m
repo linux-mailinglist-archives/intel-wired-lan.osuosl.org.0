@@ -2,82 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A42367731E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 00:01:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 765016773E8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 02:54:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6556460BBA;
-	Sun, 22 Jan 2023 23:00:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6556460BBA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 933AD60BC8;
+	Mon, 23 Jan 2023 01:54:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 933AD60BC8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674428432;
-	bh=MG6KLFiZkc9G2nf6beMfBymcFyiUiMcufteRGbgiCd4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1674438854;
+	bh=SxA6+OqhbThoK//kAhTI+ZPCi3w0FhKgiBKWR9hSov4=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9wp0pXa5z9ldXp1RBpnOzJAarSxenoWjcFbFh1ROLCJfcnIri1T+K8Dt+DHQtLzV8
-	 UHwEM15ug1wvAKmo6+WYf50DNeIyvaVPpYyovlf6+oLqfcERJLzGbAzz1MifUmRe39
-	 I7CSS23YU1NO7L8HK9n42vcrpvk1AVbCGsRMWLkf4eoee9RJ5SAU8i5Kzy/lSOKabL
-	 ghN4XTGz/bAC8D+MECMRqOODzESh0GM9vrIdVUZegn1XRyNujvkhA70Oqa51oFoBqn
-	 t8h5HSA7w2f8SMF5AOI1udx3plad2uWCTNd070nua8Lp6e9Yn9cHRVRpLvwQ87X6bN
-	 LC3Y47rVFWeIg==
+	b=shEeOUOCzA6qJjRq5nEU7RhlgS0KLoLKwKhnUyeHezh2ILez/Bji2N7lPjbEtWZJg
+	 IpeCIFavgkyBOeUiEuoizAG3ebpC2DDhrpDuv3NUJyFq9M33mnMTRzTc6T6NwcjX5g
+	 CLO+JznMJ7AQ7skFeYQw8ONZhZdn2YDgIm4Z9CVIyU0Oj10pwlh5tcqK5Y9iORsroA
+	 04TUrkF+U/P8YFU9FiLNoRrj8eCunqpjfHQd+GopLx+eJLxaPOB1MtUdJbYYGEimTq
+	 pN3Y7EMnnqSdTCcZMkFck3Lhp5bFNCa67q4DQOpFGd2OQYF8GxCRmJLGmWnfQskN+x
+	 R2TzszkVuLprg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DKmEcXjQMapO; Sun, 22 Jan 2023 23:00:31 +0000 (UTC)
+	with ESMTP id 7NSNmwznNdrI; Mon, 23 Jan 2023 01:54:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EC52660A99;
-	Sun, 22 Jan 2023 23:00:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC52660A99
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7E39C60BA8;
+	Mon, 23 Jan 2023 01:54:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E39C60BA8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BC7A01BF31E
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Jan 2023 23:00:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 30F061BF3A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 01:54:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9AB95415E2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Jan 2023 23:00:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9AB95415E2
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0C42A81E18
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 01:54:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C42A81E18
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xu_dWQR66DyV for <intel-wired-lan@lists.osuosl.org>;
- Sun, 22 Jan 2023 23:00:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0951D415E1
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0951D415E1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Jan 2023 23:00:23 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E73FBB80B64;
- Sun, 22 Jan 2023 23:00:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28557C433D2;
- Sun, 22 Jan 2023 23:00:19 +0000 (UTC)
-Date: Mon, 23 Jan 2023 00:00:15 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <Y82//2EX6QQoZkV/@lore-desk>
-References: <cover.1674234430.git.lorenzo@kernel.org>
- <272fa19f57de2d14e9666b4cd9b1ae8a61a94807.1674234430.git.lorenzo@kernel.org>
- <20230120191126.06c9d514@kernel.org>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id En8HA_KPkrUa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Jan 2023 01:54:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 93AFD81DE6
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com
+ [IPv6:2a00:1450:4864:20::531])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 93AFD81DE6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 01:54:06 +0000 (UTC)
+Received: by mail-ed1-x531.google.com with SMTP id v10so12895655edi.8
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Jan 2023 17:54:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=l5z4Hd0Qs9SFsDBYXanxTnEoLsdmIZ6VAYEjeE+ksHI=;
+ b=y6sVX4DAC21BuQYJp/s6v5KNhngkU1fVs6lu4d/s0azqhHoHQgCldzmxXs9vbAwtgd
+ 6thrpPOrHrnN3TjQ4Pxql3AmWcYsYmyWFFy4S9sNtPdI0QdpAaE/75siNL/Lu0TlwVMf
+ 1s551nycECTR28tP2sVhA7BJqn+gs7G2qKI22dV4YQr1JGOZsw3DPwd4qtXdtIn6/4ND
+ 2rPeUQehRm4AekChOAgnMYz4Cowb0yWqQW1L1hg8oXm0bzZgeZnIlWUqwf0+ZgqtnOHp
+ NByEmu5oxMFxk0Ir330KNaw+L1RcJ8wo6SfN5CrA7nOvpVbQ4xofbUGC5stayg+CU43l
+ Ivpw==
+X-Gm-Message-State: AFqh2kqjmxVa+7cvH7QrwcxDQxNhbe8KXRXd2o/UqYxxtOohZrEXwUFy
+ tWxtVzoERlKcC7vj+MIUmgiRC3n12nNJuqqeDa8=
+X-Google-Smtp-Source: AMrXdXskOC8lBwF/BL0baqLazqE0xc0riXJdq8ydWpJRRmiXrhRFTGNGSbpZ+7vKrvzzNMoiSpYu0Wnukjswy3VTYmc=
+X-Received: by 2002:a05:6402:28a4:b0:485:2bdf:ca28 with SMTP id
+ eg36-20020a05640228a400b004852bdfca28mr3299131edb.251.1674438844563; Sun, 22
+ Jan 2023 17:54:04 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20230120191126.06c9d514@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674428419;
- bh=l6sVcqmyQgy5kjC6EfqdlezzQu1gDTlLgDSd7U2cr58=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=WfR7vjIzJ9uGSElCjnLKxQq4fB3r1scO0Iql0EGNmSod+foUQpKcrurt58tKZL5PG
- jjnVeWbnbo7GyiEDNsNMaroIV9YZuPT9dTzC+Q9Vdwyc2H+kx7Iad3m4HwZlf6Gb3i
- 0k0t66tEB4dHWooYdjTxGqImNx0meH57RMOH0U1lBF3S08n4q1k0C1SdKpmliazwEG
- c/OgeLPmIHSz2xrkcHKWLcwANcX1NDztI0gJbJbbH+B+Q+LfeR61IyRLtnKiQZMZQG
- GhGg47OrVdiW+4pININTNVpU9UVyxkg7p9yIiyJ5Mo3R6ordXXnkf7aKCYfFIaZTQ+
- VEpvFYGdD4trw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=WfR7vjIz
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 1/7] netdev-genl: create a
- simple family for netdev stuff
+References: <20230121085521.9566-1-kerneljasonxing@gmail.com>
+ <1bb796f9-b2dd-1c96-831a-34585770d80d@molgen.mpg.de>
+In-Reply-To: <1bb796f9-b2dd-1c96-831a-34585770d80d@molgen.mpg.de>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Mon, 23 Jan 2023 09:53:28 +0800
+Message-ID: <CAL+tcoDyeG8oLspkrdjwJX3=ZmcDD7JY63s=F3cmzaEsXNOveA@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=l5z4Hd0Qs9SFsDBYXanxTnEoLsdmIZ6VAYEjeE+ksHI=;
+ b=P5gYeWZzJ8Apxca/oufOTx2EM0Y6R+dRr06gyzXSYyx3MnrVBl1t2/Lw4IMiuifRN/
+ YeneYV3iPCNnV49Fva/f21B5syoeuDJbm8JA27wI6a7miPEoR1gJwaRSLi3qIey5e2Df
+ QgQIiTgEgzbJpqH3NIA9wSzLqTa5AtbIAUEksSp7I9tEbmKCRdN7baxc3d3ekZ4vXea4
+ XWmi1cdz0S6VKn8t+o1d/xPTWC6GJgAae4jDzDQe9IYZV1MHcKn3Vu2id6swfjev4c4T
+ YTapkFdOggFMS0wDPmVYpSjliz9CF2IP//VkZhR1CcVMTtFiAWeV4nWeucLicFRE2wfL
+ E7+g==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=P5gYeWZz
+Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: allow to increase MTU to
+ some extent with XDP enalbed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,204 +105,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- niklas.soderlund@corigine.com, andrii@kernel.org,
- intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, pabeni@redhat.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============6438068581799898482=="
+Cc: john.fastabend@gmail.co, hawk@kernel.org, daniel@iogearbox.net,
+ netdev@vger.kernel.org, richardcochran@gmail.com, jesse.brandeburg@intel.com,
+ ast@kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, bpf@vger.kernel.org,
+ pabeni@redhat.com, davem@davemloft.net, linux-kernel@vger.kernel.org,
+ Jason Xing <kernelxing@tencent.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
---===============6438068581799898482==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Tja5EzIgFqyLPfdS"
-Content-Disposition: inline
-
-
---Tja5EzIgFqyLPfdS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Fri, 20 Jan 2023 18:16:50 +0100 Lorenzo Bianconi wrote:
-> > From: Jakub Kicinski <kuba@kernel.org>
-> >=20
-> > Add a Netlink spec-compatible family for netdevs.
-> > This is a very simple implementation without much
-> > thought going into it.
-> >=20
-> > It allows us to reap all the benefits of Netlink specs,
-> > one can use the generic client to issue the commands:
-> >=20
-> >   $ ./gen.py --spec netdev.yaml --do dev_get --json=3D'{"ifindex": 2}'
-> >   {'ifindex': 2, 'xdp-features': 31}
-> >=20
-> >   $ ./gen.py --spec netdev.yaml --dump dev_get
-> >   [{'ifindex': 1, 'xdp-features': 0}, {'ifindex': 2, 'xdp-features': 31=
-}]
->=20
-> In the meantime I added support for rendering enums in Python.
-> So you can show names in the example. eg:
->=20
-> $ ./cli.py --spec netdev.yaml --dump dev_get=20
-> [{'ifindex': 1, 'xdp-features': set()},
->  {'ifindex': 2,
->   'xdp-features': {'ndo-xmit', 'pass', 'redirect', 'aborted', 'drop'}},
->  {'ifindex': 3, 'xdp-features': {'rx-sg'}}]
->=20
-> > the generic python library does not have flags-by-name
-> > support, yet, but we also don't have to carry strings
-> > in the messages, as user space can get the names from
-> > the spec.
-> >=20
-> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-> > Co-developed-by: Marek Majtyka <alardam@gmail.com>
-> > Signed-off-by: Marek Majtyka <alardam@gmail.com>
-> > Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-> > ---
-> >  Documentation/netlink/specs/netdev.yaml |  72 ++++++++++
->=20
-> FWIW I'm not 100% sure if we should scope the family to all of netdev
-> or just xdp. Same for the name of the op, should we call the op dev_get
-> or dev_xdp_get..
-
-is it likely we are going to add non-xdp info here in the near future? If n=
-ot
-I would say we can target just xdp for the moment.
-
->=20
-> > diff --git a/include/uapi/linux/netdev.h b/include/uapi/linux/netdev.h
-> > new file mode 100644
-> > index 000000000000..254fc336d469
-> > --- /dev/null
-> > +++ b/include/uapi/linux/netdev.h
-> > @@ -0,0 +1,66 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-> > +/* Do not edit directly, auto-generated from: */
->=20
-> Like this line says, you can't hand edit this file.
-> Next time someone adds an attribute all your changes will be wiped.
-
-ack, right.
-
->=20
-> > +/*	Documentation/netlink/specs/netdev.yaml */
-> > +/* YNL-GEN uapi header */
-> > +
-> > +#ifndef _UAPI_LINUX_NETDEV_H
-> > +#define _UAPI_LINUX_NETDEV_H
-> > +
-> > +#define NETDEV_FAMILY_NAME	"netdev"
-> > +#define NETDEV_FAMILY_VERSION	1
-> > +
-> > +enum netdev_xdp_act {
-> > +	NETDEV_XDP_ACT_ABORTED_BIT,
-> > +	NETDEV_XDP_ACT_DROP_BIT,
-> > +	NETDEV_XDP_ACT_PASS_BIT,
-> > +	NETDEV_XDP_ACT_TX_BIT,
-> > +	NETDEV_XDP_ACT_REDIRECT_BIT,
-> > +	NETDEV_XDP_ACT_NDO_XMIT_BIT,
-> > +	NETDEV_XDP_ACT_XSK_ZEROCOPY_BIT,
-> > +	NETDEV_XDP_ACT_HW_OFFLOAD_BIT,
-> > +	NETDEV_XDP_ACT_RX_SG_BIT,
-> > +	NETDEV_XDP_ACT_NDO_XMIT_SG_BIT
->=20
-> You need to add -bit to all the enum names in the yaml if you want=20
-> to have _BIT in the name here.
-
-ack, I do not think it is needed (according to the comment below).
-
->=20
-> > +};
-> > +
-> > +#define NETDEV_XDP_ACT_ABORTED		BIT(NETDEV_XDP_ACT_ABORTED_BIT)
-> > +#define NETDEV_XDP_ACT_DROP		BIT(NETDEV_XDP_ACT_DROP_BIT)
-> > +#define NETDEV_XDP_ACT_PASS		BIT(NETDEV_XDP_ACT_PASS_BIT)
-> > +#define NETDEV_XDP_ACT_TX		BIT(NETDEV_XDP_ACT_TX_BIT)
-> > +#define NETDEV_XDP_ACT_REDIRECT		BIT(NETDEV_XDP_ACT_REDIRECT_BIT)
-> > +#define NETDEV_XDP_ACT_NDO_XMIT		BIT(NETDEV_XDP_ACT_NDO_XMIT_BIT)
-> > +#define NETDEV_XDP_ACT_XSK_ZEROCOPY	BIT(NETDEV_XDP_ACT_XSK_ZEROCOPY_BI=
-T)
-> > +#define NETDEV_XDP_ACT_HW_OFFLOAD	BIT(NETDEV_XDP_ACT_HW_OFFLOAD_BIT)
-> > +#define NETDEV_XDP_ACT_RX_SG		BIT(NETDEV_XDP_ACT_RX_SG_BIT)
-> > +#define NETDEV_XDP_ACT_NDO_XMIT_SG	BIT(NETDEV_XDP_ACT_NDO_XMIT_SG_BIT)
-> > +
-> > +#define NETDEV_XDP_ACT_BASIC		(NETDEV_XDP_ACT_DROP |	\
-> > +					 NETDEV_XDP_ACT_PASS |	\
-> > +					 NETDEV_XDP_ACT_TX |	\
-> > +					 NETDEV_XDP_ACT_ABORTED)
-> > +#define NETDEV_XDP_ACT_FULL		(NETDEV_XDP_ACT_BASIC |	\
-> > +					 NETDEV_XDP_ACT_REDIRECT)
-> > +#define NETDEV_XDP_ACT_ZC		(NETDEV_XDP_ACT_FULL |	\
-> > +					 NETDEV_XDP_ACT_XSK_ZEROCOPY)
->=20
-> These defines don't belong in uAPI. Especially the use of BIT().
-
-since netdev xdp_features is a bitmask, can we use 'flags' as type for defi=
-nitions in
-netdev.yaml so we can get rid of this BIT() definitions for both user and
-kernel space?
-
->=20
-> > +			if (err < 0)
-> > +				break;
-> > +cont:
-> > +			idx++;
-> > +		}
-> > +	}
-> > +
-> > +	rtnl_unlock();
-> > +
-> > +	if (err !=3D -EMSGSIZE)
-> > +		return err;
-> > +
-> > +	cb->args[1] =3D idx;
-> > +	cb->args[0] =3D h;
-> > +	cb->seq =3D net->dev_base_seq;
-> > +	nl_dump_check_consistent(cb, nlmsg_hdr(skb));
->=20
-> I think that this line can be dropped.
-
-ack, I will fix it.
-
-Regards,
-Lorenzo
-
->=20
-> > +	return skb->len;
-> > +}
-
---Tja5EzIgFqyLPfdS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY82//wAKCRA6cBh0uS2t
-rPB3AQDozI0/knJ+CUWwlkYtcNHhL3s7GTUfjpU86CHD012vLAEAhzCxQ0vO1izj
-6uyMaGBsZxg3v/0H7LDsPSmw8+lloww=
-=aNj9
------END PGP SIGNATURE-----
-
---Tja5EzIgFqyLPfdS--
-
---===============6438068581799898482==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6438068581799898482==--
+T24gTW9uLCBKYW4gMjMsIDIwMjMgYXQgNDoyMSBBTSBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xn
+ZW4ubXBnLmRlPiB3cm90ZToKPgo+IERlYXIgSmFzb24sCj4KPgo+IFRoYW5rIHlvdSBmb3IgeW91
+ciBwYXRjaC4KCkhlbGxvIFBhdWwsCgpUaGFua3MgZm9yIHRoZSByZXZpZXcuCgo+Cj4gQW0gMjEu
+MDEuMjMgdW0gMDk6NTUgc2NocmllYiBKYXNvbiBYaW5nOgo+ID4gRnJvbTogSmFzb24gWGluZyA8
+a2VybmVseGluZ0B0ZW5jZW50LmNvbT4KPgo+IFRoZXJlIGlzIGEgc21hbGwgdHlwbyBpbiB0aGUg
+c3VtbWFyeTogZW5hKmJsKmVkCj4KClN1cmUgaXQgaXMuIFRoYXQncyBteSBmYXVsdC4KCj4gPiBJ
+IGVuY291bnRlcmVkIG9uZSBjYXNlIHdoZXJlIEkgY2Fubm90IGluY3JlYXNlIHRoZSBNVFUgc2l6
+ZSB3aXRoIFhEUAo+ID4gZW5hYmxlZCBpZiB0aGUgc2VydmVyIGlzIGVxdWlwcGVkIHdpdGggSVhH
+QkUgY2FyZCwgd2hpY2ggaGFwcGVuZWQgb24KPiA+IHRob3VzYW5kcyBvZiBzZXJ2ZXJzLiBJIG5v
+dGljZWQgaXQgd2FzIHByb2hpYml0ZWQgZnJvbSAyMDE3WzFdIGFuZAo+Cj4gVGhhdOKAmXMgaW5j
+bHVkZWQgc2luY2UgTGludXggNC4xOS1yYzEuCj4KPiA+IGFkZGVkIHNpemUgY2hlY2tzWzJdIGlm
+IGFsbG93ZWQgc29vbiBhZnRlciB0aGUgcHJldmlvdXMgcGF0Y2guCj4gPgo+ID4gSW50ZXJlc3Rp
+bmcgcGFydCBnb2VzIGxpa2UgdGhpczoKPiA+IDEpIENoYW5naW5nIE1UVSBkaXJlY3RseSBmcm9t
+IDE1MDAgKGRlZmF1bHQgdmFsdWUpIHRvIDIwMDAgZG9lc24ndAo+ID4gd29yayBiZWNhdXNlIHRo
+ZSBkcml2ZXIgZmluZHMgb3V0IHRoYXQgJ25ld19mcmFtZV9zaXplID4KPiA+IGl4Z2JlX3J4X2J1
+ZnN6KHJpbmcpJyBpbiBpeGdiZV9jaGFuZ2VfbXR1KCkgZnVuY3Rpb24uCj4gPiAyKSBIb3dldmVy
+LCBpZiB3ZSBjaGFuZ2UgTVRVIHRvIDE1MDEgdGhlbiBjaGFuZ2UgZnJvbSAxNTAxIHRvIDIwMDAs
+IGl0Cj4gPiBkb2VzIHdvcmssIGJlY2F1c2UgdGhlIGRyaXZlciBzZXRzIF9fSVhHQkVfUlhfM0tf
+QlVGRkVSIHdoZW4gTVRVIHNpemUKPiA+IGlzIGNvbnZlcnRlZCB0byAxNTAxLCB3aGljaCBsYXRl
+ciBzaXplIGNoZWNrIHBvbGljeSBhbGxvd3MuCj4gPgo+ID4gVGhlIGRlZmF1bHQgTVRVIHZhbHVl
+IGZvciBtb3N0IHNlcnZlcnMgaXMgMTUwMCB3aGljaCBjYW5ub3QgYmUgYWRqdXN0ZWQKPiA+IGRp
+cmVjdGx5IHRvIHRoZSB2YWx1ZSBsYXJnZXIgdGhhbiBJWEdCRV9NQVhfMktfRlJBTUVfQlVJTERf
+U0tCICgxNTM0IG9yCj4gPiAxNTM2KSBpZiBpdCBsb2FkcyBYRFAuCj4gPgo+ID4gQWZ0ZXIgSSBk
+byBhIHF1aWNrIHN0dWR5IG9uIHRoZSBtYW5uZXIgb2YgaTQwRSBkcml2ZXIgYWxsb3dpbmcgdHdv
+IGtpbmRzCj4gPiBvZiBidWZmZXIgc2l6ZSAob25lIGlzIDIwNDggd2hpbGUgYW5vdGhlciBpcyAz
+MDcyKSB0byBzdXBwb3J0IFhEUCBtb2RlIGluCj4gPiBpNDBlX21heF94ZHBfZnJhbWVfc2l6ZSgp
+LCBJIGJlbGlldmUgdGhlIGRlZmF1bHQgTVRVIHNpemUgaXMgcG9zc2libHkgbm90Cj4gPiBzYXRp
+c2ZpZWQgaW4gWERQIG1vZGUgd2hlbiBJWEdCRSBkcml2ZXIgaXMgaW4gdXNlLCB3ZSBzb21ldGlt
+ZXMgbmVlZCB0bwo+ID4gaW5zZXJ0IGEgbmV3IGhlYWRlciwgc2F5LCB2eGxhbiBoZWFkZXIuIFNv
+IHNldHRpbmcgdGhlIDNLLWJ1ZmZlciBmbGFnCj4gPiBjb3VsZCBzb2x2ZSB0aGUgaXNzdWUuCj4K
+PiBXaGF0IGNhcmQgZGlkIHlvdSB0ZXN0IHdpdGggZXhhY3RseT8KPgoKSXQgaXMgdGhlIElYR0JF
+IGRyaXZlciB0aGF0IGhhcyBzdWNoIGFuIGlzc3VlLiAgVGhlIEk0MEUgZHJpdmVyIEkKbWVudGlv
+bmVkIGhlcmUgaXMgb25seSBmb3IgY29udHJhc3QuIEl0J3Mgbm90IHRoYXQgcHJvcGVyIGZyb20g
+bXkKcG9pbnQgb2YgdmlldyBpZiB0aGUgSVhHQkUgZHJpdmVyIGNhbm5vdCBkaXJlY3RseSBhZGp1
+c3QgdG8gMjAwMC4gVGh1cwpJIHdvdWxkIGxpa2UgbW9yZSByZXZpZXdzIGFuZCBzdWdnZXN0aW9u
+cy4KClRoYW5rcywKSmFzb24KCj4gPiBbMV0gY29tbWl0IDM4YjdlN2Y4YWU4MiAoIml4Z2JlOiBE
+byBub3QgYWxsb3cgTFJPIG9yIE1UVSBjaGFuZ2Ugd2l0aCBYRFAiKQo+ID4gWzJdIGNvbW1pdCBm
+YWJmMWJjZTEwM2EgKCJpeGdiZTogUHJldmVudCB1bnN1cHBvcnRlZCBjb25maWd1cmF0aW9ucyB3
+aXRoCj4gPiBYRFAiKQo+Cj4gSeKAmWQgc2F5IHRvIG5vdCBicmVhayB0aGUgbGluZSBpbiByZWZl
+cmVuY2VzLgo+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKYXNvbiBYaW5nIDxrZXJuZWx4aW5nQHRlbmNl
+bnQuY29tPgo+ID4gLS0tCj4gPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4
+Z2JlX21haW4uYyB8IDMgKysrCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykK
+PiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhn
+YmVfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5j
+Cj4gPiBpbmRleCBhYjgzNzBjNDEzZjMuLmRjMDE2NTgyZjkxZSAxMDA2NDQKPiA+IC0tLSBhL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYwo+ID4gKysrIGIvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jCj4gPiBAQCAtNDMxMyw2
+ICs0MzEzLDkgQEAgc3RhdGljIHZvaWQgaXhnYmVfc2V0X3J4X2J1ZmZlcl9sZW4oc3RydWN0IGl4
+Z2JlX2FkYXB0ZXIgKmFkYXB0ZXIpCj4gPiAgICAgICAgICAgICAgIGlmIChJWEdCRV8yS19UT09f
+U01BTExfV0lUSF9QQURESU5HIHx8Cj4gPiAgICAgICAgICAgICAgICAgICAobWF4X2ZyYW1lID4g
+KEVUSF9GUkFNRV9MRU4gKyBFVEhfRkNTX0xFTikpKQo+ID4gICAgICAgICAgICAgICAgICAgICAg
+IHNldF9iaXQoX19JWEdCRV9SWF8zS19CVUZGRVIsICZyeF9yaW5nLT5zdGF0ZSk7Cj4gPiArCj4g
+PiArICAgICAgICAgICAgIGlmIChpeGdiZV9lbmFibGVkX3hkcF9hZGFwdGVyKGFkYXB0ZXIpKQo+
+ID4gKyAgICAgICAgICAgICAgICAgICAgIHNldF9iaXQoX19JWEdCRV9SWF8zS19CVUZGRVIsICZy
+eF9yaW5nLT5zdGF0ZSk7Cj4gPiAgICNlbmRpZgo+ID4gICAgICAgfQo+ID4gICB9Cj4KPgo+IEtp
+bmQgcmVnYXJkcywKPgo+IFBhdWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5A
+b3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRl
+bC13aXJlZC1sYW4K
