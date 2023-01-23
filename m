@@ -1,95 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AF5E6779ED
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 12:15:56 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D205677D56
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jan 2023 15:00:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EF69F416E7;
-	Mon, 23 Jan 2023 11:15:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF69F416E7
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1AA5081F5C;
+	Mon, 23 Jan 2023 14:00:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1AA5081F5C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674472554;
-	bh=TciMvscwivctZrxLWwYImFokybAcfRPT/tgowXYLpTM=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=AFFhy4L/A2KGGsqUleC08Pq4EBSvXOd8qp6nO6L/7iSQYSGNGjR3/wMszAMjMPOEr
-	 dP1SiOqRw747crx2RaQvsmbsslq+Q6sY6IHgUX9Jt7KG75P9fmqsMc1yyC6rJD6a8j
-	 9vu+QqndKLN+6p7OOa0TgXpNq8sGcwLmYX+MxmSOpHxsq55rP22pJcMNSDyWj2O9Nj
-	 DS04YwIYCot47Co3HL/+yfiYN01adi5ZyhwrVHFWxV1oE+i2fDoYicl6gcvGpWKKv/
-	 GSBY/LfusEdPI5Pzd3z2BhNSmgmmblJNC1GiUWMNX0gFQwo3Zi9cZ2K+io22j6n4Dc
-	 NztkB8wRlZ+JA==
+	s=default; t=1674482447;
+	bh=YL7pNVDNbKUBPKX+1k4lTfC+VlJIFEH52/S99f3sLPg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=4YttPQzUaquKtVUhcN7vzk2FXO8CBx4LO/wwmOwP4LCDtWCBJlXxY+Szpffo06tS5
+	 JSxL6PaglGXE9u2en6ddzcNP31qb1IuV777kyNFXPmIvFCmUQKocTJ7gZJKlzEQosN
+	 /myKZ4IMBUVQv7RxoCNxeRCV/VefpSdkZLoPbTGBchcZnb5b5RGjIvYe0dvXCQebLn
+	 LZFAaLN2hEvHSM4MnfrSHXxT6nz8sBsJy08Z75IFxteGACqyUBOe9MrPXUac8MZ54O
+	 aVT35zdAnNMtATSKZoOe1qeXTPKqw9EwKa1u3ZRyhWT1IvLtSslNfeLXQCSBLT2zMP
+	 SBD5TxG8mVW4A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XMjoFmojxDNE; Mon, 23 Jan 2023 11:15:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ffYlt7mu6ObB; Mon, 23 Jan 2023 14:00:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABA7E416CE;
-	Mon, 23 Jan 2023 11:15:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABA7E416CE
+	by smtp1.osuosl.org (Postfix) with ESMTP id 18E0D81F30;
+	Mon, 23 Jan 2023 14:00:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 18E0D81F30
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 94A411BF319
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 11:15:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5187D1BF359
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:00:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6ED2F416CE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 11:15:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6ED2F416CE
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2B2EF4056B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:00:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B2EF4056B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JcCPqaUElQBG for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Jan 2023 11:15:46 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ru3ffRphvgTj for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Jan 2023 14:00:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B0DB41697
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4B0DB41697
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 11:15:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="309595487"
-X-IronPort-AV: E=Sophos;i="5.97,239,1669104000"; d="scan'208";a="309595487"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2023 03:15:45 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10598"; a="804055292"
-X-IronPort-AV: E=Sophos;i="5.97,239,1669104000"; d="scan'208";a="804055292"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.3])
- ([10.13.12.3])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2023 03:15:41 -0800
-Message-ID: <59a81c79-7770-7673-5ebd-d79c44824554@linux.intel.com>
-Date: Mon, 23 Jan 2023 13:15:26 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 53B264035D
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 53B264035D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 14:00:40 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E490BB80DAA;
+ Mon, 23 Jan 2023 14:00:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D571BC433D2;
+ Mon, 23 Jan 2023 14:00:33 +0000 (UTC)
+From: Leon Romanovsky <leon@kernel.org>
+To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Steffen Klassert <steffen.klassert@secunet.com>
+Date: Mon, 23 Jan 2023 16:00:13 +0200
+Message-Id: <cover.1674481435.git.leon@kernel.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-To: Tom Rix <trix@redhat.com>, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, richardcochran@gmail.com,
- nathan@kernel.org, ndesaulniers@google.com, vinicius.gomes@intel.com,
- jeffrey.t.kirsher@intel.com
-References: <20230114140412.3975245-1-trix@redhat.com>
-Content-Language: en-US
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20230114140412.3975245-1-trix@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674472546; x=1706008546;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=xCgElu63hiEX8PZSg1x7apvUzWPg+SYGm2cwSlK2h8o=;
- b=iw2QEe3VrIqP7X6fvROkckAuub3H46LU7oYLNLaZC0rFcLgytLGSM1SU
- oT8i2+l4DYPqb8mu6el5cfpUDML6TaOb8p1gnqkmyKRJXzzzX3iP0MgIB
- FWdKD/krSxTHY1fycqGa0JLDzpzlcvApMN9gad2GdkNDEhZZAVrAqv6fr
- 7nXd7EBLBA0woQ7GEwq2j5K2vW5rrL75ypHIWJURQbhQoxGYwDfKH/PJU
- F82lpPrftMI7Qfv9KPs7+6Xlelf0tRvOz97Czd3xisMwm0C/I7erR78Kw
- bg0tm0pF3adxJQhGQtsWnYUTp64Q/D+/LOWGiJqboW/jtPHTCfR7qfAx3
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iw2QEe3V
-Subject: Re: [Intel-wired-lan] [PATCH] igc: return an error if the mac type
- is unknown in igc_ptp_systim_to_hwtstamp()
+ d=kernel.org; s=k20201202; t=1674482435;
+ bh=aPVU2diHca38fcYua3CN44olBe3ZpG8pTkjRl2MYVKE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=f47THf1PbZArFbvUjR5AdbPNRcaNzdbx+B5hf/SNtE5TcK41fYAlqUsRPSUgpQqwG
+ McMV6bPkaXZf5mePWS5QTfjmASZSZWLfKxkfDx74OnW8g1UpCK66P4kNvjipFc4cha
+ QBECceSWW8jbKYp3wOv6VCCdMLNlfqEE5YrwO+mesOPxTI5Y3+1rUdKpwbQjj0C7VA
+ ONi56FY6hOnH9aN7Kj5Dw+m64Gf2XNsExFIMea4kx5ThUums8xMNhbYlylBhlnysCA
+ HWyrIVI3CbDDcKcz9Jq41UQRDE71ceUSjbZCWz+LD+wpePxvQmwFmZaEi3U5FTF/WV
+ A7YI6UYf7ZmNA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=f47THf1P
+Subject: [Intel-wired-lan] [PATCH net-next 00/10] Convert drivers to return
+ XFRM configuration errors through extack
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,29 +88,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, llvm@lists.linux.dev,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Veaceslav Falico <vfalico@gmail.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Jonathan Corbet <corbet@lwn.net>,
+ Jay Vosburgh <j.vosburgh@gmail.com>, oss-drivers@corigine.com,
+ linux-doc@vger.kernel.org, Raju Rangoju <rajur@chelsio.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Ayush Sawal <ayush.sawal@chelsio.com>,
+ Simon Horman <simon.horman@corigine.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Paolo Abeni <pabeni@redhat.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, Andy Gospodarek <andy@greyhouse.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/14/2023 16:04, Tom Rix wrote:
-> clang static analysis reports
-> drivers/net/ethernet/intel/igc/igc_ptp.c:673:3: warning: The left operand of
->    '+' is a garbage value [core.UndefinedBinaryOperatorResult]
->     ktime_add_ns(shhwtstamps.hwtstamp, adjust);
->     ^            ~~~~~~~~~~~~~~~~~~~~
-> 
-> igc_ptp_systim_to_hwtstamp() silently returns without setting the hwtstamp
-> if the mac type is unknown.  This should be treated as an error.
-> 
-> Fixes: 81b055205e8b ("igc: Add support for RX timestamping")
-> Signed-off-by: Tom Rix <trix@redhat.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_ptp.c | 14 +++++++++-----
->   1 file changed, 9 insertions(+), 5 deletions(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+Hi,
+
+This series continues effort started by Sabrina to return XFRM configuration
+errors through extack. It allows for user space software stack easily present
+driver failure reasons to users.
+
+As a note, Intel drivers have a path where extack is equal to NULL, and error
+prints won't be available in current patchset. If it is needed, it can be 
+changed by adding special to Intel macro to print to dmesg in case of
+extack == NULL.
+
+Thanks
+
+Leon Romanovsky (10):
+  xfrm: extend add policy callback to set failure reason
+  net/mlx5e: Fill IPsec policy validation failure reason
+  xfrm: extend add state callback to set failure reason
+  net/mlx5e: Fill IPsec state validation failure reason
+  netdevsim: Fill IPsec state validation failure reason
+  nfp: fill IPsec state validation failure reason
+  ixgbevf: fill IPsec state validation failure reason
+  ixgbe: fill IPsec state validation failure reason
+  bonding: fill IPsec state validation failure reason
+  cxgb4: fill IPsec state validation failure reason
+
+ Documentation/networking/xfrm_device.rst      |   4 +-
+ drivers/net/bonding/bond_main.c               |  10 +-
+ .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   |   8 +-
+ .../inline_crypto/ch_ipsec/chcr_ipsec.c       |  34 +++---
+ .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    |  27 ++---
+ drivers/net/ethernet/intel/ixgbevf/ipsec.c    |  21 ++--
+ .../mellanox/mlx5/core/en_accel/ipsec.c       | 103 ++++++++----------
+ .../net/ethernet/netronome/nfp/crypto/ipsec.c |  41 +++----
+ drivers/net/netdevsim/ipsec.c                 |  14 +--
+ include/linux/netdevice.h                     |   4 +-
+ net/xfrm/xfrm_device.c                        |   9 +-
+ net/xfrm/xfrm_state.c                         |   2 +-
+ 12 files changed, 137 insertions(+), 140 deletions(-)
+
+-- 
+2.39.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
