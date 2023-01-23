@@ -1,123 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDB55678B97
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 00:01:48 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A23BF678C07
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 00:29:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5B0D98206B;
-	Mon, 23 Jan 2023 23:01:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B0D98206B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3B27260FDA;
+	Mon, 23 Jan 2023 23:29:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3B27260FDA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674514907;
-	bh=BI8QpBcbUSSqBvL7rsJSNppumW7fN94BbLHXzALfQig=;
-	h=From:To:In-reply-to:References:Date:Subject:List-Id:
+	s=default; t=1674516559;
+	bh=0Q6nsaQ5gpM3cqcYm7LMUHMc9xYTKRG+dOtvPSOdqXY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=OHTS+yDQJRCvHSgaczsEm5iNOevRTPjfLR49/5VSA1uzx/5/TsfOBW/zjVM4EIeGY
-	 vStgB++zYBahLoWe28JabUmU62O/ly0jWkKHh04Tntw3K4YB5Pd9k0bspJDu3+SnL4
-	 z4jWjUbXhF6FuFiTpeT7cp67i4JivRfdiZu/4ulFdlkADQkyeDFkneow8Ug/kbJLf3
-	 lwC7n+MK8NFhZXyYnqEID9Rc4om963MF/oeW/BUOi42mvsdjjH9ZNg7OrwtNK3HgaH
-	 a0xhs+HEgPd1LiRf3hSac3pCI4otJoDbHIIqxFSRj1DUhx6+iVeqdvvuE+Pfss+G5x
-	 SdbFYh4yCnU/g==
+	b=9PNRafqYyuvuTydThRpuDmwMy98/DODokMXw3m9vQ56IdQkfnhPe8f47qPRBawk4v
+	 JcbQafs+0W1FDxV/13ASGdk6ppACKPTAKDLhGxYZH14B5t/VMuKzDajWJChax9fjKe
+	 Z4/gNxp9zaZeB1nJtJoQJ8r/BM1c+7K+aP7SR+3rxhDGnxY6EfqzZGkNu1+vkkxQhf
+	 PZl/qY4jfR9F0ZazRmDorwhYKkxevD60bpkDcejQyAJx4FpyjPrPjRJx3MLF4gwEV7
+	 mySZnBdZJj6dAolUr6xDWvwmcB6L4A9ntiiRm2HXpn5gaexZiN8QnoOr3JRysHfdM+
+	 0S/8JNLLmvBfw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A2lbTaTOsvw2; Mon, 23 Jan 2023 23:01:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id khZvM8LM_s8M; Mon, 23 Jan 2023 23:29:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6961481FFE;
-	Mon, 23 Jan 2023 23:01:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6961481FFE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AFE960F3D;
+	Mon, 23 Jan 2023 23:29:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AFE960F3D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 22DEC1BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:01:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C18C1BF332
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:29:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 07E0A81FFE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:01:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 07E0A81FFE
+ by smtp4.osuosl.org (Postfix) with ESMTP id 120EE416BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:29:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 120EE416BE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id woWoVKxSfdBp for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Jan 2023 23:01:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qD_QG7dZC4Zu for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Jan 2023 23:29:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C757A81FF4
-Received: from smtp-relay-internal-1.canonical.com
- (smtp-relay-internal-1.canonical.com [185.125.188.123])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C757A81FF4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:01:40 +0000 (UTC)
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 956A24161A
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 956A24161A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:29:12 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 6A50E3F761
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 23:01:35 +0000 (UTC)
-Received: by mail-pl1-f200.google.com with SMTP id
- y8-20020a170902b48800b00192a600df83so7970447plr.15
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 15:01:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=message-id:date:content-transfer-encoding:content-id:mime-version
- :comments:references:in-reply-to:subject:cc:to:from
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ws4I49gzal9OMpseAqlgTMxeS+K4PzsbLrV3ypXSgOQ=;
- b=rXfMc64kvdGnqHkVmSbD27Aexal8Bk9a7g4E57wCyUNw2u2JP0vj57VcWl0ATib67d
- AcJ+RPjt3Uc7hJeO6h/GZ/HeLHRaTeL8iknp4CBo+p9yCEe5dHLmUabEUOKYFfMm1Ti0
- s6BlEgU4TBJ9Q11CMsGOxy89Z+WfkEnOHeE+r4ZYos6/rn/B7XuJMiQiJ2FhL9ypG0JL
- 3UNtrnc3JyZ2xDrzVDlN6/kKgP3ttvQmvHjAHdlczfDP+cipv11ELYLH2F9xBDhzG2Qq
- 398hMXBu+mw+rxpJp2W8FaW8i4tEWYUz9DADrHfatu8Zs8Pg2sTY5VJhtvTRJvtCHxJ8
- i6lw==
-X-Gm-Message-State: AFqh2kqrzQb5EUkhgCWiTemhIV+pS2uI1HurSWPY7N7GJPPxL7wWvoNo
- 2Ot+Qmz0sirD476y8+TjW6ijYWcCY3ts1oEVtRHLkoZOuTlKzi8tWJYaxdKFIwAeGFrOvvhJEfP
- yATRd65Vx+4tU/B6eitFWjO7q13j9yguu/oPhol1uBgoguq0=
-X-Received: by 2002:a62:ab02:0:b0:58d:982a:f1ed with SMTP id
- p2-20020a62ab02000000b0058d982af1edmr24276300pff.27.1674514894086; 
- Mon, 23 Jan 2023 15:01:34 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXv06FZ22qYDSbiHlRRzdN+ym7mY/jj4yLHKaDeEBtmszT7tu35ck+5fnK0SVdJqtyl59pVEFw==
-X-Received: by 2002:a62:ab02:0:b0:58d:982a:f1ed with SMTP id
- p2-20020a62ab02000000b0058d982af1edmr24276280pff.27.1674514893770; 
- Mon, 23 Jan 2023 15:01:33 -0800 (PST)
-Received: from famine.localdomain ([50.125.80.253])
- by smtp.gmail.com with ESMTPSA id
- w1-20020aa79541000000b00580fb018e4bsm96558pfq.211.2023.01.23.15.01.33
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 23 Jan 2023 15:01:33 -0800 (PST)
-Received: by famine.localdomain (Postfix, from userid 1000)
- id D1F24604E3; Mon, 23 Jan 2023 15:01:32 -0800 (PST)
-Received: from famine (localhost [127.0.0.1])
- by famine.localdomain (Postfix) with ESMTP id C37019FB5C;
- Mon, 23 Jan 2023 15:01:32 -0800 (PST)
-From: Jay Vosburgh <jay.vosburgh@canonical.com>
-To: Leon Romanovsky <leon@kernel.org>
-In-reply-to: <d563de401d6fdc1c52959300eebb2bbb27c6c181.1674481435.git.leon@kernel.org>
-References: <cover.1674481435.git.leon@kernel.org>
- <d563de401d6fdc1c52959300eebb2bbb27c6c181.1674481435.git.leon@kernel.org>
-Comments: In-reply-to Leon Romanovsky <leon@kernel.org>
- message dated "Mon, 23 Jan 2023 16:00:22 +0200."
-X-Mailer: MH-E 8.6+git; nmh 1.6; Emacs 29.0.50
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 8678561117;
+ Mon, 23 Jan 2023 23:29:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 739CDC433EF;
+ Mon, 23 Jan 2023 23:29:10 +0000 (UTC)
+Date: Tue, 24 Jan 2023 00:29:07 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <Y88YQzh1WCjFTmGl@lore-desk>
+References: <cover.1674234430.git.lorenzo@kernel.org>
+ <acc9460e6e29dfe02cf474735277e196b500d2ef.1674234430.git.lorenzo@kernel.org>
+ <d0232e99-862b-3255-aeac-7c04486cb773@linux.dev>
+ <Y80odbX/CVjlYalh@lore-desk> <20230123120958.741cf5f1@kernel.org>
 MIME-Version: 1.0
-Content-ID: <5063.1674514892.1@famine>
-Date: Mon, 23 Jan 2023 15:01:32 -0800
-Message-ID: <5064.1674514892@famine>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=canonical.com; s=20210705; t=1674514895;
- bh=ws4I49gzal9OMpseAqlgTMxeS+K4PzsbLrV3ypXSgOQ=;
- h=From:To:cc:Subject:In-reply-to:References:MIME-Version:
- Content-Type:Date:Message-ID;
- b=Q4xmO8ukmC8AAHgsAhD41RKYP7PgXeJ+aiJuFbPIMm+MEnPQZ4f6L5yASzXLqb83s
- 0ooo2kDgxaW6bBu/Z+CNDgrRn2XUSkkttxnszZ2QwyVmit0p/uy0Ob9cMO+LfzrySC
- S3OuA90sf3KuDkYXh5gAX3l+D/AQuVBn9oMGTH/o3o3jTZj9RwaI9qMlQl/qJvwh67
- Jogc0xw1WDjjk041PGNb/XEBEpcGqpihPSnhpVwHlNBtbQnaBf6DxfLH8CSr+ayyoc
- vWOVOu/CB0vc5dxAC6z9XxmjCamicYwOr2O2h0eAGw+LsHMgatzSJgqJXG3olYd8tH
- Ij4qQSALrMO7Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
- header.a=rsa-sha256 header.s=20210705 header.b=Q4xmO8uk
-Subject: Re: [Intel-wired-lan] [PATCH net-next 09/10] bonding: fill IPsec
- state validation failure reason
+In-Reply-To: <20230123120958.741cf5f1@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1674516550;
+ bh=Ggo5QP8q+ffH6krbPwKFl4pj1x/CqV1c9NmMozm8TA0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=OsTlxwEQDGypI1iVMP8OE5hNIBZw1xSJI4yB6/ix/Gzj9g1Urb6GVYLfLwUP1ASQO
+ lKbVPvX4G9PZalf/FfTN4WcmeEMwui1R05r9HDNIBK8mL09L0arX0CHkOctYfrvDbf
+ EcBp4QgIfJ+EiZfT+zB+U5rCVJxxNhhhI1s+78cZb34XNdNv+h5EgfwA0W09+R4qCi
+ daDVxxMatyhfYII2mzIzq2nIC40pNQRdssZc8Uqus4Km9S9pWiqU9/MB43CThpci7V
+ 1/nS6QjaUfJLPg9A1SgAwnzCIGIYpblkxacTzInDOPsK4b4Vr0bRfIkZd86Rmw7wCt
+ nsTThmhDksiCw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=OsTlxwEQ
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 6/7] bpf: devmap: check XDP
+ features in bpf_map_update_elem and __xdp_enqueue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,58 +91,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Steffen Klassert <steffen.klassert@secunet.com>,
- Paolo Abeni <pabeni@redhat.com>, Ayush Sawal <ayush.sawal@chelsio.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Eric Dumazet <edumazet@google.com>,
- Jonathan Corbet <corbet@lwn.net>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, linux-doc@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Saeed Mahameed <saeedm@nvidia.com>, oss-drivers@corigine.com,
- Veaceslav Falico <vfalico@gmail.com>, Raju Rangoju <rajur@chelsio.com>,
- Simon Horman <simon.horman@corigine.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, Leon Romanovsky <leonro@nvidia.com>,
- "David S . Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ niklas.soderlund@corigine.com, andrii@kernel.org,
+ intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, pabeni@redhat.com,
+ aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
+ memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
+ magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
+ toke@redhat.com, Martin KaFai Lau <martin.lau@linux.dev>,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============3080712498739916567=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Leon Romanovsky <leon@kernel.org> wrote:
 
->From: Leon Romanovsky <leonro@nvidia.com>
->
->Rely on extack to return failure reason.
->
->Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
->Signed-off-by: Leon Romanovsky <leon@kernel.org>
->---
-> drivers/net/bonding/bond_main.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->
->diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
->index 686b2a6fd674..00646aa315c3 100644
->--- a/drivers/net/bonding/bond_main.c
->+++ b/drivers/net/bonding/bond_main.c
->@@ -444,7 +444,7 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs,
-> 	if (!slave->dev->xfrmdev_ops ||
-> 	    !slave->dev->xfrmdev_ops->xdo_dev_state_add ||
-> 	    netif_is_bond_master(slave->dev)) {
->-		slave_warn(bond_dev, slave->dev, "Slave does not support ipsec offload\n");
->+		NL_SET_ERR_MSG_MOD(extack, "Slave does not support ipsec offload");
-> 		rcu_read_unlock();
-> 		return -EINVAL;
-> 	}
+--===============3080712498739916567==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qziEnyJPquu9LTl8"
+Content-Disposition: inline
 
-	Why only this one, and not include the other similar
-slave_warn() calls in the bond_ipsec_* functions?  That would seem to
-make some failures show up in dmesg, and others returned to the caller
-via extack.
 
-	-J
+--qziEnyJPquu9LTl8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
----
-	-Jay Vosburgh, jay.vosburgh@canonical.com
+On Jan 23, Jakub Kicinski wrote:
+> On Sun, 22 Jan 2023 13:13:41 +0100 Lorenzo Bianconi wrote:
+> > > > diff --git a/kernel/bpf/devmap.c b/kernel/bpf/devmap.c
+> > > > index d01e4c55b376..69ceecc792df 100644
+> > > > --- a/kernel/bpf/devmap.c
+> > > > +++ b/kernel/bpf/devmap.c
+> > > > @@ -474,7 +474,11 @@ static inline int __xdp_enqueue(struct net_dev=
+ice *dev, struct xdp_frame *xdpf,
+> > > >   {
+> > > >   	int err;
+> > > > -	if (!dev->netdev_ops->ndo_xdp_xmit)
+> > > > +	if (!(dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT)) =20
+> > >=20
+> > > The current "dev->netdev_ops->ndo_xdp_xmit" check is self explaining.
+> > > Any plan to put some document for the NETDEV_XDP_ACT_* values?
+> > >  =20
+> >=20
+> > I am not a yaml description expert but I guess we can xdp features desc=
+ription
+> > in Documentation/netlink/specs/netdev.yaml.
+> >=20
+> > @Jakub: what do you think?
+>=20
+> I've added the ability to document enums recently, so you may need
+> to rebase. But it should work and render the documentation as kdoc=20
+> in the uAPI header (hopefully in a not-too-ugly way).
+>=20
+> Example of YAML:
+> https://github.com/kuba-moo/ynl/blob/dpll/Documentation/netlink/specs/dpl=
+l.yaml#L27-L46
+
+ack, it works properly I guess, I got the following kdoc in the uAPI:
+
+/**
+ * enum netdev_xdp_act
+ * @NETDEV_XDP_ACT_BASIC: XDP feautues set supported by all drivers
+ *   (XDP_ABORTED, XDP_DROP, XDP_PASS, XDP_TX)
+ * @NETDEV_XDP_ACT_REDIRECT: The netdev supports XDP_REDIRECT
+ * @NETDEV_XDP_ACT_NDO_XMIT: This feature informs if netdev implements
+ *   ndo_xdp_xmit callback.
+ * @NETDEV_XDP_ACT_XSK_ZEROCOPY: This feature informs if netdev supports AF=
+_XDP
+ *   in zero copy mode.
+ * @NETDEV_XDP_ACT_HW_OFFLOAD: This feature informs if netdev supports XDP =
+hw
+ *   oflloading.
+ * @NETDEV_XDP_ACT_RX_SG: This feature informs if netdev implements non-lin=
+ear
+ *   XDP buffer support in the driver napi callback.
+ * @NETDEV_XDP_ACT_NDO_XMIT_SG: This feature informs if netdev implements
+ *   non-linear XDP buffer support in ndo_xdp_xmit callback.
+ */
+enum netdev_xdp_act {
+        NETDEV_XDP_ACT_BASIC,
+        NETDEV_XDP_ACT_REDIRECT,
+        NETDEV_XDP_ACT_NDO_XMIT,
+        NETDEV_XDP_ACT_XSK_ZEROCOPY,
+        NETDEV_XDP_ACT_HW_OFFLOAD,
+        NETDEV_XDP_ACT_RX_SG,
+        NETDEV_XDP_ACT_NDO_XMIT_SG,
+};
+
+Regards,
+Lorenzo
+
+>=20
+> I've also talked to the iproute2-py maintainer about generating
+> documentation directly from YAML to Sphinx/htmldocs, hopefully=20
+> that will happen, too. It would be good to have a few families=20
+> to work with before we start that work, tho.
+
+--qziEnyJPquu9LTl8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY88YQwAKCRA6cBh0uS2t
+rEWoAP9E7+yhe6xzWNvVhGDtR0Vbhmo4cx8MtqrkRR1v7KgJDAD+Opg5Jj9EYfqC
+SGFVAfjquj2QKYGMgbChLVyZs0yjUwk=
+=FQIt
+-----END PGP SIGNATURE-----
+
+--qziEnyJPquu9LTl8--
+
+--===============3080712498739916567==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============3080712498739916567==--
