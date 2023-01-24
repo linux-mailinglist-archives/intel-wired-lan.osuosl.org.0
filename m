@@ -1,81 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE919678F5B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 05:38:21 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40B7D678F62
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 05:39:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B050C60E8E;
-	Tue, 24 Jan 2023 04:38:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B050C60E8E
+	by smtp4.osuosl.org (Postfix) with ESMTP id B40EB41724;
+	Tue, 24 Jan 2023 04:39:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B40EB41724
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674535098;
+	s=default; t=1674535173;
 	bh=dfDJpM4BGQZaUvSTmXBVsaymLTYtXd+B1ux71gBLvZA=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=TOIe5e+60BYa37jYs5aZuXR5IX9viOXP2iCuz0Uu7p//csUIfqda0pKcDexoo40R6
-	 hJ9Ouen8z5PjMMAMicVg2yQ4w7tzJSwS7UAk3s9B6S/Tm/7ShiCiUEJqhfOtB+gLFa
-	 PiU2VBk+/WhiKpdMmor9K6otDBrBEPz6u2nkkKaNTTfjp66O0JdbWg35jyi8NeY56V
-	 CpiGw0AuDrWiLCIvhm6FDppzkbp40SaTo3N/ZkMlFPscamys+PDC0+Er1WPxuMqjZh
-	 /NPPiRjeXduCKE728J3C5XfBQBc/6xTMLohueVvmwE6ZTYIaH3+pyW8bhOikA73cAg
-	 01HSWtaoBspAQ==
+	b=oucIkuSw9vaio1uG1sh0OrFGPsUbeDeL+drDnyf2EjvDeJKtYPyICRV7wd14R1JkD
+	 4opYMo/1ZMdgTb2asG9ufEURgsJypWlB9JLOPbLaEdcyC36UdRB5iWsVTLDPNYr7nP
+	 SjCgvGSFlXuFqCzM7IU4kBFeJLgSU/wwP9UWt0CFMgsGTE2yOnovf0Sy342FSF38gg
+	 YfNNRXpq3EyeVDgGt97t3GAJHhgLGXnhsL9Pbn777zCwFbdMH6VCWo90mNpewR+bSr
+	 m4kpd9bVziOwPyFACMRLp+yViASr0PWvtYu3UVXilNiSClecnCbOxvDaaxRdDGpAEw
+	 hn8HjRF851ZjQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uuS4VBBcPtxs; Tue, 24 Jan 2023 04:38:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eWY9MzkiW4x1; Tue, 24 Jan 2023 04:39:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 96CCA60D7B;
-	Tue, 24 Jan 2023 04:38:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96CCA60D7B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 814DD41705;
+	Tue, 24 Jan 2023 04:39:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 814DD41705
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5D7151BF383
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:38:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 085261BF383
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:39:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 35D518201F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:38:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 35D518201F
+ by smtp2.osuosl.org (Postfix) with ESMTP id E27034013B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:39:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E27034013B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hnQ-9RV3wohg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jan 2023 04:38:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rL1DQV8O2-3T for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jan 2023 04:39:26 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7CB3781FEB
-Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
- [IPv6:2607:f8b0:4864:20::429])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7CB3781FEB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:38:11 +0000 (UTC)
-Received: by mail-pf1-x429.google.com with SMTP id 207so10410091pfv.5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 20:38:11 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29DC1400CB
+Received: from mail-pg1-x52c.google.com (mail-pg1-x52c.google.com
+ [IPv6:2607:f8b0:4864:20::52c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 29DC1400CB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 04:39:26 +0000 (UTC)
+Received: by mail-pg1-x52c.google.com with SMTP id d10so10531623pgm.13
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jan 2023 20:39:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
  bh=Qth+m+QqGWxa6ejWDP+asO5qvuiiNmuGk9SYTp9o8fg=;
- b=pOP7rLJ5dQ6VNVLRATZnWlj8wTaHq+u20oiXHDs/gqpEjEidHoOpg3N2tDzIw3fbCL
- ODafLksaQ9XKp2OrwZWU7hZL4iPbdBl7PU8gabE4S69qk8fEz8IG/aHDUlv9ZFvKhmG9
- zFTcP9stHnVgCJ9POinObNrZVGPjCcHY9ljBoDaHCVQUaE85MuyuEbP8yNayApsjMse4
- AWdVwpC+3/edYL3zKO336Y0nqxtdh1u/6hUK7MidweA+WTEnlf1K5nUN6gmsvmA49mIM
- 1+fRQrn/hYalvzrZYvlQOwkETKsmsxg9CW3MdmXBWNp1xK1b11YYRjFirKkEal/r/rGS
- LFZQ==
-X-Gm-Message-State: AFqh2kpjI1GTeTxbOSd/IvoEU1D40LHgoL4rLElhk8FjmAXkKNzKIkQ9
- 2asLK9R/s4y53lN9MOkqT0N8Iw==
-X-Google-Smtp-Source: AMrXdXtyih9dRVgVDCARxZSXV17MBKBYOQC7pzp5ks/rsxZkL7r4M3UN+hqUKx1eZRtTr+9ggeQV1Q==
-X-Received: by 2002:a62:61c4:0:b0:581:a8dc:8f95 with SMTP id
- v187-20020a6261c4000000b00581a8dc8f95mr26644556pfb.12.1674535090975; 
- Mon, 23 Jan 2023 20:38:10 -0800 (PST)
+ b=D83dGZ/5PlHoxZFA6qBenI7GMX6SUU7SRpWko73Gbxq23SqdHy4zzNEvxqYLGy33Kt
+ jzj3xlExh+yDeRsvoVvaeYBZE9rOsJtiuw+xfxsEEpww+tQ5ssc1Ui0bwJHBNxHHhEpp
+ CC0Z9QlilVi71Yav/tpz+VcR2831j6bVfeVFI+wZMwIAXBphsRirS2ylJRFcrPDRMjGt
+ W12l9OSDwImo355k/1nP+uAjyDK+JltH/OnkEhyIbZFjNqM9fkyUz+MB3vElisWwIeWe
+ OiSXz+vaxFhJ0zC35Awrgs2snpw/gymku2ouiUTQAPEEUyVE3DMkWe8PUJ2rVP2NkNGq
+ k6Vg==
+X-Gm-Message-State: AFqh2ko960ynwid9e6K5daCnvrzzapmUQTO1Ww//6AUdNPHThVVNj0Eb
+ 9ZxisesieWsCcVM5yAzHXs8gtQ==
+X-Google-Smtp-Source: AMrXdXsLLP6eHtR36AvPy1ebq6ivCLVzOgdUmrJIJhIdk0x3oZSlvx/SGzSnTLDGwmEoFZyYoWT5jQ==
+X-Received: by 2002:aa7:8f09:0:b0:587:364f:17f5 with SMTP id
+ x9-20020aa78f09000000b00587364f17f5mr47311121pfr.7.1674535165628; 
+ Mon, 23 Jan 2023 20:39:25 -0800 (PST)
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:4457:c267:5e09:481b])
  by smtp.gmail.com with ESMTPSA id
- e26-20020a62ee1a000000b00574e84ed847sm457082pfi.24.2023.01.23.20.38.08
+ u13-20020a62790d000000b0058bcb7b437bsm433260pfc.215.2023.01.23.20.39.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Jan 2023 20:38:10 -0800 (PST)
+ Mon, 23 Jan 2023 20:39:25 -0800 (PST)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
-Date: Tue, 24 Jan 2023 13:37:59 +0900
-Message-Id: <20230124043759.12884-1-akihiko.odaki@daynix.com>
+Date: Tue, 24 Jan 2023 13:39:15 +0900
+Message-Id: <20230124043915.12952-1-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -83,18 +83,17 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
  bh=Qth+m+QqGWxa6ejWDP+asO5qvuiiNmuGk9SYTp9o8fg=;
- b=10gRHtJrXtDcx78CEUcmAg79jFs9KInyfeIRzxMVXx69dtRvO85ykEUv7nkYnbMrkl
- dkxCM2hDfJ2dpApAu2EngE52uFnIdpO9oWHAIWeYnXMwwUm+zP4koqIrLfflOf8gCTIf
- UV9DGsdAmlJ2oUktrZaSChQKPdV6+C35DoRACre/qNolhTevL0/JcqR3cTA9Pv2zrWfx
- vLLT1y2KFok5Y1lRgppvNbptn9HGueB9ZywM8LIkca6M+Fsnxl3BLEJkL08OazhzZqM0
- apR2uigxh2d0RrV50Tis9LLbNuO2XQMjg/gVTB/a673I4M/3vkVA4KY2wvvjrX5O41ou
- G/yA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=fail reason="signature verification failed" (2048-bit key)
- header.d=daynix-com.20210112.gappssmtp.com
+ b=1lKKJ5GlJElAqYaZqiACcFiLIJRt3bxsMn/0bpuBHgK3rb1tWJBWisJ2KnsvAtuyES
+ AomzmzTwAu+zA5xdSYgoOhrRUav+SYUQsSQcceyqahqckz6Ng0BOLN+q8T6LlcqxF7hr
+ 7N4/8fwvRlgQlkKux5IukXNZiowUavCAkT0pGxBnpacVWTv7g99AJ3cG377zT2HCcQCV
+ yRwkB7amUr/q/HPrak6mz2eyNr29NSa+X9U8dxbauKKAqgPc/6TXXB9qAuPH7pUlKRky
+ iDAMnpkgmQy9jmT5GiZlEfl5+BdxrSsbgNB19nU/n9Y8KiLJ4NozW+FgJO+UiK2C4Xrd
+ L0+g==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=daynix-com.20210112.gappssmtp.com
  header.i=@daynix-com.20210112.gappssmtp.com header.a=rsa-sha256
- header.s=20210112 header.b=10gRHtJr
-Subject: [Intel-wired-lan] [PATCH] igbvf: Fix rx_buffer_len
+ header.s=20210112 header.b=1lKKJ5Gl
+Subject: [Intel-wired-lan] [PATCH RESEND] igbvf: Fix rx_buffer_len
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,7 +111,7 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Yuri Benditovich <yuri.benditovich@daynix.com>,
  Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni Jakub Kicinski <"pabeni@redhat.comkuba"@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
