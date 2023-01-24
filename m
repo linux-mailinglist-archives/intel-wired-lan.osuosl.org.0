@@ -2,80 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67044679E25
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 17:03:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D698679279
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 09:01:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 278E240B15;
-	Tue, 24 Jan 2023 16:03:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 278E240B15
+	by smtp2.osuosl.org (Postfix) with ESMTP id 45E6A40BB8;
+	Tue, 24 Jan 2023 08:01:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 45E6A40BB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674576215;
-	bh=pIwVl4BDyfAlLctAF2uUWpvscVPPA1DEZfqoLoWa2hg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1674547262;
+	bh=4nxcJtBT4WPTSyZxsdbsLhbCgelXOayH7t0PqyFj5G0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=H4mHDdHPUuCodxfQjq/GxXpVd+4eXK5rx/NMi145PKEHpkKeblXsCRNMI7KUTsDau
-	 sQtFZBBKPVAPAIghj5fXOHz7RfnYjlKJpP4/nFtR3aFqqoztryYlfTtT2SZNOkODPe
-	 aJuQDa/YHqEU+H4tAWUZq2y1EjWzC83ggz1sXcvXTIJHxh/H8y85aIsA89U1M/8ges
-	 vjhIhxBK4wema+sEvc+bcMVxhtqn+6+CeNyqrQJ3ziPEiS3o5Xv2SlwZN1i/b7O9ZK
-	 D6iuIFGkT+wXiBVwxY+l0ULYMhrn6t9ORukK8tPg55uyYmf0Zb0hToyC2o3U8I3M3G
-	 b/Jxfvq+e9Pug==
+	b=JM0xxBNmcmcmFNVZakwbvqFlrAIImzGYwD0ndHNnoNHO31ifaqASfHivmZbhZfZs5
+	 MM8LOiPAQ7xIdxKI5btZqvR4woTjU9Z30LY1o5Nzs+D0fIn9UuY5QFDOnwPsa2fmQp
+	 7Dn9/O/7k9A5YoqnpvgX15hL2nZYrEQEd0gEvHqq5xy2PstuKMJUSNNYWlpwQYR/16
+	 hSHhxpBoD9e2WPg9RIGnGv4y6TeWpXBKpAZeTv8NLJZdFo638rwqm1hPRY/CoJqEBs
+	 3o4Uzk8vZET3Eu5PgXtLkYH2nRw8JH9iPl2u/4hgyQYuap9odFul2YrVojdd3TKLOM
+	 zO9zDP491hSVQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mp3UbEGRfxoA; Tue, 24 Jan 2023 16:03:34 +0000 (UTC)
+	with ESMTP id tbNDLmCIAt2R; Tue, 24 Jan 2023 08:01:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DB0FE400D9;
-	Tue, 24 Jan 2023 16:03:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB0FE400D9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0193640BAE;
+	Tue, 24 Jan 2023 08:01:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0193640BAE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8475E1BF370
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 06:34:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2962D1BF303
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 08:00:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1CAD260AFC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 06:34:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CAD260AFC
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0039C41724
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 08:00:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0039C41724
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1ZseMCl6nX5r for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jan 2023 06:34:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CF3760AC3
-Received: from out2.migadu.com (out2.migadu.com [IPv6:2001:41d0:2:aacc::])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2CF3760AC3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 06:34:55 +0000 (UTC)
-Message-ID: <d2606312-1e04-55ff-e01e-daf83ed99836@linux.dev>
-Date: Mon, 23 Jan 2023 22:34:36 -0800
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UCc-0sB-Uy_b for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jan 2023 08:00:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DC9C410A1
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4DC9C410A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 08:00:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10599"; a="324920717"
+X-IronPort-AV: E=Sophos;i="5.97,241,1669104000"; d="scan'208";a="324920717"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2023 00:00:53 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10599"; a="692510306"
+X-IronPort-AV: E=Sophos;i="5.97,241,1669104000"; d="scan'208";a="692510306"
+Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 24 Jan 2023 00:00:46 -0800
+Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pKEEX-0006Fs-1k;
+ Tue, 24 Jan 2023 08:00:45 +0000
+Date: Tue, 24 Jan 2023 15:59:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: Leon Romanovsky <leon@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Steffen Klassert <steffen.klassert@secunet.com>
+Message-ID: <202301241552.GWkgnAH7-lkp@intel.com>
+References: <a5426033528ccef6e0e71fe06b55ae56c5596e85.1674481435.git.leon@kernel.org>
 MIME-Version: 1.0
-Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-References: <cover.1674234430.git.lorenzo@kernel.org>
- <986321f8621e9367653e21b35566e7cda976b886.1674234430.git.lorenzo@kernel.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Martin KaFai Lau <martin.lau@linux.dev>
-In-Reply-To: <986321f8621e9367653e21b35566e7cda976b886.1674234430.git.lorenzo@kernel.org>
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Approved-At: Tue, 24 Jan 2023 16:03:29 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1674542090;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XoQl7uUFk5a4iB7hSBnRz259kIa6WGS8ZI2M0mlcDxc=;
- b=UJ00gwjq4gFjn29yUIgtP3vJKG2pGDukPyC0hkIVIP2nqN05joUBN4WcO+osDMjimoNFlw
- jsl0LQkfUx6HI3nz1gtWCAc7b2kCr0XlXsGZTlLXXEj3jCpUP8Pj0JXXPRLcpiWXydy+1m
- UfNa2J/CmihbLVVjWaz3Ys4ifQ5VFxU=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=UJ00gwjq
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 7/7] selftests/bpf: introduce
- XDP compliance test tool
+Content-Disposition: inline
+In-Reply-To: <a5426033528ccef6e0e71fe06b55ae56c5596e85.1674481435.git.leon@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674547254; x=1706083254;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=xc2SUtCeobW/ezSFCjJCHss3YwaPNlCk6liXkETTUwY=;
+ b=jiP6haUVzmhLZtgxgYRxZXy5v8Zb/OijVAVY/9mng5argdsPyFMeQUWG
+ msC7n9ZHwJhYpK2jiZ2jwP++mt2AFXV60vmHvUaU6DtA4wQW1s9rpAFKa
+ SmI1xnJLHHDsZl2DM/OCRUqwg4XrSJQY+mOMjPbcqdv5n7B1s3cOwK+VY
+ Jx81ALVnffH81BMpcmS8s9ynijbyn3QYn2Mi8n9sEn7boofhKklUakykK
+ BGc2ModED7u01whriQQeG+ysmLN4nmGSS0kYtVI0eJyRK0H4MIpFvYsAT
+ oDB2gcAsa4F97aGkwoqX1LSl7MdS2gG2cCEPq0tdSlTB7CBvte1MGjDg7
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=jiP6haUV
+Subject: Re: [Intel-wired-lan] [PATCH net-next 04/10] net/mlx5e: Fill IPsec
+ state validation failure reason
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,153 +100,190 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- niklas.soderlund@corigine.com, andrii@kernel.org,
- intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, kuba@kernel.org,
- pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Cc: Ayush Sawal <ayush.sawal@chelsio.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Eric Dumazet <edumazet@google.com>,
+ Jonathan Corbet <corbet@lwn.net>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jay Vosburgh <j.vosburgh@gmail.com>, Raju Rangoju <rajur@chelsio.com>,
+ llvm@lists.linux.dev, linux-doc@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, oss-drivers@corigine.com,
+ netdev@vger.kernel.org, Veaceslav Falico <vfalico@gmail.com>,
+ oe-kbuild-all@lists.linux.dev, Simon Horman <simon.horman@corigine.com>,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ Leon Romanovsky <leonro@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Andy Gospodarek <andy@greyhouse.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/20/23 9:16 AM, Lorenzo Bianconi wrote:
-> +static __always_inline int xdp_process_echo_packet(struct xdp_md *xdp, bool dut)
-> +{
-> +	void *data_end = (void *)(long)xdp->data_end;
-> +	__be32 saddr = dut ? tester_ip : dut_ip;
-> +	__be32 daddr = dut ? dut_ip : tester_ip;
-> +	void *data = (void *)(long)xdp->data;
-> +	struct ethhdr *eh = data;
-> +	struct tlv_hdr *tlv;
-> +	struct udphdr *uh;
-> +	struct iphdr *ih;
-> +	__be16 port;
-> +	__u8 *cmd;
-> +
-> +	if (eh + 1 > (struct ethhdr *)data_end)
-> +		return -EINVAL;
-> +
-> +	if (eh->h_proto != bpf_htons(ETH_P_IP))
-> +		return -EINVAL;
+Hi Leon,
 
-Both v6 and v4 support are needed as a tool.
+I love your patch! Yet something to improve:
 
-[ ... ]
+[auto build test ERROR on net-next/master]
 
-> diff --git a/tools/testing/selftests/bpf/test_xdp_features.sh b/tools/testing/selftests/bpf/test_xdp_features.sh
-> new file mode 100755
-> index 000000000000..98b8fd2b6c16
-> --- /dev/null
-> +++ b/tools/testing/selftests/bpf/test_xdp_features.sh
-> @@ -0,0 +1,99 @@
-> +#!/bin/bash
-> +# SPDX-License-Identifier: GPL-2.0
-> +
-> +# Create 2 namespaces with two veth peers, and
-> +# check reported and detected XDP capabilities
-> +#
-> +#   NS0(v00)              NS1(v11)
-> +#       |                     |
-> +#       |                     |
-> +# (v01, id:111)  ------  (v10,id:222)
-> +
-> +readonly NS0="ns1-$(mktemp -u XXXXXX)"
-> +readonly NS1="ns2-$(mktemp -u XXXXXX)"
-> +ret=1
-> +
-> +setup() {
-> +	{
-> +		ip netns add ${NS0}
-> +		ip netns add ${NS1}
-> +
-> +		ip link add v01 index 111 type veth peer name v00 netns ${NS0}
-> +		ip link add v10 index 222 type veth peer name v11 netns ${NS1}
-> +
-> +		ip link set v01 up
-> +		ip addr add 10.10.0.1/24 dev v01
-> +		ip link set v01 address 00:11:22:33:44:55
-> +		ip -n ${NS0} link set dev v00 up
-> +		ip -n ${NS0} addr add 10.10.0.11/24 dev v00
-> +		ip -n ${NS0} route add default via 10.10.0.1
-> +		ip -n ${NS0} link set v00 address 00:12:22:33:44:55
-> +
-> +		ip link set v10 up
-> +		ip addr add 10.10.1.1/24 dev v10
-> +		ip link set v10 address 00:13:22:33:44:55
-> +		ip -n ${NS1} link set dev v11 up
-> +		ip -n ${NS1} addr add 10.10.1.11/24 dev v11
-> +		ip -n ${NS1} route add default via 10.10.1.1
-> +		ip -n ${NS1} link set v11 address 00:14:22:33:44:55
-> +
-> +		sysctl -w net.ipv4.ip_forward=1
-> +		# Enable XDP mode
-> +		ethtool -K v01 gro on
-> +		ethtool -K v01 tx-checksumming off
-> +		ip netns exec ${NS0} ethtool -K v00 gro on
-> +		ip netns exec ${NS0} ethtool -K v00 tx-checksumming off
-> +		ethtool -K v10 gro on
-> +		ethtool -K v10 tx-checksumming off
-> +		ip netns exec ${NS1} ethtool -K v11 gro on
-> +		ip netns exec ${NS1} ethtool -K v11 tx-checksumming off
-> +	} > /dev/null 2>&1
-> +}
-> +
-> +cleanup() {
-> +	ip link del v01 2> /dev/null
-> +	ip link del v10 2> /dev/null
-> +	ip netns del ${NS0} 2> /dev/null
-> +	ip netns del ${NS1} 2> /dev/null
-> +	[ "$(pidof xdp_features)" = "" ] || kill $(pidof xdp_features) 2> /dev/null
-> +}
-> +
-> +test_xdp_features() {
-> +	setup
-> +
-> +	## XDP_PASS
-> +	ip netns exec ${NS1} ./xdp_features -f XDP_PASS -D 10.10.1.11 -T 10.10.0.11 v11 &
-> +	ip netns exec ${NS0} ./xdp_features -t -f XDP_PASS -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-> +
-> +	[ $? -ne 0 ] && exit
-> +
-> +	# XDP_DROP
-> +	ip netns exec ${NS1} ./xdp_features -f XDP_DROP -D 10.10.1.11 -T 10.10.0.11 v11 &
-> +	ip netns exec ${NS0} ./xdp_features -t -f XDP_DROP -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-> +
-> +	[ $? -ne 0 ] && exit
-> +
-> +	## XDP_TX
-> +	./xdp_features -f XDP_TX -D 10.10.0.1 -T 10.10.0.11 v01 &
-> +	ip netns exec ${NS0} ./xdp_features -t -f XDP_TX -D 10.10.0.1 -C 10.10.0.1 -T 10.10.0.11 v00
-> +
-> +	## XDP_REDIRECT
-> +	ip netns exec ${NS1} ./xdp_features -f XDP_REDIRECT -D 10.10.1.11 -T 10.10.0.11 v11 &
-> +	ip netns exec ${NS0} ./xdp_features -t -f XDP_REDIRECT -D 10.10.1.11 -C 10.10.1.11 -T 10.10.0.11 v00
-> +
-> +	[ $? -ne 0 ] && exit
-> +
-> +	## XDP_NDO_XMIT
-> +	./xdp_features -f XDP_NDO_XMIT -D 10.10.0.1 -T 10.10.0.11 v01 &
-> +	ip netns exec ${NS0} ./xdp_features -t -f XDP_NDO_XMIT -D 10.10.0.1 -C 10.10.0.1 -T 10.10.0.11 v00
-> +
-> +	ret=$?
-> +	cleanup
-> +}
-> +
-> +set -e
-> +trap cleanup 2 3 6 9
-> +
-> +test_xdp_features
+url:    https://github.com/intel-lab-lkp/linux/commits/Leon-Romanovsky/xfrm-extend-add-policy-callback-to-set-failure-reason/20230123-220422
+patch link:    https://lore.kernel.org/r/a5426033528ccef6e0e71fe06b55ae56c5596e85.1674481435.git.leon%40kernel.org
+patch subject: [Intel-wired-lan] [PATCH net-next 04/10] net/mlx5e: Fill IPsec state validation failure reason
+config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20230124/202301241552.GWkgnAH7-lkp@intel.com/config)
+compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/bd6a3bcc8978f551f83f85b9c18d199c71c29d7c
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Leon-Romanovsky/xfrm-extend-add-policy-callback-to-set-failure-reason/20230123-220422
+        git checkout bd6a3bcc8978f551f83f85b9c18d199c71c29d7c
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/net/ethernet/chelsio/inline_crypto/ch_ipsec/ drivers/net/ethernet/mellanox/mlx5/core/
 
-This won't be run by bpf CI.
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
 
-A selftest in test_progs is needed to test the libbpf changes in patch 6.
+All errors (new ones prefixed by >>):
 
+>> drivers/net/ethernet/mellanox/mlx5/core/en_accel/ipsec.c:276:22: error: use of undeclared identifier 'extackx'; did you mean 'extack'?
+                   NL_SET_ERR_MSG_MOD(extackx, "Unsupported xfrm offload type");
+                                      ^~~~~~~
+                                      extack
+   include/linux/netlink.h:128:18: note: expanded from macro 'NL_SET_ERR_MSG_MOD'
+           NL_SET_ERR_MSG((extack), KBUILD_MODNAME ": " msg)
+                           ^
+   include/linux/netlink.h:100:38: note: expanded from macro 'NL_SET_ERR_MSG'
+           struct netlink_ext_ack *__extack = (extack);    \
+                                               ^
+   drivers/net/ethernet/mellanox/mlx5/core/en_accel/ipsec.c:167:34: note: 'extack' declared here
+                                        struct netlink_ext_ack *extack)
+                                                                ^
+   1 error generated.
+
+
+vim +276 drivers/net/ethernet/mellanox/mlx5/core/en_accel/ipsec.c
+
+   164	
+   165	static int mlx5e_xfrm_validate_state(struct mlx5_core_dev *mdev,
+   166					     struct xfrm_state *x,
+   167					     struct netlink_ext_ack *extack)
+   168	{
+   169		if (x->props.aalgo != SADB_AALG_NONE) {
+   170			NL_SET_ERR_MSG_MOD(extack, "Cannot offload authenticated xfrm states");
+   171			return -EINVAL;
+   172		}
+   173		if (x->props.ealgo != SADB_X_EALG_AES_GCM_ICV16) {
+   174			NL_SET_ERR_MSG_MOD(extack, "Only AES-GCM-ICV16 xfrm state may be offloaded");
+   175			return -EINVAL;
+   176		}
+   177		if (x->props.calgo != SADB_X_CALG_NONE) {
+   178			NL_SET_ERR_MSG_MOD(extack, "Cannot offload compressed xfrm states");
+   179			return -EINVAL;
+   180		}
+   181		if (x->props.flags & XFRM_STATE_ESN &&
+   182		    !(mlx5_ipsec_device_caps(mdev) & MLX5_IPSEC_CAP_ESN)) {
+   183			NL_SET_ERR_MSG_MOD(extack, "Cannot offload ESN xfrm states");
+   184			return -EINVAL;
+   185		}
+   186		if (x->props.family != AF_INET &&
+   187		    x->props.family != AF_INET6) {
+   188			NL_SET_ERR_MSG_MOD(extack, "Only IPv4/6 xfrm states may be offloaded");
+   189			return -EINVAL;
+   190		}
+   191		if (x->id.proto != IPPROTO_ESP) {
+   192			NL_SET_ERR_MSG_MOD(extack, "Only ESP xfrm state may be offloaded");
+   193			return -EINVAL;
+   194		}
+   195		if (x->encap) {
+   196			NL_SET_ERR_MSG_MOD(extack, "Encapsulated xfrm state may not be offloaded");
+   197			return -EINVAL;
+   198		}
+   199		if (!x->aead) {
+   200			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states without aead");
+   201			return -EINVAL;
+   202		}
+   203		if (x->aead->alg_icv_len != 128) {
+   204			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states with AEAD ICV length other than 128bit");
+   205			return -EINVAL;
+   206		}
+   207		if ((x->aead->alg_key_len != 128 + 32) &&
+   208		    (x->aead->alg_key_len != 256 + 32)) {
+   209			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states with AEAD key length other than 128/256 bit");
+   210			return -EINVAL;
+   211		}
+   212		if (x->tfcpad) {
+   213			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states with tfc padding");
+   214			return -EINVAL;
+   215		}
+   216		if (!x->geniv) {
+   217			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states without geniv");
+   218			return -EINVAL;
+   219		}
+   220		if (strcmp(x->geniv, "seqiv")) {
+   221			NL_SET_ERR_MSG_MOD(extack, "Cannot offload xfrm states with geniv other than seqiv");
+   222			return -EINVAL;
+   223		}
+   224		switch (x->xso.type) {
+   225		case XFRM_DEV_OFFLOAD_CRYPTO:
+   226			if (!(mlx5_ipsec_device_caps(mdev) & MLX5_IPSEC_CAP_CRYPTO)) {
+   227				NL_SET_ERR_MSG_MOD(extack, "Crypto offload is not supported");
+   228				return -EINVAL;
+   229			}
+   230	
+   231			if (x->props.mode != XFRM_MODE_TRANSPORT &&
+   232			    x->props.mode != XFRM_MODE_TUNNEL) {
+   233				NL_SET_ERR_MSG_MOD(extack, "Only transport and tunnel xfrm states may be offloaded");
+   234				return -EINVAL;
+   235			}
+   236			break;
+   237		case XFRM_DEV_OFFLOAD_PACKET:
+   238			if (!(mlx5_ipsec_device_caps(mdev) &
+   239			      MLX5_IPSEC_CAP_PACKET_OFFLOAD)) {
+   240				NL_SET_ERR_MSG_MOD(extack, "Packet offload is not supported");
+   241				return -EINVAL;
+   242			}
+   243	
+   244			if (x->props.mode != XFRM_MODE_TRANSPORT) {
+   245				NL_SET_ERR_MSG_MOD(extack, "Only transport xfrm states may be offloaded in packet mode");
+   246				return -EINVAL;
+   247			}
+   248	
+   249			if (x->replay_esn && x->replay_esn->replay_window != 32 &&
+   250			    x->replay_esn->replay_window != 64 &&
+   251			    x->replay_esn->replay_window != 128 &&
+   252			    x->replay_esn->replay_window != 256) {
+   253				NL_SET_ERR_MSG_MOD(extack, "Unsupported replay window size");
+   254				return -EINVAL;
+   255			}
+   256	
+   257			if (!x->props.reqid) {
+   258				NL_SET_ERR_MSG_MOD(extack, "Cannot offload without reqid");
+   259				return -EINVAL;
+   260			}
+   261	
+   262			if (x->lft.hard_byte_limit != XFRM_INF ||
+   263			    x->lft.soft_byte_limit != XFRM_INF) {
+   264				NL_SET_ERR_MSG_MOD(extack, "Device doesn't support limits in bytes");
+   265				return -EINVAL;
+   266			}
+   267	
+   268			if (x->lft.soft_packet_limit >= x->lft.hard_packet_limit &&
+   269			    x->lft.hard_packet_limit != XFRM_INF) {
+   270				/* XFRM stack doesn't prevent such configuration :(. */
+   271				NL_SET_ERR_MSG_MOD(extack, "Hard packet limit must be greater than soft one");
+   272				return -EINVAL;
+   273			}
+   274			break;
+   275		default:
+ > 276			NL_SET_ERR_MSG_MOD(extackx, "Unsupported xfrm offload type");
+   277			return -EINVAL;
+   278		}
+   279		return 0;
+   280	}
+   281	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
