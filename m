@@ -1,85 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14D3F679FFD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 18:19:26 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D50467A56E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jan 2023 23:14:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 785C14186B;
-	Tue, 24 Jan 2023 17:19:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 785C14186B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 14E85820D4;
+	Tue, 24 Jan 2023 22:14:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14E85820D4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674580764;
-	bh=W4/haeiBVUVQ/QDOgFNlcKIaB8NtQ07/BgYgcR2fBZ0=;
+	s=default; t=1674598486;
+	bh=YfNIO6z8nKAAZ5YUAAYl+0nkGuxsar1OLnU+otKLXAM=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=SSIsNm9yRbFnJr9CEkWCQHC5+T/t50O1ik35SP2u5T5wKBVSMLBqZsvR50USskWo9
-	 2Lk96Hm5f5UMleJxbZl6SIBZjufgGCyBGErJD7P4CFt2uREVlix8t4fXz3CugCiAPo
-	 p+j3HwwJNN5sZBzW9csqA4o14sCGKSSqx8ipSqeKZmagbV/EC7dbhFsY50YxUm4ThZ
-	 sthmuagG1WkptUhQu5yZL6pnNTJqBDyoaA14n7FJ2EwIkQsEBDVpkp6Zsz8rpfy9qm
-	 G921Qgd9TypQ5b4s1+FLuzdcSTStPKG5cLzBlUsKWNukJpP7Je1iDrZDVMnV21+bpA
-	 p3xfpK412zcXQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yV_RvGzbslD6; Tue, 24 Jan 2023 17:19:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E55AE41844;
-	Tue, 24 Jan 2023 17:19:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E55AE41844
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AC58E1BF473
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 17:19:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 844C8820EB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 17:19:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 844C8820EB
+	b=uvRIBzuxDV7TqIJ1sS3dEEHsBAH0vgvM3TK8GZsp5dwXLHKyHEfnnYsurSvM57b/H
+	 bx80gevhap2/sVRlzGAXZx7iAFSpvLNGVm20qdH6JB9nvHW+olTFxqzJFJGF29zVCG
+	 q+8TKLhcGCDPUzKSneO7TVmop3xT/itnyRmx+rPvGN2hThJQNDvT2tKkbv8hYvj56V
+	 oUymEENWaJ8DBgc0awXDlp5B5E8cM+EffMXlfT8TFxklv7+u1HFG3ShXL72249KQ0u
+	 6i2FSJvlF7Ov4WELwWpG6MwC4ehaVSRqczGTcTxlgNjs1yk2CzEDQsdlO6bHZkynmo
+	 6Y7A3H+nZZwIA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uvIa5fYtNsP4 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jan 2023 17:19:16 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TGGu4AJo0T-E; Tue, 24 Jan 2023 22:14:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id D85B282074;
+	Tue, 24 Jan 2023 22:14:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D85B282074
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 70B7F1BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 22:14:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 37974418AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 22:14:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37974418AA
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ollYtoZcs9Y5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jan 2023 22:14:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 99A6881E52
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 99A6881E52
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 17:19:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="390853001"
-X-IronPort-AV: E=Sophos;i="5.97,242,1669104000"; d="scan'208";a="390853001"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2023 09:19:11 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="664167815"
-X-IronPort-AV: E=Sophos;i="5.97,242,1669104000"; d="scan'208";a="664167815"
-Received: from dmert-dev.jf.intel.com ([10.166.241.14])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2023 09:19:11 -0800
-From: Dave Ertman <david.m.ertman@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96C2141830
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 96C2141830
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 22:14:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="388767210"
+X-IronPort-AV: E=Sophos;i="5.97,243,1669104000"; d="scan'208";a="388767210"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2023 14:14:36 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="907674580"
+X-IronPort-AV: E=Sophos;i="5.97,243,1669104000"; d="scan'208";a="907674580"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.213.174.112])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2023 14:14:35 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 24 Jan 2023 09:19:43 -0800
-Message-Id: <20230124171943.1625923-1-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.37.3
+Date: Tue, 24 Jan 2023 14:14:23 -0800
+Message-Id: <20230124221428.114-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674580756; x=1706116756;
+ t=1674598477; x=1706134477;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=e1hiVOg5swSC6bI/vBDOWzCT188usV4PkS1QhB4vSec=;
- b=HMo7/h3W419z3bL7OqU+5uH0oQFyCyHF3LWNTBvg5LrGdUUa0q+8/AUh
- 45LBBKTEXOQtExv+eicJq5W0iQ1r5VOr41i0QbQ9xYA7b+8uFvn3FHwQr
- imVinMgcx80x647pIit8H6qhy97Uj7b0ftq2h6mES6S4plD3I7Q9krAty
- ajCbViMcF5Jk3k9GDSprVdnmfCF6pvmk3oHCcA+7psQmnHvzFSAyc3j1S
- ysib7e3QKE+s1SaQxpcFNYKYj2/PqNREOW9FHUbTVleZ1hEQeVU5Vl3W4
- HpVcdhUMw0OSqpivBd2q9VpVR4JrZhjN5cS/KTOxSMQUa19PUb2g8VTeY
+ bh=307GO5tannApMaPIAa3pFmwQ6laVLnAnuWXpr9CKW1M=;
+ b=IlzWpeyI6k/CkD2WsguOmOWyGkYuRPAkAHRUmIu5dlUAe3qyHXv5XF8X
+ YzXstq8K1WZ2U0uyqKjtNQa1Pze5JIukoO7TU0/aGHWLgWUY/d8eCPEkP
+ u/Yc6T2BIy2MJFrMGbYS1fuBvrAMofApVMLnmPKLtoYzyqjJDAUGsxYDK
+ dbiKTn01JD1DWLViULHNg1bGcWUV2qOgTsB5KTtBtol/J1jJrLmn+n2Rm
+ bh4qIfQRaX54bhpf7l6NEikajGXSsQIc4NpxQbuH+vLx74OtCoL0htCig
+ GH/4gZcNasLrrzVAEAk6nDLhFIpEI013ph/9D4Grvu187rIVGlPYIGnMP
  g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HMo7/h3W
-Subject: [Intel-wired-lan] [PATCH net v4] ice: Prevent set_channel from
- changing queues while RDMA active
+ header.a=rsa-sha256 header.s=Intel header.b=IlzWpeyI
+Subject: [Intel-wired-lan] [PATCH net-next v8 0/5] add v2 FW logging for ice
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,214 +97,113 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The PF controls the set of queues that the RDMA auxiliary_driver requests
-resources from.  The set_channel command will alter that pool and trigger a
-reconfiguration of the VSI, which breaks RDMA functionality.
+FW log support was added to the ice driver, but that version is no
+longer supported. There is a newer version of FW logging (v2) that
+adds more control knobs to get the exact data out of the FW
+for debugging.
 
-Prevent set_channel from executing when RDMA driver bound to auxiliary
-device.
+Additionally, instead of dumping the FW log output to syslog,
+dump it to debugfs. The FW log data is really just binary
+data that the FW log team decodes to determine what happens so the
+translation from binary to some text output just slows things down
+and results in potential dropped data. The structure for the debugfs
+entry is: /sys/kernel/debug/ice/<pci device>/fwlog
 
-Adding a locked variable to pass down the call chain to avoid double
-locking the device_lock.
+Once enabled the FW log data is received as ARQ events that the driver
+processes.
 
-Fixes: 348048e724a0 ("ice: Implement iidc operations")
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+The FW logging is across all the PFs on the device, so restrict the
+commands to only PF0.
+
+The following new device parameters are added:
+- fwlog_supported (read-only): does the FW support FW logging
+- fwlog_enabled (read/write): is FW logging currently running
+- fwlog_level (read/write): the log level enabled, valid values are
+    Each level includes the messages from the previous/lower level
+	0 - no logging
+	1 - error logging
+	2 - warning logging
+	3 - normal logging
+	4 - verbose logging
+- fwlog_resolution (read/write): the number of log messages to included
+  in a single ARQ event. The range is 1-128 (1 means push every log
+  message, 128 means push only when the max AQ command buffer is full).
+  The suggested value is 10.
+
+This patch series adds the following set of devlink commands:
+
+devlink dev param set <pci dev> name fwlog_enabled value <true/false> cmode runtime
+devlink dev param set <pci dev> name fwlog_level value <0-4> cmode runtime
+devlink dev param set <pci dev> name fwlog_resolution value <1-128> cmode runtime
 ---
-Changes since v3:
-Protected driver with device_lock.
-sent variable down the call chain to avoid double lock
+v8:
+- added vmalloc.h file for correct prototypes
+- moved code change from patch 5 to patch 3 where it was supposed to be
+- fixed a style issue
+v7:
+- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
+- refactored ice_debugfs_command_read() to split the copying of the data and
+  the freeing of the buffers. This allows for better error recovery in case
+  the copy_to_user() fails
+- changed allocation of fwlog buffers and structure from kernel memory to
+  virtual memory (vmalloc/vzalloc)
+- fixed a compile bug
+v6:
+- removed cache_cfg() based on feedback
+- a couple of other minor changes based on feedback
+v5:
+- handle devlink reload path correctly so debugfs directories don't get
+  added twice
+- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
+  compile issues with multiple defines
+v4:
+- actually changed the modes in ice.rst for new params
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
 
-Changes since v2:
-Added check for NULL pointer
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: enable devlink to check FW logging status
+  ice: add ability to query/set FW log level and resolution
+  ice: disable FW logging on driver unload
+  ice: use debugfs to output FW log data
 
-Changes since v1:
-Fixed typos and pointer reference
----
- drivers/net/ethernet/intel/ice/ice.h         |  2 +-
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 23 +++++++++-------
- drivers/net/ethernet/intel/ice/ice_dcb_lib.h |  4 +--
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 28 +++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_main.c    |  5 ++--
- 5 files changed, 43 insertions(+), 19 deletions(-)
+ Documentation/networking/devlink/ice.rst      |  39 ++
+ drivers/net/ethernet/intel/ice/Makefile       |   5 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  22 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 160 ++++----
+ drivers/net/ethernet/intel/ice/ice_common.c   | 218 +----------
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 116 ++++++
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 200 +++++++++-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 367 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  57 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     | 101 ++++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
+ 12 files changed, 992 insertions(+), 317 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 2f0b604abc5e..713069f809ec 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -880,7 +880,7 @@ void ice_set_ethtool_repr_ops(struct net_device *netdev);
- void ice_set_ethtool_safe_mode_ops(struct net_device *netdev);
- u16 ice_get_avail_txq_count(struct ice_pf *pf);
- u16 ice_get_avail_rxq_count(struct ice_pf *pf);
--int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx);
-+int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx, bool locked);
- void ice_update_vsi_stats(struct ice_vsi *vsi);
- void ice_update_pf_stats(struct ice_pf *pf);
- void
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 4f24d441c35e..0a55c552189a 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -441,7 +441,7 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
- 		goto out;
- 	}
- 
--	ice_pf_dcb_recfg(pf);
-+	ice_pf_dcb_recfg(pf, false);
- 
- out:
- 	/* enable previously downed VSIs */
-@@ -731,12 +731,13 @@ static int ice_dcb_noncontig_cfg(struct ice_pf *pf)
- /**
-  * ice_pf_dcb_recfg - Reconfigure all VEBs and VSIs
-  * @pf: pointer to the PF struct
-+ * @locked: is adev device lock held
-  *
-  * Assumed caller has already disabled all VSIs before
-  * calling this function. Reconfiguring DCB based on
-  * local_dcbx_cfg.
-  */
--void ice_pf_dcb_recfg(struct ice_pf *pf)
-+void ice_pf_dcb_recfg(struct ice_pf *pf, bool locked)
- {
- 	struct ice_dcbx_cfg *dcbcfg = &pf->hw.port_info->qos_cfg.local_dcbx_cfg;
- 	struct iidc_event *event;
-@@ -783,14 +784,16 @@ void ice_pf_dcb_recfg(struct ice_pf *pf)
- 		if (vsi->type == ICE_VSI_PF)
- 			ice_dcbnl_set_all(vsi);
- 	}
--	/* Notify the AUX drivers that TC change is finished */
--	event = kzalloc(sizeof(*event), GFP_KERNEL);
--	if (!event)
--		return;
-+	if (!locked) {
-+		/* Notify the AUX drivers that TC change is finished */
-+		event = kzalloc(sizeof(*event), GFP_KERNEL);
-+		if (!event)
-+			return;
- 
--	set_bit(IIDC_EVENT_AFTER_TC_CHANGE, event->type);
--	ice_send_event_to_aux(pf, event);
--	kfree(event);
-+		set_bit(IIDC_EVENT_AFTER_TC_CHANGE, event->type);
-+		ice_send_event_to_aux(pf, event);
-+		kfree(event);
-+	}
- }
- 
- /**
-@@ -1044,7 +1047,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
- 	}
- 
- 	/* changes in configuration update VSI */
--	ice_pf_dcb_recfg(pf);
-+	ice_pf_dcb_recfg(pf, false);
- 
- 	/* enable previously downed VSIs */
- 	ice_dcb_ena_dis_vsi(pf, true, true);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-index 4c421c842a13..800879a88c5e 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-@@ -23,7 +23,7 @@ u8 ice_dcb_get_tc(struct ice_vsi *vsi, int queue_index);
- int
- ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked);
- int ice_dcb_bwchk(struct ice_pf *pf, struct ice_dcbx_cfg *dcbcfg);
--void ice_pf_dcb_recfg(struct ice_pf *pf);
-+void ice_pf_dcb_recfg(struct ice_pf *pf, bool locked);
- void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi);
- int ice_init_pf_dcb(struct ice_pf *pf, bool locked);
- void ice_update_dcb_stats(struct ice_pf *pf);
-@@ -128,7 +128,7 @@ static inline u8 ice_get_pfc_mode(struct ice_pf *pf)
- 	return 0;
- }
- 
--static inline void ice_pf_dcb_recfg(struct ice_pf *pf) { }
-+static inline void ice_pf_dcb_recfg(struct ice_pf *pf, bool locked) { }
- static inline void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi) { }
- static inline void ice_update_dcb_stats(struct ice_pf *pf) { }
- static inline void
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 4191994d8f3a..9206ef33c755 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3641,7 +3641,9 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 	struct ice_vsi *vsi = np->vsi;
- 	struct ice_pf *pf = vsi->back;
- 	int new_rx = 0, new_tx = 0;
-+	bool locked = false;
- 	u32 curr_combined;
-+	int ret = 0;
- 
- 	/* do not support changing channels in Safe Mode */
- 	if (ice_is_safe_mode(pf)) {
-@@ -3705,15 +3707,33 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 		return -EINVAL;
- 	}
- 
--	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
-+	if (pf->adev) {
-+		mutex_lock(&pf->adev_mutex);
-+		device_lock(&pf->adev->dev);
-+		locked = true;
-+		if (pf->adev->dev.driver) {
-+			netdev_err(dev, "Cannot change channels when RDMA is active\n");
-+			ret = -EINVAL;
-+			goto adev_unlock;
-+		}
-+	}
-+
-+	ice_vsi_recfg_qs(vsi, new_rx, new_tx, locked);
- 
--	if (!netif_is_rxfh_configured(dev))
--		return ice_vsi_set_dflt_rss_lut(vsi, new_rx);
-+	if (!netif_is_rxfh_configured(dev)) {
-+		ret = ice_vsi_set_dflt_rss_lut(vsi, new_rx);
-+		goto adev_unlock;
-+	}
- 
- 	/* Update rss_size due to change in Rx queues */
- 	vsi->rss_size = ice_get_valid_rss_size(&pf->hw, new_rx);
- 
--	return 0;
-+adev_unlock:
-+	if (locked) {
-+		device_unlock(&pf->adev->dev);
-+		mutex_unlock(&pf->adev_mutex);
-+	}
-+	return ret;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a9a7f8b52140..4f1e7f0fa008 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4195,12 +4195,13 @@ bool ice_is_wol_supported(struct ice_hw *hw)
-  * @vsi: VSI being changed
-  * @new_rx: new number of Rx queues
-  * @new_tx: new number of Tx queues
-+ * @locked: is adev device_lock held
-  *
-  * Only change the number of queues if new_tx, or new_rx is non-0.
-  *
-  * Returns 0 on success.
-  */
--int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx)
-+int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx, bool locked)
- {
- 	struct ice_pf *pf = vsi->back;
- 	int err = 0, timeout = 50;
-@@ -4229,7 +4230,7 @@ int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx)
- 
- 	ice_vsi_close(vsi);
- 	ice_vsi_rebuild(vsi, false);
--	ice_pf_dcb_recfg(pf);
-+	ice_pf_dcb_recfg(pf, locked);
- 	ice_vsi_open(vsi);
- done:
- 	clear_bit(ICE_CFG_BUSY, pf->state);
 -- 
-2.37.3
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
