@@ -1,190 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE77F67AB0C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 08:39:37 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BFAB67AB47
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 09:03:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0B0D3404F6;
-	Wed, 25 Jan 2023 07:39:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B0D3404F6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8869441177;
+	Wed, 25 Jan 2023 08:03:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8869441177
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674632376;
-	bh=jWoYfCP+300tDlJEhGIeFanwxv8zrexRx6jZpOZWcd8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1674633835;
+	bh=W3IyStSQJ5lOESMiOC8H994kJmTY7Qa3GusTkRgSAzY=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=c7FF8Dl0KGkssYehsIyR8tCDeRysCU5j0OZEveoyF5+jEnor4AqfdaDYA3AObU2bB
-	 22f7nd5pTKBaSEqFeCxAmnGjv0PDkf9p8edoGVWXt1RncsswZqB2CwnvZYm7LKsyuH
-	 u0tCYRRWDGUxAy9QcEW632mKAd3a2XA90hx8fN9X+r5cRe83J7TjKxw0b1jAvU6Q8m
-	 f3stkeKnC2tgw7hp1Dnf8Hz/gd2MpzGNI88X0ztqr+guheMb895mSGyVroFIz119uI
-	 f03fZ5US8Vaw0QyVEBtIonh9PesuG68IGJPMyHaHZyGR80wF+P6FjvKSLs1WMydwuO
-	 3wPROd3kvpDXQ==
+	b=F+Kk0HogwXKuB+AAt7WKHznfdwMcw6Fb1jQCPGHOdzg8ck0lfZ7wWlX6hNyOm10y/
+	 uFI8coeDJd35ktJKzYYxQTKsCcphEOvQlxKx+KB1DOVEVPTWHqPsKT/hOE8KlvdY05
+	 GkwikeLjCuRLb+1yLVzUxGB+rnnI0IhZhpZwvoJl19Sa4gBaQ/Vv1Ry9gjwFAhqp7y
+	 UpKjQ7Bdz+YChpRmS0+paf8+O9Ywlz/CZ61PXxVcLTAF9DqyhZhXZPX0mIAA7494qw
+	 yN3BDqZ7jFu1KBpSGvCcGajdseLCt/an8YJtxUvaXVkWIQmGCBX+TelGDrGyZq8nMx
+	 tGMaawTdMz8tA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id He0Y8S11kjD0; Wed, 25 Jan 2023 07:39:34 +0000 (UTC)
+	with ESMTP id m5qX2IosHKOG; Wed, 25 Jan 2023 08:03:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 35FBD404EC;
-	Wed, 25 Jan 2023 07:39:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 35FBD404EC
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B89511BF420
- for <intel-wired-lan@osuosl.org>; Wed, 25 Jan 2023 07:39:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 004B640FE3;
+	Wed, 25 Jan 2023 08:03:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 004B640FE3
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E2FE1BF420
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 08:03:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8EEC641761
- for <intel-wired-lan@osuosl.org>; Wed, 25 Jan 2023 07:39:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8EEC641761
+ by smtp3.osuosl.org (Postfix) with ESMTP id E6DDA61112
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 08:03:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E6DDA61112
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xN7-x-SZPmLf for <intel-wired-lan@osuosl.org>;
- Wed, 25 Jan 2023 07:39:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bwU_95QZxUVs for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Jan 2023 08:03:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82D2D4155B
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 82D2D4155B
- for <intel-wired-lan@osuosl.org>; Wed, 25 Jan 2023 07:39:27 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="353781059"
-X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="353781059"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2023 23:39:26 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 98FED60F84
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 98FED60F84
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 08:03:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="324202430"
+X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="324202430"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jan 2023 00:03:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="612331059"
-X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="612331059"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga003.jf.intel.com with ESMTP; 24 Jan 2023 23:39:26 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="836277371"
+X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="836277371"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga005.jf.intel.com with ESMTP; 25 Jan 2023 00:03:45 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 24 Jan 2023 23:39:26 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.16; Wed, 25 Jan 2023 00:03:45 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 24 Jan 2023 23:39:26 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2507.16; Wed, 25 Jan 2023 00:03:44 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Wed, 25 Jan 2023 00:03:44 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.103)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 24 Jan 2023 23:39:25 -0800
+ 15.1.2507.16; Wed, 25 Jan 2023 00:03:43 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=htABNvv65MTIh024uGd46v72RpzqeYL14Kd2YSiw3VHHc5zxSx3etEty8ta9UHgBguDjI1kPJJKO9wlldfMlT/t/TOR03ceHBacDn+Jlc27RrtOTwKHFsz2cWX7jUdluQRi5lrnT+g250W6M+UYCIvjkO9iHvhvCDkIhOWNsTFDVUW56es84/Tf9QTONbczwsF87ruX1aRHNL2BdGuHM0YGqUUoTRJLlrXRnyNVk4DmdcHLmEltslktqj6GyPSIsSpqrYlNLiFNqpzDgdQYvaNnwtXalwEpuEff5HHYrK/RQRvAXFqIzQmNFW8tjsCwDJm8aPc2klGx6SsjqxJVWOg==
+ b=G+/RBtemMgAvfMe9eTuiovXozEWvFcWAdUkTlziUrnYjPvZ2CGv5QYCUX2ADK7t+vLqg2MzQbrCK3cMFtZff0CCqvgONvFfBpNZv8aKceaexHnFWO8ZxsZ+4/zngwWpStlcPCrZngKPvwG7u1wagJ1VaHd5670SSFBCH7dMavydZwh/mQuh2bMGfe0wJwtYMzGmB5arBmMng7pOEhAwPKNXT30Pb5jKfPWbJ1FSE3KVB1oJYJcHDGdpnrX6y9Uasu7hdEi4kMuE5ciz72e4kt3E7AC/Fg14sWRtCGjte/ABySkjKD4HCV2lunlIgc7BM9UhdVLn801h0I4weRCyBqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mo/V6edqClMYm6TNB2pOsrrhfxyXRZiEKUcVQzLZa+g=;
- b=f8TVmE3bz63WytqzykjE2lc+OB+ZWXfBh+3vztsI98WyC8CApQBNObWOnB6s6vWoyMgXMkI8Mcwj3eOguDNHM6pS7ZjCbYzcSW0w7FBrHCsxg+g+T7rUQgb/zCCK8zjqTSZRB2CKaBCQZWjoI/hF6Jp/WQ91v/vV39YDFk2j8jcFEjKqafZ5+gIUGkxDVjLdugsH8RvCGx/M92GwqZoPm3S4kE5pfNBXFkyh4VOoAWwZdZVcnaqUIqyVTdE3ltl0GI27XlObblyjClsdhs+NcI2IXslWjxAqwDHY6dh804wRy/+Qb4ykhlEpLOfVgLQmQQdk0kWtw3hCIqV6jsyTpw==
+ bh=jDszY4kx9YFrzb9k8BWKMtX7XYaddCh/Nj8IXxon16Y=;
+ b=QcT+b6HWkQYOGXHkXd8FNF3lVblVKgRoEwQGT4x6dRYnCq1+KPgEU4fry2DI4y14pWfcv0u2t3ADKH8aaJtLm/axQW//TWZjSGFJ75e/A1D/t4QXd6PkXDhthGvhca2ueNHnCLJWKcOtevZ8VSOFwIggX6dbcE+gDBGfQYhiur8zDH5HWYg4xtkbLKIyeWZwY8RZOCq2B4snx4EbPgZ3wz8DWQdMwvQUOitN/sTSOPj6Xd/SQQdP+LKV5w8SwggRMF3LDIgB/jofgqLJo4h/nV7dK+2z92tuKw/qtTpeNaI3S6VflPMvoo4X+vTPFFJLPfmBk/BwekYsaSgfaYrnUQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com (2603:10b6:303:20c::13)
- by CY5PR11MB6463.namprd11.prod.outlook.com (2603:10b6:930:31::7) with
+Received: from BN7PR11MB2788.namprd11.prod.outlook.com (2603:10b6:406:b2::30)
+ by DM4PR11MB5327.namprd11.prod.outlook.com (2603:10b6:5:392::22) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.28; Wed, 25 Jan
- 2023 07:39:18 +0000
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::7c7c:f50a:e5bc:2bfb]) by MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::7c7c:f50a:e5bc:2bfb%3]) with mapi id 15.20.6002.013; Wed, 25 Jan 2023
- 07:38:56 +0000
-Message-ID: <b85639cd-5145-e3fb-7e4e-900f8b2bf57c@intel.com>
-Date: Wed, 25 Jan 2023 09:38:47 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.6.1
-To: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>, "Ruinskiy, Dima"
- <dima.ruinskiy@intel.com>, "Avargil, Raanan" <raanan.avargil@intel.com>,
- naamax.meir <naamax.meir@linux.intel.com>, "Meir, NaamaX"
- <naamax.meir@intel.com>, "Efrati, Nir" <nir.efrati@intel.com>, "Lifshits,
- Vitaly" <vitaly.lifshits@intel.com>
-References: <mailman.5156.1673329730.179342.intel-wired-lan@osuosl.org>
- <SJ1PR11MB618069735F4BD2781909EF6DB8C99@SJ1PR11MB6180.namprd11.prod.outlook.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.33; Wed, 25 Jan
+ 2023 08:03:41 +0000
+Received: from BN7PR11MB2788.namprd11.prod.outlook.com
+ ([fe80::13e7:eea5:56bc:ac04]) by BN7PR11MB2788.namprd11.prod.outlook.com
+ ([fe80::13e7:eea5:56bc:ac04%7]) with mapi id 15.20.6002.033; Wed, 25 Jan 2023
+ 08:03:41 +0000
+From: "Andrysiak, Jakub" <jakub.andrysiak@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [net-queue v4 1/1] ice: Do not use
+ WQ_MEM_RECLAIM flag for workqueue
+Thread-Index: AQHZLEtI0eg83h6RiUa0dhfatD6zSK6uy9lA
+Date: Wed, 25 Jan 2023 08:03:41 +0000
+Message-ID: <BN7PR11MB2788E3C68F352F9E7E539C64E6CE9@BN7PR11MB2788.namprd11.prod.outlook.com>
+References: <20230119211608.2105338-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20230119211608.2105338-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-In-Reply-To: <SJ1PR11MB618069735F4BD2781909EF6DB8C99@SJ1PR11MB6180.namprd11.prod.outlook.com>
-X-ClientProxiedBy: ZR0P278CA0066.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:21::17) To MW4PR11MB6738.namprd11.prod.outlook.com
- (2603:10b6:303:20c::13)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB6738:EE_|CY5PR11MB6463:EE_
-X-MS-Office365-Filtering-Correlation-Id: 43546139-59da-4a31-2cb2-08dafea73718
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: HrpiROcqs2PaDtwduzILVaKylYbGXBvJ67x7rmHXjw/QH3WnJYyT64JZKkWeHaEKUvmNJOiN3JZQ8v8GG8O1jTpzxKCVZby7SUAkL3qfVGmOEi0aSjDcXFh5bwtqfXYbyjZH+8ce0pmV9THOf1n/4vqN+/5Szf8eKzzuZHf2zlG9Q6Pfle76+esf0Xuohc/hqGaTsf3yQgzoUBmb4UkfOidHPSDI3tWTc2PTHd54UFdnr6xqh/GgJ11mBlkjGxFTUV5I+bpiyp2eAqfOLTV5TYCZZcPzs9ssfscnLYwiws16saeZl7YcjKwE756+90ca/84hy73NiO1FzwbDJ6/BWui3Gmybx1pRYogrT9sPkn4M9p5is72bpYzbBxdBzMoBqiQ6j3OKuaORCCzrG70G0/CEHECfohZxVRJWDfNv9HswQiIncL8uRLmtN1DRKQPASliTkwhcHKGpfjPtrLKrIJEmx0M+Udu/b5Qki4WPUHs2qVqZfrLfBlvptBu22nz2StO7nceNd6pJ63F1o1PPwOMVxwPSSyzh0VuBKcA6k+wg2Z4wyZy4ATxamJF1r5z6BDkqF3X+UDqC5WRaq+1HwYY8gpqi6bynPVgY3HkhJ/FxzoXUOfAdO1stCItz52ulUBOCcG3QQpVWwLR5gyl2aoUsFyKxuGSpn/gx7xzA8LPZU+ZF3YWPaLUlmFI/HKkKhSHJIwQ4BI7I1zNj/MqWf9NodWaqxpz0shBxMP9hRA8LQ5dWV3lQVcrp1tsiiF7D7qypkIB4JxMLGzRPmy2ItvlLMceyZAccGEmRTxMveShO4h7P5JOGYLpq9IIGrzn0
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB6738.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(366004)(396003)(39860400002)(346002)(136003)(376002)(451199018)(66899018)(82960400001)(31686004)(6506007)(36756003)(6666004)(6636002)(38100700002)(921005)(41300700001)(316002)(110136005)(83380400001)(8936002)(2616005)(26005)(66946007)(2906002)(186003)(31696002)(53546011)(6512007)(66556008)(8676002)(966005)(66476007)(86362001)(30864003)(6486002)(5660300002)(478600001)(45980500001)(43740500002);
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN7PR11MB2788:EE_|DM4PR11MB5327:EE_
+x-ms-office365-filtering-correlation-id: a531d5c0-265f-4ecf-fd43-08dafeaaac0f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Dv02/BrkPuMdsji11FU7Ge5VYTUTpC9ctlfBFMRpvSKpwhYFLou+d6amUCRvnunOrDmUG82IYARJnZatCJh+Z6aemjBhDMRAI4/GSC9yC/bi7EFrGdczMMHWr+8990ixqJQkpljhRNpenKWhjMJqVL0hVXNFQqCFvr0nRoa4EsyMjRSrU9FHQffJZ7givtnT8jJu5bgDwzujkwX//RhJNeyrQxN19Mf0DBXHn+zhDvHfkSLXPsOYdIZojwBe9PvZzWJX9f0ax5MCtHOLnIykdjpuEuOdaOjVggnc164+Xt1/0J12TDRFwiorLLdOhf4kZKgfCcqJeGew76Qdg9kJKiOIBU5Ivee3KwhJPmx43bpCEXqo0Rp6Pa5ksYXrI+/GmAdirZFE1fxUgQLTxH5lSuPTnMVBJKnW7c8t8e6wkhn+t7tFVDc7Y8AxS0/BSs1Nvf6mh+6Kiqy1Y4UQEYgHNJStJ9fOfu1d+/hVzRCrEIlnZZwNGxE1Zo49xwXc7KgrH3fFUR4I5ITzP6RP0WBF2RvoSpY93ngNA1ZfLlhG6EaeXg7sQvZvanxCuRIPbSjRWZLQH4GAiTJuOunBHoH/HgJG9z8SwoyDG+bRqLMDPjrRuBwQXar4xYwAatcFvPhfIDH0fkb5sXpBPetU114EWBuzdxYL5u0g7nbATNYZtAu1bYOnjsaTfSXJWKyo0/Z7QwhxPM4tqyVkCv7GQuvXgINzxvPFgpRG1pPc1nrTkl0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN7PR11MB2788.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(346002)(396003)(136003)(366004)(39860400002)(451199018)(83380400001)(33656002)(122000001)(38100700002)(41300700001)(9686003)(7696005)(66946007)(55016003)(64756008)(66556008)(45080400002)(86362001)(76116006)(82960400001)(110136005)(71200400001)(966005)(478600001)(66476007)(6506007)(66446008)(5660300002)(38070700005)(52536014)(2906002)(316002)(26005)(186003)(8676002)(53546011)(8936002);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OU1ZUEgrS2RXYVJ0T1R4U2lJSFgvZFBmUDVQYzY2Z1pNVzNSSXc4MTlhODhS?=
- =?utf-8?B?RXhQMlc5ZEpNVk5scWhYY2V2c251U3V2K1N0bWlZUUxHMzFkSmVEUGFabXBC?=
- =?utf-8?B?YlVScjB3QitzWnRocFhoM1QrVVcvRS9jTEUyQWFJN3lsS2o3akYvZnRMUVZZ?=
- =?utf-8?B?eDVJcXhTallaSmNpUk5COWo2L2RqSDV6cCtGMkJncTlTVXZwQUYxOUFRWVVa?=
- =?utf-8?B?ekdoTE9XeVdKZE52MUx0QlNndWFGcmcxcXpFdWxTaHEyWGZwclg5L2hqOUhF?=
- =?utf-8?B?a2ZvTzRJWHNIWWRNZWNiVDlIV3pBZmF2MEx0WG14UGYyU1JlaWVXWmI4M2hh?=
- =?utf-8?B?NHhOVkxpK3VjZWdXSHFQQ25vdG1vRlg0UkZRWjY2eW40Z1lscVUybHdiRzdm?=
- =?utf-8?B?eVBlcU5WbnVRcGR1MWZGNmpoT3VjRUl1OGlCMFMra0ZEbFdFWExtN0JhZkY4?=
- =?utf-8?B?Rlg1L3p3RzBMbzVQQUI3MzdjUU5MWTdLUzVEbHpXWGRQNW8xMFNQNzhJbWx0?=
- =?utf-8?B?b1h5Nmt0ZlJBUkRTdTYrWGZPaXlmQ0VLbDF4a1VaS2NXeXJ5SUt4bEFyVE11?=
- =?utf-8?B?LzEweFFDSFZXSjQ2RzcwVVV5RXNPY2NrbHBiYnNRci9hSGs1cE1WbE5tNDEy?=
- =?utf-8?B?eGRuSE85U3R1eUtiS2t3VWJrbjhya2xmUkFlYy96QjJMYUVpUW5sRHB5NmR3?=
- =?utf-8?B?aTl1c0tKSi9seGxvOEVrM21xY1hiOXRFVnR0MzhZZXpUUlhiTTlpaVdlc3Jn?=
- =?utf-8?B?U0tyYnUwMDZsVjFpS0E0UHF2eG9May9MeElzQ3dHeXNhTUYwKzZmMGZSQ0hp?=
- =?utf-8?B?UitKVjN3bXE0VW1MWDlhYW0vL1liV3pmbVYrc2Z0KzNsNWdBeUxyMnBRZFph?=
- =?utf-8?B?STZSdllnQnhDcThGMUcrNzZXRFBhSjJ0VkJMV1Y1Z1ZmbXNlS1o0RGhxQzV2?=
- =?utf-8?B?Z0MwWTBxNkVNcWgvQmt3SkxLZnBTdkloeU0xZ2ZvOW9WbTZYVG5QeVo4M3M5?=
- =?utf-8?B?TVh6c0JwTjdqQUptQWNuNFdGVFJkWGNwK0F4ZTV1QVUrV2NGRDlJMldTK0Zs?=
- =?utf-8?B?djNyOFRrWllKamh3cHFSeG5Kbm9scnZid2Z5aTFabEpicEgxckpSNzkrSHdS?=
- =?utf-8?B?UWgyWTEvZUpKOFhNNnhxVUdpdjl6Q281TlY3bG85Y1FBcFk5d0hDWWZDK0cz?=
- =?utf-8?B?aXZ4dWd4K2JvQ0l4bG5GeWhDYVRudVZXajRDck9WbGtWajk1TFVybzZpTlRs?=
- =?utf-8?B?R3MrMWlOMnN3T1NlelZVMldzNnBPR2p6ZVo2aUNjelB1NTcyMnVGZ29OYnNv?=
- =?utf-8?B?RkdSMGpvN1FNS1VYZHBVa2xTaC9PMlNyMFJaMTV2VTZReTA1QjM4cVR4Yits?=
- =?utf-8?B?TFllY0ZqQjg5S2pwVTBhb0hOaWFsajQ1eEN0RHkzdDcxN0xkQUhWRVFXQnB1?=
- =?utf-8?B?TEtrRzE1M25TbFppcHZzZ3YzNWZuVnJLWnZZYWZweEJNV3Q0T21MSEZmdjNm?=
- =?utf-8?B?WUFoczYzNFc4Qm9LMll3NlZoZjkwVVFXaVlXcThPRmlKb3dwbUg3QkhzZUl5?=
- =?utf-8?B?WnZwZ0JOUUZ2Vnphd0tBNFhzSE9iYmFISE1RSXFVT3Zic0U1a3FNK2s3RFlT?=
- =?utf-8?B?N0RLZXhyakVIN2hNcGxBaDZ4YWE0eDFBOU1YOXZ4RUxvY3Y1Ym1NQy9vdXF0?=
- =?utf-8?B?VVdCcnd3Nzd5ZWJ5U2YxRU9KMFZLSFQ3U1BkTm5uUHBCUml0cStmVlJESndr?=
- =?utf-8?B?cGp5MlNkem95bEVVNEIxK1E0NVJyTnZNc2d6UC8vQzJIZXE3ZDBkaE1qaFpp?=
- =?utf-8?B?bWxPMHhKM1FyN0tlWGVXUjZKMDkwS1MyQmpqMWE1Zzl1RjRCYy9TVFplcysz?=
- =?utf-8?B?U0tVWVJTc2VjZXpQMGwrdGtXUFd2dGtGSzhiMnQ4cCsxL2dXSEZCWjErYnJM?=
- =?utf-8?B?bkNJTElSaHAvZVdKNnArU0d6WEkvWmpVSTVOd0JsRlhLeHhlSENjald3L3B1?=
- =?utf-8?B?S1UvTTJ1ekQxdkxkdS9PL0ROb1l3QmhyOVYxOTlndFpLNTN0Y2dFS216VkV3?=
- =?utf-8?B?WnZyQm80b3ZkWnJjNFBqSzZ4WGx4dHo2NTQ3RjZpc2xNR1AyOWVST2FRcmRD?=
- =?utf-8?B?cFF2WlpsOUtNNUNtc2N1aUtwblp4dWVtY0ZLU2dQTEVKdlIvTml4eVlETW9o?=
- =?utf-8?B?UFE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 43546139-59da-4a31-2cb2-08dafea73718
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6738.namprd11.prod.outlook.com
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?BJTQk/pARh+CnityujvMiC9UpcctHGE4+0WYAdmE3PM9ZPG0p5iuSpKESTbS?=
+ =?us-ascii?Q?adIoTrYRX5yWiGiIuCVYRPlHibEylE4hDGr4iwEiPCoANV+v1AhDeCPKusox?=
+ =?us-ascii?Q?eOd1XOS2OV9S2hkuRhmoTF3WQYsNhsesfjTb+F675yxRUPilN5g84y7rsbqA?=
+ =?us-ascii?Q?KEujhy4amlo5Hb9RRFNfGNj6jtigx+otyIF+9tYLvi0fdtyU67uFIjm6T185?=
+ =?us-ascii?Q?2LRmLDwqb0ilJGiQkS8FrssAwrm9pHC6uXvQ0JUkS8gJRQZOfw/FA6mq1wjE?=
+ =?us-ascii?Q?VxrKqXeUChmoPaI4poGtpiMnM85kyYy174AIeXLuRK14XrXkajZsLLpYh7xD?=
+ =?us-ascii?Q?GZ7GCzwnl3tCw2R0oH5cxAaFuQW5vMVHVFF7p2tUHfXc8Vzn40r79qflRIRy?=
+ =?us-ascii?Q?z7p/fXff8MZLS7Oyv9J/Ngw2tRiM2jlAq2pUZ4Sy5JEY2nvuIuyzk2qWln0g?=
+ =?us-ascii?Q?zCr8Li8C3ok5lPCsvflf/I0wAx31TA5R1/0tQ24oHLwPKgnlHjUyGlO0pDUU?=
+ =?us-ascii?Q?QoijBxJMRYlnK9XHvSJuftfTNfSrf+U7rE6UI0PJGM1y8jUkshJEWxcyTf/g?=
+ =?us-ascii?Q?NzlXNOhZmDSjd/NzpM/PQkfNrxRpK1RbStR7BiCXZ2zS14u/LSNTksexHbZf?=
+ =?us-ascii?Q?nT7mMfIlolIcJEA6PguFp47dH3sx6wD7kC2u/HKeINmoGPU+Jum1MwOvBWZv?=
+ =?us-ascii?Q?sgFqWtL7bshNYbHKj3EeMaSk7M+ngH2FWSvKLNjawbBa5IO450UxvDlgKuSB?=
+ =?us-ascii?Q?bT2/op3mErg6rNAS/3CazKmHyf0tnheHMncuXjtO4mgo228cpgu7Mo7YDxe+?=
+ =?us-ascii?Q?rweFGBX0ZdBJ+saH5flsW+Q4shp8JOe8nfDONONonEaGZlNA5hNcXTjOo4KQ?=
+ =?us-ascii?Q?stNvsdO8s16u8uVMgxXSvoS7Kaqd7Yc1eQEdwH8IYmmq/+8uwACjPP2zv6jL?=
+ =?us-ascii?Q?1cEkMO41rp++MkpzhbuU7uKuICi/wC8EG3mJPhuUQVm7X8I2e+4ZmA+y7p/0?=
+ =?us-ascii?Q?ZMu7iw4jKj20h+pRf2/bMQ6pP0bImb1wOAognU8q4NedwLOvejC3ZG9W4mXr?=
+ =?us-ascii?Q?DNaoX7hBOfqYdlJ3vHJDflNX55fZ0AY7DCBFZTHJNIwWsHjzDX6Dcjw7zCPV?=
+ =?us-ascii?Q?0p//vmMimekaxKOetNH1RTl0oFceHfWAjLVDcT7thhyikEO++AgfIlQu+3tP?=
+ =?us-ascii?Q?zHJPWCQ0Fk+Xz8NJI0wPrexh374mASjFnC+XeAlrjI2uCiUNaH1WDcMzmnp7?=
+ =?us-ascii?Q?OVkaAnFp+t/xfYwmySAE7PHsQ0+DDMzW2RgCJiwdZXNxwKCYa/owVsG7Lpcz?=
+ =?us-ascii?Q?TKB89DNcUmg5UfYhl1hMyU4tJHVFtwZ3QaGwKk2UDAkbEq0U27/uu+nHhaJe?=
+ =?us-ascii?Q?+tzsIIH+1lpie8djK3XuC0FVxYOti10pG462UNRY6zm1NGhYut+X8uWAO+Yo?=
+ =?us-ascii?Q?xfOv3Yt7I5DPCQMpp01yuK6XNW8szYjdP9vgO9eOfDqxYTS85jwMkdimyatM?=
+ =?us-ascii?Q?EH7LaHIA8xipmsvcrOtnRL0f+hoq004GcYO+gg7w3MBXvyKHt9+DrKhi9yUn?=
+ =?us-ascii?Q?zT0VPThrKUBrJSgb7C46Acv9XWubw3sV5TvxmeAO?=
+MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jan 2023 07:38:56.6795 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BeLOmaAnoCcKVh7Y20Ky0pPGCLx4L6bynSrAn2amG9oDc9z6271WF3FUoy64hWCciwGO3wS4g2///126zZAqEg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6463
+X-MS-Exchange-CrossTenant-AuthSource: BN7PR11MB2788.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a531d5c0-265f-4ecf-fd43-08dafeaaac0f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jan 2023 08:03:41.0814 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: f3r2gDAhzfAeQNrG0v3f3r87HjCuh3vwj7YOKlQ6uumpOz7MY5HK5ub0dN5/Drb0xC/0uf3YeI3EQiGmVbWMLjrKb15zjuJRG9cXxg7aUog=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5327
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674632367; x=1706168367;
- h=message-id:date:subject:to:references:from:in-reply-to:
+ t=1674633827; x=1706169827;
+ h=from:to:subject:date:message-id:references:in-reply-to:
  content-transfer-encoding:mime-version;
- bh=AQYuNEUiWDnQedyb7sDzpr4gUI+MCPG0gX5UD8AD6mM=;
- b=gTlvqOYuVpLm1i45LQNmdP2SBPT0VZA61mqczkB5g07CT7qfXN9Vq30A
- b3y6xhMqsRAoJgwXfpGHBi3OGzOXI1nLkMceQJ8AaQL4ROeSRDs42/JZi
- SFEyh8FuCJqq+Bea5V5D9lMhmvkD5l1Wafu32ztApKqSVzoncX8FE3jfh
- kO63PU7zS7fCQR/NWRfXSxcTLX+Hn4IU0QUMaQziJDgR7DpjElvzhQZwY
- lhW3X144Jqhrlw0eJ7lqTaD/1BWMIQHUejqrNDUMNmjKjadkc+pxV934Q
- P8Qmbxj9pIGaXuajIAGxJqKcd/+q9WCh+FrldTEwKD/dKjMusXNti/PO0
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=qWXlsMk5k7gn9X7n3fe425CGH0nBSpXno7A+dJLdgXQ=;
+ b=HZLU+D9LQzMqi2SGPgjShwmlYFgaVSnB28+Q7kPE2EfsU3t5vdgfzHtN
+ 8blxeEZrHnNJSIsKyQYDmMHgK1PKSe8B9CYdx7CjVw0NXGovhKQ3YMQz4
+ 67wavByzamJtyo/WUbnF476qAPdZmYQhdRwkZbd5MCA90cy5xD1XbQg3t
+ WCy/G/0DhqVI2qgZYqmCD90voxvgOiAB3riukmOt+dkgz1mJmg8mVdPir
+ bAiGGm3tEDfc/SN2SOooJoNHfhUbgo1Y/De/9ZKl3idT7n6b1hHEVP9Ko
+ sKdiIYF4vrkNb1XRideadeh8uPgeTTyB/5arPVNsbkQUiD1Z5vldGSEwX
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gTlvqOYu
+ header.a=rsa-sha256 header.s=Intel header.b=HZLU+D9L
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] Intel-wired-lan Digest, Vol 405, Issue 6
+Subject: Re: [Intel-wired-lan] [net-queue v4 1/1] ice: Do not use
+ WQ_MEM_RECLAIM flag for workqueue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,518 +188,116 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/24/2023 16:46, Zulkifli, Muhammad Husaini wrote:
-> Hi Sasha,
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Tony Nguyen
+> Sent: Thursday, January 19, 2023 10:16 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [net-queue v4 1/1] ice: Do not use
+> WQ_MEM_RECLAIM flag for workqueue
 > 
->> -----Original Message-----
->> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->> intel-wired-lan-request@osuosl.org
->> Sent: Tuesday, 10 January, 2023 1:49 PM
->> To: intel-wired-lan@osuosl.org
->> Subject: Intel-wired-lan Digest, Vol 405, Issue 6
->>
->> Send Intel-wired-lan mailing list submissions to
->> 	intel-wired-lan@osuosl.org
->>
->> To subscribe or unsubscribe via the World Wide Web, visit
->> 	https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
->> or, via email, send a message with subject or body 'help' to
->> 	intel-wired-lan-request@osuosl.org
->>
->> You can reach the person managing the list at
->> 	intel-wired-lan-owner@osuosl.org
->>
->> When replying, please edit your Subject line so it is more specific than "Re:
->> Contents of Intel-wired-lan digest..."
->>
->>
->> Today's Topics:
->>
->>     1. [PATCH 1/1] ice: WiP support for BIG TCP packets
->>        (Pawel Chmielewski)
->>     2. Re: [PATCH 1/1] ice: WiP support for BIG TCP packets
->>        (Alexander H Duyck)
->>     3. [tnguy-net-queue:dev-queue] BUILD SUCCESS
->>        4cb425d20a6ddbf9fd40989c31f5c6f8f304dc35 (kernel test robot)
->>     4. [PATCH net v1 1/1] igc: Add ndo_tx_timeout support (Sasha Neftin)
->>
->>
->> ----------------------------------------------------------------------
->>
->> Message: 1
->> Date: Mon,  9 Jan 2023 17:18:33 +0100
->> From: Pawel Chmielewski <pawel.chmielewski@intel.com>
->> To: netdev@vger.kernel.org
->> Cc: intel-wired-lan@osuosl.org, Pawel Chmielewski
->> 	<pawel.chmielewski@intel.com>
->> Subject: [Intel-wired-lan] [PATCH 1/1] ice: WiP support for BIG TCP
->> 	packets
->> Message-ID: <20230109161833.223510-1-pawel.chmielewski@intel.com>
->>
->> This patch is a proof of concept for testing BIG TCP feature in ice driver.
->> Please see letter below.
->>
->> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
->> ---
->> Hi All
->> I'm writing on the list, as you may be able to provide me some feedback.
->> I want to enable BIG TCP feature in intel ice drive, but I think I'm missing
->> something.
->> In the code itself, I've set 128k as a maximum tso size for the netif, and
->> added stripping the HBH option from the header.
->> For testing purposes, gso_max_size & gro_max_size were set to 128k and
->> mtu to 9000.
->> I've assumed that the ice tso offload will do the rest of the job.
->> However- while running netperf TCP_RR and TCP_STREAM tests, I saw that
->> only up to ~20% of the transmitted test packets have the specified size.
->> Other packets to be transmitted, appear from the stack as splitted.
->>
->> I've been running the following testcases:
->> netperf -t TCP_RR -H 2001:db8:0:f101::1  -- -r80000,80000 -O
->> MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
->> netperf -l-1 -t TCP_STREAM -H 2001:db8:0:f101::1  -- -m 128K -O
->> MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
->> I suspected a shrinking tcp window size, but sniffing with tcpdump showed
->> rather big scaling factor (usually 128x).
->> Apart from using netperf, I also tried a simple IPv6 user space application
->> (with SO_SNDBUF option set to 192k and TCP_WINDOW_CLAMP to 96k) -
->> similar results.
->>
->> I'd be very grateful for any feedback/suggestions
->>
->> Pawel
->> ---
->>   drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
->> drivers/net/ethernet/intel/ice/ice_txrx.c | 9 +++++++++
->>   2 files changed, 13 insertions(+)
->>
->> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
->> b/drivers/net/ethernet/intel/ice/ice_main.c
->> index 2b23b4714a26..4e657820e55d 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->> @@ -48,6 +48,8 @@ static DEFINE_IDA(ice_aux_ida);
->> DEFINE_STATIC_KEY_FALSE(ice_xdp_locking_key);
->>   EXPORT_SYMBOL(ice_xdp_locking_key);
->>
->> +#define ICE_MAX_TSO_SIZE 131072
->> +
->>   /**
->>    * ice_hw_to_dev - Get device pointer from the hardware structure
->>    * @hw: pointer to the device HW structure @@ -3422,6 +3424,8 @@ static
->> void ice_set_netdev_features(struct net_device *netdev)
->>   	 * be changed at runtime
->>   	 */
->>   	netdev->hw_features |= NETIF_F_RXFCS;
->> +
->> +	netif_set_tso_max_size(netdev, ICE_MAX_TSO_SIZE);
->>   }
->>
->>   /**
->> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c
->> b/drivers/net/ethernet/intel/ice/ice_txrx.c
->> index 086f0b3ab68d..7e0ac483cad9 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
->> @@ -23,6 +23,9 @@
->>   #define FDIR_DESC_RXDID 0x40
->>   #define ICE_FDIR_CLEAN_DELAY 10
->>
->> +#define HBH_HDR_SIZE sizeof(struct hop_jumbo_hdr) #define
->> HBH_OFFSET
->> +ETH_HLEN + sizeof(struct ipv6hdr)
->> +
->>   /**
->>    * ice_prgm_fdir_fltr - Program a Flow Director filter
->>    * @vsi: VSI to send dummy packet
->> @@ -2300,6 +2303,12 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct
->> ice_tx_ring *tx_ring)
->>
->>   	ice_trace(xmit_frame_ring, tx_ring, skb);
->>
->> +	if (ipv6_has_hopopt_jumbo(skb)) {
->> +		memmove(skb->data + HBH_HDR_SIZE, skb->data,
->> HBH_OFFSET);
->> +		__skb_pull(skb, HBH_HDR_SIZE);
->> +		skb_reset_mac_header(skb);
->> +	}
->> +
->>   	count = ice_xmit_desc_count(skb);
->>   	if (ice_chk_linearize(skb, count)) {
->>   		if (__skb_linearize(skb))
->> --
->> 2.37.3
->>
->>
->>
->> ------------------------------
->>
->> Message: 2
->> Date: Mon, 09 Jan 2023 10:22:22 -0800
->> From: Alexander H Duyck <alexander.duyck@gmail.com>
->> To: Pawel Chmielewski <pawel.chmielewski@intel.com>,
->> 	netdev@vger.kernel.org
->> Cc: intel-wired-lan@osuosl.org
->> Subject: Re: [Intel-wired-lan] [PATCH 1/1] ice: WiP support for BIG
->> 	TCP packets
->> Message-ID:
->> <9b68abc5e8613e02207e9c0c3619b1b07bc5bb8c.camel@gmail.com>
->> Content-Type: text/plain; charset="UTF-8"
->>
->> On Mon, 2023-01-09 at 17:18 +0100, Pawel Chmielewski wrote:
->>> This patch is a proof of concept for testing BIG TCP feature in ice driver.
->>> Please see letter below.
->>>
->>> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
->>> ---
->>> Hi All
->>> I'm writing on the list, as you may be able to provide me some feedback.
->>> I want to enable BIG TCP feature in intel ice drive, but I think I'm
->>> missing something.
->>> In the code itself, I've set 128k as a maximum tso size for the netif,
->>> and added stripping the HBH option from the header.
->>> For testing purposes, gso_max_size & gro_max_size were set to 128k and
->>> mtu to 9000.
->>> I've assumed that the ice tso offload will do the rest of the job.
->>> However- while running netperf TCP_RR and TCP_STREAM tests,
->>> I saw that only up to ~20% of the transmitted test packets have
->>> the specified size.
->>> Other packets to be transmitted, appear from the stack as splitted.
->>>
->>> I've been running the following testcases:
->>> netperf -t TCP_RR -H 2001:db8:0:f101::1  -- -r80000,80000 -O
->> MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
->>> netperf -l-1 -t TCP_STREAM -H 2001:db8:0:f101::1  -- -m 128K -O
->> MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
->>> I suspected a shrinking tcp window size, but sniffing with tcpdump showed
->> rather big scaling factor (usually 128x).
->>> Apart from using netperf, I also tried a simple IPv6 user space application
->>> (with SO_SNDBUF option set to 192k and TCP_WINDOW_CLAMP to 96k) -
->> similar results.
->>>
->>> I'd be very grateful for any feedback/suggestions
->>>
->>> Pawel
->>> ---
->>>   drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
->>>   drivers/net/ethernet/intel/ice/ice_txrx.c | 9 +++++++++
->>>   2 files changed, 13 insertions(+)
->>>
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
->> b/drivers/net/ethernet/intel/ice/ice_main.c
->>> index 2b23b4714a26..4e657820e55d 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->>> @@ -48,6 +48,8 @@ static DEFINE_IDA(ice_aux_ida);
->>>   DEFINE_STATIC_KEY_FALSE(ice_xdp_locking_key);
->>>   EXPORT_SYMBOL(ice_xdp_locking_key);
->>>
->>> +#define ICE_MAX_TSO_SIZE 131072
->>> +
->>>   /**
->>>    * ice_hw_to_dev - Get device pointer from the hardware structure
->>>    * @hw: pointer to the device HW structure
->>> @@ -3422,6 +3424,8 @@ static void ice_set_netdev_features(struct
->> net_device *netdev)
->>>   	 * be changed at runtime
->>>   	 */
->>>   	netdev->hw_features |= NETIF_F_RXFCS;
->>> +
->>> +	netif_set_tso_max_size(netdev, ICE_MAX_TSO_SIZE);
->>>   }
->>>
->>>   /**
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c
->> b/drivers/net/ethernet/intel/ice/ice_txrx.c
->>> index 086f0b3ab68d..7e0ac483cad9 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
->>> @@ -23,6 +23,9 @@
->>>   #define FDIR_DESC_RXDID 0x40
->>>   #define ICE_FDIR_CLEAN_DELAY 10
->>>
->>> +#define HBH_HDR_SIZE sizeof(struct hop_jumbo_hdr)
->>> +#define HBH_OFFSET ETH_HLEN + sizeof(struct ipv6hdr)
->>> +
->>>   /**
->>>    * ice_prgm_fdir_fltr - Program a Flow Director filter
->>>    * @vsi: VSI to send dummy packet
->>> @@ -2300,6 +2303,12 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct
->> ice_tx_ring *tx_ring)
->>>
->>>   	ice_trace(xmit_frame_ring, tx_ring, skb);
->>>
->>> +	if (ipv6_has_hopopt_jumbo(skb)) {
->>> +		memmove(skb->data + HBH_HDR_SIZE, skb->data,
->> HBH_OFFSET);
->>> +		__skb_pull(skb, HBH_HDR_SIZE);
->>> +		skb_reset_mac_header(skb);
->>> +	}
->>> +
->>>   	count = ice_xmit_desc_count(skb);
->>>   	if (ice_chk_linearize(skb, count)) {
->>>   		if (__skb_linearize(skb))
->>
->> Your removal code here is forgetting to handle the network header. As a
->> result your frames will be pointer mangled in terms of header location.
->>
->> You might be better off using ipv6_hopopt_jumbo_remove() rather than
->> just coding your own bit to remove it.
->>
->>
->> ------------------------------
->>
->> Message: 3
->> Date: Tue, 10 Jan 2023 13:10:09 +0800
->> From: kernel test robot <lkp@intel.com>
->> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
->> Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
->> 	4cb425d20a6ddbf9fd40989c31f5c6f8f304dc35
->> Message-ID: <63bcf331.kDz0I6QwE35Zcf1P%lkp@intel.com>
->> Content-Type: text/plain; charset=us-ascii
->>
->> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-
->> queue.git dev-queue
->> branch HEAD: 4cb425d20a6ddbf9fd40989c31f5c6f8f304dc35  ice: fix out-of-
->> bounds KASAN warning in virtchnl
->>
->> elapsed time: 723m
->>
->> configs tested: 84
->> configs skipped: 2
->>
->> The following configs have been built successfully.
->> More configs may be tested in the coming days.
->>
->> gcc tested configs:
->> x86_64                            allnoconfig
->> arc                                 defconfig
->> alpha                               defconfig
->> powerpc                           allnoconfig
->> um                             i386_defconfig
->> um                           x86_64_defconfig
->> alpha                            allyesconfig
->> s390                             allmodconfig
->> m68k                             allmodconfig
->> arc                              allyesconfig
->> s390                                defconfig
->> m68k                             allyesconfig
->> x86_64                              defconfig
->> s390                             allyesconfig
->> i386                                defconfig
->> arm                                 defconfig
->> i386                             allyesconfig
->> x86_64               randconfig-a011-20230109
->> x86_64               randconfig-a013-20230109
->> i386                 randconfig-a011-20230109
->> x86_64               randconfig-a012-20230109
->> sh                               allmodconfig
->> i386                 randconfig-a013-20230109
->> x86_64                           rhel-8.3-bpf
->> x86_64                               rhel-8.3
->> x86_64               randconfig-a014-20230109
->> x86_64               randconfig-a016-20230109
->> x86_64               randconfig-a015-20230109
->> ia64                             allmodconfig
->> x86_64                           allyesconfig
->> i386                 randconfig-a012-20230109
->> x86_64                    rhel-8.3-kselftests
->> x86_64                           rhel-8.3-syz
->> x86_64                         rhel-8.3-kunit
->> x86_64                          rhel-8.3-func
->> i386                 randconfig-a014-20230109
->> x86_64                           rhel-8.3-kvm
->> i386                 randconfig-a016-20230109
->> i386                 randconfig-a015-20230109
->> mips                             allyesconfig
->> powerpc                          allmodconfig
->> arm64                            allyesconfig
->> arm                              allyesconfig
->> riscv                randconfig-r042-20230109
->> s390                 randconfig-r044-20230109
->> arm                  randconfig-r046-20230108
->> arc                  randconfig-r043-20230108
->> arc                  randconfig-r043-20230109
->> i386                          randconfig-c001
->> arm                        trizeps4_defconfig
->> arm                         s3c6400_defconfig
->> sh                               alldefconfig
->> ia64                                defconfig
->> riscv                    nommu_virt_defconfig
->> riscv                          rv32_defconfig
->> riscv                    nommu_k210_defconfig
->> riscv                             allnoconfig
->> i386                   debian-10.3-kselftests
->> i386                              debian-10.3
->> m68k                           sun3_defconfig
->> parisc                generic-32bit_defconfig
->> sh                     sh7710voipgw_defconfig
->> mips                            gpr_defconfig
->>
->> clang tested configs:
->> i386                 randconfig-a004-20230109
->> x86_64               randconfig-a003-20230109
->> x86_64               randconfig-a002-20230109
->> x86_64                          rhel-8.3-rust
->> x86_64               randconfig-a004-20230109
->> hexagon              randconfig-r045-20230109
->> i386                 randconfig-a002-20230109
->> x86_64               randconfig-a005-20230109
->> i386                 randconfig-a003-20230109
->> x86_64               randconfig-a001-20230109
->> arm                  randconfig-r046-20230109
->> riscv                randconfig-r042-20230108
->> x86_64               randconfig-a006-20230109
->> hexagon              randconfig-r041-20230108
->> i386                 randconfig-a006-20230109
->> i386                 randconfig-a001-20230109
->> hexagon              randconfig-r041-20230109
->> i386                 randconfig-a005-20230109
->> hexagon              randconfig-r045-20230108
->> s390                 randconfig-r044-20230108
->> x86_64                        randconfig-k001
->>
->> --
->> 0-DAY CI Kernel Test Service
->> https://01.org/lkp
->>
->>
->> ------------------------------
->>
->> Message: 4
->> Date: Tue, 10 Jan 2023 07:48:41 +0200
->> From: Sasha Neftin <sasha.neftin@intel.com>
->> To: intel-wired-lan@lists.osuosl.org
->> Subject: [Intel-wired-lan] [PATCH net v1 1/1] igc: Add ndo_tx_timeout
->> 	support
->> Message-ID: <20230110054841.1857688-1-sasha.neftin@intel.com>
->>
->> On some platforms, 100/1000/2500 speeds seem to have sometimes
->> problems
->> reporting false positive tx unit hang during stressful UDP traffic. Likely
->> other Intel drivers introduce responses to a tx hang. Update the 'tx hang'
->> comparator with the comparison of the head and tail of ring pointers and
->> restore the tx_timeout_factor to the previous value (one).
->>
->> This can be test by using netperf or iperf3 applications.
->> Example:
->> iperf3 -s -p 5001
->> iperf3 -c 192.168.0.2 --udp -p 5001 --time 600 -b 0
->>
->> netserver -p 16604
->> netperf -H 192.168.0.2 -l 600 -p 16604 -t UDP_STREAM -- -m 64000
->>
->> Fixes: b27b8dc77b5e ("igc: Increase timeout value for Speed 100/1000/2500")
->> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
->> ---
->>   drivers/net/ethernet/intel/igc/igc_main.c | 25 +++++++++++++++++++++--
->>   1 file changed, 23 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
->> b/drivers/net/ethernet/intel/igc/igc_main.c
->> index 13088b5bcf5b..b1031d5b32bc 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_main.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
->> @@ -2957,7 +2957,9 @@ static bool igc_clean_tx_irq(struct igc_q_vector
->> *q_vector, int napi_budget)
->>   		if (tx_buffer->next_to_watch &&
->>   		    time_after(jiffies, tx_buffer->time_stamp +
->>   		    (adapter->tx_timeout_factor * HZ)) &&
->> -		    !(rd32(IGC_STATUS) & IGC_STATUS_TXOFF)) {
->> +		    !(rd32(IGC_STATUS) & IGC_STATUS_TXOFF) &&
->> +		    (rd32(IGC_TDH(tx_ring->reg_idx)) !=
->> +		    readl(tx_ring->tail))) {
->>   			/* detected Tx unit hang */
->>   			netdev_err(tx_ring->netdev,
->>   				   "Detected Tx Unit Hang\n"
->> @@ -5083,6 +5085,24 @@ static int igc_change_mtu(struct net_device
->> *netdev, int new_mtu)
->>   	return 0;
->>   }
->>
->> +/**
->> + * igc_tx_timeout - Respond to a Tx Hang
->> + * @netdev: network interface device structure
->> + * @txqueue: queue number that timed out
->> + **/
->> +static void igc_tx_timeout(struct net_device *netdev,
->> +			   unsigned int __always_unused txqueue)
->> +{
->> +	struct igc_adapter *adapter = netdev_priv(netdev);
->> +	struct igc_hw *hw = &adapter->hw;
->> +
->> +	/* Do the reset outside of interrupt context */
->> +	adapter->tx_timeout_count++;
->> +	schedule_work(&adapter->reset_task);
->> +	wr32(IGC_EICS,
->> +	     (adapter->eims_enable_mask & ~adapter->eims_other));
->> +}
->> +
->>   /**
->>    * igc_get_stats64 - Get System Network Statistics
->>    * @netdev: network interface device structure
->> @@ -5510,7 +5530,7 @@ static void igc_watchdog_task(struct work_struct
->> *work)
->>   			case SPEED_100:
->>   			case SPEED_1000:
->>   			case SPEED_2500:
->> -				adapter->tx_timeout_factor = 7;
->> +				adapter->tx_timeout_factor = 1;
+> From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 > 
-> I was running more test with UDP packets with changing of Qbv Gates for TSN Mode.
-> The tx timeout factor appears to need to stay at 7 in order to avoid the hanging issue
-> for some extremely high traffic situation gate switching. Given that it had no impact
-> on the first head and tail pointer problem as per what you resolved in igc_clean_tx_irq(),
-> I advise keeping this number.
-Hello Muhammad,
-I have a concern. Increasing the tx_timeout_factor will delay the 
-'.ndo_tx_timeout' report to the 'netdev' and lead to a stuck controller. 
-I saw it on production boards (few CRB board with iperf3 tests).Let's 
-leave it 1 for now. I would suggest understanding your TSN corner cases 
-and directly discussing the solution with Dima and me(Intel).
-Sasha
+> When both ice and the irdma driver are loaded, a warning in
+> check_flush_dependency is being triggered. This seems to be because of the
+> ice driver workqueue is allocated with the WQ_MEM_RECLAIM flag, and the
+> irdma one is not.
 > 
->>   				break;
->>   			}
->>
->> @@ -6352,6 +6372,7 @@ static const struct net_device_ops igc_netdev_ops
->> = {
->>   	.ndo_set_rx_mode	= igc_set_rx_mode,
->>   	.ndo_set_mac_address	= igc_set_mac,
->>   	.ndo_change_mtu		= igc_change_mtu,
->> +	.ndo_tx_timeout		= igc_tx_timeout,
->>   	.ndo_get_stats64	= igc_get_stats64,
->>   	.ndo_fix_features	= igc_fix_features,
->>   	.ndo_set_features	= igc_set_features,
->> --
->> 2.25.1
->>
->>
->>
->> ------------------------------
->>
->> Subject: Digest Footer
->>
->> _______________________________________________
->> Intel-wired-lan mailing list
->> Intel-wired-lan@osuosl.org
->> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
->>
->>
->> ------------------------------
->>
->> End of Intel-wired-lan Digest, Vol 405, Issue 6
->> ***********************************************
-> _______________________________________________
+> Looking at the kernel documentation, it doesn't seem like the ice driver
+> needs to use WQ_MEM_RECLAIM. Remove it.
+> 
+> Example trace:
+> 
+> [  +0.000004] workqueue: WQ_MEM_RECLAIM ice:ice_service_task [ice] is
+> flushing !WQ_MEM_RECLAIM infiniband:0x0 [  +0.000139] WARNING: CPU: 0
+> PID: 728 at kernel/workqueue.c:2632 check_flush_dependency+0x178/0x1a0
+> [  +0.000011] Modules linked in: bonding tls xt_CHECKSUM xt_MASQUERADE
+> xt_conntrack ipt_REJECT nf_reject_ipv4 nft_compat nft_cha in_nat nf_nat
+> nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nf_tables nfnetlink bridge stp
+> llc rfkill vfat fat intel_rapl_msr intel _rapl_common isst_if_common skx_edac
+> nfit libnvdimm x86_pkg_temp_thermal intel_powerclamp coretemp
+> kvm_intel kvm irqbypass crct1 0dif_pclmul crc32_pclmul ghash_clmulni_intel
+> rapl intel_cstate rpcrdma sunrpc rdma_ucm ib_srpt ib_isert iscsi_target_mod
+> target_ core_mod ib_iser libiscsi scsi_transport_iscsi rdma_cm ib_cm iw_cm
+> iTCO_wdt iTCO_vendor_support ipmi_ssif irdma mei_me ib_uverbs ib_core
+> intel_uncore joydev pcspkr i2c_i801 acpi_ipmi mei lpc_ich i2c_smbus
+> intel_pch_thermal ioatdma ipmi_si acpi_power_meter acpi_pad xfs libcrc32c
+> sd_mod t10_pi crc64_rocksoft crc64 sg ahci ixgbe libahci ice i40e igb
+> crc32c_intel mdio i2c_algo_bit liba ta dca wmi dm_mirror dm_region_hash
+> dm_log dm_mod ipmi_devintf ipmi_msghandler fuse [  +0.000161]  [last
+> unloaded: bonding]
+> [  +0.000006] CPU: 0 PID: 728 Comm: kworker/0:2 Tainted: G S                 6.2.0-
+> rc2_next-queue-13jan-00458-gc20aabd57164 #1
+> [  +0.000006] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS
+> SE5C620.86B.02.01.0010.010620200716 01/06/2020 [  +0.000003] Workqueue:
+> ice ice_service_task [ice] [  +0.000127] RIP:
+> 0010:check_flush_dependency+0x178/0x1a0
+> [  +0.000005] Code: 89 8e 02 01 e8 49 3d 40 00 49 8b 55 18 48 8d 8d d0 00 00 00
+> 48 8d b3 d0 00 00 00 4d 89 e0 48 c7 c7 e0 3b 08 9f e8 bb d3 07 01 <0f> 0b e9 be
+> fe ff ff 80 3d 24 89 8e 02 00 0f 85 6b ff ff ff e9 06 [  +0.000004] RSP:
+> 0018:ffff88810a39f990 EFLAGS: 00010282 [  +0.000005] RAX:
+> 0000000000000000 RBX: ffff888141bc2400 RCX: 0000000000000000 [
+> +0.000004] RDX: 0000000000000001 RSI: dffffc0000000000 RDI:
+> ffffffffa1213a80 [  +0.000003] RBP: ffff888194bf3400 R08: ffffed117b306112
+> R09: ffffed117b306112 [  +0.000003] R10: ffff888bd983088b R11:
+> ffffed117b306111 R12: 0000000000000000 [  +0.000003] R13: ffff888111f84d00
+> R14: ffff88810a3943ac R15: ffff888194bf3400 [  +0.000004] FS:
+> 0000000000000000(0000) GS:ffff888bd9800000(0000)
+> knlGS:0000000000000000 [  +0.000003] CS:  0010 DS: 0000 ES: 0000 CR0:
+> 0000000080050033 [  +0.000003] CR2: 000056035b208b60 CR3:
+> 000000017795e005 CR4: 00000000007706f0 [  +0.000003] DR0:
+> 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 [
+> +0.000003] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7:
+> 0000000000000400 [  +0.000002] PKRU: 55555554 [  +0.000003] Call Trace:
+> [  +0.000002]  <TASK>
+> [  +0.000003]  __flush_workqueue+0x203/0x840 [  +0.000006]  ?
+> mutex_unlock+0x84/0xd0 [  +0.000008]  ? __pfx_mutex_unlock+0x10/0x10 [
+> +0.000004]  ? __pfx___flush_workqueue+0x10/0x10 [  +0.000006]  ?
+> mutex_lock+0xa3/0xf0 [  +0.000005]  ib_cache_cleanup_one+0x39/0x190
+> [ib_core] [  +0.000174]  __ib_unregister_device+0x84/0xf0 [ib_core] [
+> +0.000094]  ib_unregister_device+0x25/0x30 [ib_core] [  +0.000093]
+> irdma_ib_unregister_device+0x97/0xc0 [irdma] [  +0.000064]  ?
+> __pfx_irdma_ib_unregister_device+0x10/0x10 [irdma] [  +0.000059]  ?
+> up_write+0x5c/0x90 [  +0.000005]  irdma_remove+0x36/0x90 [irdma] [
+> +0.000062]  auxiliary_bus_remove+0x32/0x50 [  +0.000007]
+> device_release_driver_internal+0xfa/0x1c0
+> [  +0.000005]  bus_remove_device+0x18a/0x260 [  +0.000007]
+> device_del+0x2e5/0x650 [  +0.000005]  ? __pfx_device_del+0x10/0x10 [
+> +0.000003]  ? mutex_unlock+0x84/0xd0 [  +0.000004]  ?
+> __pfx_mutex_unlock+0x10/0x10 [  +0.000004]  ?
+> _raw_spin_unlock+0x18/0x40 [  +0.000005]  ice_unplug_aux_dev+0x52/0x70
+> [ice] [  +0.000160]  ice_service_task+0x1309/0x14f0 [ice] [  +0.000134]  ?
+> __pfx___schedule+0x10/0x10 [  +0.000006]
+> process_one_work+0x3b1/0x6c0 [  +0.000008]  worker_thread+0x69/0x670 [
+> +0.000005]  ? __kthread_parkme+0xec/0x110 [  +0.000007]  ?
+> __pfx_worker_thread+0x10/0x10 [  +0.000005]  kthread+0x17f/0x1b0 [
+> +0.000005]  ? __pfx_kthread+0x10/0x10 [  +0.000004]
+> ret_from_fork+0x29/0x50 [  +0.000009]  </TASK>
+> 
+> Fixes: 940b61af02f4 ("ice: Initialize PF and setup miscellaneous interrupt")
+> Signed-off-by: Anirudh Venkataramanan
+> <anirudh.venkataramanan@intel.com>
+> Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+> ---
+> v4:
+> Change target to net
+> Update kernel splat
+> v3: added example trace
+> v2: fixed From tag
+> 
+> 
+>  drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+Tested-by: Jakub Andrysiak <jakub.andrysiak@intel.com> _______________________________________________
 > Intel-wired-lan mailing list
 > Intel-wired-lan@osuosl.org
 > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
