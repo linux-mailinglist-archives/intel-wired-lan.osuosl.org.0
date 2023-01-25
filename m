@@ -1,69 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89D5867B061
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 11:52:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8D4B67B19A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 12:38:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1F77740BFD;
-	Wed, 25 Jan 2023 10:52:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F77740BFD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52AD88213C;
+	Wed, 25 Jan 2023 11:38:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52AD88213C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674643948;
-	bh=eabN5ztZiaTxXIo+RI3QSo/EZTiRO2ksIZjemb+/HT4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=jeeAuhFUqQi/rf22tCiSywHnAPB5RCbZeJMD6YxY+9ZSPJYhFEVd13WnLHR8IdRdV
-	 SOZfLy6im5Gujv5ukwpNEnxuo4f/UWR3Zj4HgAXKWiePzN2L0eK8iKlxU4CuAOeVth
-	 UiwGww8uadbkRuve2MasGjeBTNxh6IIXMfTjFxgMdozcKcyFsWzU9qBbXv9p6XOeAm
-	 1I28N41J6MkFwieOr0MITuCxQIYhpu5DW+ceRJswMzqNLZrlU+7rA71/XRpDYKDbnb
-	 CsiMRzl/8g+GjB62PXa11iNcgpJAOGnWFzC45on4i06zjh4UkLUgDASsoIK8rfylsy
-	 6GTctLxUzoeYg==
+	s=default; t=1674646694;
+	bh=G3rkK3RFZBbXw/hUt0eXX500bPj5ZlDwIhB8FBnulE4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=QutOg1NVPX/de5Mcjqf4qtuGL4SE0z/+XX9m5LxQigxWtWzIQoi/XZtfF4mQVfPzh
+	 SIMtl2mAPQN8uQc4SMm8aNVdM5PP5zV28SzP7t2ZZpfNdTDpYuznF3nLltAiJuX+tX
+	 QtZ6Oubc6G2usOIqJRMphRhNYFbKkNy9VATBAGvb8up/P2H95xavkHlxgmAl5rvXJG
+	 a6UA+ErVJeVFomg5cY/oylwD3txcNNinsdI6DmNIEjWzTe65mn1MzZOKYFwef275zL
+	 7ljinNFZSU06ynfZ+rQulLvRLHzsjF180fRll8+58wJA52pZlYx15MlnOwEHov4GQS
+	 AuViDJ54wGiVg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jvjLpJ2eck76; Wed, 25 Jan 2023 10:52:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wDaoOd-GchsJ; Wed, 25 Jan 2023 11:38:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0B808402F6;
-	Wed, 25 Jan 2023 10:52:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B808402F6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 45A0B82133;
+	Wed, 25 Jan 2023 11:38:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 45A0B82133
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E9E291BF2BF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 10:52:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CB13B1BF580
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 11:38:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BAC67418BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 10:52:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAC67418BD
+ by smtp2.osuosl.org (Postfix) with ESMTP id 521054049F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 11:38:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 521054049F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9w-TIfqbSpXX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Jan 2023 10:52:19 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 842B9418A2
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 842B9418A2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 10:52:19 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 184ED61CC40F9;
- Wed, 25 Jan 2023 11:52:16 +0100 (CET)
-Message-ID: <cfde76e9-8195-8a45-a5ab-de1cecb38487@molgen.mpg.de>
-Date: Wed, 25 Jan 2023 11:52:15 +0100
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kTdsQgYYnQ2L for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Jan 2023 11:38:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E068B4013D
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E068B4013D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 11:38:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="306198119"
+X-IronPort-AV: E=Sophos;i="5.97,245,1669104000"; d="scan'208";a="306198119"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jan 2023 03:37:50 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="804977624"
+X-IronPort-AV: E=Sophos;i="5.97,245,1669104000"; d="scan'208";a="804977624"
+Received: from hextor.igk.intel.com ([10.123.220.6])
+ by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jan 2023 03:37:48 -0800
+From: Michal Wilczynski <michal.wilczynski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 25 Jan 2023 12:37:40 +0100
+Message-Id: <20230125113740.1814392-1-michal.wilczynski@intel.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Content-Language: en-US
-To: Michal Wilczynski <michal.wilczynski@intel.com>
-References: <20230125102650.1805470-1-michal.wilczynski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20230125102650.1805470-1-michal.wilczynski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: Fix check for weight and
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674646686; x=1706182686;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=12+IfJqnboNeaPcCrnDbrNfW8gP/2meWipxBw/EYolU=;
+ b=Q37HuVY/G6AIYKTQ+FpLt9s8SY02hCPa9nMVAwMWilETAUZaQukPdOXk
+ ZrtwTS7UIt6PXKHuQkNOYRMBZOsfLJ9snlUV8O+OAEiWi/W9bfk5rHjrz
+ 2M0PZzpM3QtSb++lmz4f0Ey14ThazAwZuUvLMovCmMVfbCFEKhc7JWEud
+ S6CS4UMIDxpO0bnfsIuFtY3gTf2VzJMOCV4tGYNM+AQXPGBflRSWPziL/
+ wxHyCu3zTKa+OMwkKnS/h/6venqDTsxvM01xmJdS88VQyNMt2E388HPKw
+ Ga+1emsOf/YhLDtKg43VQ17FxshmYb/RtE3thNTgDIX+h6WDSgY0SUuVM
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Q37HuVY/
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Fix check for weight and
  priority of a scheduling node
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -77,44 +92,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBNaWNoYWwsCgoKVGhhbmsgeW91IGZvciB5b3VyIHBhdGNoLgoKCkFtIDI1LjAxLjIzIHVt
-IDExOjI2IHNjaHJpZWIgTWljaGFsIFdpbGN6eW5za2k6Cj4gQ3VycmVudGx5IGNoZWNrcyBmb3Ig
-d2VpZ2h0IGFuZCBwcmlvcml0eSByYW5nZXMgZG9lc24ndCBjaGVjawoKcGx1cmFsOiBkb27igJl0
-Cgo+IGluY29taW5nIHZhbHVlIGZyb20gdGhlIGRldmxpbmsuIEluc3RlYWQgaXQgY2hlY2tzIG5v
-ZGUgY3VycmVudCB3ZWlnaHQKPiBvciBwcmlvcml0eS4gVGhpcyBtYWtlcyB0aG9zZSBjaGVja3Mg
-dXNlbGVzcy4KPiAKPiBDaGFuZ2UgcmFuZ2UgY2hlY2tzIGluIGljZV9zZXRfb2JqZWN0X3R4X3By
-aW9yaXR5KCkgYW5kCj4gaWNlX3NldF9vYmplY3RfdHhfd2VpZ2h0KCkgdG8gY2hlY2sgYWdhaW5z
-dCBpbmNvbWluZyBwcmlvcml0eSBhbmQKPiB3ZWlnaHQuCj4gCj4gRml4ZXM6IDQyYzJlYjZiMWY0
-MyAoImljZTogSW1wbGVtZW50IGRldmxpbmstcmF0ZSBBUEkiKQo+IFNpZ25lZC1vZmYtYnk6IE1p
-Y2hhbCBXaWxjenluc2tpIDxtaWNoYWwud2lsY3p5bnNraUBpbnRlbC5jb20+Cj4gQWNrZWQtYnk6
-IEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPgo+IC0tLQo+ICAg
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9kZXZsaW5rLmMgfCA0ICsrLS0KPiAg
-IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZGV2bGluay5jIGIv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9kZXZsaW5rLmMKPiBpbmRleCA4Mjg2
-ZTQ3YjRiYWUuLjBmYWUwMTg2YmQ4NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pY2UvaWNlX2RldmxpbmsuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2VfZGV2bGluay5jCj4gQEAgLTg5OSw3ICs4OTksNyBAQCBzdGF0aWMgaW50IGlj
-ZV9zZXRfb2JqZWN0X3R4X3ByaW9yaXR5KHN0cnVjdCBpY2VfcG9ydF9pbmZvICpwaSwgc3RydWN0
-IGljZV9zY2hlZAo+ICAgewo+ICAgCWludCBzdGF0dXM7Cj4gICAKPiAtCWlmIChub2RlLT50eF9w
-cmlvcml0eSA+PSA4KSB7Cj4gKwlpZiAocHJpb3JpdHkgPj0gOCkgewo+ICAgCQlOTF9TRVRfRVJS
-X01TR19NT0QoZXh0YWNrLCAiUHJpb3JpdHkgc2hvdWxkIGJlIGxlc3MgdGhhbiA4Iik7CgpVbnJl
-bGF0ZWQgdG8gdGhpcyBwYXRjaCwgYnV0IEnigJlkIGFsd2F5cyBwcmludCB0aGUgd3JvbmcgdmFs
-dWUgaW4gdGhlIAplcnJvciBtZXNzYWdlLgoKPiAgIAkJcmV0dXJuIC1FSU5WQUw7Cj4gICAJfQo+
-IEBAIC05MjksNyArOTI5LDcgQEAgc3RhdGljIGludCBpY2Vfc2V0X29iamVjdF90eF93ZWlnaHQo
-c3RydWN0IGljZV9wb3J0X2luZm8gKnBpLCBzdHJ1Y3QgaWNlX3NjaGVkX24KPiAgIHsKPiAgIAlp
-bnQgc3RhdHVzOwo+ICAgCj4gLQlpZiAobm9kZS0+dHhfd2VpZ2h0ID4gMjAwIHx8IG5vZGUtPnR4
-X3dlaWdodCA8IDEpIHsKPiArCWlmICh3ZWlnaHQgPiAyMDAgfHwgd2VpZ2h0IDwgMSkgewo+ICAg
-CQlOTF9TRVRfRVJSX01TR19NT0QoZXh0YWNrLCAiV2VpZ2h0IG11c3QgYmUgYmV0d2VlbiAxIGFu
-ZCAyMDAiKTsKPiAgIAkJcmV0dXJuIC1FSU5WQUw7Cj4gICAJfQoKUmV2aWV3ZWQtYnk6IFBhdWwg
-TWVuemVsIDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+CgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
-YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
-b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Currently checks for weight and priority ranges don't check incoming value
+from the devlink. Instead it checks node current weight or priority. This
+makes those checks useless.
+
+Change range checks in ice_set_object_tx_priority() and
+ice_set_object_tx_weight() to check against incoming priority an weight.
+
+Fixes: 42c2eb6b1f43 ("ice: Implement devlink-rate API")
+Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
+Acked-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+---
+v2: replace "doesn't" with "don't" in a commit message
+
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 8286e47b4bae..0fae0186bd85 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -899,7 +899,7 @@ static int ice_set_object_tx_priority(struct ice_port_info *pi, struct ice_sched
+ {
+ 	int status;
+ 
+-	if (node->tx_priority >= 8) {
++	if (priority >= 8) {
+ 		NL_SET_ERR_MSG_MOD(extack, "Priority should be less than 8");
+ 		return -EINVAL;
+ 	}
+@@ -929,7 +929,7 @@ static int ice_set_object_tx_weight(struct ice_port_info *pi, struct ice_sched_n
+ {
+ 	int status;
+ 
+-	if (node->tx_weight > 200 || node->tx_weight < 1) {
++	if (weight > 200 || weight < 1) {
+ 		NL_SET_ERR_MSG_MOD(extack, "Weight must be between 1 and 200");
+ 		return -EINVAL;
+ 	}
+-- 
+2.37.2
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
