@@ -1,88 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A4A967AA8F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 07:55:58 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC3DB67AAF4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 08:35:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B2A0C4183B;
-	Wed, 25 Jan 2023 06:55:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2A0C4183B
+	by smtp1.osuosl.org (Postfix) with ESMTP id E09CF82087;
+	Wed, 25 Jan 2023 07:35:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E09CF82087
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674629756;
-	bh=dYRH8OXAxwObiMf7u+MyuMY/Ynt0tLuUuIB3yqKBnHk=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=247VZBvo7Xn1AILIMAu4ai5ohgc15duvdjVu6sFE/v3AD8pGUBXVejoDYi52+zdum
-	 6gJilj3RcoyifTfBq2HsYlSl0+97y+swdm+O9cT6VgxCzh7sHAMBdIR3yQjrU0lVRs
-	 EmUsnWN9ctqOPmwGH//o6DDWlyztKZIuBUZARbuzYoXm0Ra/wJeXn6z2xrpWTgoxPQ
-	 tD+JKUfbF087fEy8Gf9XnnH1XFZaoC7/UWaIheyYCXTqaM/jwk8fwdX01At49d2wcV
-	 BJVdjrpOHHKttwHHXpKPNS+q4NRyqK4HzKohBwKcuB5TLY0LTmIUyFZGH7iZhGfmzH
-	 pFTQcRLnGxJOA==
+	s=default; t=1674632148;
+	bh=/P1dMP11jpJqPXVWMFPOBB9Jai2PzvvmwKxTZ8nv92w=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=ny5H9NUUsn5qs+lSCgcy+47zYf8/MkWBIz13xROhYQRn5TtcXp9IJH328Ovy2Axqa
+	 T7ov3TRdm17GxwwIS4V1EsYAs/N+eCt11x5+E+4f1RY9sNwP16jtxt1RscdNXI+gwP
+	 s6dlXYuhLKkpw4xrFcMeyezLAvhyh+gcQSKIkewHvhvsZakq6DiTB0+qmdmG/j41Fg
+	 fforq87d2LCpQFXLq2wrRCMDUJ4UIz1gA8n+osN9cC3RoqD4+T/lyVZ7WdlI6RVSwZ
+	 6a1RS4crLeYXVjlrVUisDIHkMefrRGIezfbHM9zi6YZ5zLgYm5RqkdarCtdlYEQCRA
+	 8RmNjt6t1OX+w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6-B3wNQ_1mrR; Wed, 25 Jan 2023 06:55:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vpeU_7jhDns3; Wed, 25 Jan 2023 07:35:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5096E41833;
-	Wed, 25 Jan 2023 06:55:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5096E41833
+	by smtp1.osuosl.org (Postfix) with ESMTP id D66D481E90;
+	Wed, 25 Jan 2023 07:35:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D66D481E90
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6A9C11BF842
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 06:55:50 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 096881BF420
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 07:35:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5014640B70
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 06:55:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5014640B70
+ by smtp4.osuosl.org (Postfix) with ESMTP id E24B74184E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 07:35:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E24B74184E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GBB3K9ZpI6Ql for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Jan 2023 06:55:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0E76403B7
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D0E76403B7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 06:55:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="306158893"
-X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="306158893"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2023 22:55:48 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10600"; a="725766416"
-X-IronPort-AV: E=Sophos;i="5.97,244,1669104000"; d="scan'208";a="725766416"
-Received: from lkp-server01.sh.intel.com (HELO 5646d64e7320) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 24 Jan 2023 22:55:47 -0800
-Received: from kbuild by 5646d64e7320 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pKZhC-00077s-1S;
- Wed, 25 Jan 2023 06:55:46 +0000
-Date: Wed, 25 Jan 2023 14:55:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63d0d271.qMmExP9j2RmofQhP%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XTmULREIys9b for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Jan 2023 07:35:41 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 74F9541873
+Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
+ [IPv6:2a00:1450:4864:20::636])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 74F9541873
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 07:35:41 +0000 (UTC)
+Received: by mail-ej1-x636.google.com with SMTP id mg12so45203538ejc.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jan 2023 23:35:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nGlLQMRMs18KEtYyX/ac08EXCvqt8zu6xcJXDeQV2dY=;
+ b=aoE99DnoKqBNio96L8HX1RObWMM7OyzCQgmWLXA9dPMLYkPC42+ynPz7ZxTX5uXy2W
+ BeSaiAZXJiRWD/yF7Cdg75tXakthMuJgy2Za2JhgzmBJGfgFCI3sdq0CeYBi07K1//jT
+ VmKX83vAAZR6PJneISFqPLEbWVa2DKl3XjjegF0pWwKrjR8e8VFNYh1LcOargcCWi17z
+ I04YexwKP77HArq+k6we96/d5DLiRfHfM2fdNS5UuGcx3NBneJDY3GYwATC9e6+YaoZ4
+ L1hKTkF7fVlFQKGxDdRkuCS1EpOGwg2PU3pzUXL7GPCpxM0/Wm6ZkGYenPAU+YGV/FMu
+ CZpw==
+X-Gm-Message-State: AFqh2kruoIBnQeel6EuPzxAPMKwoS/ne493PlkODH2TUC8NqZpSS/AEl
+ +HweWKRxXhh0CBu9UosfeiTMM0JPi2a87luXB8U=
+X-Google-Smtp-Source: AMrXdXt8i9aVPI6v11qB48IeNNXkHiq5ha7Oj7NPA6OVN6+Co5mVwtVBruuOJ2igGy1FFungvJuKuwF3qFgVtRskGBs=
+X-Received: by 2002:a17:906:9f21:b0:872:f8b7:3b52 with SMTP id
+ fy33-20020a1709069f2100b00872f8b73b52mr2819374ejc.373.1674632139408; Tue, 24
+ Jan 2023 23:35:39 -0800 (PST)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674629748; x=1706165748;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=tCIrrvCV/QAokLsS4kQR7cUWgT2yjNM2Mkxjet67QLo=;
- b=Rf3x6FCUMfv1tfIMF/SQPp+Slvj9hIo8nLcWgMAnB/nFDyjlbm9tDuzW
- N8jLzEqdrJk1/e0+Is7eGfQuRtNnmOZ0VH4uQJx9fdBK8DlipKZOZhyEn
- yqH3cGxQlaWDNOkq489xeI8MwaZf/IOJIPYeN8iltlYTHM+AF02Ki27uC
- qZXLM53Tv4a36+Yjr39wJa57Ys/+sf+k2cV3sxiGhlAgG0dgPaSNgUE6n
- ukKsL96MhkQJF7K0GfYTI8yap6yeejzylrNgbe9WE8wZR3WFYTz/aWhsU
- M6QuWeXNjvZ88H+vLGdd+nr/G4sUfZVHd8OoysKopz0yI3HiNf8dHe1r0
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Rf3x6FCU
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 24272e1d3a1293a3286dca88a7316b9beeb25802
+References: <20230121085521.9566-1-kerneljasonxing@gmail.com>
+In-Reply-To: <20230121085521.9566-1-kerneljasonxing@gmail.com>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Wed, 25 Jan 2023 15:35:03 +0800
+Message-ID: <CAL+tcoCcTHUXKiNW7jau4E5_H6HKXLN6-m8D9B2fBXSgRReS4A@mail.gmail.com>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, 
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
+ richardcochran@gmail.com, ast@kernel.org, daniel@iogearbox.net, 
+ hawk@kernel.org, John Fastabend <john.fastabend@gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=nGlLQMRMs18KEtYyX/ac08EXCvqt8zu6xcJXDeQV2dY=;
+ b=bWNJ/LJR+NUbijN/7bqMprkmjukf4ykfGNFFWppAlD3Cx/K5m1emzCRPf9to0gB8KT
+ e4ZAfaCU5ytNjLogzpSG9Rvws5G8DUWw8pl0djAUr3ZMmDCSvU1uB+kVKIeBJznv7bgP
+ S+yMx0c7B4CI585tCkNkIU0uUg6eU2oGNxs2JgqfuTxlfhbSF2/hFBFyKDX2xBl7Di3A
+ GHjAs1hpGgSU1bbhAaLNAZRejq0MOCdHrK1YD3G3W5/LXSMH4d5QEE+sMNDfOWWaRuDZ
+ YQjtsp1KIgZLIubEMuOTnX5REeqF1thciqndV5FF/NKJ526imNpA7D7AwlWqjfV/DlEb
+ rbGw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=bWNJ/LJR
+Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: allow to increase MTU to
+ some extent with XDP enalbed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,91 +106,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Jason Xing <kernelxing@tencent.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 24272e1d3a1293a3286dca88a7316b9beeb25802  ice/ptp: fix the PTP worker retrying indefinitely if the link went down
+I'm sorry. I just noticed that I sent it to the wrong email address of
+john.fastabend previously. So I corrected it here.
 
-elapsed time: 726m
+Thanks,
+Jason
 
-configs tested: 62
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-x86_64                            allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                           allnoconfig
-alpha                            allyesconfig
-m68k                             allyesconfig
-sh                               allmodconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-s390                             allyesconfig
-s390                                defconfig
-arc                  randconfig-r043-20230123
-arm                  randconfig-r046-20230123
-x86_64                              defconfig
-x86_64                               rhel-8.3
-i386                                defconfig
-ia64                             allmodconfig
-x86_64                           allyesconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-bpf
-arm                                 defconfig
-i386                             allyesconfig
-x86_64               randconfig-a002-20230123
-x86_64               randconfig-a004-20230123
-x86_64               randconfig-a003-20230123
-x86_64               randconfig-a001-20230123
-arm64                            allyesconfig
-x86_64               randconfig-a006-20230123
-x86_64               randconfig-a005-20230123
-arm                              allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-i386                 randconfig-a003-20230123
-i386                 randconfig-a002-20230123
-i386                 randconfig-a001-20230123
-i386                 randconfig-a004-20230123
-i386                 randconfig-a005-20230123
-i386                 randconfig-a006-20230123
-
-clang tested configs:
-hexagon              randconfig-r041-20230123
-hexagon              randconfig-r045-20230123
-s390                 randconfig-r044-20230123
-riscv                randconfig-r042-20230123
-x86_64               randconfig-a013-20230123
-x86_64               randconfig-a011-20230123
-x86_64               randconfig-a012-20230123
-x86_64               randconfig-a014-20230123
-x86_64               randconfig-a016-20230123
-x86_64               randconfig-a015-20230123
-x86_64                          rhel-8.3-rust
-i386                 randconfig-a012-20230123
-i386                 randconfig-a013-20230123
-i386                 randconfig-a011-20230123
-i386                 randconfig-a014-20230123
-i386                 randconfig-a016-20230123
-i386                 randconfig-a015-20230123
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+On Sat, Jan 21, 2023 at 4:55 PM Jason Xing <kerneljasonxing@gmail.com> wrote:
+>
+> From: Jason Xing <kernelxing@tencent.com>
+>
+> I encountered one case where I cannot increase the MTU size with XDP
+> enabled if the server is equipped with IXGBE card, which happened on
+> thousands of servers. I noticed it was prohibited from 2017[1] and
+> added size checks[2] if allowed soon after the previous patch.
+>
+> Interesting part goes like this:
+> 1) Changing MTU directly from 1500 (default value) to 2000 doesn't
+> work because the driver finds out that 'new_frame_size >
+> ixgbe_rx_bufsz(ring)' in ixgbe_change_mtu() function.
+> 2) However, if we change MTU to 1501 then change from 1501 to 2000, it
+> does work, because the driver sets __IXGBE_RX_3K_BUFFER when MTU size
+> is converted to 1501, which later size check policy allows.
+>
+> The default MTU value for most servers is 1500 which cannot be adjusted
+> directly to the value larger than IXGBE_MAX_2K_FRAME_BUILD_SKB (1534 or
+> 1536) if it loads XDP.
+>
+> After I do a quick study on the manner of i40E driver allowing two kinds
+> of buffer size (one is 2048 while another is 3072) to support XDP mode in
+> i40e_max_xdp_frame_size(), I believe the default MTU size is possibly not
+> satisfied in XDP mode when IXGBE driver is in use, we sometimes need to
+> insert a new header, say, vxlan header. So setting the 3K-buffer flag
+> could solve the issue.
+>
+> [1] commit 38b7e7f8ae82 ("ixgbe: Do not allow LRO or MTU change with XDP")
+> [2] commit fabf1bce103a ("ixgbe: Prevent unsupported configurations with
+> XDP")
+>
+> Signed-off-by: Jason Xing <kernelxing@tencent.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index ab8370c413f3..dc016582f91e 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -4313,6 +4313,9 @@ static void ixgbe_set_rx_buffer_len(struct ixgbe_adapter *adapter)
+>                 if (IXGBE_2K_TOO_SMALL_WITH_PADDING ||
+>                     (max_frame > (ETH_FRAME_LEN + ETH_FCS_LEN)))
+>                         set_bit(__IXGBE_RX_3K_BUFFER, &rx_ring->state);
+> +
+> +               if (ixgbe_enabled_xdp_adapter(adapter))
+> +                       set_bit(__IXGBE_RX_3K_BUFFER, &rx_ring->state);
+>  #endif
+>         }
+>  }
+> --
+> 2.37.3
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
