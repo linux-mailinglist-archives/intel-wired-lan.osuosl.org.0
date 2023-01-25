@@ -1,83 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0266067BA19
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 20:02:39 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B85A67BC3E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Jan 2023 21:09:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 42D5660F2C;
-	Wed, 25 Jan 2023 19:02:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42D5660F2C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E02561160;
+	Wed, 25 Jan 2023 20:09:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E02561160
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674673357;
-	bh=KTrr1LiSAkGtuqSqueZID48bBsx/3KzDfYWp3POl4H0=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1674677392;
+	bh=hUZZjZDCoH0d/pjlRqT1sbQm9BPR87wOxeZOu5vDTtA=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0Dm3McfdNGVQffWVFTKGVUI5MMhg3hzN/eXvJCMOLu6siCzvkFjRbaN0uvM3nq3bc
-	 MwgLhfcDy+BcTJTMZzrf9GVqc14kMORJM4+X1ReACrUctPx5EmQLLY9B5r/06QQQY/
-	 T17hOKxwte7s90CwgpsZcMi6k1v05id2Z5Fw7Osj2B4qiD78t1hyG4RGlUlxIr003H
-	 bhxI22T2ZrGd1xY+Hs4bD3Bufc78DDBVbRVwovlWalMBY795qw+BwflZt6AhVTjqXQ
-	 YmaTnjfHZE1DE0deHcD5kpVha1otUb5AALJeFwIq28dRhywjWcY974UP/vcc6kCWhs
-	 6fE75kaH3UG7w==
+	b=ubayl41t3eBbSZ3jKJZhRq3pjqdsRfzBVFULLv/IUhVZfvCeSpvFKSwyQUWuGVscQ
+	 9rUKgrhnLfezdikyuBtEcHoB1o6e9BC8t155RIp2oZE9THnrgcGpLaGz0Ni0i4+XrG
+	 bxZr7tkZH2hhgJdoJLB29qQx0EZVQ0TNowI8Cz2fVC46h6rPi7QPDaCiPexYf8ziCJ
+	 9RY1qiSILiqbiPWgHq/9qIFZXD0KQ+ysgYpJjKS7rBHnCMPCpoWAtXdyILhq4/9XUp
+	 z0ylpzPL9cxguykj7jXv4cddNwB+83ghI89VnnKABzF8z066fM+SSBMTnSF9otrTg0
+	 HtYJYevAWwVBg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3qeyCHnHFUiU; Wed, 25 Jan 2023 19:02:36 +0000 (UTC)
+	with ESMTP id buJyJjbH_JHm; Wed, 25 Jan 2023 20:09:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2E99860D96;
-	Wed, 25 Jan 2023 19:02:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2E99860D96
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0734660FB6;
+	Wed, 25 Jan 2023 20:09:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0734660FB6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4F6551BF39D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 19:02:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C6581BF341
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 20:09:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 281B841920
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 19:02:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 281B841920
+ by smtp2.osuosl.org (Postfix) with ESMTP id E70A6415A8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 20:09:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E70A6415A8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7MFDqM39TrBR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Jan 2023 19:02:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 72B9641833
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 72B9641833
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 19:02:30 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 5AB24615C6;
- Wed, 25 Jan 2023 19:02:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8F3DC433D2;
- Wed, 25 Jan 2023 19:02:27 +0000 (UTC)
-Date: Wed, 25 Jan 2023 11:02:26 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Leon Romanovsky <leon@kernel.org>
-Message-ID: <20230125110226.66dc7eeb@kernel.org>
-In-Reply-To: <c182cae29914fa19ce970859e74234d3de506853.1674560845.git.leon@kernel.org>
-References: <cover.1674560845.git.leon@kernel.org>
- <c182cae29914fa19ce970859e74234d3de506853.1674560845.git.leon@kernel.org>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NIohkPj-4YEb for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Jan 2023 20:09:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 286AF40919
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 286AF40919
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Jan 2023 20:09:44 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5ae969.dynamic.kabel-deutschland.de
+ [95.90.233.105])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 8FA9561CC40F9;
+ Wed, 25 Jan 2023 21:09:40 +0100 (CET)
+Message-ID: <21a41a1c-4ae4-47c7-c608-b6dd82758b16@molgen.mpg.de>
+Date: Wed, 25 Jan 2023 21:09:39 +0100
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674673348;
- bh=RP5Va6toXXyTmcOr/ME//AhDzcNFVNsgf8+hwufjGl0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=OvZAxPfjKXDdktK4TkpLMXDuL4L107cdVVZ70PnwD568R3gI+0pb9bt8L790fN2cO
- 0EzUCDa6kkq9wiKJndJf4Ce6tFT6lhgwjkri5ihpOt5PBf3p67zOOvnwlXLab5eFiw
- uZz5SAcXwp6zfrhiZf/23QjiJL41EE2/yvMvIZlRFcS1aFtBfMB9pePhbuhwV2FK7R
- hQpP731ZhIaxFfP/jW1ElFNHHCWNw/avRemfV0YMNfl7cCLsdJEHKf/4DubkALGlhv
- kj8g0I5R7tiLa4hLJtPKkhQ2xpa25WBjEdydJD/flvD/WZ/xs/m4FQa5IQoWyJqlYh
- hCmuU/ozTe4xg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=OvZAxPfj
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 01/10] xfrm: extend add
- policy callback to set failure reason
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+To: Natalia Petrova <n.petrova@fintech.ru>
+References: <20230125141328.8479-1-n.petrova@fintech.ru>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20230125141328.8479-1-n.petrova@fintech.ru>
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: Add checking for null for
+ nlmsg_find_attr()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,40 +78,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Steffen Klassert <steffen.klassert@secunet.com>,
- Veaceslav Falico <vfalico@gmail.com>, Herbert Xu <herbert@gondor.apana.org.au>,
- Jonathan Corbet <corbet@lwn.net>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jay Vosburgh <j.vosburgh@gmail.com>, oss-drivers@corigine.com,
- linux-doc@vger.kernel.org, Raju Rangoju <rajur@chelsio.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Ayush Sawal <ayush.sawal@chelsio.com>,
- Simon Horman <simon.horman@corigine.com>, Saeed Mahameed <saeedm@nvidia.com>,
- Paolo Abeni <pabeni@redhat.com>, Leon Romanovsky <leonro@nvidia.com>,
- "David S . Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: lvc-project@linuxtesting.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 24 Jan 2023 13:54:57 +0200 Leon Romanovsky wrote:
-> -	err = dev->xfrmdev_ops->xdo_dev_policy_add(xp);
-> +	err = dev->xfrmdev_ops->xdo_dev_policy_add(xp, extack);
->  	if (err) {
->  		xdo->dev = NULL;
->  		xdo->real_dev = NULL;
->  		xdo->type = XFRM_DEV_OFFLOAD_UNSPECIFIED;
->  		xdo->dir = 0;
->  		netdev_put(dev, &xdo->dev_tracker);
-> -		NL_SET_ERR_MSG(extack, "Device failed to offload this policy");
+Dear Natalia,
 
-In a handful of places we do:
 
-if (!extack->msg)
-	NL_SET_ERR_MSG(extack, "Device failed to offload this policy");
+Thank you for your patch.
 
-in case the device did not provide the extack.
-Dunno if it's worth doing here.
+Am 25.01.23 um 15:13 schrieb Natalia Petrova:
+
+In the commit message summary, you could use:
+
+Check if nlmsg_find_attr() returns null
+
+> The result of nlmsg_find_attr() 'br_spec' is dereferenced in
+> nla_for_each_nested, but it can take null value in 'nla_find' finction,
+
+f*u*nction
+
+> which will result in an error.
+> 
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> 
+> Fixes: 51616018dd1b ("i40e: Add support for getlink, setlink ndo ops")
+> Signed-off-by: Natalia Petrova <n.petrova@fintech.ru>
+> ---
+>   drivers/net/ethernet/intel/i40e/i40e_main.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index b36bf9c3e1e4..ed4be4ffeb09 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -13101,6 +13101,8 @@ static int i40e_ndo_bridge_setlink(struct net_device *dev,
+>   	}
+>   
+>   	br_spec = nlmsg_find_attr(nlh, sizeof(struct ifinfomsg), IFLA_AF_SPEC);
+> +	if (!br_spec)
+> +		return -ENOENT;
+>   
+>   	nla_for_each_nested(attr, br_spec, rem) {
+>   		__u16 mode;
+
+
+Kind regards,
+
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
