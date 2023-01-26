@@ -1,178 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F20667CAC1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Jan 2023 13:17:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C2053419C1;
-	Thu, 26 Jan 2023 12:17:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C2053419C1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674735473;
-	bh=aQowEsWSCvclaYoHD++0qinlxI2SICJ6A2jL2kzVJ9E=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=L6sX67AaNo0MrtXVmVYXXbU2cO7Fa9uuECBI60JH6WQifL1VWG41aDMoAgi8eht/Y
-	 Td1+Vo8ArGT13En7fLLunANBMe4QNRIpb9ceBX5VkyqxPsAjItVoKk3lt1dAvXBLNy
-	 gG9D1OIe3HOiS5ceGWJn8Ray7jM42AgB2ifwUFuIOq1qmc6bgXZ7E5yv9UskhW1BHr
-	 NmeOF1tRfJtQ95Wcv4ZverSjrqzEQwztZR6UVvHhsV/8Yhnq+soKebdviFKmJHods9
-	 5spRFNj79bG6LmGK01HlniioX/xuCvWzefudBYkjJg7MAoafqd5crzPbaF6N536Yxy
-	 zIeUejyQQzQNQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CCrnIYbjBpTT; Thu, 26 Jan 2023 12:17:52 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D85041975;
-	Thu, 26 Jan 2023 12:17:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D85041975
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 18A331BF4D7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:17:47 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FB5567CB71
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Jan 2023 13:59:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F2B9C40134
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:17:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2B9C40134
+	by smtp2.osuosl.org (Postfix) with ESMTP id CB4704173B;
+	Thu, 26 Jan 2023 12:59:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CB4704173B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1674737949;
+	bh=SdU4khWMs+gB1uHpzUCXZpg68wFA5RbYip3Z4NEJnvI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=bfQ9oAUXkHJo7KFIdEjNgFH+vcdWeANmHPaKamTrTAMKNK5TZ9ReXbdQPzHRDSbXQ
+	 fx2e7O2GGaaW9U/9WZPvmVx5bT/P5+tjaslcfnKA3ie5SNbda6TsWimTfvQUhrxHHh
+	 hhjhZMYqIxmuqy+FOOKYjduWl/yHjyLyBlOqarIaPNgEwgU5nuODpS8RggluMElj4P
+	 JOpdadVl7yQ7dMaSeiGTDrTcCKQWTxYNvtpG2xiSaKUK17fWqEt/Q1C85YtHuX/rBX
+	 8k53VXQCTYv2zKMB8Ey9xr9HVj4gYdiDF7AI1M2+wKR4t8DE+J/NXZn3AHUtZieVbS
+	 LpJrem1Gd+B8A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OusnQJ4w5deg for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Jan 2023 12:17:46 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O3lWq0lj7W64; Thu, 26 Jan 2023 12:59:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 74A67416EB;
+	Thu, 26 Jan 2023 12:59:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 74A67416EB
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A01F1BF4D7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:59:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0E7E98143C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:59:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E7E98143C
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BdW8sSsK0o-v for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Jan 2023 12:58:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD8C6400F1
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CD8C6400F1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:17:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10601"; a="314702076"
-X-IronPort-AV: E=Sophos;i="5.97,248,1669104000"; d="scan'208";a="314702076"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jan 2023 04:17:38 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10601"; a="771120272"
-X-IronPort-AV: E=Sophos;i="5.97,248,1669104000"; d="scan'208";a="771120272"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga002.fm.intel.com with ESMTP; 26 Jan 2023 04:17:38 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 26 Jan 2023 04:17:38 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 26 Jan 2023 04:17:37 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Thu, 26 Jan 2023 04:17:37 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.41) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Thu, 26 Jan 2023 04:17:37 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BZ6W7CRKLvtlOBGj8CxWdneqmM08uCKO7kSm8FoFHLb9ovghkXwQbQqyqZF07Q0BnUE2MJZKI9HOfJN6OZHRiODT5Wl8/18Mf8SR6RvFbwj9NVFCY3XjAx0nWay8OIcPVbBlvSSxLdom+rtfUZnoKXpDvcP6vWkW/yoIT1Kx1I4aKUfutl3f0IN24SwT+OWM2OFKNnvzLRjo39uWy/m9HbPBHLDprmNyUgliroIJVotBQRt9i1zWEPiLDEyvFvwjzWD39Sl6bpuQapFzZVfJiqRzPL+hauo46DXuTM0oARuGpgElmIoApdDJ5Uz5MIXklFzvF2wj3e7vJ1ox20cJCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=My1Tkxm2fKeHB+rEbdcgee4flU0z+DEcI5jlmFm7g7Q=;
- b=lddE6FTPRuKCmQ+624fqPLJ1vJo/ZOS2y6A9s87W6FJOjgKjKfaIq2/B+lKX6cohTanD7xdtoU7JlCiC2SHHDSkeBhZApBB9/acQ5bAXMDJLwfYUd9VfXfW03W6ESUK9cIwXTURhhpEE270xs+OKDG1t+Y9KjoHCDvPZkoUr+u4rgcTNyryyw10EXjFt6EtE3P6k71xNJfw/yCCAm6NvqeOJMXtbg8ln/xu9xcJ9ZFLmBBV8wwIeDG/kn8KfwdhVNJ82p9bj7bfRq2inQ0FS1kg9cZJX3GMhbI5GHG0GJyWFCiL+81Tvy/3hfGhqI792JDzuDDwhICi6IscrUjwThQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
- DS0PR11MB7629.namprd11.prod.outlook.com (2603:10b6:8:146::20) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6043.21; Thu, 26 Jan 2023 12:17:36 +0000
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::39d8:836d:fe2c:146]) by DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::39d8:836d:fe2c:146%6]) with mapi id 15.20.5986.019; Thu, 26 Jan 2023
- 12:17:35 +0000
-Date: Thu, 26 Jan 2023 13:17:20 +0100
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Jason Xing <kerneljasonxing@gmail.com>
-Message-ID: <Y9JvUKBgBifiosOa@boxer>
-References: <20230121085521.9566-1-kerneljasonxing@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <20230121085521.9566-1-kerneljasonxing@gmail.com>
-X-ClientProxiedBy: DUZPR01CA0008.eurprd01.prod.exchangelabs.com
- (2603:10a6:10:3c3::17) To DM4PR11MB6117.namprd11.prod.outlook.com
- (2603:10b6:8:b3::19)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 99F108141B
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 99F108141B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 12:58:59 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 6ED0C616E7;
+ Thu, 26 Jan 2023 12:58:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59415C433D2;
+ Thu, 26 Jan 2023 12:58:57 +0000 (UTC)
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: bpf@vger.kernel.org
+Date: Thu, 26 Jan 2023 13:58:25 +0100
+Message-Id: <cover.1674737592.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|DS0PR11MB7629:EE_
-X-MS-Office365-Filtering-Correlation-Id: b71a773a-6dc8-48f4-0b2a-08daff974ec1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: g4gy+WFk8xHe1UUvd/n4uPTurwBtmpRT5PP9S4epVpb5e2JagaMNcHYfNd57Vfrh9cBrvXHzCKZe5zJt8jcxTlTU0Po9uG2U0E1lbJ5wystjrMLFlathbXhRHirPX7zNy5zq0a2p/VDBIAvGDkhEBbQ2vBZRuXbRApqOMlvTZ3F+QTnZCMuaol0kCQT+ftyUDGMZPCfrIsLn+WKkRLrWzk0RJ1zeUwvGWDkqCgeFYziGB/t5CwY8ORRVhdRpMkyaCqE6mvEbfi+MpbViZ21+2/eL2VItKd4iuGzvKUfOiGBlGKiihiwAeHJMKjfc+xMI/XoKa8bq2uayoOP+CuLC9K36TjmUK0JbRhAuYetF0mDYJTohLsfkLHuMwH7VglOWnq+y9RZAw7M/q4fNfFktLnKCrljuO5Mn1f4FLALxiFDmWDG3KKR+6GcFTs+u1BcAPRwyTh+lfET5zDYVjvBaRUlGwI2m8pSCfUL0jMJS4XZf3tSp8wsHjjrEx0x+A0OswetU1t4Ji2aC05cMbgX4fJ+Q8RNFYVQI6nL87FM3gZfbnF/mim0eAIbcUJsFKjvO+2DabFYSs6VLMLulOcBv2LlFj3xlOzC3Y0bFyNqxqg5BYhZja7Z7vlYSJibIMWg/lutCDarRf018dHlDeW/2dw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(7916004)(376002)(136003)(366004)(396003)(39860400002)(346002)(451199018)(41300700001)(44832011)(8936002)(38100700002)(5660300002)(2906002)(7416002)(82960400001)(83380400001)(6506007)(6486002)(86362001)(6512007)(186003)(26005)(478600001)(107886003)(9686003)(6666004)(66476007)(66946007)(66556008)(4326008)(6916009)(8676002)(316002)(33716001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fc8ln7dpovWR7Aej1VJqx2dKvtsLKKcXeTJANoNbPixcGPya1OdejXYZpD7u?=
- =?us-ascii?Q?l8l3F1oejGzP1tED+xX+UGN9X4mwA4NMaAV1n/8Ho1Um4J4lwaiD/QqVzIfs?=
- =?us-ascii?Q?JfPb/Zl42nwAePz35trKkjd3Q2A8G+dM6WD9AhIJxxe39m3lSoPXwZHipuaC?=
- =?us-ascii?Q?Wcn/BoIhFoEOSP4SEb48ZBzx2uprc92mWzjIAJKQKt/Npp4GSZz4CGQyplsI?=
- =?us-ascii?Q?+OcwnSZgXqzwPpXE0OU8UH5XLbiznkTgG701eXY1SZsYIoStTaum/GBHJTIv?=
- =?us-ascii?Q?Fqrx8NJklejqXwsmqYbCSfdZppZbNrKbncRzix/WfVcFWS5Gao6Ke5Bq8xqW?=
- =?us-ascii?Q?VD5Y/CYHQ1LxxuE0JL8fuJRNNmBWCCSRn1qhFGB0fT5duiw0WfwrOziHgKYg?=
- =?us-ascii?Q?PU4yHcxP4oY+hdXo/4bUREKGrrehwZLznzc/4i1CWCW6PJ913xVYuhfGa3Bi?=
- =?us-ascii?Q?fZiZIlpsKAJbCzpJwkw5x72PkfIqC13AE2j9zq6fJqvnK8oDaPSUIyeGyVzz?=
- =?us-ascii?Q?s2+3BSkViiJwAsi8Te9qtMUQICqZlwYwkDu/Y8gN1lKRkfCqKseMvV2gIqA3?=
- =?us-ascii?Q?TSfJvWbQ+/gX5lgZBvVhDRoDLcmJWDwFpnUTlH1tNDKqerMs/4lw0JriG60D?=
- =?us-ascii?Q?edeYjkWlw6nWsLA3af8rwroqewCbGVTRbhSUNBceQxBHRKpV647L4OIwsW46?=
- =?us-ascii?Q?h8+Lv/opvKKFBePyzj/P/z5zRjaPaP1S+j9k9W11+WVyRyzwl/7G3wwjgLYd?=
- =?us-ascii?Q?bKgQCVblk8O39Oe+06xMHIGkOtUmJPTYmVbIEKhQqA+8kPRmLpIDKqDKB59V?=
- =?us-ascii?Q?9Os1NMj8S291HGLa30qyoELjFQIo3rJVBZ99HwC6Rt/HGUYiMt/0KkyP93+F?=
- =?us-ascii?Q?F9msy6/nJmTt+XTL2iGksZZkNvXk6di4uWOBRbiwwbQskeu07YoUUdXPcFci?=
- =?us-ascii?Q?CMvx7IwbjO19b13Rrf2etyf9gDTKH4DRcBuLrDned557jPyMz4YcRhk3GfUT?=
- =?us-ascii?Q?F+jlgwUKpIEQDURe+3jikL8vLisPnuvMynEvTZPObS2wbWPj4tY9ybb3vjAn?=
- =?us-ascii?Q?SkiPHUCSfm4klxzC3c3KinxxwXJD3Cx9CpFNuOIgxwjLiF7xq0rDCcRsbRg4?=
- =?us-ascii?Q?RnMoh+8wTx6E/ckRF/CCHbKjxPaOEl4AlZIdc72mYaYtd+M6VKpQKZOUgByU?=
- =?us-ascii?Q?BLA42TY4s3tMN88trv1qbSE2P804C7LtG7ifx6+jI9TJCZIdwBvFhcqiSiN/?=
- =?us-ascii?Q?ltL/vigIJNdNNOblKASb9n383CmRLG75JLtXTY9mL5rV9hyHAaa4YYNKkTPD?=
- =?us-ascii?Q?7UbcLkWNFLKv9fHutg8dnQx3dylYm/gFTFEoNE7VO2oFi4eefdNi8b+z8lw7?=
- =?us-ascii?Q?BWWJucol62pD4uqL4ZQWps0TUPolZ8lsKIwFJMWJSBszNvM2OAWun2hksZe1?=
- =?us-ascii?Q?BkzRxYNzeRZ9kevFx0dVbSQZrpszcNiyjpiKNo3yUu5nFJ/MwqLsdPjR3d+n?=
- =?us-ascii?Q?CRYPvb3p1OE17xUcsIjPctFvrNvLm3WYP5NIgCPqfP6aLMZPVrre3n7khAIJ?=
- =?us-ascii?Q?vr90lR3rkwRJQKLsQfuSaVy1KHaw2PGyvXi0YMZbOrrNYf7whS/3vbYvycFe?=
- =?us-ascii?Q?S3BXHBr14puzOkMdDKaRjak=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: b71a773a-6dc8-48f4-0b2a-08daff974ec1
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2023 12:17:35.4327 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4W/nCHeIXM9J46uQ1vYYocivowhF84CURCOwWH2K3/rngIwCkduup68ZcPvOCHJfWjH1kqyOlQPbNi6Myzd4Yk1jL+n4+seN/T1/PCuoCO4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7629
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674735466; x=1706271466;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=2q9GOKHV3A2PUayFofIMcpobWbje9Uk7b0NSh8ujw2E=;
- b=iiOGQRwhbiaECSRGNagKU260afO7PVdCp8jIFjUSB2gUqelkP7PFP/6o
- DIaPXKW7YuwDrhNeIBhAgV0oArKSBP11XOcfA6hRSZVIy0V85KmWQ7WVu
- MFYBIt+7h1yEYKDU3ozOycDTJ+uDMvJYNnCyQ0JBp3UmkXali41HKK2Nv
- OyKdeex3o818iE/g8yPGg5fIekvQMi+4AMQoo6C7x8RYfyIhNcmdSpFCB
- vUZOSwmad1BBGyP55lFUv6PmfpMJvwJ0HUdTi/1xIjOCdfsTg2dNltgkD
- FnWkaykaIwMTz2Q0U1UoqPa31q6rLU+rWpT1utbVa5HuCNvK/ldIXZ1P6
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iiOGQRwh
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: allow to increase MTU to
- some extent with XDP enalbed
+ d=kernel.org; s=k20201202; t=1674737937;
+ bh=J56pUYj3hx6vcxR8OCAg3bPvvHztWkZxEUSF+x91Jdw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=XdME3FC5ZV82frKWDhlc+YcU46v5lTVpRvN2zwDgmRkp8hLG7fJDZMlHZbsTyi+HU
+ 27G53poaO0XODBElJFNkFh7JxXF3Ga2ssfOeORz2WeKJAWFWKGyfplCkeOPvVxsUX0
+ CzKVtBZzCmzafXpXtKFJaLJRi+JaGc0pmlUc7xS19b+URBZkfBmyGwGf7bR8IB8vfM
+ yuhHHWY06rj2ELmkjrPiIpJ3JujGJe/vzWveVb6Gnfyy2VKLibW0D0APsZ8j+YhND1
+ ECFAt6bNujRQ3Emk0oAR4F5P0jy+dZDZub2SFhzdhpDToZKJ+mBFFFN9KIBLroL/Xy
+ gPvJ9geZibfHg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=XdME3FC5
+Subject: [Intel-wired-lan] [PATCH v3 bpf-next 0/8] xdp: introduce
+ xdp-feature support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,80 +86,152 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: john.fastabend@gmail.co, hawk@kernel.org, daniel@iogearbox.net,
- tirthendu.sarkar@intel.com, intel-wired-lan@lists.osuosl.org,
- richardcochran@gmail.com, jesse.brandeburg@intel.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, magnus.karlsson@intel.com,
- netdev@vger.kernel.org, kuba@kernel.org, bpf@vger.kernel.org,
- pabeni@redhat.com, davem@davemloft.net, linux-kernel@vger.kernel.org,
- Jason Xing <kernelxing@tencent.com>
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
+ netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jan 21, 2023 at 04:55:21PM +0800, Jason Xing wrote:
-> From: Jason Xing <kernelxing@tencent.com>
-> 
-> I encountered one case where I cannot increase the MTU size with XDP
-> enabled if the server is equipped with IXGBE card, which happened on
-> thousands of servers. I noticed it was prohibited from 2017[1] and
-> added size checks[2] if allowed soon after the previous patch.
-> 
-> Interesting part goes like this:
-> 1) Changing MTU directly from 1500 (default value) to 2000 doesn't
-> work because the driver finds out that 'new_frame_size >
-> ixgbe_rx_bufsz(ring)' in ixgbe_change_mtu() function.
-> 2) However, if we change MTU to 1501 then change from 1501 to 2000, it
-> does work, because the driver sets __IXGBE_RX_3K_BUFFER when MTU size
-> is converted to 1501, which later size check policy allows.
-> 
-> The default MTU value for most servers is 1500 which cannot be adjusted
-> directly to the value larger than IXGBE_MAX_2K_FRAME_BUILD_SKB (1534 or
-> 1536) if it loads XDP.
-> 
-> After I do a quick study on the manner of i40E driver allowing two kinds
-> of buffer size (one is 2048 while another is 3072) to support XDP mode in
-> i40e_max_xdp_frame_size(), I believe the default MTU size is possibly not
-> satisfied in XDP mode when IXGBE driver is in use, we sometimes need to
-> insert a new header, say, vxlan header. So setting the 3K-buffer flag
-> could solve the issue.
-> 
-> [1] commit 38b7e7f8ae82 ("ixgbe: Do not allow LRO or MTU change with XDP")
-> [2] commit fabf1bce103a ("ixgbe: Prevent unsupported configurations with
-> XDP")
-> 
-> Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index ab8370c413f3..dc016582f91e 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -4313,6 +4313,9 @@ static void ixgbe_set_rx_buffer_len(struct ixgbe_adapter *adapter)
->  		if (IXGBE_2K_TOO_SMALL_WITH_PADDING ||
->  		    (max_frame > (ETH_FRAME_LEN + ETH_FCS_LEN)))
->  			set_bit(__IXGBE_RX_3K_BUFFER, &rx_ring->state);
-> +
-> +		if (ixgbe_enabled_xdp_adapter(adapter))
-> +			set_bit(__IXGBE_RX_3K_BUFFER, &rx_ring->state);
+Introduce the capability to export the XDP features supported by the NIC.
+Introduce a XDP compliance test tool (xdp_features) to check the features
+exported by the NIC match the real features supported by the driver.
+Allow XDP_REDIRECT of non-linear XDP frames into a devmap.
+Export XDP features for each XDP capable driver.
+Extend libbpf netlink implementation in order to support netlink_generic
+protocol.
+Introduce a simple generic netlink family for netdev data.
 
-This will result with unnecessary overhead for 1500 MTU because you will
-be working on order-1 pages. Instead I would focus on fixing
-ixgbe_change_mtu() and stop relying on ixgbe_rx_bufsz() in there. You can
-check what we do on ice/i40e sides.
+Changes since v2:
+- rebase on top of bpf-next
+- fix compilation error
 
-I'm not looking actively into ixgbe internals but I don't think that there
-is anything that stops us from using 3k buffers with XDP.
+Changes since v1:
+- add Documentation to netdev.yaml
+- use flags instead of enum as type for netdev.yaml definitions
+- squash XDP_PASS, XDP_DROP, XDP_TX and XDP_ABORTED into XDP_BASIC since they
+  are supported by all drivers.
+- add notifier event to xdp_features_set_redirect_target() and
+  xdp_features_clear_redirect_target()
+- add selftest for xdp-features support in bpf_xdp_detach()
+- add IPv6 preliminary support to XDP compliance test tool
 
->  #endif
->  	}
->  }
-> -- 
-> 2.37.3
-> 
+Changes since RFCv2:
+- do not assume fixed layout for genl kernel messages
+- fix warnings in netdev_nl_dev_fill
+- fix capabilities for nfp driver
+- add supported_sg parameter to xdp_features_set_redirect_target and drop
+  __xdp_features_set_redirect_target routine
+
+Changes since RFCv1:
+- Introduce netdev-genl implementation and get rid of rtnl one.
+- Introduce netlink_generic support in libbpf netlink implementation
+- Rename XDP_FEATURE_* in NETDEV_XDP_ACT_*
+- Rename XDP_FEATURE_REDIRECT_TARGET in NETDEV_XDP_ACT_NDO_XMIT
+- Rename XDP_FEATURE_FRAG_RX in NETDEV_XDP_ACT_RX_SG
+- Rename XDP_FEATURE_FRAG_TARFET in NETDEV_XDP_ACT_NDO_XMIT
+- Get rid of XDP_LOCK feature.
+- Move xdp_feature field in a netdevice struct hole in the 4th cacheline.
+
+Jakub Kicinski (1):
+  netdev-genl: create a simple family for netdev stuff
+
+Lorenzo Bianconi (5):
+  libbpf: add the capability to specify netlink proto in
+    libbpf_netlink_send_recv
+  libbpf: add API to get XDP/XSK supported features
+  bpf: devmap: check XDP features in __xdp_enqueue routine
+  selftests/bpf: add test for bpf_xdp_query xdp-features support
+  selftests/bpf: introduce XDP compliance test tool
+
+Marek Majtyka (2):
+  drivers: net: turn on XDP features
+  xsk: add usage of XDP features flags
+
+ Documentation/netlink/specs/netdev.yaml       | 100 +++
+ drivers/net/ethernet/amazon/ena/ena_netdev.c  |   4 +
+ .../net/ethernet/aquantia/atlantic/aq_nic.c   |   5 +
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |   3 +
+ drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c |   2 +
+ .../net/ethernet/cavium/thunder/nicvf_main.c  |   2 +
+ .../net/ethernet/freescale/dpaa/dpaa_eth.c    |   4 +
+ .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  |   4 +
+ .../net/ethernet/freescale/enetc/enetc_pf.c   |   3 +
+ .../ethernet/fungible/funeth/funeth_main.c    |   6 +
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  10 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   5 +
+ drivers/net/ethernet/intel/igb/igb_main.c     |   9 +-
+ drivers/net/ethernet/intel/igc/igc_main.c     |   3 +
+ drivers/net/ethernet/intel/igc/igc_xdp.c      |   5 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   6 +
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |   1 +
+ drivers/net/ethernet/marvell/mvneta.c         |   3 +
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |   4 +
+ .../ethernet/marvell/octeontx2/nic/otx2_pf.c  |   8 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |   6 +
+ .../net/ethernet/mellanox/mlx4/en_netdev.c    |   2 +
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |  11 +
+ drivers/net/ethernet/microsoft/mana/mana_en.c |   2 +
+ .../ethernet/netronome/nfp/nfp_net_common.c   |   5 +
+ drivers/net/ethernet/qlogic/qede/qede_main.c  |   3 +
+ drivers/net/ethernet/sfc/efx.c                |   4 +
+ drivers/net/ethernet/sfc/siena/efx.c          |   4 +
+ drivers/net/ethernet/socionext/netsec.c       |   3 +
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |   2 +
+ drivers/net/ethernet/ti/cpsw.c                |   4 +
+ drivers/net/ethernet/ti/cpsw_new.c            |   4 +
+ drivers/net/hyperv/netvsc_drv.c               |   2 +
+ drivers/net/netdevsim/netdev.c                |   1 +
+ drivers/net/tun.c                             |   5 +
+ drivers/net/veth.c                            |   4 +
+ drivers/net/virtio_net.c                      |   4 +
+ drivers/net/xen-netfront.c                    |   2 +
+ include/linux/netdevice.h                     |   3 +
+ include/net/xdp.h                             |  15 +
+ include/uapi/linux/netdev.h                   |  59 ++
+ kernel/bpf/devmap.c                           |  16 +-
+ net/core/Makefile                             |   3 +-
+ net/core/dev.c                                |   1 +
+ net/core/filter.c                             |  13 +-
+ net/core/netdev-genl-gen.c                    |  48 ++
+ net/core/netdev-genl-gen.h                    |  23 +
+ net/core/netdev-genl.c                        | 179 +++++
+ net/core/xdp.c                                |  18 +
+ net/xdp/xsk_buff_pool.c                       |   7 +-
+ tools/include/uapi/linux/netdev.h             |  59 ++
+ tools/lib/bpf/libbpf.h                        |   3 +-
+ tools/lib/bpf/netlink.c                       | 121 ++-
+ tools/lib/bpf/nlattr.h                        |  12 +
+ tools/testing/selftests/bpf/.gitignore        |   1 +
+ tools/testing/selftests/bpf/Makefile          |  11 +-
+ .../bpf/prog_tests/xdp_do_redirect.c          |  27 +-
+ .../selftests/bpf/prog_tests/xdp_info.c       |   8 +
+ .../selftests/bpf/progs/xdp_features.c        | 249 ++++++
+ .../selftests/bpf/test_xdp_features.sh        |  99 +++
+ tools/testing/selftests/bpf/xdp_features.c    | 736 ++++++++++++++++++
+ tools/testing/selftests/bpf/xdp_features.h    |  33 +
+ 62 files changed, 1966 insertions(+), 33 deletions(-)
+ create mode 100644 Documentation/netlink/specs/netdev.yaml
+ create mode 100644 include/uapi/linux/netdev.h
+ create mode 100644 net/core/netdev-genl-gen.c
+ create mode 100644 net/core/netdev-genl-gen.h
+ create mode 100644 net/core/netdev-genl.c
+ create mode 100644 tools/include/uapi/linux/netdev.h
+ create mode 100644 tools/testing/selftests/bpf/progs/xdp_features.c
+ create mode 100755 tools/testing/selftests/bpf/test_xdp_features.sh
+ create mode 100644 tools/testing/selftests/bpf/xdp_features.c
+ create mode 100644 tools/testing/selftests/bpf/xdp_features.h
+
+-- 
+2.39.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
