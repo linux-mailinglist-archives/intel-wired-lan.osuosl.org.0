@@ -1,83 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E124A67D817
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Jan 2023 23:00:27 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4C4867D980
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Jan 2023 00:15:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 063E78254A;
-	Thu, 26 Jan 2023 22:00:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 063E78254A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1772D408BC;
+	Thu, 26 Jan 2023 23:15:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1772D408BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674770426;
-	bh=kvdwu3DCpODK6DiE2ADF48MWohEMViXF0uGgsFkTLLQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=bAlfaSSS/QsMFQS71Q9vqY6ns6YEIEpQEjF+XP+J8yV3FYzG3L9tAODetUBMzwgwd
-	 Euc0TKLcjYh0GY+bC+U90NzwZFLp5lUaWWUG1oIGgQgjUzjVR4BSPu78D6akoTfaUm
-	 hjDi2fJDTR6ZVz2+uyw5n5+lOyYkzUkQSx5+Y/eESgJpT6cun+VTOBInJ3sOGlp8No
-	 JVttdcQ5kB761WrN1mr0h49Mjjv8atG2mIGhGdyhklKmiJhAGB5k1KtJiQ2T93TOLg
-	 1XZ3LtnUGmM1grqDXhBdgQWBGuMQbn6zFSge3Ju+w1a+f8UnAkq7RAyHlmrwQhcEfm
-	 rQYLa/8WCZpwA==
+	s=default; t=1674774938;
+	bh=aEuJ2z+Z7lDKwtrZlAo946K03fFCyY2rVQgI6K3CjAg=;
+	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
+	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
+	b=eBTM9oX73WnNeKKx/CNGY/yCw6rwChipPyqPi495U0N6mu3Il5NzG0SriZlQNY8Ag
+	 Bz3sodphseU5gY6YPrViGhhve0v0n+h48N1wK9Fo/FVyep+9fByw5Ut+Bt/gFfA+Om
+	 URnPjgqTshNOx4zyAsOcT3D3NBp6Y3ar6pQ5msev60s4egXh3wFHxF1VelZhc0J5Ap
+	 0JRMLahMkNLOtGli5986rgspjOWBpy9qwqNk0O4XACXg03QiwnQrq3MR/9G2ALWkFP
+	 EFrpF5mFtPyfbsFgaQ6YJAb7WFB/4X0Z9ryxJedRgJHs0IJ7DFr3Ulv19xr3ccaZW3
+	 tzGOeThL3OFfg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iODADwBIwVny; Thu, 26 Jan 2023 22:00:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gUymdwIGGLKP; Thu, 26 Jan 2023 23:15:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 073D38249B;
-	Thu, 26 Jan 2023 22:00:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 073D38249B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 02E144057C;
+	Thu, 26 Jan 2023 23:15:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 02E144057C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9F2431BF2EC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 22:00:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 77D301BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 23:15:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 846D6824CB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 22:00:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 846D6824CB
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5C7DE611D1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 23:15:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5C7DE611D1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n1Spo1bxrLhO for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Jan 2023 22:00:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YvrqQqylsJDa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Jan 2023 23:15:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A9B6D8249B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD0CE6118B
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A9B6D8249B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 22:00:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AD0CE6118B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 23:15:30 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D823A6194D;
- Thu, 26 Jan 2023 22:00:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFE06C433D2;
- Thu, 26 Jan 2023 22:00:16 +0000 (UTC)
-Date: Thu, 26 Jan 2023 23:00:13 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Gerhard Engleder <gerhard@engleder-embedded.com>
-Message-ID: <Y9L37bVacFMYdqVv@lore-desk>
-References: <cover.1674606193.git.lorenzo@kernel.org>
- <c1171111f8af76da11331277b1e4a930c10f3c30.1674606197.git.lorenzo@kernel.org>
- <28eedfd5-4444-112b-bfbc-1c7682385c88@engleder-embedded.com>
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 989396199C;
+ Thu, 26 Jan 2023 23:15:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B504CC433EF;
+ Thu, 26 Jan 2023 23:15:28 +0000 (UTC)
+Date: Thu, 26 Jan 2023 17:15:27 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: linux-pci@vger.kernel.org
+Message-ID: <20230126231527.GA1322015@bhelgaas>
 MIME-Version: 1.0
-In-Reply-To: <28eedfd5-4444-112b-bfbc-1c7682385c88@engleder-embedded.com>
+Content-Disposition: inline
+In-Reply-To: <20230118234612.272916-1-helgaas@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674770417;
- bh=mG3PIraFDoP2NR/mGww1RDWi7EAzYTplzCN246slWDw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=khERF1GxXIngu4mAhc/cQRMghNSkohz9N2rYq8SBOuiAS5r1em1yMmDOGtDK4GGG9
- /gxYH8f+YF2biApjK5+AhIKTEpJ1o1Lh40qQYVVPh79QBULrfTmyomUHn022V5bF/h
- IDcP2U5onKr5ux7dT5JQYKlMv26xt4yFzthbEZkZ/wJ8xt+Tqx5NVDN8DTvgMPmcP7
- Zs9YPPn8aStUk0NizoSpu9xCaTLZIsXX5sBGCI5Jy6WzwQY3jvtXh9jEzeniGXxORw
- 7GEbwoePVmFNVk3aJkdEu39VChzUzzpi3eCsWGh/LSAahafnAoSbbx3HOXFqyd5a3L
- 3ixe/EFUg6VoQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1674774929;
+ bh=yLxfhl2XeMsnGXh8m4CYuImOEZKgrEUslX63nDnPLrc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=VPk1P6ShqdMJdgOLDXfAg3hmy8SL4IAesCX9ibxD3BDdaupVSCJa7vRBe9x1k72s3
+ 0WT3de7uDz1Kh7XfvLBViNk61oDrsMXN3jDJ09HhctMhpqHlfJ81OdtfBE+PohHfd4
+ tw+89BwTzSlRTG8QDGtuRInId/FBPYFZd6NTyYImd89YX/3OfczFjJj4qstBXsQrRh
+ 9Ede9P3N6bh8AVRHs4Hg7Qyumb+wJn3pVA0l3XyLzekrglV+HU1C6A/7KeCFZypUD2
+ XMOBOd5CEzMzRNhi3tlSuHqf1WLHI2Os2wURhy0PtV93Cg6KqWu3qHavIsmPzpQGf+
+ GH4IkWzOisVbQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=khERF1Gx
-Subject: Re: [Intel-wired-lan] [PATCH v2 bpf-next 2/8] drivers: net: turn on
- XDP features
+ header.a=rsa-sha256 header.s=k20201202 header.b=VPk1P6Sh
+Subject: Re: [Intel-wired-lan] [PATCH 0/9] PCI/AER: Remove redundant Device
+ Control Error Reporting Enable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,136 +87,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============3899865676552135388=="
+Cc: Sathyanarayanan Kuppuswamy <sathyanarayanan.kuppuswamy@linux.intel.com>,
+ Ashok Raj <ashok.raj@intel.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Keith Busch <kbusch@kernel.org>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ intel-wired-lan@lists.osuosl.org, Stefan Roese <sr@denx.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+[+cc all the folks I forgot to cc when sending the original cover
+letter, sorry about that, plus the folks who very generously tested
+the driver patches]
 
---===============3899865676552135388==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wgPVbgvG3x7so8fA"
-Content-Disposition: inline
+On Wed, Jan 18, 2023 at 05:46:03PM -0600, Bjorn Helgaas wrote:
+> From: Bjorn Helgaas <bhelgaas@google.com>
+> 
+> Since f26e58bf6f54 ("PCI/AER: Enable error reporting when AER is native"),
+> ths PCI core sets the Device Control bits that enable error reporting for
+> PCIe devices.
+> 
+> This series removes redundant calls to pci_enable_pcie_error_reporting()
+> that do the same thing from the AER driver and several NIC drivers.
+> 
+> There are several more drivers where this should be removed; I started with
+> just the Intel drivers here.
+> 
+> Bjorn Helgaas (9):
+>   PCI/AER: Remove redundant Device Control Error Reporting Enable
+>   e1000e: Remove redundant pci_enable_pcie_error_reporting()
+>   fm10k: Remove redundant pci_enable_pcie_error_reporting()
+>   i40e: Remove redundant pci_enable_pcie_error_reporting()
+>   iavf: Remove redundant pci_enable_pcie_error_reporting()
+>   ice: Remove redundant pci_enable_pcie_error_reporting()
+>   igb: Remove redundant pci_enable_pcie_error_reporting()
+>   igc: Remove redundant pci_enable_pcie_error_reporting()
+>   ixgbe: Remove redundant pci_enable_pcie_error_reporting()
 
+Thank you very much for reviewing and testing these.  I applied the
+first (PCI/AER) patch to the PCI tree.
 
---wgPVbgvG3x7so8fA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I think Jakub is planning to merge the rest via the netdev tree.
+There are no dependencies, so they can be squashed if desired.  Let me
+know if you'd prefer me to merge them or squash them.
 
-> On 25.01.23 01:33, Lorenzo Bianconi wrote:
-> > From: Marek Majtyka <alardam@gmail.com>
-> >=20
-> > A summary of the flags being set for various drivers is given below.
-> > Note that XDP_F_REDIRECT_TARGET and XDP_F_FRAG_TARGET are features
-> > that can be turned off and on at runtime. This means that these flags
-> > may be set and unset under RTNL lock protection by the driver. Hence,
-> > READ_ONCE must be used by code loading the flag value.
-> >=20
-> > Also, these flags are not used for synchronization against the availabi=
-lity
-> > of XDP resources on a device. It is merely a hint, and hence the read
-> > may race with the actual teardown of XDP resources on the device. This
-> > may change in the future, e.g. operations taking a reference on the XDP
-> > resources of the driver, and in turn inhibiting turning off this flag.
-> > However, for now, it can only be used as a hint to check whether device
-> > supports becoming a redirection target.
-> >=20
-> > Turn 'hw-offload' feature flag on for:
-> >   - netronome (nfp)
-> >   - netdevsim.
-> >=20
-> > Turn 'native' and 'zerocopy' features flags on for:
-> >   - intel (i40e, ice, ixgbe, igc)
-> >   - mellanox (mlx5).
-> >   - stmmac
-> >=20
-> > Turn 'native' features flags on for:
-> >   - amazon (ena)
-> >   - broadcom (bnxt)
-> >   - freescale (dpaa, dpaa2, enetc)
-> >   - funeth
-> >   - intel (igb)
-> >   - marvell (mvneta, mvpp2, octeontx2)
-> >   - mellanox (mlx4)
-> >   - qlogic (qede)
-> >   - sfc
-> >   - socionext (netsec)
-> >   - ti (cpsw)
-> >   - tap
-> >   - veth
-> >   - xen
-> >   - virtio_net.
-> >=20
-> > Turn 'basic' (tx, pass, aborted and drop) features flags on for:
-> >   - netronome (nfp)
-> >   - cavium (thunder)
-> >   - hyperv.
-> >=20
-> > Turn 'redirect_target' feature flag on for:
-> >   - amanzon (ena)
-> >   - broadcom (bnxt)
-> >   - freescale (dpaa, dpaa2)
-> >   - intel (i40e, ice, igb, ixgbe)
-> >   - ti (cpsw)
-> >   - marvell (mvneta, mvpp2)
-> >   - sfc
-> >   - socionext (netsec)
-> >   - qlogic (qede)
-> >   - mellanox (mlx5)
-> >   - tap
-> >   - veth
-> >   - virtio_net
-> >   - xen
->=20
-> XDP support for tsnep was merged to net-next last week. So this driver
-> cannot get XDP feature support in bpf-next as it is not there currently.
-> Should I add these flags with a fix afterwards? Or would net-next be the
-> better target for this patch series?
-
-It is better to target this series to bpf-next I guess since there are some
-libbpf and bpf changes.
-I would say we can fix tsnep with a follow-up patch or I can add it to the
-series if bpf-next will be rebased before the series is merged, it depends =
-on
-the upstream discussion.
-
-Regards,
-Lorenzo
-
->=20
-> Gerhard
-
---wgPVbgvG3x7so8fA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY9L37QAKCRA6cBh0uS2t
-rH69AQChogm+pILXQ5apmdID9EOinCFNzrdmsYfWKZTkNX3DHAD9FLa+koGMdvfi
-Sra3pIlrfq3pfEJtrDxxK+cbpWGBfgE=
-=Pvrl
------END PGP SIGNATURE-----
-
---wgPVbgvG3x7so8fA--
-
---===============3899865676552135388==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+>  drivers/net/ethernet/intel/e1000e/netdev.c    |  7 ---
+>  drivers/net/ethernet/intel/fm10k/fm10k_pci.c  |  5 --
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   |  4 --
+>  drivers/net/ethernet/intel/iavf/iavf_main.c   |  5 --
+>  drivers/net/ethernet/intel/ice/ice_main.c     |  3 --
+>  drivers/net/ethernet/intel/igb/igb_main.c     |  5 --
+>  drivers/net/ethernet/intel/igc/igc_main.c     |  5 --
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  5 --
+>  drivers/pci/pcie/aer.c                        | 48 -------------------
+>  9 files changed, 87 deletions(-)
+> 
+> -- 
+> 2.25.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3899865676552135388==--
