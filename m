@@ -1,86 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE31667D737
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Jan 2023 22:05:31 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AAB567D53A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Jan 2023 20:17:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4569F41B58;
-	Thu, 26 Jan 2023 21:05:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4569F41B58
+	by smtp2.osuosl.org (Postfix) with ESMTP id 050CB4047C;
+	Thu, 26 Jan 2023 19:17:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 050CB4047C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674767130;
-	bh=VtEZIRpTTu+s09MSw6cSbN9xIH0E0n3yw8+XwbzrdUg=;
+	s=default; t=1674760640;
+	bh=kFbu6tRqeGJ49XhHT9Oc7sSYJZrQsWuirK+SLInqpTo=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WwmhFwFd7gnPbgCh5syqAINlRWf6ca399tGwEHn5DdvIwP79bos9aHKueSeP/wr47
-	 vGtQ9iH2chpAS+jvREj2mRE8xJALSa+HRcoftdFu1UFH1j43+TV+CjEN9QfLBs2n2E
-	 HhSC7EzVMwOXupahEbrQ8jrzZB9DfC2bxcW3KxFMnmD2saHdFjbA7M3zwS0nsrDYFF
-	 5dTUMEL1WE7k1Q120f0ICOu8nGYMzvOywmpMbpDBGaEVpKZeqHX2bStsgV2YVEfb8W
-	 44MQrCau7PxV6Qi5QKact2IBKAWtHDUWjEA1BybYcf+LWyLCChDu//7yCBzMq+2I5r
-	 LhjgWxyl65WiA==
+	b=H3vf96I6Qz77lqLO67R7kOlZYsC/tFxl9FlaeaNg9YH02hAjcBX2nCJ3wWQtIGhX+
+	 TtbyBpovo8x5L297SYIAtQP9U+mn8VFdlULWcXYFUz1yCROgNzgMeT3jD1gRPcsboI
+	 Pv8ulm7LsdPCBHRB3QN+ySdvAHm0/17SD/e6zeEgAvjzZ1SrvJRrxEvjY+2NHGpwh1
+	 URT5lTIuoGqT+YpSFkm6Xy3/r5Hm0lgCJcJf1UMOYCHMcYgu0EvFlsJOKZmzLJZZB6
+	 AcZK1tNzSV4Jx//TBmGhFBZVXqaqRHylWaSLvNPvmSJp8Thcj4ASeDUZXPFGr0RO8o
+	 v0I9Isod/NaUA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id amzg6GhRT300; Thu, 26 Jan 2023 21:05:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id v-Dn1UcowQfO; Thu, 26 Jan 2023 19:17:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9906341B59;
-	Thu, 26 Jan 2023 21:05:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9906341B59
+	by smtp2.osuosl.org (Postfix) with ESMTP id D8627402F7;
+	Thu, 26 Jan 2023 19:17:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D8627402F7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1854F1BF427
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E6B921BF427
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F18E1402F7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F18E1402F7
+ by smtp2.osuosl.org (Postfix) with ESMTP id CC8CD40140
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CC8CD40140
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QKMeGxHumDCN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Jan 2023 19:17:57 +0000 (UTC)
-X-Greylist: delayed 00:07:57 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C9FF40140
-Received: from mx23lb.world4you.com (mx23lb.world4you.com [81.19.149.133])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1C9FF40140
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:57 +0000 (UTC)
-Received: from [88.117.49.184] (helo=[10.0.0.160])
- by mx23lb.world4you.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <gerhard@engleder-embedded.com>)
- id 1pL7cf-0006HX-88; Thu, 26 Jan 2023 20:09:21 +0100
-Message-ID: <28eedfd5-4444-112b-bfbc-1c7682385c88@engleder-embedded.com>
-Date: Thu, 26 Jan 2023 20:09:20 +0100
+ with ESMTP id FPutCbmEfbyr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Jan 2023 19:17:13 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A82FD40439
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A82FD40439
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Jan 2023 19:17:12 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 412B2B81EBC;
+ Thu, 26 Jan 2023 19:17:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34C50C433EF;
+ Thu, 26 Jan 2023 19:17:07 +0000 (UTC)
+Date: Thu, 26 Jan 2023 21:17:04 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>
+Message-ID: <Y9LRsNmI2anlwdNP@unreal>
+References: <cover.1674560845.git.leon@kernel.org>
+ <c182cae29914fa19ce970859e74234d3de506853.1674560845.git.leon@kernel.org>
+ <20230125110226.66dc7eeb@kernel.org> <Y9Irgrgf3uxOjwUm@unreal>
+ <75f6e5d0e42a8b9895c1b2330c373da9ed7f41db.camel@redhat.com>
+ <Y9JZAEa6HkLMfs2P@unreal>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, bpf@vger.kernel.org
-References: <cover.1674606193.git.lorenzo@kernel.org>
- <c1171111f8af76da11331277b1e4a930c10f3c30.1674606197.git.lorenzo@kernel.org>
-Content-Language: en-US
-In-Reply-To: <c1171111f8af76da11331277b1e4a930c10f3c30.1674606197.git.lorenzo@kernel.org>
-X-AV-Do-Run: Yes
-X-Mailman-Approved-At: Thu, 26 Jan 2023 21:05:23 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=iI5nfSnVTsfzi2TlCeq92ugJV3Nwoh2wrjkWIusgImY=; b=G0ue/G7tl16TgJINez8QJijHtJ
- uKd+cqh62/qlUUSdzeAmHvdxGaeG0iUG8xoHEk9E2speQJ1GP/06dlwCf6vz2pEPhiF9hNYldKpOl
- vL0OhK295xa99LumXda6C2PudttuqpphE4gBWgutC0oI7M7whHtnblynlaGErkcOMDtU=;
+Content-Disposition: inline
+In-Reply-To: <Y9JZAEa6HkLMfs2P@unreal>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1674760629;
+ bh=qZW5kvveXCZHcR/ZqTwrsTUv+BB2nwUSCg4zBsaJH9s=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=tAGSAWglttIMy99bfGZPzoDW6BfVFKVp/OJ9p9TL6bhcyHUAIWnaDEY1ck7ENRKBK
+ Bv/w78fimWKWPySQLNdB9hcVRlNaXgjBmIyYLPNgoxd6yXMqSXsNH1yqsrQoG3wd+o
+ MByT21tYwiwZLGCte0wRAtKRx+INlOTm9OjK0twjvj7KbXISBb2g+2z4MNqBD3ufnw
+ GhYvvNYc1yd2yP0ndzzR5MCWbeT5Kp8zM9mIkOkvPfwVIFxLcIHQ8y4W0sZYId9gYC
+ HK0PSHekWJqMor8pOGBMYH0o+l4xP3VMbSSDCMTZQJC3HXqggvS/kMtfyjEZ90NMK3
+ nF9VXFNdu0RPg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=engleder-embedded.com
- header.i=@engleder-embedded.com header.a=rsa-sha256 header.s=dkim11
- header.b=G0ue/G7t
-Subject: Re: [Intel-wired-lan] [PATCH v2 bpf-next 2/8] drivers: net: turn on
- XDP features
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=tAGSAWgl
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 01/10] xfrm: extend add
+ policy callback to set failure reason
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,90 +94,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, magnus.karlsson@intel.com, leon@kernel.org,
- netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Cc: Steffen Klassert <steffen.klassert@secunet.com>,
+ Veaceslav Falico <vfalico@gmail.com>, Herbert Xu <herbert@gondor.apana.org.au>,
+ Jonathan Corbet <corbet@lwn.net>, Jay Vosburgh <j.vosburgh@gmail.com>,
+ oss-drivers@corigine.com, linux-doc@vger.kernel.org,
+ Raju Rangoju <rajur@chelsio.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Ayush Sawal <ayush.sawal@chelsio.com>,
+ Simon Horman <simon.horman@corigine.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S . Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 25.01.23 01:33, Lorenzo Bianconi wrote:
-> From: Marek Majtyka <alardam@gmail.com>
+On Thu, Jan 26, 2023 at 12:42:08PM +0200, Leon Romanovsky wrote:
+> On Thu, Jan 26, 2023 at 10:45:50AM +0100, Paolo Abeni wrote:
+> > On Thu, 2023-01-26 at 09:28 +0200, Leon Romanovsky wrote:
+> > > On Wed, Jan 25, 2023 at 11:02:26AM -0800, Jakub Kicinski wrote:
+> > > > On Tue, 24 Jan 2023 13:54:57 +0200 Leon Romanovsky wrote:
+> > > > > -	err = dev->xfrmdev_ops->xdo_dev_policy_add(xp);
+> > > > > +	err = dev->xfrmdev_ops->xdo_dev_policy_add(xp, extack);
+> > > > >  	if (err) {
+> > > > >  		xdo->dev = NULL;
+> > > > >  		xdo->real_dev = NULL;
+> > > > >  		xdo->type = XFRM_DEV_OFFLOAD_UNSPECIFIED;
+> > > > >  		xdo->dir = 0;
+> > > > >  		netdev_put(dev, &xdo->dev_tracker);
+> > > > > -		NL_SET_ERR_MSG(extack, "Device failed to offload this policy");
+> > > > 
+> > > > In a handful of places we do:
+> > > > 
+> > > > if (!extack->msg)
+> > > > 	NL_SET_ERR_MSG(extack, "Device failed to offload this policy");
+> > > > 
+> > > > in case the device did not provide the extack.
+> > > > Dunno if it's worth doing here.
+> > > 
+> > > Honestly, I followed devlink.c which didn't do that, but looked again
+> > > and found that devlink can potentially overwrite messages :)
+> > > 
+> > > For example in this case:
+> > >     997         err = ops->port_fn_state_get(port, &state, &opstate, extack);
+> > >     998         if (err) {
+> > >     999                 if (err == -EOPNOTSUPP)
+> > >    1000                         return 0;
+> > >    1001                 return err;
+> > >    1002         }
+> > >    1003         if (!devlink_port_fn_state_valid(state)) {
+> > >    1004                 WARN_ON_ONCE(1);
+> > >    1005                 NL_SET_ERR_MSG_MOD(extack, "Invalid state read from driver");
+> > >    1006                 return -EINVAL;
+> > >    1007         }
+> > > 
+> > > 
+> > > So what do you think about the following change, so we can leave
+> > > NL_SET_ERR_MSG_MOD() in devlink and xfrm intact? 
+> > > 
+> > > diff --git a/include/linux/netlink.h b/include/linux/netlink.h
+> > > index 38f6334f408c..d6f3a958e30b 100644
+> > > --- a/include/linux/netlink.h
+> > > +++ b/include/linux/netlink.h
+> > > @@ -101,7 +101,7 @@ struct netlink_ext_ack {
+> > >                                                         \
+> > >         do_trace_netlink_extack(__msg);                 \
+> > >                                                         \
+> > > -       if (__extack)                                   \
+> > > +       if (__extack && !__extack->msg)                 \
+> > >                 __extack->_msg = __msg;                 \
+> > >  } while (0)
+> > > 
+> > > @@ -111,7 +111,7 @@ struct netlink_ext_ack {
+> > >  #define NL_SET_ERR_MSG_FMT(extack, fmt, args...) do {                         \
+> > >         struct netlink_ext_ack *__extack = (extack);                           \
+> > >                                                                                \
+> > > -       if (!__extack)                                                         \
+> > > +       if (!__extack || __extack->msg)                                        \
+> > >                 break;                                                         \
+> > >         if (snprintf(__extack->_msg_buf, NETLINK_MAX_FMTMSG_LEN,               \
+> > >                      "%s" fmt "%s", "", ##args, "") >=                         \
+> > > 
+> > 
+> > I think it makes sense. With the above patch 3/10 should be updated to
+> > preserve the 'catch-all' error message, I guess.
 > 
-> A summary of the flags being set for various drivers is given below.
-> Note that XDP_F_REDIRECT_TARGET and XDP_F_FRAG_TARGET are features
-> that can be turned off and on at runtime. This means that these flags
-> may be set and unset under RTNL lock protection by the driver. Hence,
-> READ_ONCE must be used by code loading the flag value.
+> Great, thanks
 > 
-> Also, these flags are not used for synchronization against the availability
-> of XDP resources on a device. It is merely a hint, and hence the read
-> may race with the actual teardown of XDP resources on the device. This
-> may change in the future, e.g. operations taking a reference on the XDP
-> resources of the driver, and in turn inhibiting turning off this flag.
-> However, for now, it can only be used as a hint to check whether device
-> supports becoming a redirection target.
-> 
-> Turn 'hw-offload' feature flag on for:
->   - netronome (nfp)
->   - netdevsim.
-> 
-> Turn 'native' and 'zerocopy' features flags on for:
->   - intel (i40e, ice, ixgbe, igc)
->   - mellanox (mlx5).
->   - stmmac
-> 
-> Turn 'native' features flags on for:
->   - amazon (ena)
->   - broadcom (bnxt)
->   - freescale (dpaa, dpaa2, enetc)
->   - funeth
->   - intel (igb)
->   - marvell (mvneta, mvpp2, octeontx2)
->   - mellanox (mlx4)
->   - qlogic (qede)
->   - sfc
->   - socionext (netsec)
->   - ti (cpsw)
->   - tap
->   - veth
->   - xen
->   - virtio_net.
-> 
-> Turn 'basic' (tx, pass, aborted and drop) features flags on for:
->   - netronome (nfp)
->   - cavium (thunder)
->   - hyperv.
-> 
-> Turn 'redirect_target' feature flag on for:
->   - amanzon (ena)
->   - broadcom (bnxt)
->   - freescale (dpaa, dpaa2)
->   - intel (i40e, ice, igb, ixgbe)
->   - ti (cpsw)
->   - marvell (mvneta, mvpp2)
->   - sfc
->   - socionext (netsec)
->   - qlogic (qede)
->   - mellanox (mlx5)
->   - tap
->   - veth
->   - virtio_net
->   - xen
+> > 
+> > Let's see what Jakub thinks ;)
 
-XDP support for tsnep was merged to net-next last week. So this driver
-cannot get XDP feature support in bpf-next as it is not there currently.
-Should I add these flags with a fix afterwards? Or would net-next be the
-better target for this patch series?
+https://lore.kernel.org/netdev/2919eb55e2e9b92265a3ba600afc8137a901ae5f.1674760340.git.leon@kernel.org/T/#u
 
-Gerhard
+> > 
+> > Cheers,
+> > 
+> > Paolo
+> > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
