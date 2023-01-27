@@ -1,100 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0993467E8F6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Jan 2023 16:09:10 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66AD067EC63
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Jan 2023 18:26:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 92791612AD;
-	Fri, 27 Jan 2023 15:09:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92791612AD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E7A9831F2;
+	Fri, 27 Jan 2023 17:26:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E7A9831F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674832148;
-	bh=V8HRm70zDMeEHGMc9s9YZJbE4nYrgxJr6AMS58+TiME=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1674840397;
+	bh=KI1eTkDCYQZHbRi0mbrZC8jjj+g5SMPDTTow4860VF8=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=kiUY5KxuZR8ooSZP+NbbwBds2QUY6hyrp8Sszhu1v124V3l7Hk5wtgkfOZAWWriww
-	 x7D+/I7GrvmJf3oHdz8/SzoBOcdWccaa2onAp8ysv9eu2hcgg72xes7EALOmSzvBSF
-	 aCN9oUMugeTYYroPBTcDOVaVcbjogMmiCt8zu/8cQMXRd70rEULY6KQIW0JGQwNLG3
-	 h1Kj0l5J2Pqdu7KccHLxnMlNMGnDJ7E9F4R7Em1jE9fKWCjxEGSYQapj7faPy/8jw/
-	 H0DiZ5A8iXBM0RIi2DwKop4yx+t9Igz1gIgJSWTM2PuDAYJQzQspu2LND8G/tKGoT3
-	 tovGJaqZfME/g==
+	b=9B0geEvFT29/X0vg/7gR2s3cOClCzyj/82iwHchKzyQPFaawyVva0ApQgtRqelXCl
+	 7Cy475givVXI/PdG2YCKDn+tEVYEO709krlOpj8L0BXy3PXk3hWpik+dQzlE4fj3IP
+	 MTiinaoC/FkDJ5QC92bnS0XsQVXgCkUSyAJXJ8KG8wVP+5KwXnH2b3avuXJ0X+fuBb
+	 /fNFAE4pM7Imk1jxXbDInw7TlolCaSTr7ptyCi55X7Ua8UXFDppgY/gDufiuNtdr2v
+	 Sp5vkQJaADhYSnoNOQx+PzQWnpibGvrS2Qj27ujj2MiFeUzUNURcbPNSzaCmYLbfpm
+	 RWVUAxwuabeAA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vwe-Ji0cadO8; Fri, 27 Jan 2023 15:09:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gNQEAEd0EES7; Fri, 27 Jan 2023 17:26:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 72AB761293;
-	Fri, 27 Jan 2023 15:09:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72AB761293
+	by smtp1.osuosl.org (Postfix) with ESMTP id 187D482433;
+	Fri, 27 Jan 2023 17:26:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 187D482433
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 492B71BF83B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 15:09:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2161E1BF239
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 17:26:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 21A2E60B1B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 15:09:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21A2E60B1B
+ by smtp2.osuosl.org (Postfix) with ESMTP id EDEA1405BB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 17:26:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EDEA1405BB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bT8lNTZxwU9c for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Jan 2023 15:09:02 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1C6F61293
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E1C6F61293
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 15:09:01 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id gs13so3787547ejc.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 07:09:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jNKwj7IWvpGptrusc3pRYBqANEuNHkuWJThhB95Vjd0=;
- b=mOTPVPobaKAhM+kwOF13OJi/AyCfX9BpJJn0/hT68h/aPoRb8nF2dYi62+ZpxUNQgX
- 1jb+SAJL0x4UO081abU86PcwoXvO/2JhuV9JsorV61uQHpYHTvoXf7PJhHaRlfcsNnN7
- K2WDyTzCHhleNr74RhS7b1NWZkg1nJi5PTIV6r9YVYU+IjEOl3esG7Lxx9iXOBloeY/e
- gIHv71GypDh+Srx1pM7QKnbQC4kkV7VIqNI0wCXWZNmd2RwbmDjxsHRGWpUUAW8VBPLg
- OPfGQZKqx2nod3g0NZFc6wxaVkire7/LBz4+F/b+S1q6d9TqFLpUboS6NNdWDW/Kjg3h
- Oezw==
-X-Gm-Message-State: AFqh2ko2S0mHGhwhv2svUMmgBgcTppNf92WHzn/WND3wyCYKJ860re51
- Xd3JfWDj6TSy827XOf7Eygvs73OZ10eVQmnTMm4=
-X-Google-Smtp-Source: AMrXdXtnnNEUb/io4XFLuc+yD4vzvIFncclei5EjO4eJeKmGkP/e9zXAQjWyqHu1VdJGeSy0pNSS8m2s9HBklp71dkY=
-X-Received: by 2002:a17:906:4a8f:b0:86c:e07a:3ce2 with SMTP id
- x15-20020a1709064a8f00b0086ce07a3ce2mr5568180eju.58.1674832139953; Fri, 27
- Jan 2023 07:08:59 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LXijG--V_5Ei for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Jan 2023 17:26:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CC25E40562
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CC25E40562
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Jan 2023 17:26:29 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0157161D50;
+ Fri, 27 Jan 2023 17:26:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F5B1C433D2;
+ Fri, 27 Jan 2023 17:26:27 +0000 (UTC)
+Date: Fri, 27 Jan 2023 18:26:24 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sdf@google.com
+Message-ID: <Y9QJQHq8X9HZxoW3@lore-desk>
+References: <cover.1674737592.git.lorenzo@kernel.org>
+ <0b05b08d4579b017dd96869d1329cd82801bd803.1674737592.git.lorenzo@kernel.org>
+ <Y9LIPaojtpTjYlNu@google.com>
 MIME-Version: 1.0
-References: <20230127122018.2839-1-kerneljasonxing@gmail.com>
- <CAL+tcoAci+fwk6-JsTL7+yOiom08XSpc9Y5xbTZZ=WWRjYvnuw@mail.gmail.com>
-In-Reply-To: <CAL+tcoAci+fwk6-JsTL7+yOiom08XSpc9Y5xbTZZ=WWRjYvnuw@mail.gmail.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Fri, 27 Jan 2023 23:08:23 +0800
-Message-ID: <CAL+tcoCeBtiOeemuhQsTK8pnNLjmRRK7ukXLsiPt3YkOrJbYYA@mail.gmail.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, 
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
- richardcochran@gmail.com, ast@kernel.org, daniel@iogearbox.net, 
- hawk@kernel.org, john.fastabend@gmail.com, alexandr.lobakin@intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jNKwj7IWvpGptrusc3pRYBqANEuNHkuWJThhB95Vjd0=;
- b=VPlHIX+oQFTlSAfg8sGI/IFRDGfdsXLhnB+qYCVgk9lwivtCq34o9iAbAEc07qx/iC
- eSKSKaZjii8L/9wfp4uwfPOSlX795T2VObR8/Zo9LCH9xCuesqUM7phjiGMiFtedfiiw
- IDkvPA2/E1T0KFvmFS20QjNHtuhWFGGuzd1n9jI2goY3RYm4tbGFAJKn9GNhQ8VnkGag
- GFF3IxnfGq+vlPd6bLABfHQaMuOYe1n+C3EZivBLUndmOtcsPvIXzwnPf4NNv9HPbN4n
- zADxO/uMqzPU+A6YwvNA9avKuVWzubLBwfI6owNb1mF/+E+DNMtdFtbk9R6Nbwfdg8kW
- 2faw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=VPlHIX+o
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] ixgbe: allow to increase MTU
- to some extent with XDP enabled
+In-Reply-To: <Y9LIPaojtpTjYlNu@google.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1674840388;
+ bh=1jsBv8VGrSqlwyR16vkDOvNsvMCqTEjTtOqRmmrh4VA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=DU9/oJ4I6tbLKMROZH/nsYDs0hAQa+Ag3UagYDh6znb9SePA4thYxTvfj2eak0JgR
+ Ydi/5Ttel60DyHAKoqWLJVMKjGgCCyZBUEYu61d0iJnFqCg4YGjxJXP/tGgmLcI3JP
+ mAjzCsl9DyRKk2TAdj2B3Y4udU5He3n5pMam1QLgw375wgoHcpVjzKrbwvDzmempc3
+ qdNBhNfXl9yi6boVe848O6BMmAcySnP1LhURKLvwnWg8yQOs0GQRHIxQCBnEIONHMM
+ qvKNYUStRl+ruT6ObQXqw8nI1z+J81IwSCMHSYIRsOycGGtSMZv7uErQfsl8P/hJwk
+ cLKWxg8xfAvkw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=DU9/oJ4I
+Subject: Re: [Intel-wired-lan] [PATCH v3 bpf-next 8/8] selftests/bpf:
+ introduce XDP compliance test tool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,102 +91,447 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Jason Xing <kernelxing@tencent.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
+ andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
+ kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
+Content-Type: multipart/mixed; boundary="===============2828566658523723068=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 27, 2023 at 10:54 PM Jason Xing <kerneljasonxing@gmail.com> wrote:
->
-> My bad. It's not that right. Please ignore the v2 patch. I need some
-> time to do more studies and tests on this part.
->
 
-In the meantime, any suggestions and help are appreciated :) I'm still
-working on it.
+--===============2828566658523723068==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="A5mPBtMhiEowpqWr"
+Content-Disposition: inline
 
 
-> Thanks,
-> Jason
->
-> On Fri, Jan 27, 2023 at 8:20 PM Jason Xing <kerneljasonxing@gmail.com> wrote:
-> >
-> > From: Jason Xing <kernelxing@tencent.com>
-> >
-> > I encountered one case where I cannot increase the MTU size directly
-> > from 1500 to 2000 with XDP enabled if the server is equipped with
-> > IXGBE card, which happened on thousands of servers in production
-> > environment.
-> >
-> > This patch follows the behavior of changing MTU as i40e/ice does.
-> >
-> > Referrences:
-> > commit 23b44513c3e6f ("ice: allow 3k MTU for XDP")
-> > commit 0c8493d90b6bb ("i40e: add XDP support for pass and drop actions")
-> >
-> > Link: https://lore.kernel.org/lkml/20230121085521.9566-1-kerneljasonxing@gmail.com/
-> > Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> > ---
-> > v2:
-> > 1) change the commit message.
-> > 2) modify the logic when changing MTU size suggested by Maciej and Alexander.
-> > ---
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 25 ++++++++++++-------
-> >  1 file changed, 16 insertions(+), 9 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > index ab8370c413f3..2c1b6eb60436 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > @@ -6777,6 +6777,18 @@ static void ixgbe_free_all_rx_resources(struct ixgbe_adapter *adapter)
-> >                         ixgbe_free_rx_resources(adapter->rx_ring[i]);
-> >  }
-> >
-> > +/**
-> > + * ixgbe_max_xdp_frame_size - returns the maximum allowed frame size for XDP
-> > + * @adapter - device handle, pointer to adapter
-> > + */
-> > +static int ixgbe_max_xdp_frame_size(struct ixgbe_adapter *adapter)
-> > +{
-> > +       if (PAGE_SIZE >= 8192 || adapter->flags2 & IXGBE_FLAG2_RX_LEGACY)
-> > +               return IXGBE_RXBUFFER_2K;
-> > +       else
-> > +               return IXGBE_RXBUFFER_3K;
+--A5mPBtMhiEowpqWr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On 01/26, Lorenzo Bianconi wrote:
+
+[...]
+
+>=20
+> Why do we need the namespaces? Why not have two veth peers in the
+> current namespace?
+
+I think we can use just a veth pair here, we do not need two, I will fix it.
+
+>=20
+> (not sure it matters, just wondering)
+>=20
+> > +ret=3D1
+> > +
+> > +setup() {
+> > +	{
+> > +		ip netns add ${NS0}
+> > +		ip netns add ${NS1}
+> > +
+> > +		ip link add v01 index 111 type veth peer name v00 netns ${NS0}
+> > +		ip link add v10 index 222 type veth peer name v11 netns ${NS1}
+> > +
+> > +		ip link set v01 up
+> > +		ip addr add 10.10.0.1/24 dev v01
+> > +		ip link set v01 address 00:11:22:33:44:55
+> > +		ip -n ${NS0} link set dev v00 up
+> > +		ip -n ${NS0} addr add 10.10.0.11/24 dev v00
+> > +		ip -n ${NS0} route add default via 10.10.0.1
+> > +		ip -n ${NS0} link set v00 address 00:12:22:33:44:55
+> > +
+> > +		ip link set v10 up
+> > +		ip addr add 10.10.1.1/24 dev v10
+> > +		ip link set v10 address 00:13:22:33:44:55
+> > +		ip -n ${NS1} link set dev v11 up
+> > +		ip -n ${NS1} addr add 10.10.1.11/24 dev v11
+> > +		ip -n ${NS1} route add default via 10.10.1.1
+> > +		ip -n ${NS1} link set v11 address 00:14:22:33:44:55
+> > +
+> > +		sysctl -w net.ipv4.ip_forward=3D1
+> > +		# Enable XDP mode
+> > +		ethtool -K v01 gro on
+> > +		ethtool -K v01 tx-checksumming off
+> > +		ip netns exec ${NS0} ethtool -K v00 gro on
+> > +		ip netns exec ${NS0} ethtool -K v00 tx-checksumming off
+> > +		ethtool -K v10 gro on
+> > +		ethtool -K v10 tx-checksumming off
+> > +		ip netns exec ${NS1} ethtool -K v11 gro on
+> > +		ip netns exec ${NS1} ethtool -K v11 tx-checksumming off
+> > +	} > /dev/null 2>&1
+> > +}
+
+[...]
+>=20
+> IIRC, Martin mentioned IPv6 support in the previous version. Should we
+> also make the userspace v6 aware by at least using AF_INET6 dualstack
+> sockets? I feel like listening on inaddr_any with AF_INET6 should
+> get us there without too much pain..
+
+ack, I will fix it.
+
+>=20
+> > +
+> > +	/* start echo channel */
+> > +	*echo_sockfd =3D sockfd;
+> > +	err =3D pthread_create(t, NULL, dut_echo_thread, echo_sockfd);
+> > +	if (err) {
+> > +		fprintf(stderr, "Failed creating dut_echo thread: %s\n",
+> > +			strerror(-err));
+> > +		close(sockfd);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	return 0;
 > > +}
 > > +
-> >  /**
-> >   * ixgbe_change_mtu - Change the Maximum Transfer Unit
-> >   * @netdev: network interface device structure
-> > @@ -6788,18 +6800,13 @@ static int ixgbe_change_mtu(struct net_device *netdev, int new_mtu)
-> >  {
-> >         struct ixgbe_adapter *adapter = netdev_priv(netdev);
-> >
-> > -       if (adapter->xdp_prog) {
-> > +       if (ixgbe_enabled_xdp_adapter(adapter)) {
-> >                 int new_frame_size = new_mtu + ETH_HLEN + ETH_FCS_LEN +
-> >                                      VLAN_HLEN;
-> > -               int i;
-> > -
-> > -               for (i = 0; i < adapter->num_rx_queues; i++) {
-> > -                       struct ixgbe_ring *ring = adapter->rx_ring[i];
-> >
-> > -                       if (new_frame_size > ixgbe_rx_bufsz(ring)) {
-> > -                               e_warn(probe, "Requested MTU size is not supported with XDP\n");
-> > -                               return -EINVAL;
-> > -                       }
-> > +               if (new_frame_size > ixgbe_max_xdp_frame_size(adapter)) {
-> > +                       e_warn(probe, "Requested MTU size is not supported with XDP\n");
-> > +                       return -EINVAL;
-> >                 }
-> >         }
-> >
+> > +static int dut_attach_xdp_prog(struct xdp_features *skel, int feature,
+> > +			       int flags)
+> > +{
+> > +	struct bpf_program *prog;
+> > +	unsigned int key =3D 0;
+> > +	int err, fd =3D 0;
+> > +
+> > +	switch (feature) {
+> > +	case XDP_FEATURE_TX:
+> > +		prog =3D skel->progs.xdp_do_tx;
+> > +		break;
+> > +	case XDP_FEATURE_DROP:
+> > +	case XDP_FEATURE_ABORTED:
+> > +		prog =3D skel->progs.xdp_do_drop;
+> > +		break;
+> > +	case XDP_FEATURE_PASS:
+> > +		prog =3D skel->progs.xdp_do_pass;
+> > +		break;
+> > +	case XDP_FEATURE_NDO_XMIT: {
+> > +		struct bpf_devmap_val entry =3D {
+> > +			.ifindex =3D env.ifindex,
+> > +		};
+> > +
+> > +		err =3D bpf_map__update_elem(skel->maps.dev_map,
+> > +					   &key, sizeof(key),
+> > +					   &entry, sizeof(entry), 0);
+> > +		if (err < 0)
+> > +			return err;
+> > +
+> > +		fd =3D bpf_program__fd(skel->progs.xdp_do_redirect_cpumap);
+> > +	}
+> > +	case XDP_FEATURE_REDIRECT: {
+> > +		struct bpf_cpumap_val entry =3D {
+> > +			.qsize =3D 2048,
+> > +			.bpf_prog.fd =3D fd,
+> > +		};
+> > +
+> > +		err =3D bpf_map__update_elem(skel->maps.cpu_map,
+> > +					   &key, sizeof(key),
+> > +					   &entry, sizeof(entry), 0);
+> > +		if (err < 0)
+> > +			return err;
+> > +
+> > +		prog =3D skel->progs.xdp_do_redirect;
+> > +		break;
+> > +	}
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	err =3D bpf_xdp_attach(env.ifindex, bpf_program__fd(prog), flags, NUL=
+L);
+> > +	if (err)
+> > +		fprintf(stderr,
+> > +			"Failed to attach XDP program to ifindex %d\n",
+> > +			env.ifindex);
+> > +	return err;
+> > +}
+> > +
+> > +static int __recv_msg(int sockfd, void *buf, size_t bufsize,
+> > +		      unsigned int *val, unsigned int val_size)
+> > +{
+> > +	struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
+> > +	int len, n =3D sizeof(*tlv), i =3D 0;
+> > +
+> > +	len =3D recv(sockfd, buf, bufsize, 0);
+> > +	if (len !=3D ntohs(tlv->len))
+> > +		return -EINVAL;
+> > +
+> > +	while (n < len && i < val_size) {
+> > +		val[i] =3D ntohl(tlv->data[i]);
+> > +		n +=3D sizeof(tlv->data[0]);
+> > +		i++;
+> > +	}
+> > +
+> > +	return i;
+> > +}
+> > +
+> > +static int recv_msg(int sockfd, void *buf, size_t bufsize)
+> > +{
+> > +	return __recv_msg(sockfd, buf, bufsize, NULL, 0);
+> > +}
+> > +
+> > +static int dut_run(struct xdp_features *skel)
+> > +{
+> > +	int flags =3D XDP_FLAGS_UPDATE_IF_NOEXIST | XDP_FLAGS_DRV_MODE;
+> > +	int state, err, sockfd, ctrl_sockfd, echo_sockfd, optval =3D 1;
+> > +	struct sockaddr_in ctrl_addr, addr =3D {
+> > +		.sin_family =3D AF_INET,
+> > +		.sin_addr.s_addr =3D htonl(INADDR_ANY),
+> > +		.sin_port =3D htons(DUT_CTRL_PORT),
+> > +	};
+> > +	unsigned int len =3D sizeof(ctrl_addr);
+> > +	pthread_t dut_thread;
+> > +
+>=20
+> [..]
+>=20
+> > +	sockfd =3D socket(AF_INET, SOCK_STREAM, 0);
+> > +	if (sockfd < 0) {
+> > +		fprintf(stderr, "Failed to create DUT socket\n");
+> > +		return -errno;
+> > +	}
+> > +
+> > +	err =3D setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &optval,
+> > +			 sizeof(optval));
+> > +	if (err < 0) {
+> > +		fprintf(stderr, "Failed sockopt on DUT socket\n");
+> > +		return -errno;
+> > +	}
+> > +
+> > +	err =3D bind(sockfd, (struct sockaddr *)&addr, sizeof(addr));
+> > +	if (err < 0) {
+> > +		fprintf(stderr, "Failed to bind DUT socket\n");
+> > +		return -errno;
+> > +	}
+> > +
+> > +	err =3D listen(sockfd, 5);
+> > +	if (err) {
+> > +		fprintf(stderr, "Failed to listen DUT socket\n");
+> > +		return -errno;
+> > +	}
+>=20
+> Should we use start_server from network_helpers.h here?
+
+ack, I will use it.
+
+>=20
+> > +
+> > +	ctrl_sockfd =3D accept(sockfd, (struct sockaddr *)&ctrl_addr, &len);
+> > +	if (ctrl_sockfd < 0) {
+> > +		fprintf(stderr, "Failed to accept connection on DUT socket\n");
+> > +		close(sockfd);
+> > +		return -errno;
+> > +	}
+> > +
+
+[...]
+
+>=20
+> There is also connect_to_fd, maybe we can use that? It should take
+> care of the timeouts.. (requires plumbing server_fd, not sure whether
+> it's a problem or not)
+
+please correct me if I am wrong, but in order to have server_fd it is manda=
+tory
+both tester and DUT are running on the same process, right? Here, I guess 9=
+9% of
+the times DUT and tester will run on two separated devices. Agree?
+
+Regards,
+Lorenzo
+
+>=20
+> > +
+> > +	if (i =3D=3D 10) {
+> > +		fprintf(stderr, "Failed to connect to the DUT\n");
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	err =3D __send_and_recv_msg(sockfd, CMD_GET_XDP_CAP, val,
+> > ARRAY_SIZE(val));
+> > +	if (err < 0) {
+> > +		close(sockfd);
+> > +		return err;
+> > +	}
+> > +
+> > +	advertised_cap =3D tester_collect_advertised_cap(val[0]);
+> > +
+> > +	err =3D bpf_xdp_attach(env.ifindex,
+> > +			     bpf_program__fd(skel->progs.xdp_tester),
+> > +			     flags, NULL);
+> > +	if (err) {
+> > +		fprintf(stderr, "Failed to attach XDP program to ifindex %d\n",
+> > +			env.ifindex);
+> > +		goto out;
+> > +	}
+> > +
+> > +	err =3D send_and_recv_msg(sockfd, CMD_START);
+> > +	if (err)
+> > +		goto out;
+> > +
+> > +	for (i =3D 0; i < 10 && !exiting; i++) {
+> > +		err =3D send_echo_msg();
+> > +		if (err < 0)
+> > +			goto out;
+> > +
+> > +		sleep(1);
+> > +	}
+> > +
+> > +	err =3D __send_and_recv_msg(sockfd, CMD_GET_STATS, val, ARRAY_SIZE(va=
+l));
+> > +	if (err)
+> > +		goto out;
+> > +
+> > +	/* stop the test */
+> > +	err =3D send_and_recv_msg(sockfd, CMD_STOP);
+> > +	/* send a new echo message to wake echo thread of the dut */
+> > +	send_echo_msg();
+> > +
+> > +	detected_cap =3D tester_collect_detected_cap(skel, val[0]);
+> > +
+> > +	fprintf(stdout, "Feature %s: [%s][%s]\n",
+> > get_xdp_feature_str(env.feature),
+> > +		detected_cap ? GREEN("DETECTED") : RED("NOT DETECTED"),
+> > +		advertised_cap ? GREEN("ADVERTISED") : RED("NOT ADVERTISED"));
+> > +out:
+> > +	bpf_xdp_detach(env.ifindex, flags, NULL);
+> > +	close(sockfd);
+> > +	return err < 0 ? err : 0;
+> > +}
+> > +
+> > +int main(int argc, char **argv)
+> > +{
+> > +	struct xdp_features *skel;
+> > +	int err;
+> > +
+> > +	libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
+> > +	libbpf_set_print(libbpf_print_fn);
+> > +
+> > +	signal(SIGINT, sig_handler);
+> > +	signal(SIGTERM, sig_handler);
+> > +
+> > +	set_env_defaul();
+> > +
+> > +	/* Parse command line arguments */
+> > +	err =3D argp_parse(&argp, argc, argv, 0, NULL, NULL);
+> > +	if (err)
+> > +		return err;
+> > +
+> > +	if (env.ifindex < 0) {
+> > +		fprintf(stderr, "Invalid ifindex\n");
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	/* Load and verify BPF application */
+> > +	skel =3D xdp_features__open();
+> > +	if (!skel) {
+> > +		fprintf(stderr, "Failed to open and load BPF skeleton\n");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	skel->rodata->expected_feature =3D env.feature;
+> > +	skel->rodata->dut_ip =3D env.dut_ip;
+> > +	skel->rodata->tester_ip =3D env.tester_ip;
+> > +
+> > +	/* Load & verify BPF programs */
+> > +	err =3D xdp_features__load(skel);
+> > +	if (err) {
+> > +		fprintf(stderr, "Failed to load and verify BPF skeleton\n");
+> > +		goto cleanup;
+> > +	}
+> > +
+> > +	err =3D xdp_features__attach(skel);
+> > +	if (err) {
+> > +		fprintf(stderr, "Failed to attach BPF skeleton\n");
+> > +		goto cleanup;
+> > +	}
+> > +
+> > +	if (env.tester) {
+> > +		/* Tester */
+> > +		fprintf(stdout, "Starting tester on device %d\n", env.ifindex);
+> > +		err =3D tester_run(skel);
+> > +	} else {
+> > +		/* DUT */
+> > +		fprintf(stdout, "Starting DUT on device %d\n", env.ifindex);
+> > +		err =3D dut_run(skel);
+> > +	}
+> > +
+> > +cleanup:
+> > +	xdp_features__destroy(skel);
+> > +
+> > +	return err < 0 ? -err : 0;
+> > +}
+> > diff --git a/tools/testing/selftests/bpf/xdp_features.h
+> > b/tools/testing/selftests/bpf/xdp_features.h
+> > new file mode 100644
+> > index 000000000000..28d7614c4f02
+> > --- /dev/null
+> > +++ b/tools/testing/selftests/bpf/xdp_features.h
+> > @@ -0,0 +1,33 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +
+> > +/* test commands */
+> > +enum test_commands {
+> > +	CMD_STOP,		/* CMD */
+> > +	CMD_START,		/* CMD + xdp feature */
+> > +	CMD_ECHO,		/* CMD */
+> > +	CMD_ACK,		/* CMD + data */
+> > +	CMD_GET_XDP_CAP,	/* CMD */
+> > +	CMD_GET_STATS,		/* CMD */
+> > +};
+> > +
+> > +#define DUT_CTRL_PORT	12345
+> > +#define DUT_ECHO_PORT	12346
+> > +
+> > +struct tlv_hdr {
+> > +	__be16 type;
+> > +	__be16 len;
+> > +	__be32 data[];
+> > +};
+> > +
+> > +enum {
+> > +	XDP_FEATURE_ABORTED,
+> > +	XDP_FEATURE_DROP,
+> > +	XDP_FEATURE_PASS,
+> > +	XDP_FEATURE_TX,
+> > +	XDP_FEATURE_REDIRECT,
+> > +	XDP_FEATURE_NDO_XMIT,
+> > +	XDP_FEATURE_XSK_ZEROCOPY,
+> > +	XDP_FEATURE_HW_OFFLOAD,
+> > +	XDP_FEATURE_RX_SG,
+> > +	XDP_FEATURE_NDO_XMIT_SG,
+> > +};
 > > --
-> > 2.37.3
-> >
+> > 2.39.1
+>=20
+
+--A5mPBtMhiEowpqWr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY9QJQAAKCRA6cBh0uS2t
+rLdFAQD30acz7uejJRjYCuDZjy80cUMpKU/ctkPmWxcQk41OBQD7BJiYtJ72kk5j
+aj7mxDUypKQ20WQ6FcdHTH75fsC4hwY=
+=WIqv
+-----END PGP SIGNATURE-----
+
+--A5mPBtMhiEowpqWr--
+
+--===============2828566658523723068==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2828566658523723068==--
