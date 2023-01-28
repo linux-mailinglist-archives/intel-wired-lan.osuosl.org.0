@@ -1,83 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2DDD67F872
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Jan 2023 15:07:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6101D67F873
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Jan 2023 15:07:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D0F0681ED3;
-	Sat, 28 Jan 2023 14:07:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D0F0681ED3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5CF9260C03;
+	Sat, 28 Jan 2023 14:07:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5CF9260C03
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674914840;
-	bh=2J1TBdaE8cnYzTOr2SkZCojiYXqHE1fI6d0sr8dXQAw=;
+	s=default; t=1674914845;
+	bh=uJG8gOhEr9mc31ICzDnkndDym65i8OXwPanfWcrhTbc=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5pqd6PWlxFA1oNLprirXk8vB5uf6P9ntF9mQszF3lMwPLdkGz0094wj199A6Y09bv
-	 YYA2d2Hjr0LiWT8+egGTPnInkj5V0QrxNEiZIKy7M+17Bu0K0F+jAaAB02vHaAzZCa
-	 WYAo2S4Sp1ooMn98p4u3XzaLQdpATPwlad5kNlzoaQd8I3EvT9MS1yf0gotjAbWyEC
-	 lRfMMytQqQsdGEGb3u6DskN1ZsMlZx388K6WBaCWhbfuXx7tPo/i8wOKfvwKRI1uUl
-	 ua61w+evWQutXTmXPX2RGrWQQAhqDR+SAECyYxazA01SFY14HUm60MAy2DjPULPu2O
-	 Npt2c9Z6RjNiA==
+	b=xhqJYdaVgXTyLV6K1pit4CIIc312njKzHkKj8c2bFJoF+cxb/dG4wvs380nKyJl6P
+	 GXZuj8L7DjqkHuVa6xfmNXPi80utBwjxhpJQkV1uedl6g4QQaXOfrihG8eOE+PF/+9
+	 RClVD1QDvR90ScPFLcEa7xf8T05eEiiFFL/J9NpGKp2CWgIGzLtnnjhY2BS2LZOALk
+	 14MbDxRPOv/Dv2s6SHNN5P8i7WugpFs8pMMrTkT5sI6uaWpZgXMKizRLHn4mJjDYzX
+	 Yq01ZD/uyMAn2snyXJ1ZlQVmbwPX1aE0VMTe8drKM+LdrSCcx0tLTgoiQGf2xGtxwr
+	 7XlOdMW45LAog==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BGeb3ACbScx5; Sat, 28 Jan 2023 14:07:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n08wspNiFSHW; Sat, 28 Jan 2023 14:07:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC417819F3;
-	Sat, 28 Jan 2023 14:07:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC417819F3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2FB866076C;
+	Sat, 28 Jan 2023 14:07:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FB866076C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 439F11BF232
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9ABAF1BF232
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2A15E817A8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A15E817A8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8215440488
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8215440488
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cIPs2Zuce5E2 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 28 Jan 2023 14:07:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qFRff3Bc2MHV for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 28 Jan 2023 14:07:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA98C81987
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBD6A4013B
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EA98C81987
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BBD6A4013B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:10 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 55B5D60C0F;
- Sat, 28 Jan 2023 14:07:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1336DC433A1;
- Sat, 28 Jan 2023 14:07:05 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1863E60C0D;
+ Sat, 28 Jan 2023 14:07:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEE88C433EF;
+ Sat, 28 Jan 2023 14:07:08 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: bpf@vger.kernel.org
-Date: Sat, 28 Jan 2023 15:06:17 +0100
-Message-Id: <3522acea209755731bf2e37a3b0c480cf986e8d0.1674913191.git.lorenzo@kernel.org>
+Date: Sat, 28 Jan 2023 15:06:18 +0100
+Message-Id: <d50e9b3fb435e195701362395ca4f9abc00c641b.1674913191.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <cover.1674913191.git.lorenzo@kernel.org>
 References: <cover.1674913191.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674914825;
- bh=mlM4euBAC72Td7MlAW4fDqvedDlj+T6SR1fmx+/YXlo=;
+ d=kernel.org; s=k20201202; t=1674914829;
+ bh=W8s01byzbRc000VXxRd58Th7SDPiZm1t0FHhYCKHd1s=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=l0gg4eOoKqPSjuPwyHlayah14Aesw8Dv4fv+Dx8L3kcGfpGe9ifp/EHoIt7P2Gxzt
- hjXFxPc7O2kIL9ZYsb7di0gqb2FnSg/yuUo9mDskNX2lCXE/VuFAFWnsDuLntPAtVE
- UckyubzkDt74/aR/Ye/NWXca0M0iRuPiyrVdMjCKbU4wXww42OUpJxNMJfjvgxYJqn
- h/Tt2YBPri67Il2lyVTOWg5rP8WGpB6dcAmfnnCnPg09kC0B2LY5ArXSxSaEHtIcSZ
- 7G/q5dDoyjVjkno91FCXm/ZwfyzWsQh7JH4IwwycBOVPdE+i4YDQAzyFEZhGZOcmXR
- ICNPMd1QHLvKg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=dNXyj4rZALElbImz7EEsR15QuD0KtO+ogBm1lgaZhPErDC+/o6tUvvIx1KvI4eCwl
+ iGoTU9E9BZundM/dSq1VLK1lHQGpHyxCJxcIaqlHxzeaS5HI4/FeSTJKDg+mTJt4CL
+ HdJI5e7kauUSQ6gvc1s3aB13rp6pPIIm1U618mNKsMo6oqD7NT3DqzpTmV/V4ODXqf
+ 9+QqQZ6suASVMmHJdFyyYS8DlEIbG1Ce11N6YIWCOSEteo7ruikCSa3YIc8AVVpXqj
+ vHBLVZDOcN2bEUrl4O6mMuOeBTb9HLZWSQAh/EKlyQkKffuvR4QiSccQP1hkgyLFzJ
+ wFEY2qYByQtNg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=l0gg4eOo
-Subject: [Intel-wired-lan] [PATCH v4 bpf-next 6/8] bpf: devmap: check XDP
- features in __xdp_enqueue routine
+ header.a=rsa-sha256 header.s=k20201202 header.b=dNXyj4rZ
+Subject: [Intel-wired-lan] [PATCH v4 bpf-next 7/8] selftests/bpf: add test
+ for bpf_xdp_query xdp-features support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,80 +105,98 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Check if the destination device implements ndo_xdp_xmit callback relying
-on NETDEV_XDP_ACT_NDO_XMIT flags. Moreover, check if the destination device
-supports XDP non-linear frame in __xdp_enqueue and is_valid_dst routines.
-This patch allows to perform XDP_REDIRECT on non-linear XDP buffers.
+Introduce a self-test to verify libbpf bpf_xdp_query capability to dump
+the xdp-features supported by the device (lo and veth in this case).
 
-Acked-by: Jesper Dangaard Brouer <brouer@redhat.com>
-Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
-Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+Acked-by: Stanislav Fomichev <sdf@google.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- kernel/bpf/devmap.c | 16 +++++++++++++---
- net/core/filter.c   | 13 +++++--------
- 2 files changed, 18 insertions(+), 11 deletions(-)
+ .../bpf/prog_tests/xdp_do_redirect.c          | 27 ++++++++++++++++++-
+ .../selftests/bpf/prog_tests/xdp_info.c       |  8 ++++++
+ 2 files changed, 34 insertions(+), 1 deletion(-)
 
-diff --git a/kernel/bpf/devmap.c b/kernel/bpf/devmap.c
-index d01e4c55b376..2675fefc6cb6 100644
---- a/kernel/bpf/devmap.c
-+++ b/kernel/bpf/devmap.c
-@@ -474,7 +474,11 @@ static inline int __xdp_enqueue(struct net_device *dev, struct xdp_frame *xdpf,
+diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_do_redirect.c b/tools/testing/selftests/bpf/prog_tests/xdp_do_redirect.c
+index a50971c6cf4a..b7a3e476f619 100644
+--- a/tools/testing/selftests/bpf/prog_tests/xdp_do_redirect.c
++++ b/tools/testing/selftests/bpf/prog_tests/xdp_do_redirect.c
+@@ -4,10 +4,12 @@
+ #include <net/if.h>
+ #include <linux/if_ether.h>
+ #include <linux/if_packet.h>
++#include <linux/if_link.h>
+ #include <linux/ipv6.h>
+ #include <linux/in6.h>
+ #include <linux/udp.h>
+ #include <bpf/bpf_endian.h>
++#include <uapi/linux/netdev.h>
+ #include "test_xdp_do_redirect.skel.h"
+ 
+ #define SYS(fmt, ...)						\
+@@ -92,7 +94,7 @@ void test_xdp_do_redirect(void)
+ 	struct test_xdp_do_redirect *skel = NULL;
+ 	struct nstoken *nstoken = NULL;
+ 	struct bpf_link *link;
+-
++	LIBBPF_OPTS(bpf_xdp_query_opts, query_opts);
+ 	struct xdp_md ctx_in = { .data = sizeof(__u32),
+ 				 .data_end = sizeof(data) };
+ 	DECLARE_LIBBPF_OPTS(bpf_test_run_opts, opts,
+@@ -153,6 +155,29 @@ void test_xdp_do_redirect(void)
+ 	    !ASSERT_NEQ(ifindex_dst, 0, "ifindex_dst"))
+ 		goto out;
+ 
++	/* Check xdp features supported by veth driver */
++	err = bpf_xdp_query(ifindex_src, XDP_FLAGS_DRV_MODE, &query_opts);
++	if (!ASSERT_OK(err, "veth_src bpf_xdp_query"))
++		goto out;
++
++	if (!ASSERT_EQ(query_opts.feature_flags,
++		       NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
++		       NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_RX_SG |
++		       NETDEV_XDP_ACT_NDO_XMIT_SG,
++		       "veth_src query_opts.feature_flags"))
++		goto out;
++
++	err = bpf_xdp_query(ifindex_dst, XDP_FLAGS_DRV_MODE, &query_opts);
++	if (!ASSERT_OK(err, "veth_dst bpf_xdp_query"))
++		goto out;
++
++	if (!ASSERT_EQ(query_opts.feature_flags,
++		       NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
++		       NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_RX_SG |
++		       NETDEV_XDP_ACT_NDO_XMIT_SG,
++		       "veth_dst query_opts.feature_flags"))
++		goto out;
++
+ 	memcpy(skel->rodata->expect_dst, &pkt_udp.eth.h_dest, ETH_ALEN);
+ 	skel->rodata->ifindex_out = ifindex_src; /* redirect back to the same iface */
+ 	skel->rodata->ifindex_in = ifindex_src;
+diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_info.c b/tools/testing/selftests/bpf/prog_tests/xdp_info.c
+index cd3aa340e65e..286c21ecdc65 100644
+--- a/tools/testing/selftests/bpf/prog_tests/xdp_info.c
++++ b/tools/testing/selftests/bpf/prog_tests/xdp_info.c
+@@ -8,6 +8,7 @@ void serial_test_xdp_info(void)
  {
- 	int err;
+ 	__u32 len = sizeof(struct bpf_prog_info), duration = 0, prog_id;
+ 	const char *file = "./xdp_dummy.bpf.o";
++	LIBBPF_OPTS(bpf_xdp_query_opts, opts);
+ 	struct bpf_prog_info info = {};
+ 	struct bpf_object *obj;
+ 	int err, prog_fd;
+@@ -61,6 +62,13 @@ void serial_test_xdp_info(void)
+ 	if (CHECK(prog_id, "prog_id_drv", "unexpected prog_id=%u\n", prog_id))
+ 		goto out;
  
--	if (!dev->netdev_ops->ndo_xdp_xmit)
-+	if (!(dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT))
-+		return -EOPNOTSUPP;
++	/* Check xdp features supported by lo device */
++	opts.feature_flags = ~0;
++	err = bpf_xdp_query(IFINDEX_LO, XDP_FLAGS_DRV_MODE, &opts);
++	if (!ASSERT_OK(err, "bpf_xdp_query"))
++		goto out;
 +
-+	if (unlikely(!(dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT_SG) &&
-+		     xdp_frame_has_frags(xdpf)))
- 		return -EOPNOTSUPP;
- 
- 	err = xdp_ok_fwd_dev(dev, xdp_get_frame_len(xdpf));
-@@ -532,8 +536,14 @@ int dev_map_enqueue(struct bpf_dtab_netdev *dst, struct xdp_frame *xdpf,
- 
- static bool is_valid_dst(struct bpf_dtab_netdev *obj, struct xdp_frame *xdpf)
- {
--	if (!obj ||
--	    !obj->dev->netdev_ops->ndo_xdp_xmit)
-+	if (!obj)
-+		return false;
-+
-+	if (!(obj->dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT))
-+		return false;
-+
-+	if (unlikely(!(obj->dev->xdp_features & NETDEV_XDP_ACT_NDO_XMIT_SG) &&
-+		     xdp_frame_has_frags(xdpf)))
- 		return false;
- 
- 	if (xdp_ok_fwd_dev(obj->dev, xdp_get_frame_len(xdpf)))
-diff --git a/net/core/filter.c b/net/core/filter.c
-index 6da78b3d381e..d18f57ef7352 100644
---- a/net/core/filter.c
-+++ b/net/core/filter.c
-@@ -4314,16 +4314,13 @@ int xdp_do_redirect(struct net_device *dev, struct xdp_buff *xdp,
- 	struct bpf_redirect_info *ri = this_cpu_ptr(&bpf_redirect_info);
- 	enum bpf_map_type map_type = ri->map_type;
- 
--	/* XDP_REDIRECT is not fully supported yet for xdp frags since
--	 * not all XDP capable drivers can map non-linear xdp_frame in
--	 * ndo_xdp_xmit.
--	 */
--	if (unlikely(xdp_buff_has_frags(xdp) &&
--		     map_type != BPF_MAP_TYPE_CPUMAP))
--		return -EOPNOTSUPP;
-+	if (map_type == BPF_MAP_TYPE_XSKMAP) {
-+		/* XDP_REDIRECT is not supported AF_XDP yet. */
-+		if (unlikely(xdp_buff_has_frags(xdp)))
-+			return -EOPNOTSUPP;
- 
--	if (map_type == BPF_MAP_TYPE_XSKMAP)
- 		return __xdp_do_redirect_xsk(ri, dev, xdp, xdp_prog);
-+	}
- 
- 	return __xdp_do_redirect_frame(ri, dev, xdp_convert_buff_to_frame(xdp),
- 				       xdp_prog);
++	ASSERT_EQ(opts.feature_flags, 0, "opts.feature_flags");
+ out:
+ 	bpf_xdp_detach(IFINDEX_LO, 0, NULL);
+ out_close:
 -- 
 2.39.1
 
