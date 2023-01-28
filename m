@@ -2,82 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84B0967F86A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Jan 2023 15:07:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8341567F86D
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Jan 2023 15:07:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 40A19419D9;
-	Sat, 28 Jan 2023 14:07:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40A19419D9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1364641775;
+	Sat, 28 Jan 2023 14:07:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1364641775
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674914828;
-	bh=BWkhUVqkbodLL9houEAevjwPt/7dSy6s8+yGgpb1WkM=;
+	s=default; t=1674914833;
+	bh=ynafh6BLYqE5cVBNcMUKmWUaWCKUA4Xl3EhjqbrnX2Y=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vnR495SbG/vVdaJ1Q+XXRkuXQMP43avKa0NIkj2QOk1XWEXwuo/QVZ/j0XvBTPTf6
-	 PGtDTHrxxgceu79vYvCrlW+hEjcDUaQ0j8yNEXnSYV5pI82AJp38W2M/GDXhs80LlT
-	 peyiRRBAyn2T4QhupSBKCqX6VBunMaAp2h0FldkSspRWtJA+xywtjy1ZhO8iQoqfhb
-	 wYsC/qyD3PCWwEpRju9fqrtyx/zk99CdVlhjPLwsVTbRvDvgO5K6hTa+LcwbkxoVVz
-	 A6MdvibZ+H4dWOxxvx7Xlx6yy5SdvgCkJH94jMUeKGWaKx7ZeQUjcay3Dps09TJt+X
-	 wAcFmDpSv2RBg==
+	b=9vufKSICLSqd6wvqVZjjCVqZDMHiQXWBgimbH2cMT13wF7jNNEE/p8nfXoVD7LH0W
+	 riZFxf3gDiDAoy1+VntU5ombcBx6Y1X48tUqQJUeoTSQ5crxMIkaVl4iCCntmOVJmk
+	 L/KJYLim+k2GCpwDVCe/LOsRcKT0xSKFGbo/pKwrAmVo11VJTo4mc0zEsSu0nMlnDq
+	 zHqUdCcFvQBzPPBedk8FhBeqkE335r7I5onRRN3EBtqqc6AMKiFU3UBotWuKnbi26N
+	 EKf3p80miVs3Eiw19nIGL4S3h5UflDnkmogpwRB6uqf/VzydKJsdkod4yqkY37hlXd
+	 ic9ECf0tG2osA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GdEKYWSSO13Z; Sat, 28 Jan 2023 14:07:07 +0000 (UTC)
+	with ESMTP id l9PyGg-OwoyY; Sat, 28 Jan 2023 14:07:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0820A41718;
-	Sat, 28 Jan 2023 14:07:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0820A41718
+	by smtp4.osuosl.org (Postfix) with ESMTP id AD4834167A;
+	Sat, 28 Jan 2023 14:07:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD4834167A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ECBA81BF232
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:06:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7CF2A1BF232
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C6B6481A24
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:06:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6B6481A24
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5648081E87
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:07:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5648081E87
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6Vgxbz1-xGTK for <intel-wired-lan@lists.osuosl.org>;
- Sat, 28 Jan 2023 14:06:54 +0000 (UTC)
+ with ESMTP id WXeYDY84jarh for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 28 Jan 2023 14:06:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D67A2817C3
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D67A2817C3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:06:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B3BB881A24
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B3BB881A24
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Jan 2023 14:06:58 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 2FD3860C0D;
- Sat, 28 Jan 2023 14:06:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11250C433EF;
- Sat, 28 Jan 2023 14:06:53 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1806360C11;
+ Sat, 28 Jan 2023 14:06:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00AAAC4339C;
+ Sat, 28 Jan 2023 14:06:57 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: bpf@vger.kernel.org
-Date: Sat, 28 Jan 2023 15:06:14 +0100
-Message-Id: <e2caea4cad530f2780e1debf6512842cbb28c962.1674913191.git.lorenzo@kernel.org>
+Date: Sat, 28 Jan 2023 15:06:15 +0100
+Message-Id: <abab6dad67af879c734562b29f0ca7304330cee7.1674913191.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.39.1
 In-Reply-To: <cover.1674913191.git.lorenzo@kernel.org>
 References: <cover.1674913191.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674914813;
- bh=EUEjHYCFZLBlSjnOAZ24J2T1iHJ/3Lz1NQeBwSmXZYY=;
+ d=kernel.org; s=k20201202; t=1674914817;
+ bh=frQ6wryTRsgHtvKmNSpqoCYSBl1MocigbxPElIXBFRE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Pf5Xt0MMQj9ubWCH3TYJtbdixcglozu74c0/YKKT3nWNZh9wuB5fYMm5dwYmE4iFe
- 7CdqTlyuL5p6NtpA6p/Z2hp9tRJmWlLhSE/UyHH2a9HbrMwlvE4+D4nyY2jJC8dGih
- I21+j4+c2BYmTW1NVPWyGRpfF6aKR6w0GE8tykfffBdCOaGzF4IYqjX94o0RAvI/RG
- OBc372u53/OSoGrS6SyIwpChCW7vElQgydxw/CCQRXwREUtZeKHOanqPY04X3861Qt
- zOKoQ8pijWvOZ9K6n/fhO1GUoXdwiPnSQppfh0Bo1aRxDLO4TpuFjWaLedYa8RNGb1
- 3wQcgRA5sIyXQ==
+ b=CQU+4+M94huZLCDt2JFOYfIudqUcIirXJIALtBoVOSvs/bkJap1FlcIjK1gsmnK0Q
+ EbfykTE7taePGavINPYVlf3waMDGz4c5tWVA3Nl9NKth4PoiE/ZvsC7OLHNHMI+yyR
+ MZ9i0164oqPT8NO2U0Wcakkx99/obQN6SQDv69VR5B3AUvoozYuvtL0rQHf+fHdwfW
+ YL5Yw58pFnUBC+JPiDoFfbn4edcCaeglxq9Fw+I7hYHY/qy1fjoJPdrm7KNNBHw2Zi
+ W7DEcgn0hsyAglYMRRm7gmVccRRTWfgf8nRoSX5Vp+d/XYt0BVReL+Say9vSFV+O2g
+ ockXjSFCSMwUg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Pf5Xt0MM
-Subject: [Intel-wired-lan] [PATCH v4 bpf-next 3/8] xsk: add usage of XDP
- features flags
+ header.a=rsa-sha256 header.s=k20201202 header.b=CQU+4+M9
+Subject: [Intel-wired-lan] [PATCH v4 bpf-next 4/8] libbpf: add the
+ capability to specify netlink proto in libbpf_netlink_send_recv
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,42 +104,109 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Marek Majtyka <alardam@gmail.com>
+This is a preliminary patch in order to introduce netlink_generic
+protocol support to libbpf.
 
-Change necessary condition check for XSK from ndo functions to
-xdp features flags.
-
-Signed-off-by: Marek Majtyka <alardam@gmail.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- net/xdp/xsk_buff_pool.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ tools/lib/bpf/netlink.c | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/net/xdp/xsk_buff_pool.c b/net/xdp/xsk_buff_pool.c
-index ed6c71826d31..b2df1e0f8153 100644
---- a/net/xdp/xsk_buff_pool.c
-+++ b/net/xdp/xsk_buff_pool.c
-@@ -140,6 +140,10 @@ static void xp_disable_drv_zc(struct xsk_buff_pool *pool)
- 	}
+diff --git a/tools/lib/bpf/netlink.c b/tools/lib/bpf/netlink.c
+index 35104580870c..d2468a04a6c3 100644
+--- a/tools/lib/bpf/netlink.c
++++ b/tools/lib/bpf/netlink.c
+@@ -41,7 +41,7 @@ struct xdp_id_md {
+ 	struct xdp_link_info info;
+ };
+ 
+-static int libbpf_netlink_open(__u32 *nl_pid)
++static int libbpf_netlink_open(__u32 *nl_pid, int proto)
+ {
+ 	struct sockaddr_nl sa;
+ 	socklen_t addrlen;
+@@ -51,7 +51,7 @@ static int libbpf_netlink_open(__u32 *nl_pid)
+ 	memset(&sa, 0, sizeof(sa));
+ 	sa.nl_family = AF_NETLINK;
+ 
+-	sock = socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, NETLINK_ROUTE);
++	sock = socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, proto);
+ 	if (sock < 0)
+ 		return -errno;
+ 
+@@ -212,14 +212,14 @@ static int libbpf_netlink_recv(int sock, __u32 nl_pid, int seq,
  }
  
-+#define NETDEV_XDP_ACT_ZC	(NETDEV_XDP_ACT_BASIC |		\
-+				 NETDEV_XDP_ACT_REDIRECT |	\
-+				 NETDEV_XDP_ACT_XSK_ZEROCOPY)
-+
- int xp_assign_dev(struct xsk_buff_pool *pool,
- 		  struct net_device *netdev, u16 queue_id, u16 flags)
+ static int libbpf_netlink_send_recv(struct libbpf_nla_req *req,
+-				    __dump_nlmsg_t parse_msg,
++				    int proto, __dump_nlmsg_t parse_msg,
+ 				    libbpf_dump_nlmsg_t parse_attr,
+ 				    void *cookie)
  {
-@@ -178,8 +182,7 @@ int xp_assign_dev(struct xsk_buff_pool *pool,
- 		/* For copy-mode, we are done. */
- 		return 0;
+ 	__u32 nl_pid = 0;
+ 	int sock, ret;
  
--	if (!netdev->netdev_ops->ndo_bpf ||
--	    !netdev->netdev_ops->ndo_xsk_wakeup) {
-+	if ((netdev->xdp_features & NETDEV_XDP_ACT_ZC) != NETDEV_XDP_ACT_ZC) {
- 		err = -EOPNOTSUPP;
- 		goto err_unreg_pool;
+-	sock = libbpf_netlink_open(&nl_pid);
++	sock = libbpf_netlink_open(&nl_pid, proto);
+ 	if (sock < 0)
+ 		return sock;
+ 
+@@ -271,7 +271,7 @@ static int __bpf_set_link_xdp_fd_replace(int ifindex, int fd, int old_fd,
  	}
+ 	nlattr_end_nested(&req, nla);
+ 
+-	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
++	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
+ }
+ 
+ int bpf_xdp_attach(int ifindex, int prog_fd, __u32 flags, const struct bpf_xdp_attach_opts *opts)
+@@ -382,7 +382,7 @@ int bpf_xdp_query(int ifindex, int xdp_flags, struct bpf_xdp_query_opts *opts)
+ 	xdp_id.ifindex = ifindex;
+ 	xdp_id.flags = xdp_flags;
+ 
+-	err = libbpf_netlink_send_recv(&req, __dump_link_nlmsg,
++	err = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, __dump_link_nlmsg,
+ 				       get_xdp_info, &xdp_id);
+ 	if (err)
+ 		return libbpf_err(err);
+@@ -493,7 +493,7 @@ static int tc_qdisc_modify(struct bpf_tc_hook *hook, int cmd, int flags)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
++	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
+ }
+ 
+ static int tc_qdisc_create_excl(struct bpf_tc_hook *hook)
+@@ -673,7 +673,8 @@ int bpf_tc_attach(const struct bpf_tc_hook *hook, struct bpf_tc_opts *opts)
+ 
+ 	info.opts = opts;
+ 
+-	ret = libbpf_netlink_send_recv(&req, get_tc_info, NULL, &info);
++	ret = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, get_tc_info, NULL,
++				       &info);
+ 	if (ret < 0)
+ 		return libbpf_err(ret);
+ 	if (!info.processed)
+@@ -739,7 +740,7 @@ static int __bpf_tc_detach(const struct bpf_tc_hook *hook,
+ 			return ret;
+ 	}
+ 
+-	return libbpf_netlink_send_recv(&req, NULL, NULL, NULL);
++	return libbpf_netlink_send_recv(&req, NETLINK_ROUTE, NULL, NULL, NULL);
+ }
+ 
+ int bpf_tc_detach(const struct bpf_tc_hook *hook,
+@@ -804,7 +805,8 @@ int bpf_tc_query(const struct bpf_tc_hook *hook, struct bpf_tc_opts *opts)
+ 
+ 	info.opts = opts;
+ 
+-	ret = libbpf_netlink_send_recv(&req, get_tc_info, NULL, &info);
++	ret = libbpf_netlink_send_recv(&req, NETLINK_ROUTE, get_tc_info, NULL,
++				       &info);
+ 	if (ret < 0)
+ 		return libbpf_err(ret);
+ 	if (!info.processed)
 -- 
 2.39.1
 
