@@ -1,84 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECA6F67FF4A
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 29 Jan 2023 14:05:21 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2AC96800EE
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 29 Jan 2023 19:48:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CCE4981973;
-	Sun, 29 Jan 2023 13:05:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CCE4981973
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4CC7D415EF;
+	Sun, 29 Jan 2023 18:48:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4CC7D415EF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1674997519;
-	bh=JVtimbH7yIG5dLX+un5+Ruyac5n2VQdM5gnncZCBbY8=;
+	s=default; t=1675018094;
+	bh=5WCAv/Z0UHXnqR2FreFjRX/5nqkJsCGSYozaIqL/U+c=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=qQ+MUKeuGp/khSEYbOeM7/U/Re4WwFFFjh7yk6oJoz00Y2Gyu2Xeh2JTD1146/yt+
-	 7hqiMCIoknsD++fymP8NVlktBpB9NJpqSxGwqrhMsFFNFeg14W9EnNvXXlBGoxgRBP
-	 npkTzcvKm5pjuLe7Ync9CwUyU5bOsg18SfRCmvsWD7CIWUlKOUPd0s/gCPcrmeknFy
-	 WoRbVY1B+Rsf2noqvrV5cLdCPVkIG2uBAYlorkGSURZVGL02fARgQCIR6blwrhIc9x
-	 NCOy2C8vmdI0ayemdLHq3Kz7nAl+zxQTuNuuNR/PlKzxrVIos54HqMtAlqnB01XPJJ
-	 KvWtVr3kzOQiw==
+	b=fgJhzI5MCi+Mhw37zq5q7Bxj85alX3oFYJn5fagK23ASOyAFS4NcEwtdcCu0xNkIR
+	 nxPKhThlt1bVS8b/f0ysXS2eoSv0heKcz2y8w1Uzp/B+I42V2gqzD2MpFvWwdx/xJ0
+	 b5HnLiQGdWTktv1V7qgO5SgLbj4xzr/kTxpE9IE5q7ZbN7Aebtpaksqmufo86ew8o9
+	 ZNt9OBxlviGhspGRsNGA2180b/aEm2We+V/lujU1SW9ugkS3ezPct5bhCeQAjS7Tq5
+	 YkaNCZyT8k6X4HY8gXHKvmhZLKJ399ML/iC9zytfRSebjLGvenUAvAHHQdJ87bi/OF
+	 /F0g3M9T+2fmA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uh9HSPG0WCl8; Sun, 29 Jan 2023 13:05:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rfGhUA5TMYj9; Sun, 29 Jan 2023 18:48:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BE34581934;
-	Sun, 29 Jan 2023 13:05:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE34581934
+	by smtp4.osuosl.org (Postfix) with ESMTP id C31704159D;
+	Sun, 29 Jan 2023 18:48:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C31704159D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 790281BF396
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 13:05:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 081561BF385
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 18:48:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 43FBB60F25
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 13:05:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43FBB60F25
+ by smtp1.osuosl.org (Postfix) with ESMTP id D30768174A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 18:48:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D30768174A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y5U-Cs7AvVg4 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 29 Jan 2023 13:05:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4eeJIA2zOMa8 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 29 Jan 2023 18:48:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F89B60F20
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6F89B60F20
- for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 13:05:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 13D4A81583
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 13D4A81583
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Jan 2023 18:48:06 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 438FF60D3A;
- Sun, 29 Jan 2023 13:05:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EDFFC433D2;
- Sun, 29 Jan 2023 13:05:11 +0000 (UTC)
-Date: Sun, 29 Jan 2023 14:05:07 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E93E560DF4;
+ Sun, 29 Jan 2023 18:48:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA412C433D2;
+ Sun, 29 Jan 2023 18:48:04 +0000 (UTC)
+Date: Sun, 29 Jan 2023 19:48:01 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Gerhard Engleder <gerhard@engleder-embedded.com>
-Message-ID: <Y9ZvA7+RMwbNlFoy@lore-desk>
-References: <cover.1674606193.git.lorenzo@kernel.org>
- <c1171111f8af76da11331277b1e4a930c10f3c30.1674606197.git.lorenzo@kernel.org>
- <28eedfd5-4444-112b-bfbc-1c7682385c88@engleder-embedded.com>
+To: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Message-ID: <Y9a/YWBBU/cjofIr@lore-desk>
+References: <cover.1674913191.git.lorenzo@kernel.org>
+ <a7eaa7e3e4c0a7e70f68c32314a7f75c9bba4465.1674913191.git.lorenzo@kernel.org>
+ <CAADnVQJhdxM6eqvxRZ7JjxEc+fDG5CwnV_FAGs+H+djNye0e=w@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <28eedfd5-4444-112b-bfbc-1c7682385c88@engleder-embedded.com>
+In-Reply-To: <CAADnVQJhdxM6eqvxRZ7JjxEc+fDG5CwnV_FAGs+H+djNye0e=w@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1674997511;
- bh=YRnCFG8ntf0bBC/MtPuhGtlsw+ZD+Y1feXB+ZAguOFA=;
+ d=kernel.org; s=k20201202; t=1675018085;
+ bh=wqWSHpwy3MUpVmsntNqQHtsxLsPh+QcU+TX0EB5Z+4c=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pM7mbhS46Zc3vsSb/cRYRpSBpu4zsXFLTKZKoi2W9W8Gn1mIszVsY3goULoFTBdsL
- 6N7rc9XSk4HmChaH+vMU5CV8tWptrMWwNKzc/fklambxb7qw0KSOA20MjTIwmbBUFD
- oWhrrJqewgPnftnf8iSQVGr1o8U6saypScis+5Ryll0IjJEFexqbYhzhG4KjXdjPVr
- rfhVyjmo/z4Chd3f7VXs/+ZQqgWPIVnjQJO+/kXDdupYlDwig+GMIFY5veiNobNGkx
- 88YpSDlIyIZTFbzEWtTNBY0pDEPIxzKptAN2zcX3lFcJ4MPxvSknnTUhv1Q8+iWtiM
- c8isIlzzXMAdg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=Nz1tZKtoo2WWyX7mMEDJ0juSHAcoJaOdpTBcbcWkG+P8/FhbZM+UEhpuuleS+FLUd
+ 4OzJ1t+ZdgzDeJ+nJ4yDp/amMYIlrdWBGOEzygjP42g2g245qB9D3YSX7Pbdh7NvOW
+ 5G4KuVbsuWWQ0KnKKM0iPK/t2i+ekATc7EwjAmIiuv6cHg1mOiOx/9Ws+QUbW+Wz9U
+ iOyZMdtrQfBGEEPLquar3kg/yHDyqjMVltQbV/uB/96KSSE2RytjjXyE4kAIQ1je0/
+ KSX1gPVLOhpWEHgNY+q/tEpVTXmBZVKNPWb4FJ1+jipdegmwISU77c+1qKZg14IB+2
+ gkfbLrJHYVGKg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=pM7mbhS4
-Subject: Re: [Intel-wired-lan] [PATCH v2 bpf-next 2/8] drivers: net: turn on
- XDP features
+ header.a=rsa-sha256 header.s=k20201202 header.b=Nz1tZKto
+Subject: Re: [Intel-wired-lan] [PATCH v4 bpf-next 8/8] selftests/bpf:
+ introduce XDP compliance test tool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,141 +90,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============8813846565586111745=="
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, vladimir.oltean@nxp.com,
+ Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ anthony.l.nguyen@intel.com, Stanislav Fomichev <sdf@google.com>,
+ Daniel Borkmann <daniel@iogearbox.net>, Andrii Nakryiko <andrii@kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Simon Horman <simon.horman@corigine.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Ariel Elior <aelior@marvell.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, christophe.jaillet@wanadoo.fr,
+ Kumar Kartikeya Dwivedi <memxor@gmail.com>, john@phrozen.org,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, bpf <bpf@vger.kernel.org>,
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>,
+ Leon Romanovsky <leon@kernel.org>,
+ Network Development <netdev@vger.kernel.org>,
+ Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>,
+ Martin KaFai Lau <martin.lau@linux.dev>, ecree.xilinx@gmail.com,
+ Marek Majtyka <alardam@gmail.com>, Andy Gospodarek <gospo@broadcom.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
+ Felix Fietkau <nbd@nbd.name>
+Content-Type: multipart/mixed; boundary="===============7549691132228080455=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============8813846565586111745==
+--===============7549691132228080455==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="U7/gIV1/sudiaFss"
+	protocol="application/pgp-signature"; boundary="Nx0wHPKtgW7QyJuF"
 Content-Disposition: inline
 
 
---U7/gIV1/sudiaFss
+--Nx0wHPKtgW7QyJuF
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On 25.01.23 01:33, Lorenzo Bianconi wrote:
-> > From: Marek Majtyka <alardam@gmail.com>
-> >=20
-> > A summary of the flags being set for various drivers is given below.
-> > Note that XDP_F_REDIRECT_TARGET and XDP_F_FRAG_TARGET are features
-> > that can be turned off and on at runtime. This means that these flags
-> > may be set and unset under RTNL lock protection by the driver. Hence,
-> > READ_ONCE must be used by code loading the flag value.
-> >=20
-> > Also, these flags are not used for synchronization against the availabi=
-lity
-> > of XDP resources on a device. It is merely a hint, and hence the read
-> > may race with the actual teardown of XDP resources on the device. This
-> > may change in the future, e.g. operations taking a reference on the XDP
-> > resources of the driver, and in turn inhibiting turning off this flag.
-> > However, for now, it can only be used as a hint to check whether device
-> > supports becoming a redirection target.
-> >=20
-> > Turn 'hw-offload' feature flag on for:
-> >   - netronome (nfp)
-> >   - netdevsim.
-> >=20
-> > Turn 'native' and 'zerocopy' features flags on for:
-> >   - intel (i40e, ice, ixgbe, igc)
-> >   - mellanox (mlx5).
-> >   - stmmac
-> >=20
-> > Turn 'native' features flags on for:
-> >   - amazon (ena)
-> >   - broadcom (bnxt)
-> >   - freescale (dpaa, dpaa2, enetc)
-> >   - funeth
-> >   - intel (igb)
-> >   - marvell (mvneta, mvpp2, octeontx2)
-> >   - mellanox (mlx4)
-> >   - qlogic (qede)
-> >   - sfc
-> >   - socionext (netsec)
-> >   - ti (cpsw)
-> >   - tap
-> >   - veth
-> >   - xen
-> >   - virtio_net.
-> >=20
-> > Turn 'basic' (tx, pass, aborted and drop) features flags on for:
-> >   - netronome (nfp)
-> >   - cavium (thunder)
-> >   - hyperv.
-> >=20
-> > Turn 'redirect_target' feature flag on for:
-> >   - amanzon (ena)
-> >   - broadcom (bnxt)
-> >   - freescale (dpaa, dpaa2)
-> >   - intel (i40e, ice, igb, ixgbe)
-> >   - ti (cpsw)
-> >   - marvell (mvneta, mvpp2)
-> >   - sfc
-> >   - socionext (netsec)
-> >   - qlogic (qede)
-> >   - mellanox (mlx5)
-> >   - tap
-> >   - veth
-> >   - virtio_net
-> >   - xen
+On Jan 28, Alexei Starovoitov wrote:
+> On Sat, Jan 28, 2023 at 6:07 AM Lorenzo Bianconi <lorenzo@kernel.org> wro=
+te:
+> > diff --git a/tools/testing/selftests/bpf/xdp_features.h b/tools/testing=
+/selftests/bpf/xdp_features.h
+> > new file mode 100644
+> > index 000000000000..28d7614c4f02
+> > --- /dev/null
+> > +++ b/tools/testing/selftests/bpf/xdp_features.h
+> > @@ -0,0 +1,33 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +
+> > +/* test commands */
+> > +enum test_commands {
+> > +       CMD_STOP,               /* CMD */
+> > +       CMD_START,              /* CMD + xdp feature */
+> > +       CMD_ECHO,               /* CMD */
+> > +       CMD_ACK,                /* CMD + data */
+> > +       CMD_GET_XDP_CAP,        /* CMD */
+> > +       CMD_GET_STATS,          /* CMD */
+> > +};
+> > +
+> > +#define DUT_CTRL_PORT  12345
+> > +#define DUT_ECHO_PORT  12346
+> > +
+> > +struct tlv_hdr {
+> > +       __be16 type;
+> > +       __be16 len;
+> > +       __be32 data[];
+> > +};
+> > +
+> > +enum {
+> > +       XDP_FEATURE_ABORTED,
+> > +       XDP_FEATURE_DROP,
+> > +       XDP_FEATURE_PASS,
+> > +       XDP_FEATURE_TX,
+> > +       XDP_FEATURE_REDIRECT,
+> > +       XDP_FEATURE_NDO_XMIT,
+> > +       XDP_FEATURE_XSK_ZEROCOPY,
+> > +       XDP_FEATURE_HW_OFFLOAD,
+> > +       XDP_FEATURE_RX_SG,
+> > +       XDP_FEATURE_NDO_XMIT_SG,
+> > +};
 >=20
-> XDP support for tsnep was merged to net-next last week. So this driver
-> cannot get XDP feature support in bpf-next as it is not there currently.
-> Should I add these flags with a fix afterwards? Or would net-next be the
-> better target for this patch series?
+> This doesn't match the kernel.
+> How did you test this?
+> What should be the way to prevent such mistakes in the future?
 
-bpf-next has been rebased on top of net-next so we can add tsnep support to=
- the
-series. Do you think the patch below is fine?
+Hi Alexei,
+
+I added the XDP_FEATURE_* enum above since the XDP compliance test tool nee=
+ds
+to differentiate between actions in NETDEV_XDP_ACT_BASIC (e.g XDP_TX and
+XDP_PASS or XDP_REDIRECT are handled differently in the ebpf programs insta=
+lled
+on the tester and DUT devices). However, combining netdev_xdp_act and xdp_a=
+ction
+enum definitions, I think we can keep this logic in xdp_feature userspace p=
+art
+and we can get rid of the XDP_FEATURE_* enum above.
+I will fix it in v5.
 
 Regards,
 Lorenzo
 
-diff --git a/drivers/net/ethernet/engleder/tsnep_main.c b/drivers/net/ether=
-net/engleder/tsnep_main.c
-index c3cf427a9409..6982aaa928b5 100644
---- a/drivers/net/ethernet/engleder/tsnep_main.c
-+++ b/drivers/net/ethernet/engleder/tsnep_main.c
-@@ -1926,6 +1926,10 @@ static int tsnep_probe(struct platform_device *pdev)
- 	netdev->features =3D NETIF_F_SG;
- 	netdev->hw_features =3D netdev->features | NETIF_F_LOOPBACK;
-=20
-+	netdev->xdp_features =3D NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
-+			       NETDEV_XDP_ACT_NDO_XMIT |
-+			       NETDEV_XDP_ACT_NDO_XMIT_SG;
-+
- 	/* carrier off reporting is important to ethtool even BEFORE open */
- 	netif_carrier_off(netdev);
-=20
->=20
-> Gerhard
-
---U7/gIV1/sudiaFss
+--Nx0wHPKtgW7QyJuF
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY9ZvAwAKCRA6cBh0uS2t
-rNw7AP0alud03ewTG9GBiClcWsJQ6C9O0dUGXriI2e1W5/22hAEAyOa3eNzEGfre
-fkTdDTwpzezmuA3GUsyCVIEgbzhVrA0=
-=Vws7
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY9a/YQAKCRA6cBh0uS2t
+rA0MAQD14qKZyBuuTUx+gcvcXc9dncuAjpGH/LEYEmvcdZpjPgD/evMoa3V8P0ut
+zGEhB25aPtnf/qiDteYI2cvq8czggAw=
+=A3gE
 -----END PGP SIGNATURE-----
 
---U7/gIV1/sudiaFss--
+--Nx0wHPKtgW7QyJuF--
 
---===============8813846565586111745==
+--===============7549691132228080455==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -236,4 +213,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============8813846565586111745==--
+--===============7549691132228080455==--
