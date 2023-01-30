@@ -1,83 +1,195 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBA0F681F33
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Jan 2023 00:00:12 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B45A681FBD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Jan 2023 00:35:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3E461821B1;
-	Mon, 30 Jan 2023 23:00:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E461821B1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1A11140B87;
+	Mon, 30 Jan 2023 23:35:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A11140B87
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675119611;
-	bh=Q+vQ2R6YlBCHrnBh5PWFHCInDTGBJ8Ml0OZjudLrdr8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1675121704;
+	bh=URXN77/dKDoPsdadnmDhe5BPKik1zytzE/rHq/afvaY=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=z8sQkraTb9JVude9npw0czj3YfQlarA2hJ5GXxJe54Y7CsnJAZTbk8XBmP7Lb3G/b
-	 ZLLyI0qrlXfe9TfGENV0J3Aq/tKhhOB2YEze1ZEeuV+EGks95DUC41edopzWFoF8XQ
-	 yo/Pni3aN2sYdeUDvXycpSlshObX7/NzOu/cD3LFVIv/wJ425FQWqa/ePPXpePfgfs
-	 g2Qi/p3N8MmM6Tc3fFKP13c1EmVsNm5wd1hBs6w9tYYj+wrtwqzoDibrhT8jJ7C5TC
-	 8NbglY8/Ms2SNne3J+l6UibSLX0ujVkZ3GIMAr6mO0cgnp6XiD21vh4lSM7YQET9pm
-	 90PWC/IKk2i7w==
+	b=3JFe9mC0nJuu+E2WQpdA9YJjlaoCCPVs+VlC+EBETTodg27yGf9eUPCImrpFw0a38
+	 /dRn5HvwK/GM5eQZIIBTZBP7OG+wPuUf9xtAFNoHubpFaLSaQWd99Bc7At5OQchCxL
+	 zHQGK30XTH07thX3yt0sLYRSx8x+x/X+H3DbO4K9xsl7YkWhGsMjGxhLVS+8lLzobo
+	 XfLvS+U3TERj+XsNf2pI7SW26KH76NofiKYjNNqnaJBe01cNe7bSFU6JfdfwIHCiv6
+	 efIewV2Sy5UnXY6M25ufxPjCsN/l+Qgj19LB8gTkBoOQ61xNngtq6JozNgAwM2GOK0
+	 iAqO7y8tErUCg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 28sMNfInkaxx; Mon, 30 Jan 2023 23:00:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j9oaEpZ-V55V; Mon, 30 Jan 2023 23:35:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 75F4A8218C;
-	Mon, 30 Jan 2023 23:00:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75F4A8218C
+	by smtp2.osuosl.org (Postfix) with ESMTP id EEF0A40BA4;
+	Mon, 30 Jan 2023 23:35:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EEF0A40BA4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E7B2A1BF41F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:00:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F0281BF3F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:34:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CD97E416E7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:00:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD97E416E7
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6AEE740B69
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:34:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AEE740B69
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vea8G0bAl-uE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Jan 2023 23:00:02 +0000 (UTC)
+ with ESMTP id eIAHmou3ceG8 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Jan 2023 23:34:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 474A2415C1
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 474A2415C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:00:02 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 19B1161303;
- Mon, 30 Jan 2023 23:00:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EACC0C433D2;
- Mon, 30 Jan 2023 22:59:58 +0000 (UTC)
-Date: Mon, 30 Jan 2023 23:59:55 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Stanislav Fomichev <sdf@google.com>
-Message-ID: <Y9hL6xCG1aYRAafB@lore-desk>
-References: <cover.1674913191.git.lorenzo@kernel.org>
- <a7eaa7e3e4c0a7e70f68c32314a7f75c9bba4465.1674913191.git.lorenzo@kernel.org>
- <Y9gTqLioeJS09Jv8@google.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A5E8240AA8
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A5E8240AA8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 23:34:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="355025619"
+X-IronPort-AV: E=Sophos;i="5.97,259,1669104000"; d="scan'208";a="355025619"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jan 2023 15:34:55 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="772719505"
+X-IronPort-AV: E=Sophos;i="5.97,259,1669104000"; d="scan'208";a="772719505"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga002.fm.intel.com with ESMTP; 30 Jan 2023 15:34:55 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 30 Jan 2023 15:34:54 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 30 Jan 2023 15:34:54 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 30 Jan 2023 15:34:54 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.173)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 30 Jan 2023 15:34:53 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PQ7g6cR+lpy9uKOLA4V4dwHcrp3Yw06xaPF0ZN3kXy8+ICDf77tveE7bZsVMilxAwq1eD2NbkG3m9KX6DJj/u5eI5ctys5b21pQd2QOVfU4SjrYi9ehHafh5gHPONPgPcfs2tzi6tIpx3Ry4OcwXh7eTElD1PvArZdQucy5UrxGEbZ7OxK+VNUD8zFpcb7MQDJWOSTgZ45hEKB/p6WPKAoeoxADn9+/B/P/RPpcrb5wnT0yhZxRSFbW0OoToekfHWar1dkLtLRxUafJPk0E+JDmp1VqkEVzhQYp4Jfz58vvt2j92iKJW0gj20lf9C1aL+m3QIzMyXBDNFAFCHUW2xA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FRRRDp0lA1eeeVFkWry5vnaGhJTqSS2mWRwYVosTMlY=;
+ b=CGvPhDZ2oV4lI9kfJK5IrdzQr4c7+MmQdPdaEPHypvwDW64DCqO2DcbkUvbbDILhQx6TXKJUE0rD2oniqqYPb3g5Q8nfGn1KzxCQEl+EoxNrC5Sn5ar3uP6KWCjZuDoncW8El48Jbtl91Er4uZgKqwU6w4ztwohbBS5r3ZYcNNIjOkX81aNpx3eRzyrXS+zf/qO4k+eQbrUdCY4TVVqXN52TXe2DWfvzUmwH716rFeI7S8/uHi8TTxKbg7SGrsCNSR1pfmJ80H19LHXR7Gl/0HERSXqowsNYUvqyxJiGX7eWNTShpUNzqYPOt04XqIHPD9WIA8O33j5lNAJmCYhbcA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com (2603:10b6:510:3b::14)
+ by CY8PR11MB7195.namprd11.prod.outlook.com (2603:10b6:930:93::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Mon, 30 Jan
+ 2023 23:34:50 +0000
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::6e10:28f9:f32b:c0d3]) by PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::6e10:28f9:f32b:c0d3%3]) with mapi id 15.20.6043.036; Mon, 30 Jan 2023
+ 23:34:50 +0000
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: "Lobakin, Alexandr" <alexandr.lobakin@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Dave.Ertman@intel.com"
+ <Dave.Ertman@intel.com>, "Saleem, Shiraz" <shiraz.saleem@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next v2 05/13] ice: Fix RDMA
+ latency issue by allowing write-combining
+Thread-Index: AQHZK6PNhVnK46F5OE2o+5BNBxc2VK62zN8AgADg8WA=
+Date: Mon, 30 Jan 2023 23:34:50 +0000
+Message-ID: <PH0PR11MB5095133D185FFC8E81B06558D6D39@PH0PR11MB5095.namprd11.prod.outlook.com>
+References: <20230119011653.311675-1-jacob.e.keller@intel.com>
+ <20230119011653.311675-6-jacob.e.keller@intel.com>
+ <83d3f5c1-1f3f-a08e-1632-df8bc7b8ab7b@intel.com>
+In-Reply-To: <83d3f5c1-1f3f-a08e-1632-df8bc7b8ab7b@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-Mentions: anthony.l.nguyen@intel.com, Dave.Ertman@intel.com,
+ shiraz.saleem@intel.com
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR11MB5095:EE_|CY8PR11MB7195:EE_
+x-ms-office365-filtering-correlation-id: 61022472-92fd-49e7-aea0-08db031a9501
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 4n/pIdZs6kbWc0cMZ7s8zl6xZD8fVFJv2vGRvkwRQxOz3vvsJpZwJWZH2ppkfWKWDigyn+qfuM20iQvpw0htFoELLoaHzhvhQVjYh+cxO7Hc7JVOmBse4dvbUSSI0InXDLYGd39euHEeKko7pT1x9S8e4k7mg1NGyUdtYTcGHior/n+Zk8lRykULUYIfJ1Jn2hxbmHz9nbKW8Trtl++3fjGvggyS+OXC1b0R6ZB+ZKdO86iln/S0tWWhCDkIfvH6rNVf7y3/WKHc779Vw/l7WAprH2fafWLg5YXQej7lDSXGmjUse3A5zsGPhFjiLjO3jPWgpiUPU6xDIlCfozCr2D2ZlY5A0tZSi+UKR70L4kXuCLuOXF20SAIK2n8WgFcEGBX+dv2D0BZFle8HwY9PAXUL3HJnQ/wczZVfh4qDOOCvaHOUPYfE/OQzEEqZxAagXXVHYxpqdpafib4YufCcz9K1zu3gGNgmfICbnE+XDVkcwrx7fpsqvjcZU6v/k4Wh5kwVNRSAb/d9cMH4FvCJB9CY/ewI/vM4L0UJNYYKaEnNr9YvrVKB5O9FSvERjR2z56NK9P8OYBdEZQN8EyTVdx/nFKilRpsV6bpNSzX8dPN78JdrduRnwmZDYyHp7bTj5qNYlWD1MEAM/PlB8pKCmiKnr2eIVNcWRYBcogKhFS+J/H05TBaGEiVlMGe4iV8y+no0fnVkBRO/nNjUo8GJ+g==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5095.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(346002)(136003)(39860400002)(396003)(366004)(451199018)(83380400001)(38070700005)(38100700002)(122000001)(82960400001)(86362001)(7696005)(2906002)(71200400001)(53546011)(6506007)(26005)(9686003)(186003)(478600001)(55016003)(33656002)(66946007)(8676002)(66556008)(66476007)(66446008)(64756008)(52536014)(8936002)(41300700001)(76116006)(4326008)(6636002)(54906003)(5660300002)(110136005)(316002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eTFyOG1PWnlIN1hzaTRGSXNnKytmODFQeHFSYU8raDFsNGJjUnBoQUJwaDRX?=
+ =?utf-8?B?d1ZCQmg3aDNTOUxyZC9yZnNWQmVWNzVBdWhLUUpGYmZEOHdnUVdLeTBDUDZ2?=
+ =?utf-8?B?YmNjV1BndS9tTW9sWTRqODNqWEFoZkpramx5Qi9ST2tnOUIwMXdzV0FiVlVn?=
+ =?utf-8?B?emcvdlY3cERURVk0N2RraGtHSFF5MXZBYk90NjBSNWVlS0VnS1FSemNLc2VI?=
+ =?utf-8?B?ckpWMERqYytmR1RLMXZQVThGOGxFNXpPelJEN0VYbXM1M1ArNmJoZ0FiZnFh?=
+ =?utf-8?B?SnVrOEFqRkVXWjJxbENKWTNZR0ROY2gySFFzVkhjaC9NRm0vanRtYUlDQlIz?=
+ =?utf-8?B?U3BLU09jaEFuQloySEpDVVNhMTNsdjhNVWNnYnBZRy9oa0RKSzhPMFRQa2J1?=
+ =?utf-8?B?QU9HcDFQV1gzSG5JMzBQTzF4T1NrdG5lbHVVTmhYcUFUd3FIcmFkWTRiYmxD?=
+ =?utf-8?B?UlIyTkhKL2hqMEk1eDR1MEVWcWVYckFBUHl2eTBVQTV2MUVFTFFTNlhqZGt5?=
+ =?utf-8?B?K1FCWDRNMUVibWh0YmxDMmFDRmVkeTJKSnEyaGdHdlZFV0x2WUZ6OWFwSVow?=
+ =?utf-8?B?b0VhRFpqS3lEVjZoWXIyaTN3UWxXWGFDQzJtTnNlZTRDMkNPRkpyRVMvU0J4?=
+ =?utf-8?B?RENnRklZd2xPaUVPdGovUHhlMTkyUnFFM0lRNFo2RFJLaWhsdjltZTRaMnlj?=
+ =?utf-8?B?UmtaWUJDZmxnL3R5UDgwa3k2ZGF3SE45MVlXZmxOSzV3UnBncFJCbEdIR0NE?=
+ =?utf-8?B?ejRCYjFvQkJqaEZnVk5MRDd5WWxZYkdDMGs2TGw4WHIyY09TV1QwUGZhUUU5?=
+ =?utf-8?B?TXpIbXhCTWc3cUs2YlVUTWhId2JVdEVlVCt6b3dFOVN0d1JXS2Jtc3MzUTlI?=
+ =?utf-8?B?ZU5jNTF3aldLbksvaExqdVZNRnlXUHllZk1OaCsxYnVwUXBLc1pFNVp3cVVM?=
+ =?utf-8?B?UlBOVkhoWldESTh4S2F4MmVJQ25NUDRsT1JHRUU0bzY1V0hDWUhjckhzdWor?=
+ =?utf-8?B?SjV6c3dCcWRPV2xFTmlJeTM3cXVpMHl3RnhEZ3dNb0IzWnB3WVErRm5YZFhE?=
+ =?utf-8?B?NmhUUk40SkVRd29KbXRUcm4yK3ZmZXFYcVdmWTdZUitrSmNvZDJZNE5XN2Nn?=
+ =?utf-8?B?VStvWUlya3NIZmZOVVZtc3BZOGVjeFIrQWNyT3lBbGQ4WEJYQ05Melpaa3JK?=
+ =?utf-8?B?RmdWdjlyeU1VbWQ5T0t3WUQ0WFBSK2VrcE5YS0ZmYWFCUVhaNHpRZnUrcEwr?=
+ =?utf-8?B?RUdKejNQUW9JMEpjVnd6a2U1WUJIU1E3RE1IdjVCSUtZZDZ1WG5FMGc2UTV2?=
+ =?utf-8?B?SjlaNFZIRFRxdFJUMzdWb052ckQyMjVHVnQ5Q2o2UHVSdE9XUVZIOFRTeHRr?=
+ =?utf-8?B?UXQ4V3A2bFp1bFFRQTFrdmtSa3pvbStDYlAvZm5Rb21DVDFWVExGODlmZkdH?=
+ =?utf-8?B?c3AvbmdQaVd2ZytDZktZZGNNMjYrUkgySlRVZFhMZ1N4S3JJaU0xUlRMVC9t?=
+ =?utf-8?B?eGtQczZoeDRqQmVveUxRbll0RCsrMEQxd0ovYWN3UXB5bnRCSUZlS29FMlRO?=
+ =?utf-8?B?QUU1c2ZEWnF6cTJEMWlhMHhDSmJENWl4NGNubEZ3amVRejN1V1VOczVERnNQ?=
+ =?utf-8?B?VzJjNVNrMzd3b2JaRGhIazU1NUhpbUxJanJuOXNrNldrYktXYkgyZ1JTZ09N?=
+ =?utf-8?B?bmNWWTIrQmFyYzlqWTBQelVOWmF4d1g5SVJQdlBpUlRxVkI3SnRpdWRHb3pD?=
+ =?utf-8?B?VXFyMHNIVGZDY1hJVDZERHdoQU5LVGV3bWVIUUVPQnlGQzdKbXYvLzMybWZn?=
+ =?utf-8?B?bG5TRHp5NjJDb2trNFBnQVNGdjUwc1ZadVp4SG9XRFNha1ZqUmxxZWVyOW1Z?=
+ =?utf-8?B?UzJDTHRWNFdLK1ZBdkczTDgvK2pJb2NCSG5iVE8xSnlYMUQxTE53OXBMWEZx?=
+ =?utf-8?B?WXJxdWdhb3B4alViaU1HZnJWYTdwQVVGbUlxd2txVmFDS2VTQ3MzbzYveDdu?=
+ =?utf-8?B?MVA1ODh2dllKanF4L25YN3p6MnZsQVVlUCtwQStSbVlUdWhOK2NBdHM3c0E3?=
+ =?utf-8?B?ZlBtMzVmZTRmMzBwWkwyVmUyK2NtQmFqak5ENVFiZ0NZL2xJaUE2RFBlaGo0?=
+ =?utf-8?Q?QqjENVlwi+UbDHhmDjXM0Bmlp?=
 MIME-Version: 1.0
-In-Reply-To: <Y9gTqLioeJS09Jv8@google.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5095.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 61022472-92fd-49e7-aea0-08db031a9501
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Jan 2023 23:34:50.6693 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7jrEs6aT8hSL/tCR5UqMinjucsHyF7ZP+4+ozGxyL1aaggmSD16uG8ftCLZnUptty7/zsKF6MjlAZdTd9k148zt+h6htN3zngDKlX+u288g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7195
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1675119599;
- bh=xsokGum/GZsJk+qvQ91yDVXJVs3mCP95EPMlizmOTZQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=doVokW7bqHmj5aNW+XWn0nI125mKjAPLh13EuqomVddVZDOWYhAc0Uo/T4l2G/bOm
- 33lduby5frtp9/RSWjdwsDrLO8ZIN4zU0ptIP8KsA2TKslyMoT36ZKsC4w2BxMps/0
- EFIuoLBnXhls8jJpqWPhusiF7iqKHOf+D7BAajrSP3fZfztbscy3YE6c7d4v1irSmV
- 8drFO13w9UZ3N3zfbDc8utkTrEGk0M4wyM/ETtMyeJBPRHEcVKNiO1Abm6FvN2KXV5
- b8Jc5nRx1CGxlHlSL7IYFTVnsCz+kiwRgg8Sj7xpfX+IuqXCrMyYIg2WDttYkjzucz
- 5Xzy3mesC0YTQ==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675121695; x=1706657695;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=FRRRDp0lA1eeeVFkWry5vnaGhJTqSS2mWRwYVosTMlY=;
+ b=midfLtz++B8KUtOFuRiq2E4MSIhP3/HVQZHjtdWj08eBhGtoVaMtQPci
+ EmloV7ojCJ1iX6dWsF1hs8zXyCSL/uoMbolXcD7sTt3/y8eK+1n2RbXxp
+ /FMmkdGAm4hjJPAVl4kycF5iLiIg6D6DxQTCC5u7/7QzRA9SEW6yHmJvO
+ 8/dpoSLoSN3VAhy1QsdAvs7LHZV8u9v/l07AMdg/LULthfKw/nw15ln/U
+ 1v9TktnYu9HhoKJlqnmItCakdzyccJLhOQEU1oGDhhz+rLeJ7XBIKvPF1
+ Kn/uzHmyC7rPodcX0KF6hhMKyatm76F89xdDlDqhTTA+SSIp4YHtZ8m/7
+ g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=doVokW7b
-Subject: Re: [Intel-wired-lan] [PATCH v4 bpf-next 8/8] selftests/bpf:
- introduce XDP compliance test tool
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=midfLtz+
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 05/13] ice: Fix RDMA
+ latency issue by allowing write-combining
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,736 +202,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, daniel@iogearbox.net,
- andrii@kernel.org, intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com,
- kuba@kernel.org, pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
- christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
- bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
- leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
- ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
- saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
-Content-Type: multipart/mixed; boundary="===============4555125239413883941=="
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Linga,
+ Pavan Kumar" <pavan.kumar.linga@intel.com>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============4555125239413883941==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="75WAx5iEIO5HmaCc"
-Content-Disposition: inline
 
+> -----Original Message-----
+> From: Lobakin, Alexandr <alexandr.lobakin@intel.com>
+> Sent: Monday, January 30, 2023 2:03 AM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>
+> Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; Linga, Pavan Kumar
+> <pavan.kumar.linga@intel.com>; netdev@vger.kernel.org
+> Subject: Re: [Intel-wired-lan] [PATCH net-next v2 05/13] ice: Fix RDMA latency
+> issue by allowing write-combining
+> 
+> From: Jacob Keller <jacob.e.keller@intel.com>
+> Date: Wed, 18 Jan 2023 17:16:45 -0800
+> 
+> > The current method of mapping the entire BAR region as a single uncacheable
+> > region does not allow RDMA to use write combining (WC). This results in
+> > increased latency with RDMA.
+> >
+> > To fix this, we initially planned to reduce the size of the map made by the
+> > PF driver to include only up to the beginning of the RDMA space.
+> > Unfortunately this will not work in the future as there are some hardware
+> > features which use registers beyond the RDMA area. This includes Scalable
+> > IOV, a virtualization feature being worked on currently.
+> >
+> > Instead of simply reducing the size of the map, we need a solution which
+> > will allow access to all areas of the address space while leaving the RDMA
+> > area open to be mapped with write combining.
+> >
+> > To allow for this, and fix the RMDA latency issue without blocking the
+> > higher areas of the BAR, we need to create multiple separate memory maps.
+> > Doing so will create a sparse mapping rather than a contiguous single area.
+> >
+> > Replace the void *hw_addr with a special ice_hw_addr structure which
+> > represents the multiple mappings as a flexible array.
+> >
+> > Based on the available BAR size, map up to 3 regions:
+> >
+> >  * The space before the RDMA section
+> >  * The RDMA section which wants write combining behavior
+> >  * The space after the RDMA section
+> 
+> Please don't.
+> 
+> You have[0]:
+> 
+> * io_mapping_init_wc() (+ io_mapping_fini());
+> * io_mapping_create_wc() (+ io_mapping_free());
+> 
+> ^ they do the same (the second just allocates a struct ad-hoc, but it
+>   can be allocated manually or embedded into a driver structure),
+> 
+> * arch_phys_wc_add() (+ arch_phys_wc_del())[1];
+> 
+> ^ optional to make MTRR happy
+> 
+> -- precisely for the case when you need to remap *a part* of BAR in a
+> different mode.
+> 
+> Splitting BARs, dropping pcim_iomap_regions() and so on, is very wrong.
+> Not speaking of that it's PCI driver which must own and map all the
+> memory the device advertises in its PCI config space, and in case of
+> ice, PCI driver is combined with Ethernet, so it's ice which must own
+> and map all the memory.
+> Not speaking of that using a structure with a flex array and creating a
+> static inline to calculate the pointer each time you need to read/write
+> a register, hurts performance and looks properly ugly.
+> 
+> The interfaces above must be used by the RDMA driver, right before
+> mapping its part in WC mode. PCI driver has no idea that someone else
+> wants to remap its memory differently, so the code doesn't belong here.
+> I'd drop the patch and let the RDMA team fix/improve their driver.
+> 
 
---75WAx5iEIO5HmaCc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Appreciate the review! I proposed this option after the original change was to simply reduce the initial size of our bar mapping, resulting in losing access to the registers beyond the RDMA section, which was a non-starter for us once we finish implementing Scalable IOV support.
 
-[...]
-> > +static error_t parse_arg(int key, char *arg, struct argp_state *state)
-> > +{
-> > +	switch (key) {
-> > +	case '6':
-> > +		env.family =3D AF_INET6;
-> > +		break;
->=20
-> Thanks for making the changes! Since you're doing another respin to
-> address Alexei's feedback, maybe one thing we can also improve here
-> regarding v4-v6? Optionally, up to you, but IMO, it's much easier
-> to hard-code AF_INET6 everywhere:
->=20
-> socket(AF_INET6, ...)
-> inet_pton(AF_INET6, ...)
-> ...
->=20
-> And then, if you want to use v4 by default, use '::ffff:127.0.0.1' as
-> the address. If the users need to use it with some other v4, they can also
-> pass the v4-mapped v6 address.
->=20
-> Up to you on whether to implement it or not, feel free to ignore me,
-> but IMO, that should avoid a lot of those env.family arguments and
-> making special cases for v4. Plus also removes the need for -6 argument.
->=20
-> The following would work:
-> ./xdp_features ::ffff::<ipv4>
-> ./xdp_features <ipv6>
->=20
-> (I'm assuming nothing runs exclusive non-dualstack v4 envs anymore)
+Searching for io_mapping_init_wc and io_mapping_create_wc there are only a handful of users and not much documentation so no wonder I had trouble locating it! Thanks for helping me learn about it.
 
-ack, I am fine with it. I think the code would be simpler and easier to rea=
-d.
-I will fix it in the next version.
+@Dave.Ertman@intel.com, @Saleem, Shiraz it looks like we need to drop this patch and modify the iRDMA driver's method of requesting write combined regions to use these new interfaces.
 
-Regards,
-Lorenzo
+@Nguyen, Anthony L Can you drop this patch from the series on IWL or should I send a v3?
 
->=20
-> > +	case 'v':
-> > +		env.verbosity =3D true;
-> > +		break;
-> > +	case 't':
-> > +		env.is_tester =3D true;
-> > +		break;
-> > +	case 'f':
-> > +		env.feature =3D get_xdp_feature(arg);
-> > +		if (env.feature < 0) {
-> > +			fprintf(stderr, "Invalid xdp feature: %s\n", arg);
-> > +			argp_usage(state);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +		break;
-> > +	case 'D':
-> > +		if (make_sockaddr(env.family, arg, DUT_ECHO_PORT,
-> > +				  &env.dut.addr, &env.dut.addrlen)) {
-> > +			fprintf(stderr, "Invalid DUT address: %s\n", arg);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +		break;
-> > +	case 'C':
-> > +		if (make_sockaddr(env.family, arg, DUT_CTRL_PORT,
-> > +				  &env.dut_ctrl.addr, &env.dut_ctrl.addrlen)) {
-> > +			fprintf(stderr, "Invalid DUT CTRL address: %s\n", arg);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +		break;
-> > +	case 'T':
-> > +		if (make_sockaddr(env.family, arg, 0, &env.tester.addr,
-> > +				  &env.tester.addrlen)) {
-> > +			fprintf(stderr, "Invalid Tester address: %s\n", arg);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +		break;
-> > +	case ARGP_KEY_ARG:
-> > +		errno =3D 0;
-> > +		if (strlen(arg) >=3D IF_NAMESIZE) {
-> > +			fprintf(stderr, "Invalid device name: %s\n", arg);
-> > +			argp_usage(state);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +
-> > +		env.ifindex =3D if_nametoindex(arg);
-> > +		if (!env.ifindex)
-> > +			env.ifindex =3D strtoul(arg, NULL, 0);
-> > +		if (!env.ifindex) {
-> > +			fprintf(stderr,
-> > +				"Bad interface index or name (%d): %s\n",
-> > +				errno, strerror(errno));
-> > +			argp_usage(state);
-> > +			return ARGP_ERR_UNKNOWN;
-> > +		}
-> > +		break;
-> > +	default:
-> > +		return ARGP_ERR_UNKNOWN;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct argp argp =3D {
-> > +	.options =3D opts,
-> > +	.parser =3D parse_arg,
-> > +	.doc =3D argp_program_doc,
-> > +};
-> > +
-> > +static void set_env_defaul(void)
-> > +{
-> > +	env.feature =3D XDP_FEATURE_PASS;
-> > +	env.ifindex =3D -ENODEV;
-> > +	env.family =3D AF_INET;
-> > +	make_sockaddr(AF_INET, "127.0.0.1", DUT_CTRL_PORT, &env.dut_ctrl.addr,
-> > +		      &env.dut_ctrl.addrlen);
-> > +	make_sockaddr(AF_INET, "127.0.0.1", DUT_ECHO_PORT, &env.dut.addr,
-> > +		      &env.dut.addrlen);
-> > +	make_sockaddr(AF_INET, "127.0.0.1", 0, &env.tester.addr,
-> > +		      &env.tester.addrlen);
-> > +}
-> > +
-> > +static void *dut_echo_thread(void *arg)
-> > +{
-> > +	unsigned char buf[sizeof(struct tlv_hdr)];
-> > +	int sockfd =3D *(int *)arg;
-> > +
-> > +	while (!exiting) {
-> > +		struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
-> > +		struct sockaddr_storage addr;
-> > +		socklen_t addrlen;
-> > +		size_t n;
-> > +
-> > +		n =3D recvfrom(sockfd, buf, sizeof(buf), MSG_WAITALL,
-> > +			     (struct sockaddr *)&addr, &addrlen);
-> > +		if (n !=3D ntohs(tlv->len))
-> > +			continue;
-> > +
-> > +		if (ntohs(tlv->type) !=3D CMD_ECHO)
-> > +			continue;
-> > +
-> > +		sendto(sockfd, buf, sizeof(buf), MSG_NOSIGNAL | MSG_CONFIRM,
-> > +		       (struct sockaddr *)&addr, addrlen);
-> > +	}
-> > +
-> > +	pthread_exit((void *)0);
-> > +	close(sockfd);
-> > +
-> > +	return NULL;
-> > +}
-> > +
-> > +static int dut_run_echo_thread(pthread_t *t, int *sockfd)
-> > +{
-> > +	int err;
-> > +
-> > +	sockfd =3D start_reuseport_server(env.family, SOCK_DGRAM, NULL,
-> > +					DUT_ECHO_PORT, 0, 1);
-> > +	if (!sockfd) {
-> > +		fprintf(stderr, "Failed to create echo socket\n");
-> > +		return -errno;
-> > +	}
-> > +
-> > +	/* start echo channel */
-> > +	err =3D pthread_create(t, NULL, dut_echo_thread, sockfd);
-> > +	if (err) {
-> > +		fprintf(stderr, "Failed creating dut_echo thread: %s\n",
-> > +			strerror(-err));
-> > +		free_fds(sockfd, 1);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int dut_attach_xdp_prog(struct xdp_features *skel, int feature,
-> > +			       int flags)
-> > +{
-> > +	struct bpf_program *prog;
-> > +	unsigned int key =3D 0;
-> > +	int err, fd =3D 0;
-> > +
-> > +	switch (feature) {
-> > +	case XDP_FEATURE_TX:
-> > +		prog =3D skel->progs.xdp_do_tx;
-> > +		break;
-> > +	case XDP_FEATURE_DROP:
-> > +		prog =3D skel->progs.xdp_do_drop;
-> > +		break;
-> > +	case XDP_FEATURE_ABORTED:
-> > +		prog =3D skel->progs.xdp_do_aborted;
-> > +		break;
-> > +	case XDP_FEATURE_PASS:
-> > +		prog =3D skel->progs.xdp_do_pass;
-> > +		break;
-> > +	case XDP_FEATURE_NDO_XMIT: {
-> > +		struct bpf_devmap_val entry =3D {
-> > +			.ifindex =3D env.ifindex,
-> > +		};
-> > +
-> > +		err =3D bpf_map__update_elem(skel->maps.dev_map,
-> > +					   &key, sizeof(key),
-> > +					   &entry, sizeof(entry), 0);
-> > +		if (err < 0)
-> > +			return err;
-> > +
-> > +		fd =3D bpf_program__fd(skel->progs.xdp_do_redirect_cpumap);
-> > +	}
-> > +	case XDP_FEATURE_REDIRECT: {
-> > +		struct bpf_cpumap_val entry =3D {
-> > +			.qsize =3D 2048,
-> > +			.bpf_prog.fd =3D fd,
-> > +		};
-> > +
-> > +		err =3D bpf_map__update_elem(skel->maps.cpu_map,
-> > +					   &key, sizeof(key),
-> > +					   &entry, sizeof(entry), 0);
-> > +		if (err < 0)
-> > +			return err;
-> > +
-> > +		prog =3D skel->progs.xdp_do_redirect;
-> > +		break;
-> > +	}
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	err =3D bpf_xdp_attach(env.ifindex, bpf_program__fd(prog), flags, NUL=
-L);
-> > +	if (err)
-> > +		fprintf(stderr,
-> > +			"Failed to attach XDP program to ifindex %d\n",
-> > +			env.ifindex);
-> > +	return err;
-> > +}
-> > +
-> > +static int __recv_msg(int sockfd, void *buf, size_t bufsize,
-> > +		      unsigned int *val, unsigned int val_size)
-> > +{
-> > +	struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
-> > +	int len, n =3D sizeof(*tlv), i =3D 0;
-> > +
-> > +	len =3D recv(sockfd, buf, bufsize, 0);
-> > +	if (len !=3D ntohs(tlv->len))
-> > +		return -EINVAL;
-> > +
-> > +	while (n < len && i < val_size) {
-> > +		val[i] =3D ntohl(tlv->data[i]);
-> > +		n +=3D sizeof(tlv->data[0]);
-> > +		i++;
-> > +	}
-> > +
-> > +	return i;
-> > +}
-> > +
-> > +static int recv_msg(int sockfd, void *buf, size_t bufsize)
-> > +{
-> > +	return __recv_msg(sockfd, buf, bufsize, NULL, 0);
-> > +}
-> > +
-> > +static int dut_run(struct xdp_features *skel)
-> > +{
-> > +	int flags =3D XDP_FLAGS_UPDATE_IF_NOEXIST | XDP_FLAGS_DRV_MODE;
-> > +	int state, err, *sockfd, ctrl_sockfd, echo_sockfd;
-> > +	struct sockaddr_storage ctrl_addr;
-> > +	pthread_t dut_thread;
-> > +	socklen_t addrlen;
-> > +
-> > +	sockfd =3D start_reuseport_server(env.family, SOCK_STREAM, NULL,
-> > +					DUT_CTRL_PORT, 0, 1);
-> > +	if (!sockfd) {
-> > +		fprintf(stderr, "Failed to create DUT socket\n");
-> > +		return -errno;
-> > +	}
-> > +
-> > +	ctrl_sockfd =3D accept(*sockfd, (struct sockaddr *)&ctrl_addr, &addrl=
-en);
-> > +	if (ctrl_sockfd < 0) {
-> > +		fprintf(stderr, "Failed to accept connection on DUT socket\n");
-> > +		free_fds(sockfd, 1);
-> > +		return -errno;
-> > +	}
-> > +
-> > +	/* CTRL loop */
-> > +	while (!exiting) {
-> > +		unsigned char buf[BUFSIZE] =3D {};
-> > +		struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
-> > +
-> > +		err =3D recv_msg(ctrl_sockfd, buf, BUFSIZE);
-> > +		if (err)
-> > +			continue;
-> > +
-> > +		switch (ntohs(tlv->type)) {
-> > +		case CMD_START: {
-> > +			if (state =3D=3D CMD_START)
-> > +				continue;
-> > +
-> > +			state =3D CMD_START;
-> > +			/* Load the XDP program on the DUT */
-> > +			err =3D dut_attach_xdp_prog(skel, ntohl(tlv->data[0]), flags);
-> > +			if (err)
-> > +				goto out;
-> > +
-> > +			err =3D dut_run_echo_thread(&dut_thread, &echo_sockfd);
-> > +			if (err < 0)
-> > +				goto out;
-> > +
-> > +			tlv->type =3D htons(CMD_ACK);
-> > +			tlv->len =3D htons(sizeof(*tlv));
-> > +			err =3D send(ctrl_sockfd, buf, sizeof(*tlv), 0);
-> > +			if (err < 0)
-> > +				goto end_thread;
-> > +			break;
-> > +		}
-> > +		case CMD_STOP:
-> > +			if (state !=3D CMD_START)
-> > +				break;
-> > +
-> > +			state =3D CMD_STOP;
-> > +
-> > +			exiting =3D true;
-> > +			bpf_xdp_detach(env.ifindex, flags, NULL);
-> > +
-> > +			tlv->type =3D htons(CMD_ACK);
-> > +			tlv->len =3D htons(sizeof(*tlv));
-> > +			err =3D send(ctrl_sockfd, buf, sizeof(*tlv), 0);
-> > +			goto end_thread;
-> > +		case CMD_GET_XDP_CAP: {
-> > +			LIBBPF_OPTS(bpf_xdp_query_opts, opts);
-> > +			size_t n;
-> > +
-> > +			err =3D bpf_xdp_query(env.ifindex, XDP_FLAGS_DRV_MODE,
-> > +					    &opts);
-> > +			if (err) {
-> > +				fprintf(stderr,
-> > +					"Failed to query XDP cap for ifindex %d\n",
-> > +					env.ifindex);
-> > +				goto end_thread;
-> > +			}
-> > +
-> > +			tlv->type =3D htons(CMD_ACK);
-> > +			n =3D sizeof(*tlv) + sizeof(opts.feature_flags);
-> > +			tlv->len =3D htons(n);
-> > +			tlv->data[0] =3D htonl(opts.feature_flags);
-> > +
-> > +			err =3D send(ctrl_sockfd, buf, n, 0);
-> > +			if (err < 0)
-> > +				goto end_thread;
-> > +			break;
-> > +		}
-> > +		case CMD_GET_STATS: {
-> > +			unsigned int key =3D 0, val;
-> > +			size_t n;
-> > +
-> > +			err =3D bpf_map__lookup_elem(skel->maps.dut_stats,
-> > +						   &key, sizeof(key),
-> > +						   &val, sizeof(val), 0);
-> > +			if (err) {
-> > +				fprintf(stderr, "bpf_map_lookup_elem failed\n");
-> > +				goto end_thread;
-> > +			}
-> > +
-> > +			tlv->type =3D htons(CMD_ACK);
-> > +			n =3D sizeof(*tlv) + sizeof(val);
-> > +			tlv->len =3D htons(n);
-> > +			tlv->data[0] =3D htonl(val);
-> > +
-> > +			err =3D send(ctrl_sockfd, buf, n, 0);
-> > +			if (err < 0)
-> > +				goto end_thread;
-> > +			break;
-> > +		}
-> > +		default:
-> > +			break;
-> > +		}
-> > +	}
-> > +
-> > +end_thread:
-> > +	pthread_join(dut_thread, NULL);
-> > +out:
-> > +	bpf_xdp_detach(env.ifindex, flags, NULL);
-> > +	close(ctrl_sockfd);
-> > +	free_fds(sockfd, 1);
-> > +
-> > +	return err;
-> > +}
-> > +
-> > +static bool tester_collect_advertised_cap(unsigned int cap)
-> > +{
-> > +	switch (env.feature) {
-> > +	case XDP_FEATURE_ABORTED:
-> > +	case XDP_FEATURE_DROP:
-> > +	case XDP_FEATURE_PASS:
-> > +	case XDP_FEATURE_TX:
-> > +		return cap & NETDEV_XDP_ACT_BASIC;
-> > +	case XDP_FEATURE_REDIRECT:
-> > +		return cap & NETDEV_XDP_ACT_REDIRECT;
-> > +	case XDP_FEATURE_NDO_XMIT:
-> > +		return cap & NETDEV_XDP_ACT_NDO_XMIT;
-> > +	default:
-> > +		return false;
-> > +	}
-> > +}
-> > +
-> > +static bool tester_collect_detected_cap(struct xdp_features *skel,
-> > +					unsigned int dut_stats)
-> > +{
-> > +	unsigned int err, key =3D 0, val;
-> > +
-> > +	if (!dut_stats)
-> > +		return false;
-> > +
-> > +	err =3D bpf_map__lookup_elem(skel->maps.stats, &key, sizeof(key),
-> > +				   &val, sizeof(val), 0);
-> > +	if (err) {
-> > +		fprintf(stderr, "bpf_map_lookup_elem failed\n");
-> > +		return false;
-> > +	}
-> > +
-> > +	switch (env.feature) {
-> > +	case XDP_FEATURE_PASS:
-> > +	case XDP_FEATURE_TX:
-> > +	case XDP_FEATURE_REDIRECT:
-> > +	case XDP_FEATURE_NDO_XMIT:
-> > +		return val > 0;
-> > +	case XDP_FEATURE_DROP:
-> > +	case XDP_FEATURE_ABORTED:
-> > +		return val =3D=3D 0;
-> > +	default:
-> > +		return false;
-> > +	}
-> > +}
-> > +
-> > +static int __send_and_recv_msg(int sockfd, enum test_commands cmd,
-> > +			       unsigned int *val, unsigned int val_size)
-> > +{
-> > +	unsigned char buf[BUFSIZE] =3D {};
-> > +	struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
-> > +	int n =3D sizeof(*tlv), err;
-> > +
-> > +	tlv->type =3D htons(cmd);
-> > +	switch (cmd) {
-> > +	case CMD_START:
-> > +		tlv->data[0] =3D htonl(env.feature);
-> > +		n +=3D sizeof(*val);
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +	tlv->len =3D htons(n);
-> > +
-> > +	err =3D send(sockfd, buf, n, 0);
-> > +	if (err < 0)
-> > +		return err;
-> > +
-> > +	err =3D __recv_msg(sockfd, buf, BUFSIZE, val, val_size);
-> > +	if (err < 0)
-> > +		return err;
-> > +
-> > +	return ntohs(tlv->type) =3D=3D CMD_ACK ? 0 : -EINVAL;
-> > +}
-> > +
-> > +static int send_and_recv_msg(int sockfd, enum test_commands cmd)
-> > +{
-> > +	return __send_and_recv_msg(sockfd, cmd, NULL, 0);
-> > +}
-> > +
-> > +static int send_echo_msg(void)
-> > +{
-> > +	unsigned char buf[sizeof(struct tlv_hdr)];
-> > +	struct tlv_hdr *tlv =3D (struct tlv_hdr *)buf;
-> > +	int sockfd, n;
-> > +
-> > +	sockfd =3D socket(env.family, SOCK_DGRAM, 0);
-> > +	if (sockfd < 0) {
-> > +		fprintf(stderr, "Failed to create echo socket\n");
-> > +		return -errno;
-> > +	}
-> > +
-> > +	tlv->type =3D htons(CMD_ECHO);
-> > +	tlv->len =3D htons(sizeof(*tlv));
-> > +
-> > +	n =3D sendto(sockfd, buf, sizeof(*tlv), MSG_NOSIGNAL | MSG_CONFIRM,
-> > +		   (struct sockaddr *)&env.dut.addr, env.dut.addrlen);
-> > +	close(sockfd);
-> > +
-> > +	return n =3D=3D ntohs(tlv->len) ? 0 : -EINVAL;
-> > +}
-> > +
-> > +static int tester_run(struct xdp_features *skel)
-> > +{
-> > +	int flags =3D XDP_FLAGS_UPDATE_IF_NOEXIST | XDP_FLAGS_DRV_MODE;
-> > +	bool advertised_cap;
-> > +	unsigned int val[1];
-> > +	int i, err, sockfd;
-> > +	bool detected_cap;
-> > +
-> > +	sockfd =3D socket(env.family, SOCK_STREAM, 0);
-> > +	if (sockfd < 0) {
-> > +		fprintf(stderr, "Failed to create tester socket\n");
-> > +		return -errno;
-> > +	}
-> > +
-> > +	if (settimeo(sockfd, 1000) < 0)
-> > +		return -EINVAL;
-> > +
-> > +	err =3D connect(sockfd, (struct sockaddr *)&env.dut_ctrl.addr,
-> > +		      env.dut_ctrl.addrlen);
-> > +	if (err) {
-> > +		fprintf(stderr, "Failed to connect to the DUT\n");
-> > +		return -errno;
-> > +	}
-> > +
-> > +	err =3D __send_and_recv_msg(sockfd, CMD_GET_XDP_CAP, val,
-> > +				  ARRAY_SIZE(val));
-> > +	if (err < 0) {
-> > +		close(sockfd);
-> > +		return err;
-> > +	}
-> > +
-> > +	advertised_cap =3D tester_collect_advertised_cap(val[0]);
-> > +
-> > +	err =3D bpf_xdp_attach(env.ifindex,
-> > +			     bpf_program__fd(skel->progs.xdp_tester),
-> > +			     flags, NULL);
-> > +	if (err) {
-> > +		fprintf(stderr, "Failed to attach XDP program to ifindex %d\n",
-> > +			env.ifindex);
-> > +		goto out;
-> > +	}
-> > +
-> > +	err =3D send_and_recv_msg(sockfd, CMD_START);
-> > +	if (err)
-> > +		goto out;
-> > +
-> > +	for (i =3D 0; i < 10 && !exiting; i++) {
-> > +		err =3D send_echo_msg();
-> > +		if (err < 0)
-> > +			goto out;
-> > +
-> > +		sleep(1);
-> > +	}
-> > +
-> > +	err =3D __send_and_recv_msg(sockfd, CMD_GET_STATS, val, ARRAY_SIZE(va=
-l));
-> > +	if (err)
-> > +		goto out;
-> > +
-> > +	/* stop the test */
-> > +	err =3D send_and_recv_msg(sockfd, CMD_STOP);
-> > +	/* send a new echo message to wake echo thread of the dut */
-> > +	send_echo_msg();
-> > +
-> > +	detected_cap =3D tester_collect_detected_cap(skel, val[0]);
-> > +
-> > +	fprintf(stdout, "Feature %s: [%s][%s]\n",
-> > get_xdp_feature_str(env.feature),
-> > +		detected_cap ? GREEN("DETECTED") : RED("NOT DETECTED"),
-> > +		advertised_cap ? GREEN("ADVERTISED") : RED("NOT ADVERTISED"));
-> > +out:
-> > +	bpf_xdp_detach(env.ifindex, flags, NULL);
-> > +	close(sockfd);
-> > +	return err < 0 ? err : 0;
-> > +}
-> > +
-> > +static void set_skel_rodata(struct xdp_features *skel)
-> > +{
-> > +	skel->rodata->expected_feature =3D env.feature;
-> > +	if (env.family =3D=3D AF_INET6) {
-> > +		struct sockaddr_in6 *tester_addr =3D (void *)&env.tester.addr;
-> > +		struct sockaddr_in6 *dut_addr =3D (void *)&env.dut.addr;
-> > +
-> > +		skel->rodata->tester_addr.ip6 =3D tester_addr->sin6_addr;
-> > +		skel->rodata->dut_addr.ip6 =3D dut_addr->sin6_addr;
-> > +	} else {
-> > +		struct sockaddr_in *tester_addr =3D (void *)&env.tester.addr;
-> > +		struct sockaddr_in *dut_addr =3D (void *)&env.dut.addr;
-> > +
-> > +		skel->rodata->tester_addr.ip =3D tester_addr->sin_addr;
-> > +		skel->rodata->dut_addr.ip =3D dut_addr->sin_addr;
-> > +	}
-> > +}
-> > +
-> > +int main(int argc, char **argv)
-> > +{
-> > +	struct xdp_features *skel;
-> > +	int err;
-> > +
-> > +	libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
-> > +	libbpf_set_print(libbpf_print_fn);
-> > +
-> > +	signal(SIGINT, sig_handler);
-> > +	signal(SIGTERM, sig_handler);
-> > +
-> > +	set_env_defaul();
-> > +
-> > +	/* Parse command line arguments */
-> > +	err =3D argp_parse(&argp, argc, argv, 0, NULL, NULL);
-> > +	if (err)
-> > +		return err;
-> > +
-> > +	if (env.ifindex < 0) {
-> > +		fprintf(stderr, "Invalid ifindex\n");
-> > +		return -ENODEV;
-> > +	}
-> > +
-> > +	/* Load and verify BPF application */
-> > +	skel =3D xdp_features__open();
-> > +	if (!skel) {
-> > +		fprintf(stderr, "Failed to open and load BPF skeleton\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	set_skel_rodata(skel);
-> > +
-> > +	/* Load & verify BPF programs */
-> > +	err =3D xdp_features__load(skel);
-> > +	if (err) {
-> > +		fprintf(stderr, "Failed to load and verify BPF skeleton\n");
-> > +		goto cleanup;
-> > +	}
-> > +
-> > +	err =3D xdp_features__attach(skel);
-> > +	if (err) {
-> > +		fprintf(stderr, "Failed to attach BPF skeleton\n");
-> > +		goto cleanup;
-> > +	}
-> > +
-> > +	if (env.is_tester) {
-> > +		/* Tester */
-> > +		fprintf(stdout, "Starting tester on device %d\n", env.ifindex);
-> > +		err =3D tester_run(skel);
-> > +	} else {
-> > +		/* DUT */
-> > +		fprintf(stdout, "Starting DUT on device %d\n", env.ifindex);
-> > +		err =3D dut_run(skel);
-> > +	}
-> > +
-> > +cleanup:
-> > +	xdp_features__destroy(skel);
-> > +
-> > +	return err < 0 ? -err : 0;
-> > +}
-> > diff --git a/tools/testing/selftests/bpf/xdp_features.h
-> > b/tools/testing/selftests/bpf/xdp_features.h
-> > new file mode 100644
-> > index 000000000000..28d7614c4f02
-> > --- /dev/null
-> > +++ b/tools/testing/selftests/bpf/xdp_features.h
-> > @@ -0,0 +1,33 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +
-> > +/* test commands */
-> > +enum test_commands {
-> > +	CMD_STOP,		/* CMD */
-> > +	CMD_START,		/* CMD + xdp feature */
-> > +	CMD_ECHO,		/* CMD */
-> > +	CMD_ACK,		/* CMD + data */
-> > +	CMD_GET_XDP_CAP,	/* CMD */
-> > +	CMD_GET_STATS,		/* CMD */
-> > +};
-> > +
-> > +#define DUT_CTRL_PORT	12345
-> > +#define DUT_ECHO_PORT	12346
-> > +
-> > +struct tlv_hdr {
-> > +	__be16 type;
-> > +	__be16 len;
-> > +	__be32 data[];
-> > +};
-> > +
-> > +enum {
-> > +	XDP_FEATURE_ABORTED,
-> > +	XDP_FEATURE_DROP,
-> > +	XDP_FEATURE_PASS,
-> > +	XDP_FEATURE_TX,
-> > +	XDP_FEATURE_REDIRECT,
-> > +	XDP_FEATURE_NDO_XMIT,
-> > +	XDP_FEATURE_XSK_ZEROCOPY,
-> > +	XDP_FEATURE_HW_OFFLOAD,
-> > +	XDP_FEATURE_RX_SG,
-> > +	XDP_FEATURE_NDO_XMIT_SG,
-> > +};
-> > --
-> > 2.39.1
->=20
-
---75WAx5iEIO5HmaCc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY9hL6wAKCRA6cBh0uS2t
-rD19AQDk7ISbqySCOD7YnGrb7GS4MxEYrvCiU2hAEYfzZDxBywD+MMVTANt/J+LY
-sNHO/MI9Yu29hysw2Xpcs20gZMnTuQ4=
-=+u80
------END PGP SIGNATURE-----
-
---75WAx5iEIO5HmaCc--
-
---===============4555125239413883941==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks,
+Jake 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============4555125239413883941==--
