@@ -1,103 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59B196822C9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Jan 2023 04:24:57 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D79C4605EC;
-	Tue, 31 Jan 2023 03:24:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D79C4605EC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675135495;
-	bh=BAv2sNKV90w1SEdHSToKtbEbUN1Z43qJO/sUs0KIOes=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=ktmikc2w50hdahNZrH5Y9qfc0gfsHjVMASwGbR48RKozzpt+9BoqukjyfhN5iUlL8
-	 wJAfiX45f+q3l3wLGIJ3jjZsDLRy0iPnoIzj1+0simFyRR/oTiqQXMF9/Io7uk02Bx
-	 8SwwVTH01CvydspWafXAXi4NGl5glvX2pwfMvCzo476DWPQqEkn4EDCea21HDpz7/C
-	 pBysI+hl0UUPE+eU1WW4FpR69y/jDfqp8q3I3W1S4tM6jxzv+mIVebzi+1zjgytSLm
-	 JN4NZrEHJAKwnbISqtOyqkrKkbuzKVdM9xG5D8HBDH7ldbtD4RUoem9IhjStUj22VY
-	 0WeUViC9EETwQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Daw1lma3ZPK9; Tue, 31 Jan 2023 03:24:55 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D1657605E0;
-	Tue, 31 Jan 2023 03:24:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1657605E0
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6CB501BF834
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 03:24:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80C7468232E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Jan 2023 05:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 45240400CC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 03:24:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 45240400CC
+	by smtp2.osuosl.org (Postfix) with ESMTP id D7E50400E4;
+	Tue, 31 Jan 2023 04:20:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D7E50400E4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1675138824;
+	bh=PW+/j2xk/5HQcKqAAFTWZCSkeJVtvMhrDC/18Tvj2jE=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=y+mvXSGlBVoJjUsvde6yse+1vMhlWvlvFwu9vUCk3BksCNZ7yg7iIdPgjrORElaXW
+	 KCyi68ghza7fob7P5p4H7C6bIAucbczlnwp03kYl5g96WEBQjaE5nVGa1AzMnaCIB/
+	 OowrOuQJmYQQL/gitJzWSfrSqIJfgEZAn8ODfWUUHgEE5Bj71yTGFG6xkoUNk8dxRe
+	 0Lxcl3Cg0lw7ePFEpJWbzoo6oi1fc6WlVla9IlcgtYuuejs33lbpbloT+DJ0VVB5RX
+	 pYoK0DdePzfPbyAqQn4HXt6lX6/k+wnZpF9L1SZ11a596C/JacxXqNZghNw8OIdmb6
+	 w3gCRUpqQdiFA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vjIwrfG-tMlO for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Jan 2023 03:24:49 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 808C2400B8
-Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
- [IPv6:2607:f8b0:4864:20::42f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 808C2400B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 03:24:49 +0000 (UTC)
-Received: by mail-pf1-x42f.google.com with SMTP id g9so7249521pfk.13
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jan 2023 19:24:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=I7aOuN0Z7cOy5dqAaUiuywFRmsjtA1MOUQCg+0SjNXU=;
- b=Naz/C/4t8Q/qLdafvC7YdES+T5/lY//rSh5CXU1PYXwV1kJpoCmw4OwtJ0gG8beybU
- DJtM3KiCU2jfiByY+berUL1W2ZpdAzhLbQEvnw1iUFcNuqKcthOSMQeUq4mK8kNZyr3D
- 344RPIDdfsBQV7VXmP668ok0y5BwyQmU1ROIG6m2cxU6lYSahd/51Z/VqtW0IXa0cWlQ
- QnJ1bNDJ47JzSsIGTMplwQm7FPEOd2vGq7IrxKazf5V8JMPfOQLg6AidC1epE09rFNhV
- z6K5jO3LNOhC7u9+dV2CUb1O6bmYOerYBzeZuf7w155TA1VRj058fJDPdSTGjxftLe2y
- oHlg==
-X-Gm-Message-State: AO0yUKWuZxS/Cw6tH+f+F7YOHLMB+xh7fASTRBj1HyFyBqqMe/NW+24i
- rRKsf4Pi72DUtHyJ2FBhH2c=
-X-Google-Smtp-Source: AK7set/B7wVZT+I5etpqA/nHbyamv863RRwrdx2lkYxVfeAJYa94pjlygbTNxMJtL7wq1rfDVeJNqQ==
-X-Received: by 2002:a62:585:0:b0:590:32a9:b276 with SMTP id
- 127-20020a620585000000b0059032a9b276mr19003810pff.22.1675135488934; 
- Mon, 30 Jan 2023 19:24:48 -0800 (PST)
-Received: from KERNELXING-MB0.tencent.com ([103.7.29.31])
- by smtp.gmail.com with ESMTPSA id
- 189-20020a6215c6000000b005906dbf5f80sm8207545pfv.163.2023.01.30.19.24.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Jan 2023 19:24:48 -0800 (PST)
-From: Jason Xing <kerneljasonxing@gmail.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, richardcochran@gmail.com, ast@kernel.org,
- daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
- alexandr.lobakin@intel.com, maciej.fijalkowski@intel.com
-Date: Tue, 31 Jan 2023 11:23:57 +0800
-Message-Id: <20230131032357.34029-1-kerneljasonxing@gmail.com>
-X-Mailer: git-send-email 2.33.0
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UW3cMotNVewn; Tue, 31 Jan 2023 04:20:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id CEC02400B8;
+	Tue, 31 Jan 2023 04:20:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CEC02400B8
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7356F1BF399
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 04:20:18 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 41F16605EE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 04:20:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 41F16605EE
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id km2HUSib0eeH for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Jan 2023 04:20:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E450605EC
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5E450605EC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Jan 2023 04:20:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="355070259"
+X-IronPort-AV: E=Sophos;i="5.97,259,1669104000"; d="scan'208";a="355070259"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jan 2023 20:20:11 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10606"; a="641813027"
+X-IronPort-AV: E=Sophos;i="5.97,259,1669104000"; d="scan'208";a="641813027"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga006.jf.intel.com with ESMTP; 30 Jan 2023 20:20:11 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 30 Jan 2023 20:20:11 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 30 Jan 2023 20:20:09 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 30 Jan 2023 20:20:09 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.46) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 30 Jan 2023 20:20:09 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=X0Dv7G0HRrJ19CPr0WWQJoqMnuN5iEmg4zPOwzA1ByI/9/IkU9Sd51a1j/sjQ8Qytne/zXfAwn7J5Dmn7a/GhEUGea9K0IWjXLyzF/9eJJpG/lHnZpvPmAIgNoUsEFmPx3gsEYlVUwoqBBscbhbEuzvjX2xDh7M5QXOI41Rb2IJ8Nx4UQz4w4NnvQlzU1CqHqbrQNjdEXjg+3YKmyDczwDNk4Q84KJ9TJ7cs3fwbkZ6i/4VQCBqJ58Vy9DSTwWsHS+C465qYoPnobKSbLN5lVBbWm2QcO2QFiqgrx86/89k0aONNZGVFXNe5pBvF8e5gAf5EJ7gTx/0dALxtEtWf5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Rheg4jaNeBGjWAGWgqlEoTkgXSUta52lN4CFKoS1d+c=;
+ b=SJV8bQCSjfcyXrUwViFz6DRLxfrLuG237b82tAGZEG7gB5f4mJKOrtSayDloFacmL2hGvIf3AsQXfvmwy++6PcHfCfaeGMUrVWmIVdaj5gtMd51i6Yd5a8ET58C3Gn7XNnDPlF0JM7iqxPGju0jf2s135cFhnxwLMfiD1jI7cakyf50iukdnuc49kS15czpFG1wSZ19H6e4FfpS667H3L6/GtSEgv9/MG8gtqwYZv8zHsdHKdRXu0WOPR8+XXPABTd4eDGvh4SzLb1T+MurQ+xSN2ao1lLjEsS8SfgqsZD386M9kfWAogQjv9aig2lMF3ZHK7CdLciybN053ftvmJw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
+ by SA2PR11MB4875.namprd11.prod.outlook.com (2603:10b6:806:11a::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Tue, 31 Jan
+ 2023 04:20:03 +0000
+Received: from BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::86b7:ffac:438a:5f44]) by BYAPR11MB3367.namprd11.prod.outlook.com
+ ([fe80::86b7:ffac:438a:5f44%4]) with mapi id 15.20.6043.038; Tue, 31 Jan 2023
+ 04:20:02 +0000
+From: "G, GurucharanX" <gurucharanx.g@intel.com>
+To: Daniel Vacek <neelx@redhat.com>, "Brandeburg, Jesse"
+ <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v3] ice/ptp: fix the PTP worker
+ retrying indefinitely if the link went down
+Thread-Index: AQHZLEqNzb+bO6iWF0af7DRt8fYlYq63/dcA
+Date: Tue, 31 Jan 2023 04:20:02 +0000
+Message-ID: <BYAPR11MB3367C4727A544546409E8403FCD09@BYAPR11MB3367.namprd11.prod.outlook.com>
+References: <20230117181533.2350335-1-neelx@redhat.com>
+ <20230119202317.2741092-1-neelx@redhat.com>
+In-Reply-To: <20230119202317.2741092-1-neelx@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|SA2PR11MB4875:EE_
+x-ms-office365-filtering-correlation-id: b79e72b9-495c-48b2-4020-08db03426ca2
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 66i0dSB5FF1KGCUjKyURPJWNYVZ90TYhw+JhLc1A5LwhO1o1xPkrG2muDPOhNSBum0crF8iIjshbj1efrc863JbefPU8wxpvZPZm/rxiElu07doW9zZvxxq44CNPyGQcEcuh5NFRTFrKVxnwwv3qLYvHjtmETGYD5XW+OcTi5yH1eBkIk3l0r89yrerotxPz5PXru6mQ7gzlex1LQFMSxmq0ZbR8myrS05J1twEtvX3Sq81/iq5J+m1o+R4JYpwC4lrfaIL+zFcbxGMjFnrOLTvtsKyDMvrLNEcbawucXmC+H4otGkmiR3GEQWkX3UZ42QPhst3FBM4IYWSzFT9Xrd/BoGt8meYKs0fPta5PpK0m04OWn1LUxOq7DgbwjJn/I6wXfBGgNCv0qCIhx2Xa2oLW6FH/K1Tztr5ssZa12A2ZuQNCO3BrZgBApwQ7xSneK7tw/NdfG5yTarHDyl2ok1XmRwv8wQjA2qKeaqBh/Cc7wuXAs88H2ZKgD2MI9lwPxiwxy6TYYdZPrPAvpvT8jCVt08GEg7x/FpTolxQr+vJGAWzUrAfiKuZcqR9LgKUZEyO+6Bl7HcOkYs6PE5djjBXexCX3ZNrJSuRNbq7wxzoDJtOCz68cWPdzOtHI7DC2ftTpANMNya7f3d6aIfs+bwR1sLCm8+kYGiUU+WjgHSqJDRc3tdiLZDC5cit+/4wSAc/9n3nCyXubbpr8FdNIZQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(396003)(346002)(136003)(376002)(366004)(39860400002)(451199018)(2906002)(52536014)(5660300002)(38070700005)(921005)(86362001)(4744005)(82960400001)(83380400001)(8936002)(41300700001)(478600001)(71200400001)(26005)(9686003)(7696005)(186003)(6506007)(55236004)(53546011)(33656002)(110136005)(54906003)(4326008)(66476007)(66446008)(38100700002)(8676002)(66946007)(76116006)(66556008)(64756008)(122000001)(316002)(55016003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?zuum+lhwCrzJTsvVNVPwwC8oDY/b/9vtDMJF2m+wl3qbcziAIrseWrbPpovY?=
+ =?us-ascii?Q?9TlecKzSp5tMX2S8Yvuiszxi8J44SUZv4e3UHk/Yo5iIebpy3mXZs2GsbEyZ?=
+ =?us-ascii?Q?dUnpHcRBp2NMLZI5bUbSk0G5sgN7Mj9NJWEZfkDIH2ZKXDUDbPk4Ws7TDmCQ?=
+ =?us-ascii?Q?L2nRyvayq6bp19x7GwiVY2EN3UWB1ukTsggjX5lqaB6cwSkCTAcvC3EKZLtl?=
+ =?us-ascii?Q?XJaNvl1JOnqX7wKzkI8xJFTKZj0EIcHF+0HV2pdhMV+Sqe0CTvig24rNCjbN?=
+ =?us-ascii?Q?VrskE3Ogiw9cepojZpLDWWYBHLoRQI7As9CB73TAmxUNfDns3eZ1DIntpO3l?=
+ =?us-ascii?Q?47Syx0wD0axSYNjfb9zo64Zuy9aAgsQSoeRXuNuyh3vC0SFb/nN20rkkpC0A?=
+ =?us-ascii?Q?V2a8JjDkh10aGZ32c+fTr8coI69BVJ40BGV+X1TNnfaGf2g5VNzW/FHxZ+yY?=
+ =?us-ascii?Q?1a1p214xO8uY6v86E6stq5wOKeG7InKRwgN3tsBtU2QbEJcbU8u2hdSTTDXj?=
+ =?us-ascii?Q?vSIH2ItenN5dHLV9flQZh4zNlf8HU973Z5QUjRVSOiFXKjFnrh3P+Mcy9qTY?=
+ =?us-ascii?Q?W6tWar5++UQF2/t9WW/+WgF+Z/pnM/+yVhuo+zl6YdzTGGYKEV+4/bHuH5vR?=
+ =?us-ascii?Q?RMFZ+bFYpbViomk6oigK4upfeOoB8D5q3OUa6VyOEurS+hZfX2r54CCle6Ow?=
+ =?us-ascii?Q?wQqb0djcrwkHE4xqAyRImTTN7RFPdjYFgu5lymn2i5jXE6Eocm5F/L3PNntc?=
+ =?us-ascii?Q?AbTuD+Lrm1dJN5ra4nH/M3xxkHu1Oj1pdKDhio6uogT+GAIiNTthTWcWaEER?=
+ =?us-ascii?Q?+NBSLZb3gMInw13KEbviwz0jvi1OrH3tAtyuUCI07fSgZl+kRM5hVIbuk9NE?=
+ =?us-ascii?Q?SFSpGV85pTZAd2wKi/3BrgcvWJTEvU1Ellh4Nx3dCdjufi5dcXqGzNTanK1Q?=
+ =?us-ascii?Q?wTPg1mDYjsmLGBN9TgRNuT6DI9XpXGxGSIDhQuwE40+WCCLF3pNy78gXouZu?=
+ =?us-ascii?Q?YCEHMRl6NsjHjfe3vMKTOaR4V6piBRf3x4Diko53ttjAmQmipxBZvnUtVwuy?=
+ =?us-ascii?Q?4miuYrTFaHGjaxHD8WVLzoYafOTp2pvZGCPC0njc4xcQkDMkPTYHateoaj+U?=
+ =?us-ascii?Q?VeTz2g+RA9uMTH6oFtF5C1xL+jwLuyqVHpk1LubbtDGJg8Qklu7xSZkkCuQH?=
+ =?us-ascii?Q?bCwPrf5f0NHqeqMADEX4A2UlGvJR7Av5XALZAACO+h7R+BkY/nagfN06H0Az?=
+ =?us-ascii?Q?hF+HkgSezqEX+5ITzGhZHq0DMVIKZ2MkZXJ76oIcWi4sx9RZ9Ju7t0mdSU/n?=
+ =?us-ascii?Q?hQcS7D910Ej/trRdv2DatnWAZonUmK16d4hue7AVNgeONiWaTjGWwEjIZJ5f?=
+ =?us-ascii?Q?oIUb7RINvwGtSt0hvqjWjoLhFcbm2I9I0Op9b/R7ePmiwAWcK9yFrHYQdJB5?=
+ =?us-ascii?Q?3HMpVR0SVBBQ7C2gotZyjAZki6dpxQkYfDxmydZmo7XFzjAJ5o/he3DIVxYL?=
+ =?us-ascii?Q?VBGRGrG57FcQ4YjKNoWi1dGiG+2x6qwH92Om0wq/niuabeluufEumr5rXl9E?=
+ =?us-ascii?Q?Gtd3rWst1hEf/vUxFgBlVogmKt6sY621LzTXf2i6?=
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=I7aOuN0Z7cOy5dqAaUiuywFRmsjtA1MOUQCg+0SjNXU=;
- b=QLP6qnxqtTVUGl8ftH1gx2SHFDp02aveZTLQWaEOtDVIhjkRGUGKMk4EpnBNTjEMlk
- 1rBuU1LF13nS12x7YzruzYDNrITQ50V3D9ZwxIu4okbxWH6j68pqU6HzH4d0mgMYblMi
- HOMRc4MZmxa1zygmqSMOatsw5R+MuyeIzSQpi0Ace2iJBsdIqOjuWrePd48IjOjX935U
- 1Fplq+GekDXsYlncVjlLu2ia7+kYovFP9bJz/HTX+W4iKtHLgdnnmRaOdpF8rghpjDoV
- b6+BdmJPqzpfznLLxThiKt0XOAxz0eHB3wZan1KdmVHd9wSahApJzACHQucJ+R4LhFaP
- 0zOQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=QLP6qnxq
-Subject: [Intel-wired-lan] [PATCH v3 net] ixgbe: allow to increase MTU to 3K
- with XDP enabled
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b79e72b9-495c-48b2-4020-08db03426ca2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2023 04:20:02.8042 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: uc97JgE+UVRQsaBYyA9LMvm/eCccH1WzJu1Y/66kA/Zb0tTWkwGvHWB72V4g2NQc86JPuyMaUb1kkl56JY0NPg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4875
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675138817; x=1706674817;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=qksYwYgybgNEjTcvWa81oPElxDjuTTlXjtPEOIa7e+U=;
+ b=D5MSpsSJKzfy3LGwEHtorK4Xhc4Z7K62+HjtjtlpRNTX20IgKN67iXam
+ 17UUMPpnN8Cw4e8jRIHNbaEBv8SBG9qUeFuuCz9hWSbVocYAjwVZskLG7
+ i3wJiQzknYA80ejwuc/Z5ME2jaxEAUonhcCH499o4tguuxlZF4Xhqhk17
+ K7v9Xx87uimxe7f0Pw3YiW6meUKs5b+L+XetG8xRqYtL5knKRvHZ5Zv66
+ bcA5GShJRcTkir1W05macFLu9km9KqKHFv+mLeD7jgVohIQ4TkVThCPqb
+ /o1mEG9iRlGRfDYLOc33FOMb00YaTcaOAyLpXJafeT+nKrzPsi8aZlSZN
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=D5MSpsSJ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v3] ice/ptp: fix the PTP worker
+ retrying indefinitely if the link went down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,90 +192,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kerneljasonxing@gmail.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jason Xing <kernelxing@tencent.com>
 
-Recently I encountered one case where I cannot increase the MTU size
-directly from 1500 to a much bigger value with XDP enabled if the
-server is equipped with IXGBE card, which happened on thousands of
-servers in production environment. After appling the current patch,
-we can set the maximum MTU size to 3K.
 
-This patch follows the behavior of changing MTU as i40e/ice does.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Daniel Vacek
+> Sent: Friday, January 20, 2023 1:53 AM
+> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>;
+> Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
+> Paolo Abeni <pabeni@redhat.com>; Richard Cochran
+> <richardcochran@gmail.com>
+> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Daniel Vacek
+> <neelx@redhat.com>; linux-kernel@vger.kernel.org
+> Subject: [Intel-wired-lan] [PATCH v3] ice/ptp: fix the PTP worker retrying
+> indefinitely if the link went down
+> 
+> When the link goes down the ice_ptp_tx_tstamp() may loop re-trying to
+> process the packets till the 2 seconds timeout finally drops them.
+> In such a case it makes sense to just drop them right away.
+> 
+> Signed-off-by: Daniel Vacek <neelx@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ptp.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+> 
 
-Referrences:
-[1] commit 23b44513c3e6 ("ice: allow 3k MTU for XDP")
-[2] commit 0c8493d90b6b ("i40e: add XDP support for pass and drop actions")
-
-Fixes: fabf1bce103a ("ixgbe: Prevent unsupported configurations with XDP")
-Signed-off-by: Jason Xing <kernelxing@tencent.com>
----
-v3:
-1) modify the titile and body message.
-
-v2:
-1) change the commit message.
-2) modify the logic when changing MTU size suggested by Maciej and Alexander.
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 25 ++++++++++++-------
- 1 file changed, 16 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index ab8370c413f3..2c1b6eb60436 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -6777,6 +6777,18 @@ static void ixgbe_free_all_rx_resources(struct ixgbe_adapter *adapter)
- 			ixgbe_free_rx_resources(adapter->rx_ring[i]);
- }
- 
-+/**
-+ * ixgbe_max_xdp_frame_size - returns the maximum allowed frame size for XDP
-+ * @adapter - device handle, pointer to adapter
-+ */
-+static int ixgbe_max_xdp_frame_size(struct ixgbe_adapter *adapter)
-+{
-+	if (PAGE_SIZE >= 8192 || adapter->flags2 & IXGBE_FLAG2_RX_LEGACY)
-+		return IXGBE_RXBUFFER_2K;
-+	else
-+		return IXGBE_RXBUFFER_3K;
-+}
-+
- /**
-  * ixgbe_change_mtu - Change the Maximum Transfer Unit
-  * @netdev: network interface device structure
-@@ -6788,18 +6800,13 @@ static int ixgbe_change_mtu(struct net_device *netdev, int new_mtu)
- {
- 	struct ixgbe_adapter *adapter = netdev_priv(netdev);
- 
--	if (adapter->xdp_prog) {
-+	if (ixgbe_enabled_xdp_adapter(adapter)) {
- 		int new_frame_size = new_mtu + ETH_HLEN + ETH_FCS_LEN +
- 				     VLAN_HLEN;
--		int i;
--
--		for (i = 0; i < adapter->num_rx_queues; i++) {
--			struct ixgbe_ring *ring = adapter->rx_ring[i];
- 
--			if (new_frame_size > ixgbe_rx_bufsz(ring)) {
--				e_warn(probe, "Requested MTU size is not supported with XDP\n");
--				return -EINVAL;
--			}
-+		if (new_frame_size > ixgbe_max_xdp_frame_size(adapter)) {
-+			e_warn(probe, "Requested MTU size is not supported with XDP\n");
-+			return -EINVAL;
- 		}
- 	}
- 
--- 
-2.37.3
-
+Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
