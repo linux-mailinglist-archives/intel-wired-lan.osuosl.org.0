@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39501686BA2
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Feb 2023 17:27:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B0A7686B8E
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Feb 2023 17:26:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CBDB240B59;
-	Wed,  1 Feb 2023 16:27:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CBDB240B59
+	by smtp2.osuosl.org (Postfix) with ESMTP id CF0E840A5D;
+	Wed,  1 Feb 2023 16:26:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CF0E840A5D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675268834;
-	bh=lT09R82O4rEAGk5GBgqsZtuJwTSLMzDp6Ef+gDC4Mz0=;
+	s=default; t=1675268801;
+	bh=Ur7ozm2mlGRf1tyF92rCgxBmGJrVmLeamM+9C56PPaQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ygb2LBtDeMImszTXjEHxE2zXHmAEKZfXkZxHy/I4YmJmdJlrWog+Ie9anpnBGOuAO
-	 kaz2ECRmDsXVQg8ddbRTaWSMyRZ+YkX4iu4Z8oYgA5NfHRAnr0t54iS1wro3svUPlq
-	 efW2/Ca5R/qGjovwpXEjV7VN/A5PgQf5lmmZiVcg8rW7RFUy4lWR9gXCQeXzEij5zc
-	 mNpEBhpry7wPsmOTHL+hoOd5x8d98CcYYqB7vMjFAYkNStV/m5U5q0Rg2KTKHvE9gp
-	 lx0pItkdcYVKyIEwwkzCHOrgsI9KTFysK7rFk38CMgUyVrLWjnXr7rjXYRTAGf+kEa
-	 MCe39GHd9lGog==
+	b=Td75F0wfzXgT8Ltn5ViTvSJetkcKQQDJpt/TY0NNoT5QESvGF0UUDJyPIu+d0OUMp
+	 lC4lP2G0VOTmd6iakLn4vjUz+7ka0XamCFJODBoIyKkOIPduYsx+b4QZ15Ys244QSK
+	 h/84HTIRVmMAXx5l7X/U796Ptxymi6trcyY3bxPbxDM1oCa39kr/x0CNfQLQT+ilaa
+	 jsVof8LKUICXJtFSK4BOs1hzmFWfqRNF10P0zbNpEujnDvwZu8J2HtMgIxNwwgTCsp
+	 NJkzCHwyXfsWw9ARYu1kUbvrgbQqhV9uNn5olzuV6KoePMqU7XOyOJ0mop0PmExTKY
+	 I/LCAi2rwr8vA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6xRube5GipPT; Wed,  1 Feb 2023 16:27:14 +0000 (UTC)
+	with ESMTP id jtR1n4CW1zxp; Wed,  1 Feb 2023 16:26:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BD52D40A17;
-	Wed,  1 Feb 2023 16:27:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD52D40A17
+	by smtp2.osuosl.org (Postfix) with ESMTP id B100340A37;
+	Wed,  1 Feb 2023 16:26:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B100340A37
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0275F1BF388
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ABFDF1BF388
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D0A5281E9A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D0A5281E9A
+ by smtp1.osuosl.org (Postfix) with ESMTP id 920AA81EA2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 920AA81EA2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WPuF---dOS6b for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Feb 2023 15:17:39 +0000 (UTC)
+ with ESMTP id nrcyWTwCY6Yk for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Feb 2023 15:17:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 21F0C81EA9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DFFA681E96
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
  [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 21F0C81EA9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DFFA681E96
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Feb 2023 15:17:23 +0000 (UTC)
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pNEZY-0002rc-0G; Wed, 01 Feb 2023 15:58:52 +0100
+ id 1pNEZY-0002ro-6K; Wed, 01 Feb 2023 15:58:52 +0100
 Received: from [2a0a:edc0:0:1101:1d::ac] (helo=dude04.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pNEZW-001w1N-SO; Wed, 01 Feb 2023 15:58:49 +0100
+ id 1pNEZY-001w1z-CZ; Wed, 01 Feb 2023 15:58:51 +0100
 Received: from ore by dude04.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pNEZT-009hXJ-Ik; Wed, 01 Feb 2023 15:58:47 +0100
+ id 1pNEZT-009hXS-JG; Wed, 01 Feb 2023 15:58:47 +0100
 From: Oleksij Rempel <o.rempel@pengutronix.de>
 To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -69,8 +69,8 @@ To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Date: Wed,  1 Feb 2023 15:58:41 +0100
-Message-Id: <20230201145845.2312060-20-o.rempel@pengutronix.de>
+Date: Wed,  1 Feb 2023 15:58:42 +0100
+Message-Id: <20230201145845.2312060-21-o.rempel@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230201145845.2312060-1-o.rempel@pengutronix.de>
 References: <20230201145845.2312060-1-o.rempel@pengutronix.de>
@@ -81,7 +81,7 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
 X-Mailman-Approved-At: Wed, 01 Feb 2023 16:25:41 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v4 19/23] igc: replace EEE
+Subject: [Intel-wired-lan] [PATCH net-next v4 20/23] tg3: replace EEE
  ethtool helpers to linkmode variants
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -109,49 +109,41 @@ migration.
 
 Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/broadcom/tg3.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 5a26a7805ef8..b23e904fc347 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1582,12 +1582,14 @@ static int igc_ethtool_get_eee(struct net_device *netdev,
- 			       struct ethtool_eee *edata)
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index 58747292521d..a3764e360d23 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -2339,6 +2339,8 @@ static void tg3_phy_apply_otp(struct tg3 *tp)
+ 
+ static void tg3_eee_pull_config(struct tg3 *tp, struct ethtool_eee *eee)
  {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
 +	__ETHTOOL_DECLARE_LINK_MODE_MASK(adv) = {};
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 eeer;
++	__ETHTOOL_DECLARE_LINK_MODE_MASK(lp) = {};
+ 	u32 val;
+ 	struct ethtool_eee *dest = &tp->eee;
  
--	if (hw->dev_spec._base.eee_enable)
--		edata->advertised =
--			mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
-+	if (hw->dev_spec._base.eee_enable) {
-+		mii_eee_100_10000_adv_mod_linkmode_t(adv, adapter->eee_advert);
-+		ethtool_convert_link_mode_to_legacy_u32(&edata->advertised, adv);
-+	}
+@@ -2361,13 +2363,16 @@ static void tg3_eee_pull_config(struct tg3 *tp, struct ethtool_eee *eee)
+ 	/* Pull lp advertised settings */
+ 	if (tg3_phy_cl45_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_LPABLE, &val))
+ 		return;
+-	dest->lp_advertised = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_100_10000_adv_mod_linkmode_t(lp, val);
++	ethtool_convert_link_mode_to_legacy_u32(&dest->lp_advertised, lp);
++
  
- 	*edata = adapter->eee;
- 	edata->supported = SUPPORTED_Autoneg;
-@@ -1623,6 +1625,7 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
- 			       struct ethtool_eee *edata)
- {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
-+	__ETHTOOL_DECLARE_LINK_MODE_MASK(adv) = {};
- 	struct igc_hw *hw = &adapter->hw;
- 	struct ethtool_eee eee_curr;
- 	s32 ret_val;
-@@ -1655,7 +1658,8 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
- 		return -EINVAL;
- 	}
+ 	/* Pull advertised and eee_enabled settings */
+ 	if (tg3_phy_cl45_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_ADV, &val))
+ 		return;
+ 	dest->eee_enabled = !!val;
+-	dest->advertised = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_100_10000_adv_mod_linkmode_t(adv, val);
++	ethtool_convert_link_mode_to_legacy_u32(&dest->advertised, adv);
  
--	adapter->eee_advert = ethtool_adv_to_mmd_eee_adv_t(edata->advertised);
-+	adv[0] = edata->advertised;
-+	adapter->eee_advert = linkmode_adv_to_mii_eee_100_10000_adv_t(adv);
- 	if (hw->dev_spec._base.eee_enable != edata->eee_enabled) {
- 		hw->dev_spec._base.eee_enable = edata->eee_enabled;
- 		adapter->flags |= IGC_FLAG_EEE;
+ 	/* Pull tx_lpi_enabled */
+ 	val = tr32(TG3_CPMU_EEE_MODE);
 -- 
 2.30.2
 
