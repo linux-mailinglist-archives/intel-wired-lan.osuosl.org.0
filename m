@@ -1,82 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9A3168A06D
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Feb 2023 18:35:49 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D72868A70F
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Feb 2023 00:50:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1738060AE2;
-	Fri,  3 Feb 2023 17:35:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1738060AE2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8D91B40519;
+	Fri,  3 Feb 2023 23:50:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D91B40519
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675445748;
-	bh=P+tv5am8xNg1catx3zNh+5VygHQJ/bbKVMMOtMkioy8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1675468251;
+	bh=/qW3W3W95F8+2cnbuVNULUaxRYE3HsmgpjXWCsx7/BU=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=TaKjBuJpAnzXRTskZEAQbbaJHMN24rl0q7HwVfst69+SzXsA/HN/psY6gCAYpmfN+
-	 4ZtkXM7W7wc1/4pAgw8kgfPwlYwM47/Vuiq8wQ6z3N0IgtckRB4uuN269HlSa53tfE
-	 v+Zn7dgnMRHmdB9l83Fa45Z6+zGzMG4EOFQYx+WNEQTqAMvjXcGlvRzlRQn4M4swbU
-	 ZhDfvtPabGAT0ldKQW1AN7aLyABBe2oISDLbuLp6zr0r5likgUVUx/oUfuosWoT3om
-	 8mAY7GR2XREKKJYs4CWYGfU8v35alftiihTer0yizbz0MX+kECh+dIej3Ey6/kT0A3
-	 EubInKC0PyJRQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1L9VuJcgZXQ0; Fri,  3 Feb 2023 17:35:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03A3F612F1;
-	Fri,  3 Feb 2023 17:35:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03A3F612F1
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4531F1BF375
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:42 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1DEA94026F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DEA94026F
+	b=1QT3f83B41iZfE+dkpoUMP+Dwzir5SbrvbR/5Xt+dNCFArfWp5lrlKGyx/rCgFHJ+
+	 Oejghnvj75KWOXmvWpvSslQYXh7B+Lj6zvxZoGnW5+sj8ddza9FYXdE3Oab+jbhnAG
+	 3yIrZpLNi/YNQKGQqeuSPiZ3abT7J1CiyMCS50jgfKJRcYGYNvq/qvw3HYas0C5dve
+	 E4kQhamj9eWpdlJ+5F/XFq1nmAERChjXu7DH8FnJ40TYu2jXOBZSuPYJ6CcSs6V0D0
+	 MkXWITQ4Qoxzf4x3qJxZUmMLePuVmFwYD/cPEBkDbfYi5NZeqR1scyd1Ur/I8ERvkV
+	 +vJ/aaidGv4eA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y0D_k6CZYPFQ for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Feb 2023 17:35:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BAC764169E
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BAC764169E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:40 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7DD0661F7F;
- Fri,  3 Feb 2023 17:35:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9B20C433D2;
- Fri,  3 Feb 2023 17:35:38 +0000 (UTC)
-Date: Fri, 3 Feb 2023 18:36:44 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Alexei Starovoitov <alexei.starovoitov@gmail.com>
-Message-ID: <Y91GLP4LCqsGE8kX@localhost.localdomain>
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MBagnL3oY2w3; Fri,  3 Feb 2023 23:50:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6E29F404DF;
+	Fri,  3 Feb 2023 23:50:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E29F404DF
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DCB61BF280
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 23:50:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3594782263
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 23:50:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3594782263
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KZk3LqnxaXuI for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Feb 2023 23:50:44 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4240582262
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4240582262
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 23:50:44 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id gr7so19648585ejb.5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 03 Feb 2023 15:50:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gOrsPhcpzWEq2PcdjbKFApKHFuTiUGlYuSEdAr9vzSA=;
+ b=24Vkr2x/ODnnR/fpRYrUF80JnTf6ksfMlwTy7qYUVrr0HRlxdQSjmiVtdroHXwTBrq
+ UKAqutqFmV+Y9QBns6e2ITsM69UtAqECBfgLSaw5yLVoPmdbRjPupxk2951iCevoGyV4
+ NNfAu4DcOlp61yMvRJrh/dCixKpLfH0Rl4htxALBOTLpoYgbk3UFviNgmqKwUWRZPUMX
+ xBaOb5WTWLAx6srktUb+7JySbrwWI1r0xrn/7Tz75i/A2NLRNreuhD71+o9d6Fy7bTPg
+ 5RZe9MdGtbG3JTyrpEfBAPbMSNXrQcSLmBhdlCuJj6xqBvkUkQdbG8Ap7lLzR1t3ZJGO
+ 2VEg==
+X-Gm-Message-State: AO0yUKWmkievOmO5Fst54DIc7epxbuU7YBrrVB4G1RFJ+HbowHVhebBf
+ KmRmpeT+oPvFXPghV8nVXsdE9fcDYxrOlyLWTy4=
+X-Google-Smtp-Source: AK7set9O5rc94Ldp5+Ji252ZVIitA8/2FF89pBrJW7KTM+Kv1zAEAhmxsVOgd7abkYlWUImBH4y8FzoWqM+ITlZFKO8=
+X-Received: by 2002:a17:906:6d13:b0:878:786e:8c39 with SMTP id
+ m19-20020a1709066d1300b00878786e8c39mr3707005ejr.105.1675468242181; Fri, 03
+ Feb 2023 15:50:42 -0800 (PST)
+MIME-Version: 1.0
 References: <cover.1675245257.git.lorenzo@kernel.org>
  <7c1af8e7e6ef0614cf32fa9e6bdaa2d8d605f859.1675245258.git.lorenzo@kernel.org>
  <CAADnVQLTBSTCr4O2kGWSz3ihOZxpXHz-8TuwbwXe6=7-XhiDkA@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAADnVQLTBSTCr4O2kGWSz3ihOZxpXHz-8TuwbwXe6=7-XhiDkA@mail.gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1675445739;
- bh=ijwHAleeIaclM8f+Bu9zVC1Ch+njpvXpVWr4XsvMWeY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=joyc2iZeOziuFblivFSRgb0FVfrW4Zag8+TDk6F2dFU4XFWv2I9lTux4jLKa2b7uo
- lJh+HXddeot5EN7IQYbfxDUIX8jHaFs6e1S2FjNYzEOnxywY9l1hRgq15Lfyft0v5J
- KDQhZG3bHrFpCkGkm2eAOU1xFU8wR2iK2+0YZ7rC57BlS3YDSNVKIviYBVNbYcjOCF
- ttiwE7inssrWGSWexjCzgVq14l08OXTNGtCyxbYujwlAJJ5CBIdl7kQZcquSHj0d+x
- Xc/Lcru8A0iG9aJE6R8dlRDPPLOqN217LkrWpnG6jRuC//z52JWEMnV75CT2yWHTA8
- WGMjkpl/8rtDw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=joyc2iZe
+ <Y91GLP4LCqsGE8kX@localhost.localdomain>
+In-Reply-To: <Y91GLP4LCqsGE8kX@localhost.localdomain>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Fri, 3 Feb 2023 15:50:30 -0800
+Message-ID: <CAADnVQKnTzfDuZL0BD9sONeR2jEnQr=mD8kwWHqdaz9dv8VQRA@mail.gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=gOrsPhcpzWEq2PcdjbKFApKHFuTiUGlYuSEdAr9vzSA=;
+ b=ZAfyu43MSVYff52t9LKybrPfV7bkeFgC5Uchf2kG3yIJkgCx+9x/Lk6gQIrzFjMUn/
+ 5Y3tJjt1BHFS3iWBLIE6M6ZgXBtdfpcmLmjky1rY5r8iVfzNvCtgWWJrLji7VJhext6T
+ uZpRLenaOJCY8sjoared70nx0YMbrGdP3foZHSID+cvYrpdqtzzOdA5m0YVrXJaC1fDh
+ oj4O/iaSsIwd864u/lRfSuQ9ioYNiF9GxvWFPclI3aGWVZ24j3iDBgDPQKbvOlqLQVpn
+ g+cDONZC/z+BpceeIcKi1+NWkl8RyrzGImrYPDrO9/gqBro1c5jSM1QimZ9erbogTc3y
+ MXYA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=ZAfyu43M
 Subject: Re: [Intel-wired-lan] [PATCH v5 bpf-next 8/8] selftests/bpf:
  introduce XDP compliance test tool
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -101,106 +116,80 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, vladimir.oltean@nxp.com,
  Paolo Abeni <pabeni@redhat.com>, Ariel Elior <aelior@marvell.com>,
  Jesper Dangaard Brouer <hawk@kernel.org>, christophe.jaillet@wanadoo.fr,
  Kumar Kartikeya Dwivedi <memxor@gmail.com>, john@phrozen.org,
- =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, bpf <bpf@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, bpf <bpf@vger.kernel.org>,
  "Karlsson, Magnus" <magnus.karlsson@intel.com>,
  Leon Romanovsky <leon@kernel.org>,
  Network Development <netdev@vger.kernel.org>,
- Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>,
+ =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>,
  Martin KaFai Lau <martin.lau@linux.dev>, ecree.xilinx@gmail.com,
  Marek Majtyka <alardam@gmail.com>, Andy Gospodarek <gospo@broadcom.com>,
  Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
  Felix Fietkau <nbd@nbd.name>
-Content-Type: multipart/mixed; boundary="===============0394794198176027630=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
---===============0394794198176027630==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="BGAE9fS73UeimlfR"
-Content-Disposition: inline
-
-
---BGAE9fS73UeimlfR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Wed, Feb 1, 2023 at 2:25 AM Lorenzo Bianconi <lorenzo@kernel.org> wrot=
-e:
+On Fri, Feb 3, 2023 at 9:35 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+>
+> > On Wed, Feb 1, 2023 at 2:25 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+> > >
+> > > Introduce xdp_features tool in order to test XDP features supported by
+> > > the NIC and match them against advertised ones.
+> > > In order to test supported/advertised XDP features, xdp_features must
+> > > run on the Device Under Test (DUT) and on a Tester device.
+> > > xdp_features opens a control TCP channel between DUT and Tester devices
+> > > to send control commands from Tester to the DUT and a UDP data channel
+> > > where the Tester sends UDP 'echo' packets and the DUT is expected to
+> > > reply back with the same packet. DUT installs multiple XDP programs on the
+> > > NIC to test XDP capabilities and reports back to the Tester some XDP stats.
 > >
-> > Introduce xdp_features tool in order to test XDP features supported by
-> > the NIC and match them against advertised ones.
-> > In order to test supported/advertised XDP features, xdp_features must
-> > run on the Device Under Test (DUT) and on a Tester device.
-> > xdp_features opens a control TCP channel between DUT and Tester devices
-> > to send control commands from Tester to the DUT and a UDP data channel
-> > where the Tester sends UDP 'echo' packets and the DUT is expected to
-> > reply back with the same packet. DUT installs multiple XDP programs on =
-the
-> > NIC to test XDP capabilities and reports back to the Tester some XDP st=
-ats.
->=20
->=20
-> 'DUT installs...'? what? The device installs XDP programs ?
+> >
+> > 'DUT installs...'? what? The device installs XDP programs ?
+>
+> Hi Alexei,
+>
+> DUT stands for Device Under Test, I was thinking it is quite a common term.
+> Sorry for that.
 
-Hi Alexei,
+It was clear from the commit log.
+My point was not questioning whether abbreviation is common or not.
+It's this:
+"device under test installs...". device installs? No. device doesn't
+install anything. It's xdp_features tool attaches a prog to the
+device.
 
-DUT stands for Device Under Test, I was thinking it is quite a common term.
-Sorry for that.
+and more:
+"device under test socket"... what does it even mean?
 
->=20
-> > +
-> > +       ctrl_sockfd =3D accept(*sockfd, (struct sockaddr *)&ctrl_addr, =
-&addrlen);
-> > +       if (ctrl_sockfd < 0) {
-> > +               fprintf(stderr, "Failed to accept connection on DUT soc=
-ket\n");
->=20
-> Applied, but overuse of the word 'DUT' is incorrect and confusing.
->=20
-> 'DUT socket' ? what is that?
-> 'Invalid DUT address' ? what address?
-> The UX in general is not user friendly.
->=20
-> ./xdp_features
-> Invalid ifindex
->=20
-> This is not a helpful message.
->=20
-> ./xdp_features eth0
-> Starting DUT on device 3
-> Failed to accept connection on DUT socket
->=20
-> 'Starting DUT' ? What did it start?
-
-I will post a follow-up patch to clarify them.
-
-Regards,
-Lorenzo
-
---BGAE9fS73UeimlfR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY91GKQAKCRA6cBh0uS2t
-rFyeAQDjdxG2+NmNQt0HVAYJOIIXnYZMPQ9cnQgTOE1ivyToggD/TVESetmIn9aL
-sGJ7s0tHO7M9dMMlQuiexvyDiUCGJw4=
-=MZvV
------END PGP SIGNATURE-----
-
---BGAE9fS73UeimlfR--
-
---===============0394794198176027630==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> >
+> > > +
+> > > +       ctrl_sockfd = accept(*sockfd, (struct sockaddr *)&ctrl_addr, &addrlen);
+> > > +       if (ctrl_sockfd < 0) {
+> > > +               fprintf(stderr, "Failed to accept connection on DUT socket\n");
+> >
+> > Applied, but overuse of the word 'DUT' is incorrect and confusing.
+> >
+> > 'DUT socket' ? what is that?
+> > 'Invalid DUT address' ? what address?
+> > The UX in general is not user friendly.
+> >
+> > ./xdp_features
+> > Invalid ifindex
+> >
+> > This is not a helpful message.
+> >
+> > ./xdp_features eth0
+> > Starting DUT on device 3
+> > Failed to accept connection on DUT socket
+> >
+> > 'Starting DUT' ? What did it start?
+>
+> I will post a follow-up patch to clarify them.
+>
+> Regards,
+> Lorenzo
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0394794198176027630==--
