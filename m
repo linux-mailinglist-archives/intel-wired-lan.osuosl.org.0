@@ -1,88 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49A1D689F19
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Feb 2023 17:24:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9A3168A06D
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Feb 2023 18:35:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C3BCF42AC8;
-	Fri,  3 Feb 2023 16:24:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C3BCF42AC8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1738060AE2;
+	Fri,  3 Feb 2023 17:35:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1738060AE2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675441459;
-	bh=JNE2UuNHPTEsa3L5k8yBjyBIr47Ge5sxKNTyYBoBDUE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=3y6zq3uIxiw5SgXzW4lrxkDC+kdmYCtIwRyBEefinKOBtIZFB47p9AOdjJ4+qh147
-	 l2oTmzq8Gsw7/sLA74dns0l+dt1/a0ZxDpts3q0IHK0p2L5sRqWisMs+U6Rk2qh8gG
-	 qbB+K0OeHnJdUmzq9rhXmJGP+NuJdflHbL2idxMVnVjyJmEsQYEwVk4KJPbgfENZMn
-	 TPxdBQORHPpZQurkD2+K+X0x/z2IN03gZMe3orDM+SR5TQzgK56yTlC/6G9NeEY62i
-	 uYZrAi/7kqqBKE8fahlG+ZTh/HLOxlp6AA9YuRvHs0AlgiydEvu6VjfgNvVt0nRmcp
-	 JJq8KefwM5XLA==
+	s=default; t=1675445748;
+	bh=P+tv5am8xNg1catx3zNh+5VygHQJ/bbKVMMOtMkioy8=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=TaKjBuJpAnzXRTskZEAQbbaJHMN24rl0q7HwVfst69+SzXsA/HN/psY6gCAYpmfN+
+	 4ZtkXM7W7wc1/4pAgw8kgfPwlYwM47/Vuiq8wQ6z3N0IgtckRB4uuN269HlSa53tfE
+	 v+Zn7dgnMRHmdB9l83Fa45Z6+zGzMG4EOFQYx+WNEQTqAMvjXcGlvRzlRQn4M4swbU
+	 ZhDfvtPabGAT0ldKQW1AN7aLyABBe2oISDLbuLp6zr0r5likgUVUx/oUfuosWoT3om
+	 8mAY7GR2XREKKJYs4CWYGfU8v35alftiihTer0yizbz0MX+kECh+dIej3Ey6/kT0A3
+	 EubInKC0PyJRQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uo4BfwpIK7R4; Fri,  3 Feb 2023 16:24:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1L9VuJcgZXQ0; Fri,  3 Feb 2023 17:35:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 93C6942AC5;
-	Fri,  3 Feb 2023 16:24:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 93C6942AC5
+	by smtp3.osuosl.org (Postfix) with ESMTP id 03A3F612F1;
+	Fri,  3 Feb 2023 17:35:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03A3F612F1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 02DDF1BF283
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 16:24:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4531F1BF375
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D00C042AC5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 16:24:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D00C042AC5
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1DEA94026F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DEA94026F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vs_-Sfav7ZYS for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Feb 2023 16:24:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id y0D_k6CZYPFQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Feb 2023 17:35:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C086E42AC4
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C086E42AC4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 16:24:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="327422358"
-X-IronPort-AV: E=Sophos;i="5.97,270,1669104000"; d="scan'208";a="327422358"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2023 08:24:10 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="659133444"
-X-IronPort-AV: E=Sophos;i="5.97,270,1669104000"; d="scan'208";a="659133444"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 03 Feb 2023 08:24:09 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pNyrA-0000dH-21;
- Fri, 03 Feb 2023 16:24:08 +0000
-Date: Sat, 04 Feb 2023 00:23:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63dd34f5.CV/hovTi1lukq37/%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BAC764169E
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BAC764169E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Feb 2023 17:35:40 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7DD0661F7F;
+ Fri,  3 Feb 2023 17:35:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9B20C433D2;
+ Fri,  3 Feb 2023 17:35:38 +0000 (UTC)
+Date: Fri, 3 Feb 2023 18:36:44 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Message-ID: <Y91GLP4LCqsGE8kX@localhost.localdomain>
+References: <cover.1675245257.git.lorenzo@kernel.org>
+ <7c1af8e7e6ef0614cf32fa9e6bdaa2d8d605f859.1675245258.git.lorenzo@kernel.org>
+ <CAADnVQLTBSTCr4O2kGWSz3ihOZxpXHz-8TuwbwXe6=7-XhiDkA@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAADnVQLTBSTCr4O2kGWSz3ihOZxpXHz-8TuwbwXe6=7-XhiDkA@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675441451; x=1706977451;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=h4pGp0H2j5P28CDwQ3Fn0vy7BlH40PBxH7ycD3y+TGU=;
- b=mqbdBlndUFBwEWpr24awgbHU4I1kdAhiak4z4DPOCM3b2ZW0SDoBw79l
- xZ3ucz/QUdE1qw5PEuUEdqvLAvLcNawa0gECl4d99vKKSqsxnswiAMh2D
- isu6siOAeX8fN4YvY/F8M4/H1Tj5u9FGOkB2oyaIAbJwLg98VaXXwOaYw
- gzyacRXUerK58cqDNjvWIeZZR+FyfqrX8ROn3RK+GW8MZVw9sraq4ZoLK
- uKmn2dqciSJofWXjdj+QYdwCzBTvyaaI6ActAWLB2+ok32y68eujRU1AH
- HoNraYRpYOWXtTjpzZxGNRy35GCXHJhnPsnfzPJTfZgDorZ2X3bj3mHeE
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mqbdBlnd
-Subject: [Intel-wired-lan] [tnguy-next-queue:master] BUILD SUCCESS
- 82b4a9412b4de2f68679f1403f1d229390ace27e
+ d=kernel.org; s=k20201202; t=1675445739;
+ bh=ijwHAleeIaclM8f+Bu9zVC1Ch+njpvXpVWr4XsvMWeY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=joyc2iZeOziuFblivFSRgb0FVfrW4Zag8+TDk6F2dFU4XFWv2I9lTux4jLKa2b7uo
+ lJh+HXddeot5EN7IQYbfxDUIX8jHaFs6e1S2FjNYzEOnxywY9l1hRgq15Lfyft0v5J
+ KDQhZG3bHrFpCkGkm2eAOU1xFU8wR2iK2+0YZ7rC57BlS3YDSNVKIviYBVNbYcjOCF
+ ttiwE7inssrWGSWexjCzgVq14l08OXTNGtCyxbYujwlAJJ5CBIdl7kQZcquSHj0d+x
+ Xc/Lcru8A0iG9aJE6R8dlRDPPLOqN217LkrWpnG6jRuC//z52JWEMnV75CT2yWHTA8
+ WGMjkpl/8rtDw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=joyc2iZe
+Subject: Re: [Intel-wired-lan] [PATCH v5 bpf-next 8/8] selftests/bpf:
+ introduce XDP compliance test tool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,82 +91,116 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, vladimir.oltean@nxp.com,
+ Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ anthony.l.nguyen@intel.com, Stanislav Fomichev <sdf@google.com>,
+ gerhard@engleder-embedded.com, Daniel Borkmann <daniel@iogearbox.net>,
+ Andrii Nakryiko <andrii@kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Simon Horman <simon.horman@corigine.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Ariel Elior <aelior@marvell.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, christophe.jaillet@wanadoo.fr,
+ Kumar Kartikeya Dwivedi <memxor@gmail.com>, john@phrozen.org,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, bpf <bpf@vger.kernel.org>,
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>,
+ Leon Romanovsky <leon@kernel.org>,
+ Network Development <netdev@vger.kernel.org>,
+ Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>,
+ Martin KaFai Lau <martin.lau@linux.dev>, ecree.xilinx@gmail.com,
+ Marek Majtyka <alardam@gmail.com>, Andy Gospodarek <gospo@broadcom.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
+ Felix Fietkau <nbd@nbd.name>
+Content-Type: multipart/mixed; boundary="===============0394794198176027630=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git master
-branch HEAD: 82b4a9412b4de2f68679f1403f1d229390ace27e  Merge git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net
 
-elapsed time: 950m
+--===============0394794198176027630==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BGAE9fS73UeimlfR"
+Content-Disposition: inline
 
-configs tested: 52
-configs skipped: 2
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--BGAE9fS73UeimlfR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-gcc tested configs:
-x86_64                            allnoconfig
-arc                  randconfig-r043-20230202
-riscv                randconfig-r042-20230202
-s390                 randconfig-r044-20230202
-powerpc                           allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-arc                                 defconfig
-s390                             allmodconfig
-x86_64                              defconfig
-x86_64                    rhel-8.3-kselftests
-alpha                               defconfig
-x86_64                          rhel-8.3-func
-s390                                defconfig
-x86_64                               rhel-8.3
-alpha                            allyesconfig
-s390                             allyesconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-sh                               allmodconfig
-x86_64                           rhel-8.3-bpf
-arc                              allyesconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                           allyesconfig
-mips                             allyesconfig
-ia64                             allmodconfig
-powerpc                          allmodconfig
-i386                             allyesconfig
-i386                                defconfig
-powerpc                     stx_gp3_defconfig
-xtensa                  cadence_csp_defconfig
-powerpc                      mgcoge_defconfig
-sh                            migor_defconfig
-arm64                            allyesconfig
-arm                                 defconfig
-arm                              allyesconfig
+> On Wed, Feb 1, 2023 at 2:25 AM Lorenzo Bianconi <lorenzo@kernel.org> wrot=
+e:
+> >
+> > Introduce xdp_features tool in order to test XDP features supported by
+> > the NIC and match them against advertised ones.
+> > In order to test supported/advertised XDP features, xdp_features must
+> > run on the Device Under Test (DUT) and on a Tester device.
+> > xdp_features opens a control TCP channel between DUT and Tester devices
+> > to send control commands from Tester to the DUT and a UDP data channel
+> > where the Tester sends UDP 'echo' packets and the DUT is expected to
+> > reply back with the same packet. DUT installs multiple XDP programs on =
+the
+> > NIC to test XDP capabilities and reports back to the Tester some XDP st=
+ats.
+>=20
+>=20
+> 'DUT installs...'? what? The device installs XDP programs ?
 
-clang tested configs:
-arm                  randconfig-r046-20230202
-hexagon              randconfig-r041-20230202
-hexagon              randconfig-r045-20230202
-x86_64                          rhel-8.3-rust
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
-x86_64                        randconfig-k001
+Hi Alexei,
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+DUT stands for Device Under Test, I was thinking it is quite a common term.
+Sorry for that.
+
+>=20
+> > +
+> > +       ctrl_sockfd =3D accept(*sockfd, (struct sockaddr *)&ctrl_addr, =
+&addrlen);
+> > +       if (ctrl_sockfd < 0) {
+> > +               fprintf(stderr, "Failed to accept connection on DUT soc=
+ket\n");
+>=20
+> Applied, but overuse of the word 'DUT' is incorrect and confusing.
+>=20
+> 'DUT socket' ? what is that?
+> 'Invalid DUT address' ? what address?
+> The UX in general is not user friendly.
+>=20
+> ./xdp_features
+> Invalid ifindex
+>=20
+> This is not a helpful message.
+>=20
+> ./xdp_features eth0
+> Starting DUT on device 3
+> Failed to accept connection on DUT socket
+>=20
+> 'Starting DUT' ? What did it start?
+
+I will post a follow-up patch to clarify them.
+
+Regards,
+Lorenzo
+
+--BGAE9fS73UeimlfR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCY91GKQAKCRA6cBh0uS2t
+rFyeAQDjdxG2+NmNQt0HVAYJOIIXnYZMPQ9cnQgTOE1ivyToggD/TVESetmIn9aL
+sGJ7s0tHO7M9dMMlQuiexvyDiUCGJw4=
+=MZvV
+-----END PGP SIGNATURE-----
+
+--BGAE9fS73UeimlfR--
+
+--===============0394794198176027630==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0394794198176027630==--
