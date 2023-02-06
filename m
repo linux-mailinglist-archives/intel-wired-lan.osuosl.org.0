@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2228068CA87
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 00:29:46 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 93CC268CAD3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 00:55:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F5FE60D69;
-	Mon,  6 Feb 2023 23:29:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F5FE60D69
+	by smtp4.osuosl.org (Postfix) with ESMTP id 30C234157D;
+	Mon,  6 Feb 2023 23:55:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30C234157D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675726184;
-	bh=HxHnX9qMWuKGX0P++TAACf0l2CnlryQinxTrS7Yrtlo=;
+	s=default; t=1675727712;
+	bh=lvcopaoqZi3COeJiyGVjCOdOPVKsGD2C8eOuJJgzJ1E=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Qme0n62SGqZX6LMrlBu8bRxaHkp0u3rx1H5LW3Apco408kld+WiV9oiqt4KvSH8I7
-	 gahYWgA7nIcaKd8Vjq3E7KyDZ64XRZG26UKjq3YfdhtKmpF2QCWoRANFK1XdStqGqo
-	 g+LFpSCBxg6B3xn44TBSelw/bRFSqVigebV+11Q2tMffYHJSPU21HaJLdYSofY9CYH
-	 N9wYiggl2qVYp6Sgwf9p9+dtUumwhPFw/aA1f9Ee+lzjQNm7PstSrmMxialOWhaGdD
-	 +4aKPAY83mxcm0qlulnVEH5vF83jeCnQemgJUKMBxda6Z/EeG2NKckxH/JcIFbOZUr
-	 nJ4gQjldiRPMg==
+	b=oxhc5P4tpfh7TniKyJaswF3I9QUK490PEVZNDEpzrtm10lK7JPVasg/ee1QJzTB/G
+	 Z9OmHbZEpMdFv1vHDKJPeVSGhxpMy1Ja8TViCWAojDK03S7ou4A6Ff3sqKHZm+CLUR
+	 lK0MdZ2BtxuLDUJgBG0X6wj/KypLCgTLUoKjJsCLgsbEA+kkAUkOVA9ECHNYdB3C5L
+	 S3BnSUNAY/xPzwJ6Os2fMBsFI8tsIFA/dayG8+YDZc2Z4hYGR2L9rF18gZAkyYQcCk
+	 zRC+gryj/D2bEeyuByV4xbmxN2GPVFPSwqVXpjXwt82crrB4Kud/mmTJoIlrN2OX3e
+	 iHy/OYxRbLFHA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 12jO87MJbQwV; Mon,  6 Feb 2023 23:29:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MusIzK-wB-in; Mon,  6 Feb 2023 23:55:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8501060D5C;
-	Mon,  6 Feb 2023 23:29:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8501060D5C
+	by smtp4.osuosl.org (Postfix) with ESMTP id B523A40928;
+	Mon,  6 Feb 2023 23:55:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B523A40928
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DE6D61BF3C5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:29:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 007041BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:55:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6472660D5C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:29:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6472660D5C
+ by smtp4.osuosl.org (Postfix) with ESMTP id CBFEB4157D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:55:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBFEB4157D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RNPbCfZJGAsS for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 23:29:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fh8_PYFc8OYf for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 23:55:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2038660D4B
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2038660D4B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:29:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="329359160"
-X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="329359160"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2023 15:29:16 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="644226295"
-X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="644226295"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8792140928
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8792140928
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 23:55:02 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="317365734"
+X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="317365734"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2023 15:54:53 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="790597035"
+X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="790597035"
 Received: from jbrandeb-coyote30.jf.intel.com ([10.166.29.19])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2023 15:29:16 -0800
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2023 15:54:53 -0800
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  6 Feb 2023 15:29:07 -0800
-Message-Id: <20230206232907.2254660-1-jesse.brandeburg@intel.com>
+Date: Mon,  6 Feb 2023 15:54:36 -0800
+Message-Id: <20230206235436.2254802-1-jesse.brandeburg@intel.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675726177; x=1707262177;
+ t=1675727702; x=1707263702;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=2IK/u3DAhtqRDfw1/fXUaLW4gkd0Z777YypOt+/mn0w=;
- b=eGUlZls/ltFeWUS0TinJQymPugXtIq/yc43CyQXtfKShMPIy+31y1AhX
- gOfdn/QLPHZv3pud5iZbOStT9xDvZavWpi+fo+iTG9OE5QaBmlNJNK6UV
- 4TFEWcEHVpb9CxxUgh7Z9F9wTKPPBoZz8OEvK0HyAegvDUDmqKaDvyZrn
- xdqQt4DKK8pvGaheckbwvtWMsYosO8so3o64y30ttgOjtV+rpsn2cp9DD
- V/kWpYv+0RLSzrgn4d+GG+IAVmqhXAeBCtbe9/wvFMH3X2tOj8dqVbTlK
- hiND4qmNpDVwT7mv/HNlRz34Nzcn32vBaYdoeuwD2d7SRPCpKBp+UURoC
+ bh=rqonhSCze2Ze0QFZvj0hciiw74zLE0sfkGG+fKH1h2Q=;
+ b=doOkefbX9bDw2RZSShDFYM3DTH6ndRgwNNZs7K26nncbANqRy4h2dlRR
+ NjRI0J1DRBoTYUlSEGRltTp+acEgcN52IVij2Ybc9MQzDtxeu3IO3Rgpq
+ Gy5LUs2FA4QhL8asHQmcu4JU+q8HWdLYe65jP06PdaCuTKgsvE60ppjut
+ 3LQFbwBjInl3EeG9JkadFN92muCYi5MYHUn1SB8vtpazTK4TX4wv6Id0Q
+ f2EXO6xdVB2qA2RJoKl9EyNzn/1hLKwLtDF3GDpfEFgd8YGecMvM13hvD
+ NUcT4I5mE8u/d5qLXzhf0VJYuOD6/VTnoHavM0A48DFW4LTJZ9elEXylH
  A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=eGUlZls/
-Subject: [Intel-wired-lan] [PATCH net v1] ice: fix lost multicast packets in
+ header.a=rsa-sha256 header.s=Intel header.b=doOkefbX
+Subject: [Intel-wired-lan] [PATCH net v2] ice: fix lost multicast packets in
  promisc mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -123,7 +123,10 @@ is in promisc but NOT "multicast replication").
 The fix is to enable "multicast promiscuous" whenever the driver is asked
 to enable IFF_PROMISC, and make sure to disable it when appropriate.
 
+Fixes: e94d44786693 ("ice: Implement filter sync, NDO operations and bump version")
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+---
+v2: added fixes
 ---
  drivers/net/ethernet/intel/ice/ice_main.c | 26 +++++++++++++++++++++++
  1 file changed, 26 insertions(+)
