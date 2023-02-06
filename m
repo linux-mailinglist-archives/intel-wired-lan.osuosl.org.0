@@ -1,104 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 932E668BB52
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 12:23:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E05E68BF9C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 15:10:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 291A181771;
-	Mon,  6 Feb 2023 11:23:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 291A181771
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2572340480;
+	Mon,  6 Feb 2023 14:10:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2572340480
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675682581;
-	bh=VoOQHwo3FQ0AAxmVYd7vvqZeu1bQhRkWsqXnJZjRkXY=;
+	s=default; t=1675692651;
+	bh=Zfod1OPxD+LgQuPiI2I2OPm+QAkpx59vIevUOfoOeyg=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nWMgrkKkpxo668h70kKFTW2G25CauE7Gh0Ci1+IrQqBaWhhcFJzWRS3CrHjDY0lUg
-	 +uISv13bnmeUU9ZP0kqKmu3qua96SsXeTFN1LPxTPtdg76XONKmNynXavApcfJCigg
-	 ijV+8jL4XPq7opK3aO756OB4EhHvEkT8fviW3qq5Znb/J4xigKXif9hSTvUlO8/rJy
-	 vpxt8qniw1CS6QsWCeLxNtGzkHYtj5IMdC6+6DGWKrVmkYAKrCbgqZOhasBHdvssD7
-	 tg3fQDDeZPecSTjwd/lkJ/MajcvuWybqYWT9+7fS5WiSHy4Hs5R528TYiAt9AoY2tR
-	 ykA965/kI5grg==
+	b=zTRQroI0kOS7p3Wc0A+4sZFtnwY23gC6z98840b2Y2p7mMTyRNjQhymRVT/7KTCQv
+	 GhhGGqsav4FD+Or4FN5nLmXRkuGpHDNU7Ayso6A3bknSOqMB4Kvl3JCPm8RWEdffm3
+	 KlgYMLzZy3XUsgzWK7lDL1LM6nb0J+P5GXu63NlLKGXx/vt3Yp6hTZM/mhseyYSONL
+	 YjH7vTIPsyuhBuUb3PJF7xlT8TS8jxC8QqDRGEMr5Dzbw2NVT5rB+IGu4L6AGr+slv
+	 IEebzgaxUfhcINzXW8qa5iS4FFP6Ns5gMUe+NhaLoeXRkkmCcWQSJO29AuhpVNCs3u
+	 OKfl+y2ATswDg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 17-zeOSE9lZD; Mon,  6 Feb 2023 11:23:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GwwvvSrvHPTO; Mon,  6 Feb 2023 14:10:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1BD9581492;
-	Mon,  6 Feb 2023 11:23:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1BD9581492
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0466C4045C;
+	Mon,  6 Feb 2023 14:10:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0466C4045C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3C1C01BF397
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 11:22:54 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 91FF01BF343
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 14:10:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 136F7414E4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 11:22:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 136F7414E4
+ by smtp2.osuosl.org (Postfix) with ESMTP id 777044045C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 14:10:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 777044045C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ezXa5BxhwyDV for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 11:22:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tkZK_IhI2fD7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 14:10:43 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CE0E6414EA
-Received: from mail-ed1-x536.google.com (mail-ed1-x536.google.com
- [IPv6:2a00:1450:4864:20::536])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CE0E6414EA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 11:22:51 +0000 (UTC)
-Received: by mail-ed1-x536.google.com with SMTP id v13so11234552eda.11
- for <intel-wired-lan@lists.osuosl.org>; Mon, 06 Feb 2023 03:22:51 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 34B8A4021C
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
+ [IPv6:2a00:1450:4864:20::532])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 34B8A4021C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 14:10:42 +0000 (UTC)
+Received: by mail-ed1-x532.google.com with SMTP id u21so11801622edv.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 06 Feb 2023 06:10:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=89mzhfpMwGo7PKR1/PatOl9b0MredJgLBcvqmQuIsos=;
- b=2FOvY3yzaFvLlimM7CVEKLtJuG2bHqAGVYWLEb2wIyW7Rw1Hw7iqO7r0BkQym7uKzS
- ZXI63ghhPUsKkUKPQOm5irXVu9GK24NQIixYM+TiH1BLP8hOzO39AQ+lYGgCGorLzFu2
- s0QqDzOz9VQRywY1q4WyGN+gS8s2U+1j1guY9uTmtpu8m0RTsaGFMJ0qs0OYRJ4K5gZb
- Hesf4Fe7WGg6v2DAsvX9ghyvfL5eV+eQT/wz7/hdwuZEu3ysodhFLBY+DFZHPqvGUETK
- PBmK7+k/9CEwn1JN0JzgJPAt16c/f2YOx+e3DyV5sn79nA9P0unJqqsj12WDpRoEHhJp
- i+Kg==
-X-Gm-Message-State: AO0yUKURcnlvHM2oyuk/hFVKB2REsMqIDKGEywt7L79G8iThvqctYFZt
- ojWfHfVXuz3oB02pgffZ2I0=
-X-Google-Smtp-Source: AK7set/3xMzW3G37FoGcKu9LIx1OTFzcgWrglooE72i3J92ka2tGMb31EwYb7vBfBeh6Db60p2vG7A==
-X-Received: by 2002:a50:c050:0:b0:4aa:b20b:c132 with SMTP id
- u16-20020a50c050000000b004aab20bc132mr4561406edd.5.1675682569735; 
- Mon, 06 Feb 2023 03:22:49 -0800 (PST)
+ bh=qjNCZihD+JyD+X/NqX2K/WinbFURiWlVJdPI5oFlnRU=;
+ b=gMmTAdw1moNGO0aya+R3NTVMyJXGu7PyoxTvDDSQJnM4ie6H1EZtpJk9R1skRCqXRE
+ QLeX/jO/9cuj0VNR6A+hsOHCqdQlhmvv+0yuQj+yvr3YcSH+o8s8pgve1L91SVHBcU7j
+ n8cunqpnuayi2vSK06LpRlJB+tiT40zHuv935+RIL0YedlkSq8Bhiy9AB1tB3pFd2clL
+ SjfJnLP6HpibqzUAC2sgU8WvHbXjT2a2I1+b1xRDyYr+NXyePP+C4zeUpx5/F/TFJ8MG
+ a0Emsu9tFV8I79bImVUSA2kkJTuJvsGRJR+1oPcir4FcIrVA41l4lttLYf3yKD3yHzlG
+ Cr1A==
+X-Gm-Message-State: AO0yUKVBrFgSZQw6ZlUvzcKUqyty6EjMeIgFZDhWiCaUiYZq4rrpJIrN
+ H6gaJDYU0QcNJs/O0NSLDak=
+X-Google-Smtp-Source: AK7set8hg1nL1fqQAN1ybZnXS9qFzQW0YjWs7NHJRoLnM5b8Z5L6iTX8HkkYeaqd45qCQI7MJwNwwQ==
+X-Received: by 2002:a50:bb27:0:b0:4aa:a172:6616 with SMTP id
+ y36-20020a50bb27000000b004aaa1726616mr8970529ede.24.1675692641057; 
+ Mon, 06 Feb 2023 06:10:41 -0800 (PST)
 Received: from skbuf ([188.26.185.183]) by smtp.gmail.com with ESMTPSA id
- g20-20020aa7c854000000b004a24b8b58cbsm4894984edt.16.2023.02.06.03.22.48
+ en14-20020a056402528e00b0049622a61f8fsm5137456edb.30.2023.02.06.06.10.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Feb 2023 03:22:49 -0800 (PST)
-Date: Mon, 6 Feb 2023 13:22:46 +0200
+ Mon, 06 Feb 2023 06:10:40 -0800 (PST)
+Date: Mon, 6 Feb 2023 16:10:38 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-To: Oleksij Rempel <o.rempel@pengutronix.de>
-Message-ID: <20230206112246.pazwn7r75oru5iq3@skbuf>
+To: Oleksij Rempel <o.rempel@pengutronix.de>,
+ Richard Cochran <richardcochran@gmail.com>
+Message-ID: <20230206141038.vp5pdkjyco6pyosl@skbuf>
 References: <20230201145845.2312060-1-o.rempel@pengutronix.de>
- <20230201145845.2312060-3-o.rempel@pengutronix.de>
- <20230204005418.7ryb4ihuzxlbs2nl@skbuf>
- <20230206104955.GE12366@pengutronix.de>
+ <20230204001332.dd4oq4nxqzmuhmb2@skbuf>
+ <20230206054713.GD12366@pengutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230206104955.GE12366@pengutronix.de>
+In-Reply-To: <20230206054713.GD12366@pengutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=89mzhfpMwGo7PKR1/PatOl9b0MredJgLBcvqmQuIsos=;
- b=R5l/rFg2hfJN4Wj1DzLjLgoSorhZnIBqmzAV9UiZxx+rMkTjYaVz/1AX9knJh5zwYT
- ARwxxRWjIb+olbuhgXbYCeqCwY+s8oiNOUobOrzkX+q9FeiqnM/wAxNoUtQDbz0fHxVh
- sbjZ5UFROAbisgEgy7CDHzx63jWdViVBkux1dCtjas9py/jgu78UieuRkLzj6QxwzAQL
- x1cLWPJ6Bq77/oBpS3IsF4+9xX1s+Ih+a7p+6nSO18p5Ev7La0SVer3Mgtj0UxVWp2F6
- nzecJrWXBf/YlkZkxqHDpgjFSCNX/ZUz0CmpE9MnK3baz3pEM+5NmxxpVnAxhqKCPRwJ
- f1hQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=qjNCZihD+JyD+X/NqX2K/WinbFURiWlVJdPI5oFlnRU=;
+ b=QQ2WJQq/56bvYDCjn/ZQVSCLF5CXnhAeDIv8hnHuLczMo1QRcvFrRQXT/TC0cxr3zp
+ k0iIpIo3Ia0CkBfayjEyxcJpjkzpmbafGFV77ldIH94AqOtchcdy1ipBzBTIYTkJUfcq
+ bGSpr/hDAHlgmBHMgmqPs5rCuMb1IRlQWLjRtgTOOd6qMSAdHgcqxCuRxx585IVRbYZU
+ jHELaRm5AeuD924dDzoffPxIzGV7doJcZe8Re4OnExtTmoKiYaxesUb0PDrv/aMrhLsk
+ MX68caGC9fD72wPYo3cJk4vkoZ0ESHaySCtVX8rrXEwr0Vh6BkH37Tw/swo3/hkJSAxi
+ JqVg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=R5l/rFg2
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 02/23] net: phy: add
- genphy_c45_read_eee_abilities() function
+ header.a=rsa-sha256 header.s=20210112 header.b=QQ2WJQq/
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 00/23] net: add EEE
+ support for KSZ9477 and AR8035 with i.MX6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,50 +125,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 06, 2023 at 11:49:55AM +0100, Oleksij Rempel wrote:
-> > Why stop at 10GBase-KR? Register 3.20 defines EEE abilities up to 100G
-> > (for speeds >10G, there seem to be 2 modes, "deep sleep" or "fast wake",
-> > with "deep sleep" being essentially equivalent to the only mode
-> > available for <=10G modes).
+On Mon, Feb 06, 2023 at 06:47:13AM +0100, Oleksij Rempel wrote:
+> On Sat, Feb 04, 2023 at 02:13:32AM +0200, Vladimir Oltean wrote:
+> > On Wed, Feb 01, 2023 at 03:58:22PM +0100, Oleksij Rempel wrote:
+> > > With this patch series we provide EEE control for KSZ9477 family of switches and
+> > > AR8035 with i.MX6 configuration.
+> > > According to my tests, on a system with KSZ8563 switch and 100Mbit idle link,
+> > > we consume 0,192W less power per port if EEE is enabled.
+> > 
+> > What is the code flow through the kernel with EEE? I wasn't able to find
+> > a good explanation about it.
+> > 
+> > Is it advertised by default, if supported? I guess phy_advertise_supported()
+> > does that.
 > 
-> Hm,
+> Ack.
 > 
-> If i take only deep sleep, missing modes are:
-> 3.20.13 100GBASE-R deep sleep
->        family of Physical Layer devices using 100GBASE-R encoding:
->        100000baseCR4_Full
->        100000baseKR4_Full
->        100000baseCR10_Full (missing)
->        100000baseSR4_Full
->        100000baseSR10_Full (missing)
->        100000baseLR4_ER4_Full
+> > But is that desirable? Doesn't EEE cause undesired latency for MAC-level
+> > PTP timestamping on an otherwise idle link?
 > 
-> 3.20.11 25GBASE-R deep sleep
->        family of Physical Layer devices using 25GBASE-R encoding:
->        25000baseCR_Full
->        25000baseER_Full (missing)
->        25000baseKR_Full
->        25000baseLR_Full (missing)
->        25000baseSR_Full
-> 
-> 3.20.9 40GBASE-R deep sleep
->        family of Physical Layer devices using 40GBASE-R encoding:
->        40000baseKR4_Full
->        40000baseCR4_Full
->        40000baseSR4_Full
->        40000baseLR4_Full
-> 
-> 3.20.7 40GBASE-T
->        40000baseT_Full (missing)
-> 
-> I have no experience with modes > 1Gbit. Do all of them correct? What
-> should we do with missing modes? Or may be it make sense to implement >
-> 10G modes separately?
+> Theoretically, MAC controls Low Power Idle states and even with some
+> "Wake" latency should be fully aware of actual ingress and egress time
+> stamps.
 
-Given the fact that UAPI needs an extension to cover supported/advertisement
-bits > 31, I think it makes sense to add these separately. I had not
-realized this when I commented on this patch. I don't think we want the
-kernel to advertise EEE for some link modes without user space seeing it.
+I'm not sure if this is also true with Atheros SmartEEE, where the PHY
+is the one who enters LPI mode and buffers packets until it wakes up?
+
+> 
+> Practically, right now I do not have such HW to confirm it. My project
+> is affected by EEE in different ways:
+
+Doesn't FEC support PTP?
+
+> - with EEE PTP has too much jitter
+> - without EEE, the devices consumes too much power in standby mode with
+>   WoL enabled. Even switching to 10BaseT less power as 100BaseTX with
+>   EEE would do.
+> 
+> My view is probably biased by my environment - PTP is relatively rare
+> use case. EEE saves power (0,2W+0,2W per link in my case). Summary power
+> saving of all devices is potentially equal to X amount of power plants. 
+> So, EEE should be enabled by default.
+
+I'm not contesting the value of EEE. Just wondering whether it's best
+for the kernel, rather than user space, to enable it by default.
+
+> 
+> Beside, flow control (enabled by default) affects PTP in some cases too.
+
+You are probably talking about the fact that flow control may affect
+end-to-end delay measurements (across switches in a LAN). Yes, but EEE
+(or at least SmartEEE) may affect peer-to-peer delay measurements, which
+I see as worse.
+
+> 
+> May be ptp4l should warn about this options? We should be able to detect
+> it from user space.
+
+This isn't necessarily a bad idea, even though it would end up
+renegotiating and losing the link.
+
+Maybe it would be good to drag Richard Cochran into the discussion too.
+After all he's the one who should agree what should and what shouldn't
+ptp4l be concerned with.
+
+> 
+> Regards,
+> Oleksij
+> -- 
+> Pengutronix e.K.                           |                             |
+> Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+> 31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
