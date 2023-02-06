@@ -1,65 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D12F68C352
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:30:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B09368C34D
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:30:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D26724049F;
-	Mon,  6 Feb 2023 16:30:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D26724049F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1D3EF60B3C;
+	Mon,  6 Feb 2023 16:30:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1D3EF60B3C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675701029;
-	bh=SAO6ikeXX9uOn2fjT2eg6bCyV1Bj6Pt7zGluzhVz8/o=;
+	s=default; t=1675701013;
+	bh=f/r016XKxpn8TE2Da3RRpsKqAz9GuwU2O3+QXAKNtvw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vAvoqQOtZXDgRCR8Ar7hfez7TtNjjz5qZPHN4fYFSxhSojo0d6RoUUTHU0snmy75+
-	 CUWGGeZhNoh+7Mm8akDD5oDLCUiApn8prd5GsGMt/ePUdl5UH/wmLGfzJHvYbFVTY8
-	 j/PQjSLSRm0Id38ptLZkMcVZumlnkYWNm/LiiEYkT/EItHkZryYMKd9HXoqIIeZS4a
-	 HZ8F08Vt9lCQt9Ssqm3F3N1oP2kP1tO0eupfoXV2YBKGaFTHWhN1JiXXmGuXVDaP8g
-	 KsiagaxbShPStedZ60iqGBZLwnphL4aynk9FvLNq/DSh0rOSESqpaKfKmW+PJJ8bvi
-	 WDq1fgXhqljaw==
+	b=oJMwPNUwCUbmEZX3C/3xu5f/Dp9bAmD8LYL3si9yc/sG0sc6V/7+ssZPH9Fv7rVeQ
+	 JauGkh16WxnkqhvXnujyy48K6oJPmq+papSlg7NLsWh3YSw31swoEwn1Uk7tvkcv9K
+	 kpatdzVKZ65TX4fG2jKJfi7OCtrobvz3ETAAuXVI+CQL4uVJqi9UCz8OmZGbsZMRHW
+	 oqar4meisGtB9CfdfUOFnQqS/R1BZYUMGLjNJz1IbScB/4GQRpH0VCfdBlYVkEHsBm
+	 OVoo2g6fikAycfh8jgTY3Spd8snGvKnhYBXukzjtDeNwvuL2nxwhE6Qzo870ZIRpIp
+	 BqP8ejHUFPYcA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xiF4Y0Kc9Vz7; Mon,  6 Feb 2023 16:30:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5rL2lxGva_Vz; Mon,  6 Feb 2023 16:30:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B5CB340492;
-	Mon,  6 Feb 2023 16:30:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B5CB340492
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2537060B2D;
+	Mon,  6 Feb 2023 16:30:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2537060B2D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2E4DB1BF955
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 120FA1BF2A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E5F3740459
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5F3740459
+ by smtp4.osuosl.org (Postfix) with ESMTP id EDAD740255
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EDAD740255
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tUntVBdQVYMw for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 13:51:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wNrJwGtmCwPB for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 13:51:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3AF1B40476
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2DFD740253
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
  [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3AF1B40476
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2DFD740253
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:43 +0000 (UTC)
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tY-0007IW-T0; Mon, 06 Feb 2023 14:50:56 +0100
+ id 1pP1tZ-0007J8-1m; Mon, 06 Feb 2023 14:50:57 +0100
 Received: from [2a0a:edc0:0:1101:1d::ac] (helo=dude04.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tW-0034eN-Lw; Mon, 06 Feb 2023 14:50:55 +0100
+ id 1pP1tW-0034eS-P6; Mon, 06 Feb 2023 14:50:55 +0100
 Received: from ore by dude04.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tV-00DaQp-7r; Mon, 06 Feb 2023 14:50:53 +0100
+ id 1pP1tV-00DaQy-Ap; Mon, 06 Feb 2023 14:50:53 +0100
 From: Oleksij Rempel <o.rempel@pengutronix.de>
 To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -69,8 +69,8 @@ To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Date: Mon,  6 Feb 2023 14:50:46 +0100
-Message-Id: <20230206135050.3237952-20-o.rempel@pengutronix.de>
+Date: Mon,  6 Feb 2023 14:50:47 +0100
+Message-Id: <20230206135050.3237952-21-o.rempel@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230206135050.3237952-1-o.rempel@pengutronix.de>
 References: <20230206135050.3237952-1-o.rempel@pengutronix.de>
@@ -81,7 +81,7 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
 X-Mailman-Approved-At: Mon, 06 Feb 2023 16:29:04 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v5 19/23] igc: replace EEE
+Subject: [Intel-wired-lan] [PATCH net-next v5 20/23] tg3: replace EEE
  ethtool helpers to linkmode variants
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -109,49 +109,41 @@ migration.
 
 Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/broadcom/tg3.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 5a26a7805ef8..012406f2e8cc 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1582,12 +1582,14 @@ static int igc_ethtool_get_eee(struct net_device *netdev,
- 			       struct ethtool_eee *edata)
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index 58747292521d..ba1913e88372 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -2339,6 +2339,8 @@ static void tg3_phy_apply_otp(struct tg3 *tp)
+ 
+ static void tg3_eee_pull_config(struct tg3 *tp, struct ethtool_eee *eee)
  {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
 +	__ETHTOOL_DECLARE_LINK_MODE_MASK(adv) = {};
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 eeer;
++	__ETHTOOL_DECLARE_LINK_MODE_MASK(lp) = {};
+ 	u32 val;
+ 	struct ethtool_eee *dest = &tp->eee;
  
--	if (hw->dev_spec._base.eee_enable)
--		edata->advertised =
--			mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
-+	if (hw->dev_spec._base.eee_enable) {
-+		mii_eee_cap1_mod_linkmode_t(adv, adapter->eee_advert);
-+		ethtool_convert_link_mode_to_legacy_u32(&edata->advertised, adv);
-+	}
+@@ -2361,13 +2363,16 @@ static void tg3_eee_pull_config(struct tg3 *tp, struct ethtool_eee *eee)
+ 	/* Pull lp advertised settings */
+ 	if (tg3_phy_cl45_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_LPABLE, &val))
+ 		return;
+-	dest->lp_advertised = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(lp, val);
++	ethtool_convert_link_mode_to_legacy_u32(&dest->lp_advertised, lp);
++
  
- 	*edata = adapter->eee;
- 	edata->supported = SUPPORTED_Autoneg;
-@@ -1623,6 +1625,7 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
- 			       struct ethtool_eee *edata)
- {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
-+	__ETHTOOL_DECLARE_LINK_MODE_MASK(adv) = {};
- 	struct igc_hw *hw = &adapter->hw;
- 	struct ethtool_eee eee_curr;
- 	s32 ret_val;
-@@ -1655,7 +1658,8 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
- 		return -EINVAL;
- 	}
+ 	/* Pull advertised and eee_enabled settings */
+ 	if (tg3_phy_cl45_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_ADV, &val))
+ 		return;
+ 	dest->eee_enabled = !!val;
+-	dest->advertised = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(adv, val);
++	ethtool_convert_link_mode_to_legacy_u32(&dest->advertised, adv);
  
--	adapter->eee_advert = ethtool_adv_to_mmd_eee_adv_t(edata->advertised);
-+	adv[0] = edata->advertised;
-+	adapter->eee_advert = linkmode_to_mii_eee_cap1_t(adv);
- 	if (hw->dev_spec._base.eee_enable != edata->eee_enabled) {
- 		hw->dev_spec._base.eee_enable = edata->eee_enabled;
- 		adapter->flags |= IGC_FLAG_EEE;
+ 	/* Pull tx_lpi_enabled */
+ 	val = tr32(TG3_CPMU_EEE_MODE);
 -- 
 2.30.2
 
