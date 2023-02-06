@@ -1,65 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA85F68C348
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:29:57 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82D1068C33D
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:29:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 76B5160B3C;
-	Mon,  6 Feb 2023 16:29:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 76B5160B3C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21AB6404A1;
+	Mon,  6 Feb 2023 16:29:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21AB6404A1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675700996;
-	bh=AhVONSP06vkVo1wMy9SYok1dbUWtADFT3htF2WkaJ2I=;
+	s=default; t=1675700971;
+	bh=/xX1/OskSj+59kftbWaRZIqv7+fR1tqKgnf5ix6PEmU=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=dPC0G8Knb+N0wjx6263H5Mr6W/v0Rf86hFTyU1NMpj/3HwfM3I8z+72czNta7sAGi
-	 rqYkwqj16mVaD3jVQZmC+0uTdKR2eBA9+jpJpkXpP+5kTPDsEYB4g8vtx5Vq3tpJBu
-	 sjW0nmWL65E21MaQj+ALUTJHz4yNSifQ4yi0meCCPtNvn2TxDPqi3vyHDB5aZZH0M6
-	 ayAj4q3RcPaOV/LIJvahsvMtJi3Zltua9jZ7D652/wtMaB6aDRwTztSRmy0w39VB5P
-	 IZFmp3z0R+yJ1tOAANASfO0QC1w0/UJl6epIo9uMr/EkbXpSnOTzgFVVJmm2SHjhRx
-	 ak69M9HKQnqMw==
+	b=Qa6eI81J9lFdRsAZoy/qe5SwNE7i07MMRsK9k7XnlrceicbDqcjhvkpEOY2k2bb3K
+	 YxJe7X0cxEj3rqol8ivr66AnJjHn+yD/wlIhiKk775u4XBLl1D5J2lKP0dIKgzsODz
+	 SV+apjlCNY84GBPtgOxtc8k+GwTzzWtp2NHMWTfWWyTuYIhNy62NxQfYmzUrok9rxj
+	 a/hY+Myo6/evU8vsRn8ws8jISTkVdGRgUZ0Nz2kR/I0owCflNw5L42Zg9TgibV6uSw
+	 e045CYXkQUV1UcDzr5im/vQrquZ2/Ylc2Gp3CIhoeMYX5i+a/UC2ZnrC+f+s0BFYPo
+	 KVAvjEnlvmfsg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LQ3ZjJeKT2Bx; Mon,  6 Feb 2023 16:29:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xZTb2RnlS4u9; Mon,  6 Feb 2023 16:29:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5E2DF60B2D;
-	Mon,  6 Feb 2023 16:29:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E2DF60B2D
+	by smtp2.osuosl.org (Postfix) with ESMTP id D1A1C4049E;
+	Mon,  6 Feb 2023 16:29:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D1A1C4049E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2C98A1BF2A7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B9E981BF2A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7D0FC40360
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D0FC40360
+ by smtp2.osuosl.org (Postfix) with ESMTP id 947514021C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 947514021C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fKWa2DlqWzkz for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 13:51:36 +0000 (UTC)
+ with ESMTP id JaCn6pIF-FPl for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 13:51:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C8FE2403B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B3B2F403B8
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
  [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C8FE2403B8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B3B2F403B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:33 +0000 (UTC)
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tX-0007EO-4g; Mon, 06 Feb 2023 14:50:55 +0100
+ id 1pP1tX-0007G2-TC; Mon, 06 Feb 2023 14:50:55 +0100
 Received: from [2a0a:edc0:0:1101:1d::ac] (helo=dude04.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tU-0034db-OC; Mon, 06 Feb 2023 14:50:53 +0100
+ id 1pP1tV-0034dl-LK; Mon, 06 Feb 2023 14:50:54 +0100
 Received: from ore by dude04.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tU-00DaPA-I0; Mon, 06 Feb 2023 14:50:52 +0100
+ id 1pP1tU-00DaPJ-KV; Mon, 06 Feb 2023 14:50:52 +0100
 From: Oleksij Rempel <o.rempel@pengutronix.de>
 To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -69,8 +69,8 @@ To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Date: Mon,  6 Feb 2023 14:50:37 +0100
-Message-Id: <20230206135050.3237952-11-o.rempel@pengutronix.de>
+Date: Mon,  6 Feb 2023 14:50:38 +0100
+Message-Id: <20230206135050.3237952-12-o.rempel@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230206135050.3237952-1-o.rempel@pengutronix.de>
 References: <20230206135050.3237952-1-o.rempel@pengutronix.de>
@@ -81,8 +81,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
 X-Mailman-Approved-At: Mon, 06 Feb 2023 16:29:04 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v5 10/23] net: phy: add driver
- specific get/set_eee support
+Subject: [Intel-wired-lan] [PATCH net-next v5 11/23] net: phy: at803x:
+ implement ethtool access to SmartEEE functionality
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,55 +103,183 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Not all PHYs can be handled by generic phy_ethtool_get/set_eee()
-functions. So, add driver specific get/set_eee support.
+If AR8035 PHY is used with a MAC without EEE support
+(iMX6, etc), then we need to process ethtool_eee::tx_lpi_timer and
+tx_lpi_enabled by the PHY driver. So, add get/set_eee support for this
+functionality.
 
 Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
 ---
- drivers/net/phy/phy.c | 6 ++++++
- include/linux/phy.h   | 5 +++++
- 2 files changed, 11 insertions(+)
+ drivers/net/phy/at803x.c | 109 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 104 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
-index 2f1041a7211e..c42df62df302 100644
---- a/drivers/net/phy/phy.c
-+++ b/drivers/net/phy/phy.c
-@@ -1520,6 +1520,9 @@ int phy_ethtool_get_eee(struct phy_device *phydev, struct ethtool_eee *data)
- 	if (!phydev->drv)
- 		return -EIO;
+diff --git a/drivers/net/phy/at803x.c b/drivers/net/phy/at803x.c
+index 22f4458274aa..9eb4439b0afc 100644
+--- a/drivers/net/phy/at803x.c
++++ b/drivers/net/phy/at803x.c
+@@ -166,8 +166,18 @@
  
-+	if (phydev->drv->get_eee)
-+		return phydev->drv->get_eee(phydev, data);
-+
- 	return genphy_c45_ethtool_get_eee(phydev, data);
- }
- EXPORT_SYMBOL(phy_ethtool_get_eee);
-@@ -1536,6 +1539,9 @@ int phy_ethtool_set_eee(struct phy_device *phydev, struct ethtool_eee *data)
- 	if (!phydev->drv)
- 		return -EIO;
+ #define AT803X_MMD3_SMARTEEE_CTL1		0x805b
+ #define AT803X_MMD3_SMARTEEE_CTL2		0x805c
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_LOW	GENMASK(15, 0)
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_15_0	GENMASK(15, 0)
+ #define AT803X_MMD3_SMARTEEE_CTL3		0x805d
+ #define AT803X_MMD3_SMARTEEE_CTL3_LPI_EN	BIT(8)
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_HIGH	GENMASK(7, 0)
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_23_16	GENMASK(23, 16)
++/* Tx LPI timer resolution */
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_RESOL_NS	163840
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_MAX_US	\
++	((GENMASK(23, 0) * AT803X_MMD3_SMARTEEE_LPI_TIME_RESOL_NS) / \
++	       NSEC_PER_USEC)
++#define AT803X_MMD3_SMARTEEE_LPI_TIME_DEF_US	335544
  
-+	if (phydev->drv->set_eee)
-+		return phydev->drv->set_eee(phydev, data);
-+
- 	return genphy_c45_ethtool_set_eee(phydev, data);
+ #define ATH9331_PHY_ID				0x004dd041
+ #define ATH8030_PHY_ID				0x004dd076
+@@ -951,17 +961,26 @@ static int at803x_get_features(struct phy_device *phydev)
+ 	return 0;
  }
- EXPORT_SYMBOL(phy_ethtool_set_eee);
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index ef0e3212f68e..b14ca4b06607 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -1051,6 +1051,11 @@ struct phy_driver {
- 	/** @get_plca_status: Return the current PLCA status info */
- 	int (*get_plca_status)(struct phy_device *dev,
- 			       struct phy_plca_status *plca_st);
+ 
+-static int at803x_smarteee_config(struct phy_device *phydev)
++static int at803x_smarteee_config(struct phy_device *phydev, bool enable,
++				  u32 tx_lpi_timer_us)
+ {
+ 	struct at803x_priv *priv = phydev->priv;
++	u64 tx_lpi_timer_raw;
++	u64 tx_lpi_timer_ns;
+ 	u16 mask = 0, val = 0;
+ 	int ret;
+ 
+-	if (priv->flags & AT803X_DISABLE_SMARTEEE)
++	if (priv->flags & AT803X_DISABLE_SMARTEEE || !enable)
+ 		return phy_modify_mmd(phydev, MDIO_MMD_PCS,
+ 				      AT803X_MMD3_SMARTEEE_CTL3,
+ 				      AT803X_MMD3_SMARTEEE_CTL3_LPI_EN, 0);
+ 
++	if (tx_lpi_timer_us > AT803X_MMD3_SMARTEEE_LPI_TIME_MAX_US) {
++		phydev_err(phydev, "Max LPI timer is %lu microsecs\n",
++			   AT803X_MMD3_SMARTEEE_LPI_TIME_MAX_US);
++		return -EINVAL;
++	}
 +
-+	/** @get_eee: Return the current EEE configuration */
-+	int (*get_eee)(struct phy_device *phydev, struct ethtool_eee *e);
-+	/** @set_eee: Set the EEE configuration */
-+	int (*set_eee)(struct phy_device *phydev, struct ethtool_eee *e);
- };
- #define to_phy_driver(d) container_of(to_mdio_common_driver(d),		\
- 				      struct phy_driver, mdiodrv)
+ 	if (priv->smarteee_lpi_tw_1g) {
+ 		mask |= 0xff00;
+ 		val |= priv->smarteee_lpi_tw_1g << 8;
+@@ -978,9 +997,27 @@ static int at803x_smarteee_config(struct phy_device *phydev)
+ 	if (ret)
+ 		return ret;
+ 
++	tx_lpi_timer_ns = tx_lpi_timer_us * NSEC_PER_USEC;
++	tx_lpi_timer_raw =
++		DIV_ROUND_CLOSEST_ULL(tx_lpi_timer_ns,
++				      AT803X_MMD3_SMARTEEE_LPI_TIME_RESOL_NS);
++	val = FIELD_PREP(AT803X_MMD3_SMARTEEE_LPI_TIME_LOW,
++			 FIELD_GET(AT803X_MMD3_SMARTEEE_LPI_TIME_15_0,
++				   tx_lpi_timer_raw));
++
++	ret = phy_write_mmd(phydev, MDIO_MMD_PCS, AT803X_MMD3_SMARTEEE_CTL2,
++			    val);
++	if (ret)
++		return ret;
++
++	val = AT803X_MMD3_SMARTEEE_CTL3_LPI_EN |
++		FIELD_PREP(AT803X_MMD3_SMARTEEE_LPI_TIME_HIGH,
++			   FIELD_GET(AT803X_MMD3_SMARTEEE_LPI_TIME_23_16,
++				     tx_lpi_timer_raw));
++
+ 	return phy_modify_mmd(phydev, MDIO_MMD_PCS, AT803X_MMD3_SMARTEEE_CTL3,
+-			      AT803X_MMD3_SMARTEEE_CTL3_LPI_EN,
+-			      AT803X_MMD3_SMARTEEE_CTL3_LPI_EN);
++			      AT803X_MMD3_SMARTEEE_CTL3_LPI_EN |
++			      AT803X_MMD3_SMARTEEE_LPI_TIME_HIGH, val);
+ }
+ 
+ static int at803x_clk_out_config(struct phy_device *phydev)
+@@ -1067,7 +1104,8 @@ static int at803x_config_init(struct phy_device *phydev)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	ret = at803x_smarteee_config(phydev);
++	ret = at803x_smarteee_config(phydev, true,
++				     AT803X_MMD3_SMARTEEE_LPI_TIME_DEF_US);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -1612,6 +1650,65 @@ static int at803x_cable_test_start(struct phy_device *phydev)
+ 	return 0;
+ }
+ 
++static int at803x_get_eee(struct phy_device *phydev, struct ethtool_eee *data)
++{
++	struct at803x_priv *priv = phydev->priv;
++	u32 tx_timer_raw;
++	u64 tx_timer_ns;
++	int ret;
++
++	/* If SmartEEE is not enabled, it is expected that tx_lpi_* fields
++	 * are processed by the MAC driver.
++	 */
++	if (priv->flags & AT803X_DISABLE_SMARTEEE)
++		return genphy_c45_ethtool_get_eee(phydev, data);
++
++	ret = phy_read_mmd(phydev, MDIO_MMD_PCS,
++			   AT803X_MMD3_SMARTEEE_CTL2);
++	tx_timer_raw = FIELD_PREP(AT803X_MMD3_SMARTEEE_LPI_TIME_15_0,
++				  FIELD_GET(AT803X_MMD3_SMARTEEE_LPI_TIME_LOW,
++					    ret));
++	if (ret < 0)
++		return ret;
++
++	ret = phy_read_mmd(phydev, MDIO_MMD_PCS,
++			   AT803X_MMD3_SMARTEEE_CTL3);
++	if (ret < 0)
++		return ret;
++
++	tx_timer_raw |= FIELD_PREP(AT803X_MMD3_SMARTEEE_LPI_TIME_23_16,
++				   FIELD_GET(AT803X_MMD3_SMARTEEE_LPI_TIME_HIGH,
++					     ret));
++	tx_timer_ns = tx_timer_raw * AT803X_MMD3_SMARTEEE_LPI_TIME_RESOL_NS;
++	data->tx_lpi_timer = DIV_ROUND_CLOSEST_ULL(tx_timer_ns, NSEC_PER_USEC);
++
++	data->tx_lpi_enabled = !!(ret & AT803X_MMD3_SMARTEEE_CTL3_LPI_EN);
++
++	return genphy_c45_ethtool_get_eee(phydev, data);
++}
++
++static int at803x_set_eee(struct phy_device *phydev, struct ethtool_eee *data)
++{
++	struct at803x_priv *priv = phydev->priv;
++	int ret;
++
++	/* If SmartEEE is not enabled, it is expected that tx_lpi_* fields
++	 * are processed by the MAC driver.
++	 */
++	if (priv->flags & AT803X_DISABLE_SMARTEEE)
++		return genphy_c45_ethtool_set_eee(phydev, data);
++
++	/* Changing Tx LPI on/off or Tx LPI timer settings
++	 * do not require link reset.
++	 */
++	ret = at803x_smarteee_config(phydev, data->tx_lpi_enabled,
++				     data->tx_lpi_timer);
++	if (ret)
++		return ret;
++
++	return genphy_c45_ethtool_set_eee(phydev, data);
++}
++
+ static int qca83xx_config_init(struct phy_device *phydev)
+ {
+ 	u8 switch_revision;
+@@ -2038,6 +2135,8 @@ static struct phy_driver at803x_driver[] = {
+ 	.set_tunable		= at803x_set_tunable,
+ 	.cable_test_start	= at803x_cable_test_start,
+ 	.cable_test_get_status	= at803x_cable_test_get_status,
++	.get_eee		= at803x_get_eee,
++	.set_eee		= at803x_set_eee,
+ }, {
+ 	/* Qualcomm Atheros AR8030 */
+ 	.phy_id			= ATH8030_PHY_ID,
 -- 
 2.30.2
 
