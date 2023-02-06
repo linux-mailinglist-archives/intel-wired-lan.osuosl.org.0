@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4AE368C71E
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 20:56:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAB8068C71F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 20:56:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DFD144030D;
-	Mon,  6 Feb 2023 19:56:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DFD144030D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6767981308;
+	Mon,  6 Feb 2023 19:56:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6767981308
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675713407;
-	bh=q4C3R0SUhN6gd7AbggrXx+HLn10iW8gY48d24Emzk78=;
+	s=default; t=1675713411;
+	bh=hc3TMLIXBz5cVRvcvgi3BUc1VW/g06A8ZWgNVc7zQhY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZBoGxAivUTKkflyhbRuCWUNZ0OGXjbGxRIREluPT8FqF0dpV06ikG7xmiOW7Q7ss1
-	 TeEiPPuyhwZ0ELPv0tmNCOQF4JhADn2sr01uPXfa3Udku8m2Lh899ModSdiP567H7y
-	 L8H7Z/By1I9Pdl6T0up5cHeApK8w6RfY1GT0s3tqCxrhU09pb0TeKgeLl0JoywzXIO
-	 3NIhQkY4KS+/5EqF/D9Wcm2x6Gttdxt8IBB7GCIv+vjg3ebylgRzJ5OJyqH+b0tqo3
-	 vNOJm4RdLVxA4qtJGk/GM0XH+cWqLvsklzST4LLJ+Do8uLRbbTS91qv+toBjOGr0bK
-	 Vcrdr+vRiEdDQ==
+	b=SYCGbCtFejNxjZ/8643zRdStM1P5o9JgXzvgV9QQjpZA9gtjTd3E8fJlcTmAvqLb2
+	 lNOnRPc/X8GG/nR8XK+kFNnVqPLjXIt6XwnuymSk2JXoO1vh3oJqybSC102l70bhIy
+	 rYIxUKuImzgDyE/67+4namZFuKq8/4NCqyUn0We2z/Iieb1r/hPIgPrNiAZ54DSUzT
+	 V4KUL80gZewujNH5bUvnoeP7Bc1OC1gKBTj2fVx22PmqQ6XCpTZq7wPYWTVxrW5nj7
+	 irHuYtOIJkOasPTwVUBN2RuowxWoS2aWneS8zce1d/2zx0/d7PfS4FJIODvgqMX/AB
+	 C3zKLnF1ob8wg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9oldaFDcWv3J; Mon,  6 Feb 2023 19:56:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p-InnmQz4E2M; Mon,  6 Feb 2023 19:56:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 760BF402EC;
-	Mon,  6 Feb 2023 19:56:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 760BF402EC
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B14A812F7;
+	Mon,  6 Feb 2023 19:56:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B14A812F7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ACCDD1BF2CD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:25:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D69ED1BF2CD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:37:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8D361416C6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:25:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D361416C6
+ by smtp4.osuosl.org (Postfix) with ESMTP id B890B40902
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:37:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B890B40902
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E3qaUQyrraBF for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 18:25:40 +0000 (UTC)
+ with ESMTP id 7p2UGBZghMOU for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 18:37:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 159024167E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A1CA44040B
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
  [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 159024167E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:25:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A1CA44040B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 18:37:24 +0000 (UTC)
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pP6BF-0004zk-9u; Mon, 06 Feb 2023 19:25:29 +0100
+ id 1pP6MU-0006UG-Vd; Mon, 06 Feb 2023 19:37:06 +0100
 Received: from ore by ptx.hi.pengutronix.de with local (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pP6BD-0000gG-2J; Mon, 06 Feb 2023 19:25:27 +0100
-Date: Mon, 6 Feb 2023 19:25:27 +0100
+ id 1pP6MU-00012i-CE; Mon, 06 Feb 2023 19:37:06 +0100
+Date: Mon, 6 Feb 2023 19:37:06 +0100
 From: Oleksij Rempel <o.rempel@pengutronix.de>
-To: Vladimir Oltean <olteanv@gmail.com>
-Message-ID: <20230206182527.GG12366@pengutronix.de>
+To: Andrew Lunn <andrew@lunn.ch>
+Message-ID: <20230206183706.GH12366@pengutronix.de>
 References: <20230201145845.2312060-1-o.rempel@pengutronix.de>
  <20230204001332.dd4oq4nxqzmuhmb2@skbuf>
  <20230206054713.GD12366@pengutronix.de>
- <20230206141038.vp5pdkjyco6pyosl@skbuf>
+ <20230206141038.vp5pdkjyco6pyosl@skbuf> <Y+EfSKRwQMRgEurL@lunn.ch>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230206141038.vp5pdkjyco6pyosl@skbuf>
+In-Reply-To: <Y+EfSKRwQMRgEurL@lunn.ch>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-Accept-Language: de,en
@@ -92,107 +92,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
- Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
+Cc: Woojung Huh <woojung.huh@microchip.com>, Arun.Ramadoss@microchip.com,
+ Florian Fainelli <f.fainelli@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
  Richard Cochran <richardcochran@gmail.com>, linux-kernel@vger.kernel.org,
  UNGLinuxDriver@microchip.com, Eric Dumazet <edumazet@google.com>,
- Wei Fang <wei.fang@nxp.com>, kernel@pengutronix.de,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
+ kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 06, 2023 at 04:10:38PM +0200, Vladimir Oltean wrote:
-> On Mon, Feb 06, 2023 at 06:47:13AM +0100, Oleksij Rempel wrote:
-> > On Sat, Feb 04, 2023 at 02:13:32AM +0200, Vladimir Oltean wrote:
-> > > On Wed, Feb 01, 2023 at 03:58:22PM +0100, Oleksij Rempel wrote:
-> > > > With this patch series we provide EEE control for KSZ9477 family of switches and
-> > > > AR8035 with i.MX6 configuration.
-> > > > According to my tests, on a system with KSZ8563 switch and 100Mbit idle link,
-> > > > we consume 0,192W less power per port if EEE is enabled.
-> > > 
-> > > What is the code flow through the kernel with EEE? I wasn't able to find
-> > > a good explanation about it.
-> > > 
-> > > Is it advertised by default, if supported? I guess phy_advertise_supported()
-> > > does that.
-> > 
-> > Ack.
-> > 
-> > > But is that desirable? Doesn't EEE cause undesired latency for MAC-level
-> > > PTP timestamping on an otherwise idle link?
-> > 
-> > Theoretically, MAC controls Low Power Idle states and even with some
-> > "Wake" latency should be fully aware of actual ingress and egress time
-> > stamps.
+On Mon, Feb 06, 2023 at 04:39:52PM +0100, Andrew Lunn wrote:
+> > > > What is the code flow through the kernel with EEE? I wasn't able to find
+> > > > a good explanation about it.
+> > > > 
+> > > > Is it advertised by default, if supported? I guess phy_advertise_supported()
+> > > > does that.
 > 
-> I'm not sure if this is also true with Atheros SmartEEE, where the PHY
-> is the one who enters LPI mode and buffers packets until it wakes up?
-
-Yes, you right. With SmartEEE without MAC assistance, PTP will be
-broken. At the same time, if MAC is PTP and EEE capable, the same PHY
-with SmartEEE disabled should work just fine.
-
-> > Practically, right now I do not have such HW to confirm it. My project
-> > is affected by EEE in different ways:
+> The old flow is poorly defined. If the MAC supports EEE, it should
+> call phy_init_eee(). That looks at the results of auto-neg and returns
+> if EEE has been negotiated or not.
 > 
-> Doesn't FEC support PTP?
-
-FEC do supports PTP, but do not support EEE on i.MX6/7 variants.
-
-> > - with EEE PTP has too much jitter
-> > - without EEE, the devices consumes too much power in standby mode with
-> >   WoL enabled. Even switching to 10BaseT less power as 100BaseTX with
-> >   EEE would do.
-> > 
-> > My view is probably biased by my environment - PTP is relatively rare
-> > use case. EEE saves power (0,2W+0,2W per link in my case). Summary power
-> > saving of all devices is potentially equal to X amount of power plants. 
-> > So, EEE should be enabled by default.
+> However, i'm not aware of any code which disables by default the
+> advertisement of EEE, or actually enables the negotiation of EEE. So
+> there are probably a number of PHYs which are EEE capable, connected
+> to a MAC driver which does not call phy_init_eee() and are advertising
+> EEE and negotiating EEE. There might also be a subset of that which
+> are actually doing EEE, despite not calling phy_init_eee().
 > 
-> I'm not contesting the value of EEE. Just wondering whether it's best
-> for the kernel, rather than user space, to enable it by default.
-
-I woulds say, at the end the switch will decide what functionality will
-be advertised. Other nodes should just tell what capabilities they
-support.
-
-> > 
-> > Beside, flow control (enabled by default) affects PTP in some cases too.
+> So the current code is not good, and there is a danger we introduce
+> power regressions as we sort this out.
 > 
-> You are probably talking about the fact that flow control may affect
-> end-to-end delay measurements (across switches in a LAN). Yes, but EEE
-> (or at least SmartEEE) may affect peer-to-peer delay measurements, which
-> I see as worse.
+> The current MAC/PHY API is pretty broken. We probably should be
+> handling this similar to pause. A MAC which supports pause should call
+> phy_support_asym_pause() or phy_support_sym_pause() which will cause
+> the PHY to advertise its supported Pause modes. So we might want to
+> add a phy_support_eee()? We then want the result of EEE negotiation
+> available in phydev for when the link_adjust() callback is called.
 
-I agree. User space should be notified some how about SmartEEE
-functionality. Especially if it is incompatible with some other
-functionality like PTP. It took me some time to understand why my PTP sync was
-so unstable. SmartEEE was just silently enabled by HW and no EEE related
-information was provided to user space.
+Good point.
 
-> > May be ptp4l should warn about this options? We should be able to detect
-> > it from user space.
-> 
-> This isn't necessarily a bad idea, even though it would end up
-> renegotiating and losing the link.
+SmartEEE will be probably a bit more challenging. If MAC do not
+advertise EEE support, SmartEEE can be enabled. But it would break PTP
+if SmartEEE is active. Except SmartEEE capable PHY implements own PTP
+support. In any case, user space will need extra information to
+identify potential issues.
 
-My idea was to inform the user, not actively do what ever is needed. It
-can conflict with other services or make system administrator scratch the
-head without understanding why things magically happen.
+> A quick look at a few MAC drivers seems to indicate many are getting
+> it wrong and don't actually wait for the result of the auto-neg....
 
-> Maybe it would be good to drag Richard Cochran into the discussion too.
-> After all he's the one who should agree what should and what shouldn't
-> ptp4l be concerned with.
+Some ethernet driver trying to do own EEE state detection, and doing
+false positive detection on not supported states - for example half
+duplex.
 
-ACK.
-
-Regards,
-Oleksij
 -- 
 Pengutronix e.K.                           |                             |
 Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
