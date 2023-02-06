@@ -1,81 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB0E068C1FB
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 16:43:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8FBE68C26F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:04:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 652FE60B24;
-	Mon,  6 Feb 2023 15:43:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 652FE60B24
+	by smtp3.osuosl.org (Postfix) with ESMTP id 680D460B2E;
+	Mon,  6 Feb 2023 16:04:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 680D460B2E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675698193;
-	bh=+sQ6e20c57zZrwDf7wuN+wV2f+hmEJkLmYHnyG2uUT0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ZYs6fnhTRBLHXY3r33CP6VlB2uB3/xeO4/4XEgCkjxyGdfvw4c0nBwnNFDIEnKWwZ
-	 PvT/z+CXuN3xwGmSt3Tp8qTPlG4z6g7VelETKTn84kyDXgR/y/31QrPgL0ul5NFcYx
-	 XnXrxcphWz13XE8tat9s5fxxVIRS6h5U+LqTDBqvg8r07MOh4i6AwJO9wLRoGZ2zQB
-	 aF8FTUdWbzqoH+43x9KJLri+cG4XsYumKqaYnAJGymUm5LHyD11va9VDv4j5gl3dXe
-	 HJKA1rUrUD9HEqWa48GkbVRzR0d5f6fk9QZ0/P27wYEhjzt63NmK7pFWMYHZwcQGpS
-	 mn+qBfqkVBADw==
+	s=default; t=1675699461;
+	bh=4svVZ7DuWzdd9CtOcYGXPj62DBSGIRmkXaBWRDSgqtI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=KWzmSLf64fORrRsG+kGqDMzAMwnLy8ULvhULnWIGhngJU82ktbsQnK0UlgIqSaJ6J
+	 Zn1+xkekNhDmrMW77ulI7McJSzwKeXWygGdPsNAqMlP+fRnbD2rU/ibP2vNQrBAhP5
+	 ti9eiJZ7D5hdjhmNV5ERKUDam2okFdyzz5funOklNhkdB6YFDsS+2IGGcfbsyeiNw/
+	 YeAEEsRbHdLq+rOjrA7swi13AERbQMmZHTZN7VN75FGY/JPIKmfyiMKCbs43ImtWwT
+	 QvIZde960T/gM3x+2IVSRLOQU47SYUZF+F+nWG2yJ44HYgkuacrAgxFwUVHaqGegU6
+	 5IapwjOdMWfGw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VLnLvovV6b3F; Mon,  6 Feb 2023 15:43:12 +0000 (UTC)
+	with ESMTP id v7X_UTFlt9nq; Mon,  6 Feb 2023 16:04:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6594160B1B;
-	Mon,  6 Feb 2023 15:43:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6594160B1B
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5EDD960B23;
+	Mon,  6 Feb 2023 16:04:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EDD960B23
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E4D191BF3E0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 15:43:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 127431BF3E0
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Feb 2023 16:04:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C6F3760A97
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 15:43:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6F3760A97
+ by smtp3.osuosl.org (Postfix) with ESMTP id DEACC60B23
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Feb 2023 16:04:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DEACC60B23
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dfU9UgfF-M4j for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 15:43:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C01060B1D
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1C01060B1D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 15:43:06 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1pP3dx-004DVG-AC; Mon, 06 Feb 2023 16:42:57 +0100
-Date: Mon, 6 Feb 2023 16:42:57 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Vladimir Oltean <olteanv@gmail.com>
-Message-ID: <Y+EgAZxcTVjYu8ew@lunn.ch>
-References: <20230201145845.2312060-1-o.rempel@pengutronix.de>
- <20230201145845.2312060-3-o.rempel@pengutronix.de>
- <20230204005418.7ryb4ihuzxlbs2nl@skbuf>
- <20230206104955.GE12366@pengutronix.de>
- <20230206112246.pazwn7r75oru5iq3@skbuf>
+ with ESMTP id 3RstA6MRmEL0 for <intel-wired-lan@osuosl.org>;
+ Mon,  6 Feb 2023 16:04:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ADE51605A6
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id ADE51605A6
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Feb 2023 16:04:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="330530943"
+X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="330530943"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2023 08:04:10 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="809181794"
+X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="809181794"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmsmga001.fm.intel.com with ESMTP; 06 Feb 2023 08:04:08 -0800
+Received: from baltimore.igk.intel.com (baltimore.igk.intel.com [10.102.21.1])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id F01E233E1E;
+ Mon,  6 Feb 2023 16:04:07 +0000 (GMT)
+From: Pawel Chmielewski <pawel.chmielewski@intel.com>
+To: netdev@vger.kernel.org
+Date: Mon,  6 Feb 2023 16:59:12 +0100
+Message-Id: <20230206155912.2032457-1-pawel.chmielewski@intel.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230206112246.pazwn7r75oru5iq3@skbuf>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=0yZyqa8cN33q2wshRD6t08U42KjC6hA9qW+HWH8pOwA=; b=Zp5zSX/BzQ9S2C0HJe9g5Oa3L0
- gWqgKEHPaXRtse9ZRtq+ppcmW3Evne7pxeAHPgZqA+sVTa6NZGjEouvfLMw8IjiyYTyLGrUlVX9YZ
- pZX5CWNXQj51GMjcW59sWAJsvkajI2KHB59VsvJmFAIj2n0wQrGkYvHgfRMegLNk+jwY=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675699454; x=1707235454;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=tsywCx2Puj3tEwthQozDScSn4JJ2oxvtOw+X9d6OgFw=;
+ b=KINrW4b8e5XahOvOkdP/z8HcOw62+KHRKzZS0Ghg3i6lMCD5mmV5tdtU
+ tGYSITAqgpE9k/MscjyeJtwLvjrZRf4gzb4b0uDFJZ0wiyxK75ZFk3cdh
+ zQdGvioiNr5MFec8cFFb6mYvkqDcI++GxHjy/asNXhAOIBG4843J1tkGV
+ fsq9p6qAS2bOG7mFTKHdDK0g/OH9JVzUOf68GNEZgoS8Wbs9I0omWuD11
+ lHNeWfvrrXETSwlT3HMcoi/eMyhZ7yi8yK99RVRpbNmAUabMTDMyXMtMj
+ Au3gTsBQ85OZTHVGmdEbury0VsL+cGIrYVOOKBlc9YaP9dHoYuBwrtHO0
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=Zp5zSX/B
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 02/23] net: phy: add
- genphy_c45_read_eee_abilities() function
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=KINrW4b8
+Subject: [Intel-wired-lan] [PATCH 1/1] ice: add support BIG TCP on IPv6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,70 +94,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Woojung Huh <woojung.huh@microchip.com>, Arun.Ramadoss@microchip.com,
- Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Vivien Didelot <vivien.didelot@gmail.com>,
- Oleksij Rempel <o.rempel@pengutronix.de>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
- kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, UNGLinuxDriver@microchip.com,
- "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
+Cc: intel-wired-lan@osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 06, 2023 at 01:22:46PM +0200, Vladimir Oltean wrote:
-> On Mon, Feb 06, 2023 at 11:49:55AM +0100, Oleksij Rempel wrote:
-> > > Why stop at 10GBase-KR? Register 3.20 defines EEE abilities up to 100G
-> > > (for speeds >10G, there seem to be 2 modes, "deep sleep" or "fast wake",
-> > > with "deep sleep" being essentially equivalent to the only mode
-> > > available for <=10G modes).
-> > 
-> > Hm,
-> > 
-> > If i take only deep sleep, missing modes are:
-> > 3.20.13 100GBASE-R deep sleep
-> >        family of Physical Layer devices using 100GBASE-R encoding:
-> >        100000baseCR4_Full
-> >        100000baseKR4_Full
-> >        100000baseCR10_Full (missing)
-> >        100000baseSR4_Full
-> >        100000baseSR10_Full (missing)
-> >        100000baseLR4_ER4_Full
-> > 
-> > 3.20.11 25GBASE-R deep sleep
-> >        family of Physical Layer devices using 25GBASE-R encoding:
-> >        25000baseCR_Full
-> >        25000baseER_Full (missing)
-> >        25000baseKR_Full
-> >        25000baseLR_Full (missing)
-> >        25000baseSR_Full
-> > 
-> > 3.20.9 40GBASE-R deep sleep
-> >        family of Physical Layer devices using 40GBASE-R encoding:
-> >        40000baseKR4_Full
-> >        40000baseCR4_Full
-> >        40000baseSR4_Full
-> >        40000baseLR4_Full
-> > 
-> > 3.20.7 40GBASE-T
-> >        40000baseT_Full (missing)
-> > 
-> > I have no experience with modes > 1Gbit. Do all of them correct? What
-> > should we do with missing modes? Or may be it make sense to implement >
-> > 10G modes separately?
-> 
-> Given the fact that UAPI needs an extension to cover supported/advertisement
-> bits > 31, I think it makes sense to add these separately. I had not
-> realized this when I commented on this patch. I don't think we want the
-> kernel to advertise EEE for some link modes without user space seeing it.
+This change enables sending BIG TCP packets on IPv6 in the ice driver using
+generic ipv6_hopopt_jumbo_remove helper for stripping HBH header.
 
-We also don't currently support any PHYs which do more than 10G. So i
-don't see any need for 40GB and above at the moment.
+Tested:
+netperf -t TCP_RR -H 2001:db8:0:f101::1  -- -r80000,80000 -O MIN_LATENCY,P90_LATENCY,P99_LATENCY,THROUGHPUT
 
-      Andrew
+Results varied from one setup to another, but in every case we got lower
+latencies and increased transactions rate.
+
+Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h      | 2 ++
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 ++
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 3 +++
+ 3 files changed, 7 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 3d26ff4122e0..c774fdd482cd 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -122,6 +122,8 @@
+ 
+ #define ICE_MAX_MTU	(ICE_AQ_SET_MAC_FRAME_SIZE_MAX - ICE_ETH_PKT_HDR_PAD)
+ 
++#define ICE_MAX_TSO_SIZE 131072
++
+ #define ICE_UP_TABLE_TRANSLATE(val, i) \
+ 		(((val) << ICE_AQ_VSI_UP_TABLE_UP##i##_S) & \
+ 		  ICE_AQ_VSI_UP_TABLE_UP##i##_M)
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 22b8ad058286..8c74a48ad0d3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3421,6 +3421,8 @@ static void ice_set_netdev_features(struct net_device *netdev)
+ 	 * be changed at runtime
+ 	 */
+ 	netdev->hw_features |= NETIF_F_RXFCS;
++
++	netif_set_tso_max_size(netdev, ICE_MAX_TSO_SIZE);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index ccf09c957a1c..bef927afb766 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -2297,6 +2297,9 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
+ 
+ 	ice_trace(xmit_frame_ring, tx_ring, skb);
+ 
++	if (unlikely(ipv6_hopopt_jumbo_remove(skb)))
++		goto out_drop;
++
+ 	count = ice_xmit_desc_count(skb);
+ 	if (ice_chk_linearize(skb, count)) {
+ 		if (__skb_linearize(skb))
+-- 
+2.37.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
