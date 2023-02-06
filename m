@@ -1,65 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E98368C340
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:29:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBE4168C358
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Feb 2023 17:30:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BA6241721;
-	Mon,  6 Feb 2023 16:29:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3BA6241721
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7ACF74049B;
+	Mon,  6 Feb 2023 16:30:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7ACF74049B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675700984;
-	bh=2rvE32Wulo8UUkCr2pASh3YTnYaAX8OwKu+XJupen0g=;
+	s=default; t=1675701046;
+	bh=pzhwqliRzowGEJ4gaEcoyftWqDhwQ9lqWIYzRJUuJsM=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=4pR3kue5rcJENs41feXDxiBQjYoeRWykwSozFn2A0dYwbUDslj+R7A5SjWPl3z/pw
-	 6T3xzkN5mmn7d563ubWPRklEshecujZjMCxUvKcSovMzm/I1gSX/EZcnuvg5LURLlE
-	 ebPPVyuYYjqQxQtAC75xHHb4/aHfjHJcvpPbA2Q9o4rNd5KdmlxKhjET/no/IUfORE
-	 m3jjm4RIlps32HZkQxEQdZkVb03vXaHGI52WEAfRM75oB/vXvUaVc5a8Arpun6X5Es
-	 G/tmxI/qv1R2SX4KrmG88+0l73AIZ+haIcYJf2m7Uaj+zvuOawDRU8pnRA7w/WyhJ2
-	 SpDl/CL5gHXtg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vcwLRHw1k6XT; Mon,  6 Feb 2023 16:29:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 03DFE416E3;
-	Mon,  6 Feb 2023 16:29:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03DFE416E3
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 336641BF951
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:37 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 012E54021C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 012E54021C
+	b=DYhz1QBAeTIsRikgmfK3ECB1/AVqjQO+sLsehFHIXYutzXL9EvoENlQvfX3eUV+Y3
+	 qvTZCnlh5tjeGKHEUqcHg4ZeFRXdph2NVJvqcmyrAbblqlwsMmvu684V57StzahAem
+	 Mk2rXFmBEr/A0XgAGW6DXvICdv551o2hTpLgbRzemPThvCCcDJzVrXkgX4iVTGF1Nq
+	 U3txm9KMvf/iRf7URFzP6+aYs+B4WlC/lyUyCF8Hjc6xErbmjzHyWtITogeZaMZIg+
+	 XhlmiDxL5ru1OlGP99pr1qzMulZ5+tuG0s9zLze97ITYj9GfSpExnrbZUSiEKjpFyL
+	 pZ82tl1ejRsFw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PPgw8JB5WnVs for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Feb 2023 13:51:35 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j929rFywY1b6; Mon,  6 Feb 2023 16:30:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7E9F8403AC;
+	Mon,  6 Feb 2023 16:30:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E9F8403AC
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 786A61BF951
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 36E26813A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 36E26813A4
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9xKbQJ9M6j4G for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Feb 2023 13:51:45 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51FBE40360
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 888B681349
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
  [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 51FBE40360
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:35 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 888B681349
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Feb 2023 13:51:45 +0000 (UTC)
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tX-0007EC-4c; Mon, 06 Feb 2023 14:50:55 +0100
+ id 1pP1tZ-0007Ko-Ev; Mon, 06 Feb 2023 14:50:57 +0100
 Received: from [2a0a:edc0:0:1101:1d::ac] (helo=dude04.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tU-0034dT-FJ; Mon, 06 Feb 2023 14:50:53 +0100
+ id 1pP1tX-0034ek-98; Mon, 06 Feb 2023 14:50:56 +0100
 Received: from ore by dude04.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <ore@pengutronix.de>)
- id 1pP1tU-00DaOa-8b; Mon, 06 Feb 2023 14:50:52 +0100
+ id 1pP1tU-00DaOj-AU; Mon, 06 Feb 2023 14:50:52 +0100
 From: Oleksij Rempel <o.rempel@pengutronix.de>
 To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -69,8 +69,8 @@ To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Date: Mon,  6 Feb 2023 14:50:33 +0100
-Message-Id: <20230206135050.3237952-7-o.rempel@pengutronix.de>
+Date: Mon,  6 Feb 2023 14:50:34 +0100
+Message-Id: <20230206135050.3237952-8-o.rempel@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230206135050.3237952-1-o.rempel@pengutronix.de>
 References: <20230206135050.3237952-1-o.rempel@pengutronix.de>
@@ -81,7 +81,7 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
 X-Mailman-Approved-At: Mon, 06 Feb 2023 16:29:04 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v5 06/23] net: phy: c22: migrate
+Subject: [Intel-wired-lan] [PATCH net-next v5 07/23] net: phy: c45: migrate
  to genphy_c45_write_eee_adv()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -113,27 +113,28 @@ If some driver will have a regression, related driver should provide own
 
 Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
 ---
- drivers/net/phy/phy_device.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/net/phy/phy-c45.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index 66a4e62009bb..8d927c5e3bf8 100644
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
-@@ -2231,7 +2231,10 @@ int __genphy_config_aneg(struct phy_device *phydev, bool changed)
- {
- 	int err;
+diff --git a/drivers/net/phy/phy-c45.c b/drivers/net/phy/phy-c45.c
+index 38361df1e669..23ecb12714b6 100644
+--- a/drivers/net/phy/phy-c45.c
++++ b/drivers/net/phy/phy-c45.c
+@@ -262,7 +262,11 @@ int genphy_c45_an_config_aneg(struct phy_device *phydev)
+ 	linkmode_and(phydev->advertising, phydev->advertising,
+ 		     phydev->supported);
  
--	if (genphy_config_eee_advert(phydev))
-+	err = genphy_c45_write_eee_adv(phydev, phydev->supported_eee);
-+	if (err < 0)
-+		return err;
-+	else if (err)
- 		changed = true;
+-	changed = genphy_config_eee_advert(phydev);
++	ret = genphy_c45_write_eee_adv(phydev, phydev->supported_eee);
++	if (ret < 0)
++		return ret;
++	else if (ret)
++		changed = true;
  
- 	err = genphy_setup_master_slave(phydev);
-@@ -2653,6 +2656,11 @@ int genphy_read_abilities(struct phy_device *phydev)
- 				 phydev->supported, val & ESTATUS_1000_XFULL);
+ 	if (genphy_c45_baset1_able(phydev))
+ 		return genphy_c45_baset1_an_config_aneg(phydev);
+@@ -968,6 +972,11 @@ int genphy_c45_pma_read_abilities(struct phy_device *phydev)
+ 		}
  	}
  
 +	/* This is optional functionality. If not supported, we may get an error
@@ -143,7 +144,7 @@ index 66a4e62009bb..8d927c5e3bf8 100644
 +
  	return 0;
  }
- EXPORT_SYMBOL(genphy_read_abilities);
+ EXPORT_SYMBOL_GPL(genphy_c45_pma_read_abilities);
 -- 
 2.30.2
 
