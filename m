@@ -1,111 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E965068DD7D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 17:00:44 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DEC568DD7E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 17:00:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6842781E61;
-	Tue,  7 Feb 2023 16:00:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6842781E61
+	by smtp2.osuosl.org (Postfix) with ESMTP id C9E3840A59;
+	Tue,  7 Feb 2023 16:00:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C9E3840A59
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675785643;
-	bh=7LzaYDtTsk7mKjahN0DOo9rPMIea90aCUtYlC8Dlv9k=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1675785646;
+	bh=0EbEgu4333OZKMeQZ2yaeccgakDkrzQEKqqq1kllz64=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=c3w7DAXJEVkOGGRpORnVQVUbpMDZw5+9osrQmybGWnjoLKtlVzHbRpkYsaNLBFWWj
-	 FHcpwmw47VMGVamtLHmtH5+WI716ijLTlp0PoU6Z8WjsUv51+lM8/ogetrF0XVefwM
-	 6MKAy25dnWlakb5AVgsPzdUaC+xNNFOulV+cmY8CXDl34qMWClfJFD99KUl1qDpP4V
-	 yO3LVwkSypa5bxahD+/1cB6hdMg3naqtoDJxLr+AOonPqYdFggL9X7U38uy6vv1ZeX
-	 Flo7TWOWvHHhWaDHMXnPIebLuv+zZVMofxk+qIUti0T5q1AnVkYGMvgP8ErHd7QzJ3
-	 fOg3BSmplvR0w==
+	b=JFdXkQwMJcoWTRIwN6PZXKoEanmKhuivDFM/hETSc14w7TvlYLBNaq2z0PNwjUHPY
+	 y+iDdhF3vNJBEHzvWHViMly8ySOQ7sMRDKvUfagBtfB+Cpi4PRKwoN6ForNbIfIqbN
+	 O6pn+kcuoUyy18asUOJxj5/Q9B7yzbGC3rA7jFMj4VSH8Kxo7YsfZhOrNl5zwZz2Hq
+	 LMwtRcjmT9jNjne1+Bbyi8+w4M54N1Mu7Wk+OUeUfcKdvk0CgxrGD4egjRYD7cIvKq
+	 RgQgSTHFwezq7+mCB2gP12gridn6QiOSbTP3porW3oZVxw0KuNF9nx8qdGcFV4VoT+
+	 +Pi2gv5bBXHLQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 26Q-uDw11gPa; Tue,  7 Feb 2023 16:00:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T8ih6dzqUBJW; Tue,  7 Feb 2023 16:00:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5221B81B14;
-	Tue,  7 Feb 2023 16:00:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5221B81B14
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4CDD140232;
+	Tue,  7 Feb 2023 16:00:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4CDD140232
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E05D1BF365
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 07:23:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7F01F1BF30B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 08:57:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5C5B781BB2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 07:23:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C5B781BB2
+ by smtp1.osuosl.org (Postfix) with ESMTP id 63F35819CC
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 08:57:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 63F35819CC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pPwJppiyL2p1 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Feb 2023 07:23:56 +0000 (UTC)
+ with ESMTP id g3-XasdPt84n for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Feb 2023 08:57:35 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 25CA781BB0
-Received: from mail-vk1-xa34.google.com (mail-vk1-xa34.google.com
- [IPv6:2607:f8b0:4864:20::a34])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 25CA781BB0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 07:23:56 +0000 (UTC)
-Received: by mail-vk1-xa34.google.com with SMTP id 6so7394547vko.7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 06 Feb 2023 23:23:56 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D90781A33
+Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
+ [IPv6:2a00:1450:4864:20::42d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7D90781A33
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 08:57:34 +0000 (UTC)
+Received: by mail-wr1-x42d.google.com with SMTP id o18so12801096wrj.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 07 Feb 2023 00:57:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=izq7L1Gf1BPPUcFpS07eoux163qcZ6MIxmY+naGQkfc=;
- b=pNLqjkvu+I1fWIwb5QrvwDlMs5OOC8pMpUfAroRNx448E/DlgDjGBlhKYPcCMM8smH
- 3HlTmNtKAN+/UPK5WtLDl4GdCENsAUqa7qpyPZaIGCUacKjZMaJRwA8Qgr8dPghVQUZi
- 9qTokDvwN0+rR8m9yK7Ossq5jFu+tgOuU/7PHAe6Cpv7+u8FQ2IhGVuv+7+BqSpaXhUO
- fNCyXYNPkj9WUvLZ1iurVkXAzPwOah3PbHUwqRlTjlqBeWOvftYJNcQr7JcaGZGf0NWq
- 5cD+kLUz/WlgQUeiIYlui9nbODEPrlakTm7aMTHG8Tvq9XiIpGvd+hTrvSKT77hTpZnH
- 75dQ==
-X-Gm-Message-State: AO0yUKW7rcmPQBDWcWUJ0W5Rse9koxniBWFX9OeB0HPy9VOCir96GTjF
- G4HwyNrEWp7oUaDIWxvD0p/kyJFYixinpESqI0s=
-X-Google-Smtp-Source: AK7set/pke5ncqrrXdx2ZACKTI7Te8bXpJGurLTM80RI9i29mU4sAb8NJtqkaFVFKv4poGRZXYAMfKZG8GvWH36yi+w=
-X-Received: by 2002:a1f:a283:0:b0:3e9:ff52:d343 with SMTP id
- l125-20020a1fa283000000b003e9ff52d343mr261662vke.17.1675754634590; Mon, 06
- Feb 2023 23:23:54 -0800 (PST)
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=AknOQvEIV0WXio2hCXN8+Z2n3kJiqU35uu3Fh7bZHDg=;
+ b=nac1bnCkvgE15kqlEKe/q7WkZ4U3Z7fHFaZE4qGblgnKomTlby7srtusRyNIBjNRcd
+ FN3u/mi83GSiSg+90u171TqdPF1kcs4WrLZFV7Tp/1ICFZdejdZq4VA+e36GUopDzkby
+ 65XySpZxsMELAvbHHPeckQbLipkoq6E4PKW55d4biRGuibbwmBAuqCD1Xt5DpcOtGw3b
+ CfnRSJZa7FaKeZL+1PbMGr83wRLETvVC9GR/GlikR4XOL8tVL84blwCoKNnTnSBU5chZ
+ Fu8Nzgyh8P7FL+M1prOjBK8ZoRvDtijlGo0z0rTIKnntogKAjbA7mZ9qj4bwdAdqWZCS
+ gtWg==
+X-Gm-Message-State: AO0yUKVRcC22iMwk7oTR8YCuftRMROwzhzZTbRq2v6gWtWd8P0Fm3BvK
+ yLNVKRBTV6W9MDwhItszPD4=
+X-Google-Smtp-Source: AK7set+tFIGbHifpvWC0m1/IDMFj/LSItcY4Np2XeorS7Z5WXKQZgVcou8tEUWdM8tTXerqQVqiuqA==
+X-Received: by 2002:a5d:6791:0:b0:2bf:c09a:c60e with SMTP id
+ v17-20020a5d6791000000b002bfc09ac60emr1730781wru.2.1675760252448; 
+ Tue, 07 Feb 2023 00:57:32 -0800 (PST)
+Received: from gmail.com ([81.168.73.77]) by smtp.gmail.com with ESMTPSA id
+ b2-20020a5d4d82000000b002c3ef7e74bdsm2899563wru.73.2023.02.07.00.57.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Feb 2023 00:57:32 -0800 (PST)
+Date: Tue, 7 Feb 2023 08:57:28 +0000
+From: Martin Habets <habetsm.xilinx@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Message-ID: <Y+ISeJFWIHnBEx5n@gmail.com>
+Mail-Followup-To: Lorenzo Bianconi <lorenzo@kernel.org>,
+ bpf@vger.kernel.org, netdev@vger.kernel.org, ast@kernel.org,
+ daniel@iogearbox.net, andrii@kernel.org, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com, edumazet@google.com,
+ hawk@kernel.org, toke@redhat.com, memxor@gmail.com,
+ alardam@gmail.com, saeedm@nvidia.com, anthony.l.nguyen@intel.com,
+ gospo@broadcom.com, vladimir.oltean@nxp.com, nbd@nbd.name,
+ john@phrozen.org, leon@kernel.org, simon.horman@corigine.com,
+ aelior@marvell.com, christophe.jaillet@wanadoo.fr,
+ ecree.xilinx@gmail.com, mst@redhat.com, bjorn@kernel.org,
+ magnus.karlsson@intel.com, maciej.fijalkowski@intel.com,
+ intel-wired-lan@lists.osuosl.org, lorenzo.bianconi@redhat.com,
+ martin.lau@linux.dev, sdf@google.com, gerhard@engleder-embedded.com
+References: <cover.1675245257.git.lorenzo@kernel.org>
+ <3eca9fafb308462f7edb1f58e451d59209aa07eb.1675245258.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-References: <CACsaVZL6ykbsVvEaV2Cv3r6m_jKt04MEUOw5=mSnR5AYTyE7qg@mail.gmail.com>
- <a752422c-4630-e53d-c9cd-cc9ed866f853@intel.com>
- <CACsaVZJXqkWGOQhe-GzRKJSfYn-3+dZTyHNZC97npCxzqr+R9g@mail.gmail.com>
- <CACsaVZLh0WFu1p7TUxE=RwucoTcZwsfQ5+ivorcbwCiRneeVFg@mail.gmail.com>
- <70eea40e-808c-e9ee-9aab-617ebe67d67c@intel.com>
- <CACsaVZ+icDmY15bqHuSR=KUBx0tbpDVXasuuYPjWg6aVAyy2hg@mail.gmail.com>
- <CACsaVZKr=B6xNrxM_J60+pg48onQf1jQJYNRDLwgESje_fN13Q@mail.gmail.com>
- <BYAPR11MB2727764EB94F647479731DAB96F39@BYAPR11MB2727.namprd11.prod.outlook.com>
- <CACsaVZJnKMcAtKdfgNKSzH8VNW-Lw5JN=+C+CDHcotpZJQCaeQ@mail.gmail.com>
- <BYAPR11MB2727B1CA9A658119793B2F7896F39@BYAPR11MB2727.namprd11.prod.outlook.com>
- <CACsaVZJTZon4VZ5X35o1avkKrskkcU_Qfru7FMTYHJ+cPeXpnw@mail.gmail.com>
- <CACsaVZ+1QhryQU+=pPHHrWLqfwO+17oP8zZu6Csizgqutj5a=A@mail.gmail.com>
- <43ea7fbf-9a2f-07a0-9633-b42271815a71@intel.com>
- <CACsaVZ+OXhp1+4t4YOm8+9fJcQOVVNckwVppzikkGBHUi-PFcw@mail.gmail.com>
- <f68c8c55-8fa1-fd34-5d3f-550bbd454ca1@intel.com>
-In-Reply-To: <f68c8c55-8fa1-fd34-5d3f-550bbd454ca1@intel.com>
-From: Kyle Sanderson <kyle.leet@gmail.com>
-Date: Mon, 6 Feb 2023 23:23:42 -0800
-Message-ID: <CACsaVZ+B+d+oLizddMyv==4id+5ArNf7Dq5QSKLfoHEDdM5NOA@mail.gmail.com>
-To: "Ruinskiy, Dima" <dima.ruinskiy@intel.com>
+Content-Disposition: inline
+In-Reply-To: <3eca9fafb308462f7edb1f58e451d59209aa07eb.1675245258.git.lorenzo@kernel.org>
 X-Mailman-Approved-At: Tue, 07 Feb 2023 16:00:35 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=izq7L1Gf1BPPUcFpS07eoux163qcZ6MIxmY+naGQkfc=;
- b=TcP9y0rF9XqbiI4rHG2Hi3ySg2LpFhdUr8flhvdplisXIYS/JaM7MVFzxT++lwefOt
- CPt7OAlPrz4biTJyYsHz+ScUWRPVIolzyT3lL/LgEts1gxFqlaQch1+Nd77EUD/x3K3Z
- 2RyTcWC35rLgHnAxd+49TyBxXbKEJA7uFRsFkUOqzhE5ds7P2X9s30UxmbyxPle+4H/N
- io8P6DvuS3GJ114shzYxizcx6TwL71YDY0dD26j91snlJREWzPK/ZaqhW8n6wFaT5FLp
- iMVcu33P0gRSjStw2xVXjWi4oRdTnkNBBKNuvQdz+wFZiT2sggCNsm393N2UJZgJON21
- +vBg==
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AknOQvEIV0WXio2hCXN8+Z2n3kJiqU35uu3Fh7bZHDg=;
+ b=YOoBBRmT007w3gj8wSuu8V0dyZconDSehDX2Q4KHpF42bXHks+vjgp+4ig+nVtJUBI
+ D+3Trh766MaPAbBQf38yvyug033kEA38OnbZCbK5Jk7GFWPvhajuEA0fq18D+H1aeYzz
+ YNMDZU8dNLWsqH3494yjDAePSzBJUJJ/KS/rx1RQrgYhNNsxkf67ivyHHHHqqo2Kd3sh
+ kiSV71bwCkM7ck7CMpOiMQhD4TeNL3q+y5qWScEYKc2zW4ysRpNkwuy52HJjv3wCIwi0
+ sv56YCBagFG3J+dLA8Nx77cq9WmnLf+1SFcZw1ey+gCAvEIXm6yOwt0E4rg6MIMrXZNI
+ kwbg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=TcP9y0rF
-Subject: Re: [Intel-wired-lan] igc: 5.10.146 Kernel BUG at 0xffffffff813ce19f
+ header.a=rsa-sha256 header.s=20210112 header.b=YOoBBRmT
+Subject: Re: [Intel-wired-lan] [PATCH v5 bpf-next 2/8] drivers: net: turn on
+ XDP features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,974 +124,895 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "MP, Sureshkumar" <sureshkumar.mp@intel.com>,
- Greg KH <gregkh@linuxfoundation.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>,
- Linux-Kernel <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "Torvalds,
- Linus" <torvalds@linux-foundation.org>, "Avivi, Amir" <amir.avivi@intel.com>
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, sdf@google.com,
+ gerhard@engleder-embedded.com, daniel@iogearbox.net, andrii@kernel.org,
+ intel-wired-lan@lists.osuosl.org, simon.horman@corigine.com, kuba@kernel.org,
+ pabeni@redhat.com, aelior@marvell.com, hawk@kernel.org,
+ christophe.jaillet@wanadoo.fr, memxor@gmail.com, john@phrozen.org,
+ bjorn@kernel.org, bpf@vger.kernel.org, magnus.karlsson@intel.com,
+ leon@kernel.org, netdev@vger.kernel.org, toke@redhat.com, martin.lau@linux.dev,
+ ecree.xilinx@gmail.com, alardam@gmail.com, gospo@broadcom.com,
+ saeedm@nvidia.com, davem@davemloft.net, nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-hi Intel IGC Maintainers,
+On Wed, Feb 01, 2023 at 11:24:18AM +0100, Lorenzo Bianconi wrote:
+> From: Marek Majtyka <alardam@gmail.com>
+> 
+> A summary of the flags being set for various drivers is given below.
+> Note that XDP_F_REDIRECT_TARGET and XDP_F_FRAG_TARGET are features
+> that can be turned off and on at runtime. This means that these flags
+> may be set and unset under RTNL lock protection by the driver. Hence,
+> READ_ONCE must be used by code loading the flag value.
+> 
+> Also, these flags are not used for synchronization against the availability
+> of XDP resources on a device. It is merely a hint, and hence the read
+> may race with the actual teardown of XDP resources on the device. This
+> may change in the future, e.g. operations taking a reference on the XDP
+> resources of the driver, and in turn inhibiting turning off this flag.
+> However, for now, it can only be used as a hint to check whether device
+> supports becoming a redirection target.
+> 
+> Turn 'hw-offload' feature flag on for:
+>  - netronome (nfp)
+>  - netdevsim.
+> 
+> Turn 'native' and 'zerocopy' features flags on for:
+>  - intel (i40e, ice, ixgbe, igc)
+>  - mellanox (mlx5).
+>  - stmmac
+>  - netronome (nfp)
+> 
+> Turn 'native' features flags on for:
+>  - amazon (ena)
+>  - broadcom (bnxt)
+>  - freescale (dpaa, dpaa2, enetc)
+>  - funeth
+>  - intel (igb)
+>  - marvell (mvneta, mvpp2, octeontx2)
+>  - mellanox (mlx4)
+>  - mtk_eth_soc
+>  - qlogic (qede)
+>  - sfc
+>  - socionext (netsec)
+>  - ti (cpsw)
+>  - tap
+>  - tsnep
+>  - veth
+>  - xen
+>  - virtio_net.
+> 
+> Turn 'basic' (tx, pass, aborted and drop) features flags on for:
+>  - netronome (nfp)
+>  - cavium (thunder)
+>  - hyperv.
+> 
+> Turn 'redirect_target' feature flag on for:
+>  - amanzon (ena)
+>  - broadcom (bnxt)
+>  - freescale (dpaa, dpaa2)
+>  - intel (i40e, ice, igb, ixgbe)
+>  - ti (cpsw)
+>  - marvell (mvneta, mvpp2)
+>  - sfc
+>  - socionext (netsec)
+>  - qlogic (qede)
+>  - mellanox (mlx5)
+>  - tap
+>  - veth
+>  - virtio_net
+>  - xen
+> 
+> Reviewed-by: Gerhard Engleder <gerhard@engleder-embedded.com>
+> Reviewed-by: Simon Horman <simon.horman@corigine.com>
+> Acked-by: Stanislav Fomichev <sdf@google.com>
+> Acked-by: Jakub Kicinski <kuba@kernel.org>
+> Co-developed-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> Signed-off-by: Kumar Kartikeya Dwivedi <memxor@gmail.com>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Marek Majtyka <alardam@gmail.com>
+> ---
+>  drivers/net/ethernet/amazon/ena/ena_netdev.c   |  4 ++++
+>  .../net/ethernet/aquantia/atlantic/aq_nic.c    |  5 +++++
+>  drivers/net/ethernet/broadcom/bnxt/bnxt.c      |  3 +++
+>  drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c  |  2 ++
+>  .../net/ethernet/cavium/thunder/nicvf_main.c   |  2 ++
+>  drivers/net/ethernet/engleder/tsnep_main.c     |  4 ++++
+>  drivers/net/ethernet/freescale/dpaa/dpaa_eth.c |  4 ++++
+>  .../net/ethernet/freescale/dpaa2/dpaa2-eth.c   |  4 ++++
+>  .../net/ethernet/freescale/enetc/enetc_pf.c    |  3 +++
+>  .../net/ethernet/fungible/funeth/funeth_main.c |  6 ++++++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c    | 10 ++++++++--
+>  drivers/net/ethernet/intel/ice/ice_main.c      |  5 +++++
+>  drivers/net/ethernet/intel/igb/igb_main.c      |  9 ++++++++-
+>  drivers/net/ethernet/intel/igc/igc_main.c      |  3 +++
+>  drivers/net/ethernet/intel/igc/igc_xdp.c       |  5 +++++
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c  |  6 ++++++
+>  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c  |  1 +
+>  drivers/net/ethernet/marvell/mvneta.c          |  3 +++
+>  .../net/ethernet/marvell/mvpp2/mvpp2_main.c    |  4 ++++
+>  .../ethernet/marvell/octeontx2/nic/otx2_pf.c   |  8 ++++++--
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c    |  6 ++++++
+>  drivers/net/ethernet/mellanox/mlx4/en_netdev.c |  2 ++
+>  .../net/ethernet/mellanox/mlx5/core/en_main.c  | 11 +++++++++++
+>  drivers/net/ethernet/microsoft/mana/mana_en.c  |  2 ++
+>  .../ethernet/netronome/nfp/nfp_net_common.c    |  5 +++++
+>  drivers/net/ethernet/qlogic/qede/qede_main.c   |  3 +++
+>  drivers/net/ethernet/sfc/efx.c                 |  4 ++++
+>  drivers/net/ethernet/sfc/siena/efx.c           |  4 ++++
+>  drivers/net/ethernet/socionext/netsec.c        |  3 +++
+>  .../net/ethernet/stmicro/stmmac/stmmac_main.c  |  2 ++
+>  drivers/net/ethernet/ti/cpsw.c                 |  4 ++++
+>  drivers/net/ethernet/ti/cpsw_new.c             |  4 ++++
+>  drivers/net/hyperv/netvsc_drv.c                |  2 ++
+>  drivers/net/netdevsim/netdev.c                 |  1 +
+>  drivers/net/tun.c                              |  5 +++++
+>  drivers/net/veth.c                             |  4 ++++
+>  drivers/net/virtio_net.c                       |  4 ++++
+>  drivers/net/xen-netfront.c                     |  2 ++
+>  include/net/xdp.h                              | 12 ++++++++++++
+>  net/core/xdp.c                                 | 18 ++++++++++++++++++
+>  40 files changed, 184 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> index e8ad5ea31aff..d3999db7c6a2 100644
+> --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> @@ -597,7 +597,9 @@ static int ena_xdp_set(struct net_device *netdev, struct netdev_bpf *bpf)
+>  				if (rc)
+>  					return rc;
+>  			}
+> +			xdp_features_set_redirect_target(netdev, false);
+>  		} else if (old_bpf_prog) {
+> +			xdp_features_clear_redirect_target(netdev);
+>  			rc = ena_destroy_and_free_all_xdp_queues(adapter);
+>  			if (rc)
+>  				return rc;
+> @@ -4103,6 +4105,8 @@ static void ena_set_conf_feat_params(struct ena_adapter *adapter,
+>  	/* Set offload features */
+>  	ena_set_dev_offloads(feat, netdev);
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+> +
+>  	adapter->max_mtu = feat->dev_attr.max_mtu;
+>  	netdev->max_mtu = adapter->max_mtu;
+>  	netdev->min_mtu = ENA_MIN_MTU;
+> diff --git a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> index 06508eebb585..d6d6d5d37ff3 100644
+> --- a/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> +++ b/drivers/net/ethernet/aquantia/atlantic/aq_nic.c
+> @@ -384,6 +384,11 @@ void aq_nic_ndev_init(struct aq_nic_s *self)
+>  	self->ndev->mtu = aq_nic_cfg->mtu - ETH_HLEN;
+>  	self->ndev->max_mtu = aq_hw_caps->mtu - ETH_FCS_LEN - ETH_HLEN;
+>  
+> +	self->ndev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				   NETDEV_XDP_ACT_REDIRECT |
+> +				   NETDEV_XDP_ACT_NDO_XMIT |
+> +				   NETDEV_XDP_ACT_RX_SG |
+> +				   NETDEV_XDP_ACT_NDO_XMIT_SG;
+>  }
+>  
+>  void aq_nic_set_tx_ring(struct aq_nic_s *self, unsigned int idx,
+> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> index 240a7e8a7652..a1b4356dfb6c 100644
+> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+> @@ -13686,6 +13686,9 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  
+>  	netif_set_tso_max_size(dev, GSO_MAX_SIZE);
+>  
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			    NETDEV_XDP_ACT_RX_SG;
+> +
+>  #ifdef CONFIG_BNXT_SRIOV
+>  	init_waitqueue_head(&bp->sriov_cfg_wait);
+>  #endif
+> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> index 36d5202c0aee..5843c93b1711 100644
+> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c
+> @@ -422,9 +422,11 @@ static int bnxt_xdp_set(struct bnxt *bp, struct bpf_prog *prog)
+>  
+>  	if (prog) {
+>  		bnxt_set_rx_skb_mode(bp, true);
+> +		xdp_features_set_redirect_target(dev, true);
+>  	} else {
+>  		int rx, tx;
+>  
+> +		xdp_features_clear_redirect_target(dev);
+>  		bnxt_set_rx_skb_mode(bp, false);
+>  		bnxt_get_max_rings(bp, &rx, &tx, true);
+>  		if (rx > 1) {
+> diff --git a/drivers/net/ethernet/cavium/thunder/nicvf_main.c b/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> index f2f95493ec89..8b25313c7f6b 100644
+> --- a/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> +++ b/drivers/net/ethernet/cavium/thunder/nicvf_main.c
+> @@ -2218,6 +2218,8 @@ static int nicvf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  	netdev->netdev_ops = &nicvf_netdev_ops;
+>  	netdev->watchdog_timeo = NICVF_TX_TIMEOUT;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC;
+> +
+>  	/* MTU range: 64 - 9200 */
+>  	netdev->min_mtu = NIC_HW_MIN_FRS;
+>  	netdev->max_mtu = NIC_HW_MAX_FRS;
+> diff --git a/drivers/net/ethernet/engleder/tsnep_main.c b/drivers/net/ethernet/engleder/tsnep_main.c
+> index c3cf427a9409..6982aaa928b5 100644
+> --- a/drivers/net/ethernet/engleder/tsnep_main.c
+> +++ b/drivers/net/ethernet/engleder/tsnep_main.c
+> @@ -1926,6 +1926,10 @@ static int tsnep_probe(struct platform_device *pdev)
+>  	netdev->features = NETIF_F_SG;
+>  	netdev->hw_features = netdev->features | NETIF_F_LOOPBACK;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_NDO_XMIT |
+> +			       NETDEV_XDP_ACT_NDO_XMIT_SG;
+> +
+>  	/* carrier off reporting is important to ethtool even BEFORE open */
+>  	netif_carrier_off(netdev);
+>  
+> diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> index 027fff9f7db0..9318a2554056 100644
+> --- a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> +++ b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
+> @@ -244,6 +244,10 @@ static int dpaa_netdev_init(struct net_device *net_dev,
+>  	net_dev->features |= net_dev->hw_features;
+>  	net_dev->vlan_features = net_dev->features;
+>  
+> +	net_dev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				NETDEV_XDP_ACT_REDIRECT |
+> +				NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  	if (is_valid_ether_addr(mac_addr)) {
+>  		memcpy(net_dev->perm_addr, mac_addr, net_dev->addr_len);
+>  		eth_hw_addr_set(net_dev, mac_addr);
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> index 2e79d18fc3c7..746ccfde7255 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-eth.c
+> @@ -4596,6 +4596,10 @@ static int dpaa2_eth_netdev_init(struct net_device *net_dev)
+>  			    NETIF_F_LLTX | NETIF_F_HW_TC | NETIF_F_TSO;
+>  	net_dev->gso_max_segs = DPAA2_ETH_ENQUEUE_MAX_FDS;
+>  	net_dev->hw_features = net_dev->features;
+> +	net_dev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				NETDEV_XDP_ACT_REDIRECT |
+> +				NETDEV_XDP_ACT_XSK_ZEROCOPY |
+> +				NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	if (priv->dpni_attrs.vlan_filter_entries)
+>  		net_dev->hw_features |= NETIF_F_HW_VLAN_CTAG_FILTER;
+> diff --git a/drivers/net/ethernet/freescale/enetc/enetc_pf.c b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> index 7facc7d5261e..6b54071d4ecc 100644
+> --- a/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> +++ b/drivers/net/ethernet/freescale/enetc/enetc_pf.c
+> @@ -807,6 +807,9 @@ static void enetc_pf_netdev_setup(struct enetc_si *si, struct net_device *ndev,
+>  		ndev->hw_features |= NETIF_F_RXHASH;
+>  
+>  	ndev->priv_flags |= IFF_UNICAST_FLT;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_RX_SG |
+> +			     NETDEV_XDP_ACT_NDO_XMIT_SG;
+>  
+>  	if (si->hw_features & ENETC_SI_F_PSFP && !enetc_psfp_enable(priv)) {
+>  		priv->active_offloads |= ENETC_F_QCI;
+> diff --git a/drivers/net/ethernet/fungible/funeth/funeth_main.c b/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> index b4cce30e526a..df86770731ad 100644
+> --- a/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> +++ b/drivers/net/ethernet/fungible/funeth/funeth_main.c
+> @@ -1160,6 +1160,11 @@ static int fun_xdp_setup(struct net_device *dev, struct netdev_bpf *xdp)
+>  			WRITE_ONCE(rxqs[i]->xdp_prog, prog);
+>  	}
+>  
+> +	if (prog)
+> +		xdp_features_set_redirect_target(dev, true);
+> +	else
+> +		xdp_features_clear_redirect_target(dev);
+> +
+>  	dev->max_mtu = prog ? XDP_MAX_MTU : FUN_MAX_MTU;
+>  	old_prog = xchg(&fp->xdp_prog, prog);
+>  	if (old_prog)
+> @@ -1765,6 +1770,7 @@ static int fun_create_netdev(struct fun_ethdev *ed, unsigned int portid)
+>  	netdev->vlan_features = netdev->features & VLAN_FEAT;
+>  	netdev->mpls_features = netdev->vlan_features;
+>  	netdev->hw_enc_features = netdev->hw_features;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+>  
+>  	netdev->min_mtu = ETH_MIN_MTU;
+>  	netdev->max_mtu = FUN_MAX_MTU;
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 53d0083e35da..8a79cc18c428 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -13339,9 +13339,11 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+>  	old_prog = xchg(&vsi->xdp_prog, prog);
+>  
+>  	if (need_reset) {
+> -		if (!prog)
+> +		if (!prog) {
+> +			xdp_features_clear_redirect_target(vsi->netdev);
+>  			/* Wait until ndo_xsk_wakeup completes. */
+>  			synchronize_rcu();
+> +		}
+>  		i40e_reset_and_rebuild(pf, true, true);
+>  	}
+>  
+> @@ -13362,11 +13364,13 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
+>  	/* Kick start the NAPI context if there is an AF_XDP socket open
+>  	 * on that queue id. This so that receiving will start.
+>  	 */
+> -	if (need_reset && prog)
+> +	if (need_reset && prog) {
+>  		for (i = 0; i < vsi->num_queue_pairs; i++)
+>  			if (vsi->xdp_rings[i]->xsk_pool)
+>  				(void)i40e_xsk_wakeup(vsi->netdev, i,
+>  						      XDP_WAKEUP_RX);
+> +		xdp_features_set_redirect_target(vsi->netdev, true);
+> +	}
+>  
+>  	return 0;
+>  }
+> @@ -13783,6 +13787,8 @@ static int i40e_config_netdev(struct i40e_vsi *vsi)
+>  	netdev->hw_enc_features |= NETIF_F_TSO_MANGLEID;
+>  
+>  	netdev->features &= ~NETIF_F_HW_TC;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
+>  
+>  	if (vsi->type == I40E_VSI_MAIN) {
+>  		SET_NETDEV_DEV(netdev, &pf->pdev->dev);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index fce86e8ff834..26b09e4ed0c8 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -22,6 +22,7 @@
+>  #include "ice_eswitch.h"
+>  #include "ice_tc_lib.h"
+>  #include "ice_vsi_vlan_ops.h"
+> +#include <net/xdp_sock_drv.h>
+>  
+>  #define DRV_SUMMARY	"Intel(R) Ethernet Connection E800 Series Linux Driver"
+>  static const char ice_driver_string[] = DRV_SUMMARY;
+> @@ -2899,11 +2900,13 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
+>  			if (xdp_ring_err)
+>  				NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
+>  		}
+> +		xdp_features_set_redirect_target(vsi->netdev, false);
+>  		/* reallocate Rx queues that are used for zero-copy */
+>  		xdp_ring_err = ice_realloc_zc_buf(vsi, true);
+>  		if (xdp_ring_err)
+>  			NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Rx resources failed");
+>  	} else if (ice_is_xdp_ena_vsi(vsi) && !prog) {
+> +		xdp_features_clear_redirect_target(vsi->netdev);
+>  		xdp_ring_err = ice_destroy_xdp_rings(vsi);
+>  		if (xdp_ring_err)
+>  			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Tx resources failed");
+> @@ -3446,6 +3449,8 @@ static int ice_cfg_netdev(struct ice_vsi *vsi)
+>  	np->vsi = vsi;
+>  
+>  	ice_set_netdev_features(netdev);
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
+>  
+>  	ice_set_ops(netdev);
+>  
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 3c0c35ecea10..0e11a082f7a1 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -2871,8 +2871,14 @@ static int igb_xdp_setup(struct net_device *dev, struct netdev_bpf *bpf)
+>  		bpf_prog_put(old_prog);
+>  
+>  	/* bpf is just replaced, RXQ and MTU are already setup */
+> -	if (!need_reset)
+> +	if (!need_reset) {
+>  		return 0;
+> +	} else {
+> +		if (prog)
+> +			xdp_features_set_redirect_target(dev, true);
+> +		else
+> +			xdp_features_clear_redirect_target(dev);
+> +	}
+>  
+>  	if (running)
+>  		igb_open(dev);
+> @@ -3317,6 +3323,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  	netdev->priv_flags |= IFF_SUPP_NOFCS;
+>  
+>  	netdev->priv_flags |= IFF_UNICAST_FLT;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+>  
+>  	/* MTU range: 68 - 9216 */
+>  	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index e86b15efaeb8..8b572cd2c350 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -6533,6 +6533,9 @@ static int igc_probe(struct pci_dev *pdev,
+>  	netdev->mpls_features |= NETIF_F_HW_CSUM;
+>  	netdev->hw_enc_features |= netdev->vlan_features;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
+> +
+>  	/* MTU range: 68 - 9216 */
+>  	netdev->min_mtu = ETH_MIN_MTU;
+>  	netdev->max_mtu = MAX_STD_JUMBO_FRAME_SIZE;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> index aeeb34e64610..e27af72aada8 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_xdp.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> @@ -29,6 +29,11 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
+>  	if (old_prog)
+>  		bpf_prog_put(old_prog);
+>  
+> +	if (prog)
+> +		xdp_features_set_redirect_target(dev, true);
+> +	else
+> +		xdp_features_clear_redirect_target(dev);
+> +
+>  	if (if_running)
+>  		igc_open(dev);
+>  
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 43a44c1e1576..af4c12b6059f 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -10301,6 +10301,8 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+>  
+>  		if (err)
+>  			return -EINVAL;
+> +		if (!prog)
+> +			xdp_features_clear_redirect_target(dev);
+>  	} else {
+>  		for (i = 0; i < adapter->num_rx_queues; i++) {
+>  			WRITE_ONCE(adapter->rx_ring[i]->xdp_prog,
+> @@ -10321,6 +10323,7 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+>  			if (adapter->xdp_ring[i]->xsk_pool)
+>  				(void)ixgbe_xsk_wakeup(adapter->netdev, i,
+>  						       XDP_WAKEUP_RX);
+> +		xdp_features_set_redirect_target(dev, true);
+>  	}
+>  
+>  	return 0;
+> @@ -11018,6 +11021,9 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  	netdev->priv_flags |= IFF_UNICAST_FLT;
+>  	netdev->priv_flags |= IFF_SUPP_NOFCS;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
+> +
+>  	/* MTU range: 68 - 9710 */
+>  	netdev->min_mtu = ETH_MIN_MTU;
+>  	netdev->max_mtu = IXGBE_MAX_JUMBO_FRAME_SIZE - (ETH_HLEN + ETH_FCS_LEN);
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> index ea0a230c1153..a44e4bd56142 100644
+> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> @@ -4634,6 +4634,7 @@ static int ixgbevf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  			    NETIF_F_HW_VLAN_CTAG_TX;
+>  
+>  	netdev->priv_flags |= IFF_UNICAST_FLT;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC;
+>  
+>  	/* MTU range: 68 - 1504 or 9710 */
+>  	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/drivers/net/ethernet/marvell/mvneta.c b/drivers/net/ethernet/marvell/mvneta.c
+> index f8925cac61e4..dc2989103a77 100644
+> --- a/drivers/net/ethernet/marvell/mvneta.c
+> +++ b/drivers/net/ethernet/marvell/mvneta.c
+> @@ -5612,6 +5612,9 @@ static int mvneta_probe(struct platform_device *pdev)
+>  			NETIF_F_TSO | NETIF_F_RXCSUM;
+>  	dev->hw_features |= dev->features;
+>  	dev->vlan_features |= dev->features;
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			    NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_RX_SG |
+> +			    NETDEV_XDP_ACT_NDO_XMIT_SG;
+>  	dev->priv_flags |= IFF_LIVE_ADDR_CHANGE;
+>  	netif_set_tso_max_segs(dev, MVNETA_MAX_TSO_SEGS);
+>  
+> diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> index 4da45c5abba5..9b4ecbe4f36d 100644
+> --- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> +++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+> @@ -6866,6 +6866,10 @@ static int mvpp2_port_probe(struct platform_device *pdev,
+>  
+>  	dev->vlan_features |= features;
+>  	netif_set_tso_max_segs(dev, MVPP2_MAX_TSO_SEGS);
+> +
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			    NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  	dev->priv_flags |= IFF_UNICAST_FLT;
+>  
+>  	/* MTU range: 68 - 9704 */
+> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> index c1ea60bc2630..179433d0a54a 100644
+> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
+> @@ -2512,10 +2512,13 @@ static int otx2_xdp_setup(struct otx2_nic *pf, struct bpf_prog *prog)
+>  	/* Network stack and XDP shared same rx queues.
+>  	 * Use separate tx queues for XDP and network stack.
+>  	 */
+> -	if (pf->xdp_prog)
+> +	if (pf->xdp_prog) {
+>  		pf->hw.xdp_queues = pf->hw.rx_queues;
+> -	else
+> +		xdp_features_set_redirect_target(dev, false);
+> +	} else {
+>  		pf->hw.xdp_queues = 0;
+> +		xdp_features_clear_redirect_target(dev);
+> +	}
+>  
+>  	pf->hw.tot_tx_queues += pf->hw.xdp_queues;
+>  
+> @@ -2878,6 +2881,7 @@ static int otx2_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>  	netdev->watchdog_timeo = OTX2_TX_TIMEOUT;
+>  
+>  	netdev->netdev_ops = &otx2_netdev_ops;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+>  
+>  	netdev->min_mtu = OTX2_MIN_MTU;
+>  	netdev->max_mtu = otx2_get_max_mtu(pf);
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 801deac58bf7..ac54b6f2bb5c 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -4447,6 +4447,12 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+>  		register_netdevice_notifier(&mac->device_notifier);
+>  	}
+>  
+> +	if (mtk_page_pool_enabled(eth))
+> +		eth->netdev[id]->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +						NETDEV_XDP_ACT_REDIRECT |
+> +						NETDEV_XDP_ACT_NDO_XMIT |
+> +						NETDEV_XDP_ACT_NDO_XMIT_SG;
+> +
+>  	return 0;
+>  
+>  free_netdev:
+> diff --git a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> index af4c4858f397..e11bc0ac880e 100644
+> --- a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> +++ b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+> @@ -3416,6 +3416,8 @@ int mlx4_en_init_netdev(struct mlx4_en_dev *mdev, int port,
+>  		priv->rss_hash_fn = ETH_RSS_HASH_TOP;
+>  	}
+>  
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+> +
+>  	/* MTU range: 68 - hw-specific max */
+>  	dev->min_mtu = ETH_MIN_MTU;
+>  	dev->max_mtu = priv->max_mtu;
+> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> index 0e87432ec6f1..e4996ef04d86 100644
+> --- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+> @@ -4780,6 +4780,13 @@ static int mlx5e_xdp_set(struct net_device *netdev, struct bpf_prog *prog)
+>  	if (old_prog)
+>  		bpf_prog_put(old_prog);
+>  
+> +	if (reset) {
+> +		if (prog)
+> +			xdp_features_set_redirect_target(netdev, true);
+> +		else
+> +			xdp_features_clear_redirect_target(netdev);
+> +	}
+> +
+>  	if (!test_bit(MLX5E_STATE_OPENED, &priv->state) || reset)
+>  		goto unlock;
+>  
+> @@ -5175,6 +5182,10 @@ static void mlx5e_build_nic_netdev(struct net_device *netdev)
+>  	netdev->features         |= NETIF_F_HIGHDMA;
+>  	netdev->features         |= NETIF_F_HW_VLAN_STAG_FILTER;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY |
+> +			       NETDEV_XDP_ACT_RX_SG;
+> +
+>  	netdev->priv_flags       |= IFF_UNICAST_FLT;
+>  
+>  	netif_set_tso_max_size(netdev, GSO_MAX_SIZE);
+> diff --git a/drivers/net/ethernet/microsoft/mana/mana_en.c b/drivers/net/ethernet/microsoft/mana/mana_en.c
+> index 2f6a048dee90..6120f2b6684f 100644
+> --- a/drivers/net/ethernet/microsoft/mana/mana_en.c
+> +++ b/drivers/net/ethernet/microsoft/mana/mana_en.c
+> @@ -2160,6 +2160,8 @@ static int mana_probe_port(struct mana_context *ac, int port_idx,
+>  	ndev->hw_features |= NETIF_F_RXHASH;
+>  	ndev->features = ndev->hw_features;
+>  	ndev->vlan_features = 0;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	err = register_netdev(ndev);
+>  	if (err) {
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> index 18fc9971f1c8..e4825d885560 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+> @@ -2529,10 +2529,15 @@ static void nfp_net_netdev_init(struct nfp_net *nn)
+>  	netdev->features &= ~NETIF_F_HW_VLAN_STAG_RX;
+>  	nn->dp.ctrl &= ~NFP_NET_CFG_CTRL_RXQINQ;
+>  
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC;
+> +	if (nn->app && nn->app->type->id == NFP_APP_BPF_NIC)
+> +		netdev->xdp_features |= NETDEV_XDP_ACT_HW_OFFLOAD;
+> +
+>  	/* Finalise the netdev setup */
+>  	switch (nn->dp.ops->version) {
+>  	case NFP_NFD_VER_NFD3:
+>  		netdev->netdev_ops = &nfp_nfd3_netdev_ops;
+> +		netdev->xdp_features |= NETDEV_XDP_ACT_XSK_ZEROCOPY;
+>  		break;
+>  	case NFP_NFD_VER_NFDK:
+>  		netdev->netdev_ops = &nfp_nfdk_netdev_ops;
+> diff --git a/drivers/net/ethernet/qlogic/qede/qede_main.c b/drivers/net/ethernet/qlogic/qede/qede_main.c
+> index 953f304b8588..b6d999927e86 100644
+> --- a/drivers/net/ethernet/qlogic/qede/qede_main.c
+> +++ b/drivers/net/ethernet/qlogic/qede/qede_main.c
+> @@ -892,6 +892,9 @@ static void qede_init_ndev(struct qede_dev *edev)
+>  
+>  	ndev->hw_features = hw_features;
+>  
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  	/* MTU range: 46 - 9600 */
+>  	ndev->min_mtu = ETH_ZLEN - ETH_HLEN;
+>  	ndev->max_mtu = QEDE_MAX_JUMBO_PACKET_SIZE;
+> diff --git a/drivers/net/ethernet/sfc/efx.c b/drivers/net/ethernet/sfc/efx.c
+> index 0556542d7a6b..18ff8d8cff42 100644
+> --- a/drivers/net/ethernet/sfc/efx.c
+> +++ b/drivers/net/ethernet/sfc/efx.c
+> @@ -1078,6 +1078,10 @@ static int efx_pci_probe(struct pci_dev *pci_dev,
+>  
+>  	pci_info(pci_dev, "Solarflare NIC detected\n");
+>  
+> +	efx->net_dev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				     NETDEV_XDP_ACT_REDIRECT |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
 
-Is there any update on this? Can I help test a patch?
+Put this in efx_pci_probe_post_io() please, that is where all the other
+basic netdev features are initialised.
 
-Kyle.
+>  	if (!efx->type->is_vf)
+>  		efx_probe_vpd_strings(efx);
+>  
+> diff --git a/drivers/net/ethernet/sfc/siena/efx.c b/drivers/net/ethernet/sfc/siena/efx.c
+> index 60e5b7c8ccf9..a6ef21845224 100644
+> --- a/drivers/net/ethernet/sfc/siena/efx.c
+> +++ b/drivers/net/ethernet/sfc/siena/efx.c
+> @@ -1048,6 +1048,10 @@ static int efx_pci_probe(struct pci_dev *pci_dev,
+>  
+>  	pci_info(pci_dev, "Solarflare NIC detected\n");
+>  
+> +	efx->net_dev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				     NETDEV_XDP_ACT_REDIRECT |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
 
-On Sun, Jan 15, 2023 at 1:13 AM Ruinskiy, Dima <dima.ruinskiy@intel.com> wrote:
->
-> On 13/01/2023 22:33, Kyle Sanderson wrote:
-> >> On Wednesday, January 11, 2023, Ruinskiy, Dima <dima.ruinskiy@intel.com> wrote:
-> >> We are going to try to get a reliable reproduction internally, based on the instructions provided, to simplify triage and debug.
-> >
-> > Understood, thank you Dima.
-> >
-> >> Could you share the exact model of the retail appliance you are using, just in case I can locate someone here with a similar device?
-> >
-> > https://www.servethehome.com/intel-celeron-j6413-powered-6x-i226-2-5gbe-fanless-firewall-review/
-> >
-> > These boxes (like the protectli) boxes all ship with BSD. I know the
-> > IPS cases are private - were you able to connect with the group
-> > working on that? (Sureshkumar cc'd was in the to: field.)
-> >
-> > Kyle.
->
-> We are indeed working with Sureshkumar.
->
-> Thank you for sharing the box details. I hope we can achieve quality
-> debug with the existing platforms we have in house, but it is always
-> good to know what else is out there. :)
->
-> --Dima
->
-> >
-> > On Wednesday, January 11, 2023, Ruinskiy, Dima <dima.ruinskiy@intel.com> wrote:
-> >> Hey Kyle,
-> >>
-> >> We are going to try to get a reliable reproduction internally, based on the instructions provided, to simplify triage and debug.
-> >>
-> >> Could you share the exact model of the retail appliance you are using, just in case I can locate someone here with a similar device?
-> >>
-> >> Thanks,
-> >> Dima.
-> >>
-> >> On 04/01/2023 7:23, Kyle Sanderson wrote:
-> >>>
-> >>> hi Intel IGC Maintainers,
-> >>>
-> >>> I know a very kind gentleman from a large networking vendor reached
-> >>> out last week to a group on here saying they're seeing something
-> >>> eerily similar to this failure (and that they have an IPS case open).
-> >>>
-> >>> Is there any additional information that you're looking for that I can
-> >>> help with? One of my colleagues just had his UFS install corrupt
-> >>> itself, so having non-panic'ing Linux support is still very much-so
-> >>> desired.
-> >>>
-> >>> Kyle.
-> >>>
-> >>> On Thu, Dec 29, 2022 at 4:49 PM Kyle Sanderson <kyle.leet@gmail.com> wrote:
-> >>>>
-> >>>> On Thu, Dec 29, 2022 at 1:21 AM MP, Sureshkumar
-> >>>> <sureshkumar.mp@intel.com> wrote:
-> >>>>>
-> >>>>> 1. Can you share the HW and SW BKC used to do this experiment?
-> >>>>
-> >>>> This is a retail appliance. They ship with FBSD out of the box
-> >>>> (OPNsense / pfSense), or a Windows OS. I'm hoping we can fix Linux
-> >>>> support for these.
-> >>>> The NICs are embedded on the board, as to the bus they're using it's
-> >>>> beyond me as an end consumer (basically an stb with a console port).
-> >>>>
-> >>>>> 2. How about this test results with i225 AIC on these kernels?
-> >>>>
-> >>>> I don't have this controller, but now that we know the steps to
-> >>>> reproduce (enable IP Forwarding and send traffic until buffering
-> >>>> happens) it should be reproducible by anyone.
-> >>>>
-> >>>>> 3. Did you test this with kernel.org igc driver code on these kernels? If yes, share the results.
-> >>>>
-> >>>> Yes. Kernel panic'd (from the BUG_ON) on 5.10, 5.15, and 6.0.
-> >>>>
-> >>>>> 4. How did you connect 6x i226 AICs in the EHL board?
-> >>>>
-> >>>> Port 1 and Port 6. Using the ports independently doesn't seem to
-> >>>> reproduce the issue, and is only when traffic is forwarded between
-> >>>> them.
-> >>>>
-> >>>>> 5. Did you test with 1x i226 AIC on these kernels in EHL board?
-> >>>>
-> >>>> Yes, the problem does not persist. 2 NICs need to be used (on igc),
-> >>>> with traffic passing between them.
-> >>>>
-> >>>> K.
-> >>>>
-> >>>> On Thu, Dec 29, 2022 at 1:21 AM MP, Sureshkumar
-> >>>> <sureshkumar.mp@intel.com> wrote:
-> >>>>>
-> >>>>> Ok K.
-> >>>>>
-> >>>>> 1. Can you share the HW and SW BKC used to do this experiment?
-> >>>>> 2. How about this test results with i225 AIC on these kernels?
-> >>>>> 3. Did you test this with kernel.org igc driver code on these kernels? If yes, share the results.
-> >>>>> 4. How did you connect 6x i226 AICs in the EHL board?
-> >>>>> 5. Did you test with 1x i226 AIC on these kernels in EHL board?
-> >>>>>
-> >>>>> Best Regards,
-> >>>>> Sureshkumar
-> >>>>>
-> >>>>> -----Original Message-----
-> >>>>> From: Kyle Sanderson <kyle.leet@gmail.com>
-> >>>>> Sent: Thursday, December 29, 2022 9:58 AM
-> >>>>> To: MP, Sureshkumar <sureshkumar.mp@intel.com>
-> >>>>> Cc: Neftin, Sasha <sasha.neftin@intel.com>; intel-wired-lan@lists.osuosl.org; Ruinskiy, Dima <dima.ruinskiy@intel.com>; Avivi, Amir <amir.avivi@intel.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Linux-Kernel <linux-kernel@vger.kernel.org>; Torvalds, Linus <torvalds@linux-foundation.org>; netdev@vger.kernel.org; Lifshits, Vitaly <vitaly.lifshits@intel.com>; naamax.meir <naamax.meir@linux.intel.com>; Greg KH <gregkh@linuxfoundation.org>
-> >>>>> Subject: Re: [Intel-wired-lan] igc: 5.10.146 Kernel BUG at 0xffffffff813ce19f
-> >>>>>
-> >>>>> On Wed, Dec 28, 2022 at 8:12 PM MP, Sureshkumar <sureshkumar.mp@intel.com> wrote:
-> >>>>>>
-> >>>>>> Not getting the exact issue here. Can someone explain what is the issue with i226 in EHL platform?
-> >>>>>>
-> >>>>>> Best Regards,
-> >>>>>> Sureshkumar
-> >>>>>
-> >>>>> hi Sureshkumar,
-> >>>>>
-> >>>>> If you forward traffic on an igc kmod NIC the kernel will panic with the call traces provided from the three different kernel versions.
-> >>>>> This happens when there's traffic passing through the nic, and the cable is removed. When the cable is returned to the device, the panic occurs. Each controller (as far as I'm aware) is exposed as a standalone device.
-> >>>>>
-> >>>>> This has never worked on 5.10, 5.15, or 6.0 kernels. There is no device support on 5.4, so I can't test that far back unfortunately. We also don't know if it's exclusive to this phy, or if it's impacting other devices using the kmod.
-> >>>>>
-> >>>>> K.
-> >>>>>
-> >>>>> On Wed, Dec 28, 2022 at 8:12 PM MP, Sureshkumar <sureshkumar.mp@intel.com> wrote:
-> >>>>>>
-> >>>>>> Not getting the exact issue here. Can someone explain what is the issue with i226 in EHL platform?
-> >>>>>>
-> >>>>>> Best Regards,
-> >>>>>> Sureshkumar
-> >>>>>>
-> >>>>>> -----Original Message-----
-> >>>>>> From: Kyle Sanderson <kyle.leet@gmail.com>
-> >>>>>> Sent: Thursday, December 29, 2022 8:18 AM
-> >>>>>> To: Neftin, Sasha <sasha.neftin@intel.com>;
-> >>>>>> intel-wired-lan@lists.osuosl.org; Ruinskiy, Dima
-> >>>>>> <dima.ruinskiy@intel.com>; Avivi, Amir <amir.avivi@intel.com>
-> >>>>>> Cc: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> >>>>>> <anthony.l.nguyen@intel.com>; MP, Sureshkumar
-> >>>>>> <sureshkumar.mp@intel.com>; Linux-Kernel
-> >>>>>> <linux-kernel@vger.kernel.org>; Torvalds, Linus
-> >>>>>> <torvalds@linux-foundation.org>; netdev@vger.kernel.org; Lifshits,
-> >>>>>> Vitaly <vitaly.lifshits@intel.com>; naamax.meir
-> >>>>>> <naamax.meir@linux.intel.com>; Greg KH <gregkh@linuxfoundation.org>;
-> >>>>>> therbert@google.com
-> >>>>>> Subject: Re: [Intel-wired-lan] igc: 5.10.146 Kernel BUG at
-> >>>>>> 0xffffffff813ce19f
-> >>>>>>
-> >>>>>> On Wed, Dec 28, 2022 at 2:34 PM Kyle Sanderson <kyle.leet@gmail.com> wrote:
-> >>>>>>>
-> >>>>>>> On Tue, Dec 27, 2022 at 11:07 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
-> >>>>>>>>
-> >>>>>>>> 1. Does the problem reproduce on the latest upstream kernel?(worth
-> >>>>>>>> to check)
-> >>>>>>>
-> >>>>>>> The box is a bit problematic to try things on (it's all done through
-> >>>>>>> the COM port).
-> >>>>>>> Will try spinning an image for retail and seeing if it continues (I
-> >>>>>>> did go back and look at the commits, post 5.15 the diffs looked like
-> >>>>>>> cleanups).
-> >>>>>>
-> >>>>>> Yes, this is reproducible on 6.0.7. What I noticed though is, when the device is operating in client mode (Fedora), I cannot reproduce the panic.
-> >>>>>>
-> >>>>>> The only way I was able to reproduce the panic was forwarding traffic from another device, which was confirmed by turning on IP forwarding and passing traffic from another asset (using the same fast.com test, this time on Fedora). Which means (I believe), this should be reproducible on Dual / Quad port NICs using igc as long as they're routing traffic through the same card.
-> >>>>>>
-> >>>>>> Based on the relatively recent availability of the phy, and most
-> >>>>>> (noted) consumers using this single port onboard from a OEM it would be more difficult to encounter in the wild.
-> >>>>>>
-> >>>>>> Thank you very much for your help so far.
-> >>>>>>
-> >>>>>> K.
-> >>>>>>
-> >>>>>> On Wed, Dec 28, 2022 at 2:34 PM Kyle Sanderson <kyle.leet@gmail.com> wrote:
-> >>>>>>>
-> >>>>>>> On Tue, Dec 27, 2022 at 11:07 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
-> >>>>>>>>
-> >>>>>>>> I do not know if it is an SW problem.
-> >>>>>>>
-> >>>>>>> I'm not experiencing the same failure on FBSD, so it's quite likely
-> >>>>>>> software (somewhere :-)).
-> >>>>>>>
-> >>>>>>>> 1. Does the problem reproduce on the latest upstream kernel?(worth
-> >>>>>>>> to check)
-> >>>>>>>
-> >>>>>>> The box is a bit problematic to try things on (it's all done through
-> >>>>>>> the COM port).
-> >>>>>>> Will try spinning an image for retail and seeing if it continues (I
-> >>>>>>> did go back and look at the commits, post 5.15 the diffs looked like
-> >>>>>>> cleanups).
-> >>>>>>>
-> >>>>>>>> 2. I do not see this crash in our labs. I haven't a platform with
-> >>>>>>>> six
-> >>>>>>>> i226 parts.(Trying find folks who work with this platform.)
-> >>>>>>>
-> >>>>>>> I'm not sure this (port count) is related. How I'm reproducing the
-> >>>>>>> issue now is simply going to fast.com on a client with aggressive
-> >>>>>>> settings (20cons minimum, 90s test duration), waiting until it
-> >>>>>>> starts to buffer (latency increases, so packets are being deferred /
-> >>>>>>> scheduled) then removing the ethernet cable from the laptop. The
-> >>>>>>> device seems to operate indefinitely in this mode, and only when the
-> >>>>>>> link comes back up, and traffic is sent again, do these kernels panic.
-> >>>>>>> It doesn't seem to matter how long the cable is disconnected for
-> >>>>>>> (another trace below where I did it for 30s). If the resets are fast
-> >>>>>>> enough, the failure seemed less likely to occur.
-> >>>>>>>
-> >>>>>>>> 3. I am working on a patch to address .ndo_tx_timeout support.
-> >>>>>>>> (pass the reset task to netdev while the link disconnected during
-> >>>>>>>> traffic, under testing). It could be related and worth checking -
-> >>>>>>>> please, let me know if you want to apply on your platform (against upstream).
-> >>>>>>>> Reach us (Dima, Amir, and me) directly off the list.
-> >>>>>>>
-> >>>>>>> Will try pending outcome on #1, If you can target the latest stable
-> >>>>>>> RC that you're aware of that would be appreciated.
-> >>>>>>>
-> >>>>>>> [   62.209563] igc 0000:01:00.0 eth0: Reset adapter
-> >>>>>>> [   89.560331] kernel BUG at lib/dynamic_queue_limits.c:27!
-> >>>>>>> [   89.567779] invalid opcode: 0000 [#1] SMP NOPTI
-> >>>>>>> [   89.573229] CPU: 3 PID: 0 Comm: swapper/3 Not tainted 5.15.85-amd64-vyos #1
-> >>>>>>> [   89.579989] ------------[ cut here ]------------
-> >>>>>>> [   89.581328] Hardware name: Default string Default string/Default
-> >>>>>>> string, BIOS 5.19 09/23/2022
-> >>>>>>> [   89.581329] RIP: 0010:dql_completed+0x12f/0x140
-> >>>>>>> [   89.586873] kernel BUG at lib/dynamic_queue_limits.c:27!
-> >>>>>>> [   89.596627] Code: cf c9 00 48 89 57 58 e9 54 ff ff ff 85 ed 40 0f
-> >>>>>>> 95 c5 41 39 d8 41 0f 95 c0 44 84 c5 74 04 85 d2 78 0a 44 89 d8 e9 36
-> >>>>>>> ff ff ff <0f> 0b 01 f6 44 89 da 29 f2 0f 48 d0 eb 8d cc cc cc 41 56
-> >>>>>>> 49
-> >>>>>>> 89 f3
-> >>>>>>> [   89.596630] RSP: 0018:ffffb3324018ce20 EFLAGS: 00010283
-> >>>>>>> [   89.636568] RAX: 0000000000000003 RBX: ffff97640754eb40 RCX: 0000000000000036
-> >>>>>>> [   89.644842] RDX: ffff976407704000 RSI: 0000000000000620 RDI: ffff976407708c80
-> >>>>>>> [   89.653108] RBP: 0000000000000000 R08: 000000000000a1f0 R09: da49cae6d4ba44ce
-> >>>>>>> [   89.661379] R10: 000000000000a226 R11: ffffffffa05fee80 R12: 0000000000000620
-> >>>>>>> [   89.669657] R13: ffff97640754eb40 R14: ffffb33240cf9540 R15: 00000000ffffff18
-> >>>>>>> [   89.677942] FS:  0000000000000000(0000) GS:ffff97733ff80000(0000)
-> >>>>>>> knlGS:0000000000000000
-> >>>>>>> [   89.687275] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> >>>>>>> [   89.694065] CR2: 00007f6c7c9e9b40 CR3: 000000064f610000 CR4: 0000000000350ee0
-> >>>>>>> [   89.702353] Call Trace:
-> >>>>>>> [   89.705549]  <IRQ>
-> >>>>>>> [   89.708269]  igc_poll+0x19d/0x14b0 [igc]
-> >>>>>>> [   89.713073]  ? __ip_finish_output+0xc0/0x1a0
-> >>>>>>> [   89.718255]  ? __netif_receive_skb_one_core+0x86/0xa0
-> >>>>>>> [   89.724269]  __napi_poll+0x22/0x110
-> >>>>>>> [   89.728597]  net_rx_action+0xe9/0x250
-> >>>>>>> [   89.733093]  ? igc_msix_ring+0x51/0x60 [igc]
-> >>>>>>> [   89.738230]  __do_softirq+0xb8/0x1e9
-> >>>>>>> [   89.742616]  irq_exit_rcu+0x84/0xb0
-> >>>>>>> [   89.746915]  common_interrupt+0x78/0x90
-> >>>>>>> [   89.751566]  </IRQ>
-> >>>>>>> [   89.754323]  <TASK>
-> >>>>>>> [   89.757070]  asm_common_interrupt+0x22/0x40
-> >>>>>>> [   89.762066] RIP: 0010:cpuidle_enter_state+0xb5/0x2a0
-> >>>>>>> [   89.767931] Code: c1 48 b2 ff 65 8b 3d b2 58 a9 60 e8 65 47 b2 ff
-> >>>>>>> 31 ff 49 89 c5 e8 6b 52 b2 ff 45 84 f6 0f 85 85 01 00 00 fb 66 0f 1f
-> >>>>>>> 44 00 00 <45> 85 ff 0f 88 bb 00 00 00 49 63 c7 4c 2b 2c 24 48 8d 14
-> >>>>>>> 40
-> >>>>>>> 48 8d
-> >>>>>>> [   89.789731] RSP: 0018:ffffb332400ffea8 EFLAGS: 00000246
-> >>>>>>> [   89.795904] RAX: ffff97733ffa3440 RBX: 0000000000000003 RCX: 000000000000001f
-> >>>>>>> [   89.804138] RDX: 0000000000000000 RSI: 0000000046ec0743 RDI: 0000000000000000
-> >>>>>>> [   89.812376] RBP: ffff97733ffac910 R08: 00000014da35607b R09: 00000014bbdae179
-> >>>>>>> [   89.820594] R10: 00000000000000e2 R11: 000000000000357c R12: ffffffffa00ccb40
-> >>>>>>> [   89.828795] R13: 00000014da35607b R14: 0000000000000000 R15: 0000000000000003
-> >>>>>>> [   89.837026]  ? cpuidle_enter_state+0xa5/0x2a0
-> >>>>>>> [   89.842226]  cpuidle_enter+0x24/0x40
-> >>>>>>> [   89.846558]  do_idle+0x1e4/0x280
-> >>>>>>> [   89.850516]  cpu_startup_entry+0x14/0x20
-> >>>>>>> [   89.855223]  secondary_startup_64_no_verify+0xb0/0xbb
-> >>>>>>> [   89.861153]  </TASK>
-> >>>>>>> [   89.863953] Modules linked in: wireguard curve25519_x86_64
-> >>>>>>> libcurve25519_generic libchacha20poly1305 chacha_x86_64
-> >>>>>>> poly1305_x86_64 ip6_udp_tunnel udp_tunnel libchacha vrf nft_masq
-> >>>>>>> nf_nat_tftp nf_conntrack_tftp nf_nat_sip nf_conntrack_sip
-> >>>>>>> nf_nat_pptp nf_conntrack_pptp nf_nat_h323 nf_conntrack_h323
-> >>>>>>> nf_nat_ftp nf_conntrack_ftp nft_objref nft_counter nft_ct
-> >>>>>>> nft_chain_nat nf_nat nf_tables nfnetlink_cthelper nf_conntrack
-> >>>>>>> nf_defrag_ipv6
-> >>>>>>> nf_defrag_ipv4 libcrc32c nfnetlink af_packet x86_pkg_temp_thermal
-> >>>>>>> intel_powerclamp coretemp crct10dif_pclmul crc32_pclmul
-> >>>>>>> ghash_clmulni_intel aesni_intel crypto_simd cryptd intel_cstate
-> >>>>>>> iTCO_wdt evdev mei_me pcspkr efi_pstore iTCO_vendor_support mei sg
-> >>>>>>> tpm_crb tpm_tis tpm_tis_core tpm rng_core button acpi_pad
-> >>>>>>> mpls_iptunnel mpls_router ip_tunnel br_netfilter bridge stp llc fuse
-> >>>>>>> configfs efivarfs ip_tables x_tables autofs4 usb_storage ohci_hcd
-> >>>>>>> uhci_hcd ehci_hcd squashfs zstd_decompress lz4_decompress loop
-> >>>>>>> overlay
-> >>>>>>> ext4 crc32c_generic crc16 mbcache jbd2 nls_cp437
-> >>>>>>> [   89.864000]  vfat fat efivars nls_ascii hid_generic usbhid hid
-> >>>>>>> sd_mod t10_pi xhci_pci ahci libahci libata crc32c_intel i2c_i801
-> >>>>>>> i2c_smbus scsi_mod igc xhci_hcd scsi_common thermal fan
-> >>>>>>> [   89.982932] invalid opcode: 0000 [#2] SMP NOPTI
-> >>>>>>> [   89.982934] ---[ end trace b0c0da59c18b279b ]---
-> >>>>>>> [   89.988461] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G      D
-> >>>>>>>     5.15.85-amd64-vyos #1
-> >>>>>>> [   90.031995] Hardware name: Default string Default string/Default
-> >>>>>>> string, BIOS 5.19 09/23/2022
-> >>>>>>> [   90.079903] RIP: 0010:dql_completed+0x12f/0x140
-> >>>>>>> [   90.099780] RIP: 0010:dql_completed+0x12f/0x140
-> >>>>>>> [   90.101151] Code: cf c9 00 48 89 57 58 e9 54 ff ff ff 85 ed 40 0f
-> >>>>>>> 95 c5 41 39 d8 41 0f 95 c0 44 84 c5 74 04 85 d2 78 0a 44 89 d8 e9 36
-> >>>>>>> ff ff ff <0f> 0b 01 f6 44 89 da 29 f2 0f 48 d0 eb 8d cc cc cc 41 56
-> >>>>>>> 49
-> >>>>>>> 89 f3
-> >>>>>>> [   90.106717] Code: cf c9 00 48 89 57 58 e9 54 ff ff ff 85 ed 40 0f
-> >>>>>>> 95 c5 41 39 d8 41 0f 95 c0 44 84 c5 74 04 85 d2 78 0a 44 89 d8 e9 36
-> >>>>>>> ff ff ff <0f> 0b 01 f6 44 89 da 29 f2 0f 48 d0 eb 8d cc cc cc 41 56
-> >>>>>>> 49
-> >>>>>>> 89 f3
-> >>>>>>> [   90.129020] RSP: 0018:ffffb33240003e20 EFLAGS: 00010293
-> >>>>>>> [   90.151344] RSP: 0018:ffffb3324018ce20 EFLAGS: 00010283
-> >>>>>>> [   90.157686] RAX: 0000000000000000 RBX: ffff97640754bb40 RCX: 0000000000000bd4
-> >>>>>>> [   90.157686]
-> >>>>>>> [   90.157687] RDX: ffff976407704000 RSI: 0000000000002966 RDI: ffff9764077088c0
-> >>>>>>> [   90.164026] RAX: 0000000000000003 RBX: ffff97640754eb40 RCX: 0000000000000036
-> >>>>>>> [   90.172433] RBP: 0000000000000000 R08: 000000000002bdba R09: 0000000000000000
-> >>>>>>> [   90.174719] RDX: ffff976407704000 RSI: 0000000000000620 RDI: ffff976407708c80
-> >>>>>>> [   90.183146] R10: 000000000002c98e R11: ffffffffa05fee80 R12: 0000000000002966
-> >>>>>>> [   90.191560] RBP: 0000000000000000 R08: 000000000000a1f0 R09: da49cae6d4ba44ce
-> >>>>>>> [   90.199977] R13: ffff97640754bb40 R14: ffffb3324087d4c0 R15: 00000000ffffffa8
-> >>>>>>> [   90.208382] R10: 000000000000a226 R11: ffffffffa05fee80 R12: 0000000000000620
-> >>>>>>> [   90.216792] FS:  0000000000000000(0000) GS:ffff97733fe00000(0000)
-> >>>>>>> knlGS:0000000000000000
-> >>>>>>> [   90.225213] R13: ffff97640754eb40 R14: ffffb33240cf9540 R15: 00000000ffffff18
-> >>>>>>> [   90.233641] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> >>>>>>> [   90.242058] FS:  0000000000000000(0000) GS:ffff97733ff80000(0000)
-> >>>>>>> knlGS:0000000000000000
-> >>>>>>> [   90.251492] CR2: 00007f6097a90010 CR3: 0000000101468000 CR4: 0000000000350ef0
-> >>>>>>> [   90.259887] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> >>>>>>> [   90.266776] Call Trace:
-> >>>>>>> [   90.276193] CR2: 00007f6c7c9e9b40 CR3: 0000000104378000 CR4: 0000000000350ee0
-> >>>>>>> [   90.284596]  <IRQ>
-> >>>>>>> [   90.284597]  igc_poll+0x19d/0x14b0 [igc]
-> >>>>>>> [   90.291475] Kernel panic - not syncing: Fatal exception in interrupt
-> >>>>>>> [   90.294754]  __napi_poll+0x22/0x110
-> >>>>>>> [   90.322584]  net_rx_action+0xe9/0x250
-> >>>>>>> [   90.327118]  ? igc_msix_ring+0x51/0x60 [igc]
-> >>>>>>> [   90.332311]  __do_softirq+0xb8/0x1e9
-> >>>>>>> [   90.336716]  irq_exit_rcu+0x84/0xb0
-> >>>>>>> [   90.341031]  common_interrupt+0x78/0x90
-> >>>>>>> [   90.345725]  </IRQ>
-> >>>>>>> [   90.348534]  <TASK>
-> >>>>>>> [   90.351325]  asm_common_interrupt+0x22/0x40
-> >>>>>>> [   90.356365] RIP: 0010:cpuidle_enter_state+0xb5/0x2a0
-> >>>>>>> [   90.362239] Code: c1 48 b2 ff 65 8b 3d b2 58 a9 60 e8 65 47 b2 ff
-> >>>>>>> 31 ff 49 89 c5 e8 6b 52 b2 ff 45 84 f6 0f 85 85 01 00 00 fb 66 0f 1f
-> >>>>>>> 44 00 00 <45> 85 ff 0f 88 bb 00 00 00 49 63 c7 4c 2b 2c 24 48 8d 14
-> >>>>>>> 40
-> >>>>>>> 48 8d
-> >>>>>>> [   90.384058] RSP: 0018:ffffffffa0003e60 EFLAGS: 00000246
-> >>>>>>> [   90.390221] RAX: ffff97733fe23440 RBX: 0000000000000001 RCX: 000000000000001f
-> >>>>>>> [   90.398453] RDX: 0000000000000000 RSI: 0000000046ec0743 RDI: 0000000000000000
-> >>>>>>> [   90.406695] RBP: ffff97733fe2c910 R08: 00000014db620c58 R09: 0000000000000018
-> >>>>>>> [   90.414928] R10: 0000000000000259 R11: 00000000000000da R12: ffffffffa00ccb40
-> >>>>>>> [   90.423151] R13: 00000014db620c58 R14: 0000000000000000 R15: 0000000000000001
-> >>>>>>> [   90.431387]  cpuidle_enter+0x24/0x40
-> >>>>>>> [   90.435751]  do_idle+0x1e4/0x280
-> >>>>>>> [   90.439733]  cpu_startup_entry+0x14/0x20
-> >>>>>>> [   90.444462]  start_kernel+0x627/0x650
-> >>>>>>> [   90.448909]  secondary_startup_64_no_verify+0xb0/0xbb
-> >>>>>>> [   90.454863]  </TASK>
-> >>>>>>> [   90.457714] Modules linked in: wireguard curve25519_x86_64
-> >>>>>>> libcurve25519_generic libchacha20poly1305 chacha_x86_64
-> >>>>>>> poly1305_x86_64 ip6_udp_tunnel udp_tunnel libchacha vrf nft_masq
-> >>>>>>> nf_nat_tftp nf_conntrack_tftp nf_nat_sip nf_conntrack_sip
-> >>>>>>> nf_nat_pptp nf_conntrack_pptp nf_nat_h323 nf_conntrack_h323
-> >>>>>>> nf_nat_ftp nf_conntrack_ftp nft_objref nft_counter nft_ct
-> >>>>>>> nft_chain_nat nf_nat nf_tables nfnetlink_cthelper nf_conntrack
-> >>>>>>> nf_defrag_ipv6
-> >>>>>>> nf_defrag_ipv4 libcrc32c nfnetlink af_packet x86_pkg_temp_thermal
-> >>>>>>> intel_powerclamp coretemp crct10dif_pclmul crc32_pclmul
-> >>>>>>> ghash_clmulni_intel aesni_intel crypto_simd cryptd intel_cstate
-> >>>>>>> iTCO_wdt evdev mei_me pcspkr efi_pstore iTCO_vendor_support mei sg
-> >>>>>>> tpm_crb tpm_tis tpm_tis_core tpm rng_core button acpi_pad
-> >>>>>>> mpls_iptunnel mpls_router ip_tunnel br_netfilter bridge stp llc fuse
-> >>>>>>> configfs efivarfs ip_tables x_tables autofs4 usb_storage ohci_hcd
-> >>>>>>> uhci_hcd ehci_hcd squashfs zstd_decompress lz4_decompress loop
-> >>>>>>> overlay
-> >>>>>>> ext4 crc32c_generic crc16 mbcache jbd2 nls_cp437
-> >>>>>>> [   90.457755]  vfat fat efivars nls_ascii hid_generic usbhid hid
-> >>>>>>> sd_mod t10_pi xhci_pci ahci libahci libata crc32c_intel i2c_i801
-> >>>>>>> i2c_smbus scsi_mod igc xhci_hcd scsi_common thermal fan
-> >>>>>>> [   90.576795] Kernel Offset: 0x1e000000 from 0xffffffff81000000
-> >>>>>>> (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
-> >>>>>>> [   90.704454] ---[ end Kernel panic - not syncing: Fatal exception in
-> >>>>>>> interrupt ]---
-> >>>>>>>
-> >>>>>>> K.
-> >>>>>>>
-> >>>>>>> On Tue, Dec 27, 2022 at 11:07 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
-> >>>>>>>>
-> >>>>>>>> On 12/28/2022 06:45, Kyle Sanderson wrote:
-> >>>>>>>>>
-> >>>>>>>>> hi Intel IGC Maintainers,
-> >>>>>>>>>
-> >>>>>>>>> I've managed to reproduce this issue on 5.15.85 (same steps to
-> >>>>>>>>> reproduce), and have symbols and line numbers in the below panic.
-> >>>>>>>>> There's no device support in 5.4 for this hardware, so I was
-> >>>>>>>>> unable to reproduce the issue there in igc.
-> >>>>>>>>>
-> >>>>>>>>>    From the Kernel BUG_ON, it's being asked to read beyond the
-> >>>>>>>>> array size. The min call looks very suspicious (igb, and other
-> >>>>>>>>> drives don't appear to do that), but I don't know if that's where the issue is.
-> >>>>>>>>>
-> >>>>>>>>> Please let me know if there's anything more I can do to help.
-> >>>>>>>>
-> >>>>>>>> I do not know if it is an SW problem.
-> >>>>>>>> 1. Does the problem reproduce on the latest upstream kernel?(worth
-> >>>>>>>> to check) 2. I do not see this crash in our labs. I haven't a
-> >>>>>>>> platform with six
-> >>>>>>>> i226 parts.(Trying find folks who work with this platform.) 3. I
-> >>>>>>>> am working on a patch to address .ndo_tx_timeout support. (pass
-> >>>>>>>> the reset task to netdev while the link disconnected during
-> >>>>>>>> traffic, under testing). It could be related and worth checking -
-> >>>>>>>> please, let me know if you want to apply on your platform (against upstream).
-> >>>>>>>> Reach us (Dima, Amir, and me) directly off the list.
-> >>>>>>>>>
-> >>>>>>>>> [  223.725003] igc 0000:01:00.0 eth0: Reset adapter [
-> >>>>>>>>> 233.139441] kernel BUG at lib/dynamic_queue_limits.c:27!
-> >>>>>>>>> [  233.146814] invalid opcode: 0000 [#1] SMP NOPTI [
-> >>>>>>>>> 233.146816]
-> >>>>>>>>> refcount_t: saturated; leaking memory.
-> >>>>>>>>> [  233.146833] WARNING: CPU: 0 PID: 0 at lib/refcount.c:19
-> >>>>>>>>> refcount_warn_saturate+0x97/0x110
-> >>>>>>>>> [  233.153243] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W
-> >>>>>>>>>      5.15.85-amd64-vyos #1
-> >>>>>>>>> [  233.159216] Modules linked in:
-> >>>>>>>>> [  233.168451] Hardware name: Default string Default
-> >>>>>>>>> string/Default string, BIOS 5.19 09/23/2022 [  233.177895]
-> >>>>>>>>> wireguard [  233.181645] RIP: 0010:dql_completed+0x12f/0x140 [
-> >>>>>>>>> 233.191360]  curve25519_x86_64 [  233.194406] Code: cf c9 00 48
-> >>>>>>>>> 89
-> >>>>>>>>> 57 58 e9 54 ff ff ff 85 ed 40 0f
-> >>>>>>>>> 95 c5 41 39 d8 41 0f 95 c0 44 84 c5 74 04 85 d2 78 0a 44 89 d8
-> >>>>>>>>> e9
-> >>>>>>>>> 36 ff ff ff <0f> 0b 01 f6 44 89 da 29 f2 0f 48 d0 eb 8d cc cc cc
-> >>>>>>>>> 41 56 49
-> >>>>>>>>> 89 f3
-> >>>>>>>>> [  233.199767]  libcurve25519_generic [  233.203540] RSP:
-> >>>>>>>>> 0018:ffffa85dc0134e20 EFLAGS: 00010283 [  233.225248]
-> >>>>>>>>> libchacha20poly1305 [  233.229417] [  233.229417] RAX:
-> >>>>>>>>> 0000000000000001 RBX: ffff934002104b40 RCX: 00000000000005ea [
-> >>>>>>>>> 233.235539]  chacha_x86_64 [  233.239508] RDX: ffff934002110000
-> >>>>>>>>> RSI: 0000000000001d92 RDI: ffff93400211a200 [  233.241606]
-> >>>>>>>>> poly1305_x86_64 [  233.249796] RBP: 0000000000000000 R08:
-> >>>>>>>>> 000000000004ad4e R09: 0000000000000000 [  233.253226]
-> >>>>>>>>> ip6_udp_tunnel [  233.261445] R10: 000000000004b338 R11:
-> >>>>>>>>> ffffffffbabfee80 R12: 0000000000001d92 [  233.261446] R13:
-> >>>>>>>>> ffff934002104b40 R14: ffffa85dc09d1450 R15: 00000000ffffffa6 [
-> >>>>>>>>> 233.265054]  udp_tunnel [  233.273314] FS:
-> >>>>>>>>> 0000000000000000(0000)
-> >>>>>>>>> GS:ffff934f3fe80000(0000)
-> >>>>>>>>> knlGS:0000000000000000
-> >>>>>>>>> [  233.276826]  libchacha
-> >>>>>>>>> [  233.285023] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> >>>>>>>>> [ 233.285025] CR2: 00007f294393fe84 CR3: 0000000605e10000 CR4:
-> >>>>>>>>> 0000000000350ee0 [  233.285026] Call Trace:
-> >>>>>>>>> [  233.285026]  <IRQ>
-> >>>>>>>>> [  233.285027]  igc_poll+0x19d/0x14b0 [igc] [  233.293242]  vrf
-> >>>>>>>>> [ 233.296396]  __napi_poll+0x22/0x110 [  233.305688]  nft_masq [
-> >>>>>>>>> 233.308763]  net_rx_action+0xe9/0x250 [  233.315455]
-> >>>>>>>>> nf_nat_tftp [  233.323756]  ? igc_msix_ring+0x51/0x60 [igc] [
-> >>>>>>>>> 233.326946] nf_conntrack_tftp [  233.329661]
-> >>>>>>>>> __do_softirq+0xb8/0x1e9 [ 233.334471]  nf_nat_sip [  233.336991]
-> >>>>>>>>> irq_exit_rcu+0x84/0xb0 [ 233.341290]  nf_conntrack_sip [
-> >>>>>>>>> 233.344284]
-> >>>>>>>>> common_interrupt+0x78/0x90 [  233.348778]  nf_nat_pptp [
-> >>>>>>>>> 233.352104]  </IRQ> [  233.357240]  nf_conntrack_pptp [
-> >>>>>>>>> 233.361052]  <TASK> [  233.365360]  nf_nat_h323 [  233.368484]
-> >>>>>>>>> asm_common_interrupt+0x22/0x40 [  233.372723]  nf_conntrack_h323
-> >>>>>>>>> [ 233.376363] RIP: 0010:cpuidle_enter_state+0xb5/0x2a0
-> >>>>>>>>> [  233.380952]  nf_nat_ftp
-> >>>>>>>>> [  233.384155] Code: c1 48 b2 ff 65 8b 3d b2 58 49 46 e8 65 47
-> >>>>>>>>> b2 ff
-> >>>>>>>>> 31 ff 49 89 c5 e8 6b 52 b2 ff 45 84 f6 0f 85 85 01 00 00 fb 66
-> >>>>>>>>> 0f 1f
-> >>>>>>>>> 44 00 00 <45> 85 ff 0f 88 bb 00 00 00 49 63 c7 4c 2b 2c 24 48 8d
-> >>>>>>>>> 14 40
-> >>>>>>>>> 48 8d
-> >>>>>>>>> [  233.386840]  nf_conntrack_ftp [  233.390553] RSP:
-> >>>>>>>>> 0018:ffffa85dc00efea8 EFLAGS: 00000246 [ 233.393224]  nft_objref
-> >>>>>>>>> [  233.396340] [  233.396340] RAX:
-> >>>>>>>>> ffff934f3fea3440 RBX: 0000000000000003 RCX: 000000000000001f [
-> >>>>>>>>> 233.401256]  nft_counter [  233.404981] RDX: 0000000000000000 RSI:
-> >>>>>>>>> 0000000046ec0743 RDI: 0000000000000000 [  233.410769]  nft_ct [
-> >>>>>>>>> 233.413816] RBP: ffff934f3feac910 R08: 00000036481c5d1b R09:
-> >>>>>>>>> 0000003605db0041 [  233.435320]  nft_chain_nat [  233.438947] R10:
-> >>>>>>>>> 0000000000000072 R11: 0000000000000164 R12: ffffffffba6ccb40 [
-> >>>>>>>>> 233.445014]  nf_nat [  233.448065] R13: 00000036481c5d1b R14:
-> >>>>>>>>> 0000000000000000 R15: 0000000000000003 [  233.450073]  nf_tables
-> >>>>>>>>> [ 233.458210]  ? cpuidle_enter_state+0xa5/0x2a0 [  233.461335]
-> >>>>>>>>> nfnetlink_cthelper [  233.469449]  cpuidle_enter+0x24/0x40 [
-> >>>>>>>>> 233.472106]  nf_conntrack [  233.480247]  do_idle+0x1e4/0x280 [
-> >>>>>>>>> 233.483580]  nf_defrag_ipv6 [  233.491703]
-> >>>>>>>>> cpu_startup_entry+0x14/0x20 [  233.494399]  nf_defrag_ipv4 [
-> >>>>>>>>> 233.502517]  secondary_startup_64_no_verify+0xb0/0xbb
-> >>>>>>>>> [  233.505503]  libcrc32c
-> >>>>>>>>> [  233.510641]  </TASK>
-> >>>>>>>>> [  233.514474]  nfnetlink
-> >>>>>>>>> [  233.518787] Modules linked in: wireguard [  233.522065]
-> >>>>>>>>> af_packet [  233.525975]  curve25519_x86_64 [  233.529441]
-> >>>>>>>>> x86_pkg_temp_thermal [  233.534136]  libcurve25519_generic [
-> >>>>>>>>> 233.537612]  intel_powerclamp [  233.543511]
-> >>>>>>>>> libchacha20poly1305 [  233.546508]  coretemp [  233.549313]
-> >>>>>>>>> chacha_x86_64
-> >>>>>>>>> poly1305_x86_64 [  233.552304]  crct10dif_pclmul [  233.556981]
-> >>>>>>>>> ip6_udp_tunnel udp_tunnel libchacha vrf nft_masq nf_nat_tftp
-> >>>>>>>>> nf_conntrack_tftp nf_nat_sip nf_conntrack_sip nf_nat_pptp
-> >>>>>>>>> nf_conntrack_pptp nf_nat_h323 nf_conntrack_h323 nf_nat_ftp
-> >>>>>>>>> nf_conntrack_ftp [  233.559990]  crc32_pclmul [  233.563754]
-> >>>>>>>>> nft_objref nft_counter [  233.567791]  ghash_clmulni_intel [
-> >>>>>>>>> 233.571912]  nft_ct [  233.575569]  aesni_intel [  233.579500]
-> >>>>>>>>> nft_chain_nat [  233.582390]  crypto_simd [  233.587225]  nf_nat
-> >>>>>>>>> [ 233.590841]  cryptd [  233.612012]  nf_tables [  233.615288]
-> >>>>>>>>> intel_cstate [  233.619486]  nfnetlink_cthelper [  233.623388]
-> >>>>>>>>> iTCO_wdt [  233.626063]  nf_conntrack [  233.629196]  efi_pstore
-> >>>>>>>>> [ 233.632499]  nf_defrag_ipv6 [  233.635597]  pcspkr [
-> >>>>>>>>> 233.638218]
-> >>>>>>>>> nf_defrag_ipv4 [  233.640825]  evdev [  233.643700]  libcrc32c [
-> >>>>>>>>> 233.646869]  iTCO_vendor_support [  233.650591]  nfnetlink [
-> >>>>>>>>> 233.653355]  sg [  233.656497]  af_packet [  233.659446]
-> >>>>>>>>> tpm_crb [  233.662775]  x86_pkg_temp_thermal [  233.665337]
-> >>>>>>>>> tpm_tis [ 233.668670]  intel_powerclamp [  233.671144]
-> >>>>>>>>> tpm_tis_core [ 233.673993]  coretemp [  233.677768]  tpm [
-> >>>>>>>>> 233.680591] crct10dif_pclmul [  233.682782]  rng_core [
-> >>>>>>>>> 233.685624] crc32_pclmul [  233.688271]  mei_me [  233.692161]
-> >>>>>>>>> ghash_clmulni_intel [  233.694799]  mei [  233.698290]
-> >>>>>>>>> aesni_intel [  233.701384]  button [  233.704125]  crypto_simd [
-> >>>>>>>>> 233.706379]  acpi_pad [  233.709861]  cryptd [  233.712587]
-> >>>>>>>>> mpls_iptunnel [  233.715682]  intel_cstate [  233.718177]
-> >>>>>>>>> mpls_router [  233.721872]  iTCO_wdt [  233.724077]  ip_tunnel [
-> >>>>>>>>> 233.727034]  efi_pstore [  233.729533]  br_netfilter [
-> >>>>>>>>> 233.732471]  pcspkr [  233.735139]  bridge [  233.737627]  evdev
-> >>>>>>>>> [ 233.740768]  stp [  233.743827]  iTCO_vendor_support [
-> >>>>>>>>> 233.746789]  llc [  233.749457]  sg [  233.752222]  fuse [
-> >>>>>>>>> 233.755071]  tpm_crb [  233.758113]  configfs [  233.760589]
-> >>>>>>>>> tpm_tis [  233.763065]  efivarfs [  233.765437]  tpm_tis_core [
-> >>>>>>>>> 233.767622]  ip_tables [  233.771314]  tpm [  233.773511]
-> >>>>>>>>> x_tables [  233.775607]  rng_core [  233.777893]  autofs4 [
-> >>>>>>>>> 233.780456]  mei_me [  233.783120]  usb_storage [  233.785686]
-> >>>>>>>>> mei [  233.788319]  ohci_hcd [  233.791358]  button [
-> >>>>>>>>> 233.794104] uhci_hcd [  233.796287]  acpi_pad [  233.798948]
-> >>>>>>>>> ehci_hcd [ 233.801608]  mpls_iptunnel [  233.804146]  squashfs [
-> >>>>>>>>> 233.806598] mpls_router [  233.809530]  zstd_decompress [
-> >>>>>>>>> 233.811719] ip_tunnel [  233.814378]  lz4_decompress [
-> >>>>>>>>> 233.816841] br_netfilter [  233.819492]  loop [  233.822152]
-> >>>>>>>>> bridge [ 233.824802]  overlay [  233.827927]  stp [  233.830564]
-> >>>>>>>>> ext4 [ 233.833498]  llc [  233.836805]  crc32c_generic [
-> >>>>>>>>> 233.839557] fuse [  233.842787]  crc16 [  233.845815]  configfs
-> >>>>>>>>> [  233.848084] mbcache [  233.850564]  efivarfs [  233.853117]
-> >>>>>>>>> jbd2 [ 233.855296]  ip_tables [  233.857561]  nls_cp437 [
-> >>>>>>>>> 233.859722] x_tables autofs4 [  233.862950]  vfat [  233.865216]
-> >>>>>>>>> usb_storage [  233.867585]  fat [  233.870239]  ohci_hcd
-> >>>>>>>>> uhci_hcd [ 233.872779]  efivars [  233.875414]  ehci_hcd [
-> >>>>>>>>> 233.877693] nls_ascii [  233.880433]  squashfs zstd_decompress [
-> >>>>>>>>> 233.883172] hid_generic [  233.886580]  lz4_decompress [
-> >>>>>>>>> 233.888861]  usbhid [  233.891803]  loop [  233.893980]  hid [
-> >>>>>>>>> 233.897493]  overlay [ 233.900050]  sd_mod [  233.902702]  ext4
-> >>>>>>>>> [  233.905446]  t10_pi [ 233.909612]  crc32c_generic [
-> >>>>>>>>> 233.912548]  ahci [  233.915776]
-> >>>>>>>>> crc16 [  233.918244]  libahci [  233.920540]  mbcache [
-> >>>>>>>>> 233.922740]  crc32c_intel [  233.925303]  jbd2 [  233.927777]
-> >>>>>>>>> libata [  233.930058]  nls_cp437 [  233.932530]  i2c_i801 [
-> >>>>>>>>> 233.935740]  vfat fat [  233.938022]  i2c_smbus [  233.940397]
-> >>>>>>>>> efivars [  233.942945]  xhci_pci [  233.945504]  nls_ascii
-> >>>>>>>>> hid_generic [  233.948535]  xhci_hcd [  233.950814]  usbhid [
-> >>>>>>>>> 233.953282]  scsi_mod [  233.956022]  hid [  233.958671]
-> >>>>>>>>> scsi_common [  233.961327]  sd_mod t10_pi [  233.964066]  igc [
-> >>>>>>>>> 233.966618]  ahci [  233.969274]  thermal [  233.973168]
-> >>>>>>>>> libahci [  233.975830]  fan [  233.978310]  crc32c_intel [
-> >>>>>>>>> 233.980975] [ 233.983158]  libata
-> >>>>>>>>> [  233.986113] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W
-> >>>>>>>>>      5.15.85-amd64-vyos #1
-> >>>>>>>>> [  233.989257]  i2c_i801
-> >>>>>>>>> [  233.991441] Hardware name: Default string Default
-> >>>>>>>>> string/Default string, BIOS 5.19 09/23/2022 [  233.993730]
-> >>>>>>>>> i2c_smbus [  233.996286] RIP:
-> >>>>>>>>> 0010:refcount_warn_saturate+0x97/0x110
-> >>>>>>>>> [  233.998850]  xhci_pci
-> >>>>>>>>> [  234.001055] Code: 00 01 e8 cb 40 42 00 0f 0b c3 cc cc cc cc
-> >>>>>>>>> 80 3d
-> >>>>>>>>> 39 f4 da 00 00 75 a8 48 c7 c7 d8 13 43 ba c6 05 29 f4 da 00 01
-> >>>>>>>>> e8
-> >>>>>>>>> a8
-> >>>>>>>>> 40 42 00 <0f> 0b c3 cc cc cc cc 80 3d 13 f4 da 00 00 75 85 48 c7
-> >>>>>>>>> c7 30
-> >>>>>>>>> 14 43
-> >>>>>>>>> [  234.004069]  xhci_hcd scsi_mod [  234.005878] RSP:
-> >>>>>>>>> 0018:ffffa85dc0003ae0 EFLAGS: 00010282 [ 234.008348]
-> >>>>>>>>> scsi_common igc [  234.017611] [  234.020297] thermal fan [
-> >>>>>>>>> 234.029764] RAX: 0000000000000000 RBX:
-> >>>>>>>>> 0000000000005837 RCX: 0000000000000000 [  234.032559] [
-> >>>>>>>>> 234.032585] ---[ end trace 8acd09a29bf2e660 ]--- [  234.038458]
-> >>>>>>>>> RDX: ffff934f3fe1f3e0 RSI: ffff934f3fe1c490 RDI:
-> >>>>>>>>> 0000000000000300 [  234.141617] RIP:
-> >>>>>>>>> 0010:dql_completed+0x12f/0x140 [  234.146459]
-> >>>>>>>>> RBP: ffff9340074b28c0 R08: 0000000000000000 R09:
-> >>>>>>>>> ffffa85dc0003908 [  234.150075] Code: cf c9 00 48 89 57 58 e9 54
-> >>>>>>>>> ff ff ff 85 ed 40 0f
-> >>>>>>>>> 95 c5 41 39 d8 41 0f 95 c0 44 84 c5 74 04 85 d2 78 0a 44 89 d8
-> >>>>>>>>> e9
-> >>>>>>>>> 36 ff ff ff <0f> 0b 01 f6 44 89 da 29 f2 0f 48 d0 eb 8d cc cc cc
-> >>>>>>>>> 41 56 49
-> >>>>>>>>> 89 f3
-> >>>>>>>>> [  234.156048] R10: ffffa85dc0003900 R11: ffffffffba6b0ce8 R12:
-> >>>>>>>>> ffff9340074b2908 [  234.159502] RSP: 0018:ffffa85dc0134e20 EFLAGS:
-> >>>>>>>>> 00010283 [  234.161442] R13: ffffffffba28eb60 R14:
-> >>>>>>>>> fffffffffffffff0 R15: ffffa85dc0003b40 [  234.164506] [
-> >>>>>>>>> 234.172573] FS:  0000000000000000(0000)
-> >>>>>>>>> GS:ffff934f3fe00000(0000)
-> >>>>>>>>> knlGS:0000000000000000
-> >>>>>>>>> [  234.174545] RAX: 0000000000000001 RBX: ffff934002104b40 RCX:
-> >>>>>>>>> 00000000000005ea [  234.179914] CS:  0010 DS: 0000 ES: 0000 CR0:
-> >>>>>>>>> 0000000080050033 [  234.188023] RDX: ffff934002110000 RSI:
-> >>>>>>>>> 0000000000001d92 RDI: ffff93400211a200 [  234.193301] CR2:
-> >>>>>>>>> 000055e26436ee10 CR3: 0000000605e10000 CR4: 0000000000350ef0 [
-> >>>>>>>>> 234.201457] RBP: 0000000000000000 R08: 000000000004ad4e R09: 0000000000000000 [  234.223063] Call Trace:
-> >>>>>>>>> [  234.231267] R10: 000000000004b338 R11: ffffffffbabfee80 R12:
-> >>>>>>>>> 0000000000001d92 [  234.237398]  <IRQ> [  234.245613] R13:
-> >>>>>>>>> ffff934002104b40 R14: ffffa85dc09d1450 R15: 00000000ffffffa6 [
-> >>>>>>>>> 234.247734]  __nf_conntrack_find_get+0x331/0x340 [nf_conntrack]
-> >>>>>>>>> [ 234.256997] FS:  0000000000000000(0000)
-> >>>>>>>>> GS:ffff934f3fe80000(0000)
-> >>>>>>>>> knlGS:0000000000000000
-> >>>>>>>>> [  234.265245]  nf_conntrack_in+0x1e1/0x760 [nf_conntrack] [
-> >>>>>>>>> 234.271954] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [
-> >>>>>>>>> 234.280252]  nf_hook_slow+0x37/0xb0 [  234.288537] CR2:
-> >>>>>>>>> 00007f294393fe84 CR3: 000000011da48000 CR4: 0000000000350ee0 [
-> >>>>>>>>> 234.296788]  nf_hook_slow_list+0x8c/0x130 [  234.300002] Kernel
-> >>>>>>>>> panic - not syncing: Fatal exception in interrupt [  234.308339]
-> >>>>>>>>> ip_sublist_rcv+0x1fa/0x220 [  234.319422] Kernel Offset:
-> >>>>>>>>> 0x38600000 from 0xffffffff81000000 (relocation range:
-> >>>>>>>>> 0xffffffff80000000-0xffffffffbfffffff)
-> >>>>>>>>> [  234.494681] ---[ end Kernel panic - not syncing: Fatal
-> >>>>>>>>> exception in interrupt ]---
-> >>>>>>>>>
-> >>>>>>>>> Kyle.
-> >>>>>>>>>
-> >>>>>>>>> On Tue, Dec 20, 2022 at 10:29 AM Kyle Sanderson <kyle.leet@gmail.com> wrote:
-> >>>>>>>>>>
-> >>>>>>>>>> re-sending as plain text - my apologies.
-> >>>>>>>>>>
-> >>>>>>>>>>> On Sun, 18 Dec 2022, 23:31 Neftin, Sasha wrote:
-> >>>>>>>>>>> What is a board in use (LAN on board or NIC)?
-> >>>>>>>>>>> What is lspci, lspci -t and lspci -s 0000:[lan bus:device.function] -vvv output?
-> >>>>>>>>>>
-> >>>>>>>>>> It's embedded on the board, could very well be on a bridge
-> >>>>>>>>>> though as a card. The box has 6 ports, 2 were in-use while testing.
-> >>>>>>>>>>
-> >>>>>>>>>> 00:00.0 Host bridge: Intel Corporation Device 4522 (rev 01)
-> >>>>>>>>>> 00:02.0 VGA compatible controller: Intel Corporation Elkhart
-> >>>>>>>>>> Lake [UHD Graphics Gen11 16EU] (rev 01)
-> >>>>>>>>>> 00:08.0 System peripheral: Intel Corporation Device 4511 (rev
-> >>>>>>>>>> 01)
-> >>>>>>>>>> 00:14.0 USB controller: Intel Corporation Device 4b7d (rev 11)
-> >>>>>>>>>> 00:14.2 RAM memory: Intel Corporation Device 4b7f (rev 11)
-> >>>>>>>>>> 00:16.0 Communication controller: Intel Corporation Device 4b70
-> >>>>>>>>>> (rev 11)
-> >>>>>>>>>> 00:17.0 SATA controller: Intel Corporation Device 4b63 (rev 11)
-> >>>>>>>>>> 00:1c.0 PCI bridge: Intel Corporation Device 4b38 (rev 11)
-> >>>>>>>>>> 00:1c.1 PCI bridge: Intel Corporation Device 4b39 (rev 11)
-> >>>>>>>>>> 00:1c.2 PCI bridge: Intel Corporation Device 4b3a (rev 11)
-> >>>>>>>>>> 00:1c.3 PCI bridge: Intel Corporation Device 4b3b (rev 11)
-> >>>>>>>>>> 00:1c.4 PCI bridge: Intel Corporation Device 4b3c (rev 11)
-> >>>>>>>>>> 00:1c.6 PCI bridge: Intel Corporation Device 4b3e (rev 11)
-> >>>>>>>>>> 00:1f.0 ISA bridge: Intel Corporation Device 4b00 (rev 11)
-> >>>>>>>>>> 00:1f.3 Audio device: Intel Corporation Device 4b58 (rev 11)
-> >>>>>>>>>> 00:1f.4 SMBus: Intel Corporation Device 4b23 (rev 11)
-> >>>>>>>>>> 00:1f.5 Serial bus controller: Intel Corporation Device 4b24
-> >>>>>>>>>> (rev
-> >>>>>>>>>> 11)
-> >>>>>>>>>> 01:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>> 02:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>> 03:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>> 04:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>> 05:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>> 06:00.0 Ethernet controller: Intel Corporation Device 125c (rev
-> >>>>>>>>>> 04)
-> >>>>>>>>>>
-> >>>>>>>>>> -[0000:00]-+-00.0
-> >>>>>>>>>>               +-02.0
-> >>>>>>>>>>               +-08.0
-> >>>>>>>>>>               +-14.0
-> >>>>>>>>>>               +-14.2
-> >>>>>>>>>>               +-16.0
-> >>>>>>>>>>               +-17.0
-> >>>>>>>>>>               +-1c.0-[01]----00.0
-> >>>>>>>>>>               +-1c.1-[02]----00.0
-> >>>>>>>>>>               +-1c.2-[03]----00.0
-> >>>>>>>>>>               +-1c.3-[04]----00.0
-> >>>>>>>>>>               +-1c.4-[05]----00.0
-> >>>>>>>>>>               +-1c.6-[06]----00.0
-> >>>>>>>>>>               +-1f.0
-> >>>>>>>>>>               +-1f.3
-> >>>>>>>>>>               +-1f.4
-> >>>>>>>>>>               \-1f.5
-> >>>>>>>>>>
-> >>>>>>>>>>
-> >>>>>>>>>> 01:00.0 Ethernet controller: Intel Corporation Device 125c (rev 04)
-> >>>>>>>>>>     Subsystem: Intel Corporation Device 0000
-> >>>>>>>>>>     Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
-> >>>>>>>>>> ParErr-
-> >>>>>>>>>> Stepping- SERR- FastB2B- DisINTx+
-> >>>>>>>>>>     Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast
-> >>>>>>>>>>>
-> >>>>>>>>>>> TAbort-
-> >>>>>>>>>>
-> >>>>>>>>>> <TAbort- <MAbort- >SERR- <PERR- INTx-
-> >>>>>>>>>>     Latency: 0
-> >>>>>>>>>>     Interrupt: pin A routed to IRQ 16
-> >>>>>>>>>>     Region 0: Memory at 80600000 (32-bit, non-prefetchable) [size=1M]
-> >>>>>>>>>>     Region 3: Memory at 80700000 (32-bit, non-prefetchable) [size=16K]
-> >>>>>>>>>>     Capabilities: [40] Power Management version 3
-> >>>>>>>>>>      Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
-> >>>>>>>>>>      Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
-> >>>>>>>>>>     Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-> >>>>>>>>>>      Address: 0000000000000000 Data: 0000
-> >>>>>>>>>>      Masking: 00000000 Pending: 00000000
-> >>>>>>>>>>     Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
-> >>>>>>>>>>      Vector table: BAR=3 offset=00000000
-> >>>>>>>>>>      PBA: BAR=3 offset=00002000
-> >>>>>>>>>>     Capabilities: [a0] Express (v2) Endpoint, MSI 00
-> >>>>>>>>>>      DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s <512ns, L1 <64us
-> >>>>>>>>>>       ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0W
-> >>>>>>>>>>      DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
-> >>>>>>>>>>       RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
-> >>>>>>>>>>       MaxPayload 128 bytes, MaxReadReq 512 bytes
-> >>>>>>>>>>      DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
-> >>>>>>>>>>      LnkCap: Port #0, Speed 5GT/s, Width x1, ASPM L1, Exit Latency L1 <4us
-> >>>>>>>>>>       ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
-> >>>>>>>>>>      LnkCtl: ASPM Disabled; RCB 64 bytes, Disabled- CommClk+
-> >>>>>>>>>>       ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
-> >>>>>>>>>>      LnkSta: Speed 5GT/s, Width x1
-> >>>>>>>>>>       TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
-> >>>>>>>>>>      DevCap2: Completion Timeout: Range ABCD, TimeoutDis+ NROPrPrP- LTR+
-> >>>>>>>>>>        10BitTagComp- 10BitTagReq- OBFF Not Supported, ExtFmt- EETLPPrefix-
-> >>>>>>>>>>        EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
-> >>>>>>>>>>        FRS- TPHComp- ExtTPHComp-
-> >>>>>>>>>>        AtomicOpsCap: 32bit- 64bit- 128bitCAS-
-> >>>>>>>>>>      DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis- LTR+
-> >>>>>>>>>> 10BitTagReq- OBFF Disabled,
-> >>>>>>>>>>        AtomicOpsCtl: ReqEn-
-> >>>>>>>>>>      LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
-> >>>>>>>>>>        Transmit Margin: Normal Operating Range,
-> >>>>>>>>>> EnterModifiedCompliance-
-> >>>>>>>>>> ComplianceSOS-
-> >>>>>>>>>>        Compliance Preset/De-emphasis: -6dB de-emphasis, 0dB preshoot
-> >>>>>>>>>>      LnkSta2: Current De-emphasis Level: -6dB,
-> >>>>>>>>>> EqualizationComplete-
-> >>>>>>>>>> EqualizationPhase1-
-> >>>>>>>>>>        EqualizationPhase2- EqualizationPhase3- LinkEqualizationRequest-
-> >>>>>>>>>>        Retimer- 2Retimers- CrosslinkRes: unsupported
-> >>>>>>>>>>     Capabilities: [100 v2] Advanced Error Reporting
-> >>>>>>>>>>      UESta: DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt-
-> >>>>>>>>>> RxOF-
-> >>>>>>>>>> MalfTLP- ECRC- UnsupReq- ACSViol-
-> >>>>>>>>>>      UEMsk: DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt-
-> >>>>>>>>>> RxOF-
-> >>>>>>>>>> MalfTLP- ECRC- UnsupReq- ACSViol-
-> >>>>>>>>>>      UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt-
-> >>>>>>>>>> RxOF+
-> >>>>>>>>>> MalfTLP+ ECRC- UnsupReq- ACSViol-
-> >>>>>>>>>>      CESta: RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
-> >>>>>>>>>>      CEMsk: RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
-> >>>>>>>>>>      AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
-> >>>>>>>>>>       MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
-> >>>>>>>>>>      HeaderLog: 00000000 00000000 00000000 00000000
-> >>>>>>>>>>     Capabilities: [140 v1] Device Serial Number e4-3a-6e-ff-ff-5d-bb-54
-> >>>>>>>>>>     Capabilities: [1c0 v1] Latency Tolerance Reporting
-> >>>>>>>>>>      Max snoop latency: 3145728ns
-> >>>>>>>>>>      Max no snoop latency: 3145728ns
-> >>>>>>>>>>     Capabilities: [1f0 v1] Precision Time Measurement
-> >>>>>>>>>>      PTMCap: Requester:+ Responder:- Root:-
-> >>>>>>>>>>      PTMClockGranularity: 4ns
-> >>>>>>>>>>      PTMControl: Enabled:- RootSelected:-
-> >>>>>>>>>>      PTMEffectiveGranularity: Unknown
-> >>>>>>>>>>     Capabilities: [1e0 v1] L1 PM Substates
-> >>>>>>>>>>      L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+ L1_PM_Substates+
-> >>>>>>>>>>         PortCommonModeRestoreTime=55us PortTPowerOnTime=70us
-> >>>>>>>>>>      L1SubCtl1: PCI-PM_L1.2- PCI-PM_L1.1- ASPM_L1.2- ASPM_L1.1-
-> >>>>>>>>>>          T_CommonMode=0us LTR1.2_Threshold=81920ns
-> >>>>>>>>>>      L1SubCtl2: T_PwrOn=50us
-> >>>>>>>>>>     Kernel driver in use: igc
-> >>>>>>>>>>     Kernel modules: igc
-> >>>>>>>>>>
-> >>>>>>>>>> On Sun, Dec 18, 2022 at 10:31 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
-> >>>>>>>>>>>
-> >>>>>>>>>>> On 12/16/2022 00:28, Kyle Sanderson wrote:
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> (Un)fortunately I can reproduce this bug by simply removing
-> >>>>>>>>>>>> the ethernet cable from the box while there is traffic flowing.
-> >>>>>>>>>>>> kprint below from a console line. Please CC / to me for any
-> >>>>>>>>>>>> additional information I can provide for this panic.
-> >>>>>>>>>>>
-> >>>>>>>>>>> What is a board in use (LAN on board or NIC)? What is lspci,
-> >>>>>>>>>>> lspci -t and lspci -s 0000:[lan bus:device.function] -vvv output?
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> [  156.707054] igc 0000:01:00.0 eth0: NIC Link is Down [
-> >>>>>>>>>>>> 156.712981] br-lan: port 1(eth0) entered disabled state [
-> >>>>>>>>>>>> 156.719246] igc 0000:01:00.0 eth0: Register Dump
-> >>>>>>>>>>>> [  156.724784] igc 0000:01:00.0 eth0: Register Name   Value
-> >>>>>>>>>>>> [  156.731067] igc 0000:01:00.0 eth0: CTRL            181c0641
-> >>>>>>>>>>>> [  156.737607] igc 0000:01:00.0 eth0: STATUS          00380681
-> >>>>>>>>>>>> [  156.744133] igc 0000:01:00.0 eth0: CTRL_EXT        100000c0
-> >>>>>>>>>>>> [  156.750759] igc 0000:01:00.0 eth0: MDIC            18017949
-> >>>>>>>>>>>> [  156.757258] igc 0000:01:00.0 eth0: ICR             00000001
-> >>>>>>>>>>>> [  156.763785] igc 0000:01:00.0 eth0: RCTL            0440803a
-> >>>>>>>>>>>> [  156.770324] igc 0000:01:00.0 eth0: RDLEN[0-3]      00001000
-> >>>>>>>>>>>> 00001000 00001000 00001000
-> >>>>>>>>>>>> [  156.779457] igc 0000:01:00.0 eth0: RDH[0-3]        000000ef
-> >>>>>>>>>>>> 000000a1 00000092 000000ba
-> >>>>>>>>>>>> [  156.788500] igc 0000:01:00.0 eth0: RDT[0-3]        000000ee
-> >>>>>>>>>>>> 000000a0 00000091 000000b9
-> >>>>>>>>>>>> [  156.797650] igc 0000:01:00.0 eth0: RXDCTL[0-3]     02040808
-> >>>>>>>>>>>> 02040808 02040808 02040808
-> >>>>>>>>>>>> [  156.806688] igc 0000:01:00.0 eth0: RDBAL[0-3]      02f43000
-> >>>>>>>>>>>> 02180000 02e7f000 02278000
-> >>>>>>>>>>>> [  156.815781] igc 0000:01:00.0 eth0: RDBAH[0-3]      00000001
-> >>>>>>>>>>>> 00000001 00000001 00000001
-> >>>>>>>>>>>> [  156.824928] igc 0000:01:00.0 eth0: TCTL            a503f0fa
-> >>>>>>>>>>>> [  156.831587] igc 0000:01:00.0 eth0: TDBAL[0-3]      02f43000
-> >>>>>>>>>>>> 02180000 02e7f000 02278000
-> >>>>>>>>>>>> [  156.840637] igc 0000:01:00.0 eth0: TDBAH[0-3]      00000001
-> >>>>>>>>>>>> 00000001 00000001 00000001
-> >>>>>>>>>>>> [  156.849753] igc 0000:01:00.0 eth0: TDLEN[0-3]      00001000
-> >>>>>>>>>>>> 00001000 00001000 00001000
-> >>>>>>>>>>>> [  156.858760] igc 0000:01:00.0 eth0: TDH[0-3]        000000d4
-> >>>>>>>>>>>> 0000003d 000000af 0000002a
-> >>>>>>>>>>>> [  156.867771] igc 0000:01:00.0 eth0: TDT[0-3]        000000e4
-> >>>>>>>>>>>> 0000005a 000000c8 0000002a
-> >>>>>>>>>>>> [  156.876864] igc 0000:01:00.0 eth0: TXDCTL[0-3]     02100108
-> >>>>>>>>>>>> 02100108 02100108 02100108
-> >>>>>>>>>>>> [  156.885905] igc 0000:01:00.0 eth0: Reset adapter [
-> >>>>>>>>>>>> 160.307195] igc 0000:01:00.0 eth0: NIC Link is Up 1000 Mbps
-> >>>>>>>>>>>> Full Duplex, Flow Control: RX/TX [  160.317974] br-lan: port
-> >>>>>>>>>>>> 1(eth0) entered blocking state [  160.324532] br-lan: port
-> >>>>>>>>>>>> 1(eth0) entered forwarding state [  161.197263] ------------[
-> >>>>>>>>>>>> cut here ]------------ [  161.202669] Kernel BUG at
-> >>>>>>>>>>>> 0xffffffff813ce19f [verbose debug info unavailable] [
-> >>>>>>>>>>>> 161.210769] invalid opcode: 0000 [#1] SMP NOPTI [
-> >>>>>>>>>>>> 161.216022]
-> >>>>>>>>>>>> CPU: 1 PID: 0 Comm: swapper/1 Not tainted 5.10.146 #0 [
-> >>>>>>>>>>>> 161.222980] Hardware name: Default string Default
-> >>>>>>>>>>>> string/Default string, BIOS 5.19 09/23/2022 [  161.232546] RIP:
-> >>>>>>>>>>>> 0010:0xffffffff813ce19f [  161.237167] Code: 03 01 4c 89 48
-> >>>>>>>>>>>> 58
-> >>>>>>>>>>>> e9 2f ff ff ff 85 db 41 0f 95
-> >>>>>>>>>>>> c2 45 39 d9 41 0f 95 c1 45 84 ca 74 05 45 85 e4 78 0a 44 89
-> >>>>>>>>>>>> c2
-> >>>>>>>>>>>> e9 10 ff ff ff <0f> 0b 01 d2 45 89 c1 41 29 d1 ba 00 00 00 00
-> >>>>>>>>>>>> 44 0f 48 ca eb
-> >>>>>>>>>>>> 80 cc
-> >>>>>>>>>>>> [  161.258651] RSP: 0018:ffffc90000118e88 EFLAGS: 00010283 [
-> >>>>>>>>>>>> 161.264736] RAX: ffff888101f8f200 RBX: ffffc900006f9bd0 RCX:
-> >>>>>>>>>>>> 000000000000050e [  161.272837] RDX: ffff888101fec000 RSI:
-> >>>>>>>>>>>> 0000000000000a1c RDI: 0000000000061a10 [  161.280942] RBP:
-> >>>>>>>>>>>> ffffc90000118ef8 R08: 0000000000000000 R09: 0000000000061502
-> >>>>>>>>>>>> [ 161.289089] R10: 0000000000000000 R11: 0000000000000000 R12:
-> >>>>>>>>>>>> 00000000ffffff3f [  161.297229] R13: ffff888101f8f140 R14:
-> >>>>>>>>>>>> 0000000000000000 R15: ffff888100ad9b00 [  161.305345] FS:
-> >>>>>>>>>>>> 0000000000000000(0000) GS:ffff88903fe80000(0000)
-> >>>>>>>>>>>> knlGS:00000 00000000000
-> >>>>>>>>>>>> [  161.314492] CS:  0010 DS: 0000 ES: 0000 CR0:
-> >>>>>>>>>>>> 0000000080050033 [  161.321139] CR2: 00007f941ad43a9b CR3:
-> >>>>>>>>>>>> 000000000340a000 CR4: 0000000000350ee0 [  161.329284] Call Trace:
-> >>>>>>>>>>>> [  161.332373]  <IRQ>
-> >>>>>>>>>>>> [  161.334981]  ? 0xffffffffa0185f78
-> >>>>>>>>>>>> [igc@00000000f400031b+0x13000] [  161.341949]
-> >>>>>>>>>>>> 0xffffffff8185b047 [  161.345797]  0xffffffff8185b2ca [
-> >>>>>>>>>>>> 161.349637]  0xffffffff81e000bb [  161.353465]
-> >>>>>>>>>>>> 0xffffffff81c0109f [  161.357304]  </IRQ> [  161.359988]
-> >>>>>>>>>>>> 0xffffffff8102cdac [  161.363783]  0xffffffff810bfdaf [
-> >>>>>>>>>>>> 161.367584]  0xffffffff81a2e616 [  161.371374]
-> >>>>>>>>>>>> 0xffffffff81c00c9e [  161.375192] RIP:
-> >>>>>>>>>>>> 0010:0xffffffff817e331b [  161.379840] Code: 21 90 ff 65 8b
-> >>>>>>>>>>>> 3d 45 23 83 7e e8 80 20 90 ff 31 ff 49 89 c6 e8 26 2d 90 ff
-> >>>>>>>>>>>> 80 7d d7 00 0f 85 9e 01 00 00 fb 66 0f 1f
-> >>>>>>>>>>>> 44 00 00 <45> 85 ff 0f 88 cf 00 00 00 49 63 cf 48 8d 04 49 48
-> >>>>>>>>>>>> 8d 14 81
-> >>>>>>>>>>>> 48 c1
-> >>>>>>>>>>>> [  161.401397] RSP: 0018:ffffc900000d3e80 EFLAGS: 00000246 [
-> >>>>>>>>>>>> 161.407493] RAX: ffff88903fea5180 RBX: ffff88903feadf00 RCX:
-> >>>>>>>>>>>> 000000000000001f [  161.415648] RDX: 0000000000000000 RSI:
-> >>>>>>>>>>>> 0000000046ec0743 RDI: 0000000000000000 [  161.423811] RBP:
-> >>>>>>>>>>>> ffffc900000d3eb8 R08: 00000025881a3b81 R09: ffff888100317340
-> >>>>>>>>>>>> [ 161.432003] R10: 0000000000000001 R11: 0000000000000000 R12:
-> >>>>>>>>>>>> 0000000000000003 [  161.440154] R13: ffffffff824c7bc0 R14:
-> >>>>>>>>>>>> 00000025881a3b81 R15: 0000000000000003 [  161.448285]
-> >>>>>>>>>>>> 0xffffffff817e357f [  161.452123]  0xffffffff810e6258 [
-> >>>>>>>>>>>> 161.455938]  0xffffffff810e63fb [  161.459746]
-> >>>>>>>>>>>> 0xffffffff8104bec0 [  161.463526]  0xffffffff810000f5 [
-> >>>>>>>>>>>> 161.467290] Modules linked in: pppoe ppp_async nft_fib_inet
-> >>>>>>>>>>>> nf_flow_table_ipv 6 nf_flow_table_ipv4 nf_flow_table_inet
-> >>>>>>>>>>>> wireguard pppox ppp_generic nft_reject_i pv6 nft_reject_ipv4
-> >>>>>>>>>>>> nft_reject_inet nft_reject nft_redir nft_quota nft_objref nf
-> >>>>>>>>>>>> t_numgen nft_nat nft_masq nft_log nft_limit nft_hash
-> >>>>>>>>>>>> nft_flow_offload nft_fib_ip v6 nft_fib_ipv4 nft_fib nft_ct
-> >>>>>>>>>>>> nft_counter nft_chain_nat nf_tables nf_nat nf_flo w_table
-> >>>>>>>>>>>> nf_conntrack libchacha20poly1305 curve25519_x86_64
-> >>>>>>>>>>>> chacha_x86_64 slhc r8 169 poly1305_x86_64 nfnetlink
-> >>>>>>>>>>>> nf_reject_ipv6
-> >>>>>>>>>>>> nf_reject_ipv4 nf_log_ipv6 nf_log_i pv4 nf_log_common
-> >>>>>>>>>>>> nf_defrag_ipv6
-> >>>>>>>>>>>> nf_defrag_ipv4 libcurve25519_generic libcrc32c libchacha igc
-> >>>>>>>>>>>> forcedeth e1000e crc_ccitt bnx2 i2c_dev ixgbe e1000 amd_xgbe
-> >>>>>>>>>>>> ip6_u dp_tunnel udp_tunnel mdio nls_utf8 ena kpp
-> >>>>>>>>>>>> nls_iso8859_1
-> >>>>>>>>>>>> nls_cp437 vfat fat igb button_hotplug tg3 ptp realtek
-> >>>>>>>>>>>> pps_core mii [  161.550507] ---[ end trace b1cb18ab2d1741bd
-> >>>>>>>>>>>> ]--- [ 161.555938] RIP: 0010:0xffffffff813ce19f [  161.560634] Code:
-> >>>>>>>>>>>> 03 01 4c 89 48 58 e9 2f ff ff ff 85 db 41 0f 95
-> >>>>>>>>>>>> c2 45 39 d9 41 0f 95 c1 45 84 ca 74 05 45 85 e4 78 0a 44 89
-> >>>>>>>>>>>> c2
-> >>>>>>>>>>>> e9 10 ff ff ff <0f> 0b 01 d2 45 89 c1 41 29 d1 ba 00 00 00 00
-> >>>>>>>>>>>> 44 0f 48 ca eb
-> >>>>>>>>>>>> 80 cc
-> >>>>>>>>>>>> [  161.582281] RSP: 0018:ffffc90000118e88 EFLAGS: 00010283 [
-> >>>>>>>>>>>> 161.588426] RAX: ffff888101f8f200 RBX: ffffc900006f9bd0 RCX:
-> >>>>>>>>>>>> 000000000000050e [  161.596668] RDX: ffff888101fec000 RSI:
-> >>>>>>>>>>>> 0000000000000a1c RDI: 0000000000061a10 [  161.604860] RBP:
-> >>>>>>>>>>>> ffffc90000118ef8 R08: 0000000000000000 R09: 0000000000061502
-> >>>>>>>>>>>> [ 161.613052] R10: 0000000000000000 R11: 0000000000000000 R12:
-> >>>>>>>>>>>> 00000000ffffff3f [  161.621291] R13: ffff888101f8f140 R14:
-> >>>>>>>>>>>> 0000000000000000 R15: ffff888100ad9b00 [  161.629505] FS:
-> >>>>>>>>>>>> 0000000000000000(0000) GS:ffff88903fe80000(0000)
-> >>>>>>>>>>>> knlGS:00000 00000000000
-> >>>>>>>>>>>> [  161.638781] CS:  0010 DS: 0000 ES: 0000 CR0:
-> >>>>>>>>>>>> 0000000080050033 [  161.645549] CR2: 00007f941ad43a9b CR3:
-> >>>>>>>>>>>> 000000000340a000 CR4: 0000000000350ee0 [  161.653841] Kernel
-> >>>>>>>>>>>> panic - not syncing: Fatal exception in interrupt [
-> >>>>>>>>>>>> 161.661287] Kernel Offset: disabled [  161.665644] Rebooting in 3 seconds..
-> >>>>>>>>>>>> [  164.670313] ACPI MEMORY or I/O RESET_REG.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Kyle.
-> >>>>>>>>>>>> _______________________________________________
-> >>>>>>>>>>>> Intel-wired-lan mailing list
-> >>>>>>>>>>>> Intel-wired-lan@osuosl.org
-> >>>>>>>>>>>> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-> >>>>>>>>>>>
-> >>>>>>>>
-> >>
-> >>
->
+Same comment here.
+
+Martin
+
+>  	if (!efx->type->is_vf)
+>  		efx_probe_vpd_strings(efx);
+>  
+> diff --git a/drivers/net/ethernet/socionext/netsec.c b/drivers/net/ethernet/socionext/netsec.c
+> index 9b46579b5a10..2d7347b71c41 100644
+> --- a/drivers/net/ethernet/socionext/netsec.c
+> +++ b/drivers/net/ethernet/socionext/netsec.c
+> @@ -2104,6 +2104,9 @@ static int netsec_probe(struct platform_device *pdev)
+>  				NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM;
+>  	ndev->hw_features = ndev->features;
+>  
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  	priv->rx_cksum_offload_flag = true;
+>  
+>  	ret = netsec_register_mdio(priv, phy_addr);
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> index b7e5af58ab75..734d84263fd2 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> @@ -7150,6 +7150,8 @@ int stmmac_dvr_probe(struct device *device,
+>  
+>  	ndev->hw_features = NETIF_F_SG | NETIF_F_IP_CSUM | NETIF_F_IPV6_CSUM |
+>  			    NETIF_F_RXCSUM;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	ret = stmmac_tc_init(priv, priv);
+>  	if (!ret) {
+> diff --git a/drivers/net/ethernet/ti/cpsw.c b/drivers/net/ethernet/ti/cpsw.c
+> index 13c9c2d6b79b..37f0b62ec5d6 100644
+> --- a/drivers/net/ethernet/ti/cpsw.c
+> +++ b/drivers/net/ethernet/ti/cpsw.c
+> @@ -1458,6 +1458,8 @@ static int cpsw_probe_dual_emac(struct cpsw_priv *priv)
+>  	priv_sl2->emac_port = 1;
+>  	cpsw->slaves[1].ndev = ndev;
+>  	ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER | NETIF_F_HW_VLAN_CTAG_RX;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	ndev->netdev_ops = &cpsw_netdev_ops;
+>  	ndev->ethtool_ops = &cpsw_ethtool_ops;
+> @@ -1635,6 +1637,8 @@ static int cpsw_probe(struct platform_device *pdev)
+>  	cpsw->slaves[0].ndev = ndev;
+>  
+>  	ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER | NETIF_F_HW_VLAN_CTAG_RX;
+> +	ndev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			     NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	ndev->netdev_ops = &cpsw_netdev_ops;
+>  	ndev->ethtool_ops = &cpsw_ethtool_ops;
+> diff --git a/drivers/net/ethernet/ti/cpsw_new.c b/drivers/net/ethernet/ti/cpsw_new.c
+> index 83596ec0c7cb..35128dd45ffc 100644
+> --- a/drivers/net/ethernet/ti/cpsw_new.c
+> +++ b/drivers/net/ethernet/ti/cpsw_new.c
+> @@ -1405,6 +1405,10 @@ static int cpsw_create_ports(struct cpsw_common *cpsw)
+>  		ndev->features |= NETIF_F_HW_VLAN_CTAG_FILTER |
+>  				  NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_NETNS_LOCAL | NETIF_F_HW_TC;
+>  
+> +		ndev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				     NETDEV_XDP_ACT_REDIRECT |
+> +				     NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  		ndev->netdev_ops = &cpsw_netdev_ops;
+>  		ndev->ethtool_ops = &cpsw_ethtool_ops;
+>  		SET_NETDEV_DEV(ndev, dev);
+> diff --git a/drivers/net/hyperv/netvsc_drv.c b/drivers/net/hyperv/netvsc_drv.c
+> index f9b219e6cd58..a9b139bbdb2c 100644
+> --- a/drivers/net/hyperv/netvsc_drv.c
+> +++ b/drivers/net/hyperv/netvsc_drv.c
+> @@ -2559,6 +2559,8 @@ static int netvsc_probe(struct hv_device *dev,
+>  
+>  	netdev_lockdep_set_classes(net);
+>  
+> +	net->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+> +
+>  	/* MTU range: 68 - 1500 or 65521 */
+>  	net->min_mtu = NETVSC_MTU_MIN;
+>  	if (nvdev->nvsp_version >= NVSP_PROTOCOL_VERSION_2)
+> diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
+> index 6db6a75ff9b9..35fa1ca98671 100644
+> --- a/drivers/net/netdevsim/netdev.c
+> +++ b/drivers/net/netdevsim/netdev.c
+> @@ -286,6 +286,7 @@ static void nsim_setup(struct net_device *dev)
+>  			 NETIF_F_TSO;
+>  	dev->hw_features |= NETIF_F_HW_TC;
+>  	dev->max_mtu = ETH_MAX_MTU;
+> +	dev->xdp_features = NETDEV_XDP_ACT_HW_OFFLOAD;
+>  }
+>  
+>  static int nsim_init_netdevsim(struct netdevsim *ns)
+> diff --git a/drivers/net/tun.c b/drivers/net/tun.c
+> index a7d17c680f4a..36620afde373 100644
+> --- a/drivers/net/tun.c
+> +++ b/drivers/net/tun.c
+> @@ -1401,6 +1401,11 @@ static void tun_net_initialize(struct net_device *dev)
+>  
+>  		eth_hw_addr_random(dev);
+>  
+> +		/* Currently tun does not support XDP, only tap does. */
+> +		dev->xdp_features = NETDEV_XDP_ACT_BASIC |
+> +				    NETDEV_XDP_ACT_REDIRECT |
+> +				    NETDEV_XDP_ACT_NDO_XMIT;
+> +
+>  		break;
+>  	}
+>  
+> diff --git a/drivers/net/veth.c b/drivers/net/veth.c
+> index ba3e05832843..1bb54de7124d 100644
+> --- a/drivers/net/veth.c
+> +++ b/drivers/net/veth.c
+> @@ -1686,6 +1686,10 @@ static void veth_setup(struct net_device *dev)
+>  	dev->hw_enc_features = VETH_FEATURES;
+>  	dev->mpls_features = NETIF_F_HW_CSUM | NETIF_F_GSO_SOFTWARE;
+>  	netif_set_tso_max_size(dev, GSO_MAX_SIZE);
+> +
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			    NETDEV_XDP_ACT_NDO_XMIT | NETDEV_XDP_ACT_RX_SG |
+> +			    NETDEV_XDP_ACT_NDO_XMIT_SG;
+>  }
+>  
+>  /*
+> diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
+> index 7e1a98430190..692dff071782 100644
+> --- a/drivers/net/virtio_net.c
+> +++ b/drivers/net/virtio_net.c
+> @@ -3280,7 +3280,10 @@ static int virtnet_xdp_set(struct net_device *dev, struct bpf_prog *prog,
+>  			if (i == 0 && !old_prog)
+>  				virtnet_clear_guest_offloads(vi);
+>  		}
+> +		if (!old_prog)
+> +			xdp_features_set_redirect_target(dev, false);
+>  	} else {
+> +		xdp_features_clear_redirect_target(dev);
+>  		vi->xdp_enabled = false;
+>  	}
+>  
+> @@ -3910,6 +3913,7 @@ static int virtnet_probe(struct virtio_device *vdev)
+>  		dev->hw_features |= NETIF_F_GRO_HW;
+>  
+>  	dev->vlan_features = dev->features;
+> +	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT;
+>  
+>  	/* MTU range: 68 - 65535 */
+>  	dev->min_mtu = MIN_MTU;
+> diff --git a/drivers/net/xen-netfront.c b/drivers/net/xen-netfront.c
+> index 12b074286df9..47d54d8ea59d 100644
+> --- a/drivers/net/xen-netfront.c
+> +++ b/drivers/net/xen-netfront.c
+> @@ -1741,6 +1741,8 @@ static struct net_device *xennet_create_dev(struct xenbus_device *dev)
+>           * negotiate with the backend regarding supported features.
+>           */
+>  	netdev->features |= netdev->hw_features;
+> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+> +			       NETDEV_XDP_ACT_NDO_XMIT;
+>  
+>  	netdev->ethtool_ops = &xennet_ethtool_ops;
+>  	netdev->min_mtu = ETH_MIN_MTU;
+> diff --git a/include/net/xdp.h b/include/net/xdp.h
+> index 8d1c86914f4c..d517bfac937b 100644
+> --- a/include/net/xdp.h
+> +++ b/include/net/xdp.h
+> @@ -428,9 +428,21 @@ MAX_XDP_METADATA_KFUNC,
+>  #ifdef CONFIG_NET
+>  u32 bpf_xdp_metadata_kfunc_id(int id);
+>  bool bpf_dev_bound_kfunc_id(u32 btf_id);
+> +void xdp_features_set_redirect_target(struct net_device *dev, bool support_sg);
+> +void xdp_features_clear_redirect_target(struct net_device *dev);
+>  #else
+>  static inline u32 bpf_xdp_metadata_kfunc_id(int id) { return 0; }
+>  static inline bool bpf_dev_bound_kfunc_id(u32 btf_id) { return false; }
+> +
+> +static inline void
+> +xdp_features_set_redirect_target(struct net_device *dev, bool support_sg)
+> +{
+> +}
+> +
+> +static inline void
+> +xdp_features_clear_redirect_target(struct net_device *dev)
+> +{
+> +}
+>  #endif
+>  
+>  #endif /* __LINUX_NET_XDP_H__ */
+> diff --git a/net/core/xdp.c b/net/core/xdp.c
+> index a5a7ecf6391c..82727b47259d 100644
+> --- a/net/core/xdp.c
+> +++ b/net/core/xdp.c
+> @@ -773,3 +773,21 @@ static int __init xdp_metadata_init(void)
+>  	return register_btf_kfunc_id_set(BPF_PROG_TYPE_XDP, &xdp_metadata_kfunc_set);
+>  }
+>  late_initcall(xdp_metadata_init);
+> +
+> +void xdp_features_set_redirect_target(struct net_device *dev, bool support_sg)
+> +{
+> +	dev->xdp_features |= NETDEV_XDP_ACT_NDO_XMIT;
+> +	if (support_sg)
+> +		dev->xdp_features |= NETDEV_XDP_ACT_NDO_XMIT_SG;
+> +
+> +	call_netdevice_notifiers(NETDEV_XDP_FEAT_CHANGE, dev);
+> +}
+> +EXPORT_SYMBOL_GPL(xdp_features_set_redirect_target);
+> +
+> +void xdp_features_clear_redirect_target(struct net_device *dev)
+> +{
+> +	dev->xdp_features &= ~(NETDEV_XDP_ACT_NDO_XMIT |
+> +			       NETDEV_XDP_ACT_NDO_XMIT_SG);
+> +	call_netdevice_notifiers(NETDEV_XDP_FEAT_CHANGE, dev);
+> +}
+> +EXPORT_SYMBOL_GPL(xdp_features_clear_redirect_target);
+> -- 
+> 2.39.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
