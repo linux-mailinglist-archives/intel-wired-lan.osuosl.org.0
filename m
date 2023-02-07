@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D9E468CB66
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 01:45:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A401568CB6A
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Feb 2023 01:46:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F3E68819CC;
-	Tue,  7 Feb 2023 00:45:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F3E68819CC
+	by smtp1.osuosl.org (Postfix) with ESMTP id 42527812BA;
+	Tue,  7 Feb 2023 00:46:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42527812BA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675730711;
-	bh=oFpFgM+QamMCCUlezZhgo0CcH2iQ2UaOdhKFAgl0VlM=;
+	s=default; t=1675730777;
+	bh=yeFlW44higshFYS9sU3hXwvYt2dwQpZafuPR1ehW69w=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jSoAZlzxTOcIpnlmP6OnVlPoY2heLCDMwlkYXBSXXEKTQ+6tXrDbVZ7uGpXtYd/I/
-	 kLor/oUp3dKsBv19RZOIou+GGWAYf1aYltaLKgnUmV1/1NkVxJkxZALC8e30brEjZx
-	 McgCBQiEMgz+JJTFlKzU0297u61r776VnYzFOj9WXUeNwF/dwmIUQY+OCO/OQkIPQp
-	 xl+UPuAy1MlI0jBRxQZ6UOH/MeRSdnHEei/C6jxCTgePN3pk3U/WloP+5l5waustV4
-	 aA/jcyWMeuMNInrKL3pUk5kjdXOaqPLrca5ubaEGZTbS0tNwUz7NIGneZvmXLRgRKI
-	 Z18BSwP5BIErw==
+	b=a8L8OOwcSrBzBWrPLHsMMFtLL4pqAiDp3uOC1OVsGmp2M9q++c6Jd/4+9CUtGfeSt
+	 xQSnT9xnxMmCRY6J5zw4JIn/9O0PnzaZVdnPGW9cYVRTxZmntCG0r1rDXrPRO5lq/8
+	 MqGyrwCXlIXBe+hjx37ek8MMqHDBrBQo0P2qSX75GEYM+gZ1QYUMc4ZfS4CRmV+gje
+	 YY+Vd4NqCUOnX2ZbLxcaUQgI8aqFxGw2DwZPK8em7h//F+m9tBaFSeUP49PHWNxFfW
+	 fSb5j8/Caa0qK4TcYuqayD0GXCyGiQOyi5nxIab5JOXn1YYEI5eTs3IpPP104ipOCc
+	 vY11rvQoRqCpg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3V1duz38s8d5; Tue,  7 Feb 2023 00:45:10 +0000 (UTC)
+	with ESMTP id V6_darsrJrq7; Tue,  7 Feb 2023 00:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 12A848194C;
-	Tue,  7 Feb 2023 00:45:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 12A848194C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4DDD781284;
+	Tue,  7 Feb 2023 00:46:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4DDD781284
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EB8BC1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:45:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 426651BF96B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:46:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C4D238194C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:45:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C4D238194C
+ by smtp4.osuosl.org (Postfix) with ESMTP id 287CE4175B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:46:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 287CE4175B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xBReQe33jnJe for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Feb 2023 00:45:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mf9V5GTh5C6e for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Feb 2023 00:46:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF4AA81948
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E02B4175E
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DF4AA81948
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:45:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4E02B4175E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Feb 2023 00:46:10 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1pPC6N-004Fh7-7X; Tue, 07 Feb 2023 01:44:51 +0100
-Date: Tue, 7 Feb 2023 01:44:51 +0100
+ id 1pPC7R-004Fhu-6u; Tue, 07 Feb 2023 01:45:57 +0100
+Date: Tue, 7 Feb 2023 01:45:57 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Oleksij Rempel <o.rempel@pengutronix.de>
-Message-ID: <Y+GfA1MumjZXqpmt@lunn.ch>
+Message-ID: <Y+GfRU1uAxnAgNQY@lunn.ch>
 References: <20230206135050.3237952-1-o.rempel@pengutronix.de>
- <20230206135050.3237952-2-o.rempel@pengutronix.de>
+ <20230206135050.3237952-4-o.rempel@pengutronix.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230206135050.3237952-2-o.rempel@pengutronix.de>
+In-Reply-To: <20230206135050.3237952-4-o.rempel@pengutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=lunn.ch; 
  s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
  Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=FvToNWlrHBRIzvc7DS+U9XlSMsFkpOHp8G8KTHXQsIg=; b=ZdbaLP48GO6xOA0pmBYEyNv8Va
- HfQglGFK4J6VxpNK8rw+itRzAr+B4n/vEPAOGygKS/RZphGmyugjO77C5/MFOiqoRMNEM9MmwP+cb
- DB+dbsyaRgotUNku6bQeAfr0WzNzWfiES/7vimZHtVu7/1X/jfYdGKLaaSeA0oMaf3kA=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=jlJZFXK63ljlcbUHkeYIW6a7TuIzpnde8zdqpTdl/jk=; b=Yr2EaFOw8wICtE3OGCU6SXMSIp
+ 2eoRseLg/ZqU1cACxeJKTsq67iTie84jEt33nmaia/d1MCZ490wPerK8mwwJlcjchgj9sKSbcd6eE
+ a7t1dBj1CCH/5PlbkRh8NVevt5nFjTYPyotwNDw1KVv7pQzBHi/XxVyTJs814WhsgJtc=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=ZdbaLP48
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 01/23] net: dsa:
- microchip: enable EEE support
+ header.a=rsa-sha256 header.s=20171124 header.b=Yr2EaFOw
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 03/23] net: phy: micrel:
+ add ksz9477_get_features()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,10 +99,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 06, 2023 at 02:50:28PM +0100, Oleksij Rempel wrote:
-> Some of KSZ9477 family switches provides EEE support. To enable it, we
-> just need to register set_mac_eee/set_mac_eee handlers and validate
-> supported chip version and port.
+On Mon, Feb 06, 2023 at 02:50:30PM +0100, Oleksij Rempel wrote:
+> KSZ8563R, which has same PHYID as KSZ9477 family, will change "EEE control
+> and capability 1" (Register 3.20) content depending on configuration of
+> "EEE advertisement 1" (Register 7.60). Changes on the 7.60 will affect
+> 3.20 register.
+> 
+> So, instead of depending on register 3.20, driver should set supported_eee.
+> 
+> Proper supported_eee configuration is needed to make use of generic
+> PHY c45 set/get_eee functions provided by next patches.
 > 
 > Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
 
