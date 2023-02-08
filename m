@@ -1,88 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DC5868EFDA
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Feb 2023 14:34:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98B8C68F32B
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Feb 2023 17:30:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0967D40941;
-	Wed,  8 Feb 2023 13:34:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0967D40941
+	by smtp3.osuosl.org (Postfix) with ESMTP id CB5806112C;
+	Wed,  8 Feb 2023 16:30:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB5806112C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675863261;
-	bh=BqNEo8nvCwGn/vjOATy2irl6LH7eRdI5/8fuJymq0bg=;
+	s=default; t=1675873813;
+	bh=vC5u+wQtb4DS9A7ohR/BBvtC6VfZKUZ2ezZjX4JMKPQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GtPLQ7uJwuM2QPVIWmOtSQHIKX928B0/nbDtCO6TGI9fXmhbecg9o3TmO0PsU9hNF
-	 Pcc2EW30Z1ORjxOxaYBi0F40TmVT88AXroLqpIgA8qV66lmhnM9oVOsmKYwv0mV80d
-	 kl3xjIkdBUfF5VDJ+aZzfc5WgEFzQagH/WygdNlYNn2MxuApiacgMV+6gmzQGkUCIu
-	 1wpuOhmj57vfr8B0Nh2bTMv9wZlpS6Xw6g06IGdhv8MzAPhsyYv6dltV5TiSfZWJdM
-	 GDxUtO1STvHJs/EpjFgf0+G41Kt+Iksb8i5ktEfqqwgR+Ucw7njX5/6ogDdU2df6l0
-	 8NwqMEvg9AIFw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d7yTENMCQ_HN; Wed,  8 Feb 2023 13:34:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6D76D40940;
-	Wed,  8 Feb 2023 13:34:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6D76D40940
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ED38C1BF3FD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 13:34:13 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C6165610E3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 13:34:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6165610E3
+	b=8f09KJ8qXQoaNkRbeCKVn6Yr90VGJdPd8tei2/T8OdRLE4PZIgONXK7/3AGoLWCp/
+	 h77Y4voztUR24FYJFtSTpM84Mvl9r6L3t0WGR7EIuIpTvJZrct3KcFYXV8G3pEvL3l
+	 Y3maUPgIklpdZNbq4KJuQMGe4Z/fLlDA+K9BG5dJ1JDIHDHJnbzqQZAuSrZHXEjapI
+	 VpzNZD8IJAyf+Q0G7wmWDhJuypagKk8ubKjV7cY4uqT2iFYjhTrALdZg1HjwMzRbpp
+	 0zWMTh8OtXIX2xMo4bZlYE5dgZ5xBTHiTlOQZNUqXnrSPvyV/EnFMIEOVitS8MkIgv
+	 j/odL+Gf3WG5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MN3BGU4qE9h9 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Feb 2023 13:34:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA927610F3
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CA927610F3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 13:34:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10615"; a="416018046"
-X-IronPort-AV: E=Sophos;i="5.97,280,1669104000"; d="scan'208";a="416018046"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Feb 2023 05:34:12 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10615"; a="617216109"
-X-IronPort-AV: E=Sophos;i="5.97,280,1669104000"; d="scan'208";a="617216109"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Feb 2023 05:34:11 -0800
-Date: Wed, 8 Feb 2023 14:34:03 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <Y+Oky4j0zDyfLp8r@localhost.localdomain>
-References: <20230206235436.2254802-1-jesse.brandeburg@intel.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i0stLCwKBM3O; Wed,  8 Feb 2023 16:30:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id D2ADF60FD3;
+	Wed,  8 Feb 2023 16:30:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2ADF60FD3
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 620611BF5EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 08:30:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4701240BA7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 08:30:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4701240BA7
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NgF_C4b2CSDF for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Feb 2023 08:30:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 23CC540150
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 23CC540150
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 08:30:40 +0000 (UTC)
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pPfqO-0007Z6-QC; Wed, 08 Feb 2023 09:30:20 +0100
+Received: from ore by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pPfqL-00041i-JF; Wed, 08 Feb 2023 09:30:17 +0100
+Date: Wed, 8 Feb 2023 09:30:17 +0100
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20230208083017.GI12366@pengutronix.de>
+References: <20230206135050.3237952-1-o.rempel@pengutronix.de>
+ <20230207212555.79ffbc26@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230206235436.2254802-1-jesse.brandeburg@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675863252; x=1707399252;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=TEsfulaQZpqHysK/blBeEBlGvYS++/ZMjztWWA8fNM0=;
- b=atC3C+PZ+siWfZ/IYtJ61lAWSm09iBlF607acEuBfP6YgFeDMn4ZXQFB
- YnmDknViL8rBRjR41tDw779yyrwZ0bXMEbB/BXhWhx7zrzCiO/RuoO3HV
- gQ3nvNI9xgRCEIh4v3jLRrr3UgVGIWGuDOcdGfXMshMf+QIyb51uTGTon
- JGyvxhmanW01ZfgLnB/Mg92k2eC5TILqeVdKA4O5l8ioMMFMDgXfky0Jk
- oig7gj/XX9rF6X62dEHY0DFVGF8pQaoIFXhV4DAS67hBkhF2tRdmTUC6w
- Cv26rt3GU2QtKKdCcu9dfY8o56y/XRFJ6/ni0ktrtrlknRviJXvUd/VzO
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=atC3C+PZ
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: fix lost multicast
- packets in promisc mode
+In-Reply-To: <20230207212555.79ffbc26@kernel.org>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: ore@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+X-Mailman-Approved-At: Wed, 08 Feb 2023 16:30:08 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 00/23] net: add EEE
+ support for KSZ9477 and AR8035 with i.MX6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,123 +90,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
+ Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
+ Eric Dumazet <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>,
+ kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 06, 2023 at 03:54:36PM -0800, Jesse Brandeburg wrote:
-> There was a problem reported to us where the addition of a VF with an IPv6
-> address ending with a particular sequence would cause the parent device on
-> the PF to no longer be able to respond to neighbor discovery packets.
+On Tue, Feb 07, 2023 at 09:25:55PM -0800, Jakub Kicinski wrote:
+> On Mon,  6 Feb 2023 14:50:27 +0100 Oleksij Rempel wrote:
+> > With this patch series we provide EEE control for KSZ9477 family of switches and
+> > AR8035 with i.MX6 configuration.
+> > According to my tests, on a system with KSZ8563 switch and 100Mbit idle link,
+> > we consume 0,192W less power per port if EEE is enabled.
 > 
-> In this case, we had an ovs-bridge device living on top of a VLAN, which
-> was on top of a PF, and it would not be able to talk anymore (the neighbor
-> entry would expire and couldn't be restored).
-> 
-> The root cause of the issue is that if the PF is asked to be in IFF_PROMISC
-> mode (promiscuous mode) and it had an ipv6 address that needed the
-> 33:33:ff:00:00:04 multicast address to work, then when the VF was added
-> with the need for the same multicast address, the VF would steal all the
-> traffic destined for that address.
-> 
-> The ice driver didn't auto-subscribe a request of IFF_PROMISC to the
-> "multicast replication from other port's traffic" meaning that it won't get
-> for instance, packets with an exact destination in the VF, as above.
-> 
-> The VF's IPv6 address, which adds a "perfect filter" for 33:33:ff:00:00:04,
-> results in no packets for that multicast address making it to the PF (which
-> is in promisc but NOT "multicast replication").
-> 
-> The fix is to enable "multicast promiscuous" whenever the driver is asked
-> to enable IFF_PROMISC, and make sure to disable it when appropriate.
-> 
-> Fixes: e94d44786693 ("ice: Implement filter sync, NDO operations and bump version")
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> ---
-> v2: added fixes
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 26 +++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index 5f86e4111fa9..3a5f9c15b69c 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -275,6 +275,8 @@ static int ice_set_promisc(struct ice_vsi *vsi, u8 promisc_m)
->  	if (status && status != -EEXIST)
->  		return status;
->  
-> +	netdev_dbg(vsi->netdev, "set promisc filter bits for VSI %i: 0x%x\n",
-> +		   vsi->vsi_num, promisc_m);
->  	return 0;
->  }
->  
-> @@ -300,6 +302,8 @@ static int ice_clear_promisc(struct ice_vsi *vsi, u8 promisc_m)
->  						    promisc_m, 0);
->  	}
->  
-> +	netdev_dbg(vsi->netdev, "clear promisc filter bits for VSI %i: 0x%x\n",
-> +		   vsi->vsi_num, promisc_m);
->  	return status;
->  }
->  
-> @@ -414,6 +418,16 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
->  				}
->  				err = 0;
->  				vlan_ops->dis_rx_filtering(vsi);
-> +
-> +				/* promiscuous mode implies allmulticast so
-> +				 * that VSIs that are in promiscuous mode are
-> +				 * subscribed to multicast packets coming to
-> +				 * the port
-> +				 */
-> +				err = ice_set_promisc(vsi,
-> +						      ICE_MCAST_PROMISC_BITS);
-> +				if (err)
-> +					goto out_promisc;
-Aren't we already doing the same thing in case of IFF_ALLMULTI?
-I wonder if our IFF_PROMISC handling is correct. Currently IFF_PROMISC
-means setting PF VSI as default -> all packets from switch that don't
-match any active rule goes to this VSI. If there is a rule (like in case
-from the commit message) packet doesn't go to this VSI. Maybe it should
-replicate all packets to PF VSI even there is a matching rule?
+> Can we carve this series up a little bit to avoid large reposts?
+> Perhaps you can hold off on reposting the cleanup patches starting
+> at patch 17 - repost those separately after the first 16 go in?
 
-Basically, how IFF_PROMISC should work?
+ACK. Sounds good.
+I'll make a cut on 00/09 patch. SmartEEE need probably more discussion and
+changes.
 
-Thanks, Michal
->  			}
->  		} else {
->  			/* Clear Rx filter to remove traffic from wire */
-> @@ -430,6 +444,18 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
->  				    NETIF_F_HW_VLAN_CTAG_FILTER)
->  					vlan_ops->ena_rx_filtering(vsi);
->  			}
-> +
-> +			/* disable allmulti here, but only if allmulti is not
-> +			 * still enabled for the netdev
-> +			 */
-> +			if (!(vsi->current_netdev_flags & IFF_ALLMULTI)) {
-> +				err = ice_clear_promisc(vsi,
-> +							ICE_MCAST_PROMISC_BITS);
-> +				if (err) {
-> +					netdev_err(netdev, "Error %d clearing multicast promiscuous on VSI %i\n",
-> +						   err, vsi->vsi_num);
-> +				}
-> +			}
->  		}
->  	}
->  	goto exit;
-> 
-> base-commit: 811d581194f7412eda97acc03d17fc77824b561f
-> -- 
-> 2.31.1
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
