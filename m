@@ -1,88 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 635EC68E90C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Feb 2023 08:35:07 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D11768EC1C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Feb 2023 10:50:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E84BA6109E;
-	Wed,  8 Feb 2023 07:35:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E84BA6109E
+	by smtp2.osuosl.org (Postfix) with ESMTP id AE69E4031F;
+	Wed,  8 Feb 2023 09:50:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE69E4031F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675841706;
-	bh=6mkFcXQAUFTEGzZ+djfFu97LPRXO8byHCDzVyWYUGQg=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=KAlw6oJn2KtQ66VhY39ZDyvh8AZFNcDbwd3yPdNDfG+QaycKvxQ0XG4dJOByaXZ50
-	 cPjxAH5H6/JNesf7yYtVssUYilh0Y8SNKdfjnKnSb2UcHLQPd3ilW/drgsBwKqwLMy
-	 4Z+pKqz//F2Zep029YJ8NpmcoNNp8JpQfavTMjw2mDIIjn1YRrIVldVdxAOwuP9+av
-	 vpo7u7r+WQiS51dNHg9uvB8aDN26XKA5CzQPiYToC7dneP9PRJLUVfxIqXzDRCZaJw
-	 20cYLIso4/oyBepoVY+0MruVhYs4+e34mo6Na8wuU+GolXWCQWXeY7rGRnweTLovgt
-	 YE7bZWTnGdqfQ==
+	s=default; t=1675849827;
+	bh=Ye+uE2GNt62M3zgFgocJ74CcUchh5HwHsG49K9/Hcl4=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=ZkFaO4CqQBdYj3CC+SL4oX5uSvSmhcRD1I6NdnIbNLGGRpN3Ex+cjhCey2ZlM2i/y
+	 gHk5laJdKVuI91V/4Z1U0c+VFUII9bjGd3HOoCdqD94kmRGZ0al0ENgMrvvrTFahWD
+	 qqU2Nzd/d79K6GoJ56CAWdNYV0+qBhVhEtMD0DXbuBp+BIhkV2V6cAEhgvEkLrOH+q
+	 E7l4547kOpiXFxCwPs3yAuO8TRq0eLThtpZHMkHFL6wPALOxF3ahuX82c8L4ZnMUcp
+	 QTqcJbJzh6b3dFi2C6YJOgA/1KvcxmhPNeLwKQ+lJp7uBpTVFaEBlJ1fUAnlZAHG0m
+	 lnKuSM4ekPh6w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pcMJwJuMjaV4; Wed,  8 Feb 2023 07:35:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lfyhMio8j7hq; Wed,  8 Feb 2023 09:50:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D57F96109A;
-	Wed,  8 Feb 2023 07:35:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D57F96109A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C81740A99;
+	Wed,  8 Feb 2023 09:50:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C81740A99
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EA5CC1BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 07:34:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 297E21BF2C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 09:50:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CE5406109A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 07:34:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE5406109A
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0EF15610B1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 09:50:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0EF15610B1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q-QEr9OupKwh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Feb 2023 07:34:58 +0000 (UTC)
+ with ESMTP id 2_WANfJ-vpFK for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Feb 2023 09:50:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 891B060EB3
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 891B060EB3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 07:34:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10614"; a="392129781"
-X-IronPort-AV: E=Sophos;i="5.97,280,1669104000"; d="scan'208";a="392129781"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Feb 2023 23:34:57 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10614"; a="912641448"
-X-IronPort-AV: E=Sophos;i="5.97,280,1669104000"; d="scan'208";a="912641448"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 07 Feb 2023 23:34:55 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pPeyl-0004HM-0j;
- Wed, 08 Feb 2023 07:34:55 +0000
-Date: Wed, 08 Feb 2023 15:34:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63e35074.lBkn5SoKGht0D4IB%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 178C860C0C
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 178C860C0C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Feb 2023 09:50:21 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id F3803615E8;
+ Wed,  8 Feb 2023 09:50:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5CEF6C4339B;
+ Wed,  8 Feb 2023 09:50:19 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 3EF27E4D032; Wed,  8 Feb 2023 09:50:19 +0000 (UTC)
 MIME-Version: 1.0
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <167584981925.2615.15266963787745673788.git-patchwork-notify@kernel.org>
+Date: Wed, 08 Feb 2023 09:50:19 +0000
+References: <20230207135440.1482856-1-vladimir.oltean@nxp.com>
+In-Reply-To: <20230207135440.1482856-1-vladimir.oltean@nxp.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675841698; x=1707377698;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=6cJC6Jx/Xk3F/6mspB8l4u85ADeHPjUmBF0Qow09qww=;
- b=Ru5hGM69xK1B4Yscqd9ycDIO8fb1smfy9tUS2tMCMLDbjoA/USKsnbxb
- WswW7TGFWlnwzDck3F3ePhwNB4nAp0Z07TZnc8XCtkPJHAiJ6iXhaB9PF
- +JcqgRmrOlQC7dP5t8feir54fBDuuzEgbheDUxUREkb+5GCqf3jp9dNdX
- 7tsC/tRoEdg+0T7pkc407AC7zumyo8P8eVDJ866iAhhu50V91uctyPpHE
- BSE3yYIk1BA6DzIlhpMUUi6xWPzvLVJcgRoqtCGIrthJkrdPirRLZWVVS
- 9L1YcUpoRIGH5GB4aHSQ6+LaqqJulpJdUiVdlCOF03+0UyV7yJccnsDOb
- w==;
+ d=kernel.org; s=k20201202; t=1675849819;
+ bh=cLiPbOJ8zntt3fSqPa689jgruBIOeqFLTn5rcFwFJJA=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=m+5QnJSzY7JbT+QW/JcxM0+Lkfwu9rZOkcKacMD02O5xiOKp+7sk56E4ur+Xyl/hd
+ ureYbVa+mQYqpcrgu2hYiaQP0C13hETs9JkE6TbwSj89XQrtM/3svD2IVjiZPXSpv3
+ ITT+0rT2Y7NStsbpueGxRzx3IfajFiEgeLOq4t70kIMM0+nTAkfcxO4daX7+0tqR5S
+ 430/cpfUlPBJKmi/YNMFS7CjiV+mdUCd5kCeSNKrLnToCdwXGQqerbjKW/IaPJEcb7
+ VHrQwEA+r+ktr5VjFD1MS0ikzi3nUz47eIluGKfwKiBP7/R7p7D+PHQ4MTCQAhIW/X
+ bZL3ILqueUaQA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Ru5hGM69
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 5444bf1ab6306df5052f1be6a3f9351114697643
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=m+5QnJSz
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 00/15] taprio automatic
+ queueMaxSDU and new TXQ selection procedure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,97 +92,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: jiri@resnulli.us, netdev@vger.kernel.org, kurt@linutronix.de,
+ jhs@mojatatu.com, jesse.brandeburg@intel.com, gerhard@engleder-embedded.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, xiyou.wangcong@gmail.com,
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 5444bf1ab6306df5052f1be6a3f9351114697643  ice: fix lost multicast packets in promisc mode
+Hello:
 
-elapsed time: 725m
+This series was applied to netdev/net-next.git (master)
+by David S. Miller <davem@davemloft.net>:
 
-configs tested: 68
-configs skipped: 2
+On Tue,  7 Feb 2023 15:54:25 +0200 you wrote:
+> This patch set addresses 2 design limitations in the taprio software scheduler:
+> 
+> 1. Software scheduling fundamentally prioritizes traffic incorrectly,
+>    in a way which was inspired from Intel igb/igc drivers and does not
+>    follow the inputs user space gives (traffic classes and TC to TXQ
+>    mapping). Patch 05/15 handles this, 01/15 - 04/15 are preparations
+>    for this work.
+> 
+> [...]
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Here is the summary with links:
+  - [v2,net-next,01/15] net/sched: taprio: delete peek() implementation
+    https://git.kernel.org/netdev/net-next/c/ecc0cc98632a
+  - [v2,net-next,02/15] net/sched: taprio: continue with other TXQs if one dequeue() failed
+    https://git.kernel.org/netdev/net-next/c/1638bbbe4ece
+  - [v2,net-next,03/15] net/sched: taprio: refactor one skb dequeue from TXQ to separate function
+    https://git.kernel.org/netdev/net-next/c/92f966674f6a
+  - [v2,net-next,04/15] net/sched: taprio: avoid calling child->ops->dequeue(child) twice
+    https://git.kernel.org/netdev/net-next/c/4c22942734f0
+  - [v2,net-next,05/15] net/sched: taprio: give higher priority to higher TCs in software dequeue mode
+    https://git.kernel.org/netdev/net-next/c/2f530df76c8c
+  - [v2,net-next,06/15] net/sched: taprio: calculate tc gate durations
+    https://git.kernel.org/netdev/net-next/c/a306a90c8ffe
+  - [v2,net-next,07/15] net/sched: taprio: rename close_time to end_time
+    https://git.kernel.org/netdev/net-next/c/e5517551112f
+  - [v2,net-next,08/15] net/sched: taprio: calculate budgets per traffic class
+    https://git.kernel.org/netdev/net-next/c/d2ad689dec10
+  - [v2,net-next,09/15] net/sched: taprio: calculate guard band against actual TC gate close time
+    https://git.kernel.org/netdev/net-next/c/a1e6ad30fa19
+  - [v2,net-next,10/15] net/sched: make stab available before ops->init() call
+    https://git.kernel.org/netdev/net-next/c/1f62879e3632
+  - [v2,net-next,11/15] net/sched: taprio: warn about missing size table
+    https://git.kernel.org/netdev/net-next/c/a3d91b2c6f6b
+  - [v2,net-next,12/15] net/sched: keep the max_frm_len information inside struct sched_gate_list
+    https://git.kernel.org/netdev/net-next/c/a878fd46fe43
+  - [v2,net-next,13/15] net/sched: taprio: automatically calculate queueMaxSDU based on TC gate durations
+    https://git.kernel.org/netdev/net-next/c/fed87cc6718a
+  - [v2,net-next,14/15] net/sched: taprio: split segmentation logic from qdisc_enqueue()
+    https://git.kernel.org/netdev/net-next/c/2d5e8071c47a
+  - [v2,net-next,15/15] net/sched: taprio: don't segment unnecessarily
+    https://git.kernel.org/netdev/net-next/c/39b02d6d104a
 
-gcc tested configs:
-x86_64                            allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-x86_64                           rhel-8.3-bpf
-s390                                defconfig
-powerpc                           allnoconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-s390                             allyesconfig
-ia64                             allmodconfig
-sh                               allmodconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-x86_64                              defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-x86_64                               rhel-8.3
-alpha                            allyesconfig
-arm                                 defconfig
-x86_64                           allyesconfig
-i386                                defconfig
-arm64                            allyesconfig
-i386                             allyesconfig
-i386                 randconfig-a011-20230206
-i386                 randconfig-a014-20230206
-arm                              allyesconfig
-i386                 randconfig-a012-20230206
-i386                 randconfig-a013-20230206
-i386                 randconfig-a015-20230206
-i386                 randconfig-a016-20230206
-x86_64               randconfig-a013-20230206
-x86_64               randconfig-a011-20230206
-x86_64               randconfig-a012-20230206
-x86_64               randconfig-a014-20230206
-x86_64               randconfig-a015-20230206
-x86_64               randconfig-a016-20230206
-arc                  randconfig-r043-20230205
-arm                  randconfig-r046-20230205
-arc                  randconfig-r043-20230206
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-riscv                randconfig-r042-20230206
-s390                 randconfig-r044-20230206
-
-clang tested configs:
-x86_64               randconfig-a002-20230206
-x86_64               randconfig-a004-20230206
-x86_64               randconfig-a003-20230206
-x86_64               randconfig-a001-20230206
-x86_64               randconfig-a005-20230206
-i386                 randconfig-a005-20230206
-i386                 randconfig-a004-20230206
-i386                 randconfig-a001-20230206
-i386                 randconfig-a002-20230206
-x86_64               randconfig-a006-20230206
-hexagon              randconfig-r041-20230205
-i386                 randconfig-a003-20230206
-riscv                randconfig-r042-20230205
-hexagon              randconfig-r045-20230206
-hexagon              randconfig-r041-20230206
-i386                 randconfig-a006-20230206
-arm                  randconfig-r046-20230206
-x86_64                          rhel-8.3-rust
-s390                 randconfig-r044-20230205
-hexagon              randconfig-r045-20230205
-
+You are awesome, thank you!
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
