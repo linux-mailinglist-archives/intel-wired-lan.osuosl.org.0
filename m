@@ -2,79 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72E0269068C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Feb 2023 12:18:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E82F690E3B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Feb 2023 17:19:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 91ED540D0F;
-	Thu,  9 Feb 2023 11:18:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91ED540D0F
+	by smtp2.osuosl.org (Postfix) with ESMTP id A726A4056F;
+	Thu,  9 Feb 2023 16:19:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A726A4056F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1675941483;
-	bh=I5Ewx+jLtIP7VdABGhY+05JmRyRkKixZvYpL2bxGPjY=;
+	s=default; t=1675959572;
+	bh=CfCqXg9mGqLMwjvxi9tfHKDS7fkdSF1It9sBVzjCiWY=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=rdfaUYYD9XiXCs5QIij+moJJ4hTzLMoK4Pa3Bf1z3Z/fXJkDC8colTkHjjVM3Rqw1
-	 pEmrPfxJhi4+hOsZUBiQxzl7JsYU41LrC3lNpKHVs6ZZ42gJsyojbY5cYkJWRTFC1W
-	 nJ+UwDixam6t3wBk6Ntg1WlLSjPW1pULqAPUFFZBeQ0/zdkYjdD1WnafUh595goRM1
-	 V99NyaDahWMu1DVBngqC0x5Q4C01/kqJtt5/c9hcHkiDVX0OrBvVS6bXPgoxKvfBZA
-	 W6uux6POECeC/H/NYbd4udn3JvoMn+vtnlc7QcBWkCRVj6L2AP1S0BCAPA8zt86YfL
-	 xC03fRRxXLWeA==
+	b=xuo/VOYmNzocjY2kkXGlX9dGcQFEOSkbbO6Q2gJ1GLTRYCqginTBImZQcns6azOj/
+	 Xnp5pji93io1rzWkV165qm0TlVxZpqNfDRcHDSXCfUoin3iAn4lYq3ZrW5GGutM6Q0
+	 GNfLMu+qqFB5cwVp0czMo1JBUw5zFff+m03usteQBiWLloBHSpBmxbVOAUzP1KM5db
+	 hjZ2hnhw+YBLFIeJOFK+fFxKehW7IcMROT8GnZ1f1iblCaGLfdJTbSYvBCt5acneIf
+	 ylZfp6d3QUtvpwOr93LFVFSu2rZeG5QeomdxjIx1Mdty0NpkFa1fE6bNhqHZnesoqR
+	 t0sDuQeRQa/OA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9D9NY_yWJzva; Thu,  9 Feb 2023 11:18:02 +0000 (UTC)
+	with ESMTP id ZKwHm4aATupg; Thu,  9 Feb 2023 16:19:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7DC39404D1;
-	Thu,  9 Feb 2023 11:18:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7DC39404D1
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 03EBA1BF5AD
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Feb 2023 11:17:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8C5C0404F9;
+	Thu,  9 Feb 2023 16:19:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C5C0404F9
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A0871BF2BB
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Feb 2023 16:19:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CA8D2404D1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Feb 2023 11:17:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA8D2404D1
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3FCF982096
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Feb 2023 16:19:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FCF982096
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4vk-HQSx6bG4 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Feb 2023 11:17:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6c7xwragXW6p for <intel-wired-lan@osuosl.org>;
+ Thu,  9 Feb 2023 16:19:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B417040462
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B417040462
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Feb 2023 11:17:55 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 05E5A619C2;
- Thu,  9 Feb 2023 11:17:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6C36C433D2;
- Thu,  9 Feb 2023 11:17:53 +0000 (UTC)
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: bpf@vger.kernel.org
-Date: Thu,  9 Feb 2023 12:17:25 +0100
-Message-Id: <b564473cdefc82bda9a3cecd3c15538a418e8ad2.1675941199.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.39.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4473882016
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4473882016
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Feb 2023 16:19:25 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10615"; a="318171170"
+X-IronPort-AV: E=Sophos;i="5.97,284,1669104000"; d="scan'208";a="318171170"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Feb 2023 08:19:19 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10615"; a="776538054"
+X-IronPort-AV: E=Sophos;i="5.97,284,1669104000"; d="scan'208";a="776538054"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmsmga002.fm.intel.com with ESMTP; 09 Feb 2023 08:19:16 -0800
+Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 373D937E3F;
+ Thu,  9 Feb 2023 16:19:15 +0000 (GMT)
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>
+Date: Thu,  9 Feb 2023 17:01:30 +0100
+Message-Id: <20230209160130.1779890-1-larysa.zaremba@intel.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1675941474;
- bh=u5OTeyvEI9BF11Q3e6rlK/Gtws2OGY6/oidQIVWTcdY=;
- h=From:To:Cc:Subject:Date:From;
- b=CedugU1tkhgKeCDcJ3Y9HqqwmezGNYoB45Xn4Uak0TUvZrz4U57vne4ZgkrjxHdfx
- zakNTNyyc7ZUbqhDpMkfDoO4hDVraYH7keUF1E6q2A2QwuU4BfhLZCxK8PQ4FnuAw7
- FbAuICWxMGdSbwiiYEXGKGhnAehGIq29vLGjYvIQ115K9nKPo6Wznln5xsF/yobt7p
- h94tG2uvBLdjM9ck5QXXX3IiJ6Pe52GX/DWpV85+dmSmFV+BXklGf8RD/JeNls0kUJ
- 1D6fLIUx13mGujlzLZAo5IJKZlt5t28kIe3/j1/aP2MvZFeGTDvPi0bzfEp4W0PhAg
- Lcew9WiLRv89w==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=CedugU1t
-Subject: [Intel-wired-lan] [PATCH bpf-next] ice: update xdp_features with
- xdp multi-buff
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675959565; x=1707495565;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cES7VibJypSD2FgfCCkYJ+cLH4/wP6Ku2mh8oWTrJmk=;
+ b=GpdHHnu3089UgXpSZE5dNwaPGa2aWlvTTD0qoYRhm2mwIFebjBfiYgiZ
+ pfTWmb9qBrDqJHDIqnRGN8z3FGOxEtVuppgqhWpTw8FcCEhInQ3lkxpr8
+ GjSnamINN6UWCPxQY94b9FsGfX3DrdojvYMrR6xtmtReQgE15H28TFTWR
+ tZQK0F3mwD2FMZcSjBjIyE5v84NVVw/GykbB6g324dH59dmkJXiryiQpN
+ KXtDclcoMMjfr1Jmakh8uHFXhvrGmLcl3pRXUlh1KEYzEtpBG73HSFm3l
+ rz65+uXeW+qjaU4ldxKWMtcEHwq7KV5jICtF/3KmK4TIJxY7rUyGLTKlt
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=GpdHHnu3
+Subject: [Intel-wired-lan] [PATCH net] ice: xsk: Fix cleaning of XDP_TX
+ frames
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,47 +96,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: daniel@iogearbox.net, netdev@vger.kernel.org, ast@kernel.org,
- andrii@kernel.org, jesse.brandeburg@intel.com, edumazet@google.com,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: Larysa Zaremba <larysa.zaremba@intel.com>, intel-wired-lan@osuosl.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ bpf@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now ice driver supports xdp multi-buffer so add it to xdp_features.
+Incrementation of xsk_frames inside the for-loop produces
+infinite loop, if we have both normal AF_XDP-TX and XDP_TXed
+buffers to complete.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Split xsk_frames into 2 variables (xsk_frames and completed_frames)
+to eliminate this bug.
+
+Fixes: 29322791bc8b ("ice: xsk: change batched Tx descriptor cleaning")
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+To Tony: this is urgent and should go directly via net. It's tested and acked.
+---
+ drivers/net/ethernet/intel/ice/ice_xsk.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 074b0e6d0e2d..7194888d2a3d 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2913,7 +2913,7 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
- 			if (xdp_ring_err)
- 				NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
- 		}
--		xdp_features_set_redirect_target(vsi->netdev, false);
-+		xdp_features_set_redirect_target(vsi->netdev, true);
- 		/* reallocate Rx queues that are used for zero-copy */
- 		xdp_ring_err = ice_realloc_zc_buf(vsi, true);
- 		if (xdp_ring_err)
-@@ -3463,7 +3463,8 @@ static int ice_cfg_netdev(struct ice_vsi *vsi)
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 7105de6fb344..374b7f10b549 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -800,6 +800,7 @@ static void ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring)
+ 	struct ice_tx_desc *tx_desc;
+ 	u16 cnt = xdp_ring->count;
+ 	struct ice_tx_buf *tx_buf;
++	u16 completed_frames = 0;
+ 	u16 xsk_frames = 0;
+ 	u16 last_rs;
+ 	int i;
+@@ -809,19 +810,21 @@ static void ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring)
+ 	if ((tx_desc->cmd_type_offset_bsz &
+ 	    cpu_to_le64(ICE_TX_DESC_DTYPE_DESC_DONE))) {
+ 		if (last_rs >= ntc)
+-			xsk_frames = last_rs - ntc + 1;
++			completed_frames = last_rs - ntc + 1;
+ 		else
+-			xsk_frames = last_rs + cnt - ntc + 1;
++			completed_frames = last_rs + cnt - ntc + 1;
+ 	}
  
- 	ice_set_netdev_features(netdev);
- 	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
--			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
-+			       NETDEV_XDP_ACT_XSK_ZEROCOPY |
-+			       NETDEV_XDP_ACT_RX_SG;
+-	if (!xsk_frames)
++	if (!completed_frames)
+ 		return;
  
- 	ice_set_ops(netdev);
+-	if (likely(!xdp_ring->xdp_tx_active))
++	if (likely(!xdp_ring->xdp_tx_active)) {
++		xsk_frames = completed_frames;
+ 		goto skip;
++	}
  
+ 	ntc = xdp_ring->next_to_clean;
+-	for (i = 0; i < xsk_frames; i++) {
++	for (i = 0; i < completed_frames; i++) {
+ 		tx_buf = &xdp_ring->tx_buf[ntc];
+ 
+ 		if (tx_buf->raw_buf) {
+@@ -837,7 +840,7 @@ static void ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring)
+ 	}
+ skip:
+ 	tx_desc->cmd_type_offset_bsz = 0;
+-	xdp_ring->next_to_clean += xsk_frames;
++	xdp_ring->next_to_clean += completed_frames;
+ 	if (xdp_ring->next_to_clean >= cnt)
+ 		xdp_ring->next_to_clean -= cnt;
+ 	if (xsk_frames)
 -- 
-2.39.1
+2.35.3
 
 _______________________________________________
 Intel-wired-lan mailing list
