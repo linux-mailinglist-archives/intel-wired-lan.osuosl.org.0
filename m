@@ -2,87 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 656D16917FE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Feb 2023 06:33:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6173E69184B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Feb 2023 07:06:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 02291402D2;
-	Fri, 10 Feb 2023 05:33:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 02291402D2
+	by smtp4.osuosl.org (Postfix) with ESMTP id EE593418AE;
+	Fri, 10 Feb 2023 06:06:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE593418AE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676007223;
-	bh=mJpA9s/9bjJL61Xm506JjYdpR7ocL6coeR09W7zeHtY=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=CC2MFBR9Z4bhzLQGJmD4XwFROClp4moBksedYPFMpkiPAjdP6HletbF9GF2fKRdET
-	 PqPndEmYm1S40HHyqQaqrGGjvqHJPBCMDGEoNb4h4DWGbOxpmepORonVfbmRRw61Im
-	 lLbNTKK11xBDRxqZr24vbipOW13vjrFYk6xeNrs3Wmtz2IBe+yLFUQB+OX7d9H3S5e
-	 2RJIlUNsMDNytIKD3PC6MInTfYzhwvgpflyDBwSduJX0OyFptxBap63wtRTDq0ARMt
-	 AZ8WAjCzxNipL+BgJjPSUhhglAAS9QEbL2u12hf0r6wgd7PIHyYeA9raPn6KJZaYK4
-	 UuiFUwrZYuvmg==
+	s=default; t=1676009173;
+	bh=tjnMuFAJVAHBNrxYt2K1ZZeC0Q0RT6xv9zR1sMB5NSk=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=bFnjY2hizfmYHMAIYiwi6fIGZYULkZoHJ87TiaLgynxd+yCNyUARL9BWYujyulpZ2
+	 tEt6TJW6QXw93lwagBFXax4lXRyeTHCzupzQwds+953laeZ1udP08PUu2poKssI1K3
+	 YuY8BNAs7XxIUzuUnQfnWv2XWwQMHUYJ/xZXB6+Ene5ZHXH/iWHqtIobZCuy/ds+Da
+	 74p7t8902yYNP3qD3XDsC8wLFq1BlDcBushOIngmmHN9p0uhKilIok8n1L0oA++RRy
+	 xdQGsOjJ7liToAwVz2kg8mwbCHuahkVbcLitLKMTT8+3Aa+g9dolPvIi/TXwOjBAjS
+	 NHaOdJWMdpC1g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0hgp_3llw1Lg; Fri, 10 Feb 2023 05:33:41 +0000 (UTC)
+	with ESMTP id ILPjofNkjcZJ; Fri, 10 Feb 2023 06:06:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2F40D402C5;
-	Fri, 10 Feb 2023 05:33:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2F40D402C5
+	by smtp4.osuosl.org (Postfix) with ESMTP id A3B75408E0;
+	Fri, 10 Feb 2023 06:06:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A3B75408E0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6ADE81BF20B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 05:33:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E496E1BF47A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 06:06:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4282260AA3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 05:33:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4282260AA3
+ by smtp2.osuosl.org (Postfix) with ESMTP id CA90840488
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 06:06:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA90840488
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c68EjjZmk8ug for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Feb 2023 05:33:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pSuffeL-ohB9 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Feb 2023 06:06:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E20160A9C
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4E20160A9C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 05:33:34 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10616"; a="330349932"
-X-IronPort-AV: E=Sophos;i="5.97,286,1669104000"; d="scan'208";a="330349932"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Feb 2023 21:33:32 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10616"; a="617780862"
-X-IronPort-AV: E=Sophos;i="5.97,286,1669104000"; d="scan'208";a="617780862"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 09 Feb 2023 21:33:25 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pQM2G-0005aI-1C;
- Fri, 10 Feb 2023 05:33:24 +0000
-Date: Fri, 10 Feb 2023 13:32:24 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63e5d6e8.MSbXtEkepA7EolIQ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 080E7400C1
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 080E7400C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Feb 2023 06:06:01 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10616"; a="392747130"
+X-IronPort-AV: E=Sophos;i="5.97,286,1669104000"; d="scan'208";a="392747130"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Feb 2023 22:06:01 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10616"; a="645523480"
+X-IronPort-AV: E=Sophos;i="5.97,286,1669104000"; d="scan'208";a="645523480"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Feb 2023 22:06:00 -0800
+Date: Fri, 10 Feb 2023 07:05:51 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <Y+Xep2FQgmEWdzs0@localhost.localdomain>
+References: <20230206235436.2254802-1-jesse.brandeburg@intel.com>
+ <Y+Oky4j0zDyfLp8r@localhost.localdomain>
+ <030bb9a9-de44-215e-c274-f0a02b2d5cd5@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <030bb9a9-de44-215e-c274-f0a02b2d5cd5@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676007214; x=1707543214;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=HgYe8FwR6DnU0phX69L+UIndPfGF5GbCxUI2IYSHQFQ=;
- b=lNhi7rORwcv3Beohgi1uDBGfGgQkJwLd/TisiL6s3rP2a5N1fEpr70jn
- v10Si77f7keMajgcIA7TDpqFfeV642RDcRtwHor6BYd7rOaZQbQkijSiu
- ee+Mipjlyr5ZDJ6IVdQ6VSZizuo4p7XRBt5CyzNYiwCFlOKS2UjQjOYR2
- lj4hwPUNM3JLKDvaaGVO+L7CcMCjJTKI4LaRPCaKrxXOW9aYdJXo3zEMo
- i5sHcqw+kkvcXAftspAJNctM5gYieV7CWZ7aayG2mXVwMcmaY3AIOxxTF
- l3yAoujmwAi8MQ+EvikBoZNvHYEkDohUKYPYb17ZLfuiU7dq/RFBmBH4B
+ t=1676009162; x=1707545162;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=nA82sw5nDbMvWQuwgRviWKgQY9xt4EMKa/g0vQjAaSA=;
+ b=U0CSiXdBcW3dKdKX0hyBqetwuEkDt80A5+DIddJ2bmFOt2tvXUhOGtJJ
+ XCZEic+LZGo5Xrp645nXawRRgdv+rMw9c+HfKM17ts5aThXKSU930Ev56
+ wY0/sbE9fXfXwQ1/4Wz8+v2WoZa50iv1syiUEyI1JD+E/mFXBB124JwK0
+ FnnORXRvJ1gQ4ImdzgD6SBWyVOTj8Xh52k68QW9H2qOcjTRUsb4CYUMi9
+ 6BkIWulDLzy6zbPlcj01thn2UO4Zz/ZDNwbaLpaGYmcm3WEsOJF1yj5+3
+ WOMZTDX1ajh3NmH3elpNLIaDVkEDj2oMY/QXtcc3/jkCSbWabSQlBuLiO
  A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lNhi7rOR
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- fd1818ef4485ce9620e5e965c119ff84c64d81a4
+ header.a=rsa-sha256 header.s=Intel header.b=U0CSiXdB
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: fix lost multicast
+ packets in promisc mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,91 +97,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: fd1818ef4485ce9620e5e965c119ff84c64d81a4  ice: use debugfs to output FW log data
+On Thu, Feb 09, 2023 at 06:08:45PM -0800, Jesse Brandeburg wrote:
+> On 2/8/2023 5:34 AM, Michal Swiatkowski wrote:
+> > > @@ -414,6 +418,16 @@ static int ice_vsi_sync_fltr(struct ice_vsi *vsi)
+> > >   				}
+> > >   				err = 0;
+> > >   				vlan_ops->dis_rx_filtering(vsi);
+> > > +
+> > > +				/* promiscuous mode implies allmulticast so
+> > > +				 * that VSIs that are in promiscuous mode are
+> > > +				 * subscribed to multicast packets coming to
+> > > +				 * the port
+> > > +				 */
+> > > +				err = ice_set_promisc(vsi,
+> > > +						      ICE_MCAST_PROMISC_BITS);
+> > > +				if (err)
+> > > +					goto out_promisc;
+> > Aren't we already doing the same thing in case of IFF_ALLMULTI?
+> > I wonder if our IFF_PROMISC handling is correct. Currently IFF_PROMISC
+> > means setting PF VSI as default -> all packets from switch that don't
+>                                                                   ^^^^^
+> that's the critical failure of the original code.
+> 
+> > match any active rule goes to this VSI. If there is a rule (like in case
+> > from the commit message) packet doesn't go to this VSI. Maybe it should
+> > replicate all packets to PF VSI even there is a matching rule?
+> 
+> That's what this code change does, turn on the MCAST_PROMISC_BITS flag which
+> makes the hardware replicate all multicasts received with *other*
+> destination VSIs to this PF one.
+> 
+> > 
+> > Basically, how IFF_PROMISC should work?
+> 
+> Yep, it's always how it should have worked, but it wasn't quite working
+> right, and using bridge "fixed" it because bridge sets both PROMISC and
+> ALLMULTI bits.
+> 
+> 
 
-elapsed time: 727m
+Ok, thanks for explanation.
 
-configs tested: 62
-configs skipped: 2
+From commit message:
+"The root cause of the issue is that if the PF is asked to be in IFF_PROMISC
+mode (promiscuous mode) and it had an ipv6 address that needed the
+33:33:ff:00:00:04 multicast address to work, then when the VF was added
+with the need for the same multicast address, the VF would steal all the
+traffic destined for that address."
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-x86_64                            allnoconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-m68k                             allmodconfig
-alpha                            allyesconfig
-arc                              allyesconfig
-powerpc                           allnoconfig
-x86_64                           allyesconfig
-arc                  randconfig-r043-20230209
-arm                  randconfig-r046-20230209
-x86_64                        randconfig-a013
-ia64                             allmodconfig
-x86_64                        randconfig-a011
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-m68k                             allyesconfig
-x86_64                           rhel-8.3-kvm
-x86_64                        randconfig-a015
-arc                                 defconfig
-x86_64                           rhel-8.3-bpf
-sh                               allmodconfig
-x86_64                        randconfig-a004
-s390                             allmodconfig
-mips                             allyesconfig
-alpha                               defconfig
-x86_64                        randconfig-a002
-s390                                defconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-s390                             allyesconfig
-x86_64                        randconfig-a006
-i386                          randconfig-a005
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-i386                                defconfig
-i386                             allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-arm                                 defconfig
-powerpc                          allmodconfig
-arm64                            allyesconfig
-arm                              allyesconfig
-
-clang tested configs:
-hexagon              randconfig-r041-20230209
-hexagon              randconfig-r045-20230209
-x86_64                        randconfig-a012
-s390                 randconfig-r044-20230209
-x86_64                        randconfig-a014
-riscv                randconfig-r042-20230209
-x86_64                        randconfig-a016
-x86_64                        randconfig-a005
-x86_64                        randconfig-a001
-i386                          randconfig-a002
-x86_64                        randconfig-a003
-i386                          randconfig-a004
-i386                          randconfig-a013
-i386                          randconfig-a006
-i386                          randconfig-a011
-i386                          randconfig-a015
-x86_64                          rhel-8.3-rust
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+I wonder why there is no "perfect filter" for multicast ipv6 on PF if PF
+have an ipv6 address? It is deleted by kernel in this configuration? Two
+"perfect filters" for the same MAC results in packet replication (if
+they have the same priority, but in our driver they have).
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
