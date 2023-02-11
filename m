@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 840A9694486
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Feb 2023 12:30:29 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7250694C93
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Feb 2023 17:24:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A6196817EB;
-	Mon, 13 Feb 2023 11:30:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6196817EB
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5625B410DE;
+	Mon, 13 Feb 2023 16:24:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5625B410DE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676287826;
-	bh=IZegxpv/TIEGanXOfgdumgV5TUvfpAPOmT+/+O9Xr50=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=UZENPerJBHGqoVKrCtraH4U1xOa+bpJdIeRo4P4LQVAUSzfhx6krW8Pk870By80Lz
-	 owBQjjMdkCQ9z+YyY4iGg1O/8i60+koPKqO7jEE5qkmk8wSsUp7bBsitL2Ze58Q5lZ
-	 0U9i/+93Q25K35hVzS2/dlddba6MA8BcJphF126diFX2s0nUpEUoamgPry3Ri9gnN4
-	 /Q17pwmyrpIMGEAkS1ZJ8ASLEDU+1w6LlW8g8tnWATERpCTVCLxGYPuA+M7d4UCaDe
-	 jBkNRD5qR543kzQb8EHjIKj2I65RGZPyHFRUrg4Jv7bs9vBpPw3ZGi/MPBQfBAfU4J
-	 5f3JUSfgv/cWA==
+	s=default; t=1676305462;
+	bh=MuenOeGWvfQIvnkXXUQZZJCwCdRSNidUO44WsDwo7g4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=q7WNt3Sq6UOXX9cwArFvSdi0yPVhnqj8xzFJD41mP45Ltn83h7PX/1f/BeE/MxjWV
+	 W6gnqgWHseYMyASmjS8o+Qhz9C+aBXp7GDbtW64t1gjF9Tjtr0j2hvtTfS5JF4Lbcb
+	 J9qdOtq4c5VlF8vWU4PS9YSFz53mCGzZsmwEhtClRkGh6KqzSMwvud0IOLMu4KQosP
+	 a0vL1bGxVESQz6W/PsVSxoIdC1uLupF2wRKXM575v04wVjOtQi7exZdgn23tevY1TW
+	 hoaPrzYrDlNci5S0QjkTmIQwpE8AM/4TAxf4nK1z4uRCSRHDwUH9sitVMkAG68DE3c
+	 caDffF3KaZydQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nzhhbwFZIZ4L; Mon, 13 Feb 2023 11:30:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IVZjYZzQIy8u; Mon, 13 Feb 2023 16:24:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8ADB28174A;
-	Mon, 13 Feb 2023 11:30:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8ADB28174A
+	by smtp4.osuosl.org (Postfix) with ESMTP id F36BA40304;
+	Mon, 13 Feb 2023 16:24:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F36BA40304
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D31881BF39E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 11:30:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 227F81BF421
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Feb 2023 07:41:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B8AAD60F6C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 11:30:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B8AAD60F6C
+ by smtp2.osuosl.org (Postfix) with ESMTP id A7E1D41736
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Feb 2023 07:41:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A7E1D41736
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oeM0sM3gw-fc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Feb 2023 11:30:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0E0960F58
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B0E0960F58
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 11:30:19 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A191760FD2;
- Mon, 13 Feb 2023 11:30:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 11B2CC433D2;
- Mon, 13 Feb 2023 11:30:18 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- ECA2DE68D2E; Mon, 13 Feb 2023 11:30:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PHBh0x1dUUeE for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 11 Feb 2023 07:41:40 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81CCE400D7
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 81CCE400D7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Feb 2023 07:41:40 +0000 (UTC)
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pQkVc-0003za-Rp; Sat, 11 Feb 2023 08:41:20 +0100
+Received: from [2a0a:edc0:0:1101:1d::ac] (helo=dude04.red.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pQkVX-004ALl-OG; Sat, 11 Feb 2023 08:41:16 +0100
+Received: from ore by dude04.red.stw.pengutronix.de with local (Exim 4.94.2)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pQkVW-00BfsC-Vw; Sat, 11 Feb 2023 08:41:14 +0100
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+To: Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Date: Sat, 11 Feb 2023 08:41:04 +0100
+Message-Id: <20230211074113.2782508-1-o.rempel@pengutronix.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <167628781796.3463.3151948451131518084.git-patchwork-notify@kernel.org>
-Date: Mon, 13 Feb 2023 11:30:17 +0000
-References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
-In-Reply-To: <20230211074113.2782508-1-o.rempel@pengutronix.de>
-To: Oleksij Rempel <o.rempel@pengutronix.de>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1676287818;
- bh=SMomGZUWf/X7WdKybml+B0OSPVKkL3Uyt487pPjNiNQ=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=WyfCEEShHQ6AW/TKI7y3OTF57IPygN6yBnstNojtQ+WQCKMOFjfqXEj8CRoNeIeEy
- BO5cGSpxa1E8L2D/ROKoamQoIX0eCvu4JdFSc8ganfCywJCIwMIyQU2lJqrnl4fi53
- 5dkOHtw7zSJieAFSURqUP2QGIkzc3UPYSL0mcA1GYGkCqSu1Ku+Ujc3Vsif/MIgUJr
- qH0jdrBxij5BrEeHVzchjW502aaBbpNxkSClxGTsolR/rZF7k3QjVhgE42SXv7GDPD
- C7z+bkLuGAGLDrJ5TDw7QUdN5GhBGzMJKgaapIxAYY9zr3ZKViWMAp5C0CDq1nH/lD
- afgprwGZ9K9gQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=WyfCEESh
-Subject: Re: [Intel-wired-lan] [PATCH net-next v8 0/9] net: add EEE support
- for KSZ9477 switch family
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ore@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+X-Mailman-Approved-At: Mon, 13 Feb 2023 16:23:36 +0000
+Subject: [Intel-wired-lan] [PATCH net-next v8 0/9] net: add EEE support for
+ KSZ9477 switch family
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,60 +92,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: woojung.huh@microchip.com, andrew@lunn.ch, Arun.Ramadoss@microchip.com,
- f.fainelli@gmail.com, davem@davemloft.net, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
- edumazet@google.com, pabeni@redhat.com, wei.fang@nxp.com,
- kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- olteanv@gmail.com, vivien.didelot@gmail.com, hkallweit1@gmail.com
+Cc: Arun.Ramadoss@microchip.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Oleksij Rempel <o.rempel@pengutronix.de>,
+ intel-wired-lan@lists.osuosl.org, kernel@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+changes v8:
+- fix comment for linkmode_to_mii_eee_cap1_t() function
+- add Acked-by: Arun Ramadoss <arun.ramadoss@microchip.com>
+- add Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
 
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
+changes v7:
+- update documentation for genphy_c45_eee_is_active()
+- address review comments on "net: dsa: microchip: enable EEE support"
+  patch
 
-On Sat, 11 Feb 2023 08:41:04 +0100 you wrote:
-> changes v8:
-> - fix comment for linkmode_to_mii_eee_cap1_t() function
-> - add Acked-by: Arun Ramadoss <arun.ramadoss@microchip.com>
-> - add Reviewed-by: Alexander Duyck <alexanderduyck@fb.com>
-> 
-> changes v7:
-> - update documentation for genphy_c45_eee_is_active()
-> - address review comments on "net: dsa: microchip: enable EEE support"
->   patch
-> 
-> [...]
+changes v6:
+- split patch set and send only first 9 patches
+- Add Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+- use 0xffff instead of GENMASK
+- Document @supported_eee
+- use "()" with function name in comments
 
-Here is the summary with links:
-  - [net-next,v8,1/9] net: dsa: microchip: enable EEE support
-    https://git.kernel.org/netdev/net-next/c/69d3b36ca045
-  - [net-next,v8,2/9] net: phy: add genphy_c45_read_eee_abilities() function
-    https://git.kernel.org/netdev/net-next/c/14e47d1fb8f9
-  - [net-next,v8,3/9] net: phy: micrel: add ksz9477_get_features()
-    https://git.kernel.org/netdev/net-next/c/48fb19940f2b
-  - [net-next,v8,4/9] net: phy: export phy_check_valid() function
-    https://git.kernel.org/netdev/net-next/c/cf9f60796968
-  - [net-next,v8,5/9] net: phy: add genphy_c45_ethtool_get/set_eee() support
-    https://git.kernel.org/netdev/net-next/c/022c3f87f88e
-  - [net-next,v8,6/9] net: phy: c22: migrate to genphy_c45_write_eee_adv()
-    https://git.kernel.org/netdev/net-next/c/9b01c885be36
-  - [net-next,v8,7/9] net: phy: c45: migrate to genphy_c45_write_eee_adv()
-    https://git.kernel.org/netdev/net-next/c/5827b168125d
-  - [net-next,v8,8/9] net: phy: migrate phy_init_eee() to genphy_c45_eee_is_active()
-    https://git.kernel.org/netdev/net-next/c/6340f9fd43d5
-  - [net-next,v8,9/9] net: phy: start using genphy_c45_ethtool_get/set_eee()
-    https://git.kernel.org/netdev/net-next/c/8b68710a3121
+changes v5:
+- spell fixes
+- move part of genphy_c45_read_eee_abilities() to
+  genphy_c45_read_eee_cap1()
+- validate MDIO_PCS_EEE_ABLE register against 0xffff val.
+- rename *eee_100_10000* to *eee_cap1*
+- use linkmode_intersects(phydev->supported, PHY_EEE_CAP1_FEATURES)
+  instead of !linkmode_empty()
+- add documentation to linkmode/register helpers
 
-You are awesome, thank you!
+changes v4:
+- remove following helpers:
+  mmd_eee_cap_to_ethtool_sup_t
+  mmd_eee_adv_to_ethtool_adv_t
+  ethtool_adv_to_mmd_eee_adv_t
+  and port drivers from this helpers to linkmode helpers.
+- rebase against latest net-next
+- port phy_init_eee() to genphy_c45_eee_is_active()
+
+changes v3:
+- rework some parts of EEE infrastructure and move it to c45 code.
+- add supported_eee storage and start using it in EEE code and by the
+  micrel driver.
+- add EEE support for ar8035 PHY
+- add SmartEEE support to FEC i.MX series.
+
+changes v2:
+- use phydev->supported instead of reading MII_BMSR regiaster
+- fix @get_eee > @set_eee
+
+With this patch series we provide EEE control for KSZ9477 family of
+switches and
+AR8035 with i.MX6 configuration.
+According to my tests, on a system with KSZ8563 switch and 100Mbit idle
+link,
+we consume 0,192W less power per port if EEE is enabled.
+
+Oleksij Rempel (9):
+  net: dsa: microchip: enable EEE support
+  net: phy: add genphy_c45_read_eee_abilities() function
+  net: phy: micrel: add ksz9477_get_features()
+  net: phy: export phy_check_valid() function
+  net: phy: add genphy_c45_ethtool_get/set_eee() support
+  net: phy: c22: migrate to genphy_c45_write_eee_adv()
+  net: phy: c45: migrate to genphy_c45_write_eee_adv()
+  net: phy: migrate phy_init_eee() to genphy_c45_eee_is_active()
+  net: phy: start using genphy_c45_ethtool_get/set_eee()
+
+ drivers/net/dsa/microchip/ksz_common.c |  66 +++++
+ drivers/net/phy/micrel.c               |  21 ++
+ drivers/net/phy/phy-c45.c              | 319 ++++++++++++++++++++++++-
+ drivers/net/phy/phy.c                  | 153 ++----------
+ drivers/net/phy/phy_device.c           |  26 +-
+ include/linux/mdio.h                   |  84 +++++++
+ include/linux/phy.h                    |  14 ++
+ include/uapi/linux/mdio.h              |   8 +
+ 8 files changed, 554 insertions(+), 137 deletions(-)
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.30.2
 
 _______________________________________________
 Intel-wired-lan mailing list
