@@ -1,181 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F56B694DA8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Feb 2023 18:05:36 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0745769509A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Feb 2023 20:25:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED711410DF;
-	Mon, 13 Feb 2023 17:05:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED711410DF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 898D381D68;
+	Mon, 13 Feb 2023 19:25:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 898D381D68
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676307935;
-	bh=7tmDXlErObNS8QH1ThRDBwzQbH2SW1ce4ENc9ONJegU=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=W99pz7IIsNzdCI5tono3D7Dl9jB/hv48grGQGrNpyVZOeU0dy0DblAA+QX4qBIxDB
-	 jdtwc6lGs+V193qfgMJdgFrLDsoRXv95e09+MCnHX1D2dBUqh2JQ6elVcjTpELe5pK
-	 SHkaHUvnDitlupbU0eZtdnb6Mjc0fr7pxGqG7LY1uQr0QKDUXfGiltpn7YRB4gNydp
-	 5CF+4QfXxM4+YAezTlTJoDR1gzOeqbmbmAmoqoOKRqJ5mVAASI9rF74BnogOYui8WX
-	 PEg2jk2iAugiBxeHglzgeHS/if5MY0R5uFvo/yAeTgS62mgDo38zOSWmMB62dKf1s4
-	 svUoVBTzMn8Sg==
+	s=default; t=1676316352;
+	bh=+mC0G8f8/sXxufasdOi+VDyb5i8PfsG/CtRWBCeCgZ4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=3nPKL45qdJBxpEIWo3XiFoEx6gUYaIdeXTm/juzABzFZmWVMLTXwex16S4bLuqHiw
+	 BbdJbiT6CLUOSQ/LMFtNoRHvSa0SvFmFeNIXjPAtlyFzW3P9/JtKKQitSoOH45ftX8
+	 akWM518he/Pt6G06n/fBzpX9sohHZvQZWh5LyaM8T4GT3NoeCcBK/yjlICxFpRYzWT
+	 7CnlxStOx2Nc4KXm/LmKLIQUGsSFD/jjEZ7qCXmaDVjQSYkAMSaWG6swhABl1f8Q1t
+	 Ntn/hdBEUftj2e4gxTb3jAiABbO5y3yiO6f1tTLOetnMzluE+P/nk3Ym7pgL33e6Ut
+	 hopgi6bc7BUwg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4v8mqPA4FBLI; Mon, 13 Feb 2023 17:05:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZZ_TX-ug8RQN; Mon, 13 Feb 2023 19:25:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 98961410B5;
-	Mon, 13 Feb 2023 17:05:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98961410B5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 71F9781CEF;
+	Mon, 13 Feb 2023 19:25:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 71F9781CEF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7DA2F1BF2BA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 17:05:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F3DC1BF289
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 19:03:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 53CB16103F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 17:05:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 53CB16103F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 88E4980DC0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 19:03:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 88E4980DC0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YIUpF1_ofSE7 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Feb 2023 17:05:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4_duXiPlbijb for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Feb 2023 19:03:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F01560FC9
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8F01560FC9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 17:05:27 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="314580353"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="314580353"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2023 09:05:26 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="737576474"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="737576474"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga004.fm.intel.com with ESMTP; 13 Feb 2023 09:05:25 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Mon, 13 Feb 2023 09:05:23 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Mon, 13 Feb 2023 09:05:23 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Mon, 13 Feb 2023 09:05:23 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.170)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Mon, 13 Feb 2023 09:05:22 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LQywLWcwi11HurkzP9RKjbDfO4EEu3MNF374rGt9c8mv12E0sHqlbAbb4apH5vF0jJF+M0R/fzWbYVhVjAUu3wy/0nMo6ZR4yx57oS8BteSl3pPGlTvxw9az7QsQRfTayVT3V7cmq7KSFvG3ivg/e4SKN3RhkAO8N6bu8J38E3Dlb6dzD89Jim3XF9YhT+8dlqPC5DgTQo+RxfYpZf8FVWFm778YOFKDn2VGj7WAGV0XUNraF0b4Mj+YnW7iT7dGtkyMlaR1y35/yHDQLFXQLp/1w4En2VlbmgOFjWAIQiOAv1MUhlb6IGppJH5z7y8bTT1KjfojJOa0eYGh3OUSWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dzSIashim5biM3D6z5p1RsQ5nPb4WeJSGyTWmAqvBVk=;
- b=AWonyBEa1Iftl+n5PMmxirmJN4qV/hpUxr62QsQFJhBh8eQ+w05I5567gD+T5UfCYwOfQ5pAZ0PhunowjV7SFzlKMthbkAjHFXhoPdWBdL4/mN4Ftt7bLAbkIqM1Sne0wYnJr0oh1OjizUBMXhZ2U8dLlJ8GhLqjcjbKmCllpnodskzCeyHsS6QXMq0+Vmkjj+DtjzPRs+f9eFbja2dd9htP0Huux0+jhDP1g4wPae+nEfycQL9m9DTDDNUmfCcu+sdk5k/7ZDKC0FeCrfaLnPjSoOv1Au8iNNs7XgH4oRJ2/xMs2M2HISeW9eq93kzj6/V5dfxmhozOWjh5QQwP4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com (2603:10b6:a03:79::29)
- by DS7PR11MB7689.namprd11.prod.outlook.com (2603:10b6:8:e6::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Mon, 13 Feb
- 2023 17:05:21 +0000
-Received: from BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44]) by BYAPR11MB3367.namprd11.prod.outlook.com
- ([fe80::86b7:ffac:438a:5f44%4]) with mapi id 15.20.6086.024; Mon, 13 Feb 2023
- 17:05:21 +0000
-From: "G, GurucharanX" <gurucharanx.g@intel.com>
-To: "Kolacinski, Karol" <karol.kolacinski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Add GPIO pin support for
- E823 products
-Thread-Index: AQHYyCGAj2XR9E0uGU2fSm3mC9bsvK7OClRA
-Date: Mon, 13 Feb 2023 17:05:20 +0000
-Message-ID: <BYAPR11MB33671F9CC6CD665CACF466FAFCDD9@BYAPR11MB3367.namprd11.prod.outlook.com>
-References: <20220914100429.261290-1-karol.kolacinski@intel.com>
-In-Reply-To: <20220914100429.261290-1-karol.kolacinski@intel.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR11MB3367:EE_|DS7PR11MB7689:EE_
-x-ms-office365-filtering-correlation-id: 27efb35b-aa2f-4d71-b50f-08db0de47d54
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: +8K06VVcNkscJj/01WWpXL9HOznu+rLKyx8IZToHWfl0d62pqB1dZHnbvdVUF9HAGnQZNFGp0N1IdNOYDvsYpgZPizeUPOp77UTJONRPRPIFMeAkEM4sWe8uRSTFyPBmffV/wTYdYaaVlsKa8Ir4B0NfhM/l+LAdDSvM7h1gR9dN99KyVG2EsG31WH9S9PsHgUDmzCzAj5ISCLlFQE4ORCBIRW5MAdBeVsH1SssQ0kiw8nTnAt3N0m9mkWThFfBz05/cbhLzXuZl4bIVaHddjVpSWz1xwbEKtPH6vpJCNfUFO5gcygReRpckpL8SLHALkh5sfwYj6/7taOuaFiFYvvDAHUjv+cJq83ZqLfk0DJwczrSsu9/gA0CARaDphdAnvd30pQLDxcTn1pquBHAxtapvbmIcYQMaec3DHDC1WN1dVEGYG6AMqHDagaXpXqU6hwMEvxR58jH1/7ii7F4iZkS9EpB6SObcDQJzLff3P3wPkkJG2TNQsp/7Mq1s/NpyCS2Hs8Pbcdnfz5JccVB5LMiDJSvHM2DINXDa0TEtnUtgpFKeEZDnz5vHK0J5ETKapd4ofSMN+CE7lbCckCeB/attC5H60J9eHTcLtPmzZF8elLD9I1ea6lk+byCk3gLSQTSK8sXp+ccIaI3D2brSXcLt38kpNZSAkDJnA4HcT7AfOmm1v0IOw1MPeMViqANk0y35+wEMcMuf7pPcM3hHIw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3367.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(346002)(39860400002)(136003)(396003)(376002)(366004)(451199018)(83380400001)(122000001)(38100700002)(82960400001)(52536014)(5660300002)(110136005)(86362001)(33656002)(55016003)(38070700005)(4744005)(7696005)(71200400001)(2906002)(186003)(478600001)(107886003)(66946007)(76116006)(66476007)(66556008)(64756008)(66446008)(4326008)(316002)(8676002)(6506007)(26005)(9686003)(41300700001)(8936002)(55236004)(53546011);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GhhAjjdCOBYvZM48hoEEeXxUqaBpNxWomnyPw6TSqYSIOtxNZeytaYk3vG2v?=
- =?us-ascii?Q?yiouQJOiap8nUxvRoILHjZjohiLmEVJEbzfeFfcoYiSseq3Qi3X3d8YMP/Gv?=
- =?us-ascii?Q?UKW5Zrum8hTrWL+FC4x4B3JFpddjjge8eJDSYWy4tirwpMsYI1cK97f2NHe2?=
- =?us-ascii?Q?UDTizx8NGPbO7ry54QUJGaoF7uBzq4tVpAlkhDn2Ch0ZIe2b9nvFIL/VPacl?=
- =?us-ascii?Q?h91v32icINtwS515ypypXVfmSlm2frz7RGzuuhLICT+0Im2Yjpb5wHi4VrFF?=
- =?us-ascii?Q?nYxaKRKGqW85lvZd7FvfhjrfMWRmQrrlXn86k8eQq4hluO+bVrPdI6rU8BW3?=
- =?us-ascii?Q?WXLe+ez3+scKhlWVFE4V4A5hc2UHzXoFza7bfH/JCXkh79y3p8N27erACPHJ?=
- =?us-ascii?Q?pbrNS1g6YlmyeKkznFhGC6r20S6jTB4Xs8PFzdVMpYxcn0PdWNLCQHthxqJ4?=
- =?us-ascii?Q?DIzHBgVmJp5SYKo5fmS3KtBS29X48GM2+zyLzqZNoiunYBG0q6PrCd6Xy8VL?=
- =?us-ascii?Q?r7Fb74T1RMOVljqr5oPVdSNm+qASNSFN++pQh8F5xyy1BiqdafL09i3lJgIC?=
- =?us-ascii?Q?+Oh/Pmb0xpf+kyG/VEO6jYPfDBzMRpBUoucCc7Jo4kSUAwz3BRl/sp7+eGsD?=
- =?us-ascii?Q?Q4P4EKrYun1tG/gfHZvg/oNmMXTETmLz8FeBQTlIL+3F1sVwJ+g/wlkn+JWl?=
- =?us-ascii?Q?9qn9crqvN8QsvjaIUGncRF4ZDg6V8DjA+2oQT+8ZryB8AmEQ5wHvtrYcW0eL?=
- =?us-ascii?Q?4GWMfM6YhfLqy6fpgq7RdBtZIGtSv38Po6xypIPVpczNL0wwa5vWWCkAbY7U?=
- =?us-ascii?Q?38cqD8v5Bd/kv4gwto2hVJJRoYhaK8mhtsEl1HF0av0tCd5+0KWKsOa11Jk3?=
- =?us-ascii?Q?HhKgXb+dr5TCx/4OoCPejdOnsRkBWH0wy226EGoefPM1NwbrjxosZwncIry6?=
- =?us-ascii?Q?oqtG37kjXWMsVdGmlsDU58Z0ksOkIEUTt5c1wCMuCNJRd1v88jDgIpiZBoYt?=
- =?us-ascii?Q?Obq0W7pw0Zhwp6EIondUQIDUuR+KoqKTaWzg6LBjVKMyhP3+Zl7rnlTQBS8N?=
- =?us-ascii?Q?nEVF0Nwq7CYMSpkO2yiy2sWPMD3wEbT8JTpzMdUsnQfSpugBB82VzXDT0CVO?=
- =?us-ascii?Q?3KNAgEImNCRZ7HlEZ5222Ru8eyp3eDu7xrvcOnTgNgEPdqGx4BACwU/u46Ao?=
- =?us-ascii?Q?kbZxFiqizO2xxUNJenbzIWYpBdxG/Ns9wjV2K41ItziRXaS8U04hEcLhIKxG?=
- =?us-ascii?Q?siNnc40BAvIf/gTZgKCwmCG2WL5NCEqpnbeZESEi0yRbRFnIhS+iAMy0Kh8q?=
- =?us-ascii?Q?mfla1Jrjh6NVXlIMITH+Ms40CgJ63rA4ZLIOuV2Z2jpXvvTn9aC1uSct4dpf?=
- =?us-ascii?Q?r31FAw4bcWPAnMXg/q1NlJbYuWfXa5vGjOlJ4SMkymagc+h3nWiSkaovCq9/?=
- =?us-ascii?Q?2ukkTqwQClrVlrqpjxdBO1EwWij7Tby7EugC4vF/ITw2Epvdm5AGpdaAd8wc?=
- =?us-ascii?Q?qQCybyQYfGSjqwEhqk/yH+Nkc3ciOJkvbPvSJoPL9QvH1ejg3+l4Mh2Fx633?=
- =?us-ascii?Q?1ms4jGarBAuQaL/eRr4REYJMJRDkXqu8FWQbI+oD?=
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C875080C97
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C875080C97
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Feb 2023 19:03:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="332281389"
+X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="332281389"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2023 11:03:32 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="670928942"
+X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="670928942"
+Received: from paamrpdk12-s2600bpb.aw.intel.com ([10.228.151.145])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2023 11:03:31 -0800
+From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 14 Feb 2023 00:18:20 +0530
+Message-Id: <20230213184828.39404-1-tirthendu.sarkar@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3367.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 27efb35b-aa2f-4d71-b50f-08db0de47d54
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Feb 2023 17:05:20.9308 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: jWmEgEl7AJBtqNMvN0iMcInhMmpJXSJv0Y33ApcliCF8q0ItQ+b1ipWyZUmTB7HPUWkcMrjbW2T0NEvCblDQJQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB7689
-X-OriginatorOrg: intel.com
+X-Mailman-Approved-At: Mon, 13 Feb 2023 19:25:38 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676307927; x=1707843927;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=sLlYs7fT8oT3O000tTkDaXQ/KNAeyvcqurYZ/B7Su7I=;
- b=FoPh7IZhhwDDKqA25ebiFKLdyfNqJSyHnltXMNMRA2djh2j0aplyWU5M
- XavFxv/WRFnuPqZevjeBfvP5jFRtJ7Jv+LuxL/OUnNbBPRdcgBHYJ4Pj4
- E7KMDSfYbfS2Wz5XLS8UKMbnymXpwqmE0ZSD7Wictfv0EKyYHQD+psHwa
- tjZ6WNHAWuU3fLRqoqD81+iMgy5tsebqE/mLWsYg8fn1B/2rOUkV4HzXj
- QFSxuuwySx44G9tYu+zE1lCR+CiobT6yBnAT70rb/nkQhTUTH4CMIfe5y
- q5/WSroLj9Frbc2aIAjTg+RxyeKBnY3OoTmTXOzBOEe/2yHyeoyeafCpi
+ t=1676315013; x=1707851013;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vduEa+aiPXYPGE8wexexfc+l1PDUMEyrG/6ljt4OTtQ=;
+ b=E+l3gW315CQC87eW68F/W/9uxPBfQHCUbU+sQH86fICVKQIUS5TWSWIG
+ z1OpTY5f7qfgbv4aOTXgt607PWX6RbC5rKYpWBD/2Jr12p/klWPVk7rQk
+ IAyhVbbPTyp8rv4Evss4A1f4912HNYl9/e8nulFDZQjbRshMn+LMuxluu
+ AZIYcPsScfueXy2bEB0yO5FJkxM5bz9qNm2SGY9xy7tYpBSt4Dg1JL9oR
+ jx5NhbmlyR2ec6RJJcTs0CpqsTkGPoe7HJ5YjsJcljFX4zbZ6PzV0bknp
+ TRDESaK4UD5wU/lDXyNeIlueY0Gbd+BggnfcL6au2UEsz6NB8cvAUWX7J
  A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FoPh7IZh
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: Add GPIO pin support
- for E823 products
+ header.a=rsa-sha256 header.s=Intel header.b=E+l3gW31
+Subject: [Intel-wired-lan] [PATCH intel-next v2 0/8] i40e: support XDP
+ multi-buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -188,34 +93,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Kolacinski, Karol" <karol.kolacinski@intel.com>
+Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, bpf@vger.kernel.org, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This patchset adds multi-buffer support for XDP. Tx side already has
+support for multi-buffer. This patchset focuses on Rx side. The last
+patch contains actual multi-buffer changes while the previous ones are
+preparatory patches.
 
+On receiving the first buffer of a packet, xdp_buff is built and its
+subsequent buffers are added to it as frags. While 'next_to_clean' keeps
+pointing to the first descriptor, the newly introduced 'next_to_process'
+keeps track of every descriptor for the packet. 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Karol Kolacinski
-> Sent: Wednesday, September 14, 2022 3:34 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Kolacinski, Karol <karol.kolacinski@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next] ice: Add GPIO pin support for
-> E823 products
-> 
-> Add GPIO pin setup for E823, which is only 1PPS input and output.
-> 
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_common.c | 25 ++++++++
-> drivers/net/ethernet/intel/ice/ice_common.h |  1 +
->  drivers/net/ethernet/intel/ice/ice_ptp.c    | 64 +++++++++++++++++++++
->  3 files changed, 90 insertions(+)
-> 
+On receiving EOP buffer the XDP program is called and appropriate action
+is taken (building skb for XDP_PASS, reusing page for XDP_DROP, adjusting
+page offsets for XDP_{REDIRECT,TX}).
 
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+The patchset also streamlines page offset adjustments for buffer reuse
+to make it easier to post process the rx_buffers after running XDP prog.
+
+With this patchset there does not seem to be any performance degradation
+for XDP_PASS and some improvement (~1% for XDP_TX, ~5% for XDP_DROP) when
+measured using xdp_rxq_info program from samples/bpf/ for 64B packets.
+
+Changelog:
+    v1 -> v2:
+    - Instead of building xdp_buff on eop now it is built incrementally.
+    - xdp_buff is now added to i40e_ring struct for preserving across
+      napi calls. [Alexander Duyck]
+    - Post XDP program rx_buffer processing has been simplified.
+    - Rx buffer allocation pull out is reverted to avoid performance 
+      issues for smaller ring sizes and now done when at least half of
+      the ring has been cleaned. With v1 there was ~75% drop for
+      XDP_PASS with the smallest ring size of 64 which is mitigated by
+      v2 [Alexander Duyck]
+    - Instead of retrying skb allocation on previous failure now the
+      packet is dropped. [Maciej]
+    - Simplified page offset adjustments by using xdp->frame_sz instead
+      of recalculating truesize. [Maciej]
+    - Change i40e_trace() to use xdp instead of skb [Maciej]
+    - Reserve tailroom for legacy-rx [Maciej]
+    - Centralize max frame size calculation
+
+Tirthendu Sarkar (8):
+  i40e: consolidate maximum frame size calculation for vsi
+  i40e: change Rx buffer size for legacy-rx to support XDP multi-buffer
+  i40e: add pre-xdp page_count in rx_buffer
+  i40e: Change size to truesize when using i40e_rx_buffer_flip()
+  i40e: use frame_sz instead of recalculating truesize for building skb
+  i40e: introduce next_to_process to i40e_ring
+  i40e: add xdp_buff to i40e_ring struct
+  i40e: add support for XDP multi-buffer Rx
+
+ drivers/net/ethernet/intel/i40e/i40e_main.c  |  75 ++--
+ drivers/net/ethernet/intel/i40e/i40e_trace.h |  20 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c  | 426 +++++++++++--------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h  |  21 +-
+ 4 files changed, 311 insertions(+), 231 deletions(-)
+
+-- 
+2.34.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
