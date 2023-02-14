@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A16969693A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 17:21:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96C0D69693B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 17:21:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 978F5408F0;
-	Tue, 14 Feb 2023 16:21:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 978F5408F0
+	by smtp4.osuosl.org (Postfix) with ESMTP id 38C6440934;
+	Tue, 14 Feb 2023 16:21:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 38C6440934
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676391687;
-	bh=0k9LowJ7e1A/4jbQQsKlxaZwwHvDVLCeYEkNQr5NA+s=;
+	s=default; t=1676391692;
+	bh=3tuinfmUxSIJTQq/I6qxaKFf93JIx2yMctWZeqjJl3Y=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=S7C02JXulSGGo6fjGP5rREcy2ArIB/tlU2rqHF9NGJTtEn6Dw4rOfU4bnVzjcv0Dz
-	 V2HGUMQmg7y3ZJkCn0VQHZ5v7JTZsYEEafqrL7FWcOR3d3DVQ9eFc3WVhzARz3YnSj
-	 kPIJenu5yFbLCYQQKHkZP+1viYvLw+sex+b++XkHnfYf596qHtmjB7a+YN6MhMdCu3
-	 GmCo+61gn+KTbcJ1OKSOTlx4mfPU+0u7Vlm3uvYL34v2reM5PgtrLTU3H3OYTJimJ/
-	 rSTdDpuaL+7gYHp4AgOw+H3np9H9lUs4ZE0XtOTq11CdxGkl0wvGPYlD2Y0T8b50b0
-	 6ZO6aBbQPHPJA==
+	b=d2KJZ70hB5jZ1Cm0mnxKNe6trNxnanfj1Qyaa9XFo/miRiOuZwTN37Cydz2/hcooL
+	 LVfCwWTiR0jXz2OLoyvGkPrNFNrH9Xzxo36E46CPzKHOkN+eis4c+ZOKnur0bDk6r/
+	 77jTRFnVeGapuZtfzdD+zXDczlQOctJmPFtK7Q/FIX4mxqXqKIHWGLCYp2E4yi7u9p
+	 B7QIZy8aVMDLaPpuQirGKOF0AakfudeHbl7tIARvC6w96E920W9w9CSmhsKbQFaR30
+	 86P39bdm89Zt4/1gyk2P58FIZ+3dYaLOQwzZ37dfSS4UsrbHSc6BA338mQuIeDplN6
+	 u3nZmIWUd2L2Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k6Jnhw0jCPJx; Tue, 14 Feb 2023 16:21:26 +0000 (UTC)
+	with ESMTP id QezhbfE-Yk0l; Tue, 14 Feb 2023 16:21:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C609408EE;
-	Tue, 14 Feb 2023 16:21:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C609408EE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 94C1E408EE;
+	Tue, 14 Feb 2023 16:21:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 94C1E408EE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 277C51BF3A6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2CD4A1BF3A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6993840932
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6993840932
+ by smtp4.osuosl.org (Postfix) with ESMTP id 824B240929
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 824B240929
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0ZY5EL47kh6M for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Feb 2023 12:44:48 +0000 (UTC)
+ with ESMTP id MeeqlmS1CZCf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Feb 2023 12:44:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E27240929
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E33140941
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5E27240929
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="417371209"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="417371209"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5E33140941
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:49 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="417371215"
+X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="417371215"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 04:44:48 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="778308618"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="778308618"
+ 14 Feb 2023 04:44:49 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="778308624"
+X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="778308624"
 Received: from unknown (HELO paamrpdk12-S2600BPB.aw.intel.com)
  ([10.228.151.145])
  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 04:44:47 -0800
+ 14 Feb 2023 04:44:48 -0800
 From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Feb 2023 18:00:16 +0530
-Message-Id: <20230214123018.54386-7-tirthendu.sarkar@intel.com>
+Date: Tue, 14 Feb 2023 18:00:17 +0530
+Message-Id: <20230214123018.54386-8-tirthendu.sarkar@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230214123018.54386-1-tirthendu.sarkar@intel.com>
 References: <20230214123018.54386-1-tirthendu.sarkar@intel.com>
@@ -69,22 +69,22 @@ MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 14 Feb 2023 16:20:51 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676378688; x=1707914688;
+ t=1676378689; x=1707914689;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=8VWWNqJ/ZkjsHE6fhyCY030LG6tahcl5cgZa5zjKV34=;
- b=mQp4zb5lbfjIZ2BS3yjDfP/tbEk/KwQ/OIRyNc36IoCm1UhXBW8BAhy3
- 7IGV95QB8FG3Hmxl0fqmQ8yUl+niLx+xWv88xjXVMkETXfO4m8uAZ6NND
- ZLLUdgSE7HtKqDPvn5YFHg/Nq6Zo7QrWQKEACSZlO4QmVGf+xz+fBTQ0i
- XnH8CS0qm5qluKxCYUB3knx6pD4IoslcAvquyFATv6XDc5qaOGlQRG2ul
- fwyQyyONPJloXXl5ZRPdvGPM7xwkVzYIq3zy9ffmg2M8M8MDWyybtK7Ns
- Yc2F7YHbuX9++7i4BB1b9kIMvAfVaoqOtG1EcI9suOdEpTmkemuv9sMtV
+ bh=V4W56NBnEl/d1E5rcJ2Jvg4MBGIE6iDNG/8xTaw3FXE=;
+ b=Q1pCn195kfVwF4j7iWTz3qjS95wN/CirlCz+Vo6q73nXBNsIZrYNQ6Ad
+ OhFNkEhL26cyfxVPIZ0x9mhdsV9QlEJsjkA+wEUrGN6GOYu+91EKV1I29
+ KQwGNR+ddukkpZlHfsiuIQFsqfB9zMco6YUV6kgKkFTfP7pLYBLcwGl4j
+ tgYRZj5d7GVB/RLOv3qw/tCYLdceO74uA05gx43CvLBGdVjDyBh28CiDV
+ 0BngTSKV01UrLqDf1dmnvlHgeBbK77kUH6wf6fQt0ATEdqo7Wsy6+ug9Y
+ cQBFAzpUmj48t/2nF46Yk1em8+1MS7tZHXKJFTScMrSqdemTHkM3FA4l7
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mQp4zb5l
-Subject: [Intel-wired-lan] [PATCH intel-next v3 6/8] i40e: introduce
- next_to_process to i40e_ring
+ header.a=rsa-sha256 header.s=Intel header.b=Q1pCn195
+Subject: [Intel-wired-lan] [PATCH intel-next v3 7/8] i40e: add xdp_buff to
+ i40e_ring struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,125 +105,225 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add a new field called next_to_process in the i40e_ring that is
-advanced for every buffer and change the semantics of next_to_clean to
-point to the first buffer of a packet. Driver will use next_to_process
-in the same way next_to_clean was used previously.
+Store xdp_buff on Rx ring struct in preparation for XDP multi-buffer
+support. This will allow us to combine fragmented frames across
+separate NAPI cycles in the same way as currently skb fragments are
+handled. This means that skb pointer on Rx ring will become redundant
+and will be removed in a later patch. As a consequence i40e_trace() now
+uses xdp instead of skb pointer.
 
-For the non multi-buffer case, next_to_process and next_to_clean will
-always be the same since each packet consists of a single buffer.
+Truesize only needs to be calculated for page sizes bigger than 4k as it
+is always half-page for 4k pages. With xdp_buff on ring, frame size can
+now be set during xdp_init_buff() and need not be repopulated in each
+NAPI call for 4k pages. As a consequence i40e_rx_frame_truesize() is now
+used only for bigger pages.
 
 Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 26 ++++++++++++---------
- drivers/net/ethernet/intel/i40e/i40e_txrx.h |  4 ++++
- 2 files changed, 19 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c  |  2 ++
+ drivers/net/ethernet/intel/i40e/i40e_trace.h | 20 ++++++------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c  | 33 ++++++++------------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h  |  7 +++++
+ 4 files changed, 32 insertions(+), 30 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index d7c08f1d486a..a6b0516a81c0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3616,6 +3616,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+ 		}
+ 	}
+ 
++	xdp_init_buff(&ring->xdp, i40e_rx_pg_size(ring) / 2, &ring->xdp_rxq);
++
+ 	rx_ctx.dbuff = DIV_ROUND_UP(ring->rx_buf_len,
+ 				    BIT_ULL(I40E_RXQ_CTX_DBUFF_SHIFT));
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_trace.h b/drivers/net/ethernet/intel/i40e/i40e_trace.h
+index 79d587ad5409..33b4e30f5e00 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_trace.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_trace.h
+@@ -162,45 +162,45 @@ DECLARE_EVENT_CLASS(
+ 
+ 	TP_PROTO(struct i40e_ring *ring,
+ 		 union i40e_16byte_rx_desc *desc,
+-		 struct sk_buff *skb),
++		 struct xdp_buff *xdp),
+ 
+-	TP_ARGS(ring, desc, skb),
++	TP_ARGS(ring, desc, xdp),
+ 
+ 	TP_STRUCT__entry(
+ 		__field(void*, ring)
+ 		__field(void*, desc)
+-		__field(void*, skb)
++		__field(void*, xdp)
+ 		__string(devname, ring->netdev->name)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__entry->ring = ring;
+ 		__entry->desc = desc;
+-		__entry->skb = skb;
++		__entry->xdp = xdp;
+ 		__assign_str(devname, ring->netdev->name);
+ 	),
+ 
+ 	TP_printk(
+-		"netdev: %s ring: %p desc: %p skb %p",
++		"netdev: %s ring: %p desc: %p xdp %p",
+ 		__get_str(devname), __entry->ring,
+-		__entry->desc, __entry->skb)
++		__entry->desc, __entry->xdp)
+ );
+ 
+ DEFINE_EVENT(
+ 	i40e_rx_template, i40e_clean_rx_irq,
+ 	TP_PROTO(struct i40e_ring *ring,
+ 		 union i40e_16byte_rx_desc *desc,
+-		 struct sk_buff *skb),
++		 struct xdp_buff *xdp),
+ 
+-	TP_ARGS(ring, desc, skb));
++	TP_ARGS(ring, desc, xdp));
+ 
+ DEFINE_EVENT(
+ 	i40e_rx_template, i40e_clean_rx_irq_rx,
+ 	TP_PROTO(struct i40e_ring *ring,
+ 		 union i40e_16byte_rx_desc *desc,
+-		 struct sk_buff *skb),
++		 struct xdp_buff *xdp),
+ 
+-	TP_ARGS(ring, desc, skb));
++	TP_ARGS(ring, desc, xdp));
+ 
+ DECLARE_EVENT_CLASS(
+ 	i40e_xmit_template,
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 01340f620d96..94c50fa223bd 100644
+index 94c50fa223bd..dc2c9aae0ffe 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1524,6 +1524,7 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
- 
- 	rx_ring->next_to_alloc = 0;
- 	rx_ring->next_to_clean = 0;
-+	rx_ring->next_to_process = 0;
- 	rx_ring->next_to_use = 0;
+@@ -1619,21 +1619,19 @@ void i40e_release_rx_desc(struct i40e_ring *rx_ring, u32 val)
+ 	writel(val, rx_ring->tail);
  }
  
-@@ -1576,6 +1577,7 @@ int i40e_setup_rx_descriptors(struct i40e_ring *rx_ring)
- 
- 	rx_ring->next_to_alloc = 0;
- 	rx_ring->next_to_clean = 0;
-+	rx_ring->next_to_process = 0;
- 	rx_ring->next_to_use = 0;
- 
- 	/* XDP RX-queue info only needed for RX rings exposed to XDP */
-@@ -2076,7 +2078,7 @@ static struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring,
++#if (PAGE_SIZE >= 8192)
+ static unsigned int i40e_rx_frame_truesize(struct i40e_ring *rx_ring,
+ 					   unsigned int size)
  {
- 	struct i40e_rx_buffer *rx_buffer;
+ 	unsigned int truesize;
  
--	rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
-+	rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_process);
- 	rx_buffer->page_count =
- #if (PAGE_SIZE < 8192)
- 		page_count(rx_buffer->page);
-@@ -2375,16 +2377,16 @@ void i40e_finalize_xdp_rx(struct i40e_ring *rx_ring, unsigned int xdp_res)
+-#if (PAGE_SIZE < 8192)
+-	truesize = i40e_rx_pg_size(rx_ring) / 2; /* Must be power-of-2 */
+-#else
+ 	truesize = rx_ring->rx_offset ?
+ 		SKB_DATA_ALIGN(size + rx_ring->rx_offset) +
+ 		SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
+ 		SKB_DATA_ALIGN(size);
+-#endif
+ 	return truesize;
  }
++#endif
  
  /**
-- * i40e_inc_ntc: Advance the next_to_clean index
-+ * i40e_inc_ntp: Advance the next_to_process index
-  * @rx_ring: Rx ring
-  **/
--static void i40e_inc_ntc(struct i40e_ring *rx_ring)
-+static void i40e_inc_ntp(struct i40e_ring *rx_ring)
+  * i40e_alloc_mapped_page - recycle or make a new page
+@@ -2405,21 +2403,16 @@ static void i40e_inc_ntp(struct i40e_ring *rx_ring)
+ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+ 			     unsigned int *rx_cleaned)
  {
--	u32 ntc = rx_ring->next_to_clean + 1;
-+	u32 ntp = rx_ring->next_to_process + 1;
+-	unsigned int total_rx_bytes = 0, total_rx_packets = 0, frame_sz = 0;
++	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
+ 	u16 cleaned_count = I40E_DESC_UNUSED(rx_ring);
+ 	unsigned int offset = rx_ring->rx_offset;
++	struct xdp_buff *xdp = &rx_ring->xdp;
+ 	struct sk_buff *skb = rx_ring->skb;
+ 	unsigned int xdp_xmit = 0;
+ 	struct bpf_prog *xdp_prog;
+ 	bool failure = false;
+-	struct xdp_buff xdp;
+ 	int xdp_res = 0;
  
--	ntc = (ntc < rx_ring->count) ? ntc : 0;
--	rx_ring->next_to_clean = ntc;
--	prefetch(I40E_RX_DESC(rx_ring, ntc));
-+	ntp = (ntp < rx_ring->count) ? ntp : 0;
-+	rx_ring->next_to_process = ntp;
-+	prefetch(I40E_RX_DESC(rx_ring, ntp));
- }
- 
- /**
-@@ -2421,6 +2423,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+-#if (PAGE_SIZE < 8192)
+-	frame_sz = i40e_rx_frame_truesize(rx_ring, 0);
+-#endif
+-	xdp_init_buff(&xdp, frame_sz, &rx_ring->xdp_rxq);
+-
  	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
  
  	while (likely(total_rx_packets < (unsigned int)budget)) {
-+		u16 ntp = rx_ring->next_to_process;
- 		struct i40e_rx_buffer *rx_buffer;
- 		union i40e_rx_desc *rx_desc;
- 		unsigned int size;
-@@ -2433,7 +2436,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 			cleaned_count = 0;
+@@ -2467,7 +2460,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+ 		if (!size)
+ 			break;
+ 
+-		i40e_trace(clean_rx_irq, rx_ring, rx_desc, skb);
++		i40e_trace(clean_rx_irq, rx_ring, rx_desc, xdp);
+ 		rx_buffer = i40e_get_rx_buffer(rx_ring, size);
+ 
+ 		/* retrieve a buffer from the ring */
+@@ -2476,19 +2469,19 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+ 
+ 			hard_start = page_address(rx_buffer->page) +
+ 				     rx_buffer->page_offset - offset;
+-			xdp_prepare_buff(&xdp, hard_start, offset, size, true);
+-			xdp_buff_clear_frags_flag(&xdp);
++			xdp_prepare_buff(xdp, hard_start, offset, size, true);
++			xdp_buff_clear_frags_flag(xdp);
+ #if (PAGE_SIZE > 4096)
+ 			/* At larger PAGE_SIZE, frame_sz depend on len size */
+-			xdp.frame_sz = i40e_rx_frame_truesize(rx_ring, size);
++			xdp->frame_sz = i40e_rx_frame_truesize(rx_ring, size);
+ #endif
+-			xdp_res = i40e_run_xdp(rx_ring, &xdp, xdp_prog);
++			xdp_res = i40e_run_xdp(rx_ring, xdp, xdp_prog);
  		}
  
--		rx_desc = I40E_RX_DESC(rx_ring, rx_ring->next_to_clean);
-+		rx_desc = I40E_RX_DESC(rx_ring, ntp);
+ 		if (xdp_res) {
+ 			if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
+ 				xdp_xmit |= xdp_res;
+-				i40e_rx_buffer_flip(rx_buffer, xdp.frame_sz);
++				i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
+ 			} else {
+ 				rx_buffer->pagecnt_bias++;
+ 			}
+@@ -2497,9 +2490,9 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+ 		} else if (skb) {
+ 			i40e_add_rx_frag(rx_ring, rx_buffer, skb, size);
+ 		} else if (ring_uses_build_skb(rx_ring)) {
+-			skb = i40e_build_skb(rx_ring, rx_buffer, &xdp);
++			skb = i40e_build_skb(rx_ring, rx_buffer, xdp);
+ 		} else {
+-			skb = i40e_construct_skb(rx_ring, rx_buffer, &xdp);
++			skb = i40e_construct_skb(rx_ring, rx_buffer, xdp);
+ 		}
  
- 		/* status_error_len will always be zero for unused descriptors
- 		 * because it's cleared in cleanup, and overlaps with hdr_addr
-@@ -2452,8 +2455,8 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 			i40e_clean_programming_status(rx_ring,
- 						      rx_desc->raw.qword[0],
- 						      qword);
--			rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
--			i40e_inc_ntc(rx_ring);
-+			rx_buffer = i40e_rx_bi(rx_ring, ntp);
-+			i40e_inc_ntp(rx_ring);
- 			i40e_reuse_rx_page(rx_ring, rx_buffer);
- 			cleaned_count++;
- 			continue;
-@@ -2509,7 +2512,8 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 		i40e_put_rx_buffer(rx_ring, rx_buffer);
- 		cleaned_count++;
+ 		/* exit if we failed to retrieve a buffer */
+@@ -2528,7 +2521,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
+ 		/* populate checksum, VLAN, and protocol */
+ 		i40e_process_skb_fields(rx_ring, rx_desc, skb);
  
--		i40e_inc_ntc(rx_ring);
-+		i40e_inc_ntp(rx_ring);
-+		rx_ring->next_to_clean = rx_ring->next_to_process;
- 		if (i40e_is_non_eop(rx_ring, rx_desc))
- 			continue;
+-		i40e_trace(clean_rx_irq_rx, rx_ring, rx_desc, skb);
++		i40e_trace(clean_rx_irq_rx, rx_ring, rx_desc, xdp);
+ 		napi_gro_receive(&rx_ring->q_vector->napi, skb);
+ 		skb = NULL;
  
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-index 3e2935365104..6e0fd73367df 100644
+index 6e0fd73367df..e86abc25bb5e 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
 +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-@@ -338,6 +338,10 @@ struct i40e_ring {
+@@ -338,6 +338,13 @@ struct i40e_ring {
  	u8 dcb_tc;			/* Traffic class of ring */
  	u8 __iomem *tail;
  
-+	/* Next descriptor to be processed; next_to_clean is updated only on
-+	 * processing EOP descriptor
++	/* Storing xdp_buff on ring helps in saving the state of partially built
++	 * packet when i40e_clean_rx_ring_irq() must return before it sees EOP
++	 * and to resume packet building for this ring in the next call to
++	 * i40e_clean_rx_ring_irq().
 +	 */
-+	u16 next_to_process;
- 	/* high bit set means dynamic, use accessor routines to read/write.
- 	 * hardware only supports 2us resolution for the ITR registers.
- 	 * these values always store the USER setting, and must be converted
++	struct xdp_buff xdp;
++
+ 	/* Next descriptor to be processed; next_to_clean is updated only on
+ 	 * processing EOP descriptor
+ 	 */
 -- 
 2.34.1
 
