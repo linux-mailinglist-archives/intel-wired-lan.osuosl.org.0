@@ -1,90 +1,186 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80A5669693C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 17:21:38 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4019F6967C9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 16:17:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 18FEE415EC;
-	Tue, 14 Feb 2023 16:21:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18FEE415EC
+	by smtp4.osuosl.org (Postfix) with ESMTP id B3247416B6;
+	Tue, 14 Feb 2023 15:17:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B3247416B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676391697;
-	bh=Cwzgo3ylqAbNrV+q0XxWmbVhPWqoc8CODxYG+LE4R2U=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1676387839;
+	bh=O46TgejMlVsEO7OuITIMdwwB5rvIZdFnR3vOkSOQHTs=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bJtCVzVVDw69vkN8ufXD0MotX8j6cP/70YWP8cqeyMpOxsaYUZmN7SPKI2Ztk9CfX
-	 lHeCo0KND6vhhm51dKfe0WT60n0zKpkvpnmmzoZOTnYiYi6e9ZdI8ZdyTd0NaTxWnZ
-	 7JGbtnVUZF26eZfxpC0mz173uXLWxkvvlFUaw/+kYI5gMn53L+ywbBTQuWLVb5lzof
-	 OwQ0RgpcZuisVwMwDC+duVOobC6Ev4XL4y1tmi34iqaJHa9yrejbpDLu/bGgG4qywo
-	 iX/38vJFUnXxqUVSpCxUCeyR+V/fSPGTEVt1FCuhR+NaGeczcKklLBAmpUJULRi6pN
-	 1hANabKb/5Kiw==
+	b=am6GlmpzST2/4GUMneEYuyX1T/e73d1NY/BNflzwimKqxZBGNImSzykxGYSswf2nJ
+	 vp9XTl2lUbFZMesoyaOd/V0PjKh0mHAVDkpqbqvq7KaUWrViVIhWov9ZfPtSgaISN8
+	 Fif1BxBwsV5M0ZX6ciCZBTiqzN/7Btr7a2lcVvQyo0xYHBAUB9xTd76Na/yA9lXOD/
+	 DUMyDh83Klj0BzxOhhsFNYtXAzoGuL1GC6szeYGtFdPGpFYS8LGh2I7dYjnuJAbzOC
+	 4g+0C/6pHA1E7pDS6ABg5kRiyV7ZVzP+/Vr9xynNCXRXqVUvri25Ot541MAWH5WPhw
+	 AWO6DsICKUtLw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u3tKqQSbRimd; Tue, 14 Feb 2023 16:21:35 +0000 (UTC)
+	with ESMTP id k5NCKUPOffyv; Tue, 14 Feb 2023 15:17:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 10069408EE;
-	Tue, 14 Feb 2023 16:21:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10069408EE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 691F7414D1;
+	Tue, 14 Feb 2023 15:17:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 691F7414D1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 57A671BF424
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 75AD91BF852
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 15:17:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2C39640932
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C39640932
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4D29F817A5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 15:17:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D29F817A5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ddUFe7luGaS4 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Feb 2023 12:44:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iUtR60DLe_eE for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Feb 2023 15:17:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B49B4091C
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3B49B4091C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 12:44:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="417371219"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="417371219"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 04:44:50 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="778308632"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="778308632"
-Received: from unknown (HELO paamrpdk12-S2600BPB.aw.intel.com)
- ([10.228.151.145])
- by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 04:44:49 -0800
-From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Feb 2023 18:00:18 +0530
-Message-Id: <20230214123018.54386-9-tirthendu.sarkar@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230214123018.54386-1-tirthendu.sarkar@intel.com>
-References: <20230214123018.54386-1-tirthendu.sarkar@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E78F8141C
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1E78F8141C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 15:17:10 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="311541069"
+X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="311541069"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2023 07:14:19 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="843198667"
+X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="843198667"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga005.jf.intel.com with ESMTP; 14 Feb 2023 07:14:18 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 14 Feb 2023 07:14:17 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 14 Feb 2023 07:14:17 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 14 Feb 2023 07:14:17 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=D4usCTQWHumigP8/DuZZAPJFlhOeae41GxSlDqIhG/DEX48EiVB+2XuAs5pBzf/O9Ork8owjEr6UIujJG+IPLKV6F0UPSgzMDM59Ta/CB3F6JQSTfqvh0JByAzkWDlNjrJc1hUB3LFthGeD8ySNl/pmNn/SHs4O2vrxDrojY2wpcsZ2yYeSvlIahrxEsplVNMHhmMb6/OLyGMmIa1XOqVKjsD/AXh0NS0APgpuCVGD25vodiNojWqGTgTy6smtcfQLyEdunqLWHatJsPrIscxn5spdk9jPEQnTPA2ZzLkqdRdxQCPKwtmuDuWKu/XIcabgv9WFxXLW7DiEZXc/I29w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8zbgWaAvcta/qNWonQbK9hcWzzcnFarEaW+bHCyIwjM=;
+ b=YjcObUTINByaIJ1QsifnLp0JDsQ6fbXVxf31gcGgbNTcCwcYO+27RfQmq1oC6IdeVFJE+gF1QMiRf7Fxx8BpcBAh/ERTXA8CJ4cmXLU08fhyBa0lkcasqziWlXf0qqjJYhA2X+HkVyrzg0n2UKRBTnyae5kHSDhPMYVMqBjam+ticFf7mnyoc3NoRb5ZfrUtXSk2n6+w3ImfozLk+sy5+AVJGCjN+eoMI2YawSLOuxszR294hfR5P1f96e1wdQwEUu48NoFccPSH5HZ9HPNxRwd4dZec9p6qE5c0cyGIoBDdyIgVHvknrHIpuf1KwYQNGDLikodUxRGUYHfhOtLcwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by DM4PR11MB6068.namprd11.prod.outlook.com (2603:10b6:8:64::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6086.24; Tue, 14 Feb 2023 15:14:15 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::3ff6:ca60:f9fe:6934]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::3ff6:ca60:f9fe:6934%4]) with mapi id 15.20.6086.024; Tue, 14 Feb 2023
+ 15:14:15 +0000
+Message-ID: <b6143e67-a0f1-a238-f901-448b85281154@intel.com>
+Date: Tue, 14 Feb 2023 16:13:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Content-Language: en-US
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+References: <167604167956.1726972.7266620647404438534.stgit@firesoul>
+ <6a5ded96-2425-ff9b-c1b1-eca1c103164c@molgen.mpg.de>
+From: Alexander Lobakin <alexandr.lobakin@intel.com>
+In-Reply-To: <6a5ded96-2425-ff9b-c1b1-eca1c103164c@molgen.mpg.de>
+X-ClientProxiedBy: FR3P281CA0187.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a4::15) To DM6PR11MB3625.namprd11.prod.outlook.com
+ (2603:10b6:5:13a::21)
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 14 Feb 2023 16:20:51 +0000
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|DM4PR11MB6068:EE_
+X-MS-Office365-Filtering-Correlation-Id: ae6f766b-d7a6-43b4-bad5-08db0e9e22db
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 7uLw9jzyWBmuPiItFsZgrgxxsCOXvd4SPgUxDM1EzAFKO8BSRpCq6YqvSDi2BnNrh2uTfWMfXjqFKeEjji5xSwvOkCX3CQfrbhzx00kITsOiUqqD29dNV6Nbc749UOE252/im8bD6YZCnsvSEPE/HJOicfcsiLISJ1i1Jt5odzoAcI6E4TZ/TQmas5WwJ+eP/8JDUOk/t7iT+0dTb9YUX7NGHxVXCCChpXeenAoe2QwOeOq1v/6mDVTOn73uWm+mgX8wCXUhphx5gUiRM0XxpieaskRN3qdduD53At6f/zuIrKPxdDPM0HiseoebRNp80RkNsS9juVfnQpsZzuN9+iduth0ANLb/fqQoZR1nPpvZCijPAWlIWJlLsEAca9BnX6DzbsBxmM4RtkRyp/7ZEjhrvla2aF8jNYDqiFJAl/s1Au9vivmxvZHv4SWM2TF2ahS7IwlArLZPmaxL+1NJNzgZC+tjG3Pmae6t1lPCR+PIGSt9dqTfEERpUQK8W1z6u0b7PIsGDietsdKNklLg4B221JsWABZMhbJNYMCsorp483oZmsLHTz9df1Ti91c+9DbBkq2k9qmoxj/Uu57g40FFJAS8Gn8qSX9AxT6o9hk6HsRRjo1SiodMl3rd6VF0SMzMN6Bi9J9PF/3SgbysB2CrXRHgVaz4SCp7k9X/zAfrWw2VbZOjsKnnv6+n6I4DFHF/UXAB+HmYaXlmkTZJSw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(136003)(396003)(376002)(366004)(39860400002)(451199018)(4326008)(6916009)(8676002)(38100700002)(31686004)(316002)(54906003)(36756003)(41300700001)(83380400001)(66574015)(82960400001)(2616005)(66946007)(66556008)(66476007)(5660300002)(2906002)(7416002)(8936002)(6506007)(31696002)(6666004)(186003)(26005)(6512007)(478600001)(966005)(6486002)(86362001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?amh5cUxqN0xqMUlrZGtza1JUZXlMdWFBVGRReDB2Sy9Yakw4cUVHQ2tqQlgy?=
+ =?utf-8?B?NFZoY2R4ZERZSy9HbitPMVpQV0hlakFuYVpPVWxEZWZPRkxpUlhFMzBLMWZu?=
+ =?utf-8?B?Y0tOQ0tjd00xMWZ5QWpPV0VsTE1KUS81VnVWRVhKZkJFOHZvRnF4ZUdPcmYy?=
+ =?utf-8?B?ZCtKSCtJNkxZNzZDbFA2cFV1QUlGOEhDc3JXUjFuVHowdEVMUG11RzVvMUxE?=
+ =?utf-8?B?VDR1Z3BlN2tCajlsRnFqbjRjNk95cnVZTEEzLzhxbnA1STdUaVRrblRrT2dp?=
+ =?utf-8?B?a1RrcEtyaGVUU2JaSXdIbHNraDRhUmhCV3ZEeDg3dG5abE53OG1BbHlLeisz?=
+ =?utf-8?B?dnJnY2pPZWpGQXk1VDUzU2s0Rmt4RnZ4bnI1U0l0RTUwM1VOK1FzL2hTOGFv?=
+ =?utf-8?B?bkxHVEx5OFgxYVBQU1Y4UVNWdkd6UVQxL2p6Y2VsQVluQlhlOHRnL1I2Z2Ew?=
+ =?utf-8?B?Smk2YjJjbjNWY0lFeTV6aHR4b1ZtemJIWFJXNXE2Y0lXNlVOSm5lK2FOTzZq?=
+ =?utf-8?B?STJhbjV6VkhwZitXU1kyY1JWdU1pcFQwYnFlRXUzQUJKM00rNUlxNHdFZkdQ?=
+ =?utf-8?B?djd2WTZwMnNHYmRNZkpZWGpHQTMxelFXZTYvOG9mZEpJSWNLTXJVQzd3T0Zv?=
+ =?utf-8?B?WnRJWnlGd21LNFhMaitWYWp5SUk4S0xnL3Fpc2xlMnFaQ3hxNXlKeUllRCtq?=
+ =?utf-8?B?dktrUTFzamYxa1FlSXBjbTZqZXQxRUZKTFhlSGs4V012SGZEZTlVRTE0Si9V?=
+ =?utf-8?B?eEs0OW5SditoU1Jsd1pNQTZ1Nm5tczFnSGIzb1BYOTVCRHFSM0ZrNUFaNEw5?=
+ =?utf-8?B?MFllaCtIcmhoVlBHQnJZa1FTRDdUZlZQMHJZcy9FZ0JQR3l3eEluWndxVkkw?=
+ =?utf-8?B?S0F1ZmdSZGFjWHRqR3FoTzFWNFkzVGprNzBMb3hDdUwyWVpDTGY5dkhUN2JI?=
+ =?utf-8?B?TE1XU2lWb0xOa1BweFl0K20zbWo5RUNmTmtzUUVnd1dPV1ZUQzllaFVxS1lZ?=
+ =?utf-8?B?UXpvZUVuTFl3ck1FM3VtTGd2Z1ZuQkFmYmxZWThJbmwzcEJOby9BZHJoZU9N?=
+ =?utf-8?B?SnoyeW5Gd2hJVWh2MzJydjNDeVZWMDJvWEdwMVJWZWxGeEFZZW5UdWNzOWJl?=
+ =?utf-8?B?alZnZisrNEwxc3JrRFcvbXprTE04OVU5a1lCMnk4VFlwUHZ0bFUxdTRYY3FN?=
+ =?utf-8?B?TWVPRVl2aFlJV2lDWEU2cjZnOUp1djVNNVBwR2ZVdFh1NVBEQmU3U1dKUUY3?=
+ =?utf-8?B?bm9mZWlNZ0pyOTZmNkcyakI5ZHVSRzNaaDk4TWRKeW9JRjU5OWo3K3VqbHdz?=
+ =?utf-8?B?clNFc0gzNW5VcWNjaUdqWDgrSlErbDdMU2J6WFFlVlhHREhMdmRyQ1ljcC9E?=
+ =?utf-8?B?MmFBZDE2dis2dmJQUnUvRmkwU2x6WlBPQlMvYUQrRXhoblZjUFRDNnlBSFZ4?=
+ =?utf-8?B?bXlsVXNzS0NFQS9zcmw5eis4OVlPcFZEcEN4OU9IOFZDWDY2aXlVV2QwZ2Jl?=
+ =?utf-8?B?ZWlKUk9EOGVyTkl6S3IySnhKTTQvQnM1T2d2b2FRNktOWVBuc1ZmK0xISEtX?=
+ =?utf-8?B?UVZJNnR2U2xBMCtYV0VBZUxtby8rbWtVRFUyeFZnU1JLa1NsdTZhSHBKY0c5?=
+ =?utf-8?B?aGhaWEhIbzA4Mnh6ZDluQmQ0UXJ6cS9JUEhsdzcydmtJVytWQWJFRmUvczkw?=
+ =?utf-8?B?aWdRZ3FTTVNHRmN3UGp6UVdKL05YVTYrYTVTUGh5d1kwNHRzNjFKREwwZW1i?=
+ =?utf-8?B?blFaN1JzOVpRM2UrRXVKU3RWQkliUnc4aXlMakdUU1ZWdlBmTGxaTkZ4WnBJ?=
+ =?utf-8?B?c0RJZ1cvT2NmeUVyM0RKdGk4SkdOZlZ2QUNZbEtleHRaRk4xNFhCRVBTSXZC?=
+ =?utf-8?B?a01tU2cxbUNqQzZpbnVMQ1E0cGc1c0FRY2F1Mk5LYnFWcnE0ZGFvaHhqUTZz?=
+ =?utf-8?B?MTI5MlVSUlNzejZpL1QzeVVtb3BwRTc0ajdSTDEzYThvdzRCN0tYbVR2eXEx?=
+ =?utf-8?B?dWVJMU9ZalRkUFRMMDk2NitYK0xZOUt2NjhyNUVSNzYwUjdLWWc2MW9abXdL?=
+ =?utf-8?B?RjR4SHBTMnRrNDVKa2piOUVRYjBuY2wvbUsrS3RpWkluN3lGWDVIMEtJUnBB?=
+ =?utf-8?B?WUxwUVNtaHJCanBUdE9IdnJpbTZsODdjTGEwL1Q1L1pzbWVVbTdMcWd6L1Nt?=
+ =?utf-8?B?NEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: ae6f766b-d7a6-43b4-bad5-08db0e9e22db
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2023 15:14:15.7066 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3QuDoeRPI5gfjRX5Fnx73FIKY+V0KwcEuvmQbp/PiOIrE8hrgXViHNIaER9aZqRkAaHv82+vH5Tp+67hp24yF+QISz1OmuUCGsoymjou/jY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6068
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676378690; x=1707914690;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Clc6+/e2w+nx/BrG33NC+qxk3VeB5OIPC/QwgNdqFIc=;
- b=b5yvDOZslvbjLmZoF/o2lBFfFeBKLN74GBSr3Viu8/kEfW5V+/BILAvY
- FBorfLiMNLdxYTQuxIWyl7hofm3HKRRQI0wZhD60XDD9SAoFgsqwTHEdW
- fMnUSwOyHdJ2EW3b3SRFtfeXMXwrYf53HH8Fh+X15tVV6c8jbGqNjCg4G
- eDl3RtmuRLXUr6g8Casej/Ez4nv0Zp31IumDPrTwdz5XPkY3K6/YSPkVg
- tvGvzQRH+znnjlZpsOpMJ1lrurJVAeLphLJBY7O20zZgUbPiBIXLf0iyh
- qkhwkQ85LwHShEJLaj+0JklcQUxYxaIn/teisPh4xpXasHYp2/HOkwzsm
+ t=1676387831; x=1707923831;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=WLfviKR68tfNRa81W18kyBJsekbZaWgoc8ZQplWeoQ8=;
+ b=dxyB7MmgaKefK9w/wrzI4mjh9x06PRJDDifYxPn4efH3khc1fEIOIFbL
+ TRfkdyGQacjV6VTtU4+ngrp3XmyDyWEfynfpkb0HH7R5urMpLeM3FPBX8
+ 33N89whA3F4NdgMNtDi7rS6LwwumEYk/duGWSNLzUEZA6OFDI6qDIOtHl
+ MXWjFmEhPUAc0H7Bv9EppdcAjckeT+eYCO+N5wt/SQi7+xgCTczDIvip3
+ LQllxyL+PRs1fTtAnQPZRrTdeiJAqU7clTl2iaehBFMz0aSX335bv2eYd
+ rtr0aGDtim2TyABRvG4It+AVMVVHGOYatOPkKw5YbsbZzrVhVjWbcVAJw
  Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=b5yvDOZs
-Subject: [Intel-wired-lan] [PATCH intel-next v3 8/8] i40e: add support for
- XDP multi-buffer Rx
+ header.a=rsa-sha256 header.s=Intel header.b=dxyB7Mmg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [xdp-hints] Re: [PATCH bpf-next V1] igc:
+ enable and fix RX hash usage by netstack
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,552 +193,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: tirthendu.sarkar@intel.com, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, bpf@vger.kernel.org,
- magnus.karlsson@intel.com
+Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
+ netdev@vger.kernel.org, ast@kernel.org, anthony.l.nguyen@intel.com,
+ Stanislav Fomichev <sdf@google.com>, yoong.siang.song@intel.com,
+ Jesper Dangaard Brouer <brouer@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds multi-buffer support for the i40e_driver.
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue, 14 Feb 2023 16:00:52 +0100
 
-i40e_clean_rx_irq() is modified to collate all the buffers of a packet
-before calling the XDP program. xdp_buff is built for the first frag of
-the packet and subsequent frags are added to it. 'next_to_process' is
-incremented for all non-EOP frags while 'next_to_clean' stays at the
-first descriptor of the packet. XDP program is called only on receiving
-EOP frag.
+> Dear Jesper,
+> 
+> 
+> Thank you very much for your patch.
+> 
+> Am 10.02.23 um 16:07 schrieb Jesper Dangaard Brouer:
+>> When function igc_rx_hash() was introduced in v4.20 via commit
+>> 0507ef8a0372
+>> ("igc: Add transmit and receive fastpath and interrupt handlers"), the
+>> hardware wasn't configured to provide RSS hash, thus it made sense to not
+>> enable net_device NETIF_F_RXHASH feature bit.
+>>
+>> The NIC hardware was configured to enable RSS hash info in v5.2 via
+>> commit
+>> 2121c2712f82 ("igc: Add multiple receive queues control supporting"), but
+>> forgot to set the NETIF_F_RXHASH feature bit.
+>>
+>> The original implementation of igc_rx_hash() didn't extract the
+>> associated
+>> pkt_hash_type, but statically set PKT_HASH_TYPE_L3. The largest
+>> portions of
+>> this patch are about extracting the RSS Type from the hardware and
+>> mapping
+>> this to enum pkt_hash_types. This were based on Foxville i225 software
+>> user
+> 
+> s/This were/This was/
+> 
+>> manual rev-1.3.1 and tested on Intel Ethernet Controller I225-LM (rev
+>> 03).
+>>
+>> For UDP it's worth noting that RSS (type) hashing have been disabled
+>> both for
+>> IPv4 and IPv6 (see IGC_MRQC_RSS_FIELD_IPV4_UDP +
+>> IGC_MRQC_RSS_FIELD_IPV6_UDP)
+>> because hardware RSS doesn't handle fragmented pkts well when enabled
+>> (can
+>> cause out-of-order). This result in PKT_HASH_TYPE_L3 for UDP packets, and
+> 
+> result*s*
+> 
+>> hash value doesn't include UDP port numbers. Not being
+>> PKT_HASH_TYPE_L4, have
+>> the effect that netstack will do a software based hash calc calling into
+>> flow_dissect, but only when code calls skb_get_hash(), which doesn't
+>> necessary happen for local delivery.
+> 
+> Excuse my ignorance, but is that bug visible in practice by users
+> (performance?) or is that fix needed for future work?
 
-New functions are added for adding frags to xdp_buff and for post
-processing of the buffers once the xdp prog has run. For XDP_PASS this
-results in a skb with multiple fragments.
+Hash calculation always happens when RPS or RFS is enabled. So having no
+hash in skb before hitting the netstack slows down their performance.
+Also, no hash in skb passed from the driver results in worse NAPI bucket
+distribution when there are more traffic flows than Rx queues / CPUs.
++ Netfilter needs hashes on some configurations.
 
-i40e_build_skb() builds the skb around xdp buffer that already contains
-frags data. So i40e_add_rx_frag() helper function is now removed. Since
-fields before 'dataref' in skb_shared_info are cleared during
-napi_skb_build(), xdp_update_skb_shared_info() is called to set those.
+On default configurations and workloads like browsing the Internet this
+usually is not the case, but only then I'd say.
 
-For i40e_construct_skb(), all the frags data needs to be copied from
-xdp_buffer's shared_skb_info to newly constructed skb's shared_skb_info.
+> 
+>> Fixes: 2121c2712f82 ("igc: Add multiple receive queues control
+>> supporting")
+>> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-This also means 'skb' does not need to be preserved across i40e_napi_poll()
-calls and hence is removed from i40e_ring structure.
+[...]
 
-Previously i40e_alloc_rx_buffers() was called for every 32 cleaned
-buffers. For multi-buffers this may not be optimal as there may be more
-cleaned buffers in each i40e_clean_rx_irq() call. So this is now called
-when at least half of the ring size has been cleaned.
+Nice to see that you also care about (not) using short types on the stack :)
 
-Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c |   4 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 314 +++++++++++++-------
- drivers/net/ethernet/intel/i40e/i40e_txrx.h |   8 -
- 3 files changed, 209 insertions(+), 117 deletions(-)
+> Kind regards,
+> 
+> Paul
+> 
+> 
+> [1]: https://notabs.org/coding/smallIntsBigPenalty.htm
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index a6b0516a81c0..0b04b1ded18e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -2919,7 +2919,7 @@ static int i40e_max_vsi_frame_size(struct i40e_vsi *vsi,
- 	u16 rx_buf_len = i40e_calculate_vsi_rx_buf_len(vsi);
- 	u16 chain_len;
- 
--	if (xdp_prog)
-+	if (xdp_prog && !xdp_prog->aux->xdp_has_frags)
- 		chain_len = 1;
- 	else
- 		chain_len = I40E_MAX_CHAINED_RX_BUFFERS;
-@@ -13329,7 +13329,7 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi, struct bpf_prog *prog,
- 
- 	/* Don't allow frames that span over multiple buffers */
- 	if (vsi->netdev->mtu > frame_size - I40E_PACKET_HDR_PAD) {
--		NL_SET_ERR_MSG_MOD(extack, "MTU too large to enable XDP");
-+		NL_SET_ERR_MSG_MOD(extack, "MTU too large for linear frames and XDP prog does not support frags");
- 		return -EINVAL;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index dc2c9aae0ffe..b7c9871a41df 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1477,9 +1477,6 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
- 	if (!rx_ring->rx_bi)
- 		return;
- 
--	dev_kfree_skb(rx_ring->skb);
--	rx_ring->skb = NULL;
--
- 	if (rx_ring->xsk_pool) {
- 		i40e_xsk_clean_rx_ring(rx_ring);
- 		goto skip_free;
-@@ -2033,36 +2030,6 @@ static void i40e_rx_buffer_flip(struct i40e_rx_buffer *rx_buffer,
- #endif
- }
- 
--/**
-- * i40e_add_rx_frag - Add contents of Rx buffer to sk_buff
-- * @rx_ring: rx descriptor ring to transact packets on
-- * @rx_buffer: buffer containing page to add
-- * @skb: sk_buff to place the data into
-- * @size: packet length from rx_desc
-- *
-- * This function will add the data contained in rx_buffer->page to the skb.
-- * It will just attach the page as a frag to the skb.
-- *
-- * The function will then update the page offset.
-- **/
--static void i40e_add_rx_frag(struct i40e_ring *rx_ring,
--			     struct i40e_rx_buffer *rx_buffer,
--			     struct sk_buff *skb,
--			     unsigned int size)
--{
--#if (PAGE_SIZE < 8192)
--	unsigned int truesize = i40e_rx_pg_size(rx_ring) / 2;
--#else
--	unsigned int truesize = SKB_DATA_ALIGN(size + rx_ring->rx_offset);
--#endif
--
--	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
--			rx_buffer->page_offset, size, truesize);
--
--	/* page is being used so we must update the page offset */
--	i40e_rx_buffer_flip(rx_buffer, truesize);
--}
--
- /**
-  * i40e_get_rx_buffer - Fetch Rx buffer and synchronize data for use
-  * @rx_ring: rx descriptor ring to transact packets on
-@@ -2099,20 +2066,82 @@ static struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring,
- }
- 
- /**
-- * i40e_construct_skb - Allocate skb and populate it
-+ * i40e_put_rx_buffer - Clean up used buffer and either recycle or free
-  * @rx_ring: rx descriptor ring to transact packets on
-  * @rx_buffer: rx buffer to pull data from
-+ *
-+ * This function will clean up the contents of the rx_buffer.  It will
-+ * either recycle the buffer or unmap it and free the associated resources.
-+ */
-+static void i40e_put_rx_buffer(struct i40e_ring *rx_ring,
-+			       struct i40e_rx_buffer *rx_buffer)
-+{
-+	if (i40e_can_reuse_rx_page(rx_buffer, &rx_ring->rx_stats)) {
-+		/* hand second half of page back to the ring */
-+		i40e_reuse_rx_page(rx_ring, rx_buffer);
-+	} else {
-+		/* we are not reusing the buffer so unmap it */
-+		dma_unmap_page_attrs(rx_ring->dev, rx_buffer->dma,
-+				     i40e_rx_pg_size(rx_ring),
-+				     DMA_FROM_DEVICE, I40E_RX_DMA_ATTR);
-+		__page_frag_cache_drain(rx_buffer->page,
-+					rx_buffer->pagecnt_bias);
-+		/* clear contents of buffer_info */
-+		rx_buffer->page = NULL;
-+	}
-+}
-+
-+/**
-+ * i40e_process_rx_buffs- Processing of buffers post XDP prog or on error
-+ * @rx_ring: Rx descriptor ring to transact packets on
-+ * @xdp_res: Result of the XDP program
-+ * @xdp: xdp_buff pointing to the data
-+ **/
-+static void i40e_process_rx_buffs(struct i40e_ring *rx_ring, int xdp_res,
-+				  struct xdp_buff *xdp)
-+{
-+	u16 next = rx_ring->next_to_clean;
-+	struct i40e_rx_buffer *rx_buffer;
-+
-+	xdp->flags = 0;
-+
-+	while (1) {
-+		rx_buffer = i40e_rx_bi(rx_ring, next);
-+		if (++next == rx_ring->count)
-+			next = 0;
-+
-+		if (!rx_buffer->page)
-+			continue;
-+
-+		if (xdp_res == I40E_XDP_CONSUMED)
-+			rx_buffer->pagecnt_bias++;
-+		else
-+			i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
-+
-+		/* EOP buffer will be put in i40e_clean_rx_irq() */
-+		if (next == rx_ring->next_to_process)
-+			return;
-+
-+		i40e_put_rx_buffer(rx_ring, rx_buffer);
-+	}
-+}
-+
-+/**
-+ * i40e_construct_skb - Allocate skb and populate it
-+ * @rx_ring: rx descriptor ring to transact packets on
-  * @xdp: xdp_buff pointing to the data
-+ * @nr_frags: number of buffers for the packet
-  *
-  * This function allocates an skb.  It then populates it with the page
-  * data from the current receive descriptor, taking care to set up the
-  * skb correctly.
-  */
- static struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring,
--					  struct i40e_rx_buffer *rx_buffer,
--					  struct xdp_buff *xdp)
-+					  struct xdp_buff *xdp,
-+					  u32 nr_frags)
- {
- 	unsigned int size = xdp->data_end - xdp->data;
-+	struct i40e_rx_buffer *rx_buffer;
- 	unsigned int headlen;
- 	struct sk_buff *skb;
- 
-@@ -2152,13 +2181,17 @@ static struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring,
- 	memcpy(__skb_put(skb, headlen), xdp->data,
- 	       ALIGN(headlen, sizeof(long)));
- 
-+	rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
- 	/* update all of the pointers */
- 	size -= headlen;
- 	if (size) {
-+		if (unlikely(nr_frags >= MAX_SKB_FRAGS)) {
-+			dev_kfree_skb(skb);
-+			return NULL;
-+		}
- 		skb_add_rx_frag(skb, 0, rx_buffer->page,
- 				rx_buffer->page_offset + headlen,
- 				size, xdp->frame_sz);
--
- 		/* buffer is used by skb, update page_offset */
- 		i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
- 	} else {
-@@ -2166,21 +2199,40 @@ static struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring,
- 		rx_buffer->pagecnt_bias++;
- 	}
- 
-+	if (unlikely(xdp_buff_has_frags(xdp))) {
-+		struct skb_shared_info *sinfo, *skinfo = skb_shinfo(skb);
-+
-+		sinfo = xdp_get_shared_info_from_buff(xdp);
-+		memcpy(&skinfo->frags[skinfo->nr_frags], &sinfo->frags[0],
-+		       sizeof(skb_frag_t) * nr_frags);
-+
-+		xdp_update_skb_shared_info(skb, skinfo->nr_frags + nr_frags,
-+					   sinfo->xdp_frags_size,
-+					   nr_frags * xdp->frame_sz,
-+					   xdp_buff_is_frag_pfmemalloc(xdp));
-+
-+		/* First buffer has already been processed, so bump ntc */
-+		if (++rx_ring->next_to_clean == rx_ring->count)
-+			rx_ring->next_to_clean = 0;
-+
-+		i40e_process_rx_buffs(rx_ring, I40E_XDP_PASS, xdp);
-+	}
-+
- 	return skb;
- }
- 
- /**
-  * i40e_build_skb - Build skb around an existing buffer
-  * @rx_ring: Rx descriptor ring to transact packets on
-- * @rx_buffer: Rx buffer to pull data from
-  * @xdp: xdp_buff pointing to the data
-+ * @nr_frags: number of buffers for the packet
-  *
-  * This function builds an skb around an existing Rx buffer, taking care
-  * to set up the skb correctly and avoid any memcpy overhead.
-  */
- static struct sk_buff *i40e_build_skb(struct i40e_ring *rx_ring,
--				      struct i40e_rx_buffer *rx_buffer,
--				      struct xdp_buff *xdp)
-+				      struct xdp_buff *xdp,
-+				      u32 nr_frags)
- {
- 	unsigned int metasize = xdp->data - xdp->data_meta;
- 	struct sk_buff *skb;
-@@ -2203,36 +2255,25 @@ static struct sk_buff *i40e_build_skb(struct i40e_ring *rx_ring,
- 	if (metasize)
- 		skb_metadata_set(skb, metasize);
- 
--	/* buffer is used by skb, update page_offset */
--	i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
-+	if (unlikely(xdp_buff_has_frags(xdp))) {
-+		struct skb_shared_info *sinfo;
- 
--	return skb;
--}
-+		sinfo = xdp_get_shared_info_from_buff(xdp);
-+		xdp_update_skb_shared_info(skb, nr_frags,
-+					   sinfo->xdp_frags_size,
-+					   nr_frags * xdp->frame_sz,
-+					   xdp_buff_is_frag_pfmemalloc(xdp));
- 
--/**
-- * i40e_put_rx_buffer - Clean up used buffer and either recycle or free
-- * @rx_ring: rx descriptor ring to transact packets on
-- * @rx_buffer: rx buffer to pull data from
-- *
-- * This function will clean up the contents of the rx_buffer.  It will
-- * either recycle the buffer or unmap it and free the associated resources.
-- */
--static void i40e_put_rx_buffer(struct i40e_ring *rx_ring,
--			       struct i40e_rx_buffer *rx_buffer)
--{
--	if (i40e_can_reuse_rx_page(rx_buffer, &rx_ring->rx_stats)) {
--		/* hand second half of page back to the ring */
--		i40e_reuse_rx_page(rx_ring, rx_buffer);
-+		i40e_process_rx_buffs(rx_ring, I40E_XDP_PASS, xdp);
- 	} else {
--		/* we are not reusing the buffer so unmap it */
--		dma_unmap_page_attrs(rx_ring->dev, rx_buffer->dma,
--				     i40e_rx_pg_size(rx_ring),
--				     DMA_FROM_DEVICE, I40E_RX_DMA_ATTR);
--		__page_frag_cache_drain(rx_buffer->page,
--					rx_buffer->pagecnt_bias);
--		/* clear contents of buffer_info */
--		rx_buffer->page = NULL;
-+		struct i40e_rx_buffer *rx_buffer;
-+
-+		rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
-+		/* buffer is used by skb, update page_offset */
-+		i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
- 	}
-+
-+	return skb;
- }
- 
- /**
-@@ -2387,6 +2428,55 @@ static void i40e_inc_ntp(struct i40e_ring *rx_ring)
- 	prefetch(I40E_RX_DESC(rx_ring, ntp));
- }
- 
-+/**
-+ * i40e_add_xdp_frag: Add a frag to xdp_buff
-+ * @xdp: xdp_buff pointing to the data
-+ * @nr_frags: return number of buffers for the packet
-+ * @rx_buffer: rx_buffer holding data of the current frag
-+ * @size: size of data of current frag
-+ */
-+static int i40e_add_xdp_frag(struct xdp_buff *xdp, u32 *nr_frags,
-+			     struct i40e_rx_buffer *rx_buffer, u32 size)
-+{
-+	struct skb_shared_info *sinfo = xdp_get_shared_info_from_buff(xdp);
-+
-+	if (!xdp_buff_has_frags(xdp)) {
-+		sinfo->nr_frags = 0;
-+		sinfo->xdp_frags_size = 0;
-+		xdp_buff_set_frags_flag(xdp);
-+	} else if (unlikely(sinfo->nr_frags >= MAX_SKB_FRAGS)) {
-+		/* Overflowing packet: All frags need to be dropped */
-+		return  -ENOMEM;
-+	}
-+
-+	__skb_fill_page_desc_noacc(sinfo, sinfo->nr_frags++, rx_buffer->page,
-+				   rx_buffer->page_offset, size);
-+
-+	sinfo->xdp_frags_size += size;
-+
-+	if (page_is_pfmemalloc(rx_buffer->page))
-+		xdp_buff_set_frag_pfmemalloc(xdp);
-+	*nr_frags = sinfo->nr_frags;
-+
-+	return 0;
-+}
-+
-+/**
-+ * i40e_consume_xdp_buff - Consume all the buffers of the packet and update ntc
-+ * @rx_ring: rx descriptor ring to transact packets on
-+ * @xdp: xdp_buff pointing to the data
-+ * @rx_buffer: rx_buffer of eop desc
-+ */
-+static void i40e_consume_xdp_buff(struct i40e_ring *rx_ring,
-+				  struct xdp_buff *xdp,
-+				  struct i40e_rx_buffer *rx_buffer)
-+{
-+	i40e_process_rx_buffs(rx_ring, I40E_XDP_CONSUMED, xdp);
-+	i40e_put_rx_buffer(rx_ring, rx_buffer);
-+	rx_ring->next_to_clean = rx_ring->next_to_process;
-+	xdp->data = NULL;
-+}
-+
- /**
-  * i40e_clean_rx_irq - Clean completed descriptors from Rx ring - bounce buf
-  * @rx_ring: rx descriptor ring to transact packets on
-@@ -2405,9 +2495,9 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- {
- 	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
- 	u16 cleaned_count = I40E_DESC_UNUSED(rx_ring);
-+	u16 clean_threshold = rx_ring->count / 2;
- 	unsigned int offset = rx_ring->rx_offset;
- 	struct xdp_buff *xdp = &rx_ring->xdp;
--	struct sk_buff *skb = rx_ring->skb;
- 	unsigned int xdp_xmit = 0;
- 	struct bpf_prog *xdp_prog;
- 	bool failure = false;
-@@ -2419,11 +2509,14 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 		u16 ntp = rx_ring->next_to_process;
- 		struct i40e_rx_buffer *rx_buffer;
- 		union i40e_rx_desc *rx_desc;
-+		struct sk_buff *skb;
- 		unsigned int size;
-+		u32 nfrags = 0;
-+		bool neop;
- 		u64 qword;
- 
- 		/* return some buffers to hardware, one at a time is too slow */
--		if (cleaned_count >= I40E_RX_BUFFER_WRITE) {
-+		if (cleaned_count >= clean_threshold) {
- 			failure = failure ||
- 				  i40e_alloc_rx_buffers(rx_ring, cleaned_count);
- 			cleaned_count = 0;
-@@ -2461,76 +2554,83 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 			break;
- 
- 		i40e_trace(clean_rx_irq, rx_ring, rx_desc, xdp);
-+		/* retrieve a buffer from the ring */
- 		rx_buffer = i40e_get_rx_buffer(rx_ring, size);
- 
--		/* retrieve a buffer from the ring */
--		if (!skb) {
-+		neop = i40e_is_non_eop(rx_ring, rx_desc);
-+		i40e_inc_ntp(rx_ring);
-+
-+		if (!xdp->data) {
- 			unsigned char *hard_start;
- 
- 			hard_start = page_address(rx_buffer->page) +
- 				     rx_buffer->page_offset - offset;
- 			xdp_prepare_buff(xdp, hard_start, offset, size, true);
--			xdp_buff_clear_frags_flag(xdp);
- #if (PAGE_SIZE > 4096)
- 			/* At larger PAGE_SIZE, frame_sz depend on len size */
- 			xdp->frame_sz = i40e_rx_frame_truesize(rx_ring, size);
- #endif
--			xdp_res = i40e_run_xdp(rx_ring, xdp, xdp_prog);
-+		} else if (i40e_add_xdp_frag(xdp, &nfrags, rx_buffer, size) &&
-+			   !neop) {
-+			/* Overflowing packet: Drop all frags on EOP */
-+			i40e_consume_xdp_buff(rx_ring, xdp, rx_buffer);
-+			break;
- 		}
- 
-+		if (neop)
-+			continue;
-+
-+		xdp_res = i40e_run_xdp(rx_ring, xdp, xdp_prog);
-+
- 		if (xdp_res) {
--			if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
--				xdp_xmit |= xdp_res;
-+			xdp_xmit |= xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR);
-+
-+			if (unlikely(xdp_buff_has_frags(xdp))) {
-+				i40e_process_rx_buffs(rx_ring, xdp_res, xdp);
-+				size = xdp_get_buff_len(xdp);
-+			} else if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
- 				i40e_rx_buffer_flip(rx_buffer, xdp->frame_sz);
- 			} else {
- 				rx_buffer->pagecnt_bias++;
- 			}
- 			total_rx_bytes += size;
--			total_rx_packets++;
--		} else if (skb) {
--			i40e_add_rx_frag(rx_ring, rx_buffer, skb, size);
--		} else if (ring_uses_build_skb(rx_ring)) {
--			skb = i40e_build_skb(rx_ring, rx_buffer, xdp);
- 		} else {
--			skb = i40e_construct_skb(rx_ring, rx_buffer, xdp);
--		}
-+			if (ring_uses_build_skb(rx_ring))
-+				skb = i40e_build_skb(rx_ring, xdp, nfrags);
-+			else
-+				skb = i40e_construct_skb(rx_ring, xdp, nfrags);
-+
-+			/* drop if we failed to retrieve a buffer */
-+			if (!skb) {
-+				rx_ring->rx_stats.alloc_buff_failed++;
-+				i40e_consume_xdp_buff(rx_ring, xdp, rx_buffer);
-+				break;
-+			}
- 
--		/* exit if we failed to retrieve a buffer */
--		if (!xdp_res && !skb) {
--			rx_ring->rx_stats.alloc_buff_failed++;
--			rx_buffer->pagecnt_bias++;
--			break;
--		}
-+			if (i40e_cleanup_headers(rx_ring, skb, rx_desc))
-+				goto process_next;
- 
--		i40e_put_rx_buffer(rx_ring, rx_buffer);
--		cleaned_count++;
-+			/* probably a little skewed due to removing CRC */
-+			total_rx_bytes += skb->len;
- 
--		i40e_inc_ntp(rx_ring);
--		rx_ring->next_to_clean = rx_ring->next_to_process;
--		if (i40e_is_non_eop(rx_ring, rx_desc))
--			continue;
-+			/* populate checksum, VLAN, and protocol */
-+			i40e_process_skb_fields(rx_ring, rx_desc, skb);
- 
--		if (xdp_res || i40e_cleanup_headers(rx_ring, skb, rx_desc)) {
--			skb = NULL;
--			continue;
-+			i40e_trace(clean_rx_irq_rx, rx_ring, rx_desc, xdp);
-+			napi_gro_receive(&rx_ring->q_vector->napi, skb);
- 		}
- 
--		/* probably a little skewed due to removing CRC */
--		total_rx_bytes += skb->len;
--
--		/* populate checksum, VLAN, and protocol */
--		i40e_process_skb_fields(rx_ring, rx_desc, skb);
--
--		i40e_trace(clean_rx_irq_rx, rx_ring, rx_desc, xdp);
--		napi_gro_receive(&rx_ring->q_vector->napi, skb);
--		skb = NULL;
--
- 		/* update budget accounting */
- 		total_rx_packets++;
-+process_next:
-+		cleaned_count += nfrags + 1;
-+		i40e_put_rx_buffer(rx_ring, rx_buffer);
-+		rx_ring->next_to_clean = rx_ring->next_to_process;
-+
-+		xdp->data = NULL;
- 	}
- 
- 	i40e_finalize_xdp_rx(rx_ring, xdp_xmit);
--	rx_ring->skb = skb;
- 
- 	i40e_update_rx_stats(rx_ring, total_rx_bytes, total_rx_packets);
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-index e86abc25bb5e..14ad074639ab 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-@@ -393,14 +393,6 @@ struct i40e_ring {
- 
- 	struct rcu_head rcu;		/* to avoid race on free */
- 	u16 next_to_alloc;
--	struct sk_buff *skb;		/* When i40e_clean_rx_ring_irq() must
--					 * return before it sees the EOP for
--					 * the current packet, we save that skb
--					 * here and resume receiving this
--					 * packet the next time
--					 * i40e_clean_rx_ring_irq() is called
--					 * for this ring.
--					 */
- 
- 	struct i40e_channel *ch;
- 	u16 rx_offset;
--- 
-2.34.1
-
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
