@@ -1,88 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A62C9695EC6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 10:19:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0275C696477
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Feb 2023 14:20:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DF341605B3;
-	Tue, 14 Feb 2023 09:19:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DF341605B3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E9D481A99;
+	Tue, 14 Feb 2023 13:20:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E9D481A99
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676366350;
-	bh=DWmgK74kWU0985Jil41ld6DeNnEMicmmo/2vLOPkscQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=xZmn3bdt7O7def06gwZkcsgden8NrZqVAjRGPXmHIkhMXIJvUpQp1s0aOH69tNzyZ
-	 0qhnPR3bcsSfi4CDyDGad1PTHqglWUz60ZpYA4Lzz6tRQ9VJ4IeaszAf6mfMx9Uhg3
-	 QLp7w1+8hXMS3pdMeNSeM95+GDH6QBxLDfcDobqsOizdlN+tH2256QQybcyxlxhxCL
-	 bUwzGpMcIdu7l8a7s1q8JJZ3FTN8pwAgxUtqra2KSgA2HyCCdry7zCu93RNAvHVLhq
-	 230RdjK/BoWyKyHn6Z0U9JM3dQ7Ozh/paVPUxBvvIwpKaAk0eJJJjMd7j82bKcawbk
-	 XN7k9uHWL7XQQ==
+	s=default; t=1676380818;
+	bh=yyMq7+sZvAmB4dLDbtE4pnjfo6bY0gaTxLE9b5MxpNQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=pIfqAQzJHzVWQPW7V5cJjvy48woMUrFARIAxuEng1+BnFWpZqe6N3dQRl3SvmQvPD
+	 5hI4RZrVr8M1bSaHJ1/lsZ8WkTUVVJ7i37az9iCT9FS2okYNCk7pLtCFyhHWp9kplJ
+	 7BFh8k2gzq5UPBlBYyfd56/ESl9Rsc7VQQJSvDpOQ45c/YO1wFKiSU5bLpG4h7FO8H
+	 Cf/Owzl/vdyFJiXYDC8YNtn3qNpRIIUwUNozMcJPVV8OWaYHnAkLsP3LLrBDyoucRs
+	 QUY/EBWKRcc+V36+rdHltsLP/fr/4/1EC9FcXkjryGYzjJTtXDES5s8ZUeDnAg+//U
+	 I/mDddbWAUDlg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h5lpcJVmoIY5; Tue, 14 Feb 2023 09:19:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2euIit0Z0BT1; Tue, 14 Feb 2023 13:20:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A3EFA61069;
-	Tue, 14 Feb 2023 09:19:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3EFA61069
+	by smtp1.osuosl.org (Postfix) with ESMTP id 669C981A6A;
+	Tue, 14 Feb 2023 13:20:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 669C981A6A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B839C1BF2EA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 09:19:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C74E31BF40E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 13:20:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 918B840ACD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 09:19:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 918B840ACD
+ by smtp4.osuosl.org (Postfix) with ESMTP id A10E4410E8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 13:20:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A10E4410E8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TvcHbJRseyoC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Feb 2023 09:19:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id y0eXHJCPTN_F for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Feb 2023 13:20:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A6E07405F4
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A6E07405F4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 09:19:03 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="393520685"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="393520685"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 01:19:02 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="914679186"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="914679186"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 14 Feb 2023 01:19:01 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pRrSn-0008MB-04;
- Tue, 14 Feb 2023 09:19:01 +0000
-Date: Tue, 14 Feb 2023 17:18:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63eb51d2.EzM+PQGQZcB+YEz0%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7CC33410D5
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7CC33410D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Feb 2023 13:20:11 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 00EFCB81CCB;
+ Tue, 14 Feb 2023 13:20:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D0A9C4339B;
+ Tue, 14 Feb 2023 13:20:03 +0000 (UTC)
+From: Arnd Bergmann <arnd@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Date: Tue, 14 Feb 2023 14:19:49 +0100
+Message-Id: <20230214132002.1498163-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676366343; x=1707902343;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=3ZFbEO3gVDucVaL27XMMrOLMFli2MD6aJN7F/ykqiA4=;
- b=Q+b+DWQ0rNyvrvsCefFQ7P0x1yKFwVas4aJx3DlgUgC1/Cx9zFMzevHI
- Gg5B8cTXy3vln3tjsLAAo9Ni/A6GFT3sXp4gYvYVTRc+FU9TpVNv7aXJQ
- Sq1qhpVcIX7DSjphiT2dD/inR9pf/xFwaZnh+65PUvJ+p4Ut9fZkI32EQ
- uJ28n9+doOCTgobhEgmNMOTRPq0LMxZMginEYtsWL9cXhHMnMGy6aXGFK
- De7cXxRKC5TzpVl+V+ZbnUk2NAj2+0QRp2D7ZDB3iQi21npXLQ57vDmos
- 8dBaN5h35FturVdpBkaIZ+M+5vuEP31FhOwHd9T/lqsOcK4Dp2f2AMojk
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q+b+DWQ0
-Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
- 43fbca02c2ddc39ff5879b6f3a4a097b1ba02098
+ d=kernel.org; s=k20201202; t=1676380806;
+ bh=2CeITdNxri0c/lH27oKamdXHaU07x4TU7pa3d7pB2zw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=cjl6nC5FFH9cK6UD23bBAsMGjP3Umg+fOif8ex7YQ0EInIBIJv1YzaLqdbnXeJoME
+ gcCeOantwDKND29WlmSAXiNcy8fNgYgxJk7nClMrzzUISHMu0nI6ha4NYwqalfZrsR
+ /k8Tp+em9sbHyfz3Z7eaL32VMEYX+RZPutl1K6Au1wUI70URXybc3sTvVTAxjE/a+k
+ vfGimFa63dYfIV1Gb14zgF6jZFfRZ7gPx6GJxlGFVBzTJd5YatrRUwt1fjEf94gLnT
+ gV63s0i6km+SvAJcJxKTv0MFdiy2SbUb+mnTN+F7N2zllQkb+YNBe7b8Z8m8m25fZo
+ EHQxAHFuaz5QA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=cjl6nC5F
+Subject: [Intel-wired-lan] [PATCH] ethernet: ice: avoid gcc-9 integer
+ overflow warning
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,69 +91,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Arnd Bergmann <arnd@arndb.de>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
-branch HEAD: 43fbca02c2ddc39ff5879b6f3a4a097b1ba02098  ice: fix lost multicast packets in promisc mode
+From: Arnd Bergmann <arnd@arndb.de>
 
-elapsed time: 871m
+With older compilers like gcc-9, the calculation of the vlan
+priority field causes a warning from the byteswap:
 
-configs tested: 42
-configs skipped: 3
+In file included from drivers/net/ethernet/intel/ice/ice_tc_lib.c:4:
+drivers/net/ethernet/intel/ice/ice_tc_lib.c: In function 'ice_parse_cls_flower':
+include/uapi/linux/swab.h:15:15: error: integer overflow in expression '(int)(short unsigned int)((int)match.key-><U67c8>.<U6698>.vlan_priority << 13) & 57344 & 255' of type 'int' results in '0' [-Werror=overflow]
+   15 |  (((__u16)(x) & (__u16)0x00ffU) << 8) |   \
+      |   ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+include/uapi/linux/swab.h:106:2: note: in expansion of macro '___constant_swab16'
+  106 |  ___constant_swab16(x) :   \
+      |  ^~~~~~~~~~~~~~~~~~
+include/uapi/linux/byteorder/little_endian.h:42:43: note: in expansion of macro '__swab16'
+   42 | #define __cpu_to_be16(x) ((__force __be16)__swab16((x)))
+      |                                           ^~~~~~~~
+include/linux/byteorder/generic.h:96:21: note: in expansion of macro '__cpu_to_be16'
+   96 | #define cpu_to_be16 __cpu_to_be16
+      |                     ^~~~~~~~~~~~~
+drivers/net/ethernet/intel/ice/ice_tc_lib.c:1458:5: note: in expansion of macro 'cpu_to_be16'
+ 1458 |     cpu_to_be16((match.key->vlan_priority <<
+      |     ^~~~~~~~~~~
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+The code looks correct to me, so just avoid the warning by replacing
+the macro expansion with an intermediate variable.
 
-gcc tested configs:
-alpha                            allyesconfig
-alpha                               defconfig
-arc                              allyesconfig
-arc                                 defconfig
-arm                              allmodconfig
-arm                              allyesconfig
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-csky                                defconfig
-i386                             allyesconfig
-i386                              debian-10.3
-i386                                defconfig
-ia64                             allmodconfig
-ia64                                defconfig
-loongarch                        allmodconfig
-loongarch                         allnoconfig
-loongarch                           defconfig
-m68k                             allmodconfig
-m68k                                defconfig
-mips                             allmodconfig
-mips                             allyesconfig
-nios2                               defconfig
-parisc                              defconfig
-parisc64                            defconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                                defconfig
-sh                               allmodconfig
-sparc                               defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                                  kexec
-x86_64                               rhel-8.3
+Fixes: 34800178b302 ("ice: Add support for VLAN priority filters in switchdev")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+index 6b48cbc049c6..e9932446185c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+@@ -1453,10 +1453,9 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 		}
+ 
+ 		if (match.mask->vlan_priority) {
++			u16 prio = (match.key->vlan_priority << VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK;
+ 			fltr->flags |= ICE_TC_FLWR_FIELD_VLAN_PRIO;
+-			headers->vlan_hdr.vlan_prio =
+-				cpu_to_be16((match.key->vlan_priority <<
+-					     VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK);
++			headers->vlan_hdr.vlan_prio = cpu_to_be16(prio);
+ 		}
+ 
+ 		if (match.mask->vlan_tpid)
+@@ -1487,10 +1486,9 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+ 		}
+ 
+ 		if (match.mask->vlan_priority) {
++			u16 prio = (match.key->vlan_priority << VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK;
+ 			fltr->flags |= ICE_TC_FLWR_FIELD_CVLAN_PRIO;
+-			headers->cvlan_hdr.vlan_prio =
+-				cpu_to_be16((match.key->vlan_priority <<
+-					     VLAN_PRIO_SHIFT) & VLAN_PRIO_MASK);
++			headers->cvlan_hdr.vlan_prio = cpu_to_be16(prio);
+ 		}
+ 	}
+ 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.39.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
