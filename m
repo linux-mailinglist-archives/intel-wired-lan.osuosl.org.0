@@ -2,178 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6554869803B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Feb 2023 17:12:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A86669803C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Feb 2023 17:12:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E485540BE2;
-	Wed, 15 Feb 2023 16:12:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E485540BE2
+	by smtp2.osuosl.org (Postfix) with ESMTP id D187740BF0;
+	Wed, 15 Feb 2023 16:12:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D187740BF0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676477568;
-	bh=s3LiZi67vGPfgTif30ebDOkvZYMjErwI+3RQ2azy4ro=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=OWOv41gX1RDEuM5gu01y/yuKsb67ZmldtILB3juZKZYOaOHALVab74K34Q3/dQx04
-	 1Qdyb9371P8+N35HwaDcATHrn9PNki2wI7e4DNudhWtrEp04LOFocRWQNczc+dsdZJ
-	 7dFMWGpYaf3LASltbOuWxU2UDPoIzyiaYxk0eDmVTJrXigDUNjsNsIV7ig0JBXorgz
-	 fcf0mN+7GcqompBqttbYt2coeyUSXxjE233vOjycRlwBIdyvUQeEPE7Jqny3Zfayt0
-	 xpbY9fjcBLl63MxQslF+3l7LrfHAslm79xS6Bx/x7yNOnwnEbhHb+w6wiBe016gP+w
-	 JMAKhfONEnQiQ==
+	s=default; t=1676477572;
+	bh=aN5tFPHIP0uHjrExytpHF47h4X9V5aEDLoBHesToKLI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=pP2h+Lc1YZN5dn3THBQ/8bW3FpJDCnCHSMk+p+ytMWnXgqE7y6s+aHq3XZ6w4trnF
+	 Mo0tdNbHFGgyOnOQLhAnxPVPvPFLjn2KAMGkie1nrkI0+eOlzGcNVX80KHWV/8Hd8X
+	 RUSUzASc/S+V/qOHnMBkec93noISFfFRkNRErEt8gHqoWJYY+Ru2TF2fqfcXWG/kZN
+	 hnnZg0n/03w1SSCaXKayUgWExKueSPa4sgACAyzGK+zRetaZw6BBODSiP0HCvzAxYa
+	 +lLxyBzpv5gfpptVLqzMkCiuCyxhUlnYPZ7nQMUHM4N3LKAumqUVxYRtFUPR05NNZ9
+	 CuQ8jrcOe0OtA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id js-2pPkO_fCL; Wed, 15 Feb 2023 16:12:48 +0000 (UTC)
+	with ESMTP id VhTObNPKhfm5; Wed, 15 Feb 2023 16:12:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C597F4012B;
-	Wed, 15 Feb 2023 16:12:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C597F4012B
+	by smtp2.osuosl.org (Postfix) with ESMTP id C5B424012B;
+	Wed, 15 Feb 2023 16:12:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C5B424012B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 34E251BF44C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 04:37:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F1D661BF82F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 12:57:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0C1AE410B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 04:37:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C1AE410B5
+ by smtp4.osuosl.org (Postfix) with ESMTP id D7D1F41608
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 12:57:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D7D1F41608
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TWs_W9a6w_jf for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Feb 2023 04:37:54 +0000 (UTC)
+ with ESMTP id M5OUM4iYd9Yv for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Feb 2023 12:57:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 801D3409AC
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 801D3409AC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 04:37:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="310974246"
-X-IronPort-AV: E=Sophos;i="5.97,298,1669104000"; d="scan'208";a="310974246"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 20:37:49 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="662795444"
-X-IronPort-AV: E=Sophos;i="5.97,298,1669104000"; d="scan'208";a="662795444"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga007.jf.intel.com with ESMTP; 14 Feb 2023 20:37:49 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 14 Feb 2023 20:37:49 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 14 Feb 2023 20:37:49 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.48) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 14 Feb 2023 20:37:49 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OGlMlFYGO9W+QjvxPizAUUgE6XNIoH0xP3bNLEbrN/sHS38Y9M23Mc85MGycPYaUxCFnwJ4zaq8HpSOEygxb7gv9joTrht1qH+Tz8WiK+Cfqx0Kqg7Vo3h/JPHF9KKa0zagBFpkIvfgY6UecUciYjnMhOh2xpZjJlZUjSa5FFubjRACSSyHayTTNsej2OTdUUYpu678f3VjfnHguuU7AtWdLtnsUFtb0bxvYhl7sB06zxIjD99f13w9FIhJK0Zgq4vg1QlMcC3WC0RUKm60+Go2gKLgd9LJXRa9CBHSIGxNUB/oR7zQ1y/F1K7Z5uweqWbyxAQbQi/loAZDlcpKH6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fueHtQzM1RD7+PGsi8PELFA3IrIBQzB+phZOztcBtGc=;
- b=g1GaUIl2lBINWEbboxy8UPrn+AuSBglBGFrYOrpOft/1LCgBM13Quqp5TiT7zHTdzjPRPPw8zqV4GgS+q75G+fbQ2LW0lbl2/BIi3Ec8eHpRX11Ckc33CN0fv5e9pbd6tzseBdYMFkPa/g+xajjvfn6tiVicm8FZ54xTUvMM2Lm3NqCFW9s7EIpgdm7uSEEEv2wdmwkboLOM6EkgtB8UcAzt4cACSDZN23L0O+6lIvxxvlyIEcuP8K9s8U+K5FHrX7IvLRINr5SjeFOm/l3ot5gjbiseDZX2htzKVBbUZjg7zd7G1OSbaPvAa1YOvuc/bJzAWMT7xOQh/6vvLYEVGA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CY4PR1101MB2360.namprd11.prod.outlook.com (2603:10b6:903:b9::9)
- by MW4PR11MB7008.namprd11.prod.outlook.com (2603:10b6:303:227::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Wed, 15 Feb
- 2023 04:37:47 +0000
-Received: from CY4PR1101MB2360.namprd11.prod.outlook.com
- ([fe80::ca4b:b3ce:b8a0:f0da]) by CY4PR1101MB2360.namprd11.prod.outlook.com
- ([fe80::ca4b:b3ce:b8a0:f0da%11]) with mapi id 15.20.6086.026; Wed, 15 Feb
- 2023 04:37:47 +0000
-From: "Sarkar, Tirthendu" <tirthendu.sarkar@intel.com>
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>
-Thread-Topic: [PATCH intel-next v3 8/8] i40e: add support for XDP multi-buffer
- Rx
-Thread-Index: AQHZQHImdH8aDiB8C0qjnCvdyK/ZYK7OqxGAgADAfzA=
-Date: Wed, 15 Feb 2023 04:37:47 +0000
-Message-ID: <CY4PR1101MB2360B76C18FDEECAFE3169EE90A39@CY4PR1101MB2360.namprd11.prod.outlook.com>
-References: <20230214123018.54386-1-tirthendu.sarkar@intel.com>
- <20230214123018.54386-9-tirthendu.sarkar@intel.com> <Y+u+aUJJ2EQYEdJB@boxer>
-In-Reply-To: <Y+u+aUJJ2EQYEdJB@boxer>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CY4PR1101MB2360:EE_|MW4PR11MB7008:EE_
-x-ms-office365-filtering-correlation-id: 11033951-9887-4d43-24cb-08db0f0e6370
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: IeqYSdxG/Xfn4WBZ5kJvNlFRLL6NTpQFNOMuTS4yECKPTSJYXXAsQfggtz2wLf8XGkUmxzQ1ALXGABjfnZzUHZSO0ZaeYGAs4iH/52QHv6Wta1/lLGS9iO+R2MhbAKnXbL2Y5Bq8+CFxhjF8my/xL9QDihcbtm6vnQYNT8gZRwXbfUxW3yXpFspO7qA+/BV7z1mFckD7vXkYvMsDv4dRZAxeveAybPuwXztDiNwBZk9JXcqqERiNTWDNGhHJ+MkpkwSA66h8w6556Uab/+eoKmIB1w4K6169zfk1yEmoRfBmeKxA85S2rLn45sAG6n5YzllhGf+0d0yZcjVtwXIUOFmEF/Uj+v0pAcra3tMgAmneApYJa8PkI5dyfxYAWGu/PMKgtaAkPuFdrTS7zAuT74cpQm1Jc0vpwDcU7UVFMwN8UxEwoE88W91V5o4JFeznZKotS6vWHLcuAgVU6XZIQwBM0TAsKgmEeSCDKgFw7odVApvPFRh5CkrB7TBMn10MIK+0nLeIt4Zz5r0cdxvrQjz/OCb9GM4REZAShp932L5oDDpUZqiayd0W2bQ6CAIWAJN4cRgc8ybD3G2bbT17syiL5rNEczQqJpNw/hN2bvo8Vdn1IBZPDR4F15Iwy8BiUIJKLLiAmMCvpXuZrNn2AK3SBN3iQo9dwMAfOkBa3Gx8axY/K6XCCo0QpE5Az+apXd7H4p3RFlpKoViY+ZWWcPp2ahTZnWVnhH74aggMBb8=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR1101MB2360.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(39860400002)(136003)(366004)(376002)(396003)(346002)(451199018)(82960400001)(66946007)(38100700002)(76116006)(5660300002)(66476007)(4326008)(33656002)(107886003)(6862004)(38070700005)(7696005)(55016003)(41300700001)(71200400001)(66556008)(8936002)(8676002)(64756008)(478600001)(2906002)(6636002)(54906003)(66446008)(316002)(83380400001)(26005)(186003)(9686003)(52536014)(86362001)(122000001)(6506007)(83323001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ZGuvk7RMa4BztddTw9yIyT3EJoLfrRauujGtS5BKSubcMabTJkh9pGYeuEpS?=
- =?us-ascii?Q?pNy8CN1dfe4G1gYe3zIX6fD+YjOLt6OXG1UwsA1Tc6jMgyEO48f3INJMTv0E?=
- =?us-ascii?Q?S0ZBVvgQq5Lvzw+7gKdL/LXlNcKURXn1iTs5MnotwDqUDUAz24Nw9oHzLvBH?=
- =?us-ascii?Q?4MuNg+WIITu4N1pCdpyFt88QyMyUMiryworCF0ap4/pz075jfhD44p5nTty0?=
- =?us-ascii?Q?pklZgTow2j/fsADve1MmWD/JKDu1+GrpRlqwECWZJBEFick57/4Q9VowLoh9?=
- =?us-ascii?Q?NRoC5i9Uplr+7oCAobXTiUFVfPx+XWXifN+lSRIUb+DPdAsfmWA8amIdhZ+j?=
- =?us-ascii?Q?ipazqYbxK33Fu1e7nOLYZY6kKSWHZ8PDBEmpJGkbsQsGqxRXEA+Y4XJ6mQwT?=
- =?us-ascii?Q?rb1FfjTo8J+rNMQdjVOlAdx8P+6auRLHmmm6feP1+8ejFGNyJOAGnGyb9rFe?=
- =?us-ascii?Q?e1Gdq64H6+bbZR2g7BHlstXrqRgM+ZRtmz+WK9iv5G4fasK5sHFZHL3DEKsv?=
- =?us-ascii?Q?yIucAvUTdNEPhGUP5RE+iUh9Thn7yUb5Yzo/YBM2MuYWbNxnvebVEYKMeEue?=
- =?us-ascii?Q?xnOqNwwIM1o2B7m8SmT/L/RRpzU1fzdQ/+dXcNXupeRcj9XK9THi+omoAkLW?=
- =?us-ascii?Q?avh/uDGTA/+BR2V+aAPazY2PLe66CAUiWaGb9tyF858v25OToTEQQ3i9+M2I?=
- =?us-ascii?Q?TqGRvoCe8e0oQtHBBADgbpPiHaPCHn9ZzsgD9POn9wqx2aznmv2B2wePReEj?=
- =?us-ascii?Q?Bh/lhCxQDr5TPSlk5gfn7rf1ILzdPgcBNGLd6CGQEmHpp100kuuf8hiDfVv3?=
- =?us-ascii?Q?QJN/CcZyVJsvQnDjw9AUgk4E+bUNckW1d7hkEzwMWy8HL/93tLTpy7jYtE0Y?=
- =?us-ascii?Q?JqgGBMoqz1StIl3CqApdGXHJw/xKjVnX61Znu8Lfz/X+ALcPfyTCh0CaReh9?=
- =?us-ascii?Q?Tt57AseYbPYal5WulOEbd+mBZWaa3ubAXkO+rwxDsnm2Um09lzVvHu/M//nP?=
- =?us-ascii?Q?WmizMXczDo+ravmCPi1VtrSUArc611BCPzCh51GyJeaRzm/JLiTu8ipaZ6pa?=
- =?us-ascii?Q?AKSt+xKD1G0dY/hFC9nGaPgoOF6Y/pgPMF9o6YQHhoEtF0LEYdl15COTXAJ5?=
- =?us-ascii?Q?aWuP8IqnyuqlNd1mQQ3+dotRNoJKNzo5+YQZWLJsnoAPiotN0h18QcZYBp0c?=
- =?us-ascii?Q?6P76w/AMBGtKyuLF9j7CGXXLVml/dBZEr8U5nhkC/apTQpzcb6vvmZf2s74L?=
- =?us-ascii?Q?as+1JFBi+yXJhJULeuzyfZkwTVq/AZy3YEZOToxSADqxp8J3NUBwWi0unt5R?=
- =?us-ascii?Q?9S7s4/xofKlb9vNORWzOqWScF3x+TpcaNGlSdRjpEh8mDjHDBQSsNJYlWXPh?=
- =?us-ascii?Q?wuen9q8SEhbiTeafjdjEtQ7X/YfznHzdKCg6rPZ6c0bdUj2AmCQd34Gsir9b?=
- =?us-ascii?Q?dEAi/eSqr+emZkpOw3dUQZs6PJxAC2TVoqkxeVVimK7Yjj3tLJaRZx2qxz/b?=
- =?us-ascii?Q?hDiLCgWcR+kDM7wzpWXabNljpU477YReLceskUqxx6gCssrAEYaUq4fdB/Ga?=
- =?us-ascii?Q?Wt/n76CtWScf+45646W9nOsiQve0umbTSR2/yAIP+Gdq0qsPyx0w9sTM1Bd2?=
- =?us-ascii?Q?5g=3D=3D?=
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AADB5415DB
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AADB5415DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 12:57:49 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="393822005"
+X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="393822005"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Feb 2023 04:57:48 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="998478588"
+X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="998478588"
+Received: from unknown (HELO paamrpdk12-S2600BPB.aw.intel.com)
+ ([10.228.151.145])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Feb 2023 04:57:47 -0800
+From: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 15 Feb 2023 18:12:57 +0530
+Message-Id: <20230215124305.76075-1-tirthendu.sarkar@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR1101MB2360.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 11033951-9887-4d43-24cb-08db0f0e6370
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Feb 2023 04:37:47.5153 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qTiiHKapuG1BwdEgotNYl3XkVXMlxRJyEvXiV5YcuegJwjwdZcQdi3w0Iwds/h78fN/wSKScumN/T4bMni/b03gFT6Bg955GI3cNxqT0ZfA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB7008
-X-OriginatorOrg: intel.com
 X-Mailman-Approved-At: Wed, 15 Feb 2023 16:12:43 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676435874; x=1707971874;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=pMjZB9bxX8ZZUzH+uEhA9+3SxGuP4o+Uu0xOjXM7ji0=;
- b=HLeWQ+DGxToXuMTyvu0vdbl+8W0WAdn1GpbLt2cqMpuBbOPYb16kli70
- 2hRT0wKKqCzNj4gMjhoX/7bFz88FeC1N9ILPYftaBfIE/QZin5AmKThDE
- 7LcOoYNKg3IR7BDdeOg1zHOrBVe6tgsmfm9IqdqWlu1KNoCRLBIKf7cz6
- xDZ2j9MnRBhozLmzFrThp+uw2JxMvCUFBDkDd2y+GomttzdN9PkhEr/id
- CSaHenk3ulb2pQ19Ndx7E2sE8OplQ8hdL8z9QJgkVDx7vJXIAZXSDdH+p
- 1Ru3qjyvcNlXlJThHF4wrieRbO8QJ9WDrluxBj7DsVJR4DhMrQfaU4wWG
- Q==;
+ t=1676465869; x=1708001869;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=7dlWOH/Qpt7bh7ECKlipjSjpc/PPCjtj6keVbKZqS+Q=;
+ b=jYq0bNDgMV4Je+0bvauAs4jDjK2PA1MI2IQz3YPyP7XN0K8aogl+7hiN
+ 4NZaoZPW3MCyIfbEcA9JErPHFnocJ8p/ejXknObQAKHEzT5pKd6ZjVuFN
+ 3UH1mVT/3tPHVqWx5izRM/d+bWNYkLvMTkgfW00XRg4/9h0xxcfdDLj9U
+ eUPvDUoVEQ73XPLY5i+uagkTR7mi+vSjC/AyRzu0GyjgKkg7fWGlfg+UB
+ 70b/ZUjw+BIHOTKxeXDy2o1tnDjtZFCNyRPVYq3xG7X+sVP841W5OPqmQ
+ sdLHYRvzysvzMv5LkZhelEy7t2dCSytX+NtJnZYPADFR68aogvTQTdWyZ
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HLeWQ+DG
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH intel-next v3 8/8] i40e: add support
- for XDP multi-buffer Rx
+ header.a=rsa-sha256 header.s=Intel header.b=jYq0bNDg
+Subject: [Intel-wired-lan] [PATCH intel-next v4 0/8] i40e: support XDP
+ multi-buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -186,122 +94,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
+Cc: tirthendu.sarkar@intel.com, netdev@vger.kernel.org,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, bpf@vger.kernel.org,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+This patchset adds multi-buffer support for XDP. Tx side already has
+support for multi-buffer. This patchset focuses on Rx side. The last
+patch contains actual multi-buffer changes while the previous ones are
+preparatory patches.
 
-[...]
-> > Previously i40e_alloc_rx_buffers() was called for every 32 cleaned
-> > buffers. For multi-buffers this may not be optimal as there may be more
-> > cleaned buffers in each i40e_clean_rx_irq() call. So this is now called
-> > when at least half of the ring size has been cleaned.
-> 
-> Please align this patch with xdp_features update
->
+On receiving the first buffer of a packet, xdp_buff is built and its
+subsequent buffers are added to it as frags. While 'next_to_clean' keeps
+pointing to the first descriptor, the newly introduced 'next_to_process'
+keeps track of every descriptor for the packet. 
 
-ACK
+On receiving EOP buffer the XDP program is called and appropriate action
+is taken (building skb for XDP_PASS, reusing page for XDP_DROP, adjusting
+page offsets for XDP_{REDIRECT,TX}).
+
+The patchset also streamlines page offset adjustments for buffer reuse
+to make it easier to post process the rx_buffers after running XDP prog.
+
+With this patchset there does not seem to be any performance degradation
+for XDP_PASS and some improvement (~1% for XDP_TX, ~5% for XDP_DROP) when
+measured using xdp_rxq_info program from samples/bpf/ for 64B packets.
+
+Changelog:
+    v3 -> v4:
+    - Added non-linear XDP buffer support to xdp_features. [Maciej]
+    - Removed double space. [Maciej]
+
+    v2 -> v3:
+    - Fixed buffer cleanup for single buffer packets on skb alloc
+      failure.
+    - Better naming of cleanup function.
+    - Stop incrementing nr_frags for overflowing packets.
  
-> >
-> > Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/i40e/i40e_main.c |   4 +-
-> >  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 314 +++++++++++++-------
-> >  drivers/net/ethernet/intel/i40e/i40e_txrx.h |   8 -
-> >  3 files changed, 209 insertions(+), 117 deletions(-)
-> >
-> 
-> (...)
-> 
-> >  }
-> >
-> > +/**
-> > + * i40e_add_xdp_frag: Add a frag to xdp_buff
-> > + * @xdp: xdp_buff pointing to the data
-> > + * @nr_frags: return number of buffers for the packet
-> > + * @rx_buffer: rx_buffer holding data of the current frag
-> > + * @size: size of data of current frag
-> > + */
-> > +static int i40e_add_xdp_frag(struct xdp_buff *xdp, u32 *nr_frags,
-> > +			     struct i40e_rx_buffer *rx_buffer, u32 size)
-> > +{
-> > +	struct skb_shared_info *sinfo =
-> xdp_get_shared_info_from_buff(xdp);
-> > +
-> > +	if (!xdp_buff_has_frags(xdp)) {
-> > +		sinfo->nr_frags = 0;
-> > +		sinfo->xdp_frags_size = 0;
-> > +		xdp_buff_set_frags_flag(xdp);
-> > +	} else if (unlikely(sinfo->nr_frags >= MAX_SKB_FRAGS)) {
-> > +		/* Overflowing packet: All frags need to be dropped */
-> > +		return  -ENOMEM;
-> 
-> nit: double space
-> 
+    v1 -> v2:
+    - Instead of building xdp_buff on eop now it is built incrementally.
+    - xdp_buff is now added to i40e_ring struct for preserving across
+      napi calls. [Alexander Duyck]
+    - Post XDP program rx_buffer processing has been simplified.
+    - Rx buffer allocation pull out is reverted to avoid performance 
+      issues for smaller ring sizes and now done when at least half of
+      the ring has been cleaned. With v1 there was ~75% drop for
+      XDP_PASS with the smallest ring size of 64 which is mitigated by
+      v2 [Alexander Duyck]
+    - Instead of retrying skb allocation on previous failure now the
+      packet is dropped. [Maciej]
+    - Simplified page offset adjustments by using xdp->frame_sz instead
+      of recalculating truesize. [Maciej]
+    - Change i40e_trace() to use xdp instead of skb [Maciej]
+    - Reserve tailroom for legacy-rx [Maciej]
+    - Centralize max frame size calculation
 
-ACK
+Tirthendu Sarkar (8):
+  i40e: consolidate maximum frame size calculation for vsi
+  i40e: change Rx buffer size for legacy-rx to support XDP multi-buffer
+  i40e: add pre-xdp page_count in rx_buffer
+  i40e: Change size to truesize when using i40e_rx_buffer_flip()
+  i40e: use frame_sz instead of recalculating truesize for building skb
+  i40e: introduce next_to_process to i40e_ring
+  i40e: add xdp_buff to i40e_ring struct
+  i40e: add support for XDP multi-buffer Rx
 
-[...]
-> > +		xdp_res = i40e_run_xdp(rx_ring, xdp, xdp_prog);
-> > +
-> >  		if (xdp_res) {
-> > -			if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
-> > -				xdp_xmit |= xdp_res;
-> > +			xdp_xmit |= xdp_res & (I40E_XDP_TX |
-> I40E_XDP_REDIR);
-> 
-> what was wrong with having above included in the
-> 
-> 	} else if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
-> 
-> branch?
-> 
+ drivers/net/ethernet/intel/i40e/i40e_main.c  |  78 ++--
+ drivers/net/ethernet/intel/i40e/i40e_trace.h |  20 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c  | 420 +++++++++++--------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h  |  21 +-
+ 4 files changed, 307 insertions(+), 232 deletions(-)
 
-For multi-buffer packets, only the first 'if' branch will be executed. We need to set
-xdp_xmit for both single and multi-buffer packets.
+-- 
+2.34.1
 
-[...]
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > index e86abc25bb5e..14ad074639ab 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> > @@ -393,14 +393,6 @@ struct i40e_ring {
-> >
-> >  	struct rcu_head rcu;		/* to avoid race on free */
-> >  	u16 next_to_alloc;
-> > -	struct sk_buff *skb;		/* When i40e_clean_rx_ring_irq()
-> must
-> > -					 * return before it sees the EOP for
-> > -					 * the current packet, we save that
-> skb
-> > -					 * here and resume receiving this
-> > -					 * packet the next time
-> > -					 * i40e_clean_rx_ring_irq() is called
-> > -					 * for this ring.
-> > -					 */
-> 
-> this comment was valuable to me back when i was getting started with i40e,
-> so maybe we could have something equivalent around xdp_buff now?
-> 
-
-We have a similar comment for xdp_buff in patch #7 where it was introduced.
-
-> >
-> >  	struct i40e_channel *ch;
-> >  	u16 rx_offset;
-> > --
-> > 2.34.1
-> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
