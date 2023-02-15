@@ -2,87 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38B9D697CFB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Feb 2023 14:18:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0636F697D64
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Feb 2023 14:30:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 49257408BE;
-	Wed, 15 Feb 2023 13:18:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 49257408BE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 446C2409B4;
+	Wed, 15 Feb 2023 13:30:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 446C2409B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676467081;
-	bh=sYWpZZ4O/5nZ5wXr9mMVHCVh29n0hn3JwNWsje6wb9A=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=67XZzCwn9CyT5wIlLkNvMMYHAOj8/MCxFv75IeOiqlX4d7bgjTw3Jy5398EL1f/Xd
-	 8AGne0lDZPamxKeimDk9Cpc1jhCNPfOSrHOvajKCeTjwOCvD+Ps7Y8JeS4qxl4Ct+8
-	 h0/qYEDSXl4xDfs5a73UY63knAY/Xvxfnu0RsrmqUtUf/FPu5YV/ZJCjhqGWL08Ri3
-	 8SnQvsn4SRmtJFW5jbVkgcsCuGqTB/tJe22s5+CxDw4EhI9CT4NJDmOt41z0kktgex
-	 ZCz4rz0UtGGP0PV6cV5GJfsODmOayXL9IMy/cT6Kfbflw+jVv/r7RvUUcLo7Fd0rdU
-	 9eSjcRteUgMoA==
+	s=default; t=1676467817;
+	bh=yO6dkF+D6cAxAnAbOaVR+7I5MjGjVIHQ4pk3GJVg9VU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=zxwYT1Uu/larWZy//W+BxGjLluzU0hCF9+ffS8Dz4tbvlI3fir8kMHzh3AvIiFWKx
+	 2rCnsDgLZCNr+RabfYwNBbPQd4pJOL2ChZYLNqTLuUclj9CDuO3MRy0pT9Dk1jHULe
+	 oWWQ/ADo8QBqXEpSTOIyYGYRmQEHZUu45+3IkWcLht2yOsv+LqpX4dipB53e4WmEDK
+	 uRw/nJD09wGdOWVcsWVMDyPrJEJuwB2hL7aBDf4+L2hagG/VFXdfTtRwg085acadRq
+	 ydzHIPZQ9T4ks+6a94j8ES/2q/7eFqrAz5MLjE6zheh9kN1IMj2lb9f3WMex/XyZgU
+	 LiCKCw+Efhjtg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hiF3omrdDfY0; Wed, 15 Feb 2023 13:17:57 +0000 (UTC)
+	with ESMTP id cyF32aBIfyZf; Wed, 15 Feb 2023 13:30:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D34FB409BE;
-	Wed, 15 Feb 2023 13:17:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D34FB409BE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C2424167C;
+	Wed, 15 Feb 2023 13:30:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5C2424167C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 797261BF869
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:17:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 197371BF869
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:30:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5178D81990
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:17:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5178D81990
+ by smtp1.osuosl.org (Postfix) with ESMTP id F2F5881EA3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:30:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2F5881EA3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hVgS9bMxlpLt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Feb 2023 13:17:49 +0000 (UTC)
+ with ESMTP id 1Jz7yjQoxMkG for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Feb 2023 13:30:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6502281DE2
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6502281DE2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:17:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="315078061"
-X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="315078061"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Feb 2023 05:17:48 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B357381E83
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B357381E83
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Feb 2023 13:30:09 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="329143806"
+X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="329143806"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Feb 2023 05:30:09 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="647162642"
-X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="647162642"
-Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 15 Feb 2023 05:17:47 -0800
-Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pSHfO-0009OH-3B;
- Wed, 15 Feb 2023 13:17:46 +0000
-Date: Wed, 15 Feb 2023 21:17:02 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63ecdb4e.lpIsEM/0WuEsKxny%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="915152031"
+X-IronPort-AV: E=Sophos;i="5.97,299,1669104000"; d="scan'208";a="915152031"
+Received: from s240.igk.intel.com (HELO s048.nql.local) ([10.102.18.202])
+ by fmsmga006.fm.intel.com with ESMTP; 15 Feb 2023 05:30:07 -0800
+From: Jan Sokolowski <jan.sokolowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 15 Feb 2023 14:33:23 +0100
+Message-Id: <20230215133323.454054-1-jan.sokolowski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676467069; x=1708003069;
- h=date:from:to:subject:message-id:mime-version:
+ t=1676467809; x=1708003809;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=L9QbxOUBKahZwdZ5kfGqshPBrJSzS/IBvw0znWjdfxc=;
- b=XhgDI1gKT6tz1k/x1GTHhfnWkm3ldWbSNbI9Tz5rkdVDh3VsW8XpK3rl
- 5gL5v3MnsM3Thq0toFUt9+otOUBQlhWOBasmj1ZbXyg0xYKVW2CLmN+0z
- oAS2+ih1tz4xC5DieElULwpVmWRpJ+oYJyJDfF9nJ1DQNgCjkFqQlflK0
- 87V40fXuVEvCcyA/poB6jqjivIuZ/nKRShmBvrPy34Y6h+ebeUvxiZd4E
- yrEztlTtPe/KZI61Ks2I5br8kBRRN//q7UWMKx4dueHfHaggEz4p4ZBeq
- fpY/lUTa1ux/fAmYRpYrzFWhaZzVDCY6eOWbMOqek8NiDHdl6kANkwoD3
- A==;
+ bh=OoA5DHU+rDAnE22Mxdidhhs2TKA+B1GFqy453YLssdU=;
+ b=KGg+oOEFBYPXjQQOCtPshZf3jwUg/1RNfTz0oO7U/4Urf6xXdOsaC3Rh
+ kx45oFiOxcGTOQSFEflTIK0uxuwRkJujx9RBQIF2ZaqVytcK7d3h5ExDU
+ OU33JmZtapyVUTd9VmGoZEAOw2blQxi8pISH+szDziI5Mrc83f/vDBWGL
+ ECkAj9tQOQakpL5wVgYTI/FWkI8ZDJw4Ohk3iV7M+kFPAAmvaN361qkeU
+ D5X1ueJPRMGZCRYtadcgZxnELI5qKYtX6BJkqKv8VuYCPOq5q3mKPi7kq
+ dSyXu+B9bTJyI66Nv5fLb8ytn2YuZIOFc9RAJyJduyn668Xk6NOI/8itY
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XhgDI1gK
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 337aa1adebdad1fa88e146d81e5da26a4ddd2d88
+ header.a=rsa-sha256 header.s=Intel header.b=KGg+oOEF
+Subject: [Intel-wired-lan] [PATCH net-next v6] i40e: Add ability to change
+ VFs default MAC address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,114 +92,536 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Kamil Maziarz <kamil.maziarz@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 337aa1adebdad1fa88e146d81e5da26a4ddd2d88  ice: Fix missing cleanup routine in the case of partial memory allocation
+From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
 
-elapsed time: 778m
+Currently there is no way for a VF driver to specify if it wants to
+change it's hardware address. Although new bits were added to virtchnl.h
+in struct virtchnl_ether_addr to allow the VF to correctly
+communicate this information, legacy VF drivers that don't
+support the new virtchnl.h bits still need to be supported.
+This patch makes a best effort attempt at saving the VF's
+primary/device address in the legacy case and depends on the
+VIRTCHNL_ETHER_ADDR_PRIMARY type for the new case.
 
-configs tested: 85
-configs skipped: 3
+Legacy case - If a unicast MAC is being added and the
+default_lan_addr.addr is empty, then populate it, otherwise save and
+timestamp itin case it is followed by a delete request.
+This assumes that the address is the VF's hardware address.
+If unicast MAC is being deleted, then mark the time it happened,
+if the legacy umac was not expired, and copy as last MAC addr
+on the filter list, and if it matches default_lan_addr.addr,
+mark that as deleted unimac addr.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+This is done because we cannot guarantee the order of
+VIRTCHNL_OP_ADD_ETH_ADDR and VIRTCHNL_OP_DEL_ETH_ADDR.
 
-gcc tested configs:
-alpha                            allyesconfig
-alpha                               defconfig
-arc                              allyesconfig
-arc                                 defconfig
-arc                  randconfig-r043-20230212
-arc                  randconfig-r043-20230213
-arc                  randconfig-r043-20230214
-arm                              allmodconfig
-arm                              allyesconfig
-arm                                 defconfig
-arm                  randconfig-r046-20230212
-arm                  randconfig-r046-20230214
-arm64                            allyesconfig
-arm64                               defconfig
-csky                                defconfig
-i386                             allyesconfig
-i386                              debian-10.3
-i386                                defconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-i386                 randconfig-a011-20230213
-i386                 randconfig-a012-20230213
-i386                 randconfig-a013-20230213
-i386                 randconfig-a014-20230213
-i386                 randconfig-a015-20230213
-i386                 randconfig-a016-20230213
-ia64                             allmodconfig
-ia64                                defconfig
-loongarch                        allmodconfig
-loongarch                         allnoconfig
-loongarch                           defconfig
-m68k                             allmodconfig
-m68k                                defconfig
-mips                             allmodconfig
-mips                             allyesconfig
-nios2                               defconfig
-parisc                              defconfig
-parisc64                            defconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                randconfig-r042-20230213
-riscv                          rv32_defconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                                defconfig
-s390                 randconfig-r044-20230213
-sh                               allmodconfig
-sparc                               defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                            allnoconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                                  kexec
-x86_64               randconfig-a011-20230213
-x86_64               randconfig-a012-20230213
-x86_64               randconfig-a013-20230213
-x86_64               randconfig-a014-20230213
-x86_64               randconfig-a015-20230213
-x86_64               randconfig-a016-20230213
-x86_64                               rhel-8.3
+New case - If a unicast MAC is being added and it's specified as
+VIRTCHNL_ETHER_ADDR_PRIMARY, then replace the current
+default_lan_addr.addr. If a unicast MAC is being deleted and it's type
+is specified as VIRTCHNL_ETHER_ADDR_PRIMARY, then zero the
+hw_lan_addr.addr.
 
-clang tested configs:
-arm                  randconfig-r046-20230213
-hexagon              randconfig-r041-20230212
-hexagon              randconfig-r041-20230213
-hexagon              randconfig-r041-20230214
-hexagon              randconfig-r045-20230212
-hexagon              randconfig-r045-20230213
-hexagon              randconfig-r045-20230214
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-riscv                randconfig-r042-20230212
-riscv                randconfig-r042-20230214
-s390                 randconfig-r044-20230212
-s390                 randconfig-r044-20230214
-x86_64               randconfig-a001-20230213
-x86_64               randconfig-a002-20230213
-x86_64               randconfig-a003-20230213
-x86_64               randconfig-a004-20230213
-x86_64               randconfig-a005-20230213
-x86_64               randconfig-a006-20230213
+Untrusted VFs - Only allow above legacy/new changes to their
+hardware address if the PF has not set it administratively via
+iproute2.
 
+Trusted VFs - Always allow above legacy/new changes to their
+hardware address even if the PF has administratively set it via
+iproute2.
+
+In case of VF reset/reload, only MACs assigned from host
+must be preserved.
+
+Add a vm MAC list to filter MAC addresses to be restored after reset.
+
+Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+Co-developed-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+---
+v2: previous version had been reported to not build under
+some kernel configuration.
+v3: fixed minor kerneldoc misspelling
+v4: Rebased to newest head. Fixed compilation errors due
+to some methods being defined in a wrong patch.
+v5: Squashed two patches into one, as they were too intertwined
+in functionality. Reworded commit msg to better match the patch
+v6: rebase to current head
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 318 +++++++++++++++---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  18 +
+ 2 files changed, 286 insertions(+), 50 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 8a4587585acd..9f45628719aa 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -987,6 +987,65 @@ static void i40e_disable_vf_mappings(struct i40e_vf *vf)
+ 	i40e_flush(hw);
+ }
+ 
++/**
++ * i40e_add_vmmac_to_list
++ * @vf: pointer to the VF info
++ * @macaddr: pointer to the MAC address
++ *
++ * add MAC address into the MAC list for VM
++ **/
++static int i40e_add_vmmac_to_list(struct i40e_vf *vf, const u8 *macaddr)
++{
++	struct i40e_vm_mac *mac_elem;
++
++	mac_elem = kzalloc(sizeof(*mac_elem), GFP_ATOMIC);
++	if (!mac_elem)
++		return -ENOMEM;
++	ether_addr_copy(mac_elem->macaddr, macaddr);
++	INIT_LIST_HEAD(&mac_elem->list);
++	list_add(&mac_elem->list, &vf->vm_mac_list);
++	return 0;
++}
++
++/**
++ * i40e_del_vmmac_from_list
++ * @vf: pointer to the VF info
++ * @macaddr: pointer to the MAC address
++ *
++ * delete MAC address from the MAC list for VM
++ **/
++static void i40e_del_vmmac_from_list(struct i40e_vf *vf, const u8 *macaddr)
++{
++	struct i40e_vm_mac *entry, *tmp;
++
++	list_for_each_entry_safe(entry, tmp, &vf->vm_mac_list, list) {
++		if (ether_addr_equal(macaddr, entry->macaddr)) {
++			list_del(&entry->list);
++			kfree(entry);
++			break;
++		}
++	}
++}
++
++/**
++ * i40e_free_vmmac_list
++ * @vf: pointer to the VF info
++ *
++ * remove whole list of MAC addresses for VM
++ **/
++static void i40e_free_vmmac_list(struct i40e_vf *vf)
++{
++	struct i40e_vm_mac *entry, *tmp;
++
++	if (list_empty(&vf->vm_mac_list))
++		return;
++
++	list_for_each_entry_safe(entry, tmp, &vf->vm_mac_list, list) {
++		list_del(&entry->list);
++		kfree(entry);
++	}
++}
++
+ /**
+  * i40e_free_vf_res
+  * @vf: pointer to the VF info
+@@ -1062,6 +1121,9 @@ static void i40e_free_vf_res(struct i40e_vf *vf)
+ 		wr32(hw, reg_idx, reg);
+ 		i40e_flush(hw);
+ 	}
++
++	i40e_free_vmmac_list(vf);
++
+ 	/* reset some of the state variables keeping track of the resources */
+ 	vf->num_queue_pairs = 0;
+ 	clear_bit(I40E_VF_STATE_MC_PROMISC, &vf->vf_states);
+@@ -2915,27 +2977,111 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ }
+ 
+ /**
+- * i40e_vc_add_mac_addr_msg
++ * i40e_vc_ether_addr_type - get type of virtchnl_ether_addr
++ * @vc_ether_addr: used to extract the type
++ **/
++static u8
++i40e_vc_ether_addr_type(struct virtchnl_ether_addr *vc_ether_addr)
++{
++	return vc_ether_addr->type & VIRTCHNL_ETHER_ADDR_TYPE_MASK;
++}
++
++/**
++ * i40e_is_vc_addr_legacy
++ * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
++ *
++ * check if the MAC address is from an older VF
++ **/
++static bool
++i40e_is_vc_addr_legacy(struct virtchnl_ether_addr *vc_ether_addr)
++{
++	return i40e_vc_ether_addr_type(vc_ether_addr) ==
++		VIRTCHNL_ETHER_ADDR_LEGACY;
++}
++
++/**
++ * i40e_is_vc_addr_primary
++ * @vc_ether_addr: VIRTCHNL structure that contains MAC and type
++ *
++ * check if the MAC address is the VF's primary MAC
++ * This function should only be called when the MAC address in
++ * virtchnl_ether_addr is a valid unicast MAC
++ **/
++static bool
++i40e_is_vc_addr_primary(struct virtchnl_ether_addr *vc_ether_addr)
++{
++	return i40e_vc_ether_addr_type(vc_ether_addr) ==
++		VIRTCHNL_ETHER_ADDR_PRIMARY;
++}
++
++#define I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME  msecs_to_jiffies(3000)
++
++/**
++ * i40e_is_legacy_umac_expired
++ * @time_last_added_umac: time since the last delete of VFs default MAC
++ *
++ * check if last added legacy unicast MAC expired
++ **/
++static bool
++i40e_is_legacy_umac_expired(unsigned long time_last_added_umac)
++{
++	return time_is_before_jiffies(time_last_added_umac +
++		I40E_LEGACY_VF_MAC_CHANGE_EXPIRE_TIME);
++}
++
++/**
++ * i40e_update_vf_mac_addr
++ * @vf: VF to update
++ * @vc_ether_addr: structure from VIRTCHNL with MAC to add
++ *
++ * update the VF's cached hardware MAC if allowed
++ **/
++static void
++i40e_update_vf_mac_addr(struct i40e_vf *vf,
++			struct virtchnl_ether_addr *vc_ether_addr)
++{
++	u8 *mac_addr = vc_ether_addr->addr;
++
++	if (!is_valid_ether_addr(mac_addr))
++		return;
++
++	/* If request to add MAC filter is a primary request
++	 * update its default MAC address with the requested one.
++	 * if it is a legacy request then check if current default is empty
++	 * if so update the default MAC
++	 * otherwise save it in case it is followed by a delete request
++	 * meaning VF wants to change its default MAC which will be updated
++	 * in the delete path
++	 */
++	if (i40e_is_vc_addr_primary(vc_ether_addr)) {
++		ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
++	} else if (i40e_is_vc_addr_legacy(vc_ether_addr)) {
++		if (is_zero_ether_addr(vf->default_lan_addr.addr)) {
++			ether_addr_copy(vf->default_lan_addr.addr, mac_addr);
++		} else {
++			ether_addr_copy(vf->legacy_last_added_umac.addr,
++					mac_addr);
++			vf->legacy_last_added_umac.time_modified = jiffies;
++		}
++	}
++}
++
++/**
++ * i40e_add_vf_mac_filters
+  * @vf: pointer to the VF info
+- * @msg: pointer to the msg buffer
++ * @is_quiet: set true for printing msg without opcode info, false otherwise
++ * @al: pointer to the address list of MACs to add
+  *
+  * add guest mac address filter
+  **/
+-static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++static int i40e_add_vf_mac_filters(struct i40e_vf *vf, bool *is_quiet,
++				   struct virtchnl_ether_addr_list *al)
+ {
+-	struct virtchnl_ether_addr_list *al =
+-	    (struct virtchnl_ether_addr_list *)msg;
+ 	struct i40e_pf *pf = vf->pf;
+ 	struct i40e_vsi *vsi = NULL;
+ 	int ret = 0;
+ 	int i;
+ 
+-	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+-	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+-		ret = I40E_ERR_PARAM;
+-		goto error_param;
+-	}
+-
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+ 	/* Lock once, because all function inside for loop accesses VSI's
+@@ -2956,7 +3102,6 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 		f = i40e_find_mac(vsi, al->list[i].addr);
+ 		if (!f) {
+ 			f = i40e_add_mac_filter(vsi, al->list[i].addr);
+-
+ 			if (!f) {
+ 				dev_err(&pf->pdev->dev,
+ 					"Unable to add MAC filter %pM for VF %d\n",
+@@ -2965,11 +3110,15 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 				spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 				goto error_param;
+ 			}
+-			if (is_valid_ether_addr(al->list[i].addr) &&
+-			    is_zero_ether_addr(vf->default_lan_addr.addr))
+-				ether_addr_copy(vf->default_lan_addr.addr,
+-						al->list[i].addr);
++
++			ret = i40e_add_vmmac_to_list(vf, al->list[i].addr);
++			if (ret) {
++				spin_unlock_bh(&vsi->mac_filter_hash_lock);
++				goto error_param;
++			}
+ 		}
++
++		i40e_update_vf_mac_addr(vf, &al->list[i]);
+ 	}
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 
+@@ -2978,29 +3127,23 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 	if (ret)
+ 		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+ 			vf->vf_id, ret);
+-
+ error_param:
+-	/* send the response to the VF */
+-	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+-				      ret, NULL, 0);
++	return ret;
+ }
+ 
+ /**
+- * i40e_vc_del_mac_addr_msg
++ * i40e_vc_add_mac_addr_msg
+  * @vf: pointer to the VF info
+  * @msg: pointer to the msg buffer
+  *
+- * remove guest mac address filter
++ * add guest mac address filter
+  **/
+-static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ {
+ 	struct virtchnl_ether_addr_list *al =
+ 	    (struct virtchnl_ether_addr_list *)msg;
+-	bool was_unimac_deleted = false;
+-	struct i40e_pf *pf = vf->pf;
+-	struct i40e_vsi *vsi = NULL;
++	bool is_quiet = false;
+ 	int ret = 0;
+-	int i;
+ 
+ 	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
+ 	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
+@@ -3008,52 +3151,127 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
++	ret = i40e_add_vf_mac_filters(vf, &is_quiet, al);
++
++error_param:
++	/* send the response to the VF */
++	return i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
++					 ret, NULL, 0);
++}
++
++/**
++ * i40e_vf_clear_default_mac_addr
++ * @vf: pointer to the VF info
++ * @is_legacy_unimac: is request to delete a legacy request
++ *
++ * clear VFs default MAC address
++ **/
++static void i40e_vf_clear_default_mac_addr(struct i40e_vf *vf,
++					   bool is_legacy_unimac)
++{
++	eth_zero_addr(vf->default_lan_addr.addr);
++
++	if (is_legacy_unimac) {
++		unsigned long time_added =
++			vf->legacy_last_added_umac.time_modified;
++
++		if (!i40e_is_legacy_umac_expired(time_added))
++			ether_addr_copy(vf->default_lan_addr.addr,
++					vf->legacy_last_added_umac.addr);
++	}
++}
++
++/**
++ * i40e_del_vf_mac_filters
++ * @vf: pointer to the VF info
++ * @al: pointer to the address list of MACs to delete
++ *
++ * remove guest mac address filters
++ **/
++static int i40e_del_vf_mac_filters(struct i40e_vf *vf,
++				   struct virtchnl_ether_addr_list *al)
++{
++	bool was_unimac_deleted = false;
++	bool is_legacy_unimac = false;
++	struct i40e_pf *pf = vf->pf;
++	struct i40e_vsi *vsi = NULL;
++	int ret = 0;
++	int i;
++
++	vsi = pf->vsi[vf->lan_vsi_idx];
++
++	spin_lock_bh(&vsi->mac_filter_hash_lock);
++	/* delete addresses from the list */
+ 	for (i = 0; i < al->num_elements; i++) {
++		if (ether_addr_equal(al->list[i].addr,
++				     vf->default_lan_addr.addr)) {
++			if (!(vf->trusted || !vf->pf_set_mac)) {
++				dev_err(&pf->pdev->dev,
++					"VF attempting to override administratively set MAC address\n");
++				ret = -EPERM;
++				spin_unlock_bh(&vsi->mac_filter_hash_lock);
++				goto error_param;
++			} else {
++				was_unimac_deleted = true;
++				is_legacy_unimac =
++					i40e_is_vc_addr_legacy(&al->list[i]);
++			}
++		}
++
+ 		if (is_broadcast_ether_addr(al->list[i].addr) ||
+ 		    is_zero_ether_addr(al->list[i].addr)) {
+ 			dev_err(&pf->pdev->dev, "Invalid MAC addr %pM for VF %d\n",
+ 				al->list[i].addr, vf->vf_id);
+-			ret = I40E_ERR_INVALID_MAC_ADDR;
++			ret = -EINVAL;
++			spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 			goto error_param;
+ 		}
+-		if (ether_addr_equal(al->list[i].addr, vf->default_lan_addr.addr))
+-			was_unimac_deleted = true;
+-	}
+-	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+-	spin_lock_bh(&vsi->mac_filter_hash_lock);
+-	/* delete addresses from the list */
+-	for (i = 0; i < al->num_elements; i++)
+ 		if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+-			ret = I40E_ERR_INVALID_MAC_ADDR;
++			dev_err(&pf->pdev->dev, "Could not delete MAC addr %pM for VF %d\n",
++				al->list[i].addr, vf->vf_id);
++			ret = -EINVAL;
+ 			spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 			goto error_param;
+ 		}
+ 
++		i40e_del_vmmac_from_list(vf, al->list[i].addr);
++	}
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 
++	if (was_unimac_deleted)
++		i40e_vf_clear_default_mac_addr(vf, is_legacy_unimac);
++
+ 	/* program the updated filter list */
+ 	ret = i40e_sync_vsi_filters(vsi);
+ 	if (ret)
+ 		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
+ 			vf->vf_id, ret);
++error_param:
++	return ret;
++}
+ 
+-	if (vf->trusted && was_unimac_deleted) {
+-		struct i40e_mac_filter *f;
+-		struct hlist_node *h;
+-		u8 *macaddr = NULL;
+-		int bkt;
++/**
++ * i40e_vc_del_mac_addr_msg
++ * @vf: pointer to the VF info
++ * @msg: pointer to the msg buffer
++ *
++ * remove guest mac address filter
++ **/
++static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
++{
++	struct virtchnl_ether_addr_list *al =
++	    (struct virtchnl_ether_addr_list *)msg;
++	int ret = 0;
+ 
+-		/* set last unicast mac address as default */
+-		spin_lock_bh(&vsi->mac_filter_hash_lock);
+-		hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
+-			if (is_valid_ether_addr(f->macaddr))
+-				macaddr = f->macaddr;
+-		}
+-		if (macaddr)
+-			ether_addr_copy(vf->default_lan_addr.addr, macaddr);
+-		spin_unlock_bh(&vsi->mac_filter_hash_lock);
++	if (!i40e_sync_vf_state(vf, I40E_VF_STATE_ACTIVE) ||
++	    !i40e_vc_isvalid_vsi_id(vf, al->vsi_id)) {
++		ret = -EINVAL;
++		goto error_param;
+ 	}
++
++	ret = i40e_del_vf_mac_filters(vf, al);
++
+ error_param:
+ 	/* send the response to the VF */
+ 	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR, ret);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 895b8feb2567..9ae2bc9d8495 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -62,6 +62,17 @@ struct i40evf_channel {
+ 	u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+ };
+ 
++struct i40e_time_mac {
++	unsigned long time_modified;
++	u8 addr[ETH_ALEN];
++};
++
++/* used for MAC list 'vm_mac_list' to recognize MACs added by VM */
++struct i40e_vm_mac {
++	struct list_head list;
++	u8 macaddr[ETH_ALEN];
++};
++
+ /* VF information structure */
+ struct i40e_vf {
+ 	struct i40e_pf *pf;
+@@ -77,6 +88,10 @@ struct i40e_vf {
+ 	u16 stag;
+ 
+ 	struct virtchnl_ether_addr default_lan_addr;
++
++	/* keeps last added MAC address */
++	struct i40e_time_mac legacy_last_added_umac;
++
+ 	u16 port_vlan_id;
+ 	bool pf_set_mac;	/* The VMM admin set the VF MAC address */
+ 	bool trusted;
+@@ -100,6 +115,9 @@ struct i40e_vf {
+ 	bool spoofchk;
+ 	u16 num_vlan;
+ 
++	/* MAC list created by VM */
++	struct list_head vm_mac_list;
++
+ 	/* ADq related variables */
+ 	bool adq_enabled; /* flag to enable adq */
+ 	u8 num_tc;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
