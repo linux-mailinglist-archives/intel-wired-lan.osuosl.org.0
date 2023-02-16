@@ -2,84 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D072369943A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Feb 2023 13:24:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB589699453
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Feb 2023 13:28:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DBE1581FB0;
-	Thu, 16 Feb 2023 12:24:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBE1581FB0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6BDDC82013;
+	Thu, 16 Feb 2023 12:28:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6BDDC82013
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676550264;
-	bh=MvxDi9tvopPT+51Hl2tp3db5tZMWAxbRwnVVQRa3lnc=;
+	s=default; t=1676550538;
+	bh=GfQYR0aaKYMxWpzYHcCHd2sIHkLJYF40orA+3eX/vAs=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=0RzkWCa2irhClr50qbfhVyeoozWPWL8Wgx3QJHOfn5aI8DybppD/8Sz2p0NtyxdtA
-	 VvChSvxlirfuvnzJ1IWcc2SpaaMYJyax8wU47ewsAJT/32VZj8hNIzNZFdFXlMCTSi
-	 TwI2+treyQSPjNhv0RaE37zSNChmMR2vtuVjZ2whM10v6SzB0VypXQL020ayzwLk4l
-	 qUldpYQYhCFivg07dHJIdeM3UMxI4uqwVsIryvxlPx8tAaooeftQxpq47q22kPcW8K
-	 oYnqH+1wuhyFWKGA6E/o/J/fAaIWvIyg53WfUkZbMskoCNqP7pSohZNILA1jQFXduj
-	 +NkqGTuV823KA==
+	b=nPjuQCuG9UtSrAnSIL/CWh1Zjn3I+0N0qP/8tM5U/I1OebsP35RNwMpz1oTrlHAdP
+	 IEy2JpVnf2UDYLiJ0vynnnKMxZe300hNfw0csqoBWd1tW0fx/QDhMe2L7noZduI97q
+	 kcgwa81ZMohYtb/CHvOurxzJ7KRyslEjFU2xCL9EBAAwyTZojHUwEj+0SWKHTLH8jO
+	 /Bg1CCQpNewX1/wwz+ukLXBzmlI4M7skXASNy4aynIk9Zc/Ho+Of2JlgQGepXyC4Kd
+	 Vfmyq+VDwwjuaaaHWEJNHBpqkZgGSW1SHQXR32I1Zoks6IFkXA/BEKv6GmAZBBz7oD
+	 eSMSlktR+SN0Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ptslFMfKebpt; Thu, 16 Feb 2023 12:24:24 +0000 (UTC)
+	with ESMTP id Yn9UASr9hWBe; Thu, 16 Feb 2023 12:28:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DE9C281411;
-	Thu, 16 Feb 2023 12:24:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE9C281411
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4A9D981FFE;
+	Thu, 16 Feb 2023 12:28:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A9D981FFE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 240771BF488
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:24:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 009DF1BF488
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:28:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0B19360A6B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:24:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B19360A6B
+ by smtp1.osuosl.org (Postfix) with ESMTP id CE63A81FFE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:28:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CE63A81FFE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tUQ3zKvzQYBa for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Feb 2023 12:24:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7UTGX6ab40ea for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Feb 2023 12:28:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 182A260783
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 182A260783
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:24:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="359132204"
-X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="359132204"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Feb 2023 04:24:17 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F057580D96
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F057580D96
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Feb 2023 12:28:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="311334086"
+X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="311334086"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2023 04:28:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="647665779"
-X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="647665779"
-Received: from gklab-018-208.igk.intel.com ([10.102.18.208])
- by orsmga006.jf.intel.com with ESMTP; 16 Feb 2023 04:24:16 -0800
-From: Kamil Maziarz <kamil.maziarz@intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="619972846"
+X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="619972846"
+Received: from boxer.igk.intel.com ([10.102.20.173])
+ by orsmga003.jf.intel.com with ESMTP; 16 Feb 2023 04:28:49 -0800
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 16 Feb 2023 13:24:10 +0100
-Message-Id: <20230216122410.337212-1-kamil.maziarz@intel.com>
-X-Mailer: git-send-email 2.31.1
+Date: Thu, 16 Feb 2023 13:28:39 +0100
+Message-Id: <20230216122839.6878-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676550258; x=1708086258;
+ t=1676550531; x=1708086531;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=D/8j15Emz10mV4djFpfrz3IqiYYRAIG708WXz55Qj0k=;
- b=IMSrMvWJ7tcZSGVCZXUJRTS/2wxvpZcYmJMxok9jrebMmfhf4rxfKNDR
- ClG6rxCnnu1BtBopahEBdbetHHrHTIIVo6raWtZYk0GI5ivSF0EoeWYAb
- iWM0AYFIWkqsetf0t8PpJFGWHCDpd1nkOtjnQb98SZrc+48m7FYdOiQgl
- jCdxYGNn2neTS81FFRbmBL9iuDOfRmY0ryGN21LkYxyTqOXON8mPUSzdI
- ztGWGalzbIbrkS7Pd+LFs23gtyWW2j/iZ+mVX778Kk32040A7+ihlo383
- ywXqGlwOTAMxqXh/u7WHbWEVyKBg61i77ZBoHXBE13/DAa++0QLfyPWa5
+ bh=gzSkb7Yln6um4SZcuaIYR/kVFncxRVh2mAf2hPXjHuM=;
+ b=Y/Dx5YxWqoM34ifLkcl7lIu1ea37V4P1TRxapaL2M/xbAtymOarnz/s1
+ B1IXfC/isbLrhY5vrdT4NrKxBHIiv2o8MUakvlTv4ZyYJLhtf6Oukgxro
+ bV7PT8Y6j34gn3OcT/4ouyyRRB8mddCD9W0Tfi95NM2FkoMkEcFqi+NL5
+ L2iooJjKcBrfU7M/AU/f6uUTyglYT5F7Wbemj+R9oxXkJdnd0Ar/H6F7n
+ YI7Ss1/zCdHsR90WURydDFyfpJ6t1vfer7eZaY32GdWc+kDu/jVNR43Wh
+ egrBOKKyTI4keHwIi/DCUwoUd3Q97TLysosZY+f8Ro3lL2g9N+AXAWZTY
  g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=IMSrMvWJ
-Subject: [Intel-wired-lan] [PATCH net-next v1] igbvf: add PCI reset handler
- functions
+ header.a=rsa-sha256 header.s=Intel header.b=Y/Dx5YxW
+Subject: [Intel-wired-lan] [PATCH intel-net] ice: xsk: disable txq irq
+ before flushing hw
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,75 +92,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dawid Wesierski <dawidx.wesierski@intel.com>,
- Kamil Maziarz <kamil.maziarz@intel.com>
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, anthony.l.nguyen@intel.com,
+ magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dawid Wesierski <dawidx.wesierski@intel.com>
+ice_qp_dis() intends to stop a given queue pair that is a target of xsk
+pool attach/detach. One of the steps is to disable interrupts on these
+queues. It currently is broken in a way that txq irq is turned off
+*after* HW flush which in turn takes no effect.
 
-There was a problem with resuming ping after conducting a PCI reset.
-This commit adds two functions, igbvf_io_prepare and igbvf_io_done,
-which, after being added to the pci_error_handlers struct,
-will prepare the drivers for a PCI reset and then bring the interface up
-and reset it after the reset. This will prevent the driver from
-ending up in an incorrect state.
+ice_qp_dis():
+-> ice_qvec_dis_irq()
+--> disable rxq irq
+--> flush hw
+-> ice_vsi_stop_tx_ring()
+-->disable txq irq
 
-Signed-off-by: Dawid Wesierski <dawidx.wesierski@intel.com>
-Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Below splat can be triggered by following steps:
+- start xdpsock WITHOUT loading xdp prog
+- run xdp_rxq_info with XDP_TX action on this interface
+- start traffic
+- terminate xdpsock
+
+[  256.312485] BUG: kernel NULL pointer dereference, address: 0000000000000018
+[  256.319560] #PF: supervisor read access in kernel mode
+[  256.324775] #PF: error_code(0x0000) - not-present page
+[  256.329994] PGD 0 P4D 0
+[  256.332574] Oops: 0000 [#1] PREEMPT SMP NOPTI
+[  256.337006] CPU: 3 PID: 32 Comm: ksoftirqd/3 Tainted: G           OE      6.2.0-rc5+ #51
+[  256.345218] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.02.01.0008.031920191559 03/19/2019
+[  256.355807] RIP: 0010:ice_clean_rx_irq_zc+0x9c/0x7d0 [ice]
+[  256.361423] Code: b7 8f 8a 00 00 00 66 39 ca 0f 84 f1 04 00 00 49 8b 47 40 4c 8b 24 d0 41 0f b7 45 04 66 25 ff 3f 66 89 04 24 0f 84 85 02 00 00 <49> 8b 44 24 18 0f b7 14 24 48 05 00 01 00 00 49 89 04 24 49 89 44
+[  256.380463] RSP: 0018:ffffc900088bfd20 EFLAGS: 00010206
+[  256.385765] RAX: 000000000000003c RBX: 0000000000000035 RCX: 000000000000067f
+[  256.393012] RDX: 0000000000000775 RSI: 0000000000000000 RDI: ffff8881deb3ac80
+[  256.400256] RBP: 000000000000003c R08: ffff889847982710 R09: 0000000000010000
+[  256.407500] R10: ffffffff82c060c0 R11: 0000000000000004 R12: 0000000000000000
+[  256.414746] R13: ffff88811165eea0 R14: ffffc9000d255000 R15: ffff888119b37600
+[  256.421990] FS:  0000000000000000(0000) GS:ffff8897e0cc0000(0000) knlGS:0000000000000000
+[  256.430207] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  256.436036] CR2: 0000000000000018 CR3: 0000000005c0a006 CR4: 00000000007706e0
+[  256.443283] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  256.450527] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  256.457770] PKRU: 55555554
+[  256.460529] Call Trace:
+[  256.463015]  <TASK>
+[  256.465157]  ? ice_xmit_zc+0x6e/0x150 [ice]
+[  256.469437]  ice_napi_poll+0x46d/0x680 [ice]
+[  256.473815]  ? _raw_spin_unlock_irqrestore+0x1b/0x40
+[  256.478863]  __napi_poll+0x29/0x160
+[  256.482409]  net_rx_action+0x136/0x260
+[  256.486222]  __do_softirq+0xe8/0x2e5
+[  256.489853]  ? smpboot_thread_fn+0x2c/0x270
+[  256.494108]  run_ksoftirqd+0x2a/0x50
+[  256.497747]  smpboot_thread_fn+0x1c1/0x270
+[  256.501907]  ? __pfx_smpboot_thread_fn+0x10/0x10
+[  256.506594]  kthread+0xea/0x120
+[  256.509785]  ? __pfx_kthread+0x10/0x10
+[  256.513597]  ret_from_fork+0x29/0x50
+[  256.517238]  </TASK>
+
+In fact, irqs were not disabled and napi managed to be scheduled and run
+while xsk_pool pointer was still valid, but SW ring of xdp_buff pointers
+was already freed.
+
+To fix this, call ice_qvec_dis_irq() after ice_vsi_stop_tx_ring(). Also
+while at it, remove redundant ice_clean_rx_ring() call - this is handled
+in ice_qp_clean_rings().
+
+Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
+Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/igbvf/netdev.c | 27 +++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_xsk.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
-index 72cb1b56e9f2..a89fa422cc5c 100644
---- a/drivers/net/ethernet/intel/igbvf/netdev.c
-+++ b/drivers/net/ethernet/intel/igbvf/netdev.c
-@@ -2593,6 +2593,31 @@ static void igbvf_io_resume(struct pci_dev *pdev)
- 	netif_device_attach(netdev);
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 917c75e530ca..6b8aeaa32d0b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -184,8 +184,6 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+ 	}
+ 	netif_tx_stop_queue(netdev_get_tx_queue(vsi->netdev, q_idx));
  
-+/**
-+ * igbvf_io_prepare - prepare device driver for PCI reset
-+ * @pdev: PCI device information struct
-+ */
-+static void igbvf_io_prepare(struct pci_dev *pdev)
-+{
-+	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct igbvf_adapter *adapter = netdev_priv(netdev);
-+	while (test_and_set_bit(__IGBVF_RESETTING, &adapter->state))
-+		usleep_range(1000, 2000);
-+	igbvf_down(adapter);
-+}
+-	ice_qvec_dis_irq(vsi, rx_ring, q_vector);
+-
+ 	ice_fill_txq_meta(vsi, tx_ring, &txq_meta);
+ 	err = ice_vsi_stop_tx_ring(vsi, ICE_NO_RESET, 0, tx_ring, &txq_meta);
+ 	if (err)
+@@ -200,10 +198,11 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+ 		if (err)
+ 			return err;
+ 	}
++	ice_qvec_dis_irq(vsi, rx_ring, q_vector);
 +
-+/**
-+ * igbvf_io_reset_done - PCI reset done, device driver reset can begin
-+ * @pdev: PCI device information struct
-+ */
-+static void igbvf_io_reset_done(struct pci_dev *pdev)
-+{
-+	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct igbvf_adapter *adapter = netdev_priv(netdev);
-+	igbvf_up(adapter);
-+	clear_bit(__IGBVF_RESETTING, &adapter->state);
-+}
-+
- static void igbvf_print_device_info(struct igbvf_adapter *adapter)
- {
- 	struct e1000_hw *hw = &adapter->hw;
-@@ -2920,6 +2945,8 @@ static const struct pci_error_handlers igbvf_err_handler = {
- 	.error_detected = igbvf_io_error_detected,
- 	.slot_reset = igbvf_io_slot_reset,
- 	.resume = igbvf_io_resume,
-+	.reset_prepare = igbvf_io_prepare,
-+	.reset_done = igbvf_io_reset_done,
- };
+ 	err = ice_vsi_ctrl_one_rx_ring(vsi, false, q_idx, true);
+ 	if (err)
+ 		return err;
+-	ice_clean_rx_ring(rx_ring);
  
- static const struct pci_device_id igbvf_pci_tbl[] = {
+ 	ice_qvec_toggle_napi(vsi, q_vector, false);
+ 	ice_qp_clean_rings(vsi, q_idx);
 -- 
-2.31.1
+2.34.1
 
 _______________________________________________
 Intel-wired-lan mailing list
