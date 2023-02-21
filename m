@@ -1,112 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 066F669DB97
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Feb 2023 09:01:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5511469DCCF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Feb 2023 10:23:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF8D08244D;
-	Tue, 21 Feb 2023 08:01:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF8D08244D
+	by smtp1.osuosl.org (Postfix) with ESMTP id C2ABA82612;
+	Tue, 21 Feb 2023 09:23:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2ABA82612
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1676966497;
-	bh=zd8hi0h7fGSvpC5gIpvu+bgv6j8+ZxF8bqnb6oFI/A0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1676971411;
+	bh=Wtm9u1FFJgbIcbP14dSyH3vl7tibeAqojDGDffJ93SM=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=H3BBMZ/vv+EzW+MgJ6xyXLvreDlu7q36sQ2ceOlJy6uizaplMynep2GNR0QcDFWiU
-	 Jn2DP+LpNiiHcCEh1Y3ZqqxQ/VSZRJZtIct/CJedL+X7JMazhCbNVVBq26SlNQXyV5
-	 z+aUHQXsKBLFNbkAb0QuJXG/rQGw7FFAvPFkAhYkfABBhw0cF1SfBlwJj0az7haahY
-	 l9eq2VbsYcbk7fUZMvYFZ2I171Gz6i55Uy82g5d++843+r5qyWRaYq0w8TW/caYQ6l
-	 4rh+P54fjDY7OmUum/kVKerLIHfMs0M7pNhbHE9Xk9J/myCSbT8kgCxmSgjFrVTr5j
-	 gbbfmE9WCK/uw==
+	b=DwtH0Rf8LxilMfxcmKtfizTff+j8onsIcOeU2CGa0gA0QSMpj1hKiUr4A7FYehPSV
+	 d8bulE0Q/EObUD1h0Xe8ZL6GsuU5C9slRLpHA5EE1MJNA93GXRFfMPfoXpNcuV7d5F
+	 MHkD7QMuNpMAs6IHA+zM8yV8CkbftMgoY4xxUMMSr6yJdIKiY/ITaSyG3eSsXuJsSe
+	 AIDAJq4ybb3/yORYyolv01xZVNjdP9TwHbpLlkQ6RCX2iruH94EBtw5QCE/C1XJ6RO
+	 w33cOcmvAMuTIuxhlcAVMZNNQBXNPc40ZbStYIljobSPR9Og+ngi/Mxo1t09upYcHq
+	 aNptSE2H0nEVA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h1Msr31aZNEe; Tue, 21 Feb 2023 08:01:37 +0000 (UTC)
+	with ESMTP id nV2EWd1S5SLT; Tue, 21 Feb 2023 09:23:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B915782430;
-	Tue, 21 Feb 2023 08:01:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B915782430
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3C9E81F28;
+	Tue, 21 Feb 2023 09:23:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F3C9E81F28
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EC5661BF2EF
- for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 08:01:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 51C321BF578
+ for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 09:23:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C450861161
- for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 08:01:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C450861161
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2ABEE40242
+ for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 09:23:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2ABEE40242
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aKBgH3NczkE8 for <intel-wired-lan@osuosl.org>;
- Tue, 21 Feb 2023 08:01:31 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 04D7C61160
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 04D7C61160
- for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 08:01:30 +0000 (UTC)
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-3-Ky_KPNUVMxWKQYCX01xhGw-1; Tue, 21 Feb 2023 03:01:28 -0500
-X-MC-Unique: Ky_KPNUVMxWKQYCX01xhGw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- s18-20020a7bc392000000b003deaf780ab6so1529256wmj.4
- for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 00:01:28 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1676966487;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=20m9O9S935OXurO2qATakjHtcSQgyRGzklNBw5/tXJQ=;
- b=76irJz2Y7wOw2oOAxPg7uXYzEIkTDOtiFaoPPTajV+IAwEzxR6OuFvTotgH/LO3RFe
- Egx/x6bjR7XXHjwJDJ0G0fyaxFyWVreFqOYQVJf3X2iPFWIGvgFVdWMlNLdOV9U9MKae
- u5zK76tBES0aEN2NNMTDhcUHYg/P3OV1HUp8TCMffQKkAkzT7VLXSmHkqFptWTGUeduX
- oXGCRRfJYdLLAe6hRs0C5wdM65qol0e7om1OOy2Bq982chgJawH0Wd06ro3HWMliLnvn
- FNP+e+a6cbY8aQLArQKXDs2BczxbACfAcViMpHCKpaj/spjghfZReSXblQHbldj/JQmp
- pkfw==
-X-Gm-Message-State: AO0yUKUjHOQkQNKKgX0l8QLzR5EHHeiNOH+ZPPV4GCX0V7yhsxzZCUW/
- A17vkNSD+zjdoD9+78Utotgv5/wiMj+j3YAKZ7GGGSQJxtfI0XdVm7O04uzxjcZ8+6sQO09rut7
- CkhEwr9CCMrzr+Ydrty2eUg==
-X-Received: by 2002:a05:600c:a05:b0:3dc:3b1a:5d2d with SMTP id
- z5-20020a05600c0a0500b003dc3b1a5d2dmr3447684wmp.0.1676966487531; 
- Tue, 21 Feb 2023 00:01:27 -0800 (PST)
-X-Google-Smtp-Source: AK7set+d8BkkknfvE1kWSeXLnDiDryM/K0/dpHAcEiLlRRMcgi2qSCb8KXSRJ0F4bHenQXyCTAd4yQ==
-X-Received: by 2002:a05:600c:a05:b0:3dc:3b1a:5d2d with SMTP id
- z5-20020a05600c0a0500b003dc3b1a5d2dmr3447629wmp.0.1676966486898; 
- Tue, 21 Feb 2023 00:01:26 -0800 (PST)
-Received: from gerbillo.redhat.com (146-241-121-8.dyn.eolo.it. [146.241.121.8])
- by smtp.gmail.com with ESMTPSA id
- az35-20020a05600c602300b003daf672a616sm958872wmb.22.2023.02.21.00.01.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Feb 2023 00:01:26 -0800 (PST)
-Message-ID: <7dcc62b6536be05c784a50bf8a6da89eb3003697.camel@redhat.com>
-From: Paolo Abeni <pabeni@redhat.com>
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>, netdev@vger.kernel.org
-Date: Tue, 21 Feb 2023 09:01:25 +0100
-In-Reply-To: <20230217220359.987004-1-pawel.chmielewski@intel.com>
-References: <20230217220359.987004-1-pawel.chmielewski@intel.com>
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tZmAWGTamnss for <intel-wired-lan@osuosl.org>;
+ Tue, 21 Feb 2023 09:23:23 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4EDFD400DC
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4EDFD400DC
+ for <intel-wired-lan@osuosl.org>; Tue, 21 Feb 2023 09:23:23 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id EAA8161CC457B;
+ Tue, 21 Feb 2023 10:23:19 +0100 (CET)
+Message-ID: <14182338-15eb-4cef-6b4f-a76f448434e1@molgen.mpg.de>
+Date: Tue, 21 Feb 2023 10:23:19 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1676966489;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Q3yXs3yxCgj/8R+9EjQNp1VSlaK1pR74ORMtuTLFyqc=;
- b=ZvoHckLNinr0SxrOQ+CDgHNmJCUw+axRte5DzM3AK8Xt1Yf3DBVep0Gm7TWz/yUDRx3qPk
- KgWAHR3igTGHkJQSPwf3UcdHEfUYiuVq7HG445hjE5BMwUQEH3MLqunZu3RcGyyJWXHLzj
- MrSwd3ZyJW/bPXUw+gg1+yA2jTLVov8=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=ZvoHckLN
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Content-Language: en-US
+To: Pawel Chmielewski <pawel.chmielewski@intel.com>
+References: <20230217220359.987004-1-pawel.chmielewski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20230217220359.987004-1-pawel.chmielewski@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/1] ice: Change assigning
  method of the CPU affinity masks
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -121,65 +77,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, intel-wired-lan@osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 2023-02-17 at 23:03 +0100, Pawel Chmielewski wrote:
+Dear Pawel,
+
+
+Thank you for your patch.
+
+Am 17.02.23 um 23:03 schrieb Pawel Chmielewski:
 > With the introduction of sched_numa_hop_mask() and for_each_numa_hop_mask(),
 > the affinity masks for queue vectors can be conveniently set by preferring the
 > CPUs that are closest to the NUMA node of the parent PCI device.
-> 
+
+Please reflow the commit message for 75 characters per line.
+
+Additionally, you could be more specific in the commit message summary:
+
+ice: Prefer CPUs closest to NUMA node of parent PCI
+
+In the commit message, please elaborate, how you tested and benchmarked 
+your change.
+
 > Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
 > ---
 > Changes since v2:
->  * Pointers for cpumasks point to const struct cpumask
->  * Removed unnecessary label
->  * Removed redundant blank lines
+>   * Pointers for cpumasks point to const struct cpumask
+>   * Removed unnecessary label
+>   * Removed redundant blank lines
 > 
 > Changes since v1:
->  * Removed obsolete comment
->  * Inverted condition for loop escape
->  * Incrementing v_idx only in case of available cpu
+>   * Removed obsolete comment
+>   * Inverted condition for loop escape
+>   * Incrementing v_idx only in case of available cpu
 > ---
->  drivers/net/ethernet/intel/ice/ice_base.c | 21 ++++++++++++++++-----
->  1 file changed, 16 insertions(+), 5 deletions(-)
+>   drivers/net/ethernet/intel/ice/ice_base.c | 21 ++++++++++++++++-----
+>   1 file changed, 16 insertions(+), 5 deletions(-)
 > 
 > diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
 > index 1911d644dfa8..30dc1c3c290f 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_base.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_base.c
 > @@ -121,9 +121,6 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
->  
->  	if (vsi->type == ICE_VSI_VF)
->  		goto out;
+>   
+>   	if (vsi->type == ICE_VSI_VF)
+>   		goto out;
 > -	/* only set affinity_mask if the CPU is online */
 > -	if (cpu_online(v_idx))
 > -		cpumask_set_cpu(v_idx, &q_vector->affinity_mask);
->  
->  	/* This will not be called in the driver load path because the netdev
->  	 * will not be created yet. All other cases with register the NAPI
+>   
+>   	/* This will not be called in the driver load path because the netdev
+>   	 * will not be created yet. All other cases with register the NAPI
 > @@ -662,8 +659,10 @@ int ice_vsi_wait_one_rx_ring(struct ice_vsi *vsi, bool ena, u16 rxq_idx)
->   */
->  int ice_vsi_alloc_q_vectors(struct ice_vsi *vsi)
->  {
+>    */
+>   int ice_vsi_alloc_q_vectors(struct ice_vsi *vsi)
+>   {
 > +	const struct cpumask *aff_mask, *last_aff_mask = cpu_none_mask;
->  	struct device *dev = ice_pf_to_dev(vsi->back);
+>   	struct device *dev = ice_pf_to_dev(vsi->back);
 > -	u16 v_idx;
 > +	int numa_node = dev->numa_node;
+> +	u16 v_idx, cpu = 0;
 
-The above breaks the build when CONFIG_XPS and CONFIG_NUMA are not
-defined.
+Could you use `unsigned int` for `cpu`?
 
-Note: net-next is now closed, please post the new revision after the
-merge window, when net-next will re-open.
+     include/linux/cpumask.h:static inline bool cpu_online(unsigned int cpu)
 
-Thank,
+>   	int err;
+>   
+>   	if (vsi->q_vectors[0]) {
+> @@ -677,7 +676,19 @@ int ice_vsi_alloc_q_vectors(struct ice_vsi *vsi)
+>   			goto err_out;
+>   	}
+>   
+> -	return 0;
+> +	v_idx = 0;
+> +	for_each_numa_hop_mask(aff_mask, numa_node) {
+> +		for_each_cpu_andnot(cpu, aff_mask, last_aff_mask) {
+> +			if (v_idx >= vsi->num_q_vectors)
+> +				return 0;
+> +
+> +			if (cpu_online(cpu)) {
+> +				cpumask_set_cpu(cpu, &vsi->q_vectors[v_idx]->affinity_mask);
+> +				v_idx++;
+> +			}
+> +		}
+> +		last_aff_mask = aff_mask;
+> +	}
+>   
+>   err_out:
+>   	while (v_idx--)
 
-Paolo
 
+Kind regards,
+
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
