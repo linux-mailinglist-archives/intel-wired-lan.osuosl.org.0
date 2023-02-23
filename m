@@ -1,85 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62AC369FE94
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Feb 2023 23:36:13 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F3546A024F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Feb 2023 06:17:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C48026176B;
-	Wed, 22 Feb 2023 22:36:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C48026176B
+	by smtp2.osuosl.org (Postfix) with ESMTP id B2EBA4015E;
+	Thu, 23 Feb 2023 05:17:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2EBA4015E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677105371;
-	bh=CGmfkj7NfCybmRRevDZKLELECoPRJt2W3Tz78vRJxWg=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=rtqMYRe5PAYSK2hhm8TEum1/68mBDMAz1Yd7DNKKSxwWVfAV2/Nyzd+06ninOrluG
-	 SYbOZOfu+Hhy5Vz4cNOlgyfYr8WNipQLahbNxeXLjgcjC5PVZuhIEAHmJmJU7qCbuj
-	 yYCnhwM2lkhtgGikAfnPnGLeRs4K3VGBIAd9crWPzTJ5bp6rYV3ijPtgPZlRWJZTlI
-	 eADUYDrCPEzFwo0YXlBXCX0pk1k+ExikWjlRBJ1E/f47BCN/cgoduG4WiWNk/0CGIk
-	 drkvo6PvuUFQWfmWTcK4yyde+sPTkk42B6y5tBLqBjzlzGvxcvPtR1ZDmWNy880oJP
-	 AzvYEQgsGEdcw==
+	s=default; t=1677129474;
+	bh=wi1RViKl+pqjbg542XTRUkkemOeit1JwC8XMeVYsDus=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=B/0HIFYs74i+G18gsnfBGzOe/X7sMXsV4jyyfPEXiGURtQkpWNLgI4+4rIs+Y8LCs
+	 OqcSpVH0M/PzuVGi2aiviUJfddQtZuuFrrQE5RR6MAaPfavcTSCelCI/j3Ttv3ziZz
+	 RqltmNaNDlP2JyIgZ4nJB46xDFahg1BGNfIPH2WBcPo44DuycQ9kozqcs1eLy/Ce2r
+	 dd83cUoptzlwBNQce0RN6g04yH3bIcW/VKN1gcviV+8iXjjd6hzFYr0VO+0Bt3ExVR
+	 usLIylkXePf9840a9sTj8QocV9Koi3dCHUioxUEjlmtaO2MKyWJbvcrPbk5eDNazXh
+	 lCqhIAkqe6OvQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GFbwqr6dkOCn; Wed, 22 Feb 2023 22:36:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UErVvDOf5XB3; Thu, 23 Feb 2023 05:17:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 997496175E;
-	Wed, 22 Feb 2023 22:36:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 997496175E
+	by smtp2.osuosl.org (Postfix) with ESMTP id 88C2140141;
+	Thu, 23 Feb 2023 05:17:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 88C2140141
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E6FF61BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Feb 2023 22:36:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 122F51BF844
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Feb 2023 05:17:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C06E882087
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Feb 2023 22:36:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C06E882087
+ by smtp1.osuosl.org (Postfix) with ESMTP id EAF3A812EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Feb 2023 05:17:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EAF3A812EA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EeJxhbDBQuFS for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Feb 2023 22:36:04 +0000 (UTC)
+ with ESMTP id rlKXPHVsyDGm for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Feb 2023 05:17:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 900C28207C
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 900C28207C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Feb 2023 22:36:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="419281493"
-X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="419281493"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2023 14:36:03 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="917726227"
-X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="917726227"
-Received: from jekeller-desk.amr.corp.intel.com (HELO
- jekeller-desk.jekeller.internal) ([10.166.241.1])
- by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2023 14:36:02 -0800
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 22 Feb 2023 14:35:58 -0800
-Message-Id: <20230222223558.2328428-1-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.39.1.405.gd4c25cc71f83
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 21615812E1
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 21615812E1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Feb 2023 05:17:48 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 9E385B818F2;
+ Thu, 23 Feb 2023 05:17:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7DB2C433EF;
+ Thu, 23 Feb 2023 05:17:43 +0000 (UTC)
+Date: Wed, 22 Feb 2023 21:17:42 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <20230222211742.4000f650@kernel.org>
+In-Reply-To: <20230222223558.2328428-1-jacob.e.keller@intel.com>
+References: <20230222223558.2328428-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677105364; x=1708641364;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=kZsSD2z2oG5ohf3bCceNLITp54qfXfnD7f1D0PHzPck=;
- b=NhTAj2jLur1/EufPrZkms5h6CnvONSuAvWV8quf18fjZdq08AQ4qSjgr
- Lopp/VpAxRWHiD9bcdB3fsShC0fmaZ5tpQ3qIRmXJ0C0MoO6BQFomrKMr
- YfmfhrhxLbWtaeIvHOK78kuzPYJrnsjFYWT79s7S2aqbb5c5P/1dZ89Lh
- o/9lCnswZOSitmEqI7nPbgaHjxF/Eo7NMd8bCK22MlBXwWbqCv87hmIDV
- cZws2uWSfFoPYKaJJlOQJJigluXLbgtNU+kvxbYz4VEtry7EbokChOC2n
- fHIRgdzttT9fBMKmUXC4qOGZwRKzYNgmrwlLP6zGQRHna2ITASzzhzukn
- A==;
+ d=kernel.org; s=k20201202; t=1677129464;
+ bh=RUHLDq+BwbTgrH2AUtwXvSW4iEa6Ln7BXuRs6xH1iSw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=g0elYqauO5caCzGeCrmOL4AtbSzAa9qSJNFIanZxRVXSKMvFkMvgil8FdqSqSNQnK
+ tT1axI8lp+SmKfvxmoI/OU3ZadX7PvD47Tl28v/FacYNAf8yBffOsWLyy9seguwZ0N
+ K7NXR0exlvQ7jNlOCUoewMbNzCLd32lpKsFIjJG2zZwi7e2XOW/NB1Gckz6XGYsffk
+ l4ZF8HMuhyauCYBM4vvjqJTEKm0dov7XTL0St9LoJE7fldX6KupnEEmOcOzEdizDVc
+ QPsTSyJB7YazscZDa8ZH5yoZ3AeHYhpPrkH9YIXo1s9UWi2wSuzsvlfRdRw9FH9IMC
+ m9CpNVRlxlK3g==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NhTAj2jL
-Subject: [Intel-wired-lan] [intel-net] ice: remove unnecessary
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=g0elYqau
+Subject: Re: [Intel-wired-lan] [intel-net] ice: remove unnecessary
  CONFIG_ICE_GNSS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -94,137 +90,45 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, Anthony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
  Linus Torvalds <torvalds@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CONFIG_ICE_GNSS was added by commit c7ef8221ca7d ("ice: use GNSS subsystem
-instead of TTY") as a way to allow the ice driver to optionally support
-GNSS features without forcing a dependency on CONFIG_GNSS.
+On Wed, 22 Feb 2023 14:35:58 -0800 Jacob Keller wrote:
+> I'm sending to both Intel-wired-lan and netdev lists since this was
+> discussed publicly on the netdev list. I'm not sure how we want to queue it
+> up, so I currently have it tagged as intel-net to go through Tony's IWL
+> tree. I'm happy however it gets pulled. I believe this is the best solution
+> as the total number of #ifdefs is the same as with CONFIG_ICE_GNSS, as is
+> the Makefile line. As far as I can tell the Kbuild just does the right thing
+> here so there is no need for an additional flag.
+> 
+> I'm happy to respin with a "depends" check if we think the flag has other
+> value.
 
-The original implementation of that commit at [1] used IS_REACHABLE. This
-was rejected by Olek at [2] with the suggested implementation of
-CONFIG_ICE_GNSS.
+Sorry for late response. Do you mean depends as in keeping the separate
+Kconfig? IS_REACHABLE() is a bit of a hack, makes figuring out what
+gets built a lot harder for users. How about we keep the IS_ENABLED()
+but add a dependency to ICE as a whole?
 
-Eventually after merging, Linus reported a .config which had
-CONFIG_ICE_GNSS = y when both GNSS = n and ICE = n. This confused him and
-he felt that the config option was not useful, and commented about it at
-[3].
+I mean instead of s/IS_ENABLED/IS_REACHABLE/ do this:
 
-CONFIG_ICE_GNSS is defined to y whenever GNSS = ICE. This results in it
-being set in cases where both options are not enabled.
-
-The goal of CONFIG_ICE_GNSS is to ensure that the GNSS support in the ice
-driver is enabled when GNSS is enabled, while ensuring that ICE = y and
-GNSS = m don't break.
-
-The complaint from Olek about the original IS_REACHABLE was due to the
-required IS_REACHABLE checks throughout the ice driver code and the fact
-that ice_gnss.c was compiled regardless of GNSS support.
-
-This can be fixed in the Makefile by using ice-$(CONFIG_GNSS) += ice_gnss.o
-
-If GNSS = m, then this will add ice_gnss.o to ice-m, which will be ignored
-if we're not compiling ice as a module, and thus we will skip compiling
-GNSS code just as with CONFIG_ICE_GNSS.
-
-Drop CONFIG_ICE_GNSS, and replace the IS_ENABLED checks for it with
-IS_REACHABLE checks for GNSS. Update the Makefile to add the ice_gnss.o
-object based on CONFIG_GNSS.
-
-This works on my system to ensure that GNSS support is optionally included
-without any need for additional config options, and it works correctly in
-at least the following configurations:
-
-1. CONFIG_ICE = m, CONFIG_GNSS = m
-2. CONFIG_ICE = y, CONFIG_GNSS = m
-3. CONFIG_ICE = m, CONFIG_GNSS = y
-
-This solution should resolve the complains Olek made regarding compilation
-of ice_gnss.o and additional unnecessary IS_REACHABLE checks, while also
-avoiding extra config flags.
-
-[1] https://lore.kernel.org/intel-wired-lan/20221019095603.44825-1-arkadiusz.kubalewski@intel.com/
-[2] https://lore.kernel.org/intel-wired-lan/20221028165706.96849-1-alexandr.lobakin@intel.com/
-[3] https://lore.kernel.org/all/CAHk-=wi_410KZqHwF-WL5U7QYxnpHHHNP-3xL=g_y89XnKc-uw@mail.gmail.com/
-
-Reported-by: Linus Torvalds <torvalds@linux-foundation.org>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Fixes: c7ef8221ca7d ("ice: use GNSS subsystem instead of TTY")
-Acked-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Acked-by: Alexander Lobakin <alexandr.lobakin@intel.com>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Anthony Nguyen <anthony.l.nguyen@intel.com>
----
-
-I'm sending to both Intel-wired-lan and netdev lists since this was
-discussed publicly on the netdev list. I'm not sure how we want to queue it
-up, so I currently have it tagged as intel-net to go through Tony's IWL
-tree. I'm happy however it gets pulled. I believe this is the best solution
-as the total number of #ifdefs is the same as with CONFIG_ICE_GNSS, as is
-the Makefile line. As far as I can tell the Kbuild just does the right thing
-here so there is no need for an additional flag.
-
-I'm happy to respin with a "depends" check if we think the flag has other
-value.
-
- drivers/net/ethernet/intel/Kconfig        | 3 ---
- drivers/net/ethernet/intel/ice/Makefile   | 2 +-
- drivers/net/ethernet/intel/ice/ice_gnss.h | 4 ++--
- 3 files changed, 3 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index a3c84bf05e44..3facb55b7161 100644
+index 3facb55b7161..198995b3eab5 100644
 --- a/drivers/net/ethernet/intel/Kconfig
 +++ b/drivers/net/ethernet/intel/Kconfig
-@@ -337,9 +337,6 @@ config ICE_HWTS
- 	  the PTP clock driver precise cross-timestamp ioctl
- 	  (PTP_SYS_OFFSET_PRECISE).
- 
--config ICE_GNSS
--	def_bool GNSS = y || GNSS = ICE
--
- config FM10K
- 	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
- 	default n
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index f269952d207d..5d89392f969b 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -47,4 +47,4 @@ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
- ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
- ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
- ice-$(CONFIG_ICE_SWITCHDEV) += ice_eswitch.o
--ice-$(CONFIG_ICE_GNSS) += ice_gnss.o
-+ice-$(CONFIG_GNSS) += ice_gnss.o
-diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/ethernet/intel/ice/ice_gnss.h
-index 31db0701d13f..d453987492f0 100644
---- a/drivers/net/ethernet/intel/ice/ice_gnss.h
-+++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
-@@ -45,7 +45,7 @@ struct gnss_serial {
- 	struct list_head queue;
- };
- 
--#if IS_ENABLED(CONFIG_ICE_GNSS)
-+#if IS_REACHABLE(CONFIG_GNSS)
- void ice_gnss_init(struct ice_pf *pf);
- void ice_gnss_exit(struct ice_pf *pf);
- bool ice_gnss_is_gps_present(struct ice_hw *hw);
-@@ -56,5 +56,5 @@ static inline bool ice_gnss_is_gps_present(struct ice_hw *hw)
- {
- 	return false;
- }
--#endif /* IS_ENABLED(CONFIG_ICE_GNSS) */
-+#endif /* IS_REACHABLE(CONFIG_GNSS) */
- #endif /* _ICE_GNSS_H_ */
+@@ -296,6 +296,7 @@ config ICE
+        default n
+        depends on PCI_MSI
+        depends on PTP_1588_CLOCK_OPTIONAL
++       depends on GNSS || GNSS=n
+        select AUXILIARY_BUS
+        select DIMLIB
+        select NET_DEVLINK
 
-base-commit: 5b7c4cabbb65f5c469464da6c5f614cbd7f730f2
--- 
-2.39.1.405.gd4c25cc71f83
-
+Or do you really care about building ICE with no GNSS.. ?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
