@@ -1,65 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DF596A22E3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Feb 2023 21:02:56 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7F466A2559
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Feb 2023 01:09:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7776941B8B;
-	Fri, 24 Feb 2023 20:02:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7776941B8B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 72616417B4;
+	Sat, 25 Feb 2023 00:09:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 72616417B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677268974;
-	bh=QfJ/pr1ipnwsJaRZ1aXkoCcdxT5fYzEn8yai7xU6ijQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1677283793;
+	bh=nrhAhbAtc/A6sQerBfXn8gKSmu+5fFh55yXb/sqwtug=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rDRP0BZLGkj+WX200CeRyfejUuD6VtO1V0mgYDcSTEVpKiIZ6Ft9lKIGMAhOfo9uj
-	 Ki3g3+gdIssZEbe/8h/9+iBKHoULDiZmDRjEHj/PX14qiV37w21WIYLcW8n/T7AQkP
-	 iPN4tfW6zg3Rv3Cs+O5BdD/IxE//73fWOGTqaCbFRExW+gguMtV3G+h++EcekXYABp
-	 IMzh9rJMxjKDBXHTOeAq8AI2uQHMkGWPrKKZ4qRGVP7fRc0zKehon2johAgcj1DpCd
-	 +1fiM1wNfl6IjqQltBLYNSLVIQ6nP4mqh7BE4FrH6dSiptvWU2lSthVco/EkSiEKBA
-	 2H31q4EN7Bmxg==
+	b=3L0IvFfWsNZxbud/BuSplR6crmWQ2vWRKg8GV1D5deUZA/2fn5Yru51iMDhHWWkzr
+	 qaedEP2O5sTy2CCDyv3on/a797ZZcyEahnql1ZenMk9VOZ0IQnL2z6oo3VwQV5w8wr
+	 IAKtqtpsCr/HTZASPpraSD+WNTok2r/lU+UEgZkxYlRBLALJ9Xxeiuw2KuCJMzVP0l
+	 EM6mvcRMD37gPuOB3UikPQ54CCNyjlvcFB1gKglyGkJ86hVSuENM65o/iJ2J+Z8GOZ
+	 oKiTG8oGul0thlATlmDS8+rQE0fNUt2nwzlvqXDtXvuGRIyM2FWtfIH6RgDMHQCHeL
+	 bbiGk3PEs26ww==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lD128v1xGkaR; Fri, 24 Feb 2023 20:02:53 +0000 (UTC)
+	with ESMTP id Uple3S3MSPJI; Sat, 25 Feb 2023 00:09:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B52F941B7F;
-	Fri, 24 Feb 2023 20:02:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B52F941B7F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0C463417B3;
+	Sat, 25 Feb 2023 00:09:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C463417B3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0252C1BF36B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Feb 2023 20:02:47 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7829F1BF982
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 00:09:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CFB0F405F8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Feb 2023 20:02:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CFB0F405F8
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5CF6E417B3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 00:09:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CF6E417B3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pPHd8-eJMVPJ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Feb 2023 20:02:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7994640145
-Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
- [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7994640145
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Feb 2023 20:02:45 +0000 (UTC)
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ore@pengutronix.de>)
- id 1pVeGi-0001Dl-MA; Fri, 24 Feb 2023 21:02:12 +0100
-Received: from ore by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <ore@pengutronix.de>)
- id 1pVeGd-0007PE-Tp; Fri, 24 Feb 2023 21:02:07 +0100
-Date: Fri, 24 Feb 2023 21:02:07 +0100
-From: Oleksij Rempel <o.rempel@pengutronix.de>
-To: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <20230224200207.GA8437@pengutronix.de>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TrbW2JZG1_FJ for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Feb 2023 00:09:45 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0A45F417B1
+Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com
+ [IPv6:2607:f8b0:4864:20::329])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0A45F417B1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 00:09:44 +0000 (UTC)
+Received: by mail-ot1-x329.google.com with SMTP id
+ a14-20020a056830100e00b00690ed91749aso573400otp.7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Feb 2023 16:09:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=rG5c0uuSbUunUALVODvqeVNmwOesQ/VQeoXgcA7DJXs=;
+ b=YcAbBbnPqNpxZY+6yFzFphGD7gvulymzNCbOxleFAR6SgtcKV8UPmNdSEtpZO/sMvA
+ 17qZY+bsht5aOWt/TnP3g8y8LzBb77t5baQcYYcqduv08H06Vqp+2vqsbCTBpPZWJ7gs
+ WvCx7dcwKQh0F/MPndNSPspIijpdzcEoon57JrpkoMqNDuhAboK5bN9xm9MGMAdWmMUy
+ 15o46SxHUDo56kRyxjitOO3JTfCALlDRBil5QEWKu/pFeaWpqIj2kT0ApWHSIIjLzNhH
+ 5Y35CZxBuTGyzhvRy9Q6/1bbDyGh6xc47Y/POqS0CIAQmsiBCfeLkRtSnHiLGkajsyyq
+ 9hgg==
+X-Gm-Message-State: AO0yUKWlSpSpyPO6oPXT8b1KU0Sr3Bvo/JBiryMHpn8Haksfp2r+o5Tn
+ YO+oGVWI0BIPeCR9Pmef5O4=
+X-Google-Smtp-Source: AK7set8WcGhFL+TrMKfRHGHfrLPh6vX0fv2xNcQjbcOGlJ7MVJ+9A8udFuZGh/wrhMp6ft8NowmqPQ==
+X-Received: by 2002:a9d:7194:0:b0:68b:d266:e6cc with SMTP id
+ o20-20020a9d7194000000b0068bd266e6ccmr9332800otj.19.1677283784052; 
+ Fri, 24 Feb 2023 16:09:44 -0800 (PST)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d13-20020a056830138d00b00690e6d56670sm97789otq.25.2023.02.24.16.09.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Feb 2023 16:09:43 -0800 (PST)
+Message-ID: <52f8bb78-0913-6e9a-7816-f32cdad688f2@roeck-us.net>
+Date: Fri, 24 Feb 2023 16:09:40 -0800
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Content-Language: en-US
+To: Oleksij Rempel <o.rempel@pengutronix.de>
 References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
  <20230211074113.2782508-7-o.rempel@pengutronix.de>
  <20230224035553.GA1089605@roeck-us.net>
@@ -70,19 +92,24 @@ References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
  <20230224174132.GA1224969@roeck-us.net>
  <20230224183646.GA26307@pengutronix.de>
  <b0af4518-3c07-726e-79a0-19c53f799204@roeck-us.net>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b0af4518-3c07-726e-79a0-19c53f799204@roeck-us.net>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ore@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+ <20230224200207.GA8437@pengutronix.de>
+From: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <20230224200207.GA8437@pengutronix.de>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=rG5c0uuSbUunUALVODvqeVNmwOesQ/VQeoXgcA7DJXs=;
+ b=fgXb8wvgxf5IbFqN//rKtMYLknlIYSo7+RXuCe7GWxq0JNoWRqgJoaYt/ZjxUIsZAr
+ E/4PE5YQxC2f4LGr8fWvSedTxXyxEz7LrrHJC891Vs6INgtU0OY7bLMUDbVN+Golf7r2
+ sjgYBNhvvO0QbRDnxf6p7xLkXwoewFmuUC2yFhjkzHvas5bJzdYmDHmYqppBRus32KWd
+ WVuz3JnKs8iSHAuifAI2ctgYRuBGNulvxo6U/jhypH5SWyLIdT2fkNoORvPD/4MrrbGn
+ A4F1TzWCZmI2BMzQCIrtUOmlNtpJYzk71xCwaKZRiY+bcLnyCjZtjQwucMBUWYCgY9DG
+ BT5g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=fgXb8wvg
 Subject: Re: [Intel-wired-lan] [PATCH net-next v8 6/9] net: phy: c22:
  migrate to genphy_c45_write_eee_adv()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -106,147 +133,65 @@ Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
  Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
  Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Feb 24, 2023 at 11:17:24AM -0800, Guenter Roeck wrote:
-> On 2/24/23 10:36, Oleksij Rempel wrote:
-> > On Fri, Feb 24, 2023 at 09:41:32AM -0800, Guenter Roeck wrote:
-> > > On Fri, Feb 24, 2023 at 05:52:13PM +0100, Oleksij Rempel wrote:
-> > > > On Fri, Feb 24, 2023 at 08:00:57AM -0800, Guenter Roeck wrote:
-> > > > > On 2/23/23 20:53, Oleksij Rempel wrote:
-> > > > > > Hallo Guenter,
-> > > > > > 
-> > > > > > On Thu, Feb 23, 2023 at 08:16:04PM -0800, Guenter Roeck wrote:
-> > > > > > > On Thu, Feb 23, 2023 at 07:55:55PM -0800, Guenter Roeck wrote:
-> > > > > > > > On Sat, Feb 11, 2023 at 08:41:10AM +0100, Oleksij Rempel wrote:
-> > > > > > > > > Migrate from genphy_config_eee_advert() to genphy_c45_write_eee_adv().
-> > > > > > > > > 
-> > > > > > > > > It should work as before except write operation to the EEE adv registers
-> > > > > > > > > will be done only if some EEE abilities was detected.
-> > > > > > > > > 
-> > > > > > > > > If some driver will have a regression, related driver should provide own
-> > > > > > > > > .get_features callback. See micrel.c:ksz9477_get_features() as example.
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
-> > > > > > > > > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> > > > > > > > 
-> > > > > > > > This patch causes network interface failures with all my xtensa qemu
-> > > > > > > > emulations. Reverting it fixes the problem. Bisect log is attached
-> > > > > > > > for reference.
-> > > > > > > > 
-> > > > > > > 
-> > > > > > > Also affected are arm:cubieboard emulations, with same symptom.
-> > > > > > > arm:bletchley-bmc emulations crash. In both cases, reverting this patch
-> > > > > > > fixes the problem.
-> > > > > > 
-> > > > > > Please test this fixes:
-> > > > > > https://lore.kernel.org/all/167715661799.11159.2057121677394149658.git-patchwork-notify@kernel.org/
-> > > > > > 
-> > > > > 
-> > > > > Applied and tested
-> > > > > 
-> > > > > 77c39beb5efa (HEAD -> master) net: phy: c45: genphy_c45_ethtool_set_eee: validate EEE link modes
-> > > > > 068a35a8d62c net: phy: do not force EEE support
-> > > > > 66d358a5fac6 net: phy: c45: add genphy_c45_an_config_eee_aneg() function
-> > > > > ecea1bf8b04c net: phy: c45: use "supported_eee" instead of supported for access validation
-> > > > > 
-> > > > > on top of
-> > > > > 
-> > > > > d2980d8d8265 (upstream/master, origin/master, origin/HEAD, local/master) Merge tag 'mm-nonmm-stable-2023-02-20-15-29' of git://git.kernel.org/pub/scm/linux/kernel/git/akpm/mm
-> > > > > 
-> > > > > No change for xtensa and arm:cubieboard; network interfaces still fail.
-> > > > 
-> > > > Huh, interesting.
-> > > > 
-> > > > can you please send me the kernel logs.
-> > > > 
-> > > There is nothing useful there, or at least I don't see anything useful.
-> > > The Ethernet interfaces (sun4i-emac for cubieboard and ethoc for xtensa)
-> > > just don't come up.
-> > > 
-> > > Sample logs:
-> > > 
-> > > cubieboard:
-> > > 
-> > > https://kerneltests.org/builders/qemu-arm-v7-master/builds/531/steps/qemubuildcommand/logs/stdio
-> > > 
-> > > xtensa:
-> > > 
-> > > https://kerneltests.org/builders/qemu-xtensa-master/builds/2177/steps/qemubuildcommand/logs/stdio
-> > > 
-> > > and, for completeness, bletchley-bmc:
-> > > 
-> > > https://kerneltests.org/builders/qemu-arm-aspeed-master/builds/531/steps/qemubuildcommand/logs/stdio
-> > > 
-> > > Those logs are without the above set of patches, but I don't see a
-> > > difference with the patches applied for cubieboard and xtensa. I
-> > > started a complete test run (for all emulations) with the patches
-> > > applied; that should take about an hour to complete.
-> > > I could also add some debug logging, but you'd have to give me
-> > > some hints about what to add and where.
-> > 
-> > OK, interesting. These are emulated PHYs. QEMU seems to return 0 or
-> > 0xFFFF on unsupported registers. May be I'm wrong.
-> > All EEE read/write accesses depend on initial capability read
-> > genphy_c45_read_eee_cap1()
-> > 
-> > Can you please add this trace:
-> > 
-> > diff --git a/drivers/net/phy/phy-c45.c b/drivers/net/phy/phy-c45.c
-> > index f595acd0a895..67dac9f0e71d 100644
-> > --- a/drivers/net/phy/phy-c45.c
-> > +++ b/drivers/net/phy/phy-c45.c
-> > @@ -799,6 +799,7 @@ static int genphy_c45_read_eee_cap1(struct phy_device *phydev)
-> >           * (Register 3.20)
-> >           */
-> >          val = phy_read_mmd(phydev, MDIO_MMD_PCS, MDIO_PCS_EEE_ABLE);
-> > +       printk("MDIO_PCS_EEE_ABLE = 0x%04x", val);
-> >          if (val < 0)
-> >                  return val;
-> > 
+On 2/24/23 12:02, Oleksij Rempel wrote:
+[ ... ]
+>>
+>> For cubieboard:
+>>
+>> MDIO_PCS_EEE_ABLE = 0x0000
+>>
+>> qemu reports attempts to access unsupported registers.
+>>
+>> I had a look at the Allwinner mdio driver. There is no indication suggesting
+>> what the real hardware would return when trying to access unsupported registers,
+>> and the Ethernet controller datasheet is not public.
 > 
-> For cubieboard:
+> These are PHY accesses over MDIO bus. Ethernet controller should not
+> care about content of this operations. But on qemu side, it is implemented as
+> part of Ethernet controller emulation...
 > 
-> MDIO_PCS_EEE_ABLE = 0x0000
+> Since MDIO_PCS_EEE_ABLE == 0x0000, phydev->supported_eee should prevent
+> other EEE related operations. But may be actual phy_read_mmd() went
+> wrong. It is a combination of simple phy_read/write to different
+> registers.
 > 
-> qemu reports attempts to access unsupported registers.
-> 
-> I had a look at the Allwinner mdio driver. There is no indication suggesting
-> what the real hardware would return when trying to access unsupported registers,
-> and the Ethernet controller datasheet is not public.
 
-These are PHY accesses over MDIO bus. Ethernet controller should not
-care about content of this operations. But on qemu side, it is implemented as
-part of Ethernet controller emulation...
+Adding MDD read/write support in qemu doesn't help. Something else in your patch
+prevents the PHY from coming up. After reverting your patch, I see
 
-Since MDIO_PCS_EEE_ABLE == 0x0000, phydev->supported_eee should prevent
-other EEE related operations. But may be actual phy_read_mmd() went
-wrong. It is a combination of simple phy_read/write to different
-registers.
+sun4i-emac 1c0b000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
 
-> For xtensa:
-> 
-> MDIO_PCS_EEE_ABLE = 0x0014
-> 
-> I didn't try to find out what that means.
+in the log. This is missing with your patch in place.
 
-These will be interpreted as the PHY supports 1000KX and 1000T EEE modes.
-Starting from this point all EEE read write operations will be allowed.
+Anyway, the key difference is not really the qemu emulation, but the added
+unconditional call to genphy_c45_write_eee_adv() in your patch. If you look
+closely into that function, you may notice that the 'changed' variable is
+never set to 0.
 
-> qemu did not report attempts to access unsupported registers.
+diff --git a/drivers/net/phy/phy-c45.c b/drivers/net/phy/phy-c45.c
+index 3813b86689d0..fee514b96ab1 100644
+--- a/drivers/net/phy/phy-c45.c
++++ b/drivers/net/phy/phy-c45.c
+@@ -672,7 +672,7 @@ EXPORT_SYMBOL_GPL(genphy_c45_read_mdix);
+   */
+  int genphy_c45_write_eee_adv(struct phy_device *phydev, unsigned long *adv)
+  {
+-       int val, changed;
++       int val, changed = 0;
 
-Hm. What is the best way to proceed? Remove genphy_c45_read_eee_abilities()
-out of genphy_read_abilities() and let add it to PHYs known to support
-it? Or go deeper and fix QEMU if needed?
+         if (linkmode_intersects(phydev->supported_eee, PHY_EEE_CAP1_FEATURES)) {
+                 val = linkmode_to_mii_eee_cap1_t(adv);
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+fixes the problem, both for cubieboard and xtensa.
+
+Guenter
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
