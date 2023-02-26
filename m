@@ -2,85 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E75CF6A3010
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:45:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D8C46A303E
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:47:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A84D540541;
-	Sun, 26 Feb 2023 14:45:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A84D540541
+	by smtp2.osuosl.org (Postfix) with ESMTP id BF5B440546;
+	Sun, 26 Feb 2023 14:47:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF5B440546
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677422742;
-	bh=abGa4yeV1cu3GmGK3b6X4n7TXZl2pBkvOHeWkDd6tRY=;
+	s=default; t=1677422867;
+	bh=fL7nDljyAZwASfeo76LfdnSb1sKt9tBWOzsnzZkXruU=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=G/qT2Qhx7+BnhUs1f4AWZqohSsIt0N2GxlFBiHmwkybpalCSYIGNAN6vIuhpZ3bju
-	 zeJS5RGLu0CqMphpgRVyaAq6Gg0ZRNlIfv7WuIRpPatUg9VryOw4//eimmlkjItvd7
-	 tR8RCWwL1x7NpGZ2JaudRpEknaxKkG7mQFuQyaNlvOoK/hBWlBn6RWYLhO4HtRvuPd
-	 DOefN9/AJcAZFj6Um1j5C6xtQLCf2BvNzQbwboxNeALxbPDVIM36BrwIkcQc52ixLD
-	 L1QwRG4kPFg9Qi0qPeDjTpHNlmgKhohH2JgoUeKLjvUytnuZX6WXcZTf34lXMQbj70
-	 xLN8nXXflAnKA==
+	b=snCLFHl/L5gwTb23ZQ+HY95Pqp6I8WCyeda+x5mKKbFjiBvaNV5WiZBj8M62piVOK
+	 VlmOqVxTqvW193AEEhEA5+fDxrInwe73nwuXU8eW/DOufLS/Xc+WOEMK232T0yGVu8
+	 msc/+2uMTUTf2WH7w1hnQd8lBNaIs41I643YTLaGlb3tdbIz6kG/+LvZp7RgF+F5//
+	 yJ6hksTovzS+D4OzZXSERqHarw4NDXg7YOeirYYNayxf3vt8X+lrZHWJsa4cjaHqbu
+	 F9GDvKRC6dwRN9iyKuokFqsf5N1UN4UF9YLjEf/WEQ/KsEq4P4ynBqBlBEkWXhqMRD
+	 RQEuYM5XIf0Kw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7XmMIOAcw9td; Sun, 26 Feb 2023 14:45:40 +0000 (UTC)
+	with ESMTP id IaGR66ytaatb; Sun, 26 Feb 2023 14:47:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2558E4048D;
-	Sun, 26 Feb 2023 14:45:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2558E4048D
+	by smtp2.osuosl.org (Postfix) with ESMTP id AFB4A40328;
+	Sun, 26 Feb 2023 14:47:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFB4A40328
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 840EB1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 601481BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5D0A740396
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D0A740396
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4816040396
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:47:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4816040396
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id meXnq6xszlBs for <intel-wired-lan@lists.osuosl.org>;
- Sun, 26 Feb 2023 14:45:33 +0000 (UTC)
+ with ESMTP id DDWamwZhM7Dk for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 26 Feb 2023 14:47:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70D3240328
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 70D3240328
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3B07640328
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3B07640328
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:47:39 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 57F5360C49;
- Sun, 26 Feb 2023 14:45:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE76EC4331D;
- Sun, 26 Feb 2023 14:45:30 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 114B4CE0E85;
+ Sun, 26 Feb 2023 14:47:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4F13C4339B;
+ Sun, 26 Feb 2023 14:47:31 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun, 26 Feb 2023 09:44:11 -0500
-Message-Id: <20230226144446.824580-19-sashal@kernel.org>
+Date: Sun, 26 Feb 2023 09:46:17 -0500
+Message-Id: <20230226144650.826470-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230226144446.824580-1-sashal@kernel.org>
-References: <20230226144446.824580-1-sashal@kernel.org>
+In-Reply-To: <20230226144650.826470-1-sashal@kernel.org>
+References: <20230226144650.826470-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1677422732;
- bh=AxnxOlSN62BnFiT6lQKnSPsUpSQfhY1u7OhqD5HnXxw=;
+ d=kernel.org; s=k20201202; t=1677422853;
+ bh=XUK47YBM9rMPfxxEjuBimIL6djaUFTCviZ1xCgBUaP8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=PFdwp3DOGbxYMHfenf31+A70PxJXFBSFnSNwyohFRmQXQ0CkJ+SJV7xA/coaOyUxA
- mHpfkIbSeQkXVhaw9BRlrfBNAjo0RhhwxOBjI++up6OEyKnxffCMFOjCDNoSXEFhWt
- tlHvRtyYa3GwA1JhycA/W66hAocn00EZz+dq0WF0QR15wqz+ECVic6y4j6AwO5uzBa
- +GpW97mOIA2DlkCXtDSTDlCdLYdXBSUUwudT9cRjotLzkfumOR1ZkQvfNno15R5xSq
- ZPd7458VIJA5W6j5OFtCWqtvhDOduWH7xY87pAoTkJJv3R4sD8hcI1ndKu9rWuk37U
- pk1Te9+qyOF2g==
+ b=nDdkU7ThhP7Uwr+Ehbdzp4VSnUK0S+UmzhKeTrFnPkYS102y46Q7f7RATfNoJoJAw
+ ZWKZlqKiXLdCOkUFWyz02gTLhL7WsUMhZ9kr2PnXIkYEtpidfV88GfrMilbhImH+Pv
+ Ft5i3dxui8CU6EVJMm8btYWvjP3k4wIdvzTXDGxrzPWQ+D9SkXsVCNI4RQCPQDuDgR
+ Iii5Fze8DM0p6FK9b0vBqRqUsm2Xu2g+tXvlQL40kDsl1hWi4IJAaX2F5lGcAEAAxX
+ TNZ0TEANhvZdmXlJEnCpOSTt0nqRl/Fois8NtjZgbvFLDLgzD4N5FwYFnjcyyr8eDH
+ K9dr2DpHU44gg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=PFdwp3DO
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.2 19/53] ice: add missing checks
- for PF vsi type
+ header.a=rsa-sha256 header.s=k20201202 header.b=nDdkU7Th
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.1 17/49] ice: restrict PTP HW
+ clock freq adjustments to 100, 000, 000 PPB
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,7 +94,8 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, edumazet@google.com,
+ Siddaraju DH <siddaraju.dh@intel.com>, jesse.brandeburg@intel.com,
+ richardcochran@gmail.com, edumazet@google.com,
  Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
  kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
@@ -102,70 +103,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Siddaraju DH <siddaraju.dh@intel.com>
 
-[ Upstream commit 6a8d013e904ad9a66706fcc926ec9993bed7d190 ]
+[ Upstream commit 8aa4318c3a122b8670bc09af142de3872ca63b88 ]
 
-There were a few places we had missed checking the VSI type to make sure
-it was definitely a PF VSI, before calling setup functions intended only
-for the PF VSI.
+The PHY provides only 39b timestamp. With current timing
+implementation, we discard lower 7b, leaving 32b timestamp.
+The driver reconstructs the full 64b timestamp by correlating the
+32b timestamp with cached_time for performance. The reconstruction
+algorithm does both forward & backward interpolation.
 
-This doesn't fix any explicit bugs but cleans up the code in a few
-places and removes one explicit != vsi->type check that can be
-superseded by this code (it's a super set)
+The 32b timeval has overflow duration of 2^32 counts ~= 4.23 second.
+Due to interpolation in both direction, its now ~= 2.125 second
+IIRC, going with at least half a duration, the cached_time is updated
+with periodic thread of 1 second (worst-case) periodicity.
 
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+But the 1 second periodicity is based on System-timer.
+With PPB adjustments, if the 1588 timers increments at say
+double the rate, (2s in-place of 1s), the Nyquist rate/half duration
+sampling/update of cached_time with 1 second periodic thread will
+lead to incorrect interpolations.
+
+Hence we should restrict the PPB adjustments to at least half duration
+of cached_time update which translates to 500,000,000 PPB.
+
+Since the periodicity of the cached-time system thread can vary,
+it is good to have some buffer time and considering practicality of
+PPB adjustments, limiting the max_adj to 100,000,000.
+
+Signed-off-by: Siddaraju DH <siddaraju.dh@intel.com>
 Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8ec24f6cf6beb..3811462824390 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6182,15 +6182,12 @@ int ice_vsi_cfg(struct ice_vsi *vsi)
- {
- 	int err;
- 
--	if (vsi->netdev) {
-+	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
- 		ice_set_rx_mode(vsi->netdev);
- 
--		if (vsi->type != ICE_VSI_LB) {
--			err = ice_vsi_vlan_setup(vsi);
--
--			if (err)
--				return err;
--		}
-+		err = ice_vsi_vlan_setup(vsi);
-+		if (err)
-+			return err;
- 	}
- 	ice_vsi_cfg_dcb_rings(vsi);
- 
-@@ -6371,7 +6368,7 @@ static int ice_up_complete(struct ice_vsi *vsi)
- 
- 	if (vsi->port_info &&
- 	    (vsi->port_info->phy.link_info.link_info & ICE_AQ_LINK_UP) &&
--	    vsi->netdev) {
-+	    vsi->netdev && vsi->type == ICE_VSI_PF) {
- 		ice_print_link_msg(vsi, true);
- 		netif_tx_start_all_queues(vsi->netdev);
- 		netif_carrier_on(vsi->netdev);
-@@ -6382,7 +6379,9 @@ static int ice_up_complete(struct ice_vsi *vsi)
- 	 * set the baseline so counters are ready when interface is up
- 	 */
- 	ice_update_eth_stats(vsi);
--	ice_service_task_schedule(pf);
-+
-+	if (vsi->type == ICE_VSI_PF)
-+		ice_service_task_schedule(pf);
- 
- 	return 0;
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 53fec5bbe6e00..a3585ede829bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2293,7 +2293,7 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
+ 	snprintf(info->name, sizeof(info->name) - 1, "%s-%s-clk",
+ 		 dev_driver_string(dev), dev_name(dev));
+ 	info->owner = THIS_MODULE;
+-	info->max_adj = 999999999;
++	info->max_adj = 100000000;
+ 	info->adjtime = ice_ptp_adjtime;
+ 	info->adjfine = ice_ptp_adjfine;
+ 	info->gettimex64 = ice_ptp_gettimex64;
 -- 
 2.39.0
 
