@@ -1,85 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2513E6A3096
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:50:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86BA56A30A8
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:52:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AA31640566;
-	Sun, 26 Feb 2023 14:50:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA31640566
+	by smtp2.osuosl.org (Postfix) with ESMTP id 281A04061F;
+	Sun, 26 Feb 2023 14:52:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 281A04061F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677423057;
-	bh=VfH77jp9kdF5ycxmsY4e4qW7yDM6azQnAr7rxnzmSpQ=;
+	s=default; t=1677423120;
+	bh=QdsBwdW0zCFtdyaUtfvnMMXVumBacgxcKclJPpyEjkA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2/ewi1gZIS4q+Yd1WvWLIw1l3dERxd9ObIAc96cZIWP6m1kWNF9sUhZwYMHWt00Q0
-	 qF7ZsmUehgGjN15LM6SlpLaxmYbqgltw0BHSzytiBXG4C+HQ89AF24Sn/iCfshpsxl
-	 LsWzYSQsgh7LOLQ/2xwgSM2SFzJ/GmGtyFDhFaTlXum0HWUXz4oTlCVkafsOD/MzQ3
-	 GhsE6YSP9fLe+FVOJXbpG4WzgzElbUuP8JdLrlP1QLoYE9dPDGRFd3mvQfe646ZiRe
-	 jzCDQkq3FmkiHC8ucQ6HpXAYif94nfV9msR08nOG/VzaL/1GbSvOwK1vrIZyIXAO6n
-	 VWd6YA7iTe6Mw==
+	b=EsP6tZ1iYYznMtcIXB7MZw/Sg60giHKE42xDpmLAcFzTu1XOlTSAVk0iGcuXhlplj
+	 bg7/vzi5DDhA/b0NU7X93uQun5OI4MMrbnuA8GsJWQ13/UgcTcgRIgFQrtElQatJv1
+	 9oCZ+K0N45lgNSNedxhclH441OQeItawpx2YbUtGwg94Akw9Pe4Qq8cq0j5kJtuhR9
+	 VU+l4x47ZhHOOGT0ICkjkSKxCoqaBewhI89+eK91l8RkwGx3YYfPD4COcVC4GedP4f
+	 oY73a8L5WnKpG/xDjLsKMhJH8V6ESqzvHMpHkyKxssTvaRpDM665gZIFt6/StAWeL9
+	 FrZtG6h93HZ1w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GCf9IWWu19hN; Sun, 26 Feb 2023 14:50:57 +0000 (UTC)
+	with ESMTP id SstQxuC-n9qU; Sun, 26 Feb 2023 14:51:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A4C1340396;
-	Sun, 26 Feb 2023 14:50:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4C1340396
+	by smtp2.osuosl.org (Postfix) with ESMTP id 163E440541;
+	Sun, 26 Feb 2023 14:51:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 163E440541
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7CFBF1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:50:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C12AD1BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 54A6560C0C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:50:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54A6560C0C
+ by smtp3.osuosl.org (Postfix) with ESMTP id 97AB560C0C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97AB560C0C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VGHBLSnWtcH0 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 26 Feb 2023 14:50:50 +0000 (UTC)
+ with ESMTP id uNXruM5OeJLw for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 26 Feb 2023 14:51:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9BCE760BD5
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9BCE760BD5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:50:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3D2F60BD5
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A3D2F60BD5
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:52 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id DD00160C3D;
- Sun, 26 Feb 2023 14:50:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80120C433D2;
- Sun, 26 Feb 2023 14:50:48 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E0405B80C88;
+ Sun, 26 Feb 2023 14:51:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A756C433A0;
+ Sun, 26 Feb 2023 14:51:48 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun, 26 Feb 2023 09:50:00 -0500
-Message-Id: <20230226145014.828855-13-sashal@kernel.org>
+Date: Sun, 26 Feb 2023 09:51:11 -0500
+Message-Id: <20230226145123.829229-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230226145014.828855-1-sashal@kernel.org>
-References: <20230226145014.828855-1-sashal@kernel.org>
+In-Reply-To: <20230226145123.829229-1-sashal@kernel.org>
+References: <20230226145123.829229-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1677423049;
- bh=J8tvAYnnNh+qGP626LZlPmvKvW6/UOO8wDJOxvrNXPw=;
+ d=kernel.org; s=k20201202; t=1677423109;
+ bh=oceXxxscX+4MDgIRYkEMhZNb9lXuPefmon11MmeEie4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lQQNOCZuRxUktEcpbT9nzUkb4FSOjIShsiDtT02s2exwA9l7JhbZJ8dV090oaeRZA
- 3JZxp7khbn2m4dIxuhVrlaP6iMUQ1mt9JZIGYytL7TPfEvz+xEiUCdZMANubHmjIYG
- gft5u66LStKpQbLhZUGbHj5lWsUmIdz8G1sNuNFg3EpA4uEfd+NZGvNWzTeQXDz0Pw
- faIuZHiswPzQ92teM8ICSIGQ58a6zjXMmfiFbA0Ga2vfQDG5l16ojYUL69mA6NpqOl
- 6y7jjohqnOKTcDP60gJ6aD1mHYvPcs62NZH20NAeigkTZbiLiLdlRquNym9DvWliOj
- uobu49W32kyOA==
+ b=FTMf8CdwlidZ5+2ntQxkfekVQKLKde7Eey20PXYAh8xK09TIvhhFoZyTa0jjIxb9B
+ P2dL9OJqH2xtUbr4sVPvnTanWPDcAT+Ys8AtqNHXSkpIp88hzxOVGxLTXpDIuuTJBu
+ AXWcUoFWS415UkNQfhzf0Bt5qzr//7JLhzhVdbCPPsSRnbNmRskXUChas5RUPhJxgE
+ a/qdBnDH5ZkJHenQ9YEvRRJdLLz8vJNKH+oNl+X1e7OsnJuqQfgzeGiBzX9jYUpPqu
+ 8Gt4kCKzgF5aIQlzQZGoeIn6jG1/Vql73PzQirn/ylmv5oyQliMk/G/RucCB5pUBVO
+ 59VXNU9547b9g==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=lQQNOCZu
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.10 13/27] ice: add missing
- checks for PF vsi type
+ header.a=rsa-sha256 header.s=k20201202 header.b=FTMf8Cdw
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 09/19] ice: add missing checks
+ for PF vsi type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,10 +123,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 8 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index c1465096239b6..4f0d63fa5709b 100644
+index ae1d305672259..209ae96875849 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5200,15 +5200,12 @@ int ice_vsi_cfg(struct ice_vsi *vsi)
+@@ -3492,15 +3492,12 @@ int ice_vsi_cfg(struct ice_vsi *vsi)
  {
  	int err;
  
@@ -145,7 +146,7 @@ index c1465096239b6..4f0d63fa5709b 100644
  	}
  	ice_vsi_cfg_dcb_rings(vsi);
  
-@@ -5267,7 +5264,7 @@ static int ice_up_complete(struct ice_vsi *vsi)
+@@ -3557,7 +3554,7 @@ static int ice_up_complete(struct ice_vsi *vsi)
  
  	if (vsi->port_info &&
  	    (vsi->port_info->phy.link_info.link_info & ICE_AQ_LINK_UP) &&
@@ -154,7 +155,7 @@ index c1465096239b6..4f0d63fa5709b 100644
  		ice_print_link_msg(vsi, true);
  		netif_tx_start_all_queues(vsi->netdev);
  		netif_carrier_on(vsi->netdev);
-@@ -5277,7 +5274,9 @@ static int ice_up_complete(struct ice_vsi *vsi)
+@@ -3567,7 +3564,9 @@ static int ice_up_complete(struct ice_vsi *vsi)
  	 * set the baseline so counters are ready when interface is up
  	 */
  	ice_update_eth_stats(vsi);
