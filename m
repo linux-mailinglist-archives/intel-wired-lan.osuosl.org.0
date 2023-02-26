@@ -1,88 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A7356A2972
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Feb 2023 13:09:40 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AA9D6A3014
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:45:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC58A60B42;
-	Sat, 25 Feb 2023 12:09:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC58A60B42
+	by smtp2.osuosl.org (Postfix) with ESMTP id A2624408A7;
+	Sun, 26 Feb 2023 14:45:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A2624408A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677326978;
-	bh=54Rh6yvD5ltrCv/lnrxXmcmgmvp1TQR/oqUTnhWiGJw=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Am1ER1SVwYJKUudcvHJ1EF9i9HuME2xnARE7wjlFNT0ybrfGWOkEEfduWmX5TaHfd
-	 BY0gRrcqEVjNO2tu2FmocIaRCCo2Lr5IPFUoTE8vffoGfkbQ0WOZfsYYabUZRX8FN9
-	 OZSOKVp2JeRBjX7OGVuzzb0hNZjNA9GVRP0BlTIjVaJy/kT5N/xutAJlMvtpUOsUlQ
-	 Ac957IFvFW1iFSbnZITUYE41CE+zaoDbrK46pQs6Okeo9FWIMGR26uIO/j+BlruZVJ
-	 NhsRLHD68xW7LC16uayFiwpAM1t606XBAYzutsfN6NobfXP5ZFjmS+4d/v2N2K3D8s
-	 nyGfFPTTdvjZA==
+	s=default; t=1677422745;
+	bh=4MQfhbwpeUEgx6iZ2yxfh+HE5sNk0QV6Hph6KO+S1S0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=RVarmHRl8JcHxH85hyrhEpxCrUuQDCbA8cGuD5FKVebQnUidjM2uV+3ur8ieQImVt
+	 UrCy6QdPzLoxqXs0EpM5ycysdgroxHNGS+vJ/tPlGCVl5P1qYAKVgL1B7GPlzHndtZ
+	 58R/SM1U5gvxwap6PWDzWt2XHXXlQ1B2GvXHkkC5gXWF3ZhJpi2kKe1Ul5ZC4S05It
+	 dTKfbzvL9zPcbWdj5PhoFEEmvKqT4mGCUt0001krzOPYkuoG/9gFZ0kcE6nf3qzOAn
+	 /FWYQ/L/olCv6GJDEivCyr4CUBAN2eG0x//KkWabxpgX0X/mAK6bcbNU6NzWImSMRP
+	 aotDmhyYkdgiA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hFjrZFXh3krg; Sat, 25 Feb 2023 12:09:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p9G-exNntvn9; Sun, 26 Feb 2023 14:45:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B432860B1C;
-	Sat, 25 Feb 2023 12:09:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B432860B1C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9718F4048D;
+	Sun, 26 Feb 2023 14:45:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9718F4048D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E06811BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 12:09:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 001191BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B889441655
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 12:09:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B889441655
+ by smtp4.osuosl.org (Postfix) with ESMTP id DA6F740860
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DA6F740860
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id F41mc92iabGw for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Feb 2023 12:09:31 +0000 (UTC)
+ with ESMTP id xRPjKp0kovQC for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 26 Feb 2023 14:45:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A2764159D
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9A2764159D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Feb 2023 12:09:31 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10631"; a="419889225"
-X-IronPort-AV: E=Sophos;i="5.97,327,1669104000"; d="scan'208";a="419889225"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2023 04:09:31 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10631"; a="797040899"
-X-IronPort-AV: E=Sophos;i="5.97,327,1669104000"; d="scan'208";a="797040899"
-Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 25 Feb 2023 04:09:30 -0800
-Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pVtMn-0003Ap-1D;
- Sat, 25 Feb 2023 12:09:29 +0000
-Date: Sat, 25 Feb 2023 20:09:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <63f9fa77.50tb+v8X9qVEMW9A%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A14244085E
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A14244085E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:45:35 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 1B73FB80BE7;
+ Sun, 26 Feb 2023 14:45:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B172C433EF;
+ Sun, 26 Feb 2023 14:45:29 +0000 (UTC)
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Sun, 26 Feb 2023 09:44:10 -0500
+Message-Id: <20230226144446.824580-18-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230226144446.824580-1-sashal@kernel.org>
+References: <20230226144446.824580-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677326971; x=1708862971;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=M6HGwQHDlYHBFw0E6r04ockss7jS2zyjtm5ODJxgcT4=;
- b=T6/gV6aIU0C6Z6xji8JcoMNASHUVgt49Olv54zib66ewU6lCA79TllI5
- m1QphwQp/vgjMO7jb39pydZwJ+c4l6s5iN3uztvXg1qSv+68b3p0VK2X1
- oW5ClxO/+blmdcH8mK3OwBHo+TeQX4BCkaGJkx57Kvq75ApdR9m13JjD1
- oDJKgjaRK/l4fzqU6vgui/rAapWSq5b1TA0+jxj97kU6eBTMZTyUn3ZsN
- ampDK32WBLnPob1a2ge1oQTzSzjGcedPUZ/tuoD5654Y5+lcUoC2I/Ltr
- kFaS/Pzztp5Cy8GDY8VcGuzQudwHtFSvPSdlPd6AdhjxQpnnaKF+yaVq0
- g==;
+ d=kernel.org; s=k20201202; t=1677422730;
+ bh=ZrZh0ffHod44Z2tfuYGnD78a9b3uoNILJV5wnbaMdzA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=kyYQZnG5QQJYDOgyj1mfMqle/w0CzSLCqc713x2gbtRSco7V3aV3whLZD9SvGiutM
+ WcgPYcuD69HXp30y/pHNUUaxIADr3MnfQIkGm0isouNpt2ZcgpjnFdccb/ZJ73GAj/
+ 7564M6AH4SHzFGTsTRaQ4ScMfobAjbQmGajyDYrSsa5u2IAg2EcIbxGg2onMUqLBJ8
+ 3LwP/2TwavHXAlQ1k7WVl8i2eghQYVz+5Ont7urHbkwG8M2wwZfGca5UkKlFtgzZXe
+ uZQcSwwkUXmg8tOAs5eszflcKKK4+NaEbDy1ytpD2hswc2/lwXL+eH+mPwACX7UWM9
+ A4j7zNEhwWweg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=T6/gV6aI
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 98d6714e4c9315aa2d3d8fd940c98ac5adc7c87f
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=kyYQZnG5
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.2 18/53] ice: restrict PTP HW
+ clock freq adjustments to 100, 000, 000 PPB
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,47 +93,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Siddaraju DH <siddaraju.dh@intel.com>, jesse.brandeburg@intel.com,
+ richardcochran@gmail.com, edumazet@google.com,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 98d6714e4c9315aa2d3d8fd940c98ac5adc7c87f  i40e: Fix kernel crash during reboot when adapter is in recovery mode
+From: Siddaraju DH <siddaraju.dh@intel.com>
 
-elapsed time: 821m
+[ Upstream commit 8aa4318c3a122b8670bc09af142de3872ca63b88 ]
 
-configs tested: 19
-configs skipped: 3
+The PHY provides only 39b timestamp. With current timing
+implementation, we discard lower 7b, leaving 32b timestamp.
+The driver reconstructs the full 64b timestamp by correlating the
+32b timestamp with cached_time for performance. The reconstruction
+algorithm does both forward & backward interpolation.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+The 32b timeval has overflow duration of 2^32 counts ~= 4.23 second.
+Due to interpolation in both direction, its now ~= 2.125 second
+IIRC, going with at least half a duration, the cached_time is updated
+with periodic thread of 1 second (worst-case) periodicity.
 
-tested configs:
-clang                                   alpha   defconfig
-gcc                                       arc   defconfig
-gcc                                       arm   defconfig
-gcc                                     arm64   defconfig
-gcc                                      csky   defconfig
-gcc                                      i386   defconfig
-gcc                                      ia64   defconfig
-gcc                                 loongarch   defconfig
-gcc                                      m68k   defconfig
-gcc                                     nios2   defconfig
-gcc                                    parisc   defconfig
-gcc                                  parisc64   defconfig
-gcc                                     riscv   defconfig
-gcc                                     riscv   rv32_defconfig
-gcc                                      s390   defconfig
-gcc                                     sparc   defconfig
-gcc                                        um   i386_defconfig
-gcc                                        um   x86_64_defconfig
-gcc                                    x86_64   defconfig
-gcc                                                  
+But the 1 second periodicity is based on System-timer.
+With PPB adjustments, if the 1588 timers increments at say
+double the rate, (2s in-place of 1s), the Nyquist rate/half duration
+sampling/update of cached_time with 1 second periodic thread will
+lead to incorrect interpolations.
 
+Hence we should restrict the PPB adjustments to at least half duration
+of cached_time update which translates to 500,000,000 PPB.
+
+Since the periodicity of the cached-time system thread can vary,
+it is good to have some buffer time and considering practicality of
+PPB adjustments, limiting the max_adj to 100,000,000.
+
+Signed-off-by: Siddaraju DH <siddaraju.dh@intel.com>
+Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index d63161d73eb16..3abc8db1d0659 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2269,7 +2269,7 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
+ 	snprintf(info->name, sizeof(info->name) - 1, "%s-%s-clk",
+ 		 dev_driver_string(dev), dev_name(dev));
+ 	info->owner = THIS_MODULE;
+-	info->max_adj = 999999999;
++	info->max_adj = 100000000;
+ 	info->adjtime = ice_ptp_adjtime;
+ 	info->adjfine = ice_ptp_adjfine;
+ 	info->gettimex64 = ice_ptp_gettimex64;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.39.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
