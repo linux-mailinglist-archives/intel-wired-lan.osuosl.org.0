@@ -1,102 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9215F6A46F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 17:29:35 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D55516A46FA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 17:29:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1CD5A60C0B;
-	Mon, 27 Feb 2023 16:29:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CD5A60C0B
+	by smtp3.osuosl.org (Postfix) with ESMTP id E9D9960FE4;
+	Mon, 27 Feb 2023 16:29:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E9D9960FE4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677515374;
-	bh=lnmZeQsdemo7YNYY1gW8qcTiDT5sJsgo1gXEeWBEnBc=;
-	h=References:From:To:Date:In-Reply-To:Subject:List-Id:
+	s=default; t=1677515376;
+	bh=IsG1KGPpHoibjq+/B1shDddexWHD1Y3k7/qlqtt5oZc=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=lSt9AsiZHiPXd1WdwM6Dtr9ar1xNaH8MLxOsfQgiAy96nBpJUPRTywk36+C934j6s
-	 1W1Mb49MAgaCqL1i2lbO859gDq7J5zDh0W4yGXIdSkhDNMLHjgN9fqgTpSHCI+Tm5c
-	 gAvUjXi9aDzC424lNHJoVmEdMQ0TiNXcKWTdOR4vNBktAtx5PV4Wes+Xf1/SvZvT3w
-	 wVQrZq5B2nYfD1dPsRjrEdBx6n3vCxQy4XQwViG3dTvxZaB4tNmdBpMF4XsgHlabSg
-	 wbxAxOZG2ygzu65mL3CocXgcn7JNtY1bx918mlPiSea8D4tROelo8Dpx1wphAtUCS8
-	 9rQMNBL7VMZgw==
+	b=Fw0L3Ky7jM/5Tqrp9ISfYmJPp6syHaScIxLUfwMfkwVK3lt5KJ0fv8W5gOG6x0oTI
+	 fZ5exTiOj1ZgUWu5NEmsiVp1I6/TfwxQLRpUx5J+GnBeMGZp08WsJ6zLISFe7HaUNT
+	 YA6w6rDqi8f65aBZhP+b0Xxm1N79X+COE7KHfHpbWm8xbnXQf5Ch0ZF/0Zo5dmbpm7
+	 MqabT1f9unulHkjC1Q968+l2lWhtoguRuoD42YnchxvnHwY6cpeOLvG5DUCTkDA7Wm
+	 Ur6A3OStK6ysCjwBVEyvtzo0fkZ9tkxmz9cZlo3nIw2XoOJlqo/tq/KzHpSNcOk6gU
+	 aImSQgtoralxg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6G-3Gly1jfOx; Mon, 27 Feb 2023 16:29:31 +0000 (UTC)
+	with ESMTP id N3K1gijEKTcw; Mon, 27 Feb 2023 16:29:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BAE6660670;
-	Mon, 27 Feb 2023 16:29:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BAE6660670
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA3EC60BE4;
+	Mon, 27 Feb 2023 16:29:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA3EC60BE4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D7711BF25F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 10:17:52 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 59F701BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3CC72415EF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 10:17:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3CC72415EF
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3F9D0409B5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F9D0409B5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cdGl9eQswQbv for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Feb 2023 10:17:50 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9348415A7
-Received: from smtp-fw-9103.amazon.com (smtp-fw-9103.amazon.com
- [207.171.188.200])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C9348415A7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 10:17:50 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.97,331,1669075200"; d="scan'208";a="1106934594"
-Received: from pdx4-co-svc-p1-lb2-vlan3.amazon.com (HELO
- email-inbound-relay-iad-1d-m6i4x-25ac6bd5.us-east-1.amazon.com)
- ([10.25.36.214]) by smtp-border-fw-9103.sea19.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2023 10:15:16 +0000
-Received: from EX19D006EUA002.ant.amazon.com
- (iad12-ws-svc-p26-lb9-vlan2.iad.amazon.com [10.40.163.34])
- by email-inbound-relay-iad-1d-m6i4x-25ac6bd5.us-east-1.amazon.com (Postfix)
- with ESMTPS id 2A6774499A; Mon, 27 Feb 2023 10:15:14 +0000 (UTC)
-Received: from EX19D028EUB003.ant.amazon.com (10.252.61.31) by
- EX19D006EUA002.ant.amazon.com (10.252.50.65) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.24; Mon, 27 Feb 2023 10:15:13 +0000
-Received: from u570694869fb251.ant.amazon.com.amazon.com (10.85.143.178) by
- EX19D028EUB003.ant.amazon.com (10.252.61.31) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.24; Mon, 27 Feb 2023 10:15:00 +0000
-References: <cover.1674913191.git.lorenzo@kernel.org>
- <948292cc7d72f2bc04b5973008ecf384f9296677.1674913191.git.lorenzo@kernel.org>
-User-agent: mu4e 1.6.10; emacs 28.0.91
-From: Shay Agroskin <shayagr@amazon.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 27 Feb 2023 11:50:38 +0200
-In-Reply-To: <948292cc7d72f2bc04b5973008ecf384f9296677.1674913191.git.lorenzo@kernel.org>
-Message-ID: <pj41zlcz5v1kkg.fsf@u570694869fb251.ant.amazon.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Aw2Bi04F9zqQ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Feb 2023 13:06:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A02F40982
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4A02F40982
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:21 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 344FF60DFB;
+ Mon, 27 Feb 2023 13:06:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5C8FC433D2;
+ Mon, 27 Feb 2023 13:06:14 +0000 (UTC)
+Date: Mon, 27 Feb 2023 13:06:10 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Oleksij Rempel <o.rempel@pengutronix.de>
+Message-ID: <Y/yqwifeQBC3sSaD@sirena.org.uk>
+References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
+ <20230211074113.2782508-6-o.rempel@pengutronix.de>
+ <Y/ufuLJdMcxc6f47@sirena.org.uk>
+ <20230227055241.GC8437@pengutronix.de>
 MIME-Version: 1.0
-X-Originating-IP: [10.85.143.178]
-X-ClientProxiedBy: EX19D032UWB004.ant.amazon.com (10.13.139.136) To
- EX19D028EUB003.ant.amazon.com (10.252.61.31)
-Precedence: Bulk
+In-Reply-To: <20230227055241.GC8437@pengutronix.de>
+X-Cookie: On the eighth day, God created FORTRAN.
 X-Mailman-Approved-At: Mon, 27 Feb 2023 16:29:21 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1677493070; x=1709029070;
- h=references:from:to:cc:subject:date:in-reply-to:
- message-id:mime-version;
- bh=WDKEfsQ09EQinniY8kNYa4ZtvRstDHSkkWFa8N7k+sY=;
- b=dp4KEMxZLIiQmbVDheN3e0D9fl6RtkNHgPb/gka9aft48rkbMvQgmLlr
- PLcMtVBG+b1Q6Tzxf17bRkv9caguPzFR7QoxStkqAXzYbT9Fsosc5ncPv
- nB7Yq9f+HMf/o+svJbjykTIVXZ9w1Ji2OJovHDBZJUKXnS9zMmpQQmqcC
- o=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
- header.s=amazon201209 header.b=dp4KEMxZ
-Subject: Re: [Intel-wired-lan] [PATCH v4 bpf-next 2/8] drivers: net: turn on
- XDP features
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1677503179;
+ bh=+TZvd92l9qjnJ46cOT5L9UcQe7CKFe0gXGAYlHM+pn4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MBZPUuouC2wHJXTMDns2HmltZ/Am3KtGB6qtPlCrb3/MBdH12QLCyQ124jkJwejTj
+ /9jv3pfgL9kql6Rp3/Mq2/oP7T0TD+IVY2I/dEo4N2srigsxf9hH5lZRHbih9dWDwj
+ bKmH5HuGP7y3RcKuUDughHTcAD0HLkjvOCAa0YLQU63I5krx7OlxqjLjJRKRa5iMW1
+ 1WqULk3QoqzkYDvk171oAv6DocJ1wuNnQRljHqnVaZ3QnM0+BZNRt9FqYD6ukaYhF9
+ 4YfWL+ENcpjdEgqhggrilecv9D1A/jzeAWs5nQjTAv+W3u/OFvR0OfJHKMWv/o+m+N
+ 5kgeZLeLoTRXw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=MBZPUuou
+Subject: Re: [Intel-wired-lan] [PATCH net-next v8 5/9] net: phy: add
+ genphy_c45_ethtool_get/set_eee() support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -106,104 +93,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, sdf@google.com,
- daniel@iogearbox.net, andrii@kernel.org, intel-wired-lan@lists.osuosl.org,
- simon.horman@corigine.com, kuba@kernel.org, pabeni@redhat.com,
- aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
- memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
- toke@redhat.com, martin.lau@linux.dev, ecree.xilinx@gmail.com,
- alardam@gmail.com, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
- nbd@nbd.name
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Eric Dumazet <edumazet@google.com>, linux-amlogic@lists.infradead.org,
+ Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
+ Jose Abreu <joabreu@synopsys.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>, Wei Fang <wei.fang@nxp.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
+ kernel@pengutronix.de, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: multipart/mixed; boundary="===============3948262252797166592=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-Lorenzo Bianconi <lorenzo@kernel.org> writes:
+--===============3948262252797166592==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="18YmcFoX2FMeA9qB"
+Content-Disposition: inline
 
-> From: Marek Majtyka <alardam@gmail.com>
->
-> ...
->
-> diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c 
-> b/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> index e8ad5ea31aff..d3999db7c6a2 100644
-> --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> @@ -597,7 +597,9 @@ static int ena_xdp_set(struct net_device 
-> *netdev, struct netdev_bpf *bpf)
->  				if (rc)
->  					return rc;
->  			}
-> +			xdp_features_set_redirect_target(netdev, 
-> false);
->  		} else if (old_bpf_prog) {
-> + 
-> xdp_features_clear_redirect_target(netdev);
->  			rc = 
->  ena_destroy_and_free_all_xdp_queues(adapter);
->  			if (rc)
->  				return rc;
-> @@ -4103,6 +4105,8 @@ static void 
-> ena_set_conf_feat_params(struct ena_adapter *adapter,
->  	/* Set offload features */
->  	ena_set_dev_offloads(feat, netdev);
->  
-> +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | 
-> NETDEV_XDP_ACT_REDIRECT;
-> +
->  	adapter->max_mtu = feat->dev_attr.max_mtu;
->  	netdev->max_mtu = adapter->max_mtu;
->  	netdev->min_mtu = ENA_MIN_MTU;
->
 
-Hi, thanks for the time you put in adjusting the ENA driver as 
-well.
+--18YmcFoX2FMeA9qB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Why did you set NETDEV_XDP_ACT_NDO_XMIT dynamically for some 
-drivers (like ENA and mlx5) and statically for others (like 
-atlantic driver which also redirects packets only when XDP program 
-is loaded) ?
-Is it only for the sake of notifying the user that an XDP program 
-has been loaded ?
+On Mon, Feb 27, 2023 at 06:52:41AM +0100, Oleksij Rempel wrote:
+> On Sun, Feb 26, 2023 at 06:06:48PM +0000, Mark Brown wrote:
 
-Thanks,
-Shay
+> > Currently mainline is failing to bring up networking on the Libre
+> > Computer AML-S905X-CC, with a bisect pointing at this commit,
+> > 022c3f87f88 upstream (although I'm not 100% sure I trust the bisect it
+> > seems to be in roughly the right place).  I've not dug into what's going
+> > on more than running the bisect yet.
 
-> ...
-> diff --git a/net/core/xdp.c b/net/core/xdp.c
-> index a5a7ecf6391c..82727b47259d 100644
-> --- a/net/core/xdp.c
-> +++ b/net/core/xdp.c
-> @@ -773,3 +773,21 @@ static int __init xdp_metadata_init(void)
->  	return register_btf_kfunc_id_set(BPF_PROG_TYPE_XDP, 
->  &xdp_metadata_kfunc_set);
->  }
->  late_initcall(xdp_metadata_init);
-> +
-> +void xdp_features_set_redirect_target(struct net_device *dev, 
-> bool support_sg)
-> +{
-> +	dev->xdp_features |= NETDEV_XDP_ACT_NDO_XMIT;
-> +	if (support_sg)
-> +		dev->xdp_features |= NETDEV_XDP_ACT_NDO_XMIT_SG;
-> +
-> +	call_netdevice_notifiers(NETDEV_XDP_FEAT_CHANGE, dev);
-> +}
-> +EXPORT_SYMBOL_GPL(xdp_features_set_redirect_target);
-> +
-> +void xdp_features_clear_redirect_target(struct net_device *dev)
-> +{
-> +	dev->xdp_features &= ~(NETDEV_XDP_ACT_NDO_XMIT |
-> +			       NETDEV_XDP_ACT_NDO_XMIT_SG);
-> +	call_netdevice_notifiers(NETDEV_XDP_FEAT_CHANGE, dev);
-> +}
-> +EXPORT_SYMBOL_GPL(xdp_features_clear_redirect_target);
+> Can you please test following fixes:
+> https://lore.kernel.org/all/167715661799.11159.2057121677394149658.git-patchwork-notify@kernel.org/
+> https://lore.kernel.org/all/20230225071644.2754893-1-o.rempel@pengutronix.de/
+
+They seem to work, thanks!  I had found and tried the second patch but
+it doesn't apply without the first series.  Will those patches be going
+to Linus for -rc1?  It's pretty disruptive to a bunch of the test
+infrastructure to not be able to NFS boot.
+
+--18YmcFoX2FMeA9qB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmP8qsIACgkQJNaLcl1U
+h9Bl6Qf+Kb7ZKOT7CiUaam7FNIgjrgALxbl+vEoK4Jd449ZZ8D4wKW/ZCeFYsMtX
+jDz4FdBm3yWIycYw0aDgBv+Rx5022ewQlSidOoHLtqJFyn4C8anRLgge2fCwGXRt
+87RUPWhKsqyl7wpZaQirbjkkS5e2eJnXYg7qRUIkNYwjO4IGBxdx4Y05qCGI90vD
+d5orhnfGEb5O5rf9JpGlz6X6FuoTaNF+QE8PJWaYve86GxFeZ45r2LA2mwO5KXK2
+lR9TEJAspu738yEXGCxU4J6pZn/PAH6MdaAL3nz5SonmmQ4xcPZxveXbYEI2amK+
+qUGMfJEdqtVeKb0reNsl0z2pPn1Lwg==
+=p/hg
+-----END PGP SIGNATURE-----
+
+--18YmcFoX2FMeA9qB--
+
+--===============3948262252797166592==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============3948262252797166592==--
