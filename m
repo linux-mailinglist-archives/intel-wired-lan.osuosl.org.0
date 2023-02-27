@@ -1,86 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86BA56A30A8
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Feb 2023 15:52:01 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73BD96A3AF2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 06:53:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 281A04061F;
-	Sun, 26 Feb 2023 14:52:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 281A04061F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 06831403D6;
+	Mon, 27 Feb 2023 05:53:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 06831403D6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677423120;
-	bh=QdsBwdW0zCFtdyaUtfvnMMXVumBacgxcKclJPpyEjkA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1677477201;
+	bh=5FJIJc1t/IC3J6uR7RClNfNi+qhCMggGl8MynJMZ96Q=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=EsP6tZ1iYYznMtcIXB7MZw/Sg60giHKE42xDpmLAcFzTu1XOlTSAVk0iGcuXhlplj
-	 bg7/vzi5DDhA/b0NU7X93uQun5OI4MMrbnuA8GsJWQ13/UgcTcgRIgFQrtElQatJv1
-	 9oCZ+K0N45lgNSNedxhclH441OQeItawpx2YbUtGwg94Akw9Pe4Qq8cq0j5kJtuhR9
-	 VU+l4x47ZhHOOGT0ICkjkSKxCoqaBewhI89+eK91l8RkwGx3YYfPD4COcVC4GedP4f
-	 oY73a8L5WnKpG/xDjLsKMhJH8V6ESqzvHMpHkyKxssTvaRpDM665gZIFt6/StAWeL9
-	 FrZtG6h93HZ1w==
+	b=rt/RTrhUp6rJBXn0jn007vzyqFB3/bTURHLpOebHkmwI1DMuK4RnB8ncy7DGTZdWg
+	 pxwx1lKGzDQD72TSQfDOigPVeLvlELk/wVu8Ai9i9FxvnuolZ3/oazKLiMUGq+X7Lz
+	 jikku8v3668/Auwft7vOS4IGENUXjUSJx3f9PY36HcE8LMKazW1Jl/ZsJC7Je2JvPp
+	 1NA9SgN7I0EMlK0G3At8RhElQK3sNGKhRrPX/DiepVEMEw7WhpDiD+bEfJebMCfQ7Q
+	 /r+T6kIKPyQ33MVUIdGswwT1LMZ0MVbBCA7zmxOgKGO65TAMbGL8qXJ1lezTGILDii
+	 7UU/SFFlKqjbg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SstQxuC-n9qU; Sun, 26 Feb 2023 14:51:59 +0000 (UTC)
+	with ESMTP id Ag_NI-RtE_sh; Mon, 27 Feb 2023 05:53:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 163E440541;
-	Sun, 26 Feb 2023 14:51:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 163E440541
+	by smtp2.osuosl.org (Postfix) with ESMTP id 039EC40360;
+	Mon, 27 Feb 2023 05:53:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 039EC40360
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C12AD1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 13B0B1BF406
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 05:53:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 97AB560C0C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97AB560C0C
+ by smtp4.osuosl.org (Postfix) with ESMTP id DEE6D402F4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 05:53:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DEE6D402F4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uNXruM5OeJLw for <intel-wired-lan@lists.osuosl.org>;
- Sun, 26 Feb 2023 14:51:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3D2F60BD5
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A3D2F60BD5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Feb 2023 14:51:52 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E0405B80C88;
- Sun, 26 Feb 2023 14:51:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A756C433A0;
- Sun, 26 Feb 2023 14:51:48 +0000 (UTC)
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Sun, 26 Feb 2023 09:51:11 -0500
-Message-Id: <20230226145123.829229-9-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230226145123.829229-1-sashal@kernel.org>
-References: <20230226145123.829229-1-sashal@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rbX2HlFT8uhs for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Feb 2023 05:53:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5C27340343
+Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de
+ [IPv6:2001:67c:670:201:290:27ff:fe1d:cc33])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5C27340343
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 05:53:13 +0000 (UTC)
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pWWRK-0008Db-1o; Mon, 27 Feb 2023 06:52:46 +0100
+Received: from ore by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ore@pengutronix.de>)
+ id 1pWWRF-00059C-Aw; Mon, 27 Feb 2023 06:52:41 +0100
+Date: Mon, 27 Feb 2023 06:52:41 +0100
+From: Oleksij Rempel <o.rempel@pengutronix.de>
+To: Mark Brown <broonie@kernel.org>
+Message-ID: <20230227055241.GC8437@pengutronix.de>
+References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
+ <20230211074113.2782508-6-o.rempel@pengutronix.de>
+ <Y/ufuLJdMcxc6f47@sirena.org.uk>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1677423109;
- bh=oceXxxscX+4MDgIRYkEMhZNb9lXuPefmon11MmeEie4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FTMf8CdwlidZ5+2ntQxkfekVQKLKde7Eey20PXYAh8xK09TIvhhFoZyTa0jjIxb9B
- P2dL9OJqH2xtUbr4sVPvnTanWPDcAT+Ys8AtqNHXSkpIp88hzxOVGxLTXpDIuuTJBu
- AXWcUoFWS415UkNQfhzf0Bt5qzr//7JLhzhVdbCPPsSRnbNmRskXUChas5RUPhJxgE
- a/qdBnDH5ZkJHenQ9YEvRRJdLLz8vJNKH+oNl+X1e7OsnJuqQfgzeGiBzX9jYUpPqu
- 8Gt4kCKzgF5aIQlzQZGoeIn6jG1/Vql73PzQirn/ylmv5oyQliMk/G/RucCB5pUBVO
- 59VXNU9547b9g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=FTMf8Cdw
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 09/19] ice: add missing checks
- for PF vsi type
+Content-Disposition: inline
+In-Reply-To: <Y/ufuLJdMcxc6f47@sirena.org.uk>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: ore@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+Subject: Re: [Intel-wired-lan] [PATCH net-next v8 5/9] net: phy: add
+ genphy_c45_ethtool_get/set_eee() support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,82 +90,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, edumazet@google.com,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Eric Dumazet <edumazet@google.com>, linux-amlogic@lists.infradead.org,
+ Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
+ Jose Abreu <joabreu@synopsys.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>, Wei Fang <wei.fang@nxp.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
+ kernel@pengutronix.de, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Hi Mark,
 
-[ Upstream commit 6a8d013e904ad9a66706fcc926ec9993bed7d190 ]
+On Sun, Feb 26, 2023 at 06:06:48PM +0000, Mark Brown wrote:
+> On Sat, Feb 11, 2023 at 08:41:09AM +0100, Oleksij Rempel wrote:
+> > Add replacement for phy_ethtool_get/set_eee() functions.
+> > 
+> > Current phy_ethtool_get/set_eee() implementation is great and it is
+> > possible to make it even better:
+> > - this functionality is for devices implementing parts of IEEE 802.3
+> >   specification beyond Clause 22. The better place for this code is
+> >   phy-c45.c
+> 
+> Currently mainline is failing to bring up networking on the Libre
+> Computer AML-S905X-CC, with a bisect pointing at this commit,
+> 022c3f87f88 upstream (although I'm not 100% sure I trust the bisect it
+> seems to be in roughly the right place).  I've not dug into what's going
+> on more than running the bisect yet.
 
-There were a few places we had missed checking the VSI type to make sure
-it was definitely a PF VSI, before calling setup functions intended only
-for the PF VSI.
+Can you please test following fixes:
+https://lore.kernel.org/all/167715661799.11159.2057121677394149658.git-patchwork-notify@kernel.org/
+https://lore.kernel.org/all/20230225071644.2754893-1-o.rempel@pengutronix.de/
 
-This doesn't fix any explicit bugs but cleans up the code in a few
-places and removes one explicit != vsi->type check that can be
-superseded by this code (it's a super set)
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ae1d305672259..209ae96875849 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3492,15 +3492,12 @@ int ice_vsi_cfg(struct ice_vsi *vsi)
- {
- 	int err;
- 
--	if (vsi->netdev) {
-+	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
- 		ice_set_rx_mode(vsi->netdev);
- 
--		if (vsi->type != ICE_VSI_LB) {
--			err = ice_vsi_vlan_setup(vsi);
--
--			if (err)
--				return err;
--		}
-+		err = ice_vsi_vlan_setup(vsi);
-+		if (err)
-+			return err;
- 	}
- 	ice_vsi_cfg_dcb_rings(vsi);
- 
-@@ -3557,7 +3554,7 @@ static int ice_up_complete(struct ice_vsi *vsi)
- 
- 	if (vsi->port_info &&
- 	    (vsi->port_info->phy.link_info.link_info & ICE_AQ_LINK_UP) &&
--	    vsi->netdev) {
-+	    vsi->netdev && vsi->type == ICE_VSI_PF) {
- 		ice_print_link_msg(vsi, true);
- 		netif_tx_start_all_queues(vsi->netdev);
- 		netif_carrier_on(vsi->netdev);
-@@ -3567,7 +3564,9 @@ static int ice_up_complete(struct ice_vsi *vsi)
- 	 * set the baseline so counters are ready when interface is up
- 	 */
- 	ice_update_eth_stats(vsi);
--	ice_service_task_schedule(pf);
-+
-+	if (vsi->type == ICE_VSI_PF)
-+		ice_service_task_schedule(pf);
- 
- 	return 0;
- }
+Regards,
+Oleksij
 -- 
-2.39.0
-
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
