@@ -1,86 +1,116 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D55516A46FA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 17:29:38 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D1436A4780
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 18:03:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E9D9960FE4;
-	Mon, 27 Feb 2023 16:29:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E9D9960FE4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3CCCA81EF4;
+	Mon, 27 Feb 2023 17:03:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3CCCA81EF4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677515376;
-	bh=IsG1KGPpHoibjq+/B1shDddexWHD1Y3k7/qlqtt5oZc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1677517412;
+	bh=J6+QoWm+igcNQN9J4LCmdeTZ65qBui61LjOU0q+m92c=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Fw0L3Ky7jM/5Tqrp9ISfYmJPp6syHaScIxLUfwMfkwVK3lt5KJ0fv8W5gOG6x0oTI
-	 fZ5exTiOj1ZgUWu5NEmsiVp1I6/TfwxQLRpUx5J+GnBeMGZp08WsJ6zLISFe7HaUNT
-	 YA6w6rDqi8f65aBZhP+b0Xxm1N79X+COE7KHfHpbWm8xbnXQf5Ch0ZF/0Zo5dmbpm7
-	 MqabT1f9unulHkjC1Q968+l2lWhtoguRuoD42YnchxvnHwY6cpeOLvG5DUCTkDA7Wm
-	 Ur6A3OStK6ysCjwBVEyvtzo0fkZ9tkxmz9cZlo3nIw2XoOJlqo/tq/KzHpSNcOk6gU
-	 aImSQgtoralxg==
+	b=hIgG0FEzsMdpihNJcCJp1aUiKF08MdtEIUmJUj5IJoLp5DYslUmw+ZPPaEYN5ZxnT
+	 Pd8Sce1MkKYu7nqdAsXBzUVRyoHE3kT8EOBWIg3DF5WF+snN6M5ChPby1ueQVAgHmR
+	 AfSUBdd3ZfiaqR+HTeqxXpQbBCuyqzzs5Hc3JwnksQbvGrtLMt6ckmr14bSCUeJq5M
+	 JYaHjXnxVIRWmw/8z9ZAaOaSC3LMwY+/w8wmnXesE7lYKY5YncikuGVYYPCaIA0NOB
+	 p99xj5vh+ZEu4GErqK9lR5dpy+kTj/IaiVhlFGvZOuD3wvc2g3PMIEC+kxIhYA8wZy
+	 ok8mIw9L3CkKw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N3K1gijEKTcw; Mon, 27 Feb 2023 16:29:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iEsbV17bk5Kn; Mon, 27 Feb 2023 17:03:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CA3EC60BE4;
-	Mon, 27 Feb 2023 16:29:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA3EC60BE4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 24CDD81E1E;
+	Mon, 27 Feb 2023 17:03:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 24CDD81E1E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59F701BF38E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CAA941BF870
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 17:03:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3F9D0409B5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F9D0409B5
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9F0DF81EF2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 17:03:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F0DF81EF2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Aw2Bi04F9zqQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Feb 2023 13:06:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A02F40982
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4A02F40982
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 13:06:21 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 344FF60DFB;
- Mon, 27 Feb 2023 13:06:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5C8FC433D2;
- Mon, 27 Feb 2023 13:06:14 +0000 (UTC)
-Date: Mon, 27 Feb 2023 13:06:10 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Oleksij Rempel <o.rempel@pengutronix.de>
-Message-ID: <Y/yqwifeQBC3sSaD@sirena.org.uk>
-References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
- <20230211074113.2782508-6-o.rempel@pengutronix.de>
- <Y/ufuLJdMcxc6f47@sirena.org.uk>
- <20230227055241.GC8437@pengutronix.de>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SfNAZ4JXqUKE for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Feb 2023 17:03:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6EA0281E1E
+Received: from mail-il1-x134.google.com (mail-il1-x134.google.com
+ [IPv6:2607:f8b0:4864:20::134])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6EA0281E1E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 17:03:24 +0000 (UTC)
+Received: by mail-il1-x134.google.com with SMTP id i12so4290393ila.5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 09:03:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3PQbL1qmUs2LgzEdZBJJorG5CguGjku/dl0Axwoc0Hg=;
+ b=NqVEYdn6NaY2n1KL4NC/k5q7mKx0301KX63GNnNXHN9I5a6Lh5JlhTn17TybFzenCw
+ pKAyA9tcJY+Bx0e8mq+c2HEzjQ5c9zjn2s5GPq6ya/F3Wr2WBUMUS381rG+dIlEYz+j8
+ 4/tKrz+QnaNtUpkJyDfBrIyCP9+ehzYhrNKP75tduj/eByeZidgRVpW1VwiSLGZ0pJRI
+ /o2eGRfQF8TgrGo8dKLfpNY/0/CuR4Nf2vadpmcxITrTdRYB3fZGj0VcBlT+z6Zqz6hg
+ cbUMSsfcEcclM3l1jSXIzF3z2lbBKS8pWODwAzqHCm8NreIYUSmTp/qBMEsUFrzz2K3v
+ w+4A==
+X-Gm-Message-State: AO0yUKX9RNQ9bQ1FjcyZaxbVN0fYxQwofBsJLnkyNbhEob1urS7i823r
+ CH0sx8fx42X33aVFTmHZqr0=
+X-Google-Smtp-Source: AK7set9CKjWTMYwqg06S+1PfRE5x9tDfWD/vxcVAwi9D8kRExY/U4idrTg7ZqsWu6O1ShnhnDPm+8g==
+X-Received: by 2002:a05:6e02:19c9:b0:315:352e:d5d0 with SMTP id
+ r9-20020a056e0219c900b00315352ed5d0mr52085ill.32.1677517403411; 
+ Mon, 27 Feb 2023 09:03:23 -0800 (PST)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ n6-20020a02a906000000b0039df8e7af39sm2360208jam.41.2023.02.27.09.03.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Feb 2023 09:03:22 -0800 (PST)
+Message-ID: <b7df91c0-a5e6-2a0f-7c04-479c4fbb7f82@roeck-us.net>
+Date: Mon, 27 Feb 2023 09:03:20 -0800
 MIME-Version: 1.0
-In-Reply-To: <20230227055241.GC8437@pengutronix.de>
-X-Cookie: On the eighth day, God created FORTRAN.
-X-Mailman-Approved-At: Mon, 27 Feb 2023 16:29:21 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1677503179;
- bh=+TZvd92l9qjnJ46cOT5L9UcQe7CKFe0gXGAYlHM+pn4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MBZPUuouC2wHJXTMDns2HmltZ/Am3KtGB6qtPlCrb3/MBdH12QLCyQ124jkJwejTj
- /9jv3pfgL9kql6Rp3/Mq2/oP7T0TD+IVY2I/dEo4N2srigsxf9hH5lZRHbih9dWDwj
- bKmH5HuGP7y3RcKuUDughHTcAD0HLkjvOCAa0YLQU63I5krx7OlxqjLjJRKRa5iMW1
- 1WqULk3QoqzkYDvk171oAv6DocJ1wuNnQRljHqnVaZ3QnM0+BZNRt9FqYD6ukaYhF9
- 4YfWL+ENcpjdEgqhggrilecv9D1A/jzeAWs5nQjTAv+W3u/OFvR0OfJHKMWv/o+m+N
- 5kgeZLeLoTRXw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=MBZPUuou
-Subject: Re: [Intel-wired-lan] [PATCH net-next v8 5/9] net: phy: add
- genphy_c45_ethtool_get/set_eee() support
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Content-Language: en-US
+To: Andrew Lunn <andrew@lunn.ch>
+References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
+ <20230211074113.2782508-7-o.rempel@pengutronix.de>
+ <20230224035553.GA1089605@roeck-us.net>
+ <20230224041604.GA1353778@roeck-us.net>
+ <20230224045340.GN19238@pengutronix.de>
+ <363517fc-d16e-5bcd-763d-fc0e32c2301a@roeck-us.net>
+ <20230224165213.GO19238@pengutronix.de>
+ <20230224174132.GA1224969@roeck-us.net>
+ <20230224183646.GA26307@pengutronix.de>
+ <b0af4518-3c07-726e-79a0-19c53f799204@roeck-us.net>
+ <Y/yrS65V7h5vG7xN@lunn.ch>
+From: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <Y/yrS65V7h5vG7xN@lunn.ch>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3PQbL1qmUs2LgzEdZBJJorG5CguGjku/dl0Axwoc0Hg=;
+ b=iB7l4fE+XtfoZb1/W5Y2H9qNZQPK6kZ9bHQy+VxvlOugTYjyRoUztESJEabpb9NEzF
+ WlTJfe+EjYDFl6znYSm8WOExmrlwTwvaPx3m260xP8x5RKV7D8bquFAGSHN4KMgZCHUz
+ ZC4ShQBs8Egff+9lqtSbyIHYs7mi9tEDCM8Vdji6O1Fc+V2l230ZGfLx7QPj5zzA6+Hu
+ MG/94NZ+sNgfVzURLdeG2ArGcH3l4pmev+XunKQVr3Ssis3wIwsu/fnOAw2BRIlVsBt1
+ E8JTZ47nqd4DpV1H5iKXozN0PhENIPJgShMIgGDnuzDcMK+BFi9i/TK6LFPWWg5pFvy9
+ HxZg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=iB7l4fE+
+Subject: Re: [Intel-wired-lan] [PATCH net-next v8 6/9] net: phy: c22:
+ migrate to genphy_c45_write_eee_adv()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,79 +123,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Eric Dumazet <edumazet@google.com>, linux-amlogic@lists.infradead.org,
- Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
- Jose Abreu <joabreu@synopsys.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>, Wei Fang <wei.fang@nxp.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com,
- kernel@pengutronix.de, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
+Cc: Woojung Huh <woojung.huh@microchip.com>, Arun.Ramadoss@microchip.com,
+ Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Vivien Didelot <vivien.didelot@gmail.com>,
+ UNGLinuxDriver@microchip.com, Oleksij Rempel <o.rempel@pengutronix.de>,
+ Eric Dumazet <edumazet@google.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Wei Fang <wei.fang@nxp.com>, kernel@pengutronix.de,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: multipart/mixed; boundary="===============3948262252797166592=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On 2/27/23 05:08, Andrew Lunn wrote:
+>>> diff --git a/drivers/net/phy/phy-c45.c b/drivers/net/phy/phy-c45.c
+>>> index f595acd0a895..67dac9f0e71d 100644
+>>> --- a/drivers/net/phy/phy-c45.c
+>>> +++ b/drivers/net/phy/phy-c45.c
+>>> @@ -799,6 +799,7 @@ static int genphy_c45_read_eee_cap1(struct phy_device *phydev)
+>>>            * (Register 3.20)
+>>>            */
+>>>           val = phy_read_mmd(phydev, MDIO_MMD_PCS, MDIO_PCS_EEE_ABLE);
+>>> +       printk("MDIO_PCS_EEE_ABLE = 0x%04x", val);
+>>>           if (val < 0)
+>>>                   return val;
+>>>
+>>
+>> For cubieboard:
+>>
+>> MDIO_PCS_EEE_ABLE = 0x0000
+>>
+>> qemu reports attempts to access unsupported registers.
+> 
+> MDIO is a serial bus with two lines, clock driven by the bus master
+> and data. There is a pull up on the data line, so if the device does
+> not respond to a read request, you get 0xffff. That value is all i've
+> ever seen a real PHY do when asked to read a register which does not
+> exist. So i would say QEMU could be better emulate this.
+> 
+> The code actually looks for the value 0xffff and then decides that EEE
+> is not supporting in the PHY.
+> 
+> The value of 0x0 is probably being interpreted as meaning EEE is
+> supported, but none of the link modes, 10Mbps, 100Mbps etc support
+> EEE. I would say it is then legitimate to read/write other EEE
+> registers, so long as those writes take into account that no link
+> modes are actually supported.
+> 
+> Reading the other messages in this thread, a bug has been found in the
+> patches. But i would also say QEMU could do better.
+> 
 
---===============3948262252797166592==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="18YmcFoX2FMeA9qB"
-Content-Disposition: inline
+Sure, it could. Always. That is why I checked the qemu code and
+actually tried to implement some of the EEE handling, only to
+realize that it didn't help. The emulated PHY does support EEE
+and would return either 0x0001 or 0x0003 depending on the
+underlying hardware. However, returning that and returning/
+accepting reasonable values for other EEE registers didn't make
+a difference due to the kernel bug.
 
-
---18YmcFoX2FMeA9qB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Feb 27, 2023 at 06:52:41AM +0100, Oleksij Rempel wrote:
-> On Sun, Feb 26, 2023 at 06:06:48PM +0000, Mark Brown wrote:
-
-> > Currently mainline is failing to bring up networking on the Libre
-> > Computer AML-S905X-CC, with a bisect pointing at this commit,
-> > 022c3f87f88 upstream (although I'm not 100% sure I trust the bisect it
-> > seems to be in roughly the right place).  I've not dug into what's going
-> > on more than running the bisect yet.
-
-> Can you please test following fixes:
-> https://lore.kernel.org/all/167715661799.11159.2057121677394149658.git-patchwork-notify@kernel.org/
-> https://lore.kernel.org/all/20230225071644.2754893-1-o.rempel@pengutronix.de/
-
-They seem to work, thanks!  I had found and tried the second patch but
-it doesn't apply without the first series.  Will those patches be going
-to Linus for -rc1?  It's pretty disruptive to a bunch of the test
-infrastructure to not be able to NFS boot.
-
---18YmcFoX2FMeA9qB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmP8qsIACgkQJNaLcl1U
-h9Bl6Qf+Kb7ZKOT7CiUaam7FNIgjrgALxbl+vEoK4Jd449ZZ8D4wKW/ZCeFYsMtX
-jDz4FdBm3yWIycYw0aDgBv+Rx5022ewQlSidOoHLtqJFyn4C8anRLgge2fCwGXRt
-87RUPWhKsqyl7wpZaQirbjkkS5e2eJnXYg7qRUIkNYwjO4IGBxdx4Y05qCGI90vD
-d5orhnfGEb5O5rf9JpGlz6X6FuoTaNF+QE8PJWaYve86GxFeZ45r2LA2mwO5KXK2
-lR9TEJAspu738yEXGCxU4J6pZn/PAH6MdaAL3nz5SonmmQ4xcPZxveXbYEI2amK+
-qUGMfJEdqtVeKb0reNsl0z2pPn1Lwg==
-=p/hg
------END PGP SIGNATURE-----
-
---18YmcFoX2FMeA9qB--
-
---===============3948262252797166592==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Guenter
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3948262252797166592==--
