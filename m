@@ -1,107 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06D7A6A5EE9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 19:43:15 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 731F56A6084
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 21:41:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96B0081BC6;
-	Tue, 28 Feb 2023 18:43:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96B0081BC6
+	by smtp3.osuosl.org (Postfix) with ESMTP id C858B60AE2;
+	Tue, 28 Feb 2023 20:41:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C858B60AE2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677609793;
-	bh=z5zhOjAyAQwBwOtSZ4mUu3ori2W8K6gN1+39xHJr8dI=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=2CH9enAltAS4NrU+FtdLsbASbxSkfVdRJ1rfZi++hEKh99pwuGM5d7OgSGAKaBW9D
-	 fYUJtewLHpz22krTrw3QVU9R3kPMtoi1Rom/NVFtMkUeIrOrVCZ3vMvbxGbSsfiNtG
-	 feHQarNbmkxPGr/cA4/d5KT8aTjWReUL7JNsHBXIs8wqqwHsmwiOq+CyZIutW08gMm
-	 p4GfsDxKuaM/wSytjlNSxJuiB1mo4E23F0I+xdKDVJNGnjFxrG8mVC5J/57Qhb8kd8
-	 iMmm7+uGa0WLzZNyMSjWUmF0ulsff9ZW0HOPZvLupp1pSkd+GxGB6NnSwpHvAX+cJo
-	 +d4Dos90wxJWg==
+	s=default; t=1677616917;
+	bh=EeaizVZYeluDALAg2UmrbdhlTi4swJRGQxSHHBq5F5U=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=MZLQMb0rR/g6Qj/R8ldj5F2MRUmrofb7LR0XhyA325a/L864g0+KfvEObuBSDbXQ4
+	 F0Vt3ou0QRHuWW4JrHXlZPDWxZLKU2Y2vn+NcgIW8xkLcsJ9XbtLqPot80XwrXnZ+f
+	 lpqwoAuVEeMNLQyoYoJLsAm5GIvYgDegHbGCS4mlN22XWlW4L5Sec7fjQEGvauOLu/
+	 /dT+c4D2ZhOnTJW26YASIiOv0tNaxlzdiC4ALQcqJZDNphQUm86/xZy6Dt3La0sz9w
+	 Ol5HxweHfYPH9UGAwGHFVKxMPKFw8Gw1icVvBkZQX0u29BdNuGFpVYGpPVEsven1nV
+	 rnV5eyhg/y+UA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kq2ua6WhM3F6; Tue, 28 Feb 2023 18:43:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ESkBl-l0Au3a; Tue, 28 Feb 2023 20:41:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 91F2B8144D;
-	Tue, 28 Feb 2023 18:43:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 91F2B8144D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9FEF46059B;
+	Tue, 28 Feb 2023 20:41:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FEF46059B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CE1E31BF420
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:43:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CD59B1BF293
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 20:41:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A63528144D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:43:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A63528144D
+ by smtp3.osuosl.org (Postfix) with ESMTP id B24FD60AD2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 20:41:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B24FD60AD2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h4hWu4-tCfCf for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Feb 2023 18:43:07 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBDC68142E
-Received: from mail-il1-x129.google.com (mail-il1-x129.google.com
- [IPv6:2607:f8b0:4864:20::129])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DBDC68142E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:43:06 +0000 (UTC)
-Received: by mail-il1-x129.google.com with SMTP id i4so6926769ils.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 10:43:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Qjpz6w1wU5Ahvn+ZiAXXT7LUF2diV3nFILzNkAj96SY=;
- b=m4++kv7BDJZxVm/KvogYkOTmUwF+LRTnNy+TmsWNodd+h3r8rfRFKwXdflBvYlsumh
- qDOS//Y4H2jNYsbrYNjCtmSIaXa2bYypsYh3xxn/iD9gVloXnDEL7ZKtdDIw5n3nYTRS
- w8sxJHoYLfBGWxZgeqJgIbdLKFzKXZdcXdMAKZPalrQ19auLlQ2W+orTUrZPg8vw0Rec
- eLpl8blSoQRH/FmSnk1xZLWw1AlqoGJ1eoTjrAm6D+uCUlgnUNKVTNIjLgfl7csEhhPz
- N64009aNLaKWvkhzQvLa/icTQdJ18nCCYL1i9ZUzyrfYbkMcldrGgtEotstCe18iiCJo
- wKqQ==
-X-Gm-Message-State: AO0yUKVWvfRLExTHUDKr7/0GCiv3agb86Z4pfXy5XoYcamIekHwHcnKZ
- lELmgLeYdMpCkfgeukZdXVw=
-X-Google-Smtp-Source: AK7set+3SB0xC45QlRlJGTf+BbZNkGs7ZRfuNGqxezNLWWwtxXvPDuKgP46T2mHtv/3U+N83n2USvw==
-X-Received: by 2002:a05:6e02:1a24:b0:314:fa6:323c with SMTP id
- g4-20020a056e021a2400b003140fa6323cmr4151260ile.12.1677609785974; 
- Tue, 28 Feb 2023 10:43:05 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- c14-20020a92cf4e000000b00316e39f1285sm2842875ilr.82.2023.02.28.10.43.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Feb 2023 10:43:05 -0800 (PST)
-Date: Tue, 28 Feb 2023 10:43:03 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Oleksij Rempel <o.rempel@pengutronix.de>
-Message-ID: <20230228184303.GA4098978@roeck-us.net>
-References: <20230211074113.2782508-1-o.rempel@pengutronix.de>
- <20230211074113.2782508-7-o.rempel@pengutronix.de>
- <20230224035553.GA1089605@roeck-us.net>
- <20230224041604.GA1353778@roeck-us.net>
- <20230224172004.GA1224760@roeck-us.net>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dgQbAAGLfMGj for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Feb 2023 20:41:50 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F5496059B
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2F5496059B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 20:41:50 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-563-n88w3L0tPlmNNPE3pXkhnQ-1; Tue, 28 Feb 2023 15:41:43 -0500
+X-MC-Unique: n88w3L0tPlmNNPE3pXkhnQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C1FDC882820;
+ Tue, 28 Feb 2023 20:41:41 +0000 (UTC)
+Received: from swamp.redhat.com (unknown [10.39.192.177])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CF0FE2026D68;
+ Tue, 28 Feb 2023 20:41:39 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Tue, 28 Feb 2023 21:41:39 +0100
+Message-Id: <20230228204139.2264495-1-poros@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230224172004.GA1224760@roeck-us.net>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Qjpz6w1wU5Ahvn+ZiAXXT7LUF2diV3nFILzNkAj96SY=;
- b=nkgj59ZCKiK1D88RTqrIIcfHr0fWsaoTuy5xVm3ADPBIAetdxbSxDJESBM2+Fz4qc7
- ko0ehsCR3mNWQ3/MT+ClSqo1xlZ4pS38Kr1PpU1O7oEqclR5/T+gHG2u4mL93r73orcV
- P0kTTxbCjpVYiU/nI+Evm0Y+O9z9nymjAr3biZVUQZAu99DTTC6qa5B9flHhLHmHu+91
- 1NR5NSqFLv9d0xURv1FZfMxhJ68hU23v3Can1pPmfYT8eO1k22xS6jJvOqU+AjGzr5+v
- 3wfd8g2dqB68aHELwUnWNN6LGld+JnTUP45MWD8dUEu2/J7ps4OZW2JwOWa1iGFJEaRj
- Spyg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=nkgj59ZC
-Subject: Re: [Intel-wired-lan] [PATCH net-next v8 6/9] net: phy: c22:
- migrate to genphy_c45_write_eee_adv()
+ d=redhat.com; 
+ s=mimecast20190719; t=1677616908;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+n5ao7sZl4YPF+uvuG7GgDxKNOHxoWdmpB6UrFdBImU=;
+ b=HUyuLKOpZkRHQ0FUTfjWEepgCvbqhrS/kMr4NFwHc3cJ3hySziykFw1J4p2VIXz6bOldsL
+ XGG5Nyz/IRelt+jg2/UclisOtVXkhlQfM+xyhMa3ihdZ9WjxPtX9ree4dTm2WcQ24E315X
+ zUoOrhkyXQ+aXFesxgDD/bswL4g4oHA=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=HUyuLKOp
+Subject: [Intel-wired-lan] [PATCH net] ice: copy last block omitted in
+ ice_get_module_eeprom()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,56 +94,106 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
- Arun.Ramadoss@microchip.com, Florian Fainelli <f.fainelli@gmail.com>,
- regressions@lists.linux.dev, "David S. Miller" <davem@davemloft.net>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- UNGLinuxDriver@microchip.com, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>, Wei Fang <wei.fang@nxp.com>,
- kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Vladimir Oltean <olteanv@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>
+Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Letting regzbot know about the fix:
+ice_get_module_eeprom() is broken since commit e9c9692c8a81 ("ice:
+Reimplement module reads used by ethtool") In this refactor,
+ice_get_module_eeprom() reads the eeprom in blocks of size 8.
+But the condition that should protect the buffer overflow
+ignores the last block. The last block always contains zeros.
+Fix adding memcpy for last block.
 
-#regzbot fixed-by: 972074ea8840
+Bug uncovered by ethtool upstream commit 9538f384b535
+("netlink: eeprom: Defer page requests to individual parsers")
+After this commit, ethtool reads a block with length = 1;
+to read the SFF-8024 identifier value.
 
-On Fri, Feb 24, 2023 at 09:20:04AM -0800, Guenter Roeck wrote:
-> Copying regzbot.
->   
-> #regzbot ^introduced 9b01c885be36
-> #regzbot title Network interface initialization failures on xtensa, arm:cubieboard
-> #regzbot ignore-activity
-> 
-> On Thu, Feb 23, 2023 at 08:16:06PM -0800, Guenter Roeck wrote:
-> > On Thu, Feb 23, 2023 at 07:55:55PM -0800, Guenter Roeck wrote:
-> > > On Sat, Feb 11, 2023 at 08:41:10AM +0100, Oleksij Rempel wrote:
-> > > > Migrate from genphy_config_eee_advert() to genphy_c45_write_eee_adv().
-> > > > 
-> > > > It should work as before except write operation to the EEE adv registers
-> > > > will be done only if some EEE abilities was detected.
-> > > > 
-> > > > If some driver will have a regression, related driver should provide own
-> > > > .get_features callback. See micrel.c:ksz9477_get_features() as example.
-> > > > 
-> > > > Signed-off-by: Oleksij Rempel <o.rempel@pengutronix.de>
-> > > > Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-> > > 
-> > > This patch causes network interface failures with all my xtensa qemu
-> > > emulations. Reverting it fixes the problem. Bisect log is attached
-> > > for reference.
-> > > 
-> > 
-> > Also affected are arm:cubieboard emulations, with same symptom.
-> > arm:bletchley-bmc emulations crash. In both cases, reverting this patch
-> > fixes the problem.
-> > 
-> > Guenter
+unpatched driver:
+$ ethtool -m enp65s0f0np0 offset 0x90 length 8
+Offset          Values
+------          ------
+0x0090:         00 00 00 00 00 00 00 00
+$ ethtool -m enp65s0f0np0 offset 0x90 length 12
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c 00 00 00 00
+$
+
+$ ethtool -m enp65s0f0np0
+Offset          Values
+------          ------
+0x0000:         11 06 06 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0010:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0020:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0030:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0040:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0050:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0060:         00 00 00 00 00 00 00 00 00 00 00 00 00 01 08 00
+0x0070:         00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+patched driver:
+$ ethtool -m enp65s0f0np0 offset 0x90 length 8
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c
+$ ethtool -m enp65s0f0np0 offset 0x90 length 12
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c 61 6e 6f 78
+$ ethtool -m enp65s0f0np0
+    Identifier                                : 0x11 (QSFP28)
+    Extended identifier                       : 0x00
+    Extended identifier description           : 1.5W max. Power consumption
+    Extended identifier description           : No CDR in TX, No CDR in RX
+    Extended identifier description           : High Power Class (> 3.5 W) not enabled
+    Connector                                 : 0x23 (No separable connector)
+    Transceiver codes                         : 0x88 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+    Transceiver type                          : 40G Ethernet: 40G Base-CR4
+    Transceiver type                          : 25G Ethernet: 25G Base-CR CA-N
+    Encoding                                  : 0x05 (64B/66B)
+    BR, Nominal                               : 25500Mbps
+    Rate identifier                           : 0x00
+    Length (SMF,km)                           : 0km
+    Length (OM3 50um)                         : 0m
+    Length (OM2 50um)                         : 0m
+    Length (OM1 62.5um)                       : 0m
+    Length (Copper or Active cable)           : 1m
+    Transmitter technology                    : 0xa0 (Copper cable unequalized)
+    Attenuation at 2.5GHz                     : 4db
+    Attenuation at 5.0GHz                     : 5db
+    Attenuation at 7.0GHz                     : 7db
+    Attenuation at 12.9GHz                    : 10db
+    ........
+    ....
+
+Fixes: e9c9692c8a81 ("ice: Reimplement module reads used by ethtool")
+Signed-off-by: Petr Oros <poros@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index b360bd8f15998b..33b2bee5cfb40f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -4356,6 +4356,8 @@ ice_get_module_eeprom(struct net_device *netdev,
+ 			/* Make sure we have enough room for the new block */
+ 			if ((i + SFF_READ_BLOCK_SIZE) < ee->len)
+ 				memcpy(data + i, value, SFF_READ_BLOCK_SIZE);
++			else if (ee->len - i > 0)
++				memcpy(data + i, value, ee->len - i);
+ 		}
+ 	}
+ 	return 0;
+-- 
+2.39.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
