@@ -1,88 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 052CC6A52AF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 06:43:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B40D6A52B3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 06:46:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9E03D610BA;
-	Tue, 28 Feb 2023 05:43:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9E03D610BA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7A764610DC;
+	Tue, 28 Feb 2023 05:46:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7A764610DC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677562995;
-	bh=HSkzbcvtrSOp335FB0GyPIYC9+og12S3Ct6to2Q5ptw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9Rb/pTg9fLNTcNXk2ggrwguV4LaCHg2GDmCIEx2J3ot0oa/+wpVMFLQeaumoJXZve
-	 xM6K9sioU9Em31XPmsXYT6lMuIvLhzIU4NOnDugDOslSbEkI6N7QHxop4fJtOahaWY
-	 6hKkUAXol/U2/3qdY6v7vgTRS0ewAWHzz/Aechv0cq8j4HJlUitfqtYm9tG1dBiqT4
-	 4jq7dKPZdOyF0tvmbqCO8962BF4V9QQtgRP2htySSknedQJUCiL1+hKfPJtEv+atk1
-	 sZAwkFOrWDRvJbR45zrNaR+nEt+Ywvj7laNXMeJKxw6vOQfcv97k0ikrC2ejCFOkdX
-	 mL8j/LtcrEfaQ==
+	s=default; t=1677563174;
+	bh=Przq3zgSpVAW582At05qG1PQbMVgZTHoAzg8Wjqi65I=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=F0G0YKcgHe1DzPnwIJXc7KjkLiiDeSdc2c4HAazs2HAvr6pciTInq3snj3z5Yhz6Z
+	 d2eXZKcjqLj7AlRiZAkmpVJ9ziBZnQVARwl9ZwvKWmD5zas1wOtu9sWriVYvDvTxhC
+	 Nx/3lkp+84ZsWEVfVqvbfYBFo8UavY/se0cf2bBkQPL4u1/W18zHpfUKldhUo3vw1d
+	 YQOOx3iAlWF5U4KZlcOzJ0u9nU57s1xVlnzL9feo1cg8uYTSh+g4+2N9f1RA3wtJ3R
+	 XF2wRZWqcBmlHqNyDorRTEiqphghv4dBtWXymFaL455MIBbVQKCNkSlOGTS0pndenE
+	 NK+f6B591wxRQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bM-bwXqZ7FZd; Tue, 28 Feb 2023 05:43:14 +0000 (UTC)
+	with ESMTP id yfuF1yMZX_Qs; Tue, 28 Feb 2023 05:46:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 941E2610BE;
-	Tue, 28 Feb 2023 05:43:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 941E2610BE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 620BB610BE;
+	Tue, 28 Feb 2023 05:46:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 620BB610BE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E67F31BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:43:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AD68F1BF36E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:46:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BEDC4610BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:43:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEDC4610BA
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8EB48610C2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:46:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EB48610C2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 731b4qG69bPX for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Feb 2023 05:43:09 +0000 (UTC)
+ with ESMTP id Cizf5K2AHMaP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Feb 2023 05:46:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E6150610B2
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E6150610B2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:43:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="420315924"
-X-IronPort-AV: E=Sophos;i="5.98,221,1673942400"; d="scan'208";a="420315924"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2023 21:43:07 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="651496888"
-X-IronPort-AV: E=Sophos;i="5.98,221,1673942400"; d="scan'208";a="651496888"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2023 21:43:05 -0800
-Date: Tue, 28 Feb 2023 06:42:55 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <Y/2UX7qZoDaQgmqZ@localhost.localdomain>
-References: <20230227221500.3692237-1-jacob.e.keller@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 71384610BA
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 71384610BA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:46:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="313729835"
+X-IronPort-AV: E=Sophos;i="5.98,221,1673942400"; d="scan'208";a="313729835"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2023 21:46:06 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="676183301"
+X-IronPort-AV: E=Sophos;i="5.98,221,1673942400"; d="scan'208";a="676183301"
+Received: from keverson-mobl.amr.corp.intel.com (HELO
+ vcostago-mobl3.intel.com) ([10.209.84.181])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2023 21:46:06 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 27 Feb 2023 21:45:31 -0800
+Message-Id: <20230228054534.1093483-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230227221500.3692237-1-jacob.e.keller@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677562988; x=1709098988;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=mdCz6fFW6V7jsmqjEo0l66cJPtFfBFNyH9prQAVE+ys=;
- b=K7pYerGfYXqULW+89fcJMVH5JFqhbeuR0cZUSshvFpdFiTsTr5QmnJji
- gVqpWaIoWc6t09aLaFAhz7wJZV7M+CnibWN/9LMoJDELYw11ICf5DURpO
- ZEPIyNot0AJGOFF8GtZAAupOV4dwfZ5E1WFOyA33CYvjPPFBHLe5ILgku
- gDCFpdmCeAulpqoftUItx26r+enuKqWeCE/INJg2nae2Gk9MFVapaFOYI
- M269RuvTSB/CdhXKc2K8ay4YEDWA9LN5WsPGgXtg2h0UpfBbGARl5sOmK
- w6UetNpffR+OxBts2/IoqkHV6F5gUCHmC8qTq6qC8OZASG2XgxZ5QvOj2
+ t=1677563167; x=1709099167;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=m1/JZt6Vpvs6uV/6Zroed9MZ5SRVonHAhFD29ubMpFc=;
+ b=Yn4TEOroIzZtkxD16C6EPE3I4TFJdm+RUWPBagdj+rfJjGExk9bbt35Y
+ +FMhvywUxUpnUoqsF5JqY2r/wSvUrAmxxHQVE3unCruENsMW61cuh1+bU
+ R3sC7aCmtOXORK2GYvR6e17nwBu6bl9qtGMWlKLLctoxKrvvEc5ZTWgl6
+ QivXtzKWWRY/SttMFtd1UQfF/Wu8V7y0m2pzZF384wwtvikVVS5biPu5s
+ 1cNizwmnT66VIRpJ3VNhvphbQgof/MMCdVF1AgGUZynjyFA6bqTvBqqq0
+ AvrL/LADvWjQ2KHa8R/ELB54r0hfXPApVUJO8UAOZMA1j+lNAvYr36LuW
  Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=K7pYerGf
-Subject: Re: [Intel-wired-lan] [net-next] ice: remove comment about not
- supporting driver reinit
+ header.a=rsa-sha256 header.s=Intel header.b=Yn4TEOro
+Subject: [Intel-wired-lan] [PATCH next-queue v1 0/3] igc: Add support for
+ multiple TX tstamp requests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,45 +93,110 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Anthony Nguyen <anthony.l.nguyen@intel.com>
+Cc: vladimir.oltean@nxp.com, kurt@linutronix.de, anthony.l.nguyen@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 27, 2023 at 02:15:00PM -0800, Jacob Keller wrote:
-> Since commit 31c8db2c4fa7 ("ice: implement devlink reinit action"), the ice
-> driver does support driver re-initialization via devlink reload. Remove the
-> stale comment indicating that the driver lacks this support from the
-> ice_devlink_ops structure.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_devlink.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> index 05f216af8c81..bc44cc220818 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> @@ -1254,7 +1254,6 @@ static const struct devlink_ops ice_devlink_ops = {
->  	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
->  	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT) |
->  			  BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
-> -	/* The ice driver currently does not support driver reinit */
->  	.reload_down = ice_devlink_reload_down,
->  	.reload_up = ice_devlink_reload_up,
->  	.port_split = ice_devlink_port_split,
-> 
-> base-commit: f75ed9add58c1bca6a615609a0f7f148c257e3c7
-> -- 
-Thanks for fixing it.
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Hi,
 
-> 2.39.1.405.gd4c25cc71f83
-> 
+Intel I225 and I226 have 4 sets of registers used to store the result
+of transmission timestamp requests, until now only one those sets was
+used.
+
+Add support for using those extra registers, so the driver is able to
+handle multiple applications doing requests at the same time. This
+will become more useful when support for PTP multi-domain is more
+common.
+
+The series is divided into three parts:
+
+Patch 1 - The idea is to use spinlocks to handle concurrent access to
+      the resources, the original version of the patch was proposed
+      here:
+      
+      https://lore.kernel.org/all/20200728233754.65747-5-andre.guedes@intel.com/
+      
+      It has received some modifications to make it easier to
+      integrate with later patches, and some fixes for issues found
+      with lockdep.
+
+Patch 2 - Use the 4 registers sets, the idea is simple, we have a pool
+      of registers, and we use the first one from the pool that's
+      free. Each element of the pool is pre-allocated with the
+      register address from each timestamp register set.
+
+Patch 3 - More of an optimization. Use the ptp_aux_work kthread to do
+      the work, and also try to do the work "inline" if the timestamp
+      is ready already. Suggested by Vladimir Oltean and Kurt
+      Kanzenbach.
+
+
+Evaluation
+----------
+
+To do the evaluation I am using a simple application that sends
+packets (and waits for the timestamp to be received before sending the
+next packet) and takes two measurements:
+  1. from the HW timestamp value and the time the application
+  retrieves the timestamps (called "HW to Timestamp";
+  2. from just before the sendto() being called in the application to
+  the time the application retrieves the timestamp (called "Send to
+  Timestamp"). I think this measurement is useful to make sure that
+  the total time to send a packet and retrieve its timestamp hasn't
+  degraded.
+
+(all tests were done for 1M packets, and times are in nanoseconds)
+
+Before:
+
+HW to Timestamp
+	min: 9130
+	max: 143183
+	percentile 99: 10379
+	percentile 99.99: 11510
+Send to Timestamp
+	min: 18431
+	max: 196798
+	percentile 99: 19937
+	percentile 99.99: 26066
+
+After:
+
+HW to Timestamp
+	min: 7933
+	max: 31934
+	percentile 99: 8690
+	percentile 99.99: 10598
+Send to Timestamp
+	min: 17291
+	max: 46327
+	percentile 99: 18268
+	percentile 99.99: 21575
+
+The minimum times are not that different, but we can see a big
+improvement in the 'maximum' time.
+
+
+Andre Guedes (1):
+  igc: Fix race condition in PTP tx code
+
+Vinicius Costa Gomes (2):
+  igc: Add support for multiple in-flight TX timestamps
+  igc: Use ptp->aux_worker to retrieve TX timestamps
+
+ drivers/net/ethernet/intel/igc/igc.h         |  25 ++-
+ drivers/net/ethernet/intel/igc/igc_base.h    |   3 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |   7 +
+ drivers/net/ethernet/intel/igc/igc_main.c    |  58 ++++-
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 225 +++++++++++++------
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  12 +
+ 6 files changed, 240 insertions(+), 90 deletions(-)
+
+-- 
+2.39.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
