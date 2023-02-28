@@ -1,86 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3C9E6A4DCC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Feb 2023 23:15:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E354D6A5283
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 06:02:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 35FBD81F7E;
-	Mon, 27 Feb 2023 22:15:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 35FBD81F7E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 13BDE60E46;
+	Tue, 28 Feb 2023 05:02:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13BDE60E46
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677536116;
-	bh=O92ctvC85TkMQeQn1xvnpkN+9FXkM6FTEqjtHtUZr8o=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=WCpxq7civ+dF6aTxDhlQ/1OABLP/G/i2jTavFEqROTAOErFaiLWT3jzvMqUGNarKr
-	 5wy0kP81pTJZdAws0tun4feKzgcu/eHSKVHrfXKI8rDgURhM3FnhrbtsAFQWwZMF+q
-	 dSphekolPvfnwJVixKnA0QrCAs/cQed1jhe19JT7sW+AziKOgY6UNyIneA+ZqIc1I2
-	 UKP2CI/fA6jeWEu41dnKyIIqXGXuvFnX5NNyW6Vh1ULNy3TEhrLNxWArCHyb5acJaz
-	 QAYHNwDCG8AfWXKr2Xyfz0NEnnITCx0zsHnbOIfWWUtdZTywHQ2xagyq0CCR94B6EB
-	 Zw2WHW6Wg6vSg==
+	s=default; t=1677560565;
+	bh=rfLssa0cSmU/d+ACWuifS210k3wp3KUZHNww2MmOalI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Sj+x3c+lsCV5gtDQpFJ8zSY6E+mCG6ogV7PIVZpUvN4RUJQbO9K/RQ/Ybrns8tN0S
+	 u4kLJbUY5tbR0I5rS9qQI44UcDYnrnNbSk99bZvuZa1GYHN0/yjRx42Dh5nr6R3GcS
+	 SSSeumc8T5q9zHUocxJ1057mzVcRgo6sAf8g++p58vCNkHi4Q0S+/bRL4whN8iVaAN
+	 D8NyhIeRUaddsJWKbem2WmnpLr9i7O1hxE38vGP2kS7WxK/2Prxor747SH1HOyf5YB
+	 qIt9r8CVV8/Qw3qlFqHBt/T0SRgiWKNjUqoh2cu9BzedO0WbsB7UDRCodhS993bjGk
+	 Osp0gr++w1gdA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iOvQbky2d2bB; Mon, 27 Feb 2023 22:15:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kuquarjLfCAf; Tue, 28 Feb 2023 05:02:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3968C81F71;
-	Mon, 27 Feb 2023 22:15:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3968C81F71
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1714760ADF;
+	Tue, 28 Feb 2023 05:02:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1714760ADF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B7F6F1BF28C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 22:15:09 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EF761BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:02:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 91CB34055D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 22:15:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91CB34055D
+ by smtp4.osuosl.org (Postfix) with ESMTP id 83C3B417C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:02:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 83C3B417C1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id em-Td5rZLfW9 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Feb 2023 22:15:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id o7zVU11VhzzX for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Feb 2023 05:02:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 00B534014E
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 00B534014E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Feb 2023 22:15:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="331456381"
-X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="331456381"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2023 14:15:08 -0800
-X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="762908060"
-X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="762908060"
-Received: from jekeller-desk.amr.corp.intel.com (HELO
- jekeller-desk.jekeller.internal) ([10.166.241.1])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2023 14:15:07 -0800
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Anthony Nguyen <anthony.l.nguyen@intel.com>
-Date: Mon, 27 Feb 2023 14:15:00 -0800
-Message-Id: <20230227221500.3692237-1-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.39.1.405.gd4c25cc71f83
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D996417C0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8D996417C0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 05:02:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="322298453"
+X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="322298453"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2023 21:02:36 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="783682102"
+X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="783682102"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.1.137])
+ ([10.13.1.137])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2023 21:02:35 -0800
+Message-ID: <a0ee07e5-986a-a88a-d834-45d2b13f47e5@linux.intel.com>
+Date: Tue, 28 Feb 2023 07:02:23 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Content-Language: en-US
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20230223070317.3258883-1-sasha.neftin@intel.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20230223070317.3258883-1-sasha.neftin@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677536109; x=1709072109;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=twr3YGiUZm3V0e8BUX34eM2Eck86FWnQ6t+6VGP6BK4=;
- b=VSdpQxPi3jYx3HvJnp+DkY/hjTIzjfZe+zYzKz107rYkkax2X/ZW+c8Q
- nSrbJrBmIL5yWa2FWRO3w7g6pSTLqMpRi3Hh0ojiqnRy9XMFMo4oQILpv
- APlzhDktsOYmrxoPx+NuLPXiJk12GvD2aXKk/LCBSEGo/Z2kwtrZqYj8i
- c7HVXIHohuLMxSLlR443SX/d31OD3SmAZmJKKfDqgNcH2UFQeyyOiFHur
- Hh2792j+5I2XDrRPrUnsfAgDpsPCEbeKP1LZ2QwqRQFsZvq7OWqiWYoIP
- kKg8iRy/lT2NZDD7vScQ5RWVEvtB3N5jwkzN9BLGAuY6FYcvh26EAot6x
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1677560557; x=1709096557;
+ h=message-id:date:mime-version:subject:to:references:from:
+ in-reply-to:content-transfer-encoding;
+ bh=KW8cKHmoJBt0PFYky1kDTzrhlNnu9G9+FpM7XqiDyqU=;
+ b=BOCFvCthvYy5MsotchTIUrZGrZI382ENGrUnsPG6aGGhIic/nVZcDd+O
+ s1vPuHL+wx9robmtooD8UtA5EVMPp4tXn8o5UwJwh6of2oeTiS1sQjVAz
+ 6LIvWtX8/mGhG9o5iiGXIAXErHza/K6b+lYGRUtKN9hLI2NN+9inNHgUS
+ chThFjDmFqbt3ORXFnWzduGuPG5YrNk2aZ0q3dLhavg/KIxjGz7VZj8Vw
+ boxpNsJMBaW1q0gnwqi7pr1zeESVgKXyLyOOccnnooKRJmAmShr3ewLB7
+ Y8+yQ5hnNgQXzUW3FFNsl+/bEPA/dTOkDmekvBQ2/m/5G9f1h18Ymjn1f
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VSdpQxPi
-Subject: [Intel-wired-lan] [net-next] ice: remove comment about not
- supporting driver reinit
+ header.a=rsa-sha256 header.s=Intel header.b=BOCFvCth
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove obsolete DMA
+ coalescing code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,40 +98,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since commit 31c8db2c4fa7 ("ice: implement devlink reinit action"), the ice
-driver does support driver re-initialization via devlink reload. Remove the
-stale comment indicating that the driver lacks this support from the
-ice_devlink_ops structure.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice_devlink.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 05f216af8c81..bc44cc220818 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -1254,7 +1254,6 @@ static const struct devlink_ops ice_devlink_ops = {
- 	.supported_flash_update_params = DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
- 	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT) |
- 			  BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
--	/* The ice driver currently does not support driver reinit */
- 	.reload_down = ice_devlink_reload_down,
- 	.reload_up = ice_devlink_reload_up,
- 	.port_split = ice_devlink_port_split,
-
-base-commit: f75ed9add58c1bca6a615609a0f7f148c257e3c7
--- 
-2.39.1.405.gd4c25cc71f83
-
+On 2/23/2023 09:03, Sasha Neftin wrote:
+> DMA coalescing is not applicable for i225 parts. This patch comes to tidy
+> up the driver code.
+> 
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_defines.h |  3 ---
+>   drivers/net/ethernet/intel/igc/igc_i225.c    | 19 +++++--------------
+>   drivers/net/ethernet/intel/igc/igc_regs.h    |  1 -
+>   3 files changed, 5 insertions(+), 18 deletions(-)
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
