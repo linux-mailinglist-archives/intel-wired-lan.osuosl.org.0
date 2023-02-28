@@ -1,150 +1,150 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96E2D6A5E63
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 18:45:36 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 069C96A5EA1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Feb 2023 19:16:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6450440C01;
-	Tue, 28 Feb 2023 17:45:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6450440C01
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1E52481B83;
+	Tue, 28 Feb 2023 18:16:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E52481B83
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677606334;
-	bh=Cl70LC8jPgK5jQ57kH16FXSoqAZfPNe98H1b0+usZLo=;
+	s=default; t=1677608202;
+	bh=4qfg34RFb+gDpWeGQBrQifK96ABfjDUaL/eE+rX61AY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WvvUYCI9KB8CUVLXXPTcfFcvWFyadqeXTjYq2U8qLpHMTl0gavAbFen84J+KFXuGJ
-	 niMEQbBpkanJ6Fyb383AiQCEu9F0FtYaDaT68wQew/6VAQiPNZT+/qBouSLNZzeUG5
-	 cpsml2rhp4eDGkbn1qtjCBMfdN6MXvaAhAU5xD9nsxc9tUqP/8FXf8Oan/hHo+WPHq
-	 MDST2gLlaDX35mLJL1ZYPL3oFu/L9QBEueLxu+VCNzW7sxYpOZs99DkvIjv79ZjjMk
-	 qB5Zfaed1ZppXAK20WekHNcZG6237ekTCjgz03RSk1DixpJvHHPNvpfbHnVqgbmYGV
-	 KXEpE4ki+U3Vg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QyPSV-jgMz_Y; Tue, 28 Feb 2023 17:45:33 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3107440BC1;
-	Tue, 28 Feb 2023 17:45:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3107440BC1
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3D7831D7F65
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 17:45:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 153E081FFA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 17:45:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 153E081FFA
+	b=vzzJeUcA3huyALNrYNqY14Ob0A4dyDlsWxqA2saEb9yXmdUdyFlq0JSv5+cQfiSWX
+	 77Sq3HepJFhb4Ay6IyytGJcI6XePdSB6pcnfMscNuPJjsGt7wqeOyuTPYu6Revo1Ka
+	 pFkmwHNrCbd7fRSLye93eo5QRPoONC1QyA7yaGDfiz04s6koB74kxNZnYByQMinzjC
+	 Utr3JYbv2sr7bX8UAe6XsEzc9AH18dyiBxvjVLBnuHzKu1T7v3ehfyh62sEwOs1Ek5
+	 0rxF19TR+lGWM5VWc3z2vKMNivt/ki8vPHMVpdaTEquaPxah7lTaxi98dt45XKHoV2
+	 t9EBH5HCCblqg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id no7-ZzfBqlnA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Feb 2023 17:45:27 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T8MfkH8b4onY; Tue, 28 Feb 2023 18:16:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id E123681AAB;
+	Tue, 28 Feb 2023 18:16:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E123681AAB
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 19FBA1BF420
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:16:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E4FC941908
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:16:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E4FC941908
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6sSgrTung40f for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Feb 2023 18:16:33 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 021A781FDC
-Received: from EUR05-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur05on2078.outbound.protection.outlook.com [40.107.21.78])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 021A781FDC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 17:45:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C16D409A2
+Received: from EUR05-DB8-obe.outbound.protection.outlook.com
+ (mail-db8eur05on2062.outbound.protection.outlook.com [40.107.20.62])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C16D409A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Feb 2023 18:16:33 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YL6wYdUd3Zi8GIte8FTzfyY+RPH1L+q5cjrTrqzF+TteEAUd8odhsHypxHKf7ub6Kp5XzvPvYoxgeuwUvsw267WhKHd0papjKRFqA0207DHzoJ+U1X4OgB66v3NyJN7wQ9aNNfsYbXCe5wy5GWZ2NyLrz1pdw682h8/oQK08/hKkkilzdNOcdx+vWCCGgd9xOMDUqc8kuLjEO63kYFWS63KBiz5nPSGqzfUFk1F3eoGJBns2RxJIqyKuA53pXrJJYU/B2RoZ24Ig+CQm1R+Lvx8ToQP0jbjzuMsV/ciTMb+a/NGGdOq/EaoaArs5a9yy1MsupDs08OnehCTyb6oPNA==
+ b=IxkegoTSeYiMQ7thc9AVAYQBlbCXXoKZac8NGx078CT82TDvckbzAJNuXjmUVRerpFd1zJBlFiYBBCddQ5q+nDN5iwhAhop3lXnFWY6uLh+2xNtzjsnYfwnAHZnUXoo8SvE36qItPg58tAFcdpccHF5X6xW12riWpeVM1Cw3YVsJHz+SRytaOL6gAZVB5bnyO5OiALIzFfGVurtT1yX42Zqb6s0htkXRI/i8247i2K/xUIbPsbkxZL6fQKXJ4V+mRCIHfVP4JvrWiYpJIYlOUcmZjezlBDEU2AHAJZTgSkhnAu2E7v8501b8BvKl6T6mtQDHmCDnxc9SKnCikwOLGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2C0qEQ4hDvRA4pnRXyWMfHifR4pB/qo2pP5kvwEo1Ug=;
- b=n7ilC9Go28SAT9ZYasJC2eSCtw+IZvtfvpBiKwi2R3xd3g1TDrQr4RaZjqeHHfBTXZj3SH511BIBnOAKa9llLgXvEnO3L88Q0QGseQm4oNzOxQWqQ3lLfZnKhFvJPtdkAzfj6PHFjmy0K5eqVW3yt+Myj6jyzlS+Z/D8zVPEuL605MMrOEbwAR2tAKq/QCggZkBAW7PrX6lDcWuilO6Xj2cT+MPURSdCVRMwbowIFzfHhXFt3wP1p7dxMNRmZCGB1J841s8JxibPtziWAaQol87QyBCxyXpdmzEb0QbGcSFVYBXOYMiDuN2aD2g1+KSzddFwhApCvm3MEyS71QmbNA==
+ bh=9+rFRHLXaZcM6o+J4P3q+k3PAggsIqdzAe2YAGhyHfk=;
+ b=V7E00TjYxiUX/1jETsdItENsJhtlQoN5ehUM7qS7Riv9e2r3us5t7ut4nvEfXVyQYfuxYEzXPrId2rlCK5jqNt0533kQawbUsX/XvYA/n85kzRth5VoXzVMUgNksRXKO9HQbNOe7WyxUv9pZo2U5a4PKS/2vSch1sY/MVNTDQ/dkxsGnsahCShBEezCdTbDO+fMdWZacTMH3VKtGklrkHbQej9VlTvfcgZD2IbK9i9y1xcMo+L8Tm78S0xKgDxcaRI0HU7mBgZ+aOMDTEvBWKlXRnVl5TSynLQs0ipAB8nhR1dYxdIKq6J8oIXAytv1PFdsP02G6w02+9BKpwCZB3A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
  header.d=nxp.com; arc=none
 Received: from AM0PR04MB6452.eurprd04.prod.outlook.com (2603:10a6:208:16d::21)
- by DU2PR04MB8789.eurprd04.prod.outlook.com (2603:10a6:10:2e0::11)
+ by AM7PR04MB7062.eurprd04.prod.outlook.com (2603:10a6:20b:122::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.30; Tue, 28 Feb
- 2023 17:45:23 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.17; Tue, 28 Feb
+ 2023 18:16:30 +0000
 Received: from AM0PR04MB6452.eurprd04.prod.outlook.com
  ([fe80::29a3:120c:7d42:3ca8]) by AM0PR04MB6452.eurprd04.prod.outlook.com
  ([fe80::29a3:120c:7d42:3ca8%4]) with mapi id 15.20.6134.030; Tue, 28 Feb 2023
- 17:45:23 +0000
-Date: Tue, 28 Feb 2023 19:45:20 +0200
+ 18:16:30 +0000
+Date: Tue, 28 Feb 2023 20:16:26 +0200
 From: Vladimir Oltean <vladimir.oltean@nxp.com>
 To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20230228174520.vbp6ubvn43wh7fhw@skbuf>
+Message-ID: <20230228181626.cssbsgdyhphlldbp@skbuf>
 References: <20230228054534.1093483-1-vinicius.gomes@intel.com>
  <20230228054534.1093483-1-vinicius.gomes@intel.com>
- <20230228054534.1093483-3-vinicius.gomes@intel.com>
- <20230228054534.1093483-3-vinicius.gomes@intel.com>
+ <20230228054534.1093483-4-vinicius.gomes@intel.com>
+ <20230228054534.1093483-4-vinicius.gomes@intel.com>
 Content-Disposition: inline
-In-Reply-To: <20230228054534.1093483-3-vinicius.gomes@intel.com>
- <20230228054534.1093483-3-vinicius.gomes@intel.com>
+In-Reply-To: <20230228054534.1093483-4-vinicius.gomes@intel.com>
+ <20230228054534.1093483-4-vinicius.gomes@intel.com>
 X-ClientProxiedBy: BE1P281CA0055.DEUP281.PROD.OUTLOOK.COM
  (2603:10a6:b10:23::12) To AM0PR04MB6452.eurprd04.prod.outlook.com
  (2603:10a6:208:16d::21)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM0PR04MB6452:EE_|DU2PR04MB8789:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0d308aa6-0523-4cf9-34b4-08db19b39186
+X-MS-TrafficTypeDiagnostic: AM0PR04MB6452:EE_|AM7PR04MB7062:EE_
+X-MS-Office365-Filtering-Correlation-Id: d90fbc43-fcc5-4950-a1b9-08db19b7ea42
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: p/tAhhYjlO8n4x26SlSxR1+CcjCpbBp+WOC09y3huGAcYU/wKfmQfqs8A/qM7iz17YpsHuBHboDO2Bm93RrHQByWF9YdrJmLLJ2CW9R7V/gAZS8s8RrhrMEz9sSx9aMi6d4XRB88isABQH4z4LiwK0NLGrNDxshS1yPjuXW7NxVLvq9uJDzbH8ZwIwUDvVeFdGDm1eBI+sFld3wRAwmAMvt6yfdouH6yjoXtbHOZIq/dtJj/6hpu1eJv7AP4EapBC9tR58zNby/s5TF5bJMFcMJci9DWKn/FAZnqXuXe8z06Qul5iECVIDmV6UmolmkeOL5VIX3Ik04/GBWbCOvUh7H8uAs0ZtGIt/ExeXzuz0uz7XWR306t5XlApQOZcqpKzpJvbXQ51H5f7hWgN9skcbSKTP93C6BgNIinljsnugQ4j2InrFUqRTr+Eb3fWJYuZzI6wtHsDhnOWCulw0zl8eggQIPrIqAZKLVLX1lYBL++Ys9eFi+dbxlb+JYcr+DnP0twpJMVSXakzGMCvpnQpZYsRKSuQpUaWTf2stBhW3czW9bunBjU2UbCRDJvlms7hhePSjGT3oRtPZEvKRKHmddwDz24S5dWeCLviyb4WsQfNdxpvgfOK6l1Yy4irJ2fAmNcUU3Ada1g9RBPvTz+Eg==
+X-Microsoft-Antispam-Message-Info: WS+EfpIJ9wDqNO4bu1DCXg1mzypJHxOoZhHLKgEy6Cw77C9azXExdNwcbs4rS6OR8vKwPVoDH+T41S10S4eG6jlCz035WZXHdneaJrTups74eHbu0bN8Ljc7eXGD/Bwxm6PHu4tnvm7P06br/tZ2sgSzW5GIaryGIcOh+ltGWqTEQkEJir3dbLAy/AqoDSTmGLQQ34DaU9UhE1/zSgFNQH0Z+kpN44VgEBisn0kuV+/Intqtil1pw/kChGd69UaE6oDUKl21e10KVsOYzQPatQXlI8ML96mKvtLVQk/HWCaVgPV/14evK2xusCe0ilW9YcQ0bUGw78NU5hJNDoBpeX/02K4q4kwd76vLFLMJr/7pu25J0PIeoFm4Yb61aZTEBynNrLkKxdFYajCu+ceYC5HFciomu9qpBgkOhrJgWSw7ZpNhbNY09QQ8mqSqqOKqrtahnZ4nhvCppB9HHWKtyrW1dx0ccCJHpPh2J6QVob8kwepKARFhfXO5PSW9pIaoSCNW4QDqIOshH48Z0Qf9znb0sLk1qLUbSuPD6LK/HvAQG84GtaPJfpbDRA0nn6EzSXx+nllTdXqHZiaB6Q50W3Tr4555wgHyqMxpDFFkHAjQwYbHtgtf+KUnq13HicgI
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:AM0PR04MB6452.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(7916004)(136003)(39860400002)(346002)(396003)(366004)(376002)(451199018)(86362001)(38100700002)(44832011)(2906002)(66946007)(8676002)(6916009)(66556008)(66476007)(41300700001)(8936002)(4326008)(5660300002)(33716001)(1076003)(6506007)(186003)(26005)(9686003)(6512007)(83380400001)(316002)(478600001)(6486002);
+ SFS:(13230025)(4636009)(7916004)(396003)(346002)(376002)(136003)(39860400002)(366004)(451199018)(86362001)(41300700001)(66946007)(66556008)(66476007)(5660300002)(8936002)(6916009)(4326008)(8676002)(3716004)(2906002)(44832011)(38100700002)(6666004)(6486002)(966005)(478600001)(316002)(33716001)(83380400001)(9686003)(186003)(26005)(6512007)(6506007)(1076003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5KtsclnFJ467eOaCg4PFOu12GfSdUiukfM0YbvbvbMZmB5Le57DINex4qiLS?=
- =?us-ascii?Q?2yUrdyo7Pazqr4dLQ5PP6Oxp0wYOkH9EQu0GkZD0J6qrQIrX5JncDuxpEeFs?=
- =?us-ascii?Q?g0yjGbEXwzkww4rLRRxzNKnVtVsNH8Oy+rBm+gKx6jM2AdGWiLEz6jeN2IDH?=
- =?us-ascii?Q?ufbyi9+tcOqeJogMltU5lEDdW/5PxaAytrPQyFsluoj/3HcuJwv+/LpiEZ+j?=
- =?us-ascii?Q?g18pH1fPTospVjKUVb/ZbMIGmCRdqxOaVD/cJ0jF2eMLYfxpXQf545fngcxh?=
- =?us-ascii?Q?n/xiirlRUFKYyPoV2KE+PqqPTpTTvou6o4Y+t6d8sdIwqWyPurmirgKovqTV?=
- =?us-ascii?Q?QzXp8zcwcSnVkFIhr9WRRtdGtDZCO1hM1TpO2kR9nd2EUf1WX82J0bbGemF/?=
- =?us-ascii?Q?HZ93g3kyEzM8UdG25SH2ubRb63I8f9JDWjGd+SVMl/fdeAw0OihaLZRnO+o9?=
- =?us-ascii?Q?E1p2cBWIzIFJOetAHWZ5+QeK1LRTbHRzo19l3CHQZkWPIJfdTBYheHCFnN0m?=
- =?us-ascii?Q?GC+6nKIsejwxQRjaj1X92K1rxO2Xvx7rsK3ctKwmO5A3KuOth9W6YaxLy+Ov?=
- =?us-ascii?Q?BJUwWyvNAOBzS4VHlh5aky4E+qCQXEZ07049ZmK0gDupMGDy8uYQy0qM/oSr?=
- =?us-ascii?Q?WRKqeUErOdpFfd/kVVNGDbFL7/DlYf9Z4Af67/vjRdb8Bo/a6GMDEESe2jTs?=
- =?us-ascii?Q?Qs/OleBbjkCWg8FWG8dydSpv8jhOBzerXF6VR2QBQtw5WnzlgDEn2usP0GjX?=
- =?us-ascii?Q?9paMXJcBRuk/a0iME4fFu16CPRxUx+Otx8eQFKKwDux5C887t9w9kkfZ0ey/?=
- =?us-ascii?Q?S+RL8GgXMW/xYP2wvTzeA+Fp6H+2DlR+CYz2ABRp9AqYl97DmGEPg8xi30Re?=
- =?us-ascii?Q?vQg8vaAMA/RnOUN6s+1rRWOGl12xdK6NHy331o7+csFdv88vPzHK5rFPryvZ?=
- =?us-ascii?Q?lx9K0ikAb9pLxImpKiMjVl8A/1QXTDK+jSBjNRuAOEHCDHnC9lZPHETDFcdr?=
- =?us-ascii?Q?QyEXNUx5oM1+hh58GF8z2E2Y8dB5snpiGDbOfxrQR1xfV6QH5LN3i/91MS7G?=
- =?us-ascii?Q?7uGhdljtj2aw6KWIheCZ99Xec4QQ1TVSdCbaruHtaPxyY4E7E9D67Cvthfds?=
- =?us-ascii?Q?MrUsgkmOpRSaNkMJKuGqIPp4PN2WZwz4di5udeHVFdfxnSRj82Y7loG66QYb?=
- =?us-ascii?Q?EblOYZQ9EB3Dol1Z7BYuXOJHGWV7FuRqjxwBdFKGaadOJOZCvk6ousBXLhFj?=
- =?us-ascii?Q?h3hpIgTarrkzSYvDzbMBe++2QS95t6ynVnwiNfQ/4rGZ07r8X+1SAZ+Oi8Rg?=
- =?us-ascii?Q?7htAPafMZIsmJLnvJgE6Zx6+E7qm1r8P+/Gz7Nuf0q2wp77qxTbhbvYMX2rE?=
- =?us-ascii?Q?qKy1ZEoVjrxgSoT/k8MESgQs0BKTkBF+goWs7WjDwvxJaJndtdZ35lycCJgP?=
- =?us-ascii?Q?Il/FcdZfATI8clCySEKAn9F8rRBpuRyfHM3BojlJOi4Vo1/10U7OZpmfGMvQ?=
- =?us-ascii?Q?KtO3bM8HhC1Xk3TDENmQYTwMgMNMI2MUXcTRR+9tn+Hdmg6VFr9FnyT03VhO?=
- =?us-ascii?Q?WgwUzjWhNZnDEYJoYTsneuxvDsDARBk48wgUeuQTBerQRRc9EnTd7FSbRA0s?=
- =?us-ascii?Q?5g=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?R/VKtS5MsWaYk0ojWF3BpSNHgVlBf1JUb1leVgYF5CDI6EQcXU+Gi0YIb0Ob?=
+ =?us-ascii?Q?Mf+SU8rQQuVj8eSH0WW68DBzN3wRGT7nV111TyB8DPSeb/0avHXKDRYf4iyw?=
+ =?us-ascii?Q?TiTA3eFF3XnfQx5xd+D+Zkr4zB18bJO6vx17ALpRBAptCOoG0aYn5fqCkAFj?=
+ =?us-ascii?Q?rqmcDnBwZMoMNvFPYBITuCqBEfPjgoN9Jha6eZoXgn2b5fqNr7XPsSnTRb3H?=
+ =?us-ascii?Q?HGP0IdOmWOay+AlYrdqY90vFntvut6L0K8aWAdB4rWzM5QVQ6eKXke0BfSyD?=
+ =?us-ascii?Q?XMRCLGLl1pkGYcAtySzptEVg+BRZTN7uA00wxSSuf4SOIpP2aAxvX7Ip8znM?=
+ =?us-ascii?Q?cAiNHSKkQgCNCBdy0wAqp7MyC02HVKEmY5IPbGRlfhsXJYsfsLUlMQy3ntv5?=
+ =?us-ascii?Q?L0O5hA8Wr5Q4H/q0QuWjxz2piu+pFHEHnA1l/W/pgWd8lWod8iIPgOj1ypb0?=
+ =?us-ascii?Q?ZDIG7vUD0N0QMx1Ocv1v0fnpqyryh+cT+xiXfJgQc5yaRagCbt6wWJdMP8Xi?=
+ =?us-ascii?Q?ZeU1AYmgOXAAiJuDS0jbunlLn7t61HI3P7jCuGIRUg3AUiA6dEhGcAu3oIxM?=
+ =?us-ascii?Q?hK9XUGpSLJlVxasl2CpoWeJK0WN4GwmMC1CUXt9taZjbbeb/ZxJSOJIYscrw?=
+ =?us-ascii?Q?uZFvnxlSLkge12S/Gag8euMV0XJrkBcP5xiuR5QTa2yPzuYutpZhhoGESbkw?=
+ =?us-ascii?Q?8oFuXWac9JX+UitPdDIMKRrH6Ow29Vk1/7wGtZC+4lAkkBK5+8oFy5OTU69P?=
+ =?us-ascii?Q?UctHwz2a0sGy8l9nWfWc7/lJHJpxhKz8niAK2vZV0yq1s5L/fw1JTMgVH7nT?=
+ =?us-ascii?Q?fftWLx46rcobmb8IeIfUxaHTS3zHiTeM+VfQCpIio5FK0lfZR3Fez95Y6WLe?=
+ =?us-ascii?Q?6damVZLxu3uoz93PT7pYoFnbBR5h2S/Cps4/HKhi1ykVmj3jLFQmr6i8QyAb?=
+ =?us-ascii?Q?0CdG6wyMROGQWSTNvy7W4c2js2jIrjooVfAsM22cQGQrG7zkiyy9oV3zKCz5?=
+ =?us-ascii?Q?c12tJEiRh5VxihbahjKmoCC/FqlZAM8MZXbV/hD+C984++PzfmnQ/L9JQx/n?=
+ =?us-ascii?Q?VktXVxrpmzEZ2A2nCRXBR1F+v98/tREFZofttaq5O80Mm51M2Ih0i2cEh2nM?=
+ =?us-ascii?Q?HorocnZTnwFkDZ9ijXr8mHjOVDpNA7PD5t/Nxudcn5FACEXIf1/WBCsW1BTE?=
+ =?us-ascii?Q?/zbj96Ax5z+qcxD9p9Mls3dLTl1uCEwOpMRWuZ/dbldawYdreky32OKDQc/N?=
+ =?us-ascii?Q?uhHv9llW3+ObCtUVeISFkQoLl5GYegzYZBkQRRChCzHk2kSzozIxqhUP64Cd?=
+ =?us-ascii?Q?raQRMAw+EBS6wYd6oondQ0uGFA//yTaeoQgXi5ub1YI4oj8mwfCBRfE3tBAo?=
+ =?us-ascii?Q?xLnOm3EB3efRWMphMp0prI3hjjCC6PvMt5YQiECzqYmrk18KcyWzZfwt9ITH?=
+ =?us-ascii?Q?qRdUSwcrWL9nHsCvJ0gO69w2RtJp9lNJz6Pfg1A2v8ZvfyO6/khyQO2O+afh?=
+ =?us-ascii?Q?+O6XEzKCd/TgEIt0OdIyMr17ZXskQKKmYuCpSjenwrfLnSFygC2K5VTBzcFg?=
+ =?us-ascii?Q?XK6318oxUXffGYDqUZ3wu5ybndiZDdOD8U46zyasFQHxahhOZzpCZAuOUlry?=
+ =?us-ascii?Q?oA=3D=3D?=
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0d308aa6-0523-4cf9-34b4-08db19b39186
+X-MS-Exchange-CrossTenant-Network-Message-Id: d90fbc43-fcc5-4950-a1b9-08db19b7ea42
 X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6452.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2023 17:45:23.5639 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2023 18:16:30.4564 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: aB+AW/b69Bs8ZM7rCqTmqznNdE/Z0+3q8CnbebUxMrjSmjVkATepnPWxwTHjJG2rb+l77djlLQHMCvKPUN5A5Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8789
+X-MS-Exchange-CrossTenant-UserPrincipalName: w4cEJXGb4/tovGJzFzz6d6g8+V6LbEC855v9fksLdIIjQqRviiMl5AvKQmflVlO/I/2DSDATwFtS32KJxfMfAw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB7062
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nxp.com; s=selector2; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2C0qEQ4hDvRA4pnRXyWMfHifR4pB/qo2pP5kvwEo1Ug=;
- b=afAEjFZ4ESh4eQHwwZ6bVYuZhEtDWD38rXE+LIfLwhJniviZz53RhKuWVnOO9/XwsTwoWKgKom22Sr0KORUbLjuTOzpHc8is1DOP6jKu7HTDfo3SVNUGtkpvhYZUsIAmNZhM6OSDOBCwkyoVB7fyGDmP+PKikKYSlm5Q/IYmWLA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=9+rFRHLXaZcM6o+J4P3q+k3PAggsIqdzAe2YAGhyHfk=;
+ b=A/BzKIRXv6HvOkoux+/sRBVfUaGlymgCHsHuowmc1YKZOI/u8elF2/22Sj/BIn0v4wF9yEwUqdew1kq/At2DLCag8n/pqoCdBxWPYcvQIOknODrQWH/PANDmviDBpffzNHrYSloXK5xQZBaEEGOXGQYYVGIMQv8GDLMkvGT/gFQ=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
- header.s=selector2 header.b=afAEjFZ4
+ header.s=selector2 header.b=A/BzKIRX
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nxp.com;
-Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 2/3] igc: Add support
- for multiple in-flight TX timestamps
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 3/3] igc: Use
+ ptp->aux_worker to retrieve TX timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -164,137 +164,165 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 27, 2023 at 09:45:33PM -0800, Vinicius Costa Gomes wrote:
+On Mon, Feb 27, 2023 at 09:45:34PM -0800, Vinicius Costa Gomes wrote:
+> ptp->aux_worker is a kthread and allows the user to set it's priority,
+> which is useful for workloads that time synchronization is required.
+> 
+> As an optimization, when the interrupt is handled try to retrieve the
+> timestamps "inline", if they are not, schedule the workload. This
+> should reduce the delay before the TX timestamp is available to
+> userspace.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc.h      |  2 +-
+>  drivers/net/ethernet/intel/igc/igc_main.c |  7 +++++-
+>  drivers/net/ethernet/intel/igc/igc_ptp.c  | 29 ++++++++++++++++-------
+>  3 files changed, 28 insertions(+), 10 deletions(-)
+> 
 > diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index e804a566bdd3..f0617838a16a 100644
+> index f0617838a16a..ce7754cb7e6f 100644
 > --- a/drivers/net/ethernet/intel/igc/igc.h
 > +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -35,6 +35,8 @@ void igc_ethtool_set_ops(struct net_device *);
+> @@ -237,7 +237,6 @@ struct igc_adapter {
 >  
->  #define MAX_FLEX_FILTER			32
->  
-> +#define IGC_MAX_TX_TSTAMP_REGS		4
-> +
->  enum igc_mac_filter_type {
->  	IGC_MAC_FILTER_TYPE_DST = 0,
->  	IGC_MAC_FILTER_TYPE_SRC
-> @@ -67,6 +69,15 @@ struct igc_rx_packet_stats {
->  	u64 other_packets;
->  };
->  
-> +struct igc_tx_timestamp_request {
-> +	struct sk_buff *skb;   /* reference to the packet being timestamped */
-> +	unsigned long start;   /* when the tstamp request started (jiffies) */
-> +	u32 mask;              /* _TSYNCTXCTL_TXTT_{X} bit for this request */
-> +	u32 regl;              /* which TXSTMPL_{X} register should be used */
-> +	u32 regh;              /* which TXSTMPH_{X} register should be used */
-> +	u32 flags;             /* flags that should be added to the tx_buffer */
-> +};
-> +
->  struct igc_ring_container {
->  	struct igc_ring *ring;          /* pointer to linked list of rings */
->  	unsigned int total_bytes;       /* total bytes processed this int */
-> @@ -231,9 +242,8 @@ struct igc_adapter {
+>  	struct ptp_clock *ptp_clock;
+>  	struct ptp_clock_info ptp_caps;
+> -	struct work_struct ptp_tx_work;
+>  	/* Access to ptp_tx_skb and ptp_tx_start is protected by the
 >  	 * ptp_tx_lock.
 >  	 */
->  	spinlock_t ptp_tx_lock;
-> -	struct sk_buff *ptp_tx_skb;
-> +	struct igc_tx_timestamp_request tx_tstamp[IGC_MAX_TX_TSTAMP_REGS];
->  	struct hwtstamp_config tstamp_config;
-> -	unsigned long ptp_tx_start;
-
-This comment added by patch 1/3 already became obsolete:
-
-	/* Access to ptp_tx_skb and ptp_tx_start is protected by the
-	 * ptp_tx_lock.
-	 */
-	spinlock_t ptp_tx_lock;
-
->  	unsigned int ptp_flags;
->  	/* System time value lock */
->  	spinlock_t tmreg_lock;
-> @@ -416,6 +426,10 @@ enum igc_tx_flags {
->  	/* olinfo flags */
->  	IGC_TX_FLAGS_IPV4	= 0x10,
->  	IGC_TX_FLAGS_CSUM	= 0x20,
-> +
-> +	IGC_TX_FLAGS_TSTAMP_1	= 0x100,
-> +	IGC_TX_FLAGS_TSTAMP_2	= 0x200,
-> +	IGC_TX_FLAGS_TSTAMP_3	= 0x400,
->  };
+> @@ -651,6 +650,7 @@ int igc_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
+>  int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
+>  void igc_ptp_tx_hang(struct igc_adapter *adapter);
+>  void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts);
+> +long igc_ptp_tx_work(struct ptp_clock_info *ptp);
 >  
->  enum igc_boards {
+>  #define igc_rx_pg_size(_ring) (PAGE_SIZE << igc_rx_pg_order(_ring))
+>  
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 4861ad0689ed..a7775d618867 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -5226,8 +5226,13 @@ static void igc_tsync_interrupt(struct igc_adapter *adapter)
+>  	}
+>  
+>  	if (tsicr & IGC_TSICR_TXTS) {
+> +		long delay;
+>  		/* retrieve hardware timestamp */
+> -		schedule_work(&adapter->ptp_tx_work);
+> +		delay = igc_ptp_tx_work(&adapter->ptp_caps);
+> +		if (delay >= 0) {
+> +			/* The timestamp is not ready, schedule to check later */
+> +			ptp_schedule_worker(adapter->ptp_clock, delay);
+> +		}
+>  		ack |= IGC_TSICR_TXTS;
+>  	}
+>  
 > diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-> index 9247395911c9..0cb932b52a7b 100644
+> index 0cb932b52a7b..34237464f26d 100644
 > --- a/drivers/net/ethernet/intel/igc/igc_ptp.c
 > +++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-> @@ -604,92 +604,109 @@ static int igc_ptp_set_timestamp_mode(struct igc_adapter *adapter,
->  }
->  
->  /* Requires adapter->ptp_tx_lock held by caller. */
-> -static void igc_ptp_tx_timeout(struct igc_adapter *adapter)
-> +static void igc_ptp_tx_timeout(struct igc_adapter *adapter,
-> +			       struct igc_tx_timestamp_request *tstamp)
+> @@ -713,24 +713,37 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter, u32 mask)
+>   * igc_ptp_tx_work
+>   * @work: pointer to work struct
+>   *
+> - * This work function polls the TSYNCTXCTL valid bit to determine when a
+> - * timestamp has been taken for the current stored skb.
+> + * This work function polls the TSYNCTXCTL valid bit to determine when
+> + * a timestamp has been taken for the current stored skb. Return a
+> + * delay in case there's no timestamp ready.
+>   */
+> -static void igc_ptp_tx_work(struct work_struct *work)
+> +long igc_ptp_tx_work(struct ptp_clock_info *ptp)
 >  {
+> -	struct igc_adapter *adapter = container_of(work, struct igc_adapter,
+> -						   ptp_tx_work);
+> +	struct igc_adapter *adapter = container_of(ptp, struct igc_adapter,
+> +						   ptp_caps);
 >  	struct igc_hw *hw = &adapter->hw;
->  
-> -	dev_kfree_skb_any(adapter->ptp_tx_skb);
-> -	adapter->ptp_tx_skb = NULL;
-> -	adapter->ptp_tx_start = 0;
-> +	dev_kfree_skb_any(tstamp->skb);
-> +	tstamp->skb = NULL;
-> +	tstamp->start = 0;
->  	adapter->tx_hwtstamp_timeouts++;
-> -	/* Clear the tx valid bit in TSYNCTXCTL register to enable interrupt. */
-> -	rd32(IGC_TXSTMPH);
-> +
-> +	/* Reading the high register of one of the timestamp registers
-> +	 * clears the equivalent bit in the TSYNCTXCTL register.
-> +	 */
-> +	rd32(tstamp->regh);
-> +
->  	netdev_warn(adapter->netdev, "Tx timestamp timeout\n");
->  }
->  
->  void igc_ptp_tx_hang(struct igc_adapter *adapter)
->  {
-> +	struct igc_tx_timestamp_request *tstamp;
 >  	unsigned long flags;
-> +	int i;
+>  	u32 tsynctxctl;
+> +	long delay = -1;
+
+idk what the coding style is in the igc driver, but this line is longer
+than the previous one, and with network drivers, one usually prefers the
+"reverse Christmas tree".
+
 >  
 >  	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
-
-Since this is called unconditionally and periodically from igc_watchdog_task(),
-it will periodically temporarily disable IRQs and therefore also
-softirqs, to not race with the data path, right?
-
-Does it make sense to only do this if adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON?
-There shouldn't be TX timestamps in flight if that isn't set, and an
-_irqsave could be avoided.
-
-I suppose this is more of a comment on patch 1/3 really.
-
 >  
-> -	if (!adapter->ptp_tx_skb)
-> -		goto unlock;
-> +	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
-> +		tstamp = &adapter->tx_tstamp[i];
->  
-> -	if (time_is_after_jiffies(adapter->ptp_tx_start + IGC_PTP_TX_TIMEOUT))
-> -		goto unlock;
-> +		if (!tstamp->skb)
-> +			continue;
->  
-> -	igc_ptp_tx_timeout(adapter);
-> +		if (time_is_after_jiffies(tstamp->start + IGC_PTP_TX_TIMEOUT))
-> +			continue;
-> +
-> +		igc_ptp_tx_timeout(adapter, tstamp);
+>  	tsynctxctl = rd32(IGC_TSYNCTXCTL);
+> +	tsynctxctl &= IGC_TSYNCTXCTL_TXTT_ANY;
+> +	if (!tsynctxctl) {
+> +		/* We got the interrupt but the timestamp is not ready
+> +		 * still, schedule to check later.
+> +		 */
+
+this comment raises many hairs reading it, it sure makes it sound like the
+hardware is buggy for raising an interrupt before the data is available.
+
+I had this same question a while ago, could you borrow some of the wording
+you used back then to explain in this comment, here, how it is possible to
+get IGC_TSICR_TXTS ("Transmit Timestamp") set in the Time Sync Interrupt
+Causes register, and for there not to be any TX timestamps available?
+https://lore.kernel.org/netdev/20220815222639.346wachaaq5zjwue@skbuf/
+
+> +		delay = usecs_to_jiffies(1);
+
+it will surely take more than 1 us anyway to schedule, and so, setting a
+timer for the kthread seems slightly pointless? The ptp_schedule_worker()/
+__kthread_queue_delayed_work() API accepts 0 for delay, meaning "immediately".
+
+> +		goto unlock;
 > +	}
 >  
-> -unlock:
+> -	igc_ptp_tx_hwtstamp(adapter, tsynctxctl & IGC_TSYNCTXCTL_TXTT_ANY);
+> +	igc_ptp_tx_hwtstamp(adapter, tsynctxctl);
+>  
+> +unlock:
 >  	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
+> +
+> +	return delay;
+
+On the same note: from the kthread you can also busy poll for a while;
+for TX timestamps (which should be delivered rather quickly) I guess
+this is more productive than rescheduling again (with such a short
+interval), since it makes the slot available quicker for TX. Though,
+I have to say, not quite clear how rescheduling ends up being needed in
+the first place....
+
 >  }
+>  
+>  /**
+> @@ -993,6 +1006,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
+>  		adapter->ptp_caps.n_per_out = IGC_N_PEROUT;
+>  		adapter->ptp_caps.n_pins = IGC_N_SDP;
+>  		adapter->ptp_caps.verify = igc_ptp_verify_pin;
+> +		adapter->ptp_caps.do_aux_work = igc_ptp_tx_work;
+>  
+>  		if (!igc_is_crosststamp_supported(adapter))
+>  			break;
+> @@ -1006,7 +1020,6 @@ void igc_ptp_init(struct igc_adapter *adapter)
+>  
+>  	spin_lock_init(&adapter->tmreg_lock);
+>  	spin_lock_init(&adapter->ptp_tx_lock);
+> -	INIT_WORK(&adapter->ptp_tx_work, igc_ptp_tx_work);
+>  
+>  	adapter->tstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
+>  	adapter->tstamp_config.tx_type = HWTSTAMP_TX_OFF;
+> @@ -1081,7 +1094,7 @@ void igc_ptp_suspend(struct igc_adapter *adapter)
+>  	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
+>  		return;
+>  
+> -	cancel_work_sync(&adapter->ptp_tx_work);
+> +	ptp_cancel_worker_sync(adapter->ptp_clock);
+>  
+>  	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
+>  
+> -- 
+> 2.39.2
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
