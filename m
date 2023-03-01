@@ -1,189 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC2266A6F16
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Mar 2023 16:14:39 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A0226A71E1
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Mar 2023 18:15:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5B929813A6;
-	Wed,  1 Mar 2023 15:14:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B929813A6
+	by smtp3.osuosl.org (Postfix) with ESMTP id BC3C560F85;
+	Wed,  1 Mar 2023 17:15:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC3C560F85
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677683673;
-	bh=fgnrZAkx3dOmheZclvQRmeEueGmCstjEdSbP4D9Ujng=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1677690911;
+	bh=A5MPbjSH6jmbpT6lvszJG6lYLSw2a25AZtxoQHf+bS0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mov/M0QtcXELPgL9QpTo4elMui2rKCtc2ETmb/UcNWEBhM1kY6CfWYpJnvyf4+dYf
-	 HQI01lGW9HzXKvrwTL79a3RmbweKwSok+WN1qnF5hhvdwUTWRerjpXFdB0zmAHfwGy
-	 TzTs8pagDYPEKwT5Uf2gDn6oU2UKBp9QGeTZ7gXdFm0XPoR4LtlVNeYvA6tkqBT40C
-	 b01x9tt7K09jX5HM+QOi8OvoJy5cMnxPPE2F7jBbnZF8eS34prUhfzNikqA0CBE0JP
-	 q4kntQXRQPDfq3nyg++WzT3dq5TuWV32dRst+uwlGA1shMonsphvuNqz6jSSepBElB
-	 DKLYWgPrMChJw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4W_zaBWkdajB; Wed,  1 Mar 2023 15:14:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3858481F26;
-	Wed,  1 Mar 2023 15:14:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3858481F26
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 829C71BF378
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 15:14:27 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 583ED61016
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 15:14:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 583ED61016
+	b=XSAylHnaLff9tjZo77DhrNAxVol/V4+kBMrZDgDRhRfMnOJuDO2RC/aOInoJWpyQE
+	 4CmQ+l3uHrlQL+Zk6vCabqdOEoKgkx/FVaKAwuau0U3ShO7qvcSdgwjKVVNtQFRErk
+	 lXsubxdeieYOctKxY6A8pJ5t4It3nUvoYJLYgsbhOLTWSEKV+IBMsvzh+OUqAqzm1n
+	 tUFnlbTPBQNXJZ+PbpEU8d+73/plAR4EZ5kvPc9j4yVIWPATdTAZKo0i3SBYQ0KmOd
+	 t+u8eASBJgjSjFp82SNb6ZdET3xglyMEB72QR8juv2VJ4xTa+Rj+1s76tSNeVT3ncY
+	 WsGAEg/SvGJHA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IGPW63aztxAU for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Mar 2023 15:14:26 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sTCdfeqxWIiK; Wed,  1 Mar 2023 17:15:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 81BD760BFA;
+	Wed,  1 Mar 2023 17:15:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 81BD760BFA
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1504C1BF593
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 17:15:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id DD2CF403A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 17:15:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DD2CF403A9
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yG0QvHUw5ddo for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Mar 2023 17:15:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D962260FFB
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D962260FFB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 15:14:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10636"; a="314853098"
-X-IronPort-AV: E=Sophos;i="5.98,225,1673942400"; d="scan'208";a="314853098"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2023 07:14:25 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10636"; a="738673343"
-X-IronPort-AV: E=Sophos;i="5.98,225,1673942400"; d="scan'208";a="738673343"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga008.fm.intel.com with ESMTP; 01 Mar 2023 07:14:25 -0800
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 1 Mar 2023 07:14:24 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 1 Mar 2023 07:14:24 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Wed, 1 Mar 2023 07:14:24 -0800
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Wed, 1 Mar 2023 07:14:23 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NdczSKyQVcgWHaNuIaRyEMwriQTUnf86IlC1VVLTxBlv29PtsKEg46/+VaKQIkr9aPSOLTyY9RkK2759Fl4xhpihPyUj5zCwqHZlQUAAsiqsXMODld2FpRQuFwWX2tTHqVKKx3tzl9gmMqC5c+iTX2hK5WjG3xbYwNahtgv8V6+QcK3xhKC6ILXv3Obb993LR6gtSORFn2NtvFzFhZ83nPjPBBs8VzvX1HegwLM1aaOu8z73jkJUbO9nnUrnz/ggjxIRp/DOn+4e1cq03kQAQFUcanFfYp5Axljtc6D+CRmb1sWwMp0j6rXWY1m4nLaAVn6qKyoPz5193kOM4+qJGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zu0k9i8RHldmOdFuKqhT89LcS7MGhJyJI6XYY0I95tk=;
- b=lYh/v1LuCEIHoRe4IgaDBV7WEOgUc860B0u9PJecz68gvR9Nl/kJ9ZNmH3RXeayJxUpsdOsGROAChoqlXzP3rm50D/2uHqqa5kPA5Y5X0fA+439znD0o6CVP2VVhCSI/p17nQ9E8c3zm/ETGfM9qSmau8lqn3uxhFhY2v5itT1/LANEWvhop39BeYn2kWP/vYrroAe+OVSplBDDIZOQpIxUPERJjmHrlLdACX5x1uXGW1mzfOuzYu+LIogxBTvD1s+lwhliSQQauqu93CmVZPd7Se94Nx9ucHKRWt+mypDRoW9tuDkGhQe8XXRAY7S0/VwaPJyzW2dd+LvsK4yDBKA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
- by IA0PR11MB7838.namprd11.prod.outlook.com (2603:10b6:208:402::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.18; Wed, 1 Mar
- 2023 15:14:20 +0000
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::3ff6:ca60:f9fe:6934]) by DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::3ff6:ca60:f9fe:6934%4]) with mapi id 15.20.6156.018; Wed, 1 Mar 2023
- 15:14:20 +0000
-Message-ID: <32fdf39c-9772-61a1-e0d7-40a564f640a2@intel.com>
-Date: Wed, 1 Mar 2023 16:13:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-To: Petr Oros <poros@redhat.com>
-References: <20230228204139.2264495-1-poros@redhat.com>
-Content-Language: en-US
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFDEB40022
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DFDEB40022
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Mar 2023 17:15:01 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-191-MjA9gnwbOVKqV2RCfDvRmQ-1; Wed, 01 Mar 2023 12:14:55 -0500
+X-MC-Unique: MjA9gnwbOVKqV2RCfDvRmQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 95C30101A55E;
+ Wed,  1 Mar 2023 17:14:54 +0000 (UTC)
+Received: from swamp.redhat.com (unknown [10.39.192.177])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EEC112026D4B;
+ Wed,  1 Mar 2023 17:14:52 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed,  1 Mar 2023 18:14:52 +0100
+Message-Id: <20230301171452.2514734-1-poros@redhat.com>
 In-Reply-To: <20230228204139.2264495-1-poros@redhat.com>
-X-ClientProxiedBy: FR3P281CA0051.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:4a::9) To DM6PR11MB3625.namprd11.prod.outlook.com
- (2603:10b6:5:13a::21)
+References: <20230228204139.2264495-1-poros@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|IA0PR11MB7838:EE_
-X-MS-Office365-Filtering-Correlation-Id: 54523893-1ae6-4775-e22a-08db1a67a1e4
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: d3b6Uvp6J94y2AgkA9MDKZdxAB7XUrpu7/FasQW37drHqcgGd7Mms8REZzRlRJCzN/NIL5vTd/wbOFCrFusiLgbAUVXXCFd1a5EX4I3DelBTEd7OE/sAmaCtX0/GhlUJoLa47iZqUZlmddhqcUPwKGEDDAMeyd4D+cIyrORf5vlyiLvLYDR2R0GmP/G75t+F8lXa/oSltXwmDYswwIGeTJL30ikt5wHsCGy8QWvjnGdpTLdFsS0AKxv8LA2G+ILN18dXtZ6XiKa3HvvZfsDQsGShqZc1EUla5pCUQ7HJCNDbSjGl2H/34MwJifJnM2IBnH7Hjzu7sTSGGleNh9DJlklD2FauFKeGrmT4NH/A3Va3dDPp/5zk6Ap21eK30DVVbgGPCXc2FJxT2kVAwAJuwrsJ/eXsPjcQjwvEJq1lHOqN+AuqTcQVu1nv8FAa/iGe/7YPltCjOJXvQeMGzI036HfV6asyOIns/k11WioQvcZggLQybmuf8UjSiQ8EzGZwRciskXCf97FOET7IETBJ9CYkbp2XfnfAPbFVmf9RtOKnsbHLQw2P6HOq5c1nRHEmiwufuxnmLUS6VZPNcPZbmRUrjauLk2uOWi29+a6BhO8Y6eLThnF7qveIxuvVi6kw+aRBCEUbbbbUcnmtULKiJlQb7/bUReULt8A1NFi9E8u7+11dJmfdMMc9xUrQj1wKpAJPYR8SrrpCk+SaaqslvlMdiLGdpMiwX87CterYRkA=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(376002)(346002)(396003)(366004)(39860400002)(451199018)(31686004)(83380400001)(478600001)(316002)(36756003)(4326008)(82960400001)(8676002)(6916009)(38100700002)(66476007)(6512007)(6506007)(2616005)(186003)(26005)(6666004)(6486002)(5660300002)(66556008)(66946007)(31696002)(8936002)(86362001)(2906002)(41300700001)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TUhoU0NFdmNUaUh5cy9TTHMxZHVwQStkTFV1TTFaVmFpT1VYV1JsMEtheGJm?=
- =?utf-8?B?dzBUQ0p5dmhWa0JTWjZQd2oxYWFpNk9RaFNQaURrYUowQmVCNXNXbG9SbjEy?=
- =?utf-8?B?OElmWWNPZ0JRMTN1ekZva2M5a2tIbTVDM01VdmJ0Tk5JTDZFQ2UzZFZkTmlV?=
- =?utf-8?B?VXdCRVBCVVdVUGZzSjF2VEhwMmwyQ2NnOU5NSFpVQU9IRzBWMHRQSExWcnZ0?=
- =?utf-8?B?algxTzBaNWNDU2tHdHAyK0NmZlkxNGhxVWhSWlM1YU5kUExmbzYrQmtUU25w?=
- =?utf-8?B?Rlk4L0NNMGM2QXB4VTNuMTJyMXo0SmJkcjYrTHNFWEJrZW0wWFdLamJISDdS?=
- =?utf-8?B?V01nSzFIS2swZXkzdzE0U2gzTTYvT1JuYUJXSHJYMUpWSzFHNmN0V2lzb0Yr?=
- =?utf-8?B?dGFtdnlGUjh6ZWhCc05TZDZ2dGRsbjV3M2Z0OXlzLzRIWGJvU3lrU2J5WWEy?=
- =?utf-8?B?c04vRnV6NHJMZ2FZZ04yL1R2VnVORXVNYi9YL0plY0t5ejNVSW93Ym5GanJ5?=
- =?utf-8?B?SEJtSkhQckNqZS9xR2ZaUDFFK3JSSlFXZ05HMTFSaDhxMWhwREFxWmRwdXpn?=
- =?utf-8?B?bW9BWHVlLzUrRVU0YytZRHlHQzNwL3F3cGlqUDJnMDRiNW9OeTFQNEIzekpx?=
- =?utf-8?B?eUJBUVczYndkc0sxeGwyalFCV1BEekxsYWJsRGU3VCtWZzczQUhVcGV2TmhF?=
- =?utf-8?B?T0I2MWV1WllUQ0cvalA3RW5MQW85L3VNWUFMdDEvUzgxajNvUCt3V2g4ZndR?=
- =?utf-8?B?U1ltbmtNL0hJU2tKMDFldjFpSjlveUJVcmFoc0FJWUhydU51VG1tNlJUNnJ3?=
- =?utf-8?B?eTRmYXZGd09ic2JFWUROTXpaNXQzTTBNeFFVekhrR1lweUZSQTdQeWtXWkg4?=
- =?utf-8?B?dW9EUkhmUjd6aitNc0cxdkFWS0JnemwyRm5nYVlLcjVZTXkyaEtGemhQKzFz?=
- =?utf-8?B?dWZWN01QRms2TFQxSDRkc3hKVlZjTkFWclBVWkJzK1F3a041Q1NpRlMxNXVy?=
- =?utf-8?B?ZWpkYXo3VTFIT1NDZ0wzdnIxamhOUGxkblZWOVZKeEtNUWw4WllIUUZHS1Rv?=
- =?utf-8?B?UnpQcXlCc1pBSXFQNE81K09iQzE2UnZ6dlM4SkU1ZWxHS0o0ZG5vMEk1ZGtl?=
- =?utf-8?B?YUJmUitlTGUwbmdsOXBPaWd2R0pIVzBvUWVYSXU0SVRyZmlxaU1ML1g4aW13?=
- =?utf-8?B?V2hEQjd4RkNUVXY2WUVMUmM1L3dhTk1jSUptOHU4WFk5SjczdW8vbktiVTVE?=
- =?utf-8?B?T1lkSTY4Uis4RitDM01MdVFYK3dDQno4N2dCZ3VIRHJ6QTlLdzNCWlphS1lu?=
- =?utf-8?B?ZEEvWE5QYTN6MG81VnpRRWhFY1gzSG14VEdabFpwb1RkbGdxdVZmbmxoa0ty?=
- =?utf-8?B?MVVOQ3R2bEdwdXFvMEdHRElrSS95dURmZlhoOUpLS3VGMTRDSGNvZGszSmho?=
- =?utf-8?B?bjNWRE9mT1ZQakY1YURUR1dTeU5kRktiMmt0aVdHZkV3RnlJUkoxN2VjSGI5?=
- =?utf-8?B?ZFVEbndKU0FMRHhOUnAvWnlYeVEyeFpaSzNpNG9rTDAvZW5LbUo3eHJQUUV2?=
- =?utf-8?B?UmFaditjWkJZVEYzSVUxVW5QRkpkUXpaNlo3UWZTamhKNmJTUm9WVnJjVFRF?=
- =?utf-8?B?Q1gyekt2UnBxSTlDMGNlRXAvTm5nNFRpejh1Nkd3azFaNzF5UFl2WXVOMWRJ?=
- =?utf-8?B?cU5ScGdxVUxaOURmQlZGMEFFTzBjcUhieUxFOGNYNzN1cmp1WW9NRncrdlVt?=
- =?utf-8?B?K3hybFhnT3V4d0c4ME5ISFU5cGE2RjFUbkdhSWF6aHhzRE9JVGk5QlhGaW5r?=
- =?utf-8?B?d1JiWVJodmhvTG42VFlialNCSzdHSUVWYUlIY2JBaGFnMk5Jemdjem1ONFVD?=
- =?utf-8?B?TEJFZzY2QlFYSU5JZnJHNk5uaWtBQWQwWnl1YVRhVU10RjlhRXRFU0ZXSW9B?=
- =?utf-8?B?OUVQRWc4WWlCSDZ0cURBOG1pcFF0TkN4VXdlZXR2YkpQNFdrendBTWtxMVBE?=
- =?utf-8?B?SUhRZmtXL0htWkF5RlVLQnZxM0xxdG9CcEwwOTZuWjRMZ1FRV0djcXRLMmJh?=
- =?utf-8?B?S1o3ZFFUVWVEUlYwakI4NkF4NFhhTVpHTzN6UTErVnFaT2s3QzIzeXh6bDZx?=
- =?utf-8?B?RjhmTjI0RnRwZGN5MU1zdVh3WTNWSU1jMkJKdmVwMi9mT3RmZTIyOVhKcGc1?=
- =?utf-8?Q?OQp8hL4xY2C8GjKnvaXSVXE=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 54523893-1ae6-4775-e22a-08db1a67a1e4
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Mar 2023 15:14:20.6111 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IvBzKvzNBk2+WW59smNyyIlZKEatvKFBEq/JxyFKgnE1NGuC9H34VPNUvj25gwhet8i01WM+EHtDDQIOcw1a2SAmRGIdsNzmqYzhOK4RT/8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7838
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677683665; x=1709219665;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=21q1+A3H1nbGX1+e5YVTScgeuAVO4/oif0zf2tnP9Mk=;
- b=PUKvzwUbaXVXlP7Y7TOSlJMaMKHk2uT9tcfYNL3LInVfqoY8JKrZJ0j6
- f3mwhNFRd79aq6HuyKrh/6IKk87Zf/qM3l/0XJbeXCBOqfdG+m5GlVZap
- GHzlTDDE5zit3zdY+r3rzZFJUi4XSI/b+M2yBcz+17325Z9gw+uSXgdum
- 9QYPQ3skZZgLqRofuwVK2PsKly8++glIDs57CLPiJe8y3UxZ7Sxqi0LJr
- 5vMRN0+eLoeVC+/ODRCciqDATy2LrN6xAT9Zg5fUPYaRLeknFkZO5l9hP
- 3uSK3DCKJ8OFAEXLDHbRCEFnMZUHDpQKB0SwnzDti1b9fiYkt/YNsjFCf
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PUKvzwUb
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: copy last block omitted in
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1677690900;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1ovVIYbdK9HNBFp+gvs7z1UGLJ8i2dHJExXfcHpynik=;
+ b=Vfp/vrOgbPyDRYl6x8+elCCXmqZhWZx33++ZP1AdY86T5qg1cfka8h5N7OngSonVaCXAP3
+ 37x1jyW+YhQcBFnGFMOjNwxtfP8Fsaot812d3doYX33St1072/SPC8cT9Vi7S6qhVN5lre
+ z7+68KRtjzQCcEITaY0G2wZM2LX3qaM=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Vfp/vrOg
+Subject: [Intel-wired-lan] [PATCH net v2] ice: copy last block omitted in
  ice_get_module_eeprom()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -197,53 +98,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
  linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- kuba@kernel.org, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
- davem@davemloft.net
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Petr Oros <poros@redhat.com>
-Date: Tue, 28 Feb 2023 21:41:39 +0100
+ice_get_module_eeprom() is broken since commit e9c9692c8a81 ("ice:
+Reimplement module reads used by ethtool") In this refactor,
+ice_get_module_eeprom() reads the eeprom in blocks of size 8.
+But the condition that should protect the buffer overflow
+ignores the last block. The last block always contains zeros.
 
-> ice_get_module_eeprom() is broken since commit e9c9692c8a81 ("ice:
-> Reimplement module reads used by ethtool") In this refactor,
-> ice_get_module_eeprom() reads the eeprom in blocks of size 8.
-> But the condition that should protect the buffer overflow
-> ignores the last block. The last block always contains zeros.
-> Fix adding memcpy for last block.
+Bug uncovered by ethtool upstream commit 9538f384b535
+("netlink: eeprom: Defer page requests to individual parsers")
+After this commit, ethtool reads a block with length = 1;
+to read the SFF-8024 identifier value.
 
-[...]
+unpatched driver:
+$ ethtool -m enp65s0f0np0 offset 0x90 length 8
+Offset          Values
+------          ------
+0x0090:         00 00 00 00 00 00 00 00
+$ ethtool -m enp65s0f0np0 offset 0x90 length 12
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c 00 00 00 00
+$
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> index b360bd8f15998b..33b2bee5cfb40f 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> @@ -4356,6 +4356,8 @@ ice_get_module_eeprom(struct net_device *netdev,
->  			/* Make sure we have enough room for the new block */
->  			if ((i + SFF_READ_BLOCK_SIZE) < ee->len)
->  				memcpy(data + i, value, SFF_READ_BLOCK_SIZE);
-> +			else if (ee->len - i > 0)
-> +				memcpy(data + i, value, ee->len - i);
+$ ethtool -m enp65s0f0np0
+Offset          Values
+------          ------
+0x0000:         11 06 06 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0010:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0020:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0030:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0040:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0050:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0x0060:         00 00 00 00 00 00 00 00 00 00 00 00 00 01 08 00
+0x0070:         00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 
-Maybe just unify those two?
+patched driver:
+$ ethtool -m enp65s0f0np0 offset 0x90 length 8
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c
+$ ethtool -m enp65s0f0np0 offset 0x90 length 12
+Offset          Values
+------          ------
+0x0090:         00 00 01 a0 4d 65 6c 6c 61 6e 6f 78
+$ ethtool -m enp65s0f0np0
+    Identifier                                : 0x11 (QSFP28)
+    Extended identifier                       : 0x00
+    Extended identifier description           : 1.5W max. Power consumption
+    Extended identifier description           : No CDR in TX, No CDR in RX
+    Extended identifier description           : High Power Class (> 3.5 W) not enabled
+    Connector                                 : 0x23 (No separable connector)
+    Transceiver codes                         : 0x88 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+    Transceiver type                          : 40G Ethernet: 40G Base-CR4
+    Transceiver type                          : 25G Ethernet: 25G Base-CR CA-N
+    Encoding                                  : 0x05 (64B/66B)
+    BR, Nominal                               : 25500Mbps
+    Rate identifier                           : 0x00
+    Length (SMF,km)                           : 0km
+    Length (OM3 50um)                         : 0m
+    Length (OM2 50um)                         : 0m
+    Length (OM1 62.5um)                       : 0m
+    Length (Copper or Active cable)           : 1m
+    Transmitter technology                    : 0xa0 (Copper cable unequalized)
+    Attenuation at 2.5GHz                     : 4db
+    Attenuation at 5.0GHz                     : 5db
+    Attenuation at 7.0GHz                     : 7db
+    Attenuation at 12.9GHz                    : 10db
+    ........
+    ....
 
-			copy_len = min_t(u32, SFF_READ_BLOCK_SIZE,
-					 ee->len - i);
-			memcpy(data + i, value, copy_len);
+Fixes: e9c9692c8a81 ("ice: Reimplement module reads used by ethtool")
+Signed-off-by: Petr Oros <poros@redhat.com>
+---
+v2: memcpy unified calls
+---
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-That's pretty much a reword of your code.
-The functional change is good to me.
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index b360bd8f15998b..1dc3f9fc74bdfb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -4293,6 +4293,7 @@ ice_get_module_eeprom(struct net_device *netdev,
+ 	bool is_sfp = false;
+ 	unsigned int i, j;
+ 	u16 offset = 0;
++	u32 copy_len;
+ 	u8 page = 0;
+ 	int status;
+ 
+@@ -4354,8 +4355,9 @@ ice_get_module_eeprom(struct net_device *netdev,
+ 			}
+ 
+ 			/* Make sure we have enough room for the new block */
+-			if ((i + SFF_READ_BLOCK_SIZE) < ee->len)
+-				memcpy(data + i, value, SFF_READ_BLOCK_SIZE);
++			copy_len = min_t(u32, SFF_READ_BLOCK_SIZE,
++					 ee->len - i);
++			memcpy(data + i, value, copy_len);
+ 		}
+ 	}
+ 	return 0;
+-- 
+2.39.2
 
->  		}
->  	}
->  	return 0;
-
-Thanks,
-Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
