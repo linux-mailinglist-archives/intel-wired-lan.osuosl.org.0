@@ -2,77 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E16C6A864A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Mar 2023 17:24:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B64076A864C
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Mar 2023 17:24:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 79DF4820B5;
-	Thu,  2 Mar 2023 16:24:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79DF4820B5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52CAD820AB;
+	Thu,  2 Mar 2023 16:24:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52CAD820AB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677774274;
-	bh=cMOdSzPQ+uv/uEzzXGQhJCSPKEzYXq5OeOBv3/pE9Xo=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1677774278;
+	bh=LX8wI0UCGW3CAZqrfiXqF3+zBH8JIO7E2yBw09iFRug=;
+	h=References:From:To:Date:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bEKJdHychyvSeqIgxqmHAumB34zMfLTzofsyL8nji6VpybXa71lv+EEbNAIwWuQ8J
-	 wNMdpGTgYvv0NL9zPDR/O8i3G1pFO5MnX4UytpFN9yVe2ho/oyE/+MX4LmRfAaxa66
-	 4lDaf42M6X0pdHWUCEM+AoUrx9NkMZi76Dp254C70HxWtjsjCRdJILkxlsK6MUiB3D
-	 x2Gw6A7JcoBdAsAIjiimibuUyxl3qssqYOAb6ls1+j69uWLQno/LN0BtAaIBmccLin
-	 KkFm3NuaFYPx+aWbboloA/aniDe9xFGSbs3KGyCowuLOdh4B6zeFVaL6NRQ8+DkRc6
-	 RkDSCrLV0OrbQ==
+	b=C1d1X8/uXPsYXmZhcqJPWbuL49LK9XXa7M7CRg1Ileq01dvxA+SK3z4aHbhW1DWCn
+	 HayM8Mey68Ee5m25GYyJjvL1+T96bBuefVIV9RcoRj7Fji1ts5snaSBrwkFDlieRcH
+	 hE0g9LzgrniiXdeGyYBX+Fi2uPz0xDbbexEBBc5uvPcwBdoPmuGCkFrJpfGORYYpwE
+	 UWb7pOyD23Gk+YgrAcBHoXqwOWefhVSxsEuxhVwL4mfDHq0pG/G1Rcy+LhYwNvjpF5
+	 t5CUCEEe96GfMqEZEZPpdVIX/UUm65h7eKVDkos7ts0ZF/qURwaiVunCqHReTBeoF/
+	 Sck1Wwjoi16Bg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SVdOEXvoIaFO; Thu,  2 Mar 2023 16:24:33 +0000 (UTC)
+	with ESMTP id VUPTwOKF8DFn; Thu,  2 Mar 2023 16:24:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C8AB81EDD;
-	Thu,  2 Mar 2023 16:24:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C8AB81EDD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4732C81EDD;
+	Thu,  2 Mar 2023 16:24:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4732C81EDD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA73C1BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 12:38:24 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E7A241BF290
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 13:46:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B794540CB0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 12:38:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B794540CB0
+ by smtp3.osuosl.org (Postfix) with ESMTP id 81BC261192
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 13:46:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 81BC261192
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2ARe5fjCgCPx for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Mar 2023 12:38:23 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20E30400F6
-Received: from sosiego.soundray.org (sosiego.soundray.org [116.203.207.114])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 20E30400F6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 12:38:23 +0000 (UTC)
-From: Linus Heckemann <git@sphalerite.org>
-To: "Ertman, David M" <david.m.ertman@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-In-Reply-To: <MW5PR11MB5811C3D002B5A5FB3A8806F4DDA89@MW5PR11MB5811.namprd11.prod.outlook.com>
-References: <20230215191757.1826508-1-david.m.ertman@intel.com>
- <ygay1oxikvo.fsf@localhost>
- <MW5PR11MB5811C3D002B5A5FB3A8806F4DDA89@MW5PR11MB5811.namprd11.prod.outlook.com>
-Date: Thu, 02 Mar 2023 13:38:14 +0100
-Message-ID: <ygattz3tjk9.fsf@localhost>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6tnMh6u5hlOG for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Mar 2023 13:46:26 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8D98160BAD
+Received: from smtp-fw-2101.amazon.com (smtp-fw-2101.amazon.com [72.21.196.25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8D98160BAD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 13:46:26 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.98,227,1673913600"; d="scan'208";a="298774921"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ email-inbound-relay-iad-1a-m6i4x-617e30c2.us-east-1.amazon.com) ([10.43.8.6])
+ by smtp-border-fw-2101.iad2.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Mar 2023 13:46:22 +0000
+Received: from EX19D009EUA001.ant.amazon.com
+ (iad12-ws-svc-p26-lb9-vlan2.iad.amazon.com [10.40.163.34])
+ by email-inbound-relay-iad-1a-m6i4x-617e30c2.us-east-1.amazon.com (Postfix)
+ with ESMTPS id BAD75647B0; Thu,  2 Mar 2023 13:46:13 +0000 (UTC)
+Received: from EX19D028EUB003.ant.amazon.com (10.252.61.31) by
+ EX19D009EUA001.ant.amazon.com (10.252.50.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.24; Thu, 2 Mar 2023 13:46:11 +0000
+Received: from u570694869fb251.ant.amazon.com.amazon.com (10.85.143.175) by
+ EX19D028EUB003.ant.amazon.com (10.252.61.31) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.24; Thu, 2 Mar 2023 13:45:59 +0000
+References: <cover.1674913191.git.lorenzo@kernel.org>
+ <948292cc7d72f2bc04b5973008ecf384f9296677.1674913191.git.lorenzo@kernel.org>
+ <pj41zlcz5v1kkg.fsf@u570694869fb251.ant.amazon.com>
+ <Y/58Kzah/ERCYMGD@lore-desk>
+User-agent: mu4e 1.6.10; emacs 28.0.91
+From: Shay Agroskin <shayagr@amazon.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Thu, 2 Mar 2023 15:44:18 +0200
+In-Reply-To: <Y/58Kzah/ERCYMGD@lore-desk>
+Message-ID: <pj41zllekf467h.fsf@u570694869fb251.ant.amazon.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Thu, 02 Mar 2023 16:24:28 +0000
+X-Originating-IP: [10.85.143.175]
+X-ClientProxiedBy: EX19D032UWB001.ant.amazon.com (10.13.139.152) To
+ EX19D028EUB003.ant.amazon.com (10.252.61.31)
+Precedence: Bulk
+X-Mailman-Approved-At: Thu, 02 Mar 2023 16:24:29 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sphalerite.org; s=sosiego; t=1677760696;
- bh=f15Twj69E0mZwYKKYwmVetWbSyygrlvDq/ffVHKHTEY=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date;
- b=DjSTfv3gEOKj7jNqmcDnfRevjAU/aEf7rgWpjtveyZ93hkRVtmDOnJYodUxHn+v63
- XDCeW6LIf1Ld6TURJJGNY7d9k0OOKpOniF3mqFlAUKKj6WhS3UDSfnZjvlUoSM7lIH
- Dp1l1yEy5CvuFWUD440pDMq1tQRF25yAzPJm1/rg=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=sphalerite.org header.i=@sphalerite.org
- header.a=rsa-sha256 header.s=sosiego header.b=DjSTfv3g
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: avoid bonding causing
- auxiliary plug/unplug under RTNL lock
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1677764787; x=1709300787;
+ h=references:from:to:cc:date:in-reply-to:message-id:
+ mime-version:subject;
+ bh=Gc7jiqMATF/WgV3NyGXXqkcSKEdhQ2vY+HxNsRmp5Uc=;
+ b=T5RBNOtQIeHccGPbig/vu+s1bAzT2+TgJxZ17sD5boscSE9tLd9Z49tO
+ xI3+G814/h/oxOfB7rwQ3qHLqHg+I/iDIwNR50kcQkwkcCdhaVDbSSboT
+ dIgHQUDTJHw/9tQX4OC5Yp7eHIIBsCrxSqiiFT3xfEb+LkKRI6rSIe1vR
+ 4=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
+ header.s=amazon201209 header.b=T5RBNOtQ
+Subject: Re: [Intel-wired-lan] [PATCH v4 bpf-next 2/8] drivers: net: turn on
+ XDP features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -82,131 +107,101 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: mst@redhat.com, vladimir.oltean@nxp.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, sdf@google.com,
+ daniel@iogearbox.net, andrii@kernel.org, intel-wired-lan@lists.osuosl.org,
+ simon.horman@corigine.com, kuba@kernel.org, pabeni@redhat.com,
+ aelior@marvell.com, hawk@kernel.org, christophe.jaillet@wanadoo.fr,
+ memxor@gmail.com, john@phrozen.org, bjorn@kernel.org, bpf@vger.kernel.org,
+ magnus.karlsson@intel.com, leon@kernel.org, netdev@vger.kernel.org,
+ toke@redhat.com, martin.lau@linux.dev, ecree.xilinx@gmail.com,
+ alardam@gmail.com, gospo@broadcom.com, saeedm@nvidia.com, davem@davemloft.net,
+ nbd@nbd.name
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-"Ertman, David M" <david.m.ertman@intel.com> writes:
 
->> -----Original Message-----
->> From: Linus Heckemann <git@sphalerite.org>
->> Sent: Thursday, February 16, 2023 9:24 AM
->> To: Ertman, David M <david.m.ertman@intel.com>; intel-wired-
->> lan@lists.osuosl.org
->> Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
->> Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: avoid bonding causing
->> auxiliary plug/unplug under RTNL lock
+Lorenzo Bianconi <lorenzo@kernel.org> writes:
+
+> [[PGP Signed Part:Undecided]]
 >> 
->> Dave Ertman <david.m.ertman@intel.com> writes:
->> > RDMA is not supported in ice on a PF that has been added to a bonded
->> > interface. To enforce this, when an interface enters a bond, we unplug
->> > the auxiliary device that supports RDMA functionality.  This unplug
->> > currently happens in the context of handling the netdev bonding event.
->> > This event is sent to the ice driver under RTNL context.  This is causing
->> > a deadlock where the RDMA driver is waiting for the RTNL lock to complete
->> > the removal.
->> >
->> > Defer the unplugging/re-plugging of the auxiliary device to the service
->> > task so that it is not performed under the RTNL lock context.
->> >
->> > Reported-by: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
->> > Link: https://lore.kernel.org/linux-rdma/68b14b11-d0c7-65c9-4eeb-
->> 0487c95e395d@leemhuis.info/
->> > Fixes: 5cb1ebdbc434 ("ice: Fix race condition during interface enslave")
->> > Fixes: 425c9bd06b7a ("RDMA/irdma: Report the correct link speed")
->> > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
->> > ---
->> > Changes since v1:
->> > Reversed order of bit processing in ice_service_task for PLUG/UNPLUG
+>> Lorenzo Bianconi <lorenzo@kernel.org> writes:
 >> 
->> Hi Dave,
+>> > From: Marek Majtyka <alardam@gmail.com>
+>> > 
+>> > ...
+>> > 
+>> > diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+>> > b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+>> > index e8ad5ea31aff..d3999db7c6a2 100644
+>> > --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+>> > +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+>> > @@ -597,7 +597,9 @@ static int ena_xdp_set(struct net_device 
+>> > *netdev,
+>> > struct netdev_bpf *bpf)
+>> >  				if (rc)
+>> >  					return rc;
+>> >  			}
+>> > +			xdp_features_set_redirect_target(netdev, 
+>> > false);
+>> >  		} else if (old_bpf_prog) {
+>> > + xdp_features_clear_redirect_target(netdev);
+>> >  			rc = 
+>> >  ena_destroy_and_free_all_xdp_queues(adapter);
+>> >  			if (rc)
+>> >  				return rc;
+>> > @@ -4103,6 +4105,8 @@ static void 
+>> > ena_set_conf_feat_params(struct
+>> > ena_adapter *adapter,
+>> >  	/* Set offload features */
+>> >  	ena_set_dev_offloads(feat, netdev);
+>> >   +	netdev->xdp_features = NETDEV_XDP_ACT_BASIC |
+>> > NETDEV_XDP_ACT_REDIRECT;
+>> > +
+>> >  	adapter->max_mtu = feat->dev_attr.max_mtu;
+>> >  	netdev->max_mtu = adapter->max_mtu;
+>> >  	netdev->min_mtu = ENA_MIN_MTU;
+>> > 
 >> 
->> Thanks for your continued work on this! We've tested this on a system
->> affected by the original issue (with 8086:1593 cards) and, unlike v1 of
->> the patch, it appears not to resolve it:
+>> Hi, thanks for the time you put in adjusting the ENA driver as 
+>> well.
 >
-> Hi Linus,
+> Hi Shay,
 >
-> This error confuses me.  The only difference between v1 and v2 of this patch
-> is the order in which we process state bits in the service task thread.  They are
-> still being processed outside of RTNL context.
+>> 
+>> Why did you set NETDEV_XDP_ACT_NDO_XMIT dynamically for some 
+>> drivers (like
+>> ENA and mlx5) and statically for others (like atlantic driver 
+>> which also
+>> redirects packets only when XDP program is loaded) ?
+>> Is it only for the sake of notifying the user that an XDP 
+>> program has been
+>> loaded ?
 >
-> Can you provide the steps you used to reproduce this issue? 
+> there are some drivers (e.g. mvneta) where 
+> NETDEV_XDP_ACT_NDO_XMIT is always
+> supported while there are other drivers (e.g. intel drivers) 
+> where it
+> depends on other configurations (e.g. if the driver needs to 
+> reserve
+> some queues for xdp).
 >
-> Thanks,
-> DaveE
+> Regards,
+> Lorenzo
+>
 
-Hi Dave,
+Well given that ENA's ability to redirect packets goes hand in 
+hand with its ability to process any XDP traffic I'd say it always 
+supports ndo_xmit.
+Doesn't seem like a big issue though.
 
-It confuses me as well!
+Thanks for the explanation,
+Shay
 
-Like before, this was reproduced by booting a system configured to bond
-the interfaces provided by two of the cards (using systemd-networkd,
-relevant config below). The failure occurred less frequently than prior
-to applying the patch, but still enough to be quite an annoyance!
-
-According to the provider, the machine's card was on an older firmware
-(3.00 0x8000893f 20.5.13), and upgrading to the latest available version
-resolved this issue for our purposes. Nevertheless, I think the kernel
-shouldn't be deadlock on the RTNL lock regardless of which firmware
-version is running. If there's any more information that would be
-helpful for debugging, let us know -- though we can't get at machines
-running the old firmware trivially, so it's hard for us to reproduce at
-this point.
-
-As mentioned, upgrading the firmware has resolved the problem for us,
-though it certainly feels unsatisfying to leave the bug there. I have no
-strong opinion on whether the patch should be included as is
-anyway. Maybe the firmware version info is enough to help you reproduce
-the problem?
-
-Linus
-
-
-________
-/etc/systemd/network/10-bond0.netdev:
-[NetDev]
-Kind=bond
-Name=bond0
-
-[Bond]
-DownDelaySec=0.200000
-LACPTransmitRate=fast
-MIIMonitorSec=0.100000
-Mode=802.3ad
-TransmitHashPolicy=layer3+4
-UpDelaySec=0.200000
-
-________
-/etc/systemd/network/40-bond0.network:
-[Match]
-Name=bond0
-
-[Link]
-#MACAddress=<omitted>
-RequiredForOnline=carrier
-
-[Network]
-LinkLocalAddressing=no
-
-# some Address and Route sections omitted
-________
-/etc/systemd/network/30-eno12419.network:
-[Match]
-Name=eno12419
-
-[Network]
-Bond=bond0
-
-________
-/etc/systemd/network/30-eno12399.network:
-[Match]
-Name=eno12399
-
-[Network]
-Bond=bond0
+>
+> [[End of PGP Signed Part]]
 
 _______________________________________________
 Intel-wired-lan mailing list
