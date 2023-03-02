@@ -1,88 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E228C6A84F9
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Mar 2023 16:13:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6110C6A8B3B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Mar 2023 22:51:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 78EC441006;
-	Thu,  2 Mar 2023 15:13:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78EC441006
+	by smtp1.osuosl.org (Postfix) with ESMTP id E07C681AAC;
+	Thu,  2 Mar 2023 21:51:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E07C681AAC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677770006;
-	bh=KHkFpMnXGwZ0Tpmm+V9fpZAO4Eq3C2zEWyTWB4T1t5s=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1677793894;
+	bh=9wwxG9TFKu5AeL450RuFMEBd7rn7G7CWBaaePXNuCgs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=fcwcACVuB7KBPXe/HmxeXnTPPvIIMXqOlAn7rQMaTXkrIpYHBf4J/7uR0YlzqN40l
-	 AH4JFnR/UjE3KpZ4JdT855dRpzt2w5lyiH0TJhoFFNGe2Tvwl3HAtNQL49LukLQo53
-	 8gydloXtMLiSW7rE1ymndXoBRMX6yGB2h3c3EUT0PXFxbv/lDrWjL7jJJne91dMDrn
-	 KNiz/bwXczVdr4vzOqn9ODoz1MWzHQND4aUBXGpaDoSYmrP+BP5vdm1M3DA6Bh7rEN
-	 yd/NEccuLF1ru4nPZsQXy3NLFHJ11mjyvWnT6N35SikK51D2C8NgyeUAEjc/iXwfGP
-	 UtDN2lC7iaIvg==
+	b=HUwyjB+0NQka0k2VDurf82SaoJP2u/j9NN+70wzua+pnkh/33rUJmfDeb8qIQoQmT
+	 tbVKW2TJkMDpl3UBimWNV/8CgH8nmuazLvFQQYj5RKi+S8RRZ2b7F6yR9k1hcUhwSa
+	 B7V957fx7euQqUFisP+MnL3Iq8+OdOjs9QZZdfwxihPbPzRVlfBBlYnlegmElFxpp4
+	 W8roz19YnK4QcoWKV+M79B7BvgosbrSf/+q5gYQJsKObQTfTFnyQ+zWWPnjyn1EHCr
+	 vkH5OuxCMXmv5IEyG9lHZijIxJkpcn9y5UsgpsQX6eGk827B755cn2VTJTLMTJJ1g8
+	 NTACW4wHC3CtQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c2Lp-JJnle6O; Thu,  2 Mar 2023 15:13:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8UVPmCCdF_A7; Thu,  2 Mar 2023 21:51:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5DFBC41005;
-	Thu,  2 Mar 2023 15:13:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5DFBC41005
+	by smtp1.osuosl.org (Postfix) with ESMTP id A179C81DAB;
+	Thu,  2 Mar 2023 21:51:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A179C81DAB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0576B1BF59D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 15:13:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7E40F1BF306
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 21:51:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DD7CF612C1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 15:13:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD7CF612C1
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4F9DC612C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 21:51:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F9DC612C1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6cSx6M0onC63 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Mar 2023 15:13:18 +0000 (UTC)
+ with ESMTP id GHQsN6HhD9qg for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Mar 2023 21:51:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D24D1612AC
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D24D1612AC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 15:13:18 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10637"; a="333468000"
-X-IronPort-AV: E=Sophos;i="5.98,228,1673942400"; d="scan'208";a="333468000"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2023 07:13:18 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2BFF860BF3
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2BFF860BF3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Mar 2023 21:51:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10637"; a="399672216"
+X-IronPort-AV: E=Sophos;i="5.98,228,1673942400"; d="scan'208";a="399672216"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2023 13:51:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10637"; a="677252470"
-X-IronPort-AV: E=Sophos;i="5.98,228,1673942400"; d="scan'208";a="677252470"
-Received: from lkp-server01.sh.intel.com (HELO 776573491cc5) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 02 Mar 2023 07:13:17 -0800
-Received: from kbuild by 776573491cc5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pXkcO-0000YC-1E;
- Thu, 02 Mar 2023 15:13:16 +0000
-Date: Thu, 02 Mar 2023 23:13:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6400bd0b.HBMm18/8IZZInuMD%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10637"; a="652569996"
+X-IronPort-AV: E=Sophos;i="5.98,228,1673942400"; d="scan'208";a="652569996"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.213.174.245])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2023 13:51:18 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  2 Mar 2023 13:51:04 -0800
+Message-Id: <20230302215109.124-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677769998; x=1709305998;
- h=date:from:to:subject:message-id:mime-version:
+ t=1677793887; x=1709329887;
+ h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=xMH0mRFbsfcLwxvAWqlFOEXWKZEVEaTusjFV0LBJRaU=;
- b=grR1zVBaSB65sfaQcvJnZ4rThw6AbFzqsHiWMdvgGtaEy8EdJt0FvchW
- 5Cjb5yRRndFCrxKj7eooVCh1uudAx00I+qtvfjEflPkG4xsGUV40iq4gY
- 9Z0eKR1TYefGaWjoHDFVaBZRHzApmkjXbpSM7cZLbceXVCOCrYY+mkIvJ
- 1yNObkVVVj4FRjiHaDqr2MnTXLF+qrCatvZIb0/I3JoS8iDQhbtQVSy9u
- 6DSiWvgG+agGWqoNCCMvzewLbb0Yw1OQCJl0K2bVYenJkcjdGsQI73KuE
- Ruz93452DjqJ6ySFOaYboJxqXcNUmXk1Q7JSGC4B44aV8gtoIg/EfyQmm
- A==;
+ bh=B6GO3QXiHETUho1Xr9lyVNFENIdUarJwYUHe9UBzm20=;
+ b=CuSjb/5nq3+DVXy3iO7d2scdlALLV/bNSj3RxQkZmpS9kgAZ5PsTVG1U
+ ux4Yy/iCuIgK5kwR1hj8HN0z4pZdu1GuBagUZ6xo3raR7jTENPEfd2pSI
+ EqGU7FyFyqZXIJGyxin6UddzFc1lTwhpBnLAg9T8I7+nWKAZhQNV5yCfR
+ WLBvrYYp0z0EC4jHpVXo4DwOCJj0v7VohzhEOCFzPA+1EwNwg1nSIHOC5
+ OgZDHi5sQ7hdfon68mK/T24c1M6yKGnlZ8TeOW03evqGDttnImiVNqhdE
+ VuLCuDgQHvANGLIENCEAJAwifvr2fUysaVkX+SqUQVsdVGu7QnlWqg+iK
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=grR1zVBa
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 9720e8b1250ff31687ada520211d3e5af5099a85
+ header.a=rsa-sha256 header.s=Intel header.b=CuSjb/5n
+Subject: [Intel-wired-lan] [PATCH net-next v9 0/5] add v2 FW logging for ice
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,125 +98,156 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 9720e8b1250ff31687ada520211d3e5af5099a85  ice: avoid bonding causing auxiliary plug/unplug under RTNL lock
+FW log support was added to the ice driver, but that version is no
+longer supported. There is a newer version of FW logging (v2) that
+adds more control knobs to get the exact data out of the FW
+for debugging.
 
-elapsed time: 1014m
+The interface for FW logging is debugfs. This was chosen based on a discussion
+here: https://lore.kernel.org/netdev/20230214180712.53fc8ba2@kernel.org/
+We talked about using devlink in a variety of ways, but none of those
+options made any sense for the way the FW reports data. We briefly talked
+about using ethtool, but that seemed to go by the wayside. Ultimately it
+seems like using debugfs is the way to go so re-implement the code to use
+that.
 
-configs tested: 103
-configs skipped: 3
+Additionally, instead of dumping the FW log output to syslog,
+dump it to debugfs. The FW log data is really just binary
+data that the FW log team decodes to determine what happens so the
+translation from binary to some text output just slows things down
+and results in potential dropped data. The structure for the debugfs
+entry is: /sys/kernel/debug/ice/<pci device>/fwlog
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Once enabled the FW log data is received as ARQ events that the driver
+processes.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r012-20230302   gcc  
-arc                  randconfig-r036-20230302   gcc  
-arc                  randconfig-r043-20230302   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                  randconfig-r001-20230302   clang
-arm                  randconfig-r003-20230302   clang
-arm                  randconfig-r046-20230302   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r025-20230302   clang
-arm64                randconfig-r035-20230302   gcc  
-csky         buildonly-randconfig-r006-20230302   gcc  
-csky                                defconfig   gcc  
-csky                 randconfig-r022-20230302   gcc  
-hexagon      buildonly-randconfig-r005-20230302   clang
-hexagon              randconfig-r041-20230302   clang
-hexagon              randconfig-r045-20230302   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                          randconfig-a001   gcc  
-i386                          randconfig-a002   clang
-i386                          randconfig-a003   gcc  
-i386                          randconfig-a004   clang
-i386                          randconfig-a005   gcc  
-i386                          randconfig-a006   clang
-i386                          randconfig-a011   clang
-i386                          randconfig-a012   gcc  
-i386                          randconfig-a013   clang
-i386                          randconfig-a014   gcc  
-i386                          randconfig-a015   clang
-i386                          randconfig-a016   gcc  
-ia64                             allmodconfig   gcc  
-ia64                                defconfig   gcc  
-ia64                 randconfig-r014-20230302   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r026-20230302   gcc  
-m68k                 randconfig-r032-20230302   gcc  
-microblaze   buildonly-randconfig-r003-20230302   gcc  
-microblaze           randconfig-r023-20230302   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                 randconfig-r004-20230302   clang
-mips                 randconfig-r005-20230302   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r015-20230302   gcc  
-openrisc     buildonly-randconfig-r004-20230302   gcc  
-openrisc             randconfig-r016-20230302   gcc  
-parisc       buildonly-randconfig-r002-20230302   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r011-20230302   clang
-powerpc              randconfig-r024-20230302   clang
-powerpc              randconfig-r031-20230302   gcc  
-powerpc              randconfig-r033-20230302   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r042-20230302   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r006-20230302   gcc  
-s390                 randconfig-r021-20230302   clang
-s390                 randconfig-r044-20230302   clang
-sh                               allmodconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r002-20230302   gcc  
-sparc64              randconfig-r013-20230302   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64                        randconfig-a001   clang
-x86_64                        randconfig-a002   gcc  
-x86_64                        randconfig-a003   clang
-x86_64                        randconfig-a004   gcc  
-x86_64                        randconfig-a005   clang
-x86_64                        randconfig-a006   gcc  
-x86_64                        randconfig-a011   gcc  
-x86_64                        randconfig-a012   clang
-x86_64                        randconfig-a013   gcc  
-x86_64                        randconfig-a014   clang
-x86_64                        randconfig-a015   gcc  
-x86_64                        randconfig-a016   clang
-x86_64                               rhel-8.3   gcc  
-xtensa       buildonly-randconfig-r001-20230302   gcc  
-xtensa               randconfig-r034-20230302   gcc  
+The FW logging is across all the PFs on the device, so restrict the
+commands to only PF0.
+
+The following debugfs commands are added:
+- dump fwlog_cfg
+- update fwlog_cfg <fwlog_level> <fwlog_events> <fwlog_resolution>
+
+where
+fwlog_level is a value from 0-4 as described below
+    Each level includes the messages from the previous/lower level
+        0 - no logging
+        1 - error logging
+        2 - warning logging
+        3 - normal logging
+        4 - verbose logging
+
+fwlog_events is a value from 0-32 that represents the module to receive
+events for. The values are sent as a hex value where each bit represents
+a specific module. The module values are:
+        0 (0x00) - General
+        1 (0x01) - Control (Resets + Autoload)
+        2 (0x02) - Link Management
+        3 (0x03) - Link Topology Detection
+        4 (0x04) - DNL
+        5 (0x05) - I2C
+        6 (0x06) - SDP
+        7 (0x07) - MDIO
+        8 (0x08) - Admin Queue
+        9 (0x09) - HDMA
+        10 (0x0A) - LLDP
+        11 (0x0B) - DCBX
+        12 (0x0C) - DCB
+        13 (0x0D) - XLR
+        14 (0x0E) - NVM
+        15 (0x0F) - Authentication
+        16 (0x10) - VPD
+        17 (0x11) - IOSF
+        18 (0x12) - Parser
+        19 (0x13) - Switch
+        20 (0x14) - Scheduler
+        21 (0x15) - Tx Queue Management
+        22 (0x16) - Unsupported
+        23 (0x17) - Post
+        24 (0x18) - Watchdog
+        25 (0x19) - Task Dispatcher
+        26 (0x1A) - Manageability
+        27 (0x1B) - Synce
+        28 (0x1C) - Health
+        29 (0x1D) - Time Sync
+        30 (0x1E) - PF Registration
+        31 (0x1F) - Module Version
+
+fwlog_resolution is the number of log messages to included
+in a single ARQ event. The range is 1-128 (1 means push every log
+message, 128 means push only when the max AQ command buffer is full).
+The suggested value is 10.
+
+---
+v9:
+- rewrote code to use debugfs instead of devlink
+v8:
+- added vmalloc.h file for correct prototypes
+- moved code change from patch 5 to patch 3 where it was supposed to be
+- fixed a style issue
+v7:
+- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
+- refactored ice_debugfs_command_read() to split the copying of the data and
+  the freeing of the buffers. This allows for better error recovery in case
+  the copy_to_user() fails
+- changed allocation of fwlog buffers and structure from kernel memory to
+  virtual memory (vmalloc/vzalloc)
+- fixed a compile bug
+v6:
+- removed cache_cfg() based on feedback
+- a couple of other minor changes based on feedback
+v5:
+- handle devlink reload path correctly so debugfs directories don't get
+  added twice
+- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
+  compile issues with multiple defines
+v4:
+- actually changed the modes in ice.rst for new params
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
+
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: enable debugfs to check FW logging status
+  ice: add ability to set FW log configuration
+  ice: enable FW logging based on stored configuration
+  ice: add ability to enable FW logging and capture data
+
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  34 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 160 +++----
+ drivers/net/ethernet/intel/ice/ice_common.c   | 218 +---------
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 391 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 369 +++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  57 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     | 136 +++++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  22 +-
+ 10 files changed, 1076 insertions(+), 316 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+2.35.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
