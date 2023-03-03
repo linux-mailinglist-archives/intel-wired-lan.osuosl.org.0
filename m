@@ -1,91 +1,187 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 174266AA040
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Mar 2023 20:46:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72AEE6AA57F
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Mar 2023 00:21:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D0E6C617B9;
-	Fri,  3 Mar 2023 19:46:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0E6C617B9
+	by smtp2.osuosl.org (Postfix) with ESMTP id EAFD7404CA;
+	Fri,  3 Mar 2023 23:21:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EAFD7404CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677872796;
-	bh=iMhLXz5rAH6CD0E+vkCrz6ltCS1kbY2fFMpQvt+pLCo=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1677885680;
+	bh=xsGaSxWD2MH8snv0L5WVZ3/dFtJLn3xureVrDx7sLpc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pwsQzl0fOwlc9AFdGU6YnmyUfO5abBSXNN/ORgf8UK0Ma9XPV2HuuESl3YBoMBtOq
-	 3jR+kvJb4S6vQXyTbIKj1r7YTsu4hdguMqz5A9uwVJKtQs57kkmq3hi6xKu9h0XFFE
-	 sYCvw7VTposv0c82HeOrOV4FGZixPgMqlyx5I3uVYLiD/MpaNKWa9IGZ1cRMxLr6bs
-	 7TrJobrGLFs8PL1lZjefexGXRsPUN9nyhHp/NQJa31tH0Be/GvbUXamxKKMf/bqTtw
-	 26Slo4yvLewGa3/hpF2Mn5LJxS0l5t/EHIW9PdI+Zp+1Qz9jJaMd6Z5Kl+BkEeZXvA
-	 e4rUExwCnTYgA==
+	b=JtP2JC0WIxQ1nOaN5E7ps2RW072z6y3D1I/G7sh0vLGZxRR9cBSCCikI+qUbXklWC
+	 KT66pJU4WU7+Jx7ST+YvOZAiRzH27iWpFHxOAG0a0tl/zTybpziltPI0lbo/aqSFxw
+	 FCRAFoV7F1iF0JAhn3Zr2C0XCm3OXnibkK3mCgD+BAryJwKdnazKjw/UDL3GilWWj6
+	 J0fGY+P3RQdIoHPL/rRSKTQRGhxU3CNPfeGSiDXpeLiS3tSlKLcQpPclR4M0Ys3xFK
+	 KNYR6EpZa3v2xUMlfnxOttWP56cdjdJea98QXt6Nw4WIO/cr3VXEHbYmdtK4WiRjjJ
+	 J/6XHuvO1XExQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LynsYJrlngTo; Fri,  3 Mar 2023 19:46:35 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OnUbpivxarr8; Fri,  3 Mar 2023 23:21:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F9AA61779;
-	Fri,  3 Mar 2023 19:46:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F9AA61779
+	by smtp2.osuosl.org (Postfix) with ESMTP id A9A0E4012E;
+	Fri,  3 Mar 2023 23:21:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A9A0E4012E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A7C4E1BF3E1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 763BC1BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 23:21:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7D17441D42
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D17441D42
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4725D41D31
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 23:21:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4725D41D31
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KchGhIPUxwQP for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Mar 2023 19:46:27 +0000 (UTC)
+ with ESMTP id h0acTYM9I_Et for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Mar 2023 23:21:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6448041D41
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6448041D41
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:27 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="421414725"
-X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; d="scan'208";a="421414725"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2023 11:46:26 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 83B0941CF3
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 83B0941CF3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 23:21:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="399998263"
+X-IronPort-AV: E=Sophos;i="5.98,232,1673942400"; d="scan'208";a="399998263"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2023 15:21:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="705749578"
-X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; d="scan'208";a="705749578"
-Received: from lkp-server01.sh.intel.com (HELO 776573491cc5) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 03 Mar 2023 11:46:24 -0800
-Received: from kbuild by 776573491cc5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pYBMF-0001dY-1h;
- Fri, 03 Mar 2023 19:46:23 +0000
-Date: Sat, 4 Mar 2023 03:46:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>, netdev@vger.kernel.org
-Message-ID: <202303040357.BP5TQ4vl-lkp@intel.com>
-References: <20230303150818.132386-1-vincenzopalazzodev@gmail.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="668816895"
+X-IronPort-AV: E=Sophos;i="5.98,232,1673942400"; d="scan'208";a="668816895"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga007.jf.intel.com with ESMTP; 03 Mar 2023 15:21:11 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Fri, 3 Mar 2023 15:21:11 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Fri, 3 Mar 2023 15:21:11 -0800
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.48) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Fri, 3 Mar 2023 15:21:10 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kwNXu0tNKcBLWBPVCSgoP+Q439Ts+jBwzyCnYf1pCupZ52lNiU+hc6tCFYWCWsV9mCUhmLV4wOt++VrLfesrmH9Jv20ha/xVPePYrbBeMXySzXraQPJQN8WAy9S9an9bKKdgrzQs2K8qDwr9qaqx58GikpWLYInMSr7ua+nGAAVhE6wwGdjfaXe6lezRSYUWiEXYiia5l9xaD5c/0rkRRiCzBklnNpnzKY7PasUqjzMm1+VJpIEcfojvTyZvsVztXgWrgCborzN8ZmwO5OdPkwn/TenaCe36JQ1bgvjgPv4UFnI0Yh/BMlKw/UdKJyU4pYpnpYz0pnbsfp8vPpAdOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=x0nGymRmgjityAsdgZShsSJggkgBEsa3CdiJrMrJBKA=;
+ b=MfFu8jMoXvuwEAiFd48Jxpjm5lGuv+BUPGXnet7czgEWSBAS1KgxqWqFC/VUaQv2NoicKJP70t5rBhEcuinXwqipmop0LY4ecgV4EC2RrxvtybkdVllcmpCF8qI56GFYtLKtYMZey8MnaejKQZRPvVmm3lg6/7ic5sDIAuQxzMTtJyeLugdrjhQFWRm9ZxM5JbSM4VMtxPY012RiVg1A0gyTzO6Xw88yyffd+j1enrEE/yoHQld4qJcZ9h8W67ewHGAjsqxpBL1wuV3Phom06RWU6W3Z7+qvblMhIDz8s/kjL5hgiJjR1Na5OtR7AUIZvFIZO0fVaaY8VCxc9RI6Zw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SJ0PR11MB5598.namprd11.prod.outlook.com (2603:10b6:a03:304::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.22; Fri, 3 Mar
+ 2023 23:21:03 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::cea8:722d:15ae:a6ed]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::cea8:722d:15ae:a6ed%4]) with mapi id 15.20.6134.029; Fri, 3 Mar 2023
+ 23:21:03 +0000
+Message-ID: <e24a43ff-e411-87c3-dfe0-f45d463aa3dc@intel.com>
+Date: Fri, 3 Mar 2023 15:21:00 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Content-Language: en-US
+To: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20230302215109.124-1-paul.m.stillwell.jr@intel.com>
+ <20230302215109.124-3-paul.m.stillwell.jr@intel.com>
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20230302215109.124-3-paul.m.stillwell.jr@intel.com>
+X-ClientProxiedBy: SJ0PR03CA0212.namprd03.prod.outlook.com
+ (2603:10b6:a03:39f::7) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230303150818.132386-1-vincenzopalazzodev@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|SJ0PR11MB5598:EE_
+X-MS-Office365-Filtering-Correlation-Id: cd99a1ff-a809-4f33-9b48-08db1c3df50d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Qa6/8H3C6JARYZsPoi7klkXuwnghxORG2cVckthvYbSGRaUxWCGPOQtIgQ+ci/gsWIKgCngy1Gcr3Zx97W6EdFXL4tAYtziYmXpes2l1hYsjcerXFJ7CKn3ZJGC5yXt/vbz9VUm1U5hsRVZNY2Ye8uYAgdftagviGCFO/zOb2XMwlCLse8f1f04zFMYhX/MddL6smb46dThfev+MYR306AERd4OG3t7GiibHhVv6LCwahQt7F9mh+prAV/TWuPxiDLnyyCm4nNccV+7qOfiDt4PpuX4oXsqPwbEwC1MTZP1JDyGsuRWLPDVgpeFCs2nwZmu2YNhEmNtAI0u7pLCCvb3HQEm2fmy9yjug9Kl6aWutwlLfGsMgEkDEYXpjHpPqljQEA/cyn49q4AqfAeBWeKeMC3/2A3U2bxJcL8sVKOauPnxsIaCLcTBZnTmDYOcgl1dvWaN3Lg8xG5M0mJEF3KMctfcnNjhiscpYQx6ubcRjE0hYa/bF6hhQ0v/Z83j0LkvJd4os4B9IQWA2J8HeTyp31aAlTzgIwFYa9eYr5YREdq8qXf78gKne9J8w+MoLzRAnpRvIHmDkd17mZBTiGexQHLuZV70PyXoVNzcxxVs587wGLijLaYZNfiZO1ADdvljC3lbzO3qjY/4kxB39D96It+8D2QP/nPNPCkTiWiEXp4+PeQoqY8pAs1uWF/lbhQbOmbwqb0ARZJkd3BaoI/z10EZUD/x8/6k/2RIYToU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(366004)(346002)(396003)(136003)(39860400002)(376002)(451199018)(2616005)(6512007)(478600001)(31686004)(107886003)(86362001)(36756003)(2906002)(31696002)(4326008)(8676002)(66476007)(66946007)(66556008)(83380400001)(316002)(6506007)(6486002)(186003)(53546011)(41300700001)(8936002)(5660300002)(82960400001)(26005)(38100700002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c0RzdU1hSmc4KzFRTnJjUnoyWW1jakxCVzNBUVpITWpxdFNlWTU2T1p6U3lE?=
+ =?utf-8?B?aUd0S0RrQ3ZXeVRwMFNJOHlOUmZxSlI0Wk9lSDBSTnBQRkNBSEk4ZE82clNI?=
+ =?utf-8?B?ZFpqSjRYVVVzRzJSZzlpZTNKQkNaTTZkMXlSNlBMN1k4dmhXM25WbU0xUWxt?=
+ =?utf-8?B?VTljNTYwbTRLUXFtekNlMVBPbllKaTdBOGc4NWc5VDAvQkFueENJS1FTNGdt?=
+ =?utf-8?B?bzd5QXFCcnc5Q2R3UUkySnhaWDMrVFBLYVAzQmMyWWdUUkNOVm5laWF2M1Nk?=
+ =?utf-8?B?NzJ2bk5mamtrSWF2MnQwUnhZaEpNZWg4cVp3eTdjd3VQbWNLQXhtUjlFeCtG?=
+ =?utf-8?B?NHk1NFZibWs3QWtwMTV0dExYMStiVlBCeTRsM1NJSWkyWnBVbXNudUFkT3pL?=
+ =?utf-8?B?eElXN0tVNUlvNW9nZHVKYXdVbkdYekwzR2ZuL2I5TVBzTTZUR3laRFdGaDYr?=
+ =?utf-8?B?UEtIMGNJcHZNTFlaQVVFcnM1ZXp6UldhakxXRnlvQlFrQUo4WXQ4MUpJU0Mv?=
+ =?utf-8?B?MmU5d1BWQ3ZMbU9DYlBPa0FCMWkydGV0ZE1ZRWc1ZnQxZ2pKd1BYV2Rnelp2?=
+ =?utf-8?B?ckhSWDhrZndBK0laeVNLanl4Ykt1Y0VGYW5qNGtaWXRiaXdtSE40L1hTejhW?=
+ =?utf-8?B?NC9UcERUcnpkeHdyVlZPVjV5dS92YnlaWmc1cVJPbUZuUzdPUEJmRytGbksr?=
+ =?utf-8?B?RUpvcml4U0JUNHNzOHlyNlFWelQ2cGpJWkhsbUp1R3N5L09oSC9URkJya0JV?=
+ =?utf-8?B?aWt1NElZTll3UE5DWXFQVmNJUHNXNXpuN3dyVUNzOVRYRTdxNXNvbXdnbS81?=
+ =?utf-8?B?dldPdkdkQ05VQ3pmcU9YQkhXUi9NT2lpRUZsa3hvZDRWTTBONC84cXkxb3pQ?=
+ =?utf-8?B?bVU1MkhrbHZmZEJDZHJhVXNkZVhTUXZKZEJOa3VVblJNYVhlVitIQWtodmpy?=
+ =?utf-8?B?WFdZYTVMOG1zZFR5UjdWRFVjMzk3QTgzY0hleDBZdFBFanZDMWJUaFBHMGV0?=
+ =?utf-8?B?NEs0anZ0TGV4eHR1REZKdWp6RzFxNVV2K1ZDcWh2aDlJQXRhb3JvVWdLcDFG?=
+ =?utf-8?B?NWsyOWhnWVZYcURiVjdlWHlEZUd1cXBuRUo0YUV6Ull6a1FlL21JanpLTTYy?=
+ =?utf-8?B?bW0yWWwzTzc3VGlsVnV1SW4vRDZtSkY0WnBnbmRseTJlNnk4Z3hQN0xpQWJm?=
+ =?utf-8?B?dnBWUGkvVEpjMjRjQkNHRnloQ2FrUGt2TzU3RExLdW5UMnRqdDFZemNOYUdk?=
+ =?utf-8?B?UnlqS2MwQS8yYzQ5aWtEUG56ZzdCTHo5aitLL1R4VVVmN04xemFZV1JFTjds?=
+ =?utf-8?B?d01YWWZxU25rVlpNcjZMK1l4SGxIVGs0UVRlMm5rcHZmamgyRmV5aDBKRmow?=
+ =?utf-8?B?cWZucG9md2pmM0tzMUk0MWZJZzZBVjE2VGFaR0FYM29rZlBydlg3TGhYZG1G?=
+ =?utf-8?B?MWpNZE1FODdFMEVLTjdzbVhBa0NhcXhwdEhoRFBMMmI0S096ekFheTNJaDJH?=
+ =?utf-8?B?eTBwdXI3ZjJNVEJEWG9HYjZLMG5Kc0NYQzdjS2p0QWhkbGpkdmtLUWxHTzhS?=
+ =?utf-8?B?b21PUGlEeitjUUY3czJUczI5YUx4RnlkaFZJRTB5ZmxJUHJ3b3dMSmNVMWxL?=
+ =?utf-8?B?ankzQ0dRTEw3WWQ0MFVBcWE5UTVxbHFKaFdMSGt1em5UeU91TEZza3p4TUl0?=
+ =?utf-8?B?OW90WmtoQmFRaXc3S0hkNXJocnVuL2JudVJFcXBqV0c5bjArUzNZZVNzWU01?=
+ =?utf-8?B?SmI2Mm1hWEYvWkpLZGdaZFRvMTI2OEZtYnNSTTRMZ05IbU9pVlJOcEdCS2RB?=
+ =?utf-8?B?RWEySDlobmZVQW1nRU82a1BwTlZSNkE3WWVQRDVHQlNOYVRQRUVHVk9jcTdv?=
+ =?utf-8?B?TlVhdE52NXJhZnhEOXZ0aTE0eHRsZ0l2OHphVDVhWng5YXc4NmNtak5tTy9Z?=
+ =?utf-8?B?aGZobitlTkRnY01HTmRpRnB3ak1HcVNqN3dVbWRiN2dROG8zUDR4L3VlcGtW?=
+ =?utf-8?B?NTN6UEl3NDdLaHlxYVlUVXJoN0dSUjZZZmNHaDR5QkpQVzhiZmJHTmxDR0pj?=
+ =?utf-8?B?WWtkTTRRWkpTMERiNlMyNWpYZjFuYzZmTFlXUG5sZmlHU0pVMGRaZkxhM3FH?=
+ =?utf-8?B?blRISWxOZzJ4R3ovMXJqdEYyR1R5enFwUmJlUTNYaDFERXlmRVZEcmxCcko0?=
+ =?utf-8?B?eFE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: cd99a1ff-a809-4f33-9b48-08db1c3df50d
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2023 23:21:03.4980 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ymCXE9FMN45zGESRMFNQciIKCj6KoQjsxP8/zgnjS0SkZ9pFSjj/iMCR/1PpUW8wSAiydeZzWFjqcKyQhoqIyXdg7ULkqkRl67gq3I1MiuY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5598
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677872787; x=1709408787;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=MmS1if5ocaW430OGqD/Zy7m55OH1On6Igy22isuRWf0=;
- b=JV/FpwtH14BsodA00hnU9sM3K/x1DPxElHFZloUsEmOuXJ2Ha9AEnuOu
- qLkIIqLcWHhys5e+GrR7AvcEXDJSkt7OfILZVPntvfBFCwHnnlR2Zcn5G
- 31VpmFhvg6s73rcYxv3tUaD66tvR0PNzriZEnaDjb0Hrh1JDtlpkTbCWx
- V6Kp/0uXJk6qAGmBYSD2M6sa3vfL4UjgUJ5KZABqMyF3P49WH7REXdC95
- bTaHNKAM51Q2+iWtdh/IYoXytpMywXrWSAhGPsaMWCZQOLpligU36ndKc
- OF/gu/OCElt58HID68aO+8Ud/2ziDETKH0r0tzcVQuXERkulRNZqaYiYS
+ t=1677885672; x=1709421672;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=DvynsFxC8u+XLxSgs7BXtDEWfiwMU+t78EMU1du5i94=;
+ b=VXg7OG2FSA1a8/qVdbyKEFZnE10QvvpOlVA2AZl1TQdqS8CJBtnQec3v
+ pmQttlMEonpLhSf0ZJx1P7F/R2XDydsnnJNpW8+bXt/aYzI/BVkY917MH
+ ig/qnggKlvJAlyJxiuFujrH8EQ0W5BjJ2bHtqAQaLHd9gm3MhidUgz6q+
+ /Ma5GM3StfqgxWMKCAI9lTfc0jpzIAzudB6J55wC1OciozADg0q1SnQFt
+ t33ZImfP4/o/DITOwmQQaZ2SHf1tWEmkVg+4jY7glh7sbIFv3h5WySi7n
+ CUIukAw56RmePoaFFpM3wf/MspW3YSLjpSjd9Qy1c1GExBOq4axsnaTQj
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JV/FpwtH
-Subject: Re: [Intel-wired-lan] [PATCH v1] netdevice: use ifmap isteand of
- plain fields
+ header.a=rsa-sha256 header.s=Intel header.b=VXg7OG2F
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v9 2/5] ice: enable debugfs
+ to check FW logging status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,242 +194,258 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>, jesse.brandeburg@intel.com,
- intel-wired-lan@lists.osuosl.org, davem@davemloft.net,
- oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="us-ascii"
+Cc: Brett Creeley <brett.creeley@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vincenzo,
+On 3/2/2023 1:51 PM, Paul M Stillwell Jr wrote:
 
-Thank you for the patch! Yet something to improve:
+[...]
 
-[auto build test ERROR on net/master]
-[also build test ERROR on net-next/master horms-ipvs/master linus/master v6.2 next-20230303]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> +#ifdef CONFIG_DEBUG_FS
+> +void ice_debugfs_fwlog_init(struct ice_pf *pf);
+> +void ice_debugfs_init(void);
+> +void ice_debugfs_exit(void);
+> +#else
+> +static inline void ice_debugfs_fwlog_init(struct ice_pf *pf) { }
+> +static inline void ice_debugfs_init(void) { }
+> +static inline void ice_debugfs_exit(void) { }
+> +#endif /* CONFIG_DEBUG_FS */
+> +
+>   bool netif_is_ice(struct net_device *dev);
+>   int ice_vsi_setup_tx_rings(struct ice_vsi *vsi);
+>   int ice_vsi_setup_rx_rings(struct ice_vsi *vsi);
+> @@ -934,6 +945,18 @@ int ice_aq_wait_for_event(struct ice_pf *pf, u16 opcode, unsigned long timeout,
+>   int ice_open(struct net_device *netdev);
+>   int ice_open_internal(struct net_device *netdev);
+>   int ice_stop(struct net_device *netdev);
+> +#ifdef CONFIG_DEBUG_FS
+> +int
+> +ice_pf_fwlog_update_modules(struct ice_pf *pf, u8 log_level,
+> +			    unsigned long events);
+> +#else
+> +static int
+> +ice_pf_fwlog_update_modules(struct ice_pf *pf, u8 log_level,
+> +			    unsigned long events)
+> +{
+> +	return -EOPNOTSUPP;
+> +}
+> +#endif /* CONFIG_DEBUG_FS */
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Vincenzo-Palazzo/netdevice-use-ifmap-isteand-of-plain-fields/20230303-231003
-patch link:    https://lore.kernel.org/r/20230303150818.132386-1-vincenzopalazzodev%40gmail.com
-patch subject: [PATCH v1] netdevice: use ifmap isteand of plain fields
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20230304/202303040357.BP5TQ4vl-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/4efa870f9b2112fdebe7d1fffe30f5626b8d5229
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Vincenzo-Palazzo/netdevice-use-ifmap-isteand-of-plain-fields/20230303-231003
-        git checkout 4efa870f9b2112fdebe7d1fffe30f5626b8d5229
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/net/
+This could be put with the ifdef above
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303040357.BP5TQ4vl-lkp@intel.com/
+>   void ice_service_task_schedule(struct ice_pf *pf);
+>   int ice_load(struct ice_pf *pf);
+>   void ice_unload(struct ice_pf *pf);
 
-All errors (new ones prefixed by >>):
+[...]
 
-   drivers/net/hamradio/baycom_epp.c: In function 'epp_open':
->> drivers/net/hamradio/baycom_epp.c:818:51: error: 'struct net_device' has no member named 'base_addr'
-     818 |         struct parport *pp = parport_find_base(dev->base_addr);
-         |                                                   ^~
-   In file included from include/linux/kernel.h:29,
-                    from include/linux/cpumask.h:10,
-                    from include/linux/mm_types_task.h:14,
-                    from include/linux/mm_types.h:5,
-                    from include/linux/buildid.h:5,
-                    from include/linux/module.h:14,
-                    from drivers/net/hamradio/baycom_epp.c:29:
-   drivers/net/hamradio/baycom_epp.c:826:82: error: 'struct net_device' has no member named 'base_addr'
-     826 |                 printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
-         |                                                                                  ^~
-   include/linux/printk.h:427:33: note: in definition of macro 'printk_index_wrap'
-     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
-         |                                 ^~~~~~~~~~~
-   drivers/net/hamradio/baycom_epp.c:826:17: note: in expansion of macro 'printk'
-     826 |                 printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
-         |                 ^~~~~~
-   drivers/net/hamradio/baycom_epp.c: In function 'epp_close':
-   drivers/net/hamradio/baycom_epp.c:961:31: error: 'struct net_device' has no member named 'base_addr'
-     961 |                bc_drvname, dev->base_addr, dev->irq);
-         |                               ^~
-   include/linux/printk.h:427:33: note: in definition of macro 'printk_index_wrap'
-     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
-         |                                 ^~~~~~~~~~~
-   drivers/net/hamradio/baycom_epp.c:960:9: note: in expansion of macro 'printk'
-     960 |         printk(KERN_INFO "%s: close epp at iobase 0x%lx irq %u\n",
-         |         ^~~~~~
-   drivers/net/hamradio/baycom_epp.c: In function 'baycom_siocdevprivate':
-   drivers/net/hamradio/baycom_epp.c:1037:40: error: 'struct net_device' has no member named 'base_addr'
-    1037 |                 hi.data.mp.iobase = dev->base_addr;
-         |                                        ^~
-   drivers/net/hamradio/baycom_epp.c:1049:20: error: 'struct net_device' has no member named 'base_addr'
-    1049 |                 dev->base_addr = hi.data.mp.iobase;
-         |                    ^~
-   drivers/net/hamradio/baycom_epp.c: In function 'init_baycomepp':
-   drivers/net/hamradio/baycom_epp.c:1242:20: error: 'struct net_device' has no member named 'base_addr'
-    1242 |                 dev->base_addr = iobase[i];
-         |                    ^~
---
-   drivers/net/ethernet/8390/stnic.c: In function 'STNIC_DELAY':
-   drivers/net/ethernet/8390/stnic.c:81:9: warning: variable 'trash' set but not used [-Wunused-but-set-variable]
-      81 |   vword trash;
-         |         ^~~~~
-   drivers/net/ethernet/8390/stnic.c: In function 'stnic_probe':
->> drivers/net/ethernet/8390/stnic.c:125:6: error: 'struct net_device' has no member named 'base_addr'
-     125 |   dev->base_addr = 0x1000;
-         |      ^~
+> +/* Set FW Logging configuration (indirect 0xFF30)
+> + * Query FW Logging (indirect 0xFF32)
+> + */
+> +struct ice_aqc_fw_log {
+> +	u8 cmd_flags;
+> +#define ICE_AQC_FW_LOG_CONF_UART_EN	BIT(0)
+> +#define ICE_AQC_FW_LOG_CONF_AQ_EN	BIT(1)
+> +#define ICE_AQC_FW_LOG_QUERY_REGISTERED	BIT(2)
+> +#define ICE_AQC_FW_LOG_CONF_SET_VALID	BIT(3)
+> +#define ICE_AQC_FW_LOG_AQ_REGISTER	BIT(0)
+> +#define ICE_AQC_FW_LOG_AQ_QUERY		BIT(2)
+> +#define ICE_AQC_FW_LOG_PERSISTENT	BIT(0)
+> +	u8 rsp_flag;
 
+Please add a newline between the member and the defines that relate to 
+it. Please check this for other instances/needs as well.
 
-vim +818 drivers/net/hamradio/baycom_epp.c
+[...]
 
-^1da177e4c3f41 Linus Torvalds         2005-04-16  805  
-^1da177e4c3f41 Linus Torvalds         2005-04-16  806  /*
-^1da177e4c3f41 Linus Torvalds         2005-04-16  807   * Open/initialize the board. This is called (in the current kernel)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  808   * sometime after booting when the 'ifconfig' program is run.
-^1da177e4c3f41 Linus Torvalds         2005-04-16  809   *
-^1da177e4c3f41 Linus Torvalds         2005-04-16  810   * This routine should set everything up anew at each open, even
-^1da177e4c3f41 Linus Torvalds         2005-04-16  811   * registers that "should" only need to be set once at boot, so that
-^1da177e4c3f41 Linus Torvalds         2005-04-16  812   * there is non-reboot way to recover if something goes wrong.
-^1da177e4c3f41 Linus Torvalds         2005-04-16  813   */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  814  
-^1da177e4c3f41 Linus Torvalds         2005-04-16  815  static int epp_open(struct net_device *dev)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  816  {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  817  	struct baycom_state *bc = netdev_priv(dev);
-^1da177e4c3f41 Linus Torvalds         2005-04-16 @818          struct parport *pp = parport_find_base(dev->base_addr);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  819  	unsigned int i, j;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  820  	unsigned char tmp[128];
-^1da177e4c3f41 Linus Torvalds         2005-04-16  821  	unsigned char stat;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  822  	unsigned long tstart;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  823  	struct pardev_cb par_cb;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  824  	
-^1da177e4c3f41 Linus Torvalds         2005-04-16  825          if (!pp) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  826                  printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  827                  return -ENXIO;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  828          }
-^1da177e4c3f41 Linus Torvalds         2005-04-16  829  #if 0
-^1da177e4c3f41 Linus Torvalds         2005-04-16  830          if (pp->irq < 0) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  831                  printk(KERN_ERR "%s: parport at 0x%lx has no irq\n", bc_drvname, pp->base);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  832  		parport_put_port(pp);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  833                  return -ENXIO;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  834          }
-^1da177e4c3f41 Linus Torvalds         2005-04-16  835  #endif
-^1da177e4c3f41 Linus Torvalds         2005-04-16  836  	if ((~pp->modes) & (PARPORT_MODE_TRISTATE | PARPORT_MODE_PCSPP | PARPORT_MODE_SAFEININT)) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  837                  printk(KERN_ERR "%s: parport at 0x%lx cannot be used\n",
-^1da177e4c3f41 Linus Torvalds         2005-04-16  838  		       bc_drvname, pp->base);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  839  		parport_put_port(pp);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  840                  return -EIO;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  841  	}
-^1da177e4c3f41 Linus Torvalds         2005-04-16  842  	memset(&bc->modem, 0, sizeof(bc->modem));
-ca444073a2de97 Sudip Mukherjee        2017-09-17  843  	memset(&par_cb, 0, sizeof(par_cb));
-ca444073a2de97 Sudip Mukherjee        2017-09-17  844  	par_cb.wakeup = epp_wakeup;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  845  	par_cb.private = (void *)dev;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  846  	par_cb.flags = PARPORT_DEV_EXCL;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  847  	for (i = 0; i < NR_PORTS; i++)
-ca444073a2de97 Sudip Mukherjee        2017-09-17  848  		if (baycom_device[i] == dev)
-ca444073a2de97 Sudip Mukherjee        2017-09-17  849  			break;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  850  
-ca444073a2de97 Sudip Mukherjee        2017-09-17  851  	if (i == NR_PORTS) {
-ca444073a2de97 Sudip Mukherjee        2017-09-17  852  		pr_err("%s: no device found\n", bc_drvname);
-ca444073a2de97 Sudip Mukherjee        2017-09-17  853  		parport_put_port(pp);
-ca444073a2de97 Sudip Mukherjee        2017-09-17  854  		return -ENODEV;
-ca444073a2de97 Sudip Mukherjee        2017-09-17  855  	}
-ca444073a2de97 Sudip Mukherjee        2017-09-17  856  
-ca444073a2de97 Sudip Mukherjee        2017-09-17  857  	bc->pdev = parport_register_dev_model(pp, dev->name, &par_cb, i);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  858  	parport_put_port(pp);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  859          if (!bc->pdev) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  860                  printk(KERN_ERR "%s: cannot register parport at 0x%lx\n", bc_drvname, pp->base);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  861                  return -ENXIO;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  862          }
-^1da177e4c3f41 Linus Torvalds         2005-04-16  863          if (parport_claim(bc->pdev)) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  864                  printk(KERN_ERR "%s: parport at 0x%lx busy\n", bc_drvname, pp->base);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  865                  parport_unregister_device(bc->pdev);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  866                  return -EBUSY;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  867          }
-^1da177e4c3f41 Linus Torvalds         2005-04-16  868          dev->irq = /*pp->irq*/ 0;
-c4028958b6ecad David Howells          2006-11-22  869  	INIT_DELAYED_WORK(&bc->run_work, epp_bh);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  870  	bc->work_running = 1;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  871  	bc->modem = EPP_CONVENTIONAL;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  872  	if (eppconfig(bc))
-^1da177e4c3f41 Linus Torvalds         2005-04-16  873  		printk(KERN_INFO "%s: no FPGA detected, assuming conventional EPP modem\n", bc_drvname);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  874  	else
-^1da177e4c3f41 Linus Torvalds         2005-04-16  875  		bc->modem = /*EPP_FPGA*/ EPP_FPGAEXTSTATUS;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  876  	parport_write_control(pp, LPTCTRL_PROGRAM); /* prepare EPP mode; we aren't using interrupts */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  877  	/* reset the modem */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  878  	tmp[0] = 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  879  	tmp[1] = EPP_TX_FIFO_ENABLE|EPP_RX_FIFO_ENABLE|EPP_MODEM_ENABLE;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  880  	if (pp->ops->epp_write_addr(pp, tmp, 2, 0) != 2)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  881  		goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  882  	/* autoprobe baud rate */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  883  	tstart = jiffies;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  884  	i = 0;
-ff5688ae1cedfb Marcelo Feitoza Parisi 2006-01-09  885  	while (time_before(jiffies, tstart + HZ/3)) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  886  		if (pp->ops->epp_read_addr(pp, &stat, 1, 0) != 1)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  887  			goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  888  		if ((stat & (EPP_NRAEF|EPP_NRHF)) == EPP_NRHF) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  889  			schedule();
-^1da177e4c3f41 Linus Torvalds         2005-04-16  890  			continue;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  891  		}
-^1da177e4c3f41 Linus Torvalds         2005-04-16  892  		if (pp->ops->epp_read_data(pp, tmp, 128, 0) != 128)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  893  			goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  894  		if (pp->ops->epp_read_data(pp, tmp, 128, 0) != 128)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  895  			goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  896  		i += 256;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  897  	}
-^1da177e4c3f41 Linus Torvalds         2005-04-16  898  	for (j = 0; j < 256; j++) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  899  		if (pp->ops->epp_read_addr(pp, &stat, 1, 0) != 1)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  900  			goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  901  		if (!(stat & EPP_NREF))
-^1da177e4c3f41 Linus Torvalds         2005-04-16  902  			break;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  903  		if (pp->ops->epp_read_data(pp, tmp, 1, 0) != 1)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  904  			goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  905  		i++;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  906  	}
-^1da177e4c3f41 Linus Torvalds         2005-04-16  907  	tstart = jiffies - tstart;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  908  	bc->bitrate = i * (8 * HZ) / tstart;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  909  	j = 1;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  910  	i = bc->bitrate >> 3;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  911  	while (j < 7 && i > 150) {
-^1da177e4c3f41 Linus Torvalds         2005-04-16  912  		j++;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  913  		i >>= 1;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  914  	}
-^1da177e4c3f41 Linus Torvalds         2005-04-16  915  	printk(KERN_INFO "%s: autoprobed bitrate: %d  int divider: %d  int rate: %d\n", 
-^1da177e4c3f41 Linus Torvalds         2005-04-16  916  	       bc_drvname, bc->bitrate, j, bc->bitrate >> (j+2));
-^1da177e4c3f41 Linus Torvalds         2005-04-16  917  	tmp[0] = EPP_TX_FIFO_ENABLE|EPP_RX_FIFO_ENABLE|EPP_MODEM_ENABLE/*|j*/;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  918  	if (pp->ops->epp_write_addr(pp, tmp, 1, 0) != 1)
-^1da177e4c3f41 Linus Torvalds         2005-04-16  919  		goto epptimeout;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  920  	/*
-^1da177e4c3f41 Linus Torvalds         2005-04-16  921  	 * initialise hdlc variables
-^1da177e4c3f41 Linus Torvalds         2005-04-16  922  	 */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  923  	bc->hdlcrx.state = 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  924  	bc->hdlcrx.numbits = 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  925  	bc->hdlctx.state = tx_idle;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  926  	bc->hdlctx.bufcnt = 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  927  	bc->hdlctx.slotcnt = bc->ch_params.slottime;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  928  	bc->hdlctx.calibrate = 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  929  	/* start the bottom half stuff */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  930  	schedule_delayed_work(&bc->run_work, 1);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  931  	netif_start_queue(dev);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  932  	return 0;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  933  
-^1da177e4c3f41 Linus Torvalds         2005-04-16  934   epptimeout:
-^1da177e4c3f41 Linus Torvalds         2005-04-16  935  	printk(KERN_ERR "%s: epp timeout during bitrate probe\n", bc_drvname);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  936  	parport_write_control(pp, 0); /* reset the adapter */
-^1da177e4c3f41 Linus Torvalds         2005-04-16  937          parport_release(bc->pdev);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  938          parport_unregister_device(bc->pdev);
-^1da177e4c3f41 Linus Torvalds         2005-04-16  939  	return -EIO;
-^1da177e4c3f41 Linus Torvalds         2005-04-16  940  }
-^1da177e4c3f41 Linus Torvalds         2005-04-16  941  
+> +#include <linux/vmalloc.h>
+> +
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Any particular reason this isn't with everything else (and alphabetized)?
+
+> +#include <linux/fs.h>
+> +#include <linux/debugfs.h>
+> +#include <linux/random.h>
+> +#include "ice.h"
+> +
+> +static struct dentry *ice_debugfs_root;
+> +
+> +static const char *module_id_to_name(u16 module_id)
+> +{
+> +	switch (module_id) {
+> +	case ICE_AQC_FW_LOG_ID_GENERAL:
+> +		return "General";
+> +	case ICE_AQC_FW_LOG_ID_CTRL:
+> +		return "Control (Resets + Autoload)";
+> +	case ICE_AQC_FW_LOG_ID_LINK:
+> +		return "Link Management";
+> +	case ICE_AQC_FW_LOG_ID_LINK_TOPO:
+> +		return "Link Topology Detection";
+> +	case ICE_AQC_FW_LOG_ID_DNL:
+> +		return "DNL";
+> +	case ICE_AQC_FW_LOG_ID_I2C:
+> +		return "I2C";
+> +	case ICE_AQC_FW_LOG_ID_SDP:
+> +		return "SDP";
+> +	case ICE_AQC_FW_LOG_ID_MDIO:
+> +		return "MDIO";
+> +	case ICE_AQC_FW_LOG_ID_ADMINQ:
+> +		return "Admin Queue";
+> +	case ICE_AQC_FW_LOG_ID_HDMA:
+> +		return "HDMA";
+> +	case ICE_AQC_FW_LOG_ID_LLDP:
+> +		return "LLDP";
+> +	case ICE_AQC_FW_LOG_ID_DCBX:
+> +		return "DCBX";
+> +	case ICE_AQC_FW_LOG_ID_DCB:
+> +		return "DCB";
+> +	case ICE_AQC_FW_LOG_ID_XLR:
+> +		return "XLR";
+> +	case ICE_AQC_FW_LOG_ID_NVM:
+> +		return "NVM";
+> +	case ICE_AQC_FW_LOG_ID_AUTH:
+> +		return "Authentication";
+> +	case ICE_AQC_FW_LOG_ID_VPD:
+> +		return "VPD";
+> +	case ICE_AQC_FW_LOG_ID_IOSF:
+> +		return "IOSF";
+> +	case ICE_AQC_FW_LOG_ID_PARSER:
+> +		return "Parser";
+> +	case ICE_AQC_FW_LOG_ID_SW:
+> +		return "Switch";
+> +	case ICE_AQC_FW_LOG_ID_SCHEDULER:
+> +		return "Scheduler";
+> +	case ICE_AQC_FW_LOG_ID_TXQ:
+> +		return "Tx Queue Management";
+> +	case ICE_AQC_FW_LOG_ID_POST:
+> +		return "Post";
+> +	case ICE_AQC_FW_LOG_ID_WATCHDOG:
+> +		return "Watchdog";
+> +	case ICE_AQC_FW_LOG_ID_TASK_DISPATCH:
+> +		return "Task Dispatcher";
+> +	case ICE_AQC_FW_LOG_ID_MNG:
+> +		return "Manageability";
+> +	case ICE_AQC_FW_LOG_ID_SYNCE:
+> +		return "Synce";
+> +	case ICE_AQC_FW_LOG_ID_HEALTH:
+> +		return "Health";
+> +	case ICE_AQC_FW_LOG_ID_TSDRV:
+> +		return "Time Sync";
+> +	case ICE_AQC_FW_LOG_ID_PFREG:
+> +		return "PF Registration";
+> +	case ICE_AQC_FW_LOG_ID_MDLVER:
+> +		return "Module Version";
+> +	default:
+> +		return "Unsupported";
+> +	}
+> +}
+> +
+> +static const char *log_level_to_name(u8 log_level)
+> +{
+> +	switch (log_level) {
+> +	case ICE_FWLOG_LEVEL_NONE:
+> +		return "None";
+> +	case ICE_FWLOG_LEVEL_ERROR:
+> +		return "Error";
+> +	case ICE_FWLOG_LEVEL_WARNING:
+> +		return "Warning";
+> +	case ICE_FWLOG_LEVEL_NORMAL:
+> +		return "Normal";
+> +	case ICE_FWLOG_LEVEL_VERBOSE:
+> +		return "Verbose";
+> +	default:
+> +		return "Unsupported";
+> +	}
+> +}
+> +
+> +static void ice_print_fwlog_config(struct ice_hw *hw, struct ice_fwlog_cfg *cfg)
+> +{
+> +	struct device *dev = ice_pf_to_dev((struct ice_pf *)(hw->back));
+
+I don't believe this casting is needed.
+
+> +	u16 i;
+> +
+> +	dev_info(dev, "Log_resolution: %d\n", cfg->log_resolution);
+> +	dev_info(dev, "Options: 0x%04x\n", cfg->options);
+> +	dev_info(dev, "\tarq_ena: %s\n",
+> +		 (cfg->options &
+> +		  ICE_FWLOG_OPTION_ARQ_ENA) ? "true" : "false");
+> +	dev_info(dev, "\tuart_ena: %s\n",
+> +		 (cfg->options &
+> +		  ICE_FWLOG_OPTION_UART_ENA) ? "true" : "false");
+> +	dev_info(dev, "\trunning: %s\n",
+> +		 (cfg->options &
+> +		  ICE_FWLOG_OPTION_IS_REGISTERED) ? "true" : "false");
+> +
+> +	dev_info(dev, "Module Entries:\n");
+> +	for (i = 0; i < ICE_AQC_FW_LOG_ID_MAX; i++) {
+> +		struct ice_fwlog_module_entry *entry =
+> +			&cfg->module_entries[i];
+> +
+> +		dev_info(dev, "\tModule ID %d (%s) Log Level %d (%s)\n",
+> +			 entry->module_id, module_id_to_name(entry->module_id),
+> +			 entry->log_level, log_level_to_name(entry->log_level));
+> +	}
+> +}
+> +
+> +/**
+> + * ice_fwlog_dump_cfg - Dump current FW logging configuration
+> + * @hw: pointer to the HW structure
+> + */
+> +static void ice_fwlog_dump_cfg(struct ice_hw *hw)
+> +{
+> +	struct device *dev = ice_pf_to_dev((struct ice_pf *)(hw->back));
+
+same here
+
+> +	struct ice_fwlog_cfg *cfg;
+> +	int status;
+> +
+> +	cfg = kzalloc(sizeof(*cfg), GFP_KERNEL);
+> +	if (!cfg)
+> +		return;
+> +
+> +	status = ice_fwlog_get(hw, cfg);
+> +	if (status) {
+> +		kfree(cfg);
+> +		return;
+> +	}
+> +
+> +	dev_info(dev, "Running FWLOG Configuration:\n");
+> +	ice_print_fwlog_config(hw, cfg);
+> +
+> +	kfree(cfg);
+> +}
+
+[...]
+
+> +
+> +/**
+> + * ice_fwlog_get - Get the firmware logging settings
+> + * @hw: pointer to the HW structure
+> + * @cfg: config to populate based on current firmware logging settings
+> + */
+> +int ice_fwlog_get(struct ice_hw *hw, struct ice_fwlog_cfg *cfg)
+> +{
+> +	int status;
+> +
+> +	if (!ice_fwlog_supported(hw))
+> +		return -EOPNOTSUPP;
+> +
+> +	if (!cfg)
+> +		return -EINVAL;
+> +
+> +	status = ice_aq_fwlog_get(hw, cfg);
+> +	if (status)
+> +		return status;
+> +
+> +	return 0;
+
+This can be 'return ice_aq_fwlog_get(hw, cfg);'
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
