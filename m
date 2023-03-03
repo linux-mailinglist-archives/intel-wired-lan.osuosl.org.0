@@ -1,100 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8393E6A9E44
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Mar 2023 19:16:40 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 174266AA040
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Mar 2023 20:46:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 15F6D416A6;
-	Fri,  3 Mar 2023 18:16:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 15F6D416A6
+	by smtp3.osuosl.org (Postfix) with ESMTP id D0E6C617B9;
+	Fri,  3 Mar 2023 19:46:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0E6C617B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1677867399;
-	bh=Og56h7mPCqQc39090s3NmI86hz8MAYNDH18rFLIcO/8=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=pdzYyY1VrjmZvAL5gcdu+y/GH1W8XGyGm3b2wJh28J3a62K4+KphdYzN//8BMh1Ay
-	 VLJC7T0uYgm34FCU0TziZGm8+NIakoBennOs1yuQf1IlYVu3jNSbLqbM4+PNy0sCU+
-	 E0Q42WImoLiwgJvI9FdzS6c9ZbOwjmSkpPnNVi7HaFUR0GEj+iLWF4V2MvkLqfObE3
-	 MPBPNuuyEr4nuPrQCRIZUynElH+pJqOR88Yy4TlQ0o5XqILfXqGeuydfdGJPHUH4mI
-	 usaUWpV6aApGBy/b5/2iJ02/jbm6+XRhMmxdLjQrthnN923ykvyRjmB2pPquw0WvOX
-	 FusHUm8kbJKNw==
+	s=default; t=1677872796;
+	bh=iMhLXz5rAH6CD0E+vkCrz6ltCS1kbY2fFMpQvt+pLCo=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=pwsQzl0fOwlc9AFdGU6YnmyUfO5abBSXNN/ORgf8UK0Ma9XPV2HuuESl3YBoMBtOq
+	 3jR+kvJb4S6vQXyTbIKj1r7YTsu4hdguMqz5A9uwVJKtQs57kkmq3hi6xKu9h0XFFE
+	 sYCvw7VTposv0c82HeOrOV4FGZixPgMqlyx5I3uVYLiD/MpaNKWa9IGZ1cRMxLr6bs
+	 7TrJobrGLFs8PL1lZjefexGXRsPUN9nyhHp/NQJa31tH0Be/GvbUXamxKKMf/bqTtw
+	 26Slo4yvLewGa3/hpF2Mn5LJxS0l5t/EHIW9PdI+Zp+1Qz9jJaMd6Z5Kl+BkEeZXvA
+	 e4rUExwCnTYgA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 11PuSHF1DgMc; Fri,  3 Mar 2023 18:16:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LynsYJrlngTo; Fri,  3 Mar 2023 19:46:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0C7DD4012E;
-	Fri,  3 Mar 2023 18:16:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0C7DD4012E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2F9AA61779;
+	Fri,  3 Mar 2023 19:46:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F9AA61779
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 978A31BF40E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 18:09:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A7C4E1BF3E1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7DA8C4168E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 18:09:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7DA8C4168E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7D17441D42
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D17441D42
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YH8fHCvv0lLt for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Mar 2023 18:09:45 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91A6840354
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
- [IPv6:2a00:1450:4864:20::331])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 91A6840354
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 18:09:45 +0000 (UTC)
-Received: by mail-wm1-x331.google.com with SMTP id j3so2157879wms.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 03 Mar 2023 10:09:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1677866983;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=u37BUiqVfqrO2g1C0p7SHL4Rg4pvcPK9tYwoGI/HO3M=;
- b=W62gAOpwF8wyVCvV9iijaTo4ukex4wRGGOAbroqSlxy51dPHsZQvPYYp/z0IgM9drC
- mXJqmS+7+k9WhEDK4L3wiX1gT7liInDLcNXoGkLEqLyPMC7iZbfM0VX7uEGesdHXcNhQ
- Qo2QlW1ig+9GfVYTBUJ7V2TF//nXGc6OzL/+/aPYvVGGNk6lcDHVlp0kgoBDcXXrCLO5
- k++jd+G/Zo+Gli7QHT3XZ1+XBjbfomeJ1HLkmaodFXVz2Zl2piaonzW6DxGEqfpSdLVE
- S8Phn56BmzWCZZINbsMTGRw1mlNt0RDjDPQ/ajrci6NAXdtxI9HXu9gopHZLPtC7zWyr
- H5Eg==
-X-Gm-Message-State: AO0yUKXtNEp34O3Cv0BEiV3DWbAJHiXbxkRd3xCrphtGU4a7kIHc6NWv
- fkOEMwyG3F8DwlTqEcq4k4c=
-X-Google-Smtp-Source: AK7set/YtUomOQPXQVcIghVlu+EccsrABmhpcldiGMVUGn/xmHgV4vmNVNeGXL7y+cFbOJIJzb4A7g==
-X-Received: by 2002:a05:600c:1550:b0:3e9:c2f4:8ad4 with SMTP id
- f16-20020a05600c155000b003e9c2f48ad4mr2413026wmg.8.1677866983577; 
- Fri, 03 Mar 2023 10:09:43 -0800 (PST)
-Received: from localhost.localdomain ([2001:b07:5d37:537d:5e25:9ef5:7977:d60c])
- by smtp.gmail.com with ESMTPSA id
- o11-20020a05600c4fcb00b003e8f0334db8sm7458083wmq.5.2023.03.03.10.09.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Mar 2023 10:09:43 -0800 (PST)
-From: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
-To: netdev@vger.kernel.org
-Date: Fri,  3 Mar 2023 19:09:26 +0100
-Message-Id: <20230303180926.142107-1-vincenzopalazzodev@gmail.com>
-X-Mailer: git-send-email 2.39.2
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KchGhIPUxwQP for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Mar 2023 19:46:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6448041D41
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6448041D41
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Mar 2023 19:46:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="421414725"
+X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; d="scan'208";a="421414725"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2023 11:46:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="705749578"
+X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; d="scan'208";a="705749578"
+Received: from lkp-server01.sh.intel.com (HELO 776573491cc5) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 03 Mar 2023 11:46:24 -0800
+Received: from kbuild by 776573491cc5 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pYBMF-0001dY-1h;
+ Fri, 03 Mar 2023 19:46:23 +0000
+Date: Sat, 4 Mar 2023 03:46:16 +0800
+From: kernel test robot <lkp@intel.com>
+To: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>, netdev@vger.kernel.org
+Message-ID: <202303040357.BP5TQ4vl-lkp@intel.com>
+References: <20230303150818.132386-1-vincenzopalazzodev@gmail.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 03 Mar 2023 18:16:30 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1677866983;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=u37BUiqVfqrO2g1C0p7SHL4Rg4pvcPK9tYwoGI/HO3M=;
- b=Lsc142JPIawJVGB4o/tc8fQxZJXiiZm6kcw5EUuJFv2SRnxqVKjx0xxHpB1rbA5ajW
- mGo7wdl4JOJsr26lfudesGTFg0Uq7BmqaBOTivHBfkQpfhhdnt2goqnDYuMblgyun9Um
- DJP7JiaV4/nBNFDUECKP8YyW1tJQ8d5E7WsBb7X5tD5XBUY9WhERh2tWCXQ4w1YUqqBJ
- kf8lVkFKdh3aJprPXvDjhg4fIUhdScB5W4ujb/eJx/8iqS4n4ZooWkmx9akVehS2JXEP
- aZhqxgeSBvvjVPFbwIQLZGqfFLOmYiFY0M6AqjOL1ooZu6xHLogN+Zcr/EX+xX4CqO7h
- Wz2Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=Lsc142JP
-Subject: [Intel-wired-lan] [PATCH v2] netdevice: use ifmap instead of plain
- fields
+Content-Disposition: inline
+In-Reply-To: <20230303150818.132386-1-vincenzopalazzodev@gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1677872787; x=1709408787;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=MmS1if5ocaW430OGqD/Zy7m55OH1On6Igy22isuRWf0=;
+ b=JV/FpwtH14BsodA00hnU9sM3K/x1DPxElHFZloUsEmOuXJ2Ha9AEnuOu
+ qLkIIqLcWHhys5e+GrR7AvcEXDJSkt7OfILZVPntvfBFCwHnnlR2Zcn5G
+ 31VpmFhvg6s73rcYxv3tUaD66tvR0PNzriZEnaDjb0Hrh1JDtlpkTbCWx
+ V6Kp/0uXJk6qAGmBYSD2M6sa3vfL4UjgUJ5KZABqMyF3P49WH7REXdC95
+ bTaHNKAM51Q2+iWtdh/IYoXytpMywXrWSAhGPsaMWCZQOLpligU36ndKc
+ OF/gu/OCElt58HID68aO+8Ud/2ziDETKH0r0tzcVQuXERkulRNZqaYiYS
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=JV/FpwtH
+Subject: Re: [Intel-wired-lan] [PATCH v1] netdevice: use ifmap isteand of
+ plain fields
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,109 +98,242 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>,
+Cc: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>, jesse.brandeburg@intel.com,
  intel-wired-lan@lists.osuosl.org, davem@davemloft.net,
- jesse.brandeburg@intel.com
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-clean the code by using the ifmap instead of plain fields,
-and avoid code duplication.
+Hi Vincenzo,
 
-Signed-off-by: Vincenzo Palazzo <vincenzopalazzodev@gmail.com>
----
- drivers/net/ethernet/intel/e1000e/netdev.c |  4 ++--
- include/linux/netdevice.h                  |  8 +-------
- net/core/dev_ioctl.c                       | 12 ++++++------
- net/core/rtnetlink.c                       |  6 +++---
- 4 files changed, 12 insertions(+), 18 deletions(-)
+Thank you for the patch! Yet something to improve:
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index e1eb1de88bf9..059ff8bcdbbc 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -7476,8 +7476,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	netif_napi_add(netdev, &adapter->napi, e1000e_poll);
- 	strscpy(netdev->name, pci_name(pdev), sizeof(netdev->name));
- 
--	netdev->mem_start = mmio_start;
--	netdev->mem_end = mmio_start + mmio_len;
-+	netdev->dev_mapping.mem_start = mmio_start;
-+	netdev->dev_mapping.mem_end = mmio_start + mmio_len;
- 
- 	adapter->bd_number = cards_found++;
- 
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 6a14b7b11766..c5987e90a078 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -2031,13 +2031,7 @@ struct net_device {
- 	char			name[IFNAMSIZ];
- 	struct netdev_name_node	*name_node;
- 	struct dev_ifalias	__rcu *ifalias;
--	/*
--	 *	I/O specific fields
--	 *	FIXME: Merge these and struct ifmap into one
--	 */
--	unsigned long		mem_end;
--	unsigned long		mem_start;
--	unsigned long		base_addr;
-+	struct ifmap dev_mapping;
- 
- 	/*
- 	 *	Some hardware also needs these fields (state,dev_list,
-diff --git a/net/core/dev_ioctl.c b/net/core/dev_ioctl.c
-index 5cdbfbf9a7dc..89469cb97e35 100644
---- a/net/core/dev_ioctl.c
-+++ b/net/core/dev_ioctl.c
-@@ -88,9 +88,9 @@ static int dev_getifmap(struct net_device *dev, struct ifreq *ifr)
- 	if (in_compat_syscall()) {
- 		struct compat_ifmap *cifmap = (struct compat_ifmap *)ifmap;
- 
--		cifmap->mem_start = dev->mem_start;
--		cifmap->mem_end   = dev->mem_end;
--		cifmap->base_addr = dev->base_addr;
-+		cifmap->mem_start = dev->dev_mapping.mem_start;
-+		cifmap->mem_end   = dev->dev_mapping.mem_end;
-+		cifmap->base_addr = dev->dev_mapping.base_addr;
- 		cifmap->irq       = dev->irq;
- 		cifmap->dma       = dev->dma;
- 		cifmap->port      = dev->if_port;
-@@ -98,9 +98,9 @@ static int dev_getifmap(struct net_device *dev, struct ifreq *ifr)
- 		return 0;
- 	}
- 
--	ifmap->mem_start  = dev->mem_start;
--	ifmap->mem_end    = dev->mem_end;
--	ifmap->base_addr  = dev->base_addr;
-+	ifmap->mem_start  = dev->dev_mapping.mem_start;
-+	ifmap->mem_end    = dev->dev_mapping.mem_end;
-+	ifmap->base_addr  = dev->dev_mapping.base_addr;
- 	ifmap->irq        = dev->irq;
- 	ifmap->dma        = dev->dma;
- 	ifmap->port       = dev->if_port;
-diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index 5d8eb57867a9..ff8fc1bbda31 100644
---- a/net/core/rtnetlink.c
-+++ b/net/core/rtnetlink.c
-@@ -1445,9 +1445,9 @@ static int rtnl_fill_link_ifmap(struct sk_buff *skb, struct net_device *dev)
- 	struct rtnl_link_ifmap map;
- 
- 	memset(&map, 0, sizeof(map));
--	map.mem_start   = dev->mem_start;
--	map.mem_end     = dev->mem_end;
--	map.base_addr   = dev->base_addr;
-+	map.mem_start   = dev->dev_mapping.mem_start;
-+	map.mem_end     = dev->dev_mapping.mem_end;
-+	map.base_addr   = dev->dev_mapping.base_addr;
- 	map.irq         = dev->irq;
- 	map.dma         = dev->dma;
- 	map.port        = dev->if_port;
+[auto build test ERROR on net/master]
+[also build test ERROR on net-next/master horms-ipvs/master linus/master v6.2 next-20230303]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Vincenzo-Palazzo/netdevice-use-ifmap-isteand-of-plain-fields/20230303-231003
+patch link:    https://lore.kernel.org/r/20230303150818.132386-1-vincenzopalazzodev%40gmail.com
+patch subject: [PATCH v1] netdevice: use ifmap isteand of plain fields
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20230304/202303040357.BP5TQ4vl-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/4efa870f9b2112fdebe7d1fffe30f5626b8d5229
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Vincenzo-Palazzo/netdevice-use-ifmap-isteand-of-plain-fields/20230303-231003
+        git checkout 4efa870f9b2112fdebe7d1fffe30f5626b8d5229
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/net/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303040357.BP5TQ4vl-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/net/hamradio/baycom_epp.c: In function 'epp_open':
+>> drivers/net/hamradio/baycom_epp.c:818:51: error: 'struct net_device' has no member named 'base_addr'
+     818 |         struct parport *pp = parport_find_base(dev->base_addr);
+         |                                                   ^~
+   In file included from include/linux/kernel.h:29,
+                    from include/linux/cpumask.h:10,
+                    from include/linux/mm_types_task.h:14,
+                    from include/linux/mm_types.h:5,
+                    from include/linux/buildid.h:5,
+                    from include/linux/module.h:14,
+                    from drivers/net/hamradio/baycom_epp.c:29:
+   drivers/net/hamradio/baycom_epp.c:826:82: error: 'struct net_device' has no member named 'base_addr'
+     826 |                 printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
+         |                                                                                  ^~
+   include/linux/printk.h:427:33: note: in definition of macro 'printk_index_wrap'
+     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+         |                                 ^~~~~~~~~~~
+   drivers/net/hamradio/baycom_epp.c:826:17: note: in expansion of macro 'printk'
+     826 |                 printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
+         |                 ^~~~~~
+   drivers/net/hamradio/baycom_epp.c: In function 'epp_close':
+   drivers/net/hamradio/baycom_epp.c:961:31: error: 'struct net_device' has no member named 'base_addr'
+     961 |                bc_drvname, dev->base_addr, dev->irq);
+         |                               ^~
+   include/linux/printk.h:427:33: note: in definition of macro 'printk_index_wrap'
+     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+         |                                 ^~~~~~~~~~~
+   drivers/net/hamradio/baycom_epp.c:960:9: note: in expansion of macro 'printk'
+     960 |         printk(KERN_INFO "%s: close epp at iobase 0x%lx irq %u\n",
+         |         ^~~~~~
+   drivers/net/hamradio/baycom_epp.c: In function 'baycom_siocdevprivate':
+   drivers/net/hamradio/baycom_epp.c:1037:40: error: 'struct net_device' has no member named 'base_addr'
+    1037 |                 hi.data.mp.iobase = dev->base_addr;
+         |                                        ^~
+   drivers/net/hamradio/baycom_epp.c:1049:20: error: 'struct net_device' has no member named 'base_addr'
+    1049 |                 dev->base_addr = hi.data.mp.iobase;
+         |                    ^~
+   drivers/net/hamradio/baycom_epp.c: In function 'init_baycomepp':
+   drivers/net/hamradio/baycom_epp.c:1242:20: error: 'struct net_device' has no member named 'base_addr'
+    1242 |                 dev->base_addr = iobase[i];
+         |                    ^~
+--
+   drivers/net/ethernet/8390/stnic.c: In function 'STNIC_DELAY':
+   drivers/net/ethernet/8390/stnic.c:81:9: warning: variable 'trash' set but not used [-Wunused-but-set-variable]
+      81 |   vword trash;
+         |         ^~~~~
+   drivers/net/ethernet/8390/stnic.c: In function 'stnic_probe':
+>> drivers/net/ethernet/8390/stnic.c:125:6: error: 'struct net_device' has no member named 'base_addr'
+     125 |   dev->base_addr = 0x1000;
+         |      ^~
+
+
+vim +818 drivers/net/hamradio/baycom_epp.c
+
+^1da177e4c3f41 Linus Torvalds         2005-04-16  805  
+^1da177e4c3f41 Linus Torvalds         2005-04-16  806  /*
+^1da177e4c3f41 Linus Torvalds         2005-04-16  807   * Open/initialize the board. This is called (in the current kernel)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  808   * sometime after booting when the 'ifconfig' program is run.
+^1da177e4c3f41 Linus Torvalds         2005-04-16  809   *
+^1da177e4c3f41 Linus Torvalds         2005-04-16  810   * This routine should set everything up anew at each open, even
+^1da177e4c3f41 Linus Torvalds         2005-04-16  811   * registers that "should" only need to be set once at boot, so that
+^1da177e4c3f41 Linus Torvalds         2005-04-16  812   * there is non-reboot way to recover if something goes wrong.
+^1da177e4c3f41 Linus Torvalds         2005-04-16  813   */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  814  
+^1da177e4c3f41 Linus Torvalds         2005-04-16  815  static int epp_open(struct net_device *dev)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  816  {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  817  	struct baycom_state *bc = netdev_priv(dev);
+^1da177e4c3f41 Linus Torvalds         2005-04-16 @818          struct parport *pp = parport_find_base(dev->base_addr);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  819  	unsigned int i, j;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  820  	unsigned char tmp[128];
+^1da177e4c3f41 Linus Torvalds         2005-04-16  821  	unsigned char stat;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  822  	unsigned long tstart;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  823  	struct pardev_cb par_cb;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  824  	
+^1da177e4c3f41 Linus Torvalds         2005-04-16  825          if (!pp) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  826                  printk(KERN_ERR "%s: parport at 0x%lx unknown\n", bc_drvname, dev->base_addr);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  827                  return -ENXIO;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  828          }
+^1da177e4c3f41 Linus Torvalds         2005-04-16  829  #if 0
+^1da177e4c3f41 Linus Torvalds         2005-04-16  830          if (pp->irq < 0) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  831                  printk(KERN_ERR "%s: parport at 0x%lx has no irq\n", bc_drvname, pp->base);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  832  		parport_put_port(pp);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  833                  return -ENXIO;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  834          }
+^1da177e4c3f41 Linus Torvalds         2005-04-16  835  #endif
+^1da177e4c3f41 Linus Torvalds         2005-04-16  836  	if ((~pp->modes) & (PARPORT_MODE_TRISTATE | PARPORT_MODE_PCSPP | PARPORT_MODE_SAFEININT)) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  837                  printk(KERN_ERR "%s: parport at 0x%lx cannot be used\n",
+^1da177e4c3f41 Linus Torvalds         2005-04-16  838  		       bc_drvname, pp->base);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  839  		parport_put_port(pp);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  840                  return -EIO;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  841  	}
+^1da177e4c3f41 Linus Torvalds         2005-04-16  842  	memset(&bc->modem, 0, sizeof(bc->modem));
+ca444073a2de97 Sudip Mukherjee        2017-09-17  843  	memset(&par_cb, 0, sizeof(par_cb));
+ca444073a2de97 Sudip Mukherjee        2017-09-17  844  	par_cb.wakeup = epp_wakeup;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  845  	par_cb.private = (void *)dev;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  846  	par_cb.flags = PARPORT_DEV_EXCL;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  847  	for (i = 0; i < NR_PORTS; i++)
+ca444073a2de97 Sudip Mukherjee        2017-09-17  848  		if (baycom_device[i] == dev)
+ca444073a2de97 Sudip Mukherjee        2017-09-17  849  			break;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  850  
+ca444073a2de97 Sudip Mukherjee        2017-09-17  851  	if (i == NR_PORTS) {
+ca444073a2de97 Sudip Mukherjee        2017-09-17  852  		pr_err("%s: no device found\n", bc_drvname);
+ca444073a2de97 Sudip Mukherjee        2017-09-17  853  		parport_put_port(pp);
+ca444073a2de97 Sudip Mukherjee        2017-09-17  854  		return -ENODEV;
+ca444073a2de97 Sudip Mukherjee        2017-09-17  855  	}
+ca444073a2de97 Sudip Mukherjee        2017-09-17  856  
+ca444073a2de97 Sudip Mukherjee        2017-09-17  857  	bc->pdev = parport_register_dev_model(pp, dev->name, &par_cb, i);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  858  	parport_put_port(pp);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  859          if (!bc->pdev) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  860                  printk(KERN_ERR "%s: cannot register parport at 0x%lx\n", bc_drvname, pp->base);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  861                  return -ENXIO;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  862          }
+^1da177e4c3f41 Linus Torvalds         2005-04-16  863          if (parport_claim(bc->pdev)) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  864                  printk(KERN_ERR "%s: parport at 0x%lx busy\n", bc_drvname, pp->base);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  865                  parport_unregister_device(bc->pdev);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  866                  return -EBUSY;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  867          }
+^1da177e4c3f41 Linus Torvalds         2005-04-16  868          dev->irq = /*pp->irq*/ 0;
+c4028958b6ecad David Howells          2006-11-22  869  	INIT_DELAYED_WORK(&bc->run_work, epp_bh);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  870  	bc->work_running = 1;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  871  	bc->modem = EPP_CONVENTIONAL;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  872  	if (eppconfig(bc))
+^1da177e4c3f41 Linus Torvalds         2005-04-16  873  		printk(KERN_INFO "%s: no FPGA detected, assuming conventional EPP modem\n", bc_drvname);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  874  	else
+^1da177e4c3f41 Linus Torvalds         2005-04-16  875  		bc->modem = /*EPP_FPGA*/ EPP_FPGAEXTSTATUS;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  876  	parport_write_control(pp, LPTCTRL_PROGRAM); /* prepare EPP mode; we aren't using interrupts */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  877  	/* reset the modem */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  878  	tmp[0] = 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  879  	tmp[1] = EPP_TX_FIFO_ENABLE|EPP_RX_FIFO_ENABLE|EPP_MODEM_ENABLE;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  880  	if (pp->ops->epp_write_addr(pp, tmp, 2, 0) != 2)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  881  		goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  882  	/* autoprobe baud rate */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  883  	tstart = jiffies;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  884  	i = 0;
+ff5688ae1cedfb Marcelo Feitoza Parisi 2006-01-09  885  	while (time_before(jiffies, tstart + HZ/3)) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  886  		if (pp->ops->epp_read_addr(pp, &stat, 1, 0) != 1)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  887  			goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  888  		if ((stat & (EPP_NRAEF|EPP_NRHF)) == EPP_NRHF) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  889  			schedule();
+^1da177e4c3f41 Linus Torvalds         2005-04-16  890  			continue;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  891  		}
+^1da177e4c3f41 Linus Torvalds         2005-04-16  892  		if (pp->ops->epp_read_data(pp, tmp, 128, 0) != 128)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  893  			goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  894  		if (pp->ops->epp_read_data(pp, tmp, 128, 0) != 128)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  895  			goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  896  		i += 256;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  897  	}
+^1da177e4c3f41 Linus Torvalds         2005-04-16  898  	for (j = 0; j < 256; j++) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  899  		if (pp->ops->epp_read_addr(pp, &stat, 1, 0) != 1)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  900  			goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  901  		if (!(stat & EPP_NREF))
+^1da177e4c3f41 Linus Torvalds         2005-04-16  902  			break;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  903  		if (pp->ops->epp_read_data(pp, tmp, 1, 0) != 1)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  904  			goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  905  		i++;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  906  	}
+^1da177e4c3f41 Linus Torvalds         2005-04-16  907  	tstart = jiffies - tstart;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  908  	bc->bitrate = i * (8 * HZ) / tstart;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  909  	j = 1;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  910  	i = bc->bitrate >> 3;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  911  	while (j < 7 && i > 150) {
+^1da177e4c3f41 Linus Torvalds         2005-04-16  912  		j++;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  913  		i >>= 1;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  914  	}
+^1da177e4c3f41 Linus Torvalds         2005-04-16  915  	printk(KERN_INFO "%s: autoprobed bitrate: %d  int divider: %d  int rate: %d\n", 
+^1da177e4c3f41 Linus Torvalds         2005-04-16  916  	       bc_drvname, bc->bitrate, j, bc->bitrate >> (j+2));
+^1da177e4c3f41 Linus Torvalds         2005-04-16  917  	tmp[0] = EPP_TX_FIFO_ENABLE|EPP_RX_FIFO_ENABLE|EPP_MODEM_ENABLE/*|j*/;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  918  	if (pp->ops->epp_write_addr(pp, tmp, 1, 0) != 1)
+^1da177e4c3f41 Linus Torvalds         2005-04-16  919  		goto epptimeout;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  920  	/*
+^1da177e4c3f41 Linus Torvalds         2005-04-16  921  	 * initialise hdlc variables
+^1da177e4c3f41 Linus Torvalds         2005-04-16  922  	 */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  923  	bc->hdlcrx.state = 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  924  	bc->hdlcrx.numbits = 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  925  	bc->hdlctx.state = tx_idle;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  926  	bc->hdlctx.bufcnt = 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  927  	bc->hdlctx.slotcnt = bc->ch_params.slottime;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  928  	bc->hdlctx.calibrate = 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  929  	/* start the bottom half stuff */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  930  	schedule_delayed_work(&bc->run_work, 1);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  931  	netif_start_queue(dev);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  932  	return 0;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  933  
+^1da177e4c3f41 Linus Torvalds         2005-04-16  934   epptimeout:
+^1da177e4c3f41 Linus Torvalds         2005-04-16  935  	printk(KERN_ERR "%s: epp timeout during bitrate probe\n", bc_drvname);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  936  	parport_write_control(pp, 0); /* reset the adapter */
+^1da177e4c3f41 Linus Torvalds         2005-04-16  937          parport_release(bc->pdev);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  938          parport_unregister_device(bc->pdev);
+^1da177e4c3f41 Linus Torvalds         2005-04-16  939  	return -EIO;
+^1da177e4c3f41 Linus Torvalds         2005-04-16  940  }
+^1da177e4c3f41 Linus Torvalds         2005-04-16  941  
+
 -- 
-2.39.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
