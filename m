@@ -1,102 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D8AF6AE6AA
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Mar 2023 17:33:33 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98FFB6AEF0C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Mar 2023 19:20:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 20C3B40B2F;
-	Tue,  7 Mar 2023 16:33:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20C3B40B2F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 583A540B70;
+	Tue,  7 Mar 2023 18:20:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 583A540B70
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678206809;
-	bh=Ei6nQrNyva0xe3xtWbh9ptMserFpawhVgDELZ84xx7k=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Reply-To:Cc:From;
-	b=TZo+WlGRdPRODgIv4BF8ooEGFNaibZzGSrshiHwZ5dN/qrOlJtcfyXW8F0v0XOSME
-	 w5lmx2Bxy15H8Q8saVmu5T79LrqHTVyjyvWpYC5SXD//lCw+qUVmHBtc7imU0i4b12
-	 QwFwXtOe4EFjEk6NT57LPqSvdtmxnW1ivhUwOx5sxqIIcTihgbnmabuUC6vuEftlhR
-	 Ce58Pm3LURDD5pQU0scdMcO4SjprKsCaCtevTvnGFJfG28mYXxHLCdHwmfAnqP5RID
-	 7228ov99vrUoyoapYX30RLioVLugMKj8ySRRHQBS6QW8YYsOXIFX7gPTJ/O+t1P8KJ
-	 jY5dBFxYqXCyA==
+	s=default; t=1678213204;
+	bh=kWXTKfUbroMHBqBV0ZJWudvNrKPfiOFSvGgRI1ENi1U=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=7MoVApi/A7XKMSKH4TlExn3lCHrF9gGI1ax+YalG3qfX3wMVHEGjZEwcEHMMMhUOl
+	 kZgKRAk8O2BcVLct7SBKhhz/gaRN//fB4zeHv99tUnh7vpYcsUwSKNuy6ALQYkJ34F
+	 J/oYdAT9J+sG2H1fsBDvufqWhng8XkaDFlThUvax+rLwvmhuNBy/qnXb1HGQYdQ4xx
+	 9j/MJbQY1Xc3T9NCm9zLqU60pJzmyrbn+71aQSs0kDONeWvZu8zg9CRxFDkF3xI5/4
+	 WEMBormNPUs+sP4EGexJ2hshk6zVPvQg0TALf69OldeEuHgT2iZEyvZCMMGBDluUGM
+	 hru3hUNRhZN6Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1CFhxZRCZWB2; Tue,  7 Mar 2023 16:33:28 +0000 (UTC)
+	with ESMTP id jx4dGokABqbt; Tue,  7 Mar 2023 18:20:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF951402F7;
-	Tue,  7 Mar 2023 16:33:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF951402F7
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4067E40B53;
+	Tue,  7 Mar 2023 18:20:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4067E40B53
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A51DA1BF5AA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 16:33:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6362F1BF59F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 18:19:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7C7F540499
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 16:33:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C7F540499
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4459C81425
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 18:19:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4459C81425
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BioWKkRgBmyO for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Mar 2023 16:33:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p1A-T5-FdJ5V for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Mar 2023 18:19:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 271094046D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 271094046D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 16:33:20 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-149-DyI-u7sfNMyppRNjIEtT9Q-1; Tue, 07 Mar 2023 11:33:17 -0500
-X-MC-Unique: DyI-u7sfNMyppRNjIEtT9Q-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2AF4581424
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2AF4581424
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 18:19:57 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1ECB790F923;
- Tue,  7 Mar 2023 16:27:21 +0000 (UTC)
-Received: from calimero.vinschen.de (unknown [10.39.192.200])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2061FC15BAE;
- Tue,  7 Mar 2023 16:27:20 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id BEFC2A80C30; Tue,  7 Mar 2023 17:27:18 +0100 (CET)
-Date: Tue, 7 Mar 2023 17:27:18 +0100
-From: Corinna Vinschen <vinschen@redhat.com>
-To: Lin Ma <linma@zju.edu.cn>
-Message-ID: <ZAdl5jr3rBoTb7qZ@calimero.vinschen.de>
-Mail-Followup-To: Lin Ma <linma@zju.edu.cn>, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- richardcochran@gmail.com, ast@kernel.org, daniel@iogearbox.net,
- hawk@kernel.org, john.fastabend@gmail.com,
- intel-wired-lan@lists.osuosl.org, pmenzel@molgen.mpg.de,
- regressions@lists.linux.dev, stable@vger.kernel.org
-References: <ZAc/3oVos9DBx3iR@calimero.vinschen.de>
- <20230307152917.32182-1-linma@zju.edu.cn>
+ by ams.source.kernel.org (Postfix) with ESMTPS id 4E4F6B8184E;
+ Tue,  7 Mar 2023 18:19:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B55D5C4339B;
+ Tue,  7 Mar 2023 18:19:52 +0000 (UTC)
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Date: Tue,  7 Mar 2023 12:19:11 -0600
+Message-Id: <20230307181940.868828-1-helgaas@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230307152917.32182-1-linma@zju.edu.cn>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1678206800;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=NwQ3wDlpFiZI+BrzfSgoKWGDASiKEaVASGy92MgjLxs=;
- b=fR1CT9+7d9YMTx4x1PpalztrFl3cr4VK5HQMvZ3anMtBzT2n9R5XS/T3CPNccwUFrTw+vU
- evR9AvZZ8FJ/rr5HSm03xTH9YX0r3yKi5k6uIetGIPANfmgrZoo7UwI/s7HJtoR5a4kawz
- NijkicVHW+t5SkhJraUM8cLVSH12sIM=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fR1CT9+7
-Subject: Re: [Intel-wired-lan] [PATCH v2] igb: revert rtnl_lock() that
- causes deadlock
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1678213193;
+ bh=BcUGeMLEm0LPA6u+zuE2Qt4EJaLi1EQErnMdvMFu038=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Whku19nSoWJzSWst16iQ++EOjtE1aPFEt2JszLF1tFs63JeCm4VO4EsXwgvo6/KR3
+ 59Jlp8PnNNm/2y/NbTduduRcI8Ji6M2ya5sAwq2K59DL+Gau83IZj9jdT+TXroDumo
+ JlNPIuMeaiggrYss3rnwhkZhB9SW9xD+867XomDVbhR//JWWjZgCjaWmMMwRCkHKeM
+ VRzo+s6KaJPuaDTWFR5t9yA29CfB6xFUP6mDo2lDnMBEiV1QGXYHTYuhlv/DgzYCGi
+ olyNFfyuxE1EY6VOUxsgwxmdDTvzhRZLwlO8wwmyD5AMQ+taDMuIFKJCQHrtWpYu07
+ S72s7z6mrqPKw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Whku19nS
+Subject: [Intel-wired-lan] [PATCH 00/28] PCI/AER: Remove redundant Device
+ Control Error Reporting Enable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,81 +89,108 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: intel-wired-lan@lists.osuosl.org
-Cc: pmenzel@molgen.mpg.de, ast@kernel.org, hawk@kernel.org,
- daniel@iogearbox.net, netdev@vger.kernel.org, richardcochran@gmail.com,
- john.fastabend@gmail.com, jesse.brandeburg@intel.com, stable@vger.kernel.org,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, regressions@lists.linux.dev
+Cc: Ajit Khaparde <ajit.khaparde@broadcom.com>,
+ Chris Snook <chris.snook@gmail.com>,
+ Somnath Kotur <somnath.kotur@broadcom.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Manish Chopra <manishc@marvell.com>,
+ Rahul Verma <rahulv@marvell.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>, intel-wired-lan@lists.osuosl.org,
+ Veerasenareddy Burru <vburru@marvell.com>,
+ Martin Habets <habetsm.xilinx@gmail.com>,
+ Mengyuan Lou <mengyuanlou@net-swift.com>,
+ Abhijit Ayarekar <aayarekar@marvell.com>, Shahed Shaikh <shshaikh@marvell.com>,
+ Ariel Elior <aelior@marvell.com>, Jiawen Wu <jiawenwu@trustnetic.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Michael Chan <michael.chan@broadcom.com>,
+ Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
+ Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
+ Rasesh Mody <rmody@marvell.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Edward Cree <ecree.xilinx@gmail.com>,
+ Raju Rangoju <rajur@chelsio.com>, Dimitris Michailidis <dmichail@fungible.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mar  7 23:29, Lin Ma wrote:
-> The commit 6faee3d4ee8b ("igb: Add lock to avoid data race") adds
-> rtnl_lock to eliminate a false data race shown below
-> 
->  (FREE from device detaching)      |   (USE from netdev core)
-> igb_remove                         |  igb_ndo_get_vf_config
->  igb_disable_sriov                 |  vf >= adapter->vfs_allocated_count?
->   kfree(adapter->vf_data)          |
->   adapter->vfs_allocated_count = 0 |
->                                    |    memcpy(... adapter->vf_data[vf]
-> 
-> The above race will never happen and the extra rtnl_lock causes deadlock
-> below
-> 
-> [  141.420169]  <TASK>
-> [  141.420672]  __schedule+0x2dd/0x840
-> [  141.421427]  schedule+0x50/0xc0
-> [  141.422041]  schedule_preempt_disabled+0x11/0x20
-> [  141.422678]  __mutex_lock.isra.13+0x431/0x6b0
-> [  141.423324]  unregister_netdev+0xe/0x20
-> [  141.423578]  igbvf_remove+0x45/0xe0 [igbvf]
-> [  141.423791]  pci_device_remove+0x36/0xb0
-> [  141.423990]  device_release_driver_internal+0xc1/0x160
-> [  141.424270]  pci_stop_bus_device+0x6d/0x90
-> [  141.424507]  pci_stop_and_remove_bus_device+0xe/0x20
-> [  141.424789]  pci_iov_remove_virtfn+0xba/0x120
-> [  141.425452]  sriov_disable+0x2f/0xf0
-> [  141.425679]  igb_disable_sriov+0x4e/0x100 [igb]
-> [  141.426353]  igb_remove+0xa0/0x130 [igb]
-> [  141.426599]  pci_device_remove+0x36/0xb0
-> [  141.426796]  device_release_driver_internal+0xc1/0x160
-> [  141.427060]  driver_detach+0x44/0x90
-> [  141.427253]  bus_remove_driver+0x55/0xe0
-> [  141.427477]  pci_unregister_driver+0x2a/0xa0
-> [  141.428296]  __x64_sys_delete_module+0x141/0x2b0
-> [  141.429126]  ? mntput_no_expire+0x4a/0x240
-> [  141.429363]  ? syscall_trace_enter.isra.19+0x126/0x1a0
-> [  141.429653]  do_syscall_64+0x5b/0x80
-> [  141.429847]  ? exit_to_user_mode_prepare+0x14d/0x1c0
-> [  141.430109]  ? syscall_exit_to_user_mode+0x12/0x30
-> [  141.430849]  ? do_syscall_64+0x67/0x80
-> [  141.431083]  ? syscall_exit_to_user_mode_prepare+0x183/0x1b0
-> [  141.431770]  ? syscall_exit_to_user_mode+0x12/0x30
-> [  141.432482]  ? do_syscall_64+0x67/0x80
-> [  141.432714]  ? exc_page_fault+0x64/0x140
-> [  141.432911]  entry_SYSCALL_64_after_hwframe+0x72/0xdc
-> 
-> Since the igb_disable_sriov() will call pci_disable_sriov() before
-> releasing any resources, the netdev core will synchronize the cleanup to
-> avoid any races. This patch removes the useless rtnl_(un)lock to guarantee
-> correctness.
-> 
-> CC: stable@vger.kernel.org
-> Fixes: 6faee3d4ee8b ("igb: Add lock to avoid data race")
-> Reported-by: Corinna Vinschen <vinschen@redhat.com>
-> Link: https://lore.kernel.org/intel-wired-lan/ZAcJvkEPqWeJHO2r@calimero.vinschen.de/
-> Signed-off-by: Lin Ma <linma@zju.edu.cn>
+From: Bjorn Helgaas <bhelgaas@google.com>
 
-Tested-by: Corinna Vinschen <vinschen@redhat.com>
+Since f26e58bf6f54 ("PCI/AER: Enable error reporting when AER is native"),
+which appeared in v6.0, the PCI core has enabled PCIe error reporting for
+all devices during enumeration.
+
+Remove driver code to do this and remove unnecessary includes of
+<linux/aer.h> from several other drivers.
+
+Intel folks, sorry that I missed removing the <linux/aer.h> includes in the
+first series.
 
 
-Thanks,
-Corinna
+Bjorn Helgaas (28):
+  alx: Drop redundant pci_enable_pcie_error_reporting()
+  be2net: Drop redundant pci_enable_pcie_error_reporting()
+  bnx2: Drop redundant pci_enable_pcie_error_reporting()
+  bnx2x: Drop redundant pci_enable_pcie_error_reporting()
+  bnxt: Drop redundant pci_enable_pcie_error_reporting()
+  cxgb4: Drop redundant pci_enable_pcie_error_reporting()
+  net/fungible: Drop redundant pci_enable_pcie_error_reporting()
+  net: hns3: remove unnecessary aer.h include
+  netxen_nic: Drop redundant pci_enable_pcie_error_reporting()
+  octeon_ep: Drop redundant pci_enable_pcie_error_reporting()
+  qed: Drop redundant pci_enable_pcie_error_reporting()
+  net: qede: Remove unnecessary aer.h include
+  qlcnic: Drop redundant pci_enable_pcie_error_reporting()
+  qlcnic: Remove unnecessary aer.h include
+  sfc: Drop redundant pci_enable_pcie_error_reporting()
+  sfc: falcon: Drop redundant pci_enable_pcie_error_reporting()
+  sfc/siena: Drop redundant pci_enable_pcie_error_reporting()
+  sfc_ef100: Drop redundant pci_disable_pcie_error_reporting()
+  net: ngbe: Drop redundant pci_enable_pcie_error_reporting()
+  net: txgbe: Drop redundant pci_enable_pcie_error_reporting()
+  e1000e: Remove unnecessary aer.h include
+  fm10k: Remove unnecessary aer.h include
+  i40e: Remove unnecessary aer.h include
+  iavf: Remove unnecessary aer.h include
+  ice: Remove unnecessary aer.h include
+  igb: Remove unnecessary aer.h include
+  igc: Remove unnecessary aer.h include
+  ixgbe: Remove unnecessary aer.h include
+
+ drivers/net/ethernet/atheros/alx/main.c       |  4 ----
+ drivers/net/ethernet/broadcom/bnx2.c          | 21 -------------------
+ drivers/net/ethernet/broadcom/bnx2.h          |  1 -
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x.h   |  1 -
+ .../net/ethernet/broadcom/bnx2x/bnx2x_main.c  | 19 -----------------
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  4 ----
+ .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   |  4 ----
+ drivers/net/ethernet/emulex/benet/be_main.c   |  8 -------
+ .../net/ethernet/fungible/funcore/fun_dev.c   |  5 -----
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   |  1 -
+ drivers/net/ethernet/intel/e1000e/netdev.c    |  1 -
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c  |  1 -
+ drivers/net/ethernet/intel/i40e/i40e.h        |  1 -
+ drivers/net/ethernet/intel/iavf/iavf.h        |  1 -
+ drivers/net/ethernet/intel/ice/ice.h          |  1 -
+ drivers/net/ethernet/intel/igb/igb_main.c     |  1 -
+ drivers/net/ethernet/intel/igc/igc_main.c     |  1 -
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 -
+ .../ethernet/marvell/octeon_ep/octep_main.c   |  4 ----
+ .../ethernet/qlogic/netxen/netxen_nic_main.c  | 10 +--------
+ drivers/net/ethernet/qlogic/qed/qed_main.c    |  9 --------
+ drivers/net/ethernet/qlogic/qede/qede_main.c  |  1 -
+ .../ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c   |  1 -
+ .../net/ethernet/qlogic/qlcnic/qlcnic_main.c  |  4 ----
+ .../net/ethernet/qlogic/qlcnic/qlcnic_sysfs.c |  1 -
+ drivers/net/ethernet/sfc/ef100.c              |  3 ---
+ drivers/net/ethernet/sfc/efx.c                |  5 -----
+ drivers/net/ethernet/sfc/falcon/efx.c         |  9 --------
+ drivers/net/ethernet/sfc/siena/efx.c          |  5 -----
+ drivers/net/ethernet/wangxun/ngbe/ngbe_main.c |  4 ----
+ .../net/ethernet/wangxun/txgbe/txgbe_main.c   |  5 -----
+ 31 files changed, 1 insertion(+), 136 deletions(-)
+
+-- 
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
