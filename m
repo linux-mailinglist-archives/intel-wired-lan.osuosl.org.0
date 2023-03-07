@@ -1,87 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9DAF6ADC73
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Mar 2023 11:54:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BDEF6ADDEC
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Mar 2023 12:48:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ECAB360E6A;
-	Tue,  7 Mar 2023 10:54:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ECAB360E6A
+	by smtp4.osuosl.org (Postfix) with ESMTP id E672540896;
+	Tue,  7 Mar 2023 11:48:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E672540896
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678186492;
-	bh=f3yefCd5SvXBF5tRRtaB476Dd847ZbTF+2PXY8wCf68=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1678189727;
+	bh=mQjjFIQKwruvlZ4pxVFdJWxTK6BmD8utZWrlTsmTDH8=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=kUIsbjOHqByG99G8131K/fsQcU3abyD26VkrQBTUmV0+tuGZf/+6z2oAvBiucMPWH
-	 ILkWCqpMFuNbBll80aE40jsMOn+L4R42X3a0Tu+8oofVE242Lf1KXlAl5S/jHw0qCI
-	 g2WDsEDnSEVNfMgLR12W86RIOsyeR15YvHm+aC19qwJ/A+5xn3qbrtNCASJeh5/2WM
-	 d88NOJMzPuNp3q/TUenPDFc7NnNKpFKPvFg+UIrL8IpWqmyEWwYa7Q+ELzuV9+h6wk
-	 wgj0nITQPnxZ+uwA6dg+8g8iPi0gaCTxbJmNHHggCAnjTpuRD+RF7GVtRrGmy0sTko
-	 qHPM6LNZGnlCw==
+	b=Ake6SNys/w/HYC8Rp6GXLiJFwtwvFQUzACkG1vTJqbZFPly1NZiOnR14MEEhBUYBI
+	 P/iY81MXNPFpn/YxM2DtZ0/I0zPmRtqWh04exIvUAFizO1xY4FOdsQgErPkf1kO6dt
+	 lFubnY35Rnx8Y++07oMaOTH4pejoxgVatUWFIgfw5Em6X/Ipn3mIMUMHIb+purY/LS
+	 hJBX2wSk/koL/Gu+0fhpjoGBGY5kGl/+WpQX3RTooytOfPiQgT+jBAK0JLqZMlkyJO
+	 Yp1c0wFywcjuMsKPI5SsDKiQWigPH47RNiJCpuXYDFwB2H9L9ZrfHisXl5YPHirtMf
+	 aDn+AjBsUGPgw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iv1QXgQEZSNX; Tue,  7 Mar 2023 10:54:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LMqwCZ1m3617; Tue,  7 Mar 2023 11:48:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C504560D5F;
-	Tue,  7 Mar 2023 10:54:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C504560D5F
+	by smtp4.osuosl.org (Postfix) with ESMTP id AB8DF403A8;
+	Tue,  7 Mar 2023 11:48:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AB8DF403A8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5D3461BF28A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 10:54:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D05E21BF94D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 11:48:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 34EB481E05
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 10:54:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34EB481E05
+ by smtp1.osuosl.org (Postfix) with ESMTP id B6DB381331
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 11:48:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B6DB381331
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2LXbQKRfM_DQ for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Mar 2023 10:54:45 +0000 (UTC)
-X-Greylist: delayed 00:08:03 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FB3F81E04
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5FB3F81E04
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 10:54:45 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: AKASHI Takahiro <takahiro.akashi@linaro.org>,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com
-In-Reply-To: <20230307064531.68840-1-takahiro.akashi@linaro.org>
-References: <20230307064531.68840-1-takahiro.akashi@linaro.org>
-Date: Tue, 07 Mar 2023 11:46:33 +0100
-Message-ID: <871qm0j0ty.fsf@kurt>
+ with ESMTP id vnYRiMWmCmVf for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Mar 2023 11:48:38 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C1FBD81329
+Received: from zg8tmja2lje4os4yms4ymjma.icoremail.net
+ (zg8tmja2lje4os4yms4ymjma.icoremail.net [206.189.21.223])
+ by smtp1.osuosl.org (Postfix) with SMTP id C1FBD81329
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Mar 2023 11:48:37 +0000 (UTC)
+Received: by ajax-webmail-mail-app4 (Coremail) ; Tue, 7 Mar 2023 19:48:30
+ +0800 (GMT+08:00)
+X-Originating-IP: [183.128.133.225]
+Date: Tue, 7 Mar 2023 19:48:30 +0800 (GMT+08:00)
+X-CM-HeaderCharset: UTF-8
+From: "Lin Ma" <linma@zju.edu.cn>
+To: "Paul Menzel" <pmenzel@molgen.mpg.de>
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20210104(ab8c30b6)
+ Copyright (c) 2002-2023 www.mailtech.cn zju.edu.cn
+In-Reply-To: <882d6a36-d3ac-c231-ba02-bc2235984cfd@molgen.mpg.de>
+References: <ZAcJvkEPqWeJHO2r@calimero.vinschen.de>
+ <3ef31c0b-ce40-20d0-7740-5dc0cca278ca@molgen.mpg.de>
+ <882d6a36-d3ac-c231-ba02-bc2235984cfd@molgen.mpg.de>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1678185996;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ObrbMdqU0lu6uA2iywkZi4GzQ4lsKGLzl32oWr0AMDo=;
- b=iI2WSac5gOkObudYyBTatJRMEs0fUHGDQvBGapyWIDjotk26dC7mENEZdetZlMDcr1H3sU
- yORxD5yeK4H0ab5InNnD3dU/O3o9njkaEGWIe2jmkF9z0tAcIwVuEWC14qV56q71JnV94M
- wCHR1ONZSLAZOcIGl1n4KxPVyUJ+FWd5SAFwr7wJuAs+s7C21j2TqwWkw/ywABXiib4mrF
- xUhaTRtOXS+N7/EDLYGyTyZMISnmNLJtFF68HM9nqU9HZmh8lsMuKJ0uFfioNOVZYs75E2
- 6hxyFUQkGvdak5JvzWsDZMB1rzcy/bJaIR6DoH9I0iFVeVmGoEOpmWuYu3R/LA==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1678185996;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ObrbMdqU0lu6uA2iywkZi4GzQ4lsKGLzl32oWr0AMDo=;
- b=/9fCRj23q8b0aobck8YMLr37aZ55iJK32vXqyEe8c5W3Cri0FOTN0XeK0HHOjskZviLzjj
- 5GHSFQbkBlzcUfDg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=iI2WSac5; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=/9fCRj23
-Subject: Re: [Intel-wired-lan] [PATCH] igc: fix the validation logic for
- taprio's gate list
+Message-ID: <301b585a.80249.186bbe6cc50.Coremail.linma@zju.edu.cn>
+X-Coremail-Locale: en_US
+X-CM-TRANSID: cS_KCgCXnP2PJAdket6xCw--.22652W
+X-CM-SenderInfo: qtrwiiyqvtljo62m3hxhgxhubq/1tbiAwMHElNG3KG0hAAAsN
+X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
+ CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
+ daVFxhVjvjDU=
+Subject: Re: [Intel-wired-lan] [REGRESSION] Deadlock since commit
+ 6faee3d4ee8b ("igb: Add lock to avoid data race")
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,78 +84,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: AKASHI Takahiro <takahiro.akashi@linaro.org>,
- intel-wired-lan@lists.osuosl.org
-Content-Type: multipart/mixed; boundary="===============3991988058004450203=="
+Cc: intel-wired-lan@lists.osuosl.org, Corinna Vinschen <vinschen@redhat.com>,
+ regressions@lists.linux.dev
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============3991988058004450203==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
-
---=-=-=
-Content-Type: text/plain
-
-On Tue Mar 07 2023, AKASHI Takahiro wrote:
-> The check introduced in the commit a5fd39464a40 ("igc: Lift TAPRIO schedule
-> restriction") can detect a false positive error in some corner case.
-> For instance,
->     tc qdisc replace ... taprio num_tc 4
-> 	...
-> 	sched-entry S 0x01 100000	# slot#1
-> 	sched-entry S 0x03 100000	# slot#2
-> 	sched-entry S 0x04 100000	# slot#3
-> 	sched-entry S 0x08 200000	# slot#4
-> 	flags 0x02			# hardware offload
->
-> Here the queue#0 (the first queue) is on at the slot#1 and #2,
-> and off at the slot#3 and #4. Under the current logic, when the slot#4
-> is examined, validate_schedule() returns *false* since the enablement
-> count for the queue#0 is two and it is already off at the previous slot
-> (i.e. #3). But this definition is truely correct.
->
-> Let's fix the logic to enforce a strict validation for consecutively-opened
-> slots.
->
-> Fixes: a5fd39464a40 ("igc: Lift TAPRIO schedule restriction")
-> Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
-
-Grml. Thanks!
-
-Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmQHFgkTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgpbnD/9FfpobNY/3VeArd3CCnEwhBaXypTLq
-0CIwh5kAtIG0Z5DDB26zvnLEVr6crYmA1aD472A6x/HUV49oj6Bmefs4eWmqO6Gf
-6lEpRGR1v9kfXGg2AwG56aPythVBwN55BWqbrQa4yCy5fIiCKhoUn4hEFeCFSq+a
-YFMSkVNTojVfrIhPqGL0Qnnb+VBtxRxT0dkK4aNmqxjpzG5Q1S7VPvfxkcnTyaU8
-sUKvr7APcmdthuNr2Fm03ba/aooPiZkGG3x1F0H/il6GpgTThqh/EKuqdieM1s6r
-XRhBe9rkEYGDb7WDZa0W1uG1PGzKBbcBXTvbS5dS9FWQyOA6ubJFsoceI59/AbWM
-4NdOpsuSgixwuKtEZvY0j9hHgsFOSJmoBdxZJ6ywFAPefq+sj68hfUferZe1E1bx
-UWRdbXaDoGpl7aYnAsgEu8M2bdMCkvllimE8lowyfkZvAr5BNOXeHSikYVAuikGk
-Em3X8nv7Ae7D1W76aLc2AgeHI9yze5Tp17aVDROGf6gdrrd9E++czizldRLzLc3r
-VMkjB5twPf062J/W9Oi4E1AByE0rRYlo9tVwWW5tN5zvcavStslQddZ7aOQAPkfL
-HD5c/tYh2FK7RhDF3CqW5QET52Ygx3vy6kPv6BkItI/41u/puhrKAJi0KZBCwXWZ
-ZDoZG6x4f8SpUw==
-=lXNq
------END PGP SIGNATURE-----
---=-=-=--
-
---===============3991988058004450203==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3991988058004450203==--
+SGVsbG8gUGF1bCBhbmQgQ29yaW5uYSwKClNpbmNlIEkgZGlkbid0IGhhdmUgdGhlIGV4YWN0IGVu
+czVmMiBkcml2ZXIgYXMgeW91IGd1eXMsIEkganVzdCB0ZXN0IHRoZSBtb2R1bGUgbG9hZGluZyBh
+bmQgdW5sb2FkaW5nIGluIG15IFFFTVUgZW52aXJvbm1lbnQuCkkgdHVybmVkIG9uIHRoZSBDT05G
+SUdfUFJPVkVfTE9DS0lORyBvcHRpb24gYnV0IGZhaWxlZCB0byByZXByb2R1Y2UgdGhlIGRlYWRs
+b2NrLgoKcm9vdEBzeXprYWxsZXI6LyMgaW5zbW9kIGlnYi5rbwpbICAxMTYuMTkyNzMwXSBpZ2I6
+IEludGVsKFIpIEdpZ2FiaXQgRXRoZXJuZXQgTmV0d29yayBEcml2ZXIKWyAgMTE2LjE5MzEyOF0g
+aWdiOiBDb3B5cmlnaHQgKGMpIDIwMDctMjAxNCBJbnRlbCBDb3Jwb3JhdGlvbi4Kcm9vdEBzeXpr
+YWxsZXI6LyMgbHNtb2QKTW9kdWxlICAgICAgICAgICAgICAgICAgU2l6ZSAgVXNlZCBieQppZ2Ig
+ICAgICAgICAgICAgICAgICAgMjI1MjgwICAwCnJvb3RAc3l6a2FsbGVyOi8jIHJtbW9kIGlnYgpy
+bW1vZDogRVJST1I6IC4uL2xpYmttb2QvbGlia21vZC5jOjUxNCBsb29rdXBfYnVpbHRpbl9maWxl
+KCkgY291bGQgbm90IG9wZW4gYnVpbHRpbiBmaWxlICcvbGliL21vZHVsZXMvNi4xLjAvbW9kdWxl
+cy5idWlsdGluLmJpbicKcm9vdEBzeXprYWxsZXI6LyMgbHNtb2QKbHNtb2QKTW9kdWxlICAgICAg
+ICAgICAgICAgICAgU2l6ZSAgVXNlZCBieQoKSSBndWVzcyB0aGUgY29tbWFuZCAiZWNobyAyID4g
+L3N5cy9jbGFzcy9uZXQvZW5zNWYyL2RldmljZS9zcmlvdl9udW12ZnMiIG11c3QgZG8gc29tZXRo
+aW5nIGludGVyZXN0aW5nIGJ1dCBJCmRpZG4ndCBmaW5kIHRoZSByZWxldmFudCBjb2RlIHRoZXJl
+LiBDb3VsZCB5b3UgZ3V5cyB0YWtlIGEgbG9vaz8KClJlZ2FyZHMKTGluCgoKCj4gRnJvbTogIlBh
+dWwgTWVuemVsIiA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPgo+IFNlbnQgVGltZTogMjAyMy0wMy0w
+NyAxODoxOToxOCAoVHVlc2RheSkKPiBUbzogIkxpbiBNYSIgPGxpbm1hQHpqdS5lZHUuY24+LCAi
+Q29yaW5uYSBWaW5zY2hlbiIgPHZpbnNjaGVuQHJlZGhhdC5jb20+Cj4gQ2M6IGludGVsLXdpcmVk
+LWxhbkBsaXN0cy5vc3Vvc2wub3JnLCByZWdyZXNzaW9uc0BsaXN0cy5saW51eC5kZXYKPiBTdWJq
+ZWN0OiBSZTogW0ludGVsLXdpcmVkLWxhbl0gW1JFR1JFU1NJT05dIERlYWRsb2NrIHNpbmNlIGNv
+bW1pdCA2ZmFlZTNkNGVlOGIgKCJpZ2I6IEFkZCBsb2NrIHRvIGF2b2lkIGRhdGEgcmFjZSIpCj4g
+Cj4gW0FkZCBDb3Jpbm5hIGJhY2sgdG8gQ2M6LCB3aG8gd2FzIHJlbW92ZWQgYnkgTW96aWxsYSBU
+aHVuZGVyYmlyZCBiZWNhdXNlIAo+IFJlcGx5LVRvIGhlYWRlciB3YXMgc2V0IGZvciBzb21lIHJl
+YXNvbiBpbiB0aGUgb3JpZ2luYWwgcmVwb3J0Ll0KPiAKPiBBbSAwNy4wMy4yMyB1bSAxMToxMiBz
+Y2hyaWViIFBhdWwgTWVuemVsOgo+ID4gW0FkZGluZyByZWdyZXNzaW9uc0BsaXN0cy5saW51eC5k
+ZXZdCj4gPiAKPiA+ICNyZWd6Ym90IF5pbnRyb2R1Y2VkOiA2ZmFlZTNkNGVlOGIKPiA+IAo+ID4g
+QW0gMDcuMDMuMjMgdW0gMTA6NTQgc2NocmllYiBDb3Jpbm5hIFZpbnNjaGVuOgo+ID4+IEhpLAo+
+ID4+Cj4gPj4KPiA+PiBBZnRlciBwYXRjaCA2ZmFlZTNkNGVlOGIgKCJpZ2I6IEFkZCBsb2NrIHRv
+IGF2b2lkIGRhdGEgcmFjZSIpLCB3ZSBzZWUKPiA+PiBhIGRlYWRsb2NrIHNjZW5hcmlvIHdoZW4g
+dHJ5aW5nIHRvIHVubG9hZCB0aGUgaWdiIG1vZHVsZS4KPiA+Pgo+ID4+IFRoZSByZXByb2R1Y2Vy
+IGlzIHByZXR0eSBzaW1wbGU6Cj4gPj4KPiA+PiDCoMKgICMgZWNobyAyID4gL3N5cy9jbGFzcy9u
+ZXQvZW5zNWYyL2RldmljZS9zcmlvdl9udW12ZnMKPiA+PiDCoMKgICMgbW9kcHJvYmUgLXIgaWdi
+Cj4gPj4KPiA+PiBUaGUgaGFuZyBpcyBxdWl0ZSB0aG9yb3VnaCwgSSBhc3N1bWUgaXQncyBzdWZm
+ZXJpbmcgYSBkZWFkbG9jayBiZXR3ZWVuCj4gPj4gdGhlIHJ0bmxfbG9jayBhbmQgdGhlIHNwaW5s
+b2NrIGludHJvZHVjZWQgYnkgNmZhZWUzZDRlZThiLgo+ID4+Cj4gPj4gQW55IGNoYW5jZSB5b3Ug
+Y291bGQgaGF2ZSBhIGxvb2s/Cj4gPj4KPiA+Pgo+ID4+IFRoYW5rcywKPiA+PiBDb3Jpbm5hCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVk
+LWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0
+cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
