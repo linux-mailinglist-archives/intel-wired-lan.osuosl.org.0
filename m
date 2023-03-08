@@ -1,177 +1,179 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D91E66B0BAB
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Mar 2023 15:43:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6432B6B0E9D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Mar 2023 17:25:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7B72C40C95;
-	Wed,  8 Mar 2023 14:43:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B72C40C95
+	by smtp1.osuosl.org (Postfix) with ESMTP id 74D9E81E31;
+	Wed,  8 Mar 2023 16:25:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 74D9E81E31
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678286581;
-	bh=k8ZScuV826koTDdWCPYacJefO8lOSnSsblJvJZahC0s=;
+	s=default; t=1678292742;
+	bh=Ej4z4zejPMNGpXPSNM+pXLdkLRUzLUx8plKcyXvEMLk=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=fkSGLUreXeBWqJ1JTCI4ZLzXPv82h9gjPhF1keWzCtwPPqtmiswT1pVuDpQNOCbo5
-	 7BqyI2I42kzQm9ednEpSzL0RSvypbcqE2dNOKRXVn6BrrtC36oVV/U1xrLfZLypodb
-	 1spgzaTI08LeMdjBYwcjcAHuvoaUkQkDVLY0surwLnNZYLLStgfvZPO99rRGp4kR4I
-	 mw1yYlrN9mJvTNx2/h+Y4YV3N/VfmeC6PbxgUaqLHDI6iH2OHD7m1VOQ2Ag6UWwZ7S
-	 vEtS3y5/UkVLsZr+4irfyJ631ly3jcBJ9X/Lnjsr4qR1MKlh0FDU3q4ixGqvfQDekO
-	 PPqOHRUlqQCDg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DFITBilKobps; Wed,  8 Mar 2023 14:43:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7B28A40297;
-	Wed,  8 Mar 2023 14:43:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B28A40297
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 85AEE1BF32D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 14:42:49 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5F57580EC2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 14:42:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5F57580EC2
+	 Cc:From;
+	b=74LnJ60jGPJz/+VPbFn4tRnIv5IEaYmzUKQZ9DctCC5ZQY5xXZS6esDChx/T1rwOe
+	 6Qv6EGeW9y4BevTX8t6YN/e2RNo/UsK6Dg2JQqlEtrNSqwjQ9/uc9TdtrCqiXYKGPl
+	 WYJk1ZtqgLkqU2AnpcOoaG89nukORvwthY3JM4FWxaLFJr7/n5nUVZjQ6/q2eoGcvB
+	 DGjwAAYfY2pUroYg6XAQMIfisNuZtROKE/ShroOvLnQEZnkhkLRA77UI5kQAzd2N/w
+	 PZdVvzMo21ASW5LAFYIsFxpfW9ecirMSoml5CeIr/ZeAFklKL/bBmho2TJF8xyK8pR
+	 IYJeQP+46r/oA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X9VJ7yIZ7dmz for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Mar 2023 14:42:48 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N1R0-6TgIIEb; Wed,  8 Mar 2023 16:25:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 417D381EA0;
+	Wed,  8 Mar 2023 16:25:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 417D381EA0
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 316141BF484
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 11:10:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 081E260B73
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 11:10:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 081E260B73
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0Qrbv0yDIAaX for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Mar 2023 11:10:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC71F80EBB
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BC71F80EBB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 14:42:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="422436974"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="422436974"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2023 06:42:48 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A188A60B1C
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A188A60B1C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Mar 2023 11:10:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="316527372"
+X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="316527372"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2023 03:10:48 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="851109541"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="851109541"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga005.jf.intel.com with ESMTP; 08 Mar 2023 06:42:47 -0800
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="745877182"
+X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="745877182"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga004.fm.intel.com with ESMTP; 08 Mar 2023 03:10:48 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 8 Mar 2023 06:42:44 -0800
+ 15.1.2507.21; Wed, 8 Mar 2023 03:10:47 -0800
 Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Wed, 8 Mar 2023 06:42:44 -0800
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.171)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.21 via Frontend Transport; Wed, 8 Mar 2023 03:10:47 -0800
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.41) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Wed, 8 Mar 2023 06:42:43 -0800
+ 15.1.2507.21; Wed, 8 Mar 2023 03:10:47 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dx7Y8L7U3v2HElETOzezp3fXAqCg88RZQb8ZYqvqmKiKGGc3f9we+heVg66fk5uaNRp7WEEYUDiNc8SHi+Jtt/acgRBvrmBPpg/+rsYWo04P2H80x1xbmYpOWnrwe3zW+6ZM/jfgOX6msNCOE/ErcCKxkRQpcHiyEvxBYsW9W0qvAEQNPDukUIn7mUhVSaA/XApCIuRzvJlNyOoRhcldy7qxt0Pmf868ec0lGCchzvw9VVOuSpb34p0xijkfpKyGGZ4FcVASpCIQ2S6Dslwg3NnIQM2+dbGLOMB2oXETez7ZL3U9bIoHV+devfsL8uXPe2c5mS5xGZHjIXZrgnMTUQ==
+ b=A/PmAmIi4HFPqOldUXlqsNSmXxdCui5Wt6za+xCByvYlESpmSKHo6dWLOpYY+pVdeS/T5IYjwQnEIW2D5gPeJYQ26zEQXmaLqm21joAcCaLSWe5UxJx2cv59ZiZ6ZjS4ln61kBZHPF+jnr/rIV9PJN0bDmqGPySIPg6AlmA+HrtEl9Zb4Lwh0ikRbPOPJ787D28dp2GT+MP0HJg+ERNu7QIqhmRrr6s+eLC2YTFY+NK5fSse0w+Gxtqjf3T32HYgye9cQfihnmegI3CWePDf+pISd0P0/gZBe7RyDI/HrY1eIEI/bRpdGEInueiXMnVSTwd2bwN1mRP/Mw2IeMyqvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nUDPq/nkFbVhLmTSuMGf72hcj23IigmbPMx/VVkfSI4=;
- b=ciUrkirZeUZC26XPh8jBbP/OVPJTgJUNJvsneEThsrQv4328oyaV6lsP79WOXNh9cG2Pg5zLwQqagXGiVlExhY3cn1gEAvVU+9scnf/+gDRfGwkdYX4S8rNP8XlkL++SXqGq2n8AOAXvG8yTJT9mFnc8LGTnjaJX3AuGgRj/Ls5ZCyNW/E0X34UBYWEFOIlm5UMkbbZR+8KuOWJVmubk1W5Tzn+zmU5SX4514IEb80Tq6B88zAUH/hZTHmSVdjoZwAQPZNZIMbN2T9juRVXqA24RNRwtp6q9NmTjjErzDo4T2Rtc8mN5sqJmjHEGQGauPsjnAMB19OrUW2xkaYSWnA==
+ bh=e3bxfQBLjpveMULMyFCfzne72U1Bd8Cwk3yEK1/Qk2E=;
+ b=F5NPiPLF3wPNCCeeYD64wESlgb3TC6J5l2pp75qiydlC9o6VsgiouKGUlMKBeTrG1c/eR7XSqQRjngxX3S4OLXX8RvhmwmM71PBzVwctVvjnKJvX1V42TSJXv5S951gJlCCdrRAJ+ITFW/QWhNWxS2gPizxbjMOCEkz1pVzAiUawBe9wkI8bBunQdT+ifZgYBM0kDo7Dc2qWZ2/Fy4jcUkuKM+FG5QJNejhN/0ejXyQtGht9FSaIQhxe4hIWbQNUmPFAYjPHbUaTKzzXllaLk43bzuyZzwvFPek8WkYFGaWizZs2Iy6M/Gavg06FVc769CiTib1/zZ2MSWnUU9cF6Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from CY8PR11MB7364.namprd11.prod.outlook.com (2603:10b6:930:87::14)
- by DM6PR11MB4722.namprd11.prod.outlook.com (2603:10b6:5:2a7::23) with
- Microsoft SMTP Server (version=TLS1_2,
+Received: from BN9PR11MB5354.namprd11.prod.outlook.com (2603:10b6:408:11b::7)
+ by PH7PR11MB7662.namprd11.prod.outlook.com (2603:10b6:510:27d::19)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.29; Wed, 8 Mar
- 2023 14:42:30 +0000
-Received: from CY8PR11MB7364.namprd11.prod.outlook.com
- ([fe80::6100:7667:c884:a26e]) by CY8PR11MB7364.namprd11.prod.outlook.com
- ([fe80::6100:7667:c884:a26e%9]) with mapi id 15.20.6156.028; Wed, 8 Mar 2023
- 14:42:30 +0000
-From: "Szlosek, Marek" <marek.szlosek@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v4] igbvf: Regard vf reset nack as
- success
-Thread-Index: AQHZBW6RGFBFlNJBW0GSuBfrSOrSDa5dmg+AgJONdZA=
-Date: Wed, 8 Mar 2023 14:42:30 +0000
-Message-ID: <CY8PR11MB736493C513065E46DE34F97FE6B49@CY8PR11MB7364.namprd11.prod.outlook.com>
-References: <20221201102003.67861-1-akihiko.odaki@daynix.com>
- <Y4yCkQh6F/qtsAct@unreal>
-In-Reply-To: <Y4yCkQh6F/qtsAct@unreal>
+ 2023 11:10:38 +0000
+Received: from BN9PR11MB5354.namprd11.prod.outlook.com
+ ([fe80::464f:1bfb:43d4:416a]) by BN9PR11MB5354.namprd11.prod.outlook.com
+ ([fe80::464f:1bfb:43d4:416a%7]) with mapi id 15.20.6156.029; Wed, 8 Mar 2023
+ 11:10:38 +0000
+From: "Arland, ArpanaX" <arpanax.arland@intel.com>
+To: ivecera <ivecera@redhat.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net] i40e: Fix kernel crash during
+ reboot when adapter is in recovery mode
+Thread-Index: AQHZR5intrhKoZRYj0KQpYhL42nvwa7wt45Q
+Date: Wed, 8 Mar 2023 11:10:38 +0000
+Message-ID: <BN9PR11MB535465F6E6A668924319AE3580B49@BN9PR11MB5354.namprd11.prod.outlook.com>
+References: <20230223150702.2802683-1-ivecera@redhat.com>
+In-Reply-To: <20230223150702.2802683-1-ivecera@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CY8PR11MB7364:EE_|DM6PR11MB4722:EE_
-x-ms-office365-filtering-correlation-id: 9dd3f8ba-90a4-4261-7e17-08db1fe35830
+x-ms-traffictypediagnostic: BN9PR11MB5354:EE_|PH7PR11MB7662:EE_
+x-ms-office365-filtering-correlation-id: 2c559bda-6f7b-4146-9978-08db1fc5bfaa
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: kNrd5u1wMplPMJzU9RrGYbpfmXdmpRQN39jd9EgsYB/3iDQjKQYmNh86lXeLg3fbrF8+PKDLSzWVdzSPicYV6giUtVXeCRDCLacxOBoiReG/lX186GkpqQhGChiJUetOfBhyNRnx/Nw3HjofNpuaxCZ0FnUdjf6U3xcSLpJ5xIbzUbKLrXsmfrJ0KmNzmE/lk61jVHJG9L0JyLO/PrIpWAkiJJXVFTI5NWt+1C8/X5l/fSyOk4cjwiFSHXSfL49fb4RMqYOVyyTssoXVW5m4fxRmB5mxRxlig+S3/qlOomvG+DM3jSUMGC2clvnN2sKXX39+K64oTsY+mQPXIZ7lxNr+9AmjY5BXqrAWZMCDIBsG5wDySGR0gbSMu/G8yJyw5HcBd9qlTLGEFPpwyPMb7mt+cmTaw4bDLsXPE37cJRPOgv+Tudz+5ZuP5kY4pA8T7d0xvDBwV8noLuQueuxEOqsfpZs8opICaSdStL6RhIhjntO8WBzgikL9W9h5UKoGxeKRJl/x6YVkLNQDdH8dp3QpDG+gZLw47t0aVtb/darb01pfAC+GNM1QQfGgLqlv2cVB0/xDmEry1hFS5+1K0T+SDBxb9OyuF3c2lhMpzmjKWQgjQjsRwjEBv87RAEFOaGYTEeZ0AMFVnQI8/7JXPeWCXUkX828Msd5lJQH8L31oKZN/kuRbazJmm04Hop9KCo87sBoo1eqgxeezLo/kXg==
+x-microsoft-antispam-message-info: Jqwv9LpD6+vDryYO93UakboIHbGoNAYdvJO5+8yo9P50fCUZ8fmebUZSRjBxiWOVmvnRj7xVD74dhpGkXdcsZmA1kGlk38thJ2hDT4jpz2YhWzDYBAiA2/seRiihaKLJFXOuxzx5PR4TbM5/SA11GtLtsrJwwTy94D1Zjoxkgs1AdxyUIGWXKiFpPI9GG5B5xfaRPvAtaLHT9w87SKqDY1vw4V/gQ9no0qolsxqfoe2nkY4C+NtWmdRaMGPyUcjZjwxicJd5XwfB39bMQRBLsVbWtP2gHydDvUomBeAvtXxZU3kjj494vqeN0XfxmTEblcAb7lYaJp7C0hCaN608Fsk7Oh1loJL4xmhClrdC1XTDnJBgh4Z+gmQ4BuZ5sds7234Lp7FdQUmcLroGSaej6lqFGqTWaoN9/i7at/bQZbfkn3lgdP1JjaRkvZJNLZx5YFKVXxyMQVTYb6u9NnWzf6nafXOSZjMLQ2/M8X8kLbKBBjmYBxSO2NOnM6ytIb8ItG6zrOwI56pcwD9yuWB+MaPRCwQuRhLckxZzhcVLK65ZYtawV/CfwU85eicrIkoICLipOzmJVtYtVtJK1uC8JEy0xKy2JccVyu20BDuzKJ0CsTHGBO3jRpik0p2h4L/0QCVd11juUZv/hwrm2HfV8mzGo/BWFOecP0kZLjin7HWiS0D+6IooPkwB925fa1LOZWMURNTkWMBPwvQlPZyMiw==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY8PR11MB7364.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(396003)(376002)(346002)(366004)(136003)(39860400002)(451199018)(2906002)(38100700002)(186003)(82960400001)(9686003)(122000001)(55016003)(4744005)(53546011)(6506007)(38070700005)(26005)(66446008)(64756008)(76116006)(66946007)(33656002)(66556008)(6916009)(478600001)(52536014)(5660300002)(66476007)(8676002)(8936002)(316002)(71200400001)(41300700001)(86362001)(83380400001)(7696005);
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5354.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(39860400002)(346002)(366004)(136003)(396003)(451199018)(4326008)(66476007)(41300700001)(8676002)(76116006)(8936002)(66556008)(66446008)(2906002)(5660300002)(38070700005)(7696005)(86362001)(122000001)(38100700002)(82960400001)(33656002)(66946007)(64756008)(478600001)(55016003)(71200400001)(110136005)(316002)(54906003)(6506007)(186003)(26005)(52536014)(83380400001)(53546011)(9686003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?VnYUOW9HMmpCguOGp1h0VPnh6YSHZpPKO4Hw5iyxCgnfjbbF2Y6XQEp95uQf?=
- =?us-ascii?Q?/Fs5NamQwu3N3s4PZAwGLMNnzO80Ia9jDVJpRtKdxTyLpmJcrMe3jKqvVoYq?=
- =?us-ascii?Q?G/rXZ0JiJ9PUs4o6qnGlUWjZig+FErgYmy1dxRccKvb46ZVidhAm3Dt0SIBs?=
- =?us-ascii?Q?84uim4hBtFebrdh5MbSDoitiMyN7NN1y9JUGYRg0dWY40AAO8fGTPWDCBnLB?=
- =?us-ascii?Q?LWT4uxM2b1ku6DU7I/oQ+AHnqeep0beyvhsAlxGE2XM/LWN0BnIxbrAN0nws?=
- =?us-ascii?Q?DqFwKOcq3vNCTEApm5D9NqJcAdrByB/5oFyM0Z84kh7beoX1DlpNavdGV7VR?=
- =?us-ascii?Q?fPQIZ21KKE/DqDcGZkeJe+BHXu9jnaK0sK3zhrvLuy7+hnF2quy+kl0U7+4f?=
- =?us-ascii?Q?Oo7Yu9KE0KG4K1OSiLQl1tbeget+mcCjr0TCavc/kUMaSFZ05f9337gAWD3a?=
- =?us-ascii?Q?eMe2kEkKW5qEW36NHgyXc7MQ4dPdNSSixKpyE9AfIn4NKhw2YLIsfETdAkgh?=
- =?us-ascii?Q?RV9rAxVYpRrCg23DAFDQNH9wDg6NLm+EwD8Qo0b+sX0FjuVulGMaMNIE+hLc?=
- =?us-ascii?Q?5KaWIGwkbmeOIbmO4D4Ij2zU+eLftJ4Wgc2SMNNu2txLjwxoyVUpwMvxPShn?=
- =?us-ascii?Q?sikrpW4E/xAUqjShYMKP8t38UK5Cv2cqkrgwTuf/DK/utQ/wqC48uGZr1Brv?=
- =?us-ascii?Q?lSdALhUjiDhtumy54kX+0VhMRWZ2shyNpCAdoHYQe8AYHXdvhCz0c3iiSM7e?=
- =?us-ascii?Q?NWw0m++HVPiK88a1ZozKsmZmVLz3I9/WWv2HkleZzjTS3CkBWrxEbO7Qyu5d?=
- =?us-ascii?Q?eapjrt90TvPUOXKuGx6tsteiT/+npveImcwQ301Y2yn8u8j6FRxZb+xBH8Gs?=
- =?us-ascii?Q?eajwdalIDF1+8EvC1yhMWGTQTVSSY629Pg+vCNnDtXyDjziBGYb1ogCMRN+Y?=
- =?us-ascii?Q?8PUmlzGJjmQfvolNMYGVX7K2PwLrmx2I9RG3iGU0sXdQRUaAbLHZjQqs7u0Z?=
- =?us-ascii?Q?32CMOdqeYIfDkYDym2IIgY+gg3eLtBP0SkV8opym0Wz9mS6gOJyM+O7ysCDY?=
- =?us-ascii?Q?PgjSVvRwWD2zxHso6XmmTOLrMRkk6j+iI1kBTIFqsoAeOlvimnEkvWGKUpxW?=
- =?us-ascii?Q?11D3eqTWdkSIBRzyD24MK9pvAvudGHHBqNTy1xQANUikhVjNRNBlpJabxUaj?=
- =?us-ascii?Q?vvQ+WhemtWvQuQZ8HTXzyMXK5q3dp1QI7KdEtEn1mgidyfV+fjtQT4tFRHeT?=
- =?us-ascii?Q?NwLKZgf7MY+HTt0ZP9M8zdKWPnnoE7SsksRZIQ9T+7pHrsxQ0fdKTw6x6ffs?=
- =?us-ascii?Q?ZgsN9kKc/Pou/SlgAW7c+N82b9TwkXyxWTRlPvefzq76MIhBky8YaefupqGU?=
- =?us-ascii?Q?IY6QjgauMSuQzKk8xM7ijdtwL9APIT7DwIc9kf2Nz1STHoZBP/BpbbboE4Br?=
- =?us-ascii?Q?AjgNvkeFWyvKoPok6eqU+Kvk84dGSu/BF6SsbhfrblIuGH0/hiVhoeLPAuQ0?=
- =?us-ascii?Q?XFqPXqTF1SPu0JCMGXpPKf95obKPEBlLLTadXwCU6tz0+H3+3DW8euB+QSYv?=
- =?us-ascii?Q?7wPZU3MY9PhVR+YJVRSCeV/LNaOKGGGso1p1J3ab?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?iNw6VasEXpews90lPtii/jI6/EyQ5z9dAPty0gVcxvsrm/qZCnL1nXYGrBND?=
+ =?us-ascii?Q?eUtFF4oNJBw+KXlaDqqoA3700KYco3NYEMlylzYXu8PeTY/M0ZjGsfrtjoXs?=
+ =?us-ascii?Q?EmR30LO+OaOqQwdxPF3qsnsg3wol2+/mLCq1T+UFkuQX5/cTDZOVKQca4Hjp?=
+ =?us-ascii?Q?nDsQMUEbQKwJ16nCr7Q2G7URucOHI56+3soI+U2rTf/kCqiCw0BRz/ab7/XD?=
+ =?us-ascii?Q?InqTbC9zKeyzC+NK+0rsNMZ8uT59USXP1D4Qp0Fn+GFH4AED9sshGLxGN6v4?=
+ =?us-ascii?Q?Cge2SVRTt9wdLfPKR0g6FIfgNNdC5JlkIdbXaBYUtxASh/Q2xq+jKnFdbTxJ?=
+ =?us-ascii?Q?pgiNLQLQiPRbilBp8J7F9mWG7qhZ+5nkA3+/o+9xwOnFj1MUXn79MPb5Wqyo?=
+ =?us-ascii?Q?Hiak0dUJ/30gX/fuh2Xp2SURh8i+IB3k5+i1HX/VeCf+0LMScginEietdiXh?=
+ =?us-ascii?Q?3VRkH7R8X0t4y0Xgv4S96bmYmohNaD2fU+fpOnAR0KQJ1IUAK4tISJxE8Kz0?=
+ =?us-ascii?Q?dxkvDbRmV4LfjfpPIJClVeX6XpXO2/+ikA+sgIAqfgXsH7iMD8lqP1P5F2S6?=
+ =?us-ascii?Q?Ur6dxQGK+Qt4GTbJkEfcqWhi/KUIvM2y/sRodu0sTfPJyKQWmd7KwY6BqN0S?=
+ =?us-ascii?Q?YVcM7On4OGMyFVXi0kF/9YGJTNCMEe/1wUlcgUaVmF9SiQRSoq0/IFF4RFec?=
+ =?us-ascii?Q?7XCmhBZFH4UDrl0QUNuwHizdIMyWS/0jov5k1colxunF/IAajx41YuHkAezg?=
+ =?us-ascii?Q?8ORvdrP4GRdLvP2TStPbWZ4p4JqLgDJdZCe2MccM6Q2gheMa+huTRUf5K6Gb?=
+ =?us-ascii?Q?EY8DNBmKPLj/EPepY7fvDDSMquN938AHSzFYt1gUesjBBN4/SEmXCkQNidri?=
+ =?us-ascii?Q?RaBnwGLvCAkMQxCI1YuvRcGA0GF0TivfeX0QPY2n0pFGI6oFdeOM7wKUTrjZ?=
+ =?us-ascii?Q?fcS0Dn5DyKd0em/jTGoTywCxLCJygbSA8t+VxBxOIV78BmjiY4i5/WDSe2fk?=
+ =?us-ascii?Q?wNQgp2Q0VnHAP4u81G59InGEv8G1O7Oh/1xVU89waQkbQK4ovpHSenv2BnQi?=
+ =?us-ascii?Q?DTN0f3blUY1tHdkNZ1VMP9V1gR3ze30i0iqohEUdBOCNWkYPsst4QqrsAuJi?=
+ =?us-ascii?Q?rhe+mHsFXU3Rmb0gwTkwXXQkhYfxU6CNxHSx4+eu2US0KB4r83uQSsDOYBH9?=
+ =?us-ascii?Q?ZR5/4PU50h1u+qoqJmLk2wvnh1o6SV+OiYSbC9AvDjgHkb+WtnKwmmgri5em?=
+ =?us-ascii?Q?qXFBojFDsbBWPGu3xBmnwyESA17UjMtjqcCl8ntge8gDUKRxdixt+tGwBiNP?=
+ =?us-ascii?Q?0DozFRMaK3IWqRwKVRL8Ef0NZuy8DaExMfzWOE5t3DZ1jb8U1hI+rIbHX9yO?=
+ =?us-ascii?Q?nwT01yp+X0Vlf+EMZwKebjW0f7sv9EyPY9IPbqSt+ay8xPQEQaIwTQhy9J8U?=
+ =?us-ascii?Q?R9pBrRyDhQ7M1uYMvTYMlww4e16/4es72gZR5jkl58Myh7oozvPcVXo1I1t8?=
+ =?us-ascii?Q?DSmLY0jd9wkZyzniUyTD4CAGeJlFgm8PZvWsASYbAFBjsTK/97PWaZPDjdmH?=
+ =?us-ascii?Q?bLC+iCKVQv3hLBB1EXolayFrK+GE+x1eSfqRwF4s?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7364.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9dd3f8ba-90a4-4261-7e17-08db1fe35830
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Mar 2023 14:42:30.0511 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5354.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2c559bda-6f7b-4146-9978-08db1fc5bfaa
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Mar 2023 11:10:38.7079 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: G9lKSqCqgMLMrzYVM9R79SNsdxBkbuPDHGYYV8HWbI6AKquWJXOfagjLcrt7NG8bOh0HOyD2W/kreNO6ai5KVQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4722
+X-MS-Exchange-CrossTenant-userprincipalname: D15xfHeJJZvCmPMJkFrcNpMKauS70yLsKggjZZXHSpxu/4wd9r9vLhuLkc5lnzT36dTuFzKD7kRXWYE1xogKFfakf+eJ9hjMUd9Tykf/KIM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7662
 X-OriginatorOrg: intel.com
+X-Mailman-Approved-At: Wed, 08 Mar 2023 16:25:35 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678286568; x=1709822568;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=nUDPq/nkFbVhLmTSuMGf72hcj23IigmbPMx/VVkfSI4=;
- b=BXyd428HgdWBcTKD/lqCA1AGevC94mgQvRgLD5ZQQe4uaEO4ODj58tfU
- pLG3+VIXtP0PoXYnM3Ncemz2wnS3jbD98pnqGditHLkXQX3qQ8LZZ2tr8
- O/UdiklKDkJ4Pk9CBaMTLCPOnw/65fXq1jM6gQiQhqltxr739mRwl0Jc9
- yZso5Q5KJkn9JAQGKAUFiAfMAhaI/z0o6nHbOZ9kgu4lXWe8h4QsffPol
- MTwaZA29vQGRqROALoWl1WewjuIYvg0B9/01gjmxk0Adn5lX90/RPYZc7
- I90I1w0Pg47rIwXs71Wj8lC1BQIqUn08eXXN/enjdK4ZjVrIKjiagEQOX
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1678273848; x=1709809848;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=1Lthwg1uR+he98OyvpmayTCPpQ25oGnbBuwDFn6Zi1E=;
+ b=OJldeQt2wP2JK9ZUOfvGpIcSQrPrst38x5mzb14w+tOnTm3vDdPX4cVJ
+ zgZWyFjKWbA4EMfbzUdJ17UBVALCB+UmJ9cHoZwna4UJpj3P93E/QSRhM
+ w9m6HvfPyLGUwVtVmdfgMczhvzho4w1SToFSTwODEDn+H+2Z/4kGaZ22W
+ HhDJGID0XAd6wLUYQ8j/JPPbEmHT0LkjRNTyBVzKHvC/Eqx2I4HjwmwvM
+ OugaV8baYMc2jUX6cFSmxMt/fAhq9uYSrcqIWZrOJoZOB8n7JgrB39pRe
+ 6VeOjd8QUjTcOvHSLZJXRVgcqIz61WheJC5Zr/AVVJDDXqu7H+mTq7OiO
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BXyd428H
+ header.a=rsa-sha256 header.s=Intel header.b=OJldeQt2
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v4] igbvf: Regard vf reset nack as
- success
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Fix kernel crash during
+ reboot when adapter is in recovery mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -184,28 +186,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: open list <linux-kernel@vger.kernel.org>, "Piotrowski,
+ Patryk" <patryk.piotrowski@intel.com>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>, Eric Dumazet <edumazet@google.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Piotr Marczak <piotr.marczak@intel.com>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
 > -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Leon Romanovsky
-> Sent: niedziela, 4 grudnia 2022 12:21
-> To: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Cc: Paul Menzel <pmenzel@molgen.mpg.de>; netdev@vger.kernel.org; linux-
-> kernel@vger.kernel.org; Yuri Benditovich <yuri.benditovich@daynix.com>;
-> Eric Dumazet <edumazet@google.com>; intel-wired-lan@lists.osuosl.org;
-> Yan Vugenfirer <yan@daynix.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
-> Abeni <pabeni@redhat.com>; David S . Miller <davem@davemloft.net>
-> Subject: Re: [Intel-wired-lan] [PATCH net v4] igbvf: Regard vf reset nack as
-> success
-> 
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of ivecera
+> Sent: Thursday, February 23, 2023 8:37 PM
+> To: netdev@vger.kernel.org
+> Cc: Eric Dumazet <edumazet@google.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; open list <linux-kernel@vger.kernel.org>; Piotrowski, Patryk <patryk.piotrowski@intel.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>; Piotr Marczak <piotr.marczak@intel.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>; moderated list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>
+> Subject: [Intel-wired-lan] [PATCH net] i40e: Fix kernel crash during reboot when adapter is in recovery mode
+>
+> If the driver detects during probe that firmware is in recovery mode then i40e_init_recovery_mode() is called and the rest of probe function is skipped including pci_set_drvdata(). Subsequent
+i40e_shutdown() called during shutdown/reboot dereferences NULL pointer as pci_get_drvdata() returns NULL.
+>
+> To fix call pci_set_drvdata() also during entering to recovery mode.
+>
+> Reproducer:
+> 1) Lets have i40e NIC with firmware in recovery mode
+> 2) Run reboot
+>
+> Result:
+> [  139.084698] i40e: Intel(R) Ethernet Connection XL710 Network Driver [  139.090959] i40e: Copyright (c) 2013 - 2019 Intel Corporation.
+> [  139.108438] i40e 0000:02:00.0: Firmware recovery mode detected. Limiting functionality.
+> [  139.116439] i40e 0000:02:00.0: Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.
+> [  139.129499] i40e 0000:02:00.0: fw 8.3.64775 api 1.13 nvm 8.30 0x8000b78d 1.3106.0 [8086:1583] [15d9:084a] [  139.215932] i40e 0000:02:00.0 enp2s0f0: renamed from eth0 [  139.223292] i40e 0000:02:00.1: Firmware recovery mode detected. Limiting functionality.
+> [  139.231292] i40e 0000:02:00.1: Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.
+> [  139.244406] i40e 0000:02:00.1: fw 8.3.64775 api 1.13 nvm 8.30 0x8000b78d 1.3106.0 [8086:1583] [15d9:084a] [  139.329209] i40e 0000:02:00.1 enp2s0f1: renamed from eth0 ...
+> [  156.311376] BUG: kernel NULL pointer dereference, address: 00000000000006c2 [  156.318330] #PF: supervisor write access in kernel mode [  156.323546] #PF: error_code(0x0002) - not-present page [  156.328679] PGD 0 P4D 0 [  156.331210] Oops: 0002 [#1] PREEMPT SMP NOPTI
+> [  156.335567] CPU: 26 PID: 15119 Comm: reboot Tainted: G            E      6.2.0+ #1
+> [  156.343126] Hardware name: Abacus electric, s.r.o. - servis@abacus.cz Super Server/H12SSW-iN, BIOS 2.4 04/13/2022 [  156.353369] RIP: 0010:i40e_shutdown+0x15/0x130 [i40e] [  156.358430] Code: c1 fc ff ff 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 0f 1f 44 00 00 55 48 89 fd 53 48 8b 9f 48 01 00 00 <f0> 80 8b c2 06 00 00 04 f0 80 8b c0 06 00 00 08 48 8d bb 08 08 00 [  156.377168] RSP: 0018:ffffb223c8447d90 EFLAGS: 00010282 [  156.382384] RAX: ffffffffc073ee70 RBX: 0000000000000000 RCX: 0000000000000001 [  156.389510] RDX: 0000000080000001 RSI: 0000000000000246 RDI: ffff95db49988000 [  156.396634] RBP: ffff95db49988000 R08: ffffffffffffffff R09: ffffffff8bd17d40 [  156.403759] R10: 0000000000000001 R11: ffffffff8a5e3d28 R12: ffff95db49988000 [  156.410882] R13: ffffffff89a6fe17 R14: ffff95db49988150 R15: 0000000000000000 [  156.418007] FS:  00007fe7c0cc3980(0000) GS:ffff95ea8ee80000(0000) knlGS:0000000000000000 [  156.426083] CS:  0010 DS: 0000 ES: 0000 CR0: 000
+ 0000080050033 [  156.431819] CR2: 00000000000006c2 CR3: 00000003092fc005 CR4: 0000000000770ee0 [  156.438944] PKRU: 55555554 [  156.441647] Call Trace:
+> [  156.444096]  <TASK>
+> [  156.446199]  pci_device_shutdown+0x38/0x60 [  156.450297]  device_shutdown+0x163/0x210 [  156.454215]  kernel_restart+0x12/0x70 [  156.457872]  __do_sys_reboot+0x1ab/0x230 [  156.461789]  ? vfs_writev+0xa6/0x1a0 [  156.465362]  ? __pfx_file_free_rcu+0x10/0x10 [  156.469635]  ? __call_rcu_common.constprop.85+0x109/0x5a0
+> [  156.475034]  do_syscall_64+0x3e/0x90
+> [  156.478611]  entry_SYSCALL_64_after_hwframe+0x72/0xdc
+> [  156.483658] RIP: 0033:0x7fe7bff37ab7
+>
+> Fixes: 4ff0ee1af01697 ("i40e: Introduce recovery mode support")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
 
-Tested-by: Marek Szlosek <marek.szlosek@intel.com>
+Tested-by: Arpana Arland <arpanax.arland@intel.com> (A Contingent worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
