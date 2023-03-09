@@ -1,93 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54FA56B2FA4
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Mar 2023 22:33:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 527D26B2FC4
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Mar 2023 22:45:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D4F6E81A50;
-	Thu,  9 Mar 2023 21:33:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4F6E81A50
+	by smtp1.osuosl.org (Postfix) with ESMTP id E1ED08224D;
+	Thu,  9 Mar 2023 21:45:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1ED08224D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678397595;
-	bh=6aqWAqbq7xW8+o1lCijvGSxilpljrxc8i4YJ0Yoi6MU=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=gwvwW3KHpBE9wHp4bZKG+V8DUIPXP3250q0aXmJUGVBWE/drIoth069T6lM1SpaTK
-	 8ZeuGsFgLQqKLBb8KBsT+NIVlbLngkS7PRnChIyQcOdadlXksQTEG92+8EYotcRv/0
-	 wYnMw0y4XYOEQm9SKro7CUOybTdm9Bx15CLqGS285jttz96qHP+Yk2RDk5uy0hOORB
-	 MdZe+wL39wHr3Lfx/DLG3OubI60Fd1+8VKnEqov8bUx4RXJH2RX43PmFd9s4LD3jCM
-	 Z9sGcHNlLRp+Q2xl8nEFrraQ9NxPeFcWGBhulqhZkyegBIMkUMRL0+d0SzsFjziVJU
-	 o2cBcIc9AnRdg==
+	s=default; t=1678398319;
+	bh=FXphv/e1bzlrpPjoOp6CiTqI0pUdW5qjMZ4uMMFWsos=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=iFLLJLK+xA5gZl6zOwyneSx5hkLg0dSnL8tcd3JA3C8g1iPwSsIiEh6n1b8LYpV83
+	 +1w5aO1v0sH5Hy4xWL7Yw/u7xlj8tGNA/kJ4iPH4diPRFaXUzpD0QM6gnSk+xLgySD
+	 o9bMEahPgW/8L05j1cCNir5KVMXqWJKPYB6JTOKkkxGUDaKPuFhN+Qyz2GjgpDF2DZ
+	 tiPktauFYi0El4VvasK0fCvpQg2as7SG5ym/Ugd08/2dSCm5JywSNBQimVpuImXa/f
+	 1WsGbv+Qa+tg36ANX7oa5KzhUr2hU70iYWqeQ9hZ6oIwIZiYgSE1yhloWy/LiXrcZ+
+	 CwnztcXire49A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mM8pPUclOog2; Thu,  9 Mar 2023 21:33:14 +0000 (UTC)
+	with ESMTP id XBxkZXeA2Jl1; Thu,  9 Mar 2023 21:45:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3E7CF81359;
-	Thu,  9 Mar 2023 21:33:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E7CF81359
+	by smtp1.osuosl.org (Postfix) with ESMTP id AF724820DF;
+	Thu,  9 Mar 2023 21:45:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF724820DF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C4E081BF366
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:33:09 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D3051BF366
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:45:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AA9F4416DB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:33:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AA9F4416DB
+ by smtp1.osuosl.org (Postfix) with ESMTP id E97D2820DF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:45:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E97D2820DF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id swqLye_fkeGz for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Mar 2023 21:33:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ygNQRsK0-D34 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Mar 2023 21:45:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1429141A34
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1429141A34
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:33:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="324924607"
-X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; d="scan'208";a="324924607"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Mar 2023 13:33:07 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DD25811FF
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0DD25811FF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 21:45:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="336595095"
+X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; d="scan'208";a="336595095"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Mar 2023 13:45:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="1006887077"
-X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; d="scan'208";a="1006887077"
-Received: from vcostago-desk1.jf.intel.com (HELO vcostago-desk1)
- ([10.54.70.17])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Mar 2023 13:33:06 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-In-Reply-To: <20230228173357.ey5ztux2w5syvzrx@skbuf>
-References: <20230228054534.1093483-1-vinicius.gomes@intel.com>
- <20230228054534.1093483-1-vinicius.gomes@intel.com>
- <20230228054534.1093483-2-vinicius.gomes@intel.com>
- <20230228054534.1093483-2-vinicius.gomes@intel.com>
- <20230228173357.ey5ztux2w5syvzrx@skbuf>
-Date: Thu, 09 Mar 2023 13:33:06 -0800
-Message-ID: <87o7p1r4od.fsf@intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="766590807"
+X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; d="scan'208";a="766590807"
+Received: from anguy11-upstream.jf.intel.com ([10.166.9.133])
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Mar 2023 13:40:14 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	piotr.raczynski@intel.com
+Date: Thu,  9 Mar 2023 13:38:56 -0800
+Message-Id: <20230309213856.1198788-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678397588; x=1709933588;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=vqOo3lk5TZY72ozS9AZdvkSrVO2qCJ4NFvgDIXOo+jM=;
- b=SjuvNn26KDjC0JEHg90m9ikcPV6lmpjiaeuyymfa8yWO1TgWjT65DE80
- 7XTpc+yfXkPrjlmdx27wX3/idWyCS0R6Mj3+4ixpowRN6wmzKPMQdj2Lg
- OQjb2AI3N08lvUWRW4XN2NKMSA0Zx134Evs8NIHehQ9XxhT5K4RQu6JQG
- RFahctslOM4g+M4bo2BNl6Dru/EqNOyhvlytKL4QrpHAZrUbTf8LJl8Kz
- G+rMcsYBYSMUm/nwh1OSCkkG+EgbQzQMphdUsHEkjl+f8vpNipPU5uUH9
- QlLeY64Qj1QhSttWKy0272a6jjcxYjJy21n8CgpeUNGYirqlxrLvV5Z3j
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1678398313; x=1709934313;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+RnKf27fw2e319PSqXX8OG8yhiRvUKEphTsZ5BfrKmI=;
+ b=oFxcUMutJLB2LbmURlfEJWdSmkCjZF2CvDUirxYLHoxuBdN65DuQlPcY
+ 8HJzkVIgALk6vo+MsQblgFGg58dhhQQOUAhUZEXL3fH6QpCxvaSf4B3Jm
+ lw3vz1NrNIgXE+wub/cjpNUnIo0a1SmZhigWB5PPZSxVxFD2IPaQUeqi0
+ ZaNkTqZLXKwz2z/tJlm3tERjwLSRqf04tB+gFReVaUSf62mFP/8BI3l+Z
+ PcL4seTHnRb5hMk4a0VlPYrF3QLBgI34Doff3z2zXqAu5XaHvyaGj9tuB
+ FlaayhzbruoD8kSmkF/eJpJoZUqGlgzLOn3R5ueZ+Nq+ayXDQUYK0v5yX
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SjuvNn26
-Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 1/3] igc: Fix race
- condition in PTP tx code
+ header.a=rsa-sha256 header.s=Intel header.b=oFxcUMut
+Subject: [Intel-wired-lan] [net-queue v1 1/1] ice: fix rx buffers handling
+ for flow director packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,304 +93,106 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kurt@linutronix.de, anthony.l.nguyen@intel.com,
- Andre Guedes <andre.guedes@intel.com>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vladimir,
+From: Piotr Raczynski <piotr.raczynski@intel.com>
 
-Sorry for the delay, crazy times around here.
+Adding flow director filters stopped working correctly after
+commit 2fba7dc5157b ("ice: Add support for XDP multi-buffer
+on Rx side"). As a result, only first flow director filter
+can be added, adding next filter leads to NULL pointer
+dereference attached below.
 
-Vladimir Oltean <vladimir.oltean@nxp.com> writes:
+Rx buffer handling and reallocation logic has been optimized,
+however flow director specific traffic was not accounted for.
+As a result driver handled those packets incorrectly since new
+logic was based on ice_rx_ring::first_desc which was not set
+in this case.
 
-> Hi Vinicius,
->
-> Some small comments, feel free to ignore them.
->
-> On Mon, Feb 27, 2023 at 09:45:32PM -0800, Vinicius Costa Gomes wrote:
->> From: Andre Guedes <andre.guedes@intel.com>
->> 
->> Currently, the igc driver supports timestamping only one tx packet at a
->> time. During the transmission flow, the skb that requires hardware
->> timestamping is saved in adapter->ptp_tx_skb. Once hardware has the
->> timestamp, an interrupt is delivered, and adapter->ptp_tx_work is
->> scheduled. In igc_ptp_tx_work(), we read the timestamp register, update
->> adapter->ptp_tx_skb, and notify the network stack.
->> 
->> While the thread executing the transmission flow (the user process
->> running in kernel mode) and the thread executing ptp_tx_work don't
->> access adapter->ptp_tx_skb concurrently, there are two other places
->> where adapter->ptp_tx_skb is accessed: igc_ptp_tx_hang() and
->> igc_ptp_suspend().
->> 
->> igc_ptp_tx_hang() is executed by the adapter->watchdog_task worker
->> thread which runs periodically so it is possible we have two threads
->> accessing ptp_tx_skb at the same time. Consider the following scenario:
->> right after __IGC_PTP_TX_IN_PROGRESS is set in igc_xmit_frame_ring(),
->> igc_ptp_tx_hang() is executed. Since adapter->ptp_tx_start hasn't been
->> written yet, this is considered a timeout and adapter->ptp_tx_skb is
->> cleaned up.
->> 
->> This patch fixes the issue described above by adding the ptp_tx_lock to
->> protect access to ptp_tx_skb and ptp_tx_start fields from igc_adapter.
->> Since igc_xmit_frame_ring() called in atomic context by the networking
->> stack, ptp_tx_lock is defined as a spinlock.
->> 
->> With the introduction of the ptp_tx_lock, the __IGC_PTP_TX_IN_PROGRESS
->> flag doesn't provide much of a use anymore so this patch gets rid of it.
->> 
->> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
->> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->> ---
->
-> Shouldn't this have a Fixes: tag and be sent to the 'net' queue, since
-> it fixes a bug which can be seen in the real world?
->
+Fix this by setting struct ice_rx_ring::first_desc to next_to_clean
+for flow director received packets.
 
-As I couldn't reproduce the race condition (the "false" timeout) at all
-on my systems, at first I chose not to propose this for 'net'.
+[  438.544867] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  438.551840] #PF: supervisor read access in kernel mode
+[  438.556978] #PF: error_code(0x0000) - not-present page
+[  438.562115] PGD 7c953b2067 P4D 0
+[  438.565436] Oops: 0000 [#1] PREEMPT SMP NOPTI
+[  438.569794] CPU: 0 PID: 0 Comm: swapper/0 Kdump: loaded Not tainted 6.2.0-net-bug #1
+[  438.577531] Hardware name: Intel Corporation M50CYP2SBSTD/M50CYP2SBSTD, BIOS SE5C620.86B.01.01.0005.2202160810 02/16/2022
+[  438.588470] RIP: 0010:ice_clean_rx_irq+0x2b9/0xf20 [ice]
+[  438.593860] Code: 45 89 f7 e9 ac 00 00 00 8b 4d 78 41 31 4e 10 41 09 d5 4d 85 f6 0f 84 82 00 00 00 49 8b 4e 08 41 8b 76
+1c 65 8b 3d 47 36 4a 3f <48> 8b 11 48 c1 ea 36 39 d7 0f 85 a6 00 00 00 f6 41 08 02 0f 85 9c
+[  438.612605] RSP: 0018:ff8c732640003ec8 EFLAGS: 00010082
+[  438.617831] RAX: 0000000000000800 RBX: 00000000000007ff RCX: 0000000000000000
+[  438.624957] RDX: 0000000000000800 RSI: 0000000000000000 RDI: 0000000000000000
+[  438.632089] RBP: ff4ed275a2158200 R08: 00000000ffffffff R09: 0000000000000020
+[  438.639222] R10: 0000000000000000 R11: 0000000000000020 R12: 0000000000001000
+[  438.646356] R13: 0000000000000000 R14: ff4ed275d0daffe0 R15: 0000000000000000
+[  438.653485] FS:  0000000000000000(0000) GS:ff4ed2738fa00000(0000) knlGS:0000000000000000
+[  438.661563] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  438.667310] CR2: 0000000000000000 CR3: 0000007c9f0d6006 CR4: 0000000000771ef0
+[  438.674444] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  438.681573] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  438.688697] PKRU: 55555554
+[  438.691404] Call Trace:
+[  438.693857]  <IRQ>
+[  438.695877]  ? profile_tick+0x17/0x80
+[  438.699542]  ice_msix_clean_ctrl_vsi+0x24/0x50 [ice]
+[  438.702571] ice 0000:b1:00.0: VF 1: ctrl_vsi irq timeout
+[  438.704542]  __handle_irq_event_percpu+0x43/0x1a0
+[  438.704549]  handle_irq_event+0x34/0x70
+[  438.704554]  handle_edge_irq+0x9f/0x240
+[  438.709901] iavf 0000:b1:01.1: Failed to add Flow Director filter with status: 6
+[  438.714571]  __common_interrupt+0x63/0x100
+[  438.714580]  common_interrupt+0xb4/0xd0
+[  438.718424] iavf 0000:b1:01.1: Rule ID: 127 dst_ip: 0.0.0.0 src_ip 0.0.0.0 UDP: dst_port 4 src_port 0
+[  438.722255]  </IRQ>
+[  438.722257]  <TASK>
+[  438.722257]  asm_common_interrupt+0x22/0x40
+[  438.722262] RIP: 0010:cpuidle_enter_state+0xc8/0x430
+[  438.722267] Code: 6e e9 25 ff e8 f9 ef ff ff 8b 53 04 49 89 c5 0f 1f 44 00 00 31 ff e8 d7 f1 24 ff 45
+84 ff 0f 85 57 02 00 00 fb 0f 1f 44 00 00 <45> 85 f6 0f 88 85 01 00 00 49 63 d6 48 8d 04 52 48 8d 04 82 49 8d
+[  438.722269] RSP: 0018:ffffffff86003e50 EFLAGS: 00000246
+[  438.784108] RAX: ff4ed2738fa00000 RBX: ffbe72a64fc01020 RCX: 0000000000000000
+[  438.791234] RDX: 0000000000000000 RSI: ffffffff858d84de RDI: ffffffff85893641
+[  438.798365] RBP: 0000000000000002 R08: 0000000000000002 R09: 000000003158af9d
+[  438.805490] R10: 0000000000000008 R11: 0000000000000354 R12: ffffffff862365a0
+[  438.812622] R13: 000000661b472a87 R14: 0000000000000002 R15: 0000000000000000
+[  438.819757]  cpuidle_enter+0x29/0x40
+[  438.823333]  do_idle+0x1b6/0x230
+[  438.826566]  cpu_startup_entry+0x19/0x20
+[  438.830492]  rest_init+0xcb/0xd0
+[  438.833717]  arch_call_rest_init+0xa/0x30
+[  438.837731]  start_kernel+0x776/0xb70
+[  438.841396]  secondary_startup_64_no_verify+0xe5/0xeb
+[  438.846449]  </TASK>
 
-But on the other hand, yeah, I don't think this patch will have any side
-effects and will only protect against this (possible) issue. So yeah,
-will add a 'Fixes:' tag and propose it there.
+Fixes: 2fba7dc5157b ("ice: Add support for XDP multi-buffer on Rx side")
+Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Reviewed-by: Simon Horman <simon.horman@corigine.com>
+---
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
->>  drivers/net/ethernet/intel/igc/igc.h      |  5 +-
->>  drivers/net/ethernet/intel/igc/igc_main.c |  8 +++-
->>  drivers/net/ethernet/intel/igc/igc_ptp.c  | 57 +++++++++++++++--------
->>  3 files changed, 47 insertions(+), 23 deletions(-)
->> 
->> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
->> index df3e26c0cf01..e804a566bdd3 100644
->> --- a/drivers/net/ethernet/intel/igc/igc.h
->> +++ b/drivers/net/ethernet/intel/igc/igc.h
->> @@ -227,6 +227,10 @@ struct igc_adapter {
->>  	struct ptp_clock *ptp_clock;
->>  	struct ptp_clock_info ptp_caps;
->>  	struct work_struct ptp_tx_work;
->> +	/* Access to ptp_tx_skb and ptp_tx_start is protected by the
->> +	 * ptp_tx_lock.
->> +	 */
->> +	spinlock_t ptp_tx_lock;
->>  	struct sk_buff *ptp_tx_skb;
->>  	struct hwtstamp_config tstamp_config;
->>  	unsigned long ptp_tx_start;
->> @@ -401,7 +405,6 @@ enum igc_state_t {
->>  	__IGC_TESTING,
->>  	__IGC_RESETTING,
->>  	__IGC_DOWN,
->> -	__IGC_PTP_TX_IN_PROGRESS,
->>  };
->>  
->>  enum igc_tx_flags {
->> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
->> index 2928a6c73692..84c9c6e09054 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_main.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
->> @@ -1565,14 +1565,16 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
->>  
->>  	if (unlikely(skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)) {
->>  		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
->> +		unsigned long flags;
->> +
->> +		spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
->>  
->>  		/* FIXME: add support for retrieving timestamps from
->>  		 * the other timer registers before skipping the
->>  		 * timestamping request.
->>  		 */
->>  		if (adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON &&
->> -		    !test_and_set_bit_lock(__IGC_PTP_TX_IN_PROGRESS,
->> -					   &adapter->state)) {
->> +		    !adapter->ptp_tx_skb) {
->>  			skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
->>  			tx_flags |= IGC_TX_FLAGS_TSTAMP;
->>  
->> @@ -1581,6 +1583,8 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
->>  		} else {
->>  			adapter->tx_hwtstamp_skipped++;
->
-> unrelated: when adapter->tstamp_config.tx_type != HWTSTAMP_TX_ON but
-> skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP was set, it simply means
-> that the timestamp is "not for you". For example igc is a DSA master for
-> a PTP-capable switch. Should adapter->tx_hwtstamp_skipped increment in
-> that case? I mean, timestamps are skipped, but is it worth bumping a
-> user-visible counter for what is essentially the normal thing to do?
->
-
-Good point, I never considered this case.
-
-Incrementing the counter seems wrong, will separate the conditions for
-the "not for me" and for the "this is for me and I am busy" cases. 
-
->>  		}
->> +
->> +		spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
->>  	}
->>  
->>  	if (skb_vlan_tag_present(skb)) {
->> diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
->> index 4e10ced736db..9247395911c9 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_ptp.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
->> @@ -603,14 +603,15 @@ static int igc_ptp_set_timestamp_mode(struct igc_adapter *adapter,
->>  	return 0;
->>  }
->>  
->> +/* Requires adapter->ptp_tx_lock held by caller. */
->>  static void igc_ptp_tx_timeout(struct igc_adapter *adapter)
->>  {
->>  	struct igc_hw *hw = &adapter->hw;
->>  
->>  	dev_kfree_skb_any(adapter->ptp_tx_skb);
->>  	adapter->ptp_tx_skb = NULL;
->> +	adapter->ptp_tx_start = 0;
->
-> what's the reason for setting this to 0? (here, there and everywhere)
->
-
-Not really needed, something I missed from the early version of the
-patch. Will fix.
-
->>  	adapter->tx_hwtstamp_timeouts++;
->> -	clear_bit_unlock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state);
->>  	/* Clear the tx valid bit in TSYNCTXCTL register to enable interrupt. */
->>  	rd32(IGC_TXSTMPH);
->>  	netdev_warn(adapter->netdev, "Tx timestamp timeout\n");
->> @@ -618,20 +619,20 @@ static void igc_ptp_tx_timeout(struct igc_adapter *adapter)
->>  
->>  void igc_ptp_tx_hang(struct igc_adapter *adapter)
->>  {
->> -	bool timeout = time_is_before_jiffies(adapter->ptp_tx_start +
->> -					      IGC_PTP_TX_TIMEOUT);
->> -
->> -	if (!test_bit(__IGC_PTP_TX_IN_PROGRESS, &adapter->state))
->> -		return;
->> -
->> -	/* If we haven't received a timestamp within the timeout, it is
->> -	 * reasonable to assume that it will never occur, so we can unlock the
->> -	 * timestamp bit when this occurs.
->> -	 */
->> -	if (timeout) {
->> -		cancel_work_sync(&adapter->ptp_tx_work);
->> -		igc_ptp_tx_timeout(adapter);
->> -	}
->> +	unsigned long flags;
->> +
->> +	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
->> +
->> +	if (!adapter->ptp_tx_skb)
->> +		goto unlock;
->> +
->> +	if (time_is_after_jiffies(adapter->ptp_tx_start + IGC_PTP_TX_TIMEOUT))
->> +		goto unlock;
->> +
->> +	igc_ptp_tx_timeout(adapter);
->> +
->> +unlock:
->> +	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
->>  }
->>  
->>  /**
->> @@ -641,6 +642,8 @@ void igc_ptp_tx_hang(struct igc_adapter *adapter)
->>   * If we were asked to do hardware stamping and such a time stamp is
->>   * available, then it must have been for this skb here because we only
->>   * allow only one such packet into the queue.
->> + *
->> + * Context: Expects adapter->ptp_tx_lock to be held by caller.
->>   */
->>  static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
->>  {
->> @@ -682,7 +685,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
->>  	 * while we're notifying the stack.
->>  	 */
->
-> This comment just became obsolete:
->
-> 	/* Clear the lock early before calling skb_tstamp_tx so that
-> 	 * applications are not woken up before the lock bit is clear. We use
-> 	 * a copy of the skb pointer to ensure other threads can't change it
-> 	 * while we're notifying the stack.
-> 	 */
->
-> it gets removed in one of the later patches.
->
-> I suppose this doesn't make a real difference unless this change gets
-> backported as a fix to stable kernels and the others don't.
->
-
-Will remove the comment in this patch. Good catch.
-
->>  	adapter->ptp_tx_skb = NULL;
->> -	clear_bit_unlock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state);
->> +	adapter->ptp_tx_start = 0;
->>  
->>  	/* Notify the stack and free the skb after we've unlocked */
->>  	skb_tstamp_tx(skb, &shhwtstamps);
->> @@ -701,16 +704,22 @@ static void igc_ptp_tx_work(struct work_struct *work)
->>  	struct igc_adapter *adapter = container_of(work, struct igc_adapter,
->>  						   ptp_tx_work);
->>  	struct igc_hw *hw = &adapter->hw;
->> +	unsigned long flags;
->>  	u32 tsynctxctl;
->>  
->> -	if (!test_bit(__IGC_PTP_TX_IN_PROGRESS, &adapter->state))
->> -		return;
->> +	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
->> +
->> +	if (!adapter->ptp_tx_skb)
->> +		goto unlock;
->>  
->>  	tsynctxctl = rd32(IGC_TSYNCTXCTL);
->>  	if (WARN_ON_ONCE(!(tsynctxctl & IGC_TSYNCTXCTL_TXTT_0)))
->> -		return;
->> +		goto unlock;
->>  
->>  	igc_ptp_tx_hwtstamp(adapter);
->> +
->> +unlock:
->> +	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
->>  }
->>  
->>  /**
->> @@ -960,6 +969,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
->>  	}
->>  
->>  	spin_lock_init(&adapter->tmreg_lock);
->> +	spin_lock_init(&adapter->ptp_tx_lock);
->>  	INIT_WORK(&adapter->ptp_tx_work, igc_ptp_tx_work);
->>  
->>  	adapter->tstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
->> @@ -1017,13 +1027,20 @@ static void igc_ptm_stop(struct igc_adapter *adapter)
->>   */
->>  void igc_ptp_suspend(struct igc_adapter *adapter)
->>  {
->> +	unsigned long flags;
->> +
->>  	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
->>  		return;
->>  
->>  	cancel_work_sync(&adapter->ptp_tx_work);
->> +
->> +	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
->> +
->>  	dev_kfree_skb_any(adapter->ptp_tx_skb);
->>  	adapter->ptp_tx_skb = NULL;
->> -	clear_bit_unlock(__IGC_PTP_TX_IN_PROGRESS, &adapter->state);
->> +	adapter->ptp_tx_start = 0;
->> +
->> +	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
->>  
->>  	if (pci_device_is_present(adapter->pdev)) {
->>  		igc_ptp_time_save(adapter);
->> -- 
->> 2.39.2
->>
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index dfd22862e926..b61dd9f01540 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1210,6 +1210,7 @@ int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
+ 				ice_vc_fdir_irq_handler(ctrl_vsi, rx_desc);
+ 			if (++ntc == cnt)
+ 				ntc = 0;
++			rx_ring->first_desc = ntc;
+ 			continue;
+ 		}
+ 
 -- 
-Vinicius
+2.38.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
