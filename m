@@ -1,92 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFB4B6B1AEE
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Mar 2023 06:43:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C4C16B1C88
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Mar 2023 08:40:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 238986125F;
-	Thu,  9 Mar 2023 05:43:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 238986125F
+	by smtp4.osuosl.org (Postfix) with ESMTP id B175E418B7;
+	Thu,  9 Mar 2023 07:40:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B175E418B7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678340603;
-	bh=5SluRCVowVyT9rai0V7XYMgt2qF6kOHr8gDdYue5GYg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1678347638;
+	bh=dPiasY9p1aq265p9bLXV9cjVrPOGiLWphdrjK7n/WNI=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5OKzqYTYdobLg4T534fSefOjNgHY0pRRggS4f2PAIXwA9nLUASeIz2jNoWpaoJoQ3
-	 8wDt8Go7f6HtEjpQQESPEI69sHaCgdVcWrK6C0IBfN1Wu2e/n1B2DdQiMC+0CWGZnY
-	 dBSg1JnSh5kM7JxDPXf81vobEf1htGqWmrv4A1e/OMLlBBzWah3APmqGiThIivbzOW
-	 DPF6nbY0e+yImd0/GozMKhrVwh1BpFclGaKeLgE++Gtay8tkQPAxMNNAO+1veh17vo
-	 x0iYtsB3cxpQ3q7D80JP6KgJyI8P89XItF3Mz/LT8dEXdj9mikkVlkD/IrvMciY/rN
-	 OrRIzxQwToPGg==
+	b=AyZca0URb8AjTl5gxjE6BiI4gloGcJa1NoCzW4zSWz+IxlxmHkPVmqnR2IqmnkOZt
+	 wB8l+gDzmtOxk0d31uR9g00iHnteLj5my3ztMEvJV2AOw1RB+vXBU4KIL5O6Lwzsgs
+	 pcmsPWctyc8DBZgAAFiwAyKo7e2Iwpbbmg5Os1wxd2beQpICEn9UURzMEa525KzUkQ
+	 PYSt2ov+rMg541FFExC15LF9KYoSc+OEEPNrDdOYjRUIlqQMdIQjm3sQxGJFVadoGy
+	 guL5yk2tvNld5He/yBpyEuVcQryWesa/HT2x0XpOwJrY0caxNWQN2MP8FxXuG5g+GT
+	 iXO1jdDH5aqMQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jv4qr81nIgGh; Thu,  9 Mar 2023 05:43:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aFUbk4Ssl5Qw; Thu,  9 Mar 2023 07:40:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D71F661186;
-	Thu,  9 Mar 2023 05:43:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D71F661186
+	by smtp4.osuosl.org (Postfix) with ESMTP id D7F20418B5;
+	Thu,  9 Mar 2023 07:40:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D7F20418B5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7AF661BF847
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 05:43:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 89F131BF40A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 07:40:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 530E180EA2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 05:43:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 530E180EA2
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6DCC0418B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 07:40:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6DCC0418B5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MyEGU2HOAEdS for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Mar 2023 05:43:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ASQSyR1G_X5L for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Mar 2023 07:40:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B25FE80EA5
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B25FE80EA5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 05:43:14 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="337884465"
-X-IronPort-AV: E=Sophos;i="5.98,245,1673942400"; d="scan'208";a="337884465"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2023 21:43:13 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="670601915"
-X-IronPort-AV: E=Sophos;i="5.98,245,1673942400"; d="scan'208";a="670601915"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 08 Mar 2023 21:43:12 -0800
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pa93X-0002gj-1L;
- Thu, 09 Mar 2023 05:43:11 +0000
-Date: Thu, 9 Mar 2023 13:42:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202303091324.Fz9iqJvc-lkp@intel.com>
-References: <20230308235102.170-4-paul.m.stillwell.jr@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A1869418B3
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A1869418B3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Mar 2023 07:40:29 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 65C25CE1FF1;
+ Thu,  9 Mar 2023 07:40:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C79A9C433D2;
+ Thu,  9 Mar 2023 07:40:23 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ A1B08E61B6E; Thu,  9 Mar 2023 07:40:23 +0000 (UTC)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230308235102.170-4-paul.m.stillwell.jr@intel.com>
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <167834762365.29033.5915436899896564508.git-patchwork-notify@kernel.org>
+Date: Thu, 09 Mar 2023 07:40:23 +0000
+References: <20230307181940.868828-1-helgaas@kernel.org>
+In-Reply-To: <20230307181940.868828-1-helgaas@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678340594; x=1709876594;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=sOkcArzsj+hqHpsD2FP0lGoNTDGk9VjHdgWHEWqSPnQ=;
- b=hnjB+P7kWn0u93bn+hAiHxQSccuSUeB/Xg2oa4Mz2Jm4LnvF1XY9WkCv
- MGbjy6HGqmQ92r0dgPmXowOMp6n4xhLumx1eKh0+27f9KMfFalOlq5IXS
- LTaCjiRJ7P3qsI4td8/gyggvkV8MafC6m+wAd1lF1Evs4elkaEy0rG+54
- oE9HosXsxTeYEMGptT+teM2TrIbAieszjk8PHXnaA4oFT04as1R7EJrFh
- +FX0fLcRDnnFLXA8IfZL20lWhALCn3iLW3vFK0m6YJ4uinYZZhV9LSFFy
- DWYc1KpoH0nnvs4Sj3GmKNwWj3qO6w+p2Kbm0/TIGjL7KVAcdkH/J5IeK
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hnjB+P7k
-Subject: Re: [Intel-wired-lan] [PATCH net-next v10 3/5] ice: add ability to
- set FW log configuration
+ d=kernel.org; s=k20201202; t=1678347623;
+ bh=HHYt8aLbuz6IkOfI+LhZEtJr3IrwCVJJ/+VHPDerd9I=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=WWPk3rpjhXS8Pe/26VtnKCNwxZ0rHPPuWD/ExvR4vsiNIfCyq47kGQt/HgS9jZQql
+ objQ1HyVarLMAKrdj2L4TnugQwbme5vwr+waQUIRqmYUHIN4kdj8M8WPMi+8VWlQzB
+ 2JCbyRJxw5+kuhCdB2Sy1tp2H9JnZXe8szA2YAyIWLQ6WgILO9tPNX0TE4GVeGOsWR
+ GEJQR+5zjik4LlZD5+HCLAV73OmHS1DoUkYkklgUCX4P/w1iwXDGdlHmnmlqExrm0a
+ aySBuZ5tueldk46sz1zykxQoUxKa70kcnK8zIhhV4DI/w/7SHbwrqr/qajPU1qODk+
+ jwCMhFaICRHqg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=WWPk3rpj
+Subject: Re: [Intel-wired-lan] [PATCH 00/28] PCI/AER: Remove redundant
+ Device Control Error Reporting Enable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,98 +92,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: llvm@lists.linux.dev, Brett Creeley <brett.creeley@intel.com>,
- oe-kbuild-all@lists.linux.dev
+Cc: ajit.khaparde@broadcom.com, chris.snook@gmail.com,
+ GR-Linux-NIC-Dev@marvell.com, somnath.kotur@broadcom.com, edumazet@google.com,
+ anthony.l.nguyen@intel.com, manishc@marvell.com, rahulv@marvell.com,
+ jesse.brandeburg@intel.com, yisen.zhuang@huawei.com,
+ intel-wired-lan@lists.osuosl.org, vburru@marvell.com, habetsm.xilinx@gmail.com,
+ pabeni@redhat.com, aayarekar@marvell.com, shshaikh@marvell.com,
+ aelior@marvell.com, jiawenwu@trustnetic.com, kuba@kernel.org,
+ bhelgaas@google.com, michael.chan@broadcom.com, salil.mehta@huawei.com,
+ mengyuanlou@net-swift.com, sriharsha.basavapatna@broadcom.com,
+ rmody@marvell.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ skalluru@marvell.com, ecree.xilinx@gmail.com, rajur@chelsio.com,
+ dmichail@fungible.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Paul,
+Hello:
 
-Thank you for the patch! Perhaps something to improve:
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-[also build test WARNING on linus/master v6.3-rc1 next-20230309]
-[cannot apply to net-next/master]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On Tue,  7 Mar 2023 12:19:11 -0600 you wrote:
+> From: Bjorn Helgaas <bhelgaas@google.com>
+> 
+> Since f26e58bf6f54 ("PCI/AER: Enable error reporting when AER is native"),
+> which appeared in v6.0, the PCI core has enabled PCIe error reporting for
+> all devices during enumeration.
+> 
+> Remove driver code to do this and remove unnecessary includes of
+> <linux/aer.h> from several other drivers.
+> 
+> [...]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Paul-M-Stillwell-Jr/ice-remove-FW-logging-code/20230309-075355
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20230308235102.170-4-paul.m.stillwell.jr%40intel.com
-patch subject: [Intel-wired-lan] [PATCH net-next v10 3/5] ice: add ability to set FW log configuration
-config: i386-randconfig-a013 (https://download.01.org/0day-ci/archive/20230309/202303091324.Fz9iqJvc-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/3b04c760aa44876f9b794246a3cf0f3c3bfcafe3
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Paul-M-Stillwell-Jr/ice-remove-FW-logging-code/20230309-075355
-        git checkout 3b04c760aa44876f9b794246a3cf0f3c3bfcafe3
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/net/ethernet/intel/ice/
+Here is the summary with links:
+  - [01/28] alx: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/1de2a84dd060
+  - [02/28] be2net: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/b4e24578b484
+  - [03/28] bnx2: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/5f00358b5e90
+  - [04/28] bnx2x: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/2fba753cc9b5
+  - [05/28] bnxt: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/5f29b73d4eba
+  - [06/28] cxgb4: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/ca7f175fc24e
+  - [07/28] net/fungible: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/49f79ac22f89
+  - [08/28] net: hns3: remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/c183033f631a
+  - [09/28] netxen_nic: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/2d0e0372069d
+  - [10/28] octeon_ep: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/fe3f4c292da1
+  - [11/28] qed: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/1263c7b78315
+  - [12/28] net: qede: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/5f1fbdc168f4
+  - [13/28] qlcnic: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/95e35f599407
+  - [14/28] qlcnic: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/e07ce5567194
+  - [15/28] sfc: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/bdedf705688c
+  - [16/28] sfc: falcon: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/4ac9272691a4
+  - [17/28] sfc/siena: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/ecded61ceb89
+  - [18/28] sfc_ef100: Drop redundant pci_disable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/c39abdd396bc
+  - [19/28] net: ngbe: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/a7edf8e5142f
+  - [20/28] net: txgbe: Drop redundant pci_enable_pcie_error_reporting()
+    https://git.kernel.org/netdev/net-next/c/1fccc781bf7e
+  - [21/28] e1000e: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/ab76f2bff0f3
+  - [22/28] fm10k: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/8be901a6715f
+  - [23/28] i40e: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/acd2bb015fae
+  - [24/28] iavf: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/495b72c79302
+  - [25/28] ice: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/ddd652ef30e3
+  - [26/28] igb: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/648a2020fdac
+  - [27/28] igc: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/1530522f101f
+  - [28/28] ixgbe: Remove unnecessary aer.h include
+    https://git.kernel.org/netdev/net-next/c/f3468e394439
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303091324.Fz9iqJvc-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/ice/ice_main.c:4574:13: warning: result of comparison of constant 4294967296 with expression of type 'unsigned long' is always false [-Wtautological-constant-out-of-range-compare]
-           if (events >= BIT_ULL(ICE_AQC_FW_LOG_ID_MAX)) {
-               ~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   1 warning generated.
-
-
-vim +4574 drivers/net/ethernet/intel/ice/ice_main.c
-
-  4554	
-  4555	/**
-  4556	 * ice_pf_fwlog_update_modules - update 1 or more modules via debugfs
-  4557	 * @pf: pointer to the PF struct
-  4558	 * @log_level: log_level to use for the @events
-  4559	 * @events: events to update
-  4560	 */
-  4561	int ice_pf_fwlog_update_modules(struct ice_pf *pf, u8 log_level,
-  4562					unsigned long events)
-  4563	{
-  4564		struct ice_fwlog_module_entry *entries;
-  4565		struct ice_hw *hw = &pf->hw;
-  4566		u16 module_id, max_bits;
-  4567	
-  4568		if (log_level >= ICE_FWLOG_LEVEL_INVALID) {
-  4569			dev_err(ice_pf_to_dev(pf), "Invalid FW log level %u, all level(s) >= %u are invalid\n",
-  4570				log_level, ICE_FWLOG_LEVEL_INVALID);
-  4571			return -EINVAL;
-  4572		}
-  4573	
-> 4574		if (events >= BIT_ULL(ICE_AQC_FW_LOG_ID_MAX)) {
-  4575			dev_err(ice_pf_to_dev(pf), "Invalid FW log events 0x%lx, all FW log event bits >= 0x%llx are invalid\n",
-  4576				events, BIT_ULL(ICE_AQC_FW_LOG_ID_MAX));
-  4577			return -EINVAL;
-  4578		}
-  4579	
-  4580		entries = (struct ice_fwlog_module_entry *)hw->fwlog_cfg.module_entries;
-  4581	
-  4582		max_bits = min_t(u16, BITS_PER_TYPE(unsigned long),
-  4583				 ICE_AQC_FW_LOG_ID_MAX);
-  4584	
-  4585		for_each_set_bit(module_id, &events, max_bits) {
-  4586			entries[module_id].log_level = log_level;
-  4587		}
-  4588	
-  4589		return 0;
-  4590	}
-  4591	
-
+You are awesome, thank you!
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
