@@ -1,89 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D27A16B82D8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Mar 2023 21:36:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 645A36B848E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Mar 2023 23:13:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 63D1660E32;
-	Mon, 13 Mar 2023 20:36:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63D1660E32
+	by smtp1.osuosl.org (Postfix) with ESMTP id F15BB817AF;
+	Mon, 13 Mar 2023 22:13:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F15BB817AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678739789;
-	bh=P0rV+BnJd8zXVM1xJ/4WuIXRsfRv7Tthm00BCjV96VE=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1678745601;
+	bh=8fu9NBs1TbzwbI8nrfojP6fOHRmax8XRvQf8GoLNAWI=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=8+0EXt8Ug+aFZN05z45rdtG1EcQRnf0+GDFOf8moaMPOXO8kpkoZnw4HDvHO6lDQR
-	 7kpzxtxDQSTunU6KFuW6Aar7FSdEAWzPpaH+3RgWJva/yYeuXfER1g/hj7FI3pjT4f
-	 MDaPcj0H9kLzvsHgeNhItikUnmzya1Pk1Yi1AHakZvXVYh2n8Wa9A1tCjywf7Ocp3k
-	 fKaEdkHKPkjPeUZRoBBE8OgtKhKGCz6a4Nyo+wdHH7pUrDyksuZ/UtdTZ6QGQIxcSc
-	 HjW89nqSr7nwxfArB3facZNCHYUnsUJGykFIqwQQTzJliQfh0xuXXEJALrXH17yrJa
-	 Krsf+3VQBTKTA==
+	b=xfleAZMKAbhacw+aSkFMLW+sWT2UbOC2TK3hRBnW1w1kq8yquGCjrRb+ic+8igUkx
+	 ZSD6XkrXr3crS3UEZzqiPM9jVWE5VxOVjCm7ELsYD/Szsk4U5YZ7Q3dMwft3TsloKK
+	 sn2zcavWsDZ0XLH8h+vx4xosxvgIbbOCoZ62Xkz5T1zNLr+tubixDfwEnehNi0cCh5
+	 PiIDqEPfG3QoXxYjQeRzYtW/GIXKTyDN2A4OVVYu6W75RxcxfNHx5oSQTncL2OzjjX
+	 0/68htwujXsaPO8ZdY6d+kDQiKD7+02WDVCrIPMrPPYgAgeCg2pP9pUhlBccx4IhHI
+	 e4zR5T3tc55yQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ix3dPbc1ONlj; Mon, 13 Mar 2023 20:36:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l-rkDx7bC5kd; Mon, 13 Mar 2023 22:13:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 787ED60D89;
-	Mon, 13 Mar 2023 20:36:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 787ED60D89
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC20D8175E;
+	Mon, 13 Mar 2023 22:13:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC20D8175E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A6DBE1BF2C2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 20:36:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BD7981BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 22:13:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 230054173D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 20:36:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 230054173D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 91EB260FEF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 22:13:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 91EB260FEF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8bZmyJIP0tpc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Mar 2023 20:36:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Zfg7jg3ty4gb for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Mar 2023 22:13:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 179AF41736
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 179AF41736
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 20:36:18 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="364913225"
-X-IronPort-AV: E=Sophos;i="5.98,257,1673942400"; d="scan'208";a="364913225"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2023 13:36:18 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CFD9B60E73
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CFD9B60E73
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 22:13:13 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="321123989"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; d="scan'208";a="321123989"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2023 15:13:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="747732603"
-X-IronPort-AV: E=Sophos;i="5.98,257,1673942400"; d="scan'208";a="747732603"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.102])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2023 13:36:17 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 13 Mar 2023 13:36:08 -0700
-Message-Id: <20230313203608.1680781-3-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230313203608.1680781-1-jesse.brandeburg@intel.com>
-References: <20230313203608.1680781-1-jesse.brandeburg@intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="628797639"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; d="scan'208";a="628797639"
+Received: from snehanja-mobl1.amr.corp.intel.com (HELO vcostago-mobl3)
+ ([10.209.43.37])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2023 15:13:12 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>
+In-Reply-To: <20230313100207.ztxhu3cbxkb5c6iy@pengutronix.de>
+References: <20230228054534.1093483-1-vinicius.gomes@intel.com>
+ <20230228054534.1093483-4-vinicius.gomes@intel.com>
+ <20230313100207.ztxhu3cbxkb5c6iy@pengutronix.de>
+Date: Mon, 13 Mar 2023 15:13:12 -0700
+Message-ID: <87edpsi9l3.fsf@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678739779; x=1710275779;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=VCPTPiyABYid1thuFeQbZUz9ZVLBNEdSttuKCZK3BXE=;
- b=X1iAm0wGlAHSTvN/zs2qHQVKv+tg2dHTYd3lJHouKZ2U00L4/roXbz2n
- U+z2oNSirB3b1J7v10vBrM0SgQxQgDqGuRCfKEDToTmLUepvYpdoHefXZ
- 7KN9V9l6y1CWglQgesR8qzkx2lq5vxL/xrncIcN+s6hj6VLQerx3roKnV
- ZgANad+3Ef5Y9gBa0H6fOpif/bySx6TkwWZ27z82gaFzvRVOY/DC1yk7B
- 0TZigNMZsTTlWb6VPbws7rz0N3BUq0zfWijS4h/Rc9nUBmLRZUfKuWBHt
- y6nyf35D2UNVyRfpxxGTLFYCTFBpbSR5AOed0c9AjmXjnFOTAwOl+NOwB
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1678745593; x=1710281593;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=r6OC6ohMDH431tKy07iboe7CGls/DJ9v+jC1Bi4j9bY=;
+ b=OOlilI6oqNn7BeS+6wsWWUgS5sUa1YOm6hu2koNK2p2nzZtZrGs9519v
+ E3VcG6eW+U4TlQslaNuuR7kgxRpq1WKwBNHk1MdxEv2PnGHw0plLGR/dk
+ mPA4Yrx5H2m9BJtx44R0N3GQXhHWgR5pSlKtO6XOqiNhbMWAhjIcXfLoO
+ 0/EEgyyKwEenmDieOw/1I1fKq45gQnvTT+rDVph+Ydo3L6Q5Hy7iYS78Q
+ 8LT1B6lscHNBm5wPp/AUnMJP5nsFcM2qJpLRRZgfv6UK6D78wQLqRSI1R
+ NwTOgr/uGgGWxM1KKHc369RWqols5HXHA8WN70bH+i4COx3dNR7OJhDcA
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=X1iAm0wG
-Subject: [Intel-wired-lan] [PATCH net v1 2/2] ice: Fix ice_cfg_rdma_fltr()
- to only update relevant fields
+ header.a=rsa-sha256 header.s=Intel header.b=OOlilI6o
+Subject: Re: [Intel-wired-lan] [PATCH next-queue v1 3/3] igc: Use
+ ptp->aux_worker to retrieve TX timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,82 +98,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Brett Creeley <brett.creeley@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Robert Malz <robertx.malz@intel.com>
+Cc: vladimir.oltean@nxp.com, kurt@linutronix.de, anthony.l.nguyen@intel.com,
+ kernel@pengutronix.de, intel-wired-lan@lists.osuosl.org, jzi@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+Hi,
 
-The current implementation causes ice_vsi_update() to update all VSI
-fields based on the cached VSI context. This also assumes that the
-ICE_AQ_VSI_PROP_Q_OPT_VALID bit is set. This can cause problems if the
-VSI context is not correctly synced by the driver. Fix this by only
-updating the fields that correspond to ICE_AQ_VSI_PROP_Q_OPT_VALID.
-Also, make sure to save the updated result in the cached VSI context
-on success.
+Marc Kleine-Budde <mkl@pengutronix.de> writes:
 
-Fixes: 348048e724a0 ("ice: Implement iidc operations")
-Co-developed-by: Robert Malz <robertx.malz@intel.com>
-Signed-off-by: Robert Malz <robertx.malz@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Reviewed-by: Piotr Raczynski <piotr.raczynski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_switch.c | 26 +++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+> On 27.02.2023 21:45:34, Vinicius Costa Gomes wrote:
+>> ptp->aux_worker is a kthread and allows the user to set it's priority,
+>> which is useful for workloads that time synchronization is required.
+>> 
+>> As an optimization, when the interrupt is handled try to retrieve the
+>> timestamps "inline", if they are not, schedule the workload. This
+>> should reduce the delay before the TX timestamp is available to
+>> userspace.
+>> 
+>> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+>
+> Can this optimization also be applied to the igb?
+>
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 61f844d22512..46b36851af46 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -1780,18 +1780,36 @@ ice_update_vsi(struct ice_hw *hw, u16 vsi_handle, struct ice_vsi_ctx *vsi_ctx,
- int
- ice_cfg_rdma_fltr(struct ice_hw *hw, u16 vsi_handle, bool enable)
- {
--	struct ice_vsi_ctx *ctx;
-+	struct ice_vsi_ctx *ctx, *cached_ctx;
-+	int status;
-+
-+	cached_ctx = ice_get_vsi_ctx(hw, vsi_handle);
-+	if (!cached_ctx)
-+		return -ENOENT;
- 
--	ctx = ice_get_vsi_ctx(hw, vsi_handle);
-+	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
- 	if (!ctx)
--		return -EIO;
-+		return -ENOMEM;
-+
-+	ctx->info.q_opt_rss = cached_ctx->info.q_opt_rss;
-+	ctx->info.q_opt_tc = cached_ctx->info.q_opt_tc;
-+	ctx->info.q_opt_flags = cached_ctx->info.q_opt_flags;
-+
-+	ctx->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_Q_OPT_VALID);
- 
- 	if (enable)
- 		ctx->info.q_opt_flags |= ICE_AQ_VSI_Q_OPT_PE_FLTR_EN;
- 	else
- 		ctx->info.q_opt_flags &= ~ICE_AQ_VSI_Q_OPT_PE_FLTR_EN;
- 
--	return ice_update_vsi(hw, vsi_handle, ctx, NULL);
-+	status = ice_update_vsi(hw, vsi_handle, ctx, NULL);
-+	if (!status) {
-+		cached_ctx->info.q_opt_flags = ctx->info.q_opt_flags;
-+		cached_ctx->info.valid_sections |= ctx->info.valid_sections;
-+	}
-+
-+	kfree(ctx);
-+	return status;
- }
- 
- /**
+The idea behind this optimization applies, but I think that also
+introducing something like patch 1/3 (the spinlock) would make the code
+easier to reason about.
+
+
+Cheers,
 -- 
-2.39.2
-
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
