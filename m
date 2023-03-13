@@ -1,82 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 582EF6B6FAB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Mar 2023 07:54:25 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8654F6B776B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Mar 2023 13:27:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EEE1E40910;
-	Mon, 13 Mar 2023 06:54:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EEE1E40910
+	by smtp2.osuosl.org (Postfix) with ESMTP id E865140577;
+	Mon, 13 Mar 2023 12:27:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E865140577
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678690464;
-	bh=GKBRLRp2d3CTx8vPUjG0o2sRWzKpHpsd4J61BDakDEQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=K/Si7MesIrSPCwUdn8WIxbN4+FLqvU93hmArICniOWzbmZZ/owpPspA65QNeeqtj+
-	 4E499KPOqRMC2ofVFMxneVUSIbiFz6ObLbC5I8XbZZ386TrunysB0YftslnBlbkJCk
-	 RxTd5TbTTmvao+rUfUG9F9midb8XsMj29ymykOioPOq6yb3prnkwwuOhn9kdjh4WFs
-	 MnG0sv2ICL+PJjKwfeFmHBu55PO7FcoM8LWL1qYvopbxQg1ZSL+LkltFj8fn/oji8O
-	 JWXzY38ODGtbgGUUpGvrUHa+yA3Bas0ovUAu0edsENwt1/auVUV/s5ewJ6d6HLRVFS
-	 JI6lXSmVh3abA==
+	s=default; t=1678710449;
+	bh=xES85ARYDEKuhQkxfjJ7Er9IjLE+dEQPOiYvKbxATD4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=eTcSaWLacPKY7RHpek6LOEUkXOT9eQ7gzoy6XRdp3SLp4I8do0C5NJuu9PJ8B7fTV
+	 vDFM68I5TgQHadCHIKny+IY9eubLxU4P7EvPVgxKN1LtqovMAvUiTu5NPB7RCmnk0+
+	 Opc1K8MROr8IPFn1JnuwcghbQZUeHyWjrTqea2qNR5yQXEU0nVvbhnKH+vqRG8Px3y
+	 7UBIuharvCc7x2Z3j1QHRJ/TX4Yz83BSUSxvcaf4+f7by7zvzwRXn0Z+9e84sRgAzK
+	 S7epX9m5WA/S0sZyWyNTBmDoYefyIq8V3gYdEITjfPe/YtHzXrKZQ1fVwGHeOaXDOn
+	 CfNPDlgIGZBqg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WmfywJNpB2Pa; Mon, 13 Mar 2023 06:54:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id puZBOSEVwdqz; Mon, 13 Mar 2023 12:27:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 86DD24090C;
-	Mon, 13 Mar 2023 06:54:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 86DD24090C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 01E1640472;
+	Mon, 13 Mar 2023 12:27:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 01E1640472
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DA67E1BF4DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 06:54:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D31F1BF2AB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 12:27:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B5DAC606E6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 06:54:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B5DAC606E6
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6583E40341
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 12:27:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6583E40341
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZAVGq2O1Rk5B for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Mar 2023 06:54:17 +0000 (UTC)
-X-Greylist: delayed 00:05:12 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E7A46068A
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.135])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5E7A46068A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 06:54:15 +0000 (UTC)
-Received: from [192.168.0.10] ([176.126.68.120]) by mrelayeu.kundenserver.de
- (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1M9nlN-1pfCLr1okn-005oYW; Mon, 13 Mar 2023 07:48:54 +0100
-Message-ID: <9f1e4087-239e-3a1a-dc35-59a4680e676b@kpanic.de>
-Date: Mon, 13 Mar 2023 07:48:52 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OfusgEQSP7X1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Mar 2023 12:27:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 801494027E
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 801494027E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 12:27:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10647"; a="402003322"
+X-IronPort-AV: E=Sophos;i="5.98,256,1673942400"; d="scan'208";a="402003322"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2023 05:27:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10647"; a="655960190"
+X-IronPort-AV: E=Sophos;i="5.98,256,1673942400"; d="scan'208";a="655960190"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by orsmga006.jf.intel.com with ESMTP; 13 Mar 2023 05:27:20 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 13 Mar 2023 13:09:15 +0100
+Message-Id: <20230313120915.4143379-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Content-Language: de-DE
-To: Michal Kubiak <michal.kubiak@intel.com>
-References: <20230310122653.1116051-1-sassmann@kpanic.de>
- <ZAtnqlHZ02EJn5xt@localhost.localdomain>
-From: Stefan Assmann <sassmann@kpanic.de>
-In-Reply-To: <ZAtnqlHZ02EJn5xt@localhost.localdomain>
-X-Provags-ID: V03:K1:xLQWdQU1moaqevqYxK5oNMZDVEeON8eq/vergiFwf/1bmXEN7YH
- MRCA/XAORag+LVcVTK0OVbfOoniA3SXDh8vaZ8lIuZRXzWUAZu/dnWm6cXgRefnetvMCd+1
- 1GikJgKY58hX1KQ4Ke9mpd7YvWX9eP+X2vbADEFXxdhjj1dlxrajACsOigenNiatNahzSMr
- lja5uoM69A8H4oczVLBKA==
-UI-OutboundReport: notjunk:1;M01:P0:nbXQaF1dUmo=;hTNnu42joIWflbtx5PH7ahB+Nom
- x/c7EffnsGbNc2kA/qbxc9D6C97k/BEYy/STZQRUggYyWlZoIG+OJweKBI2xKQ6HaYeisiCAT
- xfT/kItUvRzLJwynmipf7qmS0JhKK+6bEilF3/JmJLM8EEAt7OlxEZVpiZF30/sad9MB/lKYS
- JiFEKo/QpYhKEs3x65aJGYhw00do1qTeETFnuwe84xzSj0X78t9ivpe+lJbNrYLLNocEuOhFZ
- xjydu1sSpq46tNJEDH86r24cp4CLxY9NZnqdR0XrT5BxSnUKdXGHHVbvFByrVg91S2OvzTMBM
- Kj60vH2g/gC8Cs2lCL116aQcIB5qEIp34ev68GAY+LEZXdNeE4fF/DkLiF9IW4vMpLL/LahFK
- FiA/D6lu2UROzpcIuQtUcqQJlP7G1KRcfSb/jKnlfX6xrk1xKAzCMfbE11r1+7LseglcApGGz
- WYgbh/i8OidyyDyUMUZaedZGGlTNpnhuKX0PfFadvZAQb20wecGuTaazk6yBlCaoHuh2lgOfq
- XyxhzXQSRS5hNZJSs0cN639PwG8sTmtM2FwaKIIxtCKIe6givmohWG4TrcZ6+7EXiVtm8XYnt
- 5aXKoXHOTIvlmg2Rgq8VrFCpRf+sDpq5yXtu+JUCkW56zzbjRM2EYvTjuaDi853yQCX5TE3s8
- RSj6ojJPF9wRPsWUj1vEt3HYockOTwI7cO+KiOTq2w==
-Subject: Re: [Intel-wired-lan] [PATCH net] iavf: fix hang on reboot with ice
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678710442; x=1710246442;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=jA3YkMx3bnmESoqpPd5LE7ITVwLuSPMw5p6/scsJ4t4=;
+ b=Sl+57AXAWXt+TG6/wOsdnkypY1kyW9QrOm+4CiuF5Ceuj3Q05SI0za98
+ Y2bHOFBEj0eAcLxYz4xZBkOHDS55Rj9Kj0xdjdOIisV2CKn4TlJN9mMyC
+ ZFButocIiBEOEnrg2Xha6r4zV0iKGSmJnxXLdmCDPlacNtRGXwwt6sMec
+ J6EFvr4EEUctkdKpK8nJv0cumbuFrQdRrpzTfx17rF/7NQld18eF3c6xz
+ 37T4+Dg6RpvfjuNGgHvO7QLVs9/L81vEJSXcSVuRm6lj2YYw5Ektz/nT7
+ sGjSMrUzqfHCprKJ3yYX0JO79LDHcnt5AxYEovTlrT7ljKwhA/Mr/V3Hg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Sl+57AXA
+Subject: [Intel-wired-lan] [PATCH net v1] ice: remove filters only if VSI is
+ deleted
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,100 +92,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, patryk.piotrowski@intel.com,
- slawomirx.laba@intel.com
+Cc: jesse.brandeburg@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10.03.23 18:24, Michal Kubiak wrote:
-> On Fri, Mar 10, 2023 at 01:26:53PM +0100, Stefan Assmann wrote:
->> When a system with E810 with existing VFs gets rebooted the following
->> hang may be observed.
->>
->>  Pid 1 is hung in iavf_remove(), part of a network driver:
->>  PID: 1        TASK: ffff965400e5a340  CPU: 24   COMMAND: "systemd-shutdow"
->>   #0 [ffffaad04005fa50] __schedule at ffffffff8b3239cb
->>   #1 [ffffaad04005fae8] schedule at ffffffff8b323e2d
->>   #2 [ffffaad04005fb00] schedule_hrtimeout_range_clock at ffffffff8b32cebc
->>   #3 [ffffaad04005fb80] usleep_range_state at ffffffff8b32c930
->>   #4 [ffffaad04005fbb0] iavf_remove at ffffffffc12b9b4c [iavf]
->>   #5 [ffffaad04005fbf0] pci_device_remove at ffffffff8add7513
->>   #6 [ffffaad04005fc10] device_release_driver_internal at ffffffff8af08baa
->>   #7 [ffffaad04005fc40] pci_stop_bus_device at ffffffff8adcc5fc
->>   #8 [ffffaad04005fc60] pci_stop_and_remove_bus_device at ffffffff8adcc81e
->>   #9 [ffffaad04005fc70] pci_iov_remove_virtfn at ffffffff8adf9429
->>  #10 [ffffaad04005fca8] sriov_disable at ffffffff8adf98e4
->>  #11 [ffffaad04005fcc8] ice_free_vfs at ffffffffc04bb2c8 [ice]
->>  #12 [ffffaad04005fd10] ice_remove at ffffffffc04778fe [ice]
->>  #13 [ffffaad04005fd38] ice_shutdown at ffffffffc0477946 [ice]
->>  #14 [ffffaad04005fd50] pci_device_shutdown at ffffffff8add58f1
->>  #15 [ffffaad04005fd70] device_shutdown at ffffffff8af05386
->>  #16 [ffffaad04005fd98] kernel_restart at ffffffff8a92a870
->>  #17 [ffffaad04005fda8] __do_sys_reboot at ffffffff8a92abd6
->>  #18 [ffffaad04005fee0] do_syscall_64 at ffffffff8b317159
->>  #19 [ffffaad04005ff08] __context_tracking_enter at ffffffff8b31b6fc
->>  #20 [ffffaad04005ff18] syscall_exit_to_user_mode at ffffffff8b31b50d
->>  #21 [ffffaad04005ff28] do_syscall_64 at ffffffff8b317169
->>  #22 [ffffaad04005ff50] entry_SYSCALL_64_after_hwframe at ffffffff8b40009b
->>      RIP: 00007f1baa5c13d7  RSP: 00007fffbcc55a98  RFLAGS: 00000202
->>      RAX: ffffffffffffffda  RBX: 0000000000000000  RCX: 00007f1baa5c13d7
->>      RDX: 0000000001234567  RSI: 0000000028121969  RDI: 00000000fee1dead
->>      RBP: 00007fffbcc55ca0   R8: 0000000000000000   R9: 00007fffbcc54e90
->>      R10: 00007fffbcc55050  R11: 0000000000000202  R12: 0000000000000005
->>      R13: 0000000000000000  R14: 00007fffbcc55af0  R15: 0000000000000000
->>      ORIG_RAX: 00000000000000a9  CS: 0033  SS: 002b
->>
->> During reboot all drivers PM shutdown callbacks are invoked.
->> In iavf_shutdown() the adapter state is changed to __IAVF_REMOVE.
->> In ice_shutdown() the call chain above is executed, which at some point
->> calls iavf_remove(). However iavf_remove() expects the VF to be in one
->> of the states __IAVF_RUNNING, __IAVF_DOWN or __IAVF_INIT_FAILED. If
->> that's not the case it sleeps forever.
->> So if iavf_shutdown() gets invoked before ice_shutdown() the system will
->> hang indefinitely because the adapter is already in state __IAVF_REMOVE.
->>
->> Fix this by adding __IAVF_REMOVE to the list of allowed states in
->> iavf_remove().
->>
->> Fixes: 974578017fc1 ("iavf: Add waiting so the port is initialized in remove")
->> Reported-by: Marius Cornea <mcornea@redhat.com>
->> Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
->> ---
->>  drivers/net/ethernet/intel/iavf/iavf_main.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
->> index 3273aeb8fa67..83ef3a343ef0 100644
->> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
->> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
->> @@ -5062,7 +5062,8 @@ static void iavf_remove(struct pci_dev *pdev)
->>  		mutex_lock(&adapter->crit_lock);
->>  		if (adapter->state == __IAVF_RUNNING ||
->>  		    adapter->state == __IAVF_DOWN ||
->> -		    adapter->state == __IAVF_INIT_FAILED) {
->> +		    adapter->state == __IAVF_INIT_FAILED ||
->> +		    adapter->state == __IAVF_REMOVE) {
->>  			mutex_unlock(&adapter->crit_lock);
->>  			break;
->>  		}
-> 
-> Adding the __IAVF_REMOVE state to the loop break condition seems OK to
-> me.
-> I would only consider adding a timeout to this loop to prevent endless hangs
-> for other potential corner cases.
+Filters shouldn't be removed in VSI rebuild path. Removing them on PF
+VSI results in no rule for PF MAC after changing for example queues
+amount.
 
-Hi Michal,
+Remove all filters only in the VSI remove flow. As unload should also
+cause the filter to be removed introduce, a new function ice_stop_eth().
+It will unroll ice_start_eth(), so remove filters and close VSI.
 
-is it okay to add this change in a follow-up patch? I'd like to get this
-patch merged quickly since we have a customer being blocked by this
-issue.
+Fixes: 6624e780a577 ("ice: split ice_vsi_setup into smaller functions")
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c  | 2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c | 8 +++++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
-Thanks!
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 0f52ea38b6f3..450317dfcca7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -291,6 +291,7 @@ static void ice_vsi_delete_from_hw(struct ice_vsi *vsi)
+ 	struct ice_vsi_ctx *ctxt;
+ 	int status;
+ 
++	ice_fltr_remove_all(vsi);
+ 	ctxt = kzalloc(sizeof(*ctxt), GFP_KERNEL);
+ 	if (!ctxt)
+ 		return;
+@@ -2892,7 +2893,6 @@ void ice_vsi_decfg(struct ice_vsi *vsi)
+ 	    !test_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags))
+ 		ice_cfg_sw_lldp(vsi, false, false);
+ 
+-	ice_fltr_remove_all(vsi);
+ 	ice_rm_vsi_lan_cfg(vsi->port_info, vsi->idx);
+ 	err = ice_rm_vsi_rdma_cfg(vsi->port_info, vsi->idx);
+ 	if (err)
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 567694bf098b..db57735f5b22 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4644,6 +4644,12 @@ static int ice_start_eth(struct ice_vsi *vsi)
+ 	return err;
+ }
+ 
++static void ice_stop_eth(struct ice_vsi *vsi)
++{
++	ice_fltr_remove_all(vsi);
++	ice_vsi_close(vsi);
++}
++
+ static int ice_init_eth(struct ice_pf *pf)
+ {
+ 	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+@@ -5132,7 +5138,7 @@ void ice_unload(struct ice_pf *pf)
+ {
+ 	ice_deinit_features(pf);
+ 	ice_deinit_rdma(pf);
+-	ice_vsi_close(ice_get_main_vsi(pf));
++	ice_stop_eth(ice_get_main_vsi(pf));
+ 	ice_vsi_decfg(ice_get_main_vsi(pf));
+ 	ice_deinit_dev(pf);
+ }
+-- 
+2.36.1
 
-  Stefan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
