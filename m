@@ -1,89 +1,188 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1ECA66B8601
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Mar 2023 00:19:25 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF8D76B8713
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Mar 2023 01:39:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9F39740571;
-	Mon, 13 Mar 2023 23:19:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F39740571
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4966C8175E;
+	Tue, 14 Mar 2023 00:39:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4966C8175E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678749563;
-	bh=HiOjqPMr1+nR2JS5rv2Vba+WwYgm4VfyDotEd743ZWE=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1678754369;
+	bh=uVarkT4TrCh5WyfudFyu5Sm6kypB2WVjxufZfXtJiVE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=OQehszwDLiRKFd6y8ajGsxOf7VSEeVA3i+RVXSTUkJz1SOVT1LIC+eHgF5xebYLNS
-	 wB2Pg7A+QMb2bxLzNO4dJeKX8FEVjzXzBVlvKYEz10HNzR3Ts5H2R6HQ4hITD5+m5y
-	 dV0EqigGwb71QaF1gTi00ZTvkC9GJkSDvgI4PwEHjMj7GFcvsGNUetn/hT4ItaAAaP
-	 F0QJw914WT3P8tZb2GN6LO442c7qsOf6G1GYE3OqSauwVHsYA4hPuQPK7pCxVvfmwQ
-	 V+f5w15Z4T79d5srh0HZq2DmZLZn1i6A+LFf7fBbkBK8BAwD4DXTOUFOspOqtJOZZ4
-	 5+bwoeJ/fS6Jg==
+	 Cc:From;
+	b=9jxWHCWIDvVilUEcFYV/NWNe0ExXeculdYHtTm8L6zjRaq1mSGSvGL5sogQf/ZoT1
+	 a/KIsQgsKfCizG3t0TLOWtI+rWsx7Y6GvcS8NkVAFH0MUlkFi93Uti9TPnRf13Kyjj
+	 r8cUe1/j8hXhaagIWoZu5xALybby30ir2Z9PwstFqFfvT7uM4EWRAs1YGwH7n2z5gm
+	 sXJFDkLCdRrx8CugEAxjCyIwUNVcAdqnXHe14gw0WrKl7Ryl8gC+yZhtwxKRH207zI
+	 w4peaCwMIjpVFgUJL7/uwdc7UFcCQtRnRVcjqjJzoPVeCPOyIn+ehx9R2cngsPkETZ
+	 QI+9cITCCLTyg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iog_1DU_8_7K; Mon, 13 Mar 2023 23:19:22 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lHYBBEDJbrmf; Tue, 14 Mar 2023 00:39:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2C6104056C;
-	Mon, 13 Mar 2023 23:19:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C6104056C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0A5B281450;
+	Tue, 14 Mar 2023 00:39:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A5B281450
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 06D921BF377
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 23:19:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 51F4A1BF951
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 00:39:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B032C410BA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 23:18:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B032C410BA
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A4314176C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 00:39:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A4314176C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 87Z5LoYddXJN for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Mar 2023 23:18:58 +0000 (UTC)
+ with ESMTP id sn94RpD9dnWQ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Mar 2023 00:39:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 46FF641712
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 46FF641712
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Mar 2023 23:18:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="335979591"
-X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; d="scan'208";a="335979591"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2023 16:18:56 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF1A941765
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DF1A941765
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 00:39:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="399885169"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
+ d="scan'208,217";a="399885169"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2023 17:39:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="743076286"
-X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; d="scan'208";a="743076286"
-Received: from pmstillw-desk1.amr.corp.intel.com ([10.212.10.39])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2023 16:18:56 -0700
-From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 13 Mar 2023 16:18:41 -0700
-Message-Id: <20230313231841.113-6-paul.m.stillwell.jr@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230313231841.113-1-paul.m.stillwell.jr@intel.com>
-References: <20230313231841.113-1-paul.m.stillwell.jr@intel.com>
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="802650455"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
+ d="scan'208,217";a="802650455"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga004.jf.intel.com with ESMTP; 13 Mar 2023 17:39:18 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Mon, 13 Mar 2023 17:39:18 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Mon, 13 Mar 2023 17:39:18 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Mon, 13 Mar 2023 17:39:17 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YMryG4otFyj/eYBNxQAvwLnMH6PFYlBg+HbmfqbE5+Q1jC2I5sDP9bR7NkDmCkKQhcd7YvfCUhubvjMbfuS0WoSU4U/J8ofoftZ1M/hIJBPR9S5GFA4peWuSWBdJbo9KudT/R2+RxUrpFz236r/A32+iPv57w5wKINf0pNK3m2Ak2R7a61kvC9PFiDoW5STdXP++x+YdhkekbrucSLn0FovSPAMe2QDadcGQTrAP+t6ZjuBfdXMvOlXMvWvLO1ijV8TdabzsRUzEN8P95rasjuGTtPO/oeEZuihisJaARGJKCA7iXOb9ODr78rXw+dV4R3/PYSSBQZYQZ9/5qzgCPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=x7SAfJJ9OOEb/QFQEsuavQaPaJNoKjwdN9bnymI68DI=;
+ b=UNqbKg/H9vAGdoH5KNyUuvSo4EJ73jfu5Vw07WcUszez+LOjk47h+/dYtirIYfMw/xjPQqEhJOklGH9Wmc++/5jpgfMyL9kn34AtEuNlKFvodwXDwKDXB93+o4VX3CuACUWMsn4jD4VHE0DglmMQ6hESUGI2NN+zqWfY7sDF802rjoKZYIk6/xP3O9Ycd8YOxzsZ0HRTah2F2YHGadLOrCimu6YVbaCqa3LfytQzKMHcN4XEYmnv4BTjDfEeTlLbDXidEGu0iZ38eT6Cr7TXRNsW+dCrFYxdTnBvLPNngIFEoxWgm6AvYoi9IviEVMO16d/iajzp/TOXL60itCzKCA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BYAPR11MB3047.namprd11.prod.outlook.com (2603:10b6:a03:8b::32)
+ by DM4PR11MB6456.namprd11.prod.outlook.com (2603:10b6:8:bc::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.28; Tue, 14 Mar
+ 2023 00:39:16 +0000
+Received: from BYAPR11MB3047.namprd11.prod.outlook.com
+ ([fe80::84ef:8559:d3c5:6d0d]) by BYAPR11MB3047.namprd11.prod.outlook.com
+ ([fe80::84ef:8559:d3c5:6d0d%4]) with mapi id 15.20.6178.024; Tue, 14 Mar 2023
+ 00:39:16 +0000
+Message-ID: <92a590c8-89d9-76f9-e7fa-5046699fbfe0@intel.com>
+Date: Tue, 14 Mar 2023 08:39:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.8.0
+Content-Language: en-US
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+References: <20230309024934.151120-1-lingyu.liu@intel.com>
+ <ZAsEM+P7D/AfreLY@localhost.localdomain>
+From: "Liu, Lingyu" <lingyu.liu@intel.com>
+In-Reply-To: <ZAsEM+P7D/AfreLY@localhost.localdomain>
+X-ClientProxiedBy: SG2PR06CA0194.apcprd06.prod.outlook.com (2603:1096:4:1::26)
+ To BYAPR11MB3047.namprd11.prod.outlook.com
+ (2603:10b6:a03:8b::32)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BYAPR11MB3047:EE_|DM4PR11MB6456:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9a97d683-7923-44d5-effd-08db242489e6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Jjvxt/z8k7jTuf+w1Ny0Tu1NessVbk0xNKe5lnQ5mHAbvmDNnF+3EUgxGbJ182HffQXKffp+E7QbIBnN0tDJ+joEJuMfWrIWrClJIw2en72tV8emtq9pfEbiQ46ybzmGvP5Dwg7LZLIOJMoC200vKSlAcLURgSMKnq942VpVjg8Am0faUhmAkNBduYXkuqta89vMARm8CUut1LtgAplcvGWv+pgtz9bnzbGHo2ZLGT6JnKdM3V3HhOEXPUDY0t6fam4SzRC4zl8x7T09D56SHuGYsdiLHQXuMKekydu6gB7qVdwiTy6VkPi/3Ezxwm/UZ488MxdCF/wkI/MeVsIMOEqkdju3KuNPuztPZWRPdltM0bUOo967SqyDCRemrp4s6J6ZSdXvJsWhMyk3N67yRW02zyvgD0cQXnw19EJdYxGmSosRjDTxEFcPO5HGZGRPsfPUdH+12b4+dIPu+HhmO8eod5KAR6NEOht0DFMRENX66ChmIXYcbktU/W1YuUA2Xuf6EDiDCgAa0tnF2/N/1eoZ4pQ+pj/9nbNMvQPuoEZQZQuFy1zd1PgmBrEWZYvka/9w+otXkJZUca5CckrPXVoroeo4QwUnT/SmVJqtauihM7IyartUEAUsshJF06CCO1+LHRGw77RwlUkPt05ZBPFPYYKHqM4HTr4yDr6iuEJI+a1rdGPa8Xy5f4nXFuEUOR62J/fyfLGomnk98RhIOGL3YCN83GX9SavEgifsW8I=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR11MB3047.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(396003)(376002)(136003)(346002)(39860400002)(366004)(451199018)(31686004)(316002)(478600001)(4326008)(31696002)(36756003)(38100700002)(41300700001)(6916009)(2906002)(8936002)(8676002)(66556008)(66946007)(5660300002)(86362001)(82960400001)(166002)(66476007)(966005)(6666004)(6512007)(186003)(6486002)(2616005)(83380400001)(6506007)(26005)(33964004)(53546011)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SjZ6V2F3WXdsbHVqVmQ0YXVWVGl4R2pTRHhkZVBVME5tbnV3UVVwbGRQZzZR?=
+ =?utf-8?B?Tk14S3dINnpwNVhSQkFXVU1sb0dWZ1VoeWd6ZVgvWU1MSk92ajJUNjdjOWRl?=
+ =?utf-8?B?SXJYQWhwWExCeFJDVEFseFhjZWlWVHdOVXJFakhFNmpNU1dnSWdVcWJNR2hz?=
+ =?utf-8?B?djRYMFlwZ1h1QXpIc2JzNTdSaElYQjhwQWhlbVpqc3NvSDE0TmNzSlMxTnBC?=
+ =?utf-8?B?Y1B2MStsUE1MeFNOWHIxVmJ4VkNPa211ZWc1NXkxblVRVGpDYStkVW5qclJS?=
+ =?utf-8?B?dDdMbWtMZkdaaDF6VGcyZE1OcEtBN2xBUjhya3BuMno2SmVleEI3ZlVzQjJZ?=
+ =?utf-8?B?U2Q4S2grTWt1L2RrQjFHZGw1NVNSWERqcEFWSjlGbC90TFJIRk5kWWZ1S04y?=
+ =?utf-8?B?L2tYNUpGTFRoVEpGelRiKzVLMjJQS0IySXZ1L3B2cDFEdldPd0pWQUMvWW5p?=
+ =?utf-8?B?Z25YQjZQUmloTGFsdFBrbjJWWkkyUDk0KzV5UFF5Smxvd2VJMnBtK3U4NlN6?=
+ =?utf-8?B?eTVvN0ZLNXdQY0hpdVJRV3pQVXYxSGxKbW1wYXhSYzUydXh6bWdDNW41eGlB?=
+ =?utf-8?B?ckJ4SCt2bmJJT0FDanljSjJSUzBMU0Y0d3o2T1hHWlgvTklnYjRQdDE4KzZa?=
+ =?utf-8?B?TGxmdnY3TnhTa2ViOEc0bjZGUWZGTTczRm8vcDZFTlV0Z01KbExUQzFCWkxr?=
+ =?utf-8?B?WjQzZUMyTlYzdklwdTFmSWJKZFcvOU5LNW9mVXRkUTlJdndTNnQ5OWNpMWJG?=
+ =?utf-8?B?TlZQRDVDQnBXZHRiUktRdDN4TzJPL3RuZDFkYi9wYzNOTjJHaFRMdGlvcmhE?=
+ =?utf-8?B?Ri9aeEM5NmhkdGllYXZUd1dJemNzTkZmMjAzY2c1MjNRTUdGMlFNN3RyU2Fv?=
+ =?utf-8?B?Q1NHN0psbjJIK3VQTDFIQUE5SkZGTVlEdjhNVm1PUks1cEpzbWh3ZkNPNVBI?=
+ =?utf-8?B?SWxIS09GQzZrcXVKelpEd1owM2YwNXdzNzFnUUVHNU5wUEN0SDB6NnkwZmlx?=
+ =?utf-8?B?NVU0eVVvZkp6QitLSkRZWnREczlPOEJsNzZJNE5KamtQSlArM3M1RzlwNlE4?=
+ =?utf-8?B?eWdGdVBZa2poL2FUZThneXZUZWYvRmxBVThPZkVxN3c0Mk5mK05tZXdqT1Fw?=
+ =?utf-8?B?NUFYY3l5TU95a1p6Z1hmQVlFVW1CNmtZUHJWQm5qMHl3YUtNbTU1QzRtNEVK?=
+ =?utf-8?B?MFJtVlE2L2hFZUxQMzhibnIxa0VpVVZDeEZlbE9ZeTdjREdabHY0dHJFeVBn?=
+ =?utf-8?B?TVZjUytHZ0M3NS94RlBzQ0U4SHZHbDZjWnA0V1RBSVJGVDN3UkZiaWVRTVZh?=
+ =?utf-8?B?TE0xanJiSEt6Wml2QW5yZTg1YlpGS0lSd3hLMVIveEpXd1Z0Z1ZocUJUb1R0?=
+ =?utf-8?B?Y3VwL0ZyYTB5Tnl4U2txOVVqbG5vRFkrUjQvcmQwWldYUnl1UUJOelJjaE0x?=
+ =?utf-8?B?RFplOXdBWUZza2x0Y0k4N1hVQm1RRWV0VTI1ODJNdjU4TnRFVDRaK1ZDYW1Y?=
+ =?utf-8?B?VWZuT29qbTFMRDJYK3kyM1JUUDJIWVVlOVR6UWRkN2gxUnNhNk9saEVKL20x?=
+ =?utf-8?B?azdyTHYxR2hibksvN2NCUXFGaDRWdDJ4U1F4T0dKNHByN0diUHh2N3d3TzJs?=
+ =?utf-8?B?cS9LSE1Wb1I4ZGNYNnRpQTJJeVFoaDhOT0VXN3JZamtMVWVYazFvSVJia0RX?=
+ =?utf-8?B?bXVvcWg4S1loR0hmSUt5MGlmN21DQkEzS3RKVi8vODVkY09XYisyQ0hkUWU2?=
+ =?utf-8?B?WDNMS0JxTE9VMGRDZ3kyeHQ4ZzY2STZWMS9qZkxaK2k3MUVFRFFrS2pUVnZS?=
+ =?utf-8?B?RERrcjNOR2d5bjE0cDRpSnh0clREaE9RZ0tES2wrbmVrVVl3bDNFd2c2NVBE?=
+ =?utf-8?B?V0pKWlE0S1FJM1hmMzVWNjJvZHp4U3U4MTEyYnhPd01lVkoyNVRRSHZEMzZG?=
+ =?utf-8?B?VU1iK0RiUktzbnUwaU4ra2lvbUZ0YmVjNk5XWi9KYlpVUDlUbUkrOWlsdFBO?=
+ =?utf-8?B?L3Fya1NkZUhMeWM1U3YxekIyemFsTk5iTFpNdnNpQ1pHVUhnMHFocmR3anR4?=
+ =?utf-8?B?dDBjS3ZpbngzS0dSSVB0a3lKdFJmVzhBNW82WVZmeC8wUXpFM1F6eitZRGQy?=
+ =?utf-8?B?VUFteHJRanBiSWcwYzZzZGZUeHErclMxOTBJSmZrMmZnVEFZUlQyRWVmYXBS?=
+ =?utf-8?B?Tmc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9a97d683-7923-44d5-effd-08db242489e6
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3047.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2023 00:39:15.7530 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sa0upk7bwbN0HUjL9hGDiiT8C4d8+ifYCDEadglqIq9XppbXgZZ4lsrJ00vF5EoK5+e5Y/NRGuPyTgc9/nx7HA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6456
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678749537; x=1710285537;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=IEJCAMSMn7yb6+ZjtGcUIWkVlFb6HsnLNi0GmBHWTg0=;
- b=RGf4FpVcpWqnFA6YdO3/V+pGBJZElx4wuATXFXSeGV7wsGN3Z1bvPXAq
- cgfkkhnY/u4vTmABHXIB+B/QlFrKWoE4nFbdUzG0rrOFop21RipGaIdn9
- czNy1VagWw7B+AW9C3WN3Op4NTaAcDEb3RelNm725K1Sxg1glBuddeKn+
- gthr0YFIKZGmdx0pCSobYWBlWwPPcHp0R2FF9Sj/+YSr5TfQI0KcgSGQh
- r3cSRfRjfJPOv0BoYGRGZjkSlW+jdMJwqaH3v8aIRyeje7ijfybsDKtP9
- FCrYfB+SMBtTcZ82Xch48rjrPFJV3jCsp7cIw8VqNCavAen3ZenaH3b5o
- w==;
+ t=1678754359; x=1710290359;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:mime-version;
+ bh=o940hUZ6inmghxKhd+D3P41TDDsq4/vrUP9WU/bYpdc=;
+ b=dCkXCvnmTEuyF2C5zHuLRd5uiNcZ89E1AFWcFn7jT+LBJtmzt2cHgLas
+ d0IMJPjYo1vwH6yWERVnUuL9sFHUDVSSdmM6s1mzKlKZDbhwmbSA9+oPx
+ Jce2FaWKYTPxflKpZa50TMSBdeIK/goqnOP0DaIBwCYjrexU0M9iGE0Ni
+ 87Wo8lFjZs7YsCT6GcxY/XYPfcDfOrjIpTm+hVTppJBzE4CU7M3GEBV8A
+ rgHSQrx/kkA4VorutyD7KY2QGtqtO69P2Rkyp6XrNq98A12JeWL7Rju/g
+ MHF7JoHeXAOGLjaav5gQsF/hwb6i3i+O451lAi2CK5oKOy/VS36N1CK8Q
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RGf4FpVc
-Subject: [Intel-wired-lan] [PATCH net-next v11 5/5] ice: add ability to read
- FW logging data
+ header.a=rsa-sha256 header.s=Intel header.b=dCkXCvnm
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: add FDIR counter reset in
+ FDIR init stage
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,392 +195,196 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: multipart/mixed; boundary="===============1185249473377858322=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Once logging is enable the user should read the data using something
-like:
+--===============1185249473377858322==
+Content-Type: multipart/alternative;
+	boundary="------------7F3RdUoU1DXqTYe8uHA7elM6"
+Content-Language: en-US
 
-cat /sys/kernel/debug/ice/0000\:18\:00.0/fwlog > log_data.bin
+--------------7F3RdUoU1DXqTYe8uHA7elM6
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 
-The output file is a binary file that will be decoded by Intel for
-debugging.
 
-Also added documentation to
-Documentation/networking/device-drivers/ethernet/intel/ice.rst
+On 3/10/2023 6:19 PM, Michal Swiatkowski wrote:
+> On Thu, Mar 09, 2023 at 02:49:34AM +0000, Lingyu Liu wrote:
+>> From: Junfeng Guo<junfeng.guo@intel.com>
+>>
+>> This patch added the missing FDIR counters reset process when
+>> FDIR inits. Without this patch, when VF initializes or resets,
+>> all the FDIR counters will not be cleaned, which may cause
+>> unexpected behaviors for future FDIR rule create (e.g., rule
+>> conflict).
+>>
+>> Fixes: 1f7ea1cd6a37 ("ice: Enable FDIR Configure for AVF")
+>> Signed-off-by: Junfeng Guo<junfeng.guo@intel.com>
+>> Signed-off-by: Lingyu Liu<lingyu.liu@intel.com>
+>> ---
+>> v2: change commit message to apply more to a kernel use
+>> ---
+>>   drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 15 +++++++++++++++
+>>   1 file changed, 15 insertions(+)
+>>
+>> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+>> index e6ef6b303222..60c9da4aac1d 100644
+>> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+>> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+>> @@ -541,6 +541,20 @@ static void ice_vc_fdir_rem_prof_all(struct ice_vf *vf)
+>>   	}
+>>   }
+>>   
+>> +/**
+>> + * ice_vc_fdir_reset_cnt_all - reset all FDIR counters for this VF FDIR
+>> + * @fdir: pointer to the VF FDIR structure
+>> + */
+>> +static void ice_vc_fdir_reset_cnt_all(struct ice_vf_fdir *fdir)
+>> +{
+>> +	enum ice_fltr_ptype flow = ICE_FLTR_PTYPE_NONF_NONE;
+>> +
+>> +	for (; flow < ICE_FLTR_PTYPE_MAX; flow++) {
+>> +		fdir->fdir_fltr_cnt[flow][0] = 0;
+>> +		fdir->fdir_fltr_cnt[flow][1] = 0;
+>> +	}
+>> +}
+>> +
+>>   /**
+>>    * ice_vc_fdir_write_flow_prof
+>>    * @vf: pointer to the VF structure
+>> @@ -1924,6 +1938,7 @@ void ice_vf_fdir_init(struct ice_vf *vf)
+>>   	spin_lock_init(&fdir->ctx_lock);
+>>   	fdir->ctx_irq.flags = 0;
+>>   	fdir->ctx_done.flags = 0;
+>> +	ice_vc_fdir_reset_cnt_all(fdir);
+> I am fine with this change, however, maybe the better place for
+> resetting counters will be when the flows are removed? Or maybe
+> the flow are removed only by hw?
 
-Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+The flows are removed in ice_vf_fdir_exit(). When VF resets,
+ice_vf_fdir_init() and ice_vf_fdir_exit() is called in pairs.
+While ice_vf_fdir_init() is called when vf entry initializes,
+where these counters should be initialized.
+
+>>   }
+>>   
+>>   /**
+>> -- 
+>> 2.25.1
+>>
+>> _______________________________________________
+>> Intel-wired-lan mailing list
+>> Intel-wired-lan@osuosl.org
+>> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+--------------7F3RdUoU1DXqTYe8uHA7elM6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <p><br>
+    </p>
+    <div class="moz-cite-prefix">On 3/10/2023 6:19 PM, Michal
+      Swiatkowski wrote:<br>
+    </div>
+    <blockquote type="cite" cite="mid:ZAsEM+P7D%2FAfreLY@localhost.localdomain">
+      <pre class="moz-quote-pre" wrap="">On Thu, Mar 09, 2023 at 02:49:34AM +0000, Lingyu Liu wrote:
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">From: Junfeng Guo <a class="moz-txt-link-rfc2396E" href="mailto:junfeng.guo@intel.com">&lt;junfeng.guo@intel.com&gt;</a>
+
+This patch added the missing FDIR counters reset process when
+FDIR inits. Without this patch, when VF initializes or resets,
+all the FDIR counters will not be cleaned, which may cause
+unexpected behaviors for future FDIR rule create (e.g., rule
+conflict).
+
+Fixes: 1f7ea1cd6a37 (&quot;ice: Enable FDIR Configure for AVF&quot;)
+Signed-off-by: Junfeng Guo <a class="moz-txt-link-rfc2396E" href="mailto:junfeng.guo@intel.com">&lt;junfeng.guo@intel.com&gt;</a>
+Signed-off-by: Lingyu Liu <a class="moz-txt-link-rfc2396E" href="mailto:lingyu.liu@intel.com">&lt;lingyu.liu@intel.com&gt;</a>
 ---
-v10->v11: none
-no data on previous versions
+v2: change commit message to apply more to a kernel use
 ---
- .../device_drivers/ethernet/intel/ice.rst     | 85 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice.h          | 11 +++
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  2 +
- drivers/net/ethernet/intel/ice/ice_debugfs.c  | 51 +++++++++++
- drivers/net/ethernet/intel/ice/ice_main.c     | 90 +++++++++++++++++++
- 5 files changed, 239 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-index 5efea4dd1251..c59f4f89ee84 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-@@ -913,6 +913,91 @@ driver writes raw bytes by the GNSS object to the receiver through i2c. Please
- refer to the hardware GNSS module documentation for configuration details.
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+index e6ef6b303222..60c9da4aac1d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+@@ -541,6 +541,20 @@ static void ice_vc_fdir_rem_prof_all(struct ice_vf *vf)
+ 	}
+ }
  
- 
-+Firmware (FW) logging
-+---------------------
-+The driver supports FW logging via the debugfs interface on PF 0 only. In order
-+for FW logging to work, the NVM must support it. The 'fwlog' file will only get
-+created in the ice debugfs directory if the NVM supports FW logging.
++/**
++ * ice_vc_fdir_reset_cnt_all - reset all FDIR counters for this VF FDIR
++ * @fdir: pointer to the VF FDIR structure
++ */
++static void ice_vc_fdir_reset_cnt_all(struct ice_vf_fdir *fdir)
++{
++	enum ice_fltr_ptype flow = ICE_FLTR_PTYPE_NONF_NONE;
 +
-+To see the status of FW logging the 'dump fwlog_cfg' command can be used::
-+
-+  # echo dump fwlog_cfg > /sys/kernel/debug/ice/<pci-dev>/fwlog
-+
-+To configure FW logging the 'update fwlog_cfg' command can be used::
-+
-+  # update fwlog_cfg <fwlog_level> <fwlog_events> <fwlog_resolution>
-+
-+where
-+
-+* fwlog_level is a value from 0-4 as described below. Each level includes the
-+  messages from the previous/lower level
-+
-+      * 0 - no logging
-+      * 1 - error logging
-+      * 2 - warning logging
-+      * 3 - normal logging
-+      * 4 - verbose logging
-+
-+* fwlog_events is a value from 0-32 that represents the module to receive
-+  events for. The values are sent as a hex value where each bit represents
-+  a specific module. The module values are
-+
-+      * 0 (0x00) - General
-+      * 1 (0x01) - Control (Resets + Autoload)
-+      * 2 (0x02) - Link Management
-+      * 3 (0x03) - Link Topology Detection
-+      * 4 (0x04) - DNL
-+      * 5 (0x05) - I2C
-+      * 6 (0x06) - SDP
-+      * 7 (0x07) - MDIO
-+      * 8 (0x08) - Admin Queue
-+      * 9 (0x09) - HDMA
-+      * 10 (0x0A) - LLDP
-+      * 11 (0x0B) - DCBX
-+      * 12 (0x0C) - DCB
-+      * 13 (0x0D) - XLR
-+      * 14 (0x0E) - NVM
-+      * 15 (0x0F) - Authentication
-+      * 16 (0x10) - VPD
-+      * 17 (0x11) - IOSF
-+      * 18 (0x12) - Parser
-+      * 19 (0x13) - Switch
-+      * 20 (0x14) - Scheduler
-+      * 21 (0x15) - Tx Queue Management
-+      * 22 (0x16) - Unsupported
-+      * 23 (0x17) - Post
-+      * 24 (0x18) - Watchdog
-+      * 25 (0x19) - Task Dispatcher
-+      * 26 (0x1A) - Manageability
-+      * 27 (0x1B) - Synce
-+      * 28 (0x1C) - Health
-+      * 29 (0x1D) - Time Sync
-+      * 30 (0x1E) - PF Registration
-+      * 31 (0x1F) - Module Version
-+
-+* fwlog_resolution is the number of log messages to included
-+  in a single ARQ event. The range is 1-128 (1 means push every log
-+  message, 128 means push only when the max AQ command buffer is full).
-+  The suggested value is 10.
-+
-+An example command to enable FW logging is::
-+
-+  # echo update fwlog_cfg 4 0x82414821 50 > /sys/kernel/debug/ice/<pci-dev>/fwlog
-+
-+To turn on FW logging the 'enable fwlog' command can be used::
-+
-+  # echo enable fwlog > /sys/kernel/debug/ice/<pci-dev>/fwlog
-+
-+To turn off FW logging the 'disable fwlog' command can be used::
-+
-+  # echo disable fwlog > /sys/kernel/debug/ice/<pci-dev>/fwlog
-+
-+To read the data captured by the driver the user can read from the 'fwlog'
-+file::
-+
-+  # cat /sys/kernel/debug/ice/<pci-dev>/fwlog > fwlog.bin
-+
-+
- Performance Optimization
- ========================
- Driver defaults are meant to fit a wide variety of workloads, but if further
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 8269f033e84d..0f22b6957d83 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -635,6 +635,8 @@ struct ice_pf {
- #define ICE_VF_AGG_NODE_ID_START	65
- #define ICE_MAX_VF_AGG_NODES		32
- 	struct ice_agg_node vf_agg_node[ICE_MAX_VF_AGG_NODES];
-+	struct list_head fwlog_data_list;
-+	u8 fwlog_list_count;
- };
- 
- struct ice_netdev_priv {
-@@ -649,6 +651,15 @@ struct ice_netdev_priv {
- 	struct list_head tc_indr_block_priv_list;
- };
- 
-+struct ice_fwlog_data {
-+	struct list_head list;
-+	u16 data_size;
-+	u8 *data;
-+};
-+
-+/* define the maximum number of items that can be in the list */
-+#define ICE_FWLOG_MAX_SIZE	128
++	for (; flow &lt; ICE_FLTR_PTYPE_MAX; flow++) {
++		fdir-&gt;fdir_fltr_cnt[flow][0] = 0;
++		fdir-&gt;fdir_fltr_cnt[flow][1] = 0;
++	}
++}
 +
  /**
-  * ice_vector_ch_enabled
-  * @qv: pointer to q_vector, can be NULL
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 1af036beeb45..56fcba403dec 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -2077,6 +2077,7 @@ enum ice_aqc_fw_logging_mod {
- /* Set FW Logging configuration (indirect 0xFF30)
-  * Register for FW Logging (indirect 0xFF31)
-  * Query FW Logging (indirect 0xFF32)
-+ * FW Log Event (indirect 0xFF33)
-  */
- struct ice_aqc_fw_log {
- 	u8 cmd_flags;
-@@ -2377,6 +2378,7 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_fw_logs_config			= 0xFF30,
- 	ice_aqc_opc_fw_logs_register			= 0xFF31,
- 	ice_aqc_opc_fw_logs_query			= 0xFF32,
-+	ice_aqc_opc_fw_logs_event			= 0xFF33,
- };
+  * ice_vc_fdir_write_flow_prof
+  * @vf: pointer to the VF structure
+@@ -1924,6 +1938,7 @@ void ice_vf_fdir_init(struct ice_vf *vf)
+ 	spin_lock_init(&amp;fdir-&gt;ctx_lock);
+ 	fdir-&gt;ctx_irq.flags = 0;
+ 	fdir-&gt;ctx_done.flags = 0;
++	ice_vc_fdir_reset_cnt_all(fdir);
+</pre>
+      </blockquote>
+      <pre class="moz-quote-pre" wrap="">I am fine with this change, however, maybe the better place for
+resetting counters will be when the flows are removed? Or maybe
+the flow are removed only by hw?
+</pre>
+    </blockquote>
+    <pre>The flows are removed in ice_vf_fdir_exit(). When VF resets, 
+ice_vf_fdir_init() and ice_vf_fdir_exit() is called in pairs. 
+While ice_vf_fdir_init() is called when vf entry initializes, 
+where these counters should be initialized.
+</pre>
+    <blockquote type="cite" cite="mid:ZAsEM+P7D%2FAfreLY@localhost.localdomain">
+      <pre class="moz-quote-pre" wrap="">
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap=""> }
  
- #endif /* _ICE_ADMINQ_CMD_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
-index f9edaf871c87..ee9bf127d08f 100644
---- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
-+++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
-@@ -4,10 +4,60 @@
- #include <linux/fs.h>
- #include <linux/debugfs.h>
- #include <linux/random.h>
-+#include <linux/vmalloc.h>
- #include "ice.h"
- 
- static struct dentry *ice_debugfs_root;
- 
-+/**
-+ * ice_debugfs_command_read - read from command datum
-+ * @filp: the opened file
-+ * @buffer: where to write the data for the user to read
-+ * @count: the size of the user's buffer
-+ * @ppos: file position offset
-+ */
-+static ssize_t ice_debugfs_command_read(struct file *filp, char __user *buffer,
-+					size_t count, loff_t *ppos)
-+{
-+	struct ice_pf *pf = filp->private_data;
-+	struct ice_fwlog_data *log, *tmp_log;
-+	int data_copied = 0;
-+	int copy_count = 0;
-+
-+	if (list_empty(&pf->fwlog_data_list))
-+		return 0;
-+
-+	list_for_each_entry(log, &pf->fwlog_data_list, list) {
-+		u16 cur_buf_len = log->data_size;
-+
-+		if (cur_buf_len >= count)
-+			break;
-+
-+		if (copy_to_user(buffer, log->data, cur_buf_len))
-+			return -EFAULT;
-+
-+		data_copied += cur_buf_len;
-+		buffer += cur_buf_len;
-+		count -= cur_buf_len;
-+		*ppos += cur_buf_len;
-+		copy_count++;
-+	}
-+
-+	/* only free the data once we know there weren't any errors */
-+	list_for_each_entry_safe(log, tmp_log, &pf->fwlog_data_list, list) {
-+		if (!copy_count)
-+			break;
-+
-+		vfree(log->data);
-+		list_del(&log->list);
-+		vfree(log);
-+		pf->fwlog_list_count--;
-+		copy_count--;
-+	}
-+
-+	return data_copied;
-+}
-+
- static const char *module_id_to_name(u16 module_id)
- {
- 	switch (module_id) {
-@@ -287,6 +337,7 @@ ice_debugfs_command_write(struct file *filp, const char __user *buf,
- static const struct file_operations ice_debugfs_command_fops = {
- 	.owner = THIS_MODULE,
- 	.open  = simple_open,
-+	.read = ice_debugfs_command_read,
- 	.write = ice_debugfs_command_write,
- };
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a5ce84d84843..6ab8ad27af81 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5,6 +5,7 @@
- 
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
-+#include <linux/vmalloc.h>
- #include <generated/utsrelease.h>
- #include "ice.h"
- #include "ice_base.h"
-@@ -1239,6 +1240,43 @@ ice_handle_link_event(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	return status;
- }
- 
-+/**
-+ * ice_get_fwlog_data - copy the FW log data from ARQ event
-+ * @pf: PF that the FW log event is associated with
-+ * @event: event structure containing FW log data
-+ */
-+static void
-+ice_get_fwlog_data(struct ice_pf *pf, struct ice_rq_event_info *event)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_fwlog_data *fwlog;
-+
-+	if (pf->fwlog_list_count >= ICE_FWLOG_MAX_SIZE)
-+		return;
-+
-+	fwlog = vmalloc(sizeof(*fwlog));
-+	if (!fwlog) {
-+		dev_warn(dev, "Couldn't allocate memory for FWlog element\n");
-+		return;
-+	}
-+
-+	INIT_LIST_HEAD(&fwlog->list);
-+
-+	fwlog->data_size = le16_to_cpu(event->desc.datalen);
-+	fwlog->data = vzalloc(fwlog->data_size);
-+	if (!fwlog->data) {
-+		dev_warn(dev, "Couldn't allocate memory for FWlog data\n");
-+		vfree(fwlog);
-+		return;
-+	}
-+
-+	memcpy(fwlog->data, event->msg_buf, fwlog->data_size);
-+
-+	list_add_tail(&fwlog->list, &pf->fwlog_data_list);
-+
-+	pf->fwlog_list_count++;
-+}
-+
- enum ice_aq_task_state {
- 	ICE_AQ_TASK_WAITING = 0,
- 	ICE_AQ_TASK_COMPLETE,
-@@ -1519,6 +1557,9 @@ static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
- 
- 			ice_vc_process_vf_msg(pf, &event, &data);
- 			break;
-+		case ice_aqc_opc_fw_logs_event:
-+			ice_get_fwlog_data(pf, &event);
-+			break;
- 		case ice_aqc_opc_lldp_set_mib_change:
- 			ice_dcb_process_lldp_set_mib_change(pf, &event);
- 			break;
-@@ -4746,6 +4787,52 @@ static void ice_deinit_eth(struct ice_pf *pf)
- 	ice_decfg_netdev(vsi);
- }
- 
-+/**
-+ * ice_pf_fwlog_init - initialize FW logging on device init
-+ * @pf: pointer to the PF struct
-+ */
-+static void ice_pf_fwlog_init(struct ice_pf *pf)
-+{
-+	/* only supported on PF 0 */
-+	if (pf->hw.bus.func)
-+		return;
-+
-+	INIT_LIST_HEAD(&pf->fwlog_data_list);
-+}
-+
-+/**
-+ * ice_pf_fwlog_deinit - clear FW logging metadata on device exit
-+ * @pf: pointer to the PF struct
-+ */
-+static void ice_pf_fwlog_deinit(struct ice_pf *pf)
-+{
-+	struct ice_fwlog_data *fwlog, *fwlog_tmp;
-+	struct ice_hw *hw = &pf->hw;
-+	int err;
-+
-+	/* only supported on PF 0 */
-+	if (pf->hw.bus.func)
-+		return;
-+
-+	/* make sure FW logging is disabled to not put the FW in a weird state
-+	 * for the next driver load
-+	 */
-+	hw->fwlog_cfg.options &= ~ICE_FWLOG_OPTION_ARQ_ENA;
-+	err = ice_fwlog_set(hw, &hw->fwlog_cfg);
-+	if (err)
-+		dev_warn(ice_pf_to_dev(pf), "Unable to turn off FW logging, status: %d\n",
-+			 err);
-+
-+	err = ice_fwlog_unregister(hw);
-+	if (err)
-+		dev_warn(ice_pf_to_dev(pf), "Unable to unregister FW logging, status: %d\n",
-+			 err);
-+
-+	list_for_each_entry_safe(fwlog, fwlog_tmp, &pf->fwlog_data_list, list) {
-+		vfree(fwlog->data);
-+		vfree(fwlog);
-+	}
-+}
- static int ice_init_dev(struct ice_pf *pf)
- {
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -5253,6 +5340,8 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 		hw->debug_mask = debug;
- #endif
- 
-+	ice_pf_fwlog_init(pf);
-+
- 	err = ice_init(pf);
- 	if (err)
- 		goto err_init;
-@@ -5360,6 +5449,7 @@ static void ice_remove(struct pci_dev *pdev)
- 		msleep(100);
- 	}
- 
-+	ice_pf_fwlog_deinit(pf);
- 	ice_debugfs_exit();
- 
- 	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
+ /**
 -- 
-2.35.1
+2.25.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Intel-wired-lan@osuosl.org">Intel-wired-lan@osuosl.org</a>
+<a class="moz-txt-link-freetext" href="https://lists.osuosl.org/mailman/listinfo/intel-wired-lan">https://lists.osuosl.org/mailman/listinfo/intel-wired-lan</a>
+</pre>
+      </blockquote>
+    </blockquote>
+  </body>
+</html>
+
+--------------7F3RdUoU1DXqTYe8uHA7elM6--
+
+--===============1185249473377858322==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============1185249473377858322==--
