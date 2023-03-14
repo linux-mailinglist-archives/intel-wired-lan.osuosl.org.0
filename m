@@ -1,93 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD2726B8DB6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Mar 2023 09:44:25 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 804EC6B8FEF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Mar 2023 11:27:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6FB8D41866;
-	Tue, 14 Mar 2023 08:44:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6FB8D41866
+	by smtp2.osuosl.org (Postfix) with ESMTP id 050F5402CE;
+	Tue, 14 Mar 2023 10:27:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 050F5402CE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678783464;
-	bh=ocmCqmpg1ga1qn2JzZ3phnOM8JQk0H6fh8clnwxcS+k=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=HCtJU8nOwSmVWG7C97j1DaQ+rTLdsOdTObEA7B1vawXRvLlwTCNT+UM2r/bPzkc45
-	 wEcLdTjLU+BNxT7BgYs8PaTXcEBMV6SKFEpl4G9qZKimKtpxTfdFnV3yh/lC5pTmR5
-	 Ojn18xqXTiM5qASt0eyI6jdIWfnFils8o3w97+EPhn+E6ZYDxuJVnuo4UnKd/AHIG4
-	 1vYdIoQPbW23M79lp6lgbDyEhICDZcfSLljKkFLCh3pYiJwDS+rdjLQqBeSE7U/Yvw
-	 wC3C+mD/TZgJpCXIASLreZuf+7z4RjNJNiWlp7ezqHhQoFNxln2yF/1Kk82Kpkv0GD
-	 jnbbmzlp8trgQ==
+	s=default; t=1678789623;
+	bh=YqhVrUtbYVWgaCkhNsMT7PmNNPlZdQNboYn8cXdRPeo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1TAlGkfkzxLRTzqvUw8g/G7zMguWITpJp0XAWMgstFNzdg7+rnqjHgWwYPBF57AOg
+	 qGD08+dp1m3npPjBATuA1jyRKq6FztYNKmtjz0kp/JK6lJJZCtx9zhUKj8AdqdaEun
+	 xuVEDC363qSg9L/FwjcR+N/h3a/V4mTCTN6QQvte0AQMOlkaYbDLJ1CDXmYisawddi
+	 hvhbH9RmXqeYhw8qzXBt/BB+fhqMz5tZVIE2hlCGUdkYH5/aeklETSGrJauYtpM1ZN
+	 ki33UFYBJb+Uy0siPI3GZw6bnro5VXY5zR9Y5xVK5mt4jC2FcPJpCZvLoIApYgpO59
+	 reR0xgzJhwNug==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6EI81-iL3-8Q; Tue, 14 Mar 2023 08:44:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j-AmVVkNrksj; Tue, 14 Mar 2023 10:27:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2732F4092A;
-	Tue, 14 Mar 2023 08:44:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2732F4092A
+	by smtp2.osuosl.org (Postfix) with ESMTP id E9B8740525;
+	Tue, 14 Mar 2023 10:27:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9B8740525
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8DD841BF2C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 08:44:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CC6A51BF33D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 10:26:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 652074011F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 08:44:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 652074011F
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9FCD840919
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 10:26:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FCD840919
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNes7A-9PwuW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Mar 2023 08:44:17 +0000 (UTC)
+ with ESMTP id XFjvZc43GtCT for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Mar 2023 10:26:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0800540525
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0800540525
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 08:44:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="423636004"
-X-IronPort-AV: E=Sophos;i="5.98,259,1673942400"; d="scan'208";a="423636004"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2023 01:44:15 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D84F2401ED
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D84F2401ED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 10:26:55 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="325749538"
+X-IronPort-AV: E=Sophos;i="5.98,259,1673942400"; d="scan'208";a="325749538"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Mar 2023 03:25:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="1008327569"
-X-IronPort-AV: E=Sophos;i="5.98,259,1673942400"; d="scan'208";a="1008327569"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.12.17])
- ([10.13.12.17])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2023 01:44:13 -0700
-Message-ID: <7dbe162a-ce21-1a7a-742d-047c615a33cc@linux.intel.com>
-Date: Tue, 14 Mar 2023 10:44:06 +0200
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="656292557"
+X-IronPort-AV: E=Sophos;i="5.98,259,1673942400"; d="scan'208";a="656292557"
+Received: from hextor.igk.intel.com ([10.123.220.6])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Mar 2023 03:25:25 -0700
+From: Michal Wilczynski <michal.wilczynski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 14 Mar 2023 11:25:09 +0100
+Message-Id: <20230314102514.46636-1-michal.wilczynski@intel.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-To: AKASHI Takahiro <takahiro.akashi@linaro.org>, jesse.brandeburg@intel.com, 
- anthony.l.nguyen@intel.com
-References: <20230307064531.68840-1-takahiro.akashi@linaro.org>
-Content-Language: en-US
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20230307064531.68840-1-takahiro.akashi@linaro.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678783456; x=1710319456;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=7OQgDKpAKey7+l+RgQJ9F0gVi1YoaK7DEPgd2Nno5tk=;
- b=YdBOllwfgBD2o/W54rFig3fJOBfgIQHuG9MVyfUGDYR5o8FilrjebDdH
- TLmc2KcyHHhwfiPHMit/ZRgIWjlm0RVZozBmoPhIUPDBQEL1Toto2VyMr
- wB9OWm8oZaDyx+cV5OeIL4MPgt6ReN9A70MGrYi8psttNUWjf3hKABnsH
- MuFIA3K8a78RQmzgHqYzn6J4Q3vKWM2PcthhWgLkIUI4nk4NX2eQ91Mnl
- H1ZH5+Q0E1r0xInCdIA0tppOZ1JwzVX4xo02rtiDNGFN1s5NymHSsoc/y
- u5nLF4hr3LhOKtyTKzCAnWhDqWjO02Gf9IW49RJRFmbJIGqpfhBtcYIJx
- A==;
+ t=1678789615; x=1710325615;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=jKIQNim+s8XceoVTNtTAA7P3mKtYssbfS054jBdCMxA=;
+ b=V2GbuRH6rCQtIFbODDr8RT6RzSDVrnO+L2tnFBddzcMtBa0dzX5BLaZ7
+ F6WNb+B9fEvLydStlNisACiuGBJ+e8GtDPDZXovwvim+TjYZONJyd1yYe
+ 0NXUb7t1XUkr41+wNAYWoYK1rzavqs1CKm3kSJauzTlA/DjUvyc3ahJLj
+ tgrmqwQ2twyFYg8gUwZftU3IJqElsDMr36EhIInBvJ3BdCYuQENUGEIVr
+ T3gFGihxdJdHwjoxCL++VoDKo3sbVZVm+Y8XwTHRlviUMzVm8XOcuOuhz
+ aAUOwSyAZ9oRyvIqOOqHIPx+43QRNwZ/DlsY1/0Z90reDb3qADng1z0w4
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YdBOllwf
-Subject: Re: [Intel-wired-lan] [PATCH] igc: fix the validation logic for
- taprio's gate list
+ header.a=rsa-sha256 header.s=Intel header.b=V2GbuRH6
+Subject: [Intel-wired-lan] [PATCH net-next v10 0/5] ice: Support 5 layer tx
+ scheduler topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,39 +93,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kurt@linutronix.de, intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/7/2023 08:45, AKASHI Takahiro wrote:
-> The check introduced in the commit a5fd39464a40 ("igc: Lift TAPRIO schedule
-> restriction") can detect a false positive error in some corner case.
-> For instance,
->      tc qdisc replace ... taprio num_tc 4
-> 	...
-> 	sched-entry S 0x01 100000	# slot#1
-> 	sched-entry S 0x03 100000	# slot#2
-> 	sched-entry S 0x04 100000	# slot#3
-> 	sched-entry S 0x08 200000	# slot#4
-> 	flags 0x02			# hardware offload
-> 
-> Here the queue#0 (the first queue) is on at the slot#1 and #2,
-> and off at the slot#3 and #4. Under the current logic, when the slot#4
-> is examined, validate_schedule() returns *false* since the enablement
-> count for the queue#0 is two and it is already off at the previous slot
-> (i.e. #3). But this definition is truely correct.
-> 
-> Let's fix the logic to enforce a strict validation for consecutively-opened
-> slots.
-> 
-> Fixes: a5fd39464a40 ("igc: Lift TAPRIO schedule restriction")
-> Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
-> ---
->   drivers/net/ethernet/intel/igc/igc_main.c | 20 ++++++++++----------
->   1 file changed, 10 insertions(+), 10 deletions(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+This is a re-send of series that was previously accepted and merged to
+the tree, but testing discovered problems with this series so it was
+later dropped. This version fixes the bug found by validation.
+
+For performance reasons there is a need to have support for selectable
+tx scheduler topology. Currently firmware supports only the default
+9-layer and 5-layer topology. This patch series enables switch from
+default to 5-layer topology, if user decides to opt-in.
+
+v10: Fixed incorrect call to ice_fill_dflt_direct_cmd_desc that caused
+     the bug found by validation.
+v9: Nothing changed, this is a re-send per validation request
+
+Lukasz Czapnik (1):
+  ice: Add txbalancing devlink param
+v6: Added this commit
+v7: Fixed nitpicks, checkpatch issue, changed functions to static
+
+Michal Wilczynski (2):
+  ice: Enable switching default tx scheduler topology
+v2:
+- Moved definitions of scheduling layers to other commit
+v3:
+- Removed wrong tags
+- Added blank line
+- Indented a comment
+- Moved parts of code to separate commit
+- Removed unnecessary initializations
+- Change from unnecessary devm_kmemdup to kmemdup
+v5:
+- Changed freeing to kfree
+- Changed commit message to clarify that parameter change is not yet
+  upstream
+
+  ice: Document txbalancing parameter
+v7: Added this commit
+
+Raj Victor (2):
+  ice: Support 5 layer topology
+v2:
+- Added example of performance decrease in commit message
+- Reworded commit message for imperative mood
+- Removed unnecessary tags
+- Refactored duplicated function call
+- Fixed RCT
+- Fixed unnecessary call to devm_kfree
+- Defined constants
+v3:
+- Changed title
+- Changes in commit description, added versions of DDP
+  and firmware, also added test methodology
+- Removed unnecessary defines
+- Added a newline for define separation
+- Did s/tx/Tx in comments
+- Removed newline between error check
+v8:
+- Removed msleep's in the loops
+
+  ice: Adjust the VSI/Aggregator layers
+v3:
+- Added this commit
+- Removed unnecessary 'else'
+
+ Documentation/networking/devlink/ice.rst      |  17 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  31 +++
+ drivers/net/ethernet/intel/ice/ice_common.c   |   6 +
+ drivers/net/ethernet/intel/ice/ice_ddp.c      | 201 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ddp.h      |   7 +-
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 162 +++++++++++++-
+ .../net/ethernet/intel/ice/ice_fw_update.c    |   2 +-
+ .../net/ethernet/intel/ice/ice_fw_update.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 104 +++++++--
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |   3 +
+ drivers/net/ethernet/intel/ice/ice_sched.c    |  34 +--
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ 14 files changed, 535 insertions(+), 41 deletions(-)
+
+-- 
+2.37.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
