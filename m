@@ -2,122 +2,189 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B19BE6BB831
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Mar 2023 16:43:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB49A6BB99D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Mar 2023 17:24:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0AB4A60743;
-	Wed, 15 Mar 2023 15:43:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0AB4A60743
+	by smtp3.osuosl.org (Postfix) with ESMTP id 37FA760F6D;
+	Wed, 15 Mar 2023 16:24:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 37FA760F6D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678894985;
-	bh=GJ2bh+dKWOdPAalJ7hp/hXKEhJV0Pu7iDmL7ZE5pJaM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Reply-To:Cc:From;
-	b=mvPvBB+cO7sC2vOKF1Uu9xzb2rEwDFCh8mYDKmDRH7iRC2K3UyWH7c14To+2XQvsy
-	 YxXbcmAaSxNLzTG8dKGhvK8EOlaOZvJ+ZNPlP1LURXGsxo+uzDk12OQouX7e8NxNdu
-	 XCNX4OadpSqAihSqLCg74CynjS1r/S3YY7jOsUAWJ+gG598jvdKy5sMmFKeI+R/sTI
-	 K1C6+pSTFXu7mCDwjPueQ1tEAS7iyLYmpEPVZemPQt7zBY/jDubW3BTzGqL508eaiH
-	 alC4BafkxOyd0vkvUVynruNGU8WYJfWA86Hq0giHtmyVX1kURjy06zGWXuXdt6B1yw
-	 hAtgdL4R9NebQ==
+	s=default; t=1678897490;
+	bh=sBvC8Wd64Ij5wtrelC77z4n94SvayHfJbjJPHPMfVoM=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=38FU76SHHkG0942DV6sLn+BDB3gkjGKXNVDqJbcUcjc4u3iHbbz8prnL+HZv0lEld
+	 USMnl/cignGQ8Ajd8TDzXa1caHlovwtuX6oMegtpI40SaPlBTFbScHLyjKm1JBPssX
+	 4V/9tsuywQ8bx3ZS5EgdHEVRvtoEY4FZjpa/1Z6VrVpYzrU4DlRw50jU7daDSSE1MX
+	 XFE1Mx7PJCU5MkLVMCX9XkSJo7DM/8SLo11k7ieOPAfAc0Ok3DPK5K78hDLeNbx8wo
+	 nipu6y2X7dwy/yv09t8Pl/y3c9UPY921PKVQgtGvyAUgz2qAgWc8SJNAkhHm6n0CJV
+	 2IbufpJY/UyCw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rlnoGknRbB50; Wed, 15 Mar 2023 15:43:04 +0000 (UTC)
+	with ESMTP id g1ZCdxU6kI38; Wed, 15 Mar 2023 16:24:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D4815606DC;
-	Wed, 15 Mar 2023 15:43:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4815606DC
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AD9E60F2D;
+	Wed, 15 Mar 2023 16:24:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AD9E60F2D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7A3921BF2AF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 08:06:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 471B61BF86D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 16:24:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4B0754053D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 08:06:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B0754053D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2959381E1A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 16:24:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2959381E1A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X1BdOiAFOEMQ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Mar 2023 08:06:01 +0000 (UTC)
-X-Greylist: delayed 00:45:07 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5FBD7400F8
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5FBD7400F8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 08:06:00 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 32F5IOuL014179; Wed, 15 Mar 2023 07:20:28 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3pb7rqjn16-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 15 Mar 2023 07:20:27 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 32F6fnQW005279;
- Wed, 15 Mar 2023 07:20:27 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com
- [169.51.49.98])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3pb7rqjn00-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 15 Mar 2023 07:20:27 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
- by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 32EN5eQ0008598;
- Wed, 15 Mar 2023 07:20:24 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
- by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3pb29sgeey-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 15 Mar 2023 07:20:24 +0000
-Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
- [10.20.54.103])
- by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 32F7KMEJ27918942
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 15 Mar 2023 07:20:22 GMT
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 60DB920043;
- Wed, 15 Mar 2023 07:20:22 +0000 (GMT)
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7B24620040;
- Wed, 15 Mar 2023 07:20:20 +0000 (GMT)
-Received: from linux.vnet.ibm.com (unknown [9.126.150.29])
- by smtpav04.fra02v.mail.ibm.com (Postfix) with SMTP;
- Wed, 15 Mar 2023 07:20:20 +0000 (GMT)
-Date: Wed, 15 Mar 2023 12:50:19 +0530
-From: Srikar Dronamraju <srikar@linux.vnet.ibm.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20230315072019.GG1005120@linux.vnet.ibm.com>
-Content-Disposition: inline
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: CdIxsayXKZM8ERmQ2ckknuAhHhmY0PLg
-X-Proofpoint-ORIG-GUID: EFzzz51A6tX6_f5nn0TrhnnIntMM29iK
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lm6hoirRy6EC for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Mar 2023 16:24:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2FC781DFB
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F2FC781DFB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 16:24:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="400332246"
+X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; d="scan'208";a="400332246"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2023 09:24:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="709735564"
+X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; d="scan'208";a="709735564"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga008.jf.intel.com with ESMTP; 15 Mar 2023 09:24:42 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Wed, 15 Mar 2023 09:24:41 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Wed, 15 Mar 2023 09:24:41 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.177)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Wed, 15 Mar 2023 09:24:41 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jVlJrM/VuhGtQysLb5X4MrtY0dg767Wpwm6qyWDG3M3o6Wtt69hqhTu+jUvyQC+2XJ1AAULpiuuLxLKbzKPlYGomX+tuhg6BWHPqGOJ2e1Agg7wxiaAjYBHCvOFjkV5LmlmXTa08Xy6TJiRN+h+2gVdQnKt0v5dt1gaD/sEzgcep+RjMHYuGdB8PZbd5jzVV11h9CRh+SI3VEPVERelkhHtvFeWOJ53bCqDXhkPwCOug+v7F4NhzovLNHlK5JQJLI615hoVntVUGK/MLbNbWHc7v3F+A3YQRUgXZJsQ3oR3BISqFpviPmQmVoNFRQ6nqp02/MQ/O5/6dWOUX/PqSLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oAhUwYMqtAsLIBbuywtD0SeGFJo3Tr+b5ikLGVg1wc4=;
+ b=jtZYX8q3nqqX4UzDV+X2JpRs9B965lcfmPumskPDiFqGw5wkBS1tn2aaTG77U/wuCU+NvomoW+CQ66RO56+hiyNZy0KuoHip/FCYGwhtkJn9cL2RA06AHnBFS9YyhNFFPwseH6zjO5vFHx1zViV0tLoBrEFSwyi+DBljh/gg7IjItiNCY04iH3iBY0kQLZpNDxgoF39EjNiPUmvV80MFS+jvUxNE3LMZ+w3tWs7z8WlwQfNkX1/TVN83DFsEqfQPou3rRXcJQt0fB6zHoXDny4tyfSOE3Yp76kKP3RFgyYkXZhYQSzdCk4Z/mJZWm1iS6/FV3Te/dCQNjO7Zx0Kihg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SA1PR11MB5777.namprd11.prod.outlook.com (2603:10b6:806:23d::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Wed, 15 Mar
+ 2023 16:24:39 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::cea8:722d:15ae:a6ed]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::cea8:722d:15ae:a6ed%4]) with mapi id 15.20.6178.024; Wed, 15 Mar 2023
+ 16:24:39 +0000
+Message-ID: <14f872e0-88d8-783c-ef6a-517feb067809@intel.com>
+Date: Wed, 15 Mar 2023 09:24:37 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>
+References: <20230313203608.1680781-1-jesse.brandeburg@intel.com>
+ <20230313203608.1680781-2-jesse.brandeburg@intel.com>
+ <f0c898f5-f4cb-34dc-91f6-a83106c52c0e@intel.com>
+ <cb406635-0c44-ef7e-2bc9-3c1ecd5c2779@intel.com>
+ <356f0d97-84ae-d508-93d2-a3a68187e03e@intel.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <356f0d97-84ae-d508-93d2-a3a68187e03e@intel.com>
+X-ClientProxiedBy: SJ0PR05CA0091.namprd05.prod.outlook.com
+ (2603:10b6:a03:334::6) To SN6PR11MB3229.namprd11.prod.outlook.com
+ (2603:10b6:805:ba::28)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-15_02,2023-03-14_02,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=784 spamscore=0
- phishscore=0 malwarescore=0 mlxscore=0 suspectscore=0 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 impostorscore=0 clxscore=1011 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2302240000
- definitions=main-2303150061
-X-Mailman-Approved-At: Wed, 15 Mar 2023 15:42:59 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=date : from : to : cc :
- subject : message-id : reply-to : content-type : mime-version; s=pp1;
- bh=qPb6bHlGHyAYa8z6S6TmjTPR2kL2cYjv5cIagZOGV2E=;
- b=L4RPA6gmio5khQ6i5KhFrP/r3saPDiXY87iMddjy+5TTULRwMsoR2BOkAGxqBR4MIl8w
- inDXpRmtwbznrYE0m+5SkTsRMMGBBdQwXzDlTqemqKKP3LX70QZjUlAyH6x73MIUlT8P
- u0agUWCSGhkrdHe1dnSo7M01XgTA/RogebFZZTNDIWzd084k6tLvRPRaHffc2SS2HHNC
- tqW6hQmvTFDEuhAJQXx/SaawG0VeA7jjLavSgnZ+1vehUpL9EZBWKqFLJLM8ql8oAZBD
- LcHbIVrSr7gkmR8uDpl6OpXS1czYgOQdt+dITcy9oYTZdp2WqSEy6KNORJxSqQZsSxt5 Sg== 
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
- header.a=rsa-sha256 header.s=pp1 header.b=L4RPA6gm
-Subject: [Intel-wired-lan] igc driver causes suspend to fail if powersave is
- enabled
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|SA1PR11MB5777:EE_
+X-MS-Office365-Filtering-Correlation-Id: e985b412-2c74-4e69-9e7e-08db2571c67d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: NCRtm/zzK1NgDUrgMIQSct+d0+KXLJLhN2fHKkcKDyt9j3dvqNScvDy6ZoYOR4Ke1CumwqwbdCV+iVCXw7S7HORD1Jf4Lqn9Z3cZISSKx/F12lg2wlhGtaR9eFBpNKuhXiqoAMGdLjNTuVinWPPPvX+LupFJGVN32Tg6JEypJK0SVqSyovPWkKEvd5Icnw7Z4DSMUmjxODUJj/nVMkrYIx2Dff2XQ4iVu7SgmJu7j208QzD3YkDZifEkNxoaH5r93DZAOjis0/+WxBPZlwYhql7LH7099VFzI2cKrXJLsVC7udjhFEswNtDEpla4hj01m36cQ3qbsGvXG8O+4Gb7zT1WxZiIsm0kMk7Vr4MPgj5+s2Qh3svIYWwQAIhUD5ihAJeds3nKIO9wCYvVCcjW/rA6eayqfUFSRb1xPd3vJAHxnN4s3f0i7R44boIaVDlIbRwju87t/8s9SQJytZoOAL4ewHZFeKRqf3gQURtrZ9CCHDBaYyGR6qLcysboSI+SrqPDgoCiF1hs1LgFANS1giV0suJiQQmAR2wNk2R8B5OJoJPGR0SWJEK4WVMF4HOmCS4fEqZOJwWgmyBsmD6gWxdx99NlpV0e/94bKQRNl/nqVy5zz++ElR4k86j34/NZ8OgtojbDl7IVLZDQF47ND1gQsZH6LrNlZz5Fw12fkhXeIb1IiIhE12LQMeAQrCFLsxAUDQiENWBpycjdWjotAEbNL3USja5KRryEVfMEB/I=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(396003)(366004)(39860400002)(136003)(376002)(451199018)(82960400001)(38100700002)(2906002)(36756003)(31686004)(6486002)(478600001)(53546011)(2616005)(186003)(966005)(6506007)(86362001)(110136005)(66946007)(31696002)(66556008)(6636002)(66476007)(8676002)(316002)(4326008)(26005)(6512007)(8936002)(41300700001)(5660300002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N203NFVjT2c2VTFaY0xvVytSeFkzQjZuQ1lCdDhhUnY5YWJodUV1aG1MK2pl?=
+ =?utf-8?B?THBudEdDV0t3OEwvdUJOUmhud1Y0aHljZ2d0Z3NhdjZncjlGQXh4Z2lZMU0w?=
+ =?utf-8?B?ZUhUb2RhV3VvaUh5d1VKMTgwampRTUU0aWtlRmVic0VXQW1YNEdsTmI0YWhi?=
+ =?utf-8?B?YThobG1hQ0JyZXo5bWZ1dXZmWUlFWFc0QkVJWVZEa1U1TitkWmE5d3R3YXdr?=
+ =?utf-8?B?c3BoanV2dWVsTWpVSTRIbGNUSy8xazBZM1lUUEdqNzVLL0FtMml3cmFXY3I5?=
+ =?utf-8?B?Nm9lbzFqbGlFN3FjQ0RDYzZpenVXQ0ZBMDY5Y0VkZ1B5ZnFyaERIaXdWQkhU?=
+ =?utf-8?B?TGFMZDNvZE1wK3RGSDZycnR6SEl1aEhyN00yVFliS2kzSWlsNzN2c1dNZ051?=
+ =?utf-8?B?TWJWTkVMRlBGYWlKOStPWmplMzZKellRYW4xeGhrQVZuQ01JNDZJcGwyS1lO?=
+ =?utf-8?B?TUd4SS91WUpBYUJJZmEyVHp5bVEwM3g1V1ArNU9FYWdiTitDSWRHMVJZUHNu?=
+ =?utf-8?B?Vlc4d2ErcElvNzhBd0ZsNEVEa2t0SDBUaFlkOFE0UlNORGN4SWpRMG1VUitG?=
+ =?utf-8?B?bW84REtNYjBPcCtaZitUUmdHRGZsSzM2RXlmSTNuRDVYZUhaR2tNa3RKLzRU?=
+ =?utf-8?B?eVpkSVdEaHk2amVhczFDTEFiT2ZMK0thdFViRmlHQW43TThlbHM5M08wMThp?=
+ =?utf-8?B?bFdpb2JDUUVCa3c5MllQZ2NQbHJzNERCLzY5K1FHZHpyaTlBUXBpOXVLK0hm?=
+ =?utf-8?B?ZmhVUURtaEpFd3UxYkNtd2JDQnBJdDhGclpVTEcwK2RORTZXSlM2T1d0aFNC?=
+ =?utf-8?B?cU9yN2FpOGVicXY5aWFUUHloeHY2cmdHY25xcVVTaUZUWEtNTzJyZ21KdzNJ?=
+ =?utf-8?B?QnpjZ1JIWDNXZk1PSFFHN29wUkNDbXFlcmFsQnNXUXpmdkllRm9NMHFIR0tm?=
+ =?utf-8?B?QmxGRHVaM29oSVF2OGtpL0h3aFRDdW05bVpMMlQyZU9IOXIxcXgxRmN4ak1O?=
+ =?utf-8?B?ZXh6TTJjSDNGMzduS3pnOGtsbkNwbEpNVkxvU1pid1hieEtkRW42d0NobThX?=
+ =?utf-8?B?UUtNN3RNSUpZYmdSWWVQeVpQZW5sOWxvdVFIU2JaOHNBMkVFVTExMDZkUndJ?=
+ =?utf-8?B?QzQyNmVyWStZcDc2c2VNOUpuOVJ2VVUwbEFtQTZwOVprMVBGMEZpc0RKQkZG?=
+ =?utf-8?B?cHZFV0R3QkVMZXlTZUVZQ1JwUm8zRU1WY2prV0hKQ1NCNGxEdElBVnhVY0pv?=
+ =?utf-8?B?VkNmbjk0a2x1b3RTWlBsZlo4a1JqdUFRZncxYWVUdjZMYUVXdlBhSnR6MDU1?=
+ =?utf-8?B?blRKbW02ZU4vVWpvSitjN1JmT0NwN0s5ODhHUVdFVjFDRUNZQVgra0lYL0lO?=
+ =?utf-8?B?NjUzWUpvdmY1ODNMSERucE1mWUh6VGdpK1ZQRnQ5ZGM5dDVqZXNlMmN4Y0Rx?=
+ =?utf-8?B?cUZkUVRkWXhOUUNIaDZpQ3h0eG1OT00wQjhGU1grZ2VPMzFySStCOTFSZUdp?=
+ =?utf-8?B?aXlYMCtvWE56elVMUFkyaUd3QXJyWVM1ejZPYlhrWmdXaGI2eExOcU43RHhI?=
+ =?utf-8?B?b2FCOUYrdnM0UWxrcVhIVEJLZEhTc2NYeWtrMjBDZDdjaTJEbmduQUxZZVM5?=
+ =?utf-8?B?SjZ2Tk15amJTM2JnbUp3WUtycm54SXBDMGh6dUpBemxTRjdRM3RzbnNjaGNW?=
+ =?utf-8?B?RDIwaDN1M2gwcjFXejhPTDlJcTQ4dU1aY2prNW1tdGlJUzQ1V04rV3BQUzUy?=
+ =?utf-8?B?VU1GcFNoNTN6WXF6eW5iTXVmNjZ3b09teVF3amFCYU1uL1hKcm5DamFPYkZS?=
+ =?utf-8?B?Z1FkN3FjcGxsL04xamJXSUFOaGI3TFpMRnhrQzdCZktST2t0Rk01UURLUEVJ?=
+ =?utf-8?B?MmFJWkxwdDNXTE4xR3FkQXlhTDVUaWNJYjU3NzkzbTZtbHR1b0pYNmE5dmxI?=
+ =?utf-8?B?cms4NVFYZWtPQUdTY09POGNoSmVUb2xOTDNtbXdpYUVTL0Y0Ynh1R2pYZy9Z?=
+ =?utf-8?B?NHcyZEVCbHBJN0hOWWRlZjNKSU5mays0SXQ3cVNMZkNwbjZRTVBjOWM1U0Ez?=
+ =?utf-8?B?NVZnZ0hKWjdQZi9TazdabmZObTRUMlNkUzVFOXd4VUJsRWI2Z05iaHdOUXJ6?=
+ =?utf-8?B?L1JWeFhHdmFIdDRRZFdSVnNyUElOVVlGRjVaR05yU1RQd0R1eE1EZ2dwZWdJ?=
+ =?utf-8?B?QkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e985b412-2c74-4e69-9e7e-08db2571c67d
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2023 16:24:39.6898 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qnup6WYLeWAdQhhucb8bnsqcBNAgqbD+EXnLkdL2YAiKlIFX6qzLCkOzWRSJJ4wLyd9gZrWfW0BxdCSDmgIT3CkOIwjx5X4avYAes4LfN8M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB5777
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678897483; x=1710433483;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=x2dmRyeQKoj9WDPX1BguNLU+Re1CGqSSdG0/VHv9rD4=;
+ b=PPG03FeRhJf0yavOmGKtFf1wj/yWFBalD2rDg1lT9Zfwpox15QGfA1r7
+ ufykgzIMU67il+cu+UWYOUD0vy+EK9ZZHnwMloAcUTV89Cu/penSLxBrO
+ NaLL8CE2fBj/rasWgkxtqW+l6QHUjV2T6X2VtKW9Dh4kLy3GA1I+lAe17
+ Ia7ECvsOdhoMeRFdRDwWhLGofGKKXM5j/es38DYOnnE1nD5WVUAVVlEw3
+ 3Fy5am5wen4HSUjzaZMGjtNhoJidL/91qqCzASo0l2F8OknZ+mGGvRq3Y
+ iVqgBvgabrKZvfLTOlvCnAymBi/cGhyi/sJWOGm3Gc0vi/ayv5uWcZKqv
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=PPG03FeR
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v1 1/2] ice: fix W=1 headers
+ mismatch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,107 +197,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: Srikar Dronamraju <srikar@linux.vnet.ibm.com>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Naveen Rao <naveen.n.rao@linux.vnet.ibm.com>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
 
-On Lenovo ThinkPad P15 Gen 2i with I225-LM Ethernet card running Fedora 37
-kernel 6.1.13-200.fc37.x86_64, running powertop --auto-tune causes suspend
-and reboot to fail. Once suspend fails, networking stops working even for
-wireless. Infact as a normal user, I cant even start a sudo session after
-trying to suspend.
 
-Reboot/shutdown fails since Network-Manager cant be killed. (More below)
-The only option left is for the system to be hard-reboot.
+On 3/15/2023 2:55 AM, Alexander Lobakin wrote:
+> From: Brandeburg, Jesse <jesse.brandeburg@intel.com>
+> Date: Tue, 14 Mar 2023 13:29:41 -0700
+> 
+>> On 3/14/2023 6:54 AM, Alexander Lobakin wrote:
+>>> From: Brandeburg, Jesse <jesse.brandeburg@intel.com>
+> 
+> [...]
+> 
+>> Quoting myself:
+>>> Fix a couple of small issues, with a small refactor to correctly handle
+>>> a possible misconfiguration of RDMA filters, and some trivial function
+>>> headers that didn't match their function.
+>>
+>> Please see the last half of the sentence, regarding fixing these trivial
+>> comment-only issues. If you still think that isn't enough I can reword
+>> or resend, but in this case I don't think there is anything wrong, do
+>> you agree after my explanation? Did I miss something?
+> 
+> I've read the cover letter, but its subject is "ice_switch fixes
+> series", that's why I wrote this :D That confuses a bit. I've no
+> problems with this spin, Tony doesn't preserve cover letter subjects anyway.
 
-I finally found that the problem was because enabling auto or powersave on
-ethernet card was causing this issue. i.e
+If they are sent on as I received them, I'll carry the cover letter 
+forward. However, if I add other patches to them, it won't be preserved. 
+I see this getting bundled with other patches, so the subject for this 
+likely won't matter.
 
-echo 'auto' > '/sys/bus/pci/devices/0000:0b:00.0/power/control'
+Thanks,
+Tony
 
-Pls do note, I was not using ethernet, I was just using wireless even before
-suspend.
-
-lspci -v reports
-0b:00.0 Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)
-	Subsystem: Lenovo Device 22d8
-	Flags: fast devsel, IRQ 16, IOMMU group 17
-	Memory at be300000 (32-bit, non-prefetchable) [size=1M]
-	Memory at be400000 (32-bit, non-prefetchable) [size=16K]
-	Capabilities: [40] Power Management version 3
-	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-	Capabilities: [70] MSI-X: Enable- Count=5 Masked-
-	Capabilities: [a0] Express Endpoint, MSI 00
-	Capabilities: [100] Advanced Error Reporting
-	Capabilities: [140] Device Serial Number 88-a4-c2-ff-ff-5f-09-88
-	Capabilities: [1c0] Latency Tolerance Reporting
-	Capabilities: [1f0] Precision Time Measurement
-	Capabilities: [1e0] L1 PM Substates
-	Kernel modules: igc
-
-When suspend fails, we see messages like this
-
-kernel: Freezing of tasks failed after 20.001 seconds (3 tasks refusing to freeze, wq_busy=0):
-kernel: task:NetworkManager  state:D stack:0     pid:2014  ppid:1      flags:0x00004006
-kernel: Call Trace:
-kernel:  <TASK>
-kernel:  __schedule+0x35f/0x1360
-kernel:  ? asm_sysvec_reschedule_ipi+0x16/0x20
-kernel:  schedule+0x5d/0xe0
-kernel:  schedule_preempt_disabled+0x14/0x30
-kernel:  __mutex_lock.constprop.0+0x390/0x6e0
-kernel:  ? __cond_resched+0x1c/0x30
-kernel:  igc_resume+0xfc/0x1d0 [igc]
-kernel:  ? pci_pm_restore_noirq+0xc0/0xc0
-kernel:  __rpm_callback+0x41/0x170
-kernel:  rpm_callback+0x35/0x70
-kernel:  ? pci_pm_restore_noirq+0xc0/0xc0
-kernel:  rpm_resume+0x5bb/0x800
-kernel:  __pm_runtime_resume+0x47/0x80
-kernel:  dev_ethtool+0x124/0x2eb0
-kernel:  ? avc_has_extended_perms+0x22a/0x520
-kernel:  ? inet_ioctl+0xd8/0x1e0
-kernel:  dev_ioctl+0x156/0x520
-kernel:  sock_do_ioctl+0xda/0x120
-kernel:  sock_ioctl+0xed/0x330
-kernel:  ? security_file_ioctl+0x39/0x60
-kernel:  __x64_sys_ioctl+0x8d/0xd0
-kernel:  do_syscall_64+0x58/0x80
-kernel:  ? __x64_sys_ioctl+0xa8/0xd0
-kernel:  ? syscall_exit_to_user_mode+0x17/0x40
-kernel:  ? do_syscall_64+0x67/0x80
-kernel:  ? do_syscall_64+0x67/0x80
-kernel:  ? do_syscall_64+0x67/0x80
-kernel:  ? do_syscall_64+0x67/0x80
-kernel:  entry_SYSCALL_64_after_hwframe+0x63/0xcd
-kernel: RIP: 0033:0x7ff964b93d6f
-kernel: RSP: 002b:00007ffc96c6f540 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-kernel: RAX: ffffffffffffffda RBX: 00005608c0ba8040 RCX: 00007ff964b93d6f
-kernel: RDX: 00007ffc96c6f640 RSI: 0000000000008946 RDI: 000000000000001e
-kernel: RBP: 00007ffc96c6f7c0 R08: 0000000000000000 R09: 0000000000000000
-kernel: R10: 0000000000000021 R11: 0000000000000246 R12: 0000000000000000
-kernel: R13: 00007ffc96c6f640 R14: 00007ffc96c6f620 R15: 00007ffc96c6f620
-kernel:  </TASK>
-
-We have seen similar problems even with people running other distros like
-Arch Linux and RHEL 8 (which is 4.18 based)distros. So this is not distro
-specific or kernel specific too.
-
-Even installing tlp package from https://linrunner.de/tlp/index.html causes
-similar issues.
-
--- 
-Thanks and Regards
-Srikar Dronamraju
+>> Thanks,
+>> Jesse
+>>
+> 
+> Thanks,
+> Olek
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
