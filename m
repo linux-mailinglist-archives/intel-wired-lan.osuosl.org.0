@@ -1,87 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1987F6BA349
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Mar 2023 00:04:22 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7EF7240B63;
-	Tue, 14 Mar 2023 23:04:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7EF7240B63
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1678835060;
-	bh=sftqIqjwS1P90RkI9iMYpNQGlZDETfao2boC3W/gY38=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=hhq+JxH87M3jAOZyNfOwcdJqZXBkig+/+Vn1c9xTNDXgK6s2YDCQbcqn+s02sOJl4
-	 M1IBhzynaukzaEGdKOEr+8SQJvKnkGX+hRMNbJCOi6Vaofj5boLApn6aoA4dYwh8Zs
-	 BmfM9saTwmkQQtwaULCpvB6B2aqM9deHcR5EeiDiK7TyWZpGjk7kc5UbRdoV8mCVoz
-	 OJwTsVlKihbmWH50TYUkX6iRvkzs4rtX5/GmUy175y94mdO85EmpEVkZrSo8AsyGxu
-	 LVFmCF/pF4wKgDQfuegueawKbV1XOYrsuNd+c1RypGhLUvdjvr35G02eF8QtYgtEB8
-	 ikqa4BTDdqAIw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RAaqVUFksCjg; Tue, 14 Mar 2023 23:04:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6B35540B71;
-	Tue, 14 Mar 2023 23:04:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B35540B71
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C56A61BF2A7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 23:04:14 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6E2F6BA741
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Mar 2023 06:41:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 939A24094D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 23:04:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 939A24094D
+	by smtp4.osuosl.org (Postfix) with ESMTP id BE0E7410C4;
+	Wed, 15 Mar 2023 05:41:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE0E7410C4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1678858876;
+	bh=HxTbzHJrJxp6DAK4Kgf7wflzWz+oPn/eKTTsKIUppO4=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=PoPOf8Cbc+djXfpMImobc5mNsNZIEPGuCw+2RiVu8/g9BLHxIOi2rh6sdKwN/aPsV
+	 9mRUu/oKfuJ1wKAbtURJwPWYF2GAFVGTfqsrJUDajxuxdFWlWwyx4hK3V7lUFBfjvO
+	 /BpkKsWRGUAPxJk0rDVRPMgMDK4QmWLX3A1cfzegdh/bHj57WoLDQYAcv8q0cF7eJm
+	 8lvWoMDykQse+4j+UL6HTLwx+bGXm1s4yjGcVFqhzeF8fowIxB5LzwHTGoGPtNmmPc
+	 lFzA6QhRrQrURLsMOIPfIyvhhpe5eeXx58AruHe2zr8drRRUTOB46ctGuuC2Qsiyu7
+	 z/iu8jRub5NLA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YOaka9C0K-Dq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Mar 2023 23:04:13 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id it_AkaiR1LKz; Wed, 15 Mar 2023 05:41:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 847D1410B7;
+	Wed, 15 Mar 2023 05:41:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 847D1410B7
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 53BF41BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 05:41:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2BD55813A2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 05:41:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BD55813A2
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QESB-o-X4-yH for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Mar 2023 05:41:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C34F4094C
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7C34F4094C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Mar 2023 23:04:13 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="423836637"
-X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="423836637"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2023 16:04:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="656538001"
-X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="656538001"
-Received: from torta-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.252.33.71])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2023 16:04:11 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Mar 2023 17:04:01 -0600
-Message-Id: <20230314230401.44098-1-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC7328134A
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BC7328134A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Mar 2023 05:41:08 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0BE8561ADE;
+ Wed, 15 Mar 2023 05:41:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 789DDC433EF;
+ Wed, 15 Mar 2023 05:41:05 +0000 (UTC)
+Date: Tue, 14 Mar 2023 22:41:04 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Niklas Schnelle <schnelle@linux.ibm.com>
+Message-ID: <20230314224104.71db5ab4@kernel.org>
+In-Reply-To: <20230314121216.413434-21-schnelle@linux.ibm.com>
+References: <20230314121216.413434-1-schnelle@linux.ibm.com>
+ <20230314121216.413434-21-schnelle@linux.ibm.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678835053; x=1710371053;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ogZBiReT8z6nRCfekY0BHlcZUt7tbXz4nV+XDBpYffg=;
- b=Pvkkh4caw8Gkncng64OV7lvpBsZW+xkxhuyIR603TSi75vDDFmJyQA/a
- /Tb/TuCbwtBXHvB8fR1IJSl30iA/pfmV1ZCNVU6p5JTuQfogf0pF95yhT
- pAekZMfpTtphp2UTq6XzTbZ8djVjDwILcssavGi+K/ZTwM8x3uYT5guBi
- WGurIyH92HUrPOPoP2tR71PADvP0ZQGa6H6yTrPk4/NUWz5ZFK2UC307W
- z/nE1kD5mNvsa3malqqPklMVqcT5QENBdnLkbVaKZjMTbEKKk0KgZsezW
- e8T8vWBvoogkGokDW4Lze83109BY94RCu+MXWRR9fh8WFQ1+Dpwg4MWr5
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Pvkkh4ca
-Subject: [Intel-wired-lan] [PATCH] ice: identify aRFS flows using L3/L4
- dissector info
+ d=kernel.org; s=k20201202; t=1678858866;
+ bh=FXai2qLa/oxwiLINWHjW+akZur4pSld/3ZcuGMVc30Q=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=SQuoLTKrYJs2COu6Qkxi1TsG3DVOypXfLjk4NYc9xP5LQTgot2jL8VGx0RsYCzHRQ
+ ebQeuI5EgWlygrnWeOQB8I+P2YHGOQPFObBwd3FgMEgZlDmRzde7PThKvm8bgpbTo/
+ GOFLLGd1Y+Iknth/r6bhfJbsiA97l9Y4xnTkUHZaaUmPeHQK6wzcg09dmFMDDUtwqj
+ ouUhe9wMN8pgYJ3pWB3AxSqMZ/42vYJ3V9FfTxJVWl1E40Q9N/NG17vohokSOftUzv
+ D6S+aNeaDZk1Nz2T+tRVQaZSm8Ngl3TDZhlMADtHe+XUxQH1SAkAMj9CpqH3svmnNy
+ wL4hubqX9Jf7g==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=SQuoLTKr
+Subject: Re: [Intel-wired-lan] [PATCH v3 20/38] net: handle HAS_IOPORT
+ dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,102 +89,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, linux-pci@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ linux-arch@vger.kernel.org, Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>,
+ Alan Stern <stern@rowland.harvard.edu>, Paolo Abeni <pabeni@redhat.com>,
+ Wolfgang Grandegger <wg@grandegger.com>, intel-wired-lan@lists.osuosl.org,
+ Albert Ou <aou@eecs.berkeley.edu>, Arnd Bergmann <arnd@arndb.de>,
+ linux-can@vger.kernel.org, Marc Kleine-Budde <mkl@pengutronix.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-hams@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Arnd Bergmann <arnd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The flow ID passed to ice_rx_flow_steer() is computed like this:
+On Tue, 14 Mar 2023 13:11:58 +0100 Niklas Schnelle wrote:
+> In a future patch HAS_IOPORT=n will result in inb()/outb() and friends
+> not being declared. We thus need to add HAS_IOPORT as dependency for
+> those drivers requiring them. For the DEFXX driver there use of I/O
+> ports is optional and we only need to fence those paths.can It also
+> turns out that with HAS_IOPORT handled explicitly HAMRADIO does not need
+> the !S390 dependency and successfully builds the bpqether driver.
 
-    flow_id = skb_get_hash(skb) & flow_table->mask;
-
-With smaller aRFS tables (for example, size 256) and higher number of
-flows, there is a good chance of flow ID collisions where two or more
-different flows are using the same flow ID. This results in the aRFS
-destination queue constantly changing for all flows sharing that ID.
-
-Use the full L3/L4 flow dissector info to identify the steered flow
-instead of the passed flow ID.
-
-Fixes: 28bf26724fdb ("ice: Implement aRFS")
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_arfs.c | 44 +++++++++++++++++++++--
- 1 file changed, 41 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_arfs.c b/drivers/net/ethernet/intel/ice/ice_arfs.c
-index fba178e07600..d7ae64d21e01 100644
---- a/drivers/net/ethernet/intel/ice/ice_arfs.c
-+++ b/drivers/net/ethernet/intel/ice/ice_arfs.c
-@@ -345,6 +345,44 @@ ice_arfs_build_entry(struct ice_vsi *vsi, const struct flow_keys *fk,
- 	return arfs_entry;
- }
- 
-+/**
-+ * ice_arfs_cmp - compare flow to a saved ARFS entry's filter info
-+ * @fltr_info: filter info of the saved ARFS entry
-+ * @fk: flow dissector keys
-+ *
-+ * Caller must hold arfs_lock if @fltr_info belongs to arfs_fltr_list
-+ */
-+static bool
-+ice_arfs_cmp(struct ice_fdir_fltr *fltr_info, const struct flow_keys *fk)
-+{
-+	bool is_ipv4;
-+
-+	if (!fltr_info || !fk)
-+		return false;
-+
-+	is_ipv4 = (fltr_info->flow_type == ICE_FLTR_PTYPE_NONF_IPV4_UDP ||
-+		fltr_info->flow_type == ICE_FLTR_PTYPE_NONF_IPV4_TCP);
-+
-+	if (fk->basic.n_proto == htons(ETH_P_IP) && is_ipv4)
-+		return (fltr_info->ip.v4.proto == fk->basic.ip_proto &&
-+			fltr_info->ip.v4.src_port == fk->ports.src &&
-+			fltr_info->ip.v4.dst_port == fk->ports.dst &&
-+			fltr_info->ip.v4.src_ip == fk->addrs.v4addrs.src &&
-+			fltr_info->ip.v4.dst_ip == fk->addrs.v4addrs.dst);
-+	else if (fk->basic.n_proto == htons(ETH_P_IPV6) && !is_ipv4)
-+		return (fltr_info->ip.v6.proto == fk->basic.ip_proto &&
-+			fltr_info->ip.v6.src_port == fk->ports.src &&
-+			fltr_info->ip.v6.dst_port == fk->ports.dst &&
-+			!memcmp(&fltr_info->ip.v6.src_ip,
-+				&fk->addrs.v6addrs.src,
-+				sizeof(struct in6_addr)) &&
-+			!memcmp(&fltr_info->ip.v6.dst_ip,
-+				&fk->addrs.v6addrs.dst,
-+				sizeof(struct in6_addr)));
-+
-+	return false;
-+}
-+
- /**
-  * ice_arfs_is_perfect_flow_set - Check to see if perfect flow is set
-  * @hw: pointer to HW structure
-@@ -436,17 +474,17 @@ ice_rx_flow_steer(struct net_device *netdev, const struct sk_buff *skb,
- 
- 	/* choose the aRFS list bucket based on skb hash */
- 	idx = skb_get_hash_raw(skb) & ICE_ARFS_LST_MASK;
-+
- 	/* search for entry in the bucket */
- 	spin_lock_bh(&vsi->arfs_lock);
- 	hlist_for_each_entry(arfs_entry, &vsi->arfs_fltr_list[idx],
- 			     list_entry) {
--		struct ice_fdir_fltr *fltr_info;
-+		struct ice_fdir_fltr *fltr_info = &arfs_entry->fltr_info;
- 
- 		/* keep searching for the already existing arfs_entry flow */
--		if (arfs_entry->flow_id != flow_id)
-+		if (!ice_arfs_cmp(fltr_info, &fk))
- 			continue;
- 
--		fltr_info = &arfs_entry->fltr_info;
- 		ret = fltr_info->fltr_id;
- 
- 		if (fltr_info->q_index == rxq_idx ||
--- 
-2.34.1
-
+Acked-by: Jakub Kicinski <kuba@kernel.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
