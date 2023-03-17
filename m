@@ -1,88 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E490F6BE0A5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Mar 2023 06:31:37 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B90A56BE1F5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Mar 2023 08:34:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 026974046A;
-	Fri, 17 Mar 2023 05:31:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 026974046A
+	by smtp1.osuosl.org (Postfix) with ESMTP id DD1188210E;
+	Fri, 17 Mar 2023 07:34:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD1188210E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679031096;
-	bh=75pe4nbtLvhsStj+2+CvViPsWEamKhN8qzUklst3dRE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=HOtQpTtf0gihXsferLBs22qcZOgZshqZ7nILF4N8895xStX1cWN8Jiw6i0gp5CtGi
-	 4GluIZWlgdW0qz/wrXG+mhEtz0PGXtKiQH8N9uOdfslzegnAsZ1OYidbK3LGg7r0l2
-	 2BQJru+9h7q0HcxGumlsg9BOCAlPmq8G32yLj/ui5Dh3Q+07ETWQ9H9oferKZZS/2f
-	 hfdrtXGESCfRmcgolUqXPiBSwMaEQMtgpTE02e6sXuke34oMIz0uzj4Kb8F87oMFvS
-	 9sUGERVw4WqbRc4/ATZQ8AbCUYaiiXbBA37IRRobqUsOP2MUBIh2SyXscSvYE5Glyu
-	 ijmnEntMuK2AQ==
+	s=default; t=1679038481;
+	bh=+LQM7DLLpRAtKZk78YLuVNhH2zh5Ma2owaFy+AgkPa4=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=nv4w3z/K1r7H2Oe+yx1iQXuMEbJRBhcONCGqobpg5nkX6sIOKrHJYSNjO/Jw8vGGJ
+	 s56IHTi/+DBhzMUg7/Mna7Q66Hd3N4Yrk9Oh9WbZKhzoYZAfuuetOpJIzEN7BZajTl
+	 oDU0aMz2LzT+TmAEm3xvQPLC7KabrhqBDuRtZZjD5iHRyFXiE+mWp6897KwoXnQhk2
+	 KWxV8udAFONF2f+U0D5q4aMiQJLjrDyrX5LBQ7Uybndrahju5BeGsm/TkYkwJivGeS
+	 JR+pNxvIlEH4qwCCtIktfnwiXnj4z1zyXFHxVWqKg/xmzScqnLr4eZDPoJa+8d1qJl
+	 fzMoD+PvIQNCg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oFWtqJxANay6; Fri, 17 Mar 2023 05:31:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N-ito7I_64Hd; Fri, 17 Mar 2023 07:34:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F4165403A9;
-	Fri, 17 Mar 2023 05:31:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F4165403A9
+	by smtp1.osuosl.org (Postfix) with ESMTP id E2A128210B;
+	Fri, 17 Mar 2023 07:34:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2A128210B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D8A111BF5AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 05:31:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F1B91BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 07:34:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AFA7F416D0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 05:31:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFA7F416D0
+ by smtp4.osuosl.org (Postfix) with ESMTP id 05A6F4092B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 07:34:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05A6F4092B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yI_rMeaNROHK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Mar 2023 05:31:28 +0000 (UTC)
+ with ESMTP id 4NE366YAosEi for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Mar 2023 07:34:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D67C410A1
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4D67C410A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 05:31:28 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="317841097"
-X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="317841097"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2023 22:30:59 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="1009512135"
-X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="1009512135"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 16 Mar 2023 22:30:58 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pd2g5-00097s-2G;
- Fri, 17 Mar 2023 05:30:57 +0000
-Date: Fri, 17 Mar 2023 13:30:24 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <6413faf0./I6PtAqcbkczr9I+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CCB9040865
+Received: from smtp-relay-internal-0.canonical.com
+ (smtp-relay-internal-0.canonical.com [185.125.188.122])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CCB9040865
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 07:34:34 +0000 (UTC)
+Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
+ [209.85.214.198])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 595293FE90
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 07:34:32 +0000 (UTC)
+Received: by mail-pl1-f198.google.com with SMTP id
+ az7-20020a170902a58700b001a0534b4ddbso2353436plb.15
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Mar 2023 00:34:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679038470;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kckcOzTJlaR2QIbylBcmsrACsbd8S7zI3U3RAx9HH2c=;
+ b=4wzmPrQyXyklXHZdhVPcg4tgcvlW48aVulPX2jS7VVsKtopbC/j2irFFjdeVbVrSid
+ fyIW14o8M1bCOp0UuokPInHDmYo0I9RL9MVrimr/OGK2fr01jZTREIZjk0iOjiglAfpm
+ 7VQQ7r1Dn71ILbvgG6Q65C9d9F1FgFguutq+EBTGV5V4mQnDZ0CudjdP4oNYigvtg5w+
+ YXggF1UZ1baQi+aShgcI/DWHIWvXYJeBUbFePfUS1DkNIm+sWlHy6j4Lqhkw8V2vd6yG
+ 3Nux+oZ6nnOEK3CE/Y3jxQ2OTUMSsTkTG/Tk+EfLI/exP3Wc+JWqV1FIVPPX5SaEfGQW
+ 29bA==
+X-Gm-Message-State: AO0yUKVt3mNqA1yMQl4RGeIdrwLNrYYIpGIdQ4Ezeowi46TwP2DooBUQ
+ aeOR7FjRk9mV3bvfubJ45TMxaBaLRG9yCaZb5X4URSKZ3N0Jx0KmTopBhJdLqqantCHteaAMt8i
+ 4H7WqadZCteTfNMroSrE/auhOO7z6QGW6Of4KL4x01Zo85cHfPkNAGKmhmMvL3TY=
+X-Received: by 2002:a17:902:d484:b0:1a0:48ff:539c with SMTP id
+ c4-20020a170902d48400b001a048ff539cmr2661000plg.11.1679038470629; 
+ Fri, 17 Mar 2023 00:34:30 -0700 (PDT)
+X-Google-Smtp-Source: AK7set844wQzp8A3SsGhbjR2XzptSZsnMclN8YXLmYSRfJjx/Igxl2YnD/PvTJrIPk/mEiEEOiEzRjmT1R/j89kB6eM=
+X-Received: by 2002:a17:902:d484:b0:1a0:48ff:539c with SMTP id
+ c4-20020a170902d48400b001a048ff539cmr2660997plg.11.1679038470313; Fri, 17 Mar
+ 2023 00:34:30 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679031088; x=1710567088;
- h=date:from:to:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=WuS826wE7BLJbi48lECSfeQeyzK9gdO1QcOkI45e67o=;
- b=jnrnHSa7zTcPo9rAoEzcp1L1Rzyyr/oaqiO+6NCbRtpOWgz783IBKROH
- otNETGIQ5JPQrCX7IBweG09B4FGCjeHB7DZrU6LqG+I89FKVkmYe4v3Tz
- B/5cfcumZ2lDFj3l3Ln0EtsfM/zn2Zw+Uq9LBADkzeX6FUo0LnrEVae+w
- ooj8KACm1o0T0uUDDb4p31PGTDJXkFr5lJv+Rhuc4mS1exZ5H1RovQlM0
- MlRR+SHSPwXSWmg7x6Uui1WRPuLIX617wh5GC+T8sdOOeVe3V+G3xnZRp
- NH9vDhxtL23VPDXmOHz8X6etj6WUosJDXXzQ+0p65OKiUkST1SyphxRs6
- w==;
+References: <20230222140741.35550-1-mateusz.palczewski@intel.com>
+ <20c52c7c-c3c6-ff3c-469f-ed3cfea88e1d@molgen.mpg.de>
+ <CAAd53p72mMcUnLujy2GXMmjtZHUM5kvtx1nEBtS5OsqFzftmLA@mail.gmail.com>
+ <BL1PR11MB52886D1CD0C802757A2C6E3587BF9@BL1PR11MB5288.namprd11.prod.outlook.com>
+In-Reply-To: <BL1PR11MB52886D1CD0C802757A2C6E3587BF9@BL1PR11MB5288.namprd11.prod.outlook.com>
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Fri, 17 Mar 2023 15:34:19 +0800
+Message-ID: <CAAd53p6=nmGXnPnN8NRdheX43sn8Y_xRyWizUTmwF5=n_poJaQ@mail.gmail.com>
+To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=canonical.com; s=20210705; t=1679038472;
+ bh=kckcOzTJlaR2QIbylBcmsrACsbd8S7zI3U3RAx9HH2c=;
+ h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+ To:Cc:Content-Type;
+ b=laM4MAGeUUCpsrQzZAcrYJwF4GYgtmp5SuJIS1vpI+31YeyHJWXutZvq2wNPlDG9D
+ 8e+nneZrmd8AfZQSqp2jL1uhwFbXEgSZuoVQz1W+Lw1qBHx/zyfuvnGJSgyzGFCPMC
+ EzkrOzjntoU4O0YChaB9e2zSHmbx+SY8WBEo6LPfofXwadNX7pe28vGrYu4aoXRjMO
+ HrQOb1uoALBJBQg98uge8Sg//o1bKfLHvKLVtcoAC77iWDDLFTSbwG6eDpjtY2EBTc
+ fmiNJV/BFMdVgynFRlZ7XbCU5KUtYNy/tGboDea+744B9fRrHuXzUYn91yRjBCClVv
+ 9qcjYAyAdE8nA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jnrnHSa7
-Subject: [Intel-wired-lan] [tnguy-net-queue:40GbE] BUILD SUCCESS
- 964290ff32d132bf971d45b29f7de39756dab7c8
+ dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=laM4MAGe
+Subject: Re: [Intel-wired-lan] [PATCH net v3] e1000e: Disable TSO on i219-LM
+ card to increase speed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,77 +118,31 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Basierski, SebastianX" <sebastianx.basierski@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 40GbE
-branch HEAD: 964290ff32d132bf971d45b29f7de39756dab7c8  iavf: do not track VLAN 0 filters
-
-elapsed time: 732m
-
-configs tested: 49
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-csky                                defconfig   gcc  
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-ia64                             allmodconfig   gcc  
-ia64                                defconfig   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                               defconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-sh                               allmodconfig   gcc  
-sparc                               defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230313   gcc  
-x86_64               randconfig-a002-20230313   gcc  
-x86_64               randconfig-a003-20230313   gcc  
-x86_64               randconfig-a004-20230313   gcc  
-x86_64               randconfig-a005-20230313   gcc  
-x86_64               randconfig-a006-20230313   gcc  
-x86_64                               rhel-8.3   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGkgTWF0ZXVzeiwKCk9uIFdlZCwgTWFyIDE1LCAyMDIzIGF0IDg6NDTigK9QTSBQYWxjemV3c2tp
+LCBNYXRldXN6CjxtYXRldXN6LnBhbGN6ZXdza2lAaW50ZWwuY29tPiB3cm90ZToKW3NuaXBwZWRd
+Cj4gPiA+IEFsc28gdGhlIHF1ZXN0aW9ucyBmcm9tIHRoZSBkaXNjdXNzaW9uIG9mIHYyKD8pIHdh
+cyBub3QgYW5zd2VyZWQsIHdoeQo+ID4gPiB0aGUgY29uZGl0aW9ucyBpbiB0aGUgaWYgc3RhdGVt
+ZW50IG9mIHRoZSBjb2RlIGFkZGVkIGJ5IGNvbW1pdAo+ID4gPiBmMjk4MDEwMzBhYzYgd2hlcmUg
+bm90IHRydWUuCj4gPiA+Cj4gPiA+ICAgICAgLyogZGlzYWJsZSBUU08gZm9yIHBjaWUgYW5kIDEw
+LzEwMCBzcGVlZHMsIHRvIGF2b2lkCj4gPiA+ICAgICAgICogc29tZSBoYXJkd2FyZSBpc3N1ZXMK
+PiA+ID4gICAgICAgKi8KPiA+ID4gICAgICBpZiAoIShhZGFwdGVyLT5mbGFncyAmIEZMQUdfVFNP
+X0ZPUkNFKSkgewo+ID4KPiA+IFllYSwgbXkgaWRlYSB3YXMgdG8gdGFrZSBGTEFHX1RTT19GT1JD
+RSBpbnRvIGNvbnNpZGVyYXRpb24gaGVuY2UgdGhlIGFkZGluZyB0aGUgY2hhbmdlIHRvIHRoaXMg
+aWYgYmxvY2suCj4gPgo+ID4gTWF5YmUgc29tZW9uZSBzdGlsbCB3YW50cyB0byBlbmFibGUgVFNP
+IGRlc3BpdGUgb2YgdGhlIGRvd25zaWRlPwo+Cj4gQnkgZGlzYWJsaW5nIFRTTyBkdXJpbmcgcHJv
+YmUgd2UgYXJlIG5vdCBzaHV0dGluZyBpdCBkb3duIGNvbXBsZXRseSwgaWYgYSB1c2VyIHdhbnRz
+IHRvIHVzZSBpdCBhbnl3YXkgZGVzcGl0ZSBzcGVlZCBkZWNyZWFzZSBpdCBjYW4gYmUgZG9uZSBt
+YW51YWxseSB3aXRoIGV0aHRvb2wuCgpNYXliZSBtb3ZlIHRoZSB3aG9sZSBibG9jayBvZiAiRkxB
+R19UU09fRk9SQ0UiIHRvIHByb2JlIHJvdXRpbmU/IFNvCnRoZSBjb2RlIGlzIGxvZ2ljYWxseSBn
+cm91cGVkLgoKS2FpLUhlbmcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1
+b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
+aXJlZC1sYW4K
