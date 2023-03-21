@@ -2,94 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 894696C332B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Mar 2023 14:47:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 856546C332C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Mar 2023 14:47:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 156E040BDE;
-	Tue, 21 Mar 2023 13:47:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 156E040BDE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 10F8C40BDF;
+	Tue, 21 Mar 2023 13:47:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10F8C40BDF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679406455;
-	bh=/nGeuEszq78O0Ji87gz6AwAhJQGBNfrI1zvhTCJo/Fk=;
+	s=default; t=1679406459;
+	bh=uNp401x94UaHv7ojWgWN9+jNalMd9SquKdtfSEki3LA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=VkCBLW6ZTSXB15eMQ5hNnBo2elGGizpZbh5H4nv0Yj2VvbyK48N3Uc9/pTez5P8G5
-	 VqKTcBPnxf+RM+X7K1BVOOUatB9o97fLyhW3fkrmgpZv8473GX7K6uCtq1BnM4/Cjb
-	 kxwh0SZkDMet13K3sYY7AUpaywRaM8MEmShqAzIK9zVkcLBujjVEnvoibZjVSjDVqb
-	 5iauZGLsEwlN5lL9UDlH5s+OO/ERE9jCwsMEquyfOLu/Jg0zQbWKZGcU3cJ7Cxg3j+
-	 9Z5AJi3qrupZLieThQbpvuvBvqecmupolOg9DywFjmVIF1h39Ziya0V3I+DEU8JA4T
-	 5jTGwuT1iNauw==
+	b=m8TJ5Nsrsv0uYSiT2277YS+ti0ALA42txbuLgmKs4z6VqzmoKN1J91JGxW30h0XPX
+	 vnhSPAtrWV3aPXeBSGas4BMmNLUl5IAPKBkptbsTH7aT3tw2x3hw21DYhxA947Z7X6
+	 PFwCLUbqO9NYxtDQ2dysQWFoDmI2jSrAHxTL56hKWaHfUjEFFr9P2+qfJ4pwxiLOwl
+	 HaQPbUqzVM6AQvO7gE6W9h+IXD3W5Ac/LxiEcrh6Igayo3Spz3CkyKHIgXyo86xw/3
+	 3au83gkWuYZXDCyDZP1C1CGFmgKcHkOxazP+3BxDqpDx1MU8r3vBtto8LRgdpImEY9
+	 9uceeQHfwVLww==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6nlbQGVMajcl; Tue, 21 Mar 2023 13:47:34 +0000 (UTC)
+	with ESMTP id ZQZ9HOeP47uQ; Tue, 21 Mar 2023 13:47:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF19E40BCD;
-	Tue, 21 Mar 2023 13:47:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF19E40BCD
+	by smtp2.osuosl.org (Postfix) with ESMTP id EE7F040BCB;
+	Tue, 21 Mar 2023 13:47:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE7F040BCB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 81D631BF327
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:29 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E99A1BF327
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5D64B40BD1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D64B40BD1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7864741870
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7864741870
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XbYV6Fl1zgJm for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Mar 2023 13:47:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0Q4GAgSKnZFO for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Mar 2023 13:47:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F07640BCB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69DDA4181C
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9F07640BCB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:28 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 69DDA4181C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:30 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-19-Ki3F_Mj-MZixEcfecLybrQ-1; Tue, 21 Mar 2023 09:47:20 -0400
-X-MC-Unique: Ki3F_Mj-MZixEcfecLybrQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
+ us-mta-656-3PlnGXVvOnajIAYfARlotg-1; Tue, 21 Mar 2023 09:47:24 -0400
+X-MC-Unique: 3PlnGXVvOnajIAYfARlotg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C188385C06C;
- Tue, 21 Mar 2023 13:47:17 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AC0211C06EC7;
+ Tue, 21 Mar 2023 13:47:22 +0000 (UTC)
 Received: from firesoul.localdomain (unknown [10.45.242.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 87DA540C20FA;
- Tue, 21 Mar 2023 13:47:17 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 576671121314;
+ Tue, 21 Mar 2023 13:47:22 +0000 (UTC)
 Received: from [10.1.1.1] (localhost [IPv6:::1])
- by firesoul.localdomain (Postfix) with ESMTP id B369930721A6C;
- Tue, 21 Mar 2023 14:47:16 +0100 (CET)
+ by firesoul.localdomain (Postfix) with ESMTP id C1A8830721A6C;
+ Tue, 21 Mar 2023 14:47:21 +0100 (CET)
 From: Jesper Dangaard Brouer <brouer@redhat.com>
 To: bpf@vger.kernel.org
-Date: Tue, 21 Mar 2023 14:47:16 +0100
-Message-ID: <167940643669.2718137.4624187727245854475.stgit@firesoul>
+Date: Tue, 21 Mar 2023 14:47:21 +0100
+Message-ID: <167940644174.2718137.10542819958822859356.stgit@firesoul>
 In-Reply-To: <167940634187.2718137.10209374282891218398.stgit@firesoul>
 References: <167940634187.2718137.10209374282891218398.stgit@firesoul>
 User-Agent: StGit/1.4
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1679406447;
+ s=mimecast20190719; t=1679406449;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xk9luJqFYKnZQu1b5EgBEL83xZfiHrJUDu5Ocv07fK8=;
- b=YbszwMKA0o2sUuzKdIU3dh2W0HWqWys5F0f+DS7oWUMuLUiOpttBljMCSV8h45tIU/9ODc
- J2/qjmbXuU5yePphNR1ZJDNGtk/cB+f09dROCTazdBorvy+VFdZI/vkiJpLqIaYEfurnXG
- cqtSfr5/GhkthSpbM1A/FETAVp0veZY=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=9cB8ol+XD/9K04Phn5I9W86iTsOsQvs3qIilOxs7GVI=;
+ b=DeWOA/khZ9D/Gj9DeKE5pe/L8l4VdJTeHo0Df8gpx7Xb7yqB1wDNz7y1sXKGoR/XTQKbkd
+ GpUDOHAVCdkqEENh11Qs8hbjD8Dg1byaQcO8LCVTLrqQPiFZT+hpK3SAFa6MksQpc0L43o
+ fPK8CeGntA6Xj6SF+fFkB/RCmlbQQ9o=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=YbszwMKA
-Subject: [Intel-wired-lan] [PATCH bpf-next V2 3/6] selftests/bpf:
- xdp_hw_metadata RX hash return code info
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=DeWOA/kh
+Subject: [Intel-wired-lan] [PATCH bpf-next V2 4/6] igc: add igc_xdp_buff
+ wrapper for xdp_buff in driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,62 +114,125 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When driver developers add XDP-hints kfuncs for RX hash it is
-practical to print the return code in bpf_printk trace pipe log.
+Driver specific metadata data for XDP-hints kfuncs are propagated via tail
+extending the struct xdp_buff with a locally scoped driver struct.
 
-Print hash value as a hex value, both AF_XDP userspace and bpf_prog,
-as this makes it easier to spot poor quality hashes.
+Zero-Copy AF_XDP/XSK does similar tricks via struct xdp_buff_xsk. This
+xdp_buff_xsk struct contains a CB area (24 bytes) that can be used for
+extending the locally scoped driver into. The XSK_CHECK_PRIV_TYPE define
+catch size violations build time.
 
 Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 ---
- .../testing/selftests/bpf/progs/xdp_hw_metadata.c  |    9 ++++++---
- tools/testing/selftests/bpf/xdp_hw_metadata.c      |    5 ++++-
- 2 files changed, 10 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/igc/igc.h      |    6 ++++++
+ drivers/net/ethernet/intel/igc/igc_main.c |   30 ++++++++++++++++++++++-------
+ 2 files changed, 29 insertions(+), 7 deletions(-)
 
-diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-index 40c17adbf483..ce07010e4d48 100644
---- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-+++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-@@ -77,10 +77,13 @@ int rx(struct xdp_md *ctx)
- 		meta->rx_timestamp = 0; /* Used by AF_XDP as not avail signal */
- 	}
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index f83cbc4a1afa..bc67a52e47e8 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -499,6 +499,12 @@ struct igc_rx_buffer {
+ 	};
+ };
  
--	if (!bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash))
--		bpf_printk("populated rx_hash with %u", meta->rx_hash);
--	else
-+	ret = bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash);
-+	if (ret >= 0) {
-+		bpf_printk("populated rx_hash with 0x%08X", meta->rx_hash);
-+	} else {
-+		bpf_printk("rx_hash not-avail errno:%d", ret);
- 		meta->rx_hash = 0; /* Used by AF_XDP as not avail signal */
-+	}
++/* context wrapper around xdp_buff to provide access to descriptor metadata */
++struct igc_xdp_buff {
++	struct xdp_buff xdp;
++	union igc_adv_rx_desc *rx_desc;
++};
++
+ struct igc_q_vector {
+ 	struct igc_adapter *adapter;    /* backlink */
+ 	void __iomem *itr_register;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index f6a54feec011..a78d7e6bcfd6 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2223,6 +2223,8 @@ static bool igc_alloc_rx_buffers_zc(struct igc_ring *ring, u16 count)
+ 	if (!count)
+ 		return ok;
  
- 	return bpf_redirect_map(&xsk, ctx->rx_queue_index, XDP_PASS);
++	XSK_CHECK_PRIV_TYPE(struct igc_xdp_buff);
++
+ 	desc = IGC_RX_DESC(ring, i);
+ 	bi = &ring->rx_buffer_info[i];
+ 	i -= ring->count;
+@@ -2507,8 +2509,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		union igc_adv_rx_desc *rx_desc;
+ 		struct igc_rx_buffer *rx_buffer;
+ 		unsigned int size, truesize;
++		struct igc_xdp_buff ctx;
+ 		ktime_t timestamp = 0;
+-		struct xdp_buff xdp;
+ 		int pkt_offset = 0;
+ 		void *pktbuf;
+ 
+@@ -2542,13 +2544,14 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		}
+ 
+ 		if (!skb) {
+-			xdp_init_buff(&xdp, truesize, &rx_ring->xdp_rxq);
+-			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
++			xdp_init_buff(&ctx.xdp, truesize, &rx_ring->xdp_rxq);
++			xdp_prepare_buff(&ctx.xdp, pktbuf - igc_rx_offset(rx_ring),
+ 					 igc_rx_offset(rx_ring) + pkt_offset,
+ 					 size, true);
+-			xdp_buff_clear_frags_flag(&xdp);
++			xdp_buff_clear_frags_flag(&ctx.xdp);
++			ctx.rx_desc = rx_desc;
+ 
+-			skb = igc_xdp_run_prog(adapter, &xdp);
++			skb = igc_xdp_run_prog(adapter, &ctx.xdp);
+ 		}
+ 
+ 		if (IS_ERR(skb)) {
+@@ -2570,9 +2573,9 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		} else if (skb)
+ 			igc_add_rx_frag(rx_ring, rx_buffer, skb, size);
+ 		else if (ring_uses_build_skb(rx_ring))
+-			skb = igc_build_skb(rx_ring, rx_buffer, &xdp);
++			skb = igc_build_skb(rx_ring, rx_buffer, &ctx.xdp);
+ 		else
+-			skb = igc_construct_skb(rx_ring, rx_buffer, &xdp,
++			skb = igc_construct_skb(rx_ring, rx_buffer, &ctx.xdp,
+ 						timestamp);
+ 
+ 		/* exit if we failed to retrieve a buffer */
+@@ -2673,6 +2676,15 @@ static void igc_dispatch_skb_zc(struct igc_q_vector *q_vector,
+ 	napi_gro_receive(&q_vector->napi, skb);
  }
-diff --git a/tools/testing/selftests/bpf/xdp_hw_metadata.c b/tools/testing/selftests/bpf/xdp_hw_metadata.c
-index 400bfe19abfe..f3ec07ccdc95 100644
---- a/tools/testing/selftests/bpf/xdp_hw_metadata.c
-+++ b/tools/testing/selftests/bpf/xdp_hw_metadata.c
-@@ -3,6 +3,9 @@
- /* Reference program for verifying XDP metadata on real HW. Functional test
-  * only, doesn't test the performance.
-  *
-+ * BPF-prog bpf_printk info outout can be access via
-+ * /sys/kernel/debug/tracing/trace_pipe
-+ *
-  * RX:
-  * - UDP 9091 packets are diverted into AF_XDP
-  * - Metadata verified:
-@@ -156,7 +159,7 @@ static void verify_xdp_metadata(void *data, clockid_t clock_id)
  
- 	meta = data - sizeof(*meta);
++static struct igc_xdp_buff *xsk_buff_to_igc_ctx(struct xdp_buff *xdp)
++{
++	/* xdp_buff pointer used by ZC code path is alloc as xdp_buff_xsk. The
++	 * igc_xdp_buff shares its layout with xdp_buff_xsk and private
++	 * igc_xdp_buff fields fall into xdp_buff_xsk->cb
++	 */
++       return (struct igc_xdp_buff *)xdp;
++}
++
+ static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
+ {
+ 	struct igc_adapter *adapter = q_vector->adapter;
+@@ -2691,6 +2703,7 @@ static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
+ 	while (likely(total_packets < budget)) {
+ 		union igc_adv_rx_desc *desc;
+ 		struct igc_rx_buffer *bi;
++		struct igc_xdp_buff *ctx;
+ 		ktime_t timestamp = 0;
+ 		unsigned int size;
+ 		int res;
+@@ -2708,6 +2721,9 @@ static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
  
--	printf("rx_hash: %u\n", meta->rx_hash);
-+	printf("rx_hash: 0x%08X\n", meta->rx_hash);
- 	printf("rx_timestamp:  %llu (sec:%0.4f)\n", meta->rx_timestamp,
- 	       (double)meta->rx_timestamp / NANOSEC_PER_SEC);
- 	if (meta->rx_timestamp) {
+ 		bi = &ring->rx_buffer_info[ntc];
+ 
++		ctx = xsk_buff_to_igc_ctx(bi->xdp);
++		ctx->rx_desc = desc;
++
+ 		if (igc_test_staterr(desc, IGC_RXDADV_STAT_TSIP)) {
+ 			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
+ 							bi->xdp->data);
 
 
 _______________________________________________
