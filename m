@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6E876C332D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Mar 2023 14:47:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0AE46C332F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Mar 2023 14:47:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7649240BCB;
-	Tue, 21 Mar 2023 13:47:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7649240BCB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7863040BDE;
+	Tue, 21 Mar 2023 13:47:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7863040BDE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679406463;
-	bh=VuTDfqdLYTnE1p/NvmhjEQYy3bi4XuU+T/dBouWqYa4=;
+	s=default; t=1679406467;
+	bh=JriyV6RKsptCYFyi7gwL+EsQ4jaFGvrSWyxnTa9gAwA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mSpHYinHnYsoPUMPyZRLLrNBPplIuF+RHOXlwJCpSNfxV9Z7KG2/a0sOY40T4qsDb
-	 oMyltopDmHLwDcACTpM0a2pAxQAb0SKLNIUnUgyDTcz8Vwi+aaR6MMItlQD7xGc2br
-	 5BuSTX6AmKDNm5X1/6Yxj218UoPgcKbnAzGln7MliL6lx3BnYyX/ehK+x1NBIWzXSf
-	 oIgXLk7RLrXv2zi/7suLLFQJnjOxFW+InNwm+Sg/SPmT9C7fw0eeQvM4MdBjxEZvlG
-	 sRN/MwkkC7bqfIpdhMrrkb6fhIn3hfqPwWMxDlnrz55ejCjCLKxc1xpFvUgEvhFPZ6
-	 f/rJVIKt9JeDQ==
+	b=GjdWElCUi3jqY+/dgdrDCWF0V/PebbB719TuxktWOtKWWttEhfas+p2Bj4HgTbJPl
+	 sslxFZYvhfpzPlreLvQE+yaj6619ldvNDREmisTXpxJWkdkEW3Cmwdm5D3zFqj2ZIF
+	 CdbyEY7NajQy2K8VSQxooD8Wbhky8qzAs6JynauTCUahngfI97i3jZfJfn/N/pa5sw
+	 N3pQrjsrG4cZyD8CAlBqwSL1I9DXeihfmr9BVujRi70gzDUZN2cJmWkoSGz8OP3iub
+	 1QPWUIK7gSrh+FquOr6WxHQXXBXLTPbWaCSRff5NvMkW9GBvUe52SBFoN4jBx0N3dM
+	 JqpZBjJwlM1Rg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jgj1NdQ0gApN; Tue, 21 Mar 2023 13:47:42 +0000 (UTC)
+	with ESMTP id NTaiJhetk2Ra; Tue, 21 Mar 2023 13:47:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8091440BC1;
-	Tue, 21 Mar 2023 13:47:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8091440BC1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 693EE40BC1;
+	Tue, 21 Mar 2023 13:47:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 693EE40BC1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 909001BF327
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 105411BF327
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 77DA641870
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 77DA641870
+ by smtp4.osuosl.org (Postfix) with ESMTP id DF14641870
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF14641870
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r6oKG1IvsvQl for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Mar 2023 13:47:35 +0000 (UTC)
+ with ESMTP id 6hi0ycLOzuY2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Mar 2023 13:47:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 741164181C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DA3784181C
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 741164181C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DA3784181C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:47:39 +0000 (UTC)
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-332-a8-J17n-NdmwooWio58roQ-1; Tue, 21 Mar 2023 09:47:29 -0400
-X-MC-Unique: a8-J17n-NdmwooWio58roQ-1
+ us-mta-44-I1xUYhZROsWtd0UiXsgw2A-1; Tue, 21 Mar 2023 09:47:33 -0400
+X-MC-Unique: I1xUYhZROsWtd0UiXsgw2A-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E1D3785A5B1;
- Tue, 21 Mar 2023 13:47:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B101A857FB5;
+ Tue, 21 Mar 2023 13:47:32 +0000 (UTC)
 Received: from firesoul.localdomain (unknown [10.45.242.23])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A720D140E95F;
- Tue, 21 Mar 2023 13:47:27 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 763FA140E95F;
+ Tue, 21 Mar 2023 13:47:32 +0000 (UTC)
 Received: from [10.1.1.1] (localhost [IPv6:::1])
- by firesoul.localdomain (Postfix) with ESMTP id D1E5230721A6C;
- Tue, 21 Mar 2023 14:47:26 +0100 (CET)
+ by firesoul.localdomain (Postfix) with ESMTP id E0E2D30721A6C;
+ Tue, 21 Mar 2023 14:47:31 +0100 (CET)
 From: Jesper Dangaard Brouer <brouer@redhat.com>
 To: bpf@vger.kernel.org
-Date: Tue, 21 Mar 2023 14:47:26 +0100
-Message-ID: <167940644680.2718137.2272394075011214904.stgit@firesoul>
+Date: Tue, 21 Mar 2023 14:47:31 +0100
+Message-ID: <167940645187.2718137.8645052024109756542.stgit@firesoul>
 In-Reply-To: <167940634187.2718137.10209374282891218398.stgit@firesoul>
 References: <167940634187.2718137.10209374282891218398.stgit@firesoul>
 User-Agent: StGit/1.4
@@ -76,20 +76,20 @@ MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1679406454;
+ s=mimecast20190719; t=1679406458;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mjoXfv22y8bGZIaFBiqJSnnyyPeBBhNiGzC+o+ftHU0=;
- b=MkoeOsPMjsWs8BHWKuyBtsgkwH81L846eKwhVVIZJmdvxhj6iRUEOMJV1REObCOIAyQR0Y
- 3giNZB0KVec8/AA9AW0d/kkirBYjfI0i7FOxzb426ghdIycpuY7C8HvZnF3sqbwZp5qqzK
- lqlJ6cf4Faqt+oltg3RG1a0B54bJzes=
+ bh=SNzfne+ehiwMF7uvGVh6OwjGKWcTNK9/K/phIg4/2Ik=;
+ b=d7oct5XvnFgpn14j9i1Eo3TgQSVMXgtDBWqkaaLRevY+y88cA0XnzPzqzNuLp0DTVMXYKJ
+ WKT8Yp2SLw8H32XUq7PMAMP/vQgwXwGCQOBGDrMxz05ryYsV2sFb9iTv9rMII075OORCfb
+ arSPCTd52xZ8tVKyW5J81HD9y1MK9H8=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=MkoeOsPM
-Subject: [Intel-wired-lan] [PATCH bpf-next V2 5/6] igc: add XDP hints kfuncs
- for RX timestamp
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=d7oct5Xv
+Subject: [Intel-wired-lan] [PATCH bpf-next V2 6/6] igc: add XDP hints kfuncs
+ for RX hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,88 +114,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The NIC hardware RX timestamping mechanism adds an optional tailored
-header before the MAC header containing packet reception time. Optional
-depending on RX descriptor TSIP status bit (IGC_RXDADV_STAT_TSIP). In
-case this bit is set driver does offset adjustments to packet data start
-and extracts the timestamp.
+This implements XDP hints kfunc for RX-hash (xmo_rx_hash) straightforward
+by returning the u32 hash value.
 
-The timestamp need to be extracted before invoking the XDP bpf_prog,
-because this area just before the packet is also accessible by XDP via
-data_meta context pointer (and helper bpf_xdp_adjust_meta). Thus, an XDP
-bpf_prog can potentially overwrite this and corrupt data that we want to
-extract with the new kfunc for reading the timestamp.
+The associated RSS-type for the hash value isn't available to the BPF-prog
+caller. This is problematic if BPF-prog tries to do L4 load-balancing with
+the hardware hash, but the RSS hash type is L3 based.
+
+For this driver this issue occurs for UDP packets, as driver (default
+config) does L3 hashing for UDP packets (excludes UDP src/dest ports in
+hash calc). Tested that the igc_rss_type_num for UDP is either
+IGC_RSS_TYPE_HASH_IPV4 or IGC_RSS_TYPE_HASH_IPV6.
 
 Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h      |    1 +
- drivers/net/ethernet/intel/igc/igc_main.c |   20 ++++++++++++++++++++
- 2 files changed, 21 insertions(+)
+ drivers/net/ethernet/intel/igc/igc_main.c |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index bc67a52e47e8..29941734f1a1 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -503,6 +503,7 @@ struct igc_rx_buffer {
- struct igc_xdp_buff {
- 	struct xdp_buff xdp;
- 	union igc_adv_rx_desc *rx_desc;
-+	ktime_t rx_ts; /* data indication bit IGC_RXDADV_STAT_TSIP */
- };
- 
- struct igc_q_vector {
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index a78d7e6bcfd6..f66285c85444 100644
+index f66285c85444..846041119fd4 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2539,6 +2539,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
- 		if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
- 			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
- 							pktbuf);
-+			ctx.rx_ts = timestamp;
- 			pkt_offset = IGC_TS_HDR_LEN;
- 			size -= IGC_TS_HDR_LEN;
- 		}
-@@ -2727,6 +2728,7 @@ static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)
- 		if (igc_test_staterr(desc, IGC_RXDADV_STAT_TSIP)) {
- 			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
- 							bi->xdp->data);
-+			ctx->rx_ts = timestamp;
- 
- 			bi->xdp->data += IGC_TS_HDR_LEN;
- 
-@@ -6481,6 +6483,23 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
- 	return value;
+@@ -6496,8 +6496,21 @@ static int igc_xdp_rx_timestamp(const struct xdp_md *_ctx, u64 *timestamp)
+ 	return -ENODATA;
  }
  
-+static int igc_xdp_rx_timestamp(const struct xdp_md *_ctx, u64 *timestamp)
++static int igc_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash)
 +{
 +	const struct igc_xdp_buff *ctx = (void *)_ctx;
 +
-+	if (igc_test_staterr(ctx->rx_desc, IGC_RXDADV_STAT_TSIP)) {
-+		*timestamp = ctx->rx_ts;
++	if (!(ctx->xdp.rxq->dev->features & NETIF_F_RXHASH))
++		return -ENODATA;
 +
-+		return 0;
-+	}
++	*hash = le32_to_cpu(ctx->rx_desc->wb.lower.hi_dword.rss);
 +
-+	return -ENODATA;
++	return 0;
 +}
 +
-+const struct xdp_metadata_ops igc_xdp_metadata_ops = {
-+	.xmo_rx_timestamp		= igc_xdp_rx_timestamp,
-+};
-+
+ const struct xdp_metadata_ops igc_xdp_metadata_ops = {
+ 	.xmo_rx_timestamp		= igc_xdp_rx_timestamp,
++	.xmo_rx_hash			= igc_xdp_rx_hash,
+ };
+ 
  /**
-  * igc_probe - Device Initialization Routine
-  * @pdev: PCI device information struct
-@@ -6554,6 +6573,7 @@ static int igc_probe(struct pci_dev *pdev,
- 	hw->hw_addr = adapter->io_addr;
- 
- 	netdev->netdev_ops = &igc_netdev_ops;
-+	netdev->xdp_metadata_ops = &igc_xdp_metadata_ops;
- 	igc_ethtool_set_ops(netdev);
- 	netdev->watchdog_timeo = 5 * HZ;
- 
 
 
 _______________________________________________
