@@ -1,89 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B5986C4B68
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 14:13:13 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC1F46C4F42
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 16:19:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 95BC240130;
-	Wed, 22 Mar 2023 13:13:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 95BC240130
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1FEA0417D4;
+	Wed, 22 Mar 2023 15:19:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1FEA0417D4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679490791;
-	bh=TN87rT/yij0x18sw4qaBzPCbT+Uhsswum4rZ+mrBtFs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1679498352;
+	bh=t8P62TbYMmTZV9OChyLIbd4s3E4Xf5oXWdVTaX6wAFQ=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Nhl+U39KOKYmON9lO/Al3s08OlluWK2PJDt9AlsLMJiltokp5K5tP7cWkMHwVI217
-	 ENQ7sVcV9i1BSgZwHfxty57aU42aDG5+A8+jtJvJ5yBPBC3PfwNjqHs/Jzf0UMZfJ3
-	 a1UhPQrvTgBpZW0QK9Dd1qFhembALiUyUmm9UGFPn1qdGhlZiJ59lyqVY/0QlijTwq
-	 vHGtsWX172XJNKY4s43yLDyP8eHOSciGwCPWWiUW6a2Dd60uRKpT1mB3B1zsKTpqsM
-	 NmfqYvyfTHxkqezv96L9fhWyo6NOuuc474vIIWzEAShCWS96nSLEn1oBYprhdNUljN
-	 blKDhRQmc4cgw==
+	 Cc:From;
+	b=LvPcV+ZWaxINxtMarAnR5cY36gfK3Hca5dgU+y/2FLm2GchS622TGgGS8IaSuwR81
+	 sDFtZBvVy8WSb/zoZWI/k/sly2004rJ7jLAFNIUUbxtn9uf7/fmqmaLtdeSDxAJ4OO
+	 AZ6hdrqM20+03FEjF20X2etVl22SqWh0d2RWCinq3j3qJi8T7RfF1KXMMJr7dJH5a6
+	 8LlYaIIh98/Dno2mPayu/PYdVuQbZlOsXmRPFIGuYy2CR1FstcUufAcDk/OIhufKlP
+	 YZVJEJcLQZ8PmUOcksc6YJvSlS+mi4UHC/lpMkEnlMYKUV9UJ4VzMosB3GI79qQngs
+	 P1a8Se74RaFDg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z_eNGd1VQeCR; Wed, 22 Mar 2023 13:13:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MggYwzzmPvxc; Wed, 22 Mar 2023 15:19:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 571F94016A;
-	Wed, 22 Mar 2023 13:13:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 571F94016A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0D245417D2;
+	Wed, 22 Mar 2023 15:19:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0D245417D2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0C7021BF5DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 13:12:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 960261BF357
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 20:43:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D9E6041D6E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 13:12:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D9E6041D6E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7299E4028C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 20:43:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7299E4028C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d0v8_Qts6bsV for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Mar 2023 13:12:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05B0E41D6A
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 05B0E41D6A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 13:12:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="340743729"
-X-IronPort-AV: E=Sophos;i="5.98,281,1673942400"; d="scan'208";a="340743729"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2023 06:12:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="714394689"
-X-IronPort-AV: E=Sophos;i="5.98,281,1673942400"; d="scan'208";a="714394689"
-Received: from hextor.igk.intel.com ([10.123.220.6])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2023 06:12:50 -0700
-From: Michal Wilczynski <michal.wilczynski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Mar 2023 14:12:27 +0100
-Message-Id: <20230322131227.244687-6-michal.wilczynski@intel.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20230322131227.244687-1-michal.wilczynski@intel.com>
-References: <20230322131227.244687-1-michal.wilczynski@intel.com>
+ with ESMTP id DKaOgQ1z2Nzp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Mar 2023 20:43:37 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 58E734026E
+Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com
+ [IPv6:2a00:1450:4864:20::529])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 58E734026E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 20:43:37 +0000 (UTC)
+Received: by mail-ed1-x529.google.com with SMTP id cy23so64627647edb.12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Mar 2023 13:43:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679431415;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=PeP3HcyTjPxxNOqAcC7pbi/56qhRwp+1YhUNPsmy6fU=;
+ b=4uTgw23IL6+ulE+Q/iBBEx0d1Q37C2fWOIBBCrjUBQDjkPiaLx+csp5HMcNKuWTeS5
+ PQszx+4U+RnwZ/4jF445SrdUanQ+4Tv08qAm8HSoHDm38PfjancixbXs1K4ogr5TKCKa
+ fTPSaDtbdeiQAEjzXDLFJE86IkLvsEcmgR322yq+zc34a7PFMo/DY3eDtt8lwzmds95H
+ gcT07CZxmaYvQrx66oPU+i4i+kIooWFZS1aiHjfsTSO1VlX9updHSE6cz+Z9BRl0qCO0
+ vUBFLj+VF2uWbvUKhCXKGz2BQZ1kfvq4FvaCiwhO8IpCIg+yHgWVlMc6lMt0Ljw9DuF8
+ ezHQ==
+X-Gm-Message-State: AO0yUKUyOQBzoFSHF+NXX0Cd7kESyD04LcrWt0AmdHRDtC+SanTyvViE
+ lTL14gsNBl/Ybt0is2ItBaw=
+X-Google-Smtp-Source: AK7set/c7W6993tvLP5KS1XL2pRd+/p9dzzTr79//sn5QJyfVm4aGb4clNy4ztzxUFKKbpdXZjji4w==
+X-Received: by 2002:a17:906:b0c3:b0:930:d0f1:9d8 with SMTP id
+ bk3-20020a170906b0c300b00930d0f109d8mr4649981ejb.27.1679431415126; 
+ Tue, 21 Mar 2023 13:43:35 -0700 (PDT)
+Received: from [192.168.0.106] ([77.126.33.94])
+ by smtp.gmail.com with ESMTPSA id
+ w11-20020a1709067c8b00b009231714b3d4sm6120435ejo.151.2023.03.21.13.43.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Mar 2023 13:43:34 -0700 (PDT)
+Message-ID: <682a413b-4f84-cc06-d378-3b44d721c64e@gmail.com>
+Date: Tue, 21 Mar 2023 22:43:31 +0200
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679490772; x=1711026772;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=XrRAUTvg9mzwWYTA4owbQ8TVvB6LaWlf7Uz1MazZA0c=;
- b=UeZV6FJYH60FZitXRDt/+/9fjXl7JONh50NTg96UogaXN3ridcb5vm8A
- blVZHF460+FxS6YcpfHRZvk98Q1/Ezokv9wZL3pC75gZDr5oZOu1FnSrK
- /STpceH7ofw774SCXfs2wBmnGlmpJXBD13qkiaRaLH9lcYMuzYepynNhS
- sLkHO7Ra2y5G4rv1X3XPpiev49QmS/K4IP9kSdyfYswrwpBViYFqqLn8E
- NtViEQ8KSWrs5z9O80N63oFGiYj0utLE5aBtyiV1BvXtmdPdzNCQATI12
- YmTR83aWOag2tEjwMCPSSb8GKLrs+9tfb5xvL+/bIhH+VLwhT5JZeBOGw
- Q==;
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Content-Language: en-US
+To: Jesper Dangaard Brouer <brouer@redhat.com>, bpf@vger.kernel.org
+References: <167940675120.2718408.8176058626864184420.stgit@firesoul>
+From: Tariq Toukan <ttoukan.linux@gmail.com>
+In-Reply-To: <167940675120.2718408.8176058626864184420.stgit@firesoul>
+X-Mailman-Approved-At: Wed, 22 Mar 2023 15:19:06 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1679431415;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=PeP3HcyTjPxxNOqAcC7pbi/56qhRwp+1YhUNPsmy6fU=;
+ b=j3ciKxYJHhH/chjp36YI2YdFfcO5EpzvHTNralvW9CnX77P6Jonyz7QY5h/wkINJBa
+ g2znG/xBD/L8ZHRPq3qdsF1NWqh2NrU3f9xlJ5Q6o24heWlflql8zTpFK3L3UaeDjnBR
+ WK7AdWhLYsoe3Jp2TSeoJX063CN58apF9qgvMFRFEGfnPgX7CL0fDRMWC4HWNAxyaQW6
+ i8U6e5fGpo2MOJ57vzCeaiksd7K6TAsyP3PbKocWcJ+ZuOP+/pZ6+QDR7JOL2QAG8rVF
+ IHEAbbVesSc+skK6Ur0vetytJ7htfrZHlAICj4hvpBHNED2L+NQcw+wcshHZZLfwXgUb
+ 9TNg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UeZV6FJY
-Subject: [Intel-wired-lan] [PATCH net-next v11 5/5] ice: Document
- txbalancing parameter
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=j3ciKxYJ
+Subject: Re: [Intel-wired-lan] [PATCH bpf V2] xdp: bpf_xdp_metadata use
+ EOPNOTSUPP for no driver support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,53 +113,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
+ larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
+ ast@kernel.org, jesse.brandeburg@intel.com, edumazet@google.com,
+ pabeni@redhat.com, Stanislav Fomichev <sdf@google.com>,
+ yoong.siang.song@intel.com, kuba@kernel.org, boon.leong.ong@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net, hawk@kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-New driver specific parameter 'txbalancing' was introduced.
-Describe parameter in the documentation.
 
-Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
----
- Documentation/networking/devlink/ice.rst | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
 
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 10f282c2117c..2c58a25550d2 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -7,6 +7,26 @@ ice devlink support
- This document describes the devlink features implemented by the ``ice``
- device driver.
- 
-+Parameters
-+=============
-+
-+.. list-table:: Driver-specific parameters implemented
-+   :widths: 5 5 5 85
-+
-+   * - Name
-+     - Type
-+     - Mode
-+     - Description
-+   * - ``txbalancing``
-+     - Boolean
-+     - permanent
-+     - This parameter gives user flexibility to choose the 5-layer
-+       transmit scheduler topology, which helps to smooth out the transmit
-+       performance. The default topology is 9-layer. Each layer represents
-+       a physical junction in the network. Decreased number of layers
-+       improves performance, but at the same time number of network junctions
-+       is reduced, which might not be desirable depending on the use case.
-+
- Info versions
- =============
- 
--- 
-2.37.2
+On 21/03/2023 15:52, Jesper Dangaard Brouer wrote:
+> When driver doesn't implement a bpf_xdp_metadata kfunc the fallback
+> implementation returns EOPNOTSUPP, which indicate device driver doesn't
+> implement this kfunc.
+> 
+> Currently many drivers also return EOPNOTSUPP when the hint isn't
+> available, which is ambiguous from an API point of view. Instead
+> change drivers to return ENODATA in these cases.
+> 
+> There can be natural cases why a driver doesn't provide any hardware
+> info for a specific hint, even on a frame to frame basis (e.g. PTP).
+> Lets keep these cases as separate return codes.
+> 
+> When describing the return values, adjust the function kernel-doc layout
+> to get proper rendering for the return values.
+> 
+> Fixes: ab46182d0dcb ("net/mlx4_en: Support RX XDP metadata")
+> Fixes: bc8d405b1ba9 ("net/mlx5e: Support RX XDP metadata")
+> Fixes: 306531f0249f ("veth: Support RX XDP metadata")
+> Fixes: 3d76a4d3d4e5 ("bpf: XDP metadata RX kfuncs")
+> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
+For the mlx4/5 parts:
+Acked-by: Tariq Toukan <tariqt@nvidia.com>
+
+Thanks!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
