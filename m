@@ -1,89 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73E276C4F45
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 16:19:21 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D190E6C4FD8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 17:01:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F3605417E1;
-	Wed, 22 Mar 2023 15:19:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F3605417E1
+	by smtp1.osuosl.org (Postfix) with ESMTP id 969B182253;
+	Wed, 22 Mar 2023 16:01:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 969B182253
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679498360;
-	bh=MKsMaXJTv48KnSg0OQDefXEO+JDXdGs3v87PXmMq1Ro=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=TYxIs3zdE6FJUF+Gpj+oE3ZYZgOCJJ17zpfxMdZ117/3azGdeRSrSq7Mvf1FxtlLY
-	 SITbMdUELTZMOraJLnzpbLFr442xGQbjgdX5qDfy8yMDH6qf5erAY+ZRbK63F8ctts
-	 c47FaAmwD/pUNLCutw2s42vlTCXx5zV7IgVD58Za8yykINId6Rjf4GyHvrTUD0Oclv
-	 iQ/8bpCG7pvBjRa0ua8lxVYUJ0J9wBaZqL4iHTpJkN0iE8k4ThHXNWppBerG3B3ZQP
-	 hK1xqlfWNYZlilM9yr1A14dhj1V5ECpVAlwKVaSK+L6+DGDBzMwFcEW2VyXqneN5Uf
-	 OTLrC7iarf85Q==
+	s=default; t=1679500894;
+	bh=kDAStB4OBhQAjWbJkqsMdmT68H1nvl2qhro4u4YACss=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Aee5FOViY/x21UuVLaclT29uRpKTv76T97ql9hXUB5hS6gtrDSUwW+ZJLUXcyBkFm
+	 bgWe9rN6KmLXoLlwrZSqw48NuLR9EV/wRDHECeMtlZhJUO87naTM8ofbKVkwKZYyJj
+	 Juw48NFz0LIldq+WJixh6Rj1DKK6UoZsI7lag1q9mY0p/j7SLfbCnQTp7ynNsZ4QUC
+	 xMuW08IceZUbyEpEMIvmg5URMZ6xSvLDver0hCOPKe66nBSQGSEtpOXMAzl+tmG9SQ
+	 ZDnsmOW1OpuF0Q7nsW6op5f3qbLqMtCneYQPsA+ustDUFw3cAVCDgQH/l0wNAJHhys
+	 CDbh0xWKbaHVA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HhCzTCg1wcRs; Wed, 22 Mar 2023 15:19:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RBDvxTy56umY; Wed, 22 Mar 2023 16:01:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EDB7D417D2;
-	Wed, 22 Mar 2023 15:19:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EDB7D417D2
+	by smtp1.osuosl.org (Postfix) with ESMTP id A2F4B8225C;
+	Wed, 22 Mar 2023 16:01:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A2F4B8225C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D30691BF228
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 02:24:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BB441BF5A5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:01:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AC519413A3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 02:24:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC519413A3
+ by smtp3.osuosl.org (Postfix) with ESMTP id 13C646144E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:01:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13C646144E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TguwaJ9GkYBN for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Mar 2023 02:24:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 76ttkhArN6rY for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Mar 2023 16:01:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E750240978
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E750240978
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 02:24:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="337835352"
-X-IronPort-AV: E=Sophos;i="5.98,280,1673942400"; d="scan'208";a="337835352"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Mar 2023 19:24:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="681741664"
-X-IronPort-AV: E=Sophos;i="5.98,280,1673942400"; d="scan'208";a="681741664"
-Received: from dpdk-simei-icelake.sh.intel.com ([10.67.110.159])
- by orsmga002.jf.intel.com with ESMTP; 21 Mar 2023 19:24:42 -0700
-From: Simei Su <simei.su@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Mar 2023 10:24:15 +0800
-Message-Id: <20230322022415.724689-1-simei.su@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230321065658.699675-1-simei.su@intel.com>
-References: <20230321065658.699675-1-simei.su@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C737660B12
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C737660B12
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:01:27 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-625-kI6ftGVvNrafzbLAcP1GOA-1; Wed, 22 Mar 2023 12:01:22 -0400
+X-MC-Unique: kI6ftGVvNrafzbLAcP1GOA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B62F91C07561;
+ Wed, 22 Mar 2023 16:01:13 +0000 (UTC)
+Received: from firesoul.localdomain (unknown [10.45.242.23])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3E43E1410F1C;
+ Wed, 22 Mar 2023 16:01:13 +0000 (UTC)
+Received: from [10.1.1.1] (localhost [IPv6:::1])
+ by firesoul.localdomain (Postfix) with ESMTP id 5873630736C72;
+ Wed, 22 Mar 2023 17:01:12 +0100 (CET)
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: bpf@vger.kernel.org
+Date: Wed, 22 Mar 2023 17:01:12 +0100
+Message-ID: <167950085059.2796265.16405349421776056766.stgit@firesoul>
+User-Agent: StGit/1.4
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 22 Mar 2023 15:19:06 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679451885; x=1710987885;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=7M4KbSqLjkqVZgzSR3pOc/SsfM0g08OtagaTxR1gLt8=;
- b=HpE7XBj+mkm/YTtlKdbpPFIdT/XHMM5p41scCfWyIDoTJOMc/9HHgnPO
- sphmJMv+dt3YB2RNBFypsz+JqPQUjVofaaiS2to8ox3MD8kk68gMyd2tc
- rByEcJngjTSnK7Ld1Jg7xRD8iWde4peAez5myL4mu2zd0w5UfjECJZInD
- monRqBHwJRlIAqN3kEl3w46SeiyEjnJnBQREwNUuIGg0RaTmyR/5ao5ez
- WVGGswPSdAvoeRN/KNhtBlv8bgZGwrN5wkfuj5ti1C7gP77u7vBuBdgvr
- u22Kh5WkkjZA4A7MzwJt5nXkq64LaD7QeYLERAr4YYB8Ei3LlI5h1BjbN
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HpE7XBj+
-Subject: [Intel-wired-lan] [PATCH net,
- v2] ice: fix wrong fallback logic for FDIR
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1679500885;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=u0vcj8yQCVSq1K7a3xv3DSDoQVn1iGPLpiir1Gw25As=;
+ b=BHW0pzdLKJlaO4lf0k8OZbciubdOTpti3wx1kmNhg4R+HuVTFvBalDWwoVtdQeDCCY2URR
+ JddabTjjUUp3H+HNsX5SqWdafYUawuSBa8P6LO6rabzlsomWCnyFeH+VNgzbHAM2UjCWw+
+ avwfwExhm1IzccNjtbLei4PE0DPmsTA=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=BHW0pzdL
+Subject: [Intel-wired-lan] [PATCH bpf-next V3 0/6] XDP-hints kfuncs for
+ Intel driver igc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,58 +98,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Simei Su <simei.su@intel.com>
+Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
+ larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
+ ast@kernel.org, jesse.brandeburg@intel.com, kuba@kernel.org,
+ edumazet@google.com, pabeni@redhat.com, Stanislav Fomichev <sdf@google.com>,
+ yoong.siang.song@intel.com, Jesper Dangaard Brouer <brouer@redhat.com>,
+ boon.leong.ong@intel.com, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, davem@davemloft.net, hawk@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When adding a FDIR filter, if ice_vc_fdir_set_irq_ctx returns failure,
-the inserted fdir entry will not be removed and if ice_vc_fdir_write_fltr
-returns failure, the fdir context info for irq handler will not be cleared
-which may lead to inconsistent or memory leak issue. This patch refines
-failure cases to resolve this issue.
+Implemented XDP-hints metadata kfuncs for Intel driver igc.
 
-Fixes: 1f7ea1cd6a37 ("ice: Enable FDIR Configure for AVF")
-Signed-off-by: Simei Su <simei.su@intel.com>
+Primarily used the tool in tools/testing/selftests/bpf/ xdp_hw_metadata,
+when doing driver development of these features. Recommend other driver
+developers to do the same. In the process xdp_hw_metadata was updated to
+help assist development. I've documented my practical experience with igc
+and tool here[1].
+
+[1] https://github.com/xdp-project/xdp-project/blob/master/areas/hints/xdp_hints_kfuncs02_driver_igc.org
+
+This patchset implement RX-hash as a simple u32 value (as this is the
+current kfunc API), but my experience with RX-hash is that we will also
+need to provide the Hash-type for this raw value to be useful to
+BPF-developers. This will be addressed in followup work once this patchset
+lands.
+
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index 60c9da4aac1d..c03e4a7ae80b 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -1812,7 +1812,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
- 		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
--		goto err_free_conf;
-+		goto err_rem_entry;
- 	}
- 
- 	ret = ice_vc_fdir_write_fltr(vf, conf, true, is_tun);
-@@ -1821,15 +1821,16 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
- 		dev_err(dev, "VF %d: writing FDIR rule failed, ret:%d\n",
- 			vf->vf_id, ret);
--		goto err_rem_entry;
-+		goto err_clr_irq;
- 	}
- 
- exit:
- 	kfree(stat);
- 	return ret;
- 
--err_rem_entry:
-+err_clr_irq:
- 	ice_vc_fdir_clear_irq_ctx(vf);
-+err_rem_entry:
- 	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
- err_free_conf:
- 	devm_kfree(dev, conf);
--- 
-2.25.1
+Jesper Dangaard Brouer (6):
+      igc: enable and fix RX hash usage by netstack
+      selftests/bpf: xdp_hw_metadata track more timestamps
+      selftests/bpf: xdp_hw_metadata RX hash return code info
+      igc: add igc_xdp_buff wrapper for xdp_buff in driver
+      igc: add XDP hints kfuncs for RX timestamp
+      igc: add XDP hints kfuncs for RX hash
+
+
+ drivers/net/ethernet/intel/igc/igc.h          | 35 +++++++
+ drivers/net/ethernet/intel/igc/igc_main.c     | 94 ++++++++++++++++---
+ .../selftests/bpf/progs/xdp_hw_metadata.c     | 18 ++--
+ tools/testing/selftests/bpf/xdp_hw_metadata.c | 51 ++++++++--
+ tools/testing/selftests/bpf/xdp_metadata.h    |  1 +
+ 5 files changed, 176 insertions(+), 23 deletions(-)
+
+--
 
 _______________________________________________
 Intel-wired-lan mailing list
