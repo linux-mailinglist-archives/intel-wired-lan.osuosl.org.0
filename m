@@ -1,87 +1,189 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 335566C5095
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 17:26:43 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 262426C5280
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Mar 2023 18:34:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B7F0B83FA0;
-	Wed, 22 Mar 2023 16:26:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7F0B83FA0
+	by smtp3.osuosl.org (Postfix) with ESMTP id AF1FD61481;
+	Wed, 22 Mar 2023 17:33:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AF1FD61481
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679502401;
-	bh=dP10klW93fzht86QSqKI4sa8OQTIMxlAMsxqlVp/fqs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1679506438;
+	bh=WJMIRvc7Lw1fzKrbPgFDLkPsURLluqb/9qGTmRYDbBI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=H42wFdGnTfuJoZJZHLcMIPE1HJhIEyYQ2hMMgvzSDVXJusQVum7J/TxClG1SquNuT
-	 RBRzfbCgE++8TfRW/jMpUFTUZE0knH+UPP4fICGgCtLusOmq2oCGlTFW+q52Eu8UXX
-	 AxLB5RarkpB888t+aAZxODchtKpbbHfqwFxlNGv7eppWmQmW//RtkkYPwz7SryKzDb
-	 gedW7imoar7Cz/x1hQuAbQ1Nyy+lmf28L2wyZgRdR0JeZBND2GMN9FftXVNmS+ZV7w
-	 swQ5UoAYxZDPWyp4bd4Ze4tdIVRjlrjgl1z3TpqTq4NdzgIPGvx/EZBFVj586kHCv8
-	 TAUmUjr3HsfbA==
+	b=zHIS+OJRLBSuADjUc4OknwUqXx/jY9iFXEXi8DY6zOx4dDWmxXO7dKJxXpNJlClTP
+	 NM/vIVujdugnRXx/bCUjfOK0mXaBBRVbKGYrDgv+j+2LQcDNqkEOwiIkpBoradgIHg
+	 mHNjmAYp6xUzhpdWsU2zdPOkPpADE9tQan9SWxoTAWLw/zwv2m+R0Hi/+QCqvJjr3b
+	 q5ooNsTvpOieEA1LSotwap1YzANO1dMCcNvww7QQDOkzL8KAPRdQ1wvv5brj4zoImZ
+	 gEy5nwbADCcqwwgUCa5DUzvxfha2NkiN7zJ69qT+3o1mlJ78z8TjhURVRxGF+gXoaQ
+	 ZFaz4+O+C6WMg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JOw3fUiT5xKz; Wed, 22 Mar 2023 16:26:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BAHuXjEbr4_A; Wed, 22 Mar 2023 17:33:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3CDB483F9A;
-	Wed, 22 Mar 2023 16:26:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3CDB483F9A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8F8C660B09;
+	Wed, 22 Mar 2023 17:33:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F8C660B09
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A217C1BF35F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:25:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 00A511BF2BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 17:33:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8635541D83
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:25:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8635541D83
+ by smtp1.osuosl.org (Postfix) with ESMTP id CB10283F28
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 17:33:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB10283F28
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mczIe4FVMApE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Mar 2023 16:25:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vyLLq7tPBliE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Mar 2023 17:33:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AAA4341D7F
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AAA4341D7F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 16:25:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="404151374"
-X-IronPort-AV: E=Sophos;i="5.98,282,1673942400"; d="scan'208";a="404151374"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2023 09:25:52 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BEA583F25
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2BEA583F25
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Mar 2023 17:33:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="339320947"
+X-IronPort-AV: E=Sophos;i="5.98,282,1673942400"; d="scan'208";a="339320947"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Mar 2023 10:33:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="825462848"
-X-IronPort-AV: E=Sophos;i="5.98,282,1673942400"; d="scan'208";a="825462848"
-Received: from nimitz.igk.intel.com ([10.102.21.231])
- by fmsmga001.fm.intel.com with ESMTP; 22 Mar 2023 09:25:49 -0700
-From: Piotr Raczynski <piotr.raczynski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Mar 2023 17:25:30 +0100
-Message-Id: <20230322162530.3317238-9-piotr.raczynski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230322162530.3317238-1-piotr.raczynski@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="1011458281"
+X-IronPort-AV: E=Sophos;i="5.98,282,1673942400"; d="scan'208";a="1011458281"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga005.fm.intel.com with ESMTP; 22 Mar 2023 10:33:39 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Wed, 22 Mar 2023 10:33:38 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Wed, 22 Mar 2023 10:33:37 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Wed, 22 Mar 2023 10:33:37 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Wed, 22 Mar 2023 10:33:37 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=f62Wu0A9kyoCKk16RPCWj9FkSO41Prnnj0Ha6V6wRs+uJh2AHXDzBxlpqbmKb/b31u4w7y9Xu7NJl+PHhD7R79eS91i/V2VVmSbZA5NML2AyLcy0BeTmztOQkHxDGAKUVNEwB2XfvRahE7SFChfoVwSHsSs9blGvUZA9YvSR/NEd8iA6+N710PtPiRYX2ECPAsS2ph5x0tAYqTqTYZH2OCd5I/euVJMoRcIBKrlHuLIIZZTYcsvLKmc37oPgXTVlnySBo1KPYgV1JZmLNS0PySuWFNx3+iwhEZwHp1vbVBaNxwzSQwf3Md1h6txyJJWPg+AlXpItzfO4SmVKFMning==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aXS5wAs4nydufTsnTSXL4EdswUdGKFC0PrIr1WnJhLw=;
+ b=BcbUeljxzb54zsUxKKyPb16ktI9inXwiN0lE2qVhZutCyiMF22jZ+aIPDQ1Ta18uur0aaIbxu2P+a/cOxKSokzsV+8M25OQiNTIEB+icwBa9mKu/zCtDzeRUebrCI3PQhn06L5TsDdOCYgd8drCkYUZDueuSe9usqo4vGeRiIRUjukp/Pk8aO+md63Aw3QlH9fMnD4SiNUpNizSLU6W/U0gc7pJZNzsHqy+ZAE4XZipEIOzJVpZzOqxlXZVt8O4m2KrRqg/FzGV3zohzihbXTiiLz45gK7jTa9aO0Ia8OieDowTbvSLSszrtxzheUl6MW2rb+vj9o3ZxZGkvf+RdjA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com (2603:10b6:510:3b::14)
+ by SA1PR11MB7112.namprd11.prod.outlook.com (2603:10b6:806:2b7::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Wed, 22 Mar
+ 2023 17:33:33 +0000
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::9612:ae25:42a4:cfd6]) by PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::9612:ae25:42a4:cfd6%9]) with mapi id 15.20.6178.037; Wed, 22 Mar 2023
+ 17:33:33 +0000
+Message-ID: <ec5c3cf4-49b6-32fc-d7cb-06410d6497da@intel.com>
+Date: Wed, 22 Mar 2023 10:33:31 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+To: Piotr Raczynski <piotr.raczynski@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
 References: <20230322162530.3317238-1-piotr.raczynski@intel.com>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <20230322162530.3317238-1-piotr.raczynski@intel.com>
+X-ClientProxiedBy: BY5PR04CA0005.namprd04.prod.outlook.com
+ (2603:10b6:a03:1d0::15) To PH0PR11MB5095.namprd11.prod.outlook.com
+ (2603:10b6:510:3b::14)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5095:EE_|SA1PR11MB7112:EE_
+X-MS-Office365-Filtering-Correlation-Id: d4266012-875f-42dd-4bbb-08db2afb8f10
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: bl4jUXy7EV0HoZ6xMbiPhHXCyjYTw9oIsoPEagagcGlxhjGxfTXNbKSw10xwJULEWEqXP1Kic4vtZ0O4Yj8++vEdu0ccC3ekzxwTAN3C12UNej6XV2cJ8Cf4+Yn/7TAxSUpBTX50TZHMw6YFpoHMFnTssL4QY22rDaiDCNl9UCEZo/PdjTHVUY5ik4Mb2dTtxSWpdvnxRJsRSFCLGI2EUNYBeTaiM+bqm+a0Idp6cR46QNcPZ5mprxasbOee8gW4/TrpAXUaPiwb0du/7BIzhy8/Pv6WLTILB7DMsVD5OBTp/JRFCri4RnYc4uY4Q5RAZ60z8KYRrQUJbNP3kkaLPU/9bHyqDY+Y/heFEjwGyNniWT4LBHGC8w8v0hHpwBxBLT/SM/wiBFCKV6tXPnLYNQiAZhxV4+CM5LCV8yy5DtdYs1BEAZNckup41GKBbzgX40bPMKTlRxLokSE0N+MEYv92c/IhctG2A7fXSETjidkzjs51Gc/x+qtSG8o83YraVlLaCSkxWjgZyjHgLdTR8omHJDxQWpM6HFsj0zRGzzY/tBFrJtf7vGFem2ilb7uxIC0JX6w1OA0do5ZUfts0l6wQoCDchyfO7Udk4h/d5c+Ld+U49oYJ27hKyfOYWM7ipHEqavXA6U/gxraoJv+gl06WH+8Uh7D3y0xhBMcSWxx1ktSSd3eLMMFmja2WuiuJny9vUdqif/tEecdr6y30mamLYZ43is9SbSRf+eY7Mps=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5095.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(39860400002)(366004)(376002)(346002)(136003)(396003)(451199018)(38100700002)(31696002)(66476007)(316002)(66946007)(8676002)(4326008)(83380400001)(36756003)(66556008)(8936002)(5660300002)(41300700001)(2906002)(478600001)(82960400001)(86362001)(2616005)(31686004)(6506007)(6512007)(53546011)(186003)(26005)(107886003)(66899018)(6486002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L3BEeUcvbW9SZzN3YUgrMmY4aGtlcm1Ybmx1dDhUT2I3alA5Y1FvbDFHWVAy?=
+ =?utf-8?B?SFJJRzdCYS8yUnFWbnZGdGx1RkJpRXI5NkFzVDQ1SHZoNGxXbGtGZkpmSWZP?=
+ =?utf-8?B?bENYOGppMjdRanhHVG8yRG9UNURwSzRreWJQSGgvTkRNWnUxaFhUanhVWmZi?=
+ =?utf-8?B?Y1huL0ZnRzFUTE5Ec1NKejBsaG1yY0dOcm8renVPc2M4WEFWR1dhRHBWQUpY?=
+ =?utf-8?B?bzlkVFVWbm1yTXZvZFJUZkpvWWxORlVCYnlZL3gzMWZwTE9nMWc1NFdNcW1Q?=
+ =?utf-8?B?WG9ES1kyREdBSkE3dHMxM1pCUnpKS1BDMkJaQ0l2TVloaVV6L0NqSnYyc0Ny?=
+ =?utf-8?B?MXJrc3FOU0tRUFI1TUQxVW4zejFPbnY1eGtKdy9vOFJ5WjVoZDhMUGQxWkFO?=
+ =?utf-8?B?YkZ4N2xUem9PNG9VbnhDYUJ0cTNCZEpZWkoxVis3WU42Y0U0TXByaVBVT0h0?=
+ =?utf-8?B?d3RMYktmSUlCMUNYanE5QjNUVjlkYVNpdEZ3MXNQRjQybG1DbTdSM3lpWXFX?=
+ =?utf-8?B?UDJkZDREQVBvMmtBZUJZSWhBaDZOOXQ1aUp4S1JhUFZYRlZaWDJ4UEw2ZHhS?=
+ =?utf-8?B?YnI3eVVCMDVONjNSQUlIWUU0cFYyOXZJSnk4QlFINDVpa292T3N3bUI1aDRJ?=
+ =?utf-8?B?VzErN0JxV1RBbVNYZkRXMm9OaHNIQm5FNHQvdU1Vdk45eHA3dVJDSjZ6K2Ez?=
+ =?utf-8?B?VUpYNDJaUm5NNkYvcGRqUytQVTBXVTVyN2hpaWRmTUM0cWlvaklVclBIS09Z?=
+ =?utf-8?B?Z2cvZUU5RU9TRGNwMjFJU3liMEtiT2Y3NWVneC9wNlhCalh3cUxFU2N4RVBq?=
+ =?utf-8?B?YnJhdHMxZk9Zb0JhdGY1aWdobzNadkoxbCtmak9sM2NKWEpnS1YxS0U1MFp1?=
+ =?utf-8?B?U3I4a2tZWnFGU1o3RXNYWTFROFdoeHJpTFU4TVpvaGxjU3VDdTFUUURsU2NV?=
+ =?utf-8?B?eGsrQ0VUQnJ6T3hBMU15T1lmbVBiZVVDL0ZRdG1aSWYyYkdCL2Q4MWVadmYx?=
+ =?utf-8?B?ZEtQcFNET0VPY2pZdzlaWHM1UUFHcUFUUXVKak45MVk4RzJqUTNPUU13MjM0?=
+ =?utf-8?B?WFM3UHAvckJxUVliV0I1ekwvMXNSeXpMK1pISjZIbkpVUm01M2U5UkQwOXYw?=
+ =?utf-8?B?S0ZDTlE0ODhtUFZYTkZCZlpHN0ZZaDlwckhIREY1MlRTdDQwcVVoSmFMQmhE?=
+ =?utf-8?B?c3o0SlZCK05FR3FZYnN2WC9MR00yWW1zVUpIaHY3WjlmS0VJS3dNWGxzYVVx?=
+ =?utf-8?B?c1BWNXJYRjVVSkZkM0RtNTc1RzU0cU9SeG9jUVgreFVIWGRRZUhuUURLc2hV?=
+ =?utf-8?B?OWdBVnNOMEN6eFY1YzkweUpJL05nczQvNFpxb1Q2WWdzN2JmSi9xdGdmL3Zk?=
+ =?utf-8?B?dVpFa3hLVFN6WWJPR3UrRzhEdm5ieEt1SFNRZldGRUo0VEtBQzRiMUFvM3NL?=
+ =?utf-8?B?a1R1TTNwRkRIVHlJc2d1dmd2bTF2elZHeWtiWGdQdFlVZjIrM3BHcHRBSXVG?=
+ =?utf-8?B?eTNETGtiSVdnVGo2aWxQeG94WTk3eVBnd20wL0F0YlhkYjgwcDRGbEhIY0Rt?=
+ =?utf-8?B?dC9vdjh4c0d5QVpCTUxlbG0yaEk1eitXemlKcWZteTdCSGJVc1NvYVlxMkts?=
+ =?utf-8?B?NFVYdWU5cDFibXJDbDNzYmJKUGpYN3NhS0xtNkt5N0d6VVhVQWJ2T2JXQkMr?=
+ =?utf-8?B?YUtrOVE1cHhWMWZZeDhRcWpaeWVYYUtnTDJNcGY4T0ZId2FqOExmdUZkbkUy?=
+ =?utf-8?B?a2xpODQyRUVzVm83ZUU1N0hjZkpobnlKT3I5cDNBeXhRNXpVRWN0aDdLRDli?=
+ =?utf-8?B?R1AwMnE0aitlZTV0Z2dURldCVGI4b0VqRnFOeHZxZjZJcDdKNjk1TDRMZGJa?=
+ =?utf-8?B?NG11VWhwYndrbE9RNE1KUHFrdUZJaHZWSTdmSE56V0tWT3owVnE5R2JOS2Rr?=
+ =?utf-8?B?NXhya1F6ZEJXNkJWL09keCs0ME1CSENaNG9kVVhZcmZFNUlNbEZ6ZE1KRlBk?=
+ =?utf-8?B?bWxVM0xQNlZXUCs3dnh3bnhSZ3p4RTVwMkxPb1RYUjM2aUlYTG5peGFQeVVC?=
+ =?utf-8?B?akFYbHN4dWlPUStaMWU0bmRNVTNqNk1UbDB0QXRZUGRqMFhtb1NyRm12SmZ3?=
+ =?utf-8?B?eVhBYVZxU05BK0x2ZW5XRHN3clZwaHJmbndMZzdTYjlMSTRjdkc5OGk0UzNF?=
+ =?utf-8?B?MWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: d4266012-875f-42dd-4bbb-08db2afb8f10
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5095.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Mar 2023 17:33:33.0455 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WNpBBSmcQiQbo+Nosd6NdsGF17xayIggqgteVAJCz+5LNnm5xiU5Ve/b9dfA8RVfm2goc0JUE7bpXNT930gL56c7vrEbuPVO0BBbHr+3D9c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB7112
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679502352; x=1711038352;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=VY16IVpA2zWQ+lBiKueddb31huvhR2R7Ee97VYglp6U=;
- b=BABNUarY8qCag8uPMmg0L6IP4wZaaK9J5eHLMePwPDk7qkFboaHVpfoN
- mfPFtyMRmkqmyQ9ZTunDpQnpYqnD7mjVz2jZssJrYHgzJwbXxG/s9W+/5
- gnwX5xqj9SubBmdbfNyeZeDnQybGNwq07OPo4VgXIzdcVQSVJ5px2sbfD
- gdCrjOt05405eni3+s6ziGg4Gsxs5Fzp8dsy4Ard8HPkGzm4TYPYKJORG
- qKzs83VKkUOiNUPcXdy7vCNtTkwAep/RDAhSHLqUC0i6/zoEL/oQhD/ya
- Xtk+cpJrOgqRq1ELJ7ZcaK7B5InjKVvCZf+khoYRKC0yKN0Fomz00ukry
+ t=1679506431; x=1711042431;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=iV8NBjgD8gUOuHMXg9ZSbkIqtu8JgYLUmVMhsk1w8ck=;
+ b=Kau7HBu0WW8jTcw8qSZMXGn4tSemXVu1bmcP1xK89h/0yQBbzdG+h27m
+ vEfBYMSyWpCnb0UcyJMBNZUx+9ZkUcRjASAZXW2Dwtac8X9DHKQMuI2cd
+ bN6Ety/Z1Nc9YWc9FnedRcCbaV9EvlOGqf6q5zjisCZL3zCC8OfjQkANE
+ nifpPJuYzPzXhjaIBtewficQJs23kRh5F6z8nu5QHTlXmI14OpCMaYbG5
+ XG7V8Quqsy4BIhdFI6wXsrMkDdaBKe1VUFcgvE8oppySsoN8OA6ctaXyr
+ 0kIF6gIkkA3FGpcSKUP5bea7BNEJjmnYgXi6YA4iJ2oaXWVIIbQLvMRQp
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BABNUarY
-Subject: [Intel-wired-lan] [PATCH net-next v2 8/8] ice: add dynamic
+ header.a=rsa-sha256 header.s=Intel header.b=Kau7HBu0
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 0/8] ice: support dynamic
  interrupt allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -102,342 +204,72 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently driver can only allocate interrupt vectors during init phase by
-calling pci_alloc_irq_vectors. Change that and make use of new
-pci_msix_alloc_irq_at/ice_free_irq API and enable to allocate and free more
-interrupts after MSIX has been enabled. Since not all platforms supports
-dynamic allocation, check it with pci_msix_can_alloc_dyn.
 
-Extend the tracker to keep track how many interrupts are allocated
-initially so when all such vectors are already used, additional interrupts
-are automatically allocated dynamically. Remember each interrupt allocation
-method to then free appropriately. Since some features may require
-interrupts allocated dynamically add appropriate VSI flag and take it into
-account when allocating new interrupt.
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h       |   3 +
- drivers/net/ethernet/intel/ice/ice_base.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_idc.c   |   2 +-
- drivers/net/ethernet/intel/ice/ice_irq.c   | 107 ++++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_irq.h   |   5 +-
- drivers/net/ethernet/intel/ice/ice_main.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c |   5 +-
- 7 files changed, 105 insertions(+), 21 deletions(-)
+On 3/22/2023 9:25 AM, Piotr Raczynski wrote:
+> This patchset reimplements MSIX interrupt allocation logic to allow dynamic
+> interrupt allocation after MSIX has been initially enabled. This allows
+> current and future features to allocate and free interrupts as needed and
+> will help to drastically decrease number of initially preallocated
+> interrupts (even down to the API hard limit of 1). Although this patchset
+> does not change behavior in terms of actual number of allocated interrupts
+> during probe, it will be subject to change.
+> 
+> First few patches prepares to introduce dynamic allocation by moving
+> interrupt allocation code to separate file and update allocation API used
+> in the driver to the currently preferred one.
+> 
+> Due to the current contract between ice and irdma driver which is directly
+> accessing msix entries allocated by ice driver, even after moving away from
+> older pci_enable_msix_range function, still keep msix_entries array for
+> irdma use.
+> 
+> Next patches refactors and removes redundant code from SRIOV related logic
+> as it also make it easier to move away from static allocation scheme.
+> 
+> Last patches actually enables dynamic allocation of MSIX interrupts. First,
+> introduce functions to allocate and free interrupts individually. This sets
+> ground for the rest of the changes even if that patch still allocates the
+> interrupts from the preallocated pool. Since this patch starts to keep
+> interrupt details in ice_q_vector structure we can get rid of functions
+> that calculates base vector number and register offset for the interrupt
+> as it is equal to the interrupt index. Only keep separate register offset
+> functions for the VF VSIs.
+> 
+> Next, replace homegrown interrupt tracker with much simpler xarray based
+> approach. As new API always allocate interrupts one by one, also track
+> interrupts in the same manner.
+> 
+> Lastly, extend the interrupt tracker to deal both with preallocated and
+> dynamically allocated vectors and use pci_msix_alloc_irq_at and
+> pci_msix_free_irq functions. Since not all architecture supports dynamic
+> allocation, check it before trying to allocate a new interrupt.
+> 
+> As previously mentioned, this patchset does not change number of initially
+> allocated interrupts during init phase but now it can and will likely be
+> changed.
+> 
+> Patch 1-3 -> move code around and use newer API
+> Patch 4-5 -> refactor and remove redundant SRIOV code
+> Patch 6   -> allocate every interrupt individually
+> Patch 7   -> replace homegrown interrupt tracker with xarray
+> Patch 8   -> allow dynamic interrupt allocation
+> 
+> Change history:
+> v1 -> v2:
+> - ice: refactor VF control VSI interrupt handling
+>   - move ice_get_vf_ctrl_vsi to ice_lib.c (ice_vf_lib.c depends on
+>     CONFIG_PCI_IOV)
+> 
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index b7398abda26a..26fa176dc1cb 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -338,6 +338,9 @@ struct ice_vsi {
- 	u32 rx_buf_failed;
- 	u32 rx_page_failed;
- 	u16 num_q_vectors;
-+	/* tell if only dynamic irq allocation is allowed */
-+	bool irq_dyn_alloc;
-+
- 	enum ice_vsi_type type;
- 	u16 vsi_num;			/* HW (absolute) index of this VSI */
- 	u16 idx;			/* software index in pf->vsi[] */
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index e5db23eaa3f4..a0c0129c995d 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -134,7 +134,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 		}
- 	}
- 
--	q_vector->irq = ice_alloc_irq(pf);
-+	q_vector->irq = ice_alloc_irq(pf, vsi->irq_dyn_alloc);
- 	if (q_vector->irq.index < 0) {
- 		kfree(q_vector);
- 		return -ENOMEM;
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index bc016bb4440c..145b27f2a4ce 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -250,7 +250,7 @@ static int ice_alloc_rdma_qvectors(struct ice_pf *pf)
- 			struct msix_entry *entry = &pf->msix_entries[i];
- 			struct msi_map map;
- 
--			map = ice_alloc_irq(pf);
-+			map = ice_alloc_irq(pf, false);
- 			if (map.index < 0)
- 				break;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-index 20d4e9a6aefb..61120d4194f1 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-@@ -9,11 +9,14 @@
-  * ice_init_irq_tracker - initialize interrupt tracker
-  * @pf: board private structure
-  * @max_vectors: maximum number of vectors that tracker can hold
-+ * @num_static: number of preallocated interrupts
-  */
- static void
--ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors)
-+ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors,
-+		     unsigned int num_static)
- {
- 	pf->irq_tracker.num_entries = max_vectors;
-+	pf->irq_tracker.num_static = num_static;
- 	xa_init_flags(&pf->irq_tracker.entries, XA_FLAGS_ALLOC);
- }
- 
-@@ -42,6 +45,7 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
- /**
-  * ice_get_irq_res - get an interrupt resource
-  * @pf: board private structure
-+ * @dyn_only: force entry to be dynamically allocated
-  *
-  * Allocate new irq entry in the free slot of the tracker. Since xarray
-  * is used, always allocate new entry at the lowest possible index. Set
-@@ -49,10 +53,11 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
-  *
-  * Returns allocated irq entry or NULL on failure.
-  */
--static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
-+static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
- {
- 	struct xa_limit limit = { .max = pf->irq_tracker.num_entries,
- 				  .min = 0 };
-+	unsigned int num_static = pf->irq_tracker.num_static;
- 	struct ice_irq_entry *entry;
- 	unsigned int index;
- 	int ret;
-@@ -61,6 +66,10 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 	if (!entry)
- 		goto exit;
- 
-+	/* skip preallocated entries if the caller says so */
-+	if (dyn_only)
-+		limit.min = num_static;
-+
- 	ret = xa_alloc(&pf->irq_tracker.entries, &index, entry, limit,
- 		       GFP_KERNEL);
- 
-@@ -69,6 +78,7 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 		entry = NULL;
- 	} else {
- 		entry->index = index;
-+		entry->dynamic = index >= num_static;
- 	}
- 
- exit:
-@@ -242,14 +252,20 @@ void ice_clear_interrupt_scheme(struct ice_pf *pf)
-  */
- int ice_init_interrupt_scheme(struct ice_pf *pf)
- {
--	int vectors;
-+	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
-+	int vectors, max_vectors;
- 
- 	vectors = ice_ena_msix_range(pf);
- 
- 	if (vectors < 0)
--		return vectors;
-+		return -ENOMEM;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev))
-+		max_vectors = total_vectors;
-+	else
-+		max_vectors = vectors;
- 
--	ice_init_irq_tracker(pf, vectors);
-+	ice_init_irq_tracker(pf, max_vectors, vectors);
- 
- 	return 0;
- }
-@@ -257,33 +273,55 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- /**
-  * ice_alloc_irq - Allocate new interrupt vector
-  * @pf: board private structure
-+ * @dyn_only: force dynamic allocation of the interrupt
-  *
-  * Allocate new interrupt vector for a given owner id.
-  * return struct msi_map with interrupt details and track
-  * allocated interrupt appropriately.
-  *
-- * This function mimics individual interrupt allocation,
-- * even interrupts are actually already allocated with
-- * pci_alloc_irq_vectors. Individual allocation helps
-- * to track interrupts and simplifies interrupt related
-- * handling.
-+ * This function reserves new irq entry from the irq_tracker.
-+ * if according to the tracker information all interrupts that
-+ * were allocated with ice_pci_alloc_irq_vectors are already used
-+ * and dynamically allocated interrupts are supported then new
-+ * interrupt will be allocated with pci_msix_alloc_irq_at.
-+ *
-+ * Some callers may only support dynamically allocated interrupts.
-+ * This is indicated with dyn_only flag.
-  *
-  * On failure, return map with negative .index. The caller
-  * is expected to check returned map index.
-  *
-  */
--struct msi_map ice_alloc_irq(struct ice_pf *pf)
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only)
- {
-+	int sriov_base_vector = pf->sriov_base_vector;
- 	struct msi_map map = { .index = -ENOENT };
-+	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_irq_entry *entry;
- 
--	entry = ice_get_irq_res(pf);
-+	entry = ice_get_irq_res(pf, dyn_only);
- 	if (!entry)
- 		return map;
- 
--	map.index = entry->index;
--	map.virq = pci_irq_vector(pf->pdev, map.index);
-+	/* fail if we're about to violate SRIOV vectors space */
-+	if (sriov_base_vector && entry->index >= sriov_base_vector)
-+		goto exit_free_res;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev) && entry->dynamic) {
-+		map = pci_msix_alloc_irq_at(pf->pdev, entry->index, NULL);
-+		if (map.index < 0)
-+			goto exit_free_res;
-+		dev_dbg(dev, "allocated new irq at index %d\n", map.index);
-+	} else {
-+		map.index = entry->index;
-+		map.virq = pci_irq_vector(pf->pdev, map.index);
-+	}
-+
-+	return map;
- 
-+exit_free_res:
-+	dev_err(dev, "Could not allocate irq at idx %d\n", entry->index);
-+	ice_free_irq_res(pf, entry->index);
- 	return map;
- }
- 
-@@ -292,9 +330,48 @@ struct msi_map ice_alloc_irq(struct ice_pf *pf)
-  * @pf: board private structure
-  * @map: map with interrupt details
-  *
-- * Remove allocated interrupt from the interrupt tracker.
-+ * Remove allocated interrupt from the interrupt tracker. If interrupt was
-+ * allocated dynamically, free respective interrupt vector.
-  */
- void ice_free_irq(struct ice_pf *pf, struct msi_map map)
- {
-+	struct ice_irq_entry *entry;
-+
-+	entry = xa_load(&pf->irq_tracker.entries, map.index);
-+
-+	if (!entry)
-+		dev_err(ice_pf_to_dev(pf), "Failed to get MSIX interrupt entry at index %d",
-+			map.index);
-+
-+	dev_dbg(ice_pf_to_dev(pf), "Free irq at index %d\n", map.index);
-+
-+	if (entry->dynamic)
-+		pci_msix_free_irq(pf->pdev, map);
-+
- 	ice_free_irq_res(pf, map.index);
- }
-+
-+/**
-+ * ice_get_max_used_msix_vector - Get the max used interrupt vector
-+ * @pf: board private structure
-+ *
-+ * Return index of maximum used interrupt vectors with respect to the
-+ * beginning of the MSIX table. Take into account that some interrupts
-+ * may have been dynamically allocated after MSIX was initially enabled.
-+ */
-+int ice_get_max_used_msix_vector(struct ice_pf *pf)
-+{
-+	unsigned long start, index, max_idx;
-+	void *entry;
-+
-+	/* Treat all preallocated interrupts as used */
-+	start = pf->irq_tracker.num_static;
-+	max_idx = start - 1;
-+
-+	xa_for_each_start(&pf->irq_tracker.entries, index, entry, start) {
-+		if (index > max_idx)
-+			max_idx = index;
-+	}
-+
-+	return max_idx;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.h b/drivers/net/ethernet/intel/ice/ice_irq.h
-index da5cdb1f0d3a..f35efc08575e 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.h
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.h
-@@ -6,17 +6,20 @@
- 
- struct ice_irq_entry {
- 	unsigned int index;
-+	bool dynamic;	/* allocation type flag */
- };
- 
- struct ice_irq_tracker {
- 	struct xarray entries;
- 	u16 num_entries;	/* total vectors available */
-+	u16 num_static;	/* preallocated entries */
- };
- 
- int ice_init_interrupt_scheme(struct ice_pf *pf);
- void ice_clear_interrupt_scheme(struct ice_pf *pf);
- 
--struct msi_map ice_alloc_irq(struct ice_pf *pf);
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only);
- void ice_free_irq(struct ice_pf *pf, struct msi_map map);
-+int ice_get_max_used_msix_vector(struct ice_pf *pf);
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8e62ec08f582..68ecb80ec0c8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3343,7 +3343,7 @@ static int ice_req_irq_msix_misc(struct ice_pf *pf)
- 		goto skip_req_irq;
- 
- 	/* reserve one vector in irq_tracker for misc interrupts */
--	oicr_irq = ice_alloc_irq(pf);
-+	oicr_irq = ice_alloc_irq(pf, false);
- 	if (oicr_irq.index < 0)
- 		return oicr_irq.index;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 195105ce9039..80c643fb9f2f 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -418,7 +418,7 @@ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
- static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
- {
- 	u16 total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
--	int vectors_used = pf->irq_tracker.num_entries;
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	int sriov_base_vector;
- 
- 	sriov_base_vector = total_vectors - num_msix_needed;
-@@ -458,6 +458,7 @@ static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
-  */
- static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- {
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	u16 num_msix_per_vf, num_txq, num_rxq, avail_qs;
- 	int msix_avail_per_vf, msix_avail_for_sriov;
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -470,7 +471,7 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 
- 	/* determine MSI-X resources per VF */
- 	msix_avail_for_sriov = pf->hw.func_caps.common_cap.num_msix_vectors -
--		pf->irq_tracker.num_entries;
-+		vectors_used;
- 	msix_avail_per_vf = msix_avail_for_sriov / num_vfs;
- 	if (msix_avail_per_vf >= ICE_NUM_VF_MSIX_MED) {
- 		num_msix_per_vf = ICE_NUM_VF_MSIX_MED;
--- 
-2.38.1
+The other option would have been to make ice_vf_lib.h have a no-op
+function that always returned NULL, since we generally would know that
+there are no VF ctrl VSI if CONFIG_PCI_IOV is disabled.
 
+But I'm ok with it being in ice_lib.c too.
+
+Thanks,
+Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
