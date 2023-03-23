@@ -1,77 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A256C6C7217
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Mar 2023 22:02:58 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A95D6C7347
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Mar 2023 23:46:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF2DE403C9;
-	Thu, 23 Mar 2023 21:02:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF2DE403C9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 79AD460BCD;
+	Thu, 23 Mar 2023 22:46:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 79AD460BCD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679605375;
-	bh=EmvFG7JOnBSpeHe0A1XjNfvqXAgN6b5u5xNV0uwboM0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1679611588;
+	bh=KpSj8Ww+NKGqrZ4i6I4LZK1nhDGU6EHYlGLl9xnw23k=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Df4nu17WNjjsVNsa4ye8K+FfODVPbbs2R7xcnZuitOLmq0u1dZLcnGzBp4Hs/8maP
-	 uWQyfMJxYwy1OYKMQNK6Mq0B7+HFAezmLqAxdJjmGlGBcHmMq8JV157/erQrdK459h
-	 o6JTxmOsL8JwGEC+D9PFHA4E6xLcP8UpuQhljvTjM5T/ZbzHTlaT5JnRFWwIkjVdIp
-	 lGAmz8ZvT/ECyu6OkhGRBys7D3PaFcX3RGHDE/t97JE36noKRnpEH+PwYghjkI1d2b
-	 dPOKHbwHNgAlnWPJR0sHL/magboulpWC5+p16DB4csuln4wNwniFzSpTgi4DyWY050
-	 4dFfwoH5PVurw==
+	b=CFl9+eYwDWhNPDlEyUNEvhFAZCeOTIRdor0vbOwCcXbyHNBbSfKZp/vEZMgdNIFr9
+	 lwOEW7OIiNIxqci7ckeJ9Xs1LoqvbrcKWLBjtnDkSbpVaxfNFLKfeb9KAJJZFrOA9l
+	 Q+7pvItvXiQBveTkQalEZo4ycD7ipP/XaUyz/2j8T4ec+K265hohhIErFqnlMhQvWS
+	 WgUZbtfO1QHNjvJkZOASNdW4/zjbpQLhVFW0BOjRPuKIAjhVl7WQlBweA68wImR0JU
+	 U5CWuhBuT0FoCxPO/lOf95Xo6mMYwkB2UfYprdR8xV3g8EPeUxz+B7OTs3AO4w4Fc0
+	 m0I7W/z9tTZxQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u43NJIulaFka; Thu, 23 Mar 2023 21:02:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WrFOdpRzYDX6; Thu, 23 Mar 2023 22:46:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EBA424023D;
-	Thu, 23 Mar 2023 21:02:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EBA424023D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6A05760AC1;
+	Thu, 23 Mar 2023 22:46:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A05760AC1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 913881BF3B9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 21:02:48 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 430311BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 22:46:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 69E9284189
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 21:02:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 69E9284189
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1AA7160AC1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 22:46:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1AA7160AC1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FMUYPRBtPTOS for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Mar 2023 21:02:47 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E51768417A
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E51768417A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 21:02:46 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1pfS4r-008Era-Mu; Thu, 23 Mar 2023 22:02:29 +0100
-Date: Thu, 23 Mar 2023 22:02:29 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <fccbd0cc-f760-4f1a-8830-64a245b228dc@lunn.ch>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fNqVSfyj6Djs for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Mar 2023 22:46:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4AD3060A63
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4AD3060A63
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 22:46:21 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id C8551CE23CA;
+ Thu, 23 Mar 2023 22:46:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACE8EC433D2;
+ Thu, 23 Mar 2023 22:46:15 +0000 (UTC)
+Date: Thu, 23 Mar 2023 15:46:14 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Message-ID: <20230323154614.6c24afca@kernel.org>
+In-Reply-To: <fccbd0cc-f760-4f1a-8830-64a245b228dc@lunn.ch>
 References: <20230322233028.269410-1-kuba@kernel.org>
  <06d6a33e-60d4-45ea-b928-d3691912b85e@lunn.ch>
  <20230322180406.2a46c3bd@kernel.org>
+ <fccbd0cc-f760-4f1a-8830-64a245b228dc@lunn.ch>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230322180406.2a46c3bd@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=v41Uzc7Rv9i7N0Yv5b15xyHNDj7bAPZv3i2XxSJR6x8=; b=GvYu4i6/0P+gHXG681mxJIsx+L
- IEgiIwKX/U+JbluHp2VX5fw69HOEdwDPTcgyNPfaoWrFjOvP2m/JIUkHqKBJT5gvaVXjJ+r7BKiIb
- m7DcHTTi2Uvd3Aon2DeyzKfNSEB7YvX2XaXEGqn4ruEr1Yw1u42hZW8OR2UPd522UmoE=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=GvYu4i6/
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1679611576;
+ bh=gQbvpHZewx2gEFZP4SRhYieRcGI/sz2SjdLybk0iNMk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Cvq1PelldySmHLuJ3SUwumG5X2qybeHEjqZPFggYr8rEwkqCftxoBQItdMZs1nY4/
+ 6ROUGYunh1evy/4aC0mgW49D32IeGTFy0R3CML/l/4LD2NI8u1tSPPMfJPPXc2+mrS
+ YsSEcTL/HxMUrK3Hgz4ANfgS4Q3luOhTciIB7qY1NpeVbNoVOTKTzNRWsDEV9tkGUy
+ jUvwC05p9fI3Pu1GNoypdaNIhLhMoi3zR8zvE8vX3EOB70OsQwtXRypzz1AVbrCumd
+ vNLexHCW3j975wDtTNpj1CNNq6P8dtHplBeNhJZWy9fW4l49BaJY2eHaMWMfiYCgGy
+ nMLATzp//UGtA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Cvq1Pell
 Subject: Re: [Intel-wired-lan] [PATCH net-next 1/3] net: provide macros for
  commonly copied lockless queue stop/wake code
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -95,39 +100,14 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 22, 2023 at 06:04:06PM -0700, Jakub Kicinski wrote:
-> CC: maintainers, in case there isn't a repost
-> https://lore.kernel.org/all/20230322233028.269410-1-kuba@kernel.org/
-> 
-> On Thu, 23 Mar 2023 01:35:34 +0100 Andrew Lunn wrote:
-> > On Wed, Mar 22, 2023 at 04:30:26PM -0700, Jakub Kicinski wrote:
-> > > A lot of drivers follow the same scheme to stop / start queues
-> > > without introducing locks between xmit and NAPI tx completions.
-> > > I'm guessing they all copy'n'paste each other's code.
-> > >
-> > > Smaller drivers shy away from the scheme and introduce a lock
-> > > which may cause deadlocks in netpoll.  
-> > 
-> > I notice there is no patch 0/X. Seems like the above would be good
-> > material for it, along with a comment that a few drivers are converted
-> > to make use of the new macros.
-> 
-> Then do I repeat the same text in the commit? Or cut the commit down?
-> Doesn't that just take away information from the commit which will
-> show up in git blame?
-> 
-> Having a cover letter is a good default, and required if the series 
-> is a larger change decomposed into steps. But here there is a major
-> change and a bunch of loose conversions. More sample users than
-> meaningful part.
-> 
-> LMK what your preference for splitting this info is, I'm unsure.
+On Thu, 23 Mar 2023 22:02:29 +0100 Andrew Lunn wrote:
+> We do seem to have a policy of asking for a 0/X. And it is used for
+> the merge commit. That is my real point. And i don't see why the text
+> can be repeated in the merge commit and the individual commits.
 
-We do seem to have a policy of asking for a 0/X. And it is used for
-the merge commit. That is my real point. And i don't see why the text
-can be repeated in the merge commit and the individual commits.
-
-    Andrew
+Alright, I'll respin and add a cover. But I think we should be critical
+of the rules. The rules are just a mental shortcut, we shouldn't lose
+sight of why they are in place and maintain some flexibility.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
