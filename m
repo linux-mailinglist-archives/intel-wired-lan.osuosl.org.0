@@ -1,88 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F5646C6834
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Mar 2023 13:25:21 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DD1D06C69D1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Mar 2023 14:46:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C5C7B8409D;
-	Thu, 23 Mar 2023 12:25:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5C7B8409D
+	by smtp4.osuosl.org (Postfix) with ESMTP id C220041E6E;
+	Thu, 23 Mar 2023 13:46:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C220041E6E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679574319;
-	bh=jtJfupY64Q3WwJzluUpu99Z2k0vFU5YAPAODtU4do38=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1679579176;
+	bh=XQ3sKxzBJvymbzvcsPd6dpscU13Cd7+43XxVM/tf8uM=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=KFMOiL6ZurGw8hycxL2PNtMVs8HNd6Wa3b5QanJ4BxJKpF4ueXwAgGI/9Lzg3G93m
-	 irRsQocnd+RClfuaN8BgZcSOLzBnsE+C0GACiaavMxXu6ZmAX0tcWEjndoDwnzlMfY
-	 TSVhkvw9n/KliqVAoMgYqYAKeqxEZkRVvyhnfdbBX+Jv4IE47zqH0P1sPyR5/QQGQF
-	 UNqAyRrrsI41HE6NOPqUdcQR5yawBwMhtmSXRLnaKKI0q7GJyTRukT+UhbY97lzplu
-	 T0PZ7g0kTZAEuSihIDVX4RC+sNkYx+esegEb7RKlzLkijuFkhL1TKokDSOT53du3gN
-	 RO32lFSwHzMWQ==
+	 Reply-To:Cc:From;
+	b=JTlf3yRzllYq0fU02rR+0qL7qEmWmhVdsNrsc7YqC3aqaGuRB/0LFHbHJ+I2M//oN
+	 mhG+SGzcqDD5pv3dzpSl/qSRghzZ6YMm38uHolqw0L2WjRpljL9JX2kboXGWh6cXnW
+	 1YhEG4wcpjGXFMm4+OrMd0WzpAuVrGdev/Ev6/p7BNFgLinu0w6JypC3/pPNtfV2s4
+	 N44UhFRAUTWFmQ7dTjsOlA16M4TUilGtiFQjcyAR5Wqf8/kMDvFaQK5fUUEZ1i8WVo
+	 KXohpGML5Pg49XJ6u32u2/mVGiSEggMtNFyxxlv5Tf2tAd7gqKnuzBwqBAhhLIbBdA
+	 bZGuJnwECet1A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1o3SnQkoDp86; Thu, 23 Mar 2023 12:25:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pQL3vAko1_HH; Thu, 23 Mar 2023 13:46:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DB658401B;
-	Thu, 23 Mar 2023 12:25:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DB658401B
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A51171BF31C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 12:25:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B797C41517;
+	Thu, 23 Mar 2023 13:46:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B797C41517
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C3D401BF291
+ for <intel-wired-lan@osuosl.org>; Thu, 23 Mar 2023 13:46:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7F3D161513
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 12:25:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F3D161513
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9C62E41D08
+ for <intel-wired-lan@osuosl.org>; Thu, 23 Mar 2023 13:46:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C62E41D08
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NFtNa9FKK5LH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Mar 2023 12:25:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72AC760BA1
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 72AC760BA1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Mar 2023 12:25:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="319125486"
-X-IronPort-AV: E=Sophos;i="5.98,283,1673942400"; d="scan'208";a="319125486"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2023 05:25:00 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10657"; a="751473580"
-X-IronPort-AV: E=Sophos;i="5.98,283,1673942400"; d="scan'208";a="751473580"
-Received: from nimitz.igk.intel.com ([10.102.21.231])
- by fmsmga004.fm.intel.com with ESMTP; 23 Mar 2023 05:24:57 -0700
-From: Piotr Raczynski <piotr.raczynski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 23 Mar 2023 13:24:40 +0100
-Message-Id: <20230323122440.3419214-9-piotr.raczynski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230323122440.3419214-1-piotr.raczynski@intel.com>
-References: <20230323122440.3419214-1-piotr.raczynski@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jNmvVS9nLjVm for <intel-wired-lan@osuosl.org>;
+ Thu, 23 Mar 2023 13:46:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A754B402B1
+Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
+ [80.237.130.52])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A754B402B1
+ for <intel-wired-lan@osuosl.org>; Thu, 23 Mar 2023 13:46:07 +0000 (UTC)
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+ by wp530.webpack.hosteurope.de running ExIM with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ id 1pfLGV-00067m-QT; Thu, 23 Mar 2023 14:46:03 +0100
+Message-ID: <c267ab1d-6451-0d2c-ec78-85ed80d93b5a@leemhuis.info>
+Date: Thu, 23 Mar 2023 14:46:03 +0100
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679574300; x=1711110300;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=HAZtyE7KXeGaOaoo1lrRovadnr+XR3IBRqYGwv3Fibo=;
- b=ms6JLSJ0rgMQbMl55z22kZqfAKi+T+iVfEm25GiKxpbVbZf+PIW2FoPA
- AmfOSRPS/L30mq0QlmJaLnvmJNllfyQSs7OUREICMm3SWM+abqs3/NaQw
- 75AKbDasin6HWh2aVWoFS+tLN2TBY6CFTSwj/cYzMYeg9UKfsumNunlBt
- tvZ9Ez2cNFf4lNMvo7b7u98qjd1VznAaoUenWRFEMs6qHXOC85Z02Ga4h
- PgBYQtYYS9a91YzoZfX5HIGmEmOseBQ/LlKuHP7OOdZJvzJaJD3Bebdox
- DdkVivvZfRjE7D2S2XSD0JSXp7U36b/BTG4RSjDWmOwhB+CnpSCF/I0g4
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ms6JLSJ0
-Subject: [Intel-wired-lan] [PATCH net-next v3 8/8] ice: add dynamic
- interrupt allocation
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Content-Language: en-US, de-DE
+To: Bartek Kois <bartek.kois@gmail.com>,
+ Linux regressions mailing list <regressions@lists.linux.dev>,
+ Paul Menzel <pmenzel@molgen.mpg.de>
+References: <d1530cba-1a72-cae8-6a04-ed8ec0f82e6e@gmail.com>
+ <652bf236-d97e-832c-e0f3-24927a46d7ad@molgen.mpg.de>
+ <744de70c-782d-5d36-87fc-e6b92ac84190@gmail.com>
+ <30de7b89-6a4f-8dab-d671-027140bbb52b@gmail.com>
+ <d20a0ae8-d46e-2b8a-5587-5416e9013643@molgen.mpg.de>
+ <3b957674-a559-ac1e-27b8-b81e6eeffe75@gmail.com>
+ <05d381af-5ccb-0d87-97d3-e2fc4ce870fc@molgen.mpg.de>
+ <a3be4866-5689-1276-5db4-168885a97091@gmail.com>
+ <04793400-b368-ecd8-ce52-009e60533753@molgen.mpg.de>
+ <8da81bdb-80e1-f1b8-1d49-af7cf7072128@gmail.com>
+ <26c4008e-d9de-0250-57ba-97d050fb405f@molgen.mpg.de>
+ <7d1347f4-4cf0-e8a8-000e-9128933181b9@leemhuis.info>
+ <ead1e9eb-944d-fa9b-e8ff-c087f8718c47@gmail.com>
+From: "Linux regression tracking (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+In-Reply-To: <ead1e9eb-944d-fa9b-e8ff-c087f8718c47@gmail.com>
+X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1679579167;
+ 88e442f8; 
+X-HE-SMSGID: 1pfLGV-00067m-QT
+Subject: Re: [Intel-wired-lan] Supermicro AOC-STGN-I1S (Intel 82599EN based
+ 10G adapter) - poor network perfomance after moving to Debian 11.5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,350 +94,235 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: michal.swiatkowski@intel.com, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, shiraz.saleem@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
+Cc: intel-wired-lan@osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently driver can only allocate interrupt vectors during init phase by
-calling pci_alloc_irq_vectors. Change that and make use of new
-pci_msix_alloc_irq_at/pci_msix_free_irq API and enable to allocate and free
-more interrupts after MSIX has been enabled. Since not all platforms
-supports dynamic allocation, check it with pci_msix_can_alloc_dyn.
-
-Extend the tracker to keep track how many interrupts are allocated
-initially so when all such vectors are already used, additional interrupts
-are automatically allocated dynamically. Remember each interrupt allocation
-method to then free appropriately. Since some features may require
-interrupts allocated dynamically add appropriate VSI flag and take it into
-account when allocating new interrupt.
-
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h       |   3 +
- drivers/net/ethernet/intel/ice/ice_base.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_idc.c   |   2 +-
- drivers/net/ethernet/intel/ice/ice_irq.c   | 107 ++++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_irq.h   |   5 +-
- drivers/net/ethernet/intel/ice/ice_main.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c |   5 +-
- 7 files changed, 105 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index b7398abda26a..26fa176dc1cb 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -338,6 +338,9 @@ struct ice_vsi {
- 	u32 rx_buf_failed;
- 	u32 rx_page_failed;
- 	u16 num_q_vectors;
-+	/* tell if only dynamic irq allocation is allowed */
-+	bool irq_dyn_alloc;
-+
- 	enum ice_vsi_type type;
- 	u16 vsi_num;			/* HW (absolute) index of this VSI */
- 	u16 idx;			/* software index in pf->vsi[] */
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index e5db23eaa3f4..a0c0129c995d 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -134,7 +134,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 		}
- 	}
- 
--	q_vector->irq = ice_alloc_irq(pf);
-+	q_vector->irq = ice_alloc_irq(pf, vsi->irq_dyn_alloc);
- 	if (q_vector->irq.index < 0) {
- 		kfree(q_vector);
- 		return -ENOMEM;
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index bc016bb4440c..145b27f2a4ce 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -250,7 +250,7 @@ static int ice_alloc_rdma_qvectors(struct ice_pf *pf)
- 			struct msix_entry *entry = &pf->msix_entries[i];
- 			struct msi_map map;
- 
--			map = ice_alloc_irq(pf);
-+			map = ice_alloc_irq(pf, false);
- 			if (map.index < 0)
- 				break;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-index 20d4e9a6aefb..61120d4194f1 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-@@ -9,11 +9,14 @@
-  * ice_init_irq_tracker - initialize interrupt tracker
-  * @pf: board private structure
-  * @max_vectors: maximum number of vectors that tracker can hold
-+ * @num_static: number of preallocated interrupts
-  */
- static void
--ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors)
-+ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors,
-+		     unsigned int num_static)
- {
- 	pf->irq_tracker.num_entries = max_vectors;
-+	pf->irq_tracker.num_static = num_static;
- 	xa_init_flags(&pf->irq_tracker.entries, XA_FLAGS_ALLOC);
- }
- 
-@@ -42,6 +45,7 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
- /**
-  * ice_get_irq_res - get an interrupt resource
-  * @pf: board private structure
-+ * @dyn_only: force entry to be dynamically allocated
-  *
-  * Allocate new irq entry in the free slot of the tracker. Since xarray
-  * is used, always allocate new entry at the lowest possible index. Set
-@@ -49,10 +53,11 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
-  *
-  * Returns allocated irq entry or NULL on failure.
-  */
--static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
-+static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
- {
- 	struct xa_limit limit = { .max = pf->irq_tracker.num_entries,
- 				  .min = 0 };
-+	unsigned int num_static = pf->irq_tracker.num_static;
- 	struct ice_irq_entry *entry;
- 	unsigned int index;
- 	int ret;
-@@ -61,6 +66,10 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 	if (!entry)
- 		goto exit;
- 
-+	/* skip preallocated entries if the caller says so */
-+	if (dyn_only)
-+		limit.min = num_static;
-+
- 	ret = xa_alloc(&pf->irq_tracker.entries, &index, entry, limit,
- 		       GFP_KERNEL);
- 
-@@ -69,6 +78,7 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 		entry = NULL;
- 	} else {
- 		entry->index = index;
-+		entry->dynamic = index >= num_static;
- 	}
- 
- exit:
-@@ -242,14 +252,20 @@ void ice_clear_interrupt_scheme(struct ice_pf *pf)
-  */
- int ice_init_interrupt_scheme(struct ice_pf *pf)
- {
--	int vectors;
-+	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
-+	int vectors, max_vectors;
- 
- 	vectors = ice_ena_msix_range(pf);
- 
- 	if (vectors < 0)
--		return vectors;
-+		return -ENOMEM;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev))
-+		max_vectors = total_vectors;
-+	else
-+		max_vectors = vectors;
- 
--	ice_init_irq_tracker(pf, vectors);
-+	ice_init_irq_tracker(pf, max_vectors, vectors);
- 
- 	return 0;
- }
-@@ -257,33 +273,55 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- /**
-  * ice_alloc_irq - Allocate new interrupt vector
-  * @pf: board private structure
-+ * @dyn_only: force dynamic allocation of the interrupt
-  *
-  * Allocate new interrupt vector for a given owner id.
-  * return struct msi_map with interrupt details and track
-  * allocated interrupt appropriately.
-  *
-- * This function mimics individual interrupt allocation,
-- * even interrupts are actually already allocated with
-- * pci_alloc_irq_vectors. Individual allocation helps
-- * to track interrupts and simplifies interrupt related
-- * handling.
-+ * This function reserves new irq entry from the irq_tracker.
-+ * if according to the tracker information all interrupts that
-+ * were allocated with ice_pci_alloc_irq_vectors are already used
-+ * and dynamically allocated interrupts are supported then new
-+ * interrupt will be allocated with pci_msix_alloc_irq_at.
-+ *
-+ * Some callers may only support dynamically allocated interrupts.
-+ * This is indicated with dyn_only flag.
-  *
-  * On failure, return map with negative .index. The caller
-  * is expected to check returned map index.
-  *
-  */
--struct msi_map ice_alloc_irq(struct ice_pf *pf)
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only)
- {
-+	int sriov_base_vector = pf->sriov_base_vector;
- 	struct msi_map map = { .index = -ENOENT };
-+	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_irq_entry *entry;
- 
--	entry = ice_get_irq_res(pf);
-+	entry = ice_get_irq_res(pf, dyn_only);
- 	if (!entry)
- 		return map;
- 
--	map.index = entry->index;
--	map.virq = pci_irq_vector(pf->pdev, map.index);
-+	/* fail if we're about to violate SRIOV vectors space */
-+	if (sriov_base_vector && entry->index >= sriov_base_vector)
-+		goto exit_free_res;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev) && entry->dynamic) {
-+		map = pci_msix_alloc_irq_at(pf->pdev, entry->index, NULL);
-+		if (map.index < 0)
-+			goto exit_free_res;
-+		dev_dbg(dev, "allocated new irq at index %d\n", map.index);
-+	} else {
-+		map.index = entry->index;
-+		map.virq = pci_irq_vector(pf->pdev, map.index);
-+	}
-+
-+	return map;
- 
-+exit_free_res:
-+	dev_err(dev, "Could not allocate irq at idx %d\n", entry->index);
-+	ice_free_irq_res(pf, entry->index);
- 	return map;
- }
- 
-@@ -292,9 +330,48 @@ struct msi_map ice_alloc_irq(struct ice_pf *pf)
-  * @pf: board private structure
-  * @map: map with interrupt details
-  *
-- * Remove allocated interrupt from the interrupt tracker.
-+ * Remove allocated interrupt from the interrupt tracker. If interrupt was
-+ * allocated dynamically, free respective interrupt vector.
-  */
- void ice_free_irq(struct ice_pf *pf, struct msi_map map)
- {
-+	struct ice_irq_entry *entry;
-+
-+	entry = xa_load(&pf->irq_tracker.entries, map.index);
-+
-+	if (!entry)
-+		dev_err(ice_pf_to_dev(pf), "Failed to get MSIX interrupt entry at index %d",
-+			map.index);
-+
-+	dev_dbg(ice_pf_to_dev(pf), "Free irq at index %d\n", map.index);
-+
-+	if (entry->dynamic)
-+		pci_msix_free_irq(pf->pdev, map);
-+
- 	ice_free_irq_res(pf, map.index);
- }
-+
-+/**
-+ * ice_get_max_used_msix_vector - Get the max used interrupt vector
-+ * @pf: board private structure
-+ *
-+ * Return index of maximum used interrupt vectors with respect to the
-+ * beginning of the MSIX table. Take into account that some interrupts
-+ * may have been dynamically allocated after MSIX was initially enabled.
-+ */
-+int ice_get_max_used_msix_vector(struct ice_pf *pf)
-+{
-+	unsigned long start, index, max_idx;
-+	void *entry;
-+
-+	/* Treat all preallocated interrupts as used */
-+	start = pf->irq_tracker.num_static;
-+	max_idx = start - 1;
-+
-+	xa_for_each_start(&pf->irq_tracker.entries, index, entry, start) {
-+		if (index > max_idx)
-+			max_idx = index;
-+	}
-+
-+	return max_idx;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.h b/drivers/net/ethernet/intel/ice/ice_irq.h
-index da5cdb1f0d3a..f35efc08575e 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.h
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.h
-@@ -6,17 +6,20 @@
- 
- struct ice_irq_entry {
- 	unsigned int index;
-+	bool dynamic;	/* allocation type flag */
- };
- 
- struct ice_irq_tracker {
- 	struct xarray entries;
- 	u16 num_entries;	/* total vectors available */
-+	u16 num_static;	/* preallocated entries */
- };
- 
- int ice_init_interrupt_scheme(struct ice_pf *pf);
- void ice_clear_interrupt_scheme(struct ice_pf *pf);
- 
--struct msi_map ice_alloc_irq(struct ice_pf *pf);
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only);
- void ice_free_irq(struct ice_pf *pf, struct msi_map map);
-+int ice_get_max_used_msix_vector(struct ice_pf *pf);
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8e62ec08f582..68ecb80ec0c8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3343,7 +3343,7 @@ static int ice_req_irq_msix_misc(struct ice_pf *pf)
- 		goto skip_req_irq;
- 
- 	/* reserve one vector in irq_tracker for misc interrupts */
--	oicr_irq = ice_alloc_irq(pf);
-+	oicr_irq = ice_alloc_irq(pf, false);
- 	if (oicr_irq.index < 0)
- 		return oicr_irq.index;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 195105ce9039..80c643fb9f2f 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -418,7 +418,7 @@ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
- static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
- {
- 	u16 total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
--	int vectors_used = pf->irq_tracker.num_entries;
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	int sriov_base_vector;
- 
- 	sriov_base_vector = total_vectors - num_msix_needed;
-@@ -458,6 +458,7 @@ static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
-  */
- static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- {
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	u16 num_msix_per_vf, num_txq, num_rxq, avail_qs;
- 	int msix_avail_per_vf, msix_avail_for_sriov;
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -470,7 +471,7 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 
- 	/* determine MSI-X resources per VF */
- 	msix_avail_for_sriov = pf->hw.func_caps.common_cap.num_msix_vectors -
--		pf->irq_tracker.num_entries;
-+		vectors_used;
- 	msix_avail_per_vf = msix_avail_for_sriov / num_vfs;
- 	if (msix_avail_per_vf >= ICE_NUM_VF_MSIX_MED) {
- 		num_msix_per_vf = ICE_NUM_VF_MSIX_MED;
--- 
-2.38.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMjQuMDEuMjMgMTA6NDAsIEJhcnRlayBLb2lzIHdyb3RlOgo+IFcgZG5pdSAyNC4wMS4yMDIz
+IG/CoDEwOjMzLCBMaW51eCBrZXJuZWwgcmVncmVzc2lvbiB0cmFja2luZyAoVGhvcnN0ZW4KPiBM
+ZWVtaHVpcykgcGlzemU6Cj4+IE9uIDIzLjAxLjIzIDIwOjAzLCBQYXVsIE1lbnplbCB3cm90ZToK
+Pj4+IEFtIDIzLjAxLjIzIHVtIDE5OjU4IHNjaHJpZWIgQmFydGVrIEtvaXM6Cj4+Pj4gVyBkbml1
+IDIzLjAxLjIwMjMgb8KgMTk6NTMsIFBhdWwgTWVuemVsIHBpc3plOgo+Pj4+PiBBbSAyMy4wMS4y
+MyB1bSAxOTozOCBzY2hyaWViIEJhcnRlayBLb2lzOgo+Pj4+Pj4gVyBkbml1IDIyLjAxLjIwMjMg
+b8KgMjE6MjgsIFBhdWwgTWVuemVsIHBpc3plOgo+Pj4+Pj4+IEFtIDE5LjAxLjIzIHVtIDE4OjE3
+IHNjaHJpZWIgQmFydGVrIEtvaXM6Cj4+Pj4+Pj4+IFcgZG5pdSAxOS4wMS4yMDIzIG/CoDE4OjA5
+LCBQYXVsIE1lbnplbCBwaXN6ZToKPj4+Pj4+Pj4+IEFtIDE5LjAxLjIzIHVtIDE3OjU4IHNjaHJp
+ZWIgQmFydGVrIEtvaXM6Cj4+Pj4+Pj4+Pj4gVyBkbml1IDE5LjAxLjIwMjMgb8KgMTM6MjQsIEJh
+cnRlayBLb2lzIHBpc3plOgo+Pj4+Pj4+Pj4+PiBXIGRuaXUgMTkuMDEuMjAyMyBvwqAxMToxNywg
+UGF1bCBNZW56ZWwgcGlzemU6Cj4+Pj4+Pj4+Pj4+PiAjcmVnemJvdCBeaW50cm9kdWNlZDogNC45
+Ljg4Li41LjEwLjE0OQo+Pj4+Pj4+Pj4+Pj4gQW0gMTQuMDEuMjMgdW0gMTE6MjMgc2NocmllYiBC
+YXJ0ZWsgS29pczoKPj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+Pj4gQWZ0ZXIgbW92aW5nIGZyb20g
+RGViaWFuIDkuNyB0byAxMS41IGFzIHNvb24gYXMgSSBwZXJmb3JtICJpcAo+Pj4+Pj4+Pj4+Pj4+
+IGxpbmsgc2V0IGVucDFzMCB1cCIgZm9yIG15IDEwRyBhZGFwdGVyIChBT0MtU1RHTi1JMVMgLSBJ
+bnRlbAo+Pj4+Pj4+Pj4+Pj4+IDgyNTk5RU4gYmFzZWQgMTBHIGFkYXB0ZXIpIEkgYW0gZXhwZXJp
+ZW5jaW5nIGhpZ2ggY3B1IGxvYWQKPj4+Pj4+Pj4+Pj4+PiAoZXZlbiBpZiBubyB0cmFmZmljIGlz
+IHBhc3NpbmcgdGhyb3VnaCB0aGUgYWRhcHRlcikgYW5kCj4+Pj4+Pj4+Pj4+Pj4gbmV0d29yayBw
+ZXJmb3JtYW5jZSBpcyBsb3cgKHdoZW4gbmV0d29yayBpcyBjb25uZWN0ZWQpLgo+Pj4+Pj4+Pj4+
+Pj4gSG93IGRvIHlvdSB0ZXN0IHRoZSBuZXR3b3JrIHBlcmZvcm1hbmNlPyBQbGVhc2UgZ2l2ZSBl
+eGFjdAo+Pj4+Pj4+Pj4+Pj4gbnVtYmVycyBmb3IgY29tcGFyaXNvbi4KPj4+Pj4+Pj4+Pj4+Cj4+
+Pj4+Pj4+Pj4+IEkgYW0gdXNpbmcgdGhpcyBzZXJ2ZXIgYXMgYSByb3V0ZXIgZm9yIG15IHN1YnNj
+cmliZXJzIHdpdGgKPj4+Pj4+Pj4+Pj4gaXB0YWJsZXMgKGZvciBOQVQgYW5kIGZpcmV3YWxsKSBh
+bmQgaGZzYyAoZm9yIFFvUykuIEZpcnN0IEkKPj4+Pj4+Pj4+Pj4gZW5jb3VudGVyZWQgdGhpcyBw
+cm9ibGVtIHdoaWxlIG1pZ3JhdGluZyBmb3JtIERlYmlhbiA5LjcgdG8KPj4+Pj4+Pj4+Pj4gMTEu
+NS4gUm91dGVycyBiYXNlZMKgIG9uIFN1cGVybWljcm8gWDExU1NMLUYgKEludGVswq4gQzIzMgo+
+Pj4+Pj4+Pj4+PiBjaGlwc2V0KSB3b3JrcyB3aXRoIG5vIHByb2JsZW1zIGFmdGVyIHRoYXQgbWln
+cmF0aW9uLCBidXQKPj4+Pj4+Pj4+Pj4gcm91dGVycyBiYXNlZCBvbiBTdXBlcm1pY3JvIFg5U0NM
+IChJbnRlbCBDMjAyIFBDSCkgYW5kCj4+Pj4+Pj4+Pj4+IFN1cGVybWljcm8gWDEwU0xMKy1GIChJ
+bnRlbCBDMjIyIEV4cHJlc3MgUENIKSBzdGFydHMgYmVoYXZpbmcKPj4+Pj4+Pj4+Pj4gc3RyYW5n
+ZWx5IHdpdGggaGlnaCBjcHUgbG9hZCAoMC41LTAuOCB3aGlsZSBiZWZvcmUgaXQgd2FzCj4+Pj4+
+Pj4+Pj4+IGFyb3VuZCAwLjAtMC4xKSBhbmQgc3Vic2NyaWJlcnMgbm90IGJlaW5nIGFibGUgdG8g
+dXRpbGl6ZSB0aGVpcgo+Pj4+Pj4+Pj4+PiBwbGFucy4gSSB0cmllZCB0byBzdHJpcCBkb3duIHRo
+ZSBwcm9ibGVtIGFuZCBlbmRzIHVwIHdpdGggY2xlYW4KPj4+Pj4+Pj4+Pj4gc3lzdGVtIHdpdGgg
+bm8gaXB0YWJsZXMgb3IgaGZzYyBydWxlcyBiZWhhdmluZyB0aGUgc2FtZSAoaGlnaGVyCj4+Pj4+
+Pj4+Pj4+IGxvYWQpIHJpZ2h0IGFmdGVyIHNldHRpbmcgdGhlIDEwRyBsaW5rIHVwZXZlbiBpZiBu
+byB0cmFmZmljIGlzCj4+Pj4+Pj4+Pj4+IHBhc3NpbmcgYnkuCj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+
+Pj4+Pj4gVGhlIGNwdSBsb2FkIGlzIG9zY2lsbGF0aW5nIGJldHdlZW4gMC4xIGFuZCAwLjMgb24g
+dmFuaWxsYQo+Pj4+Pj4+Pj4+Pj4+IHN5c3RlbQo+Pj4+Pj4+Pj4+Pj4+IHdpdGggbm8gbmV0d29y
+ayBhdHRhY2hlZC4gVGhlIHByb2JsZW0gY2FuIGJlIG9ic2VydmVkIG9uIHRoZQo+Pj4+Pj4+Pj4+
+Pj4+IGZvbGxvd2luZyBwbGF0Zm9ybXM6IFN1cGVybWljcm8gWDlTQ0wgKEludGVsIEMyMDIgUENI
+KSBhbmQKPj4+Pj4+Pj4+Pj4+PiBTdXBlcm1pY3JvIFgxMFNMTCstRiAoSW50ZWwgQzIyMiBFeHBy
+ZXNzIFBDSCksIGJ1dCBmb3IgdGhlCj4+Pj4+Pj4+Pj4+Pj4gU3VwZXJtaWNybwo+Pj4+Pj4+Pj4+
+Pj4+IFgxMVNTTC1GIChJbnRlbMKuIEMyMzIgY2hpcHNldCkgZXZlcnl0aGluZyBpcyB3b3JraW5n
+IHdlbGwuCj4+Pj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4+PiBUZXN0ZWQgZW52aXJvbm1lbnRzOgo+
+Pj4+Pj4+Pj4+Pj4+IERlYmlhbiA5LjcgLSBMaW51eCA0LjkuMC02LWFtZDY0ICMxIFNNUCBEZWJp
+YW4KPj4+Pj4+Pj4+Pj4+PiA0LjkuODgtMStkZWI5dTEgKDIwMTgtMDUtMDcpIHg4Nl82NCBHTlUv
+TGludXggW2FsbCBwbGF0Zm9ybXMKPj4+Pj4+Pj4+Pj4+PiB3b3JraW5nIHdlbGwgd2l0aCBubyBw
+cm9ibGVtczogU3VwZXJtaWNybyBYOVNDTCAoSW50ZWwgQzIwMgo+Pj4+Pj4+Pj4+Pj4+IFBDSCks
+IFN1cGVybWljcm8gWDEwU0xMKy1GIChJbnRlbCBDMjIyIEV4cHJlc3MgUENIKSwKPj4+Pj4+Pj4+
+Pj4+PiBTdXBlcm1pY3JvIFgxMVNTTC1GIChJbnRlbMKuIEMyMzIgY2hpcHNldCldCj4+Pj4+Pj4+
+Pj4+Pj4gRGViaWFuIDExLjUgLSBMaW51eCA1LjEwLjAtMTktYW1kNjQgIzEgU01QIERlYmlhbiA1
+LjEwLjE0OS0yCj4+Pj4+Pj4+Pj4+Pj4gKDIwMjItMTAtMjEpIHg4Nl82NCBHTlUvTGludXggW29s
+ZGVyIHBsYXRmb3JtczogU3VwZXJtaWNybwo+Pj4+Pj4+Pj4+Pj4+IFg5U0NMIChJbnRlbCBDMjAy
+IFBDSCksIFN1cGVybWljcm8gWDEwU0xMKy1GIChJbnRlbCBDMjIyCj4+Pj4+Pj4+Pj4+Pj4gRXhw
+cmVzcyBQQ0gpIGJlaGF2ZSBwcm9ibGVtYXRpYyBhcyBkZXNjcmliZWQgYWJvdmUgfCBuZXdlcgo+
+Pj4+Pj4+Pj4+Pj4+IHBsYXRmb3JtOiBTdXBlcm1pY3JvIFgxMVNTTC1GIChJbnRlbMKuIEMyMzIg
+Y2hpcHNldCkgd29ya2luZwo+Pj4+Pj4+Pj4+Pj4+IHdlbGwgd2l0aCBubyBwcm9ibGVtc10KPj4+
+Pj4+Pj4+Pj4+IE1heWJlIGNyZWF0ZSBhIGJ1ZyBhdCB0aGUgTGludXgga2VybmVsIGJ1ZyB0cmFj
+a2VyIFsxXSwgd2hlcmUKPj4+Pj4+Pj4+Pj4+IHlvdSBjYW4gYXR0YWNoIGFsbCB0aGUgbG9ncyAo
+YGRtZXNnYCwgYGxzcGNpIC1ubmsgLXMg4oCmYCwg4oCmKS4KPj4+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+
+Pj4+IElgdmUgYWxyZWFkeSByZXBvcnRlZCB0aGF0IHRvIHRoZSBEZWJpYW4gdGVhbQo+Pj4+Pj4+
+Pj4+PiB0dHBzOi8vYnVncy5kZWJpYW4ub3JnL2NnaS1iaW4vYnVncmVwb3J0LmNnaT9idWc9MTAy
+NDc2MywgYnV0Cj4+Pj4+Pj4+Pj4+IHNvIGZhciBub2JvZHkgdG9vayBjYXJlIG9mIHRoaXMgaXNz
+dWUgc28gZmFyLgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pj4+IFNvIGZhciB0byBzb2x2ZSB0aGUg
+cHJvYmxlbSBJIHdhcyB0cnlpbmcgdG8gdXBncmFkZSBzeXN0ZW0gdG8KPj4+Pj4+Pj4+Pj4+PiB0
+aGUgbmV3ZXN0IHN0YWJsZSB2ZXJzaW9uLCB1cGdyYWRlIGtlcm5lbCB0byB2ZXJzaW9uIDYueCwK
+Pj4+Pj4+Pj4+Pj4+PiB1cGdyYWRlIGl4Z2JlIGRyaXZlciB0byB0aGUgbmV3ZXN0IHZlcnNpb24g
+YnV0IHdpdGggbm8gbHVjay4KPj4+Pj4+Pj4+Pj4+IFRoYW5rIHlvdSBmb3IgY2hlY2tpbmcgdGhh
+dC4gVG9vIGJhZCBpdOKAmXMgc3RpbGwgcHJlc2VudC4gVG8KPj4+Pj4+Pj4+Pj4+IHJ1bGUgb3V0
+IHNvbWUgdXNlciBzcGFjZSBwcm9ibGVtLCBjb3VsZCB5b3UgdGVzdCBEZWJpYW4gOS43Cj4+Pj4+
+Pj4+Pj4+PiB3aXRoIGEgc3RhYmxlIExpbnV4IHJlbGVhc2UsIGN1cnJlbnRseSA2LjEuNz8KPj4+
+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+PiBXaGF0IGRvZXMgYHN1ZG8gcGVyZiB0b3AgLS1zb3J0IGNv
+bW0sZHNvYCBzaG93LCB3aGVyZSB0aGUgdGltZQo+Pj4+Pj4+Pj4+Pj4gaXMgc3BlbnQ/Cj4+Pj4+
+Pj4+Pj4+IER1cmluZyBteSBmaXJzdCB0ZXN0IGluIHJlYWwgZW52aXJvbWVudCB3aXRoIHN1YnNj
+cmliZXJzIEkKPj4+Pj4+Pj4+Pj4gZ2V0aGVyIHRoZSBmb2xsb3dpbmcgZGF0YSB0aHJvdWdoIHRo
+ZSBwZXJmOgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+PiDCoMKgIDI3LjgzJcKgIFtrZXJuZWxdwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXSBzdHJuY3B5Cj4+Pj4+Pj4+Pj4+
+IMKgwqAgMTQuODAlwqAgW2tlcm5lbF3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgW2tdIG5mdF9kb19jaGFpbgo+Pj4+Pj4+Pj4+PiDCoMKgwqAgNy42MSXCoCBba2VybmVsXcKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBba10gbWVtY21wCj4+Pj4+Pj4+Pj4+
+IMKgwqDCoCA1LjYzJcKgIFtrZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIFtrXSBuZnRfbWV0YV9nZXRfZXZhbAo+Pj4+Pj4+Pj4+PiDCoMKgwqAgMy4xNCXCoCBba2Vy
+bmVsXcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBba10gbmZ0X2NtcF9ldmFs
+Cj4+Pj4+Pj4+Pj4+IMKgwqDCoCAyLjc5JcKgIFtrZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIFtrXSBhc21fZXhjX25taQo+Pj4+Pj4+Pj4+PiDCoMKgwqAgMS4wNyXC
+oCBba2VybmVsXcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBba10gbW9kdWxl
+X2dldF9rYWxsc3ltCj4+Pj4+Pj4+Pj4+IMKgwqDCoCAwLjkyJcKgIFtrZXJuZWxdwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXQo+Pj4+Pj4+Pj4+PiBrYWxsc3ltc19leHBh
+bmRfc3ltYm9sLmNvbnN0cHJvcC4wCj4+Pj4+Pj4+Pj4+IMKgwqDCoCAwLjg1JcKgIFtrZXJuZWxd
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXSBpeGdiZV9wb2xsCj4+Pj4+
+Pj4+Pj4+IMKgwqDCoCAwLjc1JcKgIFtrZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIFtrXSBmb3JtYXRfZGVjb2RlCj4+Pj4+Pj4+Pj4+IMKgwqDCoCAwLjYxJcKgIFtr
+ZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXSBudW1iZXIKPj4+
+Pj4+Pj4+Pj4gwqDCoMKgIDAuNTYlwqAgW2tlcm5lbF3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgW2tdIG1lbnVfc2VsZWN0Cj4+Pj4+Pj4+Pj4+IMKgwqDCoCAwLjU0JcKgIFtr
+ZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXSBjbGZsdXNoX2Nh
+Y2hlX3JhbmdlCj4+Pj4+Pj4+Pj4+IMKgwqDCoCAwLjUyJcKgIFtrZXJuZWxdwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFtrXSBjcHVpZGxlX2VudGVyX3N0YXRlCj4+Pj4+Pj4+
+Pj4+IMKgwqDCoCAwLjUxJcKgIFtrZXJuZWxdwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIFtrXSB2c25wcmludGYKPj4+Pj4+Pj4+Pj4gwqDCoMKgIDAuNTAlwqAgW2tlcm5lbF3C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgW2tdIHUzMl9jbGFzc2lmeQo+Pj4+
+Pj4+Pj4+PiDCoMKgwqAgMC40OSXCoCBba2VybmVsXcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBba10gZmliX3RhYmxlX2xvb2t1cAo+Pj4+Pj4+Pj4+PiDCoMKgwqAgMC40MCXC
+oCBba2VybmVsXcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBba10gZG1hX3B0
+ZV9jbGVhcl9sZXZlbAo+Pj4+Pj4+Pj4+PiDCoMKgwqAgMC4zOSXCoCBba2VybmVsXcKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBba10gZG9tYWluX21hcHBpbmcKPj4+Pj4+Pj4+
+Pj4gwqDCoMKgIDAuMzYlwqAgW2tlcm5lbF3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgW2tdIGl4Z2JlX3htaXRfZnJhbQo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+
+Pj4+PiDCoMKgwqDCoCBQSUQgVVNFUsKgwqDCoMKgwqAgUFLCoCBOScKgwqDCoCBWSVJUwqDCoMKg
+IFJFU8KgwqDCoCBTSFIgU8KgICVDUFUgJU1FTQo+Pj4+Pj4+Pj4+PiBUSU1FKyBDT01NQU5ECj4+
+Pj4+Pj4+Pj4+IMKgwqDCoMKgwqAgMTggcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKg
+wqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqAgMjguMiAwLjAKPj4+Pj4+Pj4+Pj4gNzow
+Ni4yNyBrc29mdGlycWQvMQo+Pj4+Pj4+Pj4+PiDCoMKgwqDCoMKgIDEyIHJvb3TCoMKgwqDCoMKg
+IDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgUsKgIDEyLjAg
+MC4wCj4+Pj4+Pj4+Pj4+IDQ6MTAuODgga3NvZnRpcnFkLzAKPj4+Pj4+Pj4+IFvigKZdCj4+Pj4+
+Pj4+Pgo+Pj4+Pj4+Pj4gRG8geW91IHNlZSBkaWZmZXJlbnQgYmVoYXZpb3IgaW4gYC9wcm9jL2lu
+dGVycnVwdHNgPwo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4gVGhpcyBpcyBob3cgaXQgbG9va3MgbGlrZSBm
+b3IgRGViaWFuIDExLjUgLSBMaW51eCA1LjEwLjAtMTktYW1kNjQKPj4+Pj4+Pj4gIzEgU01QIERl
+YmlhbiA1LjEwLjE0OS0yICgyMDIyLTEwLTIxKSB4ODZfNjQgR05VL0xpbnV4IG9uCj4+Pj4+Pj4+
+IFN1cGVybWljcm8gWDEwU0xMKy1GIChJbnRlbCBDMjIyIEV4cHJlc3MgUENIKToKPj4+Pj4+Pj4K
+Pj4+Pj4+Pj4gwqDCoMKgwqDCoMKgwqAgMSByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgIDE2Mzk0
+OMKgIDEwMjg4wqDCoCA3Njk2IFPCoMKgIDAuMCAwLjEKPj4+Pj4+Pj4gMDozOS41OCBzeXN0ZW1k
+Cj4+Pj4+Pj4gW+KApl0KPj4+Pj4+Pgo+Pj4+Pj4+IFRoZSBjb250ZW50IG9mIGAvcHJvYy9pbnRl
+cnJ1cHRzYCBoYXMgYSBkaWZmZXJlbnQgZm9ybWF0IG9uIG15Cj4+Pj4+Pj4gc3lzdGVtLgo+Pj4+
+Pj4+Cj4+Pj4+Pj4gYGBgCj4+Pj4+Pj4gJCBoZWFkIC0zIC9wcm9jL2ludGVycnVwdHMKPj4+Pj4+
+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIENQVTDCoMKgwqDCoMKgwqAgQ1BVMcKgwqDCoMKgwqDC
+oCBDUFUywqDCoMKgwqDCoMKgIENQVTMKPj4+Pj4+PiDCoMKgIDE6wqDCoMKgwqDCoCA1NTU2MMKg
+wqDCoMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoMKgwqAgMTEzwqDCoMKgwqDCoMKgwqDCoMKgIDDC
+oCBJUi1JTy1BUElDIDEtZWRnZQo+Pj4+Pj4+IGk4MDQyCj4+Pj4+Pj4gwqDCoCA4OsKgwqDCoMKg
+wqDCoMKgwqDCoCAwwqDCoMKgwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgwqDCoMKgwqAgMMKgwqDC
+oMKgwqDCoMKgwqDCoCAwwqAgSVItSU8tQVBJQyA4LWVkZ2UKPj4+Pj4+PiBydGMwCj4+Pj4+Pj4g
+YGBgCj4+Pj4+Pj4gW+KApl0KPj4+Pj4+Pgo+Pj4+Pj4+PiBhbmQgZm9yIERlYmlhbiA5LjcgLSBM
+aW51eCA0LjkuMC02LWFtZDY0ICMxIFNNUCBEZWJpYW4KPj4+Pj4+Pj4gNC45Ljg4LTErZGViOXUx
+IG9uIFN1cGVybWljcm8gWDEwU0xMKy1GIChJbnRlbCBDMjIyIEV4cHJlc3MgUENIKQo+Pj4+Pj4+
+Pgo+Pj4+Pj4+PiAzMTY1OSByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDC
+oMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKgIDAuM8KgIDAuMCAwOjAwLjkyCj4+Pj4+Pj4+IGt3
+b3JrZXIvNzowCj4+Pj4+Pj4+IMKgwqDCoMKgwqAgMSByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKg
+wqAgNTcwMzLCoMKgIDY3MzbCoMKgIDUyNTYgU8KgwqAgMC4wwqAgMC4xIDI6MjguMTQKPj4+Pj4+
+Pj4gc3lzdGVtZAo+Pj4+Pj4+IFvigKZdCj4+Pj4+Pj4+Pj4+Pj4gU3VwZXJtaWNybyBzdXBwb3J0
+IHN1Z2dlc3RlZCBhcyBmb2xsb3dzOgo+Pj4+Pj4+Pj4+Pj4+IGl0IG1pZ2h0IGJlIGtlcm5lbCBy
+ZWxhdGVkIGRlYmlhbiAxMS41IGhhcyBrZXJuZWwgNS4xMCB3aGljaAo+Pj4+Pj4+Pj4+Pj4+IGlz
+IGEgcmVjZW50IGtlcm5lbCBpdCBtaWdodCBub3QgcHJvcGVybHkgc3VwcG9ydCB0aGUgY2hpcHNl
+dHMKPj4+Pj4+Pj4+Pj4+PiBmb3IgWDkgdGhlcmVmb3JlIGkgc3VnZ2VzdCB0byB1c2UgUkhFTCBv
+ciBDZW50T1MgYXMgdGhleSB1c2UKPj4+Pj4+Pj4+Pj4+PiBtdWNoIG9sZGVyIGtlcm5lbCB2ZXJz
+aW9ucy4gSSBleHBlY3QgdGhhdCB3aXRoIHVidW50dSAyMC4wNAo+Pj4+Pj4+Pj4+Pj4+IHlvdSBz
+ZWUgdGhlIHNhbWUgcHJvYmxlbSBpdCB1c2VzIGtlcm5lbCA1LjQKPj4+Pj4+Pj4+Pj4+Pj4+IFRl
+c3RpbmcgYW5vdGhlciBHTlUvTGludXggZGlzdHJpYnV0aW9uIGZvciBhbm90aGVyIGRhdGEKPj4+
+Pj4+Pj4+Pj4+IHBvaW50LCBtaWdodCBiZSBhIGdvb2QgaWRlYS4KPj4+Pj4+Pj4+Pj4+Cj4+Pj4+
+Pj4+Pj4+PiBBcyBub2JvZHkgaGFzIHJlc3BvbmRlZCB5ZXQsIGJpc2VjdGluZyB0aGUgaXNzdWUg
+aXMgcHJvYmFibHkKPj4+Pj4+Pj4+Pj4+IHRoZSBmYXN0ZXN0IHdheSB0byBnZXQgdG8gdGhlIGJv
+dHRvbSBvZiB0aGlzLiBMdWNraWx5IHRoZQo+Pj4+Pj4+Pj4+Pj4gcHJvYmxlbSBzZWVtcyByZXBy
+b2R1Y2libGUgYW5kIHlvdSBzZWVtIHRvIGJlIGFibGUgdG8gYnVpbGQgYQo+Pj4+Pj4+Pj4+Pj4g
+TGludXgga2VybmVsIHlvdXJzZWxmLCBzbyB0aGF0IHNob3VsZCB3b3JrLiAoRm9yIHRlc3RpbmcK
+Pj4+Pj4+Pj4+Pj4+IHB1cnBvc2VzIHlvdSBjb3VsZCBhbHNvIHRlc3Qgd2l0aCBVYnVudHUsIGFz
+IHRoZXkgcHJvdmlkZQo+Pj4+Pj4+Pj4+Pj4gTGludXgga2VybmVsIGJ1aWxkcyBmb3IgKGFsbW9z
+dCkgYWxsIHJlbGVhc2VzIGluIHRoZWlyIExpbnV4Cj4+Pj4+Pj4+Pj4+PiBrZXJuZWwgbWFpbmxp
+bmUgUFBBIFsyXS4pCj4+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+PiBPZiBjb3Vyc2XCoCBJIGNhbiB0
+cnkgVWJ1bnR1IGFuZCByZXBvcnQgaG93IGl0IGlzIHdvcmtpbmcuCj4+Pj4+Pj4+Pj4+Cj4+Pj4+
+Pj4+Pj4gVWJ1bnR1ICg1LjE1LjAtNDMtZ2VuZXJpYykgc2VlbXMgdG8gYmUgd29ya2luZyBpbiB0
+aGUgc2FtZSB3YXkKPj4+Pj4+Pj4+PiBnZW5lcmF0aW5nIGhpZ2hlciBsb2FkIGFmdGVyIGV4ZWN1
+dGluZyAiaXAgbGluayBzZXQgZW5wMXMwIHVwIi4KPj4+Pj4+Pj4+IFRoYXQgaXMgZ29vZCB0byBr
+bm93LiAoSXMgdGhpcyBVYnVudHUgMjIuMDQ/KSBXaGF0IGFib3V0IFVidW50dQo+Pj4+Pj4+Pj4g
+MjAuMDQgd2l0aCBMaW51eCA1LjQsIGFuZCBVYnVudHUgMTguMDQgd2l0aCA0LjE1Pwo+Pj4+Pj4+
+Pj4KPj4+Pj4+Pj4+IEFueXdheSwgSSB0aGluaywgeW91IHdvbuKAmXQgY29tZSBhcm91bmQgYmlz
+ZWN0aW5nLiBBbm90aGVyIGhpbnQsCj4+Pj4+Pj4+PiBtYWtlIHN1cmUgdGhhdCB5b3UgY2FuIGJ1
+aWxkIGEgNC45IExpbnV4IGtlcm5lbCB5b3Vyc2VsZiwgdGhhdAo+Pj4+Pj4+Pj4gZG9lcyBub3Qg
+ZXhoaWJpdCB0aGF0IGlzc3VlLgo+Pj4+Pj4+Pj4KPj4+Pj4+Pj4gVGhhdGBzIHJpZ2h0LCBpdCBp
+cyAyMi4wNC4gSSBkb25gdCBoYXZlIHRvIGJ1aWxkIGl0LiBTdGFuZGFyZAo+Pj4+Pj4+PiBrZXJu
+ZWwgTGludXggNC45LjAtNi1hbWQ2NCBmcm9tIERlYmlhbiA5Ljcgd29ya2VkIHdpdGhvdXQgcHJv
+YmxlbXMKPj4+Pj4+Pj4gZm9yIHBhc3QgNCB5ZWFycy4KPj4+Pj4+PiBJZiBub2JvZHkgb2YgdGhl
+IGRldmVsb3BlcnMvbWFpbnRhaW5lcnMgaXMgZ29pbmcgdG8gc3RlcCB1cCwgeW91Cj4+Pj4+Pj4g
+YXJlIG9uIHlvdXIgb3duLiBBZ2FpbiwgYXMgeW91IGNhbiByZXByb2R1Y2UgdGhpcyBlYXNpbHks
+IHRoZQo+Pj4+Pj4+IGZhc3Rlc3Qgd2F5IGlzIHRvIGJpc2VjdCB0aGUgaXNzdWUsIHdoaWNoIHlv
+dSBjYW4gZG8gb24geW91ciBvd24uCj4+Pj4+PiBIb3cgY2FuIEkgaW52ZXN0aWdhdGUgdGhhdCBm
+dXJ0aGVyPwo+Pj4+PiBJIHJlcGVhdCBteXNlbGYsIHBsZWFzZSBiaXNlY3QgdGhlIGlzc3VlLiBJ
+dOKAmXMgdGhlIGZhc3Rlc3Qgd2F5Lgo+Pj4+Pgo+Pj4+Pj4gSSB0aG91Z2h0IGFib3V0IHRyeWlu
+ZyB0byBjaGFuZ2Ugc29tZSBvZiB0aGUgcGFyYW1ldGVycyByZWxhdGVkIHRvCj4+Pj4+PiBpeGdi
+ZSBkcml2ZXIgYW5kIG9ic2VydmUgaWYgYW55dGhpbmcgaXMgY2hhbmdpbmcsIGJ1dCB3aGVuIEkg
+YW0KPj4+Pj4+IHRyeWluZyB0byBkbzoKPj4+Pj4+Cj4+Pj4+PiBzdWRvIG1vZHByb2JlIGl4Z2Jl
+IEludE1vZGU9MAo+Pj4+Pj4KPj4+Pj4+IEkgZ2V0IHRoZSBmb2xsb3dpbmcgZXJyb3IgaW4gdGhl
+IGRtZXNnOgo+Pj4+Pj4KPj4+Pj4+IFsgMjEzNy4zMjQ3NzJdIGl4Z2JlOiB1bmtub3duIHBhcmFt
+ZXRlciAnSW50TW9kZScgaWdub3JlZCA8PDw8PDw8PDwKPj4+Pj4gW+KApl0KPj4+Pj4KPj4+Pj4g
+YG1vZGluZm8gaXhnYmVgIHNob3dzIHRoZSBzdXBwb3J0ZWQgcGFyYW1ldGVycy4KPj4+Pj4gUFM6
+IElmIHlvdSBuZWVkIGhlbHAgYmlzZWN0aW5nLCBwbGVhc2UgYXNrLiBPdGhlcndpc2UsIEkgYW0g
+b3V0IG9mCj4+Pj4+IHRoaXMgdGhyZWFkLgo+Pj4+IE9rLCBob3cgZXhhY3RseSBJIGNhbiBiaXNl
+Y3QgdGhpcyBpc3N1ZT8KPj4+IFdoYXQgaGF2ZSB5b3UgdHJpZWQgc28gZmFyPyBBcyB3cml0dGVu
+IGluIHRoZSBwYXN0LCBJ4oCZZCBmaXJzdCB0cnkgbW9yZQo+Pj4gZGlzdHJpYnV0aW9ucywgZm9y
+IGV4YW1wbGUsIG9sZGVyIFVidW50dSB2ZXJzaW9ucy4gVGhlbiwgaWYgeW91IGhhdmUKPj4+IHNv
+bWUgcmFuZ2UsIEnigJlkIHVzZSB0aGUgVWJ1bnR1IFBQQSwgYW5kIHRoZW4gYmV0d2VlbiB0aGUg
+cmVsZWFzZQo+Pj4gY2FuZGlkYXRlIHZlcnNpb25zLCBvbmx5IHRoZW4gc3RhcnQgZG9pbmcgYGdp
+dCBiaXNlY3RgIGFzIGRvY3VtZW50ZWQgaW4KPj4+IHRoZSBkb2N1bWVudGF0aW9uIFszXS4KPj4g
+SG1tbS4gSSdtIG5vdCBhbiBleHBlcnQgaW4gdGhhdCBhcmVhLCBidXQgaWYgeW91IGZvbGxvdyBQ
+YXVsJ3MgYWR2aWNlCj4+IGtlZXAgaW4gbWluZCB0aGF0IGEgZGVsaWJlcmF0ZSBjb25maWcgY2hh
+bmdlIGJ5IHRoZSBkaXN0cm8gbWlnaHQgaGF2ZSBhbgo+PiBpbXBhY3QgaGVyZS4gSGVuY2UgaXQg
+bWlnaHQgYmUgYSBnb29kIGlkZWEgdG8gcnVsZSB0aGF0IG91dCBmaXJzdCBieQo+PiB0YWtpbmcg
+YSBjb25maWcgZnJvbSBhIHdvcmtpbmcga2VybmVsIGFuZCB1c2luZyBpdCAod2l0aCB0aGUgaGVs
+cCBvZgo+PiAibWFrZSBvbGRkZWZjb25maWciKSB0byBidWlsZCB5b3VyIG93biBrZXJuZWwgZnJv
+bSB0aGUgdmVyc2lvbiB0aGF0IGlzCj4+IGtub3duIHRvIGZhaWwuIEJ1dCBvdmVyIHN1Y2ggYSB3
+aWRlIHJhbmdlIG9mIHZlcnNpb25zIHRoaXMgY2FuIGJlCj4+IHRyaWNreS4gOi0vCj4+Cj4+IEJ1
+dCBhcGFydCBmcm9tIHRoYXQgUGF1bCBpcyByaWdodCBhZmFpY3M6IG5vYm9keSB5ZXQgaGFkIGFu
+IGlkZWEgd2hhdAo+PiBtaWdodCBjYXVzZSB0aGlzIHJlZ3Jlc3Npb24sIGhlbmNlIHdlIG5lZWQg
+YSBiaXNlY3Rpb24gdG8gcGluLXBvaW50IHRoZQo+PiBwcm9ibGVtLgo+IAo+IFRoYW5rcyBmb3Ig
+dGhlIGFkdmljZS4gSWBsbCB0cnkgbXkgYmVzdCB0byBmaW5kIG91dCB3aGljaCBjb21taXQgY2F1
+c2VkCj4gdGhlIHByb2JsZW0sIGJ1dCBpdCB3aWxsIHRha2UgbWUgc29tZSB0aW1lIGFzIEkgaGF2
+ZSBuZXZlciBkb25lCj4gYmlzZWN0aW5nIGVzcGVjaWFsbHkgb24gdGhhdCBzY2FsZS4gCgpEaWQg
+eW91IGV2ZXIgZ2V0IGNsb3NlciB0byB0aGUgcm9vdCBvZiB0aGUgcHJvYmxlbT8KCj4gV2hhdGBz
+IHdvbmRlcmluZyBtZSB0aGUgbW9zdCBpcyB0aGF0Cj4gbm9ib2R5IHJlcG9ydGVkIHRoaXMgaXNz
+dWUgc28gZmFyIHRha2luZyBpbnRvIGFjY291bnQgdGhhdCB0aGVzZQo+IHBsYXRmb3JtcyBhbG9u
+ZyB3aXRoIERlYmlhbiBhbmQgSW50ZWwgODI1OTlFTiBOSUMgaXMgcXVpdGUgY29tbW9uCj4gY29u
+ZmlndXJhdGlvbiBJIHRoaW5rLgoKSSBndWVzcyB0aGUgYW5zd2VyIGlzIHRoZSB1c3VhbDogdGhl
+IHByb2JsZW0gb25seSBzaG93cyB1cCBpbiBzb21lCmVudmlyb25tZW50cyB1c2luZyB0aGF0IE5J
+QyAtLSBmb3IgZXhhbXBsZSBpZiB0aGUgZmlybXdhcmUgb2YgdGhlCm1vdGhlcmJvYXJkIG9yIHRo
+ZSBjb25maWd1cmF0aW9uIHNvbWVob3cgZGlyZWN0bHkgb3IgaW5kaXJlY3RseSB0cmlnZ2VyCnRo
+ZSBwcm9ibGVtLgoKQ2lhbywgVGhvcnN0ZW4gKHdlYXJpbmcgaGlzICd0aGUgTGludXgga2VybmVs
+J3MgcmVncmVzc2lvbiB0cmFja2VyJyBoYXQpCi0tCkV2ZXJ5dGhpbmcgeW91IHdhbm5hIGtub3cg
+YWJvdXQgTGludXgga2VybmVsIHJlZ3Jlc3Npb24gdHJhY2tpbmc6Cmh0dHBzOi8vbGludXgtcmVn
+dHJhY2tpbmcubGVlbWh1aXMuaW5mby9hYm91dC8jdGxkcgpJZiBJIGRpZCBzb21ldGhpbmcgc3R1
+cGlkLCBwbGVhc2UgdGVsbCBtZSwgYXMgZXhwbGFpbmVkIG9uIHRoYXQgcGFnZS4KClAuUy46Cgoj
+cmVnemJvdCBiYWNrYnVybmVyOiBuZWVkIGJpc2VjdGlvbiB0aGF0IHdpbGwgdGFrZSBzb21lIHRp
+bWUgdG8gZ2V0IGRvbmUKI3JlZ3pib3QgcG9rZQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
+cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLXdpcmVkLWxhbgo=
