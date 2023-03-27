@@ -1,89 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05F9B6C9DF5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Mar 2023 10:35:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC6836C9EFD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Mar 2023 11:09:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7D10241496;
-	Mon, 27 Mar 2023 08:35:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D10241496
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0C489409B3;
+	Mon, 27 Mar 2023 09:09:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C489409B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679906116;
-	bh=yyQ8b7VwdLqdey0AM5v9tPYqyOA5aeD7R1ey6L9YD4w=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1679908147;
+	bh=zqCcISe4SFTOMebuosN30J8UnhIdat/z9K5EBkzANH8=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=SxtWim6gCnLDqJdcV2NDBmNrT6atfVtG2B250tAOoC4+WuO9lrnVxNJz5EhOlxFED
-	 efaWwH5KTgEqTzuABAkfav+Xg24diQh6gUqOgn5X5ZjG7gaRhFcgjdeaCiY0sAJs8j
-	 po0HL9H8EO4D2guIpqXxSrwYR0ou48QTPokxoUk8rosYhummaj7DL63eoIeZYrnLZd
-	 z4iwgqYIvou/3BdpOADleItUNdL7mzdMumeXFc454Xxcwki/bFwhZt0Fi1hc3C8Hvu
-	 5YicbzGSWPC9yz8u3qVaizhpHwSMGsFPWRLGKxo5/LdIwgJiTefllbXHZ3ieEHWlIK
-	 U/YbSnuKoPwSw==
+	b=crVfkyEtEnXA7lQL3L4dgCTG1Jv1KKW+I164DD2pUOov7jvYnU2ykAyv2Lgwxt/f4
+	 Z0MS2Dt10Gu440IBr3BucdHrqBE3KENjeHvOQR1IG3RP9QJ+Brke47/912MBrYB9Rm
+	 aA9yS//KUHASSQU2T8Qr9mM41qmju9t8i5j0JgF4wURZUopl7NNyUzdEXvRYyNnsHx
+	 WKC57g/HniD0M8NipvypSusozmy01dhqlxiot8EkpZl8TjxmhZANNVwph8D/y4RcGH
+	 FJHMDGlQd8Mlm+ONPGeWcBSlsq2DvcHhpEUv4U4UJLTXIoxkSDtANCI6xeqF/Ljuq3
+	 FC7hhwPAtlMoA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F79vrM3qjBpY; Mon, 27 Mar 2023 08:35:10 +0000 (UTC)
+	with ESMTP id za1nFZoNP0HV; Mon, 27 Mar 2023 09:09:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 967F7414C0;
-	Mon, 27 Mar 2023 08:35:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 967F7414C0
+	by smtp4.osuosl.org (Postfix) with ESMTP id E2CA340A02;
+	Mon, 27 Mar 2023 09:09:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2CA340A02
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 949841BF2B1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 08:35:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A49F31BF3B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 09:08:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6B68D4051C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 08:35:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B68D4051C
+ by smtp1.osuosl.org (Postfix) with ESMTP id 788568143F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 09:08:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 788568143F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3lKO3STqijcO for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Mar 2023 08:34:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADD3C400C6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ADD3C400C6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 08:34:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="426473405"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="426473405"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Mar 2023 01:34:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="683390490"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="683390490"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Mar 2023 01:34:56 -0700
-Date: Mon, 27 Mar 2023 10:34:47 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Liu, Lingyu" <lingyu.liu@intel.com>
-Message-ID: <ZCFVJ5qowT/7o8YZ@localhost.localdomain>
-References: <20230309024934.151120-1-lingyu.liu@intel.com>
- <ZAsEM+P7D/AfreLY@localhost.localdomain>
- <92a590c8-89d9-76f9-e7fa-5046699fbfe0@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VJYpFGYNjVNa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Mar 2023 09:08:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 901A381D67
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 901A381D67
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 09:08:57 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 35CDD61CC457B;
+ Mon, 27 Mar 2023 11:08:54 +0200 (CEST)
+Message-ID: <13024a04-8592-e59b-a2a4-14ce8d17a154@molgen.mpg.de>
+Date: Mon, 27 Mar 2023 11:08:55 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <92a590c8-89d9-76f9-e7fa-5046699fbfe0@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679906098; x=1711442098;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=divf2WjbGcqN+YQ7UlIeoUzynU+ftL+ozmX5pXz6J2A=;
- b=MIpB9gii28DSGVxp1LUzn/Cz84+25T9v2/5+ddfFZzSk4DjOOueibgXV
- tqQjUgA+W0x3eq6ifInSuMF39cz51DUMFlf0wUrgeIdIi3Kch5ejXFVIv
- CHa4PNDCzWVEWY9cnZ/7dFqgTayAE0SzEHZepu6g5+Yx/0KLPnR74PJYv
- bRabiYT/jbjl3Tp/w/8iqlj81u+/RRFB03s022cdsvgPcl7PEkCSN1rFz
- 6wfMoId5C8P8ELdxGqd1hvQxL3zHtW7NBCZee/QrXFHnCXr6yKDywpIG4
- /F7JCeE9RKhX6wtPdtRsIzn8iaOR6DwyDYWMu3ehY0m6wa5xDvaiGSqOA
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MIpB9gii
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Content-Language: en-US
+To: Lingyu Liu <lingyu.liu@intel.com>, Junfeng Guo <junfeng.guo@intel.com>
+References: <20230309024934.151120-1-lingyu.liu@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20230309024934.151120-1-lingyu.liu@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: add FDIR counter reset in
  FDIR init stage
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -99,87 +78,52 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 14, 2023 at 08:39:09AM +0800, Liu, Lingyu wrote:
-> 
-> On 3/10/2023 6:19 PM, Michal Swiatkowski wrote:
-> > On Thu, Mar 09, 2023 at 02:49:34AM +0000, Lingyu Liu wrote:
-> > > From: Junfeng Guo<junfeng.guo@intel.com>
-> > > 
-> > > This patch added the missing FDIR counters reset process when
-> > > FDIR inits. Without this patch, when VF initializes or resets,
-> > > all the FDIR counters will not be cleaned, which may cause
-> > > unexpected behaviors for future FDIR rule create (e.g., rule
-> > > conflict).
-> > > 
-> > > Fixes: 1f7ea1cd6a37 ("ice: Enable FDIR Configure for AVF")
-> > > Signed-off-by: Junfeng Guo<junfeng.guo@intel.com>
-> > > Signed-off-by: Lingyu Liu<lingyu.liu@intel.com>
-> > > ---
-> > > v2: change commit message to apply more to a kernel use
-> > > ---
-> > >   drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 15 +++++++++++++++
-> > >   1 file changed, 15 insertions(+)
-> > > 
-> > > diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> > > index e6ef6b303222..60c9da4aac1d 100644
-> > > --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> > > +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> > > @@ -541,6 +541,20 @@ static void ice_vc_fdir_rem_prof_all(struct ice_vf *vf)
-> > >   	}
-> > >   }
-> > > +/**
-> > > + * ice_vc_fdir_reset_cnt_all - reset all FDIR counters for this VF FDIR
-> > > + * @fdir: pointer to the VF FDIR structure
-> > > + */
-> > > +static void ice_vc_fdir_reset_cnt_all(struct ice_vf_fdir *fdir)
-> > > +{
-> > > +	enum ice_fltr_ptype flow = ICE_FLTR_PTYPE_NONF_NONE;
-> > > +
-> > > +	for (; flow < ICE_FLTR_PTYPE_MAX; flow++) {
-> > > +		fdir->fdir_fltr_cnt[flow][0] = 0;
-> > > +		fdir->fdir_fltr_cnt[flow][1] = 0;
-> > > +	}
-> > > +}
-> > > +
-> > >   /**
-> > >    * ice_vc_fdir_write_flow_prof
-> > >    * @vf: pointer to the VF structure
-> > > @@ -1924,6 +1938,7 @@ void ice_vf_fdir_init(struct ice_vf *vf)
-> > >   	spin_lock_init(&fdir->ctx_lock);
-> > >   	fdir->ctx_irq.flags = 0;
-> > >   	fdir->ctx_done.flags = 0;
-> > > +	ice_vc_fdir_reset_cnt_all(fdir);
-> > I am fine with this change, however, maybe the better place for
-> > resetting counters will be when the flows are removed? Or maybe
-> > the flow are removed only by hw?
-> 
-> The flows are removed in ice_vf_fdir_exit(). When VF resets,
-> ice_vf_fdir_init() and ice_vf_fdir_exit() is called in pairs.
-> While ice_vf_fdir_init() is called when vf entry initializes,
-> where these counters should be initialized.
-> 
-
-Ok, thanks.
-
-Sorry, I missed the replay :(
-
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-
-> > >   }
-> > >   /**
-> > > -- 
-> > > 2.25.1
-> > > 
-> > > _______________________________________________
-> > > Intel-wired-lan mailing list
-> > > Intel-wired-lan@osuosl.org
-> > > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBMaW5neXUsIGRlYXIgSnVuZmVuZywKCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4KCkFt
+IDA5LjAzLjIzIHVtIDAzOjQ5IHNjaHJpZWIgTGluZ3l1IExpdToKPiBGcm9tOiBKdW5mZW5nIEd1
+byA8anVuZmVuZy5ndW9AaW50ZWwuY29tPgoKQSBzaG9ydGVyIGNvbW1pdCBtZXNzYWdlIHN1bW1h
+cnkvdGl0bGUgd291bGQgYmU6CgpSZXNldCBGRElSIGNvdW50ZXIgaW4gRkRJUiBpbml0IHN0YWdl
+Cgo+IFRoaXMgcGF0Y2ggYWRkZWQgdGhlIG1pc3NpbmcgRkRJUiBjb3VudGVycyByZXNldCBwcm9j
+ZXNzIHdoZW4KCldoYXQgY29tbWl0IGRvIHlvdSByZWZlcmVuY2U/IElmIGl04oCZcyBhYm91dCB0
+aGUgY3VycmVudCBjaGFuZ2UsIHBsZWFzZSB1c2U6CgpBZGQgdGhlIG1pc3NpbmcgRkRJUiBjb3Vu
+dGVycyByZXNldCBwcm9jZXNzIOKApgoKQmV0dGVyOgoKUmVzZXQgdGhlIEZESVIgY291bnRlcnMg
+d2hlbiDigKYKCj4gRkRJUiBpbml0cy4gV2l0aG91dCB0aGlzIHBhdGNoLCB3aGVuIFZGIGluaXRp
+YWxpemVzIG9yIHJlc2V0cywKPiBhbGwgdGhlIEZESVIgY291bnRlcnMgd2lsbCBub3QgYmUgY2xl
+YW5lZCwgd2hpY2ggbWF5IGNhdXNlCgrigKYgYXJlIG5vdCBjbGVhbmVkIOKApgoKPiB1bmV4cGVj
+dGVkIGJlaGF2aW9ycyBmb3IgZnV0dXJlIEZESVIgcnVsZSBjcmVhdGUgKGUuZy4sIHJ1bGUKPiBj
+b25mbGljdCkuCj4gCj4gRml4ZXM6IDFmN2VhMWNkNmEzNyAoImljZTogRW5hYmxlIEZESVIgQ29u
+ZmlndXJlIGZvciBBVkYiKQo+IFNpZ25lZC1vZmYtYnk6IEp1bmZlbmcgR3VvIDxqdW5mZW5nLmd1
+b0BpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogTGluZ3l1IExpdSA8bGluZ3l1LmxpdUBpbnRl
+bC5jb20+Cj4gLS0tCj4gdjI6IGNoYW5nZSBjb21taXQgbWVzc2FnZSB0byBhcHBseSBtb3JlIHRv
+IGEga2VybmVsIHVzZQo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
+ZV92aXJ0Y2hubF9mZGlyLmMgfCAxNSArKysrKysrKysrKysrKysKPiAgIDEgZmlsZSBjaGFuZ2Vk
+LCAxNSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2ljZS9pY2VfdmlydGNobmxfZmRpci5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaWNlL2ljZV92aXJ0Y2hubF9mZGlyLmMKPiBpbmRleCBlNmVmNmIzMDMyMjIuLjYwYzlkYTRh
+YWMxZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3Zp
+cnRjaG5sX2ZkaXIuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vf
+dmlydGNobmxfZmRpci5jCj4gQEAgLTU0MSw2ICs1NDEsMjAgQEAgc3RhdGljIHZvaWQgaWNlX3Zj
+X2ZkaXJfcmVtX3Byb2ZfYWxsKHN0cnVjdCBpY2VfdmYgKnZmKQo+ICAgCX0KPiAgIH0KPiAgIAo+
+ICsvKioKPiArICogaWNlX3ZjX2ZkaXJfcmVzZXRfY250X2FsbCAtIHJlc2V0IGFsbCBGRElSIGNv
+dW50ZXJzIGZvciB0aGlzIFZGIEZESVIKPiArICogQGZkaXI6IHBvaW50ZXIgdG8gdGhlIFZGIEZE
+SVIgc3RydWN0dXJlCj4gKyAqLwo+ICtzdGF0aWMgdm9pZCBpY2VfdmNfZmRpcl9yZXNldF9jbnRf
+YWxsKHN0cnVjdCBpY2VfdmZfZmRpciAqZmRpcikKPiArewo+ICsJZW51bSBpY2VfZmx0cl9wdHlw
+ZSBmbG93ID0gSUNFX0ZMVFJfUFRZUEVfTk9ORl9OT05FOwo+ICsKPiArCWZvciAoOyBmbG93IDwg
+SUNFX0ZMVFJfUFRZUEVfTUFYOyBmbG93KyspIHsKPiArCQlmZGlyLT5mZGlyX2ZsdHJfY250W2Zs
+b3ddWzBdID0gMDsKPiArCQlmZGlyLT5mZGlyX2ZsdHJfY250W2Zsb3ddWzFdID0gMDsKPiArCX0K
+CkluIGFsbCBvdGhlciBwbGFjZXMgdGhpcyBjb25zdHJ1Y3QgaXMgd3JpdHRlbiBsaWtlOgoKCWVu
+dW0gaWNlX2ZsdHJfcHR5cGUgZmxvdzsKCglmb3IgKGZsb3cgPSBJQ0VfRkxUUl9QVFlQRV9OT05G
+X05PTkU7IGZsb3cgPCDigKYgKSB7CgkJ4oCmCgl9Cgo+ICt9Cj4gKwo+ICAgLyoqCj4gICAgKiBp
+Y2VfdmNfZmRpcl93cml0ZV9mbG93X3Byb2YKPiAgICAqIEB2ZjogcG9pbnRlciB0byB0aGUgVkYg
+c3RydWN0dXJlCj4gQEAgLTE5MjQsNiArMTkzOCw3IEBAIHZvaWQgaWNlX3ZmX2ZkaXJfaW5pdChz
+dHJ1Y3QgaWNlX3ZmICp2ZikKPiAgIAlzcGluX2xvY2tfaW5pdCgmZmRpci0+Y3R4X2xvY2spOwo+
+ICAgCWZkaXItPmN0eF9pcnEuZmxhZ3MgPSAwOwo+ICAgCWZkaXItPmN0eF9kb25lLmZsYWdzID0g
+MDsKPiArCWljZV92Y19mZGlyX3Jlc2V0X2NudF9hbGwoZmRpcik7Cj4gICB9Cj4gICAKPiAgIC8q
+KgoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
+YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC13aXJlZC1sYW4K
