@@ -1,90 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CD406C9624
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Mar 2023 17:27:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 890EB6C99B0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Mar 2023 04:46:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B2A7410C6;
-	Sun, 26 Mar 2023 15:27:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B2A7410C6
+	by smtp2.osuosl.org (Postfix) with ESMTP id DADFD403F9;
+	Mon, 27 Mar 2023 02:46:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DADFD403F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1679844432;
-	bh=JO3HQvaHiiKLudG9jvObJJT9iymaCF158dGxI3dmR2Q=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1679885193;
+	bh=W8Pi9R3OM3AJEFhz5Sor+DQ8waw16utCFa+TvlCEjD4=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=fbUG/RUNBFNrwjXIbrt9JMzAcEBg3xY9d5taQMpAUWvK3PEZ7ExF++nl5ZycguoWp
-	 XWrInmkNIIm9enxzaacwO/xNzTa2iDxj3/a96RXLA4uTW6ylHB5JSBt8IhRc2pVIzN
-	 JzAPxXTOiomGcj5qn7xMNuhi6hZgeT/qCpimbyLtZ4nukXRIiL0kUhDED6u6aCmTFV
-	 VMwuWzvDt+ShZYGruT7ur9yZFA9BCIckIsgshT8QbisJWw72A06e0Cv9SrsFfib9ls
-	 fEE9Wj5oQU8c3sXQ4tcullvZs9tHX3GWgmZ17TQARCpOoWuYXR1dZ+maBDXk898tIo
-	 uSr92PnWNYd5A==
+	 Cc:From;
+	b=pQP0RHZ3yeMmJX08WkH9b2VzDVE/Rm6a9DybttkV+mH+uiZU7wNfy8ZIA2Q01Bevs
+	 F8gLUDLY39DNq2LxPxGAFbg6S77AN9K5OYZjvYz9BvNEQWPqmdLRrVAkSm+qGn96YO
+	 WItvrU8bzRjUoBuaET46UMOtEaBNNmUFKxv/VzzICa57Oh78Hu48SuIC3H/YG2tQa8
+	 HJ3oS+qBBk3ZyvKEG83res+YNIl2XdmTknFP9xf5n2PyUduf7vk31tFVbFFeHXW9JS
+	 K3Nc+ur0RZB6Y3dSw9lrQZwORuSeDmF9FErKG7VvBBeQ0rU1rzIk+SNnhEFxK94VAg
+	 ULXj2NGeWPqGw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0yfq41pwy70m; Sun, 26 Mar 2023 15:27:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tBwTQ4GJgtu0; Mon, 27 Mar 2023 02:46:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F1B8A410C5;
-	Sun, 26 Mar 2023 15:27:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1B8A410C5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6D8D5403B7;
+	Mon, 27 Mar 2023 02:46:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6D8D5403B7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C8B301BF3CE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Mar 2023 15:26:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3ED3D1BF3BA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 02:46:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AD63160DE5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Mar 2023 15:26:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD63160DE5
+ by smtp4.osuosl.org (Postfix) with ESMTP id 15AD941523
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 02:46:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 15AD941523
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1AY-uZy5TQ1i for <intel-wired-lan@lists.osuosl.org>;
- Sun, 26 Mar 2023 15:26:57 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B7BBF60E78
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B7BBF60E78
- for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Mar 2023 15:26:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="402697699"
-X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="402697699"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2023 08:26:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="794033884"
-X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="794033884"
-Received: from jsanche3-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.252.37.83])
- by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2023 08:26:55 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Sun, 26 Mar 2023 09:26:36 -0600
-Message-Id: <20230326152636.2168751-3-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230326152636.2168751-1-ahmed.zaki@intel.com>
-References: <20230326152636.2168751-1-ahmed.zaki@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id blzAUUQ6a11V for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Mar 2023 02:46:27 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A3FAC41506
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
+ [IPv6:2a00:1450:4864:20::532])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A3FAC41506
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Mar 2023 02:46:26 +0000 (UTC)
+Received: by mail-ed1-x532.google.com with SMTP id t10so29835389edd.12
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 26 Mar 2023 19:46:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679885184;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6WQh8DFlIUFAoe6CD871YIQT7zlRrIbVfDsOcaDVxO8=;
+ b=v3yBGJnyWmM7590nZ92qivwyGUpqU6eGlNg6rafmXIkA4MDWUtTAw3p3VR9SyB6jMX
+ eslg/K45p1qbEsRDv2pHaoHm71EURoF4Qk6FzZHFK1Zd7dPEFhBwKlw8XoKqEYVit6dV
+ JTxsW20I+G3s2FEn2HbQELXxqJ0C0eZqq3JVYJBXO8VLExqYq0QgJRYFe56VAdPxZF2P
+ NNZkrfjjUQ9l8juoxUreoDSUWMCS7VMInJRj6haIviQ9Jq3DlrtgTT2V3bWcclnHgukk
+ AsR9iD5kWvWz+7PdBTmIsfuUiJM9I5WomELnLJbwDCEDhn81IEz8wdPDccVJPjCfLlBk
+ 7vTw==
+X-Gm-Message-State: AAQBX9djrFVIVH6KhuE8PLEeTLw8Ah3ds8jwzp9ooCwO8KaizZ+NraZw
+ 4nyXs6vhUCysoH0KBXtAyEj/tC1IS1KDadXU7HY=
+X-Google-Smtp-Source: AKy350b2aU3b0D3A20UYbEPIMA+aY6RWYTOZcSWqIEmCMA0rD4Sn9M+wTMKUJlEzAA0yKXqkDVSzJrq7qqPnhai9qIs=
+X-Received: by 2002:a50:ab5a:0:b0:4bb:e549:a2ad with SMTP id
+ t26-20020a50ab5a000000b004bbe549a2admr5032610edc.4.1679885184546; Sun, 26 Mar
+ 2023 19:46:24 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679844417; x=1711380417;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=DIAIfS/Pc4AjiRlO8cGTgBuImskSdI12ICHDDHAU2lQ=;
- b=dSx1oeOtL4m3XgRsjK61/1WLF6+ZlcEaGws8zUpqMjlT9YfzPtDjLQqQ
- 6Rd94xJIQc8/vNr9klGbQI1MznU+oYkDkGhq3A7a9djQ5kZKJHnOQLpHq
- J9N+kFuScspSTrhLphrlNMmbGGpv0qbyBY95tIq24KFRuP8lXQ3S14dLZ
- tA/ug5Th5Pu5uUh6tOPInw3kWnoVXlRPd90tDrSpHXo4xp7RcKrjpqPkt
- sDSepcI8Q4ilJLOs2SnmywuT68sqzeMOz0z51azmkgnu336QfW2iz04gX
- WWat6GlTT/+IJ3HE64LvVpOFEMi3v4nV0FZXPSd3JMoi9Kgm5Fk37kWhQ
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dSx1oeOt
-Subject: [Intel-wired-lan] [PATCH net 2/2] iavf: remove active_cvlans and
- active_svlans bitmaps
+References: <20230308220756.587317-1-jjh@daedalian.us>
+ <ddbae662-96d6-8779-eb8a-5a375e97ec22@molgen.mpg.de>
+ <f586237d-66be-8968-d980-f911b83d11ca@molgen.mpg.de>
+In-Reply-To: <f586237d-66be-8968-d980-f911b83d11ca@molgen.mpg.de>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Mon, 27 Mar 2023 10:45:48 +0800
+Message-ID: <CAL+tcoAtEnK6VFf9CD0x4h_VoeHwGhs87_MgZqdmebCcvtZvGA@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1679885184;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6WQh8DFlIUFAoe6CD871YIQT7zlRrIbVfDsOcaDVxO8=;
+ b=cRPQntf31DinXZlVfGGDpBKfUmyiIOuBVPDWAdjL7XRw4ROKwFwpblTZuEbQn1Qqj9
+ mPBwO2tySYTwo74LMixlktTXT2Av59yCzMfMmNRE0vew+g+6rwHpejYPrtl3yiOdi1NS
+ Ts1CnL2Em0n8wizTS7U/FJjw+r8fZD59acCN6MAceUElYFsWXs6/Po48PcamJ4hhwZhx
+ HSm7ID3AXzmF4oRq7lSDYOeKzVjie3ccUS5gzKAP7/loltCwkyxBQeMlBbxqXFItU++z
+ KiNZ9ToxGTUk02hLTzaIBiVdRoXtmW5IM865K6HwCvaGe+tk2nd8LZjeQwaBFl9HU+Uj
+ 1xjg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=cRPQntf3
+Subject: Re: [Intel-wired-lan] [PATCH net v3] ixgbe: Panic during XDP_TX
+ with > 64 CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,275 +106,153 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Shujin Li <lishujin@kuaishou.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ John Hickey <jjh@daedalian.us>, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
+ Jason Xing <xingwanli@kuaishou.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The VLAN filters info is currently being held in a list and 2 bitmaps
-(active_cvlans and active_svlans). We are experiencing some racing where
-data is not in sync in the list and bitmaps. For example, the VLAN is
-initially added to the list but only when the PF replies, it is added to
-the bitmap. If a user adds many V2 VLANS before the PF responds:
-
-    while [ $((i++)) ]
-        ip l add l eth0 name eth0.$i type vlan id $i
-
-we might end up with more VLAN list entries than the designated limit.
-Also, The "ip link show" will show more links added than the PF limit.
-
-On the other and, the bitmaps are only used to check the number of VLAN
-filters and to re-enable the filters when the interface goes from DOWN to
-UP.
-
-This patch gets rid of the bitmaps and uses the list only. To do that,
-the states of the VLAN filter are modified:
-1 - IAVF_VLAN_REMOVE: the entry needs to be totally removed after informing
-  the PF. This is the "ip link del eth0.$i" path.
-2 - IAVF_VLAN_DISABLE: (new) the netdev went down. The filter needs to be
-  removed from the PF and then marked INACTIVE.
-3 - IAVF_VLAN_INACTIVE: (new) no PF filter exists, but the user did not
-  delete the VLAN.
-
-Fixes: 48ccc43ecf109 ("iavf: Add support VIRTCHNL_VF_OFFLOAD_VLAN_V2 during netdev config")
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |  7 +--
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 40 +++++++----------
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 45 ++++++++++---------
- 3 files changed, 45 insertions(+), 47 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 00262f721761..7ff9e6210772 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -58,8 +58,6 @@ enum iavf_vsi_state_t {
- struct iavf_vsi {
- 	struct iavf_adapter *back;
- 	struct net_device *netdev;
--	unsigned long active_cvlans[BITS_TO_LONGS(VLAN_N_VID)];
--	unsigned long active_svlans[BITS_TO_LONGS(VLAN_N_VID)];
- 	u16 seid;
- 	u16 id;
- 	DECLARE_BITMAP(state, __IAVF_VSI_STATE_SIZE__);
-@@ -162,7 +160,9 @@ enum iavf_vlan_state_t {
- 	__IAVF_VLAN_ADD,	/* filter needs to be added */
- 	__IAVF_VLAN_IS_NEW,	/* filter is new, wait for PF answer */
- 	__IAVF_VLAN_ACTIVE,	/* filter is accepted by PF */
--	__IAVF_VLAN_REMOVE,	/* filter needs to be removed */
-+	__IAVF_VLAN_DISABLE,	/* filter needs to be deleted by PF, then marked INACTIVE */
-+	__IAVF_VLAN_INACTIVE,	/* filter is inactive, we are in IFF_DOWN */
-+	__IAVF_VLAN_REMOVE,	/* filter needs to be removed from list */
- };
- 
- struct iavf_vlan_filter {
-@@ -260,6 +260,7 @@ struct iavf_adapter {
- 	wait_queue_head_t vc_waitqueue;
- 	struct iavf_q_vector *q_vectors;
- 	struct list_head vlan_filter_list;
-+	int num_vlan_filters;
- 	struct list_head mac_filter_list;
- 	struct mutex crit_lock;
- 	struct mutex client_lock;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 5e3429677daa..6627099c081b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -792,6 +792,7 @@ iavf_vlan_filter *iavf_add_vlan(struct iavf_adapter *adapter,
- 
- 		list_add_tail(&f->list, &adapter->vlan_filter_list);
- 		f->state = __IAVF_VLAN_ADD;
-+		adapter->num_vlan_filters++;
- 		adapter->aq_required |= IAVF_FLAG_AQ_ADD_VLAN_FILTER;
- 	}
- 
-@@ -828,14 +829,18 @@ static void iavf_del_vlan(struct iavf_adapter *adapter, struct iavf_vlan vlan)
-  **/
- static void iavf_restore_filters(struct iavf_adapter *adapter)
- {
--	u16 vid;
-+	struct iavf_vlan_filter *f;
- 
- 	/* re-add all VLAN filters */
--	for_each_set_bit(vid, adapter->vsi.active_cvlans, VLAN_N_VID)
--		iavf_add_vlan(adapter, IAVF_VLAN(vid, ETH_P_8021Q));
-+	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 
--	for_each_set_bit(vid, adapter->vsi.active_svlans, VLAN_N_VID)
--		iavf_add_vlan(adapter, IAVF_VLAN(vid, ETH_P_8021AD));
-+	list_for_each_entry(f, &adapter->vlan_filter_list, list) {
-+		if (f->state == __IAVF_VLAN_INACTIVE)
-+			f->state = __IAVF_VLAN_ADD;
-+	}
-+
-+	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-+	adapter->aq_required |= IAVF_FLAG_AQ_ADD_VLAN_FILTER;
- }
- 
- /**
-@@ -844,8 +849,7 @@ static void iavf_restore_filters(struct iavf_adapter *adapter)
-  */
- u16 iavf_get_num_vlans_added(struct iavf_adapter *adapter)
- {
--	return bitmap_weight(adapter->vsi.active_cvlans, VLAN_N_VID) +
--		bitmap_weight(adapter->vsi.active_svlans, VLAN_N_VID);
-+	return adapter->num_vlan_filters;
- }
- 
- /**
-@@ -928,11 +932,6 @@ static int iavf_vlan_rx_kill_vid(struct net_device *netdev,
- 		return 0;
- 
- 	iavf_del_vlan(adapter, IAVF_VLAN(vid, be16_to_cpu(proto)));
--	if (proto == cpu_to_be16(ETH_P_8021Q))
--		clear_bit(vid, adapter->vsi.active_cvlans);
--	else
--		clear_bit(vid, adapter->vsi.active_svlans);
--
- 	return 0;
- }
- 
-@@ -1293,16 +1292,11 @@ static void iavf_clear_mac_vlan_filters(struct iavf_adapter *adapter)
- 		}
- 	}
- 
--	/* remove all VLAN filters */
-+	/* disable all VLAN filters */
- 	list_for_each_entry_safe(vlf, vlftmp, &adapter->vlan_filter_list,
--				 list) {
--		if (vlf->state == __IAVF_VLAN_ADD) {
--			list_del(&vlf->list);
--			kfree(vlf);
--		} else {
--			vlf->state = __IAVF_VLAN_REMOVE;
--		}
--	}
-+				 list)
-+		vlf->state = __IAVF_VLAN_DISABLE;
-+
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- }
- 
-@@ -2914,6 +2908,7 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
- 		list_del(&fv->list);
- 		kfree(fv);
- 	}
-+	adapter->num_vlan_filters = 0;
- 
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
-@@ -3131,9 +3126,6 @@ static void iavf_reset_task(struct work_struct *work)
- 	adapter->aq_required |= IAVF_FLAG_AQ_ADD_CLOUD_FILTER;
- 	iavf_misc_irq_enable(adapter);
- 
--	bitmap_clear(adapter->vsi.active_cvlans, 0, VLAN_N_VID);
--	bitmap_clear(adapter->vsi.active_svlans, 0, VLAN_N_VID);
--
- 	mod_delayed_work(adapter->wq, &adapter->watchdog_task, 2);
- 
- 	/* We were running when the reset started, so we need to restore some
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 9ba83f0d212e..59c1e39e2d23 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -643,15 +643,9 @@ static void iavf_vlan_add_reject(struct iavf_adapter *adapter)
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 	list_for_each_entry_safe(f, ftmp, &adapter->vlan_filter_list, list) {
- 		if (f->state == __IAVF_VLAN_IS_NEW) {
--			if (f->vlan.tpid == ETH_P_8021Q)
--				clear_bit(f->vlan.vid,
--					  adapter->vsi.active_cvlans);
--			else
--				clear_bit(f->vlan.vid,
--					  adapter->vsi.active_svlans);
--
- 			list_del(&f->list);
- 			kfree(f);
-+			adapter->num_vlan_filters--;
- 		}
- 	}
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
-@@ -824,7 +818,12 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
- 		    !VLAN_FILTERING_ALLOWED(adapter)) {
- 			list_del(&f->list);
- 			kfree(f);
--		} else if (f->state == __IAVF_VLAN_REMOVE) {
-+			adapter->num_vlan_filters--;
-+		} else if (f->state == __IAVF_VLAN_DISABLE &&
-+		    !VLAN_FILTERING_ALLOWED(adapter)) {
-+			f->state = __IAVF_VLAN_INACTIVE;
-+		} else if (f->state == __IAVF_VLAN_REMOVE ||
-+			   f->state == __IAVF_VLAN_DISABLE) {
- 			count++;
- 		}
- 	}
-@@ -856,11 +855,18 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
- 		vvfl->vsi_id = adapter->vsi_res->vsi_id;
- 		vvfl->num_elements = count;
- 		list_for_each_entry_safe(f, ftmp, &adapter->vlan_filter_list, list) {
--			if (f->state == __IAVF_VLAN_REMOVE) {
-+			if (f->state == __IAVF_VLAN_DISABLE) {
- 				vvfl->vlan_id[i] = f->vlan.vid;
-+				f->state = __IAVF_VLAN_INACTIVE;
- 				i++;
-+				if (i == count)
-+					break;
-+			} else if (f->state == __IAVF_VLAN_REMOVE) {
-+				vvfl->vlan_id[i] = f->vlan.vid;
- 				list_del(&f->list);
- 				kfree(f);
-+				adapter->num_vlan_filters--;
-+				i++;
- 				if (i == count)
- 					break;
- 			}
-@@ -900,7 +906,8 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
- 		vvfl_v2->vport_id = adapter->vsi_res->vsi_id;
- 		vvfl_v2->num_elements = count;
- 		list_for_each_entry_safe(f, ftmp, &adapter->vlan_filter_list, list) {
--			if (f->state == __IAVF_VLAN_REMOVE) {
-+			if (f->state == __IAVF_VLAN_DISABLE ||
-+			    f->state == __IAVF_VLAN_REMOVE) {
- 				struct virtchnl_vlan_supported_caps *filtering_support =
- 					&adapter->vlan_v2_caps.filtering.filtering_support;
- 				struct virtchnl_vlan *vlan;
-@@ -914,8 +921,13 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
- 				vlan->tci = f->vlan.vid;
- 				vlan->tpid = f->vlan.tpid;
- 
--				list_del(&f->list);
--				kfree(f);
-+				if (f->state == __IAVF_VLAN_DISABLE) {
-+					f->state = __IAVF_VLAN_INACTIVE;
-+				} else {
-+					list_del(&f->list);
-+					kfree(f);
-+					adapter->num_vlan_filters--;
-+				}
- 				i++;
- 				if (i == count)
- 					break;
-@@ -2443,15 +2455,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 
- 		spin_lock_bh(&adapter->mac_vlan_list_lock);
- 		list_for_each_entry(f, &adapter->vlan_filter_list, list) {
--			if (f->state == __IAVF_VLAN_IS_NEW) {
-+			if (f->state == __IAVF_VLAN_IS_NEW)
- 				f->state = __IAVF_VLAN_ACTIVE;
--				if (f->vlan.tpid == ETH_P_8021Q)
--					set_bit(f->vlan.vid,
--						adapter->vsi.active_cvlans);
--				else
--					set_bit(f->vlan.vid,
--						adapter->vsi.active_svlans);
--			}
- 		}
- 		spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 		}
--- 
-2.34.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gU3VuLCBNYXIgMjYsIDIwMjMgYXQgMTE6NTDigK9QTSBQYXVsIE1lbnplbCA8cG1lbnplbEBt
+b2xnZW4ubXBnLmRlPiB3cm90ZToKPgo+IFtDYzogUmVtb3ZlIHVuZGVsaXZlcmFibGUgPHhpbmd3
+YW5saUBrdWFpc2hvdS5jb20+XQoKQWgsIEl0J3MgbXkgcHJldmlvdXMgY29tcGFueSBlbWFpbC4g
+U29ycnkgdG8gbm90aWNlIHRoaXMgZW1haWwgc28gbGF0ZS4KCj4KPiBBbSAyNi4wMy4yMyB1bSAx
+NzowMyBzY2hyaWViIFBhdWwgTWVuemVsOgo+ID4gRGVhciBKb2huLAo+ID4KPiA+Cj4gPiBUaGFu
+ayB5b3UgZm9yIHlvdXIgcGF0Y2guCj4gPgo+ID4gSeKAmWQgcmVjb21tZW5kLCB0byB1c2UgYSBz
+dGF0ZW1lbnQgaW4gdGhlIGdpdCBjb21taXQgbWVzc2FnZS9zdW1tYXJ5IGJ5Cj4gPiBhZGRpbmcg
+YSB2ZXJiIChpbiBpbXBlcmF0aXZlIG1vb2QpLiBNYXliZToKPiA+Cj4gPiBGaXggcGFuaWMgZHVy
+aW5nIFhEUF9UWCB3aXRoID4gNjQgQ1BVcwo+ID4KPiA+IEFtIDA4LjAzLjIzIHVtIDIzOjA3IHNj
+aHJpZWIgSm9obiBIaWNrZXk6Cj4gPj4gSW4gY29tbWl0ICdpeGdiZTogbGV0IHRoZSB4ZHBkcnYg
+d29yayB3aXRoIG1vcmUgdGhhbiA2NCBjcHVzJwo+ID4+ICg0ZmU4MTU4NTBiZGMpLCBzdXBwb3J0
+IHdhcyBhZGRlZCB0byBhbGxvdyBYRFAgcHJvZ3JhbXMgdG8gcnVuIG9uIHN5c3RlbXMKPiA+Cj4g
+PiBJIHRoaW5rIGl04oCZcyBtb3JlIGNvbW1vbiB0byB3cml0ZSBpdCBsaWtlOgo+ID4KPiA+IElu
+IGNvbW1pdCA0ZmU4MTU4NTBiZGMgKGl4Z2JlOiBsZXQgdGhlIHhkcGRydiB3b3JrIHdpdGggbW9y
+ZSB0aGFuIDY0Cj4gPiBjcHVzKSDigKYKPiA+Cj4gPiBFdmVuIHNob3J0ZXIKPiA+Cj4gPiBDb21t
+aXQgNGZlODE1ODUwYmRjIChpeGdiZTogbGV0IHRoZSB4ZHBkcnYgd29yayB3aXRoIG1vcmUgdGhh
+biA2NCBjcHVzKQo+ID4gYWRkcyBzdXBwb3J0IHRvIGFsbG93IFhEUCBwcm9ncmFtcyDigKYKPiA+
+Cj4gPj4gd2l0aCBtb3JlIHRoYW4gNjQgQ1BVcyBieSBsb2NraW5nIHRoZSBYRFAgVFggcmluZ3Mg
+YW5kIGluZGV4aW5nIHRoZW0KPiA+PiB1c2luZyBjcHUgJSA2NCAoSVhHQkVfTUFYX1hEUF9RUyku
+Cj4gPj4KPiA+PiBVcG9uIHRyeWluZyB0aGlzIG91dCBwYXRjaCB2aWEgdGhlIEludGVsIDUuMTgu
+NiBvdXQgb2YgdHJlZSBkcml2ZXIKPiA+Cj4gPiBVcG9uIHRyeWluZyB0aGlzIHBhdGNoIG91dCB2
+aWEg4oCmCj4gPgo+ID4+IG9uIGEgc3lzdGVtIHdpdGggbW9yZSB0aGFuIDY0IGNvcmVzLCB0aGUg
+a2VybmVsIHBhbmljZWQgd2l0aCBhbgo+ID4+IGFycmF5LWluZGV4LW91dC1vZi1ib3VuZHMgYXQg
+dGhlIHJldHVybiBpbiBpeGdiZV9kZXRlcm1pbmVfeGRwX3JpbmcgaW4KPiA+PiBpeGdiZS5oLCB3
+aGljaCBtZWFucyBpeGdiZV9kZXRlcm1pbmVfeGRwX3FfaWR4IHdhcyBqdXN0IHJldHVybmluZyB0
+aGUKPiA+PiBjcHUgaW5zdGVhZCBvZiBjcHUgJSBJWEdCRV9NQVhfWERQX1FTLiAgQW4gZXhhbXBs
+ZSBzcGxhdDoKPiA+Cj4gPiBQbGVhc2UgYWRkLCB0aGF0IHlvdSBoYXZlIFVCU0FOICBlbmFibGVk
+LCBvciBkb2VzIGl0IGhhcHBlbiB3aXRob3V0Pwo+ID4KPiA+Pgo+ID4+Cj4gPj4gPT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0KPiA+PiAgIFVCU0FOOiBhcnJheS1pbmRleC1vdXQtb2YtYm91bmRzIGluCj4gPj4g
+ICAvdmFyL2xpYi9ka21zL2l4Z2JlLzUuMTguNitmb2NhbC0xL2J1aWxkL3NyYy9peGdiZS5oOjEx
+NDc6MjYKPiA+PiAgIGluZGV4IDY1IGlzIG91dCBvZiByYW5nZSBmb3IgdHlwZSAnaXhnYmVfcmlu
+ZyAqWzY0XScKPiA+Pgo+ID4+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPj4gICBCVUc6IGtlcm5lbCBO
+VUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UsIGFkZHJlc3M6IDAwMDAwMDAwMDAwMDAwNTgKPiA+PiAg
+ICNQRjogc3VwZXJ2aXNvciByZWFkIGFjY2VzcyBpbiBrZXJuZWwgbW9kZQo+ID4+ICAgI1BGOiBl
+cnJvcl9jb2RlKDB4MDAwMCkgLSBub3QtcHJlc2VudCBwYWdlCj4gPj4gICBQR0QgMCBQNEQgMAo+
+ID4+ICAgT29wczogMDAwMCBbIzFdIFNNUCBOT1BUSQo+ID4+ICAgQ1BVOiA2NSBQSUQ6IDQwOCBD
+b21tOiBrc29mdGlycWQvNjUKPiA+PiAgIFRhaW50ZWQ6IEcgICAgICAgICAgSU9FICAgICA1LjE1
+LjAtNDgtZ2VuZXJpYyAjNTR+MjAuMDQuMS1VYnVudHUKPiA+PiAgIEhhcmR3YXJlIG5hbWU6IERl
+bGwgSW5jLiBQb3dlckVkZ2UgUjY0MC8wVzIzSDgsIEJJT1MgMi41LjQgMDEvMTMvMjAyMAo+ID4+
+ICAgUklQOiAwMDEwOml4Z2JlX3htaXRfeGRwX3JpbmcrMHgxYi8weDFjMCBbaXhnYmVdCj4gPj4g
+ICBDb2RlOiAzYiA1MiBkNCBjZiBlOSA0MiBmMiBmZiBmZiA2NiAwZiAxZiA0NCAwMCAwMCAwZiAx
+ZiA0NCAwMCAwMCA1NSBiOQo+ID4+ICAgMDAgMDAgMDAgMDAgNDggODkgZTUgNDEgNTcgNDEgNTYg
+NDEgNTUgNDEgNTQgNTMgNDggODMgZWMgMDggPDQ0PiAwZiBiNwo+ID4+ICAgNDcgNTggMGYgYjcg
+NDcgNWEgMGYgYjcgNTcgNTQgNDQgMGYgYjcgNzYgMDggNjYgNDEgMzkgYzAKPiA+Cj4gPiBJZiB5
+b3UgZG8gbm90IGl0IHlldCwgYHNjcmlwdHMvZGVjb2RlX3N0YWNrdHJhY2Uuc2hgIGhlbHBzIGRl
+Y29kaW5nCj4gPiB0aGVzZSB0cmFjZXMuCj4gPgo+ID4+ICAgUlNQOiAwMDE4OmZmZmZiYzNmY2Q4
+OGZjYjAgRUZMQUdTOiAwMDAxMDI4Mgo+ID4+ICAgUkFYOiBmZmZmOTJhMjUzMjYwOTgwIFJCWDog
+ZmZmZmJjM2ZlNjhiMDBhMCBSQ1g6IDAwMDAwMDAwMDAwMDAwMDAKPiA+PiAgIFJEWDogZmZmZjky
+OGI1ZjY1OTAwMCBSU0k6IGZmZmY5MjhiNWY2NTkwMDAgUkRJOiAwMDAwMDAwMDAwMDAwMDAwCj4g
+Pj4gICBSQlA6IGZmZmZiYzNmY2Q4OGZjZTAgUjA4OiBmZmZmOTJiOWRmYzIwNTgwIFIwOTogMDAw
+MDAwMDAwMDAwMDAwMQo+ID4+ICAgUjEwOiAzZDNkM2QzZDNkM2QzZDNkIFIxMTogM2QzZDNkM2Qz
+ZDNkM2QzZCBSMTI6IDAwMDAwMDAwMDAwMDAwMDAKPiA+PiAgIFIxMzogZmZmZjkyOGIyZjBmYThj
+MCBSMTQ6IGZmZmY5MjhiOWJlMjAwNTAgUjE1OiAwMDAwMDAwMDAwMDAwMDNjCj4gPj4gICBGUzog
+IDAwMDAwMDAwMDAwMDAwMDAoMDAwMCkgR1M6ZmZmZjkyYjlkZmMwMDAwMCgwMDAwKQo+ID4+ICAg
+a25sR1M6MDAwMDAwMDAwMDAwMDAwMAo+ID4+ICAgQ1M6ICAwMDEwIERTOiAwMDAwIEVTOiAwMDAw
+IENSMDogMDAwMDAwMDA4MDA1MDAzMwo+ID4+ICAgQ1IyOiAwMDAwMDAwMDAwMDAwMDU4IENSMzog
+MDAwMDAwMDExZGQ2YTAwMiBDUjQ6IDAwMDAwMDAwMDA3NzA2ZTAKPiA+PiAgIERSMDogMDAwMDAw
+MDAwMDAwMDAwMCBEUjE6IDAwMDAwMDAwMDAwMDAwMDAgRFIyOiAwMDAwMDAwMDAwMDAwMDAwCj4g
+Pj4gICBEUjM6IDAwMDAwMDAwMDAwMDAwMDAgRFI2OiAwMDAwMDAwMGZmZmUwZmYwIERSNzogMDAw
+MDAwMDAwMDAwMDQwMAo+ID4+ICAgUEtSVTogNTU1NTU1NTQKPiA+PiAgIENhbGwgVHJhY2U6Cj4g
+Pj4gICAgPFRBU0s+Cj4gPj4gICAgaXhnYmVfcG9sbCsweDEwM2UvMHgxMjgwIFtpeGdiZV0KPiA+
+PiAgICA/IHNjaGVkX2Nsb2NrX2NwdSsweDEyLzB4ZTAKPiA+PiAgICBfX25hcGlfcG9sbCsweDMw
+LzB4MTYwCj4gPj4gICAgbmV0X3J4X2FjdGlvbisweDExYy8weDI3MAo+ID4+ICAgIF9fZG9fc29m
+dGlycSsweGRhLzB4MmVlCj4gPj4gICAgcnVuX2tzb2Z0aXJxZCsweDJmLzB4NTAKPiA+PiAgICBz
+bXBib290X3RocmVhZF9mbisweGI3LzB4MTUwCj4gPj4gICAgPyBzb3J0X3JhbmdlKzB4MzAvMHgz
+MAo+ID4+ICAgIGt0aHJlYWQrMHgxMjcvMHgxNTAKPiA+PiAgICA/IHNldF9rdGhyZWFkX3N0cnVj
+dCsweDUwLzB4NTAKPiA+PiAgICByZXRfZnJvbV9mb3JrKzB4MWYvMHgzMAo+ID4+ICAgIDwvVEFT
+Sz4KPiA+Pgo+ID4+IEkgdGhpbmsgdGhpcyBpcyBob3cgaXQgaGFwcGVuczoKPiA+Pgo+ID4+IFVw
+b24gbG9hZGluZyB0aGUgZmlyc3QgWERQIHByb2dyYW0gb24gYSBzeXN0ZW0gd2l0aCBtb3JlIHRo
+YW4gNjQgQ1BVcywKPiA+PiBpeGdiZV94ZHBfbG9ja2luZ19rZXkgaXMgaW5jcmVtZW50ZWQgaW4g
+aXhnYmVfeGRwX3NldHVwLiAgSG93ZXZlciwKPiA+PiBpbW1lZGlhdGVseSBhZnRlciB0aGlzLCB0
+aGUgcmluZ3MgYXJlIHJlY29uZmlndXJlZCBieSBpeGdiZV9zZXR1cF90Yy4KPiA+PiBpeGdiZV9z
+ZXR1cF90YyBjYWxscyBpeGdiZV9jbGVhcl9pbnRlcnJ1cHRfc2NoZW1lIHdoaWNoIGNhbGxzCj4g
+Pj4gaXhnYmVfZnJlZV9xX3ZlY3RvcnMgd2hpY2ggY2FsbHMgaXhnYmVfZnJlZV9xX3ZlY3RvciBp
+biBhIGxvb3AuCj4gPj4gaXhnYmVfZnJlZV9xX3ZlY3RvciBkZWNyZW1lbnRzIGl4Z2JlX3hkcF9s
+b2NraW5nX2tleSBvbmNlIHBlciBjYWxsIGlmCj4gPj4gaXQgaXMgbm9uLXplcm8uICBDb21tZW50
+aW5nIG91dCB0aGUgZGVjcmVtZW50IGluIGl4Z2JlX2ZyZWVfcV92ZWN0b3IKPiA+PiBzdG9wcGVk
+IG15IHN5c3RlbSBmcm9tIHBhbmljaW5nLgo+ID4+Cj4gPj4gSSBzdXNwZWN0IHRvIG1ha2UgdGhl
+IG9yaWdpbmFsIHBhdGNoIHdvcmssIEkgd291bGQgbmVlZCB0byBsb2FkIGFuIFhEUAo+ID4+IHBy
+b2dyYW0gYW5kIHRoZW4gcmVwbGFjZSBpdCBpbiBvcmRlciB0byBnZXQgaXhnYmVfeGRwX2xvY2tp
+bmdfa2V5IGJhY2sKPiA+PiBhYm92ZSAwIHNpbmNlIGl4Z2JlX3NldHVwX3RjIGlzIG9ubHkgY2Fs
+bGVkIHdoZW4gdHJhbnNpdGlvbmluZyBiZXR3ZWVuCj4gPj4gWERQIGFuZCBub24tWERQIHJpbmcg
+Y29uZmlndXJhdGlvbnMsIHdoaWxlIGl4Z2JlX3hkcF9sb2NraW5nX2tleSBpcwo+ID4+IGluY3Jl
+bWVudGVkIGV2ZXJ5IHRpbWUgaXhnYmVfeGRwX3NldHVwIGlzIGNhbGxlZC4KPiA+Pgo+ID4+IEFs
+c28sIGl4Z2JlX3NldHVwX3RjIGNhbiBiZSBjYWxsZWQgdmlhIGV0aHRvb2wgLS1zZXQtY2hhbm5l
+bHMsIHNvIHRoaXMKPiA+PiBiZWNvbWVzIGFub3RoZXIgcGF0aCB0byBkZWNyZW1lbnQgaXhnYmVf
+eGRwX2xvY2tpbmdfa2V5IHRvIDAgb24gc3lzdGVtcwo+ID4+IHdpdGggZ3JlYXRlciB0aGFuIDY0
+IENQVXMuCj4gPgo+ID4g4oCmIHdpdGggbW9yZSB0aGFuIDY0IENQVXMuCj4gPgo+ID4+IEZvciB0
+aGlzIHBhdGNoLCBJIGhhdmUgY2hhbmdlZCBzdGF0aWNfYnJhbmNoX2luYyB0byBzdGF0aWNfYnJh
+bmNoX2VuYWJsZQo+ID4+IGluIGl4Z2JlX3NldHVwX3hkcC4gIFdlIHdlcmVuJ3QgY291bnRpbmcg
+cmVmZXJlbmNlcy4gIFRoZQo+ID4+IGl4Z2JlX3hkcF9sb2NraW5nX2tleSBvbmx5IHByb3RlY3Rz
+IGNvZGUgaW4gdGhlIFhEUF9UWCBwYXRoLCB3aGljaCBpcwo+ID4+IG5vdCBydW4gd2hlbiBhbiBY
+RFAgcHJvZ3JhbSBpcyBsb2FkZWQuICBUaGUgb3RoZXIgY29uZGl0aW9uIGZvciBzZXR0aW5nCj4g
+Pj4gaXQgb24gaXMgdGhlIG51bWJlciBvZiBDUFVzLCB3aGljaCBJIGFzc3VtZSBpcyBzdGF0aWMu
+Cj4gPj4KPiA+PiBGaXhlczogNGZlODE1ODUwYmRjICgiaXhnYmU6IGxldCB0aGUgeGRwZHJ2IHdv
+cmsgd2l0aCBtb3JlIHRoYW4gNjQgY3B1cyIpCj4gPj4gU2lnbmVkLW9mZi1ieTogSm9obiBIaWNr
+ZXkgPGpqaEBkYWVkYWxpYW4udXM+Cj4gPj4gLS0tCj4gPj4gdjEgLT4gdjI6Cj4gPj4gICAgIEFk
+ZGVkIEZpeGVzIGFuZCBuZXQgdGFnLiAgTm8gY29kZSBjaGFuZ2VzLgo+ID4+IHYyIC0+IHYzOgo+
+ID4+ICAgICBBZGRlZCBzcGxhdC4gIFNsaWdodCBjbGFyaWZpY2F0aW9uIGFzIHRvIHdoeSBpeGdi
+ZV94ZHBfbG9ja2luZ19rZXkKPiA+PiAgICAgaXMgbm90IHR1cm5lZCBvZmYuICBCYXNlZCBvbiBm
+ZWVkYmFjayBmcm9tIE1hY2llaiBGaWphbGtvd3NraS4KPiA+PiAtLS0KPiA+PiAgIGRyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2xpYi5jICB8IDMgLS0tCj4gPj4gICBkcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgfCAyICstCj4gPj4gICAy
+IGZpbGVzIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCA0IGRlbGV0aW9ucygtKQo+ID4+Cj4gPj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2xpYi5j
+Cj4gPj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9saWIuYwo+ID4+
+IGluZGV4IGY4MTU2ZmU0YjFkYy4uMGVlOTQzZGIzZGM5IDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX2xpYi5jCj4gPj4gKysrIGIvZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbGliLmMKPiA+PiBAQCAtMTAzNSw5ICsx
+MDM1LDYgQEAgc3RhdGljIHZvaWQgaXhnYmVfZnJlZV9xX3ZlY3RvcihzdHJ1Y3QKPiA+PiBpeGdi
+ZV9hZGFwdGVyICphZGFwdGVyLCBpbnQgdl9pZHgpCj4gPj4gICAgICAgYWRhcHRlci0+cV92ZWN0
+b3Jbdl9pZHhdID0gTlVMTDsKPiA+PiAgICAgICBfX25ldGlmX25hcGlfZGVsKCZxX3ZlY3Rvci0+
+bmFwaSk7Cj4gPj4gLSAgICBpZiAoc3RhdGljX2tleV9lbmFibGVkKCZpeGdiZV94ZHBfbG9ja2lu
+Z19rZXkpKQo+ID4+IC0gICAgICAgIHN0YXRpY19icmFuY2hfZGVjKCZpeGdiZV94ZHBfbG9ja2lu
+Z19rZXkpOwo+ID4+IC0KPiA+PiAgICAgICAvKgo+ID4+ICAgICAgICAqIGFmdGVyIGEgY2FsbCB0
+byBfX25ldGlmX25hcGlfZGVsKCkgbmFwaSBtYXkgc3RpbGwgYmUgdXNlZCBhbmQKPiA+PiAgICAg
+ICAgKiBpeGdiZV9nZXRfc3RhdHM2NCgpIG1pZ2h0IGFjY2VzcyB0aGUgcmluZ3Mgb24gdGhpcyB2
+ZWN0b3IsCj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
+L2l4Z2JlX21haW4uYwo+ID4+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhn
+YmVfbWFpbi5jCj4gPj4gaW5kZXggYWI4MzcwYzQxM2YzLi5jZDJmYjcyYzY3YmUgMTAwNjQ0Cj4g
+Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jCj4g
+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jCj4g
+Pj4gQEAgLTEwMjgzLDcgKzEwMjgzLDcgQEAgc3RhdGljIGludCBpeGdiZV94ZHBfc2V0dXAoc3Ry
+dWN0IG5ldF9kZXZpY2UKPiA+PiAqZGV2LCBzdHJ1Y3QgYnBmX3Byb2cgKnByb2cpCj4gPj4gICAg
+ICAgaWYgKG5yX2NwdV9pZHMgPiBJWEdCRV9NQVhfWERQX1FTICogMikKPiA+PiAgICAgICAgICAg
+cmV0dXJuIC1FTk9NRU07Cj4gPj4gICAgICAgZWxzZSBpZiAobnJfY3B1X2lkcyA+IElYR0JFX01B
+WF9YRFBfUVMpCj4gPj4gLSAgICAgICAgc3RhdGljX2JyYW5jaF9pbmMoJml4Z2JlX3hkcF9sb2Nr
+aW5nX2tleSk7Cj4gPj4gKyAgICAgICAgc3RhdGljX2JyYW5jaF9lbmFibGUoJml4Z2JlX3hkcF9s
+b2NraW5nX2tleSk7Cj4gPj4gICAgICAgb2xkX3Byb2cgPSB4Y2hnKCZhZGFwdGVyLT54ZHBfcHJv
+ZywgcHJvZyk7Cj4gPj4gICAgICAgbmVlZF9yZXNldCA9ICghIXByb2cgIT0gISFvbGRfcHJvZyk7
+Cj4gPgo+ID4KPiA+IEtpbmQgcmVnYXJkcywKPiA+Cj4gPiBQYXVsCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxp
+c3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21h
+aWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
