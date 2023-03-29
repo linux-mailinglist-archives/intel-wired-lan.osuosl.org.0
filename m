@@ -1,119 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C6556CD85F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Mar 2023 13:24:08 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 177E16CD88D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Mar 2023 13:36:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CBBE661463;
-	Wed, 29 Mar 2023 11:24:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CBBE661463
+	by smtp4.osuosl.org (Postfix) with ESMTP id 20F2641DD9;
+	Wed, 29 Mar 2023 11:36:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20F2641DD9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680089046;
-	bh=qBxFNsmsvNDb9Aw+XBhu5tBIlYXzmBZl4Vu8cuq/xA4=;
-	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1680089767;
+	bh=6gjtfde+YByzYNgx0zsO1iKudR1wmK8KsTZbbS+EaX4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9oz7SvPqvzErWTEu11xFCF9mPX12AqGWgwM4cB5kAUgmIQoeMHxVIHnmveaq1S/hV
-	 zoy8k68Il4r5x3ZqYna3gK2ERw397yIADrEvzhiHPXkrGxmN3oFpDo2hNn4FrXcj0X
-	 2jrFqDXuib22kXaiie4xusIB26jncWdPG6yCK4Fgs/0RQXEjylNvQcAza2lgMoe9NO
-	 K31BMvHGwl+K2cfXCoof3hhS3U3clHyrGF+7LbM30M+ncSwV8/4v+Vfr8E/WhGzj/g
-	 FXZ2QqsE5k3a2vgCbGXN/bG0NR4+gkCf39aJ/mHNX33Y7NmJpiLLeUNCb4L7Sfihoe
-	 CBVOSBE5+2W/g==
+	b=ZlzMaXNLFNAy174zCPv2lC71C/yiqLW/RbTe8hT2w0QvhwAwox1OAu5FUfvKUHMuB
+	 2qI35xCfQt04V2eSJhOksDAj6Mr6lWopFjeFUzpZN0zoMfacSyN2MJId6AFBSMIB2a
+	 VPXDKKcu9XaukC6gZQ9rFqLpGMq4gpmc3ATOIPSUDaYlqwwhHxChKVcBzfJKlsFgcT
+	 KJ9Y/wJNDB+qALy6mjzJnCNmVYJBlTkwGL0LcIHNlR2bqPM3q6TwkF6PKztBIAidA8
+	 Q/Aq1Zu8gdqbfVs7mZXwF2y2YclOoY/0FOhnJjuXikd3O/bde1BOtcG+iz4HvcMzF8
+	 Mhmz/km5FS1sg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u07JlepgHmWq; Wed, 29 Mar 2023 11:24:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ubdZc8Ssfr3h; Wed, 29 Mar 2023 11:36:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7F0E960807;
-	Wed, 29 Mar 2023 11:24:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F0E960807
+	by smtp4.osuosl.org (Postfix) with ESMTP id 927E441DD8;
+	Wed, 29 Mar 2023 11:36:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 927E441DD8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D5FD1BF301
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:24:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5D1931BF301
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:36:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EAA6741DA1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:23:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EAA6741DA1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3307341DD8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:36:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3307341DD8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xTydik3GGXHc for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Mar 2023 11:23:58 +0000 (UTC)
+ with ESMTP id T0Z-xiy4ZQbb for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Mar 2023 11:36:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B87F841D84
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B87F841D84
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:23:58 +0000 (UTC)
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-522-eF-lBFn8M_Cau5m7giUV2g-1; Wed, 29 Mar 2023 07:23:56 -0400
-X-MC-Unique: eF-lBFn8M_Cau5m7giUV2g-1
-Received: by mail-ed1-f72.google.com with SMTP id
- m18-20020a50d7d2000000b00501dfd867a4so22064952edj.20
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 04:23:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680089035;
- h=content-transfer-encoding:in-reply-to:references:to
- :content-language:subject:cc:user-agent:mime-version:date:message-id
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZBfCtmhIXZ3a7WDYA0EreShUJi3K2H0A83JbG6BaoFc=;
- b=d0ZiBhn0XHzBBZ2tC56DD3tvhGut9GZqK3qP0GKa7SELSDsUFajfovQT0sx06+0t8a
- AKPUFugB3GVxmIIokgSfBVTP8RvzJbuF4v8nkgJVvWNXeP+Bbq3SOo9Y9KHsn+e1hNwk
- HuhHVIxkfxtCYI+oCbX42u8kA8SCwYCigoUOgdXTIcuV2jGGGHQhSC2tiY1Dz3jxOll4
- xR0y49AYYAGMNhE6kapr6J7OiYxh49rTk28W0BD/pw9GSGwU4CTnk11gdK0ZM1yt39K/
- LRaFCIwCw0uOOVBpiCKtqasCdU+pN8ZYMPK1BJMElvFEATMbsMMSwQXlb49p1pmOOVS2
- kiHg==
-X-Gm-Message-State: AAQBX9dokct2izsCxjZsL4r5vNBfYt78oU4hVYEaIsaDj3DIBBGBIgjt
- eDC8Q3aXOvbJyBQxnxCJBDtFgTvFlz9c2yQynW8mDwQl7GhP9JmM+9+N2SxEFfJ7lA8N4LK75W6
- asUMo/+lvm3GX7zWIZYExDnjFfeJZUQ==
-X-Received: by 2002:a17:906:6a8d:b0:933:9918:665d with SMTP id
- p13-20020a1709066a8d00b009339918665dmr2011834ejr.11.1680089035228; 
- Wed, 29 Mar 2023 04:23:55 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YaTN4ppSuFlgQgVBfE/TA14eBU09XWE3FSbcEvEqIX/dEGQYgsIgn4Eu3KvYEPg65tQscF3w==
-X-Received: by 2002:a17:906:6a8d:b0:933:9918:665d with SMTP id
- p13-20020a1709066a8d00b009339918665dmr2011814ejr.11.1680089034885; 
- Wed, 29 Mar 2023 04:23:54 -0700 (PDT)
-Received: from [192.168.42.100] (194-45-78-10.static.kviknet.net.
- [194.45.78.10]) by smtp.gmail.com with ESMTPSA id
- b9-20020a17090630c900b008bc8ad41646sm16183091ejb.157.2023.03.29.04.23.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Mar 2023 04:23:54 -0700 (PDT)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <811724e2-cdd6-15fe-b176-9dfcdbd98bad@redhat.com>
-Date: Wed, 29 Mar 2023 13:23:53 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA49E41DD4
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BA49E41DD4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 11:35:59 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E96FEB822DE;
+ Wed, 29 Mar 2023 11:35:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BDC6C433EF;
+ Wed, 29 Mar 2023 11:35:54 +0000 (UTC)
+Date: Wed, 29 Mar 2023 14:35:51 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Piotr Raczynski <piotr.raczynski@intel.com>
+Message-ID: <20230329113551.GN831478@unreal>
+References: <20230323122440.3419214-1-piotr.raczynski@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-To: Stanislav Fomichev <sdf@google.com>
-References: <168003451121.3027256.13000250073816770554.stgit@firesoul>
- <168003455815.3027256.7575362149566382055.stgit@firesoul>
- <ZCNjHAY81gS02FVW@google.com>
-In-Reply-To: <ZCNjHAY81gS02FVW@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1680089037;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZBfCtmhIXZ3a7WDYA0EreShUJi3K2H0A83JbG6BaoFc=;
- b=Y+aFarLofMKBThRfJ9rYHAnUZBa0YV9S315QnIJ2iVI+sA5Bla4Z93Gxn9OEG0HHCWF5Mm
- Zob0ME9JUFDIvikt3NBAMg+dX5NN3WerHxomhbk6Rvd93YjMLRvLNp9dG2YXDDWVCb/KF9
- 7/IWl8g4z+6yvaPNYCxVUBDYc5hrwgo=
+Content-Disposition: inline
+In-Reply-To: <20230323122440.3419214-1-piotr.raczynski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1680089755;
+ bh=z/x7LnEKtW9FQfCWGQ8ALFdFf+D3mta8rcpYAy1Iy3c=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=A+Ms2xkVBRYr61Wan4XUIfxUpH1PPns1a7VAh0+cCcqAopcBivhA2YK/me/IGcPhD
+ FCwmdiRfGD/Kh84qVjUWEpxxLbPyaDdzplZ/8WlVo1dg0/hxzUdI5HjdG4mCyEXNj1
+ ecPSmnGjPxtvvag7GNvHb3cjVcr/r9kfVBkvvCZqdnHiiUgcOVNypXz9UgrYPDL2Tb
+ 6jPNUFupOsc0OujXEYfzIBH1cx9PTG7Zns9paOCMLYwKQmpmFXvztzPR7JV8jvprJC
+ Gn0HJPyha/9YQ05f7lBndWZW/qmul/09Ku8QF/wcR/BqhDC/C9JwtSi8s+9rNfHpxc
+ ZIpRyFR45Vj5A==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Y+aFarLo
-Subject: Re: [Intel-wired-lan] [PATCH bpf RFC 1/4] xdp: rss hash types
- representation
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=A+Ms2xkV
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 0/8] ice: support dynamic
+ interrupt allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,155 +90,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
- larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
- ast@kernel.org, jesse.brandeburg@intel.com, kuba@kernel.org,
- edumazet@google.com, pabeni@redhat.com, yoong.siang.song@intel.com,
- brouer@redhat.com, boon.leong.ong@intel.com, anthony.l.nguyen@intel.com,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org, davem@davemloft.net,
- hawk@kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: michal.swiatkowski@intel.com, netdev@vger.kernel.org,
+ jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ shiraz.saleem@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ck9uIDI4LzAzLzIwMjMgMjMuNTgsIFN0YW5pc2xhdiBGb21pY2hldiB3cm90ZToKPiBPbiAwMy8y
-OCwgSmVzcGVyIERhbmdhYXJkIEJyb3VlciB3cm90ZToKPj4gVGhlIFJTUyBoYXNoIHR5cGUgc3Bl
-Y2lmaWVzIHdoYXQgcG9ydGlvbiBvZiBwYWNrZXQgZGF0YSBOSUMgaGFyZHdhcmUgdXNlZAo+PiB3
-aGVuIGNhbGN1bGF0aW5nIFJTUyBoYXNoIHZhbHVlLiBUaGUgUlNTIHR5cGVzIGFyZSBmb2N1c2Vk
-IG9uIEludGVybmV0Cj4+IHRyYWZmaWMgcHJvdG9jb2xzIGF0IE9TSSBsYXllcnMgTDMgYW5kIEw0
-LiBMMiAoZS5nLiBBUlApIG9mdGVuIGdldCBoYXNoCj4+IHZhbHVlIHplcm8gYW5kIG5vIFJTUyB0
-eXBlLiBGb3IgTDMgZm9jdXNlZCBvbiBJUHY0IHZzLiBJUHY2LCBhbmQgTDQKPj4gcHJpbWFyaWx5
-IFRDUCB2cyBVRFAsIGJ1dCBzb21lIGhhcmR3YXJlIHN1cHBvcnRzIFNDVFAuCj4gCj4+IEhhcmR3
-YXJlIFJTUyB0eXBlcyBhcmUgZGlmZmVyZW50bHkgZW5jb2RlZCBmb3IgZWFjaCBoYXJkd2FyZSBO
-SUMuIE1vc3QKPj4gaGFyZHdhcmUgcmVwcmVzZW50IFJTUyBoYXNoIHR5cGUgYXMgYSBudW1iZXIu
-IERldGVybWluaW5nIEwzIHZzIEw0IG9mdGVuCj4+IHJlcXVpcmVzIGEgbWFwcGluZyB0YWJsZSBh
-cyB0aGVyZSBvZnRlbiBpc24ndCBhIHBhdHRlcm4gb3Igc29ydGluZwo+PiBhY2NvcmRpbmcgdG8g
-SVNPIGxheWVyLgo+IAo+PiBUaGUgcGF0Y2ggaW50cm9kdWNlIGEgWERQIFJTUyBoYXNoIHR5cGUg
-KHhkcF9yc3NfaGFzaF90eXBlKSB0aGF0IGNhbiBib3RoCj4+IGJlIHNlZW4gYXMgYSBudW1iZXIg
-dGhhdCBpcyBvcmRlcmVkIGFjY29yZGluZyBieSBJU08gbGF5ZXIsIGFuZCBjYW4gYmUgYml0Cj4+
-IG1hc2tlZCB0byBzZXBhcmF0ZSBJUHY0IGFuZCBJUHY2IHR5cGVzIGZvciBMNCBwcm90b2NvbHMu
-IFJvb20gaXMgYXZhaWxhYmxlCj4+IGZvciBleHRlbmRpbmcgbGF0ZXIgd2hpbGUga2VlcGluZyB0
-aGVzZSBwcm9wZXJ0aWVzLiBUaGlzIG1hcHMgYW5kIHVuaWZpZXMKPj4gZGlmZmVyZW5jZSB0byBo
-YXJkd2FyZSBzcGVjaWZpYyBoYXNoZXMuCj4gCj4gTG9va3MgZ29vZCBvdmVyYWxsLiBBbnkgcmVh
-c29uIHdlJ3JlIG1ha2luZyB0aGlzIHNwZWNpZmljIGxheW91dD8KCk9uZSBpbXBvcnRhbnQgZ29h
-bCBpcyB0byBoYXZlIGEgc2ltcGxlL2Zhc3Qgd2F5IHRvIGRldGVybWluaW5nIEwzIHZzIEw0LApi
-ZWNhdXNlIGEgTDQgaGFzaCBjYW4gYmUgdXNlZCBmb3IgZmxvdyBoYW5kbGluZyAoZS5nLiBsb2Fk
-LWJhbGFuY2luZykuCgpXZSBiZWxvdyBsYXlvdXQgeW91IGNhbjoKCiAgaWYgKHJzc190eXBlICYg
-WERQX1JTU19UWVBFX0w0X01BU0spCglib29sIGh3X2hhc2hfZG9fTEIgPSB0cnVlOwoKT3IgdXNp
-bmcgaXQgYXMgYSBudW1iZXI6CgogIGlmIChyc3NfdHlwZSA+IFhEUF9SU1NfVFlQRV9MNCkKCWJv
-b2wgaHdfaGFzaF9kb19MQiA9IHRydWU7CgpJJ20gdmVyeSBvcGVuIHRvIGNoYW5nZXMgdG8gbXkg
-InNwZWNpZmljIiBsYXlvdXQuICBJIGFtIGluIGRvdWJ0IGlmCnVzaW5nIGl0IGFzIGEgbnVtYmVy
-IGlzIHRoZSByaWdodCBhcHByb2FjaCBhbmQgd29ydGggdGhlIHRyb3VibGUuCgo+IFdoeSBub3Qg
-c2ltcGx5IHRoZSBmb2xsb3dpbmc/Cj4gCj4gZW51bSB7Cj4gIMKgwqDCoMKgWERQX1JTU19UWVBF
-X05PTkUgPSAwLAo+ICDCoMKgwqDCoFhEUF9SU1NfVFlQRV9JUFY0ID0gQklUKDApLAo+ICDCoMKg
-wqDCoFhEUF9SU1NfVFlQRV9JUFY2ID0gQklUKDEpLAo+ICDCoMKgwqDCoC8qIElQdjYgd2l0aCBl
-eHRlbnNpb24gaGVhZGVyLiAqLwo+ICDCoMKgwqDCoC8qIGxldCdzIG5vdGUgXl5eIGl0IGluIHRo
-ZSBVQVBJPyAqLwo+ICDCoMKgwqDCoFhEUF9SU1NfVFlQRV9JUFY2X0VYID0gQklUKDIpLAo+ICDC
-oMKgwqDCoFhEUF9SU1NfVFlQRV9VRFAgPSBCSVQoMyksCj4gIMKgwqDCoMKgWERQX1JTU19UWVBF
-X1RDUCA9IEJJVCg0KSwKPiAgwqDCoMKgwqBYRFBfUlNTX1RZUEVfU0NUUCA9IEJJVCg1KSwKCldl
-IGtub3cgdGhlc2UgYml0cyBmb3IgVURQLCBUQ1AsIFNDVFAgKGFuZCBJUFNFQykgYXJlIGV4Y2x1
-c2l2ZSwgdGhleQpjYW5ub3QgYmUgc2V0IGF0IHRoZSBzYW1lIHRpbWUsIGUuZy4gYXMgYSBwYWNr
-ZXQgY2Fubm90IGJvdGggYmUgVURQIGFuZApUQ1AuICBUaHVzLCB1c2luZyB0aGVzZSBiaXRzIGFz
-IGEgbnVtYmVyIG1ha2Ugc2Vuc2UgdG8gbWUsIGFuZCBpcyBtb3JlCmNvbXBhY3QuCgpUaGlzIEJJ
-VCgpIGFwcHJvYWNoIGFsc28gaGF2ZSB0aGUgaXNzdWUgb2YgZXh0ZW5kaW5nIGl0IGxhdGVyIChm
-b3J3YXJkCmNvbXBhdGliaWxpdHkpLiAgQXMgbWVudGlvbmVkIGEgY29tbW9uIHRhc2sgd2lsbCBi
-ZSB0byBjaGVjayBpZgpoYXNoLXR5cGUgaXMgYSBMNCB0eXBlLiAgU2VlIG1seDUgW3BhdGNoIDQv
-NF0gbmVlZGVkIHRvIGV4dGVuZCB3aXRoCklQU0VDLiBOb3RpY2UgaG93IG15IFhEUF9SU1NfVFlQ
-RV9MNF9NQVNLIGNvdmVycyBhbGwgdGhlIGJpdHMgdGhhdCB0aGlzCmNhbiBiZSBleHRlbmRlZCB3
-aXRoIG5ldyBMNCB0eXBlcywgc3VjaCB0aGF0IGV4aXN0aW5nIHByb2dzIHdpbGwgc3RpbGwKd29y
-ayBjaGVja2luZyBmb3IgTDQgY2hlY2suICBJdCBjYW4gb2YtY2F1c2UgYmUgc29sdmVkIGluIHRo
-ZSBzYW1lIHdheQpmb3IgdGhpcyBCSVQoKSBhcHByb2FjaCBieSByZXNlcnZpbmcgc29tZSBiaXRz
-IHVwZnJvbnQgaW4gYSBtYXNrLgoKPiB9Cj4gCj4gQW5kIHRoZW4gdXNpbmcgWERQX1JTU19UWVBF
-X0lQVjR8WERQX1JTU19UWVBFX1VEUCB2cyAKPiBYRFBfUlNTX1RZUEVfSVBWNnxYWFggPwoKRG8g
-bm90aWNlLCB0aGF0IEkgYWxyZWFkeSBkb2VzIHNvbWUgbGV2ZWwgb2Ygb3InaW5nICgifCIpIGlu
-IHRoaXMKcHJvcG9zYWwuICBUaGUgbWFpbiBkaWZmZXJlbmNlIGlzIHRoYXQgSSBoaWRlIHRoaXMg
-ZnJvbSB0aGUgZHJpdmVyLCBhbmQKa2luZCBvZiBwcmUtY29tYmluZSB0aGUgdmFsaWQgY29tYmlu
-YXRpb24gKGVudW0ncykgZHJpdmVycyBjYW4gc2VsZWN0CmZyb20uIEkgZG8gZ2V0IHRoZSBwb2lu
-dCwgYW5kIEkgdGhpbmsgSSB3aWxsIGNvbWUgdXAgd2l0aCBhIGNvbWJpbmVkCnNvbHV0aW9uIGJh
-c2VkIG9uIHlvdXIgaW5wdXQuCgoKVGhlIFJTUyBoYXNoaW5nIHR5cGVzIGFuZCBjb21iaW5hdGlv
-bnMgY29tZXMgZnJvbSBNJCBzdGFuZGFyZHM6CiAgWzFdIApodHRwczovL2xlYXJuLm1pY3Jvc29m
-dC5jb20vZW4tdXMvd2luZG93cy1oYXJkd2FyZS9kcml2ZXJzL25ldHdvcmsvcnNzLWhhc2hpbmct
-dHlwZXMjaXB2NC1oYXNoLXR5cGUtY29tYmluYXRpb25zCgoKPj4gVGhpcyBwcm9wb3NhbCBjaGFu
-Z2UgdGhlIGtmdW5jIEFQSSBicGZfeGRwX21ldGFkYXRhX3J4X2hhc2goKSB0byByZXR1cm4KPj4g
-dGhpcyBSU1MgaGFzaCB0eXBlIG9uIHN1Y2Nlc3MuCj4gCj4+IFNpZ25lZC1vZmYtYnk6IEplc3Bl
-ciBEYW5nYWFyZCBCcm91ZXIgPGJyb3VlckByZWRoYXQuY29tPgo+PiAtLS0KPj4gwqAgaW5jbHVk
-ZS9uZXQveGRwLmggfMKgwqAgNTEgCj4+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKwo+PiDCoCBuZXQvY29yZS94ZHAuY8KgwqDCoCB8wqDCoMKgIDQg
-KysrLQo+PiDCoCAyIGZpbGVzIGNoYW5nZWQsIDU0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24o
-LSkKPiAKPj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbmV0L3hkcC5oIGIvaW5jbHVkZS9uZXQveGRw
-LmgKPj4gaW5kZXggNTM5M2IzZWJlNTZlLi42M2Y0NjJmNWVhN2YgMTAwNjQ0Cj4+IC0tLSBhL2lu
-Y2x1ZGUvbmV0L3hkcC5oCj4+ICsrKyBiL2luY2x1ZGUvbmV0L3hkcC5oCj4+IEBAIC04LDYgKzgs
-NyBAQAo+IAo+PiDCoCAjaW5jbHVkZSA8bGludXgvc2tidWZmLmg+IC8qIHNrYl9zaGFyZWRfaW5m
-byAqLwo+PiDCoCAjaW5jbHVkZSA8dWFwaS9saW51eC9uZXRkZXYuaD4KPj4gKyNpbmNsdWRlIDxs
-aW51eC9iaXRmaWVsZC5oPgo+IAo+PiDCoCAvKioKPj4gwqDCoCAqIERPQzogWERQIFJYLXF1ZXVl
-IGluZm9ybWF0aW9uCj4+IEBAIC0zOTYsNiArMzk3LDU2IEBAIFhEUF9NRVRBREFUQV9LRlVOQ194
-eHgKPj4gwqAgTUFYX1hEUF9NRVRBREFUQV9LRlVOQywKPj4gwqAgfTsKPiAKPj4gKy8qIEZvciBw
-YXJ0aXRpb25pbmcgb2YgeGRwX3Jzc19oYXNoX3R5cGUgKi8KPj4gKyNkZWZpbmUgUlNTX0wzwqDC
-oMKgwqDCoMKgwqAgR0VOTUFTSygyLDApIC8qIDMtYml0cyA9IHZhbHVlcyBiZXR3ZWVuIDEtNyAq
-Lwo+PiArI2RlZmluZSBMNF9CSVTCoMKgwqDCoMKgwqDCoCBCSVQoMynCoMKgwqDCoMKgwqAgLyog
-MS1iaXQgLSBMNCBpbmRpY2F0aW9uICovCj4+ICsjZGVmaW5lIFJTU19MNF9JUFY0wqDCoMKgIEdF
-Tk1BU0soNiw0KSAvKiAzLWJpdHMgKi8KPj4gKyNkZWZpbmUgUlNTX0w0X0lQVjbCoMKgwqAgR0VO
-TUFTSyg5LDcpIC8qIDMtYml0cyAqLwo+PiArI2RlZmluZSBSU1NfTDTCoMKgwqDCoMKgwqDCoCBH
-RU5NQVNLKDksMykgLyogPSA3LWJpdHMgLSBjb3ZlcmluZyBMNCAKPj4gSVBWNCtJUFY2ICovCj4+
-ICsjZGVmaW5lIEw0X0lQVjZfRVhfQklUwqDCoMKgIEJJVCg5KcKgwqDCoMKgwqDCoCAvKiAxLWJp
-dCAtIEw0IElQdjYgd2l0aCAKPj4gRXh0ZW5zaW9uIGhkciAqLwo+PiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiAxMS1iaXRzIGluIHRvdGFsICovCj4+ICsKPj4g
-Ky8qIFRoZSBYRFAgUlNTIGhhc2ggdHlwZSAoeGRwX3Jzc19oYXNoX3R5cGUpIGNhbiBib3RoIGJl
-IHNlZW4gYXMgYSBudW1iZXIgdGhhdAo+PiArICogaXMgb3JkZXJlZCBhY2NvcmRpbmcgYnkgSVNP
-IGxheWVyLCBhbmQgY2FuIGJlIGJpdCBtYXNrZWQgdG8gc2VwYXJhdGUgSVB2NCBhbmQKPj4gKyAq
-IElQdjYgdHlwZXMgZm9yIEw0IHByb3RvY29scy4gUm9vbSBpcyBhdmFpbGFibGUgZm9yIGV4dGVu
-ZGluZyBsYXRlciB3aGlsZQo+PiArICoga2VlcGluZyBhYm92ZSBwcm9wZXJ0aWVzLCBhcyB0aGlz
-IG5lZWQgdG8gY292ZXIgTklDIGhhcmR3YXJlIFJTUyB0eXBlcy4KPj4gKyAqLwo+PiArZW51bSB4
-ZHBfcnNzX2hhc2hfdHlwZSB7Cj4+ICvCoMKgwqAgWERQX1JTU19UWVBFX05PTkXCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgID0gMCwKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDLCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCA9IFhEUF9SU1NfVFlQRV9OT05FLAo+PiArCj4+ICvCoMKgwqAgWERQX1JT
-U19UWVBFX0wzX01BU0vCoMKgwqDCoMKgwqDCoMKgID0gUlNTX0wzLAo+PiArwqDCoMKgIFhEUF9S
-U1NfVFlQRV9MM19JUFY0wqDCoMKgwqDCoMKgwqDCoCA9IEZJRUxEX1BSRVBfQ09OU1QoUlNTX0wz
-LCAxKSwKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDNfSVBWNsKgwqDCoMKgwqDCoMKgwqAgPSBG
-SUVMRF9QUkVQX0NPTlNUKFJTU19MMywgMiksCj4+ICvCoMKgwqAgWERQX1JTU19UWVBFX0wzX0lQ
-VjZfRVjCoMKgwqDCoMKgID0gRklFTERfUFJFUF9DT05TVChSU1NfTDMsIDQpLAo+PiArCj4+ICvC
-oMKgwqAgWERQX1JTU19UWVBFX0w0X01BU0vCoMKgwqDCoMKgwqDCoMKgID0gUlNTX0w0LAo+PiAr
-wqDCoMKgIFhEUF9SU1NfVFlQRV9MNF9TSElGVMKgwqDCoMKgwqDCoMKgID0gX19iZl9zaGYoUlNT
-X0w0KSwKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDRfTUFTS19FWMKgwqDCoMKgwqAgPSBSU1Nf
-TDQgfCBMNF9JUFY2X0VYX0JJVCwKPj4gKwo+PiArwqDCoMKgIFhEUF9SU1NfVFlQRV9MNF9JUFY0
-X01BU0vCoMKgwqAgPSBSU1NfTDRfSVBWNCwKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDRfQklU
-wqDCoMKgwqDCoMKgwqDCoMKgID0gTDRfQklULAo+PiArwqDCoMKgIFhEUF9SU1NfVFlQRV9MNF9J
-UFY0X1RDUMKgwqDCoMKgID0gTDRfQklUfEZJRUxEX1BSRVBfQ09OU1QoUlNTX0w0X0lQVjQsIDEp
-LAo+PiArwqDCoMKgIFhEUF9SU1NfVFlQRV9MNF9JUFY0X1VEUMKgwqDCoMKgID0gTDRfQklUfEZJ
-RUxEX1BSRVBfQ09OU1QoUlNTX0w0X0lQVjQsIDIpLAo+PiArwqDCoMKgIFhEUF9SU1NfVFlQRV9M
-NF9JUFY0X1NDVFDCoMKgwqAgPSBMNF9CSVR8RklFTERfUFJFUF9DT05TVChSU1NfTDRfSVBWNCwg
-MyksCj4+ICsKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDRfSVBWNl9NQVNLwqDCoMKgID0gUlNT
-X0w0X0lQVjYsCj4+ICvCoMKgwqAgWERQX1JTU19UWVBFX0w0X0lQVjZfVENQwqDCoMKgwqAgPSBM
-NF9CSVR8RklFTERfUFJFUF9DT05TVChSU1NfTDRfSVBWNiwgMSksCj4+ICvCoMKgwqAgWERQX1JT
-U19UWVBFX0w0X0lQVjZfVURQwqDCoMKgwqAgPSBMNF9CSVR8RklFTERfUFJFUF9DT05TVChSU1Nf
-TDRfSVBWNiwgMiksCj4+ICvCoMKgwqAgWERQX1JTU19UWVBFX0w0X0lQVjZfU0NUUMKgwqDCoCA9
-IEw0X0JJVHxGSUVMRF9QUkVQX0NPTlNUKFJTU19MNF9JUFY2LCAzKSwKPj4gKwo+PiArwqDCoMKg
-IFhEUF9SU1NfVFlQRV9MNF9JUFY2X0VYX01BU0sgPSBMNF9JUFY2X0VYX0JJVCwKPj4gK8KgwqDC
-oCBYRFBfUlNTX1RZUEVfTDRfSVBWNl9UQ1BfRVjCoCA9IFhEUF9SU1NfVFlQRV9MNF9JUFY2X1RD
-UHxMNF9JUFY2X0VYX0JJVCwKPj4gK8KgwqDCoCBYRFBfUlNTX1RZUEVfTDRfSVBWNl9VRFBfRVjC
-oCA9IFhEUF9SU1NfVFlQRV9MNF9JUFY2X1VEUHxMNF9JUFY2X0VYX0JJVCwKPj4gK8KgwqDCoCBY
-RFBfUlNTX1RZUEVfTDRfSVBWNl9TQ1RQX0VYID0gWERQX1JTU19UWVBFX0w0X0lQVjZfU0NUUHxM
-NF9JUFY2X0VYX0JJVCwKPj4gK307Cj4+ICsjdW5kZWYgUlNTX0wzCj4+ICsjdW5kZWYgTDRfQklU
-Cj4+ICsjdW5kZWYgUlNTX0w0X0lQVjQKPj4gKyN1bmRlZiBSU1NfTDRfSVBWNgo+PiArI3VuZGVm
-IFJTU19MNAo+PiArI3VuZGVmIEw0X0lQVjZfRVhfQklUCj4+ICsKPj4gwqAgI2lmZGVmIENPTkZJ
-R19ORVQKPj4gwqAgdTMyIGJwZl94ZHBfbWV0YWRhdGFfa2Z1bmNfaWQoaW50IGlkKTsKPj4gwqAg
-Ym9vbCBicGZfZGV2X2JvdW5kX2tmdW5jX2lkKHUzMiBidGZfaWQpOwo+PiBkaWZmIC0tZ2l0IGEv
-bmV0L2NvcmUveGRwLmMgYi9uZXQvY29yZS94ZHAuYwo+PiBpbmRleCA3MTMzMDE3YmNkNzQuLjgx
-ZDQxZGYzMDY5NSAxMDA2NDQKPj4gLS0tIGEvbmV0L2NvcmUveGRwLmMKPj4gKysrIGIvbmV0L2Nv
-cmUveGRwLmMKPj4gQEAgLTcyMSwxMiArNzIxLDE0IEBAIF9fYnBmX2tmdW5jIGludCAKPj4gYnBm
-X3hkcF9tZXRhZGF0YV9yeF90aW1lc3RhbXAoY29uc3Qgc3RydWN0IHhkcF9tZCAqY3R4LCB1NjQg
-KnRpbQo+PiDCoMKgICogQGhhc2g6IFJldHVybiB2YWx1ZSBwb2ludGVyLgo+PiDCoMKgICoKPj4g
-wqDCoCAqIFJldHVybjoKPj4gLSAqICogUmV0dXJucyAwIG9uIHN1Y2Nlc3Mgb3IgYGAtZXJybm9g
-YCBvbiBlcnJvci4KPj4gKyAqICogUmV0dXJucyAocG9zaXRpdmUpIFJTUyBoYXNoICoqdHlwZSoq
-IG9uIHN1Y2Nlc3Mgb3IgYGAtZXJybm9gYCBvbiAKPj4gZXJyb3IuCj4+ICsgKiAqIGBgZW51bSB4
-ZHBfcnNzX2hhc2hfdHlwZWBgIDogUlNTIGhhc2ggdHlwZQo+PiDCoMKgICogKiBgYC1FT1BOT1RT
-VVBQYGAgOiBtZWFucyBkZXZpY2UgZHJpdmVyIGRvZXNuJ3QgaW1wbGVtZW50IGtmdW5jCj4+IMKg
-wqAgKiAqIGBgLUVOT0RBVEFgYMKgwqDCoCA6IG1lYW5zIG5vIFJYLWhhc2ggYXZhaWxhYmxlIGZv
-ciB0aGlzIGZyYW1lCj4+IMKgwqAgKi8KPj4gwqAgX19icGZfa2Z1bmMgaW50IGJwZl94ZHBfbWV0
-YWRhdGFfcnhfaGFzaChjb25zdCBzdHJ1Y3QgeGRwX21kICpjdHgsIAo+PiB1MzIgKmhhc2gpCj4+
-IMKgIHsKPj4gK8KgwqDCoCBCVEZfVFlQRV9FTUlUKGVudW0geGRwX3Jzc19oYXNoX3R5cGUpOwo+
-PiDCoMKgwqDCoMKgIHJldHVybiAtRU9QTk9UU1VQUDsKPj4gwqAgfQo+IAo+IAo+IAoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFu
-IG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9z
-dW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Thu, Mar 23, 2023 at 01:24:32PM +0100, Piotr Raczynski wrote:
+> This patchset reimplements MSIX interrupt allocation logic to allow dynamic
+> interrupt allocation after MSIX has been initially enabled. This allows
+> current and future features to allocate and free interrupts as needed and
+> will help to drastically decrease number of initially preallocated
+> interrupts (even down to the API hard limit of 1). Although this patchset
+> does not change behavior in terms of actual number of allocated interrupts
+> during probe, it will be subject to change.
+> 
+> First few patches prepares to introduce dynamic allocation by moving
+> interrupt allocation code to separate file and update allocation API used
+> in the driver to the currently preferred one.
+> 
+> Due to the current contract between ice and irdma driver which is directly
+> accessing msix entries allocated by ice driver, even after moving away from
+> older pci_enable_msix_range function, still keep msix_entries array for
+> irdma use.
+> 
+> Next patches refactors and removes redundant code from SRIOV related logic
+> as it also make it easier to move away from static allocation scheme.
+> 
+> Last patches actually enables dynamic allocation of MSIX interrupts. First,
+> introduce functions to allocate and free interrupts individually. This sets
+> ground for the rest of the changes even if that patch still allocates the
+> interrupts from the preallocated pool. Since this patch starts to keep
+> interrupt details in ice_q_vector structure we can get rid of functions
+> that calculates base vector number and register offset for the interrupt
+> as it is equal to the interrupt index. Only keep separate register offset
+> functions for the VF VSIs.
+> 
+> Next, replace homegrown interrupt tracker with much simpler xarray based
+> approach. As new API always allocate interrupts one by one, also track
+> interrupts in the same manner.
+> 
+> Lastly, extend the interrupt tracker to deal both with preallocated and
+> dynamically allocated vectors and use pci_msix_alloc_irq_at and
+> pci_msix_free_irq functions. Since not all architecture supports dynamic
+> allocation, check it before trying to allocate a new interrupt.
+> 
+> As previously mentioned, this patchset does not change number of initially
+> allocated interrupts during init phase but now it can and will likely be
+> changed.
+> 
+> Patch 1-3 -> move code around and use newer API
+> Patch 4-5 -> refactor and remove redundant SRIOV code
+> Patch 6   -> allocate every interrupt individually
+> Patch 7   -> replace homegrown interrupt tracker with xarray
+> Patch 8   -> allow dynamic interrupt allocation
+> 
+> Change history:
+> v1 -> v2:
+> - ice: refactor VF control VSI interrupt handling
+>   - move ice_get_vf_ctrl_vsi to ice_lib.c (ice_vf_lib.c depends on
+>     CONFIG_PCI_IOV)
+> v2 -> v3:
+> - ice: refactor VF control VSI interrupt handling
+>   - revert v2 change and add no-op function in case of CONFIG_PCI_IOV=n
+> - ice: add dynamic interrupt allocation
+>   - fix commit message
+> 
+> Piotr Raczynski (8):
+>   ice: move interrupt related code to separate file
+>   ice: use pci_irq_vector helper function
+>   ice: use preferred MSIX allocation api
+>   ice: refactor VF control VSI interrupt handling
+>   ice: remove redundant SRIOV code
+>   ice: add individual interrupt allocation
+>   ice: track interrupt vectors with xarray
+>   ice: add dynamic interrupt allocation
+> 
+
+Thanks,
+Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
