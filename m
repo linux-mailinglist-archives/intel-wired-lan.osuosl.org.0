@@ -1,89 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A0866CF0FA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Mar 2023 19:23:55 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6E4C6CF183
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Mar 2023 19:57:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1DAA96154E;
-	Wed, 29 Mar 2023 17:23:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1DAA96154E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CD6A61560;
+	Wed, 29 Mar 2023 17:56:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6CD6A61560
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680110634;
-	bh=dg8ta1uE2L5Bi/q5bvAY58cslI80J4p6ZFLWoez5dag=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1680112619;
+	bh=GNs7l3jYAX7rH0+MZ8ZdCE4uvK2SggblK5ce9jpNTCE=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gPzVGG/bkIDmBjE2dPeXRxQr5sYfDcxPFn+vvRxfsLr4a8/uBnM0VeS5rWFShAeVZ
-	 mDiD4QH9nzfsusWqpuDDqDS982+6fij3bu81vU+9dxG/2lbal3MEgnAspnqDmhmAUV
-	 fcxw8M2QahqizLTAwZtPT54HZeOnOEwoAYhN4oTfnoN+l04yyD54vSZyR5uAiB3avr
-	 eX2xqlwofP+Sk3ZkAgJrp3NXK9ielG6bd5cghncx/wGVe8zb10Jxucg2nYS4dQCaDT
-	 mqvUZmKYAPhJhU78C6hPdBJj//qs+YVQpWathLPehBF58UPdXSEtyyPDKnrB2TK8vu
-	 auqBTHgVSShsQ==
+	b=GbdBpQrEhSJ5D8Qx4LKRiNRWHXY0wisJEMDsbcqBGKAuPu5X6mALQN2QvhSQp1Ism
+	 SxI1r70woRVwbhh82FqnXlpI+JLjtEA7qSsUp6jZelm2QwDzaulE0lfS1xbMpoKFg0
+	 pNGU/lVo1mp2VKaBtsevB/Tja0ad0v330dUVLHg/aLjMqEse3hWIBHDqPKJ/N8XkxV
+	 jWNUWEu/dKiczQLnB+KQMlMmuuAfKQRDylfq9O74Vqyu53qpBrNBl/Z/mIN709iwsS
+	 3LWSc72Og0k9rTYzzKpBq/V1u81cuboze4d3wZuphhqSEM9Eyi+ZJV3g7JNu+y6LsL
+	 gKaBZFIcZE3Jw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VBPP4G8gzguQ; Wed, 29 Mar 2023 17:23:53 +0000 (UTC)
+	with ESMTP id mjCbWB3osY57; Wed, 29 Mar 2023 17:56:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5AB6760C24;
-	Wed, 29 Mar 2023 17:23:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AB6760C24
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42435614B9;
+	Wed, 29 Mar 2023 17:56:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42435614B9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7099A1BF584
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:23:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 803D51BF584
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:32:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 49F7E41C88
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:23:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 49F7E41C88
+ by smtp2.osuosl.org (Postfix) with ESMTP id 577D041C88
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:32:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 577D041C88
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id windwmJ9C2Nq for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Mar 2023 17:23:46 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CEC84000B
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0CEC84000B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:23:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="339670220"
-X-IronPort-AV: E=Sophos;i="5.98,301,1673942400"; d="scan'208";a="339670220"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Mar 2023 10:23:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="748855529"
-X-IronPort-AV: E=Sophos;i="5.98,301,1673942400"; d="scan'208";a="748855529"
-Received: from unknown (HELO anguy11-linux.jf.intel.com) ([10.166.241.12])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Mar 2023 10:23:45 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 29 Mar 2023 10:22:56 -0700
-Message-Id: <20230329172256.41933-3-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20230329172256.41933-1-anthony.l.nguyen@intel.com>
-References: <20230329172256.41933-1-anthony.l.nguyen@intel.com>
+ with ESMTP id hdy0DFb-6lG1 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Mar 2023 17:32:29 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5571D4000B
+Received: from mail-qt1-x82c.google.com (mail-qt1-x82c.google.com
+ [IPv6:2607:f8b0:4864:20::82c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5571D4000B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 17:32:28 +0000 (UTC)
+Received: by mail-qt1-x82c.google.com with SMTP id
+ d75a77b69052e-3e390e23f83so347681cf.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Mar 2023 10:32:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680111148;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=degRtIhux6688TNvPjGrValnl+zQVaa8FMPKCKuIip4=;
+ b=tnybkACIi3OSfAHDzdSMzfAXQUhTHylt56Kq585oV6UonWrEoAb22q9mXGge8hlg7g
+ hpALpVRiW05kdpzvzwKwKI168k3wZF6SJOkN2rxoKVmNrqX/dYWbwB4RiKau+l8wIdge
+ 3gNkhRXmD2X3lavShAnY9Mu6lcN0zDWpwhy9aeRzhoS/Oaq1/0/suKjc0cZKYG5i5MJJ
+ hsENb3FcfqazcN0UxNv65D4TTxwTZlQQ0fdjftRfAv1Sbx5Dzc69J68vbN/OMLe2Uvso
+ qMoRQaQIvffff7Vz5bfkG+xXljlvWjUTncewTOZ0lvp5G/qXf20dTlH7UqaexCXQ4tn9
+ j7uA==
+X-Gm-Message-State: AAQBX9eXvjErD4ihE+9mCKK31IAQQwzGt1uaF/s66qO93zjVk2QmQiDn
+ JKJgY1Aib54aPh6mwfYFUprNd9saUQJRDDJpkYh69A==
+X-Google-Smtp-Source: AKy350ZG97y2PHkm8JbscxIe3xR7aXwx/HBfs0zpE7vkqubYp1GSW3IzXQNxYt/xRHVgJRI7xHoIUbgBDKqai525hGA=
+X-Received: by 2002:a05:622a:1825:b0:3e2:3de:371f with SMTP id
+ t37-20020a05622a182500b003e203de371fmr430450qtc.15.1680111147865; Wed, 29 Mar
+ 2023 10:32:27 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680110626; x=1711646626;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=sp9gj3Dkpqtvy8eOqrwRYLa69QAUsnMwS3RK/vBFyEo=;
- b=HkBUQQWGW0ES/fDyEYFKkv3fotXfk79+2NoEaHp0AcjID1GZPB7jiIzz
- bfGansrEHFvTyyCD8iyc49upIdt6pqsa3fVWw9INsptS1Z71nvAVRdQOl
- 72z8woqWhRyeyw3ic+/5hxRjLCrrQngwVRA1Zs0nZFWMCrD6EIEpn9D4c
- yktiGOxHwE7DMt7Dbvo9AmvR0dKHNmQSg00GneovvPCaGo3OIMGmjq3jF
- /uMwO2FveIj8N/7gI2vbHXar3e6uCVs6ui2lf9JGZ/DArRUY7fmqj2cVm
- YyvGuYXL4J/kuzSoNZ/0H7poW3tfweh2BSIl8MjpbXN8ISx7fhsUSbK61
- w==;
+References: <20230329140404.1647925-1-pavan.kumar.linga@intel.com>
+In-Reply-To: <20230329140404.1647925-1-pavan.kumar.linga@intel.com>
+From: Willem de Bruijn <willemb@google.com>
+Date: Wed, 29 Mar 2023 13:31:50 -0400
+Message-ID: <CA+FuTSer3=W1TfStqqjGEswvvbz6Z4GOF6ix0QVaZdcgJxor6A@mail.gmail.com>
+To: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+X-Mailman-Approved-At: Wed, 29 Mar 2023 17:56:53 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20210112; t=1680111148;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=degRtIhux6688TNvPjGrValnl+zQVaa8FMPKCKuIip4=;
+ b=l+ub6hQlCTPhx+lc1TwKoFjsCDucXbNrm4NoAtTBM79YS4D97BGB+oyNuC78ex5g4r
+ bbndmZTxAYwIhGhtTuIYTSHWx4MHJXdO1ggX974K6lgkZBAds4xupCmMrr1b55k3V78P
+ pGB537wBkJmJrmhBENvht/H/oiRYB+iESD2kmRzJecP8bmB0q6as5bWHxRSOlv3+LEhC
+ aovV3+dHpuKiBkKxDBgN0TIaEeQSevOGUfqINn1VCYrcSAJEXHvkMdf5AEm8ISQAz6UC
+ ee6cm5BQRg7PjzYsb7KZcq3OsUwZ1NMYQp0FiMOpk/Pbzhh/pZGehrLIPN2KQGHWMJD3
+ sxOg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HkBUQQWG
-Subject: [Intel-wired-lan] [PATCH net-next 2/2] Documentation/eth/intel:
- Remove references to SourceForge
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20210112 header.b=l+ub6hQl
+Subject: Re: [Intel-wired-lan] [PATCH net-next 00/15] Introduce IDPF driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,227 +105,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, decot@google.com,
+ shiraz.saleem@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The out-of-tree driver is hosted on SourceForge, as this does not apply
-to the kernel driver remove references to it. Also do some minor
-formatting changes around this section.
-
-Suggested-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- .../networking/device_drivers/ethernet/intel/e100.rst      | 2 --
- .../networking/device_drivers/ethernet/intel/e1000.rst     | 7 +------
- .../networking/device_drivers/ethernet/intel/e1000e.rst    | 5 -----
- .../networking/device_drivers/ethernet/intel/fm10k.rst     | 5 -----
- .../networking/device_drivers/ethernet/intel/i40e.rst      | 5 -----
- .../networking/device_drivers/ethernet/intel/iavf.rst      | 5 -----
- .../networking/device_drivers/ethernet/intel/ice.rst       | 3 ---
- .../networking/device_drivers/ethernet/intel/igb.rst       | 5 -----
- .../networking/device_drivers/ethernet/intel/igbvf.rst     | 5 -----
- .../networking/device_drivers/ethernet/intel/ixgbe.rst     | 5 -----
- .../networking/device_drivers/ethernet/intel/ixgbevf.rst   | 5 -----
- 11 files changed, 1 insertion(+), 51 deletions(-)
-
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/e100.rst b/Documentation/networking/device_drivers/ethernet/intel/e100.rst
-index 4f613949782c..5dee1b53e977 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/e100.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/e100.rst
-@@ -180,8 +180,6 @@ Support
- For general information, go to the Intel support website at:
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--http://sourceforge.net/projects/e1000
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/e1000.rst b/Documentation/networking/device_drivers/ethernet/intel/e1000.rst
-index 7b15b8c72be0..52a7fb9ce8d9 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/e1000.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/e1000.rst
-@@ -451,12 +451,7 @@ Support
- =======
- 
- For general information, go to the Intel support website at:
--
--    http://support.intel.com
--
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--    http://sourceforge.net/projects/e1000
-+http://support.intel.com
- 
- If an issue is identified with the released source code on the supported
- kernel with a supported adapter, email the specific information related
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/e1000e.rst b/Documentation/networking/device_drivers/ethernet/intel/e1000e.rst
-index 7a9cbfa9e0f3..d8f810afdd49 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/e1000e.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/e1000e.rst
-@@ -371,13 +371,8 @@ NOTE: Wake on LAN is only supported on port A for the following devices:
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/fm10k.rst b/Documentation/networking/device_drivers/ethernet/intel/fm10k.rst
-index 9d9c2ec2152e..396a2c8c3db1 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/fm10k.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/fm10k.rst
-@@ -130,13 +130,8 @@ the Intel Ethernet Controller XL710.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/i40e.rst b/Documentation/networking/device_drivers/ethernet/intel/i40e.rst
-index 5b13fe0fec82..4fbaa1a2d674 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/i40e.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/i40e.rst
-@@ -759,13 +759,8 @@ enabled when setting up DCB on your switch.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/iavf.rst b/Documentation/networking/device_drivers/ethernet/intel/iavf.rst
-index 079847666125..eb926c3bd4cd 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/iavf.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/iavf.rst
-@@ -319,13 +319,8 @@ This is caused by the way the Linux kernel reports this stressed condition.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://support.intel.com
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on the supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-index 246bf6455f64..69695e5511f4 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-@@ -1026,9 +1026,6 @@ Support
- For general information, go to the Intel support website at:
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/igb.rst b/Documentation/networking/device_drivers/ethernet/intel/igb.rst
-index ee149bdb42b9..fbd590b6a0d6 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/igb.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/igb.rst
-@@ -201,13 +201,8 @@ NOTE: This feature is exclusive to i210 models.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/igbvf.rst b/Documentation/networking/device_drivers/ethernet/intel/igbvf.rst
-index 78ceb3cdbfdb..11a9017f3069 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/igbvf.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/igbvf.rst
-@@ -53,13 +53,8 @@ https://www.kernel.org/pub/software/network/ethtool/
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-index 8d4f7ede2ff8..1e5f16993f69 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ixgbe.rst
-@@ -545,13 +545,8 @@ on the Intel Ethernet Controller XL710.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ixgbevf.rst b/Documentation/networking/device_drivers/ethernet/intel/ixgbevf.rst
-index 9201c74e4c36..08dc0d368a48 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ixgbevf.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ixgbevf.rst
-@@ -55,13 +55,8 @@ VLANs: There is a limit of a total of 64 shared VLANs to 1 or more VFs.
- Support
- =======
- For general information, go to the Intel support website at:
--
- https://www.intel.com/support/
- 
--or the Intel Wired Networking project hosted by Sourceforge at:
--
--https://sourceforge.net/projects/e1000
--
- If an issue is identified with the released source code on a supported kernel
- with a supported adapter, email the specific information related to the issue
- to intel-wired-lan@lists.osuosl.org.
--- 
-2.38.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gV2VkLCBNYXIgMjksIDIwMjMgYXQgMTA6MDfigK9BTSBQYXZhbiBLdW1hciBMaW5nYQo8cGF2
+YW4ua3VtYXIubGluZ2FAaW50ZWwuY29tPiB3cm90ZToKPgo+IFRoaXMgcGF0Y2ggc2VyaWVzIGlu
+dHJvZHVjZXMgdGhlIEluZnJhc3RydWN0dXJlIERhdGEgUGF0aCBGdW5jdGlvbiAoSURQRikKPiBk
+cml2ZXIuIEl0IGlzIHVzZWQgZm9yIGJvdGggcGh5c2ljYWwgYW5kIHZpcnR1YWwgZnVuY3Rpb25z
+LiBFeGNlcHQgZm9yCj4gc29tZSBvZiB0aGUgZGV2aWNlIG9wZXJhdGlvbnMgdGhlIHJlc3Qgb2Yg
+dGhlIGZ1bmN0aW9uYWxpdHkgaXMgdGhlIHNhbWUKPiBmb3IgYm90aCBQRiBhbmQgVkYuIElEUEYg
+dXNlcyB2aXJ0Y2hubCB2ZXJzaW9uMiBvcGNvZGVzIGFuZCBzdHJ1Y3R1cmVzCj4gZGVmaW5lZCBp
+biB0aGUgdmlydGNobmwyIGhlYWRlciBmaWxlIHdoaWNoIGhlbHBzIHRoZSBkcml2ZXIgdG8gbGVh
+cm4KPiB0aGUgY2FwYWJpbGl0aWVzIGFuZCByZWdpc3RlciBvZmZzZXRzIGZyb20gdGhlIGRldmlj
+ZSBDb250cm9sIFBsYW5lIChDUCkKPiBpbnN0ZWFkIG9mIGFzc3VtaW5nIHRoZSBkZWZhdWx0IHZh
+bHVlcy4KPgo+IFRoZSBmb3JtYXQgb2YgdGhlIHNlcmllcyBmb2xsb3dzIHRoZSBkcml2ZXIgaW5p
+dCBmbG93IHRvIGludGVyZmFjZSBvcGVuLgo+IFRvIHN0YXJ0IHdpdGgsIHByb2JlIGdldHMgY2Fs
+bGVkIGFuZCBraWNrcyBvZmYgdGhlIGRyaXZlciBpbml0aWFsaXphdGlvbgo+IGJ5IHNwYXduaW5n
+IHRoZSAndmNfZXZlbnRfdGFzaycgd29yayBxdWV1ZSB3aGljaCBpbiB0dXJuIGNhbGxzIHRoZQo+
+ICdoYXJkIHJlc2V0JyBmdW5jdGlvbi4gQXMgcGFydCBvZiB0aGF0LCB0aGUgbWFpbGJveCBpcyBp
+bml0aWFsaXplZCB3aGljaAo+IGlzIHVzZWQgdG8gc2VuZC9yZWNlaXZlIHRoZSB2aXJ0Y2hubCBt
+ZXNzYWdlcyB0by9mcm9tIHRoZSBDUC4gT25jZSB0aGF0IGlzCj4gZG9uZSwgJ2NvcmUgaW5pdCcg
+a2lja3MgaW4gd2hpY2ggcmVxdWVzdHMgYWxsIHRoZSByZXF1aXJlZCBnbG9iYWwgcmVzb3VyY2Vz
+Cj4gZnJvbSB0aGUgQ1AgYW5kIHNwYXducyB0aGUgJ2luaXRfdGFzaycgd29yayBxdWV1ZSB0byBj
+cmVhdGUgdGhlIHZwb3J0cy4KPgo+IEJhc2VkIG9uIHRoZSBjYXBhYmlsaXR5IGluZm9ybWF0aW9u
+IHJlY2VpdmVkLCB0aGUgZHJpdmVyIGNyZWF0ZXMgdGhlIHNhaWQKPiBudW1iZXIgb2YgdnBvcnRz
+IChvbmUgb3IgbWFueSkgd2hlcmUgZWFjaCB2cG9ydCBpcyBhc3NvY2lhdGVkIHRvIGEgbmV0ZGV2
+Lgo+IEFsc28sIGVhY2ggdnBvcnQgaGFzIGl0cyBvd24gcmVzb3VyY2VzIHN1Y2ggYXMgcXVldWVz
+LCB2ZWN0b3JzIGV0Yy4KPiBGcm9tIHRoZXJlLCByZXN0IG9mIHRoZSBuZXRkZXZfb3BzIGFuZCBk
+YXRhIHBhdGggYXJlIGFkZGVkLgo+Cj4gSURQRiBpbXBsZW1lbnRzIGJvdGggc2luZ2xlIHF1ZXVl
+IHdoaWNoIGlzIHRyYWRpdGlvbmFsIHF1ZXVlaW5nIG1vZGVsCj4gYXMgd2VsbCBhcyBzcGxpdCBx
+dWV1ZSBtb2RlbC4gSW4gc3BsaXQgcXVldWUgbW9kZWwsIGl0IHVzZXMgc2VwYXJhdGUgcXVldWUK
+PiBmb3IgYm90aCBjb21wbGV0aW9uIGRlc2NyaXB0b3JzIGFuZCBidWZmZXJzIHdoaWNoIGhlbHBz
+IHRvIGltcGxlbWVudAo+IG91dC1vZi1vcmRlciBjb21wbGV0aW9ucy4gSXQgYWxzbyBoZWxwcyB0
+byBpbXBsZW1lbnQgYXN5bW1ldHJpYyBxdWV1ZXMsCj4gZm9yIGV4YW1wbGUgbXVsdGlwbGUgUlgg
+Y29tcGxldGlvbiBxdWV1ZXMgY2FuIGJlIHByb2Nlc3NlZCBieSBhIHNpbmdsZQo+IFJYIGJ1ZmZl
+ciBxdWV1ZSBhbmQgbXVsdGlwbGUgVFggYnVmZmVyIHF1ZXVlcyBjYW4gYmUgcHJvY2Vzc2VkIGJ5
+IGEKPiBzaW5nbGUgVFggY29tcGxldGlvbiBxdWV1ZS4gSW4gc2luZ2xlIHF1ZXVlIG1vZGVsLCBz
+YW1lIHF1ZXVlIGlzIHVzZWQKPiBmb3IgYm90aCBkZXNjcmlwdG9yIGNvbXBsZXRpb25zIGFzIHdl
+bGwgYXMgYnVmZmVyIGNvbXBsZXRpb25zLiBJdCBhbHNvCj4gc3VwcG9ydHMgZmVhdHVyZXMgc3Vj
+aCBhcyBnZW5lcmljIGNoZWNrc3VtIG9mZmxvYWQsIGdlbmVyaWMgcmVjZWl2ZQo+IG9mZmxvYWQg
+KGhhcmR3YXJlIEdSTykgZXRjLgo+Cj4gUGF2YW4gS3VtYXIgTGluZ2EgKDE1KToKPiAgIHZpcnRj
+aG5sOiBhZGQgdmlydGNobmwgdmVyc2lvbiAyIG9wcwo+ICAgaWRwZjogYWRkIG1vZHVsZSByZWdp
+c3RlciBhbmQgcHJvYmUgZnVuY3Rpb25hbGl0eQo+ICAgaWRwZjogYWRkIGNvbnRyb2xxIGluaXQg
+YW5kIHJlc2V0IGNoZWNrcwo+ICAgaWRwZjogYWRkIGNvcmUgaW5pdCBhbmQgaW50ZXJydXB0IHJl
+cXVlc3QKPiAgIGlkcGY6IGFkZCBjcmVhdGUgdnBvcnQgYW5kIG5ldGRldiBjb25maWd1cmF0aW9u
+Cj4gICBpZHBmOiBjb250aW51ZSBleHBhbmRpbmcgaW5pdCB0YXNrCj4gICBpZHBmOiBjb25maWd1
+cmUgcmVzb3VyY2VzIGZvciBUWCBxdWV1ZXMKPiAgIGlkcGY6IGNvbmZpZ3VyZSByZXNvdXJjZXMg
+Zm9yIFJYIHF1ZXVlcwo+ICAgaWRwZjogaW5pdGlhbGl6ZSBpbnRlcnJ1cHRzIGFuZCBlbmFibGUg
+dnBvcnQKPiAgIGlkcGY6IGFkZCBzcGxpdHEgc3RhcnRfeG1pdAo+ICAgaWRwZjogYWRkIFRYIHNw
+bGl0cSBuYXBpIHBvbGwgc3VwcG9ydAo+ICAgaWRwZjogYWRkIFJYIHNwbGl0cSBuYXBpIHBvbGwg
+c3VwcG9ydAo+ICAgaWRwZjogYWRkIHNpbmdsZXEgc3RhcnRfeG1pdCBhbmQgbmFwaSBwb2xsCj4g
+ICBpZHBmOiBhZGQgZXRodG9vbCBjYWxsYmFja3MKPiAgIGlkcGY6IGNvbmZpZ3VyZSBTUklPViBh
+bmQgYWRkIG90aGVyIG5kb19vcHMKPgo+ICAuLi4vZGV2aWNlX2RyaXZlcnMvZXRoZXJuZXQvaW50
+ZWwvaWRwZi5yc3QgICAgfCAgIDQ2ICsKPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvS2Nv
+bmZpZyAgICAgICAgICAgIHwgICAxMSArCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL01h
+a2VmaWxlICAgICAgICAgICB8ICAgIDEgKwo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+ZHBmL01ha2VmaWxlICAgICAgfCAgIDE4ICsKPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWRwZi9pZHBmLmggICAgICAgIHwgIDczNCArKysKPiAgLi4uL25ldC9ldGhlcm5ldC9pbnRlbC9p
+ZHBmL2lkcGZfY29udHJvbHEuYyAgIHwgIDY0NCArKysKPiAgLi4uL25ldC9ldGhlcm5ldC9pbnRl
+bC9pZHBmL2lkcGZfY29udHJvbHEuaCAgIHwgIDEzMSArCj4gIC4uLi9ldGhlcm5ldC9pbnRlbC9p
+ZHBmL2lkcGZfY29udHJvbHFfYXBpLmggICB8ICAxOTAgKwo+ICAuLi4vZXRoZXJuZXQvaW50ZWwv
+aWRwZi9pZHBmX2NvbnRyb2xxX3NldHVwLmMgfCAgMTc1ICsKPiAgZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvaWRwZi9pZHBmX2Rldi5jICAgIHwgIDE3OSArCj4gIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2lkcGYvaWRwZl9kZXZpZHMuaCB8ICAgMTAgKwo+ICAuLi4vbmV0L2V0aGVybmV0
+L2ludGVsL2lkcGYvaWRwZl9ldGh0b29sLmMgICAgfCAxMzI1ICsrKysrCj4gIC4uLi9ldGhlcm5l
+dC9pbnRlbC9pZHBmL2lkcGZfbGFuX3BmX3JlZ3MuaCAgICB8ICAxMjQgKwo+ICAuLi4vbmV0L2V0
+aGVybmV0L2ludGVsL2lkcGYvaWRwZl9sYW5fdHhyeC5oICAgfCAgMjkzICsKPiAgLi4uL2V0aGVy
+bmV0L2ludGVsL2lkcGYvaWRwZl9sYW5fdmZfcmVncy5oICAgIHwgIDEyOCArCj4gIGRyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9saWIuYyAgICB8IDI1NTEgKysrKysrKysrCj4g
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9tYWluLmMgICB8ICAgODUgKwo+
+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGZfbWVtLmggICAgfCAgIDIwICsK
+PiAgLi4uL2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9zaW5nbGVxX3R4cnguYyAgIHwgMTI2MiAr
+KysrKwo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGZfdHhyeC5jICAgfCA0
+ODUwICsrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYv
+aWRwZl90eHJ4LmggICB8ICA4MzggKysrCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lk
+cGYvaWRwZl92Zl9kZXYuYyB8ICAxODAgKwo+ICAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2lkcGYv
+aWRwZl92aXJ0Y2hubC5jICAgfCAzODAyICsrKysrKysrKysrKysKPiAgZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWRwZi92aXJ0Y2hubDIuaCAgIHwgMTE1MyArKysrCj4gIC4uLi9ldGhlcm5l
+dC9pbnRlbC9pZHBmL3ZpcnRjaG5sMl9sYW5fZGVzYy5oICB8ICA2NDQgKysrCj4gIDI1IGZpbGVz
+IGNoYW5nZWQsIDE5Mzk0IGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3Vt
+ZW50YXRpb24vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9ldGhlcm5ldC9pbnRlbC9pZHBmLnJz
+dAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9N
+YWtlZmlsZQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWRwZi9pZHBmLmgKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
+dGVsL2lkcGYvaWRwZl9jb250cm9scS5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGZfY29udHJvbHEuaAo+ICBjcmVhdGUgbW9kZSAxMDA2
+NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9pZHBmX2NvbnRyb2xxX2FwaS5oCj4g
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGZf
+Y29udHJvbHFfc2V0dXAuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvaWRwZi9pZHBmX2Rldi5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGZfZGV2aWRzLmgKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9ldGh0b29sLmMKPiAgY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9sYW5fcGZf
+cmVncy5oCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+ZHBmL2lkcGZfbGFuX3R4cnguaAo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWRwZi9pZHBmX2xhbl92Zl9yZWdzLmgKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9saWIuYwo+ICBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9pZHBmX21haW4uYwo+ICBj
+cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9pZHBmX21l
+bS5oCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBm
+L2lkcGZfc2luZ2xlcV90eHJ4LmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lkcGYvaWRwZl90eHJ4LmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl90eHJ4LmgKPiAgY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl92Zl9kZXYuYwo+ICBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9pZHBmX3ZpcnRj
+aG5sLmMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lk
+cGYvdmlydGNobmwyLmgKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2lkcGYvdmlydGNobmwyX2xhbl9kZXNjLmgKPgo+IC0tCj4gMi4zNy4zCgpSZXZpZXdl
+ZC1ieTogRGF2aWQgRGVjb3RpZ255IDxkZWNvdEBnb29nbGUuY29tPgpSZXZpZXdlZC1ieTogV2ls
+bGVtIGRlIEJydWlqbiA8d2lsbGVtYkBnb29nbGUuY29tPgoKVGVzdGVkLWJ5OiBEYXZpZCBEZWNv
+dGlnbnkgPGRlY290QGdvb2dsZS5jb20+ClRlc3RlZC1ieTogV2lsbGVtIGRlIEJydWlqbiA8d2ls
+bGVtYkBnb29nbGUuY29tPgoKV2UgaGF2ZSBiZWVuIHdvcmtpbmcgd2l0aCB0aGlzIGRyaXZlciBh
+dCBHb29nbGUgZm9yIHdlbGwgb3ZlciBhIHllYXIKdGhyb3VnaCBtdWx0aXBsZSByZXZpc2lvbnMu
+CgpUaGUgY3VycmVudCB2ZXJzaW9uIHJ1bnMgaW4gY29udGludW91cyB0ZXN0aW5nIHdpdGggYm90
+aCBmdW5jdGlvbmFsCihSU1MsIGNoZWNrc3VtLCBUU08vVVNPLCBIVy1HUk8sIGV0Yy4sIG1hbnkg
+ZnJvbQp0b29scy90ZXN0aW5nL3NlbGZ0ZXN0cy9uZXQpIGFuZCBwZXJmb3JtYW5jZSAoZ2l0aHVi
+LmNvbS9nb29nbGUvbmVwZXIKdGNwX3N0cmVhbSwgdGNwX3JyLCBldGMuIGluIHZhcmlldHkgb2Yg
+I3RocmVhZHMgYW5kICNmbG93cwpjb25maWd1cmF0aW9ucykgdGVzdHMsIGluY2x1ZGluZyBBU0FO
+LCBsb2NrZGVwLiBUaGUgZHJpdmVyIGlzIGFsc28KZXhlcmNpc2VkIGNvbnRpbnVvdXNseSB3aXRo
+IG1vcmUgdmFyaWVkIGFwcGxpY2F0aW9uIHdvcmtsb2Fkcy4KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
+bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
