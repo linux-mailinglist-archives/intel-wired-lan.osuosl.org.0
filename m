@@ -1,190 +1,179 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D89286D0990
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Mar 2023 17:30:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4A8A6D0AF1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Mar 2023 18:24:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0BF506163C;
-	Thu, 30 Mar 2023 15:30:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BF506163C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E015403EA;
+	Thu, 30 Mar 2023 16:24:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9E015403EA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680190206;
-	bh=2hFZhz5imyMqphRjEmrmfBRTIBLwPamu5U8mC9jaXZk=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1680193444;
+	bh=eX2LzeRlbunEBXQek1PrK65LzYuZLGwL79stf1Khcsg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=IUZcCbFaW0MrocmQdL07bcdOPdRHZWniEZC2r6ePwslgZSZUjvO5LLkZ37S1LRSrw
-	 LCsY8E2itfaDKTdXeXIZhwz4VhzCF1kRKigFNrwQymLHmPSFGlo/wcsqo+zzENuty3
-	 i6I1MMLNx3AsjJnZV8b2HH598qjZrFcFmbD/ongpu91LbgOOZ8ofttE0JUQ8IIDX7a
-	 lwXD/BShw2mHpqIA/d50p2ZugaPWsux56HqYupNzzo74i27LutkXU3bM1OdlFY90ow
-	 lvCFng4+93MFiw/sHgab7jSWexUjYFCKKBRiMN1+5cDZwHLYDhukdmVf4OrD7h/ZIP
-	 us0a4Fzx/j9oA==
+	 Cc:From;
+	b=bQlqE+OOR8obEppgjUiaIVpYZsTSX7X6a1Xtnx/RWSlnFoaJPOs66oRILc475x67U
+	 tU9oMX6xaZaAXS7NinNjwSR8bzDtuNtBJZm4wL74WmTjT/g/CJkdTbV5uQb+hZoKir
+	 /yH6RldrNFRp1bb1tpW27WfGp4HhZJBU7BD7tLlL4d5XYocc6xw8qw2IG/mF6LAGoQ
+	 xDRqS5mPDMEKEvbLHnjcbcTFdYoGetsXFC9c4L7ZZoDHmm1D5O/CHV5RDNt4OFrjhT
+	 sDJNUajkIgftkWRfwDsBgRN1OafMBkePjbzeltfsiTZflStUgusE+Eyn3w+jVnCuv4
+	 yvjpkR/Ni7GQw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ykeyf1JeXPXV; Thu, 30 Mar 2023 15:30:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I8KmMV6qTT5y; Thu, 30 Mar 2023 16:24:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC7B160AE5;
-	Thu, 30 Mar 2023 15:30:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC7B160AE5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 47977404CA;
+	Thu, 30 Mar 2023 16:24:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47977404CA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B0A231BF2CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 15:29:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 97B981BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 16:23:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 874CC8428E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 15:29:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 874CC8428E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6E9FA84348
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 16:23:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E9FA84348
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pp9ObF9XI-Eo for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Mar 2023 15:29:58 +0000 (UTC)
+ with ESMTP id PuVhFWiL3AgY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Mar 2023 16:23:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E62548428C
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E62548428C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 15:29:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10665"; a="325151685"
-X-IronPort-AV: E=Sophos;i="5.98,303,1673942400"; d="scan'208";a="325151685"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Mar 2023 08:29:40 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 524C782169
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 524C782169
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 16:23:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10665"; a="427494777"
+X-IronPort-AV: E=Sophos;i="5.98,305,1673942400"; d="scan'208";a="427494777"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Mar 2023 09:23:45 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10665"; a="717350240"
-X-IronPort-AV: E=Sophos;i="5.98,303,1673942400"; d="scan'208";a="717350240"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga001.jf.intel.com with ESMTP; 30 Mar 2023 08:29:40 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10665"; a="858970760"
+X-IronPort-AV: E=Sophos;i="5.98,305,1673942400"; d="scan'208";a="858970760"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga005.jf.intel.com with ESMTP; 30 Mar 2023 09:23:45 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Thu, 30 Mar 2023 08:29:39 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2507.21; Thu, 30 Mar 2023 09:23:44 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Thu, 30 Mar 2023 08:29:39 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.21; Thu, 30 Mar 2023 09:23:44 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Thu, 30 Mar 2023 08:29:39 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.21 via Frontend Transport; Thu, 30 Mar 2023 09:23:44 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.108)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Thu, 30 Mar 2023 08:29:39 -0700
+ 15.1.2507.21; Thu, 30 Mar 2023 09:23:43 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=H1WZIox2FKd7CEh4a1PLzA6X1FWaBhxWnRHGTX21+2/2OgLpuDBh63XpNcKvwFXqpFlKJ3p7s2CRIx0mNgXFo5Mk/VZA2BIUy2t7Fc50oXXZgUb1d/bEBjkYSnLF7wD7x4Bo/bJzTym2MVM+IclZgX3u+WxydL0qm8ctcyZgjMNmmfHy1inAl3BKltRrx4fXXXzrdcAu38qgNP0eM8hAIvTHUsTTBKKBLPchGqHysqNeLVneS+oUeV7kDppz9jJSozxRDS+Mir331Pdn9QpDTAeyKqKvOcfo7XqLT32APtuCuXP1e2CuAn2XEXfZEl7w0Z6j2/ToCgnGgP06E2UqJA==
+ b=He9pTLcqnYVvHUmlj91BxvMTlztsTJkoiOXw5gErZDztdhV0On1YdEJKoDDqNt3OlrPo52EDBwRrVsxGQHnKQOjO0yH0Lf2gLgbkLiEu95X97nXTN8i0RnISuRem9n/vMW3cz/Ohs8PoxMKfEqTQJZsnmXOMZTJq0wCbyBPCXux82eRTXk/AzLbuZ6RxmBt+5IwZoKWQ4YND0Uguoow3/hYCfa2nhJauCq+bpRj9J86ssgcshRgu9O4xK6jEoBF7mXyvbO5f5wd49kz8cRoGR6CE6WEu4oRS7yrvbTdtmp4+y52A8dyqFgp5yqHVs+SO9Wh5Cw1zWAYc4NOLKWI3Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jZ0c+EJkEGBpiWnUVyoJtdUGDrDvr3myucGbW02P6iY=;
- b=IiPU6Usoni5mzH0WaaAEtS2CeLk7uSGeywcHDuHhfQBnl3vwAYUimh20Se+H9gTOS/WhnTMrcXKMW5wcO3hfoH7JG8JQr7Vog6JVHGG3nSIpe9ZPF+to7ivjQOWUIhc8hFFhgR3wp3vUJmIJ8B+T8zv8lb21Xwi61apu7nhUrpBZJi/jy+yzTZ0vwOtomt6Ne8YNEfAdMUQJjTc9HhXutUmfHgmLIEqMp+twobiVsByqPA9jELgJPxU3wDrBmSeF3+SqBUcJXn2pvJHS4SLFDQPcDRZggBGd0eY92OM0wChrsA3FDsSszUdmJOMAVhr30eaXAB90G45SLc5LhJtLYw==
+ bh=gCnH7lbCrqI1gAFpSYJdWrnP340X9BtqpFkLUVaEINY=;
+ b=BzprHjBYjvaybcpc8L/BsHWKH1DT+IpMdkmus+LafXSET5Q0+zIhFPVimubSKmyB2gSc6uOAYhDYlAinywHW22OxxyUWaFRM9uC5c0CUE/0jXgVvc6Nrp8C/KyTo3NEsWU9DoYBFWzA+hNI5EwxZtDNMH6mBwvNTiImhECdxPu3X9tJyJkxQa02L3HmTa3kKj/YU81wOcuvo6AxNyWvhh7/xv1bmm2vWbGzrdNPxsB3Xu5pt70gBKqbPlZoYisHSXIG9Fs6KWw9BCFAz/CfX9uxabij6/v7ES5w4RVvZf3cpJ9UKCwVLF8dtBm8V37KnfkKCS/jsx34z8mjmLOWlSQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
- by PH0PR11MB4839.namprd11.prod.outlook.com (2603:10b6:510:42::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.22; Thu, 30 Mar
- 2023 15:29:37 +0000
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::4b81:e2b0:d5fa:ad47]) by SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::4b81:e2b0:d5fa:ad47%3]) with mapi id 15.20.6222.030; Thu, 30 Mar 2023
- 15:29:37 +0000
-Message-ID: <4c579032-b409-d3e0-9234-483871c37992@intel.com>
-Date: Thu, 30 Mar 2023 08:29:34 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-References: <20230330103749.3759357-1-aleksandr.loktionov@intel.com>
-Content-Language: en-US
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20230330103749.3759357-1-aleksandr.loktionov@intel.com>
-X-ClientProxiedBy: BY3PR04CA0024.namprd04.prod.outlook.com
- (2603:10b6:a03:217::29) To SN6PR11MB3229.namprd11.prod.outlook.com
- (2603:10b6:805:ba::28)
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ BL3PR11MB6338.namprd11.prod.outlook.com (2603:10b6:208:3b2::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.41; Thu, 30 Mar
+ 2023 16:23:41 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::9e4f:80cc:e0aa:6809]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::9e4f:80cc:e0aa:6809%3]) with mapi id 15.20.6222.028; Thu, 30 Mar 2023
+ 16:23:41 +0000
+Date: Thu, 30 Mar 2023 18:23:28 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Message-ID: <ZCW3gFQStgYJRTBn@boxer>
+References: <20230329140404.1647925-1-pavan.kumar.linga@intel.com>
+ <20230329140404.1647925-13-pavan.kumar.linga@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20230329140404.1647925-13-pavan.kumar.linga@intel.com>
+X-ClientProxiedBy: FR3P281CA0198.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a5::20) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN6PR11MB3229:EE_|PH0PR11MB4839:EE_
-X-MS-Office365-Filtering-Correlation-Id: 30e4d44f-7849-4a91-e36c-08db3133924c
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|BL3PR11MB6338:EE_
+X-MS-Office365-Filtering-Correlation-Id: 98b4a769-adf6-4e8c-9f27-08db313b1ff7
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: gLoDWEAMio+rHQ1MOnzSToC/ncw3PsaCm9Gt2z0ZpE5/ofYj2eQw7sxk0OrhHtTb0rLgXEaJMZVn0wFN1B7DfFF0mgnki2uVviAn+wBMrHacyjcr9TNfmIpXGkv3mXGymAqnt/e3W2KcOxGYWcOST5xwA0mR6mSmdHblh8Lca6AmbhHU8Es5qi7furuJ54rlM/lBs57XdPK2FeHB6x49KF4KrIVsZNEPOSZUAdHZbRM15b37P4wFbOD5qLHD7FEDuKA7UfGK41PO2DX39hT0NSPmAFTxwct+sKuqJPT3dy+g5J8GudnjT9DHOppX7m0T/Ww3N8OXdYmeQQsbOn2I8CLJPaC0q+OJm8EukJgnPbXK8+dedqpoLA45IRRyNdYzDlfRkXQAgTEP+E9zAjm3AaYG7ChGiZUsvvZ1FDdJhBPJnvhJBMXbpShIaQsJiqFzBE/mI7TPYt64sSbu8rjTlFfFugDLVfACKKht1UFDG2oqCG6XUU7xaiciW2r/vxyuj1ItFE1sE7xJ+6sspSZ9DFWmirRarOGbJEZYJ2dn97TrwIUrdbyagnaAQZK2tgVfws6nrmC8RfxkfqxH/DHrYMSIt88tKmaThdyxxYKcSE0ntjlWwhfm2WeOeQsKReQfTXXvahUi0OXHxI5OxcegC9mdLY36GD5CF3eULvflmLY=
+X-Microsoft-Antispam-Message-Info: MtiWoESmY9j7jsIHKZ68wKDNyoZwR+F+V7ZX8vILhDlBBXfQ4DXncqMHxwxwdAeRsXxFORwmWtvlaGPzvx4lluqJAjBaF9gczucBxtwQ9tNuTywvek+lRrThUj0GrHM6uk9bbWiKAle54baTcVbKbtbCfUgDsyZJmAJQuVZIjHu4///KXqMJNmdweMuX+nmytAHTBuLTuLlrrRTEn+THyd8gQo1lNQLjGgzF1OkeA8wASMCrVg2WKuwq9PdR8mRqfeMuW8SGEDGphDxk4Pynx/7vOxjICEwcdqhXXAXRpdztcTYeF4l//AHmtOLkzQNgIOYNIfd2c8DJm/mkf1+6GU8gaELy3w9K6gKaOIj0BKLN3CwyZKGVbTVZDxhEHxeYz55OIbS7vPAMO+D33wL8XpVrpYNYivFOQth9HltsRj4FxcnKNVT8pdRI6B0C5Iq7J8vd6+32za2998y80rX2W3nonecge6hLbzHn4ftRTiVn+PmoZSvarIAGF7Q0Y7lZ+WJVmfNhvLeREqTT5JrviVHJkuaXb9RwYWMwTPizT0Pblu16HbKlwJ8SvfPzzwqXhkW1AorxcqK2ypp7IFsXPcdUtEEf3p/JQ/KYZza2Il55cLqS53NG9diJ4BokSPnR
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(376002)(346002)(136003)(39860400002)(396003)(451199021)(2906002)(8936002)(38100700002)(82960400001)(41300700001)(5660300002)(86362001)(36756003)(31696002)(6486002)(966005)(478600001)(186003)(31686004)(6512007)(26005)(6506007)(53546011)(6666004)(2616005)(66556008)(66476007)(66946007)(83380400001)(8676002)(316002)(43740500002)(45980500001);
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(7916004)(39860400002)(136003)(366004)(396003)(346002)(376002)(451199021)(2906002)(83380400001)(6862004)(5660300002)(8936002)(44832011)(30864003)(86362001)(82960400001)(38100700002)(33716001)(316002)(54906003)(66946007)(6506007)(8676002)(4326008)(66476007)(6512007)(26005)(186003)(6486002)(41300700001)(107886003)(9686003)(6636002)(66556008)(478600001)(6666004)(309714004);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cVE1ZFh3cHJKNVRaRE01dmY1ZjNEcTY5NUYvZlZjL3pmZnU0cGpyMW1YWjdv?=
- =?utf-8?B?S2k0QmF1S3pVaTRyU29ZdVQ0SW8vb0lYaXlybHE3K0hLZkFVRmhUUkpjSk9o?=
- =?utf-8?B?czdyVVhhbFF4b0lHNW5EcEExb1FDSWpnaHB3aUJ2Kzk4ZGlTNXVJSDhudUV4?=
- =?utf-8?B?NllMZCsydmFNamJ3dGQ4SDZmaFNENlhNZGNld0FXU0FmSkFueUxSTmwrLzhn?=
- =?utf-8?B?OXhrandaUThTZEtLQmxXRTI1cUh0UnkxcUViTFN6dXErQnRubWh0OXNMMmgr?=
- =?utf-8?B?OEZkN0oyMG1kbmdCOUxwclhWU1oyekRHVisvM3UzZytwcFFDZ21BMEsvZm5h?=
- =?utf-8?B?S1diMlkweTVJQUJaOWtZdEYyMnlSTld4VTJsTWdiMktMTHRhbVI0RGlzUi80?=
- =?utf-8?B?N2FwUmlWTEIraDBXMWdrNXNUdlUxMUpIZHpwWWVjY2c5RUxJM3hiWVFwc01O?=
- =?utf-8?B?UHZ6c3FUSHNxdytxSXBEN3NoUXhiM2R3SSs5b1F4cnVvZHg5YXprQm1pUGwz?=
- =?utf-8?B?NGY3aDRRS0F6ZXJ1TDRDdzRzby9JakJLL3BKZFhCZ3JaQWM4T0RLWWtoaVkx?=
- =?utf-8?B?S0lFWXk2aXB3VEwyZnZxcmRRdFRmTHBwN0FubUVKTXRaRlNmYitKSElPdDdv?=
- =?utf-8?B?UXZ3U1FQaTk5bGhlWEJ6ZndCb2pwME13MmZvQ0hOV0s5VE16MVN5ODRIaTBS?=
- =?utf-8?B?eTYzV1Zkb0RjQmtnOThnR3pUYlNzK29oRXNTemNsdEJIQlRzNjB3RzVaTFBp?=
- =?utf-8?B?M1RsSllLc0c3ZkZKOS9NdVRDN29oMEZEWFM5SXpmRE5BY0NnWXdiUk9lWTVL?=
- =?utf-8?B?d3pnWXVESlRGeFE0TmZDUkZUL0lWcWJjY0Q5R1ZNeERtVDRiMENsT1M3dVJC?=
- =?utf-8?B?RE44TTFVQnVFTVBMb0RucUJLT1oyRUxrb1F2VkdjanI3OEdyaTJZK0pJVlEy?=
- =?utf-8?B?V0lvK2VZbkE5MU5lVGp6SEZHbmhmZEFBT0FHWXJhMFpza1Yrd05Md1BoRGtB?=
- =?utf-8?B?MkpuL3AwcEVFZ0Yzd1VXdGZLVk1xMGhmRDBjMDhQSVRNZDV0czl0TjdJVm9q?=
- =?utf-8?B?QzVSYzFxQUQyaE50TTJhOWwvUUpNQzdqaEJaZkREaVovSm5sRWY1bkxRenhI?=
- =?utf-8?B?UnlsZHZUS2hoTlk3Qjl4NjIwb2o4VlBPK3JGT1BXcndLV3FiOVk5RTg1L0o2?=
- =?utf-8?B?L3hQWkV6MzVFK29FTkI3Ym8vcjJEb09Cd3pXKzRxcVR3eVI5QkhPRDhjTDJ5?=
- =?utf-8?B?NFA1NE5JYW5aYXdHVzQrNTlmL0YwbDY3WFROZ24weHlMeTZ2OXJhSlp4TFl0?=
- =?utf-8?B?U1RDUUozTHQyanE0ZFpjUGdCUHFIRHh4SFdRV0ROZ1JqdWZsRFFxTFpNRlM1?=
- =?utf-8?B?UUJ6RU42UndmR1ZBeXhtcFNLQXJraTVoWHZHSmxnNHI2NzdoOGZlZEJJMzJ2?=
- =?utf-8?B?YzRnZzdTVmE2RzRnRWUvZUNRb3RVYlJkN1dta0J5MldkRktBOEZjNzN3ZmlH?=
- =?utf-8?B?dTlsUmhGS2ZKMjBpMHlMbnoxLzVLa1dMWFBKcSt2MG5GM3pxVFUvbjZ5TUFN?=
- =?utf-8?B?Q3FXc3BEMzZaRVBrM3lxbTlrby9UUjVrQkxNQ2hYcW9WS2M4bTFmMWU4aS9P?=
- =?utf-8?B?YnY2cmh5MmdaUUlHMTQ4OW13WEdGRkpNOHBKbkNmSzlTVEUxMVdWNXVyaERE?=
- =?utf-8?B?NVpzV21wSHJEMlBUN1ZWVWZvT0pINjJDSjAyOHNvMkJnR0x3WlE2VnVNS21v?=
- =?utf-8?B?OHRZR2I5OGhsZ0ZFamVIKzcrdlBTMjJBcHZYNnpNR2xENjhkYU1NcE1IaEd1?=
- =?utf-8?B?dFZ3VmdaWDgzMDhoMlZoaWtoSmtVQ0NRQzhIQlpWS3dqRGFvVDF4Umd6UXhO?=
- =?utf-8?B?MWZueDBXWTJBUEhLcXJiRmtZRXNsL1daMDZlOTUwSlFESmwwT2c4bGNGMmsx?=
- =?utf-8?B?VFN1ZnJEcmxWMzFLaUFaeHpjSlhrc21Ka2RkajJXRkp0YlFGOUR3M2hwb1Zl?=
- =?utf-8?B?Y0E0ZXVwZDcxb0VrbHdhdy9DSk0wODBxWU83cGgwQ1dtOE1tbGthQ1prTGxY?=
- =?utf-8?B?MVdkZ0dBcnJTeGdTank0aVRlTXRGdGcrejRrc1RKaFMxOXpnMFFrc2xmN0JN?=
- =?utf-8?B?VlpwbGUwYzVWMDgzVG5vcmZvcERJUUR2VEU3b3BXN1NBUVc3OGYrMWxhQXJH?=
- =?utf-8?B?TXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30e4d44f-7849-4a91-e36c-08db3133924c
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ZBybzf0jWIC46Z9njrROf6wYgiMWe0A66bw0dux68s4PK8IHIrfMdY3wkhnL?=
+ =?us-ascii?Q?4MmIvhhwpDVxGf7Z4+14hrtllIMQBkRit88uUOm3V5bCSckJ9WZMqoLdySLV?=
+ =?us-ascii?Q?p5RToNJquanCuYxpKY0SqY2JMAAGPs1mdU4QH8cJsZVitGED2skRHczGcN+h?=
+ =?us-ascii?Q?R1aKWF2/NVeRNMC2+gt137XRqe8WlDJ79ODFsXejDTMr2fn3pEDHmdY3ic1h?=
+ =?us-ascii?Q?7Z8v6ppt+Esaf4JXJKJc3M6qhb3AodUCCW8gCTobjOUA868hLJ0w2cKxkg01?=
+ =?us-ascii?Q?hO70cvkR3Cu2SfozB1uqn2vAjC6lD7JC1F3yWGXJ0kjGbVJOn0tpUuDszkC3?=
+ =?us-ascii?Q?D5cNTQiWn2jks2Cra+TMDk207Mc1tJUJou1rUmSNdv5aoXkRirVyiuV2rftz?=
+ =?us-ascii?Q?Fb7WiDrjMuhPJDpIb2OnVdp4bdN80TkNY0vpkOnwAHuwrGITVki91OH8HEYC?=
+ =?us-ascii?Q?zRY895CteHTZebGUDOBGqgyHgt1S6BnnVnJc6CJVgioSARw9wCOlgxaWb9q7?=
+ =?us-ascii?Q?4IBM1Zx4LEzwG6s3CVEDCOrIaQoJ3Uhn8hKmAlNT52WXTN0yOnWd1WhzW/RK?=
+ =?us-ascii?Q?VsZ4hQ8Lu/6/EYo1iDrhIqAuoW9HDfn0ITd2boFDQ9ipwO0p5eqCjlbbC+W8?=
+ =?us-ascii?Q?QUqyveAvrsuzp2hVZekK1c4NJi4fYqbEzVOZZqdzX9HNJBEQTzsRV9lYiR6B?=
+ =?us-ascii?Q?x/PUA9W8VgWAMQTVXEjMz2zV7UVf0bDT2PMXVbWFlwl478qZ6RnGSdI4/iEA?=
+ =?us-ascii?Q?/UbuoG5IV3YAhquFo/PnlxlVOljvM5pGzdK8FeuTzZs33m/q09bl4j1yYUnV?=
+ =?us-ascii?Q?ckT2wjVQJac0c19tZusVunDvqj2Otzxv2tBLXIbuL34CXIu8VuSbvq4G5Nji?=
+ =?us-ascii?Q?SXQolryUpffI61/evr+Nu8yuUEPB5Nkvl1BBLt29cRbqypr0l0gpdrsUR0mB?=
+ =?us-ascii?Q?qACRDuvl/vevnjRhWHea1/ZoTystwhawwsSomMcVRHnSbK8IJzhiQQWlljRc?=
+ =?us-ascii?Q?PO2L4KyXHDKFU+dy1/G/iSZvwHGcgUO9AvjWPM7SBhU2sz18OhDiF449oXOa?=
+ =?us-ascii?Q?R5UAo0FyQJLz5GTo97CsRlbeTzhu5JlM/If8jMItwNsNO+Gecs/aETDeGq2d?=
+ =?us-ascii?Q?1jDoNF/w0hKD8qUhc0eZP5qUbz0ynxqKJ7tpTYFfAjV/ld2Ox0BqOs7jXjrZ?=
+ =?us-ascii?Q?OPHZSvM0YEl/xzlKgeO6rFz3huPoCBwYF57pwTx7jlN/+8Dpf6Z+QgUJSMsL?=
+ =?us-ascii?Q?ubhXKeCya9INIqzv8PUWds4yROrKB/yHE1z5ToXTIDjbswzyoOHweNTc74R9?=
+ =?us-ascii?Q?hw9dOnYPDOOYyPzzFz+4/TeNKfkEYFQaNnIr1C6MBegG8Fx3PI/NgFC8QGjG?=
+ =?us-ascii?Q?0WeuE1gxNzn9rAgEEEeD5knQFDpgQphw5Oes11x6JQn1xhNfE1OtNFY/Fdbh?=
+ =?us-ascii?Q?gm/k4KlL4Ug4o/NVvB/1lABMU1E+OA2qhPKWa8bQI9jepRClBKs5YOmfhcHi?=
+ =?us-ascii?Q?cm6ddaAzp+UMEMEpgTl6cioDdz/B7VW7VfEv9A4y7uSIdxsVcO90gTzq8Alp?=
+ =?us-ascii?Q?KOAPFH+qC4LWLCl9kb8Sjkqjg6b71VRfQo3W6KFv3/ACB5MvARxejYhlNqA/?=
+ =?us-ascii?Q?AA=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98b4a769-adf6-4e8c-9f27-08db313b1ff7
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2023 15:29:37.2499 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2023 16:23:41.5490 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: yG/BIkdnMN30I3uf4xe7pprTFYJUqzxcZDTaWJNCT4oj2Zyq+pzQynHkWcArCSB4xg1o+XRUzpydKlIvwvjQS8yKMLpaJp8ixRheO1Q6f28=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4839
+X-MS-Exchange-CrossTenant-UserPrincipalName: T7k1kb8xm774zTBqsWjtKSs28/waOs4CQE2GjrnZ15yxlLTB3Thaz+MNUswaADOIkjP/8fhbGwf5oL7IutxrZ4dInaWrolySl7IAJJLe6tk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6338
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680190197; x=1711726197;
- h=message-id:date:subject:to:references:from:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=bxMZVfgmtiw71twa8VxcCYW89o+Se0G2Q3WVKKbIQck=;
- b=OlAZCeysUElUWy+4kXYYvNHPwMuRelcSDvik0J0e5Fn+K6pa8nuM5Mzm
- 9HujXXVNwTHHnvwiPUIH/JhRzM4dYcnOKcjf01oAOO5yRXy5RGomh9P0A
- IJfs6gQR+WFWBF3Dsihv1DYLLsbIfsjkreKW+Ea2ueMnz0eO+YWcyFmX3
- 8902yiZCchh0BH8WUqng1H5qZ6jGH6rYOn4jYVYX9PDxRDuQ1C2zCq6py
- G3wQ6MrnLphiEnxmTqcgDsFYttn0/H7hMNKQkxTcFElCcdOYjQqqzRo4k
- gbYJqxHmuYqNiLSOyjYmgaCeR1Cs6BSMNvydRVkegCmGKwzALrdRx+3px
- g==;
+ t=1680193434; x=1711729434;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=y8+t+0z3bf4AW0fG9FLYmWrrZ4BseGiRCKe6dGgKs2U=;
+ b=kjAq+zqlZMJpf1kMAzVxJSjwNbqMFLmTvJXKp3Wb2o9hsmJpEbsGVLBN
+ Ciq3Y6NCC6ipV0DPCMYgYXeBz7fIg3e3O3KnF3k9PdVY7XvHu18Xll8V5
+ Lbnqc7zyZtBPz8QF9Km1fUqTvK2AvkoKxSUcpfLNIaiih/zB/Ew7pSjdt
+ ToYWFc3SthshnKwCByPK3zN44TQAoLJl6qeZUwTvozXXQCHR3FTO1vMoC
+ gXPSDlBrIuWCaOxohiVaWtP2ubnoIwV8M+PmqduJXRXYoOVxNdwdzDju4
+ QBjrJ2OgQ7+QOvtjKMZK8mVRXGFPzNIR+EqYXlvNhKpyMCoVA6tXnE0oD
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OlAZCeys
+ header.a=rsa-sha256 header.s=Intel header.b=kjAq+zql
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Limit expression passed
- to kzalloc() to 1280 bytes
+Subject: Re: [Intel-wired-lan] [PATCH net-next 12/15] idpf: add RX splitq
+ napi poll support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,59 +186,768 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: willemb@google.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Phani Burra <phani.r.burra@intel.com>,
+ decot@google.com, shiraz.saleem@intel.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/30/2023 3:37 AM, Aleksandr Loktionov wrote:
-
-Why the multiple sends?
-2023-03-30 10:37 UTC - [PATCH net v2] i40e: Limit expression passed to 
-kzalloc() to 1280 bytes [1]
-2023-03-30 11:17 UTC - [PATCH net v2] i40e: Limit expression passed to 
-kzalloc() to 1280 bytes [2]
-2023-03-30 11:20 UTC - [PATCH net v2] i40e: Limit expression passed to 
-kzalloc() to 1280 bytes [3]
-
-> Add buff_size limit of 1280 bytes as big enough for user input value.
+On Wed, Mar 29, 2023 at 07:04:01AM -0700, Pavan Kumar Linga wrote:
+> From: Alan Brady <alan.brady@intel.com>
 > 
-> Fixes: f1143c4b0f60 ("i40e: Expose AQ debugfs hooks")
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Add support to handle interrupts for the RX completion queue and
+> RX buffer queue. When the interrupt fires on RX completion queue,
+> process the RX descriptors that are received. Allocate and prepare
+> the SKB with the RX packet info, for both data and header buffer.
+> 
+> IDPF uses software maintained refill queues to manage buffers between
+> RX queue producer and the buffer queue consumer. They are required in
+> order to maintain a lockless buffer management system and are strictly
+> software only constructs. Instead of updating the RX buffer queue tail
+> with available buffers right after the clean routine, it posts the
+> buffer ids to the refill queues, only to post them to the HW later.
+> 
+> If the generic receive offload (GRO) is enabled in the capabilities
+> and turned on by default or via ethtool, then HW performs the
+> packet coalescing if certain criteria are met by the incoming
+> packets and updates the RX descriptor. Similar to GRO, if generic
+> checksum is enabled, HW computes the checksum and updates the
+> respective fields in the descriptor. Add support to update the
+> SKB fields with the GRO and the generic checksum received.
+> 
+> Signed-off-by: Alan Brady <alan.brady@intel.com>
+> Co-developed-by: Joshua Hay <joshua.a.hay@intel.com>
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Co-developed-by: Madhu Chittim <madhu.chittim@intel.com>
+> Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
+> Co-developed-by: Phani Burra <phani.r.burra@intel.com>
+> Signed-off-by: Phani Burra <phani.r.burra@intel.com>
+> Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 > ---
-
-Please include a changelog for new revisions.
-
->   drivers/net/ethernet/intel/i40e/i40e_debugfs.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/idpf/idpf.h        |    2 +
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 1000 ++++++++++++++++-
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   56 +-
+>  .../net/ethernet/intel/idpf/idpf_virtchnl.c   |    4 +-
+>  4 files changed, 1053 insertions(+), 9 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-> index c9dcd6d..b10d00d 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-> @@ -1356,7 +1356,7 @@ static ssize_t i40e_dbg_command_write(struct file *filp,
->   			goto command_write_done;
->   		}
->   		/* Just stub a buffer big enough in case user messed up */
-> -		if (buffer_len == 0)
-> +		if (buffer_len == 0 || buffer_len > 1280)
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+> index 9c0404c0d796..5d6a791f10de 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf.h
+> @@ -14,6 +14,7 @@ struct idpf_vport_max_q;
+>  #include <linux/etherdevice.h>
+>  #include <linux/pci.h>
+>  #include <linux/bitfield.h>
+> +#include <net/gro.h>
+>  #include <linux/dim.h>
+>  
+>  #include "virtchnl2.h"
+> @@ -262,6 +263,7 @@ struct idpf_vport {
+>  	u8 default_mac_addr[ETH_ALEN];
+>  	/* ITR profiles for the DIM algorithm */
+>  #define IDPF_DIM_PROFILE_SLOTS  5
+> +	u16 rx_itr_profile[IDPF_DIM_PROFILE_SLOTS];
+>  	u16 tx_itr_profile[IDPF_DIM_PROFILE_SLOTS];
+>  
+>  	bool link_up;
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> index 4518ea7b9a31..8a96e5f4ba30 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> @@ -339,6 +339,11 @@ static void idpf_rx_buf_rel(struct idpf_queue *rxq,
+>  	idpf_rx_page_rel(rxq, &rx_buf->page_info[0]);
+>  	if (PAGE_SIZE < 8192 && rx_buf->buf_size > IDPF_RX_BUF_2048)
+>  		idpf_rx_page_rel(rxq, &rx_buf->page_info[1]);
+> +
+> +	if (rx_buf->skb) {
+> +		dev_kfree_skb(rx_buf->skb);
+> +		rx_buf->skb = NULL;
+> +	}
 
-Based on Paul's question, it may be nice to add a comment here to 
-explain the 1280 size; "big enough for user input value" doesn't really 
-explain how we ended up at 1280.
+can you elaborate why you're introducing skb ptr to rx_buf if you have
+this ptr already on idpf_queue?
 
-Thanks,
-Tony
+>  }
+>  
+>  /**
+> @@ -641,6 +646,28 @@ static bool idpf_rx_buf_hw_alloc_all(struct idpf_queue *rxbufq, u16 alloc_count)
+>  	return !!alloc_count;
+>  }
+>  
+> +/**
+> + * idpf_rx_post_buf_refill - Post buffer id to refill queue
+> + * @refillq: refill queue to post to
+> + * @buf_id: buffer id to post
+> + */
+> +static void idpf_rx_post_buf_refill(struct idpf_sw_queue *refillq, u16 buf_id)
+> +{
+> +	u16 nta = refillq->next_to_alloc;
+> +
+> +	/* store the buffer ID and the SW maintained GEN bit to the refillq */
+> +	refillq->ring[nta] =
+> +		((buf_id << IDPF_RX_BI_BUFID_S) & IDPF_RX_BI_BUFID_M) |
+> +		(!!(test_bit(__IDPF_Q_GEN_CHK, refillq->flags)) <<
+> +		 IDPF_RX_BI_GEN_S);
 
->   			buffer_len = 1280; >
->   		buff = kzalloc(buffer_len, GFP_KERNEL);
+do you explain anywhere in this patchset GEN bit usage?
 
-[1] 
-https://lore.kernel.org/intel-wired-lan/20230330103749.3759357-1-aleksandr.loktionov@intel.com/
-[2] 
-https://lore.kernel.org/intel-wired-lan/20230330111746.3809394-1-aleksandr.loktionov@intel.com/
-[3] 
-https://lore.kernel.org/intel-wired-lan/20230330112045.3811315-1-aleksandr.loktionov@intel.com/
+> +
+> +	if (unlikely(++nta == refillq->desc_count)) {
+> +		nta = 0;
+> +		change_bit(__IDPF_Q_GEN_CHK, refillq->flags);
+> +	}
+> +	refillq->next_to_alloc = nta;
+> +}
+> +
+
+[...]
+
+> +/**
+> + * idpf_rx_buf_adjust_pg - Prepare rx buffer for reuse
+> + * @rx_buf: Rx buffer to adjust
+> + * @size: Size of adjustment
+> + *
+> + * Update the offset within page so that rx buf will be ready to be reused.
+> + * For systems with PAGE_SIZE < 8192 this function will flip the page offset
+> + * so the second half of page assigned to rx buffer will be used, otherwise
+> + * the offset is moved by the @size bytes
+> + */
+> +static void idpf_rx_buf_adjust_pg(struct idpf_rx_buf *rx_buf, unsigned int size)
+> +{
+> +	struct idpf_page_info *pinfo;
+> +
+> +	pinfo = &rx_buf->page_info[rx_buf->page_indx];
+> +
+> +	if (PAGE_SIZE < 8192)
+> +		if (rx_buf->buf_size > IDPF_RX_BUF_2048)
+
+when buf_size can be non-2k?
+
+> +			/* flip to second page */
+> +			rx_buf->page_indx = !rx_buf->page_indx;
+> +		else
+> +			/* flip page offset to other buffer */
+> +			pinfo->page_offset ^= size;
+> +	else
+> +		pinfo->page_offset += size;
+> +}
+> +
+> +/**
+> + * idpf_rx_can_reuse_page - Determine if page can be reused for another rx
+> + * @rx_buf: buffer containing the page
+> + *
+> + * If page is reusable, we have a green light for calling idpf_reuse_rx_page,
+> + * which will assign the current buffer to the buffer that next_to_alloc is
+> + * pointing to; otherwise, the dma mapping needs to be destroyed and
+> + * page freed
+> + */
+> +static bool idpf_rx_can_reuse_page(struct idpf_rx_buf *rx_buf)
+> +{
+> +	unsigned int last_offset = PAGE_SIZE - rx_buf->buf_size;
+> +	struct idpf_page_info *pinfo;
+> +	unsigned int pagecnt_bias;
+> +	struct page *page;
+> +
+> +	pinfo = &rx_buf->page_info[rx_buf->page_indx];
+> +	pagecnt_bias = pinfo->pagecnt_bias;
+> +	page = pinfo->page;
+> +
+> +	if (unlikely(!dev_page_is_reusable(page)))
+> +		return false;
+> +
+> +	if (PAGE_SIZE < 8192) {
+> +		/* For 2K buffers, we can reuse the page if we are the
+> +		 * owner. For 4K buffers, we can reuse the page if there are
+> +		 * no other others.
+> +		 */
+> +		int reuse_bias = rx_buf->buf_size > IDPF_RX_BUF_2048 ? 0 : 1;
+
+couldn't this be just:
+
+		bool reuse_bias = !(rx_buf->buf_size > IDPF_RX_BUF_2048);
+
+this is a hot path so avoiding branches is worthy.
+
+> +
+> +		if (unlikely((page_count(page) - pagecnt_bias) > reuse_bias))
+> +			return false;
+> +	} else if (pinfo->page_offset > last_offset) {
+> +		return false;
+> +	}
+> +
+> +	/* If we have drained the page fragment pool we need to update
+> +	 * the pagecnt_bias and page count so that we fully restock the
+> +	 * number of references the driver holds.
+> +	 */
+> +	if (unlikely(pagecnt_bias == 1)) {
+> +		page_ref_add(page, USHRT_MAX - 1);
+> +		pinfo->pagecnt_bias = USHRT_MAX;
+> +	}
+> +
+> +	return true;
+> +}
+> +
+
+[...]
+
+> +/**
+> + * idpf_rx_construct_skb - Allocate skb and populate it
+> + * @rxq: Rx descriptor queue
+> + * @rx_buf: Rx buffer to pull data from
+> + * @size: the length of the packet
+> + *
+> + * This function allocates an skb. It then populates it with the page
+> + * data from the current receive descriptor, taking care to set up the
+> + * skb correctly.
+> + */
+> +static struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+> +					     struct idpf_rx_buf *rx_buf,
+> +					     unsigned int size)
+> +{
+> +	struct idpf_page_info *pinfo;
+> +	unsigned int headlen, truesize;
+
+RCT please
+
+> +	struct sk_buff *skb;
+> +	void *va;
+> +
+> +	pinfo = &rx_buf->page_info[rx_buf->page_indx];
+> +	va = page_address(pinfo->page) + pinfo->page_offset;
+> +
+> +	/* prefetch first cache line of first page */
+> +	net_prefetch(va);
+> +	/* allocate a skb to store the frags */
+> +	skb = __napi_alloc_skb(&rxq->q_vector->napi, IDPF_RX_HDR_SIZE,
+> +			       GFP_ATOMIC | __GFP_NOWARN);
+
+any reason why no build_skb() support right from the start?
+
+> +	if (unlikely(!skb))
+> +		return NULL;
+> +
+> +	skb_record_rx_queue(skb, rxq->idx);
+> +
+> +	/* Determine available headroom for copy */
+> +	headlen = size;
+> +	if (headlen > IDPF_RX_HDR_SIZE)
+> +		headlen = eth_get_headlen(skb->dev, va, IDPF_RX_HDR_SIZE);
+> +
+> +	/* align pull length to size of long to optimize memcpy performance */
+> +	memcpy(__skb_put(skb, headlen), va, ALIGN(headlen, sizeof(long)));
+> +
+> +	/* if we exhaust the linear part then add what is left as a frag */
+> +	size -= headlen;
+> +	if (!size) {
+> +		/* buffer is unused, reset bias back to rx_buf; data was copied
+> +		 * onto skb's linear part so there's no need for adjusting
+> +		 * page offset and we can reuse this buffer as-is
+> +		 */
+> +		pinfo->pagecnt_bias++;
+> +
+> +		return skb;
+> +	}
+> +
+> +	truesize = idpf_rx_frame_truesize(rx_buf, size);
+> +	skb_add_rx_frag(skb, 0, pinfo->page,
+> +			pinfo->page_offset + headlen, size,
+> +			truesize);
+> +	/* buffer is used by skb, update page_offset */
+> +	idpf_rx_buf_adjust_pg(rx_buf, truesize);
+> +
+> +	return skb;
+> +}
+> +
+> +/**
+> + * idpf_rx_hdr_construct_skb - Allocate skb and populate it from header buffer
+> + * @rxq: Rx descriptor queue
+> + * @hdr_buf: Rx buffer to pull data from
+> + * @size: the length of the packet
+> + *
+> + * This function allocates an skb. It then populates it with the page data from
+> + * the current receive descriptor, taking care to set up the skb correctly.
+> + * This specifcally uses a header buffer to start building the skb.
+> + */
+> +static struct sk_buff *idpf_rx_hdr_construct_skb(struct idpf_queue *rxq,
+> +						 struct idpf_dma_mem *hdr_buf,
+> +						 unsigned int size)
+> +{
+> +	struct sk_buff *skb;
+> +
+> +	/* allocate a skb to store the frags */
+> +	skb = __napi_alloc_skb(&rxq->q_vector->napi, size,
+> +			       GFP_ATOMIC | __GFP_NOWARN);
+
+ditto re: build_skb() comment
+
+> +	if (unlikely(!skb))
+> +		return NULL;
+> +
+> +	skb_record_rx_queue(skb, rxq->idx);
+> +
+> +	memcpy(__skb_put(skb, size), hdr_buf->va, ALIGN(size, sizeof(long)));
+> +
+> +	return skb;
+> +}
+> +
+> +/**
+> + * idpf_rx_splitq_test_staterr - tests bits in Rx descriptor
+> + * status and error fields
+> + * @stat_err_field: field from descriptor to test bits in
+> + * @stat_err_bits: value to mask
+> + *
+> + */
+> +static bool idpf_rx_splitq_test_staterr(const u8 stat_err_field,
+> +					const u8 stat_err_bits)
+> +{
+> +	return !!(stat_err_field & stat_err_bits);
+> +}
+> +
+> +/**
+> + * idpf_rx_splitq_is_eop - process handling of EOP buffers
+> + * @rx_desc: Rx descriptor for current buffer
+> + *
+> + * If the buffer is an EOP buffer, this function exits returning true,
+> + * otherwise return false indicating that this is in fact a non-EOP buffer.
+> + */
+> +static bool idpf_rx_splitq_is_eop(struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc)
+> +{
+> +	/* if we are the last buffer then there is nothing else to do */
+> +	return likely(idpf_rx_splitq_test_staterr(rx_desc->status_err0_qw1,
+> +						  IDPF_RXD_EOF_SPLITQ));
+> +}
+> +
+> +/**
+> + * idpf_rx_splitq_recycle_buf - Attempt to recycle or realloc buffer
+> + * @rxbufq: receive queue
+> + * @rx_buf: Rx buffer to pull data from
+> + *
+> + * This function will clean up the contents of the rx_buf. It will either
+> + * recycle the buffer or unmap it and free the associated resources. The buffer
+> + * will then be placed on a refillq where it will later be reclaimed by the
+> + * corresponding bufq.
+> + *
+> + * This works based on page flipping. If we assume e.g., a 4k page, it will be
+> + * divided into two 2k buffers. We post the first half to hardware and, after
+> + * using it, flip to second half of the page with idpf_adjust_pg_offset and
+> + * post that to hardware. The third time through we'll flip back to first half
+> + * of page and check if stack is still using it, if not we can reuse the buffer
+> + * as is, otherwise we'll drain it and get a new page.
+> + */
+> +static void idpf_rx_splitq_recycle_buf(struct idpf_queue *rxbufq,
+> +				       struct idpf_rx_buf *rx_buf)
+> +{
+> +	struct idpf_page_info *pinfo = &rx_buf->page_info[rx_buf->page_indx];
+> +
+> +	if (idpf_rx_can_reuse_page(rx_buf))
+> +		return;
+> +
+> +	/* we are not reusing the buffer so unmap it */
+> +	dma_unmap_page_attrs(rxbufq->dev, pinfo->dma, PAGE_SIZE,
+> +			     DMA_FROM_DEVICE, IDPF_RX_DMA_ATTR);
+> +	__page_frag_cache_drain(pinfo->page, pinfo->pagecnt_bias);
+> +
+> +	/* clear contents of buffer_info */
+> +	pinfo->page = NULL;
+> +	rx_buf->skb = NULL;
+
+this skb NULLing is pointless to me. from the callsite of this function
+you operate strictly on a skb from idpf_queue.
+
+> +
+> +	/* It's possible the alloc can fail here but there's not much
+> +	 * we can do, bufq will have to try and realloc to fill the
+> +	 * hole.
+> +	 */
+> +	idpf_alloc_page(rxbufq, pinfo);
+> +}
+> +
+> +/**
+> + * idpf_rx_splitq_clean - Clean completed descriptors from Rx queue
+> + * @rxq: Rx descriptor queue to retrieve receive buffer queue
+> + * @budget: Total limit on number of packets to process
+> + *
+> + * This function provides a "bounce buffer" approach to Rx interrupt
+> + * processing. The advantage to this is that on systems that have
+> + * expensive overhead for IOMMU access this provides a means of avoiding
+> + * it by maintaining the mapping of the page to the system.
+> + *
+> + * Returns amount of work completed
+> + */
+> +static int idpf_rx_splitq_clean(struct idpf_queue *rxq, int budget)
+> +{
+> +	int total_rx_bytes = 0, total_rx_pkts = 0;
+> +	struct idpf_queue *rx_bufq = NULL;
+> +	struct sk_buff *skb = rxq->skb;
+> +	u16 ntc = rxq->next_to_clean;
+> +
+> +	/* Process Rx packets bounded by budget */
+> +	while (likely(total_rx_pkts < budget)) {
+> +		struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc;
+> +		struct idpf_sw_queue *refillq = NULL;
+> +		struct idpf_dma_mem *hdr_buf = NULL;
+> +		struct idpf_rxq_set *rxq_set = NULL;
+> +		struct idpf_rx_buf *rx_buf = NULL;
+> +		union virtchnl2_rx_desc *desc;
+> +		unsigned int pkt_len = 0;
+> +		unsigned int hdr_len = 0;
+> +		u16 gen_id, buf_id = 0;
+> +		 /* Header buffer overflow only valid for header split */
+> +		bool hbo = false;
+> +		int bufq_id;
+> +		u8 rxdid;
+> +
+> +		/* get the Rx desc from Rx queue based on 'next_to_clean' */
+> +		desc = IDPF_RX_DESC(rxq, ntc);
+> +		rx_desc = (struct virtchnl2_rx_flex_desc_adv_nic_3 *)desc;
+> +
+> +		/* This memory barrier is needed to keep us from reading
+> +		 * any other fields out of the rx_desc
+> +		 */
+> +		dma_rmb();
+> +
+> +		/* if the descriptor isn't done, no work yet to do */
+> +		gen_id = le16_to_cpu(rx_desc->pktlen_gen_bufq_id);
+> +		gen_id = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_GEN_M, gen_id);
+> +
+> +		if (test_bit(__IDPF_Q_GEN_CHK, rxq->flags) != gen_id)
+> +			break;
+> +
+> +		rxdid = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_RXDID_M,
+> +				  rx_desc->rxdid_ucast);
+> +		if (rxdid != VIRTCHNL2_RXDID_2_FLEX_SPLITQ) {
+> +			IDPF_RX_BUMP_NTC(rxq, ntc);
+> +			u64_stats_update_begin(&rxq->stats_sync);
+> +			u64_stats_inc(&rxq->q_stats.rx.bad_descs);
+> +			u64_stats_update_end(&rxq->stats_sync);
+> +			continue;
+> +		}
+> +
+> +		pkt_len = le16_to_cpu(rx_desc->pktlen_gen_bufq_id);
+> +		pkt_len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_LEN_PBUF_M,
+> +				    pkt_len);
+> +
+> +		hbo = FIELD_GET(BIT(VIRTCHNL2_RX_FLEX_DESC_ADV_STATUS0_HBO_S),
+> +				rx_desc->status_err0_qw1);
+> +
+> +		if (unlikely(hbo)) {
+> +			/* If a header buffer overflow, occurs, i.e. header is
+> +			 * too large to fit in the header split buffer, HW will
+> +			 * put the entire packet, including headers, in the
+> +			 * data/payload buffer.
+> +			 */
+> +			u64_stats_update_begin(&rxq->stats_sync);
+> +			u64_stats_inc(&rxq->q_stats.rx.hsplit_buf_ovf);
+> +			u64_stats_update_end(&rxq->stats_sync);
+> +			goto bypass_hsplit;
+> +		}
+> +
+> +		hdr_len = le16_to_cpu(rx_desc->hdrlen_flags);
+> +		hdr_len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_LEN_HDR_M,
+> +				    hdr_len);
+> +
+> +bypass_hsplit:
+> +		bufq_id = le16_to_cpu(rx_desc->pktlen_gen_bufq_id);
+> +		bufq_id = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_BUFQ_ID_M,
+> +				    bufq_id);
+> +
+> +		rxq_set = container_of(rxq, struct idpf_rxq_set, rxq);
+> +		if (!bufq_id)
+> +			refillq = rxq_set->refillq0;
+> +		else
+> +			refillq = rxq_set->refillq1;
+> +
+> +		/* retrieve buffer from the rxq */
+> +		rx_bufq = &rxq->rxq_grp->splitq.bufq_sets[bufq_id].bufq;
+> +
+> +		buf_id = le16_to_cpu(rx_desc->buf_id);
+> +
+> +		if (pkt_len) {
+> +			rx_buf = &rx_bufq->rx_buf.buf[buf_id];
+> +			idpf_rx_get_buf_page(rx_bufq->dev, rx_buf, pkt_len);
+> +		}
+> +
+> +		if (hdr_len) {
+> +			hdr_buf = rx_bufq->rx_buf.hdr_buf[buf_id];
+> +
+> +			dma_sync_single_for_cpu(rxq->dev, hdr_buf->pa, hdr_buf->size,
+> +						DMA_FROM_DEVICE);
+> +
+> +			skb = idpf_rx_hdr_construct_skb(rxq, hdr_buf, hdr_len);
+> +			u64_stats_update_begin(&rxq->stats_sync);
+> +			u64_stats_inc(&rxq->q_stats.rx.hsplit_pkts);
+> +			u64_stats_update_end(&rxq->stats_sync);
+> +		}
+> +
+> +		if (pkt_len) {
+> +			if (skb)
+> +				idpf_rx_add_frag(rx_buf, skb, pkt_len);
+> +			else
+> +				skb = idpf_rx_construct_skb(rxq, rx_buf,
+> +							    pkt_len);
+> +		}
+> +
+> +		/* exit if we failed to retrieve a buffer */
+> +		if (!skb) {
+> +			/* If we fetched a buffer, but didn't use it
+> +			 * undo pagecnt_bias decrement
+> +			 */
+> +			if (rx_buf)
+> +				rx_buf->page_info[rx_buf->page_indx].pagecnt_bias++;
+> +			break;
+> +		}
+> +
+> +		if (rx_buf)
+> +			idpf_rx_splitq_recycle_buf(rx_bufq, rx_buf);
+> +		idpf_rx_post_buf_refill(refillq, buf_id);
+> +
+> +		IDPF_RX_BUMP_NTC(rxq, ntc);
+> +		/* skip if it is non EOP desc */
+> +		if (!idpf_rx_splitq_is_eop(rx_desc))
+> +			continue;
+> +
+> +		/* pad skb if needed (to make valid ethernet frame) */
+> +		if (eth_skb_pad(skb)) {
+> +			skb = NULL;
+> +			continue;
+> +		}
+> +
+> +		/* probably a little skewed due to removing CRC */
+> +		total_rx_bytes += skb->len;
+> +
+> +		/* protocol */
+> +		if (unlikely(idpf_rx_process_skb_fields(rxq, skb, rx_desc))) {
+> +			dev_kfree_skb_any(skb);
+> +			skb = NULL;
+> +			continue;
+> +		}
+> +
+> +		/* send completed skb up the stack */
+> +		napi_gro_receive(&rxq->q_vector->napi, skb);
+> +		skb = NULL;
+> +
+> +		/* update budget accounting */
+> +		total_rx_pkts++;
+> +	}
+> +
+> +	rxq->next_to_clean = ntc;
+> +
+> +	rxq->skb = skb;
+> +	u64_stats_update_begin(&rxq->stats_sync);
+> +	u64_stats_add(&rxq->q_stats.rx.packets, total_rx_pkts);
+> +	u64_stats_add(&rxq->q_stats.rx.bytes, total_rx_bytes);
+> +	u64_stats_update_end(&rxq->stats_sync);
+> +
+> +	/* guarantee a trip back through this routine if there was a failure */
+> +	return total_rx_pkts;
+> +}
+
+keeping above func for a context
+
+[...]
+
+>  /**
+>   * idpf_vport_intr_clean_queues - MSIX mode Interrupt Handler
+>   * @irq: interrupt number
+> @@ -3205,7 +4102,7 @@ static void idpf_net_dim(struct idpf_q_vector *q_vector)
+>  	u32 i;
+>  
+>  	if (!IDPF_ITR_IS_DYNAMIC(q_vector->tx_intr_mode))
+> -		return;
+> +		goto check_rx_itr;
+>  
+>  	for (i = 0, packets = 0, bytes = 0; i < q_vector->num_txq; i++) {
+>  		struct idpf_queue *txq = q_vector->tx[i];
+> @@ -3221,6 +4118,25 @@ static void idpf_net_dim(struct idpf_q_vector *q_vector)
+>  	idpf_update_dim_sample(q_vector, &dim_sample, &q_vector->tx_dim,
+>  			       packets, bytes);
+>  	net_dim(&q_vector->tx_dim, dim_sample);
+> +
+> +check_rx_itr:
+> +	if (!IDPF_ITR_IS_DYNAMIC(q_vector->rx_intr_mode))
+> +		return;
+> +
+> +	for (i = 0, packets = 0, bytes = 0; i < q_vector->num_rxq; i++) {
+> +		struct idpf_queue *rxq = q_vector->rx[i];
+> +		unsigned int start;
+> +
+> +		do {
+> +			start = u64_stats_fetch_begin(&rxq->stats_sync);
+> +			packets += u64_stats_read(&rxq->q_stats.rx.packets);
+> +			bytes += u64_stats_read(&rxq->q_stats.rx.bytes);
+> +		} while (u64_stats_fetch_retry(&rxq->stats_sync, start));
+> +	}
+> +
+> +	idpf_update_dim_sample(q_vector, &dim_sample, &q_vector->rx_dim,
+> +			       packets, bytes);
+> +	net_dim(&q_vector->rx_dim, dim_sample);
+>  }
+>  
+>  /**
+> @@ -3338,7 +4254,15 @@ static void idpf_vport_intr_ena_irq_all(struct idpf_vport *vport)
+>  						  true);
+>  		}
+>  
+> -		if (qv->num_txq)
+> +		if (qv->num_rxq) {
+> +			dynamic = IDPF_ITR_IS_DYNAMIC(qv->rx_intr_mode);
+> +			itr = vport->rx_itr_profile[qv->rx_dim.profile_ix];
+> +			idpf_vport_intr_write_itr(qv, dynamic ?
+> +						  itr : qv->rx_itr_value,
+> +						  false);
+> +		}
+> +
+> +		if (qv->num_txq || qv->num_rxq)
+>  			idpf_vport_intr_update_itr_ena_irq(qv);
+>  	}
+>  }
+> @@ -3381,6 +4305,32 @@ static void idpf_tx_dim_work(struct work_struct *work)
+>  	dim->state = DIM_START_MEASURE;
+>  }
+>  
+> +/**
+> + * idpf_rx_dim_work - Call back from the stack
+> + * @work: work queue structure
+> + */
+> +static void idpf_rx_dim_work(struct work_struct *work)
+> +{
+> +	struct idpf_q_vector *q_vector;
+> +	struct idpf_vport *vport;
+> +	struct dim *dim;
+> +	u16 itr;
+> +
+> +	dim = container_of(work, struct dim, work);
+> +	q_vector = container_of(dim, struct idpf_q_vector, rx_dim);
+> +	vport = q_vector->vport;
+> +
+> +	if (dim->profile_ix >= ARRAY_SIZE(vport->rx_itr_profile))
+> +		dim->profile_ix = ARRAY_SIZE(vport->rx_itr_profile) - 1;
+> +
+> +	/* look up the values in our local table */
+> +	itr = vport->rx_itr_profile[dim->profile_ix];
+> +
+> +	idpf_vport_intr_write_itr(q_vector, itr, false);
+> +
+> +	dim->state = DIM_START_MEASURE;
+> +}
+> +
+>  /**
+>   * idpf_init_dim - Set up dynamic interrupt moderation
+>   * @qv: q_vector structure
+> @@ -3390,6 +4340,10 @@ static void idpf_init_dim(struct idpf_q_vector *qv)
+>  	INIT_WORK(&qv->tx_dim.work, idpf_tx_dim_work);
+>  	qv->tx_dim.mode = DIM_CQ_PERIOD_MODE_START_FROM_EQE;
+>  	qv->tx_dim.profile_ix = IDPF_DIM_DEFAULT_PROFILE_IX;
+> +
+> +	INIT_WORK(&qv->rx_dim.work, idpf_rx_dim_work);
+> +	qv->rx_dim.mode = DIM_CQ_PERIOD_MODE_START_FROM_EQE;
+> +	qv->rx_dim.profile_ix = IDPF_DIM_DEFAULT_PROFILE_IX;
+>  }
+>  
+>  /**
+> @@ -3437,6 +4391,44 @@ static bool idpf_tx_splitq_clean_all(struct idpf_q_vector *q_vec,
+>  	return clean_complete;
+>  }
+>  
+> +/**
+> + * idpf_rx_splitq_clean_all- Clean completetion queues
+> + * @q_vec: queue vector
+> + * @budget: Used to determine if we are in netpoll
+> + * @cleaned: returns number of packets cleaned
+> + *
+> + * Returns false if clean is not complete else returns true
+> + */
+> +static bool idpf_rx_splitq_clean_all(struct idpf_q_vector *q_vec, int budget,
+> +				     int *cleaned)
+> +{
+> +	int num_rxq = q_vec->num_rxq;
+> +	bool clean_complete = true;
+> +	int pkts_cleaned = 0;
+> +	int i, budget_per_q;
+> +
+> +	/* We attempt to distribute budget to each Rx queue fairly, but don't
+> +	 * allow the budget to go below 1 because that would exit polling early.
+> +	 */
+> +	budget_per_q = num_rxq ? max(budget / num_rxq, 1) : 0;
+> +	for (i = 0; i < num_rxq; i++) {
+> +		struct idpf_queue *rxq = q_vec->rx[i];
+> +		int pkts_cleaned_per_q;
+> +
+> +		pkts_cleaned_per_q = idpf_rx_splitq_clean(rxq, budget_per_q);
+> +		/* if we clean as many as budgeted, we must not be done */
+> +		if (pkts_cleaned_per_q >= budget_per_q)
+> +			clean_complete = false;
+> +		pkts_cleaned += pkts_cleaned_per_q;
+> +	}
+> +	*cleaned = pkts_cleaned;
+> +
+> +	for (i = 0; i < q_vec->num_bufq; i++)
+> +		idpf_rx_clean_refillq_all(q_vec->bufq[i]);
+> +
+> +	return clean_complete;
+> +}
+> +
+>  /**
+>   * idpf_vport_splitq_napi_poll - NAPI handler
+>   * @napi: struct from which you get q_vector
+> @@ -3456,7 +4448,8 @@ static int idpf_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
+>  		return 0;
+>  	}
+>  
+> -	clean_complete = idpf_tx_splitq_clean_all(q_vector, budget, &work_done);
+> +	clean_complete = idpf_rx_splitq_clean_all(q_vector, budget, &work_done);
+> +	clean_complete &= idpf_tx_splitq_clean_all(q_vector, budget, &work_done);
+>  
+>  	/* If work not completed, return budget and polling will return */
+>  	if (!clean_complete)
+> @@ -3810,7 +4803,6 @@ int idpf_init_rss(struct idpf_vport *vport)
+>  /**
+>   * idpf_deinit_rss - Release RSS resources
+>   * @vport: virtual port
+> - *
+>   */
+>  void idpf_deinit_rss(struct idpf_vport *vport)
+>  {
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> index 27bac854e7dc..f89dff970727 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> @@ -61,10 +61,21 @@
+>  
+>  #define IDPF_RX_BUFQ_WORKING_SET(rxq)		((rxq)->desc_count - 1)
+>  
+> +#define IDPF_RX_BUMP_NTC(rxq, ntc)				\
+> +do {								\
+> +	if (unlikely(++(ntc) == (rxq)->desc_count)) {		\
+
+desc_count won't change within single NAPI instance so i would rather
+store this to aux variable on stack and use this in this macro.
+
+> +		ntc = 0;					\
+> +		change_bit(__IDPF_Q_GEN_CHK, (rxq)->flags);	\
+> +	}							\
+> +} while (0)
+> +
+> +#define IDPF_RX_HDR_SIZE			256
+>  #define IDPF_RX_BUF_2048			2048
+>  #define IDPF_RX_BUF_4096			4096
+>  #define IDPF_RX_BUF_STRIDE			32
+> +#define IDPF_RX_BUF_POST_STRIDE			16
+>  #define IDPF_LOW_WATERMARK			64
+> +/* Size of header buffer specifically for header split */
+>  #define IDPF_HDR_BUF_SIZE			256
+>  #define IDPF_PACKET_HDR_PAD	\
+>  	(ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN * 2)
+> @@ -74,10 +85,18 @@
+>   */
+>  #define IDPF_TX_SPLITQ_RE_MIN_GAP	64
+> 
+
+[...]
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
