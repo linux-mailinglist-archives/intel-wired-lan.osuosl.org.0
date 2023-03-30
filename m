@@ -1,102 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 176216D0159
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Mar 2023 12:35:34 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE5916D0162
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Mar 2023 12:37:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AD997402BC;
-	Thu, 30 Mar 2023 10:35:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AD997402BC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5E29B403A4;
+	Thu, 30 Mar 2023 10:37:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E29B403A4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680172532;
-	bh=721OCbasM7amAniX2dJO1ABdVTNRwi52apeynt2/NlQ=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=cXWSmyz7Hl30kvTISFp3R9NEXKpFh2Lc9EO3SYS9Dmw2LdiyaZ3YtmPXC5jv1LFpu
-	 9MVM0EHUdl9VY4c41IIUxCHaZDgDye5WFc+RLLFAuewH//mzuQ5ysN8YpgboKT4pOs
-	 Ltro7nyG0J/Ueu3pfUBH5kKeGmgVjnhBd3uz9EsZaBVzqQbPUjknKzh3e7Zcfi8A77
-	 14wm9CnEiy/+2JXZD2w6VZFS8RxVQQsPZL6Q/XUX1jvLsc9H3mbZSRMe7Zx32Mqbs6
-	 fq9aALvsHlvEU8ch2xLJfp/S1QAG8b2cnyeEujNnSUSEUsWkHe5IBrHIOLDQRIr7N0
-	 UkyINo0G4nmbw==
+	s=default; t=1680172678;
+	bh=or71tlsh7b5dA8eQRRGhowyapMt7ggEwVc5bEglwuMc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=UnMGG0A4sLmTdLBUU+5NKeGBis6WPkU05CiJdO7OLcZDq72fSoY52+25X/5HZo+2E
+	 zo3k6nAstdMdZAxPNRgVoMRoMNGreC+PjyBAEkQlBf1uykjNVtUGEMe94vj1wlnu4E
+	 mbyBYCeiJ3NxxRizjX5OLUyZYMA+tucFHHmM+tS39aXBiVz3j18hcCSyRzAB1bdfbw
+	 aFEYftK88sKvCjNpOSChbl5N1fcbxsIuzGesyPmesNGpCZwGUQcMQXuzDe03xokUZT
+	 e/qZIrC4qPvle1sT2ugRlkolwqKxMelkZPzxbH5AtQsxuObzci3CyRQEY10Fv7kGRd
+	 4CPo2M/nhXt4Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7CCtorl46TSH; Thu, 30 Mar 2023 10:35:32 +0000 (UTC)
+	with ESMTP id gA-HMfcf2Ro2; Thu, 30 Mar 2023 10:37:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B7376401E1;
-	Thu, 30 Mar 2023 10:35:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B7376401E1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 60347402BC;
+	Thu, 30 Mar 2023 10:37:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 60347402BC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D97B1BF338
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:35:26 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3E2621BF338
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:37:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E9DF7842E0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:35:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E9DF7842E0
+ by smtp2.osuosl.org (Postfix) with ESMTP id 203B8402BC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:37:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 203B8402BC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 68E5Fqe15h07 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Mar 2023 10:35:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6SrIkVil_8s3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Mar 2023 10:37:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 386EA842B3
-Received: from smtp-out2.suse.de (smtp-out2.suse.de [IPv6:2001:67c:2178:6::1d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 386EA842B3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:35:25 +0000 (UTC)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 7A2C81FEBF;
- Thu, 30 Mar 2023 10:35:22 +0000 (UTC)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4AF71133E0;
- Thu, 30 Mar 2023 10:35:22 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id V5eREeplJWQgLAAAMHmgww
- (envelope-from <tiwai@suse.de>); Thu, 30 Mar 2023 10:35:22 +0000
-Date: Thu, 30 Mar 2023 12:35:21 +0200
-Message-ID: <87edp6msra.wl-tiwai@suse.de>
-From: Takashi Iwai <tiwai@suse.de>
-To: Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <87wn2yn43q.wl-tiwai@suse.de>
-References: <87jzz13v7i.wl-tiwai@suse.de>
- <652a9a96-f499-f31f-2a55-3c80b6ac9c75@molgen.mpg.de>
- <ZCP5jOTNypwG4xK6@debian.me> <87a5zwosd7.wl-tiwai@suse.de>
- <20230329121232.7873ad95@kernel.org> <87wn2yn43q.wl-tiwai@suse.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/27.2 Mule/6.0
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_rsa; 
- t=1680172522; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gkIZ+XM+mZxqivNdtYPp+H6kD5za7YStD4JUihghJco=;
- b=PHZkns74uCye98DCA/r8dxQW0mlpIVNtomLw4bBzAhGClfN0Fe5/yQ1PEfmCRloVNn4N7p
- 5rIsfvO2UwYfhwWu1nI98kriNhKwI9SSiHFmSvbup9nkOss0NsKQW1DQAYh+yCVMQbrzs9
- Bn0a60havtQWsQw+XY/sPmrbNWj+YMo=
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_ed25519; t=1680172522;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gkIZ+XM+mZxqivNdtYPp+H6kD5za7YStD4JUihghJco=;
- b=zetrntkdx62RC4gL1eDjmM4AT0cdLgRGb/YXcM2VQXZJPHaCbTTpv/5WdrFyGEoPluHIGR
- qaOM4+5qeBuzuNCg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=suse.de header.i=@suse.de
- header.a=rsa-sha256 header.s=susede2_rsa header.b=PHZkns74; 
- dkim=pass header.d=suse.de header.i=@suse.de header.a=ed25519-sha256
- header.s=susede2_ed25519 header.b=zetrntkd
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e probe/link detection
- fails since 6.2 kernel
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 668FC401E1
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 668FC401E1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Mar 2023 10:37:52 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="320783760"
+X-IronPort-AV: E=Sophos;i="5.98,303,1673942400"; d="scan'208";a="320783760"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Mar 2023 03:37:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="858871662"
+X-IronPort-AV: E=Sophos;i="5.98,303,1673942400"; d="scan'208";a="858871662"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by orsmga005.jf.intel.com with ESMTP; 30 Mar 2023 03:37:50 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	anthony.l.nguyen@intel.com
+Date: Thu, 30 Mar 2023 12:37:49 +0200
+Message-Id: <20230330103749.3759357-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1680172672; x=1711708672;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XzSuNgBx3Qtsy5izdlPxSRzZYur4phmuOSLeUv5LhrE=;
+ b=n1zOCUVsXgiLVvF7Zpqfd4umi3sM0O2eGbk0Nm9HxYLOSv8Zr6WcgYbw
+ tbkP7sAd2xSOYfjgF2G+8s8muhEwkijnv11FNM9uPT7Zv/9tGMHockqK9
+ jQKMK7nrBqBDm15/0Z0lwqUAYt+SMeie2NZjkgVe7WCO2ymA5tFqiORJT
+ fB82i+Jk8hcP9KIJsJAZY0L+YHDHb5vNWyUv9z3cjbh0THyIQNLyBlF5k
+ AATcGvGv/KexFQaSOsg8vrvCd62nTAJNEbaSnrJTWqBDkJiSUd8A4GYZi
+ 8FupcRHEC/30pzOBLCbWQYQDJgo8sx4tO8LxbSrzoGhFYrElFxH9UGorB
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=n1zOCUVs
+Subject: [Intel-wired-lan] [PATCH net v2] i40e: Limit expression passed to
+ kzalloc() to 1280 bytes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,60 +93,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, regressions@lists.linux.dev,
- netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- linux-kernel@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Bagas Sanjaya <bagasdotme@gmail.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="iso-2022-jp"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 30 Mar 2023 08:30:17 +0200,
-Takashi Iwai wrote:
-> 
-> On Wed, 29 Mar 2023 21:12:32 +0200,
-> Jakub Kicinski wrote:
-> > 
-> > On Wed, 29 Mar 2023 10:48:36 +0200 Takashi Iwai wrote:
-> > > On Wed, 29 Mar 2023 10:40:44 +0200,
-> > > Bagas Sanjaya wrote:
-> > > > 
-> > > > On Tue, Mar 28, 2023 at 04:39:01PM +0200, Paul Menzel wrote:  
-> > > > > Does openSUSE Tumbleweed make it easy to bisect the regression at least on
-> > > > > “rc level”? It be great if narrow it more down, so we know it for example
-> > > > > regressed in 6.2-rc7.
-> > > > >   
-> > > > 
-> > > > Alternatively, can you do bisection using kernel sources from Linus's
-> > > > tree (git required)?  
-> > > 
-> > > That'll be a last resort, if no one has idea at all :)
-> > 
-> > I had a quick look yesterday, there's only ~6 or so commits to e1000e.
-> > Should be a fairly quick bisection, hopefully?
-> 
-> *IFF* it's an e1000e-specific bug, right?
-> 
-> Through a quick glance, the only significant change in e1000e is the
-> commit 1060707e3809
->     ptp: introduce helpers to adjust by scaled parts per million
-> 
-> Others are only for MTP/ADP and new devices, which must be irrelevant.
-> The tracing must be irrelevant, and the kmap change must be OK.
-> 
-> Can 1060707e3809 be the cause of such a bug?
+Add buff_size limit of 1280 bytes as big enough for user input value.
 
-The bug reporter updated the entry and informed that this can be
-false-positive; the problem could be triggered with the older kernel
-out of sudden.  So he closed the bug as WORKSFORME.
+Fixes: f1143c4b0f60 ("i40e: Expose AQ debugfs hooks")
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-#regzbot invalid: Problems likely not in kernel changes
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index c9dcd6d..b10d00d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -1356,7 +1356,7 @@ static ssize_t i40e_dbg_command_write(struct file *filp,
+ 			goto command_write_done;
+ 		}
+ 		/* Just stub a buffer big enough in case user messed up */
+-		if (buffer_len == 0)
++		if (buffer_len == 0 || buffer_len > 1280)
+ 			buffer_len = 1280;
+ 
+ 		buff = kzalloc(buffer_len, GFP_KERNEL);
+-- 
+2.31.1
 
-
-thanks,
-
-Takashi
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
