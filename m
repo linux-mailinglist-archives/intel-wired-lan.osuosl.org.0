@@ -2,147 +2,117 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE43F6D2F2A
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Apr 2023 11:05:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3E576D32A6
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Apr 2023 18:47:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3234941F0C;
-	Sat,  1 Apr 2023 09:05:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3234941F0C
+	by smtp4.osuosl.org (Postfix) with ESMTP id E0C01417D5;
+	Sat,  1 Apr 2023 16:47:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E0C01417D5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680339903;
-	bh=lhhsDmNkyZ1F1Omjqm8Ait+HYWSogMlRwDhpavWoNWg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1680367641;
+	bh=7JwddsYTIQQ7hYC2kME/G+2htBc5Gl4NdVaIQRTA1iY=;
+	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=q/HSZz57puWkrTe3gQ+JwmMTRG20hbS8bDSkhg4tRN0ZJkt3hkUW8LvSwU+ecNWkg
-	 CJznCQ+tDUo5WJDdDvR7muLRav+lSy67ywzqP3Fh5McnbAHjoQ9WLnei0LDQjOQL9N
-	 LUK66TU8zk9JbFpKFTjq/ja372voCl5OMLD3MBK5KCLAzEcjrTXKvZOwOfexri6C/I
-	 XSVz0xQQZTQAfHZ6Q0Ame7u+GYFmda4a5p66YhL30/hO2h+wHzFhOL4LV+5NpOWvxB
-	 NX14LLopgpb9S6dJrnk/poqU4xGrRQChiAZVr08EMoofomR4Tw2FX1xQgShGkxVDrU
-	 PsZacNN/FXx5g==
+	b=f+gJ56hny0cBEUTtkety9xzRPmiP1I+ECztzjjUFdwpFozu1qSMgo9qXUTtSCguYP
+	 xgr63gzhuaC6BEUDOKK6/d8Y7k45vYRVDdoJfxzOD6C6iVwoW7G+pd53X96dqes2CL
+	 79SOvD4MeMBmoFLZS4ev4sS8erlhLmU0wKsGIfKrRwHokcBFaNod0HRApQin+JL2AH
+	 9bUevfQnhNFe1dn8sMJ1Xa9DxAY9iZZRAvpSpOnupUH9QnVOy5/sJ1leVfwdyKU7W+
+	 5wYg1c90ZXpqNzIMUeeVUUm1PtbaL18P8vCQbb3nph80MwU7Jyx2UKDO9DZ298BXQv
+	 GlGRdTKuYiyfA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GuztfSDXmCnB; Sat,  1 Apr 2023 09:05:02 +0000 (UTC)
+	with ESMTP id 4aWKa8qYJaky; Sat,  1 Apr 2023 16:47:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0DBFD41DF2;
-	Sat,  1 Apr 2023 09:05:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0DBFD41DF2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8C74F417A4;
+	Sat,  1 Apr 2023 16:47:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C74F417A4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A5ACD1BF29C
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 09:04:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 91EC11BF5AD
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 16:47:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7BEAC41DF2
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 09:04:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7BEAC41DF2
+ by smtp2.osuosl.org (Postfix) with ESMTP id 69F8740145
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 16:47:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 69F8740145
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VHKIWJ5TeMSR for <intel-wired-lan@lists.osuosl.org>;
- Sat,  1 Apr 2023 09:04:55 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A9A9441D80
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2118.outbound.protection.outlook.com [40.107.244.118])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A9A9441D80
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 09:04:55 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=W01WWfwwuaMaLHjhfLKMg5fmoW1sDbWdlnQJNqhtaWy2aicMYkaWyJdRxAC2zZyhL72p7rhNjILeaZZGq/NHXk3fZOj/HNpSN2hDcUw0nYffeQw/M/LlWUp85kKmo8kShx3p+zSPd+u9RKYFVIk6nUhrA/akKtACM9FA8ltkzPre9daTvCnUecrN+H/pMxMPer0ayk7k/C9cqJoCjK0suBRgzEJDKRvbATzEeKefEx5IQjw+FvqpKE8uMvhawODDuOIzF/Z+qtV/hwfls32Pdn1Iq5bLUlfM16xiivHoGxkznWgimGQfRPhpyp5QTQVAyyyWqNNw35cF/tc8ytR1tg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZWpD6AKWKrHdkQx4MoLXt5MP7rB1GAG8wsEkUTtZGpI=;
- b=NfHNwwmM3oDaEf6iI7ZENR2mpiNUfPQW7zX4D+3yv0MaTXbDTEYiHPGULqr94K/JlpjlKE0lQdgQs+9QBFSJEl3h4XRavemAgLkWaHGlKFC7k7htNu+Rw28FUkDfTXP8HS0dsZ6jnIWy0e0TnNcGVSClJY4X+UHJfEN1Nx4TqKo+rWYT/769hOyH1eZ502Vfhl6UAykLk6S9eznhb+GcVhAQioOc1fCgyOT8tBiKR702K+cvqZPGg6OkTKxAHSuhUBiC2UfMutdvk9USlU53sf90afUkasaViDkRbEAm/3pOb6Byeq0RN16ZBRIVtkmHP3YFo1eNY6bnFvgredqSNw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by DS7PR13MB4720.namprd13.prod.outlook.com (2603:10b6:5:3a0::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.22; Sat, 1 Apr
- 2023 09:04:54 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::c506:5243:557e:82cb]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::c506:5243:557e:82cb%5]) with mapi id 15.20.6254.021; Sat, 1 Apr 2023
- 09:04:54 +0000
-Date: Sat, 1 Apr 2023 11:04:49 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <ZCfzsSmsrbRIBtsy@corigine.com>
-References: <20230331105747.89612-1-michal.swiatkowski@linux.intel.com>
- <20230331105747.89612-5-michal.swiatkowski@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <20230331105747.89612-5-michal.swiatkowski@linux.intel.com>
-X-ClientProxiedBy: AM3PR07CA0079.eurprd07.prod.outlook.com
- (2603:10a6:207:6::13) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BN7ojyV8fqlp for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  1 Apr 2023 16:47:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AB01400C6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6AB01400C6
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Apr 2023 16:47:14 +0000 (UTC)
+Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
+ [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-522-0Jz6F5KzPj6h09a1mHIJvw-1; Sat, 01 Apr 2023 12:47:10 -0400
+X-MC-Unique: 0Jz6F5KzPj6h09a1mHIJvw-1
+Received: by mail-lf1-f72.google.com with SMTP id
+ m5-20020a194345000000b004eae18274b7so9977158lfj.19
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 01 Apr 2023 09:47:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680367629;
+ h=content-transfer-encoding:in-reply-to:references:to
+ :content-language:subject:cc:user-agent:mime-version:date:message-id
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=LBpaj6qPaiWPsqZ1uUbFmrrkbOrpiff0SRgLWvVlle4=;
+ b=coUD7GrwRaoyyIqhqRHPgOdqcb5bld8/aCy1j22tP+i0QA8Xp1PXh0h2y9aNwNiBaR
+ kl9AHR5QKkdrGRbnrGzPEuUjUouf8vvoxUkIxc0LMMJo6vu++JC2ZFkQEIFYquU7HUTN
+ Nh1NUw0kExMI1xsqcXupkE0IKRjFYIymyKsJ3G1PtlcWhI+BtAviuDUX0ZJpGqd0+hHz
+ BgPeZuO1eTP49/JIH/w84tWLwdeBWtevQcMXjXeHJDMddnjVLLox9bfuWeSVn5uZtBbB
+ sRrvymhzK/elkYERumjR8Tye+eVOl0MGnBKoGkhdDfTDqz1LsO1MFJXYEEzrREr/6gQE
+ 3WJA==
+X-Gm-Message-State: AAQBX9ffaJju4eRvxwHOgrGKjfLH4l3hQqoAQhc9Gibn1U2OIwOrO6q4
+ uo7xu5VZi+I8PIi5UNDhWmk6n7/adZ0ZKx4oWlT1KanX4g1jGa5+btWh/Fe8RtfivIZLYRAahxi
+ GY/V2r5zlCl9ymWyg0nBfcPG3GJ/FGw==
+X-Received: by 2002:a2e:6e03:0:b0:299:aa20:22a0 with SMTP id
+ j3-20020a2e6e03000000b00299aa2022a0mr9388792ljc.53.1680367629400; 
+ Sat, 01 Apr 2023 09:47:09 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZeSpF555yFlSRJ624wPZzgJmZWz4p4qwCgGBnis2x24ag2kBhUEet5FQWdzvm7DiW1qPj20Q==
+X-Received: by 2002:a2e:6e03:0:b0:299:aa20:22a0 with SMTP id
+ j3-20020a2e6e03000000b00299aa2022a0mr9388764ljc.53.1680367629089; 
+ Sat, 01 Apr 2023 09:47:09 -0700 (PDT)
+Received: from [192.168.42.100] (83-90-141-187-cable.dk.customer.tdc.net.
+ [83.90.141.187]) by smtp.gmail.com with ESMTPSA id
+ y17-20020a2eb011000000b002a5f554d263sm887063ljk.46.2023.04.01.09.47.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 01 Apr 2023 09:47:08 -0700 (PDT)
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
+Message-ID: <d4b3a22a-c815-a337-29b1-737efd9a7494@redhat.com>
+Date: Sat, 1 Apr 2023 18:47:06 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|DS7PR13MB4720:EE_
-X-MS-Office365-Filtering-Correlation-Id: 518e6728-621e-4482-1898-08db329028ab
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qWFKlW+pHtnqQBlfs/lI5q9BJOjBQaZnt5/64crMUd+RdTzy5YPqfLVe+f8W1wef237b2vtvZeoVazYzDGhxoiLtCAuyPk9CGotu3yrYeHZSqvBY11b9hGzGnlX0+k11jVCYUShT4dOlvvengOj0kaMiBZIAOHRib0Ly4gi4ESEwbCTnjcIsc2RFqBRSUphs0vfs8b5boxPaCTaGkVwvs+awnD7aRQleQa6XEbRXFPUX3sfhtrpiS8F6kcdBZMqplq2+EwVM2sRCIMHrLmgYKDs8yQSu2YQTYXkXaVkN9Cb7F2UbJQFbO0MEukfjLcE0HN5LdWgjXT7e4zQ/EfkkqBbL1jJSrwRMtTTO69S4uaX1/gUs5cs3o1KmzgzdkkjyiUWzydPRLcDkiO1jlEqBvdoO+o8YiZMOUK9mHlYju0Sa0+TLz3kkLJGdsvHjiWzGR0/p8poVGLSdRTqbhFPbFt3/dEsek99vwHeUppkGzjml2EmCFnxknzjbDEHWFrPY2Dj9Nhz2pHZgSecyZn6iVd3uNljd9b/Y23JZIquBoZQ7WHd1Yv4SjvViFQDvXyfP
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(396003)(39830400003)(346002)(136003)(366004)(376002)(451199021)(6486002)(44832011)(8936002)(5660300002)(8676002)(6506007)(6512007)(2616005)(36756003)(186003)(38100700002)(86362001)(41300700001)(478600001)(66946007)(316002)(6916009)(66556008)(66476007)(2906002)(4326008)(6666004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nuMfD9l9PMSHymEYwpf2UKpYyn31lx2NtTOcnp7a8olQgSAr4CF5/+xZj11r?=
- =?us-ascii?Q?zUE10oBQ5S5FruGzOd96r3xYWRcKWfcI3+boh/n08XCSJ7t7Of+kIAZprs5+?=
- =?us-ascii?Q?+Gx5AggE54HHsQ4/OFJJdeonj75delJ9yWa7++WIXpSmg+iAhwzVDeuHqlUs?=
- =?us-ascii?Q?Ro118E5LV/YGH7go6t3jnlRQ/PnKo8CfyBjjSRYnKeDlqlmOxmmSyZGTHZ5k?=
- =?us-ascii?Q?0lo0iRmqdMeIqhaj7jFcq0YUwVAiyiUDl0Pu97+CVj1FK2aRzGKBg+8kAr5n?=
- =?us-ascii?Q?FbaaqchAgvbYQ0xLCs301+fg/zcAriTAkYCsgUlgUVbuhBRtgBJXO2CafcvU?=
- =?us-ascii?Q?ct0st2LGHH/LJDCyG/5LkITQRSeOUDv6qWT8T8LuOlBeYi2StQQ4Y7pjq0QH?=
- =?us-ascii?Q?gqM2brSK9gCo96SSKQZvtPqilDPkWH7ZQefVJSnIbNr9FRDomrPB9Pu2PzIk?=
- =?us-ascii?Q?giQQVokfwoLE3LGXC6fQoBW99dC9KxXAus/08IjY8RIqgi8GaokQnDHPdO1U?=
- =?us-ascii?Q?H2CIJ1dAMnTTVt6sXxitgKOb5k2Asnx+DqqsJ3oipvnuB6xlxVzSyd/qkLvd?=
- =?us-ascii?Q?wx4i2P0n55ZficgnSTZQh6wAzGq0PnzKQsd8+V3bpjchPXSMZGAt4wVmr7/M?=
- =?us-ascii?Q?Gai5CC4HqVxeyA4NnNfzGlK1kcVtKumZrWsbWqRtL5Z6Nn0W+h9iEgSgL504?=
- =?us-ascii?Q?eRT810+P7khIl4v6q68dVB6HpDwCW1mrTW5bCySVrA3kMw/wdIm30yl9UCCr?=
- =?us-ascii?Q?/ZK76+u4bwKoZP3lKydwselVkdKmIY2Ziu/3PxpcvMKU8/7BnlUDOIItbOoN?=
- =?us-ascii?Q?weCAeGMXzec0uSeRvJ6V7O6ap4H7nXy9RHvox4xtliu4EXkaWvVaEccHYLCR?=
- =?us-ascii?Q?EKjvxw6LuBmPc48yrjvpYRhqhlfWnJDKQ3NNeiccjGqHs/WR3Oi2EFyQejIE?=
- =?us-ascii?Q?bbkfFQyMcsAaOCl9TUD6xMR2yzZhVZulCLuu501qMzDD34FCN76EQnTinUZi?=
- =?us-ascii?Q?TQV+1rDVt5lHWsKOS/uWViFQ+MB7Kt9/XxSfxoilHzbIs01yWurj5EyCAV1t?=
- =?us-ascii?Q?MxLPtJkLlDh5tn8WXArOXWgi/RNTxjgOL/lqtuUHlIIOp+DCvYfIt/ty41+N?=
- =?us-ascii?Q?gzHhfnlGX8z7kwOCHt8N8Gwdgut29HRgriT0zxfDdvfy9Z72LKlGKG7Cttln?=
- =?us-ascii?Q?ziUxSmOYUXjdbSQ1eKDsmFwcvI0V9lT1+G8rNszIVQpkRUNUnUBSmJRSU7Zt?=
- =?us-ascii?Q?txo67zS5sdZicG3cUOqrEofcQN72yeYHauUb27U7U4EahL54jf/3ZuSNLu9l?=
- =?us-ascii?Q?JAwQc2KXGRqS+Pwip8at0DulixVGsS07uiQ1gAAUPHqexrNBGu81CeTsQhx/?=
- =?us-ascii?Q?by+y4B7WDOmwb6xHQ82a8pc4d73lMEHCdjlttDhe1C5Q5MZLaZpGGYqO6Tln?=
- =?us-ascii?Q?mk7c+wTwYxa8DKzrNfy3dxmwIz3ik/ElgtGHMVt+EC01RpChcJs3DOWR6GiY?=
- =?us-ascii?Q?kmrkpdt/JKXqdezn2ic8GLA7+XOFS+X5rvLy2QRkFCHEOwHSGlNOWR7/IjHl?=
- =?us-ascii?Q?uoymtx1OLy4HSXcE/XUn/GxOjb2jylYMwle5IE2/R0BmluWiB2dlEQsgEKM/?=
- =?us-ascii?Q?DwBIWwXHyEW+QjbqI08gfc1g2QvIqX5aRzzENA42yFbAmSTZ7Ri7hr1Ur7Bu?=
- =?us-ascii?Q?OyY2jg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 518e6728-621e-4482-1898-08db329028ab
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Apr 2023 09:04:54.3373 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 36+5dcHDpofn86oxPIY8kHRmUsDiWhwMPjBl7dqczwz38qIy6kzeYm/7Q3ps0eSf5PDUofsqGvBbuEdaY9EIhH4gw4r/sMHbkyyiUJqKwMk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR13MB4720
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+To: bpf@vger.kernel.org, Stanislav Fomichev <sdf@google.com>,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>
+References: <168028882260.4030852.1100965689789226162.stgit@firesoul>
+In-Reply-To: <168028882260.4030852.1100965689789226162.stgit@firesoul>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZWpD6AKWKrHdkQx4MoLXt5MP7rB1GAG8wsEkUTtZGpI=;
- b=puhR6oSA+3BCDSSLU+wY5Cuu4iMgyrQNkoqPgFjEjetPiGgaygxnhC8osEi9DnxBIyPEW8fgPwCwXGVkJ8d5/EZW5chH0XKvoI8EiqbDd3OJllhywY+q65dKRQDQXURvx3MdIGOcjlg7YrcFJ7HXMfvLzk2E+2NpA76q1BdQ6hw=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=puhR6oSA
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 4/4] ice: use src VSI instead
- of src MAC in slow-path
+ d=redhat.com; 
+ s=mimecast20190719; t=1680367633;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LBpaj6qPaiWPsqZ1uUbFmrrkbOrpiff0SRgLWvVlle4=;
+ b=ErXAVjxX1xhOW/sAuUNk46YfrDSAB9QH7LVz2CqHDleRtpvltp4CYP3xgvtklIUbiR15nD
+ w7ZYSQVMXLq0O6ax6hNKX13h2dK01sak+Kn3x33nx6cSiQpmff0P/kI3/XIReq21irO2Jx
+ 8GOhDM+E5c2iP1o4uIUHzAzewbD7oXk=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=ErXAVjxX
+Subject: Re: [Intel-wired-lan] [PATCH bpf V5 0/5] XDP-hints: API change for
+ RX-hash kfunc bpf_xdp_metadata_rx_hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -155,60 +125,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
+ larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
+ ast@kernel.org, tariqt@nvidia.com, linux-kernel@vger.kernel.org,
+ jesse.brandeburg@intel.com, kuba@kernel.org, pabeni@redhat.com,
+ yoong.siang.song@intel.com, brouer@redhat.com, boon.leong.ong@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net, edumazet@google.com, hawk@kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Mar 31, 2023 at 12:57:47PM +0200, Michal Swiatkowski wrote:
-> The use of a source  MAC to direct packets from the VF to the
-> corresponding port representor is only ok if there is only one
-> MAC on a VF. To support this functionality when the number
-> of MACs on a VF is greater, it is necessary to match a source
-> VSI instead of a source MAC.
+
+Why have this patchset[1] been marked "Changes Requested" ?
+
+Notice: The BPF test_progs are failing on "xdp_do_redirect", but that is
+not related to this patchset as it already happens on a clean bpf-tree.
+
+
+  [1] 
+https://patchwork.kernel.org/project/netdevbpf/list/?series=735957&state=%2A
+
+
+On 31/03/2023 20.54, Jesper Dangaard Brouer wrote:
+> Current API for bpf_xdp_metadata_rx_hash() returns the raw RSS hash value,
+> but doesn't provide information on the RSS hash type (part of 6.3-rc).
 > 
-> Let's use the new switch API that allows matching on metadata.
+> This patchset proposal is to change the function call signature via adding
+> a pointer value argument for providing the RSS hash type.
 > 
-> If MAC isn't used in match criteria there is no need to handle adding
-> rule after virtchnl command. Instead add new rule while port representor
-> is being configured.
+> ---
+> V5:
+>   - Fixes for checkpatch.pl
+>   - Change function signature for all xmo_rx_hash calls in patch1
 > 
-> Remove rule_added field, checking for sp_rule can be used instead.
-> Remove also checking for switchdev running in deleting rule as it can be
-> call from unroll context when running flag isn't set. Checking for
-> sp_rule cover both context (with and without running flag).
+> Jesper Dangaard Brouer (5):
+>        xdp: rss hash types representation
+>        mlx5: bpf_xdp_metadata_rx_hash add xdp rss hash type
+>        veth: bpf_xdp_metadata_rx_hash add xdp rss hash type
+>        mlx4: bpf_xdp_metadata_rx_hash add xdp rss hash type
+>        selftests/bpf: Adjust bpf_xdp_metadata_rx_hash for new arg
 > 
-> Rules are added in eswitch configuration flow, so there is no need to
-> have replay function.
 > 
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Reviewed-by: Piotr Raczynski <piotr.raczynski@intel.com>
+>   drivers/net/ethernet/mellanox/mlx4/en_rx.c    | 22 ++++++-
+>   drivers/net/ethernet/mellanox/mlx4/mlx4_en.h  |  3 +-
+>   .../net/ethernet/mellanox/mlx5/core/en/xdp.c  | 63 ++++++++++++++++++-
+>   drivers/net/veth.c                            | 10 ++-
+>   include/linux/mlx5/device.h                   | 14 ++++-
+>   include/linux/netdevice.h                     |  3 +-
+>   include/net/xdp.h                             | 47 ++++++++++++++
+>   net/core/xdp.c                                | 10 ++-
+>   .../selftests/bpf/prog_tests/xdp_metadata.c   |  2 +
+>   .../selftests/bpf/progs/xdp_hw_metadata.c     | 14 +++--
+>   .../selftests/bpf/progs/xdp_metadata.c        |  6 +-
+>   .../selftests/bpf/progs/xdp_metadata2.c       |  7 ++-
+>   tools/testing/selftests/bpf/xdp_hw_metadata.c |  2 +-
+>   tools/testing/selftests/bpf/xdp_metadata.h    |  1 +
+>   14 files changed, 180 insertions(+), 24 deletions(-)
+> 
+> --
+> 
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-
-...
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-> index 20f66be9ba5f..1b739e096d27 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-> @@ -256,7 +256,9 @@ struct ice_nvgre_hdr {
->   * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
->   *
->   * Source VSI = Source VSI of packet loopbacked in switch (for egress) (10b).
-> - *
-> + */
-> +#define ICE_MDID_SOURCE_VSI_MASK 0x3ff
-
-nit: GENMASK might be appropriate here.
-
-> +/*
->   * MDID 20
->   * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
->   * |A|B|C|D|E|F|R|R|G|H|I|J|K|L|M|N|
-
-...
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
