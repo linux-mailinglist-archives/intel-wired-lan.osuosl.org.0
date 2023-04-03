@@ -1,110 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB5996D4601
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Apr 2023 15:42:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74A8A6D4B73
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Apr 2023 17:08:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9191A408DB;
-	Mon,  3 Apr 2023 13:42:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9191A408DB
+	by smtp4.osuosl.org (Postfix) with ESMTP id DD23240A00;
+	Mon,  3 Apr 2023 15:08:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DD23240A00
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680529356;
-	bh=EdOsTKdeXENRkXFovwiH3K/6P10Oc1LmHZ5SnAsa184=;
+	s=default; t=1680534519;
+	bh=J07Fe7S21403a+FUPTHLjxBggy7fwmGv3JrISO6KuGQ=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=d61EaRc+jfU3FlXF/2BmMip0p70WxwDqKtNOn+x68BFxt/paYMAi45RWdVIDj9oq8
-	 vmsGyvtlv5l5D9oyproYRQ/1XXCwNciUmpSCQGbJMoCO29mRBTslXIC1zZAcB2+mQK
-	 nF6ypFKHeFI06n9v42LVfy7TWwAR3x+0U7MSssoY3ekzEdzDhNtlUGt6ZKT2vbi1pI
-	 v/Hz88H08kpKtgKJplazHZGS3P2ihrmFewAsdaH4Pb/uCBoZHGsKvg0Hca5PYgS1JT
-	 QmDjVRq6PzNqRCuDRT02M9fd46pVfuFksYZR1K70z4xrcipONNynxjV9QVHl5ntHvy
-	 CFyjkbLl1zEBQ==
+	b=cCMH7HR0cUjppRLjXJrAj9InHYyoXFcQJbKKuAew0PYSF4ZeiJIzXh+E7orFNgIOY
+	 SOS3Aif4OeppEHpvBnrNS+x4pR06YJi5LFLBWobfIt56mP9AwaKiBPfcs7Wm4t4VQ8
+	 ptppRYEzhjOkJn9kkwj4NGMJzUzkWKq7HXkQ6/i0J4lv87D6RiUvYyvhFnDVWZXb1x
+	 Tvb6r4LFG5cAloVL9H3CxvBX6QB3qDNxHYQYnHpg8tkil+osz7+QE3ymHsj3kSAPCl
+	 b8ZMqvOGjD2MaWqeuo2iooZrwv8Um1k4coNToiiUGEUOqccWaWQxUjl9Tfd7u5mALm
+	 GfVe/VciZnxsw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ARcomfEvBtfD; Mon,  3 Apr 2023 13:42:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id w5YXD59GGsps; Mon,  3 Apr 2023 15:08:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 79999408E0;
-	Mon,  3 Apr 2023 13:42:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 79999408E0
+	by smtp4.osuosl.org (Postfix) with ESMTP id 407D04093B;
+	Mon,  3 Apr 2023 15:08:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 407D04093B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 498401BF97E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 13:42:30 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 060791BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 15:08:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 21A7260FB9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 13:42:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21A7260FB9
+ by smtp1.osuosl.org (Postfix) with ESMTP id DF44181266
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 15:08:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF44181266
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oze2GoCv49nU for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Apr 2023 13:42:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LuJCN3Rr0FfV for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Apr 2023 15:08:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E0E060FAE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A856B80C31
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4E0E060FAE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 13:42:29 +0000 (UTC)
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A856B80C31
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Apr 2023 15:08:31 +0000 (UTC)
+Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
+ [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-158-rLFMSEHaN-CQCVWBsAQ5HA-1; Mon, 03 Apr 2023 09:42:26 -0400
-X-MC-Unique: rLFMSEHaN-CQCVWBsAQ5HA-1
-Received: by mail-ed1-f72.google.com with SMTP id
- b6-20020a509f06000000b005029d95390aso4808167edf.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 03 Apr 2023 06:42:26 -0700 (PDT)
+ us-mta-461-LNOZyDfmPoqzk5Lm3OoHTQ-1; Mon, 03 Apr 2023 11:08:25 -0400
+X-MC-Unique: LNOZyDfmPoqzk5Lm3OoHTQ-1
+Received: by mail-yw1-f199.google.com with SMTP id
+ 00721157ae682-545d3b026a8so243122847b3.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 03 Apr 2023 08:08:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680529345;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=OS4NCzI4dMmryLR3VX28JbtikJ9tRfdvXYd2DIsne/k=;
- b=cdT7hX38hq45pH6YiKMjIlUZgTT7G69zhTfsUPpUxU1XMYdFSeod/aOV5HDJjKwy/D
- BC9Od1QlhUAWmUo+lusXu0MLz4FrnOIfCP/xY9sVHNWDNZ22WQUNNINPLxpKYTnB3XRY
- GX9bFe9+C/gYZdUWz2+aPGvf6iC48MraDLLZkH1C7Qfe3KC1P9y+43oIj/7aUlepVVq+
- ufaldvR4Ep8FM1otWR50CZgmrAH0DHESM2Osazn6x7orMmnV1x45+wYPliyEXMigeqrm
- mYEPEshOQWbXCxmY1VKKD5XqbIyPphDT7WJr3dta3ivFw8E3SLxGgB239DJVRaUs0dbR
- fqHg==
-X-Gm-Message-State: AAQBX9fJEyxzcVjZfEdSxn6UsLhNXlJZcBJsSlGBu+GNG0IgU+Io13KR
- UYTPR2l7uBqayiZr+MCh/yRY+yepfgGMiwkv0pSjZIKqGiJKLOAGLwRmOTZX+mWCDObKfihO1Ky
- o3/fwoVkuTum1QVaQRDWqXFa6O0bl1c8AhojJxHLe2qBii6tAtl5WAQ==
-X-Received: by 2002:a17:907:20bc:b0:92a:581:ac49 with SMTP id
- pw28-20020a17090720bc00b0092a0581ac49mr15782074ejb.3.1680529345227; 
- Mon, 03 Apr 2023 06:42:25 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZS9NMl87IhXkFK8bF38G0BJCoJTDkYI0Flb56ddP0Lds2UzLtWXLCBUSsgQLOcelrjn/JtLl3IKiAL0t/rwSI=
-X-Received: by 2002:a17:907:20bc:b0:92a:581:ac49 with SMTP id
- pw28-20020a17090720bc00b0092a0581ac49mr15782055ejb.3.1680529344974; Mon, 03
- Apr 2023 06:42:24 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1680534505;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XtGwnEigBI9Yvrkc7ZHK1mame6P5RYuaa0ScvqQAEOQ=;
+ b=lMsxVPDhfmZG9RtHZqXofFAjTGP3voubGleEJib3GjTY3Y+J9GTio6J5+cGSqgHU7q
+ 7Gj2j7xpL7EOvLhr3cA3bb+hz74NbGKtiMZ+QSXyWv/Qt82g2FDmIHdALzxVem91Vn/V
+ vriJ+LrgUYU9rPqmpnH/iQ0So+UjdOp4twR8a0wNzD44fFg4IJ1tdLm8LEHCHYzA5DsC
+ tiPVVNnQ1IOgOyZ/hflyR7hG9ywDSlKke0mvxl01SNDKtcV3FmN8/fYxIpGs9AsDAhjV
+ sFdCm8m8cNpynLXSdJvkzj6rmgLqbEcGm1/+kTwn1VEIUMcKLHSfzxgbJwxeMKPzpg4/
+ 3NHQ==
+X-Gm-Message-State: AAQBX9cQarddhMRqSswb9X2Tcf1uH3Dms5DVGFysM02MClJSBcfz31qO
+ oj2mBGNjGC0b4HtKocOBkimCFIGxLaVeZOnzFcs0H5XvoPELvLoCWa2JvgVhdChDLJb9s86xfUv
+ 4K/19cLHpdMCTJip0Th0FjxG9F7opds6F6KtICIw3F7NJng==
+X-Received: by 2002:a25:7649:0:b0:ad2:3839:f49 with SMTP id
+ r70-20020a257649000000b00ad238390f49mr11364523ybc.5.1680534505097; 
+ Mon, 03 Apr 2023 08:08:25 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aRgn8b2vk926orQmLehSnZM5GhccWn+HwPCog+vK4/ac7xGo/kF3CZt3UGjhJe+SFE/sTTvqEIRF0J73dyI7w=
+X-Received: by 2002:a25:7649:0:b0:ad2:3839:f49 with SMTP id
+ r70-20020a257649000000b00ad238390f49mr11364498ybc.5.1680534504825; Mon, 03
+ Apr 2023 08:08:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230401172659.38508-1-mschmidt@redhat.com>
- <20230401172659.38508-3-mschmidt@redhat.com>
- <ZClkczf8EvDsPidF@corigine.com>
-In-Reply-To: <ZClkczf8EvDsPidF@corigine.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Mon, 3 Apr 2023 15:42:13 +0200
-Message-ID: <CADEbmW1kvoqs3hAnPsrFRB3Emyf94_0WL=jt1QN+awZPCE50Cg@mail.gmail.com>
-To: Simon Horman <simon.horman@corigine.com>
+References: <168042409059.4051476.8176861613304493950.stgit@firesoul>
+ <168042420344.4051476.9107061652824513113.stgit@firesoul>
+ <CAADnVQ+JEP0sOyOOWbYKHackb4PmNYYcDGXnksucJt2mQGwi7g@mail.gmail.com>
+In-Reply-To: <CAADnVQ+JEP0sOyOOWbYKHackb4PmNYYcDGXnksucJt2mQGwi7g@mail.gmail.com>
+From: Jesper Brouer <jbrouer@redhat.com>
+Date: Mon, 3 Apr 2023 17:08:13 +0200
+Message-ID: <CADRO9jPNbXW2TymTOS+nJGKLgbVtQRzmQTby=p62Ys1Ruf66Lg@mail.gmail.com>
+To: Alexei Starovoitov <alexei.starovoitov@gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1680529348;
+ s=mimecast20190719; t=1680534510;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OS4NCzI4dMmryLR3VX28JbtikJ9tRfdvXYd2DIsne/k=;
- b=bp56sjf+Xw2Nz5PVm0TG3mKW5/atc5ANgUsBJc3UeOpq6qnqBmGc5yoUYc1FA9t/glu9pT
- 7lqvB39BwurD+JNc/ZwvbsJsccHNjOvG4k+/BExH3s+wp5YSgQ52Q3HDqzl/hKJijv4xnu
- 0S9KHG3w6w6m0012vx6F+UfSq7IeOtw=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=XtGwnEigBI9Yvrkc7ZHK1mame6P5RYuaa0ScvqQAEOQ=;
+ b=IOlqoEdbt4GdfSOgsYRcubK/AUdgFT6nv0Zy62MEsz6skXwUDyOff6lAcB2/ndJwTgOoAr
+ BCh8Oz5L4fnefmpT2wOgk/lQ9b+0T9Od4pPbnp7FntO4zcnBIfXvBLPHKg/efHS6YLvirl
+ PTpDiaWXSi6c5RTmQJUxjKxBG9osBdo=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=bp56sjf+
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/4] ice: sleep,
- don't busy-wait, for sq_cmd_timeout
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=IOlqoEdb
+Subject: Re: [Intel-wired-lan] [PATCH bpf V6 5/5] selftests/bpf: Adjust
+ bpf_xdp_metadata_rx_hash for new arg
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,60 +116,255 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Stanislav Fomichev <sdf@google.com>,
+ "Ong, Boon Leong" <boon.leong.ong@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, xdp-hints@xdp-project.net,
+ Daniel Borkmann <daniel@iogearbox.net>, linux-rdma@vger.kernel.org,
+ John Fastabend <john.fastabend@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Jesper Dangaard Brouer <brouer@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Martin KaFai Lau <martin.lau@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, Leon Romanovsky <leon@kernel.org>,
+ Network Development <netdev@vger.kernel.org>,
+ =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>,
+ LKML <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>, "Song,
+ Yoong Siang" <yoong.siang.song@intel.com>, bpf <bpf@vger.kernel.org>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============8985670462691458565=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gU3VuLCBBcHIgMiwgMjAyMyBhdCAxOjE44oCvUE0gU2ltb24gSG9ybWFuIDxzaW1vbi5ob3Jt
-YW5AY29yaWdpbmUuY29tPiB3cm90ZToKPiBPbiBTYXQsIEFwciAwMSwgMjAyMyBhdCAwNzoyNjo1
-N1BNICswMjAwLCBNaWNoYWwgU2NobWlkdCB3cm90ZToKPiA+IFRoZSBkcml2ZXIgcG9sbHMgZm9y
-IGljZV9zcV9kb25lKCkgd2l0aCBhIDEwMCDCtXMgcGVyaW9kIGZvciB1cCB0byAxIHMKPiA+IGFu
-ZCBpdCB1c2VzIHVkZWxheSB0byBkbyB0aGF0Lgo+ID4KPiA+IExldCdzIHVzZSB1c2xlZXBfcmFu
-Z2UgaW5zdGVhZC4gV2Uga25vdyBzbGVlcGluZyBpcyBhbGxvd2VkIGhlcmUsCj4gPiBiZWNhdXNl
-IHdlJ3JlIGhvbGRpbmcgYSBtdXRleCAoY3EtPnNxX2xvY2spLiBUbyBwcmVzZXJ2ZSB0aGUgdG90
-YWwKPiA+IG1heCB3YWl0aW5nIHRpbWUsIG1lYXN1cmUgY3EtPnNxX2NtZF90aW1lb3V0IGluIGpp
-ZmZpZXMuCj4gPgo+ID4gVGhlIHNxX2NtZF90aW1lb3V0IGlzIHJlZmVyZW5jZWQgYWxzbyBpbiBp
-Y2VfcmVsZWFzZV9yZXMoKSwgYnV0IHRoZXJlCj4gPiB0aGUgcG9sbGluZyBwZXJpb2QgaXMgMSBt
-cyAoaS5lLiAxMCB0aW1lcyBsb25nZXIpLiBTaW5jZSB0aGUgdGltZW91dAo+ID4gd2FzIGV4cHJl
-c3NlZCBpbiB0ZXJtcyBvZiB0aGUgbnVtYmVyIG9mIGxvb3BzLCB0aGUgdG90YWwgdGltZW91dCBp
-biB0aGlzCj4gPiBmdW5jdGlvbiBpcyAxMCBzLiBJIGRvIG5vdCBrbm93IGlmIHRoaXMgaXMgaW50
-ZW50aW9uYWwuIFRoaXMgcGF0Y2gga2VlcHMKPiA+IGl0Lgo+ID4KPiA+IFRoZSBwYXRjaCBsb3dl
-cnMgdGhlIENQVSB1c2FnZSBvZiB0aGUgaWNlLWduc3MtPGRldl9uYW1lPiBrZXJuZWwgdGhyZWFk
-Cj4gPiBvbiBteSBzeXN0ZW0gZnJvbSB+OCAlIHRvIGxlc3MgdGhhbiAxICUuCj4gPiBJIHNhdyBh
-IHJlcG9ydCBvZiBoaWdoIENQVSB1c2FnZSB3aXRoIHB0cDRsIHdoZXJlIHRoZSBidXN5LXdhaXRp
-bmcgaW4KPiA+IGljZV9zcV9zZW5kX2NtZCBkb21pbmF0ZWQgdGhlIHByb2ZpbGUuIFRoZSBwYXRj
-aCBzaG91bGQgaGVscCB3aXRoIHRoYXQuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogTWljaGFsIFNj
-aG1pZHQgPG1zY2htaWR0QHJlZGhhdC5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pY2UvaWNlX2NvbW1vbi5jICAgfCAxNCArKysrKysrLS0tLS0tLQo+ID4gIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfY29udHJvbHEuYyB8ICA5ICsrKysrLS0t
-LQo+ID4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfY29udHJvbHEuaCB8ICAy
-ICstCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlvbnMo
-LSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
-ZV9jb21tb24uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfY29tbW9uLmMK
-PiA+IGluZGV4IGMyZmRhNGZhNDE4OC4uMTRjZmZlNDlmYThjIDEwMDY0NAo+ID4gLS0tIGEvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9jb21tb24uYwo+ID4gKysrIGIvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9jb21tb24uYwo+ID4gQEAgLTE5OTIsMTkgKzE5
-OTIsMTkgQEAgaWNlX2FjcXVpcmVfcmVzKHN0cnVjdCBpY2VfaHcgKmh3LCBlbnVtIGljZV9hcV9y
-ZXNfaWRzIHJlcywKPiA+ICAgKi8KPiA+ICB2b2lkIGljZV9yZWxlYXNlX3JlcyhzdHJ1Y3QgaWNl
-X2h3ICpodywgZW51bSBpY2VfYXFfcmVzX2lkcyByZXMpCj4gPiAgewo+ID4gLSAgICAgdTMyIHRv
-dGFsX2RlbGF5ID0gMDsKPiA+ICsgICAgIHVuc2lnbmVkIGxvbmcgdGltZW91dDsKPiA+ICAgICAg
-IGludCBzdGF0dXM7Cj4gPgo+ID4gLSAgICAgc3RhdHVzID0gaWNlX2FxX3JlbGVhc2VfcmVzKGh3
-LCByZXMsIDAsIE5VTEwpOwo+ID4gLQo+ID4gICAgICAgLyogdGhlcmUgYXJlIHNvbWUgcmFyZSBj
-YXNlcyB3aGVuIHRyeWluZyB0byByZWxlYXNlIHRoZSByZXNvdXJjZQo+ID4gICAgICAgICogcmVz
-dWx0cyBpbiBhbiBhZG1pbiBxdWV1ZSB0aW1lb3V0LCBzbyBoYW5kbGUgdGhlbSBjb3JyZWN0bHkK
-PiA+ICAgICAgICAqLwo+ID4gLSAgICAgd2hpbGUgKChzdGF0dXMgPT0gLUVJTykgJiYgKHRvdGFs
-X2RlbGF5IDwgaHctPmFkbWlucS5zcV9jbWRfdGltZW91dCkpIHsKPiA+IC0gICAgICAgICAgICAg
-bWRlbGF5KDEpOwo+ID4gKyAgICAgdGltZW91dCA9IGppZmZpZXMgKyAxMCAqIGh3LT5hZG1pbnEu
-c3FfY21kX3RpbWVvdXQ7Cj4KPiBOb3QgbmVlZGVkIGZvciB0aGlzIHNlcmllcy4gQnV0IGl0IG9j
-Y3VycyB0byBtZSB0aGF0IGEgY2xlYW4tdXAgd291bGQgYmUgdG8KPiB1c2UgSUNFX0NUTF9RX1NR
-X0NNRF9USU1FT1VUIGRpcmVjdGx5IGFuZCByZW1vdmUgdGhlIHNxX2NtZF90aW1lb3V0IGZpZWxk
-LAo+IGFzIGl0IHNlZW1zIHRvIGJlIG9ubHkgc2V0IHRvIHRoYXQgY29uc3RhbnQuCgpTaW1vbiwK
-WW91IGFyZSByaWdodC4gSSBjYW4gZG8gdGhhdCBpbiB2Mi4KQlRXLCBpNDBlIGFuZCBpYXZmIGFy
-ZSBzaW1pbGFyIHRvIGljZSBoZXJlLgpUaGFua3MsCk1pY2hhbAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlz
-dApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+--===============8985670462691458565==
+Content-Type: multipart/alternative; boundary="0000000000003179a105f86feef4"
+
+--0000000000003179a105f86feef4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+s=C3=B8n. 2. apr. 2023 17.50 skrev Alexei Starovoitov <
+alexei.starovoitov@gmail.com>:
+
+> On Sun, Apr 2, 2023 at 1:30=E2=80=AFAM Jesper Dangaard Brouer <brouer@red=
+hat.com>
+> wrote:
+> >
+> > Update BPF selftests to use the new RSS type argument for kfunc
+> > bpf_xdp_metadata_rx_hash.
+> >
+> > Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+> > Acked-by: Toke H=C3=B8iland-J=C3=B8rgensen <toke@redhat.com>
+> > Acked-by: Stanislav Fomichev <sdf@google.com>
+> > ---
+> >  .../selftests/bpf/prog_tests/xdp_metadata.c        |    2 ++
+> >  .../testing/selftests/bpf/progs/xdp_hw_metadata.c  |   14 +++++++++---=
+--
+> >  tools/testing/selftests/bpf/progs/xdp_metadata.c   |    6 +++---
+> >  tools/testing/selftests/bpf/progs/xdp_metadata2.c  |    7 ++++---
+> >  tools/testing/selftests/bpf/xdp_hw_metadata.c      |    2 +-
+> >  tools/testing/selftests/bpf/xdp_metadata.h         |    1 +
+> >  6 files changed, 20 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+> b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+> > index aa4beae99f4f..8c5e98da9ae9 100644
+> > --- a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+> > +++ b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+> > @@ -273,6 +273,8 @@ static int verify_xsk_metadata(struct xsk *xsk)
+> >         if (!ASSERT_NEQ(meta->rx_hash, 0, "rx_hash"))
+> >                 return -1;
+> >
+> > +       ASSERT_EQ(meta->rx_hash_type, 0, "rx_hash_type");
+> > +
+> >         xsk_ring_cons__release(&xsk->rx, 1);
+> >         refill_rx(xsk, comp_addr);
+> >
+> > diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > index 4c55b4d79d3d..7b3fc12e96d6 100644
+> > --- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > +++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > @@ -14,8 +14,8 @@ struct {
+> >
+> >  extern int bpf_xdp_metadata_rx_timestamp(const struct xdp_md *ctx,
+> >                                          __u64 *timestamp) __ksym;
+> > -extern int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx,
+> > -                                   __u32 *hash) __ksym;
+> > +extern int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, __u32
+> *hash,
+> > +                                   enum xdp_rss_hash_type *rss_type)
+> __ksym;
+> >
+> >  SEC("xdp")
+> >  int rx(struct xdp_md *ctx)
+> > @@ -74,10 +74,14 @@ int rx(struct xdp_md *ctx)
+> >         else
+> >                 meta->rx_timestamp =3D 0; /* Used by AF_XDP as not avai=
+l
+> signal */
+> >
+> > -       if (!bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash))
+> > -               bpf_printk("populated rx_hash with %u", meta->rx_hash);
+> > -       else
+> > +       if (!bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash,
+> &meta->rx_hash_type)) {
+> > +               bpf_printk("populated rx_hash:0x%X type:0x%X",
+> > +                          meta->rx_hash, meta->rx_hash_type);
+> > +               if (!(meta->rx_hash_type & XDP_RSS_L4))
+> > +                       bpf_printk("rx_hash low quality L3 hash type");
+> > +       } else {
+> >                 meta->rx_hash =3D 0; /* Used by AF_XDP as not avail sig=
+nal
+> */
+> > +       }
+>
+> Didn't we agree in the previous thread to remove these printks and
+> replace them with actual stats that user space can see?
+>
+
+This patchset is for bpf-tree RC version of kernel.
+Thus, we keep changes to a minimum.
+
+I/we will do printk work on bpf-next.
+(Once I get home from vacation next week)
+
+--Jesper
+(Sent from Paris on my phone, thus vger will likely drop msg to list)
+
+>
+
+--0000000000003179a105f86feef4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">s=C3=B8n. 2. apr. 2023 17.50 skrev Alexei Starovoitov =
+&lt;<a href=3D"mailto:alexei.starovoitov@gmail.com">alexei.starovoitov@gmai=
+l.com</a>&gt;:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
+ 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Sun, Apr 2, 2023 =
+at 1:30=E2=80=AFAM Jesper Dangaard Brouer &lt;<a href=3D"mailto:brouer@redh=
+at.com" target=3D"_blank" rel=3D"noreferrer">brouer@redhat.com</a>&gt; wrot=
+e:<br>
+&gt;<br>
+&gt; Update BPF selftests to use the new RSS type argument for kfunc<br>
+&gt; bpf_xdp_metadata_rx_hash.<br>
+&gt;<br>
+&gt; Signed-off-by: Jesper Dangaard Brouer &lt;<a href=3D"mailto:brouer@red=
+hat.com" target=3D"_blank" rel=3D"noreferrer">brouer@redhat.com</a>&gt;<br>
+&gt; Acked-by: Toke H=C3=B8iland-J=C3=B8rgensen &lt;<a href=3D"mailto:toke@=
+redhat.com" target=3D"_blank" rel=3D"noreferrer">toke@redhat.com</a>&gt;<br=
+>
+&gt; Acked-by: Stanislav Fomichev &lt;<a href=3D"mailto:sdf@google.com" tar=
+get=3D"_blank" rel=3D"noreferrer">sdf@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 .../selftests/bpf/prog_tests/xdp_metadata.c=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 =C2=A0 2 ++<br>
+&gt;=C2=A0 .../testing/selftests/bpf/progs/xdp_hw_metadata.c=C2=A0 |=C2=A0 =
+=C2=A014 +++++++++-----<br>
+&gt;=C2=A0 tools/testing/selftests/bpf/progs/xdp_metadata.c=C2=A0 =C2=A0|=
+=C2=A0 =C2=A0 6 +++---<br>
+&gt;=C2=A0 tools/testing/selftests/bpf/progs/xdp_metadata2.c=C2=A0 |=C2=A0 =
+=C2=A0 7 ++++---<br>
+&gt;=C2=A0 tools/testing/selftests/bpf/xdp_hw_metadata.c=C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 =C2=A0 2 +-<br>
+&gt;=C2=A0 tools/testing/selftests/bpf/xdp_metadata.h=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0|=C2=A0 =C2=A0 1 +<br>
+&gt;=C2=A0 6 files changed, 20 insertions(+), 12 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c b/t=
+ools/testing/selftests/bpf/prog_tests/xdp_metadata.c<br>
+&gt; index aa4beae99f4f..8c5e98da9ae9 100644<br>
+&gt; --- a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c<br>
+&gt; +++ b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c<br>
+&gt; @@ -273,6 +273,8 @@ static int verify_xsk_metadata(struct xsk *xsk)<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!ASSERT_NEQ(meta-&gt;rx_hash, 0, =
+&quot;rx_hash&quot;))<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -1=
+;<br>
+&gt;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0ASSERT_EQ(meta-&gt;rx_hash_type, 0, &quot;=
+rx_hash_type&quot;);<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0xsk_ring_cons__release(&amp;xsk-&gt;r=
+x, 1);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0refill_rx(xsk, comp_addr);<br>
+&gt;<br>
+&gt; diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/too=
+ls/testing/selftests/bpf/progs/xdp_hw_metadata.c<br>
+&gt; index 4c55b4d79d3d..7b3fc12e96d6 100644<br>
+&gt; --- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c<br>
+&gt; +++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c<br>
+&gt; @@ -14,8 +14,8 @@ struct {<br>
+&gt;<br>
+&gt;=C2=A0 extern int bpf_xdp_metadata_rx_timestamp(const struct xdp_md *ct=
+x,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __u64 *timestamp) __ksym;<br>
+&gt; -extern int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0__u32 *hash) __ksym=
+;<br>
+&gt; +extern int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, __u32 *=
+hash,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0enum xdp_rss_hash_t=
+ype *rss_type) __ksym;<br>
+&gt;<br>
+&gt;=C2=A0 SEC(&quot;xdp&quot;)<br>
+&gt;=C2=A0 int rx(struct xdp_md *ctx)<br>
+&gt; @@ -74,10 +74,14 @@ int rx(struct xdp_md *ctx)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0meta-&gt;=
+rx_timestamp =3D 0; /* Used by AF_XDP as not avail signal */<br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0if (!bpf_xdp_metadata_rx_hash(ctx, &amp;me=
+ta-&gt;rx_hash))<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bpf_printk(&qu=
+ot;populated rx_hash with %u&quot;, meta-&gt;rx_hash);<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0if (!bpf_xdp_metadata_rx_hash(ctx, &amp;me=
+ta-&gt;rx_hash, &amp;meta-&gt;rx_hash_type)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bpf_printk(&qu=
+ot;populated rx_hash:0x%X type:0x%X&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 meta-&gt;rx_hash, meta-&gt;rx_hash_type);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!(meta-&gt=
+;rx_hash_type &amp; XDP_RSS_L4))<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0bpf_printk(&quot;rx_hash low quality L3 hash type&quot;);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0meta-&gt;=
+rx_hash =3D 0; /* Used by AF_XDP as not avail signal */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+Didn&#39;t we agree in the previous thread to remove these printks and<br>
+replace them with actual stats that user space can see?<br></blockquote></d=
+iv></div><div dir=3D"auto"><br></div><div dir=3D"auto">This patchset is for=
+ bpf-tree RC version of kernel.</div><div dir=3D"auto">Thus, we keep change=
+s to a minimum.</div><div dir=3D"auto"><br></div><div dir=3D"auto">I/we wil=
+l do printk work on bpf-next.</div><div dir=3D"auto">(Once I get home from =
+vacation next week)<br></div><div dir=3D"auto"><br></div><div dir=3D"auto">=
+--Jesper=C2=A0</div><div dir=3D"auto">(Sent from Paris on my phone, thus vg=
+er will likely drop msg to list)</div><div dir=3D"auto"><div class=3D"gmail=
+_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex"></blockquote></div></div></div>
+
+--0000000000003179a105f86feef4--
+
+
+--===============8985670462691458565==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============8985670462691458565==--
+
