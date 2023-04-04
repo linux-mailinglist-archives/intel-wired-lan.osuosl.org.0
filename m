@@ -1,186 +1,186 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 920356D5CAA
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Apr 2023 12:08:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8C676D5D5C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Apr 2023 12:23:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 904AA61055;
-	Tue,  4 Apr 2023 10:08:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 904AA61055
+	by smtp3.osuosl.org (Postfix) with ESMTP id 46EF060B25;
+	Tue,  4 Apr 2023 10:23:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 46EF060B25
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680602886;
-	bh=PVqNWTj/L7UG4ftMVLHO+NxVCKJJ54jN5scP9CPdZNk=;
+	s=default; t=1680603780;
+	bh=XYOamXd5jwZKwQJNm9gMl0Tmc6UjxFQlhoahCI2LL24=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1H28c7Vw5UYDvD78Lk5VJqF2yq/ncI0WPUUT53LVe3BnD9annN4MMJfyKvzsUbYug
-	 IYqK0WNmNfQN6U38OsL8P7uGDKPEA8EMDKWht+z4jIZ5x65FH8xauY6lsdvojCmw/+
-	 Z+CmlKtjTG9kCjPqvjBhWnBLzbTqwJktDaWqmDzJFismEWvcQfjCHDn/Ux0XwYcE6y
-	 rb7fbQ5f7uSPCvNRBNatf7NNt/VJuAjSnCz/e5Jint7+Gotakag4EQDIyUGeNgncwq
-	 7mwlMiie8uiIBV3AocsSvwWwWhOR3upfEAjx1Ei8MLMcgaotPytI+AvQ6iUJuI4p1F
-	 Z2QggvowXtdCw==
+	b=Q63WLUz48LmmIgBpMQP/fDt6M0r0CLR9dsbNAS+2COE4dY2Z/DH/Da5WZqmh+sZKZ
+	 s6nxg+jGYvi1RirgZLicdUBpSmIOjJVGlbF2BjNj+HUzpytdG6Zc8mEb/RJQIl/aKJ
+	 7g5eMsJlIbqeRms9K/bcJZCl3RDugxL120yrT7joN/NLVLtOhmKa/fwU/HVC0gAZ4d
+	 +JWrKRfeewMqDSRtQIIfAVs97TGzQijZwQ6sosA/gtabUUp1WNrVflbREu6FSd/w54
+	 YVfdFBI6Tkn9mYgc76blqKvebM+XVcWD0eRk5K//LwE4l79XsXMhYfhl7qAatiUMGB
+	 iCObzXbbJ8vLQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lqitMdyMLKr1; Tue,  4 Apr 2023 10:08:05 +0000 (UTC)
+	with ESMTP id up035sUUNrhq; Tue,  4 Apr 2023 10:22:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 465AA61052;
-	Tue,  4 Apr 2023 10:08:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 465AA61052
+	by smtp3.osuosl.org (Postfix) with ESMTP id CE86760ADE;
+	Tue,  4 Apr 2023 10:22:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE86760ADE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D7F7D1BF2A6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:07:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E8D641BF2A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:22:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AFAC9818E6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:07:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AFAC9818E6
+ by smtp4.osuosl.org (Postfix) with ESMTP id CB95B4090B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:22:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CB95B4090B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OG1qL-5-vvCX for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Apr 2023 10:07:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kSh-7XzR02GE for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Apr 2023 10:22:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3684881852
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E77694090A
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3684881852
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:07:56 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10669"; a="344703669"
-X-IronPort-AV: E=Sophos;i="5.98,317,1673942400"; d="scan'208";a="344703669"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E77694090A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Apr 2023 10:22:49 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10669"; a="344706164"
+X-IronPort-AV: E=Sophos;i="5.98,317,1673942400"; d="scan'208";a="344706164"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Apr 2023 03:07:56 -0700
+ 04 Apr 2023 03:22:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10669"; a="860541885"
-X-IronPort-AV: E=Sophos;i="5.98,317,1673942400"; d="scan'208";a="860541885"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga005.jf.intel.com with ESMTP; 04 Apr 2023 03:07:56 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10669"; a="679839671"
+X-IronPort-AV: E=Sophos;i="5.98,317,1673942400"; d="scan'208";a="679839671"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga007.jf.intel.com with ESMTP; 04 Apr 2023 03:22:49 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 4 Apr 2023 03:07:55 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ 15.1.2507.21; Tue, 4 Apr 2023 03:22:48 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Tue, 4 Apr 2023 03:07:55 -0700
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.45) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.21 via Frontend Transport; Tue, 4 Apr 2023 03:22:48 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.45) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 4 Apr 2023 03:07:55 -0700
+ 15.1.2507.21; Tue, 4 Apr 2023 03:22:45 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ePBGGqxRUGnSt0sX5zZFr+PVZ9ZFwujP+oADnPvbLw9fatomhzWIxUpka9r+diDzvPcD0mw5UzBb5JsEweK/D/pzajpEumaVfRMos89LnWa9oeuS6QDVu4kU74qAzuUJOOe9VAYY+LcJYHkIpZufeQO96DJzn1ie5F7kvJ6VoRfK7Me5I1DDSMS1VC6Uvdbb/ctWiem9/L55cajPjMAK9rvb80k4wKF25u58KdL2zyoLmrQQ0hFZ1V7jYt6y218PdCvDodwc7mzUZZWuM3pbm24MbFUeKQ+MByJfPlwoDgjEEtDJ8aXUy5BjfhiRNEp/wsqn7cctvFx/QZ9csSAtfg==
+ b=iqAI0h5LtVPqkjqytEhU867vL9zfDtHRbNl1X6A7Wdhs1UvFftp5C0VTLRY1KGWcvMn4hiFyW2re1387OOaA4T/rlaZIm3OANMfqNy7hyvm34QTMnYKvdY+8DOOTMMyjNEv3Y1ado3XJfhn0Xn3431HnpLziedvN630vaT8PHKNB0opM007qPxTwoDcTB+PmDeZ2EYIe4+JtvXz5oMOTphmIwBqceg3g8imWyAd09DvLQ8Q/xVbVLw2G4dvmuwDLFx5NKdOkNac9uaSPj3Ko0jFLz5WhbW6q1biATl1t6juj7DsaRbdwpSSX5gtLtvqniEOTl9LE6a8+6OXPdpfK1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pL2UhmlCIBFtY3rzD6Jw9vZvqfBlkWcp03EcbIwKaRc=;
- b=jvPC6dWdfdhlXOxZE5WLbYB4JSMhFk4JvfVDhxemAd2/e/8gbVL9m2NZyHpDVRjiJOhcPpQ7v0jSfZgge1hnxkauO8OJfiZfbfaP7vAf/9dxpZ0Ah4be2iURneRxVVtgLoqGi/cKF1ix0PCtxOGkpLLx0YVIcG5TPGQrb84FlxUEUTestSVs51lU54ruLBC+j+FRNGosqnQz9n+gGhpsHvL3YuoHLECIaCgfr0UQpHpg0C4SIGOtLxGurvY5fbpOVPzIQRq89thhyBgVs0GiaDIjkQM5MoYXUVsZ5oNmW9RcofMOcAMoQkp/D6cFBT4+TNcRI/xgXCLH39GI3sFo/A==
+ bh=Gtr7eQgWs8K6v8JNq0krurjm7Vl650v3YJnxpSMWu5I=;
+ b=eRMKJYPFqo6ZmWkEGvRtJpQZ4PhgYLAaPMgmpGgrgwRbv774vy+AHd/XkmD0kfPw2ZlV6nvzOVZkiWrtdXpfI+vT0HDksV/+FVJTTxTzKWEvPpbrF7eoB6cMESWNprPGHUYURKjAfiu+cgficoPJEFM1u0lyxz7ew19rTrIk5ItWqzlWKvoWEOXh7dN6OfFyYHVpCWpc1u8V0KnK7leIKxRnrMAxJB4SmRR2VqjCNYCTU0U98EFpflgHdpMMKmPh/4CErToh32/JJs80z4Pa3Wxg4P6rk3mMV+UzabU4R+NU58aaK3R0IiYMXqiWtrNU7DPe/rNIiDS+cpBUtvvfmg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
- by PH7PR11MB8123.namprd11.prod.outlook.com (2603:10b6:510:236::5) with
+ by PH0PR11MB5176.namprd11.prod.outlook.com (2603:10b6:510:3f::5) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.29; Tue, 4 Apr
- 2023 10:07:53 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.38; Tue, 4 Apr
+ 2023 10:22:44 +0000
 Received: from DM6PR11MB3625.namprd11.prod.outlook.com
  ([fe80::7911:de29:ded:224]) by DM6PR11MB3625.namprd11.prod.outlook.com
  ([fe80::7911:de29:ded:224%5]) with mapi id 15.20.6254.035; Tue, 4 Apr 2023
- 10:07:53 +0000
-Message-ID: <4559a556-9b35-42ab-ae03-391495c0b9f4@intel.com>
-Date: Tue, 4 Apr 2023 12:07:47 +0200
+ 10:22:43 +0000
+Message-ID: <2360ed18-d896-4720-89fc-e12e9b155943@intel.com>
+Date: Tue, 4 Apr 2023 12:22:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.0
 Content-Language: en-US
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 References: <20230404072833.3676891-1-michal.swiatkowski@linux.intel.com>
- <20230404072833.3676891-3-michal.swiatkowski@linux.intel.com>
+ <20230404072833.3676891-4-michal.swiatkowski@linux.intel.com>
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
-In-Reply-To: <20230404072833.3676891-3-michal.swiatkowski@linux.intel.com>
-X-ClientProxiedBy: FR0P281CA0018.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:15::23) To DM6PR11MB3625.namprd11.prod.outlook.com
+In-Reply-To: <20230404072833.3676891-4-michal.swiatkowski@linux.intel.com>
+X-ClientProxiedBy: FR3P281CA0207.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a5::12) To DM6PR11MB3625.namprd11.prod.outlook.com
  (2603:10b6:5:13a::21)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|PH7PR11MB8123:EE_
-X-MS-Office365-Filtering-Correlation-Id: a00fed78-6fba-4ab8-49b5-08db34f4746b
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|PH0PR11MB5176:EE_
+X-MS-Office365-Filtering-Correlation-Id: ce638660-0d63-4821-26bc-08db34f68707
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jUK8b9OHwJq1Za5vg+Mcj7eQlEi5aPBM+xvxeHzGIhHe0xD0TbxzbviyxQBD7HSgw56aUbe+eVBqUASZJ1JouYeUWZ+USF/PZdOk0o4Sns09CAPGFyusFArDjISbKVnMosqzdRH4ib6sz4EI3RLE2W8oBIgCmXS5yHSp5d1S2aAxaBWR1iaBjRbodhyBXZA8jUrbPYUnAeXrHUfghk67YbbFpF9wKObLQ/Cv5euJtUgViKdy+b2fYogIVlccTtxXezfOfCkNXBA5Ts3hw2f+++mwIixsC1o7e7pbMKoKhiCj4S+30Oj0qQ2rS1YVron3HPZRnpDw+05yJM720r8Gutd4MwGfdIQ4IFrnC+iHVB+M8hJIP5E8AahKGBHUtXsfQcAklZ9yaptCdqFxl4ngvWTh+5JyPX8UHCbg1CMhuF855moVdgAJsiCvl16yQUBM7quqy+lesqKVbFyX8+sYAwFiJb0c8WqPJDaLr2svPmlWvQWMP6NHs/UNGayyYb8LcKV45gP6msH+ourookdnIEdpbAkQEWQpwb5C243FnlFesX860aIfmxYgaqkW5NcPMykllLtYVz9aYcLghsZf6+5dVCUfjl7BWC9Qa/JJ9c32qQ+KMI1sDK+UoTqkUmquM9MeRQ53ktH7DhXRoPqA4w==
+X-Microsoft-Antispam-Message-Info: XlKdvZTkwEqfS6aWwDXJxH+P1w9it2FhhoCqM5NN6lekmBmvZlUM66QWtuYIlGdBZuWG8H4RYeSYpf2kU/3hC8TPl3VoWd+G15aYae5d8NkednWdLQnv97gA50LsKWJCXn3ze6IWh4LQbIrSmhMqbsBXIc4bXPtE23hOWxGxwG99gROF3Ku4M8Yidn4cfwfIdDkWZMTuX7P4eyY71OdW/b9+ja5ZxoLD2VJ6fUwx6Fc8KY8P7wnMDo5M/BpbWHkq4ixB5B49Rtsq+7KK1nrGtRRWfVD6AUZX+EuKbYdft7yeb1kcQZKJZkf3oWUdLNyCHDGlfOU6O1ZjtDGXNQsKuLUzl2gsA3H5UTtCUP+PkLRIgECoTDkSU0ttBgEVu0cBghYVreyFVn08VRSmPEWmoJYm75sml/ajPJdyd9VC0z3SK5SfbVFuOL8E5pS0F9YlEHyPRdK4nNdn3KiIOXibX0BgI0YQHMGZF2Rh807wRNf9FNtnEJ+Qi62/At/QfaLlMUAc/FyIyPMb7uCsBnHbyJSczdRRjXxGgaA5bWkEIMEoawrogYqdGZdy1ibgYv6RMiMfjTuAq/S/VcVQlbw+3d95AzKN043N3w9Q7yw4iACPYTmvDauFWmrDEOLoojUunFtB6RQcosWmq+XmdlYKjA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(376002)(136003)(39860400002)(346002)(366004)(451199021)(36756003)(6486002)(6666004)(83380400001)(2616005)(186003)(86362001)(38100700002)(31696002)(82960400001)(6512007)(6506007)(26005)(66946007)(2906002)(8676002)(316002)(8936002)(66476007)(41300700001)(5660300002)(66556008)(6916009)(4326008)(31686004)(478600001)(45980500001)(43740500002);
+ SFS:(13230028)(39860400002)(346002)(396003)(366004)(376002)(136003)(451199021)(31686004)(66556008)(66476007)(8676002)(6916009)(4326008)(6486002)(66946007)(41300700001)(316002)(31696002)(86362001)(36756003)(6512007)(6506007)(26005)(2616005)(6666004)(83380400001)(8936002)(2906002)(5660300002)(478600001)(82960400001)(38100700002)(186003)(43740500002)(45980500001);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c0ZVL0QyOE9VS1lBRVNraFUxOGhWdUNKeCtUZXJXZGJiV00xS3M4S1BlYjNG?=
- =?utf-8?B?N1VGaWNHc3VObE1WN29UYWh0em05OTIzSU1tZ0pjUDdKWnNyT0NVaEtaM0hL?=
- =?utf-8?B?dTM1bFFPb3c3c1QyNE01RVdSekdwdkdhdnE4U0pOUk0zRWZPSkxIdG9GZlZ3?=
- =?utf-8?B?V25BRVdjVGdzT09RUGU2NkEzditMTUZjUnBrUGdnWnRUVitoMlhubGRFazZH?=
- =?utf-8?B?OG13R2hPTU50Tmg1Uzl2U2dFc3ZrbGVRVSsyOXphVUowVjI3NGgydm01NkMx?=
- =?utf-8?B?azEyM3R1YmR3N0pQOGJ0SUxxM0hWOGRuUGlJTGlnWGJHZnozN0k2TzB0UGhQ?=
- =?utf-8?B?WURBeDh6ODVxbmlDUU03NUhSY2lxTWs3cFNQZnNnUjZYdHM0dERwMU8xeHJj?=
- =?utf-8?B?TXVCdXJYVW5XVFh4UEpsdnVpUWFEYTVGTkZoQ0xYY2huOHhVcFVPeWNhQW9U?=
- =?utf-8?B?SlZCdlNXeUJBMjV1ODNKeURCZ1pVNUQvNk05RjB2MDFlaXBac3ByZUdEckVa?=
- =?utf-8?B?VkMyekRpUXpxOGVGallMU0p4SFdXNEU4OHNZcTJUR3Y1UVplN0tKMk44MTFw?=
- =?utf-8?B?MWkwcFNzUCtNTkMwcUo5TlJtbERjRVBueVlOdmNOR3RDbXY0Tll1Uk0vMGZx?=
- =?utf-8?B?SHRXV2FNTzZxbXVOZGcrRlVzbGI0WDJHOGdpdWhoUU5pd2hpei9qR2F4ZjRN?=
- =?utf-8?B?NjZ0OHcyQk5QQ0hnYzM4SGNUMHJoQzVwbzM0WGR2cVp0RDRDUUVDWm5TZ2ZM?=
- =?utf-8?B?b05KNGJsNzNHNXpYcmltL1RCQUV4cWpEVjNqMGZLdlBqMEl5UXpvT3JvSFJm?=
- =?utf-8?B?b0diNW1DLzczK1dYRVEzWnhmK0RoeUVPbHp4d0xlQ08xWHRkL0k3MTI3cUcv?=
- =?utf-8?B?NnhCc2dSS1Q3TXlQYXU3alhSaTJsQWV2YlU2aXVtNkpyb3dLQzB3aW42ekFp?=
- =?utf-8?B?ck1yczB3OGlYVWpMSFR6RmE1OHB0Q2xCTUQrbTMzUnpneFlmdGNEU0FiOE4z?=
- =?utf-8?B?dVk3T215ZWgyclFCUldkbTNjbWFIeXVOK2k1NmR3VkpTZkFNQjFlZm1ZNHA5?=
- =?utf-8?B?T01JaVVPNUV3bXpLZUpseHBVYWh0bVg3aWxMM0lUUERIdDZLRUNabFFvZFpx?=
- =?utf-8?B?ODF3Z3dTdzZKYkZaUUpoTzlwdkVHY2dxdkhIKzdIaE8vbVQ0UlJCTDRkeW9O?=
- =?utf-8?B?bTB5TXJQNW9mc0F3N1FWYmpVQjltc203MUxlbmcvZFpoWndPS1ZEUk52aVRZ?=
- =?utf-8?B?U2xVc1RKakczMG9iMFRMajk2QkhJM0dPSmtBUHlQN3lDSlZpaWZYZkh6VW11?=
- =?utf-8?B?K0NBb0pHUnNqVjJKVjFndXAyQ2VZc3FlOE5xTFhDY3RSaUtuRnVtSEMyWFZZ?=
- =?utf-8?B?bDVrTHQ3cGdNQzU0QWpoWXJVTjd5d1VkSUhsL0Q3Ny9ybEcwU0N3RGpxRVdC?=
- =?utf-8?B?NDgzUFdqazBnQ1hEWHBwR3JHUHFXeEFxY050UGVrQlI5U0R1VjFldDhMQTlY?=
- =?utf-8?B?QVJHVnQvTE5MNWlva0U1dFp0R1B5azNGNVEySzhqRmxnWm4vUlFHUzQvYWVx?=
- =?utf-8?B?dHB2UUVhL1RWWFJQMmg3RytUcG5DTERoR1ZkSTNjT2JKRGF5bWZaMlliMjgy?=
- =?utf-8?B?TFJWTkE3ZzhRYjJGRDFWTXhLSThja1RicklSRU80L05SVUNaVTNjWEM5L1J1?=
- =?utf-8?B?ejAybWhtcm1LQXVwVGdFL3hkOWhVVlJuOFQ3M3Z2eFU5L2xqRkV4T1o3ejhC?=
- =?utf-8?B?WDlXOWZNa0tZaWlYeDZnbUdydWdEQVR1SmV0MGprdTFEY2ZuYzhpcmlQZG5I?=
- =?utf-8?B?Q0JycWM5dnV3Q3hxaEFrYWcvMlZPZmYzWjRIRHhHYVRici9lU055cnJyOU85?=
- =?utf-8?B?SHQzNTdmcTFiNE9xUEcxbVNMOVljb2xCOXQxN3BPZWQ2elNIR3AxQVpDbnpG?=
- =?utf-8?B?YXBiTWhsb3B2SGwvcUl5WDZScUtlT3RlL2xHZnFyUTJKaGp4bXVGUzQ0KzF0?=
- =?utf-8?B?YkxNTndzbUpwcERRdmlrd0VtMHNKRUc3ckFuUXAwc1p2QzhZdE9pMjNZQzB4?=
- =?utf-8?B?cHEyVmRJTStXcFJkTXhwU1R5TEZ5RXRtVVdQZ0FnTEFoZ3BVT3QzZEtQUlJD?=
- =?utf-8?B?THF2c3p5L0k4M3lIY3lSZ0JIUHZMYVZLODdTMlJDS0RZeStOeE9yOFY5NW4y?=
- =?utf-8?B?c0E9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: a00fed78-6fba-4ab8-49b5-08db34f4746b
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TDFpaG1EM1dGK0Z4TlVHbDFIMDJJWEdKRUF0RGNvNGo2dDliMWtmd2htdWhW?=
+ =?utf-8?B?c0liRkdKWVMzUzU3Q3lmUFVCbDhscENIalJ3MUxHbnVzVTBwbVdtajc5VU9H?=
+ =?utf-8?B?MFZiS1k5cE05NlBHZFRucVpScnkzcEZHQ2w2NU1hUGk5RkxZazJoSWgvdS9N?=
+ =?utf-8?B?ek4xd2QvYm8rVFArY2V1V3puVk5icnhVY2YrY1JNQW8wVXhKd25YR0JSdXRF?=
+ =?utf-8?B?dEpRNGE3MkNVd0pkOFhHbTRySitWY3RtbjdJWmIrYWQxL0JGY1BGd01KQ24z?=
+ =?utf-8?B?NnZ1cUlNNU8yT0VxNHhVKzNrK1hxWllUSVIzVWpDeTFyYlZOVXB4L2pBb09E?=
+ =?utf-8?B?QWJPVlJkS1pwQmVHSGl6SkZwSmlGUFBWekpiR0oza2dobUJzU0tkc0txVDBq?=
+ =?utf-8?B?NU5UR09icTlHMGJPQVpCK2Z6Z05ZcGRzcko1TUR6S3VTUGVST3BGMDlIc29Y?=
+ =?utf-8?B?STNNVmg2YjB4WWNnR0YyWlpSQm8xc0ttOTJpYk52RGZ3aGJseFpIMjJ0ZUJJ?=
+ =?utf-8?B?ODdaUTJPZTJ2cUxSRmZ2SmtmN2srRkJwTEw1cVdFWElYaE1hRWErcGJURTdB?=
+ =?utf-8?B?RlY1Q2NXNVk4OGxiNXhwTENtWThST2RFVDBHYmZUNExGVXBXMFNzRldNVU9Z?=
+ =?utf-8?B?TkNVaGU2Mk40WVVoNWFlVHNUUEM3MWIzZXFWQTJZY2pDL1JBQjJJeVJsaVlj?=
+ =?utf-8?B?dDJDamhhOFdXQm0ySTZHeU1DeEV4ZFdndTg1RnVQZ1ZBdHRxdUV5SGtveHdL?=
+ =?utf-8?B?bEVSRnhLRmFuNzhNYnhxQ1NYeVNzTVZCM21DemgwYm9PUlpwMzZCbFNoVXYz?=
+ =?utf-8?B?OXpQQ21Ya2k1OWs4ajdjcFE3cVJqa0E5MklwREhwT3dIeWxPZ1N3OFg0L1Nz?=
+ =?utf-8?B?cTlpbUFtQ29UQzBCdnBCS3JzWlFmbDlqNXhZRGdLYkUrbEEwRW9DOTN1ZEdh?=
+ =?utf-8?B?TFhXaXo2c1RpWlY5UVdjdGVzNnhyeVhad1YvQ2lqaUI4a3NoSHNINnBjNDR0?=
+ =?utf-8?B?Mm1aa2wxRlNiUHF6U09zeUE1UmxNaithc0JBZjZBQ29QbTlDRUNueUhVSFNq?=
+ =?utf-8?B?MktsNWtXZG52MVRwYStBbnVFYnl1U2hDZlFXNlFwcFpLZW4yRHdhQkVyYlNt?=
+ =?utf-8?B?WXNlaGZzRkoxd1lXWnV4WlMxT0FqOGNxWWZtTStaR0l3dW1uWHdmNXNPSzAy?=
+ =?utf-8?B?L1kzcnZENFZqNGUrdmNnaENZTS9Ob3RLa1FGOTlVOFBobHcxdGYySU1wYWpI?=
+ =?utf-8?B?LzJUeWVPQnoyWllPWk5pMVJuM0xhRjR4enF3Y3dXaDlWVmt3OHhiT2RycDJL?=
+ =?utf-8?B?aUIwcU9Pa3ZKcWxYQ1V3OVdrdlM4WXhlVkJUUkpNNGJGbldvcERtbmxMSm5C?=
+ =?utf-8?B?U0VDYWdhTk5RUndSRWdGbTNuOG1mNGZGdGVlR2ZTUlk3RzRHeUUzZ0JuYVVq?=
+ =?utf-8?B?V1hGVUNqY1dGaUlrK0pTTjRhcll3VUY0aXJybVRhNDFsYmw3OUhVMmlOQW1K?=
+ =?utf-8?B?aytvc3hZQ1o5MTZWYUtISjRmQUNxNDdpTHpGdlMvQ053WHgvUWNWS3plRXpl?=
+ =?utf-8?B?eG9aNFNwb1ZCOEx4cmo1eFZrOHJZQy9mZGE3QnlpTG9uaExiMk1MUHVjeVBK?=
+ =?utf-8?B?UnM4Y1hKeVVPa2V4MkxLVEpwdWhZc2h0T05oS3pIRk91YWZqeVQyeEtPc0Za?=
+ =?utf-8?B?WXJGQUlEempTMEtwMUprb0o2WTYrbGIxQng0RkJjQndwZ3ViZXE4Wms1WDI1?=
+ =?utf-8?B?cFlscnFUZUx3OHF6emw1c2J3MytkZGJtUUhkZnJ1K3pTWHVZeFpvMkFPSGtm?=
+ =?utf-8?B?ckZ6bksySkVGTXdsZnVFQ0xlUkhIVEpRYmtvbGZnejM4aEIrOGNIT1JKSWZL?=
+ =?utf-8?B?ZTJWN0EwYUpoMXlvcUt6K1VMdVZVd1lrYThiWVJuSERzMW9hOTN5SVY1NDZx?=
+ =?utf-8?B?YVBpemszeUR3WC9JNzJaT2lscDhvdzRUU3hja044aUxVczFkSVA1MjJGZFpw?=
+ =?utf-8?B?RmpaVVhxM3RPZEExcDA4dy84UUF5bHlFeHZBSk02UnYvOUJnVU1lZ1hnYWZk?=
+ =?utf-8?B?eFIyQTMrekZqMXpSdS93N0dTSk9oVWZ4L3hWTFZQdGUyL2drc0J1R2RDUGsr?=
+ =?utf-8?B?L0dCRnFlTGlXQnlZYXJyNGlFekVhWVVRYnMxMTF5NlV6bE1pSjk5QWR0alNn?=
+ =?utf-8?B?YWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce638660-0d63-4821-26bc-08db34f68707
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2023 10:07:53.4373 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2023 10:22:43.7487 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CvdF1ijGfPqb2H+pTnzI0AGJmNde4b0b7FCbMBSrA+4GkNC3w5cz9sIIullcW8UQaxYaxCgbXJW17aoyIinNO1nz8aq/wmnRNQmAe8eq854=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8123
+X-MS-Exchange-CrossTenant-UserPrincipalName: VEpfQbFuGBa3DdwlSAwa4TPvAh14N6MTzDSGl/TsL52IWH2U7SWzTajJsMtO74QKNe6MDv6XXCZrxSUADNh7XI+PKjrIlkt8WykscYKntls=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5176
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680602877; x=1712138877;
+ t=1680603769; x=1712139769;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=Rcm3AUssEvsnqyv5ctHmroFvDEmKxCaeWFv3N44tJkA=;
- b=RX4sN4MQvOH1RZ4XZmQdsly+wJNhiyR9UJChIMFjhXAPUZ1lBnOTQNN8
- xGuvZf4KzcVTrecGGnHW79/RzczHFJY3hIPsIuS0M/yWGULU1THo3/8+M
- 0CiRdHduVcPjpuzBnx29tF0j+m2qoib5FRHV72nZAGTBTWNC4q9fWrV2S
- +mMkcx0bj1pNgk+ScFUoLw+EeVVJA6FnA1UMXJOdOxH5AHGgQ9CJGllh/
- TCNnzy2KBmuvzQ7UWQeVmP4x1FzaGizUPuKJnvJnz+ZWV5Jdjy9rryZcO
- uEYB8ezY5oRFCdnI5qs1dPl4UZetRxbW/ca8JL8yAzk2bTO520AXZMX9A
+ bh=JDBFA0qYFmnzsEuFWP7lO+1Y2rv+p/kdULWKSTUZkTY=;
+ b=g2+4mQi902YUsFy+yoWis4v8+iTGeC4qAW/mzcLriYheSpO0o7FKqLoG
+ +1XvywNsFz88LyCqjmcWXiuGjxdGoE/fMiP1gu7Nj1o9ToZ2/fDXpwE2m
+ lczyiao5SlwcoIA2Z8VawVNgJWpSxFXmiCLfzMy83wKS99Ujtc6l5krBi
+ E/UWEUJtCtVuqDL7rtbJ1iGDmOdKjV7sxqnnclclMCHR68dobFYlXOZJ9
+ ep8Z4HflbPISwcRihKZIvB7VOf4CZvIeslgKST1VKdMxCPEYHs2hvu9Ps
+ PSbhKr3y0Cmd6YE92mg+CcFKcCx768ZBnSCNPEc29XdFgxfa1LcgLv/3Q
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RX4sN4MQ
+ header.a=rsa-sha256 header.s=Intel header.b=g2+4mQi9
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/4] ice: remove redundant
- Rx field from rule info
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 3/4] ice: allow matching
+ on meta data
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -201,156 +201,180 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Date: Tue,  4 Apr 2023 09:28:31 +0200
+Date: Tue,  4 Apr 2023 09:28:32 +0200
 
-> Information about the direction is currently stored in sw_act.flag.
-> There is no need to duplicate it in another field.
-> 
-> Setting direction flag doesn't mean that there is a match criteria for
-> direction in rule. It is only a information for HW from where switch id
-> should be collected (VSI or port). In current implementation of advance
-> rule handling, without matching for direction meta data, we can always
-> set one the same flag and everything will work the same.
-> 
-> Ability to match on direction matadata will be added in follow up
-> patches.
-> 
-> Recipe 0, 3 and 9 loaded from package has direction match
-> criteria, but they are handled in other function.
-> 
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Reviewed-by: Piotr Raczynski <piotr.raczynski@intel.com>
-> Reviewed-by: Simon Horman <simon.horman@corigine.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_eswitch.c |  1 -
->  drivers/net/ethernet/intel/ice/ice_switch.c  | 22 ++++++++++----------
->  drivers/net/ethernet/intel/ice/ice_switch.h  |  2 --
->  drivers/net/ethernet/intel/ice/ice_tc_lib.c  |  5 -----
->  4 files changed, 11 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-> index f6dd3f8fd936..2c80d57331d0 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-> @@ -39,7 +39,6 @@ ice_eswitch_add_vf_mac_rule(struct ice_pf *pf, struct ice_vf *vf, const u8 *mac)
->  	rule_info.sw_act.flag |= ICE_FLTR_TX;
->  	rule_info.sw_act.vsi_handle = ctrl_vsi->idx;
->  	rule_info.sw_act.fltr_act = ICE_FWD_TO_Q;
-> -	rule_info.rx = false;
->  	rule_info.sw_act.fwd_id.q_id = hw->func_caps.common_cap.rxq_first_id +
->  				       ctrl_vsi->rxq_map[vf->vf_id];
->  	rule_info.flags_info.act |= ICE_SINGLE_ACT_LB_ENABLE;
-> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-> index 5c3f266fa80f..4d3a92e0c61f 100644
+> Add meta data matching criteria in the same place as protocol matching
+> criteria. There is no need to add meta data as special words after
+> parsing all lookups. Trade meta data in the same why as other lookups.
+
+[...]
+
 > --- a/drivers/net/ethernet/intel/ice/ice_switch.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-> @@ -6121,8 +6121,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+> @@ -4573,6 +4573,15 @@ static const struct ice_prot_ext_tbl_entry ice_prot_ext[ICE_PROTOCOL_LAST] = {
+>  	{ ICE_L2TPV3,		{ 0, 2, 4, 6, 8, 10 } },
+>  	{ ICE_VLAN_EX,          { 2, 0 } },
+>  	{ ICE_VLAN_IN,          { 2, 0 } },
+> +	{ ICE_HW_METADATA,	{ ICE_SOURCE_PORT_MDID_OFFSET,
+> +				  ICE_PTYPE_MDID_OFFSET,
+> +				  ICE_PACKET_LENGTH_MDID_OFFSET,
+> +				  ICE_SOURCE_VSI_MDID_OFFSET,
+> +				  ICE_PKT_VLAN_MDID_OFFSET,
+> +				  ICE_PKT_TUNNEL_MDID_OFFSET,
+> +				  ICE_PKT_TCP_MDID_OFFSET,
+> +				  ICE_PKT_ERROR_MDID_OFFSET,
+> +				}},
+
+I don't think this is proper indenting. I believe it should like this:
+
+	/* This line is unchanged except the opening brace at the end */
+	{ ICE_VLAN_IN,          { 2, 0 } }, {
+		ICE_HW_METADATA, {
+			ICE_SOURCE_PORT_MDID_OFFSET,
+			ICE_PTYPE_MDID_OFFSET,
+			[...]
+		/* Don't forget commas after last elements */
+		},
+	},
+
+or
+
+	{
+		ICE_HW_METADATA,
+		{
+			ICE_SOURCE_PORT_MDID_OFFSET,
+			ICE_PTYPE_MDID_OFFSET,
+			[...]
+		},
+	},
+
+(but I'd prefer the first one)
+
+Also, I think anonymous initializers are now discouraged in favour of
+designated, at least randstruct sometimes complains about that. Could
+we start always specifying field names? You could define a macro for
+this particular struct to not bloat the code.
+
+>  };
+>  
+>  static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+> @@ -4597,6 +4606,7 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+>  	{ ICE_L2TPV3,		ICE_L2TPV3_HW },
+>  	{ ICE_VLAN_EX,          ICE_VLAN_OF_HW },
+>  	{ ICE_VLAN_IN,          ICE_VLAN_OL_HW },
+> +	{ ICE_HW_METADATA,      ICE_META_DATA_ID_HW},
+
+Please replace spaces with tabs (as it's done for ICE_L2TPV3_HW).
+Also missing space before the last brace.
+
+>  };
+>  
+>  /**
+
+[...]
+
+> @@ -5726,6 +5663,10 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
+>  		 * was already checked when search for the dummy packet
+>  		 */
+>  		type = lkups[i].type;
+> +		/* metadata isn't lockated in packet */
+
+("located", but I'd say "metadata isn't present in the packet")
+
+> +		if (type == ICE_HW_METADATA)
+> +			continue;
+> +
+>  		for (j = 0; offsets[j].type != ICE_PROTOCOL_LAST; j++) {
+>  			if (type == offsets[j].type) {
+>  				offset = offsets[j].offset;
+> @@ -5861,16 +5802,21 @@ ice_fill_adv_packet_tun(struct ice_hw *hw, enum ice_sw_tunnel_type tun_type,
+>  
+>  /**
+>   * ice_fill_adv_packet_vlan - fill dummy packet with VLAN tag type
+> + * @hw: pointer to hw structure
+>   * @vlan_type: VLAN tag type
+>   * @pkt: dummy packet to fill in
+>   * @offsets: offset info for the dummy packet
+>   */
+>  static int
+> -ice_fill_adv_packet_vlan(u16 vlan_type, u8 *pkt,
+> +ice_fill_adv_packet_vlan(struct ice_hw *hw, u16 vlan_type, u8 *pkt,
+>  			 const struct ice_dummy_pkt_offsets *offsets)
+>  {
+>  	u16 i;
+>  
+> +	/* Check if there is something to do */
+> +	if (vlan_type == 0 || !ice_is_dvm_ena(hw))
+
+`!vlan_type` is preferred over `== 0`.
+
+> +		return 0;
+> +
+>  	/* Find VLAN header and insert VLAN TPID */
+>  	for (i = 0; offsets[i].type != ICE_PROTOCOL_LAST; i++) {
+>  		if (offsets[i].type == ICE_VLAN_OFOS ||
+> @@ -5889,6 +5835,15 @@ ice_fill_adv_packet_vlan(u16 vlan_type, u8 *pkt,
+>  	return -EIO;
+>  }
+>  
+> +static bool ice_is_rule_info_the_same(struct ice_adv_rule_info *first,
+
+Doesn't sound natural. "ice_rules_equal"?
+
+> +				      struct ice_adv_rule_info *second)
+
+The function is read-only, `const` for both arguments.
+
+> +{
+> +	return first->sw_act.flag == second->sw_act.flag &&
+> +	       first->tun_type == second->tun_type &&
+> +	       first->vlan_type == second->vlan_type &&
+> +	       first->src_vsi == second->src_vsi;
+> +}
+
+[...]
+
+> @@ -6121,7 +6088,12 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
 >  	if (rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI)
 >  		rinfo->sw_act.fwd_id.hw_vsi_id =
 >  			ice_get_hw_vsi_num(hw, vsi_handle);
-> -	if (rinfo->sw_act.flag & ICE_FLTR_TX)
-> -		rinfo->sw_act.src = ice_get_hw_vsi_num(hw, vsi_handle);
-> +	rinfo->sw_act.src = ice_get_hw_vsi_num(hw, vsi_handle);
+> -	rinfo->sw_act.src = ice_get_hw_vsi_num(hw, vsi_handle);
+> +
+> +	if (rinfo->src_vsi)
+> +		rinfo->sw_act.src =
+> +			ice_get_hw_vsi_num(hw, rinfo->src_vsi);
+
+This fits into one line in my editor :D
+
+> +	else
+> +		rinfo->sw_act.src = ice_get_hw_vsi_num(hw, vsi_handle);
 >  
 >  	status = ice_add_adv_recipe(hw, lkups, lkups_cnt, rinfo, &rid);
 >  	if (status)
-> @@ -6190,19 +6189,20 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
->  		goto err_ice_add_adv_rule;
->  	}
->  
-> -	/* set the rule LOOKUP type based on caller specified 'Rx'
-> -	 * instead of hardcoding it to be either LOOKUP_TX/RX
-> +	/* If there is no matching criteria for direction there
-> +	 * is only one difference between Rx and Tx:
-> +	 * - get switch id base on VSI number from source field (Tx)
-> +	 * - get switch id base on port number (Rx)
->  	 *
-> -	 * for 'Rx' set the source to be the port number
-> -	 * for 'Tx' set the source to be the source HW VSI number (determined
-> -	 * by caller)
-> +	 * If matching on direction metadata is chose rule direction is
-> +	 * extracted from type value set here.
->  	 */
-> -	if (rinfo->rx) {
-> -		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
-> -		s_rule->src = cpu_to_le16(hw->port_info->lport);
-> -	} else {
-> +	if (rinfo->sw_act.flag & ICE_FLTR_TX) {
->  		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_TX);
->  		s_rule->src = cpu_to_le16(rinfo->sw_act.src);
-> +	} else {
-> +		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
-> +		s_rule->src = cpu_to_le16(hw->port_info->lport);
->  	}
->  
->  	s_rule->recipe_id = cpu_to_le16(rid);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-> index 68d8e8a6a189..44aa37b80111 100644
+
+[...]
+
 > --- a/drivers/net/ethernet/intel/ice/ice_switch.h
 > +++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-> @@ -10,7 +10,6 @@
->  #define ICE_DFLT_VSI_INVAL 0xff
->  #define ICE_FLTR_RX BIT(0)
->  #define ICE_FLTR_TX BIT(1)
-> -#define ICE_FLTR_TX_RX (ICE_FLTR_RX | ICE_FLTR_TX)
->  #define ICE_VSI_INVAL_ID 0xffff
->  #define ICE_INVAL_Q_HANDLE 0xFFFF
+> @@ -186,11 +186,13 @@ struct ice_adv_rule_flags_info {
+>  };
 >  
-> @@ -190,7 +189,6 @@ struct ice_adv_rule_info {
+>  struct ice_adv_rule_info {
+> +	/* Store metadata values in rule info */
 >  	enum ice_sw_tunnel_type tun_type;
+> +	u16 vlan_type;
+> +	u16 src_vsi;
 >  	struct ice_sw_act_ctrl sw_act;
 >  	u32 priority;
-> -	u8 rx; /* true means LOOKUP_RX otherwise LOOKUP_TX */
 >  	u16 fltr_rule_id;
->  	u16 vlan_type;
+> -	u16 vlan_type;
 >  	struct ice_adv_rule_flags_info flags_info;
 
-That u8 here was really off, was introducing at least 1 byte hole. Good
-thing you dropped it.
-Have you checked whether there are any holes left, maybe move fields
-around a bit?
+Please check holes within the structure. I see at least one in between
+`fltr_rule_id` and `flags_info`. Some fields can definitely be moved around.
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> index 76f29a5bf8d7..b5af6cd5592b 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> @@ -697,11 +697,9 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
->  	if (fltr->direction == ICE_ESWITCH_FLTR_INGRESS) {
->  		rule_info.sw_act.flag |= ICE_FLTR_RX;
->  		rule_info.sw_act.src = hw->pf_id;
-> -		rule_info.rx = true;
->  	} else {
->  		rule_info.sw_act.flag |= ICE_FLTR_TX;
->  		rule_info.sw_act.src = vsi->idx;
-> -		rule_info.rx = false;
->  		rule_info.flags_info.act = ICE_SINGLE_ACT_LAN_ENABLE;
->  		rule_info.flags_info.act_valid = true;
->  	}
-> @@ -909,7 +907,6 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
->  		rule_info.sw_act.vsi_handle = dest_vsi->idx;
->  		rule_info.priority = ICE_SWITCH_FLTR_PRIO_VSI;
->  		rule_info.sw_act.src = hw->pf_id;
-> -		rule_info.rx = true;
->  		dev_dbg(dev, "add switch rule for TC:%u vsi_idx:%u, lkups_cnt:%u\n",
->  			tc_fltr->action.fwd.tc.tc_class,
->  			rule_info.sw_act.vsi_handle, lkups_cnt);
-> @@ -920,7 +917,6 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
->  		rule_info.sw_act.vsi_handle = dest_vsi->idx;
->  		rule_info.priority = ICE_SWITCH_FLTR_PRIO_QUEUE;
->  		rule_info.sw_act.src = hw->pf_id;
-> -		rule_info.rx = true;
->  		dev_dbg(dev, "add switch rule action to forward to queue:%u (HW queue %u), lkups_cnt:%u\n",
->  			tc_fltr->action.fwd.q.queue,
->  			tc_fltr->action.fwd.q.hw_queue, lkups_cnt);
-> @@ -928,7 +924,6 @@ ice_add_tc_flower_adv_fltr(struct ice_vsi *vsi,
->  	case ICE_DROP_PACKET:
->  		rule_info.sw_act.flag |= ICE_FLTR_RX;
->  		rule_info.sw_act.src = hw->pf_id;
-> -		rule_info.rx = true;
->  		rule_info.priority = ICE_SWITCH_FLTR_PRIO_VSI;
->  		break;
->  	default:
-
+>  };
+>  
 Thanks,
 Olek
 _______________________________________________
