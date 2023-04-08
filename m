@@ -2,75 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAAEC6DBB7A
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Apr 2023 16:07:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 819526DBC99
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Apr 2023 21:24:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8C66341E6C;
-	Sat,  8 Apr 2023 14:07:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C66341E6C
+	by smtp4.osuosl.org (Postfix) with ESMTP id 579A141DFB;
+	Sat,  8 Apr 2023 19:24:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 579A141DFB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1680962831;
-	bh=zXzgU6X/RdAohwsZQOGRJcQSgQ23ByibtBQpBrPNr7I=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=jtBxqB3MOA2fN3ptFBVXsRTZ0ZC3Yo0ZArJHd86Dy6vS5TQTvLDpV45XC5ZFbR2Yw
-	 zNtCjf7zzC4Rt1Li2kOaY1Zvj0OTdKGYMznP7QhhLO/vl9DfJeOe5GZnHzGfALLhyR
-	 4aWa971cAX6LkB4+iQGnoVXhHXOUu3CQ4uNieydO1EPKDfM02qoPKtDShWx79wVe2G
-	 djzkbJ6lp+Is/n4CBLQkUcmZEJapkbaBonPuKmb51o8u1zIPu5MTvKVCOG1xyI5GTe
-	 doUruysbQ2XsOSJE97dNCXJA6UmpZF2l+6gOOZtqfFIPEygylLd9BV/D7e7CZjje2j
-	 I0q9r990DAEag==
+	s=default; t=1680981894;
+	bh=oN+vuk+uRuSYy7BAwK2J7/iQ7vBMXLXv4jCPzSQiUWQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=SRvBpyimICRRj4YrQ6pjFY59pRWcGc4pc8G0LoJWknv+X2Ayl0JRewfpoiQ9Bbf1R
+	 JWBUQ0Oj4OMKfQxA/27F7u9oYEMqWdcmhe/pxILDF3oFk0HpMHnlUJStuSvh8ty2Re
+	 /ey/AQjbDtQSYkgmj1vbxtmpIMg7bnIuDBWqTU/dE8z/YoDDiwSf01UJLH8nYzBy4s
+	 a50AqFBjxYvRI9vojJTWTnV1sJlSJW3N7UQBcO1cEzNQGUT+vZ+n8C67bG/n9IZhFs
+	 cQNMpLb8tizuuV0pskoN+obyL9QpljV1P+AEngQhphO90alkxh2ai4KxtIr75drCY8
+	 M+hy7QxeOSt1Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GLwlA3hXxF2t; Sat,  8 Apr 2023 14:07:10 +0000 (UTC)
+	with ESMTP id uSxaIrH1w1sC; Sat,  8 Apr 2023 19:24:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 102BC41DA5;
-	Sat,  8 Apr 2023 14:07:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 102BC41DA5
+	by smtp4.osuosl.org (Postfix) with ESMTP id C9CDB41D65;
+	Sat,  8 Apr 2023 19:24:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9CDB41D65
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1CBF31C32CD
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 14:07:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 469491BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 19:24:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F39BA84239
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 14:07:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F39BA84239
+ by smtp3.osuosl.org (Postfix) with ESMTP id 14D2460B8C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 19:24:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 14D2460B8C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Yaqy9rkT8C0V for <intel-wired-lan@lists.osuosl.org>;
- Sat,  8 Apr 2023 14:07:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A67B84220
-Received: from mail-m11880.qiye.163.com (mail-m11880.qiye.163.com
- [115.236.118.80])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8A67B84220
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 14:07:01 +0000 (UTC)
-Received: from localhost.localdomain (unknown
- [IPV6:240e:3b7:3279:cf80:b96f:666f:20ca:bc83])
- by mail-m11880.qiye.163.com (Hmail) with ESMTPA id 1CBF120191;
- Sat,  8 Apr 2023 22:01:32 +0800 (CST)
-From: Ding Hui <dinghui@sangfor.com.cn>
-To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
-Date: Sat,  8 Apr 2023 22:00:30 +0800
-Message-Id: <20230408140030.5769-3-dinghui@sangfor.com.cn>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20230408140030.5769-1-dinghui@sangfor.com.cn>
-References: <20230408140030.5769-1-dinghui@sangfor.com.cn>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSkxIVh1ITE4dSkMfTx1OS1UTARMWGhIXJBQOD1
- lXWRgSC1lBWUlPSx5BSBlMQUhJTEJBGB1DS0EZQk0dQU1NTR1BSUsYGkEZGENIWVdZFhoPEhUdFF
- lBWU9LSFVKSktPSEhVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mhg6GRw6Ij0cGjdDFCkwHAE1
- Fw8aCQxVSlVKTUNLQk1JT0JISUlKVTMWGhIXVR8SFRwTDhI7CBoVHB0UCVUYFBZVGBVFWVdZEgtZ
- QVlJT0seQUgZTEFISUxCQRgdQ0tBGUJNHUFNTU0dQUlLGBpBGRhDSFlXWQgBWUFNQk5DNwY+
-X-HM-Tid: 0a87612c188f2eb6kusn1cbf120191
-X-HM-MType: 1
-Subject: [Intel-wired-lan] [PATCH net 2/2] iavf: Fix out-of-bounds when
- setting channels on remove
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rhsQ2Csz2TlI for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  8 Apr 2023 19:24:45 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7ED360B73
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D7ED360B73
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Apr 2023 19:24:44 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-170-eMMT_24CMTGEkuTyNfCu2g-1; Sat, 08 Apr 2023 15:24:39 -0400
+X-MC-Unique: eMMT_24CMTGEkuTyNfCu2g-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C8BE029AA2E7;
+ Sat,  8 Apr 2023 19:24:37 +0000 (UTC)
+Received: from firesoul.localdomain (unknown [10.45.242.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3E273492C14;
+ Sat,  8 Apr 2023 19:24:37 +0000 (UTC)
+Received: from [10.1.1.1] (localhost [IPv6:::1])
+ by firesoul.localdomain (Postfix) with ESMTP id 4ED6B307372E8;
+ Sat,  8 Apr 2023 21:24:36 +0200 (CEST)
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: bpf@vger.kernel.org, Stanislav Fomichev <sdf@google.com>,
+ =?utf-8?q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+Date: Sat, 08 Apr 2023 21:24:36 +0200
+Message-ID: <168098183268.96582.7852359418481981062.stgit@firesoul>
+User-Agent: StGit/1.4
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1680981883;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=WHos8LM0VawSvsV7ilkV4J+3kFj+NjV9a1WkRGl+L9k=;
+ b=CJ0ZOJ3aFlqXV34dD3Wlmmnem03FbTuGFNq3bcrgO6weRUcHR4fKXxAT60hUlB9SqoGzjY
+ 3mR8h7VGz/Tqq6oXi1CvUDNWtOtVbE1XQL7cZLLPIIPqJDL9UdmTfR4JLzF1VNxOfJkpS+
+ oIoqTiLyumNPtZa9Py76lmqDycmhSl0=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=CJ0ZOJ3a
+Subject: [Intel-wired-lan] [PATCH bpf V7 0/7] XDP-hints: API change for
+ RX-hash kfunc bpf_xdp_metadata_rx_hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,126 +99,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: keescook@chromium.org, grzegorzx.szczurek@intel.com,
- Ding Hui <dinghui@sangfor.com.cn>, jesse.brandeburg@intel.com,
- Huang Cun <huangcun@sangfor.com.cn>, linux-kernel@vger.kernel.org,
- anthony.l.nguyen@intel.com, linux-hardening@vger.kernel.org,
- netdev@vger.kernel.org, Donglin Peng <pengdonglin@sangfor.com.cn>
-MIME-Version: 1.0
+Cc: ast@kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ boon.leong.ong@intel.com, hawk@kernel.org, xdp-hints@xdp-project.net,
+ daniel@iogearbox.net, linux-rdma@vger.kernel.org, john.fastabend@gmail.com,
+ jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, kuba@kernel.org, pabeni@redhat.com,
+ martin.lau@kernel.org, larysa.zaremba@intel.com, leon@kernel.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, tariqt@nvidia.com,
+ yoong.siang.song@intel.com, saeedm@nvidia.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If we set channels greater when iavf_remove, the waiting reset done
-will be timeout, then returned with error but changed num_active_queues
-directly, that will lead to OOB like the following logs. Because the
-num_active_queues is greater than tx/rx_rings[] allocated actually.
+Current API for bpf_xdp_metadata_rx_hash() returns the raw RSS hash value,
+but doesn't provide information on the RSS hash type (part of 6.3-rc).
 
-[ 3506.152887] iavf 0000:41:02.0: Removing device
-[ 3510.400799] ==================================================================
-[ 3510.400820] BUG: KASAN: slab-out-of-bounds in iavf_free_all_tx_resources+0x156/0x160 [iavf]
-[ 3510.400823] Read of size 8 at addr ffff88b6f9311008 by task test-iavf-1.sh/55536
-[ 3510.400823]
-[ 3510.400830] CPU: 101 PID: 55536 Comm: test-iavf-1.sh Kdump: loaded Tainted: G           O     --------- -t - 4.18.0 #1
-[ 3510.400832] Hardware name: Powerleader PR2008AL/H12DSi-N6, BIOS 2.0 04/09/2021
-[ 3510.400835] Call Trace:
-[ 3510.400851]  dump_stack+0x71/0xab
-[ 3510.400860]  print_address_description+0x6b/0x290
-[ 3510.400865]  ? iavf_free_all_tx_resources+0x156/0x160 [iavf]
-[ 3510.400868]  kasan_report+0x14a/0x2b0
-[ 3510.400873]  iavf_free_all_tx_resources+0x156/0x160 [iavf]
-[ 3510.400880]  iavf_remove+0x2b6/0xc70 [iavf]
-[ 3510.400884]  ? iavf_free_all_rx_resources+0x160/0x160 [iavf]
-[ 3510.400891]  ? wait_woken+0x1d0/0x1d0
-[ 3510.400895]  ? notifier_call_chain+0xc1/0x130
-[ 3510.400903]  pci_device_remove+0xa8/0x1f0
-[ 3510.400910]  device_release_driver_internal+0x1c6/0x460
-[ 3510.400916]  pci_stop_bus_device+0x101/0x150
-[ 3510.400919]  pci_stop_and_remove_bus_device+0xe/0x20
-[ 3510.400924]  pci_iov_remove_virtfn+0x187/0x420
-[ 3510.400927]  ? pci_iov_add_virtfn+0xe10/0xe10
-[ 3510.400929]  ? pci_get_subsys+0x90/0x90
-[ 3510.400932]  sriov_disable+0xed/0x3e0
-[ 3510.400936]  ? bus_find_device+0x12d/0x1a0
-[ 3510.400953]  i40e_free_vfs+0x754/0x1210 [i40e]
-[ 3510.400966]  ? i40e_reset_all_vfs+0x880/0x880 [i40e]
-[ 3510.400968]  ? pci_get_device+0x7c/0x90
-[ 3510.400970]  ? pci_get_subsys+0x90/0x90
-[ 3510.400982]  ? pci_vfs_assigned.part.7+0x144/0x210
-[ 3510.400987]  ? __mutex_lock_slowpath+0x10/0x10
-[ 3510.400996]  i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e]
-[ 3510.401001]  sriov_numvfs_store+0x214/0x290
-[ 3510.401005]  ? sriov_totalvfs_show+0x30/0x30
-[ 3510.401007]  ? __mutex_lock_slowpath+0x10/0x10
-[ 3510.401011]  ? __check_object_size+0x15a/0x350
-[ 3510.401018]  kernfs_fop_write+0x280/0x3f0
-[ 3510.401022]  vfs_write+0x145/0x440
-[ 3510.401025]  ksys_write+0xab/0x160
-[ 3510.401028]  ? __ia32_sys_read+0xb0/0xb0
-[ 3510.401031]  ? fput_many+0x1a/0x120
-[ 3510.401032]  ? filp_close+0xf0/0x130
-[ 3510.401038]  do_syscall_64+0xa0/0x370
-[ 3510.401041]  ? page_fault+0x8/0x30
-[ 3510.401043]  entry_SYSCALL_64_after_hwframe+0x65/0xca
-[ 3510.401073] RIP: 0033:0x7f3a9bb842c0
-[ 3510.401079] Code: 73 01 c3 48 8b 0d d8 cb 2c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 89 24 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 fe dd 01 00 48 89 04 24
-[ 3510.401080] RSP: 002b:00007ffc05f1fe18 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
-[ 3510.401083] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f3a9bb842c0
-[ 3510.401085] RDX: 0000000000000002 RSI: 0000000002327408 RDI: 0000000000000001
-[ 3510.401086] RBP: 0000000002327408 R08: 00007f3a9be53780 R09: 00007f3a9c8a4700
-[ 3510.401086] R10: 0000000000000001 R11: 0000000000000246 R12: 0000000000000002
-[ 3510.401087] R13: 0000000000000001 R14: 00007f3a9be52620 R15: 0000000000000001
-[ 3510.401090]
-[ 3510.401093] Allocated by task 76795:
-[ 3510.401098]  kasan_kmalloc+0xa6/0xd0
-[ 3510.401099]  __kmalloc+0xfb/0x200
-[ 3510.401104]  iavf_init_interrupt_scheme+0x26f/0x1310 [iavf]
-[ 3510.401108]  iavf_watchdog_task+0x1d58/0x4050 [iavf]
-[ 3510.401114]  process_one_work+0x56a/0x11f0
-[ 3510.401115]  worker_thread+0x8f/0xf40
-[ 3510.401117]  kthread+0x2a0/0x390
-[ 3510.401119]  ret_from_fork+0x1f/0x40
-[ 3510.401122]  0xffffffffffffffff
-[ 3510.401123]
+This patchset proposal is to change the function call signature via adding
+a pointer value argument for providing the RSS hash type.
 
-If we detected removing is in processing, we can avoid unnecessary
-waiting and return error faster.
+Patchset also disables all bpf_printk's from xdp_hw_metadata program
+that we expect driver developers to use.
 
-On the other hand in timeout handling, we should keep the original
-num_active_queues and reset num_req_queues to 0.
-
-Fixes: 4e5e6b5d9d13 ("iavf: Fix return of set the new channel count")
-Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
-Cc: Donglin Peng <pengdonglin@sangfor.com.cn>
-CC: Huang Cun <huangcun@sangfor.com.cn>
 ---
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 6f171d1d85b7..d8a3c0cfedd0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1857,13 +1857,15 @@ static int iavf_set_channels(struct net_device *netdev,
- 	/* wait for the reset is done */
- 	for (i = 0; i < IAVF_RESET_WAIT_COMPLETE_COUNT; i++) {
- 		msleep(IAVF_RESET_WAIT_MS);
-+		if (test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))
-+			return -EOPNOTSUPP;
- 		if (adapter->flags & IAVF_FLAG_RESET_PENDING)
- 			continue;
- 		break;
- 	}
- 	if (i == IAVF_RESET_WAIT_COMPLETE_COUNT) {
- 		adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
--		adapter->num_active_queues = num_req;
-+		adapter->num_req_queues = 0;
- 		return -EOPNOTSUPP;
- 	}
- 
--- 
-2.17.1
+Jesper Dangaard Brouer (7):
+      selftests/bpf: xdp_hw_metadata default disable bpf_printk
+      selftests/bpf: Add counters to xdp_hw_metadata
+      xdp: rss hash types representation
+      mlx5: bpf_xdp_metadata_rx_hash add xdp rss hash type
+      veth: bpf_xdp_metadata_rx_hash add xdp rss hash type
+      mlx4: bpf_xdp_metadata_rx_hash add xdp rss hash type
+      selftests/bpf: Adjust bpf_xdp_metadata_rx_hash for new arg
+
+
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c    | 22 ++++++-
+ drivers/net/ethernet/mellanox/mlx4/mlx4_en.h  |  3 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  | 63 ++++++++++++++++++-
+ drivers/net/veth.c                            | 10 ++-
+ include/linux/mlx5/device.h                   | 14 ++++-
+ include/linux/netdevice.h                     |  3 +-
+ include/net/xdp.h                             | 47 ++++++++++++++
+ net/core/xdp.c                                | 10 ++-
+ .../selftests/bpf/prog_tests/xdp_metadata.c   |  2 +
+ .../selftests/bpf/progs/xdp_hw_metadata.c     | 42 ++++++++++---
+ .../selftests/bpf/progs/xdp_metadata.c        |  6 +-
+ .../selftests/bpf/progs/xdp_metadata2.c       |  7 ++-
+ tools/testing/selftests/bpf/xdp_hw_metadata.c | 10 ++-
+ tools/testing/selftests/bpf/xdp_metadata.h    |  4 ++
+ 14 files changed, 213 insertions(+), 30 deletions(-)
+
+--
 
 _______________________________________________
 Intel-wired-lan mailing list
