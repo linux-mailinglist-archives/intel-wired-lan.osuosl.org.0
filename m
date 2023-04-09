@@ -2,83 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D84276DBF77
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Apr 2023 12:34:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19EA16DBF79
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Apr 2023 12:34:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4B98F40424;
-	Sun,  9 Apr 2023 10:34:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B98F40424
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8D45440476;
+	Sun,  9 Apr 2023 10:34:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D45440476
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681036449;
-	bh=mLEqdMk6ABSp+JdjV7ghVXuPeYK1NjHxMVVZrCNSdfk=;
+	s=default; t=1681036458;
+	bh=VSozDXkckPWx4GE+ZQxwC94sqPzh9oHks1LIKfNv2Ok=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=oPoMYbTTSAZ8tP6cGFeH/dTh//F5Yyk7gPlmLBgosHf5q4cOGbr6XcnODyEakfuX2
-	 apqc+5rDBqxNaf0E2d+RCjLt5PV9eR5/TAP2ot3y9UIUiFhpfx24BhXUIQViycVXaa
-	 WP+u5qzlhg3nag9u0mXy66Lgb7NjJz2PO1hh/ZvzxoUHQxogUfUBz/JdS6H81eQ2WM
-	 XXxa8d8MX6XOr02kL/BzV6SGx/eXWF5HaAbC3wGT7lzF6yxYmqiZUojWEnFiRU7ctk
-	 quWpjdtNdFoXiKH9Wrc9znBgbagKfNtKizN2uFjqx867u7gOviPCUoA4Djzt8yZbIa
-	 zQFEXLazAesrg==
+	b=PmppkWdHiR+r4FdFIW8vmveUiUfFGwT1wZpWZsPuPzSLnH31AfqVlT1AHrwWHeaRn
+	 hM4C5r1oqJ14MTSkukhKiwBXlNnxQARGfR6RJ46pdhlmtrI8Ex5GN4EmEMMv9mBZ7G
+	 cRIaha5TV6Pbj4hxbrNbIHdJc5eZ0cg3s2XplKf7XfxGJ3+4xn+eePeGA7QDZKJ0g+
+	 hBcV2SqD/MEXf6YA5ItdwKv7m7Jsnl+Mvo9HZ9LRzNo7Ft/cFW4beXYoT97FJ/E7dW
+	 j27AOR/1qdwO3JNLESF2PbqhvcpCZV1OW+440wk89g8PFestkHRWtN6IGRBI+J91+A
+	 1+877EzG0BoVw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BrOftMnqCakg; Sun,  9 Apr 2023 10:34:08 +0000 (UTC)
+	with ESMTP id 2FIsjUHXyBrN; Sun,  9 Apr 2023 10:34:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1971D401C2;
-	Sun,  9 Apr 2023 10:34:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1971D401C2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8CA3A401D5;
+	Sun,  9 Apr 2023 10:34:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8CA3A401D5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 64B971BF30D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 684B41C2C89
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3E3C160BE7
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E3C160BE7
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4C0C440880
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C0C440880
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bgf28FEIBpWi for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Apr 2023 10:34:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RwYqEmVcFrEB for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Apr 2023 10:34:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9117E60B5C
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9117E60B5C
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7FB4D40362
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7FB4D40362
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Apr 2023 10:34:11 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D6ABC60BBD;
- Sun,  9 Apr 2023 10:34:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF634C433EF;
- Sun,  9 Apr 2023 10:34:00 +0000 (UTC)
-Date: Sun, 9 Apr 2023 13:33:57 +0300
+ by dfw.source.kernel.org (Postfix) with ESMTPS id D0B2460D3A;
+ Sun,  9 Apr 2023 10:34:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B47CDC433EF;
+ Sun,  9 Apr 2023 10:34:09 +0000 (UTC)
+Date: Sun, 9 Apr 2023 13:34:06 +0300
 From: Leon Romanovsky <leon@kernel.org>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20230409103357.GL14869@unreal>
+Message-ID: <20230409103406.GM14869@unreal>
 References: <20230407165219.2737504-1-michal.swiatkowski@linux.intel.com>
- <20230407165219.2737504-5-michal.swiatkowski@linux.intel.com>
+ <20230407165219.2737504-6-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230407165219.2737504-5-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20230407165219.2737504-6-michal.swiatkowski@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1681036441;
- bh=2jtZu1Edncu6aACQD010tyMWQ63PHORjITCIJrYVIV0=;
+ d=kernel.org; s=k20201202; t=1681036450;
+ bh=iqWFymEU6hWEQa1gWG19IWc72Okfkhm8Rs5GNih9oHw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZENUTnZVkMu7J9cnR3T+PZDP462PHtxWhPWOzt8qqwXELbKTcp/CyLtMNE9uPC1T9
- Xku70rdE5obYB3N+apgMhEKcRgZIG1SDDuXBHa6nCYU4V4GcyQPrGGNnIbWhqT/LIU
- 1+cnC22Jwh8FZJlFFAmHZqGTCBAniJXLwmUYwDVSFzidOL0WaJYtQd2A+k5oX1th4G
- owErGraD31wjivLYTkOzmTqUJnagWV/UUPuesG7AEo7s2F+xGaFcBt8VeBbvP8ooP7
- 5G01PkPzynGNZz+y8IeH4AWgay5oIrNBE74uKKvrqeoQkwiL3n/c6gaOrkjaPcN9mJ
- S7qwj/HtoahiA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=IIq6Yp/4cAJgoYDx9BsgmfdagrAHimQ/mNI+FD7DuAmWksTyrr0+o3qBvJ48PbmPQ
+ BLBJQtYL+oj74Nx1flKAdgdNWSmp7MZZnRKuxFu5PQG/MuqkNrR/dv8qc4Ci46duzV
+ NtKEwMpTu4Q7EtACG8E6GEahp2xnvhHxqS0sBRpey8fcdQKfO21O7Wo5TLy8JXik6+
+ 3Pa2zWij+LfZCaKBLLQ0panr2Z927qI+6yIUOVredMojkDTi/V3n1oxu+UN1rfzcsJ
+ gHfdp1r4wAV38UEJK34O8ILf2osrxCcngBdcsVTkmXhRmnfjTJJImkWsLCO/faVlWD
+ vZE3RqwpmihEw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ZENUTnZV
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 4/5] ice: allow matching
- on meta data
+ header.a=rsa-sha256 header.s=k20201202 header.b=IIq6Yp/4
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 5/5] ice: use src VSI
+ instead of src MAC in slow-path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,28 +97,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 07, 2023 at 06:52:18PM +0200, Michal Swiatkowski wrote:
-> Add meta data matching criteria in the same place as protocol matching
-> criteria. There is no need to add meta data as special words after
-> parsing all lookups. Trade meta data in the same why as other lookups.
+On Fri, Apr 07, 2023 at 06:52:19PM +0200, Michal Swiatkowski wrote:
+> The use of a source MAC to direct packets from the VF to the corresponding
+> port representor is only ok if there is only one MAC on a VF. To support
+> this functionality when the number of MACs on a VF is greater, it is
+> necessary to match a source VSI instead of a source MAC.
 > 
-> The one difference between meta data lookups and protocol lookups is
-> that meta data doesn't impact how the packets looks like. Because of that
-> ignore it when filling testing packet.
+> Let's use the new switch API that allows matching on metadata.
 > 
-> Match on tunnel type meta data always if tunnel type is different than
-> TNL_LAST.
+> If MAC isn't used in match criteria there is no need to handle adding
+> rule after virtchnl command. Instead add new rule while port representor
+> is being configured.
+> 
+> Remove rule_added field, checking for sp_rule can be used instead.
+> Remove also checking for switchdev running in deleting rule as it can be
+> called from unroll context when running flag isn't set. Checking for
+> sp_rule covers both context (with and without running flag).
+> 
+> Rules are added in eswitch configuration flow, so there is no need to
+> have replay function.
 > 
 > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 > Reviewed-by: Piotr Raczynski <piotr.raczynski@intel.com>
 > Reviewed-by: Simon Horman <simon.horman@corigine.com>
 > ---
->  .../ethernet/intel/ice/ice_protocol_type.h    |   8 +
->  drivers/net/ethernet/intel/ice/ice_switch.c   | 158 +++++++-----------
->  drivers/net/ethernet/intel/ice/ice_switch.h   |   4 +
->  drivers/net/ethernet/intel/ice/ice_tc_lib.c   |  29 +++-
->  drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   1 +
->  5 files changed, 95 insertions(+), 105 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_eswitch.c  | 83 ++++++-------------
+>  drivers/net/ethernet/intel/ice/ice_eswitch.h  | 14 ----
+>  .../ethernet/intel/ice/ice_protocol_type.h    |  5 +-
+>  drivers/net/ethernet/intel/ice/ice_repr.c     | 17 ----
+>  drivers/net/ethernet/intel/ice/ice_repr.h     |  5 +-
+>  drivers/net/ethernet/intel/ice/ice_switch.c   |  6 ++
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |  1 +
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  3 -
+>  drivers/net/ethernet/intel/ice/ice_virtchnl.c |  8 --
+>  9 files changed, 40 insertions(+), 102 deletions(-)
 > 
 
 Thanks,
