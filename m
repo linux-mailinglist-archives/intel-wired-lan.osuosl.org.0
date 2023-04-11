@@ -1,148 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E1396DD745
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Apr 2023 11:55:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E1146DDAFA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Apr 2023 14:37:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1A9B06145B;
-	Tue, 11 Apr 2023 09:55:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A9B06145B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98D2E41C48;
+	Tue, 11 Apr 2023 12:37:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98D2E41C48
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681206958;
-	bh=w169d0WjF4FyRrmyrRePm5WbWdjkfZXHiOTcHq2IZ6A=;
+	s=default; t=1681216628;
+	bh=x1QiuP2ghd2TtiMTSIDeXVoPT1iibAhW8z6q2wK+zcs=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1+cQqrkFF2VhG39QBWIMcJVcvP22znapMRFMOWGDbnmZzBgmN7Mimyzme/wNlsxpo
-	 Fsgs2ZkLK+WuzeBiG1t52XX5Alu83F8nE0/FJEyWi66Z4bHhYlppxaEu2afvSYJH7S
-	 +utK5p5QUiux5rsLRHf5XSRawoyo1nw/tr4Vrqb8tP907+r1J5Xp6iFP34UEwWTbXO
-	 X4KiyupzuxT+TkG5tZl8bF/X1u0Gdetm59C1nsl0jdMvAbF+Q+AoWE/bQC9od1YhsK
-	 v+Gm5oO2LMbhVsjkrM01B2qHOFRp1dybmHXv3K7NeVNPLcpVZsEQfU/JyPzdC/vrL2
-	 3L95k2mhrhjJQ==
+	b=1RWGa4A0D7CKiwm2/raJF2EmMzUrPVoH51ieQo9MtM52uQDMLlLzvy01vyqsE0230
+	 HYWydcNEI8WAt/8PSkW+xslZzYtE9PhkdIiJ/Z2znlnvA3WYmL+KpgPVZLgnPbTYKx
+	 j2Sp+K4K7AjfVLkisdSg5BrRWEpK5TVzp37AOYE8v6qpsWfA6xoq1DJCBRMD92USta
+	 s1UpIywk1Zlxz3vAwuxLvY7hroFTWPNP3sSWrUkwnQUHH5QPIWNMUwCkIUcsSzcKRe
+	 Br8fXqq2OEGLJTlyoqH9NFXQH84+bz7An6bW3TpopbkuDr9cs/SQaAULwjcHtDmPFM
+	 EYnNKbwtqa20w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jbltZJZCI_g0; Tue, 11 Apr 2023 09:55:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5fJ8pEtgr7MR; Tue, 11 Apr 2023 12:37:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0901860807;
-	Tue, 11 Apr 2023 09:55:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0901860807
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0816641BD5;
+	Tue, 11 Apr 2023 12:37:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0816641BD5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3C6B61C3BE7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 09:55:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EF0651C3BF7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 12:37:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 15DD581DE0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 09:55:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15DD581DE0
+ by smtp3.osuosl.org (Postfix) with ESMTP id C415860BFF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 12:37:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C415860BFF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CHvRlw45uge3 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Apr 2023 09:55:51 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6370881D3A
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2101.outbound.protection.outlook.com [40.107.223.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6370881D3A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 09:55:51 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aacxUOjseiJSZ1XgdrRZc5NgSbes4sXaJuYrPvcGZ8/qBtwgD+sFoa8sZYtkAi0RXzLRRaZVbxLnXzCWUBr1Rc5J8E8+dTSBk8xJYKUXb9lUmzA6BKOcglUZ4xO8YsVSNVMaC813rdHIRkvhObi8DnRUvjrC2sr42L0w8pNARKdqwY0XMtgH0HBSx4rRDIWnSBEiqfA/WLXg4hL4fxXoLNnyKUy9fh2nuVDJ1Bgk6lMGYx0X4OpSNxf3CwbkDXJ5Bz3dQg+GC/+ZlJonta3C2gF6rr3lL2fmsM6GYYbe+uHCMHCXpSo6FQkmG7VK5zH0Pg0qOIiZ3IwlwC9SXbHCvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JFpuXEXnh+FZb1Bz7wfBIMPOfu3m3RmfT6+jSezLSfA=;
- b=f6uSkefKyqTGDZbIuJZ5A4AEkpo8XpZSr3XVA5GTo4IDowJCtwHLuIrNtsIAPvGXsFZ5OkfV1zqK4asKHuV0P/8qjf3jTxkPZiQphz7pU12ef+71jLRyTgcTv6pPqSAGQAxaVTCEeY6Fki9I7G54ncW7Zb9xaiMqsY/ftQGjBlZYuC1a1jGNo3tnD3hnGqGIFfSSBVnMglvouvh4JkBSmjf+7JH+bN7zFhD03h9Lnv4kIaEnEwOgVHnKQencxpycICbfOEldsDqoKGPAVOCfGTbt8XFDHMFEx+dTeLyOzwPaYvlIucE7gx4CxSzZ31AilhCwh1cog+U4zKC4MJAWuQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by DS0PR13MB6174.namprd13.prod.outlook.com (2603:10b6:8:123::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6277.35; Tue, 11 Apr
- 2023 09:55:49 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::89d1:63f2:2ed4:9169]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::89d1:63f2:2ed4:9169%5]) with mapi id 15.20.6277.038; Tue, 11 Apr 2023
- 09:55:49 +0000
-Date: Tue, 11 Apr 2023 11:55:42 +0200
-From: Simon Horman <simon.horman@corigine.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SbH_3yud6MAj for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Apr 2023 12:36:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 743DD60BF5
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 743DD60BF5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Apr 2023 12:36:59 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 680F86247D;
+ Tue, 11 Apr 2023 12:36:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FB47C433EF;
+ Tue, 11 Apr 2023 12:36:57 +0000 (UTC)
+Date: Tue, 11 Apr 2023 15:36:53 +0300
+From: Leon Romanovsky <leon@kernel.org>
 To: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Message-ID: <ZDUunmuPmM0E3Rx3@corigine.com>
+Message-ID: <20230411123653.GW182481@unreal>
 References: <20230411011354.2619359-1-pavan.kumar.linga@intel.com>
- <20230411011354.2619359-15-pavan.kumar.linga@intel.com>
-Content-Disposition: inline
-In-Reply-To: <20230411011354.2619359-15-pavan.kumar.linga@intel.com>
-X-ClientProxiedBy: AM0PR04CA0122.eurprd04.prod.outlook.com
- (2603:10a6:208:55::27) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+ <20230411011354.2619359-3-pavan.kumar.linga@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|DS0PR13MB6174:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8b7c3277-48d7-4186-cb77-08db3a72edea
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jv5zL1JsKEPyyuPlc8YELJP81u527rzYj0Z1RfF495577jef58uB/cw7SXWpNrnZSFLQyGezuSWdGsrs5ePwR0NnBFbHgKzU7fLu+csFBP/AC3hF5RHr/A8RWk+Ps5Y64V3Cr+lp3B5P8XaoHxH6EUiy1wQr1+ZWohTkpSJM8tYHHgxvS29nbKcn3VWBP0Z1+wUzILOj1+JYZ5MDCt3ctQbHU5qS2kw+h/jkENRp1hSpmAVMhNvm5JB0L731/pdoe3/7oi+8Lht9tGZ7skcCb5l2MW70na06ud8tH3ozv7Jn81LqtNco5kYyNw6qYn8nbW27Sic/4x0JubyzzBQvmbPjC/to1DrM7Yc9SHVRHIi1e5aWJQR0MNi1vVfRJtyWp0XiqtgHzlin6To1cnCAe/iOvB6qJG8bJbvPE1LG90E+QRCO/+7gelQSQlGEkLAqtocE2kmVC5x+pqVxt8Dku3s269cehK5h5KEPmr+z6IexsE9/bLp2JRtVxtsnT8q+gz/TxB7r6Hn3aDkU7aM5DwJOzyGS6SUcqJeoK6Ankm45UASy7SxF0wCMb1n8Yr1+pT0otwgzfbQg2xzx0JftOOnL8SLY9I+kKkVqHXu6LBI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(376002)(39850400004)(366004)(136003)(396003)(346002)(451199021)(36756003)(44832011)(7416002)(2906002)(38100700002)(5660300002)(8936002)(8676002)(86362001)(6512007)(6486002)(6666004)(6506007)(54906003)(478600001)(2616005)(186003)(66946007)(41300700001)(66476007)(6916009)(4326008)(316002)(66556008);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?J6X2mMqCwbzUjf9MEA+PN46+0LuwmC8OEgYpwpEorahe4enKABbEDTbVXkaD?=
- =?us-ascii?Q?ZZYt5/AiIWuVhWZwZmo02j6W81rVJuWOdYBxgOfyZiIwfs/fkKNwg9gmXqoh?=
- =?us-ascii?Q?Hh2V/XVvaJojp42neZi30uioq306mvO+pR8HJ20VD5f3D8B/yNvU3+Zdy3ER?=
- =?us-ascii?Q?bG0GCtxstqYIJDQpuaJcB8oZb6gN7esgcXFdnOzWGE2Kiepq8DDMeZq/6VOp?=
- =?us-ascii?Q?RyJfmtx+jq87GJ9quomewUmLeDmJF/p69ZiIQUMUA399CyEjg70O1x26+zo7?=
- =?us-ascii?Q?gXXYtT4LBEqP4F2PuEXGyQvSm7RTNA+q6/K2okGqOS98l8SlamATXmgL6vSE?=
- =?us-ascii?Q?Mjgl8wppjv7PGLNa/wFE+D9gFzekYPVRRj1DMZsu3Sadtue92GlwbeEqCT2r?=
- =?us-ascii?Q?vFfvQpeu/b1R+RiwBF0nQYODC4+P1UYZXfDBHfDaEgQoPM6sf2Eqx2F3N4vz?=
- =?us-ascii?Q?AKoEavTsDwONqsYDu2E52P/D1rBWOnHFJBsbYXOk+o7FdvVbYxulQssH4+by?=
- =?us-ascii?Q?h6FYYvs1hPkIlOEhOiy9qnAJhd+q++HtiLOiImoPtbH+jZdWBMBRh42tVAaQ?=
- =?us-ascii?Q?rPwSI0+6AQUHjtFALh6zDW+wVdXT9ejEsaBzKAUN9DDGE3BJQGKxMmtlQVzf?=
- =?us-ascii?Q?Cc8+mVH8G1l7L5suxQvGEHB5E+meC+LxTIbCZnU+FRyirLOMtMhRU4YUKyTw?=
- =?us-ascii?Q?nxYg5xAfDFb2ESW1KFODlgJqNdccjs0/YOFi53G+VDRnMQEFxUauOKZP+ugV?=
- =?us-ascii?Q?JFyjTqRITdFoIYZww5gbR6WJzsPTspCCyQFEMbk11BaEUqjrj+eo/fyqVQ6i?=
- =?us-ascii?Q?dgUe7VcbvTpoKyHGkXbZN2hPUYpC9eDL/HFfNRg4FyvLdqKl2p/Ab8xgru6e?=
- =?us-ascii?Q?tidRLPJGsmy+VnElbUhmXyzpgc5Dngz5F+hBXDe3cKdjS+lM+gh8Q3O6X/XB?=
- =?us-ascii?Q?MB76VKBgEWJzD2UE8UeK55Jtehuv7Lke2kATd4T4eTSdyB3Zln6/mjqapI2N?=
- =?us-ascii?Q?lYRIr/T6i5T1jXgy5Wa7nekH16WBEUFJt79zjdXOvBFs4rmehu/lCw0nI6N9?=
- =?us-ascii?Q?+kIn8SWrTmgcPGHXTHC4rf6PXN8G24s+7lPASMIRKpciOQT3kRyiSqWOGuYW?=
- =?us-ascii?Q?LYfjBFTxLm4R8CccM3l4+NT8BPC3uOCyPZ4CMUI0ORrQLNL57gAODauAtI00?=
- =?us-ascii?Q?9dnt+93oci4VAkTsPYRRtregfiJ0j9FoEiwM4uGUB85ecCtXCEeif2wlRinz?=
- =?us-ascii?Q?dc7ClyYpdHayHu/uWn0dez1ZprjktpSJJgOLw5tnJ19HbM3MAiEcZxV+pnqF?=
- =?us-ascii?Q?YrdCklFZKOemE+pdZU6dNS3u+MyX02tQ7F62wqiFuaaLCCeD+UrlC+UgPw4q?=
- =?us-ascii?Q?/QbD4R31IJej04Gy9NvChxl1ebHReUa8ZsInH4LjpKhAhSXdgwiYdctcbjqH?=
- =?us-ascii?Q?RRwcy7apQZWDwILYFbHC+y6dbygGnQKoh6RNxDl3JgpRZ0IUo1keqee08Nv/?=
- =?us-ascii?Q?E6IDPQ2MpDkmxiyQfX93IIurCHYYjSmEXOK3FkgxCe/RGXonsm8oRekgAG3w?=
- =?us-ascii?Q?h72jPWYzMg2oWunBJvyOwLGsOnYuSdPqJKDwUxvXj51r4MXbQoOE9XBq0S3O?=
- =?us-ascii?Q?1i5X5heyEpl29Yft2M3Tx68k3xfNnlcczPzkAQTeUyvwk5IQeMJzVnA/hK38?=
- =?us-ascii?Q?cqIXVQ=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8b7c3277-48d7-4186-cb77-08db3a72edea
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Apr 2023 09:55:49.7255 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GyPwEaLC2SlvAlaWYL5sTnDAOREIeA+em5dGS2slmG+GrLCJlU8YUtOxGgkb72OWU9XLhEDqkvzUI6mxt/ecdUPLvflwWSt1BqoD+5mH1/E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR13MB6174
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JFpuXEXnh+FZb1Bz7wfBIMPOfu3m3RmfT6+jSezLSfA=;
- b=Pcp/MFzk5goBRxtsNYHmfFruUa35csBeMmv54WQq82betQoBFbpbmial+Cg4CYR2uVpOVyzIytjenVS19VsEK9U2pLHvarTonbhNGfqtN/ifxQnI7NxbvBTy8S//kjAj8/1wduXkWPq/GBHQQSkoz110rq4w2lIXZVWqAx/8PfM=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=Pcp/MFzk
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 14/15] idpf: add ethtool
- callbacks
+Content-Disposition: inline
+In-Reply-To: <20230411011354.2619359-3-pavan.kumar.linga@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1681216617;
+ bh=kTOshIxUAyadmSYZBE7svKb4fyBemcujDHrtTMdUwRI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=KuCgkcysanRYLfeqTt3q2Q9dPAHwb1tcpCxuvyjd0gksnY5dTgQxY9IOzEs33/o3B
+ WOgaZF+U+6pYBNj3WUsVgdfSXrbclxvy3cAcFBBP6IuoAMmS2EA5qeT9V4rLqtoDGA
+ Bd6H8iXQT2xIUPql9cGvYZEIQ6f8s2UfDbzvqziyJt7XlOPhz0RU71TqkxaXp/zu7h
+ 9BOYVKVfiL6bKH6p6yT7atmb3YKiyP8QylP1IOwdL0HBhxVKNmmMzLY85fe+K9jg+s
+ 27q6mMEQ+wS+jAACu4UKX4LItpx0o/5vOkqwaNolIgrr8pZep7D5hV+Ejw4SNFYItX
+ AQ5LqNksuvcVQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=KuCgkcys
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 02/15] idpf: add module
+ register and probe functionality
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -155,7 +90,8 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: willemb@google.com, pabeni@redhat.com, netdev@vger.kernel.org,
+Cc: willemb@google.com, pabeni@redhat.com,
+ Shailendra Bhatnagar <shailendra.bhatnagar@intel.com>, netdev@vger.kernel.org,
  jesse.brandeburg@intel.com, kuba@kernel.org, edumazet@google.com,
  intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  Phani Burra <phani.r.burra@intel.com>, decot@google.com, davem@davemloft.net
@@ -164,39 +100,155 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Apr 10, 2023 at 06:13:53PM -0700, Pavan Kumar Linga wrote:
-> From: Alan Brady <alan.brady@intel.com>
+On Mon, Apr 10, 2023 at 06:13:41PM -0700, Pavan Kumar Linga wrote:
+> From: Phani Burra <phani.r.burra@intel.com>
+> 
+> Add the required support to register IDPF PCI driver, as well as
+> probe and remove call backs. Enable the PCI device and request
+> the kernel to reserve the memory resources that will be used by the
+> driver. Finally map the BAR0 address space.
+> 
+> PCI IDs table is intentionally left blank to prevent the kernel from
+> probing the device with the incomplete driver. It will be added
+> in the last patch of the series.
+> 
+> Signed-off-by: Phani Burra <phani.r.burra@intel.com>
+> Co-developed-by: Alan Brady <alan.brady@intel.com>
+> Signed-off-by: Alan Brady <alan.brady@intel.com>
+> Co-developed-by: Madhu Chittim <madhu.chittim@intel.com>
+> Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
+> Co-developed-by: Shailendra Bhatnagar <shailendra.bhatnagar@intel.com>
+> Signed-off-by: Shailendra Bhatnagar <shailendra.bhatnagar@intel.com>
+> Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> Reviewed-by: Willem de Bruijn <willemb@google.com>
+> ---
+>  drivers/net/ethernet/intel/Kconfig            | 11 +++
+>  drivers/net/ethernet/intel/Makefile           |  1 +
+>  drivers/net/ethernet/intel/idpf/Makefile      | 10 ++
+>  drivers/net/ethernet/intel/idpf/idpf.h        | 27 ++++++
+>  .../net/ethernet/intel/idpf/idpf_controlq.h   | 14 +++
+>  drivers/net/ethernet/intel/idpf/idpf_lib.c    | 96 +++++++++++++++++++
+>  drivers/net/ethernet/intel/idpf/idpf_main.c   | 70 ++++++++++++++
+>  7 files changed, 229 insertions(+)
+>  create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+>  create mode 100644 drivers/net/ethernet/intel/idpf/idpf.h
+>  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq.h
+>  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lib.c
+>  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
 
-...
-
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-
-...
+<...>
 
 > +/**
-> + * idpf_add_qstat_strings - Copy queue stat strings into ethtool buffer
-> + * @p: ethtool supplied buffer
-> + * @stats: stat definitions array
-> + * @type: stat type
-> + * @idx: stat idx
-> + *
-> + * Format and copy the strings described by the const static stats value into
-> + * the buffer pointed at by p.
-> + *
-> + * The parameter @stats is evaluated twice, so parameters with side effects
-> + * should be avoided. Additionally, stats must be an array such that
-> + * ARRAY_SIZE can be called on it.
+> + * idpf_remove_common - Device removal routine
+> + * @pdev: PCI device information struct
 > + */
-> +#define idpf_add_qstat_strings(p, stats, type, idx) \
-> +	__idpf_add_qstat_strings(p, stats, ARRAY_SIZE(stats), type, idx)
+> +void idpf_remove_common(struct pci_dev *pdev)
+> +{
+> +	struct idpf_adapter *adapter = pci_get_drvdata(pdev);
+> +
+> +	if (!adapter)
 
-Hi Pavan, Hi Alan,
+How is it possible to have adapter be NULL here?
 
-FWIIW, I think __idpf_add_qstat_strings() could be a function.
-It would give some type checking. And avoid possible aliasing of inputs.
-Basically, I think functions should be used unless there is a reason not to.
+> +		return;
+> +
+> +	pci_disable_pcie_error_reporting(pdev);
+> +}
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
+> new file mode 100644
+> index 000000000000..617df9b924fa
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
+> @@ -0,0 +1,70 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/* Copyright (C) 2023 Intel Corporation */
+> +
+> +#include "idpf.h"
+> +
+> +#define DRV_SUMMARY	"Infrastructure Data Path Function Linux Driver"
+> +
+> +MODULE_DESCRIPTION(DRV_SUMMARY);
+> +MODULE_LICENSE("GPL");
+> +
+> +/**
+> + * idpf_remove - Device removal routine
+> + * @pdev: PCI device information struct
+> + */
+> +static void idpf_remove(struct pci_dev *pdev)
+> +{
+> +	struct idpf_adapter *adapter = pci_get_drvdata(pdev);
+> +
+> +	if (!adapter)
 
-...
+Ditto
+
+> +		return;
+> +
+> +	idpf_remove_common(pdev);
+> +	pci_set_drvdata(pdev, NULL);
+> +}
+> +
+> +/**
+> + * idpf_shutdown - PCI callback for shutting down device
+> + * @pdev: PCI device information struct
+> + */
+> +static void idpf_shutdown(struct pci_dev *pdev)
+> +{
+> +	idpf_remove(pdev);
+> +
+> +	if (system_state == SYSTEM_POWER_OFF)
+> +		pci_set_power_state(pdev, PCI_D3hot);
+> +}
+> +
+> +/**
+> + * idpf_probe - Device initialization routine
+> + * @pdev: PCI device information struct
+> + * @ent: entry in idpf_pci_tbl
+> + *
+> + * Returns 0 on success, negative on failure
+> + */
+> +static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> +{
+> +	struct idpf_adapter *adapter;
+> +
+> +	adapter = devm_kzalloc(&pdev->dev, sizeof(*adapter), GFP_KERNEL);
+
+Why devm_kzalloc() and not kzalloc?
+
+> +	if (!adapter)
+> +		return -ENOMEM;
+> +
+> +	return idpf_probe_common(pdev, adapter);
+
+There is no need in idpf_probe_common/idpf_remove_common functions and
+they better be embedded here. They called only once and just obfuscate
+the code.
+
+> +}
+> +
+> +/* idpf_pci_tbl - PCI Dev idpf ID Table
+> + */
+> +static const struct pci_device_id idpf_pci_tbl[] = {
+> +	{ /* Sentinel */ }
+
+What does it mean empty pci_device_id table?
+
+> +};
+> +MODULE_DEVICE_TABLE(pci, idpf_pci_tbl);
+> +
+> +static struct pci_driver idpf_driver = {
+> +	.name			= KBUILD_MODNAME,
+> +	.id_table		= idpf_pci_tbl,
+> +	.probe			= idpf_probe,
+> +	.remove			= idpf_remove,
+> +	.shutdown		= idpf_shutdown,
+> +};
+> +module_pci_driver(idpf_driver);
+> -- 
+> 2.37.3
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
