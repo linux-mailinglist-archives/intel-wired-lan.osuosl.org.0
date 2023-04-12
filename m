@@ -2,90 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0277D6DED71
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Apr 2023 10:20:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CE386DED72
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Apr 2023 10:20:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 182CB614F4;
-	Wed, 12 Apr 2023 08:20:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 182CB614F4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95B18614F8;
+	Wed, 12 Apr 2023 08:20:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 95B18614F8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681287625;
-	bh=h2yh+1Y/hZTeCW06VHAHI2nFcNZvUa0dUIe8bBdkQio=;
+	s=default; t=1681287629;
+	bh=qN3Telyd1nJySlp+apCUKjFDI4Wj9dzvjl37nzqjGHc=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yzxbWhjI3B1Ahu1XGD7reNOYDv2h7QRhERalnmFtXq6cIugZm1pFNxaTlEieybsU9
-	 rKXf28MfcQPOTqZpDvsYJBsWdM+TDzDsFAecwsXLHwTOfaArbzpuJy32VcBQG4Wv11
-	 +Z7IhiTksKL342Qubz5gqH5FhRK9al3Kf/QQRYPKYx7vLc2q9eryFXT9hE2vpOoMvG
-	 ELlopeMQ8oZY+yMWoFtkKBKJD3VQcfaQ0OSG4dYs7xOVYkpMFqzYeYktINjKZ0h7f2
-	 JboCpyixhvN2i5ukjGFn7tJVyaAO698vbVglPpxVTYJ6/7HUwAsXQmLfJdTcQ9dvaO
-	 Mk7dpL3pvSxhw==
+	b=It69JEt8KuHjN8rbpGQZxq1OwGfpcm4LLghxcoxSG2o7Ac01epGzlZI8aCkh0/845
+	 4P2d0NhMvsS2Yl9QHV1ewlZ6Vv09ZpJgB67WS/PZ2PeoIGXVoTmV7RGm6qUFIdNhc3
+	 HiYafirzv7EFjTqBacWhxtiR00f2V7u+UrtONlGmkb9O4aIFcb2fygWq8D4oot+hdg
+	 cUrxvn34XqjOlbI7LdqqswIu01Rq6CbGqHzsbMmJELR6hdCWJpHWkyeIKCikfI3W7Q
+	 HSnmcxdUVjsI7mXoO7Y01o/x1GGl9Guks68Bw9oGHXq6TUEVrbedYuHNSy0GEzyoNQ
+	 Wu2OK3yEATceg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tzqxf9lZ4JsX; Wed, 12 Apr 2023 08:20:24 +0000 (UTC)
+	with ESMTP id T69Sz9ZtPH-K; Wed, 12 Apr 2023 08:20:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10DD86140E;
-	Wed, 12 Apr 2023 08:20:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10DD86140E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8DDC66140E;
+	Wed, 12 Apr 2023 08:20:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8DDC66140E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 234191BF47D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2521E1BF47D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AA86760640
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA86760640
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0B64A81E23
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B64A81E23
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J6r5Itl2P9vi for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Apr 2023 08:20:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id icz0ind6BGl3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Apr 2023 08:20:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F7196140E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4F4DA81416
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9F7196140E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:04 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4F4DA81416
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:20:07 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-248-BAp3Sv8PMkm3mdnslH5uyw-1; Wed, 12 Apr 2023 04:20:00 -0400
-X-MC-Unique: BAp3Sv8PMkm3mdnslH5uyw-1
+ us-mta-265-c3Gkh7MJNIyYXDlNnbwECA-1; Wed, 12 Apr 2023 04:20:02 -0400
+X-MC-Unique: c3Gkh7MJNIyYXDlNnbwECA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 75BCD8996F3;
- Wed, 12 Apr 2023 08:19:59 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DE9C93C0F19E;
+ Wed, 12 Apr 2023 08:20:01 +0000 (UTC)
 Received: from toolbox.infra.bos2.lab (ovpn-192-9.brq.redhat.com [10.40.192.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 805F91415117;
- Wed, 12 Apr 2023 08:19:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BD6571415117;
+ Wed, 12 Apr 2023 08:19:59 +0000 (UTC)
 From: Michal Schmidt <mschmidt@redhat.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 12 Apr 2023 10:19:28 +0200
-Message-Id: <20230412081929.173220-6-mschmidt@redhat.com>
+Date: Wed, 12 Apr 2023 10:19:29 +0200
+Message-Id: <20230412081929.173220-7-mschmidt@redhat.com>
 In-Reply-To: <20230412081929.173220-1-mschmidt@redhat.com>
 References: <20230412081929.173220-1-mschmidt@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1681287603;
+ s=mimecast20190719; t=1681287605;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vgM1/2w5Awfz7kmbjPCU33iMsxdh570loH34gDEC38E=;
- b=NB3v00gpL6X+KVlsBxzPoeG7zKNrKn+4ZgekErIHq+s2JJrO5zZW6hRvI8MvsKkBwPYSgE
- MVOOCc3eff/XQ/Q+al/Mz/S3F8S9F8hFDFThGtEkp6P2qLSx7y0RXvJ6V2mTUxeVvY04ep
- Wp7hDbjOJzbtGjAtG6bpsdDykTGC2Xw=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=Y8ksHB0xH5Mrb6KglcC3eXye3JZqHjgtX1x4gHc4UW8=;
+ b=gO0hEAoNVE+JByZHqYcmAJOjWZMGmaCZJdQZfelasYUd84odUzwpPsUrXlIufxSxahkGn7
+ oMu5P1SLAwxAeBrLQFzjWbWssaasa+twnfVnvQPUtS/PKaqlXWFg9cUl+ixalMHbO6vPMD
+ lN+J1UHzNbsOuayxB1CQiebiUAhQkc0=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=NB3v00gp
-Subject: [Intel-wired-lan] [PATCH net-next v2 5/6] ice: remove unused buffer
- copy code in ice_sq_send_cmd_retry()
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=gO0hEAoN
+Subject: [Intel-wired-lan] [PATCH net-next v2 6/6] ice: sleep,
+ don't busy-wait, in the SQ send retry loop
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,63 +108,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The 'buf_cpy'-related code in ice_sq_send_cmd_retry() looks broken.
-'buf' is nowhere copied into 'buf_cpy'.
+10 ms is a lot of time to spend busy-waiting. Sleeping is clearly
+allowed here, because we have just returned from ice_sq_send_cmd(),
+which takes a mutex.
 
-The reason this does not cause problems is that all commands for which
-'is_cmd_for_retry' is true go with a NULL buf.
-
-Let's remove 'buf_cpy'. Add a WARN_ON in case the assumption no longer
-holds in the future.
+On kernels with HZ=100, this msleep may be twice as long, but I don't
+think it matters.
+I did not actually observe any retries happening here.
 
 Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 3638598d732b..c6200564304e 100644
+index c6200564304e..0157f6e98d3e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_common.c
 +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1619,7 +1619,6 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- {
- 	struct ice_aq_desc desc_cpy;
- 	bool is_cmd_for_retry;
--	u8 *buf_cpy = NULL;
- 	u8 idx = 0;
- 	u16 opcode;
- 	int status;
-@@ -1629,11 +1628,8 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	memset(&desc_cpy, 0, sizeof(desc_cpy));
+@@ -1643,7 +1643,7 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
  
- 	if (is_cmd_for_retry) {
--		if (buf) {
--			buf_cpy = kzalloc(buf_size, GFP_KERNEL);
--			if (!buf_cpy)
--				return -ENOMEM;
--		}
-+		/* All retryable cmds are direct, without buf. */
-+		WARN_ON(buf);
- 
- 		memcpy(&desc_cpy, desc, sizeof(desc_cpy));
- 	}
-@@ -1645,17 +1641,12 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 		    hw->adminq.sq_last_status != ICE_AQ_RC_EBUSY)
- 			break;
- 
--		if (buf_cpy)
--			memcpy(buf, buf_cpy, buf_size);
--
  		memcpy(desc, &desc_cpy, sizeof(desc_cpy));
  
- 		mdelay(ICE_SQ_SEND_DELAY_TIME_MS);
+-		mdelay(ICE_SQ_SEND_DELAY_TIME_MS);
++		msleep(ICE_SQ_SEND_DELAY_TIME_MS);
  
  	} while (++idx < ICE_SQ_SEND_MAX_EXECUTE);
- 
--	kfree(buf_cpy);
--
- 	return status;
- }
  
 -- 
 2.39.2
