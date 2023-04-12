@@ -2,83 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16BBB6DECA4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Apr 2023 09:37:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3D566DED6C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Apr 2023 10:20:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3255861167;
-	Wed, 12 Apr 2023 07:37:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3255861167
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6DD7F614DC;
+	Wed, 12 Apr 2023 08:20:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DD7F614DC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681285042;
-	bh=FO2KN37xkcmH9tuWjG5gPngnlOKaFMJW0RWjLTxxJjo=;
+	s=default; t=1681287601;
+	bh=eQwLfndX7JipRlTY4Wz+SCzqSyC65rUu46w7hMgjfiQ=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=qHAF+49/bWw9XeDXdHMMifB9JKrvPLgzk+9e5cbM5o9HXsCne5JMyEu3yckKE0Orv
-	 D8SQXSjm0nPVp3S5aC/M+OKDSvJLfRe0Qlu5QhTek6rfZubx4XmxVUwIf/FCeTM6+i
-	 5RdaHDIiOF4p+HMqJqjvCk7/LSHrkfxm0W4TJpyKeBKRixRvthjetgog+xIfF4ppZc
-	 XYL1LYF/F4ABeT8I6nUyYoRPkduBtJFvr3plLdzgfKIDAN6d/TtiCnksWmL78mw1pz
-	 OsUgLqg+kia0va+8b9dqH5PXVHWyTMcfika8jmHdO+rrlA9yNlPLE5pt6Lnr8EyVCc
-	 1O9cB/14DcHvg==
+	b=uDXIT7T7djguSKhYxzDrk52rvbyJgzCV12FR7Fpt8t6avcayeHfx6HG5XdrhyVIbR
+	 V0Qc6Gr2pUik9fU4aOcIMhqh6H1Nq33r4sZekneiGVG2LVPfmltkaZWxY/1T7orzOf
+	 9RUtzltsHCikU5In+CqirGwbq3/cTZtNtxMfSm/PoNauMIjiSGSL17RAgSbTOknCJa
+	 uWT1zfOejpKZwthKmeNjd/PWtae4pIwq2rtSYwYMbR54nVef8B+KGC27QcM9achmMs
+	 vXB/u0sRxheLm901xnLVxuf6AQyM4j+y5H5krNcYkWna8jtJy9gbKzau6LYZ2vS8pe
+	 y0Fx8hV8G5TLQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yt1FHEbSJMmR; Wed, 12 Apr 2023 07:37:21 +0000 (UTC)
+	with ESMTP id ZBAjWOoCYoJt; Wed, 12 Apr 2023 08:20:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 230D2610BD;
-	Wed, 12 Apr 2023 07:37:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 230D2610BD
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4C10B6140E;
+	Wed, 12 Apr 2023 08:20:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4C10B6140E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6DB8A1BF386
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 07:37:15 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DAFD41BF47D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:19:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3A68740A0A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 07:37:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A68740A0A
+ by smtp4.osuosl.org (Postfix) with ESMTP id AE44440939
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:19:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AE44440939
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PGgyQWnB_ymt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Apr 2023 07:37:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lW93SOZ77kGa for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Apr 2023 08:19:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C318940192
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C318940192
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 07:37:13 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Wed, 12 Apr 2023 09:36:11 +0200
-Message-Id: <20230412073611.62942-1-kurt@linutronix.de>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C35CF416F5
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C35CF416F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Apr 2023 08:19:53 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-9-vikeAygTOGiBbHvyVpg8RA-1; Wed, 12 Apr 2023 04:19:48 -0400
+X-MC-Unique: vikeAygTOGiBbHvyVpg8RA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EE6843C0F187;
+ Wed, 12 Apr 2023 08:19:47 +0000 (UTC)
+Received: from toolbox.infra.bos2.lab (ovpn-192-9.brq.redhat.com [10.40.192.9])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2C441415117;
+ Wed, 12 Apr 2023 08:19:45 +0000 (UTC)
+From: Michal Schmidt <mschmidt@redhat.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 12 Apr 2023 10:19:23 +0200
+Message-Id: <20230412081929.173220-1-mschmidt@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1681285027;
+ d=redhat.com; 
+ s=mimecast20190719; t=1681287591;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=RQkxQvPTvjTB5S3EwtvOfTBwQl24EI140WoGiNkBG+s=;
- b=MW09NHjE0b5w53V52ZrAJ5VkN49spPATMCnsc9qgjoW4EDKZV805iagnvPySEwT1zsCx9l
- NTIAZ5xeuhBOe/RU+HaBHfVgsouZkF+DG1tZUBFswIusbtpFqaPFe+SIeJeSQA1X/pp0fP
- yEBhn2xL8UqzJkcc+hyqx6P1sdFiSgx/O+XzgbjCMSFG3CjNG6eNP96r7l5Q2aKtRdZ/rt
- hjUHgIO+aejtST9qclya1ArAvq3CAkk8t8zQ6uw/e3WTaWAg97/Aopzb5x5SJyatHqi6XA
- buWas5/KGc7KBbuP2QfvFnMOBO45DdPPPYK5MKZ25M9HXtGPBD3UKuSY3og/lA==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1681285027;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=RQkxQvPTvjTB5S3EwtvOfTBwQl24EI140WoGiNkBG+s=;
- b=mFYbNfdzkk6Rb44H39Ue7RlLrMKpMhP3u3YBPCpGTpb6t7kJ7yKFaaL/GavogRvXU+DL/F
- T62zChYo5S4uKADQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=MW09NHjE; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=mFYbNfdz
-Subject: [Intel-wired-lan] [PATCH net-next] igc: Avoid transmit queue
- timeout for XDP
+ bh=oJ0AvAxU8YiIt1rkYJGTfQA8ueLL73KkTt4yrMJFcSA=;
+ b=K+9K1oHwqndA+DxrTi5ChcP1i2xbCJRgsoQLToMwnT10pbNgu3AWr5VRewZrabFV1xUBje
+ x7KgUwY5+MdJ+CI+i5jN2qgiDSz5amP4/JbOc3b++m+G4RzKht7qcaIIu8AwWckpFbdxrY
+ YDWqnJNIpKrVo3MKodqELZ2Bx2DW5oo=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=K+9K1oHw
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/6] ice: lower CPU usage with
+ GNSS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,62 +94,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Kurt Kanzenbach <kurt@linutronix.de>,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Ong Boon Leong <boon.leong.ong@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Simon Horman <simon.horman@corigine.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-High XDP load triggers the netdev watchdog:
+This series lowers the CPU usage of the ice driver when using its
+provided /dev/gnss*.
 
-|NETDEV WATCHDOG: enp3s0 (igc): transmit queue 2 timed out
+v2:
+ - Changed subject of patch 1. Requested by Andrew Lunn.
+ - Added patch 2 to change the polling interval as recommended by Intel.
+ - Added patch 3 to remove sq_cmd_timeout as suggested by Simon Horman.
 
-The reason is the Tx queue transmission start (txq->trans_start) is not updated
-in XDP code path. Therefore, add it for all XDP transmission functions.
+Michal Schmidt (6):
+  ice: do not busy-wait to read GNSS data
+  ice: increase the GNSS data polling interval to 20 ms
+  ice: remove ice_ctl_q_info::sq_cmd_timeout
+  ice: sleep, don't busy-wait, for ICE_CTL_Q_SQ_CMD_TIMEOUT
+  ice: remove unused buffer copy code in ice_sq_send_cmd_retry()
+  ice: sleep, don't busy-wait, in the SQ send retry loop
 
-Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_common.c   | 29 +++++--------
+ drivers/net/ethernet/intel/ice/ice_controlq.c | 12 +++---
+ drivers/net/ethernet/intel/ice/ice_controlq.h |  3 +-
+ drivers/net/ethernet/intel/ice/ice_gnss.c     | 42 +++++++++----------
+ drivers/net/ethernet/intel/ice/ice_gnss.h     |  3 +-
+ 5 files changed, 36 insertions(+), 53 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index ba49728be919..e71e85e3bcc2 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2384,6 +2384,8 @@ static int igc_xdp_xmit_back(struct igc_adapter *adapter, struct xdp_buff *xdp)
- 	nq = txring_txq(ring);
- 
- 	__netif_tx_lock(nq, cpu);
-+	/* Avoid transmit queue timeout since we share it with the slow path */
-+	txq_trans_cond_update(nq);
- 	res = igc_xdp_init_tx_descriptor(ring, xdpf);
- 	__netif_tx_unlock(nq);
- 	return res;
-@@ -2786,6 +2788,9 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 
- 	__netif_tx_lock(nq, cpu);
- 
-+	/* Avoid transmit queue timeout since we share it with the slow path */
-+	txq_trans_cond_update(nq);
-+
- 	budget = igc_desc_unused(ring);
- 
- 	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
-@@ -6311,6 +6316,9 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
- 
- 	__netif_tx_lock(nq, cpu);
- 
-+	/* Avoid transmit queue timeout since we share it with the slow path */
-+	txq_trans_cond_update(nq);
-+
- 	drops = 0;
- 	for (i = 0; i < num_frames; i++) {
- 		int err;
 -- 
-2.30.2
+2.39.2
 
 _______________________________________________
 Intel-wired-lan mailing list
