@@ -1,87 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82A146E112C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Apr 2023 17:32:46 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 764076E119F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Apr 2023 18:03:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7AED0420AE;
-	Thu, 13 Apr 2023 15:32:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7AED0420AE
+	by smtp4.osuosl.org (Postfix) with ESMTP id E743C42139;
+	Thu, 13 Apr 2023 16:03:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E743C42139
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681399964;
-	bh=NFlLaImlnWekS5HzjxKSJZ5Gup+GvLVMrcCj+WwDo88=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Pc7ebCnzMZu3cXu99W4jXBdIazZcXcwD5TtiTz47CzaBZiu4rnFFdlsSU1TMtr4uR
-	 lbBpDJMgJZepS/vzUoHFjFWtxbFSAjkw6a96ZPw1iG6q71qIQUZZyB3JhwuFL7ZPZs
-	 yp4tzJQW/ZhGkGTUTLvekmgqRRsYa3SFDdgdOVN9jFsrahuoDzZa7/q+hfYCeukE1c
-	 /LacKB2RHsoAYgXjRFdQCLxzcz3xIxBoWvkiC7xNzS+Pc6ECbPd1rkpztZ+CtLj5jC
-	 JPTG6GyITqkCIZpfEawmSec8nOpnYl9pTSYdAnUl21nwh1dsxBw540QDycvB1qtM8o
-	 F9Nw2RO4v3bDQ==
+	s=default; t=1681401835;
+	bh=MqMDxD22XVU09vmh4tH4LrSCX+uMEv8/9dYAzrsuj5Y=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=DYU5ejDZ3WSvklEahLQSStX9NF1BE/UKxaedoWBPhljfErPGLOeWf+4tWKQW8OYxy
+	 4F8/LjAnAXLmwFVPBVpTIny2ILPCK1APIuzxD0iW6h3Ye4u07HIR2EBCPp7Vn2gfqf
+	 lh62/X74qnGAXVyW+T4gaRoftXX6xBGR20UtwQ+6KokmM27v/RQyDmCeHSr14LMHhE
+	 1Q2qwZRaVda4K2avvS+hUfLSg2iXOTrxyU8wBMFkdLNJaYMiG/DDn/zuk/KYaayQCj
+	 1aJMcI36AvFWNowvQPLwcdWzo/MxCHmUDef8fHIFu5N2Y5uDX9g7w9TwLzjCLaoxKD
+	 Y1SkcIppRbWqw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NQ24gwzDme6a; Thu, 13 Apr 2023 15:32:43 +0000 (UTC)
+	with ESMTP id zBTlVSi-35Bu; Thu, 13 Apr 2023 16:03:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D6C6420B0;
-	Thu, 13 Apr 2023 15:32:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D6C6420B0
+	by smtp4.osuosl.org (Postfix) with ESMTP id E92E04210A;
+	Thu, 13 Apr 2023 16:03:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E92E04210A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2B0BB1C3DC9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 15:32:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D61931C3CAC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 16:03:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0FD6260E44
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 15:32:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0FD6260E44
+ by smtp2.osuosl.org (Postfix) with ESMTP id AE648429AE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 16:03:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE648429AE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KJUZImEdtw5X for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Apr 2023 15:32:37 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3-NUlC3LNN-O for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Apr 2023 16:03:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33E6060E37
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 33E6060E37
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 15:32:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="324567955"
-X-IronPort-AV: E=Sophos;i="5.99,194,1677571200"; d="scan'208";a="324567955"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2023 08:32:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10679"; a="719897489"
-X-IronPort-AV: E=Sophos;i="5.99,194,1677571200"; d="scan'208";a="719897489"
-Received: from ccontre1-mobl.amr.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.251.213.97])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2023 08:32:35 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Apr 2023 09:32:21 -0600
-Message-Id: <20230413153221.2848407-1-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2177F429A7
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2177F429A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 16:03:48 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E165D601D6;
+ Thu, 13 Apr 2023 16:03:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA76EC433D2;
+ Thu, 13 Apr 2023 16:03:45 +0000 (UTC)
+Date: Thu, 13 Apr 2023 09:03:44 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <20230413090344.20796001@kernel.org>
+In-Reply-To: <1809a34d-dcf4-4b54-089a-a7be3f4c23e1@intel.com>
+References: <20230412073611.62942-1-kurt@linutronix.de>
+ <1809a34d-dcf4-4b54-089a-a7be3f4c23e1@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1681399957; x=1712935957;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=nwgGZ8ASHOaT0+YNas9fGjgY5YZ+vON2Zet5ymwInrE=;
- b=hYUWu4R0ITNxTyeax8OG/e/lS81v+2V8imnXCatP2gQf3QSCHAKVNJzo
- Bfneq/FVPFG05mq/oBeNTyeGMGTzns1G6MdZj7R1OmXx7mOPWg4QEbyxH
- cxG4NMhK0Q+8yDBs+qyglFbJGOFcHK24dXxxAm29sspZx/6Bv/ZBap/kG
- lI2REBlZc7nSst188/LMINiGzqJl78xXMjxwRdQHW3eD4907RTSQs63mK
- 1Kd5pEfsVJ5AAUCEWQLIf96ni3mUJKnCu1+Miij4u4IbAlUtzQoseXZh6
- vKRBoXaYJmRuhscr7nWaplvi4tGjY/USacwwEDLtE2sqAtLddC5pntQJG
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hYUWu4R0
-Subject: [Intel-wired-lan] [PATCH net] iavf: send VLAN offloading caps once
- after VFR
+ d=kernel.org; s=k20201202; t=1681401826;
+ bh=Rc5ZK0hEjJCUPLbarklfttD8GZ7zgofLPT8Ny5BT6ac=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=FDEagfpji6+VQ7vc82LIuUWvzZ3mHINa2z7GCkahDSUnFzV1BxkQlMxxwUQdB7UVH
+ kCVWlOTqGx0ZQTBuKuRy0Z6C6gqBL+jFf41fQ3mg6XDYa2EfYdPMw3+p8jTFEgOGvH
+ j8d5J3ufTegt+/5v2miE03fQ323wwQJCW4Y1snt23mefUV/QK7ImUL1pSac5U7Dt8O
+ lRbHsyp0mN5NWAGASCFxT8ZQEeNUX0CIjdxDF1P/biOyfFEREzexdeYi3wgfbrkMnT
+ KpGl+7aNj4rv463i1A5a8xNyD4LX+XyTCe1A8sbJhW6zhkrAhl44ksQiNRvQCvNoJW
+ cON6yvABNcAUA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=FDEagfpj
+Subject: Re: [Intel-wired-lan] [PATCH net-next] igc: Avoid transmit queue
+ timeout for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,62 +89,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Kurt Kanzenbach <kurt@linutronix.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Ong Boon Leong <boon.leong.ong@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the user disables rxvlan offloading and then changes the number of
-channels, all VLAN ports are unable to receive traffic.
+On Wed, 12 Apr 2023 15:30:38 -0700 Jacob Keller wrote:
+> Is most driver's XDP implementation broken? There's also
+> netif_trans_update but this is called out as a legacy only function. Far
+> more drivers call this but I don't see either call or a direct update to
+> trans_start in many XDP implementations...
+> 
+> Am I missing something or are a bunch of other XDP implementations also
+> wrong?
 
-Changing the number of channels triggers a VFR reset. During re-init, when
-VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS is received, we do:
-1 - set the IAVF_FLAG_SETUP_NETDEV_FEATURES flag
-2 - call
-    iavf_set_vlan_offload_features(adapter, 0, netdev->features);
-
-The second step sends to the PF the __default__ features, in this case
-aq_required |= IAVF_FLAG_AQ_ENABLE_CTAG_VLAN_STRIPPING
-
-While the first step forces the watchdog task to call
-netdev_update_features() ->  iavf_set_features() ->
-iavf_set_vlan_offload_features(adapter, netdev->features, features).
-Since the user disabled the "rxvlan", this sets:
-aq_required |= IAVF_FLAG_AQ_DISABLE_CTAG_VLAN_STRIPPING
-
-When we start processing the AQ commands, both flags are enabled. Since we
-process DISABLE_XTAG first then ENABLE_XTAG, this results in the PF
-enabling the rxvlan offload. This breaks all communications on the VLAN
-net devices.
-
-Fix by removing the call to iavf_set_vlan_offload_features() (second
-step). Calling netdev_update_features() from watchdog task is enough for
-both init and reset paths.
-
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 5 -----
- 1 file changed, 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 9afbbdac3590..7c0578b5457b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -2238,11 +2238,6 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		iavf_process_config(adapter);
- 		adapter->flags |= IAVF_FLAG_SETUP_NETDEV_FEATURES;
- 
--		/* Request VLAN offload settings */
--		if (VLAN_V2_ALLOWED(adapter))
--			iavf_set_vlan_offload_features(adapter, 0,
--						       netdev->features);
--
- 		iavf_set_queue_vlan_tag_loc(adapter);
- 
- 		was_mac_changed = !ether_addr_equal(netdev->dev_addr,
--- 
-2.34.1
-
+Only drivers which use the same Tx queues for the stack and XDP need
+this.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
