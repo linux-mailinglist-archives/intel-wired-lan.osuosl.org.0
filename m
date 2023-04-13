@@ -2,86 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB28B6E0773
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Apr 2023 09:15:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D67E56E0797
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Apr 2023 09:21:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 47AD041DD9;
-	Thu, 13 Apr 2023 07:15:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 47AD041DD9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1F6C341E74;
+	Thu, 13 Apr 2023 07:21:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1F6C341E74
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681370144;
-	bh=DJrLf2729tMp3r+eSLq9CpOFLbbYAl9//Q9tFLcPieE=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1681370470;
+	bh=0cmWMnNKB2IUAU8AqdqIXkdnovWRoC7ZFfjxP9ZEGhg=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=DB4RliZ8j4/aS7xcOShLIFrxG12hyXE0J0QjYxJV83qZsWi7dUC8Ks5NpHKHP1QGm
-	 TiHRolgGaIETDwLhXACymYx4v5YUZsOfMXIEODE18vWwR6PaO2m2ZUjszlgbXcKqGG
-	 cpfXljSNmSq77/XEkt0tTbcqu0vgoB6f8lVa4z+e785oduA3cxnAfuOi9Eoy+KL5dL
-	 9K6E4a7qPJdjgzuEkOR9H1OOu7hujEfYxymYwDlvPbUfFKD1rGWraZ38AxCn9nV0kD
-	 KcEprW9FiZc5CCLgbypdSfgQ+inrp+7xDrgqqFtRhqhqnNNa/JonNQa/ehkGeacdbJ
-	 HWqe7iVrPwEbQ==
+	b=tn9nM+IMqPVEiyoncI9S9TxvsmeHLq7WXtEt048m24RdWePMePUnNOWwwSl77Xvyq
+	 vXOU/lgwTUgn+972mH9OFx1edaxUsWjKYopDr7UbcUk4tfssqAp4cqT4qypK1sFRdI
+	 eYnZd7NETT/ME7wit5eMZBq0DSGpg4FBIChIgMYxW9DwEWa+WHPIaA7vVqimUCYBOR
+	 iX5Qr6cRQfcadq+TRj0IDI+YEdHyyetP1Cn31/pYpZAvMO1se1YFb+Q4SJgTDcYvE6
+	 NMNJ4v3Wfw5cM4edRi2b1AxW+dproxHppjkY5ewi+3Gt9z4IDkDcuHmVdU7ptx66iD
+	 GsvIpxqBosSAQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1EgRiVjlcjnw; Thu, 13 Apr 2023 07:15:43 +0000 (UTC)
+	with ESMTP id cyaD-pff7nZO; Thu, 13 Apr 2023 07:21:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B7DD441E74;
-	Thu, 13 Apr 2023 07:15:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7DD441E74
+	by smtp4.osuosl.org (Postfix) with ESMTP id D0C10418AA;
+	Thu, 13 Apr 2023 07:21:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0C10418AA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B4C391BF3F4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:15:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 601101BF288
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:21:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7D8D383CD8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:15:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D8D383CD8
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4496F83EDF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:21:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4496F83EDF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2CxShttD39b2 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Apr 2023 07:15:36 +0000 (UTC)
+ with ESMTP id a1XEXVp16_9F for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Apr 2023 07:21:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 868A183C64
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 868A183C64
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:15:36 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3276F63B48;
- Thu, 13 Apr 2023 07:15:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4E2DC433EF;
- Thu, 13 Apr 2023 07:15:33 +0000 (UTC)
-Date: Thu, 13 Apr 2023 10:15:29 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <20230413071529.GE182481@unreal>
-References: <20230411011354.2619359-1-pavan.kumar.linga@intel.com>
- <ZDb3rBo8iOlTzKRd@sashalap>
- <643703892094_69bfb294a3@willemb.c.googlers.com.notmuch>
- <d2585839-fcec-4a68-cc7a-d147ce7deb04@intel.com>
- <20230412192434.53d55c20@kernel.org>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 10C9283ED5
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 10C9283ED5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Apr 2023 07:21:01 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Jacob Keller <jacob.e.keller@intel.com>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <1809a34d-dcf4-4b54-089a-a7be3f4c23e1@intel.com>
+References: <20230412073611.62942-1-kurt@linutronix.de>
+ <1809a34d-dcf4-4b54-089a-a7be3f4c23e1@intel.com>
+Date: Thu, 13 Apr 2023 09:20:57 +0200
+Message-ID: <874jpk2qp2.fsf@kurt>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230412192434.53d55c20@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1681370134;
- bh=62nqpbftTHPVHp6Tb1GAyNozDF2hZC9FLijQL9QkXRo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=LEMpdxxEtuX4S4qK8HNpc1f1ydmWmIipnDOFQ5JwZP1gJfL6MinxO0wOX6VEhYMOS
- JSjGPY454pEtXKRpktbvfgSdXI9aoWf+zyBkulOVHI1pqj2cm2aROy6hp/72XvxBOo
- loA/4yrVc8czwJhWi/0aGRVMyvAru2ko+gxWu9vq3B/CMJa3tZ/vwPZS5n8K60C9Ij
- AlsRYwIMlh8zaDkoUTMmuwOXLgQr+PrQ9lZYaxvm8GGnBV5W3ftgA8y6ZoYuQKIyjh
- ZqWo7GiC8AmQtI7ZTCZo/eD3Tj9cXlrcdqoHYu+5x0NGltzcs2ItCG9RlSOIWAWWid
- EpopElnPGB16A==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1681370459;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Gf8o/adbOI2wRHyAYHOuUl4w2xDShw502p6uq1yjW/o=;
+ b=jd0nFk877ojN78H+xnoNZJ21TJY8IunD0mL0OMSkHT8cJWKHhKCmjsXX1SZDtHp6OLzOZp
+ NICA8IzoOwv7zD95uzyVTkDBmzx18xtGUPeNehe1RiPxbCqrnHuNaiW1zgsUpZOsMhihpm
+ 2ZTYF0YzDIuwhgmX+BstzaRDWE0w1WA+nM+mEIrhwpgeNgnbBSQiRjvCKEp3ygKClUMPlq
+ K5uJftvEczJMAuN1U/U4sIGgzf/pEvTXBAg3Xk4/AMA7SzwSs2L6VQbv4jesLq2vYkX4iI
+ /QHeBkApg8ydOjrkLzqp1rD0dWqlSlTfd8sFUwqs2iRqr3Oa6KaKh+3nb+OX6Q==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1681370459;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Gf8o/adbOI2wRHyAYHOuUl4w2xDShw502p6uq1yjW/o=;
+ b=55cEtF6OKAcYwqDBb/O/ndO9DLSWPvumJVkEmWH/bw0Mg3gePHry7BysvkfLRWfZsiUbcp
+ geJacF7BdpyxHGAQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=LEMpdxxE
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/15] Introduce Intel
- IDPF driver
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=jd0nFk87; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=55cEtF6O
+Subject: Re: [Intel-wired-lan] [PATCH net-next] igc: Avoid transmit queue
+ timeout for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,56 +95,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>, pabeni@redhat.com,
- willemb@google.com, jesse.brandeburg@intel.com, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- anthony.l.nguyen@intel.com, decot@google.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Ong Boon Leong <boon.leong.ong@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============4207764579087586661=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Apr 12, 2023 at 07:24:34PM -0700, Jakub Kicinski wrote:
-> On Wed, 12 Apr 2023 19:03:22 -0500 Samudrala, Sridhar wrote:
-> > On 4/12/2023 2:16 PM, Willem de Bruijn wrote:
-> > > Sasha Levin wrote:  
-> > >> On Mon, Apr 10, 2023 at 06:13:39PM -0700, Pavan Kumar Linga wrote:  
-> > >> How will this work when the OASIS driver is ready down the road?
-> > >>
-> > >> We'll end up with two "idpf" drivers, where one will work with hardware
-> > >> that is not fully spec compliant using this Intel driver, and everything
-> > >> else will use the OASIS driver?
-> > >>
-> > >> Does Intel plan to remove this driver when the OASIS one lands?
-> > >>
-> > >> At the very least, having two "idpf" drivers will be very confusing.  
-> > > 
-> > > One approach is that when the OASIS v1 spec is published, this driver
-> > > is updated to match that and moved out of the intel directory.  
-> > 
-> > Yes. We don't want to have 2 idpf drivers in the upstream kernel.
-> > It will be an Intel vendor driver until it becomes a standard.
-> > Hope it will be OK to move the driver out of the intel directory when 
-> > that happens.
-> 
-> As I said previously in [0] until there is a compatible, widely
-> available implementation from a second vendor - this is an Intel
-> driver and nothing more. It's not moving anywhere.
+--===============4207764579087586661==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Even if second implementation arrives, it is unlikely that this
-idpf driver will be moved. Mainly because of different level of
-review between vendor driver vs. standard one, and expected pushback
-to any incompatible changes in existing driver as it is already deployed.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Thanks
+On Wed Apr 12 2023, Jacob Keller wrote:
+> On 4/12/2023 12:36 AM, Kurt Kanzenbach wrote:
+>> High XDP load triggers the netdev watchdog:
+>>=20
+>> |NETDEV WATCHDOG: enp3s0 (igc): transmit queue 2 timed out
+>>=20
+>> The reason is the Tx queue transmission start (txq->trans_start) is not =
+updated
+>> in XDP code path. Therefore, add it for all XDP transmission functions.
+>>=20
+>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>
+> For Intel, I only see this being done in igb, as 5337824f4dc4 ("net:
+> annotate accesses to queue->trans_start"). I see a few other drivers
+> also calling this.
+>
+> Is this a gap that other XDP implementations also need to fix?
+>
+> grepping for txq_trans_cond_update I see:
+>
+>> apm/xgene/xgene_enet_main.c
+>> 874:            txq_trans_cond_update(txq);
+>>=20
+>> engleder/tsnep_main.c
+>> 623:            txq_trans_cond_update(tx_nq);
+>> 1660:           txq_trans_cond_update(nq);
+>>=20
+>> freescale/dpaa/dpaa_eth.c
+>> 2347:   txq_trans_cond_update(txq);
+>> 2553:   txq_trans_cond_update(txq);
+>>=20
+>> ibm/ibmvnic.c
+>> 2485:   txq_trans_cond_update(txq);
+>>=20
+>> intel/igb/igb_main.c
+>> 2980:   txq_trans_cond_update(nq);
+>> 3014:   txq_trans_cond_update(nq);
+>>=20
+>> stmicro/stmmac/stmmac_main.c
+>> 2428:   txq_trans_cond_update(nq);
+>> 4808:   txq_trans_cond_update(nq);
+>> 6436:   txq_trans_cond_update(nq);
+>>=20
+>
+> Is most driver's XDP implementation broken? There's also
+> netif_trans_update but this is called out as a legacy only function. Far
+> more drivers call this but I don't see either call or a direct update to
+> trans_start in many XDP implementations...
+>
+> Am I missing something or are a bunch of other XDP implementations also
+> wrong?
+>
+> The patch seems ok to me, assuming this is the correct way to fix things
+> and not something in the XDP path.
 
-> 
-> I think that's a reasonable position which should allow Intel to ship
-> your code and me to remain professional.
-> 
-> [0] https://lore.kernel.org/all/20230403163025.5f40a87c@kernel.org/
+AFAICT the netdev watchdog is only started when the device exposes
+ndo_tx_timeout callback (see __netdev_watchdog_up()). For igc this
+callback was introduced recently in 9b275176270e ("igc: Add
+ndo_tx_timeout support"). My guess, as soon as the net device has
+ndo_tx_timeout it needs to maintain trans_start for XDP?
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmQ3rVkTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgibTD/0S41/87v4PI039H0WiQE3mh+bEA9rP
+I8IbnifWL8hhJGedZBCucDwNuSsXADxiHrSLKVGdz0UjgFJExkMGrSEvBFrV0Zs4
+MYuMTlw/wYTF4KN5YBYqkzCsIuzrl+yGdhtBDcuTaxl0YLzF6xUP7yALAtyZgY+1
++u15zKytCypI5FDB1VqfNiOc3kw6NtfvCxTZQwPuBC8ZP6jF+qrG0xI+ldnjnXl3
+0qJyRQCdE7+cfY7/meuZRtipP6WLcOLjUofUnHVCnXmLituzWgY8ZS/nQA9yiEvU
+Wo9OdTcUmof8R7cLKcQZbtf4v97CtAy6oYbONUHPDePcmDJhAO92fvmGty0GQH32
+oBfOVCy2fzJ9lf4rjOKRmXYauCVtGmZDTAFcQakN1T+PXYdZku9RTp06I+JTKhgh
+MPl7tyCYw4Vr576N9GLc928XIXB5WR1ADokAvgZ6zQtiVDKnM+az4MHmXfo4rHcG
+BXm2zu4zQrC/DkW8CsfjcdCaloa62OlxthfD5kCkvh/Ew70E+DCJSeQGfTr4Dxkg
+oO9GmxaVziXwOGuyYR4giygCHmNbPsSPK2uWRQ5VcTRjZwzYpV8Rv2NKy7ZHRsgk
+7swx2IYnVijlnWri2S4rsMXxqR5QkfqdCmOTXlwWukWUE9i8JTo2/EX2kx2Z+/j3
+FNJeiexMFBINug==
+=iqmd
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============4207764579087586661==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4207764579087586661==--
