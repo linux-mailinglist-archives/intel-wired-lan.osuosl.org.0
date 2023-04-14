@@ -2,80 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C2C66E2959
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Apr 2023 19:29:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 251746E295F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Apr 2023 19:29:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5A5096FFD0;
-	Fri, 14 Apr 2023 17:29:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5A5096FFD0
+	by smtp3.osuosl.org (Postfix) with ESMTP id B95F16FFD1;
+	Fri, 14 Apr 2023 17:29:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B95F16FFD1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681493353;
-	bh=lssKhnmTT5/xszfQVrQTJ2kzFzWXNbdWc/HddbRE+J8=;
+	s=default; t=1681493376;
+	bh=pDYKNskb6Ntw4vj/vhxxxk+iOG2bEMMWFutMr2egMP4=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=iL94DhrChJxRiRIXIjptsEyiAq6Nmx1zos1749zlO4JGnYNSbjZNYNWHcCcneZDN+
-	 cl9NwYlwXtkWfpJtE1bcPXJyBPl2/z9Y6YVsUYLappLZaCWwl/v0AVbRLoh8N+whHi
-	 tL78JfJSrPjU5ljWzok91pCJLYtj5/v8WN3AzsfgrGDhMm4FRdB5sn6VsJcknO5Jw2
-	 nWVLtccw+fxwbhU+yLk5iOf02uiJKv9A7O7JI9RcOypUJAuXETWXphqRH0rhOvwF0h
-	 +uJ5Ma+UyBF4ZxiJZkq+DbASaKtHx7CR2nWpmUeC+HwtwgqhjjJ3CTJzndnvWa3LqT
-	 imZn6FvlX6KhQ==
+	b=BWiGT+xkefe6AKOjsrEvgXyPD2BIlIxNLjMpHXVxwabAwywaIqT6OQeUv2+iZD3h+
+	 LBQ6M5i3ENsjDjEmhtxCgHajW3huISSOfXC+fmQaMqx+4p0oMaA3dKxth6y5FT4i6F
+	 yrD/JjKKVwzOQSvAeGmza/r5Bl4q1ZUOeZ4Dxtde0m9bvkGYOPYUO1HOWQiw/y3dP0
+	 IH/tmGILv7wnumQsJpB7Aqle4O8aWx5seqr5b5kDknRA70zzww9xCK9k53Sl52Y7/A
+	 KOh23dWb9TL1r/bxuwCZXT2vthY8PWetYXsFiB/FwXahmYoZjW+OgqFQYoXOVWSwxl
+	 wpCbixzLwM3RQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Eam4W2QeO_7A; Fri, 14 Apr 2023 17:29:12 +0000 (UTC)
+	with ESMTP id y4nwCh_zQP_c; Fri, 14 Apr 2023 17:29:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4CE186FF36;
-	Fri, 14 Apr 2023 17:29:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4CE186FF36
+	by smtp3.osuosl.org (Postfix) with ESMTP id ACB7F6FFD0;
+	Fri, 14 Apr 2023 17:29:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACB7F6FFD0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EC8421C3F64
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 787981C3D4D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C2E7860B0F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C2E7860B0F
+ by smtp2.osuosl.org (Postfix) with ESMTP id 50F8B40502
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 50F8B40502
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uZYkYOf88yD5 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Apr 2023 17:29:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oJaFss792lWB for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Apr 2023 17:29:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 094DB6FFCB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9EB4E4015E
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 094DB6FFCB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10680"; a="372388212"
-X-IronPort-AV: E=Sophos;i="5.99,197,1677571200"; d="scan'208";a="372388212"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9EB4E4015E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Apr 2023 17:29:29 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10680"; a="372388258"
+X-IronPort-AV: E=Sophos;i="5.99,197,1677571200"; d="scan'208";a="372388258"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2023 10:29:01 -0700
+ 14 Apr 2023 10:29:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10680"; a="720357544"
-X-IronPort-AV: E=Sophos;i="5.99,197,1677571200"; d="scan'208";a="720357544"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga008.jf.intel.com with ESMTP; 14 Apr 2023 10:29:00 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10680"; a="720357611"
+X-IronPort-AV: E=Sophos;i="5.99,197,1677571200"; d="scan'208";a="720357611"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga008.jf.intel.com with ESMTP; 14 Apr 2023 10:29:08 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 14 Apr 2023 10:29:00 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2507.23; Fri, 14 Apr 2023 10:29:07 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Fri, 14 Apr 2023 10:29:00 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Fri, 14 Apr 2023 10:29:07 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.109)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Fri, 14 Apr 2023 10:28:59 -0700
+ 15.1.2507.23; Fri, 14 Apr 2023 10:29:07 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bI0iH5LEMa4i1OjvEvUGPfxANp95O/TwoCR/UenNGXv6WTV7TvX6kjkJ3HAmfLNeAO2ERBr5x6kGSPWgAXaokX8BbI51i1n79ExDlYBCswhciAn0vumMv8EM0TUlGZ5gCljkalyjlI85eNB0zRncoXd93KpMz+HUCikWy/McxuEQGHUMtHAHoPzezMKlA1KXvXX0Lvqbw+dW/kvbZC2C9hbMnK4Aj6Nhb7QDRBsdh8uMMdp/bTT+WAUX00xtuFbcGrD/4ny7SBoF+OUyom69OfJI7rEPecT5iXxfrHOUZywR2ntuPk5xBvKfE242QnmJOurMl379Cfu3GP05+X3u2w==
+ b=kb4rMnZJfVvis0YtN7ifruCBE2nUyUy5qJMEB9wEMHD3TiHU2TokDLNFYur4WE/z1CUWK/BCf1+tUolS0ir8m9J/Zjmi/B1cw+OFr2JlsU5h8h+aADYozStjXoRRStHp5GmMWUqBhxut+KhDLS6Or8Zz/KoSIenMmt6OGcmO84hjPuJ/Y+WWSMiEs4f9fcoC5j9QHg3yelowd5yTLqda1+7SaxkL7h/EcWjbl48ExjO4iyZjwMTD2d0jYXt6apD5Jz112il1WwzrxUXA0It8qLVCnmZCihP7Dv5DkTzBJU0zvTg5mmQi/6nY6HqgjzHfBzINf4w4RTpbHRLTVcTwZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qZuTnqZMOvXWjusuiOorqPGkyQGDFmvXn3AsMBqo31E=;
- b=Ft4N6N5QKSrCe9UDBpReQe4PKo8gY6rj8wI4Lojl552wcOF1VBphJ4Yag+T1G4r/CAsJ/AOGtEI4BFhByq+y3qrNLH9IvJ3PFEKyLsM9p9x7gcHHc9XWUl1i91XTxGO3wlQvTEC2rhe4V1LcL++l9/M8ZUaP3aM9beM/M27Pa3q+E5ZAgBg12NKbvr4ixocNddipx87+ZcUz4QxKfMFReKKG4OS6dspKlUOhj5Ft1vVEOhix0VmmbiH2Q+Ifs9ec2dN+SqgQ/l9Sk3YRw0boyfGVNoICF30yW3FOEqRuARUOJJ+XsGB/Vs15zbOPWSy7LOrPrOz26CsI48jd1i86KA==
+ bh=XvIsbrr9cPUFshy2mqxGLpUFP3iQYhNmD+l+2P1EzK8=;
+ b=SZtVF+w/jjEi6fCpdjlQ9vpQ4RI8sFWuoBbtDDhG/BpasFFsnbQSuZz22ZYlIaJD0VCqfvGZeJ2jR9EcZyNwWa43LMAE9sOeDsy4edgs/TakMrSxkpZ5pntTBKK/yooLk5KPveiupQjAgh62Y2GrDf2fnlTBTh/H68J9K2JBdWICr0yLfKFPMPtgawm6prVnKRTgOf37P+1NKmLc6XfM1fFRm+ne0lhKWkaJvE832tFLXRhjhoFTQ/GejZY08OuQ/c3ka5+ASTQ9Sv3AgBdVhD4Uh716Q5CYrBKq4Ke5D3VZS7mnAXxIzV0tTsViETp+SAOeM2bWR35veYUxOMzUHA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -83,29 +83,29 @@ Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
  DM4PR11MB6454.namprd11.prod.outlook.com (2603:10b6:8:b8::5) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6156.28; Fri, 14 Apr 2023 17:28:57 +0000
+ 15.20.6156.28; Fri, 14 Apr 2023 17:29:00 +0000
 Received: from DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::f829:c44d:af33:e2c8]) by DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::f829:c44d:af33:e2c8%4]) with mapi id 15.20.6298.030; Fri, 14 Apr 2023
- 17:28:57 +0000
+ 17:29:00 +0000
 From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
 To: mschmidt <mschmidt@redhat.com>, "intel-wired-lan@lists.osuosl.org"
  <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH net-next v2 2/6] ice: increase the GNSS data polling
- interval to 20 ms
-Thread-Index: AQHZbResqGZKsQBYCEW4elfha+rO7a8q3rCQ
-Date: Fri, 14 Apr 2023 17:28:56 +0000
-Message-ID: <DM6PR11MB465739C23C3C0D83E7ADA19E9B999@DM6PR11MB4657.namprd11.prod.outlook.com>
+Thread-Topic: [PATCH net-next v2 5/6] ice: remove unused buffer copy code in
+ ice_sq_send_cmd_retry()
+Thread-Index: AQHZbRerhFfdcLZ42U+9RnPA9qYMnq8q5J1g
+Date: Fri, 14 Apr 2023 17:29:00 +0000
+Message-ID: <DM6PR11MB46579AE0BB21C2B642DFEBA89B999@DM6PR11MB4657.namprd11.prod.outlook.com>
 References: <20230412081929.173220-1-mschmidt@redhat.com>
- <20230412081929.173220-3-mschmidt@redhat.com>
-In-Reply-To: <20230412081929.173220-3-mschmidt@redhat.com>
+ <20230412081929.173220-6-mschmidt@redhat.com>
+In-Reply-To: <20230412081929.173220-6-mschmidt@redhat.com>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|DM4PR11MB6454:EE_
-x-ms-office365-filtering-correlation-id: 25d1bae5-2ff4-4620-de6d-08db3d0dba26
+x-ms-office365-filtering-correlation-id: 8107f963-e863-4f60-d3ce-08db3d0dbc16
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
@@ -117,34 +117,34 @@ x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 25d1bae5-2ff4-4620-de6d-08db3d0dba26
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Apr 2023 17:28:56.9513 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8107f963-e863-4f60-d3ce-08db3d0dbc16
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Apr 2023 17:29:00.2201 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DA9YZ7lTVTDM9XTa92Q02A+Pn7lOZeXFxXxpdUvlZggx03uLW1m/aJdi6z+WwtxnEpu5tgOKvBbB4ML2RmbW5p0dABAZXYc+rRWXyv58LeU=
+X-MS-Exchange-CrossTenant-userprincipalname: xUvPt9PcUPqB0iP8tFNB8cqA+2trtoCQH7olEIW3qsHocJj5prP7eIql3Z6jQCC3GakYQ2rtuvHvD6/mght226mukMvPqS+7elNjSr7MheU=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6454
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1681493346; x=1713029346;
+ t=1681493369; x=1713029369;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=6C7sAhgPeeJLNoluD6x2WjMCQ1o9pu2IdZTRA8BPkUY=;
- b=NmicCcaahxrx4wKNvD0mp3XV6e8Jm6ohuPyCh/wjvV1Qx4ujTteOKlqb
- D28kKJ38SdAXd4FLfQ6G+3L67MzS5b+E3mxHClSxKj++nP4AmaxuW++6V
- Nvs8YY1ayCB1h3HH84LPscClVWW8X/A3H5qjXqrF284KGO+ihyAin8Ns9
- yvrY9B8f1CV1eBuUvRF0RneB6a7X7HBbZgXyQ0RYalzXjABI3P6WrquaU
- 5FgbnC4u9RcX7t3IFkxmSoFXR74rMRKqJK2tHCH19OhU/t6f1uo7Ie3Ca
- hkdz9iseoQ4Fzq8+hv745Oe1CZSr6WtXQEBt/CBFwrwr73MZiSVWJQkev
+ bh=w0I+bXLXlheEHeK6Rl/l7jJSHowur40XMd9UZCv91NY=;
+ b=AG5FI6p/XxPkvjCIKAoqZzggdU7OFMQCmsCzObrpTz5dpVm8Wpcvs/oD
+ C6MEFQsbQ1Qh8sFHMNxaGB7yzMLCeiF+S5DK0Ecq2xpYu9IQaUfWLoCL/
+ UJl//ED71Ul6hl7b4tJHOMKLH/T0XwWvY8JY/9FVpvsmZdMDUK/cdmsoI
+ SBU1iUWex1plPsHnPVGWQ6pMe49veTBT0Red/kF0YzxAinT8Aci9MOBGi
+ cvdq11tNRRqP4mTZzfZ/N5F/b1TNJgvV2ol1GG/JLhubDvqaz4MbGu/RR
+ dRorxzJyZE4A7lJfM6+WlZ8IizW8rimpCaMaw0AzZwIIxIYc7cZzG1mbp
  g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NmicCcaa
+ header.a=rsa-sha256 header.s=Intel header.b=AG5FI6p/
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/6] ice: increase the
- GNSS data polling interval to 20 ms
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 5/6] ice: remove unused
+ buffer copy code in ice_sq_send_cmd_retry()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -171,30 +171,68 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 >From: Michal Schmidt <mschmidt@redhat.com>
 >Sent: Wednesday, April 12, 2023 10:19 AM
 >
->Double the GNSS data polling interval from 10 ms to 20 ms.
->According to Karol Kolacinski from the Intel team, they have been
->planning to make this change.
+>The 'buf_cpy'-related code in ice_sq_send_cmd_retry() looks broken.
+>'buf' is nowhere copied into 'buf_cpy'.
+>
+>The reason this does not cause problems is that all commands for which
+>'is_cmd_for_retry' is true go with a NULL buf.
+>
+>Let's remove 'buf_cpy'. Add a WARN_ON in case the assumption no longer
+>holds in the future.
 >
 >Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
 >---
-> drivers/net/ethernet/intel/ice/ice_gnss.h | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
+> drivers/net/ethernet/intel/ice/ice_common.c | 13 ++-----------
+> 1 file changed, 2 insertions(+), 11 deletions(-)
 >
->diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h
->b/drivers/net/ethernet/intel/ice/ice_gnss.h
->index 640df7411373..b8bb8b63d081 100644
->--- a/drivers/net/ethernet/intel/ice/ice_gnss.h
->+++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
->@@ -5,7 +5,7 @@
-> #define _ICE_GNSS_H_
+>diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
+>b/drivers/net/ethernet/intel/ice/ice_common.c
+>index 3638598d732b..c6200564304e 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_common.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_common.c
+>@@ -1619,7 +1619,6 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct
+>ice_ctl_q_info *cq,
+> {
+> 	struct ice_aq_desc desc_cpy;
+> 	bool is_cmd_for_retry;
+>-	u8 *buf_cpy = NULL;
+> 	u8 idx = 0;
+> 	u16 opcode;
+> 	int status;
+>@@ -1629,11 +1628,8 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct
+>ice_ctl_q_info *cq,
+> 	memset(&desc_cpy, 0, sizeof(desc_cpy));
 >
-> #define ICE_E810T_GNSS_I2C_BUS		0x2
->-#define ICE_GNSS_POLL_DATA_DELAY_TIME	(HZ / 100) /* poll every 10 ms */
->+#define ICE_GNSS_POLL_DATA_DELAY_TIME	(HZ / 50) /* poll every 20 ms */
-> #define ICE_GNSS_TIMER_DELAY_TIME	(HZ / 10) /* 0.1 second per message */
-> #define ICE_GNSS_TTY_WRITE_BUF		250
-> #define ICE_MAX_I2C_DATA_SIZE
->	FIELD_MAX(ICE_AQC_I2C_DATA_SIZE_M)
+> 	if (is_cmd_for_retry) {
+>-		if (buf) {
+>-			buf_cpy = kzalloc(buf_size, GFP_KERNEL);
+>-			if (!buf_cpy)
+>-				return -ENOMEM;
+>-		}
+>+		/* All retryable cmds are direct, without buf. */
+>+		WARN_ON(buf);
+>
+> 		memcpy(&desc_cpy, desc, sizeof(desc_cpy));
+> 	}
+>@@ -1645,17 +1641,12 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct
+>ice_ctl_q_info *cq,
+> 		    hw->adminq.sq_last_status != ICE_AQ_RC_EBUSY)
+> 			break;
+>
+>-		if (buf_cpy)
+>-			memcpy(buf, buf_cpy, buf_size);
+>-
+> 		memcpy(desc, &desc_cpy, sizeof(desc_cpy));
+>
+> 		mdelay(ICE_SQ_SEND_DELAY_TIME_MS);
+>
+> 	} while (++idx < ICE_SQ_SEND_MAX_EXECUTE);
+>
+>-	kfree(buf_cpy);
+>-
+> 	return status;
+> }
+>
 >--
 >2.39.2
 
