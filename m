@@ -1,190 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30C656E44FA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Apr 2023 12:17:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 886BF6E4686
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Apr 2023 13:32:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AF06B613E8;
-	Mon, 17 Apr 2023 10:17:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AF06B613E8
+	by smtp3.osuosl.org (Postfix) with ESMTP id B8B826080B;
+	Mon, 17 Apr 2023 11:32:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B8B826080B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681726626;
-	bh=J7T1c/iRjHEmMBNg8xQVWk5wwdQdcmhCHdI9KVYw/OM=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=i/Ny77WXnlTns7Io5zLzSFgwC6edxXf14JYZbPp5MZtsDaVe2866Vskyqf4+JTcg/
-	 G8OwiP1OYJQ7z0J8WYeI4xZyGnDrKGrclRWi9mZCDIyInx6y99BI7L4B3QLJI9BvBn
-	 sgWGnKoh3v5RukEAATMqfUiKSKH/rxA5LF6x7rxwbLdbtMctYypAHamYXm9s/fak84
-	 2OXIGzoAbkxVoG/FnN58dj8nOin5mH+XT57iu1TsLbyx59W9zNGJheI7HZZZPVFYkp
-	 AZSMxMrOMysUqpgYGixo2HNkSBoh9swyWKJZOqxxdZ710xVJtsBGe+Z0leNQAjkCcr
-	 KiGx/BOJZOXlA==
+	s=default; t=1681731142;
+	bh=yDHJbjW5OKY8kPZPMTK4a6SllZOqSwXKeLM5cGgcrLM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Xp/QoJF2OTttAr/s1q2/nMYo7DQE5lDE2KVIeJGeeUQWnY7wdgYCDpwRs7lYjSg9A
+	 st+1f/9PFHBztlgbxGxQZpXxi2J3m1y2KhRfXhhnfPc2Ga2XoH/07K6O3DbkOA1RXw
+	 Gv90+DVJ44dAAz//VEgqxPrev96FEXEBZCB3/ZcjY6+1RsIu2kp1KRjdWIaJO3gJFX
+	 s+SKFdEsNxa28xQSSaU9IraxpFksvVwpFZdxEzZRlCiILoXjxY81Ph9sRg9PAlZ/88
+	 myOs9RUmAJ2cCxymZDT5Jh3CreyoTRgNSvlBJLiEfYmCitKP6XH1yyx9nNllY+NiAe
+	 erAESavRbca+Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xu0IGOLwMPCu; Mon, 17 Apr 2023 10:17:02 +0000 (UTC)
+	with ESMTP id RS-X6h8ptpW4; Mon, 17 Apr 2023 11:32:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 60F6B613EA;
-	Mon, 17 Apr 2023 10:17:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 60F6B613EA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AAD460A5F;
+	Mon, 17 Apr 2023 11:32:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AAD460A5F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7F5E91BF30C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 10:16:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 16B341C40BF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 11:32:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 61668413D3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 10:16:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61668413D3
+ by smtp1.osuosl.org (Postfix) with ESMTP id E2CEC8143D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 11:32:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2CEC8143D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4i7xmVf5HMHd for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Apr 2023 10:16:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7PcZN8iVHBfd for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Apr 2023 11:32:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 16732408BD
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 16732408BD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 10:16:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="407747830"
-X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="407747830"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2023 03:16:50 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7829F82218
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7829F82218
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 11:32:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="344864071"
+X-IronPort-AV: E=Sophos;i="5.99,204,1677571200"; d="scan'208";a="344864071"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Apr 2023 04:32:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="693198606"
-X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="693198606"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga007.fm.intel.com with ESMTP; 17 Apr 2023 03:16:48 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 17 Apr 2023 03:16:48 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 17 Apr 2023 03:16:48 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Mon, 17 Apr 2023 03:16:48 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.42) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 17 Apr 2023 03:16:47 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MS3Vm5hyeuBhKP/47OyxLKbP+Tr+krOC9d2NsJRBQ3hUYxL/L9pjSpKd5FDNNu1YtxFD/weW33KOdiiEaoFFs0f0Q21eXIdJ2gaq3BcjWrP1HxBjWhxyY6Wuzs75shHuH46txYTz3ad3rieAb9Dct+E7B149KOme4czm2jEs1CGfd4I43Sz/jIBJ0vBNsr1Gb5NoTNkb2T7GQo/U+D2m2nhhFcyHsdibadsAXzErCpK7Vm0arWPfYEBL7iXQtq6WO3XJ5V3+zQ1DgaEC3a43gkXY1/tG3Ix88/ZBLwz/OnQPkNpUm/e9LAQYQ/60JUZNW68NwpfdHJO9fs4tsE9rVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EK2NF4SDIjgd9GLyRULGbakzJ4vhCg1bGSaZ/MSPtyc=;
- b=ilwOIw0M/p15d5QxtzRFejYuBX1ixEuC/zd0RZOUxmHFtEU7+ccjwH6Sl++KkLI5qNy995c/bdEBRKWSQ5kyjmPubrue//N8hPkSrbMG7csFWI5JangNndDF8jD6L+BoonJLpnzBzHmXcoD7bMbj03WtQ7lHi5sBw5SryMj2ttwhx/Pmq8EO7sLc8SuM5bTYfxvQhlXCM+IPEP31UpEyedWte8WJV+3gKpamtDgxJ6shlNdp8e2uOKNJHTWIiuUJFhQGW3Txb7okV1080DD0oRiRa7xzVxRjQOC9uaN/Rf0HOSU/44YSpgAPRESu+YBYVXZgK3le4y+BCZ4y7otAEw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB5815.namprd11.prod.outlook.com (2603:10b6:a03:426::9)
- by MW4PR11MB6739.namprd11.prod.outlook.com (2603:10b6:303:20b::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.30; Mon, 17 Apr
- 2023 10:16:46 +0000
-Received: from SJ0PR11MB5815.namprd11.prod.outlook.com
- ([fe80::f85e:135d:b09b:4c98]) by SJ0PR11MB5815.namprd11.prod.outlook.com
- ([fe80::f85e:135d:b09b:4c98%5]) with mapi id 15.20.6298.030; Mon, 17 Apr 2023
- 10:16:46 +0000
-From: "Sokolowski, Jan" <jan.sokolowski@intel.com>
-To: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net v1] ice: fix undersized tx_flags
- field
-Thread-Index: AQHZbEfwH0T/13KEtUGuwdV4vR681K8n5M2AgAdfx1A=
-Date: Mon, 17 Apr 2023 10:16:45 +0000
-Message-ID: <SJ0PR11MB5815C2C1645B74378E59298A999C9@SJ0PR11MB5815.namprd11.prod.outlook.com>
-References: <20230411073707.19230-1-jan.sokolowski@intel.com>
- <d412bbf7-bfb7-42bc-4352-fd99d38121bd@intel.com>
-In-Reply-To: <d412bbf7-bfb7-42bc-4352-fd99d38121bd@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB5815:EE_|MW4PR11MB6739:EE_
-x-ms-office365-filtering-correlation-id: bc7df1be-b228-4ec6-ec69-08db3f2cd93e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: pbrt2LAcZ+NL57v/aT6jITeuoH5fMJGCBSMyaS4u6tK18MkIdbCkKbNiwcae36mVd+bFv+JVIKJN2xSqpkgAf6ppl0zhmaf/nqLpPwdn1950IpEoQwZy59V7Hie8YE6JYFsQGMjI0u5CGPMxX4i+1rLeB1vbGy1U0Oe49efBZilZNt6kKcfa6eWgSqpzA8A2ML2vTAgpCjmdFpqWrTtcGl17T91c7J/ewhQ4pp3BuZgHHO4ZVCrTi1J1DFw3d6PInBU5B61CyfG/pDhK1Jw3w6cuvuBZJTmLHd7GrhVGDcN1SfZrJLfALcmHzsgR7H40XyjuAPGHI+slaMJBKNmMxwHxmhdBH5kOynw85Eu8LoAPL4lBEMC9LpAUReSCLRHazTVjI6zjPLFsFer7kMg6Ac/C1WRBCMX52+j7y+YHIu2Y0YIAh/HCkEvltC0aNwtCeENCLE1E2350Ayc9yt4r5BZEZgLtpnxrng5+2xXus1fMy0Tsb5/3LC7EVpXGqQ5Lg6dI5yl+pgiKl2E3xtdtkA/plDI5zVGlh18dFcUz9U6pwpxOwEXBXVazdNs91591YzcIkXlMgOlmfU1I/90XzLc9ALaT1iMQE9fu58CNSaWYH43j8H6xyNPzkSrsuSBD
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB5815.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(39860400002)(136003)(396003)(366004)(376002)(451199021)(8936002)(122000001)(83380400001)(76116006)(6506007)(71200400001)(7696005)(82960400001)(53546011)(54906003)(6636002)(478600001)(186003)(26005)(9686003)(38070700005)(33656002)(2906002)(38100700002)(52536014)(5660300002)(66446008)(86362001)(4326008)(64756008)(66556008)(41300700001)(66946007)(6862004)(66476007)(316002)(8676002)(55016003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VjFSaXlKS0lmWU9TMnhoR1p6TXZNcXA5QUI1Qm5Md3F3ZktQWE9ibVowR0U2?=
- =?utf-8?B?TzdmTmx6M0tIZmg3emo5b2dZelFpTHRCbmRmRlRMZC81bzVVN2poVnVxYklN?=
- =?utf-8?B?WEx0TnhlUVdqOHZwZ1Y3MUE0T1pFaW90ZGZORGR4VjFPc3hmTVJKQ0ZCRzlM?=
- =?utf-8?B?T3BsbklYWXN3dy9RMS93OGMwL2ZYbU1HRUVtcHQ1ZTNLSC9HcURjVGdIU2Fq?=
- =?utf-8?B?bTN2NlVUSVltaWY3d2hkOUJWMEtBVVdUOVZSaGVOT1NxTmQzaXNja2xiK0RN?=
- =?utf-8?B?SXd0Y2JPNTZ5VjFnUFNQTkFHRWFpNFN2dzAxOGFVajVRQzFDbGhMbEF1d2Zl?=
- =?utf-8?B?V2U0L0gySDBnOVFZaGR6U0VBWHRLMTBBY3hQQ2M0NGJnaU9xemtLN05TL1NG?=
- =?utf-8?B?MW1aMU5WaDBNR2hqYi9LbktrQmYzMEdLS0IrcHlUSnpTbTVrSExtTEV4amFp?=
- =?utf-8?B?bWFJOC8vRlpkdE00YTlqa1lKODlzSWZERFBLS3p4bTUvaDR4Q2lpYnlWTXFZ?=
- =?utf-8?B?ZVM2RitVSlRWZVlTZmk5Rm45amdWNDVYb2ZrL0g5YkYxZXVpWTBsUlZNYWd6?=
- =?utf-8?B?U3UzQmtoWVdtRk05bW9XM3FjRlRZQ3dxM1Jpanhqa3RDRnpkNVE1bkNpQngw?=
- =?utf-8?B?dWxhVHRBeGtmOWdiSlFSZk1XY2ppRjJlUFhFeWovSnNHOUx6cm9MeGJVUGxD?=
- =?utf-8?B?QjNSQTFJd1VNV2VWeDJBZ1NvdGwxZFBtOFNueDBVQjlOWU9xa3FYS0t0ZXBt?=
- =?utf-8?B?dlBYa2lXenNyTWtOdnhnSTNHa1RlS0Z2N1NvNmpVc2ErLzdDRndEL3crVGcw?=
- =?utf-8?B?bWJjMmt1a0wwRzNNTVBZRGM3OGYrdmR3K0hTS0Z5VkxlMjNLTGU0UFRqVWp0?=
- =?utf-8?B?eXlkaWwzQ2dSUzNFc0U0RjNBYWxHaEd0SGZXSG05cVRRZTBZUVBtNUIyenZK?=
- =?utf-8?B?ZnVvRCtMVXVHQTlyakNUMEVkTDhXTU1lclZMcnlwNmNkVVlZT081UUlNelNk?=
- =?utf-8?B?NlVyalRHeGFUd1Z4bnp4OFRobmNFNVZ6RHdSVHF4ZzY2RjF4Uno3QVFMamkr?=
- =?utf-8?B?YnBxNXN4VEJwN283K0N2d1dYNk44bS93ZFVHRkJwaWtGaEh0Q0pmclJ1WFZ6?=
- =?utf-8?B?U2VraEF6N0FNM1IySDUxNUtITmRBWGhhMldLUjhPaHQ3WWlRdEpDdG52eE5p?=
- =?utf-8?B?R3NwK0k3eXMvRlVzSDlLNldaWjJzQmV1cGJKWXVHSzV1RUx6L3U5Qy9lbkxj?=
- =?utf-8?B?VjNjSkRDYXRXWWZLY3Z0OXVqTEQrRitLQWF0aTIyN2U2bWZUNEY0aWN0eXlB?=
- =?utf-8?B?Z2praVB3THJiTXVmbHh5M3BMNzFlS01Ecm54QVY1VzZidFNsbVNiYTVxbjMy?=
- =?utf-8?B?RUQzT1hwL29pM3MvWTJyQnc2cHp5QkJYcWE2S3FkaVVVUms2b1ZDekhsNVNH?=
- =?utf-8?B?VnFKY1RLS1JxeWRtUmRVQXRscGt3V01jaHM1V1ZKck1XVlNVYytySDRkTjRW?=
- =?utf-8?B?VVNjVW9VeFA0RzNVK3ZJbnFXS1FHOEpNbUM1YmxiVURXVUJCR0YxREsxR3pl?=
- =?utf-8?B?aXZxMjFFRCs4RWdzNUFLOTZ2VE9jZ3pQS1Yyc1JGeEhHblRJUW85V0NEZWFP?=
- =?utf-8?B?ZzdRM3dSTmxqN28rWFZveDNoUG90dzdBOVVwelZsOGZ1MlFBaWpGbVJYa2JN?=
- =?utf-8?B?bFBkSVoxdDNUYXlnT0RjYmg4aDM3T1MwNTZqMk1tcjBhZkFzR1FiTjF2L0h6?=
- =?utf-8?B?VWR5Q3JoZGpEZGhxeFJlWUtSYU9nTVFTQ0V0Mnk1OWZkUERTZEM4aHJBdEc5?=
- =?utf-8?B?Qy9GVjZacGptbk5rc2o4aHhKK2gxM0JVWHVqa2g4clNiT1hwYklWKzNsbFd2?=
- =?utf-8?B?UVo0Y1gvKyt5Y2h6dG9UeUFIOWRjaUJDVER1UXZ0VTh5QlR0Tk1zQklIaG10?=
- =?utf-8?B?a2hJUkhGaTdFdm9OK1ZsRU1iS0lVVndidDhEL3BiOFVFUWVLN1kxRS8zaloy?=
- =?utf-8?B?eVRIamo4Z2VsSHZvS2V1b0pkYzRKdjBhSEsyYXRyZGN3SENaSVlHQnlGNnph?=
- =?utf-8?B?c2ZSOUQ2M3J0N2daUTVPWTZ1V0ZRckZDakxJMXZPdzQ5dmJyVzNwMmZwSUZ1?=
- =?utf-8?Q?GaS7BJOoKCZ6Hdkqc7nANwbA0?=
+X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="690636601"
+X-IronPort-AV: E=Sophos;i="5.99,204,1677571200"; d="scan'208";a="690636601"
+Received: from gklab-018-208.igk.intel.com ([10.102.18.208])
+ by orsmga002.jf.intel.com with ESMTP; 17 Apr 2023 04:32:04 -0700
+From: Kamil Maziarz <kamil.maziarz@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 17 Apr 2023 13:32:00 +0200
+Message-Id: <20230417113200.152404-1-kamil.maziarz@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5815.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc7df1be-b228-4ec6-ec69-08db3f2cd93e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2023 10:16:45.8610 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uWg+/ajXuiV8KU4cRccymDW8WleyRF7k8K97bUhKzur4BN8SiWEfjhhfhUTW0cVXre/adJFP6y2JsYFgpSghGNXO/ATW/5byQ6O0+31aiMk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB6739
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1681726613; x=1713262613;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=EK2NF4SDIjgd9GLyRULGbakzJ4vhCg1bGSaZ/MSPtyc=;
- b=PgeNHO6Dxs03OBaYl07EjLGj1u0f+vNoBD4w7uASMPxyuSI+w681tNfp
- Om/EgWNqhUewNqCp2Khancr26eFyMNgjMmEUMdm496RBctvVKRdnlEmsD
- N4qhMBE+QvAYFL+CD98V6TKdfcFpKyTsg1r9rgP22Qmdpuysmpb/VwNfC
- W6nmfpLKOrWbfAxgLG0V7MZBuM9Eo9sXHrGS31H5w9jxHOssLdwJR64Jn
- i56FD+uT2oGUGplOJg+Ux+9+i81Cb5c4gk5gVboMSAB7It6oNZX012Xrt
- 79CmOwM5TuB4Bk0AhVvaLEPedlb5fpOnba39gfO9/1obygzsvk7pSg4HR
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1681731128; x=1713267128;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=c2FiyMvOiy8EJEG/Rp3MdwFGIIEbKmB1sVk++/zsCyc=;
+ b=QNYa9WtO0i5UvGMvvqKrsS/QgWu6FUK+RlOs7i4y8RBC0MO+iUtBgPQ8
+ fbsYFxB4kd9/fy4nR3+LgFOjED2NOXmQBl5nuqLR+eMWaJv7b73WLTuNu
+ Tib8wyhs4O2laLhJHwN6fEbAuOCmnp2+h2DiwdJEGZ+H6F/z51N73DtoN
+ PW17Z3KSnMusEsCNaKzSvF1rXhGDGYvbaAGW8GgPBFpD2mDYJ4pQDMpHE
+ i7giYHE8bAdAo2ZvMdwfsL9E0yq3Wd/ETvpjOBSxgRyEaBFIVl3K3be0R
+ zjpkaq8RHp0oCpPvN8/nIN/XaP/PpBDzBRW4vUv4D1VQEAFvF07/Bx2Rl
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PgeNHO6D
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: fix undersized tx_flags
- field
+ header.a=rsa-sha256 header.s=Intel header.b=QNYa9WtO
+Subject: [Intel-wired-lan] [PATCH net v1] ice: Fix ice VF reset during iavf
+ initialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,105 +92,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Dawid Wesierski <dawidx.wesierski@intel.com>,
+ Kamil Maziarz <kamil.maziarz@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Lobakin, Aleksander <aleksander.lobakin@intel.com> 
-Sent: Wednesday, April 12, 2023 6:49 PM
-To: Sokolowski, Jan <jan.sokolowski@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
->Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: fix undersized tx_flags field
->>From: Jan Sokolowski <jan.sokolowski@intel.com>
->>Date: Tue, 11 Apr 2023 09:37:07 +0200
->
->Please always add original authors to Ccs when you modify some code. I
->found this mail only by scrolling IWL, while I should've got it from the
->start.
->
->+ Cc netdev (no idea why you didn't do that)
->> As not all ICE_TX_FLAGS_* fit in current 16-bit limited
->> tx_flags field, some flags would not properly apply.
->
->Could you give more details here? With the actual definitions and also
->how it was found and what's the regression is.
->I found that there's VLAN tag which uses upper 16 bits only by browsing
->the code, while I'd say you should've written it here.
+From: Dawid Wesierski <dawidx.wesierski@intel.com>
 
-The definitions are ICE_TX_FLAGS_VLAN_* ones, for example ICE_TX_FLAGS_VLAN_M that is a
-0xffff0000 mask.
+Fix the current implementation that causes ice_trigger_vf_reset()
+to start resetting the VF even when the VF is still resetting itself
+and initializing adminq. This leads to a series of -53 errors
+(failed to init adminq) from the IAVF.
 
-The regression found was with some vlan traffic no longer passing through after commit 
-aa1d3faf71a6 ("ice: Robustify cleaning/completing XDP Tx buffers")
+Change the state of the vf_state field to be not active when the IAVF
+asks for a reset. To avoid issues caused by the VF being reset too
+early, make sure to wait until receiving the message on the message
+box to know the exact state of the IAVF driver.
 
->> 
->> Fix that by removing 16 bit limitation.
->> 
->> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
->> Fixes: aa1d3faf71a6 ("ice: Robustify cleaning/completing XDP Tx buffers")
->
->Your SoB must go last, i.e. "Fixes:" should be placed above it.
->
->> ---
->>  drivers/net/ethernet/intel/ice/ice_txrx.h | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->> 
->> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
->> index fff0efe28373..46c108cc5283 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_txrx.h
->> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
->> @@ -183,7 +183,7 @@ struct ice_tx_buf {
->>  		unsigned int nr_frags;	/* used for mbuf XDP */
->>  	};
->>  	u32 type:16;			/* &ice_tx_buf_type */
->> -	u32 tx_flags:16;
->> +	u32 tx_flags;
->
->Please always provide pahole output when you change fields
->size/structure. Here you create a 16-bit hole and increase structure
->size with no mentioning.
+Fixes: 109aba47ca9b ("ice: introduce ice_vf_lib.c, ice_vf_lib.h, and ice_vf_lib_private.h")
+Signed-off-by: Dawid Wesierski <dawidx.wesierski@intel.com>
+Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+Acked-by: Jacob Keller <Jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |  8 ++++----
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 20 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  1 +
+ 4 files changed, 26 insertions(+), 4 deletions(-)
 
-Ok, will do that. 
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 0cc05e54a781..d4206db7d6d5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -1181,7 +1181,7 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 	if (!vf)
+ 		return -EINVAL;
+ 
+-	ret = ice_check_vf_ready_for_cfg(vf);
++	ret = ice_check_vf_ready_for_reset(vf);
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+@@ -1296,7 +1296,7 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 		goto out_put_vf;
+ 	}
+ 
+-	ret = ice_check_vf_ready_for_cfg(vf);
++	ret = ice_check_vf_ready_for_reset(vf);
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+@@ -1350,7 +1350,7 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	ret = ice_check_vf_ready_for_cfg(vf);
++	ret = ice_check_vf_ready_for_reset(vf);
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+@@ -1663,7 +1663,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 	if (!vf)
+ 		return -EINVAL;
+ 
+-	ret = ice_check_vf_ready_for_cfg(vf);
++	ret = ice_check_vf_ready_for_reset(vf);
+ 	if (ret)
+ 		goto out_put_vf;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index 0e57bd1b85fd..f206293a8cf1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -185,6 +185,26 @@ int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
+ 	return 0;
+ }
+ 
++/**
++ * ice_check_vf_ready_for_reset - check if VF is ready to be reseted
++ * @vf: VF to check if it's ready to be reseted
++ *
++ * The purpose of this function is to ensure that the VF is not in reset,
++ * disabled, and is both initialized and active, thus enabling us to safely
++ * initialize another reset.
++ */
++int ice_check_vf_ready_for_reset(struct ice_vf *vf)
++{
++	int ret;
++
++	ret = ice_check_vf_ready_for_cfg(vf);
++
++	if (!ret && !test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
++		ret = -EAGAIN;
++
++	return ret;
++}
++
+ /**
+  * ice_trigger_vf_reset - Reset a VF on HW
+  * @vf: pointer to the VF structure
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+index ef30f05b5d02..3fc6a0a8d955 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+@@ -215,6 +215,7 @@ u16 ice_get_num_vfs(struct ice_pf *pf);
+ struct ice_vsi *ice_get_vf_vsi(struct ice_vf *vf);
+ bool ice_is_vf_disabled(struct ice_vf *vf);
+ int ice_check_vf_ready_for_cfg(struct ice_vf *vf);
++int ice_check_vf_ready_for_reset(struct ice_vf *vf);
+ void ice_set_vf_state_dis(struct ice_vf *vf);
+ bool ice_is_any_vf_in_unicast_promisc(struct ice_pf *pf);
+ void
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index e24e3f5017ca..d8c66baf4eb4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -3908,6 +3908,7 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 		ice_vc_notify_vf_link_state(vf);
+ 		break;
+ 	case VIRTCHNL_OP_RESET_VF:
++		clear_bit(ICE_VF_STATE_ACTIVE, vf->vf_states);
+ 		ops->reset_vf(vf);
+ 		break;
+ 	case VIRTCHNL_OP_ADD_ETH_ADDR:
+-- 
+2.31.1
 
->I wouldn't say the fix is optimal. From what I see, we have such flags
->(correct me if I'm wrong):
->
->TSO			BIT(0)
->[bits 1-7 are used]
->OUTER_SINGLE_VLAN	BIT(8)
->[bits 9-15 are UNused]
->VLAN_S (shift)		16
->[bits 16-31 are used for VLAN tag]
->
->So you have 7 free bits to reuse for &ice_tx_buf_type, but you just
->restored the before-commit ::tx_flags size =\
->I would do the following:
->
->	u32 tx_flags:12;
->	u32 type:4;
->	u32 vid:16;
-
-Ok, will try to refactor it in this way and see whether it'll work.
-
->* no structure size change (even no layout change);
->* ::type range is 0-15 -- more than enough, as the last &ice_tx_buf_type
->  value is 6;
->* ::tx_flags still has 3 free bits left (9, 10, and 11);
->* ::vid makes it easier to set a VLAN tag (no explicit masking-shifting,
->  just don't forget to adjust the places where %ICE_TX_VLAN_{M,S} are
->  used).
->
->Don't just use "first that works" approach =\
->
->>  	DEFINE_DMA_UNMAP_LEN(len);
->>  	DEFINE_DMA_UNMAP_ADDR(dma);
->>  };
->
->Thanks,
->Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
