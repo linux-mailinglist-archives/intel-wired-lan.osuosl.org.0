@@ -1,91 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4B076E43FE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Apr 2023 11:36:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A55F56E43F7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Apr 2023 11:35:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5371E6142C;
-	Mon, 17 Apr 2023 09:36:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5371E6142C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3F563613CA;
+	Mon, 17 Apr 2023 09:35:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F563613CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681724167;
-	bh=HKidn5QY4WD1ni8DMMx2RUQxgRbwh8az2Ygf2YXDykQ=;
+	s=default; t=1681724145;
+	bh=Lh93g4YUsjb7q+DzrNxBDlj9QyD1UjGxepB/XGwQj7U=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2LG06zKnvfJzIOutU+P5ppJ49s77qZ/LeOH0/i4c6iSkIKkUKsmgCbd3kFBC5F1pt
-	 7h/PZvmwCGdtlc/Bi7FsniTNCyUtkJFZvEVboGiTZ+4TBj7SNkQg9RzGg6rfRd87gI
-	 0FNSmg2+I9/u5fTW9S5usQjZUuyoQ7ppJ3y3kYOBoEyAEuEqckE7XHH8WyDaUshsoZ
-	 GvolA14NDbIBd9swUQeyZrazJ1Hp4O5fWH9ufT9corj2nwKkDGimMvICyKpuCyrpkq
-	 dTXwTBe35C3aK5kRdgDvgP61UP9g7uoGAbaVTObwYpnKgr5VZYaoXhZ0SgDyTmvpKf
-	 4RChZXk0a2JJw==
+	b=dIxIg2u/1/6RTsmR02JTHJnhWflycUfK8l30nwbGD09u8VDhRx9OznIkndHQjIp/q
+	 nCf5Hb9oDrrOzsbl3CLY5E/ql5yeP3bchcXHcCJazf50bbrc/QIMSTYm7ixxt69MNF
+	 7f0h37bM9D39TtEkQkAoh+lE84/lTmAmJQCGHmi+cp7yMVxPHmajMPOOsmmYonaHew
+	 7KDJbcnPsOFD7ZIbgjC6OvUTxL7+bqCOyfkb3K3kQhXv0HJOuU89MkpLus63T7oLGj
+	 Gik4Q5p0KHatKi+FBEgyJDtvAjVw7JW/Tan64S1qyIRih2BIuS1/LS1PhveiFAeylo
+	 EdgwF66j5tXQg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vP9vFVl9na5S; Mon, 17 Apr 2023 09:36:06 +0000 (UTC)
+	with ESMTP id yCP7OdTCEMDZ; Mon, 17 Apr 2023 09:35:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 90682613FD;
-	Mon, 17 Apr 2023 09:36:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 90682613FD
+	by smtp3.osuosl.org (Postfix) with ESMTP id CC51C61374;
+	Mon, 17 Apr 2023 09:35:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC51C61374
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CE2C61C40E1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:29 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D3EB1C4121
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 07F58418FA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 07F58418FA
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4771182194
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4771182194
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zo4jNQAdFCof for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Apr 2023 09:35:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4PTiJG-z-thH for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Apr 2023 09:35:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0996E401BF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E35682190
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0996E401BF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="333644096"
-X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="333644096"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1E35682190
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Apr 2023 09:35:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="333644091"
+X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="333644091"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2023 02:35:25 -0700
+ 17 Apr 2023 02:35:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="640899268"
-X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="640899268"
+X-IronPort-AV: E=McAfee;i="6600,9927,10682"; a="640899261"
+X-IronPort-AV: E=Sophos;i="5.99,203,1677571200"; d="scan'208";a="640899261"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
  by orsmga003.jf.intel.com with ESMTP; 17 Apr 2023 02:35:21 -0700
 Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 1ECF337F51;
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id C3DB237F56;
  Mon, 17 Apr 2023 10:35:20 +0100 (IST)
 From: Wojciech Drewek <wojciech.drewek@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 17 Apr 2023 11:34:05 +0200
-Message-Id: <20230417093412.12161-6-wojciech.drewek@intel.com>
+Date: Mon, 17 Apr 2023 11:34:06 +0200
+Message-Id: <20230417093412.12161-7-wojciech.drewek@intel.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230417093412.12161-1-wojciech.drewek@intel.com>
 References: <20230417093412.12161-1-wojciech.drewek@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1681724126; x=1713260126;
+ t=1681724125; x=1713260125;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=L8h+7DwoyEuAnBZ20+LVLoyThmsDTPx60cCjlbN5IVw=;
- b=hgSb/1BFJaifUwYFZmc8kEhhMRKU+Wqh0bX/AC6Cnt6iy+iw7BAgsFcx
- oDO836tKwE35cZOMP5W8aQY0QjffhvbDmIpCRsOM0usc0bociurxsAaek
- jPXOBi4R/24G1ZAgkUM/KjRHHI3ZiTL3+HLCFm7OQgQnaCBeefa7V1qfD
- DMqOqBflpASSslsMjtAyQYvcYC98ftI8Dp01UYymwqVu93mltNpgFGAIf
- AEvY0siSNW+uGg1zLw0c+2EEdcScrfhzaOibwPf1h5ySMxQUyUJwQEohU
- 53Dv8mb2nRXR5ojZXAa+q0lMOx+G3ba704TRKMV6t7YEOQy3WgGmm23cH
+ bh=GuJQiD6RkDYJhyVrZJC0Sje4NKSxONjJUI+NB333rdI=;
+ b=fluguRuBiMfc/jZg13H0m+p9jiZ5mNi2LrLNoemSwL0SFP45ONqypARb
+ CwXhdfYBJMqBDT7/1fcZ0/F1uMD/ku4HVc/kw9WVDB/SUscsb/aDnIdd1
+ 3qK+dwBnzviyV5W0BVR0ndaJ9h/niC9vFY4CHxwX6Ks8mtoMN7/O7y5TU
+ Oy/4gLoW6UcMp+mXc/o1fMl5gAWckWw5eajE5bcMy2AtjzC/zKNLbbxIO
+ wrAHT3iEic8aSTLQryHJu5jf11+IwbU7Kc2EY6K217myaTCKWeyQ9UPyx
+ lu6mNXpLK32c+wnvN8seAZHAcbECOoM80hEroFbN54OIS6FQ1JYVkNUCp
  A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hgSb/1BF
-Subject: [Intel-wired-lan] [PATCH net-next 05/12] ice: Switchdev FDB events
- support
+ header.a=rsa-sha256 header.s=Intel header.b=fluguRuB
+Subject: [Intel-wired-lan] [PATCH net-next 06/12] ice: Add guard rule when
+ creating FDB in switchdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,115 +104,78 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Listen for SWITCHDEV_FDB_{ADD|DEL}_TO_DEVICE events while in switchdev
-mode. Accept these events on both uplink and VF PR ports. Add HW
-rules in newly created workqueue. FDB entries are stored in rhashtable
-for lookup when removing the entry and in the list for cleanup
-purpose. Direction of the HW rule depends on the type of the ports
-on which the FDB event was received:
+From: Marcin Szycik <marcin.szycik@intel.com>
 
-ICE_ESWITCH_BR_UPLINK_PORT:
-TX rule that forwards the packet to the LAN (egress).
+Introduce new "guard" rule upon FDB entry creation.
 
-ICE_ESWITCH_BR_VF_REPR_PORT:
-RX rule that forwards the packet to the VF associated
-with the port representor.
+It matches on src_mac, has valid bit unset, allow_pass_l2 set
+and has a nop action.
 
-In both cases the rule matches on the dst mac address.
-All the FDB entries are stored in the bridge structure.
-When the port is removed all the FDB entries associated with
-this port are removed as well. This is achieved thanks to the reference
-to the port that FDB entry holds.
+Previously introduced "forward" rule matches on dst_mac, has valid
+bit set, need_pass_l2 set and has a forward action.
 
-Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+With these rules, a packet will be offloaded only if FDB exists in both
+directions (RX and TX).
+
+Let's assume link partner sends a packet to VF1: src_mac = LP_MAC,
+dst_mac = is VF1_MAC. Bridge adds FDB, two rules are created:
+1. Guard rule matching on src_mac == LP_MAC
+2. Forward rule matching on dst_mac == LP_MAC
+Now VF1 responds with src_mac = VF1_MAC, dst_mac = LP_MAC. Before this
+change, only one rule with dst_mac == LP_MAC would have existed, and the
+packet would have been offloaded, meaning the bridge wouldn't add FDB in
+the opposite direction. Now, the forward rule matches (dst_mac == LP_MAC),
+but it has need_pass_l2 set an there is no guard rule with
+src_mac == VF1_MAC, so the packet goes through slow-path and the bridge
+adds FDB. Two rules are created:
+1. Guard rule matching on src_mac == VF1_MAC
+2. Forward rule matching on dst_mac == VF1_MAC
+Further packets in both directions will be offloaded.
+
+The same example is true in opposite direction (i.e. VF1 is the first to
+send a packet out).
+
+Signed-off-by: Marcin Szycik <marcin.szycik@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_eswitch_br.c   | 445 ++++++++++++++++++
- .../net/ethernet/intel/ice/ice_eswitch_br.h   |  45 ++
- 2 files changed, 490 insertions(+)
+ .../net/ethernet/intel/ice/ice_eswitch_br.c   | 66 ++++++++++++++++++-
+ .../net/ethernet/intel/ice/ice_eswitch_br.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   | 45 ++++++++++---
+ drivers/net/ethernet/intel/ice/ice_switch.h   |  5 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |  1 +
+ 5 files changed, 109 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
-index 02406f870c83..4008665d5383 100644
+index 4008665d5383..82b5eb2020cd 100644
 --- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
 +++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
-@@ -4,6 +4,14 @@
- #include "ice.h"
- #include "ice_eswitch_br.h"
- #include "ice_repr.h"
-+#include "ice_switch.h"
-+
-+static const struct rhashtable_params ice_fdb_ht_params = {
-+	.key_offset = offsetof(struct ice_esw_br_fdb_entry, data),
-+	.key_len = sizeof(struct ice_esw_br_fdb_data),
-+	.head_offset = offsetof(struct ice_esw_br_fdb_entry, ht_node),
-+	.automatic_shrinking = true,
-+};
+@@ -116,6 +116,8 @@ ice_eswitch_br_fwd_rule_create(struct ice_hw *hw, u16 vsi_idx, int port_type,
+ 		goto err_add_rule;
+ 	}
  
- static bool ice_eswitch_br_is_dev_valid(const struct net_device *dev)
- {
-@@ -27,12 +35,417 @@ ice_eswitch_br_netdev_to_port(struct net_device *dev)
- 	return NULL;
++	rule_info.need_pass_l2 = true;
++
+ 	rule_info.sw_act.fltr_act = ICE_FWD_TO_VSI;
+ 
+ 	err = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info, rule);
+@@ -134,11 +136,56 @@ ice_eswitch_br_fwd_rule_create(struct ice_hw *hw, u16 vsi_idx, int port_type,
+ 	return ERR_PTR(err);
  }
  
-+static void
-+ice_eswitch_br_ingress_rule_setup(struct ice_adv_lkup_elem *list,
-+				  struct ice_adv_rule_info *rule_info,
-+				  const unsigned char *mac,
-+				  u8 pf_id, u16 vf_vsi_idx)
-+{
-+	list[0].type = ICE_MAC_OFOS;
-+	ether_addr_copy(list[0].h_u.eth_hdr.dst_addr, mac);
-+	eth_broadcast_addr(list[0].m_u.eth_hdr.dst_addr);
-+
-+	rule_info->sw_act.vsi_handle = vf_vsi_idx;
-+	rule_info->sw_act.flag |= ICE_FLTR_RX;
-+	rule_info->sw_act.src = pf_id;
-+	rule_info->priority = 5;
-+}
-+
-+static void
-+ice_eswitch_br_egress_rule_setup(struct ice_adv_lkup_elem *list,
-+				 struct ice_adv_rule_info *rule_info,
-+				 const unsigned char *mac,
-+				 u16 pf_vsi_idx)
-+{
-+	list[0].type = ICE_MAC_OFOS;
-+	ether_addr_copy(list[0].h_u.eth_hdr.dst_addr, mac);
-+	eth_broadcast_addr(list[0].m_u.eth_hdr.dst_addr);
-+
-+	rule_info->sw_act.vsi_handle = pf_vsi_idx;
-+	rule_info->sw_act.flag |= ICE_FLTR_TX;
-+	rule_info->flags_info.act = ICE_SINGLE_ACT_LAN_ENABLE;
-+	rule_info->flags_info.act_valid = true;
-+	rule_info->priority = 5;
-+}
-+
-+static int
-+ice_eswitch_br_rule_delete(struct ice_hw *hw, struct ice_rule_query_data *rule)
-+{
-+	int err;
-+
-+	if (!rule)
-+		return -EINVAL;
-+
-+	err = ice_rem_adv_rule_by_id(hw, rule);
-+	kfree(rule);
-+
-+	return err;
-+}
-+
 +static struct ice_rule_query_data *
-+ice_eswitch_br_fwd_rule_create(struct ice_hw *hw, u16 vsi_idx, int port_type,
-+			       const unsigned char *mac)
++ice_eswitch_br_guard_rule_create(struct ice_hw *hw, u16 vsi_idx,
++				 const unsigned char *mac)
 +{
 +	struct ice_adv_rule_info rule_info = { 0 };
 +	struct ice_rule_query_data *rule;
 +	struct ice_adv_lkup_elem *list;
-+	u16 lkups_cnt = 1;
++	const u16 lkups_cnt = 1;
 +	int err;
 +
 +	rule = kzalloc(sizeof(*rule), GFP_KERNEL);
-+	if (!rule)
-+		return ERR_PTR(-ENOMEM);
++	if (!rule) {
++		err = -ENOMEM;
++		goto err_exit;
++	}
 +
 +	list = kcalloc(lkups_cnt, sizeof(*list), GFP_ATOMIC);
 +	if (!list) {
@@ -220,27 +183,18 @@ index 02406f870c83..4008665d5383 100644
 +		goto err_list_alloc;
 +	}
 +
-+	switch (port_type) {
-+	case ICE_ESWITCH_BR_UPLINK_PORT:
-+		ice_eswitch_br_egress_rule_setup(list, &rule_info, mac,
-+						 vsi_idx);
-+		break;
-+	case ICE_ESWITCH_BR_VF_REPR_PORT:
-+		ice_eswitch_br_ingress_rule_setup(list, &rule_info, mac,
-+						  hw->pf_id, vsi_idx);
-+		break;
-+	default:
-+		err = -EINVAL;
-+		goto err_add_rule;
-+	}
++	list[0].type = ICE_MAC_OFOS;
++	ether_addr_copy(list[0].h_u.eth_hdr.src_addr, mac);
++	eth_broadcast_addr(list[0].m_u.eth_hdr.src_addr);
 +
-+	rule_info.sw_act.fltr_act = ICE_FWD_TO_VSI;
++	rule_info.allow_pass_l2 = true;
++	rule_info.sw_act.vsi_handle = vsi_idx;
++	rule_info.sw_act.fltr_act = ICE_NOP;
++	rule_info.priority = 5;
 +
 +	err = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info, rule);
 +	if (err)
 +		goto err_add_rule;
-+
-+	kfree(list);
 +
 +	return rule;
 +
@@ -248,473 +202,235 @@ index 02406f870c83..4008665d5383 100644
 +	kfree(list);
 +err_list_alloc:
 +	kfree(rule);
-+
++err_exit:
 +	return ERR_PTR(err);
 +}
 +
-+static struct ice_esw_br_flow *
-+ice_eswitch_br_flow_create(struct device *dev, struct ice_hw *hw, u16 vsi_idx,
-+			   int port_type, const unsigned char *mac)
-+{
-+	struct ice_rule_query_data *fwd_rule;
-+	struct ice_esw_br_flow *flow;
-+	int err;
-+
-+	flow = kzalloc(sizeof(*flow), GFP_KERNEL);
-+	if (!flow)
-+		return ERR_PTR(-ENOMEM);
-+
-+	fwd_rule = ice_eswitch_br_fwd_rule_create(hw, vsi_idx, port_type, mac);
-+	if (IS_ERR(fwd_rule)) {
-+		err = PTR_ERR(fwd_rule);
-+		dev_err(dev, "Failed to create eswitch bridge %sgress forward rule, err: %d\n",
-+			port_type == ICE_ESWITCH_BR_UPLINK_PORT ? "e" : "in",
-+			err);
-+		goto err_fwd_rule;
-+	}
-+
-+	flow->fwd_rule = fwd_rule;
-+
-+	return flow;
-+
-+err_fwd_rule:
-+	kfree(flow);
-+
-+	return ERR_PTR(err);
-+}
-+
-+static struct ice_esw_br_fdb_entry *
-+ice_eswitch_br_fdb_find(struct ice_esw_br *bridge, const unsigned char *mac,
-+			u16 vid)
-+{
-+	struct ice_esw_br_fdb_data data = {};
-+
-+	ether_addr_copy(data.addr, mac);
-+	data.vid = vid;
-+	return rhashtable_lookup_fast(&bridge->fdb_ht, &data,
-+				      ice_fdb_ht_params);
-+}
-+
-+static void
-+ice_eswitch_br_flow_delete(struct ice_pf *pf, struct ice_esw_br_flow *flow)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	int err;
-+
-+	err = ice_eswitch_br_rule_delete(&pf->hw, flow->fwd_rule);
-+	if (err)
-+		dev_err(dev, "Failed to delete FDB forward rule, err: %d\n",
-+			err);
-+
-+	kfree(flow);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_entry_delete(struct ice_esw_br *bridge,
-+				struct ice_esw_br_fdb_entry *fdb_entry)
-+{
-+	struct ice_pf *pf = bridge->br_offloads->pf;
-+
-+	rhashtable_remove_fast(&bridge->fdb_ht, &fdb_entry->ht_node,
-+			       ice_fdb_ht_params);
-+	list_del(&fdb_entry->list);
-+
-+	ice_eswitch_br_flow_delete(pf, fdb_entry->flow);
-+
-+	kfree(fdb_entry);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_offload_notify(struct net_device *dev,
-+				  const unsigned char *mac, u16 vid,
-+				  unsigned long val)
-+{
-+	struct switchdev_notifier_fdb_info fdb_info;
-+
-+	fdb_info.addr = mac;
-+	fdb_info.vid = vid;
-+	fdb_info.offloaded = true;
-+	call_switchdev_notifiers(val, dev, &fdb_info.info, NULL);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_entry_notify_and_cleanup(struct ice_esw_br *bridge,
-+					    struct ice_esw_br_fdb_entry *entry)
-+{
-+	if (!(entry->flags & ICE_ESWITCH_BR_FDB_ADDED_BY_USER))
-+		ice_eswitch_br_fdb_offload_notify(entry->dev, entry->data.addr,
-+						  entry->data.vid,
-+						  SWITCHDEV_FDB_DEL_TO_BRIDGE);
-+	ice_eswitch_br_fdb_entry_delete(bridge, entry);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_entry_find_and_delete(struct ice_esw_br *bridge,
-+					 const unsigned char *mac, u16 vid)
-+{
-+	struct ice_pf *pf = bridge->br_offloads->pf;
-+	struct ice_esw_br_fdb_entry *fdb_entry;
-+	struct device *dev = ice_pf_to_dev(pf);
-+
-+	fdb_entry = ice_eswitch_br_fdb_find(bridge, mac, vid);
-+	if (!fdb_entry) {
-+		dev_err(dev, "FDB entry with mac: %pM and vid: %u not found\n",
-+			mac, vid);
-+		return;
-+	}
-+
-+	ice_eswitch_br_fdb_entry_notify_and_cleanup(bridge, fdb_entry);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_entry_create(struct net_device *netdev,
-+				struct ice_esw_br_port *br_port,
-+				bool added_by_user,
-+				const unsigned char *mac, u16 vid)
-+{
-+	struct ice_esw_br *bridge = br_port->bridge;
-+	struct ice_pf *pf = bridge->br_offloads->pf;
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_esw_br_fdb_entry *fdb_entry;
-+	struct ice_esw_br_flow *flow;
-+	struct ice_hw *hw = &pf->hw;
-+	unsigned long event;
-+	int err;
-+
-+	fdb_entry = ice_eswitch_br_fdb_find(bridge, mac, vid);
-+	if (fdb_entry)
-+		ice_eswitch_br_fdb_entry_notify_and_cleanup(bridge, fdb_entry);
-+
-+	fdb_entry = kzalloc(sizeof(*fdb_entry), GFP_KERNEL);
-+	if (!fdb_entry) {
-+		err = -ENOMEM;
-+		goto err_exit;
-+	}
-+
-+	flow = ice_eswitch_br_flow_create(dev, hw, br_port->vsi_idx,
-+					  br_port->type, mac);
-+	if (IS_ERR(flow)) {
-+		err = PTR_ERR(flow);
-+		goto err_add_flow;
-+	}
-+
-+	ether_addr_copy(fdb_entry->data.addr, mac);
-+	fdb_entry->data.vid = vid;
-+	fdb_entry->br_port = br_port;
-+	fdb_entry->flow = flow;
-+	fdb_entry->dev = netdev;
-+	event = SWITCHDEV_FDB_ADD_TO_BRIDGE;
-+
-+	if (added_by_user) {
-+		fdb_entry->flags |= ICE_ESWITCH_BR_FDB_ADDED_BY_USER;
-+		event = SWITCHDEV_FDB_OFFLOADED;
-+	}
-+
-+	err = rhashtable_insert_fast(&bridge->fdb_ht, &fdb_entry->ht_node,
-+				     ice_fdb_ht_params);
-+	if (err)
-+		goto err_fdb_insert;
-+
-+	list_add(&fdb_entry->list, &bridge->fdb_list);
-+
-+	ice_eswitch_br_fdb_offload_notify(netdev, mac, vid, event);
-+
-+	return;
-+
-+err_fdb_insert:
-+	ice_eswitch_br_flow_delete(pf, flow);
-+err_add_flow:
-+	kfree(fdb_entry);
-+err_exit:
-+	dev_err(dev, "Failed to create fdb entry, err: %d\n", err);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_work_dealloc(struct ice_esw_br_fdb_work *fdb_work)
-+{
-+	kfree(fdb_work->fdb_info.addr);
-+	kfree(fdb_work);
-+}
-+
-+static void
-+ice_eswitch_br_fdb_event_work(struct work_struct *work)
-+{
-+	struct ice_esw_br_fdb_work *fdb_work = ice_work_to_fdb_work(work);
-+	bool added_by_user = fdb_work->fdb_info.added_by_user;
-+	struct ice_esw_br_port *br_port = fdb_work->br_port;
-+	const unsigned char *mac = fdb_work->fdb_info.addr;
-+	u16 vid = fdb_work->fdb_info.vid;
-+
-+	rtnl_lock();
-+
-+	if (!br_port || !br_port->bridge)
-+		goto err_exit;
-+
-+	switch (fdb_work->event) {
-+	case SWITCHDEV_FDB_ADD_TO_DEVICE:
-+		ice_eswitch_br_fdb_entry_create(fdb_work->dev, br_port,
-+						added_by_user, mac, vid);
-+		break;
-+	case SWITCHDEV_FDB_DEL_TO_DEVICE:
-+		ice_eswitch_br_fdb_entry_find_and_delete(br_port->bridge,
-+							 mac, vid);
-+		break;
-+	default:
-+		goto err_exit;
-+	}
-+
-+err_exit:
-+	rtnl_unlock();
-+	dev_put(fdb_work->dev);
-+	ice_eswitch_br_fdb_work_dealloc(fdb_work);
-+}
-+
-+static struct ice_esw_br_fdb_work *
-+ice_eswitch_br_fdb_work_alloc(struct switchdev_notifier_fdb_info *fdb_info,
-+			      struct ice_esw_br_port *br_port,
-+			      struct net_device *dev,
-+			      unsigned long event)
-+{
-+	struct ice_esw_br_fdb_work *work;
-+	unsigned char *mac;
-+
-+	work = kzalloc(sizeof(*work), GFP_ATOMIC);
-+	if (!work)
-+		return ERR_PTR(-ENOMEM);
-+
-+	INIT_WORK(&work->work, ice_eswitch_br_fdb_event_work);
-+	memcpy(&work->fdb_info, fdb_info, sizeof(work->fdb_info));
-+
-+	mac = kzalloc(ETH_ALEN, GFP_ATOMIC);
-+	if (!mac) {
-+		kfree(work);
-+		return ERR_PTR(-ENOMEM);
-+	}
-+
-+	ether_addr_copy(mac, fdb_info->addr);
-+	work->fdb_info.addr = mac;
-+	work->br_port = br_port;
-+	work->event = event;
-+	work->dev = dev;
-+
-+	return work;
-+}
-+
-+static int
-+ice_eswitch_br_switchdev_event(struct notifier_block *nb,
-+			       unsigned long event, void *ptr)
-+{
-+	struct net_device *dev = switchdev_notifier_info_to_dev(ptr);
-+	struct ice_esw_br_offloads *br_offloads =
-+		ice_nb_to_br_offloads(nb, switchdev_nb);
-+	struct netlink_ext_ack *extack =
-+		switchdev_notifier_info_to_extack(ptr);
-+	struct switchdev_notifier_fdb_info *fdb_info;
-+	struct switchdev_notifier_info *info = ptr;
-+	struct ice_esw_br_fdb_work *work;
-+	struct net_device *upper;
-+	struct ice_esw_br_port *br_port;
-+
-+	upper = netdev_master_upper_dev_get_rcu(dev);
-+	if (!upper)
-+		return NOTIFY_DONE;
-+
-+	if (!netif_is_bridge_master(upper))
-+		return NOTIFY_DONE;
-+
-+	if (!ice_eswitch_br_is_dev_valid(dev))
-+		return NOTIFY_DONE;
-+
-+	br_port = ice_eswitch_br_netdev_to_port(dev);
-+	if (!br_port)
-+		return NOTIFY_DONE;
-+
-+	switch (event) {
-+	case SWITCHDEV_FDB_ADD_TO_DEVICE:
-+	case SWITCHDEV_FDB_DEL_TO_DEVICE:
-+		fdb_info = container_of(info,
-+					struct switchdev_notifier_fdb_info,
-+					info);
-+
-+		work = ice_eswitch_br_fdb_work_alloc(fdb_info, br_port, dev,
-+						     event);
-+		if (IS_ERR(work)) {
-+			NL_SET_ERR_MSG_MOD(extack, "Failed to init switchdev fdb work");
-+			return notifier_from_errno(PTR_ERR(work));
-+		}
-+		dev_hold(dev);
-+
-+		queue_work(br_offloads->wq, &work->work);
-+		break;
-+	default:
-+		break;
-+	}
-+	return NOTIFY_DONE;
-+}
-+
- static void
- ice_eswitch_br_port_deinit(struct ice_esw_br *bridge,
- 			   struct ice_esw_br_port *br_port)
+ static struct ice_esw_br_flow *
+ ice_eswitch_br_flow_create(struct device *dev, struct ice_hw *hw, u16 vsi_idx,
+ 			   int port_type, const unsigned char *mac)
  {
-+	struct ice_esw_br_fdb_entry *fdb_entry, *tmp;
- 	struct ice_vsi *vsi = br_port->vsi;
+-	struct ice_rule_query_data *fwd_rule;
++	struct ice_rule_query_data *fwd_rule, *guard_rule;
+ 	struct ice_esw_br_flow *flow;
+ 	int err;
  
-+	list_for_each_entry_safe(fdb_entry, tmp, &bridge->fdb_list, list) {
-+		if (br_port == fdb_entry->br_port)
-+			ice_eswitch_br_fdb_entry_delete(bridge, fdb_entry);
-+	}
-+
- 	if (br_port->type == ICE_ESWITCH_BR_UPLINK_PORT && vsi->back)
- 		vsi->back->br_port = NULL;
- 	else if (vsi->vf)
-@@ -129,6 +542,8 @@ ice_eswitch_br_deinit(struct ice_esw_br_offloads *br_offloads,
- 	ice_eswitch_br_ports_flush(bridge);
- 	WARN_ON(!xa_empty(&bridge->ports));
- 	xa_destroy(&bridge->ports);
-+	rhashtable_destroy(&bridge->fdb_ht);
-+
- 	br_offloads->bridge = NULL;
- 	kfree(bridge);
- }
-@@ -137,11 +552,19 @@ static struct ice_esw_br *
- ice_eswitch_br_init(struct ice_esw_br_offloads *br_offloads, int ifindex)
- {
- 	struct ice_esw_br *bridge;
-+	int err;
- 
- 	bridge = kzalloc(sizeof(*bridge), GFP_KERNEL);
- 	if (!bridge)
- 		return ERR_PTR(-ENOMEM);
- 
-+	err = rhashtable_init(&bridge->fdb_ht, &ice_fdb_ht_params);
-+	if (err) {
-+		kfree(bridge);
-+		return ERR_PTR(err);
-+	}
-+
-+	INIT_LIST_HEAD(&bridge->fdb_list);
- 	bridge->br_offloads = br_offloads;
- 	bridge->ifindex = ifindex;
- 	xa_init(&bridge->ports);
-@@ -335,6 +758,8 @@ ice_eswitch_br_offloads_deinit(struct ice_pf *pf)
- 		return;
- 
- 	unregister_netdevice_notifier(&br_offloads->netdev_nb);
-+	unregister_switchdev_notifier(&br_offloads->switchdev_nb);
-+	destroy_workqueue(br_offloads->wq);
- 	/* Although notifier block is unregistered just before,
- 	 * so we don't get any new events, some events might be
- 	 * already in progress. Hold the rtnl lock and wait for
-@@ -360,6 +785,22 @@ ice_eswitch_br_offloads_init(struct ice_pf *pf)
- 		return PTR_ERR(br_offloads);
+@@ -155,10 +202,22 @@ ice_eswitch_br_flow_create(struct device *dev, struct ice_hw *hw, u16 vsi_idx,
+ 		goto err_fwd_rule;
  	}
  
-+	br_offloads->wq = alloc_ordered_workqueue("ice_bridge_wq", 0);
-+	if (!br_offloads->wq) {
-+		err = -ENOMEM;
-+		dev_err(dev, "Failed to allocate bridge workqueue\n");
-+		goto err_alloc_wq;
++	guard_rule = ice_eswitch_br_guard_rule_create(hw, vsi_idx, mac);
++	if (IS_ERR(guard_rule)) {
++		err = PTR_ERR(guard_rule);
++		dev_err(dev, "Failed to create eswitch bridge %sgress guard rule, err: %d\n",
++			port_type == ICE_ESWITCH_BR_UPLINK_PORT ? "e" : "in",
++			err);
++		goto err_guard_rule;
 +	}
 +
-+	br_offloads->switchdev_nb.notifier_call =
-+		ice_eswitch_br_switchdev_event;
-+	err = register_switchdev_notifier(&br_offloads->switchdev_nb);
-+	if (err) {
-+		dev_err(dev,
-+			"Failed to register switchdev notifier\n");
-+		goto err_reg_switchdev_nb;
-+	}
-+
- 	br_offloads->netdev_nb.notifier_call = ice_eswitch_br_port_event;
- 	err = register_netdevice_notifier(&br_offloads->netdev_nb);
- 	if (err) {
-@@ -371,6 +812,10 @@ ice_eswitch_br_offloads_init(struct ice_pf *pf)
- 	return 0;
+ 	flow->fwd_rule = fwd_rule;
++	flow->guard_rule = guard_rule;
  
- err_reg_netdev_nb:
-+	unregister_switchdev_notifier(&br_offloads->switchdev_nb);
-+err_reg_switchdev_nb:
-+	destroy_workqueue(br_offloads->wq);
-+err_alloc_wq:
- 	rtnl_lock();
- 	ice_eswitch_br_offloads_dealloc(pf);
- 	rtnl_unlock();
+ 	return flow;
+ 
++err_guard_rule:
++	ice_eswitch_br_rule_delete(hw, fwd_rule);
+ err_fwd_rule:
+ 	kfree(flow);
+ 
+@@ -188,6 +247,11 @@ ice_eswitch_br_flow_delete(struct ice_pf *pf, struct ice_esw_br_flow *flow)
+ 		dev_err(dev, "Failed to delete FDB forward rule, err: %d\n",
+ 			err);
+ 
++	err = ice_eswitch_br_rule_delete(&pf->hw, flow->guard_rule);
++	if (err)
++		dev_err(dev, "Failed to delete FDB guard rule, err: %d\n",
++			err);
++
+ 	kfree(flow);
+ }
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
-index 53ea29569c36..4069eb45617e 100644
+index 4069eb45617e..73ad81bad655 100644
 --- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
 +++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
-@@ -4,6 +4,33 @@
- #ifndef _ICE_ESWITCH_BR_H_
- #define _ICE_ESWITCH_BR_H_
+@@ -13,6 +13,7 @@ struct ice_esw_br_fdb_data {
  
-+#include <linux/rhashtable.h>
-+
-+struct ice_esw_br_fdb_data {
-+	unsigned char addr[ETH_ALEN];
-+	u16 vid;
-+};
-+
-+struct ice_esw_br_flow {
-+	struct ice_rule_query_data *fwd_rule;
-+};
-+
-+enum {
-+	ICE_ESWITCH_BR_FDB_ADDED_BY_USER = BIT(0),
-+};
-+
-+struct ice_esw_br_fdb_entry {
-+	struct ice_esw_br_fdb_data data;
-+	struct rhash_head ht_node;
-+	struct list_head list;
-+
-+	int flags;
-+
-+	struct net_device *dev;
-+	struct ice_esw_br_port *br_port;
-+	struct ice_esw_br_flow *flow;
-+};
-+
- enum ice_esw_br_port_type {
- 	ICE_ESWITCH_BR_UPLINK_PORT = 0,
- 	ICE_ESWITCH_BR_VF_REPR_PORT = 1,
-@@ -21,12 +48,25 @@ struct ice_esw_br {
- 	int ifindex;
- 
- 	struct xarray ports;
-+	struct rhashtable fdb_ht;
-+	struct list_head fdb_list;
+ struct ice_esw_br_flow {
+ 	struct ice_rule_query_data *fwd_rule;
++	struct ice_rule_query_data *guard_rule;
  };
  
- struct ice_esw_br_offloads {
- 	struct ice_pf *pf;
- 	struct ice_esw_br *bridge;
- 	struct notifier_block netdev_nb;
-+	struct notifier_block switchdev_nb;
+ enum {
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 2ea9e1ae5517..6fbed7ccc5a9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -2277,6 +2277,10 @@ ice_get_recp_frm_fw(struct ice_hw *hw, struct ice_sw_recipe *recps, u8 rid,
+ 		/* Propagate some data to the recipe database */
+ 		recps[idx].is_root = !!is_root;
+ 		recps[idx].priority = root_bufs.content.act_ctrl_fwd_priority;
++		recps[idx].need_pass_l2 = root_bufs.content.act_ctrl &
++					  ICE_AQ_RECIPE_ACT_NEED_PASS_L2;
++		recps[idx].allow_pass_l2 = root_bufs.content.act_ctrl &
++					   ICE_AQ_RECIPE_ACT_ALLOW_PASS_L2;
+ 		bitmap_zero(recps[idx].res_idxs, ICE_MAX_FV_WORDS);
+ 		if (root_bufs.content.result_indx & ICE_AQ_RECIPE_RESULT_EN) {
+ 			recps[idx].chain_idx = root_bufs.content.result_indx &
+@@ -4624,7 +4628,7 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+  */
+ static u16
+ ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
+-	      enum ice_sw_tunnel_type tun_type)
++	      struct ice_adv_rule_info *rinfo)
+ {
+ 	bool refresh_required = true;
+ 	struct ice_sw_recipe *recp;
+@@ -4685,9 +4689,12 @@ ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
+ 			}
+ 			/* If for "i"th recipe the found was never set to false
+ 			 * then it means we found our match
+-			 * Also tun type of recipe needs to be checked
++			 * Also tun type and *_pass_l2 of recipe needs to be
++			 * checked
+ 			 */
+-			if (found && recp[i].tun_type == tun_type)
++			if (found && recp[i].tun_type == rinfo->tun_type &&
++			    recp[i].need_pass_l2 == rinfo->need_pass_l2 &&
++			    recp[i].allow_pass_l2 == rinfo->allow_pass_l2)
+ 				return i; /* Return the recipe ID */
+ 		}
+ 	}
+@@ -5075,6 +5082,14 @@ ice_add_sw_recipe(struct ice_hw *hw, struct ice_sw_recipe *rm,
+ 		set_bit(buf[recps].recipe_indx,
+ 			(unsigned long *)buf[recps].recipe_bitmap);
+ 		buf[recps].content.act_ctrl_fwd_priority = rm->priority;
 +
-+	struct workqueue_struct *wq;
-+};
++		if (rm->need_pass_l2)
++			buf[recps].content.act_ctrl |=
++				ICE_AQ_RECIPE_ACT_NEED_PASS_L2;
 +
-+struct ice_esw_br_fdb_work {
-+	struct work_struct work;
-+	struct switchdev_notifier_fdb_info fdb_info;
-+	struct ice_esw_br_port *br_port;
-+	struct net_device *dev;
-+	unsigned long event;
++		if (rm->allow_pass_l2)
++			buf[recps].content.act_ctrl |=
++				ICE_AQ_RECIPE_ACT_ALLOW_PASS_L2;
+ 		recps++;
+ 	}
+ 
+@@ -5225,6 +5240,8 @@ ice_add_sw_recipe(struct ice_hw *hw, struct ice_sw_recipe *rm,
+ 		recp->priority = buf[buf_idx].content.act_ctrl_fwd_priority;
+ 		recp->n_grp_count = rm->n_grp_count;
+ 		recp->tun_type = rm->tun_type;
++		recp->need_pass_l2 = rm->need_pass_l2;
++		recp->allow_pass_l2 = rm->allow_pass_l2;
+ 		recp->recp_created = true;
+ 	}
+ 	rm->root_buf = buf;
+@@ -5393,6 +5410,9 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	/* set the recipe priority if specified */
+ 	rm->priority = (u8)rinfo->priority;
+ 
++	rm->need_pass_l2 = rinfo->need_pass_l2;
++	rm->allow_pass_l2 = rinfo->allow_pass_l2;
++
+ 	/* Find offsets from the field vector. Pick the first one for all the
+ 	 * recipes.
+ 	 */
+@@ -5408,7 +5428,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	}
+ 
+ 	/* Look for a recipe which matches our requested fv / mask list */
+-	*rid = ice_find_recp(hw, lkup_exts, rinfo->tun_type);
++	*rid = ice_find_recp(hw, lkup_exts, rinfo);
+ 	if (*rid < ICE_MAX_NUM_RECIPES)
+ 		/* Success if found a recipe that match the existing criteria */
+ 		goto err_unroll;
+@@ -5846,7 +5866,9 @@ static bool ice_rules_equal(const struct ice_adv_rule_info *first,
+ 	return first->sw_act.flag == second->sw_act.flag &&
+ 	       first->tun_type == second->tun_type &&
+ 	       first->vlan_type == second->vlan_type &&
+-	       first->src_vsi == second->src_vsi;
++	       first->src_vsi == second->src_vsi &&
++	       first->need_pass_l2 == second->need_pass_l2 &&
++	       first->allow_pass_l2 == second->allow_pass_l2;
+ }
+ 
+ /**
+@@ -6085,7 +6107,8 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 	if (!(rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI ||
+ 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_Q ||
+ 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_QGRP ||
+-	      rinfo->sw_act.fltr_act == ICE_DROP_PACKET)) {
++	      rinfo->sw_act.fltr_act == ICE_DROP_PACKET ||
++	      rinfo->sw_act.fltr_act == ICE_NOP)) {
+ 		status = -EIO;
+ 		goto free_pkt_profile;
+ 	}
+@@ -6096,7 +6119,8 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 		goto free_pkt_profile;
+ 	}
+ 
+-	if (rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI)
++	if (rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI ||
++	    rinfo->sw_act.fltr_act == ICE_NOP)
+ 		rinfo->sw_act.fwd_id.hw_vsi_id =
+ 			ice_get_hw_vsi_num(hw, vsi_handle);
+ 
+@@ -6166,6 +6190,11 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 		act |= ICE_SINGLE_ACT_VSI_FORWARDING | ICE_SINGLE_ACT_DROP |
+ 		       ICE_SINGLE_ACT_VALID_BIT;
+ 		break;
++	case ICE_NOP:
++		act |= (rinfo->sw_act.fwd_id.hw_vsi_id <<
++			ICE_SINGLE_ACT_VSI_ID_S) & ICE_SINGLE_ACT_VSI_ID_M;
++		act &= ~ICE_SINGLE_ACT_VALID_BIT;
++		break;
+ 	default:
+ 		status = -EIO;
+ 		goto err_ice_add_adv_rule;
+@@ -6446,7 +6475,7 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+ 			return -EIO;
+ 	}
+ 
+-	rid = ice_find_recp(hw, &lkup_exts, rinfo->tun_type);
++	rid = ice_find_recp(hw, &lkup_exts, rinfo);
+ 	/* If did not find a recipe that match the existing criteria */
+ 	if (rid == ICE_MAX_NUM_RECIPES)
+ 		return -EINVAL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index c84b56fe84a5..5ecce39cf1f5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -191,6 +191,8 @@ struct ice_adv_rule_info {
+ 	u16 vlan_type;
+ 	u16 fltr_rule_id;
+ 	u32 priority;
++	u8 need_pass_l2;
++	u8 allow_pass_l2;
+ 	u16 src_vsi;
+ 	struct ice_sw_act_ctrl sw_act;
+ 	struct ice_adv_rule_flags_info flags_info;
+@@ -254,6 +256,9 @@ struct ice_sw_recipe {
+ 	 */
+ 	u8 priority;
+ 
++	u8 need_pass_l2;
++	u8 allow_pass_l2;
++
+ 	struct list_head rg_list;
+ 
+ 	/* AQ buffer associated with this recipe */
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 5602695243a8..96977d6fc149 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -1034,6 +1034,7 @@ enum ice_sw_fwd_act_type {
+ 	ICE_FWD_TO_Q,
+ 	ICE_FWD_TO_QGRP,
+ 	ICE_DROP_PACKET,
++	ICE_NOP,
+ 	ICE_INVAL_ACT
  };
  
- #define ice_nb_to_br_offloads(nb, nb_name) \
-@@ -34,6 +74,11 @@ struct ice_esw_br_offloads {
- 		     struct ice_esw_br_offloads, \
- 		     nb_name)
- 
-+#define ice_work_to_fdb_work(w) \
-+	container_of(w, \
-+		     struct ice_esw_br_fdb_work, \
-+		     work)
-+
- void
- ice_eswitch_br_offloads_deinit(struct ice_pf *pf);
- int
 -- 
 2.39.2
 
