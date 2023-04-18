@@ -1,96 +1,119 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A9826E65ED
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Apr 2023 15:31:19 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0293B6E668D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Apr 2023 16:01:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 61AD741DDC;
-	Tue, 18 Apr 2023 13:31:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61AD741DDC
+	by smtp3.osuosl.org (Postfix) with ESMTP id 911D2614F9;
+	Tue, 18 Apr 2023 14:01:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 911D2614F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681824677;
-	bh=rb3c1Pbt49MtLECnkgmX3MutNNWP3O7US4u1sd77Xfc=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1681826504;
+	bh=IViOvEYJg3pnG+oPSYVVrwMThsWHHUdyak7O63Ciuhg=;
+	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mrsi34RPq6ZXZa4ort4fpXlkNJ3ssY3CRMMUKHOLo0xgX+VE5fZ29PrRZZfOHa5lW
-	 v3PPfr+kpoQ68QJ0uaXMiLvMGlMiDPVqmbaYeYMdbx+rpAuwQqZ1xL+z9pGm48v7uI
-	 nQ7L7GS/+RV2BnoXvipKJ+fm7BugttimFJWNcLMW01ju5l1yNyh74mtu9bVzrDJaoq
-	 U2i2+CHE032bfXPTIBGlYrjysGlyVd0x2AF9u5WquHVnkOL/jsiHyiyXsi5CKmFbp8
-	 fPkM2y4e/VZBFOnULyAIX7SfAfCshFwSkKi5caNMNPr3wAfYwy53PFwEcNbOgSICs0
-	 gd00/sT4wf1YQ==
+	b=uxUjCkh4E4LUwximw2XnvwvY/adMskLfm9NcC/VGuYctBlRi2zvPJDtOyzb8SmrqZ
+	 +CZYm/YYqfF9gGbbvFalK7e7sSE1cuOrWwpUj6gaoYgcbEt+am1KhXxLw1Ck6OAaxB
+	 xVLZ234/2lG9rw+ohiUNfqFhGpTFcRMfYPNqaHmnKQREQlimwFqAJKBDF7yH79e1te
+	 ziFBKA7SK77SdDUkgWkbdFwVoasJRGLXvUeRrBV8EB7FHkH85eUe/TQEeXi2lorrrX
+	 3bxNfFHzKFCM5GbRY+ZCdPQNSe8/65HAV4WahayHujJMHmoxM2vV6xyBNGtVT0vXx6
+	 517S2fFxm9kaA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OYxnhsmCwVhm; Tue, 18 Apr 2023 13:31:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zmPCbdjLqhdm; Tue, 18 Apr 2023 14:01:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C0AF141DCB;
-	Tue, 18 Apr 2023 13:31:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0AF141DCB
+	by smtp3.osuosl.org (Postfix) with ESMTP id 65C9B60D70;
+	Tue, 18 Apr 2023 14:01:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 65C9B60D70
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 660F71C42BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 13:31:11 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 02D071C42B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 14:01:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4AD7E418F1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 13:31:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AD7E418F1
+ by smtp2.osuosl.org (Postfix) with ESMTP id CD39F41DC0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 14:01:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD39F41DC0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ihD_jkdfgq24 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Apr 2023 13:31:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WtPD3kTN8Z66 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Apr 2023 14:01:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B4B8E41DD9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C805E40103
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B4B8E41DD9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 13:31:09 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-166-x7Am85okOSqpYtoyUd4PqA-1; Tue, 18 Apr 2023 09:31:07 -0400
-X-MC-Unique: x7Am85okOSqpYtoyUd4PqA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 597BF8996E8;
- Tue, 18 Apr 2023 13:31:04 +0000 (UTC)
-Received: from firesoul.localdomain (unknown [10.45.242.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DECEF1410F22;
- Tue, 18 Apr 2023 13:31:03 +0000 (UTC)
-Received: from [10.1.1.1] (localhost [IPv6:::1])
- by firesoul.localdomain (Postfix) with ESMTP id 07BDC30000B90;
- Tue, 18 Apr 2023 15:31:03 +0200 (CEST)
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: bpf@vger.kernel.org, Stanislav Fomichev <sdf@google.com>,
- =?utf-8?q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-Date: Tue, 18 Apr 2023 15:31:03 +0200
-Message-ID: <168182466298.616355.2544377890818617459.stgit@firesoul>
-In-Reply-To: <168182460362.616355.14591423386485175723.stgit@firesoul>
-References: <168182460362.616355.14591423386485175723.stgit@firesoul>
-User-Agent: StGit/1.4
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C805E40103
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 14:01:37 +0000 (UTC)
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-325-POiQ3wT5MvqUAhSHKhD3iw-1; Tue, 18 Apr 2023 10:01:35 -0400
+X-MC-Unique: POiQ3wT5MvqUAhSHKhD3iw-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ j28-20020a508a9c000000b00504ee48e421so10673116edj.22
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 07:01:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681826493; x=1684418493;
+ h=content-transfer-encoding:in-reply-to:references:to
+ :content-language:subject:cc:user-agent:mime-version:date:message-id
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5fONgD5ZI0CkRixaJ2Z/vCiQZM4I6ehW6VIFsC+eLAk=;
+ b=dt9qXVnJEH8jHuxfz8USc8OmOjN1wyAJ8sMCIW9KBHk6iisdKx2gFhzjBxOjH0p3OY
+ IDiIjc4uSUuLmmgt6n3q9ujf2QWZiuuO4y+1OsRu3r+KXZNA6kFiAtWdhnxez/Eg0HaL
+ rf8J3XEmkftHxMUFqa3fJ4gHo2yGDEgZbDVKkvZc15nePnzJdNGIaXuYvjZzWbgpdEv6
+ nNcbye07jF63yD/OD+M4yt/6kSOZDxQkiuk4yaThBn5eYVGjYq+x4aAEt7If1ii5VUby
+ 9tXdSdribXpY0mBva7Ih2dchlJBB/8AM9XPB55lOhqHX/8diRwAln+P+clXB04ocbgEJ
+ Iteg==
+X-Gm-Message-State: AAQBX9d9Ro08XfayTzCSpct5dUr6rcKYdfu6zxz77QK3ErniO9jA50Uk
+ M6gWW28T++D+zQStO78S1aZM+fKKwN55HN3gawQXjSAHNixxRl7Jery1+FI3ns84EXp0O97dIFo
+ dj8NWHvQ3iDzbqRqqDEBlELwUbkcdXg==
+X-Received: by 2002:a17:907:d689:b0:953:1a7c:51b7 with SMTP id
+ wf9-20020a170907d68900b009531a7c51b7mr1833375ejc.28.1681826493391; 
+ Tue, 18 Apr 2023 07:01:33 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aemARlMVPdy8kgJgXVuHzGD4sbX/Gl6p99Go7osU8PHjd+oUCms+1rCgpAgVHjctvdD0LBVw==
+X-Received: by 2002:a17:907:d689:b0:953:1a7c:51b7 with SMTP id
+ wf9-20020a170907d68900b009531a7c51b7mr1833311ejc.28.1681826492813; 
+ Tue, 18 Apr 2023 07:01:32 -0700 (PDT)
+Received: from [192.168.42.222] (194-45-78-10.static.kviknet.net.
+ [194.45.78.10]) by smtp.gmail.com with ESMTPSA id
+ qx11-20020a170906fccb00b0094f499257f7sm4053337ejb.151.2023.04.18.07.01.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Apr 2023 07:01:31 -0700 (PDT)
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
+Message-ID: <d805e350-1d59-eb3a-ec27-adaa72cdc20b@redhat.com>
+Date: Tue, 18 Apr 2023 16:01:30 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+To: Kurt Kanzenbach <kurt.kanzenbach@linutronix.de>, yoong.siang.song@intel.com
+References: <168174338054.593471.8312147519616671551.stgit@firesoul>
+ <168174344813.593471.4026230439937368990.stgit@firesoul>
+ <87leiqsexd.fsf@kurt>
+In-Reply-To: <87leiqsexd.fsf@kurt>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1681824668;
+ s=mimecast20190719; t=1681826496;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mAJnVVeyLvLXvr+AXe+hVyXnTMzPScflKpveeVo/qEc=;
- b=fRqR+qJO2485u9x5NccQe3nuddH7ess7Emo1Q+eypQu3Md2mQMiwDM00VXx4Ru3klw197O
- OjperIAy/N2iPlZyvbQuihskiWWj/1av8G1A1L/trBLpah39Qr48DCd5hUOoezP8RZ7wwo
- KaI2VfRYD5kdw8XY/++TNW4FNYINFNI=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=5fONgD5ZI0CkRixaJ2Z/vCiQZM4I6ehW6VIFsC+eLAk=;
+ b=OzUN5w8sLAWZg1BojZTPg1h/7kqgOoNdNjLdJV+JF/r1oV7nJcReGmeZCMzXGCitsUDbnb
+ QAnhQ9nKWi7vgkgUqnNWR8yIAZRO4l+GihwagsS2mVFKI8jhhC2fyrRsKQP5t7yMEMuHrC
+ Jr5ElEMGwxNVVFM48Kx5Idn+TtMfIYU=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fRqR+qJO
-Subject: [Intel-wired-lan] [PATCH bpf-next V2 5/5] selftests/bpf:
- xdp_hw_metadata track more timestamps
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=OzUN5w8s
+Subject: Re: [Intel-wired-lan] [xdp-hints] Re: [PATCH bpf-next V1 5/5]
+ selftests/bpf: xdp_hw_metadata track more timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,194 +126,108 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
- larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
- ast@kernel.org, jesse.brandeburg@intel.com, kuba@kernel.org,
- edumazet@google.com, yoong.siang.song@intel.com,
- Jesper Dangaard Brouer <brouer@redhat.com>, intel-wired-lan@lists.osuosl.org,
+Cc: Pasi Vaananen <pvaanane@redhat.com>, xdp-hints@xdp-project.net,
+ martin.lau@kernel.org, daniel@iogearbox.net, larysa.zaremba@intel.com,
+ netdev@vger.kernel.org,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>,
+ john.fastabend@gmail.com, ast@kernel.org, jesse.brandeburg@intel.com,
+ kuba@kernel.org, edumazet@google.com, Stanislav Fomichev <sdf@google.com>,
+ brouer@redhat.com, intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
  pabeni@redhat.com, davem@davemloft.net, hawk@kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To correlate the hardware RX timestamp with something, add tracking of
-two software timestamps both clock source CLOCK_TAI (see description in
-man clock_gettime(2)).
 
-XDP metadata is extended with xdp_timestamp for capturing when XDP
-received the packet. Populated with BPF helper bpf_ktime_get_tai_ns(). I
-could not find a BPF helper for getting CLOCK_REALTIME, which would have
-been preferred. In userspace when AF_XDP sees the packet another
-software timestamp is recorded via clock_gettime() also clock source
-CLOCK_TAI.
+On 17/04/2023 17.31, Kurt Kanzenbach wrote:
+> On Mon Apr 17 2023, Jesper Dangaard Brouer wrote:
+>> To correlate the hardware RX timestamp with something, add tracking of
+>> two software timestamps both clock source CLOCK_TAI (see description in
+>> man clock_gettime(2)).
+>>
+>> XDP metadata is extended with xdp_timestamp for capturing when XDP
+>> received the packet. Populated with BPF helper bpf_ktime_get_tai_ns(). I
+>> could not find a BPF helper for getting CLOCK_REALTIME, which would have
+>> been preferred. In userspace when AF_XDP sees the packet another
+>> software timestamp is recorded via clock_gettime() also clock source
+>> CLOCK_TAI.
+>>
+>> Example output shortly after loading igc driver:
+>>
+>>    poll: 1 (0) skip=1 fail=0 redir=2
+>>    xsk_ring_cons__peek: 1
+>>    0x12557a8: rx_desc[1]->addr=100000000009000 addr=9100 comp_addr=9000
+>>    rx_hash: 0x82A96531 with RSS type:0x1
+>>    rx_timestamp:  1681740540304898909 (sec:1681740540.3049)
+>>    XDP RX-time:   1681740577304958316 (sec:1681740577.3050) delta sec:37.0001 (37000059.407 usec)
+>>    AF_XDP time:   1681740577305051315 (sec:1681740577.3051) delta sec:0.0001 (92.999 usec)
+>>    0x12557a8: complete idx=9 addr=9000
+>>
+>> The first observation is that the 37 sec difference between RX HW vs XDP
+>> timestamps, which indicate hardware is likely clock source
+>> CLOCK_REALTIME, because (as of this writing) CLOCK_TAI is initialised
+>> with a 37 sec offset.
+> 
+> Maybe I'm missing something here, but in order to compare the hardware
+> with software timestamps (e.g., by using bpf_ktime_get_tai_ns()) the
+> time sources have to be synchronized by using something like
+> phc2sys. That should make them comparable within reasonable range
+> (nanoseconds).
 
-Example output shortly after loading igc driver:
+Precisely, in this test I've not synchronized the clocks.
+The observation is that driver igc clock gets initialized to
+CLOCK_REALTIME wall-clock time, and it slowly drifts as documented in 
+provided link[1].
 
-  poll: 1 (0) skip=1 fail=0 redir=2
+  [1] 
+https://github.com/xdp-project/xdp-project/blob/master/areas/hints/xdp_hints_kfuncs02_driver_igc.org#driver-igc-clock-drift-observations
+  [2] 
+https://github.com/xdp-project/xdp-project/blob/master/areas/hints/xdp_hints_kfuncs02_driver_igc.org#quick-time-sync-setup
+
+I've also played with using phc2sys (in same doc[2]) to sync HW clock
+with SW clock. I do *seek input* if I'm using it correctly?!?.
+
+I don't have a PTP clock setup , so I manually: Use phc2sys to
+synchronize the system clock to the PTP hardware clock (PHC) on the
+network card (which driver inited to CLOCK_REALTIME wall-clock).
+
+Stop ntp clock sync and disable most CPU sleep states:
+
+   sudo systemctl stop chronyd
+   sudo tuned-adm profile latency-performance
+   sudo hexdump --format '"%d\n"' /dev/cpu_dma_latency
+   2
+
+Adjust for the 37 sec offset to TAI, such that our BPF-prog using TAI 
+will align:
+
+   sudo phc2sys -s igc1 -O -37 -R 2 -u 10
+
+Result on igc with xdp_hw_metadata:
+
+  poll: 1 (0) skip=1 fail=0 redir=6
   xsk_ring_cons__peek: 1
-  0x12557a8: rx_desc[1]->addr=100000000009000 addr=9100 comp_addr=9000
   rx_hash: 0x82A96531 with RSS type:0x1
-  rx_timestamp:  1681740540304898909 (sec:1681740540.3049)
-  XDP RX-time:   1681740577304958316 (sec:1681740577.3050) delta sec:37.0001 (37000059.407 usec)
-  AF_XDP time:   1681740577305051315 (sec:1681740577.3051) delta sec:0.0001 (92.999 usec)
-  0x12557a8: complete idx=9 addr=9000
+  rx_timestamp:  1681825632645744805 (sec:1681825632.6457)
+  XDP RX-time:   1681825632645755858 (sec:1681825632.6458) delta 
+sec:0.0000 (11.053 usec)
+  AF_XDP time:   1681825632645769371 (sec:1681825632.6458) delta 
+sec:0.0000 (13.513 usec)
 
-The first observation is that the 37 sec difference between RX HW vs XDP
-timestamps, which indicate hardware is likely clock source
-CLOCK_REALTIME, because (as of this writing) CLOCK_TAI is initialised
-with a 37 sec offset.
+The log file from phc2sys says:
 
-The 93 usec (microsec) difference between XDP vs AF_XDP userspace is the
-userspace wakeup time. On this hardware it was caused by CPU idle sleep
-states, which can be reduced by tuning /dev/cpu_dma_latency.
+  phc2sys[1294263]: [86275.140] CLOCK_REALTIME rms    6 max   11 freq 
++13719 +/-   5 delay  1435 +/-   5
 
-View current requested/allowed latency bound via:
-  hexdump --format '"%d\n"' /dev/cpu_dma_latency
+Notice the delta between HW and SW timestamps is 11.053 usec.
+Even-though it is small, I don't really trust it, because the phc2sys
+log says frequency offset mean is "+13719" nanosec.
 
-More explanation of the output and how this can be used to identify
-clock drift for the HW clock can be seen here[1]:
+So, it is true that latency/delay between HW to XDP-SW is 11 usec?
+Or is this due to (in)accuracy of phc2sys sync?
 
-[1] https://github.com/xdp-project/xdp-project/blob/master/areas/hints/xdp_hints_kfuncs02_driver_igc.org
-
-Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
----
- .../testing/selftests/bpf/progs/xdp_hw_metadata.c  |    4 +-
- tools/testing/selftests/bpf/xdp_hw_metadata.c      |   47 ++++++++++++++++++--
- tools/testing/selftests/bpf/xdp_metadata.h         |    1 
- 3 files changed, 46 insertions(+), 6 deletions(-)
-
-diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-index e1c787815e44..b2dfd7066c6e 100644
---- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-+++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-@@ -77,7 +77,9 @@ int rx(struct xdp_md *ctx)
- 	}
- 
- 	err = bpf_xdp_metadata_rx_timestamp(ctx, &meta->rx_timestamp);
--	if (err)
-+	if (!err)
-+		meta->xdp_timestamp = bpf_ktime_get_tai_ns();
-+	else
- 		meta->rx_timestamp = 0; /* Used by AF_XDP as not avail signal */
- 
- 	err = bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash, &meta->rx_hash_type);
-diff --git a/tools/testing/selftests/bpf/xdp_hw_metadata.c b/tools/testing/selftests/bpf/xdp_hw_metadata.c
-index 987cf0db5ebc..613321eb84c1 100644
---- a/tools/testing/selftests/bpf/xdp_hw_metadata.c
-+++ b/tools/testing/selftests/bpf/xdp_hw_metadata.c
-@@ -27,6 +27,7 @@
- #include <sys/mman.h>
- #include <net/if.h>
- #include <poll.h>
-+#include <time.h>
- 
- #include "xdp_metadata.h"
- 
-@@ -134,18 +135,52 @@ static void refill_rx(struct xsk *xsk, __u64 addr)
- 	}
- }
- 
--static void verify_xdp_metadata(void *data)
-+#define NANOSEC_PER_SEC 1000000000 /* 10^9 */
-+static __u64 gettime(clockid_t clock_id)
-+{
-+	struct timespec t;
-+	int res;
-+
-+	/* See man clock_gettime(2) for type of clock_id's */
-+	res = clock_gettime(clock_id, &t);
-+
-+	if (res < 0)
-+		error(res, errno, "Error with clock_gettime()");
-+
-+	return (__u64) t.tv_sec * NANOSEC_PER_SEC + t.tv_nsec;
-+}
-+
-+static void verify_xdp_metadata(void *data, clockid_t clock_id)
- {
- 	struct xdp_meta *meta;
- 
- 	meta = data - sizeof(*meta);
- 
--	printf("rx_timestamp: %llu\n", meta->rx_timestamp);
- 	if (meta->rx_hash_err < 0)
- 		printf("No rx_hash err=%d\n", meta->rx_hash_err);
- 	else
- 		printf("rx_hash: 0x%X with RSS type:0x%X\n",
- 		       meta->rx_hash, meta->rx_hash_type);
-+
-+	printf("rx_timestamp:  %llu (sec:%0.4f)\n", meta->rx_timestamp,
-+	       (double)meta->rx_timestamp / NANOSEC_PER_SEC);
-+	if (meta->rx_timestamp) {
-+		__u64 usr_clock = gettime(clock_id);
-+		__u64 xdp_clock = meta->xdp_timestamp;
-+		__s64 delta_X = xdp_clock - meta->rx_timestamp;
-+		__s64 delta_X2U = usr_clock - xdp_clock;
-+
-+		printf("XDP RX-time:   %llu (sec:%0.4f) delta sec:%0.4f (%0.3f usec)\n",
-+		       xdp_clock, (double)xdp_clock / NANOSEC_PER_SEC,
-+		       (double)delta_X / NANOSEC_PER_SEC,
-+		       (double)delta_X / 1000);
-+
-+		printf("AF_XDP time:   %llu (sec:%0.4f) delta sec:%0.4f (%0.3f usec)\n",
-+		       usr_clock, (double)usr_clock / NANOSEC_PER_SEC,
-+		       (double)delta_X2U / NANOSEC_PER_SEC,
-+		       (double)delta_X2U / 1000);
-+	}
-+
- }
- 
- static void verify_skb_metadata(int fd)
-@@ -193,7 +228,7 @@ static void verify_skb_metadata(int fd)
- 	printf("skb hwtstamp is not found!\n");
- }
- 
--static int verify_metadata(struct xsk *rx_xsk, int rxq, int server_fd)
-+static int verify_metadata(struct xsk *rx_xsk, int rxq, int server_fd, clockid_t clock_id)
- {
- 	const struct xdp_desc *rx_desc;
- 	struct pollfd fds[rxq + 1];
-@@ -243,7 +278,8 @@ static int verify_metadata(struct xsk *rx_xsk, int rxq, int server_fd)
- 			addr = xsk_umem__add_offset_to_addr(rx_desc->addr);
- 			printf("%p: rx_desc[%u]->addr=%llx addr=%llx comp_addr=%llx\n",
- 			       xsk, idx, rx_desc->addr, addr, comp_addr);
--			verify_xdp_metadata(xsk_umem__get_data(xsk->umem_area, addr));
-+			verify_xdp_metadata(xsk_umem__get_data(xsk->umem_area, addr),
-+					    clock_id);
- 			xsk_ring_cons__release(&xsk->rx, 1);
- 			refill_rx(xsk, comp_addr);
- 		}
-@@ -370,6 +406,7 @@ static void timestamping_enable(int fd, int val)
- 
- int main(int argc, char *argv[])
- {
-+	clockid_t clock_id = CLOCK_TAI;
- 	int server_fd = -1;
- 	int ret;
- 	int i;
-@@ -443,7 +480,7 @@ int main(int argc, char *argv[])
- 		error(1, -ret, "bpf_xdp_attach");
- 
- 	signal(SIGINT, handle_signal);
--	ret = verify_metadata(rx_xsk, rxq, server_fd);
-+	ret = verify_metadata(rx_xsk, rxq, server_fd, clock_id);
- 	close(server_fd);
- 	cleanup();
- 	if (ret)
-diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
-index 0c4624dc6f2f..938a729bd307 100644
---- a/tools/testing/selftests/bpf/xdp_metadata.h
-+++ b/tools/testing/selftests/bpf/xdp_metadata.h
-@@ -11,6 +11,7 @@
- 
- struct xdp_meta {
- 	__u64 rx_timestamp;
-+	__u64 xdp_timestamp;
- 	__u32 rx_hash;
- 	union {
- 		__u32 rx_hash_type;
-
+--Jesper
 
 _______________________________________________
 Intel-wired-lan mailing list
