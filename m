@@ -1,191 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 039066E67D8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Apr 2023 17:13:42 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 783C76E67D9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Apr 2023 17:13:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1646841E1C;
-	Tue, 18 Apr 2023 15:13:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1646841E1C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 073CF41E2A;
+	Tue, 18 Apr 2023 15:13:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 073CF41E2A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681830820;
-	bh=Q80AKJexMgopBOFzzx3CtxmUdHseh2Y3EW+Oq5jUgtM=;
+	s=default; t=1681830824;
+	bh=rgwEv48QTlFYxcRbZNBZRmuW3+f+wUsa33XAl6gKhVk=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QyE90i4oFwHlgvuMhvCSLudlLWW626SrvU/KtG2woQcJk7UckSFPwH2lqAdyhLpdj
-	 KSsonM37ZRYJiEfYIuScOsYCHFsEjvXCqgS+AO2LovO0CN9Qlb/c8Et8LIbh4ENGb1
-	 PLGrvaXI+vNHVz6XngRRUKJ3nkUICAkeyBRHxXBMhCQcy48/imPhN73VbQhQbsf3jC
-	 2JoVv5O1ygPf/XdmwTKXwU3PQaWpfLw4Rz8syubbHeA5yBY8YHAfKUuNcELxaqv882
-	 WRuyUuUStOyXKoz8v0LgrgOGzjscb3Ekuk4CTGJIVXvgA3ryQdw4gHeb8dohueybjF
-	 3gubZ/Rcwbwdw==
+	b=cvcysrkKe9GTIpYw+P9O+AjzEDm4FPB0dMhYRSEe+iWW/xrgF57wXRQ1zBZ2IiV26
+	 g8ytW17DPpLSeiN/tgtv3kUnJTxtipYqZhdZ95JpHTAUwev3mYh0amFtN59DHPG9DL
+	 ajG9aX5t01mV6/lmwnpJ12cPHSWuQv/J5ZNiQqW0Z5U4T46s6lz07KgVEqx0Gw2rH4
+	 MYS1oBFsvJW4kGXINy9t2yS05bp0/ioERGfmiB7uNwC81MULOLA2jQ0KQFSP8O0T2R
+	 eNkWJTkD26MFrOpbBJHTUtWNF6K7kBkGOavimEF0EpJarV3PLiCZ7lhON+7WOVmImo
+	 kh0s3iealcK6g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3YVvqqPBV-C7; Tue, 18 Apr 2023 15:13:39 +0000 (UTC)
+	with ESMTP id RDbVMSKi4x3l; Tue, 18 Apr 2023 15:13:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BBBE341E09;
-	Tue, 18 Apr 2023 15:13:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBBE341E09
+	by smtp2.osuosl.org (Postfix) with ESMTP id C801441E09;
+	Tue, 18 Apr 2023 15:13:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C801441E09
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 786071C4253
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 04:35:05 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E7031BF359
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 06:08:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4ED3240BF9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 04:35:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4ED3240BF9
+ by smtp4.osuosl.org (Postfix) with ESMTP id 70F664026E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 06:08:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70F664026E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P3Wr0eC4qTB2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Apr 2023 04:35:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZH-AeZAtQq5Z for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Apr 2023 06:08:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B6E1D400FE
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B6E1D400FE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 04:35:03 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10683"; a="372951565"
-X-IronPort-AV: E=Sophos;i="5.99,206,1677571200"; d="scan'208";a="372951565"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2023 21:35:02 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2194D4021D
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2194D4021D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Apr 2023 06:08:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10683"; a="325425554"
+X-IronPort-AV: E=Sophos;i="5.99,206,1677571200"; d="scan'208";a="325425554"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Apr 2023 23:08:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10683"; a="815057726"
-X-IronPort-AV: E=Sophos;i="5.99,206,1677571200"; d="scan'208";a="815057726"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga004.jf.intel.com with ESMTP; 17 Apr 2023 21:35:02 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10683"; a="1020687258"
+X-IronPort-AV: E=Sophos;i="5.99,206,1677571200"; d="scan'208";a="1020687258"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga005.fm.intel.com with ESMTP; 17 Apr 2023 23:08:07 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 17 Apr 2023 21:35:02 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ 15.1.2507.23; Mon, 17 Apr 2023 23:08:06 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Mon, 17 Apr 2023 21:35:02 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.103)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Mon, 17 Apr 2023 23:08:06 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 17 Apr 2023 21:35:01 -0700
+ 15.1.2507.23; Mon, 17 Apr 2023 23:08:06 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ArfesyhMo+K/KLKd7om1taaQo/BIl5NMrG+P/XFV/NBdFmlfZ0YISawV0arOEuxkMQ/ZCM17NmKh29dGszsbJNMd+oz9FUrstJ1N1AW42sj4yEaa2uW1yq/1iFrMsirmL7o4GS4odDZ3UH9FxieX0I8uVNK7jN9vb4tBp0a6328yM++CYCa59+HvvVpahFixqNUxpEmdpXmPELvGRTo3d4gyZHu1EBlYbJcrwO6t5j1pCS/Bv/wEBjPVnlhneCIoPBr8zcvbIxqUcToiEH8+wYLoJYeRFxGWv350ZMokQDwT/HOdK4xn4LZL9qozmCx0YhHymCytj/9EcX5pajvCEA==
+ b=HiX0AJMBLfNecwcy+EFGr5JtnLwlhBK4UX+uSQxc6ZkGZy7LHGvFw3jBlJZNZr9MwQTG3s9ZvanJcn/ebQRsU01tsy1c+V7MGrKNvZzSSXzLYPdOodiz6NeP6bHo8i76fIuvVDk11CIdDZIYUo4dIK/Eb7Ct12Q5VQoknFg8uitFMZ3rYpadP1e5Cn1ZbX/ua7lodfDbEiOQg/4iOWuy09yCBa/ZqJYNeuca6Ps7Do1RhUC2vm1XE91iVn0YeE1vcycfCrHOfa5X3TmaaAjRfcxsppoAcI+iNoStrreXrFBM0qwLrwy40b/n2Gy1awAa6F6vLOZ4PWokg2FvHjWIhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nQagnkgroKsrVUSjWcxVsPtKnG23rxRVaN+BIS2ThCI=;
- b=BYG0M15EVRwzTBpludDZMfAESa078vVufSVTOTpjv9aBPUOPx9hyUaiBV9Jp0ZnLh9hz+xH2XK+Nk9WQsXhaPHLDQBNYLRR38i4BcfsLZelr4p+LSat6J2v29Py+m0y+weoWaBFxixHLaxWT74KNhPYTOY5+xFlEOFwdvCfBtoB2MHzVPgruJPL0pZ2uzg3v1GGPkplfxzjzECOkMA+Voy/nrAgcPjAmcpqZETlUaIH521HQRWNgRGImhmTiQuA807DD8tfynxIACPzPFef5CQoe0JZb2ErVDyEC7VArCK3G/U+aFq86jHUETuIXsSDldYrt4INnIIKrDTVFIVm28Q==
+ bh=th4JeeXdDZ+tQ9RWwwTjXm12iPhb0AEy2vQ1eVslPsE=;
+ b=N/nrb/2DLnlOVxfYboVMbVfvbmAIl1994cw8SHDm6yl+NaDtXgiA1CIRRBxi0ZItXJ1LSKxAiaDXi2Xur9U8CRglOlcIuH782g32oYgzxaI9EIYONKUBfcMbTOPi/fBck4F6BmfAo0CbD/7yvpjui8uayI2yAlkvb4QbdstGtm8VsmjtxlTvvjH7D/tBIvEJDsYmKI21btqWxJTgo4nsEVTDUsBXQjahgopoUm3WahBi1FBf/uArUk0a+QUypC9lZhpHxQ49WlrGNj6cIRFeuAMmuZdqubtwP3fQBaDeTXteiEobXHNi+I733D4q16GeP1lqZOK/Yx0VtaMqdfbTXw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
- by DM4PR11MB7183.namprd11.prod.outlook.com (2603:10b6:8:111::10) with
+ by DM8PR11MB5607.namprd11.prod.outlook.com (2603:10b6:8:28::17) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Tue, 18 Apr
- 2023 04:34:52 +0000
+ 2023 06:07:58 +0000
 Received: from PH0PR11MB5830.namprd11.prod.outlook.com
  ([fe80::1c4e:86ae:810d:1fee]) by PH0PR11MB5830.namprd11.prod.outlook.com
  ([fe80::1c4e:86ae:810d:1fee%2]) with mapi id 15.20.6298.045; Tue, 18 Apr 2023
- 04:34:52 +0000
+ 06:07:58 +0000
 From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
-To: "Brouer, Jesper" <brouer@redhat.com>, "bpf@vger.kernel.org"
- <bpf@vger.kernel.org>, Stanislav Fomichev <sdf@google.com>,
- =?utf-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>
-Thread-Topic: [PATCH bpf-next V1 2/5] igc: add igc_xdp_buff wrapper for
- xdp_buff in driver
-Thread-Index: AQHZcTzsnAe6U9nIUE+jaLPBuHApcK8weMVQ
-Date: Tue, 18 Apr 2023 04:34:52 +0000
-Message-ID: <PH0PR11MB5830DD3BA9F6CBDA648F5AF8D89D9@PH0PR11MB5830.namprd11.prod.outlook.com>
+To: "Kanzenbach, Kurt" <kurt.kanzenbach@linutronix.de>, "Brouer, Jesper"
+ <brouer@redhat.com>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>, "Stanislav
+ Fomichev" <sdf@google.com>, =?iso-8859-1?Q?Toke_H=F8iland-J=F8rgensen?=
+ <toke@redhat.com>
+Thread-Topic: [PATCH bpf-next V1 5/5] selftests/bpf: xdp_hw_metadata track
+ more timestamps
+Thread-Index: AQHZcTz1X0h8VE1O+0qh5RVifeCknq8voQQAgADy+XA=
+Date: Tue, 18 Apr 2023 06:07:58 +0000
+Message-ID: <PH0PR11MB5830D771AA05F28675173A42D89D9@PH0PR11MB5830.namprd11.prod.outlook.com>
 References: <168174338054.593471.8312147519616671551.stgit@firesoul>
- <168174343294.593471.10523474360770220196.stgit@firesoul>
-In-Reply-To: <168174343294.593471.10523474360770220196.stgit@firesoul>
+ <168174344813.593471.4026230439937368990.stgit@firesoul>
+ <87leiqsexd.fsf@kurt>
+In-Reply-To: <87leiqsexd.fsf@kurt>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|DM4PR11MB7183:EE_
-x-ms-office365-filtering-correlation-id: 71c554fa-c605-4a40-1dc4-08db3fc640be
+x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|DM8PR11MB5607:EE_
+x-ms-office365-filtering-correlation-id: 4b42bdbe-421e-45dc-6675-08db3fd34255
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nj1+6KTnJKkWkq35emk2V/lwNhkaWFQmkVMILsE0m53+l7Xf8yJeTO3JnfX2OYEookufTzf/YjGhqLspRsJlAIHNxwb1zha8dv6eu524Xh95YNvmZGdDhnYu4HPFyauTp5sFKw3cLj07tcGo1ZOZSe4HLvJsTbC7pTiayMlcBZG30Smw6K3foAhynLKXVmO52YEo2FCrBm2DsJFlqHtR186BQEnldaIPMOa+xgV0XAeGwfxkXye2mQoi1F9Ah8UQGlu2uCMhjyrIIDAwvQn0OrMTRqojaZoN5+b1UYPJc1eow7Uk1MJBUBalgVAXaY+cQ+CNtgpwpR0eB7LXQM7KW7Yt8n94ARyxrA+UNFyBQxr/u+DPM8k5A8Ca/qc+LcGRU+ry/qXVcXzQDbPb3m376fKcMIQNs+ZTa8Sqn/awJXxtZqBEZOS2RnW0r4zMM5VeELuitONycVFAWaP3qJ58fb6TAfYOAGLt6Qg9c3e/rDaLVEzj5LUw34Z78NCflfeyn6PRr/zgoYY+e/mop6Cog9uNoE9g3TGI9UKqXRmOaL/7y3ggU1D17sBH4wcLlA+7HtHLVLxSzPQk1SK4yUKUeM2akmPyzQxcMdxq837tgBJ79TtGRgeBj+HodGWEXSFw
+x-microsoft-antispam-message-info: 9PFiGaRR8y9JSE2iLGEpDOMhS82J6aycMDMAsRKkYJayRqndG5Z4DjFpnxFKc/YEwfCf6fFI+Y+2fCsiQlk2q7zOkOeZr/Xs7apm/BdiViM9P8wQLKYI50m+L5RoZ7TD8a2AFJ2C2zYvk/1zPRvg0m37mxW1qGSlrhmaTD7LKeFeRe+QSQkKlFL8+kJyZ7RK2IlAiabh6GZqwaSHfk2xXw2KInKZ8GTKLMJ4Q381qkJIxZARBF2LJhD0hty/n8rMZ98qYH9D5XaP42byp+xmVEcJbHi6cHM7ijwB6DuXv2WtI7hnk0kkpMjpnTZiIdCeZjvj+KXNhNmmvRIjoyH9x3/646E5LJN06m0RdBGeGC9GLGhZo8U3v7IsnCVSNuELQweWVD64O3/XQFHFA6+r9twf8ie+pyGMt/G2ZRLkZEXVmWLDqNlqo69w8oelybKdCZ8h5f6Ay2QpB3rYGVGl2Xh/CtqN2m1Q94LOl68Qpg6crqkXyH8TeLQhh1GGgfCduVkzNVs/RoVJh90DyMAsQwGaCB6jLcAIgsGt3t8O8+qJ2pFli3NxTEf8s7VOfn2T1MhJqpvtZFf8Cs5b3Y53VoF+WF8ZOXOFRPnk0w2tzww=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(346002)(396003)(39860400002)(376002)(136003)(451199021)(53546011)(26005)(9686003)(55236004)(6506007)(122000001)(316002)(41300700001)(186003)(82960400001)(110136005)(7696005)(33656002)(478600001)(71200400001)(54906003)(66946007)(66446008)(86362001)(64756008)(66476007)(76116006)(66556008)(55016003)(4326008)(7416002)(5660300002)(52536014)(38100700002)(8936002)(8676002)(38070700005)(2906002)(83380400001);
+ SFS:(13230028)(346002)(136003)(366004)(376002)(39860400002)(396003)(451199021)(38100700002)(8936002)(8676002)(122000001)(38070700005)(5660300002)(7416002)(2906002)(33656002)(86362001)(52536014)(55016003)(478600001)(7696005)(71200400001)(54906003)(110136005)(186003)(966005)(9686003)(66946007)(53546011)(55236004)(6506007)(76116006)(66476007)(66446008)(26005)(41300700001)(82960400001)(316002)(83380400001)(4326008)(64756008)(66556008);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QTVTdk9GOU5vWkE0R0dNNTZQWUVsb3RXS1lNb3ljR21tZElpN3NuWXl5bXlr?=
- =?utf-8?B?WFArcEdXSFFpbWhKMktqdURHaGRYc215bEN0ZEgwSlRKQXRYTHlCZGlyT3pn?=
- =?utf-8?B?dzJNNlY3YmF1Q3c3QlZ0K1NGOVFWUnB5S3BRVnF1bVkvSHRQSGkzN2krSlNk?=
- =?utf-8?B?S0JvYkg2RUNWWHpncVhQaW1KUTBjTGZETkhsRk9VeVE3U2FQWUQxRW5rK0Ey?=
- =?utf-8?B?ZG1RWjFHbVJNMHNrVWkraXczcCsxSGlDRVRPdXFjSjExT3hWTFBqQmEzVHRs?=
- =?utf-8?B?a0Q1TWVDSjhZRFg1eTNJcENnMitJSmtoUUtJSncyWmxIN0hOU1VmTmNiRjdD?=
- =?utf-8?B?Z2pwamxwQm5ibjNLeHJGMmhxWUZnbHZPSzdYS25pTDRKaWIyM2V5SFArRzhw?=
- =?utf-8?B?azFUWG52OXVDa2w1c2NFa2ZseWtROXlYejlxTHZ3aHFqazhLQnlQUjR3a3lQ?=
- =?utf-8?B?U2dmR2cxQ09kNEZRazB2cS8ydDVnOVYrL3V4QmxITEp1RWdmR0hjc2ptU0pN?=
- =?utf-8?B?UHMwOGhwdG1EKzJMdVh4ZDJqT3RNSDB0NnI1SHA1Y0pyRXVnMmhTTGhLWE1P?=
- =?utf-8?B?RUQwWkNva2drOUNXUW9VUWVTSUJLeXN4dTVLbVV4ZzZFQXNtYWk0OVdlT2d6?=
- =?utf-8?B?dTJzMUVkdU13SmF4VHVYRU1meGV5QnpibDljSUJnUjJBTlhzeWNxc3RUTnNY?=
- =?utf-8?B?V3F3UGRtSGYrUWNGM0piWUtZMklhbHQrbjZ1K1Bqeksrb1JrRFBvdWVkeEhW?=
- =?utf-8?B?WHVkMVI0c1BpdFFzdG9ERVUxUDN0dDZIRWEwWWs1aCtHWStra2RTWXBKdzBk?=
- =?utf-8?B?aVY2MFNaaitqYU9hS0ZCVDdqWXQ5cDZ4K0RTT1lmek1GZGEvYkIzVDZoVnNk?=
- =?utf-8?B?ZGJDUVM4SFEzZUw5a1A4c2UvZUhpUmU3V0ppODc3akZiRXRTazhtaGVvQ3Jk?=
- =?utf-8?B?cmJ2c05RVUNCZmZGR1o2N2IxY0NXSmNvcnpVTno1c296NldpMmQ0NUZjOEdh?=
- =?utf-8?B?dU9rR1dXRWk0QmpkRjd2Q2h0VmdaeklwNGlBcjVyZFlySEZhZUxrTDFpSk5l?=
- =?utf-8?B?aGZ3aXBlL1lHZ3cxbmt0UkQ1RmpXemZZTit6dzdlcnNoVG5jL0tDcXpValN5?=
- =?utf-8?B?QU44RFNYbko3MUEzdjhxeGc3bmNJMWdsMWVCMW9PaEIyS0FlVG81RS9pb1BP?=
- =?utf-8?B?aFY2SEkyc2pxZnFSY2pkOGNkeW9yUEM2dVFnbjQySVVldmtuajZXVWM0TEJo?=
- =?utf-8?B?bGFzTnpJakRoZDAwU3c2S2d5clRwSkszSUNFdHVWVktySnZxcDM4Uk83MUtw?=
- =?utf-8?B?YUFHTkJtYUhaNzZUZ1dBYWdBOCsvVm9HRlVqK21xYmdSSm1STXh4dll1ZFRi?=
- =?utf-8?B?VW1IRjkxWkxMM25vUGlNMm1kV003Sk5LMGVWak9ySnUrcjNTZHY0V08xeGhz?=
- =?utf-8?B?QVdVU3hkdGFScXcrNSsyUDF0VDNxNVMyUmpGTDNWRm9XWWRsMXJMWldFWU9K?=
- =?utf-8?B?eitYN1hvS3NQa0NlUE9iRFh3V0NVdmRyVllmdXJTNVhpamY4Wm9jTmdnNkpG?=
- =?utf-8?B?ZEt6QU4vYWYxNDI0MnZEd1hDOUxVNmdYOGxaZDg1L0U1Z2lYdzdIb0FlaFlK?=
- =?utf-8?B?V21NNEl2Ym1NY1dYNzVsUmQ0K09BOC9neDJZaG56NVVVU3RBL01ISVZYZkpT?=
- =?utf-8?B?TytIeThENWIzaEV3YXJJMzdXdkhiNzQza0NXOXJvdE1PbmRGc08vdDY5QUdM?=
- =?utf-8?B?OHJqdHlXSTkvbm11WGIzOUFOWEwrb0YyV1RBUGRqWk53cmhqSnJnNGQ2ZW1s?=
- =?utf-8?B?SHhIOXcrVkM1dzFXNkVMMjFRakRRdzZKR0hBbmRsajJ2SzBVY3F0b1kya3lq?=
- =?utf-8?B?WlV3eUwrY015bjlpcCtRVHU2aEVHdHhPSzROWmp6NVIzRm1sRTBaZmlwMG1P?=
- =?utf-8?B?NW1jckFzWjhWTldmYllrc3NoZWtXS3RlQ3hRenJmMkExY2NnT24vLytwYmg0?=
- =?utf-8?B?NXUya2ZZTmcyYWpudFFqK3VwT2Q4R3I2RzhDSXhyOTRvTFYwbFlQS2Y5ckVU?=
- =?utf-8?B?NzZZY0ZNM1VvZzJ3OWozMlRBckNZOHhtaXY3cjdPSDRsZ3VuUDNmNXVEZEpX?=
- =?utf-8?B?RU5LVEphWWZCTU5peElaSHMzbmNURmk4RklSQVl1TUlGU2FUWkpQVEx6MDU5?=
- =?utf-8?B?RGc9PQ==?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?eBOVCNGQ91RtGoGR1j5mXN3drEBYf5ADwC4a2Vp9vLE3byAYV1jX6uxrKB?=
+ =?iso-8859-1?Q?FYE588YpF1qASEDS65DgGog+rxvak2HnpJyDlpKEYu2HnN6XuckFVls7YF?=
+ =?iso-8859-1?Q?eSt3sLN6SQ41KjOy7aZLWYoXCVuSIfd6Ga8Xi0ABp/LNagE/mZbkQcwdPk?=
+ =?iso-8859-1?Q?f3VgCA43wNUt7K38LYUA9mp4WJcGimmYif+UXR2wiItJ4vcj9AORbcbzfi?=
+ =?iso-8859-1?Q?YOuCAajavxiWzpRLfDp46YfeZDzKmjUc8FCPdJEDBDl7AjjPqAre5g1Lu1?=
+ =?iso-8859-1?Q?3vDDUl11enqFbnE65DFQslF9mAXsM2WX1oiVAuoEdeV5nGjjMvVoB/fpxZ?=
+ =?iso-8859-1?Q?Mr3ZhoWYBuLRE6/Iz8o+SUKX5JwYtQqg9c4PMrLw3+a6sqp+ApNjVy8FrD?=
+ =?iso-8859-1?Q?iwyIO1iM7NZgOz2VRFccuhUppPjuVS22Uw6iz9vRT5mPFCIgxfj4k0sm+t?=
+ =?iso-8859-1?Q?t8Npv1OjVeoPPt+J6fC4z8rpM96G6iooI/RTeyhy2c7/rKW3l8Dry2JUl3?=
+ =?iso-8859-1?Q?CdMz8SVHxk52z7L8owsLAlOf2sS6E8UKS+6pN/UJJBvl8ixoGgzAjHG7C2?=
+ =?iso-8859-1?Q?94d4GOmHGIwWuxWdSB3l6vpPAZeTsdfg0ZiEB3R21QWqWI3/EAqzPBfAH6?=
+ =?iso-8859-1?Q?TrgSlMADU2PfiQVfwXCyluqbxdgc+zNBU7CGk/lLSUht3qFJJ+mGigeBLM?=
+ =?iso-8859-1?Q?M8/eddAqXIXK+5CTCqhGz+MK7pmFKQhQnwMjBOjxbWhZkHAS722MJVBkEw?=
+ =?iso-8859-1?Q?XYoPrC0Swncppu5uB6bz8oXMra0NtaKB5JLjKRJfQVC1X46PBBv4z2q18t?=
+ =?iso-8859-1?Q?fjs9Hh/aUtHWKAref0d1AbHhYi5etbmara/kHIZGnOI3S4/VGI48cUIyTr?=
+ =?iso-8859-1?Q?fZYI62QsdRIcLH2Dt5h3kINchzQRRMVJAhXkIQSNfz9ayP9UzbUJZAqqRd?=
+ =?iso-8859-1?Q?4PQKQKcHFevi0S2UmrOWTW2YdJ6MrpjBINycfyOXupt0FXcTYokubia94x?=
+ =?iso-8859-1?Q?fIlNUgOvADJtANpMD7EhGXRYqkfBCOAtRa51BkEUser09ZnthAJrNQFwDa?=
+ =?iso-8859-1?Q?36Ez7r+80DfE/L3jvEB/nxgFbPfgXGXK3PvdLx6ogJaw6a8G3Hgt2NRfCZ?=
+ =?iso-8859-1?Q?Op0IqMmeYzgOG/2WQz2TMAcTn4bRvzCcxQlzBUBb19VXVbMrilDSzChs5Y?=
+ =?iso-8859-1?Q?pesL7jKDZAD/kphUtJk1Z6GG/FC/0j4qtVUwbvcOtukiTXRCAwZzud1Tow?=
+ =?iso-8859-1?Q?6gLHUPspi/W7qUmEhpaTprJuzEszWrghcJ3xiDQh6rDBsfnovsQspbTIfh?=
+ =?iso-8859-1?Q?pGgJrf77ViSAJf0YELZ8czwvIjm7EQD77uJZVUzADD4m18uPxE7BX3XMXm?=
+ =?iso-8859-1?Q?5ch8Gboa9SJdzRNBa9oDYpSIbHQOS3ULyL3bUgjaALSUP30HGVIkJisiJr?=
+ =?iso-8859-1?Q?6j0dsiOl1K69jLcXnSdR3t8GgVqdGp2fghUWDErBCvJ/FV6YeRJmSiUbjk?=
+ =?iso-8859-1?Q?5Hgs8BPNc64RorKcx3z3ufKGRY5fVHcMXd8CXTsle378+TRIRXCQPezXl2?=
+ =?iso-8859-1?Q?u/MXqF96tVKHpBbaewN8w1fmSDUEC4T22QtGz6EiQy3eRljMZtGnF1jW+T?=
+ =?iso-8859-1?Q?tOj7M6M7UEz5sE/hQ9ZjErVpn9E878kVUmrcYejWAZU4i0kbEW5QZswQ?=
+ =?iso-8859-1?Q?=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 71c554fa-c605-4a40-1dc4-08db3fc640be
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Apr 2023 04:34:52.4989 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4b42bdbe-421e-45dc-6675-08db3fd34255
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Apr 2023 06:07:58.6009 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: AfU1xHFRhwVgKKs4daZpN6pVP7Yo1wG7WzUbpQm3AEFcm/Jqt4eDxqLIB2cX6xBGuT54KznaMzs7dFpZ1spIS4DOPWNu5Z81U+jB8RiVObQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7183
+X-MS-Exchange-CrossTenant-userprincipalname: yv33mAaZ+o+H1Ue2u2+UknwSxGMt+2GRFKsox1cGe8t5/+sARTbkQ0ZCMGsewS7kbanIkXx+ftr8E0t0IgOh6a6oGt3bfTdGV5sSWn9q/Ps=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR11MB5607
 X-OriginatorOrg: intel.com
 X-Mailman-Approved-At: Tue, 18 Apr 2023 15:13:21 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1681792503; x=1713328503;
+ t=1681798088; x=1713334088;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=nQagnkgroKsrVUSjWcxVsPtKnG23rxRVaN+BIS2ThCI=;
- b=LL0SYxPtXRlCGvT/GX5F+0izpXt/YgvSFq5f48pJ4AAoUXjld/O9pAYw
- UiDE9Pz1UCuv1TRgnKm5eZuqlSGQN9AeB0J/qizhhEQjpT2dCoA4Vh/XH
- L7z28JoiEDTuh9ENvfzk2SefUCnXZdk7xHrhJ749Qj3+cC0fDohYQ7GOy
- W7Apg5w928KPCdErL4uudFMDBXkgc1faduYHbpygoipa+A/16ZAexhZ0g
- XS+SbvGWLSwSNhlTH79Yf+f0+5cAJ+ZgndqicHcN+JALpEtJdYRo+ZklJ
- NSOwMeORaVo+g/lrIaLxTmYjjoaWms6+UFV0Tgt6WeyGIPUL89Un6uuJ6
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=jZd967WN7ppNIsQ78lhpWFyZRL3ypnT5Ghkvyq79brA=;
+ b=XLxLQ92N3JA9Nw3O1UMz3qQBPsuToL9DZR7v6YkUxWpQ9wqmCiTEje3G
+ uWAmsMPswetJdMRyd6ILy5O2fGCirGK3+H9Sioz3zoJoTDCGfziuS/GC0
+ u11Q22caYPhUG5SJPY6Rg2ctOgeE371N4gnMExtoH8rRmX0aakKSNDQ+M
+ KNqZWd0y2gVvRIeaYUMlQBumLSwELLcpabikqSmyArXr2XI/AiRT2IzHW
+ KvlLjn0dwO0r56AF2yX3ZHgGaNyi2fjQx7vb1/RzYpnH670/eHktvVzjD
+ UW/I3cxd4Vai21SquizcL3EgmHLwNq9mRqCG4vsobBSuTqMiyTt6yaY3o
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LL0SYxPt
+ header.a=rsa-sha256 header.s=Intel header.b=XLxLQ92N
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next V1 2/5] igc: add igc_xdp_buff
- wrapper for xdp_buff in driver
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next V1 5/5] selftests/bpf:
+ xdp_hw_metadata track more timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -217,156 +211,75 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Monday, April 17, 2023 10:57 PM, Jesper Dangaard Brouer <brouer@redhat.com> wrote:
->Driver specific metadata data for XDP-hints kfuncs are propagated via tail
->extending the struct xdp_buff with a locally scoped driver struct.
+On Monday, April 17, 2023 11:32 PM, Kurt Kanzenbach <kurt.kanzenbach@linutronix.de> wrote:
+>On Mon Apr 17 2023, Jesper Dangaard Brouer wrote:
+>> To correlate the hardware RX timestamp with something, add tracking of
+>> two software timestamps both clock source CLOCK_TAI (see description
+>> in man clock_gettime(2)).
+>>
+>> XDP metadata is extended with xdp_timestamp for capturing when XDP
+>> received the packet. Populated with BPF helper bpf_ktime_get_tai_ns().
+>> I could not find a BPF helper for getting CLOCK_REALTIME, which would
+>> have been preferred. In userspace when AF_XDP sees the packet another
+>> software timestamp is recorded via clock_gettime() also clock source
+>> CLOCK_TAI.
+>>
+>> Example output shortly after loading igc driver:
+>>
+>>   poll: 1 (0) skip=1 fail=0 redir=2
+>>   xsk_ring_cons__peek: 1
+>>   0x12557a8: rx_desc[1]->addr=100000000009000 addr=9100 comp_addr=9000
+>>   rx_hash: 0x82A96531 with RSS type:0x1
+>>   rx_timestamp:  1681740540304898909 (sec:1681740540.3049)
+>>   XDP RX-time:   1681740577304958316 (sec:1681740577.3050) delta
+>sec:37.0001 (37000059.407 usec)
+>>   AF_XDP time:   1681740577305051315 (sec:1681740577.3051) delta
+>sec:0.0001 (92.999 usec)
+>>   0x12557a8: complete idx=9 addr=9000
+>>
+>> The first observation is that the 37 sec difference between RX HW vs
+>> XDP timestamps, which indicate hardware is likely clock source
+>> CLOCK_REALTIME, because (as of this writing) CLOCK_TAI is initialised
+>> with a 37 sec offset.
 >
->Zero-Copy AF_XDP/XSK does similar tricks via struct xdp_buff_xsk. This
->xdp_buff_xsk struct contains a CB area (24 bytes) that can be used for extending
->the locally scoped driver into. The XSK_CHECK_PRIV_TYPE define catch size
->violations build time.
+>Maybe I'm missing something here, but in order to compare the hardware with
+>software timestamps (e.g., by using bpf_ktime_get_tai_ns()) the time sources
+>have to be synchronized by using something like phc2sys. That should make them
+>comparable within reasonable range (nanoseconds).
 >
+>Thanks,
+>Kurt
 
-Since the main purpose of this patch is to introduce igc_xdp_buff, and
-you have another two patches for timestamp and hash,
-thus, suggest to move timestamp and hash related code into respective patches. 
+Tested-by: Song Yoong Siang <yoong.siang.song@intel.com>
 
->Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
->---
-> drivers/net/ethernet/intel/igc/igc.h      |    6 ++++++
-> drivers/net/ethernet/intel/igc/igc_main.c |   30 ++++++++++++++++++++++-------
-> 2 files changed, 29 insertions(+), 7 deletions(-)
->
->diff --git a/drivers/net/ethernet/intel/igc/igc.h
->b/drivers/net/ethernet/intel/igc/igc.h
->index f7f9e217e7b4..c609a2e648f8 100644
->--- a/drivers/net/ethernet/intel/igc/igc.h
->+++ b/drivers/net/ethernet/intel/igc/igc.h
->@@ -499,6 +499,12 @@ struct igc_rx_buffer {
-> 	};
-> };
->
->+/* context wrapper around xdp_buff to provide access to descriptor
->+metadata */ struct igc_xdp_buff {
->+	struct xdp_buff xdp;
->+	union igc_adv_rx_desc *rx_desc;
+I tested this patchset by using I226-LM (rev 04) NIC on Tiger Lake Platform.
+I use testptp selftest tool to make sure PHC is almost same as system clock.
+Below are the detail of test steps and result.
 
-Move rx_desc to 4th patch (Rx hash patch)
+1. Run xdp_hw_metadata tool.
+   @DUT: sudo ./xdp_hw_metadata eth0
 
->+};
->+
-> struct igc_q_vector {
-> 	struct igc_adapter *adapter;    /* backlink */
-> 	void __iomem *itr_register;
->diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
->b/drivers/net/ethernet/intel/igc/igc_main.c
->index bfa9768d447f..3a844cf5be3f 100644
->--- a/drivers/net/ethernet/intel/igc/igc_main.c
->+++ b/drivers/net/ethernet/intel/igc/igc_main.c
->@@ -2236,6 +2236,8 @@ static bool igc_alloc_rx_buffers_zc(struct igc_ring
->*ring, u16 count)
-> 	if (!count)
-> 		return ok;
->
->+	XSK_CHECK_PRIV_TYPE(struct igc_xdp_buff);
->+
-> 	desc = IGC_RX_DESC(ring, i);
-> 	bi = &ring->rx_buffer_info[i];
-> 	i -= ring->count;
->@@ -2520,8 +2522,8 @@ static int igc_clean_rx_irq(struct igc_q_vector
->*q_vector, const int budget)
-> 		union igc_adv_rx_desc *rx_desc;
-> 		struct igc_rx_buffer *rx_buffer;
-> 		unsigned int size, truesize;
->+		struct igc_xdp_buff ctx;
-> 		ktime_t timestamp = 0;
->-		struct xdp_buff xdp;
-> 		int pkt_offset = 0;
-> 		void *pktbuf;
->
->@@ -2555,13 +2557,14 @@ static int igc_clean_rx_irq(struct igc_q_vector
->*q_vector, const int budget)
-> 		}
->
-> 		if (!skb) {
->-			xdp_init_buff(&xdp, truesize, &rx_ring->xdp_rxq);
->-			xdp_prepare_buff(&xdp, pktbuf - igc_rx_offset(rx_ring),
->+			xdp_init_buff(&ctx.xdp, truesize, &rx_ring->xdp_rxq);
->+			xdp_prepare_buff(&ctx.xdp, pktbuf - igc_rx_offset(rx_ring),
-> 					 igc_rx_offset(rx_ring) + pkt_offset,
-> 					 size, true);
->-			xdp_buff_clear_frags_flag(&xdp);
->+			xdp_buff_clear_frags_flag(&ctx.xdp);
->+			ctx.rx_desc = rx_desc;
+2. Enable Rx HWTS for all incoming packets. Note: This step is not needed if
+   https://lore.kernel.org/all/20230414154902.2950535-1-yoong.siang.song@intel.com/
+   bug fix patch is applied to the igc driver.
+   @DUT: sudo hwstamp_ctl -i eth0 -r 1
 
-Move rx_desc to 4th patch (Rx hash patch)
+3. Set the ptp clock time from the system time using testptp tool.
+   @DUT: sudo ./testptp -d /dev/ptp0 -s
 
->
->-			skb = igc_xdp_run_prog(adapter, &xdp);
->+			skb = igc_xdp_run_prog(adapter, &ctx.xdp);
-> 		}
->
-> 		if (IS_ERR(skb)) {
->@@ -2583,9 +2586,9 @@ static int igc_clean_rx_irq(struct igc_q_vector
->*q_vector, const int budget)
-> 		} else if (skb)
-> 			igc_add_rx_frag(rx_ring, rx_buffer, skb, size);
-> 		else if (ring_uses_build_skb(rx_ring))
->-			skb = igc_build_skb(rx_ring, rx_buffer, &xdp);
->+			skb = igc_build_skb(rx_ring, rx_buffer, &ctx.xdp);
-> 		else
->-			skb = igc_construct_skb(rx_ring, rx_buffer, &xdp,
->+			skb = igc_construct_skb(rx_ring, rx_buffer, &ctx.xdp,
-> 						timestamp);
->
-> 		/* exit if we failed to retrieve a buffer */ @@ -2686,6 +2689,15
->@@ static void igc_dispatch_skb_zc(struct igc_q_vector *q_vector,
-> 	napi_gro_receive(&q_vector->napi, skb);  }
->
->+static struct igc_xdp_buff *xsk_buff_to_igc_ctx(struct xdp_buff *xdp) {
->+	/* xdp_buff pointer used by ZC code path is alloc as xdp_buff_xsk. The
->+	 * igc_xdp_buff shares its layout with xdp_buff_xsk and private
->+	 * igc_xdp_buff fields fall into xdp_buff_xsk->cb
->+	 */
->+       return (struct igc_xdp_buff *)xdp; }
->+
+4. Send UDP packet with 9091 port from link partner immediately after step 3.
+   @LinkPartner: echo -n xdp | nc -u -q1 <Destination IPv4 addr> 9091
 
-Move xsk_buff_to_igc_ctx to 3th patch (timestamp patch), which is first patch
-adding xdp_metadata_ops support to igc.
+Result:
+   poll: 1 (0) skip=1 fail=0 redir=1
+   xsk_ring_cons__peek: 1
+   0x5626248d16d0: rx_desc[0]->addr=100000000008000 addr=8100 comp_addr=8000
+   rx_hash: 0x35E1B60E with RSS type:0x1
+   rx_timestamp:  1677762195217129600 (sec:1677762195.2171)
+   XDP RX-time:   1677762195217202099 (sec:1677762195.2172) delta sec:0.0001 (72.499 usec)
+   AF_XDP time:   1677762195217231775 (sec:1677762195.2172) delta sec:0.0000 (29.676 usec)
+   0x5626248d16d0: complete idx=8 addr=8000
 
-> static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int budget)  {
-> 	struct igc_adapter *adapter = q_vector->adapter; @@ -2704,6 +2716,7
->@@ static int igc_clean_rx_irq_zc(struct igc_q_vector *q_vector, const int
->budget)
-> 	while (likely(total_packets < budget)) {
-> 		union igc_adv_rx_desc *desc;
-> 		struct igc_rx_buffer *bi;
->+		struct igc_xdp_buff *ctx;
-> 		ktime_t timestamp = 0;
-> 		unsigned int size;
-> 		int res;
->@@ -2721,6 +2734,9 @@ static int igc_clean_rx_irq_zc(struct igc_q_vector
->*q_vector, const int budget)
->
-> 		bi = &ring->rx_buffer_info[ntc];
->
->+		ctx = xsk_buff_to_igc_ctx(bi->xdp);
-
-Move xsk_buff_to_igc_ctx to 3th patch (timestamp patch), which is first patch
-adding xdp_metadata_ops support to igc.
-
->+		ctx->rx_desc = desc;
-
-Move rx_desc to 4th patch (Rx hash patch)
-
-Thanks & Regards
-Siang
-
->+
-> 		if (igc_test_staterr(desc, IGC_RXDADV_STAT_TSIP)) {
-> 			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
-> 							bi->xdp->data);
->
 
 _______________________________________________
 Intel-wired-lan mailing list
