@@ -1,150 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 553636E72B1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Apr 2023 07:51:17 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 764C16E7430
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Apr 2023 09:41:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BCDA860D9D;
-	Wed, 19 Apr 2023 05:51:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCDA860D9D
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3307941D39;
+	Wed, 19 Apr 2023 07:41:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3307941D39
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1681883475;
-	bh=elOJR9JeJXp3a9swh5ofcvh/Z16TIxIm0TSBWzoWNBs=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=uzcKqGrbWM6C0ReDcjq2AKsabMLnjEv2rmt8h9kid88zxje/E06hkNs9I7i+g8rJz
-	 BaQTr7odk1bvGlIKMW78mKa/Eeg7/b0PsfRH4NBWUrRt9saUARYx6WGmtTEdnV5R+r
-	 bjDmKeJZqhPp2CXYJAut6jNxRSV12XwvaYrVEPU29yQIUXxn5/kNXWmF3/5PS1awmB
-	 27qr0KytDdHe+gYeWFget1GXzFExWNek9VnNCiW+xb0fSUnPpMfqfNViiKo2Mj3egW
-	 3mPa/lJ+Ba38lP2WaC1ZWAkNEMANlnm25dTYP1IxAD2dVmpYa05RU3Dm1+zy24Y5xC
-	 RTZkC1eEerpvA==
+	s=default; t=1681890112;
+	bh=CArZBNfOmSGPBLgFhUPLh9opWejUkpK53jVp3RW+GEQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=KIxTAqzcKjmVZY3a8vXgwsF7viV+EZ2kvZ8fr1jMiUD5d5tJnCsjNpMPMaZH6kTtp
+	 bSLgDwsT1QRjPWiPGsY/vyeAXhoKiH5z+dDY4XOhjRzyeGlsovqs/FUO0+0hxeoIJ1
+	 zvEhQYcR1BfeJ4HjN7qx/ZONDFOrn628Ve6ECis/RtAQ++is6+iRySLvrYiGkTxbWa
+	 4ZvBxTdZ8kgpGfp4Yj5byB/M6TE7AHY32fbsMShm8BnBWPOh83LOoXj220vgI62igF
+	 cOdIlKbeHPZmKu4mmIyKmOdJaEA9el4EZG1/IPhx48HPruaK0b27gpS6pzoDd2F+Zt
+	 tvw0gqjrN7Dxg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3aHhg2Ofo2C0; Wed, 19 Apr 2023 05:51:15 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XimJVoi3Yva1; Wed, 19 Apr 2023 07:41:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A843860687;
-	Wed, 19 Apr 2023 05:51:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A843860687
+	by smtp2.osuosl.org (Postfix) with ESMTP id E190441D55;
+	Wed, 19 Apr 2023 07:41:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E190441D55
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F18FC1C42EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 05:51:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 709351BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 07:41:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B033B60C2C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 05:51:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B033B60C2C
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3E35F41D39
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 07:41:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3E35F41D39
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hLeajiGaLPP0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Apr 2023 05:51:07 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 465CF60687
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2129.outbound.protection.outlook.com [40.107.93.129])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 465CF60687
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 05:51:07 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IzQF/CgJhZyD+Av414nDnIAeDIhzKwd7dKdaYXE4VC+JTLIHkyfe5aoAiuIoZu7SBY0gorf0TWcmrjAxq8c04PYJfveIqQ+YTfmEgSz6PlyhH/GoBxRyZM3gHDounCf800mRuJmATExA/0FG/sgk/wsAo3Yeuc2RdKueWOM3u5sS8g9zVPY0NGAYr331S36TmLCkmY5CJMqK7gQ92Q7YMhErXMMAgxwouoJ6K6MX8OZJ5DDml2Vumod2WPPCXfBfY+ClVgLm5v3TbcGXQlZZE2zApzsnM2u7XkhzJde9pSfEaLOiAN4roPI57ZD9VRbI/NfJdSSHyGAcoKWsZ3gvMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5dWf4Dl7jViZwaM4G1qUPctIrIC4UTWUnKSGPKIUkU4=;
- b=lEbrUrpa+9rapjxSfgXn/9iZEBQMtEihZr1lZIXpp/PYOAsGWkPuFR0smU6jH02brchBiMgphyeuLWxPcWIYX8nDcwDX8cIR2yhkyNEGAsZhr/gEhQr01dvu9Q3D4UelXt+W4hBf3L60py1OPKVGgVle9YTcAZC3sO4p99oYFTwrYhNPopDotTaJ4kcPuvzuL8tTr3rgKaiV3sE4yVhk54azeCwby7DLM+nVD2vrWdeEfLOZoKr9XJSpImxJ8T9w5gwqdfDGFIJF5o7/mHokxuMDCXGFSR2mrSTW4A5dhNP0MbjAJNs16UtieXRy9GPNmjR6u2kAHzcVCUdMYgnbaw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from BY3PR13MB4834.namprd13.prod.outlook.com (2603:10b6:a03:36b::10)
- by PH0PR13MB5793.namprd13.prod.outlook.com (2603:10b6:510:11c::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Wed, 19 Apr
- 2023 05:51:02 +0000
-Received: from BY3PR13MB4834.namprd13.prod.outlook.com
- ([fe80::d98b:da1b:b1f0:d4d7]) by BY3PR13MB4834.namprd13.prod.outlook.com
- ([fe80::d98b:da1b:b1f0:d4d7%5]) with mapi id 15.20.6298.045; Wed, 19 Apr 2023
- 05:51:02 +0000
-Date: Wed, 19 Apr 2023 07:50:54 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Ding Hui <dinghui@sangfor.com.cn>
-Message-ID: <ZD+BPjGImmvwVd3G@corigine.com>
-References: <20230417074016.3920-1-dinghui@sangfor.com.cn>
- <20230417074016.3920-2-dinghui@sangfor.com.cn>
- <ZD70DKC3+K6gngTh@corigine.com>
- <ff2e0a06-abbb-213a-40ed-20c8e8b2f429@sangfor.com.cn>
-Content-Disposition: inline
-In-Reply-To: <ff2e0a06-abbb-213a-40ed-20c8e8b2f429@sangfor.com.cn>
-X-ClientProxiedBy: AM3PR07CA0057.eurprd07.prod.outlook.com
- (2603:10a6:207:4::15) To BY3PR13MB4834.namprd13.prod.outlook.com
- (2603:10b6:a03:36b::10)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kDMI6ieAfeM4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Apr 2023 07:41:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 38066403FF
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 38066403FF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Apr 2023 07:41:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10684"; a="408288786"
+X-IronPort-AV: E=Sophos;i="5.99,208,1677571200"; d="scan'208";a="408288786"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Apr 2023 00:41:43 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10684"; a="641663481"
+X-IronPort-AV: E=Sophos;i="5.99,208,1677571200"; d="scan'208";a="641663481"
+Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
+ ([10.237.94.20])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Apr 2023 00:41:41 -0700
+From: Radoslaw Tyl <radoslawx.tyl@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 19 Apr 2023 09:41:10 +0200
+Message-Id: <20230419074110.2071163-1-radoslawx.tyl@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY3PR13MB4834:EE_|PH0PR13MB5793:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2d3ab707-c7ce-43ec-82bc-08db409a0ed9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PckZ4utMuxhNGN9HsuzIRirRMf3W/vtRMuCpeg46S3VmZaDD9QMt9YKDPIAp9DJpe0ISq4lCeTdvCp2P3/HFC9VV7gt14plZAXBqBIXpwTSAqtDamLwp5Sue6Xx10bpZ0fl0Fao3BV42FjoZEsvE/lNLHUIaz9NhrVrKrW2inGnW5GCMDJ3u2ckNdLN8DdKFeVJLJkz+CL7qJFnJ5n6a98wrVg13Y5m1lWLYAdjb65Ydettf78fO2/HK+lJ2QIGJSa7W9oz4eaCgIDVTFSKbE2MkBR5wAGIhm2Nq1yVjJS2BtPag1U7+nWXIx1rftJt5AqcAiTKQ4RsuJRSYScfZ46UbBcqA6RVA0YXEHca+Pqu/FGm6TzfrCBdyaRDQiHSsMcTJv5w6VRWVos31+rAc5GRsFAOb3UsOQC7tUrEOKN/FnNUBJZFNuoU2GqKI+K3gWQSEEYVv+PVmov7G/zO2FlugEiURQIOAz2eIaUV+bGhHfoPMxjWFYG0uINMRIS0Q32/ve6oboOL+Xw5GAlon2XdJoY+W5CzGMGb7jDtvm92GrwvJcmnE2fyXOGETmyXn1617MJwCek4c9HeQ3cphuGaCvvimicoV1y4+pre7NXQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY3PR13MB4834.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(136003)(346002)(376002)(396003)(366004)(39840400004)(451199021)(8936002)(38100700002)(36756003)(8676002)(7416002)(44832011)(2906002)(86362001)(5660300002)(478600001)(6486002)(6666004)(186003)(2616005)(6506007)(53546011)(66946007)(66476007)(6512007)(316002)(6916009)(83380400001)(66556008)(41300700001)(4326008)(67856001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?T4fnGLk57hHcpSvp8o/ZMd7USJFcklQrHR0H8MoiJBejT0VvfNjl4i77LLUq?=
- =?us-ascii?Q?pIAP54+pJOgV0wPx13xtW2Oh9LUhKnAGXmWKUFNSr+y8Ofz06JChrkb2fQ8F?=
- =?us-ascii?Q?aklbXXzgjdSNY9fLs8GYYJRxSR9mG0NRKeI+0aJGCCGbT+I9fl7YggmFuWNF?=
- =?us-ascii?Q?m1zgxfOtgVIhV8a1XnQKUIqyzZm0f4HBn/zdDcaDWpMGJtxIXAbBjlnKG72H?=
- =?us-ascii?Q?c6HPfKYFjHH0L9QdYT6xOuXoJB6iZrSD0z6rnZuwCW6NeLC01yOOd14dRWZL?=
- =?us-ascii?Q?acveaFAXg2Y+6U7C0RiIUCGpqw95LjfmQSGQ5MtIv3wC9RRlIkEyHU6F5O8Y?=
- =?us-ascii?Q?AG//t3VzB+t4Aom6ATo5ZssRU6Os5nV10cGizBgbZaZqVhG2ENRgglc33ebf?=
- =?us-ascii?Q?pXrUYc1n+YIeH+ZJz1EnY32Y3OTtJJk0Izd8gO0PYXxLzk54/TFLbAGXLZNN?=
- =?us-ascii?Q?tRooGhc2i9JMXiXvCZbXP9BW6jtxFq0AZ9jR2Mb527m86kD1s/MNGgrQ12Ud?=
- =?us-ascii?Q?P9Inf1o7fwMaXvZNaiBkuIG8NgIOJ7ZLBqFpmOJCQ2tdw8JQoVWa2svn1x4k?=
- =?us-ascii?Q?y/RZ18fQ4eGHB4vkplSDyzxJZ0hWxCA58OD/SccvXgzm5aKQQ34wjN73ak4C?=
- =?us-ascii?Q?xoDpbpytmNK9wSD0srF0XWQfMK3Vrv1kiKe5TAvEYv9piSsX0OwL3dMwTNQP?=
- =?us-ascii?Q?n2AkKar4if9tx7Kaj+trZ1ZAyqpUad9+sFuX5vb6koB8IEjb4i6panCAZbJE?=
- =?us-ascii?Q?lYBoRfiy2RJ+g5w8OncXWIx4X176PBkM8kwbqFwOxF2CruvcMqCHn4rf6vxk?=
- =?us-ascii?Q?cdmJwQfPRehz3/VSw4Rudbq7I1A2/3M7usyqBKOu7ulGwRmTgXCTrmdIwZVq?=
- =?us-ascii?Q?sSjtrM28xt+flgPUJjG0KfRgkSxsN7wGSU+1oMFkz41opB6MOMATOSHM0X+K?=
- =?us-ascii?Q?bcuqcR+mNfwEN6FPl3meP4nEsDfII70wIn1eXoF0W5dD57GycymqAm6P8h50?=
- =?us-ascii?Q?K54+KtAQaqrh4whIu2aS9G0sedZv21EeLjMtf/fI8e+tUkAM1PYgTA+ISQj8?=
- =?us-ascii?Q?1LpnkC2YKpOdZ6CvlMBn0ynJ443mQLDXYTIowGvAYcYcdrS6id6Ud8nbkA4L?=
- =?us-ascii?Q?BZY8qj0DeaWY+LKNUvOfceg7lkEXTGcr+R9wfjUWNkNIOqOZvu5AB2d4JEYg?=
- =?us-ascii?Q?3xSE0bsQKVP2vVpMGrnZ2Dxp43+IQr1tFoXlp4PM6tnwD0lhGB4YGLuRQi5a?=
- =?us-ascii?Q?1ApX8y6IZM9aD7cwz1hS65edi+h4UDBPgEABC9Ya6NpE+IBWRQ5jtt+yi5Lb?=
- =?us-ascii?Q?GGR17gz33Ru2MDXkQyno2rzhQUY3keUnUr2hloDjQweWQ0gv/KvpF7HiIHp4?=
- =?us-ascii?Q?cXx7DXTYKfrgEeWasSVqXcGBN9UzQcM3Ce56tGPvElq/6IpuTIzKthen9jen?=
- =?us-ascii?Q?mQyBImpGct9U70KfTq1IvlYwysYjJ1oEuROAJgAK0hDNHPLOpimYEobqxAnf?=
- =?us-ascii?Q?u9aLq4yEqFyV+pWXJ2yXytY+VZeh0YaxWR/duGSPgEzLNJdc5gP6X2kqAwy1?=
- =?us-ascii?Q?vWvvloSGzM28aNPR8ZKJg1Di02emByneClQOG7OC1OpPnCsKgF0H+5eqJjb7?=
- =?us-ascii?Q?A1DNh6DClXHntnO5mM4Q4rUq1UoRpGnaIUW1COWRqd9Yuz0J5cDTIZl7hn/d?=
- =?us-ascii?Q?hhv0tg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2d3ab707-c7ce-43ec-82bc-08db409a0ed9
-X-MS-Exchange-CrossTenant-AuthSource: BY3PR13MB4834.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2023 05:51:02.2883 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0uv2OsaMkble8jF4G1KkDiDcmyzru55/6T4k+FwsTnaUqMzFrKqo1oODFS23bvARRLtCXT777QeEcBNwbZUhXfEk4Sprzb3hQl5UOkVJuCk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR13MB5793
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5dWf4Dl7jViZwaM4G1qUPctIrIC4UTWUnKSGPKIUkU4=;
- b=LVD9bb9vo4jA+UYVrDajdWg5dIHh7qQ4juI+Yssw5WmakTqyoWf5Zi7MOIY/gYMb25ggxJ2LUgi+T+FKjGV0uViQ/SW87xanUNQz5uCsz5+Uf4Xd3DMKXlj6Dwtl3RH8FqY0zOULMRNk4VjKacfCfAyHbQbWR2WzanhL1yXwwGc=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=LVD9bb9v
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [RESEND PATCH net 1/2] iavf: Fix
- use-after-free in free_netdev
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1681890104; x=1713426104;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=k5bNIBbGgdhAnYpLQ+a/iZambdpQXqDYf+o7ZfFygvs=;
+ b=NxGlz/9HtLDS44CQk5tQxALnJKYToLnRNDOB6jR+q1R8SKaTYw23VJpD
+ tuZZ2rmVBieHlGab8nt0bv5p0r1hk4uD6UdohpiHYbtE94uRdTEJD/S4d
+ TxzirIRGtq/WBdWxAt+gemSy/m/1VSDJypJ1obbfUhLbB74+EXfbkf51f
+ prvcP1J7mn0TRZlfUcQLSmIc7W4qBPEZa444/ITNFjlPCMEq5J0lBkyVE
+ rnRb9efpwLQuMraIciCDjaQZTI5SJpb5wvJ1QeP5H3diX6I8bnJI3Bxwr
+ oLqYz0aR2Xo4YdIiiDPI5zgSvC8HDDqDAfSE9U56Wtq5SftcCeG9mpyD5
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=NxGlz/9H
+Subject: [Intel-wired-lan] [PATCH net-next] i40e: add PHY debug register dump
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,58 +93,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pengdonglin@sangfor.com.cn, keescook@chromium.org,
- anthony.l.nguyen@intel.com, jesse.brandeburg@intel.com,
- huangcun@sangfor.com.cn, linux-kernel@vger.kernel.org,
- grzegorzx.szczurek@intel.com, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: Radoslaw Tyl <radoslawx.tyl@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Apr 19, 2023 at 09:11:37AM +0800, Ding Hui wrote:
-> On 2023/4/19 3:48, Simon Horman wrote:
-> > Hi Ding Hui,
-> > 
-> > On Mon, Apr 17, 2023 at 03:40:15PM +0800, Ding Hui wrote:
-> > > We do netif_napi_add() for all allocated q_vectors[], but potentially
-> > > do netif_napi_del() for part of them, then kfree q_vectors and lefted
-> > 
-> > nit: lefted -> leave
-> > 
-> 
-> Thanks, I'll update in v2.
-> 
-> > > invalid pointers at dev->napi_list.
-> > > 
-> > > If num_active_queues is changed to less than allocated q_vectors[] by
-> > > unexpected, when iavf_remove, we might see UAF in free_netdev like this:
-> > > 
-> 
-> ...
-> 
-> > > 
-> > > Fix it by letting netif_napi_del() match to netif_napi_add().
-> > > 
-> > > Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
-> > > Cc: Donglin Peng <pengdonglin@sangfor.com.cn>
-> > > CC: Huang Cun <huangcun@sangfor.com.cn>
-> > 
-> > as this is a fix it probably should have a fixes tag.
-> > I wonder if it should be:
-> > 
-> > Fixes: cc0529271f23 ("i40evf: don't use more queues than CPUs")
-> 
-> I don't think so.
-> I searched the git log, and found that the mismatched usage was
-> introduced since the beginning of i40evf_main.c, so I'll add
-> 
-> Fixes: 5eae00c57f5e ("i40evf: main driver core")
+Implement ethtool register dump for some PHY registers in order to
+assist field debugging of link issues.
 
-Yes, agreed, that is the right tag.
+Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h        |  3 +
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 72 ++++++++++++++-----
+ .../net/ethernet/intel/i40e/i40e_register.h   |  8 +++
+ 3 files changed, 65 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 6e310a539467..876d25cc5670 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -93,6 +93,9 @@
+ #define I40E_OEM_SNAP_SHIFT		16
+ #define I40E_OEM_RELEASE_MASK		0x0000ffff
+ 
++/* default value when register dump is fail */
++#define I40E_READ_REG_INVALID		0xaabbccdd
++
+ #define I40E_RX_DESC(R, i)	\
+ 	(&(((union i40e_rx_desc *)((R)->desc))[i]))
+ #define I40E_TX_DESC(R, i)	\
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index afc4fa8c66af..82112834f1b8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -426,6 +426,19 @@ static const char i40e_gstrings_test[][ETH_GSTRING_LEN] = {
+ 
+ #define I40E_TEST_LEN (sizeof(i40e_gstrings_test) / ETH_GSTRING_LEN)
+ 
++const struct i40e_diag_reg_test_info i40e_phy_regs_list[] = {
++	/* offset               mask         elements   stride */
++	{I40E_PRTMAC_PCS_LINK_CTRL,		0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_LINK_STATUS1(0),	0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_LINK_STATUS2,		0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_XGMII_FIFO_STATUS,	0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_AN_LP_STATUS,		0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_KR_STATUS,		0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_FEC_KR_STATUS1,	0xFFFFFFFF, 1, 4},
++	{I40E_PRTMAC_PCS_FEC_KR_STATUS2,	0xFFFFFFFF, 1, 4},
++	{ 0 }
++};
++
+ struct i40e_priv_flags {
+ 	char flag_string[ETH_GSTRING_LEN];
+ 	u64 flag;
+@@ -1814,38 +1827,61 @@ static int i40e_get_regs_len(struct net_device *netdev)
+ 	for (i = 0; i40e_reg_list[i].offset != 0; i++)
+ 		reg_count += i40e_reg_list[i].elements;
+ 
++	for (i = 0; i40e_phy_regs_list[i].offset != 0; i++)
++		reg_count += i40e_phy_regs_list[i].elements;
++
+ 	return reg_count * sizeof(u32);
+ }
+ 
+-static void i40e_get_regs(struct net_device *netdev, struct ethtool_regs *regs,
+-			  void *p)
++static void i40e_read_regs(struct net_device *netdev,
++			   const struct i40e_diag_reg_test_info *i40e_regs_list,
++			   void *p, u32 *ri)
+ {
+ 	struct i40e_netdev_priv *np = netdev_priv(netdev);
+ 	struct i40e_pf *pf = np->vsi->back;
+ 	struct i40e_hw *hw = &pf->hw;
+ 	u32 *reg_buf = p;
+-	unsigned int i, j, ri;
++	unsigned int i, j;
+ 	u32 reg;
++	u32 val;
++
++	/* loop through the regs table for what to print */
++	for (i = 0; i40e_regs_list[i].offset != 0; i++) {
++		for (j = 0; j < i40e_regs_list[i].elements; j++) {
++			reg = i40e_regs_list[i].offset
++				+ (j * i40e_regs_list[i].stride);
++
++			/* check the range on registers */
++			if (reg <= (pf->ioremap_len - sizeof(u32)))
++				val = rd32(hw, reg);
++			else
++				val = I40E_READ_REG_INVALID;
++
++			netdev_dbg(netdev, "reg[%02u] 0x%08X %08X\n",
++				   *ri, reg, val);
++			reg_buf[(*ri)++] = val;
++		}
++	}
++}
++
++static void i40e_get_regs(struct net_device *netdev, struct ethtool_regs *regs,
++			  void *p)
++{
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_hw *hw = &np->vsi->back->hw;
++	u32 ri = 0;
+ 
+ 	/* Tell ethtool which driver-version-specific regs output we have.
+ 	 *
+-	 * At some point, if we have ethtool doing special formatting of
+-	 * this data, it will rely on this version number to know how to
+-	 * interpret things.  Hence, this needs to be updated if/when the
+-	 * diags register table is changed.
++	 * At some point, if we will have ethtool able to parse binary stream
++	 * output, it will rely on this version number, basing on encoded
++	 * MAC type, Revision ID and Device ID of tested PHY.
+ 	 */
+-	regs->version = 1;
+-
+-	/* loop through the diags reg table for what to print */
+-	ri = 0;
+-	for (i = 0; i40e_reg_list[i].offset != 0; i++) {
+-		for (j = 0; j < i40e_reg_list[i].elements; j++) {
+-			reg = i40e_reg_list[i].offset
+-				+ (j * i40e_reg_list[i].stride);
+-			reg_buf[ri++] = rd32(hw, reg);
+-		}
+-	}
++	regs->version = hw->mac.type << 24 | hw->revision_id << 16 |
++			hw->device_id;
+ 
++	i40e_read_regs(netdev, i40e_reg_list, p, &ri);
++	i40e_read_regs(netdev, i40e_phy_regs_list, p, &ri);
+ }
+ 
+ static int i40e_get_eeprom(struct net_device *netdev,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index 7339003aa17c..7bfed10d5ab4 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -522,6 +522,14 @@
+ #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT 0
+ #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_MASK I40E_MASK(0xFFFF, \
+ 	I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT)
++#define I40E_PRTMAC_PCS_LINK_STATUS1(_i) (0x0008C200 + ((_i) * 4))
++#define I40E_PRTMAC_PCS_LINK_STATUS2 0x0008C220
++#define I40E_PRTMAC_PCS_LINK_CTRL 0x0008C260
++#define I40E_PRTMAC_PCS_XGMII_FIFO_STATUS 0x0008C320
++#define I40E_PRTMAC_PCS_AN_LP_STATUS 0x0008C680
++#define I40E_PRTMAC_PCS_KR_STATUS 0x0008CA00
++#define I40E_PRTMAC_PCS_FEC_KR_STATUS1 0x0008CC20
++#define I40E_PRTMAC_PCS_FEC_KR_STATUS2 0x0008CC40
+ #define I40E_GLNVM_FLA 0x000B6108 /* Reset: POR */
+ #define I40E_GLNVM_FLA_LOCKED_SHIFT 6
+ #define I40E_GLNVM_FLA_LOCKED_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_LOCKED_SHIFT)
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
