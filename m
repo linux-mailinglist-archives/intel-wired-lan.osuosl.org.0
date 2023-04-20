@@ -2,80 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0029F6E9749
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Apr 2023 16:36:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 43E0E6E97CC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Apr 2023 16:59:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 92EC06FEFA;
-	Thu, 20 Apr 2023 14:36:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92EC06FEFA
+	by smtp3.osuosl.org (Postfix) with ESMTP id D80CB6FF36;
+	Thu, 20 Apr 2023 14:59:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D80CB6FF36
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682001388;
-	bh=/d7CpL1ATMcbRFrP2thhFUUxqyIuhg6o/BQOd/j3jz0=;
+	s=default; t=1682002792;
+	bh=dBjtazc71Qi9wicOZfQVrhpK4Kek6YB1apUJjcnq3iM=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZKJmEiK8lcMR3lRyCA9DQYfGJy28qaXfWB8LKxu4agiFk6qnThs+i/W8Q1BznZEJB
-	 NJ5QUeZoDVjPlNPh3hyQsbiK1na32/YsER6uujYvLN5IXS05PVPm13CfrkaLtF7bnd
-	 HQsc4MU3IQZA7LNVFb+ON8lD6cQvqLDQQezeCpiUZyTWz0LKQ6JKYd+OWlAGjhEYfV
-	 aRm2cm9f/v+Log7i4uhB4IWK6p3rGordEjK2HBjkTuVe9/zXi9r1FwzcjyKkRDmMBV
-	 l3JsQiHmLSeK/tF/rPdttzAdwpdsF1KeeaIBFDI+OgZE5YOtpweUKTojU8X5IdgZDK
-	 hNx/ROUyQxdkA==
+	b=8Lh9YB6usGAG/WaW1i1Q3UWeQiPXRM+2rqpOdTXLlZmUCj1+PGh6myPvLVjo6ASXN
+	 eOfHHG4tqixvx+5Lc0V1QYYEVfxrMPLo/Oaha3XUz4K2E0QIJ+vIRmAjpvXGNb29AH
+	 KY1ETWGaoa3Tin4ShenzcBQ/XX3qYtQ78IvHLE1S8jysUYodMlnw3OUip/g+9SVtD9
+	 XRxw+p3IN8Do5cjk/F1kRmcIymnBwncfSqG1PbqrDx2hiQf/CSt2w2xgDtsYnIAkBD
+	 /UlOW73fxC4NEFNKrdSfa3M88mo2A8r76X/kqdTYUlzSK5gDf38A+wxQH+I6y5N4Ip
+	 entd2CpJChdig==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q-fmEvPh932r; Thu, 20 Apr 2023 14:36:27 +0000 (UTC)
+	with ESMTP id Ey09ajASTgDo; Thu, 20 Apr 2023 14:59:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 88F4D60AAD;
-	Thu, 20 Apr 2023 14:36:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 88F4D60AAD
+	by smtp3.osuosl.org (Postfix) with ESMTP id D89B26FF08;
+	Thu, 20 Apr 2023 14:59:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D89B26FF08
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 268401BF836
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:36:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EAC5F1BF2CD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:59:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0C0A683B12
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:36:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C0A683B12
+ by smtp4.osuosl.org (Postfix) with ESMTP id BC5A3418CF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:59:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC5A3418CF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id St-UvteZViwR for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Apr 2023 14:36:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Av1NyQ4MIn2Z for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Apr 2023 14:59:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 606DF8214F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 026CB41866
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 606DF8214F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:36:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 026CB41866
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Apr 2023 14:59:45 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A501A64A05;
- Thu, 20 Apr 2023 14:36:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A6FC7C433D2;
- Thu, 20 Apr 2023 14:36:20 +0000 (UTC)
-Date: Thu, 20 Apr 2023 07:36:19 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E8BFF64A1C;
+ Thu, 20 Apr 2023 14:59:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30528C433EF;
+ Thu, 20 Apr 2023 14:59:44 +0000 (UTC)
+Date: Thu, 20 Apr 2023 07:59:43 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Duoming Zhou <duoming@zju.edu.cn>
-Message-ID: <20230420073619.6001cb27@kernel.org>
-In-Reply-To: <20230420140157.22416-1-duoming@zju.edu.cn>
-References: <20230420140157.22416-1-duoming@zju.edu.cn>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Message-ID: <20230420075943.4ef9b68a@kernel.org>
+In-Reply-To: <21b89328-8c74-596b-3cfe-e71affd193a8@intel.com>
+References: <20230419231751.11581-1-ahmed.zaki@intel.com>
+ <21b89328-8c74-596b-3cfe-e71affd193a8@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1682001381;
- bh=CiPDXZ/3Ibo+b4cOGX7CAnSBNa4vesz4gA9rJfwtNJY=;
+ d=kernel.org; s=k20201202; t=1682002784;
+ bh=/D8ISpki4l1J4whygb9ubLZyEG1f518zP3ZWZthbXPA=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SqLfS3bEgPPg/oItrzysDOaivBXR/CmHP8N6K/BAYMHYjVAb2po9WtA+GuneI/OnQ
- 65w16wfhnNGEjJ+utePwRCfEEvHwPfS03ECUjyPhs890Rx7SbrNP/HP/j16nkjK2iS
- CbB6hOpYlPxaII7vHl1UA6nud8xDuUtiZWoea0L6FmMhdJwH8cYJMgf1ZC3/IwK7Xn
- mDZeGqQzoCSq2INHZBO4JsMW+QnVLFdAKhLK+aHtvKg+Xu46CnCK5za8UsTeoAKPh0
- kZJyjhs+kKYPyD9GmbkLz4pXmXoLsynfLj2YOTDBgb3Kvv+R7HiapmrGwVsJAbEDZy
- 3O+lDja0Wzb7Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=RNU4vKpt3/KIphM9zbptyAkV4k9sjA9q/cCcr3KgQi6jsSx4BLqR/gvbZeQJ+MCqH
+ 4nxXQ1/wlpVHSEBnHh7JAVV3Trcb6OmzGZwFaabVOG/wuzPvPZSKhds64WeB0cdxUn
+ ie9rnvvJtx4cJw/bbhm75O8x17oWvAbtjtvQy3e37xwCEzvtzEAYLOOc6j1IUKisv9
+ TtUvoFgvxmfaeHqKKjT0d+toQp5kIXbpraeDF2WGjLuqftkI2hQ1bC0YOwUJznTFaY
+ Ji9TJ12/DhsxqeoLASnjW17MKyeTGOfI8bZuc9uAPWM+mGf9KwObfVQSoJqT6Qc1HA
+ 6cyv+ycDFrEIQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=SqLfS3bE
-Subject: Re: [Intel-wired-lan] [PATCH net] ethernet: ixgb: fix use after
- free bugs caused by circular dependency problem
+ header.a=rsa-sha256 header.s=k20201202 header.b=RNU4vKpt
+Subject: Re: [Intel-wired-lan] [PATCH net-next] iavf: remove double
+ underscores from states names
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,46 +89,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- jesse.brandeburg@intel.com, edumazet@google.com, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 20 Apr 2023 22:01:57 +0800 Duoming Zhou wrote:
-> The watchdog_timer can schedule tx_timeout_task and tx_timeout_task
-> can also arm watchdog_timer. The process is shown below:
+On Thu, 20 Apr 2023 16:33:54 +0200 Alexander Lobakin wrote:
+> > No need to prepend some states names with "__", especially that others do
+> > not have these underscores.  
 > 
-> ----------- timer schedules work ------------
-> ixgb_watchdog() //timer handler
->   schedule_work(&adapter->tx_timeout_task)
-> 
-> ----------- work arms timer ------------
-> ixgb_tx_timeout_task() //workqueue callback function
->   ixgb_up()
->     mod_timer(&adapter->watchdog_timer,...)
-> 
-> When ixgb device is detaching, the timer and workqueue
-> could still be rearmed. The process is shown below:
-> 
->   (cleanup routine)           |  (timer and workqueue routine)
-> ixgb_remove()                 |
->                               | ixgb_tx_timeout_task() //workqueue
->                               |   ixgb_up()
->                               |     mod_timer()
->   cancel_work_sync()          |
->   free_netdev(netdev) //FREE  | ixgb_watchdog() //timer
->                               |   netif_carrier_ok(netdev) //USE
-> 
-> This patch adds timer_shutdown_sync() in ixgb_remove(), which
-> could prevent rearming of the timer from the workqueue.
-> 
-> Fixes: 1da177e4c3f4 ("Linux-2.6.12-rc2")
-> Signed-off-by: Duoming Zhou <duoming@zju.edu.cn>
+> What's the value of this change, apart from 400 locs diffstat? I don't
+> say having prefixes for general-purpose definitions is correct, but...
+> Dunno. Would be nice to have as a part of some series with assorted
+> improvements, but not standalone. Or it's just me =\
 
-The driver has been removed. No point.
+Yeah, I'm not sure it's bad enough to justify the code churn, either.
+Up to you folks at Intel.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
