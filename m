@@ -1,190 +1,189 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9577B6EAF4A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Apr 2023 18:37:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 719FD6EB145
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Apr 2023 19:58:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0B95A417B6;
-	Fri, 21 Apr 2023 16:37:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B95A417B6
+	by smtp3.osuosl.org (Postfix) with ESMTP id B2F396FFB7;
+	Fri, 21 Apr 2023 17:58:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B2F396FFB7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682095023;
-	bh=ItA34uDqbjou61IRQE3opDvClY7fUHws8ep65VIVMLQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1682099936;
+	bh=DYmKXSMBLaMs0pJ4RRjR8zkr074+dHY8wnNl0FH4kLI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ihSlLCWRZ8kkNb6GOjKzbURVjXQvcCE4zmPUlujGCsxR+D0kKKJ/msTbcHhLDedDj
-	 Vb5g3++DTfTtpAJ/gzw2fYTKUSK/u5h+acv392WUXkBKugS0hh2SAk5EmruwfchgHY
-	 k2UwGjVdw+YA6gJfrwjAb7x66EF63NjdUDtlDEWJmPYIsnzXZd/eCFdpjqSJ4PooMV
-	 YK2R0e9f+b2u8yPzMzNHMawEpvw5U5vrI2U62neeMfLN6k7cEjM/7AO2plq0Eml0wj
-	 gwc6+mKXKlTt+nJoxLL1yuQwjzB75GgjrfurTWUoeLCs7ZJoBaGcBRd3MIfpSk/vTK
-	 lQwKaeyS/j0tw==
+	b=vFZmg14B1pWGtC+OAUfHGY1H3Nt8VJfOJkefhx4UV57s4sWflXb2X0m69cUBhljgK
+	 x0Bg7NEpS0q0okyMRv18fvEqucw4z4wDz/Q9ZRPELGOszx1tjCULQy11DDqd/tN4mJ
+	 FDRJodlEz0HFDQTG8Wj54cjgUW9WzMhOy1cMR5XxisShHeDa5WPE2bNlmDCuxl+FEL
+	 jQ+y9smiSl+Um+U/VPgOpA7ySExeKU0+R5v6il9TTSvRjkLxNYY6JFcvUgX2Q7ygzg
+	 PLLETSHRtRe+1DPdXwBRdv8ZKKawoiGp5B3OGP1rGMxvfUc68zyOc7yOGRLaRAMfBY
+	 MQIkfvQMbwUDA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bAL0rCJp-GfV; Fri, 21 Apr 2023 16:37:02 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FB-kbfY7dbcc; Fri, 21 Apr 2023 17:58:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9B5DE417B8;
-	Fri, 21 Apr 2023 16:37:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9B5DE417B8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26CCD6FF77;
+	Fri, 21 Apr 2023 17:58:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26CCD6FF77
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D7AFC1BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 16:36:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EF0401BF2FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 17:58:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AE410417B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 16:36:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE410417B6
+ by smtp4.osuosl.org (Postfix) with ESMTP id C38F041DC9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 17:58:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C38F041DC9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YlrK-DMuI7bV for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Apr 2023 16:36:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E2-AeAZcQh2w for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Apr 2023 17:58:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC112417A6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BC112417A6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 16:36:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10687"; a="326363103"
-X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="326363103"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 556ED41DB9
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 556ED41DB9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 17:58:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10687"; a="343532894"
+X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="343532894"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Apr 2023 09:36:55 -0700
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Apr 2023 10:58:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10687"; a="724896815"
-X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="724896815"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga001.jf.intel.com with ESMTP; 21 Apr 2023 09:36:54 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 21 Apr 2023 09:36:54 -0700
+X-IronPort-AV: E=McAfee;i="6600,9927,10687"; a="724918624"
+X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="724918624"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga001.jf.intel.com with ESMTP; 21 Apr 2023 10:58:46 -0700
 Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 21 Apr 2023 09:36:54 -0700
+ 15.1.2507.23; Fri, 21 Apr 2023 10:58:45 -0700
 Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
  fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Fri, 21 Apr 2023 09:36:54 -0700
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.171)
+ 15.1.2507.23 via Frontend Transport; Fri, 21 Apr 2023 10:58:45 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
  by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Fri, 21 Apr 2023 09:36:53 -0700
+ 15.1.2507.23; Fri, 21 Apr 2023 10:58:45 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Rv18O0vl3auxlJ3x4eS8luNmdq0ulT5jeJ1y+NotwkH/v9wvORDpnNzSqEgpnwX/4wa2uGqA3yLiSLVPgd4rjCULn6ifoPouBW4HAhMTdBKDqd5piHHxaQkRb59mYMRhdYZSQBWym1p5FeCt8IXGE7YGZOt7dM+yIZXyhe5ga4FlvIxZ9cpYe65OqLVQCmuVRZog6c9Qp97CLwiIysDZE98q4am4QAzAg868PO9043g8M5zcuojUa7a9QETMLjpxvfwgBZj9HzDYHl+sHe7ibS9/lo/2AZL1X/ePOSZCIRzOvj46pSsOz9KJoYny1MbvBohYiQPQ2wbWFvei7aUQvw==
+ b=mso2WUI6mlCG08vl1GHzn37MWWFCw/Jdta0avlmja4IxnYExT7Rx0aHAtSj1B/TC90sFdtoy6vYbAbcSHB82DzIQIpCD6R6hc+S5WF004hQYWcrizSkzdHlYU3JHbgyVz71m0dLin3hSh+5ve4wokuM5uMtG2z8nQrwyB+fMx5/ujSEzD2qfzk+PMwtvjY/wUc66dcAu9O0J9N5mx4yaTl4Qnhxt93qmDBgNE71iDNr/5w2DJMfyv+9Y/nNm+yUCNWnyr/AGZs3RutnvEoVnmwmE0/QbdVod5DSP6A4uRDlhfvzjtt2rezJoj9WcjAT//nJzF4bcgzImbG99jlkvXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/G/C1vXuSIaHMs6yluxtOuqSmoiWy/JAjDdei7IvO8c=;
- b=Nf+FCdboqwKro4qzyH/oriJ3uqqZAu2i+O66+CMjwtyBuWvT+c+FBh2F5SmRCjMVBbOdvLseb5BRVxWMvh9/zVoBh3fOW3uWyBeue6b/hAJRctojN+7KCn2VQnq8jtsgK4FIb+6SPDYS2Mav9Ue+8jVqmrktKYYFd3t+Wymit3amxFKA5+s9r3/506kyb4CihZwYJ9J4s5IFJTDUEsSLEy+zG4/y3U8brmK9z5+uCD9RlnjKLUyXG8g9M2BpbIzAyKp3gc+4j6CwZkLAH/c9zm8SAHn4VVxq9ZOxWGDDx/tpJUEvfiaULC9COmJ6o65nKtdYVQhpQ7vOg9iUfI/KOw==
+ bh=WG/OigtxRR9aodivGy4F6x5d15c2GcXce2aAtDUAujQ=;
+ b=iGo5CSW+pKAokHaJwqAS/2/QeFILZpkKwtmzo56euSkc7EoyRFHzVlxDmsna41+fsqeHGrrauFa1Bvj1dN7qD5rUx/6giYvlmV1pxQuQ3BCRsRjpnkniEUYHgeYTo5YJn3OcqVphiQbOvPihOX+MnM8YikooDV/En96kDTJuc8li1GkRWNIQVC5x7R1UdJ//DCRipN2Y6nTDsOuFoGIAK0gb9iJHJQ0sQES39MOiXzCtPan5AU2vb/s+yRJXyH1Ks55ATePAiZxcd/M3WWaMzqGqWge8v4NoKRr+1Ou7VTQdhd6MZpgv1OcN03omr1r79StnqWZi/Vzyh8ht+JhW5w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
- by BL1PR11MB5255.namprd11.prod.outlook.com (2603:10b6:208:31a::9) with
- Microsoft SMTP Server (version=TLS1_2,
+Received: from CO1PR11MB5042.namprd11.prod.outlook.com (2603:10b6:303:99::14)
+ by IA1PR11MB6124.namprd11.prod.outlook.com (2603:10b6:208:3ec::11)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.22; Fri, 21 Apr
- 2023 16:36:49 +0000
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::4c38:d223:b2ac:813e]) by DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::4c38:d223:b2ac:813e%5]) with mapi id 15.20.6319.022; Fri, 21 Apr 2023
- 16:36:49 +0000
-Message-ID: <72f95cf5-d922-1f3d-2495-e8bdea6de247@intel.com>
-Date: Fri, 21 Apr 2023 18:35:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ 2023 17:58:42 +0000
+Received: from CO1PR11MB5042.namprd11.prod.outlook.com
+ ([fe80::503:fbbc:de8b:476d]) by CO1PR11MB5042.namprd11.prod.outlook.com
+ ([fe80::503:fbbc:de8b:476d%5]) with mapi id 15.20.6319.022; Fri, 21 Apr 2023
+ 17:58:42 +0000
+Message-ID: <7b1a31f2-3ab3-1c50-ae47-f004fe321fca@intel.com>
+Date: Fri, 21 Apr 2023 10:58:38 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-References: <20230417093412.12161-1-wojciech.drewek@intel.com>
- <20230417093412.12161-10-wojciech.drewek@intel.com>
 Content-Language: en-US
-In-Reply-To: <20230417093412.12161-10-wojciech.drewek@intel.com>
-X-ClientProxiedBy: FR0P281CA0120.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a8::10) To DM6PR11MB3625.namprd11.prod.outlook.com
- (2603:10b6:5:13a::21)
+To: Ding Hui <dinghui@sangfor.com.cn>, <davem@davemloft.net>,
+ <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>,
+ <intel-wired-lan@lists.osuosl.org>, <jesse.brandeburg@intel.com>,
+ <anthony.l.nguyen@intel.com>
+References: <20230419150709.24810-1-dinghui@sangfor.com.cn>
+ <20230419150709.24810-2-dinghui@sangfor.com.cn>
+From: "Chittim, Madhu" <madhu.chittim@intel.com>
+In-Reply-To: <20230419150709.24810-2-dinghui@sangfor.com.cn>
+X-ClientProxiedBy: SJ0PR03CA0275.namprd03.prod.outlook.com
+ (2603:10b6:a03:39e::10) To CO1PR11MB5042.namprd11.prod.outlook.com
+ (2603:10b6:303:99::14)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|BL1PR11MB5255:EE_
-X-MS-Office365-Filtering-Correlation-Id: 41f21f94-592d-4e52-fd66-08db42869a61
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5042:EE_|IA1PR11MB6124:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3ef8b303-ce20-46f9-89d5-08db42920ade
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: zq3AjJHbOGDAF+JmV+DOrB8s1FpSrJy+dVGpHqfNXyEkqmwNwwFweZEHh7vRXJxqwwAi7S9MCYgE/xMJN4kLXqALtcLdonhKjajBCiB2+bNbUhi/cn+yGlWUCavm4WyKHRgFoPRINcfRKzXKRdt/FhOebTvmue/9iAZ8+vJpfEFz+pwry+9pHvX4bLvUcw6ssH1ArPTaI0tSYJLQKk/iEH7Wt8lhcvflIpYnMHVNSUB8knJlU2wGrWv+6BGD/4VAirLes+hPizYloiDIrJFZE1tdMUPIosogvrCYcSFqmW9pRgC9e73MlU0/dPi2GWbR3sOskGIsZc7HORSyu7EzKYr3Qkt2Ndi0HABX1ABwSinjWwsjWYN7ogiTH5btnNxWnsT7BdgSN5Mhi5Sb3Zrth+gTjQosepjbLd5Z3WVYcLxgnhBIZCBLzkcH3xHfI/XM7fgp68HE7AJDIUAEHpBexvGeIdaGsMTZPzvmotHSVcfvKsARxfxbrt88VbRvM9UdgedpzcR+2lqx8ldKN0ZK1nwCbokGMyy2nLWt0xlTYMBc/o3OFJ0NmdNMNMwVyFUxrAnxoh+YnoBrGC4M3ey9SeJs0pQVLP+SgXo4Nb2X2ewljMTDSDHKj1mNM6S/QWAgy5VLtJHdqK8tH4JIvNmKFw==
+X-Microsoft-Antispam-Message-Info: IF0JOe9/UiXE2+KkqDytpY2VGBdHKTs9PpjxwCBdusr9qDaVVUn4RA1bCh1hQJQeydymYin+B4qALO0T6u7ioORHaak/9/GRqlVTQMXhBd1+7mNkhLqbTDvj30U6ZvjgfDdy0B3AUQHDWfQ3V68KGclK6BO5LqnMu5z8ZVq8kbGm/t3TjKmun0NcnnKBe1fRFCPRiBX5u1JQpvlN0FKxf12jmIja3tctqmo27HPoBDjOfYAJjSX7rHDuBWeNPeXPcWqrWYYL5G6ngxFHG7SNcvGxfqUa5eTEjkKDQmkeTtQ7NrLLm5FhJbjAgNTU2w0rjrIllqMz6dl4gNVKCcgW6F3uNcazGOHWz3zBdbEAlzu1cjLeBAhex/L+o99GUsd4ofASYw0rOXFZg7ftmlpZu5cZVNVyAyGYYQ0BI/ohjen6exu3Wx15AzoTlSVBjyW9Q6iz/Sh8XOAkmTjBO5+zpZ/OxtVGAJCHphWgh6HniL9U3znxx62GLrZcseA8PXLzCQAOyx2ZIL83gDXdzEnq4K4ZzQumOvvZbvw1VBaySv3dABi5ATXDd6O5HvJf1iYb1uQ5YqUUXKaQs7brjgtsg9EPF4Bq60l5C0571XrJR0+F/c124msjNXLEoILt1JwiHTXnM5V7m7lJFrSGM+xbSg==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(136003)(346002)(366004)(376002)(396003)(39860400002)(451199021)(31686004)(6512007)(26005)(186003)(316002)(6506007)(4326008)(6862004)(8676002)(31696002)(36756003)(2906002)(86362001)(5660300002)(66476007)(6666004)(37006003)(6636002)(478600001)(41300700001)(83380400001)(2616005)(82960400001)(38100700002)(8936002)(6486002)(66556008)(66946007)(45980500001)(43740500002);
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5042.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(346002)(366004)(136003)(376002)(396003)(39860400002)(451199021)(84970400001)(31686004)(4326008)(316002)(6636002)(66946007)(66476007)(66556008)(36756003)(53546011)(6512007)(6506007)(26005)(82960400001)(38100700002)(2616005)(186003)(83380400001)(5660300002)(8676002)(41300700001)(6486002)(478600001)(2906002)(6666004)(8936002)(31696002)(7416002)(86362001)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RlI5QncwL1R6ZDBGcVpJWmxNbjRNYjFCRVJBMXU0b1kreVdHbTlNL1h3YVJn?=
- =?utf-8?B?L1dGdFIvaVZjOFZUdFpjWEx6K0VabWozUGNVdVJuRm0zemtnMllUVzNUbG8y?=
- =?utf-8?B?cEh1T2NEZjFDUUZvYlcrMERxNHM4aWUrOStNdUJmRHA5SDd0WmVuYjlQRmlP?=
- =?utf-8?B?RkpYbEhHekI3S3JFR09NcnQweEFNckF0ZTVidjN6dHY4d21FUkp6TXBCc3U0?=
- =?utf-8?B?cjFodW5TWW9xcWlSZUVGdjBwYmJEMTk2ZGFMcVZ5Wi9jRUZKMG50RWNseCsy?=
- =?utf-8?B?aE1NQmhRSTJkV1BGK2grd25JaG1kYkF2enhsM3FWNlRLZDhHTkpOSS9OZytI?=
- =?utf-8?B?V3hzQTRxVHJrdFZTTmRwRHY2ekNpY01WeVRMTmptbTk1b1NUZ2lFT0hYd21x?=
- =?utf-8?B?U1ZSa3NEZFlaeWRtMjdQR2tETjdndDAzdFFRWW5lQXFrL2dGTHJHNEl3OThQ?=
- =?utf-8?B?eWY3cng0elpvR3FaKzN3aGh0N21sbG8wN1ZYTndQRmx3QzZONnRUQ2ZyN0xK?=
- =?utf-8?B?ZlRGMkFsTlc5b3U0M0o4Wm45YnZqNXdYOEphSGQraXVCc1Mvc1hyMjZyc01Z?=
- =?utf-8?B?Zmx0OUxDMld5b0ZaYTk2RXo3S2VsTStxdUJyeGg2VndicHNvZWtDR3F1ZWF1?=
- =?utf-8?B?OWFHSHUySVJiR2VTTjJnU0tveUNpR1NNdmxqTE1HSnFNWmFBdzNzeFZqSlRV?=
- =?utf-8?B?UG16OURST1Y3SFVHZ0EyUDU2QWFaRWVZcE1WT2RLWDNLK2hBeUZtUGltcTM3?=
- =?utf-8?B?aUxsQnl3WFZQMmYzNW9ycC9LUEtxeVRJM2JaaE51ZUMwbnRYN2ozeFAzV1Bj?=
- =?utf-8?B?YVdrR2VGZFhyaGVoZ29zVzZ2ZUVGTTcrUElWbENpMEhTckhLNmFwR0lSa3cz?=
- =?utf-8?B?VHFJL25EblJDcTcyYklldm1ROVIxR2FidW1DeFlWVUU3aDNqeXV4S0hlZm5S?=
- =?utf-8?B?WGpEQmN0Z1VvaUlUUm1JTU9Hb2RFc3lqZ0tpS2ZEZzRLMkRDRml6cEZaaGdM?=
- =?utf-8?B?Vko1bWFlNXlCdWF6RGdoUzNZYUIwOFJ5TUtHUVozWnc5RFg2MHVxRzRiVEZH?=
- =?utf-8?B?dExQWXY2Zy9jM0tncVU1S1hyL05mUk8zSzVLWFBPTFM3UFExNStNYk9PZUZy?=
- =?utf-8?B?UUxOK2dNY3V5SjJXZ1VqMTJVT1BFd0pLWFZtS0xZYmpMUHdRVDBvS3NJbVo4?=
- =?utf-8?B?WXNabFh6WjBZeGprdkNqUkM2NUg4V1B0QjhSa0JtUFhQZVBZZ093Q1NNUUlk?=
- =?utf-8?B?bms5ZkhHNnE3OVQvcnIydmErRWNUVmZ4U0tqUXNkOTQxWFRJVS96UzVVdGVY?=
- =?utf-8?B?QlNPbE4rTHZsdzd2L0tXbEgraEVqQ0pzVzFtR3p4aEZna21oT1ZBQ1dRQVNv?=
- =?utf-8?B?V3Bub1IvM2s3a0FENWQxaTFTQWczZXpBQng4TGt0Z0ZJYUdWUXRsTGZVTzFJ?=
- =?utf-8?B?WTJPa2hmWURoRHlDLzhKN3JEaFJaMWsvVDJYL1NZeTFPRkxaMVR4QXlDTjFL?=
- =?utf-8?B?eUF5aWRhazZjVEFxVHFGN2RPSzhmN1ovcUxDem85bndTWG1BOERFZ05uRUZ2?=
- =?utf-8?B?UnhMVG1vczlhNVdVN3ZpR28zME01WTBoYmxHbnpTWlc3RVNCZFAwVEVnb24x?=
- =?utf-8?B?c2RRdXVhc0V3TXR0L3pVcTZtZHJicEJwRS9hb3NodyswMzJXc1lGNk1tRWpa?=
- =?utf-8?B?Q1h1N01ubmdkL1VRMnBpOWdVQnNxSmlJYzF5bEJKcDArdGRpZlEreUd0azJQ?=
- =?utf-8?B?bS9OQ1ZTWWNSMUpYVjJ0VFNjRnpkVUpBeHMxbXladVNvdDhXblUyY2RrNG13?=
- =?utf-8?B?REt5a2Mwb1ZiNGNLWmhrTDBRb001YTRCeHBKSjlpcUduNnZQNlpIQTllcmhI?=
- =?utf-8?B?Qk96aDJmVkNHdG1HTDNUOHBzeml2L3hSQnliVWF3Y21rZXBXanhSbTBrS0ox?=
- =?utf-8?B?QU9lczEzVlBZUFBaVDAzOTloKzNmSWFDRVMvK25nSUFsK2VKUmptYkJMd3d3?=
- =?utf-8?B?c3N4cjZiTVZOOGhpTE9UcWFrVkdCcmNMK0dHaHg0NnJIL0UrRWl6S3lZUWd5?=
- =?utf-8?B?L1ZpZHNFWEtNU2J2MFZtU3FFYXh5VFUweEN2OU10NzU4dEZlYnNJWkg2MHhY?=
- =?utf-8?B?ZVJtUnZya1JNQ0FKK3o1aHJJc2xSKzJTUmtUeUIwaGplQ3lsM0xEMlV4WkVD?=
- =?utf-8?B?clE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 41f21f94-592d-4e52-fd66-08db42869a61
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z29USWIwVHhxQ1Jta2xxYTlpc24wNUFYUS9rb3l5S1phZ1hZTmJQTlJLQzYx?=
+ =?utf-8?B?Y1gvZUxybUFza3J2amIyQmRUTGVtT2o2ZlhHNXhMUmw5ay92V0VnYmxDWDU3?=
+ =?utf-8?B?aUVEazgyL2JRRVdIUGlUN0tGQ1c4RkQrWG1JV2k2UCtXa1NKTGg2RkVCZHBE?=
+ =?utf-8?B?TFh5aGRHcFdyNE15bjdRVnRaN3FFc2VFSWdreE40bDRoUDQ2MWxNYkYraG1W?=
+ =?utf-8?B?aTkyYTVOYTJISmJiMFdWUVVaWlRNdmpCUHJYWVFIZTFoSmZTTVQ1Y0ZGOHRQ?=
+ =?utf-8?B?QVhCMURvT0ZWYVpkYy9TT3BVWVZTeE01Umt0ZmRrVHRLYXZjWjNCMy9McHpk?=
+ =?utf-8?B?Ukk1b1E3RXpHRWxQZk9KU3pGYXlpaTMyU1l1VEUybS93YmJ0UjQ3VVlhd1cx?=
+ =?utf-8?B?WU5iUGxBL3hnNHQ3eEhHYXdlTC9FYlV5aG5lcFFBazRucU1TOGFHWW9jREoz?=
+ =?utf-8?B?eE5KcldseEdwc3plWE5FSmxGUTBpRUprdFBnSTFmVnBvRVdjZUt6YkFPSitR?=
+ =?utf-8?B?UXE4U21ydjFUQlV4UTlqcno4R0YzaW9ack5jaEc0VGZFWFlha0pHUUVaamo4?=
+ =?utf-8?B?Q291MlZpcm1mUzFMOU1qN1QxdWxTeFBLdkdsTzNkMWlra200OU9XblNybTNE?=
+ =?utf-8?B?T0dvUXpjQ0FBZHluMGREeDYxME5LaWZCOWlCbWFSeEMrMytqV2tzZ2QxOXlm?=
+ =?utf-8?B?c09NNmVzMEJ4Z1k2dTYvZUpBVitRVHNwWTVWQk5iOE5vT0dVR201NzVYNUpU?=
+ =?utf-8?B?VFFJVXVUWm40UEdyV0J4VndGa05TK3E3eFQ4ODNidFBjMFhqaWE0ODNsWkFH?=
+ =?utf-8?B?MkJSc1crL3BwNklTMFNyem0zbG85U2FnVE0waSszR2VEQ05XbzdvNEx5dGZE?=
+ =?utf-8?B?eUZVblBwR2ttaGFBd0FxOXdVbTdSK0puNlY4Y2tTRkQ5eGI4REpaVlFvNDRj?=
+ =?utf-8?B?b1k3WWRCcTF6Qks1bmxhdzJwckt6SndwcTJLa1pQbkcvcW9HaTd2RHBiZEtJ?=
+ =?utf-8?B?TnpvOXNCMXdncUFDMFpvaGRlOTdueFgrbFlFd2dQcGZ4elhWV2FscThrRjdq?=
+ =?utf-8?B?a1JnakN2NFp0Y00zTWNNTXhlU09ZQzZHdUFDT0cwNkJjSFZpdmFZM3dXM0Rn?=
+ =?utf-8?B?dldkT0sxWmswMkM3VHI5TWZEOXc0NloyNFpQRHY4aWp1b3lzbXVzK2wxY1lH?=
+ =?utf-8?B?Y3Eya096RmhvQjVRejhwbGJrT2V1TEtTVThzRW1hUHFMeUgyT3BnL1RSbTVu?=
+ =?utf-8?B?amMvTnVDbjlldEp0MTcyTXdVcHd2S0dYSzF5TE5IcWh3eVlzWXRGaGlGR0dt?=
+ =?utf-8?B?bVpERXY1RWhsbDFwYVpPcHFlSFE2VExhVXVyOXVlTUo1b21XVmhsUTgwY1l2?=
+ =?utf-8?B?RDM0ZFpJZTduMUdabjd1MmlTRFpXams1SHJ1dk9pSjhqTkYvaTc4ZW5ySDlt?=
+ =?utf-8?B?ZmVuQkJIdDlnNWRudXgrSUpEdjdNWUVpY2d4WU5PanVTcG1MTzNUNjJMRlNX?=
+ =?utf-8?B?QWU2RVlmTGw5dzVJY0lqSWxaUGhvM0t4RGo3azA4S1Z4aUF1dkQ0c2UwMHlD?=
+ =?utf-8?B?WlpsMzdUdkdQYU5YV1JML1h0dHlnMHpDYTBKR2FEK0NSMUVEM2p2SGpXRnRo?=
+ =?utf-8?B?eml5bjNKdTBwMUM2clI2eEpFK1ZUbUhJS2V1VXpNbXp1TzJza2ppZFZhUkJ2?=
+ =?utf-8?B?TDJ0STduWStKa0oxbjZ2REt1QnIrZmFuUjhic3huc3BsTU5ZOGRUUkI2b2Fw?=
+ =?utf-8?B?c0FFRmZPU3FLQkd6SEphL1gwL21Ycmx1V3pzUksrMVhZSS81QWxLeFJKTHBK?=
+ =?utf-8?B?YXp4NU45bitFZWEzSTRWOEFRVUdPT3hpTVdnd2FYWHJWUzR2K0RmYjU1enlw?=
+ =?utf-8?B?QTkwSElCY3pxYktqMzZjVitYYUp6dkFLTFVWTjBmVGNvL29na3RtWGZtZi9P?=
+ =?utf-8?B?TUVWSG8vVTNsY2d1OVNOY0M5a1lDdzZhVktXWUJhYzhGNDlMMXJFM2JxM01U?=
+ =?utf-8?B?YXMyWmd3c3ZsNzZZUG4wTGw4SG1XWkNidC9iVy9hR29yTjdabnlTS1Q1cmdo?=
+ =?utf-8?B?anQrSWRnUXFRemhMZ2hNVHErejQ0NThYTW13QlZkT0dlR0prSEhzWE1tU1pm?=
+ =?utf-8?Q?nr7I0ib716tF9QJFDGVEZpfQX?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ef8b303-ce20-46f9-89d5-08db42920ade
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5042.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Apr 2023 16:36:48.8829 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Apr 2023 17:58:42.1524 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1FE4krq4bZv4SnDRHZDRiZn8SevZnwKoKsO4LniLo6Q5zSN45SAdosyq9O2HxcvZpyrXrnhiagD7RkoZoHEdoJ0KMKakhxZXspUwbpGvLxU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5255
+X-MS-Exchange-CrossTenant-UserPrincipalName: YLRafnIIwen+xB+a/WZMAEHNL2FQvcYWB2LITxmMQDcd9CwfcAZO2vZpiZO32tRZ5Bo2sg8Wh7EsKHK6wOw3zA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6124
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1682095015; x=1713631015;
- h=message-id:date:from:subject:to:cc:references:
+ t=1682099928; x=1713635928;
+ h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=H2GjLtEwAjB3PBC2jqURIhjwOIdE2mp4UQhMNnT3r+g=;
- b=BviT4aDJgf5k8YiFiFjlB1nEbmGESgpvh60yTf8cOp+avCdjnEFnMEBw
- d4+dY2TnSG+L3iTgw/PP4hXrnnBZKAHQQio4odo1t173aSstJN05c+Nzj
- 6JlVkNzlqEkA9KM6uYTE12OjQRNksZ1ZF3HVPfQ/8cBqzSoVYVaJDmMXH
- YSBtMpBJbJsaDya4KCjN7Q6cFT/Ynr3GzvsSc77liEMh10N53GPWBsMhI
- r4cC75AIZGRtnjwrFE1RldkGzObJ6QO+wm1+jhTxfj4teT5IUlAi/q9TU
- BvVh2h29tw2f8n/BZYLurQaGM4U+ANnBKtRP9o5vSKfjxwdBsheyHYmMx
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=AjKk9NGKXfyQqiQh+4jGp3nRrLduwFyRSDtYd+hN5QU=;
+ b=Vrja97570DvEIxrWghMifIgBBc0guuQRQnYXvZkCxl1jRQEUGQSUNYST
+ jmW+IpSzaRP8Y7sd78a/Aj6h2TvPPQFHA57DCuVRbjSYCDuOmaV1JrF8k
+ pnjNdQv8ai+L3RTHMSvyhvFDiSjIwaeim1ZUg8zgWGo5uVv4N+a3cHXEF
+ Mwpvgguo+29EVdBvgHK1TNTSHnF65if/pN9yyGzB2ktx/yCV03OgsOgw3
+ tIW3YwWBQYXwJfKN/k1RsXdUMT5fW0OWKOTaknpc93wwzoQtycHicufHt
+ smbIE5xSyH5Z79klpGyDiABEDe9Smbcd/BBeW1fuf+F5cdReg86QKTu2I
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BviT4aDJ
+ header.a=rsa-sha256 header.s=Intel header.b=Vrja9757
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 09/12] ice: implement bridge
- port vlan
+Subject: Re: [Intel-wired-lan] [PATCH net v2 1/2] iavf: Fix use-after-free
+ in free_netdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,278 +196,192 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: keescook@chromium.org, grzegorzx.szczurek@intel.com,
+ simon.horman@corigine.com, mitch.a.williams@intel.com,
+ linux-kernel@vger.kernel.org, huangcun@sangfor.com.cn,
+ gregory.v.rose@intel.com, michal.kubiak@intel.com, jeffrey.t.kirsher@intel.com,
+ netdev@vger.kernel.org, pengdonglin@sangfor.com.cn,
+ linux-hardening@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-Date: Mon, 17 Apr 2023 11:34:09 +0200
 
-> From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+
+On 4/19/2023 8:07 AM, Ding Hui wrote:
+> We do netif_napi_add() for all allocated q_vectors[], but potentially
+> do netif_napi_del() for part of them, then kfree q_vectors and leave
+> invalid pointers at dev->napi_list.
 > 
-> Port VLAN in this case means push and pop VLAN action on specific vid.
-> There are a few limitation in hardware:
-> - push and pop can't be used separately
-> - if port VLAN is used there can't be any trunk VLANs, because pop
->   action is done on all trafic received by VSI in port VLAN mode
-> - port VLAN mode on uplink port isn't supported
+> Reproducer:
+> 
+>    [root@host ~]# cat repro.sh
+>    #!/bin/bash
+> 
+>    pf_dbsf="0000:41:00.0"
+>    vf0_dbsf="0000:41:02.0"
+>    g_pids=()
+> 
+>    function do_set_numvf()
+>    {
+>        echo 2 >/sys/bus/pci/devices/${pf_dbsf}/sriov_numvfs
+>        sleep $((RANDOM%3+1))
+>        echo 0 >/sys/bus/pci/devices/${pf_dbsf}/sriov_numvfs
+>        sleep $((RANDOM%3+1))
+>    }
+> 
+>    function do_set_channel()
+>    {
+>        local nic=$(ls -1 --indicator-style=none /sys/bus/pci/devices/${vf0_dbsf}/net/)
+>        [ -z "$nic" ] && { sleep $((RANDOM%3)) ; return 1; }
+>        ifconfig $nic 192.168.18.5 netmask 255.255.255.0
+>        ifconfig $nic up
+>        ethtool -L $nic combined 1
+>        ethtool -L $nic combined 4
+>        sleep $((RANDOM%3))
+>    }
+> 
+>    function on_exit()
+>    {
+>        local pid
+>        for pid in "${g_pids[@]}"; do
+>            kill -0 "$pid" &>/dev/null && kill "$pid" &>/dev/null
+>        done
+>        g_pids=()
+>    }
+> 
+>    trap "on_exit; exit" EXIT
+> 
+>    while :; do do_set_numvf ; done &
+>    g_pids+=($!)
+>    while :; do do_set_channel ; done &
+>    g_pids+=($!)
+> 
+>    wait
+> 
+> Result:
+> 
+> [ 4093.900222] ==================================================================
+> [ 4093.900230] BUG: KASAN: use-after-free in free_netdev+0x308/0x390
+> [ 4093.900232] Read of size 8 at addr ffff88b4dc145640 by task repro.sh/6699
+> [ 4093.900233]
+> [ 4093.900236] CPU: 10 PID: 6699 Comm: repro.sh Kdump: loaded Tainted: G           O     --------- -t - 4.18.0 #1
+> [ 4093.900238] Hardware name: Powerleader PR2008AL/H12DSi-N6, BIOS 2.0 04/09/2021
+> [ 4093.900239] Call Trace:
+> [ 4093.900244]  dump_stack+0x71/0xab
+> [ 4093.900249]  print_address_description+0x6b/0x290
+> [ 4093.900251]  ? free_netdev+0x308/0x390
+> [ 4093.900252]  kasan_report+0x14a/0x2b0
+> [ 4093.900254]  free_netdev+0x308/0x390
+> [ 4093.900261]  iavf_remove+0x825/0xd20 [iavf]
+> [ 4093.900265]  pci_device_remove+0xa8/0x1f0
+> [ 4093.900268]  device_release_driver_internal+0x1c6/0x460
+> [ 4093.900271]  pci_stop_bus_device+0x101/0x150
+> [ 4093.900273]  pci_stop_and_remove_bus_device+0xe/0x20
+> [ 4093.900275]  pci_iov_remove_virtfn+0x187/0x420
+> [ 4093.900277]  ? pci_iov_add_virtfn+0xe10/0xe10
+> [ 4093.900278]  ? pci_get_subsys+0x90/0x90
+> [ 4093.900280]  sriov_disable+0xed/0x3e0
+> [ 4093.900282]  ? bus_find_device+0x12d/0x1a0
+> [ 4093.900290]  i40e_free_vfs+0x754/0x1210 [i40e]
+> [ 4093.900298]  ? i40e_reset_all_vfs+0x880/0x880 [i40e]
+> [ 4093.900299]  ? pci_get_device+0x7c/0x90
+> [ 4093.900300]  ? pci_get_subsys+0x90/0x90
+> [ 4093.900306]  ? pci_vfs_assigned.part.7+0x144/0x210
+> [ 4093.900309]  ? __mutex_lock_slowpath+0x10/0x10
+> [ 4093.900315]  i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e]
+> [ 4093.900318]  sriov_numvfs_store+0x214/0x290
+> [ 4093.900320]  ? sriov_totalvfs_show+0x30/0x30
+> [ 4093.900321]  ? __mutex_lock_slowpath+0x10/0x10
+> [ 4093.900323]  ? __check_object_size+0x15a/0x350
+> [ 4093.900326]  kernfs_fop_write+0x280/0x3f0
+> [ 4093.900329]  vfs_write+0x145/0x440
+> [ 4093.900330]  ksys_write+0xab/0x160
+> [ 4093.900332]  ? __ia32_sys_read+0xb0/0xb0
+> [ 4093.900334]  ? fput_many+0x1a/0x120
+> [ 4093.900335]  ? filp_close+0xf0/0x130
+> [ 4093.900338]  do_syscall_64+0xa0/0x370
+> [ 4093.900339]  ? page_fault+0x8/0x30
+> [ 4093.900341]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> [ 4093.900357] RIP: 0033:0x7f16ad4d22c0
+> [ 4093.900359] Code: 73 01 c3 48 8b 0d d8 cb 2c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 89 24 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 fe dd 01 00 48 89 04 24
+> [ 4093.900360] RSP: 002b:00007ffd6491b7f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+> [ 4093.900362] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f16ad4d22c0
+> [ 4093.900363] RDX: 0000000000000002 RSI: 0000000001a41408 RDI: 0000000000000001
+> [ 4093.900364] RBP: 0000000001a41408 R08: 00007f16ad7a1780 R09: 00007f16ae1f2700
+> [ 4093.900364] R10: 0000000000000001 R11: 0000000000000246 R12: 0000000000000002
+> [ 4093.900365] R13: 0000000000000001 R14: 00007f16ad7a0620 R15: 0000000000000001
+> [ 4093.900367]
+> [ 4093.900368] Allocated by task 820:
+> [ 4093.900371]  kasan_kmalloc+0xa6/0xd0
+> [ 4093.900373]  __kmalloc+0xfb/0x200
+> [ 4093.900376]  iavf_init_interrupt_scheme+0x63b/0x1320 [iavf]
+> [ 4093.900380]  iavf_watchdog_task+0x3d51/0x52c0 [iavf]
+> [ 4093.900382]  process_one_work+0x56a/0x11f0
+> [ 4093.900383]  worker_thread+0x8f/0xf40
+> [ 4093.900384]  kthread+0x2a0/0x390
+> [ 4093.900385]  ret_from_fork+0x1f/0x40
+> [ 4093.900387]  0xffffffffffffffff
+> [ 4093.900387]
+> [ 4093.900388] Freed by task 6699:
+> [ 4093.900390]  __kasan_slab_free+0x137/0x190
+> [ 4093.900391]  kfree+0x8b/0x1b0
+> [ 4093.900394]  iavf_free_q_vectors+0x11d/0x1a0 [iavf]
+> [ 4093.900397]  iavf_remove+0x35a/0xd20 [iavf]
+> [ 4093.900399]  pci_device_remove+0xa8/0x1f0
+> [ 4093.900400]  device_release_driver_internal+0x1c6/0x460
+> [ 4093.900401]  pci_stop_bus_device+0x101/0x150
+> [ 4093.900402]  pci_stop_and_remove_bus_device+0xe/0x20
+> [ 4093.900403]  pci_iov_remove_virtfn+0x187/0x420
+> [ 4093.900404]  sriov_disable+0xed/0x3e0
+> [ 4093.900409]  i40e_free_vfs+0x754/0x1210 [i40e]
+> [ 4093.900415]  i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e]
+> [ 4093.900416]  sriov_numvfs_store+0x214/0x290
+> [ 4093.900417]  kernfs_fop_write+0x280/0x3f0
+> [ 4093.900418]  vfs_write+0x145/0x440
+> [ 4093.900419]  ksys_write+0xab/0x160
+> [ 4093.900420]  do_syscall_64+0xa0/0x370
+> [ 4093.900421]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> [ 4093.900422]  0xffffffffffffffff
+> [ 4093.900422]
+> [ 4093.900424] The buggy address belongs to the object at ffff88b4dc144200
+>                  which belongs to the cache kmalloc-8k of size 8192
+> [ 4093.900425] The buggy address is located 5184 bytes inside of
+>                  8192-byte region [ffff88b4dc144200, ffff88b4dc146200)
+> [ 4093.900425] The buggy address belongs to the page:
+> [ 4093.900427] page:ffffea00d3705000 refcount:1 mapcount:0 mapping:ffff88bf04415c80 index:0x0 compound_mapcount: 0
+> [ 4093.900430] flags: 0x10000000008100(slab|head)
+> [ 4093.900433] raw: 0010000000008100 dead000000000100 dead000000000200 ffff88bf04415c80
+> [ 4093.900434] raw: 0000000000000000 0000000000030003 00000001ffffffff 0000000000000000
+> [ 4093.900434] page dumped because: kasan: bad access detected
+> [ 4093.900435]
+> [ 4093.900435] Memory state around the buggy address:
+> [ 4093.900436]  ffff88b4dc145500: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 4093.900437]  ffff88b4dc145580: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 4093.900438] >ffff88b4dc145600: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 4093.900438]                                            ^
+> [ 4093.900439]  ffff88b4dc145680: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 4093.900440]  ffff88b4dc145700: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+> [ 4093.900440] ==================================================================
+> 
+> Although the patch #2 (of 2) can avoid the issuse triggered by this
+> repro.sh, there still are other potential risks that if num_active_queues
+> is changed to less than allocated q_vectors[] by unexpected, the
+> mismatched netif_napi_add/del() can also casue UAF.
+> 
+> Since we actually call netif_napi_add() for all allocated q_vectors
+> unconditionally in iavf_alloc_q_vectors(), so we should fix it by
+> letting netif_napi_del() match to netif_napi_add().
+> 
+> Fixes: 5eae00c57f5e ("i40evf: main driver core")
+> Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+> Cc: Donglin Peng <pengdonglin@sangfor.com.cn>
+> Cc: Huang Cun <huangcun@sangfor.com.cn>
+> Acked-by: Michal Kubiak <michal.kubiak@intel.com>
+> Reviewed-by: Simon Horman <simon.horman@corigine.com>
 
-[...]
-
-> @@ -610,11 +612,26 @@ ice_eswitch_br_vlan_filtering_set(struct ice_esw_br *bridge, bool enable)
->  		bridge->flags &= ~ICE_ESWITCH_BR_VLAN_FILTERING;
->  }
->  
-> +static void
-> +ice_eswitch_br_clear_pvid(struct ice_esw_br_port *port)
-> +{
-> +	struct ice_vsi_vlan_ops *vlan_ops =
-> +		ice_get_compat_vsi_vlan_ops(port->vsi);
-> +
-
-Deref in a separate line to avoid breaking?
-
-> +	vlan_ops->clear_port_vlan(port->vsi);
-> +
-> +	ice_vf_vsi_disable_port_vlan(port->vsi);
-> +
-> +	port->pvid = 0;
-> +}
-> +
->  static void
->  ice_eswitch_br_vlan_cleanup(struct ice_esw_br_port *port,
->  			    struct ice_esw_br_vlan *vlan)
->  {
->  	xa_erase(&port->vlans, vlan->vid);
-> +	if (port->pvid == vlan->vid)
-> +		ice_eswitch_br_clear_pvid(port);
->  	kfree(vlan);
->  }
->  
-> @@ -627,9 +644,50 @@ static void ice_eswitch_br_port_vlans_flush(struct ice_esw_br_port *port)
->  		ice_eswitch_br_vlan_cleanup(port, vlan);
->  }
->  
-> +static int
-> +ice_eswitch_br_set_pvid(struct ice_esw_br_port *port,
-> +			struct ice_esw_br_vlan *vlan)
-> +{
-> +	struct ice_vlan port_vlan = ICE_VLAN(ETH_P_8021Q, vlan->vid, 0);
-> +	struct device *dev = ice_pf_to_dev(port->vsi->back);
-> +	struct ice_vsi_vlan_ops *vlan_ops;
-> +	int err;
-> +
-> +	if (port->pvid == vlan->vid || vlan->vid == 1)
-> +		return 0;
-> +
-> +	/* Setting port vlan on uplink isn't supported by hw */
-> +	if (port->type == ICE_ESWITCH_BR_UPLINK_PORT)
-> +		return -EOPNOTSUPP;
-> +
-> +	if (port->pvid) {
-> +		dev_info(dev,
-
-dev_err()?
-
-> +			 "Port VLAN (vsi=%u, vid=%u) already exists on the port, remove it before adding new one\n",
-> +			 port->vsi_idx, port->pvid);
-> +		return -EEXIST;
-
-Hmm, isn't -EBUSY more common for such cases?
-
-(below as well)
-
-> +	}
-> +
-> +	ice_vf_vsi_enable_port_vlan(port->vsi);
-
-[...]
-
-> @@ -639,14 +697,29 @@ ice_eswitch_br_vlan_create(u16 vid, u16 flags, struct ice_esw_br_port *port)
->  
->  	vlan->vid = vid;
->  	vlan->flags = flags;
-> +	if ((flags & BRIDGE_VLAN_INFO_PVID) &&
-> +	    (flags & BRIDGE_VLAN_INFO_UNTAGGED)) {
-> +		err = ice_eswitch_br_set_pvid(port, vlan);
-> +		if (err)
-> +			goto err_set_pvid;
-> +	} else if ((flags & BRIDGE_VLAN_INFO_PVID) ||
-> +		   (flags & BRIDGE_VLAN_INFO_UNTAGGED)) {
-> +		dev_info(dev, "VLAN push and pop are supported only simultaneously\n");
-
-(same for dev_err(), as well as below)
-
-> +		return ERR_PTR(-EOPNOTSUPP);
-> +	}
-
-[...]
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
-> index cf3e2615a62a..b6eef068ea81 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
-> @@ -43,6 +43,7 @@ struct ice_esw_br_port {
->  	struct ice_vsi *vsi;
->  	u16 vsi_idx;
->  	struct xarray vlans;
-> +	u16 pvid;
-
-Oh, or you can just stack ::vsi_idx with ::pvid here to avoid spawning
-holes.
-
->  };
->  
->  enum {
-> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-> index b1ffb81893d4..447b4e6ef7e4 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_vf_vsi_vlan_ops.c
-> @@ -21,6 +21,108 @@ noop_vlan(struct ice_vsi __always_unused *vsi)
->  	return 0;
->  }
->  
-> +static void ice_port_vlan_on(struct ice_vsi *vsi)
-> +{
-> +	struct ice_vsi_vlan_ops *vlan_ops;
-> +	struct ice_pf *pf = vsi->back;
-> +
-> +	if (ice_is_dvm_ena(&pf->hw)) {
-> +		vlan_ops = &vsi->outer_vlan_ops;
-> +
-> +		/* setup outer VLAN ops */
-> +		vlan_ops->set_port_vlan = ice_vsi_set_outer_port_vlan;
-> +		vlan_ops->clear_port_vlan = ice_vsi_clear_outer_port_vlan;
-> +		vlan_ops->clear_port_vlan = ice_vsi_clear_outer_port_vlan;
-> +		vlan_ops->ena_rx_filtering =
-> +			ice_vsi_ena_rx_vlan_filtering;
-> +
-> +		/* setup inner VLAN ops */
-> +		vlan_ops = &vsi->inner_vlan_ops;
-> +		vlan_ops->add_vlan = noop_vlan_arg;
-> +		vlan_ops->del_vlan = noop_vlan_arg;
-> +		vlan_ops->ena_stripping = ice_vsi_ena_inner_stripping;
-> +		vlan_ops->dis_stripping = ice_vsi_dis_inner_stripping;
-> +		vlan_ops->ena_insertion = ice_vsi_ena_inner_insertion;
-> +		vlan_ops->dis_insertion = ice_vsi_dis_inner_insertion;
-> +	} else {
-> +		vlan_ops = &vsi->inner_vlan_ops;
-> +
-> +		vlan_ops->set_port_vlan = ice_vsi_set_inner_port_vlan;
-> +		vlan_ops->clear_port_vlan = ice_vsi_clear_inner_port_vlan;
-> +		vlan_ops->clear_port_vlan = ice_vsi_clear_inner_port_vlan;
-> +		vlan_ops->ena_rx_filtering =
-> +			ice_vsi_ena_rx_vlan_filtering;
-> +	}
-
-->ena_rx_filtering is filled with just one possible value, so it could
-be done outside ifs.
-
-> +}
-> +
-> +static void ice_port_vlan_off(struct ice_vsi *vsi)
-> +{
-> +	struct ice_vsi_vlan_ops *vlan_ops;
-> +	struct ice_pf *pf = vsi->back;
-> +
-> +	if (ice_is_dvm_ena(&pf->hw)) {
-> +		/* setup inner VLAN ops */
-> +		vlan_ops = &vsi->inner_vlan_ops;
-> +
-> +		vlan_ops->ena_stripping = ice_vsi_ena_inner_stripping;
-> +		vlan_ops->dis_stripping = ice_vsi_dis_inner_stripping;
-> +		vlan_ops->ena_insertion = ice_vsi_ena_inner_insertion;
-> +		vlan_ops->dis_insertion = ice_vsi_dis_inner_insertion;
-> +
-> +		vlan_ops = &vsi->outer_vlan_ops;
-> +
-> +		vlan_ops->del_vlan = ice_vsi_del_vlan;
-> +		vlan_ops->ena_stripping = ice_vsi_ena_outer_stripping;
-> +		vlan_ops->dis_stripping = ice_vsi_dis_outer_stripping;
-> +		vlan_ops->ena_insertion = ice_vsi_ena_outer_insertion;
-> +		vlan_ops->dis_insertion = ice_vsi_dis_outer_insertion;
-> +	} else {
-> +		vlan_ops = &vsi->inner_vlan_ops;
-> +
-> +		vlan_ops->del_vlan = ice_vsi_del_vlan;
-> +		vlan_ops->ena_stripping = ice_vsi_ena_inner_stripping;
-> +		vlan_ops->dis_stripping = ice_vsi_dis_inner_stripping;
-> +		vlan_ops->ena_insertion = ice_vsi_ena_inner_insertion;
-> +		vlan_ops->dis_insertion = ice_vsi_dis_inner_insertion;
-> +	}
-
-The whole ->inner_vlan_ops is filled with the same values, the only
-difference is ->del_vlan, which can be left in `else`, the rest can be
-set up unconditionally.
-
-> +
-> +	if (!test_bit(ICE_FLAG_VF_VLAN_PRUNING, pf->flags))
-> +		vlan_ops->ena_rx_filtering = noop_vlan;
-> +	else
-> +		vlan_ops->ena_rx_filtering =
-> +			ice_vsi_ena_rx_vlan_filtering;
-> +}
-> +
-> +/**
-> + * ice_vf_vsi_enable_port_vlan - Set VSI VLAN ops to support port VLAN
-> + * @vsi: VF's VSI being configured
-> + *
-> + * The function won't create port VLAN, it only allows to create port VLAN
-> + * using VLAN ops on the VF VSI.
-> + */
-> +void ice_vf_vsi_enable_port_vlan(struct ice_vsi *vsi)
-> +{
-> +	if (WARN_ON(!vsi->vf))
-
-I'd use WARN_ON_ONCE(). Otherwise, it may be possible to flood kernel
-log buffer (-> CPU) from the userspace.
-
-> +		return;
-> +
-> +	ice_port_vlan_on(vsi);
-> +}
-> +
-> +/**
-> + * ice_vf_vsi_disable_port_vlan - Clear VSI support for creating port VLAN
-> + * @vsi: VF's VSI being configured
-> + *
-> + * The function should be called after removing port VLAN on VSI
-> + * (using VLAN ops)
-> + */
-> +void ice_vf_vsi_disable_port_vlan(struct ice_vsi *vsi)
-> +{
-> +	if (WARN_ON(!vsi->vf))
-
-(same)
-
-> +		return;
-> +
-> +	ice_port_vlan_off(vsi);
-> +}
-
-[...]
-
-> +	info->valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_VLAN_VALID |
-> +					   ICE_AQ_VSI_PROP_SW_VALID);
-> +
-> +	ret = ice_update_vsi(hw, vsi->idx, ctxt, NULL);
-> +	if (ret)
-> +		dev_info(ice_hw_to_dev(hw), "update VSI for port VLAN failed, err %d aq_err %s\n",
-
-(dev_err())
-(+ %pe)
-
-> +			 ret, ice_aq_str(hw->adminq.sq_last_status));
-> +
-> +	kfree(ctxt);
-> +	return ret;
-> +}
-[...]
-
-Thanks,
-Olek
+Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
