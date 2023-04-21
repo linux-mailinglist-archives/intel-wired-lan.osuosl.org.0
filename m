@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A20A6EA2C8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Apr 2023 06:27:25 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B52966EA2C9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Apr 2023 06:27:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D58BC42827;
-	Fri, 21 Apr 2023 04:27:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D58BC42827
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C191427FD;
+	Fri, 21 Apr 2023 04:27:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C191427FD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682051241;
-	bh=RxG5KU1b7ihm1sm7viurzlANs5St34BB3q3p45uzjbs=;
+	s=default; t=1682051248;
+	bh=acZ01M9kZapLS5P5L4KmjIlcUy0nAR6R3BEGKefgqwA=;
 	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=AIN0/ClL0022Po1w5C2wybTaeme2v/TAvSkGCZG0GbCeWg591x/koObtJHmLphSjl
-	 fWuI5/9CsoxUmwNF6FbOnoczGm2QDJy23IAphdmNZcRSqV+A3UXzZklNDQpWsmj8M1
-	 ppWp71PFdgY1XC63T2/zExCS04E2L8XvcT0AXmmBESfq9T3WfuDezRSzuKbZ2oWd/3
-	 MzvRSqpI5Mz5BgRB5B7CurXfagOYTj9+ySkCI+0+2dyJGGJfEQ+Lo1019PaNt6dYgT
-	 WykE8KGMlO8xAYrlbXoi7O2fPjJWJ6RdGk0VXQpjz6ifUPO40NRS7PWfYP5Ol89w5h
-	 E6jGYc3WYKzdw==
+	b=TgIGvx4jmi24y+EXUVpU4mdRmXyPbbAAi15FL6Us2pmMeqFzuF+Mg+QvM51a1OsZp
+	 yU5ytqkohgCsbAVQYZg0dhV0l0prd1rB8+mEnOM7aGb6cVPYLEPFSaMV/+DMds6cDT
+	 7Vk+coNM4FoVEYEAql9g2MxquSqPSQgu6VGNLKBk0QylNIJnn8fua0u3m1+kiQ3YPj
+	 WItRXzZAFxz4lkLtVX83Qq7o4LdEFH1PVGFUpr5IZzsd6kKkcma9vqsj89+vyYI2S9
+	 bSYvUTKaC6VT0vIm9w9vOEdDTKQ/HHajcRaaVmTOoCoChte1DfFFp+pCdJ7poOT2Ro
+	 4mn5dnUaemRQA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pi1wlWP8KLyu; Fri, 21 Apr 2023 04:27:20 +0000 (UTC)
+	with ESMTP id e2E6o9VvxHMu; Fri, 21 Apr 2023 04:27:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C5A442791;
-	Fri, 21 Apr 2023 04:27:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C5A442791
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8D7D4281B;
+	Fri, 21 Apr 2023 04:27:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8D7D4281B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D8FAB1BF33E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6093D1BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B056A6136B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B056A6136B
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A16461388
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A16461388
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AJz1Z1x1kjEe for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Apr 2023 04:27:08 +0000 (UTC)
+ with ESMTP id W0AvmG87WlNf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Apr 2023 04:27:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B88CC61382
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B88CC61382
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10686"; a="334784510"
-X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="334784510"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2023 21:27:05 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DEE86136B
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2DEE86136B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Apr 2023 04:27:21 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10686"; a="345929888"
+X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="345929888"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Apr 2023 21:27:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10686"; a="816285589"
-X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="816285589"
+X-IronPort-AV: E=McAfee;i="6600,9927,10686"; a="866571109"
+X-IronPort-AV: E=Sophos;i="5.99,214,1677571200"; d="scan'208";a="866571109"
 Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 20 Apr 2023 21:27:03 -0700
+ by orsmga005.jf.intel.com with ESMTP; 20 Apr 2023 21:27:03 -0700
 Received: from kbuild by b613635ddfff with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ppiMQ-000gJQ-2I;
+ (envelope-from <lkp@intel.com>) id 1ppiMQ-000gJC-1l;
  Fri, 21 Apr 2023 04:27:02 +0000
-Date: Fri, 21 Apr 2023 12:26:30 +0800
+Date: Fri, 21 Apr 2023 12:26:39 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <64421076.VByx4I3klKZ0dNrh%lkp@intel.com>
+Message-ID: <6442107f.88G2d7HnAwW6EDxB%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1682051228; x=1713587228;
+ t=1682051241; x=1713587241;
  h=date:from:to:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=xhkt3Zu1nsnUNOtmx3pLve1vt2OvNQNT+0ZVgs32Tes=;
- b=itMcAPEl4y9YmkdqlB1h5CviEjRdl0Oi1t4YVat8SW8P7lxDUxxpUB+o
- j1ivL2ODMIEf78JlOiiH+RCwpHjBbfC41vjSJje6ljRGwoMqUiDk/gV3D
- jx1zV7pgCCoXiyqRB8fwlgwaGC4fMiswVrCBidmBiyR98kc561opXe+hY
- H59UEmQEMMh+Bru/AZnc5GxKO4vXHEZOU2sdqwZZtnNQDrIzjCOt3oq/7
- IX+f4BnpAluhV+z6HQLqxxU0HyWYFTukf/5Q6PNnCF60yTPePPksl00S8
- iRnvPZIhBk4pbUprZ6oY5eJmIyQ47emBEtq0mbeUzb1GRxqfJgjGw4bcu
- w==;
+ bh=g/2fxxQ5FAJDBP0sbCnAL/1UdH7zHeruUZQCMQm7b9g=;
+ b=DyRVuC6/Bf4D8tsM/MRsDlZY3H4fm3dWH6bnwcJ1+H/cIWzxYyrfm4Us
+ 4qbayr01hoZz3cx8CjYIL/7DKEDdETWwco3QqzjYs416064tCWFOHxlGB
+ 6f0ZwOXDJ7dxyo/y/ioeo9LRDqpCWTHPBy0FimpBvvSrRWPHAsWp4cR/Q
+ 3IYstjmtxR8nLssHqFF5HR9aUByfX3x/pQjIfP8RcxgX4BA+rJziZTqSu
+ nTjRcmMP+0Ci7BTaVs24vxdzldz5tEGEQOA9FQkkvL/ccZvDrv13+Qx44
+ F2mPFKmBw+7x5JE6FwxVc5Ti+7oE6kfUHDjQcs6bMdTCCsDdXVGU7ynt3
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=itMcAPEl
-Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
- e315e7b83a22043bffee450437d7089ef373cbf6
+ header.a=rsa-sha256 header.s=Intel header.b=DyRVuC6/
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 16000d55d0f21063d9837d798ef4820000a2e69a
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,127 +100,152 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git main
-branch HEAD: e315e7b83a22043bffee450437d7089ef373cbf6  net: libwx: fix memory leak in wx_setup_rx_resources
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 16000d55d0f21063d9837d798ef4820000a2e69a  igc: Avoid transmit queue timeout for XDP
 
-elapsed time: 874m
+elapsed time: 722m
 
-configs tested: 109
-configs skipped: 9
+configs tested: 134
+configs skipped: 14
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 tested configs:
 alpha                            allyesconfig   gcc  
-alpha        buildonly-randconfig-r002-20230419   gcc  
-alpha        buildonly-randconfig-r003-20230417   gcc  
 alpha                               defconfig   gcc  
-alpha                randconfig-r013-20230416   gcc  
+alpha                randconfig-r001-20230416   gcc  
+alpha                randconfig-r001-20230420   gcc  
+alpha                randconfig-r003-20230416   gcc  
 arc                              allyesconfig   gcc  
-arc          buildonly-randconfig-r001-20230416   gcc  
+arc          buildonly-randconfig-r002-20230420   gcc  
 arc                                 defconfig   gcc  
+arc                  randconfig-r016-20230418   gcc  
+arc                  randconfig-r022-20230417   gcc  
+arc                  randconfig-r024-20230417   gcc  
 arc                  randconfig-r043-20230416   gcc  
 arc                  randconfig-r043-20230417   gcc  
 arc                  randconfig-r043-20230419   gcc  
-arc                  randconfig-r043-20230420   gcc  
 arm                              allmodconfig   gcc  
 arm                              allyesconfig   gcc  
-arm          buildonly-randconfig-r003-20230418   clang
+arm          buildonly-randconfig-r004-20230420   clang
 arm                                 defconfig   gcc  
-arm                  randconfig-r023-20230416   clang
+arm                  randconfig-r006-20230416   gcc  
+arm                  randconfig-r015-20230416   clang
 arm                  randconfig-r046-20230416   clang
 arm                  randconfig-r046-20230417   gcc  
 arm                  randconfig-r046-20230419   gcc  
-arm                  randconfig-r046-20230420   clang
 arm64                            allyesconfig   gcc  
 arm64                               defconfig   gcc  
-arm64                randconfig-r015-20230417   clang
-arm64                randconfig-r022-20230416   gcc  
+arm64                randconfig-r003-20230417   gcc  
+arm64                randconfig-r016-20230416   gcc  
+csky         buildonly-randconfig-r003-20230416   gcc  
+csky         buildonly-randconfig-r005-20230416   gcc  
+csky         buildonly-randconfig-r006-20230416   gcc  
 csky                                defconfig   gcc  
-csky                 randconfig-r024-20230416   gcc  
-hexagon      buildonly-randconfig-r005-20230416   clang
-hexagon              randconfig-r012-20230417   clang
-hexagon              randconfig-r016-20230417   clang
+csky                 randconfig-r016-20230417   gcc  
+hexagon              randconfig-r005-20230417   clang
+hexagon              randconfig-r014-20230418   clang
+hexagon              randconfig-r015-20230418   clang
 hexagon              randconfig-r041-20230416   clang
 hexagon              randconfig-r041-20230417   clang
 hexagon              randconfig-r041-20230419   clang
-hexagon              randconfig-r041-20230420   clang
 hexagon              randconfig-r045-20230416   clang
 hexagon              randconfig-r045-20230417   clang
 hexagon              randconfig-r045-20230419   clang
-hexagon              randconfig-r045-20230420   clang
 i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r006-20230417   gcc  
+i386         buildonly-randconfig-r001-20230417   gcc  
 i386                              debian-10.3   gcc  
 i386                                defconfig   gcc  
-i386                 randconfig-r022-20230417   clang
+i386                 randconfig-a001-20230417   gcc  
+i386                 randconfig-a002-20230417   gcc  
+i386                 randconfig-a003-20230417   gcc  
+i386                 randconfig-a004-20230417   gcc  
+i386                 randconfig-a005-20230417   gcc  
+i386                 randconfig-a006-20230417   gcc  
+i386                 randconfig-a011-20230417   clang
+i386                 randconfig-a012-20230417   clang
+i386                 randconfig-a013-20230417   clang
+i386                 randconfig-a014-20230417   clang
+i386                 randconfig-a015-20230417   clang
+i386                 randconfig-a016-20230417   clang
+i386                 randconfig-r006-20230417   gcc  
+i386                 randconfig-r013-20230417   clang
 ia64                             allmodconfig   gcc  
+ia64         buildonly-randconfig-r004-20230417   gcc  
 ia64                                defconfig   gcc  
+ia64                 randconfig-r021-20230417   gcc  
 loongarch                        allmodconfig   gcc  
 loongarch                         allnoconfig   gcc  
-loongarch    buildonly-randconfig-r004-20230416   gcc  
+loongarch    buildonly-randconfig-r005-20230417   gcc  
 loongarch                           defconfig   gcc  
 m68k                             allmodconfig   gcc  
-m68k         buildonly-randconfig-r003-20230416   gcc  
 m68k                                defconfig   gcc  
-m68k                 randconfig-r024-20230417   gcc  
-m68k                 randconfig-r026-20230417   gcc  
-microblaze   buildonly-randconfig-r004-20230418   gcc  
-microblaze   buildonly-randconfig-r006-20230418   gcc  
-microblaze   buildonly-randconfig-r006-20230419   gcc  
+microblaze   buildonly-randconfig-r001-20230420   gcc  
+microblaze   buildonly-randconfig-r002-20230416   gcc  
+microblaze           randconfig-r004-20230420   gcc  
+microblaze           randconfig-r013-20230418   gcc  
 mips                             allmodconfig   gcc  
 mips                             allyesconfig   gcc  
-mips         buildonly-randconfig-r001-20230418   gcc  
-mips         buildonly-randconfig-r003-20230419   clang
-mips                 randconfig-r012-20230416   clang
-mips                 randconfig-r014-20230417   gcc  
-mips                 randconfig-r025-20230417   gcc  
-nios2        buildonly-randconfig-r002-20230417   gcc  
+nios2        buildonly-randconfig-r003-20230417   gcc  
 nios2                               defconfig   gcc  
-openrisc     buildonly-randconfig-r002-20230416   gcc  
-openrisc     buildonly-randconfig-r006-20230416   gcc  
-openrisc             randconfig-r011-20230417   gcc  
-parisc       buildonly-randconfig-r005-20230417   gcc  
-parisc       buildonly-randconfig-r005-20230418   gcc  
+nios2                randconfig-r002-20230417   gcc  
 parisc                              defconfig   gcc  
+parisc               randconfig-r026-20230417   gcc  
 parisc64                            defconfig   gcc  
 powerpc                          allmodconfig   gcc  
 powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r026-20230416   gcc  
+powerpc              randconfig-r011-20230418   gcc  
 riscv                            allmodconfig   gcc  
 riscv                             allnoconfig   gcc  
-riscv        buildonly-randconfig-r001-20230419   clang
 riscv                               defconfig   gcc  
-riscv                randconfig-r016-20230416   gcc  
+riscv                randconfig-r005-20230416   clang
 riscv                randconfig-r042-20230416   gcc  
 riscv                randconfig-r042-20230417   clang
 riscv                randconfig-r042-20230419   clang
-riscv                randconfig-r042-20230420   gcc  
 riscv                          rv32_defconfig   gcc  
 s390                             allmodconfig   gcc  
 s390                             allyesconfig   gcc  
 s390                                defconfig   gcc  
+s390                 randconfig-r002-20230420   clang
+s390                 randconfig-r003-20230420   clang
 s390                 randconfig-r044-20230416   gcc  
 s390                 randconfig-r044-20230417   clang
 s390                 randconfig-r044-20230419   clang
-s390                 randconfig-r044-20230420   gcc  
 sh                               allmodconfig   gcc  
+sh           buildonly-randconfig-r002-20230417   gcc  
+sh           buildonly-randconfig-r004-20230416   gcc  
+sh                   randconfig-r004-20230417   gcc  
 sh                   randconfig-r011-20230416   gcc  
+sparc        buildonly-randconfig-r005-20230420   gcc  
 sparc                               defconfig   gcc  
-sparc                randconfig-r023-20230417   gcc  
-sparc64      buildonly-randconfig-r004-20230419   gcc  
-sparc64              randconfig-r021-20230416   gcc  
+sparc                randconfig-r012-20230417   gcc  
+sparc64              randconfig-r014-20230417   gcc  
 um                             i386_defconfig   gcc  
 um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
 x86_64                           allyesconfig   gcc  
 x86_64                              defconfig   gcc  
 x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230417   gcc  
+x86_64               randconfig-a002-20230417   gcc  
+x86_64               randconfig-a003-20230417   gcc  
+x86_64               randconfig-a004-20230417   gcc  
+x86_64               randconfig-a005-20230417   gcc  
 x86_64               randconfig-a006-20230417   gcc  
+x86_64               randconfig-a011-20230417   clang
+x86_64               randconfig-a012-20230417   clang
+x86_64               randconfig-a013-20230417   clang
+x86_64               randconfig-a014-20230417   clang
+x86_64               randconfig-a015-20230417   clang
+x86_64               randconfig-a016-20230417   clang
+x86_64               randconfig-r011-20230417   clang
 x86_64                               rhel-8.3   gcc  
-xtensa       buildonly-randconfig-r001-20230417   gcc  
-xtensa       buildonly-randconfig-r002-20230418   gcc  
-xtensa               randconfig-r015-20230416   gcc  
+xtensa       buildonly-randconfig-r006-20230417   gcc  
+xtensa       buildonly-randconfig-r006-20230420   gcc  
+xtensa               randconfig-r012-20230416   gcc  
+xtensa               randconfig-r012-20230418   gcc  
+xtensa               randconfig-r025-20230417   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
