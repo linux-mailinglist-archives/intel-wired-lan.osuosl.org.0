@@ -1,110 +1,176 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DD226ED52E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Apr 2023 21:17:15 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D83D6ED5FF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Apr 2023 22:14:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04E6281F40;
-	Mon, 24 Apr 2023 19:17:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 04E6281F40
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4A0B9410CB;
+	Mon, 24 Apr 2023 20:14:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A0B9410CB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682363834;
-	bh=jTx9U7m8wgJG4btkFXrSQvBuOH4txbYN0/ODErDaX0M=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1682367248;
+	bh=Q1BDrLRvivSPIraYDrhrUTGeuVIotSSoIanfIFlXqFQ=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=lxBm4vnInTM0ttyQTe16dh/VDw/B8yiHpRybD6ZD9CmaukL7ZTxGP0Qk6YY4Rxxf9
-	 0u1Iqbp//D4NZ2b89FnarKNVxB7EI0VL+JD2CmLW0zNS+mxprqwUfrqRekpqmMzDzv
-	 OscLEZlKgQDqjd/Aihu6IyV0SJyqMhYJg1sq2gP4OPWulUPdJKStTOWQN/9rgG6tgQ
-	 XFhh0ciu4RKQb/nVg70wFpqXeCcVBYAfeYWUPMyfzNAhBB16Ghcdx/K2FBH2lWmBtV
-	 rBFoBUmRVtPmOaTmF+Ijk4VXh4IWjU2k6ycnxqDpwwO5p0BBMJrcylymhM/TN0no7J
-	 YCDTvx0hPPYkg==
+	b=tfI44X8a4zMWYY1QlzOJK68DnqLIi+1O5etOBIPxc91R0eN1JZK9yDuFN8wvXHkVm
+	 yi9wRkzRpJ0grReCmRIUNWZaNVnNR2fBp2i4CuVvaG9pApXJ3ONhyJvQ3DWu2Bcqwu
+	 /qy1YRUi1rwnxG0xIw0+n3zRqjMXxkXm6tuViN9fmlsQPczrTssjoxQ8ba5Gt9KG6s
+	 8w3hx+GQlE1mkH6jhZHwXJ4EvV8zzK56Tl7RUYuyV4pfZtDqfjb8OJdy7I9D7W+Kr7
+	 iphqncq01fsc66cWPTQ5HVWEK1EAHPQ9FX3RvR+jCUdX4OEmPTlpsjcnTuDZwQvGdn
+	 DAYlzwJicWn0g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Fyu_jiyYCW6m; Mon, 24 Apr 2023 19:17:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mT-YMamp0EFm; Mon, 24 Apr 2023 20:14:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C136E81F24;
-	Mon, 24 Apr 2023 19:17:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C136E81F24
+	by smtp4.osuosl.org (Postfix) with ESMTP id 053A340990;
+	Mon, 24 Apr 2023 20:14:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 053A340990
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9CF201BF487
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 19:17:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 30AFD1BF476
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 20:14:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 70E7281EF3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 19:17:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 70E7281EF3
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0C7AA60E25
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 20:14:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C7AA60E25
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MZ-L3FCprjcT for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Apr 2023 19:17:06 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A49081F29
-Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com
- [IPv6:2607:f8b0:4864:20::42d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5A49081F29
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 19:17:06 +0000 (UTC)
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-63b78b344d5so3985200b3a.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 12:17:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682363826; x=1684955826;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=aaDK9m9i5koKWM/RqPSj0LG6EaNHCoiabR5mgFcubT0=;
- b=dQnopfHclNdcOUveJaE4hQkIJak31CbEm4QdEK15D65jiGK2C85WlDFd2cThowvHUN
- 5SqgW3uY3qTDluW2NDUREq4wiIjk9qVW8/VJPSOuB8sNVt9b8ftzZ9IuObe2Lup9z18d
- EqmzDLHeMkVPaImJmC2C4LY+LenTtIV+Q/kvOtf6rapk8lkgqLh/4yUjGZNOs2iK6z31
- HUp1iNYFiEXo6O9sRI3sa5cSUqwadJstHt1sLlbWGs7pmX2U8uy00ftl3iqJ/8YU9uFF
- AghAuhWmnoGpUOlFmX8KP/Auk34NGrRMIbBRtSGUhPuwrFfiSV/S6W+ObguY0m+8G8G6
- ZIEQ==
-X-Gm-Message-State: AAQBX9dEVt3seV7LqfTn+ZsKI79xfpra270mMvoJtvGHLOPRnxVhnDeW
- XhzuEsjTrDFODPdIWu0SXX8=
-X-Google-Smtp-Source: AKy350aldgal+v4GFRHSeA2DTl/g0qXrUM8SEAR+RZzb2b3jCek5UewF1ZzHFqzSRDUxJdnSvJHGug==
-X-Received: by 2002:a05:6a20:a696:b0:f1:b3c1:82f2 with SMTP id
- ba22-20020a056a20a69600b000f1b3c182f2mr15915302pzb.38.1682363825586; 
- Mon, 24 Apr 2023 12:17:05 -0700 (PDT)
-Received: from localhost ([2605:59c8:148:ba10:d8b6:344e:b81a:e8b5])
- by smtp.gmail.com with ESMTPSA id
- y72-20020a62644b000000b006372791d708sm7793140pfb.104.2023.04.24.12.17.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Apr 2023 12:17:04 -0700 (PDT)
-Date: Mon, 24 Apr 2023 12:17:03 -0700
-From: John Fastabend <john.fastabend@gmail.com>
-To: Jesper Dangaard Brouer <jbrouer@redhat.com>, 
- John Fastabend <john.fastabend@gmail.com>, bpf@vger.kernel.org, 
- Stanislav Fomichev <sdf@google.com>, 
- =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <6446d5af80e06_338f220820@john.notmuch>
-In-Reply-To: <622a8fa6-ec07-c150-250b-5467b0cddb0c@redhat.com>
-References: <168182460362.616355.14591423386485175723.stgit@firesoul>
- <168182464270.616355.11391652654430626584.stgit@firesoul>
- <644544b3206f0_19af02085e@john.notmuch>
- <622a8fa6-ec07-c150-250b-5467b0cddb0c@redhat.com>
-Mime-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1682363826; x=1684955826;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aaDK9m9i5koKWM/RqPSj0LG6EaNHCoiabR5mgFcubT0=;
- b=NS19bZCL5pzW5f+ImLYirecmBnWwqoN+kKp5OgMtoyXPntbH7rC8NiPlGShoUR9HlP
- JjHinxKVLyF6Lt2Qa43sn2JL184cSzmw2eosUhctULC0t9CkMx0W3P8W8KkGUs6XpmFM
- JPIJ/MTNM18HU5Bp/uOy2LyvDvFdISwHxrJN2PxLKjbq/xH3mIKPcQUP9Gh2Yso1mMKU
- EefgBxzXrGvKNYiMoUGBKV+S2bQfnSAHLzMXQGNAQdRa078WsUwnIRrTo3jbEhlR80d0
- CtQaKQSqfypZBRh5I0KRbcSCt1WXu++NqVkWnm/XWpy93IC5Vh0z/DG59Uncu3pVCSzC
- Nd8w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=NS19bZCL
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next V2 1/5] igc: enable and fix
- RX hash usage by netstack
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qZ1M1O8fZeNn for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Apr 2023 20:13:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1954760C0F
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1954760C0F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 20:13:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10690"; a="344038954"
+X-IronPort-AV: E=Sophos;i="5.99,223,1677571200"; d="scan'208";a="344038954"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Apr 2023 13:13:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10690"; a="723723077"
+X-IronPort-AV: E=Sophos;i="5.99,223,1677571200"; d="scan'208";a="723723077"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga008.jf.intel.com with ESMTP; 24 Apr 2023 13:13:56 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 24 Apr 2023 13:13:55 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Mon, 24 Apr 2023 13:13:55 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Mon, 24 Apr 2023 13:13:55 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YhGVBtV4ION+kCfVr65tSgmZJE6DRLR1A8XZJmk6DGT9oc9QnxQSZlnkZrMZsqdEhGpMMZ6XnK/bLanNPnjwK3BcLJNB39AHH0YfqZWu/QkbRb6YdzgF2lFalNoqMNi9v+Sg43drJB/1R11zojAEhp2IwE3xYg6EwHnqSrn28RZWyk9ugiM2X8gFQwymzk6iXaO3TiKW5gx1ywYftyceR8kHDsrpFSRQcFNOukOnBYDVHexBXsHGolJPFUirlDFsFbJqaN7QnRv/vvJiC4XMFmzrzwCozyBDkZ4pwHejtHx/RfFLDYj5/lxQETwKrdlDbAbDnVk3SsnRDTKYHVkCsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wCvWZ/7JWGPdteYKGE3BTVw9zKboN2iTDV0VBl7vQvc=;
+ b=GBotJ4xhp0TKcm3jcrZMD/Cb7cUt8/+KSEJ11+bBgkW1gh5WHmkGJFY0JITpECUlXdgyPxBl0sPC8GVd1vV26SQrXfrZXRqN9UbNm0bHf5bACRKSPamMxYyKt8n4mIMaIBZvPdH3nwQxNtZdbCu9JUljWFj/mZADefxk6W3nGcfUodbjAv6mTuM1kMzq5I+BlFi+0Rjv/scfGwn0CvJuIF5rHuT8K4clHsiT71nIc+G7juVrJZBXbFAcqZdYZL5MGVt3PtWJ4dBu2eBciXMWzFqF+NV3QT8hMVe4JCtzDx4jrB7xQISdBq1zemBfH2fIrjhbvPb35y6EO4t9vlheew==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5028.namprd11.prod.outlook.com (2603:10b6:303:9a::12)
+ by PH7PR11MB5794.namprd11.prod.outlook.com (2603:10b6:510:131::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.33; Mon, 24 Apr
+ 2023 20:13:53 +0000
+Received: from CO1PR11MB5028.namprd11.prod.outlook.com
+ ([fe80::48d5:6ac:3b50:10d8]) by CO1PR11MB5028.namprd11.prod.outlook.com
+ ([fe80::48d5:6ac:3b50:10d8%4]) with mapi id 15.20.6319.033; Mon, 24 Apr 2023
+ 20:13:53 +0000
+From: "Mekala, SunithaX D" <sunithax.d.mekala@intel.com>
+To: "Staikov, Andrii" <andrii.staikov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1] i40e: fix PTP pins verification
+Thread-Index: AQHZYtfe1rjKhH6knECHIug29msej687DFmw
+Date: Mon, 24 Apr 2023 20:13:53 +0000
+Message-ID: <CO1PR11MB5028727CAFEA6A86405D7BB7A0679@CO1PR11MB5028.namprd11.prod.outlook.com>
+References: <20230330071759.3405263-1-andrii.staikov@intel.com>
+In-Reply-To: <20230330071759.3405263-1-andrii.staikov@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CO1PR11MB5028:EE_|PH7PR11MB5794:EE_
+x-ms-office365-filtering-correlation-id: e354e8ad-a995-4392-4b53-08db45006cd8
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: uiRubNvcaT9gbecobPD/OZIK7uhhdNoQbpK6i4CGPhxOTWUla49fFyMib5BcmYCOcVent9c5oHUjWkDKc4dW4rlxQDCRBlh1F8JWfFqKHs0MB1yqopaDo8YhUgxh/0OvpxI8JO6GUAwE4PTJbvJeok8dO4UeMdskF3FltEEUh9207eTIutU7X/CvrbUUkl7lun3Uho24zvgwxP9nmQXRZ6KP7aWr5XVbonWs6e5bgKhrLhuNHprw37ZfU1VevVjj4J4gArtCMKV3VJ9fU2mDcyJi5qpL196RcME4sCVvCgSRSQ65tS73vQdl8srKzoCRbzpD+I3PgNaSHNB/tZbv8P/mTjzUWol/+/gK9/vnCKFWSL2sR/f3a6JP6ly1ThjWc+as57xcHELKp75Iiiw6JPlkP4OAa/U5NU3c2tUWt6OlQmIWAEdofRf2OJ3G2xBQYzDgu/2XqqKZNsfu+v5X2pUX6gsv6g9f/0rdiG9TIYMYl5p18p93c298YladDhWUEMsYsnStqk4oALk2dcT8RoZBGV82ALYus8MGQjoQ7wYbEM4WJc1RKBkvgAGYiPibpnUPTvHpFB+7JrzzWklD6M1asT0GtDKSTlYrBqUV0tReEL/ERtooBJbypAUTbhEw
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5028.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(136003)(346002)(376002)(396003)(39860400002)(366004)(451199021)(107886003)(6506007)(26005)(53546011)(33656002)(9686003)(52536014)(86362001)(186003)(5660300002)(83380400001)(7696005)(71200400001)(38070700005)(8936002)(110136005)(8676002)(316002)(41300700001)(82960400001)(4744005)(2906002)(38100700002)(66476007)(66556008)(55016003)(64756008)(66446008)(76116006)(66946007)(4326008)(478600001)(122000001)(15650500001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?BeVM2oUaTjAmfTLstDA9ITuMyjZs4HStIzuvx3+kTyapnkeXHsdPrxAzv7TW?=
+ =?us-ascii?Q?Cje6xGF7tRpMBeKF1G0NY3V8zvAXueZ3GEyeHaWUydI92O4o1NHCE8L1Jq8g?=
+ =?us-ascii?Q?BjTANrPgfKTxxeIIsSWhpFTou4sFJcFEry4sIpjayxN3hlJJBfM8MVPbz+Wq?=
+ =?us-ascii?Q?riNtTAesImOdKmqWCrgtnRK3ohLUAylMml/y8ZbosDNEmvP4P5bh2nnE6UKw?=
+ =?us-ascii?Q?7ZT/EYFMi2xSvCgItNN+kI/YA3E3EFIZuicyQ2hQ5VOTSDHffrkYzToj4OZb?=
+ =?us-ascii?Q?ASxwGsE2FnoT22h6XxoD7SwmwR7OlnwYSr4s5XCwnd4q8+D6ut269xYcFEb3?=
+ =?us-ascii?Q?v49IEtR4toGrxXP4GY204F5dAogYep9FFVUbxgSCGqhrAD7hKEr73gzrT6Ym?=
+ =?us-ascii?Q?NsIshN7soepWbpCv2N2r/9Hj+wgWwPxdGyZN6LhfBTy1PsVM7GxbvqdEr5B1?=
+ =?us-ascii?Q?cipyRhhZGH7uHW13kaWMD9X1YvTO8i1UJNA1RCI8+/24fTBCoA379SlgwptG?=
+ =?us-ascii?Q?gOiBr+oMbN63pvFjnhGbLZbyQsKchmHzmNVU+SRaY4yLojG9RA7dXeUQlrGU?=
+ =?us-ascii?Q?8AnfBacw8ZM+INn3G2xWFtG8vLQc/hrgSUV3FmwMPheJFoUmL+ofIiJq48rb?=
+ =?us-ascii?Q?NwWhD18aJozvMyQjUqtsUJiemSj8D3yTQu02ndJ1/kePCwasMRWxXenXWBKS?=
+ =?us-ascii?Q?ut0oo87yFXibp5GFK9/X/Am8R8bK3mJXz4Jwqe5hPptSrrfZmGR0864347Ln?=
+ =?us-ascii?Q?ywSE7GAuf3hNDqSz0gQTUeAgLB8Gd/hCMcFtM070uRfMlwAMWDdJv0DQQpdE?=
+ =?us-ascii?Q?J75H8SfqZ1W8725DlEK6SL8oBKJjxjr8nTZntbQFi3fMcNNks+gtMQ9FkDIH?=
+ =?us-ascii?Q?6geCo7M82xfCzuUaZl3L7WLyl7O17QFgEJDuQkiF7z8RGPLBBwGJg8Nvulgp?=
+ =?us-ascii?Q?CZgzKSshr1wWJF7TxVupoRmj95x9n/k9mWc/2GwmjKCUJcRlNIyfS9Qg6kX4?=
+ =?us-ascii?Q?FxLFo225nLdPTHg9iLHKMqiTeuPkE87QlZx5Z70bVYaw+1NSp1ySIY5aLVl8?=
+ =?us-ascii?Q?vd+IP6awvHtVM8Ywjc1D6vDUujK+nmElSj5hMwVZQ5H7dd76v4SZ/OakM2vu?=
+ =?us-ascii?Q?4LH06IgsAqdRIp0cNyyZbemtyeQ7tKD5g4HM9g43VpwgKNF+7hsWLgMXr6Op?=
+ =?us-ascii?Q?o8/NKNUvwJ0BbfvyKOJKxvrmL73vJXYYKHPmH4RWEcvdxp8h3dyBX6gIvoqK?=
+ =?us-ascii?Q?DptS0XzDzhEJ53dKWi36n6Z2ys8E+Mtb2NVCrPFcfrXy8EtgpFGS6mIWoYA+?=
+ =?us-ascii?Q?TIHTI8OO9/ZHt5U8nGWae3CNY0IrJQyg2j4yANIgcpZg/qwqc07lEt3yNDAc?=
+ =?us-ascii?Q?jkoMMQAIXuvdfP0gNnDTQyBypxov7twPsVIdXL2Pq66/ipjONZfn0bdIH9Zv?=
+ =?us-ascii?Q?/CTm3R4QfLPNMG285PUWoqsniQ5rd8b3l5aazJMCQS7Uoov+DvhJrYBYLBEr?=
+ =?us-ascii?Q?eLKnFoWVDwizNawTkcuEpys+KMW5tooZ8Oj3ji+1X2C2CSKoi2PIvMGNs3bT?=
+ =?us-ascii?Q?oVeAf7M7ZiYNsLGtYhf/PcYJNWj3e+7YJhHP1DxS3L+dBpVo85FbUnExeEM1?=
+ =?us-ascii?Q?Dg=3D=3D?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5028.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e354e8ad-a995-4392-4b53-08db45006cd8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Apr 2023 20:13:53.1444 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: uuU3HkHL3XhF2Zqt1NfUYUp2SU31KzD+8dHFrPGVMSmdffVNbUwEKUN98rI4q21FyWgN0Jc9MucbLxbOoEHuE4TkZjsTwkBLRJl926WVKMk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5794
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1682367237; x=1713903237;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=UaQtbugiUeiC1gqosKfZpecCjtWXuwUc8SRNRPQFR+k=;
+ b=CxW8ZwjSxKuZZl8Oy3oLZstS5FFvpuqQ5oETRfbxNmAZZNJlTsel0SkW
+ fTK24txjvjO4snWJ5XxNqol9pMIx+YcQDQ7kRGEKTlHqzIHhNxGDR8dYF
+ WSiWPe+D1Dj6/+ATtV51IXkH7wN0T086vIkKD6EqOBa86iEzpCImItvkn
+ lP3IluZRSqYOsahMSBkaMncnlj2/qDoiHIv4wpzfQuXjeFVoZdIn9f5BL
+ zLHeXfKyKBjyPqhwCP6DuRNLg4ksuJ/p6ak1Ip7Uel6gAueD/4Q/S2UZm
+ gSe9v/rjRzazeLh63LFdMEkX+Dip5nzwKq+1TzLpexrCFVSWLpAjz+iYc
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=CxW8ZwjS
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: fix PTP pins verification
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,170 +183,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
- larysa.zaremba@intel.com, netdev@vger.kernel.org, ast@kernel.org,
- jesse.brandeburg@intel.com, kuba@kernel.org, edumazet@google.com,
- yoong.siang.song@intel.com, brouer@redhat.com,
- intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net,
- hawk@kernel.org
+Cc: "Staikov, Andrii" <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jesper Dangaard Brouer wrote:
-> 
-> 
-> On 23/04/2023 16.46, John Fastabend wrote:
-> > Jesper Dangaard Brouer wrote:
-> >> When function igc_rx_hash() was introduced in v4.20 via commit 0507ef8a0372
-> >> ("igc: Add transmit and receive fastpath and interrupt handlers"), the
-> >> hardware wasn't configured to provide RSS hash, thus it made sense to not
-> >> enable net_device NETIF_F_RXHASH feature bit.
-> >>
-> >> The NIC hardware was configured to enable RSS hash info in v5.2 via commit
-> >> 2121c2712f82 ("igc: Add multiple receive queues control supporting"), but
-> >> forgot to set the NETIF_F_RXHASH feature bit.
-> >>
-> >> The original implementation of igc_rx_hash() didn't extract the associated
-> >> pkt_hash_type, but statically set PKT_HASH_TYPE_L3. The largest portions of
-> >> this patch are about extracting the RSS Type from the hardware and mapping
-> >> this to enum pkt_hash_types. This was based on Foxville i225 software user
-> >> manual rev-1.3.1 and tested on Intel Ethernet Controller I225-LM (rev 03).
-> >>
-> >> For UDP it's worth noting that RSS (type) hashing have been disabled both for
-> >> IPv4 and IPv6 (see IGC_MRQC_RSS_FIELD_IPV4_UDP + IGC_MRQC_RSS_FIELD_IPV6_UDP)
-> >> because hardware RSS doesn't handle fragmented pkts well when enabled (can
-> >> cause out-of-order). This results in PKT_HASH_TYPE_L3 for UDP packets, and
-> >> hash value doesn't include UDP port numbers. Not being PKT_HASH_TYPE_L4, have
-> >> the effect that netstack will do a software based hash calc calling into
-> >> flow_dissect, but only when code calls skb_get_hash(), which doesn't
-> >> necessary happen for local delivery.
-> >>
-> >> For QA verification testing I wrote a small bpftrace prog:
-> >>   [0] https://github.com/xdp-project/xdp-project/blob/master/areas/hints/monitor_skb_hash_on_dev.bt
-> >>
-> >> Fixes: 2121c2712f82 ("igc: Add multiple receive queues control supporting")
-> >> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
-> >> ---
-> >>   drivers/net/ethernet/intel/igc/igc.h      |   28 ++++++++++++++++++++++++++
-> >>   drivers/net/ethernet/intel/igc/igc_main.c |   31 +++++++++++++++++++++++++----
-> >>   2 files changed, 55 insertions(+), 4 deletions(-)
-> >>
-> >> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> >> index 34aebf00a512..f7f9e217e7b4 100644
-> >> --- a/drivers/net/ethernet/intel/igc/igc.h
-> >> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> >> @@ -13,6 +13,7 @@
-> >>   #include <linux/ptp_clock_kernel.h>
-> >>   #include <linux/timecounter.h>
-> >>   #include <linux/net_tstamp.h>
-> >> +#include <linux/bitfield.h>
-> >>   
-> >>   #include "igc_hw.h"
-> >>   
-> >> @@ -311,6 +312,33 @@ extern char igc_driver_name[];
-> >>   #define IGC_MRQC_RSS_FIELD_IPV4_UDP	0x00400000
-> >>   #define IGC_MRQC_RSS_FIELD_IPV6_UDP	0x00800000
-> >>   
-> >> +/* RX-desc Write-Back format RSS Type's */
-> >> +enum igc_rss_type_num {
-> >> +	IGC_RSS_TYPE_NO_HASH		= 0,
-> >> +	IGC_RSS_TYPE_HASH_TCP_IPV4	= 1,
-> >> +	IGC_RSS_TYPE_HASH_IPV4		= 2,
-> >> +	IGC_RSS_TYPE_HASH_TCP_IPV6	= 3,
-> >> +	IGC_RSS_TYPE_HASH_IPV6_EX	= 4,
-> >> +	IGC_RSS_TYPE_HASH_IPV6		= 5,
-> >> +	IGC_RSS_TYPE_HASH_TCP_IPV6_EX	= 6,
-> >> +	IGC_RSS_TYPE_HASH_UDP_IPV4	= 7,
-> >> +	IGC_RSS_TYPE_HASH_UDP_IPV6	= 8,
-> >> +	IGC_RSS_TYPE_HASH_UDP_IPV6_EX	= 9,
-> >> +	IGC_RSS_TYPE_MAX		= 10,
-> >> +};
-> >> +#define IGC_RSS_TYPE_MAX_TABLE		16
-> >> +#define IGC_RSS_TYPE_MASK		GENMASK(3,0) /* 4-bits (3:0) = mask 0x0F */
-> >> +
-> >> +/* igc_rss_type - Rx descriptor RSS type field */
-> >> +static inline u32 igc_rss_type(const union igc_adv_rx_desc *rx_desc)
-> >> +{
-> >> +	/* RSS Type 4-bits (3:0) number: 0-9 (above 9 is reserved)
-> >> +	 * Accessing the same bits via u16 (wb.lower.lo_dword.hs_rss.pkt_info)
-> >> +	 * is slightly slower than via u32 (wb.lower.lo_dword.data)
-> >> +	 */
-> >> +	return le32_get_bits(rx_desc->wb.lower.lo_dword.data, IGC_RSS_TYPE_MASK);
-> >> +}
-> >> +
-> >>   /* Interrupt defines */
-> >>   #define IGC_START_ITR			648 /* ~6000 ints/sec */
-> >>   #define IGC_4K_ITR			980
-> >> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> >> index 1c4676882082..bfa9768d447f 100644
-> >> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> >> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> >> @@ -1690,14 +1690,36 @@ static void igc_rx_checksum(struct igc_ring *ring,
-> >>   		   le32_to_cpu(rx_desc->wb.upper.status_error));
-> >>   }
-> >>   
-> >> +/* Mapping HW RSS Type to enum pkt_hash_types */
-> >> +static const enum pkt_hash_types igc_rss_type_table[IGC_RSS_TYPE_MAX_TABLE] = {
-> >> +	[IGC_RSS_TYPE_NO_HASH]		= PKT_HASH_TYPE_L2,
-> >> +	[IGC_RSS_TYPE_HASH_TCP_IPV4]	= PKT_HASH_TYPE_L4,
-> >> +	[IGC_RSS_TYPE_HASH_IPV4]	= PKT_HASH_TYPE_L3,
-> >> +	[IGC_RSS_TYPE_HASH_TCP_IPV6]	= PKT_HASH_TYPE_L4,
-> >> +	[IGC_RSS_TYPE_HASH_IPV6_EX]	= PKT_HASH_TYPE_L3,
-> >> +	[IGC_RSS_TYPE_HASH_IPV6]	= PKT_HASH_TYPE_L3,
-> >> +	[IGC_RSS_TYPE_HASH_TCP_IPV6_EX] = PKT_HASH_TYPE_L4,
-> >> +	[IGC_RSS_TYPE_HASH_UDP_IPV4]	= PKT_HASH_TYPE_L4,
-> >> +	[IGC_RSS_TYPE_HASH_UDP_IPV6]	= PKT_HASH_TYPE_L4,
-> >> +	[IGC_RSS_TYPE_HASH_UDP_IPV6_EX] = PKT_HASH_TYPE_L4,
-> >> +	[10] = PKT_HASH_TYPE_NONE, /* RSS Type above 9 "Reserved" by HW  */
-> >> +	[11] = PKT_HASH_TYPE_NONE, /* keep array sized for SW bit-mask   */
-> >> +	[12] = PKT_HASH_TYPE_NONE, /* to handle future HW revisons       */
-> >> +	[13] = PKT_HASH_TYPE_NONE,
-> >> +	[14] = PKT_HASH_TYPE_NONE,
-> >> +	[15] = PKT_HASH_TYPE_NONE,
-> >> +};
-> >> +
-> >>   static inline void igc_rx_hash(struct igc_ring *ring,
-> >>   			       union igc_adv_rx_desc *rx_desc,
-> >>   			       struct sk_buff *skb)
-> >>   {
-> >> -	if (ring->netdev->features & NETIF_F_RXHASH)
-> >> -		skb_set_hash(skb,
-> >> -			     le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
-> >> -			     PKT_HASH_TYPE_L3);
-> >> +	if (ring->netdev->features & NETIF_F_RXHASH) {
-> >> +		u32 rss_hash = le32_to_cpu(rx_desc->wb.lower.hi_dword.rss);
-> >> +		u32 rss_type = igc_rss_type(rx_desc);
-> >> +
-> >> +		skb_set_hash(skb, rss_hash, igc_rss_type_table[rss_type]);
-> > 
-> > Just curious why not copy the logic from the other driver fms10k, ice, ect.
-> > 
-> > 	skb_set_hash(skb, le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
-> > 		     (IXGBE_RSS_L4_TYPES_MASK & (1ul << rss_type)) ?
-> > 		     PKT_HASH_TYPE_L4 : PKT_HASH_TYPE_L3);
-> 
-> Detail: This code mis-categorize (e.g. ARP) PKT_HASH_TYPE_L2 as
-> PKT_HASH_TYPE_L3, but as core reduces this further to one SKB bit, it
-> doesn't really matter.
-> 
-> > avoiding the table logic. Do the driver folks care?
-> 
-> The define IXGBE_RSS_L4_TYPES_MASK becomes the "table" logic as a 1-bit
-> true/false table.  It is a more compact table, let me know if this is
-> preferred.
-> 
-> Yes, it is really upto driver maintainer people to decide, what code is
-> preferred ?
-
-Yeah doesn't matter much to me either way. I was just looking at code
-compared to ice driver while reviewing.
-
-> 
-> --Jesper
-> 
-
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Andrii Staikov
+> Sent: Thursday, March 30, 2023 12:18 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Staikov, Andrii <andrii.staikov@intel.com>
+> Subject: [Intel-wired-lan] [PATCH net v1] i40e: fix PTP pins verification
+>
+> Fix PTP pins verification not to contain tainted arguments.
+> As a new PTP pins configuration is provided by a user, it may contain tainted arguments that are out of bounds for the list of possible values that can lead to a potential security threat.
+> Change pin's state name from 'invalid' to 'empty' for more clarification.
+>
+> Fixes: 1050713026a0 ("i40e: add support for PTP external synchronization clock")
+> Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_ptp.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
+>
+Tested-by: Sunitha Mekala <sunithax.d.mekala@intel.com> (A Contingent worker at Intel)
 
 _______________________________________________
 Intel-wired-lan mailing list
