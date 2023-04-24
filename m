@@ -1,106 +1,183 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D62AC6EC077
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 23 Apr 2023 16:46:26 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EAD916EC43E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Apr 2023 06:08:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 75D6681FF7;
-	Sun, 23 Apr 2023 14:46:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75D6681FF7
+	by smtp2.osuosl.org (Postfix) with ESMTP id 675BC405F9;
+	Mon, 24 Apr 2023 04:08:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 675BC405F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682261185;
-	bh=WN21Q8IdLkilHFrzH6lKvpAmx7f+bQNt7lkXhD/oT9Q=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1682309317;
+	bh=9UWlTHHF5/S6shbyenMZYhgKAQDI+2fG7+SGlyj2Pck=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Qmj8LJJR1TCzO9nv+c203sUb8+Lbd5E56DpX5lALXidm7rYCO6pds+MJKDYF40ILo
-	 7YyrirJirt/NEn6JoXlKm3ISLYOXgvhR0pyWSh2C9iMcfPPd1KcN4t0VQGmJJQC/XH
-	 FKUTrHS83vkKaAGKwQEFXGca5dgQm3W1xSL2QsdgVf+oesZosXLEXipUffEht7sf4q
-	 iFH+L7k2HpUkcOPni1XJscxaAwG0emJ7yRZNYSXZJIj4Na7kEkJpgydExliWsjmlKe
-	 8zsToD6e/pAyHPSUWxjKSa0Zu8Wv3l6x4A3oXlH3x++IvGZGiGWHerzlTKuH8z/tGA
-	 7TsRrJJNytxWQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F_ZxfrZ9JG-m; Sun, 23 Apr 2023 14:46:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A1C9781FC8;
-	Sun, 23 Apr 2023 14:46:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A1C9781FC8
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B55EE1BF346
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Apr 2023 14:46:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8C8D940459
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Apr 2023 14:46:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C8D940459
+	b=Oe4axC4Vn9XHlDCOQtLxMqHZzvba0v1I08/p7FFc1owK3zAOrgbLAdtSS/iOPPKqR
+	 Gessgg8hzwJ1SdC6PiIN55mrF8nVbLRBVuQEBmx3HggxbB3+sawUd9oytPBKp8ZgN/
+	 1QlyxaqsK7lX1hciSMPp6TMe86t5zRDEFZe3/oU0n9DeVNUhxHvxVJppIP+q6ChWLb
+	 y3gaaBeXbJg7XqTIGSdqwnn2GTpSMDbrxJkE4A8Wpk4GnE8nw/qoW8dDxl0k1wIWrV
+	 r+rVVS87C3lXDOV4r4Wnoi3Mp3Giw2LRvbm5Wv0yuDXLaXtNSa8OCHAJBiFBNoj2Z+
+	 djK4infN9U+IQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jEl3KdAi7lZw for <intel-wired-lan@lists.osuosl.org>;
- Sun, 23 Apr 2023 14:46:13 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6224E40103
-Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com
- [IPv6:2607:f8b0:4864:20::42e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6224E40103
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Apr 2023 14:46:13 +0000 (UTC)
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-63b35789313so2678328b3a.3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Apr 2023 07:46:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682261173; x=1684853173;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=O7SnPoFD3za4rwhlM2qxf5xphltNXOfgSLCqny9xzIU=;
- b=Shj+tIzYHCq55iI+ze6WBl9xqnGivbMoByG44X+Z25Ikj9T9dNMrwbDaK930T8COgg
- raQlO14vSjekEVbAbe83FohNg2JsAkX69TPTulW7oZvYvZv1v0ppkAyh877165gZgk3/
- FktSC9fiLSuL1PJKBaYLHSnyYa07hqZ7+NnWevTZSW9J1kLaGmHa9Y/lkZB38J9tOopL
- Bmh4fQIetj5SpVpBpmIoJGi1QPeMbP2LW3SM6S2KvuI5vj3IEBd5RQ/D0a+LOQpbEDw7
- ns6kpvcLfAQSQSZU0f2ji4nahhBIdl2768lEUOe+Bzc6tL2tgrqpDfm6VSRYniUXtcOU
- 3bdQ==
-X-Gm-Message-State: AAQBX9cFIYVVap6EYERVlGSrFzkLQCkl5txrzYLIfq0JGo3UY9VNAWwN
- c1b0ciyPt5RddksLOboxWJQ=
-X-Google-Smtp-Source: AKy350aSBzzoQCWcefxtSb/yUnhgCy6a8kAqBJ8ex4WwueTJPZxIgqpDVbfkSHrcWnK3eBkIJRvbng==
-X-Received: by 2002:a17:902:c94c:b0:1a9:75a4:66c1 with SMTP id
- i12-20020a170902c94c00b001a975a466c1mr1024337pla.46.1682261172701; 
- Sun, 23 Apr 2023 07:46:12 -0700 (PDT)
-Received: from localhost ([2605:59c8:148:ba10:5905:623a:c41:59e1])
- by smtp.gmail.com with ESMTPSA id
- i6-20020a170902eb4600b001a69c759af3sm5189929pli.35.2023.04.23.07.46.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Apr 2023 07:46:12 -0700 (PDT)
-Date: Sun, 23 Apr 2023 07:46:11 -0700
-From: John Fastabend <john.fastabend@gmail.com>
-To: Jesper Dangaard Brouer <brouer@redhat.com>, bpf@vger.kernel.org, 
- Stanislav Fomichev <sdf@google.com>, 
- =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>
-Message-ID: <644544b3206f0_19af02085e@john.notmuch>
-In-Reply-To: <168182464270.616355.11391652654430626584.stgit@firesoul>
-References: <168182460362.616355.14591423386485175723.stgit@firesoul>
- <168182464270.616355.11391652654430626584.stgit@firesoul>
-Mime-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1682261173; x=1684853173;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=O7SnPoFD3za4rwhlM2qxf5xphltNXOfgSLCqny9xzIU=;
- b=sVtFY/9syhTlTCGR2dtCDFX8VAYpI+CVfAox7WSRIm9j6Ar8zj6hb0yt6hxewzy7CG
- QBuxte569S2NINLOo/yP8YQh81EICibR5PHYk14H/Bz4ONXYhcEYXU2QmAm92yRSY7sJ
- OsediVyXbqqSGtWVIRc0s64zdao2Hv3pEOEwngSx5jKDrTpEdtKiSysddD1Ho7ZPV1Er
- k14llHCqo5EyPyjGovc5cYJXNuazDI45QXcEjd/mGLE8J6Zz4vO+oO78LCQtGdvPGat/
- L8W8x4+/xf9LcrySzzwkq58hYLcZWm271TkdYIPJssNibPxSmXFQKRSZK2MwED6KiRki
- dz9Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=sVtFY/9s
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next V2 1/5] igc: enable and fix
- RX hash usage by netstack
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LojW6NQ9s2A1; Mon, 24 Apr 2023 04:08:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2EF6940156;
+	Mon, 24 Apr 2023 04:08:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2EF6940156
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BECC1C2ACE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 04:08:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4323E80E4F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 04:08:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4323E80E4F
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fxe41OajyLJf for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Apr 2023 04:08:25 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DA38081E67
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DA38081E67
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Apr 2023 04:08:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10689"; a="411630613"
+X-IronPort-AV: E=Sophos;i="5.99,221,1677571200"; d="scan'208";a="411630613"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2023 21:08:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10689"; a="757534767"
+X-IronPort-AV: E=Sophos;i="5.99,221,1677571200"; d="scan'208";a="757534767"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga008.fm.intel.com with ESMTP; 23 Apr 2023 21:08:23 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Sun, 23 Apr 2023 21:08:23 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Sun, 23 Apr 2023 21:08:22 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Sun, 23 Apr 2023 21:08:22 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Sun, 23 Apr 2023 21:08:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LpPQw65XAa7FU5k6vtiSD9usUuDA71t9SmFHlSIXKxmk6I3QlaECnz2gSjGzsXV8t4uqUNSrvBVkZ8IKm4KSV6UXspKbZ/t0sAe5jhRRiqhaifRjMRJL3Eax54Qn77PyH+kgaVWHmtzSv5nO1Qh2MyLps7pw7ZLenSa3lDa87Hs7+TPxT7lAhwOYnvgLeOq7A8J0+KINggXC/D0CiOYafuUnn7s+MkXrgrfZBUdHAgaUCkB/PYXnMNjztie/BoheNLmWLR90x8+18aNwjC7auyi2P5dtLTrnu7ZO8IMwcWAYBJU/Cvu2MVrprmZnYbXG/yVgy7Q9r3X3b+pGhmuXoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yRWwYfRNIPXC5C+7JSJtvljEX1vjsFd+09COQOlb8xE=;
+ b=oHvyCGChZxIE/Qm3ViQQCo9eb8xlHWUDXfqZXRJyl8QNmAWvNFNxxUwDKouKhdXsxT3ZYL2i38Wev6dhZUDPPecjnhlz6B8RIPiI8828nEPx2wrw3anX0/5Cprj+ihRH0KRNSkJPR+u7geVNAeZHJEbejORRSLbIsQFldzmGRs07OuEQKX7YmRIWwpGExgRs6takIcAxcqN/X1cXtaO6nZEj5aNkrStoLN6gIsqW+knHAbZqiHA3Q/DaqGzdXTEVt85YdO3fl3LztJWQEQ2FeSsNxmCkUnnSWGxCmrHvHPWQ/5sRQ2SQOnO4BPiVUDUMkUTCWmDwsjjDEKf6fCmFxg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MN2PR11MB4045.namprd11.prod.outlook.com (2603:10b6:208:135::27)
+ by DS0PR11MB7785.namprd11.prod.outlook.com (2603:10b6:8:f1::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6319.32; Mon, 24 Apr 2023 04:08:20 +0000
+Received: from MN2PR11MB4045.namprd11.prod.outlook.com
+ ([fe80::2100:c02a:b4c4:c8a6]) by MN2PR11MB4045.namprd11.prod.outlook.com
+ ([fe80::2100:c02a:b4c4:c8a6%3]) with mapi id 15.20.6319.032; Mon, 24 Apr 2023
+ 04:08:20 +0000
+From: "Rout, ChandanX" <chandanx.rout@intel.com>
+To: John Hickey <jjh@daedalian.us>, "Fijalkowski, Maciej"
+ <maciej.fijalkowski@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v4] ixgbe: Fix panic during XDP_TX
+ with > 64 CPUs
+Thread-Index: AQHZdmJmROmiD13VOU6Jw+EaZnUixQ==
+Date: Mon, 24 Apr 2023 04:08:20 +0000
+Message-ID: <MN2PR11MB40458F7BFA0EEA533384764CEA679@MN2PR11MB4045.namprd11.prod.outlook.com>
+References: <ZC2IYWgTUFCnlKc9@boxer> <20230413230300.54858-1-jjh@daedalian.us>
+In-Reply-To: <20230413230300.54858-1-jjh@daedalian.us>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN2PR11MB4045:EE_|DS0PR11MB7785:EE_
+x-ms-office365-filtering-correlation-id: 51ef2f1a-7f18-423d-4031-08db44798a0e
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: RUUSsN2mAbd4TvP26GphKvgTqtoxs37UJ80bNzMeYWj8RoftshCklnIzksbVZ4+blK1gZC9TQ2Xx6hlflPuU6vZ4pMqTSlwSv1jc8Xn+FggS5gIpRSbIb4qeBZzoQwpHKMllPskqypeUR04+L2/Ec5Qymp8hgIuxJNjqmUlck1RSVj2QT1YrQ0s9Sz4jYmEVrgZZW7b0zbGgGAN3TFnM0bbLS0cJ4l2UcyFqUg7CBV4dldtIrSjHwffCOXOuY9nA+uAAwiwP6xSP//LXbcMhGSY9bFcne8C5IevPW8IGRcg0WTy5KKvwXDl0osyXtln+x4wjEFYs6xKgdHIBC3Y7N7xsacHkF8CXVdRcoc+rQcOf+EPfxB644xDoHPIe43MQZaXYb/CYCkaMa9qAdOIvZrIJo2vreCMNGxifouiY1AnDedtL5+1JnPckPkH1NeVmGE+OX9BLEdcGEQIW6a5SaojbgbLVbaQzo8KbxxYRzZmlIZJ4U+TBlHIqYLxvj9aYmMQdyhxeT0f3K7fK/QhoLTtQcdbbFRDJbZQCbLBvtSIfp1wQfIml//a5GInLhtFNYBTodcHQJ8qFFndRnKMjfvZ/+2Dga6oWmNjf3wYPHtUeOD4a+6GEWizAEIzhuqFb
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR11MB4045.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(396003)(136003)(39860400002)(376002)(366004)(346002)(451199021)(9686003)(6506007)(26005)(38070700005)(55016003)(83380400001)(186003)(82960400001)(38100700002)(122000001)(66946007)(478600001)(76116006)(86362001)(64756008)(66556008)(66476007)(66446008)(8936002)(8676002)(54906003)(7416002)(110136005)(52536014)(5660300002)(71200400001)(7696005)(41300700001)(2906002)(4326008)(33656002)(316002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?+999+U3T0/IWRyZmNpjlwH2PwTNLIPmrhTpabSAS2o0kzXdt+VFJmAnNZ9Ht?=
+ =?us-ascii?Q?lXIrKMFZDUxOi4O5dy9jB+detUFA21ffZJBwNi6ZWEEplfvxlucMLqdCe2oo?=
+ =?us-ascii?Q?B+/86qAlFT87z418lH38276PDEgSxBRfKr6/cBqpiC3SJqrpq1eLpqZLWz20?=
+ =?us-ascii?Q?VP+V8TOJDCK697xDqUjfpZnSBV4jMNSPziMccfoN+7+ugsBvUNxFnuK6v7yt?=
+ =?us-ascii?Q?uzALi0oIuQpnJYDAkcrMn8nGh3CYEtfR0sLgk1dY5pVg2yUkLzlbytO/iVn+?=
+ =?us-ascii?Q?ClbtJekYLBrYM1x/PQxe4JRUnOkN4r70HENZcZbkVNq8RlPZC+0wWqHvi5tZ?=
+ =?us-ascii?Q?cWbGB15SpUN8hv4yJlv0Ky2TSw/wpkeU85e4sCBxEZ93orRANB7IKPri2FwP?=
+ =?us-ascii?Q?hiplL5cCv+zqrPS5F+tyWe/F5g81mDm/i/YA79LVA1f5Gr6wH7yIyxMhcso8?=
+ =?us-ascii?Q?AGLznKFJMnJK+2b8r9ewdM6OBkcq6sC+eVqz2c7oEueZOP166mdFKSxzbjBS?=
+ =?us-ascii?Q?PQ0fp09DewbRAljp6YdaKuX7ZeSSobPAi2OK3hdFzhdo1/q5uuvIqO9cba6n?=
+ =?us-ascii?Q?s9a3nLH/eSLolR0d3sFW6O6pMUEuav0nqoIQ4k9UaVhMjgTyZBDx/9sCip2v?=
+ =?us-ascii?Q?w5DSrrear4PoB4DDPJ/2C1kSvFsJmXTNXEDnSKK1WKP7ger0/NzOxT1f6n8Q?=
+ =?us-ascii?Q?b9Hkpaa7itwrCjEie1akbDHyE8twHWI6EuAjxPGvyT+iFZeZnzeWAl44W13s?=
+ =?us-ascii?Q?CsRXrtVzu+ioEAh4AuGv31OXjy2Fd4JXiGVwHHMIJMTUpg2lKJFb9m2tElKc?=
+ =?us-ascii?Q?B+hESwVLXZg/kzqI3lpIQGaZ8hS85DvjglYihpBuRQCPzbqOZ0zXXS7vBFzV?=
+ =?us-ascii?Q?E8GGEkUaO/twq25hNdbVsWVK2Y9fxGJPzMHZHOnE99L515APalGFDoQQzQds?=
+ =?us-ascii?Q?lIn7MaQhav//87U3JvpfDzYMQWb7JLIxBGCBX3O+JQUGqECGE6p2Vkdw1ZrW?=
+ =?us-ascii?Q?3BrtJoVPm7/IuO/jDXX1JB4ldNegw8AfD+OFuZfLpDiovaGE6oaUh/YOYllA?=
+ =?us-ascii?Q?AXqAh0YcHZjSdhPzm5VpxHi/V+ZSIadY5B50BN83I9Jeh4eOOM3+aaPk2VP8?=
+ =?us-ascii?Q?P6ayhWQQaa/r+3Qqnol4Kb9N/Sxby5eW47x6SCW7ux0tfhudzWvUODh9h3Mt?=
+ =?us-ascii?Q?p5ei8iyJzV4thHytvSzjCgfM0ZYaGY5ypEpX0uB1XGdbqf/6uZ532JiE95Q0?=
+ =?us-ascii?Q?NBb2quIVPQ+JRtCWaXPqc/2r0mqbP7bo+IGtdQf8qgdMpaPVqhIHspPkkpUd?=
+ =?us-ascii?Q?hFwAeBnaNkIzy2RVpHxDtVmTmhibzMarM3kHPbAnc3z6Lb7wKZ6YlttlVrq2?=
+ =?us-ascii?Q?PfDr/8K/9E3NOSk0fuf+fmVcIXRohwT/p/7AcLkvuw4Y9VfeDbP9jL7Emh7z?=
+ =?us-ascii?Q?UM4e/pG0fNBajhPgwboCnIYbrYu5boT6XldSB08IIojz41xk5wTOKnfwwGpw?=
+ =?us-ascii?Q?QZxtBR16x1EcjlZ9H/kYWsB2TK0w3hGJEfFZG0f9G/JpE8jfJQI0GIz4ctRZ?=
+ =?us-ascii?Q?V/Mtilbstykb/aZUsncNVZJoZGUzTLTX52wGDv0J?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB4045.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 51ef2f1a-7f18-423d-4031-08db44798a0e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Apr 2023 04:08:20.0470 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OjX3VYrWlH4jdplawQygSPJ657dljRsDq/gsXXmDOaFCknYqn1+/HnA9ZH+unXIO1Y1H7rqMy57BibIrG0QWcA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7785
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1682309304; x=1713845304;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=3ENYRb2UWht2Sr+Z6tRo+3xDvXiOPJLsUZsZ/btkXHA=;
+ b=D5+JcnYBVH4owSP7saKq7hYRXRhZEnbUYcFfSddb8bIq9pxw6OViMory
+ suIizre1nPKyaw5nkQCs2y+lpQBsW1O/U+PkVGCQDd3ImbLyCJHvT+AWO
+ /1p6zqE285WIeQ4/hJxS4/mUg1596LE90vVWtvy27mO7xV+hH7x3rlzxj
+ qDaEUjX80MbFYygVIwr0k4vIQICVilUlGI5G8zg7REIj9ixlepLtmN2Nr
+ zXNgo3N2m19ZlKtRc5PyEnT0WkXQlR/xsf1xlN3K+IXW0LUVjCRMGoZ/l
+ iWtaVCog3KdQt1EK3StMty5UqKOs0DSldDDwEHmTKuLymrWKZLAlTf4R2
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=D5+JcnYB
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v4] ixgbe: Fix panic during XDP_TX
+ with > 64 CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,147 +190,147 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: xdp-hints@xdp-project.net, martin.lau@kernel.org, daniel@iogearbox.net,
- larysa.zaremba@intel.com, netdev@vger.kernel.org, john.fastabend@gmail.com,
- ast@kernel.org, jesse.brandeburg@intel.com, kuba@kernel.org,
- edumazet@google.com, yoong.siang.song@intel.com,
- Jesper Dangaard Brouer <brouer@redhat.com>, intel-wired-lan@lists.osuosl.org,
- pabeni@redhat.com, davem@davemloft.net, hawk@kernel.org
+Cc: Shujin Li <lishujin@kuaishou.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>, Alexei Starovoitov <ast@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Xing,
+ Wanli" <xingwanli@kuaishou.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jesper Dangaard Brouer wrote:
-> When function igc_rx_hash() was introduced in v4.20 via commit 0507ef8a0372
-> ("igc: Add transmit and receive fastpath and interrupt handlers"), the
-> hardware wasn't configured to provide RSS hash, thus it made sense to not
-> enable net_device NETIF_F_RXHASH feature bit.
-> 
-> The NIC hardware was configured to enable RSS hash info in v5.2 via commit
-> 2121c2712f82 ("igc: Add multiple receive queues control supporting"), but
-> forgot to set the NETIF_F_RXHASH feature bit.
-> 
-> The original implementation of igc_rx_hash() didn't extract the associated
-> pkt_hash_type, but statically set PKT_HASH_TYPE_L3. The largest portions of
-> this patch are about extracting the RSS Type from the hardware and mapping
-> this to enum pkt_hash_types. This was based on Foxville i225 software user
-> manual rev-1.3.1 and tested on Intel Ethernet Controller I225-LM (rev 03).
-> 
-> For UDP it's worth noting that RSS (type) hashing have been disabled both for
-> IPv4 and IPv6 (see IGC_MRQC_RSS_FIELD_IPV4_UDP + IGC_MRQC_RSS_FIELD_IPV6_UDP)
-> because hardware RSS doesn't handle fragmented pkts well when enabled (can
-> cause out-of-order). This results in PKT_HASH_TYPE_L3 for UDP packets, and
-> hash value doesn't include UDP port numbers. Not being PKT_HASH_TYPE_L4, have
-> the effect that netstack will do a software based hash calc calling into
-> flow_dissect, but only when code calls skb_get_hash(), which doesn't
-> necessary happen for local delivery.
-> 
-> For QA verification testing I wrote a small bpftrace prog:
->  [0] https://github.com/xdp-project/xdp-project/blob/master/areas/hints/monitor_skb_hash_on_dev.bt
-> 
-> Fixes: 2121c2712f82 ("igc: Add multiple receive queues control supporting")
-> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc.h      |   28 ++++++++++++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_main.c |   31 +++++++++++++++++++++++++----
->  2 files changed, 55 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index 34aebf00a512..f7f9e217e7b4 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -13,6 +13,7 @@
->  #include <linux/ptp_clock_kernel.h>
->  #include <linux/timecounter.h>
->  #include <linux/net_tstamp.h>
-> +#include <linux/bitfield.h>
->  
->  #include "igc_hw.h"
->  
-> @@ -311,6 +312,33 @@ extern char igc_driver_name[];
->  #define IGC_MRQC_RSS_FIELD_IPV4_UDP	0x00400000
->  #define IGC_MRQC_RSS_FIELD_IPV6_UDP	0x00800000
->  
-> +/* RX-desc Write-Back format RSS Type's */
-> +enum igc_rss_type_num {
-> +	IGC_RSS_TYPE_NO_HASH		= 0,
-> +	IGC_RSS_TYPE_HASH_TCP_IPV4	= 1,
-> +	IGC_RSS_TYPE_HASH_IPV4		= 2,
-> +	IGC_RSS_TYPE_HASH_TCP_IPV6	= 3,
-> +	IGC_RSS_TYPE_HASH_IPV6_EX	= 4,
-> +	IGC_RSS_TYPE_HASH_IPV6		= 5,
-> +	IGC_RSS_TYPE_HASH_TCP_IPV6_EX	= 6,
-> +	IGC_RSS_TYPE_HASH_UDP_IPV4	= 7,
-> +	IGC_RSS_TYPE_HASH_UDP_IPV6	= 8,
-> +	IGC_RSS_TYPE_HASH_UDP_IPV6_EX	= 9,
-> +	IGC_RSS_TYPE_MAX		= 10,
-> +};
-> +#define IGC_RSS_TYPE_MAX_TABLE		16
-> +#define IGC_RSS_TYPE_MASK		GENMASK(3,0) /* 4-bits (3:0) = mask 0x0F */
-> +
-> +/* igc_rss_type - Rx descriptor RSS type field */
-> +static inline u32 igc_rss_type(const union igc_adv_rx_desc *rx_desc)
-> +{
-> +	/* RSS Type 4-bits (3:0) number: 0-9 (above 9 is reserved)
-> +	 * Accessing the same bits via u16 (wb.lower.lo_dword.hs_rss.pkt_info)
-> +	 * is slightly slower than via u32 (wb.lower.lo_dword.data)
-> +	 */
-> +	return le32_get_bits(rx_desc->wb.lower.lo_dword.data, IGC_RSS_TYPE_MASK);
-> +}
-> +
->  /* Interrupt defines */
->  #define IGC_START_ITR			648 /* ~6000 ints/sec */
->  #define IGC_4K_ITR			980
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 1c4676882082..bfa9768d447f 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -1690,14 +1690,36 @@ static void igc_rx_checksum(struct igc_ring *ring,
->  		   le32_to_cpu(rx_desc->wb.upper.status_error));
->  }
->  
-> +/* Mapping HW RSS Type to enum pkt_hash_types */
-> +static const enum pkt_hash_types igc_rss_type_table[IGC_RSS_TYPE_MAX_TABLE] = {
-> +	[IGC_RSS_TYPE_NO_HASH]		= PKT_HASH_TYPE_L2,
-> +	[IGC_RSS_TYPE_HASH_TCP_IPV4]	= PKT_HASH_TYPE_L4,
-> +	[IGC_RSS_TYPE_HASH_IPV4]	= PKT_HASH_TYPE_L3,
-> +	[IGC_RSS_TYPE_HASH_TCP_IPV6]	= PKT_HASH_TYPE_L4,
-> +	[IGC_RSS_TYPE_HASH_IPV6_EX]	= PKT_HASH_TYPE_L3,
-> +	[IGC_RSS_TYPE_HASH_IPV6]	= PKT_HASH_TYPE_L3,
-> +	[IGC_RSS_TYPE_HASH_TCP_IPV6_EX] = PKT_HASH_TYPE_L4,
-> +	[IGC_RSS_TYPE_HASH_UDP_IPV4]	= PKT_HASH_TYPE_L4,
-> +	[IGC_RSS_TYPE_HASH_UDP_IPV6]	= PKT_HASH_TYPE_L4,
-> +	[IGC_RSS_TYPE_HASH_UDP_IPV6_EX] = PKT_HASH_TYPE_L4,
-> +	[10] = PKT_HASH_TYPE_NONE, /* RSS Type above 9 "Reserved" by HW  */
-> +	[11] = PKT_HASH_TYPE_NONE, /* keep array sized for SW bit-mask   */
-> +	[12] = PKT_HASH_TYPE_NONE, /* to handle future HW revisons       */
-> +	[13] = PKT_HASH_TYPE_NONE,
-> +	[14] = PKT_HASH_TYPE_NONE,
-> +	[15] = PKT_HASH_TYPE_NONE,
-> +};
-> +
->  static inline void igc_rx_hash(struct igc_ring *ring,
->  			       union igc_adv_rx_desc *rx_desc,
->  			       struct sk_buff *skb)
->  {
-> -	if (ring->netdev->features & NETIF_F_RXHASH)
-> -		skb_set_hash(skb,
-> -			     le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
-> -			     PKT_HASH_TYPE_L3);
-> +	if (ring->netdev->features & NETIF_F_RXHASH) {
-> +		u32 rss_hash = le32_to_cpu(rx_desc->wb.lower.hi_dword.rss);
-> +		u32 rss_type = igc_rss_type(rx_desc);
-> +
-> +		skb_set_hash(skb, rss_hash, igc_rss_type_table[rss_type]);
 
-Just curious why not copy the logic from the other driver fms10k, ice, ect.
 
-	skb_set_hash(skb, le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
-		     (IXGBE_RSS_L4_TYPES_MASK & (1ul << rss_type)) ?
-		     PKT_HASH_TYPE_L4 : PKT_HASH_TYPE_L3);
+>-----Original Message-----
+>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>John Hickey
+>Sent: 14 April 2023 04:33
+>To: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+>Cc: Shujin Li <lishujin@kuaishou.com>; Alexei Starovoitov <ast@kernel.org>;
+>Jesper Dangaard Brouer <hawk@kernel.org>; Daniel Borkmann
+><daniel@iogearbox.net>; intel-wired-lan@lists.osuosl.org; John Fastabend
+><john.fastabend@gmail.com>; Brandeburg, Jesse
+><jesse.brandeburg@intel.com>; John Hickey <jjh@daedalian.us>; Eric
+>Dumazet <edumazet@google.com>; Nguyen, Anthony L
+><anthony.l.nguyen@intel.com>; netdev@vger.kernel.org; Jakub Kicinski
+><kuba@kernel.org>; bpf@vger.kernel.org; Paolo Abeni
+><pabeni@redhat.com>; David S. Miller <davem@davemloft.net>; linux-
+>kernel@vger.kernel.org; Xing, Wanli <xingwanli@kuaishou.com>
+>Subject: [Intel-wired-lan] [PATCH net v4] ixgbe: Fix panic during XDP_TX with
+>> 64 CPUs
+>
+>Commit 4fe815850bdc ("ixgbe: let the xdpdrv work with more than 64 cpus")
+>adds support to allow XDP programs to run on systems with more than
+>64 CPUs by locking the XDP TX rings and indexing them using cpu % 64
+>(IXGBE_MAX_XDP_QS).
+>
+>Upon trying this out patch on a system with more than 64 cores, the kernel
+>paniced with an array-index-out-of-bounds at the return in
+>ixgbe_determine_xdp_ring in ixgbe.h, which means
+>ixgbe_determine_xdp_q_idx was just returning the cpu instead of cpu %
+>IXGBE_MAX_XDP_QS.  An example
+>splat:
+>
+>
+>===========================================================
+>===============
+> UBSAN: array-index-out-of-bounds in
+> /var/lib/dkms/ixgbe/5.18.6+focal-1/build/src/ixgbe.h:1147:26
+> index 65 is out of range for type 'ixgbe_ring *[64]'
+>
+>===========================================================
+>===============
+> BUG: kernel NULL pointer dereference, address: 0000000000000058
+> #PF: supervisor read access in kernel mode
+> #PF: error_code(0x0000) - not-present page  PGD 0 P4D 0
+> Oops: 0000 [#1] SMP NOPTI
+> CPU: 65 PID: 408 Comm: ksoftirqd/65
+> Tainted: G          IOE     5.15.0-48-generic #54~20.04.1-Ubuntu
+> Hardware name: Dell Inc. PowerEdge R640/0W23H8, BIOS 2.5.4 01/13/2020
+> RIP: 0010:ixgbe_xmit_xdp_ring+0x1b/0x1c0 [ixgbe]
+> Code: 3b 52 d4 cf e9 42 f2 ff ff 66 0f 1f 44 00 00 0f 1f 44 00 00 55 b9
+> 00 00 00 00 48 89 e5 41 57 41 56 41 55 41 54 53 48 83 ec 08 <44> 0f b7
+> 47 58 0f b7 47 5a 0f b7 57 54 44 0f b7 76 08 66 41 39 c0
+> RSP: 0018:ffffbc3fcd88fcb0 EFLAGS: 00010282
+> RAX: ffff92a253260980 RBX: ffffbc3fe68b00a0 RCX: 0000000000000000
+> RDX: ffff928b5f659000 RSI: ffff928b5f659000 RDI: 0000000000000000
+> RBP: ffffbc3fcd88fce0 R08: ffff92b9dfc20580 R09: 0000000000000001
+> R10: 3d3d3d3d3d3d3d3d R11: 3d3d3d3d3d3d3d3d R12: 0000000000000000
+> R13: ffff928b2f0fa8c0 R14: ffff928b9be20050 R15: 000000000000003c
+> FS:  0000000000000000(0000) GS:ffff92b9dfc00000(0000)
+> knlGS:0000000000000000
+> CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> CR2: 0000000000000058 CR3: 000000011dd6a002 CR4: 00000000007706e0
+> DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+> DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> PKRU: 55555554
+> Call Trace:
+>  <TASK>
+>  ixgbe_poll+0x103e/0x1280 [ixgbe]
+>  ? sched_clock_cpu+0x12/0xe0
+>  __napi_poll+0x30/0x160
+>  net_rx_action+0x11c/0x270
+>  __do_softirq+0xda/0x2ee
+>  run_ksoftirqd+0x2f/0x50
+>  smpboot_thread_fn+0xb7/0x150
+>  ? sort_range+0x30/0x30
+>  kthread+0x127/0x150
+>  ? set_kthread_struct+0x50/0x50
+>  ret_from_fork+0x1f/0x30
+>  </TASK>
+>
+>I think this is how it happens:
+>
+>Upon loading the first XDP program on a system with more than 64 CPUs,
+>ixgbe_xdp_locking_key is incremented in ixgbe_xdp_setup.  However,
+>immediately after this, the rings are reconfigured by ixgbe_setup_tc.
+>ixgbe_setup_tc calls ixgbe_clear_interrupt_scheme which calls
+>ixgbe_free_q_vectors which calls ixgbe_free_q_vector in a loop.
+>ixgbe_free_q_vector decrements ixgbe_xdp_locking_key once per call if it is
+>non-zero.  Commenting out the decrement in ixgbe_free_q_vector stopped
+>my system from panicing.
+>
+>I suspect to make the original patch work, I would need to load an XDP
+>program and then replace it in order to get ixgbe_xdp_locking_key back
+>above 0 since ixgbe_setup_tc is only called when transitioning between XDP
+>and non-XDP ring configurations, while ixgbe_xdp_locking_key is
+>incremented every time ixgbe_xdp_setup is called.
+>
+>Also, ixgbe_setup_tc can be called via ethtool --set-channels, so this becomes
+>another path to decrement ixgbe_xdp_locking_key to 0 on systems with
+>more than 64 CPUs.
+>
+>Since ixgbe_xdp_locking_key only protects the XDP_TX path and is tied to the
+>number of CPUs present, there is no reason to disable it upon unloading an
+>XDP program.  To avoid confusion, I have moved enabling
+>ixgbe_xdp_locking_key into ixgbe_sw_init, which is part of the probe path.
+>
+>Fixes: 4fe815850bdc ("ixgbe: let the xdpdrv work with more than 64 cpus")
+>Signed-off-by: John Hickey <jjh@daedalian.us>
+>Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+>---
+>v1 -> v2:
+>	Added Fixes and net tag.  No code changes.
+>v2 -> v3:
+>	Added splat.  Slight clarification as to why ixgbe_xdp_locking_key
+>	is not turned off.  Based on feedback from Maciej Fijalkowski.
+>v3 -> v4:
+>	Moved setting ixgbe_xdp_locking_key into the probe path.
+>	Commit message cleanup.
+>---
+> drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  | 3 ---
+>drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 6 ++++--
+> 2 files changed, 4 insertions(+), 5 deletions(-)
+>
 
-avoiding the table logic. Do the driver folks care?
+Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com> (A Contingent Worker at Intel)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
