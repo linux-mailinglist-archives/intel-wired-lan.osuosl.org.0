@@ -2,85 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C21646EE4ED
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Apr 2023 17:44:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47A4A6EE4EE
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Apr 2023 17:46:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A09CE40B52;
-	Tue, 25 Apr 2023 15:44:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A09CE40B52
+	by smtp2.osuosl.org (Postfix) with ESMTP id DF34A409C8;
+	Tue, 25 Apr 2023 15:46:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF34A409C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1682437464;
-	bh=RkjKwP9+T0ANRPQ/OqrmJbA56KhFKBZrVdVOJwt+9aw=;
+	s=default; t=1682437562;
+	bh=gKO7TQO3IPtNxBYOMnkCn5S+VsFh14mbQ5vElK3I4Qo=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=XURoptndLlkvU19e4oGiV5KZxlZyisxO0EnQuRE2I+pIDejripyfPMRaepvo3AbWO
-	 6fOjWFNTpOjUn1CXPXasDu18WaJ2V0FnKVRRXP/CVQc2iaghJTBT9BDwukZGaN5Xe1
-	 4sASQgMX/ycDli9Mi44iiYr7BPBbF0kKwxajswmHnebjdlWIIGlaWVdZAkI/sLxmwa
-	 cLPnO/489apfYtAqNwv06+0hemHnpjnA8e/yLA4pS/mQSL9TUPsbYvgERPKFv26sD0
-	 kGRxvoEPQsaR5KekeDke47yNTjZ2vGn1GclCPGkPY5da7kQdKasbfev6jTerMHXSQ6
-	 ZmG6On+o/uHmQ==
+	b=X8Yw+pTiNCadJXCHg5EM0NobcOyWMvtMFrU5hRbR5OWRt89MBaFmXMby1qSV4zPnh
+	 HA1393c3GdbqRR0vEOu9H6KwIBQecmntNxDNPynWidStOECkjK6SGkEqzb4sru9Rvn
+	 TSRMKh+q3C0urhErdHh3hoITyvrunxTqwDC8qJgPPYdBDKC1ZAQsAKCWRtD0jfqJvr
+	 FRFpJ1csKtd8WuC+Vno6eC4bDpddeKyGx4+gNDTKIy0mepbDQaTdQE+rNRlRiZvTNm
+	 UnefzLb4aP6cQSrJ0wxb7vfm+CtYoPI626fvb0pEtDqKICbGB/N4bx3nD04FxCn3uK
+	 5NWU3jGgKhxbg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uv6PLiyjJk8N; Tue, 25 Apr 2023 15:44:24 +0000 (UTC)
+	with ESMTP id YHewUlRNMBQ5; Tue, 25 Apr 2023 15:46:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A5977409BD;
-	Tue, 25 Apr 2023 15:44:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A5977409BD
+	by smtp2.osuosl.org (Postfix) with ESMTP id E432B409BD;
+	Tue, 25 Apr 2023 15:46:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E432B409BD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C77101BF834
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:44:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9D95C1BF834
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:45:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 945E44092C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:44:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 945E44092C
+ by smtp4.osuosl.org (Postfix) with ESMTP id 723B3410B7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:45:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 723B3410B7
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9boE_NyYzHoL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Apr 2023 15:44:17 +0000 (UTC)
+ with ESMTP id lCuXAxDBPIgy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Apr 2023 15:45:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 21F5A40928
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 21F5A40928
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:44:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="346832876"
-X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; d="scan'208";a="346832876"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Apr 2023 08:44:16 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8129640983
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8129640983
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Apr 2023 15:45:56 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="345561619"
+X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; d="scan'208";a="345561619"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Apr 2023 08:45:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="782910132"
-X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; d="scan'208";a="782910132"
+X-IronPort-AV: E=McAfee;i="6600,9927,10691"; a="693550474"
+X-IronPort-AV: E=Sophos;i="5.99,225,1677571200"; d="scan'208";a="693550474"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by FMSMGA003.fm.intel.com with ESMTP; 25 Apr 2023 08:44:15 -0700
+ by orsmga002.jf.intel.com with ESMTP; 25 Apr 2023 08:45:54 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org,
 	anthony.l.nguyen@intel.com
-Date: Tue, 25 Apr 2023 17:44:14 +0200
-Message-Id: <20230425154414.154351-1-aleksandr.loktionov@intel.com>
+Date: Tue, 25 Apr 2023 17:45:54 +0200
+Message-Id: <20230425154554.154424-1-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1682437457; x=1713973457;
+ t=1682437556; x=1713973556;
  h=from:to:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=qvyYXHYjP1eXOmIC8q9fZRQjy2qqljzCRixeV0QVQoU=;
- b=R5MsSjTTdsrK/CcU7U2TxhoRr6r8+x3tUq5sKMvCqqvK/OAIqZGYrUGA
- W+yRUAS5Nmk8yhNmkIYpgHfWJ/bLO5zGRr3IBskdGOWHZa6IBMCNwPSVQ
- ozrUSjSNobEj0kb7c2+WWVxrMDvKPDVFMZNkhCN9/AWvAAPeym94yY+Vh
- NCwzQhisG+lXVLizBDIhM4rSo31Db1wbC4qyDLV0Ucx14AqO9itzgnXjw
- WFW2l3hR0miaSzHpogIkfMTjeJO/bmUwV7gGdXOHBESC1e5Khq6s/LxVC
- MSzhEPw5rF9Y33Dahe66L/YDi66Gwntdux/ZbWiIGgtt7CbTsc0vWo0ZW
- g==;
+ bh=G0zLbL2ASNsHq7yK9FJ2GU/BllM5vl9ZTIe+J7+imi0=;
+ b=i4HCEnh5tuRlflTyMMVvKfy6ez7MGMkyCVPkmmHwyqokR45urC2WfUcc
+ 1CUhKEBCzhsifuYFhcy66w6mBYrQx8EReJ1lzMzA+oET0riSG6J0m5KQe
+ CeT1VUXH63eHylbLMuysRjcXdeUxyalHkzBjVf60vG485HmkOjDqV8TjV
+ qHKwiqjdWbjE3EofcbqrL3cwVSDpO4yJKtoVnGQC22VzXeFLLhpt1kxv+
+ w9nyyAM6z9baKtM0so446w0z+xfjfFZGaMnPKPOVbGNfpQ6iurwYmIRMU
+ k7d2gQxg7sySpdH/EiUSuuYFq55xcXwfCtoGIJe/aHo8ZnPuHBvXeub6E
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=R5MsSjTT
-Subject: [Intel-wired-lan] [PATCH net v1] igb: fix nvm.ops.read() error
- handling
+ header.a=rsa-sha256 header.s=Intel header.b=i4HCEnh5
+Subject: [Intel-wired-lan] [PATCH net v1] igb: fix bit_shift to be in [1..8]
+ range
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,37 +98,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add error handling into igb_set_eeprom() function, in case
-nvm.ops.read() fails just quit with error code asap.
+In igb_hash_mc_addr() the expression:
+        "mc_addr[4] >> 8 - bit_shift", right shifting "mc_addr[4]"
+shift by more than 7 bits always yields zero, so hash becomes not so different.
+Add initialization with bit_shift = 1 and add a loop condition to ensure
+bit_shift will be always in [1..8] range.
 
 Fixes: 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver")
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igb/e1000_mac.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 7d60da1..1567822 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -822,6 +822,8 @@ static int igb_set_eeprom(struct net_device *netdev,
- 		 */
- 		ret_val = hw->nvm.ops.read(hw, last_word, 1,
- 				   &eeprom_buff[last_word - first_word]);
-+		if (ret_val)
-+			goto out;
- 	}
+diff --git a/drivers/net/ethernet/intel/igb/e1000_mac.c b/drivers/net/ethernet/intel/igb/e1000_mac.c
+index 205d577..caf91c6 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_mac.c
++++ b/drivers/net/ethernet/intel/igb/e1000_mac.c
+@@ -426,7 +426,7 @@ void igb_mta_set(struct e1000_hw *hw, u32 hash_value)
+ static u32 igb_hash_mc_addr(struct e1000_hw *hw, u8 *mc_addr)
+ {
+ 	u32 hash_value, hash_mask;
+-	u8 bit_shift = 0;
++	u8 bit_shift = 1;
  
- 	/* Device's eeprom is always little-endian, word addressable */
-@@ -839,7 +841,7 @@ static int igb_set_eeprom(struct net_device *netdev,
- 	/* Update the checksum if nvm write succeeded */
- 	if (ret_val == 0)
- 		hw->nvm.ops.update(hw);
--
-+out:
- 	igb_set_fw_version(adapter);
- 	kfree(eeprom_buff);
- 	return ret_val;
+ 	/* Register count multiplied by bits per register */
+ 	hash_mask = (hw->mac.mta_reg_count * 32) - 1;
+@@ -434,7 +434,7 @@ static u32 igb_hash_mc_addr(struct e1000_hw *hw, u8 *mc_addr)
+ 	/* For a mc_filter_type of 0, bit_shift is the number of left-shifts
+ 	 * where 0xFF would still fall within the hash mask.
+ 	 */
+-	while (hash_mask >> bit_shift != 0xFF)
++	while (hash_mask >> bit_shift != 0xFF && bit_shift < 4)
+ 		bit_shift++;
+ 
+ 	/* The portion of the address that is used for the hash table
 -- 
 2.31.1
 
