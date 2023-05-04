@@ -2,85 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B77246F79DB
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 01:53:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCF4B6F79D7
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 01:52:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2B4D54026D;
-	Thu,  4 May 2023 23:53:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B4D54026D
+	by smtp4.osuosl.org (Postfix) with ESMTP id A389A41F14;
+	Thu,  4 May 2023 23:52:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A389A41F14
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683244390;
-	bh=jSYubj7FI9R/TPLBBjOa/06ydb/Bt2fOHUx5VUHagP4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Bpe8znKxU/xaPuGrkdpwBaXHHJvjm7qRmnihbXWHKd3g3eNi7CCP6vo6ZOIpNQI0W
-	 k3qmFK1tO/3nK1lmnCQhu1RmYlIzV7FBju3yVDO9aau4I+II31kH4ne7BtLfNkotBA
-	 Yz8QPUFun7BP4NFkfv9b/4N8rolA9zbW5OF3m3sJbERT2JsBB/K3B/nqe1gJpDc5c4
-	 cw56Ou/1eSxpMFGUeJmZDT1Lh917pgK48ZTUAPowQHRI7MhtN/K2f7BApMEJqJ/fuZ
-	 9IBZ/Fd3fHx1Jw20SShIsr1tH91eH5/7EsNyIG++84GuTZrs4Qc3fUB8VdIkd5i3zm
-	 d3xmr1WFKvj+A==
+	s=default; t=1683244372;
+	bh=jeOBp40asId3C7CNfvL6Cfc6JjWY6SP6A5ffi8sE7rY=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=bAQ3nb0KC/vm8LcjoHqa1lP5gJmgg+WcWh39GKc+dykja6fW6YtsvVwJIQMRCR+eH
+	 gFoE0t2KE3U7bXPKvZrNFYyZPzs3ceSDjFgDccF3Hm5VCz2TcWOo5XmL43ZupCBLZL
+	 8ouAV6QQTG86UZvLwz4aTbMkLW2+Laf39yg2FSVxt6Sq0WmiRD/7F4CdVVAgkXEs2P
+	 1hRQN3G4iMsatmC4nQ23vFSoE4brmTSWiLCrGcxwddINvooG6iE+/5peL43rIw0STf
+	 E9yR6591u7Zsvvf4GU1Up5zFdA39hy+l8lBWmSSoX0YTwuEkhkcfFH+dNlExw2cE3t
+	 UED7XC9yY4IrA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oF00yC228y_v; Thu,  4 May 2023 23:53:08 +0000 (UTC)
+	with ESMTP id 48XCEFqwSODi; Thu,  4 May 2023 23:52:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 909BC41F0D;
-	Thu,  4 May 2023 23:53:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 909BC41F0D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4648141F0D;
+	Thu,  4 May 2023 23:52:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4648141F0D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 729F11BF3A7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 656CA1BF3A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 983F541C7A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 983F541C7A
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4B8CA41C7A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B8CA41C7A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gnaCQcRbHd1j for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 30bUvw_vfBSW for <intel-wired-lan@lists.osuosl.org>;
  Thu,  4 May 2023 23:52:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F383A400EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9929941734
 Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F383A400EF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="412301455"
-X-IronPort-AV: E=Sophos;i="5.99,250,1677571200"; d="scan'208";a="412301455"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9929941734
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 May 2023 23:52:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="412301461"
+X-IronPort-AV: E=Sophos;i="5.99,250,1677571200"; d="scan'208";a="412301461"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 May 2023 16:52:42 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="841423487"
-X-IronPort-AV: E=Sophos;i="5.99,250,1677571200"; d="scan'208";a="841423487"
+X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="841423490"
+X-IronPort-AV: E=Sophos;i="5.99,250,1677571200"; d="scan'208";a="841423490"
 Received: from haitianc-mobl2.amr.corp.intel.com (HELO
  vcostago-mobl3.intel.com) ([10.209.47.201])
  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 May 2023 16:52:41 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 May 2023 16:52:28 -0700
-Message-Id: <20230504235233.1850428-1-vinicius.gomes@intel.com>
+Date: Thu,  4 May 2023 16:52:29 -0700
+Message-Id: <20230504235233.1850428-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230504235233.1850428-1-vinicius.gomes@intel.com>
+References: <20230504235233.1850428-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683244363; x=1714780363;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=+JazCt2kkqXdOOHYMl30KQiVzX+gVXnZjlqTJk9dxLw=;
- b=ZX3o9UrkIMeA67uzZYbcm5tTR/ElCRFFmH/wxqt1WQfqW/C0JLSuJpLN
- r8nHTri6d1op5KK48uM+KFtQYY/uTWx3y3g2ZGbkQbjd4B4ce6UkYPLcZ
- MPUfyZBr3vYCMqRKmlqY1PW94tlWKOR8vw4o7DdaxDydlb1JZ+hW6TRoX
- 7wl2JlPIZCpsVe7Ex86Deo9Fs/Wp8gMub1Cc5X718jtDw4FOEttOc3Tln
- QdcES/MLFItrd1e2363s4hGuVJeh8GBgzLu8zOEmPHU3r7K/T3wjb1UCO
- o7wqYpU/eOnMkwRHb2/x+6R04HlzcB6bHeNCgwo/58Mv7qZRKcmX/7jLs
- w==;
+ t=1683244364; x=1714780364;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=9xITHCvqcgfj3ntm0flKUtn+42CIfKSItW6PDsY3cak=;
+ b=KNof7CwC0ZBrOvkZ5bufZwiqAnHVGqPi7NvMzUAL9bFH4+Itjl2D9MOE
+ XhceFIx9C1HhDIeyb1vFPM4ErhfxfTXdiryGYLekBdaowRFLGCq9VRHDC
+ 6U017JR7Mo/Kkr5GBvqJEqBramB5iftQkvnA4MyFiE7fPJjapTPxsEFP/
+ Ds3dLXLgeepEyh7q09qpNW+o2xbmHnjzJsBVr/3Sp+Hh4Je/KG+HLyHRN
+ x2Fb2h4/m1ub7Q8KVE2JAYeW8LWTNAvVY7H8Y20o2R5vXbtfTxeDX1L/5
+ 53fLM7s+79X8J3Yb/NLfAHShDI3O0ZaLyHssuD7SHD1L5Dpy5Q+2716ff
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZX3o9Urk
-Subject: [Intel-wired-lan] [PATCH iwl v1 0/5] igc: TX timestamping fixes
+ header.a=rsa-sha256 header.s=Intel header.b=KNof7CwC
+Subject: [Intel-wired-lan] [PATCH iwl v1 1/5] igc: Fix marking some
+ timestamps as skipped wrongly
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,102 +103,41 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+If a packet was internally forwarded to a igc managed NIC, and it had
+the SKBTX_HW_TSTAMP flag set, the driver would mark that timestamp as
+skipped.
 
-Changes from the "for-next-queue" version:
- - As this is intended for the iwl/net-queue tree, removed adding
-   support for adding the "extra" tstamp registers;
- - Added "Fixes:" tags to the appropriate patches (Vladimir Oltean);
- - Improved the check to catch the case that the skb has the
-   SKBTX_HW_TSTAMP flag, but TX timestamping is not enabled (Vladimir
-   Oltean);
- - Ony check for timestamping timeouts if TX timestamping is enabled
-   (Vladimir Oltean);
+In reality, that timestamp was "not for us", as TX timestamp could
+never be enabled in the NIC.
 
-for-next-queue version link:
-https://lore.kernel.org/intel-wired-lan/20230228054534.1093483-1-vinicius.gomes@intel.com/
+Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
+Suggested-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-This is the fixes part of the series intended to add support for using
-the 4 timestamp registers present in i225/i226.
-
-Moving the timestamp handling to be inline with the interrupt handling
-has the advantage of improving the TX timestamping retrieval latency,
-here are some numbers using ntpperf:
-
-Before:
-
-$ sudo ./ntpperf -i enp3s0 -m 10:22:22:22:22:21 -d 192.168.1.3 -s 172.18.0.0/16 -I -H -o -37
-               |          responses            |     TX timestamp offset (ns)
-rate   clients |  lost invalid   basic  xleave |    min    mean     max stddev
-1000       100   0.00%   0.00%   0.00% 100.00%      -56      +9     +52     19
-1500       150   0.00%   0.00%   0.00% 100.00%      -40     +30     +75     22
-2250       225   0.00%   0.00%   0.00% 100.00%      -11     +29     +72     15
-3375       337   0.00%   0.00%   0.00% 100.00%      -18     +40     +88     22
-5062       506   0.00%   0.00%   0.00% 100.00%      -19     +23     +77     15
-7593       759   0.00%   0.00%   0.00% 100.00%       +7     +47   +5168     43
-11389     1138   0.00%   0.00%   0.00% 100.00%      -11     +41   +5240     39
-17083     1708   0.00%   0.00%   0.00% 100.00%      +19     +60   +5288     50
-25624     2562   0.00%   0.00%   0.00% 100.00%       +1     +56   +5368     58
-38436     3843   0.00%   0.00%   0.00% 100.00%      -84     +12   +8847     66
-57654     5765   0.00%   0.00% 100.00%   0.00%
-86481     8648   0.00%   0.00% 100.00%   0.00%
-129721   12972   0.00%   0.00% 100.00%   0.00%
-194581   16384   0.00%   0.00% 100.00%   0.00%
-291871   16384  27.35%   0.00%  72.65%   0.00%
-437806   16384  50.05%   0.00%  49.95%   0.00%
-
-After:
-
-$ sudo ./ntpperf -i enp3s0 -m 10:22:22:22:22:21 -d 192.168.1.3 -s 172.18.0.0/16 -I -H -o -37
-               |          responses            |     TX timestamp offset (ns)
-rate   clients |  lost invalid   basic  xleave |    min    mean     max stddev
-1000       100   0.00%   0.00%   0.00% 100.00%      -44      +0     +61     19
-1500       150   0.00%   0.00%   0.00% 100.00%       -6     +39     +81     16
-2250       225   0.00%   0.00%   0.00% 100.00%      -22     +25     +69     15
-3375       337   0.00%   0.00%   0.00% 100.00%      -28     +15     +56     14
-5062       506   0.00%   0.00%   0.00% 100.00%       +7     +78    +143     27
-7593       759   0.00%   0.00%   0.00% 100.00%      -54     +24    +144     47
-11389     1138   0.00%   0.00%   0.00% 100.00%      -90     -33     +28     21
-17083     1708   0.00%   0.00%   0.00% 100.00%      -50      -2     +35     14
-25624     2562   0.00%   0.00%   0.00% 100.00%      -62      +7     +66     23
-38436     3843   0.00%   0.00%   0.00% 100.00%      -33     +30   +5395     36
-57654     5765   0.00%   0.00% 100.00%   0.00%
-86481     8648   0.00%   0.00% 100.00%   0.00%
-129721   12972   0.00%   0.00% 100.00%   0.00%
-194581   16384  19.50%   0.00%  80.50%   0.00%
-291871   16384  35.81%   0.00%  64.19%   0.00%
-437806   16384  55.40%   0.00%  44.60%   0.00%
-
-During this series, and to show that as is always the case, things are
-never easy as they should be, a hardware issue was found, and it took
-some time to find the workaround(s). The bug and workaround are better
-explained in patch 5/5.
-
-Note: the workaround has a simpler alternative, but it would involve
-adding support for the other timestamp registers, and only using the
-TXSTMP{H/L}_0 as a way to clear the interrupt. But I feel bad about
-throwing this kind of resources away. Didn't test this extensively but
-it should work.
-
-Also, as Marc Kleine-Budde suggested, after some consensus is reached
-on this series, most parts of it will be proposed for igb.
-
-BTW: I hope this is the correct usage of the "iwl" subject prefix.
-
-Cheers,
-
-Vinicius Costa Gomes (5):
-  igc: Fix marking some timestamps as skipped wrongly
-  igc: Fix race condition in PTP tx code
-  igc: Fix checking for tstamp timeouts TX tstamp is off
-  igc: Retrieve TX timestamp during interrupt handling
-  igc: Add workaround for missing timestamps
-
- drivers/net/ethernet/intel/igc/igc.h      |   7 +-
- drivers/net/ethernet/intel/igc/igc_main.c |  14 ++-
- drivers/net/ethernet/intel/igc/igc_ptp.c  | 119 +++++++++++++++-------
- 3 files changed, 95 insertions(+), 45 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 1c4676882082..0d029041a102 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1578,13 +1578,13 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 		}
+ 	}
+ 
+-	if (unlikely(skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)) {
++	if (unlikely(adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON &&
++		     skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)) {
+ 		/* FIXME: add support for retrieving timestamps from
+ 		 * the other timer registers before skipping the
+ 		 * timestamping request.
+ 		 */
+-		if (adapter->tstamp_config.tx_type == HWTSTAMP_TX_ON &&
+-		    !test_and_set_bit_lock(__IGC_PTP_TX_IN_PROGRESS,
++		if (!test_and_set_bit_lock(__IGC_PTP_TX_IN_PROGRESS,
+ 					   &adapter->state)) {
+ 			skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
+ 			tx_flags |= IGC_TX_FLAGS_TSTAMP;
 -- 
 2.40.1
 
