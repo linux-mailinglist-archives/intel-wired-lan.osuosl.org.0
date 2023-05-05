@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 611486F8079
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 12:01:56 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BF9A6F84C5
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 16:23:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F34A2616E2;
-	Fri,  5 May 2023 10:01:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F34A2616E2
+	by smtp2.osuosl.org (Postfix) with ESMTP id BD0C9404A8;
+	Fri,  5 May 2023 14:23:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD0C9404A8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683280915;
-	bh=pGt8fZ7emWuayuJ/InEL5ZIuvCH3LJXjwxR8TcLv0Xo=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1683296592;
+	bh=onj0yS8FsjiAOg5SoT/G7gCtc1JXj4vFl7LRPe5vPnE=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=b0kqc7z/s+OH7CktGLrenYq+w+U8Z5OT/nB44/+eEI5j3ZvGWIEE3+G8mWFH2Q0TA
-	 zL3DJVD6ge4hEcVeC4d1iXwjScHEFP8yZZxFyWKbRlOWUcJUuET9N4NF/2G9MeT8GE
-	 9Pg3BgjxnkN3MVGBWaoIvREHTBp16vVNfv4u4lCcjkqd6hvSQLgI69/SfszvPcaeSC
-	 G28umcnoRcDjS196an4KAkjyF7n0ZBj06SWVRrnkubY68EJyxjlMMMsOsQcH19Vxhx
-	 qg5K6itA4j2snh66n4kNsf1pt5GAd+vXtSwvQGFrH+D4JWEpFNCZN8Rvw+8R7ZcfXD
-	 jbzao+UZtbPIQ==
+	b=SY4dwvsm6TM/FBFN/OKtKupeUZwUj28g9uJz/rwzJ3WkTG0i8nghj+mGeB2H2Tgqy
+	 JuscnlNlvZdF/+sKlSy7IsXPmNdfjUIH4VsX6Sd88FKFNoge1yHjJ8FvfWdURAv36t
+	 gZv0vTBUaiZ8MuTT/MT/GzFSaWrcqtZCrsOM8d3HTPeffm0ZHuo1/gIPdlsSPtmWyn
+	 tYDVyE8mX/7dvUuvCSvmuyCSXL3Veh+S7xHPmJsz0B31nsp+ZskPcY9Z5lKcagOT22
+	 iTUIS+sWWrHrnbCHwYBybI26i+ztezywKQ2YmKR9ex1AM/d06s850TR/df/+G7AlJB
+	 gACPq1bhRU2VQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aHxg-l9Danaj; Fri,  5 May 2023 10:01:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PM7B-1Z1Ot8B; Fri,  5 May 2023 14:23:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 94A91616CD;
-	Fri,  5 May 2023 10:01:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 94A91616CD
+	by smtp2.osuosl.org (Postfix) with ESMTP id A716A40187;
+	Fri,  5 May 2023 14:23:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A716A40187
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0C6D31BF869
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 10:01:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0747F1BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 14:23:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DE92A402D0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 10:01:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DE92A402D0
+ by smtp2.osuosl.org (Postfix) with ESMTP id EAD2340187
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 14:23:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EAD2340187
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3ct4vIN6JGVk for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 May 2023 10:01:48 +0000 (UTC)
+ with ESMTP id QV8Cla0A-KsD for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 May 2023 14:23:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2F7B9400FF
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2F7B9400FF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 10:01:48 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org
-In-Reply-To: <20230504235233.1850428-5-vinicius.gomes@intel.com>
-References: <20230504235233.1850428-1-vinicius.gomes@intel.com>
- <20230504235233.1850428-5-vinicius.gomes@intel.com>
-Date: Fri, 05 May 2023 11:51:49 +0200
-Message-ID: <877ctnumve.fsf@kurt>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E16A4026A
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1E16A4026A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 14:23:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="377294741"
+X-IronPort-AV: E=Sophos;i="5.99,252,1677571200"; d="scan'208";a="377294741"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2023 07:22:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="700456077"
+X-IronPort-AV: E=Sophos;i="5.99,252,1677571200"; d="scan'208";a="700456077"
+Received: from unknown (HELO s240.localdomain) ([10.237.94.19])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2023 07:22:56 -0700
+From: Piotr Skajewski <piotrx.skajewski@intel.com>
+To: ian.kumlien@gmail.com
+Date: Fri,  5 May 2023 16:21:44 +0200
+Message-Id: <20230505142144.46622-1-piotrx.skajewski@intel.com>
+X-Mailer: git-send-email 2.35.0.rc0
+In-Reply-To: <CAA85sZvQV2_aTP=2_TZQOMm0cMfxp+NdLx2_yf_qzB=dUKFuwg@mail.gmail.com>
+References: <CAA85sZvQV2_aTP=2_TZQOMm0cMfxp+NdLx2_yf_qzB=dUKFuwg@mail.gmail.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1683280310;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=erVi4LQ4PMq8WdS9Oke29YWNFu7kXhpRXvXBuGq1YUw=;
- b=Kwv0H+NFsJ93J1OzknEXL1dp6+CgwlrEHID1vRr7Et7aWgKgq/jFAcW47vnQfIrWHQIPtO
- SyUXgUUDeCAAXr7mIP+S9Fb8T6TOZ3UNywkcCR1E4aRRXWoQEo5fWxS8jtwsiIkve3F9m9
- 9YTOuiXKZV+NMGX89cxGmRcF4+5JIDogk0KCe3nY4p//Y4ZrxSB2bar1tl3kWu6a97XFMv
- +mUp3a3vVhuSgIQpH/NDIntKGSlN9Jquas5OpREHswnFKVdL8aElPX+MrYEhVVxNrE9weN
- 9rp/98lcVRxt0uBbrsqwfNzyQcdXAQ8ekCkreR0jfPhl8SaKIl1Soz+3U5S6SA==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1683280310;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=erVi4LQ4PMq8WdS9Oke29YWNFu7kXhpRXvXBuGq1YUw=;
- b=ZPLDjDhuin793Om4wmpTCQRzbHkc3yuHHsF73c3M4IlB8fB860DHRgRTCsAa9EXDlJGe4c
- V8CkW93ETS1X80DA==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1683296586; x=1714832586;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=6jdpXc5q7OT2JO2J8xALaYohRQuMJFyqvk+1uRqZwQY=;
+ b=cJCYcmGpwvUGkPpztsfis6mAw6RAm/Bdz1aVLcs1zGCLSgV5GwICH6Rf
+ 8HjEHw92PmszFHc0p5ZxxCkVxR8CB1zNj9bcvUqF4UULXUbxzpkBP+DUe
+ v8SZXMZ2tvKNm4VbCUpfrjYoKkeMFqo19urt5aXGj+3Xowk1Is2OMi6j5
+ UBDBu2craLubstkPQF0dzaA8oThPeimBgRXjFBMeVOWdksB/uFynTn8yh
+ CIcCku2juTd4QLz9gYZdQkcTiNeP6LV3gbDvhThK8xamNIncfkAzsy20Z
+ izOHh3jgClrK8ZsXSxUrxRd7+iYB0sLJdO6+7/ntXNWqMnP9x2+lycByb
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=Kwv0H+NF; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=ZPLDjDhu
-Subject: Re: [Intel-wired-lan] [PATCH iwl v1 4/5] igc: Retrieve TX timestamp
- during interrupt handling
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=cJCYcmGp
+Subject: Re: [Intel-wired-lan] [ixgbe] regression: jumbo frames not working
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,54 +95,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: vladimir.oltean@nxp.com, anthony.l.nguyen@intel.com
-Content-Type: multipart/mixed; boundary="===============8285769900543162980=="
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ jesse.brandeburg@intel.com
+Content-Type: multipart/mixed; boundary="===============7193730821409475851=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============8285769900543162980==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+--===============7193730821409475851==
+Content-Type: text/plain; charset=Y
+Content-Transfer-Encoding: 8bit
 
---=-=-=
-Content-Type: text/plain
+On Sun, Arp 30, 2023 at 7:01 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> On Sun, Apr 30, 2023 at 6:29 PM Jesse Brandeburg
+> <jesse.brandeburg@gmail.com> wrote:
+>>
+>>
+>>
+>> On Fri, Apr 28, 2023 at 2:13 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+>>>
+>>> Hi,
+>>>
+>>> Since upgrading to kenel 6.3, I've hit an issue...
+>>>
+>>> I historically use 9k jumboframes on my network as such:
+>>> 3: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP
+>>> group default qlen 1000
+>>
+>>
+>> Thanks for the report! Our team is investigating, hopefully we will be able to reproduce and get back to you this week.
+>>
+>> A detail that would help is lspci -nn -d ::0200 to get a list of the adapter type you're using in case it's relevant.
+> 
+> 06:00.0 Ethernet controller [0200]: Intel Corporation Ethernet
+> Connection X553 1GbE [8086:15e4] (rev 11)
+> 06:00.1 Ethernet controller [0200]: Intel Corporation Ethernet
+> Connection X553 1GbE [8086:15e4] (rev 11)
+> 07:00.0 Ethernet controller [0200]: Intel Corporation Ethernet
+> Connection X553 1GbE [8086:15e4] (rev 11)
+> 07:00.1 Ethernet controller [0200]: Intel Corporation Ethernet
+> Connection X553 1GbE [8086:15e4] (rev 11)
+> 
+> ethtool -i eno1
+> driver: ixgbe
+> version: 6.3.0
+> firmware-version: 0x80000877
+> expansion-rom-version:
+> bus-info: 0000:06:00.0
+> supports-statistics: yes
+> supports-test: yes
+> supports-eeprom-access: yes
+> supports-register-dump: yes
+> supports-priv-flags: yes
+> 
+>>> But now the largest frame i can send is 2030 bytes (ie ping -s 2002)...
+>>>
+>>> I don't see any warning from the XDP subsystem so I almost assume
+>>> that's not it...
 
-On Thu May 04 2023, Vinicius Costa Gomes wrote:
-> When the interrupt is handled, the TXTT_0 bit in the TSYNCTXCTL
-> register should already be set and the timestamp value already loaded
-> in the appropriate register.
->
-> This simplifies the handling, and reduces the latency for retrieving
-> the TX timestamp, which increase the amount of TX timestamps that can
-> be handled in a given time period.
->
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+After test we don't see any discrepancies in how jumbo frames work between mentioned kernels.
+Please add more details about configuration you are using and steps how to reproduce this issue.
 
-Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks,
+Piotr
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmRU0bUTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgrmLD/44sxaJ1dDTyILJut1aAmqlVaeOEuxn
-vyGxseBQADJUwdXN1xN623y9l3eQrU50K0wI8qMZKR8HnT8z1mB+meVTqft9Bmj2
-Ku9lTahlYhVQvRpE9xkq/Ekkhv3hpO156upUvHft9YhbzOGTwpchZVcxrRbQg+lj
-znSKYSb4tMRNv4djWyz2qQH08uWQiM/5XgzM8IqT0U2VPwOPLA+mKtGAXxjvdQ0j
-hkX0V8rysSlffdw76Wq0zIHLx/aMhRzkmCkJBRd4wPSs2Dkcm2lwb6wCQ12Vlwsv
-rpyBsFGISWP8MhIuqH1HiwHQKOU83YpxvcJrpC84946bSySmbLF0Vr5zTOETnDdP
-hxPQUjL5OhIffR0VhOzrYibe4tKW24LtTE9PgQnkr6wMJoWlSPiF+L1bCxmnW+nI
-FKQqMVAl7Hu0ysBRgwRJtizJmQWdaelBpfHHruVyROzf0ZjlfVOirXybmtWxBMHG
-YfsMc0k7ZaJtdeXonEZWBQ4Oj/jc0FUSh7MrJEotVgfIpH7mAVubEcqVY90zwFO7
-FikN4F5lrn5MaKXGM0MpL9aR8ZCVCA7flW8GB+WYVsp1zxWjeGLLwjOAMKa2Nac/
-WP77YT9X7zbwyrk+8eNENEz40bq2coXJN3CzLpzuUT0VVbX4wLxlnRzPu1sVx+Du
-PM8wJyId+BY/Uw==
-=c0wp
------END PGP SIGNATURE-----
---=-=-=--
-
---===============8285769900543162980==
+--===============7193730821409475851==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -153,4 +170,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============8285769900543162980==--
+--===============7193730821409475851==--
