@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB3C16F8023
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 11:38:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 68D476F8059
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 May 2023 11:49:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E07A1616F2;
-	Fri,  5 May 2023 09:38:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E07A1616F2
+	by smtp3.osuosl.org (Postfix) with ESMTP id 04E98616BD;
+	Fri,  5 May 2023 09:49:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 04E98616BD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683279512;
-	bh=mUzS6UFoytQHkxsHNFTmb4xxs4we9lvkDXmFX19ISeA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1683280159;
+	bh=kV6IZ4WJGyVHV//iuV017lEh5zfkAG4ZkX6t5VODzsk=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=qNpc9kR9XTBEH1l2eUaVvJ59GMXwMwsYAd5HwKquTOvzbt9swP8ZQsOlYj7JA1uoF
-	 5JCw4gfCk+P4GeNxVRNFP1RdH+7O2rEUEL2RKR3wWalb+aLTzx4Be7ymQPxbGQz9GR
-	 a+HW08lTNVSpWZVkXO7NPYVNjlRdu0qH45nYBm9c3amf7ej9JuE/aCQ8+aP64CmpK6
-	 NcBoUDgMHY1PqAU9T3DQiAWvoHRgULohxo7+A3HKE+RckKy3vKyErCb+OojdPTaqU3
-	 qb5pBmlSLfH/Ua+pJUHTNx1hh23F3tW4mw+GJniHRHvLrkavv2sk/yA589uqNo2iwT
-	 CmNCEGeG2bdYg==
+	b=u8PWhn9AQQg1H0Gcu4Hx1QZQ1dLk3wN6Bi9jTgCIAPH6joda/S0NVUQUTl/FQl8W5
+	 LH3FZrCCLQgPkPQpBzWPpcnMXyXCmc9hK7FZGTJtX8BRcjH1B2P7T6jzkPznBey8tI
+	 QI5Z37u23LzjF3Vay8HIMRywpQSwZp389SutGVq5bl2/Q4h1tUcYI4S953gxHvGcJ1
+	 QoVNRNBJdRyRhkByPXEfNvvo8rsi+5usgbp2M52bWpQzHpsP2rOePe0ysedkWlZuUQ
+	 bShEgE0gdltO5UFfRM01aOHdBc1JxzJXDRrRNojynH2p12Klb0ESx5U5AiIgK7Z0lI
+	 1GMejutUcaSRA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JiJ_vPxEaTQJ; Fri,  5 May 2023 09:38:32 +0000 (UTC)
+	with ESMTP id qGOEhLVB-O6B; Fri,  5 May 2023 09:49:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 83D3E60A95;
-	Fri,  5 May 2023 09:38:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 83D3E60A95
+	by smtp3.osuosl.org (Postfix) with ESMTP id F0F1661140;
+	Fri,  5 May 2023 09:49:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F0F1661140
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4F1AE1BF393
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:38:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 632F71BF393
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:49:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BF710616CB
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:38:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF710616CB
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3FD0541F8B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:49:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3FD0541F8B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JdIz_fQEDyPk for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 May 2023 09:38:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id m1f8DgapzzSv for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 May 2023 09:49:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2690616DC
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D2690616DC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:38:12 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="346641583"
-X-IronPort-AV: E=Sophos;i="5.99,251,1677571200"; d="scan'208";a="346641583"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2023 02:38:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10700"; a="821600012"
-X-IronPort-AV: E=Sophos;i="5.99,251,1677571200"; d="scan'208";a="821600012"
-Received: from gklab-018-208.igk.intel.com ([10.102.18.208])
- by orsmga004.jf.intel.com with ESMTP; 05 May 2023 02:38:01 -0700
-From: Kamil Maziarz <kamil.maziarz@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  5 May 2023 11:37:49 +0200
-Message-Id: <20230505093749.218839-5-kamil.maziarz@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20230505093749.218839-1-kamil.maziarz@intel.com>
-References: <20230505093749.218839-1-kamil.maziarz@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91EA141F2A
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 91EA141F2A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 May 2023 09:49:11 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+In-Reply-To: <20230504235233.1850428-2-vinicius.gomes@intel.com>
+References: <20230504235233.1850428-1-vinicius.gomes@intel.com>
+ <20230504235233.1850428-2-vinicius.gomes@intel.com>
+Date: Fri, 05 May 2023 11:49:07 +0200
+Message-ID: <87fs8bumzw.fsf@kurt>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683279492; x=1714815492;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=bYfRQMqSy/AZawPNeCU+2rT2Ip+Bte74jqeeA/HUNjg=;
- b=hw2oZ1Hz3pGviiQJIXxAYSqOn1E1AlKuwd7ldOwsMibtgl9S4xAtC/yN
- 4WKSqgKOc0yrjDBNbGwTcFBMXnkzSbTEpyFLP7kvDTmxoeOC/79EMf4M3
- YWTPstpPOCvolnlDDWTn7zI3UsSyWpqNxJ0IMaBpRb6H8sLTyRdD+BGT3
- yEsPl86Hez4G/ehlEDBSffe/foGDBRoiMl20VWl9yMGnRYQtcfZL3Z/zg
- nz6dwpVcxk88RxordXC0I+58SGJfThvgXleB1QQyGB0/G4RSAIGHyFlp0
- JCuBEC6b2cypayC7O73il5jjH7u12HhE4j8B6b5I8AgyxMMWE2Xb67MkW
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hw2oZ1Hz
-Subject: [Intel-wired-lan] [PATCH iwl-net v5 4/4] Revert "iavf: Do not
- restart Tx queues after reset task failure"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1683280149;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=dYDb4oi3Z4UXKQ4StM1F4V4nF1BA8xVMNNX/0cFnGSg=;
+ b=vauLD70J7Vj9cjcuf7lSNOxhgVbhj+U6ITbTERiBMimIdNrdV3rU+1WQy5t/eSwD19MU3G
+ wVzjCVmliBcYCox464CSrbyYhXdiyAU2oSQ+XVpuu/uNGEC+Kobx7dYG6m1461d93RH/2h
+ 991RwCYEPYPg9wtEf+tEOm2wPmyXVX21cO3eUfaqenJ9BO9q/f1abeCf/tVjlP8EcIw5Y+
+ pbg26lhFiivafyj1J7Xcnh/0L9CE/b57erqi5SkdgAT3zLy8wlMk8MTAsJhE31o5kPH6jd
+ s/BXWOKkY84wsBXkND8yAb8DZWomhNjd0vAbKUXaEWafG3na9uWHu8zzGsEHeA==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1683280149;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=dYDb4oi3Z4UXKQ4StM1F4V4nF1BA8xVMNNX/0cFnGSg=;
+ b=f9Xb37zmbZC4urhzl/RufUMCaihMqxjAFrSRXap8EpGub5PwUSNaXIfM8fY5iYyDttImbu
+ 1xcLkPeNtwzp59DA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=vauLD70J; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=f9Xb37zm
+Subject: Re: [Intel-wired-lan] [PATCH iwl v1 1/5] igc: Fix marking some
+ timestamps as skipped wrongly
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,72 +95,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kamil Maziarz <kamil.maziarz@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: vladimir.oltean@nxp.com, anthony.l.nguyen@intel.com
+Content-Type: multipart/mixed; boundary="===============2466334833783875140=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
+--===============2466334833783875140==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-This reverts commit 08f1c147b7265245d67321585c68a27e990e0c4b.
+--=-=-=
+Content-Type: text/plain
 
-Netdev is no longer being detached during reset, so this fix can be
-reverted.
+On Thu May 04 2023, Vinicius Costa Gomes wrote:
+> If a packet was internally forwarded to a igc managed NIC, and it had
+> the SKBTX_HW_TSTAMP flag set, the driver would mark that timestamp as
+> skipped.
+>
+> In reality, that timestamp was "not for us", as TX timestamp could
+> never be enabled in the NIC.
+>
+> Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
+> Suggested-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
----
-v1->v5: no changes
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 16 +---------------
- 1 file changed, 1 insertion(+), 15 deletions(-)
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index a6c8463c1876..6c5722b107cf 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2986,6 +2986,7 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
- 	iavf_free_queues(adapter);
- 	memset(adapter->vf_res, 0, IAVF_VIRTCHNL_VF_RESOURCE_SIZE);
- 	iavf_shutdown_adminq(&adapter->hw);
-+	adapter->netdev->flags &= ~IFF_UP;
- 	adapter->flags &= ~IAVF_FLAG_RESET_PENDING;
- 	iavf_change_state(adapter, __IAVF_DOWN);
- 	wake_up(&adapter->down_waitqueue);
-@@ -3080,11 +3081,6 @@ static void iavf_reset_task(struct work_struct *work)
- 		iavf_disable_vf(adapter);
- 		mutex_unlock(&adapter->client_lock);
- 		mutex_unlock(&adapter->crit_lock);
--		if (netif_running(netdev)) {
--			rtnl_lock();
--			dev_close(netdev);
--			rtnl_unlock();
--		}
- 		return; /* Do not attempt to reinit. It's dead, Jim. */
- 	}
- 
-@@ -3235,16 +3231,6 @@ static void iavf_reset_task(struct work_struct *work)
- 
- 	mutex_unlock(&adapter->client_lock);
- 	mutex_unlock(&adapter->crit_lock);
--
--	if (netif_running(netdev)) {
--		/* Close device to ensure that Tx queues will not be started
--		 * during netif_device_attach() at the end of the reset task.
--		 */
--		rtnl_lock();
--		dev_close(netdev);
--		rtnl_unlock();
--	}
--
- 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
- }
- 
--- 
-2.31.1
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmRU0RMTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgnfSD/9Z0QlLHAZMsjT5NfIMs9bhgJN82Sqn
+isNugi+BZP3EXhWX96T08EXa9FPYIV5A0QnCrI3bKg7P64+2/CuJMm6ZHqFtcr4K
+GrzyVhJNI1e4rWhXrWfc4OajXppBMw5FXhCwGARe2LOUEiSRwK30jkT6703AYuec
+W3K+1C5lRCahI9109vTM/sOoTDbSzglS03XMrPMuYPynI7MpBhntgYECu1n64oDZ
+tTaVepEqUi2FPegIdhvXbvraCagNtwOycURw6khNzc9/Rjke/6d8/dsCpJ4dY/8X
+0FhrcPx0EKAl+E4HvuvCVsfNF13HWNoLNvBwob4YAe4A1Uy3Er8JcbTb/D8Ph5pa
+PUMntyV+yQy3y/0bMUabgZyO5sCBef3tWjUv8jbrvI+OGBYYWydz+5+Gsf2rREOM
+jKLbQw4XVGGGxR6fTmTbzp01WpBlrocmou0EAj7E3ypKKmlqPKw3KM05Oi1s2SIl
+goTdlsaoRg/SUL3e+aM8AtS2Bc3ZlkmWmcIFX0wlT7mS2dwiwg/w5E3j79IaKc3n
+dINgon7TcLI9+mpFeCrO5M2cSIih/1tV2yuuD1/whdhysy0j6YYq7M5I869KxNSC
+Db2uAgF7ps/ECo8drr5ZCtZd8vbV69Uq9Iytl/V7z73VuHjLVvG75gIYAC/C+atm
+FE/nXTKqXyBIiA==
+=lRv6
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============2466334833783875140==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2466334833783875140==--
