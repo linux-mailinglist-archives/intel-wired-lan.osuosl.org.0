@@ -1,88 +1,188 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F70E6FB074
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 May 2023 14:44:20 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE7376FB13C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 May 2023 15:18:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 94BC28427A;
-	Mon,  8 May 2023 12:44:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 94BC28427A
+	by smtp3.osuosl.org (Postfix) with ESMTP id DB8A76146F;
+	Mon,  8 May 2023 13:18:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DB8A76146F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683549858;
-	bh=nDLSZkVtte4Lx94vH+HOifyRpARl5rqZ+aQWp2fRyxY=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1683551885;
+	bh=FdYzCfnudpMVecn0mLhhwbQK0Q4YZoxcFi7vmm5fl1g=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=EFsM7Zt8IjT+6jIFJrQ5x5Y4i6J0x+asY+SS7bHrhmlOZxjznhy7oW0kVtHBbgCn2
-	 mIUdYJWk2Hf6N/zlt4f5yFgSK74F/bQAKj8R6qsaLYWGQnvTgZdD1P2F2DycdKNBkU
-	 ejuN7SW6eFij4C9WbXGTajqBmgxJL4NwCDAkz6iyPaDUdC2+f3hce7BYTQmrHFogFw
-	 qWDIjw+j1gcVOGe6Dca97lJiKYJFG/Hu9EXFwmYAuTh+onlM1NAlEVMRi/WVMrZ0us
-	 3VA3yj1rtn8Psk5h7ma0cC/IDtuzT4Bxsk+qMio4y260uMOn1UsOBXmiAgEJHL6p6R
-	 GGk96lYmDD7gw==
+	 From;
+	b=R3zvn7tIpKp4Yvu/5BPBVACDrN1tgqI0CBRYOz0lEfwbqnbJ/3EJ2C3xrPwIguNVu
+	 HwtYDFXz35iBXRhWp/Ci7oJPYA0YpJkQPtr+WFaOTSYIgvJTRAq3bfyU4rDgaUwDEq
+	 hk7vfoEhm8ZaH+SPZXD2FMoy8nZH2/ZOSCBxQM7MRO0wjZuul0aENc9toGRBUnb9UT
+	 FcFRDIRpita9TdjPNAExM1Tu0V9L3hWg41kESKORamC3xCanVCm+yK5GC5Weup9l1A
+	 1HBE0V3LejoGnk13Tgt9zBSanqbB8g6tW2GsZRdaxsOLJCQbxx9ivniIntMtRTomyL
+	 SjRdmVmjLDRmA==
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I98X8FNAPGtc; Mon,  8 May 2023 13:18:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9861A6146C;
+	Mon,  8 May 2023 13:18:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9861A6146C
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C24C1BF275
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 13:18:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id D128184306
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 13:17:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D128184306
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3g90etvK_2ZR; Mon,  8 May 2023 12:44:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 11D918141B;
-	Mon,  8 May 2023 12:44:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 11D918141B
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 472FA1BF364
- for <intel-wired-lan@osuosl.org>; Mon,  8 May 2023 12:43:53 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2CD70400EF
- for <intel-wired-lan@osuosl.org>; Mon,  8 May 2023 12:43:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CD70400EF
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ycDDb1RmVaHq for <intel-wired-lan@osuosl.org>;
- Mon,  8 May 2023 12:43:51 +0000 (UTC)
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Hmc7E-TA7x9R for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 May 2023 13:17:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9A25400DC
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B9A25400DC
- for <intel-wired-lan@osuosl.org>; Mon,  8 May 2023 12:43:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="349665178"
-X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="349665178"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 May 2023 05:43:51 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5F18484305
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5F18484305
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 13:17:58 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="435960364"
+X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="435960364"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 May 2023 06:17:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="676048027"
-X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="676048027"
-Received: from nimitz.igk.intel.com ([10.102.21.231])
- by orsmga006.jf.intel.com with ESMTP; 08 May 2023 05:43:48 -0700
-From: Piotr Raczynski <piotr.raczynski@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Mon,  8 May 2023 14:43:21 +0200
-Message-Id: <20230508124321.2927867-9-piotr.raczynski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230508124321.2927867-1-piotr.raczynski@intel.com>
-References: <20230508124321.2927867-1-piotr.raczynski@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="729082326"
+X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="729082326"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga008.jf.intel.com with ESMTP; 08 May 2023 06:17:57 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 8 May 2023 06:17:57 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 8 May 2023 06:17:56 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Mon, 8 May 2023 06:17:56 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.42) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Mon, 8 May 2023 06:17:56 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aYps3x1vAwIHpvMFyx31wnzNpkxRt1dUUTeu506BjZemC+eW3ewtbux4kcabdVn3/06RQVTboMlHq2D9x9mknRG3wDYR8zJBKuD8FI4xgRb55EeShfXhQsM8Rlam6fuC4r5yd7zBZBB/X4Ct9UEA3oWQ8UxFi8lQNAaRQEankJ7Usu0bQuANfWztYvyn0/KrlZI+0a7AW5rOcUaikHGOhY1v+i3yA04YF59MNYanr2kQBFxt9NM/o1mxvh9irYUc2gRKYkgXyNBFdTn+ZYDasvwnP7RDAAr7yTe4MChWT/ErZH7YbcQeTjzlJWSQsG3PSloTSk9AauheOyFGEyifOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6FUsmAPVLe5R88PB9xuV9MvYmbjZRa8V4NskpI0+9lo=;
+ b=i6Ur+DLN6aO0XDaOzrwbTCgEexxqRMgwDjwf1VjXvKYTAQsy1UZhf2htzHCj/usPl6tnBFCcr/UePDBe/uTcaVzAIkXe2qId2p/aFysBPGol4T1eseLTeVklRDJ4wLR03ik4yqbIcHvKseAbu0+CaC2lYGX6E+0GTHhdKYTDwN6Q+2OT27fRs9W+3/a3Rfx+U/hxd2hkCeU/J7r+tNsiXC8rpcUhOPuxG1SR9HT9hR7zTupILgIM1gTA6s0w0V3AyY6eOR2u2jc8Y1x4XXfXVGy+pXN3Aw3vZAOdbKZNA5MunMJ64/Bt3n8rNtxtZQdVXt5vdZiJBdYZk/tSJbXKNA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7420.namprd11.prod.outlook.com (2603:10b6:806:328::20)
+ by DM4PR11MB5373.namprd11.prod.outlook.com (2603:10b6:5:394::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.32; Mon, 8 May
+ 2023 13:17:52 +0000
+Received: from SN7PR11MB7420.namprd11.prod.outlook.com
+ ([fe80::5194:555b:c468:f14f]) by SN7PR11MB7420.namprd11.prod.outlook.com
+ ([fe80::5194:555b:c468:f14f%7]) with mapi id 15.20.6363.032; Mon, 8 May 2023
+ 13:17:52 +0000
+Message-ID: <e6ead49c-13bc-9848-5d8a-bb435d6086fb@intel.com>
+Date: Mon, 8 May 2023 07:17:45 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Content-Language: en-US
+To: Kamil Maziarz <kamil.maziarz@intel.com>, <intel-wired-lan@lists.osuosl.org>
+References: <20230505093749.218839-1-kamil.maziarz@intel.com>
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+In-Reply-To: <20230505093749.218839-1-kamil.maziarz@intel.com>
+X-ClientProxiedBy: FR2P281CA0001.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a::11) To SN7PR11MB7420.namprd11.prod.outlook.com
+ (2603:10b6:806:328::20)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7420:EE_|DM4PR11MB5373:EE_
+X-MS-Office365-Filtering-Correlation-Id: 85274716-3086-4a51-6c70-08db4fc6a0a6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: RGCTeRX+/H4TLiIV4vlnNmv9KcpVSGuU6cV0QSRGAOtTzkSAS/nlmV8GiNCiA83YWhDtvw05lpdAENP1DDa1zjdgiOjR4l/oVxNyAaf6e+OzfyUE3G08PbNfXi9XEmSRyanUKU419BkVOSO1HqDLft+6K4yq0a4+eCSi2YPswgHSsJOBJmX9/T1w0G3F+KPM4b3UCwcZDbc0EWxmL69oeULNAlyflOziTp86Ts8GS7+12x+O1sagZ9UFoITjkCYpOvZJejFB545Y+tOyLzzB4u93IBFAuj5d05auwt6aeA3MfpJF56VeU8fhAQGcwNJyDo/s4JOk7JAJ7DrwwiqJJehm7TPCUPWBODJ4f9sUb8FsDSR2FbDwpxljBgQwxI7/EDn1JpQEuK9/rBZWN4afTpq4fRx+ju2/OhO3dIwdoFL4nWWLXymWXspfyEYgYXR9DAKwa4a1zl4lER7DKhZbNa4WG2prYD0jKpa8vsvmq3H7wUItekerNX7VAGs0g3nWWHB8Ih07H5fDblwQfqQ6yyNCBohItmfeBQqkk1P7afv1AqLkm2ol/Q8y0w0YGI4fzaXZFBBIY1X2w26DysjG7MD65DjGGt31opwmKPMs12z0T2jHJmfF/Ym/y/8fze96hl7UKgnSTc01aY0cudsRNw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(136003)(376002)(346002)(396003)(366004)(39860400002)(451199021)(31686004)(2906002)(8936002)(8676002)(316002)(478600001)(66476007)(5660300002)(66556008)(41300700001)(6666004)(45080400002)(44832011)(66946007)(6486002)(966005)(6512007)(53546011)(26005)(6506007)(186003)(82960400001)(36756003)(2616005)(83380400001)(38100700002)(86362001)(31696002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OEFIQjlPUTVYa0xZRVZ0Rm1ZbTY3SmlLUnFmOWpQQnU2M25Pei81WUoyZmpt?=
+ =?utf-8?B?N2wvZUpKR1lsSjNKUHBvREx0UGEyZTl5QkNrRkNSdEYyQmZqenF5NU9YRW1F?=
+ =?utf-8?B?TTQzVEY3dHhuZTg5NnRNWkcrWERlK1B3Tk1VZWhZQlFwMDg3TUVaSlppUHUr?=
+ =?utf-8?B?d2x5S0dBbldGR1RkWFRaSnJJREdIZmJzRTM3SCthNnA1L3hXdWIwSGlyOTdQ?=
+ =?utf-8?B?RzVmRXpvWjdmQjFXQUtEZ1A1SHh2OUgzYVZSNTVIMDRJTzRYMmJwSVY2bnlt?=
+ =?utf-8?B?OXlZcnBBVGliY0EwOGM4cjZzQ0VHMzQxUm1qbVhlZmt0ckxBbTFSOG4vRExQ?=
+ =?utf-8?B?STFNTXJvU0thR3c2V2k0dG5tak1NOGg3UkJMdVFOYWllOWlzRGtSR00wS0tv?=
+ =?utf-8?B?Y3M3VkZIbTREb0d6RFUyRWk0L2lGWUdsdlZIYjBuWTdxZ08yMzQxTzFvOHJv?=
+ =?utf-8?B?aVY5S2NtZnlmRkxSVUlHOGRIc1hGQTVFcDlBZDNqVG9Cd3lLN3RNdUMwaWtk?=
+ =?utf-8?B?REhiOExjNFc1RjJ6Y3JTTm5JeEw4bitGVkJzQzZUbXgzZUxmWTFFd28zMldn?=
+ =?utf-8?B?VkZEVngyQ0FNVCtzRml2WjhUVGxGSnNCcDJISmRqV3QwaVUydThBdUc4K3o1?=
+ =?utf-8?B?bGsrby9yWWNpQUZLUWEweC9nVEtiN2Q3YXJUdnZaNE5ZZDlwMGRXTXYrS01S?=
+ =?utf-8?B?QmRBN1RhNFZGZVB5ck1iSm9Pd1NJWWUrYm0vUUhFUnNqbmdFa2h5KzdEK0pD?=
+ =?utf-8?B?SVpmRFh2OU5oOHBlYldOcTVYMkRrdjFCRXBNRVpBWFRMdTMrSGVaUW5TUWNn?=
+ =?utf-8?B?RUZTbVpmb3MyWDRJWEJVUUpYbmo2dXQ2Tkxxa3ZtSVdHUlV1TElFcWVjZmN1?=
+ =?utf-8?B?RTZ5UFRvYjFONGR0SDRocXRuYW5IajI1OWV3YkpnMkdRclBwSFFFRWJmWXpV?=
+ =?utf-8?B?UTlCSE5QbUZ3QjVraUZIbHQ4ZjBmZElPcXRTdUVlaTlQdDEzUFBCN0c2UmNs?=
+ =?utf-8?B?d2VIdFpaczFmOEJsZC9qWWtadEJiWlJDMTVIMW1TOC82bzJhQ1BIRUw2eFhR?=
+ =?utf-8?B?c3haaEkvWnJEenJJQk5IeG1nMDFudVdmZUpVTzAxNzNsbk04L3JVQ2sxRHhE?=
+ =?utf-8?B?USt2c2VUZzRycXR6SUplSXlRSDdBV1JnVWtsMzVUTnNiRmU5TnRpem5FT21D?=
+ =?utf-8?B?SjJxUzd6S3ptVUNWMDJVMFZhc1B0bmhRZTFhY2VndnpvUmZPMEZxd0VaUzJu?=
+ =?utf-8?B?WDcrZHg5b0JrUzRqT05CWUcvcnZVYXUvM25tYnZySDNnMnJKVkF2RFNQcS8w?=
+ =?utf-8?B?MGtHWWhzeTRaT2Ixb3N1WXdOcEplY28yMlNMTDQ5M0N3Nkt1ckIrTGYwWjFD?=
+ =?utf-8?B?ZHRxQ2hzVjZqVlN5YXVmR0FzZy9hajdTTi8vYy9abmQ2ZVY4bVZrdzYwV3NS?=
+ =?utf-8?B?VFErY3NHY3h5YnJMZm1wZ1VkZ1pXUFEyTjlUdkFMUGxSeDJOdlhoZFBPcUsr?=
+ =?utf-8?B?cm1jNkgxbDIwekw5ZW1KdUFScmdONHQvMDBwaGQ4ZmNZZC9Va2VRa3RzVmI2?=
+ =?utf-8?B?NFcwZlExRkpBTUV3UUFuS0wyejVsWUNVSzA2YmY3dG92c0FZQTlsSG1Gb0dx?=
+ =?utf-8?B?TERmYnlZWG1QY3NsVU9Nb092R1dUSmErL0IzZVBzb05TU1JoQVRYd2RnU2Yw?=
+ =?utf-8?B?NmlaVU5sa2JMYVhDVTc5WXM3VzREcnhUcUJCMXVsQnFLWGJ0Z0VKZE9rSE1I?=
+ =?utf-8?B?czBhUzlEbTNBd1M1ZDFyQzJLVUE4YVM1cG5WMmh0bzNaMXBYMmhscFFRbGhD?=
+ =?utf-8?B?WTREanBkZlJ5TEMzTElBWllWVmxJM2pyd0RkaGRVSG1qdDZjc1U4d2dkT3Zo?=
+ =?utf-8?B?THlicE5jUlhVT1VhRnlzNzJoL3RBVE9hVmpTai9UUmF4MnJGeXMvQi91WHVK?=
+ =?utf-8?B?NEZWamNFcDFDZmJOV3Q5NElJaFFKSTZBZGxVQXBWZVQ5YzdzamVYaXhYUjQr?=
+ =?utf-8?B?WUZxTWI0VkNlYnNlbnlxZy9TZWVzTkY2VHdDMDAvbEVXNTJ3UDlzd0JvSEJF?=
+ =?utf-8?B?ZU1TWktPQ29XZjVVa095Vk1aRStRdzUxYnQvdVdrY2dGN1dmTSszWkJaVkJU?=
+ =?utf-8?Q?0fZX8fo6CBnOx3BdwAg+oIN6u?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 85274716-3086-4a51-6c70-08db4fc6a0a6
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7420.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2023 13:17:52.3919 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: UZk+c2B/rQXnaXTcXnR3msWeD7NnNHFVb7EL5EmOYhIJt67bTN1v0DOIGkuOTgbkdQHE3gDovudh8DSPqlIawQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5373
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683549831; x=1715085831;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=jOYKUwRMuSK9ce3qcTNSZ5C4plHLk41BuiekRzAHQBQ=;
- b=PVR6KFcN1myrS4/7UMNC/67Zis2lRs3J6k2EJcjW+wwbG3Lf7Vxw2BWe
- ZJVYwPVF1SMDyV1pBvnI/2TJnRI4p3oSfY6xnfuqGd8gx5sdouS4u2lpe
- CuUXgQOY2qNIaL94X9x3oRgO8PFzH/9w3ZFdM62wfLForPvrcI81pa6ed
- P3oIk5aiDyO3CWiOD3WoITjdcemBOmOPyDMQ2B+VaCxUUCAd4Fxjpergu
- mNGHAmZ68jaNMozM2Kxz+xoJ+yUH/A/uXyWP3aAtYJsFTWL8R0S8EA84S
- EbLuWzU794G3ADQ25hLN1n3LRQzwbirklOjSzCgO2fpnhRw+coAF/VTUX
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1683551878; x=1715087878;
+ h=message-id:date:subject:to:references:from:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=WvDHHAG7o9Re86f3lzozxgPtnfXYLaPfmy+Ehv6zBAM=;
+ b=S1ycHljbqe1D6YKhQFT7oLHfUp7JLTBrKCYQog7+qSafsIMHKQOCoMEJ
+ ZGdo7yBibxhY5nBnCDZWelX94uoqN3wyjfSrntlEyqbqxE9uewQMp64sh
+ 5GqcUuONUinXnhfS1gcsTtuJVVNiCOcmBluGhs+BX7nu+wnXcgsFA9fG3
+ BJ3q6aUdQSmhAoyGmmSrGNhKNmKkQOIouglJXs7NbeUswEnN805TmROJD
+ 18aX8bivVc+SzjnizOU2ZqpP2RxewvNiqJCWgCD0ffK0V4JmybNf35Kth
+ n+h3XyKNe/oKZK+87mUnDNYdXY2k35zoVg3USGZ4vxQL2kygo4F0wDABq
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PVR6KFcN
-Subject: [Intel-wired-lan] [PATCH net-next v4 8/8] ice: add dynamic
- interrupt allocation
+ header.a=rsa-sha256 header.s=Intel header.b=S1ycHljb
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v5 0/4] iavf: fix reset task
+ deadlock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,354 +195,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: michal.swiatkowski@intel.com, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, simon.horman@corigine.com, shiraz.saleem@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently driver can only allocate interrupt vectors during init phase by
-calling pci_alloc_irq_vectors. Change that and make use of new
-pci_msix_alloc_irq_at/pci_msix_free_irq API and enable to allocate and free
-more interrupts after MSIX has been enabled. Since not all platforms
-supports dynamic allocation, check it with pci_msix_can_alloc_dyn.
-
-Extend the tracker to keep track how many interrupts are allocated
-initially so when all such vectors are already used, additional interrupts
-are automatically allocated dynamically. Remember each interrupt allocation
-method to then free appropriately. Since some features may require
-interrupts allocated dynamically add appropriate VSI flag and take it into
-account when allocating new interrupt.
-
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h       |   3 +
- drivers/net/ethernet/intel/ice/ice_base.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_idc.c   |   2 +-
- drivers/net/ethernet/intel/ice/ice_irq.c   | 109 ++++++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_irq.h   |   5 +-
- drivers/net/ethernet/intel/ice/ice_main.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c |   5 +-
- 7 files changed, 107 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 42236f315bcb..8b016511561f 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -339,6 +339,9 @@ struct ice_vsi {
- 	u32 rx_buf_failed;
- 	u32 rx_page_failed;
- 	u16 num_q_vectors;
-+	/* tell if only dynamic irq allocation is allowed */
-+	bool irq_dyn_alloc;
-+
- 	enum ice_vsi_type type;
- 	u16 vsi_num;			/* HW (absolute) index of this VSI */
- 	u16 idx;			/* software index in pf->vsi[] */
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 7dd7a0f32471..998dc7d81e51 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -133,7 +133,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 		}
- 	}
- 
--	q_vector->irq = ice_alloc_irq(pf);
-+	q_vector->irq = ice_alloc_irq(pf, vsi->irq_dyn_alloc);
- 	if (q_vector->irq.index < 0) {
- 		kfree(q_vector);
- 		return -ENOMEM;
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index bc016bb4440c..145b27f2a4ce 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -250,7 +250,7 @@ static int ice_alloc_rdma_qvectors(struct ice_pf *pf)
- 			struct msix_entry *entry = &pf->msix_entries[i];
- 			struct msi_map map;
- 
--			map = ice_alloc_irq(pf);
-+			map = ice_alloc_irq(pf, false);
- 			if (map.index < 0)
- 				break;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-index 1713347c577f..ad82ff7d1995 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-@@ -9,11 +9,14 @@
-  * ice_init_irq_tracker - initialize interrupt tracker
-  * @pf: board private structure
-  * @max_vectors: maximum number of vectors that tracker can hold
-+ * @num_static: number of preallocated interrupts
-  */
- static void
--ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors)
-+ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors,
-+		     unsigned int num_static)
- {
- 	pf->irq_tracker.num_entries = max_vectors;
-+	pf->irq_tracker.num_static = num_static;
- 	xa_init_flags(&pf->irq_tracker.entries, XA_FLAGS_ALLOC);
- }
- 
-@@ -42,6 +45,7 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
- /**
-  * ice_get_irq_res - get an interrupt resource
-  * @pf: board private structure
-+ * @dyn_only: force entry to be dynamically allocated
-  *
-  * Allocate new irq entry in the free slot of the tracker. Since xarray
-  * is used, always allocate new entry at the lowest possible index. Set
-@@ -49,10 +53,11 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
-  *
-  * Returns allocated irq entry or NULL on failure.
-  */
--static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
-+static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
- {
- 	struct xa_limit limit = { .max = pf->irq_tracker.num_entries,
- 				  .min = 0 };
-+	unsigned int num_static = pf->irq_tracker.num_static;
- 	struct ice_irq_entry *entry;
- 	unsigned int index;
- 	int ret;
-@@ -61,6 +66,10 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 	if (!entry)
- 		return NULL;
- 
-+	/* skip preallocated entries if the caller says so */
-+	if (dyn_only)
-+		limit.min = num_static;
-+
- 	ret = xa_alloc(&pf->irq_tracker.entries, &index, entry, limit,
- 		       GFP_KERNEL);
- 
-@@ -69,6 +78,7 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf)
- 		entry = NULL;
- 	} else {
- 		entry->index = index;
-+		entry->dynamic = index >= num_static;
- 	}
- 
- 	return entry;
-@@ -241,14 +251,20 @@ void ice_clear_interrupt_scheme(struct ice_pf *pf)
-  */
- int ice_init_interrupt_scheme(struct ice_pf *pf)
- {
--	int vectors;
-+	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
-+	int vectors, max_vectors;
- 
- 	vectors = ice_ena_msix_range(pf);
- 
- 	if (vectors < 0)
--		return vectors;
-+		return -ENOMEM;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev))
-+		max_vectors = total_vectors;
-+	else
-+		max_vectors = vectors;
- 
--	ice_init_irq_tracker(pf, vectors);
-+	ice_init_irq_tracker(pf, max_vectors, vectors);
- 
- 	return 0;
- }
-@@ -256,33 +272,55 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- /**
-  * ice_alloc_irq - Allocate new interrupt vector
-  * @pf: board private structure
-+ * @dyn_only: force dynamic allocation of the interrupt
-  *
-  * Allocate new interrupt vector for a given owner id.
-  * return struct msi_map with interrupt details and track
-  * allocated interrupt appropriately.
-  *
-- * This function mimics individual interrupt allocation,
-- * even interrupts are actually already allocated with
-- * pci_alloc_irq_vectors. Individual allocation helps
-- * to track interrupts and simplifies interrupt related
-- * handling.
-+ * This function reserves new irq entry from the irq_tracker.
-+ * if according to the tracker information all interrupts that
-+ * were allocated with ice_pci_alloc_irq_vectors are already used
-+ * and dynamically allocated interrupts are supported then new
-+ * interrupt will be allocated with pci_msix_alloc_irq_at.
-+ *
-+ * Some callers may only support dynamically allocated interrupts.
-+ * This is indicated with dyn_only flag.
-  *
-  * On failure, return map with negative .index. The caller
-  * is expected to check returned map index.
-  *
-  */
--struct msi_map ice_alloc_irq(struct ice_pf *pf)
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only)
- {
-+	int sriov_base_vector = pf->sriov_base_vector;
- 	struct msi_map map = { .index = -ENOENT };
-+	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_irq_entry *entry;
- 
--	entry = ice_get_irq_res(pf);
-+	entry = ice_get_irq_res(pf, dyn_only);
- 	if (!entry)
- 		return map;
- 
--	map.index = entry->index;
--	map.virq = pci_irq_vector(pf->pdev, map.index);
-+	/* fail if we're about to violate SRIOV vectors space */
-+	if (sriov_base_vector && entry->index >= sriov_base_vector)
-+		goto exit_free_res;
-+
-+	if (pci_msix_can_alloc_dyn(pf->pdev) && entry->dynamic) {
-+		map = pci_msix_alloc_irq_at(pf->pdev, entry->index, NULL);
-+		if (map.index < 0)
-+			goto exit_free_res;
-+		dev_dbg(dev, "allocated new irq at index %d\n", map.index);
-+	} else {
-+		map.index = entry->index;
-+		map.virq = pci_irq_vector(pf->pdev, map.index);
-+	}
-+
-+	return map;
- 
-+exit_free_res:
-+	dev_err(dev, "Could not allocate irq at idx %d\n", entry->index);
-+	ice_free_irq_res(pf, entry->index);
- 	return map;
- }
- 
-@@ -291,9 +329,50 @@ struct msi_map ice_alloc_irq(struct ice_pf *pf)
-  * @pf: board private structure
-  * @map: map with interrupt details
-  *
-- * Remove allocated interrupt from the interrupt tracker.
-+ * Remove allocated interrupt from the interrupt tracker. If interrupt was
-+ * allocated dynamically, free respective interrupt vector.
-  */
- void ice_free_irq(struct ice_pf *pf, struct msi_map map)
- {
-+	struct ice_irq_entry *entry;
-+
-+	entry = xa_load(&pf->irq_tracker.entries, map.index);
-+
-+	if (!entry) {
-+		dev_err(ice_pf_to_dev(pf), "Failed to get MSIX interrupt entry at index %d",
-+			map.index);
-+		return;
-+	}
-+
-+	dev_dbg(ice_pf_to_dev(pf), "Free irq at index %d\n", map.index);
-+
-+	if (entry->dynamic)
-+		pci_msix_free_irq(pf->pdev, map);
-+
- 	ice_free_irq_res(pf, map.index);
- }
-+
-+/**
-+ * ice_get_max_used_msix_vector - Get the max used interrupt vector
-+ * @pf: board private structure
-+ *
-+ * Return index of maximum used interrupt vectors with respect to the
-+ * beginning of the MSIX table. Take into account that some interrupts
-+ * may have been dynamically allocated after MSIX was initially enabled.
-+ */
-+int ice_get_max_used_msix_vector(struct ice_pf *pf)
-+{
-+	unsigned long start, index, max_idx;
-+	void *entry;
-+
-+	/* Treat all preallocated interrupts as used */
-+	start = pf->irq_tracker.num_static;
-+	max_idx = start - 1;
-+
-+	xa_for_each_start(&pf->irq_tracker.entries, index, entry, start) {
-+		if (index > max_idx)
-+			max_idx = index;
-+	}
-+
-+	return max_idx;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.h b/drivers/net/ethernet/intel/ice/ice_irq.h
-index da5cdb1f0d3a..f35efc08575e 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.h
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.h
-@@ -6,17 +6,20 @@
- 
- struct ice_irq_entry {
- 	unsigned int index;
-+	bool dynamic;	/* allocation type flag */
- };
- 
- struct ice_irq_tracker {
- 	struct xarray entries;
- 	u16 num_entries;	/* total vectors available */
-+	u16 num_static;	/* preallocated entries */
- };
- 
- int ice_init_interrupt_scheme(struct ice_pf *pf);
- void ice_clear_interrupt_scheme(struct ice_pf *pf);
- 
--struct msi_map ice_alloc_irq(struct ice_pf *pf);
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only);
- void ice_free_irq(struct ice_pf *pf, struct msi_map map);
-+int ice_get_max_used_msix_vector(struct ice_pf *pf);
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 7e905c3b8a1d..7c04057c524c 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3305,7 +3305,7 @@ static int ice_req_irq_msix_misc(struct ice_pf *pf)
- 		goto skip_req_irq;
- 
- 	/* reserve one vector in irq_tracker for misc interrupts */
--	oicr_irq = ice_alloc_irq(pf);
-+	oicr_irq = ice_alloc_irq(pf, false);
- 	if (oicr_irq.index < 0)
- 		return oicr_irq.index;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 68b7f6f0bb6b..687740bff073 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -418,7 +418,7 @@ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
- static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
- {
- 	u16 total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
--	int vectors_used = pf->irq_tracker.num_entries;
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	int sriov_base_vector;
- 
- 	sriov_base_vector = total_vectors - num_msix_needed;
-@@ -458,6 +458,7 @@ static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
-  */
- static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- {
-+	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	u16 num_msix_per_vf, num_txq, num_rxq, avail_qs;
- 	int msix_avail_per_vf, msix_avail_for_sriov;
- 	struct device *dev = ice_pf_to_dev(pf);
-@@ -470,7 +471,7 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 
- 	/* determine MSI-X resources per VF */
- 	msix_avail_for_sriov = pf->hw.func_caps.common_cap.num_msix_vectors -
--		pf->irq_tracker.num_entries;
-+		vectors_used;
- 	msix_avail_per_vf = msix_avail_for_sriov / num_vfs;
- 	if (msix_avail_per_vf >= ICE_NUM_VF_MSIX_MED) {
- 		num_msix_per_vf = ICE_NUM_VF_MSIX_MED;
--- 
-2.38.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Ck9uIDIwMjMtMDUtMDUgMDM6MzcsIEthbWlsIE1hemlhcnogd3JvdGU6Cj4gQ2hhbmdpbmcgdGhl
+IHdheSB3ZSBoYW5kbGUgcmVzZXRzIHNvIHRoYXQgdGhlIGNhbGxiYWNrIG9wZXJhdGluZyB1bmRl
+ciB0aGUgUlROTCBsb2NrIHdpbGwgd2FpdCBmb3IgdGhlIHJlc2V0IHRvCj4gZmluaXNoLCB0aGUg
+cnRubF9sb2NrIHNlbnNpdGl2ZSBmdW5jdGlvbnMgaW4gcmVzZXQgZmxvdyB3aWxsIHNjaGVkdWxl
+IHRoZSBuZXRkZXYgdXBkYXRlIGZvciBsYXRlci4KPiBUaGlzIHdpbGwgZWxpbWluYXRlIGNpcmN1
+bGFyIGRlcGVuZGVuY3kgd2l0aCB0aGUgY3JpdGljYWwgbG9jay4KPgo+IE1hcmNpbiBTenljaWsg
+KDQpOgo+ICAgIGlhdmY6IFdhaXQgZm9yIHJlc2V0IGluIGNhbGxiYWNrcyB3aGljaCB0cmlnZ2Vy
+IGl0Cj4gICAgaWF2ZjogRG9uJ3QgbG9jayBydG5sX2xvY2sgdHdpY2UgaW4gcmVzZXQKPiAgICBS
+ZXZlcnQgImlhdmY6IERldGFjaCBkZXZpY2UgZHVyaW5nIHJlc2V0IHRhc2siCj4gICAgUmV2ZXJ0
+ICJpYXZmOiBEbyBub3QgcmVzdGFydCBUeCBxdWV1ZXMgYWZ0ZXIgcmVzZXQgdGFzayBmYWlsdXJl
+Igo+Cj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmYuaCAgICAgICAgfCAg
+IDMgKwo+ICAgLi4uL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfZXRodG9vbC5jICAgIHwg
+IDMxICsrKy0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfbWFpbi5j
+ICAgfCAxMTIgKysrKysrKysrKysrKy0tLS0tCj4gICAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2lh
+dmYvaWF2Zl92aXJ0Y2hubC5jICAgfCAgIDEgKwo+ICAgNCBmaWxlcyBjaGFuZ2VkLCAxMDAgaW5z
+ZXJ0aW9ucygrKSwgNDcgZGVsZXRpb25zKC0pCj4KClRoaXMgc2VyaWVzIGlzIGdlbmVyYXRpbmcg
+dGhlIGZvbGxvd2luZyBlcnJvcnMgd2hlbiB0ZXN0ZWQgd2l0aCB0aGUgCnNjcmlwdCAocmVwcm8u
+c2gpIGZyb206CgpodHRwczovL2xvcmUua2VybmVsLm9yZy9uZXRkZXYvMjAyMzA1MDMwMzE1NDEu
+Mjc4NTUtMS1kaW5naHVpQHNhbmdmb3IuY29tLmNuLwoKClszMjU3MzkuODcxOTA1XSAtLS0tLS0t
+LS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0KWzMyNTczOS44NzE5MTFdIE5ldyBxdWV1ZXMg
+Y2FuJ3QgYmUgcmVnaXN0ZXJlZCBhZnRlciBkZXZpY2UgdW5yZWdpc3RyYXRpb24uClszMjU3Mzku
+ODcxOTYwXSBXQVJOSU5HOiBDUFU6IDYyIFBJRDogMzY3NjQgYXQgbmV0L2NvcmUvbmV0LXN5c2Zz
+LmM6MTcxNCAKbmV0ZGV2X3F1ZXVlX3VwZGF0ZV9rb2JqZWN0cysweDE1ZC8weDE3MApbMzI1NzM5
+Ljg3MTk4MV0gTW9kdWxlcyBsaW5rZWQgaW46IGlhdmYoT0UpIHRscyA4MDIxcSBnYXJwIG1ycCBz
+dHAgbGxjIAp2ZmlvX3BjaSB2ZmlvX3BjaV9jb3JlIHZmaW9faW9tbXVfdHlwZTEgdmZpbyBpb21t
+dWZkIHFydHIgcmZraWxsIHN1bnJwYyAKdmZhdCBmYXQgaW50ZWxfcmFwbF9tc3IgaW50ZWxfcmFw
+bF9jb21tb24gaW50ZWxfdW5jb3JlX2ZyZXF1ZW5jeSAKaW50ZWxfdW5jb3JlX2ZyZXF1ZW5jeV9j
+b21tb24gaXNzdF9pZl9jb21tb24gc2t4X2VkYWMgbmZpdCBsaWJudmRpbW0gCng4Nl9wa2dfdGVt
+cF90aGVybWFsIGludGVsX3Bvd2VyY2xhbXAgY29yZXRlbXAga3ZtX2ludGVsIGt2bSByYWlkMSAK
+aXJxYnlwYXNzIHJhcGwgaW50ZWxfY3N0YXRlIGlwbWlfc3NpZiBpVENPX3dkdCBpbnRlbF9wbWNf
+Ynh0IAppVENPX3ZlbmRvcl9zdXBwb3J0IGludGVsX3VuY29yZSBpYl91dmVyYnMgbWVpX21lIGFj
+cGlfaXBtaSBzZXMgaTJjX2k4MDEgCmliX2NvcmUgZW5jbG9zdXJlIGlvYXRkbWEgaXBtaV9zaSBt
+ZWkgam95ZGV2IGludGVsX3BjaF90aGVybWFsIGkyY19zbWJ1cyAKbHBjX2ljaCBkY2EgaXBtaV9k
+ZXZpbnRmIGlwbWlfbXNnaGFuZGxlciBhY3BpX3Bvd2VyX21ldGVyIGFjcGlfcGFkIGZ1c2UgCnpy
+YW0geGZzIGNyY3QxMGRpZl9wY2xtdWwgY3JjMzJfcGNsbXVsIGNyYzMyY19pbnRlbCBwb2x5dmFs
+X2NsbXVsbmkgaWNlIAptcHQzc2FzIHBvbHl2YWxfZ2VuZXJpYyBudm1lIGdoYXNoX2NsbXVsbmlf
+aW50ZWwgcmFpZF9jbGFzcyBzaGE1MTJfc3NzZTMgCm52bWVfY29yZSBzY3NpX3RyYW5zcG9ydF9z
+YXMgbnZtZV9jb21tb24gYXN0IGk0MGUoT0UpIHdtaQpbMzI1NzM5Ljg3MjE0M10gVW5sb2FkZWQg
+dGFpbnRlZCBtb2R1bGVzOiBpYXZmKE9FKToxIFtsYXN0IHVubG9hZGVkOiAKaWF2ZihPRSldClsz
+MjU3MzkuODcyMTU1XSBDUFU6IDYyIFBJRDogMzY3NjQgQ29tbToga3dvcmtlci82MjowIFRhaW50
+ZWQ6IApHwqDCoMKgwqDCoMKgwqDCoMKgwqAgT0XCoMKgwqDCoMKgIDYuMi44LTEwMC5mYzM2Lng4
+Nl82NCAjMQpbMzI1NzM5Ljg3MjE2Ml0gSGFyZHdhcmUgbmFtZTogSW50ZWwgQ29ycG9yYXRpb24g
+UzI2MDBXRlQvUzI2MDBXRlQsIEJJT1MgClNFNUM2MjAuODZCLjAyLjAxLjAwMTIuMDcwNzIwMjAw
+MjE4IDA3LzA3LzIwMjAKWzMyNTczOS44NzIxNjddIFdvcmtxdWV1ZTogZXZlbnRzIGlhdmZfZGVs
+YXllZF9zZXRfaW50ZXJydXB0X2NhcGFiaWxpdHkgCltpYXZmXQpbMzI1NzM5Ljg3MjIwM10gUklQ
+OiAwMDEwOm5ldGRldl9xdWV1ZV91cGRhdGVfa29iamVjdHMrMHgxNWQvMHgxNzAKWzMyNTczOS44
+NzIyMTRdIENvZGU6IDg5IDc0IDFmIDAwIDhkIDQ1IDAxIDM5IDQ0IDI0IDA0IDc0IDA3IDg5IGM1
+IGU5IDBjIApmZiBmZiBmZiA0NCA4YiA3NCAyNCAwNCBlOSA3MCBmZiBmZiBmZiA0OCBjNyBjNyBl
+MCA1OSA5NyA4OCBlOCBjMyAxNCAzZCAKZmYgPDBmPiAwYiBlOSBlMSBmZSBmZiBmZiA2NiA2NiAy
+ZSAwZiAxZiA4NCAwMCAwMCAwMCAwMCAwMCA5MCA5MCA5MCA5MApbMzI1NzM5Ljg3MjIxOV0gUlNQ
+OiAwMDE4OmZmZmZhYWJhNjVhNjNlMTAgRUZMQUdTOiAwMDAxMDI4NgpbMzI1NzM5Ljg3MjIyNV0g
+UkFYOiAwMDAwMDAwMDAwMDAwMDAwIFJCWDogZmZmZjg4ZGJiZGZlYzAwMCBSQ1g6IAowMDAwMDAw
+MDAwMDAwMDAwClszMjU3MzkuODcyMjMwXSBSRFg6IDAwMDAwMDAwMDAwMDAwMDIgUlNJOiBmZmZm
+ZmZmZjg4OGMxMzg2IFJESTogCjAwMDAwMDAwZmZmZmZmZmYKWzMyNTczOS44NzIyMzVdIFJCUDog
+MDAwMDAwMDAwMDAwMDAwMSBSMDg6IDAwMDAwMDAwMDAwMDAwMDAgUjA5OiAKZmZmZmFhYmE2NWE2
+M2NhMApbMzI1NzM5Ljg3MjIzOF0gUjEwOiAwMDAwMDAwMDAwMDAwMDAzIFIxMTogZmZmZjg5M2Fi
+ZmYyMTRhOCBSMTI6IApmZmZmODkzOWZmZGI3OTAwClszMjU3MzkuODcyMjQyXSBSMTM6IGZmZmY4
+OGRiYmRmZWMwMDAgUjE0OiAwMDAwMDAwMDAwMDAwMDAwIFIxNTogCmZmZmY4OGRiYmRmZWNhMTAK
+WzMyNTczOS44NzIyNDZdIEZTOsKgIDAwMDAwMDAwMDAwMDAwMDAoMDAwMCkgR1M6ZmZmZjg5Mzlm
+ZmQ4MDAwMCgwMDAwKSAKa25sR1M6MDAwMDAwMDAwMDAwMDAwMApbMzI1NzM5Ljg3MjI1MV0gQ1M6
+wqAgMDAxMCBEUzogMDAwMCBFUzogMDAwMCBDUjA6IDAwMDAwMDAwODAwNTAwMzMKWzMyNTczOS44
+NzIyNTddIENSMjogMDAwMDU1YjZlNjQxMDBjOCBDUjM6IDAwMDAwMDIxZDkwMTAwMDMgQ1I0OiAK
+MDAwMDAwMDAwMDc3MDZlMApbMzI1NzM5Ljg3MjI2Ml0gUEtSVTogNTU1NTU1NTQKWzMyNTczOS44
+NzIyNjVdIENhbGwgVHJhY2U6ClszMjU3MzkuODcyMjY5XcKgIDxUQVNLPgpbMzI1NzM5Ljg3MjI3
+Nl3CoCBuZXRpZl9zZXRfcmVhbF9udW1fdHhfcXVldWVzKzB4NmQvMHgxZjAKWzMyNTczOS44NzIy
+ODldwqAgaWF2Zl9kZWxheWVkX3NldF9pbnRlcnJ1cHRfY2FwYWJpbGl0eSsweDMxLzB4NDAgW2lh
+dmZdClszMjU3MzkuODcyMzE5XcKgIHByb2Nlc3Nfb25lX3dvcmsrMHgxYzUvMHgzYzAKWzMyNTcz
+OS44NzIzMzFdwqAgd29ya2VyX3RocmVhZCsweDRkLzB4MzgwClszMjU3MzkuODcyMzM2XcKgID8g
+X3Jhd19zcGluX2xvY2tfaXJxc2F2ZSsweDIzLzB4NTAKWzMyNTczOS44NzIzNDddwqAgPyBfX3Bm
+eF93b3JrZXJfdGhyZWFkKzB4MTAvMHgxMApbMzI1NzM5Ljg3MjM1Ml3CoCBrdGhyZWFkKzB4ZTYv
+MHgxMTAKWzMyNTczOS44NzIzNjBdwqAgPyBfX3BmeF9rdGhyZWFkKzB4MTAvMHgxMApbMzI1NzM5
+Ljg3MjM2OV3CoCByZXRfZnJvbV9mb3JrKzB4MjkvMHg1MApbMzI1NzM5Ljg3MjM4N13CoCA8L1RB
+U0s+ClszMjU3MzkuODcyMzg5XSAtLS1bIGVuZCB0cmFjZSAwMDAwMDAwMDAwMDAwMDAwIF0tLS0K
+WzMyNTczOS44NzIzOTddIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQoKClRo
+ZXJlIGFyZSBvdGhlciB3YXJuaW5ncyBhbmQgZXJyb3JzIGJ1dCB0aGV5IHNlZW0gY29uc2VxdWVu
+Y2VzIG9mIHRoZSAKYWJvdmUuIEkgdGhpbmsgeW91IG5lZWQgdG8gcHV0IHNvbWUgc3RhdGUgY2hl
+Y2tzIG9yIGd1YXJkcyBpbiAKaWF2Zl9kZWxheWVkX3NldF9pbnRlcnJ1cHRfY2FwYWJpbGl0eSgp
+IHRvIG1ha2Ugc3VyZSBzZXR0aW5nIHJlYWxfbnVtIG9mIApxdWV1ZXMgaXMgc3RpbGwgdmFsaWQu
+CgoKVGhhbmtzLAoKQWhtZWQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9z
+dW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwt
+d2lyZWQtbGFuCg==
