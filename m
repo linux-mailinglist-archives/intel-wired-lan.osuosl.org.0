@@ -1,99 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAB776F939F
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  6 May 2023 20:33:46 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12C346F9EB3
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 May 2023 06:36:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 98829817A3;
-	Sat,  6 May 2023 18:33:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 98829817A3
+	by smtp2.osuosl.org (Postfix) with ESMTP id 414DF4039D;
+	Mon,  8 May 2023 04:36:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 414DF4039D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683398024;
-	bh=7+82mxjkXUzeNn4Jvw3gKS3Xre+hrXbINNosOUVhMrs=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1683520601;
+	bh=zq0635leWdlJ6iVZQTEHZNoBGqrtk/NXzwXXwuZV2NU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZPOGErZEoz6p5HTnbVLodjv+QvcCsM0Tjtqw35e/SqiGcCy1Q3VLNmYmACVgfUOAz
-	 T7S05Zv+QYpvW5s9J3ASYsnOxeiQ+xPevO5vccWqpka5waByTAGjb5VJaqf4mL9toA
-	 L5esryU3lNveZERgdPuxOvHmkfo42Jc8MI6QICQ2pYptl9Ge+QoXLycCHi55GEw9ah
-	 /0MtwTPFSagETWRKFeiRVD2vDIDa0SkhKsrPZi6Ig46gmeQ/95GTCi866VweTBJzrT
-	 dpokik1y9bjYWRhOSEmZ0hBuy1+G1Jrfs8DhmORj7254o72lIRSXu16GHGoQkePBu8
-	 Amc/pxV3JxOjA==
+	b=UEvkWSs+J56RSTaI5MZSgNcC3gsdiNMMg1AeL9XBhKn0N2r03tojMlzirhq4iyx7U
+	 GRUmAngRVAZcp+nCU6h8Z/3I9Drhx5pneCmbB3QYtuZwXjQKjxrGe7149ASpV9U9zD
+	 iq5WPguG6wO5xtnNvNtzP975kn+pp6LmWZapDmlBX+XH+VxkEdlKyxCt4B6/Q4+Ks/
+	 lnxWt/qaXc3L9tZH8ML5zg2XdzH3Cgzo4Y7qJ7LXmbtepqN298PrclNLxBYokzm8Xx
+	 bvK+F16x53gNqfkbZ+dwHPXNo0lOkC8CcgNNIar8+icp/xdbqKPAxsCqOhlv2eWraQ
+	 iDVnrlkuKkcUA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VxzM9CmdDYmH; Sat,  6 May 2023 18:33:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ivtfzHTYqbaO; Mon,  8 May 2023 04:36:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6F85C81A73;
-	Sat,  6 May 2023 18:33:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F85C81A73
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2EBBB4028D;
+	Mon,  8 May 2023 04:36:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2EBBB4028D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F33901BF365
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 May 2023 18:33:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 24E0F1BF282
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 04:36:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D873D81221
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 May 2023 18:33:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D873D81221
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0739A4028D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 04:36:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0739A4028D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FauUS4FhQsUA for <intel-wired-lan@lists.osuosl.org>;
- Sat,  6 May 2023 18:33:36 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6544E80FB7
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com
- [IPv6:2a00:1450:4864:20::636])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6544E80FB7
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 May 2023 18:33:36 +0000 (UTC)
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-95369921f8eso486217266b.0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 06 May 2023 11:33:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683398014; x=1685990014;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DBvBtsXFrMCKf+Mdtn1KdnKIvrTdrW9+mryJI8A0yl8=;
- b=Hm5dRcMprF/J1W48O4Cq8wcxZsZ0AhoL7dRn2AfwvGjYp43YOuUjHi6+MLRRFvBEm2
- 1kStwcOfaFfz+a1tIxKoVEN8wP7Ft7nVu+xP5fDEfZpPDblGkXVzHcQrJsHuq1e/ckMn
- j7HBaPPKTNuYIyKcCPfa4qyNc1GxrxWyk91K13NIIbipUpcwERGVJPWaO8g6thuFK0pv
- 9ecrl803VFT0BLI8YplJr8Bi0NkswHfKIv/+6NeaOEX7w2hdj0m4A8hgIyu/PFRKIpJ+
- b5piLw70U3pg7C4ZyAu0oVbIirFl802UEiPyTYcWkpuWN6t4USLo4dldx8ulktNPjSFa
- 9eMA==
-X-Gm-Message-State: AC+VfDy0nPX7uySJLgwud57SGbaCMcACAlc3bdTzqpHJTfUiVHVZtCwE
- jmlSleNZaL8OCrNQgzx02/7SfKMhXHkVXy7jRSE=
-X-Google-Smtp-Source: ACHHUZ7slS6zaSUTrHPDGpdVMvK9f0a767Pao5+aX0kfTWX8TWJlYTmsLUmIEc8b8JalO20pCkiPNdpswcsOasHfdUk=
-X-Received: by 2002:a17:906:da8e:b0:94f:7c4e:24ea with SMTP id
- xh14-20020a170906da8e00b0094f7c4e24eamr3945599ejb.38.1683398013855; Sat, 06
- May 2023 11:33:33 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GFNp34SrnKTG for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 May 2023 04:36:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3BF2240120
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3BF2240120
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 May 2023 04:36:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="377645807"
+X-IronPort-AV: E=Sophos;i="5.99,258,1677571200"; d="scan'208";a="377645807"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2023 21:36:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="842563929"
+X-IronPort-AV: E=Sophos;i="5.99,258,1677571200"; d="scan'208";a="842563929"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.1.151])
+ ([10.13.1.151])
+ by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2023 21:36:11 -0700
+Message-ID: <eee412d0-711f-dee9-3785-0db9847a4755@linux.intel.com>
+Date: Mon, 8 May 2023 07:36:09 +0300
 MIME-Version: 1.0
-References: <CAA85sZvQV2_aTP=2_TZQOMm0cMfxp+NdLx2_yf_qzB=dUKFuwg@mail.gmail.com>
- <20230505142144.46622-1-piotrx.skajewski@intel.com>
- <CAA85sZsMdK6xWjf7JdujOhdXjKaLvSjbTjiGRw7n_Y+7afe5Vw@mail.gmail.com>
- <CAA85sZsZMFMCLtL_70AMXvVsQ+jNze0C=sNmZfwNdwUhTp_kxw@mail.gmail.com>
-In-Reply-To: <CAA85sZsZMFMCLtL_70AMXvVsQ+jNze0C=sNmZfwNdwUhTp_kxw@mail.gmail.com>
-From: Jesse Brandeburg <jesse.brandeburg@gmail.com>
-Date: Sat, 6 May 2023 11:33:22 -0700
-Message-ID: <CAEuXFEzznsMofUJNLvRQKugDs+EpY1eEKkdykM5_O=9wkgBKPw@mail.gmail.com>
-To: Ian Kumlien <ian.kumlien@gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683398014; x=1685990014;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=DBvBtsXFrMCKf+Mdtn1KdnKIvrTdrW9+mryJI8A0yl8=;
- b=QinfytY5egBdKb038DGhuWJbgWT0mHK8EkNDQxN9rgV3H0fOkJBhNgmesAMnPloGNz
- g4x1F7dqHlk42Jq/7720dpiLlC/8fRkHMWOfyCRdiozl6LlgG/73ROCOQkd0fY8iahK2
- nIVPDW9ggsYcXYODwnOa01bKIiBYLtVFFYAkvQsP3doRIpwXU4Mz+OMHkUcsqMh4cozS
- 6XsjdbCddhT/KFtNUvZ5py8Z6Zq5n4860Ay4Xw+Mzltol8G8l3bXDrOHOahKtcrcbDNM
- 3iaaT7lGZJ270cupDGDST5cY+WMV/TXA+wTOT/pcbD2RiQ00Poz6cB1B3SV6PDpi+wNm
- NcLw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=QinfytY5
-Subject: Re: [Intel-wired-lan] [ixgbe] regression: jumbo frames not working
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Content-Language: en-US
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20230417221839.292728-1-vinicius.gomes@intel.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20230417221839.292728-1-vinicius.gomes@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1683520594; x=1715056594;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=5sdXVhaNzPwex0LBSgoZ0O7lJqYBMuEUO/A+83a9uBQ=;
+ b=MHOUaln45YbUNkX2UN6ED0pYhBBJgdBoaV+kJmD/4xz24/rVfhEW3+KV
+ ikYiCKV+SGv7EjILOFJmUgurYYP208FZRpnOP7MnLClPwEGiqjGfCjeKr
+ PJahYUf57cKhtxbDyveUmDVYYrECzHsiAEObhlVOhmZmRrDXWyJ+5v9zc
+ NBNs2nI7vqmSQWmOlOWrtOba/3EBcIKyjD4/XUcFncmQgZ6HiiWjyPUNo
+ I9Ti5BuNSO/i24Q4fmUIMpSTdb1+fJ6MdpGx/3i4NGT5x9EjMu5Y1uRMf
+ fKRlosQXsRMXKJopb8XTSvlUN7UiKcvck5kECXYs/oD3EDrXPauHRvEZ1
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=MHOUaln4
+Subject: Re: [Intel-wired-lan] [PATCH net-queue v1] igc: Fix possible system
+ crash when loading module
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,75 +100,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- Piotr Skajewski <piotrx.skajewski@intel.com>, jesse.brandeburg@intel.com
-Content-Type: multipart/mixed; boundary="===============5446031601732367425=="
+Cc: anthony.l.nguyen@intel.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============5446031601732367425==
-Content-Type: multipart/alternative; boundary="000000000000a1af8205fb0aa4e4"
+On 4/18/2023 01:18, Vinicius Costa Gomes wrote:
+> Guarantee that when probe() is run again, PTM and PCI busmaster will be
+> in the same state as it was if the driver was never loaded.
+> 
+> Avoid an i225/i226 hardware issue that PTM requests can be made even
+> though PCI bus mastering is not enabled. These unexpected PTM requests
+> can crash some systems.
+> 
+> So, "force" disable PTM and busmastering before removing the driver,
+> so they can be renabled in the right order during probe(). This is
+> more like a workaround and should be applicable for i225 and i226, in
+> any platform.
+> 
+> Fixes: 1b5d73fb8624 ("igc: Enable PCIe PTM")
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+>   1 file changed, 3 insertions(+)
 
---000000000000a1af8205fb0aa4e4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, May 5, 2023 at 1:28 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
-
-> As a side note, I don't understand how the switch booted with jumbo
-> frames off - the config stated that they should be on....
-> So, some kind of failover... sorry for the noise..
->
-> On Fri, May 5, 2023 at 7:50=E2=80=AFPM Ian Kumlien <ian.kumlien@gmail.com=
-> wrote:
-> >
-> > Sorry... It seems like my cisco switch booted with jumbo-frames
-> > disabled after a power outage...
-> > The conf says it should be enabled - but somehow it wasn't :/
-
-
-
-Thanks for letting us know!
-#regzbot resolve: not a regression. The reporter found the cause to be a
-network config issue after a power outage.
-
---000000000000a1af8205fb0aa4e4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Fri, May 5, 2023 at 1:28 PM Ian Kumlien &lt;<a href=3D"m=
-ailto:ian.kumlien@gmail.com">ian.kumlien@gmail.com</a>&gt; wrote:<br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">As a side note, I don&#39;t understand how t=
-he switch booted with jumbo<br>
-frames off - the config stated that they should be on....<br>
-So, some kind of failover... sorry for the noise..<br>
-<br>
-On Fri, May 5, 2023 at 7:50=E2=80=AFPM Ian Kumlien &lt;<a href=3D"mailto:ia=
-n.kumlien@gmail.com" target=3D"_blank">ian.kumlien@gmail.com</a>&gt; wrote:=
-<br>
-&gt;<br>
-&gt; Sorry... It seems like my cisco switch booted with jumbo-frames<br>
-&gt; disabled after a power outage...<br>
-&gt; The conf says it should be enabled - but somehow it wasn&#39;t :/</blo=
-ckquote><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D=
-"auto">Thanks for letting us know!</div><div dir=3D"auto">#regzbot resolve:=
- not a regression. The reporter found the cause to be a network config issu=
-e after a power outage.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"=
-auto"><br></div></div></div>
-
---000000000000a1af8205fb0aa4e4--
-
---===============5446031601732367425==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============5446031601732367425==--
