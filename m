@@ -1,186 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E92746FC716
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 May 2023 14:52:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 727896FC817
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 May 2023 15:39:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C0F7615D3;
-	Tue,  9 May 2023 12:52:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C0F7615D3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0EC57845FC;
+	Tue,  9 May 2023 13:39:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0EC57845FC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683636757;
-	bh=D7P1/708GDo31aqpBcVgExY+ORMDow0rGGaoVzWrPHU=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1683639597;
+	bh=1aBdvhzBUHYqG2T0hMd4sBR8u9eNaIvsyMtJaJuLmTs=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=r3Tfj279PBZgJODxjK8cL8ef3a3FjrSznBKfAcwxIgnDnT4plhZosw45V2+LROjSn
-	 jN2FmmHVWyh7lYV0Bq6bJ0Bw7WlHtamx+BqFXu5mm2ps45xYd8FgaIMYtnS33UW1Un
-	 tzsYyNQKwIMON8u09aZxnvCifUus5uaHtBo9k8JizXSTVlrxDlqsLyWwFaUmJtqlBY
-	 F47qSDl+OZQqDPtjjv68yX7w1yqVZiebLXpK+LWJlE4pwwOgNRmwlnJkdqnMH7e+fH
-	 6d0dM8EwW9D/4G9cKmuzKQtOLxQjoFWAXkOS/HiD2J843Z8rqsYwOO2i+UcD+BKoUX
-	 fRYDlB+dyw8ig==
+	b=RPlG8W9mCfCFfQ/YsD3O57Xk+Dhe419Ou0g53eHInxJ/eAw+222aU+CWS+ElLABxu
+	 b0uetoOE9Y15mHN6OzFd/aKE518qsSxFgOl9h8D2QFqKHV6iqphD+W2Iz5RwfmRgb4
+	 bMwK5RlK3fkEliYEGfDRZMThcXWtV4yFcQ48428BgyXUwCPQ3ue/qehCag+TecQuDW
+	 cpS4WcoOVlHFzj7vSxb8iTebm/CfahWpk1y9bvJRTbEn/0r6Ar21UMHx8cRALeaqFD
+	 XEI1lLAdfrU2ueo2AXVRMRBSmOyxvn7VRu4fDkWXsaYFlf0G6YLsgbfbRBnX3fetM/
+	 TXJbN8agudJ1w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 77WY6tz1AWrB; Tue,  9 May 2023 12:52:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Wv338vjM_qbh; Tue,  9 May 2023 13:39:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5A5C0615D1;
-	Tue,  9 May 2023 12:52:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5A5C0615D1
+	by smtp1.osuosl.org (Postfix) with ESMTP id 922E683F76;
+	Tue,  9 May 2023 13:39:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 922E683F76
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4262B1BF300
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 12:52:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B3FD91BF867
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 13:39:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 12ED541F95
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 12:52:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12ED541F95
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8B5EB408DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 13:39:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8B5EB408DD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 431Ah1H7jveh for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 May 2023 12:52:31 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FRn1R1Qcyw0b for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 May 2023 13:39:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC11641EE1
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BC11641EE1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 12:52:30 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10705"; a="352084797"
-X-IronPort-AV: E=Sophos;i="5.99,262,1677571200"; d="scan'208";a="352084797"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 May 2023 05:52:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10705"; a="731701237"
-X-IronPort-AV: E=Sophos;i="5.99,262,1677571200"; d="scan'208";a="731701237"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga001.jf.intel.com with ESMTP; 09 May 2023 05:52:29 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 9 May 2023 05:52:29 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Tue, 9 May 2023 05:52:29 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Tue, 9 May 2023 05:52:29 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=E14PqoKbj2376XHj084+hS3xonnCLuKRSZjfoSpd86O1cp/mHvQDgzuAvZ+I7TkuvaFo5V4U229uwNGbdS9Et4xFOlEhrvqaFupDi5lCCERF/VKZKiLd7NzkU0xJ+PA/YlpQ1ZVvyxfNUzqhCZMmqtmwYHO8kiPGgaCTeYz16D2/ZThiyG6X18pawLJls8XgW58gXR+MVwxGtgpWeKovN/744R/G+2LF5UEvhuJqoJdwHBGWEJMVpzEMsmUfiueVDqr0rGvEYS0bab8yipa77kyoz/lreECjF5wBPlbUY36ajSXnLnZSm+W2nnD/8g+AWsnBaxtRshuP5ukwVMJLSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DXKts2WDmWK7TLoCAyUcL0H51f8li4C1Pwh5eg2nflI=;
- b=ElhrFzKXo+aYOcZYQF6rqBmIICGhNEVrkgij+80AP5k6oApCz30aO0HA+hM08lquJNY5E1nnEUEldJ5gOdn7NV25DF4dqhPJuCTEv9UMhM604Z0AxXUSuS56IRZZ5gFiwcSWE6M4SH/08SoW2pXbgK0swGep4mwuPvqx2IyIYBredQBYQX5TqJUjNjHVdVgejyLNGCeNt+AGT1IifCTmiv39h26QzOXEuW9y7RkWtVb3VRgawYfGaqubEVnjmIxc6urZiIkAcgcLHTXkoKg7CSgjIDXNaD72TsJ0SRP2GxHmhoEmTUhzFxKtKgn7sfBi2lTy5hbsY7H1y67A/ldBrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by MN6PR11MB8146.namprd11.prod.outlook.com (2603:10b6:208:470::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.31; Tue, 9 May
- 2023 12:52:27 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::936d:24c4:86d0:f2a0]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::936d:24c4:86d0:f2a0%7]) with mapi id 15.20.6363.033; Tue, 9 May 2023
- 12:52:27 +0000
-From: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-To: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>
-Thread-Topic: [PATCH net-next 12/12] ice: Ethtool fdb_cnt stats
-Thread-Index: AQHZdG8WCYLx8cHVKkiG6WmgfOmwA69R6TFw
-Date: Tue, 9 May 2023 12:52:26 +0000
-Message-ID: <MW4PR11MB5776E4EFEA7FDE7E52C79E1EFD769@MW4PR11MB5776.namprd11.prod.outlook.com>
-References: <20230417093412.12161-1-wojciech.drewek@intel.com>
- <20230417093412.12161-13-wojciech.drewek@intel.com>
- <6f23fe3c-c23e-7a37-f22b-21a59281715c@intel.com>
-In-Reply-To: <6f23fe3c-c23e-7a37-f22b-21a59281715c@intel.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB5776:EE_|MN6PR11MB8146:EE_
-x-ms-office365-filtering-correlation-id: b3f9a6d4-0d9a-424e-eea7-08db508c3e0e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: KPFXg1DUlLD/4JXy00QUUnaH3qbRn1Iczg091x+2OCcpGswASE/n0vzVd9vkIEzOV6ZZMIh49UdYls/is+6MwlgtBbmLcTDnwA7YsUVhkwgcrFBz9NnvXLq185bgL5mlxMC5u8aca/Pj3yit48ZFCov1RCeIKKGgG/2cq8y0SGhcpjEa2arry6cVib3GV0bx7M2ZEfIOgsMNOWatGV/NueCOp/R+O7jfEJFaIF1U1oyzpXKcdDp36I/o7Z8kBnBvrJBrEIK1c5m1I3z74iQcJPuXUcQ6n7vDLMmN58ZtSiXo2Du5Xpm30S58HV2NTx0VxjHE6zriCjGzV/zFMV7pjAElFOUlzCec5PsPrMBoznl5E5wOcWCdLg2VyCKAXQ7kVm8WiBdQaDRaQocreypNLS9ZN/WvbyLpowrB4+/hiwU03LoVSya9WOe47n3yGzTrqr4JRknMdSCbKxIMNOSyEh+sSTGhf8M+JY6MkesiD7aM9LAyhBoIWVmxVHGepYMXqBIir5oqNKDcO4a06hZ++ntRs8szSt2CvSIUHn6oVE4hjM9nY0WUg5wdl783ROU4VAfwC02x7VlO3KmPb8aSXyGVUXeztUHrS6rG8UIom0PFoww3MQi3FJyG8kImBBBO
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(376002)(366004)(39860400002)(346002)(136003)(451199021)(26005)(6506007)(53546011)(9686003)(83380400001)(66574015)(38100700002)(55016003)(33656002)(122000001)(86362001)(38070700005)(82960400001)(186003)(7696005)(71200400001)(54906003)(41300700001)(6862004)(8676002)(316002)(8936002)(52536014)(478600001)(76116006)(4326008)(6636002)(66446008)(66556008)(66946007)(66476007)(5660300002)(64756008)(2906002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?T1FGNUJ1bE9Ka2FPSSsrWFhxc0pWQjJ5Njd6L2JZeEREdDNyL3AyRDJEcXl6?=
- =?utf-8?B?c0JBNkhmcVA4cE1nWU5tdFpVODdZdjdpd0VXTVEzblgrSDg4TytYMXpnWkxW?=
- =?utf-8?B?QWtReSs0akt0Tkc1SjVpNEJ6UG9EQ2JjcnBOamovM2MrZFpoODUwRVFySzgz?=
- =?utf-8?B?K01SU3ZGVlVDc2dPUllxYWJxNWNqTTFoczhHdzRDZG4rYzJBQ0FNQ25QMVB3?=
- =?utf-8?B?YTY1ZHBYQzB1YzV4NFpEdU4rMDd4UVdrVDhkQ0NBeCtiVnVZaG9nSVVvdExL?=
- =?utf-8?B?ZHora1h5dGEyYVIwTzlIbFZwTFpHelU4b2Jnd1hHb0x1N0xrbmVlRzZSTFk5?=
- =?utf-8?B?WTA2ZkRrSzNoeWRjZjFYNzdsZzlXZVU5VlZ0QmxUZ3FmY3hQWWMwL041alov?=
- =?utf-8?B?MDI0VjJ3RjBKZFlHbjhDZEovQU50OTFiMWRaQ3V5K3JlcTY5Uy9VOC9XNkh3?=
- =?utf-8?B?WUY4UXR1dWh1T3hTTnl6bFZVRlp4SlJ3Z0Vnc0s3blVrcTNKMWpnUWdPUk85?=
- =?utf-8?B?VVRQLzBzaEVGdzEzdURqY2cvVGx5bWZGWWFXZjZHWDlXaEhOVG9TZWdQbzZ2?=
- =?utf-8?B?OVBVVlNYSksvV01jaEVibXVBUUVzV014c1RrWW9WUlpCVVk5RjlPaHNGblhk?=
- =?utf-8?B?OU41OTlkQ3FleElZajYzUFlaVVMzN29pWGJEaXB2OW53NUdrK3FjUlVLSzNJ?=
- =?utf-8?B?R3hWUm91MXlaZVd4Tkc3TkNNRm90bnVmMHhNTlRKQjEzbnI3clYrTUVnVGpN?=
- =?utf-8?B?RnFqa2hqQktwc1Y1eEhBb2sxaVZmNnNJYW5kdzIydmY0SDJvVEkrRmkvRXhw?=
- =?utf-8?B?UzJuMUdpMXo3S3JsZXRnbnJPcmgrOWFNVDB0QTRvK2pVK3JrbFFOVTNHNHBV?=
- =?utf-8?B?ZFBOZnBzcStwdWRRdVlOQVZNNWM2VU1YZU5jdVptOEZLWFFwelBIaUhWeWxj?=
- =?utf-8?B?L2xYWmNnQVhLU0dReGQvM0JpeHQ0TmIrUUNYVVJBTExaVzVKcnZFcStyV3B3?=
- =?utf-8?B?YlVjUWVtUWJIOTVKNDBqM1JRYmFPb29adk8zVUtRZ2hxS0xnRjlnQzZsRWRl?=
- =?utf-8?B?YlpXT1BvNDl1eWJWaUllcFlPRmwzRTg3VFdQbjNQK0ZUdXhwbEY2RmdYMWJN?=
- =?utf-8?B?c21RSE1KVEJyYWs0Q01GMVJhcXdjQTU0cFkyV1JwbEpFd3RWVFZDWGJFSmJt?=
- =?utf-8?B?Nmh3em5DTWNtNU8wdXlZck03b3hTVDIxSGx3RE5oL0VKOUJzUHFOT3VsU3pa?=
- =?utf-8?B?TW0vdEdGKzdERiswNG1hbWhtbEpwOStFYVNUZ0tYbjhzQTMrUFBXWER0VndX?=
- =?utf-8?B?elExUnludjdQNmFsZktmSWFsSkRVWWZvNTV5WC91dzh4SnJ1Q2F6RG1GdmM1?=
- =?utf-8?B?d0JlajRQd25IRlU5R0tWZVpnWG4xMWZ5OFVSVzczVXZMN3k4dU96eUtaMmZ6?=
- =?utf-8?B?ZVZJbXY4WTZnYWsvcDZtR1hWSURDOFY5bnpBMFkxUHcvMmdyYWV4eDB1bUlj?=
- =?utf-8?B?amd5YmQrWGJRYk5KaVR1VWFpMjNmb0tkQXl5Q3lnbTh2YlY3ekdmQy8wWE81?=
- =?utf-8?B?THFPRjFHVWlOd3p2MkZscHd3MnUrZ01lS2dvcWdqbTcvWHFrTUpzQzJjcDFW?=
- =?utf-8?B?UkNBQTZoaEc3SWcwMDRQS0RJQ1NFRGtwTGVIRFJyenVxdEtQcUwrUHIxdWxD?=
- =?utf-8?B?dFdOSmtMbVkxNzdpcTVTUHQrZnRnSjJ3M1VwUHhJSHR4TVNiZGNTMG05MlFC?=
- =?utf-8?B?ZVdCOFo4S3dJeUpNaTdDNGZpSjFrRmdmYVZZaGorVkhxSEYvVFR6M3BrZU4x?=
- =?utf-8?B?YlhVQ1hETUE0TVpwZ1VVYWxHRENPQ2FCMGsvaWtxY2gza0hGV0x2WTdLd3Rw?=
- =?utf-8?B?MG9rYkdnOE5jTVhvbEt6SnRUMWVvWXVHaFl5YU5ZSmRlV3YrUCtwSkZIeHl3?=
- =?utf-8?B?ZXVheWZlT1VZa2RGbkxUMmtDamkvYkUxQ0dmZ0kwb3dDMXBoQ1I1TFp1WmI3?=
- =?utf-8?B?M3o0ZUl3azFNNnpsenM0MUxkeFpjeEZuRHZXMnBnbnkrY3RzSGlwUndCVTlq?=
- =?utf-8?B?SnIyUUlobkRkYjlReXJqUWlEa2R2RE83T1MxbVZtL0ZWcDRNbmVqZ2ZkSUJx?=
- =?utf-8?Q?07NOvyFpw7hrLvCsABKxks3Lt?=
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A9098403EA
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A9098403EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 May 2023 13:39:49 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 95A5762A62;
+ Tue,  9 May 2023 13:39:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B726C4339B;
+ Tue,  9 May 2023 13:39:47 +0000 (UTC)
+Date: Tue, 9 May 2023 16:39:43 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Ding Hui <dinghui@sangfor.com.cn>
+Message-ID: <20230509133943.GK38143@unreal>
+References: <20230509111148.4608-1-dinghui@sangfor.com.cn>
+ <20230509111148.4608-3-dinghui@sangfor.com.cn>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b3f9a6d4-0d9a-424e-eea7-08db508c3e0e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2023 12:52:26.9538 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: q6hDLRMsgYTQd1Ha/uUDI26O46uHONY13MYwuLSUnqr9dIzHisHfnBl7CY278AVMA/WiFDnESfyJKnd3JkPsquchjF3boYWml8/+tx+d9hw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR11MB8146
-X-OriginatorOrg: intel.com
+Content-Disposition: inline
+In-Reply-To: <20230509111148.4608-3-dinghui@sangfor.com.cn>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683636750; x=1715172750;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=DXKts2WDmWK7TLoCAyUcL0H51f8li4C1Pwh5eg2nflI=;
- b=Ga6F4/8H2nvlZlvwgrfeFWpX2XWZTbpSCn2m3vQ45eCW11+h7Ckvo+N2
- aLXi6GDCSOeflshcNqslx3k7bdzQsOjLAkij0qL/WR8TwGkspG3WbLvMQ
- Lmhj2bp2lxYWWsFUtOFpG7D4SQ/N80vD1yMhwQEJcpb/ge7vJdwXR5Iqj
- R5LauKz5nEZCXJEQHWlb0MpYRzt5hmVybcJajMSKZECQhY9nu98y0k8ax
- L1SuFI5oWp+0IPJVQM8K0HTVDrQ/plyaSAyTWEV4w9KYs/0M1mHwyi67f
- 6TQWQUoWSpLOqgdi1B2RdmSp71sg9PVYnAirDQ8A7c7/WSnvQPuMEu24j
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Ga6F4/8H
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 12/12] ice: Ethtool fdb_cnt
- stats
+ d=kernel.org; s=k20201202; t=1683639587;
+ bh=vuwKSVknmbqrbSroyB/54JqQoWpBs///jXngNNDqRuY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QA5oKE+Z+aELa/glXqJhtH5uzmN/AqM5H7msLD6hdOgsJQIA1f7f6uxykW/pxyCDO
+ eMmp/J6U3ACotT4HSFZ9CbfZ1KwxmM36rrjv3iZUK/BEcXk+lsDJA7AWini0s5/aFX
+ MZgxfE+XqTs7GMYW/DDbwXh2i9vY1TC0/Kte4hHir8ExWbnnTjiTz1ioeQFUmYaJAY
+ 32mmzCLcK8CpUrBkzKF7UsjrkenClG9NaeTjQmGw/+yzO/dd3v6IyFBJVkt198NiXM
+ /U2tz6Tn7zrSZA1pW3d7P27XJFHo0Dw2th5sZRML0HEbLFwGeb47lzkt0ZGXukdbnP
+ yHVv7keI8W1Rw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=QA5oKE+Z
+Subject: Re: [Intel-wired-lan] [PATCH net v5 2/2] iavf: Fix out-of-bounds
+ when setting channels on remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -193,55 +90,170 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: pengdonglin@sangfor.com.cn, keescook@chromium.org, gregory.v.rose@intel.com,
+ anthony.l.nguyen@intel.com, mitch.a.williams@intel.com,
+ jesse.brandeburg@intel.com, huangcun@sangfor.com.cn,
+ linux-kernel@vger.kernel.org, grzegorzx.szczurek@intel.com,
+ edumazet@google.com, michal.kubiak@intel.com, intel-wired-lan@lists.osuosl.org,
+ jeffrey.t.kirsher@intel.com, simon.horman@corigine.com, kuba@kernel.org,
+ netdev@vger.kernel.org, pabeni@redhat.com, davem@davemloft.net,
+ linux-hardening@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTG9iYWtpbiwgQWxla3Nh
-bmRlciA8YWxla3NhbmRlci5sb2Jha2luQGludGVsLmNvbT4NCj4gU2VudDogcGnEhXRlaywgMjEg
-a3dpZXRuaWEgMjAyMyAxODozMw0KPiBUbzogRHJld2VrLCBXb2pjaWVjaCA8d29qY2llY2guZHJl
-d2VrQGludGVsLmNvbT4NCj4gQ2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3JnOyBu
-ZXRkZXZAdmdlci5rZXJuZWwub3JnOyBFcnRtYW4sIERhdmlkIE0gPGRhdmlkLm0uZXJ0bWFuQGlu
-dGVsLmNvbT47DQo+IG1pY2hhbC5zd2lhdGtvd3NraUBsaW51eC5pbnRlbC5jb207IG1hcmNpbi5z
-enljaWtAbGludXguaW50ZWwuY29tOyBDaG1pZWxld3NraSwgUGF3ZWwgPHBhd2VsLmNobWllbGV3
-c2tpQGludGVsLmNvbT47DQo+IFNhbXVkcmFsYSwgU3JpZGhhciA8c3JpZGhhci5zYW11ZHJhbGFA
-aW50ZWwuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIG5ldC1uZXh0IDEyLzEyXSBpY2U6IEV0
-aHRvb2wgZmRiX2NudCBzdGF0cw0KPiANCj4gRnJvbTogV29qY2llY2ggRHJld2VrIDx3b2pjaWVj
-aC5kcmV3ZWtAaW50ZWwuY29tPg0KPiBEYXRlOiBNb24sIDE3IEFwciAyMDIzIDExOjM0OjEyICsw
-MjAwDQo+IA0KPiA+IEludHJvZHVjZSBuZXcgZXRodG9vbCBzdGF0aXN0aWMgd2hpY2ggaXMgJ2Zk
-Yl9jbnQnLiBJdA0KPiA+IHByb3ZpZGVzIGluZm9ybWF0aW9uIGFib3V0IGhvdyBtYW55IGJyaWRn
-ZSBmZGJzIGFyZSBjcmVhdGVkIG9uDQo+ID4gYSBnaXZlbiBuZXRkZXYuDQo+IA0KPiBbLi4uXQ0K
-PiANCj4gPiBAQCAtMzM5LDYgKzM0MCw3IEBAIGljZV9lc3dpdGNoX2JyX2ZkYl9lbnRyeV9kZWxl
-dGUoc3RydWN0IGljZV9lc3dfYnIgKmJyaWRnZSwNCj4gPiAgCWljZV9lc3dpdGNoX2JyX2Zsb3df
-ZGVsZXRlKHBmLCBmZGJfZW50cnktPmZsb3cpOw0KPiA+DQo+ID4gIAlrZnJlZShmZGJfZW50cnkp
-Ow0KPiA+ICsJdnNpLT5mZGJfY250LS07DQo+IA0KPiBBcmUgRkRCIG9wZXJhdGlvbnMgYWx3YXlz
-IHNlcmlhbGl6ZWQgd2l0aGluIG9uZSBuZXRkZXY/IEJlY2F1c2UgaWYgaXQncw0KPiBub3QsIHRo
-aXMgcHJvYmFibHkgbmVlZHMgdG8gYmUgYXRvbWljX3QuDQoNCkFsbCB0aGUgRkRCIG9wZXJhdGlv
-bnMgYXJlIGRvbmUgZWl0aGVyIGZyb20gbm90aWZpY2F0aW9uIGNvbnRleHQgc28gdGhleSBhcmUg
-cHJvdGVjdGVkIGJ5DQpydG5sX2xvY2sgb3IgZXhwbGljaXRseSBwcm90ZWN0ZWQgYnkgdXMgKHNl
-ZSBpY2VfZXN3aXRjaF9icl9mZGJfZXZlbnRfd29yaywgd2UgdXNlIHJ0bmxfbG9jayB0aGVyZSku
-DQoNCj4gDQo+ID4gIH0NCj4gPg0KPiA+ICBzdGF0aWMgdm9pZA0KPiANCj4gWy4uLl0NCj4gDQo+
-ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXRodG9v
-bC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ldGh0b29sLmMNCj4gPiBp
-bmRleCA4NDA3YzcxNzVjZjYuLmQwNmIyYTY4ODMyMyAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2V0aHRvb2wuYw0KPiA+ICsrKyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXRodG9vbC5jDQo+ID4gQEAgLTY0LDYgKzY0LDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCBpY2Vfc3RhdHMgaWNlX2dzdHJpbmdzX3ZzaV9zdGF0c1td
-ID0gew0KPiA+ICAJSUNFX1ZTSV9TVEFUKCJ0eF9saW5lYXJpemUiLCB0eF9saW5lYXJpemUpLA0K
-PiA+ICAJSUNFX1ZTSV9TVEFUKCJ0eF9idXN5IiwgdHhfYnVzeSksDQo+ID4gIAlJQ0VfVlNJX1NU
-QVQoInR4X3Jlc3RhcnQiLCB0eF9yZXN0YXJ0KSwNCj4gPiArCUlDRV9WU0lfU1RBVCgiZmRiX2Nu
-dCIsIGZkYl9jbnQpLA0KPiANCj4gSXQncyBjb25mdXNpbmcgdG8gbWUgdG8gc2VlIGl0IGluIHRo
-ZSBFdGh0b29sIHN0YXRzLiBUaGV5J3JlIHVzdWFsbHkNCj4gY291bnRlcnMsIGljZSBpcyBubyBh
-biBleGNlcHRpb24uIEJ1dCB0aGlzIG9uZSBpcyBub3QsIHNvIGl0IG1pZ2h0IGdpdmUNCj4gd3Jv
-bmcgaW1wcmVzc2lvbi4NCj4gSGF2ZSB5b3UgY29uc2lkZXJlZCBhbHRlcm5hdGl2ZXM/IHJ0bmwg
-KGlwcm91dGUpIG9yIG1heWJlIGV2ZW4gRGV2bGluaw0KPiAoYnV0IEkgYmVsaWV2ZSB0aGUgZm9y
-bWVyIGZpdHMgYmV0dGVyKT8gVGhpcyBtaWdodCBiZSBhIGdvb2QgY2FuZGlkYXRlDQo+IHRvIGJl
-Y29tZSBhIGdlbmVyaWMgc3RhdCwgd2hvIGtub3dzLg0KDQpJJ2xsIGRvIHNvbWUgcmVzZWFyY2gg
-b24gYWx0ZXJuYXRpdmVzDQoNCj4gDQo+ID4gIH07DQo+ID4NCj4gPiAgZW51bSBpY2VfZXRodG9v
-bF90ZXN0X2lkIHsNCj4gDQo+IFRoYW5rcywNCj4gT2xlaw0KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
-bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Tue, May 09, 2023 at 07:11:48PM +0800, Ding Hui wrote:
+> If we set channels greater during iavf_remove(), and waiting reset done
+> would be timeout, then returned with error but changed num_active_queues
+> directly, that will lead to OOB like the following logs. Because the
+> num_active_queues is greater than tx/rx_rings[] allocated actually.
+> 
+> Reproducer:
+> 
+>   [root@host ~]# cat repro.sh
+>   #!/bin/bash
+> 
+>   pf_dbsf="0000:41:00.0"
+>   vf0_dbsf="0000:41:02.0"
+>   g_pids=()
+> 
+>   function do_set_numvf()
+>   {
+>       echo 2 >/sys/bus/pci/devices/${pf_dbsf}/sriov_numvfs
+>       sleep $((RANDOM%3+1))
+>       echo 0 >/sys/bus/pci/devices/${pf_dbsf}/sriov_numvfs
+>       sleep $((RANDOM%3+1))
+>   }
+> 
+>   function do_set_channel()
+>   {
+>       local nic=$(ls -1 --indicator-style=none /sys/bus/pci/devices/${vf0_dbsf}/net/)
+>       [ -z "$nic" ] && { sleep $((RANDOM%3)) ; return 1; }
+>       ifconfig $nic 192.168.18.5 netmask 255.255.255.0
+>       ifconfig $nic up
+>       ethtool -L $nic combined 1
+>       ethtool -L $nic combined 4
+>       sleep $((RANDOM%3))
+>   }
+> 
+>   function on_exit()
+>   {
+>       local pid
+>       for pid in "${g_pids[@]}"; do
+>           kill -0 "$pid" &>/dev/null && kill "$pid" &>/dev/null
+>       done
+>       g_pids=()
+>   }
+> 
+>   trap "on_exit; exit" EXIT
+> 
+>   while :; do do_set_numvf ; done &
+>   g_pids+=($!)
+>   while :; do do_set_channel ; done &
+>   g_pids+=($!)
+> 
+>   wait
+> 
+> Result:
+> 
+> [ 3506.152887] iavf 0000:41:02.0: Removing device
+> [ 3510.400799] ==================================================================
+> [ 3510.400820] BUG: KASAN: slab-out-of-bounds in iavf_free_all_tx_resources+0x156/0x160 [iavf]
+> [ 3510.400823] Read of size 8 at addr ffff88b6f9311008 by task repro.sh/55536
+> [ 3510.400823]
+> [ 3510.400830] CPU: 101 PID: 55536 Comm: repro.sh Kdump: loaded Tainted: G           O     --------- -t - 4.18.0 #1
+> [ 3510.400832] Hardware name: Powerleader PR2008AL/H12DSi-N6, BIOS 2.0 04/09/2021
+> [ 3510.400835] Call Trace:
+> [ 3510.400851]  dump_stack+0x71/0xab
+> [ 3510.400860]  print_address_description+0x6b/0x290
+> [ 3510.400865]  ? iavf_free_all_tx_resources+0x156/0x160 [iavf]
+> [ 3510.400868]  kasan_report+0x14a/0x2b0
+> [ 3510.400873]  iavf_free_all_tx_resources+0x156/0x160 [iavf]
+> [ 3510.400880]  iavf_remove+0x2b6/0xc70 [iavf]
+> [ 3510.400884]  ? iavf_free_all_rx_resources+0x160/0x160 [iavf]
+> [ 3510.400891]  ? wait_woken+0x1d0/0x1d0
+> [ 3510.400895]  ? notifier_call_chain+0xc1/0x130
+> [ 3510.400903]  pci_device_remove+0xa8/0x1f0
+> [ 3510.400910]  device_release_driver_internal+0x1c6/0x460
+> [ 3510.400916]  pci_stop_bus_device+0x101/0x150
+> [ 3510.400919]  pci_stop_and_remove_bus_device+0xe/0x20
+> [ 3510.400924]  pci_iov_remove_virtfn+0x187/0x420
+> [ 3510.400927]  ? pci_iov_add_virtfn+0xe10/0xe10
+> [ 3510.400929]  ? pci_get_subsys+0x90/0x90
+> [ 3510.400932]  sriov_disable+0xed/0x3e0
+> [ 3510.400936]  ? bus_find_device+0x12d/0x1a0
+> [ 3510.400953]  i40e_free_vfs+0x754/0x1210 [i40e]
+> [ 3510.400966]  ? i40e_reset_all_vfs+0x880/0x880 [i40e]
+> [ 3510.400968]  ? pci_get_device+0x7c/0x90
+> [ 3510.400970]  ? pci_get_subsys+0x90/0x90
+> [ 3510.400982]  ? pci_vfs_assigned.part.7+0x144/0x210
+> [ 3510.400987]  ? __mutex_lock_slowpath+0x10/0x10
+> [ 3510.400996]  i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e]
+> [ 3510.401001]  sriov_numvfs_store+0x214/0x290
+> [ 3510.401005]  ? sriov_totalvfs_show+0x30/0x30
+> [ 3510.401007]  ? __mutex_lock_slowpath+0x10/0x10
+> [ 3510.401011]  ? __check_object_size+0x15a/0x350
+> [ 3510.401018]  kernfs_fop_write+0x280/0x3f0
+> [ 3510.401022]  vfs_write+0x145/0x440
+> [ 3510.401025]  ksys_write+0xab/0x160
+> [ 3510.401028]  ? __ia32_sys_read+0xb0/0xb0
+> [ 3510.401031]  ? fput_many+0x1a/0x120
+> [ 3510.401032]  ? filp_close+0xf0/0x130
+> [ 3510.401038]  do_syscall_64+0xa0/0x370
+> [ 3510.401041]  ? page_fault+0x8/0x30
+> [ 3510.401043]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> [ 3510.401073] RIP: 0033:0x7f3a9bb842c0
+> [ 3510.401079] Code: 73 01 c3 48 8b 0d d8 cb 2c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 89 24 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 fe dd 01 00 48 89 04 24
+> [ 3510.401080] RSP: 002b:00007ffc05f1fe18 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+> [ 3510.401083] RAX: ffffffffffffffda RBX: 0000000000000002 RCX: 00007f3a9bb842c0
+> [ 3510.401085] RDX: 0000000000000002 RSI: 0000000002327408 RDI: 0000000000000001
+> [ 3510.401086] RBP: 0000000002327408 R08: 00007f3a9be53780 R09: 00007f3a9c8a4700
+> [ 3510.401086] R10: 0000000000000001 R11: 0000000000000246 R12: 0000000000000002
+> [ 3510.401087] R13: 0000000000000001 R14: 00007f3a9be52620 R15: 0000000000000001
+> [ 3510.401090]
+> [ 3510.401093] Allocated by task 76795:
+> [ 3510.401098]  kasan_kmalloc+0xa6/0xd0
+> [ 3510.401099]  __kmalloc+0xfb/0x200
+> [ 3510.401104]  iavf_init_interrupt_scheme+0x26f/0x1310 [iavf]
+> [ 3510.401108]  iavf_watchdog_task+0x1d58/0x4050 [iavf]
+> [ 3510.401114]  process_one_work+0x56a/0x11f0
+> [ 3510.401115]  worker_thread+0x8f/0xf40
+> [ 3510.401117]  kthread+0x2a0/0x390
+> [ 3510.401119]  ret_from_fork+0x1f/0x40
+> [ 3510.401122]  0xffffffffffffffff
+> [ 3510.401123]
+> 
+> In timeout handling, we should keep the original num_active_queues
+> and reset num_req_queues to 0.
+> 
+> Fixes: 4e5e6b5d9d13 ("iavf: Fix return of set the new channel count")
+> Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+> Cc: Donglin Peng <pengdonglin@sangfor.com.cn>
+> Cc: Huang Cun <huangcun@sangfor.com.cn>
+> ---
+> v4 to v5:
+>   - remove testing __IAVF_IN_REMOVE_TASK condition
+>   - update commit message
+>   - remove Reviewed-by tags to review again
+> 
+> v3 to v4:
+>   - nothing changed
+> 
+> v2 to v3:
+>   - fix review tag
+> 
+> v1 to v2:
+>   - add reproduction script
+> 
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+
+Thanks,
+Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
