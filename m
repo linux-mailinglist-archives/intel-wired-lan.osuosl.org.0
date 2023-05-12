@@ -1,91 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ADD7700B41
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:20:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A510700B43
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:20:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8FB4A42CA3;
-	Fri, 12 May 2023 15:20:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8FB4A42CA3
+	by smtp4.osuosl.org (Postfix) with ESMTP id A154142B37;
+	Fri, 12 May 2023 15:20:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A154142B37
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683904813;
-	bh=4w6fw/tSxrRY4JJmPmIOJYME2zmckCBc1Gi7P6HcNpg=;
+	s=default; t=1683904819;
+	bh=yqw4rpQl/JvDl60SdMbYq/fc4fPp4qeHv1TiZx3Reaw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mWVW936w/ugB8vI5I137akd5ioL86R6cOQWM1/yUezR9masVJpf5TmrW8Yxf71TGa
-	 XTRNiRTW6yjBV+/zf1zAzDviSMlimsmPR9F3ie0l6PKpIyEoW072HJDMrhmrPSIebr
-	 8A/O9nT80Q+2Y5uLLvQGAOh2fC9MBF4ZEKmEJM70+31aK7CavUTILXs0JrENuOGov2
-	 uyE7Mx8oXqcHDWIeruL4ewthPyXwAVJDyNUbtSIOg6vYXtRUz8kxvHTRqkvAXE8nE5
-	 lXRECdPEJcb+noKP4EEoY6IzIJKZHlqUMTqLGEVqNkD9EXmI98B/g+j/4pnzg9+qzU
-	 P/mk/Av13TBuA==
+	b=5wR519VXW8mdEy4rpvLxGoWhKAlz1XthgHHl1zL0/houQMb5BQ0J/1IJbLGRwkD09
+	 ZgtUYF8ztelMGsQOUUm3YCqYo/fEQNFfWIXrKmXU+h7fnKGTUqhgn5yJ6exy1BsbHg
+	 /BIFu3YY29XrTOGoLmjOPqMiKQscshwnfcb42C0TT0YscalhW50kd7p7ZpiCgI2IXb
+	 TxTVgIZwPqOJVyhXAUOWIh29dv+1+YqZEG1CRgovqUpPTOiv40St9qgLndiqNCp1WG
+	 O9hK6DkvR46a+CRZRAUeMtG91CermqKU3v5oHGM45AKjy7nKcXFG6+sS/M1qj0PIsk
+	 htJtdeel+0O8Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dXpkdkFyJ3P9; Fri, 12 May 2023 15:20:12 +0000 (UTC)
+	with ESMTP id cVWcxQiHbu6E; Fri, 12 May 2023 15:20:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E781142B37;
-	Fri, 12 May 2023 15:20:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E781142B37
+	by smtp4.osuosl.org (Postfix) with ESMTP id C602C42C56;
+	Fri, 12 May 2023 15:20:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C602C42C56
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5868A1BF2CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E1B7D1BF2CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2EB9C82183
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EB9C82183
+ by smtp1.osuosl.org (Postfix) with ESMTP id BB5CF82182
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BB5CF82182
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VxJaRRONPnmB for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 15:20:04 +0000 (UTC)
+ with ESMTP id 2Var5dBDH2fd for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 15:20:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6312E8210C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E361482183
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6312E8210C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="331173777"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="331173777"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E361482183
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:20:07 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="331173800"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="331173800"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2023 08:20:03 -0700
+ 12 May 2023 08:20:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="765196584"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="765196584"
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="765196640"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="765196640"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga008.fm.intel.com with ESMTP; 12 May 2023 08:19:59 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 12 May 2023 08:20:03 -0700
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 7679B35FB9;
- Fri, 12 May 2023 16:19:57 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 0738A35FB7;
+ Fri, 12 May 2023 16:20:00 +0100 (IST)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: bpf@vger.kernel.org
-Date: Fri, 12 May 2023 17:16:26 +0200
-Message-Id: <20230512151639.992033-3-larysa.zaremba@intel.com>
+Date: Fri, 12 May 2023 17:16:27 +0200
+Message-Id: <20230512151639.992033-4-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230512151639.992033-1-larysa.zaremba@intel.com>
 References: <20230512151639.992033-1-larysa.zaremba@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683904804; x=1715440804;
+ t=1683904807; x=1715440807;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=5vB/mCJq56GY8l9CoZRfoaHhODKmcFLlsw3E4ilHnDM=;
- b=nzbK6K2HXGD5Jag3b6BK/LVHhQM7qk79XdRlJoR9Ii3C96I2j194zBLe
- tLbUhVuUgs6t7AumbNcgjVy/c0wEcBByEjNQ+LbQWEDGpb1/d05AAXFms
- +aOdOsDQk3fTLXTfx3uxAIZbFYkLpc6g55Utd8dbAnU3xFMOV8gWMzszB
- GQyaXNk8BF9R8+e8Z31gZX7IdR5Yo7xp9w8hYK8zQYrfRjBJ23UzdUgat
- DJpLqRwazutLb713Zgy0Gg9W/DlBi1tDXh4habGUL0hbgXLO0Tm7vAiLC
- oVYuBuNXnA/f3+pJN+v+AQq+xhgoor7KYzjhvUAPR9nblG5IqbNuIv9N1
- A==;
+ bh=wWhxMWiLcPZY9NZb4EwY/NQl1nkjgZ1XPyV3TLzPC7M=;
+ b=DEwBoAXZu/vqmNqmC+VA1fXIECen+IeTqxwznaWnCQ+G71qrfktjNr7R
+ hgrn2Fa2cV1y02cMoDXhgILdldyOfXSEUV9Xq3BxZ34gqjDEImSUj/ufs
+ AMsUflEgcEEcDzGHojCA2LlWP2wtD1wS1hLb1QPg3LbGUdT25weLLLhm4
+ fmqqFikciCNhKJCLvA/zCSJWuYPFoYC4wBJDFtOBVhYyb2gPWNvZ3wCPg
+ SsC6M8trMAgHSCIB7SeinqL2ZLy9NhpnU5NglwyuFVGt9GZl8mP8bg8H1
+ wAo2O+AerOJHqyK7Qiu2d+ndeWLoCZSzspBbAGx1Wdyv5Q3bGog3gph3w
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nzbK6K2H
-Subject: [Intel-wired-lan] [PATCH 02/15] ice: make RX HW timestamp reading
- code more reusable
+ header.a=rsa-sha256 header.s=Intel header.b=DEwBoAXZ
+Subject: [Intel-wired-lan] [PATCH 03/15] ice: make RX checksum checking code
+ more reusable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,158 +115,139 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Previously, we only needed RX HW timestamp in skb path,
+Previously, we only needed RX checksum flags in skb path,
 hence all related code was written with skb in mind.
 But with the addition of XDP hints via kfuncs to the ice driver,
 the same logic will be needed in .xmo_() callbacks.
 
-Put generic process of reading RX HW timestamp from a descriptor
-into a separate function.
-Move skb-related code into another source file.
+Put generic process of determining checksum status into
+a separate function.
 
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 23 +++++++---------
- drivers/net/ethernet/intel/ice/ice_ptp.h      | 18 ++++++++-----
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 27 ++++++++++++++++++-
- 3 files changed, 48 insertions(+), 20 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 71 ++++++++++++-------
+ 1 file changed, 46 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index ac6f06f9a2ed..c90ce91f11ab 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2142,30 +2142,28 @@ int ice_ptp_set_ts_config(struct ice_pf *pf, struct ifreq *ifr)
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+index 1aab79dc8915..6a4fd3f3fc0a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+@@ -104,17 +104,17 @@ ice_rx_hash_to_skb(struct ice_rx_ring *rx_ring,
  }
  
  /**
-- * ice_ptp_rx_hwtstamp - Check for an Rx timestamp
-+ * ice_ptp_copy_rx_hwts_from_desc - Check for an Rx timestamp
-  * @rx_ring: Ring to get the VSI info
-  * @rx_desc: Receive descriptor
-- * @skb: Particular skb to send timestamp with
-+ * @dst: Address to put RX timestamp to
+- * ice_rx_csum - Indicate in skb if checksum is good
+- * @ring: the ring we care about
+- * @skb: skb currently being received and modified
++ * ice_rx_csum_checked - Indicates, whether hardware has checked the checksum
+  * @rx_desc: the receive descriptor
+  * @ptype: the packet type decoded by hardware
++ * @csum_lvl_dst: address to put checksum level into
++ * @ring: ring for error stats, can be NULL
   *
-- * The driver receives a notification in the receive descriptor with timestamp.
-- * The timestamp is in ns, so we must convert the result first.
-+ * If function returns true, dst contains a valid RX timestamp in ns.
+- * skb->protocol must be set before this function is called
++ * Returns true, if hardware has checked the checksum.
   */
--void
--ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
--		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb)
-+bool ice_ptp_copy_rx_hwts_from_desc(struct ice_rx_ring *rx_ring,
-+				    union ice_32b_rx_flex_desc *rx_desc,
-+				    u64 *dst)
+-static void
+-ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
+-	    union ice_32b_rx_flex_desc *rx_desc, u16 ptype)
++static bool
++ice_rx_csum_checked(union ice_32b_rx_flex_desc *rx_desc, u16 ptype,
++		    u8 *csum_lvl_dst, struct ice_rx_ring *ring)
  {
--	struct skb_shared_hwtstamps *hwtstamps;
- 	u64 ts_ns, cached_time;
- 	u32 ts_high;
+ 	struct ice_rx_ptype_decoded decoded;
+ 	u16 rx_status0, rx_status1;
+@@ -125,20 +125,12 @@ ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
  
- 	if (!(rx_desc->wb.time_stamp_low & ICE_PTP_TS_VALID))
+ 	decoded = ice_decode_rx_desc_ptype(ptype);
+ 
+-	/* Start with CHECKSUM_NONE and by default csum_level = 0 */
+-	skb->ip_summed = CHECKSUM_NONE;
+-	skb_checksum_none_assert(skb);
+-
+-	/* check if Rx checksum is enabled */
+-	if (!(ring->netdev->features & NETIF_F_RXCSUM))
+-		return;
+-
+ 	/* check if HW has decoded the packet and checksum */
+ 	if (!(rx_status0 & BIT(ICE_RX_FLEX_DESC_STATUS0_L3L4P_S)))
 -		return;
 +		return false;
  
- 	cached_time = READ_ONCE(rx_ring->cached_phctime);
- 
- 	/* Do not report a timestamp if we don't have a cached PHC time */
- 	if (!cached_time)
+ 	if (!(decoded.known && decoded.outer_ip))
 -		return;
 +		return false;
  
- 	/* Use ice_ptp_extend_32b_ts directly, using the ring-specific cached
- 	 * PHC value, rather than accessing the PF. This also allows us to
-@@ -2176,9 +2174,8 @@ ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 	ts_high = le32_to_cpu(rx_desc->wb.flex_ts.ts_high);
- 	ts_ns = ice_ptp_extend_32b_ts(cached_time, ts_high);
+ 	ipv4 = (decoded.outer_ip == ICE_RX_PTYPE_OUTER_IP) &&
+ 	       (decoded.outer_ip_ver == ICE_RX_PTYPE_OUTER_IPV4);
+@@ -168,22 +160,51 @@ ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
+ 	 * we are indicating we validated the inner checksum.
+ 	 */
+ 	if (decoded.tunnel_type >= ICE_RX_PTYPE_TUNNEL_IP_GRENAT)
+-		skb->csum_level = 1;
++		*csum_lvl_dst = 1;
  
--	hwtstamps = skb_hwtstamps(skb);
--	memset(hwtstamps, 0, sizeof(*hwtstamps));
--	hwtstamps->hwtstamp = ns_to_ktime(ts_ns);
-+	*dst = ts_ns;
-+	return true;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 9cda2f43e0e5..509ea9570276 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -259,9 +259,9 @@ int ice_get_ptp_clock_index(struct ice_pf *pf);
- s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb);
- bool ice_ptp_process_ts(struct ice_pf *pf);
- 
--void
--ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
--		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb);
-+bool ice_ptp_copy_rx_hwts_from_desc(struct ice_rx_ring *rx_ring,
-+				    union ice_32b_rx_flex_desc *rx_desc,
-+				    u64 *dst);
- void ice_ptp_reset(struct ice_pf *pf);
- void ice_ptp_prepare_for_reset(struct ice_pf *pf);
- void ice_ptp_init(struct ice_pf *pf);
-@@ -294,9 +294,15 @@ static inline bool ice_ptp_process_ts(struct ice_pf *pf)
- {
- 	return true;
- }
--static inline void
--ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
--		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb) { }
+ 	/* Only report checksum unnecessary for TCP, UDP, or SCTP */
+ 	switch (decoded.inner_prot) {
+ 	case ICE_RX_PTYPE_INNER_PROT_TCP:
+ 	case ICE_RX_PTYPE_INNER_PROT_UDP:
+ 	case ICE_RX_PTYPE_INNER_PROT_SCTP:
+-		skb->ip_summed = CHECKSUM_UNNECESSARY;
+-		break;
+-	default:
+-		break;
++		return true;
+ 	}
+-	return;
 +
-+static inline bool
-+ice_ptp_copy_rx_hwts_from_desc(struct ice_rx_ring *rx_ring,
-+			       union ice_32b_rx_flex_desc *rx_desc,
-+			       u64 *dst)
-+{
++	return false;
+ 
+ checksum_fail:
+-	ring->vsi->back->hw_csum_rx_error++;
++	if (ring)
++		ring->vsi->back->hw_csum_rx_error++;
++
 +	return false;
 +}
 +
- static inline void ice_ptp_reset(struct ice_pf *pf) { }
- static inline void ice_ptp_prepare_for_reset(struct ice_pf *pf) { }
- static inline void ice_ptp_init(struct ice_pf *pf) { }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index fc67bbf600af..1aab79dc8915 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -186,6 +186,31 @@ ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
- 	ring->vsi->back->hw_csum_rx_error++;
- }
- 
 +/**
-+ * ice_ptp_rx_hwts_to_skb - Put RX timestamp into skb, if available
-+ * @rx_ring: Ring to get the VSI info
-+ * @rx_desc: Receive descriptor
-+ * @skb: Particular skb to send timestamp with
-+ *
-+ * The driver receives a notification in the receive descriptor with timestamp.
-+ * The timestamp is in ns, so we must convert the result first.
++ * ice_rx_csum_into_skb - Indicate in skb if checksum is good
++ * @ring: the ring we care about
++ * @skb: skb currently being received and modified
++ * @rx_desc: the receive descriptor
++ * @ptype: the packet type decoded by hardware
 + */
 +static void
-+ice_ptp_rx_hwts_to_skb(struct ice_rx_ring *rx_ring,
-+		       union ice_32b_rx_flex_desc *rx_desc,
-+		       struct sk_buff *skb)
++ice_rx_csum_into_skb(struct ice_rx_ring *ring, struct sk_buff *skb,
++		     union ice_32b_rx_flex_desc *rx_desc, u16 ptype)
 +{
-+	struct skb_shared_hwtstamps *hwtstamps;
-+	u64 ts_ns;
++	u8 csum_level = 0;
 +
-+	if (!ice_ptp_copy_rx_hwts_from_desc(rx_ring, rx_desc, &ts_ns))
++	/* Start with CHECKSUM_NONE and by default csum_level = 0 */
++	skb->ip_summed = CHECKSUM_NONE;
++	skb_checksum_none_assert(skb);
++
++	/* check if Rx checksum is enabled */
++	if (!(ring->netdev->features & NETIF_F_RXCSUM))
 +		return;
 +
-+	hwtstamps = skb_hwtstamps(skb);
-+	memset(hwtstamps, 0, sizeof(*hwtstamps));
-+	hwtstamps->hwtstamp = ns_to_ktime(ts_ns);
-+}
++	if (!ice_rx_csum_checked(rx_desc, ptype, &csum_level, ring))
++		return;
 +
- /**
-  * ice_process_skb_fields - Populate skb header fields from Rx descriptor
-  * @rx_ring: Rx descriptor ring packet is being transacted on
-@@ -210,7 +235,7 @@ ice_process_skb_fields(struct ice_rx_ring *rx_ring,
- 	ice_rx_csum(rx_ring, skb, rx_desc, ptype);
- 
- 	if (rx_ring->ptp_rx)
--		ice_ptp_rx_hwtstamp(rx_ring, rx_desc, skb);
-+		ice_ptp_rx_hwts_to_skb(rx_ring, rx_desc, skb);
++	skb->ip_summed = CHECKSUM_UNNECESSARY;
++	skb->csum_level = csum_level;
  }
  
  /**
+@@ -232,7 +253,7 @@ ice_process_skb_fields(struct ice_rx_ring *rx_ring,
+ 	/* modifies the skb - consumes the enet header */
+ 	skb->protocol = eth_type_trans(skb, rx_ring->netdev);
+ 
+-	ice_rx_csum(rx_ring, skb, rx_desc, ptype);
++	ice_rx_csum_into_skb(rx_ring, skb, rx_desc, ptype);
+ 
+ 	if (rx_ring->ptp_rx)
+ 		ice_ptp_rx_hwts_to_skb(rx_ring, rx_desc, skb);
 -- 
 2.35.3
 
