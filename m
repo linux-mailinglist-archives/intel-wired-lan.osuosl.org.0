@@ -2,90 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3861A700BAA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:29:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C420700BAF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:29:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE70742C8D;
-	Fri, 12 May 2023 15:29:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE70742C8D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2083642CA0;
+	Fri, 12 May 2023 15:29:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2083642CA0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683905347;
-	bh=Ny6E4BAy6c+/9+lA3/+E7GVmix9z11ikH6h8LwvM+Ek=;
+	s=default; t=1683905358;
+	bh=M96y1+7/uziUSDLhhq+air+HzNVLyxiEGolFDu4m+lY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=z+mUE4Fys6dyyY8JrCBEJ5LXO3oi2ONbvSxZ/tpO8mS9CMzOtxRl+RtdXA/2h9GLk
-	 dHJkeIqzcLOqniD1b5yYmTtQm+aN8nMwJE0f0IA4CqZXoMFxabmWA5QE1q99KXwxdJ
-	 HoyVADfxHWP+1+A2iyhTrYzm7pMsspGozm+ViWpgbe6t/rn9N35CBUtrrw7UnQP9GV
-	 TG+MVmiefzHB0G77VksqIiMQ1YqWgck5ws46pOoialKRBZ6g+Uo3sKPY10XjYUns1Z
-	 UXB5pW8oaHenAHuKtQd6Nv9N5dFLjOQsSp/6M3i4wbb/+rjwmEupqF0l7jG/VsrQel
-	 KYK+RDzcoV4Fg==
+	b=2y++C+kBqHXSADTwMX7Ko9AEngtJXB0+ZvUzxTB04mbhAtodd7hd+TDRS60hdVmNz
+	 JpHq5Z25x9MKYUdCXQkVjGHVx5/qeo7nD1N5kynnhIIPaqghU2lBoNvbcsIfcdaXPn
+	 9304/1EoD2ghcGBzl/wE4Sd8EcplBKcYYl9nehzCRu9u+QQVEDuaAFmG6+gyBjqZ5h
+	 uGIfpAMFGmtSlH1uvWA8yp7RjN/0nBY743jfxXIrGaTd+yHnt8xxe/1i5b/Qs6D9ht
+	 Xc9Dhqe6580BPpso4R2gYe/xADV9sgCMw2MG86NQB1zpcANszRZN5xStZu4S9mc3pc
+	 LlH5GeSrln4Hw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A9-Lz5U3IWnu; Fri, 12 May 2023 15:29:06 +0000 (UTC)
+	with ESMTP id AVK3Syds4GsN; Fri, 12 May 2023 15:29:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4901340965;
-	Fri, 12 May 2023 15:29:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4901340965
+	by smtp4.osuosl.org (Postfix) with ESMTP id A571B40986;
+	Fri, 12 May 2023 15:29:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A571B40986
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1DB3D1BF2CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 02ECC1BF2CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EB81382098
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB81382098
+ by smtp1.osuosl.org (Postfix) with ESMTP id CDF2E82173
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDF2E82173
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wkrDdHHjMyms for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 15:28:49 +0000 (UTC)
+ with ESMTP id RwvPJru5wvT2 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 15:28:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42D5981FDE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 272C582167
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 42D5981FDE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="349653324"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="349653324"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 272C582167
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:28:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="349653351"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="349653351"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2023 08:28:49 -0700
+ 12 May 2023 08:28:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="1030124517"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="1030124517"
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="1030124546"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="1030124546"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga005.fm.intel.com with ESMTP; 12 May 2023 08:28:44 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 12 May 2023 08:28:47 -0700
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 21092365B4;
- Fri, 12 May 2023 16:28:43 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 9AD9736A15;
+ Fri, 12 May 2023 16:28:45 +0100 (IST)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: bpf@vger.kernel.org
-Date: Fri, 12 May 2023 17:25:58 +0200
-Message-Id: <20230512152607.992209-7-larysa.zaremba@intel.com>
+Date: Fri, 12 May 2023 17:25:59 +0200
+Message-Id: <20230512152607.992209-8-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230512152607.992209-1-larysa.zaremba@intel.com>
 References: <20230512152607.992209-1-larysa.zaremba@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683905329; x=1715441329;
+ t=1683905334; x=1715441334;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=cqKMx2oSgYgFjniI/xbMp1UqCMkQn2DYgiq9853O1hY=;
- b=Sfs7PH/MrYQXgCopvZzxr2OfSnFH2LOIfhDWP5JljiX9FikjfLzar3J6
- F9mwbyEwuOVj/cqe0XgkW6Njypzwu5VnSxaw3DpOgf9e/xAG0Ci/bgvI0
- zov2jvUq+7uG6ULlsECY/yPAyHLs6QJmmGzjpjwk5J4GPolMPvDdZ/dyX
- nVToJtV1Gf1sNr7do1vb8S7DhAx8Noy7C3ukgXc4jz43KVQkyk8eKnbsN
- cBV0cYwHeZNsJrJ3KUeJqG6XP/6egX0sVuFEUuuLpIt5lq6Nso+oU7hTq
- ts8l+QAN0XN3KeipveBxyF72BzEFDHeKV/CWN0KyA4ZBD9breylk8pi45
+ bh=ynXUbQUJe03NooZ616yUWLrjPVP0WvqkB8CkcIAxiJ8=;
+ b=Idghuf8pA7lisLq0Sizq3U82p7NAqpB2U/PfgMthn4O3zlB4MMAwPblh
+ XUpmZr0MKEnp/arAi867Z6rsSA0kPP9G7gnP7cVEHM4Jiv0CxyHN0owXQ
+ INEv2GAdrKdbz92vGPFHKpvJViTI2h6wcvYxm5WbgrYRNDuS4rueXaRDJ
+ PV01ei/71VXQGyGigiOLSOb73XqF0OYJ3WukraLefKlvIPzAamwUOG7G5
+ AReWq6dIKLVx0xNGdpfqWmqPNolqpYAuVYW7Csa0fksCKD3ExLe0EQSo5
+ 3dxyKgGNX6gQIZYaJh7eTxDG2OlW3xQr1k2/klSHU1nYg0xQypCunB5/3
  w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Sfs7PH/M
-Subject: [Intel-wired-lan] [PATCH RESEND bpf-next 06/15] ice: Support HW
- timestamp hint
+ header.a=rsa-sha256 header.s=Intel header.b=Idghuf8p
+Subject: [Intel-wired-lan] [PATCH RESEND bpf-next 07/15] ice: Support RX
+ hash XDP hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,72 +115,567 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use previously refactored code and create a function
-that allows XDP code to read HW timestamp.
+RX hash XDP hint requests both hash value and type.
+Type is XDP-specific, so we need a separate way to map
+these values to the hardware ptypes, so create a lookup table.
 
-HW timestamp is the first supported hint in the driver,
-so also add xdp_metadata_ops.
+Instead of creating a new long list, reuse contents
+of ice_decode_rx_desc_ptype[] through preprocessor.
+
+Current hash type enum does not contain ICMP packet type,
+but ice devices support it, so also add a new type into core code.
+
+Then use previously refactored code and create a function
+that allows XDP code to read RX hash.
 
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |  2 ++
- drivers/net/ethernet/intel/ice/ice_main.c     |  1 +
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 22 +++++++++++++++++++
- 3 files changed, 25 insertions(+)
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    | 412 +++++++++---------
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  72 +++
+ include/net/xdp.h                             |   3 +
+ 3 files changed, 283 insertions(+), 204 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index aa32111afd6e..ba1bb8392db1 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -962,4 +962,6 @@ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
- 	set_bit(ICE_FLAG_UNPLUG_AUX_DEV, pf->flags);
- 	clear_bit(ICE_FLAG_RDMA_ENA, pf->flags);
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
+index 89f986a75cc8..d384ddfcb83e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
++++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
+@@ -673,6 +673,212 @@ struct ice_tlan_ctx {
+  *      Use the enum ice_rx_l2_ptype to decode the packet type
+  * ENDIF
+  */
++#define ICE_PTYPES								\
++	/* L2 Packet types */							\
++	ICE_PTT_UNUSED_ENTRY(0),						\
++	ICE_PTT(1, L2, NONE, NOF, NONE, NONE, NOF, NONE, PAY2),			\
++	ICE_PTT_UNUSED_ENTRY(2),						\
++	ICE_PTT_UNUSED_ENTRY(3),						\
++	ICE_PTT_UNUSED_ENTRY(4),						\
++	ICE_PTT_UNUSED_ENTRY(5),						\
++	ICE_PTT(6, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),			\
++	ICE_PTT(7, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),			\
++	ICE_PTT_UNUSED_ENTRY(8),						\
++	ICE_PTT_UNUSED_ENTRY(9),						\
++	ICE_PTT(10, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),		\
++	ICE_PTT(11, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),		\
++	ICE_PTT_UNUSED_ENTRY(12),						\
++	ICE_PTT_UNUSED_ENTRY(13),						\
++	ICE_PTT_UNUSED_ENTRY(14),						\
++	ICE_PTT_UNUSED_ENTRY(15),						\
++	ICE_PTT_UNUSED_ENTRY(16),						\
++	ICE_PTT_UNUSED_ENTRY(17),						\
++	ICE_PTT_UNUSED_ENTRY(18),						\
++	ICE_PTT_UNUSED_ENTRY(19),						\
++	ICE_PTT_UNUSED_ENTRY(20),						\
++	ICE_PTT_UNUSED_ENTRY(21),						\
++										\
++	/* Non Tunneled IPv4 */							\
++	ICE_PTT(22, IP, IPV4, FRG, NONE, NONE, NOF, NONE, PAY3),		\
++	ICE_PTT(23, IP, IPV4, NOF, NONE, NONE, NOF, NONE, PAY3),		\
++	ICE_PTT(24, IP, IPV4, NOF, NONE, NONE, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(25),						\
++	ICE_PTT(26, IP, IPV4, NOF, NONE, NONE, NOF, TCP,  PAY4),		\
++	ICE_PTT(27, IP, IPV4, NOF, NONE, NONE, NOF, SCTP, PAY4),		\
++	ICE_PTT(28, IP, IPV4, NOF, NONE, NONE, NOF, ICMP, PAY4),		\
++										\
++	/* IPv4 --> IPv4 */							\
++	ICE_PTT(29, IP, IPV4, NOF, IP_IP, IPV4, FRG, NONE, PAY3),		\
++	ICE_PTT(30, IP, IPV4, NOF, IP_IP, IPV4, NOF, NONE, PAY3),		\
++	ICE_PTT(31, IP, IPV4, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(32),						\
++	ICE_PTT(33, IP, IPV4, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),		\
++	ICE_PTT(34, IP, IPV4, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),		\
++	ICE_PTT(35, IP, IPV4, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),		\
++										\
++	/* IPv4 --> IPv6 */							\
++	ICE_PTT(36, IP, IPV4, NOF, IP_IP, IPV6, FRG, NONE, PAY3),		\
++	ICE_PTT(37, IP, IPV4, NOF, IP_IP, IPV6, NOF, NONE, PAY3),		\
++	ICE_PTT(38, IP, IPV4, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(39),						\
++	ICE_PTT(40, IP, IPV4, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),		\
++	ICE_PTT(41, IP, IPV4, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),		\
++	ICE_PTT(42, IP, IPV4, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),		\
++										\
++	/* IPv4 --> GRE/NAT */							\
++	ICE_PTT(43, IP, IPV4, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),		\
++										\
++	/* IPv4 --> GRE/NAT --> IPv4 */						\
++	ICE_PTT(44, IP, IPV4, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),		\
++	ICE_PTT(45, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),		\
++	ICE_PTT(46, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(47),						\
++	ICE_PTT(48, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),		\
++	ICE_PTT(49, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),		\
++	ICE_PTT(50, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),		\
++										\
++	/* IPv4 --> GRE/NAT --> IPv6 */						\
++	ICE_PTT(51, IP, IPV4, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),		\
++	ICE_PTT(52, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),		\
++	ICE_PTT(53, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(54),						\
++	ICE_PTT(55, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),		\
++	ICE_PTT(56, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),		\
++	ICE_PTT(57, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),		\
++										\
++	/* IPv4 --> GRE/NAT --> MAC */						\
++	ICE_PTT(58, IP, IPV4, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),	\
++										\
++	/* IPv4 --> GRE/NAT --> MAC --> IPv4 */					\
++	ICE_PTT(59, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),	\
++	ICE_PTT(60, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),	\
++	ICE_PTT(61, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(62),						\
++	ICE_PTT(63, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),	\
++	ICE_PTT(64, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),	\
++	ICE_PTT(65, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),	\
++										\
++	/* IPv4 --> GRE/NAT -> MAC --> IPv6 */					\
++	ICE_PTT(66, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),	\
++	ICE_PTT(67, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),	\
++	ICE_PTT(68, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(69),						\
++	ICE_PTT(70, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),	\
++	ICE_PTT(71, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),	\
++	ICE_PTT(72, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),	\
++										\
++	/* IPv4 --> GRE/NAT --> MAC/VLAN */					\
++	ICE_PTT(73, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),	\
++										\
++	/* IPv4 ---> GRE/NAT -> MAC/VLAN --> IPv4 */				\
++	ICE_PTT(74, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),	\
++	ICE_PTT(75, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),	\
++	ICE_PTT(76, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(77),						\
++	ICE_PTT(78, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),	\
++	ICE_PTT(79, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),	\
++	ICE_PTT(80, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),	\
++										\
++	/* IPv4 -> GRE/NAT -> MAC/VLAN --> IPv6 */				\
++	ICE_PTT(81, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),	\
++	ICE_PTT(82, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),	\
++	ICE_PTT(83, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(84),						\
++	ICE_PTT(85, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),	\
++	ICE_PTT(86, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),	\
++	ICE_PTT(87, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),	\
++										\
++	/* Non Tunneled IPv6 */							\
++	ICE_PTT(88, IP, IPV6, FRG, NONE, NONE, NOF, NONE, PAY3),		\
++	ICE_PTT(89, IP, IPV6, NOF, NONE, NONE, NOF, NONE, PAY3),		\
++	ICE_PTT(90, IP, IPV6, NOF, NONE, NONE, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(91),						\
++	ICE_PTT(92, IP, IPV6, NOF, NONE, NONE, NOF, TCP,  PAY4),		\
++	ICE_PTT(93, IP, IPV6, NOF, NONE, NONE, NOF, SCTP, PAY4),		\
++	ICE_PTT(94, IP, IPV6, NOF, NONE, NONE, NOF, ICMP, PAY4),		\
++										\
++	/* IPv6 --> IPv4 */							\
++	ICE_PTT(95, IP, IPV6, NOF, IP_IP, IPV4, FRG, NONE, PAY3),		\
++	ICE_PTT(96, IP, IPV6, NOF, IP_IP, IPV4, NOF, NONE, PAY3),		\
++	ICE_PTT(97, IP, IPV6, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(98),						\
++	ICE_PTT(99, IP, IPV6, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),		\
++	ICE_PTT(100, IP, IPV6, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),		\
++	ICE_PTT(101, IP, IPV6, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),		\
++										\
++	/* IPv6 --> IPv6 */							\
++	ICE_PTT(102, IP, IPV6, NOF, IP_IP, IPV6, FRG, NONE, PAY3),		\
++	ICE_PTT(103, IP, IPV6, NOF, IP_IP, IPV6, NOF, NONE, PAY3),		\
++	ICE_PTT(104, IP, IPV6, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(105),						\
++	ICE_PTT(106, IP, IPV6, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),		\
++	ICE_PTT(107, IP, IPV6, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),		\
++	ICE_PTT(108, IP, IPV6, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),		\
++										\
++	/* IPv6 --> GRE/NAT */							\
++	ICE_PTT(109, IP, IPV6, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),		\
++										\
++	/* IPv6 --> GRE/NAT -> IPv4 */						\
++	ICE_PTT(110, IP, IPV6, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),		\
++	ICE_PTT(111, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),		\
++	ICE_PTT(112, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(113),						\
++	ICE_PTT(114, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),		\
++	ICE_PTT(115, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),		\
++	ICE_PTT(116, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),		\
++										\
++	/* IPv6 --> GRE/NAT -> IPv6 */						\
++	ICE_PTT(117, IP, IPV6, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),		\
++	ICE_PTT(118, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),		\
++	ICE_PTT(119, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),		\
++	ICE_PTT_UNUSED_ENTRY(120),						\
++	ICE_PTT(121, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),		\
++	ICE_PTT(122, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),		\
++	ICE_PTT(123, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),		\
++										\
++	/* IPv6 --> GRE/NAT -> MAC */						\
++	ICE_PTT(124, IP, IPV6, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),	\
++										\
++	/* IPv6 --> GRE/NAT -> MAC -> IPv4 */					\
++	ICE_PTT(125, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),	\
++	ICE_PTT(126, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),	\
++	ICE_PTT(127, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(128),						\
++	ICE_PTT(129, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),	\
++	ICE_PTT(130, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),	\
++	ICE_PTT(131, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),	\
++										\
++	/* IPv6 --> GRE/NAT -> MAC -> IPv6 */					\
++	ICE_PTT(132, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),	\
++	ICE_PTT(133, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),	\
++	ICE_PTT(134, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(135),						\
++	ICE_PTT(136, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),	\
++	ICE_PTT(137, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),	\
++	ICE_PTT(138, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),	\
++										\
++	/* IPv6 --> GRE/NAT -> MAC/VLAN */					\
++	ICE_PTT(139, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),	\
++										\
++	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv4 */				\
++	ICE_PTT(140, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),	\
++	ICE_PTT(141, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),	\
++	ICE_PTT(142, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(143),						\
++	ICE_PTT(144, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),	\
++	ICE_PTT(145, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),	\
++	ICE_PTT(146, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),	\
++										\
++	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv6 */				\
++	ICE_PTT(147, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),	\
++	ICE_PTT(148, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),	\
++	ICE_PTT(149, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),	\
++	ICE_PTT_UNUSED_ENTRY(150),						\
++	ICE_PTT(151, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),	\
++	ICE_PTT(152, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),	\
++	ICE_PTT(153, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),
 +
-+extern const struct xdp_metadata_ops ice_xdp_md_ops;
- #endif /* _ICE_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a1f7c8edc22f..cda6c4a80737 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3378,6 +3378,7 @@ static void ice_set_ops(struct ice_vsi *vsi)
++#define ICE_NUM_DEFINED_PTYPES	154
  
- 	netdev->netdev_ops = &ice_netdev_ops;
- 	netdev->udp_tunnel_nic_info = &pf->hw.udp_tunnel_nic;
-+	netdev->xdp_metadata_ops = &ice_xdp_md_ops;
- 	ice_set_ethtool_ops(netdev);
+ /* macro to make the table lines short, use explicit indexing with [PTYPE] */
+ #define ICE_PTT(PTYPE, OUTER_IP, OUTER_IP_VER, OUTER_FRAG, T, TE, TEF, I, PL)\
+@@ -695,212 +901,10 @@ struct ice_tlan_ctx {
  
- 	if (vsi->type != ICE_VSI_PF)
+ /* Lookup table mapping in the 10-bit HW PTYPE to the bit field for decoding */
+ static const struct ice_rx_ptype_decoded ice_ptype_lkup[BIT(10)] = {
+-	/* L2 Packet types */
+-	ICE_PTT_UNUSED_ENTRY(0),
+-	ICE_PTT(1, L2, NONE, NOF, NONE, NONE, NOF, NONE, PAY2),
+-	ICE_PTT_UNUSED_ENTRY(2),
+-	ICE_PTT_UNUSED_ENTRY(3),
+-	ICE_PTT_UNUSED_ENTRY(4),
+-	ICE_PTT_UNUSED_ENTRY(5),
+-	ICE_PTT(6, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
+-	ICE_PTT(7, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
+-	ICE_PTT_UNUSED_ENTRY(8),
+-	ICE_PTT_UNUSED_ENTRY(9),
+-	ICE_PTT(10, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
+-	ICE_PTT(11, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
+-	ICE_PTT_UNUSED_ENTRY(12),
+-	ICE_PTT_UNUSED_ENTRY(13),
+-	ICE_PTT_UNUSED_ENTRY(14),
+-	ICE_PTT_UNUSED_ENTRY(15),
+-	ICE_PTT_UNUSED_ENTRY(16),
+-	ICE_PTT_UNUSED_ENTRY(17),
+-	ICE_PTT_UNUSED_ENTRY(18),
+-	ICE_PTT_UNUSED_ENTRY(19),
+-	ICE_PTT_UNUSED_ENTRY(20),
+-	ICE_PTT_UNUSED_ENTRY(21),
+-
+-	/* Non Tunneled IPv4 */
+-	ICE_PTT(22, IP, IPV4, FRG, NONE, NONE, NOF, NONE, PAY3),
+-	ICE_PTT(23, IP, IPV4, NOF, NONE, NONE, NOF, NONE, PAY3),
+-	ICE_PTT(24, IP, IPV4, NOF, NONE, NONE, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(25),
+-	ICE_PTT(26, IP, IPV4, NOF, NONE, NONE, NOF, TCP,  PAY4),
+-	ICE_PTT(27, IP, IPV4, NOF, NONE, NONE, NOF, SCTP, PAY4),
+-	ICE_PTT(28, IP, IPV4, NOF, NONE, NONE, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> IPv4 */
+-	ICE_PTT(29, IP, IPV4, NOF, IP_IP, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(30, IP, IPV4, NOF, IP_IP, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(31, IP, IPV4, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(32),
+-	ICE_PTT(33, IP, IPV4, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(34, IP, IPV4, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(35, IP, IPV4, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> IPv6 */
+-	ICE_PTT(36, IP, IPV4, NOF, IP_IP, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(37, IP, IPV4, NOF, IP_IP, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(38, IP, IPV4, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(39),
+-	ICE_PTT(40, IP, IPV4, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(41, IP, IPV4, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(42, IP, IPV4, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> GRE/NAT */
+-	ICE_PTT(43, IP, IPV4, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv4 --> GRE/NAT --> IPv4 */
+-	ICE_PTT(44, IP, IPV4, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(45, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(46, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(47),
+-	ICE_PTT(48, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(49, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(50, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> GRE/NAT --> IPv6 */
+-	ICE_PTT(51, IP, IPV4, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(52, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(53, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(54),
+-	ICE_PTT(55, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(56, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(57, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> GRE/NAT --> MAC */
+-	ICE_PTT(58, IP, IPV4, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv4 --> GRE/NAT --> MAC --> IPv4 */
+-	ICE_PTT(59, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(60, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(61, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(62),
+-	ICE_PTT(63, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(64, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(65, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> GRE/NAT -> MAC --> IPv6 */
+-	ICE_PTT(66, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(67, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(68, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(69),
+-	ICE_PTT(70, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(71, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(72, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv4 --> GRE/NAT --> MAC/VLAN */
+-	ICE_PTT(73, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv4 ---> GRE/NAT -> MAC/VLAN --> IPv4 */
+-	ICE_PTT(74, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(75, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(76, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(77),
+-	ICE_PTT(78, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(79, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(80, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv4 -> GRE/NAT -> MAC/VLAN --> IPv6 */
+-	ICE_PTT(81, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(82, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(83, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(84),
+-	ICE_PTT(85, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(86, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(87, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),
+-
+-	/* Non Tunneled IPv6 */
+-	ICE_PTT(88, IP, IPV6, FRG, NONE, NONE, NOF, NONE, PAY3),
+-	ICE_PTT(89, IP, IPV6, NOF, NONE, NONE, NOF, NONE, PAY3),
+-	ICE_PTT(90, IP, IPV6, NOF, NONE, NONE, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(91),
+-	ICE_PTT(92, IP, IPV6, NOF, NONE, NONE, NOF, TCP,  PAY4),
+-	ICE_PTT(93, IP, IPV6, NOF, NONE, NONE, NOF, SCTP, PAY4),
+-	ICE_PTT(94, IP, IPV6, NOF, NONE, NONE, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> IPv4 */
+-	ICE_PTT(95, IP, IPV6, NOF, IP_IP, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(96, IP, IPV6, NOF, IP_IP, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(97, IP, IPV6, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(98),
+-	ICE_PTT(99, IP, IPV6, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(100, IP, IPV6, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(101, IP, IPV6, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> IPv6 */
+-	ICE_PTT(102, IP, IPV6, NOF, IP_IP, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(103, IP, IPV6, NOF, IP_IP, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(104, IP, IPV6, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(105),
+-	ICE_PTT(106, IP, IPV6, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(107, IP, IPV6, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(108, IP, IPV6, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT */
+-	ICE_PTT(109, IP, IPV6, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv6 --> GRE/NAT -> IPv4 */
+-	ICE_PTT(110, IP, IPV6, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(111, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(112, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(113),
+-	ICE_PTT(114, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(115, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(116, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT -> IPv6 */
+-	ICE_PTT(117, IP, IPV6, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(118, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(119, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(120),
+-	ICE_PTT(121, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(122, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(123, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT -> MAC */
+-	ICE_PTT(124, IP, IPV6, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv6 --> GRE/NAT -> MAC -> IPv4 */
+-	ICE_PTT(125, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(126, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(127, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(128),
+-	ICE_PTT(129, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(130, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(131, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT -> MAC -> IPv6 */
+-	ICE_PTT(132, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(133, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(134, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(135),
+-	ICE_PTT(136, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(137, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(138, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT -> MAC/VLAN */
+-	ICE_PTT(139, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),
+-
+-	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv4 */
+-	ICE_PTT(140, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),
+-	ICE_PTT(141, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),
+-	ICE_PTT(142, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(143),
+-	ICE_PTT(144, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),
+-	ICE_PTT(145, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),
+-	ICE_PTT(146, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),
+-
+-	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv6 */
+-	ICE_PTT(147, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),
+-	ICE_PTT(148, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),
+-	ICE_PTT(149, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),
+-	ICE_PTT_UNUSED_ENTRY(150),
+-	ICE_PTT(151, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),
+-	ICE_PTT(152, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),
+-	ICE_PTT(153, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),
++	ICE_PTYPES
+ 
+ 	/* unused entries */
+-	[154 ... 1023] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
++	[ICE_NUM_DEFINED_PTYPES ... 1023] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+ };
+ 
+ static inline struct ice_rx_ptype_decoded ice_decode_rx_desc_ptype(u16 ptype)
 diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2515f5f7a2b6..e9589cadf811 100644
+index e9589cadf811..1caa73644e7b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -537,3 +537,25 @@ void ice_finalize_xdp_rx(struct ice_tx_ring *xdp_ring, unsigned int xdp_res,
- 			spin_unlock(&xdp_ring->tx_lock);
- 	}
+@@ -556,6 +556,78 @@ static int ice_xdp_rx_hw_ts(const struct xdp_md *ctx, u64 *ts_ns)
+ 	return 0;
  }
+ 
++/* Define a ptype index -> XDP hash type lookup table.
++ * It uses the same ptype definitions as ice_decode_rx_desc_ptype[],
++ * avoiding possible copy-paste errors.
++ */
++#undef ICE_PTT
++#undef ICE_PTT_UNUSED_ENTRY
++
++#define ICE_PTT(PTYPE, OUTER_IP, OUTER_IP_VER, OUTER_FRAG, T, TE, TEF, I, PL)\
++	[PTYPE] = XDP_RSS_L3_##OUTER_IP_VER | XDP_RSS_L4_##I | XDP_RSS_TYPE_##PL
++
++#define ICE_PTT_UNUSED_ENTRY(PTYPE) [PTYPE] = 0
++
++/* A few supplementary definitions for when XDP hash types do not coincide
++ * with what can be generated from ptype definitions
++ * by means of preprocessor concatenation.
++ */
++#define XDP_RSS_L3_NONE		XDP_RSS_TYPE_NONE
++#define XDP_RSS_L4_NONE		XDP_RSS_TYPE_NONE
++#define XDP_RSS_TYPE_PAY2	XDP_RSS_TYPE_L2
++#define XDP_RSS_TYPE_PAY3	XDP_RSS_TYPE_NONE
++#define XDP_RSS_TYPE_PAY4	XDP_RSS_L4
++
++static const enum xdp_rss_hash_type
++ice_ptype_to_xdp_hash[ICE_NUM_DEFINED_PTYPES] = {
++	ICE_PTYPES
++};
++
++#undef XDP_RSS_L3_NONE
++#undef XDP_RSS_L4_NONE
++#undef XDP_RSS_TYPE_PAY2
++#undef XDP_RSS_TYPE_PAY3
++#undef XDP_RSS_TYPE_PAY4
++
++#undef ICE_PTT
++#undef ICE_PTT_UNUSED_ENTRY
 +
 +/**
-+ * ice_xdp_rx_hw_ts - HW timestamp XDP hint handler
-+ * @ctx: XDP buff pointer
-+ * @ts_ns: destination address
-+ *
-+ * Copy HW timestamp (if available) to the destination address.
++ * ice_xdp_rx_hash_type - Get XDP-specific hash type from the RX descriptor
++ * @eop_desc: End of Packet descriptor
 + */
-+static int ice_xdp_rx_hw_ts(const struct xdp_md *ctx, u64 *ts_ns)
++static enum xdp_rss_hash_type
++ice_xdp_rx_hash_type(union ice_32b_rx_flex_desc *eop_desc)
++{
++	u16 ptype = ice_get_ptype(eop_desc);
++
++	if (unlikely(ptype >= ICE_NUM_DEFINED_PTYPES))
++		return 0;
++
++	return ice_ptype_to_xdp_hash[ptype];
++}
++
++/**
++ * ice_xdp_rx_hash - RX hash XDP hint handler
++ * @ctx: XDP buff pointer
++ * @hash: hash destination address
++ * @rss_type: XDP hash type destination address
++ *
++ * Copy RX hash (if available) and its type to the destination address.
++ */
++static int ice_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
++			   enum xdp_rss_hash_type *rss_type)
 +{
 +	const struct ice_xdp_buff *xdp_ext = (void *)ctx;
 +
-+	if (!ice_ptp_copy_rx_hwts_from_desc(xdp_ext->rx_ring,
-+					    xdp_ext->eop_desc, ts_ns))
++	*rss_type = ice_xdp_rx_hash_type(xdp_ext->eop_desc);
++	if (!ice_copy_rx_hash_from_desc(xdp_ext->eop_desc, hash))
 +		return -EOPNOTSUPP;
 +
 +	return 0;
 +}
 +
-+const struct xdp_metadata_ops ice_xdp_md_ops = {
-+	.xmo_rx_timestamp		= ice_xdp_rx_hw_ts,
-+};
+ const struct xdp_metadata_ops ice_xdp_md_ops = {
+ 	.xmo_rx_timestamp		= ice_xdp_rx_hw_ts,
++	.xmo_rx_hash			= ice_xdp_rx_hash,
+ };
+diff --git a/include/net/xdp.h b/include/net/xdp.h
+index d1c5381fc95f..6381560efae2 100644
+--- a/include/net/xdp.h
++++ b/include/net/xdp.h
+@@ -417,6 +417,7 @@ enum xdp_rss_hash_type {
+ 	XDP_RSS_L4_UDP		= BIT(5),
+ 	XDP_RSS_L4_SCTP		= BIT(6),
+ 	XDP_RSS_L4_IPSEC	= BIT(7), /* L4 based hash include IPSEC SPI */
++	XDP_RSS_L4_ICMP		= BIT(8),
+ 
+ 	/* Second part: RSS hash type combinations used for driver HW mapping */
+ 	XDP_RSS_TYPE_NONE            = 0,
+@@ -432,11 +433,13 @@ enum xdp_rss_hash_type {
+ 	XDP_RSS_TYPE_L4_IPV4_UDP     = XDP_RSS_L3_IPV4 | XDP_RSS_L4 | XDP_RSS_L4_UDP,
+ 	XDP_RSS_TYPE_L4_IPV4_SCTP    = XDP_RSS_L3_IPV4 | XDP_RSS_L4 | XDP_RSS_L4_SCTP,
+ 	XDP_RSS_TYPE_L4_IPV4_IPSEC   = XDP_RSS_L3_IPV4 | XDP_RSS_L4 | XDP_RSS_L4_IPSEC,
++	XDP_RSS_TYPE_L4_IPV4_ICMP    = XDP_RSS_L3_IPV4 | XDP_RSS_L4 | XDP_RSS_L4_ICMP,
+ 
+ 	XDP_RSS_TYPE_L4_IPV6_TCP     = XDP_RSS_L3_IPV6 | XDP_RSS_L4 | XDP_RSS_L4_TCP,
+ 	XDP_RSS_TYPE_L4_IPV6_UDP     = XDP_RSS_L3_IPV6 | XDP_RSS_L4 | XDP_RSS_L4_UDP,
+ 	XDP_RSS_TYPE_L4_IPV6_SCTP    = XDP_RSS_L3_IPV6 | XDP_RSS_L4 | XDP_RSS_L4_SCTP,
+ 	XDP_RSS_TYPE_L4_IPV6_IPSEC   = XDP_RSS_L3_IPV6 | XDP_RSS_L4 | XDP_RSS_L4_IPSEC,
++	XDP_RSS_TYPE_L4_IPV6_ICMP    = XDP_RSS_L3_IPV6 | XDP_RSS_L4 | XDP_RSS_L4_ICMP,
+ 
+ 	XDP_RSS_TYPE_L4_IPV6_TCP_EX  = XDP_RSS_TYPE_L4_IPV6_TCP  | XDP_RSS_L3_DYNHDR,
+ 	XDP_RSS_TYPE_L4_IPV6_UDP_EX  = XDP_RSS_TYPE_L4_IPV6_UDP  | XDP_RSS_L3_DYNHDR,
 -- 
 2.35.3
 
