@@ -1,91 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C6CD700B5C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:22:01 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F76B700B5F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 17:22:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD9AF42CC0;
-	Fri, 12 May 2023 15:21:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD9AF42CC0
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2133F42C8C;
+	Fri, 12 May 2023 15:22:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2133F42C8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683904919;
-	bh=gBxjwlReq7TndV7okD3eIdl3s2Zt++zJY1yPo0MdoFQ=;
+	s=default; t=1683904924;
+	bh=8H8HLIvWe53tpNDN6jzZOy1nmlqb6kHNvfLV9SI6DDY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=s/QdGQpgBiWYZkyOOOzvmXjmIG9z4OB23psUuw2/d69kGWiQ/QYt1pBzvY5N4PDfG
-	 XRBPEiMfwZ8zf5p3zVWWzv1fDdh0OfsKp4UKJf+JziB23tr4MWjSJdu/YeQ+GOiZtA
-	 N9ft/Sjz4kq5gqQFpoj40yq4JH9wl7qRhhak+OveicDIS49U4zUzUDm9zwGtE8xoRl
-	 Pr8n6lLetmyHil86wndMcsxegJ5ySg1W1jZWvsPuTjyk7izzcqnO+muSpYpQwv4Zq1
-	 8qjkaF7YT4xdbWc1t/xZy2VzhRgnx9QsBp1NKe1WErkbj0yS6wjPXvubkJRxIdBHSW
-	 9YAjb+E07UuGA==
+	b=OwenpuU21+E4Ctkaz1P5w6xky7y3XvmYHPg0HaUmyEGLFEBv0A4h3gcUePSMzId3+
+	 KqOdmkk+yYdFquSqN6sy9QSm8fs8gKU5F71ql1aTPb0P9d5W6I0TkVIWQb0S7xrd+Q
+	 ingRtcyhK0uN6cKYa0cAxpYUqmcENpEDa2vR54bwXZGApjCg3TPQHo7AZRLSjRvVmZ
+	 sIjP19xxoAz62M5vA93uCZTIawIlJTL13GZFQG9GKZXBI/G4wG9RFqOq654l31Mfup
+	 ajiO8fP62GeN3CXxHvefHwoALFNyIJx1R/n+gGnhyYHytUEaGScP1GXABgJ/SbH88k
+	 CjhDJV3yd5DLA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fHIiWPHqNIM1; Fri, 12 May 2023 15:21:58 +0000 (UTC)
+	with ESMTP id PGzLjA-rfJPX; Fri, 12 May 2023 15:22:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C0D342C53;
-	Fri, 12 May 2023 15:21:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5C0D342C53
+	by smtp4.osuosl.org (Postfix) with ESMTP id 985D742C53;
+	Fri, 12 May 2023 15:22:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 985D742C53
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6FF1F1BF2CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C22061BF2CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 464A742C56
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 464A742C56
+ by smtp4.osuosl.org (Postfix) with ESMTP id 977F342C9E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 977F342C9E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vI40BUx9Liiz for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 15:21:24 +0000 (UTC)
+ with ESMTP id NGI7dFDJEzSG for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 15:21:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 567BA42CBC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D3C142C8D
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 567BA42CBC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="353061257"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="353061257"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7D3C142C8D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 15:21:26 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="353061281"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="353061281"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2023 08:20:55 -0700
+ 12 May 2023 08:20:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="812114587"
-X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="812114587"
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="812114619"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="812114619"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga002.fm.intel.com with ESMTP; 12 May 2023 08:20:48 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 12 May 2023 08:20:51 -0700
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id AC6653635B;
- Fri, 12 May 2023 16:20:43 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id E679036376;
+ Fri, 12 May 2023 16:20:47 +0100 (IST)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: bpf@vger.kernel.org
-Date: Fri, 12 May 2023 17:16:37 +0200
-Message-Id: <20230512151639.992033-14-larysa.zaremba@intel.com>
+Date: Fri, 12 May 2023 17:16:38 +0200
+Message-Id: <20230512151639.992033-15-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230512151639.992033-1-larysa.zaremba@intel.com>
 References: <20230512151639.992033-1-larysa.zaremba@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683904884; x=1715440884;
+ t=1683904886; x=1715440886;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Ju9PvqXqCCJFMNbWyzPaBdJfLC40q1RU30A9+HNOEsU=;
- b=Ef+yEIoF3zkGqe5trupDrhzHMn4DHXVmC8ivvz/AeS3r6La/7+7Ts8M6
- zYxPFyAGRcAL0cpZWBJPw07ivVvJs3ueU/o1d6PDG3rpb+NYCZpPOWNm+
- l80w820y44gITbur43MzPHkNtIT0mDhQWMKNjk3drnrGoWdhvYJIIVu9X
- oMs4VhC7hdHbOc/VpgXKd2evwRAeXxGrmTtpBEC6VhhR7OwgRIpql8LhT
- zKF8v9tZLnp1Lh4zZjXU9SY4N8ePC1N2qK1sXeHN38vwKZb49P2m6ZdGC
- zJwxrFgruE6RIHx0Ln7myUvsViuTchnNrxoJFMKIu7XPeL7tNJGY8P91p
- A==;
+ bh=lrRJS0jP369ocGK4OM/oyS3+pmBq12NrPBpQcE0bU8o=;
+ b=MGTH4Psvd9pTGdmHzVHORE2eAsgK0AKN6YK7iYuN2FcpV1WXk7rCORjz
+ G63PGX6PfTuaQQ4Lg8bFVyA9wS6H1q4zLL2RMN1Xphlq4knl/9r7YrsUR
+ YJ63CJSrS4UIyMbV+ZdLFMZTqRvTtSNKyNBrx1wVl+aIf0sV1z07OKjME
+ 82dGEGiCU0KaCGvjBij4ZjxZnwBJ76P46XZ4KgesIAOscYfeYuLG8aPQd
+ P36uPuoDQF7/YtgdEj3F6N99ytQriW6QTHXLVGDBPEDbA/f6xpsGiY9Qj
+ 2PslpwTNJK5goYrG97rXMcpFawzNtMjN6q9pSPCuH/3Zy4wWhD9TRDDur
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Ef+yEIoF
-Subject: [Intel-wired-lan] [PATCH 13/15] selftests/bpf: Allow VLAN packets
- in xdp_hw_metadata
+ header.a=rsa-sha256 header.s=Intel header.b=MGTH4Psv
+Subject: [Intel-wired-lan] [PATCH 14/15] net, xdp: allow metadata > 32
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,64 +114,80 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Make VLAN c-tag and s-tag XDP hint testing more convenient
-by not skipping VLAN-ed packets.
+From: Aleksander Lobakin <aleksander.lobakin@intel.com>
 
-Allow both 802.1ad and 802.1Q headers.
+When using XDP hints, metadata sometimes has to be much bigger
+than 32 bytes. Relax the restriction, allow metadata larger than 32 bytes
+and make __skb_metadata_differs() work with bigger lengths.
 
+Now size of metadata is only limited by the fact it is stored as u8
+in skb_shared_info, so maximum possible value is 255. Other important
+conditions, such as having enough space for xdp_frame building, are already
+checked in bpf_xdp_adjust_meta().
+
+The requirement of having its length aligned to 4 bytes is still
+valid.
+
+Signed-off-by: Aleksander Lobakin <aleksander.lobakin@intel.com>
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- tools/testing/selftests/bpf/progs/xdp_hw_metadata.c | 9 ++++++++-
- tools/testing/selftests/bpf/xdp_metadata.h          | 8 ++++++++
- 2 files changed, 16 insertions(+), 1 deletion(-)
+ include/linux/skbuff.h | 13 ++++++++-----
+ include/net/xdp.h      |  7 ++++++-
+ 2 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-index b2dfd7066c6e..f95f82a8b449 100644
---- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-+++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
-@@ -26,15 +26,22 @@ int rx(struct xdp_md *ctx)
+diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
+index 8ddb4af1a501..afcd372aecdf 100644
+--- a/include/linux/skbuff.h
++++ b/include/linux/skbuff.h
+@@ -4219,10 +4219,13 @@ static inline bool __skb_metadata_differs(const struct sk_buff *skb_a,
  {
- 	void *data, *data_meta, *data_end;
- 	struct ipv6hdr *ip6h = NULL;
--	struct ethhdr *eth = NULL;
- 	struct udphdr *udp = NULL;
- 	struct iphdr *iph = NULL;
- 	struct xdp_meta *meta;
-+	struct ethhdr *eth;
- 	int err;
+ 	const void *a = skb_metadata_end(skb_a);
+ 	const void *b = skb_metadata_end(skb_b);
+-	/* Using more efficient varaiant than plain call to memcmp(). */
+-#if defined(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS) && BITS_PER_LONG == 64
+ 	u64 diffs = 0;
  
- 	data = (void *)(long)ctx->data;
- 	data_end = (void *)(long)ctx->data_end;
- 	eth = data;
++	if (!IS_ENABLED(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS) ||
++	    BITS_PER_LONG != 64)
++		goto slow;
 +
-+	if (eth + 1 < data_end && eth->h_proto == bpf_htons(ETH_P_8021AD))
-+		eth = (void *)eth + sizeof(struct vlan_hdr);
-+
-+	if (eth + 1 < data_end && eth->h_proto == bpf_htons(ETH_P_8021Q))
-+		eth = (void *)eth + sizeof(struct vlan_hdr);
-+
- 	if (eth + 1 < data_end) {
- 		if (eth->h_proto == bpf_htons(ETH_P_IP)) {
- 			iph = (void *)(eth + 1);
-diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
-index 938a729bd307..6664893c2c77 100644
---- a/tools/testing/selftests/bpf/xdp_metadata.h
-+++ b/tools/testing/selftests/bpf/xdp_metadata.h
-@@ -9,6 +9,14 @@
- #define ETH_P_IPV6 0x86DD
- #endif
++	/* Using more efficient variant than plain call to memcmp(). */
+ 	switch (meta_len) {
+ #define __it(x, op) (x -= sizeof(u##op))
+ #define __it_diff(a, b, op) (*(u##op *)__it(a, op)) ^ (*(u##op *)__it(b, op))
+@@ -4242,11 +4245,11 @@ static inline bool __skb_metadata_differs(const struct sk_buff *skb_a,
+ 		fallthrough;
+ 	case  4: diffs |= __it_diff(a, b, 32);
+ 		break;
++	default:
++slow:
++		return memcmp(a - meta_len, b - meta_len, meta_len);
+ 	}
+ 	return diffs;
+-#else
+-	return memcmp(a - meta_len, b - meta_len, meta_len);
+-#endif
+ }
  
-+#ifndef ETH_P_8021Q
-+#define ETH_P_8021Q 0x8100
-+#endif
+ static inline bool skb_metadata_differs(const struct sk_buff *skb_a,
+diff --git a/include/net/xdp.h b/include/net/xdp.h
+index 0fbd25616241..f48723250c7c 100644
+--- a/include/net/xdp.h
++++ b/include/net/xdp.h
+@@ -370,7 +370,12 @@ xdp_data_meta_unsupported(const struct xdp_buff *xdp)
+ 
+ static inline bool xdp_metalen_invalid(unsigned long metalen)
+ {
+-	return (metalen & (sizeof(__u32) - 1)) || (metalen > 32);
++	typeof(metalen) meta_max;
 +
-+#ifndef ETH_P_8021AD
-+#define ETH_P_8021AD 0x88A8
-+#endif
++	meta_max = type_max(typeof_member(struct skb_shared_info, meta_len));
++	BUILD_BUG_ON(!__builtin_constant_p(meta_max));
 +
- struct xdp_meta {
- 	__u64 rx_timestamp;
- 	__u64 xdp_timestamp;
++	return !IS_ALIGNED(metalen, sizeof(u32)) || metalen > meta_max;
+ }
+ 
+ struct xdp_attachment_info {
 -- 
 2.35.3
 
