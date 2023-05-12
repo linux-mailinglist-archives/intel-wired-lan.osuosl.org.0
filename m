@@ -1,112 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A26D070009B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 08:34:31 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 415587001ED
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 09:55:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 332CF4057C;
-	Fri, 12 May 2023 06:34:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 332CF4057C
+	by smtp1.osuosl.org (Postfix) with ESMTP id CFEEC84848;
+	Fri, 12 May 2023 07:55:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFEEC84848
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683873270;
-	bh=uryyevP2yeGx39PuqoHSAGF4v+F/TJhjamIBAdIHaBI=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=FSECqF/aCX0MqciXFoJ7jYBak5sYxhkOlR3eAxABfC1tz04y1S0poo08ZG7S2pbq5
-	 GAVbTs296tmH1WAdlHvOrUTYYQdQOE3inxniCZiFdwi35sD8Luy6DvuG38kdSFN/h9
-	 s8gqjo7eSGfnbMeUTrVNMN5iNgSMEcLGE75wkksv5sLacRXFfnZbef+7qkSqCuOBhz
-	 fYoF0cevQMhCIwX8DzPk77QRfZavoTw6LEOCslEVt7543xmtBQ3osKxi/xJ4EsyXtK
-	 cfs3SX1UFE2RVsvegXgzaiCGEfLkJtk4czfEfYakdNxUSqfCtyvh7lLag03Wj8m2lC
-	 qA63mGCz2GULQ==
+	s=default; t=1683878152;
+	bh=yFmT+2LBchwQE9TrSv6eiLiU1ckTVBYYDVedPKCJqpY=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=GbjV10s/KdIX6Aop3twtM4tNCiGrQNv4feplbGdYZEWojavMf+7/kRxN5NCr5EdMZ
+	 59Zo5jvhyK1TUD+8u4JvHONl8lT9bELm0t52vOQB/J008WzDNxlZiaoWLP7EuhPeQ8
+	 jk+ZEk6AavQTRJj3UpJrbsaBmYjMSRx274P+HDkNeBMvZp7XxRI4GzX69Z5iypdVVp
+	 HPgQqQS0L3W8KCrargR6zUiXYa2qjzGouriucemVNOMRoFQcLWh0ai/BoE4qmO2uDJ
+	 aOuOQzuLt6J7mSO2fkl7zse9YWCM1PBmkRl2UCu+G11qchRA2RUooZGXTjH2H5ka+C
+	 M2R1gwuQXp9SQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id S9HbDCjsTC8u; Fri, 12 May 2023 06:34:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cATiMeFirXVW; Fri, 12 May 2023 07:55:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 429AD40124;
-	Fri, 12 May 2023 06:34:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 429AD40124
+	by smtp1.osuosl.org (Postfix) with ESMTP id 699DE84828;
+	Fri, 12 May 2023 07:55:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 699DE84828
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AD7111BF293
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 06:34:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BB131BF404
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 07:55:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6CF3F42B33
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 06:34:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CF3F42B33
+ by smtp2.osuosl.org (Postfix) with ESMTP id E795940131
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 07:55:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E795940131
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T9CWZJ_nQLiF for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 06:34:20 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id v1XHE0eM10dO for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 07:55:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5BE8841892
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5BE8841892
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 06:34:20 +0000 (UTC)
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-592-T3JPUpjTPpeY4NZMacE8qQ-1; Fri, 12 May 2023 02:34:16 -0400
-X-MC-Unique: T3JPUpjTPpeY4NZMacE8qQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-30620ebd3c2so5813017f8f.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 May 2023 23:34:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683873255; x=1686465255;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zjxPhTwlJ0gSAXm/xYej7tUn+zGKaRSBTdt9lwnPXWw=;
- b=fWqDhF1sM6AlMxRYPLpSiqXq8AKTxSiWnssMnDp80SR8XzfS2oqX8awtJiwXPF/LSo
- J9MBXg79dZENBk5203ijg7hKabPkPGw+jGuK5do6bo15kupy1xFK9mKbRYrFNSx9Xo55
- 2PdTTc9aSblenDy8E91MED8+xr0RB2+bditX/ToUtt1M7FozfXsJh+tm/O+f/Zsq0CBL
- FtZayEnFgUL4BlZQWpkj4/bTFRedV/UuVHTWoPXeM7ajWBXOxZ6g+htyQzcR38I37VsE
- CVl/w6SPNfjPG3iUCa8u6h1lwAwSDenJoFT9yzQ5una5wEaE3m9NPt8XDp8v0cpMOXhA
- 74PQ==
-X-Gm-Message-State: AC+VfDxcH5XfcBSf7E9dbL8syd3dkKhhU3prZFPOKotpbWk/eqY/qcA1
- gwK1oK+KJlYg8nWMMbqOpaiCMFhhp9i0qNtoIUUl0glCzO4Hubf/t5FajKD7vVctUIsuVhDvbN9
- t73MQ3Tb+8fwdewStJU7soNBzZQ7E9g==
-X-Received: by 2002:a5d:6ac4:0:b0:306:2ef0:d223 with SMTP id
- u4-20020a5d6ac4000000b003062ef0d223mr18330077wrw.62.1683873255628; 
- Thu, 11 May 2023 23:34:15 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5BOyfXBP8O2EKoKQZs6mbBtDkOi5Ez8iWB4eaUmIbC+BWbYmeJxtRn8zI5VOSsuAU7Aal4Pw==
-X-Received: by 2002:a5d:6ac4:0:b0:306:2ef0:d223 with SMTP id
- u4-20020a5d6ac4000000b003062ef0d223mr18330056wrw.62.1683873255281; 
- Thu, 11 May 2023 23:34:15 -0700 (PDT)
-Received: from redhat.com ([31.187.78.61]) by smtp.gmail.com with ESMTPSA id
- w12-20020a05600c474c00b003f07ef4e3e0sm15048300wmo.0.2023.05.11.23.34.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 May 2023 23:34:14 -0700 (PDT)
-Date: Fri, 12 May 2023 02:34:09 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Emil Tantilov <emil.s.tantilov@intel.com>
-Message-ID: <20230512023234-mutt-send-email-mst@kernel.org>
-References: <20230508194326.482-1-emil.s.tantilov@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <20230508194326.482-1-emil.s.tantilov@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1683873258;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zjxPhTwlJ0gSAXm/xYej7tUn+zGKaRSBTdt9lwnPXWw=;
- b=bOkwOxXoZr4tPV8RTVYsMI8ttigtOqWgn8b+FpyXTxlGVs0hOBWg3hdV2AU2weu7ppeJhp
- o1WfGWxAoowQN5WV9s38jhDdEQB7HgghnIdG8inTrxspmhx1wC/WdJSyhA8DDZ/NOn1Dcb
- GTx0vxdU/TCtR+IcO3QFivst5wo8oIg=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=bOkwOxXo
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 00/15] Introduce Intel
- IDPF driver
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3F9140102
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D3F9140102
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 07:55:43 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10707"; a="352978005"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="352978005"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 May 2023 00:55:43 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10707"; a="694135273"
+X-IronPort-AV: E=Sophos;i="5.99,269,1677571200"; d="scan'208";a="694135273"
+Received: from lkp-server01.sh.intel.com (HELO dea6d5a4f140) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 12 May 2023 00:55:42 -0700
+Received: from kbuild by dea6d5a4f140 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pxNcr-0004fR-1Z
+ for intel-wired-lan@lists.osuosl.org; Fri, 12 May 2023 07:55:41 +0000
+Date: Fri, 12 May 2023 15:55:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <20230512075514.PHamV%lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1683878143; x=1715414143;
+ h=date:from:to:subject:message-id;
+ bh=JMikx+vToD0CZbZRVxRVSxpTlPFs9bZcWbkGoZUp6ws=;
+ b=bxmP3dAoT0avFr86WuemOeOLiO149viB8PEhCr7TYrSWSkIMaJWDtsvy
+ XwZpJU5DtTzBje6lA7JMG4gx7xXKg+5CwGEzU1im+LoWa1w5AMj4iHaF7
+ 9EvhuYqw0vHQ7889cqw7T/TllTUW6JXkvJiPyErOVkN5Fh/IaD3itAHuo
+ cVoKRFobmwDEe66EiwgeeL5P2mwxAZjDoksLzoVA6OZ5t5twee1UkTQbs
+ e89bX+Y8kayrdFnlEbXoyfV/BndeADsKrEDqWHA+UCJCz/53K8ao6f/9d
+ QAOIKDymnaMTdOdqQ7H7iniKkiIVpJeD2q7T+bcxYIJGmosvuPpO1XBnz
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=bxmP3dAo
+Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
+ bc88ba0cad64a4aa85f9deca79c6f3addcd21795
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,201 +93,239 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: willemb@google.com, pabeni@redhat.com, leon@kernel.org,
- simon.horman@corigine.com, jesse.brandeburg@intel.com, edumazet@google.com,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- anthony.l.nguyen@intel.com, decot@google.com, davem@davemloft.net,
- shannon.nelson@amd.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 08, 2023 at 12:43:11PM -0700, Emil Tantilov wrote:
-> This patch series introduces the Intel Infrastructure Data Path Function
-> (IDPF) driver. It is used for both physical and virtual functions. Except
-> for some of the device operations the rest of the functionality is the
-> same for both PF and VF. IDPF uses virtchnl version2 opcodes and
-> structures defined in the virtchnl2 header file which helps the driver
-> to learn the capabilities and register offsets from the device
-> Control Plane (CP) instead of assuming the default values.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git main
+branch HEAD: bc88ba0cad64a4aa85f9deca79c6f3addcd21795  Merge git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net
 
-So, is this for merge in the next cycle?  Should this be an RFC rather?
-It seems unlikely that the IDPF specification will be finalized by that
-time - how are you going to handle any specification changes?
+elapsed time: 729m
 
+configs tested: 211
+configs skipped: 28
 
-> The format of the series follows the driver init flow to interface open.
-> To start with, probe gets called and kicks off the driver initialization
-> by spawning the 'vc_event_task' work queue which in turn calls the
-> 'hard reset' function. As part of that, the mailbox is initialized which
-> is used to send/receive the virtchnl messages to/from the CP. Once that is
-> done, 'core init' kicks in which requests all the required global resources
-> from the CP and spawns the 'init_task' work queue to create the vports.
-> 
-> Based on the capability information received, the driver creates the said
-> number of vports (one or many) where each vport is associated to a netdev.
-> Also, each vport has its own resources such as queues, vectors etc.
-> >From there, rest of the netdev_ops and data path are added.
-> 
-> IDPF implements both single queue which is traditional queueing model
-> as well as split queue model. In split queue model, it uses separate queue
-> for both completion descriptors and buffers which helps to implement
-> out-of-order completions. It also helps to implement asymmetric queues,
-> for example multiple RX completion queues can be processed by a single
-> RX buffer queue and multiple TX buffer queues can be processed by a
-> single TX completion queue. In single queue model, same queue is used
-> for both descriptor completions as well as buffer completions. It also
-> supports features such as generic checksum offload, generic receive
-> offload (hardware GRO) etc.
-> 
-> v3 --> v4: link [3]
->  (patch 1):
->  * cleanups in virtchnl2 including redundant error codes, naming and
->    whitespace
->  (patch 3):
->  * removed "__" prefix from names of adapter and vport flags, converted
->    comments to kernel-doc style
->  * renamed error code variable names in controlq to be more consistent
->    with rest of the code
->  * removed Control Plane specific opcodes and changed "peer" type comments
->    to CP
->  * replaced managed dma calls with their non-managed equivalent
->  (patch 4):
->  * added additional info to some error messages on init to aid in debug
->  * removed unnecessary zero-init before loop and zeroing memcpy after
->    kzalloc()
->  * corrected wording of comment in idpf_wait_for_event() s/wake up/woken/
->  * replaced managed dma calls with their non-managed equivalent
-> 
-> [3] https://lore.kernel.org/netdev/20230427020917.12029-1-emil.s.tantilov@intel.com/
-> 
-> v2 --> v3: link [2]
->  * converted virtchnl2 defines to enums
->  * fixed comment style in virtchnl2 to follow kernel-doc format
->  * removed empty lines between end of structs and size check macro
->    checkpatch will mark these instances as CHECK
->  * cleaned up unused Rx descriptor structs and related bits in virtchnl2
->  * converted Rx descriptor bit offsets into bitmasks to better align with
->    the use of GENMASK and FIELD_GET
->  * added device ids to pci_tbl from the start
->  * consolidated common probe and remove functions into idpf_probe() and
->    idpf_remove() respectively
->  * removed needless adapter NULL checks
->  * removed devm_kzalloc() in favor of kzalloc(), including kfree in
->    error and exit code path
->  * replaced instances of kcalloc() calls where either size parameter was
->    1 with kzalloc(), reported by smatch
->  * used kmemdup() in some instances reported by coccicheck
->  * added explicit error code and comment explaining the condition for
->    the exit to address warning by smatch
->  * moved build support to the last patch
-> 
-> [2] https://lore.kernel.org/netdev/20230411011354.2619359-1-pavan.kumar.linga@intel.com/
-> 
-> v1 --> v2: link [1]
->  * removed the OASIS reference in the commit message to make it clear
->    that this is an Intel vendor specific driver
->  * fixed misspells
->  * used comment starter "/**" for struct and definition headers in
->    virtchnl header files
->  * removed AVF reference
->  * renamed APF reference to IDPF
->  * added a comment to explain the reason for 'no flex field' at the end of
->    virtchnl2_get_ptype_info struct
->  * removed 'key[1]' in virtchnl2_rss_key struct as it is not used
->  * set VIRTCHNL2_RXDID_2_FLEX_SQ_NIC to VIRTCHNL2_RXDID_2_FLEX_SPLITQ
->    instead of assigning the same value
->  * cleanup unnecessary NULL assignment to the rx_buf skb pointer since
->    it is not used in splitq model
->  * added comments to clarify the generation bit usage in splitq model
->  * introduced 'reuse_bias' in the page_info structure and make use of it
->    in the hot path
->  * fixed RCT format in idpf_rx_construct_skb
->  * report SPEED_UNKNOWN and DUPLEX_UNKNOWN when the link is down
->  * fixed -Wframe-larger-than warning reported by lkp bot in
->    idpf_vport_queue_ids_init
->  * updated the documentation in idpf.rst to fix LKP bot warning
-> 
-> [1] https://lore.kernel.org/netdev/20230329140404.1647925-1-pavan.kumar.linga@intel.com/
-> 
-> Alan Brady (4):
->   idpf: configure resources for TX queues
->   idpf: configure resources for RX queues
->   idpf: add RX splitq napi poll support
->   idpf: add ethtool callbacks
-> 
-> Joshua Hay (5):
->   idpf: add controlq init and reset checks
->   idpf: add splitq start_xmit
->   idpf: add TX splitq napi poll support
->   idpf: add singleq start_xmit and napi poll
->   idpf: configure SRIOV and add other ndo_ops
-> 
-> Pavan Kumar Linga (5):
->   virtchnl: add virtchnl version 2 ops
->   idpf: add core init and interrupt request
->   idpf: add create vport and netdev configuration
->   idpf: continue expanding init task
->   idpf: initialize interrupts and enable vport
-> 
-> Phani Burra (1):
->   idpf: add module register and probe functionality
-> 
->  .../device_drivers/ethernet/intel/idpf.rst    |  162 +
->  drivers/net/ethernet/intel/Kconfig            |   10 +
->  drivers/net/ethernet/intel/Makefile           |    1 +
->  drivers/net/ethernet/intel/idpf/Makefile      |   18 +
->  drivers/net/ethernet/intel/idpf/idpf.h        |  752 +++
->  .../net/ethernet/intel/idpf/idpf_controlq.c   |  641 +++
->  .../net/ethernet/intel/idpf/idpf_controlq.h   |  131 +
->  .../ethernet/intel/idpf/idpf_controlq_api.h   |  169 +
->  .../ethernet/intel/idpf/idpf_controlq_setup.c |  175 +
->  drivers/net/ethernet/intel/idpf/idpf_dev.c    |  165 +
->  drivers/net/ethernet/intel/idpf/idpf_devids.h |   10 +
->  .../net/ethernet/intel/idpf/idpf_ethtool.c    | 1330 +++++
->  .../ethernet/intel/idpf/idpf_lan_pf_regs.h    |  124 +
->  .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |  293 +
->  .../ethernet/intel/idpf/idpf_lan_vf_regs.h    |  128 +
->  drivers/net/ethernet/intel/idpf/idpf_lib.c    | 2349 ++++++++
->  drivers/net/ethernet/intel/idpf/idpf_main.c   |  266 +
->  drivers/net/ethernet/intel/idpf/idpf_mem.h    |   20 +
->  .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 1251 +++++
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 4855 +++++++++++++++++
->  drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  854 +++
->  drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  164 +
->  .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 3820 +++++++++++++
->  drivers/net/ethernet/intel/idpf/virtchnl2.h   | 1301 +++++
->  .../ethernet/intel/idpf/virtchnl2_lan_desc.h  |  448 ++
->  25 files changed, 19437 insertions(+)
->  create mode 100644 Documentation/networking/device_drivers/ethernet/intel/idpf.rst
->  create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq_api.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq_setup.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ethtool.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_pf_regs.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_vf_regs.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lib.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_mem.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_txrx.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_txrx.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
->  create mode 100644 drivers/net/ethernet/intel/idpf/virtchnl2.h
->  create mode 100644 drivers/net/ethernet/intel/idpf/virtchnl2_lan_desc.h
-> 
-> -- 
-> 2.17.2
-> 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha        buildonly-randconfig-r005-20230511   gcc  
+alpha        buildonly-randconfig-r006-20230510   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r002-20230511   gcc  
+alpha                randconfig-r013-20230511   gcc  
+alpha                randconfig-r014-20230510   gcc  
+alpha                randconfig-r015-20230510   gcc  
+alpha                randconfig-r015-20230511   gcc  
+alpha                randconfig-r016-20230509   gcc  
+alpha                randconfig-r036-20230510   gcc  
+arc                              allyesconfig   gcc  
+arc          buildonly-randconfig-r001-20230511   gcc  
+arc          buildonly-randconfig-r002-20230510   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r001-20230509   gcc  
+arc                  randconfig-r006-20230509   gcc  
+arc                  randconfig-r011-20230509   gcc  
+arc                  randconfig-r011-20230511   gcc  
+arc                  randconfig-r015-20230509   gcc  
+arc                  randconfig-r022-20230509   gcc  
+arc                  randconfig-r043-20230509   gcc  
+arc                  randconfig-r043-20230511   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm          buildonly-randconfig-r001-20230511   clang
+arm          buildonly-randconfig-r005-20230512   gcc  
+arm                                 defconfig   gcc  
+arm                  randconfig-r001-20230509   clang
+arm                  randconfig-r002-20230509   clang
+arm                  randconfig-r004-20230509   clang
+arm                  randconfig-r005-20230511   gcc  
+arm                  randconfig-r013-20230510   gcc  
+arm                  randconfig-r013-20230511   clang
+arm                  randconfig-r024-20230509   gcc  
+arm                  randconfig-r026-20230509   gcc  
+arm                  randconfig-r046-20230509   gcc  
+arm                  randconfig-r046-20230511   clang
+arm64                            allyesconfig   gcc  
+arm64        buildonly-randconfig-r006-20230509   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r002-20230511   clang
+arm64                randconfig-r013-20230509   clang
+arm64                randconfig-r015-20230512   clang
+arm64                randconfig-r033-20230509   gcc  
+csky         buildonly-randconfig-r002-20230511   gcc  
+csky         buildonly-randconfig-r003-20230510   gcc  
+csky         buildonly-randconfig-r006-20230511   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r005-20230509   gcc  
+csky                 randconfig-r011-20230512   gcc  
+csky                 randconfig-r014-20230509   gcc  
+csky                 randconfig-r021-20230511   gcc  
+csky                 randconfig-r023-20230511   gcc  
+csky                 randconfig-r033-20230511   gcc  
+csky                 randconfig-r034-20230511   gcc  
+hexagon      buildonly-randconfig-r003-20230511   clang
+hexagon      buildonly-randconfig-r004-20230510   clang
+hexagon      buildonly-randconfig-r004-20230511   clang
+hexagon              randconfig-r005-20230509   clang
+hexagon              randconfig-r014-20230512   clang
+hexagon              randconfig-r016-20230511   clang
+hexagon              randconfig-r016-20230512   clang
+hexagon              randconfig-r024-20230509   clang
+hexagon              randconfig-r031-20230509   clang
+hexagon              randconfig-r032-20230512   clang
+hexagon              randconfig-r034-20230510   clang
+hexagon              randconfig-r035-20230512   clang
+hexagon              randconfig-r041-20230509   clang
+hexagon              randconfig-r041-20230511   clang
+hexagon              randconfig-r045-20230509   clang
+hexagon              randconfig-r045-20230511   clang
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+ia64                             allmodconfig   gcc  
+ia64                                defconfig   gcc  
+ia64                 randconfig-r006-20230511   gcc  
+ia64                 randconfig-r012-20230509   gcc  
+ia64                 randconfig-r015-20230509   gcc  
+ia64                 randconfig-r015-20230511   gcc  
+ia64                 randconfig-r031-20230509   gcc  
+ia64                 randconfig-r035-20230511   gcc  
+ia64                 randconfig-r036-20230511   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch    buildonly-randconfig-r001-20230510   gcc  
+loongarch    buildonly-randconfig-r005-20230509   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r003-20230509   gcc  
+loongarch            randconfig-r014-20230511   gcc  
+loongarch            randconfig-r032-20230509   gcc  
+loongarch            randconfig-r034-20230511   gcc  
+m68k                             allmodconfig   gcc  
+m68k         buildonly-randconfig-r001-20230512   gcc  
+m68k         buildonly-randconfig-r003-20230511   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r011-20230509   gcc  
+m68k                 randconfig-r014-20230511   gcc  
+m68k                 randconfig-r021-20230509   gcc  
+m68k                 randconfig-r021-20230511   gcc  
+m68k                 randconfig-r025-20230511   gcc  
+microblaze   buildonly-randconfig-r001-20230511   gcc  
+microblaze           randconfig-r002-20230509   gcc  
+microblaze           randconfig-r005-20230511   gcc  
+microblaze           randconfig-r023-20230509   gcc  
+microblaze           randconfig-r031-20230510   gcc  
+microblaze           randconfig-r031-20230511   gcc  
+microblaze           randconfig-r033-20230511   gcc  
+microblaze           randconfig-r033-20230512   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips         buildonly-randconfig-r003-20230512   clang
+mips                 randconfig-r005-20230509   clang
+mips                 randconfig-r006-20230511   gcc  
+mips                 randconfig-r024-20230511   clang
+nios2        buildonly-randconfig-r001-20230509   gcc  
+nios2                               defconfig   gcc  
+nios2                randconfig-r012-20230509   gcc  
+nios2                randconfig-r016-20230511   gcc  
+nios2                randconfig-r025-20230511   gcc  
+nios2                randconfig-r026-20230509   gcc  
+nios2                randconfig-r032-20230510   gcc  
+nios2                randconfig-r036-20230509   gcc  
+openrisc     buildonly-randconfig-r003-20230509   gcc  
+openrisc     buildonly-randconfig-r003-20230511   gcc  
+openrisc             randconfig-r013-20230511   gcc  
+openrisc             randconfig-r016-20230511   gcc  
+openrisc             randconfig-r025-20230509   gcc  
+openrisc             randconfig-r033-20230511   gcc  
+openrisc             randconfig-r035-20230511   gcc  
+openrisc             randconfig-r036-20230511   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r001-20230511   gcc  
+parisc               randconfig-r003-20230511   gcc  
+parisc               randconfig-r022-20230509   gcc  
+parisc               randconfig-r022-20230511   gcc  
+parisc               randconfig-r035-20230510   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc      buildonly-randconfig-r002-20230511   gcc  
+powerpc      buildonly-randconfig-r004-20230512   clang
+powerpc      buildonly-randconfig-r005-20230511   gcc  
+powerpc              randconfig-r006-20230509   gcc  
+powerpc              randconfig-r022-20230511   gcc  
+powerpc              randconfig-r026-20230511   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv        buildonly-randconfig-r002-20230512   clang
+riscv        buildonly-randconfig-r006-20230512   clang
+riscv                               defconfig   gcc  
+riscv                randconfig-r012-20230511   gcc  
+riscv                randconfig-r021-20230509   clang
+riscv                randconfig-r031-20230512   gcc  
+riscv                randconfig-r034-20230509   gcc  
+riscv                randconfig-r042-20230509   clang
+riscv                randconfig-r042-20230511   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r014-20230509   clang
+s390                 randconfig-r014-20230511   gcc  
+s390                 randconfig-r023-20230511   gcc  
+s390                 randconfig-r026-20230511   gcc  
+s390                 randconfig-r033-20230509   gcc  
+s390                 randconfig-r033-20230510   gcc  
+s390                 randconfig-r044-20230509   clang
+s390                 randconfig-r044-20230511   gcc  
+sh                               allmodconfig   gcc  
+sh           buildonly-randconfig-r001-20230509   gcc  
+sh           buildonly-randconfig-r002-20230509   gcc  
+sh           buildonly-randconfig-r004-20230511   gcc  
+sh           buildonly-randconfig-r006-20230509   gcc  
+sh                   randconfig-r002-20230511   gcc  
+sh                   randconfig-r003-20230511   gcc  
+sh                   randconfig-r004-20230509   gcc  
+sh                   randconfig-r004-20230511   gcc  
+sh                   randconfig-r006-20230511   gcc  
+sh                   randconfig-r011-20230511   gcc  
+sh                   randconfig-r013-20230512   gcc  
+sh                   randconfig-r024-20230511   gcc  
+sparc        buildonly-randconfig-r004-20230509   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r003-20230509   gcc  
+sparc                randconfig-r005-20230511   gcc  
+sparc                randconfig-r012-20230512   gcc  
+sparc                randconfig-r015-20230511   gcc  
+sparc                randconfig-r016-20230510   gcc  
+sparc                randconfig-r035-20230509   gcc  
+sparc64      buildonly-randconfig-r003-20230509   gcc  
+sparc64              randconfig-r006-20230509   gcc  
+sparc64              randconfig-r011-20230510   gcc  
+sparc64              randconfig-r012-20230510   gcc  
+sparc64              randconfig-r032-20230509   gcc  
+sparc64              randconfig-r032-20230511   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64                               rhel-8.3   gcc  
+xtensa       buildonly-randconfig-r004-20230509   gcc  
+xtensa       buildonly-randconfig-r005-20230510   gcc  
+xtensa               randconfig-r001-20230511   gcc  
+xtensa               randconfig-r012-20230511   gcc  
+xtensa               randconfig-r031-20230511   gcc  
+xtensa               randconfig-r035-20230509   gcc  
+xtensa               randconfig-r036-20230512   gcc  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
