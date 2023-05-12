@@ -1,98 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80B94700EE8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 20:34:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FEC7700EF4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 20:37:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1C75342DD6;
-	Fri, 12 May 2023 18:34:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C75342DD6
+	by smtp2.osuosl.org (Postfix) with ESMTP id ED559404C1;
+	Fri, 12 May 2023 18:37:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED559404C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683916472;
-	bh=WboB8t1Xb0pLfQ9QF+H2+bOuqQfIyae1tTL6RhChoSs=;
+	s=default; t=1683916676;
+	bh=ir1R7xDcipA8S/12XIVGhgPldtmf1j27x+yCL7K1HLk=;
 	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=7uGWiUsmIJvkSogVbtEbMTqveiRKzRGXVJaI7/7Od1ZdTb/6X+mC9gZikRl3Lz+Ce
-	 jJFy0DR3QT6AvWPkHtepaA9JT/SsFk3LichwclNhMIxQhVCclinKcjhCoJOj6UV451
-	 vcyVEHbKx5+GpSF5K2lVYUL7FEtjFvkxJJCmvMV3bxzHGCds9q4zjj8NFSHJbRtJSY
-	 9KQAIFXiu/Ixert+hELyHd19R4iLiQkkNNiAgq5fALlelQACXdl/aYwQwwKj7nrMzp
-	 O10slnNia51oH55qLp1oMR2uvJzfgcMfGO2IrCnwKNcK3mDFLWUUoJR/hXe/fycJ2b
-	 srnvVd3MIcnCw==
+	b=60UH2dftWH8s+hTUuuVx24g3FkSf+KgummKW/GMwbAeuq4AqExkklKQE/1b5VjSaM
+	 omQKoVWXV++ymAwQoBVdPn2ntH9MmkD2IUlloiRgzuGQl5RhJlLRaUpCJzC5WhZUlQ
+	 4yHZ2ZvEPz2P1xz0EXDYPvLZMGo7XLnmCGKKyI7ZbzWcTLFrd3zgZABYxz+21dTVgz
+	 vd17oRbdNVhClnnrm6r6/Dw0HSJWL7KmsvNDkoKJooxnAMiigJ0Z79jiqmdvJxt+0L
+	 Eft3Fcgf2blz0+rCag0YHG0loGIxfP1S5Qp8lfHRkkqDDuyIeU6r1xTHsK9SLYQ3r5
+	 bCX8tOC1GrIHg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xplah0Ra1NdQ; Fri, 12 May 2023 18:34:31 +0000 (UTC)
+	with ESMTP id VLLWiGU-slI0; Fri, 12 May 2023 18:37:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DC92440475;
-	Fri, 12 May 2023 18:34:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC92440475
+	by smtp2.osuosl.org (Postfix) with ESMTP id B522640475;
+	Fri, 12 May 2023 18:37:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B522640475
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5DB101BF836
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:34:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2252B1BF836
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:37:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 30D284289F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:34:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30D284289F
+ by smtp2.osuosl.org (Postfix) with ESMTP id E4EC640475
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:37:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4EC640475
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SuycYcdXXmcd for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 18:34:24 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sIfT0i6EO6G5 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 18:37:49 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1667C4289E
-Received: from mail-yw1-x1149.google.com (mail-yw1-x1149.google.com
- [IPv6:2607:f8b0:4864:20::1149])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1667C4289E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:34:23 +0000 (UTC)
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-55d9a9d19c9so149524607b3.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 11:34:23 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CCC7403BF
+Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
+ [IPv6:2607:f8b0:4864:20::b4a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0CCC7403BF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:37:48 +0000 (UTC)
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 3f1490d57ef6-b9e2b65f2eeso18464355276.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 11:37:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683916463; x=1686508463;
+ d=1e100.net; s=20221208; t=1683916668; x=1686508668;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ksHSwdf3LwcwVL3OE9a2eYWhGDTEko4fWy0aHJsHDCU=;
- b=ZeSHp+RnzwkdxyMVE8DIofke7/hBk2dO9h1QQA9Jh5zUhrdyTFGHYXXM6S/LKRl1tS
- Ss1NDPkm55k6pWZ8ax2a7HohbI8MrbCOMKCWmo2wW1kIYrQ3ssKg79V/BdHJJxuRzQg7
- W4Zl1yBnrzMStH6lTm7CohmcHGyi2FXWDs1IED4tlI5jQCClhT2qqiYaXg9ESwCVPANW
- FbHyKDOk04sEuwPCUcHBUOMu+iLPn95hxAe6LFebS2CtZBPr+Vt9d2EJ1fVokuq8oPq5
- Cz2nFp7w4qm8+ccXTDsJNzIhA8Ricd3PAqzDv2L8aeF+ackHYVuVTD+JFWZaVaQylJj1
- boVw==
-X-Gm-Message-State: AC+VfDwT0Cpz25vfVYgATu01VpRrhFsEORg2Ev0aO2PHkZ7EnCHd/vwJ
- VClZ6xtoVRcmcwxx9psA0sbP3sg=
-X-Google-Smtp-Source: ACHHUZ6Sw+JVn0ptcM72e1Wp1MOw6FgFKWFiZmnTwGnuLBFu/ZagRmDQMzwhOzRPdysj3HzHBs+xUH8=
+ bh=zboVOwqqV2t+sWom/4kttINSyimT2o2UbgCRgWVc8fA=;
+ b=IYo8iSpWymHyV0xVVEoUJw+2J6jZ0fbkU7e81thP/kL9I3AGuhSpFRM+MbyyLIvJVu
+ 9elbhaWwCXBG694OGLR42lF3ovbsSj0um2oBgAdiAnM86Pf9pZpTjiIswkR0AFwp8OC6
+ 5tlpSn88XkhahQYL/v24xoxOyCq8ChnydY85Yd9Xx2wIAm4lCHCyfnoJp7c7wYRRa7va
+ 4ArGbsyou8t+k7eNSfN3DPMnfltzheH6vnp92yBxhw6YYJ7afnFTCifIwnFji+QWX+wc
+ Jm54wHZRmt1Y2Nr5vzr3VQntH3XEZJXFAMw7Zgz7zWdqExxC+xo1e1oclv6Ja7nycN+O
+ P/PQ==
+X-Gm-Message-State: AC+VfDxzGSx8ovxGUGwLuQ4ItNQ0eU7NxDE4cXUYhTMFjikK8ba3MeOc
+ DiSuEH7BdnvYyS8aMj/ShUm+Jsc=
+X-Google-Smtp-Source: ACHHUZ7USl24Sz0lNjT4gOgSLfYQu6o9kzkQudxt7lv7JTr+L0u0cffl5efd7Q5Gwf/cp+vIHzQhdJ4=
 X-Received: from sdf.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:5935])
- (user=sdf job=sendgmr) by 2002:a81:ac05:0:b0:561:2078:c4cd with SMTP id
- k5-20020a81ac05000000b005612078c4cdmr1405616ywh.2.1683916462870; Fri, 12 May
- 2023 11:34:22 -0700 (PDT)
-Date: Fri, 12 May 2023 11:34:21 -0700
-In-Reply-To: <20230512152607.992209-12-larysa.zaremba@intel.com>
+ (user=sdf job=sendgmr) by 2002:a25:545:0:b0:b99:4473:ed93 with SMTP id
+ 66-20020a250545000000b00b994473ed93mr11326655ybf.4.1683916667981; Fri, 12 May
+ 2023 11:37:47 -0700 (PDT)
+Date: Fri, 12 May 2023 11:37:46 -0700
+In-Reply-To: <20230512152607.992209-16-larysa.zaremba@intel.com>
 Mime-Version: 1.0
 References: <20230512152607.992209-1-larysa.zaremba@intel.com>
- <20230512152607.992209-12-larysa.zaremba@intel.com>
-Message-ID: <ZF6GrXsA8L0THVFB@google.com>
+ <20230512152607.992209-16-larysa.zaremba@intel.com>
+Message-ID: <ZF6HehIpD67kkldx@google.com>
 From: Stanislav Fomichev <sdf@google.com>
 To: Larysa Zaremba <larysa.zaremba@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683916463; x=1686508463;
+ d=google.com; s=20221208; t=1683916668; x=1686508668;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=ksHSwdf3LwcwVL3OE9a2eYWhGDTEko4fWy0aHJsHDCU=;
- b=1qXhzjtoALC7LbPCjmNHDKpuDvTISdkcKIC+yZpoPn4HTlYjny8TG6ILSGhADhBXTb
- 2SoGAFXyKUGXpGLQzgEynaaCDq25XGTUeg4gsm9RGHc0JGRJeH5tAaubJKfewgpjW3v5
- 96XWVae0jmVbKjNcbFpilhqhcjAsTL+aM6qE+oEi7CHNep5VQRAr+QeMxjar7jIH0mzt
- coO8tZUpUzQSmyw50e7qP+CWMWv8iWDAW0qzlPwXzZCJiIEg3ymnkl+Aed6CTIBAoBKC
- XMkZ9kKOZLIchnpHF8BeQIZKB3I/zbMeVaQl7nhSVuQqYq9N+gOl31e3qBnnb1HIyHAQ
- 1XaQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=zboVOwqqV2t+sWom/4kttINSyimT2o2UbgCRgWVc8fA=;
+ b=fblFRNo8UQl44zBJrRLzXecFe1I+pMjTOLDVKmvVGTWEmqhmhmHjsF65sGuIcN8KGo
+ 5aicg+lg/yO6VoujBtMcq9FBX6286ctSUAuJYD/aRQeHfUvaOoWMF1mF8jlNV3BA+Qu7
+ x6MEddujT5hloeJyBRL7jFkaOcM4Ezx82bqFmBHNjID0qc59h+M0n0vogkO06Vs41V6J
+ ky7JyPkksC0Wjy5jdPDmdqqXlVW2U00tK6yLLQEFc1IcTxh4lVHVt4k5pfjbDA+/KTCl
+ xHLt64efrqmvdHsYyFwWUu9ctUzwNU/IBeXgIGnCN3Kn1ctzE48+4D27ZR8mgjpH3myC
+ FffQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20221208 header.b=1qXhzjto
-Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 11/15] xdp: Add
- checksum level hint
+ header.a=rsa-sha256 header.s=20221208 header.b=fblFRNo8
+Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 15/15] selftests/bpf:
+ Add flags and new hints to xdp_hw_metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,97 +123,180 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 05/12, Larysa Zaremba wrote:
-> Implement functionality that enables drivers to expose to XDP code,
-> whether checksums was checked and on what level.
+> Add hints added in the previous patches (VLAN tags and checksum level)
+> to the xdp_hw_metadata program.
+> 
+> Also, to make metadata layout more straightforward, add flags field
+> to pass information about validity of every separate hint separately.
 > 
 > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+
+Acked-by: Stanislav Fomichev <sdf@google.com>
+
 > ---
->  Documentation/networking/xdp-rx-metadata.rst |  3 +++
->  include/linux/netdevice.h                    |  1 +
->  include/net/xdp.h                            |  2 ++
->  kernel/bpf/offload.c                         |  2 ++
->  net/core/xdp.c                               | 12 ++++++++++++
->  5 files changed, 20 insertions(+)
+>  .../selftests/bpf/progs/xdp_hw_metadata.c     | 40 ++++++++++++++++---
+>  tools/testing/selftests/bpf/xdp_hw_metadata.c | 29 +++++++++++---
+>  tools/testing/selftests/bpf/xdp_metadata.h    | 28 ++++++++++++-
+>  3 files changed, 85 insertions(+), 12 deletions(-)
 > 
-> diff --git a/Documentation/networking/xdp-rx-metadata.rst b/Documentation/networking/xdp-rx-metadata.rst
-> index 73a78029c596..f74f0e283097 100644
-> --- a/Documentation/networking/xdp-rx-metadata.rst
-> +++ b/Documentation/networking/xdp-rx-metadata.rst
-> @@ -29,6 +29,9 @@ metadata is supported, this set will grow:
->  .. kernel-doc:: net/core/xdp.c
->     :identifiers: bpf_xdp_metadata_rx_stag
+> diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> index f95f82a8b449..97bad79ce4ca 100644
+> --- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> +++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> @@ -20,6 +20,12 @@ extern int bpf_xdp_metadata_rx_timestamp(const struct xdp_md *ctx,
+>  					 __u64 *timestamp) __ksym;
+>  extern int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, __u32 *hash,
+>  				    enum xdp_rss_hash_type *rss_type) __ksym;
+> +extern int bpf_xdp_metadata_rx_ctag(const struct xdp_md *ctx,
+> +				    __u16 *vlan_tag) __ksym;
+> +extern int bpf_xdp_metadata_rx_stag(const struct xdp_md *ctx,
+> +				    __u16 *vlan_tag) __ksym;
+> +extern int bpf_xdp_metadata_rx_csum_lvl(const struct xdp_md *ctx,
+> +					__u8 *csum_level) __ksym;
 >  
-> +.. kernel-doc:: net/core/xdp.c
-> +   :identifiers: bpf_xdp_metadata_rx_csum_lvl
+>  SEC("xdp")
+>  int rx(struct xdp_md *ctx)
+> @@ -83,15 +89,39 @@ int rx(struct xdp_md *ctx)
+>  		return XDP_PASS;
+>  	}
+>  
+> +	meta->hint_valid = 0;
 > +
->  An XDP program can use these kfuncs to read the metadata into stack
->  variables for its own consumption. Or, to pass the metadata on to other
->  consumers, an XDP program can store it into the metadata area carried
-> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> index fdae37fe11f5..ddade3a15366 100644
-> --- a/include/linux/netdevice.h
-> +++ b/include/linux/netdevice.h
-> @@ -1657,6 +1657,7 @@ struct xdp_metadata_ops {
->  			       enum xdp_rss_hash_type *rss_type);
->  	int	(*xmo_rx_ctag)(const struct xdp_md *ctx, u16 *vlan_tag);
->  	int	(*xmo_rx_stag)(const struct xdp_md *ctx, u16 *vlan_tag);
-> +	int	(*xmo_rx_csum_lvl)(const struct xdp_md *ctx, u8 *csum_level);
->  };
+>  	err = bpf_xdp_metadata_rx_timestamp(ctx, &meta->rx_timestamp);
+> -	if (!err)
+> +	if (err) {
+> +		meta->rx_timestamp_err = err;
+> +	} else {
+> +		meta->hint_valid |= XDP_META_FIELD_TS;
+>  		meta->xdp_timestamp = bpf_ktime_get_tai_ns();
+> -	else
+> -		meta->rx_timestamp = 0; /* Used by AF_XDP as not avail signal */
+> +	}
 >  
->  /**
-> diff --git a/include/net/xdp.h b/include/net/xdp.h
-> index 2db7439fc60f..0fbd25616241 100644
-> --- a/include/net/xdp.h
-> +++ b/include/net/xdp.h
-> @@ -393,6 +393,8 @@ void xdp_attachment_setup(struct xdp_attachment_info *info,
->  			   bpf_xdp_metadata_rx_ctag) \
->  	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_STAG, \
->  			   bpf_xdp_metadata_rx_stag) \
-> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CSUM_LVL, \
-> +			   bpf_xdp_metadata_rx_csum_lvl) \
+>  	err = bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash, &meta->rx_hash_type);
+> -	if (err < 0)
+> -		meta->rx_hash_err = err; /* Used by AF_XDP as no hash signal */
+> +	if (err)
+> +		meta->rx_hash_err = err;
+> +	else
+> +		meta->hint_valid |= XDP_META_FIELD_RSS;
+> +
+> +	err = bpf_xdp_metadata_rx_ctag(ctx, &meta->rx_ctag);
+> +	if (err)
+> +		meta->rx_ctag_err = err;
+> +	else
+> +		meta->hint_valid |= XDP_META_FIELD_CTAG;
+> +
+> +	err = bpf_xdp_metadata_rx_stag(ctx, &meta->rx_stag);
+> +	if (err)
+> +		meta->rx_stag_err = err;
+> +	else
+> +		meta->hint_valid |= XDP_META_FIELD_STAG;
+> +
+> +	err = bpf_xdp_metadata_rx_csum_lvl(ctx, &meta->rx_csum_lvl);
+> +	if (err)
+> +		meta->rx_csum_err = err;
+> +	else
+> +		meta->hint_valid |= XDP_META_FIELD_CSUM_LVL;
 >  
->  enum {
->  #define XDP_METADATA_KFUNC(name, _) name,
-> diff --git a/kernel/bpf/offload.c b/kernel/bpf/offload.c
-> index 2c6b6e82cfac..8bd54fb4ac63 100644
-> --- a/kernel/bpf/offload.c
-> +++ b/kernel/bpf/offload.c
-> @@ -852,6 +852,8 @@ void *bpf_dev_bound_resolve_kfunc(struct bpf_prog *prog, u32 func_id)
->  		p = ops->xmo_rx_ctag;
->  	else if (func_id == bpf_xdp_metadata_kfunc_id(XDP_METADATA_KFUNC_RX_STAG))
->  		p = ops->xmo_rx_stag;
-> +	else if (func_id == bpf_xdp_metadata_kfunc_id(XDP_METADATA_KFUNC_RX_CSUM_LVL))
-> +		p = ops->xmo_rx_csum_lvl;
->  out:
->  	up_read(&bpf_devs_lock);
+>  	__sync_add_and_fetch(&pkts_redir, 1);
+>  	return bpf_redirect_map(&xsk, ctx->rx_queue_index, XDP_PASS);
+> diff --git a/tools/testing/selftests/bpf/xdp_hw_metadata.c b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> index 613321eb84c1..efcabe68f64b 100644
+> --- a/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> +++ b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> @@ -156,15 +156,16 @@ static void verify_xdp_metadata(void *data, clockid_t clock_id)
 >  
-> diff --git a/net/core/xdp.c b/net/core/xdp.c
-> index eff21501609f..7dd45fd62983 100644
-> --- a/net/core/xdp.c
-> +++ b/net/core/xdp.c
-> @@ -762,6 +762,18 @@ __bpf_kfunc int bpf_xdp_metadata_rx_stag(const struct xdp_md *ctx, u16 *vlan_tag
->  	return -EOPNOTSUPP;
+>  	meta = data - sizeof(*meta);
+>  
+> -	if (meta->rx_hash_err < 0)
+> -		printf("No rx_hash err=%d\n", meta->rx_hash_err);
+> -	else
+> +	if (meta->hint_valid & XDP_META_FIELD_RSS)
+>  		printf("rx_hash: 0x%X with RSS type:0x%X\n",
+>  		       meta->rx_hash, meta->rx_hash_type);
+> +	else
+> +		printf("No rx_hash, err=%d\n", meta->rx_hash_err);
+> +
+> +	if (meta->hint_valid & XDP_META_FIELD_TS) {
+> +		printf("rx_timestamp:  %llu (sec:%0.4f)\n", meta->rx_timestamp,
+> +		       (double)meta->rx_timestamp / NANOSEC_PER_SEC);
+>  
+> -	printf("rx_timestamp:  %llu (sec:%0.4f)\n", meta->rx_timestamp,
+> -	       (double)meta->rx_timestamp / NANOSEC_PER_SEC);
+> -	if (meta->rx_timestamp) {
+>  		__u64 usr_clock = gettime(clock_id);
+>  		__u64 xdp_clock = meta->xdp_timestamp;
+>  		__s64 delta_X = xdp_clock - meta->rx_timestamp;
+> @@ -179,8 +180,24 @@ static void verify_xdp_metadata(void *data, clockid_t clock_id)
+>  		       usr_clock, (double)usr_clock / NANOSEC_PER_SEC,
+>  		       (double)delta_X2U / NANOSEC_PER_SEC,
+>  		       (double)delta_X2U / 1000);
+> +	} else {
+> +		printf("No rx_timestamp, err=%d\n", meta->rx_timestamp_err);
+>  	}
+>  
+> +	if (meta->hint_valid & XDP_META_FIELD_CTAG)
+> +		printf("rx_ctag: %u\n", meta->rx_ctag);
+> +	else
+> +		printf("No rx_ctag, err=%d\n", meta->rx_ctag_err);
+> +
+> +	if (meta->hint_valid & XDP_META_FIELD_STAG)
+> +		printf("rx_stag: %u\n", meta->rx_stag);
+> +	else
+> +		printf("No rx_stag, err=%d\n", meta->rx_stag_err);
+> +
+> +	if (meta->hint_valid & XDP_META_FIELD_CSUM_LVL)
+> +		printf("Checksum was checked at level %u\n", meta->rx_csum_lvl);
+> +	else
+> +		printf("Checksum was not checked, err=%d\n", meta->rx_csum_err);
 >  }
 >  
-> +/**
-> + * bpf_xdp_metadata_rx_csum_lvl - Get depth at which HW has checked the checksum.
-> + * @ctx: XDP context pointer.
-> + * @csum_level: Return value pointer.
-
-Let's maybe clarify what the level means here? For example, do we start
-counting from 0 or 1?
-
-> + *
-> + * Returns 0 on success (HW has checked the checksum) or ``-errno`` on error.
-> + */
-> +__bpf_kfunc int bpf_xdp_metadata_rx_csum_lvl(const struct xdp_md *ctx, u8 *csum_level)
-> +{
-> +	return -EOPNOTSUPP;
-> +}
-> +
->  __diag_pop();
+>  static void verify_skb_metadata(int fd)
+> diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
+> index 6664893c2c77..7c0267a8918a 100644
+> --- a/tools/testing/selftests/bpf/xdp_metadata.h
+> +++ b/tools/testing/selftests/bpf/xdp_metadata.h
+> @@ -17,12 +17,38 @@
+>  #define ETH_P_8021AD 0x88A8
+>  #endif
 >  
->  BTF_SET8_START(xdp_metadata_kfunc_ids)
+> +#define BIT(nr)			(1 << (nr))
+> +
+> +enum xdp_meta_field {
+> +	XDP_META_FIELD_TS	= BIT(0),
+> +	XDP_META_FIELD_RSS	= BIT(1),
+> +	XDP_META_FIELD_CTAG	= BIT(2),
+> +	XDP_META_FIELD_STAG	= BIT(3),
+> +	XDP_META_FIELD_CSUM_LVL	= BIT(4),
+> +};
+> +
+>  struct xdp_meta {
+> -	__u64 rx_timestamp;
+> +	union {
+> +		__u64 rx_timestamp;
+> +		__s32 rx_timestamp_err;
+> +	};
+>  	__u64 xdp_timestamp;
+>  	__u32 rx_hash;
+>  	union {
+>  		__u32 rx_hash_type;
+>  		__s32 rx_hash_err;
+>  	};
+> +	union {
+> +		__u16 rx_ctag;
+> +		__s32 rx_ctag_err;
+> +	};
+> +	union {
+> +		__u16 rx_stag;
+> +		__s32 rx_stag_err;
+> +	};
+> +	union {
+> +		__u8 rx_csum_lvl;
+> +		__s32 rx_csum_err;
+> +	};
+> +	enum xdp_meta_field hint_valid;
+>  };
 > -- 
 > 2.35.3
 > 
