@@ -1,98 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A43B700EC4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 20:28:55 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21039700ED8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 May 2023 20:31:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E4D6140525;
-	Fri, 12 May 2023 18:28:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4D6140525
+	by smtp2.osuosl.org (Postfix) with ESMTP id B203D417A0;
+	Fri, 12 May 2023 18:31:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B203D417A0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683916133;
-	bh=OL+fTXQwkcRJ+SOyeCZpxwSqrmI61w4Mb2Ges/pSCE4=;
+	s=default; t=1683916290;
+	bh=GYtcEtB7eivw2BFqK9rI1b2GwKRK45rx7jsGGeGXOY4=;
 	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=D1yiny7o7bwvrZEQlZyoP/qZtopAsREje4IK/ga0VPccLpWSqWUBHYdXi8sABMsPi
-	 hM2r4ehUvwYgc+nP5qrdFB7haG2V4whgkd8jYqlTlVCDHAK3Ju8EjfvirAxjvc3plV
-	 ElubY+bo1r7UA72WyCP9jFHYqcQiXN9GHpsR/kfsB3j39sCnLQvaN4ej6xkZ3Q5Zzs
-	 e/6zqIuXwA1sVZFP0KsoEBfdEPkWv5yi++SAnZ22gASFMSC/1Ss+y0dh/6pjbMIbPJ
-	 3xb1iGRheUVpH+4y+G0V4hlfCSNu5Cw/XW3xiocj+ILe5GNNcdz6SA37IodhEt6FqV
-	 NoUBOcB2mFq3g==
+	b=6wgoZqyjZrgC20rY/Jn2sc+JkJRGe4G5JRBdnZeyrhS3Ng5P0WrBMupUYsWZxTo7/
+	 LM5gDuH9+tnbcPgRsGcBy6m6xjntVc2jjE69D138bs4KHyxQDVYfw9JiuNPEtzgNb6
+	 HTIUzhtsrAXYKGY7lj8HqcbNMDB2lxTg9TzUzlfEJnpI1dFxsQVlwIq5Gjv/BH3x6/
+	 lR5MnKNC8V/OUHK3TsOgolvoob7S6/BXM0jjRxizM8Be9Lly+yPDyIlnAKPGonmkav
+	 ooPvredM2FLprdAgLxM4lwAOVJci/8GTHrx6GatdjMXCMaY4cHfLC3fap8BgYNPtNw
+	 wE4If6oC861gw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1AlIuzTPsUyZ; Fri, 12 May 2023 18:28:53 +0000 (UTC)
+	with ESMTP id jFmb6VDYeZfg; Fri, 12 May 2023 18:31:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C0B64404C1;
-	Fri, 12 May 2023 18:28:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0B64404C1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A088405CB;
+	Fri, 12 May 2023 18:31:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A088405CB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E2DE1BF836
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:28:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 168051BF836
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:31:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 55E7282147
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:28:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 55E7282147
+ by smtp1.osuosl.org (Postfix) with ESMTP id F031584872
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:31:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F031584872
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3V5fZDpDFf2V for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 May 2023 18:28:47 +0000 (UTC)
+ with ESMTP id QOwxmEetK-Yh for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 May 2023 18:31:23 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89C678213F
-Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
- [IPv6:2607:f8b0:4864:20::b49])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 89C678213F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:28:47 +0000 (UTC)
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-ba22ced2e95so9365944276.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 11:28:47 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5DBFA8485B
+Received: from mail-pf1-x449.google.com (mail-pf1-x449.google.com
+ [IPv6:2607:f8b0:4864:20::449])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5DBFA8485B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 18:31:23 +0000 (UTC)
+Received: by mail-pf1-x449.google.com with SMTP id
+ d2e1a72fcca58-6434307a64bso10398580b3a.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 May 2023 11:31:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683916126; x=1686508126;
+ d=1e100.net; s=20221208; t=1683916283; x=1686508283;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=g1YHZI5wWoilGiErbtfwlJ8t+YURSptBI7L1u7j3vVM=;
- b=mGsljwvmPgarhOSrCxloFi3lQ37aYM+h2No1r4az5p3vpGrjTwN4t/ZIQBK1BSW7+n
- WlzlhMw1yDiZErljcVuCfcn6LLbQ/v8iwDmH1iGlb2F03sN3wcxNrYLSY4ttF9Jl2Cq0
- LTrNlVzFvG0mgsWliH5UEWDSmngR49w6e+6HovIHeqg5cyqeFGmVz0mJZ4LSixnTgfQk
- qroOmMrjNJ5SB03OerexoOTWdXSCW8ithTfHtZLrjrXDmYNHd9dFusNccjgUCez92IWK
- sCMeiCrePW/2vPzIGjq8lBzC9Et/wj66DkPX8AfULAO4wsduXqiEDgLMqJlyeUpWE8U/
- nX1g==
-X-Gm-Message-State: AC+VfDw3o7OgexNfjdQPVuHz87nHY8lEclDo8RTjhn73IFOJkG29kCsy
- aZh7/sH4AL8K7uSOEf9fBTCm4X4=
-X-Google-Smtp-Source: ACHHUZ61qwr3BdPrPsjBchwqa5bp7Ymx46T3C17hhoEYce9/vXT91ouNeraL6bIM1/UVWg+lWqm0LXw=
+ bh=wq2By9mZuUQ7p1oM5SkoXHJiUzdgw169iTgadwLtfnQ=;
+ b=hDeNNv+BOA033Jjyz/Rz7nboXZgM8s3prYouI2L3IzJp/3cYMH9yucPtRMEuK2a0bU
+ 06LIjLZOqqCV47DIxDWLOSNoL2+OFeyoveMem6B5pnetUs9XPkQHMwVYVkWdtJWOw1az
+ wCIvMfnZVEarAZ1oNG17eyJ6ZwPU8rifyVMw6IczMCK0PoyRKYGi6uGDPsoefwT3Z3oY
+ 25kzXN/yPGhK8EbaiSuxKQRgp+LW6XEZ7/tIcnxMjolrF5//zedf5AzFYH2NyIuyoDbt
+ WNY1SpmdsGkCqxBNfivCSyvSN0wVw69E3F0wxuEmmXBAuq9LghTL0XpY3ec8LeQrBoJL
+ 6i6g==
+X-Gm-Message-State: AC+VfDxTsmXq/EFrzHuLlMAkGUyWZflOoqmNXLC8gHVoPjbBoPPmXe5D
+ T2V6ebfoCRU9qvX5PfzxE14+iNQ=
+X-Google-Smtp-Source: ACHHUZ5yguYzBo0raBvnnA2xkJTrHlxk1B/ym21H6OwVm5I5+i5m5lU08ouAnUGmmP635rdcxpsTQfI=
 X-Received: from sdf.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:5935])
- (user=sdf job=sendgmr) by 2002:a25:874f:0:b0:b9d:fe66:a424 with SMTP id
- e15-20020a25874f000000b00b9dfe66a424mr16098075ybn.2.1683916126382; Fri, 12
- May 2023 11:28:46 -0700 (PDT)
-Date: Fri, 12 May 2023 11:28:44 -0700
-In-Reply-To: <20230512152607.992209-10-larysa.zaremba@intel.com>
+ (user=sdf job=sendgmr) by 2002:a05:6a00:7c6:b0:643:599b:4db4 with SMTP id
+ n6-20020a056a0007c600b00643599b4db4mr6882664pfu.1.1683916282830; Fri, 12 May
+ 2023 11:31:22 -0700 (PDT)
+Date: Fri, 12 May 2023 11:31:21 -0700
+In-Reply-To: <20230512152607.992209-11-larysa.zaremba@intel.com>
 Mime-Version: 1.0
 References: <20230512152607.992209-1-larysa.zaremba@intel.com>
- <20230512152607.992209-10-larysa.zaremba@intel.com>
-Message-ID: <ZF6FXNglntreqIgW@google.com>
+ <20230512152607.992209-11-larysa.zaremba@intel.com>
+Message-ID: <ZF6F+UQlXA9REqag@google.com>
 From: Stanislav Fomichev <sdf@google.com>
 To: Larysa Zaremba <larysa.zaremba@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683916126; x=1686508126;
+ d=google.com; s=20221208; t=1683916283; x=1686508283;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=g1YHZI5wWoilGiErbtfwlJ8t+YURSptBI7L1u7j3vVM=;
- b=K9UDN4B/R3ogwJmxTjdrEokIDh2/U9Ke5kzESmbqsjepMS+MzvNKwdyEGaOh8hfyYz
- VcQYpY3OPiM7e6Xqm14UIE3Wcrh3rautsuytlTioEMN+DimMMZ7G42wrPlH8x4ZVc8Sz
- fuo+/gxpvp/KUvo9o514Oztnpkdh1qkembXoIYCYH5jYJm5NQ5ZZIZQC00b7uVeGlNv7
- Gp/auxM9y4+WXLnOv9rj6MuMOL7vu0Unc1FhgmSmZgCB3jZjWWwZAeGMNqUty7PUZ1dv
- FbMgxDgd/CxxOU9sa0vqLh26yG4Mqg4eeJNw0QhTDkmuoXHoxl1Of7BF9DPmWUVWh94b
- Oh7g==
+ bh=wq2By9mZuUQ7p1oM5SkoXHJiUzdgw169iTgadwLtfnQ=;
+ b=JWT1FrK7ck7EpDsQRE4pCSwDvUGJ63OfyV6gRQBf3N6utX08/U1OHXmvomU3P6Z3G6
+ N5Tvx3vxz4Y6ynHYvG8gsQs85MZ7VK/EoDwOcb9T7Vuf16vwygdYAzo/UNwe5EPtiLD8
+ HAQ764S9LE4N6qXozvAtzgduNz/lnpvl878hU17TpCFsRDDOzxM/9/Y7iSQQ3Zx2WZpj
+ I4fJF+J/zB+k1AZUcc8RBSXW1+T9EWoDEQpcvOtBknUhsuo/Cja32EUu70hGOaWdrDKH
+ 6PzSqv0XmVdYlay6qmzlhnjOFde/W19FX57pttk9HvCy1ixM/Fgu/A/6SlTmkdEkZhVw
+ NRng==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20221208 header.b=K9UDN4B/
-Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 09/15] xdp: Add VLAN
- tag hint
+ header.a=rsa-sha256 header.s=20221208 header.b=JWT1FrK7
+Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 10/15] ice: Implement
+ VLAN tag hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,121 +123,86 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 05/12, Larysa Zaremba wrote:
-> Implement functionality that enables drivers to expose VLAN tag
-> to XDP code.
+> Implement .xmo_rx_vlan_tag callback to allow XDP code to read
+> packet's VLAN tag.
 > 
 > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
-
-Acked-by: Stanislav Fomichev <sdf@google.com>
-
 > ---
->  Documentation/networking/xdp-rx-metadata.rst | 11 ++++++++-
->  include/linux/netdevice.h                    |  2 ++
->  include/net/xdp.h                            |  4 ++++
->  kernel/bpf/offload.c                         |  4 ++++
->  net/core/xdp.c                               | 24 ++++++++++++++++++++
->  5 files changed, 44 insertions(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 44 +++++++++++++++++++
+>  1 file changed, 44 insertions(+)
 > 
-> diff --git a/Documentation/networking/xdp-rx-metadata.rst b/Documentation/networking/xdp-rx-metadata.rst
-> index 25ce72af81c2..73a78029c596 100644
-> --- a/Documentation/networking/xdp-rx-metadata.rst
-> +++ b/Documentation/networking/xdp-rx-metadata.rst
-> @@ -18,7 +18,16 @@ Currently, the following kfuncs are supported. In the future, as more
->  metadata is supported, this set will grow:
->  
->  .. kernel-doc:: net/core/xdp.c
-> -   :identifiers: bpf_xdp_metadata_rx_timestamp bpf_xdp_metadata_rx_hash
-> +   :identifiers: bpf_xdp_metadata_rx_timestamp
-> +
-> +.. kernel-doc:: net/core/xdp.c
-> +   :identifiers: bpf_xdp_metadata_rx_hash
-> +
-> +.. kernel-doc:: net/core/xdp.c
-> +   :identifiers: bpf_xdp_metadata_rx_ctag
-> +
-> +.. kernel-doc:: net/core/xdp.c
-> +   :identifiers: bpf_xdp_metadata_rx_stag
->  
->  An XDP program can use these kfuncs to read the metadata into stack
->  variables for its own consumption. Or, to pass the metadata on to other
-> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> index 08fbd4622ccf..fdae37fe11f5 100644
-> --- a/include/linux/netdevice.h
-> +++ b/include/linux/netdevice.h
-> @@ -1655,6 +1655,8 @@ struct xdp_metadata_ops {
->  	int	(*xmo_rx_timestamp)(const struct xdp_md *ctx, u64 *timestamp);
->  	int	(*xmo_rx_hash)(const struct xdp_md *ctx, u32 *hash,
->  			       enum xdp_rss_hash_type *rss_type);
-> +	int	(*xmo_rx_ctag)(const struct xdp_md *ctx, u16 *vlan_tag);
-> +	int	(*xmo_rx_stag)(const struct xdp_md *ctx, u16 *vlan_tag);
->  };
->  
->  /**
-> diff --git a/include/net/xdp.h b/include/net/xdp.h
-> index 6381560efae2..2db7439fc60f 100644
-> --- a/include/net/xdp.h
-> +++ b/include/net/xdp.h
-> @@ -389,6 +389,10 @@ void xdp_attachment_setup(struct xdp_attachment_info *info,
->  			   bpf_xdp_metadata_rx_timestamp) \
->  	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_HASH, \
->  			   bpf_xdp_metadata_rx_hash) \
-> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CTAG, \
-> +			   bpf_xdp_metadata_rx_ctag) \
-> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_STAG, \
-> +			   bpf_xdp_metadata_rx_stag) \
->  
->  enum {
->  #define XDP_METADATA_KFUNC(name, _) name,
-> diff --git a/kernel/bpf/offload.c b/kernel/bpf/offload.c
-> index d9c9f45e3529..2c6b6e82cfac 100644
-> --- a/kernel/bpf/offload.c
-> +++ b/kernel/bpf/offload.c
-> @@ -848,6 +848,10 @@ void *bpf_dev_bound_resolve_kfunc(struct bpf_prog *prog, u32 func_id)
->  		p = ops->xmo_rx_timestamp;
->  	else if (func_id == bpf_xdp_metadata_kfunc_id(XDP_METADATA_KFUNC_RX_HASH))
->  		p = ops->xmo_rx_hash;
-> +	else if (func_id == bpf_xdp_metadata_kfunc_id(XDP_METADATA_KFUNC_RX_CTAG))
-> +		p = ops->xmo_rx_ctag;
-> +	else if (func_id == bpf_xdp_metadata_kfunc_id(XDP_METADATA_KFUNC_RX_STAG))
-> +		p = ops->xmo_rx_stag;
->  out:
->  	up_read(&bpf_devs_lock);
->  
-> diff --git a/net/core/xdp.c b/net/core/xdp.c
-> index 41e5ca8643ec..eff21501609f 100644
-> --- a/net/core/xdp.c
-> +++ b/net/core/xdp.c
-> @@ -738,6 +738,30 @@ __bpf_kfunc int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, u32 *hash,
->  	return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+> index 1caa73644e7b..39547feb6106 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+> @@ -627,7 +627,51 @@ static int ice_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
+>  	return 0;
 >  }
 >  
 > +/**
-> + * bpf_xdp_metadata_rx_ctag - Read XDP packet inner vlan tag.
-> + * @ctx: XDP context pointer.
-> + * @vlan_tag: Return value pointer.
+> + * ice_xdp_rx_ctag - VLAN tag XDP hint handler
+> + * @ctx: XDP buff pointer
+> + * @vlan_tag: destination address
 > + *
-> + * Returns 0 on success or ``-errno`` on error.
+> + * Copy VLAN tag (if was stripped) to the destination address.
 > + */
-> +__bpf_kfunc int bpf_xdp_metadata_rx_ctag(const struct xdp_md *ctx, u16 *vlan_tag)
+> +static int ice_xdp_rx_ctag(const struct xdp_md *ctx, u16 *vlan_tag)
 > +{
-> +	return -EOPNOTSUPP;
+> +	const struct ice_xdp_buff *xdp_ext = (void *)ctx;
+> +	netdev_features_t features;
+> +
+
+[..]
+
+> +	features = xdp_ext->rx_ring->netdev->features;
+> +
+> +	if (!(features & NETIF_F_HW_VLAN_CTAG_RX))
+> +		return -EINVAL;
+
+Passing-by comment: why do we need to check features?
+ice_get_vlan_tag_from_rx_desc seems to be checking a bunch of
+fields in the descriptors, so that should be enough?
+
+> +
+> +	*vlan_tag = ice_get_vlan_tag_from_rx_desc(xdp_ext->eop_desc);
+
+Should we also do the following:
+
+if (!*vlan_tag)
+	return -ENODATA;
+
+?
+
+> +	return 0;
 > +}
 > +
 > +/**
-> + * bpf_xdp_metadata_rx_stag - Read XDP packet outer vlan tag.
-> + * @ctx: XDP context pointer.
-> + * @vlan_tag: Return value pointer.
+> + * ice_xdp_rx_stag - VLAN s-tag XDP hint handler
+> + * @ctx: XDP buff pointer
+> + * @vlan_tag: destination address
 > + *
-> + * Returns 0 on success or ``-errno`` on error.
+> + * Copy VLAN s-tag (if was stripped) to the destination address.
 > + */
-> +__bpf_kfunc int bpf_xdp_metadata_rx_stag(const struct xdp_md *ctx, u16 *vlan_tag)
+> +static int ice_xdp_rx_stag(const struct xdp_md *ctx, u16 *vlan_tag)
 > +{
-> +	return -EOPNOTSUPP;
+> +	const struct ice_xdp_buff *xdp_ext = (void *)ctx;
+> +	netdev_features_t features;
+> +
+> +	features = xdp_ext->rx_ring->netdev->features;
+> +
+> +	if (!(features & NETIF_F_HW_VLAN_STAG_RX))
+> +		return -EINVAL;
+> +
+> +	*vlan_tag = ice_get_vlan_tag_from_rx_desc(xdp_ext->eop_desc);
+> +	return 0;
 > +}
 > +
->  __diag_pop();
->  
->  BTF_SET8_START(xdp_metadata_kfunc_ids)
+>  const struct xdp_metadata_ops ice_xdp_md_ops = {
+>  	.xmo_rx_timestamp		= ice_xdp_rx_hw_ts,
+>  	.xmo_rx_hash			= ice_xdp_rx_hash,
+> +	.xmo_rx_ctag			= ice_xdp_rx_ctag,
+> +	.xmo_rx_stag			= ice_xdp_rx_stag,
+>  };
 > -- 
 > 2.35.3
 > 
