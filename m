@@ -1,108 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D4BD70165F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 May 2023 13:18:41 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F293701AA0
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 May 2023 00:57:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5FF8A817B5;
-	Sat, 13 May 2023 11:18:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FF8A817B5
+	by smtp4.osuosl.org (Postfix) with ESMTP id 38E1D42D1A;
+	Sat, 13 May 2023 22:57:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 38E1D42D1A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1683976719;
-	bh=M5WY7VFtauLA0YGLaPbuCwvFv8lSAhItlVGnwNW1sWk=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=kXIxJdtRdLY3l8AmMHO1b7t9+941NAlEb7517r0dO4E1amBHVyOihaH76unaxDKfu
-	 WXEHy7SMKPcFM2yUZMvXuyVLLAb/M5PanNr+hABcWmZSP7d5YB7PpSAJs3zDyBYXIv
-	 UHQ5qAdNCO19u2e7YYymClK7XKmQFle8v5ISbkFbqUw0N1sNr8UQQnMCefNoGskTvh
-	 g38WQHC/7rOLRGABjdrahpJXjqe1NqaMSDleGdwAoYGm/glb/eFHdzu+izORdeNUwV
-	 I0hQbbZm2SOjT2fPVmmyr4U9MPb4AVaXUFgqV0F4zKzaXzFFpQaE//Zgroqial4ahY
-	 /PbzwZK0etRsQ==
+	s=default; t=1684018652;
+	bh=zB6CSh408FcAeJ3+XNKMc+yKyxxhw7pNiLfPEUgclgM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=q66ymXRks9NZGo+sw46Q3/YLFc0SHyVzkBTA7IPxCgUEGGtuRP9rOIAQ96ODiCel5
+	 mMIevdutlqfq6CHknIAWONL2vbntL47SW+dqMS1kDeqC/JZVDxz+b9uvGjnyLcWCtX
+	 pFif89TfY2kvlZXa3zbYROzU6CW7Pr+cZzEZkkyouezu3SJeEHPfytDZg4n3AeFBpd
+	 Im3SgWI/oCEOinf4Cxu8tr0yCfGei8fXY2AayfTVwEnWb3GmTq5uOjByJC0Zm0lSor
+	 SAzd0Xq7lqoYcs0ZxOoxviZfIdg0hHaTfu3OdAguVY9ghqudUbWc/RbInHZpI1lc/d
+	 KI+jm3j18ywtg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aTiD8uCyQs7a; Sat, 13 May 2023 11:18:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BezoGiEZ0B7J; Sat, 13 May 2023 22:57:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0E3C381934;
-	Sat, 13 May 2023 11:18:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E3C381934
+	by smtp4.osuosl.org (Postfix) with ESMTP id D773D42A32;
+	Sat, 13 May 2023 22:57:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D773D42A32
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 79B941BF5DE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 11:18:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 63CF71BF5B3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 22:57:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 554E140888
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 11:18:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 554E140888
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2CFEF42D00
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 22:57:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CFEF42D00
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L2RXoECVYlnZ for <intel-wired-lan@lists.osuosl.org>;
- Sat, 13 May 2023 11:18:30 +0000 (UTC)
+ with ESMTP id 7h8EkBq15C_C for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 13 May 2023 22:57:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CA8B40873
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6CA8B40873
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 11:18:30 +0000 (UTC)
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-513-K0RhafmJNlGEcDDnRqqKZw-1; Sat, 13 May 2023 07:18:27 -0400
-X-MC-Unique: K0RhafmJNlGEcDDnRqqKZw-1
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-969f12b2818so755019066b.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 04:18:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683976706; x=1686568706;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=xEDy8rLo+PznmwAaJubrEbzcYMCEyIVJw/6C7eCzCFg=;
- b=Z2VHG4t3a1ZCf5W+0RaCbD1/pWGmeSLM3INEgldE5HoaEQSQHQ2+BSID46X1nzLjAK
- PofH87PthtM1bXx0T+jPTPZ7nY5vSWvFHi6WNF1kKb592arrVt4Bz62ApTaCfeIZIplS
- j2Ig0aBq2d6rLW6EeD6Q6VeajdfFVfQ9P5cepnuK2t75tOCBRCU7fCkyD1SyOnWnq4NS
- hxPk4kYLDsXwmdsvr2uYev2cEk+0I0R20zpcwgrSKEZ6HZdxDYHhCHpIfcCMpmKUv+V5
- daABFLFQkI+wQ7FME8lambx5CzOhpV9hKUygbCqzCdPCzP3LeMuCJRSpjr2UiuJaLPtu
- 2TAw==
-X-Gm-Message-State: AC+VfDwW9vy6VB3HuZ05HABtILK15atC3miBifKg0RgpcSPUPQNk8618
- axUkutTFkjTZ1i7hAUhQEUG0VH89+kPulX0ZcSJT/2mEwP8cEtXdFXSkOlV0HKG8EOWCX//oGfy
- YgTiDHgFrgQOhG5lG/N/fB1nXxEVh2qnMbWDh5E+yXJXvvA==
-X-Received: by 2002:a17:907:1c01:b0:966:335a:5b0b with SMTP id
- nc1-20020a1709071c0100b00966335a5b0bmr22825336ejc.18.1683976705947; 
- Sat, 13 May 2023 04:18:25 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Xo/bBg4yaJO67x0+7McjUfAxGpQf91rkSj0JVOSTAzvy8zj0r7n7V9YyelYWLk/3itiZnj8ps9ZiIVfyyeWo=
-X-Received: by 2002:a17:907:1c01:b0:966:335a:5b0b with SMTP id
- nc1-20020a1709071c0100b00966335a5b0bmr22825315ejc.18.1683976705591; Sat, 13
- May 2023 04:18:25 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230512090652.190058-1-wojciech.drewek@intel.com>
-In-Reply-To: <20230512090652.190058-1-wojciech.drewek@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Sat, 13 May 2023 13:18:14 +0200
-Message-ID: <CADEbmW2gL9hH1KUvRvuPewusCzf4mhPf9kNCgiv1HfC5_h-x3A@mail.gmail.com>
-To: Wojciech Drewek <wojciech.drewek@intel.com>, david.m.ertman@intel.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1683976709;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xEDy8rLo+PznmwAaJubrEbzcYMCEyIVJw/6C7eCzCFg=;
- b=Jvv6sT9ta5wU4nY5K/jqiUd0HLALz636l7AyPpFpEZ8ztTMq2Q6L4V+kvgg06ONRxe5K+D
- S8wL25InO2XPJ+9q3UX6HZUB4bsVS2byJEhbcT9I1GsqUi4Qxw6BLL3WG2abNICCFHF2CN
- OjROszc+ivyeY/1caPi9Pbyam9fpQb4=
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A83D42A32
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1A83D42A32
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 May 2023 22:57:21 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10709"; a="348487513"
+X-IronPort-AV: E=Sophos;i="5.99,273,1677571200"; d="scan'208";a="348487513"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2023 15:57:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10709"; a="770171462"
+X-IronPort-AV: E=Sophos;i="5.99,273,1677571200"; d="scan'208";a="770171462"
+Received: from estantil-desk.jf.intel.com ([10.166.241.20])
+ by fmsmga004.fm.intel.com with ESMTP; 13 May 2023 15:57:20 -0700
+From: Emil Tantilov <emil.s.tantilov@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Sat, 13 May 2023 15:56:55 -0700
+Message-Id: <20230513225710.3898-1-emil.s.tantilov@intel.com>
+X-Mailer: git-send-email 2.17.2
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1684018642; x=1715554642;
+ h=from:to:cc:subject:date:message-id;
+ bh=hF+srNrD1FbAnGAvR7LXZR7+xjqbDHWIFHuuy7RGb+w=;
+ b=cXJYdmJOGAx35qImnsKIBvVz3y/Hg4rfGejSKmAz2b7g/tgJ+7aW42FQ
+ sW0vTrFZcDVXQ2cmiB7Xnm0vG6OJkLC5CBkv9ZICReD0777IydTP/GLZ2
+ +Hn9MPeRdohtKXyBnxHcvEU3bXMKdx+fyHA4YhTTLgg8lqSUCvM2oC6br
+ CvypSCK61++IRwszewk8JPuNhZxoQ8DndUr6Jc+fmXL6QJr9M5+2QhYlp
+ F3ivkmZckkCP/eTbAZZM1Z5OVlb34d4Ytm8RmHqF3SU6WdSB0CwRucO3H
+ r0C7zTyRacLxHC944eXvGzofECEwK2zH+jsn8rQr7VmoAsHDaaDlTzX7P
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Jvv6sT9t
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Remove LAG+SRIOV mutual
- exclusion
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=cXJYdmJO
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 00/15] Introduce Intel IDPF
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,179 +90,221 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: willemb@google.com, pabeni@redhat.com, leon@kernel.org,
+ simon.horman@corigine.com, jesse.brandeburg@intel.com, edumazet@google.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, kuba@kernel.org,
+ decot@google.com, davem@davemloft.net, shannon.nelson@amd.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gRnJpLCBNYXkgMTIsIDIwMjMgYXQgMTE6MDjigK9BTSBXb2pjaWVjaCBEcmV3ZWsKPHdvamNp
-ZWNoLmRyZXdla0BpbnRlbC5jb20+IHdyb3RlOgo+Cj4gRnJvbTogRGF2ZSBFcnRtYW4gPGRhdmlk
-Lm0uZXJ0bWFuQGludGVsLmNvbT4KPgo+IFRoZXJlIHdhcyBhIGNoYW5nZSBwcmV2aW91c2x5IHRv
-IHN0b3AgU1ItSU9WIGFuZCBMQUcgZnJvbSBleGlzdGluZyBvbiB0aGUKPiBzYW1lIGludGVyZmFj
-ZS4gIFRoaXMgd2FzIHRvIHByZXZlbnQgdGhlIHZpb2xhdGlvbiBvZiBMQUNQIChMaW5rCj4gQWdn
-cmVnYXRpb24gQ29udHJvbCBQcm90b2NvbCkuICBUaGUgbWV0aG9kIHRvIGFjaGlldmUgdGhpcyB3
-YXMgdG8gYWRkIGEKPiBuby1vcCBSeCBoYW5kbGVyIG9udG8gdGhlIG5ldGRldiB3aGVuIFNSLUlP
-ViBWRnMgd2VyZSBwcmVzZW50LCB0aHVzCj4gYmxvY2tpbmcgYm9uZGluZywgYnJpZGdpbmcsIGV0
-YyBmcm9tIGNsYWltaW5nIHRoZSBpbnRlcmZhY2UgYnkgYWRkaW5nCj4gaXRzIG93biBSeCBoYW5k
-bGVyLiAgQWxzbywgd2hlbiBhbiBpbnRlcmZhY2Ugd2FzIGFkZGVkIGludG8gYSBhZ2dyZWdhdGUs
-Cj4gdGhlbiB0aGUgU1ItSU9WIGNhcGFiaWxpdHkgd2FzIHNldCB0byBmYWxzZS4KPgo+IFRoZXJl
-IGFyZSBzb21lIHVzZXJzIHRoYXQgaGF2ZSBpbiBob3VzZSBzb2x1dGlvbnMgdXNpbmcgYm90aCBT
-Ui1JT1YgYW5kCj4gYnJpZGdpbmcvYm9uZGluZyB0aGF0IHRoaXMgbWV0aG9kIGludGVyZmVyZXMg
-d2l0aCAoZS5nLiBjcmVhdGluZyBkdXBsaWNhdGUKPiBWRnMgb24gdGhlIGJvbmRlZCBpbnRlcmZh
-Y2VzIGFuZCBmYWlsaW5nIGJldHdlZW4gdGhlbSB3aGVuIHRoZSBpbnRlcmZhY2UKPiBmYWlscyBv
-dmVyKS4KPgo+IEl0IG1ha2VzIG1vcmUgc2Vuc2UgdG8gcHJvdmlkZSB0aGUgbW9zdCBmdW5jdGlv
-bmFsaXR5Cj4gcG9zc2libGUsIHRoZSByZXN0cmljdGlvbiBvbiBjby1leGlzdGVuY2Ugb2YgdGhl
-c2UgZmVhdHVyZXMgd2lsbCBiZQo+IHJlbW92ZWQuICBObyBhZGRpdGlvbmFsIGZ1bmN0aW9uYWxp
-dHkgaXMgY3VycmVudGx5IGJlaW5nIHByb3ZpZGVkIGJleW9uZAo+IHdoYXQgZXhpc3RlZCBiZWZv
-cmUgdGhlIGNvLWV4aXN0ZW5jZSByZXN0cmljdGlvbiB3YXMgcHV0IGludG8gcGxhY2UuICBJdCBp
-cwo+IHVwIHRvIHRoZSBlbmQgdXNlciB0byBub3QgaW1wbGVtZW50IGEgc29sdXRpb24gdGhhdCB3
-b3VsZCBpbnRlcmZlcmUgd2l0aAo+IGV4aXN0aW5nIG5ldHdvcmsgcHJvdG9jb2xzLgo+Cj4gUmV2
-aWV3ZWQtYnk6IE1pY2hhbCBTd2lhdGtvd3NraSA8bWljaGFsLnN3aWF0a293c2tpQGxpbnV4Lmlu
-dGVsLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYXZlIEVydG1hbiA8ZGF2aWQubS5lcnRtYW5AaW50
-ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFdvamNpZWNoIERyZXdlayA8d29qY2llY2guZHJld2Vr
-QGludGVsLmNvbT4KPiAtLS0KPiAgLi4uL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2lj
-ZS5yc3QgICAgIHwgMTggLS0tLS0tLQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2Uv
-aWNlLmggICAgICAgICAgfCAxOSAtLS0tLS0tCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2ljZS9pY2VfbGFnLmMgICAgICB8IDEyIC0tLS0tCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2VfbGFnLmggICAgICB8IDUzIC0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYyAgICAgIHwgIDIgLQo+ICBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3NyaW92LmMgICAgfCAgNCAtLQo+ICA2IGZpbGVz
-IGNoYW5nZWQsIDEwOCBkZWxldGlvbnMoLSkKCkkgc2VlIHRoYXQgYm90aCBBbGV4YW5kZXIgTG9i
-YWtpbidzIGFuZCBteSBmZWVkYmFjayBhYm91dCB0aGUgcHJldmlvdXMKdmVyc2lvbiBoYXMgYmVl
-biBhY2NvbW9kYXRlZC4KQW5kIHRoYW5rcyBmb3IgdXBkYXRpbmcgdGhlIERvY3VtZW50YXRpb24g
-dG9vLgoKUmV2aWV3ZWQtYnk6IE1pY2hhbCBTY2htaWR0IDxtc2NobWlkdEByZWRoYXQuY29tPgoK
-PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2V0
-aGVybmV0L2ludGVsL2ljZS5yc3QgYi9Eb2N1bWVudGF0aW9uL25ldHdvcmtpbmcvZGV2aWNlX2Ry
-aXZlcnMvZXRoZXJuZXQvaW50ZWwvaWNlLnJzdAo+IGluZGV4IDY5Njk1ZTU1MTFmNC4uZTRkMDY1
-YzU1ZWE4IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vbmV0d29ya2luZy9kZXZpY2VfZHJp
-dmVycy9ldGhlcm5ldC9pbnRlbC9pY2UucnN0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9uZXR3b3Jr
-aW5nL2RldmljZV9kcml2ZXJzL2V0aGVybmV0L2ludGVsL2ljZS5yc3QKPiBAQCAtODQsMjQgKzg0
-LDYgQEAgT25jZSB0aGUgVk0gc2h1dHMgZG93biwgb3Igb3RoZXJ3aXNlIHJlbGVhc2VzIHRoZSBW
-RiwgdGhlIGNvbW1hbmQgd2lsbAo+ICBjb21wbGV0ZS4KPgo+Cj4gLUltcG9ydGFudCBub3RlcyBm
-b3IgU1ItSU9WIGFuZCBMaW5rIEFnZ3JlZ2F0aW9uCj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gLUxpbmsgQWdncmVnYXRpb24gaXMgbXV0dWFsbHkg
-ZXhjbHVzaXZlIHdpdGggU1ItSU9WLgo+IC0KPiAtLSBJZiBMaW5rIEFnZ3JlZ2F0aW9uIGlzIGFj
-dGl2ZSwgU1ItSU9WIFZGcyBjYW5ub3QgYmUgY3JlYXRlZCBvbiB0aGUgUEYuCj4gLS0gSWYgU1It
-SU9WIGlzIGFjdGl2ZSwgeW91IGNhbm5vdCBzZXQgdXAgTGluayBBZ2dyZWdhdGlvbiBvbiB0aGUg
-aW50ZXJmYWNlLgo+IC0KPiAtQnJpZGdpbmcgYW5kIE1BQ1ZMQU4gYXJlIGFsc28gYWZmZWN0ZWQg
-YnkgdGhpcy4gSWYgeW91IHdpc2ggdG8gdXNlIGJyaWRnaW5nIG9yCj4gLU1BQ1ZMQU4gd2l0aCBT
-Ui1JT1YsIHlvdSBtdXN0IHNldCB1cCBicmlkZ2luZyBvciBNQUNWTEFOIGJlZm9yZSBlbmFibGlu
-Zwo+IC1TUi1JT1YuIElmIHlvdSBhcmUgdXNpbmcgYnJpZGdpbmcgb3IgTUFDVkxBTiBpbiBjb25q
-dW5jdGlvbiB3aXRoIFNSLUlPViwgYW5kCj4gLXlvdSB3YW50IHRvIHJlbW92ZSB0aGUgaW50ZXJm
-YWNlIGZyb20gdGhlIGJyaWRnZSBvciBNQUNWTEFOLCB5b3UgbXVzdCBmb2xsb3cKPiAtdGhlc2Ug
-c3RlcHM6Cj4gLQo+IC0xLiBEZXN0cm95IFNSLUlPViBWRnMgaWYgdGhleSBleGlzdAo+IC0yLiBS
-ZW1vdmUgdGhlIGludGVyZmFjZSBmcm9tIHRoZSBicmlkZ2Ugb3IgTUFDVkxBTgo+IC0zLiBSZWNy
-ZWF0ZSBTUklPViBWRnMgYXMgbmVlZGVkCj4gLQo+IC0KPiAgQWRkaXRpb25hbCBGZWF0dXJlcyBh
-bmQgQ29uZmlndXJhdGlvbnMKPiAgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT0KPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlLmgg
-Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlLmgKPiBpbmRleCA4YjAxNjUxMTU2
-MWYuLmI0YmNhMWQ5NjRhOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvaWNlLmgKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlLmgK
-PiBAQCAtODE0LDI1ICs4MTQsNiBAQCBzdGF0aWMgaW5saW5lIGJvb2wgaWNlX2lzX3N3aXRjaGRl
-dl9ydW5uaW5nKHN0cnVjdCBpY2VfcGYgKnBmKQo+ICAgICAgICAgcmV0dXJuIHBmLT5zd2l0Y2hk
-ZXYuaXNfcnVubmluZzsKPiAgfQo+Cj4gLS8qKgo+IC0gKiBpY2Vfc2V0X3NyaW92X2NhcCAtIGVu
-YWJsZSBTUklPViBpbiBQRiBmbGFncwo+IC0gKiBAcGY6IFBGIHN0cnVjdAo+IC0gKi8KPiAtc3Rh
-dGljIGlubGluZSB2b2lkIGljZV9zZXRfc3Jpb3ZfY2FwKHN0cnVjdCBpY2VfcGYgKnBmKQo+IC17
-Cj4gLSAgICAgICBpZiAocGYtPmh3LmZ1bmNfY2Fwcy5jb21tb25fY2FwLnNyX2lvdl8xXzEpCj4g
-LSAgICAgICAgICAgICAgIHNldF9iaXQoSUNFX0ZMQUdfU1JJT1ZfQ0FQQUJMRSwgcGYtPmZsYWdz
-KTsKPiAtfQo+IC0KPiAtLyoqCj4gLSAqIGljZV9jbGVhcl9zcmlvdl9jYXAgLSBkaXNhYmxlIFNS
-SU9WIGluIFBGIGZsYWdzCj4gLSAqIEBwZjogUEYgc3RydWN0Cj4gLSAqLwo+IC1zdGF0aWMgaW5s
-aW5lIHZvaWQgaWNlX2NsZWFyX3NyaW92X2NhcChzdHJ1Y3QgaWNlX3BmICpwZikKPiAtewo+IC0g
-ICAgICAgY2xlYXJfYml0KElDRV9GTEFHX1NSSU9WX0NBUEFCTEUsIHBmLT5mbGFncyk7Cj4gLX0K
-PiAtCj4gICNkZWZpbmUgSUNFX0ZEX1NUQVRfQ1RSX0JMT0NLX0NPVU5UICAgIDI1Ngo+ICAjZGVm
-aW5lIElDRV9GRF9TVEFUX1BGX0lEWChiYXNlX2lkeCkgXAo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgICgoYmFzZV9pZHgpICogSUNFX0ZEX1NUQVRfQ1RSX0JMT0NLX0NPVU5UKQo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5jIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9sYWcuYwo+IGluZGV4IGVlNWIzNjk0MWJhMy4uNWE3
-NzUzYmRhMzI0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfbGFnLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5j
-Cj4gQEAgLTYsMTUgKzYsNiBAQAo+ICAjaW5jbHVkZSAiaWNlLmgiCj4gICNpbmNsdWRlICJpY2Vf
-bGFnLmgiCj4KPiAtLyoqCj4gLSAqIGljZV9sYWdfbm9wX2hhbmRsZXIgLSBuby1vcCBSeCBoYW5k
-bGVyIHRvIGRpc2FibGUgTEFHCj4gLSAqIEBwc2tiOiBwb2ludGVyIHRvIHNrYiBwb2ludGVyCj4g
-LSAqLwo+IC1yeF9oYW5kbGVyX3Jlc3VsdF90IGljZV9sYWdfbm9wX2hhbmRsZXIoc3RydWN0IHNr
-X2J1ZmYgX19hbHdheXNfdW51c2VkICoqcHNrYikKPiAtewo+IC0gICAgICAgcmV0dXJuIFJYX0hB
-TkRMRVJfUEFTUzsKPiAtfQo+IC0KPiAgLyoqCj4gICAqIGljZV9sYWdfc2V0X3ByaW1hcnkgLSBz
-ZXQgUEYgTEFHIHN0YXRlIGFzIFByaW1hcnkKPiAgICogQGxhZzogTEFHIGluZm8gc3RydWN0Cj4g
-QEAgLTE1OCw3ICsxNDksNiBAQCBpY2VfbGFnX2xpbmsoc3RydWN0IGljZV9sYWcgKmxhZywgc3Ry
-dWN0IG5ldGRldl9ub3RpZmllcl9jaGFuZ2V1cHBlcl9pbmZvICppbmZvKQo+ICAgICAgICAgICAg
-ICAgICBsYWctPnVwcGVyX25ldGRldiA9IHVwcGVyOwo+ICAgICAgICAgfQo+Cj4gLSAgICAgICBp
-Y2VfY2xlYXJfc3Jpb3ZfY2FwKHBmKTsKPiAgICAgICAgIGljZV9jbGVhcl9yZG1hX2NhcChwZik7
-Cj4KPiAgICAgICAgIGxhZy0+Ym9uZGVkID0gdHJ1ZTsKPiBAQCAtMjA1LDcgKzE5NSw2IEBAIGlj
-ZV9sYWdfdW5saW5rKHN0cnVjdCBpY2VfbGFnICpsYWcsCj4gICAgICAgICB9Cj4KPiAgICAgICAg
-IGxhZy0+cGVlcl9uZXRkZXYgPSBOVUxMOwo+IC0gICAgICAgaWNlX3NldF9zcmlvdl9jYXAocGYp
-Owo+ICAgICAgICAgaWNlX3NldF9yZG1hX2NhcChwZik7Cj4gICAgICAgICBsYWctPmJvbmRlZCA9
-IGZhbHNlOwo+ICAgICAgICAgbGFnLT5yb2xlID0gSUNFX0xBR19OT05FOwo+IEBAIC0yMjksNyAr
-MjE4LDYgQEAgc3RhdGljIHZvaWQgaWNlX2xhZ191bnJlZ2lzdGVyKHN0cnVjdCBpY2VfbGFnICps
-YWcsIHN0cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYpCj4gICAgICAgICBpZiAobGFnLT51cHBlcl9u
-ZXRkZXYpIHsKPiAgICAgICAgICAgICAgICAgZGV2X3B1dChsYWctPnVwcGVyX25ldGRldik7Cj4g
-ICAgICAgICAgICAgICAgIGxhZy0+dXBwZXJfbmV0ZGV2ID0gTlVMTDsKPiAtICAgICAgICAgICAg
-ICAgaWNlX3NldF9zcmlvdl9jYXAocGYpOwo+ICAgICAgICAgICAgICAgICBpY2Vfc2V0X3JkbWFf
-Y2FwKHBmKTsKPiAgICAgICAgIH0KPiAgICAgICAgIC8qIHBlcmZvcm0gc29tZSBjbGVhbnVwIGlu
-IGNhc2Ugd2UgY29tZSBiYWNrICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbGFnLmggYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X2xhZy5oCj4gaW5kZXggNTFiNWNmNDY3Y2UyLi41NGQ2NjYzZmU1ODYgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9sYWcuaAo+ICsrKyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGFnLmgKPiBAQCAtMjYsNjIgKzI2LDkgQEAgc3Ry
-dWN0IGljZV9sYWcgewo+ICAgICAgICAgdTggYm9uZGVkOjE7IC8qIGN1cnJlbnRseSBib25kZWQg
-Ki8KPiAgICAgICAgIHU4IHByaW1hcnk6MTsgLyogdGhpcyBpcyBwcmltYXJ5ICovCj4gICAgICAg
-ICB1OCBoYW5kbGVyOjE7IC8qIGRpZCB3ZSByZWdpc3RlciBhIHJ4X25ldGRldl9oYW5kbGVyICov
-Cj4gLSAgICAgICAvKiBlYWNoIHRoaW5nIGJsb2NraW5nIGJvbmRpbmcgd2lsbCBpbmNyZW1lbnQg
-dGhpcyB2YWx1ZSBieSBvbmUuCj4gLSAgICAgICAgKiBJZiB0aGlzIHZhbHVlIGlzIHplcm8sIHRo
-ZW4gYm9uZGluZyBpcyBhbGxvd2VkLgo+IC0gICAgICAgICovCj4gLSAgICAgICB1MTYgZGlzX2xh
-ZzsKPiAgICAgICAgIHU4IHJvbGU7Cj4gIH07Cj4KPiAgaW50IGljZV9pbml0X2xhZyhzdHJ1Y3Qg
-aWNlX3BmICpwZik7Cj4gIHZvaWQgaWNlX2RlaW5pdF9sYWcoc3RydWN0IGljZV9wZiAqcGYpOwo+
-IC1yeF9oYW5kbGVyX3Jlc3VsdF90IGljZV9sYWdfbm9wX2hhbmRsZXIoc3RydWN0IHNrX2J1ZmYg
-Kipwc2tiKTsKPiAtCj4gLS8qKgo+IC0gKiBpY2VfZGlzYWJsZV9sYWcgLSBpbmNyZW1lbnQgTEFH
-IGRpc2FibGUgY291bnQKPiAtICogQGxhZzogTEFHIHN0cnVjdAo+IC0gKi8KPiAtc3RhdGljIGlu
-bGluZSB2b2lkIGljZV9kaXNhYmxlX2xhZyhzdHJ1Y3QgaWNlX2xhZyAqbGFnKQo+IC17Cj4gLSAg
-ICAgICAvKiBJZiBMQUcgdGhpcyBQRiBpcyBub3QgYWxyZWFkeSBkaXNhYmxlZCwgZGlzYWJsZSBp
-dCAqLwo+IC0gICAgICAgcnRubF9sb2NrKCk7Cj4gLSAgICAgICBpZiAoIW5ldGRldl9pc19yeF9o
-YW5kbGVyX2J1c3kobGFnLT5uZXRkZXYpKSB7Cj4gLSAgICAgICAgICAgICAgIGlmICghbmV0ZGV2
-X3J4X2hhbmRsZXJfcmVnaXN0ZXIobGFnLT5uZXRkZXYsCj4gLSAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgaWNlX2xhZ19ub3BfaGFuZGxlciwKPiAtICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOVUxMKSkKPiAtICAgICAg
-ICAgICAgICAgICAgICAgICBsYWctPmhhbmRsZXIgPSB0cnVlOwo+IC0gICAgICAgfQo+IC0gICAg
-ICAgcnRubF91bmxvY2soKTsKPiAtICAgICAgIGxhZy0+ZGlzX2xhZysrOwo+IC19Cj4gLQo+IC0v
-KioKPiAtICogaWNlX2VuYWJsZV9sYWcgLSBkZWNyZW1lbnQgZGlzYWJsZSBjb3VudCBmb3IgYSBQ
-Rgo+IC0gKiBAbGFnOiBMQUcgc3RydWN0Cj4gLSAqCj4gLSAqIERlY3JlbWVudCB0aGUgZGlzYWJs
-ZSBjb3VudGVyIGZvciBhIHBvcnQsIGFuZCBpZiB0aGF0IGNvdW50IHJlYWNoZXMKPiAtICogemVy
-bywgdGhlbiByZW1vdmUgdGhlIG5vLW9wIFJ4IGhhbmRsZXIgZnJvbSB0aGF0IG5ldGRldgo+IC0g
-Ki8KPiAtc3RhdGljIGlubGluZSB2b2lkIGljZV9lbmFibGVfbGFnKHN0cnVjdCBpY2VfbGFnICps
-YWcpCj4gLXsKPiAtICAgICAgIGlmIChsYWctPmRpc19sYWcpCj4gLSAgICAgICAgICAgICAgIGxh
-Zy0+ZGlzX2xhZy0tOwo+IC0gICAgICAgaWYgKCFsYWctPmRpc19sYWcgJiYgbGFnLT5oYW5kbGVy
-KSB7Cj4gLSAgICAgICAgICAgICAgIHJ0bmxfbG9jaygpOwo+IC0gICAgICAgICAgICAgICBuZXRk
-ZXZfcnhfaGFuZGxlcl91bnJlZ2lzdGVyKGxhZy0+bmV0ZGV2KTsKPiAtICAgICAgICAgICAgICAg
-cnRubF91bmxvY2soKTsKPiAtICAgICAgICAgICAgICAgbGFnLT5oYW5kbGVyID0gZmFsc2U7Cj4g
-LSAgICAgICB9Cj4gLX0KPiAtCj4gLS8qKgo+IC0gKiBpY2VfaXNfbGFnX2RpcyAtIGlzIExBRyBk
-aXNhYmxlZAo+IC0gKiBAbGFnOiBMQUcgc3RydWN0Cj4gLSAqCj4gLSAqIFJldHVybiB0cnVlIGlm
-IGJvbmRpbmcgaXMgZGlzYWJsZWQKPiAtICovCj4gLXN0YXRpYyBpbmxpbmUgYm9vbCBpY2VfaXNf
-bGFnX2RpcyhzdHJ1Y3QgaWNlX2xhZyAqbGFnKQo+IC17Cj4gLSAgICAgICByZXR1cm4gISEobGFn
-LT5kaXNfbGFnKTsKPiAtfQo+ICAjZW5kaWYgLyogX0lDRV9MQUdfSF8gKi8KPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYyBiL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGliLmMKPiBpbmRleCBkOTczMTQ3NmNkN2YuLjVkZGI5
-NWQxMDczYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X2xpYi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYwo+
-IEBAIC0yNzEyLDggKzI3MTIsNiBAQCBpY2VfdnNpX3NldHVwKHN0cnVjdCBpY2VfcGYgKnBmLCBz
-dHJ1Y3QgaWNlX3ZzaV9jZmdfcGFyYW1zICpwYXJhbXMpCj4gICAgICAgICByZXR1cm4gdnNpOwo+
-Cj4gIGVycl92c2lfY2ZnOgo+IC0gICAgICAgaWYgKHBhcmFtcy0+dHlwZSA9PSBJQ0VfVlNJX1ZG
-KQo+IC0gICAgICAgICAgICAgICBpY2VfZW5hYmxlX2xhZyhwZi0+bGFnKTsKPiAgICAgICAgIGlj
-ZV92c2lfZnJlZSh2c2kpOwo+Cj4gICAgICAgICByZXR1cm4gTlVMTDsKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zcmlvdi5jIGIvZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zcmlvdi5jCj4gaW5kZXggOTc4OGYzNjNlOWRjLi5hMjIy
-Y2Q3MDJmZDUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
-ZV9zcmlvdi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zcmlv
-di5jCj4gQEAgLTk2MCw4ICs5NjAsNiBAQCBpbnQgaWNlX3NyaW92X2NvbmZpZ3VyZShzdHJ1Y3Qg
-cGNpX2RldiAqcGRldiwgaW50IG51bV92ZnMpCj4gICAgICAgICBpZiAoIW51bV92ZnMpIHsKPiAg
-ICAgICAgICAgICAgICAgaWYgKCFwY2lfdmZzX2Fzc2lnbmVkKHBkZXYpKSB7Cj4gICAgICAgICAg
-ICAgICAgICAgICAgICAgaWNlX2ZyZWVfdmZzKHBmKTsKPiAtICAgICAgICAgICAgICAgICAgICAg
-ICBpZiAocGYtPmxhZykKPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGljZV9lbmFi
-bGVfbGFnKHBmLT5sYWcpOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiAwOwo+ICAg
-ICAgICAgICAgICAgICB9Cj4KPiBAQCAtOTczLDggKzk3MSw2IEBAIGludCBpY2Vfc3Jpb3ZfY29u
-ZmlndXJlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LCBpbnQgbnVtX3ZmcykKPiAgICAgICAgIGlmIChl
-cnIpCj4gICAgICAgICAgICAgICAgIHJldHVybiBlcnI7Cj4KPiAtICAgICAgIGlmIChwZi0+bGFn
-KQo+IC0gICAgICAgICAgICAgICBpY2VfZGlzYWJsZV9sYWcocGYtPmxhZyk7Cj4gICAgICAgICBy
-ZXR1cm4gbnVtX3ZmczsKPiAgfQo+Cj4gLS0KPiAyLjM5LjIKPgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlz
-dApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+This patch series introduces the Intel Infrastructure Data Path Function
+(IDPF) driver. It is used for both physical and virtual functions. Except
+for some of the device operations the rest of the functionality is the
+same for both PF and VF. IDPF uses virtchnl version2 opcodes and
+structures defined in the virtchnl2 header file which helps the driver
+to learn the capabilities and register offsets from the device
+Control Plane (CP) instead of assuming the default values.
+
+The format of the series follows the driver init flow to interface open.
+To start with, probe gets called and kicks off the driver initialization
+by spawning the 'vc_event_task' work queue which in turn calls the
+'hard reset' function. As part of that, the mailbox is initialized which
+is used to send/receive the virtchnl messages to/from the CP. Once that is
+done, 'core init' kicks in which requests all the required global resources
+from the CP and spawns the 'init_task' work queue to create the vports.
+
+Based on the capability information received, the driver creates the said
+number of vports (one or many) where each vport is associated to a netdev.
+Also, each vport has its own resources such as queues, vectors etc.
+From there, rest of the netdev_ops and data path are added.
+
+IDPF implements both single queue which is traditional queueing model
+as well as split queue model. In split queue model, it uses separate queue
+for both completion descriptors and buffers which helps to implement
+out-of-order completions. It also helps to implement asymmetric queues,
+for example multiple RX completion queues can be processed by a single
+RX buffer queue and multiple TX buffer queues can be processed by a
+single TX completion queue. In single queue model, same queue is used
+for both descriptor completions as well as buffer completions. It also
+supports features such as generic checksum offload, generic receive
+offload (hardware GRO) etc.
+
+v4 --> v5: link [4]
+ (patch 4):
+ * improved error handling in the init path
+ (patch 5):
+ * added check for adapter->vports before de-allocating vport resources in
+   the service task
+ * added check for adapter->netdevs and removed redundant msleep in idpf_remove()
+ * corrected s/simulatenously/simultaneously/ in comment
+ (patch 10):
+ * removed inline from idpf_tx_splitq_bump_ntu()
+ * renamed s/parms/params/ to be consistent with rest of naming in code
+ (patch 12):
+ * corrected s/specifcally/specifically/ in comment
+ (patch 13):
+ * removed inline from idpf_rx_singleq_extract_base_fields() and
+   idpf_rx_singleq_extract_flex_fields()
+ (patch 14):
+ * removed "port-" prefix from some stats
+ * fixed setting adaptive coalescing
+ (patch 15):
+ * added toctree entry
+ * fixed formatting, table of contents, notes and some wording in the docs
+
+[4] https://lore.kernel.org/netdev/20230508194326.482-1-emil.s.tantilov@intel.com/
+
+v3 --> v4: link [3]
+ (patch 1):
+ * cleanups in virtchnl2 including redundant error codes, naming and
+   whitespace
+ (patch 3):
+ * removed "__" prefix from names of adapter and vport flags, converted
+   comments to kernel-doc style
+ * renamed error code variable names in controlq to be more consistent
+   with rest of the code
+ * removed Control Plane specific opcodes and changed "peer" type comments
+   to CP
+ * replaced managed dma calls with their non-managed equivalent
+ (patch 4):
+ * added additional info to some error messages on init to aid in debug
+ * removed unnecessary zero-init before loop and zeroing memcpy after
+   kzalloc()
+ * corrected wording of comment in idpf_wait_for_event() s/wake up/woken/
+ * replaced managed dma calls with their non-managed equivalent
+
+[3] https://lore.kernel.org/netdev/20230427020917.12029-1-emil.s.tantilov@intel.com/
+
+v2 --> v3: link [2]
+ * converted virtchnl2 defines to enums
+ * fixed comment style in virtchnl2 to follow kernel-doc format
+ * removed empty lines between end of structs and size check macro
+   checkpatch will mark these instances as CHECK
+ * cleaned up unused Rx descriptor structs and related bits in virtchnl2
+ * converted Rx descriptor bit offsets into bitmasks to better align with
+   the use of GENMASK and FIELD_GET
+ * added device ids to pci_tbl from the start
+ * consolidated common probe and remove functions into idpf_probe() and
+   idpf_remove() respectively
+ * removed needless adapter NULL checks
+ * removed devm_kzalloc() in favor of kzalloc(), including kfree in
+   error and exit code path
+ * replaced instances of kcalloc() calls where either size parameter was
+   1 with kzalloc(), reported by smatch
+ * used kmemdup() in some instances reported by coccicheck
+ * added explicit error code and comment explaining the condition for
+   the exit to address warning by smatch
+ * moved build support to the last patch
+
+[2] https://lore.kernel.org/netdev/20230411011354.2619359-1-pavan.kumar.linga@intel.com/
+
+v1 --> v2: link [1]
+ * removed the OASIS reference in the commit message to make it clear
+   that this is an Intel vendor specific driver
+ * fixed misspells
+ * used comment starter "/**" for struct and definition headers in
+   virtchnl header files
+ * removed AVF reference
+ * renamed APF reference to IDPF
+ * added a comment to explain the reason for 'no flex field' at the end of
+   virtchnl2_get_ptype_info struct
+ * removed 'key[1]' in virtchnl2_rss_key struct as it is not used
+ * set VIRTCHNL2_RXDID_2_FLEX_SQ_NIC to VIRTCHNL2_RXDID_2_FLEX_SPLITQ
+   instead of assigning the same value
+ * cleanup unnecessary NULL assignment to the rx_buf skb pointer since
+   it is not used in splitq model
+ * added comments to clarify the generation bit usage in splitq model
+ * introduced 'reuse_bias' in the page_info structure and make use of it
+   in the hot path
+ * fixed RCT format in idpf_rx_construct_skb
+ * report SPEED_UNKNOWN and DUPLEX_UNKNOWN when the link is down
+ * fixed -Wframe-larger-than warning reported by lkp bot in
+   idpf_vport_queue_ids_init
+ * updated the documentation in idpf.rst to fix LKP bot warning
+
+[1] https://lore.kernel.org/netdev/20230329140404.1647925-1-pavan.kumar.linga@intel.com/
+
+Alan Brady (4):
+  idpf: configure resources for TX queues
+  idpf: configure resources for RX queues
+  idpf: add RX splitq napi poll support
+  idpf: add ethtool callbacks
+
+Joshua Hay (5):
+  idpf: add controlq init and reset checks
+  idpf: add splitq start_xmit
+  idpf: add TX splitq napi poll support
+  idpf: add singleq start_xmit and napi poll
+  idpf: configure SRIOV and add other ndo_ops
+
+Pavan Kumar Linga (5):
+  virtchnl: add virtchnl version 2 ops
+  idpf: add core init and interrupt request
+  idpf: add create vport and netdev configuration
+  idpf: continue expanding init task
+  idpf: initialize interrupts and enable vport
+
+Phani Burra (1):
+  idpf: add module register and probe functionality
+
+ .../device_drivers/ethernet/index.rst         |    1 +
+ .../device_drivers/ethernet/intel/idpf.rst    |  160 +
+ drivers/net/ethernet/intel/Kconfig            |   10 +
+ drivers/net/ethernet/intel/Makefile           |    1 +
+ drivers/net/ethernet/intel/idpf/Makefile      |   18 +
+ drivers/net/ethernet/intel/idpf/idpf.h        |  752 +++
+ .../net/ethernet/intel/idpf/idpf_controlq.c   |  641 +++
+ .../net/ethernet/intel/idpf/idpf_controlq.h   |  131 +
+ .../ethernet/intel/idpf/idpf_controlq_api.h   |  169 +
+ .../ethernet/intel/idpf/idpf_controlq_setup.c |  175 +
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |  165 +
+ drivers/net/ethernet/intel/idpf/idpf_devids.h |   10 +
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    | 1332 +++++
+ .../ethernet/intel/idpf/idpf_lan_pf_regs.h    |  124 +
+ .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |  293 +
+ .../ethernet/intel/idpf/idpf_lan_vf_regs.h    |  128 +
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    | 2354 ++++++++
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  269 +
+ drivers/net/ethernet/intel/idpf/idpf_mem.h    |   20 +
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 1251 +++++
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 4854 +++++++++++++++++
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  854 +++
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  164 +
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 3827 +++++++++++++
+ drivers/net/ethernet/intel/idpf/virtchnl2.h   | 1301 +++++
+ .../ethernet/intel/idpf/virtchnl2_lan_desc.h  |  448 ++
+ 26 files changed, 19452 insertions(+)
+ create mode 100644 Documentation/networking/device_drivers/ethernet/intel/idpf.rst
+ create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq_api.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_controlq_setup.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_pf_regs.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lan_vf_regs.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_lib.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_mem.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_txrx.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/virtchnl2.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/virtchnl2_lan_desc.h
+
+-- 
+2.17.2
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
