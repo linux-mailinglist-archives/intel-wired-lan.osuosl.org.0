@@ -1,181 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5222170326A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 May 2023 18:13:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A595E7032AA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 May 2023 18:17:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 833A941D90;
-	Mon, 15 May 2023 16:12:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 833A941D90
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3343141C84;
+	Mon, 15 May 2023 16:17:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3343141C84
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684167179;
-	bh=NyJY7UZjCVtAEi7FILAiLCM2OEnaND0HdNlRNl4wTjM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1684167439;
+	bh=YfZYA/ZHIJ1ZPn1IN/JNwLbo2/NsVBA93aqILGZqXKI=;
+	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pB/Zvpww3qVVMlsjXRTivghNmqK55B8bpAkk4PCmgBjsxjEcCyz89bCkvrNsLtEu0
-	 9FG4hpuXcFqR2QlV9ZcHf+6pSepWtRphLen6I81tam9F8WoThcoSDb3qh327LGFh1x
-	 Uci0r0lmf0OPNu/3WMPN6hXwjgMtYGIt1+M/OS5RUYOYmbi2AOGNM4WG6WPchVLLCr
-	 +u8rG74i5xfS41zWM+qJqVMPjViZtx8SlEP/3a8WVN2NwOLAkJcP3CUCUihjBmyuTr
-	 +C2UtOvwKc/zVNUg5EE0eianCtozREDldnYq7T5t5VN0Y+79DIqfKF/E3YbyJXMpZB
-	 Gti7nFdjZvOyw==
+	b=SbS10kBkc+TAn+shgRRmJhrOurYXqZi9prJaDOE58bkG0ApNK9VzHgU43XNVUdcRE
+	 tpUgiTJMVsV+Humnzy2vU+kgFvEvhL320mCrdRICwdf5a6akytFtIWar3HFiP4XauB
+	 g21Bj2l9UPg7wMLs/WSk/BiBU7SHD7TC+0DV7bDJyP9SsSa9uzjwVlPPoUtBZlcq/K
+	 iovxCMX+/7C4sI47vHitUYMw7TUhSLQVYIDYgQtppZeuonFoBxJlQ7k9gclSD5cVP+
+	 aNpXR4KxrU6oMag368jbKhgiAkiVO168vJdfsdEmqByZPlmkTvKhuwZbC/V/ZFUmtx
+	 SQkNQd6VRuUQg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LCJR3-hoIHRS; Mon, 15 May 2023 16:12:58 +0000 (UTC)
+	with ESMTP id D8SalVWWFAf5; Mon, 15 May 2023 16:17:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0313A403FD;
-	Mon, 15 May 2023 16:12:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0313A403FD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 216D3403FD;
+	Mon, 15 May 2023 16:17:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 216D3403FD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 575441BF28A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:12:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 272E71BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:17:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3BD42403FD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:12:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3BD42403FD
+ by smtp2.osuosl.org (Postfix) with ESMTP id F34D240328
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:17:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F34D240328
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xwvbcJjL3k4E for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 May 2023 16:12:52 +0000 (UTC)
+ with ESMTP id xNPzxQjh1mlN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 May 2023 16:17:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C8AA40328
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2C8AA40328
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:12:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="348735362"
-X-IronPort-AV: E=Sophos;i="5.99,277,1677571200"; d="scan'208";a="348735362"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2023 09:12:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="695065946"
-X-IronPort-AV: E=Sophos;i="5.99,277,1677571200"; d="scan'208";a="695065946"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga007.jf.intel.com with ESMTP; 15 May 2023 09:12:45 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 15 May 2023 09:12:44 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 15 May 2023 09:12:44 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Mon, 15 May 2023 09:12:44 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.177)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 15 May 2023 09:12:44 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Bt4cSU5Yw8QG6XMWK74e9z/IbweZVrR0bBHUDh6QT6Sq0TtqW+9ZsFDz3b/eIpLKcrD372gg2tY8RniYIxb1lNS8MRy+jF5Z8salYqe2cyaCecg+Xyoh2l54EujcawMF5vRzhft0nM1q07tXigBWKKvjWWCn6HwSRO2nPgyK3rJiIEE/9hzQXchVoZV3bNIPto7NxqgRI2d81AxgPBDSmE/VCYAILZI/JIoKjhRSU+k/9jSoAkIFUJ9rW97oU7swCqgV6FrDqWBzyM7jUUGT7UG8RA91WIT9fBgfQ7XE4+hQSdijdaysnn4V3JuNFmt7Njgiz16bMtJt2ZRUAwLZSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OBURApRm8Y1LbztQ8MiHDGzeMdFVKAA1bY/hA0kPNuA=;
- b=hysGSiAAwYnVQM+5S3mFH8tC9xNI/RnUla7XnzN6BTGy8eneuwyt77OlxrlkIkHbLDr5AjaXJVJfaLt9KdL8eNTYsZNTE7dFlSEXs8gVw3w16Ox+9dnLxHYQ4+fasEFL8VkqGlupasLJxoHZHAk6/A5f+hQ6PXMyRAQi5N5UJxXiEX2UHLclHiCjxIElz/4ybU2kri2OUkEMkp7tieOWlrBelag932M+g7UY79taAHCeLquyQVVOfCOjToQvPytydonhta3Cx7XBjYUUU9u2jtCxaX8Nzx7vERph81qmgnIkdUg9s9mMVwdzONeM2DiOVGsW8Jm0dhPeLXxL+9pQeQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB5471.namprd11.prod.outlook.com (2603:10b6:5:39d::10)
- by BN9PR11MB5483.namprd11.prod.outlook.com (2603:10b6:408:104::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.30; Mon, 15 May
- 2023 16:12:40 +0000
-Received: from DM4PR11MB5471.namprd11.prod.outlook.com
- ([fe80::907c:ffaa:352a:8913]) by DM4PR11MB5471.namprd11.prod.outlook.com
- ([fe80::907c:ffaa:352a:8913%6]) with mapi id 15.20.6387.030; Mon, 15 May 2023
- 16:12:40 +0000
-Date: Mon, 15 May 2023 18:09:55 +0200
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: Jesper Dangaard Brouer <jbrouer@redhat.com>
-Message-ID: <ZGJZU89AK/3mFZXW@lincoln>
-References: <20230512152607.992209-1-larysa.zaremba@intel.com>
- <20230512152607.992209-10-larysa.zaremba@intel.com>
- <b0694577-e2b3-f6de-cf85-aed99fdf2496@redhat.com>
-Content-Disposition: inline
-In-Reply-To: <b0694577-e2b3-f6de-cf85-aed99fdf2496@redhat.com>
-X-ClientProxiedBy: FR3P281CA0029.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:1c::22) To DM4PR11MB5471.namprd11.prod.outlook.com
- (2603:10b6:5:39d::10)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21A3A41C86
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 21A3A41C86
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 16:17:08 +0000 (UTC)
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-180-5my13sD4PhGB7TlrAy3Chw-1; Mon, 15 May 2023 12:17:06 -0400
+X-MC-Unique: 5my13sD4PhGB7TlrAy3Chw-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ 4fb4d7f45d1cf-50d89279d95so25443765a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 09:17:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684167425; x=1686759425;
+ h=content-transfer-encoding:in-reply-to:references:to
+ :content-language:subject:cc:user-agent:mime-version:date:message-id
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y2n8nonK1QjGxCr0VUr93GpzjyMzxVkptj6zYuPWAuE=;
+ b=QS9qh+8bQu6q6YHVuXsPFT61qqQsS6ZKoMmKRhJ5L8HG0fqbEqgX/u0brvaEmYPL2q
+ sAtxsamaWckJNlXKJcheRFgA8Bcx+4K7LKre+q1EUfZq7p5kJZdT9FuqjxknCKLtDNdU
+ TlxALdZ3QQ3RbZHZhNxzZ4Nc7nS/ueJAs/tYZq5TuDobvl5f4l9SjC8GH4ChXLk84QY5
+ A+BLR3ndNGL5OHQk8/MbNc5U1w6a5fLLkPKOQoXzyW4Cb6Ao7b+zBgN/AZpQyUImeRBu
+ c9NxnDv3KHo0TpClEwAD4lP2DZm8Tnl/oyfCAYckdb5nGkN28P5pmC21TT3sM9F07BhA
+ H3Uw==
+X-Gm-Message-State: AC+VfDx8UXD98vH+r6FXNwknl2ARu48Qpy0IWOTSFANl5hCRQBMb8mmf
+ IfORuAN5bSkhHFZV9MKxx4rYJQGnFvFHoLmdZLQqRjCoEbzvmdn7c9taBdl8bgiEXNap/YxFVG1
+ zaJ4aDBKJNFXL9gMbA1Pk9HFzRdkbyQ==
+X-Received: by 2002:a17:907:8a08:b0:969:2df9:a0dd with SMTP id
+ sc8-20020a1709078a0800b009692df9a0ddmr24600321ejc.25.1684167425418; 
+ Mon, 15 May 2023 09:17:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6RQlKd2/JfsFteQEmuUPf/8L4dZ5P2zo1ST2B53RtXrhApGfHpCM2SRHnGguT14dpugsCwvw==
+X-Received: by 2002:a17:907:8a08:b0:969:2df9:a0dd with SMTP id
+ sc8-20020a1709078a0800b009692df9a0ddmr24600277ejc.25.1684167425043; 
+ Mon, 15 May 2023 09:17:05 -0700 (PDT)
+Received: from [192.168.41.200] (83-90-141-187-cable.dk.customer.tdc.net.
+ [83.90.141.187]) by smtp.gmail.com with ESMTPSA id
+ rq12-20020a17090788cc00b0094f0f0de1bcsm9444386ejc.200.2023.05.15.09.17.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 May 2023 09:17:04 -0700 (PDT)
+From: Jesper Dangaard Brouer <jbrouer@redhat.com>
+X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
+Message-ID: <ee1ad4f2-34ab-4377-14d5-532cb0687180@redhat.com>
+Date: Mon, 15 May 2023 18:17:02 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB5471:EE_|BN9PR11MB5483:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1b83d99b-3787-4d75-de9b-08db555f34f2
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: eveJqkJL9pVJZ9rmeb4NlVoGA3RUcS8BTNVW96CWxJWLHooAfRZG4DuzysuLjGx3/+EgfgPxRgmHVwtQApGHc07tp0FE+DH14e8roC+USf55GvVHspc97HD4aVyaKsl1L8DPTb/4liRXVfHexACO0IjRNRZez4RmC0lEg9lIeWy1tarQuu+XqKJqW5AOGaiFoI5MCu4zbF23DsQvD5OlNjzZubUclhmulM2W7PFYFClScfaBHtN5He5muft3Qekt3MUvdMPXWs+YLZb5Ku9DDkNUEY40yBLCc5AlO70mCTcC9BptH6SoVb7hZZmKdauppngnoE7QUdqqHM1aW5cTU73ZDdG888YoqaBueDlGnPrygfyCeWN9LAOsmFk1pPhHNzJbqc/3lAULJvinPNRA/e/X761+bD04PiJqfOdxKFROQvel5HZGbi34IZ/K0sxHms0uN4+v6pEMwLU8uyTPT7emGqna2NeYBOvkra1QlZKKUJ1HlXiU6yXNWgMOhAID9No85GzejVEzTM9WV+fKBdmplevw8j2bcDjn8/+B7Jw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB5471.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(7916004)(136003)(346002)(376002)(396003)(366004)(39860400002)(451199021)(33716001)(83380400001)(66476007)(66556008)(9686003)(66946007)(6486002)(26005)(6506007)(6512007)(966005)(478600001)(54906003)(6666004)(7416002)(186003)(44832011)(86362001)(8676002)(8936002)(5660300002)(2906002)(41300700001)(4326008)(6916009)(316002)(82960400001)(38100700002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KuLV7sJDb9JjlPNV6uwpF4AOwe5xd0UfvQCyr9pMHmd6jeO5cJpQ+2jqAExX?=
- =?us-ascii?Q?kwaETvl/KVezxRKROhjMYlVFu1lCM4fWkv/DcvYROcpEEP7iWwaA/Q6i1iGc?=
- =?us-ascii?Q?m++rdyYbZVHbBLGGC7U2bzlAsPGpAa00D6JIV1sO9p9kMw5ZBqi3xV1UA1Hi?=
- =?us-ascii?Q?7RMi4bywxPg2tStX/D58Y4+LcmYodF6+JlE7M+R4mV2RTg2st19mOQcKMAhX?=
- =?us-ascii?Q?Y14DmcT2oODvy9dYdv+fX+tcRUbC6vbpOKuDWNXS90xERtP0UVFB72YlMCNG?=
- =?us-ascii?Q?xZXixZ5fDeX7azATcdSJnlo12fUsAAS2MTzFrx3gRlywV/EY+B6mGw9Dl03w?=
- =?us-ascii?Q?cHQA2XaOcVXHNLWuHwvV6g+T8vNXwwOBz7IiYfCF/+L53RpWIBJdFClKhrMX?=
- =?us-ascii?Q?eZZj81Ungkop32wg78XadPO6s4BmeDyg4W+TsuEPnga5MCRbS17EB7L+jpfW?=
- =?us-ascii?Q?xvfywuHI+bNDcqrAlQMmZbLAHTpYoa2V9/6XG3viDhJaqbTYUQSnXml1qrb6?=
- =?us-ascii?Q?fsUJGV3x509YD0oSRytxErwoq5hjnKiMJnMKGiioFazNPEtOp2n6Zk8QmY96?=
- =?us-ascii?Q?n0aZBVMBeS0WVWwV6DVfkFLb2wmiE1n4+g/yRwQSgEuLwOy4FH04FEIPxUYw?=
- =?us-ascii?Q?HeTUsC1ST+zUjdB9vUxNFzasGAhVxUz/+bkhBYjrNzInu3KaCY9w8VP5C2Kb?=
- =?us-ascii?Q?iCN4QHQVlmZP09D7wss5rcB9ptIrU7AZFZ9bwEvO1GnekDKlHWx8JFsu4Ixf?=
- =?us-ascii?Q?9V1NbVOc54GlxnoQq/VskNNA1QzEhCJF0E5JGjwSJEPsqXq4bDR4UPY+HtGR?=
- =?us-ascii?Q?k70NYxxJLTEi6KFqWfXDOepUVGEny5DRhS1wok6Cdpv+0drnKZs9vVfz3KG/?=
- =?us-ascii?Q?cv0ZoSMfnOky+uCUxJ3iYXEglt54bcIEwojGPBkeJhHMWsvI3+L6QzS19xoA?=
- =?us-ascii?Q?FlxbjJ78gdEGOI5YdH54O9QJC+GWXvLWXDyug1DfEtPE5BTbrlQEP5LjFgds?=
- =?us-ascii?Q?LTDC5MpIMf7TAFZ4BiB8MEWmR22xNKrty/ZQnuGS1kv65VZs7saMohTHaSOt?=
- =?us-ascii?Q?UgYvQHuICwwJLJVTPPAI/sl2FWmRxlpA7I9ZxoPpnvQvQzvfWd+gNfk2ZtZf?=
- =?us-ascii?Q?9FboSomek/FbzOnQZUnN8HZB6NTy44cWcEjn2J6iwRG+H3pv+POI5qyuDSLD?=
- =?us-ascii?Q?OimkLhF4ZC/pd2QRiKdZO2FLDnysPX+rlnTaE3DJgdCDqsnotpptWxi+Oq4+?=
- =?us-ascii?Q?YL+S1mUANPDkCSRBxEarlCpU37yl0avDdtnyzmr3LXyqUf1Wtkc3kIrtAnTN?=
- =?us-ascii?Q?SHIlRGWRVI6vV3Kp4ierMaxjifl5ghPj+noSGRa3CO4NFzT+kRo/u5Ptn4Qm?=
- =?us-ascii?Q?dBtSwt4tw1yBPHlhOvcWi2nwvXLwBT4BlDKrU/aKTzN9Mcr4maRpbsBtD7cT?=
- =?us-ascii?Q?PLf7c8Ywvba4tB60uBlBQ1E00Gt30POuhKpf9qTQfjTKjLg4ykY9tnxvgroo?=
- =?us-ascii?Q?jTc8nemnIN5aOuo8VEm3DmenwouL5gK44gUdPFxAnNaxZUp9VgXXIsYRp4/s?=
- =?us-ascii?Q?NOji/N4jQLzb0XFzqPO/tsLmzmk6GpSqA+rA6mn52Gjt1MR88wbhKJFCtnq6?=
- =?us-ascii?Q?og=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1b83d99b-3787-4d75-de9b-08db555f34f2
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5471.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2023 16:12:40.3987 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PrN5DaY1K21lBtRz83TIKy4CYroTXz79ULLnOVQOurESjw3NvxdGoUBUYwKpD826jmQgVhYk+qFIo1WU+RReBWcin4zCWQoRqNwlPgVKopc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR11MB5483
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684167172; x=1715703172;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=k9s+hYu3KM2XQXYPKO97k/TvDCxsaZ5FWVAxopDmpdA=;
- b=E9sDp2c0miCCdFP+riLzn/Mikl1uHUOCNfq2kD+fvGVBHSfV3lOBl0H6
- UIydzVkIq2rB3WdkrsxrObzwlZNjS0QLMfFgA8p7Rz7rd03kwZMN9LBqv
- MTS/+TyO3+iwt9nlwxL0/l59i4sfTjeh/RA7I3PbjK/3hNCiTfBxq8Kr2
- SXUntEQh/t4YVsls+EaS7GJh8vkSVT2cAFjrppjpouHFZOwuBSaViowyc
- MWlULJkWUwkqvbMUkBA8TDS/EY7a/SFHVO0uYvem3yVQTO0fjKqARlO4w
- IpF/gZtFzsRs1xX9TpNspLuOq+5AXYp1t5HnG15KXGolHaTIWTtj1CyZ4
- w==;
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+To: Larysa Zaremba <larysa.zaremba@intel.com>, bpf@vger.kernel.org
+References: <20230512152607.992209-1-larysa.zaremba@intel.com>
+ <20230512152607.992209-15-larysa.zaremba@intel.com>
+In-Reply-To: <20230512152607.992209-15-larysa.zaremba@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1684167427;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y2n8nonK1QjGxCr0VUr93GpzjyMzxVkptj6zYuPWAuE=;
+ b=Qd8WNMtV9wwf4KSPSWrL4pAJKCyENXhaLIAgMRv8fHgjRHA++hKhpGcOFkn9ZANOJrUAwT
+ 6QdTAI25rJOfdSV52fWpKD9/ghxIodp2Oiv4UBZ0ORk/mbWsw4gN5KAV68bqMZ5vCmrtRg
+ blf3hEv6OJNf9CoifL5AA5MqAOWrYlk=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=E9sDp2c0
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 09/15] xdp: Add VLAN
- tag hint
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Qd8WNMtV
+Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 14/15] net,
+ xdp: allow metadata > 32
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,124 +127,106 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Anatoly Burakov <anatoly.burakov@intel.com>,
  Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
- Song Liu <song@kernel.org>, Tony
- Nguyen <anthony.l.nguyen@intel.com>, Stanislav Fomichev <sdf@google.com>,
- Maryam Tahhan <mtahhan@redhat.com>, xdp-hints@xdp-project.net,
- Daniel Borkmann <daniel@iogearbox.net>,
+ Song Liu <song@kernel.org>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Stanislav Fomichev <sdf@google.com>, Maryam Tahhan <mtahhan@redhat.com>,
+ xdp-hints@xdp-project.net, Daniel Borkmann <daniel@iogearbox.net>,
  John Fastabend <john.fastabend@gmail.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
  intel-wired-lan@lists.osuosl.org, brouer@redhat.com,
  Yonghong Song <yhs@fb.com>, KP Singh <kpsingh@kernel.org>,
  Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, Jiri Olsa <jolsa@kernel.org>,
- bpf@vger.kernel.org, Martin KaFai Lau <martin.lau@linux.dev>
-Content-Type: text/plain; charset="us-ascii"
+ Martin KaFai Lau <martin.lau@linux.dev>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 15, 2023 at 05:36:12PM +0200, Jesper Dangaard Brouer wrote:
-> 
-> 
-> On 12/05/2023 17.26, Larysa Zaremba wrote:
-> > Implement functionality that enables drivers to expose VLAN tag
-> > to XDP code.
-> > 
-> > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> > ---
-> [...]
-> 
-> > diff --git a/net/core/xdp.c b/net/core/xdp.c
-> > index 41e5ca8643ec..eff21501609f 100644
-> > --- a/net/core/xdp.c
-> > +++ b/net/core/xdp.c
-> > @@ -738,6 +738,30 @@ __bpf_kfunc int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, u32 *hash,
-> >   	return -EOPNOTSUPP;
-> >   }
-> 
-> Remember below becomes part of main documentation on HW metadata hints:
->  - https://kernel.org/doc/html/latest/networking/xdp-rx-metadata.html
-> 
-> Hint compiling locally I use:
->  make SPHINXDIRS="networking" htmldocs
-> 
-> > +/**
-> > + * bpf_xdp_metadata_rx_ctag - Read XDP packet inner vlan tag.
-> 
-> Is bpf_xdp_metadata_rx_ctag a good function name for the inner vlan tag?
-> Like wise below "stag".
-> 
-> I cannot remember if the C-tag or S-tag is the inner or outer vlan tag.
-> 
-> When reading BPF code that use these function names, then I would have
-> to ask Google for help, or find-and-read this doc.
-> 
-> Can we come-up with a more intuitive name, that e.g. helps when reading
-> the BPF-prog code?
 
-Well, my reasoning for such naming is that if someone can configure s-tag 
-stripping in ethtool with 'rx-vlan-stag-hw-parse', they shouldn't have any 
-problem with understanding those function names.
 
-One possible improvement that comes to mind is maybe (similarly ethtool) calling 
-c-tag just 'tag' and letting s-tag stay 'stag'. Because c-tag is this default 
-802.1q tag, which is supported by various hardware, while s-tag is significantly 
-less widespread.
+On 12/05/2023 17.26, Larysa Zaremba wrote:
+> From: Aleksander Lobakin <aleksander.lobakin@intel.com>
+> 
+> When using XDP hints, metadata sometimes has to be much bigger
+> than 32 bytes. Relax the restriction, allow metadata larger than 32 bytes
+> and make __skb_metadata_differs() work with bigger lengths.
+> 
+> Now size of metadata is only limited by the fact it is stored as u8
+> in skb_shared_info, so maximum possible value is 255. 
 
-But there are many options, really.
+I'm confused, IIRC the metadata area isn't stored "in skb_shared_info".
+The maximum possible size is limited by the XDP headroom, which is also
+shared/limited with/by xdp_frame.  I must be reading the sentence wrong,
+somehow.
 
-What are your suggestions?
+> Other important
+> conditions, such as having enough space for xdp_frame building, are already
+> checked in bpf_xdp_adjust_meta().
+> 
+> The requirement of having its length aligned to 4 bytes is still
+> valid.
+> 
+> Signed-off-by: Aleksander Lobakin <aleksander.lobakin@intel.com>
+> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> ---
+>   include/linux/skbuff.h | 13 ++++++++-----
+>   include/net/xdp.h      |  7 ++++++-
+>   2 files changed, 14 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
+> index 8ddb4af1a501..afcd372aecdf 100644
+> --- a/include/linux/skbuff.h
+> +++ b/include/linux/skbuff.h
+> @@ -4219,10 +4219,13 @@ static inline bool __skb_metadata_differs(const struct sk_buff *skb_a,
+>   {
+>   	const void *a = skb_metadata_end(skb_a);
+>   	const void *b = skb_metadata_end(skb_b);
+> -	/* Using more efficient varaiant than plain call to memcmp(). */
+> -#if defined(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS) && BITS_PER_LONG == 64
+>   	u64 diffs = 0;
+>   
+> +	if (!IS_ENABLED(CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS) ||
+> +	    BITS_PER_LONG != 64)
+> +		goto slow;
+> +
+> +	/* Using more efficient variant than plain call to memcmp(). */
+>   	switch (meta_len) {
+>   #define __it(x, op) (x -= sizeof(u##op))
+>   #define __it_diff(a, b, op) (*(u##op *)__it(a, op)) ^ (*(u##op *)__it(b, op))
+> @@ -4242,11 +4245,11 @@ static inline bool __skb_metadata_differs(const struct sk_buff *skb_a,
+>   		fallthrough;
+>   	case  4: diffs |= __it_diff(a, b, 32);
+>   		break;
+> +	default:
+> +slow:
+> +		return memcmp(a - meta_len, b - meta_len, meta_len);
+>   	}
+>   	return diffs;
+> -#else
+> -	return memcmp(a - meta_len, b - meta_len, meta_len);
+> -#endif
+>   }
+>   
+>   static inline bool skb_metadata_differs(const struct sk_buff *skb_a,
+> diff --git a/include/net/xdp.h b/include/net/xdp.h
+> index 0fbd25616241..f48723250c7c 100644
+> --- a/include/net/xdp.h
+> +++ b/include/net/xdp.h
+> @@ -370,7 +370,12 @@ xdp_data_meta_unsupported(const struct xdp_buff *xdp)
+>   
+>   static inline bool xdp_metalen_invalid(unsigned long metalen)
+>   {
+> -	return (metalen & (sizeof(__u32) - 1)) || (metalen > 32);
+> +	typeof(metalen) meta_max;
+> +
+> +	meta_max = type_max(typeof_member(struct skb_shared_info, meta_len));
+> +	BUILD_BUG_ON(!__builtin_constant_p(meta_max));
+> +
+> +	return !IS_ALIGNED(metalen, sizeof(u32)) || metalen > meta_max;
+>   }
+>   
+>   struct xdp_attachment_info {
 
-> 
-> > + * @ctx: XDP context pointer.
-> > + * @vlan_tag: Return value pointer.
-> > + *
-> 
-> IMHO right here, there should be a description.
-> 
-> E.g. for what a VLAN "tag" means.  I assume a "tag" isn't the VLAN id,
-> but the raw VLAN tag that also contains the prio numbers etc.
-> 
-> It this VLAN tag expected to be in network-byte-order ?
-> IMHO this doc should define what is expected (and driver devel must
-> follow this).
-
-Will specify that.
-
-> 
-> > + * Returns 0 on success or ``-errno`` on error.
-> > + */
-> > +__bpf_kfunc int bpf_xdp_metadata_rx_ctag(const struct xdp_md *ctx, u16 *vlan_tag)
-> > +{
-> > +	return -EOPNOTSUPP;
-> > +}
-> > +
-> > +/**
-> > + * bpf_xdp_metadata_rx_stag - Read XDP packet outer vlan tag.
-> > + * @ctx: XDP context pointer.
-> > + * @vlan_tag: Return value pointer.
-> > + *
-> > + * Returns 0 on success or ``-errno`` on error.
-> 
-> IMHO we should provide more guidance to expected return codes, and what
-> they mean.  IMHO driver developers must only return codes that are
-> described here, and if they invent a new, add it as part of their patch.
-
-That's a good suggestion, I will expand the comment to describe error codes used 
-so far.
-
-> 
-> See, formatting in bpf_xdp_metadata_rx_hash and check how this gets
-> compiled into HTML.
-> 
-> 
-> > + */
-> > +__bpf_kfunc int bpf_xdp_metadata_rx_stag(const struct xdp_md *ctx, u16 *vlan_tag)
-> > +{
-> > +	return -EOPNOTSUPP;
-> > +}
-> > +
-> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
