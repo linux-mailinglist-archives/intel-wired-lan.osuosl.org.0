@@ -1,94 +1,177 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 139D770313A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 May 2023 17:13:09 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F070702F3D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 May 2023 16:08:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AB64141D50;
-	Mon, 15 May 2023 15:13:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AB64141D50
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8C37083774;
+	Mon, 15 May 2023 14:08:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C37083774
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684163587;
-	bh=piEsAI82SLmmCoUaYATqyTlo5tIh0YyA8Z9D7R5XMUQ=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=ACDiZIfU7CkUKDL9KsuwHFgDUceMHb19DgXk6mTIQH4Thh7s1PBOAzS4g6jprASNO
-	 U8d1eGxqbu5+nrOTzYF/sDxTcHYvnljZl0KfMfL79lfklvekebh/ItxO1C6xDBt/38
-	 HCedCWN1MHGhuqZ6aX/cOc8a5Out7fpkDJdNgB7JrsmbXB1y1vW7EW4u+XM4nwYYsh
-	 QeXXiqjDoLuCGmzCiddQhft57darKybuFF7txEdP/j7khtnu27bMFD7SDbZm834ZSJ
-	 gVvm/yWcUdkXmmKEIDO9pPxmpBlNwgHrCzA0Z8Mz2GAMZLjCuetFpJ7yTlneWXpU72
-	 7Gtl6sjKk7nTA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NvujeA93Bu4R; Mon, 15 May 2023 15:13:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F346341D6A;
-	Mon, 15 May 2023 15:13:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F346341D6A
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8501F1BF316
- for <intel-wired-lan@osuosl.org>; Mon, 15 May 2023 07:04:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5D103821EB
- for <intel-wired-lan@osuosl.org>; Mon, 15 May 2023 07:04:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D103821EB
+	s=default; t=1684159705;
+	bh=LRzOEXmDp9yZKTo0hroX4BtvXgZkohyGy0OTgEEB2jE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=TSJ3pHSThLYSOK5NC2D8KwcRF9/ebExMZW2ajrODIUWN77OuCCh2MReYUsx5YG/wx
+	 zr+9F+x2HzaBrkqlVXyXwQmqQkxWSDppYi891Fi+tbjjgf/P1ydICQNd+F6avv9mjs
+	 2BwUR5FhUCBKQJzvZjsXNMTLB2XHgnx9kKK/Rur4Ez7Ipbc5HMIsBqlhG3sXtJgsyw
+	 Gx8klKUGwzZRWsVAKiSgRIGXIH5xI3wO8j+TyOLOQr55gVi75rD+KyKOtaMY+A3RXe
+	 AbECBQMEK2I3Kwii1Emk8bjL820cP851x7wojpF8CtsBQOmQd9ZyZ5w2vVn6lr1QQC
+	 k419VDAMR6M4Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rhxJRnYkpl_c for <intel-wired-lan@osuosl.org>;
- Mon, 15 May 2023 07:04:27 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D6745821C8
-Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
- [IPv6:2a00:1450:4864:20::633])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D6745821C8
- for <intel-wired-lan@osuosl.org>; Mon, 15 May 2023 07:04:26 +0000 (UTC)
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-969f90d71d4so1150986866b.3
- for <intel-wired-lan@osuosl.org>; Mon, 15 May 2023 00:04:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684134264; x=1686726264;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/gYRbTQBl+syqb2Eyh7/qFHtMJrGM887hszhGYQkyK4=;
- b=U2LH323FrCttECNegZ6K1H5GdyOJ1aO5Zx60c5sk/5dECN9EJoFR7G74aBcIzaoH1U
- 9EfW8TOA/3gmvPI+91ch8DE2G6DJJr/v3GV/XfrgBv5pfd79P40XyJsFHFhWNEObNVE/
- oSYP/voxFAz3RFXU/VH+O7fhqX7pEpbpQ8pwhgse2pcsqnpJF9JC61XNvwEpagfG8gDo
- 0dDQgcWphFzWvoP4rE2B+KMk8eqw0TnibizB3sw0gM1uJvmviYw2fZvs2KzPHlSmzyyM
- 22y5QeoTL41J9GWef6rlnmklEuGDElQMu0d6XNF53Ncf8l+dcXw/RZN7va5Q1evtIIZL
- uK4Q==
-X-Gm-Message-State: AC+VfDycnSjdZJTvBBgn10BWmwRGsAlgKufaF4FgTCDkI8JrhuUGqhwp
- A+GKk22Yhg5HImTNmgzieM8ruPRmScc0jjt1MhPgmlErp+hrgxmo8fU=
-X-Google-Smtp-Source: ACHHUZ7PF+HK+YcBKaV++9ppq8pCqVckGAbkLR6zc6iyvthR9gjWQLBbK7r4qdjVLgydmpHDsRMl5Mt9+pSXcaQkiz0=
-X-Received: by 2002:a17:907:3683:b0:94f:3b07:a708 with SMTP id
- bi3-20020a170907368300b0094f3b07a708mr28655056ejc.29.1684134264359; Mon, 15
- May 2023 00:04:24 -0700 (PDT)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bOwXzZyDusTX; Mon, 15 May 2023 14:08:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 523368231C;
+	Mon, 15 May 2023 14:08:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 523368231C
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 482881BF575
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 14:08:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1F5934048A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 14:08:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F5934048A
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gjHqbBCWP_6K for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 May 2023 14:08:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21D8A4026A
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 21D8A4026A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 May 2023 14:08:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="330828268"
+X-IronPort-AV: E=Sophos;i="5.99,276,1677571200"; d="scan'208";a="330828268"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2023 07:08:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="845272859"
+X-IronPort-AV: E=Sophos;i="5.99,276,1677571200"; d="scan'208";a="845272859"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga001.fm.intel.com with ESMTP; 15 May 2023 07:08:17 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 15 May 2023 07:08:16 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Mon, 15 May 2023 07:08:16 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.108)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Mon, 15 May 2023 07:08:15 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=R3bTwZFnGQCpuuYXRw0Wdtsq7xox9I8JQCStTBl5XO2bEcKc3bwPBeTlChPXmJ7gATE2PxyIWOSgajNzPGNod4hxfzjvS+81HBZY1+3BEAA6lFMsfQ2ca/AGFdMr47pw6JpNMNPN5vVcFhj7KapSaR3FpP3W39udQ01xpUTSC/+2W0dfH6LhFk034lCEjs7it++0rhlpfwUbRjo2EO/8wv/D4xydqUMxU2+UcYy7SrK5ke/DFABD6Lphd5dXSP8c+EMbtXg8CSmYiJvDYEOH2kLWf426kQVY4DjcXPrSEA8X5Ckkv1aYRSFdbNEvHXMT80xS4WfCSDCBG65YgCvByw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QvuS/89+PoiCdWvP1nE7wHNPVcNZ05MiiO6Sa+hNPZU=;
+ b=j6faZbutL+t6GyXaVZoFPoDJs9cJnuTeONR2WW6kX5jtg1w3E7txANubXKg8J/l7B6WQs/Qp76TDtD/J9r2eHCzuEsXskNNqN5UqIOHo/DkcCE6/HLLGyOFnx+l1lwHaz35Bm364+rCZfHv1xlXIekDQ9eXroXJCc2tYolW0zXDNgCFJpSMS4u9RQi2hjZH1hK9GM9ed8rZ2ryFIxE8+bTWZoPk9DTcoHTVDZeA6G2TBUtopPRogLHZjtdkuoR3NyUXMPtz8SG33cgOqKYiITXsSwMotTjNSTkvy0MlFrdbQNTCiAW5V9wZGipziOMMbW8sf6RXuOtYhFBNPNQH0Sg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB5471.namprd11.prod.outlook.com (2603:10b6:5:39d::10)
+ by BL1PR11MB5980.namprd11.prod.outlook.com (2603:10b6:208:387::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.30; Mon, 15 May
+ 2023 14:08:11 +0000
+Received: from DM4PR11MB5471.namprd11.prod.outlook.com
+ ([fe80::907c:ffaa:352a:8913]) by DM4PR11MB5471.namprd11.prod.outlook.com
+ ([fe80::907c:ffaa:352a:8913%6]) with mapi id 15.20.6387.030; Mon, 15 May 2023
+ 14:08:11 +0000
+Date: Mon, 15 May 2023 16:05:25 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Stanislav Fomichev <sdf@google.com>
+Message-ID: <ZGI8JZzWZ+4POkGx@lincoln>
+References: <20230512152607.992209-1-larysa.zaremba@intel.com>
+ <20230512152607.992209-14-larysa.zaremba@intel.com>
+ <ZF6GfoZVgKX78bpq@google.com>
+Content-Disposition: inline
+In-Reply-To: <ZF6GfoZVgKX78bpq@google.com>
+X-ClientProxiedBy: FR0P281CA0037.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:48::19) To DM4PR11MB5471.namprd11.prod.outlook.com
+ (2603:10b6:5:39d::10)
 MIME-Version: 1.0
-From: Prasad Koya <prasad@arista.com>
-Date: Mon, 15 May 2023 00:04:13 -0700
-Message-ID: <CAKh1g57BP-RHN7uG7+v3mzni1ZLOmd7aiqTTTunm=8D5dnCJBQ@mail.gmail.com>
-To: intel-wired-lan@osuosl.org
-X-Mailman-Approved-At: Mon, 15 May 2023 15:12:52 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=arista.com; s=google; t=1684134264; x=1686726264;
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=/gYRbTQBl+syqb2Eyh7/qFHtMJrGM887hszhGYQkyK4=;
- b=i2nQDl01QBW4YVb7oQ9bxCXWpFuz8PLzKDnt78HsHRVxlR/RLSYXiGcqRuTl96ZvVW
- sUuZe05LxPUeLxkvSiaIm/r0a8HYfmucUVelEt9g2xvO+pPoU5k3m4kxPxF7T4hhnfBk
- 3LHpzH+VlpO+Nfc1IHJRoz+0ATOZmyY7pzmgI7l7+/UKUKRXLrUJYbgaHbMmw7aBm4v6
- r8o8uWYsE0PPIXAxjVakjVn7h1OOkSRgqymLZBsJioU6yJuq9jIJAbpbaj+USDHE+78N
- YClTAQ2Rhyw0CosaEWp1ndZqrf42Wi8StDOltZ0fnclXfjvCR+l7xP1eySBX9VDwWyPD
- FCiA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=arista.com header.i=@arista.com
- header.a=rsa-sha256 header.s=google header.b=i2nQDl01
-Subject: [Intel-wired-lan] I225/I226 does not power down the PHY during "ip
- link set dev down"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB5471:EE_|BL1PR11MB5980:EE_
+X-MS-Office365-Filtering-Correlation-Id: e640867f-dac8-4f3f-d65c-08db554dd122
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: BFXzxTcELk2XfRck4UMXTxxGsJH6CdvWiUxnYIjbFr/G5YjAT1pd9N/l2QOS7VR1b8T8+3dCp6Puk5oYSgnldkUK36PuwtM01Q+wCiSYPB2/GDjgYr12VKW2xk6IKGzeu5GWbYA55XsPHnARnVbdmM7CHNiEfG/YmCUPhmKg82v9shGIoO/RPSl9TEOgrUSJC8YgqGapWERW3DUpfdOrBOVjEp3K8Pu9z0dM+c7ETlwO4bIbPSa9W4Bq6cQHemgYqsgFVE/IgA6dW6kdsAma6C7Y0awiYR6AQAqDd9meG0NYgN2af9HxY7E/G19DPvg3FLnNsCjwwUR3n3Th1ullGv2Wk4vJ7e/pkwtpZzEkuGEwYJ3csl3EJCWv3s6qUe9Bu2jqUGuK4JD23WmFXKRih7FIDF4Zf1KdGa15TjhXji5WVBfLKhj8hJEXEYP3ny+VJ2z70yXjjSLtHZ1Jme/5Tp/R1adKPRcAkBrY6vh+BxMgOYK5kOAf1Z/B07PUF3VvzwQuyMrwQ0mTzMhV2w9iJ5Si+TztG3TRugZP+9Q7GtU4kht0P0mBvgYqHk2Wsmzgom6re4ZsYkTxowIBS59dwDjgw32hvGBUCoVUe8wjvjA=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB5471.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(7916004)(136003)(366004)(346002)(396003)(376002)(39860400002)(451199021)(33716001)(83380400001)(66476007)(66556008)(9686003)(66946007)(6486002)(26005)(6506007)(6512007)(478600001)(54906003)(6666004)(44832011)(186003)(7416002)(2906002)(5660300002)(86362001)(8936002)(8676002)(4326008)(6916009)(316002)(41300700001)(82960400001)(38100700002)(67856001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?e8iNuG3HjyxsrhmfFu8Kdt1ZIYV53XrZocl6HsWlTg293dzQn+tJmLJ/X0z5?=
+ =?us-ascii?Q?WbSndPkwm+IC/WtMGOPSaED6m804X417//0xS75aB9Ucuu4fWqh7oZQJ3mP9?=
+ =?us-ascii?Q?VUW0YjXbEaemJ/KqPcjByARpLsBkNP+u/XG9nlpzBc1w39Wf+WRonV/xsjtu?=
+ =?us-ascii?Q?TRBFy0vO9ZFqW3skiB7AF8FAbLticOFBfKao3X2KFqaqMFYEMtXv1Oj++nxa?=
+ =?us-ascii?Q?uC1Trs+m+N8uv7VW1iKZZKVmLbJETjVIVsB2bomaOgkVmVF1WPjENxDUeS8m?=
+ =?us-ascii?Q?fV9td95vuQWk845fRqJ3ub5ZB0f/IiE1Hfl5Mbd/pFF0RnSLodvj2Atz1DmN?=
+ =?us-ascii?Q?BTox5f4iwESjKfdjTlwScpRAXbWUfA9eA0lqZ0ExVGqrmPpnbGIcCrEyKJiN?=
+ =?us-ascii?Q?2i7/HlHJnuUPjB8sWemIXY2Jxr/27dmC4q42MCMABKj0LfCmkl4SyDfpSiZU?=
+ =?us-ascii?Q?YYWnFI6yClMYyGANHsmp+N3U3lbCeHNZIWkkQZ+JF5wrkubFqTDF9qDnUli2?=
+ =?us-ascii?Q?k3o2h7WkCczfqHtcNj/CfVGpkAodMnbLgGKpjvx38MGfP0OEXARuGHtwbptR?=
+ =?us-ascii?Q?HZhQAITIgApKXUG+DNFeXoJy30yQgC3ZhspNl4vBqJudfPf6edI/4lBlpRtG?=
+ =?us-ascii?Q?RYkfvUTtwDYklHRTeqzulnGon8QR1QQiHqmlYSBw5qS6pXJSh5+OMNvgM7G4?=
+ =?us-ascii?Q?1n4FsTtbbkyZHj+46JK4K5r5vD2bTyYVvsWJoTRye95W+ort5AVk4YrDje7u?=
+ =?us-ascii?Q?mQkQGxsoRl44IuXncXoIb+SAEi2DBuDg0TrYjOBOdrRfhNBXdzLeF6WW08p6?=
+ =?us-ascii?Q?wMHCuk4VT8wIpuA9W/QhcNs5v2onNkbqisDZQNoe+TvrGDKI2va7Z5FsLZ4Q?=
+ =?us-ascii?Q?RpAFnN094czGU+yeow26AY8dEgsvxP7aMoeyy+Yq4wbKxO6QttyoAIKLx8E1?=
+ =?us-ascii?Q?68t90zaF2SrdMoP43MUK7rqlxG9OQZowfp7zG231m9lR+9ZRixRv6cZ/X/8U?=
+ =?us-ascii?Q?c/TyaILfmC/rWHnFIKB6mmE+PLY4V1S1dNTI6JyhTMHl6SnmWWJMhkeVbpNA?=
+ =?us-ascii?Q?lOixsgdqDpbh9PI65mchqHV+7/Raml6GxswqLjVnmGYls1DV4g8HrPZcnIcF?=
+ =?us-ascii?Q?sZ9Du7mxz4uPlm9DSk0b6i1v0ZrUOrZL6lXHrZBsfmcDodtqbcjjx+MqsLNc?=
+ =?us-ascii?Q?YFzGv1QkvbuY3MxsR+4wH3yEgu8zTiwzQkihhAIyvM0kCxPot9ZTGuBQPJ9J?=
+ =?us-ascii?Q?xhlP7FoWIYtDKmJjRQYgnUkgNoBg4Tp4eyA2oj9bs9ox+wI6HXmtN5v8lQXb?=
+ =?us-ascii?Q?lwyHK02yAG0LaTL5wc06Xfex9qqasgqUD0HkZv474aiKEjYVKMozyN2eQmGx?=
+ =?us-ascii?Q?awCaVZFcteKGHW4AKT+P/YM3R1NnfZCsIso0emY0B+LoBPVC6EZ7dk1foYU+?=
+ =?us-ascii?Q?x8YTfAcAd8yTI35LHQAIZQ8cifZgz2ZHdpJMGwnSgeWfRM2eDuvyarAZh/WA?=
+ =?us-ascii?Q?Y35jj3pjdcefMbVV8Nrz8YoZjL9eNcrhK0zOIjqd4RJSo2Vwmy/XeZxrDGvT?=
+ =?us-ascii?Q?jPiNgmpEyQcHSEe05cjHWkDk72DQYmpKTgIKkXzwTwX2aTP0y3E39+EbToOZ?=
+ =?us-ascii?Q?Eg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e640867f-dac8-4f3f-d65c-08db554dd122
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5471.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2023 14:08:11.6173 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: b/5ovqCAviXxgpmav0FM+bhPA9oa7faKwf3LiA9RjEPsBkJQx6OUQHcTVX6Q6wgRJV68fci6RsoNsiYlItPt7nQSlwqm7bfoENzSANazdHY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5980
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1684159698; x=1715695698;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=4F2pe+Bi3JoNn8gnP2gF2BSYpLCG2EmCW2nizaBXhLQ=;
+ b=Kb49aaoVNiOh0Qdb1cnVi6JzYDdrt+TJm73gwz1YzOg3vV6BInTelxs5
+ aOEyePS6WcCg/wpgCmqGl3RkgYB06JvPaPzsCFe7lsYCrb+fgZ+vMtssx
+ EpvnPYeoZsBjnwZH0UpAsaJCES/QdKUC2RUVf9Q7uZrh1vDXNIYwGYa7j
+ VLJavs+VH3UztQJzvAyQc4zKA6Lg2RZJljhfvJDb4x97+SRh7ku92UdRG
+ B4twS5Nz4z/kmh48y5CFHL/MWIOHHj1wCFKa9hTAfTvUe7G2RKoXb+x/P
+ TVB91C7+SY5XpzAB2m6z1U+XoiL5f9kRUDuA0YLxKDPbCRlDGSD2TCaKx
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Kb49aaoV
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 13/15] selftests/bpf:
+ Allow VLAN packets in xdp_hw_metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,202 +184,94 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Salam Noureddine <noureddine@arista.com>
+Cc: Anatoly Burakov <anatoly.burakov@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
+ Song Liu <song@kernel.org>, Tony
+ Nguyen <anthony.l.nguyen@intel.com>, Maryam Tahhan <mtahhan@redhat.com>,
+ xdp-hints@xdp-project.net, Daniel
+ Borkmann <daniel@iogearbox.net>, John Fastabend <john.fastabend@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jesper Dangaard Brouer <brouer@redhat.com>,
+ Yonghong Song <yhs@fb.com>, KP Singh <kpsingh@kernel.org>, Jakub
+ Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jiri Olsa <jolsa@kernel.org>,
+ bpf@vger.kernel.org, Martin KaFai Lau <martin.lau@linux.dev>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi
+On Fri, May 12, 2023 at 11:33:34AM -0700, Stanislav Fomichev wrote:
+> On 05/12, Larysa Zaremba wrote:
+> > Make VLAN c-tag and s-tag XDP hint testing more convenient
+> > by not skipping VLAN-ed packets.
+> > 
+> > Allow both 802.1ad and 802.1Q headers.
+> 
+> Can we also extend non-hw test? That should require adding metadata
+> handlers to veth to extract relevant parts from skb + update ip link
+> commands to add vlan id. Should be relatively easy to do?
+> 
 
-When we set the interface down with "ip link set dev <xyz> down", we
-see that the PHY is not powered off. That is, the LED next to the
-RJ-45 connector is still solid green on the host where the interface
-is "down" and at the peer port. After "ip link set dev <xyz> down",
-"ip link show dev <xyz>" show does not have the "UP" flag but the LED
-is not turned off.
+Seems like something I can and should do. Will be in v2.
 
-Here are the logs when I tried this on Ubuntu running 6.1.0 kernel:
-
-root@arista-Idaville:/home/arista# ethtool -i enp2s0
-driver: igc
-version: 6.1.0-rc4
-firmware-version: 2017:888d
-expansion-rom-version:
-bus-info: 0000:02:00.0
-supports-statistics: yes
-supports-test: yes
-supports-eeprom-access: yes
-supports-register-dump: yes
-supports-priv-flags: yes
-root@arista-Idaville:/home/arista#
-root@arista-Idaville:/home/arista# lspci -s 0000:02:00.0
-02:00.0 Ethernet controller: Intel Corporation Device 125b (rev 04)
-root@arista-Idaville:/home/arista#
-root@arista-Idaville:/home/arista# ip -d link show dev enp2s0
-2: enp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state
-UP mode DEFAULT group default qlen 1000
-    link/ether 00:1c:73:b4:e3:76 brd ff:ff:ff:ff:ff:ff promiscuity 0
-minmtu 68 maxmtu 9216 addrgenmode none numtxqueues 4 numrxqueues 4
-gso_max_size 65536
-gso_max_segs 65535
-root@arista-Idaville:/home/arista#
-root@arista-Idaville:/home/arista# ip link set dev enp2s0 down
-root@arista-Idaville:/home/arista#
-
-
-root@arista-Idaville:/home/arista# cat /sys/class/net/enp2s0/carrier
-/sys/class/net/enp2s0/operstate /sys/class/net/enp2s0/flags
-cat: /sys/class/net/enp2s0/carrier: Invalid argument
-down
-0x1002
-root@arista-Idaville:/home/arista#
-
-root@arista-Idaville:/home/arista# ethtool enp2s0
-Settings for enp2s0:
-        Supported ports: [ ]
-        Supported link modes:   10baseT/Half 10baseT/Full
-                                100baseT/Half 100baseT/Full
-                                1000baseT/Full
-                                2500baseT/Full
-        Supported pause frame use: Symmetric
-        Supports auto-negotiation: Yes
-        Supported FEC modes: Not reported
-        Advertised link modes:  10baseT/Half 10baseT/Full
-                                100baseT/Half 100baseT/Full
-                                1000baseT/Full
-                                2500baseT/Full
-        Advertised pause frame use: Symmetric
-        Advertised auto-negotiation: Yes
-        Advertised FEC modes: Not reported
-        Speed: 1000Mb/s
-        Duplex: Full
-        Port: Twisted Pair
-        PHYAD: 0
-        Transceiver: internal
-        Auto-negotiation: on
-        MDI-X: off (auto)
-        Supports Wake-on: pumbg
-        Wake-on: g
-        Current message level: 0x00000007 (7)
-                               drv probe link
-        Link detected: no
-root@arista-Idaville:/home/arista#
-
-root@arista-Idaville:/home/arista# ip -d link show dev enp2s0
-2: enp2s0: <BROADCAST,MULTICAST> mtu 1500 qdisc mq state DOWN mode
-DEFAULT group default qlen 1000
-    link/ether 00:1c:73:b4:e3:76 brd ff:ff:ff:ff:ff:ff promiscuity 0
-minmtu 68 maxmtu 9216 addrgenmode none numtxqueues 4 numrxqueues 4
-gso_max_size 65536 gso_max_segs 65535
-root@arista-Idaville:/home/arista#
-
-
-Looking at the sources, I see that the following code is commented out
-in igc_phy.c
-
-https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/net/ethernet/intel/igc/igc_phy.c?h=v6.3.2#n136
-
-void igc_power_down_phy_copper(struct igc_hw *hw)
-{
-    u16 mii_reg = 0;
-
-    /* The PHY will retain its settings across a power down/up cycle */
-    hw->phy.ops.read_reg(hw, PHY_CONTROL, &mii_reg);
-    mii_reg |= MII_CR_POWER_DOWN;
-
-    /* Temporary workaround - should be removed when PHY will implement
-     * IEEE registers as properly
-     */
-    /* hw->phy.ops.write_reg(hw, PHY_CONTROL, mii_reg); */
-    usleep_range(1000, 2000);
-}
-
-Uncommenting above line works. However, Intel support suggested using
-"Go Link Disconnect" (bit number 5) in the PHPM register to turn the
-PHY off. The documentation in the "Intel Ethernet Controller
-I225/I226" User manual suggests accessing this register by following
-the semantics to acquire and release the SW_FW_SYNC semaphore. If we
-go this way, after a few link down/up, I run into error. Please see
-the dmesg logs and my code below. Perhaps I'm accessing the register
-incorrectly?
-
-bash-4.2# dmesg | grep -B3 igc_
-
-[  8.936695] Copyright(c) 2018 Intel Corporation.
-[  8.936739] igc 0000:07:00.0: PCIe PTM not supported by PCIe bus/controller
-[  8.981607] igc 0000:07:00.0 (unnamed net_device) (uninitialized): PHC added
-[  9.003934] igc_power_down_phy_copper: 135 link DOWN. retval 0
-[  9.003942] igc_power_down_phy_copper: 142 link DOWN
-
---
-:
-[  15.791931] igc_power_up_phy_copper: 113 link UP. retval 0
-[  15.791934] igc_power_up_phy_copper: 118 link UP
-
---
-:
-[  71.918835] igc 0000:07:00.0 ma1: Error on hardware initialization.
-[  72.986277] igc_power_down_phy_copper: 135 link DOWN. retval -13.
-[  74.975243] igc_power_up_phy_copper: 113 link UP. retval -13
-[  77.074806] igc 0000:07:00.0 ma1: Error on hardware initialization
-[  78.142251] igc_power_down_phy_copper: 135 link DOWN. retval -13
-
---
-:
-[ 134.156688] igc_power_up_phy_copper: 113 link UP. retval -13
-
-bash-4.2#
-
-
-108 void igc_power_up_phy_copper(struct igc_hw *hw)
-109 {
-110   struct igc_phy_info *phy = &hw->phy;
-111   s32 ret_val = phy->ops.acquire(hw);
-112
-113   printk(KERN_INFO "%s: %d link UP. retval %d\n", __func__,
-__LINE__, ret_val);
-114   if (!ret_val) {
-115     u32 phpm = rd32(IGC_I225_PHPM);
-116     phpm &= ~0x20;
-117     wr32(IGC_I225_PHPM, phpm);
-118     printk(KERN_INFO "%s: %d link UP\n", __func__, __LINE__);
-119     usleep_range(1000, 2000);
-120   }
-121 }
-122
-
-123 /**
-124 * igc_power_down_phy_copper - Power down copper PHY
-125 * @hw: pointer to the HW structure
-126 *
-127 * Power down PHY to save power when interface is down and wake on lan
-128 * is not enabled.
-129 */
-130 void igc_power_down_phy_copper(struct igc_hw *hw)
-131 {
-132   struct igc_phy_info *phy = &hw->phy;
-133
-134   s32 ret_val = phy->ops.acquire(hw);
-135   printk(KERN_INFO "%s: %d link DOWN. retval %d\n", __func__,
-__LINE__, ret_val);
-136   if (!ret_val) {
-137     u32 phpm = rd32(IGC_I225_PHPM);
-138     phpm |= 0x20;
-139     wr32(IGC_I225_PHPM, phpm);
-140
-141     phy->ops.release(hw);
-142     printk(KERN_INFO "%s: %d link DOWN\n", __func__, __LINE__);
-143     usleep_range(1000, 2000);
-144   }
-145 }
-
-What is the preferred way? We are using linux kernel version 5.10.165
-but I see the same code for igc_power_down_phy_copper() in the kernel
-version 6.3.2.
-
-Thank you.
-Prasad
+> > 
+> > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> > ---
+> >  tools/testing/selftests/bpf/progs/xdp_hw_metadata.c | 9 ++++++++-
+> >  tools/testing/selftests/bpf/xdp_metadata.h          | 8 ++++++++
+> >  2 files changed, 16 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > index b2dfd7066c6e..f95f82a8b449 100644
+> > --- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > +++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+> > @@ -26,15 +26,22 @@ int rx(struct xdp_md *ctx)
+> >  {
+> >  	void *data, *data_meta, *data_end;
+> >  	struct ipv6hdr *ip6h = NULL;
+> > -	struct ethhdr *eth = NULL;
+> >  	struct udphdr *udp = NULL;
+> >  	struct iphdr *iph = NULL;
+> >  	struct xdp_meta *meta;
+> > +	struct ethhdr *eth;
+> >  	int err;
+> >  
+> >  	data = (void *)(long)ctx->data;
+> >  	data_end = (void *)(long)ctx->data_end;
+> >  	eth = data;
+> > +
+> > +	if (eth + 1 < data_end && eth->h_proto == bpf_htons(ETH_P_8021AD))
+> > +		eth = (void *)eth + sizeof(struct vlan_hdr);
+> > +
+> > +	if (eth + 1 < data_end && eth->h_proto == bpf_htons(ETH_P_8021Q))
+> > +		eth = (void *)eth + sizeof(struct vlan_hdr);
+> > +
+> >  	if (eth + 1 < data_end) {
+> >  		if (eth->h_proto == bpf_htons(ETH_P_IP)) {
+> >  			iph = (void *)(eth + 1);
+> > diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
+> > index 938a729bd307..6664893c2c77 100644
+> > --- a/tools/testing/selftests/bpf/xdp_metadata.h
+> > +++ b/tools/testing/selftests/bpf/xdp_metadata.h
+> > @@ -9,6 +9,14 @@
+> >  #define ETH_P_IPV6 0x86DD
+> >  #endif
+> >  
+> > +#ifndef ETH_P_8021Q
+> > +#define ETH_P_8021Q 0x8100
+> > +#endif
+> > +
+> > +#ifndef ETH_P_8021AD
+> > +#define ETH_P_8021AD 0x88A8
+> > +#endif
+> > +
+> >  struct xdp_meta {
+> >  	__u64 rx_timestamp;
+> >  	__u64 xdp_timestamp;
+> > -- 
+> > 2.35.3
+> > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
