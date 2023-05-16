@@ -1,89 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CA9270537E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 May 2023 18:20:57 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EE27705380
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 May 2023 18:21:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BD87983B52;
-	Tue, 16 May 2023 16:20:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BD87983B52
+	by smtp1.osuosl.org (Postfix) with ESMTP id 756C683B60;
+	Tue, 16 May 2023 16:21:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 756C683B60
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684254055;
-	bh=y7AOFN8scC62E23exqZKELXdYIuG/jXaAyBxuoqeEuc=;
+	s=default; t=1684254060;
+	bh=Qxb5VyluIxD/oVKH9tM+KjgIVfugdYIaUOqLL4ubT6w=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2m9ykaWAQ6ifk92I4xVFWvdugqCGnV2AacVayti5VxpcRR9RO+0cWFfh2+yTkZQyL
-	 Uk4AIlPQoby9RxuUJOzuc2os9GXgZAHx8+lG0wIVyRmoOA9ZKnuZaOYIZdLQL86nrA
-	 ed/F+jSjY1kKmayhSQmbbbZbTcMu6vHBLOEVpTte25coVBMbO/wlp7/xH2Kp/wpy14
-	 Uxv9hRdX1x56P+eRxVPieeUmnU00xwB5AuyWbB4KYltUoyU5upo1yslk5o/xdRoZiu
-	 vXFMqILxJmNBMWu6WUFRMy2JXqyjgv1D7ttZr8ZeGI/NkbxDI3KPW9agwSg1dILrif
-	 ei54d6CrxdVAQ==
+	b=45Dl/i2vRc5OUJhdkZ5GaEkjSF8PPLS+xS5XophxRuOoGegJ4CGUkXx9H3fqQVbqZ
+	 p9mA0khC22AiqNakHPYR6ttM3Y5rWbu30SpN0Q7l2pQ1V+uNP2W7x9Kt7zIH5FuNPW
+	 ZiL5u9yDXnMF+EnyJ9uIvn+k5R18A7MrM9hMsIMOdQ3FuWjAP8lj+tDoyjcKpPTInn
+	 +4DlLq9vSuzzbQcFXK+uILvf+TwUHeUmk1SHHK4DTudbyhxLG6P94tlOHUyLnUG6Dn
+	 wcq4q8RVnVVDNmJp8pCeP4UcnuYwjbL/tcCj6JvALsKAY/puM8YocowiVB+nT2M7Ek
+	 5Ecn++qe1a//A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5uxmeLqJkYZo; Tue, 16 May 2023 16:20:54 +0000 (UTC)
+	with ESMTP id VQL2hoLFgG7F; Tue, 16 May 2023 16:20:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A5A2821D6;
-	Tue, 16 May 2023 16:20:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A5A2821D6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5806C821CE;
+	Tue, 16 May 2023 16:20:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5806C821CE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9FE881BF2C0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 16:20:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7B6BD1BF2C0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 16:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 73EC641516
+ by smtp4.osuosl.org (Postfix) with ESMTP id D4FFC414C4
  for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 16:20:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 73EC641516
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4FFC414C4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BHjT-L_SN3JC for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 6Xw6C3CQNZJe for <intel-wired-lan@lists.osuosl.org>;
  Tue, 16 May 2023 16:20:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C2AC041505
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A73F41523
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C2AC041505
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 16:20:44 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="340896708"
-X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="340896708"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4A73F41523
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 16:20:45 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="340896721"
+X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="340896721"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 May 2023 09:20:44 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="701414475"
-X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="701414475"
+X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="701414487"
+X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="701414487"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orsmga002.jf.intel.com with ESMTP; 16 May 2023 09:20:29 -0700
+ by orsmga002.jf.intel.com with ESMTP; 16 May 2023 09:20:33 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Tue, 16 May 2023 18:18:38 +0200
-Message-Id: <20230516161841.37138-9-aleksander.lobakin@intel.com>
+Date: Tue, 16 May 2023 18:18:39 +0200
+Message-Id: <20230516161841.37138-10-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230516161841.37138-1-aleksander.lobakin@intel.com>
 References: <20230516161841.37138-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684254044; x=1715790044;
+ t=1684254045; x=1715790045;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=V0g7dukpnj7r4jYyDiIYAw+As0f4AiNqlNJm0fGqTFI=;
- b=Y5HK4FT6IwUPSJU2GyC49bfkX4tnikU5s8I9/U8xCyz5331eqwHL6sTm
- LH/mvHs3ZtN4PRVwWhPuCGyqSj6YTjbTxCsGXf4+wA5cpXNBGTePNCBGo
- PZMfpC0cnEvzVdUD7g58/HfaCaO3/d0Q9RJ8UMkYRt3m3dr0wpzDBJZ5T
- vdh8WGPoy8ibSsX9IEupVG9bkqRjhhQGn6j7mqYhw/tD0/cv3/vu67xHd
- qKjPpUsSqTD3iB4xs6wLhXclNLI/nkaSFNMr2OKYrnHZ6dOT3+SPbMmcM
- ZaqTftOHHgRxDle+CfWBTTWuu2RjBpSsg1Xy5HolPr5m7wVoWkThGFDPL
- Q==;
+ bh=8rv9nlvNwZI0m5eeZfeqrro4xCO6aRYBd1RceFAklCo=;
+ b=mRsruAYBpCAIR6eQm/x2N7gKUUmIN7av8KrWPr234G0do6rxlNc+EXUs
+ 4c4HFRtKStae5W+BWMMQnFIyMw5x82fCk3rDGCdCs7b0BdVvGat0LdGCb
+ nbZreH+B2gjZ6NnF4ybQB62UhfLepEqamnMkRblYrYp32rqtdeOb3ZANe
+ psQPp4CvCzojgPtoxA2K8gfir+jmBqlv2kfB1JOxCXroT1y8IagptgioE
+ ukMW8Egj0ENBVvZhSOzdUeI8SROfTVEcq/cU4O2AYQieIkmM8L3IgCHP9
+ A7coTxZFGbWKsudwiiQe2L6VsoP2+Ebq0onF8S+xmPD8RYmlHP/cgw8hv
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Y5HK4FT6
-Subject: [Intel-wired-lan] [PATCH net-next 08/11] iavf: switch to Page Pool
+ header.a=rsa-sha256 header.s=Intel header.b=mRsruAYB
+Subject: [Intel-wired-lan] [PATCH net-next 09/11] libie: add common queue
+ stats
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,385 +107,345 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now that the IAVF driver simply uses dev_alloc_page() + free_page() with
-no custom recycling logics and one whole page per frame, it can easily
-be switched to using Page Pool API instead.
-Introduce libie_rx_page_pool_create(), a wrapper for creating a PP with
-the default libie settings applicable to all Intel hardware, and replace
-the alloc/free calls with the corresponding PP functions, including the
-newly added sync-for-CPU helpers. Use skb_mark_for_recycle() to bring
-back the recycling and restore the initial performance.
-
-From the important object code changes, worth mentioning that
-__iavf_alloc_rx_pages() is now inlined due to the greatly reduced size.
-The resulting driver is on par with the pre-series code and 1-2% slower
-than the "optimized" version right before the recycling removal.
-But the number of locs and object code bytes slaughtered is much more
-important here after all, not speaking of that there's still a vast
-space for optimization and improvements.
+Next stop, per-queue private stats. They have only subtle differences
+from driver to driver and can easily be resolved.
+Define common structures, inline helpers and Ethtool helpers to collect,
+update and export the statistics. Use u64_stats_t right from the start,
+as well as the corresponding helpers to ensure tear-free operations.
+For the NAPI parts of both Rx and Tx, also define small onstack
+containers to update them in polling loops and then sync the actual
+containers once a loop ends.
+The drivers will be switched to use this API later on a per-driver
+basis, along with conversion to PP.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/Kconfig          |   1 +
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 125 +++++---------------
- drivers/net/ethernet/intel/iavf/iavf_txrx.h |   8 +-
- drivers/net/ethernet/intel/libie/rx.c       |  28 +++++
- include/linux/net/intel/libie/rx.h          |   3 +
- 5 files changed, 68 insertions(+), 97 deletions(-)
+ drivers/net/ethernet/intel/libie/Makefile |   1 +
+ drivers/net/ethernet/intel/libie/stats.c  | 119 ++++++++++++++
+ include/linux/net/intel/libie/stats.h     | 179 ++++++++++++++++++++++
+ 3 files changed, 299 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/libie/stats.c
+ create mode 100644 include/linux/net/intel/libie/stats.h
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index cec4a938fbd0..a368afc42b8d 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -86,6 +86,7 @@ config E1000E_HWTS
+diff --git a/drivers/net/ethernet/intel/libie/Makefile b/drivers/net/ethernet/intel/libie/Makefile
+index 95e81d09b474..76f32253481b 100644
+--- a/drivers/net/ethernet/intel/libie/Makefile
++++ b/drivers/net/ethernet/intel/libie/Makefile
+@@ -4,3 +4,4 @@
+ obj-$(CONFIG_LIBIE)	+= libie.o
  
- config LIBIE
- 	tristate
-+	select PAGE_POOL
- 	help
- 	  libie (Intel Ethernet library) is a common library containing
- 	  routines shared by several Intel Ethernet drivers.
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index ec256ec16e68..2c09f9cf81f9 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -690,8 +690,6 @@ int iavf_setup_tx_descriptors(struct iavf_ring *tx_ring)
-  **/
- void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
- {
--	u16 i;
--
- 	/* ring already cleared, nothing to do */
- 	if (!rx_ring->rx_pages)
- 		return;
-@@ -702,28 +700,17 @@ void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
- 	}
- 
- 	/* Free all the Rx ring sk_buffs */
--	for (i = 0; i < rx_ring->count; i++) {
-+	for (u32 i = 0; i < rx_ring->count; i++) {
- 		struct page *page = rx_ring->rx_pages[i];
--		dma_addr_t dma;
- 
- 		if (!page)
- 			continue;
- 
--		dma = page_pool_get_dma_addr(page);
--
- 		/* Invalidate cache lines that may have been written to by
- 		 * device so that we avoid corrupting memory.
- 		 */
--		dma_sync_single_range_for_cpu(rx_ring->dev, dma,
--					      LIBIE_SKB_HEADROOM,
--					      LIBIE_RX_BUF_LEN,
--					      DMA_FROM_DEVICE);
--
--		/* free resources associated with mapping */
--		dma_unmap_page_attrs(rx_ring->dev, dma, LIBIE_RX_TRUESIZE,
--				     DMA_FROM_DEVICE, IAVF_RX_DMA_ATTR);
--
--		__free_page(page);
-+		page_pool_dma_sync_full_for_cpu(rx_ring->pool, page);
-+		page_pool_put_full_page(rx_ring->pool, page, false);
- 	}
- 
- 	rx_ring->next_to_clean = 0;
-@@ -738,10 +725,15 @@ void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
-  **/
- void iavf_free_rx_resources(struct iavf_ring *rx_ring)
- {
-+	struct device *dev = rx_ring->pool->p.dev;
+ libie-objs		+= rx.o
++libie-objs		+= stats.o
+diff --git a/drivers/net/ethernet/intel/libie/stats.c b/drivers/net/ethernet/intel/libie/stats.c
+new file mode 100644
+index 000000000000..61456842a362
+--- /dev/null
++++ b/drivers/net/ethernet/intel/libie/stats.c
+@@ -0,0 +1,119 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright(c) 2023 Intel Corporation. */
 +
- 	iavf_clean_rx_ring(rx_ring);
- 	kfree(rx_ring->rx_pages);
- 	rx_ring->rx_pages = NULL;
- 
-+	page_pool_destroy(rx_ring->pool);
-+	rx_ring->dev = dev;
++#include <linux/ethtool.h>
++#include <linux/net/intel/libie/stats.h>
 +
- 	if (rx_ring->desc) {
- 		dma_free_coherent(rx_ring->dev, rx_ring->size,
- 				  rx_ring->desc, rx_ring->dma);
-@@ -758,13 +750,15 @@ void iavf_free_rx_resources(struct iavf_ring *rx_ring)
- int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
- {
- 	struct device *dev = rx_ring->dev;
-+	struct page_pool *pool;
-+	int ret = -ENOMEM;
- 
- 	/* warn if we are about to overwrite the pointer */
- 	WARN_ON(rx_ring->rx_pages);
- 	rx_ring->rx_pages = kcalloc(rx_ring->count, sizeof(*rx_ring->rx_pages),
- 				    GFP_KERNEL);
- 	if (!rx_ring->rx_pages)
--		return -ENOMEM;
-+		return ret;
- 
- 	u64_stats_init(&rx_ring->syncp);
- 
-@@ -780,15 +774,27 @@ int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
- 		goto err;
- 	}
- 
-+	pool = libie_rx_page_pool_create(&rx_ring->q_vector->napi,
-+					 rx_ring->count);
-+	if (IS_ERR(pool)) {
-+		ret = PTR_ERR(pool);
-+		goto err_free_dma;
-+	}
++/* Rx per-queue stats */
 +
-+	rx_ring->pool = pool;
++static const char * const libie_rq_stats_str[] = {
++#define act(s)	__stringify(s),
++	DECLARE_LIBIE_RQ_STATS(act)
++#undef act
++};
 +
- 	rx_ring->next_to_clean = 0;
- 	rx_ring->next_to_use = 0;
- 
- 	return 0;
-+
-+err_free_dma:
-+	dma_free_coherent(dev, rx_ring->size, rx_ring->desc, rx_ring->dma);
- err:
- 	kfree(rx_ring->rx_pages);
- 	rx_ring->rx_pages = NULL;
- 
--	return -ENOMEM;
-+	return ret;
- }
- 
- /**
-@@ -809,40 +815,6 @@ static inline void iavf_release_rx_desc(struct iavf_ring *rx_ring, u32 val)
- 	writel(val, rx_ring->tail);
- }
- 
--/**
-- * iavf_alloc_mapped_page - allocate and map a new page
-- * @dev: device used for DMA mapping
-- * @gfp: GFP mask to allocate page
-- *
-- * Returns a new &page if the it was successfully allocated, %NULL otherwise.
-- **/
--static struct page *iavf_alloc_mapped_page(struct device *dev, gfp_t gfp)
--{
--	struct page *page;
--	dma_addr_t dma;
--
--	/* alloc new page for storage */
--	page = __dev_alloc_page(gfp);
--	if (unlikely(!page))
--		return NULL;
--
--	/* map page for use */
--	dma = dma_map_page_attrs(dev, page, 0, PAGE_SIZE, DMA_FROM_DEVICE,
--				 IAVF_RX_DMA_ATTR);
--
--	/* if mapping failed free memory back to system since
--	 * there isn't much point in holding memory we can't use
--	 */
--	if (dma_mapping_error(dev, dma)) {
--		__free_page(page);
--		return NULL;
--	}
--
--	page_pool_set_dma_addr(page, dma);
--
--	return page;
--}
--
- /**
-  * iavf_receive_skb - Send a completed packet up the stack
-  * @rx_ring:  rx ring in play
-@@ -876,7 +848,7 @@ static void iavf_receive_skb(struct iavf_ring *rx_ring,
- static u32 __iavf_alloc_rx_pages(struct iavf_ring *rx_ring, u32 to_refill,
- 				 gfp_t gfp)
- {
--	struct device *dev = rx_ring->dev;
-+	struct page_pool *pool = rx_ring->pool;
- 	u32 ntu = rx_ring->next_to_use;
- 	union iavf_rx_desc *rx_desc;
- 
-@@ -890,7 +862,7 @@ static u32 __iavf_alloc_rx_pages(struct iavf_ring *rx_ring, u32 to_refill,
- 		struct page *page;
- 		dma_addr_t dma;
- 
--		page = iavf_alloc_mapped_page(dev, gfp);
-+		page = page_pool_alloc_pages(pool, gfp);
- 		if (!page) {
- 			rx_ring->rx_stats.alloc_page_failed++;
- 			break;
-@@ -899,11 +871,6 @@ static u32 __iavf_alloc_rx_pages(struct iavf_ring *rx_ring, u32 to_refill,
- 		rx_ring->rx_pages[ntu] = page;
- 		dma = page_pool_get_dma_addr(page);
- 
--		/* sync the buffer for use by the device */
--		dma_sync_single_range_for_device(dev, dma, LIBIE_SKB_HEADROOM,
--						 LIBIE_RX_BUF_LEN,
--						 DMA_FROM_DEVICE);
--
- 		/* Refresh the desc even if buffer_addrs didn't change
- 		 * because each write-back erases this info.
- 		 */
-@@ -1090,21 +1057,6 @@ static void iavf_add_rx_frag(struct sk_buff *skb, struct page *page, u32 size)
- 			LIBIE_SKB_HEADROOM, size, LIBIE_RX_TRUESIZE);
- }
- 
--/**
-- * iavf_sync_rx_page - Synchronize received data for use
-- * @dev: device used for DMA mapping
-- * @page: Rx page containing the data
-- * @size: size of the received data
-- *
-- * This function will synchronize the Rx buffer for use by the CPU.
-- */
--static void iavf_sync_rx_page(struct device *dev, struct page *page, u32 size)
--{
--	dma_sync_single_range_for_cpu(dev, page_pool_get_dma_addr(page),
--				      LIBIE_SKB_HEADROOM, size,
--				      DMA_FROM_DEVICE);
--}
--
- /**
-  * iavf_build_skb - Build skb around an existing buffer
-  * @page: Rx page to with the data
-@@ -1127,6 +1079,8 @@ static struct sk_buff *iavf_build_skb(struct page *page, u32 size)
- 	if (unlikely(!skb))
- 		return NULL;
- 
-+	skb_mark_for_recycle(skb);
-+
- 	/* update pointers within the skb to store the data */
- 	skb_reserve(skb, LIBIE_SKB_HEADROOM);
- 	__skb_put(skb, size);
-@@ -1134,19 +1088,6 @@ static struct sk_buff *iavf_build_skb(struct page *page, u32 size)
- 	return skb;
- }
- 
--/**
-- * iavf_unmap_rx_page - Unmap used page
-- * @dev: device used for DMA mapping
-- * @page: page to release
-- */
--static void iavf_unmap_rx_page(struct device *dev, struct page *page)
--{
--	dma_unmap_page_attrs(dev, page_pool_get_dma_addr(page),
--			     LIBIE_RX_TRUESIZE, DMA_FROM_DEVICE,
--			     IAVF_RX_DMA_ATTR);
--	page_pool_set_dma_addr(page, 0);
--}
--
- /**
-  * iavf_is_non_eop - process handling of non-EOP buffers
-  * @rx_ring: Rx ring being processed
-@@ -1189,8 +1130,8 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
- 	const gfp_t gfp = GFP_ATOMIC | __GFP_NOWARN;
- 	u32 to_refill = IAVF_DESC_UNUSED(rx_ring);
-+	struct page_pool *pool = rx_ring->pool;
- 	struct sk_buff *skb = rx_ring->skb;
--	struct device *dev = rx_ring->dev;
- 	u32 ntc = rx_ring->next_to_clean;
- 	u32 ring_size = rx_ring->count;
- 	u32 cleaned_count = 0;
-@@ -1239,13 +1180,11 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 		 * stripped by the HW.
- 		 */
- 		if (unlikely(!size)) {
--			iavf_unmap_rx_page(dev, page);
--			__free_page(page);
-+			page_pool_recycle_direct(pool, page);
- 			goto skip_data;
- 		}
- 
--		iavf_sync_rx_page(dev, page, size);
--		iavf_unmap_rx_page(dev, page);
-+		page_pool_dma_maybe_sync_for_cpu(pool, page, size);
- 
- 		/* retrieve a buffer from the ring */
- 		if (skb)
-@@ -1255,7 +1194,7 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
--			__free_page(page);
-+			page_pool_put_page(pool, page, size, true);
- 			rx_ring->rx_stats.alloc_buff_failed++;
- 			break;
- 		}
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-index 1421e90c7c4e..8fbe549ce6a5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-@@ -83,9 +83,6 @@ enum iavf_dyn_idx_t {
- 
- #define iavf_rx_desc iavf_32byte_rx_desc
- 
--#define IAVF_RX_DMA_ATTR \
--	(DMA_ATTR_SKIP_CPU_SYNC | DMA_ATTR_WEAK_ORDERING)
--
- /**
-  * iavf_test_staterr - tests bits in Rx descriptor status and error fields
-  * @rx_desc: pointer to receive descriptor (in le64 format)
-@@ -240,7 +237,10 @@ struct iavf_rx_queue_stats {
- struct iavf_ring {
- 	struct iavf_ring *next;		/* pointer to next ring in q_vector */
- 	void *desc;			/* Descriptor ring memory */
--	struct device *dev;		/* Used for DMA mapping */
-+	union {
-+		struct page_pool *pool;	/* Used for Rx page management */
-+		struct device *dev;	/* Used for DMA mapping on Tx */
-+	};
- 	struct net_device *netdev;	/* netdev ring maps to */
- 	union {
- 		struct iavf_tx_buffer *tx_bi;
-diff --git a/drivers/net/ethernet/intel/libie/rx.c b/drivers/net/ethernet/intel/libie/rx.c
-index f503476d8eef..d68eab76593c 100644
---- a/drivers/net/ethernet/intel/libie/rx.c
-+++ b/drivers/net/ethernet/intel/libie/rx.c
-@@ -105,6 +105,34 @@ const struct libie_rx_ptype_parsed libie_rx_ptype_lut[LIBIE_RX_PTYPE_NUM] = {
- };
- EXPORT_SYMBOL_NS_GPL(libie_rx_ptype_lut, LIBIE);
- 
-+/* Page Pool */
++#define LIBIE_RQ_STATS_NUM	ARRAY_SIZE(libie_rq_stats_str)
 +
 +/**
-+ * libie_rx_page_pool_create - create a PP with the default libie settings
-+ * @napi: &napi_struct covering this PP (no usage outside its poll loops)
-+ * @size: size of the PP, usually simply Rx queue len
++ * libie_rq_stats_get_sset_count - get the number of Ethtool RQ stats provided
 + *
-+ * Returns &page_pool on success, casted -errno on failure.
++ * Returns the number of per-queue Rx stats supported by the library.
 + */
-+struct page_pool *libie_rx_page_pool_create(struct napi_struct *napi,
-+					    u32 size)
++u32 libie_rq_stats_get_sset_count(void)
 +{
-+	const struct page_pool_params pp = {
-+		.flags		= PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
-+		.order		= LIBIE_RX_PAGE_ORDER,
-+		.pool_size	= size,
-+		.nid		= NUMA_NO_NODE,
-+		.dev		= napi->dev->dev.parent,
-+		.napi		= napi,
-+		.dma_dir	= DMA_FROM_DEVICE,
-+		.max_len	= LIBIE_RX_BUF_LEN,
-+		.offset		= LIBIE_SKB_HEADROOM,
-+	};
-+
-+	return page_pool_create(&pp);
++	return LIBIE_RQ_STATS_NUM;
 +}
-+EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_create, LIBIE);
++EXPORT_SYMBOL_NS_GPL(libie_rq_stats_get_sset_count, LIBIE);
 +
- MODULE_AUTHOR("Intel Corporation");
- MODULE_DESCRIPTION("Intel(R) Ethernet common library");
- MODULE_LICENSE("GPL");
-diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
-index 3e8d0d5206e1..f6ba3b19b7e2 100644
---- a/include/linux/net/intel/libie/rx.h
-+++ b/include/linux/net/intel/libie/rx.h
-@@ -160,4 +160,7 @@ static inline void libie_skb_set_hash(struct sk_buff *skb, u32 hash,
- /* Maximum frame size minus LL overhead */
- #define LIBIE_MAX_MTU		(LIBIE_MAX_RX_FRM_LEN - LIBIE_RX_LL_LEN)
- 
-+struct page_pool *libie_rx_page_pool_create(struct napi_struct *napi,
-+					    u32 size);
++/**
++ * libie_rq_stats_get_strings - get the name strings of Ethtool RQ stats
++ * @data: reference to the cursor pointing to the output buffer
++ * @qid: RQ number to print in the prefix
++ */
++void libie_rq_stats_get_strings(u8 **data, u32 qid)
++{
++	for (u32 i = 0; i < LIBIE_RQ_STATS_NUM; i++)
++		ethtool_sprintf(data, "rq%u_%s", qid, libie_rq_stats_str[i]);
++}
++EXPORT_SYMBOL_NS_GPL(libie_rq_stats_get_strings, LIBIE);
 +
- #endif /* __LIBIE_RX_H */
++/**
++ * libie_rq_stats_get_data - get the RQ stats in Ethtool format
++ * @data: reference to the cursor pointing to the output array
++ * @stats: RQ stats container from the queue
++ */
++void libie_rq_stats_get_data(u64 **data, const struct libie_rq_stats *stats)
++{
++	u64 sarr[LIBIE_RQ_STATS_NUM];
++	u32 start;
++
++	do {
++		start = u64_stats_fetch_begin(&stats->syncp);
++
++		for (u32 i = 0; i < LIBIE_RQ_STATS_NUM; i++)
++			sarr[i] = u64_stats_read(&stats->raw[i]);
++	} while (u64_stats_fetch_retry(&stats->syncp, start));
++
++	for (u32 i = 0; i < LIBIE_RQ_STATS_NUM; i++)
++		(*data)[i] += sarr[i];
++
++	*data += LIBIE_RQ_STATS_NUM;
++}
++EXPORT_SYMBOL_NS_GPL(libie_rq_stats_get_data, LIBIE);
++
++/* Tx per-queue stats */
++
++static const char * const libie_sq_stats_str[] = {
++#define act(s)	__stringify(s),
++	DECLARE_LIBIE_SQ_STATS(act)
++#undef act
++};
++
++#define LIBIE_SQ_STATS_NUM	ARRAY_SIZE(libie_sq_stats_str)
++
++/**
++ * libie_sq_stats_get_sset_count - get the number of Ethtool SQ stats provided
++ *
++ * Returns the number of per-queue Tx stats supported by the library.
++ */
++u32 libie_sq_stats_get_sset_count(void)
++{
++	return LIBIE_SQ_STATS_NUM;
++}
++EXPORT_SYMBOL_NS_GPL(libie_sq_stats_get_sset_count, LIBIE);
++
++/**
++ * libie_sq_stats_get_strings - get the name strings of Ethtool SQ stats
++ * @data: reference to the cursor pointing to the output buffer
++ * @qid: SQ number to print in the prefix
++ */
++void libie_sq_stats_get_strings(u8 **data, u32 qid)
++{
++	for (u32 i = 0; i < LIBIE_SQ_STATS_NUM; i++)
++		ethtool_sprintf(data, "sq%u_%s", qid, libie_sq_stats_str[i]);
++}
++EXPORT_SYMBOL_NS_GPL(libie_sq_stats_get_strings, LIBIE);
++
++/**
++ * libie_sq_stats_get_data - get the SQ stats in Ethtool format
++ * @data: reference to the cursor pointing to the output array
++ * @stats: SQ stats container from the queue
++ */
++void libie_sq_stats_get_data(u64 **data, const struct libie_sq_stats *stats)
++{
++	u64 sarr[LIBIE_SQ_STATS_NUM];
++	u32 start;
++
++	do {
++		start = u64_stats_fetch_begin(&stats->syncp);
++
++		for (u32 i = 0; i < LIBIE_SQ_STATS_NUM; i++)
++			sarr[i] = u64_stats_read(&stats->raw[i]);
++	} while (u64_stats_fetch_retry(&stats->syncp, start));
++
++	for (u32 i = 0; i < LIBIE_SQ_STATS_NUM; i++)
++		(*data)[i] += sarr[i];
++
++	*data += LIBIE_SQ_STATS_NUM;
++}
++EXPORT_SYMBOL_NS_GPL(libie_sq_stats_get_data, LIBIE);
+diff --git a/include/linux/net/intel/libie/stats.h b/include/linux/net/intel/libie/stats.h
+new file mode 100644
+index 000000000000..dbbc98bbd3a7
+--- /dev/null
++++ b/include/linux/net/intel/libie/stats.h
+@@ -0,0 +1,179 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright(c) 2023 Intel Corporation. */
++
++#ifndef __LIBIE_STATS_H
++#define __LIBIE_STATS_H
++
++#include <linux/u64_stats_sync.h>
++
++/* Common */
++
++/* Use 32-byte alignment to reduce false sharing */
++#define __libie_stats_aligned	__aligned(4 * sizeof(u64_stats_t))
++
++/**
++ * libie_stats_add - update one structure counter from a local struct
++ * @qs: queue stats structure to update (&libie_rq_stats or &libie_sq_stats)
++ * @ss: local/onstack stats structure
++ * @f: name of the field to update
++ *
++ * If a local/onstack stats structure is used to collect statistics during
++ * hotpath loops, this macro can be used to shorthand updates, given that
++ * the fields have the same name.
++ * Must be guarded with u64_stats_update_{begin,end}().
++ */
++#define libie_stats_add(qs, ss, f)			\
++	u64_stats_add(&(qs)->f, (ss)->f)
++
++/**
++ * __libie_stats_inc_one - safely increment one stats structure counter
++ * @s: queue stats structure to update (&libie_rq_stats or &libie_sq_stats)
++ * @f: name of the field to increment
++ * @n: name of the temporary variable, result of __UNIQUE_ID()
++ *
++ * To be used on exception or slow paths -- allocation fails, queue stops etc.
++ */
++#define __libie_stats_inc_one(s, f, n) ({		\
++	typeof(*(s)) *n = (s);				\
++							\
++	u64_stats_update_begin(&n->syncp);		\
++	u64_stats_inc(&n->f);				\
++	u64_stats_update_end(&n->syncp);		\
++})
++#define libie_stats_inc_one(s, f)			\
++	__libie_stats_inc_one(s, f, __UNIQUE_ID(qs_))
++
++/* Rx per-queue stats:
++ * packets: packets received on this queue
++ * bytes: bytes received on this queue
++ * fragments: number of processed descriptors carrying only a fragment
++ * alloc_page_fail: number of Rx page allocation fails
++ * build_skb_fail: number of build_skb() fails
++ */
++
++#define DECLARE_LIBIE_RQ_NAPI_STATS(act)		\
++	act(packets)					\
++	act(bytes)					\
++	act(fragments)
++
++#define DECLARE_LIBIE_RQ_FAIL_STATS(act)		\
++	act(alloc_page_fail)				\
++	act(build_skb_fail)
++
++#define DECLARE_LIBIE_RQ_STATS(act)			\
++	DECLARE_LIBIE_RQ_NAPI_STATS(act)		\
++	DECLARE_LIBIE_RQ_FAIL_STATS(act)
++
++struct libie_rq_stats {
++	struct u64_stats_sync	syncp;
++
++	union {
++		struct {
++#define act(s)	u64_stats_t	s;
++			DECLARE_LIBIE_RQ_NAPI_STATS(act);
++			DECLARE_LIBIE_RQ_FAIL_STATS(act);
++#undef act
++		};
++		DECLARE_FLEX_ARRAY(u64_stats_t, raw);
++	};
++} __libie_stats_aligned;
++
++/* Rx stats being modified frequently during the NAPI polling, to sync them
++ * with the queue stats once after the loop is finished.
++ */
++struct libie_rq_onstack_stats {
++	union {
++		struct {
++#define act(s)	u32		s;
++			DECLARE_LIBIE_RQ_NAPI_STATS(act);
++#undef act
++		};
++		DECLARE_FLEX_ARRAY(u32, raw);
++	};
++};
++
++/**
++ * libie_rq_napi_stats_add - add onstack Rx stats to the queue container
++ * @qs: Rx queue stats structure to update
++ * @ss: onstack structure to get the values from, updated during the NAPI loop
++ */
++static inline void
++libie_rq_napi_stats_add(struct libie_rq_stats *qs,
++			const struct libie_rq_onstack_stats *ss)
++{
++	u64_stats_update_begin(&qs->syncp);
++	libie_stats_add(qs, ss, packets);
++	libie_stats_add(qs, ss, bytes);
++	libie_stats_add(qs, ss, fragments);
++	u64_stats_update_end(&qs->syncp);
++}
++
++u32 libie_rq_stats_get_sset_count(void);
++void libie_rq_stats_get_strings(u8 **data, u32 qid);
++void libie_rq_stats_get_data(u64 **data, const struct libie_rq_stats *stats);
++
++/* Tx per-queue stats:
++ * packets: packets sent from this queue
++ * bytes: bytes sent from this queue
++ * busy: number of xmit failures due to the ring being full
++ * stops: number times the ring was stopped from the driver
++ * restarts: number times it was started after being stopped
++ * linearized: number of skbs linearized due to HW limits
++ */
++
++#define DECLARE_LIBIE_SQ_NAPI_STATS(act)		\
++	act(packets)					\
++	act(bytes)
++
++#define DECLARE_LIBIE_SQ_XMIT_STATS(act)		\
++	act(busy)					\
++	act(stops)					\
++	act(restarts)					\
++	act(linearized)
++
++#define DECLARE_LIBIE_SQ_STATS(act)			\
++	DECLARE_LIBIE_SQ_NAPI_STATS(act)		\
++	DECLARE_LIBIE_SQ_XMIT_STATS(act)
++
++struct libie_sq_stats {
++	struct u64_stats_sync	syncp;
++
++	union {
++		struct {
++#define act(s)	u64_stats_t	s;
++			DECLARE_LIBIE_SQ_STATS(act);
++#undef act
++		};
++		DECLARE_FLEX_ARRAY(u64_stats_t, raw);
++	};
++} __libie_stats_aligned;
++
++struct libie_sq_onstack_stats {
++#define act(s)	u32		s;
++	DECLARE_LIBIE_SQ_NAPI_STATS(act);
++#undef act
++};
++
++/**
++ * libie_sq_napi_stats_add - add onstack Tx stats to the queue container
++ * @qs: Tx queue stats structure to update
++ * @ss: onstack structure to get the values from, updated during the NAPI loop
++ */
++static inline void
++libie_sq_napi_stats_add(struct libie_sq_stats *qs,
++			const struct libie_sq_onstack_stats *ss)
++{
++	if (unlikely(!ss->packets))
++		return;
++
++	u64_stats_update_begin(&qs->syncp);
++	libie_stats_add(qs, ss, packets);
++	libie_stats_add(qs, ss, bytes);
++	u64_stats_update_end(&qs->syncp);
++}
++
++u32 libie_sq_stats_get_sset_count(void);
++void libie_sq_stats_get_strings(u8 **data, u32 qid);
++void libie_sq_stats_get_data(u64 **data, const struct libie_sq_stats *stats);
++
++#endif /* __LIBIE_STATS_H */
 -- 
 2.40.1
 
