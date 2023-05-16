@@ -1,190 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1215B704AD0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 May 2023 12:36:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A9D7704C42
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 May 2023 13:24:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F127640CA7;
-	Tue, 16 May 2023 10:36:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F127640CA7
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E0BD41740;
+	Tue, 16 May 2023 11:24:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E0BD41740
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684233398;
-	bh=tzl8hkD5BReVs/f152AKivflx0izR0BSvs+dYZ6WZK4=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1684236264;
+	bh=gVYTz43JoDRHsXvxFLm34YNYqRhhqS7SNi30+TtHFCE=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Xi3mVAu4dLMAef/8mRpRFdrTU2fTJio6xyF2z63Eyd6W9XeOUnsqXt5PzLVqFcOvB
-	 y6cd3QCiFLl1byRX/IyutGObynvX6jidEgaT8CnTErDH0jMnprwRJj4+KpHBoWR5Hm
-	 DBbKJyhlHLbhBR75rylmHmrrxoKwsySWZNWDA6lpziUGuStngEvEywmwmlHsGGeRhg
-	 b0JdDnE+omdrw2FcHuzfiPbwRqvl5rwq/tBZ2aqDUiixJDYWAiDElQ72EUUKbxHtoe
-	 tICuvClZOAfzeKsJawvv2LgmqbEvjjh1gvj83UEiU/hNhLnlTyNQZCin7oZQloVMJ2
-	 SLtVG77ZTLeEg==
+	b=LkkiMavvLqs7PoK1/kFb+bTzgOf+U+P9xObrZCxa0xEYX0hZStaQ/JeBGrUApO548
+	 5mCDAz9NJITp0ayAiRXnIcJuuhyFGrAV1oBiafBozHjvnfQkWfYQKROmmA1hsCDzEI
+	 kype2838nw8B+lRFj7zLmqWH06eaHrojb42/8uLWl0fyv3rnTnVtUVOyFRASw1cnq0
+	 GI9iUt624GVBVbqMyWu2b7oHIMMf5PvIjBJ/nwbCmIhIhJqevO945TQMl4C8m7Yqcg
+	 IhQEnGYZcdf/2zFLvf6N5tLH8uvQz9wTHlMJQ7pqlRnPsADXiC7tB8o9VUyoVuBsGq
+	 9T+dWOqYN8Cug==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I6vZ4jjVBfhC; Tue, 16 May 2023 10:36:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id q8YMvCsAnpif; Tue, 16 May 2023 11:24:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7490340194;
-	Tue, 16 May 2023 10:36:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7490340194
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9580D40105;
+	Tue, 16 May 2023 11:24:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9580D40105
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 07F2E1BF239
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 10:36:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 54F581BF3AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 11:24:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C98F981E5E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 10:36:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C98F981E5E
+ by smtp3.osuosl.org (Postfix) with ESMTP id 238C060BEC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 11:24:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 238C060BEC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id im0W--4PrA61 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 May 2023 10:36:30 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96C8B81E57
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 96C8B81E57
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 10:36:30 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="331061508"
-X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="331061508"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 May 2023 03:36:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10711"; a="770990933"
-X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="770990933"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga004.fm.intel.com with ESMTP; 16 May 2023 03:36:29 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 16 May 2023 03:36:29 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 16 May 2023 03:36:28 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Tue, 16 May 2023 03:36:28 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Tue, 16 May 2023 03:36:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UZ+mLJh6QcSykEiNOCfKRAN2zeZTjxjFy2JPhEbX+jX3/TRmxObN1mJkPF/UL+FfIM4Qi/S38810owut1CmX3Ud7icCgkK2iA4zKHEs0s54+Fn51rDfhH3u1ST5B6/6/inWgTP8KmN9aUvcsDpR0S80rcJ/AaahtS2ozrwySkSMTKj9zCEtzSpFmkm/7oYV9u5jl7zncuUSSY0GWVhh9F6HWgfGAWSlcIPd5VSpSnaNZOjy9pNqY2L8FOudFzCeuJDX0sbaYHHX5PGrNFNV6qhgLmF5Rk33fYWgmWLkmSyO0aAW4i37FkNeRj4qwW1J4UDti3o7w6pYHwOjI0gHfpg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gIxv4o4vMGHFToGIGmDJKaNRhVp+hb5YvjQPP8Tz2IM=;
- b=k51Yn9QNPakmI+7M7+UGqhjow0nSw4Hc2Fx2XtF3FRXeD0bVO29zekS1YxgFCTFI22nN160JeikUSmnq26yZOf0dyKzj/hUBelx/oPPayd3bmwxT3KEleDW9Yof3NSliWdR87WTwiGDzPzYU+Vcy19/syQMPs1iQ9ZVCcPcCda9lR63MDgu5e3Yaz7MfeqgoiY4pEeSTtnUM3RmOlK+PR9l1fHaTs8cJuxkdn/7dmcff6pwc56wK5N3q9ZoXnFNkIUkhQSpsboU9kNo1Mhf6OFDW8PWtQ6ZbzhiOCtK3KlbrMPPzPbmYD3s91mDeBr79boFdDMdrXU+5x5TZTkZKZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by PH0PR11MB4792.namprd11.prod.outlook.com (2603:10b6:510:32::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.33; Tue, 16 May
- 2023 10:36:25 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::936d:24c4:86d0:f2a0]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::936d:24c4:86d0:f2a0%7]) with mapi id 15.20.6387.032; Tue, 16 May 2023
- 10:36:24 +0000
-From: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-To: =?utf-8?B?w43DsWlnbyBIdWd1ZXQ=?= <ihuguet@redhat.com>
-Thread-Topic: [PATCH iwl-next] ice: Remove LAG+SRIOV mutual exclusion
-Thread-Index: AQHZh9dt4fHx73OP5kKhfu/HpsKYl69cs93g
-Date: Tue, 16 May 2023 10:36:24 +0000
-Message-ID: <MW4PR11MB57769C0E492F1252D58DEFB1FD799@MW4PR11MB5776.namprd11.prod.outlook.com>
-References: <20230512090652.190058-1-wojciech.drewek@intel.com>
- <CACT4oueyxJT2Xb5uojaKFAQ-R4nBQr5o457g2nfNsKDQPYEXvw@mail.gmail.com>
-In-Reply-To: <CACT4oueyxJT2Xb5uojaKFAQ-R4nBQr5o457g2nfNsKDQPYEXvw@mail.gmail.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB5776:EE_|PH0PR11MB4792:EE_
-x-ms-office365-filtering-correlation-id: 0f0ccea1-fc4e-4486-9ae2-08db55f965f6
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Y6kNnC64AhtSNnL4lFPZuGNp3+cYedFQu2x8trDdcwbYMOUxnLyYVunDaIxbUlms45VWwna0CKkRM27Fx/UEvpC2sV7Teq/0qCcK6Rp4udvE57BhSd/i0+CFKAgLvAqk2qDpkM7xyvjlEzOi07QM4LHLg0z3wXrA+rHh5dDv70BXJFTOIQxEsCaEUEELZyGt9o1V6gacWHYtwGe5Y8AouOP+kOA/9JXly+WGqZaGn5CfaplFnSa0wPp74szahxjAG5dNmg4HgOd9PuG3X7E7Pb6PvVixdJnHtR9MJo7K4X2UvIIi8U02MztBy4qLvfiyneMcKqTVRDsmSFYvHiKJO0dwzxtD8uiCLdtFSGRJUxb05fJHLImMhYgActpqBhDSpDn1N0GglTMKz9louPVnvypc6/IeDTFi8A+szmYvpvCS6eRGQZzHiq5ZKLueCwFBJ6bmqXbQbfdFGJoXjpGkYC7A4F7iL8yZLEEbJw4K5M/tkgGUDinSMhcYF3TYI7g9vM4gjPmpP/MQh6EUcjxy3mPIUp8vpLN3xudzdjBHrivOgnckv0uZMwA6sMifrha7wNgYzrvdcWKlsNzmKVpWtep0DfA8S9SuJRpnQpxEQ3+NlYAwb7ajUE3SszTqj8x/
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(346002)(366004)(376002)(39860400002)(136003)(451199021)(5660300002)(52536014)(71200400001)(41300700001)(33656002)(83380400001)(2906002)(122000001)(86362001)(82960400001)(38100700002)(38070700005)(26005)(186003)(55016003)(8676002)(8936002)(53546011)(9686003)(6506007)(7696005)(76116006)(64756008)(66946007)(66476007)(66446008)(66556008)(478600001)(54906003)(4326008)(6916009)(316002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TkN1RHJzU3ZvOXNKUisxTkptQ0ZWVGxqOHVEUWV6cEsvemt4V0tlTTkwcmg2?=
- =?utf-8?B?a1dBaWYyKzZhaXQ0UU53Vk5nNHUwM3VlUWo2RHJybHZhb0JkZlRXam51bnBN?=
- =?utf-8?B?elZrS08vUUQ5eEJKOEo5NHdtQXRWdzZJM0JaRGhWN2hHSkQ0VVhuNE1ucDh6?=
- =?utf-8?B?TjU0N05JWWJhZUR2elZCLzdyakIyaFJTaW1qeFFlR0lrazB0dzBkbjhwbW81?=
- =?utf-8?B?ME9rcUhMOEM1c2lFNTdVZUtXR1FaZ3U1NlEyeWdZK3JaMmtsUWQ1ajlWNWI0?=
- =?utf-8?B?K3hQS1F1UXVvdDZwbTJuTnBDQlNacXNSeGpQM0VPQWs4RndGYzkxT29Nc01W?=
- =?utf-8?B?ek9yMGpuN294UjdOVCtjQm80RWRMdlJSUFppV1dpS25YMWROM0l4SEV0eVhC?=
- =?utf-8?B?d1FaTmpVdmhTZXBrUkxlUkNVTTdJQ1pZdEx2d0ozMWlqM1Q1ZGVYZm9BeFJs?=
- =?utf-8?B?VDFnaGdZUllSQmlkZk1xQ0FVTVRtVDR5N1orUHAxS1F6Qndod2Z5eGRqK1Iy?=
- =?utf-8?B?eGtEeEpxekJ1ZWhTM3pFV0hqZm1nRDV4em5DMFZuQlR5Y1gwZ29BeFk5Ly81?=
- =?utf-8?B?N29MYTVFSHJML0VwKytzL2k2bytRUytiTDBsWXM0dVl1ajZCaVRIbVVVMUg2?=
- =?utf-8?B?aVJBWnlpM29ldFZDLzdFdUwzaHJrNGVEMmQrSktYTzhtTlJ5TWZGU2NKT1Ar?=
- =?utf-8?B?bFZ6bmFQV2htK25NemcycnBOd3FQSHJxb2tyNStwZnBLV0I2bXpiTFpEeTg4?=
- =?utf-8?B?UVE0eW1SUXdpckdoZUNVN0Jvc0IxbXNraXp2VExiTEJ3QzRISzFnenErZjZR?=
- =?utf-8?B?dkp5VjFBaFJ0QThRSWFwdHBBMWZGT1V2ei80MHZrdHJHd1YyMk5KdEg3d3NO?=
- =?utf-8?B?MjlQdHYwV0dFdGgzMkxDdUhpMXlYZzBBVWh6UGRwbXptYld2Mk5rb1ZpdmFE?=
- =?utf-8?B?ZUNvVkFJZFJiTmFvbTY3VU5iMncyNHV6MGFMZUR3ZnpycGZjYVVHSHAvTmMv?=
- =?utf-8?B?dTg2OHpUd1FwQmpQUDNEd0JiakpCeWdvWUgrVHZ0clg3NlE1WTVOa2VmalUr?=
- =?utf-8?B?MmE5c3ZadUx1cW83enBXV0o3QTl0RnBqWDVHU0piVmpBNkVEYTBoRWdxUDVm?=
- =?utf-8?B?clNoNGhzV2lkT0FzeWl1N013ci80eGpKemxjQ1NZdU96VkFyOS9PRmh5SzJi?=
- =?utf-8?B?T1dpQ25vaGRjcUREWW1QR3d6aUMvZ1dWTWpiSEhYL2JBZ3JKZjBFZ1Jhd2t6?=
- =?utf-8?B?bEkzMm9Pa0xQKzYyQ0xLN0ZsYnF3V0lFMkZkdHkzRGl6S1pxUUJNcHJleW5x?=
- =?utf-8?B?T2R6S0tJcUdiSlVNUDYySlg5eEJ0a3QxeFhIaE9QNk1NcVFlMit3MDdwVzF2?=
- =?utf-8?B?WXRKNEg2K0F3Y3piWlp2b1NoTmNubXZrVHh0RjZncENEeFdNZy9zS1E1eG9q?=
- =?utf-8?B?TythSkxKb081SXo3UVZoQ1U4UjFoZ04vV1M1bjl0SmxWaFRwUVdaUDhxcmpN?=
- =?utf-8?B?WVlPQVA4eDlVbDJ4VTZpZVk4RkRRS0JVTXgvOWFjOVRyeitwa0E4ZVgrQnZ2?=
- =?utf-8?B?Y2tlTHByR3AxL0dia3JJQW53ZWpnZHF0QWp5VEhpNE11YWhzM091VTQ3YlRo?=
- =?utf-8?B?WG8waFJOendZTHFiN0FVT25HTlRmU3RwRHRVSVJCL0F6TnZYNGxLS20zQWM4?=
- =?utf-8?B?ZTl3Tk9IL1IzR3UyOEVzK2lyTkJaRDN1U2FhQnFDeS9jWWR0RDFyeVNmcnlu?=
- =?utf-8?B?LzdZcDJ5cVhBWUVSWGJwRElsT0pFSnZBUVRZa2k1U0VQK0p6dW5xT1lCSGtu?=
- =?utf-8?B?a0RUNkloWmpldHFtVGZzS2ZxdDkyRHExTnZ6VHdRQUd3M3UzNkNJeCtFK2pa?=
- =?utf-8?B?ZWRjd1poWGU1emxTRUdLZXVZUDdHbFY3NHRiWnN1T0NtQ0FGejNjcmJXelFh?=
- =?utf-8?B?Z3o5b1ltOVZZekp6UG5yb1JIRy95V2VXelVyZkRxN3U3QkhRQUM0aUtvd2hM?=
- =?utf-8?B?dGZNSkkzRlpiLzZCMnBSQUtqeVpMNG41bjZnVlAya0lHZVhoY1FQNE9rR2VK?=
- =?utf-8?B?bmJHamhPS2grMUlJeVBWUGgwcXg2dDBDZXV5OHN4RDl5MEdQTTdaTlJOU1E0?=
- =?utf-8?Q?xMHDPyQL8Mgqy0XQdtlCTXros?=
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 92Gg2o1FsQUL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 May 2023 11:24:14 +0000 (UTC)
+X-Greylist: delayed 00:16:23 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F0B560B35
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6F0B560B35
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 May 2023 11:24:14 +0000 (UTC)
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34GB44nj006505; Tue, 16 May 2023 11:07:39 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qm8mrr9fn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 May 2023 11:07:38 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34GB4F9w007371;
+ Tue, 16 May 2023 11:06:31 GMT
+Received: from ppma04ams.nl.ibm.com (63.31.33a9.ip4.static.sl-reverse.com
+ [169.51.49.99])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qm8mrr6bg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 May 2023 11:06:31 +0000
+Received: from pps.filterd (ppma04ams.nl.ibm.com [127.0.0.1])
+ by ppma04ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34G4UVsf012372;
+ Tue, 16 May 2023 11:01:00 GMT
+Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
+ by ppma04ams.nl.ibm.com (PPS) with ESMTPS id 3qj264sk93-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 May 2023 11:01:00 +0000
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
+ [10.20.54.103])
+ by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 34GB0vJj52429142
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 May 2023 11:00:57 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A74912004B;
+ Tue, 16 May 2023 11:00:57 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 15E2F20040;
+ Tue, 16 May 2023 11:00:57 +0000 (GMT)
+Received: from tuxmaker.boeblingen.de.ibm.com (unknown [9.152.85.9])
+ by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 16 May 2023 11:00:57 +0000 (GMT)
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Arnd Bergmann <arnd@arndb.de>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ Wolfgang Grandegger <wg@grandegger.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>, Ralf Baechle <ralf@linux-mips.org>
+Date: Tue, 16 May 2023 13:00:16 +0200
+Message-Id: <20230516110038.2413224-21-schnelle@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230516110038.2413224-1-schnelle@linux.ibm.com>
+References: <20230516110038.2413224-1-schnelle@linux.ibm.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0f0ccea1-fc4e-4486-9ae2-08db55f965f6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2023 10:36:24.8555 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZqMrOy+Yzg5OGOc2lFPXXvD6KBcyX4uH8SvOgHn5BEso7elPkAWgeeBrrE6rIFCrz84HOA0gK2BEAkJH0GORrjRnPa8cHNj8fuJuzXDWP2w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4792
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684233390; x=1715769390;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=gIxv4o4vMGHFToGIGmDJKaNRhVp+hb5YvjQPP8Tz2IM=;
- b=WN7o6NOP6Nm7eGYf00sERJztcc4ZnzvONt4Ljfn2eMdeWOOxdGIVgAdX
- 7Zc8DFqsTHy/xQh4WxBfG3/s1lVakjLJ/yhWm57aDG1X9JT+e5xLph2lE
- jfPwPhlmSBbgyA0U8IH+8oSyXCg7romwc51p+VPI8F5+9UBSYjpWJnzXz
- K5S84LZ/GyX3MJNr5ueFNhtBtGycoxs8XupTV2iEWm3HbcM+8JbNQBukN
- 0effNc8RN8x/qYuZJYA8Jovizx8etfALKCKiaRz0//EkpZUewjRS/ReFz
- atXxsCdeAOJzlGhSaGqlQkXSZX/VhFSK3H6n1ECA10Ttpt0VLqZxNJ4GN
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WN7o6NOP
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Remove LAG+SRIOV mutual
- exclusion
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 5KjlPr0pW8Gy4eFSG5zht_wptMVAV7j3
+X-Proofpoint-GUID: s_B6O6hrKQup073aT0YnpVY4_cFow43b
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-16_04,2023-05-16_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 spamscore=0 impostorscore=0 mlxscore=0 mlxlogscore=999
+ lowpriorityscore=0 suspectscore=0 adultscore=0 phishscore=0 bulkscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305160094
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ibm.com; h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=pp1;
+ bh=BmSGV7X4oc4NMEhAbmNjzPqRnq5D2JIeblSLzp/XN+w=;
+ b=reFRE9Q98P5lYlmf/BiCoeYB/AsUuJu11UZg2s8Q3JQAbzDCJGit+4p0jf0L3XxU1PLh
+ aVG05EnrR6+CaD8c79A96Baufi2hGsdS2qjeucXsYnQ0iH/3hrW3UIID3gJF5MtLURXx
+ CTIx0EeBAZ/CWPfaOF3B2fpEy7DKPHfXEol8726TxFQhPXGzCA/GarNiZRfzqFh1Zac1
+ F924x+CO4bDFfysob8lymXTQGfowmEZBfmOmIh7BR60KUPvmxIlnXLUmy0Sj2e2WfbL5
+ OrDUlU1566Brs10nrDM8DBleLZa60sMjT6H2+trZSUyqBzs19BiFEAaWq0au22IV88nr TQ== 
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
+ header.a=rsa-sha256 header.s=pp1 header.b=reFRE9Q9
+Subject: [Intel-wired-lan] [PATCH v4 20/41] net: handle HAS_IOPORT
+ dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,126 +140,356 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-arch@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, linux-hams@vger.kernel.org,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-can@vger.kernel.org,
+ netdev@vger.kernel.org, Alan Stern <stern@rowland.harvard.edu>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Bjorn Helgaas <bhelgaas@google.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogw43DsWlnbyBIdWd1ZXQg
-PGlodWd1ZXRAcmVkaGF0LmNvbT4NCj4gU2VudDogd3RvcmVrLCAxNiBtYWphIDIwMjMgMTE6MTgN
-Cj4gVG86IERyZXdlaywgV29qY2llY2ggPHdvamNpZWNoLmRyZXdla0BpbnRlbC5jb20+DQo+IENj
-OiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsgbmV0ZGV2QHZnZXIua2VybmVsLm9y
-ZzsgRXJ0bWFuLCBEYXZpZCBNIDxkYXZpZC5tLmVydG1hbkBpbnRlbC5jb20+OyBtc2NobWlkdA0K
-PiA8bXNjaG1pZHRAcmVkaGF0LmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCBpd2wtbmV4dF0g
-aWNlOiBSZW1vdmUgTEFHK1NSSU9WIG11dHVhbCBleGNsdXNpb24NCj4gDQo+IE9uIEZyaSwgTWF5
-IDEyLCAyMDIzIGF0IDExOjA44oCvQU0gV29qY2llY2ggRHJld2VrDQo+IDx3b2pjaWVjaC5kcmV3
-ZWtAaW50ZWwuY29tPiB3cm90ZToNCj4gPg0KPiA+IEZyb206IERhdmUgRXJ0bWFuIDxkYXZpZC5t
-LmVydG1hbkBpbnRlbC5jb20+DQo+ID4NCj4gPiBUaGVyZSB3YXMgYSBjaGFuZ2UgcHJldmlvdXNs
-eSB0byBzdG9wIFNSLUlPViBhbmQgTEFHIGZyb20gZXhpc3Rpbmcgb24gdGhlDQo+ID4gc2FtZSBp
-bnRlcmZhY2UuICBUaGlzIHdhcyB0byBwcmV2ZW50IHRoZSB2aW9sYXRpb24gb2YgTEFDUCAoTGlu
-aw0KPiA+IEFnZ3JlZ2F0aW9uIENvbnRyb2wgUHJvdG9jb2wpLiAgVGhlIG1ldGhvZCB0byBhY2hp
-ZXZlIHRoaXMgd2FzIHRvIGFkZCBhDQo+ID4gbm8tb3AgUnggaGFuZGxlciBvbnRvIHRoZSBuZXRk
-ZXYgd2hlbiBTUi1JT1YgVkZzIHdlcmUgcHJlc2VudCwgdGh1cw0KPiA+IGJsb2NraW5nIGJvbmRp
-bmcsIGJyaWRnaW5nLCBldGMgZnJvbSBjbGFpbWluZyB0aGUgaW50ZXJmYWNlIGJ5IGFkZGluZw0K
-PiA+IGl0cyBvd24gUnggaGFuZGxlci4gIEFsc28sIHdoZW4gYW4gaW50ZXJmYWNlIHdhcyBhZGRl
-ZCBpbnRvIGEgYWdncmVnYXRlLA0KPiA+IHRoZW4gdGhlIFNSLUlPViBjYXBhYmlsaXR5IHdhcyBz
-ZXQgdG8gZmFsc2UuDQo+ID4NCj4gPiBUaGVyZSBhcmUgc29tZSB1c2VycyB0aGF0IGhhdmUgaW4g
-aG91c2Ugc29sdXRpb25zIHVzaW5nIGJvdGggU1ItSU9WIGFuZA0KPiA+IGJyaWRnaW5nL2JvbmRp
-bmcgdGhhdCB0aGlzIG1ldGhvZCBpbnRlcmZlcmVzIHdpdGggKGUuZy4gY3JlYXRpbmcgZHVwbGlj
-YXRlDQo+ID4gVkZzIG9uIHRoZSBib25kZWQgaW50ZXJmYWNlcyBhbmQgZmFpbGluZyBiZXR3ZWVu
-IHRoZW0gd2hlbiB0aGUgaW50ZXJmYWNlDQo+ID4gZmFpbHMgb3ZlcikuDQo+ID4NCj4gPiBJdCBt
-YWtlcyBtb3JlIHNlbnNlIHRvIHByb3ZpZGUgdGhlIG1vc3QgZnVuY3Rpb25hbGl0eQ0KPiA+IHBv
-c3NpYmxlLCB0aGUgcmVzdHJpY3Rpb24gb24gY28tZXhpc3RlbmNlIG9mIHRoZXNlIGZlYXR1cmVz
-IHdpbGwgYmUNCj4gPiByZW1vdmVkLiAgTm8gYWRkaXRpb25hbCBmdW5jdGlvbmFsaXR5IGlzIGN1
-cnJlbnRseSBiZWluZyBwcm92aWRlZCBiZXlvbmQNCj4gPiB3aGF0IGV4aXN0ZWQgYmVmb3JlIHRo
-ZSBjby1leGlzdGVuY2UgcmVzdHJpY3Rpb24gd2FzIHB1dCBpbnRvIHBsYWNlLiAgSXQgaXMNCj4g
-PiB1cCB0byB0aGUgZW5kIHVzZXIgdG8gbm90IGltcGxlbWVudCBhIHNvbHV0aW9uIHRoYXQgd291
-bGQgaW50ZXJmZXJlIHdpdGgNCj4gPiBleGlzdGluZyBuZXR3b3JrIHByb3RvY29scy4NCj4gPg0K
-PiA+IFJldmlld2VkLWJ5OiBNaWNoYWwgU3dpYXRrb3dza2kgPG1pY2hhbC5zd2lhdGtvd3NraUBs
-aW51eC5pbnRlbC5jb20+DQo+ID4gU2lnbmVkLW9mZi1ieTogRGF2ZSBFcnRtYW4gPGRhdmlkLm0u
-ZXJ0bWFuQGludGVsLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBXb2pjaWVjaCBEcmV3ZWsgPHdv
-amNpZWNoLmRyZXdla0BpbnRlbC5jb20+DQo+ID4gLS0tDQo+ID4gIC4uLi9kZXZpY2VfZHJpdmVy
-cy9ldGhlcm5ldC9pbnRlbC9pY2UucnN0ICAgICB8IDE4IC0tLS0tLS0NCj4gPiAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZS5oICAgICAgICAgIHwgMTkgLS0tLS0tLQ0KPiA+ICBk
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5jICAgICAgfCAxMiAtLS0tLQ0K
-PiA+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5oICAgICAgfCA1MyAt
-LS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfbGliLmMgICAgICB8ICAyIC0NCj4gPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV9zcmlvdi5jICAgIHwgIDQgLS0NCj4gPiAgNiBmaWxlcyBjaGFuZ2VkLCAxMDggZGVsZXRp
-b25zKC0pDQo+ID4NCg0KPC4uLj4NCg0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV9sYWcuaA0KPiA+IGluZGV4IDUxYjVjZjQ2N2NlMi4uNTRkNjY2M2ZlNTg2IDEwMDY0NA0K
-PiA+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGFnLmgNCj4gPiAr
-KysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5oDQo+ID4gQEAgLTI2
-LDYyICsyNiw5IEBAIHN0cnVjdCBpY2VfbGFnIHsNCj4gPiAgICAgICAgIHU4IGJvbmRlZDoxOyAv
-KiBjdXJyZW50bHkgYm9uZGVkICovDQo+ID4gICAgICAgICB1OCBwcmltYXJ5OjE7IC8qIHRoaXMg
-aXMgcHJpbWFyeSAqLw0KPiA+ICAgICAgICAgdTggaGFuZGxlcjoxOyAvKiBkaWQgd2UgcmVnaXN0
-ZXIgYSByeF9uZXRkZXZfaGFuZGxlciAqLw0KPiANCj4gImhhbmRsZXIiIGZpZWxkIHNlZW1zIHVu
-dXNlZCBub3csIHNob3VsZG4ndCBpdCBiZSByZW1vdmVkPw0KDQpZb3UncmUgcmlnaHQsIEknbGwg
-c2VuZCB2Mg0KDQo+IA0KPiA+IC0gICAgICAgLyogZWFjaCB0aGluZyBibG9ja2luZyBib25kaW5n
-IHdpbGwgaW5jcmVtZW50IHRoaXMgdmFsdWUgYnkgb25lLg0KPiA+IC0gICAgICAgICogSWYgdGhp
-cyB2YWx1ZSBpcyB6ZXJvLCB0aGVuIGJvbmRpbmcgaXMgYWxsb3dlZC4NCj4gPiAtICAgICAgICAq
-Lw0KPiA+IC0gICAgICAgdTE2IGRpc19sYWc7DQo+ID4gICAgICAgICB1OCByb2xlOw0KPiA+ICB9
-Ow0KPiA+DQo+ID4gIGludCBpY2VfaW5pdF9sYWcoc3RydWN0IGljZV9wZiAqcGYpOw0KPiA+ICB2
-b2lkIGljZV9kZWluaXRfbGFnKHN0cnVjdCBpY2VfcGYgKnBmKTsNCj4gPiAtcnhfaGFuZGxlcl9y
-ZXN1bHRfdCBpY2VfbGFnX25vcF9oYW5kbGVyKHN0cnVjdCBza19idWZmICoqcHNrYik7DQo+ID4g
-LQ0KPiA+IC0vKioNCj4gPiAtICogaWNlX2Rpc2FibGVfbGFnIC0gaW5jcmVtZW50IExBRyBkaXNh
-YmxlIGNvdW50DQo+ID4gLSAqIEBsYWc6IExBRyBzdHJ1Y3QNCj4gPiAtICovDQo+ID4gLXN0YXRp
-YyBpbmxpbmUgdm9pZCBpY2VfZGlzYWJsZV9sYWcoc3RydWN0IGljZV9sYWcgKmxhZykNCj4gPiAt
-ew0KPiA+IC0gICAgICAgLyogSWYgTEFHIHRoaXMgUEYgaXMgbm90IGFscmVhZHkgZGlzYWJsZWQs
-IGRpc2FibGUgaXQgKi8NCj4gPiAtICAgICAgIHJ0bmxfbG9jaygpOw0KPiA+IC0gICAgICAgaWYg
-KCFuZXRkZXZfaXNfcnhfaGFuZGxlcl9idXN5KGxhZy0+bmV0ZGV2KSkgew0KPiA+IC0gICAgICAg
-ICAgICAgICBpZiAoIW5ldGRldl9yeF9oYW5kbGVyX3JlZ2lzdGVyKGxhZy0+bmV0ZGV2LA0KPiA+
-IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGljZV9sYWdf
-bm9wX2hhbmRsZXIsDQo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgTlVMTCkpDQo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgbGFnLT5oYW5kbGVy
-ID0gdHJ1ZTsNCj4gPiAtICAgICAgIH0NCj4gPiAtICAgICAgIHJ0bmxfdW5sb2NrKCk7DQo+ID4g
-LSAgICAgICBsYWctPmRpc19sYWcrKzsNCj4gPiAtfQ0KPiA+IC0NCj4gPiAtLyoqDQo+ID4gLSAq
-IGljZV9lbmFibGVfbGFnIC0gZGVjcmVtZW50IGRpc2FibGUgY291bnQgZm9yIGEgUEYNCj4gPiAt
-ICogQGxhZzogTEFHIHN0cnVjdA0KPiA+IC0gKg0KPiA+IC0gKiBEZWNyZW1lbnQgdGhlIGRpc2Fi
-bGUgY291bnRlciBmb3IgYSBwb3J0LCBhbmQgaWYgdGhhdCBjb3VudCByZWFjaGVzDQo+ID4gLSAq
-IHplcm8sIHRoZW4gcmVtb3ZlIHRoZSBuby1vcCBSeCBoYW5kbGVyIGZyb20gdGhhdCBuZXRkZXYN
-Cj4gPiAtICovDQo+ID4gLXN0YXRpYyBpbmxpbmUgdm9pZCBpY2VfZW5hYmxlX2xhZyhzdHJ1Y3Qg
-aWNlX2xhZyAqbGFnKQ0KPiA+IC17DQo+ID4gLSAgICAgICBpZiAobGFnLT5kaXNfbGFnKQ0KPiA+
-IC0gICAgICAgICAgICAgICBsYWctPmRpc19sYWctLTsNCj4gPiAtICAgICAgIGlmICghbGFnLT5k
-aXNfbGFnICYmIGxhZy0+aGFuZGxlcikgew0KPiA+IC0gICAgICAgICAgICAgICBydG5sX2xvY2so
-KTsNCj4gPiAtICAgICAgICAgICAgICAgbmV0ZGV2X3J4X2hhbmRsZXJfdW5yZWdpc3RlcihsYWct
-Pm5ldGRldik7DQo+ID4gLSAgICAgICAgICAgICAgIHJ0bmxfdW5sb2NrKCk7DQo+ID4gLSAgICAg
-ICAgICAgICAgIGxhZy0+aGFuZGxlciA9IGZhbHNlOw0KPiA+IC0gICAgICAgfQ0KPiA+IC19DQo+
-ID4gLQ0KPiA+IC0vKioNCj4gPiAtICogaWNlX2lzX2xhZ19kaXMgLSBpcyBMQUcgZGlzYWJsZWQN
-Cj4gPiAtICogQGxhZzogTEFHIHN0cnVjdA0KPiA+IC0gKg0KPiA+IC0gKiBSZXR1cm4gdHJ1ZSBp
-ZiBib25kaW5nIGlzIGRpc2FibGVkDQo+ID4gLSAqLw0KPiA+IC1zdGF0aWMgaW5saW5lIGJvb2wg
-aWNlX2lzX2xhZ19kaXMoc3RydWN0IGljZV9sYWcgKmxhZykNCj4gPiAtew0KPiA+IC0gICAgICAg
-cmV0dXJuICEhKGxhZy0+ZGlzX2xhZyk7DQo+ID4gLX0NCj4gPiAgI2VuZGlmIC8qIF9JQ0VfTEFH
-X0hfICovDQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfbGliLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xpYi5jDQo+ID4g
-aW5kZXggZDk3MzE0NzZjZDdmLi41ZGRiOTVkMTA3M2EgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYw0KPiA+ICsrKyBiL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGliLmMNCj4gPiBAQCAtMjcxMiw4ICsyNzEyLDYgQEAg
-aWNlX3ZzaV9zZXR1cChzdHJ1Y3QgaWNlX3BmICpwZiwgc3RydWN0IGljZV92c2lfY2ZnX3BhcmFt
-cyAqcGFyYW1zKQ0KPiA+ICAgICAgICAgcmV0dXJuIHZzaTsNCj4gPg0KPiA+ICBlcnJfdnNpX2Nm
-ZzoNCj4gPiAtICAgICAgIGlmIChwYXJhbXMtPnR5cGUgPT0gSUNFX1ZTSV9WRikNCj4gPiAtICAg
-ICAgICAgICAgICAgaWNlX2VuYWJsZV9sYWcocGYtPmxhZyk7DQo+ID4gICAgICAgICBpY2VfdnNp
-X2ZyZWUodnNpKTsNCj4gPg0KPiA+ICAgICAgICAgcmV0dXJuIE5VTEw7DQo+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfc3Jpb3YuYyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfc3Jpb3YuYw0KPiA+IGluZGV4IDk3ODhmMzYzZTlk
-Yy4uYTIyMmNkNzAyZmQ1IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2Vfc3Jpb3YuYw0KPiA+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2ljZS9pY2Vfc3Jpb3YuYw0KPiA+IEBAIC05NjAsOCArOTYwLDYgQEAgaW50IGljZV9zcmlvdl9j
-b25maWd1cmUoc3RydWN0IHBjaV9kZXYgKnBkZXYsIGludCBudW1fdmZzKQ0KPiA+ICAgICAgICAg
-aWYgKCFudW1fdmZzKSB7DQo+ID4gICAgICAgICAgICAgICAgIGlmICghcGNpX3Zmc19hc3NpZ25l
-ZChwZGV2KSkgew0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgIGljZV9mcmVlX3ZmcyhwZik7
-DQo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgaWYgKHBmLT5sYWcpDQo+ID4gLSAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBpY2VfZW5hYmxlX2xhZyhwZi0+bGFnKTsNCj4gPiAgICAg
-ICAgICAgICAgICAgICAgICAgICByZXR1cm4gMDsNCj4gPiAgICAgICAgICAgICAgICAgfQ0KPiA+
-DQo+ID4gQEAgLTk3Myw4ICs5NzEsNiBAQCBpbnQgaWNlX3NyaW92X2NvbmZpZ3VyZShzdHJ1Y3Qg
-cGNpX2RldiAqcGRldiwgaW50IG51bV92ZnMpDQo+ID4gICAgICAgICBpZiAoZXJyKQ0KPiA+ICAg
-ICAgICAgICAgICAgICByZXR1cm4gZXJyOw0KPiA+DQo+ID4gLSAgICAgICBpZiAocGYtPmxhZykN
-Cj4gPiAtICAgICAgICAgICAgICAgaWNlX2Rpc2FibGVfbGFnKHBmLT5sYWcpOw0KPiA+ICAgICAg
-ICAgcmV0dXJuIG51bV92ZnM7DQo+ID4gIH0NCj4gPg0KPiA+IC0tDQo+ID4gMi4zOS4yDQo+ID4N
-Cj4gPg0KPiANCj4gDQo+IC0tDQo+IMONw7FpZ28gSHVndWV0DQoNCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxp
-c3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21h
-aWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+In a future patch HAS_IOPORT=n will result in inb()/outb() and friends
+not being declared. We thus need to add HAS_IOPORT as dependency for
+those drivers requiring them. For the DEFXX driver the use of I/O
+ports is optional and we only need to fence specific code paths. It also
+turns out that with HAS_IOPORT handled explicitly HAMRADIO does not need
+the !S390 dependency and successfully builds the bpqether driver.
+
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de>
+Co-developed-by: Arnd Bergmann <arnd@kernel.org>
+Signed-off-by: Arnd Bergmann <arnd@kernel.org>
+Acked-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+---
+Note: The HAS_IOPORT Kconfig option was added in v6.4-rc1 so
+      per-subsystem patches may be applied independently
+
+ drivers/net/Kconfig                  | 2 +-
+ drivers/net/arcnet/Kconfig           | 2 +-
+ drivers/net/can/cc770/Kconfig        | 1 +
+ drivers/net/can/sja1000/Kconfig      | 1 +
+ drivers/net/ethernet/3com/Kconfig    | 4 ++--
+ drivers/net/ethernet/8390/Kconfig    | 6 +++---
+ drivers/net/ethernet/amd/Kconfig     | 4 ++--
+ drivers/net/ethernet/fujitsu/Kconfig | 2 +-
+ drivers/net/ethernet/intel/Kconfig   | 2 +-
+ drivers/net/ethernet/sis/Kconfig     | 4 ++--
+ drivers/net/ethernet/smsc/Kconfig    | 2 +-
+ drivers/net/ethernet/ti/Kconfig      | 2 +-
+ drivers/net/ethernet/via/Kconfig     | 1 +
+ drivers/net/ethernet/xircom/Kconfig  | 2 +-
+ drivers/net/fddi/defxx.c             | 2 +-
+ drivers/net/hamradio/Kconfig         | 6 +++---
+ drivers/net/wan/Kconfig              | 2 +-
+ net/ax25/Kconfig                     | 2 +-
+ 18 files changed, 25 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/net/Kconfig b/drivers/net/Kconfig
+index d0a1ed216d15..817322605825 100644
+--- a/drivers/net/Kconfig
++++ b/drivers/net/Kconfig
+@@ -476,7 +476,7 @@ source "drivers/net/ipa/Kconfig"
+ 
+ config NET_SB1000
+ 	tristate "General Instruments Surfboard 1000"
+-	depends on PNP
++	depends on ISA && PNP
+ 	help
+ 	  This is a driver for the General Instrument (also known as
+ 	  NextLevel) SURFboard 1000 internal
+diff --git a/drivers/net/arcnet/Kconfig b/drivers/net/arcnet/Kconfig
+index a51b9dab6d3a..d1d07a1d4fbc 100644
+--- a/drivers/net/arcnet/Kconfig
++++ b/drivers/net/arcnet/Kconfig
+@@ -4,7 +4,7 @@
+ #
+ 
+ menuconfig ARCNET
+-	depends on NETDEVICES && (ISA || PCI || PCMCIA)
++	depends on NETDEVICES && (ISA || PCI || PCMCIA) && HAS_IOPORT
+ 	tristate "ARCnet support"
+ 	help
+ 	  If you have a network card of this type, say Y and check out the
+diff --git a/drivers/net/can/cc770/Kconfig b/drivers/net/can/cc770/Kconfig
+index 9ef1359319f0..467ef19de1c1 100644
+--- a/drivers/net/can/cc770/Kconfig
++++ b/drivers/net/can/cc770/Kconfig
+@@ -7,6 +7,7 @@ if CAN_CC770
+ 
+ config CAN_CC770_ISA
+ 	tristate "ISA Bus based legacy CC770 driver"
++	depends on ISA
+ 	help
+ 	  This driver adds legacy support for CC770 and AN82527 chips
+ 	  connected to the ISA bus using I/O port, memory mapped or
+diff --git a/drivers/net/can/sja1000/Kconfig b/drivers/net/can/sja1000/Kconfig
+index 4b2f9cb17fc3..01168db4c106 100644
+--- a/drivers/net/can/sja1000/Kconfig
++++ b/drivers/net/can/sja1000/Kconfig
+@@ -87,6 +87,7 @@ config CAN_PLX_PCI
+ 
+ config CAN_SJA1000_ISA
+ 	tristate "ISA Bus based legacy SJA1000 driver"
++	depends on ISA
+ 	help
+ 	  This driver adds legacy support for SJA1000 chips connected to
+ 	  the ISA bus using I/O port, memory mapped or indirect access.
+diff --git a/drivers/net/ethernet/3com/Kconfig b/drivers/net/ethernet/3com/Kconfig
+index 706bd59bf645..1fbab79e2be4 100644
+--- a/drivers/net/ethernet/3com/Kconfig
++++ b/drivers/net/ethernet/3com/Kconfig
+@@ -44,7 +44,7 @@ config 3C515
+ 
+ config PCMCIA_3C574
+ 	tristate "3Com 3c574 PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	help
+ 	  Say Y here if you intend to attach a 3Com 3c574 or compatible PCMCIA
+ 	  (PC-card) Fast Ethernet card to your computer.
+@@ -54,7 +54,7 @@ config PCMCIA_3C574
+ 
+ config PCMCIA_3C589
+ 	tristate "3Com 3c589 PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	help
+ 	  Say Y here if you intend to attach a 3Com 3c589 or compatible PCMCIA
+ 	  (PC-card) Ethernet card to your computer.
+diff --git a/drivers/net/ethernet/8390/Kconfig b/drivers/net/ethernet/8390/Kconfig
+index a4130e643342..345f250781c6 100644
+--- a/drivers/net/ethernet/8390/Kconfig
++++ b/drivers/net/ethernet/8390/Kconfig
+@@ -19,7 +19,7 @@ if NET_VENDOR_8390
+ 
+ config PCMCIA_AXNET
+ 	tristate "Asix AX88190 PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	help
+ 	  Say Y here if you intend to attach an Asix AX88190-based PCMCIA
+ 	  (PC-card) Fast Ethernet card to your computer.  These cards are
+@@ -117,7 +117,7 @@ config NE2000
+ 
+ config NE2K_PCI
+ 	tristate "PCI NE2000 and clones support (see help)"
+-	depends on PCI
++	depends on PCI && HAS_IOPORT
+ 	select CRC32
+ 	help
+ 	  This driver is for NE2000 compatible PCI cards. It will not work
+@@ -146,7 +146,7 @@ config APNE
+ 
+ config PCMCIA_PCNET
+ 	tristate "NE2000 compatible PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	select CRC32
+ 	help
+ 	  Say Y here if you intend to attach an NE2000 compatible PCMCIA
+diff --git a/drivers/net/ethernet/amd/Kconfig b/drivers/net/ethernet/amd/Kconfig
+index f8cc8925161c..b39c6f3e1eda 100644
+--- a/drivers/net/ethernet/amd/Kconfig
++++ b/drivers/net/ethernet/amd/Kconfig
+@@ -56,7 +56,7 @@ config LANCE
+ 
+ config PCNET32
+ 	tristate "AMD PCnet32 PCI support"
+-	depends on PCI
++	depends on PCI && HAS_IOPORT
+ 	select CRC32
+ 	select MII
+ 	help
+@@ -122,7 +122,7 @@ config MVME147_NET
+ 
+ config PCMCIA_NMCLAN
+ 	tristate "New Media PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	help
+ 	  Say Y here if you intend to attach a New Media Ethernet or LiveWire
+ 	  PCMCIA (PC-card) Ethernet card to your computer.
+diff --git a/drivers/net/ethernet/fujitsu/Kconfig b/drivers/net/ethernet/fujitsu/Kconfig
+index 0a1400cb410a..06a28bce5d27 100644
+--- a/drivers/net/ethernet/fujitsu/Kconfig
++++ b/drivers/net/ethernet/fujitsu/Kconfig
+@@ -18,7 +18,7 @@ if NET_VENDOR_FUJITSU
+ 
+ config PCMCIA_FMVJ18X
+ 	tristate "Fujitsu FMV-J18x PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	select CRC32
+ 	help
+ 	  Say Y here if you intend to attach a Fujitsu FMV-J18x or compatible
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 9bc0a9519899..f48289a82a16 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -41,7 +41,7 @@ config E100
+ 
+ config E1000
+ 	tristate "Intel(R) PRO/1000 Gigabit Ethernet support"
+-	depends on PCI
++	depends on PCI && HAS_IOPORT
+ 	help
+ 	  This driver supports Intel(R) PRO/1000 gigabit ethernet family of
+ 	  adapters.  For more information on how to identify your adapter, go
+diff --git a/drivers/net/ethernet/sis/Kconfig b/drivers/net/ethernet/sis/Kconfig
+index 775d76d9890e..7e498bdbca73 100644
+--- a/drivers/net/ethernet/sis/Kconfig
++++ b/drivers/net/ethernet/sis/Kconfig
+@@ -19,7 +19,7 @@ if NET_VENDOR_SIS
+ 
+ config SIS900
+ 	tristate "SiS 900/7016 PCI Fast Ethernet Adapter support"
+-	depends on PCI
++	depends on PCI && HAS_IOPORT
+ 	select CRC32
+ 	select MII
+ 	help
+@@ -35,7 +35,7 @@ config SIS900
+ 
+ config SIS190
+ 	tristate "SiS190/SiS191 gigabit ethernet support"
+-	depends on PCI
++	depends on PCI && HAS_IOPORT
+ 	select CRC32
+ 	select MII
+ 	help
+diff --git a/drivers/net/ethernet/smsc/Kconfig b/drivers/net/ethernet/smsc/Kconfig
+index 5f22a8a4d27b..13ce9086a9ca 100644
+--- a/drivers/net/ethernet/smsc/Kconfig
++++ b/drivers/net/ethernet/smsc/Kconfig
+@@ -54,7 +54,7 @@ config SMC91X
+ 
+ config PCMCIA_SMC91C92
+ 	tristate "SMC 91Cxx PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	select CRC32
+ 	select MII
+ 	help
+diff --git a/drivers/net/ethernet/ti/Kconfig b/drivers/net/ethernet/ti/Kconfig
+index fce06663e1e1..20068acce9fe 100644
+--- a/drivers/net/ethernet/ti/Kconfig
++++ b/drivers/net/ethernet/ti/Kconfig
+@@ -161,7 +161,7 @@ config TI_KEYSTONE_NETCP_ETHSS
+ 
+ config TLAN
+ 	tristate "TI ThunderLAN support"
+-	depends on (PCI || EISA)
++	depends on (PCI || EISA) && HAS_IOPORT
+ 	help
+ 	  If you have a PCI Ethernet network card based on the ThunderLAN chip
+ 	  which is supported by this driver, say Y here.
+diff --git a/drivers/net/ethernet/via/Kconfig b/drivers/net/ethernet/via/Kconfig
+index da287ef65be7..00773f5e4d7e 100644
+--- a/drivers/net/ethernet/via/Kconfig
++++ b/drivers/net/ethernet/via/Kconfig
+@@ -20,6 +20,7 @@ config VIA_RHINE
+ 	tristate "VIA Rhine support"
+ 	depends on PCI || (OF_IRQ && GENERIC_PCI_IOMAP)
+ 	depends on PCI || ARCH_VT8500 || COMPILE_TEST
++	depends on HAS_IOPORT
+ 	depends on HAS_DMA
+ 	select CRC32
+ 	select MII
+diff --git a/drivers/net/ethernet/xircom/Kconfig b/drivers/net/ethernet/xircom/Kconfig
+index 7497b9bea511..bfbdcf758afb 100644
+--- a/drivers/net/ethernet/xircom/Kconfig
++++ b/drivers/net/ethernet/xircom/Kconfig
+@@ -19,7 +19,7 @@ if NET_VENDOR_XIRCOM
+ 
+ config PCMCIA_XIRC2PS
+ 	tristate "Xircom 16-bit PCMCIA support"
+-	depends on PCMCIA
++	depends on PCMCIA && HAS_IOPORT
+ 	help
+ 	  Say Y here if you intend to attach a Xircom 16-bit PCMCIA (PC-card)
+ 	  Ethernet or Fast Ethernet card to your computer.
+diff --git a/drivers/net/fddi/defxx.c b/drivers/net/fddi/defxx.c
+index 1fef8a9b1a0f..0fbbb7286008 100644
+--- a/drivers/net/fddi/defxx.c
++++ b/drivers/net/fddi/defxx.c
+@@ -254,7 +254,7 @@ static const char version[] =
+ #define DFX_BUS_TC(dev) 0
+ #endif
+ 
+-#if defined(CONFIG_EISA) || defined(CONFIG_PCI)
++#ifdef CONFIG_HAS_IOPORT
+ #define dfx_use_mmio bp->mmio
+ #else
+ #define dfx_use_mmio true
+diff --git a/drivers/net/hamradio/Kconfig b/drivers/net/hamradio/Kconfig
+index a94c7bd5db2e..887c61971841 100644
+--- a/drivers/net/hamradio/Kconfig
++++ b/drivers/net/hamradio/Kconfig
+@@ -83,7 +83,7 @@ config SCC_TRXECHO
+ 
+ config BAYCOM_SER_FDX
+ 	tristate "BAYCOM ser12 fullduplex driver for AX.25"
+-	depends on AX25 && !S390
++	depends on AX25 && HAS_IOPORT
+ 	select CRC_CCITT
+ 	help
+ 	  This is one of two drivers for Baycom style simple amateur radio
+@@ -103,7 +103,7 @@ config BAYCOM_SER_FDX
+ 
+ config BAYCOM_SER_HDX
+ 	tristate "BAYCOM ser12 halfduplex driver for AX.25"
+-	depends on AX25 && !S390
++	depends on AX25 && HAS_IOPORT
+ 	select CRC_CCITT
+ 	help
+ 	  This is one of two drivers for Baycom style simple amateur radio
+@@ -151,7 +151,7 @@ config BAYCOM_EPP
+ 
+ config YAM
+ 	tristate "YAM driver for AX.25"
+-	depends on AX25 && !S390
++	depends on AX25 && HAS_IOPORT
+ 	help
+ 	  The YAM is a modem for packet radio which connects to the serial
+ 	  port and includes some of the functions of a Terminal Node
+diff --git a/drivers/net/wan/Kconfig b/drivers/net/wan/Kconfig
+index dcb069dde66b..417e2c2d349d 100644
+--- a/drivers/net/wan/Kconfig
++++ b/drivers/net/wan/Kconfig
+@@ -178,7 +178,7 @@ config C101
+ 
+ config FARSYNC
+ 	tristate "FarSync T-Series support"
+-	depends on HDLC && PCI
++	depends on HDLC && PCI && HAS_IOPORT
+ 	help
+ 	  Support for the FarSync T-Series X.21 (and V.35/V.24) cards by
+ 	  FarSite Communications Ltd.
+diff --git a/net/ax25/Kconfig b/net/ax25/Kconfig
+index d3a9843a043d..f769e8f4bd02 100644
+--- a/net/ax25/Kconfig
++++ b/net/ax25/Kconfig
+@@ -4,7 +4,7 @@
+ #
+ 
+ menuconfig HAMRADIO
+-	depends on NET && !S390
++	depends on NET
+ 	bool "Amateur Radio support"
+ 	help
+ 	  If you want to connect your Linux box to an amateur radio, answer Y
+-- 
+2.39.2
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
