@@ -2,78 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 552177084B3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 May 2023 17:12:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E04517084B4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 May 2023 17:12:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E5F3B417D5;
-	Thu, 18 May 2023 15:12:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5F3B417D5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C13B42AD1;
+	Thu, 18 May 2023 15:12:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C13B42AD1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684422725;
-	bh=6fAxrlS/+B4ePJi5PyFG2DrPbTCwnPQyFxCb1mZWb7s=;
-	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=TS0pIt7ajVmI9lU9U71qT6T1E4lmEC7RAcLzwEltWz9BurAhdZzcGk62VDGzkqn2P
-	 8NTDtKNxij77SnXt5dHyKgHHniKQMepLdat1wikj7u7/KOn5+UM9ofElRcTNYTNfLn
-	 V4151XmpEOLcvyBl4bAqhIXawswarr31n4PhAWXGHAAUFVpwW2ql/PLzBMSmmvj3sn
-	 jSSZnqmnI0BZJYDPW/XygLDxVUC7bnuD8r63U0FsYf+XG4ecrNau+GeKYMoE7NyPtW
-	 tWV+7wZBQ55F1HlLYLYqT32Yb5HWrD48duTTg6Jt7YXc5XMZISIO8fyiAYfeW3pgBF
-	 XbJxxeoW3qAkg==
+	s=default; t=1684422728;
+	bh=579f/5ylioPDB2cfQ8+H9pIuz3GdcfZWh/WWxuFCTxA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=RONjKl30ilY9TO4shqdq15Rebxw6Dz9ZIz9gyajczfOQiCt+6Ha2LOnUACBkVb0vt
+	 97KpFaifDC9IIJ4kDHgaqlr/EApJjg4s8N46FGUo14PXi68Sm2ldaRPGE1gtb9CIpR
+	 DR/4Ue3QZ//GfZfHMqjBwVQulHQA9iiQeO2L/E7HWZSMMqEVr+v9uGCGKh4LVixjmv
+	 BT9xack4I+6yUYzS+LTO902bgssvs6IoxfDJMVXBoM305gFEaC3PIoTufWmdy/bKeU
+	 3FTNeK6smwLMoKtZslxvhtbnHLQcHps00jbmyDCj0MySx35YmQTGSFBmEIostagg4f
+	 4N5ApqdUY5W2A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zkr0qAo6PYL3; Thu, 18 May 2023 15:12:03 +0000 (UTC)
+	with ESMTP id x7Mchvn7e_Gt; Thu, 18 May 2023 15:12:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B74AF40B13;
-	Thu, 18 May 2023 15:12:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B74AF40B13
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2C10242995;
+	Thu, 18 May 2023 15:12:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C10242995
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8BA161BF3B5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 04:54:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DA2321BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:28:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 603B040385
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 04:54:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 603B040385
+ by smtp2.osuosl.org (Postfix) with ESMTP id BF9B9402A8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:28:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF9B9402A8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wu59S_JWrdtw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 May 2023 04:54:44 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F207400D3
-Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0F207400D3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 04:54:43 +0000 (UTC)
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4QMHZh5zsKzTkxf;
- Thu, 18 May 2023 12:49:48 +0800 (CST)
-Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
- (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Thu, 18 May
- 2023 12:54:38 +0800
-To: Jakub Kicinski <kuba@kernel.org>, Alexander Lobakin
- <aleksander.lobakin@intel.com>
-References: <20230516161841.37138-1-aleksander.lobakin@intel.com>
- <20230516161841.37138-7-aleksander.lobakin@intel.com>
- <20230517210804.7de610bd@kernel.org>
-From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <b84ad4ef-a996-4fd7-dc90-3b44f7acaf39@huawei.com>
-Date: Thu, 18 May 2023 12:54:37 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.0
+ with ESMTP id QHJvFIYRxmdO for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 May 2023 07:28:00 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CCF324028D
+Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
+ [IPv6:2607:f8b0:4864:20::102e])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CCF324028D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:27:59 +0000 (UTC)
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-253504c84aeso910806a91.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 00:27:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684394879; x=1686986879;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=B0KPsRgZkrYOqM2qiaYRx/3vo+OhEcW+JKXrMqHHRi8=;
+ b=GkcBcLZArNlCw9l8w15YotpCe4iKNq+tbXPV4k2vwI785SH8z352ZKiqA8sdOTTPpJ
+ 7eI5Jan8Ic67uA/FXnCs5yUcOpzb30X00x6uiS0HKLQ1SMtsva3ii+jFGDCUGXCvHWUm
+ hasQTsJs8UbSH/PXE7QF6PhN5oH0Z3UfkBvmQbzvPh71KOFCnpAyRXkXrMkDvpTSeiOH
+ xFhR1A7e+oX0ypSNpgHd+Y4nSe2qnjxPxPUPdkA85XzafXYgFXyH4PRu5bG8lotpEWNJ
+ ZKuvJcsE9dhCkDxoknbv4OXK70ttSbT6ZmYOwlHEz5roy0Scec3uAXdf2u7bWIiOZRIl
+ VfTg==
+X-Gm-Message-State: AC+VfDxn5z9CUP7t6UuPQvtcm9kAGfRZeKW7JcltkmcjqPHhTfv0mS1G
+ 78SyjpQ3EXeH9Yp+uxuCn1x0nw==
+X-Google-Smtp-Source: ACHHUZ6kn57EUT67NPJLEbc98mcDOFCe/2x+n9xYSKDeif2fpTykIqyWRQD5H+dOSl2BwPpI0wT93A==
+X-Received: by 2002:a17:90a:9f8d:b0:24e:4c8:3ae5 with SMTP id
+ o13-20020a17090a9f8d00b0024e04c83ae5mr1852042pjp.28.1684394879222; 
+ Thu, 18 May 2023 00:27:59 -0700 (PDT)
+Received: from localhost (21.160.199.104.bc.googleusercontent.com.
+ [104.199.160.21]) by smtp.gmail.com with UTF8SMTPSA id
+ g8-20020a17090adb0800b0025315f7fef7sm2788601pjv.33.2023.05.18.00.27.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 May 2023 00:27:58 -0700 (PDT)
+From: Ying Hsu <yinghsu@chromium.org>
+To: netdev@vger.kernel.org
+Date: Thu, 18 May 2023 07:26:57 +0000
+Message-ID: <20230518072657.1.If9539da710217ed92e764cc0ba0f3d2d246a1aee@changeid>
+X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
 MIME-Version: 1.0
-In-Reply-To: <20230517210804.7de610bd@kernel.org>
-Content-Language: en-US
-X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Thu, 18 May 2023 15:11:47 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 06/11] net: page_pool: avoid
- calling no-op externals when possible
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=chromium.org; s=google; t=1684394879; x=1686986879;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=B0KPsRgZkrYOqM2qiaYRx/3vo+OhEcW+JKXrMqHHRi8=;
+ b=KifR2KEG+YkazDWDu+y0p8UbuCC4weUt9xdIUdiL/2Fp9jPiPoORyHkQElgFNju9WQ
+ 6dyXWMSpb/owFxTwZNx3zadPTdMxpuQ4YyO7/MON7qezouH8njZwDuzJisTPkP9Nbivm
+ e52wQv4hQcph/C9JTH7yu67pJMbaDRXAX02GA=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
+ header.a=rsa-sha256 header.s=google header.b=KifR2KEG
+Subject: [Intel-wired-lan] [PATCH] igb: Fix igb_down hung on surprise removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,48 +104,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
- Christoph Hellwig <hch@lst.de>, Eric Dumazet <edumazet@google.com>,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+Cc: grundler@chromium.org, intel-wired-lan@lists.osuosl.org,
+ Ying Hsu <yinghsu@chromium.org>, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2023/5/18 12:08, Jakub Kicinski wrote:
-> On Tue, 16 May 2023 18:18:36 +0200 Alexander Lobakin wrote:
->> +		/* Try to avoid calling no-op syncs */
->> +		pool->p.flags |= PP_FLAG_DMA_MAYBE_SYNC;
->> +		pool->p.flags &= ~PP_FLAG_DMA_SYNC_DEV;
->>  	}
->>  
->>  	if (PAGE_POOL_DMA_USE_PP_FRAG_COUNT &&
->> @@ -323,6 +327,12 @@ static bool page_pool_dma_map(struct page_pool *pool, struct page *page)
->>  
->>  	page_pool_set_dma_addr(page, dma);
->>  
->> +	if ((pool->p.flags & PP_FLAG_DMA_MAYBE_SYNC) &&
->> +	    dma_need_sync(pool->p.dev, dma)) {
->> +		pool->p.flags |= PP_FLAG_DMA_SYNC_DEV;
->> +		pool->p.flags &= ~PP_FLAG_DMA_MAYBE_SYNC;
->> +	}
-> 
-> is it just me or does it feel cleaner to allocate a page at init,
-> and throw it into the cache, rather than adding a condition to a
-> fast(ish) path?
+In a setup where a Thunderbolt hub connects to Ethernet and a display
+through USB Type-C, users may experience a hung task timeout when they
+remove the cable between the PC and the Thunderbolt hub.
+This is because the igb_down function is called multiple times when
+the Thunderbolt hub is unplugged. For example, the igb_io_error_detected
+triggers the first call, and the igb_remove triggers the second call.
+The second call to igb_down will block at napi_synchronize.
+Here's the call trace:
+    __schedule+0x3b0/0xddb
+    ? __mod_timer+0x164/0x5d3
+    schedule+0x44/0xa8
+    schedule_timeout+0xb2/0x2a4
+    ? run_local_timers+0x4e/0x4e
+    msleep+0x31/0x38
+    igb_down+0x12c/0x22a [igb 6615058754948bfde0bf01429257eb59f13030d4]
+    __igb_close+0x6f/0x9c [igb 6615058754948bfde0bf01429257eb59f13030d4]
+    igb_close+0x23/0x2b [igb 6615058754948bfde0bf01429257eb59f13030d4]
+    __dev_close_many+0x95/0xec
+    dev_close_many+0x6e/0x103
+    unregister_netdevice_many+0x105/0x5b1
+    unregister_netdevice_queue+0xc2/0x10d
+    unregister_netdev+0x1c/0x23
+    igb_remove+0xa7/0x11c [igb 6615058754948bfde0bf01429257eb59f13030d4]
+    pci_device_remove+0x3f/0x9c
+    device_release_driver_internal+0xfe/0x1b4
+    pci_stop_bus_device+0x5b/0x7f
+    pci_stop_bus_device+0x30/0x7f
+    pci_stop_bus_device+0x30/0x7f
+    pci_stop_and_remove_bus_device+0x12/0x19
+    pciehp_unconfigure_device+0x76/0xe9
+    pciehp_disable_slot+0x6e/0x131
+    pciehp_handle_presence_or_link_change+0x7a/0x3f7
+    pciehp_ist+0xbe/0x194
+    irq_thread_fn+0x22/0x4d
+    ? irq_thread+0x1fd/0x1fd
+    irq_thread+0x17b/0x1fd
+    ? irq_forced_thread_fn+0x5f/0x5f
+    kthread+0x142/0x153
+    ? __irq_get_irqchip_state+0x46/0x46
+    ? kthread_associate_blkcg+0x71/0x71
+    ret_from_fork+0x1f/0x30
 
-Is dma_need_sync() not reliable until a dma map is called?
-Is there any reason why not just clear PP_FLAG_DMA_SYNC_DEV if
-dma_need_sync() is false without introducing the PP_FLAG_DMA_MAYBE_SYNC
-flag?
+In this case, igb_io_error_detected detaches the network interface
+and requests a PCIE slot reset, however, the PCIE reset callback is
+not being invoked and thus the Ethernet connection breaks down.
+As the PCIE error in this case is a non-fatal one, requesting a
+slot reset can be avoided.
+This patch fixes the task hung issue and preserves Ethernet
+connection by ignoring non-fatal PCIE errors.
 
-> 
-> .
-> 
+Signed-off-by: Ying Hsu <yinghsu@chromium.org>
+---
+This commit has been tested on a HP Elite Dragonfly Chromebook and
+a Caldigit TS3+ Thunderbolt hub. The Ethernet driver for the hub
+is igb. Non-fatal PCIE errors happen when users hot-plug the cables
+connected to the chromebook or to the external display.
+
+ drivers/net/ethernet/intel/igb/igb_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 58872a4c2540..a8b217368ca1 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -9581,6 +9581,11 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
+ 	struct net_device *netdev = pci_get_drvdata(pdev);
+ 	struct igb_adapter *adapter = netdev_priv(netdev);
+ 
++	if (state == pci_channel_io_normal) {
++		dev_warn(&pdev->dev, "Non-correctable non-fatal error reported.\n");
++		return PCI_ERS_RESULT_CAN_RECOVER;
++	}
++
+ 	netif_device_detach(netdev);
+ 
+ 	if (state == pci_channel_io_perm_failure)
+-- 
+2.40.1.606.ga4b1b128d6-goog
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
