@@ -1,105 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1015707A85
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 May 2023 09:03:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBF53707E04
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 May 2023 12:26:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4BE7160B15;
-	Thu, 18 May 2023 07:03:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4BE7160B15
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1ADF242888;
+	Thu, 18 May 2023 10:26:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1ADF242888
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684393435;
-	bh=dG7km2K7sPRGRkoOlVcN8dz9iUetSRj24dVFkE7oKyc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=j5GjOTnn+iFONKdzUzDrgdY6k34Qv0fACVlkZ+seZlNHF4Rv6Ckf16ECGvzElIcpi
-	 9+eEeVxlN98qWM90a8j6/cMSN3TeNUqYnPFpLB4b/i9eiuulpWdoEqKzCC0nYsPE1p
-	 FOMi8XD3YVd5DEzT80y024zrP4z3I8ulcdosy8vlGmMoI9KqngZdEhmxaoTnYns0+w
-	 tZ36tJ9O12udj4Ords2P8rpK4fpV8CC1BV5F6+UN/kujrChtDunDW9wzfiAscRnQMK
-	 GSSbZYW5hKG22+j+hFWhO1R+e/V8HF64m7c7h6HX9Jayv6Vsm2P1EW3zQRueB+JOEK
-	 q4fEM62Ka9dpQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fI12Sk4ZMCJc; Thu, 18 May 2023 07:03:54 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DEFA560B09;
-	Thu, 18 May 2023 07:03:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DEFA560B09
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A4A141BF846
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:03:48 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7AB37417CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:03:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7AB37417CD
+	s=default; t=1684405604;
+	bh=4C58OlpoZqE5pVLs5YR2Sc0Eg4brGYvggaoFVKUb/84=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=AP9psBRT5kecrSql0nvVzTCGEzhbd/4cp0A7xvSZFqT+b1dDIVinL/GXWt9cejFGh
+	 XoLXN4BL/HfQ2mr4Xg4MCckj6w+gSR2qd63ecEbkK6f/PZ4/6JUwKFsgSQ5TivTOX4
+	 bgxH6MyTgB+YdhYoTnTHDWacoqXa5sTlEgEMABOyjCxAlU1U03olqaqFCUq8vMBsG+
+	 XVuTHbrz3U9ne1P8H6UMQ0fJXwRqcUzC9F+tO+BK2nfz2a60QG1qBKnxLproYVRGTb
+	 yiVQw0Zx9T9xOCKPYDShEgTPTc+nrdtITpvElooefpEjGnAmlROpa7GSUaOZK1Eisp
+	 6EELfP03rlfMA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hpv_rrRWkLqw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 May 2023 07:03:47 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CB8F417A7
-Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com
- [IPv6:2a00:1450:4864:20::332])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2CB8F417A7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 07:03:47 +0000 (UTC)
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-3f41d087b24so11534195e9.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 00:03:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684393425; x=1686985425;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cmE3Hw/g7PPXrHo8vcI6AjK/ohP/P6DVA7E2EEZA5aw=;
- b=aF4iuR39r5vWv7gv794qDAHt7Cm1dgG7jEE0aJ9tmTh6Sam6KFaL1Ddpul3rFDFFzH
- Huvl5AcMmuvYx6fEWkBt40fw1ip3sM6mavnEZ4hkaZzL8YEsKSLM8NOydUHv/uGiSBUk
- 85o8PNMnl8EnafaEGxG3BDKBRuq1tMF5p/3DtZgZZ2z6eI9Fb0n0+LGAnGxLzT3QoxmA
- T/h0+871EOK9oEjwtrIWXwhG53vylQqiDiEhsmfRuy8kFcCgQ5EExTx0M3JtdthR4Vkq
- 79UhqImLtp59xGkAcNiyQvhlhEzyoTYw7ksytBpp9gxZ0g5VFxd5V5KdXcW1ATOuOZLh
- MMBA==
-X-Gm-Message-State: AC+VfDxzznq/5OqnuD6jRvCLx93PciNE5NGzS88Y4S+sUxSatpSRxroU
- ldXm7eY7LroGSGKZWZSvjP4ZVA==
-X-Google-Smtp-Source: ACHHUZ7KA7gW++urZQKvPGWLM/0di9BvXzgoPwnUHrCMESNRXMuASR1PwcyqGPzX8tXB+3miGBskrg==
-X-Received: by 2002:adf:fb08:0:b0:309:3c0c:b2c1 with SMTP id
- c8-20020adffb08000000b003093c0cb2c1mr572723wrr.23.1684393424852; 
- Thu, 18 May 2023 00:03:44 -0700 (PDT)
-Received: from hera (ppp176092130041.access.hol.gr. [176.92.130.41])
- by smtp.gmail.com with ESMTPSA id
- d15-20020a5d644f000000b00307a83ea722sm1110439wrw.58.2023.05.18.00.03.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 May 2023 00:03:44 -0700 (PDT)
-Date: Thu, 18 May 2023 10:03:41 +0300
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <ZGXNzX77/5cXqAhe@hera>
-References: <20230516161841.37138-1-aleksander.lobakin@intel.com>
- <20230516161841.37138-8-aleksander.lobakin@intel.com>
- <20230517211211.1d1bbd0b@kernel.org>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0hun1Y4atFkT; Thu, 18 May 2023 10:26:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF9154282E;
+	Thu, 18 May 2023 10:26:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF9154282E
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 23C331BF574
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 10:26:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF84E405D7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 10:26:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF84E405D7
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SJY7KfhjXRym for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 May 2023 10:26:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F0FD6400F8
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F0FD6400F8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 May 2023 10:26:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10713"; a="438371418"
+X-IronPort-AV: E=Sophos;i="5.99,285,1677571200"; d="scan'208";a="438371418"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 May 2023 03:26:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10713"; a="767143729"
+X-IronPort-AV: E=Sophos;i="5.99,285,1677571200"; d="scan'208";a="767143729"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmsmga008.fm.intel.com with ESMTP; 18 May 2023 03:26:20 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 153FC1266B;
+ Thu, 18 May 2023 11:26:19 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 18 May 2023 12:24:59 +0200
+Message-Id: <20230518102509.20913-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230517211211.1d1bbd0b@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684393425; x=1686985425;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=cmE3Hw/g7PPXrHo8vcI6AjK/ohP/P6DVA7E2EEZA5aw=;
- b=lNypA+WGF2vO1hR7ikW9cji9tuOPvcbtbUBOxHzGqO4xtpMGVB6DkS1/BXmv9xnBAj
- L4XUoIwAROLoDGxQc7FPnw+nIJnpo0e5vuiaPH3mNf8/Qm9m4WgJUXgFSHOMVqF8kQF0
- lGq98PFQ6c+vLqDalLC72hlWN0qUAALcjHXfF3pijF/1SVHSRbm3z5gN8zvLEWFu69aR
- 1Gw5PfG+ns+3qIjk+4WbR6QqLMby0ilKS4tz60gv8qfooG6Py867g57LRIEukAXUBzpm
- D2thI7uvQKTaDqu89O5+AjN7X/RqPl6B4z+gsMxjNPlT9HOo3ORGOIDxnBauldOllBpk
- vwfg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=lNypA+WG
-Subject: Re: [Intel-wired-lan] [PATCH net-next 07/11] net: page_pool: add
- DMA-sync-for-CPU inline helpers
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1684405596; x=1715941596;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=oGQs2FjH35RAkYzgSg+Mvu1b0n4RhTNly2ebja2ecr4=;
+ b=I5tSCV5zUJC/hhEXAKFJYqpA9o4zuxtH6KSYYqQHhHhyBoPbjuJaRn0X
+ drN6kSFFlkUdOMh0mqkFpqGIQReSz6wlut04Eb44kkRMkz8nGyJBar5F6
+ ke+oW2G/Rtx6aQ95w1DRofLrR6CKeYSqnMrUPZU9es9OhTekzQs+SGuVy
+ rUIONBaWDqWe45pnus7dvEBpRy3gloX5UjxG9d3RNL7qGzhbCA4kSxJHI
+ kvaedGQeBUw7lzpnjtMnM4c5Yn8vNB1ADeZKHhH+JVjIl3U/lRmMN6la2
+ +cRibYKfEO/lwzcJEjxoUqm3ou+W3PxEHCleYR//SJbWrC1HPSAE9fdjc
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=I5tSCV5z
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 00/10] ice: switchdev bridge
+ offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,109 +95,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Christoph Hellwig <hch@lst.de>,
- Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
- intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+Cc: netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi all,
+Linux bridge provides ability to learn MAC addresses and vlans
+detected on bridge's ports. As a result of this, FDB (forward data base)
+entries are created and they can be offloaded to the HW. By adding
+VF's port representors to the bridge together with the uplink netdev,
+we can learn VF's and link partner's MAC addresses. This is achieved
+by slow/exception-path, where packets that do not match any filters
+(FDB entries in this case) are send to the bridge ports.
 
-> On Wed, May 17, 2023 at 09:12:11PM -0700, Jakub Kicinski wrote:
-> On Tue, 16 May 2023 18:18:37 +0200 Alexander Lobakin wrote:
-> > Each driver is responsible for syncing buffers written by HW for CPU
-> > before accessing them. Almost each PP-enabled driver uses the same
-> > pattern, which could be shorthanded into a static inline to make driver
-> > code a little bit more compact.
-> > Introduce a couple such functions. The first one takes the actual size
-> > of the data written by HW and is the main one to be used on Rx. The
-> > second does the same, but only if the PP performs DMA synchronizations
-> > at all. The last one picks max_len from the PP params and is designed
-> > for more extreme cases when the size is unknown, but the buffer still
-> > needs to be synced.
-> > Also constify pointer arguments of page_pool_get_dma_dir() and
-> > page_pool_get_dma_addr() to give a bit more room for optimization,
-> > as both of them are read-only.
->
-> Very neat.
->
-> > diff --git a/include/net/page_pool.h b/include/net/page_pool.h
-> > index 8435013de06e..f740c50b661f 100644
-> > --- a/include/net/page_pool.h
-> > +++ b/include/net/page_pool.h
-> > @@ -32,7 +32,7 @@
-> >
-> >  #include <linux/mm.h> /* Needed by ptr_ring */
-> >  #include <linux/ptr_ring.h>
-> > -#include <linux/dma-direction.h>
-> > +#include <linux/dma-mapping.h>
->
-> highly nit picky - but isn't dma-mapping.h pretty heavy?
-> And we include page_pool.h in skbuff.h. Not that it matters
-> today, but maybe one day we'll succeed putting skbuff.h
-> on a diet -- so perhaps it's better to put "inline helpers
-> with non-trivial dependencies" into a new header?
->
-> >  #define PP_FLAG_DMA_MAP		BIT(0) /* Should page_pool do the DMA
-> >  					* map/unmap
->
-> > +/**
-> > + * page_pool_dma_sync_for_cpu - sync Rx page for CPU after it's written by HW
-> > + * @pool: page_pool which this page belongs to
-> > + * @page: page to sync
-> > + * @dma_sync_size: size of the data written to the page
-> > + *
-> > + * Can be used as a shorthand to sync Rx pages before accessing them in the
-> > + * driver. Caller must ensure the pool was created with %PP_FLAG_DMA_MAP.
-> > + */
-> > +static inline void page_pool_dma_sync_for_cpu(const struct page_pool *pool,
-> > +					      const struct page *page,
-> > +					      u32 dma_sync_size)
-> > +{
-> > +	dma_sync_single_range_for_cpu(pool->p.dev,
-> > +				      page_pool_get_dma_addr(page),
-> > +				      pool->p.offset, dma_sync_size,
-> > +				      page_pool_get_dma_dir(pool));
->
-> Likely a dumb question but why does this exist?
-> Is there a case where the "maybe" version is not safe?
->
+Driver keeps track of the netdevs added to the bridge
+by listening for NETDEV_CHANGEUPPER event. We distinguish two types
+of bridge ports: uplink port and VF's representor port. Linux
+bridge always learns src MAC of the packet on rx path. With the
+current slow-path implementation, it means that we will learn
+VF's MAC on port repr (when the VF transmits the packet) and
+link partner's MAC on uplink (when we receive it on uplink from LAN).
 
-I got similar concerns here.  Syncing for the cpu is currently a
-responsibility for the driver.  The reason for having an automated DMA sync
-is that we know when we allocate buffers for the NIC to consume so we can
-safely sync them accordingly.  I am fine having a page pool version for the
-cpu sync, but do we really have to check the pp flags for that?  IOW if you
-are at the point that you need to sync a buffer for the cpu *someone*
-already mapped it for you.  Regardsless of who mapped it the sync is
-identical
+The driver is notified about learning of the MAC/VLAN by
+SWITCHDEV_FDB_{ADD|DEL}_TO_DEVICE events. This is followed by creation
+of the HW filter. The direction of the filter is based on port
+type (uplink or VF repr). In case of the uplink, rule forwards
+the packets to the LAN (matching on link partner's MAC). When the
+notification is received on VF repr then the rule forwards the
+packets to the associated VF (matching on VF's MAC).
 
-> > +}
-> > +
-> > +/**
-> > + * page_pool_dma_maybe_sync_for_cpu - sync Rx page for CPU if needed
-> > + * @pool: page_pool which this page belongs to
-> > + * @page: page to sync
-> > + * @dma_sync_size: size of the data written to the page
-> > + *
-> > + * Performs DMA sync for CPU, but only when required (swiotlb, IOMMU etc.).
-> > + */
-> > +static inline void
-> > +page_pool_dma_maybe_sync_for_cpu(const struct page_pool *pool,
-> > +				 const struct page *page, u32 dma_sync_size)
-> > +{
-> > +	if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
-> > +		page_pool_dma_sync_for_cpu(pool, page, dma_sync_size);
-> > +}
+This approach would not work on its own however. This is because if
+one of the directions is offloaded, then the bridge would not be able
+to learn the other one. If the egress rule is added (learned on uplink)
+then the response from the VF will be sent directly to the LAN.
+The packet will not got through slow-path, it would not be seen on
+VF's port repr. Because of that, the bridge would not learn VF's MAC.
 
-Thanks
-/Ilias
+This is solved by introducing guard rule. It prevents forward rule from
+working until the opposite direction is offloaded.
+
+Aging is not fully supported yet, aging time is static for now. The
+follow up submissions will introduce counters that will allow us to
+keep track if the rule is actually being used or not.
+
+A few fixes/changes are needed for this feature to work with ice driver.
+These are introduced in first 3 patches.
+---
+v2: two patches were droped from the series:
+    - "ice: Remove exclusion code for RDMA+SRIOV" was sent as separate
+      patch: https://lore.kernel.org/netdev/20230516113055.7336-1-wojciech.drewek@intel.com/
+    - "ice: Ethtool fdb_cnt stats" was dropped because of the comments
+      suggesting that ethtool is not a good option for such statistic.
+      An alternative will be send as a separate patch.
+
+Marcin Szycik (2):
+  ice: Add guard rule when creating FDB in switchdev
+  ice: Add VLAN FDB support in switchdev mode
+
+Michal Swiatkowski (2):
+  ice: implement bridge port vlan
+  ice: implement static version of ageing
+
+Pawel Chmielewski (1):
+  ice: add tracepoints for the switchdev bridge
+
+Wojciech Drewek (5):
+  ice: Minor switchdev fixes
+  ice: Unset src prune on uplink VSI
+  ice: Implement basic eswitch bridge setup
+  ice: Switchdev FDB events support
+  ice: Accept LAG netdevs in bridge offloads
+
+ drivers/net/ethernet/intel/ice/Makefile       |    2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |    5 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  |   43 +-
+ .../net/ethernet/intel/ice/ice_eswitch_br.c   | 1355 +++++++++++++++++
+ .../net/ethernet/intel/ice/ice_eswitch_br.h   |  112 ++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   25 +
+ drivers/net/ethernet/intel/ice/ice_lib.h      |    1 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |    6 +-
+ drivers/net/ethernet/intel/ice/ice_repr.c     |    2 +-
+ drivers/net/ethernet/intel/ice/ice_repr.h     |    3 +-
+ drivers/net/ethernet/intel/ice/ice_switch.c   |   95 +-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |    5 +
+ drivers/net/ethernet/intel/ice/ice_trace.h    |   90 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
+ .../ethernet/intel/ice/ice_vf_vsi_vlan_ops.c  |  186 ++-
+ .../ethernet/intel/ice/ice_vf_vsi_vlan_ops.h  |    3 +
+ .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c |   84 +-
+ .../net/ethernet/intel/ice/ice_vsi_vlan_lib.h |    8 +
+ .../net/ethernet/intel/ice/ice_vsi_vlan_ops.h |    1 +
+ 19 files changed, 1895 insertions(+), 132 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+
+-- 
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
