@@ -1,121 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DD0570DA17
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 May 2023 12:17:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AADA870DFDF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 May 2023 17:04:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7929641D7A;
-	Tue, 23 May 2023 10:17:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7929641D7A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C5BA8207C;
+	Tue, 23 May 2023 15:04:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C5BA8207C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684837022;
-	bh=WZLq48SmLNLnkm9/Gki7DYWhYTTD8GxvLpNp6Wh50Fs=;
-	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1684854279;
+	bh=fOLEYtlm1edas10oR6UCOirsvsE+jahLnRsm+defuCs=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bLhOWgpJNCeXJh6OWSTGTBwXdpT+4YT93dXz1UzsIcKQE/T4CujipeomZvKiNLiLX
-	 KyE9VYAYGgfPY1U0NQeFJuuvaQAcc+yXlkPtnq1BmwlbnrX8wJvw4wdP+hNSPgKo26
-	 +Kyqg5NWlE4ZNHxdKIwn573oNiEZIJzIGIgy23mIViYFlidvkcZLf2ioydn+TiK5wk
-	 U3Iu9iE8Rmp8DH0zSBOP1pedmNUQt5y/AYevJq5aswiwRQPEhCSdX7btTrGQh7Xxit
-	 eAmAY8R6rgrw6w5C9pMC8jXmb98CYLPQqOcvTos3HI1+KGnSZYh7PceQIZLK9drNtc
-	 jRywCzpXiD7xA==
+	b=DuZrPE1LSjdUwfhsxA4djpfNOmmffE29ROIKVGW5abl93H6PlTiesk625/SKYpJ2/
+	 N/91d7V86bD6jJacrJ1dBkjLAl72IlqiZAKn8Yos4XH2QCJgRBtcj9lWLumPLK+H7K
+	 5qGGUHgkJgKIrk12FI7vrmkxOUCVB+1ZzTdEuWBWBD03N+rM70CKcctolkUQvDACXY
+	 RpwrxQdYjuB9tNfPnTwYUO3cCSqs1ERe0ST8dKl7VXVo229ZqTfuivllmfRGZuQQgE
+	 CmIK1F49J/8c/qMX4g5bvAo6EyGRmRJXM50ETp4GJf2Hkx0bjBrBUgaLwhDZ7sfdhr
+	 GGF6FE5zHBLLw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QrTs2Zys8y63; Tue, 23 May 2023 10:17:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 98NCql2IHhKv; Tue, 23 May 2023 15:04:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABDD740149;
-	Tue, 23 May 2023 10:17:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABDD740149
+	by smtp1.osuosl.org (Postfix) with ESMTP id 879928209B;
+	Tue, 23 May 2023 15:04:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 879928209B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 833B61BF2AA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 10:16:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AB55A1BF3B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 21:32:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 564CD401D5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 10:16:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 564CD401D5
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8260260BE2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 21:32:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8260260BE2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SrucM-RTwFht for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 May 2023 10:16:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 66_IfdCURlgX for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 May 2023 21:32:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 991CF4031F
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 991CF4031F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 10:16:53 +0000 (UTC)
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-530-HFCW7BMqOAyU-KtDL-LJQw-1; Tue, 23 May 2023 06:16:51 -0400
-X-MC-Unique: HFCW7BMqOAyU-KtDL-LJQw-1
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-9715654aba1so80922466b.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 03:16:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684837010; x=1687429010;
- h=content-transfer-encoding:in-reply-to:references:to
- :content-language:subject:cc:user-agent:mime-version:date:message-id
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SQHqTwIHdnGAuCc0miU9eDOkQpjo2/mk/8AwQvJchQc=;
- b=ZajWY6V1TL1RwP1Vkl5hk6KdW+dboAOKR4rlh9Q3umEZuTuOcb86jLB0RL8G7eUpBA
- YfmNS7NTU0XLgiLuv2i7pZTAgeKjr6dt6QkSU89P+1e4twQFHM8RvariOPWEf6H0F5F1
- feHKnyjKIYykst47q+sNZemf/4HjNoQFwiZFEk/AKGctTgGgMWD4xs6EdbYSO5W2zcp+
- EX0jQhVcZJ2q1AlAL5aifllDR8k/DcjGuEhNZ9WqETkcYOmzremysRPWsUMQNoPJZFou
- C0WbBhR45bUvdwF/IgUMf8eY0YCKltT90X9h9h7IWDjwApCKGxB9ZlHt8NM//j92jew7
- KdWQ==
-X-Gm-Message-State: AC+VfDxlhqRMbiXNbJYBSOstxsbERm5w04+exuxKDUvSMQFe1a0GI6z3
- cnKJTp7VSeAY3GqA8vjvQ+IALetIASzJZHHRsF1ihZ34gMh6BjR+AWqtZUaCDo/T+rO1GQ15c/n
- Ey1B9zmNm+zvUnUKE1SypKw6HNs/YBQ==
-X-Received: by 2002:a17:907:ea9:b0:96a:2b4:eb69 with SMTP id
- ho41-20020a1709070ea900b0096a02b4eb69mr13394005ejc.31.1684837009846; 
- Tue, 23 May 2023 03:16:49 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ49yhK/BvmMprUo2opyxIyuZkHK27opbVXPXsLNZq65QZvQ3zkJiQT66NAQMp6+0niQu0jLDQ==
-X-Received: by 2002:a17:907:ea9:b0:96a:2b4:eb69 with SMTP id
- ho41-20020a1709070ea900b0096a02b4eb69mr13393965ejc.31.1684837009526; 
- Tue, 23 May 2023 03:16:49 -0700 (PDT)
-Received: from [192.168.42.222] (194-45-78-10.static.kviknet.net.
- [194.45.78.10]) by smtp.gmail.com with ESMTPSA id
- s22-20020a170906961600b0096f89c8a2f7sm4209255ejx.90.2023.05.23.03.16.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 May 2023 03:16:48 -0700 (PDT)
-From: Jesper Dangaard Brouer <jbrouer@redhat.com>
-X-Google-Original-From: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <1693e3e3-c486-80c8-aec0-cca0c9080c34@redhat.com>
-Date: Tue, 23 May 2023 12:16:46 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 193BA60BC6
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 193BA60BC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 21:32:42 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id F2D5E62B1F;
+ Mon, 22 May 2023 21:32:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55575C433EF;
+ Mon, 22 May 2023 21:32:41 +0000 (UTC)
+Date: Mon, 22 May 2023 14:32:40 -0700
+From: "Darrick J. Wong" <djwong@kernel.org>
+To: Kees Cook <keescook@chromium.org>
+Message-ID: <20230522213240.GE11642@frogsfrogsfrogs>
+References: <20230522211810.never.421-kees@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-To: Larysa Zaremba <larysa.zaremba@intel.com>,
- Jesper Dangaard Brouer <jbrouer@redhat.com>
-References: <20230512152607.992209-1-larysa.zaremba@intel.com>
- <20230512152607.992209-10-larysa.zaremba@intel.com>
- <b0694577-e2b3-f6de-cf85-aed99fdf2496@redhat.com> <ZGJZU89AK/3mFZXW@lincoln>
- <094f3178-2797-e297-64f8-aa0f7ef16b5f@redhat.com> <ZGuO6Hk+NcdL9iwi@lincoln>
-In-Reply-To: <ZGuO6Hk+NcdL9iwi@lincoln>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1684837012;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SQHqTwIHdnGAuCc0miU9eDOkQpjo2/mk/8AwQvJchQc=;
- b=UB3UCMZEBx11i4AAMCJM5McDS/Qsg1rBZW9k79NtaUEpj4l+t0jM36ADIHnFvdf15HiDVO
- Hdkf4G/T1xrI0weLHxlo5HhaFqAdPzCG6qss23nOf4XQB9IQs9MLIP8ryY+BmWZ3/XSwPG
- 72Ijo8r839Y5kOapQPzpvCl9q7uzi24=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=UB3UCMZE
-Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 09/15] xdp: Add VLAN
- tag hint
+Content-Disposition: inline
+In-Reply-To: <20230522211810.never.421-kees@kernel.org>
+X-Mailman-Approved-At: Tue, 23 May 2023 15:04:32 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1684791161;
+ bh=DWjXZJSNUstF1LBdGh07RwUMWlyiWMi87JbY1HvUz4U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Q1ZYN2fh8JKRZfhfqxZuh1DLsByiKtSlZQ7S/5AsJZqLRDetDzf0mOnmi2fm4gF/h
+ nLHRz9nvxy5GTYkLKhDs8mZaJX/bO2aTXbP835An+gogPVBNDpNbeMrsg5Qhupm8Vt
+ yo/vUxJSHRaLzhFtVG+d5lZk8uoRHy6A4lWWxQg+Jj3aUyPLxaWizr4AYq8nDVA+Nu
+ rMK9lYRQan+MvEGoyl60UTbGD1NsVQ/oHvdd+9QQwGUzJckZzGNqF3WNOq1cQXp5mX
+ YjodXI1x/VIchQ4Zf2XpU/Pp46DA8vbAjFnHZ3v2qbczey3MecDnsYR0Lno5NsxHE6
+ OtG3MzC8+pu7g==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Q1ZYN2fh
+Subject: Re: [Intel-wired-lan] [PATCH] overflow: Add struct_size_t() helper
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,186 +90,331 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Anatoly Burakov <anatoly.burakov@intel.com>,
- Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
- Song Liu <song@kernel.org>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Stanislav Fomichev <sdf@google.com>, Maryam Tahhan <mtahhan@redhat.com>,
- xdp-hints@xdp-project.net, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org, brouer@redhat.com,
- Yonghong Song <yhs@fb.com>, KP Singh <kpsingh@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Jiri Olsa <jolsa@kernel.org>,
- bpf@vger.kernel.org, Martin KaFai Lau <martin.lau@linux.dev>
+Cc: Daniel Latypov <dlatypov@google.com>, storagedev@microchip.com,
+ linux-nvme@lists.infradead.org, James Smart <james.smart@broadcom.com>,
+ Guo Xuenan <guoxuenan@huawei.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, linux-hardening@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-scsi@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Kashyap Desai <kashyap.desai@broadcom.com>,
+ Christoph Hellwig <hch@infradead.org>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Gwan-gyeong Mun <gwan-gyeong.mun@intel.com>,
+ Dave Chinner <dchinner@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ HighPoint Linux Team <linux@highpoint-tech.com>,
+ megaraidlinux.pdl@broadcom.com, Jens Axboe <axboe@kernel.dk>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Shivasharan S <shivasharan.srikanteshwara@broadcom.com>,
+ netdev@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>,
+ linux-kernel@vger.kernel.org, linux-xfs@vger.kernel.org,
+ Sumit Saxena <sumit.saxena@broadcom.com>,
+ Tales Aparecida <tales.aparecida@gmail.com>,
+ Don Brace <don.brace@microchip.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 22/05/2023 17.48, Larysa Zaremba wrote:
-> On Mon, May 22, 2023 at 10:37:33AM +0200, Jesper Dangaard Brouer wrote:
->>
->>
->> On 15/05/2023 18.09, Larysa Zaremba wrote:
->>> On Mon, May 15, 2023 at 05:36:12PM +0200, Jesper Dangaard Brouer wrote:
->>>>
->>>>
->>>> On 12/05/2023 17.26, Larysa Zaremba wrote:
->>>>> Implement functionality that enables drivers to expose VLAN tag
->>>>> to XDP code.
->>>>>
->>>>> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
->>>>> ---
->>>> [...]
->>>>
->>>>> diff --git a/net/core/xdp.c b/net/core/xdp.c
->>>>> index 41e5ca8643ec..eff21501609f 100644
->>>>> --- a/net/core/xdp.c
->>>>> +++ b/net/core/xdp.c
->>>>> @@ -738,6 +738,30 @@ __bpf_kfunc int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, u32 *hash,
->>>>>     	return -EOPNOTSUPP;
->>>>>     }
->>>>
->>>> Remember below becomes part of main documentation on HW metadata hints:
->>>>    - https://kernel.org/doc/html/latest/networking/xdp-rx-metadata.html
->>>>
->>>> Hint compiling locally I use:
->>>>    make SPHINXDIRS="networking" htmldocs
->>>>
->>>>> +/**
->>>>> + * bpf_xdp_metadata_rx_ctag - Read XDP packet inner vlan tag.
->>>>
->>>> Is bpf_xdp_metadata_rx_ctag a good function name for the inner vlan tag?
->>>> Like wise below "stag".
->>>>
->>>> I cannot remember if the C-tag or S-tag is the inner or outer vlan tag.
->>>>
->>>> When reading BPF code that use these function names, then I would have
->>>> to ask Google for help, or find-and-read this doc.
->>>>
->>>> Can we come-up with a more intuitive name, that e.g. helps when reading
->>>> the BPF-prog code?
->>>
->>> Well, my reasoning for such naming is that if someone can configure s-tag
->>> stripping in ethtool with 'rx-vlan-stag-hw-parse', they shouldn't have any
->>> problem with understanding those function names.
->>>
->>
->> Naming is hard.  My perspective is conveying the meaning without having
->> to be knowledgeable about ethtool VLAN commands.  My perspective is a
->> casual BPF-programmer that reads "bpf_xdp_metadata_rx_stag()".
->> Hopefully we can choose a name that says "vlan" somewhere, such that the
->> person reading this doesn't have to lookup and find the documentation to
->> deduct this code is related to VLANs.
->>
->>> One possible improvement that comes to mind is maybe (similarly ethtool) calling
->>> c-tag just 'tag' and letting s-tag stay 'stag'. Because c-tag is this default
->>> 802.1q tag, which is supported by various hardware, while s-tag is significantly
->>> less widespread.
->>>
->>> But there are many options, really.
->>>
->>> What are your suggestions?
->>>
->>
->> One suggestion is (the symmetrical):
->>   * bpf_xdp_metadata_rx_vlan_inner_tag
->>   * bpf_xdp_metadata_rx_vlan_outer_tag
->>
->> As you say above the first "inner" VLAN tag is just the regular 802.1Q
->> VLAN tag.  The concept of C-tag and S-tag is from 802.1ad that
->> introduced the concept of double tagging.
->>
->> Thus one could argue for shorter names like:
->>   * bpf_xdp_metadata_rx_vlan_tag
->>   * bpf_xdp_metadata_rx_vlan_outer_tag
->>
+On Mon, May 22, 2023 at 02:18:13PM -0700, Kees Cook wrote:
+> While struct_size() is normally used in situations where the structure
+> type already has a pointer instance, there are places where no variable
+> is available. In the past, this has been worked around by using a typed
+> NULL first argument, but this is a bit ugly. Add a helper to do this,
+> and replace the handful of instances of the code pattern with it.
 > 
-> AFAIK, outer tag is a broader term, it's pretty often used for stacked 802.1Q
-> headers. I can't find what exactly is an expected behavior for rxvlan and
-> rx-vlan-stag-hw-parse in ethtool, but iavf documentation states that rxvlan
-> "enables outer or single 802.1Q VLAN stripping" and rx-vlan-stag-hw-parse
-> "enables outer or single 802.1ad VLAN stripping". This is in consistent with how
-> ice hardware behaves. More credible sources would be welcome.
+> Instances were found with this Coccinelle script:
 > 
-
-It would be good to figure out how other hardware behaves.
-
-The iavf doc sounds like very similar behavior from both functions, just 
-802.1Q vs 802.1ad.
-Sounds like both will just pop/strip the outer vlan tag.
-I have seen Ethertype 802.1Q being used (in practice) for double tagged
-packets, even-though 802.1ad should have been used to comply with the
-standard.
-
-> What about:
->    * bpf_xdp_metadata_rx_vlan_tag
->    * bpf_xdp_metadata_rx_vlan_qinq_tag
+> @struct_size_t@
+> identifier STRUCT, MEMBER;
+> expression COUNT;
+> @@
 > 
+> -       struct_size((struct STRUCT *)\(0\|NULL\),
+> +       struct_size_t(struct STRUCT,
+>                 MEMBER, COUNT)
+> 
+> Suggested-by: Christoph Hellwig <hch@infradead.org>
+> Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Cc: "David S. Miller" <davem@davemloft.net>
+> Cc: Eric Dumazet <edumazet@google.com>
+> Cc: Jakub Kicinski <kuba@kernel.org>
+> Cc: Paolo Abeni <pabeni@redhat.com>
+> Cc: James Smart <james.smart@broadcom.com>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Jens Axboe <axboe@kernel.dk>
+> Cc: Sagi Grimberg <sagi@grimberg.me>
+> Cc: HighPoint Linux Team <linux@highpoint-tech.com>
+> Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>
+> Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
+> Cc: Kashyap Desai <kashyap.desai@broadcom.com>
+> Cc: Sumit Saxena <sumit.saxena@broadcom.com>
+> Cc: Shivasharan S <shivasharan.srikanteshwara@broadcom.com>
+> Cc: Don Brace <don.brace@microchip.com>
+> Cc: "Darrick J. Wong" <djwong@kernel.org>
+> Cc: Dave Chinner <dchinner@redhat.com>
+> Cc: Guo Xuenan <guoxuenan@huawei.com>
+> Cc: Gwan-gyeong Mun <gwan-gyeong.mun@intel.com>
+> Cc: Nick Desaulniers <ndesaulniers@google.com>
+> Cc: Daniel Latypov <dlatypov@google.com>
+> Cc: kernel test robot <lkp@intel.com>
+> Cc: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org
+> Cc: linux-nvme@lists.infradead.org
+> Cc: linux-scsi@vger.kernel.org
+> Cc: megaraidlinux.pdl@broadcom.com
+> Cc: storagedev@microchip.com
+> Cc: linux-xfs@vger.kernel.org
+> Cc: linux-hardening@vger.kernel.org
+> Signed-off-by: Kees Cook <keescook@chromium.org>
+> ---
+> Unless there are objections, I'll just take this via my tree...
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ddp.h  |  9 ++++-----
+>  drivers/nvme/host/fc.c                    |  8 ++++----
+>  drivers/scsi/hptiop.c                     |  4 ++--
+>  drivers/scsi/megaraid/megaraid_sas_base.c | 12 ++++++------
+>  drivers/scsi/megaraid/megaraid_sas_fp.c   |  6 +++---
+>  drivers/scsi/smartpqi/smartpqi_init.c     |  2 +-
+>  fs/xfs/libxfs/xfs_btree.h                 |  2 +-
+>  fs/xfs/scrub/btree.h                      |  2 +-
+>  include/linux/overflow.h                  | 18 +++++++++++++++++-
+>  lib/overflow_kunit.c                      |  2 +-
+>  10 files changed, 40 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
+> index 37eadb3d27a8..41acfe26df1c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ddp.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
+> @@ -185,7 +185,7 @@ struct ice_buf_hdr {
+>  
+>  #define ICE_MAX_ENTRIES_IN_BUF(hd_sz, ent_sz)                                 \
+>  	((ICE_PKG_BUF_SIZE -                                                  \
+> -	  struct_size((struct ice_buf_hdr *)0, section_entry, 1) - (hd_sz)) / \
+> +	  struct_size_t(struct ice_buf_hdr,  section_entry, 1) - (hd_sz)) / \
+>  	 (ent_sz))
+>  
+>  /* ice package section IDs */
+> @@ -297,7 +297,7 @@ struct ice_label_section {
+>  };
+>  
+>  #define ICE_MAX_LABELS_IN_BUF                                             \
+> -	ICE_MAX_ENTRIES_IN_BUF(struct_size((struct ice_label_section *)0, \
+> +	ICE_MAX_ENTRIES_IN_BUF(struct_size_t(struct ice_label_section,  \
+>  					   label, 1) -                    \
+>  				       sizeof(struct ice_label),          \
+>  			       sizeof(struct ice_label))
+> @@ -352,7 +352,7 @@ struct ice_boost_tcam_section {
+>  };
+>  
+>  #define ICE_MAX_BST_TCAMS_IN_BUF                                               \
+> -	ICE_MAX_ENTRIES_IN_BUF(struct_size((struct ice_boost_tcam_section *)0, \
+> +	ICE_MAX_ENTRIES_IN_BUF(struct_size_t(struct ice_boost_tcam_section,  \
+>  					   tcam, 1) -                          \
+>  				       sizeof(struct ice_boost_tcam_entry),    \
+>  			       sizeof(struct ice_boost_tcam_entry))
+> @@ -372,8 +372,7 @@ struct ice_marker_ptype_tcam_section {
+>  };
+>  
+>  #define ICE_MAX_MARKER_PTYPE_TCAMS_IN_BUF                                    \
+> -	ICE_MAX_ENTRIES_IN_BUF(                                              \
+> -		struct_size((struct ice_marker_ptype_tcam_section *)0, tcam, \
+> +	ICE_MAX_ENTRIES_IN_BUF(struct_size_t(struct ice_marker_ptype_tcam_section,  tcam, \
+>  			    1) -                                             \
+>  			sizeof(struct ice_marker_ptype_tcam_entry),          \
+>  		sizeof(struct ice_marker_ptype_tcam_entry))
+> diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+> index 2ed75923507d..691f2df574ce 100644
+> --- a/drivers/nvme/host/fc.c
+> +++ b/drivers/nvme/host/fc.c
+> @@ -2917,8 +2917,8 @@ nvme_fc_create_io_queues(struct nvme_fc_ctrl *ctrl)
+>  
+>  	ret = nvme_alloc_io_tag_set(&ctrl->ctrl, &ctrl->tag_set,
+>  			&nvme_fc_mq_ops, 1,
+> -			struct_size((struct nvme_fcp_op_w_sgl *)NULL, priv,
+> -				    ctrl->lport->ops->fcprqst_priv_sz));
+> +			struct_size_t(struct nvme_fcp_op_w_sgl, priv,
+> +				      ctrl->lport->ops->fcprqst_priv_sz));
+>  	if (ret)
+>  		return ret;
+>  
+> @@ -3536,8 +3536,8 @@ nvme_fc_init_ctrl(struct device *dev, struct nvmf_ctrl_options *opts,
+>  
+>  	ret = nvme_alloc_admin_tag_set(&ctrl->ctrl, &ctrl->admin_tag_set,
+>  			&nvme_fc_admin_mq_ops,
+> -			struct_size((struct nvme_fcp_op_w_sgl *)NULL, priv,
+> -				    ctrl->lport->ops->fcprqst_priv_sz));
+> +			struct_size_t(struct nvme_fcp_op_w_sgl, priv,
+> +				      ctrl->lport->ops->fcprqst_priv_sz));
+>  	if (ret)
+>  		goto fail_ctrl;
+>  
+> diff --git a/drivers/scsi/hptiop.c b/drivers/scsi/hptiop.c
+> index 06ccb51bf6a9..f5334ccbf2ca 100644
+> --- a/drivers/scsi/hptiop.c
+> +++ b/drivers/scsi/hptiop.c
+> @@ -1394,8 +1394,8 @@ static int hptiop_probe(struct pci_dev *pcidev, const struct pci_device_id *id)
+>  	host->cmd_per_lun = le32_to_cpu(iop_config.max_requests);
+>  	host->max_cmd_len = 16;
+>  
+> -	req_size = struct_size((struct hpt_iop_request_scsi_command *)0,
+> -			       sg_list, hba->max_sg_descriptors);
+> +	req_size = struct_size_t(struct hpt_iop_request_scsi_command,
+> +				 sg_list, hba->max_sg_descriptors);
+>  	if ((req_size & 0x1f) != 0)
+>  		req_size = (req_size + 0x1f) & ~0x1f;
+>  
+> diff --git a/drivers/scsi/megaraid/megaraid_sas_base.c b/drivers/scsi/megaraid/megaraid_sas_base.c
+> index 317c944c68e3..050eed8e2684 100644
+> --- a/drivers/scsi/megaraid/megaraid_sas_base.c
+> +++ b/drivers/scsi/megaraid/megaraid_sas_base.c
+> @@ -5153,8 +5153,8 @@ static void megasas_update_ext_vd_details(struct megasas_instance *instance)
+>  		fusion->max_map_sz = ventura_map_sz;
+>  	} else {
+>  		fusion->old_map_sz =
+> -			struct_size((struct MR_FW_RAID_MAP *)0, ldSpanMap,
+> -				    instance->fw_supported_vd_count);
+> +			struct_size_t(struct MR_FW_RAID_MAP, ldSpanMap,
+> +				      instance->fw_supported_vd_count);
+>  		fusion->new_map_sz =  sizeof(struct MR_FW_RAID_MAP_EXT);
+>  
+>  		fusion->max_map_sz =
+> @@ -5789,8 +5789,8 @@ megasas_setup_jbod_map(struct megasas_instance *instance)
+>  	struct fusion_context *fusion = instance->ctrl_context;
+>  	size_t pd_seq_map_sz;
+>  
+> -	pd_seq_map_sz = struct_size((struct MR_PD_CFG_SEQ_NUM_SYNC *)0, seq,
+> -				    MAX_PHYSICAL_DEVICES);
+> +	pd_seq_map_sz = struct_size_t(struct MR_PD_CFG_SEQ_NUM_SYNC, seq,
+> +				      MAX_PHYSICAL_DEVICES);
+>  
+>  	instance->use_seqnum_jbod_fp =
+>  		instance->support_seqnum_jbod_fp;
+> @@ -8033,8 +8033,8 @@ static void megasas_detach_one(struct pci_dev *pdev)
+>  	if (instance->adapter_type != MFI_SERIES) {
+>  		megasas_release_fusion(instance);
+>  		pd_seq_map_sz =
+> -			struct_size((struct MR_PD_CFG_SEQ_NUM_SYNC *)0,
+> -				    seq, MAX_PHYSICAL_DEVICES);
+> +			struct_size_t(struct MR_PD_CFG_SEQ_NUM_SYNC,
+> +				      seq, MAX_PHYSICAL_DEVICES);
+>  		for (i = 0; i < 2 ; i++) {
+>  			if (fusion->ld_map[i])
+>  				dma_free_coherent(&instance->pdev->dev,
+> diff --git a/drivers/scsi/megaraid/megaraid_sas_fp.c b/drivers/scsi/megaraid/megaraid_sas_fp.c
+> index 4463a538102a..b8b388a4e28f 100644
+> --- a/drivers/scsi/megaraid/megaraid_sas_fp.c
+> +++ b/drivers/scsi/megaraid/megaraid_sas_fp.c
+> @@ -326,9 +326,9 @@ u8 MR_ValidateMapInfo(struct megasas_instance *instance, u64 map_id)
+>  	else if (instance->supportmax256vd)
+>  		expected_size = sizeof(struct MR_FW_RAID_MAP_EXT);
+>  	else
+> -		expected_size = struct_size((struct MR_FW_RAID_MAP *)0,
+> -					    ldSpanMap,
+> -					    le16_to_cpu(pDrvRaidMap->ldCount));
+> +		expected_size = struct_size_t(struct MR_FW_RAID_MAP,
+> +					      ldSpanMap,
+> +					      le16_to_cpu(pDrvRaidMap->ldCount));
+>  
+>  	if (le32_to_cpu(pDrvRaidMap->totalSize) != expected_size) {
+>  		dev_dbg(&instance->pdev->dev, "megasas: map info structure size 0x%x",
+> diff --git a/drivers/scsi/smartpqi/smartpqi_init.c b/drivers/scsi/smartpqi/smartpqi_init.c
+> index 03de97cd72c2..f4e0aa262164 100644
+> --- a/drivers/scsi/smartpqi/smartpqi_init.c
+> +++ b/drivers/scsi/smartpqi/smartpqi_init.c
+> @@ -5015,7 +5015,7 @@ static int pqi_create_queues(struct pqi_ctrl_info *ctrl_info)
+>  }
+>  
+>  #define PQI_REPORT_EVENT_CONFIG_BUFFER_LENGTH	\
+> -	struct_size((struct pqi_event_config *)0, descriptors, PQI_MAX_EVENT_DESCRIPTORS)
+> +	struct_size_t(struct pqi_event_config,  descriptors, PQI_MAX_EVENT_DESCRIPTORS)
+>  
+>  static int pqi_configure_events(struct pqi_ctrl_info *ctrl_info,
+>  	bool enable_events)
+> diff --git a/fs/xfs/libxfs/xfs_btree.h b/fs/xfs/libxfs/xfs_btree.h
+> index a2aa36b23e25..4d68a58be160 100644
+> --- a/fs/xfs/libxfs/xfs_btree.h
+> +++ b/fs/xfs/libxfs/xfs_btree.h
+> @@ -301,7 +301,7 @@ struct xfs_btree_cur
+>  static inline size_t
+>  xfs_btree_cur_sizeof(unsigned int nlevels)
+>  {
+> -	return struct_size((struct xfs_btree_cur *)NULL, bc_levels, nlevels);
+> +	return struct_size_t(struct xfs_btree_cur, bc_levels, nlevels);
 
-This sounds good to me.
+Oh, hey, this thing ^^^^^^^^ again.  I'm excited!
 
-I do wonder if we really need two functions for this?
-Would one function be enough?
+Reviewed-by: Darrick J. Wong <djwong@kernel.org>
 
-Given the (iavf) description, the functions basically does the same.
-Looking at your ice driver implementation, they could be merged into one
-function, as it is the same location in the descriptor.
+--D
 
->>
->>>>
->>>>> + * @ctx: XDP context pointer.
->>>>> + * @vlan_tag: Return value pointer.
->>>>> + *
->>>>
->>>> IMHO right here, there should be a description.
->>>>
->>>> E.g. for what a VLAN "tag" means.  I assume a "tag" isn't the VLAN id,
->>>> but the raw VLAN tag that also contains the prio numbers etc.
->>>>
->>>> It this VLAN tag expected to be in network-byte-order ?
->>>> IMHO this doc should define what is expected (and driver devel must
->>>> follow this).
->>>
->>> Will specify that.
->>>
->>>>
->>>>> + * Returns 0 on success or ``-errno`` on error.
->>>>> + */
->>>>> +__bpf_kfunc int bpf_xdp_metadata_rx_ctag(const struct xdp_md *ctx, u16 *vlan_tag)
->>>>> +{
->>>>> +	return -EOPNOTSUPP;
->>>>> +}
->>>>> +
->>>>> +/**
->>>>> + * bpf_xdp_metadata_rx_stag - Read XDP packet outer vlan tag.
->>>>> + * @ctx: XDP context pointer.
->>>>> + * @vlan_tag: Return value pointer.
->>>>> + *
->>
->> (p.s. Googling I find multiple definitions of what the "S" in S-tag
->> means. The most reliable or statistically consistent seems to be
->> "Service tag", or "Service provider tag".)
->>
->> The description for the renamed "bpf_xdp_metadata_rx_vlan_outer_tag"
->> should IMHO explain that the outer VLAN tag is often refered to as the S-tag
->> (or Service-tag) in Q-in-Q (802.1ad) terminology.  Perhaps we can even spell
->> out that some hardware support (and must be configured via ethtool) to
->> extract this stag.
->>
->> A dump of the tool rx-vlan related commands:
->>
->>    $ ethtool -k i40e2 | grep rx-vlan
->>    rx-vlan-offload: on
->>    rx-vlan-filter: on [fixed]
->>    rx-vlan-stag-hw-parse: off [fixed]
->>    rx-vlan-stag-filter: off [fixed]
->>
-[...]
-
+>  }
+>  
+>  /* cursor flags */
+> diff --git a/fs/xfs/scrub/btree.h b/fs/xfs/scrub/btree.h
+> index 9d7b9ee8bef4..c32b5fad6174 100644
+> --- a/fs/xfs/scrub/btree.h
+> +++ b/fs/xfs/scrub/btree.h
+> @@ -60,7 +60,7 @@ struct xchk_btree {
+>  static inline size_t
+>  xchk_btree_sizeof(unsigned int nlevels)
+>  {
+> -	return struct_size((struct xchk_btree *)NULL, lastkey, nlevels - 1);
+> +	return struct_size_t(struct xchk_btree, lastkey, nlevels - 1);
+>  }
+>  
+>  int xchk_btree(struct xfs_scrub *sc, struct xfs_btree_cur *cur,
+> diff --git a/include/linux/overflow.h b/include/linux/overflow.h
+> index 0e33b5cbdb9f..f9b60313eaea 100644
+> --- a/include/linux/overflow.h
+> +++ b/include/linux/overflow.h
+> @@ -283,7 +283,7 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+>   * @member: Name of the array member.
+>   * @count: Number of elements in the array.
+>   *
+> - * Calculates size of memory needed for structure @p followed by an
+> + * Calculates size of memory needed for structure of @p followed by an
+>   * array of @count number of @member elements.
+>   *
+>   * Return: number of bytes needed or SIZE_MAX on overflow.
+> @@ -293,4 +293,20 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+>  		sizeof(*(p)) + flex_array_size(p, member, count),	\
+>  		size_add(sizeof(*(p)), flex_array_size(p, member, count)))
+>  
+> +/**
+> + * struct_size_t() - Calculate size of structure with trailing flexible array
+> + * @type: structure type name.
+> + * @member: Name of the array member.
+> + * @count: Number of elements in the array.
+> + *
+> + * Calculates size of memory needed for structure @type followed by an
+> + * array of @count number of @member elements. Prefer using struct_size()
+> + * when possible instead, to keep calculations associated with a specific
+> + * instance variable of type @type.
+> + *
+> + * Return: number of bytes needed or SIZE_MAX on overflow.
+> + */
+> +#define struct_size_t(type, member, count)					\
+> +	struct_size((type *)NULL, member, count)
+> +
+>  #endif /* __LINUX_OVERFLOW_H */
+> diff --git a/lib/overflow_kunit.c b/lib/overflow_kunit.c
+> index dcd3ba102db6..34db0b3aa502 100644
+> --- a/lib/overflow_kunit.c
+> +++ b/lib/overflow_kunit.c
+> @@ -649,7 +649,7 @@ struct __test_flex_array {
+>  static void overflow_size_helpers_test(struct kunit *test)
+>  {
+>  	/* Make sure struct_size() can be used in a constant expression. */
+> -	u8 ce_array[struct_size((struct __test_flex_array *)0, data, 55)];
+> +	u8 ce_array[struct_size_t(struct __test_flex_array, data, 55)];
+>  	struct __test_flex_array *obj;
+>  	int count = 0;
+>  	int var;
+> -- 
+> 2.34.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
