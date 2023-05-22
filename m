@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 665B570B998
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 May 2023 12:06:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9BF970B9B6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 May 2023 12:14:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DB8C1402CE;
-	Mon, 22 May 2023 10:06:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB8C1402CE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2BD2140C5A;
+	Mon, 22 May 2023 10:14:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BD2140C5A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684749990;
-	bh=iUckVdsbMV4mlG4jp/SZLb44YZwu5M6wgbegIUdQdSs=;
+	s=default; t=1684750455;
+	bh=fS0/R3CaYQlev+CPCL7NLrDwohro6Thiv8ia7Fwf38Y=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vzFMeiybQH8nZmNjWAGjo/Ca6dEKZe4zlS8ZwyMvmoIm9JUnCiaiar9mZgYg/Zino
-	 sju5cfAA7Q1U2a31NDDl8J7pXwXzDs6uXVLvGac7ZGe0RaDHC3i4SE2BNri8Is6+Aa
-	 NAEGYjVnRShCRImM0jL/TXEaVsQyAiMepvyUqtPraSDYIp0W0519i4gChxovr9XISd
-	 R0bYXMv0RBkbzA50KLKTZYCtI0RiyFXsgLYihX/RitNvDBQCkboedfqejKolWebSed
-	 naT0VRCHZzbRpBRs7or54Qt2OQajyXti64xKaxAaImmXxZ9c+QaDD1fMQidTBuCSol
-	 jmqVVoD6HPexg==
+	b=u7T7Lo0CGCd+LfoDEklpl/mwcUJ4lDOyLHcAXpXornfXNkH4d2rvrPHCc1Qu3RsVo
+	 d+prduIox4bmcIdF5RrHCioZytUkZsVssTjFAhWWhXhhWTMz4BxGG1ErFlw7u05SZl
+	 gn1kVPIdMui3SrtipS5Fr2D9u18U5s2PspOglL9k4i1wr+FggxuAB39ar67K36e0Jf
+	 z7dKag0mLhcNwHZkR+DogGlt11qdcjaGwaXPyp9ogviV+uw29Y4rCN4auIIHLX+nMr
+	 YM0XLyzxl/4w0Im7tELy5Si5vnnpIEtHsCEZIQ1Dl3WDtltgI8x5NXH2B0bu8TWGFo
+	 j0zFZcU2L7qnQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BAkqXslrD3jh; Mon, 22 May 2023 10:06:30 +0000 (UTC)
+	with ESMTP id MZ85gjSXBYOx; Mon, 22 May 2023 10:14:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 81BC240131;
-	Mon, 22 May 2023 10:06:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81BC240131
+	by smtp2.osuosl.org (Postfix) with ESMTP id BC40D402CE;
+	Mon, 22 May 2023 10:14:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC40D402CE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AB0521BF39D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:06:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8E7241BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:14:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7AB1841600
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:06:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7AB1841600
+ by smtp4.osuosl.org (Postfix) with ESMTP id 64A6041688
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:14:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 64A6041688
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rxK-N-CPfs0j for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 May 2023 10:06:22 +0000 (UTC)
+ with ESMTP id UINW94lGeL2g for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 May 2023 10:14:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF636415FF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0895041687
 Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DF636415FF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:06:21 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0895041687
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 May 2023 10:14:05 +0000 (UTC)
 Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
  (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id BE47E61DFA908;
- Mon, 22 May 2023 12:05:43 +0200 (CEST)
-Message-ID: <2b4f07b4-607f-126c-1eaa-5bdac701d831@molgen.mpg.de>
-Date: Mon, 22 May 2023 12:05:43 +0200
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9B4A761E4052B;
+ Mon, 22 May 2023 12:13:39 +0200 (CEST)
+Message-ID: <c883bf80-3110-79a4-617a-69566ba360c6@molgen.mpg.de>
+Date: Mon, 22 May 2023 12:13:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
 Content-Language: en-US
 To: Wojciech Drewek <wojciech.drewek@intel.com>
 References: <20230522090542.45679-1-wojciech.drewek@intel.com>
- <20230522090542.45679-2-wojciech.drewek@intel.com>
+ <20230522090542.45679-10-wojciech.drewek@intel.com>
 From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20230522090542.45679-2-wojciech.drewek@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 01/10] ice: Minor
- switchdev fixes
+In-Reply-To: <20230522090542.45679-10-wojciech.drewek@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 09/10] ice: implement
+ static version of ageing
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,107 +78,193 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBXb2pjaWVjaCwKCgpUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2hlcy4KCkFtIDIyLjA1LjIz
-IHVtIDExOjA1IHNjaHJpZWIgV29qY2llY2ggRHJld2VrOgo+IEludHJvZHVjZSBhIGZldyBmaXhl
-cyB0aGF0IGFyZSBuZWVkZWQgZm9yIGJyaWRnZSBvZmZsb2FkCj4gdG8gd29yayBwcm9wZXJseS4K
-PiAKPiAtIFNraXAgYWR2IHJ1bGUgcmVtb3ZhbCBpbiBpY2VfZXN3aXRjaF9kaXNhYmxlX3N3aXRj
-aGRldi4KPiAgICBBZHZhbmNlZCBydWxlcyBmb3IgY3RybCBWU0kgd2lsbCBiZSByZW1vdmVkIGFu
-eXdheSB3aGVuIHRoZQo+ICAgIFZTSSB3aWxsIGNsZWFuZWQgdXAsIG5vIG5lZWQgdG8gZG8gaXQg
-ZXhwbGljaXRseS4KPiAKPiAtIERvbid0IGFsbG93IHRvIGNoYW5nZSBwcm9taXNjIG1vZGUgaW4g
-c3dpdGNoZGV2IG1vZGUuCj4gICAgV2hlbiBzd2l0Y2hkZXYgaXMgY29uZmlndXJlZCwgUEYgbmV0
-ZGV2IGlzIHNldCB0byBiZSBhCj4gICAgZGVmYXVsdCBWU0kuIFRoaXMgaXMgbmVlZGVkIGZvciB0
-aGUgc2xvdy1wYXRoIHRvIHdvcmsgY29ycmVjdGx5Lgo+ICAgIEFsbCB0aGUgdW5tYXRjaGVkIHBh
-Y2tldHMgd2lsbCBiZSBkaXJlY3RlZCB0byBQRiBuZXRkZXYuCj4gCj4gICAgSXQgaXMgcG9zc2li
-bGUgdGhhdCB0aGlzIHNldHRpbmcgbWlnaHQgYmUgb3ZlcndyaXR0ZW4gYnkKPiAgICBuZG9fc2V0
-X3J4X21vZGUuIFByZXZlbnQgdGhpcyBieSBjaGVja2luZyBpZiBzd2l0Y2hkZXYgaXMKPiAgICBl
-bmFibGVkIGluIGljZV9zZXRfcnhfbW9kZS4KPiAKPiAtIERpc2FibGUgdmxhbiBwcnVuaW5nIGZv
-ciB1cGxpbmsgVlNJLiBJbiBzd2l0Y2hkZXYgbW9kZSwgdXBsaW5rIFZTSQo+ICAgIGlzIGNvbmZp
-Z3VyZWQgdG8gYmUgZGVmYXVsdCBWU0kgd2hpY2ggbWVhbnMgaXQgd2lsbCByZWNlaXZlIGFsbAo+
-ICAgIHVubWF0Y2hlZCBwYWNrZXRzLiBJbiBvcmRlciB0byByZWNlaXZlIHZsYW4gcGFja2V0cyB3
-ZSBuZWVkIHRvCj4gICAgZGlzYWJsZSB2bGFuIHBydW5pbmcgYXMgd2VsbC4gVGhpcyBpcyBkb25l
-IGJ5IGRpc19yeF9maWx0ZXJpbmcKPiAgICB2bGFuIG9wLgo+IAo+IC0gVGhlcmUgaXMgcG9zc2li
-aWxpdHkgdGhhdCBpY2VfZXN3aXRjaF9wb3J0X3N0YXJ0X3htaXQgbWlnaHQgYmUKPiAgICBjYWxs
-ZWQgd2hpbGUgc29tZSByZXNvdXJjZXMgYXJlIHN0aWxsIG5vdCBhbGxvY2F0ZWQgd2hpY2ggbWln
-aHQKPiAgICBjYXVzZSBOVUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UuIEZpeCB0aGlzIGJ5IGNoZWNr
-aW5nIGlmIHN3aXRjaGRldgo+ICAgIGNvbmZpZ3VyYXRpb24gd2FzIGZpbmlzaGVkLgoKSWYgeW91
-IGVudW1lcmF0ZS9saXN0IGNoYW5nZXMgaW4gYSBjb21taXQgbWVzc2FnZSwgaXTigJlzIGEgZ29v
-ZCBpbmRpY2F0b3IgCnRvIG1ha2Ugb25lIHBhdGNoL2NvbW1pdCBmb3IgZWFjaCBpdGVtLiA7LSkg
-RG9pbmcgdGhpcyBhbHNvIG1ha2VzIGl0IAplYXNpZXIgdG8gdXNlIGEgc3RhdGVtZW50IGFzIHRo
-ZSBjb21taXQgbWVzc2FnZSBzdW1tYXJ5LCB0aGF0IG1lYW5zIAp1c2luZyBhIHZlcmIgKGluIGlt
-cGVyYXRpdmUgbW9vZCkg4oCTIEZpeCBtaW5vciBzd2l0Y2hkZXYgdGhpbmdzIOKAkyBhbmQgCm1h
-a2luZyBgZ2l0IGxvZyAtLW9uZWxpbmVgKSBtb3JlIHVzZWZ1bC4gU21hbGxlciBjb21taXRzIGFy
-ZSBhbHNvIGVhc2llciAKdG8gcmV2ZXJ0IG9yIHRvIGJhY2twb3J0LgoKPiBTaWduZWQtb2ZmLWJ5
-OiBXb2pjaWVjaCBEcmV3ZWsgPHdvamNpZWNoLmRyZXdla0BpbnRlbC5jb20+Cj4gLS0tCj4gdjI6
-IGVuY2xvc2UgYml0b3BzIGludG8gc2VwYXJhdGUgc2V0IG9mIGJyYWNlcywgbW92ZQo+ICAgICAg
-aWNlX2lzX3N3aXRjaGRldl9ydW5uaW5nIGNoZWNrIHRvIGljZV9zZXRfcnhfbW9kZQo+ICAgICAg
-ZnJvbSBpY2VfdnNpX3N5bmNfZmx0cgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaWNlL2ljZV9lc3dpdGNoLmMgfCAxNCArKysrKysrKysrKysrLQo+ICAgZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9tYWluLmMgICAgfCAgNCArKy0tCj4gICAyIGZpbGVzIGNo
-YW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZXN3aXRjaC5jIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9lc3dpdGNoLmMKPiBpbmRleCBhZDBhMDA3YjczOTgu
-LmJmZDAwMzEzNWZjOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-Y2UvaWNlX2Vzd2l0Y2guYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfZXN3aXRjaC5jCj4gQEAgLTEwMyw2ICsxMDMsMTAgQEAgc3RhdGljIGludCBpY2VfZXN3aXRj
-aF9zZXR1cF9lbnYoc3RydWN0IGljZV9wZiAqcGYpCj4gICAJCXJ1bGVfYWRkZWQgPSB0cnVlOwo+
-ICAgCX0KPiAgIAo+ICsJdmxhbl9vcHMgPSBpY2VfZ2V0X2NvbXBhdF92c2lfdmxhbl9vcHModXBs
-aW5rX3ZzaSk7Cj4gKwlpZiAodmxhbl9vcHMtPmRpc19yeF9maWx0ZXJpbmcodXBsaW5rX3ZzaSkp
-Cj4gKwkJZ290byBlcnJfZGlzX3J4Owo+ICsKPiAgIAlpZiAoaWNlX3ZzaV91cGRhdGVfc2VjdXJp
-dHkodXBsaW5rX3ZzaSwgaWNlX3ZzaV9jdHhfc2V0X2FsbG93X292ZXJyaWRlKSkKPiAgIAkJZ290
-byBlcnJfb3ZlcnJpZGVfdXBsaW5rOwo+ICAgCj4gQEAgLTExNCw2ICsxMTgsOCBAQCBzdGF0aWMg
-aW50IGljZV9lc3dpdGNoX3NldHVwX2VudihzdHJ1Y3QgaWNlX3BmICpwZikKPiAgIGVycl9vdmVy
-cmlkZV9jb250cm9sOgo+ICAgCWljZV92c2lfdXBkYXRlX3NlY3VyaXR5KHVwbGlua192c2ksIGlj
-ZV92c2lfY3R4X2NsZWFyX2FsbG93X292ZXJyaWRlKTsKPiAgIGVycl9vdmVycmlkZV91cGxpbms6
-Cj4gKwl2bGFuX29wcy0+ZW5hX3J4X2ZpbHRlcmluZyh1cGxpbmtfdnNpKTsKPiArZXJyX2Rpc19y
-eDoKPiAgIAlpZiAocnVsZV9hZGRlZCkKPiAgIAkJaWNlX2NsZWFyX2RmbHRfdnNpKHVwbGlua192
-c2kpOwo+ICAgZXJyX2RlZl9yeDoKPiBAQCAtMzMxLDYgKzMzNyw5IEBAIGljZV9lc3dpdGNoX3Bv
-cnRfc3RhcnRfeG1pdChzdHJ1Y3Qgc2tfYnVmZiAqc2tiLCBzdHJ1Y3QgbmV0X2RldmljZSAqbmV0
-ZGV2KQo+ICAgCW5wID0gbmV0ZGV2X3ByaXYobmV0ZGV2KTsKPiAgIAl2c2kgPSBucC0+dnNpOwo+
-ICAgCj4gKwlpZiAoIXZzaSB8fCAhaWNlX2lzX3N3aXRjaGRldl9ydW5uaW5nKHZzaS0+YmFjaykp
-Cj4gKwkJcmV0dXJuIE5FVERFVl9UWF9CVVNZOwo+ICsKPiAgIAlpZiAoaWNlX2lzX3Jlc2V0X2lu
-X3Byb2dyZXNzKHZzaS0+YmFjay0+c3RhdGUpIHx8Cj4gICAJICAgIHRlc3RfYml0KElDRV9WRl9E
-SVMsIHZzaS0+YmFjay0+c3RhdGUpKQo+ICAgCQlyZXR1cm4gTkVUREVWX1RYX0JVU1k7Cj4gQEAg
-LTM3OCw5ICszODcsMTMgQEAgc3RhdGljIHZvaWQgaWNlX2Vzd2l0Y2hfcmVsZWFzZV9lbnYoc3Ry
-dWN0IGljZV9wZiAqcGYpCj4gICB7Cj4gICAJc3RydWN0IGljZV92c2kgKnVwbGlua192c2kgPSBw
-Zi0+c3dpdGNoZGV2LnVwbGlua192c2k7Cj4gICAJc3RydWN0IGljZV92c2kgKmN0cmxfdnNpID0g
-cGYtPnN3aXRjaGRldi5jb250cm9sX3ZzaTsKPiArCXN0cnVjdCBpY2VfdnNpX3ZsYW5fb3BzICp2
-bGFuX29wczsKPiArCj4gKwl2bGFuX29wcyA9IGljZV9nZXRfY29tcGF0X3ZzaV92bGFuX29wcyh1
-cGxpbmtfdnNpKTsKPiAgIAo+ICAgCWljZV92c2lfdXBkYXRlX3NlY3VyaXR5KGN0cmxfdnNpLCBp
-Y2VfdnNpX2N0eF9jbGVhcl9hbGxvd19vdmVycmlkZSk7Cj4gICAJaWNlX3ZzaV91cGRhdGVfc2Vj
-dXJpdHkodXBsaW5rX3ZzaSwgaWNlX3ZzaV9jdHhfY2xlYXJfYWxsb3dfb3ZlcnJpZGUpOwo+ICsJ
-dmxhbl9vcHMtPmVuYV9yeF9maWx0ZXJpbmcodXBsaW5rX3ZzaSk7Cj4gICAJaWNlX2NsZWFyX2Rm
-bHRfdnNpKHVwbGlua192c2kpOwo+ICAgCWljZV9mbHRyX2FkZF9tYWNfYW5kX2Jyb2FkY2FzdCh1
-cGxpbmtfdnNpLAo+ICAgCQkJCSAgICAgICB1cGxpbmtfdnNpLT5wb3J0X2luZm8tPm1hYy5wZXJt
-X2FkZHIsCj4gQEAgLTUwMyw3ICs1MTYsNiBAQCBzdGF0aWMgdm9pZCBpY2VfZXN3aXRjaF9kaXNh
-YmxlX3N3aXRjaGRldihzdHJ1Y3QgaWNlX3BmICpwZikKPiAgIAo+ICAgCWljZV9lc3dpdGNoX25h
-cGlfZGlzYWJsZShwZik7Cj4gICAJaWNlX2Vzd2l0Y2hfcmVsZWFzZV9lbnYocGYpOwo+IC0JaWNl
-X3JlbV9hZHZfcnVsZV9mb3JfdnNpKCZwZi0+aHcsIGN0cmxfdnNpLT5pZHgpOwo+ICAgCWljZV9l
-c3dpdGNoX3JlbGVhc2VfcmVwcnMocGYsIGN0cmxfdnNpKTsKPiAgIAlpY2VfdnNpX3JlbGVhc2Uo
-Y3RybF92c2kpOwo+ICAgCWljZV9yZXByX3JlbV9mcm9tX2FsbF92ZnMocGYpOwo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jCj4gaW5kZXggYjBkMWU2MTE2ZWI5Li44
-MGIyYjRkMzkyNzggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV9tYWluLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21h
-aW4uYwo+IEBAIC0zODUsNyArMzg1LDcgQEAgc3RhdGljIGludCBpY2VfdnNpX3N5bmNfZmx0cihz
-dHJ1Y3QgaWNlX3ZzaSAqdnNpKQo+ICAgCX0KPiAgIAllcnIgPSAwOwo+ICAgCS8qIGNoZWNrIGZv
-ciBjaGFuZ2VzIGluIHByb21pc2N1b3VzIG1vZGVzICovCj4gLQlpZiAoY2hhbmdlZF9mbGFncyAm
-IElGRl9BTExNVUxUSSkgewo+ICsJaWYgKChjaGFuZ2VkX2ZsYWdzICYgSUZGX0FMTE1VTFRJKSkg
-ewo+ICAgCQlpZiAodnNpLT5jdXJyZW50X25ldGRldl9mbGFncyAmIElGRl9BTExNVUxUSSkgewo+
-ICAgCQkJZXJyID0gaWNlX3NldF9wcm9taXNjKHZzaSwgSUNFX01DQVNUX1BST01JU0NfQklUUyk7
-Cj4gICAJCQlpZiAoZXJyKSB7Cj4gQEAgLTU3NjcsNyArNTc2Nyw3IEBAIHN0YXRpYyB2b2lkIGlj
-ZV9zZXRfcnhfbW9kZShzdHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2KQo+ICAgCXN0cnVjdCBpY2Vf
-bmV0ZGV2X3ByaXYgKm5wID0gbmV0ZGV2X3ByaXYobmV0ZGV2KTsKPiAgIAlzdHJ1Y3QgaWNlX3Zz
-aSAqdnNpID0gbnAtPnZzaTsKPiAgIAo+IC0JaWYgKCF2c2kpCj4gKwlpZiAoIXZzaSB8fCBpY2Vf
-aXNfc3dpdGNoZGV2X3J1bm5pbmcodnNpLT5iYWNrKSkKPiAgIAkJcmV0dXJuOwo+ICAgCj4gICAJ
-LyogU2V0IHRoZSBmbGFncyB0byBzeW5jaHJvbml6ZSBmaWx0ZXJzCgpUaGUgZGlmZiBpdHNlbGYg
-bG9va3MgZ29vZC4KClJldmlld2VkLWJ5OiBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBn
-LmRlPgoKCktpbmQgcmVnYXJkcywKClBhdWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
-ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9pbnRlbC13aXJlZC1sYW4K
+Dear Wojciech, dear Michal,
+
+
+Am 22.05.23 um 11:05 schrieb Wojciech Drewek:
+> From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> 
+> Remove fdb entries always when ageing time expired.
+
+Why is that a good thing to do?
+
+> Allow user to set ageing time using port object attribute.
+
+Maybe add the comment how to do it too?
+
+
+Kind regards,
+
+Paul
+
+
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> ---
+> v2: use msecs_to_jiffies upon definition of
+>      ICE_ESW_BRIDGE_UPDATE_INTERVAL
+> ---
+>   .../net/ethernet/intel/ice/ice_eswitch_br.c   | 48 +++++++++++++++++++
+>   .../net/ethernet/intel/ice/ice_eswitch_br.h   | 10 ++++
+>   2 files changed, 58 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+> index 74857da6be9f..af3465b9699c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+> @@ -8,6 +8,8 @@
+>   #include "ice_vlan.h"
+>   #include "ice_vf_vsi_vlan_ops.h"
+>   
+> +#define ICE_ESW_BRIDGE_UPDATE_INTERVAL msecs_to_jiffies(1000)
+> +
+>   static const struct rhashtable_params ice_fdb_ht_params = {
+>   	.key_offset = offsetof(struct ice_esw_br_fdb_entry, data),
+>   	.key_len = sizeof(struct ice_esw_br_fdb_data),
+> @@ -443,6 +445,7 @@ ice_eswitch_br_fdb_entry_create(struct net_device *netdev,
+>   	fdb_entry->br_port = br_port;
+>   	fdb_entry->flow = flow;
+>   	fdb_entry->dev = netdev;
+> +	fdb_entry->last_use = jiffies;
+>   	event = SWITCHDEV_FDB_ADD_TO_BRIDGE;
+>   
+>   	if (added_by_user) {
+> @@ -836,6 +839,10 @@ ice_eswitch_br_port_obj_attr_set(struct net_device *netdev, const void *ctx,
+>   		ice_eswitch_br_vlan_filtering_set(br_port->bridge,
+>   						  attr->u.vlan_filtering);
+>   		return 0;
+> +	case SWITCHDEV_ATTR_ID_BRIDGE_AGEING_TIME:
+> +		br_port->bridge->ageing_time =
+> +			clock_t_to_jiffies(attr->u.ageing_time);
+> +		return 0;
+>   	default:
+>   		return -EOPNOTSUPP;
+>   	}
+> @@ -1007,6 +1014,7 @@ ice_eswitch_br_init(struct ice_esw_br_offloads *br_offloads, int ifindex)
+>   	INIT_LIST_HEAD(&bridge->fdb_list);
+>   	bridge->br_offloads = br_offloads;
+>   	bridge->ifindex = ifindex;
+> +	bridge->ageing_time = clock_t_to_jiffies(BR_DEFAULT_AGEING_TIME);
+>   	xa_init(&bridge->ports);
+>   	br_offloads->bridge = bridge;
+>   
+> @@ -1210,6 +1218,7 @@ ice_eswitch_br_offloads_deinit(struct ice_pf *pf)
+>   	if (!br_offloads)
+>   		return;
+>   
+> +	cancel_delayed_work_sync(&br_offloads->update_work);
+>   	unregister_netdevice_notifier(&br_offloads->netdev_nb);
+>   	unregister_switchdev_blocking_notifier(&br_offloads->switchdev_blk);
+>   	unregister_switchdev_notifier(&br_offloads->switchdev_nb);
+> @@ -1224,6 +1233,40 @@ ice_eswitch_br_offloads_deinit(struct ice_pf *pf)
+>   	rtnl_unlock();
+>   }
+>   
+> +static void ice_eswitch_br_update(struct ice_esw_br_offloads *br_offloads)
+> +{
+> +	struct ice_esw_br *bridge = br_offloads->bridge;
+> +	struct ice_esw_br_fdb_entry *entry, *tmp;
+> +
+> +	if (!bridge)
+> +		return;
+> +
+> +	rtnl_lock();
+> +	list_for_each_entry_safe(entry, tmp, &bridge->fdb_list, list) {
+> +		if (entry->flags & ICE_ESWITCH_BR_FDB_ADDED_BY_USER)
+> +			continue;
+> +
+> +		if (time_is_after_eq_jiffies(entry->last_use +
+> +					     bridge->ageing_time))
+> +			continue;
+> +
+> +		ice_eswitch_br_fdb_entry_notify_and_cleanup(bridge, entry);
+> +	}
+> +	rtnl_unlock();
+> +}
+> +
+> +static void ice_eswitch_br_update_work(struct work_struct *work)
+> +{
+> +	struct ice_esw_br_offloads *br_offloads;
+> +
+> +	br_offloads = ice_work_to_br_offloads(work);
+> +
+> +	ice_eswitch_br_update(br_offloads);
+> +
+> +	queue_delayed_work(br_offloads->wq, &br_offloads->update_work,
+> +			   ICE_ESW_BRIDGE_UPDATE_INTERVAL);
+> +}
+> +
+>   int
+>   ice_eswitch_br_offloads_init(struct ice_pf *pf)
+>   {
+> @@ -1272,6 +1315,11 @@ ice_eswitch_br_offloads_init(struct ice_pf *pf)
+>   		goto err_reg_netdev_nb;
+>   	}
+>   
+> +	INIT_DELAYED_WORK(&br_offloads->update_work,
+> +			  ice_eswitch_br_update_work);
+> +	queue_delayed_work(br_offloads->wq, &br_offloads->update_work,
+> +			   ICE_ESW_BRIDGE_UPDATE_INTERVAL);
+> +
+>   	return 0;
+>   
+>   err_reg_netdev_nb:
+> diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+> index 72316ba8ff4d..93a8c23aa089 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+> @@ -5,6 +5,7 @@
+>   #define _ICE_ESWITCH_BR_H_
+>   
+>   #include <linux/rhashtable.h>
+> +#include <linux/workqueue.h>
+>   
+>   struct ice_esw_br_fdb_data {
+>   	unsigned char addr[ETH_ALEN];
+> @@ -30,6 +31,8 @@ struct ice_esw_br_fdb_entry {
+>   	struct net_device *dev;
+>   	struct ice_esw_br_port *br_port;
+>   	struct ice_esw_br_flow *flow;
+> +
+> +	unsigned long last_use;
+>   };
+>   
+>   enum ice_esw_br_port_type {
+> @@ -59,6 +62,7 @@ struct ice_esw_br {
+>   
+>   	int ifindex;
+>   	u32 flags;
+> +	unsigned long ageing_time;
+>   };
+>   
+>   struct ice_esw_br_offloads {
+> @@ -69,6 +73,7 @@ struct ice_esw_br_offloads {
+>   	struct notifier_block switchdev_nb;
+>   
+>   	struct workqueue_struct *wq;
+> +	struct delayed_work update_work;
+>   };
+>   
+>   struct ice_esw_br_fdb_work {
+> @@ -89,6 +94,11 @@ struct ice_esw_br_vlan {
+>   		     struct ice_esw_br_offloads, \
+>   		     nb_name)
+>   
+> +#define ice_work_to_br_offloads(w) \
+> +	container_of(w, \
+> +		     struct ice_esw_br_offloads, \
+> +		     update_work.work)
+> +
+>   #define ice_work_to_fdb_work(w) \
+>   	container_of(w, \
+>   		     struct ice_esw_br_fdb_work, \
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
