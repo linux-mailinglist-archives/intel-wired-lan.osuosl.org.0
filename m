@@ -1,86 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 852B470DBEA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 May 2023 14:03:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B0AE70E2D0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 May 2023 19:38:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 25AB5402FE;
-	Tue, 23 May 2023 12:03:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 25AB5402FE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 130616143B;
+	Tue, 23 May 2023 17:38:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 130616143B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1684843411;
-	bh=7K1CZNLfcS3Mpt/4n2FHl3YK26qPPsFtPOZjVou+imw=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=HDBWfQUcJ1XnnXkrrC2aB5bB9Auqh0BBeGi8yyRp+ZrDv9ctGaruZRILUx/VSiENY
-	 NOmFb7ReoCp9lXRZbzmHkJcPiNkcm8OFwQr63K8SpiAGfiJgzakBnc7wm/zHR1BaCg
-	 ap2UV0VtK+WYZ8OZSEiKGTlyuk5Ntu7zZ+5Na5wdqDASMub8iX12E/6S8xjO1EMOjR
-	 oq33Z0mXBwqxO3GqQbYJmFwDxlyfDzT0uwzPPnpVR3ghysY9iibGfK1km/IdS5+9m6
-	 atc3Cdl3tw7OwpBZPT8zTkN4eF7t7wdm/lOsDPQp7LyF78urdrtsDLv3kBuNH2DW1b
-	 Xq9m1cZA9tfqw==
+	s=default; t=1684863511;
+	bh=UNjkUQcUINcCbesVe2vJXqHDtX/eLvYOuuOYWIZlGyA=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=U5PS+IJMKxAgcSF4EuAd3lc82AFVSC9UstqWtVxuvnjw/E45jeoXYagLKwK0LWhsH
+	 yQ3DHsJj3toRWY6oOEBc2IebLI8MIXRFUk+Q10j6u5H9QtqxKhFWzFW578SnPW5Dyc
+	 ma/gq5sQSOZiUtfA0ZgBWPQoJvukkkRTK1znDOUK4TvQmQylurSt9jQHvu20FTLH1A
+	 OSLyC3XyMgagqpgvyn7YJwUNegQy9pBaLBSI33XoyUNxGfHDyyLUKSiHO3THttGtgY
+	 c8JHg/ajQ62rKXy2EZpo/S76GwDfgIYh3PQBm/uTg8TM+HGAQjWyL0oWp36EHjrall
+	 DRnVYAY7BMLGA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OlSqMl9Sigxk; Tue, 23 May 2023 12:03:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oYrGjBPHMe5U; Tue, 23 May 2023 17:38:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D0843402A3;
-	Tue, 23 May 2023 12:03:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0843402A3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1DA6060A99;
+	Tue, 23 May 2023 17:38:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1DA6060A99
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ACC901BF37B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 12:01:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E4D9A1BF318
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 17:38:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 912C782021
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 12:01:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 912C782021
+ by smtp4.osuosl.org (Postfix) with ESMTP id BE46740896
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 17:38:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE46740896
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W_rAcNTqQGvb for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 May 2023 12:01:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aU6xcCuiG63s for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 May 2023 17:38:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A84682266
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BFF2940341
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8A84682266
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 12:01:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="353242327"
-X-IronPort-AV: E=Sophos;i="6.00,186,1681196400"; d="scan'208";a="353242327"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BFF2940341
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 May 2023 17:38:21 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10719"; a="353337501"
+X-IronPort-AV: E=Sophos;i="6.00,187,1681196400"; d="scan'208";a="353337501"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 May 2023 05:01:10 -0700
+ 23 May 2023 10:38:20 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="950520127"
-X-IronPort-AV: E=Sophos;i="6.00,186,1681196400"; d="scan'208";a="950520127"
-Received: from lkp-server01.sh.intel.com (HELO dea6d5a4f140) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 23 May 2023 05:01:10 -0700
-Received: from kbuild by dea6d5a4f140 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q1QhR-000Dhx-1o
- for intel-wired-lan@lists.osuosl.org; Tue, 23 May 2023 12:01:09 +0000
-Date: Tue, 23 May 2023 20:00:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <20230523120055.k0SNQ%lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=McAfee;i="6600,9927,10719"; a="878299915"
+X-IronPort-AV: E=Sophos;i="6.00,187,1681196400"; d="scan'208";a="878299915"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga005.jf.intel.com with ESMTP; 23 May 2023 10:38:19 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 23 May 2023 10:38:19 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 23 May 2023 10:38:19 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Tue, 23 May 2023 10:38:19 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Tue, 23 May 2023 10:38:18 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=J7phpScE39V4Uu4EC6u1aEjeiO0Nr2fwYrXgcid4nQZ1DL6hM2U3qEq/x1NWvSS6fOkVaHOWsl/fP5c3dHs7fgEe9Pp7OEQaUguBMpNS6oKn/1ZbBd3bVWz/oLKlsJDqi+N/5LhpIKJ2NrDOtPjEskX1xZAyDUru9MW+85f3HHNlG0WI6ALedMrP9e5dVDkLcVBl98DLre1niXzv3eE/+C89DoROoTZOv/yTwbG610XxUpmDgsT1szk7ZkmXXKcGXviGLwOF0+w5TqoC7UXKq+cXuRpdj2j+3k17JL5iGbIbs6rPiGm6BZEB/5jd+LrjTNFV1EWKwbeM9rKtvrD+jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KYgP6VO6oV2Sb0NALIiRvnV/tiZjRCmiXKt4OQ/dfUE=;
+ b=i5PN3M9INpR7qKPyOxSIv3MvYTB3quu26rm057nc1zk+oAJcQa05o0vqJhM9cUst4ZQw2dYsiNx6MOmZXvB1VfCmJHPIgh2htGS1nr9ipkst+/S2mXg+iZ2SgN08Eu9ZGvkUYhnUV2nOEGlONI35vp+BRDqIlZeT3Ft2rVjOLJOjR59Q9eyKmJ2Y4PxH395ouedflEZZL9hlzZUlWW6weCs/xdDRf52E7yyZgM5pFw1AxBkhh0tLaJ5MsSPQukYKYxal6uRdbEE2mix1iSa0vdw1fSdWsgk7LlLKf0fr/r4/zGPQlcNPgj3om0XmTK4zarmNvcItVgxlWngeX0vvuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB5471.namprd11.prod.outlook.com (2603:10b6:5:39d::10)
+ by IA0PR11MB7305.namprd11.prod.outlook.com (2603:10b6:208:439::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.28; Tue, 23 May
+ 2023 17:38:15 +0000
+Received: from DM4PR11MB5471.namprd11.prod.outlook.com
+ ([fe80::907c:ffaa:352a:8913]) by DM4PR11MB5471.namprd11.prod.outlook.com
+ ([fe80::907c:ffaa:352a:8913%7]) with mapi id 15.20.6411.028; Tue, 23 May 2023
+ 17:38:15 +0000
+Date: Tue, 23 May 2023 19:35:17 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Message-ID: <ZGz5VWan/nROHxhc@lincoln>
+References: <20230512152607.992209-1-larysa.zaremba@intel.com>
+ <20230512152607.992209-10-larysa.zaremba@intel.com>
+ <b0694577-e2b3-f6de-cf85-aed99fdf2496@redhat.com>
+ <ZGJZU89AK/3mFZXW@lincoln>
+ <094f3178-2797-e297-64f8-aa0f7ef16b5f@redhat.com>
+ <ZGuO6Hk+NcdL9iwi@lincoln>
+ <1693e3e3-c486-80c8-aec0-cca0c9080c34@redhat.com>
+Content-Disposition: inline
+In-Reply-To: <1693e3e3-c486-80c8-aec0-cca0c9080c34@redhat.com>
+X-ClientProxiedBy: FR0P281CA0044.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:48::7) To DM4PR11MB5471.namprd11.prod.outlook.com
+ (2603:10b6:5:39d::10)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB5471:EE_|IA0PR11MB7305:EE_
+X-MS-Office365-Filtering-Correlation-Id: cc306d37-779c-4edf-9e18-08db5bb47cab
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: aLYfc+RC3bKEVHE0Bea9hHmbkM425jXlpGUm++SK0mSN7x9wo3W07IB1jv+myrLwWF5wEbPaXkpXDUE3RKyTxscwE0YfcZArfNiVzOoYwiAsYdN/JcY4XjzwO2pTyYowLIu+OS7sdS4WK0BPm58QyQbtEZz7tTkkoRGRUvcallKNyTJpFGAKDuPm59QiZggB9Idi4nBNgPTdYm2vUYJyHilRPKzsOF/DZZ+499lx+ZzIy/ncM4sUWX6zz1iMxHc+F8P6qoEpW6ncqXny2ejAQUpBMxHUw1ZEjo7oBg1tUAK/4aGDoVoeUBz51eh/kEdGvO0ZWJ8Uyuv2aacLokTKcCHsmnF4nHUiNWbGw/pP2gFeD8QAp0ZzGefdE1hW3lenCW0NjPtOBBWC9GZoPEnmpxrWTbmyobiT3WDK6s8Q+qwqDqQk2Umi1H57465k/8+t0e8zXpPtYmgklbLXlqis5+s90hm2BRZ0kBkP7MKu7wHVsknGjOzKwU+gc7NKAka6TWUB771UjxbDyfQhZZ11zu29n/jz4qe923FcXXJsDWI=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB5471.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(7916004)(376002)(39860400002)(396003)(136003)(346002)(366004)(451199021)(54906003)(966005)(6486002)(41300700001)(478600001)(316002)(66556008)(4326008)(6916009)(66476007)(66946007)(8936002)(5660300002)(33716001)(86362001)(66899021)(8676002)(7416002)(44832011)(38100700002)(82960400001)(26005)(6512007)(6506007)(9686003)(83380400001)(186003)(2906002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?bmyZx02on3J3+3JOwCEPrKRLURCoil6C5fOmaxTvKSX5YNRkskXri7SVumQI?=
+ =?us-ascii?Q?1JxK8JEqjL0jQHiV0zgDZys5UiTnmXFfJLu6ZgBsCeNPZ3u8GeYdGNmSD7B5?=
+ =?us-ascii?Q?f2VvxkTDDXuXaVN/Xt3FP3NHn+R/Gh+DWgEStrg8wxCWsBcNbA3+DOE3Xdon?=
+ =?us-ascii?Q?vYE/6t5oskrxcMKsG48Bszij7aon6HbVkyPUaRJzeHNDGMEVKW4AB5RsP3Oi?=
+ =?us-ascii?Q?vPY3aBj1nBIPVPKsZ6EYW0HKRtKEOwAVteP29fs5l3Av3Yj9KnmlkdPNpcLx?=
+ =?us-ascii?Q?Zyrrg9TlT3W8bukZW6idGeZmpP4cMLTtTGEkSJXIaheZKIx7t4ZqJ9AePM1I?=
+ =?us-ascii?Q?HFlerVfDy7WBV9S8HAZGDSRXzf4M9JtzD9uD5EF6NXbQ/gUgve6ZloRjlpHM?=
+ =?us-ascii?Q?NLvfbOLfkaxcvkTSBusr0WvBPAP9HH/AY0dp6+2WSh5jyzgm/N8KVKp8QB6H?=
+ =?us-ascii?Q?lTDYzHLa3kuMVbGuiecKQGdUMBNVMvFAWWDPC8d6xoKEDTZMtPejPjcqD3H4?=
+ =?us-ascii?Q?Jg12UtZm7SXNPcGW6kX5Hb22BJ9bnD6eAZHrkGUBMuBviIYA9wf2kFO2QHcw?=
+ =?us-ascii?Q?kxtVKE/0KkVnCBTc85bvHKt3ITaf+FqvUaAhxFrDNQf1WaRGqZpMWdRhgJLC?=
+ =?us-ascii?Q?P6cPYj+bf1hBkutEojnkegKbjaggQ/fzdawRtE0pqBdV8ucTvRt8omY3C5pq?=
+ =?us-ascii?Q?V9/dfjqSzsXv9E9URdh8JQnweLjbL+sk8vndWZOuFSTaAQD4Vpb9BCmFiUBD?=
+ =?us-ascii?Q?BbQr5psnhA7MdNb5oSLWp/eKijPFCc8U2Ds4gRUo7H0bFx3fA4VDzwAZiB+W?=
+ =?us-ascii?Q?WBr2HJdFaGuU4kBDmyogu7QOQv2OyF2y8TcsRXAw1tCWvmEx1wYR8bR0Sjdj?=
+ =?us-ascii?Q?2SfIVW4UYCLOWOWhC4XgyioBEjMENmS/pEts9V1um4jOgqvRbmNTgY2Olnfu?=
+ =?us-ascii?Q?wlLDxPONX1ZQoEq66TyJpZwK3o6mrTHh+V0JCJeg7v4xR0hb2MLEb8eozkd+?=
+ =?us-ascii?Q?fw4VfLoDYOpGshR/RZriB6LxdTMli7RxLIBSsi0ETMnilXEBWqN9NZvIlIvK?=
+ =?us-ascii?Q?JvqyYYFD7tYINFqQVxCEfernvNtZf/ihy2wLXDtSDrD4OQcgZ4qSALeTNzmM?=
+ =?us-ascii?Q?eMVFsrjC3koaTiLG8P8WPaI2l7TMgqkqMMjhU29CumT2AAGcUCvh9zeidBJq?=
+ =?us-ascii?Q?KFFAgOmi64hj7PTSiHh4Tbe1UKWwZXnVmMbdI54y7Ebjl7yK090xC28UhbV6?=
+ =?us-ascii?Q?DfS4iHsJN3XpuXFDY9rFC4FRebMhv1go4KffnvNr4/6t72bH1QT9FE9sK+Rz?=
+ =?us-ascii?Q?JlFC5VKwjMN+Y92hBmb06RJBT4b6BYqP9AuE4qYJG+bGKWv5QVOgGdkdzVgV?=
+ =?us-ascii?Q?5kqd7V624ymocGWHgmu2A/ajZsKjtDOVNnPUXb7cqqY+TAn/Y39PD84EP51w?=
+ =?us-ascii?Q?NdH38OPLJb0J/VWZ073D9QbKAC92j7j0HoqGVPCPNbdNM+SYjIk8InpSr4OY?=
+ =?us-ascii?Q?+1TMMOk4qhQyPDraZXVRNB3t4xniHNeA7YpfjKxbBkUDfB5Oxg4vm9FKnDQJ?=
+ =?us-ascii?Q?hMSozILED5iFjx13T84kxRewvIkEMkv+kWEnoEO7BMo/3+16BJCStMJlepYD?=
+ =?us-ascii?Q?Gw=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: cc306d37-779c-4edf-9e18-08db5bb47cab
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5471.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 May 2023 17:38:14.9697 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pq+9rRs7LuVMzkHYoQrKz58GGMTek0G5qwHfS7M5y0ME2R7WC5vvOaHiYlVK8QluGRKScrjONQ76N3EX2quT6Fheyckn1ge6NN4nluMf31U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7305
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684843280; x=1716379280;
- h=date:from:to:subject:message-id;
- bh=tLN8hCVdntuZj4Gg9VlCz25EWgQ4ggNPUSIl9seZbhc=;
- b=e6L5Zbo2nS3yQwJDpL5G26MQ0iIdGW0LYTZlxa9rPj0qqfRuC0E891e3
- I22Z8Ul23YOfmoupiasQwPTnqq9nQ44gBGZyV5T1kfh7pq673r2zB/f85
- kpL8HYBYodbWbXQi0k5xvIn1vq7/DLpqtezRKdARUVk5KD4sZN1AlJDEl
- wuvg/fAnLcsg9dHYH93A7oqD2LY49a4CierAB1GMi7C1fhV+Kjl1x+G4p
- Y60+evkR7mPacgfKGSd+cDLx3eYA1SX0aOTU9Y1TlIHeW3zG6Z0lYMpD0
- cQekThaCWcVxuSXcbzAXaDfahDZEiDk9L/6w//17g34lIU5DtXOvwA9yC
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1684863501; x=1716399501;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=hHJw7qfZ4KS26hbGB+/7Xob+Ru/eyqwELYTpD+ruXvA=;
+ b=KezOxqvUVMW0sOrQJ3SKvJNAuBerzK2cf+qwolDQIC6tMjs2CL1svFNE
+ AUaEVJL8YOk8TkyG4b6nAQZSO3k4ugcy99pPNkwxRP23+O0/eweD8M9ud
+ F4xXllg+1qcrqqHWAVh7Lr1IdMIGYrOz6y8rTon8tesneUFCKdFBOoKHI
+ Dzgsbwie7+WalpF4hdWwa9kb0xCnQF4QowVjiEOgCpjy1R+oBBMjzGqiE
+ X5C99/idZ8IHi0oKBTep5SJqVEJqtE+FnMQmY2KNNik1Juijw0G+XYzk4
+ PoBxNmvGWqZbx17Q5errnQE5wfc/gdFrLf1xGYLapQQ4eXaXQiR9QYBf1
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=e6L5Zbo2
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 5992ab45484681248f9168b179ba6b43de1233da
+ header.a=rsa-sha256 header.s=Intel header.b=KezOxqvU
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH RESEND bpf-next 09/15] xdp: Add VLAN
+ tag hint
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,186 +192,225 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Anatoly Burakov <anatoly.burakov@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
+ Song Liu <song@kernel.org>, Tony
+ Nguyen <anthony.l.nguyen@intel.com>, Stanislav Fomichev <sdf@google.com>,
+ Maryam Tahhan <mtahhan@redhat.com>, xdp-hints@xdp-project.net,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org, brouer@redhat.com,
+ Yonghong Song <yhs@fb.com>, KP Singh <kpsingh@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Jiri Olsa <jolsa@kernel.org>,
+ bpf@vger.kernel.org, Martin KaFai Lau <martin.lau@linux.dev>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: INFO setup_repo_specs: /db/releases/20230523172912/lkp-src/repo/*/tnguy-net-queue
-https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 5992ab45484681248f9168b179ba6b43de1233da  iavf: use internal state to free traffic IRQs
+On Tue, May 23, 2023 at 12:16:46PM +0200, Jesper Dangaard Brouer wrote:
+> 
+> 
+> On 22/05/2023 17.48, Larysa Zaremba wrote:
+> > On Mon, May 22, 2023 at 10:37:33AM +0200, Jesper Dangaard Brouer wrote:
+> > > 
+> > > 
+> > > On 15/05/2023 18.09, Larysa Zaremba wrote:
+> > > > On Mon, May 15, 2023 at 05:36:12PM +0200, Jesper Dangaard Brouer wrote:
+> > > > > 
+> > > > > 
+> > > > > On 12/05/2023 17.26, Larysa Zaremba wrote:
+> > > > > > Implement functionality that enables drivers to expose VLAN tag
+> > > > > > to XDP code.
+> > > > > > 
+> > > > > > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> > > > > > ---
+> > > > > [...]
+> > > > > 
+> > > > > > diff --git a/net/core/xdp.c b/net/core/xdp.c
+> > > > > > index 41e5ca8643ec..eff21501609f 100644
+> > > > > > --- a/net/core/xdp.c
+> > > > > > +++ b/net/core/xdp.c
+> > > > > > @@ -738,6 +738,30 @@ __bpf_kfunc int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, u32 *hash,
+> > > > > >     	return -EOPNOTSUPP;
+> > > > > >     }
+> > > > > 
+> > > > > Remember below becomes part of main documentation on HW metadata hints:
+> > > > >    - https://kernel.org/doc/html/latest/networking/xdp-rx-metadata.html
+> > > > > 
+> > > > > Hint compiling locally I use:
+> > > > >    make SPHINXDIRS="networking" htmldocs
+> > > > > 
+> > > > > > +/**
+> > > > > > + * bpf_xdp_metadata_rx_ctag - Read XDP packet inner vlan tag.
+> > > > > 
+> > > > > Is bpf_xdp_metadata_rx_ctag a good function name for the inner vlan tag?
+> > > > > Like wise below "stag".
+> > > > > 
+> > > > > I cannot remember if the C-tag or S-tag is the inner or outer vlan tag.
+> > > > > 
+> > > > > When reading BPF code that use these function names, then I would have
+> > > > > to ask Google for help, or find-and-read this doc.
+> > > > > 
+> > > > > Can we come-up with a more intuitive name, that e.g. helps when reading
+> > > > > the BPF-prog code?
+> > > > 
+> > > > Well, my reasoning for such naming is that if someone can configure s-tag
+> > > > stripping in ethtool with 'rx-vlan-stag-hw-parse', they shouldn't have any
+> > > > problem with understanding those function names.
+> > > > 
+> > > 
+> > > Naming is hard.  My perspective is conveying the meaning without having
+> > > to be knowledgeable about ethtool VLAN commands.  My perspective is a
+> > > casual BPF-programmer that reads "bpf_xdp_metadata_rx_stag()".
+> > > Hopefully we can choose a name that says "vlan" somewhere, such that the
+> > > person reading this doesn't have to lookup and find the documentation to
+> > > deduct this code is related to VLANs.
+> > > 
+> > > > One possible improvement that comes to mind is maybe (similarly ethtool) calling
+> > > > c-tag just 'tag' and letting s-tag stay 'stag'. Because c-tag is this default
+> > > > 802.1q tag, which is supported by various hardware, while s-tag is significantly
+> > > > less widespread.
+> > > > 
+> > > > But there are many options, really.
+> > > > 
+> > > > What are your suggestions?
+> > > > 
+> > > 
+> > > One suggestion is (the symmetrical):
+> > >   * bpf_xdp_metadata_rx_vlan_inner_tag
+> > >   * bpf_xdp_metadata_rx_vlan_outer_tag
+> > > 
+> > > As you say above the first "inner" VLAN tag is just the regular 802.1Q
+> > > VLAN tag.  The concept of C-tag and S-tag is from 802.1ad that
+> > > introduced the concept of double tagging.
+> > > 
+> > > Thus one could argue for shorter names like:
+> > >   * bpf_xdp_metadata_rx_vlan_tag
+> > >   * bpf_xdp_metadata_rx_vlan_outer_tag
+> > > 
+> > 
+> > AFAIK, outer tag is a broader term, it's pretty often used for stacked 802.1Q
+> > headers. I can't find what exactly is an expected behavior for rxvlan and
+> > rx-vlan-stag-hw-parse in ethtool, but iavf documentation states that rxvlan
+> > "enables outer or single 802.1Q VLAN stripping" and rx-vlan-stag-hw-parse
+> > "enables outer or single 802.1ad VLAN stripping". This is in consistent with how
+> > ice hardware behaves. More credible sources would be welcome.
+> > 
+> 
+> It would be good to figure out how other hardware behaves.
+> 
+> The iavf doc sounds like very similar behavior from both functions, just
+> 802.1Q vs 802.1ad.
+> Sounds like both will just pop/strip the outer vlan tag.
+> I have seen Ethertype 802.1Q being used (in practice) for double tagged
+> packets, even-though 802.1ad should have been used to comply with the
+> standard.
+> 
+> > What about:
+> >    * bpf_xdp_metadata_rx_vlan_tag
+> >    * bpf_xdp_metadata_rx_vlan_qinq_tag
+> > 
+> 
+> This sounds good to me.
+> 
+> I do wonder if we really need two functions for this?
+> Would one function be enough?
+> 
+> Given the (iavf) description, the functions basically does the same.
+> Looking at your ice driver implementation, they could be merged into one
+> function, as it is the same location in the descriptor.
+>
 
-elapsed time: 720m
+This design was very debatable in the first place.
+I looked at different in-tree driver implementations of NETIF_F_HW_VLAN_STAG_RX
+feature once more. Among those I could comprehend, seems like none has c-tag and 
+s-tag stored separately. Actually, there are 2 situations:
 
-configs tested: 157
-configs skipped: 8
+1. (ex. mlx4) HW always strips outer or single VLAN tag, without distinction 
+between 802.1Q and 802.1ad. TPID in such case is deduced from descriptor. 
+NETIF_F_HW_VLAN_STAG_RX and NETIF_F_HW_VLAN_CTAG_RX must be enabled together.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+2. (ex. ice) HW strips outer or single VLAN tag with a configured TPID. In such 
+case descriptor doesn't carry info about TPID, because it's the same for all 
+stripped tags. C-tag and s-tag stripping are mutually exclusive.
+Example:
+ - 802.1Q double VLAN, with s-tag stripping enabled, packet arrives 
+   untouched, with c-tag stripping outermost tag gets stripped.
+ - 802.1ad+802.1Q, with s-tag stripping enabled, 802.1ad header gets stripped,
+   with c-tag stripping, packet arrives untouched.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha        buildonly-randconfig-r002-20230522   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r022-20230521   gcc  
-alpha                randconfig-r024-20230521   gcc  
-alpha                randconfig-r025-20230521   gcc  
-alpha                randconfig-r026-20230522   gcc  
-arc                              allyesconfig   gcc  
-arc          buildonly-randconfig-r004-20230521   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r013-20230521   gcc  
-arc                  randconfig-r016-20230522   gcc  
-arc                  randconfig-r023-20230521   gcc  
-arc                  randconfig-r023-20230522   gcc  
-arc                  randconfig-r043-20230521   gcc  
-arc                  randconfig-r043-20230522   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm          buildonly-randconfig-r005-20230521   clang
-arm                                 defconfig   gcc  
-arm                  randconfig-r035-20230521   gcc  
-arm                  randconfig-r036-20230521   gcc  
-arm                  randconfig-r046-20230521   clang
-arm                  randconfig-r046-20230522   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r012-20230522   clang
-arm64                randconfig-r021-20230522   clang
-csky                                defconfig   gcc  
-csky                 randconfig-r011-20230522   gcc  
-csky                 randconfig-r015-20230521   gcc  
-hexagon      buildonly-randconfig-r001-20230521   clang
-hexagon      buildonly-randconfig-r002-20230521   clang
-hexagon              randconfig-r024-20230522   clang
-hexagon              randconfig-r041-20230521   clang
-hexagon              randconfig-r041-20230522   clang
-hexagon              randconfig-r045-20230521   clang
-hexagon              randconfig-r045-20230522   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-a001-20230522   gcc  
-i386                 randconfig-a002-20230522   gcc  
-i386                 randconfig-a003-20230522   gcc  
-i386                 randconfig-a004-20230522   gcc  
-i386                 randconfig-a005-20230522   gcc  
-i386                 randconfig-a006-20230522   gcc  
-i386                 randconfig-a011-20230522   clang
-i386                 randconfig-a012-20230522   clang
-i386                 randconfig-a013-20230522   clang
-i386                 randconfig-a014-20230522   clang
-i386                 randconfig-a015-20230522   clang
-i386                 randconfig-a016-20230522   clang
-ia64                             allmodconfig   gcc  
-ia64                                defconfig   gcc  
-ia64                 randconfig-r015-20230522   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch    buildonly-randconfig-r003-20230521   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r004-20230522   gcc  
-loongarch            randconfig-r033-20230522   gcc  
-m68k                             allmodconfig   gcc  
-m68k         buildonly-randconfig-r003-20230522   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r013-20230522   gcc  
-m68k                 randconfig-r034-20230521   gcc  
-microblaze           randconfig-r006-20230521   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips         buildonly-randconfig-r006-20230521   gcc  
-mips                 randconfig-r004-20230521   gcc  
-nios2                               defconfig   gcc  
-nios2                randconfig-r031-20230522   gcc  
-nios2                randconfig-r032-20230521   gcc  
-openrisc     buildonly-randconfig-r001-20230522   gcc  
-openrisc             randconfig-r002-20230522   gcc  
-parisc                              defconfig   gcc  
-parisc               randconfig-r001-20230522   gcc  
-parisc               randconfig-r014-20230522   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r021-20230521   gcc  
-powerpc              randconfig-r033-20230521   clang
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r042-20230521   gcc  
-riscv                randconfig-r042-20230522   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390         buildonly-randconfig-r004-20230522   clang
-s390                                defconfig   gcc  
-s390                 randconfig-r001-20230521   clang
-s390                 randconfig-r002-20230521   clang
-s390                 randconfig-r026-20230521   gcc  
-s390                 randconfig-r034-20230522   gcc  
-s390                 randconfig-r044-20230521   gcc  
-s390                 randconfig-r044-20230522   clang
-sh                               allmodconfig   gcc  
-sparc        buildonly-randconfig-r005-20230522   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r005-20230522   gcc  
-sparc                randconfig-r014-20230521   gcc  
-sparc                randconfig-r035-20230522   gcc  
-sparc64              randconfig-r003-20230521   gcc  
-sparc64              randconfig-r006-20230522   gcc  
-sparc64              randconfig-r011-20230521   gcc  
-sparc64              randconfig-r016-20230521   gcc  
-sparc64              randconfig-r031-20230521   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230522   gcc  
-x86_64               randconfig-a002-20230522   gcc  
-x86_64               randconfig-a003-20230522   gcc  
-x86_64               randconfig-a004-20230522   gcc  
-x86_64               randconfig-a005-20230522   gcc  
-x86_64               randconfig-a006-20230522   gcc  
-x86_64               randconfig-a011-20230522   clang
-x86_64               randconfig-a012-20230522   clang
-x86_64               randconfig-a013-20230522   clang
-x86_64               randconfig-a014-20230522   clang
-x86_64               randconfig-a015-20230522   clang
-x86_64               randconfig-a016-20230522   clang
-x86_64               randconfig-r022-20230522   clang
-x86_64               randconfig-r025-20230522   clang
-x86_64               randconfig-x051-20230522   clang
-x86_64               randconfig-x052-20230522   clang
-x86_64               randconfig-x053-20230522   clang
-x86_64               randconfig-x054-20230522   clang
-x86_64               randconfig-x055-20230522   clang
-x86_64               randconfig-x056-20230522   clang
-x86_64               randconfig-x061-20230522   clang
-x86_64               randconfig-x062-20230522   clang
-x86_64               randconfig-x063-20230522   clang
-x86_64               randconfig-x064-20230522   clang
-x86_64               randconfig-x065-20230522   clang
-x86_64               randconfig-x066-20230522   clang
-x86_64               randconfig-x071-20230522   gcc  
-x86_64               randconfig-x072-20230522   gcc  
-x86_64               randconfig-x073-20230522   gcc  
-x86_64               randconfig-x074-20230522   gcc  
-x86_64               randconfig-x075-20230522   gcc  
-x86_64               randconfig-x076-20230522   gcc  
-x86_64               randconfig-x081-20230522   gcc  
-x86_64               randconfig-x082-20230522   gcc  
-x86_64               randconfig-x083-20230522   gcc  
-x86_64               randconfig-x084-20230522   gcc  
-x86_64               randconfig-x085-20230522   gcc  
-x86_64               randconfig-x086-20230522   gcc  
-x86_64                               rhel-8.3   gcc  
+Obviously, I can be sure only about our hardware.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Long story short, probably re-inventing the wheel wasn't a good idea on my part. 
+Now I am much more inclined to just copy the logic from skb, so function would 
+look like this:
+
+  bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx, __u16 *vlan_tag,
+			       __u16 *tpid);
+
+Maybe some applications would make use of just:
+
+  bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx, __u16 *vlan_tag);
+
+Both of the above functions would return information about outermost tag, if was 
+stripped. Would have to think about the naming.
+
+Comments are welcome!
+
+> > > 
+> > > > > 
+> > > > > > + * @ctx: XDP context pointer.
+> > > > > > + * @vlan_tag: Return value pointer.
+> > > > > > + *
+> > > > > 
+> > > > > IMHO right here, there should be a description.
+> > > > > 
+> > > > > E.g. for what a VLAN "tag" means.  I assume a "tag" isn't the VLAN id,
+> > > > > but the raw VLAN tag that also contains the prio numbers etc.
+> > > > > 
+> > > > > It this VLAN tag expected to be in network-byte-order ?
+> > > > > IMHO this doc should define what is expected (and driver devel must
+> > > > > follow this).
+> > > > 
+> > > > Will specify that.
+> > > > 
+> > > > > 
+> > > > > > + * Returns 0 on success or ``-errno`` on error.
+> > > > > > + */
+> > > > > > +__bpf_kfunc int bpf_xdp_metadata_rx_ctag(const struct xdp_md *ctx, u16 *vlan_tag)
+> > > > > > +{
+> > > > > > +	return -EOPNOTSUPP;
+> > > > > > +}
+> > > > > > +
+> > > > > > +/**
+> > > > > > + * bpf_xdp_metadata_rx_stag - Read XDP packet outer vlan tag.
+> > > > > > + * @ctx: XDP context pointer.
+> > > > > > + * @vlan_tag: Return value pointer.
+> > > > > > + *
+> > > 
+> > > (p.s. Googling I find multiple definitions of what the "S" in S-tag
+> > > means. The most reliable or statistically consistent seems to be
+> > > "Service tag", or "Service provider tag".)
+> > > 
+> > > The description for the renamed "bpf_xdp_metadata_rx_vlan_outer_tag"
+> > > should IMHO explain that the outer VLAN tag is often refered to as the S-tag
+> > > (or Service-tag) in Q-in-Q (802.1ad) terminology.  Perhaps we can even spell
+> > > out that some hardware support (and must be configured via ethtool) to
+> > > extract this stag.
+> > > 
+> > > A dump of the tool rx-vlan related commands:
+> > > 
+> > >    $ ethtool -k i40e2 | grep rx-vlan
+> > >    rx-vlan-offload: on
+> > >    rx-vlan-filter: on [fixed]
+> > >    rx-vlan-stag-hw-parse: off [fixed]
+> > >    rx-vlan-stag-filter: off [fixed]
+> > > 
+> [...]
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
