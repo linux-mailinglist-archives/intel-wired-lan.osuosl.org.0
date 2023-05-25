@@ -2,89 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E284710CB3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 May 2023 14:59:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D46D710CB4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 May 2023 14:59:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BB51461697;
-	Thu, 25 May 2023 12:59:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BB51461697
+	by smtp3.osuosl.org (Postfix) with ESMTP id 270D36169A;
+	Thu, 25 May 2023 12:59:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 270D36169A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685019557;
-	bh=Qz0Bw6QytU2z9WgpKxAnXPILITFsMIoe9onwdMHfGmg=;
+	s=default; t=1685019562;
+	bh=VKLt0AReoq21o8rdNtIIjkc9TNAah6XvWlSgwJ0CbmQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ASERI5QkfbHMnwM2l/QA6rwlPxL9fxVIm/txQ4qLpfL/EtZMVeGtypkfLyAe8nX4G
-	 a6NHWupY7hZG+Umxj9h4gIZ8otfCIFewMxjVs/JQr3/qK6TGeqMIItrxnXzl/7Ycma
-	 cbgu+/OFkaMniAn6JK5/VhfIBjxIgHvbbCdiKyW9KTeC1Fdjdj8LiaBiLrwb8YLXkr
-	 R5cW7yl2B2tfC4UmPzjdtXi5tqZZVDkAjwLlCZQWbDyDFRk/45N92elb3/4SRNFo81
-	 +A/2In8Xoy/H1ZcHfZK3jK8rhDGGRUwe8VNc7vSTiuq8uvxt4bULwr49HEaMlaI+EH
-	 233pGopfQBeqA==
+	b=wRcPgDQpVQWs1pqlUoFsrbK8E9IV4aEZczL4uT37A4uBWdc/3Uu7iXaDeQ+0J1u1X
+	 doY5K0DjIBWeYdiv2lVs1Nz05LGI7BIjkqL0f8HWiMlhfVBRMIWWd8y49N/DHY2ZvI
+	 EKQYs3kKKhaP9Y7c9jH/ow3Fm24fGePz/jmaeTIGkzxSRW/CCHkrFB8M2KqKp1Pp29
+	 gcRbkl9FNBDdUDZuIdbhbs/1oIvrGko3743J5AEJt278dyILapnaijo5as4gOzzfGn
+	 xn+1VsUbqZscmfCZ4VnOpbIyy3saf7OPFvD2ZhmA+4nElZnOXYGlzoK+Xo3KqPn4Pq
+	 QEKKWrV0YUFHw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7BcPhBRjBlQs; Thu, 25 May 2023 12:59:16 +0000 (UTC)
+	with ESMTP id WESgTm2vBV56; Thu, 25 May 2023 12:59:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7278A60BA8;
-	Thu, 25 May 2023 12:59:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7278A60BA8
+	by smtp3.osuosl.org (Postfix) with ESMTP id AB1CC60BA8;
+	Thu, 25 May 2023 12:59:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AB1CC60BA8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E1FEB1BF215
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0B06B1BF215
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B9CE541F2B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9CE541F2B
+ by smtp4.osuosl.org (Postfix) with ESMTP id C90574246F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C90574246F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jlbrBW3S7GBG for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 May 2023 12:59:01 +0000 (UTC)
+ with ESMTP id tMSxRRxfb8ah for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 May 2023 12:59:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C01DD41B4E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 29525426B1
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C01DD41B4E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:01 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10721"; a="351384422"
-X-IronPort-AV: E=Sophos;i="6.00,191,1681196400"; d="scan'208";a="351384422"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 29525426B1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 May 2023 12:59:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10721"; a="351384434"
+X-IronPort-AV: E=Sophos;i="6.00,191,1681196400"; d="scan'208";a="351384434"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 May 2023 05:59:01 -0700
+ 25 May 2023 05:59:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10721"; a="817075163"
-X-IronPort-AV: E=Sophos;i="6.00,191,1681196400"; d="scan'208";a="817075163"
+X-IronPort-AV: E=McAfee;i="6600,9927,10721"; a="817075173"
+X-IronPort-AV: E=Sophos;i="6.00,191,1681196400"; d="scan'208";a="817075173"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmsmga002.fm.intel.com with ESMTP; 25 May 2023 05:58:57 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 25 May 2023 05:59:01 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Thu, 25 May 2023 14:57:41 +0200
-Message-Id: <20230525125746.553874-8-aleksander.lobakin@intel.com>
+Date: Thu, 25 May 2023 14:57:42 +0200
+Message-Id: <20230525125746.553874-9-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230525125746.553874-1-aleksander.lobakin@intel.com>
 References: <20230525125746.553874-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685019541; x=1716555541;
+ t=1685019545; x=1716555545;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=aN8/dkqLOjIgLkSbA6BlYEq32MiAHhADHMb8dVnvsEI=;
- b=bSOuWXIKWMlxv+/1+KoTe4685Pini0f4PY/vsXSjbdvmFly49BNeDvaa
- 18mwkIA1QH9s8+SM1NlFvrU03NUAc2OFYX9p4cxVc1jo+j7bAhqI3i4Hw
- q/3Fli0yPeE4pF5YX31Vlil+Deam9kNLgqWO26fzTySr1s9rfe+x8xtHT
- OuL2VaeT+xlmibZYx2BqeNcXl75iFfEZJodET+EbFP1BBlOxzczPjdFE+
- Lw4PFk4aohBEPTCRNV7SusZnPbMKFPRGDjmp90CRUfa9B4JNURYsprmiR
- xjUcG1MRjLOVo/7TRcBlErPZ1zitTiA/1t8ZDSXTpq+RDiLeqNHd+DwU4
- w==;
+ bh=mEj5fLVJVo9/4L7Z/kE/pHEwiAz1HdRlcuBfDmRGsuA=;
+ b=XT4KTddmmhwrSR3G8pUQyG6vwCgZXpy8Uf+J0KTsrHWtUr4DpeMwoA03
+ 7BBarbvdro5gGeZqBLvTgNOB+B9/4VWJq5ND8OuxlFQfmqHjje2tb+k/w
+ SPFWUZwosHXeDk/+5jb0lg0czco5ROu5NOorIUtSrTPM1wUXqy+GEBvux
+ OWAmDcEcU5vgn7aoMpg+900ATQo6nOU35DDBtObRZbg57ft3JtnBw0dGJ
+ WXFu1zxy2vtVxL5onCQ1zYsz/cG9SaMHC0O6nMe412vN6ZKgCnvINNI3E
+ 5nCE1O1ReUvPHCWkd3rGold+l5d2xv/CB9bh5XNZyvjhwhgPzbxQN4qhq
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bSOuWXIK
-Subject: [Intel-wired-lan] [PATCH net-next v2 07/12] net: page_pool: avoid
- calling no-op externals when possible
+ header.a=rsa-sha256 header.s=Intel header.b=XT4KTddm
+Subject: [Intel-wired-lan] [PATCH net-next v2 08/12] net: page_pool: add
+ DMA-sync-for-CPU inline helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,86 +108,121 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Turned out page_pool_put{,_full}_page() can burn quite a bunch of cycles
-even when on DMA-coherent platforms (like x86) with no active IOMMU or
-swiotlb, just for the call ladder.
-Indeed, it's
-
-page_pool_put_page()
-  page_pool_put_defragged_page()                  <- external
-    __page_pool_put_page()
-      page_pool_dma_sync_for_device()             <- non-inline
-        dma_sync_single_range_for_device()
-          dma_sync_single_for_device()            <- external
-            dma_direct_sync_single_for_device()
-              dev_is_dma_coherent()               <- exit
-
-For the inline functions, no guarantees the compiler won't uninline them
-(they're clearly not one-liners and sometimes compilers uninline even
-2 + 2). The first external call is necessary, but the rest 2+ are done
-for nothing each time, plus a bunch of checks here and there.
-Since Page Pool mappings are long-term and for one "device + addr" pair
-dma_need_sync() will always return the same value (basically, whether it
-belongs to an swiotlb pool), addresses can be tested once right after
-they're obtained and the result can be reused until the page is unmapped.
-Define new PP flag, which will mean "do DMA syncs for device, but only
-when needed" and turn it on by default when the driver asks to sync
-pages. When a page is mapped, check whether it needs syncs and if so,
-replace that "sync when needed" back to "always do syncs" globally for
-the whole pool (better safe than sorry). As long as a pool has no pages
-requiring DMA syncs, this cuts off a good piece of calls and checks.
-On my x86_64, this gives from 2% to 5% performance benefit with no
-negative impact for cases when IOMMU is on and the shortcut can't be
-used.
+Each driver is responsible for syncing buffers written by HW for CPU
+before accessing them. Almost each PP-enabled driver uses the same
+pattern, which could be shorthanded into a static inline to make driver
+code a little bit more compact.
+Introduce a couple such functions. The first one takes the actual size
+of the data written by HW and is the main one to be used on Rx. The
+second does the same, but only if the PP performs DMA synchronizations
+at all. The last one picks max_len from the PP params and is designed
+for more extreme cases when the size is unknown, but the buffer still
+needs to be synced.
+Also constify pointer arguments of page_pool_get_dma_dir() and
+page_pool_get_dma_addr() to give a bit more room for optimization,
+as both of them are read-only.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- include/net/page_pool.h |  3 +++
- net/core/page_pool.c    | 10 ++++++++++
- 2 files changed, 13 insertions(+)
+ include/net/page_pool.h | 64 ++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 60 insertions(+), 4 deletions(-)
 
 diff --git a/include/net/page_pool.h b/include/net/page_pool.h
-index 821c75bba125..08e9571d2545 100644
+index 08e9571d2545..080778e8cf84 100644
 --- a/include/net/page_pool.h
 +++ b/include/net/page_pool.h
-@@ -46,6 +46,9 @@
- 					* device driver responsibility
- 					*/
- #define PP_FLAG_PAGE_FRAG	BIT(2) /* for page frag feature */
-+#define PP_FLAG_DMA_MAYBE_SYNC	BIT(3) /* Internal, should not be used in
-+					* drivers
-+					*/
- #define PP_FLAG_ALL		(PP_FLAG_DMA_MAP |\
- 				 PP_FLAG_DMA_SYNC_DEV |\
- 				 PP_FLAG_PAGE_FRAG)
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index e212e9d7edcb..57f323dee6c4 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -175,6 +175,10 @@ static int page_pool_init(struct page_pool *pool,
- 		/* pool->p.offset has to be set according to the address
- 		 * offset used by the DMA engine to start copying rx data
- 		 */
+@@ -32,7 +32,7 @@
+ 
+ #include <linux/mm.h> /* Needed by ptr_ring */
+ #include <linux/ptr_ring.h>
+-#include <linux/dma-direction.h>
++#include <linux/dma-mapping.h>
+ 
+ #define PP_FLAG_DMA_MAP		BIT(0) /* Should page_pool do the DMA
+ 					* map/unmap
+@@ -237,8 +237,8 @@ static inline struct page *page_pool_dev_alloc_frag(struct page_pool *pool,
+ /* get the stored dma direction. A driver might decide to treat this locally and
+  * avoid the extra cache line from page_pool to determine the direction
+  */
+-static
+-inline enum dma_data_direction page_pool_get_dma_dir(struct page_pool *pool)
++static inline enum dma_data_direction
++page_pool_get_dma_dir(const struct page_pool *pool)
+ {
+ 	return pool->p.dma_dir;
+ }
+@@ -361,7 +361,7 @@ static inline void page_pool_recycle_direct(struct page_pool *pool,
+ #define PAGE_POOL_DMA_USE_PP_FRAG_COUNT	\
+ 		(sizeof(dma_addr_t) > sizeof(unsigned long))
+ 
+-static inline dma_addr_t page_pool_get_dma_addr(struct page *page)
++static inline dma_addr_t page_pool_get_dma_addr(const struct page *page)
+ {
+ 	dma_addr_t ret = page->dma_addr;
+ 
+@@ -378,6 +378,62 @@ static inline void page_pool_set_dma_addr(struct page *page, dma_addr_t addr)
+ 		page->dma_addr_upper = upper_32_bits(addr);
+ }
+ 
++/**
++ * __page_pool_dma_sync_for_cpu - sync Rx page for CPU after it's written by HW
++ * @pool: page_pool which this page belongs to
++ * @page: page to sync
++ * @dma_sync_size: size of the data written to the page
++ *
++ * Can be used as a shorthand to sync Rx pages before accessing them in the
++ * driver. Caller must ensure the pool was created with %PP_FLAG_DMA_MAP.
++ * Note that this version performs DMA sync unconditionally, even if the
++ * associated PP doesn't perform sync-for-device. Consider the non-underscored
++ * version first if unsure.
++ */
++static inline void __page_pool_dma_sync_for_cpu(const struct page_pool *pool,
++						const struct page *page,
++						u32 dma_sync_size)
++{
++	dma_sync_single_range_for_cpu(pool->p.dev,
++				      page_pool_get_dma_addr(page),
++				      pool->p.offset, dma_sync_size,
++				      page_pool_get_dma_dir(pool));
++}
 +
-+		/* Try to avoid calling no-op syncs */
-+		pool->p.flags |= PP_FLAG_DMA_MAYBE_SYNC;
-+		pool->p.flags &= ~PP_FLAG_DMA_SYNC_DEV;
- 	}
- 
- 	if (PAGE_POOL_DMA_USE_PP_FRAG_COUNT &&
-@@ -323,6 +327,12 @@ static bool page_pool_dma_map(struct page_pool *pool, struct page *page)
- 
- 	page_pool_set_dma_addr(page, dma);
- 
-+	if ((pool->p.flags & PP_FLAG_DMA_MAYBE_SYNC) &&
-+	    dma_need_sync(pool->p.dev, dma)) {
-+		pool->p.flags |= PP_FLAG_DMA_SYNC_DEV;
-+		pool->p.flags &= ~PP_FLAG_DMA_MAYBE_SYNC;
-+	}
++/**
++ * page_pool_dma_sync_for_cpu - sync Rx page for CPU if needed
++ * @pool: page_pool which this page belongs to
++ * @page: page to sync
++ * @dma_sync_size: size of the data written to the page
++ *
++ * Performs DMA sync for CPU, but *only* when:
++ * 1) page_pool was created with %PP_FLAG_DMA_SYNC_DEV to manage DMA syncs;
++ * 2) AND sync shortcut is not available (IOMMU, swiotlb, non-coherent DMA, ...)
++ */
++static inline void page_pool_dma_sync_for_cpu(const struct page_pool *pool,
++					      const struct page *page,
++					      u32 dma_sync_size)
++{
++	if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
++		__page_pool_dma_sync_for_cpu(pool, page, dma_sync_size);
++}
 +
- 	if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
- 		page_pool_dma_sync_for_device(pool, page, pool->p.max_len);
- 
++/**
++ * page_pool_dma_sync_full_for_cpu - sync full Rx page for CPU (if needed)
++ * @pool: page_pool which this page belongs to
++ * @page: page to sync
++ *
++ * Performs sync for the entire length exposed to hardware. Can be used on
++ * DMA errors or before freeing the page, when it's unknown whether the HW
++ * touched the buffer.
++ */
++static inline void
++page_pool_dma_sync_full_for_cpu(const struct page_pool *pool,
++				const struct page *page)
++{
++	page_pool_dma_sync_for_cpu(pool, page, pool->p.max_len);
++}
++
+ static inline bool is_page_pool_compiled_in(void)
+ {
+ #ifdef CONFIG_PAGE_POOL
 -- 
 2.40.1
 
