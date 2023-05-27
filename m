@@ -1,93 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D85B7131F6
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 27 May 2023 04:33:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A649F71323E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 27 May 2023 05:54:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 223136F637;
-	Sat, 27 May 2023 02:33:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 223136F637
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1875F611C7;
+	Sat, 27 May 2023 03:54:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1875F611C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685154782;
-	bh=kxNeZcJ9QRR6w3wRMrcmHalV4zxfiQanBqbbrDBvoZM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685159662;
+	bh=hJmHLvjjk8y9LdGFmCySl5FgUsVL6Wi4cJmYkACSs2s=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=UA9cVwFoaQt0WXlcivsQJnROnQ0XrjKxI7ZJ81uJoZqgAAogISM8mRr69kA+DGIBc
-	 g/eL8YB7/rUSqo8EGRPIkSOGmPRHroNeqN61AEhESe7Lo70ygypWzVdrkIVovTYCSQ
-	 22nquiXMVnEG8RcKandQuAa+8RXf1nwrxgsjKnBenLvjkXwBrMhnxqUXVDN7Q3IGtT
-	 7fRsBFC/zzAFLlFTUbJK9M87VtaIBOfm2UyMxtaz4zP243m8P6Veb34vDKGCVvOiXf
-	 8nXtHhQzIy5f19Dp8LaQ+o6jG3c3By6NZTf9cCyj4v9efjcVqGN9sbr1zXKt+Tfr1O
-	 y/1p9UWriACxA==
+	b=gkCXDTGZnV12OvnYtVrtc9jZo/LHhvH2axTgrFkGWBrhOB7cKTLLtBEk/2MKHugwC
+	 LKBqn1YjKHiPvA3QfHGw34L6MgDHUX/9UlFSJdqXpLDDyr8XPySYhmS4Ip+AFip2Jv
+	 WM8OhfAl6Qh42wbNFDkuVBskARRk2AXSCwV3rXBUbvcn35QmYMrAFMrXTsm+npUnnA
+	 ZND5UfTtSR9cgLdybOTrs5wNNiPCey4q3596x9rdgUvX3P+uHAV90yrIOjtOCLInUW
+	 X3s2FhOsgp5S64lebRTjAINStR4MWxyB1Eq1rD04XuNs0PX+KqszVDIJdoETBdNqkY
+	 n8o2UnnICRqGQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iz0oiohYyG7H; Sat, 27 May 2023 02:33:00 +0000 (UTC)
+	with ESMTP id P2b3PkWDKbro; Sat, 27 May 2023 03:54:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C7EDA6F635;
-	Sat, 27 May 2023 02:32:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C7EDA6F635
+	by smtp3.osuosl.org (Postfix) with ESMTP id EF05460FE0;
+	Sat, 27 May 2023 03:54:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF05460FE0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CFEC01BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 02:32:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1949D1BF373
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 03:54:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9E4B584B5F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 02:32:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9E4B584B5F
+ by smtp4.osuosl.org (Postfix) with ESMTP id E44BC429CB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 03:54:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E44BC429CB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id izRD5L88I4Ws for <intel-wired-lan@lists.osuosl.org>;
- Sat, 27 May 2023 02:32:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id juhLcxUgUeOw for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 27 May 2023 03:54:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D009584B5C
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D009584B5C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 02:32:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10722"; a="343848547"
-X-IronPort-AV: E=Sophos;i="6.00,195,1681196400"; d="scan'208";a="343848547"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2023 19:32:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10722"; a="952082243"
-X-IronPort-AV: E=Sophos;i="6.00,195,1681196400"; d="scan'208";a="952082243"
-Received: from lkp-server01.sh.intel.com (HELO dea6d5a4f140) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 26 May 2023 19:32:50 -0700
-Received: from kbuild by dea6d5a4f140 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q2jjd-000JjG-1n;
- Sat, 27 May 2023 02:32:49 +0000
-Date: Sat, 27 May 2023 10:32:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jacob Keller <jacob.e.keller@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Anthony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <202305271021.Qlv0TxZu-lkp@intel.com>
-References: <20230526222158.2685796-4-jacob.e.keller@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABAEE429CA
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id ABAEE429CA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 May 2023 03:54:13 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4D0AE6120F;
+ Sat, 27 May 2023 03:54:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1899AC433EF;
+ Sat, 27 May 2023 03:54:11 +0000 (UTC)
+Date: Fri, 26 May 2023 20:54:10 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Message-ID: <20230526205410.3f849071@kernel.org>
+In-Reply-To: <20230525125746.553874-7-aleksander.lobakin@intel.com>
+References: <20230525125746.553874-1-aleksander.lobakin@intel.com>
+ <20230525125746.553874-7-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230526222158.2685796-4-jacob.e.keller@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685154772; x=1716690772;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Xwda83xVI2j1soQlLtzNvGE1nuHA9u96jSO9gejYmvY=;
- b=nrFaZK8yQ8G7QMt2mFwwga6YBBjwNVTL+j0EfKLq220NJWuPHskXojeU
- YEuysGSQaus28b3uvnR0zkBhIFvEi4O+i+tCJEHHaTqvOVluOdXZGg653
- 6UrkKH0hqU6jwUVbgs4gf/MVcdr3LwaQp97CfxLJVCj/aldXhD2BhRfMZ
- nFt4iUJuoMCszdQ/BdMI2lMANfGP/62yTVdy+GXqy7oi9PkpZHyp011e/
- 7oS2fPfImoNizjZ6Ij1GJxxd5jfjfgfUwCVOO7dk+/6PDyoWeUzljAFyk
- k8N997ghNzzpIT6RTsaQ4RHvXo3CGIDebe6XFogUxictwKseJp/dvodQB
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nrFaZK8y
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 3/5] ice: introduce
- ICE_TX_TSTAMP_WORK enumeration
+ d=kernel.org; s=k20201202; t=1685159651;
+ bh=4VBv7cj0/3RmXKILqJxI8XT4lU0273xO3MquSuWGEwk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=CyhrMX609RlDwkP1Ry9yaWcXvsO6Z/j8CnJT02pDXPXqBuEwqrAzgwokVRLvlGzLE
+ MhWQt633AyUyd37gALmn3Wy9bUXEqt7Me7dHABGZqxveHlritOulBu58dHzNmbA85j
+ 09F5hm/8hG4J/jqTRpchwln0XD1QT8/DlDFPaVjAL6mzKThf/rOdvGBwY73AsbZZCb
+ 0jbeBhIeRJwzSQWYTj2mIHUpRgosRlqStxfhmyGAmqHQ+jbBtZYrzGcsaaPK4+rJ3n
+ ibxPUB/gVAjV+dTTHk0H2Lx3HO1A9376maxeUN8FBnBRLVXUNPnXjFwu2H9czjeWU3
+ tYvV+k1pGhWfQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=CyhrMX60
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 06/12] net: skbuff: don't
+ include <net/page_pool.h> into <linux/skbuff.h>
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,212 +89,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: oe-kbuild-all@lists.linux.dev
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, Eric Dumazet <edumazet@google.com>,
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jacob,
+On Thu, 25 May 2023 14:57:40 +0200 Alexander Lobakin wrote:
+> Currently, touching <net/page_pool.h> triggers a rebuild of more than
+> a half of the kernel. That's because it's included in <linux/skbuff.h>.
+> 
+> In 6a5bcd84e886 ("page_pool: Allow drivers to hint on SKB recycling"),
+> Matteo included it to be able to call a couple functions defined there.
+> Then, in 57f05bc2ab24 ("page_pool: keep pp info as long as page pool
+> owns the page") one of the calls was removed, so only one left.
+> It's call to page_pool_return_skb_page() in napi_frag_unref(). The
+> function is external and doesn't have any dependencies. Having include
+> of very niche page_pool.h only for that looks like an overkill.
+> Instead, move the declaration of that function to skbuff.h itself, with
+> a small comment that it's a special guest and should not be touched.
+> Now, after a few include fixes in the drivers, touching page_pool.h
+> only triggers rebuilding of the drivers using it and a couple core
+> networking files.
 
-kernel test robot noticed the following build warnings:
+drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
 
-[auto build test WARNING on 1e806efa4f2837a829044df27e1196a4fd520ba3]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Jacob-Keller/ice-handle-extts-in-the-miscellaneous-interrupt-thread/20230527-062501
-base:   1e806efa4f2837a829044df27e1196a4fd520ba3
-patch link:    https://lore.kernel.org/r/20230526222158.2685796-4-jacob.e.keller%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next 3/5] ice: introduce ICE_TX_TSTAMP_WORK enumeration
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20230527/202305271021.Qlv0TxZu-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
-reproduce (this is a W=1 build):
-        # https://github.com/intel-lab-lkp/linux/commit/23cbd0608f6febe437dc272b1d38fe6fb96e7b7a
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Jacob-Keller/ice-handle-extts-in-the-miscellaneous-interrupt-thread/20230527-062501
-        git checkout 23cbd0608f6febe437dc272b1d38fe6fb96e7b7a
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=x86_64 olddefconfig
-        make W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/net/ethernet/intel/ice/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202305271021.Qlv0TxZu-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/ice_ptp.c: In function 'ice_ptp_process_tx_tstamp':
->> drivers/net/ethernet/intel/ice/ice_ptp.c:670:14: warning: unused variable 'more_timestamps' [-Wunused-variable]
-     670 |         bool more_timestamps;
-         |              ^~~~~~~~~~~~~~~
-
-
-vim +/more_timestamps +670 drivers/net/ethernet/intel/ice/ice_ptp.c
-
-3ad5c10bf21d1d Jacob Keller       2022-12-05  618  
-06c16d89d2cbe2 Jacob Keller       2021-06-09  619  /**
-23cbd0608f6feb Jacob Keller       2023-05-26  620   * ice_ptp_process_tx_tstamp - Process Tx timestamps for a port
-1229b33973c7b8 Karol Kolacinski   2022-09-16  621   * @tx: the PTP Tx timestamp tracker
-06c16d89d2cbe2 Jacob Keller       2021-06-09  622   *
-4b1251bdd18886 Jacob Keller       2022-07-27  623   * Process timestamps captured by the PHY associated with this port. To do
-4b1251bdd18886 Jacob Keller       2022-07-27  624   * this, loop over each index with a waiting skb.
-4b1251bdd18886 Jacob Keller       2022-07-27  625   *
-4b1251bdd18886 Jacob Keller       2022-07-27  626   * If a given index has a valid timestamp, perform the following steps:
-4b1251bdd18886 Jacob Keller       2022-07-27  627   *
-d40fd60093325c Jacob Keller       2022-12-05  628   * 1) check that the timestamp request is not stale
-d40fd60093325c Jacob Keller       2022-12-05  629   * 2) check that a timestamp is ready and available in the PHY memory bank
-d40fd60093325c Jacob Keller       2022-12-05  630   * 3) read and copy the timestamp out of the PHY register
-d40fd60093325c Jacob Keller       2022-12-05  631   * 4) unlock the index by clearing the associated in_use bit
-d40fd60093325c Jacob Keller       2022-12-05  632   * 5) check if the timestamp is stale, and discard if so
-d40fd60093325c Jacob Keller       2022-12-05  633   * 6) extend the 40 bit timestamp value to get a 64 bit timestamp value
-d40fd60093325c Jacob Keller       2022-12-05  634   * 7) send this 64 bit timestamp to the stack
-4b1251bdd18886 Jacob Keller       2022-07-27  635   *
-d40fd60093325c Jacob Keller       2022-12-05  636   * Note that we do not hold the tracking lock while reading the Tx timestamp.
-d40fd60093325c Jacob Keller       2022-12-05  637   * This is because reading the timestamp requires taking a mutex that might
-d40fd60093325c Jacob Keller       2022-12-05  638   * sleep.
-0dd92862639238 Jacob Keller       2022-12-05  639   *
-d40fd60093325c Jacob Keller       2022-12-05  640   * The only place where we set in_use is when a new timestamp is initiated
-d40fd60093325c Jacob Keller       2022-12-05  641   * with a slot index. This is only called in the hard xmit routine where an
-d40fd60093325c Jacob Keller       2022-12-05  642   * SKB has a request flag set. The only places where we clear this bit is this
-d40fd60093325c Jacob Keller       2022-12-05  643   * function, or during teardown when the Tx timestamp tracker is being
-d40fd60093325c Jacob Keller       2022-12-05  644   * removed. A timestamp index will never be re-used until the in_use bit for
-d40fd60093325c Jacob Keller       2022-12-05  645   * that index is cleared.
-0dd92862639238 Jacob Keller       2022-12-05  646   *
-0dd92862639238 Jacob Keller       2022-12-05  647   * If a Tx thread starts a new timestamp, we might not begin processing it
-0dd92862639238 Jacob Keller       2022-12-05  648   * right away but we will notice it at the end when we re-queue the task.
-0dd92862639238 Jacob Keller       2022-12-05  649   *
-0dd92862639238 Jacob Keller       2022-12-05  650   * If a Tx thread starts a new timestamp just after this function exits, the
-0dd92862639238 Jacob Keller       2022-12-05  651   * interrupt for that timestamp should re-trigger this function once
-0dd92862639238 Jacob Keller       2022-12-05  652   * a timestamp is ready.
-0dd92862639238 Jacob Keller       2022-12-05  653   *
-d40fd60093325c Jacob Keller       2022-12-05  654   * In cases where the PTP hardware clock was directly adjusted, some
-d40fd60093325c Jacob Keller       2022-12-05  655   * timestamps may not be able to safely use the timestamp extension math. In
-d40fd60093325c Jacob Keller       2022-12-05  656   * this case, software will set the stale bit for any outstanding Tx
-d40fd60093325c Jacob Keller       2022-12-05  657   * timestamps when the clock is adjusted. Then this function will discard
-d40fd60093325c Jacob Keller       2022-12-05  658   * those captured timestamps instead of sending them to the stack.
-0dd92862639238 Jacob Keller       2022-12-05  659   *
-0dd92862639238 Jacob Keller       2022-12-05  660   * If a Tx packet has been waiting for more than 2 seconds, it is not possible
-0dd92862639238 Jacob Keller       2022-12-05  661   * to correctly extend the timestamp using the cached PHC time. It is
-0dd92862639238 Jacob Keller       2022-12-05  662   * extremely unlikely that a packet will ever take this long to timestamp. If
-0dd92862639238 Jacob Keller       2022-12-05  663   * we detect a Tx timestamp request that has waited for this long we assume
-0dd92862639238 Jacob Keller       2022-12-05  664   * the packet will never be sent by hardware and discard it without reading
-0dd92862639238 Jacob Keller       2022-12-05  665   * the timestamp register.
-06c16d89d2cbe2 Jacob Keller       2021-06-09  666   */
-23cbd0608f6feb Jacob Keller       2023-05-26  667  static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
-06c16d89d2cbe2 Jacob Keller       2021-06-09  668  {
-4b1251bdd18886 Jacob Keller       2022-07-27  669  	struct ice_ptp_port *ptp_port;
-f0ae124019faaa Jacob Keller       2022-12-05 @670  	bool more_timestamps;
-4b1251bdd18886 Jacob Keller       2022-07-27  671  	struct ice_pf *pf;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  672  	struct ice_hw *hw;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  673  	u64 tstamp_ready;
-fcc2cef37fed56 Daniel Vacek       2023-01-19  674  	bool link_up;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  675  	int err;
-4b1251bdd18886 Jacob Keller       2022-07-27  676  	u8 idx;
-06c16d89d2cbe2 Jacob Keller       2021-06-09  677  
-4b1251bdd18886 Jacob Keller       2022-07-27  678  	if (!tx->init)
-23cbd0608f6feb Jacob Keller       2023-05-26  679  		return;
-06c16d89d2cbe2 Jacob Keller       2021-06-09  680  
-4b1251bdd18886 Jacob Keller       2022-07-27  681  	ptp_port = container_of(tx, struct ice_ptp_port, tx);
-4b1251bdd18886 Jacob Keller       2022-07-27  682  	pf = ptp_port_to_pf(ptp_port);
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  683  	hw = &pf->hw;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  684  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  685  	/* Read the Tx ready status first */
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  686  	err = ice_get_phy_tx_tstamp_ready(hw, tx->block, &tstamp_ready);
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  687  	if (err)
-23cbd0608f6feb Jacob Keller       2023-05-26  688  		return;
-4b1251bdd18886 Jacob Keller       2022-07-27  689  
-fcc2cef37fed56 Daniel Vacek       2023-01-19  690  	/* Drop packets if the link went down */
-fcc2cef37fed56 Daniel Vacek       2023-01-19  691  	link_up = ptp_port->link_up;
-fcc2cef37fed56 Daniel Vacek       2023-01-19  692  
-4b1251bdd18886 Jacob Keller       2022-07-27  693  	for_each_set_bit(idx, tx->in_use, tx->len) {
-4b1251bdd18886 Jacob Keller       2022-07-27  694  		struct skb_shared_hwtstamps shhwtstamps = {};
-6b5cbc8c4ec71e Sergey Temerkhanov 2022-12-05  695  		u8 phy_idx = idx + tx->offset;
-0dd92862639238 Jacob Keller       2022-12-05  696  		u64 raw_tstamp = 0, tstamp;
-fcc2cef37fed56 Daniel Vacek       2023-01-19  697  		bool drop_ts = !link_up;
-4b1251bdd18886 Jacob Keller       2022-07-27  698  		struct sk_buff *skb;
-4b1251bdd18886 Jacob Keller       2022-07-27  699  
-0dd92862639238 Jacob Keller       2022-12-05  700  		/* Drop packets which have waited for more than 2 seconds */
-0dd92862639238 Jacob Keller       2022-12-05  701  		if (time_is_before_jiffies(tx->tstamps[idx].start + 2 * HZ)) {
-0dd92862639238 Jacob Keller       2022-12-05  702  			drop_ts = true;
-0dd92862639238 Jacob Keller       2022-12-05  703  
-0dd92862639238 Jacob Keller       2022-12-05  704  			/* Count the number of Tx timestamps that timed out */
-0dd92862639238 Jacob Keller       2022-12-05  705  			pf->ptp.tx_hwtstamp_timeouts++;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  706  		}
-0dd92862639238 Jacob Keller       2022-12-05  707  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  708  		/* Only read a timestamp from the PHY if its marked as ready
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  709  		 * by the tstamp_ready register. This avoids unnecessary
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  710  		 * reading of timestamps which are not yet valid. This is
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  711  		 * important as we must read all timestamps which are valid
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  712  		 * and only timestamps which are valid during each interrupt.
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  713  		 * If we do not, the hardware logic for generating a new
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  714  		 * interrupt can get stuck on some devices.
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  715  		 */
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  716  		if (!(tstamp_ready & BIT_ULL(phy_idx))) {
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  717  			if (drop_ts)
-0dd92862639238 Jacob Keller       2022-12-05  718  				goto skip_ts_read;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  719  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  720  			continue;
-0dd92862639238 Jacob Keller       2022-12-05  721  		}
-0dd92862639238 Jacob Keller       2022-12-05  722  
-4b1251bdd18886 Jacob Keller       2022-07-27  723  		ice_trace(tx_tstamp_fw_req, tx->tstamps[idx].skb, idx);
-4b1251bdd18886 Jacob Keller       2022-07-27  724  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  725  		err = ice_read_phy_tstamp(hw, tx->block, phy_idx, &raw_tstamp);
-fcc2cef37fed56 Daniel Vacek       2023-01-19  726  		if (err && !drop_ts)
-4b1251bdd18886 Jacob Keller       2022-07-27  727  			continue;
-4b1251bdd18886 Jacob Keller       2022-07-27  728  
-4b1251bdd18886 Jacob Keller       2022-07-27  729  		ice_trace(tx_tstamp_fw_done, tx->tstamps[idx].skb, idx);
-4b1251bdd18886 Jacob Keller       2022-07-27  730  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  731  		/* For PHYs which don't implement a proper timestamp ready
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  732  		 * bitmap, verify that the timestamp value is different
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  733  		 * from the last cached timestamp. If it is not, skip this for
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  734  		 * now assuming it hasn't yet been captured by hardware.
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  735  		 */
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  736  		if (!drop_ts && tx->verify_cached &&
-4b1251bdd18886 Jacob Keller       2022-07-27  737  		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
-4b1251bdd18886 Jacob Keller       2022-07-27  738  			continue;
-4b1251bdd18886 Jacob Keller       2022-07-27  739  
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  740  		/* Discard any timestamp value without the valid bit set */
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  741  		if (!(raw_tstamp & ICE_PTP_TS_VALID))
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  742  			drop_ts = true;
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  743  
-0dd92862639238 Jacob Keller       2022-12-05  744  skip_ts_read:
-4b1251bdd18886 Jacob Keller       2022-07-27  745  		spin_lock(&tx->lock);
-10e4b4a3a3e1b7 Jacob Keller       2022-12-05  746  		if (tx->verify_cached && raw_tstamp)
-4b1251bdd18886 Jacob Keller       2022-07-27  747  			tx->tstamps[idx].cached_tstamp = raw_tstamp;
-4b1251bdd18886 Jacob Keller       2022-07-27  748  		clear_bit(idx, tx->in_use);
-4b1251bdd18886 Jacob Keller       2022-07-27  749  		skb = tx->tstamps[idx].skb;
-4b1251bdd18886 Jacob Keller       2022-07-27  750  		tx->tstamps[idx].skb = NULL;
-d40fd60093325c Jacob Keller       2022-12-05  751  		if (test_and_clear_bit(idx, tx->stale))
-d40fd60093325c Jacob Keller       2022-12-05  752  			drop_ts = true;
-4b1251bdd18886 Jacob Keller       2022-07-27  753  		spin_unlock(&tx->lock);
-06c16d89d2cbe2 Jacob Keller       2021-06-09  754  
-0dd92862639238 Jacob Keller       2022-12-05  755  		/* It is unlikely but possible that the SKB will have been
-0dd92862639238 Jacob Keller       2022-12-05  756  		 * flushed at this point due to link change or teardown.
-4b1251bdd18886 Jacob Keller       2022-07-27  757  		 */
-4b1251bdd18886 Jacob Keller       2022-07-27  758  		if (!skb)
-4b1251bdd18886 Jacob Keller       2022-07-27  759  			continue;
-4b1251bdd18886 Jacob Keller       2022-07-27  760  
-0dd92862639238 Jacob Keller       2022-12-05  761  		if (drop_ts) {
-0dd92862639238 Jacob Keller       2022-12-05  762  			dev_kfree_skb_any(skb);
-0dd92862639238 Jacob Keller       2022-12-05  763  			continue;
-0dd92862639238 Jacob Keller       2022-12-05  764  		}
-0dd92862639238 Jacob Keller       2022-12-05  765  
-4b1251bdd18886 Jacob Keller       2022-07-27  766  		/* Extend the timestamp using cached PHC time */
-4b1251bdd18886 Jacob Keller       2022-07-27  767  		tstamp = ice_ptp_extend_40b_ts(pf, raw_tstamp);
-4b1251bdd18886 Jacob Keller       2022-07-27  768  		if (tstamp) {
-4b1251bdd18886 Jacob Keller       2022-07-27  769  			shhwtstamps.hwtstamp = ns_to_ktime(tstamp);
-4b1251bdd18886 Jacob Keller       2022-07-27  770  			ice_trace(tx_tstamp_complete, skb, idx);
-06c16d89d2cbe2 Jacob Keller       2021-06-09  771  		}
-06c16d89d2cbe2 Jacob Keller       2021-06-09  772  
-4b1251bdd18886 Jacob Keller       2022-07-27  773  		skb_tstamp_tx(skb, &shhwtstamps);
-4b1251bdd18886 Jacob Keller       2022-07-27  774  		dev_kfree_skb_any(skb);
-4b1251bdd18886 Jacob Keller       2022-07-27  775  	}
-23cbd0608f6feb Jacob Keller       2023-05-26  776  }
-06c16d89d2cbe2 Jacob Keller       2021-06-09  777  
-
+came in the meantime, and did not bother including page_pool.h.
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+pw-bot: cr
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
