@@ -2,173 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF47D716856
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 May 2023 17:59:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B2BC71690D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 May 2023 18:18:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26EC582236;
-	Tue, 30 May 2023 15:59:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26EC582236
+	by smtp1.osuosl.org (Postfix) with ESMTP id 08CDF81E13;
+	Tue, 30 May 2023 16:18:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 08CDF81E13
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685462357;
-	bh=uNCPNLa5YM01stSFYGYx1VISj+XMKuDpSC1jqtUJs8o=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685463532;
+	bh=2GJCAphRlbhnPXnYLet89/taW0E1Y9aKtEvQKILY4RU=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=NHows1TR6ELxhDS96DIKW9uA6YGs7OWnAc2JAVHT77QdZS0BadqohbqZjkYEzR6kD
-	 4js6uFU8VFdL7MU3EVLGD5GNNU4zoq/1NDAEbUFfDgOVK86cuRMzRmBzsaYDEZDmq4
-	 QgcKxoK3I+CInLzIk7M6nyDE4TFg5VPAbw90i1M3P+igA13RpWg8VIFvINTXnjQciL
-	 o583iSZSSdXHoBJkTRPd/fqE7PwaDkhz/9lLC8waJel8gN9t7S7AKrf8f9F6j2efNT
-	 4PUhb8BwIcPozOmTUyjJO4m4cKJj4tJBZ5MwZ+NMR81GcvkSILf3HxMA2Ed8FTxfFn
-	 BXPxb7/Mhy/Cw==
+	b=1+LT18PwaWANGvQiEjV/bGaHWgptCeny/IXAo0k66itgo+24nnBU3gUmrT2Bk18xo
+	 Jfa0nNRfIs/lKff3dDfVqHAoNm5XazvEKfJJ6ZnApN4XISROjjzMbWYy0WzzQOYWHd
+	 QZxUWAgYhwOPvHeDQL2ymaG8wCduEhTPzmnl9Fy9GG0fYQOGS4VUfqOiPZZJ5GuB64
+	 J0nokZEI/lvsclibAW1NlNxLS0AwjMTEkuGA/bO6GG0MUI2MU8v65eCIu4K4JKTfrT
+	 zCmHz+0pHxPOyehUa45nSziKvAyVniCugUGQCATbMQmtnKL3VrcYxWAhvKuwt2y9HE
+	 Eez2V87Iub9RQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id srIehMZlqIEh; Tue, 30 May 2023 15:59:16 +0000 (UTC)
+	with ESMTP id YYKKsuWOJzkg; Tue, 30 May 2023 16:18:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 00F8681FD5;
-	Tue, 30 May 2023 15:59:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00F8681FD5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7E33281EF6;
+	Tue, 30 May 2023 16:18:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E33281EF6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DDCB61BF215
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 15:59:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 130861BF424
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 16:18:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B492681FE4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 15:59:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B492681FE4
+ by smtp1.osuosl.org (Postfix) with ESMTP id EB77A81DEC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 16:18:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB77A81DEC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OGO_IJuFj-w2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 May 2023 15:59:09 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61C1883083
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 61C1883083
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 15:59:09 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="339549992"
-X-IronPort-AV: E=Sophos;i="6.00,204,1681196400"; d="scan'208";a="339549992"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 May 2023 08:59:08 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="830820572"
-X-IronPort-AV: E=Sophos;i="6.00,204,1681196400"; d="scan'208";a="830820572"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga004.jf.intel.com with ESMTP; 30 May 2023 08:59:08 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 30 May 2023 08:59:06 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Tue, 30 May 2023 08:59:06 -0700
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.170)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Tue, 30 May 2023 08:59:05 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TQ/O5fQ50h1daYsST+VoFP4DD54L0WgSvHtnwNWuev6sVRlHHVcvknb+bimGmDdOqgZCNXmTOt8McVxr3xLoNiEFcB2rMFP2nJlIGptLHarGCrCOy1p5idFO5WhT+2/V9L5RTOuUWZk8bL6KWHBUySmInDa5GUQ1li3Vmri4n99BhZQL93+OVsAhmHeehrfPnM7+TvN+cjrjw4ldVBeUNpnHrPK3f4Jt5aTC+SSvHHyAaC7k1jNyTI5Nnv6IDaURXSq8A4slNSbz1tUNjIPoOId2ytEZ0NvUzLZwJkBqNThXitdCgTbPFcVv5ArOLf9oOQ9dYAdI3jnFuEmVBD5MnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cYVmeCC8iaHR/gm5+huCjjr3y4kKyDsRCOJe6G5soCE=;
- b=hlp2Jd8aK38m26w8dRLPRSB22paGBYJ7r6f086VvF+z1pfRiUHWKHLjqJZYMgRfatao6CcgFUuWObPIRPpFJqEjvwWufqwanibtdew/wUJfiB6WprnRIX2tLjw1ncUy8uVTzlGmFdoqXcoN98bfGhN45rxI8B9+VxSCH6w2BBRJds9MuVqze9+dZQwcaphgcVbCHWiXrnpG7pN9q+IYvWsjSujr3BoCSIz9OXvnStpNdeezWxcJaI+fndLYZqWEJGqx+w7VijsDExUQZVtX4tQe/T7axWa26D7Ovi9+0WSRxpdsOpYfMRDTTy6Nh1YvwRjyEO/U8ald6zqcLfQAKrg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
- IA1PR11MB6396.namprd11.prod.outlook.com (2603:10b6:208:3ab::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.22; Tue, 30 May
- 2023 15:59:04 +0000
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::9e4f:80cc:e0aa:6809]) by DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::9e4f:80cc:e0aa:6809%2]) with mapi id 15.20.6433.022; Tue, 30 May 2023
- 15:59:03 +0000
-Date: Tue, 30 May 2023 17:58:57 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Kamil Maziarz <kamil.maziarz@intel.com>
-Message-ID: <ZHYdQUT7oCDR11U8@boxer>
-References: <20230525105155.105870-1-kamil.maziarz@intel.com>
-Content-Disposition: inline
-In-Reply-To: <20230525105155.105870-1-kamil.maziarz@intel.com>
-X-ClientProxiedBy: FR0P281CA0187.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:ab::17) To DM4PR11MB6117.namprd11.prod.outlook.com
- (2603:10b6:8:b3::19)
+ with ESMTP id zp-lPCQnkEYH for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 May 2023 16:18:43 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 348F881D4D
+Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com
+ [IPv6:2607:f8b0:4864:20::1031])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 348F881D4D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 16:18:43 +0000 (UTC)
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-2562cc85d3dso3923659a91.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 May 2023 09:18:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685463522; x=1688055522;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qRkhmAxe/ihdypWznBipcA1eeKFosBifxnlNuMtEa1Y=;
+ b=gY7RE3bUVVtXBkuS20Xz06puecbolRYY/6IyNhZzr9tgXJ+ThKWOX5tkdNVLI0IEFz
+ rD60F+4xdiY/eb9Ak0t1lrP487ZCcQNkg/YrL5siXjpVRoNJefOE1A2Jb8GpwQsaK6E7
+ 8v56m0QKEvXG6Cx0iwu2+zRtLOzUrL/zZ8iBWztkqSQf1yr572Qppqb3tUTzhBF5opau
+ CIaB2xE9xNOVW2WrujBIpgEk9hvt0g9EVEf64jcmsorcK06CuYGgUQaFjrdcWYMtg9of
+ +plR72B768zmXRVlnvSEAYxETYhm6JUEANQXaz/KFkPW6lRaLxFKR3eEc9MmTJCCSGlx
+ KOYQ==
+X-Gm-Message-State: AC+VfDyVucuh7Eaj12q/uySen1r+4MWx4KWbTnAFQsHHr1CvjkeGQ1o1
+ CEldaqL4OXB2RX/w/fk2Als=
+X-Google-Smtp-Source: ACHHUZ49pxpPTwmau8gH+/WNZVbjXnc13agqCiaT1TCuJ3fovNebjVW8EMhaqM6m+0zQqpT7wf9ITw==
+X-Received: by 2002:a17:90a:5216:b0:247:529f:92d7 with SMTP id
+ v22-20020a17090a521600b00247529f92d7mr3052194pjh.8.1685463522170; 
+ Tue, 30 May 2023 09:18:42 -0700 (PDT)
+Received: from ?IPv6:2605:59c8:448:b800:82ee:73ff:fe41:9a02?
+ ([2605:59c8:448:b800:82ee:73ff:fe41:9a02])
+ by smtp.googlemail.com with ESMTPSA id
+ t4-20020a17090a3b4400b0025023726fc4sm11735949pjf.26.2023.05.30.09.18.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 May 2023 09:18:41 -0700 (PDT)
+Message-ID: <8828262f1c238ab28be9ec87a7701acd791af926.camel@gmail.com>
+From: Alexander H Duyck <alexander.duyck@gmail.com>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Date: Tue, 30 May 2023 09:18:40 -0700
+In-Reply-To: <20230525125746.553874-4-aleksander.lobakin@intel.com>
+References: <20230525125746.553874-1-aleksander.lobakin@intel.com>
+ <20230525125746.553874-4-aleksander.lobakin@intel.com>
+User-Agent: Evolution 3.44.4 (3.44.4-3.fc36) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|IA1PR11MB6396:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0577f1f2-e28e-46ea-c9a0-08db6126ca57
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: FfO9gY2kkfJUSmBF9leQv6bRzSWsAxYe3rpBoYvLz2OtOifGHOdN7L3SZUO9mur2spULBaokLSzeX3V2EqU3X4/oh9oFMruMC2se02HRHvdDnGeDWIBifcRYh0IT6GCOvom/31TAEH62mstmoesUNW9CckXQFZcHDN9wdUxSGs43YRFW2lOB24/PkAjssmwKh26DvG7IKYUJY6WXuZXs9AWkjgbmXBibV1Pz2eUeLXX2q/KgV+a+XEnJKthMRp3zvuKnJASaAMwfBgs3iaV915bTxDNRoNSd2arCMlCG5j9e3RuUtx9f9mdkxYhwaqv6bjLCxqc/TByoB32ik8zVPqe6GTqh4+Wx11HzLvuJN52Qn2535qrDr2UhxZRgNRZLIwo4GCKmPy73zpxGNdcJ3xljDv4Xeo8Wntl3Kp5/5yFf3dIQEYAsYBbLkmnhKU2oPYmC50gGKsJyyEdPZTSvbs8ZuHXbdIuPub/WwlP88puNu0KE8lDoAc9SbjiDgFhO0Yu9UliRR2Hd+oRTCjZWpW/1zUPWwRH7243XVob3tZA=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(7916004)(396003)(366004)(376002)(136003)(39860400002)(346002)(451199021)(82960400001)(478600001)(38100700002)(86362001)(33716001)(66946007)(66556008)(66476007)(4326008)(6636002)(2906002)(6666004)(9686003)(6486002)(186003)(26005)(316002)(6512007)(6506007)(41300700001)(44832011)(5660300002)(966005)(8676002)(8936002)(6862004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Q0yRG/v91fYZ9ShC3p4zcQsWx7pzgcB4jI52rlAAlfsREQneQmzpE0+a8/F2?=
- =?us-ascii?Q?gTeSnjxm2avtPLt1hXRfiDc2wlM12TkIuWmA5NtDsmcwCd68VVq4TRnKSF19?=
- =?us-ascii?Q?ojZvXlAkadRMdnAPBP9mbgksKTRFTrDiwMfZp+kylaVULIZ62iQ/1fwJRqf5?=
- =?us-ascii?Q?Lh72t3Sw57PCO/pVZUXpGOiVLYp5CzydjWiUBqk0IaXnUXBbUMNZUoQB0rwI?=
- =?us-ascii?Q?xCgkC24s3P2gtfFdT+ulTYU6p6tp6tqNjoVi/okViOAKFPY7OmE6oKmBaU+C?=
- =?us-ascii?Q?0G1rK0Pko3Xv2X02VOn4dNT0m6NOADIHjuJ4dtIeXx2br0JdjC4suPAF8TgS?=
- =?us-ascii?Q?0YUEIUQ0sE/uz/A4VICkY/gZGWn9L/TZ73FUbQ34XVpkvvFxAxYIcuVpVl1U?=
- =?us-ascii?Q?a4eCIspldaLq4SdPvIqwWxC+J4XS2zWagJ9irCXPKUp4k6M17/TrtgYtB6RR?=
- =?us-ascii?Q?wXGoiMBHItOl6UekrTEHYj8qVHgt5Y6B/9ZcXsmbP67XLvNap1ZI2JfEhzL/?=
- =?us-ascii?Q?xH3YOlLM2ze+9Otcdeovu/WxE7BL5RPZLSwcURd03r41+xdslgRMyxGf54k/?=
- =?us-ascii?Q?WuPm8TZ73CcE72xv1AoytwCJCbT9cav7NYPcpcSU+ORQ/nXD433B+6g9a5rc?=
- =?us-ascii?Q?G8NdybdCgIJTFe8TQqFxqOT3FfVwr1EgY7HX7qjpBC6purPK384IswWFS77g?=
- =?us-ascii?Q?iBtUaIyiN3ThzPQMzJLRRxmZ3DCGk/RnnZ7cCytXvp5vD2rDBWi+xR2tyHDB?=
- =?us-ascii?Q?5KLNP1KLSufbFLe59YqS+9oK5GHYefhkUySDInhWQ0eS7hE/ch4HNB1MwPwg?=
- =?us-ascii?Q?GY7HBrOL/RfZjmexmJUDgr8LQX8u28jH9nbBE1si0EJZ8Z/DJzsLui4ievod?=
- =?us-ascii?Q?Gk/w9WmHr4/O/ws8tR91ZoUDTy2QDc0MaM4tgE/MX+RNGqMYnpJFCw+d3SE8?=
- =?us-ascii?Q?I7XfpBKZTzuAApKVDOwxF843DyzKILQ5GaA3cyNClsEfdBFbL0brxwpRCjD1?=
- =?us-ascii?Q?ME8VptHAY4mmZhQMLOIUYNYlSGPZnUU7nfrjro3YJ2j5e7mX4YZUnzct7X9e?=
- =?us-ascii?Q?CJ5XSgOTGb9dzd+9roO8RDTiwRVv29BcCI8Ee6ub91BEhEkFMJSWEEoPy4WH?=
- =?us-ascii?Q?Lfm0w6pvBsEa7Z0dSH0cjpjNe/A3PBO3IFspt8rA1zcYW5twzReNSPEZaF21?=
- =?us-ascii?Q?R7uleCdhLXLenRlcMLb8YdcsHwOVvNHev0Jq6pedQaFwiPHynPk5+G36eorb?=
- =?us-ascii?Q?KMI3t66ECNCrv4d4n6760Z/XVEhTGoVw46a5BH5odMR59S534Axh1UgoEwB6?=
- =?us-ascii?Q?rqKLYqUZoCKZ0Z1nN833/IPFiK6xLKZ57xcGpJxG4YmYuMA20mSoifd99g7R?=
- =?us-ascii?Q?ncSVPhdlKl3lV/6ENxGLgz7X2oCq2vf9Ga5WNxbhC1zJ++DuJnA0do3ik1J0?=
- =?us-ascii?Q?vGEdvQOvzylA2BOZzGH34YOrIY1lycZCg8IQCzqO2/kDRY5PxVvOzQxO+1Zl?=
- =?us-ascii?Q?aGJUkT6n0sy1LCinnR22BcS38g1T5dS4/JtEiGXjJFzsvlo4LPmlC/1wF2O3?=
- =?us-ascii?Q?RSbD33fyMbVY8kxORyTL0kINC/XBPKNkPWAg7fdj037E2UqDjuUR/uUYuwP8?=
- =?us-ascii?Q?pA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0577f1f2-e28e-46ea-c9a0-08db6126ca57
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 May 2023 15:59:03.5987 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4d0bjexRjCzmrE99fG21fTyxbc3NYKZxmCyyG4v/grYFTeoEZc5W6qLG1foo7EVNDgoUrnV5MwPxGE5u+8Pd0kIQH2byGH0f8GEIoIdA8LI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6396
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685462349; x=1716998349;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=941gD8I5LSBl8Y5eo1h86i+t57HshLg7E1ubSEaCA9k=;
- b=YeSbVmV9RxHzZFezg/OEOv9/nr4MYNRzuwuBspDLlNCgyTgFNpERA5yh
- utoIjKImGAtOm3dJ+c+ArbHd3XoM8+VPVTntopjHld+M8DNgMwXhjDyN2
- bPOqLykAYmuJMBP1xxBYEjNbwGxmRm2h8RD9ohvH/EMbM9OmGHmCxpH5k
- mlJ2oIUqXOHzS0UWMfsfvcBCPlbnGkGe/nilYY+OWHgPjH7ZO/ierSBSA
- THi6L+leu5ra3BIphfpfWRQoBOOWnIJPGds/CoBGqkR1/MMb00NiynDG3
- S05DJ1UnG+wvlQSZdcvrueHWqbK3k6MMMTyCEf7a02MpUEZws2fiH3tD7
- g==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685463522; x=1688055522;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=qRkhmAxe/ihdypWznBipcA1eeKFosBifxnlNuMtEa1Y=;
+ b=R5elcjIJS8QuYtlBWjL0ZzDirDet76Py4TqIXD5h4AAEfdRlu1iirYprwTX+SxOAYr
+ 5Jh/lLbLocly8gtZFTM8o4ltStRAvOtHvmGpDsCQY2WkhbBQDsal6IRS/u/3zyRz1Xjn
+ DC8MfVW1R+iKGnfjXm+BhM2XRlgQJFFh7dJmCzlD4KvdWTfHmJK+FY7imOYmkAB/LXc1
+ rpuQec6eZ99inidTXdGZYfFE1eNJ9AHdJ5kE/dXfRCgSdrwQTo7poFkqeiFUjupU4hfL
+ nQ0733ENNPTXuL97omkNmDM+svx+GEu3avONWOiggNQIdFzyTZL7dwxhC0vEdMTKLXfT
+ 8crw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YeSbVmV9
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ice: Fix XDP memory leak
- when NIC is brought up and down
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=R5elcjIJ
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 03/12] iavf: optimize Rx
+ buffer allocation a bunch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -181,52 +115,650 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Christoph Hellwig <hch@lst.de>, Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, May 25, 2023 at 12:51:55PM +0200, Kamil Maziarz wrote:
-> Fix the buffer leak that occurs while switching
-> the port up and down with traffic and XDP by
-> checking for an active XDP program and freeing all empty TX buffers.
-
-How did you spot this? Was this by code walkthrough, or?
-Tx buffers are not particularly empty, they are mapped/allocated.
+On Thu, 2023-05-25 at 14:57 +0200, Alexander Lobakin wrote:
+> The Rx hotpath code of IAVF is not well-optimized TBH. Before doing any
+> further buffer model changes, shake it up a bit. Notably:
 > 
-> Fixes: cdedef59deb0 ("ice: Configure VSIs for Tx/Rx")
+> 1. Cache more variables on the stack.
+>    DMA device, Rx page size, NTC -- these are the most common things
+>    used all throughout the hotpath, often in loops on each iteration.
+>    Instead of fetching (or even calculating, as with the page size) them
+>    from the ring all the time, cache them on the stack at the beginning
+>    of the NAPI polling callback. NTC will be written back at the end,
+>    the rest are used read-only, so no sync needed.
 
-i think it deserves a fixes tag which points to XDP support being added.
-The code you are referring to was just fine before XDP support.
+The advantage of this is going to vary based on the attribute. One of
+the reasons why I left most of this on the ring is because the section
+of the ring most of these variables were meant to be read-mostly and
+shouldn't have resulted in any additional overhead versus accessing
+them from the stack.
 
-> Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
+> 2. Don't move the recycled buffers around the ring.
+>    The idea of passing the page of the right-now-recycled-buffer to a
+>    different buffer, in this case, the first one that needs to be
+>    allocated, moreover, on each new frame, is fundamentally wrong. It
+>    involves a few o' fetches, branches and then writes (and one Rx
+>    buffer struct is at least 32 bytes) where they're completely unneeded,
+>    but gives no good -- the result is the same as if we'd recycle it
+>    inplace, at the same position where it was used. So drop this and let
+>    the main refilling function take care of all the buffers, which were
+>    processed and now need to be recycled/refilled.
+
+The next_to_alloc logic was put in place to deal with systems that are
+experiencing memory issues. Specifically what can end up happening is
+that the ring can stall due to failing memory allocations and the
+memory can get stuck on the ring. For that reason we were essentially
+defragmenting the buffers when we started suffering memory pressure so
+that they could be reusued and/or freed following immediate use.
+
+Basically what you are trading off is some exception handling for
+performance by removing it.
+
+> 3. Don't allocate with %GPF_ATOMIC on ifup.
+>    This involved introducing the @gfp parameter to a couple functions.
+>    Doesn't change anything for Rx -> softirq.
+
+Any specific reason for this? Just wondering if this is meant to
+address some sort of memory pressure issue since it basically just
+means the allocation can go out and try to free other memory.
+
+> 4. 1 budget unit == 1 descriptor, not skb.
+>    There could be underflow when receiving a lot of fragmented frames.
+>    If each of them would consist of 2 frags, it means that we'd process
+>    64 descriptors at the point where we pass the 32th skb to the stack.
+>    But the driver would count that only as a half, which could make NAPI
+>    re-enable interrupts prematurely and create unnecessary CPU load.
+
+Not sure I agree with this. The problem is the overhead for an skb
+going up the stack versus a fragment are pretty signficant. Keep in
+mind that most of the overhead for a single buffer occurs w/
+napi_gro_receive and is not actually at the driver itself. The whole
+point of the budget is to meter out units of work, not to keep you in
+the busy loop. This starts looking like the old code where the Intel
+drivers were returning either budget or 0 instead of supporting the
+middle ground.
+
+> 5. Shortcut !size case.
+>    It's super rare, but possible -- for example, if the last buffer of
+>    the fragmented frame contained only FCS, which was then stripped by
+>    the HW. Instead of checking for size several times when processing,
+>    quickly reuse the buffer and jump to the skb fields part.
+> 6. Refill the ring after finishing the polling loop.
+>    Previously, the loop wasn't starting a new iteration after the 64th
+>    desc, meaning that we were always leaving 16 buffers non-refilled
+>    until the next NAPI poll. It's better to refill them while they're
+>    still hot, so do that right after exiting the loop as well.
+>    For a full cycle of 64 descs, there will be 4 refills of 16 descs
+>    from now on.
+> 
+> Function: add/remove: 4/2 grow/shrink: 0/5 up/down: 473/-647 (-174)
+> 
+> + up to 2% performance.
+> 
+
+What is the test you saw the 2% performance improvement in? Is it
+something XDP related or a full stack test?
+
+> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+
+Also one thing I am not a huge fan of is a patch that is really a
+patchset onto itself. With all 6 items called out here I would have
+preferred to see this as 6 patches as it would have been easier to
+review.
+
 > ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  drivers/net/ethernet/intel/iavf/iavf_main.c |   2 +-
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c | 259 +++++++++-----------
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.h |   3 +-
+>  3 files changed, 114 insertions(+), 150 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index a1f7c8edc22f..03513d4871ab 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -7056,6 +7056,10 @@ int ice_down(struct ice_vsi *vsi)
->  	ice_for_each_txq(vsi, i)
->  		ice_clean_tx_ring(vsi->tx_rings[i]);
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index a5a6c9861a93..ade32aa1ed78 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -1236,7 +1236,7 @@ static void iavf_configure(struct iavf_adapter *adapter)
+>  	for (i = 0; i < adapter->num_active_queues; i++) {
+>  		struct iavf_ring *ring = &adapter->rx_rings[i];
 >  
-> +	if (ice_is_xdp_ena_vsi(vsi))
-> +		ice_for_each_xdp_txq(vsi, i)
-> +			ice_clean_tx_ring(vsi->xdp_rings[i]);
+> -		iavf_alloc_rx_buffers(ring, IAVF_DESC_UNUSED(ring));
+> +		iavf_alloc_rx_buffers(ring);
+>  	}
+>  }
+>  
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> index a7121dc5c32b..fd08ce67380e 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> @@ -736,7 +736,6 @@ void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
+>  	/* Zero out the descriptor ring */
+>  	memset(rx_ring->desc, 0, rx_ring->size);
+>  
+> -	rx_ring->next_to_alloc = 0;
+>  	rx_ring->next_to_clean = 0;
+>  	rx_ring->next_to_use = 0;
+>  }
+> @@ -792,7 +791,6 @@ int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
+>  		goto err;
+>  	}
+>  
+> -	rx_ring->next_to_alloc = 0;
+>  	rx_ring->next_to_clean = 0;
+>  	rx_ring->next_to_use = 0;
+>  
+> @@ -812,9 +810,6 @@ static inline void iavf_release_rx_desc(struct iavf_ring *rx_ring, u32 val)
+>  {
+>  	rx_ring->next_to_use = val;
+>  
+> -	/* update next to alloc since we have filled the ring */
+> -	rx_ring->next_to_alloc = val;
+> -
+>  	/* Force memory writes to complete before letting h/w
+>  	 * know there are new descriptors to fetch.  (Only
+>  	 * applicable for weak-ordered memory model archs,
+> @@ -828,12 +823,17 @@ static inline void iavf_release_rx_desc(struct iavf_ring *rx_ring, u32 val)
+>   * iavf_alloc_mapped_page - recycle or make a new page
+>   * @rx_ring: ring to use
+>   * @bi: rx_buffer struct to modify
+> + * @dev: device used for DMA mapping
+> + * @order: page order to allocate
+> + * @gfp: GFP mask to allocate page
+>   *
+>   * Returns true if the page was successfully allocated or
+>   * reused.
+>   **/
+>  static bool iavf_alloc_mapped_page(struct iavf_ring *rx_ring,
+> -				   struct iavf_rx_buffer *bi)
+> +				   struct iavf_rx_buffer *bi,
+> +				   struct device *dev, u32 order,
+> +				   gfp_t gfp)
+>  {
+>  	struct page *page = bi->page;
+>  	dma_addr_t dma;
+> @@ -845,23 +845,21 @@ static bool iavf_alloc_mapped_page(struct iavf_ring *rx_ring,
+>  	}
+>  
+>  	/* alloc new page for storage */
+> -	page = dev_alloc_pages(iavf_rx_pg_order(rx_ring));
+> +	page = __dev_alloc_pages(gfp, order);
+>  	if (unlikely(!page)) {
+>  		rx_ring->rx_stats.alloc_page_failed++;
+>  		return false;
+>  	}
+>  
+>  	/* map page for use */
+> -	dma = dma_map_page_attrs(rx_ring->dev, page, 0,
+> -				 iavf_rx_pg_size(rx_ring),
+> -				 DMA_FROM_DEVICE,
+> -				 IAVF_RX_DMA_ATTR);
+> +	dma = dma_map_page_attrs(dev, page, 0, PAGE_SIZE << order,
+> +				 DMA_FROM_DEVICE, IAVF_RX_DMA_ATTR);
+>  
+>  	/* if mapping failed free memory back to system since
+>  	 * there isn't much point in holding memory we can't use
+>  	 */
+> -	if (dma_mapping_error(rx_ring->dev, dma)) {
+> -		__free_pages(page, iavf_rx_pg_order(rx_ring));
+> +	if (dma_mapping_error(dev, dma)) {
+> +		__free_pages(page, order);
+>  		rx_ring->rx_stats.alloc_page_failed++;
+>  		return false;
+>  	}
+> @@ -898,32 +896,36 @@ static void iavf_receive_skb(struct iavf_ring *rx_ring,
+>  }
+>  
+>  /**
+> - * iavf_alloc_rx_buffers - Replace used receive buffers
+> + * __iavf_alloc_rx_buffers - Replace used receive buffers
+>   * @rx_ring: ring to place buffers on
+> - * @cleaned_count: number of buffers to replace
+> + * @to_refill: number of buffers to replace
+> + * @gfp: GFP mask to allocate pages
+>   *
+> - * Returns false if all allocations were successful, true if any fail
+> + * Returns 0 if all allocations were successful or the number of buffers left
+> + * to refill in case of an allocation failure.
+>   **/
+> -bool iavf_alloc_rx_buffers(struct iavf_ring *rx_ring, u16 cleaned_count)
+> +static u32 __iavf_alloc_rx_buffers(struct iavf_ring *rx_ring, u32 to_refill,
+> +				   gfp_t gfp)
+>  {
+> -	u16 ntu = rx_ring->next_to_use;
+> +	u32 order = iavf_rx_pg_order(rx_ring);
+> +	struct device *dev = rx_ring->dev;
+> +	u32 ntu = rx_ring->next_to_use;
+>  	union iavf_rx_desc *rx_desc;
+>  	struct iavf_rx_buffer *bi;
+>  
+>  	/* do nothing if no valid netdev defined */
+> -	if (!rx_ring->netdev || !cleaned_count)
+> -		return false;
+> +	if (unlikely(!rx_ring->netdev || !to_refill))
+> +		return 0;
+>  
+>  	rx_desc = IAVF_RX_DESC(rx_ring, ntu);
+>  	bi = &rx_ring->rx_bi[ntu];
+>  
+>  	do {
+> -		if (!iavf_alloc_mapped_page(rx_ring, bi))
+> -			goto no_buffers;
+> +		if (!iavf_alloc_mapped_page(rx_ring, bi, dev, order, gfp))
+> +			break;
+>  
+>  		/* sync the buffer for use by the device */
+> -		dma_sync_single_range_for_device(rx_ring->dev, bi->dma,
+> -						 bi->page_offset,
+> +		dma_sync_single_range_for_device(dev, bi->dma, bi->page_offset,
+>  						 rx_ring->rx_buf_len,
+>  						 DMA_FROM_DEVICE);
+>  
+> @@ -943,23 +945,17 @@ bool iavf_alloc_rx_buffers(struct iavf_ring *rx_ring, u16 cleaned_count)
+>  
+>  		/* clear the status bits for the next_to_use descriptor */
+>  		rx_desc->wb.qword1.status_error_len = 0;
+> -
+> -		cleaned_count--;
+> -	} while (cleaned_count);
+> +	} while (--to_refill);
+
+Just a nit. You might want to break this up into two statements like I
+had before. I know some people within Intel weren't a huge fan of when
+I used to do that kind of thing all the time in loops where I would do
+the decrement and test in one line.. :)
+
+>  
+>  	if (rx_ring->next_to_use != ntu)
+>  		iavf_release_rx_desc(rx_ring, ntu);
+>  
+> -	return false;
+> -
+> -no_buffers:
+> -	if (rx_ring->next_to_use != ntu)
+> -		iavf_release_rx_desc(rx_ring, ntu);
+> +	return to_refill;
+> +}
+>  
+> -	/* make sure to come back via polling to try again after
+> -	 * allocation failure
+> -	 */
+> -	return true;
+> +void iavf_alloc_rx_buffers(struct iavf_ring *rxr)
+> +{
+> +	__iavf_alloc_rx_buffers(rxr, IAVF_DESC_UNUSED(rxr), GFP_KERNEL);
+>  }
+>  
+>  /**
+> @@ -1104,32 +1100,6 @@ static bool iavf_cleanup_headers(struct iavf_ring *rx_ring, struct sk_buff *skb)
+>  	return false;
+>  }
+>  
+> -/**
+> - * iavf_reuse_rx_page - page flip buffer and store it back on the ring
+> - * @rx_ring: rx descriptor ring to store buffers on
+> - * @old_buff: donor buffer to have page reused
+> - *
+> - * Synchronizes page for reuse by the adapter
+> - **/
+> -static void iavf_reuse_rx_page(struct iavf_ring *rx_ring,
+> -			       struct iavf_rx_buffer *old_buff)
+> -{
+> -	struct iavf_rx_buffer *new_buff;
+> -	u16 nta = rx_ring->next_to_alloc;
+> -
+> -	new_buff = &rx_ring->rx_bi[nta];
+> -
+> -	/* update, and store next to alloc */
+> -	nta++;
+> -	rx_ring->next_to_alloc = (nta < rx_ring->count) ? nta : 0;
+> -
+> -	/* transfer page from old buffer to new buffer */
+> -	new_buff->dma		= old_buff->dma;
+> -	new_buff->page		= old_buff->page;
+> -	new_buff->page_offset	= old_buff->page_offset;
+> -	new_buff->pagecnt_bias	= old_buff->pagecnt_bias;
+> -}
+> -
+>  /**
+>   * iavf_can_reuse_rx_page - Determine if this page can be reused by
+>   * the adapter for another receive
+> @@ -1191,30 +1161,26 @@ static bool iavf_can_reuse_rx_page(struct iavf_rx_buffer *rx_buffer)
+>  
+>  /**
+>   * iavf_add_rx_frag - Add contents of Rx buffer to sk_buff
+> - * @rx_ring: rx descriptor ring to transact packets on
+> - * @rx_buffer: buffer containing page to add
+>   * @skb: sk_buff to place the data into
+> + * @rx_buffer: buffer containing page to add
+>   * @size: packet length from rx_desc
+> + * @pg_size: Rx buffer page size
+>   *
+>   * This function will add the data contained in rx_buffer->page to the skb.
+>   * It will just attach the page as a frag to the skb.
+>   *
+>   * The function will then update the page offset.
+>   **/
+> -static void iavf_add_rx_frag(struct iavf_ring *rx_ring,
+> +static void iavf_add_rx_frag(struct sk_buff *skb,
+>  			     struct iavf_rx_buffer *rx_buffer,
+> -			     struct sk_buff *skb,
+> -			     unsigned int size)
+> +			     u32 size, u32 pg_size)
+>  {
+>  #if (PAGE_SIZE < 8192)
+> -	unsigned int truesize = iavf_rx_pg_size(rx_ring) / 2;
+> +	unsigned int truesize = pg_size / 2;
+>  #else
+>  	unsigned int truesize = SKB_DATA_ALIGN(size + IAVF_SKB_PAD);
+>  #endif
+>  
+> -	if (!size)
+> -		return;
+> -
+>  	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
+>  			rx_buffer->page_offset, size, truesize);
+>  
+> @@ -1224,63 +1190,47 @@ static void iavf_add_rx_frag(struct iavf_ring *rx_ring,
+>  #else
+>  	rx_buffer->page_offset += truesize;
+>  #endif
 > +
->  	ice_for_each_rxq(vsi, i)
->  		ice_clean_rx_ring(vsi->rx_rings[i]);
+> +	/* We have pulled a buffer for use, so decrement pagecnt_bias */
+> +	rx_buffer->pagecnt_bias--;
+>  }
 >  
-> -- 
-> 2.31.1
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+>  /**
+> - * iavf_get_rx_buffer - Fetch Rx buffer and synchronize data for use
+> - * @rx_ring: rx descriptor ring to transact packets on
+> - * @size: size of buffer to add to skb
+> + * iavf_sync_rx_buffer - Synchronize received data for use
+> + * @dev: device used for DMA mapping
+> + * @buf: Rx buffer containing the data
+> + * @size: size of the received data
+>   *
+> - * This function will pull an Rx buffer from the ring and synchronize it
+> - * for use by the CPU.
+> + * This function will synchronize the Rx buffer for use by the CPU.
+>   */
+> -static struct iavf_rx_buffer *iavf_get_rx_buffer(struct iavf_ring *rx_ring,
+> -						 const unsigned int size)
+> +static void iavf_sync_rx_buffer(struct device *dev, struct iavf_rx_buffer *buf,
+> +				u32 size)
+>  {
+> -	struct iavf_rx_buffer *rx_buffer;
+> -
+> -	rx_buffer = &rx_ring->rx_bi[rx_ring->next_to_clean];
+> -	prefetchw(rx_buffer->page);
+> -	if (!size)
+> -		return rx_buffer;
+> -
+> -	/* we are reusing so sync this buffer for CPU use */
+> -	dma_sync_single_range_for_cpu(rx_ring->dev,
+> -				      rx_buffer->dma,
+> -				      rx_buffer->page_offset,
+> -				      size,
+> +	dma_sync_single_range_for_cpu(dev, buf->dma, buf->page_offset, size,
+>  				      DMA_FROM_DEVICE);
+> -
+> -	/* We have pulled a buffer for use, so decrement pagecnt_bias */
+> -	rx_buffer->pagecnt_bias--;
+> -
+> -	return rx_buffer;
+>  }
+>  
+>  /**
+>   * iavf_build_skb - Build skb around an existing buffer
+> - * @rx_ring: Rx descriptor ring to transact packets on
+> - * @rx_buffer: Rx buffer to pull data from
+> - * @size: size of buffer to add to skb
+> + * @rx_buffer: Rx buffer with the data
+> + * @size: size of the data
+> + * @pg_size: size of the Rx page
+>   *
+>   * This function builds an skb around an existing Rx buffer, taking care
+>   * to set up the skb correctly and avoid any memcpy overhead.
+>   */
+> -static struct sk_buff *iavf_build_skb(struct iavf_ring *rx_ring,
+> -				      struct iavf_rx_buffer *rx_buffer,
+> -				      unsigned int size)
+> +static struct sk_buff *iavf_build_skb(struct iavf_rx_buffer *rx_buffer,
+> +				      u32 size, u32 pg_size)
+>  {
+>  	void *va;
+>  #if (PAGE_SIZE < 8192)
+> -	unsigned int truesize = iavf_rx_pg_size(rx_ring) / 2;
+> +	unsigned int truesize = pg_size / 2;
+>  #else
+>  	unsigned int truesize = SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) +
+>  				SKB_DATA_ALIGN(IAVF_SKB_PAD + size);
+>  #endif
+>  	struct sk_buff *skb;
+>  
+> -	if (!rx_buffer || !size)
+> -		return NULL;
+>  	/* prefetch first cache line of first page */
+>  	va = page_address(rx_buffer->page) + rx_buffer->page_offset;
+>  	net_prefetch(va);
+> @@ -1301,36 +1251,33 @@ static struct sk_buff *iavf_build_skb(struct iavf_ring *rx_ring,
+>  	rx_buffer->page_offset += truesize;
+>  #endif
+>  
+> +	rx_buffer->pagecnt_bias--;
+> +
+>  	return skb;
+>  }
+>  
+>  /**
+> - * iavf_put_rx_buffer - Clean up used buffer and either recycle or free
+> + * iavf_put_rx_buffer - Recycle or free used buffer
+>   * @rx_ring: rx descriptor ring to transact packets on
+> - * @rx_buffer: rx buffer to pull data from
+> + * @dev: device used for DMA mapping
+> + * @rx_buffer: Rx buffer to handle
+> + * @pg_size: Rx page size
+>   *
+> - * This function will clean up the contents of the rx_buffer.  It will
+> - * either recycle the buffer or unmap it and free the associated resources.
+> + * Either recycle the buffer if possible or unmap and free the page.
+>   */
+> -static void iavf_put_rx_buffer(struct iavf_ring *rx_ring,
+> -			       struct iavf_rx_buffer *rx_buffer)
+> +static void iavf_put_rx_buffer(struct iavf_ring *rx_ring, struct device *dev,
+> +			       struct iavf_rx_buffer *rx_buffer, u32 pg_size)
+>  {
+> -	if (!rx_buffer)
+> -		return;
+> -
+>  	if (iavf_can_reuse_rx_page(rx_buffer)) {
+> -		/* hand second half of page back to the ring */
+> -		iavf_reuse_rx_page(rx_ring, rx_buffer);
+>  		rx_ring->rx_stats.page_reuse_count++;
+> -	} else {
+> -		/* we are not reusing the buffer so unmap it */
+> -		dma_unmap_page_attrs(rx_ring->dev, rx_buffer->dma,
+> -				     iavf_rx_pg_size(rx_ring),
+> -				     DMA_FROM_DEVICE, IAVF_RX_DMA_ATTR);
+> -		__page_frag_cache_drain(rx_buffer->page,
+> -					rx_buffer->pagecnt_bias);
+> +		return;
+>  	}
+>  
+> +	/* we are not reusing the buffer so unmap it */
+> +	dma_unmap_page_attrs(dev, rx_buffer->dma, pg_size,
+> +			     DMA_FROM_DEVICE, IAVF_RX_DMA_ATTR);
+> +	__page_frag_cache_drain(rx_buffer->page, rx_buffer->pagecnt_bias);
+> +
+>  	/* clear contents of buffer_info */
+>  	rx_buffer->page = NULL;
+>  }
+> @@ -1350,14 +1297,6 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
+>  			    union iavf_rx_desc *rx_desc,
+>  			    struct sk_buff *skb)
+>  {
+> -	u32 ntc = rx_ring->next_to_clean + 1;
+> -
+> -	/* fetch, update, and store next to clean */
+> -	ntc = (ntc < rx_ring->count) ? ntc : 0;
+> -	rx_ring->next_to_clean = ntc;
+> -
+> -	prefetch(IAVF_RX_DESC(rx_ring, ntc));
+> -
+>  	/* if we are the last buffer then there is nothing else to do */
+>  #define IAVF_RXD_EOF BIT(IAVF_RX_DESC_STATUS_EOF_SHIFT)
+>  	if (likely(iavf_test_staterr(rx_desc, IAVF_RXD_EOF)))
+
+You may want to see if you can get rid of this function entirely,
+perhaps you do in a later patch. This function was added for ixgbe back
+in the day to allow us to place the skb back in the ring for the RSC
+based workloads where we had to deal with interleaved frames in the Rx
+path.
+
+For example, one question here would be why are we passing skb? It
+isn't used as far as I can tell.
+
+> @@ -1383,11 +1322,16 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
+>  static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
+>  {
+>  	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
+> +	const gfp_t gfp = GFP_ATOMIC | __GFP_NOWARN;
+> +	u32 to_refill = IAVF_DESC_UNUSED(rx_ring);
+> +	u32 pg_size = iavf_rx_pg_size(rx_ring);
+>  	struct sk_buff *skb = rx_ring->skb;
+> -	u16 cleaned_count = IAVF_DESC_UNUSED(rx_ring);
+> -	bool failure = false;
+> +	struct device *dev = rx_ring->dev;
+> +	u32 ntc = rx_ring->next_to_clean;
+> +	u32 ring_size = rx_ring->count;
+> +	u32 cleaned_count = 0;
+>  
+> -	while (likely(total_rx_packets < (unsigned int)budget)) {
+> +	while (likely(cleaned_count < budget)) {
+>  		struct iavf_rx_buffer *rx_buffer;
+>  		union iavf_rx_desc *rx_desc;
+>  		unsigned int size;
+> @@ -1396,13 +1340,11 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
+>  		u64 qword;
+>  
+>  		/* return some buffers to hardware, one at a time is too slow */
+> -		if (cleaned_count >= IAVF_RX_BUFFER_WRITE) {
+> -			failure = failure ||
+> -				  iavf_alloc_rx_buffers(rx_ring, cleaned_count);
+> -			cleaned_count = 0;
+> -		}
+> +		if (to_refill >= IAVF_RX_BUFFER_WRITE)
+> +			to_refill = __iavf_alloc_rx_buffers(rx_ring, to_refill,
+> +							    gfp);
+>  
+> -		rx_desc = IAVF_RX_DESC(rx_ring, rx_ring->next_to_clean);
+> +		rx_desc = IAVF_RX_DESC(rx_ring, ntc);
+>  
+>  		/* status_error_len will always be zero for unused descriptors
+>  		 * because it's cleared in cleanup, and overlaps with hdr_addr
+> @@ -1424,24 +1366,38 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
+>  		       IAVF_RXD_QW1_LENGTH_PBUF_SHIFT;
+>  
+>  		iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
+> -		rx_buffer = iavf_get_rx_buffer(rx_ring, size);
+> +		rx_buffer = &rx_ring->rx_bi[ntc];
+> +
+> +		/* Very rare, but possible case. The most common reason:
+> +		 * the last fragment contained FCS only, which was then
+> +		 * stripped by the HW.
+> +		 */
+> +		if (unlikely(!size))
+> +			goto skip_data;
+> +
+> +		iavf_sync_rx_buffer(dev, rx_buffer, size);
+>  
+>  		/* retrieve a buffer from the ring */
+>  		if (skb)
+> -			iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
+> +			iavf_add_rx_frag(skb, rx_buffer, size, pg_size);
+>  		else
+> -			skb = iavf_build_skb(rx_ring, rx_buffer, size);
+> +			skb = iavf_build_skb(rx_buffer, size, pg_size);
+>  
+>  		/* exit if we failed to retrieve a buffer */
+>  		if (!skb) {
+>  			rx_ring->rx_stats.alloc_buff_failed++;
+> -			if (rx_buffer && size)
+> -				rx_buffer->pagecnt_bias++;
+>  			break;
+>  		}
+>  
+> -		iavf_put_rx_buffer(rx_ring, rx_buffer);
+> +skip_data:
+> +		iavf_put_rx_buffer(rx_ring, dev, rx_buffer, pg_size);
+> +
+>  		cleaned_count++;
+> +		to_refill++;
+> +		if (unlikely(++ntc == ring_size))
+> +			ntc = 0;
+> +
+> +		prefetch(IAVF_RX_DESC(rx_ring, ntc));
+>  
+>  		if (iavf_is_non_eop(rx_ring, rx_desc, skb))
+>  			continue;
+> @@ -1488,8 +1444,18 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
+>  		total_rx_packets++;
+>  	}
+>  
+> +	rx_ring->next_to_clean = ntc;
+>  	rx_ring->skb = skb;
+>  
+> +	if (to_refill >= IAVF_RX_BUFFER_WRITE) {
+> +		to_refill = __iavf_alloc_rx_buffers(rx_ring, to_refill, gfp);
+> +		/* guarantee a trip back through this routine if there was
+> +		 * a failure
+> +		 */
+> +		if (unlikely(to_refill))
+> +			cleaned_count = budget;
+> +	}
+> +
+>  	u64_stats_update_begin(&rx_ring->syncp);
+>  	rx_ring->stats.packets += total_rx_packets;
+>  	rx_ring->stats.bytes += total_rx_bytes;
+> @@ -1497,8 +1463,7 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
+>  	rx_ring->q_vector->rx.total_packets += total_rx_packets;
+>  	rx_ring->q_vector->rx.total_bytes += total_rx_bytes;
+>  
+> -	/* guarantee a trip back through this routine if there was a failure */
+> -	return failure ? budget : (int)total_rx_packets;
+> +	return cleaned_count;
+>  }
+>  
+>  static inline u32 iavf_buildreg_itr(const int type, u16 itr)
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+> index 234e189c1987..9c6661a6edf2 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+> @@ -383,7 +383,6 @@ struct iavf_ring {
+>  	struct iavf_q_vector *q_vector;	/* Backreference to associated vector */
+>  
+>  	struct rcu_head rcu;		/* to avoid race on free */
+> -	u16 next_to_alloc;
+>  	struct sk_buff *skb;		/* When iavf_clean_rx_ring_irq() must
+>  					 * return before it sees the EOP for
+>  					 * the current packet, we save that skb
+> @@ -426,7 +425,7 @@ static inline unsigned int iavf_rx_pg_order(struct iavf_ring *ring)
+>  
+>  #define iavf_rx_pg_size(_ring) (PAGE_SIZE << iavf_rx_pg_order(_ring))
+>  
+> -bool iavf_alloc_rx_buffers(struct iavf_ring *rxr, u16 cleaned_count);
+> +void iavf_alloc_rx_buffers(struct iavf_ring *rxr);
+>  netdev_tx_t iavf_xmit_frame(struct sk_buff *skb, struct net_device *netdev);
+>  void iavf_clean_tx_ring(struct iavf_ring *tx_ring);
+>  void iavf_clean_rx_ring(struct iavf_ring *rx_ring);
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
