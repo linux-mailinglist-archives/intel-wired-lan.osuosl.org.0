@@ -2,183 +2,179 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9701E717D71
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 12:54:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C9D8717DCE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 13:14:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ABAE481FE3;
-	Wed, 31 May 2023 10:54:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ABAE481FE3
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4047B8130E;
+	Wed, 31 May 2023 11:14:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4047B8130E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685530497;
-	bh=VFbCslZtmYqn1s53+5JLDjMgAHjGEmMHa6+3HlJT60g=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685531689;
+	bh=eNSjcwRFqkK8UGDWH4MqDcUI7XeQJtcOs4p6Oycy/NQ=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=f67H3CpJoReK61GREMrKPWY+BI2necffBGRtngz4jb32oqNS9xvu43fFkjtipNigJ
-	 kLdZRBhejzAwRqyJlLy4SygLXHtyA0fTFQl7uUVaKQIbbhUR5ASaiEhXuULriho0GC
-	 VCc5I8hQTVnXNbYjZ8sHhG1rO4L8aTDheHMSZ9fS5FpN3dN22pIpv2JDf7iR/UQLGJ
-	 ZEAEWteklt63UQJVvtCp0qqphNoB3XiMsRNdM25necDTqKFvtkkZ4ibBzgdmBy5Zur
-	 oiDOFCUjg1QmlyorAaVpX68jKQ724F8/WL8dp5X01uVjb8wHb9/7n6o4CUMhvL85nh
-	 QvEk2U3LmKC8Q==
+	b=gw0fPe7+YNnfL9nZiCDwTHrQy2fm7lSXy4BjrXAIX71tTyXAYBvj8d9d/ChOgQsDk
+	 XmpF9iua2gpJQbA8wEuSZhwJQqTvWaVveUFbXpUO0XdmiRnvVv80eTGJWo5VNs1CXQ
+	 90tUD60I4kigY06Re+6fvXnFX7Ot7Nv6x5wY5X8gb2ZbW7m2iFwrIO3279mlp32TSk
+	 YrmE+3Q3OnfesrNW2re49grsVo0cxJhoyZ0tnbA0dPknZAOJ7Q/Vig1JxXSITlkJSI
+	 NOCigXr++OfBGmXeEEyF3NLI07DHBV+XfAclQsddyaskzVmfrCHN6Es7j/CKJ7vpLV
+	 rnf7VeIVYCANw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2regCv1uJ7n0; Wed, 31 May 2023 10:54:56 +0000 (UTC)
+	with ESMTP id 8LfW_1W96aXf; Wed, 31 May 2023 11:14:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E105F81F6E;
-	Wed, 31 May 2023 10:54:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E105F81F6E
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8004811F9;
+	Wed, 31 May 2023 11:14:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8004811F9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D2BAD1BF297
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 10:54:50 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E454D1BF41F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B58F260B14
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 10:54:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B58F260B14
+ by smtp1.osuosl.org (Postfix) with ESMTP id BC44F81284
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC44F81284
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aRYYAiNAJaHm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 May 2023 10:54:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GLTtg6L3-7qC for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 May 2023 11:14:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 233C960ABE
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 233C960ABE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 10:54:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="352697888"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="352697888"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D2BC811F9
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7D2BC811F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:40 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="441562608"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="441562608"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 May 2023 03:54:47 -0700
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 May 2023 04:14:39 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="706830041"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="706830041"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga002.jf.intel.com with ESMTP; 31 May 2023 03:54:45 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="706844918"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="706844918"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga002.jf.intel.com with ESMTP; 31 May 2023 04:14:38 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 31 May 2023 03:54:45 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.23; Wed, 31 May 2023 04:14:38 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 31 May 2023 03:54:45 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ 15.1.2507.23; Wed, 31 May 2023 04:14:38 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Wed, 31 May 2023 03:54:44 -0700
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.42) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Wed, 31 May 2023 04:14:38 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Wed, 31 May 2023 03:54:44 -0700
+ 15.1.2507.23; Wed, 31 May 2023 04:14:37 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fUKrY53nIJ4dbsNEsgGjYeECkJOb/YEvZox/kNi4jvdlndWW/epnoA7Y/ICx3BPf7dHvJVvg24coov6xMIBvUFdseibVYFpquI6EbhOBvFyuERY/7RGjTv2AfCDUMub04LfJfC32lY7zO7TG/2J5Yxeyn1xlK8PI9+nJb2Fnf+U2vpT2xKRb0vx522kegqU1+aFCJrxMgM3vtaMsLOVrYTrbNQ04FSzFq5bLv+fOPUWQMmPoD7HKnxTSCRqemeP3t3SSkxmS+8qwL/rr1WxQS2yvtcnG2U3qTfy8rWeaV3vsZgkcIAPOVoegGCSdMnnfAJilaw1UbUIIWHH5INDrVQ==
+ b=KUbQJ0rCJoScm1R8/yfMiI5gx/5hHIUWFVi2GpzgbmEDc46BXfrOtx2/2LxhuC/isc182qWvqJzG2mpb+A5UO4n2zu1RJqIenJrWdLI2fhcUTTDZZlBcxTRq6T/H+xFUCCQruUwXt4fLAzlzpNoyfEV0E7yxOhj+4AB7USIZjVwtVZ/LSflwPDCQ++0Qju6u127HwG6MAMCY7s4K7R1ZUpPhkjcj9q+wqtdl8Z1qsF+rkUMtgzMm4EpjBQB/+etYp6zE9AUqblrHcoG43DxApWSRAcLsgtDum+PhhTAuDJvOXg/vrAjwmIPrDu+9mjzSFdeq9QDfywJZtDSJCx8i2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=eg2CZo6B69k+NDoNDGkpPjj+1/lHD1YRwjdPDPGkvxY=;
- b=W9XdqUk8BZFdlhxOaG9ekv1u12tiKYsu9re5boPzyhRg7+XUPkMTG8gidBtDN88FW2MaViEN0c1xzSx1V9Y48JV2/pFVBcGcX3dbuuU1iYTxRVp9fNn4kxB5CjdAU/OH7RDDSZA6T1+wJlInlymMd6L3hZsSrlwaTwl4uFscxFdicWPjKWrveBtClxqFlCyNYkTD/3XlBUk2bM5+3WWeF61MUc8LcgNf9/HSCy0PYtHcByAtXh2y6gco3w8lacLXQ+WMt5T76EboHq20E5HroQM7JFxRAmMgXImoiSnuMQ0Deud982q88D9JwuTZ9Pt9ZPb0ztzN+z9ObvOy/ORKEA==
+ bh=i0h5VNxyYjRTd2K3R3dwCKnSsh5yzwHB23zXBfFyxXY=;
+ b=bKx0H1yA6TWlwEZpr3DMAje1Hg4UbAOTKia2JfAR/oSyTOGnwds0zSjXRzwwZki0phfbuNSenjHBt31gkXt/CanPV0XpAikyBmIi32MAmFZxX/YcAF/0BbSk1iFHbnbNTf+fdDFIoTrJorP8/snopdiH0W8NjiVJkSXi7Q/X04FeppkOIQX5tQMpTdZu1uyXLGWH1nBPDMzKMBLPtnH3oig/iCQ6qRy9EFOEAWeq7REGcTSsT6vRi/tUehZTcwe7Uy3RA3jXIYLtJemFfx0cl443xAQPFyVYs1AiswcX3Rm3u3jK9l9ccO/qJ8dKw1o2ThrJqXgNpRXZr5+evtMMCQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from IA1PR11MB6169.namprd11.prod.outlook.com (2603:10b6:208:3eb::9)
- by DM6PR11MB4674.namprd11.prod.outlook.com (2603:10b6:5:2a0::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.22; Wed, 31 May
- 2023 10:54:42 +0000
-Received: from IA1PR11MB6169.namprd11.prod.outlook.com
- ([fe80::8530:893:31ad:dbf5]) by IA1PR11MB6169.namprd11.prod.outlook.com
- ([fe80::8530:893:31ad:dbf5%7]) with mapi id 15.20.6455.020; Wed, 31 May 2023
- 10:54:41 +0000
-From: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net-next 3/5] net/sched: taprio: add netlink reporting
- for offload statistics counters
-Thread-Index: AQHZktgBpaiYQfi1jUWv2bFemdjo7K90Negw
-Date: Wed, 31 May 2023 10:54:41 +0000
-Message-ID: <IA1PR11MB6169F0DD76B4D34CB1C20190B8489@IA1PR11MB6169.namprd11.prod.outlook.com>
-References: <20230530091948.1408477-1-vladimir.oltean@nxp.com>
- <20230530091948.1408477-4-vladimir.oltean@nxp.com>
-In-Reply-To: <20230530091948.1408477-4-vladimir.oltean@nxp.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR11MB6169:EE_|DM6PR11MB4674:EE_
-x-ms-office365-filtering-correlation-id: d918ea27-1c24-4110-7bfd-08db61c56fbf
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: F9wb+o4iWm2ZgRprsEiLiXE+S1UeQVnNc7079oRXUDooj1uVL1FK3DXQYd8jgdddab4dLYYLrkGlCQ3gj2bkFFQN+iae1v+cbBMf74SMgn2IouU5IZPskFzoO+nvnEkGACNLn4qH3SlSoGPfWLTs8HASCxqdfEd219wkqYpB9rQmyygGlBw9uVRiBfAAQ7JUicaI2r8aKpoXKyxOvijvYXVdBh0sIk/7lO4nwCiUFttydmxpQmsQeUQsFzXK2Adp8ZEMOuIDEGueHQw3eBCntvwJgvXU2ktksHQRIy6dQdLLSi8EuPJONXZosIQGPOCiYpX+NWv7nHiq6I0F+VwnAT4yJtRA8zbkpMSMryfYuxB4BQqLR1cfOuiZJtUuYBHys0KwC9hv5PBiCn2wXLJFtWRDNvjxxbY4Kbp/vWRTarVoN6oxbXeGWaL8/TPf/aXhtIOPtDfV/z7Gs5ia9BVNd9yonqTkdjjuhHROmyjYOFlBaFWNNC7RRWj69921n/GLQUJz45JNBiSDcLIgJQb09cwLvhLteTFeCB0B4/wU/A1h6lZZTOXQ0EgR5tuT9tF2peuOTVsK/mO78bPU/Y8iiRa4a/XSIMmPTMBALwVpL3XR8IyfRX6ZCtqaLqzOG3cc
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR11MB6169.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(396003)(366004)(39860400002)(376002)(136003)(451199021)(71200400001)(478600001)(54906003)(110136005)(33656002)(8676002)(7416002)(8936002)(5660300002)(66476007)(86362001)(2906002)(38070700005)(66446008)(4326008)(66556008)(76116006)(64756008)(122000001)(66946007)(82960400001)(316002)(52536014)(55016003)(41300700001)(38100700002)(26005)(83380400001)(9686003)(6506007)(186003)(53546011)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?nGX1GGb9/JadqCBedAFOh+F+Vp3YSh3HJ6AEg+pT2tkSS08gZ6D9h4lrzNNT?=
- =?us-ascii?Q?lZL58vFPalKWGRjM/p/2mkGFNQl47yxDwcFowEfOBA1ydPdKw7yjip9nsOni?=
- =?us-ascii?Q?auaspxZaDqM58mxZd+LCYieVLbOVp1OoB7o74q0qcg9flIhMHAQAO41TxlUa?=
- =?us-ascii?Q?podXRcI6TbSo50PIOkk3MM3o4F4lKsRyKfUcSD3T52Cbahrp6tYOM1JEDz/F?=
- =?us-ascii?Q?QuWOhSHL/hyLB+fSU/1rv1VJIQd4Isq5MMl8QWRjLo9WOIyFHenNKqNW+V+b?=
- =?us-ascii?Q?3nzZ5IgawJMWJj+OA9vuWtCz3QUBIsfdmqFxd03lGVLkJwcN/s6DO9xPPaTA?=
- =?us-ascii?Q?4NKegjqcZXNy7a514CBRoDC7nk2VPeqKVE6f3V1dVz+QgH5bkMEApoCl6nNc?=
- =?us-ascii?Q?xlirQ2f+1WvuynJwO5kAHCuLTmaK4Rm6aJMtCEsWA4tk3EfWoPtdhs6QryEs?=
- =?us-ascii?Q?nHQaILycronc+EqQMib8d4gW0Fl4IpsWx1l6ZGWu27lKF63IgZjRYlmWJrfA?=
- =?us-ascii?Q?m5I+A/cxl5Rz28Pq7u9j/bd6IW0n0zZ4giqM86cxtndijrYpv+I1VrW2qb6c?=
- =?us-ascii?Q?GOvslJnSezzHkMBwl2CYtj78FCmKswBUEI/FD51pl/dhdzN3BVvzQx26dQ7t?=
- =?us-ascii?Q?8rgT76Qtr9vqF36jtG2Op6p4b5oKtmgAR//YNHPZKQTDbxK9M4di6lsr1gVD?=
- =?us-ascii?Q?wMms+h5NC98yAq+cugpC8LHejBZARYBKRovhXvnOvcS0U0f/FK/tUw+nCI2p?=
- =?us-ascii?Q?DmDTxuw/FQWlrrxmIx4itsWjo0r56/pynhymJs5uxRf5NVliISHrorZjX6+Z?=
- =?us-ascii?Q?yIYFDBz9agH/tNDftgAKnN8dnHsdzH+m/KGwb8q+qJYwDyYAvRryZPD1u9ER?=
- =?us-ascii?Q?vRVcXFluicl8og9SnpcNYIt3Z7nLPfZnPAW6okgHeDShob4OeZfQIn7M4K8+?=
- =?us-ascii?Q?5h5eYeqRur6hyqxA7dTkqHIgHetHZqWYp3PCwbSi+HVvJ3TOisZw7WrigEiT?=
- =?us-ascii?Q?yfQhlMG7dDOrVGlcjpowFqDLRnZTExV7XDY/ha4svUqRjyD/HcNUNx1xqIY5?=
- =?us-ascii?Q?q51K1tsPE3ZAxLSTD1XOIKq2JANV4YTsNeuDY3xNGnsCBP4NdEe4pQNT+/QR?=
- =?us-ascii?Q?2BHKRq+/V+oL8JUsDlOTG/CXy+ZKTdHQIUV+ZsM412k9Sn3uEFXAnlxFH7wH?=
- =?us-ascii?Q?L6QgouxiehQd1s3RAAduP8ocS6AM+O+NqQ6ZN+53c28zHN7EmC+lAOuE4YEO?=
- =?us-ascii?Q?INSEG0wY+/FTtIZNT5lwJ5RSSuI+x2G26SPjs/Pz0bwh9uYX63i7sq9RDzgq?=
- =?us-ascii?Q?7meijVfjXZG60grUD16FoRJ4ap6BX/+OwsOeqkfeHl0GHbQU+ceuLrQJDdGt?=
- =?us-ascii?Q?FmJt/xgIgZMRbgNrcdEDpP/k7lSNInGL9YawC5+1YKXpQ9ACItcRZnNNaGcO?=
- =?us-ascii?Q?WdGkWJvXtwjYLs4LXM/2VZpKIVQbBwo1Iv85g6RPf/JJ2Hq0YtGkIR1ApHw6?=
- =?us-ascii?Q?0DOGHxxbdWAcj3QzHHPgPFy7bWOgZanYf5mRhSJh8zMRSt9v3TrKkWe0AwEH?=
- =?us-ascii?Q?gSyaOAasTX9OCjxz3F5mckOKw3M1txar1hi2Dvquae36wULhKP8wL6K30ESw?=
- =?us-ascii?Q?yrNynwLoFp6KDYaga0HRsg8=3D?=
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ SA1PR11MB6847.namprd11.prod.outlook.com (2603:10b6:806:29e::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6433.22; Wed, 31 May 2023 11:14:35 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::9e4f:80cc:e0aa:6809]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::9e4f:80cc:e0aa:6809%2]) with mapi id 15.20.6433.024; Wed, 31 May 2023
+ 11:14:34 +0000
+Date: Wed, 31 May 2023 13:14:12 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Alexander H Duyck <alexander.duyck@gmail.com>
+Message-ID: <ZHcsBPr0EXx6hkkd@boxer>
+References: <20230525125746.553874-1-aleksander.lobakin@intel.com>
+ <20230525125746.553874-4-aleksander.lobakin@intel.com>
+ <8828262f1c238ab28be9ec87a7701acd791af926.camel@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <8828262f1c238ab28be9ec87a7701acd791af926.camel@gmail.com>
+X-ClientProxiedBy: FR2P281CA0058.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:93::9) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|SA1PR11MB6847:EE_
+X-MS-Office365-Filtering-Correlation-Id: fea9e2e7-4c77-4a61-dc54-08db61c83699
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: lbGHXF3Z/9qxA8YEMI08y4WIMmsjTiPsTHpeK5txlcCwlEMA+HayKD6GTsAG8mm3ri3RS5uAdXqCqO3Cmr66vqf6aGSwRCW7VAfvzWtpjAPEA51g92iiR0DQsw+JP/lfEzq95JaH/bZIv2LUf/6jTxMRz3c4wFvCuDb+FRWemiO5jWsHsWwAjrU9ZkTIRzQVM6AtqpE7T/H6ZS7rt9jvwThHLP04QOxTUUht4GpX5RwlGSkezmcrsegEF7b/9IABM5AG4IFV72iXmyQVE3G49WNgdZ0TH3j56qlsLBML0EYuIR5lOeVdrDkiB/RzGQb1A4vLTEM1VEWHLllQiSmXYL5j3r1Ej5rdUBIwyJaBkRAO/uvtGqSIJaZUPAkz77VbsBHJ6EH+hGWHLdZipC7D7AXy2t8/fgjiXHZvWtmM5/hP93wQd/szhM7lmaDnMpdmDN7lfe7m4Vtmb6Z9blHRchohHciZ7pZgcDCojacJ7RAT1JPkIJANnJIqzzPkhirnNofVcRRSG4CHOT+9LiZ1H1lkK2sPhVCucxPiLulMeLuhnkGvhHzoHf4tJihPjWWy
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(7916004)(366004)(136003)(346002)(376002)(396003)(39860400002)(451199021)(6486002)(26005)(6512007)(9686003)(6506007)(2906002)(186003)(316002)(5660300002)(41300700001)(7416002)(44832011)(8936002)(8676002)(6666004)(478600001)(38100700002)(82960400001)(66899021)(4326008)(6916009)(86362001)(66946007)(33716001)(54906003)(66476007)(83380400001)(66556008);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8thI2iCDlGQ/dPYIu3gc5+wtn5a8z6SbqkQmWW/lGCJVtWJst4kQkH7uuiCT?=
+ =?us-ascii?Q?IFgpKw0WvHx7rreud2UN+NpHCUQO2i384lgwMS8vQqfxPRdQYofAneQwONU0?=
+ =?us-ascii?Q?SDJuLN6EjyRhZzHby8bncuyKquN+5F0G66Nlt5BrQe1ML64BCDBiHW7OmT19?=
+ =?us-ascii?Q?9gIjjJA1p4usJoYgP0zd5ZCdC2ZqxTfGpTeej7CnV/9cZgdlRFaKXx1wsmI0?=
+ =?us-ascii?Q?/ZwOYp4vE1PUZrzaDqVFFAI1eF7D48Wv2fh8EX6nQGPTry0LUxMxxgm7/40V?=
+ =?us-ascii?Q?gN5XDgCGNlqpHE1mM+m+C6Z2DIsoADYRU+A8W1ZBWd8dzVUnMMzneXwvJ2Op?=
+ =?us-ascii?Q?MHI3P8R3nozygtnsmwb6u9mVdDl3e0on/OvIuTrJ2o8gpv8Uq3Q8LtO945Hh?=
+ =?us-ascii?Q?/gezwlAflpGi+6f4ABg9egRUJ/bCXV7gPF4LyWq9+tyW7sS3wAsPPrFIDflK?=
+ =?us-ascii?Q?GOktA5iUk+4ryazWNrLYratfFyhxaIVRq+PE+c2Y4vGQGimyC5Z1zsdWtSji?=
+ =?us-ascii?Q?C/0tH6iGqgtQzTeWt67NjHe9sXun29eWkZCsrMpZ/9jQ6DzXSwjRLMEuTIjG?=
+ =?us-ascii?Q?vBmGoQXGzvSMSu/E/bZEc+WmLK+3XqGy23MPySRjhWE6TR6X/U2wKdP6WlFl?=
+ =?us-ascii?Q?wSduNpGviQK8J31yGl3as52/d/xFi2akxyvHwfH35dyxfhjL4MBi5RKXJQrA?=
+ =?us-ascii?Q?Tt28GfEXgTPYgy7/wjLHr76tEnGH6SexN7Dc5fuctpapAgSQ9LJTNSJn2h4B?=
+ =?us-ascii?Q?+tjpUJfqUQaO8tp7xNP7T1DgqDz76JwaTrFOPbD0UkGDuZg/CcyOMpGTMCM3?=
+ =?us-ascii?Q?hFpmDQySYRw0LTiPMZWkptumcIKN/WXH3EU/2SibJCOnmlBFA79ZED7I6pnY?=
+ =?us-ascii?Q?znhBG29oFhKdF8T4uT7oCXuROyO/j+BcH3f3B/BvWzIm3ystgeHu0iV642tv?=
+ =?us-ascii?Q?5lMwYfPI9Xr4HzVL4msOq59cZ2fkNDI6e9eJ1Eyxdk/h5KQEc4eVPNJ3mXqO?=
+ =?us-ascii?Q?hlg997VZirUDRrkpudO6iw6oDOnRF0JfrpQMUUtOrhsHe+NH+SUYgk5QfKOB?=
+ =?us-ascii?Q?QuDw6CUkFYjVJaMMsMVIhlm4KJLmKRkNjY1XYh60f9yeiEKrtk0/O50mpgt6?=
+ =?us-ascii?Q?IHo2Cbvvhq1+dkTw2nYdggVwR2axa/cXruCqfVhH2oVC3B532sglHGUSm8Cj?=
+ =?us-ascii?Q?Ksd0osPhmbLot3tCZ8KDFadbUkdPtrM8sT4gXzIYZ+0KOQD6Y00moaoMTprB?=
+ =?us-ascii?Q?sNIlUf/EEXWO6n6DWsTxX8eFQI/il+Ap1jwIBQRhDzy9y3VZds5vdfaqUyvt?=
+ =?us-ascii?Q?BOZE+ZkePadWayCnOE+ZY+woAfgcm+xZ0+OYqg8oUsVsVvJm2jzOaqLH4v6o?=
+ =?us-ascii?Q?ndCEvIsUIHVCaM0UvN6Q69Ws4Rj5AbgYmAsmpryvGDWFBbg+I6qdoavJK+Mu?=
+ =?us-ascii?Q?Z/AFUF+eequSYIzTUKVrUJzpF9jAUCGAgCZ6WkFscTKxdQwFnSKLhQ0N8ip2?=
+ =?us-ascii?Q?YB98xIlHF3Ci54TmMrGUjWboetMMPWsg6FfVY4xzsV20wK8z18Vdmmmji4Nw?=
+ =?us-ascii?Q?1WklAJUEmBZFu+zR4tjZ6KLOF+g354izhUCtUCKW699Dw85PN23pSXfFHiI+?=
+ =?us-ascii?Q?8g=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: fea9e2e7-4c77-4a61-dc54-08db61c83699
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6169.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d918ea27-1c24-4110-7bfd-08db61c56fbf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 May 2023 10:54:41.4076 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BCajITpwEhRRi2p2zU9uLErnqZKaGIFvD8twmWNQfGol6+FcE3035V7Xco9QjkM2KHL45n0LF0PwaliTMTH9mvuRwwKT8Mu0sxoboFWA7DUw6nR6OCtuvX+Je13k9yeK
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4674
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2023 11:14:34.4525 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2S7GpB+JUFI8T0OUvbpFyTjVkCbKR2Zhm3moUBAGl6+AEjdhe6IRh+0QUy7/dbgajJh4putaLdtekJ2TNu1hjQF0es0IQXL1pyWzBxAGmuk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6847
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685530488; x=1717066488;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=jXxFjA99d3xchPluwBSxz8gTJfkrnp+iqM1DPvuM8vI=;
- b=ls9jIVPMAMrMRJJoMY5MnIxGYBPcndHANmvmmA+0ajAUEWUczHaA3QCM
- RkyGAo5WVe1yIj9oluLkh42VrCU5EvENId9rFQ7jNTRcTcunJKy9WZ8C9
- i3KHV7Sr7inAlRDmYBwVXWekT88XSw0sE5viduozUrtoQNhMHm/DrkiMw
- 3815D3NHmhERhXJDcl0fpti454fhaSdaqEFGw8suLlUuKTPk289hnqbca
- Ls/SJ/vLew7KFYQ8Ct+CZuYrxKyyvQcPguXP11jv0jeSRAsZh9sJY5cmF
- yGQcREGjqOrGvdttxlnZ+genzK1trZItRX6O9cBT3wI7s4PR2Ro6WqpC9
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1685531680; x=1717067680;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=xp6rPElvGDI9Tw84+MAQTMi2fYjjkcQe+ZyCsWHd7D8=;
+ b=FtuWHhwqESSqIgqGTpwjeO7R8lPkmR/W3XkEHW8hB/YhFh0fKh9PMnGp
+ MS4hCYEcNuRxhmYom6dNYIG12bnqfcYwzSMFGlGz9gnyT8zZlMlYhTm7J
+ VcHppMjEOO2u0pgJ0dMZVQ3AsBjcXH306FmR+0hHUZv601uHZKpl8Rzp0
+ y3eNU33LsWU21ryHUOSR+VUD0ZhukZ4emVg8t0RahmZKFEumwzjlk1SYY
+ rflUCXbeR8g8OJ4ZVrHnrfwC7yjyIJbETJZCBd9AMm31m8AzYL3ldLK9V
+ MmrH0F/DEVVwIeUjh9BwhRvFCWrGu/k/irmSELDfVWuZR65ijEghm7FPX
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ls9jIVPM
+ header.a=rsa-sha256 header.s=Intel header.b=FtuWHhwq
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/5] net/sched: taprio: add
- netlink reporting for offload statistics counters
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 03/12] iavf: optimize Rx
+ buffer allocation a bunch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -191,310 +187,169 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Ferenc Fejes <ferenc.fejes@ericsson.com>, Kurt Kanzenbach <kurt@linutronix.de>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Eric Dumazet <edumazet@google.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Cong Wang <xiyou.wangcong@gmail.com>,
- Gerhard Engleder <gerhard@engleder-embedded.com>,
- "UNGLinuxDriver@microchip.com" <UNGLinuxDriver@microchip.com>,
- Horatiu Vultur <horatiu.vultur@microchip.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Xiaoliang Yang <xiaoliang.yang_1@nxp.com>,
- "Brandeburg, Jesse" <jesse.brandeburg@intel.com>, "Ismail,
- Mohammad Athari" <mohammad.athari.ismail@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Larysa
+ Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, Eric Dumazet <edumazet@google.com>,
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Pranavi Somisetty <pranavi.somisetty@amd.com>, Jiri Pirko <jiri@resnulli.us>,
- "Hadi Salim, Jamal" <jhs@mojatatu.com>, Roger Quadros <rogerq@kernel.org>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, "Sit,
- Michael Wei Hong" <michael.wei.hong.sit@intel.com>,
- Harini Katakam <harini.katakam@amd.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jose Abreu <joabreu@synopsys.com>, Oleksij Rempel <linux@rempel-privat.de>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
+ "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vladimir,
+On Tue, May 30, 2023 at 09:18:40AM -0700, Alexander H Duyck wrote:
 
-> -----Original Message-----
-> From: Vladimir Oltean <vladimir.oltean@nxp.com>
-> Sent: Tuesday, 30 May, 2023 5:20 PM
-> To: netdev@vger.kernel.org
-> Cc: David S. Miller <davem@davemloft.net>; Eric Dumazet
-> <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
-> <pabeni@redhat.com>; Hadi Salim, Jamal <jhs@mojatatu.com>; Cong Wang
-> <xiyou.wangcong@gmail.com>; Jiri Pirko <jiri@resnulli.us>; Gomes, Vinicius
-> <vinicius.gomes@intel.com>; Kurt Kanzenbach <kurt@linutronix.de>;
-> Gerhard Engleder <gerhard@engleder-embedded.com>; Nambiar, Amritha
-> <amritha.nambiar@intel.com>; Ferenc Fejes <ferenc.fejes@ericsson.com>;
-> Xiaoliang Yang <xiaoliang.yang_1@nxp.com>; Roger Quadros
-> <rogerq@kernel.org>; Pranavi Somisetty <pranavi.somisetty@amd.com>;
-> Harini Katakam <harini.katakam@amd.com>; Giuseppe Cavallaro
-> <peppe.cavallaro@st.com>; Alexandre Torgue
-> <alexandre.torgue@foss.st.com>; Sit, Michael Wei Hong
-> <michael.wei.hong.sit@intel.com>; Ismail, Mohammad Athari
-> <mohammad.athari.ismail@intel.com>; Oleksij Rempel <linux@rempel-
-> privat.de>; Keller, Jacob E <jacob.e.keller@intel.com>; linux-
-> kernel@vger.kernel.org; Andrew Lunn <andrew@lunn.ch>; Florian Fainelli
-> <f.fainelli@gmail.com>; Claudiu Manoil <claudiu.manoil@nxp.com>;
-> Alexandre Belloni <alexandre.belloni@bootlin.com>;
-> UNGLinuxDriver@microchip.com; Brandeburg, Jesse
-> <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; Horatiu Vultur
-> <horatiu.vultur@microchip.com>; Jose Abreu <joabreu@synopsys.com>;
-> Maxime Coquelin <mcoquelin.stm32@gmail.com>; intel-wired-
-> lan@lists.osuosl.org; Zulkifli, Muhammad Husaini
-> <muhammad.husaini.zulkifli@intel.com>
-> Subject: [PATCH net-next 3/5] net/sched: taprio: add netlink reporting for
-> offload statistics counters
-> 
-> Offloading drivers may report some additional statistics counters, some of
-> them even suggested by 802.1Q, like TransmissionOverrun.
-> 
-> In my opinion we don't have to limit ourselves to reporting counters only
-> globally to the Qdisc/interface, especially if the device has more detailed
-> reporting (per traffic class), since the more detailed info is valuable for
-> debugging and can help identifying who is exceeding its time slot.
-> 
-> But on the other hand, some devices may not be able to report both per TC
-> and global stats.
-> 
-> So we end up reporting both ways, and use the good old ethtool_put_stat()
-> strategy to determine which statistics are supported by this NIC.
-> Statistics which aren't set are simply not reported to netlink. For this reason,
-> we need something dynamic (a nlattr nest) to be reported through
-> TCA_STATS_APP, and not something daft like the fixed-size and inextensible
-> struct tc_codel_xstats. A good model for xstats which are a nlattr nest rather
-> than a fixed struct seems to be cake.
-> 
->  # Global stats
->  $ tc -s qdisc show dev eth0 root
->  # Per-tc stats
->  $ tc -s class show dev eth0
-> 
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+FWIW I agree with what Alex is saying over here.
 
-Tested-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+> On Thu, 2023-05-25 at 14:57 +0200, Alexander Lobakin wrote:
+> > The Rx hotpath code of IAVF is not well-optimized TBH. Before doing any
+> > further buffer model changes, shake it up a bit. Notably:
+> > 
+> > 1. Cache more variables on the stack.
+> >    DMA device, Rx page size, NTC -- these are the most common things
+> >    used all throughout the hotpath, often in loops on each iteration.
+> >    Instead of fetching (or even calculating, as with the page size) them
+> >    from the ring all the time, cache them on the stack at the beginning
+> >    of the NAPI polling callback. NTC will be written back at the end,
+> >    the rest are used read-only, so no sync needed.
+> 
+> The advantage of this is going to vary based on the attribute. One of
+> the reasons why I left most of this on the ring is because the section
+> of the ring most of these variables were meant to be read-mostly and
+> shouldn't have resulted in any additional overhead versus accessing
+> them from the stack.
 
-Thanks for the patch :) 
-I applied my changes on top of your patch series, and it worked for both 
-TAPRIO_CMD_STATS and TAPRIO_CMD_TC_STATS.  Awesome!
+I believe it depends on ring struct layout which vary across our drivers,
+no? On ice using making more usage of stack as described above improved
+perf.
 
-> ---
->  include/net/pkt_sched.h        | 47 ++++++++++++++++----
->  include/uapi/linux/pkt_sched.h | 10 +++++
->  net/sched/sch_taprio.c         | 78 +++++++++++++++++++++++++++++++++-
->  3 files changed, 126 insertions(+), 9 deletions(-)
 > 
-> diff --git a/include/net/pkt_sched.h b/include/net/pkt_sched.h index
-> f5fb11da357b..530d33adec88 100644
-> --- a/include/net/pkt_sched.h
-> +++ b/include/net/pkt_sched.h
-> @@ -188,6 +188,27 @@ struct tc_taprio_caps {  enum tc_taprio_qopt_cmd {
->  	TAPRIO_CMD_REPLACE,
->  	TAPRIO_CMD_DESTROY,
-> +	TAPRIO_CMD_STATS,
-> +	TAPRIO_CMD_TC_STATS,
-> +};
-> +
-> +/**
-> + * struct tc_taprio_qopt_stats - IEEE 802.1Qbv statistics
-> + * @window_drops: Frames that were dropped because they were too large
-> to be
-> + *	transmitted in any of the allotted time windows (open gates) for their
-> + *	traffic class.
-> + * @tx_overruns: Frames still being transmitted by the MAC after the
-> + *	transmission gate associated with their traffic class has closed.
-> + *	Equivalent to `12.29.1.1.2 TransmissionOverrun` from 802.1Q-2018.
-> + */
-> +struct tc_taprio_qopt_stats {
-> +	u64 window_drops;
-> +	u64 tx_overruns;
-> +};
-> +
-> +struct tc_taprio_qopt_tc_stats {
-> +	int tc;
-> +	struct tc_taprio_qopt_stats stats;
->  };
+> > 2. Don't move the recycled buffers around the ring.
+> >    The idea of passing the page of the right-now-recycled-buffer to a
+> >    different buffer, in this case, the first one that needs to be
+> >    allocated, moreover, on each new frame, is fundamentally wrong. It
+> >    involves a few o' fetches, branches and then writes (and one Rx
+> >    buffer struct is at least 32 bytes) where they're completely unneeded,
+> >    but gives no good -- the result is the same as if we'd recycle it
+> >    inplace, at the same position where it was used. So drop this and let
+> >    the main refilling function take care of all the buffers, which were
+> >    processed and now need to be recycled/refilled.
 > 
->  struct tc_taprio_sched_entry {
-> @@ -199,16 +220,26 @@ struct tc_taprio_sched_entry {  };
+> The next_to_alloc logic was put in place to deal with systems that are
+> experiencing memory issues. Specifically what can end up happening is
+> that the ring can stall due to failing memory allocations and the
+> memory can get stuck on the ring. For that reason we were essentially
+> defragmenting the buffers when we started suffering memory pressure so
+> that they could be reusued and/or freed following immediate use.
 > 
->  struct tc_taprio_qopt_offload {
-> -	struct tc_mqprio_qopt_offload mqprio;
-> -	struct netlink_ext_ack *extack;
->  	enum tc_taprio_qopt_cmd cmd;
-> -	ktime_t base_time;
-> -	u64 cycle_time;
-> -	u64 cycle_time_extension;
-> -	u32 max_sdu[TC_MAX_QUEUE];
-> 
-> -	size_t num_entries;
-> -	struct tc_taprio_sched_entry entries[];
-> +	union {
-> +		/* TAPRIO_CMD_STATS */
-> +		struct tc_taprio_qopt_stats stats;
-> +		/* TAPRIO_CMD_TC_STATS */
-> +		struct tc_taprio_qopt_tc_stats tc_stats;
-> +		/* TAPRIO_CMD_REPLACE */
-> +		struct {
-> +			struct tc_mqprio_qopt_offload mqprio;
-> +			struct netlink_ext_ack *extack;
-> +			ktime_t base_time;
-> +			u64 cycle_time;
-> +			u64 cycle_time_extension;
-> +			u32 max_sdu[TC_MAX_QUEUE];
-> +
-> +			size_t num_entries;
-> +			struct tc_taprio_sched_entry entries[];
-> +		};
-> +	};
->  };
-> 
->  #if IS_ENABLED(CONFIG_NET_SCH_TAPRIO)
-> diff --git a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
-> index 51a7addc56c6..00f6ff0aff1f 100644
-> --- a/include/uapi/linux/pkt_sched.h
-> +++ b/include/uapi/linux/pkt_sched.h
-> @@ -1259,6 +1259,16 @@ enum {
->  	TCA_TAPRIO_TC_ENTRY_MAX = (__TCA_TAPRIO_TC_ENTRY_CNT - 1)
-> };
-> 
-> +enum {
-> +	TCA_TAPRIO_OFFLOAD_STATS_PAD = 1,	/* u64 */
-> +	TCA_TAPRIO_OFFLOAD_STATS_WINDOW_DROPS,	/* u64 */
-> +	TCA_TAPRIO_OFFLOAD_STATS_TX_OVERRUNS,	/* u64 */
-> +
-> +	/* add new constants above here */
-> +	__TCA_TAPRIO_OFFLOAD_STATS_CNT,
-> +	TCA_TAPRIO_OFFLOAD_STATS_MAX =
-> (__TCA_TAPRIO_OFFLOAD_STATS_CNT - 1) };
-> +
->  enum {
->  	TCA_TAPRIO_ATTR_UNSPEC,
->  	TCA_TAPRIO_ATTR_PRIOMAP, /* struct tc_mqprio_qopt */ diff --git
-> a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c index
-> 06bf4c6355a5..3c4c2c334878 100644
-> --- a/net/sched/sch_taprio.c
-> +++ b/net/sched/sch_taprio.c
-> @@ -27,6 +27,8 @@
->  #include <net/sock.h>
->  #include <net/tcp.h>
-> 
-> +#define TAPRIO_STAT_NOT_SET	(~0ULL)
-> +
->  #include "sch_mqprio_lib.h"
-> 
->  static LIST_HEAD(taprio_list);
-> @@ -2289,6 +2291,72 @@ static int taprio_dump_tc_entries(struct sk_buff
-> *skb,
->  	return -EMSGSIZE;
->  }
-> 
-> +static int taprio_put_stat(struct sk_buff *skb, u64 val, u16 attrtype)
-> +{
-> +	if (val == TAPRIO_STAT_NOT_SET)
-> +		return 0;
-> +	if (nla_put_u64_64bit(skb, attrtype, val,
-> TCA_TAPRIO_OFFLOAD_STATS_PAD))
-> +		return -EMSGSIZE;
-> +	return 0;
-> +}
-> +
-> +static int taprio_dump_xstats(struct Qdisc *sch, struct gnet_dump *d,
-> +			      struct tc_taprio_qopt_offload *offload,
-> +			      struct tc_taprio_qopt_stats *stats) {
-> +	struct net_device *dev = qdisc_dev(sch);
-> +	const struct net_device_ops *ops;
-> +	struct sk_buff *skb = d->skb;
-> +	struct nlattr *xstats;
-> +	int err;
-> +
-> +	ops = qdisc_dev(sch)->netdev_ops;
-> +
-> +	/* FIXME I could use qdisc_offload_dump_helper(), but that messes
-> +	 * with sch->flags depending on whether the device reports taprio
-> +	 * stats, and I'm not sure whether that's a good idea, considering
-> +	 * that stats are optional to the offload itself
-> +	 */
-> +	if (!ops->ndo_setup_tc)
-> +		return 0;
-> +
-> +	memset(stats, 0xff, sizeof(*stats));
-> +
-> +	err = ops->ndo_setup_tc(dev, TC_SETUP_QDISC_TAPRIO, offload);
-> +	if (err == -EOPNOTSUPP)
-> +		return 0;
-> +	if (err)
-> +		return err;
-> +
-> +	xstats = nla_nest_start(skb, TCA_STATS_APP);
-> +	if (!xstats)
-> +		goto err;
-> +
-> +	if (taprio_put_stat(skb, stats->window_drops,
-> +			    TCA_TAPRIO_OFFLOAD_STATS_WINDOW_DROPS)
-> ||
-> +	    taprio_put_stat(skb, stats->tx_overruns,
-> +			    TCA_TAPRIO_OFFLOAD_STATS_TX_OVERRUNS))
-> +		goto err_cancel;
-> +
-> +	nla_nest_end(skb, xstats);
-> +
-> +	return 0;
-> +
-> +err_cancel:
-> +	nla_nest_cancel(skb, xstats);
-> +err:
-> +	return -EMSGSIZE;
-> +}
-> +
-> +static int taprio_dump_stats(struct Qdisc *sch, struct gnet_dump *d) {
-> +	struct tc_taprio_qopt_offload offload = {
-> +		.cmd = TAPRIO_CMD_STATS,
-> +	};
-> +
-> +	return taprio_dump_xstats(sch, d, &offload, &offload.stats); }
-> +
->  static int taprio_dump(struct Qdisc *sch, struct sk_buff *skb)  {
->  	struct taprio_sched *q = qdisc_priv(sch); @@ -2389,11 +2457,18 @@
-> static int taprio_dump_class_stats(struct Qdisc *sch, unsigned long cl,  {
->  	struct netdev_queue *dev_queue = taprio_queue_get(sch, cl);
->  	struct Qdisc *child = dev_queue->qdisc_sleeping;
-> +	struct tc_taprio_qopt_offload offload = {
-> +		.cmd = TAPRIO_CMD_TC_STATS,
-> +		.tc_stats = {
-> +			.tc = cl - 1,
-> +		},
-> +	};
-> 
->  	if (gnet_stats_copy_basic(d, NULL, &child->bstats, true) < 0 ||
->  	    qdisc_qstats_copy(d, child) < 0)
->  		return -1;
-> -	return 0;
-> +
-> +	return taprio_dump_xstats(sch, d, &offload, &offload.tc_stats.stats);
->  }
-> 
->  static void taprio_walk(struct Qdisc *sch, struct qdisc_walker *arg) @@ -
-> 2440,6 +2515,7 @@ static struct Qdisc_ops taprio_qdisc_ops __read_mostly
-> = {
->  	.dequeue	= taprio_dequeue,
->  	.enqueue	= taprio_enqueue,
->  	.dump		= taprio_dump,
-> +	.dump_stats	= taprio_dump_stats,
->  	.owner		= THIS_MODULE,
->  };
-> 
-> --
-> 2.34.1
+> Basically what you are trading off is some exception handling for
+> performance by removing it.
 
+With all of the mix of the changes this patch carries, I find it hard to
+follow from description which parts of diff I should be looking at.
+
+> 
+> > 3. Don't allocate with %GPF_ATOMIC on ifup.
+> >    This involved introducing the @gfp parameter to a couple functions.
+> >    Doesn't change anything for Rx -> softirq.
+> 
+> Any specific reason for this? Just wondering if this is meant to
+> address some sort of memory pressure issue since it basically just
+> means the allocation can go out and try to free other memory.
+> 
+> > 4. 1 budget unit == 1 descriptor, not skb.
+> >    There could be underflow when receiving a lot of fragmented frames.
+> >    If each of them would consist of 2 frags, it means that we'd process
+> >    64 descriptors at the point where we pass the 32th skb to the stack.
+> >    But the driver would count that only as a half, which could make NAPI
+> >    re-enable interrupts prematurely and create unnecessary CPU load.
+> 
+> Not sure I agree with this. The problem is the overhead for an skb
+> going up the stack versus a fragment are pretty signficant. Keep in
+> mind that most of the overhead for a single buffer occurs w/
+> napi_gro_receive and is not actually at the driver itself. The whole
+> point of the budget is to meter out units of work, not to keep you in
+> the busy loop. This starts looking like the old code where the Intel
+> drivers were returning either budget or 0 instead of supporting the
+> middle ground.
+> 
+> > 5. Shortcut !size case.
+> >    It's super rare, but possible -- for example, if the last buffer of
+> >    the fragmented frame contained only FCS, which was then stripped by
+> >    the HW. Instead of checking for size several times when processing,
+> >    quickly reuse the buffer and jump to the skb fields part.
+> > 6. Refill the ring after finishing the polling loop.
+> >    Previously, the loop wasn't starting a new iteration after the 64th
+> >    desc, meaning that we were always leaving 16 buffers non-refilled
+> >    until the next NAPI poll. It's better to refill them while they're
+> >    still hot, so do that right after exiting the loop as well.
+> >    For a full cycle of 64 descs, there will be 4 refills of 16 descs
+> >    from now on.
+> > 
+> > Function: add/remove: 4/2 grow/shrink: 0/5 up/down: 473/-647 (-174)
+> > 
+> > + up to 2% performance.
+> > 
+> 
+> What is the test you saw the 2% performance improvement in? Is it
+> something XDP related or a full stack test?
+
++1, can you say more about that measurement?
+
+> 
+> > Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> 
+> Also one thing I am not a huge fan of is a patch that is really a
+> patchset onto itself. With all 6 items called out here I would have
+> preferred to see this as 6 patches as it would have been easier to
+> review.
+
++1
+
+> 
+> > ---
+> >  drivers/net/ethernet/intel/iavf/iavf_main.c |   2 +-
+> >  drivers/net/ethernet/intel/iavf/iavf_txrx.c | 259 +++++++++-----------
+> >  drivers/net/ethernet/intel/iavf/iavf_txrx.h |   3 +-
+> >  3 files changed, 114 insertions(+), 150 deletions(-)
+> > 
+
+(...)
+
+> >  }
+> > @@ -1350,14 +1297,6 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
+> >  			    union iavf_rx_desc *rx_desc,
+> >  			    struct sk_buff *skb)
+> >  {
+> > -	u32 ntc = rx_ring->next_to_clean + 1;
+> > -
+> > -	/* fetch, update, and store next to clean */
+> > -	ntc = (ntc < rx_ring->count) ? ntc : 0;
+> > -	rx_ring->next_to_clean = ntc;
+> > -
+> > -	prefetch(IAVF_RX_DESC(rx_ring, ntc));
+> > -
+> >  	/* if we are the last buffer then there is nothing else to do */
+> >  #define IAVF_RXD_EOF BIT(IAVF_RX_DESC_STATUS_EOF_SHIFT)
+> >  	if (likely(iavf_test_staterr(rx_desc, IAVF_RXD_EOF)))
+> 
+> You may want to see if you can get rid of this function entirely,
+> perhaps you do in a later patch. This function was added for ixgbe back
+> in the day to allow us to place the skb back in the ring for the RSC
+> based workloads where we had to deal with interleaved frames in the Rx
+> path.
+> 
+> For example, one question here would be why are we passing skb? It
+> isn't used as far as I can tell.
+> 
+this was used back when skb was stored within the Rx buffer and now we
+just store skb on Rx ring struct, so good catch, this arg is redundant.
+
+I'll go and take a look at code on v3.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
