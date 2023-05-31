@@ -1,180 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C9D8717DCE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 13:14:50 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACC78717F62
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 14:00:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4047B8130E;
-	Wed, 31 May 2023 11:14:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4047B8130E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 48BC460D94;
+	Wed, 31 May 2023 12:00:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 48BC460D94
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685531689;
-	bh=eNSjcwRFqkK8UGDWH4MqDcUI7XeQJtcOs4p6Oycy/NQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=gw0fPe7+YNnfL9nZiCDwTHrQy2fm7lSXy4BjrXAIX71tTyXAYBvj8d9d/ChOgQsDk
-	 XmpF9iua2gpJQbA8wEuSZhwJQqTvWaVveUFbXpUO0XdmiRnvVv80eTGJWo5VNs1CXQ
-	 90tUD60I4kigY06Re+6fvXnFX7Ot7Nv6x5wY5X8gb2ZbW7m2iFwrIO3279mlp32TSk
-	 YrmE+3Q3OnfesrNW2re49grsVo0cxJhoyZ0tnbA0dPknZAOJ7Q/Vig1JxXSITlkJSI
-	 NOCigXr++OfBGmXeEEyF3NLI07DHBV+XfAclQsddyaskzVmfrCHN6Es7j/CKJ7vpLV
-	 rnf7VeIVYCANw==
+	s=default; t=1685534425;
+	bh=7M594w5To75cosdXmNTP2De/jOfK017KjAn+5UV0sdA=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=J1EULfh69x5EJHtJegzGQ3PsfVi0hLY7CM9cXIYbjo46SLTeJypTTpb5LlB+qJcz1
+	 /8aqmODo4Sv40w2oIOWOjovuSULL4o/R7qc7BhXTj+h6n9aYUWktEapd7TgiNRAaqy
+	 Od1Bk7vCZ16mx0EFBnuQx7uLssLrLTJgleK0qvOyhvFtwrh0BmL0tvumb1VOxmM3CA
+	 mf4cZw6q36Kf+ePadA7HXL9rZVpvJcel4QmviUDJtbF0WzTnYcIDc5tlRVuTOcgB8y
+	 qaMlLcZtiFHCUaf4BJK8hSjdHHONDgqNRiTKP+D6ozWb2NSIg4hg/V1mcosugQL2Gq
+	 NC/j+vvnPJumQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8LfW_1W96aXf; Wed, 31 May 2023 11:14:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 26ijf_TVVUVJ; Wed, 31 May 2023 12:00:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8004811F9;
-	Wed, 31 May 2023 11:14:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8004811F9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2AD65608D8;
+	Wed, 31 May 2023 12:00:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2AD65608D8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E454D1BF41F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EDB731BF41F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 12:00:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BC44F81284
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC44F81284
+ by smtp4.osuosl.org (Postfix) with ESMTP id C504A40E47
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 12:00:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C504A40E47
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GLTtg6L3-7qC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 May 2023 11:14:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I2WwSbPqln62 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 May 2023 12:00:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D2BC811F9
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7D2BC811F9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:14:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="441562608"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="441562608"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 May 2023 04:14:39 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 698D9410B0
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 698D9410B0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 12:00:18 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="354058990"
+X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="354058990"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 May 2023 05:00:17 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="706844918"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="706844918"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga002.jf.intel.com with ESMTP; 31 May 2023 04:14:38 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 31 May 2023 04:14:38 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 31 May 2023 04:14:38 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Wed, 31 May 2023 04:14:38 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Wed, 31 May 2023 04:14:37 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KUbQJ0rCJoScm1R8/yfMiI5gx/5hHIUWFVi2GpzgbmEDc46BXfrOtx2/2LxhuC/isc182qWvqJzG2mpb+A5UO4n2zu1RJqIenJrWdLI2fhcUTTDZZlBcxTRq6T/H+xFUCCQruUwXt4fLAzlzpNoyfEV0E7yxOhj+4AB7USIZjVwtVZ/LSflwPDCQ++0Qju6u127HwG6MAMCY7s4K7R1ZUpPhkjcj9q+wqtdl8Z1qsF+rkUMtgzMm4EpjBQB/+etYp6zE9AUqblrHcoG43DxApWSRAcLsgtDum+PhhTAuDJvOXg/vrAjwmIPrDu+9mjzSFdeq9QDfywJZtDSJCx8i2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=i0h5VNxyYjRTd2K3R3dwCKnSsh5yzwHB23zXBfFyxXY=;
- b=bKx0H1yA6TWlwEZpr3DMAje1Hg4UbAOTKia2JfAR/oSyTOGnwds0zSjXRzwwZki0phfbuNSenjHBt31gkXt/CanPV0XpAikyBmIi32MAmFZxX/YcAF/0BbSk1iFHbnbNTf+fdDFIoTrJorP8/snopdiH0W8NjiVJkSXi7Q/X04FeppkOIQX5tQMpTdZu1uyXLGWH1nBPDMzKMBLPtnH3oig/iCQ6qRy9EFOEAWeq7REGcTSsT6vRi/tUehZTcwe7Uy3RA3jXIYLtJemFfx0cl443xAQPFyVYs1AiswcX3Rm3u3jK9l9ccO/qJ8dKw1o2ThrJqXgNpRXZr5+evtMMCQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
- SA1PR11MB6847.namprd11.prod.outlook.com (2603:10b6:806:29e::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6433.22; Wed, 31 May 2023 11:14:35 +0000
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::9e4f:80cc:e0aa:6809]) by DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::9e4f:80cc:e0aa:6809%2]) with mapi id 15.20.6433.024; Wed, 31 May 2023
- 11:14:34 +0000
-Date: Wed, 31 May 2023 13:14:12 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Alexander H Duyck <alexander.duyck@gmail.com>
-Message-ID: <ZHcsBPr0EXx6hkkd@boxer>
-References: <20230525125746.553874-1-aleksander.lobakin@intel.com>
- <20230525125746.553874-4-aleksander.lobakin@intel.com>
- <8828262f1c238ab28be9ec87a7701acd791af926.camel@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <8828262f1c238ab28be9ec87a7701acd791af926.camel@gmail.com>
-X-ClientProxiedBy: FR2P281CA0058.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:93::9) To DM4PR11MB6117.namprd11.prod.outlook.com
- (2603:10b6:8:b3::19)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|SA1PR11MB6847:EE_
-X-MS-Office365-Filtering-Correlation-Id: fea9e2e7-4c77-4a61-dc54-08db61c83699
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: lbGHXF3Z/9qxA8YEMI08y4WIMmsjTiPsTHpeK5txlcCwlEMA+HayKD6GTsAG8mm3ri3RS5uAdXqCqO3Cmr66vqf6aGSwRCW7VAfvzWtpjAPEA51g92iiR0DQsw+JP/lfEzq95JaH/bZIv2LUf/6jTxMRz3c4wFvCuDb+FRWemiO5jWsHsWwAjrU9ZkTIRzQVM6AtqpE7T/H6ZS7rt9jvwThHLP04QOxTUUht4GpX5RwlGSkezmcrsegEF7b/9IABM5AG4IFV72iXmyQVE3G49WNgdZ0TH3j56qlsLBML0EYuIR5lOeVdrDkiB/RzGQb1A4vLTEM1VEWHLllQiSmXYL5j3r1Ej5rdUBIwyJaBkRAO/uvtGqSIJaZUPAkz77VbsBHJ6EH+hGWHLdZipC7D7AXy2t8/fgjiXHZvWtmM5/hP93wQd/szhM7lmaDnMpdmDN7lfe7m4Vtmb6Z9blHRchohHciZ7pZgcDCojacJ7RAT1JPkIJANnJIqzzPkhirnNofVcRRSG4CHOT+9LiZ1H1lkK2sPhVCucxPiLulMeLuhnkGvhHzoHf4tJihPjWWy
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(7916004)(366004)(136003)(346002)(376002)(396003)(39860400002)(451199021)(6486002)(26005)(6512007)(9686003)(6506007)(2906002)(186003)(316002)(5660300002)(41300700001)(7416002)(44832011)(8936002)(8676002)(6666004)(478600001)(38100700002)(82960400001)(66899021)(4326008)(6916009)(86362001)(66946007)(33716001)(54906003)(66476007)(83380400001)(66556008);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8thI2iCDlGQ/dPYIu3gc5+wtn5a8z6SbqkQmWW/lGCJVtWJst4kQkH7uuiCT?=
- =?us-ascii?Q?IFgpKw0WvHx7rreud2UN+NpHCUQO2i384lgwMS8vQqfxPRdQYofAneQwONU0?=
- =?us-ascii?Q?SDJuLN6EjyRhZzHby8bncuyKquN+5F0G66Nlt5BrQe1ML64BCDBiHW7OmT19?=
- =?us-ascii?Q?9gIjjJA1p4usJoYgP0zd5ZCdC2ZqxTfGpTeej7CnV/9cZgdlRFaKXx1wsmI0?=
- =?us-ascii?Q?/ZwOYp4vE1PUZrzaDqVFFAI1eF7D48Wv2fh8EX6nQGPTry0LUxMxxgm7/40V?=
- =?us-ascii?Q?gN5XDgCGNlqpHE1mM+m+C6Z2DIsoADYRU+A8W1ZBWd8dzVUnMMzneXwvJ2Op?=
- =?us-ascii?Q?MHI3P8R3nozygtnsmwb6u9mVdDl3e0on/OvIuTrJ2o8gpv8Uq3Q8LtO945Hh?=
- =?us-ascii?Q?/gezwlAflpGi+6f4ABg9egRUJ/bCXV7gPF4LyWq9+tyW7sS3wAsPPrFIDflK?=
- =?us-ascii?Q?GOktA5iUk+4ryazWNrLYratfFyhxaIVRq+PE+c2Y4vGQGimyC5Z1zsdWtSji?=
- =?us-ascii?Q?C/0tH6iGqgtQzTeWt67NjHe9sXun29eWkZCsrMpZ/9jQ6DzXSwjRLMEuTIjG?=
- =?us-ascii?Q?vBmGoQXGzvSMSu/E/bZEc+WmLK+3XqGy23MPySRjhWE6TR6X/U2wKdP6WlFl?=
- =?us-ascii?Q?wSduNpGviQK8J31yGl3as52/d/xFi2akxyvHwfH35dyxfhjL4MBi5RKXJQrA?=
- =?us-ascii?Q?Tt28GfEXgTPYgy7/wjLHr76tEnGH6SexN7Dc5fuctpapAgSQ9LJTNSJn2h4B?=
- =?us-ascii?Q?+tjpUJfqUQaO8tp7xNP7T1DgqDz76JwaTrFOPbD0UkGDuZg/CcyOMpGTMCM3?=
- =?us-ascii?Q?hFpmDQySYRw0LTiPMZWkptumcIKN/WXH3EU/2SibJCOnmlBFA79ZED7I6pnY?=
- =?us-ascii?Q?znhBG29oFhKdF8T4uT7oCXuROyO/j+BcH3f3B/BvWzIm3ystgeHu0iV642tv?=
- =?us-ascii?Q?5lMwYfPI9Xr4HzVL4msOq59cZ2fkNDI6e9eJ1Eyxdk/h5KQEc4eVPNJ3mXqO?=
- =?us-ascii?Q?hlg997VZirUDRrkpudO6iw6oDOnRF0JfrpQMUUtOrhsHe+NH+SUYgk5QfKOB?=
- =?us-ascii?Q?QuDw6CUkFYjVJaMMsMVIhlm4KJLmKRkNjY1XYh60f9yeiEKrtk0/O50mpgt6?=
- =?us-ascii?Q?IHo2Cbvvhq1+dkTw2nYdggVwR2axa/cXruCqfVhH2oVC3B532sglHGUSm8Cj?=
- =?us-ascii?Q?Ksd0osPhmbLot3tCZ8KDFadbUkdPtrM8sT4gXzIYZ+0KOQD6Y00moaoMTprB?=
- =?us-ascii?Q?sNIlUf/EEXWO6n6DWsTxX8eFQI/il+Ap1jwIBQRhDzy9y3VZds5vdfaqUyvt?=
- =?us-ascii?Q?BOZE+ZkePadWayCnOE+ZY+woAfgcm+xZ0+OYqg8oUsVsVvJm2jzOaqLH4v6o?=
- =?us-ascii?Q?ndCEvIsUIHVCaM0UvN6Q69Ws4Rj5AbgYmAsmpryvGDWFBbg+I6qdoavJK+Mu?=
- =?us-ascii?Q?Z/AFUF+eequSYIzTUKVrUJzpF9jAUCGAgCZ6WkFscTKxdQwFnSKLhQ0N8ip2?=
- =?us-ascii?Q?YB98xIlHF3Ci54TmMrGUjWboetMMPWsg6FfVY4xzsV20wK8z18Vdmmmji4Nw?=
- =?us-ascii?Q?1WklAJUEmBZFu+zR4tjZ6KLOF+g354izhUCtUCKW699Dw85PN23pSXfFHiI+?=
- =?us-ascii?Q?8g=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fea9e2e7-4c77-4a61-dc54-08db61c83699
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2023 11:14:34.4525 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2S7GpB+JUFI8T0OUvbpFyTjVkCbKR2Zhm3moUBAGl6+AEjdhe6IRh+0QUy7/dbgajJh4putaLdtekJ2TNu1hjQF0es0IQXL1pyWzBxAGmuk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6847
-X-OriginatorOrg: intel.com
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="1037013940"
+X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="1037013940"
+Received: from lkp-server01.sh.intel.com (HELO fb1ced2c09fb) ([10.239.97.150])
+ by fmsmga005.fm.intel.com with ESMTP; 31 May 2023 05:00:17 -0700
+Received: from kbuild by fb1ced2c09fb with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1q4KUy-0001IN-2E
+ for intel-wired-lan@lists.osuosl.org; Wed, 31 May 2023 12:00:16 +0000
+Date: Wed, 31 May 2023 19:59:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <20230531115938.hx8rq%lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685531680; x=1717067680;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=xp6rPElvGDI9Tw84+MAQTMi2fYjjkcQe+ZyCsWHd7D8=;
- b=FtuWHhwqESSqIgqGTpwjeO7R8lPkmR/W3XkEHW8hB/YhFh0fKh9PMnGp
- MS4hCYEcNuRxhmYom6dNYIG12bnqfcYwzSMFGlGz9gnyT8zZlMlYhTm7J
- VcHppMjEOO2u0pgJ0dMZVQ3AsBjcXH306FmR+0hHUZv601uHZKpl8Rzp0
- y3eNU33LsWU21ryHUOSR+VUD0ZhukZ4emVg8t0RahmZKFEumwzjlk1SYY
- rflUCXbeR8g8OJ4ZVrHnrfwC7yjyIJbETJZCBd9AMm31m8AzYL3ldLK9V
- MmrH0F/DEVVwIeUjh9BwhRvFCWrGu/k/irmSELDfVWuZR65ijEghm7FPX
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1685534418; x=1717070418;
+ h=date:from:to:subject:message-id;
+ bh=Y/hPr21ZbCPxqtd+ZSpZnYPZrJ+1AsrkhR9o97gxix8=;
+ b=KwOB3bkYRv9pPTe0u6Or7rhy3Arviz+0vdnVQZhl6S5R5w9PLchZBUb2
+ ceIQWy6uoqLRXKgVU4Im5DPWGHtxzlGJ8yATHJheveWCs3NtSOqaockv2
+ cTTPKGobkQkk6GtrBVGxKkFassDsx2PkKaNQFMaWduyiWJMe2vnIQECl7
+ ZnfdA1zWO9PnAkH9GKnaM/b31int4/qks/Kln0UcENO5s5bwU3FGDPrrv
+ FNPVpC3a1iv3N2VzvWPS4avyWOWFuLOAkWCWrrnKiGiJlZlKxp6Ru/Vkn
+ zmlOSPtzSjQyBWIjmnM0d3hpt2keDsffjALxRkdYpCUdqGjaWpz2j0Vwi
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FtuWHhwq
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 03/12] iavf: optimize Rx
- buffer allocation a bunch
+ header.a=rsa-sha256 header.s=Intel header.b=KwOB3bkY
+Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
+ 2e246bca986598bdc9d7cae64cf0995257328a5d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -187,169 +93,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Larysa
- Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
- Christoph Hellwig <hch@lst.de>, Eric Dumazet <edumazet@google.com>,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 30, 2023 at 09:18:40AM -0700, Alexander H Duyck wrote:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git main
+branch HEAD: 2e246bca986598bdc9d7cae64cf0995257328a5d  Merge branch 'devlink-move-port-ops-into-separate-structure'
 
-FWIW I agree with what Alex is saying over here.
+elapsed time: 1004m
 
-> On Thu, 2023-05-25 at 14:57 +0200, Alexander Lobakin wrote:
-> > The Rx hotpath code of IAVF is not well-optimized TBH. Before doing any
-> > further buffer model changes, shake it up a bit. Notably:
-> > 
-> > 1. Cache more variables on the stack.
-> >    DMA device, Rx page size, NTC -- these are the most common things
-> >    used all throughout the hotpath, often in loops on each iteration.
-> >    Instead of fetching (or even calculating, as with the page size) them
-> >    from the ring all the time, cache them on the stack at the beginning
-> >    of the NAPI polling callback. NTC will be written back at the end,
-> >    the rest are used read-only, so no sync needed.
-> 
-> The advantage of this is going to vary based on the attribute. One of
-> the reasons why I left most of this on the ring is because the section
-> of the ring most of these variables were meant to be read-mostly and
-> shouldn't have resulted in any additional overhead versus accessing
-> them from the stack.
+configs tested: 71
+configs skipped: 7
 
-I believe it depends on ring struct layout which vary across our drivers,
-no? On ice using making more usage of stack as described above improved
-perf.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> 
-> > 2. Don't move the recycled buffers around the ring.
-> >    The idea of passing the page of the right-now-recycled-buffer to a
-> >    different buffer, in this case, the first one that needs to be
-> >    allocated, moreover, on each new frame, is fundamentally wrong. It
-> >    involves a few o' fetches, branches and then writes (and one Rx
-> >    buffer struct is at least 32 bytes) where they're completely unneeded,
-> >    but gives no good -- the result is the same as if we'd recycle it
-> >    inplace, at the same position where it was used. So drop this and let
-> >    the main refilling function take care of all the buffers, which were
-> >    processed and now need to be recycled/refilled.
-> 
-> The next_to_alloc logic was put in place to deal with systems that are
-> experiencing memory issues. Specifically what can end up happening is
-> that the ring can stall due to failing memory allocations and the
-> memory can get stuck on the ring. For that reason we were essentially
-> defragmenting the buffers when we started suffering memory pressure so
-> that they could be reusued and/or freed following immediate use.
-> 
-> Basically what you are trading off is some exception handling for
-> performance by removing it.
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r001-20230531   gcc  
+alpha                randconfig-r032-20230531   gcc  
+alpha                randconfig-r035-20230531   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r013-20230531   gcc  
+arc                  randconfig-r022-20230531   gcc  
+arc                  randconfig-r043-20230531   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm                  randconfig-r046-20230531   gcc  
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r002-20230531   gcc  
+arm64                randconfig-r003-20230531   gcc  
+arm64                randconfig-r024-20230531   clang
+arm64                randconfig-r025-20230531   clang
+arm64                randconfig-r026-20230531   clang
+csky                                defconfig   gcc  
+hexagon              randconfig-r034-20230531   clang
+hexagon              randconfig-r041-20230531   clang
+hexagon              randconfig-r045-20230531   clang
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-r003-20230531   gcc  
+i386                 randconfig-r006-20230531   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r002-20230531   gcc  
+loongarch            randconfig-r012-20230531   gcc  
+m68k                             allmodconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r021-20230531   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                 randconfig-r001-20230531   clang
+mips                 randconfig-r016-20230531   gcc  
+nios2                               defconfig   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc              randconfig-r031-20230531   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r042-20230531   clang
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r005-20230531   gcc  
+s390                 randconfig-r044-20230531   clang
+sh                               allmodconfig   gcc  
+sparc                               defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-r014-20230531   clang
+x86_64               randconfig-r036-20230531   gcc  
+x86_64                               rhel-8.3   gcc  
+xtensa               randconfig-r011-20230531   gcc  
+xtensa               randconfig-r015-20230531   gcc  
 
-With all of the mix of the changes this patch carries, I find it hard to
-follow from description which parts of diff I should be looking at.
-
-> 
-> > 3. Don't allocate with %GPF_ATOMIC on ifup.
-> >    This involved introducing the @gfp parameter to a couple functions.
-> >    Doesn't change anything for Rx -> softirq.
-> 
-> Any specific reason for this? Just wondering if this is meant to
-> address some sort of memory pressure issue since it basically just
-> means the allocation can go out and try to free other memory.
-> 
-> > 4. 1 budget unit == 1 descriptor, not skb.
-> >    There could be underflow when receiving a lot of fragmented frames.
-> >    If each of them would consist of 2 frags, it means that we'd process
-> >    64 descriptors at the point where we pass the 32th skb to the stack.
-> >    But the driver would count that only as a half, which could make NAPI
-> >    re-enable interrupts prematurely and create unnecessary CPU load.
-> 
-> Not sure I agree with this. The problem is the overhead for an skb
-> going up the stack versus a fragment are pretty signficant. Keep in
-> mind that most of the overhead for a single buffer occurs w/
-> napi_gro_receive and is not actually at the driver itself. The whole
-> point of the budget is to meter out units of work, not to keep you in
-> the busy loop. This starts looking like the old code where the Intel
-> drivers were returning either budget or 0 instead of supporting the
-> middle ground.
-> 
-> > 5. Shortcut !size case.
-> >    It's super rare, but possible -- for example, if the last buffer of
-> >    the fragmented frame contained only FCS, which was then stripped by
-> >    the HW. Instead of checking for size several times when processing,
-> >    quickly reuse the buffer and jump to the skb fields part.
-> > 6. Refill the ring after finishing the polling loop.
-> >    Previously, the loop wasn't starting a new iteration after the 64th
-> >    desc, meaning that we were always leaving 16 buffers non-refilled
-> >    until the next NAPI poll. It's better to refill them while they're
-> >    still hot, so do that right after exiting the loop as well.
-> >    For a full cycle of 64 descs, there will be 4 refills of 16 descs
-> >    from now on.
-> > 
-> > Function: add/remove: 4/2 grow/shrink: 0/5 up/down: 473/-647 (-174)
-> > 
-> > + up to 2% performance.
-> > 
-> 
-> What is the test you saw the 2% performance improvement in? Is it
-> something XDP related or a full stack test?
-
-+1, can you say more about that measurement?
-
-> 
-> > Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> 
-> Also one thing I am not a huge fan of is a patch that is really a
-> patchset onto itself. With all 6 items called out here I would have
-> preferred to see this as 6 patches as it would have been easier to
-> review.
-
-+1
-
-> 
-> > ---
-> >  drivers/net/ethernet/intel/iavf/iavf_main.c |   2 +-
-> >  drivers/net/ethernet/intel/iavf/iavf_txrx.c | 259 +++++++++-----------
-> >  drivers/net/ethernet/intel/iavf/iavf_txrx.h |   3 +-
-> >  3 files changed, 114 insertions(+), 150 deletions(-)
-> > 
-
-(...)
-
-> >  }
-> > @@ -1350,14 +1297,6 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
-> >  			    union iavf_rx_desc *rx_desc,
-> >  			    struct sk_buff *skb)
-> >  {
-> > -	u32 ntc = rx_ring->next_to_clean + 1;
-> > -
-> > -	/* fetch, update, and store next to clean */
-> > -	ntc = (ntc < rx_ring->count) ? ntc : 0;
-> > -	rx_ring->next_to_clean = ntc;
-> > -
-> > -	prefetch(IAVF_RX_DESC(rx_ring, ntc));
-> > -
-> >  	/* if we are the last buffer then there is nothing else to do */
-> >  #define IAVF_RXD_EOF BIT(IAVF_RX_DESC_STATUS_EOF_SHIFT)
-> >  	if (likely(iavf_test_staterr(rx_desc, IAVF_RXD_EOF)))
-> 
-> You may want to see if you can get rid of this function entirely,
-> perhaps you do in a later patch. This function was added for ixgbe back
-> in the day to allow us to place the skb back in the ring for the RSC
-> based workloads where we had to deal with interleaved frames in the Rx
-> path.
-> 
-> For example, one question here would be why are we passing skb? It
-> isn't used as far as I can tell.
-> 
-this was used back when skb was stored within the Rx buffer and now we
-just store skb on Rx ring struct, so good catch, this arg is redundant.
-
-I'll go and take a look at code on v3.
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
