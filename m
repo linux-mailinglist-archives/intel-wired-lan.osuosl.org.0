@@ -1,103 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E798D71896E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 20:33:39 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F1FDD718B96
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 May 2023 23:09:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 982CF4088E;
-	Wed, 31 May 2023 18:33:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 982CF4088E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 72387614B9;
+	Wed, 31 May 2023 21:09:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72387614B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685558016;
-	bh=jFGaroo3C7dFzb3xLaCQ0f20L5eZQAjxbp6SXP7jKsY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685567391;
+	bh=Ywx2+w8OIw/WaCs0jx0fTUt9vjHj57WA1N0klv9aT9Y=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Dts5WOYYLKXhTiDQ+O3NQz7jFxWsEVQdm01pPx7c6Owh7Rlp6xZlCQYn0AgYidY4P
-	 MivziT/LX/8QbvHaZ1EdU4woUJPzYFR5tGuRAo0Q70Fym9tTIsrhfpTUQnBqOTRcNL
-	 QuYmDkoBTwrV6WXpTNxAzWTCaaaKxMCSb86gkUa9F6MhjRWf139x5uZL3dIe1jRfSJ
-	 guaX0L8YHXcLnaaKqBuz1Oy5Va2SaMk40ZU2guvdO3exBcuGcaD5aXveKqkiG9De+G
-	 UVjmGyKEntDLrjNLoNfaLUkBe9TxZkAN5VtpYgCbJVM0zCDjeKUf6C5UOPq5vvxy3s
-	 NhRB7YL2+JUmA==
+	b=fHUZRqIXP5QsrWX4Z657wFXIZXlLzGrIhvpss3UDXXsfx82Imet44YQ3hlPRkoqUB
+	 fFAPns0EVxnSwmPj+AhrTgf3SqcFW7ghdYTPae2d3GbACObi3qdN1Jebv64njFGvYo
+	 vsTUYQsZLx4sQsOlUwTeUDDSnhuyJfMZtv8GrpEmJEdtZ7Nrr3E6KizJRv/laDMvGj
+	 gso8QLMb30CmpEy42ySM+SqOPnnsPdVyGtAhsfqelJXP8V2hxUyZk28UAYg4HuDzH3
+	 ps3MxO7igT7bVgO3b5RXrjc1rBKtUKkDTNJvMr2XRd7NvYDzlH1z7ZysX6Lr7zd5AS
+	 4Lo3ibHdg5FLg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P4pIYpCXrGcv; Wed, 31 May 2023 18:33:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9Xk0Qdolahji; Wed, 31 May 2023 21:09:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 422D040622;
-	Wed, 31 May 2023 18:33:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 422D040622
+	by smtp3.osuosl.org (Postfix) with ESMTP id 36FDA614B8;
+	Wed, 31 May 2023 21:09:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36FDA614B8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E3D4A1BF48B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 18:33:29 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BBE8F1BF576
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 21:04:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B9C4840622
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 18:33:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9C4840622
+ by smtp2.osuosl.org (Postfix) with ESMTP id 93FC240533
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 21:04:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 93FC240533
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7zNKY9h_nk4e for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 May 2023 18:33:28 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6A8C6405CE
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
- [IPv6:2a00:1450:4864:20::52b])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6A8C6405CE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 18:33:28 +0000 (UTC)
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5149c51fd5bso122574a12.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 11:33:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685558006; x=1688150006;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=buUAsYpGe1TJXNZB34CE38fSA+mccfTTNpY51fAljHE=;
- b=AwMncoyxTSFH6z0V84cSiEDjCt+iK9J2cFQZ6oVR9R2f0kiMQnRlbkGJnpWn99T18z
- 3Q2XLdJk9QdaYz8/VKMoQy/CkeOVEQyEfLIkNbUcoAqv7iFkfzdFfFt+JLSlM8D1yWuS
- +G4q/oc8x+0bDCXbMcQs3btdpJfOmM9CaEdkIvAM4DVnw9w8zq6wnmzWClnk1QDN93ni
- +a+wYyE+p5SRTmMzetjSLuqKym1Ym84ivsFalBhKpombA3HipfbgXjcQHsdoj6IVm1SD
- DHcYK+ZoZ30tWtvyNd4HJ+mVuhX6heDb0vIbsVDqPud9TRS0bv+4pkQS3a9tBMPMabhR
- 1Qhg==
-X-Gm-Message-State: AC+VfDzcorsJ+MnH7DQM42DZ6MwL35dn4V3+nf/+fryJRHNA/0XfDTGx
- OaWTIv2W441lwOMa0Nmg518=
-X-Google-Smtp-Source: ACHHUZ6pDDMwtYftfM6OWJhG0jtXy7xWoRm/gCiNWZ5cbXC25pURukXPdx30WqV8DCeUUWqd8RiZ+w==
-X-Received: by 2002:a17:907:ea4:b0:94f:2852:1d2b with SMTP id
- ho36-20020a1709070ea400b0094f28521d2bmr6787313ejc.72.1685558006031; 
- Wed, 31 May 2023 11:33:26 -0700 (PDT)
-Received: from skbuf ([188.27.184.189]) by smtp.gmail.com with ESMTPSA id
- d5-20020a170906640500b0094ef923a6ccsm9366064ejm.219.2023.05.31.11.33.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 May 2023 11:33:25 -0700 (PDT)
-Date: Wed, 31 May 2023 21:33:23 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: netdev@vger.kernel.org
-Message-ID: <20230531183323.eozihhbax4tzho6w@skbuf>
-X-Mailer: git-send-email 2.34.1
-References: <20230531182758.5u5hv5leobeinxih@skbuf>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id V-7tkLOIO0h5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 May 2023 21:04:43 +0000 (UTC)
+X-Greylist: delayed 00:45:24 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 73B8041EED
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 73B8041EED
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 21:04:43 +0000 (UTC)
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34VKCVx9001351; Wed, 31 May 2023 20:19:05 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qxd2c05je-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 31 May 2023 20:19:05 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 34VKFpvl013315;
+ Wed, 31 May 2023 20:19:04 GMT
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qxd2c05ha-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 31 May 2023 20:19:04 +0000
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34VJAC4Y008154;
+ Wed, 31 May 2023 20:19:03 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([9.208.129.120])
+ by ppma02wdc.us.ibm.com (PPS) with ESMTPS id 3qu9g8ddxs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 31 May 2023 20:19:03 +0000
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
+ [10.39.53.231])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 34VKJ1GC48431430
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 31 May 2023 20:19:02 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DA9A358050;
+ Wed, 31 May 2023 20:19:01 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 20C6558054;
+ Wed, 31 May 2023 20:19:00 +0000 (GMT)
+Received: from [9.61.47.250] (unknown [9.61.47.250])
+ by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTPS;
+ Wed, 31 May 2023 20:19:00 +0000 (GMT)
+Message-ID: <002e833e-33b0-54d4-8584-9366850a7956@linux.vnet.ibm.com>
+Date: Wed, 31 May 2023 13:18:59 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230531182758.5u5hv5leobeinxih@skbuf>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.1
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+References: <20230516161841.37138-1-aleksander.lobakin@intel.com>
+ <20230516161841.37138-9-aleksander.lobakin@intel.com>
+ <4c6723df-5d40-2504-fcdc-dfdc2047f92c@linux.vnet.ibm.com>
+ <8302be1b-416a-de32-c43b-73bd378f8122@intel.com>
+Content-Language: en-US
+From: David Christensen <drc@linux.vnet.ibm.com>
+In-Reply-To: <8302be1b-416a-de32-c43b-73bd378f8122@intel.com>
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: g88aeaZRpnfP0PdxA02G1n1w3BlzCyqp
+X-Proofpoint-GUID: st-v3kKNhM2pBCFgda0-Zy5gNWLuGVPD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-05-31_14,2023-05-31_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 malwarescore=0
+ mlxscore=0 adultscore=0 mlxlogscore=999 suspectscore=0 lowpriorityscore=0
+ phishscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305310170
+X-Mailman-Approved-At: Wed, 31 May 2023 21:09:45 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1685558006; x=1688150006;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=buUAsYpGe1TJXNZB34CE38fSA+mccfTTNpY51fAljHE=;
- b=agzLnmVvQLyfbvlFIo2Qgm+/9TnQK2BVa/t/pucjNWa/QTUlTb4HFPlSk7pAwVrAiI
- e7p+ksqNewnEUQ2VRF7Nl75pQNFcQME7lZ/Jq1yn9Xhvjpaj8t8LVKJLB9lkj+FfUhhk
- v89zwEga0fmMo+yK98qLPvfpEswqoOcF5Jj3Jwn2YY1vPL+8rFeikuffhWFp5A4+RxVx
- 8+O5dzTg38qjz8pKfPazurh+aUat70x6akJFvMlKo71LaZK7LHuX5UWAgs485KbGw7RL
- LvXMcnD+ednbQ6DPnSFP5MqTpGy/7czqOC8Uwezqzc+kenCdy5x3DzKnOa51pjXpVeUa
- UMjg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=agzLnmVv
-Subject: [Intel-wired-lan] [PATCH net-next 0/5] Improve the taprio qdisc's
- relationship with its children
+ d=ibm.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=sTJCWWUwzwvNr/MkB+nxK/PvXW1ND48ywSdnL9r2G/I=;
+ b=sxQoG0kvVkhnyhB9eb+OI9pqNiToozu3AIl6pgp559MfzyrrQgnrLMZ2Qha+NApe/kHM
+ ITHVeeqpErVZ4oK7jbAQrWQnwDJr2ODcg1xW0gj5tTTw6+6i7w61JXOFAMrJYqysL3Rp
+ JQtsmxKTAZr/NBgQ8RbYP+pnfEqpHyrvmeRXs7czCxz7cRAdBptaSOd5RKTzOCPRY3rW
+ M2H4NCPv0sVDDn1lFqYkGYqSi/BqIjmiN5H4DQtW4RD1ZFaf3z3SJmWICDAA6DTDnXfU
+ uBJS/kQHLEmoIVBbl/QzsL6Gv4jVDu49lZZL+ox5yp4xbHar51S52ooa4hrZOE7oG/3v 2g== 
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
+ header.a=rsa-sha256 header.s=pp1 header.b=sxQoG0kv
+Subject: Re: [Intel-wired-lan] [PATCH net-next 08/11] iavf: switch to Page
+ Pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,87 +137,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Cong Wang <xiyou.wangcong@gmail.com>, Peilin Ye <yepeilin.cs@gmail.com>,
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, Eric Dumazet <edumazet@google.com>,
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+ "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Has anyone received this message? I guess at least vger and kuba@kernel.org
-rejected it, because I got this bounce email:
-
-kernel.org suspects your message is spam and rejected it.
-
-Error:
-550 5.7.350 Remote server returned message detected as spam -> 554 5.7.1
-Service unavailable; Helo command [EUR04-DB3-obe.outbound.protection.outlook.com]
-blocked using dbl.spamhaus.org; Error: open resolver;
-https://www.spamhaus.org/returnc/pub/34.216.226.155
-
-Message rejected by: smtp.kernel.org
-
-Interestingly, if I click the link above, it says "This is not due to an
-issue with your email set-up", so I'm not sure what to believe...
-
------ Forwarded message from Vladimir Oltean <vladimir.oltean@nxp.com> -----
-
-Date: Wed, 31 May 2023 20:39:23 +0300
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: netdev@vger.kernel.org
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Jamal Hadi Salim <jhs@mojatatu.com>, Cong Wang
- <xiyou.wangcong@gmail.com>, Jiri Pirko <jiri@resnulli.us>, Vinicius Costa
- Gomes <vinicius.gomes@intel.com>, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Muhammad Husaini Zulkifli
- <muhammad.husaini.zulkifli@intel.com>, Peilin Ye <yepeilin.cs@gmail.com>,
- Pedro Tammela <pctammela@mojatatu.com>
-Subject: [PATCH net-next 0/5] Improve the taprio qdisc's relationship with
- its children
-X-Mailer: git-send-email 2.34.1
-
-Prompted by Vinicius' request to consolidate some child Qdisc
-dereferences in taprio:
-https://lore.kernel.org/netdev/87edmxv7x2.fsf@intel.com/
-
-I remembered that I had left some unfinished work in this Qdisc, namely
-commit af7b29b1deaa ("Revert "net/sched: taprio: make qdisc_leaf() see
-the per-netdev-queue pfifo child qdiscs"").
-
-This patch set represents another stab at, essentially, what's in the
-title. Not only does taprio not properly detect when it's grafted as a
-non-root qdisc, but it also returns incorrect per-class stats.
-Eventually, Vinicius' request is addressed too, although in a different
-form than the one he requested (which was purely cosmetic).
-
-Review from people more experienced with Qdiscs than me would be
-appreciated. I tried my best to explain what I consider to be problems.
-I am deliberately targeting net-next because the changes are too
-invasive for net - they were reverted from stable once already.
-
-Vladimir Oltean (5):
-  net/sched: taprio: don't access q->qdiscs[] in unoffloaded mode during
-    attach()
-  net/sched: taprio: keep child Qdisc refcount elevated at 2 in offload
-    mode
-  net/sched: taprio: try again to report q->qdiscs[] to qdisc_leaf()
-  net/sched: taprio: delete misleading comment about preallocating child
-    qdiscs
-  net/sched: taprio: dump class stats for the actual q->qdiscs[]
-
- net/sched/sch_taprio.c | 60 ++++++++++++++++++++++++------------------
- 1 file changed, 35 insertions(+), 25 deletions(-)
-
--- 
-2.34.1
 
 
------ End forwarded message -----
+On 5/25/23 4:08 AM, Alexander Lobakin wrote:
+>> Any plans to add page pool fragmentation support (i.e.
+>> PP_FLAG_PAGE_FRAG) in the future to better support architectures with
+>> larger page sizes such as 64KB on ppc64le?
+> 
+> Currently no, we resigned from page fragmentation due to the complexity
+> and restrictions it provides for no benefits on x86_64. But I remember
+> that pages > 4 Kb exist (I have a couple MIPS boards where I have fun
+> sometimes and page size is set to 16 Kb there. But still always use 1
+> page per frame).
+> By "better support" you mean reducing memory usage or something else?
+
+Yes, reducing memory waste.  Current generation P10 systems default to 
+quad-port, 10Gb copper i40e NICs.  When you combine a large number of 
+CPUs, and therefore a large number of RX queues, with a 64KB page 
+allocation per packet, memory usage can balloon very quickly as you add 
+additional ports.
+
+Would you be open to patches to address this further down the road as 
+your refactoring effort gets closer to completion?
+
+Dave
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
