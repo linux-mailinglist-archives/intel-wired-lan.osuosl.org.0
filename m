@@ -1,144 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E5A2718DF5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Jun 2023 00:01:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A081A71A1DB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Jun 2023 17:07:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7B44614C6;
-	Wed, 31 May 2023 22:01:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B7B44614C6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3E98E81FB8;
+	Thu,  1 Jun 2023 15:07:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E98E81FB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685570486;
-	bh=vATi4T4yeDWZqqL9hYgjLAlzDadVZ7dJMPpevaQ3K8E=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685632047;
+	bh=Y8Hzm8fKHJocr9grq/ycE/k4Nw5awB0C6aFJ5lKF6M0=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aQsEP8RBqs1ug6g8crGtRHSsECabjWpSkqBi7LJXwGSgOKoQPuOCHv7m+b7Lved8x
-	 F2PbCzjUfJZO1ezGDvYO3ekd366WiY2Th2KmIdtsibxAlj2cbqoZSpTyu8X+rbbbgU
-	 aqKkA0Vya4uB035HOjqQCHap7ZOYb556mFe7Bw39mchIF47TZjg/f1O7QtkATT+N9J
-	 oYbmK+0//Ol2GmKiZt0ct4uxnylnvUxhL5RxYv0LS8pBWopvYWRMxiJO3mpFafa+un
-	 TIjCBsB6A3N1PLFhh9yERtoIbGN3qlLiAj5MVw76yG0FqCEVwS1Bt115vsacWTANiV
-	 LxzyjmxkwgtkA==
+	b=aDGD3L/VVC2B2LxKqmLpQEuPFJGO3wqlQO0HrMCoNSOfg+/9KUwle6y+NdrcDmRGy
+	 PS7AYoPd1/F4PI5zhznM4Ik7XvccmMt6NL74MFi+74VRLR+ijtGeda7LUgfju6xSH7
+	 hj8c4fx2fv2FkMkNcz/SMI/bgYGEaHJjqIr5LksZZ2HfK/hGum+SaJ5dE26RhOTRE6
+	 DYy/AMKP655rt3jp9gQlhfKb9Y0RSx5GJPlwYgF68yINKEeJ8E879E5DIINqbpfSPc
+	 uPSgQCW0oYDV7RNFUnnv1V/rGgJZpz9OnJXYHVswUWCNewf6sviD5Z4qzUWH8oTIK5
+	 tcjuan7XCw2xw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u4mBznozsH4m; Wed, 31 May 2023 22:01:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VDvUZkgREsPV; Thu,  1 Jun 2023 15:07:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7048361492;
-	Wed, 31 May 2023 22:01:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7048361492
+	by smtp1.osuosl.org (Postfix) with ESMTP id E34F684267;
+	Thu,  1 Jun 2023 15:07:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E34F684267
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B38871BF404
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 22:01:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CEB551BF28E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 00:45:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8AD6861492
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 22:01:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8AD6861492
+ by smtp3.osuosl.org (Postfix) with ESMTP id A5F90614D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 00:45:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5F90614D8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kSNgXogKGVa8 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 May 2023 22:01:19 +0000 (UTC)
+ with ESMTP id EuzoDxABPKPt for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Jun 2023 00:45:45 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A9907613E5
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2100.outbound.protection.outlook.com [40.107.220.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A9907613E5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 22:01:19 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CqfpySo9wceC556s3JRSwBNJTY74lpH27qUVCC6bQ5IxwTSv1C+2F7Rd3yUPNnwzMtyId0P1xld9TYD6EJvaWgAg+oGLnpNH47Bin1eg3RBVXPZj9PwtVmKgeE4KFzy9mreM39v6FmoLBuPdqslX8LM1fUPiiY0wXXHwLwNpafHLXbiMqvDYyqhNUCX51EeqLTIXZIQYJpg1TVbZvy5gGXSqQWvqZxLSwpKcnk1LWG4abZNI1Ek7gJ2eDLPUgqQ5Cej+NpN+xGUXbiq0czka/JVwdBDuBCwse5QQXwpIFI4GljJHox/HvAd5X+1p5Kp6ZslUZ7MqDBIBm16P9KCR0w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EAiNwAA6svvJiDLfKU1x5DD/KClJ2bHwYMPjbbGKD5w=;
- b=OyDeZyrR6xmAQ44Q7bOnpSD8TuB1VmB1pWtw4IGderrAoDJQEfI4ZPn0oo1FOyFU0G9BiwKr1Gqkp2CS10JAbmjbf3o8o/OwFkO3XVZvkJ6xA5CG0c9hq1v11kZJlP9CiGxmmKTzgU2/3eCWciOhpkwLSZVisLW/qpNUd8WFZyyTD1R3QVX6EJd2Mn1uou/Gkh49NQGM/ehjMpwo1VmTLbijlmhko+0MW0ZzpELJlbdzeGXP+d1pY/EL+l6VaJ2XYz2Aj0iSU688h9+qrNteWLmZLwuV0qK60Ra9ROWS6dHzgrPPYzZC+frZ3qtYD4hEpJ+WYil62yxb4YotJ0RH0A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by BN0PR13MB5214.namprd13.prod.outlook.com (2603:10b6:408:156::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.23; Wed, 31 May
- 2023 22:01:17 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::5e55:9a39:751f:55f6]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::5e55:9a39:751f:55f6%3]) with mapi id 15.20.6433.024; Wed, 31 May 2023
- 22:01:17 +0000
-Date: Thu, 1 Jun 2023 00:01:11 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Yuezhen Luan <eggcar.luan@gmail.com>
-Message-ID: <ZHfDp21V3zy9kuE3@corigine.com>
-References: <20230531090805.3959-1-eggcar.luan@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <20230531090805.3959-1-eggcar.luan@gmail.com>
-X-ClientProxiedBy: AM9P195CA0027.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:20b:21f::32) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 518BB60F5F
+Received: from mail-qv1-xf32.google.com (mail-qv1-xf32.google.com
+ [IPv6:2607:f8b0:4864:20::f32])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 518BB60F5F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 00:45:45 +0000 (UTC)
+Received: by mail-qv1-xf32.google.com with SMTP id
+ 6a1803df08f44-626190df842so4519476d6.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 May 2023 17:45:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685580344; x=1688172344;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8EVbsQSJN3elvGz/hNprySe1VU5QU1Z/6CukAdchU0k=;
+ b=RAYyJ5rQcWIYEOiT5GKjOJSHm8dyx//7X4ZxbYJlN2KJlyQkj09GEYNmvIYsvCPqMK
+ q0EY5IbaB6zK4yJV7vp4TgkI2SbDHmfNlVxnW2m6td/CYUpsBkOSyIqjqkcYY0/ctvfu
+ xpQzYkvRhyLn5PMBRhAjcPPop53pLr5Zf9DXM9CAJiZfGJuJnHGOYWMCZJlkEdWdTMN2
+ BSY1otBD8baiayd9zHXKJsUP2DoN9yHlfLD0sZ9abWNhJ40AbvhEL4DLDiSQzRmdo+D0
+ hhfBxXeggPOVVbqrEhK+gUqEaO6SvmmPpiuPVIKTAjcC5hRoK4+mAGg+zh4XLq3tI4cX
+ 1MvQ==
+X-Gm-Message-State: AC+VfDwta4T8nvFTXQLlo+8Qx8rTR0cNeNkczl2RIEY/qYyf7hIm4Nxl
+ qkvQfzI2/WtNr+xJM+waYsYoNxHVblCsBAn30ik=
+X-Google-Smtp-Source: ACHHUZ5s7pjzJBITDWSCm/TyfMVLJhDdNdh8nXZsP9Kg1dQvLH9HGr8w1jhclFxqF1RkPSp/j0iP7+iGE596l8eueW0=
+X-Received: by 2002:a05:6214:2245:b0:623:7707:5650 with SMTP id
+ c5-20020a056214224500b0062377075650mr11012120qvc.15.1685580344037; Wed, 31
+ May 2023 17:45:44 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|BN0PR13MB5214:EE_
-X-MS-Office365-Filtering-Correlation-Id: 739b1169-852f-4cf4-4aa2-08db62228ef0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8nblcmxLaoAazcdRfMcZAN7lg1paHqmZDXAMVvwi992flRK4tvtYLXJtTepR8l3MtOFwzJd6TX2eRN9NKhtiYloc3PZG4pW6Qj4fiOA78PagPWh6D9ClBJahPMH/72uFS28vQQg8VFqFMGMsE09vqz5lPo+xsnD5mEAowKn0U3xrwqQRzRcfzsOv5/QEH/4KzyGfB24IHakWVvl4/PgwLv+DaiDZpXsRy1pua3JPZmyemds0idtK/zaOdwcF4KPhjW1I6riY7YxsV5eeUXaVksKbcvBwSmrzZ1VpYHtXIZ3LAmMTcgYfBNMkKM+KLpzTliz88EqXo0tSSZXDBMok4JO3TZGHwHrflcNv0TXEW5ny8uLkwCEs08/SmEFJmd7CW2W+xG1SrdvSh6w3Z+mv08bd+CguLbRwAit16iRLuzM0ifja+3htCMBq+FUlTGXhC9rCtInAjKwlUCjZdJ+O8aoaIXg8+MOwzoXXUwRIEjumPmwxO8+iBp6y5ys82cCT/WlKZTyKA6H9F8uh2hO2e4rzmX62eGY3NihMTR/vj8OtWxQ6uOIzrUGP/tKfSmr5
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(39840400004)(366004)(136003)(346002)(396003)(376002)(451199021)(38100700002)(4326008)(478600001)(66476007)(66556008)(66946007)(6916009)(6666004)(36756003)(41300700001)(316002)(86362001)(6506007)(6512007)(26005)(83380400001)(2616005)(186003)(6486002)(2906002)(7416002)(8936002)(8676002)(5660300002)(44832011);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0/ljMDulfNIoFy5cXdK4e73fiUihiyqfHAuxVLdvbmN3p0EZNIEnqZqJkmgV?=
- =?us-ascii?Q?SWdpFPTXGWML+BWi37cxUp1BiIgDgD7E/J33PcgcKrUp4ZHmz5BOLSW+cNzs?=
- =?us-ascii?Q?Y7NzZEO+5nSvIMinMHgQkMvPs2QvUw1kfqXF/GqcSTjxT5BeF6SCbpMULGI0?=
- =?us-ascii?Q?4iDz7o/pswolVzm2n/Ib2wFDO4A/dxKtywnpZP83tGfUISQ1K1l7TAV+5f5N?=
- =?us-ascii?Q?FhPZdVnHJxMNqo5BIZiXbb2ymMVPAQNsiCiHTuzOOHQoU9siTqXoIOdRzjsL?=
- =?us-ascii?Q?Cj57YVTDIANmGtj4tlFRg7R/YamjkTs6un/cvfUdUNcABj4cOzTMlm8Ppau4?=
- =?us-ascii?Q?hx8JAE2hd7qOiThDFe1sQSXpdCGs9UPvfA5HjG40hkbpfcJQhuC23LbO+ZOV?=
- =?us-ascii?Q?cmgal5zRwETtIeANMFt9iEJTqQngJWrQOE6pIddfonwp63bAcNb54oVDrjAB?=
- =?us-ascii?Q?UJ/THbZH+L8SDB8ZAexS6pryBqiRCQjconvm/R7rZgWobX+eSuZ1A4AwP01C?=
- =?us-ascii?Q?SBzgi34QPXGftk4YD9V/ReVdvmTCQ31zFJcV6J/myXKWrlfhBCZYpJjy5qsw?=
- =?us-ascii?Q?B/PKfV8Lg0dc6QChkyorrdKzYd/+uDg+oDmiuQ+kblEmZES1M1X0QJpB9XOY?=
- =?us-ascii?Q?GXfiw1Ec+xrsU2Ssz6hvcanRq21hghWU5JxNQu++JxALiWWgW8CSh3FiqMfg?=
- =?us-ascii?Q?cYplSKvfKTuolQJ5pbGKqhqT1oABh4p+DUTyGNIfPo2/jlFrwaaNj44p3jKp?=
- =?us-ascii?Q?baYm3QF/qHBildi3UdTmLXKB/fSk9fQgWH1p5AAjFXfpMwKIqcUE8yQ3dNLY?=
- =?us-ascii?Q?56ATUm226Kg3CKimv/yxWFRgVfrr0U6bwoy2lGDEzAa0lDsgHCEt97bwUyra?=
- =?us-ascii?Q?aGEyBgOMgGo7m+scBRVeh0P1+aIhD7MpnKRSLMCbNhqeZg3C/1rM7JcdUdSt?=
- =?us-ascii?Q?G1dtN3cMcW8z+JmvHFGn98oweaI4DG4UINlKouRf003d4fR/yK55Cz0k/AaD?=
- =?us-ascii?Q?LULbK51TCZnJ2nEGS7YQZn01TxNlyW3IUzz70vPyD9L5w8UicD1QpoBr03B2?=
- =?us-ascii?Q?GgHZTC5PCekYPQwQUmEI6NkXaJ9PA7JcI8Jw55/QDjFFtHweeMWiTlNwbFe/?=
- =?us-ascii?Q?dmUvVAonpi3dZZeEJuvN1Rh3VB45kq3lZDsGLA+TkNhViS2lguD48zeq+AV+?=
- =?us-ascii?Q?4i9fYZ3jrkvsj3x19YLvIlOS3DefpgVg724NclIFWxNekygJX8MZgpvzK2J3?=
- =?us-ascii?Q?Utdo6EZfC1Qx/FSeczD3NSZDUU921mOhmKoE+UoEIwBPOKLGCWe326Cchxa8?=
- =?us-ascii?Q?mmRHKazLLzaTUd9mVNcs6RIyBBQUDBa6UzsJuEaWoyskaMsQ5Iz0afipzwBs?=
- =?us-ascii?Q?AmC3ZL9EI4mpVYsAV5Fj4kFSwkZOp/DdsnCs9EOvLVpmPEgAyHYC9qkpgY8Y?=
- =?us-ascii?Q?N2Ligxb3L4T6gffZ6Ci8uiG+pyd/Gq0pysumyL2coI9gBzDmUGE9Spds5P85?=
- =?us-ascii?Q?4sap2RBXVQ0TvpgT1DB7peWNi7IFr5PUoAFWJ8blhgrYAao32aO3hIPF5yaZ?=
- =?us-ascii?Q?vnEi6PMs6+/Vp1Tz9YaH+hixg3t+GSFGzsXU7jaCXo6Qo/np2cOwtF3aaQPJ?=
- =?us-ascii?Q?EQ=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 739b1169-852f-4cf4-4aa2-08db62228ef0
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2023 22:01:17.1070 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wPAF/GSl0z2z31qaaDcUIPJfEa6NUez69mi4WLhgIJd6EyxfW/+Pv5NfODyXEbq7WqvcfOYo7ioMUry5dj4sVMALOha0KjWCmT/wVRqY9I0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR13MB5214
+References: <20230531090805.3959-1-eggcar.luan@gmail.com>
+ <ZHfDp21V3zy9kuE3@corigine.com>
+In-Reply-To: <ZHfDp21V3zy9kuE3@corigine.com>
+From: egg car <eggcar.luan@gmail.com>
+Date: Thu, 1 Jun 2023 08:45:33 +0800
+Message-ID: <CACMC4jYXkwHUJf7-sKFacSbS9cY-Hbr=yXav2L_B8h9E+giPKg@mail.gmail.com>
+To: Simon Horman <simon.horman@corigine.com>
+X-Mailman-Approved-At: Thu, 01 Jun 2023 15:07:21 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EAiNwAA6svvJiDLfKU1x5DD/KClJ2bHwYMPjbbGKD5w=;
- b=X8wmicsFFju6ubwA0k52BvfsozN1Gil1sKP8tpIG5+u5rAAtwVy/b7bxFK3ZjrLm6luVSrdpmIS55fMjudNjz2eD9hjmle5cJpT9+aj071Ntfi9efGSNCEooZHfMCI2CYWmWzNAcf4kEnzy6LErAD3Cd3bWSrdo+wHRGmm+WVj4=
+ d=gmail.com; s=20221208; t=1685580344; x=1688172344;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8EVbsQSJN3elvGz/hNprySe1VU5QU1Z/6CukAdchU0k=;
+ b=ssdSR+0EWSuI3ZBO2LlV9pandlXuRophBt5Hs8C2GGNZUReHyl3vSvA1D9b1vX+t4B
+ c5y8SmhWgdmPZhiuxGYzZbaX0G4Gb8VvjwzNktmNxWuI4Bvy4XTwic2BVYwFODbEdmrd
+ zFTyXvm6eSQ/ZI6u6cFml3Jm/zePNEv8NDQ932zDbCdkQk4+Ot4u+I0tjz6WjuJzPR/J
+ lHs9oFi/mMuvlJftyr/XKnO5EilA4SWT0bBWvDV4I0KDP6bZ4qEVTtQg19vDRJf47bXm
+ z+Nx01+mhSbB3kdKzQWkOm/W0FAYdj8gIotTif3Ie/vrBiW2bJCSzk+jxBzj/JaJMzlB
+ MXbA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=X8wmicsF
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=ssdSR+0E
 Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix extts capture value format
  for 82580/i354/i350
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -153,64 +106,174 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
+ pabeni@redhat.com, davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============3130821796998315386=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, May 31, 2023 at 09:08:05AM +0000, Yuezhen Luan wrote:
-> 82580/i354/i350 features circle-counter-like timestamp registers
-> that are different with newer i210. The EXTTS capture value in
-> AUXTSMPx should be converted from raw circle counter value to
-> timestamp value in resolution of 1 nanosec by the driver.
-> 
-> Signed-off-by: Yuezhen Luan <eggcar.luan@gmail.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index 58872a4c2..187daa8ef 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -6947,6 +6947,7 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
->  	struct e1000_hw *hw = &adapter->hw;
->  	struct ptp_clock_event event;
->  	struct timespec64 ts;
-> +	unsigned long flags;
->  
->  	if (pin < 0 || pin >= IGB_N_SDP)
->  		return;
-> @@ -6954,9 +6955,12 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
->  	if (hw->mac.type == e1000_82580 ||
->  	    hw->mac.type == e1000_i354 ||
->  	    hw->mac.type == e1000_i350) {
-> -		s64 ns = rd32(auxstmpl);
-> +		u64 ns = rd32(auxstmpl);
->  
-> -		ns += ((s64)(rd32(auxstmph) & 0xFF)) << 32;
-> +		ns += ((u64)(rd32(auxstmph) & 0xFF)) << 32;
-> +		spin_lock_irqsave(&adapter->tc, ns);
-> +		ns = timecounter_cyc2time(&adapter->tc, ns);
-> +		spin_unlock_irqrestore(&adapter->tc, ns);
+--===============3130821796998315386==
+Content-Type: multipart/alternative; boundary="000000000000a5977605fd06c108"
 
-Hi Yuezhen Luan,
+--000000000000a5977605fd06c108
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-unfortunately this doesn't compile because the arguments to
-spin_lock_irqsave/spin_unlock_irqrestore are wrong.
+Dear Simon,
 
->  		ts = ns_to_timespec64(ns);
->  	} else {
->  		ts.tv_nsec = rd32(auxstmpl);
+Ah sorry the patch was generated in a different kernel source code  dir
+with the one I tested. it=E2=80=99s a typo, I=E2=80=99ll fix it soon.
+Apologize for that mistake
 
--- 
-pw-bot: cr
+Simon Horman <simon.horman@corigine.com>=EF=BC=9A
+
+> On Wed, May 31, 2023 at 09:08:05AM +0000, Yuezhen Luan wrote:
+> > 82580/i354/i350 features circle-counter-like timestamp registers
+> > that are different with newer i210. The EXTTS capture value in
+> > AUXTSMPx should be converted from raw circle counter value to
+> > timestamp value in resolution of 1 nanosec by the driver.
+> >
+> > Signed-off-by: Yuezhen Luan <eggcar.luan@gmail.com>
+> > ---
+> >  drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
+> >  1 file changed, 6 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
+> b/drivers/net/ethernet/intel/igb/igb_main.c
+> > index 58872a4c2..187daa8ef 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > @@ -6947,6 +6947,7 @@ static void igb_extts(struct igb_adapter *adapter=
+,
+> int tsintr_tt)
+> >       struct e1000_hw *hw =3D &adapter->hw;
+> >       struct ptp_clock_event event;
+> >       struct timespec64 ts;
+> > +     unsigned long flags;
+> >
+> >       if (pin < 0 || pin >=3D IGB_N_SDP)
+> >               return;
+> > @@ -6954,9 +6955,12 @@ static void igb_extts(struct igb_adapter
+> *adapter, int tsintr_tt)
+> >       if (hw->mac.type =3D=3D e1000_82580 ||
+> >           hw->mac.type =3D=3D e1000_i354 ||
+> >           hw->mac.type =3D=3D e1000_i350) {
+> > -             s64 ns =3D rd32(auxstmpl);
+> > +             u64 ns =3D rd32(auxstmpl);
+> >
+> > -             ns +=3D ((s64)(rd32(auxstmph) & 0xFF)) << 32;
+> > +             ns +=3D ((u64)(rd32(auxstmph) & 0xFF)) << 32;
+> > +             spin_lock_irqsave(&adapter->tc, ns);
+> > +             ns =3D timecounter_cyc2time(&adapter->tc, ns);
+> > +             spin_unlock_irqrestore(&adapter->tc, ns);
+>
+> Hi Yuezhen Luan,
+>
+> unfortunately this doesn't compile because the arguments to
+> spin_lock_irqsave/spin_unlock_irqrestore are wrong.
+>
+> >               ts =3D ns_to_timespec64(ns);
+> >       } else {
+> >               ts.tv_nsec =3D rd32(auxstmpl);
+>
+> --
+> pw-bot: cr
+>
+>
+
+--000000000000a5977605fd06c108
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Dear Simon,</div><div dir=3D"auto"><br></div><div dir=3D"=
+auto">Ah sorry the patch was generated in a different kernel source code =
+=C2=A0dir with the one I tested. it=E2=80=99s a typo, I=E2=80=99ll fix it s=
+oon.</div><div dir=3D"auto">Apologize for that mistake</div><div><br><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">Simon Horman &lt=
+;<a href=3D"mailto:simon.horman@corigine.com">simon.horman@corigine.com</a>=
+&gt;=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left:=
+1ex;border-left-color:rgb(204,204,204)">On Wed, May 31, 2023 at 09:08:05AM =
++0000, Yuezhen Luan wrote:<br>
+&gt; 82580/i354/i350 features circle-counter-like timestamp registers<br>
+&gt; that are different with newer i210. The EXTTS capture value in<br>
+&gt; AUXTSMPx should be converted from raw circle counter value to<br>
+&gt; timestamp value in resolution of 1 nanosec by the driver.<br>
+&gt; <br>
+&gt; Signed-off-by: Yuezhen Luan &lt;<a href=3D"mailto:eggcar.luan@gmail.co=
+m" target=3D"_blank">eggcar.luan@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--<br>
+&gt;=C2=A0 1 file changed, 6 insertions(+), 2 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/e=
+thernet/intel/igb/igb_main.c<br>
+&gt; index 58872a4c2..187daa8ef 100644<br>
+&gt; --- a/drivers/net/ethernet/intel/igb/igb_main.c<br>
+&gt; +++ b/drivers/net/ethernet/intel/igb/igb_main.c<br>
+&gt; @@ -6947,6 +6947,7 @@ static void igb_extts(struct igb_adapter *adapte=
+r, int tsintr_tt)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct e1000_hw *hw =3D &amp;adapter-&gt;hw;=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct ptp_clock_event event;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct timespec64 ts;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0unsigned long flags;<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (pin &lt; 0 || pin &gt;=3D IGB_N_SDP)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+&gt; @@ -6954,9 +6955,12 @@ static void igb_extts(struct igb_adapter *adapt=
+er, int tsintr_tt)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (hw-&gt;mac.type =3D=3D e1000_82580 ||<br=
+>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw-&gt;mac.type =3D=3D e1000_i=
+354 ||<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0hw-&gt;mac.type =3D=3D e1000_i=
+350) {<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s64 ns =3D rd32(auxst=
+mpl);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0u64 ns =3D rd32(auxst=
+mpl);<br>
+&gt;=C2=A0 <br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ns +=3D ((s64)(rd32(a=
+uxstmph) &amp; 0xFF)) &lt;&lt; 32;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ns +=3D ((u64)(rd32(a=
+uxstmph) &amp; 0xFF)) &lt;&lt; 32;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0spin_lock_irqsave(&am=
+p;adapter-&gt;tc, ns);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ns =3D timecounter_cy=
+c2time(&amp;adapter-&gt;tc, ns);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0spin_unlock_irqrestor=
+e(&amp;adapter-&gt;tc, ns);<br>
+<br>
+Hi Yuezhen Luan,<br>
+<br>
+unfortunately this doesn&#39;t compile because the arguments to<br>
+spin_lock_irqsave/spin_unlock_irqrestore are wrong.<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ts =3D ns_to_tim=
+espec64(ns);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ts.tv_nsec =3D r=
+d32(auxstmpl);<br>
+<br>
+-- <br>
+pw-bot: cr<br>
+<br>
+</blockquote></div></div>
+
+--000000000000a5977605fd06c108--
+
+--===============3130821796998315386==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============3130821796998315386==--
