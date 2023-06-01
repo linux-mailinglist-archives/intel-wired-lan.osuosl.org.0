@@ -1,72 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6832171930A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Jun 2023 08:15:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0923C71A1DF
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Jun 2023 17:07:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC0FC424E5;
-	Thu,  1 Jun 2023 06:15:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC0FC424E5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 996A0842F2;
+	Thu,  1 Jun 2023 15:07:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 996A0842F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685600100;
-	bh=cWywpb7GFxs1johuEVXK6CuP9mft48+LVP2EANpm87I=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=HpNAvCNRbV2l7FwfwNbg59hEwpQUO74xLXhPmH4b8gMgFJG2yb+/RbnvbHz/rjFgZ
-	 Aq9PIcQvmTiM9oymXH/Y7pj7Ay8CyiLGCDnUNShJHyMzXAojASVstqOd30/njc7zB3
-	 WlAqsURcjvFwIKZ5u/aazq6DUhNq3aoMWERWi0EXsPMC5WNIW77hsvsTOKzN9d+ddi
-	 T4CPFdwXXyoAW4Lnl74ko3BIbHwe5c0uzHPTPsEMPzh6fXVZCcpReV7wshhDztnDaJ
-	 FHSB+XxxZx/PDG0zb1U7SLysBhoDcqC6YqwAhEltrIDrosLKw7sf6C5ZFfOoIhiq6c
-	 B3Qa6KNHuVhZA==
+	s=default; t=1685632059;
+	bh=vV7gPXKA+xvYehMdZK4ddchw0BgmINqkVGG7Obo278A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=LSaoeGO+b/bqfr5cV42hdvw+82BdWCWkoPEigLF1HWgTZZhSe6RoQmcZ8rqTdoDMe
+	 /k680aZiGWcYVfcEval5/qDbJyvk0nNvfSX00/o1q91yBXZHkW7vSCfwXShArONamF
+	 P48AqwS376L3DHcHFgCLdqG2syJaQnO9cuVfIwDAEQXHRNtMoYt4mL7O1ajzPSVnao
+	 8N2VwYGkIZChUfra+O1q6D/LKz1ueZwRjMz0IBkTUJwfkhtob2ATWXodCXJkdp6nJq
+	 0PUS4TBBluNVDh0z1fb/FzBUV3x4Nfi2seDyYrfQfksYueFrHdjyoMdJWaQhlm8Lgd
+	 f5DiwQQ4QAJVA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JjqYeJ1hKUAX; Thu,  1 Jun 2023 06:15:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1JmF5dOAZnYJ; Thu,  1 Jun 2023 15:07:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6DA6D424E0;
-	Thu,  1 Jun 2023 06:14:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6DA6D424E0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 72CF0831A2;
+	Thu,  1 Jun 2023 15:07:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72CF0831A2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C414A1BF82F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 06:14:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0693A1BF82F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 07:01:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9698D41693
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 06:14:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9698D41693
+ by smtp4.osuosl.org (Postfix) with ESMTP id DD1CB42082
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 07:01:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DD1CB42082
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FM_47X-PMjDC for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Jun 2023 06:14:52 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BB71841667
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BB71841667
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 06:14:52 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5aef03.dynamic.kabel-deutschland.de
- [95.90.239.3])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3AB5E61E4052B;
- Thu,  1 Jun 2023 08:14:15 +0200 (CEST)
-Message-ID: <15af2a2f-2235-b9c5-b104-a09836f11dd9@molgen.mpg.de>
-Date: Thu, 1 Jun 2023 08:14:14 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id olmI9fJp3Xxl for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Jun 2023 07:01:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E02C142081
+Received: from mail-oo1-xc2a.google.com (mail-oo1-xc2a.google.com
+ [IPv6:2607:f8b0:4864:20::c2a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E02C142081
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Jun 2023 07:01:05 +0000 (UTC)
+Received: by mail-oo1-xc2a.google.com with SMTP id
+ 006d021491bc7-5552cbcda35so421043eaf.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 01 Jun 2023 00:01:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685602865; x=1688194865;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ufZlzhRbgrp2ECAGGL+klhy80faTIJsC40pw0AO7I/s=;
+ b=J8Koof4vo2Jg6E4912JU74Bp5EjXIHRxPvrjkz+RlhQbEBuzfGOoeL5c6OvyKz33ek
+ tJYoyq4utFyv8qkLLh28P5gGf6EF3CAPBkrbW9raUgGrDrjMS0wmeDRspZpJ89rwC4cQ
+ AbhwN7Mv9z0E1ho20D0ZMQ7/7Im5Uk+SI8BpBo0jYGhVzMDxz1aeXOciuOV7dR0a6yK7
+ tyjRTJrJRFbWsNopvrnaF64egaBI7CmwBBk7OKu+kJFGZg9Z6/TgXhMV5FO4HEjXYaOL
+ yQWTDEWM7XejbJOLwoGXyA6LqWrMDFO8CfY26LcjF49BHsh790MOWuInRKl9BxVWtKVT
+ Ujog==
+X-Gm-Message-State: AC+VfDyEFMMhp+CIPob7154e2htaEhmiivykPrQYCfxvlepEdDiH5Khs
+ a76ANyT0q7cGhGtgN9tHLv8=
+X-Google-Smtp-Source: ACHHUZ4baPIwOegGnCejHi+mh7aZuQhlsdJwMQ6jefUHQyPArJwNd9ujW+n/AO/1O63Z2BURJHViDw==
+X-Received: by 2002:a05:6358:419b:b0:123:30e2:4cfd with SMTP id
+ w27-20020a056358419b00b0012330e24cfdmr5972236rwc.18.1685602864726; 
+ Thu, 01 Jun 2023 00:01:04 -0700 (PDT)
+Received: from dnptp-9.. ([111.198.57.33]) by smtp.gmail.com with ESMTPSA id
+ s34-20020a17090a2f2500b0024df6bbf5d8sm712591pjd.30.2023.06.01.00.01.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Jun 2023 00:01:04 -0700 (PDT)
+From: Yuezhen Luan <eggcar.luan@gmail.com>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com
+Date: Thu,  1 Jun 2023 07:00:58 +0000
+Message-Id: <20230601070058.2117-1-eggcar.luan@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Content-Language: en-US
-To: Egg Car <eggcar.luan@gmail.com>
-References: <20230531090805.3959-1-eggcar.luan@gmail.com>
- <92180324-fa55-5427-839e-d555ac5a6cd7@molgen.mpg.de>
- <CACMC4jY=c8kBwxRjLL++ro=Zz1O54h5Y6ADU6x+46pgN8XhkpA@mail.gmail.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <CACMC4jY=c8kBwxRjLL++ro=Zz1O54h5Y6ADU6x+46pgN8XhkpA@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix extts capture value format
+X-Mailman-Approved-At: Thu, 01 Jun 2023 15:07:21 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685602865; x=1688194865;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ufZlzhRbgrp2ECAGGL+klhy80faTIJsC40pw0AO7I/s=;
+ b=YStVcwYM9hqQJgsRY155+ZbILLF0giQbOMCgHsvoLaIGmWRAYdASz8Wl56wm6r/H9q
+ Jsj/WQiM1qH3TcQ32k8TkLSRqu/EPfPGo69MgOAqjwLEXFfu9kiPbjjoRrxO6AM5mP/b
+ JRf3yrWLDEBmxdGQG85LcPICjjP592buGPWHAt6cYZtHlRkFsfex1eom5FrDjhAOQKYZ
+ EiuhRLFexR1Tbbp9cvG7u2nCbY3HnzemsEadP/UNabsQqAlGqIVv4srG1ooiPdN1S/2x
+ 366sRBsmGhW/5Fkk13AJ8/X7XQnI/f0qU9j7TqZqRd8XsM09FdYYpgVBntPNvZ/Pcb1/
+ cmKA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=YStVcwYM
+Subject: [Intel-wired-lan] [PATCH v2] igb: Fix extts capture value format
  for 82580/i354/i350
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -80,42 +109,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Yuezhen Luan <eggcar.luan@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CkRlYXIgRWdnLAoKClRoYW5rIHlvdSBmb3IgeW91ciByZXBseS4KCkFtIDAxLjA2LjIzIHVtIDA3
-OjU1IHNjaHJpZWIgZWdnIGNhcjoKCj4+IEl04oCZZCBiZSBncmVhdCwgaWYgeW91IGFkZGVkIGEg
-cGFyYWdyYXBoIGhvdyB0byByZXByb2R1Y2UgdGhlCj4+IGlzc3VlLgo+IAo+IEkgaGF2ZSB0ZXN0
-ZWQgYW4gaTM1MCBOSUMgd2l0aCBhIDFQUFMgc2lnbmFsIGlucHV0IHRvIGEgU0RQIHBpbiwKPiBy
-dW5uaW5nICd0czJwaGMnIHByb2dyYW0gZnJvbSBsaW51eHB0cCBwcm9qZWN0LCBhbmQgZm91bmQg
-dGhhdCB0aGUKPiAxUFBTIHRpbWVzdGFtcHMgcmVhZGluZyBvdXQgYXJlIHJhdyByZWdpc3RlciB2
-YWx1ZSBpbiByZXNvbHV0aW9uIG9mCj4gMW5zIGFuZCBhIG1heGltdW0gcmFuZ2Ugb2YgMl40MCBu
-cywgdGh1cyBhYm91dCAxMDk5IHMuIEl0IHdhcwo+IHN1cHBvc2VkIHRvIGJlIGluIFRBSSB0aW1l
-c3RhbXAgZm9ybWF0Lgo+IAo+IFNvcnJ5IEknbSBuZXcgdG8ga2VybmVsIGRldmVsb3BtZW50LCBz
-aG91bGQgSSBtYWtlIGEgbmV3IHBhdGNoIHRvIGFkZAo+IGEgcGFyYWdyYXBoIGluIHRoZSBjb21t
-aXQgaW5mb3JtYXRpb24/CgpUaGVyZSBpcyBubyBoYXJkIHJ1bGUgYWJvdXQgaXQsIGJ1dCBJIHdv
-dWxkIGFwcHJlY2lhdGUgaXQuIEluIHRoZSBlbmQsCml04oCZcyB0aGUgbWFpbnRhaW5lcnPigJkg
-ZGVjaXNpb24uIFlvdSBjYW4gYW1lbmQgdGhlIGNvbW1pdCwgYW5kIHRoZW4gCnJlZ2VuZXJhdGUg
-dGhlIHBhdGNoIHdpdGggYGdpdCBmb3JtYXQtcGF0Y2ggLTEgLXYyYC4gQmVsb3cgdGhlIC0tLSBs
-aW5lIAp5b3UgY2FuIGFkZCBhIHNob3J0IGNoYW5nZS1sb2csIHdoYXQgeW91IGNoYW5nZWQgYmV0
-d2VlbiB0aGUgcGF0Y2ggCml0ZXJhdGlvbnMuCgo+PiBJIGRvIG5vdCBzZWUgdGhlIHZhcmlhYmxl
-ICpmbGFncyogYmVpbmcgdXNlZC4KPiAKPiBUaGlzIHBhdGNoIGhhcyBhIHR5cG8sIHBsZWFzZSBp
-Z25vcmUgdGhpcyBvbmUsIEkgaGF2ZSBzdWJtaXR0ZWQgYSBuZXcgb25lCj4gdGhhdCBmaXhlZCB0
-aGlzLgoKSSBoYXZlIG5vdCBzZWVuIHRoaXMgeWV0LgoKPiBJIGhhdmUgdGVzdGVkIHRoZSBwYXRj
-aCBvbiBhIFVidW50dSBzZXJ2ZXIgMjIuMDQgbWFjaGluZSB3aXRoIGtlcm5lbCAKPiB2ZXJzaW9u
-IDUuMTkuMTcsIHRoZW4gSSBnZW5lcmF0ZWQgdGhlIHBhdGNoIGluIHRoZSAnbmV0LXF1ZXVlJwo+
-IGRldmVsb3BtZW50IHJlcG8uIEkganVzdCBoYW5kd3JpdHRlbiB0aGUgY2hhbmdlcyBpbiB0aGUg
-ZGV2IHJlcG8sCj4gbWFkZSBhIHNpbGx5IG1pc3Rha2UuCj4gCj4gQXBvbG90OHplIGZvciB0aGF0
-LCBJJ2xsIGJlIG1vcmUgY2FyZWZ1bCBuZXh0IHRpbWUuCk5vIHByb2JsZW0uIFRoaXMgaGFzIGhh
-cHBlbmVkIHRvIGFsbCBvZiB1cy4gQ29uZ3JhdHVsYXRpb25zIG9uIHlvdXIgCmZpcnN0KD8pIExp
-bnV4IGtlcm5lbCBjb250cmlidXRpb24uIEdsYWQgdG8gaGF2ZSB5b3UgYW5kIEkgYW0gbG9va2lu
-ZyAKZm9yd2FyZCB0byB5b3VyIG5leHQgaW1wcm92ZW1lbnRzLgoKCktpbmQgcmVnYXJkcywKClBh
-dWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
-d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
-L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+82580/i354/i350 features circle-counter-like timestamp registers
+that are different with newer i210. The EXTTS capture value in
+AUXTSMPx should be converted from raw circle counter value to
+timestamp value in resolution of 1 nanosec by the driver.
+
+This issue can be reproduced on i350 nics, connecting an 1PPS
+signal to a SDP pin, and run 'ts2phc' command to read external
+1PPS timestamp value. On i210 this works fine, but on i350 the
+extts is not correctly converted.
+
+The i350/i354/82580's SYSTIM and other timestamp registers are
+40bit counters, presenting time range of 2^40 ns, that means these
+registers overflows every about 1099s. This causes all these regs
+can't be used directly in contrast to the newer i210/i211s.
+
+The igb driver needs to convert these raw register values to
+valid time stamp format by using kernel timecounter apis for i350s
+families. Here the igb_extts() just forgot to do the convert.
+
+Signed-off-by: Yuezhen Luan <eggcar.luan@gmail.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 58872a4c2..bb3db387d 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -6947,6 +6947,7 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	struct ptp_clock_event event;
+ 	struct timespec64 ts;
++	unsigned long flags;
+ 
+ 	if (pin < 0 || pin >= IGB_N_SDP)
+ 		return;
+@@ -6954,9 +6955,12 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
+ 	if (hw->mac.type == e1000_82580 ||
+ 	    hw->mac.type == e1000_i354 ||
+ 	    hw->mac.type == e1000_i350) {
+-		s64 ns = rd32(auxstmpl);
++		u64 ns = rd32(auxstmpl);
+ 
+-		ns += ((s64)(rd32(auxstmph) & 0xFF)) << 32;
++		ns += ((u64)(rd32(auxstmph) & 0xFF)) << 32;
++		spin_lock_irqsave(&adapter->tmreg_lock, flags);
++		ns = timecounter_cyc2time(&adapter->tc, ns);
++		spin_unlock_irqrestore(&adapter->tmreg_lock, flags);
+ 		ts = ns_to_timespec64(ns);
+ 	} else {
+ 		ts.tv_nsec = rd32(auxstmpl);
+-- 
+2.34.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
