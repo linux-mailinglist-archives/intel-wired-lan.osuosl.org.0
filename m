@@ -1,187 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 292E371FB0C
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jun 2023 09:35:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2352D7205CD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Jun 2023 17:19:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A93DC426E8;
-	Fri,  2 Jun 2023 07:35:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A93DC426E8
+	by smtp2.osuosl.org (Postfix) with ESMTP id B905841885;
+	Fri,  2 Jun 2023 15:19:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B905841885
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685691301;
-	bh=4QOVe2kSflryKH2qKTRyPyva8zJnSzpYPkp+zKE4974=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1685719197;
+	bh=3ic6tS0u/Ls+ZJs/+TJhKdMqDcrlR/X9tXj7CmZ27rA=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HfL+Kg4NdviR1fSUA2McUy6yu0TmPwQY47MD1z5Fx5zAWdZb/Luu8mE+Ze3NtjGZt
-	 yRxqLjsVtwSSknSKMKGpf1VXaoqw+lBJAhHqqz2N7fKtVZ2MLw+XornjpPrSycnd+z
-	 XEGkqJmLaj2IerRVKZnkAjI4yJIvO1+p1rsxE9E+/LX93qZGocj4YReSex/go80Z4+
-	 en+SbpXlGvOeYHNKG9Ow/Q83uGmpUEpDRmOXQleDZGI0QSM68zMxxjxaMVkFZHGNh8
-	 YdJ4lAItXsD2JNukDdwpSTN3ZRwz6EbL9cvNRjgfD4YCJVkKxPckHl8DBzdgF9iCfS
-	 Yg53vDUtQr2/w==
+	b=qpowJWspway6GBFu/MibeA6oSI43avHfGoQI3H8MM26bGwRouxpisCaoY3RVlqEGO
+	 H611iv3Rp6NQwoXGrNrxF+DiJEPK/mBASqC/FAFS1H8cNaJoW+mWPUp7dKnfCxqr0g
+	 MmqJos636cPftiUggvOPOio97mA0xBy/CkbIxP7wudY73g6J4bBy1e3hkgDo+aKnRa
+	 iCFwLNwohiIjqeujIblQu/TrpizXQGSmgBYHXYvLhdPNdUmkRYoTT+Ct9scgH1Q+zo
+	 +oJN7naNTWX5jzLwWPZOMDXn7JayWU1V/Ocr3COw7JyKTQ/Yg8MV4cuQNfoGqqR19c
+	 DvLDmnMfjCB/g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FEmu9sgFEzKy; Fri,  2 Jun 2023 07:35:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L32DS7YR42bD; Fri,  2 Jun 2023 15:19:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 27AC041F74;
-	Fri,  2 Jun 2023 07:35:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 27AC041F74
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6127D405B3;
+	Fri,  2 Jun 2023 15:19:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6127D405B3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D6F641BF599
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:34:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D4141BF599
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:50:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AE643826C1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:34:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE643826C1
+ by smtp1.osuosl.org (Postfix) with ESMTP id 719FA81E53
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:50:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 719FA81E53
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RIddaRq-Vawe for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 Jun 2023 07:34:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF98582640
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DF98582640
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:34:52 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="359102340"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="359102340"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jun 2023 00:34:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="954366238"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="954366238"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga006.fm.intel.com with ESMTP; 02 Jun 2023 00:34:22 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 2 Jun 2023 00:34:22 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Fri, 2 Jun 2023 00:34:22 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.42) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Fri, 2 Jun 2023 00:34:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WCmlDD8+zzN0Q+N6OfT0Np+Vlg++QD74lq4FX8WbyYSDuKcVsWzh6g3Qqft5FWSivSj07UzYG7o3GmGigyPammrkSHMGeSaVsQwxaR3VTPPergqyyL3Uf8FJea2PzFLED/Npe8LEJgsx0/nI+GjDHMCtV1CnGIL+FBmCOPRnevhGx6L55QI0L+GvCxLCNoEgQ3NxrdpgTUfqbiwUs2PFf+G2stsbyE6NY36qfo0rvOzMr+9yLJ0ubU6IiFNJDScU3GjWUKSu6lb58BDrnGWrLyvQfhFZ1a81xSeQn5KXIVxO/wPu1urxA66cJnBPQoxSWo9QpYATZ4uDQRESS9vkeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DlfB5wut3iJ5JjDfOU/FeE5zvl8XRuAg/w73v0YNv8s=;
- b=ULMVhTFnry568hKVhFI1kAV94Jh9hPPfMv4o/EQnTjT8jYU9LgQ3BW4Grov4pKeObrZNRFfy51+z+1K3O0IstUMsSlF8NIzz5TACXdTHp00tGMZGgZs26lQnQ1QGITOXY87fVAbgmXPUty55Rd2F2i7puwLvzxyYc4mPv/oP+TerqpFJHJGTFK8aYbUEi6QB2FZFBZ2GkcfxaywUvay6HtIkbEyAyY15ifSjUcTYYkhhpiTCJz3LZssq5+ctxRpncaos5H45UNORHREuCg7ckdMoZvr9+jKVa+rAGAjGShXeF82A9Ht46GRKy3N5NjAEj8zTkHWTvIxLU0h4pUDRmA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SN7PR11MB6725.namprd11.prod.outlook.com (2603:10b6:806:267::18)
- by DS0PR11MB6398.namprd11.prod.outlook.com (2603:10b6:8:c9::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6455.26; Fri, 2 Jun 2023 07:34:14 +0000
-Received: from SN7PR11MB6725.namprd11.prod.outlook.com
- ([fe80::7947:dd13:d23b:b35f]) by SN7PR11MB6725.namprd11.prod.outlook.com
- ([fe80::7947:dd13:d23b:b35f%3]) with mapi id 15.20.6433.022; Fri, 2 Jun 2023
- 07:34:14 +0000
-Message-ID: <cbb5bf34-5082-13ec-45b8-590268279bae@intel.com>
-Date: Fri, 2 Jun 2023 10:34:05 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.11.2
-Content-Language: en-US
-To: <prasad@arista.com>, <intel-wired-lan@lists.osuosl.org>, "Ruinskiy, Dima"
- <dima.ruinskiy@intel.com>, "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>,
- naamax.meir <naamax.meir@linux.intel.com>, "Avivi, Amir"
- <amir.avivi@intel.com>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-References: <20230601185353.17012-1-prasad@arista.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-In-Reply-To: <20230601185353.17012-1-prasad@arista.com>
-X-ClientProxiedBy: FR0P281CA0163.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:b3::17) To SN7PR11MB6725.namprd11.prod.outlook.com
- (2603:10b6:806:267::18)
+ with ESMTP id tj0xesnoYq0v for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 Jun 2023 07:50:06 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE14C83C19
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DE14C83C19
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Jun 2023 07:50:05 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-96f5d651170so645617766b.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 02 Jun 2023 00:50:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685692204; x=1688284204;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Nm6904e9uOTwjcadb4t+yWnWamyOPNPf3ur/MojkN0o=;
+ b=dEO4l9N8rRJYopCw4Ywkp81LWa9Px7iD9Nil+EeHMgwCvMG+MP15SAazQ+GBzkJmLo
+ il2v8oB7Cb2DC6jTMvYiLsPL7mWoJRDg11QgrnPu6wRAJZQrAZd7jX89Ffkm9rBFwOiL
+ Xhl1TVTk1iZPiCc9iJ/UlvLnofIXskkSre70ivcV2NERSfzL0VWvfWMuWIFdaQupPxfA
+ IBIb1Nd4RlbiLL6aREQeQfkuuz3DBAE0AP4E8hcMiUqd7O9Pj5HclSp8U6ZGK9+TWiFt
+ oCp3M5+FBd78lFVONYb8Ib/wFnA4Q4LIs/KD6zfZ76Wbayrc0FWQPz0NuabI7fbcn8di
+ C4wg==
+X-Gm-Message-State: AC+VfDwflhe8Nyc5wF1WztZRBBRFeuxC/PZ8QRNpFJooX5OgU9UDjNuA
+ /Hz9EbMcucShgUNk1dzEFxFyVk8kJDMpdBxQ+AEbKA==
+X-Google-Smtp-Source: ACHHUZ5f4MMmaN/T0CLf0iD4uGBRMw/+J0xQ6r10Lefy5sOrDczyeEpuYi5fSM8G+dxx2k2xOq6M1QmOTddP3ThfAgM=
+X-Received: by 2002:a17:907:86a3:b0:968:892b:1902 with SMTP id
+ qa35-20020a17090786a300b00968892b1902mr3598207ejc.6.1685692203986; Fri, 02
+ Jun 2023 00:50:03 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN7PR11MB6725:EE_|DS0PR11MB6398:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1d8b7fb7-194c-40aa-37bc-08db633bc388
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: GAJZ0J6Crat7HLxmYHiwgx0JoHM0Gb1LKBNohpx1BiFgoA7o8/vE7n4+hkb9AgLwkYfxOrmHn4OTmSnxqxpiBHq0DzEMD8si0lJ7D+KxZqplbEYDRwxGxlL/REvdlu0GzUxT3MclK5g2gAxGHdF0ksL2CqW2kZwxZNxQBpgvxHgXsSth9Byn9hlgcGQuw3BPBL4OwKJqWCOzRYoQSda8YLEBFXoTo47jzidQ7Dr5vQWfnaNwWII9gszaq3Rf3QzDC1mbUi0ErhkKQTdDlcQhO1vSH99kgS0U3wTDKcJlMSY6bJf1ZJbnzGmXmMUmgYkRp09Rvzt/1LBaDbNTUntuRdwBywwjnTNdI1wubU6WZpwh9bBiA049Rfru6YKZZCpvCxNALnSY/KOUW0RqtCxKYilqjLo4K9hj4wX75qrSFKZRx3h8eHRkz8dbKwuE4Xe/rMaSdfVZ++J/DRNgJLrtlEpe5mMhtTNaVD/ti4nrVv5HV6RD5RR7LJbBMvQ0I3vyzXpVrzGjbCguoRWDy03SmEHto/x6I2ns6eXOOG0ohUQs2BxVYc6uAo4dzaGWtkC6WLwEJybCZGLQdMrM9Nc9FZWx88HxM9xi/0Y7YjymkvxWypUVDhoNnrCqxpPAo7KHuWLnUAfbtkHAZ6ePLr9VSd1A+wpbBsY631orV8krWPg=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN7PR11MB6725.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(366004)(346002)(136003)(39860400002)(396003)(451199021)(66946007)(66556008)(66476007)(6512007)(26005)(6666004)(6486002)(53546011)(6506007)(478600001)(110136005)(2616005)(186003)(86362001)(2906002)(8676002)(31696002)(5660300002)(8936002)(36756003)(4326008)(41300700001)(921005)(82960400001)(6636002)(316002)(38100700002)(31686004)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VkhNM1B6emUzN2NWdW9xSm40YlA0QnF5eUR3Vzl1dEc1d2JzNkJzUG5ocnAw?=
- =?utf-8?B?UlpNSFoxTWovRWs2ckFpdEhLcHdSMFR1djdnYjNMQkJYK0wvYzFBc1pEL3FC?=
- =?utf-8?B?b0VpdlVUUGFNU3k2SGQwWXE3bUhta2RSMGF4TkVETlN1ZWRjZktLU0JMOHV3?=
- =?utf-8?B?cmlWOHhMVmxIeHRZeENsbGdETlIra0tEeXdSMjluWFZ2Y3BjT0ZpcC90ZXB5?=
- =?utf-8?B?ckYva2w0NG4xRkhMZDAwZWVTd1djUVEzWGZaMkRPUi84Q2J6TDFOeVZxcGFB?=
- =?utf-8?B?aVVkTFpueXVLOWJBMnFUSFE0dHphWnd6UGRSWnRJQU9wbVcwN1RlYVg1QXlN?=
- =?utf-8?B?enQrOXRISFdydFp0dkFEb0lNb0h5OFVobTErOUNxa0ZMM3l3U3ZMRkZzWXJX?=
- =?utf-8?B?TjJIamZRbTlqcFhyVmh6S2c2N3R0MG1NdFFzbkJPMVRwODNwcU4rNUp6L3JM?=
- =?utf-8?B?dzVHdjZ3RjcwTkNGUzlmYjJvdk1kNjRlY1NLTG5GZzdSQlNlKzdTN1p1S21w?=
- =?utf-8?B?eFRPaE9EbHIzbkxENzQzUCtBenhJZlZxU2JubERIRmh1L3hPUFZYWlpTa1FD?=
- =?utf-8?B?YXpSREpxSitjWWx3MkkzeFhoUEkzM2YySFkxa1IyYmVvUnZIY0IxZUFsOFAy?=
- =?utf-8?B?ZHpDTFN6V0FmRmNLTk9Dc1EyWm9iai9QUm03Qk9NeUFINCs2d3ZZNUIzbXJr?=
- =?utf-8?B?TGIwcWFtbTAvYVdCYVcvSGp5bDBYUVEvN21VZ1VoRExwTDhNeG4wUG1NWHpC?=
- =?utf-8?B?cXNIVmhLdzJRSW1GcDNIZlRIYlRRVUhhWGQzNlA0V1lSdzZLZ0RTdjBaTzgx?=
- =?utf-8?B?dEpGTmlMWFhreFhVa1lyZ01YbFRXcm1pallybmp4R3RqSWVLa3FQQTRpUldi?=
- =?utf-8?B?TENsSFd3bmxXN1BBODlQb2d1K2hRU20yUlJVZGlQcWFkd3dNQlJyOWtnUGRi?=
- =?utf-8?B?SzkrSGFXRy9ZR2RmOE85VXJ3NDdXN2hCd0VXcTlFYStJUkFYVDd1K3pwOEpZ?=
- =?utf-8?B?S3RJMEtDQkx2WHJKMlZ0akhJYjE4MzhaVlVISkpkKzd3RVZRc1RzaG5IVnZr?=
- =?utf-8?B?TVRDMUhMUEpWc3lYemY0c3libURxSy9xSHkycWZuQVZzV1NnbDdzcVhsL0Y1?=
- =?utf-8?B?WW5ZSHBLMUJqSEFmSzBjNjBBY3kwemF1YjRzdTZvbkRRdzJkdlRSeHMvRGtv?=
- =?utf-8?B?a0MvQ2hiR25aSTlYUFZUb3JBeHdpRUthRnQyeTJaR0NVdFZScmVhaWd5UHlN?=
- =?utf-8?B?b1NmQUMrVmJBcktCaDNncGVCb2dhTXZuaHNFaWN2ZzhMNUpuR2ROV2Y5cDFh?=
- =?utf-8?B?ZEUydVg2Miszc0I4a1NLUlA2TU5vRnhGeTZzZGtoV2JGYUZRNVFEWTlLc1Jw?=
- =?utf-8?B?ZHRwS2x3ZmxHd0Nhdlp2aCtqbFNndzIvYkdJelRxc3REYUQ4eWZoZmUwUzh1?=
- =?utf-8?B?N3RCTnVSRzlFWUpadmpPclRjTGVkOWx0MXYyZ3BpY0k2MzlYWTZpTE9peUdO?=
- =?utf-8?B?bm9HYk1oQ04vWkNUODNkaW02QVJsVTJTMG9qRGhaWG5tTGU2aUl2V1kzeE9Q?=
- =?utf-8?B?YnBLb2RPQkdOUzNCZUlsMHBqb1dwa1V2TWNKVHhmaUdldXdlY2I3RmtNSFpy?=
- =?utf-8?B?eG5sVjhUMFBLd1hjRU11bnFTa0FrV081NWYvT0NRaXdmRGcwOFBEbGVNMk9L?=
- =?utf-8?B?Z0x3TXlrL3J1RUJrblpzKzRZRGZmTDFvQVVOMStBYlFQUVFlYkFtYTlkQ3Bj?=
- =?utf-8?B?cjgyK0prYUpsQzJFSHpUY0F4WXM3a01oNHN0ZFJNN0NUcmZRRzZlQ0ZRWG5x?=
- =?utf-8?B?QkVwZ3gwVjd3U3c0NTZtVkk0TmtGM04yYWZ6VVdwNkR4OUlhSlZ2K296T1Jy?=
- =?utf-8?B?cWs3Qk51VnZxYU1wMGJwdkhlQWpLWkdoQTh0M21RUkt3V3FNRThGQ0gzOXdR?=
- =?utf-8?B?ZWY3ZWtURzFwRDBhdndkY0tBVzhnL3lFQmhDYnJxT2tZR2E2N2pxWFBMcVF6?=
- =?utf-8?B?RFFyQ2VtSjhmYy9kNEJiSnlnWC9FSXVpQW1DNTY0OU1JWnNOb1lqNmt6cDRJ?=
- =?utf-8?B?YXVlT1FJMEErOVYwMXc4NmJKMExJZVNCV1cvNnczWEsrVWw5ZlJNQmdkc0RI?=
- =?utf-8?B?WDZPMzI3VUtFcFlIenJpOUZkQVNaTlJBUkFQckUwRWNNQTI5RFVJSG1TdmtM?=
- =?utf-8?B?T1E9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1d8b7fb7-194c-40aa-37bc-08db633bc388
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB6725.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2023 07:34:14.1510 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: S1S8DUf+vrdERYZvwXDQCP5C6Wls86gjEBNCUpnDdVR99lyRi4PO41Pt+E/MOfHxAnT9E3gMpeuoBwCLBzKwbQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB6398
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685691292; x=1717227292;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=UMaa3v6+1FAeW4DjAUQGnuFxrbYLzZTbqs0rWBke8/w=;
- b=gCuUqu+00czCd1YSKjqfyleU8HhmXmVYMDpCwt1l3Tk6XrSXmIZCfDOS
- IPYsKYSObOrWu8VUBmpTqkDDFDSavMBUpdTM6P1RBNctpCHJaXC3oFFni
- GdcpPTXqbb1TdG1mf7Z5HAQAWSnmVMc9qPXeSN1KBf2uX0jitF1mghkpb
- j9fOWcvcKN6bJc+XxTyj9FB+51ckn5kr5omtXK0XojOlV2OSrcitrFb3C
- Bt1AmHaAEpitDj4OSkeAb72Uq6ruHFVZXN/hs7XWl81LG4UY6hbSDfk+g
- VuoEGNShAbJoEeEbzTq19HLnnr168hReRytvxR4bUQrWRp4OiHdRskQHL
- A==;
+References: <20230601185353.17012-1-prasad@arista.com>
+ <cbb5bf34-5082-13ec-45b8-590268279bae@intel.com>
+In-Reply-To: <cbb5bf34-5082-13ec-45b8-590268279bae@intel.com>
+From: Prasad Koya <prasad@arista.com>
+Date: Fri, 2 Jun 2023 00:49:52 -0700
+Message-ID: <CAKh1g57arCC3a0iv+pc+xKJk+8HgzqvK6SjJt83uVQedw2Hm9w@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+X-Mailman-Approved-At: Fri, 02 Jun 2023 15:19:39 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=arista.com; s=google; t=1685692204; x=1688284204;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Nm6904e9uOTwjcadb4t+yWnWamyOPNPf3ur/MojkN0o=;
+ b=fbpP9sh9S6CHtQRspjhHpTeWEjUYQi6Uh8lIhQBAb5WWEzKfldZwJCrkMhPM50ia6n
+ vPnOyq6LDRZ5N364sJsRGvIV1t3j/rWW/Hr5baywFyRSSWOKNkSS+9qCBNMJ8zbLYr2K
+ osnWP2zSt4mq9OyBcWcaNZsDwhF91fDaQ2CjHoDe1KaOzN19wCq0/ytS/ixpkElEt3wZ
+ 7TpYZCCTQP/tPjV4Ka+p7gQhj9Udqqsp88zq9jmFiIQuIXMktEfzBMnQjziL2ulop3X7
+ Ww2Qfqlglh/88g8PYsq54GnzeTGFeg10WBVdDZyBqsSIUHYMoOicnrrqU6eFjfeDHPlZ
+ kceA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gCuUqu+0
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
+ dkim=pass (2048-bit key) header.d=arista.com header.i=@arista.com
+ header.a=rsa-sha256 header.s=google header.b=fbpP9sh9
 Subject: Re: [Intel-wired-lan] [PATCH] intel-wired-lan: igc: set TP bit in
  ethtool_link_ksettings.supported field
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -196,41 +106,136 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: gilligan@arista.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: "Fuxbrumer, Devora" <devora.fuxbrumer@intel.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, gilligan@arista.com,
+ intel-wired-lan@lists.osuosl.org, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ "Avivi, Amir" <amir.avivi@intel.com>
+Content-Type: multipart/mixed; boundary="===============4063628762715040628=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 6/1/2023 21:53, prasad@arista.com wrote:
-> From: Prasad Koya <prasad@arista.com>
-> 
-> if the physical media is twisted pair copper, set the TP bit in the
-> 'supported' field
-> 
-> Signed-off-by: Prasad Koya <prasad@arista.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> index 8cc077b712ad..7d197fa80d5d 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> @@ -1707,6 +1707,8 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
->   	/* twisted pair */
->   	cmd->base.port = PORT_TP;
->   	cmd->base.phy_address = hw->phy.addr;
-> +	if (hw->phy.media_type == igc_media_type_copper)
-Thank you Prasad. i225/6 parts supported only copper media type. We can 
-drop the "if" condition.
-> +		ethtool_link_ksettings_add_link_mode(cmd, supported, TP);
-Do you want to see: "Supported ports: [ TP ]"? That's right.
->   
->   	/* advertising link modes */
->   	if (hw->phy.autoneg_advertised & ADVERTISE_10_HALF)
+--===============4063628762715040628==
+Content-Type: multipart/alternative; boundary="00000000000005147705fd20cd0d"
+
+--00000000000005147705fd20cd0d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks for the quick review.
+
+Yes, we use ETHTOOL_GLINKSETTINGS ioctl to retrieve interface settings and
+expect to see one of TP or MII set in the 'supported' bitmask.
+
+I'll send out a new patch removing the if(). Would you accept the patch
+into your staging tree and later push it to the stable kernel branch? This
+is my first time sending to intel-wired-lan. Not sure how it works.
+
+Thank you.
+
+On Fri, Jun 2, 2023 at 12:34=E2=80=AFAM Neftin, Sasha <sasha.neftin@intel.c=
+om>
+wrote:
+
+> On 6/1/2023 21:53, prasad@arista.com wrote:
+> > From: Prasad Koya <prasad@arista.com>
+> >
+> > if the physical media is twisted pair copper, set the TP bit in the
+> > 'supported' field
+> >
+> > Signed-off-by: Prasad Koya <prasad@arista.com>
+> > ---
+> >   drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 ++
+> >   1 file changed, 2 insertions(+)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > index 8cc077b712ad..7d197fa80d5d 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > @@ -1707,6 +1707,8 @@ static int igc_ethtool_get_link_ksettings(struct
+> net_device *netdev,
+> >       /* twisted pair */
+> >       cmd->base.port =3D PORT_TP;
+> >       cmd->base.phy_address =3D hw->phy.addr;
+> > +     if (hw->phy.media_type =3D=3D igc_media_type_copper)
+> Thank you Prasad. i225/6 parts supported only copper media type. We can
+> drop the "if" condition.
+> > +             ethtool_link_ksettings_add_link_mode(cmd, supported, TP);
+> Do you want to see: "Supported ports: [ TP ]"? That's right.
+> >
+> >       /* advertising link modes */
+> >       if (hw->phy.autoneg_advertised & ADVERTISE_10_HALF)
+>
+>
+
+--00000000000005147705fd20cd0d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Thanks for the quick review.<div><br></div><div>Yes, we us=
+e ETHTOOL_GLINKSETTINGS ioctl to retrieve interface settings and expect to =
+see one of TP or MII set in the &#39;supported&#39; bitmask.</div><div><br>=
+</div><div>I&#39;ll send out a new patch removing the if(). Would you accep=
+t the patch into your staging tree and later push it to the stable kernel b=
+ranch? This is my first time sending to intel-wired-lan. Not sure how it wo=
+rks.=C2=A0</div><div><br></div><div>Thank you.</div></div><br><div class=3D=
+"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jun 2, 2023 at =
+12:34=E2=80=AFAM Neftin, Sasha &lt;<a href=3D"mailto:sasha.neftin@intel.com=
+">sasha.neftin@intel.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">On 6/1/2023 21:53, <a href=3D"mailto:prasad@arista.=
+com" target=3D"_blank">prasad@arista.com</a> wrote:<br>
+&gt; From: Prasad Koya &lt;<a href=3D"mailto:prasad@arista.com" target=3D"_=
+blank">prasad@arista.com</a>&gt;<br>
+&gt; <br>
+&gt; if the physical media is twisted pair copper, set the TP bit in the<br=
+>
+&gt; &#39;supported&#39; field<br>
+&gt; <br>
+&gt; Signed-off-by: Prasad Koya &lt;<a href=3D"mailto:prasad@arista.com" ta=
+rget=3D"_blank">prasad@arista.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 ++<br>
+&gt;=C2=A0 =C2=A01 file changed, 2 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/ne=
+t/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; index 8cc077b712ad..7d197fa80d5d 100644<br>
+&gt; --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; @@ -1707,6 +1707,8 @@ static int igc_ethtool_get_link_ksettings(struct=
+ net_device *netdev,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* twisted pair */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0cmd-&gt;base.port =3D PORT_TP;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0cmd-&gt;base.phy_address =3D hw-&gt;phy.addr=
+;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0if (hw-&gt;phy.media_type =3D=3D igc_media_type_c=
+opper)<br>
+Thank you Prasad. i225/6 parts supported only copper media type. We can <br=
+>
+drop the &quot;if&quot; condition.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ethtool_link_ksetting=
+s_add_link_mode(cmd, supported, TP);<br>
+Do you want to see: &quot;Supported ports: [ TP ]&quot;? That&#39;s right.<=
+br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* advertising link modes */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (hw-&gt;phy.autoneg_advertised &amp; ADVE=
+RTISE_10_HALF)<br>
+<br>
+</blockquote></div>
+
+--00000000000005147705fd20cd0d--
+
+--===============4063628762715040628==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4063628762715040628==--
