@@ -1,187 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D599720F03
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  3 Jun 2023 11:46:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 10CE872101F
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  3 Jun 2023 15:01:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D8B0940B25;
-	Sat,  3 Jun 2023 09:46:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D8B0940B25
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A6376115F;
+	Sat,  3 Jun 2023 13:01:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2A6376115F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685785608;
-	bh=fushl1sBMYy6BC5jMKKcPuHDcBqu9qf5PM/VARHPRG8=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Jf3Rc9lLS7n4OeltZ2xS/Ee+Q/HNlm1oYxZra8575goIP7E/L+8ovUcKP0IrPZ1hg
-	 Z0KwDFXcXTKXck45M3c31Wa+7BPZdmyZkfgoLiArfeZPyP/3HwmqfE6E8TgLh9mVzm
-	 81XL3Pa09H1FC1xPu5W4Tv/K9UG1vCiV7doHfsaqjoOBLgznL24NX3kvs3Ub2xCPB9
-	 iHLyTDPMBIFucopIfEChaq4gEaWNLCN9lLcdfdrBtLo016ixbYfQekwoe72L5k7AuR
-	 pulpWu7vgeTuF95nvwScK4h98RoBNjdbEjyq4HQ481ar+zWkwnraHPzY8xKW3V1ZJU
-	 Zyn5y9CfP6wtQ==
+	s=default; t=1685797283;
+	bh=Gbll/VKl06VpewlZXlTSYJf5OqPrO0GkCJZOF0wxAwE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=V1Fxl/sKa6SdCFCEL1BrQ5/70Y4Je9JPYjdssWZRStDVYvejTFLFwgJyBtBQ14lbr
+	 C8o9Q23wBOH6iJAj+JspBiAHA34M6yjyWif9PLtP5V1TcStRi/hBSe27TWE6P8nZIc
+	 GAuBiRpBryf7+3m/gtAp5BL7i61YB/MoLl2rHA4iJGws9F8JDIqt4XUepSmwYgu7JW
+	 2NWzXGduSLDoTuVYx5RUmn7pi8aZbNdxl3PMonjcSBtmmJXK86NSTJc3h3TULdXaR+
+	 l8cv6i0OwKXq2NqTw0t92wZQPy7X6TVntjkJ2VghWSa4zosneonlJeD/P/g8YKRHfX
+	 Ox+6sQSA3TcKg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vt8L24JtEVvC; Sat,  3 Jun 2023 09:46:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3tiWBS3DgZqC; Sat,  3 Jun 2023 13:01:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A7ED400D7;
-	Sat,  3 Jun 2023 09:46:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A7ED400D7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 866A3610D2;
+	Sat,  3 Jun 2023 13:01:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 866A3610D2
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2FE991BF4E2
- for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 09:46:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B89491BF4E4
+ for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 13:01:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 121B342803
- for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 09:46:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 121B342803
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9DB5A402E8
+ for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 13:01:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9DB5A402E8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nl0Z97idDB2w for <intel-wired-lan@osuosl.org>;
- Sat,  3 Jun 2023 09:46:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UhaB8THS-GEE for <intel-wired-lan@osuosl.org>;
+ Sat,  3 Jun 2023 13:01:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D391A427B6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D391A427B6
- for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 09:46:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10729"; a="442430749"
-X-IronPort-AV: E=Sophos;i="6.00,215,1681196400"; d="scan'208";a="442430749"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2023 02:46:40 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 693C2400DA
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 693C2400DA
+ for <intel-wired-lan@osuosl.org>; Sat,  3 Jun 2023 13:01:15 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10730"; a="345652792"
+X-IronPort-AV: E=Sophos;i="6.00,216,1681196400"; d="scan'208";a="345652792"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Jun 2023 06:01:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10729"; a="711241414"
-X-IronPort-AV: E=Sophos;i="6.00,215,1681196400"; d="scan'208";a="711241414"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga007.fm.intel.com with ESMTP; 03 Jun 2023 02:46:40 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Sat, 3 Jun 2023 02:46:39 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Sat, 3 Jun 2023 02:46:39 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.175)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Sat, 3 Jun 2023 02:46:39 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Insmh3Xg+sdvc1JGoFqX+NEI/rkYWYBeeDU3HWHz3yw/Uj+CY/A/cFTwvfSPQv33G9HaSvNDeh9NZPLYXzQkjz7YX3+yCvwNarraqNVXnR5m2lNZOWJ0SfIyIH2YhCYP1Co5WFydgqbZiVcQKW8yJGJbKacxc3yActy9UGaSwUL2MFxg7rw/czSJY1VG+90vxiFBZ20deXFxIOuJnh/7hHB/JuwrJaWgu0LjKukx7Xj3iTugBw9YGREK0IswFqdf5kfo69tZ6zRUksmNnNCOtCLWM9J418oklWXPLMWW0UggH1XnrXXs7xOf5klV6TQFaHbUr0eMb9w/cyFsymr/1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fI/VOROlobmD8IIBqn4X5cIzVC86k9sdyQXrordTiNA=;
- b=BE25anM3El6FiKAUuOD0fxXoGX8+WLuaOZ5kI3/lQ7DsSNFCC9HCOlyXmQ5VuNVawhP2TOJ2cjh6naFfIudcSeiXS8/qIt/z3MQ6ffXAzNFfAslIEi07O0DNKWchrtMs+7xBZoyE+m5zHCgIVaWymtix0u7hSmvMkLkJXVxc1BjT79WWiQlMBRLVgJPbaT0vxHaFR9Y+XWo9t4apCoUaRREeU+IvahQCL6W+3FWT7+UZ2K+gdtB540LbqL2xjIc3maacBAwlJ7NSOvgF823S+Y+D8ojQ7pmaKMP3NjDRvxAP1FMzzQK8/D4upn0g1h7zclOy6ppUMhiK3b+kbz0YTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6180.namprd11.prod.outlook.com (2603:10b6:a03:459::14)
- by BL3PR11MB5681.namprd11.prod.outlook.com (2603:10b6:208:33c::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.28; Sat, 3 Jun
- 2023 09:46:37 +0000
-Received: from SJ1PR11MB6180.namprd11.prod.outlook.com
- ([fe80::c28a:3fb:3cd4:1e97]) by SJ1PR11MB6180.namprd11.prod.outlook.com
- ([fe80::c28a:3fb:3cd4:1e97%4]) with mapi id 15.20.6455.028; Sat, 3 Jun 2023
- 09:46:37 +0000
-From: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [PATCH iwl-net v2] igc: Fix TX Hang issue when QBV Gate is close
-Thread-Index: AQHZlPHKdiZX/uVb10eZVwd5ssfU4693yiwAgAELaJA=
-Date: Sat, 3 Jun 2023 09:46:37 +0000
-Message-ID: <SJ1PR11MB6180ECFA708852013E38C51EB84FA@SJ1PR11MB6180.namprd11.prod.outlook.com>
-References: <20230602012827.25938-1-muhammad.husaini.zulkifli@intel.com>
- <8e65d308-a64e-96a4-1ed7-4cc27282d65f@intel.com>
-In-Reply-To: <8e65d308-a64e-96a4-1ed7-4cc27282d65f@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6180:EE_|BL3PR11MB5681:EE_
-x-ms-office365-filtering-correlation-id: 6fe9d771-accb-45e6-2c37-08db64176c97
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: r/DACm9Ux7T7F/XzcNGtugh5YdGg7DY5eTJTmlLZc3kxQ6sel4XmCNyv6rGBacHHIGvY8TavOjnl6i9Ej1auGhKsuNKbGDyV2ihs4o96WSrhVqfpCzApJD3GWGQcd0tf9BwreTNha2WlBielFZpfns7NXYVvs6QbrzOk9irU6U+beYb6WIUvkECW7e6bApevUtfEsuYLkuta4t/FfBJma3BEOgSD4++JYQxeVZzV8oyS+xOqBAXzt9CeLkZV5dgtsQjpfCqxpjIhtybVh/a24iG5gAUWw6rp+hhOkheNOu/Yh8mA13khHVxJsthzbJ62w6+4TE+lqFS7nKP1Ep1W+q/He3KqjHE3XjDQYBTX+eziILTHaDlIJJjnKEaf0aV3SaAlJkZKqLn7GhPti5rJwM3Jx0V5j4S2TVMdjNw85pUk8xPOKO4U8SAgVwdK4RwVxWqhcCCmeapjkF1KMwJDDnir5sqceK0JfTRvRc72yZ8yOfFgQO0UmJNJ5NGpsOlkOlQEXHhVS5jvzO9eWwAymrfVgNIT3C65aa/FFhz2bLz3lz+jfSuotFpCS9WoubdQPRx2kyvMHGc1PSjmSBX3pVtQgRS+decD3SiDc52O1aud+2YHHwIu5gAZD/4ZkF6R
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6180.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(39860400002)(136003)(346002)(396003)(376002)(366004)(451199021)(54906003)(110136005)(71200400001)(478600001)(52536014)(8936002)(8676002)(5660300002)(38070700005)(33656002)(2906002)(86362001)(4326008)(122000001)(64756008)(66446008)(66476007)(66556008)(76116006)(66946007)(316002)(55016003)(82960400001)(38100700002)(41300700001)(83380400001)(6506007)(53546011)(9686003)(26005)(186003)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?OW42YU1UV0lnbG9YMGlRb1FaUDlxVW9NRGxyV1MxeXFBQ3laZmh4RUxGR3VI?=
- =?utf-8?B?bXNiQmVhay9pVXEwMStBTUFEK21keE1KOGs2blkwSkdkWWpPUU9NZkRERXR6?=
- =?utf-8?B?MDVBdXJMUkxmaDNnRXJZMmoxQ3EyRlpSY05sOERPUmZyZGl4d3dzRTBGYStK?=
- =?utf-8?B?ZEVFbDFuK20yWVZ0RXFMUXIxTnpreHlMdEdkMWZXZ3RuTllmZ1FzN3lVazhO?=
- =?utf-8?B?VnVSSDZ1UitveFdZV2dSYVQrRG5SQ3piNGM3cHZkUlRVZHMrRXZiZDBtc2pu?=
- =?utf-8?B?bE9OSm1PRXJlUlZhNzYzL2k4UlRobm5ZcGRkYTZYY0sxNkJua1pvNjFGYkRm?=
- =?utf-8?B?M2FiY09xeEt0QlQrZmxSK0gzMUJPSnNQaENMWWpQdzg3bHZPd3BqdXJkbjhO?=
- =?utf-8?B?LzNRYjVZMm1SQUVreEd3OWFkRExKY3J2OUhSalZTTlBCdGNNS2VDNElCdWwv?=
- =?utf-8?B?VFRXd1Z3eEh1WnkrZ2xzL0VlYnZGaHEwT3d5L1VMRGNGcE9wd3ZvalRySjhK?=
- =?utf-8?B?OXlJdFZZOVZHSDZneVFKRGFBaVdxdTl4c2lxK0NvS1MwY0dYNG50N3RsdGdt?=
- =?utf-8?B?T0oxeTByVitLUG9weTNzOFZUeE1sYndGN3BUNmlKNWZXWXhoL2VDRUtEZEFs?=
- =?utf-8?B?M29NVlFsK0tBNTVoYUs5V0NYeXhIeUVWYWlRYlIzcU55NURUSm45VjhKck1L?=
- =?utf-8?B?MDFXaDUvanQvelgzUUNyb0Z6UEhSNUI2S0grcXFFUXlhT3VHV2FtYnhHQ2M0?=
- =?utf-8?B?K2tZRThsR3FkWXVoMS9oL3ZOeGFvNVQ1bGlaaGJ2bzdYck9vUWNVYm9ZWVdu?=
- =?utf-8?B?ZDlsTzBkZ0FEN00wMHhFZVZCcUgxU3JBTGhpRW5tNDZLRXNCQlJ5WEgwZmd3?=
- =?utf-8?B?WFN4bk95ZnVtcldsQ2hXN0owQnYzYVkyWDJTVkN2SUxrSU5KUW0wb3QrSVI4?=
- =?utf-8?B?UFBOMENaWDJ5UklaVE9YQ3BuUVp5K1lSUjhsd0VoSzBUOHZsMmU2VFdvd1hV?=
- =?utf-8?B?ZWpJMENkcE02OGZKWHRkdko5cWxOUzNHMmdVZGErTm9WRU82WDM0S3hyanY2?=
- =?utf-8?B?RmFFVERCUEpjSHpXTUJiYmpmUFVYREt6WERPcWllVFAzazZ0STZhT0Nod1RI?=
- =?utf-8?B?aWEyZ2k2QTk0QkhBQjBhNEZ2R1o4d3pnZ0czMVRsbUtKNStXK1AvRkxYaWs0?=
- =?utf-8?B?TEZSWnhDWmd4bVJRMHlXSEhtSkgzeEtBVFRPYzA1R0hMbTR0R3pBOXZuMHJ3?=
- =?utf-8?B?UWRNQm1LSHZvZ0g2OGpZTlBKbHdhS2k4cm9MYS80VDJYOEdwWEZkQnF3VEJr?=
- =?utf-8?B?bUI5c3RJWHBwZ2ZCWTFCa0dJaGdDb1hibGtFNkw3eDRrdFV0ajdHQ2dVY3Fy?=
- =?utf-8?B?VDNOck9STytSZksxNllVajJPVTNYQmMzYXNUS1h0OE1ReFBGNmt4UmZtZ3ZD?=
- =?utf-8?B?amFLVlYyMTJTbGxyVy9BSVFFRVZDQ3hPMWN4eVFRdG1IR3pTeStyUWtwZlRz?=
- =?utf-8?B?ZFpkRGtOUjBZdjRMaUhNYUp1NkVtdmdaSlVQajNEY05keUtTdFdqeXpnQlBR?=
- =?utf-8?B?SFFhYjcrL2V5YmQ1L2lDU1ZqTWU2UDJCcjNYTitZVXV3ZVRGTVpWNjVMUVVP?=
- =?utf-8?B?RkphSVV4ZWw2RkFzeUtadkZsem1DOTlURUhOdllJNERrQ1FSQVZ4Sm9LOU9m?=
- =?utf-8?B?dzBua3JjRVBiTVYzYkFOTTlxR01WcEVmL2xxS1M5cmZDclRGNXZ3dXpqeXY1?=
- =?utf-8?B?K0dtV25mNytnYmNGVjRaTTVvd1AwWXpDZW5wOEJkcURmcUp4aFNOZGx4UHYv?=
- =?utf-8?B?Q3Q4RldtVGRMTUFjL1FtcWw0aEpRYTNJTnlRU0NwMlh5STVNMEttcU1FQkda?=
- =?utf-8?B?M1hHU1lYRmJoYTBkWCtkdlZWelB5RmRhVCtOelJXS3FqVlJtRWdEYzgrL094?=
- =?utf-8?B?ZDN2NGc4KzRabUlLZW1Hem1aYzVTOGFiRVBxTVZNeExFOXEydzhXVGF0dmdP?=
- =?utf-8?B?YW1TZGtxQXFkRWY2dE1WVEZGOVBlOUNlVVdQTnFXYm52Vm0yQnFqenNLNk01?=
- =?utf-8?B?ZWlKSzFwZ2Q5S0R1dlFOS3E5N29lL2xaWmFGbEJHM3I2Tjd4amVndlpTZ0RS?=
- =?utf-8?B?WXFQNkJvbmVYZG1WdTF5MW9IcGo0YkRjZkRwMU4wdTltM29qaWtGa1B2RFdn?=
- =?utf-8?Q?Q4QTVg74ahmen+GQKlvkPv8=3D?=
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6180.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6fe9d771-accb-45e6-2c37-08db64176c97
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2023 09:46:37.1391 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: q7e7h8pN1weVq2K0UbH8zE4gjDjIG3buf2FH2TCgikW8gvoiTS5ZkSBBYGJOkjABCsZaImxydsDZDnp2X29Di1+HDt6w9VDYXCaoZzotfZWBhHKn4Acth3gL5K7azCxw
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB5681
-X-OriginatorOrg: intel.com
+X-IronPort-AV: E=McAfee;i="6600,9927,10730"; a="778011535"
+X-IronPort-AV: E=Sophos;i="6.00,216,1681196400"; d="scan'208";a="778011535"
+Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
+ by fmsmga004.fm.intel.com with ESMTP; 03 Jun 2023 06:01:09 -0700
+From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Sat,  3 Jun 2023 20:59:34 +0800
+Message-Id: <20230603125934.28090-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685785600; x=1717321600;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=fI/VOROlobmD8IIBqn4X5cIzVC86k9sdyQXrordTiNA=;
- b=dVctze/grN4ljVHhN7Jd+N1RTCJFRoSYNEHnBA8LUBbZFbh3+nWiYcYy
- QoaTQSlX+6p4UTc7YLzXRHBWe5qtqpi/TAjd3OKjRdvhaqr2eZ7xFmrM8
- U6bumCjOWyBLOPZ0g9YMFM8t8epAROqx96um9QoQ+JKRMROdTs+1L5o6Y
- k1RiA1lhe3p2mKeq9RTTztzePihbWJx4lBciZYGQrvsOhZl/iKF6Ea1uv
- Ejg0WO/fYotIfpDLrDDNve82+CwhFw2gY/CNOeBxKawI0I0cTt+lXfjyq
- gBTT8/55kxTcniLa9H9rwOUH8bslHiedohyD5BKUF1dWAko8ygu4D0X+n
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1685797275; x=1717333275;
+ h=from:to:cc:subject:date:message-id;
+ bh=Lv8c2SlnEeqGeuc+6S0GNvpVy2XFJocdK2Rjg+rZCls=;
+ b=Pi/i9yvN+MOAAkVEIyRJxgkgGxGwpscNEqTFx4G+8//er40agbC5KO8y
+ 3Ah2jNG8FUx7mh32QfdddJzjq2wOai1pTvNHITwyzKB5+AYRvUNn6VZQ3
+ Pz1tIZ2iYHeF5vzqk9n1Yfd6tugtzFQAkCn6WKQGFdfT2tjk2VKKjoTjC
+ 3Bxm1KGvNyWdFQD7qBoIkcn/N0+xNiNARshJQjUFc66a8Scn2NMQQs/U9
+ vPnONxuc89xHizZdveGiz42PthmvQCDaXP9lIpTrt4rSFV3qsr7dclfVt
+ BhqJhAFA8NDtejcdUa38EpSuQ5ozlAIwTlABUfm9wzXSDVkzSv5A1AhwT
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dVctze/g
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igc: Fix TX Hang issue
- when QBV Gate is close
+ header.a=rsa-sha256 header.s=Intel header.b=Pi/i9yvN
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] igc: Fix TX Hang issue when
+ QBV Gate is closed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -194,132 +90,319 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Choong, Chwee Lin" <chwee.lin.choong@intel.com>,
- "tee.min.tan@linux.intel.com" <tee.min.tan@linux.intel.com>
+Cc: chwee.lin.choong@intel.com, pmenzel@molgen.mpg.de,
+ tee.min.tan@linux.intel.com, anthony.l.nguyen@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Anthony,
+If a user schedules a Gate Control List (GCL) to close one of
+the QBV gates while also transmitting a packet to that closed gate,
+TX Hang will be happen. HW would not drop any packet when the gate
+is closed and keep queuing up in HW TX FIFO until the gate is re-opened.
+This patch implements the solution to drop the packet for the closed
+gate.
 
-> -----Original Message-----
-> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com>
-> Sent: Saturday, 3 June, 2023 1:46 AM
-> To: Zulkifli, Muhammad Husaini <muhammad.husaini.zulkifli@intel.com>; intel-
-> wired-lan@osuosl.org
-> Cc: Gomes, Vinicius <vinicius.gomes@intel.com>; Neftin, Sasha
-> <sasha.neftin@intel.com>; tee.min.tan@linux.intel.com; Choong, Chwee Lin
-> <chwee.lin.choong@intel.com>; naamax.meir@linux.intel.com
-> Subject: Re: [PATCH iwl-net v2] igc: Fix TX Hang issue when QBV Gate is close
-> 
-> 
-> 
-> On 6/1/2023 6:28 PM, Muhammad Husaini Zulkifli wrote:
-> > If a user schedules a Gate Control List (GCL) to close one of the QBV
-> > gates while also transmitting a packet to that closed gate, TX Hang
-> > will be happen. HW would not drop any packet when the gate is close
-> > and keep queueing up in HW TX FIFO until the gate is re-open.
-> > This patch implement the solution to drop the packet for the closed
-> > gate.
-> >
-> > This patch will additionally include a reset adapter to perform SW
-> > initialization for each 1st Gate Control List (GCL) to avoid hang.
-> > This is due to the HW design, where changing to TSN transmit mode
-> > requires SW initialization. Intel Discrete I225/6 transmit mode cannot
-> > be changed when in dynamic mode according to Software User Manual
-> > Section 7.5.2.1. Subsequent Gate Control List (GCL) operations will
-> > proceed without a reset, as they already in TSN Mode.
-> >
-> > Step to reproduce:
-> >
-> > DUT:
-> > 1) Configure GCL List with certain gate close.
-> > 2) Transmit the packet to close gate.
-> >
-> > Fixes: ec50a9d437f0 ("igc: Add support for taprio offloading")
-> > Co-developed-by: Tan Tee Min <tee.min.tan@linux.intel.com>
-> > Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
-> > Tested-by: Chwee Lin Choong <chwee.lin.choong@intel.com>
-> > Signed-off-by: Muhammad Husaini Zulkifli
-> > <muhammad.husaini.zulkifli@intel.com>
-> >
-> 
-> No newline here please.
+This patch will also reset the adapter to perform SW initialization
+for each 1st Gate Control List (GCL) to avoid hang.
+This is due to the HW design, where changing to TSN transmit mode
+requires SW initialization. Intel Discrete I225/6 transmit mode
+cannot be changed when in dynamic mode according to Software User
+Manual Section 7.5.2.1. Subsequent Gate Control List (GCL) operations
+will proceed without a reset, as they already are in TSN Mode.
 
-Ops. OK will remove it.
+Step to reproduce:
 
-> 
-> > ---
-> 
-> ...
-> 
->  > V1 -> V2: Fix conflict and apply to net-queue tree.
->  > ---
->  > ---
-> 
-> no need for two '---'
+DUT:
+1) Configure GCL List with certain gate close.
 
-Yup. Will remove this double line.
+BASE=$(date +%s%N)
+tc qdisc replace dev $IFACE parent root handle 100 taprio \
+    num_tc 4 \
+    map 0 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 \
+    queues 1@0 1@1 1@2 1@3 \
+    base-time $BASE \
+    sched-entry S 0x8 500000 \
+    sched-entry S 0x4 500000 \
+    flags 0x2
 
-> 
-> > @@ -1521,6 +1521,9 @@ static netdev_tx_t igc_xmit_frame_ring(struct
-> sk_buff *skb,
-> >   	u8 hdr_len = 0;
-> >   	int tso = 0;
-> >
-> > +	if (adapter->qbv_transition || tx_ring->oper_gate_closed)
-> > +		goto out_drop;
-> > +
-> 
-> clang reports issues with this:
-> 
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1524:6: warning: variable
-> 'first' is used uninitialized whenever 'if' condition is true [-Wsometimes-
-> uninitialized]
-> +        if (adapter->qbv_transition || tx_ring->oper_gate_closed)
-> +            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1632:20: note:
-> uninitialized use occurs here
-> +        dev_kfree_skb_any(first->skb);
-> +                          ^~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1524:2: note: remove the
-> 'if' if its condition is always false
-> +        if (adapter->qbv_transition || tx_ring->oper_gate_closed)
-> +        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1524:6: warning: variable
-> 'first' is used uninitialized whenever '||' condition is true [-Wsometimes-
-> uninitialized]
-> +        if (adapter->qbv_transition || tx_ring->oper_gate_closed)
-> +            ^~~~~~~~~~~~~~~~~~~~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1632:20: note:
-> uninitialized use occurs here
-> +        dev_kfree_skb_any(first->skb);
-> +                          ^~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1524:6: note: remove the
-> '||' if its condition is always false
-> +        if (adapter->qbv_transition || tx_ring->oper_gate_closed)
-> +            ^~~~~~~~~~~~~~~~~~~~~~~~~~
-> +../drivers/net/ethernet/intel/igc/igc_main.c:1516:29: note: initialize
-> the variable 'first' to silence this warning
-> +        struct igc_tx_buffer *first;
-> +                                   ^
-> +                                    = NULL
-> +2 warnings generated.
+2) Transmit the packet to closed gate. You may use udp_tai
+application to transmit UDP packet to any of the closed gate.
 
-I will move "if (adapter->qbv_transition || tx_ring->oper_gate_closed)" to Line 1575 below 
-to avoid this warning. 
-My environment is unable to run CC=clang. But I believe this will resolve the issue.
+./udp_tai -i <interface> -P 100000 -p 90 -c 1 -t <0/1> -u 30004
 
-Thanks,
-Husaini
+Fixes: ec50a9d437f0 ("igc: Add support for taprio offloading")
+Co-developed-by: Tan Tee Min <tee.min.tan@linux.intel.com>
+Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
+Tested-by: Chwee Lin Choong <chwee.lin.choong@intel.com>
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+---
+V2 -> V3: Fix reviewers's comments.
+V1 -> V2: Fix conflict and apply to net-queue tree.
+---
+ drivers/net/ethernet/intel/igc/igc.h      |  6 +++
+ drivers/net/ethernet/intel/igc/igc_main.c | 57 +++++++++++++++++++++--
+ drivers/net/ethernet/intel/igc/igc_tsn.c  | 41 ++++++++++------
+ 3 files changed, 87 insertions(+), 17 deletions(-)
 
-> 
-> 
-> >   	/* need: 1 descriptor per page *
-> PAGE_SIZE/IGC_MAX_DATA_PER_TXD,
-> >   	 *	+ 1 desc for skb_headlen/IGC_MAX_DATA_PER_TXD,
-> >   	 *	+ 2 desc gap to keep tail from touching head,
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 0bbd108f28939..4a81e79ca1278 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -13,6 +13,7 @@
+ #include <linux/ptp_clock_kernel.h>
+ #include <linux/timecounter.h>
+ #include <linux/net_tstamp.h>
++#include <linux/hrtimer.h>
+ 
+ #include "igc_hw.h"
+ 
+@@ -100,6 +101,8 @@ struct igc_ring {
+ 	u32 start_time;
+ 	u32 end_time;
+ 	u32 max_sdu;
++	bool oper_gate_closed;		/* Operating gate. True if the TX Queue is closed */
++	bool admin_gate_closed;		/* Future gate. True if the TX Queue will be closed */
+ 
+ 	/* CBS parameters */
+ 	bool cbs_enable;                /* indicates if CBS is enabled */
+@@ -159,6 +162,7 @@ struct igc_adapter {
+ 	struct timer_list watchdog_timer;
+ 	struct timer_list dma_err_timer;
+ 	struct timer_list phy_info_timer;
++	struct hrtimer hrtimer;
+ 
+ 	u32 wol;
+ 	u32 en_mng_pt;
+@@ -188,6 +192,8 @@ struct igc_adapter {
+ 	ktime_t cycle_time;
+ 	bool qbv_enable;
+ 	u32 qbv_config_change_errors;
++	bool qbv_transition;
++	unsigned int qbv_count;
+ 
+ 	/* OS defined structs */
+ 	struct pci_dev *pdev;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9095306323afd..e77a3277e1570 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1572,6 +1572,9 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 	first->bytecount = skb->len;
+ 	first->gso_segs = 1;
+ 
++	if (adapter->qbv_transition || tx_ring->oper_gate_closed)
++		goto out_drop;
++
+ 	if (tx_ring->max_sdu > 0) {
+ 		u32 max_sdu = 0;
+ 
+@@ -2967,7 +2970,8 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
+ 		    (adapter->tx_timeout_factor * HZ)) &&
+ 		    !(rd32(IGC_STATUS) & IGC_STATUS_TXOFF) &&
+ 		    (rd32(IGC_TDH(tx_ring->reg_idx)) !=
+-		     readl(tx_ring->tail))) {
++		    readl(tx_ring->tail)) &&
++		    !tx_ring->oper_gate_closed) {
+ 			/* detected Tx unit hang */
+ 			netdev_err(tx_ring->netdev,
+ 				   "Detected Tx Unit Hang\n"
+@@ -6057,6 +6061,8 @@ static int igc_tsn_clear_schedule(struct igc_adapter *adapter)
+ 	adapter->base_time = 0;
+ 	adapter->cycle_time = NSEC_PER_SEC;
+ 	adapter->qbv_config_change_errors = 0;
++	adapter->qbv_transition = false;
++	adapter->qbv_count = 0;
+ 
+ 	for (i = 0; i < adapter->num_tx_queues; i++) {
+ 		struct igc_ring *ring = adapter->tx_ring[i];
+@@ -6064,6 +6070,8 @@ static int igc_tsn_clear_schedule(struct igc_adapter *adapter)
+ 		ring->start_time = 0;
+ 		ring->end_time = NSEC_PER_SEC;
+ 		ring->max_sdu = 0;
++		ring->oper_gate_closed = false;
++		ring->admin_gate_closed = false;
+ 	}
+ 
+ 	return 0;
+@@ -6075,6 +6083,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 	bool queue_configured[IGC_MAX_TX_QUEUES] = { };
+ 	struct igc_hw *hw = &adapter->hw;
+ 	u32 start_time = 0, end_time = 0;
++	struct timespec64 now;
+ 	size_t n;
+ 	int i;
+ 
+@@ -6095,6 +6104,8 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 	adapter->cycle_time = qopt->cycle_time;
+ 	adapter->base_time = qopt->base_time;
+ 
++	igc_ptp_read(adapter, &now);
++
+ 	for (n = 0; n < qopt->num_entries; n++) {
+ 		struct tc_taprio_sched_entry *e = &qopt->entries[n];
+ 
+@@ -6129,7 +6140,10 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 				ring->start_time = start_time;
+ 			ring->end_time = end_time;
+ 
+-			queue_configured[i] = true;
++			if (ring->start_time >= adapter->cycle_time)
++				queue_configured[i] = false;
++			else
++				queue_configured[i] = true;
+ 		}
+ 
+ 		start_time += e->interval;
+@@ -6139,8 +6153,20 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 	 * If not, set the start and end time to be end time.
+ 	 */
+ 	for (i = 0; i < adapter->num_tx_queues; i++) {
++		struct igc_ring *ring = adapter->tx_ring[i];
++
++		if (!is_base_time_past(qopt->base_time, &now)) {
++			ring->admin_gate_closed = false;
++		} else {
++			ring->oper_gate_closed = false;
++			ring->admin_gate_closed = false;
++		}
++
+ 		if (!queue_configured[i]) {
+-			struct igc_ring *ring = adapter->tx_ring[i];
++			if (!is_base_time_past(qopt->base_time, &now))
++				ring->admin_gate_closed = true;
++			else
++				ring->oper_gate_closed = true;
+ 
+ 			ring->start_time = end_time;
+ 			ring->end_time = end_time;
+@@ -6466,6 +6492,27 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+ 	return value;
+ }
+ 
++static enum hrtimer_restart igc_qbv_scheduling_timer(struct hrtimer *timer)
++{
++	struct igc_adapter *adapter = container_of(timer, struct igc_adapter,
++						   hrtimer);
++	unsigned int i;
++
++	adapter->qbv_transition = true;
++	for (i = 0; i < adapter->num_tx_queues; i++) {
++		struct igc_ring *tx_ring = adapter->tx_ring[i];
++
++		if (tx_ring->admin_gate_closed) {
++			tx_ring->admin_gate_closed = false;
++			tx_ring->oper_gate_closed = true;
++		} else {
++			tx_ring->oper_gate_closed = false;
++		}
++	}
++	adapter->qbv_transition = false;
++	return HRTIMER_NORESTART;
++}
++
+ /**
+  * igc_probe - Device Initialization Routine
+  * @pdev: PCI device information struct
+@@ -6642,6 +6689,9 @@ static int igc_probe(struct pci_dev *pdev,
+ 	INIT_WORK(&adapter->reset_task, igc_reset_task);
+ 	INIT_WORK(&adapter->watchdog_task, igc_watchdog_task);
+ 
++	hrtimer_init(&adapter->hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
++	adapter->hrtimer.function = &igc_qbv_scheduling_timer;
++
+ 	/* Initialize link properties that are user-changeable */
+ 	adapter->fc_autoneg = true;
+ 	hw->mac.autoneg = true;
+@@ -6745,6 +6795,7 @@ static void igc_remove(struct pci_dev *pdev)
+ 
+ 	cancel_work_sync(&adapter->reset_task);
+ 	cancel_work_sync(&adapter->watchdog_task);
++	hrtimer_cancel(&adapter->hrtimer);
+ 
+ 	/* Release control of h/w to f/w.  If f/w is AMT enabled, this
+ 	 * would have already happened in close and is redundant.
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+index 6b299b83e7ef2..3cdb0c9887283 100644
+--- a/drivers/net/ethernet/intel/igc/igc_tsn.c
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+@@ -114,7 +114,6 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
+ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+-	bool tsn_mode_reconfig = false;
+ 	u32 tqavctrl, baset_l, baset_h;
+ 	u32 sec, nsec, cycle;
+ 	ktime_t base_time, systim;
+@@ -228,11 +227,10 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+ 
+ 	tqavctrl = rd32(IGC_TQAVCTRL) & ~IGC_TQAVCTRL_FUTSCDDIS;
+ 
+-	if (tqavctrl & IGC_TQAVCTRL_TRANSMIT_MODE_TSN)
+-		tsn_mode_reconfig = true;
+-
+ 	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
+ 
++	adapter->qbv_count++;
++
+ 	cycle = adapter->cycle_time;
+ 	base_time = adapter->base_time;
+ 
+@@ -250,17 +248,28 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+ 		 */
+ 		if ((rd32(IGC_BASET_H) || rd32(IGC_BASET_L)) &&
+ 		    (adapter->tc_setup_type == TC_SETUP_QDISC_TAPRIO) &&
+-		    tsn_mode_reconfig)
++		    (adapter->qbv_count > 1))
+ 			adapter->qbv_config_change_errors++;
+ 	} else {
+-		/* According to datasheet section 7.5.2.9.3.3, FutScdDis bit
+-		 * has to be configured before the cycle time and base time.
+-		 * Tx won't hang if there is a GCL is already running,
+-		 * so in this case we don't need to set FutScdDis.
+-		 */
+-		if (igc_is_device_id_i226(hw) &&
+-		    !(rd32(IGC_BASET_H) || rd32(IGC_BASET_L)))
+-			tqavctrl |= IGC_TQAVCTRL_FUTSCDDIS;
++		if (igc_is_device_id_i226(hw)) {
++			ktime_t adjust_time, expires_time;
++
++		       /* According to datasheet section 7.5.2.9.3.3, FutScdDis bit
++			* has to be configured before the cycle time and base time.
++			* Tx won't hang if a GCL is already running,
++			* so in this case we don't need to set FutScdDis.
++			*/
++			if (!(rd32(IGC_BASET_H) || rd32(IGC_BASET_L)))
++				tqavctrl |= IGC_TQAVCTRL_FUTSCDDIS;
++
++			nsec = rd32(IGC_SYSTIML);
++			sec = rd32(IGC_SYSTIMH);
++			systim = ktime_set(sec, nsec);
++
++			adjust_time = adapter->base_time;
++			expires_time = ktime_sub_ns(adjust_time, systim);
++			hrtimer_start(&adapter->hrtimer, expires_time, HRTIMER_MODE_REL);
++		}
+ 	}
+ 
+ 	wr32(IGC_TQAVCTRL, tqavctrl);
+@@ -306,7 +315,11 @@ int igc_tsn_offload_apply(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+ 
+-	if (netif_running(adapter->netdev) && igc_is_device_id_i225(hw)) {
++	/* Per I225/6 HW Design Section 7.5.2.1, transmit mode
++	 * cannot be changed dynamically. Require reset the adapter.
++	 */
++	if (netif_running(adapter->netdev) &&
++	    (igc_is_device_id_i225(hw) || !adapter->qbv_count)) {
+ 		schedule_work(&adapter->reset_task);
+ 		return 0;
+ 	}
+-- 
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
