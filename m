@@ -1,178 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7315D721D38
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 06:48:07 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAA03721D3C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 06:48:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D983140412;
-	Mon,  5 Jun 2023 04:48:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D983140412
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5AF974041C;
+	Mon,  5 Jun 2023 04:48:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5AF974041C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685940483;
-	bh=hdIGQvbSAnsgcp76i4DYbW4CEiKN5uJp64F3x86BHvI=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1685940533;
+	bh=4aHSg/XnlbdUczwszUGzRsMcmy2TGo/4v0e8ltDV2RY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=n6APBsWqiEtHL9oM1KJvezT3JKr8p8vfp4IZrtf1g97g7u9zxXFdm6V0QJPgQuNzv
-	 euVQrcvqA3oWmeiWzbg28NhyQVz0HRjsU3QKeF/Tm+Itbt8SmprqE0yQ4wT8FmD5hD
-	 DYZxFhsoQG/zsokeJfOBjTVk0LLvvwtzgsX5SzKsqf/I/mFvovmTYFlp4X/C/QJj7D
-	 2UIKyhhu9lyHFPscERkmjbb4k/6N+bP6szIoqnSNFVoV4Ut1s3szpnkSUjQ1K/xuxy
-	 H5yZOLEjWZ0ziviQZ7XJppbXOBxWbSRln9nHSRZ/Mkp3hrUfn1/7s4vVS5qv5SuX+I
-	 xgiunUp/OZjdA==
+	b=MEGbOw71JC1IKBR2xynlk+qstK6RPw65ORcVYiHdrdABLhjJP3KB6Re4r7ccwwTzq
+	 FZ5M+p8bbYEGZu6bFaJa/GltEMlmU8vy93OZ6W1eSBeTvammkw7bNcLD61ekH0mb3j
+	 KeNttxEm1xvyj8id8ipbPK38tbVS++Em3jS3jzOIJ55L3n0+zs5Lj2CeMaH6f10Qcn
+	 zHSTziLxzlOEq6IObMcCLVlNKrgBsYoL+XNN+0NYJHIPpqv8raJOvXU+MYoO+PdC5G
+	 LH7SKCjtjkbeJLqDkroLWLDv9osBS4qojaD861ucDS0C6xnVmpxjRIumchYS2zTB0D
+	 olcciwP2iZolQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v8uqYyr9mfsP; Mon,  5 Jun 2023 04:48:03 +0000 (UTC)
+	with ESMTP id mLg1oY76B34o; Mon,  5 Jun 2023 04:48:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7849B402A7;
-	Mon,  5 Jun 2023 04:48:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7849B402A7
+	by smtp2.osuosl.org (Postfix) with ESMTP id C7EB2402A7;
+	Mon,  5 Jun 2023 04:48:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C7EB2402A7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 169491BF423
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:47:57 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A09DD1BF423
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:48:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D8A4582219
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:47:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D8A4582219
+ by smtp4.osuosl.org (Postfix) with ESMTP id 84196410DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:48:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 84196410DE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EnWoV-hXazPA for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jun 2023 04:47:54 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oGKSdzMe3ELH for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jun 2023 04:48:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA36782209
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BA36782209
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:47:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="358728231"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="358728231"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2023 21:47:53 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC94B40A00
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DC94B40A00
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 04:48:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="345873285"
+X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="345873285"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2023 21:48:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="821031309"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="821031309"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga002.fm.intel.com with ESMTP; 04 Jun 2023 21:47:53 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Sun, 4 Jun 2023 21:47:52 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Sun, 4 Jun 2023 21:47:52 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.173)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Sun, 4 Jun 2023 21:47:52 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EhLHaeh3UsGprSo6DFS4f/Ojey8yaBZ/r6b/qett6Z4ZPXEu6KQ9eK+bYyItUHRtfaPvlVydjhuMUKuT5JF1SQ8J4D11N3RcTO+zOEpcPiT4Of1x86Nugz969rolCqPJ6Oa6lnNBD3k+2KqHNFvX8iZHS9VwzPX59BEqErlgAeNSpKN49dmAH6j2lK0WvtWyGhnfswY3lWZ658M2Yho02ROtWaUmXnTwSh9GpKGYLiJrINZQf2Gmmoull1/5KMaw9Z13Uku2tRr+O8+6ziyNCFUMWF6/3StJMf0N4LZ7tXmHP8qvCXvromX6QCXi8nLGirXNWUAFKQjpawe1qfpyKg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=o2Hqhnuim942NwSR0yrQKjaZ7TzHDIMdDU9/7uBjcYY=;
- b=of+wcTp2v7gamGQ/M2qkduj30d3JEIEf2u7V3xVSC7a2McZW7Mp2kOvJeVrztZyX4hZbmQ91+x6KVoNEOTedKXdQAN9DGx50ezU8kp8NP0M9wwOL8MWdEqPgOgaXKo5zytcO+iy6MBN/E1VSofBmV9+RTBeqJtDhfZzzTCvSuNFWxrtBjOzvDgDLJkg4VmAiwVwibtUWo8k7C1aR3IoDU+N9vTiAZrWkz+nXxmInddXTx0apvuQqa2TZyhsAO1LqdcqAbohfwk1iFSdMxvS/ML4hSG4Pogg4LKt1LHAoeNmBT21I81JOsoGksc+PDj3wY4Wy288FxAKBVwxiYlScRw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com (2603:10b6:208:75::32)
- by DM4PR11MB6216.namprd11.prod.outlook.com (2603:10b6:8:a8::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6455.28; Mon, 5 Jun 2023 04:47:50 +0000
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::9723:863b:334a:b279]) by BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::9723:863b:334a:b279%6]) with mapi id 15.20.6455.030; Mon, 5 Jun 2023
- 04:47:50 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: Ying Hsu <yinghsu@chromium.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] igb: Fix igb_down hung on surprise
- removal
-Thread-Index: AQHZiZs4Csxm/mDEk0y5moePAHW/va97vVpA
-Date: Mon, 5 Jun 2023 04:47:49 +0000
-Message-ID: <BL0PR11MB31222538EC9046D11BEC4885BD4DA@BL0PR11MB3122.namprd11.prod.outlook.com>
-References: <20230518072657.1.If9539da710217ed92e764cc0ba0f3d2d246a1aee@changeid>
-In-Reply-To: <20230518072657.1.If9539da710217ed92e764cc0ba0f3d2d246a1aee@changeid>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL0PR11MB3122:EE_|DM4PR11MB6216:EE_
-x-ms-office365-filtering-correlation-id: abf104cf-7034-46e9-25f7-08db658003ec
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: p3OXc8EjeI1e1Mgs9xKTe5YsLJfFtQG7ZfGJQ2rkZp6CuTQ96HKBXjEsAlvjKITta8JDw1t8IArnnTmHD4hQwX1rv9OtOJVGbTv1vOuh5TWy7YsbTX2J5Vt1LOn86fhKOt4eoU3/vcoerzvGr7d7rq6vzws8FdxmQ+jS51VESLvTDZm5xdiis0lIxWHOk7uMGyAnL0kJ2zCKa/FqHqqIbDr0M/RessErwHdWUk6H9kKg9ojHT4gzoYI93XyVRhHlDhQMVroRv57I/UG2wUXh+XbyYvpyG3u3yEAuGg+dm0bQXeCkoAdcht7tQiTyEqbPtbwIkhNupA15AA3JSmtp8jPqhxGg6Aa1osrjxU/nCJOpRrvitHeErQ0RIEONvnUd0IkX609H+k2PQQXLV6jFjFDP705orlinL7bWXShCrlazDJ/6EEbMfbrmB/iSnNmMFF4nN/7LbwUlZ2kHuQ0+36Y9+fuDe/DUIdBpxCiQebK24DunNHNLhEZi9vxM/gSsSzzukUV/bDrl2VYn3PaRVy9/Dv4uyz1Mf0RsNBJowoNiJki6dxuhDO3RZnnB63RLatutC3/eJtGnN61qKuAs6f5qFk/Ur5EgB5F+EFuFfiY4KdUqmj9IRHhwpz/la7Wc
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR11MB3122.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(136003)(39860400002)(376002)(346002)(396003)(451199021)(110136005)(71200400001)(478600001)(52536014)(54906003)(5660300002)(8676002)(38070700005)(33656002)(2906002)(86362001)(8936002)(4326008)(66446008)(66946007)(64756008)(122000001)(66476007)(66556008)(76116006)(316002)(55016003)(82960400001)(38100700002)(41300700001)(83380400001)(9686003)(6506007)(53546011)(26005)(186003)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7vP2HZ0HKb/4iBYCJK5Nr6uQC3nhjOvD4fcS3s+lticddmER1hWt7Lwse+3A?=
- =?us-ascii?Q?hzrfuM6ne6UzIrp+BBg2T2pkQDsO5Z6g91ibEShayNJAapBCB5FaRpBPkJ3c?=
- =?us-ascii?Q?k5Xdxz3WFwJZvb4Q3TLx9dh+vOjfTw2kdjl8S/pddbOm17UK5YNIkVH6GTWt?=
- =?us-ascii?Q?JIvMcK5aavEC0vLWfCM1VVhTPEfsAMtJOOJCeCIP/Ofc2HtZWbrv7IlPnrqI?=
- =?us-ascii?Q?lqkDh7SyzF4zHOZbCDDOlrEG7V1oTCUIDE/5izoc/8K8DLcx0/oqvkDT/wcm?=
- =?us-ascii?Q?KjJsokaxzTikwZyQSTpanw1fnjWJhCKwpA5n3RdJcOnBNlPok5V2WhMl/qxC?=
- =?us-ascii?Q?qgRvruL2ulX5QWX2MdctTm0PAfG77CWcLZB6tX1R1JPHBtnzNvLC7l6hotF9?=
- =?us-ascii?Q?E3XK15EhBHCB40g0Fr9TEry2yjZvTpPNUMChXGfTp1/DdfX4r/3DWqJ4Bx5R?=
- =?us-ascii?Q?FWzJgKPOulGPCoHBWSlFyjzSFpRhoLkhbUAdZ3TIpXdV0pFsCHh6wLV6bNUj?=
- =?us-ascii?Q?LqqadKIJtJMHp/LgfJFnuT9hj5KOgg5x2bRnhbZ5E6Dk0oGsIVFmFGBzZCWb?=
- =?us-ascii?Q?jTE5qCBLmz4ABplDJqG5bLY1dTnOUHrF6dSS9lMPLvJ5p1Ch/mKhT0MU7YhS?=
- =?us-ascii?Q?VGPCaX0PyglUtuuhN+8yKn4s5QMvMgLiPsIIUr72hVovDJna37TkmLL1o2ZN?=
- =?us-ascii?Q?UVrUdTc7fQEzG7X7QmFhVqxV+r5H7D2omiN+MXZpmOoQNS8afuFLRlW9JYhd?=
- =?us-ascii?Q?NUVsPfAdix554toBFbkeDtsH+bHAaAi4X2tKxuSaa5LzqksvKKeG7Fn7whXH?=
- =?us-ascii?Q?owmOtW/CAZDnrMGamu54SFS1CRK5rlXHHSa52QYM19HMsdaEs0+51thUqiof?=
- =?us-ascii?Q?l2rF3+lkVxydiGlAeiJRBPtXKHm6DCHi4z2dDbAkfpUBA6TdxlLEWf7UvYjs?=
- =?us-ascii?Q?YNIwbmvjSyiVccTVM7DP46RwTuBY7X7uzgRQ5id+9fYfVLfJbW95D3mR6Tqn?=
- =?us-ascii?Q?sp4ivY7Z8aFz7lszEnec078o90zvmKPYX+UU4mXFI/zdra3WGyYOg3CX/wQF?=
- =?us-ascii?Q?HEDIxKH+5iShKSpYuoL4ph1/btWCRcbg//Xx+fZkWHPAAw8ynWJSfXoTN1lR?=
- =?us-ascii?Q?zBvUeI9tCmyylL1jyAGr8paCGOCAqFhCj+ctIViHm6Wg3qOlRKNgmaw+FjCp?=
- =?us-ascii?Q?ZTx2E1qJTVkBoLrZpu33w/komyrzlaj3MKAF4cMKrcBYlsmlqWsP4l04oULF?=
- =?us-ascii?Q?f+hckdqiHWVRh61+RWxYVkudr5AZMxOomwGkBzlF13d5SOCRFfDASJ707MUI?=
- =?us-ascii?Q?7CZIk3wy2UwNLP+SAaPEq8sQvf9ueU73m7Bew+AlBVkJUedbSyPY8YWtO6h2?=
- =?us-ascii?Q?MKiKPjc8W3L3y4jMvlk7hWZJvJsd9Id+fZzOcCN5/6RdxhLZLWMo7hw7sIQG?=
- =?us-ascii?Q?cW4YXBbBKSE70Ly9x6uLXNQHwwdALdcAaeDZxyXPsMKRgoHvMgHyNGbPhkIA?=
- =?us-ascii?Q?nR2lbJPtXkKesjGh504Uj4aHQ/t0KIHWQMjDSlfW0AQoT4HdoeH81UIhyxkB?=
- =?us-ascii?Q?aUbwh+mlPWWzUyLD/IrYamQIEAPuZk8fy/vw9od6ePCJMsqOBsnEVm6Iad4p?=
- =?us-ascii?Q?lw=3D=3D?=
+X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="778401622"
+X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="778401622"
+Received: from lkp-server01.sh.intel.com (HELO 15ab08e44a81) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 04 Jun 2023 21:48:42 -0700
+Received: from kbuild by 15ab08e44a81 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1q6293-0003qp-28;
+ Mon, 05 Jun 2023 04:48:41 +0000
+Date: Mon, 5 Jun 2023 12:47:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Junfeng Guo <junfeng.guo@intel.com>, intel-wired-lan@lists.osuosl.org
+Message-ID: <202306051246.jce5ySQm-lkp@intel.com>
+References: <20230605022920.2361266-13-junfeng.guo@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3122.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: abf104cf-7034-46e9-25f7-08db658003ec
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jun 2023 04:47:49.8873 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +SqarNMSSePA4xA3mWS39E3DeBelua7dnWx+VF9x2l5nj18ub/Wd2Gf4z4jPoXWizE35PgKpijzR1v0zzAYe8rHORdn1g/Zq9EvOgeEc7tOukDkpYZt7smxDy4sJ5m1E
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6216
-X-OriginatorOrg: intel.com
+Content-Disposition: inline
+In-Reply-To: <20230605022920.2361266-13-junfeng.guo@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685940474; x=1717476474;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=IHPU/MtRNZHNt7rfmPfx90VK9oQMer4rYYLFHEDjw1k=;
- b=cH3v3uLgUVHEeHDPrkE9UmB2YOT5rNUxdFmGLvk6itx7qp0vuPxQZZj9
- tWetZ7sRyk99Aoc+MbIsoS0xd1gSoq9cQ+Asqn666sCQe9iAcZFxutfov
- GME/8XfquTzsBTfZpnCeMmmI0RFcpr/oPyMcsfx4b7gnCzq+9cglGaTIH
- v7V/m7rKWs3EVqpaLfms1YtxZi91mtLXBLdxS2Y/icS0dZPEnix6w7LSY
- /4/tF3HkUvmaAX40EYSjoNtCRd5qtAmoFZv7RzVDHPm1olzVZ2SAjZQGT
- cfYTP7GPa0nPhDKCPDmtQVqZHdQU4F1UdXdF+jAPPRvfyxFQ9YDDgECCh
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1685940524; x=1717476524;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=98pdvSINUbawiUjSHJxYJ8bhrHjFVnYyicb+/FJ4k8c=;
+ b=ksDVGQLKkdgXic1fX3BSw8Ku331YRa5Xk5a/OtVaVIepwAdrdcctRxtm
+ zUk0v3mHTHig6KMPCcJY3a0puEzXUL94ODL05Vpoozmwm5QcQMqKHkE+F
+ WHXC/o0sKYQA1Se5bhC5o1mUM3sxGHDlhTQTKjGVoeyh9eeh5vwG8lDKc
+ 7zUI/9b36/TAB65lOMILBBE+uN1cljZbedZoitW7WJ6H/lbjIqDxgpZSj
+ 00ez+kGOn8oX66Ye4+rYpUfzhqECnQyXRezFj0dfLNeOKzGql8hHGdV3f
+ O/YKqSP/LeyALm5rCfsjpSDyrB/KmE650ZhSfCut78qLLAgfUeQFsd4M2
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=cH3v3uLg
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix igb_down hung on surprise
- removal
+ header.a=rsa-sha256 header.s=Intel header.b=ksDVGQLK
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 12/15] ice: add parser
+ execution main loop
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,77 +98,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "grundler@chromium.org" <grundler@chromium.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Eric Dumazet <edumazet@google.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: qi.z.zhang@intel.com, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Ying Hsu
-> Sent: Thursday, May 18, 2023 12:57 PM
-> To: netdev@vger.kernel.org
-> Cc: grundler@chromium.org; intel-wired-lan@lists.osuosl.org; Ying Hsu <yinghsu@chromium.org>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; linux-kernel@vger.kernel.org; Eric Dumazet <edumazet@google.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>
-> Subject: [Intel-wired-lan] [PATCH] igb: Fix igb_down hung on surprise removal
->
-> In a setup where a Thunderbolt hub connects to Ethernet and a display through USB Type-C, users may experience a hung task timeout when they remove the cable between the PC and the Thunderbolt hub.
-> This is because the igb_down function is called multiple times when the Thunderbolt hub is unplugged. For example, the igb_io_error_detected triggers the first call, and the igb_remove triggers the second call.
-> The second call to igb_down will block at napi_synchronize.
-> Here's the call trace:
->    __schedule+0x3b0/0xddb
->    ? __mod_timer+0x164/0x5d3
->    schedule+0x44/0xa8
->    schedule_timeout+0xb2/0x2a4
->    ? run_local_timers+0x4e/0x4e
->    msleep+0x31/0x38
->    igb_down+0x12c/0x22a [igb 6615058754948bfde0bf01429257eb59f13030d4]
->    __igb_close+0x6f/0x9c [igb 6615058754948bfde0bf01429257eb59f13030d4]
->    igb_close+0x23/0x2b [igb 6615058754948bfde0bf01429257eb59f13030d4]
->    __dev_close_many+0x95/0xec
->    dev_close_many+0x6e/0x103
->    unregister_netdevice_many+0x105/0x5b1
->    unregister_netdevice_queue+0xc2/0x10d
->    unregister_netdev+0x1c/0x23
->    igb_remove+0xa7/0x11c [igb 6615058754948bfde0bf01429257eb59f13030d4]
->    pci_device_remove+0x3f/0x9c
->    device_release_driver_internal+0xfe/0x1b4
->    pci_stop_bus_device+0x5b/0x7f
->    pci_stop_bus_device+0x30/0x7f
->    pci_stop_bus_device+0x30/0x7f
->    pci_stop_and_remove_bus_device+0x12/0x19
->    pciehp_unconfigure_device+0x76/0xe9
->    pciehp_disable_slot+0x6e/0x131
->    pciehp_handle_presence_or_link_change+0x7a/0x3f7
->   pciehp_ist+0xbe/0x194
->    irq_thread_fn+0x22/0x4d
->    ? irq_thread+0x1fd/0x1fd
->    irq_thread+0x17b/0x1fd
->    ? irq_forced_thread_fn+0x5f/0x5f
->    kthread+0x142/0x153
->    ? __irq_get_irqchip_state+0x46/0x46
->    ? kthread_associate_blkcg+0x71/0x71
->    ret_from_fork+0x1f/0x30
->
-> In this case, igb_io_error_detected detaches the network interface and requests a PCIE slot reset, however, the PCIE reset callback is not being invoked and thus the Ethernet connection breaks down.
-> As the PCIE error in this case is a non-fatal one, requesting a slot reset can be avoided.
-> This patch fixes the task hung issue and preserves Ethernet connection by ignoring non-fatal PCIE errors.
->
-> Signed-off-by: Ying Hsu <yinghsu@chromium.org>
-> ---
-> This commit has been tested on a HP Elite Dragonfly Chromebook and a Caldigit TS3+ Thunderbolt hub. The Ethernet driver for the hub is igb. Non-fatal PCIE errors happen when users hot-plug the cables connected to the chromebook or to the external display.
->
-> drivers/net/ethernet/intel/igb/igb_main.c | 5 +++++
-> 1 file changed, 5 insertions(+)
->
+Hi Junfeng,
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
+kernel test robot noticed the following build warnings:
 
+[auto build test WARNING on tnguy-next-queue/dev-queue]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Junfeng-Guo/ice-add-parser-create-and-destroy-skeleton/20230605-103239
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20230605022920.2361266-13-junfeng.guo%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next 12/15] ice: add parser execution main loop
+config: i386-debian-10.3 (https://download.01.org/0day-ci/archive/20230605/202306051246.jce5ySQm-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build):
+        # https://github.com/intel-lab-lkp/linux/commit/fae2352266c3690faee3dbf4ba724c8d28a0873d
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Junfeng-Guo/ice-add-parser-create-and-destroy-skeleton/20230605-103239
+        git checkout fae2352266c3690faee3dbf4ba724c8d28a0873d
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        make W=1 O=build_dir ARCH=i386 olddefconfig
+        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/net/ethernet/intel/ice/
+
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202306051246.jce5ySQm-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/net/ethernet/intel/ice/ice_parser.c: In function 'ice_parser_sect_item_get':
+>> drivers/net/ethernet/intel/ice/ice_parser.c:98:25: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+      98 |         return (void *)((u64)section + data_off + index * size);
+         |                         ^
+>> drivers/net/ethernet/intel/ice/ice_parser.c:98:16: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+      98 |         return (void *)((u64)section + data_off + index * size);
+         |                ^
+   drivers/net/ethernet/intel/ice/ice_parser.c: In function 'ice_parser_create_table':
+   drivers/net/ethernet/intel/ice/ice_parser.c:149:45: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     149 |                                    (void *)((u64)table + idx * item_size),
+         |                                             ^
+   drivers/net/ethernet/intel/ice/ice_parser.c:149:36: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     149 |                                    (void *)((u64)table + idx * item_size),
+         |                                    ^
+
+
+vim +98 drivers/net/ethernet/intel/ice/ice_parser.c
+
+6f877e25596c20 Junfeng Guo 2023-06-05   34  
+6f877e25596c20 Junfeng Guo 2023-06-05   35  /**
+6f877e25596c20 Junfeng Guo 2023-06-05   36   * ice_parser_sect_item_get - parse a item from a section
+6f877e25596c20 Junfeng Guo 2023-06-05   37   * @sect_type: section type
+6f877e25596c20 Junfeng Guo 2023-06-05   38   * @section: section object
+6f877e25596c20 Junfeng Guo 2023-06-05   39   * @index: index of the item to get
+6f877e25596c20 Junfeng Guo 2023-06-05   40   * @offset: dummy as prototype of ice_pkg_enum_entry's last parameter
+6f877e25596c20 Junfeng Guo 2023-06-05   41   */
+6f877e25596c20 Junfeng Guo 2023-06-05   42  void *ice_parser_sect_item_get(u32 sect_type, void *section,
+6f877e25596c20 Junfeng Guo 2023-06-05   43  			       u32 index, u32 *offset)
+6f877e25596c20 Junfeng Guo 2023-06-05   44  {
+6f877e25596c20 Junfeng Guo 2023-06-05   45  	struct ice_pkg_sect_hdr *hdr;
+6f877e25596c20 Junfeng Guo 2023-06-05   46  	int data_off = ICE_SEC_DATA_OFFSET;
+6f877e25596c20 Junfeng Guo 2023-06-05   47  	int size;
+6f877e25596c20 Junfeng Guo 2023-06-05   48  
+6f877e25596c20 Junfeng Guo 2023-06-05   49  	if (!section)
+6f877e25596c20 Junfeng Guo 2023-06-05   50  		return NULL;
+6f877e25596c20 Junfeng Guo 2023-06-05   51  
+6f877e25596c20 Junfeng Guo 2023-06-05   52  	switch (sect_type) {
+6f877e25596c20 Junfeng Guo 2023-06-05   53  	case ICE_SID_RXPARSER_IMEM:
+6f877e25596c20 Junfeng Guo 2023-06-05   54  		size = ICE_SID_RXPARSER_IMEM_ENTRY_SIZE;
+6f877e25596c20 Junfeng Guo 2023-06-05   55  		break;
+5457ae16bc58a7 Junfeng Guo 2023-06-05   56  	case ICE_SID_RXPARSER_METADATA_INIT:
+5457ae16bc58a7 Junfeng Guo 2023-06-05   57  		size = ICE_SID_RXPARSER_METADATA_INIT_ENTRY_SIZE;
+5457ae16bc58a7 Junfeng Guo 2023-06-05   58  		break;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   59  	case ICE_SID_RXPARSER_CAM:
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   60  		size = ICE_SID_RXPARSER_CAM_ENTRY_SIZE;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   61  		break;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   62  	case ICE_SID_RXPARSER_PG_SPILL:
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   63  		size = ICE_SID_RXPARSER_PG_SPILL_ENTRY_SIZE;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   64  		break;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   65  	case ICE_SID_RXPARSER_NOMATCH_CAM:
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   66  		size = ICE_SID_RXPARSER_NOMATCH_CAM_ENTRY_SIZE;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   67  		break;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   68  	case ICE_SID_RXPARSER_NOMATCH_SPILL:
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   69  		size = ICE_SID_RXPARSER_NOMATCH_SPILL_ENTRY_SIZE;
+6f3e94c8184aa1 Junfeng Guo 2023-06-05   70  		break;
+017f2b17c37285 Junfeng Guo 2023-06-05   71  	case ICE_SID_RXPARSER_BOOST_TCAM:
+017f2b17c37285 Junfeng Guo 2023-06-05   72  		size = ICE_SID_RXPARSER_BOOST_TCAM_ENTRY_SIZE;
+017f2b17c37285 Junfeng Guo 2023-06-05   73  		break;
+017f2b17c37285 Junfeng Guo 2023-06-05   74  	case ICE_SID_LBL_RXPARSER_TMEM:
+017f2b17c37285 Junfeng Guo 2023-06-05   75  		data_off = ICE_SEC_LBL_DATA_OFFSET;
+017f2b17c37285 Junfeng Guo 2023-06-05   76  		size = ICE_SID_LBL_ENTRY_SIZE;
+017f2b17c37285 Junfeng Guo 2023-06-05   77  		break;
+661125652a34c2 Junfeng Guo 2023-06-05   78  	case ICE_SID_RXPARSER_MARKER_PTYPE:
+661125652a34c2 Junfeng Guo 2023-06-05   79  		size = ICE_SID_RXPARSER_MARKER_TYPE_ENTRY_SIZE;
+661125652a34c2 Junfeng Guo 2023-06-05   80  		break;
+7245e027d57290 Junfeng Guo 2023-06-05   81  	case ICE_SID_RXPARSER_MARKER_GRP:
+7245e027d57290 Junfeng Guo 2023-06-05   82  		size = ICE_SID_RXPARSER_MARKER_GRP_ENTRY_SIZE;
+7245e027d57290 Junfeng Guo 2023-06-05   83  		break;
+7245e027d57290 Junfeng Guo 2023-06-05   84  	case ICE_SID_RXPARSER_PROTO_GRP:
+7245e027d57290 Junfeng Guo 2023-06-05   85  		size = ICE_SID_RXPARSER_PROTO_GRP_ENTRY_SIZE;
+7245e027d57290 Junfeng Guo 2023-06-05   86  		break;
+a4e7ee58c72b52 Junfeng Guo 2023-06-05   87  	case ICE_SID_RXPARSER_FLAG_REDIR:
+a4e7ee58c72b52 Junfeng Guo 2023-06-05   88  		size = ICE_SID_RXPARSER_FLAG_REDIR_ENTRY_SIZE;
+a4e7ee58c72b52 Junfeng Guo 2023-06-05   89  		break;
+6f877e25596c20 Junfeng Guo 2023-06-05   90  	default:
+6f877e25596c20 Junfeng Guo 2023-06-05   91  		return NULL;
+6f877e25596c20 Junfeng Guo 2023-06-05   92  	}
+6f877e25596c20 Junfeng Guo 2023-06-05   93  
+6f877e25596c20 Junfeng Guo 2023-06-05   94  	hdr = section;
+6f877e25596c20 Junfeng Guo 2023-06-05   95  	if (index >= le16_to_cpu(hdr->count))
+6f877e25596c20 Junfeng Guo 2023-06-05   96  		return NULL;
+6f877e25596c20 Junfeng Guo 2023-06-05   97  
+6f877e25596c20 Junfeng Guo 2023-06-05  @98  	return (void *)((u64)section + data_off + index * size);
+6f877e25596c20 Junfeng Guo 2023-06-05   99  }
+6f877e25596c20 Junfeng Guo 2023-06-05  100  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
