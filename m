@@ -2,88 +2,184 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 596F9722E90
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 20:21:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D492F722F68
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 21:13:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC9F441605;
-	Mon,  5 Jun 2023 18:21:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC9F441605
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22AAA40263;
+	Mon,  5 Jun 2023 19:13:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22AAA40263
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685989310;
-	bh=smiMSWqJLWAcbbELkiyjndAJK4W5LTrjdrfR0zXAC1Q=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1685992394;
+	bh=MrUPDapyV3TXU/SnFP3Lt6FAJq/p7o6d25D0Ec2g7Xo=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vFV3HQeGS9YqwuTS26UzD3uj0qHKGL4b0hgttvooQB5pj6r8+JHTTf/mFDoN+8/Lh
-	 PMLx50lsgPE2wMZB+HQGD1kSAmQ7845nnNuvCS7627BTmyd2GEv4/KAclxqK1ZJ6K8
-	 kdwd068wU1Zloxau7KvmoVj5E5Ar79rI45CSjBAbEZTd/OCK9RbaonM329OFYwDt3h
-	 4ZzMhIBy9nQHYFJd5u+ZPsVSzT0WLFWv/83SgGTkuAxOrttMVEXZmY5CRR41OOf99I
-	 ujQmcEFdsURhTbgW6uqcnGkW7MWXZplm2985xYAQa+EszDlNaKNZxKt8E6pshlaa1i
-	 CXwJdUnN7zPrw==
+	b=IjxdhXpSd8vLVX0S0Hy+qMvfRq+6pHsqcfx+g+WUs/wl4vKj6KWgpEyb0Mr75P2Rd
+	 acgdsMRGrwyXqPTRm3zS/XpigDA7zV0rk0uDQbuwKac8nt8t4ENdZuAyQ7oIDTmr/+
+	 dDZN2swHz2i2DbM2E4tEyOQ6LUAdtE2cmJl0yAk7cyL7PGWTJh9U0IMKKRruZj3145
+	 xu3TibqndH+hLT4/kArOEG8bRIU00cud+kzEPQ6RsIKivDxLXRMaKuBCxkC5STKgx8
+	 i2InT2G2BT3ZeKKtFwIiLN66QW1mzmlM50ZFBTSvWW484oKIzTOx4uCsb3wRnOBlVc
+	 JKdgInmnHY3xg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Gjc_W2vwXeW5; Mon,  5 Jun 2023 18:21:49 +0000 (UTC)
+	with ESMTP id 8RqXM7WKtR79; Mon,  5 Jun 2023 19:13:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AB64D41061;
-	Mon,  5 Jun 2023 18:21:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AB64D41061
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6A1BD414CC;
+	Mon,  5 Jun 2023 19:13:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6A1BD414CC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B15621BF3C6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 18:21:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E9D801BF400
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 19:13:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9709E820AF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 18:21:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9709E820AF
+ by smtp3.osuosl.org (Postfix) with ESMTP id B67EF60B89
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 19:13:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B67EF60B89
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HGj-XNOnhJKL for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jun 2023 18:21:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AmwX2__A4guG for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jun 2023 19:13:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6D5778212F
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6D5778212F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 18:21:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="358896823"
-X-IronPort-AV: E=Sophos;i="6.00,218,1681196400"; d="scan'208";a="358896823"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2023 11:21:17 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 572A560669
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 572A560669
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 19:13:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="355310035"
+X-IronPort-AV: E=Sophos;i="6.00,218,1681196400"; d="scan'208";a="355310035"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jun 2023 12:13:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="1038863384"
-X-IronPort-AV: E=Sophos;i="6.00,218,1681196400"; d="scan'208";a="1038863384"
-Received: from dmert-dev.jf.intel.com ([10.166.241.14])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2023 11:21:17 -0700
-From: Dave Ertman <david.m.ertman@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  5 Jun 2023 11:22:58 -0700
-Message-Id: <20230605182258.557933-11-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230605182258.557933-1-david.m.ertman@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="778674969"
+X-IronPort-AV: E=Sophos;i="6.00,218,1681196400"; d="scan'208";a="778674969"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmsmga004.fm.intel.com with ESMTP; 05 Jun 2023 12:13:02 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 5 Jun 2023 12:13:01 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Mon, 5 Jun 2023 12:13:01 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Mon, 5 Jun 2023 12:13:01 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NtTUsuqOKLG3eqbDsKi1JnlbYarADBoeqsBb3aPqR5l4cZ7rzy9an25rOnIFff0oouRMIG9HUZzuCMGnfEk8wwp0XxsGOtFg2cyr+QCotCS+SiTPrIypt3L2pzjOpx6R7TvUa8iMzh18z/qEyzzMiTL0uydndl1KnU/ri2NZdeKRt5aNlWtea9aikwTFBOuQTIfyd7ymuBhnkPbzEgJ1yE3y8GAnUD1Yh/R64dcm+BvHrOFeM3omJXI0D83akZHQj1CppOlbyk4ArycTdnujjRiQp/HjtQxCKlN2Ct6Tznc7ndbRyFgr14NTNAarvq5Ym6srA75JTnIsusMS6Oq3tg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/n29Z0gGnZGYFt20iRIO38S3s/hYEaJeFWG7yv6cvgo=;
+ b=e9tNul/YUm1rBLx5J4k8jr+IjnbSXF58K85jhD0AnIAsu0NtGhFSGOURVU5Pb6gcYYMIPBwcaYpX0eojJEk1JJB+uE1iqoJ83hI9ayCNy5XHTNS4Qjap5gC2MlyVNITOwq667hWWKVpx4fSYDZk+PE0+LQ5pbwGJr1lQwTqw2p2iDLMxseQ0ONWMIUtHQDzQsCclBqZyVnnjbvI+ipCwgdnG653B8lV0hLgfllghFBi2bJi0l5i9FLsWNre7eUC7IIT3M3UZmFfqMy5H2pg7bGh8SXA37hb1KLS7etfMfEPuXJVosRJInqCRPx+vA6xXRgQkRPrcP9umeKa8pW6XRg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW5PR11MB5811.namprd11.prod.outlook.com (2603:10b6:303:198::18)
+ by CY8PR11MB7874.namprd11.prod.outlook.com (2603:10b6:930:7c::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33; Mon, 5 Jun
+ 2023 19:12:59 +0000
+Received: from MW5PR11MB5811.namprd11.prod.outlook.com
+ ([fe80::5c8b:6d4d:5e21:f00f]) by MW5PR11MB5811.namprd11.prod.outlook.com
+ ([fe80::5c8b:6d4d:5e21:f00f%6]) with mapi id 15.20.6455.027; Mon, 5 Jun 2023
+ 19:12:59 +0000
+From: "Ertman, David M" <david.m.ertman@intel.com>
+To: "Ertman, David M" <david.m.ertman@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH net v2 00/10] Implement support for SRIOV + LAG
+Thread-Index: AQHZl9qVd//+0FA2AUud6Xcrungkoq98k1+g
+Date: Mon, 5 Jun 2023 19:12:59 +0000
+Message-ID: <MW5PR11MB5811118836C780A1B0B4F9D6DD4DA@MW5PR11MB5811.namprd11.prod.outlook.com>
 References: <20230605182258.557933-1-david.m.ertman@intel.com>
+In-Reply-To: <20230605182258.557933-1-david.m.ertman@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MW5PR11MB5811:EE_|CY8PR11MB7874:EE_
+x-ms-office365-filtering-correlation-id: 515f6e34-9cb5-43d9-3a53-08db65f8e0ae
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: EMxg7INHxY0WehCHV3tpLF8kcC3JB2GqsstvD2ljGgFI0WqC/vL+Zr+406efV5w1VN/smwYXAX3vab92L0BFKHGkdFwYNX38t89FA8VibBMsR0IRV6TJ7bov2XidRA70VDoxsytMOMiBMUSsbe5XMHVpxDDLXCbYodA/cMfdsem0ezqjeX9jHSEFtHkeHyd0Ieu4Dt3RRDdp07WHN9JtXba68mMsOBlQDjDme00rMR1OWa8sXwynn9ijiVD9zbBVELnmx2FkyZfEWWLC0iFOaWrvTDc0UFiWAhsbpKT6nXMF/DEVRqZhkINi+B9nVshkrgFulKjyOXWftjtOOQz+1U0F5V41THlW7tIjs8gH3b/BwEi+70M4NpK5Jkk+WOLXG9zz65cUkdreksB1BhBXirWXh7dEeUDsz4af1IV2rTuHbFV6n9HxyAFC3ipRGrDTa0dezs1Dqzto9RiEszvcvcFe1tLsi1FjX6/1JQKd8Gv8Ir7d03IDh6HJ/ChbqPY2W8wGaBw+FuyvVMECiW3opX67yKbAMgG+FDDyTkyGQ1pXMZrFXliDs7x3bzSnmFeV2sgKzL9sj7VrDkV0L+y5D31qf/coamzOCvzerimmByckEvQHWYlLvC93TPt6LOvA
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW5PR11MB5811.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(136003)(346002)(376002)(39860400002)(366004)(396003)(451199021)(110136005)(2906002)(38070700005)(71200400001)(33656002)(478600001)(86362001)(52536014)(38100700002)(41300700001)(8936002)(8676002)(5660300002)(82960400001)(55016003)(316002)(4326008)(66556008)(122000001)(76116006)(64756008)(66476007)(66946007)(83380400001)(6506007)(66446008)(53546011)(9686003)(26005)(186003)(7696005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QVY0VDFZVTJsZEdRb3UvbU1KSVY0bmcrRzNWZWRDWnU4T3Ivclc5VTRScW5o?=
+ =?utf-8?B?N2lRM1ljV09oRENVN3llTzFpcUVDeGg1T3F4aHdrQTZrQnlqVnJ4cXpSeUdL?=
+ =?utf-8?B?cVNhemVzQXpTeDdzT0t4VTdIV3FnejRuOENqdmM5UnA0WmROZ0pqOGo4aEVM?=
+ =?utf-8?B?aE9VNHV1ZFI0eDJZYnFPMk5JMzV3QStwOHhWU1lzRXZZQmVmcDgyVWp0WUta?=
+ =?utf-8?B?UWsyME00a1dmcW13TnU0dm8vb1FmL2o5NDh0ZmlHNVk0RlA4SGN5T2NJVjFq?=
+ =?utf-8?B?U2c3NnludGhJRUtsVTB6NStEcnZZTVd0ck5FSXl1aVp4ZFRXbVp3d2ZSV25R?=
+ =?utf-8?B?VUZ6MW8xVDE4YmE3UXN3K1VvZmJEOW51eUYzdjB1all3K0V6MlZoSVcvczlV?=
+ =?utf-8?B?M0tPVEYzWlorY0ZzSkQvWnkwVnd0Uy9obHIyd0ltYktEVDhsUFV3bS9kMU1Q?=
+ =?utf-8?B?UnoxWE9FWUl3eUpyNlVReTgrbmdpNU5OTUxEYWowU1AyTE9vaG5QY2N4Q0tu?=
+ =?utf-8?B?RHdzQ01hb3NWUlNqdDh2ZnoxTEU0bGE3VVFoZHkweXZvZVAwY3dyS1ZvdnVD?=
+ =?utf-8?B?THpQcmtDUlNJYU9PZGhDK3hjdlFxWm9Ta1FYVmRnNXBOWnNKbTlweHEzb25U?=
+ =?utf-8?B?TFBHckU3dlU4NVhzRlR5WHJlV1IzVzVEbVp0ckJiV1lOL2EyeXFmOXdFdEdx?=
+ =?utf-8?B?eXc5aFcwWHF1QytKMU44TnZWOTZybkdJYjZNemY1UWVsMmZlSHJGbE5hSFlZ?=
+ =?utf-8?B?SnZHZHFqU1J3c2VKRnlZbUthWFBsQ1JodmNoMnY5MC93YytDT1RSc2ZwL2Z6?=
+ =?utf-8?B?K3Z4eG00bnQyMHRNT3JPdEpReE1zbHhkVmlTdXhjU3lMc25vTzVOdU5tQ3p1?=
+ =?utf-8?B?WDlJMnZkUm4vZXZoVFFXRVJVdytiUDk5ZHdMV0NNVDU5QTI5aWNwQUJHR3ky?=
+ =?utf-8?B?SnpSRUl0dDFqSEJidS8za3FtZ3Q1YW1WWXlHNlBSSDV2Y3EwQkJHbzh0YmhX?=
+ =?utf-8?B?L3RrQjRFZktBZC9NRS9RSERhWEFwaU5aNnpnVTZJUUVuUGtLVFZiU2lMRUxm?=
+ =?utf-8?B?L2RmOGNrQ2J5eG4wMjVHOG5CTncvVW91SmNEVTYzZXZXdmlYTXQ1aTVCZ2ZV?=
+ =?utf-8?B?NlY0aXJ1d3g2dWtVNXl3V2xweEQzeUZIenUzL1diMURjZC8zNzFSSFlhUVdL?=
+ =?utf-8?B?OHRTd3QzYXlBWU53TTFqLzdyRkQ0dHJHZTRTTkNTZnQxdmpnbkJHTktBcXNw?=
+ =?utf-8?B?TnB5cEVEdXZTVjlCN2V1ZHVmYVlJT280RnNPelVzZEE4UDRsTWVseXZqL09n?=
+ =?utf-8?B?Y3U3UmI2NEZLbzY5UHJxQmZiMG1xM0lmb1htcFpWQ3g1RmJlMmxuRUZSOStu?=
+ =?utf-8?B?SU50cG5RWUhnWWRqczNBbzk1ZE9WZVF5WWt3Q2Q4dkJ3UkRERnlDaWU5dmZ3?=
+ =?utf-8?B?T1djbkJhSXpPOWZzWHpKVHZISUtRREsxSmlpc1hZcTBtNlJlYVU4MEwwbXdM?=
+ =?utf-8?B?Z3ZUamRQYk5uSldOSlYrVGE4cjY4S1JlYmt4UFNheWNPb1VwQTU4YkhZQU9r?=
+ =?utf-8?B?dU9HbG5DRVBvNGxFcGNtOHlBTW1za0thQ0FHSlF4MEZIakVOZUV2bWZZMXR5?=
+ =?utf-8?B?Nk1vWHNzMmt2U3dhckllSUFpYnE4Y3BQbDhIVmltTzZIZ3F2S0kxU1BpMVhP?=
+ =?utf-8?B?YldlSnp1SlIzZ2J5NEVBTnVaVnFEWTd5T2I1c3JSb291a3ZueFBQZGFUTjZD?=
+ =?utf-8?B?bWY4MDVTMXBmVVNXb0NqMTBWUTQyWUFTK01yZzRmNTVEbkZiTFhIbGdlWmN3?=
+ =?utf-8?B?VWMya0hiUmxyeGR2V2Y5Y2l0eCtDKzJTYlJYWVQzMHBHdmxDeURrYk1rMUVr?=
+ =?utf-8?B?TzRFbU0zd2NvSkwxUGd4WURheEdMNUo1dG9wNVBsaXRMdkZMSEQ2eTdhUVZP?=
+ =?utf-8?B?LzVnaExxbk1iblR3eVpGSlRTR29PN1lXVzdHdzltVVhUSDNQTnAvK0hEMG00?=
+ =?utf-8?B?dGh3L3JOMlRRU3E4OEt3NnFCK3RFTVRQbmtTeVZ6UXp2RkVlUzFTVVFzTHFp?=
+ =?utf-8?B?RVo5dGlrWUFDMnNXV29YWTlOTjMwZ1Qvdk9ibUs0UldseHlJVW9FeDg4bVoy?=
+ =?utf-8?Q?Ezqa1BXxQdd9s4XdA5eOW6z8o?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5811.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 515f6e34-9cb5-43d9-3a53-08db65f8e0ae
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jun 2023 19:12:59.8669 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: NQO8+Y4I9hU6sfi9v+whaXLJgNP1up3rLsAIkA+NcHOZKsC7nke1fArLVF2uxB+VNksiknp/2SDkV11c7RKE8TRSayopqSjq9OY58Z6oECg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7874
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685989279; x=1717525279;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=jwhOMMoefBQW6N6VJt5vylFEbWGBTA/aw79xbpsCQM4=;
- b=FlG1CfrUeJwsqbxr8ZHuWy9r4QdfIKi/784wkdX0sakLqeurN/uqS0w+
- sEtm1nJZ6o69MiPbfCFKWc/QQm9i0f5LFSP6QBuYHaKwRatoVFhcxcCHA
- jJLUS6OD4XUBkrY85+I63viI06Jmv5W77sxnnlcu1jHjGYRTHH3HpB3wn
- TrYXKJ+KxOUPqPhnWvw9eC3/L1ngkIaH9mO/r+h+odTwg5BrnFOX3mgz7
- /U4uxv3MWEXcD2+U+4q9lpJRmfLQ+9TRsQ7rse/yNEHXlDDiUjpvU4M+k
- wZQlwIdAeAIIG9iN3xIVegXSwXUIbK8h2UEOGSXzXUSwwR6tz2RejhR+Q
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1685992385; x=1717528385;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=/n29Z0gGnZGYFt20iRIO38S3s/hYEaJeFWG7yv6cvgo=;
+ b=E9vanuGapYrtMhEFUZz9/0qKxnq6Y0LNmB0gqca6kacvgClOxNXV2c75
+ D1gxs5HIT93dXqoFMKSIYsC4JkfkwSB4bABp83KXt0GO6NhN93ZJBsc0p
+ Xw5DqSrOTRYTBmpbQDX6wITc2G8LTRZzQuy8CfsHejBXkLiX6HBtSRZ9g
+ 23DigIHYlso7vtym6PHhrHR+2/yRydIiGdi9rND4aWItcu8XSymew/2dk
+ rWQWPqzXPz72Z9KUOAqvI4uDJ5KYO/wFXPLcYRDYO9/doT24HzNUoTjFW
+ DST06xtNamx/KTiUEe+s9AhUhPu2Aa4g6oVA65sG/pgN/6KVzVvaB7fvy
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FlG1CfrU
-Subject: [Intel-wired-lan] [PATCH net v2 10/10] ice: update reset path for
- SRIOV LAG support
+ header.a=rsa-sha256 header.s=Intel header.b=E9vanuGa
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v2 00/10] Implement support for
+ SRIOV + LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,421 +192,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add code to rebuild the LAG resources when rebuilding the state of the
-interface after a reset.
-
-Also added in a function for building per-queue information into the buffer
-used to configure VF queues for LAG fail-over.  This improves code reuse.
-
-Due to differences in timing per interface for recovering from a reset, add
-in the ability to retry on non-local dependencies where needed.
-
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_lag.c  | 287 +++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_lag.h  |   3 +
- drivers/net/ethernet/intel/ice/ice_main.c |  14 +-
- 3 files changed, 300 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index ffad9f3a5576..4c07d1b9e338 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -997,6 +997,7 @@ static void ice_lag_link_unlink(struct ice_lag *lag, void *ptr)
-  * @link: Is this a linking activity
-  *
-  * If link is false, then primary_swid should be expected to not be valid
-+ * This function should never be called in interrupt context.
-  */
- static void
- ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
-@@ -1006,7 +1007,7 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 	struct ice_aqc_set_port_params *cmd;
- 	struct ice_aq_desc desc;
- 	u16 buf_len, swid;
--	int status;
-+	int status, i;
- 
- 	buf_len = struct_size(buf, elem, 1);
- 	buf = kzalloc(buf_len, GFP_KERNEL);
-@@ -1057,7 +1058,20 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_port_params);
- 
- 	cmd->swid = cpu_to_le16(ICE_AQC_PORT_SWID_VALID | swid);
--	status = ice_aq_send_cmd(&local_lag->pf->hw, &desc, NULL, 0, NULL);
-+	/* If this is happening in reset context, it is possible that the
-+	 * primary interface has not finished setting its SWID to SHARED
-+	 * yet.  Allow retries to account for this timing issue between
-+	 * interfaces.
-+	 */
-+	for (i = 0; i < ICE_LAG_RESET_RETRIES; i++) {
-+		status = ice_aq_send_cmd(&local_lag->pf->hw, &desc, NULL, 0,
-+					 NULL);
-+		if (!status)
-+			break;
-+
-+		usleep_range(1000, 2000);
-+	}
-+
- 	if (status)
- 		dev_err(ice_pf_to_dev(local_lag->pf), "Error setting SWID in port params %d\n",
- 			status);
-@@ -1065,7 +1079,7 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 
- /**
-  * ice_lag_primary_swid - set/clear the SHARED attrib of primary's SWID
-- * @lag: primary interfaces lag struct
-+ * @lag: primary interface's lag struct
-  * @link: is this a linking activity
-  *
-  * Implement setting primary SWID as shared using 0x020B
-@@ -1788,6 +1802,191 @@ static u16 ice_create_lag_recipe(struct ice_hw *hw, const u8 *base_recipe,
- 	return rid;
- }
- 
-+/**
-+ * ice_lag_move_vf_nodes_tc_sync - move a VF's nodes for a tc during reset
-+ * @lag: primary interfaces lag struct
-+ * @dest_hw: HW struct for destination's interface
-+ * @vsi_num: VSI index in PF space
-+ * @tc: traffic class to move
-+ */
-+static void
-+ice_lag_move_vf_nodes_tc_sync(struct ice_lag *lag, struct ice_hw *dest_hw,
-+			      u16 vsi_num, u8 tc)
-+{
-+	u16 num_nodes[ICE_AQC_TOPO_MAX_LEVEL_NUM] = { 0 };
-+	struct ice_sched_node *n_prt, *tc_node, *aggnode;
-+	u16 numq, valq, buf_size, num_moved, qbuf_size;
-+	struct device *dev = ice_pf_to_dev(lag->pf);
-+	struct ice_aqc_cfg_txqs_buf *qbuf;
-+	struct ice_aqc_move_elem *buf;
-+	struct ice_port_info *pi;
-+	__le32 teid, parent_teid;
-+	struct ice_vsi_ctx *ctx;
-+	struct ice_hw *hw;
-+	u8 aggl, vsil;
-+	u32 tmp_teid;
-+	int n;
-+
-+	hw = &lag->pf->hw;
-+	ctx = ice_get_vsi_ctx(hw, vsi_num);
-+	if (!ctx) {
-+		dev_warn(dev, "LAG rebuild failed after reset due to VSI Context failure\n");
-+		return;
-+	}
-+
-+	if (!ctx->sched.vsi_node[tc])
-+		return;
-+
-+	numq = ctx->num_lan_q_entries[tc];
-+	teid = ctx->sched.vsi_node[tc]->info.node_teid;
-+	tmp_teid = le32_to_cpu(teid);
-+	parent_teid = ctx->sched.vsi_node[tc]->info.parent_teid;
-+
-+	if (!tmp_teid || !numq)
-+		return;
-+
-+	if (ice_sched_suspend_resume_elems(hw, 1, &tmp_teid, true))
-+		dev_dbg(dev, "Problem suspending traffic during reset rebuild\n");
-+
-+	/* reconfig queues for new port */
-+	qbuf_size = struct_size(qbuf, queue_info, numq);
-+	qbuf = kzalloc(qbuf_size, GFP_KERNEL);
-+	if (!qbuf) {
-+		dev_warn(dev, "Failure allocating VF queue recfg buffer for reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	/* add the per queue info for the reconfigure command buffer */
-+	valq = ice_lag_qbuf_recfg(hw, qbuf, vsi_num, numq, tc);
-+	if (!valq) {
-+		dev_warn(dev, "Failure to reconfig queues for LAG reset rebuild\n");
-+		goto sync_none;
-+	}
-+
-+	if (ice_aq_cfg_lan_txq(hw, qbuf, qbuf_size, numq, hw->port_info->lport,
-+			       dest_hw->port_info->lport, NULL)) {
-+		dev_warn(dev, "Failure to configure queues for LAG reset rebuild\n");
-+		goto sync_qerr;
-+	}
-+
-+sync_none:
-+	kfree(qbuf);
-+
-+	/* find parent in destination tree */
-+	pi = dest_hw->port_info;
-+	tc_node = ice_sched_get_tc_node(pi, tc);
-+	if (!tc_node) {
-+		dev_warn(dev, "Failure to find TC node in secondary tree for reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	aggnode = ice_sched_get_agg_node(pi, tc_node, ICE_DFLT_AGG_ID);
-+	if (!aggnode) {
-+		dev_warn(dev, "Failure to find agg node in secondary tree for reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	aggl = ice_sched_get_agg_layer(dest_hw);
-+	vsil = ice_sched_get_vsi_layer(dest_hw);
-+
-+	for (n = aggl + 1; n < vsil; n++)
-+		num_nodes[n] = 1;
-+
-+	for (n = 0; n < aggnode->num_children; n++) {
-+		n_prt = ice_sched_get_free_vsi_parent(dest_hw,
-+						      aggnode->children[n],
-+						      num_nodes);
-+		if (n_prt)
-+			break;
-+	}
-+
-+	/* if no free parent found - add one */
-+	if (!n_prt) {
-+		u16 num_nodes_added;
-+		u32 first_teid;
-+		int status;
-+
-+		n_prt = aggnode;
-+		for (n = aggl + 1; n < vsil; n++) {
-+			status = ice_sched_add_nodes_to_layer(pi, tc_node,
-+							      n_prt, n,
-+							      num_nodes[n],
-+							      &first_teid,
-+							      &num_nodes_added);
-+			if (status || num_nodes[n] != num_nodes_added)
-+				goto resume_sync;
-+
-+			if (num_nodes_added)
-+				n_prt = ice_sched_find_node_by_teid(tc_node,
-+								    first_teid);
-+			else
-+				n_prt = n_prt->children[0];
-+
-+			if (!n_prt) {
-+				dev_warn(dev, "Failure to add new parent for LAG reset rebuild\n");
-+				goto resume_sync;
-+			}
-+		}
-+	}
-+
-+	/* Move node to new parent */
-+	buf_size = struct_size(buf, teid, 1);
-+	buf = kzalloc(buf_size, GFP_KERNEL);
-+	if (!buf) {
-+		dev_warn(dev, "Failure to alloc for VF node move in reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	buf->hdr.src_parent_teid = parent_teid;
-+	buf->hdr.dest_parent_teid = n_prt->info.node_teid;
-+	buf->hdr.num_elems = cpu_to_le16(1);
-+	buf->hdr.mode = ICE_AQC_MOVE_ELEM_MODE_KEEP_OWN;
-+	buf->teid[0] = teid;
-+
-+	if (ice_aq_move_sched_elems(&lag->pf->hw, 1, buf, buf_size, &num_moved,
-+				    NULL))
-+		dev_warn(dev, "Failure to move VF nodes for LAG reset rebuild\n");
-+	else
-+		ice_sched_update_parent(n_prt, ctx->sched.vsi_node[tc]);
-+
-+	kfree(buf);
-+	goto resume_sync;
-+
-+sync_qerr:
-+	kfree(qbuf);
-+
-+resume_sync:
-+	if (ice_sched_suspend_resume_elems(hw, 1, &tmp_teid, false))
-+		dev_warn(dev, "Problem restarting traffic for LAG node reset rebuild\n");
-+}
-+
-+/**
-+ * ice_lag_move_vf_nodes_sync - move vf nodes to active interface
-+ * @lag: primary interfaces lag struct
-+ * @dest_hw: lport value for currently active port
-+ *
-+ * This function is used in a reset context, outside of event handling,
-+ * to move the VF nodes to the secondary interface when that interface
-+ * is the active interface during a reset rebuild
-+ */
-+static void
-+ice_lag_move_vf_nodes_sync(struct ice_lag *lag, struct ice_hw *dest_hw)
-+{
-+	struct ice_pf *pf;
-+	int i, tc;
-+
-+	if (!lag->primary || !dest_hw)
-+		return;
-+
-+	pf = lag->pf;
-+	ice_for_each_vsi(pf, i)
-+		if (pf->vsi[i] && (pf->vsi[i]->type == ICE_VSI_VF ||
-+				   pf->vsi[i]->type == ICE_VSI_SWITCHDEV_CTRL))
-+			ice_for_each_traffic_class(tc)
-+				ice_lag_move_vf_nodes_tc_sync(lag, dest_hw, i,
-+							      tc);
-+}
-+
- /**
-  * ice_init_lag - initialize support for LAG
-  * @pf: PF struct
-@@ -1890,3 +2089,85 @@ void ice_deinit_lag(struct ice_pf *pf)
- 
- 	pf->lag = NULL;
- }
-+
-+/**
-+ * ice_lag_rebuild - rebuild lag resources after reset
-+ * @pf: pointer to local pf struct
-+ *
-+ * PF resets are promoted to CORER resets when interface in an aggregate.  This
-+ * means that we need to rebuild the PF resources for the interface.  Since
-+ * this will happen outside the normal event processing, need to acquire the lag
-+ * lock.
-+ *
-+ * This function will also evaluate the VF resources if this is the primary
-+ * interface.
-+ */
-+void ice_lag_rebuild(struct ice_pf *pf)
-+{
-+	struct ice_lag_netdev_list ndlist;
-+	struct ice_lag *lag, *prim_lag;
-+	struct list_head *tmp, *n;
-+	u8 act_port, loc_port;
-+
-+	if (!pf->lag || !pf->lag->bonded)
-+		return;
-+
-+	mutex_lock(&pf->lag_mutex);
-+
-+	lag = pf->lag;
-+	if (lag->primary) {
-+		prim_lag = lag;
-+	} else {
-+		struct ice_lag_netdev_list *nl;
-+		struct net_device *tmp_nd;
-+
-+		INIT_LIST_HEAD(&ndlist.node);
-+		rcu_read_lock();
-+		for_each_netdev_in_bond_rcu(lag->upper_netdev, tmp_nd) {
-+			nl = kzalloc(sizeof(*nl), GFP_KERNEL);
-+			if (!nl)
-+				break;
-+
-+			nl->netdev = tmp_nd;
-+			list_add(&nl->node, &ndlist.node);
-+		}
-+		rcu_read_unlock();
-+		lag->netdev_head = &ndlist.node;
-+		prim_lag = ice_lag_find_primary(lag);
-+	}
-+
-+	if (!prim_lag) {
-+		dev_dbg(ice_pf_to_dev(pf), "No primary interface in aggregate, can't rebuild\n");
-+		goto lag_rebuild_out;
-+	}
-+
-+	act_port = prim_lag->active_port;
-+	loc_port = lag->pf->hw.port_info->lport;
-+
-+	/* configure SWID for this port */
-+	if (lag->primary) {
-+		ice_lag_primary_swid(lag, true);
-+	} else {
-+		ice_lag_set_swid(prim_lag->pf->hw.port_info->sw_id, lag, true);
-+		ice_lag_add_prune_list(prim_lag, pf);
-+		if (act_port == loc_port)
-+			ice_lag_move_vf_nodes_sync(prim_lag, &pf->hw);
-+	}
-+
-+	ice_lag_cfg_cp_fltr(lag, true);
-+
-+	if (lag->pf_rule_id)
-+		if (ice_lag_cfg_dflt_fltr(lag, true))
-+			dev_err(ice_pf_to_dev(pf), "Error adding default VSI rule in rebuild\n");
-+
-+	ice_clear_rdma_cap(pf);
-+lag_rebuild_out:
-+	list_for_each_safe(tmp, n, &ndlist.node) {
-+		struct ice_lag_netdev_list *entry;
-+
-+		entry = list_entry(tmp, struct ice_lag_netdev_list, node);
-+		list_del(&entry->node);
-+		kfree(entry);
-+	}
-+	mutex_unlock(&pf->lag_mutex);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
-index df4af5184a75..18075b82485a 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.h
-@@ -16,6 +16,8 @@ enum ice_lag_role {
- 
- #define ICE_LAG_INVALID_PORT 0xFF
- 
-+#define ICE_LAG_RESET_RETRIES		5
-+
- struct ice_pf;
- struct ice_vf;
- 
-@@ -59,4 +61,5 @@ struct ice_lag_work {
- void ice_lag_move_new_vf_nodes(struct ice_vf *vf);
- int ice_init_lag(struct ice_pf *pf);
- void ice_deinit_lag(struct ice_pf *pf);
-+void ice_lag_rebuild(struct ice_pf *pf);
- #endif /* _ICE_LAG_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 7030b2e54d2b..a27381ec37cd 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -636,6 +636,11 @@ static void ice_do_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 
- 	dev_dbg(dev, "reset_type 0x%x requested\n", reset_type);
- 
-+	if (pf->lag && pf->lag->bonded && reset_type == ICE_RESET_PFR) {
-+		dev_dbg(dev, "PFR on a bonded interface, promoting to CORER\n");
-+		reset_type = ICE_RESET_CORER;
-+	}
-+
- 	ice_prepare_for_reset(pf, reset_type);
- 
- 	/* trigger the reset */
-@@ -719,8 +724,13 @@ static void ice_reset_subtask(struct ice_pf *pf)
- 	}
- 
- 	/* No pending resets to finish processing. Check for new resets */
--	if (test_bit(ICE_PFR_REQ, pf->state))
-+	if (test_bit(ICE_PFR_REQ, pf->state)) {
- 		reset_type = ICE_RESET_PFR;
-+		if (pf->lag && pf->lag->bonded) {
-+			dev_dbg(ice_pf_to_dev(pf), "PFR on a bonded interface, promoting to CORER\n");
-+			reset_type = ICE_RESET_CORER;
-+		}
-+	}
- 	if (test_bit(ICE_CORER_REQ, pf->state))
- 		reset_type = ICE_RESET_CORER;
- 	if (test_bit(ICE_GLOBR_REQ, pf->state))
-@@ -7421,6 +7431,8 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	clear_bit(ICE_RESET_FAILED, pf->state);
- 
- 	ice_plug_aux_dev(pf);
-+	if (ice_is_feature_supported(pf, ICE_F_SRIOV_LAG))
-+		ice_lag_rebuild(pf);
- 	return;
- 
- err_vsi_rebuild:
--- 
-2.40.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiBGcm9tOiBEYXZlIEVydG1hbiA8ZGF2aWQubS5lcnRtYW5AaW50ZWwuY29tPg0KPiBTZW50OiBN
+b25kYXksIEp1bmUgNSwgMjAyMyAxMToyMyBBTQ0KPiBUbzogaW50ZWwtd2lyZWQtbGFuQGxpc3Rz
+Lm9zdW9zbC5vcmcNCj4gQ2M6IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmcNCj4gU3ViamVjdDogW1BB
+VENIIG5ldCB2MiAwMC8xMF0gSW1wbGVtZW50IHN1cHBvcnQgZm9yIFNSSU9WICsgTEFHDQo+IA0K
+PiBJbXBsZW1lbnQgc3VwcG9ydCBmb3IgU1JJT1YgVkYncyBvbiBpbnRlcmZhY2VzIHRoYXQgYXJl
+IGluIGFuDQo+IGFnZ3JlZ2F0ZSBpbnRlcmZhY2UuDQo+IA0KPiBUaGUgZmlyc3QgaW50ZXJmYWNl
+IGFkZGVkIGludG8gdGhlIGFnZ3JlZ2F0ZSB3aWxsIGJlIGZsYWdnZWQgYXMNCj4gdGhlIHByaW1h
+cnkgaW50ZXJmYWNlLCBhbmQgdGhpcyBwcmltYXJ5IGludGVyZmFjZSB3aWxsIGJlDQo+IHJlc3Bv
+bnNpYmxlIGZvciBtYW5hZ2luZyB0aGUgVkYncyByZXNvdXJjZXMuICBWRidzIGNyZWF0ZWQgb24g
+dGhlDQo+IHByaW1hcnkgYXJlIHRoZSBvbmx5IFZGcyB0aGF0IHdpbGwgYmUgc3VwcG9ydGVkIG9u
+IHRoZSBhZ2dyZWdhdGUuDQo+IE9ubHkgQWN0aXZlLUJhY2t1cCBtb2RlIHdpbGwgYmUgc3VwcG9y
+dGVkIGFuZCBvbmx5IGFnZ3JlZ2F0ZXMgd2hvc2UNCj4gcHJpbWFyeSBpbnRlcmZhY2UgaXMgaW4g
+c3dpdGNoZGV2IG1vZGUgd2lsbCBiZSBzdXBwb3J0ZWQuDQo+IA0KPiBBZGRpdGlvbmFsIHJlc3Ry
+aWN0aW9ucyBvbiB3aGF0IGludGVyZmFjZXMgY2FuIGJlIGFkZGVkIHRvIHRoZSBhZ2dyZWdhdGUN
+Cj4gYW5kIHN0aWxsIHN1cHBvcnQgU1JJT1YgVkZzIGFyZToNCj4gLSBpbnRlcmZhY2VzIGhhdmUg
+dG8gYWxsIGJlIG9uIHRoZSBzYW1lIHBoeXNpY2FsIE5JQw0KPiAtIGFsbCBpbnRlcmZhY2VzIGhh
+dmUgdG8gaGF2ZSB0aGUgc2FtZSBRb1Mgc2V0dGluZ3MNCj4gLSBpbnRlcmZhY2VzIGhhdmUgdG8g
+aGF2ZSB0aGUgRlcgTExEUCBhZ2VudCBkaXNhYmxlZA0KPiAtIG9ubHkgdGhlIHByaW1hcnkgaW50
+ZXJmYWNlIGlzIHRvIGJlIHB1dCBpbnRvIHN3aXRjaGRldiBtb2RlDQo+IC0gbm8gbW9yZSB0aGFu
+IHR3byBpbnRlcmZhY2VzIGluIHRoZSBhZ2dyZWdhdGUNCj4gDQo+IENoYW5nZXMgc2luY2UgdjE6
+DQo+IEZpeCB0eXBvIGluIGNvbW1pdCBtZXNzYWdlDQo+IEZpeCB0eXBvcyBpbiB3YXJuaW5nIG1l
+c3NhZ2VzDQo+IEZpeCB0eXBvIGluIGZ1bmN0aW9uIGhlYWRlcg0KPiBVc2UgY29ycmVjdCBiaXR3
+aXNlIG9wZXJhdG9yIGluc3RlYWQgb2YgYm9vbGVhbg0KPiANCj4gRGF2ZSBFcnRtYW4gKDkpOg0K
+PiAgIGljZTogQWRkIGRyaXZlciBzdXBwb3J0IGZvciBmaXJtd2FyZSBjaGFuZ2VzIGZvciBMQUcN
+Cj4gICBpY2U6IGNoYW5nZXMgdG8gdGhlIGludGVyZmFjZSB3aXRoIHRoZSBIVyBhbmQgRlcgZm9y
+IFNSSU9WX1ZGK0xBRw0KPiAgIGljZTogaW1wbGVtZW50IGxhZyBuZXRkZXYgZXZlbnQgaGFuZGxl
+cg0KPiAgIGljZTogcHJvY2VzcyBldmVudHMgY3JlYXRlZCBieSBsYWcgbmV0ZGV2IGV2ZW50IGhh
+bmRsZXINCj4gICBpY2U6IEZsZXNoIG91dCBpbXBsZW1lbnRhdGlvbiBvZiBzdXBwb3J0IGZvciBT
+UklPViBvbiBib25kZWQgaW50ZXJmYWNlDQo+ICAgaWNlOiBzdXBwb3J0IG5vbi1zdGFuZGFyZCB0
+ZWFyZG93biBvZiBib25kIGludGVyZmFjZQ0KPiAgIGljZTogZW5mb3JjZSBpbnRlcmZhY2UgZWxp
+Z2liaWxpdHkgYW5kIGFkZCBtZXNzYWdpbmcgZm9yIFNSSU9WIExBRw0KPiAgIGljZTogZW5mb3Jj
+ZSBubyBEQ0IgY29uZmlnIGNoYW5naW5nIHdoZW4gaW4gYm9uZA0KPiAgIGljZTogdXBkYXRlIHJl
+c2V0IHBhdGggZm9yIFNSSU9WIExBRyBzdXBwb3J0DQo+IA0KPiBKYWNvYiBLZWxsZXIgKDEpOg0K
+PiAgIGljZTogQ29ycmVjdGx5IGluaXRpYWxpemUgcXVldWUgY29udGV4dCB2YWx1ZXMNCj4gDQo+
+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlLmggICAgICAgICAgfCAgICA1ICsN
+Cj4gIC4uLi9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9hZG1pbnFfY21kLmggICB8ICAgNTMg
+Ky0NCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfY29tbW9uLmMgICB8ICAg
+NTcgKy0NCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfY29tbW9uLmggICB8
+ICAgIDQgKw0KPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9kY2JfbmwuYyAg
+IHwgICA1MCArDQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xhZy5jICAg
+ICAgfCAxOTEyICsrKysrKysrKysrKysrKystDQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pY2UvaWNlX2xhZy5oICAgICAgfCAgIDM0ICstDQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pY2UvaWNlX2xpYi5jICAgICAgfCAgICAyICstDQo+ICBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pY2UvaWNlX2xpYi5oICAgICAgfCAgICAxICsNCj4gIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jICAgICB8ICAgMjYgKy0NCj4gIGRyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2ljZS9pY2Vfc2NoZWQuYyAgICB8ICAgMzcgKy0NCj4gIGRyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vfc2NoZWQuaCAgICB8ICAgMjEgKw0KPiAgZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zd2l0Y2guYyAgIHwgICA4OSArLQ0KPiAgZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9zd2l0Y2guaCAgIHwgICAyOSArDQo+ICBkcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R5cGUuaCAgICAgfCAgICAyICsNCj4gIGRy
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdmlydGNobmwuYyB8ICAgIDIgKw0KPiAg
+MTYgZmlsZXMgY2hhbmdlZCwgMjE5MyBpbnNlcnRpb25zKCspLCAxMzEgZGVsZXRpb25zKC0pDQo+
+IA0KPiAtLQ0KPiAyLjQwLjENCj4gDQpTb3JyeSwNCg0KVGhpcyBnb3QgZmF0LWZpbmdlcmVkIHNl
+bnQuICBJdCBzdGlsbCBuZWVkZWQgdG8gYmUgcmUtYmFzZWQgb24gY3VycmVudCB0aXAtb2YtdHJl
+ZSBhbmQgaXMgbWlzbGFiZWxlZCBhcyBuZXQgaW5zdGVhZCBvZiBuZXQtbmV4dC4NCg0KV2lsbCBy
+ZXNlbmQgVjMgaW4gMjQgaG91cnMg4pi5DQoNCkFnYWluLCBzb3JyeSBmb3IgdGhlIHRocmFzaC4N
+Cg0KRGF2ZUUNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
+bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
