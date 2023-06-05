@@ -1,85 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73E36721BF8
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 04:29:42 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6442721BF9
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Jun 2023 04:29:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 999DA60BBE;
-	Mon,  5 Jun 2023 02:29:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 999DA60BBE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 02E3260BC6;
+	Mon,  5 Jun 2023 02:29:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 02E3260BC6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1685932180;
-	bh=X4PVzs9xU41CtYhCfk+yh191kx0jTPh4QiqfIRNzv4E=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=uPY2M7WwT/s3qRJlwzl1Bo3nEXLsnDw4164iGBf3MLpET7164lFV5Tnd5kRyQJJ5E
-	 YjMps5zbHVofVFVOXiQvylj8RGMWloXhZBYrodjmDjNlGoWAVNGYi6BW+oHKPOKiCu
-	 jGYr3diODKof3hY7BbKBR36T/cCr2V2c+NR0t00kbEOq6cdwmiLMbh8aZ5v+gnLa1L
-	 0m3fqDheNKYP8OjUfaM6/Q6oQyeCyZlB8tBTcmcpHZCPE96fg6dt2Sfz78Ea0+Zs+c
-	 9cBGVGNBZyK2QkcBlXVbELQwYvMCzm9t9xTr2ibl73+yaNg+FhyMUOrS3wBhOGhGV2
-	 Jr+WzI6pRaP4A==
+	s=default; t=1685932185;
+	bh=/OMNe7nkUcihxGOfImentWoNtOStFJ8d/SCpUCVILUI=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=xgaME4P76Ifi9Oi8s2LSKYvI8bhR5sFDEmsd4FLJGRMzYTR5AT6E75tWbHrCLWddJ
+	 cRuCUesltMt5h/AKJGaOJYumdv5srY4CDond87zj5fsw6sX7E+newynWJ80Hhlxf6m
+	 ICzpr7USCM9vZRAcENrZYXaubk/w2qEQfxJi+U8RvFMJGxw41UulIwWzLMPC8oszg6
+	 uRQ1CGvarqQHOmAGERqRrVlQMXtFPb/W/Lwb2SltSP+4L8MajLpknpUFBpUQC6tTzn
+	 BPsHiYj1PP7IcFlrDyhoGbv6WikLdhQGR4RvTBrYNUuxcRnTn79cEZBHObYVX3oCFL
+	 wi6YGiTlQ8wUg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id voLJvS8hvDXV; Mon,  5 Jun 2023 02:29:39 +0000 (UTC)
+	with ESMTP id N5j2uXBg2ujU; Mon,  5 Jun 2023 02:29:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 30A2D60BB9;
-	Mon,  5 Jun 2023 02:29:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 30A2D60BB9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7C30160BBB;
+	Mon,  5 Jun 2023 02:29:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C30160BBB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3329E1BF336
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 02:29:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 60F961BF336
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 02:29:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 17E4F60BBB
+ by smtp3.osuosl.org (Postfix) with ESMTP id BC85560BAD
  for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 02:29:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17E4F60BBB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC85560BAD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gKSyuT8btsC7 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id HJkaLFt4kOue for <intel-wired-lan@lists.osuosl.org>;
  Mon,  5 Jun 2023 02:29:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD88160BAD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6E62C60BB9
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DD88160BAD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 02:29:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="358710400"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="358710400"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6E62C60BB9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jun 2023 02:29:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="358710403"
+X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="358710403"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2023 19:29:32 -0700
+ 04 Jun 2023 19:29:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="1038604686"
-X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="1038604686"
+X-IronPort-AV: E=McAfee;i="6600,9927,10731"; a="1038604690"
+X-IronPort-AV: E=Sophos;i="6.00,217,1681196400"; d="scan'208";a="1038604690"
 Received: from dpdk-jf-ntb-v2.sh.intel.com ([10.67.119.16])
- by fmsmga005.fm.intel.com with ESMTP; 04 Jun 2023 19:29:30 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 04 Jun 2023 19:29:32 -0700
 From: Junfeng Guo <junfeng.guo@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  5 Jun 2023 10:29:05 +0800
-Message-Id: <20230605022920.2361266-1-junfeng.guo@intel.com>
+Date: Mon,  5 Jun 2023 10:29:06 +0800
+Message-Id: <20230605022920.2361266-2-junfeng.guo@intel.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230605022920.2361266-1-junfeng.guo@intel.com>
+References: <20230605022920.2361266-1-junfeng.guo@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685932172; x=1717468172;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=3m0lZggws6kUVna7zKqsGRcwZSkzyJ17HpRReAO7p6I=;
- b=WWkWUHPUZ4X6lcq5XCPwneAzLiZn2HXgZ1ulTO90pD5HRhS2SCIN5kMb
- sFfF+3mhKKNXzAA2Vw5JGa1oiNjPWCTCmvZSOllYepLQPFnEDOdSDvhXM
- WNB7rqCRIVB12QFhl/m9nzs1/9zTfNWwRVo5MBcKRXfKw6jGS2WRSbg3v
- uj7RhJ9ayW9DBUFb7ygKm80tdRZNimYaUmFZ9BpcUza5zV53g1S69q3Qx
- BJ4WtY78i/DUl3C1/JCJN1gWeqCiGy3OZk2CeA/4cLOpEjx+o6yvD9OFo
- zUDbJY8ENF45nqZDouarLJda/U8X1lAR96H9EnAtSgzHlznesDIFiR5PV
- Q==;
+ t=1685932173; x=1717468173;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=7Ztl4UMRMoD1zxQvpihQn/nLCtVEh3Ca5FIZG+koBZY=;
+ b=h/Zv7AH5WPb3Bqua45GKJ3KdOP7VbRX5LpOqpuXBRKg27NxqfmHkG7/q
+ /pHS/8LFuqnYppJzCiGRhkEvSE9Lh/bGR7XZ81GeLx49hlH5ny0Fyobhx
+ iu5jNhLBXwpLTOhPV5uYxtmyK78SXTauA1JWdFcdFZ9aMETknHj9ZZp+Q
+ +LZRgmksC9DWBTxSyatNpt2XtqgtctufQgqCLot+EVFiLCgrP8p8Zz0t5
+ Oynf9B3InOf7QoRh1d++oDiOcOorDIyxifIuljdcKs6fTxQGv5S+2xmO2
+ nj4MAXO8y5dvZ9uRkG/dNUMTef5MVru2cWtR7R7Gg+ZFz2AvwF+nf9Iqj
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WWkWUHPU
-Subject: [Intel-wired-lan] [PATCH iwl-next 00/15] Introduce the Parser
- Library
+ header.a=rsa-sha256 header.s=Intel header.b=h/Zv7AH5
+Subject: [Intel-wired-lan] [PATCH iwl-next 01/15] ice: add parser create and
+ destroy skeleton
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,121 +96,162 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: qi.z.zhang@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Q3VycmVudCBzb2Z0d2FyZSBhcmNoaXRlY3R1cmUgZm9yIGZsb3cgZmlsdGVyaW5nIG9mZmxvYWRp
-bmcgbGltaXRlZAp0aGUgY2FwYWJpbGl0eSBvZiBJbnRlbMKuIEV0aGVybmV0IDgwMCBTZXJpZXMg
-RHluYW1pYyBEZXZpY2UKUGVyc29uYWxpemF0aW9uIChERFApIFBhY2thZ2UuIFRoZSBmbG93IGZp
-bHRlcmluZyBvZmZsb2FkaW5nIGluIHRoZQpkcml2ZXIgaXMgZW5hYmxlZCBiYXNlZCBvbiB0aGUg
-bmFtaW5nIHBhcnNlcnMsIGVhY2ggZmxvdyBwYXR0ZXJuIGlzCnJlcHJlc2VudGVkIGJ5IGEgcHJv
-dG9jb2wgaGVhZGVyIHN0YWNrLiBBbmQgdGhlcmUgYXJlIG11bHRpcGxlIGxheWVycwooZS5nLiwg
-dmlydGNobmwpIHRvIG1haW50YWluIHRoZWlyIG93biBlbnVtL21hY3JvL3N0cnVjdHVyZQp0byBy
-ZXByZXNlbnQgYSBwcm90b2NvbCBoZWFkZXIgKElQLCBUQ1AsIFVEUCAuLi4pLCB0aHVzIHRoZSBl
-eHRyYQpwYXJzZXJzIHRvIHZlcmlmeSBpZiBhIHBhdHRlcm4gaXMgc3VwcG9ydGVkIGJ5IGhhcmR3
-YXJlIG9yIG5vdCBhcwp3ZWxsIGFzIHRoZSBleHRyYSBjb252ZXJ0ZXJzIHRoYXQgdG8gdHJhbnNs
-YXRlIHJlcHJlc2VudHMgYmV0d2VlbgpkaWZmZXJlbnQgbGF5ZXJzLiBFdmVyeSB0aW1lIGEgbmV3
-IHByb3RvY29sL2ZpZWxkIGlzIHJlcXVlc3RlZCB0byBiZQpzdXBwb3J0ZWQsIHRoZSBjb3JyZXNw
-b25kaW5nIGxvZ2ljIGZvciB0aGUgcGFyc2VycyBhbmQgdGhlIGNvbnZlcnRlcnMKbmVlZHMgdG8g
-YmUgbW9kaWZpZWQgYWNjb3JkaW5nbHkuIFRodXMsIGh1Z2UgJiByZWR1bmRhbnQgZWZmb3J0cyBh
-cmUKcmVxdWlyZWQgdG8gc3VwcG9ydCB0aGUgaW5jcmVhc2luZyBmbG93IGZpbHRlcmluZyBvZmZs
-b2FkaW5nIGZlYXR1cmVzLAplc3BlY2lhbGx5IGZvciB0aGUgdHVubmVsIHR5cGVzIGZsb3cgZmls
-dGVyaW5nLgoKVGhpcyBwYXRjaCBzZXQgcHJvdmlkZXMgYSB3YXkgZm9yIGFwcGxpY2F0aW9ucyB0
-byBzZW5kIGRvd24gdHJhaW5pbmcKcGFja2V0cyAmIG1hc2tzIChpbiBiaW5hcnkpIHRvIHRoZSBk
-cml2ZXIuIFRoZW4gdGhlc2UgYmluYXJ5IGRhdGEKd291bGQgYmUgdXNlZCBieSB0aGUgZHJpdmVy
-IHRvIGdlbmVyYXRlIGNlcnRhaW4gZGF0YSB0aGF0IGFyZSBuZWVkZWQKdG8gY3JlYXRlIGEgZmls
-dGVyIHJ1bGUgaW4gdGhlIGZpbHRlcmluZyBzdGFnZSBvZiBzd2l0Y2gvUlNTL0ZESVIuCgpOb3Rl
-IHRoYXQgdGhlIGltcGFjdCBvZiBhIG1hbGljaW91cyBydWxlIGluIHRoZSByYXcgcGFja2V0IGZp
-bHRlciBpcwpsaW1pdGVkIHRvIHBlcmZvcm1hbmNlIHJhdGhlciB0aGFuIGZ1bmN0aW9uYWxpdHku
-IEl0IG1heSBhZmZlY3QgdGhlCnBlcmZvcm1hbmNlIG9mIHRoZSB3b3JrbG9hZCwgc2ltaWxhciB0
-byBvdGhlciBsaW1pdGF0aW9ucyBpbiBGRElSL1JTUwpvbiBBVkYuIEZvciBleGFtcGxlLCB0aGVy
-ZSBpcyBubyByZXNvdXJjZSBib3VuZGFyeSBmb3IgVkYgRkRJUi9SU1MKcnVsZXMsIHNvIG9uZSBt
-YWxpY2lvdXMgVkYgY291bGQgcG90ZW50aWFsbHkgbWFrZSBvdGhlciBWRnMKaW5lZmZpY2llbnQg
-aW4gb2ZmbG9hZGluZy4KClRoZSBwYXJzZXIgbGlicmFyeSBpcyBleHBlY3RlZCB0byBpbmNsdWRl
-IGJvdW5kYXJ5IGNoZWNrcyB0byBwcmV2ZW50CmNyaXRpY2FsIGVycm9ycyBzdWNoIGFzIGluZmlu
-aXRlIGxvb3BzIG9yIHNlZ21lbnRhdGlvbiBmYXVsdHMuCkhvd2V2ZXIsIG9ubHkgaW1wbGVtZW50
-aW5nIGFuZCB2YWxpZGF0aW5nIHRoZSBwYXJzZXIgZW11bGF0b3IgaW4gYQpzYW5kYm94IGVudmly
-b25tZW50IChsaWtlIGVicGYpIHByZXNlbnRzIGEgY2hhbGxlbmdlLgoKVGhlIGlkZWEgaXMgdG8g
-bWFrZSB0aGUgZHJpdmVyIGJlIGFibGUgdG8gbGVhcm4gZnJvbSB0aGUgRERQIHBhY2thZ2UKZGly
-ZWN0bHkgdG8gdW5kZXJzdGFuZCBob3cgdGhlIGhhcmR3YXJlIHBhcnNlciB3b3JrcyAoaS5lLiwg
-dGhlClBhcnNlciBMaWJyYXJ5KSwgc28gdGhhdCBpdCBjYW4gcHJvY2VzcyBvbiB0aGUgcmF3IHRy
-YWluaW5nIHBhY2tldAooaW4gYmluYXJ5KSBkaXJlY3RseSBhbmQgY3JlYXRlIHRoZSBmaWx0ZXIg
-cnVsZSBhY2NvcmRpbmdseS4KCkJhc2VkIG9uIHRoaXMgUGFyc2VyIExpYnJhcnksIHRoZSByYXcg
-ZmxvdyBmaWx0ZXJpbmcgb2YKc3dpdGNoL1JTUy9GRElSIGNvdWxkIGJlIGVuYWJsZWQgdG8gYWxs
-b3cgbmV3IGZsb3cgZmlsdGVyaW5nCm9mZmxvYWRpbmcgZmVhdHVyZXMgdG8gYmUgc3VwcG9ydGVk
-IHdpdGhvdXQgYW55IGRyaXZlciBjaGFuZ2VzIChvbmx5Cm5lZWQgdG8gdXBkYXRlIHRoZSBERFAg
-cGFja2FnZSkuCgpKdW5mZW5nIEd1byAoMTUpOgogIGljZTogYWRkIHBhcnNlciBjcmVhdGUgYW5k
-IGRlc3Ryb3kgc2tlbGV0b24KICBpY2U6IGluaXQgaW1lbSB0YWJsZSBmb3IgcGFyc2VyCiAgaWNl
-OiBpbml0IG1ldGFpbml0IHRhYmxlIGZvciBwYXJzZXIKICBpY2U6IGluaXQgcGFyc2UgZ3JhcGgg
-Y2FtIHRhYmxlIGZvciBwYXJzZXIKICBpY2U6IGluaXQgYm9vc3QgdGNhbSB0YWJsZSBmb3IgcGFy
-c2VyCiAgaWNlOiBpbml0IHB0eXBlIG1hcmtlciB0Y2FtIHRhYmxlIGZvciBwYXJzZXIKICBpY2U6
-IGluaXQgbWFya2VyIGFuZCBwcm90b2NvbCBncm91cCB0YWJsZSBmb3IgcGFyc2VyCiAgaWNlOiBp
-bml0IGZsYWcgcmVkaXJlY3QgdGFibGUgZm9yIHBhcnNlcgogIGljZTogaW5pdCBYTFQga2V5IGJ1
-aWxkZXIgZm9yIHBhcnNlcgogIGljZTogYWRkIHBhcnNlciBydW50aW1lIHNrZWxldG9uCiAgaWNl
-OiBhZGQgaW50ZXJuYWwgaGVscCBmdW5jdGlvbnMKICBpY2U6IGFkZCBwYXJzZXIgZXhlY3V0aW9u
-IG1haW4gbG9vcAogIGljZTogc3VwcG9ydCBkb3VibGUgdmxhbiBtb2RlIGNvbmZpZ3VyZSBmb3Ig
-cGFyc2VyCiAgaWNlOiBhZGQgdHVubmVsIHBvcnQgc3VwcG9ydCBmb3IgcGFyc2VyCiAgaWNlOiBh
-ZGQgQVBJIGZvciBwYXJzZXIgcHJvZmlsZSBpbml0aWFsaXphdGlvbgoKIGRyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2ljZS9NYWtlZmlsZSAgICAgICB8ICAxMSArCiBkcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pY2UvaWNlX2JzdF90Y2FtLmMgfCAyOTcgKysrKysrCiBkcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX2JzdF90Y2FtLmggfCAgMzQgKwogZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaWNlL2ljZV9jb21tb24uaCAgIHwgICAxICsKIGRyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2ljZS9pY2VfZGRwLmMgICAgICB8ICAxMCArLQogZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaWNlL2ljZV9kZHAuaCAgICAgIHwgIDE0ICsKIGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfZmxnX3JkLmMgICB8ICA3NSArKwogZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9mbGdfcmQuaCAgIHwgIDE2ICsKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2VfaW1lbS5jICAgICB8IDI1MCArKysrKwogZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9pbWVtLmggICAgIHwgMTA4ICsrKwogZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9tZXRhaW5pdC5jIHwgMTU1ICsrKysKIGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbWV0YWluaXQuaCB8ICA0NSArCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pY2UvaWNlX21rX2dycC5jICAgfCAgNTQgKysKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2ljZS9pY2VfbWtfZ3JwLmggICB8ICAxNCArCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9pY2UvaWNlX3BhcnNlci5jICAgfCA1NTkgKysrKysrKysrKysKIGRyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2ljZS9pY2VfcGFyc2VyLmggICB8IDExMiArKysKIC4uLi9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9wYXJzZXJfcnQuYyAgICB8IDg2NiArKysrKysrKysrKysrKysrKysKIC4u
-Li9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wYXJzZXJfcnQuaCAgICB8ICA0NyArCiAuLi4v
-bmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcGFyc2VyX3V0aWwuaCAgfCAgMzUgKwogZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wZ19jYW0uYyAgIHwgMzc2ICsrKysrKysrCiBk
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3BnX2NhbS5oICAgfCAgNzMgKysKIC4u
-Li9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wcm90b19ncnAuYyAgICB8IDEwNSArKysKIC4u
-Li9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wcm90b19ncnAuaCAgICB8ICAyMyArCiBkcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3B0eXBlX21rLmMgfCAgNzUgKysKIGRyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcHR5cGVfbWsuaCB8ICAyMCArCiBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3RtYXRjaC5oICAgfCAgNDMgKwogZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90eXBlLmggICAgIHwgICAxICsKIGRyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeGx0X2tiLmMgICB8IDIxOCArKysrKwogZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV94bHRfa2IuaCAgIHwgIDMzICsKIDI5IGZpbGVzIGNo
-YW5nZWQsIDM2NjUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2JzdF90Y2FtLmMKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2JzdF90Y2Ft
-LmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X2ZsZ19yZC5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aWNlL2ljZV9mbGdfcmQuaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfaW1lbS5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaWNlL2ljZV9pbWVtLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21ldGFpbml0LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21ldGFpbml0LmgKIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21rX2dycC5jCiBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9ta19ncnAu
-aAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vf
-cGFyc2VyLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-Y2UvaWNlX3BhcnNlci5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9wYXJzZXJfcnQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfcGFyc2VyX3J0LmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3BhcnNlcl91dGlsLmgKIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3BnX2NhbS5jCiBj
-cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wZ19j
-YW0uaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfcHJvdG9fZ3JwLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pY2UvaWNlX3Byb3RvX2dycC5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wdHlwZV9tay5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9wdHlwZV9tay5oCiBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV90bWF0Y2guaAogY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeGx0X2tiLmMK
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hs
-dF9rYi5oCgotLSAKMi4yNS4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
-c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
-LXdpcmVkLWxhbgo=
+Add new parser module which can parse a packet in binary
+and generate information like ptype, protocol/offset pairs
+and flags which can be used to feed the FXP profile creation
+directly.
+
+The patch added skeleton of the create and destroy APIs:
+ice_parser_create
+ice_parser_destroy
+
+Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.h |  1 +
+ drivers/net/ethernet/intel/ice/ice_ddp.c    | 10 +++---
+ drivers/net/ethernet/intel/ice/ice_ddp.h    | 13 ++++++++
+ drivers/net/ethernet/intel/ice/ice_parser.c | 34 +++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_parser.h | 13 ++++++++
+ 5 files changed, 66 insertions(+), 5 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_parser.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_parser.h
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 8ba5f935a092..4052227d5791 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -9,6 +9,7 @@
+ #include "ice_type.h"
+ #include "ice_nvm.h"
+ #include "ice_flex_pipe.h"
++#include "ice_parser.h"
+ #include <linux/avf/virtchnl.h>
+ #include "ice_switch.h"
+ #include "ice_fdir.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index d71ed210f9c4..3bdf03b9ee71 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -288,11 +288,11 @@ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+  * indicates a base offset of 10, and the index for the entry is 2, then
+  * section handler function should set the offset to 10 + 2 = 12.
+  */
+-static void *ice_pkg_enum_entry(struct ice_seg *ice_seg,
+-				struct ice_pkg_enum *state, u32 sect_type,
+-				u32 *offset,
+-				void *(*handler)(u32 sect_type, void *section,
+-						 u32 index, u32 *offset))
++void *ice_pkg_enum_entry(struct ice_seg *ice_seg,
++			 struct ice_pkg_enum *state, u32 sect_type,
++			 u32 *offset,
++			 void *(*handler)(u32 sect_type, void *section,
++					  u32 index, u32 *offset))
+ {
+ 	void *entry;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
+index 37eadb3d27a8..da5dfeed3b1f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
+@@ -238,10 +238,18 @@ struct ice_meta_sect {
+ #define ICE_SID_CDID_KEY_BUILDER_RSS 47
+ #define ICE_SID_CDID_REDIR_RSS 48
+ 
++#define ICE_SID_RXPARSER_CAM		50
++#define ICE_SID_RXPARSER_NOMATCH_CAM	51
++#define ICE_SID_RXPARSER_IMEM		52
+ #define ICE_SID_RXPARSER_MARKER_PTYPE 55
+ #define ICE_SID_RXPARSER_BOOST_TCAM 56
++#define ICE_SID_RXPARSER_PROTO_GRP	57
+ #define ICE_SID_RXPARSER_METADATA_INIT 58
++#define ICE_SID_TXPARSER_NOMATCH_CAM	61
+ #define ICE_SID_TXPARSER_BOOST_TCAM 66
++#define ICE_SID_RXPARSER_MARKER_GRP	72
++#define ICE_SID_RXPARSER_PG_SPILL	76
++#define ICE_SID_RXPARSER_NOMATCH_SPILL	78
+ 
+ #define ICE_SID_XLT0_PE 80
+ #define ICE_SID_XLT_KEY_BUILDER_PE 81
+@@ -437,6 +445,11 @@ int ice_update_pkg(struct ice_hw *hw, struct ice_buf *bufs, u32 count);
+ 
+ int ice_pkg_buf_reserve_section(struct ice_buf_build *bld, u16 count);
+ u16 ice_pkg_buf_get_active_sections(struct ice_buf_build *bld);
++void *
++ice_pkg_enum_entry(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
++		   u32 sect_type, u32 *offset,
++		   void *(*handler)(u32 sect_type, void *section,
++				    u32 index, u32 *offset));
+ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+ 			   u32 sect_type);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
+new file mode 100644
+index 000000000000..692ad26ec551
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+@@ -0,0 +1,34 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (C) 2018-2023 Intel Corporation */
++
++#include "ice_common.h"
++
++/**
++ * ice_parser_create - create a parser instance
++ * @hw: pointer to the hardware structure
++ * @psr: output parameter for a new parser instance be created
++ */
++int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
++{
++	struct ice_parser *p;
++
++	p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(struct ice_parser),
++			 GFP_KERNEL);
++	if (!p)
++		return -ENOMEM;
++
++	p->hw = hw;
++	p->rt.psr = p;
++
++	*psr = p;
++	return 0;
++}
++
++/**
++ * ice_parser_destroy - destroy a parser instance
++ * @psr: pointer to a parser instance
++ */
++void ice_parser_destroy(struct ice_parser *psr)
++{
++	devm_kfree(ice_hw_to_dev(psr->hw), psr);
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
+new file mode 100644
+index 000000000000..c6cd74c6e434
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+@@ -0,0 +1,13 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (C) 2018-2023 Intel Corporation */
++
++#ifndef _ICE_PARSER_H_
++#define _ICE_PARSER_H_
++
++struct ice_parser {
++	struct ice_hw *hw; /* pointer to the hardware structure */
++};
++
++int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
++void ice_parser_destroy(struct ice_parser *psr);
++#endif /* _ICE_PARSER_H_ */
+-- 
+2.25.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
