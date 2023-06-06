@@ -1,85 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C08A723F9B
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 12:34:14 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08E2072472F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 17:04:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF38C60E84;
-	Tue,  6 Jun 2023 10:34:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF38C60E84
+	by smtp4.osuosl.org (Postfix) with ESMTP id 89162418F3;
+	Tue,  6 Jun 2023 15:04:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 89162418F3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686047653;
-	bh=9C9GsOyMjuVMuqiqFYxoneHZkZnNk7rJlXtJrDTjU5I=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=rDYtPNBLUZp/M4vTNylg4hT1sthq0OgeMrxPBsoRTWdATw2hrW9fhm4k59Q4jBp3W
-	 zVWn2pxzPS8YOUdy3cuynDb6X9V1Cqo0kbljdIsKEFOsTBYGVAoenPn9ykqTrtYYbj
-	 CEgIVAXEruylNyIjzQGWlMKAOKpCVJiBS/eRGKN5aZ4ZRdSz4E+yB6w0ExjAwvAaWs
-	 j14PW3a8ddLwKFuxHx8vj0nnak3B8+eChB1LFlLc+WSdOD0aQSVN7SC1sj1Sfydhfx
-	 sRDZrtHU1CFPeC1QgC5I/zaZTygTHud5tjZtiFmmPuXCGrpsZHp3rESWz5aBsJEb5E
-	 CbWk+4eynJ1gw==
+	s=default; t=1686063846;
+	bh=RIGLId2D8/NuBn4/YTghGFk+A0r28cLYY/6Qj9X2ke4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=nckbgmLdEFSHwQaw4HaBlKKXydilDIk0sB1q/IrETb9Z3m53YxUi6s2s5teX9FpcV
+	 1wYAo/yKx38hyLXoD6o+B8+GK6xTHOonYXiZqMt1zc6wgf/xoriUltanx265o+MPeR
+	 8zEUIZISOJtWgjyEOpkfpkKU8NeFd4Ij1XsYqloDgMiv8rL54mBN7CJ+G1OWRvAg6P
+	 1tnkJF72lC09ElOIt5uqOacn0ToJFNKk81pbT9+ov3hN5uUv4UOnurPof4ybbOxLQH
+	 vKvbrHALHKwt2/qel3MOnLGubSH938M1fJAmbsM2YOZpinGoCyII2EYEoY/4S5rvvg
+	 1mobFIJXem7dA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gUO8Nxu9mKMD; Tue,  6 Jun 2023 10:34:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Rk1zphdaNZnm; Tue,  6 Jun 2023 15:04:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F0D6C605AE;
-	Tue,  6 Jun 2023 10:34:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F0D6C605AE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4DB5E4034D;
+	Tue,  6 Jun 2023 15:04:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DB5E4034D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1EA901BF31E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:34:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 19F641BF5A3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:54:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E4B16408FB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:34:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4B16408FB
+ by smtp1.osuosl.org (Postfix) with ESMTP id E51BF81E4B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:54:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E51BF81E4B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yM_Nt85ZdMp9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jun 2023 10:34:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lWuVrzvmogju for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jun 2023 10:54:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D44A4064A
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3D44A4064A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:34:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="359084611"
-X-IronPort-AV: E=Sophos;i="6.00,221,1681196400"; d="scan'208";a="359084611"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2023 03:34:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10732"; a="712163423"
-X-IronPort-AV: E=Sophos;i="6.00,221,1681196400"; d="scan'208";a="712163423"
-Received: from gklab-018-208.igk.intel.com ([10.102.18.208])
- by fmsmga007.fm.intel.com with ESMTP; 06 Jun 2023 03:34:04 -0700
-From: Kamil Maziarz <kamil.maziarz@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  6 Jun 2023 12:33:58 +0200
-Message-Id: <20230606103358.10632-1-kamil.maziarz@intel.com>
-X-Mailer: git-send-email 2.31.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C27281E3D
+Received: from esa.microchip.iphmx.com (esa.microchip.iphmx.com
+ [68.232.153.233])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4C27281E3D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:54:21 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.00,221,1681196400"; d="scan'208";a="228631386"
+X-Amp-Result: SKIPPED(no attachment in message)
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 06 Jun 2023 03:54:19 -0700
+Received: from chn-vm-ex02.mchp-main.com (10.10.87.72) by
+ chn-vm-ex02.mchp-main.com (10.10.87.72) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Tue, 6 Jun 2023 03:54:19 -0700
+Received: from DEN-LT-70577 (10.10.115.15) by chn-vm-ex02.mchp-main.com
+ (10.10.85.144) with Microsoft SMTP Server id 15.1.2507.21 via Frontend
+ Transport; Tue, 6 Jun 2023 03:54:18 -0700
+Date: Tue, 6 Jun 2023 10:54:18 +0000
+From: Daniel Machon <daniel.machon@microchip.com>
+To: Dave Ertman <david.m.ertman@intel.com>
+Message-ID: <20230606105418.m2sqt4gol6sg77oj@DEN-LT-70577>
+References: <20230605182258.557933-1-david.m.ertman@intel.com>
+ <20230605182258.557933-6-david.m.ertman@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230605182258.557933-6-david.m.ertman@intel.com>
+X-Mailman-Approved-At: Tue, 06 Jun 2023 15:03:41 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686047646; x=1717583646;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=3M8mG5A5gMd7W3gSWn2OtmnReUTy85Ii9+H+K9MEyvY=;
- b=BpVWRkoUX2ewNcjKMOj+f087xj9UGZbaVSG9AFy1ikAdcjryu7MS+qtN
- cg7nyQy2NjVQWo8CVYrpjYNaRyRk0ITl7owectCxXD7enCQku7ilCS4yR
- vvcVz88K3HRXSAK569eEQ/L2g54P4DSauIttkK6mrcFgY1jn9D2WDULlD
- ySukZTgNfI8NHk0H0FmS4092Gw0/54EMi2EDZljGuqRI88NdboLOL0308
- QdybDBzftJM/GmBPzQKp/Q1sMIAQBrl9yC6wUy+ZD6e5wFSamGin8nBjR
- h77Pgfhn7f8sBbxQi3E+NDQlFJa2KL2ZQpBZ7RmtHHErB4LBDcQScg6sb
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1686048861; x=1717584861;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=2mgkjY4JRZMn/4ypVV5YelTdREnMl+I1l887OEPTrBQ=;
+ b=dYP3QgQgYlunjYccOiQpLlTMe8JYpWDD9Ot03Og2fzHcxAeru9+8U7aH
+ XAGYXcNE/dhkGQ46LDaYqIoNICwv2mlrb5n9GF9qNS3YQxnMFaUHvF9Gg
+ pkEtHhLYNHbxeNquYc2SmUsxHAuZMw6gmiA6BlicR23yPoo7u1k5BoVKY
+ 3x+ygUUE5Dv8NMsTZ6NuMEN47/B2M9sJ5vjimnIwOIzynrfmEeJ8Fyzwc
+ m0CCMgp8sbkUltKEfeCFgxFaG5NUpLNjeyv3b1r2vKO21IbX/x+HVaZPv
+ ekYpKRXrTrZuVKo2FntsHSoXhZo/9Xv7sDTWp/lngkKgytb62pQLLO1f8
  w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BpVWRkoU
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: Fix XDP memory leak when
- NIC is brought up and down
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=microchip.com header.i=@microchip.com
+ header.a=rsa-sha256 header.s=mchp header.b=dYP3QgQg
+Subject: Re: [Intel-wired-lan] [PATCH net v2 05/10] ice: process events
+ created by lag netdev event handler
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,42 +100,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kamil Maziarz <kamil.maziarz@intel.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix the buffer leak that occurs while switching
-the port up and down with traffic and XDP by
-checking for an active XDP program and freeing all empty TX buffers.
+> +/**
+> + * ice_lag_add_prune_list - Add 's event_pf's VSI to primary's prune list
 
-Fixes: efc2214b6047 ("ice: Add support for XDP")
-Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
----
-v2: new Fixes tag
----
- drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Adds?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a1f7c8edc22f..03513d4871ab 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -7056,6 +7056,10 @@ int ice_down(struct ice_vsi *vsi)
- 	ice_for_each_txq(vsi, i)
- 		ice_clean_tx_ring(vsi->tx_rings[i]);
- 
-+	if (ice_is_xdp_ena_vsi(vsi))
-+		ice_for_each_xdp_txq(vsi, i)
-+			ice_clean_tx_ring(vsi->xdp_rings[i]);
-+
- 	ice_for_each_rxq(vsi, i)
- 		ice_clean_rx_ring(vsi->rx_rings[i]);
- 
--- 
-2.31.1
+Other than that:
 
+Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
+
+> + * @lag: lag info struct
+> + * @event_pf: PF struct for VSI we are adding to primary's prune list
+> + */
+> +static void ice_lag_add_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
+> +{
+> +} 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
