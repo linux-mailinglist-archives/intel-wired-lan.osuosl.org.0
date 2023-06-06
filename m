@@ -1,93 +1,115 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2F7672472D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 17:04:03 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F19E723F64
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 12:27:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3DC5741916;
-	Tue,  6 Jun 2023 15:04:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3DC5741916
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7CF0060E84;
+	Tue,  6 Jun 2023 10:27:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7CF0060E84
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686063842;
-	bh=TDYXNX3khqwOLLfBZQrfdx7fohWbHbNlKzUlrzhRfow=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1686047245;
+	bh=Eu+iFSzp8pwlNxWxvQrbdCuYoFyFz5a0s7xDDoR0YDQ=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=wEy24MPxazY85voBoo7N3lR/gy2aUkvQA2eFLc9fT+LSmjqkaDQtPDK72wbPtsBED
-	 vmyLwl1obXfYby/2b16MGYlGKiHEyB8rRtv4nIw79tEAckXTvWYZ0DsxjPKP8S4rxF
-	 PzE3oCrU9hCgaPw5f8Y9cEAO6l0X8j4+sGGdguR9vJHoILvi7pf1XvuWSiBJMdpQFX
-	 zwIi5RtkHZYYNJ/J4luzSykj0NYge8XvZkSjmbrkVoY1I5UJL65+exNtVXm7qlgAuw
-	 sJERouVsyxGPX2u6slcmx/1YNMpSKOAH7ea5o1H+hrURYRDRWaKi8Lyky62tyTdJRp
-	 9sbqn+CP45XgQ==
+	b=pN3AO9CDDxZpmM5hI3+HuoKrT+IikTueafxpQo3Ko8AhI0NFv/Tp+TaSsyCvdsB5T
+	 LzX8Njz25MfwWeZaF0bJeEovj7mbyOW3g5kken2M3sTUjWc6V0zT8fiNDXbKVi2BL4
+	 3KW3xlY/KPrerlaZzqG+iLvEEYgCUfbLYsi5QpHRsNUeoBr7729F8jvrx1VXBrQrf4
+	 tetNslvPCu0geSWeNBqHSmHlhgabZ9APvaa2NJtS75Fdr6MQL5IC1z9KcUBedKqzQG
+	 5Ut25m/T58l/Bfjb5A1z2fl3f0Sz06KTqTHq0SvRbFvyTYKB7duCY8juGmZbVTf7V5
+	 uLmzdvANUHkeg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OhFwKiEVtXQr; Tue,  6 Jun 2023 15:04:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id l8thF8zIolft; Tue,  6 Jun 2023 10:27:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8E2644034D;
-	Tue,  6 Jun 2023 15:04:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8E2644034D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 24A5160A9F;
+	Tue,  6 Jun 2023 10:27:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 24A5160A9F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0CD961BF33B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 09:56:55 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F5ED1BF31E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:27:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D365D4013D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 09:56:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D365D4013D
+ by smtp4.osuosl.org (Postfix) with ESMTP id D85A64168D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:27:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D85A64168D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HNorEMvGgt0O for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jun 2023 09:56:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id M9HPyS8_96fQ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jun 2023 10:27:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C6A74011B
-Received: from esa.microchip.iphmx.com (esa.microchip.iphmx.com
- [68.232.154.123])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6C6A74011B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 09:56:53 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="6.00,219,1681196400"; d="scan'208";a="219047637"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
- by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 06 Jun 2023 02:56:51 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 6 Jun 2023 02:56:50 -0700
-Received: from DEN-LT-70577 (10.10.115.15) by chn-vm-ex03.mchp-main.com
- (10.10.85.151) with Microsoft SMTP Server id 15.1.2507.21 via Frontend
- Transport; Tue, 6 Jun 2023 02:56:49 -0700
-Date: Tue, 6 Jun 2023 09:56:48 +0000
-From: Daniel Machon <daniel.machon@microchip.com>
-To: Dave Ertman <david.m.ertman@intel.com>
-Message-ID: <20230606095648.xy5d7mdzqyhqwqdg@DEN-LT-70577>
-References: <20230605182258.557933-1-david.m.ertman@intel.com>
- <20230605182258.557933-5-david.m.ertman@intel.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 97E2F4161B
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 97E2F4161B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 10:27:17 +0000 (UTC)
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-298-8IcwzCspOFWm22drDj4vKw-1; Tue, 06 Jun 2023 06:27:15 -0400
+X-MC-Unique: 8IcwzCspOFWm22drDj4vKw-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-75b147a2548so118788685a.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Jun 2023 03:27:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686047234; x=1688639234;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yJVswKQZ4ZBsOXRb2fcji4jRQbDRIYhvTVo8Uo+LZ/k=;
+ b=CPiIhCo8FqUpjkqa5Bk9shW+E9x//r4cJeQAvk0Tzptgr+qMvSclZUysbD4f/+ee0/
+ 2Bkg7vdeNBGnxFpe9vBPE+Uo1dwQqo/MR74jZmcezUhsVucvAXM29kn/ETxUzz+1Up7s
+ CLB/4soxh86wcCoeBelqanI0bNgIhCGrm8d26jqjn7WfTh9ZyhnJVSgLiXS6UXmx8d4a
+ ddN+h5I+hhrmc5nypIJdQ52zMpK1tH0zO+S65YE+vpFcvdUFU2iZ/AWw21psRW9Bc9YP
+ jlH472rM8RGlk2WXDXndicphIAxxM4mWvlR2rVl2+LsuuRQk/HcLg2gg7b/quWpb449B
+ 5afw==
+X-Gm-Message-State: AC+VfDwttMbjSWyhyOucxRgsb9K1rP1fgQlzOVzwS7VNs63ZJlbz5ilM
+ y37+bFjQF1UcXRbUeBBvRJwLM0+/yQurjHi84sVEqO38GMAyCOFlKQx+bS5DbUnLnZ+mC3D12ep
+ z211GBMfjfkiA6pFlgqhVttOosjAXvg==
+X-Received: by 2002:a05:620a:480e:b0:75e:b9ab:2690 with SMTP id
+ eb14-20020a05620a480e00b0075eb9ab2690mr1406139qkb.6.1686047234473; 
+ Tue, 06 Jun 2023 03:27:14 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5OSiucGERn1Apv2naVnzdBF0n9nP1P0fLHpwJatKTXLloqbnBmljCcAsUu1droayCJqVXfwg==
+X-Received: by 2002:a05:620a:480e:b0:75e:b9ab:2690 with SMTP id
+ eb14-20020a05620a480e00b0075eb9ab2690mr1406116qkb.6.1686047234158; 
+ Tue, 06 Jun 2023 03:27:14 -0700 (PDT)
+Received: from gerbillo.redhat.com (146-241-114-89.dyn.eolo.it.
+ [146.241.114.89]) by smtp.gmail.com with ESMTPSA id
+ n13-20020ae9c30d000000b0075c97468f57sm4803347qkg.82.2023.06.06.03.27.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Jun 2023 03:27:13 -0700 (PDT)
+Message-ID: <6bce1c55e1cd4295a3f36cb4b37398d951ead07b.camel@redhat.com>
+From: Paolo Abeni <pabeni@redhat.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+Date: Tue, 06 Jun 2023 12:27:09 +0200
+In-Reply-To: <20230602103750.2290132-3-vladimir.oltean@nxp.com>
+References: <20230602103750.2290132-1-vladimir.oltean@nxp.com>
+ <20230602103750.2290132-3-vladimir.oltean@nxp.com>
+User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230605182258.557933-5-david.m.ertman@intel.com>
-X-Mailman-Approved-At: Tue, 06 Jun 2023 15:03:41 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1686045413; x=1717581413;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=xEynJz9AB3jf5azRasYeZne2KYih1icg4WDIz7g/rHk=;
- b=rs28pTC4l85GYQ12lrVA04Mmg70XhpThXztI7zQDVGOfCnWKgwpyuxEF
- FJ1ugWn7LZ2sZ1cgm/K1MUei31yeTEXqtZIMdj6phkxDRLYrYaZyVxBg9
- WO6cLunCJk5DXsNryEpfStUYs3STsviXk2L1+s+rmrntsIkeIeWrp2nGO
- pMFhGz7BaGx6UvPCGDeXsizd0dJ2jJZclPdeU2vGmkASkl/Qy6NTTj5/m
- xOhPJfqxAq6lAF96cOndk5K0ntw25n4aF+TXl9Zb6r8fXrrdkRLQbWRNA
- EZO+rG/xzDKhQAXvL+5wG8Dxs07tHeNy/PVYOjGMSNLNiw/K6JzaTyfvk
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=microchip.com header.i=@microchip.com
- header.a=rsa-sha256 header.s=mchp header.b=rs28pTC4
-Subject: Re: [Intel-wired-lan] [PATCH net v2 04/10] ice: implement lag
- netdev event handler
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1686047236;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oYczoWZT0Yx85r0oal+sD+GYfzQNSm/yq26gHMgACGA=;
+ b=XH0bNCo1grwQOEngA8ZfNNAM/WzqLI95hwZd83RNsWMKyHVoY0Vqwoi7dr16DFH4cRcqhQ
+ 09wouAAH+DR3/yJx7SmWpWJI+hgYA92yVaa6bn1yTVdXuj2U/pxzerOGardWOg2TeSTY5Y
+ XGt2D3sCiYYFyfUeMyHnxyl9cY4MGVk=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=XH0bNCo1
+Subject: Re: [Intel-wired-lan] [PATCH RESEND net-next 2/5] net/sched:
+ taprio: keep child Qdisc refcount elevated at 2 in offload mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,295 +122,137 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
+ Jamal Hadi Salim <jhs@mojatatu.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Cong Wang <xiyou.wangcong@gmail.com>, Peilin Ye <yepeilin.cs@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> The event handler for LAG will create a work item to place on the ordered
-> workqueue to be processed.
+On Fri, 2023-06-02 at 13:37 +0300, Vladimir Oltean wrote:
+> The taprio qdisc currently lives in the following equilibrium.
 > 
-> Add in defines for training packets and new recipes to be used by the
-> switching block of the HW for LAG packet steering.
+> In the software scheduling case, taprio attaches itself to all TXQs,
+> thus having a refcount of 1 + the number of TX queues. In this mode,
+> q->qdiscs[] is not visible directly to the Qdisc API. The lifetime of
+> the Qdiscs from this private array lasts until qdisc_destroy() ->
+> taprio_destroy().
 > 
-> Update the ice_lag struct to reflect the new processing methodology.
+> In the fully offloaded case, the root taprio has a refcount of 1, and
+> all child q->qdiscs[] also have a refcount of 1. The child q->qdiscs[]
+> are visible to the Qdisc API (they are attached to the netdev TXQs
+> directly), however taprio loses a reference to them very early - during
+> qdisc_graft(parent==NULL) -> taprio_attach(). At that time, taprio frees
+> the q->qdiscs[] array to not leak memory, but interestingly, it does not
+> release a reference on these qdiscs because it doesn't effectively own
+> them - they are created by taprio but owned by the Qdisc core, and will
+> be freed by qdisc_graft(parent==NULL, new==NULL) -> qdisc_put(old) when
+> the Qdisc is deleted or when the child Qdisc is replaced with something
+> else.
 > 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> My interest is to change this equilibrium such that taprio also owns a
+> reference on the q->qdiscs[] child Qdiscs for the lifetime of the root
+> Qdisc, including in full offload mode. I want this because I would like
+> taprio_leaf(), taprio_dump_class(), taprio_dump_class_stats() to have
+> insight into q->qdiscs[] for the software scheduling mode - currently
+> they look at dev_queue->qdisc_sleeping, which is, as mentioned, the same
+> as the root taprio.
+> 
+> The following set of changes is necessary:
+> - don't free q->qdiscs[] early in taprio_attach(), free it late in
+>   taprio_destroy() for consistency with software mode. But:
+> - currently that's not possible, because taprio doesn't own a reference
+>   on q->qdiscs[]. So hold that reference - once during the initial
+>   attach() and once during subsequent graft() calls when the child is
+>   changed.
+> - always keep track of the current child in q->qdiscs[], even for full
+>   offload mode, so that we free in taprio_destroy() what we should, and
+>   not something stale.
+> 
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_lag.c      | 125 ++++++++++++++++--
->  drivers/net/ethernet/intel/ice/ice_lag.h      |  31 ++++-
->  drivers/net/ethernet/intel/ice/ice_virtchnl.c |   2 +
->  3 files changed, 144 insertions(+), 14 deletions(-)
+>  net/sched/sch_taprio.c | 28 +++++++++++++++++-----------
+>  1 file changed, 17 insertions(+), 11 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-> index 73bfc5cd8b37..529abfb904d0 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lag.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-> @@ -56,11 +56,10 @@ static void ice_lag_set_backup(struct ice_lag *lag)
->   */
->  static void ice_display_lag_info(struct ice_lag *lag)
->  {
-> -       const char *name, *peer, *upper, *role, *bonded, *primary;
-> +       const char *name, *upper, *role, *bonded, *primary;
->         struct device *dev = &lag->pf->pdev->dev;
-> 
->         name = lag->netdev ? netdev_name(lag->netdev) : "unset";
-> -       peer = lag->peer_netdev ? netdev_name(lag->peer_netdev) : "unset";
->         upper = lag->upper_netdev ? netdev_name(lag->upper_netdev) : "unset";
->         primary = lag->primary ? "TRUE" : "FALSE";
->         bonded = lag->bonded ? "BONDED" : "UNBONDED";
-> @@ -82,8 +81,8 @@ static void ice_display_lag_info(struct ice_lag *lag)
->                 role = "ERROR";
->         }
-> 
-> -       dev_dbg(dev, "%s %s, peer:%s, upper:%s, role:%s, primary:%s\n", name,
-> -               bonded, peer, upper, role, primary);
-> +       dev_dbg(dev, "%s %s, upper:%s, role:%s, primary:%s\n", name, bonded,
-> +               upper, role, primary);
+> diff --git a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c
+> index b1c611c72aa4..8807fc915b79 100644
+> --- a/net/sched/sch_taprio.c
+> +++ b/net/sched/sch_taprio.c
+> @@ -2138,23 +2138,20 @@ static void taprio_attach(struct Qdisc *sch)
+>  
+>  			qdisc->flags |= TCQ_F_ONETXQUEUE | TCQ_F_NOPARENT;
+>  			old = dev_graft_qdisc(dev_queue, qdisc);
+> +			/* Keep refcount of q->qdiscs[ntx] at 2 */
+> +			qdisc_refcount_inc(qdisc);
+>  		} else {
+>  			/* In software mode, attach the root taprio qdisc
+>  			 * to all netdev TX queues, so that dev_qdisc_enqueue()
+>  			 * goes through taprio_enqueue().
+>  			 */
+>  			old = dev_graft_qdisc(dev_queue, sch);
+> +			/* Keep root refcount at 1 + num_tx_queues */
+>  			qdisc_refcount_inc(sch);
+>  		}
+>  		if (old)
+>  			qdisc_put(old);
+>  	}
+> -
+> -	/* access to the child qdiscs is not needed in offload mode */
+> -	if (FULL_OFFLOAD_IS_ENABLED(q->flags)) {
+> -		kfree(q->qdiscs);
+> -		q->qdiscs = NULL;
+> -	}
 >  }
-> 
->  /**
-> @@ -198,7 +197,6 @@ ice_lag_unlink(struct ice_lag *lag,
->                 lag->upper_netdev = NULL;
->         }
-> 
-> -       lag->peer_netdev = NULL;
->         ice_set_rdma_cap(pf);
->         lag->bonded = false;
->         lag->role = ICE_LAG_NONE;
-> @@ -288,6 +286,60 @@ static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
->         ice_display_lag_info(lag);
->  }
-> 
-> +/**
-> + * ice_lag_process_event - process a task assigned to the lag_wq
-> + * @work: pointer to work_struct
-> + */
-> +static void ice_lag_process_event(struct work_struct *work)
-> +{
-> +       struct netdev_notifier_changeupper_info *info;
-> +       struct ice_lag_work *lag_work;
-> +       struct net_device *netdev;
-> +       struct list_head *tmp, *n;
-> +       struct ice_pf *pf;
-> +
-> +       lag_work = container_of(work, struct ice_lag_work, lag_task);
-> +       pf = lag_work->lag->pf;
-> +
-> +       mutex_lock(&pf->lag_mutex);
-> +       lag_work->lag->netdev_head = &lag_work->netdev_list.node;
-> +
-> +       switch (lag_work->event) {
-> +       case NETDEV_CHANGEUPPER:
-> +               info = &lag_work->info.changeupper_info;
-> +               if (ice_is_feature_supported(pf, ICE_F_SRIOV_LAG))
-> +                       ice_lag_changeupper_event(lag_work->lag, info);
-> +               break;
-> +       case NETDEV_BONDING_INFO:
-> +               ice_lag_info_event(lag_work->lag, &lag_work->info.bonding_info);
-> +               break;
-> +       case NETDEV_UNREGISTER:
-> +               if (ice_is_feature_supported(pf, ICE_F_SRIOV_LAG)) {
-> +                       netdev = lag_work->info.bonding_info.info.dev;
-> +                       if ((netdev == lag_work->lag->netdev ||
-> +                            lag_work->lag->primary) && lag_work->lag->bonded)
-> +                               ice_lag_unregister(lag_work->lag, netdev);
-> +               }
-> +               break;
-> +       default:
-> +               break;
-> +       }
-> +
-> +       /* cleanup resources allocated for this work item */
-> +       list_for_each_safe(tmp, n, &lag_work->netdev_list.node) {
-> +               struct ice_lag_netdev_list *entry;
-> +
-> +               entry = list_entry(tmp, struct ice_lag_netdev_list, node);
-> +               list_del(&entry->node);
-> +               kfree(entry);
-> +       }
-> +       lag_work->lag->netdev_head = NULL;
-> +
-> +       mutex_unlock(&pf->lag_mutex);
-> +
-> +       kfree(work);
-> +}
-> +
->  /**
->   * ice_lag_event_handler - handle LAG events from netdev
->   * @notif_blk: notifier block registered by this netdev
-> @@ -299,31 +351,79 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
->                       void *ptr)
->  {
->         struct net_device *netdev = netdev_notifier_info_to_dev(ptr);
-> +       struct net_device *upper_netdev;
-> +       struct ice_lag_work *lag_work;
->         struct ice_lag *lag;
-> 
-> -       lag = container_of(notif_blk, struct ice_lag, notif_block);
-> +       if (!netif_is_ice(netdev))
-> +               return NOTIFY_DONE;
-> +
-> +       if (event != NETDEV_CHANGEUPPER && event != NETDEV_BONDING_INFO &&
-> +           event != NETDEV_UNREGISTER)
-> +               return NOTIFY_DONE;
-> 
-> +       if (!(netdev->priv_flags & IFF_BONDING))
-> +               return NOTIFY_DONE;
-> +
-> +       lag = container_of(notif_blk, struct ice_lag, notif_block);
->         if (!lag->netdev)
->                 return NOTIFY_DONE;
-> 
-> -       /* Check that the netdev is in the working namespace */
->         if (!net_eq(dev_net(netdev), &init_net))
->                 return NOTIFY_DONE;
-> 
-> +       /* This memory will be freed at the end of ice_lag_process_event */
-> +       lag_work = kzalloc(sizeof(*lag_work), GFP_KERNEL);
-> +       if (!lag_work)
-> +               return -ENOMEM;
-> +
-> +       lag_work->event_netdev = netdev;
-> +       lag_work->lag = lag;
-> +       lag_work->event = event;
-> +       if (event == NETDEV_CHANGEUPPER) {
-> +               struct netdev_notifier_changeupper_info *info;
-> +
-> +               info = ptr;
-> +               upper_netdev = info->upper_dev;
-> +       } else {
-> +               upper_netdev = netdev_master_upper_dev_get(netdev);
-> +       }
-> +
-> +       INIT_LIST_HEAD(&lag_work->netdev_list.node);
-> +       if (upper_netdev) {
-> +               struct ice_lag_netdev_list *nd_list;
-> +               struct net_device *tmp_nd;
-> +
-> +               rcu_read_lock();
-> +               for_each_netdev_in_bond_rcu(upper_netdev, tmp_nd) {
-> +                       nd_list = kzalloc(sizeof(*nd_list), GFP_KERNEL);
-> +                       if (!nd_list)
-> +                               break;
+>  
+>  static struct netdev_queue *taprio_queue_get(struct Qdisc *sch,
+> @@ -2183,15 +2180,24 @@ static int taprio_graft(struct Qdisc *sch, unsigned long cl,
+>  	if (dev->flags & IFF_UP)
+>  		dev_deactivate(dev);
+>  
+> -	if (FULL_OFFLOAD_IS_ENABLED(q->flags)) {
+> +	/* In software mode, the root taprio qdisc is still the one attached to
+> +	 * all netdev TX queues, and hence responsible for taprio_enqueue() to
+> +	 * forward the skbs to the child qdiscs from the private q->qdiscs[]
+> +	 * array. So only attach the new qdisc to the netdev queue in offload
+> +	 * mode, where the enqueue must bypass taprio. However, save the
+> +	 * reference to the new qdisc in the private array in both cases, to
+> +	 * have an up-to-date reference to our children.
+> +	 */
+> +	if (FULL_OFFLOAD_IS_ENABLED(q->flags))
+>  		*old = dev_graft_qdisc(dev_queue, new);
+> -	} else {
+> +	else
+>  		*old = q->qdiscs[cl - 1];
+> -		q->qdiscs[cl - 1] = new;
+> -	}
+>  
+> -	if (new)
+> +	q->qdiscs[cl - 1] = new;
+> +	if (new) {
+> +		qdisc_refcount_inc(new);
+>  		new->flags |= TCQ_F_ONETXQUEUE | TCQ_F_NOPARENT;
+> +	}
+>  
+Isn't the above leaking a reference to old with something alike:
 
-Further up, -ENOMEM is returned in case kzalloc fails. Here the error is
-silently ignored - is this correct? :)
+tc qdisc replace dev eth0 handle 8001: parent root stab overhead 24 taprio flags 0x2 #...
+	# each q in q->qdiscs has refcnt == 2
+tc qdisc replace dev eth0 parent 8001:8 cbs #...
+	# -> taprio_graft(..., cbs, ...)
+	# cbs refcnt is 2
+	# 'old' refcnt decreases by 1, refcount will not reach 0?!?
 
-> +
-> +                       nd_list->netdev = tmp_nd;
-> +                       list_add(&nd_list->node, &lag_work->netdev_list.node);
-> +               }
-> +               rcu_read_unlock();
-> +       }
-> +
->         switch (event) {
->         case NETDEV_CHANGEUPPER:
-> -               ice_lag_changeupper_event(lag, ptr);
-> +               lag_work->info.changeupper_info =
-> +                       *((struct netdev_notifier_changeupper_info *)ptr);
->                 break;
->         case NETDEV_BONDING_INFO:
-> -               ice_lag_info_event(lag, ptr);
-> -               break;
-> -       case NETDEV_UNREGISTER:
-> -               ice_lag_unregister(lag, netdev);
-> +               lag_work->info.bonding_info =
-> +                       *((struct netdev_notifier_bonding_info *)ptr);
->                 break;
->         default:
-> +               lag_work->info.notifier_info =
-> +                       *((struct netdev_notifier_info *)ptr);
->                 break;
->         }
-> 
-> +       INIT_WORK(&lag_work->lag_task, ice_lag_process_event);
-> +       queue_work(ice_lag_wq, &lag_work->lag_task);
-> +
->         return NOTIFY_DONE;
->  }
-> 
-> @@ -398,7 +498,6 @@ int ice_init_lag(struct ice_pf *pf)
->         lag->netdev = vsi->netdev;
->         lag->role = ICE_LAG_NONE;
->         lag->bonded = false;
-> -       lag->peer_netdev = NULL;
->         lag->upper_netdev = NULL;
->         lag->notif_block.notifier_call = NULL;
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
-> index 2c373676c42f..df4af5184a75 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lag.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_lag.h
-> @@ -14,20 +14,49 @@ enum ice_lag_role {
->         ICE_LAG_UNSET
->  };
-> 
-> +#define ICE_LAG_INVALID_PORT 0xFF
-> +
->  struct ice_pf;
-> +struct ice_vf;
-> +
-> +struct ice_lag_netdev_list {
-> +       struct list_head node;
-> +       struct net_device *netdev;
-> +};
-> 
->  /* LAG info struct */
->  struct ice_lag {
->         struct ice_pf *pf; /* backlink to PF struct */
->         struct net_device *netdev; /* this PF's netdev */
-> -       struct net_device *peer_netdev;
->         struct net_device *upper_netdev; /* upper bonding netdev */
-> +       struct list_head *netdev_head;
->         struct notifier_block notif_block;
-> +       s32 bond_mode;
-> +       u16 bond_swid; /* swid for primary interface */
-> +       u8 active_port; /* lport value for the current active port */
->         u8 bonded:1; /* currently bonded */
->         u8 primary:1; /* this is primary */
-> +       u16 pf_recipe;
-> +       u16 pf_rule_id;
-> +       u16 cp_rule_idx;
->         u8 role;
->  };
-> 
-> +/* LAG workqueue struct */
-> +struct ice_lag_work {
-> +       struct work_struct lag_task;
-> +       struct ice_lag_netdev_list netdev_list;
-> +       struct ice_lag *lag;
-> +       unsigned long event;
-> +       struct net_device *event_netdev;
-> +       union {
-> +               struct netdev_notifier_changeupper_info changeupper_info;
-> +               struct netdev_notifier_bonding_info bonding_info;
-> +               struct netdev_notifier_info notifier_info;
-> +       } info;
-> +};
-> +
-> +void ice_lag_move_new_vf_nodes(struct ice_vf *vf);
->  int ice_init_lag(struct ice_pf *pf);
->  void ice_deinit_lag(struct ice_pf *pf);
->  #endif /* _ICE_LAG_H_ */
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> index efbc2968a7bf..625da88e7965 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> @@ -1724,6 +1724,8 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
->                                 vf->vf_id, i);
->         }
-> 
-> +       ice_lag_move_new_vf_nodes(vf);
-> +
->         /* send the response to the VF */
->         return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
->                                      VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
-> --
-> 2.40.1
-> 
-> 
+kmemleak should be able to see that.
+
+BTW, what about including your tests from the cover letter somewhere under tc-testing?
+
+Thanks!
+
+Paolo
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
