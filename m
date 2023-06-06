@@ -1,191 +1,148 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94F58724819
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 17:44:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B53E724856
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Jun 2023 17:56:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 32C2061245;
-	Tue,  6 Jun 2023 15:44:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 32C2061245
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2C97661293;
+	Tue,  6 Jun 2023 15:56:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2C97661293
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686066298;
-	bh=ZK9uGZp+CHgU1KHz4+QJujxTIeYcU+4pC20lthL0X3Y=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1686066983;
+	bh=Ec19nGbkYD+KxLMTBDr1key1FX9u+BFRjiGQj+jnhQw=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=JHhY3FKpMV97tZ/HxmjPGZ3zcTvt8KfIqwFLUnZLgBYNa+k69rSujMwoCMc7OY3MV
-	 MvR6YiwPW8KhDxEh6m3OMMgp/1IBVSY0Ry1+X98rYA1bSDJESiFBfj7zNAdGCLX7Hu
-	 PedOaHu0C1mc7SlugjgV7rwKnIPWclYgluHBuBJyieSFta3bXMDrQr76uyLfaLNa7W
-	 ugRJ15W+dxyXdVHxnmFhT8nazUxHfQCW7OaU5mn4Zehf7woOFhSolqRzYdjyYUrNcu
-	 dGb6ZCH+Zo2t9vJVUCDR4Fj13fsLdtbREgE3k/nj7kfWW4Cxzd6w1GO+lezIcacENn
-	 xBl3PJixHVnbw==
+	b=ReX7n4ZVJS64mrUjm6gY2rc4t6erzXLcKJLQsWhiwqrbfmfPy9HCx3azZvihLgN2Q
+	 gkNaBrmtCosBiJB2JOFu79Icjx7fqzbOydGF96DooPfjrivic9myjXkV46yiaSsFGW
+	 Oc8N8Kb1jauABgvTXU5E4WpOUPAexWyv2lh/V1h+OKj8D11ROkGr0azMIbpu+Jh1JT
+	 lKj/FWEyAoUKSSx7lr2WrxwYyfPzgiZbmJRgma74wc9gbJ6iYk6aoL3ieF/PyVe/I8
+	 dNt3hQOeM61flfF6vimvNQS2fEXDnNg0SnwW+AobX1//em0k7OSUEiD28SBhkfnMw0
+	 aZlF0hIu5jayg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mVTp13EsI9cp; Tue,  6 Jun 2023 15:44:57 +0000 (UTC)
+	with ESMTP id m7_ejDdUhWHr; Tue,  6 Jun 2023 15:56:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0986360F18;
-	Tue,  6 Jun 2023 15:44:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0986360F18
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95C7B6128A;
+	Tue,  6 Jun 2023 15:56:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 95C7B6128A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6D6711BF36B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:44:51 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C190D1BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:56:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 40C9961244
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:44:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40C9961244
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9184F418E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:56:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9184F418E3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ziLkxCQUdsdj for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jun 2023 15:44:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AAB8C60F18
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AAB8C60F18
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:44:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="420259631"
-X-IronPort-AV: E=Sophos;i="6.00,221,1681196400"; d="scan'208";a="420259631"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2023 08:44:48 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="955817411"
-X-IronPort-AV: E=Sophos;i="6.00,221,1681196400"; d="scan'208";a="955817411"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga006.fm.intel.com with ESMTP; 06 Jun 2023 08:44:48 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 6 Jun 2023 08:44:48 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Tue, 6 Jun 2023 08:44:47 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Tue, 6 Jun 2023 08:44:47 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Tue, 6 Jun 2023 08:44:47 -0700
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tIdmaoxxFjfc for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jun 2023 15:56:15 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 105CB418D6
+Received: from EUR03-DBA-obe.outbound.protection.outlook.com
+ (mail-dbaeur03on2053.outbound.protection.outlook.com [40.107.104.53])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 105CB418D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jun 2023 15:56:14 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VqJxaF4d93NwkemldXsVeJpbTLi2m3CjoQ+gkqxvdNXb6ZgOUbrBSWXDjDB9DhqTyVX18LoKzz2smJudT4uNqZ1fHRpKV6Nn1JvRKraOTGXBVZKwnpB2Q0mGwSDO6Em1+aXINh1JYF5PQRHbMpxXwYgzdI7RU1wurK7OYYarQmCzbh/a5ysUipyUR4RRbxh7QmKvbZjMyE/G85XmEDUMfkUEIcCkqQ0v1nyw0WekRrIEMane1J/RHLorzJxtqjCMrfFvlIAtp+EVTsamdDhLLy/cxoSxMigiIkDANQFe5gaORcpSV2Qmgzblgx8a+uu3WzX5uKReeqEv3xdqFyq7og==
+ b=mqzMzdF0CcvWJm5OBReAoA7x5+W1Fdh0X2TSWsU/UvHVRRqN2fzquscE8MZpM4samZvSCl658K/rD9DZeSgpF3xZUmODbwWXj/d9D5C3mRaXqrZ2gpM0917faJfSueHMVjOoNGCUafJRE4kX0pzNw1lwhflmPoWeC/R5o8G7MTkZVO6ylsPOnuOECgO8J7A6tgPwfd0hrdSMVYUC5rkQiDQs/cvX84AEZHFy1YBpOmgL/eClNailkA93f7WC3UvAw0bJ/3O7yCgzzXxnEdVuOkM9SE/YXQNRcOZB8ezFm3BF8lPhKzLFVjrwiyzyY5txMniuunIVoheDj4nwfdKLEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v7qZTPHQzfPdx8UitcGQ+tTFSLBlNTvjc2gsshEfcek=;
- b=dhYadFGQzdOmWy7M7ljrZ3O7xCLNbecMgIFVBRnXbcwkUx0j1+h+cKbivnanYqs7POdpMd5HdcFrM/2j0C6gRvH/uHRaZo4chU1GlQNauiYLUtYpDmHqUlj4VJc2kGxO2g67UW22m+xz67u22W9aQs3r0QZQC9jzALc+gAg4c/pbgj4bISg5NxsVKYL8PjvcpTK9od2DAEfR0QwdJZ61eQPIz2lp//iKumU/Lv6mBQz3TS3A/VSwcBIzmzDzSAv44JXXnSGXeWdlFZoh6x5TbASI5/yRj/oRl+eimFMCPrPkgJ8A041sGqDKrwbiIef23v/q3A5oypVM7ElMQXkVPA==
+ bh=StPWFbvQRCC58TB134SLDh42/K5iPmHHW8Uo1f5WOIk=;
+ b=kd01yazIPoBjgRcoZsMscsg7tY7WNqZyYCIbrj7wGrF/H7o9u23A1K9eWLRx+lmbjScJL3bD5u5qV/f9t1Ss3e7NWQU0SHWtwWC2F82CWoYXkgT+uqvkHX7vlzQR1Ah8P7DGZOmxvwY2yOu2afp2zZTD1C0WM8LTFdrrJv9n6KQUQhtbZugCvEmoqAK+UerP2PeBlO6AlHOJsDeMdtureJ6kKCB+2Vew7H2Ed+KDu+4vvoqPB7+EBvbujtPF1P4uvxWZcDZq8j8qUxAPH4YG9zFON4Bd9nKXs8c/L1Am962i4OOkPfxsxTkvpfcrUnT6sr7oko/X7JCwEhkysbx7Fw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
- by SA1PR11MB5803.namprd11.prod.outlook.com (2603:10b6:806:23e::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33; Tue, 6 Jun
- 2023 15:44:44 +0000
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::82b6:7b9d:96ce:9325]) by DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::82b6:7b9d:96ce:9325%6]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
- 15:44:43 +0000
-Message-ID: <1e11a484-af99-4595-dc1f-80beb23aae9f@intel.com>
-Date: Tue, 6 Jun 2023 17:42:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Content-Language: en-US
-To: Simon Horman <simon.horman@corigine.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>
-References: <20230606111149.33890-1-przemyslaw.kitszel@intel.com>
- <ZH9S6wPIg9os8HYa@corigine.com>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-In-Reply-To: <ZH9S6wPIg9os8HYa@corigine.com>
-X-ClientProxiedBy: FR0P281CA0002.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:15::7) To DM6PR11MB3625.namprd11.prod.outlook.com
- (2603:10b6:5:13a::21)
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+Received: from DB8PR04MB6459.eurprd04.prod.outlook.com (2603:10a6:10:103::19)
+ by PAXPR04MB9400.eurprd04.prod.outlook.com (2603:10a6:102:2b2::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.32; Tue, 6 Jun
+ 2023 15:56:10 +0000
+Received: from DB8PR04MB6459.eurprd04.prod.outlook.com
+ ([fe80::5ca3:2022:337:7c40]) by DB8PR04MB6459.eurprd04.prod.outlook.com
+ ([fe80::5ca3:2022:337:7c40%7]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
+ 15:56:10 +0000
+Date: Tue, 6 Jun 2023 18:56:05 +0300
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Paolo Abeni <pabeni@redhat.com>
+Message-ID: <20230606155605.so7xpob6zbuugnwv@skbuf>
+References: <20230602103750.2290132-1-vladimir.oltean@nxp.com>
+ <20230602103750.2290132-3-vladimir.oltean@nxp.com>
+ <6bce1c55e1cd4295a3f36cb4b37398d951ead07b.camel@redhat.com>
+Content-Disposition: inline
+In-Reply-To: <6bce1c55e1cd4295a3f36cb4b37398d951ead07b.camel@redhat.com>
+X-ClientProxiedBy: FR2P281CA0151.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:98::14) To DB8PR04MB6459.eurprd04.prod.outlook.com
+ (2603:10a6:10:103::19)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|SA1PR11MB5803:EE_
-X-MS-Office365-Filtering-Correlation-Id: b9b45e4b-c864-4192-de56-08db66a4f27d
+X-MS-TrafficTypeDiagnostic: DB8PR04MB6459:EE_|PAXPR04MB9400:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4f1b6329-da10-4e72-bf7e-08db66a68bc9
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: DCi5zOby+6T/cpSZcFiAA/tWqI+YwT6z+AN4S9pQf+1G+7/1VeqDl6bHHVQ6pYMJ7dU/94uD5bzX3lActUDYLXB2roOM5FGrytYV6VrtGLk2k0bK3hp4U6UDNEmosPo1vyzDcDWR5KWBtcHGuIpf0bLEFkMQdjnMdV7mxPsdho8Ld59jmGExGt8o3i+q942fbDM8B++Put773BN/7eAvFQccF4X6jSkOMCudgskcWIGaSK+w0mrM5wMuBhBdx5DYgdJlPJMOe8oZ+qA1G0Ci4Q/6CvJJBAqqvHg/cY8gL5Ybl8b0k/fm2aYOYtwrSX4eU0iH1+QDFnH4wIxqWMA3mJArfF46yIR/UN058qAZGUB0YHwFNrE5DFs2RENl0EN9noxF46rNERdzE8muylRAH9TYA/gsDtgQ2+8ZW+LuyMk2srbRLWziweMf0qJE8u8MFi5q0XM2T1RfCqnbM4I/nINw4i5r3UqWsHjWTzKM1VT1YJ4Qm4lleigp0SxzXWiZdmwJa7sl4xKn6+6DijhXki+Hc8MzoKuT2tktxcpQawYkbOXbXEG6wrt8G1Yq8B16ElZdyxM4mdhwwb13jFxqgrYMjnkU00zfddmICUfFCVrkx/Cgqm5WVO64kx0D0aZxMe40nkqScH6pT0/rz7aeEg==
+X-Microsoft-Antispam-Message-Info: 94aKkGAadypOI/EWTUNw0LZpo3ZQq4eyLbs+LO4vbDMkZWDOCMLO6YNR1k2pjftHlLkoJmpMINwjkI7gt0LXd+fdMwX64cKuNXLzWrcGrVLBJy5WpsdZIN3IYRLi0wbHTz0q5xeAVMnYoxIa/2yuZz6+iaCroVpEXqsaMwAR5rUnlgZtU2xZJgdZb82rra+E5CchJBtDlvzXzqLmBJGmPSHQFoJbxhuMpdwLsfEf9eZSXTtHTpGRaQ9lrgiQ204Hvg27r12SfDRf2/Sl8uMvp1ecO7dqxWkfwq9r7f2v5tnuPZ4btY2Z3iFg8XFEhw6c0bw0vpWPSgHRybFvWBTPhLUh6g56LwYzGPL+lU3ZwBzMJyx0apHQNM+swrCrGTAWCHZsJMHB6TV/9rxnm2FfEB0JfoDRE1VgANgKAUCmpv6XRuATOAetEcvrRMlk6rQ0bHdFMIRu89t0xIL969NIjs+9lY2AaR6L4QYeoQkuKl5K7TagqttgoqF7SM8MHHVF2NdTIKCLvs8kG0M3GjfXjgXfv8W7Fr2a4WhJImdVGl6lz3ewOSK77xk/ZVlExDyS
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(39860400002)(376002)(136003)(396003)(346002)(366004)(451199021)(2906002)(2616005)(36756003)(31696002)(86362001)(82960400001)(38100700002)(6486002)(41300700001)(316002)(6666004)(5660300002)(8676002)(8936002)(110136005)(478600001)(54906003)(66946007)(66556008)(66476007)(4326008)(6636002)(31686004)(6506007)(6512007)(26005)(186003)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
+ IPV:NLI; SFV:NSPM; H:DB8PR04MB6459.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(7916004)(4636009)(376002)(39860400002)(396003)(136003)(346002)(366004)(451199021)(2906002)(83380400001)(86362001)(33716001)(38100700002)(6486002)(41300700001)(6666004)(5660300002)(316002)(8936002)(8676002)(54906003)(478600001)(66556008)(66946007)(66476007)(4326008)(6512007)(9686003)(6506007)(6916009)(1076003)(26005)(186003)(7416002)(44832011);
+ DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S1B1WE9pOEdQb3NXc1FOeDVvMC9ZQXhHb1U5Z3Flbi9scWl4bEcvRno1RGVM?=
- =?utf-8?B?VDJnR01FOENKYVg1bENMQWNHUjRMMXVwYnVUQlNjREJPRTZPeEpaR1dXZGcw?=
- =?utf-8?B?ZkwzYVJKUUVwN0pydy9iMzBpSFIwRjcrVU1udmVOamVTaHlwY1ZnTG5XMDZm?=
- =?utf-8?B?dTZxaVlXVXBJc3FBb1cxTVNMN1RyeFFGYzNhaVhRbnJubTF1eFFjczJFZWlm?=
- =?utf-8?B?Y0JaQmUwM21mdmZaWk1JaXV4OXlwaFp3Z3JPQ090VzIxVmdyNktVYXZQanln?=
- =?utf-8?B?NlRhdU4rUWQxdGF3TDFHemE3UnF2cXNrd3hrWTZvQ254OExlaEFIbWdnZk02?=
- =?utf-8?B?Y2FUeTZLRGhoZTErYUloWjM4ZWsvMWxuU212aVJVN29uWnJYZ09tTlJDMzBF?=
- =?utf-8?B?RHo5N0lGY3NkUkxVL1NyTldXN05IZWR6QUNyZHNNWXllNjM5R0s2K2JNZlJW?=
- =?utf-8?B?V2dlQ2FHblc2VThmUnF6WGQyWFVhdHBIWXRKMWkyRUFDK1hQTmdWMm5WbUEz?=
- =?utf-8?B?bG9WMzZaVENHaFpmUlRLUE9NQXZFU2tzekkzQjFEcUluZ2pra1FqSmhZeDBt?=
- =?utf-8?B?NVh6YXZYVzRQNmhRdGdFekNKczBpOWxZQ25lUnQvU2JtL2dUMTk0RWMvZDdj?=
- =?utf-8?B?UzFHcy85SFhJaVFCT1p6RWx3TzVCSUF6SUR3QXUwbVVVQ2pRZGI2YVdLMVJt?=
- =?utf-8?B?YXJxUTBkeGllaHgyT2hMMEtyTUNRWnM3WWloQld0OGl1OUFkQnN0MXJHa0NZ?=
- =?utf-8?B?V0hidHV0OCtZaHUxWlBBb0tXbVNtMEwyQmdOZnlvVDBZaGxRUGtVNDJNb0JS?=
- =?utf-8?B?R1lzMlBRV0FPcFpJS3NqbDAvQ05vc2dXZEg3Q3dyQUFuTGE0RVFzVURtNERj?=
- =?utf-8?B?TzB5c2JWaXVhRE81OWJWbDlEcnA2RjBaTWlVM0VXRUo2cGxHZkY3SU9zVEhC?=
- =?utf-8?B?NzVBVHE1aEZwNlBtZzl1RTZpL3ZBMC81a1VQbkU3NURLMmZ4UkJDa25Dbkxu?=
- =?utf-8?B?c3hmbXNYcmZab09iY1BXRmRvMmVoMmZzTFZtNHZ3d0NYbFo3R0o3R2VXT2Nj?=
- =?utf-8?B?N2dUWEh2dFFuZlFjK0c0MkhvbW5pQWxWYThSeld5cjVEMDlKMktBNXEvdThN?=
- =?utf-8?B?SCt2VUFrVExpSVplSERFNkwvd1V5OE5kM0YrTEd1VnhUNjY1dGhsL1ZpU21q?=
- =?utf-8?B?VXNJbXkvVjV2b3V0a28yRlVyNU1COFFSSExyL01xTUN2ZDN6V3p1d1hWK2dx?=
- =?utf-8?B?ZjFmcFRnK3ZDVFRCRUFZWjVsVGZ5RkZuL1JwNmhmQVdDek42OTlxQVdIbnpx?=
- =?utf-8?B?UEFWbEtHTXEwejR0YjRUQk5SNmp2ZXZlak4rdWtCbG1UMnpNZnEwa3BCVE1T?=
- =?utf-8?B?RkhkVHdER3FveERvdzhuSFRmR25WYnVRVytPMnRuaFpkeFY0Q2RUQnI4S0Yy?=
- =?utf-8?B?VFZEOTYzanF2Nm9lU1BRYWRyaG5YRmFqS3JDK1Rnb2puSVlGWTl4S3V3RVZ0?=
- =?utf-8?B?V2J6T1R0U3B1MDJOTERnN3dKODR1UmtZQTBlcHM3VE5LNnhFMkMwNFRSaEUv?=
- =?utf-8?B?M2M0Y0tpUnZDckxOWDdMVUdYd0I2cWtnOXpvYlRubk91RnhmNmI3TUxLTjBy?=
- =?utf-8?B?K3RpQWZJT29TREFoQ1hsWEhRVXhXL1NROVd1RkF6SnBOT2VNWnd2MmRNeU5I?=
- =?utf-8?B?WXRwQXN4WU54TkhWU3UyZXl0d05BdEZ3S0NsR3BDSWpia3ZPOG4wVXFaVWFn?=
- =?utf-8?B?dmlnWkZNaU50UmpNWlRGNTFGQWJQNHo0MlJwQ0pJbG9mL2ZKTDRUMkVKd2c2?=
- =?utf-8?B?YkhCdmVuVk5CMmJVajFhY2RrYlNBZkNzYmZOdXNEaDdCeGpvMUtVT3F5amFX?=
- =?utf-8?B?RGlPQjQvaDRYczZlcHRybFpWZjZvMDUwSzZsMmtBQW1KNG5NdUNJUlAvdk1K?=
- =?utf-8?B?aDJzdW43VXQ1RzhQejZOdHAvY3FGVzZrZHlTQThLNDJSdWZURTNtV084ZkRK?=
- =?utf-8?B?SUxKNG42QU9lRk1qZ0lCRnRqbEgyVXZTWWlhNHJ1cDFCNUlPSlB3TThlSmpN?=
- =?utf-8?B?MEpRUkVMRTQvQTllNngySFQyc3dPWGZRQ29aV0QzTno0YzNhei81RjYra1Jv?=
- =?utf-8?B?UnpmZDMzQm1pVGJRZ1dkSERINHBlc2VKbEx3bFRiT1JCU1dwZGxLYjFGdmkx?=
- =?utf-8?B?MHc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: b9b45e4b-c864-4192-de56-08db66a4f27d
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?GYb0ScFWStHPdnzEP+xBfuDX57Kh1leo+Db38NdDP7nnIuYHRk9HZdHGPC/h?=
+ =?us-ascii?Q?wwlpoGZrDfRwoz8+t1Jz51h1tctTen37HUtfhni8yyEbBdRl+f0sK77qV1pl?=
+ =?us-ascii?Q?mQrUCsAW06cFRWA9nuqLGhsT2B99P0z/JW36pAgbJULBeceizI7s+p4ZGt1O?=
+ =?us-ascii?Q?n/AaU5X2SD+qT/4jmH5+gPorLxbav8+lju8VZATi/P0BzLHdLyN3CYNAEc23?=
+ =?us-ascii?Q?EcJ7yCvj4U5s9ioqfsFN0KDC+eGvFDNlLoEqc4K7WXlQCuagnxD2AnHvtQ08?=
+ =?us-ascii?Q?anq6FCveXr5xp8GKrUH7Iar/yX8c8Rj7LDBrMCYrDAnhOyyjY7Qr0SN6V9y+?=
+ =?us-ascii?Q?ffwMhJNup3iDWzGU86UDdiL+1lPdNySAld2MUFq4Y8jS6cvY7Tfblv8iKPqj?=
+ =?us-ascii?Q?T4/QDFjhVQpAb+Pm9x4u1Fkx3KGKZ6RlrNh6zlF7+VR15uUbXueCzM+L0izD?=
+ =?us-ascii?Q?TFtMJxuNkTpmpp3v6/4Dwi2eUyJJFQ2yuOPqxlY3HZNPhl8F3ZPWJIyWEhJX?=
+ =?us-ascii?Q?d89K5MgE+8BD+hcG+jC3HDcPfjqeuot7uTmKjC2jcjF8jnSB2Ec/qJudp5H/?=
+ =?us-ascii?Q?TDx9SOfAcT+r9PuDlnkft6FYYhpGT2e0xsYrh27+W7FFxDR2BzEaFtIyp44l?=
+ =?us-ascii?Q?8jzDQCduGs8yDXZ0Z2Ybk0dIejnPpbX7YK18wql9YTvVS56MS3R+NAbxlpTH?=
+ =?us-ascii?Q?79JKxMu+9is3vAEHHNtuuD3HrQPMYq5Dp/tk0+aLyJ/HeesTbIYgxMvzky2L?=
+ =?us-ascii?Q?A2Ai8xUPHieqgL7RkyO/PzentchoH0O3IA1FRfvkm/jqnKlxkr7PpYxephhY?=
+ =?us-ascii?Q?KQdhmWslphg1pIsoE78qKI20Mr2J26OlycAMlUafPK6Hh68LtObEwqBG8gW4?=
+ =?us-ascii?Q?IYrXG4gm2XIGV9felMbi++OEq7P6DuwBLPc8UBhtn9TOZ8lZT+BftIUgvebw?=
+ =?us-ascii?Q?8FIXyKf1umIjzgNEE6ch+nOPgfIVj7MACZKY5cI3n0hhkINX/kYJSEV6op/U?=
+ =?us-ascii?Q?G3jyWyxcY/DmAE2iYp3h7UWc1NCV5oSNtv5jJvdZQDmafz/6VB9H/nEzsDKb?=
+ =?us-ascii?Q?Y7TxYesMGD6CnfNJ9NWoYeC9PoNEA2LxU6zg8ZaH+HZzNEVcCmEktomiaNtm?=
+ =?us-ascii?Q?2eM0BUktUnGKuVPGLsBHhmrVL9NB0nEv3Fqe+UM32ZsBAHsn9Igo1zZg5FiM?=
+ =?us-ascii?Q?cTF/+LrI2ABFIN5usU0U/knAPItQeylQ3L6ttZ9vWtcfi3VIK0F3ELN+N8bM?=
+ =?us-ascii?Q?Hs23c6SLdaGxDU18JKh7G9WE93FyUdc0zHav9hZAn+f/BMFuxo8CH3f7jtjx?=
+ =?us-ascii?Q?3aeyTxbWaHnT0wLtHc61U4jwr0cfJryihKEN05GLqlZP62GqGCcLkrCZdoVD?=
+ =?us-ascii?Q?l91yTtokM63dUdKdrzgXd0Ck77jLrS9HKQ5yB7yOxOWiAVu5U5KKdHAAoqtr?=
+ =?us-ascii?Q?3WXK/Ivr8kztDFknYuXrRLZYoGsLg5akb9r8vqOES5ph5mnfO9d7IYk+jPkm?=
+ =?us-ascii?Q?gq+bTlsTiY/rI47wr/Ku0yoTD1YEPrzf92vgMjsTj/XX5wQKBkwzj592nFtY?=
+ =?us-ascii?Q?nvIytitiJsw4o4zLBUBeshxEtb02B/GYpoXc73dhLHxcWE+QrWBL9/CUSdSq?=
+ =?us-ascii?Q?qQ=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4f1b6329-da10-4e72-bf7e-08db66a68bc9
+X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB6459.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 15:44:43.4919 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 15:56:10.0627 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KhHE0aQnGOp3RygWuSRp2b7g36aOnDWwMWwWi0NnOSaMccWnc9BJiTHEv2/ZpuCTZ4iMZeRC27QTQMsOxpOlJu9Pg97mnW1Q33gXzdlN8FE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB5803
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686066289; x=1717602289;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=DzOHD65ZAcraFtHO9MRnE/pxrD4cSSHcirhTC647VIo=;
- b=f1eFiyVKtBiKb45RDO3WU4KLmZ4D+nxvY4PnPVIaWuSUOyDiyJ10AoxV
- 8UyGGhJ6LEQvIW38o2S/TdF3hyEEMf1QqoVYqVcQg+JzjuiTJTecvehIC
- +EQYL31AteM7OMMuIVlbHMfzknGD8+SMQCHqQVHiSU52180Nk3BhtA5+B
- aZXl+6NPizF3ukDiYPwZKkBSBFcKPZ4Iev1jIEp5MS5TFKxs//43qgiN3
- MWUzo4nqJUUFa2gJA9elTNzLnUvbrwzq/oXHFMJSISCQHAOhx3G778AQk
- ShVuuoSZ3OlemOTXD7iwyIL4RgnKhYS4CIrndEt9q85YvVVLvdzxx/673
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=f1eFiyVK
+X-MS-Exchange-CrossTenant-UserPrincipalName: ss8XIYG4PIBnWs3Z+OVn5mrNmktB00k7wNZJNmqU8rYuUm2WtrhIz6VlwGC7C7CTHcumfWB6o/uhV2vtpjHNfg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB9400
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=StPWFbvQRCC58TB134SLDh42/K5iPmHHW8Uo1f5WOIk=;
+ b=SntJ7B33+zy9Yg6wcznXR+o096WbL/y6X6ZsAmUF7rCDJhVyGpgmmIN30HnsAFp5sAQBQ43Ae2jbgIVk8U/mwFiIKXhBjTQs17UvcPGB4M5wRSdY7+O9XB3BtCwH5DH5okRJMVeNmAzukIYPP9QY5MxdrK+/reRg5cRRXG3R8xA=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
+ header.s=selector2 header.b=SntJ7B33
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: clean up
- __ice_aq_get_set_rss_lut()
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Subject: Re: [Intel-wired-lan] [PATCH RESEND net-next 2/5] net/sched:
+ taprio: keep child Qdisc refcount elevated at 2 in offload mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,70 +155,188 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
+ netdev@vger.kernel.org, Jamal Hadi Salim <jhs@mojatatu.com>,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Peilin Ye <yepeilin.cs@gmail.com>, Cong Wang <xiyou.wangcong@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Simon Horman <simon.horman@corigine.com>
-Date: Tue, 6 Jun 2023 17:38:19 +0200
+On Tue, Jun 06, 2023 at 12:27:09PM +0200, Paolo Abeni wrote:
+> On Fri, 2023-06-02 at 13:37 +0300, Vladimir Oltean wrote:
+> > The taprio qdisc currently lives in the following equilibrium.
+> > 
+> > In the software scheduling case, taprio attaches itself to all TXQs,
+> > thus having a refcount of 1 + the number of TX queues. In this mode,
+> > q->qdiscs[] is not visible directly to the Qdisc API. The lifetime of
+> > the Qdiscs from this private array lasts until qdisc_destroy() ->
+> > taprio_destroy().
+> > 
+> > In the fully offloaded case, the root taprio has a refcount of 1, and
+> > all child q->qdiscs[] also have a refcount of 1. The child q->qdiscs[]
+> > are visible to the Qdisc API (they are attached to the netdev TXQs
+> > directly), however taprio loses a reference to them very early - during
+> > qdisc_graft(parent==NULL) -> taprio_attach(). At that time, taprio frees
+> > the q->qdiscs[] array to not leak memory, but interestingly, it does not
+> > release a reference on these qdiscs because it doesn't effectively own
+> > them - they are created by taprio but owned by the Qdisc core, and will
+> > be freed by qdisc_graft(parent==NULL, new==NULL) -> qdisc_put(old) when
+> > the Qdisc is deleted or when the child Qdisc is replaced with something
+> > else.
+> > 
+> > My interest is to change this equilibrium such that taprio also owns a
+> > reference on the q->qdiscs[] child Qdiscs for the lifetime of the root
+> > Qdisc, including in full offload mode. I want this because I would like
+> > taprio_leaf(), taprio_dump_class(), taprio_dump_class_stats() to have
+> > insight into q->qdiscs[] for the software scheduling mode - currently
+> > they look at dev_queue->qdisc_sleeping, which is, as mentioned, the same
+> > as the root taprio.
+> > 
+> > The following set of changes is necessary:
+> > - don't free q->qdiscs[] early in taprio_attach(), free it late in
+> >   taprio_destroy() for consistency with software mode. But:
+> > - currently that's not possible, because taprio doesn't own a reference
+> >   on q->qdiscs[]. So hold that reference - once during the initial
+> >   attach() and once during subsequent graft() calls when the child is
+> >   changed.
+> > - always keep track of the current child in q->qdiscs[], even for full
+> >   offload mode, so that we free in taprio_destroy() what we should, and
+> >   not something stale.
+> > 
+> > Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> > ---
+> >  net/sched/sch_taprio.c | 28 +++++++++++++++++-----------
+> >  1 file changed, 17 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c
+> > index b1c611c72aa4..8807fc915b79 100644
+> > --- a/net/sched/sch_taprio.c
+> > +++ b/net/sched/sch_taprio.c
+> > @@ -2138,23 +2138,20 @@ static void taprio_attach(struct Qdisc *sch)
+> >  
+> >  			qdisc->flags |= TCQ_F_ONETXQUEUE | TCQ_F_NOPARENT;
+> >  			old = dev_graft_qdisc(dev_queue, qdisc);
+> > +			/* Keep refcount of q->qdiscs[ntx] at 2 */
+> > +			qdisc_refcount_inc(qdisc);
+> >  		} else {
+> >  			/* In software mode, attach the root taprio qdisc
+> >  			 * to all netdev TX queues, so that dev_qdisc_enqueue()
+> >  			 * goes through taprio_enqueue().
+> >  			 */
+> >  			old = dev_graft_qdisc(dev_queue, sch);
+> > +			/* Keep root refcount at 1 + num_tx_queues */
+> >  			qdisc_refcount_inc(sch);
+> >  		}
+> >  		if (old)
+> >  			qdisc_put(old);
+> >  	}
+> > -
+> > -	/* access to the child qdiscs is not needed in offload mode */
+> > -	if (FULL_OFFLOAD_IS_ENABLED(q->flags)) {
+> > -		kfree(q->qdiscs);
+> > -		q->qdiscs = NULL;
+> > -	}
+> >  }
+> >  
+> >  static struct netdev_queue *taprio_queue_get(struct Qdisc *sch,
+> > @@ -2183,15 +2180,24 @@ static int taprio_graft(struct Qdisc *sch, unsigned long cl,
+> >  	if (dev->flags & IFF_UP)
+> >  		dev_deactivate(dev);
+> >  
+> > -	if (FULL_OFFLOAD_IS_ENABLED(q->flags)) {
+> > +	/* In software mode, the root taprio qdisc is still the one attached to
+> > +	 * all netdev TX queues, and hence responsible for taprio_enqueue() to
+> > +	 * forward the skbs to the child qdiscs from the private q->qdiscs[]
+> > +	 * array. So only attach the new qdisc to the netdev queue in offload
+> > +	 * mode, where the enqueue must bypass taprio. However, save the
+> > +	 * reference to the new qdisc in the private array in both cases, to
+> > +	 * have an up-to-date reference to our children.
+> > +	 */
+> > +	if (FULL_OFFLOAD_IS_ENABLED(q->flags))
+> >  		*old = dev_graft_qdisc(dev_queue, new);
+> > -	} else {
+> > +	else
+> >  		*old = q->qdiscs[cl - 1];
+> > -		q->qdiscs[cl - 1] = new;
+> > -	}
+> >  
+> > -	if (new)
+> > +	q->qdiscs[cl - 1] = new;
+> > +	if (new) {
+> > +		qdisc_refcount_inc(new);
+> >  		new->flags |= TCQ_F_ONETXQUEUE | TCQ_F_NOPARENT;
+> > +	}
+> >  
+> Isn't the above leaking a reference to old with something alike:
+> 
+> tc qdisc replace dev eth0 handle 8001: parent root stab overhead 24 taprio flags 0x2 #...
+> 	# each q in q->qdiscs has refcnt == 2
+> tc qdisc replace dev eth0 parent 8001:8 cbs #...
+> 	# -> taprio_graft(..., cbs, ...)
+> 	# cbs refcnt is 2
+> 	# 'old' refcnt decreases by 1, refcount will not reach 0?!?
+> 
+> kmemleak should be able to see that.
 
-> On Tue, Jun 06, 2023 at 01:11:49PM +0200, Przemek Kitszel wrote:
-> 
-> ...
-> 
->> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
->> index 6acb40f3c202..af4c8ddcafb0 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_common.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
->> @@ -3869,6 +3869,30 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
->>  	return status;
->>  }
->>  
->> +static enum ice_lut_size ice_lut_type_to_size(enum ice_lut_type type)
->> +{
->> +	switch (type) {
->> +	case ICE_LUT_VSI:
->> +		return ICE_LUT_VSI_SIZE;
->> +	case ICE_LUT_GLOBAL:
->> +		return ICE_LUT_GLOBAL_SIZE;
->> +	case ICE_LUT_PF:
->> +		return ICE_LUT_PF_SIZE;
->> +	}
-> 
-> Hi Przemek,
-> 
-> I see where you are going here, but gcc-12 W=1 wants a return here.
+You're right - in full offload mode, the refcount of "old" (pfifo, parent 8001:8)
+does not drop to 0 after grafting something else to 8001:8.
 
-So that it can't see that every enumeration entry is handled here? O_o
+I believe this other implementation should work in all cases.
 
-> 
->> +}
->> +
->> +static enum ice_aqc_lut_flags ice_lut_size_to_flag(enum ice_lut_size size)
->> +{
->> +	switch (size) {
->> +	case ICE_LUT_VSI_SIZE:
->> +		return ICE_AQC_LUT_SIZE_SMALL;
->> +	case ICE_LUT_GLOBAL_SIZE:
->> +		return ICE_AQC_LUT_SIZE_512;
->> +	case ICE_LUT_PF_SIZE:
->> +		return ICE_AQC_LUT_SIZE_2K;
->> +	}
-> 
-> And here.
-> 
->> +}
->> +
->>  /**
->>   * __ice_aq_get_set_rss_lut
->>   * @hw: pointer to the hardware structure
-> 
+static int taprio_graft(struct Qdisc *sch, unsigned long cl,
+			struct Qdisc *new, struct Qdisc **old,
+			struct netlink_ext_ack *extack)
+{
+	struct taprio_sched *q = qdisc_priv(sch);
+	struct net_device *dev = qdisc_dev(sch);
+	struct netdev_queue *dev_queue = taprio_queue_get(sch, cl);
 
-Thanks,
-Olek
+	if (!dev_queue)
+		return -EINVAL;
+
+	if (dev->flags & IFF_UP)
+		dev_deactivate(dev);
+
+	/* In offload mode, the child Qdisc is directly attached to the netdev
+	 * TX queue, and thus, we need to keep its refcount elevated in order
+	 * to counteract qdisc_graft()'s call to qdisc_put() once per TX queue.
+	 * However, save the reference to the new qdisc in the private array in
+	 * both software and offload cases, to have an up-to-date reference to
+	 * our children.
+	 */
+	if (FULL_OFFLOAD_IS_ENABLED(q->flags)) {
+		*old = dev_graft_qdisc(dev_queue, new);
+		if (new)
+			qdisc_refcount_inc(new);
+		if (*old)
+			qdisc_put(*old);
+	} else {
+		*old = q->qdiscs[cl - 1];
+	}
+
+	q->qdiscs[cl - 1] = new;
+	if (new)
+		new->flags |= TCQ_F_ONETXQUEUE | TCQ_F_NOPARENT;
+
+	if (dev->flags & IFF_UP)
+		dev_activate(dev);
+
+	return 0;
+}
+
+> BTW, what about including your tests from the cover letter somewhere under tc-testing?
+
+I don't know about that. Does it involve adding taprio hw offload to netdevsim,
+so that both code paths are covered?
+
+To be honest with you, I never ran tdc, and I worry about what I may find there,
+unrelated to what I'm being asked to add (at a cursory glance I see overlapping
+TXQs in taprio.json), and which has the possibility of turning this into a huge
+time pit.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
