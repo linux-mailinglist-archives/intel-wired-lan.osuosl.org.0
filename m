@@ -2,184 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F4057726021
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 14:57:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 634327260D1
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 15:12:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8C97841726;
-	Wed,  7 Jun 2023 12:57:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C97841726
+	by smtp2.osuosl.org (Postfix) with ESMTP id E4763415B9;
+	Wed,  7 Jun 2023 13:12:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4763415B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686142633;
-	bh=s31CaWWZS2FvQO0C/kB7rPYfdixStKLWNeyEi5+eXhw=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=DvVl0zK59jQZiSgVLalFZjepyOpYQ5y664/sSYt0mUrVBVVuitM9Sf1ibdqrXM1gI
-	 S2ByIfYBuSmgIeSXy1iD9T/alY0CHTILFmTc/ktXc9F7LrkXUPgfgRBpLwr+I1wFKo
-	 np8/4sv0vGlJTgai3G6a3P/wMIFIt7gZHIQoHb6G8Ax7Nh6RwccRWQVWsykpFS+0u1
-	 /q26P8l2np0ZA53sSlUBtl3j4jA5eNcxHp/kqK4/uB2jB00+U3skCxVL/pzy+NH9mX
-	 ZQkgTT7FdI4QB6UT8UXze2/zgNT0jeVb6QtahzuJS5LJ5xhsAdqDLTNEwhrA8BxYy1
-	 eRCZqvsfi/vLA==
+	s=default; t=1686143565;
+	bh=TTtaYGPIzrJ8r3d+OcgQ9QaN7jVRVAoyuSV6ox8exkI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=gG5veo+WiJnBQwQfhq5kiuTP8xnWBfR7kCd3dYo5bTj1Vf8U65s+VUyL7FNEgpJRx
+	 qGe7y6xNbqIAf/yvjH1/b6HkYwMECANeQr8+14h8nqomUfhFdg+Ttzct0VmEn2jGBo
+	 hj41VECnEVfK/3f5LZy2Lk5YB4b4/BLl6LPbPrQNb88ZO3/DVaclXt80KnkXK33KNb
+	 z4+Yk9G/X6++fQyFFyasmcrGaun0MkYI1sp4fJuHIgURKnzwssTyfvtQb6YRY+EPJk
+	 yHm1HeM2S+KmAiJrB1X5FzJCAcfZ+CWjFQTlXd1m4v5FK1OiJdwuLDHE8rWIpNcm9P
+	 CzfRAJ8Iac7Xg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2sultVbynxAb; Wed,  7 Jun 2023 12:57:12 +0000 (UTC)
+	with ESMTP id ipBNfqNTTgst; Wed,  7 Jun 2023 13:12:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 300C14173E;
-	Wed,  7 Jun 2023 12:57:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 300C14173E
+	by smtp2.osuosl.org (Postfix) with ESMTP id E039840578;
+	Wed,  7 Jun 2023 13:12:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E039840578
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4361D1BF3DB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 12:57:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B4E421BF3D9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 10C4A41DB8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 12:57:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10C4A41DB8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8AC5740578
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8AC5740578
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1NeHg5ilG9Is for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Jun 2023 12:57:04 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E0_XLErNDiAt for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Jun 2023 13:12:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4363C41D6A
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4363C41D6A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 12:57:04 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="443343832"
-X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="443343832"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2023 05:57:00 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E885D40168
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E885D40168
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="354471108"
+X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="354471108"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2023 06:12:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="779431784"
-X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="779431784"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga004.fm.intel.com with ESMTP; 07 Jun 2023 05:56:57 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 7 Jun 2023 05:56:56 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Wed, 7 Jun 2023 05:56:56 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Wed, 7 Jun 2023 05:56:56 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gMQzVTLoaGoSqZ5Mz+nwm93uJLXI+Uj1eqowz1NmT9/1CEJiLVAMpr6C8JwWrQFPUD9jCXaprHcnNnhuIwUFvs2nYheD7vNc1u91o7SQfXpiX3HTyOXfVBXfLZwuok0PqS6W6lOT0Xnlm+hvD6OSTTNKtvGNaB0BncgKtmnsgK/kpDqiudHlzACBdsuXlPuJgIctvCg6YxeUgvHT2a8JahRV3fJR4OQKp5Nc5Jvo+Wk7qVn//aVBvmu0L8pYwAui8CTVEVhV5B1RAkcRFfnW9NBdxNJ/9Tkn/XpKdFz5RnZMtzuFvjkciAHpKlXotIAmUwsAbHN6D3UKkUsoGete+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pBHdbtXGe8xt+MmdEBpozoyc2ZKX3cRNsl78ReRb82I=;
- b=bX7pKUvgW3v2acoVdj07rdQnwps3ezqf9sMzdIUhWYw6m9x4EITaRjueqqf5emmtP9gCZiGMO62uY/YE0kjzPTFnlSBbxkhOGufH7eIcGlgQXeksBEQ+Fb8WYQfV1/fOT4hV9vMza9lMexxGg848cCm3lebTOWNjul7T/Z02MeiNbEhvsKzcG+9AItOYhaYNCi8eaRF6P3vSpoMILjfGzhothlp389fgQjvgkqVQRHEVVxuuAzRNdihDOG0kXO0i7Tzz+6iUWclDJ4USgGpLPqEds1f0T0kcXVL7JnJnegaNhgaZU8w89oPhCgmUo/QqIhi9NO+7eCL35DOzNgJG9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com (2603:10b6:a03:fa::30)
- by CY5PR11MB6366.namprd11.prod.outlook.com (2603:10b6:930:3a::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.31; Wed, 7 Jun
- 2023 12:56:54 +0000
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::87ad:6b1:f9f4:9299]) by BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::87ad:6b1:f9f4:9299%4]) with mapi id 15.20.6455.030; Wed, 7 Jun 2023
- 12:56:54 +0000
-Message-ID: <5eb058d0-753e-c91a-c014-a33ca249d1d5@intel.com>
-Date: Wed, 7 Jun 2023 14:56:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-References: <20230606111149.33890-1-przemyslaw.kitszel@intel.com>
- <1bd64ee9-4004-ddc8-6bff-6d8fc75c30c1@intel.com>
-Content-Language: en-US
+X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="956260005"
+X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="956260005"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmsmga006.fm.intel.com with ESMTP; 07 Jun 2023 06:12:25 -0700
+Received: from pelor.igk.intel.com (pelor.igk.intel.com [10.123.220.13])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 8C4093543A;
+ Wed,  7 Jun 2023 14:12:24 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <1bd64ee9-4004-ddc8-6bff-6d8fc75c30c1@intel.com>
-X-ClientProxiedBy: FR3P281CA0201.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a5::13) To BYAPR11MB3672.namprd11.prod.outlook.com
- (2603:10b6:a03:fa::30)
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Simon Horman <simon.horman@corigine.com>, intel-wired-lan@lists.osuosl.org
+Date: Wed,  7 Jun 2023 09:09:57 -0400
+Message-Id: <20230607130957.115573-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|CY5PR11MB6366:EE_
-X-MS-Office365-Filtering-Correlation-Id: 698817da-ceef-4ca6-d0a0-08db6756ab41
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: je6s9QkOz1+7/HXXS0OW07J1l47kTqwnAqwkN7kNPW13PEbDtCLZ1B/DhYMd+WEJz1uuQh4LXL37FJGOKAXGYCqbYOqAvfaW0KHFjHllJxx8oD2wOw4KeitWiVDYInjul5j5zp1cXwIxJ2jpPQ1EaMZu0RsXyM9IwzSXRBB3AnsqavJ/mV7i6ldb5bgeVPNYfKBj6NuLAyTRyYDwHgETcwWlexYZvqiOp+HoyLCDRpoM1SK9/N7y9CZ9mrAnuSbIL/RN2KhwyvzCqkbfrAcPve1bukv27ZY3DtD64Llb9D8mM7FQCCpO4IOMDvQ1Q6M8PT/kr+CEg0wuzg8hCSj69VkSs4Yy/mqEousF4Pf8J6avOEZpVFLR2H9lWx4sxvYOsVRwrpsT0cyel5Ctg0EcoTl3zPj52jJyBpMWNL9ykwMHhq37CDKo++STIUozwvSP9Qo0qOTCR2OJNN5tUAzi80jNkeAPkt0nxuVh2FEw1CgOYADnoF67vJhUUvsmyaMvxIeDDk0U0LRFPHkgCBF622hsZBwLF82SKkHvYIiovRKhg8JZp7snKq9jnTpDLQmintfpM536F/cu1teVAZNOkPD79dZQs5sA5NGoHfU/OZnH4TayLzADvxkfAsfcyNwXEh/euHDu5fqF2BMXnB7TGw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3672.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(39860400002)(346002)(136003)(396003)(366004)(451199021)(41300700001)(38100700002)(8676002)(8936002)(82960400001)(6636002)(5660300002)(6862004)(66556008)(4326008)(66946007)(66476007)(37006003)(54906003)(316002)(31686004)(478600001)(83380400001)(2906002)(31696002)(2616005)(966005)(86362001)(6666004)(6512007)(36756003)(6486002)(186003)(6506007)(26005)(53546011)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dG1rUFZhaVR4bnpjaHhlRFlLSVpHWUwrL2tQYUVLOFdDQVF3VjBUeHV3YjEy?=
- =?utf-8?B?K0IxMjdmbnk1b1p0ZVhNeTFNU3lGSlE0L2ZHQjVGRzVjbXJDNk01eE5Qcmc0?=
- =?utf-8?B?cmJzSEo3MnlIWlRaK3Y1ZFlKQ2hSRTNkMmc2cC9CVElpMTAwTE1lR3R1UjhC?=
- =?utf-8?B?cDRVUHBSait4NnM5TjZQQ0lpRmZaQ2o0ZFhRVGpyMERhZmdQV2tJVzU4Wjhn?=
- =?utf-8?B?czBOK2VkamhGYmtkWFR4UU5WR0E0Rzh3OVZBY2dQMndwdU9veXlsbWQxSSsr?=
- =?utf-8?B?RzNLa2N5NEV2eTBlYUpnY1FOWllsTjNydFpPSWdsYXBmeDlndW1BM3NBemdk?=
- =?utf-8?B?VnM2ZFNDbXNKb2xrV2FGZzFyc0Q1Skx4cy92VUVMZTBnKzFldzhtcTluTkNB?=
- =?utf-8?B?ZkErMytKZWdic1JoQ1BnZjBxTW1FUXV2ODRnQXpNbnd2eWVEMGE3a2t5ZURI?=
- =?utf-8?B?eG9sUml1OVF6WkM1Z2hpZ0RLK1k0WmtHUzlJc29VQlRjK0xxbkJ3QlNZVjln?=
- =?utf-8?B?cDk0eGFWbEw1RzJXNHltSlhDUEYvbVRyWU9qUUVNWXV3aHQ3Y1ZwU09wdmlB?=
- =?utf-8?B?MFBtVXdBbFBJWm50SnRJRU5RNDZwam14a2l2YjUzeGcrMzVtdUJCcHdQUHFN?=
- =?utf-8?B?RHB4VWNhbUZEUnlJREdyU1N1cHNwODg4WGxNdGpobG8zREwrSkswOFgwemlp?=
- =?utf-8?B?OGNVMURJM3pyODFKaTlRNTVNemtaTGxHeUN6YTNOSXFGNng5OWwxWDFVVm02?=
- =?utf-8?B?b0U2NTlQVVhySTFlTXM1dHo2UXBEd3NXckgzQlhrck9XZlVwWStqam8zWkVv?=
- =?utf-8?B?YW94c21nVFVobkR0Q28xZ25HRjR5c254NHVvcXpFY1p6ViswTGxOa1lqVUM4?=
- =?utf-8?B?N2pZdmJqanRzbmltSStDSlBWc1RuUmtEc0szczRCL3h6Z1ltZ1RGUGNkSit2?=
- =?utf-8?B?Yy9XeUEyU0F1R245MjZjdjJuQStGYVpGaGRCM21LQS9rMGN4Mjl1VUJHdW5G?=
- =?utf-8?B?dGsweUkrQ1RkTlBDS1NTUXZjRlY3QzZGdUNib2JDQ1NxWEZxVjVzb0prWGho?=
- =?utf-8?B?TVIyczRISXBPdTE2cll6N3loRHJZTDE2YTN2a2NaQUNvMkI1QWdQb1RVZEdm?=
- =?utf-8?B?cVJYNFFGdjYvRTFTLzZZak85OXVyaXpuN1BxNTNkMWwwaEhmVHZ5eEVOTWpm?=
- =?utf-8?B?YnVxa1pXVk81Nll3WnJFemFqRTZneGRPUjNYL3hkQXpFODVITVBscGNkejZN?=
- =?utf-8?B?NWNyMzFrUVNOSGwzNjlvNWV6K3Y4OVBNNkZGdjk1Nm9LbjBYcy9iQzhWMFc4?=
- =?utf-8?B?NG9Tdm5sSjRVV2RURFJzT3NWaDRUT3o4RFZ0QzFaazFXQW5uMTJtMTNIUm5z?=
- =?utf-8?B?TVJzV1hzTHd5OERNTTd2akluZHdnQytjQXVoRHplZnoxY0x2cWhNVXpsMHpv?=
- =?utf-8?B?QysyY2dyelVmSWxpOURQbU5oa05qVUg4NjdSQnVIb1ZLcDdQdnN4bUc0MnRl?=
- =?utf-8?B?VVVsWWU5cWQ1bTBZK0dMdkMvOTVIM3Z2ZTVaRC9KK244dTMyYlVkdXZLTzBk?=
- =?utf-8?B?M2QwaHhVWkQwYWplUCt0c3IvM21wdVBXM2tWWkFvblQ5NmpTTXNGREtBUXpS?=
- =?utf-8?B?OU1ueURiTmJ0Z1JBR0ZDZEF0ZitiUHpSSkVOcndVV2MwYXJFSWlBNWtQbDVR?=
- =?utf-8?B?eW1GbEltV0NXY0I4ZnBvaFRFU1NlR1NKSjBnb1djRFhLOCtDQVZLZDBycm16?=
- =?utf-8?B?cTZiWGc2WVZKdzZ6YnowYTVRc3Y4WWdaWUx6bllSNmlRbEFnNVhlbnRRUmZP?=
- =?utf-8?B?RG9LVzAwei9oS2w2NzQvZmdONytJU2pJWFhuL1pGNzFpYjNONXhzTFFqZ210?=
- =?utf-8?B?eUY0dzVrTEVVWVkwQkRFRGRYdjZRS283T0Uxc280QUZna3hNVHlSaE5FMzFq?=
- =?utf-8?B?ZVY3SkRXcVJMSUxncTdMZjFEMGRWOHBzZnhJY25BNGxTeFl5dHB1N203N1dF?=
- =?utf-8?B?SEp0VElBN05UYmdac0RIL28vdlE5STZKRlVDUXk4VnUxL00wSElMckJpRFE2?=
- =?utf-8?B?bDJUNWRuc2dDY1JmY1dGdHpFanZJZGJENnptVmE3aTV0M0MrK1Z1ODd1RUk0?=
- =?utf-8?B?NWRiSTJqNURXR2xybkVFemtONW9US0RBYmdKUkNOZWFwaWNTUHZyZlBiYVVi?=
- =?utf-8?B?THc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 698817da-ceef-4ca6-d0a0-08db6756ab41
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3672.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jun 2023 12:56:54.4554 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: bcFphtKDsWlGNwfM59PlVk9bl6VFiT2kWxn7imUnv4sP8laocLjYq3cjyrPTsc65lWEpP9DPzijflxwHAhz0MEr9AxSwF9XeRfuk0eVjDbg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6366
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686142624; x=1717678624;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=4OF1cN07IFGo5iiLAMSxOVB/pRALQJRHdN3aLaHSP5M=;
- b=c4jySbqWWnBgrkzkiK3RaS7anobcgtFGvRFgXgoX/295Gi4jKS4m3ry7
- GnaTwMYdfOAD/LzMaS5GFyYTTd9jWbjD4M+kJihYzQ+x0qQqoxHhv4f7z
- rVsNwTyoHpxtizpRTcHicJiquAmBt1Z3Afa3dHO7OVrhvxo5uaFpMjLOA
- BeShEO1ipDP+MIbzyM8RVpLT6yvCAtbcadfK+K1jnMxOkBdNhGOmQMyLj
- cFe7symfI+UvgIHJ655BBV+MRL+0CGQBuCsCmhVIL1yKJxkzrnAi5fo4n
- yRrMnZJs8rVD54rO3TNgwRs856/SFDLaTBa82+UTtlxqwaJSTOzKdrxbR
+ t=1686143555; x=1717679555;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=R6ltyTaGMShCOFp9CpDAgKi2l55lUP88aIDt+Mtv3F4=;
+ b=gls287bYARQlKRweSFvTt2XJ5TLYJAnEc4PDpXNhX5W6s7hZJXmaZBrj
+ ZaDLSOGsi7dS6M3pOc+3UsD0+GUMtontB9+Ny6zaaExzvC4iyt4E2MALb
+ BHfLq7cO49gGp8xxEryDECQgf/Pf19EVIdUvplq9nuOHNhVfq0c1YJk4s
+ gpCg42vdbcBVJ4t9FM0OsgOsj5A4eDohrQPBPlmPW+LxSIlxe77wF113M
+ LXmZwxonuw1LEkk4Aq5fgHcG7Mli7caqXsedBib+JUv7Yq55raZK945ya
+ OvzrbzimBizWZZgq7FxxlN8CofFNLmpWSdL1mBQfr2ZJ+e4FFUnbTVviF
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=c4jySbqW
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: clean up
+ header.a=rsa-sha256 header.s=Intel header.b=gls287bY
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: clean up
  __ice_aq_get_set_rss_lut()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -193,83 +97,452 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 6/6/23 15:31, Alexander Lobakin wrote:
-> From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Date: Tue, 6 Jun 2023 13:11:49 +0200
-> 
->> Refactor __ice_aq_get_set_rss_lut() to improve reader experience and limit
->> misuse scenarios (undesired LUT size for given LUT type).
-> 
-> [...]
-> 
-> <related block begin>
-> 
->> +	opcode = set ? ice_aqc_opc_set_rss_lut : ice_aqc_opc_get_rss_lut;
->> +	ice_fill_dflt_direct_cmd_desc(&desc, opcode);
->> +	if (set)
->> +		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
->>   
->> -	lut_size = params->lut_size;
->> -	lut_type = params->lut_type;
->> -	glob_lut_idx = params->global_lut_id;
->> +	desc_params = &desc.params.get_set_rss_lut;
->>   	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
->> +	desc_params->vsi_id = cpu_to_le16(vsi_id | ICE_AQC_RSS_VSI_VALID);
->>   
->> -	cmd_resp = &desc.params.get_set_rss_lut;
->> +	if (lut_type == ICE_LUT_GLOBAL)
->> +		glob_lut_idx = FIELD_PREP(ICE_AQC_LUT_GLOBAL_IDX,
->> +					  params->global_lut_id);
->>   
->> -	if (set) {
->> -		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_rss_lut);
->> -		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
->> -	} else {
->> -		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_rss_lut);
->> -	}
->> +	flags = lut_type | glob_lut_idx | ice_lut_size_to_flag(lut_size);
->> +	desc_params->flags = cpu_to_le16(flags);
-> 
-> </related block end>
-> 
-> Now the tricky part much harder to discover than FIELD_*(): you have
-> 
-> {u,__be,__le}{8,16,32,64}_{get,encode,replace}_bits()
-> 
-> macros for such cases :D
-> They aren't described in any kdoc and the indexers are not able to index
-> them (clangd however can IIRC), you even need some brain processing in
-> order to realize they exist. See [0].
-> 
-> I'm not saying they're perfectly applicable for this particular case,
-> just FYI.
-> 
->>   
->> -	cmd_resp->vsi_id = cpu_to_le16(((vsi_id <<
->> -					 ICE_AQC_GSET_RSS_LUT_VSI_ID_S) &
->> -					ICE_AQC_GSET_RSS_LUT_VSI_ID_M) |
->> -				       ICE_AQC_GSET_RSS_LUT_VSI_VALID);
-> 
-> [...]
-> 
-> [0]
-> https://elixir.bootlin.com/linux/v6.4-rc5/source/include/linux/bitfield.h#L174
-> 
-> Thanks,
-> Olek
+Refactor __ice_aq_get_set_rss_lut() to improve reader experience and limit
+misuse scenarios (undesired LUT size for given LUT type).
 
-Thank you for the mention :) I will keep that in mind, but for now I 
-will leave the code with cpu_to_le16(), as the scope of changes is 
-reaching single-patch size limits ;P
+Allow only 3 RSS LUT type+size variants:
+PF LUT sized 2048, GLOBAL LUT sized 512, and VSI LUT sized 64, which were
+used on default flows prior to this commit.
 
-PK
+Prior to the change, code was mixing the meaning of @params->lut_size and
+@params->lut_type, flag assigning logic was cryptic, while long defines
+made everything harder to follow.
+
+Fix that by extracting some code out to separate helpers.
+Drop some of "shift by 0" statements that originated from Intel's
+internal HW documentation.
+
+Drop some redundant VSI masks (since ice_is_vsi_valid() gives "valid" for
+up to 0x300 VSIs).
+
+After sweeping all the defines out of struct ice_aqc_get_set_rss_lut,
+it fits into 7 lines.
+
+Finally apply some cleanup to the callsite
+(use of the new enums, tmp var for lengthy bit extraction).
+
+Note that flags for 128 and 64 sized VSI LUT are the same,
+and 64 is used everywhere in the code (updated to new enum here), it just
+happened that there was 128 in flag name.
+
+__ice_aq_get_set_rss_key() uses the same VSI valid bit, make constant
+common for it and __ice_aq_get_set_rss_lut().
+
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+
+---
+v2:
+ - cover "impossible" cases with WARN ONCE + sane return after switch.
+---
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  53 +++----
+ drivers/net/ethernet/intel/ice/ice_common.c   | 143 +++++++-----------
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  20 +--
+ drivers/net/ethernet/intel/ice/ice_type.h     |   9 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |   6 +-
+ 6 files changed, 99 insertions(+), 133 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 63d3e1dcbba5..6ea0d4c017f0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1781,11 +1781,10 @@ struct ice_aqc_lldp_filter_ctrl {
+ 	u8 reserved2[12];
+ };
+ 
++#define ICE_AQC_RSS_VSI_VALID BIT(15)
++
+ /* Get/Set RSS key (indirect 0x0B04/0x0B02) */
+ struct ice_aqc_get_set_rss_key {
+-#define ICE_AQC_GSET_RSS_KEY_VSI_VALID	BIT(15)
+-#define ICE_AQC_GSET_RSS_KEY_VSI_ID_S	0
+-#define ICE_AQC_GSET_RSS_KEY_VSI_ID_M	(0x3FF << ICE_AQC_GSET_RSS_KEY_VSI_ID_S)
+ 	__le16 vsi_id;
+ 	u8 reserved[6];
+ 	__le32 addr_high;
+@@ -1803,35 +1802,33 @@ struct ice_aqc_get_set_rss_keys {
+ 	u8 extended_hash_key[ICE_AQC_GET_SET_RSS_KEY_DATA_HASH_KEY_SIZE];
+ };
+ 
+-/* Get/Set RSS LUT (indirect 0x0B05/0x0B03) */
+-struct ice_aqc_get_set_rss_lut {
+-#define ICE_AQC_GSET_RSS_LUT_VSI_VALID	BIT(15)
+-#define ICE_AQC_GSET_RSS_LUT_VSI_ID_S	0
+-#define ICE_AQC_GSET_RSS_LUT_VSI_ID_M	(0x3FF << ICE_AQC_GSET_RSS_LUT_VSI_ID_S)
+-	__le16 vsi_id;
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S	0
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_M	\
+-				(0x3 << ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S)
+-
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI	 0
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF	 1
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL	 2
++enum ice_lut_type {
++	ICE_LUT_VSI = 0,
++	ICE_LUT_PF = 1,
++	ICE_LUT_GLOBAL = 2,
++};
+ 
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S	 2
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M	 \
+-				(0x3 << ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S)
++enum ice_lut_size {
++	ICE_LUT_VSI_SIZE = 64,
++	ICE_LUT_GLOBAL_SIZE = 512,
++	ICE_LUT_PF_SIZE = 2048,
++};
+ 
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128	 128
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128_FLAG 0
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512	 512
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512_FLAG 1
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K	 2048
+-#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K_FLAG	 2
++/* enum ice_aqc_lut_flags combines constants used to fill
++ * &ice_aqc_get_set_rss_lut ::flags, which is an amalgamation of global LUT ID,
++ * LUT size and LUT type, last of which does not need neither shift nor mask.
++ */
++enum ice_aqc_lut_flags {
++	ICE_AQC_LUT_SIZE_SMALL = BIT(1), /* size = 64 or 128 */
++	ICE_AQC_LUT_SIZE_512 = BIT(2),
++	ICE_AQC_LUT_SIZE_2K = BIT(3),
+ 
+-#define ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S	 4
+-#define ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_M	 \
+-				(0xF << ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S)
++	ICE_AQC_LUT_GLOBAL_IDX = GENMASK(7, 4),
++};
+ 
++/* Get/Set RSS LUT (indirect 0x0B05/0x0B03) */
++struct ice_aqc_get_set_rss_lut {
++	__le16 vsi_id;
+ 	__le16 flags;
+ 	__le32 reserved;
+ 	__le32 addr_high;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 6acb40f3c202..deb55b6d516a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -3869,6 +3869,34 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
+ 	return status;
+ }
+ 
++static enum ice_lut_size ice_lut_type_to_size(enum ice_lut_type type)
++{
++	switch (type) {
++	case ICE_LUT_VSI:
++		return ICE_LUT_VSI_SIZE;
++	case ICE_LUT_GLOBAL:
++		return ICE_LUT_GLOBAL_SIZE;
++	case ICE_LUT_PF:
++		return ICE_LUT_PF_SIZE;
++	}
++	WARN_ONCE(1, "incorrect type passed");
++	return ICE_LUT_VSI_SIZE;
++}
++
++static enum ice_aqc_lut_flags ice_lut_size_to_flag(enum ice_lut_size size)
++{
++	switch (size) {
++	case ICE_LUT_VSI_SIZE:
++		return ICE_AQC_LUT_SIZE_SMALL;
++	case ICE_LUT_GLOBAL_SIZE:
++		return ICE_AQC_LUT_SIZE_512;
++	case ICE_LUT_PF_SIZE:
++		return ICE_AQC_LUT_SIZE_2K;
++	}
++	WARN_ONCE(1, "incorrect size passed");
++	return 0;
++}
++
+ /**
+  * __ice_aq_get_set_rss_lut
+  * @hw: pointer to the hardware structure
+@@ -3878,95 +3906,44 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
+  * Internal function to get (0x0B05) or set (0x0B03) RSS look up table
+  */
+ static int
+-__ice_aq_get_set_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *params, bool set)
+-{
+-	u16 flags = 0, vsi_id, lut_type, lut_size, glob_lut_idx, vsi_handle;
+-	struct ice_aqc_get_set_rss_lut *cmd_resp;
++__ice_aq_get_set_rss_lut(struct ice_hw *hw,
++			 struct ice_aq_get_set_rss_lut_params *params, bool set)
++{
++	u16 opcode, vsi_id, vsi_handle = params->vsi_handle, glob_lut_idx = 0;
++	enum ice_lut_type lut_type = params->lut_type;
++	struct ice_aqc_get_set_rss_lut *desc_params;
++	enum ice_aqc_lut_flags flags;
++	enum ice_lut_size lut_size;
+ 	struct ice_aq_desc desc;
+-	int status;
+-	u8 *lut;
++	u8 *lut = params->lut;
+ 
+-	if (!params)
+-		return -EINVAL;
+-
+-	vsi_handle = params->vsi_handle;
+-	lut = params->lut;
+ 
+-	if (!ice_is_vsi_valid(hw, vsi_handle) || !lut)
++	if (!lut || !ice_is_vsi_valid(hw, vsi_handle))
+ 		return -EINVAL;
+ 
+-	lut_size = params->lut_size;
+-	lut_type = params->lut_type;
+-	glob_lut_idx = params->global_lut_id;
+-	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
+-
+-	cmd_resp = &desc.params.get_set_rss_lut;
++	lut_size = ice_lut_type_to_size(lut_type);
++	if (lut_size > params->lut_size)
++		return -EINVAL;
++	else if (set && lut_size != params->lut_size)
++		return -EINVAL;
+ 
+-	if (set) {
+-		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_rss_lut);
++	opcode = set ? ice_aqc_opc_set_rss_lut : ice_aqc_opc_get_rss_lut;
++	ice_fill_dflt_direct_cmd_desc(&desc, opcode);
++	if (set)
+ 		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+-	} else {
+-		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_rss_lut);
+-	}
+ 
+-	cmd_resp->vsi_id = cpu_to_le16(((vsi_id <<
+-					 ICE_AQC_GSET_RSS_LUT_VSI_ID_S) &
+-					ICE_AQC_GSET_RSS_LUT_VSI_ID_M) |
+-				       ICE_AQC_GSET_RSS_LUT_VSI_VALID);
+-
+-	switch (lut_type) {
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI:
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF:
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL:
+-		flags |= ((lut_type << ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S) &
+-			  ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_M);
+-		break;
+-	default:
+-		status = -EINVAL;
+-		goto ice_aq_get_set_rss_lut_exit;
+-	}
++	desc_params = &desc.params.get_set_rss_lut;
++	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
++	desc_params->vsi_id = cpu_to_le16(vsi_id | ICE_AQC_RSS_VSI_VALID);
+ 
+-	if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL) {
+-		flags |= ((glob_lut_idx << ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S) &
+-			  ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_M);
++	if (lut_type == ICE_LUT_GLOBAL)
++		glob_lut_idx = FIELD_PREP(ICE_AQC_LUT_GLOBAL_IDX,
++					  params->global_lut_id);
+ 
+-		if (!set)
+-			goto ice_aq_get_set_rss_lut_send;
+-	} else if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF) {
+-		if (!set)
+-			goto ice_aq_get_set_rss_lut_send;
+-	} else {
+-		goto ice_aq_get_set_rss_lut_send;
+-	}
++	flags = lut_type | glob_lut_idx | ice_lut_size_to_flag(lut_size);
++	desc_params->flags = cpu_to_le16(flags);
+ 
+-	/* LUT size is only valid for Global and PF table types */
+-	switch (lut_size) {
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128:
+-		break;
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512:
+-		flags |= (ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512_FLAG <<
+-			  ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S) &
+-			 ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M;
+-		break;
+-	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K:
+-		if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF) {
+-			flags |= (ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K_FLAG <<
+-				  ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S) &
+-				 ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M;
+-			break;
+-		}
+-		fallthrough;
+-	default:
+-		status = -EINVAL;
+-		goto ice_aq_get_set_rss_lut_exit;
+-	}
+-
+-ice_aq_get_set_rss_lut_send:
+-	cmd_resp->flags = cpu_to_le16(flags);
+-	status = ice_aq_send_cmd(hw, &desc, lut, lut_size, NULL);
+-
+-ice_aq_get_set_rss_lut_exit:
+-	return status;
++	return ice_aq_send_cmd(hw, &desc, lut, lut_size, NULL);
+ }
+ 
+ /**
+@@ -4008,12 +3985,10 @@ static int
+ __ice_aq_get_set_rss_key(struct ice_hw *hw, u16 vsi_id,
+ 			 struct ice_aqc_get_set_rss_keys *key, bool set)
+ {
+-	struct ice_aqc_get_set_rss_key *cmd_resp;
++	struct ice_aqc_get_set_rss_key *desc_params;
+ 	u16 key_size = sizeof(*key);
+ 	struct ice_aq_desc desc;
+ 
+-	cmd_resp = &desc.params.get_set_rss_key;
+-
+ 	if (set) {
+ 		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_rss_key);
+ 		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+@@ -4021,10 +3996,8 @@ __ice_aq_get_set_rss_key(struct ice_hw *hw, u16 vsi_id,
+ 		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_rss_key);
+ 	}
+ 
+-	cmd_resp->vsi_id = cpu_to_le16(((vsi_id <<
+-					 ICE_AQC_GSET_RSS_KEY_VSI_ID_S) &
+-					ICE_AQC_GSET_RSS_KEY_VSI_ID_M) |
+-				       ICE_AQC_GSET_RSS_KEY_VSI_VALID);
++	desc_params = &desc.params.get_set_rss_key;
++	desc_params->vsi_id = cpu_to_le16(vsi_id | ICE_AQC_RSS_VSI_VALID);
+ 
+ 	return ice_aq_send_cmd(hw, &desc, key, key_size, NULL);
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+index a92dc9a16035..20f40dfeb761 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
++++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+@@ -489,7 +489,6 @@
+ #define VSIQF_FD_CNT_FD_BCNT_M			ICE_M(0x3FFF, 16)
+ #define VSIQF_FD_SIZE(_VSI)			(0x00462000 + ((_VSI) * 4))
+ #define VSIQF_HKEY_MAX_INDEX			12
+-#define VSIQF_HLUT_MAX_INDEX			15
+ #define PFPM_APM				0x000B8080
+ #define PFPM_APM_APME_M				BIT(0)
+ #define PFPM_WUFC				0x0009DC00
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index c3722c68af99..984b381386ff 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -907,6 +907,7 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
+ {
+ 	struct ice_hw_common_caps *cap;
+ 	struct ice_pf *pf = vsi->back;
++	u16 max_rss_size;
+ 
+ 	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+ 		vsi->rss_size = 1;
+@@ -914,32 +915,31 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
+ 	}
+ 
+ 	cap = &pf->hw.func_caps.common_cap;
++	max_rss_size = BIT(cap->rss_table_entry_width);
+ 	switch (vsi->type) {
+ 	case ICE_VSI_CHNL:
+ 	case ICE_VSI_PF:
+ 		/* PF VSI will inherit RSS instance of PF */
+ 		vsi->rss_table_size = (u16)cap->rss_table_size;
+ 		if (vsi->type == ICE_VSI_CHNL)
+-			vsi->rss_size = min_t(u16, vsi->num_rxq,
+-					      BIT(cap->rss_table_entry_width));
++			vsi->rss_size = min_t(u16, vsi->num_rxq, max_rss_size);
+ 		else
+ 			vsi->rss_size = min_t(u16, num_online_cpus(),
+-					      BIT(cap->rss_table_entry_width));
+-		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF;
++					      max_rss_size);
++		vsi->rss_lut_type = ICE_LUT_PF;
+ 		break;
+ 	case ICE_VSI_SWITCHDEV_CTRL:
+-		vsi->rss_table_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
+-		vsi->rss_size = min_t(u16, num_online_cpus(),
+-				      BIT(cap->rss_table_entry_width));
+-		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI;
++		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
++		vsi->rss_size = min_t(u16, num_online_cpus(), max_rss_size);
++		vsi->rss_lut_type = ICE_LUT_VSI;
+ 		break;
+ 	case ICE_VSI_VF:
+ 		/* VF VSI will get a small RSS table.
+ 		 * For VSI_LUT, LUT size should be set to 64 bytes.
+ 		 */
+-		vsi->rss_table_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
++		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
+ 		vsi->rss_size = ICE_MAX_RSS_QS_PER_VF;
+-		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI;
++		vsi->rss_lut_type = ICE_LUT_VSI;
+ 		break;
+ 	case ICE_VSI_LB:
+ 		break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index df9171a1a34f..a073616671ef 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -1038,10 +1038,10 @@ enum ice_sw_fwd_act_type {
+ };
+ 
+ struct ice_aq_get_set_rss_lut_params {
+-	u16 vsi_handle;		/* software VSI handle */
+-	u16 lut_size;		/* size of the LUT buffer */
+-	u8 lut_type;		/* type of the LUT (i.e. VSI, PF, Global) */
+ 	u8 *lut;		/* input RSS LUT for set and output RSS LUT for get */
++	enum ice_lut_size lut_size; /* size of the LUT buffer */
++	enum ice_lut_type lut_type; /* type of the LUT (i.e. VSI, PF, Global) */
++	u16 vsi_handle;		/* software VSI handle */
+ 	u8 global_lut_id;	/* only valid when lut_type is global */
+ };
+ 
+@@ -1143,9 +1143,6 @@ struct ice_aq_get_set_rss_lut_params {
+ 
+ #define ICE_SR_WORDS_IN_1KB		512
+ 
+-/* Hash redirection LUT for VSI - maximum array size */
+-#define ICE_VSIQF_HLUT_ARRAY_SIZE	((VSIQF_HLUT_MAX_INDEX + 1) * 4)
+-
+ /* AQ API version for LLDP_FILTER_CONTROL */
+ #define ICE_FW_API_LLDP_FLTR_MAJ	1
+ #define ICE_FW_API_LLDP_FLTR_MIN	7
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index efbc2968a7bf..92490fe655ea 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -500,7 +500,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 	vfres->num_queue_pairs = vsi->num_txq;
+ 	vfres->max_vectors = vf->pf->vfs.num_msix_per;
+ 	vfres->rss_key_size = ICE_VSIQF_HKEY_ARRAY_SIZE;
+-	vfres->rss_lut_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
++	vfres->rss_lut_size = ICE_LUT_VSI_SIZE;
+ 	vfres->max_mtu = ice_vc_get_max_frame_size(vf);
+ 
+ 	vfres->vsi_res[0].vsi_id = vf->lan_vsi_num;
+@@ -962,7 +962,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if (vrl->lut_entries != ICE_VSIQF_HLUT_ARRAY_SIZE) {
++	if (vrl->lut_entries != ICE_LUT_VSI_SIZE) {
+ 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 		goto error_param;
+ 	}
+@@ -978,7 +978,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if (ice_set_rss_lut(vsi, vrl->lut, ICE_VSIQF_HLUT_ARRAY_SIZE))
++	if (ice_set_rss_lut(vsi, vrl->lut, ICE_LUT_VSI_SIZE))
+ 		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
+ error_param:
+ 	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
+-- 
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
