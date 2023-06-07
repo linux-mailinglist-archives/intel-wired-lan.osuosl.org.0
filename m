@@ -2,85 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DC5C727191
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Jun 2023 00:25:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9588727193
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Jun 2023 00:25:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD68C613C6;
-	Wed,  7 Jun 2023 22:25:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD68C613C6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8F32C613CF;
+	Wed,  7 Jun 2023 22:25:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F32C613CF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686176704;
-	bh=JW7FA7cX7WjWv9GtUH0Tc1M4XZgN9NRIoP0FP2JU8C8=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=PQbCH168+5dJCCr9f/18gYTIIrHguTpU5PsQBPokopl1+M4JF0aaUq+K6tL0+KpGd
-	 IdNF4Q8flVhShEm8GEt4Uzf579WpzjspMQYZ9Y8iF96vfZNGxxSh0k/2J9FShq0TsJ
-	 C6+SZacNCbDTnbDkPeQUv66gH0+Ie/AaifxEb8tuQSgtaJ99FbetxJL85fSol35y4D
-	 AWXzT3yAt5D/LDnGuXFV+Ci7ImDv98lR+gtuI5mN/0G5OJZWBIX2ApU/spcPHLcZgz
-	 Evg/ICTX5Ehpnx7nQvIHS/Uw18S8LeeVXDXmPZI8QBAvBe9oit6PQrjgmWp5ORh7hf
-	 QxletHNTNej2w==
+	s=default; t=1686176709;
+	bh=h6TDKrvAl+NIUzFPGnU4ISTUUO43t0mEb22hg83TKUU=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=rCyfh+V3/piQNLa0Pw9gHUO58Rus9R45z+p9iAt+/edItSK0hpRFvQOfroT0AXUzP
+	 Zv2a7dGSOKLk+5oL66DFvohpN/J8XIAFPM52KyZejUL9EuyixtcR9hRe748PHZ0Vuv
+	 gf1T2CtB1oKO6s8BMleK9yuZQJpwrKxm1cyPRcSY7ZahXhxWeVsxHftxY3jT9I9ZhH
+	 IEaUGLDZQ4PMJvThJsZvTl+ill8VLYbTdbSARUF6+ensP16lMMPt0fFMJnD8rOzS2s
+	 z5dODPjqICddiIwd7Bw6RUNadcRTT8Nnn/THVUGrdskym3QV+BUyoqslvnPFxfNLFG
+	 E16VIJOA6JKew==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H7Asdturwp3A; Wed,  7 Jun 2023 22:25:03 +0000 (UTC)
+	with ESMTP id 9bW7l1_U6zbL; Wed,  7 Jun 2023 22:25:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 46D5D6117F;
-	Wed,  7 Jun 2023 22:25:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 46D5D6117F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9311D60A7B;
+	Wed,  7 Jun 2023 22:25:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9311D60A7B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 82C761BF3EA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 22:24:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3380F1BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 22:24:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 64A574183F
+ by smtp2.osuosl.org (Postfix) with ESMTP id C166C41821
  for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 22:24:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64A574183F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C166C41821
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id athoyueCcUrn for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id qIAOXfrZnhX5 for <intel-wired-lan@lists.osuosl.org>;
  Wed,  7 Jun 2023 22:24:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0D47741821
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6F91F4183C
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0D47741821
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 22:24:56 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="443493349"
-X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; d="scan'208";a="443493349"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6F91F4183C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 22:24:57 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="443493351"
+X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; d="scan'208";a="443493351"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2023 15:24:55 -0700
+ 07 Jun 2023 15:24:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="774804934"
-X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; d="scan'208";a="774804934"
+X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="774804938"
+X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; d="scan'208";a="774804938"
 Received: from pmstillw-desk1.amr.corp.intel.com ([10.212.90.221])
  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 Jun 2023 15:24:55 -0700
 From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  7 Jun 2023 15:24:39 -0700
-Message-Id: <20230607222443.119-1-paul.m.stillwell.jr@intel.com>
+Date: Wed,  7 Jun 2023 15:24:40 -0700
+Message-Id: <20230607222443.119-2-paul.m.stillwell.jr@intel.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230607222443.119-1-paul.m.stillwell.jr@intel.com>
+References: <20230607222443.119-1-paul.m.stillwell.jr@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1686176697; x=1717712697;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=EsHenjowpno78FDogJpSvLw/26SRV1wuXJpeByIWR/s=;
- b=m6pG34DpUIwPJehZ1YJgbZI554tIyroXwdVS3tJPZGVN4/OGxVg8Ogc6
- xNyMI1PJGliQr+MwT69gE5XGhVTBJP3Ke2/AyAT5IwyET+nUANieVoQl6
- LOiFza7p0Ra3vBaDG0MCAah7A4wy6QiFyFIcJWbr0Q6b4xsi2nN75C5yE
- UIkj6FtWOpqUXjG1wjEJmcNcuiHXuOtIqPPxIf7FaneRkLt5vFRvf8zcY
- YeH+57azef4AaASkaWEaFRxHrTxFJBFMXDz4bqTiIXlhnyTWsywCBTfAe
- JJyvljn4nGc1EilgP3IYq0ylEJeqer1PY/jBtshrPSLpiyNwXGHE88KBB
- A==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=NaTGpxRyFmiPkyXTitExujkh+EtokvjICugGmxa3+3A=;
+ b=QzVd0jxoDNbuxNwNEi/VFdm7SobLd5CVsM6BMvpnliz4Te0eUBGTaUC5
+ pNwPsUpY+gdd0H6D7XlflHLEI7xCYpCrgbBvkvO2H8GJbGS+oQkhZ+Jd3
+ ZIg6xoxnaxzgthCV3J3+zzKEjMCOOuXKgfNc/h1cOQwfZd+kbrPPrg+O7
+ IsC4lSDR0kcUiHqsLRK8JoNPGOySCszTrtlnc1S4+Yh0mE4Q/ykmLwnUr
+ F0rfcC/mjgelIlYoPGWR7z65eIdGBZV+faEKkOxSbmsMy7HURgF854fsJ
+ mglG1WaXeIt6Q+IfobBALropdzDiGf3RSZ8jkqdoa42L55JHMyHGD/jI9
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=m6pG34Dp
-Subject: [Intel-wired-lan] [PATCH net-next v12 0/4] add v2 FW logging for
- ice driver
+ header.a=rsa-sha256 header.s=Intel header.b=QzVd0jxo
+Subject: [Intel-wired-lan] [PATCH net-next v12 1/4] ice: remove FW logging
+ code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,192 +101,440 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Firmware (FW) log support was added to the ice driver, but that version is
-no longer supported. There is a newer version of FW logging (v2) that
-adds more control knobs to get the exact data out of the FW
-for debugging.
+The FW logging code doesn't work because there is no way to set
+cq_ena or uart_ena so remove the code. This code is the original
+(v1) way of FW logging so it should be replaced with the v2 way.
 
-The interface for FW logging is debugfs. This was chosen based on a
-discussion here:
-https://lore.kernel.org/netdev/20230214180712.53fc8ba2@kernel.org/
-We talked about using devlink in a variety of ways, but none of those
-options made any sense for the way the FW reports data. We briefly talked
-about using ethtool, but that seemed to go by the wayside. Ultimately it
-seems like using debugfs is the way to go so re-implement the code to use
-that.
-
-FW logging is across all the PFs on the device so restrict the commands to
-only PF0.
-
-If FW logging is supported then a directory named 'fwlog' will be created
-under '/sys/kernel/debug/ice/<pci_dev>'. A variety of files will be created
-to manage the behavior of logging. The following files will be created:
-- modules
-- resolution
-- enable
-- nr_buffs
-- data
-
-where
-modules is used to read/write the configuration for FW logging
-
-resolution is used to determine how often to send FW logging events to the
-driver
-
-enable is used to start/stop FW logging
-
-nr_buffs is used to configure the number of data buffers the driver uses
-for log data
-
-data is used to read/clear the log data
-
-Generally there is a lot of data and dumping that data to syslog will
-result in a loss of data. This causes problems when decoding the data and
-the user doesn't know that data is missing until later. Instead of dumping
-the FW log output to syslog use debugfs. This ensures that all the data the
-driver has gets retrieved correctly.
-
-The FW log data is binary data that the FW team decodes to determine what
-happened in firmware. The binary blob is sent to Intel for decoding.
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 ---
-v12:
-- re-wrote debugfs code to use individual files for configuration instead
-  of parsing the strings within the driver.
-- use sysfs_match_string() to parse the 2 values we need for configuring
-  the modules instead of strncmp()
-- use ring buffers to contain log data instead of a list. this allows for
-  wrapping the data instead of stopping log capture
-- split documentation into it's own patch
-
-v11 at:
-https://lore.kernel.org/intel-wired-lan/20230313231841.113-1-paul.m.stillwell.jr@intel.com/
-
-v11:
-- changed 'events' variable to be u32 instead of unsigned long since
-  the FW expects a 32-bit value. This caused some changes to a few
-  functions that pass 'events' and changed the parsing in debugfs.
-  Also fixed an issue with i386 cross compile where BIT_ULL() was
-  being used incorrectly and causing compiler issues on i386 because
-  the value was larger than the variable.
-
-v10 at:
-https://lore.kernel.org/intel-wired-lan/20230308235102.170-1-paul.m.stillwell.jr@intel.com/
-
-v10:
-- updated code to only create 'fwlog' file if FW logging is supported
-- combined code under single ifdef in header file
-- removed defines that were not used and added them when the correct patch is
-  applied
-- added newline between defines and variables in structure
-- moved include header into alphabetical order at top of file
-- removed unnecessary casts
-- updated return statements for more efficient code
-- changed BIT() to BIT_ULL() to try to fix i386 cross compile issue
-- fixed RCT issue
-- added documentation in Documentation/networking/device-drivers/ethernet/intel/ice.rst
-- updated commit messages appropriately
-- 
-
-v9 at:
-https://lore.kernel.org/intel-wired-lan/20230302215109.124-1-paul.m.stillwell.jr@intel.com/
-
-v9:
-- rewrote code to use debugfs instead of devlink
-
-v8 at:
-https://lore.kernel.org/intel-wired-lan/20230124221428.114-1-paul.m.stillwell.jr@intel.com/
-
-v8:
-- added vmalloc.h file for correct prototypes
-- moved code change from patch 5 to patch 3 where it was supposed to be
-- fixed a style issue
-
-v7 at:
-https://lore.kernel.org/intel-wired-lan/20230120233511.131-1-paul.m.stillwell.jr@intel.com/
-
-v7:
-- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
-- refactored ice_debugfs_command_read() to split the copying of the data and
-  the freeing of the buffers. This allows for better error recovery in case
-  the copy_to_user() fails
-- changed allocation of fwlog buffers and structure from kernel memory to
-  virtual memory (vmalloc/vzalloc)
-- fixed a compile bug
-
-v6 at:
-https://lore.kernel.org/intel-wired-lan/20230113222319.111-1-paul.m.stillwell.jr@intel.com/
-
-v6:
-- removed cache_cfg() based on feedback
-- a couple of other minor changes based on feedback
-
-v5 at:
-https://lore.kernel.org/intel-wired-lan/20230111191906.131-1-paul.m.stillwell.jr@intel.com/
-
-v5:
-- handle devlink reload path correctly so debugfs directories don't get
-  added twice
-- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
-  compile issues with multiple defines
-
-No v4 cover letter
-
-v4:
-- actually changed the modes in ice.rst for new params
-
-v3 at:
-https://lore.kernel.org/intel-wired-lan/20221217045828.222-1-paul.m.stillwell.jr@intel.com/
-
-v3:
-- fixed ice.rst to have proper mode for new params and fixed formatting 
-
-v2 at:
-https://lore.kernel.org/intel-wired-lan/20221209232748.189-1-paul.m.stillwell.jr@intel.com/
-
-v2:
-- removed some unused admin queue commands
-- updated copyright in ice_fwlog.[ch] to 2022
-- moved defines in structures under the variables and added blank line
-- removed a couple of unused defines
-- changed fwlog_support_ena to fwlog_supported to be clearer
-- consolidated ice_devlink_param_id enum together
-- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
-- consolidated return status logic in ice_devlink_fwlog_enabled_set()
-- pull up functions in ice_fwlog.c where appropriate
-- add newline for FW Logging Commands comment
-- changed any new u[8/16] loop variables to int
-- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
-- changed error message to be clearer
-- updated Documentation/networking/devlink/ice.rst
-- updated commit messages with examples of devlink commands and using
-  debugfs to get log files
-
-v1 at:
-https://lore.kernel.org/intel-wired-lan/20221128214749.110-1-paul.m.stillwell.jr@intel.com/
-
-Paul M Stillwell Jr (4):
-  ice: remove FW logging code
-  ice: configure FW logging
-  ice: add ability to read FW log data and configure the number of log
-    buffers
-  ice: added documentation for FW logging
-
- .../device_drivers/ethernet/intel/ice.rst     | 126 ++-
- drivers/net/ethernet/intel/ice/Makefile       |   4 +-
- drivers/net/ethernet/intel/ice/ice.h          |  18 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 159 ++--
- drivers/net/ethernet/intel/ice/ice_common.c   | 219 +----
+v10->v11: none
+v9->v10: none
+v8->v9: none
+v7->v8: none
+v6->v7: none
+v5->v6: none
+v4->v5: none
+v3->v4: none
+v2->v3: none
+v1->v2: none
+---
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  78 -------
+ drivers/net/ethernet/intel/ice/ice_common.c   | 218 ------------------
  drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
- drivers/net/ethernet/intel/ice/ice_debugfs.c  | 809 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_fwlog.c    | 449 ++++++++++
- drivers/net/ethernet/intel/ice/ice_fwlog.h    |  77 ++
- drivers/net/ethernet/intel/ice/ice_main.c     |  51 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
- 11 files changed, 1617 insertions(+), 319 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
+ drivers/net/ethernet/intel/ice/ice_main.c     |   3 -
+ drivers/net/ethernet/intel/ice/ice_type.h     |  20 --
+ 5 files changed, 320 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 740236b3f0fc..a40728338850 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1980,78 +1980,6 @@ struct ice_aqc_add_rdma_qset_data {
+ 	struct ice_aqc_add_tx_rdma_qset_entry rdma_qsets[];
+ };
+ 
+-/* Configure Firmware Logging Command (indirect 0xFF09)
+- * Logging Information Read Response (indirect 0xFF10)
+- * Note: The 0xFF10 command has no input parameters.
+- */
+-struct ice_aqc_fw_logging {
+-	u8 log_ctrl;
+-#define ICE_AQC_FW_LOG_AQ_EN		BIT(0)
+-#define ICE_AQC_FW_LOG_UART_EN		BIT(1)
+-	u8 rsvd0;
+-	u8 log_ctrl_valid; /* Not used by 0xFF10 Response */
+-#define ICE_AQC_FW_LOG_AQ_VALID		BIT(0)
+-#define ICE_AQC_FW_LOG_UART_VALID	BIT(1)
+-	u8 rsvd1[5];
+-	__le32 addr_high;
+-	__le32 addr_low;
+-};
+-
+-enum ice_aqc_fw_logging_mod {
+-	ICE_AQC_FW_LOG_ID_GENERAL = 0,
+-	ICE_AQC_FW_LOG_ID_CTRL,
+-	ICE_AQC_FW_LOG_ID_LINK,
+-	ICE_AQC_FW_LOG_ID_LINK_TOPO,
+-	ICE_AQC_FW_LOG_ID_DNL,
+-	ICE_AQC_FW_LOG_ID_I2C,
+-	ICE_AQC_FW_LOG_ID_SDP,
+-	ICE_AQC_FW_LOG_ID_MDIO,
+-	ICE_AQC_FW_LOG_ID_ADMINQ,
+-	ICE_AQC_FW_LOG_ID_HDMA,
+-	ICE_AQC_FW_LOG_ID_LLDP,
+-	ICE_AQC_FW_LOG_ID_DCBX,
+-	ICE_AQC_FW_LOG_ID_DCB,
+-	ICE_AQC_FW_LOG_ID_NETPROXY,
+-	ICE_AQC_FW_LOG_ID_NVM,
+-	ICE_AQC_FW_LOG_ID_AUTH,
+-	ICE_AQC_FW_LOG_ID_VPD,
+-	ICE_AQC_FW_LOG_ID_IOSF,
+-	ICE_AQC_FW_LOG_ID_PARSER,
+-	ICE_AQC_FW_LOG_ID_SW,
+-	ICE_AQC_FW_LOG_ID_SCHEDULER,
+-	ICE_AQC_FW_LOG_ID_TXQ,
+-	ICE_AQC_FW_LOG_ID_RSVD,
+-	ICE_AQC_FW_LOG_ID_POST,
+-	ICE_AQC_FW_LOG_ID_WATCHDOG,
+-	ICE_AQC_FW_LOG_ID_TASK_DISPATCH,
+-	ICE_AQC_FW_LOG_ID_MNG,
+-	ICE_AQC_FW_LOG_ID_MAX,
+-};
+-
+-/* Defines for both above FW logging command/response buffers */
+-#define ICE_AQC_FW_LOG_ID_S		0
+-#define ICE_AQC_FW_LOG_ID_M		(0xFFF << ICE_AQC_FW_LOG_ID_S)
+-
+-#define ICE_AQC_FW_LOG_CONF_SUCCESS	0	/* Used by response */
+-#define ICE_AQC_FW_LOG_CONF_BAD_INDX	BIT(12)	/* Used by response */
+-
+-#define ICE_AQC_FW_LOG_EN_S		12
+-#define ICE_AQC_FW_LOG_EN_M		(0xF << ICE_AQC_FW_LOG_EN_S)
+-#define ICE_AQC_FW_LOG_INFO_EN		BIT(12)	/* Used by command */
+-#define ICE_AQC_FW_LOG_INIT_EN		BIT(13)	/* Used by command */
+-#define ICE_AQC_FW_LOG_FLOW_EN		BIT(14)	/* Used by command */
+-#define ICE_AQC_FW_LOG_ERR_EN		BIT(15)	/* Used by command */
+-
+-/* Get/Clear FW Log (indirect 0xFF11) */
+-struct ice_aqc_get_clear_fw_log {
+-	u8 flags;
+-#define ICE_AQC_FW_LOG_CLEAR		BIT(0)
+-#define ICE_AQC_FW_LOG_MORE_DATA_AVAIL	BIT(1)
+-	u8 rsvd1[7];
+-	__le32 addr_high;
+-	__le32 addr_low;
+-};
+-
+ /* Download Package (indirect 0x0C40) */
+ /* Also used for Update Package (indirect 0x0C41 and 0x0C42) */
+ struct ice_aqc_download_pkg {
+@@ -2211,8 +2139,6 @@ struct ice_aq_desc {
+ 		struct ice_aqc_add_rdma_qset add_rdma_qset;
+ 		struct ice_aqc_add_get_update_free_vsi vsi_cmd;
+ 		struct ice_aqc_add_update_free_vsi_resp add_update_free_vsi_res;
+-		struct ice_aqc_fw_logging fw_logging;
+-		struct ice_aqc_get_clear_fw_log get_clear_fw_log;
+ 		struct ice_aqc_download_pkg download_pkg;
+ 		struct ice_aqc_driver_shared_params drv_shared_params;
+ 		struct ice_aqc_set_mac_lb set_mac_lb;
+@@ -2399,10 +2325,6 @@ enum ice_adminq_opc {
+ 
+ 	/* Standalone Commands/Events */
+ 	ice_aqc_opc_event_lan_overflow			= 0x1001,
+-
+-	/* debug commands */
+-	ice_aqc_opc_fw_logging				= 0xFF09,
+-	ice_aqc_opc_fw_logging_info			= 0xFF10,
+ };
+ 
+ #endif /* _ICE_ADMINQ_CMD_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 37f27b147122..ecd7f7c5919f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -822,217 +822,6 @@ static void ice_cleanup_fltr_mgmt_struct(struct ice_hw *hw)
+ 	devm_kfree(ice_hw_to_dev(hw), sw);
+ }
+ 
+-/**
+- * ice_get_fw_log_cfg - get FW logging configuration
+- * @hw: pointer to the HW struct
+- */
+-static int ice_get_fw_log_cfg(struct ice_hw *hw)
+-{
+-	struct ice_aq_desc desc;
+-	__le16 *config;
+-	int status;
+-	u16 size;
+-
+-	size = sizeof(*config) * ICE_AQC_FW_LOG_ID_MAX;
+-	config = devm_kzalloc(ice_hw_to_dev(hw), size, GFP_KERNEL);
+-	if (!config)
+-		return -ENOMEM;
+-
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_fw_logging_info);
+-
+-	status = ice_aq_send_cmd(hw, &desc, config, size, NULL);
+-	if (!status) {
+-		u16 i;
+-
+-		/* Save FW logging information into the HW structure */
+-		for (i = 0; i < ICE_AQC_FW_LOG_ID_MAX; i++) {
+-			u16 v, m, flgs;
+-
+-			v = le16_to_cpu(config[i]);
+-			m = (v & ICE_AQC_FW_LOG_ID_M) >> ICE_AQC_FW_LOG_ID_S;
+-			flgs = (v & ICE_AQC_FW_LOG_EN_M) >> ICE_AQC_FW_LOG_EN_S;
+-
+-			if (m < ICE_AQC_FW_LOG_ID_MAX)
+-				hw->fw_log.evnts[m].cur = flgs;
+-		}
+-	}
+-
+-	devm_kfree(ice_hw_to_dev(hw), config);
+-
+-	return status;
+-}
+-
+-/**
+- * ice_cfg_fw_log - configure FW logging
+- * @hw: pointer to the HW struct
+- * @enable: enable certain FW logging events if true, disable all if false
+- *
+- * This function enables/disables the FW logging via Rx CQ events and a UART
+- * port based on predetermined configurations. FW logging via the Rx CQ can be
+- * enabled/disabled for individual PF's. However, FW logging via the UART can
+- * only be enabled/disabled for all PFs on the same device.
+- *
+- * To enable overall FW logging, the "cq_en" and "uart_en" enable bits in
+- * hw->fw_log need to be set accordingly, e.g. based on user-provided input,
+- * before initializing the device.
+- *
+- * When re/configuring FW logging, callers need to update the "cfg" elements of
+- * the hw->fw_log.evnts array with the desired logging event configurations for
+- * modules of interest. When disabling FW logging completely, the callers can
+- * just pass false in the "enable" parameter. On completion, the function will
+- * update the "cur" element of the hw->fw_log.evnts array with the resulting
+- * logging event configurations of the modules that are being re/configured. FW
+- * logging modules that are not part of a reconfiguration operation retain their
+- * previous states.
+- *
+- * Before resetting the device, it is recommended that the driver disables FW
+- * logging before shutting down the control queue. When disabling FW logging
+- * ("enable" = false), the latest configurations of FW logging events stored in
+- * hw->fw_log.evnts[] are not overridden to allow them to be reconfigured after
+- * a device reset.
+- *
+- * When enabling FW logging to emit log messages via the Rx CQ during the
+- * device's initialization phase, a mechanism alternative to interrupt handlers
+- * needs to be used to extract FW log messages from the Rx CQ periodically and
+- * to prevent the Rx CQ from being full and stalling other types of control
+- * messages from FW to SW. Interrupts are typically disabled during the device's
+- * initialization phase.
+- */
+-static int ice_cfg_fw_log(struct ice_hw *hw, bool enable)
+-{
+-	struct ice_aqc_fw_logging *cmd;
+-	u16 i, chgs = 0, len = 0;
+-	struct ice_aq_desc desc;
+-	__le16 *data = NULL;
+-	u8 actv_evnts = 0;
+-	void *buf = NULL;
+-	int status = 0;
+-
+-	if (!hw->fw_log.cq_en && !hw->fw_log.uart_en)
+-		return 0;
+-
+-	/* Disable FW logging only when the control queue is still responsive */
+-	if (!enable &&
+-	    (!hw->fw_log.actv_evnts || !ice_check_sq_alive(hw, &hw->adminq)))
+-		return 0;
+-
+-	/* Get current FW log settings */
+-	status = ice_get_fw_log_cfg(hw);
+-	if (status)
+-		return status;
+-
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_fw_logging);
+-	cmd = &desc.params.fw_logging;
+-
+-	/* Indicate which controls are valid */
+-	if (hw->fw_log.cq_en)
+-		cmd->log_ctrl_valid |= ICE_AQC_FW_LOG_AQ_VALID;
+-
+-	if (hw->fw_log.uart_en)
+-		cmd->log_ctrl_valid |= ICE_AQC_FW_LOG_UART_VALID;
+-
+-	if (enable) {
+-		/* Fill in an array of entries with FW logging modules and
+-		 * logging events being reconfigured.
+-		 */
+-		for (i = 0; i < ICE_AQC_FW_LOG_ID_MAX; i++) {
+-			u16 val;
+-
+-			/* Keep track of enabled event types */
+-			actv_evnts |= hw->fw_log.evnts[i].cfg;
+-
+-			if (hw->fw_log.evnts[i].cfg == hw->fw_log.evnts[i].cur)
+-				continue;
+-
+-			if (!data) {
+-				data = devm_kcalloc(ice_hw_to_dev(hw),
+-						    ICE_AQC_FW_LOG_ID_MAX,
+-						    sizeof(*data),
+-						    GFP_KERNEL);
+-				if (!data)
+-					return -ENOMEM;
+-			}
+-
+-			val = i << ICE_AQC_FW_LOG_ID_S;
+-			val |= hw->fw_log.evnts[i].cfg << ICE_AQC_FW_LOG_EN_S;
+-			data[chgs++] = cpu_to_le16(val);
+-		}
+-
+-		/* Only enable FW logging if at least one module is specified.
+-		 * If FW logging is currently enabled but all modules are not
+-		 * enabled to emit log messages, disable FW logging altogether.
+-		 */
+-		if (actv_evnts) {
+-			/* Leave if there is effectively no change */
+-			if (!chgs)
+-				goto out;
+-
+-			if (hw->fw_log.cq_en)
+-				cmd->log_ctrl |= ICE_AQC_FW_LOG_AQ_EN;
+-
+-			if (hw->fw_log.uart_en)
+-				cmd->log_ctrl |= ICE_AQC_FW_LOG_UART_EN;
+-
+-			buf = data;
+-			len = sizeof(*data) * chgs;
+-			desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+-		}
+-	}
+-
+-	status = ice_aq_send_cmd(hw, &desc, buf, len, NULL);
+-	if (!status) {
+-		/* Update the current configuration to reflect events enabled.
+-		 * hw->fw_log.cq_en and hw->fw_log.uart_en indicate if the FW
+-		 * logging mode is enabled for the device. They do not reflect
+-		 * actual modules being enabled to emit log messages. So, their
+-		 * values remain unchanged even when all modules are disabled.
+-		 */
+-		u16 cnt = enable ? chgs : (u16)ICE_AQC_FW_LOG_ID_MAX;
+-
+-		hw->fw_log.actv_evnts = actv_evnts;
+-		for (i = 0; i < cnt; i++) {
+-			u16 v, m;
+-
+-			if (!enable) {
+-				/* When disabling all FW logging events as part
+-				 * of device's de-initialization, the original
+-				 * configurations are retained, and can be used
+-				 * to reconfigure FW logging later if the device
+-				 * is re-initialized.
+-				 */
+-				hw->fw_log.evnts[i].cur = 0;
+-				continue;
+-			}
+-
+-			v = le16_to_cpu(data[i]);
+-			m = (v & ICE_AQC_FW_LOG_ID_M) >> ICE_AQC_FW_LOG_ID_S;
+-			hw->fw_log.evnts[m].cur = hw->fw_log.evnts[m].cfg;
+-		}
+-	}
+-
+-out:
+-	if (data)
+-		devm_kfree(ice_hw_to_dev(hw), data);
+-
+-	return status;
+-}
+-
+-/**
+- * ice_output_fw_log
+- * @hw: pointer to the HW struct
+- * @desc: pointer to the AQ message descriptor
+- * @buf: pointer to the buffer accompanying the AQ message
+- *
+- * Formats a FW Log message and outputs it via the standard driver logs.
+- */
+-void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf)
+-{
+-	ice_debug(hw, ICE_DBG_FW_LOG, "[ FW Log Msg Start ]\n");
+-	ice_debug_array(hw, ICE_DBG_FW_LOG, 16, 1, (u8 *)buf,
+-			le16_to_cpu(desc->datalen));
+-	ice_debug(hw, ICE_DBG_FW_LOG, "[ FW Log Msg End ]\n");
+-}
+-
+ /**
+  * ice_get_itr_intrl_gran
+  * @hw: pointer to the HW struct
+@@ -1090,11 +879,6 @@ int ice_init_hw(struct ice_hw *hw)
+ 	if (status)
+ 		goto err_unroll_cqinit;
+ 
+-	/* Enable FW logging. Not fatal if this fails. */
+-	status = ice_cfg_fw_log(hw, true);
+-	if (status)
+-		ice_debug(hw, ICE_DBG_INIT, "Failed to enable FW logging.\n");
+-
+ 	status = ice_clear_pf_cfg(hw);
+ 	if (status)
+ 		goto err_unroll_cqinit;
+@@ -1244,8 +1028,6 @@ void ice_deinit_hw(struct ice_hw *hw)
+ 	ice_free_hw_tbls(hw);
+ 	mutex_destroy(&hw->tnl_lock);
+ 
+-	/* Attempt to disable FW logging before shutting down control queues */
+-	ice_cfg_fw_log(hw, false);
+ 	ice_destroy_all_ctrlq(hw);
+ 
+ 	/* Clear VSI contexts if not already cleared */
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 8ba5f935a092..831212824d84 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -188,7 +188,6 @@ ice_ena_vsi_txq(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u16 q_handle,
+ 		struct ice_sq_cd *cd);
+ int ice_replay_vsi(struct ice_hw *hw, u16 vsi_handle);
+ void ice_replay_post(struct ice_hw *hw);
+-void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf);
+ struct ice_q_ctx *
+ ice_get_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 q_handle);
+ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 7c04057c524c..9701992ab728 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1519,9 +1519,6 @@ static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
+ 
+ 			ice_vc_process_vf_msg(pf, &event, &data);
+ 			break;
+-		case ice_aqc_opc_fw_logging:
+-			ice_output_fw_log(hw, &event.desc, event.msg_buf);
+-			break;
+ 		case ice_aqc_opc_lldp_set_mib_change:
+ 			ice_dcb_process_lldp_set_mib_change(pf, &event);
+ 			break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 5602695243a8..a6fb37f0dc88 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -728,24 +728,6 @@ struct ice_switch_info {
+ 	DECLARE_BITMAP(prof_res_bm[ICE_MAX_NUM_PROFILES], ICE_MAX_FV_WORDS);
+ };
+ 
+-/* FW logging configuration */
+-struct ice_fw_log_evnt {
+-	u8 cfg : 4;	/* New event enables to configure */
+-	u8 cur : 4;	/* Current/active event enables */
+-};
+-
+-struct ice_fw_log_cfg {
+-	u8 cq_en : 1;    /* FW logging is enabled via the control queue */
+-	u8 uart_en : 1;  /* FW logging is enabled via UART for all PFs */
+-	u8 actv_evnts;   /* Cumulation of currently enabled log events */
+-
+-#define ICE_FW_LOG_EVNT_INFO	(ICE_AQC_FW_LOG_INFO_EN >> ICE_AQC_FW_LOG_EN_S)
+-#define ICE_FW_LOG_EVNT_INIT	(ICE_AQC_FW_LOG_INIT_EN >> ICE_AQC_FW_LOG_EN_S)
+-#define ICE_FW_LOG_EVNT_FLOW	(ICE_AQC_FW_LOG_FLOW_EN >> ICE_AQC_FW_LOG_EN_S)
+-#define ICE_FW_LOG_EVNT_ERR	(ICE_AQC_FW_LOG_ERR_EN >> ICE_AQC_FW_LOG_EN_S)
+-	struct ice_fw_log_evnt evnts[ICE_AQC_FW_LOG_ID_MAX];
+-};
+-
+ /* Enum defining the different states of the mailbox snapshot in the
+  * PF-VF mailbox overflow detection algorithm. The snapshot can be in
+  * states:
+@@ -879,8 +861,6 @@ struct ice_hw {
+ 	u8 fw_patch;		/* firmware patch version */
+ 	u32 fw_build;		/* firmware build number */
+ 
+-	struct ice_fw_log_cfg fw_log;
+-
+ /* Device max aggregate bandwidths corresponding to the GL_PWR_MODE_CTL
+  * register. Used for determining the ITR/INTRL granularity during
+  * initialization.
 -- 
 2.35.1
 
