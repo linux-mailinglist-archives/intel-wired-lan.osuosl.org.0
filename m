@@ -1,89 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09EDB7251E0
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 03:58:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD6627263D2
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 17:12:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 381714074E;
-	Wed,  7 Jun 2023 01:58:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 381714074E
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3994781E80;
+	Wed,  7 Jun 2023 15:12:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3994781E80
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686103100;
-	bh=KeunC9XFDF5scf8Tt1kkQ7x0T6iU3pdUgO7BDhDiirg=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=7ISKv5X6KlJNIxQeSmZZUt2hJ0jMs6Ik7uTC6jumMSEE/otduZvsXdvP0Rabd2HNP
-	 Mt/p1p+ZaOS6kFSh8NcHjzKaQYQGnqvY0/1Zwk5yxm+On2xPbp5TbHUsvvWv+OETy2
-	 Mo7QHvdbQUSQvflbeU/faoF05jVXY6RVg0oSPNy+AsQljDeLjElc4pzPfyYGeDPwsL
-	 VM9JX9/rshfHYiaoKYTgWQ5VhVJzdztKR/HeVtzWPGfnlfnwSoDrMYgfFZelxVr164
-	 GX6GO0H3wFwylXTmMD66tigVxcp2aTCHdgDT4p+yzxCM4aDYJ8289aM4ZvJ8773RqI
-	 FAj3hulOKYXwA==
+	s=default; t=1686150731;
+	bh=iVW5UryQny21RXMuod81/ZTNqBa9laBtHBkAyp3w7Dc=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=iY6PWAoL84IiKXU3vfxOisRE5PPiARQ6a4BFxtSaxjieoJQI1jIOzo59GI0tHv89C
+	 bj4euXOloYoIm72pJMxh1L2NDQABBr6LhZDHQjzlNMEMO6Kpr3m+pKkp4N0Y2vZBar
+	 xda1UQPTuw/SE5tz0wi+CTo7Po9djbQvXiBuO1JCEEKNCiIKUWGcpsia65c9jKkpys
+	 H3v3FtlvHnC0Q8YS4yaCaLGhHZs49y/c9gDeVQsQAaO39ck4wy72h3gcFPnwwP/izD
+	 pjqSRgWzEa548FqJbBO5fHa7jfUTl4CZ2dZvtKP4TVTareUr/brbNsKq3fgyJL81TZ
+	 Pqm7FAnFwx2wg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4DscQFTPV8Vy; Wed,  7 Jun 2023 01:58:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BCZwVN6W3yGL; Wed,  7 Jun 2023 15:12:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 121C640547;
-	Wed,  7 Jun 2023 01:58:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 121C640547
+	by smtp1.osuosl.org (Postfix) with ESMTP id DA9BB81947;
+	Wed,  7 Jun 2023 15:12:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DA9BB81947
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 39F6C1BF2C8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AB2B51BF2C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 11BC060D4C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11BC060D4C
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9181560D4C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9181560D4C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id r82KHFfeJccF for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Jun 2023 01:58:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A563D60B5D
-Received: from smtp-relay-canonical-1.canonical.com
- (smtp-relay-canonical-1.canonical.com [185.125.188.121])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A563D60B5D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:12 +0000 (UTC)
-Received: from localhost.localdomain (unknown [222.129.46.53])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id A3D7341E1B; 
- Wed,  7 Jun 2023 01:58:05 +0000 (UTC)
-From: Aaron Ma <aaron.ma@canonical.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jeff Garzik <jgarzik@redhat.com>,
- Auke Kok <auke-jan.h.kok@intel.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Wed,  7 Jun 2023 09:56:46 +0800
-Message-Id: <20230607015646.558534-1-aaron.ma@canonical.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230526163001.67626-1-aaron.ma@canonical.com>
-References: <20230526163001.67626-1-aaron.ma@canonical.com>
+ with ESMTP id aIuhDKE0Yx50 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Jun 2023 01:58:14 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97A5260B5D
+Received: from mail-oa1-x35.google.com (mail-oa1-x35.google.com
+ [IPv6:2001:4860:4864:20::35])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 97A5260B5D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 01:58:14 +0000 (UTC)
+Received: by mail-oa1-x35.google.com with SMTP id
+ 586e51a60fabf-19f8af9aa34so6974635fac.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Jun 2023 18:58:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686103093; x=1688695093;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=NFr6U9nP3qomWy9QkfDgSe4V9fd1Fb2SI8USZ79GIrI=;
+ b=gfd2wtwRyt1/uqUk9npjaXBAawiKuY4XYhF8WS+WSDVG0eaoDWZoesFgcguO/3lx69
+ 2WZ+W22d+xz2Pvt7Qjw8LP0xaVCoCN7enYqiT60m60yqJH5NrXahgJ6hoaGqXjr+4uax
+ iC9RGOqGJRlJ2k0MOfonF1Y5nsYJqzeAcJH/InMebMgHAPZW9JHbpdRojSgtY6gCujJa
+ ydWLTLeoXiFYWdy2doS2FLs401R3OUUCfX/wa/fyb1neDqZAgNDn+oZ8PG7GCxj+1swt
+ wBdPpGh8bTb9Eyvtyu5CltFaYxdaAXPQk56B2T7w4OEnjoKAjSD4VyN8ZdIO46PiGD7L
+ Vxbg==
+X-Gm-Message-State: AC+VfDx5FwgxOGpWv0+Ef+QnjDJKPm6As3si4IZjwCJtU2ub/85FN/+P
+ YtI6qw+c3aws0ogQAYgSOVHRJxAmF6oW8EdTpTw=
+X-Google-Smtp-Source: ACHHUZ6nPqdvndSflNl3eLAxhpsN2l34315SfuAw1NcyVZX09ToSNjjT6b70szsBeVq2N7FfDYUWIfDepxWu7pTWW40=
+X-Received: by 2002:a05:6871:220e:b0:1a2:8e53:c418 with SMTP id
+ sc14-20020a056871220e00b001a28e53c418mr5886468oab.57.1686103093355; Tue, 06
+ Jun 2023 18:58:13 -0700 (PDT)
 MIME-Version: 1.0
+From: Matthew Hallacy <poptix@gmail.com>
+Date: Tue, 6 Jun 2023 20:58:02 -0500
+Message-ID: <CACyUPOei8QZHjx=+JnROBmXVjLDgGpEOs4hTVBXOCVHwUeJ6JA@mail.gmail.com>
+To: muhammad.husaini.zulkifli@intel.com
+X-Mailman-Approved-At: Wed, 07 Jun 2023 15:12:04 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=canonical.com; s=20210705; t=1686103089;
- bh=9jQwoFHBV0DDoVB44LwqGLuFZFu+qgP0qrXPp4Wffu4=;
- h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
- MIME-Version;
- b=qQ/7P+1fG3bdkLmOfMffEJDAFJg1UOD71vAaX0HtvAtd6KnqmSKjcJgagsJOOkFfK
- 6f7G0eINeEvzyXgCRAZj2eWFI2ZNj7W6MdOR0WOZP04KqKC5EayxXfd8Bmw4ZPByn7
- hcePI1re75lB4FLgCrLn7vtCG4TaK2qV9o+XknnNdoGOrctWq6Klc7PfB6qrRwKiQV
- RBkjiW1tonKq2vANjoqlnDN0OAwksJNysvzthBYnjJF05oTxgdnlcvRGmFfZY9SUUp
- WFS9KuYV1nQhSD0MZqa/HgRazR5nmPa622ADsNC5hmPttMgiohNrNBY+9nfRuKEvnN
- CBjZmQOp3pGdQ==
+ d=gmail.com; s=20221208; t=1686103093; x=1688695093;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=NFr6U9nP3qomWy9QkfDgSe4V9fd1Fb2SI8USZ79GIrI=;
+ b=F/vDAIM8obgz4ktI96YgcUG1xtGzTgSpU5+X9/3K7wPN8psAsrmVRx+187bQbN4q9A
+ OMG+1220vUT+s6WuNJR0pdG4rA8U6AwsLG6zfd/+It+fm8qLhaB2Alodzd4+orDCCz9b
+ SgiC5WUJTsNuSObrLfeykE2vw6L/rzPwvIjKVUvdfk5Q35/+//nnBXiqISHktmDSthEM
+ FxYpoml03+tjmK5oukukh3ybdmnaRx3V+0b4tyqmNofuy2306sZJx1+lImCC3fqv0z2H
+ xBCtp5fo/p6zZBzqcPCLjPYXFDvsy8ypZOHDz+u2pum+Kh1J0NmnPBgNxicGVIewuvEN
+ /c3A==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
- header.a=rsa-sha256 header.s=20210705 header.b=qQ/7P+1f
-Subject: [Intel-wired-lan] [PATCH net v2] igb: fix hang issue of AER error
- during resume
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=F/vDAIM8
+Subject: Re: [Intel-wired-lan] igc: 5.15.98 Kernel PANIC on igc_downI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,81 +100,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: sureshkumar.mp@intel.com, gregkh@linuxfoundation.org,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, kyle.leet@gmail.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, dima.ruinskiy@intel.com,
+ torvalds@linux-foundation.org, amir.avivi@intel.com
+Content-Type: multipart/mixed; boundary="===============5352548890319101817=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-PCIe AER error_detected caused a race issue with igb_resume.
-Protect error_detected when igb is in down state.
+--===============5352548890319101817==
+Content-Type: multipart/alternative; boundary="000000000000ef2a1d05fd8077a3"
 
-Error logs:
-kernel: igb 0000:02:00.0: disabling already-disabled device
-kernel: WARNING: CPU: 0 PID: 277 at drivers/pci/pci.c:2248 pci_disable_device+0xc4/0xf0
-kernel: RIP: 0010:pci_disable_device+0xc4/0xf0
-kernel: Call Trace:
-kernel:  <TASK>
-kernel:  igb_io_error_detected+0x3e/0x60
-kernel:  report_error_detected+0xd6/0x1c0
-kernel:  ? __pfx_report_normal_detected+0x10/0x10
-kernel:  report_normal_detected+0x16/0x30
-kernel:  pci_walk_bus+0x74/0xa0
-kernel:  pcie_do_recovery+0xb9/0x340
-kernel:  ? __pfx_aer_root_reset+0x10/0x10
-kernel:  aer_process_err_devices+0x168/0x220
-kernel:  aer_isr+0x1b5/0x1e0
-kernel:  ? __pfx_irq_thread_fn+0x10/0x10
-kernel:  irq_thread_fn+0x21/0x70
-kernel:  irq_thread+0xf8/0x1c0
-kernel:  ? __pfx_irq_thread_dtor+0x10/0x10
-kernel:  ? __pfx_irq_thread+0x10/0x10
-kernel:  kthread+0xef/0x120
-kernel:  ? __pfx_kthread+0x10/0x10
-kernel:  ret_from_fork+0x29/0x50
-kernel:  </TASK>
-kernel: ---[ end trace 0000000000000000 ]---
+--000000000000ef2a1d05fd8077a3
+Content-Type: text/plain; charset="UTF-8"
 
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=217446
-Fixes: 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver")
-Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
-Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
-V1->V2: Add target tree tag net and Fixes tag.
+Greetings,
 
- drivers/net/ethernet/intel/igb/igb_main.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+> Can you help test with below patch:
+> https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20230410065140.20824-1-muhammad.husaini.zulkifli@intel.com/
+>
+> Once you have tested this patch, kindly let me know if you are still experiencing the issue or not.
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 58872a4c2540..8333d4ac8169 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -9581,14 +9581,21 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
- 	struct net_device *netdev = pci_get_drvdata(pdev);
- 	struct igb_adapter *adapter = netdev_priv(netdev);
- 
-+	if (test_bit(__IGB_DOWN, &adapter->state))
-+		return PCI_ERS_RESULT_DISCONNECT;
-+
-+	rtnl_lock();
- 	netif_device_detach(netdev);
- 
--	if (state == pci_channel_io_perm_failure)
-+	if (state == pci_channel_io_perm_failure) {
-+		rtnl_unlock();
- 		return PCI_ERS_RESULT_DISCONNECT;
-+	}
- 
- 	if (netif_running(netdev))
- 		igb_down(adapter);
- 	pci_disable_device(pdev);
-+	rtnl_unlock();
- 
- 	/* Request a slot reset. */
- 	return PCI_ERS_RESULT_NEED_RESET;
--- 
-2.34.1
+
+I had the same problems as Kyle on a nearly identical 6-port i226
+embedded system.
+
+Previously I was able to easily reproduce the issue by creating three
+bridges, containing 2 ports each, then looping the bridges together
+with ethernet cables and generating traffic (rapidly bringing the
+traffic up to 2.5Gbit/s). Unplugging a cable would consistently cause
+a kernel panic and dump. Crashes happened on 5.19, 6.0, 6.1, 6.2 and
+6.3
+
+After applying the patch to the 6.2.16 kernel I am unable to reproduce
+this issue.
+
+I do still see adapter resets while unplugging ports but they do not
+appear to be causing any problems.
+
+--000000000000ef2a1d05fd8077a3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Greetings,<div><br></div><div><pre id=3D"gmail-b" style=3D=
+"font-size:13px;background-image:initial;background-position:initial;backgr=
+ound-size:initial;background-repeat:initial;background-origin:initial;backg=
+round-clip:initial;color:rgb(0,0,51);white-space:pre-wrap">&gt; Can you hel=
+p test with below patch:
+&gt; <a href=3D"https://patchwork.ozlabs.org/project/intel-wired-lan/patch/=
+20230410065140.20824-1-muhammad.husaini.zulkifli@intel.com/" style=3D"backg=
+round-image:initial;background-position:initial;background-size:initial;bac=
+kground-repeat:initial;background-origin:initial;background-clip:initial;co=
+lor:rgb(0,0,255);text-decoration-line:none">https://patchwork.ozlabs.org/pr=
+oject/intel-wired-lan/patch/20230410065140.20824-1-muhammad.husaini.zulkifl=
+i@intel.com/</a>
+&gt;=20
+&gt; Once you have tested this patch, kindly let me know if you are still e=
+xperiencing the issue or not.</pre><pre id=3D"gmail-b" style=3D"font-size:1=
+3px;background-image:initial;background-position:initial;background-size:in=
+itial;background-repeat:initial;background-origin:initial;background-clip:i=
+nitial;color:rgb(0,0,51);white-space:pre-wrap"><br></pre><pre id=3D"gmail-b=
+" style=3D"font-size:13px;background-image:initial;background-position:init=
+ial;background-size:initial;background-repeat:initial;background-origin:ini=
+tial;background-clip:initial;color:rgb(0,0,51);white-space:pre-wrap">I had =
+the same problems as Kyle on a nearly identical 6-port i226 embedded system=
+.</pre><pre id=3D"gmail-b" style=3D"font-size:13px;background-image:initial=
+;background-position:initial;background-size:initial;background-repeat:init=
+ial;background-origin:initial;background-clip:initial;color:rgb(0,0,51);whi=
+te-space:pre-wrap">Previously I was able to easily reproduce the issue by c=
+reating three bridges, containing 2 ports each, then looping the bridges to=
+gether with ethernet cables and generating traffic (rapidly bringing the tr=
+affic up to 2.5Gbit/s). Unplugging a cable would consistently cause a kerne=
+l panic and dump. Crashes happened on 5.19, 6.0, 6.1, 6.2 and 6.3</pre><pre=
+ id=3D"gmail-b" style=3D"font-size:13px;background-image:initial;background=
+-position:initial;background-size:initial;background-repeat:initial;backgro=
+und-origin:initial;background-clip:initial;color:rgb(0,0,51);white-space:pr=
+e-wrap">After applying the patch to the 6.2.16 kernel I am unable to reprod=
+uce this issue. </pre><pre id=3D"gmail-b" style=3D"font-size:13px;backgroun=
+d-image:initial;background-position:initial;background-size:initial;backgro=
+und-repeat:initial;background-origin:initial;background-clip:initial;color:=
+rgb(0,0,51);white-space:pre-wrap">I do still see adapter resets while unplu=
+gging ports but they do not appear to be causing any problems. <br></pre><p=
+re id=3D"gmail-b" style=3D"font-size:13px;background-image:initial;backgrou=
+nd-position:initial;background-size:initial;background-repeat:initial;backg=
+round-origin:initial;background-clip:initial;color:rgb(0,0,51);white-space:=
+pre-wrap"><br></pre></div></div>
+
+--000000000000ef2a1d05fd8077a3--
+
+--===============5352548890319101817==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============5352548890319101817==--
