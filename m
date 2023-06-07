@@ -1,89 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 634327260D1
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 15:12:47 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F7F8726633
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Jun 2023 18:42:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E4763415B9;
-	Wed,  7 Jun 2023 13:12:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4763415B9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2A907405FA;
+	Wed,  7 Jun 2023 16:42:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2A907405FA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686143565;
-	bh=TTtaYGPIzrJ8r3d+OcgQ9QaN7jVRVAoyuSV6ox8exkI=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=gG5veo+WiJnBQwQfhq5kiuTP8xnWBfR7kCd3dYo5bTj1Vf8U65s+VUyL7FNEgpJRx
-	 qGe7y6xNbqIAf/yvjH1/b6HkYwMECANeQr8+14h8nqomUfhFdg+Ttzct0VmEn2jGBo
-	 hj41VECnEVfK/3f5LZy2Lk5YB4b4/BLl6LPbPrQNb88ZO3/DVaclXt80KnkXK33KNb
-	 z4+Yk9G/X6++fQyFFyasmcrGaun0MkYI1sp4fJuHIgURKnzwssTyfvtQb6YRY+EPJk
-	 yHm1HeM2S+KmAiJrB1X5FzJCAcfZ+CWjFQTlXd1m4v5FK1OiJdwuLDHE8rWIpNcm9P
-	 CzfRAJ8Iac7Xg==
+	s=default; t=1686156158;
+	bh=+Uvyq+7REUSJSOAxE9iIHvU5W7y/tU0uXqZdDQ2bULk=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=dsIC0ejmzfgo5k1trsMh4Cw7Id0hf+oGRLPDYDgTuChPtzuGjcv+sZnVqgfp7QDnL
+	 XpESqbpPR/ZWIs2Qds1tbKis6VuZx0FtGFdE21g7VmIete+GSDhMVRCRfsTko++6Tu
+	 TF1dLtgQ5SbbpmnFeclqR0s/PQjpWKELt8+ge21jTbl7PDWfZe3YBu6Yvhodmq6Ziy
+	 qZhMMlHiwFQ1Qvd+MixRpMVVUm1wyry7jCeV2S+MXlmrN+0XD1eNQEt5qwyJpSYhX0
+	 /Jld4UkA+ISjwVeKYcIhccyd9aMMofsireoBhQsMJd2XdLMnkl/WM02UwrZ+4mfrde
+	 VFKG2om5Z+NBA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ipBNfqNTTgst; Wed,  7 Jun 2023 13:12:44 +0000 (UTC)
+	with ESMTP id b_Xfh20qy9Hm; Wed,  7 Jun 2023 16:42:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E039840578;
-	Wed,  7 Jun 2023 13:12:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E039840578
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2C737405B3;
+	Wed,  7 Jun 2023 16:42:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C737405B3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B4E421BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 370071BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 16:42:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8AC5740578
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8AC5740578
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1C00983163
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 16:42:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1C00983163
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E0_XLErNDiAt for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Jun 2023 13:12:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6vjnsraKoemk for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Jun 2023 16:42:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E885D40168
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E885D40168
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 13:12:35 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="354471108"
-X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="354471108"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2023 06:12:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="956260005"
-X-IronPort-AV: E=Sophos;i="6.00,224,1681196400"; d="scan'208";a="956260005"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga006.fm.intel.com with ESMTP; 07 Jun 2023 06:12:25 -0700
-Received: from pelor.igk.intel.com (pelor.igk.intel.com [10.123.220.13])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 8C4093543A;
- Wed,  7 Jun 2023 14:12:24 +0100 (IST)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Simon Horman <simon.horman@corigine.com>, intel-wired-lan@lists.osuosl.org
-Date: Wed,  7 Jun 2023 09:09:57 -0400
-Message-Id: <20230607130957.115573-1-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.40.1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C8F083155
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5C8F083155
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jun 2023 16:42:31 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4762A615E8;
+ Wed,  7 Jun 2023 16:42:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DA60C433EF;
+ Wed,  7 Jun 2023 16:42:29 +0000 (UTC)
+Date: Wed, 7 Jun 2023 09:42:28 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Simon Horman <simon.horman@corigine.com>
+Message-ID: <20230607094228.10f5b84a@kernel.org>
+In-Reply-To: <ZIAzEh1Y++os19fl@corigine.com>
+References: <20230606111149.33890-1-przemyslaw.kitszel@intel.com>
+ <ZH9S6wPIg9os8HYa@corigine.com>
+ <1e11a484-af99-4595-dc1f-80beb23aae9f@intel.com>
+ <ZH9hS9BBDhy9lIG1@corigine.com>
+ <9b5c6653-3319-3516-0b50-67668dcc88f3@intel.com>
+ <ZIAzEh1Y++os19fl@corigine.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686143555; x=1717679555;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=R6ltyTaGMShCOFp9CpDAgKi2l55lUP88aIDt+Mtv3F4=;
- b=gls287bYARQlKRweSFvTt2XJ5TLYJAnEc4PDpXNhX5W6s7hZJXmaZBrj
- ZaDLSOGsi7dS6M3pOc+3UsD0+GUMtontB9+Ny6zaaExzvC4iyt4E2MALb
- BHfLq7cO49gGp8xxEryDECQgf/Pf19EVIdUvplq9nuOHNhVfq0c1YJk4s
- gpCg42vdbcBVJ4t9FM0OsgOsj5A4eDohrQPBPlmPW+LxSIlxe77wF113M
- LXmZwxonuw1LEkk4Aq5fgHcG7Mli7caqXsedBib+JUv7Yq55raZK945ya
- OvzrbzimBizWZZgq7FxxlN8CofFNLmpWSdL1mBQfr2ZJ+e4FFUnbTVviF
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gls287bY
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: clean up
+ d=kernel.org; s=k20201202; t=1686156149;
+ bh=zssne6QqdNoHguRgMNiZP5ueUBStAFNcKnJEkn1gm2Q=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=EESF+uePGlgZb8fBowcYBUtnY7g6zGoPZrTxhyKWuenwbV4HaeCioP/6ntPc24Ye2
+ c9mcs521mSEoXC4JcvdXwmFpdb9rSkaTCLCFi8p5uZAg60lP60ksGGQDDUBbDBI6EW
+ rU/OJp/12lYRD7K4Igo+QhVybNXrX8XdUgAY7mm8kSAjp8wii3Tv/rAxDAQg0QrwUw
+ 71uFamwH+xmY/3jjoZh/HDmPWWzqD6vzvB8nNxE0oTFrHJgFVgXGJ4v1IsjTQw/J+9
+ 3qLkCSvSRAVSPzpHzUp57VMJKxSmBQxyr8XrI7vxPCJSfIiGMe6S4PO2kQTT60+y0i
+ LB3UZRFks044A==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=EESF+ueP
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: clean up
  __ice_aq_get_set_rss_lut()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -98,451 +95,25 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Refactor __ice_aq_get_set_rss_lut() to improve reader experience and limit
-misuse scenarios (undesired LUT size for given LUT type).
+On Wed, 7 Jun 2023 09:34:42 +0200 Simon Horman wrote:
+> > it's the same on gcc-13 on default (make M=...) settings, I think, I will
+> > post next version that is passing that build, even if to make integration
+> > with new gcc easier  
+> 
+> Thanks. TBH it does seem a bit silly to me.
+> But GCC builds failing does seem to be a problem that warrants being addressed.
 
-Allow only 3 RSS LUT type+size variants:
-PF LUT sized 2048, GLOBAL LUT sized 512, and VSI LUT sized 64, which were
-used on default flows prior to this commit.
-
-Prior to the change, code was mixing the meaning of @params->lut_size and
-@params->lut_type, flag assigning logic was cryptic, while long defines
-made everything harder to follow.
-
-Fix that by extracting some code out to separate helpers.
-Drop some of "shift by 0" statements that originated from Intel's
-internal HW documentation.
-
-Drop some redundant VSI masks (since ice_is_vsi_valid() gives "valid" for
-up to 0x300 VSIs).
-
-After sweeping all the defines out of struct ice_aqc_get_set_rss_lut,
-it fits into 7 lines.
-
-Finally apply some cleanup to the callsite
-(use of the new enums, tmp var for lengthy bit extraction).
-
-Note that flags for 128 and 64 sized VSI LUT are the same,
-and 64 is used everywhere in the code (updated to new enum here), it just
-happened that there was 128 in flag name.
-
-__ice_aq_get_set_rss_key() uses the same VSI valid bit, make constant
-common for it and __ice_aq_get_set_rss_lut().
-
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-
----
-v2:
- - cover "impossible" cases with WARN ONCE + sane return after switch.
----
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  53 +++----
- drivers/net/ethernet/intel/ice/ice_common.c   | 143 +++++++-----------
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   1 -
- drivers/net/ethernet/intel/ice/ice_lib.c      |  20 +--
- drivers/net/ethernet/intel/ice/ice_type.h     |   9 +-
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |   6 +-
- 6 files changed, 99 insertions(+), 133 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 63d3e1dcbba5..6ea0d4c017f0 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1781,11 +1781,10 @@ struct ice_aqc_lldp_filter_ctrl {
- 	u8 reserved2[12];
- };
- 
-+#define ICE_AQC_RSS_VSI_VALID BIT(15)
-+
- /* Get/Set RSS key (indirect 0x0B04/0x0B02) */
- struct ice_aqc_get_set_rss_key {
--#define ICE_AQC_GSET_RSS_KEY_VSI_VALID	BIT(15)
--#define ICE_AQC_GSET_RSS_KEY_VSI_ID_S	0
--#define ICE_AQC_GSET_RSS_KEY_VSI_ID_M	(0x3FF << ICE_AQC_GSET_RSS_KEY_VSI_ID_S)
- 	__le16 vsi_id;
- 	u8 reserved[6];
- 	__le32 addr_high;
-@@ -1803,35 +1802,33 @@ struct ice_aqc_get_set_rss_keys {
- 	u8 extended_hash_key[ICE_AQC_GET_SET_RSS_KEY_DATA_HASH_KEY_SIZE];
- };
- 
--/* Get/Set RSS LUT (indirect 0x0B05/0x0B03) */
--struct ice_aqc_get_set_rss_lut {
--#define ICE_AQC_GSET_RSS_LUT_VSI_VALID	BIT(15)
--#define ICE_AQC_GSET_RSS_LUT_VSI_ID_S	0
--#define ICE_AQC_GSET_RSS_LUT_VSI_ID_M	(0x3FF << ICE_AQC_GSET_RSS_LUT_VSI_ID_S)
--	__le16 vsi_id;
--#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S	0
--#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_M	\
--				(0x3 << ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S)
--
--#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI	 0
--#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF	 1
--#define ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL	 2
-+enum ice_lut_type {
-+	ICE_LUT_VSI = 0,
-+	ICE_LUT_PF = 1,
-+	ICE_LUT_GLOBAL = 2,
-+};
- 
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S	 2
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M	 \
--				(0x3 << ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S)
-+enum ice_lut_size {
-+	ICE_LUT_VSI_SIZE = 64,
-+	ICE_LUT_GLOBAL_SIZE = 512,
-+	ICE_LUT_PF_SIZE = 2048,
-+};
- 
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128	 128
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128_FLAG 0
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512	 512
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512_FLAG 1
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K	 2048
--#define ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K_FLAG	 2
-+/* enum ice_aqc_lut_flags combines constants used to fill
-+ * &ice_aqc_get_set_rss_lut ::flags, which is an amalgamation of global LUT ID,
-+ * LUT size and LUT type, last of which does not need neither shift nor mask.
-+ */
-+enum ice_aqc_lut_flags {
-+	ICE_AQC_LUT_SIZE_SMALL = BIT(1), /* size = 64 or 128 */
-+	ICE_AQC_LUT_SIZE_512 = BIT(2),
-+	ICE_AQC_LUT_SIZE_2K = BIT(3),
- 
--#define ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S	 4
--#define ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_M	 \
--				(0xF << ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S)
-+	ICE_AQC_LUT_GLOBAL_IDX = GENMASK(7, 4),
-+};
- 
-+/* Get/Set RSS LUT (indirect 0x0B05/0x0B03) */
-+struct ice_aqc_get_set_rss_lut {
-+	__le16 vsi_id;
- 	__le16 flags;
- 	__le32 reserved;
- 	__le32 addr_high;
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 6acb40f3c202..deb55b6d516a 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3869,6 +3869,34 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
- 	return status;
- }
- 
-+static enum ice_lut_size ice_lut_type_to_size(enum ice_lut_type type)
-+{
-+	switch (type) {
-+	case ICE_LUT_VSI:
-+		return ICE_LUT_VSI_SIZE;
-+	case ICE_LUT_GLOBAL:
-+		return ICE_LUT_GLOBAL_SIZE;
-+	case ICE_LUT_PF:
-+		return ICE_LUT_PF_SIZE;
-+	}
-+	WARN_ONCE(1, "incorrect type passed");
-+	return ICE_LUT_VSI_SIZE;
-+}
-+
-+static enum ice_aqc_lut_flags ice_lut_size_to_flag(enum ice_lut_size size)
-+{
-+	switch (size) {
-+	case ICE_LUT_VSI_SIZE:
-+		return ICE_AQC_LUT_SIZE_SMALL;
-+	case ICE_LUT_GLOBAL_SIZE:
-+		return ICE_AQC_LUT_SIZE_512;
-+	case ICE_LUT_PF_SIZE:
-+		return ICE_AQC_LUT_SIZE_2K;
-+	}
-+	WARN_ONCE(1, "incorrect size passed");
-+	return 0;
-+}
-+
- /**
-  * __ice_aq_get_set_rss_lut
-  * @hw: pointer to the hardware structure
-@@ -3878,95 +3906,44 @@ ice_aq_sff_eeprom(struct ice_hw *hw, u16 lport, u8 bus_addr,
-  * Internal function to get (0x0B05) or set (0x0B03) RSS look up table
-  */
- static int
--__ice_aq_get_set_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *params, bool set)
--{
--	u16 flags = 0, vsi_id, lut_type, lut_size, glob_lut_idx, vsi_handle;
--	struct ice_aqc_get_set_rss_lut *cmd_resp;
-+__ice_aq_get_set_rss_lut(struct ice_hw *hw,
-+			 struct ice_aq_get_set_rss_lut_params *params, bool set)
-+{
-+	u16 opcode, vsi_id, vsi_handle = params->vsi_handle, glob_lut_idx = 0;
-+	enum ice_lut_type lut_type = params->lut_type;
-+	struct ice_aqc_get_set_rss_lut *desc_params;
-+	enum ice_aqc_lut_flags flags;
-+	enum ice_lut_size lut_size;
- 	struct ice_aq_desc desc;
--	int status;
--	u8 *lut;
-+	u8 *lut = params->lut;
- 
--	if (!params)
--		return -EINVAL;
--
--	vsi_handle = params->vsi_handle;
--	lut = params->lut;
- 
--	if (!ice_is_vsi_valid(hw, vsi_handle) || !lut)
-+	if (!lut || !ice_is_vsi_valid(hw, vsi_handle))
- 		return -EINVAL;
- 
--	lut_size = params->lut_size;
--	lut_type = params->lut_type;
--	glob_lut_idx = params->global_lut_id;
--	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
--
--	cmd_resp = &desc.params.get_set_rss_lut;
-+	lut_size = ice_lut_type_to_size(lut_type);
-+	if (lut_size > params->lut_size)
-+		return -EINVAL;
-+	else if (set && lut_size != params->lut_size)
-+		return -EINVAL;
- 
--	if (set) {
--		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_rss_lut);
-+	opcode = set ? ice_aqc_opc_set_rss_lut : ice_aqc_opc_get_rss_lut;
-+	ice_fill_dflt_direct_cmd_desc(&desc, opcode);
-+	if (set)
- 		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
--	} else {
--		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_rss_lut);
--	}
- 
--	cmd_resp->vsi_id = cpu_to_le16(((vsi_id <<
--					 ICE_AQC_GSET_RSS_LUT_VSI_ID_S) &
--					ICE_AQC_GSET_RSS_LUT_VSI_ID_M) |
--				       ICE_AQC_GSET_RSS_LUT_VSI_VALID);
--
--	switch (lut_type) {
--	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI:
--	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF:
--	case ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL:
--		flags |= ((lut_type << ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_S) &
--			  ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_M);
--		break;
--	default:
--		status = -EINVAL;
--		goto ice_aq_get_set_rss_lut_exit;
--	}
-+	desc_params = &desc.params.get_set_rss_lut;
-+	vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
-+	desc_params->vsi_id = cpu_to_le16(vsi_id | ICE_AQC_RSS_VSI_VALID);
- 
--	if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_GLOBAL) {
--		flags |= ((glob_lut_idx << ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_S) &
--			  ICE_AQC_GSET_RSS_LUT_GLOBAL_IDX_M);
-+	if (lut_type == ICE_LUT_GLOBAL)
-+		glob_lut_idx = FIELD_PREP(ICE_AQC_LUT_GLOBAL_IDX,
-+					  params->global_lut_id);
- 
--		if (!set)
--			goto ice_aq_get_set_rss_lut_send;
--	} else if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF) {
--		if (!set)
--			goto ice_aq_get_set_rss_lut_send;
--	} else {
--		goto ice_aq_get_set_rss_lut_send;
--	}
-+	flags = lut_type | glob_lut_idx | ice_lut_size_to_flag(lut_size);
-+	desc_params->flags = cpu_to_le16(flags);
- 
--	/* LUT size is only valid for Global and PF table types */
--	switch (lut_size) {
--	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_128:
--		break;
--	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512:
--		flags |= (ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_512_FLAG <<
--			  ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S) &
--			 ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M;
--		break;
--	case ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K:
--		if (lut_type == ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF) {
--			flags |= (ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_2K_FLAG <<
--				  ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_S) &
--				 ICE_AQC_GSET_RSS_LUT_TABLE_SIZE_M;
--			break;
--		}
--		fallthrough;
--	default:
--		status = -EINVAL;
--		goto ice_aq_get_set_rss_lut_exit;
--	}
--
--ice_aq_get_set_rss_lut_send:
--	cmd_resp->flags = cpu_to_le16(flags);
--	status = ice_aq_send_cmd(hw, &desc, lut, lut_size, NULL);
--
--ice_aq_get_set_rss_lut_exit:
--	return status;
-+	return ice_aq_send_cmd(hw, &desc, lut, lut_size, NULL);
- }
- 
- /**
-@@ -4008,12 +3985,10 @@ static int
- __ice_aq_get_set_rss_key(struct ice_hw *hw, u16 vsi_id,
- 			 struct ice_aqc_get_set_rss_keys *key, bool set)
- {
--	struct ice_aqc_get_set_rss_key *cmd_resp;
-+	struct ice_aqc_get_set_rss_key *desc_params;
- 	u16 key_size = sizeof(*key);
- 	struct ice_aq_desc desc;
- 
--	cmd_resp = &desc.params.get_set_rss_key;
--
- 	if (set) {
- 		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_rss_key);
- 		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
-@@ -4021,10 +3996,8 @@ __ice_aq_get_set_rss_key(struct ice_hw *hw, u16 vsi_id,
- 		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_rss_key);
- 	}
- 
--	cmd_resp->vsi_id = cpu_to_le16(((vsi_id <<
--					 ICE_AQC_GSET_RSS_KEY_VSI_ID_S) &
--					ICE_AQC_GSET_RSS_KEY_VSI_ID_M) |
--				       ICE_AQC_GSET_RSS_KEY_VSI_VALID);
-+	desc_params = &desc.params.get_set_rss_key;
-+	desc_params->vsi_id = cpu_to_le16(vsi_id | ICE_AQC_RSS_VSI_VALID);
- 
- 	return ice_aq_send_cmd(hw, &desc, key, key_size, NULL);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index a92dc9a16035..20f40dfeb761 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -489,7 +489,6 @@
- #define VSIQF_FD_CNT_FD_BCNT_M			ICE_M(0x3FFF, 16)
- #define VSIQF_FD_SIZE(_VSI)			(0x00462000 + ((_VSI) * 4))
- #define VSIQF_HKEY_MAX_INDEX			12
--#define VSIQF_HLUT_MAX_INDEX			15
- #define PFPM_APM				0x000B8080
- #define PFPM_APM_APME_M				BIT(0)
- #define PFPM_WUFC				0x0009DC00
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index c3722c68af99..984b381386ff 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -907,6 +907,7 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
- {
- 	struct ice_hw_common_caps *cap;
- 	struct ice_pf *pf = vsi->back;
-+	u16 max_rss_size;
- 
- 	if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
- 		vsi->rss_size = 1;
-@@ -914,32 +915,31 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
- 	}
- 
- 	cap = &pf->hw.func_caps.common_cap;
-+	max_rss_size = BIT(cap->rss_table_entry_width);
- 	switch (vsi->type) {
- 	case ICE_VSI_CHNL:
- 	case ICE_VSI_PF:
- 		/* PF VSI will inherit RSS instance of PF */
- 		vsi->rss_table_size = (u16)cap->rss_table_size;
- 		if (vsi->type == ICE_VSI_CHNL)
--			vsi->rss_size = min_t(u16, vsi->num_rxq,
--					      BIT(cap->rss_table_entry_width));
-+			vsi->rss_size = min_t(u16, vsi->num_rxq, max_rss_size);
- 		else
- 			vsi->rss_size = min_t(u16, num_online_cpus(),
--					      BIT(cap->rss_table_entry_width));
--		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_PF;
-+					      max_rss_size);
-+		vsi->rss_lut_type = ICE_LUT_PF;
- 		break;
- 	case ICE_VSI_SWITCHDEV_CTRL:
--		vsi->rss_table_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
--		vsi->rss_size = min_t(u16, num_online_cpus(),
--				      BIT(cap->rss_table_entry_width));
--		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI;
-+		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
-+		vsi->rss_size = min_t(u16, num_online_cpus(), max_rss_size);
-+		vsi->rss_lut_type = ICE_LUT_VSI;
- 		break;
- 	case ICE_VSI_VF:
- 		/* VF VSI will get a small RSS table.
- 		 * For VSI_LUT, LUT size should be set to 64 bytes.
- 		 */
--		vsi->rss_table_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
-+		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
- 		vsi->rss_size = ICE_MAX_RSS_QS_PER_VF;
--		vsi->rss_lut_type = ICE_AQC_GSET_RSS_LUT_TABLE_TYPE_VSI;
-+		vsi->rss_lut_type = ICE_LUT_VSI;
- 		break;
- 	case ICE_VSI_LB:
- 		break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index df9171a1a34f..a073616671ef 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -1038,10 +1038,10 @@ enum ice_sw_fwd_act_type {
- };
- 
- struct ice_aq_get_set_rss_lut_params {
--	u16 vsi_handle;		/* software VSI handle */
--	u16 lut_size;		/* size of the LUT buffer */
--	u8 lut_type;		/* type of the LUT (i.e. VSI, PF, Global) */
- 	u8 *lut;		/* input RSS LUT for set and output RSS LUT for get */
-+	enum ice_lut_size lut_size; /* size of the LUT buffer */
-+	enum ice_lut_type lut_type; /* type of the LUT (i.e. VSI, PF, Global) */
-+	u16 vsi_handle;		/* software VSI handle */
- 	u8 global_lut_id;	/* only valid when lut_type is global */
- };
- 
-@@ -1143,9 +1143,6 @@ struct ice_aq_get_set_rss_lut_params {
- 
- #define ICE_SR_WORDS_IN_1KB		512
- 
--/* Hash redirection LUT for VSI - maximum array size */
--#define ICE_VSIQF_HLUT_ARRAY_SIZE	((VSIQF_HLUT_MAX_INDEX + 1) * 4)
--
- /* AQ API version for LLDP_FILTER_CONTROL */
- #define ICE_FW_API_LLDP_FLTR_MAJ	1
- #define ICE_FW_API_LLDP_FLTR_MIN	7
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index efbc2968a7bf..92490fe655ea 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -500,7 +500,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 	vfres->num_queue_pairs = vsi->num_txq;
- 	vfres->max_vectors = vf->pf->vfs.num_msix_per;
- 	vfres->rss_key_size = ICE_VSIQF_HKEY_ARRAY_SIZE;
--	vfres->rss_lut_size = ICE_VSIQF_HLUT_ARRAY_SIZE;
-+	vfres->rss_lut_size = ICE_LUT_VSI_SIZE;
- 	vfres->max_mtu = ice_vc_get_max_frame_size(vf);
- 
- 	vfres->vsi_res[0].vsi_id = vf->lan_vsi_num;
-@@ -962,7 +962,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	if (vrl->lut_entries != ICE_VSIQF_HLUT_ARRAY_SIZE) {
-+	if (vrl->lut_entries != ICE_LUT_VSI_SIZE) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
-@@ -978,7 +978,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	if (ice_set_rss_lut(vsi, vrl->lut, ICE_VSIQF_HLUT_ARRAY_SIZE))
-+	if (ice_set_rss_lut(vsi, vrl->lut, ICE_LUT_VSI_SIZE))
- 		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
- error_param:
- 	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
--- 
-2.40.1
-
+Isn't GCC right? There's no guarantee that the value of @type in real,
+numerical sense falls within the set of values sanctioned by the enum.
+It is C after all, so enums are just decorated ints, aren't they?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
