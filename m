@@ -1,88 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96669729E1D
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 17:15:56 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 799F3728E8E
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 05:29:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1344E4251D;
-	Fri,  9 Jun 2023 15:15:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1344E4251D
+	by smtp2.osuosl.org (Postfix) with ESMTP id AFC4240640;
+	Fri,  9 Jun 2023 03:29:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFC4240640
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686323755;
-	bh=Pt453PUwROiVScpGT6OA97V17dndqGNL5S6xFX9cjfw=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=uXyJa5IyFZt3NSXz201z0D53FhPy140iNRRzxW60aYr6MotZH0GzxfzJP21RWKLOu
-	 3XXHk3LxNZAnNSGcLj0mJxcTiVnvjzLtPiHJm6trGCOSTia8W0dPbb5+1OKqgnoWwe
-	 3xuuiEYhQBU/vWpp3T/6qNv3jDoivgGZKSNq2Yi1jGWWSVjHHQxYyP0l5dlGAhWu7D
-	 0sHdEocgdLXLE8YdtkMZpjarCUlWeC72N44+nc9hmehoPsZvxjLi5KSh10HomwRoug
-	 1IRcL5obtb0q5tABBbRY8p163uA24IjVFUchD3uogJ07weXxiH7iK7hx1BFr6oHHr1
-	 b89PLWNeMXbPA==
+	s=default; t=1686281355;
+	bh=Zgd2otYmK6BeW46J5HSbv3sDgg/uxKXqeloZOKkj+oc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Cj1GrHpdykwtQ43j8CGNp5jJdcVhXpa29kylBeKLGxKJmatcK1jxMHgdg6uD+LUBe
+	 lUfYKqDFDbBWa9qxAzQtU9IiaddaM4Yhbgwrq+nVC1nFEtEarKgG0uGqeTxJUuyZmv
+	 TsvNswwF6HZnssEsjwCbtZBeT18Xy/j4aaw0e2/6zbUqWuyNwbW98F6XOpxKuWhkBn
+	 XkQpNOnMZBSK/qkPo1el9OkgNIwM+gTpz3bdVsisOsZdicJhV6d+GpCU3NTrIg94ha
+	 TFvOBID/mPwj1p3X+Kb6HAS5aKaM4ojtQiq3FvKQUvWAYruckl5QTr3gKRk6StH1st
+	 RgIM8ncRLwEUw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tASXgkgk07DI; Fri,  9 Jun 2023 15:15:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mSTZwJhHutrE; Fri,  9 Jun 2023 03:29:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 659284251C;
-	Fri,  9 Jun 2023 15:15:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 659284251C
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 59E7D1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 02:55:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 831B64064F;
+	Fri,  9 Jun 2023 03:29:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 831B64064F
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D5AFB1BF966
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3A2DC41FA5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 02:55:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A2DC41FA5
+ by smtp2.osuosl.org (Postfix) with ESMTP id BB909405EB
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BB909405EB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s9UpDv_mo8Iy for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Jun 2023 02:55:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CEFE041F9C
-Received: from mail-177132.yeah.net (mail-177132.yeah.net [123.58.177.132])
- by smtp4.osuosl.org (Postfix) with ESMTP id CEFE041F9C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 02:55:06 +0000 (UTC)
-Received: from john-VirtualBox (unknown [111.19.92.254])
- by smtp2 (Coremail) with SMTP id C1UQrADHz19tlIJkewakDQ--.14997S2;
- Fri, 09 Jun 2023 10:54:38 +0800 (CST)
-Date: Fri, 9 Jun 2023 10:54:37 +0800
-From: Baozhu Ni <nibaozhu@yeah.net>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- Outreachy <outreachy@lists.linux.dev>
-Message-ID: <20230609025437.GA5307@john-VirtualBox>
-MIME-Version: 1.0
-Content-Disposition: inline
-X-CM-TRANSID: C1UQrADHz19tlIJkewakDQ--.14997S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxury3WFW7ur1xXry5KF1xXwb_yoWrAr1fpF
- Wjvas8ur1fJr47W3ZrJw4xZan8Zws7A345Gr4fu39Yva45Jr95CF13KrZ3Wry0vrZrXry3
- KF15ZrnxCF4qg3JanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSUDJUUUUU=
-X-Originating-IP: [111.19.92.254]
-X-CM-SenderInfo: 5qlet0x2kxq5hhdkh0dhw/1tbiDw+JelnxboRyfwAAs8
-X-Mailman-Approved-At: Fri, 09 Jun 2023 15:15:48 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=yeah.net; 
- s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
- Content-Type; bh=sMCFcoMSm3KIUqoY/BwUkMWGJLEkhAztPDeMF/Kppj8=;
- b=U5zl5YDsa3EGNJuAm00B/L+4kq87sb9rbx7PZvzMiUCSM8mQXlq7mQN22UcC3L
- Bf06bWGPY7Z4JhfxB7QBQTardzpBi7p2i/JnfitaPT6qhFWdgir4I8o0sUqtzP7j
- VRMv82xxAp5j5ZCncPJptwbZZhBp95BuhSauPWciouSYQ=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=yeah.net header.i=@yeah.net
- header.a=rsa-sha256 header.s=s110527 header.b=U5zl5YDs
-Subject: [Intel-wired-lan] [PATCH] e1000e: Remove not useful `else' after a
- break or return
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Fsx-JhxdNOr8 for <intel-wired-lan@osuosl.org>;
+ Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED42F404DA
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ED42F404DA
+ for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="342176036"
+X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="342176036"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jun 2023 20:29:07 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="822891779"
+X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="822891779"
+Received: from ssid-ilbpg3-teeminta.png.intel.com ([10.88.227.74])
+ by fmsmga002.fm.intel.com with ESMTP; 08 Jun 2023 20:29:05 -0700
+From: tee.min.tan@intel.com
+To: intel-wired-lan@osuosl.org
+Date: Fri,  9 Jun 2023 11:28:42 +0800
+Message-Id: <1686281322-26581-1-git-send-email-tee.min.tan@intel.com>
+X-Mailer: git-send-email 1.9.1
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686281348; x=1717817348;
+ h=from:to:cc:subject:date:message-id;
+ bh=MoCsdiEBPuMcGUh/b6jRXvrU1Hmg4aDStkU6QBjNMxw=;
+ b=SaKI8hmXVqYtJVi58cQIRHwj7bZlwgDqjqWqkB0ip0OkXwBGOXIyUsd2
+ yK+4hTDBp9WEDSHriWP7l+HHvldrRNY7ATIK/YZhcDW+jKp5x656XvaF0
+ j2witk+V2Dm/zURQVgTOzvOYAzjsrceC1p+2wgdYExkkddSh5qoWRii5E
+ jYExdGs0BkbpVrWcjc+tPAlWDYZPGkWpZtF6eaDiE84W6IGsCf2Gw9r6D
+ iS1GWf7vr0f/IatsvblRouZE3ApLrGVNyHThev6vl45J4R/+Zcvb1vql3
+ SHadu0OqVpEwHSCkaWNxsQ82xxV/1jSmCLXJMFsXdOY99RxSc7b9iQ7Jt
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=SaKI8hmX
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] igc: Include the length/type
+ field and VLAN tag in queueMaxSDU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,124 +90,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: anthony.l.nguyen@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-`else' is not generally useful after a break or return
+From: Tan Tee Min <tee.min.tan@linux.intel.com>
 
-Signed-off-by: Baozhu Ni <nibaozhu@yeah.net>
+IEEE 802.1Q does not have clear definitions of what constitutes an
+SDU (Service Data Unit), but IEEE Std 802.3 clause 3.1.2 does define
+the MAC service primitives and clause 3.2.7 does define the MAC Client
+Data for Q-tagged frames.
+
+It shows that the mac_service_data_unit (MSDU) does NOT contain the
+preamble, destination and source address, or FCS. The MSDU does contain
+the length/type field, MAC client data, VLAN tag and any padding
+data (prior to the FCS).
+
+Thus, the maximum 802.3 frame size that is allowed to be transmitted
+should be QueueMaxSDU (MSDU) + 16 (6 byte SA + 6 byte DA + 4 byte FCS).
+
+Fixes: 92a0dcb8427d ("igc: offload queue max SDU from tc-taprio")
+Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
 ---
- .../net/ethernet/intel/e1000e/80003es2lan.c   |  5 +-
- drivers/net/ethernet/intel/e1000e/ich8lan.c   | 59 +++++++++----------
- 2 files changed, 31 insertions(+), 33 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 16 +++++-----------
+ 1 file changed, 5 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/80003es2lan.c b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-index be9c695dde12..f063e2bd48fa 100644
---- a/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-@@ -43,11 +43,10 @@ static s32 e1000_init_phy_params_80003es2lan(struct e1000_hw *hw)
- 	if (hw->phy.media_type != e1000_media_type_copper) {
- 		phy->type = e1000_phy_none;
- 		return 0;
--	} else {
--		phy->ops.power_up = e1000_power_up_phy_copper;
--		phy->ops.power_down = e1000_power_down_phy_copper_80003es2lan;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index bbb431d..4349718 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1575,16 +1575,9 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+ 	if (adapter->qbv_transition || tx_ring->oper_gate_closed)
+ 		goto out_drop;
+ 
+-	if (tx_ring->max_sdu > 0) {
+-		u32 max_sdu = 0;
+-
+-		max_sdu = tx_ring->max_sdu +
+-			  (skb_vlan_tagged(first->skb) ? VLAN_HLEN : 0);
+-
+-		if (first->bytecount > max_sdu) {
+-			adapter->stats.txdrop++;
+-			goto out_drop;
+-		}
++	if (tx_ring->max_sdu > 0 && first->bytecount > tx_ring->max_sdu) {
++		adapter->stats.txdrop++;
++		goto out_drop;
  	}
  
-+	phy->ops.power_up = e1000_power_up_phy_copper;
-+	phy->ops.power_down = e1000_power_down_phy_copper_80003es2lan;
- 	phy->addr = 1;
- 	phy->autoneg_mask = AUTONEG_ADVERTISE_SPEED_DEFAULT;
- 	phy->reset_delay_us = 100;
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 0c7fd10312c8..8ab4e45de5f2 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -3592,9 +3592,8 @@ static s32 e1000_read_flash_byte_ich8lan(struct e1000_hw *hw, u32 offset,
- 	 */
- 	if (hw->mac.type >= e1000_pch_spt)
- 		return -E1000_ERR_NVM;
--	else
--		ret_val = e1000_read_flash_data_ich8lan(hw, offset, 1, &word);
+ 	if (unlikely(test_bit(IGC_RING_FLAG_TX_HWTSTAMP, &tx_ring->flags) &&
+@@ -6178,7 +6171,8 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 		struct net_device *dev = adapter->netdev;
  
-+	ret_val = e1000_read_flash_data_ich8lan(hw, offset, 1, &word);
- 	if (ret_val)
- 		return ret_val;
- 
-@@ -3659,20 +3658,20 @@ static s32 e1000_read_flash_data_ich8lan(struct e1000_hw *hw, u32 offset,
- 			else if (size == 2)
- 				*data = (u16)(flash_data & 0x0000FFFF);
- 			break;
--		} else {
--			/* If we've gotten here, then things are probably
--			 * completely hosed, but if the error condition is
--			 * detected, it won't hurt to give it another try...
--			 * ICH_FLASH_CYCLE_REPEAT_COUNT times.
--			 */
--			hsfsts.regval = er16flash(ICH_FLASH_HSFSTS);
--			if (hsfsts.hsf_status.flcerr) {
--				/* Repeat for some time before giving up. */
--				continue;
--			} else if (!hsfsts.hsf_status.flcdone) {
--				e_dbg("Timeout error - flash cycle did not complete.\n");
--				break;
--			}
-+		}
-+
-+		/* If we've gotten here, then things are probably
-+		 * completely hosed, but if the error condition is
-+		 * detected, it won't hurt to give it another try...
-+		 * ICH_FLASH_CYCLE_REPEAT_COUNT times.
-+		 */
-+		hsfsts.regval = er16flash(ICH_FLASH_HSFSTS);
-+		if (hsfsts.hsf_status.flcerr) {
-+			/* Repeat for some time before giving up. */
-+			continue;
-+		} else if (!hsfsts.hsf_status.flcdone) {
-+			e_dbg("Timeout error - flash cycle did not complete.\n");
-+			break;
- 		}
- 	} while (count++ < ICH_FLASH_CYCLE_REPEAT_COUNT);
- 
-@@ -3734,20 +3733,20 @@ static s32 e1000_read_flash_data32_ich8lan(struct e1000_hw *hw, u32 offset,
- 		if (!ret_val) {
- 			*data = er32flash(ICH_FLASH_FDATA0);
- 			break;
--		} else {
--			/* If we've gotten here, then things are probably
--			 * completely hosed, but if the error condition is
--			 * detected, it won't hurt to give it another try...
--			 * ICH_FLASH_CYCLE_REPEAT_COUNT times.
--			 */
--			hsfsts.regval = er16flash(ICH_FLASH_HSFSTS);
--			if (hsfsts.hsf_status.flcerr) {
--				/* Repeat for some time before giving up. */
--				continue;
--			} else if (!hsfsts.hsf_status.flcdone) {
--				e_dbg("Timeout error - flash cycle did not complete.\n");
--				break;
--			}
-+		}
-+
-+		/* If we've gotten here, then things are probably
-+		 * completely hosed, but if the error condition is
-+		 * detected, it won't hurt to give it another try...
-+		 * ICH_FLASH_CYCLE_REPEAT_COUNT times.
-+		 */
-+		hsfsts.regval = er16flash(ICH_FLASH_HSFSTS);
-+		if (hsfsts.hsf_status.flcerr) {
-+			/* Repeat for some time before giving up. */
-+			continue;
-+		} else if (!hsfsts.hsf_status.flcdone) {
-+			e_dbg("Timeout error - flash cycle did not complete.\n");
-+			break;
- 		}
- 	} while (count++ < ICH_FLASH_CYCLE_REPEAT_COUNT);
- 
+ 		if (qopt->max_sdu[i])
+-			ring->max_sdu = qopt->max_sdu[i] + dev->hard_header_len;
++			ring->max_sdu = qopt->max_sdu[i] + dev->hard_header_len
++					- ETH_TLEN;
+ 		else
+ 			ring->max_sdu = 0;
+ 	}
 -- 
-2.25.1
+1.9.1
 
 _______________________________________________
 Intel-wired-lan mailing list
