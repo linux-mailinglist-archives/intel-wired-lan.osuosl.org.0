@@ -1,111 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73BF9729E26
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 17:16:24 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7481729FFE
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 18:19:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1270F42538;
-	Fri,  9 Jun 2023 15:16:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1270F42538
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6A5A341A10;
+	Fri,  9 Jun 2023 16:19:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A5A341A10
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686323783;
-	bh=pYVBy8ludcWeNkHtR4gPGsPmHOfiQjDTwVvqP3qaIS8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1686327573;
+	bh=03u5TDPxd+Sbkj42KZzq2F5v8Mss0etVhCIjZVh2mdY=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=CfFayvbn+/nqJD4XyNKkX00DH0Xho8IQTon5YvvPFsp2um31F5MaJrXs4mBEtLfN1
-	 3KDW1SFA+MVXCYgDDvYbbswy1q2PWNbAtsGMQEom5TqfYELsiqQhFAXpYukC187QIr
-	 iFs0dRo8oRGQpUP+3MU0M0MXMyU26rT9pAVx//a07hIm06BIv/hJ/1ZFt76xDLcnsx
-	 El8DSjnAaTWmqvnMHWJRNz358BDtqcK8Uum5kJISYwf8KsBPWJuW5uJHLmJh/DkPpF
-	 vSaZgo57ESkBbT4HIPfAcrOGh33udcwueN+1RLFjT/SSg4WCTiGLMBU3xtfxj42SjP
-	 DXGgN8FANlDkA==
+	b=iBM/gJgMms/baYDZFFey8W8zo8p7l3at0Fzm0f45CXO7XCbP8EgnCdLAFDMDr1VYr
+	 ysNHApnyi2zv21/5LIsiyyWMFSbAV6tqL/c6RMaJOrpscl8Hqz4hlSwdY51Z3250A9
+	 q/D/IEKiZ8QHBFk2e7mYVrqjpqdEdqD1pC08Oge5fsd/87X/PonSxWJzmGhxc2ROX1
+	 uwksoXi8Mu+2iyp/563p0Cm2WjM4fgerjKofkNRymAWj5ph33iMF0ltjGiBX9e6VKZ
+	 7Gnc5QcT9UgoeRVDxLCYHLNkVp3lXLhzE1oTwq0EonSW2sI1PN7BAzsA1LDmGuOuWS
+	 QYdrmgrcFhjNQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a7mxjUzH4asw; Fri,  9 Jun 2023 15:16:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0PUbh-qo9hdl; Fri,  9 Jun 2023 16:19:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 71D9F4251D;
-	Fri,  9 Jun 2023 15:16:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 71D9F4251D
+	by smtp2.osuosl.org (Postfix) with ESMTP id B3A09418FD;
+	Fri,  9 Jun 2023 16:19:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B3A09418FD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A3011BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 14:56:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E527B1BF2AA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 16:19:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D525783C8D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 14:56:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D525783C8D
+ by smtp2.osuosl.org (Postfix) with ESMTP id BD13E418FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 16:19:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD13E418FD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aDViQfnd8co9 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Jun 2023 14:56:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gDs08qwZ9gW5 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Jun 2023 16:19:25 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B28C83C83
-Received: from mail-oa1-x35.google.com (mail-oa1-x35.google.com
- [IPv6:2001:4860:4864:20::35])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4B28C83C83
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 14:56:41 +0000 (UTC)
-Received: by mail-oa1-x35.google.com with SMTP id
- 586e51a60fabf-1a196784a4cso604002fac.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 09 Jun 2023 07:56:41 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 722F1417E5
+Received: from mail-yw1-x1136.google.com (mail-yw1-x1136.google.com
+ [IPv6:2607:f8b0:4864:20::1136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 722F1417E5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 16:19:25 +0000 (UTC)
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-565a63087e9so18127667b3.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 09 Jun 2023 09:19:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686322600; x=1688914600;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mNjEF1zb+JpJdY0weZ4OdAOu0yke/I9t8R3uYm6sLTw=;
- b=So/x96uOuevLoPHwR07zaKwlXdYWOGsj0mlzdJi2rgf0O71KLOK0YFOYzZMusvp2A5
- UVeYRZ7LuiWX9jbmWhjP1UWlUWuhUSv2bO1CK7bin111ceudcRnq4kk2gFqbPQZ6AHg4
- 3oYAyXhqUnzOBmF0LGMJN9t2tsqcEDCSU0f/LIo03Tainzyhh/pMyp4cm8enR+xfNExd
- B9UjWsJEbbqcgOgx6wwVSmml3G9k9v8VzW3E6yKoUSeOTeqCP4Oy5KGWJZUuaXDguMIn
- sI18xCDwkYZiccbrgwjTRo0k0ROzt/LonK4voO/dJSmzmARexteF56IENv9Wk15WxHtr
- 41fw==
-X-Gm-Message-State: AC+VfDw7G7YsVywGj8fynbi+vDr2iX+5w8O24T9YshnZXNcUYI7OoF8F
- LEvJMDqmj7CrNSNDZRz3Flm5bw==
-X-Google-Smtp-Source: ACHHUZ5lyjIg3/k8ishXP5lVr7SzW3xDk6gDIW+APpNABj3FGwxCpQmA/zWxRkbdHKZaShP8U7SZcw==
-X-Received: by 2002:a05:6870:fc84:b0:19f:7c4c:38b4 with SMTP id
- ly4-20020a056870fc8400b0019f7c4c38b4mr1554940oab.15.1686322600226; 
- Fri, 09 Jun 2023 07:56:40 -0700 (PDT)
-Received: from ?IPV6:2804:7f1:e2c0:9e83:b7c7:f418:cfcf:f0dd?
- ([2804:7f1:e2c0:9e83:b7c7:f418:cfcf:f0dd])
- by smtp.gmail.com with ESMTPSA id
- a21-20020a056870d19500b001a3093ec23fsm2236633oac.32.2023.06.09.07.56.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Jun 2023 07:56:39 -0700 (PDT)
-Message-ID: <facdfceb-fe2e-795b-ea89-1b67478eb533@mojatatu.com>
-Date: Fri, 9 Jun 2023 11:56:35 -0300
+ d=1e100.net; s=20221208; t=1686327564; x=1688919564;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aAnp8nk8Drs+fq4PdxH7Z2zYNvsqX1dlZYid/tf+cvs=;
+ b=YZM85wV46LFe7NoQ6XTLXBODRym6ns/fFxuEz0W53jHFqLbsfuBBzcLzIFnRpP4TfW
+ xm1Y9UDATJeg6QmFn+Bm99dP05B4/P55PHDbFEm54w9vZ/e2aKlEFdvWd0p3FX9q2at4
+ sOCddIAgj+rvVtMCRAh4ebOEsZvkn5quzXKET2EsN7PiJAdDV5PSZ0ouLpa0fTo0nbtw
+ C/okVmmNgLDMYpoYrYqvksAnUyakQxD8VPL+lQC2KROGpcm7BiresyJuxPTRF6+9KbKq
+ e8kCXSxLXULq+FpVfS8W8h5auNtHxSGGJGz3r+xJxvqSvHURPDwc3EPmQCce/ewmiJuS
+ gHew==
+X-Gm-Message-State: AC+VfDzisolwng0Bmj/3qIl0nogTq7Nrdas56SIKrpEiRxdJ199B+PhX
+ 4VW9+ZhFynYyMYMUt2twBpRrO6bV/zBjuHXvhkaFxw==
+X-Google-Smtp-Source: ACHHUZ4xbcwQos5stjR3+NPVH/GCf1ZFjClpbdt0fY+rge7tSC352F82rfJVp2d0njY9tuSktNEtB/iP5FzdgEbmth4=
+X-Received: by 2002:a81:9145:0:b0:567:c388:3552 with SMTP id
+ i66-20020a819145000000b00567c3883552mr1892389ywg.6.1686327564258; Fri, 09 Jun
+ 2023 09:19:24 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-To: Vladimir Oltean <vladimir.oltean@nxp.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>
 References: <20230602103750.2290132-1-vladimir.oltean@nxp.com>
  <20230602103750.2290132-6-vladimir.oltean@nxp.com>
  <CAM0EoM=P9+wNnNQ=ky96rwCx1z20fR21EWEdx+Na39NCqqG=3A@mail.gmail.com>
  <20230609121043.ekfvbgjiko7644t7@skbuf>
-Content-Language: en-US
-From: Victor Nogueira <victor@mojatatu.com>
 In-Reply-To: <20230609121043.ekfvbgjiko7644t7@skbuf>
-X-Mailman-Approved-At: Fri, 09 Jun 2023 15:15:48 +0000
+From: Jamal Hadi Salim <jhs@mojatatu.com>
+Date: Fri, 9 Jun 2023 12:19:12 -0400
+Message-ID: <CAM0EoMmkSZCePo1Y49iMk=9oYKR8xfVDncWF0E4xRhp2ER2PRQ@mail.gmail.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mojatatu-com.20221208.gappssmtp.com; s=20221208; t=1686322600; x=1688914600; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=mNjEF1zb+JpJdY0weZ4OdAOu0yke/I9t8R3uYm6sLTw=;
- b=yqu1Gt/I72W8rGCMTbNxP4nxyhxODNNERehop1YFjTuhAXJzp3uvoX/x6Zqn80ZPsP
- qPNKqE0PRLSNo9svzye/a1X7FjDNhWzOUX+2yPywDUpNtdZd/TITx3Ce2a77ghBWrL9U
- EmSNrEfZYGTeblSWGgITvKbFQLgD9LROEfaw65vEhd231ogFe7GnM79ShBz8kCsPyZaH
- cdkBTFk7A522ggTbqdCnOhpuWmX4QnN7G4NRlIwBcPXt41WPTGi7ZtUuiGXlFu6e5sm+
- Rb3YsG0S3J8oSiUu0dFlFvTTfDMUk5BkxDdgpUI1gDHvHUXH96EzUxGV6KBzx01Lb3Nt
- SjLw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=mojatatu-com.20221208.gappssmtp.com; s=20221208; t=1686327564; x=1688919564; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aAnp8nk8Drs+fq4PdxH7Z2zYNvsqX1dlZYid/tf+cvs=;
+ b=SLp7IGyKSJoCTguMmsNixX9DK6sIfLRmf/EiprLy0WjCbpPucAcellFr4CPKJGGFXu
+ Gh6PQn7NuEez3HFUfq0voV7Yfx4MB66r3eFCUY9aGHefS1LzJRmajyg6sh8kNgLpGhOW
+ rc9AhbRUCNiHEvoCWubcC7/fPGRRDluLIi2ZxqwJSZfEBIAUTsDxW+TjbZIajZv/Q7+l
+ ko5dX7ZYTayX3egnEQLj+d0LiYStVSTTLRS+CRdj088jycaT8+UU8bKJBLUevkF7A3Jj
+ 3SyMSrv7dWr+FzaJkU2W6j5xZqZmGdCx+foxgz3cQF/Df6rQTfngZ4zH20ksb62WtdHi
+ 0MXg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=mojatatu-com.20221208.gappssmtp.com
  header.i=@mojatatu-com.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=yqu1Gt/I
+ header.s=20221208 header.b=SLp7IGyK
 Subject: Re: [Intel-wired-lan] [PATCH RESEND net-next 5/5] net/sched:
  taprio: dump class stats for the actual q->qdiscs[]
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -126,133 +115,159 @@ Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
  intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
  Cong Wang <xiyou.wangcong@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 09/06/2023 09:10, Vladimir Oltean wrote:
-> On Thu, Jun 08, 2023 at 02:44:46PM -0400, Jamal Hadi Salim wrote:
->> Other than the refcount issue i think the approach looks reasonable to
->> me. The stats before/after you are showing below though are
->> interesting; are you showing a transient phase where packets are
->> temporarily in the backlog. Typically the backlog is a transient phase
->> which lasts a very short period. Maybe it works differently for
->> taprio? I took a quick look at the code and do see to decrement the
->> backlog in the dequeue, so if it is not transient then some code path
->> is not being hit.
-> 
-> It's a fair concern. The thing is that I put very aggressive time slots
-> in the schedule that I'm testing with, and my kernel has a lot of
-> debugging stuff which bogs it down (kasan, kmemleak, lockdep, DMA API
-> debug etc). Not to mention that the CPU isn't the fastest to begin with.
-> 
-> The way taprio works is that there's a hrtimer which fires at the
-> expiration time of the current schedule entry and sets up the gates for
-> the next one. Each schedule entry has a gate for each traffic class
-> which determines what traffic classes are eligible for dequeue() and
-> which ones aren't.
-> 
-> The dequeue() procedure, though also invoked by the advance_schedule()
-> hrtimer -> __netif_schedule(), is also time-sensitive. By the time
-> taprio_dequeue() runs, taprio_entry_allows_tx() function might return
-> false when the system is so bogged down that it wasn't able to make
-> enough progress to dequeue() an skb in time. When that happens, there is
-> no mechanism, currently, to age out packets that stood too much in the
-> TX queues (what does "too much" mean?).
-> 
-> Whereas enqueue() is technically not time-sensitive, i.e. you can
-> enqueue whenever you want and the Qdisc will dequeue whenever it can.
-> Though in practice, to make this scheduling technique useful, the user
-> space enqueue should also be time-aware (though you can't capture this
-> with ping).
-> 
-> If I increase all my sched-entry intervals by a factor of 100, the
-> backlog issue goes away and the system can make forward progress.
-> 
-> So yeah, sorry, I didn't pay too much attention to the data I was
-> presenting for illustrative purposes.
-> 
->> Aside: I realize you are busy - but if you get time and provide some
->> sample tc command lines for testing we could help create the tests for
->> you, at least the first time. The advantage of putting these tests in
->> tools/testing/selftests/tc-testing/ is that there are test tools out
->> there that run these tests and so regressions are easier to catch
->> sooner.
-> 
-> Yeah, ok. The script posted in a reply on the cover letter is still what
-> I'm working with. The things it intends to capture are:
-> - attaching a custom Qdisc to one of taprio's classes doesn't fail
-> - attaching taprio to one of taprio's classes fails
-> - sending packets through one queue increases the counters (any counters)
->    of just that queue
-> 
-> All the above, replicated once for the software scheduling case and once
-> for the offload case. Currently netdevsim doesn't attempt to emulate
-> taprio offload.
-> 
-> Is there a way to skip tests? I may look into tdc, but I honestly don't
-> have time for unrelated stuff such as figuring out why my kernel isn't
-> configured for the other tests to pass - and it seems that once one test
-> fails, the others are completely skipped, see below.
-
-You can tell tdc to run a specific test file by providing the "-f" option.
-For example, if you want to run only taprio tests, you can issue the
-following command:
-
-./tdc.py -f tc-tests/qdiscs/taprio.json
-
-This is also described in tdc's README.
-
-> Also, by which rule are the test IDs created?
-
-When creating a test case in tdc, you must have an ID field.
-What we do to generate the IDs is leave the "id" field as an
-empty string on the test case description, for example:
-
-
-{
-     "id": "",
-     "name": "My dummy test case",
-     ...
-}
-
-and run the following:
-
-./tdc.py -i
-
-This will automatically fill up the "id" field in the JSON
-with an appropriate ID.
-
-> root@debian:~# cd selftests/tc-testing/
-> root@debian:~/selftests/tc-testing# ./tdc.sh
-> considering category qdisc
->   -- ns/SubPlugin.__init__
-> Test 0582: Create QFQ with default setting
-> Test c9a3: Create QFQ with class weight setting
-> Test d364: Test QFQ with max class weight setting
-> Test 8452: Create QFQ with class maxpkt setting
-> Test 22df: Test QFQ class maxpkt setting lower bound
-> Test 92ee: Test QFQ class maxpkt setting upper bound
-> Test d920: Create QFQ with multiple class setting
-> Test 0548: Delete QFQ with handle
-> Test 5901: Show QFQ class
-> Test 0385: Create DRR with default setting
-> Test 2375: Delete DRR with handle
-> Test 3092: Show DRR class
-> Test 3460: Create CBQ with default setting
-> exit: 2
-> exit: 0
-> Error: Specified qdisc kind is unknown.
-
-As you stated, this likely means you are missing a config option.
-However you can just ask tdc to run a specific test file to avoid this.
-
-> (...)
-
-cheers,
-Victor
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCBKdW4gOSwgMjAyMyBhdCA4OjEw4oCvQU0gVmxhZGltaXIgT2x0ZWFuIDx2bGFkaW1p
+ci5vbHRlYW5AbnhwLmNvbT4gd3JvdGU6Cj4KPiBPbiBUaHUsIEp1biAwOCwgMjAyMyBhdCAwMjo0
+NDo0NlBNIC0wNDAwLCBKYW1hbCBIYWRpIFNhbGltIHdyb3RlOgo+ID4gT3RoZXIgdGhhbiB0aGUg
+cmVmY291bnQgaXNzdWUgaSB0aGluayB0aGUgYXBwcm9hY2ggbG9va3MgcmVhc29uYWJsZSB0bwo+
+ID4gbWUuIFRoZSBzdGF0cyBiZWZvcmUvYWZ0ZXIgeW91IGFyZSBzaG93aW5nIGJlbG93IHRob3Vn
+aCBhcmUKPiA+IGludGVyZXN0aW5nOyBhcmUgeW91IHNob3dpbmcgYSB0cmFuc2llbnQgcGhhc2Ug
+d2hlcmUgcGFja2V0cyBhcmUKPiA+IHRlbXBvcmFyaWx5IGluIHRoZSBiYWNrbG9nLiBUeXBpY2Fs
+bHkgdGhlIGJhY2tsb2cgaXMgYSB0cmFuc2llbnQgcGhhc2UKPiA+IHdoaWNoIGxhc3RzIGEgdmVy
+eSBzaG9ydCBwZXJpb2QuIE1heWJlIGl0IHdvcmtzIGRpZmZlcmVudGx5IGZvcgo+ID4gdGFwcmlv
+PyBJIHRvb2sgYSBxdWljayBsb29rIGF0IHRoZSBjb2RlIGFuZCBkbyBzZWUgdG8gZGVjcmVtZW50
+IHRoZQo+ID4gYmFja2xvZyBpbiB0aGUgZGVxdWV1ZSwgc28gaWYgaXQgaXMgbm90IHRyYW5zaWVu
+dCB0aGVuIHNvbWUgY29kZSBwYXRoCj4gPiBpcyBub3QgYmVpbmcgaGl0Lgo+Cj4gSXQncyBhIGZh
+aXIgY29uY2Vybi4gVGhlIHRoaW5nIGlzIHRoYXQgSSBwdXQgdmVyeSBhZ2dyZXNzaXZlIHRpbWUg
+c2xvdHMKPiBpbiB0aGUgc2NoZWR1bGUgdGhhdCBJJ20gdGVzdGluZyB3aXRoLCBhbmQgbXkga2Vy
+bmVsIGhhcyBhIGxvdCBvZgo+IGRlYnVnZ2luZyBzdHVmZiB3aGljaCBib2dzIGl0IGRvd24gKGth
+c2FuLCBrbWVtbGVhaywgbG9ja2RlcCwgRE1BIEFQSQo+IGRlYnVnIGV0YykuIE5vdCB0byBtZW50
+aW9uIHRoYXQgdGhlIENQVSBpc24ndCB0aGUgZmFzdGVzdCB0byBiZWdpbiB3aXRoLgo+Cj4gVGhl
+IHdheSB0YXByaW8gd29ya3MgaXMgdGhhdCB0aGVyZSdzIGEgaHJ0aW1lciB3aGljaCBmaXJlcyBh
+dCB0aGUKPiBleHBpcmF0aW9uIHRpbWUgb2YgdGhlIGN1cnJlbnQgc2NoZWR1bGUgZW50cnkgYW5k
+IHNldHMgdXAgdGhlIGdhdGVzIGZvcgo+IHRoZSBuZXh0IG9uZS4gRWFjaCBzY2hlZHVsZSBlbnRy
+eSBoYXMgYSBnYXRlIGZvciBlYWNoIHRyYWZmaWMgY2xhc3MKPiB3aGljaCBkZXRlcm1pbmVzIHdo
+YXQgdHJhZmZpYyBjbGFzc2VzIGFyZSBlbGlnaWJsZSBmb3IgZGVxdWV1ZSgpIGFuZAo+IHdoaWNo
+IG9uZXMgYXJlbid0Lgo+Cj4gVGhlIGRlcXVldWUoKSBwcm9jZWR1cmUsIHRob3VnaCBhbHNvIGlu
+dm9rZWQgYnkgdGhlIGFkdmFuY2Vfc2NoZWR1bGUoKQo+IGhydGltZXIgLT4gX19uZXRpZl9zY2hl
+ZHVsZSgpLCBpcyBhbHNvIHRpbWUtc2Vuc2l0aXZlLiBCeSB0aGUgdGltZQo+IHRhcHJpb19kZXF1
+ZXVlKCkgcnVucywgdGFwcmlvX2VudHJ5X2FsbG93c190eCgpIGZ1bmN0aW9uIG1pZ2h0IHJldHVy
+bgo+IGZhbHNlIHdoZW4gdGhlIHN5c3RlbSBpcyBzbyBib2dnZWQgZG93biB0aGF0IGl0IHdhc24n
+dCBhYmxlIHRvIG1ha2UKPiBlbm91Z2ggcHJvZ3Jlc3MgdG8gZGVxdWV1ZSgpIGFuIHNrYiBpbiB0
+aW1lLiBXaGVuIHRoYXQgaGFwcGVucywgdGhlcmUgaXMKPiBubyBtZWNoYW5pc20sIGN1cnJlbnRs
+eSwgdG8gYWdlIG91dCBwYWNrZXRzIHRoYXQgc3Rvb2QgdG9vIG11Y2ggaW4gdGhlCj4gVFggcXVl
+dWVzICh3aGF0IGRvZXMgInRvbyBtdWNoIiBtZWFuPykuCj4KPiBXaGVyZWFzIGVucXVldWUoKSBp
+cyB0ZWNobmljYWxseSBub3QgdGltZS1zZW5zaXRpdmUsIGkuZS4geW91IGNhbgo+IGVucXVldWUg
+d2hlbmV2ZXIgeW91IHdhbnQgYW5kIHRoZSBRZGlzYyB3aWxsIGRlcXVldWUgd2hlbmV2ZXIgaXQg
+Y2FuLgo+IFRob3VnaCBpbiBwcmFjdGljZSwgdG8gbWFrZSB0aGlzIHNjaGVkdWxpbmcgdGVjaG5p
+cXVlIHVzZWZ1bCwgdGhlIHVzZXIKPiBzcGFjZSBlbnF1ZXVlIHNob3VsZCBhbHNvIGJlIHRpbWUt
+YXdhcmUgKHRob3VnaCB5b3UgY2FuJ3QgY2FwdHVyZSB0aGlzCj4gd2l0aCBwaW5nKS4KPgo+IElm
+IEkgaW5jcmVhc2UgYWxsIG15IHNjaGVkLWVudHJ5IGludGVydmFscyBieSBhIGZhY3RvciBvZiAx
+MDAsIHRoZQo+IGJhY2tsb2cgaXNzdWUgZ29lcyBhd2F5IGFuZCB0aGUgc3lzdGVtIGNhbiBtYWtl
+IGZvcndhcmQgcHJvZ3Jlc3MuCj4KPiBTbyB5ZWFoLCBzb3JyeSwgSSBkaWRuJ3QgcGF5IHRvbyBt
+dWNoIGF0dGVudGlvbiB0byB0aGUgZGF0YSBJIHdhcwo+IHByZXNlbnRpbmcgZm9yIGlsbHVzdHJh
+dGl2ZSBwdXJwb3Nlcy4KPgoKU28gaXQgc2VlbXMgdG8gbWUgaXQgaXMgYSB0cmFuc2llbnQgcGhh
+c2UgYW5kIHRoYXQgYXQgc29tZSBwb2ludCB0aGUKYmFja2xvZyB3aWxsIGNsZWFyIHVwIGFuZCB0
+aGUgc2VudCBzdGF0cyB3aWxsIGdvIHVwLiBNYXliZSBqdXN0IHNheSBzbwppbiB5b3VyIGNvbW1p
+dCBvciBzaG93IHRoZSBmaW5hbCByZXN1bHQgYWZ0ZXIgdGhlIHBhY2tldCBpcyBnb25lLgoKSSBo
+YXZlIHRvIGFkbWl0LCBJIGRvbnQga25vdyBtdWNoIGFib3V0IHRhcHJpbyAtIHRoYXQncyB3aHkg
+aSBhbQphc2tpbmcgYWxsIHRoZXNlIGxlYWRpbmcgcXVlc3Rpb25zLiBZb3Ugc3Bva2Ugb2YgZ2F0
+ZXMgZXRjIGFuZCB0aGF0cwprbGluZ29uIHRvIG1lOyBidXQgaWl1YyB0aGVyZSdzIHNvbWUgdGlt
+ZSBzZW5zaXRpdmUgc3R1ZmYgdGhhdCBuZWVkcwp0byBiZSBzZW50IG91dCB3aXRoaW4gYSBkZWFk
+bGluZS4gUTogV2hhdCBzaG91bGQgaGFwcGVuIHRvIHNrYnMgdGhhdAphcmUgbm8gbG9uZ2VyIHZh
+bGlkPwpPbiB0aGUgYWdpbmcgdGhpbmcgd2hpY2ggeW91IHNheSBpcyBtaXNzaW5nLCBzaG91bGRu
+dCB0aGUgaHJ0aW1lciBvcgpzY2hlZHVsZSBraWNrIG5vdCBiZSBhYmxlIHRvIGRlcXVldWUgdGlt
+ZXN0YW1wZWQgcGFja2V0cyBhbmQganVzdCBkcm9wCnRoZW0/CgpjaGVlcnMsCmphbWFsCgoKCmNo
+ZWVycywKamFtYWwKCj4gPiBBc2lkZTogSSByZWFsaXplIHlvdSBhcmUgYnVzeSAtIGJ1dCBpZiB5
+b3UgZ2V0IHRpbWUgYW5kIHByb3ZpZGUgc29tZQo+ID4gc2FtcGxlIHRjIGNvbW1hbmQgbGluZXMg
+Zm9yIHRlc3Rpbmcgd2UgY291bGQgaGVscCBjcmVhdGUgdGhlIHRlc3RzIGZvcgo+ID4geW91LCBh
+dCBsZWFzdCB0aGUgZmlyc3QgdGltZS4gVGhlIGFkdmFudGFnZSBvZiBwdXR0aW5nIHRoZXNlIHRl
+c3RzIGluCj4gPiB0b29scy90ZXN0aW5nL3NlbGZ0ZXN0cy90Yy10ZXN0aW5nLyBpcyB0aGF0IHRo
+ZXJlIGFyZSB0ZXN0IHRvb2xzIG91dAo+ID4gdGhlcmUgdGhhdCBydW4gdGhlc2UgdGVzdHMgYW5k
+IHNvIHJlZ3Jlc3Npb25zIGFyZSBlYXNpZXIgdG8gY2F0Y2gKPiA+IHNvb25lci4KPgo+IFllYWgs
+IG9rLiBUaGUgc2NyaXB0IHBvc3RlZCBpbiBhIHJlcGx5IG9uIHRoZSBjb3ZlciBsZXR0ZXIgaXMg
+c3RpbGwgd2hhdAo+IEknbSB3b3JraW5nIHdpdGguIFRoZSB0aGluZ3MgaXQgaW50ZW5kcyB0byBj
+YXB0dXJlIGFyZToKPiAtIGF0dGFjaGluZyBhIGN1c3RvbSBRZGlzYyB0byBvbmUgb2YgdGFwcmlv
+J3MgY2xhc3NlcyBkb2Vzbid0IGZhaWwKPiAtIGF0dGFjaGluZyB0YXByaW8gdG8gb25lIG9mIHRh
+cHJpbydzIGNsYXNzZXMgZmFpbHMKPiAtIHNlbmRpbmcgcGFja2V0cyB0aHJvdWdoIG9uZSBxdWV1
+ZSBpbmNyZWFzZXMgdGhlIGNvdW50ZXJzIChhbnkgY291bnRlcnMpCj4gICBvZiBqdXN0IHRoYXQg
+cXVldWUKPgo+IEFsbCB0aGUgYWJvdmUsIHJlcGxpY2F0ZWQgb25jZSBmb3IgdGhlIHNvZnR3YXJl
+IHNjaGVkdWxpbmcgY2FzZSBhbmQgb25jZQo+IGZvciB0aGUgb2ZmbG9hZCBjYXNlLiBDdXJyZW50
+bHkgbmV0ZGV2c2ltIGRvZXNuJ3QgYXR0ZW1wdCB0byBlbXVsYXRlCj4gdGFwcmlvIG9mZmxvYWQu
+Cj4KPiBJcyB0aGVyZSBhIHdheSB0byBza2lwIHRlc3RzPyBJIG1heSBsb29rIGludG8gdGRjLCBi
+dXQgSSBob25lc3RseSBkb24ndAo+IGhhdmUgdGltZSBmb3IgdW5yZWxhdGVkIHN0dWZmIHN1Y2gg
+YXMgZmlndXJpbmcgb3V0IHdoeSBteSBrZXJuZWwgaXNuJ3QKPiBjb25maWd1cmVkIGZvciB0aGUg
+b3RoZXIgdGVzdHMgdG8gcGFzcyAtIGFuZCBpdCBzZWVtcyB0aGF0IG9uY2Ugb25lIHRlc3QKPiBm
+YWlscywgdGhlIG90aGVycyBhcmUgY29tcGxldGVseSBza2lwcGVkLCBzZWUgYmVsb3cuCj4KPiBB
+bHNvLCBieSB3aGljaCBydWxlIGFyZSB0aGUgdGVzdCBJRHMgY3JlYXRlZD8KPgo+IHJvb3RAZGVi
+aWFuOn4jIGNkIHNlbGZ0ZXN0cy90Yy10ZXN0aW5nLwo+IHJvb3RAZGViaWFuOn4vc2VsZnRlc3Rz
+L3RjLXRlc3RpbmcjIC4vdGRjLnNoCj4gY29uc2lkZXJpbmcgY2F0ZWdvcnkgcWRpc2MKPiAgLS0g
+bnMvU3ViUGx1Z2luLl9faW5pdF9fCj4gVGVzdCAwNTgyOiBDcmVhdGUgUUZRIHdpdGggZGVmYXVs
+dCBzZXR0aW5nCj4gVGVzdCBjOWEzOiBDcmVhdGUgUUZRIHdpdGggY2xhc3Mgd2VpZ2h0IHNldHRp
+bmcKPiBUZXN0IGQzNjQ6IFRlc3QgUUZRIHdpdGggbWF4IGNsYXNzIHdlaWdodCBzZXR0aW5nCj4g
+VGVzdCA4NDUyOiBDcmVhdGUgUUZRIHdpdGggY2xhc3MgbWF4cGt0IHNldHRpbmcKPiBUZXN0IDIy
+ZGY6IFRlc3QgUUZRIGNsYXNzIG1heHBrdCBzZXR0aW5nIGxvd2VyIGJvdW5kCj4gVGVzdCA5MmVl
+OiBUZXN0IFFGUSBjbGFzcyBtYXhwa3Qgc2V0dGluZyB1cHBlciBib3VuZAo+IFRlc3QgZDkyMDog
+Q3JlYXRlIFFGUSB3aXRoIG11bHRpcGxlIGNsYXNzIHNldHRpbmcKPiBUZXN0IDA1NDg6IERlbGV0
+ZSBRRlEgd2l0aCBoYW5kbGUKPiBUZXN0IDU5MDE6IFNob3cgUUZRIGNsYXNzCj4gVGVzdCAwMzg1
+OiBDcmVhdGUgRFJSIHdpdGggZGVmYXVsdCBzZXR0aW5nCj4gVGVzdCAyMzc1OiBEZWxldGUgRFJS
+IHdpdGggaGFuZGxlCj4gVGVzdCAzMDkyOiBTaG93IERSUiBjbGFzcwo+IFRlc3QgMzQ2MDogQ3Jl
+YXRlIENCUSB3aXRoIGRlZmF1bHQgc2V0dGluZwo+IGV4aXQ6IDIKPiBleGl0OiAwCj4gRXJyb3I6
+IFNwZWNpZmllZCBxZGlzYyBraW5kIGlzIHVua25vd24uCj4KPgo+IC0tLS0tPiB0ZWFyZG93biBz
+dGFnZSAqKiogQ291bGQgbm90IGV4ZWN1dGU6ICIkVEMgcWRpc2MgZGVsIGRldiAkRFVNTVkgaGFu
+ZGxlIDE6IHJvb3QiCj4KPiAtLS0tLT4gdGVhcmRvd24gc3RhZ2UgKioqIEVycm9yIG1lc3NhZ2U6
+ICJFcnJvcjogSW52YWxpZCBoYW5kbGUuCj4gIgo+IHJldHVybmNvZGUgMjsgZXhwZWN0ZWQgWzBd
+Cj4KPiAtLS0tLT4gdGVhcmRvd24gc3RhZ2UgKioqIEFib3J0aW5nIHRlc3QgcnVuLgo+Cj4KPiA8
+X2lvLkJ1ZmZlcmVkUmVhZGVyIG5hbWU9Mz4gKioqIHN0ZG91dCAqKioKPgo+Cj4gPF9pby5CdWZm
+ZXJlZFJlYWRlciBuYW1lPTU+ICoqKiBzdGRlcnIgKioqCj4gIi0tLS0tPiB0ZWFyZG93biBzdGFn
+ZSIgZGlkIG5vdCBjb21wbGV0ZSBzdWNjZXNzZnVsbHkKPiBFeGNlcHRpb24gPGNsYXNzICdfX21h
+aW5fXy5QbHVnaW5NZ3JUZXN0RmFpbCc+ICgndGVhcmRvd24nLCAnRXJyb3I6IFNwZWNpZmllZCBx
+ZGlzYyBraW5kIGlzIHVua25vd24uXG4nLCAnIi0tLS0tPiB0ZWFyZG93biBzdGFnZSIgZGlkIG5v
+dCBjb21wbGV0ZSBzdWNjZXNzZnVsbHknKSAoY2F1Z2h0IGluIHRlc3RfcnVubmVyLCBydW5uaW5n
+IHRlc3QgMTQgMzQ2MCBDcmVhdGUgQ0JRIHdpdGggZGVmYXVsdCBzZXR0aW5nIHN0YWdlIHRlYXJk
+b3duKQo+IC0tLS0tLS0tLS0tLS0tLQo+IHRyYWNlYmFjawo+ICAgRmlsZSAiL3Jvb3Qvc2VsZnRl
+c3RzL3RjLXRlc3RpbmcvLi90ZGMucHkiLCBsaW5lIDQ5NSwgaW4gdGVzdF9ydW5uZXIKPiAgICAg
+cmVzID0gcnVuX29uZV90ZXN0KHBtLCBhcmdzLCBpbmRleCwgdGlkeCkKPiAgIEZpbGUgIi9yb290
+L3NlbGZ0ZXN0cy90Yy10ZXN0aW5nLy4vdGRjLnB5IiwgbGluZSA0MzQsIGluIHJ1bl9vbmVfdGVz
+dAo+ICAgICBwcmVwYXJlX2VudihhcmdzLCBwbSwgJ3RlYXJkb3duJywgJy0tLS0tPiB0ZWFyZG93
+biBzdGFnZScsIHRpZHhbJ3RlYXJkb3duJ10sIHByb2NvdXQpCj4gICBGaWxlICIvcm9vdC9zZWxm
+dGVzdHMvdGMtdGVzdGluZy8uL3RkYy5weSIsIGxpbmUgMjQ1LCBpbiBwcmVwYXJlX2Vudgo+ICAg
+ICByYWlzZSBQbHVnaW5NZ3JUZXN0RmFpbCgKPiAtLS0tLS0tLS0tLS0tLS0KPiBhY2N1bXVsYXRl
+ZCBvdXRwdXQgZm9yIHRoaXMgdGVzdDoKPiBFcnJvcjogU3BlY2lmaWVkIHFkaXNjIGtpbmQgaXMg
+dW5rbm93bi4KPiAtLS0tLS0tLS0tLS0tLS0KPgo+IEFsbCB0ZXN0IHJlc3VsdHM6Cj4KPiAxLi4z
+MzYKPiBvayAxIDA1ODIgLSBDcmVhdGUgUUZRIHdpdGggZGVmYXVsdCBzZXR0aW5nCj4gb2sgMiBj
+OWEzIC0gQ3JlYXRlIFFGUSB3aXRoIGNsYXNzIHdlaWdodCBzZXR0aW5nCj4gb2sgMyBkMzY0IC0g
+VGVzdCBRRlEgd2l0aCBtYXggY2xhc3Mgd2VpZ2h0IHNldHRpbmcKPiBvayA0IDg0NTIgLSBDcmVh
+dGUgUUZRIHdpdGggY2xhc3MgbWF4cGt0IHNldHRpbmcKPiBvayA1IDIyZGYgLSBUZXN0IFFGUSBj
+bGFzcyBtYXhwa3Qgc2V0dGluZyBsb3dlciBib3VuZAo+IG9rIDYgOTJlZSAtIFRlc3QgUUZRIGNs
+YXNzIG1heHBrdCBzZXR0aW5nIHVwcGVyIGJvdW5kCj4gb2sgNyBkOTIwIC0gQ3JlYXRlIFFGUSB3
+aXRoIG11bHRpcGxlIGNsYXNzIHNldHRpbmcKPiBvayA4IDA1NDggLSBEZWxldGUgUUZRIHdpdGgg
+aGFuZGxlCj4gb2sgOSA1OTAxIC0gU2hvdyBRRlEgY2xhc3MKPiBvayAxMCAwMzg1IC0gQ3JlYXRl
+IERSUiB3aXRoIGRlZmF1bHQgc2V0dGluZwo+IG9rIDExIDIzNzUgLSBEZWxldGUgRFJSIHdpdGgg
+aGFuZGxlCj4gb2sgMTIgMzA5MiAtIFNob3cgRFJSIGNsYXNzCj4gb2sgMTMgMzQ2MCAtIENyZWF0
+ZSBDQlEgd2l0aCBkZWZhdWx0IHNldHRpbmcgIyBza2lwcGVkIC0gIi0tLS0tPiB0ZWFyZG93biBz
+dGFnZSIgZGlkIG5vdCBjb21wbGV0ZSBzdWNjZXNzZnVsbHkKPgo+IG9rIDE0IDA1OTIgLSBDcmVh
+dGUgQ0JRIHdpdGggbXB1ICMgc2tpcHBlZCAtIHNraXBwZWQgLSBwcmV2aW91cyB0ZWFyZG93biBm
+YWlsZWQgMTQgMzQ2MAo+Cj4gb2sgMTUgNDY4NCAtIENyZWF0ZSBDQlEgd2l0aCB2YWxpZCBjZWxs
+IG51bSAjIHNraXBwZWQgLSBza2lwcGVkIC0gcHJldmlvdXMgdGVhcmRvd24gZmFpbGVkIDE0IDM0
+NjAKPgo+IG9rIDE2IDQzNDUgLSBDcmVhdGUgQ0JRIHdpdGggaW52YWxpZCBjZWxsIG51bSAjIHNr
+aXBwZWQgLSBza2lwcGVkIC0gcHJldmlvdXMgdGVhcmRvd24gZmFpbGVkIDE0IDM0NjAKPgo+IG9r
+IDE3IDQ1MjUgLSBDcmVhdGUgQ0JRIHdpdGggdmFsaWQgZXdtYSAjIHNraXBwZWQgLSBza2lwcGVk
+IC0gcHJldmlvdXMgdGVhcmRvd24gZmFpbGVkIDE0IDM0NjAKPgo+IG9rIDE4IDY3ODQgLSBDcmVh
+dGUgQ0JRIHdpdGggaW52YWxpZCBld21hICMgc2tpcHBlZCAtIHNraXBwZWQgLSBwcmV2aW91cyB0
+ZWFyZG93biBmYWlsZWQgMTQgMzQ2MAo+Cj4gb2sgMTkgNTQ2OCAtIERlbGV0ZSBDQlEgd2l0aCBo
+YW5kbGUgIyBza2lwcGVkIC0gc2tpcHBlZCAtIHByZXZpb3VzIHRlYXJkb3duIGZhaWxlZCAxNCAz
+NDYwCj4KPiBvayAyMCA0OTJhIC0gU2hvdyBDQlEgY2xhc3MgIyBza2lwcGVkIC0gc2tpcHBlZCAt
+IHByZXZpb3VzIHRlYXJkb3duIGZhaWxlZCAxNCAzNDYwCj4KPiBvayAyMSA5OTAzIC0gQWRkIG1x
+cHJpbyBRZGlzYyB0byBtdWx0aS1xdWV1ZSBkZXZpY2UgKDggcXVldWVzKSAjIHNraXBwZWQgLSBz
+a2lwcGVkIC0gcHJldmlvdXMgdGVhcmRvd24gZmFpbGVkIDE0IDM0NjAKPgo+IG9rIDIyIDQ1M2Eg
+LSBEZWxldGUgbm9uZXhpc3RlbnQgbXFwcmlvIFFkaXNjICMgc2tpcHBlZCAtIHNraXBwZWQgLSBw
+cmV2aW91cyB0ZWFyZG93biBmYWlsZWQgMTQgMzQ2MAo+Cj4gb2sgMjMgNTI5MiAtIERlbGV0ZSBt
+cXByaW8gUWRpc2MgdHdpY2UgIyBza2lwcGVkIC0gc2tpcHBlZCAtIHByZXZpb3VzIHRlYXJkb3du
+IGZhaWxlZCAxNCAzNDYwCj4KPiBvayAyNCA0NWE5IC0gQWRkIG1xcHJpbyBRZGlzYyB0byBzaW5n
+bGUtcXVldWUgZGV2aWNlICMgc2tpcHBlZCAtIHNraXBwZWQgLSBwcmV2aW91cyB0ZWFyZG93biBm
+YWlsZWQgMTQgMzQ2MAo+Cj4gb2sgMjUgMmJhOSAtIFNob3cgbXFwcmlvIGNsYXNzICMgc2tpcHBl
+ZCAtIHNraXBwZWQgLSBwcmV2aW91cyB0ZWFyZG93biBmYWlsZWQgMTQgMzQ2MAo+Cj4gb2sgMjYg
+NDgxMiAtIENyZWF0ZSBISEYgd2l0aCBkZWZhdWx0IHNldHRpbmcgIyBza2lwcGVkIC0gc2tpcHBl
+ZCAtIHByZXZpb3VzIHRlYXJkb3duIGZhaWxlZCAxNCAzNDYwCj4KPiBvayAyNyA4YTkyIC0gQ3Jl
+YXRlIEhIRiB3aXRoIGxpbWl0IHNldHRpbmcgIyBza2lwcGVkIC0gc2tpcHBlZCAtIHByZXZpb3Vz
+IHRlYXJkb3duIGZhaWxlZCAxNCAzNDYwCj4KPiBvayAyOCAzNDkxIC0gQ3JlYXRlIEhIRiB3aXRo
+IHF1YW50dW0gc2V0dGluZyAjIHNraXBwZWQgLSBza2lwcGVkIC0gcHJldmlvdXMgdGVhcmRvd24g
+ZmFpbGVkIDE0IDM0NjAKPiAoLi4uKQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
+bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
+dGVsLXdpcmVkLWxhbgo=
