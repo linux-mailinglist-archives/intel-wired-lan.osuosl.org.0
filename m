@@ -1,83 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 799F3728E8E
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 05:29:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEB82729158
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Jun 2023 09:40:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AFC4240640;
-	Fri,  9 Jun 2023 03:29:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFC4240640
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7C96A42468;
+	Fri,  9 Jun 2023 07:39:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C96A42468
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686281355;
-	bh=Zgd2otYmK6BeW46J5HSbv3sDgg/uxKXqeloZOKkj+oc=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Cj1GrHpdykwtQ43j8CGNp5jJdcVhXpa29kylBeKLGxKJmatcK1jxMHgdg6uD+LUBe
-	 lUfYKqDFDbBWa9qxAzQtU9IiaddaM4Yhbgwrq+nVC1nFEtEarKgG0uGqeTxJUuyZmv
-	 TsvNswwF6HZnssEsjwCbtZBeT18Xy/j4aaw0e2/6zbUqWuyNwbW98F6XOpxKuWhkBn
-	 XkQpNOnMZBSK/qkPo1el9OkgNIwM+gTpz3bdVsisOsZdicJhV6d+GpCU3NTrIg94ha
-	 TFvOBID/mPwj1p3X+Kb6HAS5aKaM4ojtQiq3FvKQUvWAYruckl5QTr3gKRk6StH1st
-	 RgIM8ncRLwEUw==
+	s=default; t=1686296398;
+	bh=X/vuvc1ekOnTRjq8RMP7ANSi0wAt/TAqkU3iDKZmUxQ=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=BazP53dx6hGK/mvcnCsPok2WmqvwIRVofeImue3JTklSRUcVHO5o5JciB1F8X9PWn
+	 qt0JHbt4dtp/4wZDa0uzUuP3ZrdCh+Q0a2BowxbKBkaMAAW872ezU4DRzsHWfC09JZ
+	 e1RSBhXYqddeM69PqbJFz3tNCEJvoGvicorq21xehyu+LJkpNB2SxvrHu4mQ52c8jv
+	 sNxohHrXQajjq+8Dhu5gWyrUkF4oRUqKhYD/3gzICRrWqUBBSR3BowpCqEO5OhTRAB
+	 WTf09dFuTCDia5yvddJUdFCIWMzB4V5cZYDku5Dq724nb7hX3IYWdbSH33nHBol8iL
+	 R8eiz/q9EzLTw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mSTZwJhHutrE; Fri,  9 Jun 2023 03:29:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XyIcuO63PhGa; Fri,  9 Jun 2023 07:39:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 831B64064F;
-	Fri,  9 Jun 2023 03:29:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 831B64064F
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D5AFB1BF966
- for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0132B420F5;
+	Fri,  9 Jun 2023 07:39:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0132B420F5
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 42AAD1BF388
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 07:39:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BB909405EB
- for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BB909405EB
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1A89083C8D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 07:39:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1A89083C8D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fsx-JhxdNOr8 for <intel-wired-lan@osuosl.org>;
- Fri,  9 Jun 2023 03:29:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kXoNwhYujIxZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Jun 2023 07:39:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED42F404DA
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED42F404DA
- for <intel-wired-lan@osuosl.org>; Fri,  9 Jun 2023 03:29:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="342176036"
-X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="342176036"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jun 2023 20:29:07 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F389C83C83
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F389C83C83
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Jun 2023 07:39:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="337175327"
+X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="337175327"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jun 2023 00:39:50 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="822891779"
-X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="822891779"
-Received: from ssid-ilbpg3-teeminta.png.intel.com ([10.88.227.74])
- by fmsmga002.fm.intel.com with ESMTP; 08 Jun 2023 20:29:05 -0700
-From: tee.min.tan@intel.com
-To: intel-wired-lan@osuosl.org
-Date: Fri,  9 Jun 2023 11:28:42 +0800
-Message-Id: <1686281322-26581-1-git-send-email-tee.min.tan@intel.com>
-X-Mailer: git-send-email 1.9.1
+X-IronPort-AV: E=McAfee;i="6600,9927,10735"; a="740086614"
+X-IronPort-AV: E=Sophos;i="6.00,228,1681196400"; d="scan'208";a="740086614"
+Received: from lkp-server01.sh.intel.com (HELO 15ab08e44a81) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 09 Jun 2023 00:39:49 -0700
+Received: from kbuild by 15ab08e44a81 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1q7Wiq-0008mU-1o
+ for intel-wired-lan@lists.osuosl.org; Fri, 09 Jun 2023 07:39:48 +0000
+Date: Fri, 09 Jun 2023 15:39:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202306091525.vrFzUQZn-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686281348; x=1717817348;
- h=from:to:cc:subject:date:message-id;
- bh=MoCsdiEBPuMcGUh/b6jRXvrU1Hmg4aDStkU6QBjNMxw=;
- b=SaKI8hmXVqYtJVi58cQIRHwj7bZlwgDqjqWqkB0ip0OkXwBGOXIyUsd2
- yK+4hTDBp9WEDSHriWP7l+HHvldrRNY7ATIK/YZhcDW+jKp5x656XvaF0
- j2witk+V2Dm/zURQVgTOzvOYAzjsrceC1p+2wgdYExkkddSh5qoWRii5E
- jYExdGs0BkbpVrWcjc+tPAlWDYZPGkWpZtF6eaDiE84W6IGsCf2Gw9r6D
- iS1GWf7vr0f/IatsvblRouZE3ApLrGVNyHThev6vl45J4R/+Zcvb1vql3
- SHadu0OqVpEwHSCkaWNxsQ82xxV/1jSmCLXJMFsXdOY99RxSc7b9iQ7Jt
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1686296390; x=1717832390;
+ h=date:from:to:subject:message-id;
+ bh=VuDlOIz+LSeYHrmtbXOX+BG4jWaeeVVmSIdmqy1mUsU=;
+ b=X4YiIrYEWCZsnJxke5itso3F/IiDG9nrbhZ0tR6nxovJmRpC6q3DsMvL
+ o0ZcsdOjCZkVy8Y/zWlFrf032udVD/gnCE+KI7cWc/uqCKvdd+k0yt6JI
+ OTJvF+s9MzhconVSuudHDjxlzGS0XHROoNDlIspFbaV4J20DVGLpG+6Ut
+ C5B55OE4UoTrdLFpyJfKeHFftNRzaGNaevN9DQWWMmme+TrZHAk5oJmHR
+ yYpGcKb9b5Hb05lribanFU1S6FuBRvzvc+sX1vH6ssJ0dE6hS0f2mW5rs
+ pq7Ycv9NCIJpSDy2P0LOc8EAxZh8XxxSZzuRpCfkhbF5+YChrcTzIN7o1
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SaKI8hmX
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] igc: Include the length/type
- field and VLAN tag in queueMaxSDU
+ header.a=rsa-sha256 header.s=Intel header.b=X4YiIrYE
+Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
+ 78c50d6961fc05491ebbc71c35d87324b1a4f49a
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,71 +93,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: anthony.l.nguyen@intel.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Tan Tee Min <tee.min.tan@linux.intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
+branch HEAD: 78c50d6961fc05491ebbc71c35d87324b1a4f49a  ice: Fix XDP memory leak when NIC is brought up and down
 
-IEEE 802.1Q does not have clear definitions of what constitutes an
-SDU (Service Data Unit), but IEEE Std 802.3 clause 3.1.2 does define
-the MAC service primitives and clause 3.2.7 does define the MAC Client
-Data for Q-tagged frames.
+elapsed time: 724m
 
-It shows that the mac_service_data_unit (MSDU) does NOT contain the
-preamble, destination and source address, or FCS. The MSDU does contain
-the length/type field, MAC client data, VLAN tag and any padding
-data (prior to the FCS).
+configs tested: 45
+configs skipped: 2
 
-Thus, the maximum 802.3 frame size that is allowed to be transmitted
-should be QueueMaxSDU (MSDU) + 16 (6 byte SA + 6 byte DA + 4 byte FCS).
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Fixes: 92a0dcb8427d ("igc: offload queue max SDU from tc-taprio")
-Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 16 +++++-----------
- 1 file changed, 5 insertions(+), 11 deletions(-)
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+csky                                defconfig   gcc  
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                               defconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+sh                               allmodconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   clang
+um                           x86_64_defconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index bbb431d..4349718 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -1575,16 +1575,9 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
- 	if (adapter->qbv_transition || tx_ring->oper_gate_closed)
- 		goto out_drop;
- 
--	if (tx_ring->max_sdu > 0) {
--		u32 max_sdu = 0;
--
--		max_sdu = tx_ring->max_sdu +
--			  (skb_vlan_tagged(first->skb) ? VLAN_HLEN : 0);
--
--		if (first->bytecount > max_sdu) {
--			adapter->stats.txdrop++;
--			goto out_drop;
--		}
-+	if (tx_ring->max_sdu > 0 && first->bytecount > tx_ring->max_sdu) {
-+		adapter->stats.txdrop++;
-+		goto out_drop;
- 	}
- 
- 	if (unlikely(test_bit(IGC_RING_FLAG_TX_HWTSTAMP, &tx_ring->flags) &&
-@@ -6178,7 +6171,8 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 		struct net_device *dev = adapter->netdev;
- 
- 		if (qopt->max_sdu[i])
--			ring->max_sdu = qopt->max_sdu[i] + dev->hard_header_len;
-+			ring->max_sdu = qopt->max_sdu[i] + dev->hard_header_len
-+					- ETH_TLEN;
- 		else
- 			ring->max_sdu = 0;
- 	}
 -- 
-1.9.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
