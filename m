@@ -2,102 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64C5672B131
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Jun 2023 11:37:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E4A172B145
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Jun 2023 12:01:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E7DAB6110E;
-	Sun, 11 Jun 2023 09:37:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E7DAB6110E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1F4CC60EE3;
+	Sun, 11 Jun 2023 10:01:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1F4CC60EE3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686476230;
-	bh=3kC+eF5J2F1aVsycC4ycCg8JUEuw+h9ccG3XeI8fC4I=;
+	s=default; t=1686477685;
+	bh=H4N/qL50FJbhfYtHZ3ezi7YdckhXvOkKgaspEqrjK8U=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Kb+Lc/KG9yCwV67pJd6TsBxTe03asuxWXkFOvUskARLPSm1cjiPk+amQqbMXYfUdA
-	 iuLcfGhZNn0Ybz4nbLkfppK+1YdM/B6BynPhTYGysZLsVxmp5RjVSvS2LLcCFELS1O
-	 sAF/ALLYLI8S/b9qrn1+nVxMaenD2TtDxZAFlWWjzkVFzpGJeSpoBkF5Yk4VECHPV7
-	 hO66+zpUXm5Z4dHqgwfo9ekKRElXAG67kHAi7Z98e3pdmTTrdQvjU3IiNsTUlY2RT6
-	 1XrTjplmzq3yZ3tJezfy5SjzTnrEaIYekAF+msn22UvnYUi0s+Ofc8KeERWQV0se1Z
-	 LSS9J5f/u1oKg==
+	b=Aiz/WpXVeYcfWOCJMa06DHykDmSQ/oZFwe/AP825aKALN/O3ogFTHj39IGu2RZI58
+	 iDCYGDO3bEHMBIrXT0CroS1aoIjArmAMNyG4ORgdP6QIoVR7YwWFpk82AmGdOEbqMt
+	 xpYZSQ6+4p8WBWMJyoWbHzZ0HvGQRysmcx7oHLuMjNgoPj5HOilsGZ/hSRRMh6H0oD
+	 xofathrLdT2r1f2/COcpt3AYIV0Hheo0Q44e9SonzM3yEqPnzSqiiM+IxyJ4ApDB6o
+	 a6M0q3R62k9Xj7Momge3mXU+EH35wvGHOUYl/pimLrO9BzOUmFj4rdopiwahjyuTxK
+	 W806wmsy0EaDg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kiaUSzcoGHbJ; Sun, 11 Jun 2023 09:37:09 +0000 (UTC)
+	with ESMTP id 4YmsOCFZNwsN; Sun, 11 Jun 2023 10:01:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C906D60B45;
-	Sun, 11 Jun 2023 09:37:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C906D60B45
+	by smtp3.osuosl.org (Postfix) with ESMTP id DEA8E60BFF;
+	Sun, 11 Jun 2023 10:01:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DEA8E60BFF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7DD381BF38D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 09:37:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A51621BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 10:01:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5908860B45
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 09:37:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5908860B45
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7B8A1417C0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 10:01:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7B8A1417C0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z64EiTb5Ctci for <intel-wired-lan@lists.osuosl.org>;
- Sun, 11 Jun 2023 09:37:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WeGMPM0vND3y for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Jun 2023 10:01:17 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 64E02607AA
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
- [IPv6:2a00:1450:4864:20::42f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 64E02607AA
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 09:37:00 +0000 (UTC)
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-30aeee7c8a0so2361769f8f.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 02:37:00 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5234A417B1
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5234A417B1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 10:01:16 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-516a008e495so6890750a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 03:01:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686476218; x=1689068218;
+ d=1e100.net; s=20221208; t=1686477675; x=1689069675;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1RzKoavleYmYbGi4L50Fse1b510eueYfvrCoJAmsbxo=;
- b=LV3xKaBobqizhP/xmAggkST6af0hoZHwQnlOMUd0AQ8sWczs7cQ1fP1M6KaZen66VC
- Laxk9aYFLC1tDk89VIELazDNieLU6cf5rnk+iVXqZLVNley8tHm5ygXJvPKbKYjtyJt8
- ecSKLf3Yw6duv5w/zJLc2mNGbn3z6XBQovAhGdrEcVHLw0e5VLEbDGbGchZk3OlwEeIQ
- 0IRO7BA8U+o1ZoTD4bbh7O3SqPBVQ8zm+mH7iRsCvd20dW89dTtk+Ww9jTC5JqV9aHcm
- PVmBNMFzsthXC2Vs1SMNMsUqIKlOhXGtB+TV1mbCu6cwl6a1NBqkqJsolpnCg0jKpKpq
- FlWg==
-X-Gm-Message-State: AC+VfDxg00Y1+GPfcOaHKEMwX4WwwNlHvI747jZhgwzoIvhSJ1x+tOll
- qo7OCz71yoA8BEQ3NWee0pmwtw==
-X-Google-Smtp-Source: ACHHUZ5+nfn02bkuQTuCe1HVJNha7vkQ+Bf1+3Syh+Cs505sLe6+OvuIFC/T+1SNK4FODSOQZ+G7VQ==
-X-Received: by 2002:a5d:6e0c:0:b0:30e:47e2:7eca with SMTP id
- h12-20020a5d6e0c000000b0030e47e27ecamr2880966wrz.3.1686476218225; 
- Sun, 11 Jun 2023 02:36:58 -0700 (PDT)
+ bh=U7HN0f6TOWWkr11pJT0tfFyGZ1Me6eKxGL1ZqHz5p/E=;
+ b=aNeDJS5BLkZtWBb9jFck//pri8FvRE/bAagBBO5Q3ZTUJcvXAKDWUvsosiEt9QOhyh
+ y9WFZse2htO96CZP4DMQo+J/xMhrLX9FZjumQqTABAVDrTxrX4m2W/aCiBqG6Orv5p9h
+ ljoqCPTHEobV+USH070jk5oVoYzUcpQ/RANkqaNboPbW8tVFbtvrmhi/M5y2yCTFOBkv
+ 5bNmZ2wIJymoKTU90pGzvlkSe6SJOhz/Asu/arzlIHfAcGfqs+il1f+yZ/9llX8k4ck0
+ BsXD3gR6X7XslhqdShUuxfS1uvHjN+Vcum+Excp3RoblPXQnUTEC6FVMbryVcqkG21mX
+ ewmA==
+X-Gm-Message-State: AC+VfDzJv89qATa9RrjPP1YxBodi0uwjHaoRiXjcCugTdljyxX/FERpy
+ uMysC09nX9AAaojp0ySqotXvDg==
+X-Google-Smtp-Source: ACHHUZ5gWuO7BIceLcmBKNYkMGao9xFPw4XyyBHtMY8YchWoEkZuudgzgArbFrxLghboz06yhmTvFA==
+X-Received: by 2002:a05:6402:520a:b0:516:a1d5:846f with SMTP id
+ s10-20020a056402520a00b00516a1d5846fmr3286182edd.1.1686477674815; 
+ Sun, 11 Jun 2023 03:01:14 -0700 (PDT)
 Received: from localhost (host-213-179-129-39.customer.m-online.net.
  [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- k20-20020a05600c0b5400b003f4266965fbsm7983801wmr.5.2023.06.11.02.36.57
+ c7-20020aa7df07000000b00514b854c399sm3744198edy.84.2023.06.11.03.01.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Jun 2023 02:36:57 -0700 (PDT)
-Date: Sun, 11 Jun 2023 11:36:56 +0200
+ Sun, 11 Jun 2023 03:01:13 -0700 (PDT)
+Date: Sun, 11 Jun 2023 12:01:12 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZIWVuPMyKRPv6oyh@nanopsycho>
+Message-ID: <ZIWbaLd87EMbkDAY@nanopsycho>
 References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
  <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1686476218; x=1689068218; 
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1686477675; x=1689069675; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=1RzKoavleYmYbGi4L50Fse1b510eueYfvrCoJAmsbxo=;
- b=GQKny/Ocfst/o+Iz0zqLh9RYFAbp7j4h3MNYdU0ew61bb+vEXAkw3uBdHqUYfrK5kJ
- Mmo+9ATeTsy6jpHk4rWHMICl+7C8UibYVaL2giyJyB3zqUMVLC/QsdxrQEEoQoKWfbmg
- +Lo3EuyVmxQvNzDGtYq+41t3CP/zZbUuKl5HuNxk+qfYeEqSt+iG4NNUyH9OrtIhmVzp
- UbDUe/olXXA6Cgx1+RhqGFa/0ms3SJiQnQIUOeMrysO1ozG9Z6Fm3bpD34jdKyrPq57H
- uQUVcz7IhjPT78Bp0Ndtwiugfk5Sh0OhOyGLGcIUpuNxbBD92XvQm04DgjSD2PPpoNed
- i66Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=U7HN0f6TOWWkr11pJT0tfFyGZ1Me6eKxGL1ZqHz5p/E=;
+ b=CK+40rDIEO4qBWIjslHU71w2FzcpmL66yJ2ffo8QNiGyJVgjt2njdUY13r8vlWLyRh
+ bFzF3aspyFifeybgeAm5JsTbvM0Y0U+htlNyMhY4rZdso0DpijNINO8CzRHkG4h6vTm2
+ qDNewH1UtM2COGT2JZr0R53kucC4xe+Scno8vkuo9GrhvTpVhzxcRtNBK/Aq+CslaRWL
+ 6hGnkuO6xqG3ciKigTB9qYkhGVxQ+wJ/f/yVK+VC1tnSVF3wpmP3pZLfGG23kH9vlrXt
+ mefPq9PTmMZ08D7NdNkgeJfPZ4BFv+VTpfc09VRr8QF7C3rGqDJ7tFv5INdS55jkARsQ
+ vZYQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
  header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=GQKny/Oc
+ header.s=20221208 header.b=CK+40rDI
 Subject: Re: [Intel-wired-lan] [RFC PATCH v8 03/10] dpll: core: Add DPLL
  framework base functions
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -138,50 +138,85 @@ Fri, Jun 09, 2023 at 02:18:46PM CEST, arkadiusz.kubalewski@intel.com wrote:
 
 [...]
 
->+int dpll_device_register(struct dpll_device *dpll, enum dpll_type type,
->+			 const struct dpll_device_ops *ops, void *priv)
+
+>+ * dpll_xa_ref_dpll_first - find first record of given xarray
+>+ * @xa_refs: xarray
+>+ *
+>+ * Context: shall be called under a lock (dpll_lock)
+>+ * Return: first element on given xaaray
+
+typo: xarray
+
+
+>+ */
+>+struct dpll_pin_ref *dpll_xa_ref_dpll_first(struct xarray *xa_refs)
+
+[...]
+
+
+>+/**
+>+ * dpll_device_get - find existing or create new dpll device
+>+ * @clock_id: clock_id of creator
+>+ * @device_idx: idx given by device driver
+>+ * @module: reference to registering module
+>+ *
+>+ * Get existing object of a dpll device, unique for given arguments.
+>+ * Create new if doesn't exist yet.
+>+ *
+>+ * Context: Acquires a lock (dpll_lock)
+>+ * Return:
+>+ * * valid dpll_device struct pointer if succeeded
+>+ * * ERR_PTR(-ENOMEM) - failed memory allocation
+
+Yeah, that is kind of obvious, isn't? Really, drop this pointless
+coments.
+
+
+>+ * * ERR_PTR(X) - failed allocation on dpll's xa
+>+ */
+>+struct dpll_device *
+>+dpll_device_get(u64 clock_id, u32 device_idx, struct module *module)
+
+[...]
+
+
+>+/**
+>+ * dpll_pin_register - register the dpll pin in the subsystem
+>+ * @dpll: pointer to a dpll
+>+ * @pin: pointer to a dpll pin
+>+ * @ops: ops for a dpll pin ops
+>+ * @priv: pointer to private information of owner
+>+ *
+>+ * Context: Acquires a lock (dpll_lock)
+>+ * Return:
+>+ * * 0 on success
+>+ * * -EINVAL - missing pin ops
+>+ * * -ENOMEM - failed to allocate memory
+
+Does not make sense to assign one errno to one specific error.
+Avoid tables like this.
+
+
+>+ */
+>+int
+>+dpll_pin_register(struct dpll_device *dpll, struct dpll_pin *pin,
+>+		  const struct dpll_pin_ops *ops, void *priv)
 >+{
->+	struct dpll_device_registration *reg;
->+	bool first_registration = false;
->+
->+	if (WARN_ON(!ops))
->+		return -EINVAL;
->+	if (WARN_ON(type < DPLL_TYPE_PPS || type > DPLL_TYPE_MAX))
->+		return -EINVAL;
+>+	int ret;
 >+
 >+	mutex_lock(&dpll_lock);
->+	reg = dpll_device_registration_find(dpll, ops, priv);
->+	if (reg) {
->+		mutex_unlock(&dpll_lock);
->+		return -EEXIST;
->+	}
->+
->+	reg = kzalloc(sizeof(*reg), GFP_KERNEL);
->+	if (!reg) {
->+		mutex_unlock(&dpll_lock);
->+		return -EEXIST;
->+	}
->+	reg->ops = ops;
->+	reg->priv = priv;
->+	dpll->type = type;
->+	first_registration = list_empty(&dpll->registration_list);
->+	list_add_tail(&reg->list, &dpll->registration_list);
->+	if (!first_registration) {
->+		mutex_unlock(&dpll_lock);
->+		return 0;
->+	}
->+
->+	xa_set_mark(&dpll_device_xa, dpll->id, DPLL_REGISTERED);
+>+	if (WARN_ON(!(dpll->module == pin->module &&
+>+		      dpll->clock_id == pin->clock_id)))
+>+		ret = -EFAULT;
+
+-EINVAL;
+
+
+>+	else
+>+		ret = __dpll_pin_register(dpll, pin, ops, priv);
 >+	mutex_unlock(&dpll_lock);
->+	dpll_device_create_ntf(dpll);
-
-This function is introduced in the next patch. Breaks bissection. Make
-sure you can compile the code after every patch applied.
-
-
-
 >+
->+	return 0;
+>+	return ret;
 >+}
 
 [...]
