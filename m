@@ -1,178 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78F1372B1A0
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Jun 2023 13:17:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0113372B1B7
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Jun 2023 13:42:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 07F0060F93;
-	Sun, 11 Jun 2023 11:17:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07F0060F93
+	by smtp4.osuosl.org (Postfix) with ESMTP id A165B4182D;
+	Sun, 11 Jun 2023 11:42:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A165B4182D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686482277;
-	bh=tuGAeesmOPyO99VkCWnEKeBSzJFYXVJ8vDskFF0fbLE=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1686483758;
+	bh=lsAkfK8dn76TsUp6lXJz9JR2+o8nindwd2jRL4gDm/0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HZmKvOJ3Is/0m6nacCXGp0xwiGV3ahiAw3dtDQv8VtLS3QHQx8V/tr1rLtIswTbYH
-	 7/suG/mUxJkdYIcOUC3KQuNYdfzd2ofmvrGsTCvLfJzP8e8cxutUoZqSJHD0MN/Dm3
-	 hrsWilO/UMPYGWJtZWoQFXeo/kz5Rz7CF1OQW6OJszxakL6QFFre3gpdliNE600uaD
-	 ouxmM9Q/p/ohbS0Jb12wH7yMJ+EWtm+UAvoFG0TsSk+dHGmXMYuQ76qvlb0cTP/hn/
-	 BpDcr56lh3WiuUE/HiXt7sbYBrLfeDktCz6rgbC4LE2baZEbLVB4FPfT6yvV7Su9Rw
-	 h4uSKZi6iKMwQ==
+	b=VQgx/dmSxbkot1GtNKBPMc63hQ1DAwwxLsH9p1ivY8MFj/DFTa7L0vXt2ldpTJ/Nl
+	 qsPfcJDnxJe1ahEKGTXtbFG2BQIeC3g0vlAOzWW9mw/5M/wwGiGeGCib455LoPx9yQ
+	 1EcecIyIV9fztdFMYRM+M1N0jNgYDn8gqNyPpAveY4uMWTFCmKvhGDkNxA8mC/kqx+
+	 uPLWHpEcvZT4OVdHxajYKSWDoMEexlQxyqbvf9I1audEeq49ZItYV0Q+WvVuRv126u
+	 cbv5LrfvuASW6+eYdZdXcukgYjVn664ldpViElyK4IBABbhvWBVxsL6KD1ajPUrYY+
+	 +OlFFMQ/DIMlQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1vbw4vk8xhZ1; Sun, 11 Jun 2023 11:17:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8T5hV96ukOSb; Sun, 11 Jun 2023 11:42:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C754B60AB0;
-	Sun, 11 Jun 2023 11:17:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C754B60AB0
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8546D1BF5DC
- for <intel-wired-lan@osuosl.org>; Sun, 11 Jun 2023 11:17:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ADC5E41836;
+	Sun, 11 Jun 2023 11:42:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ADC5E41836
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AF431BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 11:42:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5749660AB0
- for <intel-wired-lan@osuosl.org>; Sun, 11 Jun 2023 11:17:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5749660AB0
+ by smtp2.osuosl.org (Postfix) with ESMTP id 787DB4011A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 11:42:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 787DB4011A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C9XOsEL6gGKL for <intel-wired-lan@osuosl.org>;
- Sun, 11 Jun 2023 11:17:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2447360AA8
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2447360AA8
- for <intel-wired-lan@osuosl.org>; Sun, 11 Jun 2023 11:17:49 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10737"; a="361214116"
-X-IronPort-AV: E=Sophos;i="6.00,234,1681196400"; d="scan'208";a="361214116"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2023 04:17:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10737"; a="661258475"
-X-IronPort-AV: E=Sophos;i="6.00,234,1681196400"; d="scan'208";a="661258475"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga003.jf.intel.com with ESMTP; 11 Jun 2023 04:17:41 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Sun, 11 Jun 2023 04:17:39 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Sun, 11 Jun 2023 04:17:39 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.42) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Sun, 11 Jun 2023 04:17:38 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZyRGsMxVUZ6mJpUaOxcsm1/JtDK5Hhx9MGhX8x8vCfWC3ANqTC9hHYOZY4z+DrcETLV9eD4hlLhWu6PDvuVlXraFESLWGVnG0wqt3S4aCB0/mJ8AXhSFMqCfCRhRDPzLE3meIWb6B4N5Lw8AKPbWAV2MT6sopQmXth3cqU4/Z/uDj+OaWSN8LSx43fjI/2frnfiPJzxeZWeVBRYO321DxMJrRmdc1Z7ao4fnEDEaBz9+oFPq5MprsX4iW7tSW/P66rqtqDK8NMbCw+MqN+5L4uOonJnrg+rKB5sqkbR5fIEe/9olpRVSPJc66zzHHLUoH1OLVsvbpPtoTJGUQmxSqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qWnASx9ozD8l7ZeJysa5umMTLvsnR2HDnH+t3d1owds=;
- b=WhgAWU+2D6tq/uio6Pz8aLMFpY0nnzPwa1lYr/L9zwhUPtHuLeMAs4roXwcnlZj/pEkBakgICwgak9SuTzvbCrlikhAK76w0Yw3yoEeh+NPIM2s1AAz828h0lrlR7qSfvxOA1BEtvXI4gZ2uY42Hszyv7KnayVrBlHHE+a75eFb1gmPhkMg9OkxXkpbnzyh3jDrcRXQSEbJz9Mb+8Xe3TtfPoYIZ7nyqcXSwfNsc55Rg2467hfeQq8RKL+oilAxQeKFKR32VNq5T7cOwqrDY6BuWqdVF8A8BaTIyvSskQ2TfIrfWvKt9fTp+6Ca0D+RIvIjQdAvYFwaJIBkMj5etlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6180.namprd11.prod.outlook.com (2603:10b6:a03:459::14)
- by PH8PR11MB6659.namprd11.prod.outlook.com (2603:10b6:510:1c2::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.36; Sun, 11 Jun
- 2023 11:17:37 +0000
-Received: from SJ1PR11MB6180.namprd11.prod.outlook.com
- ([fe80::dfd2:5a47:bfeb:aa2e]) by SJ1PR11MB6180.namprd11.prod.outlook.com
- ([fe80::dfd2:5a47:bfeb:aa2e%4]) with mapi id 15.20.6455.030; Sun, 11 Jun 2023
- 11:17:36 +0000
-From: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
-To: "Tan, Tee Min" <tee.min.tan@intel.com>, "intel-wired-lan@osuosl.org"
- <intel-wired-lan@osuosl.org>
-Thread-Topic: [PATCH iwl-net v1] igc: Include the length/type field and VLAN
- tag in queueMaxSDU
-Thread-Index: AQHZmoKTJl61q12xGkuFiDUg39pXNK+Fd10A
-Date: Sun, 11 Jun 2023 11:17:36 +0000
-Message-ID: <SJ1PR11MB6180C0D69F971AAC57B270E7B857A@SJ1PR11MB6180.namprd11.prod.outlook.com>
-References: <1686281322-26581-1-git-send-email-tee.min.tan@intel.com>
-In-Reply-To: <1686281322-26581-1-git-send-email-tee.min.tan@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6180:EE_|PH8PR11MB6659:EE_
-x-ms-office365-filtering-correlation-id: 3b0a45aa-e4d7-44c7-8098-08db6a6d75d9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MOdP0DhSgZAbwu4vMv6X3UoC1g0K/Mu50MzSzktk4P7VJiLDi32kMOb2bm3Ud0PKag8u/20BBztGbGsJAxsDPA32Lpdhq9iIbO22nohVHsGSpsfbU7G5R7OXM48sfd2aZ4G+0ZZRoq3u+x7HtUg4kCyD3Ku6RoyHqLlFSGXrKhzEj6Mr1LR9mtbTtm/V6fzE7/j6tCpzUZ86/sxDLC9wv08cCvw0EYsHxaOPMF0i18QZfK6C4zaqo//cTFBjA5v9vSNZWCDQP8pPeEtF25ZHjGvebP81+PGTODxa+aWPJQBhb0REeZAx9HpM3Bd3t09SElcfHdXphjwjAEdgMFQP3FN2azDigqYX13ZlojJozL1tputEKYk4Y0N4+rm2wvPfoaAeXPQCGfqLxJCNa3xFu1IzxsuXuTddwtyMaOVredLS7l1DQEBHM3oXibAM3cQ4gYesrFVw4cFJ6yyOEr/u3VY+v4bdCgpjL6jRqjMUxOxQNqp0a6ZwljrVuyRjAQuZIT0R19buE5bo2evLbIQZxfgtK+v0yx0y6Lq83A93XQEwRkylKcjM0I+rKTXumPTN5sW352CbG1pnSB8RN8NtkojKRIw1YLqtof3+LVtJ53i6xq6E1Nd94MkvsVUQNofm
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6180.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(396003)(346002)(136003)(39860400002)(376002)(451199021)(38070700005)(26005)(55016003)(186003)(41300700001)(6506007)(9686003)(52536014)(5660300002)(33656002)(66946007)(76116006)(64756008)(4326008)(66446008)(8936002)(83380400001)(66476007)(7696005)(66556008)(71200400001)(478600001)(8676002)(110136005)(54906003)(2906002)(86362001)(122000001)(316002)(38100700002)(82960400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?eSRRGE6uBceXSxCYYvtAta1eCWBh4/vObvFyDCtuOQnjBIYfvNffWZtaa7wD?=
- =?us-ascii?Q?5TbM7Xdye4x1jMhwimPmJ6u1QbemjtudaRZ3RDtks4r24FYKfdbRs1y863ML?=
- =?us-ascii?Q?tYkjevKH+Q9YRbnOpEIIzxQEErgDfv2lQ2qGHEBqjT3LbJWFHk9rCLEnaV5B?=
- =?us-ascii?Q?JADW5U7+HXVS46KPYs2wDw3nNiQsb+xFWYZ4Sq1TOgVfTNTuvzzeK/MjW1P8?=
- =?us-ascii?Q?yy1FhMaI7pPzMkibimUvse0ao/4on1q1TbDd56IMsprdaShK1KYEf+urpJOx?=
- =?us-ascii?Q?ElsFXyuwIYY0ayOp1mLquxJwqHhRYhNSIouPQROuLfCHX/M89PxI0mQmQ35F?=
- =?us-ascii?Q?kcUHRrrizIysAd98B6Ffn2jZbJlp0dfCJNkV3ngKW8xuRKRoW+Ox9wAToGnw?=
- =?us-ascii?Q?5UNeqjb9D8yw7HVobAkqCdxgdPRLOsBCPhGgoecXa2Q5ilwTNFc8JItbg2ID?=
- =?us-ascii?Q?AXtA46pJUe0wlaPwANyEQW223lpKCo4wZOP5g3puoAedh6awmKFmQc0GZHX5?=
- =?us-ascii?Q?qpyqFLhjb9FI80s851j62bNBydMG2RPkCm1GaL8R+JyC/1Yu4GA0iPlfcOVe?=
- =?us-ascii?Q?56BvMChdclfHQR0vSgRPYjh9hvfDvOtI9AUnL7xzV3+ags94ErumUWCYB5Jy?=
- =?us-ascii?Q?1Fnl+tpd1yKAeC2kyRdN3tjpXzgCBoKxcUFmeCuPmPgg2Fvkj1qQwyBA7grg?=
- =?us-ascii?Q?NEylP5X58gw2Gv+znX5e3syHHD5qgTRdZzm8CvOFi+eogllvG2IUBkDt3mfy?=
- =?us-ascii?Q?0yUOLH4RTQ6Yi2SvvMkIJyjuMHC+aCxo+j9ZUtELN2yHlDi7HWutyCP9f1LM?=
- =?us-ascii?Q?I172lUDOvSyNkey9idXYPxvvfUVlaFGNLIvLDhUHwqLeqwPT1mlRbRBtJ+39?=
- =?us-ascii?Q?7bh/ZVrEL7W94GzmyknSojTLsQz44TlK94DGZIcDsqaBhZ4SDvcFdrDpAP52?=
- =?us-ascii?Q?+aiHqPLq9u/qHBWEIE4PCLreR3R4T0GEoSTwY3vSs1tZfIm3nwzihKlR1PkZ?=
- =?us-ascii?Q?i8SeDki1qs7Lkpu7uDVYHn9Zf43Ktc4pogxGaPjQX0mj1cpQi7BdCGMiAhlj?=
- =?us-ascii?Q?STuxSNCR2POIaIjRdg4c/IoMEAUvtHh6J70tPwwKChoNvnSJp9i1L1E+Mlh9?=
- =?us-ascii?Q?O9DlWOl/ihFfmG7rJDsVW8SWmrMgVmczGRRNeCyOSuNGiIDOboblC2efhs4x?=
- =?us-ascii?Q?qjoQ6SACN2yDzmGNMubSgE53oIowbTaQMWOa4SlVi6qQiqOqJfW0c19MWVcL?=
- =?us-ascii?Q?fcGWPvcUQWEK1gEBNzpgslFp2SoAEgNIhNSQp5olx8BcWU+W+YhXhC/xscR8?=
- =?us-ascii?Q?iIvtaHOHDFFBQy/uURWA3ttZngukxHpQNKndJFahlR892EryvfdZXfrQXxAb?=
- =?us-ascii?Q?jXpzfV6KmBOjcIlFKiL9At2aOpnN1wmXl7rD8kr+TvOOvR/88ImGYir9rOKR?=
- =?us-ascii?Q?vYZJ/jNIhZxdvG6q8PENYPT5PcDn5L87GD+2KuQ8BPx6rTzI5mZevPR0n1zx?=
- =?us-ascii?Q?E51ehScfp4/SVNfYzDWT6By8jCYpr6xtGrtFjkWVEoC5BS9hk4iE4yZtcscu?=
- =?us-ascii?Q?tszZ3ALG3z83W9y4dpIJIH+u/EPPvsDP065Z2evuSnZzeGv2LbIgmFcYjlak?=
- =?us-ascii?Q?SHSJ08ujC7AxBVpJdWOc5pA=3D?=
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id x_H98KziO4Dl for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Jun 2023 11:42:26 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC82B400D3
+Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com
+ [IPv6:2a00:1450:4864:20::32d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BC82B400D3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 11:42:25 +0000 (UTC)
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-3f6d7abe934so23515445e9.2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Jun 2023 04:42:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686483743; x=1689075743;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Uunh/A1JgdlAxWRop9uWNqDpYYBwdvXxrLWN6SOMhYk=;
+ b=WFF0TcYVUW33WvkZpsGJJVe9y8lG9VGPM4ayLdtStcUbEP/OXI+9DmPwEhw19XPRh/
+ EsXAgId+jVsV/oSgDAuJq3QZe4mGi7GT8bG1CXVNNQ+Ldm+LkMDYuN32oJA9wa54ezTq
+ yKPsHjFhgSTSJ0luNOdkbcTPaUc7FJriCLMxYmWBNzN4VPAy9YF5GtG/065eVftf/+ad
+ RdLnYvjQ0BbNMkmbyo7I5JvEgwmSy0c1dF5/wIizjPBxRg5Yl15AIhYLf91lBLNP36b/
+ dSNKDeghToQVARKZxL4OGDMinb7kLbjdKCRAopDyfnJz/efRymYvkxLhnyvgvETJ5uHB
+ ut/g==
+X-Gm-Message-State: AC+VfDwuV7H4xGm8jZ4LpISn/HBVRg+6D4rqk7o7ZFS5C84Gix6xpZEJ
+ UjMJfauYaR8rFQHx6/lO4KnHQg==
+X-Google-Smtp-Source: ACHHUZ6X54I7teGV7jjjXQjoU4XRY6UppsC4jevGjgRE17SHcPi4pY4MDUaTWG/GIfARSl50ZRTvYQ==
+X-Received: by 2002:a05:600c:2311:b0:3f6:289:b53b with SMTP id
+ 17-20020a05600c231100b003f60289b53bmr3747553wmo.5.1686483742946; 
+ Sun, 11 Jun 2023 04:42:22 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ i12-20020a05600c290c00b003f7e653c3e3sm8210475wmd.21.2023.06.11.04.42.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 11 Jun 2023 04:42:22 -0700 (PDT)
+Date: Sun, 11 Jun 2023 13:42:20 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <ZIWzHGt/dbD6kcF0@nanopsycho>
+References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
+ <20230609121853.3607724-5-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6180.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b0a45aa-e4d7-44c7-8098-08db6a6d75d9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jun 2023 11:17:36.3928 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rVmf/mDBfBU8NXLSYMVXdQqvOUuImmBHSjBQFrpR26iI0QCd6lTkf19iDwAbciSfgtnUmzpnmqaj63XoYh5S0l9Dk0TnHmHugbkIEC6VYQfZky06tRwfp309liMXQO/I
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB6659
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686482270; x=1718018270;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Skab1YGp1cMJTXihpiKpfcjzzenjF+oUGXue6gAkr3M=;
- b=E5qSroMsoUsH2SPjNHKKFXZBRY+2H+B08V7Ayvg7ECaO7zI14y6KZLNO
- 0LPraLqjOnonnz3IIJVtwlZEncC8hS682dOnMDxnxRuQSNKlMSEp36IkQ
- FVINL5joANHB+TcIXJBfwcy6DgQ1KlIvLZbHEDq4Thr40u+qS8N4UjX+A
- 9rvM9O/gMqsDfruEEOCVx47vrS6ls3nCOlwku9hmjrmPOLgfI//rQ+ffQ
- g/kyl9VSamQJl76ABC0Uce48NHYWIaQjNp4USkfgoCvA5ZaYcgMN0fNIt
- 6wIDwjp6qqbAMnKf/Pmqs6FYvcyyyO0l0qdxul2LIDWdno03HgOvm6TPj
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=E5qSroMs
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igc: Include the
- length/type field and VLAN tag in queueMaxSDU
+Content-Disposition: inline
+In-Reply-To: <20230609121853.3607724-5-arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1686483743; x=1689075743; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Uunh/A1JgdlAxWRop9uWNqDpYYBwdvXxrLWN6SOMhYk=;
+ b=eAHgtUPXpAsvd6CkG3hEcQYm22TbATaX2dBX9iZN8Img0Gz+RMiDNvVZN5Ao6gCkGD
+ wyxD1evXmspyKcAI/QLSRSx0cNOEOsmaHXAUByQKXiPksB30Lr8AciN7kp+l/l5bIgWH
+ mm/OvXAbz6LgOHjp516ULsEVcr+BbSxK3xp4xCmVhWWQOf0sP3y1maVKKFljMFPPwERy
+ 0yNRNRT3ATxmIeHPOlVo3m8BXxmcbY/KegPaYqLnoFnEnMoW1/gS3tTrQWtncJQ+q9rW
+ LLYWB1PTNz/14Lf5PZcI4JzUZ+ZY6fOyTR5S/Xjs47U6x8GMXr1JbfPgk3SzaYQGfl4N
+ K8wg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
+ header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
+ header.s=20221208 header.b=eAHgtUPX
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 04/10] dpll: netlink: Add DPLL
+ framework base functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,80 +112,1612 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
+ javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, linux-clk@vger.kernel.org,
+ lucien.xin@gmail.com, leon@kernel.org, corbet@lwn.net,
+ linux-rdma@vger.kernel.org, masahiroy@kernel.org, linux-doc@vger.kernel.org,
+ jesse.brandeburg@intel.com, vadfed@meta.com, intel-wired-lan@lists.osuosl.org,
+ airlied@redhat.com, vadfed@fb.com, pabeni@redhat.com,
+ ricardo.canuelo@collabora.com, arnd@arndb.de, idosch@nvidia.com,
+ richardcochran@gmail.com, claudiajkang@gmail.com, kuniyu@amazon.com,
+ jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com, kuba@kernel.org,
+ nicolas.dichtel@6wind.com, linux-arm-kernel@lists.infradead.org,
+ axboe@kernel.dk, sj@kernel.org, vadim.fedorenko@linux.dev, linux@zary.sk,
+ gregkh@linuxfoundation.org, ogabbay@kernel.org, nipun.gupta@amd.com,
+ linux-kernel@vger.kernel.org, andy.ren@getcruise.com, tzimmermann@suse.de,
+ jonathan.lemon@gmail.com, saeedm@nvidia.com, davem@davemloft.net,
+ milena.olech@intel.com, hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Subject: [PATCH iwl-net v1] igc: Include the length/type field and VLAN tag in
-> queueMaxSDU
-> 
-> From: Tan Tee Min <tee.min.tan@linux.intel.com>
-> 
-> IEEE 802.1Q does not have clear definitions of what constitutes an SDU
-> (Service Data Unit), but IEEE Std 802.3 clause 3.1.2 does define the MAC
-> service primitives and clause 3.2.7 does define the MAC Client Data for Q-
-> tagged frames.
-> 
-> It shows that the mac_service_data_unit (MSDU) does NOT contain the
-> preamble, destination and source address, or FCS. The MSDU does contain the
-> length/type field, MAC client data, VLAN tag and any padding data (prior to the
-> FCS).
-> 
-> Thus, the maximum 802.3 frame size that is allowed to be transmitted should
-> be QueueMaxSDU (MSDU) + 16 (6 byte SA + 6 byte DA + 4 byte FCS).
-> 
-> Fixes: 92a0dcb8427d ("igc: offload queue max SDU from tc-taprio")
-> Signed-off-by: Tan Tee Min <tee.min.tan@linux.intel.com>
+Fri, Jun 09, 2023 at 02:18:47PM CEST, arkadiusz.kubalewski@intel.com wrote:
+>From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 
-Reviewed-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Arkadiusz, I think it would be appropriate to change the authorship
+of this and other patches to you. I believe that you did vast majority
+of the lines by now. Vadim, would you mind?
 
-> ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 16 +++++-----------
->  1 file changed, 5 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
-> b/drivers/net/ethernet/intel/igc/igc_main.c
-> index bbb431d..4349718 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -1575,16 +1575,9 @@ static netdev_tx_t igc_xmit_frame_ring(struct
-> sk_buff *skb,
->  	if (adapter->qbv_transition || tx_ring->oper_gate_closed)
->  		goto out_drop;
-> 
-> -	if (tx_ring->max_sdu > 0) {
-> -		u32 max_sdu = 0;
-> -
-> -		max_sdu = tx_ring->max_sdu +
-> -			  (skb_vlan_tagged(first->skb) ? VLAN_HLEN : 0);
-> -
-> -		if (first->bytecount > max_sdu) {
-> -			adapter->stats.txdrop++;
-> -			goto out_drop;
-> -		}
-> +	if (tx_ring->max_sdu > 0 && first->bytecount > tx_ring->max_sdu) {
-> +		adapter->stats.txdrop++;
-> +		goto out_drop;
->  	}
-> 
->  	if (unlikely(test_bit(IGC_RING_FLAG_TX_HWTSTAMP, &tx_ring->flags)
-> && @@ -6178,7 +6171,8 @@ static int igc_save_qbv_schedule(struct
-> igc_adapter *adapter,
->  		struct net_device *dev = adapter->netdev;
-> 
->  		if (qopt->max_sdu[i])
-> -			ring->max_sdu = qopt->max_sdu[i] + dev-
-> >hard_header_len;
-> +			ring->max_sdu = qopt->max_sdu[i] + dev-
-> >hard_header_len
-> +					- ETH_TLEN;
->  		else
->  			ring->max_sdu = 0;
->  	}
-> --
-> 1.9.1
+
+>
+>DPLL framework is used to represent and configure DPLL devices
+>in systems. Each device that has DPLL and can configure inputs
+>and outputs can use this framework.
+>
+>Implement dpll netlink framework functions for enablement of dpll
+>subsytem netlink family.
+>
+>Co-developed-by: Milena Olech <milena.olech@intel.com>
+>Signed-off-by: Milena Olech <milena.olech@intel.com>
+>Co-developed-by: Michal Michalik <michal.michalik@intel.com>
+>Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+>Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+>Co-developed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>---
+> drivers/dpll/dpll_netlink.c | 1183 +++++++++++++++++++++++++++++++++++
+> drivers/dpll/dpll_netlink.h |   44 ++
+
+Overall, this looks very good. I did take couple of comments below.
+Thanks for you work!
+
+
+> 2 files changed, 1227 insertions(+)
+> create mode 100644 drivers/dpll/dpll_netlink.c
+> create mode 100644 drivers/dpll/dpll_netlink.h
+>
+>diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
+>new file mode 100644
+>index 000000000000..44d9699c9e6c
+>--- /dev/null
+>+++ b/drivers/dpll/dpll_netlink.c
+>@@ -0,0 +1,1183 @@
+>+// SPDX-License-Identifier: GPL-2.0
+>+/*
+>+ * Generic netlink for DPLL management framework
+>+ *
+>+ *  Copyright (c) 2023 Meta Platforms, Inc. and affiliates
+>+ *  Copyright (c) 2023 Intel and affiliates
+>+ *
+>+ */
+>+#include <linux/module.h>
+>+#include <linux/kernel.h>
+>+#include <net/genetlink.h>
+>+#include "dpll_core.h"
+>+#include "dpll_nl.h"
+>+#include <uapi/linux/dpll.h>
+>+
+>+static int __dpll_pin_change_ntf(struct dpll_pin *pin);
+
+Could you try to reshuffle the code to avoid forward declarations?
+
+
+>+
+>+struct dpll_dump_ctx {
+>+	unsigned long idx;
+>+};
+>+
+>+static struct dpll_dump_ctx *dpll_dump_context(struct netlink_callback *cb)
+>+{
+>+	return (struct dpll_dump_ctx *)cb->ctx;
+>+}
+>+
+>+static int
+>+dpll_msg_add_dev_handle(struct sk_buff *msg, struct dpll_device *dpll)
+
+It is odd to see this helper here and the dpll_msg_add_pin_handle() not.
+Introduce dpll_msg_add_pin_handle() here right away and only export it
+later on in "netdev: expose DPLL pin handle for netdevice".
+
+
+>+{
+>+	if (nla_put_u32(msg, DPLL_A_ID, dpll->id))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_mode(struct sk_buff *msg, struct dpll_device *dpll,
+>+		  struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>+	enum dpll_mode mode;
+>+
+>+	if (WARN_ON(!ops->mode_get))
+>+		return -EOPNOTSUPP;
+>+	if (ops->mode_get(dpll, dpll_priv(dpll), &mode, extack))
+>+		return -EFAULT;
+
+I'm pretty sure I commented this before. But again, please get the
+value the driver op returned and return it.
+
+
+>+	if (nla_put_u8(msg, DPLL_A_MODE, mode))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_lock_status(struct sk_buff *msg, struct dpll_device *dpll,
+>+			 struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>+	enum dpll_lock_status status;
+>+
+>+	if (WARN_ON(!ops->lock_status_get))
+>+		return -EOPNOTSUPP;
+>+	if (ops->lock_status_get(dpll, dpll_priv(dpll), &status, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_u8(msg, DPLL_A_LOCK_STATUS, status))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_temp(struct sk_buff *msg, struct dpll_device *dpll,
+>+		  struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>+	s32 temp;
+>+
+>+	if (!ops->temp_get)
+>+		return -EOPNOTSUPP;
+>+	if (ops->temp_get(dpll, dpll_priv(dpll), &temp, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_s32(msg, DPLL_A_TEMP, temp))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_prio(struct sk_buff *msg, struct dpll_pin *pin,
+>+		      struct dpll_pin_ref *ref,
+>+		      struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+	struct dpll_device *dpll = ref->dpll;
+>+	u32 prio;
+>+
+>+	if (!ops->prio_get)
+>+		return -EOPNOTSUPP;
+>+	if (ops->prio_get(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+			  dpll_priv(dpll), &prio, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_u32(msg, DPLL_A_PIN_PRIO, prio))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_on_dpll_state(struct sk_buff *msg, struct dpll_pin *pin,
+>+			       struct dpll_pin_ref *ref,
+>+			       struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+	struct dpll_device *dpll = ref->dpll;
+>+	enum dpll_pin_state state;
+>+
+>+	if (!ops->state_on_dpll_get)
+>+		return -EOPNOTSUPP;
+>+	if (ops->state_on_dpll_get(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+				   dpll_priv(dpll), &state, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_u8(msg, DPLL_A_PIN_STATE, state))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_direction(struct sk_buff *msg, struct dpll_pin *pin,
+>+			   struct dpll_pin_ref *ref,
+>+			   struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+	struct dpll_device *dpll = ref->dpll;
+>+	enum dpll_pin_direction direction;
+>+
+>+	if (!ops->direction_get)
+>+		return -EOPNOTSUPP;
+>+	if (ops->direction_get(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+			       dpll_priv(dpll), &direction, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_u8(msg, DPLL_A_PIN_DIRECTION, direction))
+>+		return -EMSGSIZE;
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_freq(struct sk_buff *msg, struct dpll_pin *pin,
+>+		      struct dpll_pin_ref *ref, struct netlink_ext_ack *extack,
+>+		      bool dump_freq_supported)
+>+{
+>+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+	struct dpll_device *dpll = ref->dpll;
+>+	struct nlattr *nest;
+>+	u64 freq;
+>+	int fs;
+>+
+>+	if (!ops->frequency_get)
+>+		return -EOPNOTSUPP;
+
+Return 0 and avoid the check of -EOPNOTSUPP in the caller.
+
+
+>+	if (ops->frequency_get(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+			       dpll_priv(dpll), &freq, extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	if (nla_put_64bit(msg, DPLL_A_PIN_FREQUENCY, sizeof(freq), &freq, 0))
+>+		return -EMSGSIZE;
+>+	if (!dump_freq_supported)
+>+		return 0;
+>+	for (fs = 0; fs < pin->prop->freq_supported_num; fs++) {
+>+		nest = nla_nest_start(msg, DPLL_A_PIN_FREQUENCY_SUPPORTED);
+>+		if (!nest)
+>+			return -EMSGSIZE;
+>+		freq = pin->prop->freq_supported[fs].min;
+>+		if (nla_put_64bit(msg, DPLL_A_PIN_FREQUENCY_MIN, sizeof(freq),
+>+				   &freq, 0)) {
+>+			nla_nest_cancel(msg, nest);
+>+			return -EMSGSIZE;
+>+		}
+>+		freq = pin->prop->freq_supported[fs].max;
+>+		if (nla_put_64bit(msg, DPLL_A_PIN_FREQUENCY_MAX, sizeof(freq),
+>+				   &freq, 0)) {
+>+			nla_nest_cancel(msg, nest);
+>+			return -EMSGSIZE;
+>+		}
+>+		nla_nest_end(msg, nest);
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_parents(struct sk_buff *msg, struct dpll_pin *pin,
+>+			 struct dpll_pin_ref *dpll_ref,
+>+			 struct netlink_ext_ack *extack)
+>+{
+>+	enum dpll_pin_state state;
+>+	struct dpll_pin_ref *ref;
+>+	struct dpll_pin *ppin;
+>+	struct nlattr *nest;
+>+	unsigned long index;
+>+	int ret;
+>+
+>+	xa_for_each(&pin->parent_refs, index, ref) {
+>+		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+		void *parent_priv;
+>+
+>+		ppin = ref->pin;
+>+		parent_priv = dpll_pin_on_dpll_priv(dpll_ref->dpll, ppin);
+>+		if (WARN_ON(!ops->state_on_pin_get))
+
+Wait, so you WARN during user comment on something that driver didn't
+fill up? Plese move the check and WARN to the registration function.
+
+
+>+			return -EFAULT;
+>+		ret = ops->state_on_pin_get(pin,
+>+					    dpll_pin_on_pin_priv(ppin, pin),
+>+					    ppin, parent_priv, &state, extack);
+>+		if (ret)
+>+			return -EFAULT;
+
+Return ret please.
+
+
+>+		nest = nla_nest_start(msg, DPLL_A_PIN_PARENT);
+>+		if (!nest)
+>+			return -EMSGSIZE;
+>+		if (nla_put_u32(msg, DPLL_A_PIN_ID, ppin->id)) {
+>+			ret = -EMSGSIZE;
+>+			goto nest_cancel;
+>+		}
+>+		if (nla_put_u8(msg, DPLL_A_PIN_STATE, state)) {
+>+			ret = -EMSGSIZE;
+>+			goto nest_cancel;
+>+		}
+>+		nla_nest_end(msg, nest);
+>+	}
+>+
+>+	return 0;
+>+
+>+nest_cancel:
+>+	nla_nest_cancel(msg, nest);
+>+	return ret;
+>+}
+>+
+>+static int
+>+dpll_msg_add_pin_dplls(struct sk_buff *msg, struct dpll_pin *pin,
+>+		       struct netlink_ext_ack *extack)
+>+{
+>+	struct dpll_pin_ref *ref;
+>+	struct nlattr *attr;
+>+	unsigned long index;
+>+	int ret;
+>+
+>+	xa_for_each(&pin->dpll_refs, index, ref) {
+>+		attr = nla_nest_start(msg, DPLL_A_PIN_PARENT);
+>+		if (!attr)
+>+			return -EMSGSIZE;
+>+		ret = dpll_msg_add_dev_handle(msg, ref->dpll);
+>+		if (ret)
+>+			goto nest_cancel;
+>+		ret = dpll_msg_add_pin_on_dpll_state(msg, pin, ref, extack);
+>+		if (ret && ret != -EOPNOTSUPP)
+>+			goto nest_cancel;
+>+		ret = dpll_msg_add_pin_prio(msg, pin, ref, extack);
+>+		if (ret && ret != -EOPNOTSUPP)
+>+			goto nest_cancel;
+>+		ret = dpll_msg_add_pin_direction(msg, pin, ref, extack);
+>+		if (ret)
+>+			goto nest_cancel;
+>+		nla_nest_end(msg, attr);
+>+	}
+>+
+>+	return 0;
+>+
+>+nest_cancel:
+>+	nla_nest_end(msg, attr);
+>+	return ret;
+>+}
+>+
+>+static int
+>+dpll_cmd_pin_fill_details(struct sk_buff *msg, struct dpll_pin *pin,
+
+"details"? Sound odd. I don't think that "DPLL_A_PIN_ID" is a detail
+for example. Why don't you inline this in the __dpll_cmd_pin_dump_one()
+function below?
+
+
+>+			  struct dpll_pin_ref *ref, struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_properties *prop = pin->prop;
+>+	int ret;
+>+
+>+	if (nla_put_u32(msg, DPLL_A_PIN_ID, pin->id))
+>+		return -EMSGSIZE;
+>+	if (nla_put_string(msg, DPLL_A_MODULE_NAME, module_name(pin->module)))
+>+		return -EMSGSIZE;
+>+	if (nla_put_64bit(msg, DPLL_A_CLOCK_ID, sizeof(pin->clock_id),
+>+			  &pin->clock_id, 0))
+>+		return -EMSGSIZE;
+>+	if (prop->board_label &&
+>+	    nla_put_string(msg, DPLL_A_PIN_BOARD_LABEL, prop->board_label))
+>+		return -EMSGSIZE;
+>+	if (prop->panel_label &&
+>+	    nla_put_string(msg, DPLL_A_PIN_PANEL_LABEL, prop->panel_label))
+>+		return -EMSGSIZE;
+>+	if (prop->package_label &&
+>+	    nla_put_string(msg, DPLL_A_PIN_PACKAGE_LABEL,
+>+			   prop->package_label))
+>+		return -EMSGSIZE;
+>+	if (nla_put_u8(msg, DPLL_A_PIN_TYPE, prop->type))
+>+		return -EMSGSIZE;
+>+	if (nla_put_u32(msg, DPLL_A_PIN_DPLL_CAPS, prop->capabilities))
+>+		return -EMSGSIZE;
+>+	ret = dpll_msg_add_pin_freq(msg, pin, ref, extack, true);
+>+	if (ret && ret != -EOPNOTSUPP)
+>+		return ret;
+>+	return 0;
+>+}
+>+
+>+static int
+>+__dpll_cmd_pin_dump_one(struct sk_buff *msg, struct dpll_pin *pin,
+>+			struct netlink_ext_ack *extack)
+
+To be consistent with dpll_device_get_one(), call this function
+dpll_pin_get_one() please.
+
+
+>+{
+>+	struct dpll_pin_ref *ref;
+>+	int ret;
+>+
+>+	ref = dpll_xa_ref_dpll_first(&pin->dpll_refs);
+>+	if (!ref)
+>+		return -EFAULT;
+
+-EINVAL. But it should never happen anyway. Perhaps better to avoid the
+check entirely.
+
+
+>+	ret = dpll_cmd_pin_fill_details(msg, pin, ref, extack);
+>+	if (ret)
+>+		return ret;
+>+	ret = dpll_msg_add_pin_parents(msg, pin, ref, extack);
+>+	if (ret)
+>+		return ret;
+>+	if (!xa_empty(&pin->dpll_refs)) {
+
+Drop this check, not needed.
+
+
+>+		ret = dpll_msg_add_pin_dplls(msg, pin, extack);
+>+		if (ret)
+>+			return ret;
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_device_get_one(struct dpll_device *dpll, struct sk_buff *msg,
+>+		    struct netlink_ext_ack *extack)
+>+{
+>+	enum dpll_mode mode;
+>+	int ret;
+>+
+>+	ret = dpll_msg_add_dev_handle(msg, dpll);
+>+	if (ret)
+>+		return ret;
+>+	if (nla_put_string(msg, DPLL_A_MODULE_NAME, module_name(dpll->module)))
+>+		return -EMSGSIZE;
+>+	if (nla_put_64bit(msg, DPLL_A_CLOCK_ID, sizeof(dpll->clock_id),
+>+			  &dpll->clock_id, 0))
+>+		return -EMSGSIZE;
+>+	ret = dpll_msg_add_temp(msg, dpll, extack);
+>+	if (ret && ret != -EOPNOTSUPP)
+>+		return ret;
+>+	ret = dpll_msg_add_lock_status(msg, dpll, extack);
+>+	if (ret)
+>+		return ret;
+>+	ret = dpll_msg_add_mode(msg, dpll, extack);
+>+	if (ret)
+>+		return ret;
+>+	for (mode = DPLL_MODE_MANUAL; mode <= DPLL_MODE_MAX; mode++)
+>+		if (test_bit(mode, &dpll->mode_supported_mask))
+>+			if (nla_put_s32(msg, DPLL_A_MODE_SUPPORTED, mode))
+>+				return -EMSGSIZE;
+>+	if (nla_put_u8(msg, DPLL_A_TYPE, dpll->type))
+>+		return -EMSGSIZE;
+>+
+>+	return ret;
+>+}
+>+
+>+static bool dpll_pin_is_freq_supported(struct dpll_pin *pin, u32 freq)
+>+{
+>+	int fs;
+>+
+>+	for (fs = 0; fs < pin->prop->freq_supported_num; fs++)
+>+		if (freq >=  pin->prop->freq_supported[fs].min &&
+
+Avoid double space here    ^^
+
+
+>+		    freq <=  pin->prop->freq_supported[fs].max)
+
+Avoid double space here    ^^
+
+
+>+			return true;
+>+	return false;
+>+}
+>+
+>+static int
+>+dpll_pin_freq_set(struct dpll_pin *pin, struct nlattr *a,
+>+		  struct netlink_ext_ack *extack)
+>+{
+>+	u64 freq = nla_get_u64(a);
+>+	struct dpll_pin_ref *ref;
+>+	unsigned long i;
+>+	int ret;
+>+
+>+	if (!dpll_pin_is_freq_supported(pin, freq))
+
+Fill a proper extack telling the user what's wrong please.
+Could you please check the rest of the cmd attr checks and make sure
+the extack is always filled with meaningful message?
+
+
+>+		return -EINVAL;
+>+
+>+	xa_for_each(&pin->dpll_refs, i, ref) {
+>+		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>+		struct dpll_device *dpll = ref->dpll;
+>+
+>+		if (!ops->frequency_set)
+>+			return -EOPNOTSUPP;
+>+		ret = ops->frequency_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
+>+					 dpll, dpll_priv(dpll), freq, extack);
+>+		if (ret)
+>+			return -EFAULT;
+
+return "ret"
+
+
+>+		__dpll_pin_change_ntf(pin);
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_on_pin_state_set(struct dpll_pin *pin, u32 parent_idx,
+>+			  enum dpll_pin_state state,
+>+			  struct netlink_ext_ack *extack)
+>+{
+>+	struct dpll_pin_ref *parent_ref;
+>+	const struct dpll_pin_ops *ops;
+>+	struct dpll_pin_ref *dpll_ref;
+>+	struct dpll_pin *parent;
+>+	unsigned long i;
+>+
+>+	if (!(DPLL_PIN_CAPS_STATE_CAN_CHANGE & pin->prop->capabilities))
+>+		return -EOPNOTSUPP;
+>+	parent = xa_load(&dpll_pin_xa, parent_idx);
+>+	if (!parent)
+>+		return -EINVAL;
+>+	parent_ref = xa_load(&pin->parent_refs, parent->pin_idx);
+>+	if (!parent_ref)
+>+		return -EINVAL;
+>+	xa_for_each(&parent->dpll_refs, i, dpll_ref) {
+>+		ops = dpll_pin_ops(parent_ref);
+>+		if (!ops->state_on_pin_set)
+>+			return -EOPNOTSUPP;
+>+		if (ops->state_on_pin_set(pin,
+>+					  dpll_pin_on_pin_priv(parent, pin),
+>+					  parent,
+>+					  dpll_pin_on_dpll_priv(dpll_ref->dpll,
+>+								parent),
+>+					  state, extack))
+>+			return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+	
+>+	}
+>+	__dpll_pin_change_ntf(pin);
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_state_set(struct dpll_device *dpll, struct dpll_pin *pin,
+>+		   enum dpll_pin_state state,
+>+		   struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops;
+>+	struct dpll_pin_ref *ref;
+>+
+>+	if (!(DPLL_PIN_CAPS_STATE_CAN_CHANGE & pin->prop->capabilities))
+>+		return -EOPNOTSUPP;
+>+	ref = xa_load(&pin->dpll_refs, dpll->device_idx);
+>+	if (!ref)
+>+		return -EFAULT;
+
+-EINVAL. But looks like this should never happen. Perhaps just
+WARN_ON(!ref) and don't check-return.
+
+
+>+	ops = dpll_pin_ops(ref);
+>+	if (!ops->state_on_dpll_set)
+>+		return -EOPNOTSUPP;
+>+	if (ops->state_on_dpll_set(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+				   dpll_priv(dpll), state, extack))
+>+		return -EINVAL;
+>+	__dpll_pin_change_ntf(pin);
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_prio_set(struct dpll_device *dpll, struct dpll_pin *pin,
+>+		  u32 prio, struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops;
+>+	struct dpll_pin_ref *ref;
+>+
+>+	if (!(DPLL_PIN_CAPS_PRIORITY_CAN_CHANGE & pin->prop->capabilities))
+>+		return -EOPNOTSUPP;
+>+	ref = xa_load(&pin->dpll_refs, dpll->device_idx);
+>+	if (!ref)
+>+		return -EFAULT;
+
+Same here.
+
+
+>+	ops = dpll_pin_ops(ref);
+>+	if (!ops->prio_set)
+>+		return -EOPNOTSUPP;
+>+	if (ops->prio_set(pin, dpll_pin_on_dpll_priv(dpll, pin), dpll,
+>+			  dpll_priv(dpll), prio, extack))
+>+		return -EINVAL;
+>+	__dpll_pin_change_ntf(pin);
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_direction_set(struct dpll_pin *pin, struct dpll_device *dpll,
+>+		       enum dpll_pin_direction direction,
+>+		       struct netlink_ext_ack *extack)
+>+{
+>+	const struct dpll_pin_ops *ops;
+>+	struct dpll_pin_ref *ref;
+>+
+>+	if (!(DPLL_PIN_CAPS_DIRECTION_CAN_CHANGE & pin->prop->capabilities))
+>+		return -EOPNOTSUPP;
+>+
+>+	ref = xa_load(&pin->dpll_refs, dpll->device_idx);
+>+	if (!ref)
+>+		return -EFAULT;
+
+Same here. This calls for a helper :)
+
+
+>+	ops = dpll_pin_ops(ref);
+>+	if (!ops->direction_set)
+>+		return -EOPNOTSUPP;
+>+	if (ops->direction_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
+>+			       dpll, dpll_priv(dpll), direction,
+>+			       extack))
+>+		return -EFAULT;
+
+please get the value the driver op returned and return it.
+
+
+>+	__dpll_pin_change_ntf(pin);
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_parent_set(struct dpll_pin *pin, struct nlattr *parent_nest,
+>+		    struct netlink_ext_ack *extack)
+>+{
+>+	struct nlattr *tb[DPLL_A_MAX + 1];
+>+	enum dpll_pin_direction direction;
+>+	u32 ppin_idx, pdpll_idx, prio;
+>+	enum dpll_pin_state state;
+>+	struct dpll_pin_ref *ref;
+>+	struct dpll_device *dpll;
+>+	int ret;
+>+
+>+	nla_parse_nested(tb, DPLL_A_MAX, parent_nest,
+>+			 NULL, extack);
+>+	if ((tb[DPLL_A_ID] && tb[DPLL_A_PIN_ID]) ||
+>+	    !(tb[DPLL_A_ID] || tb[DPLL_A_PIN_ID])) {
+>+		NL_SET_ERR_MSG(extack, "one parent id expected");
+>+		return -EINVAL;
+>+	}
+>+	if (tb[DPLL_A_ID]) {
+>+		pdpll_idx = nla_get_u32(tb[DPLL_A_ID]);
+>+		dpll = xa_load(&dpll_device_xa, pdpll_idx);
+>+		if (!dpll)
+>+			return -EINVAL;
+>+		ref = xa_load(&pin->dpll_refs, dpll->device_idx);
+>+		if (!ref)
+>+			return -EINVAL;
+>+		if (tb[DPLL_A_PIN_STATE]) {
+>+			state = nla_get_u8(tb[DPLL_A_PIN_STATE]);
+>+			ret = dpll_pin_state_set(dpll, pin, state, extack);
+>+			if (ret)
+>+				return ret;
+>+		}
+>+		if (tb[DPLL_A_PIN_PRIO]) {
+>+			prio = nla_get_u8(tb[DPLL_A_PIN_PRIO]);
+>+			ret = dpll_pin_prio_set(dpll, pin, prio, extack);
+>+			if (ret)
+>+				return ret;
+>+		}
+>+		if (tb[DPLL_A_PIN_DIRECTION]) {
+>+			direction = nla_get_u8(tb[DPLL_A_PIN_DIRECTION]);
+>+			ret = dpll_pin_direction_set(pin, dpll, direction,
+>+						     extack);
+>+			if (ret)
+>+				return ret;
+>+		}
+>+	} else if (tb[DPLL_A_PIN_ID]) {
+>+		ppin_idx = nla_get_u32(tb[DPLL_A_PIN_ID]);
+>+		state = nla_get_u8(tb[DPLL_A_PIN_STATE]);
+>+		ret = dpll_pin_on_pin_state_set(pin, ppin_idx, state, extack);
+>+		if (ret)
+>+			return ret;
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+static int
+>+dpll_pin_set_from_nlattr(struct dpll_pin *pin, struct genl_info *info)
+>+{
+>+	int rem, ret = -EINVAL;
+>+	struct nlattr *a;
+>+
+>+	nla_for_each_attr(a, genlmsg_data(info->genlhdr),
+>+			  genlmsg_len(info->genlhdr), rem) {
+>+		switch (nla_type(a)) {
+>+		case DPLL_A_PIN_FREQUENCY:
+>+			ret = dpll_pin_freq_set(pin, a, info->extack);
+>+			if (ret)
+>+				return ret;
+>+			break;
+>+		case DPLL_A_PIN_PARENT:
+>+			ret = dpll_pin_parent_set(pin, a, info->extack);
+>+			if (ret)
+>+				return ret;
+>+			break;
+>+		case DPLL_A_PIN_ID:
+>+		case DPLL_A_ID:
+>+			break;
+>+		default:
+>+			NL_SET_ERR_MSG_FMT(info->extack,
+>+					   "unsupported attribute (%d)",
+>+					   nla_type(a));
+>+			return -EINVAL;
+>+		}
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+static struct dpll_pin *
+>+dpll_pin_find(u64 clock_id, struct nlattr *mod_name_attr,
+>+	      enum dpll_pin_type type, struct nlattr *board_label,
+>+	      struct nlattr *panel_label, struct nlattr *package_label)
+>+{
+>+	bool board_match, panel_match, package_match;
+>+	struct dpll_pin *pin_match = NULL, *pin;
+>+	const struct dpll_pin_properties *prop;
+>+	bool cid_match, mod_match, type_match;
+>+	unsigned long i;
+>+
+>+	xa_for_each(&dpll_pin_xa, i, pin) {
+>+		if (xa_empty(&pin->dpll_refs))
+
+This filters out unregistered, right? Could you please introduce a
+"REGISTERED" mark and iterate only over list of registered? Similar to
+what you have for device.
+
+
+>+			continue;
+>+		prop = pin->prop;
+>+		cid_match = clock_id ? pin->clock_id == clock_id : true;
+>+		mod_match = mod_name_attr && module_name(pin->module) ?
+>+			!nla_strcmp(mod_name_attr,
+>+				    module_name(pin->module)) : true;
+>+		type_match = type ? prop->type == type : true;
+>+		board_match = board_label && prop->board_label ?
+>+			!nla_strcmp(board_label, prop->board_label) : true;
+>+		panel_match = panel_label && prop->panel_label ?
+>+			!nla_strcmp(panel_label, prop->panel_label) : true;
+>+		package_match = package_label && prop->package_label ?
+>+			!nla_strcmp(package_label,
+>+				    prop->package_label) : true;
+>+		if (cid_match && mod_match && type_match && board_match &&
+>+		    panel_match && package_match) {
+>+			if (pin_match)
+
+Double match, rigth? Fillup the extack telling the user what happened.
+
+
+>+				return NULL;
+>+			pin_match = pin;
+>+		};
+>+	}
+>+
+>+	return pin_match;
+>+}
+>+
+>+static int
+>+dpll_pin_find_from_nlattr(struct genl_info *info, struct sk_buff *skb)
+>+{
+>+	struct nlattr *attr, *mod_name_attr = NULL, *board_label_attr = NULL,
+>+		*panel_label_attr = NULL, *package_label_attr = NULL;
+>+	struct dpll_pin *pin = NULL;
+>+	enum dpll_pin_type type = 0;
+>+	u64 clock_id = 0;
+>+	int rem = 0;
+>+
+>+	nla_for_each_attr(attr, genlmsg_data(info->genlhdr),
+>+			  genlmsg_len(info->genlhdr), rem) {
+>+		switch (nla_type(attr)) {
+>+		case DPLL_A_CLOCK_ID:
+>+			if (clock_id)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			clock_id = nla_get_u64(attr);
+>+			break;
+>+		case DPLL_A_MODULE_NAME:
+>+			if (mod_name_attr)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			mod_name_attr = attr;
+>+			break;
+>+		case DPLL_A_PIN_TYPE:
+>+			if (type)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			type = nla_get_u8(attr);
+>+			break;
+>+		case DPLL_A_PIN_BOARD_LABEL:
+>+			if (board_label_attr)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			board_label_attr = attr;
+>+			break;
+>+		case DPLL_A_PIN_PANEL_LABEL:
+>+			if (panel_label_attr)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			panel_label_attr = attr;
+>+			break;
+>+		case DPLL_A_PIN_PACKAGE_LABEL:
+>+			if (package_label_attr)
+>+				return -EINVAL;
+
+Extack
+
+You can use goto with one "duplicate attribute" message.
+
+
+>+			package_label_attr = attr;
+>+			break;
+>+		default:
+>+			break;
+>+		}
+>+	}
+>+	if (!(clock_id  || mod_name_attr || board_label_attr ||
+>+	      panel_label_attr || package_label_attr))
+>+		return -EINVAL;
+>+	pin = dpll_pin_find(clock_id, mod_name_attr, type, board_label_attr,
+>+			    panel_label_attr, package_label_attr);
+
+Error is either "notfound" of "duplicate match". Have the function
+dpll_pin_find() return ERR_PTR with -ENODEV / -EINVAL and let
+the function dpll_pin_find() also fill-up the proper extack inside.
+
+
+>+	if (!pin)
+>+		return -EINVAL;
+>+	if (nla_put_u32(skb, DPLL_A_PIN_ID, pin->id))
+
+Please move this call to the caller. This function should return ERR_PTR
+or dpll_pin pointer.
+
+
+>+		return -EMSGSIZE;
+>+	return 0;
+>+}
+>+
+>+int dpll_nl_pin_id_get_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct sk_buff *msg;
+>+	struct nlattr *hdr;
+>+	int ret;
+>+
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+	hdr = genlmsg_put_reply(msg, info, &dpll_nl_family, 0,
+>+				DPLL_CMD_PIN_ID_GET);
+>+	if (!hdr)
+>+		return -EMSGSIZE;
+>+
+>+	ret = dpll_pin_find_from_nlattr(info, msg);
+>+	if (ret) {
+>+		nlmsg_free(msg);
+>+		return ret;
+>+	}
+>+	genlmsg_end(msg, hdr);
+
+
+This does not seem to be working:
+$ sudo ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml --do device-id-get --json '{"module-name": "mlx5_dpll"}'
+{'id': 0}
+$ sudo ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml --do pin-id-get --json '{"module-name": "mlx5_dpll"}'
+Traceback (most recent call last):
+  File "/mnt/share156/jiri/net-next/./tools/net/ynl/cli.py", line 52, in <module>
+    main()
+  File "/mnt/share156/jiri/net-next/./tools/net/ynl/cli.py", line 40, in main
+    reply = ynl.do(args.do, attrs)
+  File "/mnt/share156/jiri/net-next/tools/net/ynl/lib/ynl.py", line 596, in do
+    return self._op(method, vals)
+  File "/mnt/share156/jiri/net-next/tools/net/ynl/lib/ynl.py", line 567, in _op
+    raise NlError(nl_msg)
+lib.ynl.NlError: Netlink error: Invalid argument
+nl_len = 36 (20) nl_flags = 0x100 nl_type = 2
+	error: -22
+$ sudo ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml --do device-id-get --json '{"clock-id": "630763432553410540"}'
+{'id': 0}
+$ sudo ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml --do pin-id-get --json '{"clock-id": "630763432553410540"}'
+Traceback (most recent call last):
+  File "/mnt/share156/jiri/net-next/./tools/net/ynl/cli.py", line 52, in <module>
+    main()
+  File "/mnt/share156/jiri/net-next/./tools/net/ynl/cli.py", line 40, in main
+    reply = ynl.do(args.do, attrs)
+  File "/mnt/share156/jiri/net-next/tools/net/ynl/lib/ynl.py", line 596, in do
+    return self._op(method, vals)
+  File "/mnt/share156/jiri/net-next/tools/net/ynl/lib/ynl.py", line 567, in _op
+    raise NlError(nl_msg)
+lib.ynl.NlError: Netlink error: Invalid argument
+nl_len = 36 (20) nl_flags = 0x100 nl_type = 2
+	error: -22
+
+
+
+>+
+>+	return genlmsg_reply(msg, info);
+>+}
+>+
+>+int dpll_nl_pin_get_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct dpll_pin *pin = info->user_ptr[0];
+>+	struct sk_buff *msg;
+>+	struct nlattr *hdr;
+>+	int ret;
+>+
+>+	if (!pin)
+>+		return -ENODEV;
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+	hdr = genlmsg_put_reply(msg, info, &dpll_nl_family, 0,
+>+				DPLL_CMD_PIN_GET);
+>+	if (!hdr)
+>+		return -EMSGSIZE;
+>+	ret = __dpll_cmd_pin_dump_one(msg, pin, info->extack);
+>+	if (ret) {
+>+		nlmsg_free(msg);
+>+		return ret;
+>+	}
+>+	genlmsg_end(msg, hdr);
+>+
+>+	return genlmsg_reply(msg, info);
+>+}
+>+
+>+int dpll_nl_pin_get_dumpit(struct sk_buff *skb, struct netlink_callback *cb)
+>+{
+>+	struct dpll_dump_ctx *ctx = dpll_dump_context(cb);
+>+	struct dpll_pin *pin;
+>+	struct nlattr *hdr;
+>+	unsigned long i;
+>+	int ret = 0;
+>+
+>+	xa_for_each_start(&dpll_pin_xa, i, pin, ctx->idx) {
+>+		if (xa_empty(&pin->dpll_refs))
+
+Same here, also use REGISTERED mark and iterate over them.
+
+
+>+			continue;
+>+		hdr = genlmsg_put(skb, NETLINK_CB(cb->skb).portid,
+>+				  cb->nlh->nlmsg_seq,
+>+				  &dpll_nl_family, NLM_F_MULTI,
+>+				  DPLL_CMD_PIN_GET);
+>+		if (!hdr) {
+>+			ret = -EMSGSIZE;
+>+			break;
+>+		}
+>+		ret = __dpll_cmd_pin_dump_one(skb, pin, cb->extack);
+>+		if (ret) {
+>+			genlmsg_cancel(skb, hdr);
+>+			break;
+>+		}
+>+		genlmsg_end(skb, hdr);
+>+	}
+>+	if (ret == -EMSGSIZE) {
+>+		ctx->idx = i;
+>+		return skb->len;
+>+	}
+>+	return ret;
+>+}
+>+
+>+int dpll_nl_pin_set_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct dpll_pin *pin = info->user_ptr[0];
+>+
+>+	return dpll_pin_set_from_nlattr(pin, info);
+>+}
+>+
+>+static struct dpll_device *
+>+dpll_device_find(u64 clock_id, struct nlattr *mod_name_attr,
+>+		 enum dpll_type type)
+>+{
+>+	struct dpll_device *dpll_match = NULL, *dpll;
+>+	bool cid_match, mod_match, type_match;
+>+	unsigned long i;
+>+
+>+	xa_for_each_marked(&dpll_device_xa, i, dpll, DPLL_REGISTERED) {
+>+		cid_match = clock_id ? dpll->clock_id == clock_id : true;
+>+		mod_match = mod_name_attr && module_name(dpll->module) ?
+>+			!nla_strcmp(mod_name_attr,
+>+				    module_name(dpll->module)) : true;
+>+		type_match = type ? dpll->type == type : true;
+>+		if (cid_match && mod_match && type_match) {
+>+			if (dpll_match)
+
+Double match, rigth? Fillup the extack telling the user what happened.
+
+
+>+				return NULL;
+>+			dpll_match = dpll;
+>+		}
+>+	}
+>+
+>+	return dpll_match;
+>+}
+>+
+>+static int
+>+dpll_device_find_from_nlattr(struct genl_info *info, struct sk_buff *skb)
+>+{
+>+	struct nlattr *attr, *mod_name_attr = NULL;
+>+	struct dpll_device *dpll = NULL;
+>+	enum dpll_type type = 0;
+>+	u64 clock_id = 0;
+>+	int rem = 0;
+>+
+>+	nla_for_each_attr(attr, genlmsg_data(info->genlhdr),
+>+			  genlmsg_len(info->genlhdr), rem) {
+>+		switch (nla_type(attr)) {
+>+		case DPLL_A_CLOCK_ID:
+>+			if (clock_id)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			clock_id = nla_get_u64(attr);
+>+			break;
+>+		case DPLL_A_MODULE_NAME:
+>+			if (mod_name_attr)
+>+				return -EINVAL;
+
+Extack
+
+
+>+			mod_name_attr = attr;
+>+			break;
+>+		case DPLL_A_TYPE:
+>+			if (type)
+>+				return -EINVAL;
+
+Extack
+
+You can use goto with one "duplicate attribute" message.
+
+
+>+			type = nla_get_u8(attr);
+>+			break;
+>+		default:
+>+			break;
+>+		}
+>+	}
+>+
+>+	if (!clock_id && !mod_name_attr && !type)
+>+		return -EINVAL;
+>+	dpll = dpll_device_find(clock_id, mod_name_attr, type);
+
+Error is either "notfound" of "duplicate match". Have the function
+dpll_device_find() return ERR_PTR with -ENODEV / -EINVAL and let
+the function dpll_device_find() also fill-up the proper extack inside.
+
+
+>+	if (!dpll)
+>+		return -EINVAL;
+>+
+>+	return dpll_msg_add_dev_handle(skb, dpll);
+
+Please move this call to the caller. This function should return ERR_PTR
+or dpll_device pointer.
+
+
+>+}
+>+
+>+static int
+>+dpll_set_from_nlattr(struct dpll_device *dpll, struct genl_info *info)
+
+Nit: Please move this function above dpll_device_find() to maintain the
+same functions ordering as there is for similar pin functions above.
+
+
+>+{
+>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>+	struct nlattr *tb[DPLL_A_MAX + 1];
+>+	int ret = 0;
+
+Drop pointless init.
+
+
+>+
+>+	nla_parse(tb, DPLL_A_MAX, genlmsg_data(info->genlhdr),
+>+		  genlmsg_len(info->genlhdr), NULL, info->extack);
+>+	if (tb[DPLL_A_MODE]) {
+>+		ret = ops->mode_set(dpll, dpll_priv(dpll),
+>+				    nla_get_u8(tb[DPLL_A_MODE]), info->extack);
+>+		if (ret)
+>+			return ret;
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+>+int dpll_nl_device_id_get_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct sk_buff *msg;
+>+	struct nlattr *hdr;
+>+	int ret;
+>+
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+	hdr = genlmsg_put_reply(msg, info, &dpll_nl_family, 0,
+>+				DPLL_CMD_DEVICE_ID_GET);
+>+	if (!hdr)
+>+		return -EMSGSIZE;
+>+
+>+	ret = dpll_device_find_from_nlattr(info, msg);
+>+	if (ret) {
+>+		nlmsg_free(msg);
+>+		return ret;
+>+	}
+>+	genlmsg_end(msg, hdr);
+>+
+>+	return genlmsg_reply(msg, info);
+>+}
+>+
+>+int dpll_nl_device_get_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct dpll_device *dpll = info->user_ptr[0];
+>+	struct sk_buff *msg;
+>+	struct nlattr *hdr;
+>+	int ret;
+>+
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+	hdr = genlmsg_put_reply(msg, info, &dpll_nl_family, 0,
+>+				DPLL_CMD_DEVICE_GET);
+>+	if (!hdr)
+>+		return -EMSGSIZE;
+>+
+>+	ret = dpll_device_get_one(dpll, msg, info->extack);
+>+	if (ret) {
+>+		nlmsg_free(msg);
+>+		return ret;
+>+	}
+>+	genlmsg_end(msg, hdr);
+>+
+>+	return genlmsg_reply(msg, info);
+>+}
+>+
+>+int dpll_nl_device_set_doit(struct sk_buff *skb, struct genl_info *info)
+>+{
+>+	struct dpll_device *dpll = info->user_ptr[0];
+>+
+>+	return dpll_set_from_nlattr(dpll, info);
+>+}
+>+
+>+int dpll_nl_device_get_dumpit(struct sk_buff *skb, struct netlink_callback *cb)
+>+{
+>+	struct dpll_dump_ctx *ctx = dpll_dump_context(cb);
+>+	struct dpll_device *dpll;
+>+	struct nlattr *hdr;
+>+	unsigned long i;
+>+	int ret = 0;
+>+
+>+	xa_for_each_start(&dpll_device_xa, i, dpll, ctx->idx) {
+>+		if (!xa_get_mark(&dpll_device_xa, i, DPLL_REGISTERED))
+
+Hmm, did you consider adding xa_for_each_marked_start?
+
+
+>+			continue;
+>+		hdr = genlmsg_put(skb, NETLINK_CB(cb->skb).portid,
+>+				  cb->nlh->nlmsg_seq, &dpll_nl_family,
+>+				  NLM_F_MULTI, DPLL_CMD_DEVICE_GET);
+>+		if (!hdr) {
+>+			ret = -EMSGSIZE;
+>+			break;
+>+		}
+>+		ret = dpll_device_get_one(dpll, skb, cb->extack);
+>+		if (ret) {
+>+			genlmsg_cancel(skb, hdr);
+>+			break;
+>+		}
+>+		genlmsg_end(skb, hdr);
+>+	}
+>+	if (ret == -EMSGSIZE) {
+>+		ctx->idx = i;
+>+		return skb->len;
+>+	}
+>+	return ret;
+>+}
+>+
+>+int dpll_pre_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+		  struct genl_info *info)
+>+{
+>+	struct dpll_device *dpll_id = NULL;
+>+	u32 id;
+>+
+>+	if (!info->attrs[DPLL_A_ID])
+>+		return -EINVAL;
+>+
+>+	mutex_lock(&dpll_lock);
+>+	id = nla_get_u32(info->attrs[DPLL_A_ID]);
+>+
+>+	dpll_id = dpll_device_get_by_id(id);
+>+	if (!dpll_id)
+>+		goto unlock;
+>+	info->user_ptr[0] = dpll_id;
+>+	return 0;
+>+unlock:
+>+	mutex_unlock(&dpll_lock);
+>+	return -ENODEV;
+>+}
+>+
+>+void dpll_post_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+		    struct genl_info *info)
+>+{
+>+	mutex_unlock(&dpll_lock);
+>+}
+>+
+>+int
+>+dpll_lock_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+		     struct genl_info *info)
+>+{
+>+	mutex_lock(&dpll_lock);
+>+
+>+	return 0;
+>+}
+>+
+>+void
+>+dpll_unlock_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+		   struct genl_info *info)
+>+{
+>+	mutex_unlock(&dpll_lock);
+>+}
+>+
+>+int dpll_lock_dumpit(struct netlink_callback *cb)
+>+{
+>+	mutex_lock(&dpll_lock);
+>+
+>+	return 0;
+>+}
+>+
+>+int dpll_unlock_dumpit(struct netlink_callback *cb)
+>+{
+>+	mutex_unlock(&dpll_lock);
+>+
+>+	return 0;
+>+}
+>+
+>+int dpll_pin_pre_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+		      struct genl_info *info)
+>+{
+>+	int ret;
+>+
+>+	mutex_lock(&dpll_lock);
+>+	if (!info->attrs[DPLL_A_PIN_ID]) {
+
+Use GENL_REQ_ATTR_CHECK(info, DPLL_A_PIN_ID);
+If fills-up the extack info about missing attr giving the user info
+about what went wrong.
+
+
+>+		ret = -EINVAL;
+>+		goto unlock_dev;
+>+	}
+>+	info->user_ptr[0] = xa_load(&dpll_pin_xa,
+>+				    nla_get_u32(info->attrs[DPLL_A_PIN_ID]));
+>+	if (!info->user_ptr[0]) {
+
+Fill-up the extack message please.
+
+
+>+		ret = -ENODEV;
+>+		goto unlock_dev;
+>+	}
+>+
+>+	return 0;
+>+
+>+unlock_dev:
+>+	mutex_unlock(&dpll_lock);
+>+	return ret;
+>+}
+>+
+>+void dpll_pin_post_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+>+			struct genl_info *info)
+>+{
+>+	mutex_unlock(&dpll_lock);
+>+}
+>+
+>+static int
+>+dpll_device_event_send(enum dpll_cmd event, struct dpll_device *dpll)
+>+{
+>+	struct sk_buff *msg;
+>+	int ret = -EMSGSIZE;
+
+Drop the pointless init.
+
+
+>+	void *hdr;
+>+
+>+	if (!xa_get_mark(&dpll_device_xa, dpll->id, DPLL_REGISTERED))
+
+WARN_ON? The driver is buggy when he calls this.
+
+
+>+		return -ENODEV;
+>+
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+	hdr = genlmsg_put(msg, 0, 0, &dpll_nl_family, 0, event);
+>+	if (!hdr)
+>+		goto out_free_msg;
+
+"err_free_msg" so that is clear is an error path.
+
+
+>+	ret = dpll_device_get_one(dpll, msg, NULL);
+>+	if (ret)
+>+		goto out_cancel_msg;
+
+Same here, "err_cancel_msg"
+
+
+>+	genlmsg_end(msg, hdr);
+>+	genlmsg_multicast(&dpll_nl_family, msg, 0, 0, GFP_KERNEL);
+>+
+>+	return 0;
+>+
+>+out_cancel_msg:
+>+	genlmsg_cancel(msg, hdr);
+>+out_free_msg:
+>+	nlmsg_free(msg);
+>+
+>+	return ret;
+>+}
+>+
+>+int dpll_device_create_ntf(struct dpll_device *dpll)
+>+{
+>+	return dpll_device_event_send(DPLL_CMD_DEVICE_CREATE_NTF, dpll);
+>+}
+>+
+>+int dpll_device_delete_ntf(struct dpll_device *dpll)
+>+{
+>+	return dpll_device_event_send(DPLL_CMD_DEVICE_DELETE_NTF, dpll);
+>+}
+>+
+
+This is an exported function, documentation commentary perhaps?
+I mean, you sometimes have it for static functions, here you don't. Very
+odd.
+
+Let's have that for all exported functions please.
+
+
+>+int dpll_device_change_ntf(struct dpll_device *dpll)
+>+{
+>+	int ret = -EINVAL;
+>+
+>+	if (WARN_ON(!dpll))
+>+		return ret;
+
+Rely on basic driver sanity and drop this check. don't forget to remove
+the ret initialization.
+
+
+>+
+>+	mutex_lock(&dpll_lock);
+>+	ret = dpll_device_event_send(DPLL_CMD_DEVICE_CHANGE_NTF, dpll);
+>+	mutex_unlock(&dpll_lock);
+>+
+>+	return ret;
+>+}
+>+EXPORT_SYMBOL_GPL(dpll_device_change_ntf);
+>+
+>+static int
+>+dpll_pin_event_send(enum dpll_cmd event, struct dpll_pin *pin)
+>+{
+>+	struct dpll_pin *pin_verify;
+>+	struct sk_buff *msg;
+>+	int ret = -EMSGSIZE;
+
+Drop the pointless init.
+
+
+>+	void *hdr;
+>+
+>+	pin_verify = xa_load(&dpll_pin_xa, pin->id);
+>+	if (pin != pin_verify)
+
+I don't follow. What is the purpose for this check? Once you have
+REGISTERED mark for pin, you can check it here and be consistent with
+dpll_device_event_send()
+
+
+>+		return -ENODEV;
+>+
+>+	msg = genlmsg_new(NLMSG_GOODSIZE, GFP_KERNEL);
+>+	if (!msg)
+>+		return -ENOMEM;
+>+
+>+	hdr = genlmsg_put(msg, 0, 0, &dpll_nl_family, 0, event);
+>+	if (!hdr)
+>+		goto out_free_msg;
+
+"err_free_msg" so that is clear is an error path.
+
+
+>+	ret = __dpll_cmd_pin_dump_one(msg, pin, NULL);
+>+	if (ret)
+>+		goto out_cancel_msg;
+
+Same here, "err_cancel_msg"
+
+
+>+	genlmsg_end(msg, hdr);
+>+	genlmsg_multicast(&dpll_nl_family, msg, 0, 0, GFP_KERNEL);
+>+
+>+	return 0;
+>+
+>+out_cancel_msg:
+>+	genlmsg_cancel(msg, hdr);
+>+out_free_msg:
+>+	nlmsg_free(msg);
+>+
+>+	return ret;
+>+}
+>+
+>+int dpll_pin_create_ntf(struct dpll_pin *pin)
+>+{
+>+	return dpll_pin_event_send(DPLL_CMD_PIN_CREATE_NTF, pin);
+>+}
+>+
+>+int dpll_pin_delete_ntf(struct dpll_pin *pin)
+>+{
+>+	return dpll_pin_event_send(DPLL_CMD_PIN_DELETE_NTF, pin);
+>+}
+>+
+>+static int __dpll_pin_change_ntf(struct dpll_pin *pin)
+>+{
+>+	return dpll_pin_event_send(DPLL_CMD_PIN_CHANGE_NTF, pin);
+>+}
+>+
+>+int dpll_pin_change_ntf(struct dpll_pin *pin)
+>+{
+>+	int ret = -EINVAL;
+>+
+>+	if (WARN_ON(!pin))
+>+		return ret;
+
+Remove this check and expect basic sanity from driver. Also, don't
+forget to drop the "ret" initialization.
+
+
+>+
+>+	mutex_lock(&dpll_lock);
+>+	ret = __dpll_pin_change_ntf(pin);
+>+	mutex_unlock(&dpll_lock);
+>+
+>+	return ret;
+>+}
+>+EXPORT_SYMBOL_GPL(dpll_pin_change_ntf);
+>+
+>+int __init dpll_netlink_init(void)
+>+{
+>+	return genl_register_family(&dpll_nl_family);
+>+}
+>+
+>+void dpll_netlink_finish(void)
+>+{
+>+	genl_unregister_family(&dpll_nl_family);
+>+}
+>+
+>+void __exit dpll_netlink_fini(void)
+>+{
+>+	dpll_netlink_finish();
+>+}
+>diff --git a/drivers/dpll/dpll_netlink.h b/drivers/dpll/dpll_netlink.h
+>new file mode 100644
+>index 000000000000..b5f9bfc88c9e
+>--- /dev/null
+>+++ b/drivers/dpll/dpll_netlink.h
+>@@ -0,0 +1,44 @@
+>+/* SPDX-License-Identifier: GPL-2.0 */
+>+/*
+>+ *  Copyright (c) 2023 Meta Platforms, Inc. and affiliates
+>+ *  Copyright (c) 2023 Intel and affiliates
+>+ */
+>+
+>+/**
+>+ * dpll_device_create_ntf - notify that the device has been created
+>+ * @dpll: registered dpll pointer
+>+ *
+>+ * Context: caller shall hold dpll_xa_lock.
+>+ * Return: 0 if succeeds, error code otherwise.
+>+ */
+>+int dpll_device_create_ntf(struct dpll_device *dpll);
+>+
+>+/**
+>+ * dpll_device_delete_ntf - notify that the device has been deleted
+>+ * @dpll: registered dpll pointer
+>+ *
+>+ * Context: caller shall hold dpll_xa_lock.
+>+ * Return: 0 if succeeds, error code otherwise.
+>+ */
+
+Again, I'm going to repeat myself. Please have this kdoc comments once,
+in the .c file. Header should not contain this.
+
+
+
+>+int dpll_device_delete_ntf(struct dpll_device *dpll);
+>+
+>+/**
+>+ * dpll_pin_create_ntf - notify that the pin has been created
+>+ * @pin: registered pin pointer
+>+ *
+>+ * Context: caller shall hold dpll_xa_lock.
+>+ * Return: 0 if succeeds, error code otherwise.
+>+ */
+>+int dpll_pin_create_ntf(struct dpll_pin *pin);
+>+
+>+/**
+>+ * dpll_pin_delete_ntf - notify that the pin has been deleted
+>+ * @pin: registered pin pointer
+>+ *
+>+ * Context: caller shall hold dpll_xa_lock.
+>+ * Return: 0 if succeeds, error code otherwise.
+>+ */
+>+int dpll_pin_delete_ntf(struct dpll_pin *pin);
+>+
+>+int __init dpll_netlink_init(void);
+>+void dpll_netlink_finish(void);
+>-- 
+>2.37.3
+>
 
 _______________________________________________
 Intel-wired-lan mailing list
