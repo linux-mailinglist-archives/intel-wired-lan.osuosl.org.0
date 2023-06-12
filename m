@@ -2,81 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E632272D51B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 01:45:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E55C272D52D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 01:49:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8154540932;
-	Mon, 12 Jun 2023 23:45:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8154540932
+	by smtp4.osuosl.org (Postfix) with ESMTP id 80AC0410AF;
+	Mon, 12 Jun 2023 23:49:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 80AC0410AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686613528;
-	bh=z9IxACZG14nV/kFwkzl4j5vMsvIYQJaRVJOH0TTDrvA=;
+	s=default; t=1686613754;
+	bh=FH7uw/PAp6KGMziVXMb20PvVd4LmBZ5A22Gb8m3lGDA=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=byuSGKEwNQRKVmyugdfBKYk5jLcnrnCPbfmcyUuNvz5YyaZ7hR623gShmXLrmQ7ZD
-	 G6s8ZCPIumLLVHgwmes0xg6AdkfISxNH5K/XkcdFuE4x5PNUiHFbqk/phDSmRk4ZlU
-	 NHTvE/hRRQKdATfmk1+uBJqrc957CdFU1iBC0xvrQsjUyaXCpOxnb9lu1mJ22Jy2ki
-	 OieiSYdjNfSlELT/EGKkVbkmb/RuYbL+no4Sa2x/70b6fC4EGXaGU4R9Mmx+Vr93R6
-	 V5liXtBBNC9s1gueBwKcXLMIN5PGsrMSvrcITNhpi4eg/TSS9tvltP+ADroAnnmrbr
-	 aaY/hb3OHn5rg==
+	b=LbYm2krRd0fDGVOAjfhgcg4u6+uIwyLRWJmHYo+XZhT4jGxrIvrztnOWvAdYcbmRB
+	 Hc6qKaq2blacEnc/amXsxpstTJ8tngz6EgB3D5E/9toqcaTmqpRE24I4C1+LxG2PlL
+	 ryihsNmo+2pVX3/trrPeSeyDf35xcz/mapJLBaj2EKC5x5hCi+m2CHbkb7Fb64U3C/
+	 lxtPQnNvd05ANqV+Qd10k/HJCfFx4PjrPAe01Y8UzqUNYeamv8P8Id28Sof+TjsJC5
+	 B6eoRvllyh7NGuC9QhskcQo8LIbD8H5f1qwM/VnnOAgrXQ9GF5OevNCBT/Mgbxmpaj
+	 +LiCCeQevk+fg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F5HZTjn1_URz; Mon, 12 Jun 2023 23:45:27 +0000 (UTC)
+	with ESMTP id fB3SIEH7pcqR; Mon, 12 Jun 2023 23:49:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2086E40918;
-	Mon, 12 Jun 2023 23:45:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2086E40918
+	by smtp4.osuosl.org (Postfix) with ESMTP id 35F7D410AC;
+	Mon, 12 Jun 2023 23:49:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35F7D410AC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BE82D1BF29A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:45:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1BDAC1BF29A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:49:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A367660D70
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:45:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A367660D70
+ by smtp3.osuosl.org (Postfix) with ESMTP id E0C9A60B28
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:49:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E0C9A60B28
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZxJzvmmffv5R for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jun 2023 23:45:20 +0000 (UTC)
+ with ESMTP id Zob9uwUEHxib for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jun 2023 23:49:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F5C960B36
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3F5C960B36
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:45:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4044F60AF6
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4044F60AF6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 23:49:07 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0655461786;
- Mon, 12 Jun 2023 23:45:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6862DC433EF;
- Mon, 12 Jun 2023 23:45:16 +0000 (UTC)
-Date: Mon, 12 Jun 2023 16:45:15 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7984F617D1;
+ Mon, 12 Jun 2023 23:49:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFBE1C433EF;
+ Mon, 12 Jun 2023 23:49:03 +0000 (UTC)
+Date: Mon, 12 Jun 2023 16:49:02 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Message-ID: <20230612164515.6eacefb1@kernel.org>
-In-Reply-To: <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
+Message-ID: <20230612164902.073544e2@kernel.org>
+In-Reply-To: <20230609121853.3607724-2-arkadiusz.kubalewski@intel.com>
 References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
- <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
+ <20230609121853.3607724-2-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1686613518;
- bh=wiSNyZ18E7j0+vGKZGV00souZm1bq4VUlxQ/AgkGk+M=;
+ d=kernel.org; s=k20201202; t=1686613745;
+ bh=yIRi0WXE4Net4p4k+Jwnbq1wiuvuUouDv0057sNyh8E=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=J/MbfG7MqX/927qmjvcVnKooeZ6fLV4ndi1AMb2SvblEdbUjlOz3OsBYSj7Hb2YxX
- p1UDScovbSf5bMhh7Wj5E9CIrguJ/9jISL1SL83WoQmh0XafXF+1pYkc/JWTCq0QZP
- w8RNro1J+vNs9ODuH5Ry+9ABjZh9vMybvqv3FnW/Xa1DFv4gHlkZUV3ONDL42+45kw
- 9NkF5K7GWjvQHRD84IifFKUHQefevWPmINHyeKebUTarV7OZnETKsrrZdIvVFml7YD
- Q5pXXPFTmIdOttGbUj2lZ+nxblghEnDRRXezc++cLqoqTE3lmI61WYh+dktineV29n
- VYg0dlPUojOKg==
+ b=pATI2xnVISuzMZb0xj8Z0Dh8wi/xUu264Dagb7GZ18oJGWd0UDTfUnpFyrkKxTn49
+ KnH5MJO1+0YIs8eeunryQEtM3/Lr/oI7DWX8tWHda1pmlG2nOr8St15FcWk/p4OZ4t
+ HCt5lsQYkPCIZjdFOD8Fhgt8+2qGu13uXTiB663Ti3QiHFr3VPcNcdfC16dOQHt783
+ E1EjRnwQzQ5ZwrEVGKXkTK5RSe9V/3IE3SDMqCoedd4mXEM+IxjIOzw7mrg27+s+/i
+ qrBeNUPnL1ved78C/i8rKikra3VLoUpLIthzyRVEDsEIX0OkHLGwtXev5H3gk+yB16
+ mJ86IHEFRAgDg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=J/MbfG7M
-Subject: Re: [Intel-wired-lan] [RFC PATCH v8 03/10] dpll: core: Add DPLL
- framework base functions
+ header.a=rsa-sha256 header.s=k20201202 header.b=pATI2xnV
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 01/10] dpll: documentation on
+ DPLL subsystem interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,44 +111,11 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri,  9 Jun 2023 14:18:46 +0200 Arkadiusz Kubalewski wrote:
-> +	xa_for_each(xa_pins, i, ref) {
-> +		if (ref->pin != pin)
-> +			continue;
-> +		reg = dpll_pin_registration_find(ref, ops, priv);
-> +		if (reg) {
-> +			refcount_inc(&ref->refcount);
-> +			return 0;
-> +		}
-> +		ref_exists = true;
-> +		break;
-> +	}
-> +
-> +	if (!ref_exists) {
-> +		ref = kzalloc(sizeof(*ref), GFP_KERNEL);
-> +		if (!ref)
-> +			return -ENOMEM;
-> +		ref->pin = pin;
-> +		INIT_LIST_HEAD(&ref->registration_list);
-> +		ret = xa_insert(xa_pins, pin->pin_idx, ref, GFP_KERNEL);
-> +		if (ret) {
-> +			kfree(ref);
-> +			return ret;
-> +		}
-> +		refcount_set(&ref->refcount, 1);
-> +	}
-> +
-> +	reg = kzalloc(sizeof(*reg), GFP_KERNEL);
+On Fri,  9 Jun 2023 14:18:44 +0200 Arkadiusz Kubalewski wrote:
+> +Every other operation handler is checked for existence and
+> +``-ENOTSUPP`` is returned in case of absence of specific handler.
 
-Why do we have two structures - ref and reg?
-
-> +	if (!reg) {
-> +		if (!ref_exists)
-> +			kfree(ref);
-
-ref has already been inserted into xa_pins
-
-> +		return -ENOMEM;
+EOPNOTSUPP
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
