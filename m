@@ -2,81 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C04D472D412
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 00:05:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCB4E72D467
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 00:30:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 80DB3405AB;
-	Mon, 12 Jun 2023 22:05:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 80DB3405AB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6C8E540588;
+	Mon, 12 Jun 2023 22:30:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C8E540588
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686607536;
-	bh=kSVL6U+ipCVMxCw6ZBIBqvRYgKip2VmbMbuvLzZpAD4=;
+	s=default; t=1686609021;
+	bh=qMvdtbZjIcVPD92hR3wb/VSadDapnKaaL5rhz3olYG4=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QDdLQzf2j0ITN4EwHX83i0VgGiGvB86gIN0OlT20NosIBtVkdF1AgLZj3kg7QHhg9
-	 SckUsb0uah7VEG+pdmbMfmqyzI2X2jDv2PiY2T1jEK/jrpHHOSDeBApxKSM0tp3Dvs
-	 ciFxheftl1fM23Ke/Pv3tWIyY9uXyH40UARcAqKniqSGz0cceTZvG6FisVtm/Z5rQN
-	 Qvw+lblN8ioN3fMaOMcXXpLQwI060NO2UwGJBoN9LAq8Qc3LEeQio0jfdks6Zr7V5I
-	 Aq+17p+zAhPEVkfs6Gzog8Q+cuen69lyshMCj1K3yZoNvu+4ZA84Fe3FYe/D7ZHEOS
-	 YW+q+GKNEf63Q==
+	b=V6RZOTVgMNq6p7ODID5Ct4sDHDea6XOpWlep7s5xMKL7Lpi27xi9cXra5xsjBZ+Qu
+	 v4WGu1TX+xTxCG/CTWZylQh7NCDZE2AFJ1sC65GY6luZUF/BhgI4GbpLM3RI9bMHTs
+	 giqLzvAHrQuBq+9+v1oGqB1ktYB8F/OgbyEffGOnbMiIeeIsfAXYYL+m/s/XZxNir6
+	 HkAR0012aRgYNWbIcf+7VZOhLRAvXVvaIc9DExWYA6El6B5bqiqssr2O+NHT6I2tc8
+	 QgnA3qPvLYBBwOHWnfqHXbwKiUh/uzeKA/amvahQMOTTABGqs967V6KLryGkRb1SnJ
+	 0KLbM2PHSKCsA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vsYOzFMuchmL; Mon, 12 Jun 2023 22:05:35 +0000 (UTC)
+	with ESMTP id a36VSn90OTZd; Mon, 12 Jun 2023 22:30:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 778A54053C;
-	Mon, 12 Jun 2023 22:05:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 778A54053C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4DB4040577;
+	Mon, 12 Jun 2023 22:30:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4DB4040577
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2C7541BF286
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:05:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7375D1BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:30:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id ED89B409B6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:05:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED89B409B6
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3AF014099D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:30:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3AF014099D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JseZqhYwcv6c for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jun 2023 22:05:30 +0000 (UTC)
+ with ESMTP id ZSjaHqizYUAY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jun 2023 22:30:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00C61409B1
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 00C61409B1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:05:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F246540980
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F246540980
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jun 2023 22:30:13 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id B9455618C2;
- Mon, 12 Jun 2023 22:05:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C74BAC433D2;
- Mon, 12 Jun 2023 22:05:27 +0000 (UTC)
-Date: Mon, 12 Jun 2023 15:05:26 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 269F262BA1;
+ Mon, 12 Jun 2023 22:30:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67924C433EF;
+ Mon, 12 Jun 2023 22:30:10 +0000 (UTC)
+Date: Mon, 12 Jun 2023 15:30:09 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Tree Davies <tdavies@darkphysics.net>
-Message-ID: <20230612150526.10ca14ac@kernel.org>
-In-Reply-To: <ZIZI5czU2Qv5KrPA@oatmeal.darkphysics>
-References: <ZIZI5czU2Qv5KrPA@oatmeal.darkphysics>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <20230612153009.5f0e1b4a@kernel.org>
+In-Reply-To: <ZISkvTWw5k74RO5s@nanopsycho>
+References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
+ <20230609121853.3607724-2-arkadiusz.kubalewski@intel.com>
+ <ZISkvTWw5k74RO5s@nanopsycho>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1686607528;
- bh=67j+zg7ffLZr8d1DjU5R47Sa/2k7qREoVr6vB5Cd3Ak=;
+ d=kernel.org; s=k20201202; t=1686609012;
+ bh=HQnlbzZUfjB/XyMKV/Pff7qFeZo/3cJ/CnEb78gnOaI=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=hatKJDtMvsdi7USGKbReD6lLZDJamN3rTvZ/af6LWTc9abHe2bv81ZiFuwsFTvgdV
- WvbJk6hoz3MePv8iMRZjT6erUwQfTAeTOUniXNm7WBUIswCSV4+HQn/PamoS5zHPbj
- 9oUBAr7bY3yUJW9zLCdQHp7/LjjpQwppjP/Bwp7WcOsHRl2vbALIPU3Gq1AVkXv53N
- 5fWnV4fNE+5/PxWb009SHsqJga4tZbqUzRyRVpvKP3KxlVxmtzS2FKQAJsn4XDNuTI
- THOSvXA1XDbdPG5xE+eqKzOTaU/ySDaAeKYDBL4EDJRvcEYSlO9ZXjQpS0tgUum7WM
- b9QSonWi2YC3w==
+ b=XdqxVWlWiOFaY6qpOuYHwuuvlHM7zcg9rPKu6KiAAbevMNUUwAkWzrcwoYHW+SFkv
+ 0RdDRP3wO61kOe0UW2J+/BrtdqG4g2fOeKhNHfBEz/+TCNiefXbP6Zx9j6DYf+zrMr
+ dGcLnonh+gR+8dxCzB1uy9tuV1HwRV9fmHWw6/igiKha4+8Aott1Py/0SKOID4euYM
+ r+Eg2k9yWFcNhD/dCzWY/qRAFvTnFayS2eiewgFXsACrsgqzEKQ2ar2qs0UT6a+CMr
+ VW1KtJupKoofTY0S32gugPFWpcjvMeaRCVZHIVB5BpgsZ/LYbjF2lGBjJSeG+YnXep
+ AhXnBtLNjesdQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=hatKJDtM
-Subject: Re: [Intel-wired-lan] [PATCH] net/e1000: Fix single statement
- blocks warning
+ header.a=rsa-sha256 header.s=k20201202 header.b=XdqxVWlW
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 01/10] dpll: documentation on
+ DPLL subsystem interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,19 +90,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- pabeni@redhat.com, davem@davemloft.net
+Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
+ javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, linux-clk@vger.kernel.org,
+ lucien.xin@gmail.com, leon@kernel.org, corbet@lwn.net,
+ linux-rdma@vger.kernel.org, masahiroy@kernel.org, linux-doc@vger.kernel.org,
+ jesse.brandeburg@intel.com, vadfed@meta.com, intel-wired-lan@lists.osuosl.org,
+ airlied@redhat.com, vadfed@fb.com, pabeni@redhat.com,
+ ricardo.canuelo@collabora.com, arnd@arndb.de, idosch@nvidia.com,
+ richardcochran@gmail.com, claudiajkang@gmail.com, kuniyu@amazon.com,
+ jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com,
+ nicolas.dichtel@6wind.com, linux-arm-kernel@lists.infradead.org,
+ axboe@kernel.dk, sj@kernel.org, vadim.fedorenko@linux.dev, linux@zary.sk,
+ gregkh@linuxfoundation.org, ogabbay@kernel.org, nipun.gupta@amd.com,
+ linux-kernel@vger.kernel.org, andy.ren@getcruise.com, tzimmermann@suse.de,
+ jonathan.lemon@gmail.com, saeedm@nvidia.com, davem@davemloft.net,
+ milena.olech@intel.com, hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, 11 Jun 2023 15:21:36 -0700 Tree Davies wrote:
-> This patch fixes checkpatch.pl warning of type:
-> WARNING: braces {} are not necessary for single statement blocks
+On Sat, 10 Jun 2023 18:28:45 +0200 Jiri Pirko wrote:
+> Fri, Jun 09, 2023 at 02:18:44PM CEST, arkadiusz.kubalewski@intel.com wrote:
+> >From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+> >
+> >Add documentation explaining common netlink interface to configure DPLL
+> >devices and monitoring events. Common way to implement DPLL device in
+> >a driver is also covered.
+> >
+> >Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+> >Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> >---
+> > Documentation/driver-api/dpll.rst  | 458 +++++++++++++++++++++++++++++
+> > Documentation/driver-api/index.rst |   1 +
+> > 2 files changed, 459 insertions(+)
+> > create mode 100644 Documentation/driver-api/dpll.rst  
+> 
+> Looks fine to me. I just wonder if the info redundancy of this file and
+> the netlink yaml could be somehow reduce. IDK.
 
-We don't accept pure checkpatch "fixes" in networking, sorry.
+Certainly possible, I even talked to Peter of the pyroute2 fame about
+this. Should be fairly easy to generate a .rst file, and/or Sphinx
+plugin to go directly from the YAML. Is it on my TODO list? Nope :)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
