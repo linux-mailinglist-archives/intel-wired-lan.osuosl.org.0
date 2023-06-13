@@ -2,88 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14F0472E2CB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 14:24:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 647A172E38A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 15:00:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A8786416EE;
-	Tue, 13 Jun 2023 12:24:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8786416EE
+	by smtp2.osuosl.org (Postfix) with ESMTP id F2FB941710;
+	Tue, 13 Jun 2023 12:59:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2FB941710
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686659089;
-	bh=9y/9GsKY6zjS+HqsnUsUt/ybJ2BEWiVGFHC1IhSbnIw=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=3ivPt1mgj1rx0czkZffRJ1mVytC4d5Ec3v5SxMPQ+1qDBsLPvo/QW9IKhgm9mGA5r
-	 26bFHQPmrqswjsDD0VAzLLOydMOgcH/fCHto9Jzqa47LHiiT/fJl7100B3TlsnU3Wy
-	 N04re6YUwg8iLHUyfmABr3CLgjcz8OsnTP8ZWEGcaX/YhJP3QrhGub6IcDSXoAn3T6
-	 Vn/SfofiCldOP/pE+mvkssjFWkUnztJ8dPkCGlu6s9U7kX1JZss+VrXMftBIzRh5GI
-	 SqNgxCr77X3+JBWMzIDP6A2SpN4Qs3K+I6YkwMed7CFq3E/FCy1fj0jOyvP0wvRaeC
-	 zomLosgao0ppA==
+	s=default; t=1686661199;
+	bh=TVR23/bL95qSa7XUBxiCGSW3TP5d0o/LMc0vyp1ug/g=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=rWwZ/CWQ5a6+DHL2iKLW5VqsyR6ATsgcGUAx1MWgv7k2S4qjjkWwPBhvOwzeAlT9k
+	 oMDTrss5VGZ35b8xx/JTd9p8pKDUltDFj+/uTpGdoZHg/JItWbXofI1BX8UCtV47QL
+	 e20kulXozI5vjfJcT5NJGdZJo6sDvOAOnXsys4pKR69PeUbMBVZaRHleVck2xgCEko
+	 v5UrbuGIgm3XEIgIuZngR/kvR3vurCPwC5KCGEOkFXl9xnF4GHoAh7r0zvz7eMG1IM
+	 uGBI1wIteP/i+eS0uFf7RkDiQFMF6F5ywnK7d9YDxsOjehEcemrUFIja5aPXZmy3nY
+	 VIdgcetxxDlEg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MQGyCW7eH5dN; Tue, 13 Jun 2023 12:24:48 +0000 (UTC)
+	with ESMTP id L6gK3o6mpsx2; Tue, 13 Jun 2023 12:59:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8CB724158B;
-	Tue, 13 Jun 2023 12:24:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8CB724158B
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C05E01BF352
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 12:24:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A812416D0;
+	Tue, 13 Jun 2023 12:59:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A812416D0
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 737AA1BF28D
+ for <intel-wired-lan@osuosl.org>; Tue, 13 Jun 2023 12:59:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A7228822C7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 12:24:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A7228822C7
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4924240857
+ for <intel-wired-lan@osuosl.org>; Tue, 13 Jun 2023 12:59:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4924240857
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ouD3DCXFWWNm for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jun 2023 12:24:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AhEcRJl_2wc4 for <intel-wired-lan@osuosl.org>;
+ Tue, 13 Jun 2023 12:59:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F04BB8214C
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F04BB8214C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 12:24:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10739"; a="337951237"
-X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="337951237"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2023 05:24:37 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12CDB40620
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 12CDB40620
+ for <intel-wired-lan@osuosl.org>; Tue, 13 Jun 2023 12:59:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="386716907"
+X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="386716907"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2023 05:59:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10739"; a="835872008"
-X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="835872008"
-Received: from pgardocx-mobl1.igk.intel.com ([10.237.95.41])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2023 05:24:34 -0700
-From: Piotr Gardocki <piotrx.gardocki@intel.com>
-To: netdev@vger.kernel.org
-Date: Tue, 13 Jun 2023 14:24:20 +0200
-Message-Id: <20230613122420.855486-4-piotrx.gardocki@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230613122420.855486-1-piotrx.gardocki@intel.com>
-References: <20230613122420.855486-1-piotrx.gardocki@intel.com>
-MIME-Version: 1.0
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="958400403"
+X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="958400403"
+Received: from inlubt0246.iind.intel.com ([10.67.198.165])
+ by fmsmga006.fm.intel.com with ESMTP; 13 Jun 2023 05:59:49 -0700
+From: aravindhan.gunasekaran@intel.com
+To: intel-wired-lan@osuosl.org
+Date: Tue, 13 Jun 2023 18:29:48 +0530
+Message-Id: <20230613125948.60575-1-aravindhan.gunasekaran@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686659077; x=1718195077;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=aiy2x7WzA9Zv0AUyWsyvj/l73+iJBj7g8yRezUPEHv4=;
- b=N2ermxKc7hpA2JFa9qmCTuTtAYC+jCk0KJV0jHm1EB6EZioydplLP0Zx
- p2M+MFOV4mIv/LqPaV1R60HY0neARk0/CDtTxgio0p70PL1FJBYQuMrRH
- A0CwS84kdU4E5qFUqJZ2gK/E/tpj2k4xmPuW0793WBrYNe9EZ1AFHAxnB
- ejI9S8v7oaneu+CWrQnLThlWYfVpP4zTXfKtsskTx9r6+J3HNov2Z19Ri
- FmCCL8iNPavF4LblRQz1DEaQbgkwZi7S9qW+CuKKN10I6T2Yicgi0BJCX
- oW421h8W9rl0ujKCaVJbwq+7ZMIteFUTThXYe7foFSDcFJgpAluuAcBmg
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1686661192; x=1718197192;
+ h=from:to:cc:subject:date:message-id;
+ bh=CNPCRmP4syAaBFBiKt+kMOIkGqDie+NcG9AxHYj+bjQ=;
+ b=Dbg/AW8hOH4JBT+S39lRVk03VVEJ+KpaxYDTFWwX+4vvBAM94+Z7gIVN
+ tAm7fZRHqbkAyVs4CwE8RoAGUw+p5AT4RPRied6aJQjkr8PtRp0GZHG5d
+ biYZHzq8pOeHD9dgKx6lGGE8V5K3e36FWAuwex8NcR5q8azV162/lrd6o
+ 017/uB98uwDJ06url5VDh2/SgHHmwv/jkN2TM0JFyDHqkZ19SIUPiZPsQ
+ nVSsp16oPCm+nf0/LgC27A9cs+5W0KrHcMA36quqKlrsv+ggHh3YKVxF+
+ z8HrHMArKtxZkWGp4rZbISmyolb7W4+rYxUPXBpw0gjWJUUc9CP/3DBUr
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=N2ermxKc
-Subject: [Intel-wired-lan] [PATCH net-next v2 3/3] ice: remove unnecessary
- check for old MAC == new MAC
+ header.a=rsa-sha256 header.s=Intel header.b=Dbg/AW8h
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] igc: Handle PPS start time
+ programming for past time values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,40 +90,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, przemyslaw.kitszel@intel.com,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- simon.horman@corigine.com, kuba@kernel.org
+Cc: anthony.l.nguyen@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The check has been moved to core. The ndo_set_mac_address callback
-is not being called with new MAC address equal to the old one anymore.
+From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
 
-Signed-off-by: Piotr Gardocki <piotrx.gardocki@intel.com>
+I225/6 hardware can be programmed to start PPS output once
+the time in Target Time registers is reached. The time
+programmed in these registers should always be into future.
+Only then PPS output is triggered when SYSTIM register
+reaches the programmed value. There are two modes in i225/6
+hardware to program PPS, pulse and clock mode.
+
+There were issues reported where PPS is not generated when
+start time is in past.
+
+Example 1, "echo 0 0 0 2 0 > /sys/class/ptp/ptp0/period"
+
+In the current implementation, a value of '0' is programmed
+into Target time registers and PPS output is in pulse mode.
+Eventually an interrupt which is triggered upon SYSTIM
+register reaching Target time is not fired. Thus no PPS
+output is generated.
+
+Example 2, "echo 0 0 0 1 0 > /sys/class/ptp/ptp0/period"
+
+Above case, a value of '0' is programmed into Target time
+registers and PPS output is in clock mode. Here, HW tries to
+catch-up the current time by incrementing Target Time
+register. This catch-up time seem to vary according to
+programmed PPS period time as per the HW design. In my
+experiments, the delay ranged between few tens of seconds to
+few minutes. The PPS output is only generated after the
+Target time register reaches current time.
+
+In my experiments, I also observed PPS stopped working with
+below test and could not recover until module is removed and
+loaded again.
+
+1) echo 0 <future time> 0 1 0 > /sys/class/ptp/ptp1/period
+2) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
+3) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
+
+After this PPS did not work even if i re-program with proper
+values. I could only get this back working by reloading the
+driver.
+
+This patch takes care of calculating and programming
+appropriate future time value into Target Time registers.
+
+Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 25 +++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index caafb12d9cc7..f0ba896a3f46 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5624,11 +5624,6 @@ static int ice_set_mac_address(struct net_device *netdev, void *pi)
- 	if (!is_valid_ether_addr(mac))
- 		return -EADDRNOTAVAIL;
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 32ef112f8291..f0b979a70655 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -356,16 +356,35 @@ static int igc_ptp_feature_enable_i225(struct ptp_clock_info *ptp,
+ 			tsim &= ~IGC_TSICR_TT0;
+ 		}
+ 		if (on) {
++			struct timespec64 safe_start;
+ 			int i = rq->perout.index;
  
--	if (ether_addr_equal(netdev->dev_addr, mac)) {
--		netdev_dbg(netdev, "already using mac %pM\n", mac);
--		return 0;
--	}
--
- 	if (test_bit(ICE_DOWN, pf->state) ||
- 	    ice_is_reset_in_progress(pf->state)) {
- 		netdev_err(netdev, "can't set mac %pM. device not ready\n",
+ 			igc_pin_perout(igc, i, pin, use_freq);
+-			igc->perout[i].start.tv_sec = rq->perout.start.sec;
++			igc_ptp_read(igc, &safe_start);
++
++			/* PPS output start time is triggered by Target time(TT)
++			 * register. Programming any past time value into TT
++			 * register will cause PPS to never start. Need to make
++			 * sure we program the TT register a time ahead in
++			 * future. There isn't a stringent need to fire PPS out
++			 * right away. Adding +2 seconds should take care of
++			 * corner cases. Let's say if the SYSTIML is close to
++			 * wrap up and the timer keeps ticking as we program the
++			 * register, adding +2seconds is safe bet.
++			 */
++			safe_start.tv_sec += 2;
++
++			if (rq->perout.start.sec < safe_start.tv_sec)
++				igc->perout[i].start.tv_sec = safe_start.tv_sec;
++			else
++				igc->perout[i].start.tv_sec = rq->perout.start.sec;
+ 			igc->perout[i].start.tv_nsec = rq->perout.start.nsec;
+ 			igc->perout[i].period.tv_sec = ts.tv_sec;
+ 			igc->perout[i].period.tv_nsec = ts.tv_nsec;
+-			wr32(trgttimh, rq->perout.start.sec);
++			wr32(trgttimh, (u32)igc->perout[i].start.tv_sec);
+ 			/* For now, always select timer 0 as source. */
+-			wr32(trgttiml, rq->perout.start.nsec | IGC_TT_IO_TIMER_SEL_SYSTIM0);
++			wr32(trgttiml, (u32)(igc->perout[i].start.tv_nsec |
++					     IGC_TT_IO_TIMER_SEL_SYSTIM0));
+ 			if (use_freq)
+ 				wr32(freqout, ns);
+ 			tsauxc |= tsauxc_mask;
 -- 
-2.34.1
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
