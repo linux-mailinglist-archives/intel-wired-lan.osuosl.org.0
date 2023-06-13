@@ -1,86 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84FE572EAEA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 20:26:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 007BA72ED39
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jun 2023 22:41:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EAD4440A18;
-	Tue, 13 Jun 2023 18:26:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EAD4440A18
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C06881F2D;
+	Tue, 13 Jun 2023 20:41:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C06881F2D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686680786;
-	bh=xJnxWArmLJj8cArHsllHQzo0jVzzbwxmmyLcJMnUvM4=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1686688876;
+	bh=7nIGPeu8ZtPS28mUh6qYzmwi9tgIcFTHfKWr6vanxrQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=mGC1xRe8IxvZS2M/Mslt3pvAWT1qhiCBlGsgsS6Gx3zlh2HU139FIFwcgdZfJrx+u
-	 hPFgJmmQYVa4D4Eq6qidfvoOETQIOUFbAMblH9zph46vJNzYjBJtQu2IJ9sO9Xuqq+
-	 +DXKk1Tng0XcTy6gi1OvqemKC+5nOdpGBJNpJKtFQ0mC6vk+3oru2Wf3RK6MHNY/qK
-	 HSspAxk35OVT5nRHRbNOZspTXxJQd4RaEJplROlNBRZ9VArUDjdcio+iBx7K+yQEWt
-	 jjc7eJr+OQw+UUENOf/XbEvDDqLB9spLNV7AFruj/XRkSJPCWFpyU2h3dPcpHhqVEK
-	 0Sz4WILOnMFXA==
+	b=6sCuSiSr1tpIjW6lpbrIKJr2gjPnixb4rnfrB8R+CZBvA0+DEbbLwBXi832xL477F
+	 uOsNSq+Z7e/mj+++I/+0gCHYUTOsM3uxFi3ueYN5AMwLIUKjl0QyViCp5tp7FX/4Du
+	 aMDCopXWxWB//WecZtQJ+Y2lGBBb2Bdl1nhKz6bk3ldRKxLVs4yUK+dm5vmOBGnZpW
+	 S3uExnI6/PqRhqYJPMkFVyYrSnZuEyMBnf2uOhmVqlOZuWv49bAvibEGegybRb+FOW
+	 P1HdeiL/4gPmeZSJHu/j3C5TvLpfCL64RWWkM0mfBsQye8QJ/bWQncPgPBUb00pKVX
+	 SHKpxGnMLt2DQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MzngSaIcOEfs; Tue, 13 Jun 2023 18:26:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id m4R1GVVnIGxb; Tue, 13 Jun 2023 20:41:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4BACC408DD;
-	Tue, 13 Jun 2023 18:26:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4BACC408DD
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0BAB81F34;
+	Tue, 13 Jun 2023 20:41:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0BAB81F34
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 197891BF34B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 18:26:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C52F91BF31A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 20:41:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E56C9405E8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 18:26:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E56C9405E8
+ by smtp3.osuosl.org (Postfix) with ESMTP id 92D2360E83
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 20:41:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92D2360E83
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KS2zcUbC3Uaj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jun 2023 18:26:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PkK4vjp272nP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jun 2023 20:41:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C091408A8
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7C091408A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 18:26:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="424305272"
-X-IronPort-AV: E=Sophos;i="6.00,240,1681196400"; d="scan'208";a="424305272"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2023 11:26:16 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFB0060B1B
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BFB0060B1B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jun 2023 20:41:00 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="348105447"
+X-IronPort-AV: E=Sophos;i="6.00,240,1681196400"; d="scan'208";a="348105447"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2023 13:40:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="885938674"
-X-IronPort-AV: E=Sophos;i="6.00,240,1681196400"; d="scan'208";a="885938674"
-Received: from lkp-server01.sh.intel.com (HELO 211f47bdb1cb) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 13 Jun 2023 11:26:15 -0700
-Received: from kbuild by 211f47bdb1cb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q98ic-0001du-33
- for intel-wired-lan@lists.osuosl.org; Tue, 13 Jun 2023 18:26:14 +0000
-Date: Wed, 14 Jun 2023 02:25:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202306140221.ItdwQJcs-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="781831986"
+X-IronPort-AV: E=Sophos;i="6.00,240,1681196400"; d="scan'208";a="781831986"
+Received: from jekeller-desk.amr.corp.intel.com (HELO
+ jekeller-desk.jekeller.internal) ([10.166.241.1])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2023 13:40:58 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>,
+ Michal Schmidt <mschmidt@redhat.com>
+Date: Tue, 13 Jun 2023 13:40:53 -0700
+Message-ID: <20230613204053.3581328-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.40.0.471.gbd7f14d9353b
+MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686680777; x=1718216777;
- h=date:from:to:subject:message-id;
- bh=LNTwLPSJdQY32snjx+go0Q70f+HwECf+qHYmwb9t+6U=;
- b=f/8mgCJo5YcWncudPUSwFJPSoe97UrO+9ptY8OoMa5RtSsfAwZRk8F8o
- b7bdDQGvIo3EEPMEDOMu9DJ0AHcYzew2MonJE1wx9xf7LyXxEp609DgXW
- ivH5fg2ido+wH4zExcIt64YrrKqcTZupcAuogUCBT3iB0121PvDEE2iGb
- a35kJnbTj72orxXwt2EEqpt9+wwc1ZK4Gc0ZxMylaxbu7sygv+6Q4CgSI
- dGYfIr+HLEurfqJZ8PtWZ5vceNXj2yXlo4Mc9npAawKliWUXC6W/iFBwa
- 9mMV+OHPMy/drV8S0GeDzFzxhUVObfhmX1eqdluocB29lZfusMsh4tZmF
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1686688860; x=1718224860;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=2V/fPMSwXJhrcuCmNVAMs+rqj/DoUG0I24TmvnTF5Fo=;
+ b=XOPSwXibiEjGBaHVq6dWuRyABCjcV2E61ASyVYZke2ikpar6znlOKSIs
+ eAkm/vmCOquF0W70w+o3xb7k2l5DpVcPVOmGV+t/RJdTmtq2RXGjlULp+
+ xUEQPwzjD6zHhgDy4HrxsqOC6ce/htiok8/QfG5sFDlvsl6+Sn/ib8Fm6
+ ZlAwiZ4d6kfGKmeceBEF6Lvtab3IuWLEodbohbKLgYuHomj2xU4/cxUZZ
+ b0Gnn5IxfuV6cW/nY+6ludUzqF168E/wQDmzquT3zQte2zF4Fnb15JeAp
+ wWPyXw/l+pnQQPO3eizv8pwNx3jTBHSIiLJh7k7z0hNR9CP620CrAdRhA
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=f/8mgCJo
-Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
- 48a821fd58837800750ec1b3962f0f799630a844
+ header.a=rsa-sha256 header.s=Intel header.b=XOPSwXib
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: reduce initial wait for
+ control queue messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,150 +96,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
-branch HEAD: 48a821fd58837800750ec1b3962f0f799630a844  igb: fix nvm.ops.read() error handling
+The ice_sq_send_cmd() function is used to send messages to the control
+queues used to communicate with firmware, virtual functions, and even some
+hardware.
 
-elapsed time: 1241m
+When sending a control queue message, the driver is designed to
+synchronously wait for a response from the queue. Currently it waits
+between checks for 100 to 150 microseconds.
 
-configs tested: 121
-configs skipped: 6
+Commit f86d6f9c49f6 ("ice: sleep, don't busy-wait, for
+ICE_CTL_Q_SQ_CMD_TIMEOUT") did recently change the behavior from an
+unnecessary delay into a sleep which is a significant improvement over the
+old behavior of polling using udelay.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Because of the nature of PCIe transactions, the hardware won't be informed
+about a new message until the write to the tail register posts. This is
+only guaranteed to occur at the next register read. In ice_sq_send_cmd(),
+this happens at the ice_sq_done() call. Because of this, the driver
+essentially forces a minimum of one full wait time regardless of how fast
+the response is.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r004-20230612   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r001-20230612   gcc  
-arc                  randconfig-r043-20230612   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                  randconfig-r036-20230612   gcc  
-arm                  randconfig-r046-20230612   clang
-arm64                            allyesconfig   gcc  
-arm64        buildonly-randconfig-r001-20230612   clang
-arm64                               defconfig   gcc  
-arm64                randconfig-r011-20230612   gcc  
-csky                                defconfig   gcc  
-csky                 randconfig-r002-20230612   gcc  
-csky                 randconfig-r031-20230612   gcc  
-hexagon              randconfig-r003-20230612   clang
-hexagon              randconfig-r025-20230612   clang
-hexagon              randconfig-r032-20230612   clang
-hexagon              randconfig-r041-20230612   clang
-hexagon              randconfig-r045-20230612   clang
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r006-20230612   clang
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230612   clang
-i386                 randconfig-i002-20230612   clang
-i386                 randconfig-i003-20230612   clang
-i386                 randconfig-i004-20230612   clang
-i386                 randconfig-i005-20230612   clang
-i386                 randconfig-i006-20230612   clang
-i386                 randconfig-i011-20230612   gcc  
-i386                 randconfig-i012-20230612   gcc  
-i386                 randconfig-i013-20230612   gcc  
-i386                 randconfig-i014-20230612   gcc  
-i386                 randconfig-i015-20230612   gcc  
-i386                 randconfig-i016-20230612   gcc  
-i386                 randconfig-r021-20230612   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch    buildonly-randconfig-r006-20230612   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r002-20230612   gcc  
-loongarch            randconfig-r005-20230612   gcc  
-loongarch            randconfig-r024-20230612   gcc  
-loongarch            randconfig-r031-20230612   gcc  
-loongarch            randconfig-r035-20230612   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k         buildonly-randconfig-r004-20230612   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r033-20230612   gcc  
-microblaze           randconfig-r016-20230612   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips         buildonly-randconfig-r003-20230612   gcc  
-mips                 randconfig-r001-20230612   gcc  
-nios2                               defconfig   gcc  
-nios2                randconfig-r004-20230612   gcc  
-nios2                randconfig-r034-20230612   gcc  
-openrisc     buildonly-randconfig-r001-20230612   gcc  
-openrisc     buildonly-randconfig-r004-20230612   gcc  
-openrisc             randconfig-r014-20230612   gcc  
-parisc                           allyesconfig   gcc  
-parisc       buildonly-randconfig-r003-20230612   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc      buildonly-randconfig-r002-20230612   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv        buildonly-randconfig-r005-20230612   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r023-20230612   gcc  
-riscv                randconfig-r042-20230612   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r012-20230612   gcc  
-s390                 randconfig-r044-20230612   gcc  
-sh                               allmodconfig   gcc  
-sh                   randconfig-r013-20230612   gcc  
-sh                   randconfig-r031-20230612   gcc  
-sh                   randconfig-r036-20230612   gcc  
-sparc                            allyesconfig   gcc  
-sparc        buildonly-randconfig-r005-20230612   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r026-20230612   gcc  
-sparc64              randconfig-r015-20230612   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   clang
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230612   clang
-x86_64               randconfig-a001-20230613   gcc  
-x86_64               randconfig-a002-20230612   clang
-x86_64               randconfig-a002-20230613   gcc  
-x86_64               randconfig-a003-20230612   clang
-x86_64               randconfig-a003-20230613   gcc  
-x86_64               randconfig-a004-20230612   clang
-x86_64               randconfig-a004-20230613   gcc  
-x86_64               randconfig-a005-20230612   clang
-x86_64               randconfig-a005-20230613   gcc  
-x86_64               randconfig-a006-20230612   clang
-x86_64               randconfig-a006-20230613   gcc  
-x86_64               randconfig-a011-20230612   gcc  
-x86_64               randconfig-a012-20230612   gcc  
-x86_64               randconfig-a013-20230612   gcc  
-x86_64               randconfig-a014-20230612   gcc  
-x86_64               randconfig-a015-20230612   gcc  
-x86_64               randconfig-a016-20230612   gcc  
-x86_64               randconfig-r033-20230612   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
+For the hardware-based sideband queue, this is especially slow. It is
+expected that the hardware will respond within 2 or 3 microseconds, an
+order of magnitude faster than the 100-150 microsecond sleep.
 
+Allow such fast completions to occur without delay by introducing a small 5
+microsecond delay first before entering the sleeping timeout loop. Ensure
+the tail write has been posted by using ice_flush(hw) first.
+
+While at it, lets also remove the ICE_CTL_Q_SQ_CMD_USEC macro as it
+obscures the sleep time in the inner loop. It was likely introduced to
+avoid "magic numbers", but in practice sleep and delay values are easier to
+read and understand when using actual numbers instead of a named constant.
+
+This change should allow the fast hardware based control queue messages to
+complete quickly without delay, while slower firmware queue response times
+will sleep while waiting for the response.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+
+@Michal, do you think this initial 5 microsecond delay would have
+significant impact on the use cases that you fixed in the mentioned commit?
+I don't want to break those, but do want to make sure that the fast response
+hardware queues don't wait unnecessarily. One alternative I considered was
+only doing this delay if we are on the appropriate queue type. I'd
+appreciate your thoughts.
+
+ drivers/net/ethernet/intel/ice/ice_controlq.c | 9 +++++++--
+ drivers/net/ethernet/intel/ice/ice_controlq.h | 1 -
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
+index d2faf1baad2f..385fd88831db 100644
+--- a/drivers/net/ethernet/intel/ice/ice_controlq.c
++++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
+@@ -1056,14 +1056,19 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 	if (cq->sq.next_to_use == cq->sq.count)
+ 		cq->sq.next_to_use = 0;
+ 	wr32(hw, cq->sq.tail, cq->sq.next_to_use);
++	ice_flush(hw);
++
++	/* Wait a short time before initial ice_sq_done() check, to allow
++	 * hardware time for completion.
++	 */
++	udelay(5);
+ 
+ 	timeout = jiffies + ICE_CTL_Q_SQ_CMD_TIMEOUT;
+ 	do {
+ 		if (ice_sq_done(hw, cq))
+ 			break;
+ 
+-		usleep_range(ICE_CTL_Q_SQ_CMD_USEC,
+-			     ICE_CTL_Q_SQ_CMD_USEC * 3 / 2);
++		usleep_range(100, 150);
+ 	} while (time_before(jiffies, timeout));
+ 
+ 	/* if ready, copy the desc back to temp */
+diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.h b/drivers/net/ethernet/intel/ice/ice_controlq.h
+index 950b7f4a7a05..8f2fd1613a95 100644
+--- a/drivers/net/ethernet/intel/ice/ice_controlq.h
++++ b/drivers/net/ethernet/intel/ice/ice_controlq.h
+@@ -35,7 +35,6 @@ enum ice_ctl_q {
+ 
+ /* Control Queue timeout settings - max delay 1s */
+ #define ICE_CTL_Q_SQ_CMD_TIMEOUT	HZ    /* Wait max 1s */
+-#define ICE_CTL_Q_SQ_CMD_USEC		100   /* Check every 100usec */
+ #define ICE_CTL_Q_ADMIN_INIT_TIMEOUT	10    /* Count 10 times */
+ #define ICE_CTL_Q_ADMIN_INIT_MSEC	100   /* Check every 100msec */
+ 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.40.0.471.gbd7f14d9353b
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
