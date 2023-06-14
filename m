@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A079730266
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 16:53:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 64C1D730267
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 16:53:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DC04361350;
-	Wed, 14 Jun 2023 14:53:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DC04361350
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0702C61360;
+	Wed, 14 Jun 2023 14:53:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0702C61360
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686754424;
-	bh=oprmLjS+qkQFBzYfAS2HO0Pl0wTsmue70byHBr2xi4k=;
+	s=default; t=1686754429;
+	bh=9y/9GsKY6zjS+HqsnUsUt/ybJ2BEWiVGFHC1IhSbnIw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZprWz5pBP+X81MMV+aaHnx1wJFRU2Lc2kxHRsS4JjKleLGpZsqdEMSFb+z8J+yfyI
-	 ofEzj1ckDjjOb/gisp5u6jq6NRCLJPo2IPlUErtZ/0jnDAKRdluOZRGR61PF0gko6i
-	 9Lv7TdEq0dx+IxNDclHVy/arcoNK/wnsSiQBZxZ2vf800uWWA8XDj/HgH18mpblHl/
-	 sXpYGj5cjD5yISf6ky5VDVsCZsiQnMd2zEQthddvNK5dw0AYTuOiopbuKDMojwDlOA
-	 Cg9BlA5YvmFLIy0FifXKLhzlU1nu//8QLKIVVgrbvdVg5Z1LsMGVMGK8j6SNQ7APsv
-	 JimY97EVTf9zA==
+	b=MwgRpjyx6zvm2bRuYy1r2gTuqXEddbIOb6bOYZV461430OMMmN0VnVmUoFejp7p/r
+	 USIiB9Amnc0BHgzZVWh19ZCEFc1pUIbPkVCzNB4YYqgcHMXZtZKfkHRkQpt8BLyAh7
+	 n/yCihkwWpDgRRWBcdOoX24iC8GRHjO4+WtuArdEJMp5ZwLmrAfV9YE1kjWOhfDgj5
+	 MQJT4IyLdQUnN/9yl1orZEJVKZp90fuTMTELjjR/n+ipYPGXmE79NqipRUc6QsMc/U
+	 zbxgBzHdBBQgH9jDDe7nja23JYRK2yRJ4Pmqgl+m6DOtxKnW2bKNT0Or7NeOCL3ybW
+	 LQCoFcxY0UZ1g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VO1z6-EdLsm4; Wed, 14 Jun 2023 14:53:44 +0000 (UTC)
+	with ESMTP id 7c82zlJCVHwS; Wed, 14 Jun 2023 14:53:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5F6AF6132B;
-	Wed, 14 Jun 2023 14:53:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F6AF6132B
+	by smtp3.osuosl.org (Postfix) with ESMTP id E38176133B;
+	Wed, 14 Jun 2023 14:53:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E38176133B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2EAD41BF2B7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9DD0F1BF2B7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0598B402C0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0598B402C0
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7547140201
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7547140201
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BIXsN7gMMSDQ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Jun 2023 14:53:17 +0000 (UTC)
+ with ESMTP id OXu4qQGFsuFa for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Jun 2023 14:53:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B0D540201
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC96F40182
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3B0D540201
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="387040574"
-X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="387040574"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AC96F40182
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 14:53:18 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="387040586"
+X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="387040586"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2023 07:53:15 -0700
+ 14 Jun 2023 07:53:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="782114883"
-X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="782114883"
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="782114900"
+X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="782114900"
 Received: from pgardocx-mobl1.igk.intel.com ([10.237.95.41])
  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2023 07:53:13 -0700
+ 14 Jun 2023 07:53:16 -0700
 From: Piotr Gardocki <piotrx.gardocki@intel.com>
 To: netdev@vger.kernel.org
-Date: Wed, 14 Jun 2023 16:53:01 +0200
-Message-Id: <20230614145302.902301-3-piotrx.gardocki@intel.com>
+Date: Wed, 14 Jun 2023 16:53:02 +0200
+Message-Id: <20230614145302.902301-4-piotrx.gardocki@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230614145302.902301-1-piotrx.gardocki@intel.com>
 References: <20230614145302.902301-1-piotrx.gardocki@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686754396; x=1718290396;
+ t=1686754398; x=1718290398;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=m+4uwLRuZN9fn+hK45LCaKkaZvlTk7MrI9TFDI/rJdM=;
- b=M0PBMVONyXNG7MIJoT9sv/MH9VOKIBLeti/A61sDs/N8WuLD5N8GjNRR
- MK/6shImFzDza6IJtpGlpzyKD55fpEf8sbjIsT0ln7xxhwxqHFGwZokhF
- YLiUFEMxO+4w3blOdrh+MNHPiMRWItWnhIix2JO6pw44VBQolSwNQ0zqM
- vf8W4/OxXwElxaGB6RozzYn0ikvtps2qoGBnx9b2IV4fg+6XacsyR5ycS
- UQN51S/4w082D+jVmxXM+spysfKQqzMbM5mQK17N0yelG0/5raD3qebs9
- DVs44hibRmWF0lzogBv0Yk8qpoENS1/iQ7clgrOr6kRWIZXm7xQ+p0G3L
- w==;
+ bh=aiy2x7WzA9Zv0AUyWsyvj/l73+iJBj7g8yRezUPEHv4=;
+ b=bAo14M4MXD2jnWQ0gwRC/LrE1hOB4eOlS3vqK1Cmr4oAjjdEI3e6Zgpm
+ EtW6TEGFce+nxEPchZ2nwP4M7DO27jpmXVVBjZLbDvYfsi1mtkYafbk/Y
+ HiLipOcF4ajlF+GGmJm6R5js+AVliA4seiKqIDr+wtpOCGOpbpDXDTFCm
+ lfmJZ8yQX18bnjXAwX/x3XtfMcJV/IulOsSGcqtaKI3Z0wkfvdosl5ZB/
+ iHfTaGIdRndGR/p+lAbIlEhWlrdAEFrONlJn2lU36yf66kA2bYBXdFPF/
+ TYfUQEer2V5ACcjdMn5m5/6RUeD6LwTy0mRTAF7Rj8AggYn3g7L8yDhdw
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=M0PBMVON
-Subject: [Intel-wired-lan] [PATCH net-next v3 2/3] i40e: remove unnecessary
+ header.a=rsa-sha256 header.s=Intel header.b=bAo14M4M
+Subject: [Intel-wired-lan] [PATCH net-next v3 3/3] ice: remove unnecessary
  check for old MAC == new MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -109,26 +109,25 @@ is not being called with new MAC address equal to the old one anymore.
 
 Signed-off-by: Piotr Gardocki <piotrx.gardocki@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 6 ------
- 1 file changed, 6 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index b847bd105b16..29ad1797adce 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -1788,12 +1788,6 @@ static int i40e_set_mac(struct net_device *netdev, void *p)
- 	if (!is_valid_ether_addr(addr->sa_data))
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index caafb12d9cc7..f0ba896a3f46 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5624,11 +5624,6 @@ static int ice_set_mac_address(struct net_device *netdev, void *pi)
+ 	if (!is_valid_ether_addr(mac))
  		return -EADDRNOTAVAIL;
  
--	if (ether_addr_equal(netdev->dev_addr, addr->sa_data)) {
--		netdev_info(netdev, "already using mac address %pM\n",
--			    addr->sa_data);
+-	if (ether_addr_equal(netdev->dev_addr, mac)) {
+-		netdev_dbg(netdev, "already using mac %pM\n", mac);
 -		return 0;
 -	}
 -
- 	if (test_bit(__I40E_DOWN, pf->state) ||
- 	    test_bit(__I40E_RESET_RECOVERY_PENDING, pf->state))
- 		return -EADDRNOTAVAIL;
+ 	if (test_bit(ICE_DOWN, pf->state) ||
+ 	    ice_is_reset_in_progress(pf->state)) {
+ 		netdev_err(netdev, "can't set mac %pM. device not ready\n",
 -- 
 2.34.1
 
