@@ -1,107 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D252C72F913
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 11:27:50 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D30072F96A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 11:40:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70064611F4;
-	Wed, 14 Jun 2023 09:27:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 70064611F4
+	by smtp3.osuosl.org (Postfix) with ESMTP id E9DE6611FF;
+	Wed, 14 Jun 2023 09:40:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E9DE6611FF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686734869;
-	bh=YVPQ7T9iKt924LufRaPIxs3Nwv0fpMi9+F5gv5Ggv50=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1686735609;
+	bh=erms3zMQ25+dsa4KL70uE+qnhnt3s5zzeFcx25VRwTo=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QtGEmUB7iI5kWkrL0n+p9qyUdW72tYY+OBfBz4Ht7zV7g/50Y03u9HUF3cXFQJv/z
-	 MD/hPWnhD3Bo0s+wxvBCzInrtYyO5Imv92ajAGpNr2hzcCcmOg9Gyg0mnO/pVGQDsy
-	 YDT2mpyeGl5GDvDimvkOwMyY5YQlrtf56eSHk1xEqrBx32L9S4xoDoWBrH2Ub9/+Yr
-	 CWn+2B1Z+UY+6ASu+fAGXcZVAcBIAL5EeAfs2fc8KGUr2toOZU5J51kcpDb/+gticC
-	 nPmB7U92cutpbFkrxSzt9zzfPwG9ey5UUuDJF4RUSnJi0oXMs7u2Pbp3HuMGM99bZk
-	 NrCed0ikBUuAg==
+	b=OR5r1dQOtlIZAsuPLfsmX/dIgT8YG349m0uDV0tB/kbpyndc5bxs8O4/8KTtF7Z5V
+	 +bgRN1Zsj31+7sKFUhCuuhnrC/NWCzgXnnIaxDd6pvMYerxZgcs3YrnAxo1XUOlNA0
+	 eeZaj32dz8opoO+Abp+orLYSkH2Y/efWcZ8X7mlrvGgbDJAXA+qqCsT72Q+68HkDwE
+	 mQzZ2MY1sp9rVeuQsEYfI9xGQW12GumPbz+TOZjvz9BCv5K7yjE0+rBVVQQomXeW4W
+	 bkRXCfPmonyyUn7+SRBAOuv8EweCA4wSL5qLMdpx0oCcxSXlVoQ7CWWa/kkAicok76
+	 nK5BRUlNPJhqA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VCce0J_wwPia; Wed, 14 Jun 2023 09:27:48 +0000 (UTC)
+	with ESMTP id zD7V7TfYX3lq; Wed, 14 Jun 2023 09:40:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 283F7611EB;
-	Wed, 14 Jun 2023 09:27:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 283F7611EB
+	by smtp3.osuosl.org (Postfix) with ESMTP id 91CD460739;
+	Wed, 14 Jun 2023 09:40:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 91CD460739
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C9D111BF860
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:27:43 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 473B31BF860
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:40:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B9A4C611EB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:27:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B9A4C611EB
+ by smtp4.osuosl.org (Postfix) with ESMTP id 236BD418D7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:40:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 236BD418D7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GZWuJufgHkhk for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Jun 2023 09:27:40 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 50A6C611DE
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
- [IPv6:2a00:1450:4864:20::331])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 50A6C611DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:27:38 +0000 (UTC)
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3f8c5d0b216so4182825e9.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 02:27:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686734849; x=1689326849;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=HtefXDjYklud7abCsC+WgTuAbpHOK06ISGHObSNNODA=;
- b=bgXkJw0/uSJDBQt6vjVXGXcGYtG3BROhq9aF97RrBgi1qMGZ1vFXYzhsBzFlGqU/Cq
- /Kmv4TDjWDxlLKiCKtXvNbWmUWHC2jyWkzXPNHYT757lgHgE35CDVcBytuxet3n4icaX
- +ULcrOiOVRMa550Ao43FaWaQwV71So3Kyequ0tZGrbZGw0DW7kGwtG3q1cHMuXdXblRY
- d9Rnpp2m7Ye1SHKUfKsq11b/z3lJMBziH6q1kNba4Gh3Ihq2MEalBFMGCVBLS1fULzGP
- BJODqQ7k7FyYtmSXUCYkqC5ySWteFLIZh2LwQ/7HUyQQaLlLyk256bt8hMTiC1g8iGYQ
- CEpA==
-X-Gm-Message-State: AC+VfDwLM4yUvGNI9WAZzDVpLwdBom11QkHMUVjAQTWDNT6rPo3T6rk/
- 4vfAo/v8nf/GmD+HZxB08HwX7g==
-X-Google-Smtp-Source: ACHHUZ7GlBUfe4DA2qBjSg64mcltE0M9LgJWODvo3Av0ztoxCP/DZKdZxYp0GD/Cv/+mNbbxd4YpFg==
-X-Received: by 2002:adf:e54c:0:b0:30f:bd48:6828 with SMTP id
- z12-20020adfe54c000000b0030fbd486828mr7876719wrm.31.1686734849068; 
- Wed, 14 Jun 2023 02:27:29 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- s14-20020adfeb0e000000b0030ae53550f5sm17681103wrn.51.2023.06.14.02.27.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Jun 2023 02:27:28 -0700 (PDT)
-Date: Wed, 14 Jun 2023 11:27:27 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <ZImH/6GzGdydC3U3@nanopsycho>
-References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
- <20230609121853.3607724-2-arkadiusz.kubalewski@intel.com>
- <20230612154329.7bd2d52f@kernel.org> <ZIg8/0UJB9Lbyx2D@nanopsycho>
- <20230613093801.735cd341@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EzlxCHIcKxNs for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Jun 2023 09:40:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC0FC408B2
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BC0FC408B2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:40:01 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="422170684"
+X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="422170684"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2023 02:40:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10740"; a="741772509"
+X-IronPort-AV: E=Sophos;i="6.00,242,1681196400"; d="scan'208";a="741772509"
+Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.249.137.22])
+ ([10.249.137.22])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2023 02:39:57 -0700
+Message-ID: <7ff20252-4672-fdcf-6c64-f7bbbd469cc7@linux.intel.com>
+Date: Wed, 14 Jun 2023 11:39:49 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230613093801.735cd341@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1686734849; x=1689326849; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=HtefXDjYklud7abCsC+WgTuAbpHOK06ISGHObSNNODA=;
- b=yrfI34Q6GvN+FjN0tBMhRhIOeZ+VqlZlmPBIeLwUQwYA9symwc6XeIfHRDvjxLjG6V
- mWI92FC7g4Iy+mbS+/EKtIv6gpw4bdc2QDKWvI32GRRv8eRIejwNFcMqxmc54nmtzfOS
- vf3+qYecBp+aVBHQXycTqZiXDwW3Cs5cTChM//GSlmbcUKVdqWeA+3LPSuydIIMrsEB+
- q1rV5ytMHmwhHX17niRkrt4lA0p7by3+yJTr4CpUmls7/tfRMGt4+9e4kjWUuWR080Qf
- P3ot1hflAhk4tZAoWorHdR08BCgd3svaC365uWcMicY8oIDQ/xlHHpPBO6Z0nBwgzCNt
- WmZw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
- header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=yrfI34Q6
-Subject: Re: [Intel-wired-lan] [RFC PATCH v8 01/10] dpll: documentation on
- DPLL subsystem interface
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Content-Language: en-US
+To: intel-wired-lan@lists.osuosl.org
+References: <20230607112606.15899-1-marcin.szycik@linux.intel.com>
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20230607112606.15899-1-marcin.szycik@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686735601; x=1718271601;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=dLy4O6Uul/cbqW0rTEAUKNks1q6NbuP6jzScLCB4tas=;
+ b=Jsx1ETyopDlLPWbtcskJKDHCI6Hbd0kN17eNdDhmTY/2U2krpyTs6TPO
+ u6wl2aw3+bIk5DAQozUfASy/fi1W5mQi7wgLfoaWtmD+Bez6O4OjzR1hL
+ gx5bx+hsSMxPK1nKacZhdObrs6spe/aF+Stqm+3FmLHjKusMB8Y729tQg
+ g1UhsOotyHH/jbiFzKvJUgCqE+oHXOoFOPxp/8HMPjOVG0Ukt+M7kA4gJ
+ UsqzVHMaFgt6bsvJMTIvdLtObUNjiYO8IipkQpQiK51lcppu+eBz2bE3/
+ 0FajlcjBRHj9JWqaf/U8j4nIgiSSTzV9kgW30qKZjGAvXVnsiME8WSIOB
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Jsx1ETyo
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 0/6] ice: Add PFCP filter
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,78 +99,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
- javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
- anthony.l.nguyen@intel.com, netdev@vger.kernel.org, linux-clk@vger.kernel.org,
- lucien.xin@gmail.com, leon@kernel.org, corbet@lwn.net,
- linux-rdma@vger.kernel.org, masahiroy@kernel.org, linux-doc@vger.kernel.org,
- jesse.brandeburg@intel.com, vadfed@meta.com, intel-wired-lan@lists.osuosl.org,
- airlied@redhat.com, vadfed@fb.com, pabeni@redhat.com,
- ricardo.canuelo@collabora.com, arnd@arndb.de, idosch@nvidia.com,
- richardcochran@gmail.com, claudiajkang@gmail.com, kuniyu@amazon.com,
- jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com,
- nicolas.dichtel@6wind.com, linux-arm-kernel@lists.infradead.org,
- axboe@kernel.dk, sj@kernel.org, vadim.fedorenko@linux.dev, linux@zary.sk,
- gregkh@linuxfoundation.org, ogabbay@kernel.org, nipun.gupta@amd.com,
- linux-kernel@vger.kernel.org, andy.ren@getcruise.com, tzimmermann@suse.de,
- jonathan.lemon@gmail.com, saeedm@nvidia.com, davem@davemloft.net,
- milena.olech@intel.com, hkallweit1@gmail.com
+Cc: jiri@resnulli.us, netdev@vger.kernel.org, idosch@nvidia.com,
+ jesse.brandeburg@intel.com, simon.horman@corigine.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Jun 13, 2023 at 06:38:01PM CEST, kuba@kernel.org wrote:
->On Tue, 13 Jun 2023 11:55:11 +0200 Jiri Pirko wrote:
->> >> +``'pin': [{
->> >> + {'clock-id': 282574471561216,
->> >> +  'module-name': 'ice',
->> >> +  'pin-dpll-caps': 4,
->> >> +  'pin-id': 13,
->> >> +  'pin-parent': [{'pin-id': 2, 'pin-state': 'connected'},
->> >> +                 {'pin-id': 3, 'pin-state': 'disconnected'},
->> >> +                 {'id': 0, 'pin-direction': 'input'},
->> >> +                 {'id': 1, 'pin-direction': 'input'}],
->> >> +  'pin-type': 'synce-eth-port'}
->> >> +}]``  
->> >
->> >It seems like pin-parent is overloaded, can we split it into two
->> >different nests?  
->> 
->> Yeah, we had it as two and converged to this one. The thing is, the rest
->> of the attrs are the same for both parent pin and parent device. I link
->> it this way a bit better. No strong feeling.
->
->Do you mean the same attribute enum / "space" / "set"?
+On 07.06.2023 13:26, Marcin Szycik wrote:
+> Add support for creating PFCP filters in switchdev mode. Add pfcp module
+> that allows to create a PFCP-type netdev. The netdev then can be passed to
+> tc when creating a filter to indicate that PFCP filter should be created.
+> 
+> To add a PFCP filter, a special netdev must be created and passed to tc
+> command:
+> 
+> ip link add pfcp0 type pfcp
+> tc filter add dev eth0 ingress prio 1 flower pfcp_opts \
+> 1:123/ff:fffffffffffffff0 skip_hw action mirred egress redirect dev pfcp0
+> 
+> Changes in iproute2 are required to be able to add the pfcp netdev and use
+> pfcp_opts in tc (patchset will be submitted later).
 
-Yeah, that is my understanding. Arkadiusz, could you please clarify?
+iproute2 patch posted to netdev [1]. A little clarification: no changes are
+required to create pfcp type netdev - it can be created if pfcp module is
+loaded. Changes in iproute2 are only needed to use the newly introduced
+pfcp_opts.
 
+[1] https://lore.kernel.org/netdev/20230614091758.11180-1-marcin.szycik@linux.intel.com
 
->In the example above the attributes present don't seem to overlap.
->For user space its an extra if to sift thru the objects under
->pin-parent.
->
->> >Also sounds like setting pin attrs and pin-parent attrs should be
->> >different commands.  
->> 
->> Could be, but what't the benefit? Also, you are not configuring
->> pin-parent. You are configuring pin:pin-parent tuple. Basically the pin
->> configuration as a child. So this is mainly config of the pin itsest
->> Therefore does not really make sense to me to split to two comments.
->
->Clarity of the API. If muxing everything thru few calls was the goal
->we should also have very few members in struct dpll_pin_ops, and we
->don't.
-
-How the the internal kernel api related to the uapi? I mean, it's quite
-common to have 1:N relationsip between cmd and op. I have to be missing
-your point. Could you be more specific please?
-
-Current code presents PIN_SET command with accepts structured set of
-attribute to be set. The core-driver api is pretty clear. Squashing to
-a single op would be disaster. Having one command per attr looks like an
-overkill without any real benefit. How exactly do you propose to change
-this?
+> 
+> ICE COMMS package is required as it contains PFCP profiles.
+> 
+> Part of this patchset modifies IP_TUNNEL_*_OPTs, which were previously
+> stored in a __be16. All possible values have already been used, making it
+> impossible to add new ones.
+> 
+> Alexander Lobakin (2):
+>   ip_tunnel: use a separate struct to store tunnel params in the kernel
+>   ip_tunnel: convert __be16 tunnel flags to bitmaps
+> 
+> Marcin Szycik (2):
+>   ice: refactor ICE_TC_FLWR_FIELD_ENC_OPTS
+>   ice: Add support for PFCP hardware offload in switchdev
+> 
+> Michal Swiatkowski (1):
+>   pfcp: always set pfcp metadata
+> 
+> Wojciech Drewek (1):
+>   pfcp: add PFCP module
+> 
+>  drivers/net/Kconfig                           |  13 +
+>  drivers/net/Makefile                          |   1 +
+>  drivers/net/bareudp.c                         |  19 +-
+>  drivers/net/ethernet/intel/ice/ice_ddp.c      |   9 +
+>  .../net/ethernet/intel/ice/ice_flex_type.h    |   4 +-
+>  .../ethernet/intel/ice/ice_protocol_type.h    |  12 +
+>  drivers/net/ethernet/intel/ice/ice_switch.c   |  85 +++++
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |   2 +
+>  drivers/net/ethernet/intel/ice/ice_tc_lib.c   |  68 +++-
+>  drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   7 +-
+>  .../ethernet/mellanox/mlx5/core/en/tc_tun.h   |   2 +-
+>  .../mellanox/mlx5/core/en/tc_tun_encap.c      |   6 +-
+>  .../mellanox/mlx5/core/en/tc_tun_geneve.c     |  12 +-
+>  .../mellanox/mlx5/core/en/tc_tun_gre.c        |   9 +-
+>  .../mellanox/mlx5/core/en/tc_tun_vxlan.c      |   9 +-
+>  .../net/ethernet/mellanox/mlx5/core/en_tc.c   |  15 +-
+>  .../ethernet/mellanox/mlxsw/spectrum_ipip.c   |  62 ++--
+>  .../ethernet/mellanox/mlxsw/spectrum_ipip.h   |   2 +-
+>  .../ethernet/mellanox/mlxsw/spectrum_span.c   |  10 +-
+>  .../ethernet/netronome/nfp/flower/action.c    |  12 +-
+>  drivers/net/geneve.c                          |  46 ++-
+>  drivers/net/pfcp.c                            | 303 ++++++++++++++++++
+>  drivers/net/vxlan/vxlan_core.c                |  14 +-
+>  include/linux/netdevice.h                     |   7 +-
+>  include/net/dst_metadata.h                    |  10 +-
+>  include/net/flow_dissector.h                  |   2 +-
+>  include/net/gre.h                             |  59 ++--
+>  include/net/ip6_tunnel.h                      |   4 +-
+>  include/net/ip_tunnels.h                      | 106 +++++-
+>  include/net/pfcp.h                            |  83 +++++
+>  include/net/udp_tunnel.h                      |   4 +-
+>  include/uapi/linux/if_tunnel.h                |  36 +++
+>  include/uapi/linux/pkt_cls.h                  |  14 +
+>  net/bridge/br_vlan_tunnel.c                   |   5 +-
+>  net/core/filter.c                             |  20 +-
+>  net/core/flow_dissector.c                     |  12 +-
+>  net/ipv4/fou_bpf.c                            |   2 +-
+>  net/ipv4/gre_demux.c                          |   2 +-
+>  net/ipv4/ip_gre.c                             | 148 +++++----
+>  net/ipv4/ip_tunnel.c                          |  92 ++++--
+>  net/ipv4/ip_tunnel_core.c                     |  83 +++--
+>  net/ipv4/ip_vti.c                             |  43 ++-
+>  net/ipv4/ipip.c                               |  33 +-
+>  net/ipv4/ipmr.c                               |   2 +-
+>  net/ipv4/udp_tunnel_core.c                    |   5 +-
+>  net/ipv6/addrconf.c                           |   3 +-
+>  net/ipv6/ip6_gre.c                            |  87 ++---
+>  net/ipv6/ip6_tunnel.c                         |  14 +-
+>  net/ipv6/sit.c                                |  47 ++-
+>  net/netfilter/ipvs/ip_vs_core.c               |   6 +-
+>  net/netfilter/ipvs/ip_vs_xmit.c               |  20 +-
+>  net/netfilter/nft_tunnel.c                    |  45 +--
+>  net/openvswitch/flow_netlink.c                |  55 ++--
+>  net/psample/psample.c                         |  26 +-
+>  net/sched/act_tunnel_key.c                    |  39 +--
+>  net/sched/cls_flower.c                        | 134 +++++++-
+>  56 files changed, 1501 insertions(+), 469 deletions(-)
+>  create mode 100644 drivers/net/pfcp.c
+>  create mode 100644 include/net/pfcp.h
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
