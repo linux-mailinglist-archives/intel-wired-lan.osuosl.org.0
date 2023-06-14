@@ -2,109 +2,109 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C9827308EC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 22:08:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F1AD67308ED
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jun 2023 22:08:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2C6B8418AB;
-	Wed, 14 Jun 2023 20:08:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C6B8418AB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 954CA418B0;
+	Wed, 14 Jun 2023 20:08:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 954CA418B0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686773313;
-	bh=HoqdhooOc7roN9xmi6NKeeXPhY2jyQsHsfy3nRqwlhk=;
+	s=default; t=1686773317;
+	bh=kItOhGv1LuVVYWCM0ozsSllwFVfO7afzuGIo2rbsC/o=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=RZ+bGwva9B9BYQWGZZslIyfl+wi2HhviOYb6q8ambL3cTg8uGmX3J1Rl3GuiMVPhD
-	 p6rncqByPbm042WfO25WOcfTnxhGdyZDNxAu3pWBVjheI2jvKuk8E4FP0pDF8quljo
-	 D0kaeGbnC5xysTyjkMVHpeGVRZs9ttDRW3Hqt7D3brxq3/38TlXSjMHHXKPmgnHMM9
-	 BUNGYzwL+tf3jm24WpTPWuM5HD8VjSTvZGjDW+QDcgalofVn7Evw9A8I3kSpd9eusL
-	 Ct8KPCeo4WZIkwhztGyDydMR+2z09Hi9ex+zn1/QBm2cqIr8Lv/zstMihGWUQmdT8u
-	 Ne2LmvYPM2iZw==
+	b=Z9p5Ze5tecUetcEQreJB1/gwDZNVSwrjGVx7SW5RhYJeM0eitWwKcZzHvTd5iToNr
+	 cxtLSz1JV56IYatWQ2PT4c0cvx1KBTYBj12gMeLzFLWHLS7K7/CkapTz2hbOp7h5Ce
+	 aO/UkAEuTYuz/pVDSbRecQhX8WO2G9VNxv+lZM2PwMPKamH2eM3g//MvyNsINJGTaQ
+	 C8gex2YiZCKnLaxjL8/5VwBqMWM0lwLx3oBwYd7V/6qWkx6MELWN1YJOJkWKIQ/6hV
+	 uTfHF8LiSY1dtDn6k+tG+n4DlSHGL6YIzNwjZcm8KF9N3PcNfXEUSBgccSkhBJ6rZY
+	 PkuSWULuQq/6w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h63MyV15X68B; Wed, 14 Jun 2023 20:08:32 +0000 (UTC)
+	with ESMTP id E9IcnJuckzK6; Wed, 14 Jun 2023 20:08:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DA0F0415BF;
-	Wed, 14 Jun 2023 20:08:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA0F0415BF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 38C96408C8;
+	Wed, 14 Jun 2023 20:08:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 38C96408C8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E95F21BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:44:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 526FC1BF966
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:45:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CC77E41D9E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:44:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC77E41D9E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 272DE41AE9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:45:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 272DE41AE9
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s91SJ9zZi7UQ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Jun 2023 16:44:16 +0000 (UTC)
+ with ESMTP id aqu3Mo8sonlC for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Jun 2023 16:45:50 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B12D741B97
-Received: from mail-oo1-xc30.google.com (mail-oo1-xc30.google.com
- [IPv6:2607:f8b0:4864:20::c30])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B12D741B97
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:44:16 +0000 (UTC)
-Received: by mail-oo1-xc30.google.com with SMTP id
- 006d021491bc7-559b0ddcd4aso732952eaf.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:44:16 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F48041793
+Received: from mail-oa1-x30.google.com (mail-oa1-x30.google.com
+ [IPv6:2001:4860:4864:20::30])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F48041793
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 16:45:49 +0000 (UTC)
+Received: by mail-oa1-x30.google.com with SMTP id
+ 586e51a60fabf-1a98cf01151so266351fac.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jun 2023 09:45:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686761055; x=1689353055;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20221208; t=1686761149; x=1689353149;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eW98Ee4r1mG1kWTj0StXi/qELeSfpc9yO8OERuzyI3M=;
- b=WqTBlqrWLEI725Bcy5SfZbZHwS9UyS4IpABpiyWxWWVjWceEy1x5pDrUQS7spvqeeQ
- 3fL0pq1Qz+dZj+nd2ViLDkzBiEruNuXgeCbI+i5AeKhCWocSafO4MTR+UzcFNeLp2rs+
- RFs+6FO393owzpcL4ooHcQyeDW8liB7VB7W1JwSvQS6fCRyqZLITHu8og1ZZxEJ9AoXS
- xkd9x2kH3Cq+gluG1MZQk0Zr38RxVySo9c0RdOv6ldFwUqVbnMCBj2LtQ74LiEZeCuBP
- zKzx/WvFpaK28KSQNBQEhNMBMlhqgx71XqWx0CB7PZNvhQkwWmI2YJQEE6K/CrjuwCSy
- 3Z3A==
-X-Gm-Message-State: AC+VfDwHgqhbNT263bHaSKIrwyvLG/YGgCeWjcu1OBAUCNgmSb7bBOL/
- t81oHfRAF98gwfr01iJxTRWzXQ==
-X-Google-Smtp-Source: ACHHUZ5PjeBHHykPcFovNV0N4IrezoWKnEU/yL61N0/nH9sOECRq+oEd/S9d7k6BrAlpXfGX1jnn9A==
-X-Received: by 2002:a4a:d542:0:b0:55a:7bfe:2df3 with SMTP id
- q2-20020a4ad542000000b0055a7bfe2df3mr9438859oos.8.1686761055610; 
- Wed, 14 Jun 2023 09:44:15 -0700 (PDT)
+ bh=pI6QVNoo9K2g9uwZ4VUxHno7kwms3nGxJzTsQ2Z92EU=;
+ b=gDqdfI/5g4DDwEQV30DWZSZV8r1DjPsSczt6WfQUGXDtPbAa4T5G0iR1pO3fPqS3tP
+ 5PzPWRtTUm4RQB+yb0n69DuiZE4vZgMBDru5+MDkviYnbOU+lCIcR9rT7C0om7hSssFp
+ JhkQ2qHxa0VGfYpSz+bVt9najd9wfPiGkDZNFNq7RaIqwEBfDBPcOvnpVQ7+1+MXM3s+
+ xuMg726FU4xJqNkRQyk16g8uwSu8PYnNSfFJAo6tWshgzwfj9Suu62C+UyQU0Cjedvpn
+ weAMBuyIgPgxQP9CGhDYNg81Lq095yPndBBvKBHW/pEqcIGn0HA1g1jn9gDXpryj/1wf
+ LWpQ==
+X-Gm-Message-State: AC+VfDyibWKU+x86W9DpAdGhmsm6k3JLYyO9V11rePDE9NBkborPSKLT
+ oYxpAaPmGoFeoWlSh4uroauGaQ==
+X-Google-Smtp-Source: ACHHUZ7aZxXTxhB8lC3K3k64H4c3mdgU54OpyD9XFiYMm/doS1FVq6CBIp+TOcFfSSshLcVSAuqq/w==
+X-Received: by 2002:a05:6870:772d:b0:184:39e3:9c85 with SMTP id
+ dw45-20020a056870772d00b0018439e39c85mr11654364oab.29.1686761148899; 
+ Wed, 14 Jun 2023 09:45:48 -0700 (PDT)
 Received: from ?IPV6:2804:14d:5c5e:44fb:90ea:5d38:822c:1759?
  ([2804:14d:5c5e:44fb:90ea:5d38:822c:1759])
  by smtp.gmail.com with ESMTPSA id
- s7-20020a4ac807000000b005421d52de9csm5170724ooq.45.2023.06.14.09.44.11
+ le13-20020a0568700c0d00b001a8f6be7debsm614480oab.28.2023.06.14.09.45.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Jun 2023 09:44:15 -0700 (PDT)
-Message-ID: <55cfe0a4-3874-5683-320e-0dec70bd2034@mojatatu.com>
-Date: Wed, 14 Jun 2023 13:44:09 -0300
+ Wed, 14 Jun 2023 09:45:48 -0700 (PDT)
+Message-ID: <02c5d2f3-225f-fd56-6540-00a80326d07f@mojatatu.com>
+Date: Wed, 14 Jun 2023 13:45:42 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
+Content-Language: en-US
 To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
 References: <20230613215440.2465708-1-vladimir.oltean@nxp.com>
- <20230613215440.2465708-9-vladimir.oltean@nxp.com>
-Content-Language: en-US
+ <20230613215440.2465708-10-vladimir.oltean@nxp.com>
 From: Pedro Tammela <pctammela@mojatatu.com>
-In-Reply-To: <20230613215440.2465708-9-vladimir.oltean@nxp.com>
+In-Reply-To: <20230613215440.2465708-10-vladimir.oltean@nxp.com>
 X-Mailman-Approved-At: Wed, 14 Jun 2023 20:08:26 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mojatatu-com.20221208.gappssmtp.com; s=20221208; t=1686761055; x=1689353055; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=mojatatu-com.20221208.gappssmtp.com; s=20221208; t=1686761149; x=1689353149; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=eW98Ee4r1mG1kWTj0StXi/qELeSfpc9yO8OERuzyI3M=;
- b=uEqlUerN8HSYli1RVOqAqqUZNeInvQdJ/+q219nQsEmws2EZzNRtB/3nFpiaBGuCE8
- YO4AVUlkY+OhQ0R8iYtW8m95lIqIvdZDFPdNJa9LvBY5lQjx9nqSRkS5cGdLbZm4wG1E
- 4BI+4kWmWqfndU2vxidVRTOZznZ6lp2rKYtbKYj3Kq8PHj6QLZKy41eJlk08b3k2+Pq4
- z20xFg7ePk+lwVQC1eCb3HYhGTiu+DZ+LpS7l51oJoM8/li5jKfCClhCDNQdGsiqAl7g
- k0vnevhYlvBVKkLkFBJnt1FohohBwIehDvi0+28MMeyWds4wRN6zWU9d67piONZUqEqW
- zaTA==
+ bh=pI6QVNoo9K2g9uwZ4VUxHno7kwms3nGxJzTsQ2Z92EU=;
+ b=3paQk9bb5D5ndexZa/YdV9X07Z9yzNPgfgLt7KTRPie2JDD66FEj9CxqRyIw/7gRbk
+ LU1pP1dkyRj20Rt+ONd/mOwo6X3OCFs8zF+5k45ZIMIcgKXQU8S/Zc9SMNacJ1uEdxz5
+ B4QAvgM6OwgihGjjJ9n9fOroxmslA+N1pFbhNry6hBTVqILLqn7j6kZmhQBQDU4wGhgX
+ MZEW/eLCWelfb7deBGnr3pR9zelSQ1z+1wE4JZFQqzQXcEtM48zLC3D77PQXH6tzEny4
+ NS2XTQVWrmBsUUVatLfkfkFX9+XH0mm/NwK77+ZR/Qvd+pRXvD2j7jfk6my8IVb15vqY
+ d3lA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=mojatatu-com.20221208.gappssmtp.com
  header.i=@mojatatu-com.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=uEqlUerN
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 8/9] selftests/tc-testing:
- test that taprio can only be attached as root
+ header.s=20221208 header.b=3paQk9bb
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 9/9] selftests/tc-testing:
+ verify that a qdisc can be grafted onto a taprio class
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,43 +130,41 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 13/06/2023 18:54, Vladimir Oltean wrote:
-> Check that the "Can only be attached as root qdisc" error message from
-> taprio is effective by attempting to attach it to a class of another
-> taprio qdisc. That operation should fail.
-> 
-> In the bug that was squashed by change "net/sched: taprio: try again to
-> report q->qdiscs[] to qdisc_leaf()", grafting a child taprio to a root
-> software taprio would be misinterpreted as a change() to the root
-> taprio. Catch this by looking at whether the base-time of the root
-> taprio has changed to follow the base-time of the child taprio,
-> something which should have absolutely never happened assuming correct
-> semantics.
+> The reason behind commit af7b29b1deaa ("Revert "net/sched: taprio: make
+> qdisc_leaf() see the per-netdev-queue pfifo child qdiscs"") was that the
+> patch it reverted caused a crash when attaching a CBS shaper to one of
+> the taprio classes. Prevent that from happening again by adding a test
+> case for it, which now passes correctly in both offload and software
+> modes.
 > 
 > Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+
+Other than the comment below,
 
 Reviewed-by: Pedro Tammela <pctammela@mojatatu.com>
 
 > ---
 > v1->v2: patch is new
 > 
->   .../tc-testing/tc-tests/qdiscs/taprio.json    | 48 +++++++++++++++++++
->   1 file changed, 48 insertions(+)
+>   .../tc-testing/tc-tests/qdiscs/taprio.json    | 50 +++++++++++++++++++
+>   1 file changed, 50 insertions(+)
 > 
 > diff --git a/tools/testing/selftests/tc-testing/tc-tests/qdiscs/taprio.json b/tools/testing/selftests/tc-testing/tc-tests/qdiscs/taprio.json
-> index a44455372646..58d4d97f4499 100644
+> index 58d4d97f4499..47692335bcf1 100644
 > --- a/tools/testing/selftests/tc-testing/tc-tests/qdiscs/taprio.json
 > +++ b/tools/testing/selftests/tc-testing/tc-tests/qdiscs/taprio.json
-> @@ -131,5 +131,53 @@
->           "teardown": [
+> @@ -179,5 +179,55 @@
+>               "$TC qdisc del dev $ETH root",
 >               "echo \"1\" > /sys/bus/netdevsim/del_device"
 >           ]
 > +    },
 > +    {
-> +        "id": "39b4",
-> +        "name": "Reject grafting taprio as child qdisc of software taprio",
+> +        "id": "a7bf",
+> +        "name": "Graft cbs as child of software taprio",
 > +        "category": [
 > +            "qdisc",
-> +            "taprio"
+> +            "taprio",
+> +            "cbs"
 > +        ],
 > +        "plugins": {
 > +            "requires": "nsPlugin"
@@ -175,10 +173,10 @@ Reviewed-by: Pedro Tammela <pctammela@mojatatu.com>
 > +            "echo \"1 1 8\" > /sys/bus/netdevsim/new_device",
 > +            "$TC qdisc replace dev $ETH handle 8001: parent root stab overhead 24 taprio num_tc 8 map 0 1 2 3 4 5 6 7 queues 1@0 1@1 1@2 1@3 1@4 1@5 1@6 1@7 base-time 0 sched-entry S ff 20000000 clockid CLOCK_TAI"
 > +        ],
-> +        "cmdUnderTest": "$TC qdisc replace dev $ETH parent 8001:7 taprio num_tc 8 map 0 1 2 3 4 5 6 7 queues 1@0 1@1 1@2 1@3 1@4 1@5 1@6 1@7 base-time 200 sched-entry S ff 20000000 clockid CLOCK_TAI",
-> +        "expExitCode": "2",
-> +        "verifyCmd": "$TC -j qdisc show dev $ETH root | jq '.[].options.base_time'",
-> +        "matchPattern": "0",
+> +        "cmdUnderTest": "$TC qdisc replace dev $ETH handle 8002: parent 8001:8 cbs idleslope 20000 sendslope -980000 hicredit 30 locredit -1470",
+> +        "expExitCode": "0",
+> +        "verifyCmd": "$TC -d qdisc show dev $ETH",
+> +        "matchPattern": "qdisc cbs 8002: parent 8001:8 hicredit 30 locredit -1470 sendslope -980000 idleslope 20000 offload 0",
 > +        "matchCount": "1",
 > +        "teardown": [
 > +            "$TC qdisc del dev $ETH root",
@@ -186,11 +184,12 @@ Reviewed-by: Pedro Tammela <pctammela@mojatatu.com>
 > +        ]
 > +    },
 > +    {
-> +        "id": "e8a1",
-> +        "name": "Reject grafting taprio as child qdisc of offloaded taprio",
+> +        "id": "6a83",
+> +        "name": "Graft cbs as child of offloaded taprio",
 > +        "category": [
 > +            "qdisc",
-> +            "taprio"
+> +            "taprio",
+> +            "cbs"
 > +        ],
 > +        "plugins": {
 > +            "requires": "nsPlugin"
@@ -199,10 +198,13 @@ Reviewed-by: Pedro Tammela <pctammela@mojatatu.com>
 > +            "echo \"1 1 8\" > /sys/bus/netdevsim/new_device",
 > +            "$TC qdisc replace dev $ETH handle 8001: parent root stab overhead 24 taprio num_tc 8 map 0 1 2 3 4 5 6 7 queues 1@0 1@1 1@2 1@3 1@4 1@5 1@6 1@7 base-time 0 sched-entry S ff 20000000 flags 0x2"
 > +        ],
-> +        "cmdUnderTest": "$TC qdisc replace dev $ETH parent 8001:7 taprio num_tc 8 map 0 1 2 3 4 5 6 7 queues 1@0 1@1 1@2 1@3 1@4 1@5 1@6 1@7 base-time 200 sched-entry S ff 20000000 flags 0x2",
-> +        "expExitCode": "2",
-> +        "verifyCmd": "$TC -j qdisc show dev $ETH root | jq '.[].options.base_time'",
-> +        "matchPattern": "0",
+> +        "cmdUnderTest": "$TC qdisc replace dev $ETH handle 8002: parent 8001:8 cbs idleslope 20000 sendslope -980000 hicredit 30 locredit -1470",
+> +        "expExitCode": "0",
+> +        "verifyCmd": "$TC -d qdisc show dev $ETH",
+> +        "matchPattern": "qdisc cbs 8002: parent 8001:8 hicredit 30 locredit -1470 sendslope -980000 idleslope 20000 offload 0",
+
+Seems like this test is missing the 'refcnt 2' in the match pattern
+
 > +        "matchCount": "1",
 > +        "teardown": [
 > +            "$TC qdisc del dev $ETH root",
