@@ -1,181 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CCC5731C9D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 17:28:22 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05099731CEE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 17:45:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DE34041951;
-	Thu, 15 Jun 2023 15:28:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DE34041951
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9269483A90;
+	Thu, 15 Jun 2023 15:45:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9269483A90
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686842900;
-	bh=cM5twcy42d6BYXvSu9tlykWE9VbFKxt8JiLRexkF2lg=;
+	s=default; t=1686843957;
+	bh=cnJ2OhktKmNbA5TZJaeYzWzUrpmYmX+AhR6M0895Rxo=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Z9MrkM86eRCMyy13N0fbv6M+wW1JDVZ0uG4T95Cp6gQoxp+DobstqOlsl6etKgJv4
-	 6/DC2KhBlC0YjS/PCQL+3pQ5TV0juDFZB8mGz+u4ucsdCUX0EtgOkayK0LNKqiv1eJ
-	 aTLQ/Aab9JnBya463/u57+RWkZ3eWsoHv+b8nqkorbR1Zfk8JOf78/MD8UmwJLYQic
-	 83KFVx6keuIs67TSJccFax2grbs2vgFsIBYYpW8xS0wkD5EjF4upYEVZKmCJWpbLjc
-	 gKL+2TQ+4Ojar9LAWE71syG0soCni9/orR9KfLmzQgKAxWTXvCj7KzPz2w437pppqJ
-	 qmUslOwPMUNeQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jMYIx4BLYmU9; Thu, 15 Jun 2023 15:28:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BCCA6404D3;
-	Thu, 15 Jun 2023 15:28:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BCCA6404D3
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 94E711BF296
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:28:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7A99683ED1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:28:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A99683ED1
+	b=GyFt3m0o9GgU5YSEBpCDbL9wn5pl7EOjyrWwSKqTZeBLvkSIGLeN73NNbNoB/UmVw
+	 6rVyYYcI/oGuDtlfTJO3Q+1ek1GaUodjXgRrTFc7oBrWbZql1jvvdZGPgwj+MUYQ1l
+	 jLAJnnTzJY9zQKsac9BVMwEO1JaXKhTK+nS4U+kEgRqy/sJcofOdqlgqHtmLDFKNcX
+	 zrYXi7rAZOxRy9+RIAvOm+3AhMj0Wn+la9PLk4DP1ox2t6uuXTlJVkHafxMxbOHPQ2
+	 /mjfbIWqHgJpYCCpuyf9FfmW9hVMvi3KQRH0l8uB78fkwYteDMwnCqPvu2ohU4ftlw
+	 O4NfjGNaU/qAA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0SJ9huh_8jwY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 15:28:13 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QwtRy09KSmhx; Thu, 15 Jun 2023 15:45:56 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 56989839E5;
+	Thu, 15 Jun 2023 15:45:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56989839E5
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B7EBE1BF969
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:45:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8D36C42029
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:45:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D36C42029
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ml_byzVDjJYE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 15:45:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 793D483ED0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 793D483ED0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:28:13 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="339292148"
-X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="339292148"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2023 08:28:12 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 390F042026
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 390F042026
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 15:45:49 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="424866307"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="424866307"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2023 08:30:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="886720882"
-X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="886720882"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga005.jf.intel.com with ESMTP; 15 Jun 2023 08:28:11 -0700
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="802438122"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="802438122"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by FMSMGA003.fm.intel.com with ESMTP; 15 Jun 2023 08:30:16 -0700
 Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Thu, 15 Jun 2023 08:28:11 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ 15.1.2507.23; Thu, 15 Jun 2023 08:30:13 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
  orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Thu, 15 Jun 2023 08:28:11 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.108)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Thu, 15 Jun 2023 08:30:13 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.107)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Thu, 15 Jun 2023 08:28:10 -0700
+ 15.1.2507.23; Thu, 15 Jun 2023 08:30:13 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HGwAKxDGTSEynZC3iig7UFS3smYCdE8ERBwAB7CecpPDWVHJkrmVqHz73FQ5ItgzQI+HT06rCqKRnhXfiGqH2fDoLVNGUqKUwRm55BF+vNHCKRv1P2Gy/+iO/S3s4TdCwUpXRle/dmunvR6G/nTP0jRs2dZH+MhIfl4GBpsubSMm+8FQb6TczuqweNejOXKr2lTFGAGSrL+8NBhbo7x4SLFALYywY9qTei85sAxTF4qjhNpo8IuBJ8AQZRLdEoY2aiQ31/9lyeNVTCD8hD+MDvoKYE97q31BDgXjTuS1Rryb7rRINmJEveiXKAuciSxp+xAqHhxpa7RpuRtnI2iJDA==
+ b=Pmg5lFHf0Rc788ALT+gcYl77n3asRMwrCLtC8wAtMk1RDu0qrndZkQUVda3IWKUiZTAEebL/V1UzmrLQo3Po0vUnFap1cH/DAkB3TTs+/be3SI+NFJ4euZR2O9ikCjzPaUzc83A0oOVPu/64CBkyYC7y2mPWla/9zJGjYhezU6BtlPvDSU3bY5N9t5JyCu7fzvXNPGoMWBQdCgvmnfgeIxxee1IH4SgFLwhKs9VkE1xCiAvLlB/buUIbiqw+C8UyEcHNGuKgsHB9Y3Y0UOE19o/QckDmidRdRfpSa4gCLhi6fS5RMgeUQR7OCajvwUvn+1AN8DxJLg6gaL7Ba+yRRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lRjEWsCM5VafbRwm8mlSZwxLg8tEoFIepOv33vTeoag=;
- b=X9uLUwfSMVArkhkBxXj2MQHJfM/jE4eYMloC2j5Ad1ML8hI5ZFCyVuR9dz4TVhHh+Gn/E8wA21GCIjfkHY6F2E91xfTZMxYYAJKjPVMefx/C/ad6+Zzx8Dc/Ooy+3pdUf4L4SBUXKX0JzdUOyBCkGswHd1FwHJpvC2OOAyLfGgvxPUSNO3Ke3K0rte8dXE5Es1dK3txSYmk9URJeM/bXDicxtwGrP9GKV5BVbreRGJ2BQLV2Blgd+eRQs7BfBx8yPjWrNW3wqVW4KGFsPCTlZUxFz0q0w9zayIicygzGe4ngM2VbEXmV/a5FaMeS0FE/4ueBdP6xCXxfi1VJi4UtUQ==
+ bh=GS+tSQY9z1HiL+3QrJBLHuwfAXopJl9n5AuV4g5pyv8=;
+ b=ibTKH9wvd4veS14K1BYZreG+yB1lraGR59AyQpBki7pN6vCbZPYNQDt+3xfP/dZ3rBwt155fSbtsKWCu/ic+hfoE9FkG2Kk+dOcpi8NphgdadN7qopaFFmcYh6+RhFlFmR+Ec0ygPfRU/eys39iUI4xvz8G+2KC7WudC1wNGkf98muJ/9O3kg9+7CRMv4A/ZmmbWQw8fj8OWonjOoGDzBNdU0L84getGtoXUmpZrGhsqpNCXAm/vg3JnWfaTXefCek6+MvDjG5rEwWDugkfCdxiXgEB1ordxbMNK4EMwSkVcANChi1l4jq6+RFQyrDyWxmpK6xp8IRBd7apfeKiiPw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from BL0PR11MB3521.namprd11.prod.outlook.com (2603:10b6:208:7b::32)
- by MN0PR11MB6279.namprd11.prod.outlook.com (2603:10b6:208:3c1::11)
+ by SJ2PR11MB8449.namprd11.prod.outlook.com (2603:10b6:a03:56f::14)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6500.27; Thu, 15 Jun
- 2023 15:28:09 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.29; Thu, 15 Jun
+ 2023 15:28:46 +0000
 Received: from BL0PR11MB3521.namprd11.prod.outlook.com
  ([fe80::2134:60a2:3968:7298]) by BL0PR11MB3521.namprd11.prod.outlook.com
  ([fe80::2134:60a2:3968:7298%2]) with mapi id 15.20.6477.028; Thu, 15 Jun 2023
- 15:28:09 +0000
+ 15:28:46 +0000
 From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
 To: "Palczewski, Mateusz" <mateusz.palczewski@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v10 3/5] Revert "iavf: Do not
- restart Tx queues after reset task failure"
-Thread-Index: AQHZl741hqwJ3j/cekCtJgR40S7lwa+MDGhA
-Date: Thu, 15 Jun 2023 15:28:08 +0000
-Message-ID: <BL0PR11MB3521DC836A146504F2449A328F5BA@BL0PR11MB3521.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v10 2/5] Revert "iavf: Detach
+ device during reset task"
+Thread-Index: AQHZl74v4rLKj1m2iEGJZxKrUpAOvK+MDJZQ
+Date: Thu, 15 Jun 2023 15:28:46 +0000
+Message-ID: <BL0PR11MB35213FC9AABB29B5C52E64CC8F5BA@BL0PR11MB3521.namprd11.prod.outlook.com>
 References: <20230605145226.1222225-1-mateusz.palczewski@intel.com>
- <20230605145226.1222225-4-mateusz.palczewski@intel.com>
-In-Reply-To: <20230605145226.1222225-4-mateusz.palczewski@intel.com>
+ <20230605145226.1222225-3-mateusz.palczewski@intel.com>
+In-Reply-To: <20230605145226.1222225-3-mateusz.palczewski@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL0PR11MB3521:EE_|MN0PR11MB6279:EE_
-x-ms-office365-filtering-correlation-id: 580159f0-3a68-4853-184e-08db6db51fa1
+x-ms-traffictypediagnostic: BL0PR11MB3521:EE_|SJ2PR11MB8449:EE_
+x-ms-office365-filtering-correlation-id: 3f9284d4-5ba0-4a33-fed0-08db6db535b7
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: VmA0x3qlFYsZfS97YIgyBr9+Vzl3TP4PJWhp75Q7ztgrvSnOhjtGpGHSHhePfeZIHMPqhwR2ZD3XPDkUPosgB1k/O58U1Fzih5k6YNcqn6KGRpphnw0WEYJUt5F36yXSGUpj2aMt/HQxV2iL8mt+nyvGuEjdEpY4SdsmYaCVjFGkN9cpQxT8sKOr/hFLOEh/U032hpk2RJucuvZOAXWiIxfRwH6ZHw8rSEA09kOZywOE6iZwOZLF9NjcqznBgbjXYXkTdqSyQhh9PORAPvZ5fBku8S25tY71wRmzhBVRrA+NZueYtYargNL0aAX1MyAniUB9qxl/rrKrc9KceSEQw5WO5HY+2JQ5Ld0vSKMvrR4x9TEoSie5d7WeNj/L8fOQsWV8gUl7rbr8y1NaCaofMibxA6HeAuMSLRKXUU2R4fQ0vekXZc27bBldmto4ZnHmt3TNe9x257EOW7kR+2Jz05JCjH34D0kAd7RFCtouYk3iZFohW2LJKbsJ/MBGYnBa7N48kH24zdsBK2AwnoyTOR6NC5JOXTPf81CR4+8+Yyaszk+EG9sXe/j0jAsSiwVXVg3iDRjlQsmodoGnAFOurJ3w5XSDgpn/ovUBlio4TIM=
+x-microsoft-antispam-message-info: tk2A81paznsK1XLh3yqkVX1aoqdCt553YpdqFRLXTe2kJrzq/zojpNZ9tHaAt3WULo6VZvH7IEPTPnJk9awAKPDB24r6oOF7bEgliKMg2pNob/Ol5XLLvrKs8xvMxW+IBdL5A8croAMKhkCgCG5w/EMajiqw/eIyMc6puV6wudrbolIodXYh6Bdlk9VMMAvDHdootbv+FqN0iehu9kQkECwt187ev5Rp3wqr9kZMyfooD8wwPfKTBI7NGsF3/dIkwxV0sHkDTYMQ2i/4Hyn0lsXAN4Y5Zk6nTzwH4AbpGBELGWeCH/97l2I68RCVhNdTJBfz2ij4BWwL21WgWwV/HryEk8XOKFgd8wzjggzqF2qb8ArT0DicqBj82g7F+kvktfupaEGwFKyfH8Vet45mv3Mb36BcYDZWBqZLoIWNPZOhn3S7KJAIeOg/npusbndUQsz1uGrla+cADcDWLMgl+mSCOLSMFbKf283Wv56STSw6Zs/j2PH4kclWm8pqfqhR+RU0HYPI679Y5LxwqZPPXkO4lZF7Jriix1D/peRnlvucSOl3ttXfDPHjlvNcYBxdPLZ6TK4QDZLp+SzErWRngo403vgo+8u2yD+94HUYj+Q=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BL0PR11MB3521.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(39860400002)(396003)(346002)(136003)(366004)(451199021)(66574015)(2906002)(83380400001)(33656002)(86362001)(38070700005)(38100700002)(122000001)(82960400001)(55016003)(8936002)(8676002)(7696005)(966005)(316002)(41300700001)(52536014)(5660300002)(478600001)(110136005)(66946007)(66556008)(76116006)(66476007)(64756008)(66446008)(4326008)(71200400001)(53546011)(26005)(9686003)(6506007)(186003);
+ SFS:(13230028)(396003)(39860400002)(346002)(376002)(366004)(136003)(451199021)(38070700005)(33656002)(86362001)(66556008)(66476007)(64756008)(66446008)(4326008)(110136005)(478600001)(76116006)(66946007)(966005)(316002)(7696005)(55016003)(8676002)(5660300002)(52536014)(8936002)(41300700001)(82960400001)(38100700002)(2906002)(122000001)(186003)(26005)(9686003)(53546011)(71200400001)(83380400001)(6506007)(66574015);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?nitRHiHWy6pYRRS+WAv1mzu4EMZyNz+86j17q7mNcUUbqJEbbN1JZh6x+V?=
- =?iso-8859-2?Q?XXEAMVbRaU12MxTegD0VRfetorpjXDX88vcXVVal7SOAcuJkuO6AI2pO5d?=
- =?iso-8859-2?Q?EQhV0t2WcTLE6x1jSryIhZMJy3n/SIF5NEfxcHHRGGPGWYVQ8+vzhqyrmP?=
- =?iso-8859-2?Q?QdUL9crUBJg0GF56UYHpkpQqBoWLmNn2vtWL0bQbUiTIxtKszsuxvmzuK0?=
- =?iso-8859-2?Q?WcIB56hVzsJ4UrQiiFn4ZcVzqBmrg08vU/OU4kAmAWV+A6pC7FSJAxHbsC?=
- =?iso-8859-2?Q?2pUOe7EoU0THe/+i7p2ExziUIotlxBtLgA1gql7KBc8vtl94ymaIN9DaKx?=
- =?iso-8859-2?Q?NcIkDFQv5SI7lxkwgcihG3FFcvmR5TT/fGlRv81cF7NEPB52SKwBU0aWHb?=
- =?iso-8859-2?Q?SKbTt6lSiCi9waoNPfZ+NqIlLKaQ3xoBty0GRmPxtXtHq5humMUjgKmTG6?=
- =?iso-8859-2?Q?wQx+Hm7j40B6R53IgLevD/UNzx5hkAaB5PRzOMFTjzCHdUxFMoSbqOq3wF?=
- =?iso-8859-2?Q?3VXaWN6SS1KAx3d9SMCd6WMHWk/6I1CpWxhhOZ5rXjnMW9yjYXfYEdS+mp?=
- =?iso-8859-2?Q?Dfq7eZjRmJTK3zCDaYqEeBDI8CyxpyySyXqtO67JCHa2JSfLi3mwefp4nh?=
- =?iso-8859-2?Q?OsxumWgKIf5MmKIzpW+f9n6iR59L/8JKzH6q/VaMic52u0h4FIhTjN1ek1?=
- =?iso-8859-2?Q?5fk8BdEbfC7MlytHmfbenBMZhRpovF9hoMKfjRoFD0dNeKYaLjt+S1TbAV?=
- =?iso-8859-2?Q?zxWAYiVwa6JjU0P8/cfomb+HvVeNz4Iq9ePkZFy342zIMsFOSiIP8iFz2P?=
- =?iso-8859-2?Q?+R5K/dREvOhbnUGMCm0SLoEJSr8lu5sbDm4W800UezhsGhgha9nJ6iMcTf?=
- =?iso-8859-2?Q?3aruq4X3LKoI7F9k2uX9sOwznmTCZV3AzwYi5EwLe8fnbVokvpPiQt16Cq?=
- =?iso-8859-2?Q?rwWUIS2tBLNaI1ym5zXGFiQ4xGCMOg+mF3aOFXdFtzKpxQvCupUN0qt3kk?=
- =?iso-8859-2?Q?hhctGDF+6jF1Fjf/f/vUw56a6/o83t7TCUPQ9XiZth7tur5u8H++Cj923l?=
- =?iso-8859-2?Q?DdlN9LEPSQkkA8PApkWQ/6D+28YG+cbqZk0QN/oVErfcoibW1w+o5CpkiM?=
- =?iso-8859-2?Q?fTdk7to46TuPvOk73rYjHPL2R2yPEt8Zhco9PGtEWRTY8Y8JNvmiUZjqkj?=
- =?iso-8859-2?Q?R0nV2TKiHvJ7Ge+Rfaplzh2fo7a3X8z7GiF5fINDCxpSYaMb3/i4uLpFjr?=
- =?iso-8859-2?Q?vjzk+aHEGG/zEMCOmNEVIuCQvjeExEdyDVAXH/+9U/ngECw0u9GbXwn1wn?=
- =?iso-8859-2?Q?Lz/w4fRacfJh/bAOlTJ5tShLFqps99vWfkAhS/1m/BaFgT00242uvEpX/T?=
- =?iso-8859-2?Q?F67ihio3E48kWbHN7hMHbP/mB1vp5UMeMhvjSK58SpNbqaS39byL45x1a2?=
- =?iso-8859-2?Q?dNe+Wj3a7SLU6ohfFR7Z3mQD5g740hNC8F1HADN1RrTc8NB/S6z03NuuJ8?=
- =?iso-8859-2?Q?YfcHZt9JGKQe3+PrBmwJJA5urD7Z2JBBrZPMvBwKVr2zQUboKluroYdxGc?=
- =?iso-8859-2?Q?SzsGmla0JuEoePur1gkFLg3nhKhnEC6kFIi1JwZj7CoprSmk6e5hxzzMHi?=
- =?iso-8859-2?Q?iHiAuIAst7tTHUOfx5mbLY3SM0n8MSHp2URwRbHq732Epcov/PnDtu+w?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?qp3nthPDG3Tz6kubjyS7i3PFvZzgMx2B16k3MPQIv7CtV+XUFTsxBIwGEo?=
+ =?iso-8859-2?Q?yq86arOlEhy0Hsq6mKQHqXguB0pgBTBPs5JSckXVCo1fKcISiyxTHKW2wV?=
+ =?iso-8859-2?Q?2XiikOkXb+2PgeaN4th1eaUqu3IKLD6nBXLSPeDvkv/w3u28kGuIGSAkKO?=
+ =?iso-8859-2?Q?3M/sjwStuiXMBg28xj/3K4DNhYIG/7i7eAtCBMZxmtQMpFDVd62Fx9BtSY?=
+ =?iso-8859-2?Q?erhkpmiob2sLuAlpqaW1PBBJkzrMq2XmXY1GhdR3bxzeuLdgeWsPoXAXFp?=
+ =?iso-8859-2?Q?NLvq2VdqiNiVuykbmnewPZk6WLCXlBh0b+4aqHs2klAudRWXn8yTNLe/qB?=
+ =?iso-8859-2?Q?/AwlJLhpxJws3CM5675fReO53ZrdbbpovM+S4aRRa2DPd9mAGjD+/Lzprg?=
+ =?iso-8859-2?Q?dtbEilA/D+DYPdoXGyY1jQ6W3D/dcOfQchkTiSzWeiz8QiDzOpvcpUU5Xv?=
+ =?iso-8859-2?Q?eSScIoBzgm5F+oCa9ggQCApV7JviuVXpEETLI2NYcbBP0YqBlfYJb+ZGKu?=
+ =?iso-8859-2?Q?5ifGz5OC7PpefOSzdopHpElye4H4lmC4EwXbmU1LdNejBlSgE94KzL1uUf?=
+ =?iso-8859-2?Q?22jHZeTD0XdwcALTVcDmfSi5t6e9YhPyC259ri+0JfaRHOwRr2I1sarBnW?=
+ =?iso-8859-2?Q?Ou+2AceZsUEQF8QtSptmxWBEVlhoiLCikO1vsSLT/d1Iop/dhcg3Vy4cqC?=
+ =?iso-8859-2?Q?aRjnelnyGf2wCHsd4M58ByO8ceH4XOHwV9MUNOVmAxSzxyw54rng2H7FpO?=
+ =?iso-8859-2?Q?G0tuoTu2X5C2eqUeynyqrzs2dahNDo94bsoFpN7pKGrHIfnwjO8661N2pC?=
+ =?iso-8859-2?Q?xbYTAA2XTVprsXKMz4zp59oooUVSG1el/+7qEE71U9Bmle6aKzS/Gl2Drk?=
+ =?iso-8859-2?Q?G+6dNFPMQsRCaPi7zYl7j3o2DqyJjqIVCPSLFdlh5BmllfFxfHAe8dSUfo?=
+ =?iso-8859-2?Q?HxbSEH2z0sF3qk03bpHmn4sku6Y8uaJDBADCt4NNyYpTbAmBmB3rhaEQuj?=
+ =?iso-8859-2?Q?LLnPWEyTSXJTkQE7YZgQLuUlRDnhKh30dvhOxovQeQIItv18lxVF5ptD/o?=
+ =?iso-8859-2?Q?rc6LnJeQCPIEmfhTeLNVwhDa119ICEuS4FhqD6oeSg3H+JGYukADf65Amm?=
+ =?iso-8859-2?Q?KNrdkyiXpDGrUX2Sk62Vpnk7LW5Lvc2q5GtSk3RttKHVHyxVEZPTmNHxZK?=
+ =?iso-8859-2?Q?Jbm3wcozmjjrmhDRD1vwZWHipSccb+rN/9+3ErqPFPexHYRy8vFZk6msdw?=
+ =?iso-8859-2?Q?JvJS9B6rX26/TCzAE1ZE/o2PQNbtfCIUHLHfgbxROVuFARVde3inFefPMt?=
+ =?iso-8859-2?Q?T/e0ebYnOA33JfpJ2TEaP7wf4bEJOxijTTPh3rR+FQPVry4pJbC8oMZ4iI?=
+ =?iso-8859-2?Q?woG38FcqR1yhEr0OjpTmKbbHZYLeoUt2KKdiqpdkcSI2zniiYPgXQp3BwR?=
+ =?iso-8859-2?Q?sMjHtzRVND8GT/11JCfmSp84Z/Qxh4almQNiOuZtrgT8G3rE/jqZvVPqQ6?=
+ =?iso-8859-2?Q?zBQiaTGPy9D3cNNInhJgZkPZ/wKABnBhO6BiV1YJ8xGIaxQswxgfrkqztR?=
+ =?iso-8859-2?Q?1AYmhk23GGeh1fYgk2/qx7powNCSCJ8N+j2GTl9W6PAPDDB3ZsiuJcI0kt?=
+ =?iso-8859-2?Q?fQH4E5GMSlrVHxep18znI5CZ99zKsGOvRdWVq54E2o/kg+DXi0bvP6NQ?=
  =?iso-8859-2?Q?=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3521.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 580159f0-3a68-4853-184e-08db6db51fa1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2023 15:28:08.9742 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f9284d4-5ba0-4a33-fed0-08db6db535b7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2023 15:28:46.0219 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: dNPcu6P/CpQw9Hw1vNg0Uag43GF2ZmfEYpW0UkD6gQT3QVIuYnJb+WotHPPghHNWGschDwmpldTDO+PXUnYgaKmA7icjDGPVGTe1aJECgjQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR11MB6279
+X-MS-Exchange-CrossTenant-userprincipalname: C3Fepnd1+xRHVYJunMDp39Vakfc1+MF3vqdktwv0UQWID6OzxJ4hCu/p0wBYIttqw8jkRy++pzJje/zNYxb7nOSluKLjVR9Kq8yau3HJvuc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8449
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686842893; x=1718378893;
+ t=1686843949; x=1718379949;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=fhiJ7nYC6luy7S7fJq4sUSG5fmKQdhZJXyrDziJPEf8=;
- b=Z7TkHsLgoNVEga0/UXxUv78qrgB67jchEDWkc72AfLmSIigXxVbU4j3f
- NbXLOt7xw+kOOnP/sXb+SkMLHuC0Z25MfWzte2zkiUpLLLp2+Awf+Ugd7
- 19teaNICm1PxU6YcJWlGV1LDvmEbcTWfONsoTU6RcZGW4Mh9efKj9S6W6
- CNrwx5Rwfu3ss3OcxHI1AHsQgpqH+3qggr4QMpNwV0PfHsxvvVnILqOz2
- Fl++S/SBoCjIY8ibA4hFZ1sUXKayChboxj1VU9p/AAdo8AZ6eeiT8odBD
- 1F3RBfL8YV8F93OD6O9iyZREEpaLTXxm/9IgR0uA8/tyvoYVHDwsTtSIj
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=er0+vvxraf1ruOLJa5VO5ZEyP1SczA5xQeCgP6+fYbk=;
+ b=fMz68ANg7ey7BGFQpKXMx6eG0xCak7iDvkrZULPRnBDDmTa8QLeXGz8P
+ J8lxxcPy83t1CeIflV2X1qPAph9hse9cVQ5AmDQefP7oRW/9Uj5hRA0CT
+ x29hVlLE16TPlOlpCIKP5VW9Q8L83e8yD1qoiboAJk6BLZfvgSFHpwvlG
+ tnzGdbMcuzuDTrjkQP4uZ16UbRULkPS6QEZCPRd+H8mhWDH8155uslLWq
+ VJvuFU7uH4cB17DH5dskC2lWpERF1Z7VlPV6HeL0CNs7q/HJW5uyHHUli
+ cwaj/hl7gLXUxBgLnlXXM5Byl4lEKpNtcmjkCtQoXV5fTVizFJC5aHETi
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Z7TkHsLg
+ header.a=rsa-sha256 header.s=Intel header.b=fMz68ANg
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v10 3/5] Revert "iavf: Do not
- restart Tx queues after reset task failure"
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v10 2/5] Revert "iavf: Detach
+ device during reset task"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -200,82 +200,114 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: poniedzia=B3ek, 5 czerwca 2023 16:52
 > To: intel-wired-lan@lists.osuosl.org
 > Cc: ivecera <ivecera@redhat.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-net v10 3/5] Revert "iavf: Do not r=
-estart
-> Tx queues after reset task failure"
+> Subject: [Intel-wired-lan] [PATCH iwl-net v10 2/5] Revert "iavf: Detach d=
+evice
+> during reset task"
 > =
 
 > From: Marcin Szycik <marcin.szycik@linux.intel.com>
 > =
 
-> This reverts commit 08f1c147b7265245d67321585c68a27e990e0c4b.
+> This reverts commit aa626da947e9cd30c4cf727493903e1adbb2c0a0.
 > =
 
-> Netdev is no longer being detached during reset, so this fix can be rever=
-ted.
-> We leave the removal of "hacky" IFF_UP flag update.
+> Detaching device during reset was not fully fixing the rtnl locking issue=
+, as
+> there could be a situation where callback was already in progress before
+> detaching netdev.
 > =
 
+> Furthermore, detaching netdevice causes TX timeouts if traffic is running.
+> To reproduce:
+> =
+
+> ip netns exec ns1 iperf3 -c $PEER_IP -t 600 --logfile /dev/null & while :=
+; do
+>         for i in 200 7000 400 5000 300 3000 ; do
+> 		ip netns exec ns1 ip link set $VF1 mtu $i
+>                 sleep 2
+>         done
+>         sleep 10
+> done
+> =
+
+> Currently, callbacks such as iavf_change_mtu() wait for the reset.
+> If the reset fails to acquire the rtnl_lock, they schedule the netdev upd=
+ate
+> for later while continuing the reset flow. Operations like MTU changes are
+> performed under the rtnl_lock. Therefore, when the operation finishes,
+> another callback that uses rtnl_lock can start.
+> =
+
+> Signed-off-by: Dawid Wesierski <dawidx.wesierski@intel.com>
 > Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 > Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 > ---
-> v1->v8: no changes
-> v9: we leave the removal of "hacky" IFF_UP update that was implemented in
-> this patch
-> v10: no changes
+> v1->v7: no changes
+> v8: changed commit msg
+> v9->v10: no changes
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 16 +---------------
->  1 file changed, 1 insertion(+), 15 deletions(-)
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 13 ++-----------
+>  1 file changed, 2 insertions(+), 11 deletions(-)
 > =
 
 > diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
 > b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index 6945f462c56e..50521ba8fbb2 100644
+> index c815ef87e27d..6945f462c56e 100644
 > --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 > +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -2962,6 +2962,7 @@ static void iavf_disable_vf(struct iavf_adapter
-> *adapter)
->  	iavf_free_queues(adapter);
->  	memset(adapter->vf_res, 0, IAVF_VIRTCHNL_VF_RESOURCE_SIZE);
->  	iavf_shutdown_adminq(&adapter->hw);
-> +	adapter->netdev->flags &=3D ~IFF_UP;
->  	adapter->flags &=3D ~IAVF_FLAG_RESET_PENDING;
->  	iavf_change_state(adapter, __IAVF_DOWN);
->  	wake_up(&adapter->down_waitqueue);
-> @@ -3056,11 +3057,6 @@ static void iavf_reset_task(struct work_struct
+> @@ -2991,11 +2991,6 @@ static void iavf_reset_task(struct work_struct
 > *work)
->  		iavf_disable_vf(adapter);
->  		mutex_unlock(&adapter->client_lock);
->  		mutex_unlock(&adapter->crit_lock);
-> -		if (netif_running(netdev)) {
-> -			rtnl_lock();
-> -			dev_close(netdev);
-> -			rtnl_unlock();
-> -		}
->  		return; /* Do not attempt to reinit. It's dead, Jim. */
+>  	int i =3D 0, err;
+>  	bool running;
+> =
+
+> -	/* Detach interface to avoid subsequent NDO callbacks */
+> -	rtnl_lock();
+> -	netif_device_detach(netdev);
+> -	rtnl_unlock();
+> -
+>  	/* When device is being removed it doesn't make sense to run the
+> reset
+>  	 * task, just return in such a case.
+>  	 */
+> @@ -3003,7 +2998,7 @@ static void iavf_reset_task(struct work_struct
+> *work)
+>  		if (adapter->state !=3D __IAVF_REMOVE)
+>  			queue_work(adapter->wq, &adapter->reset_task);
+> =
+
+> -		goto reset_finish;
+> +		return;
 >  	}
 > =
 
-> @@ -3211,16 +3207,6 @@ static void iavf_reset_task(struct work_struct
+>  	while (!mutex_trylock(&adapter->client_lock))
+> @@ -3206,7 +3201,7 @@ static void iavf_reset_task(struct work_struct
 > *work)
-> =
-
 >  	mutex_unlock(&adapter->client_lock);
 >  	mutex_unlock(&adapter->crit_lock);
-> -
-> -	if (netif_running(netdev)) {
-> -		/* Close device to ensure that Tx queues will not be started
-> -		 * during netif_device_attach() at the end of the reset task.
-> -		 */
-> -		rtnl_lock();
-> -		dev_close(netdev);
-> -		rtnl_unlock();
-> -	}
-> -
->  	dev_err(&adapter->pdev->dev, "failed to allocate resources during
-> reinit\n");  }
 > =
 
+> -	goto reset_finish;
+> +	return;
+>  reset_err:
+>  	if (running) {
+>  		set_bit(__IAVF_VSI_DOWN, adapter->vsi.state); @@ -
+> 3227,10 +3222,6 @@ static void iavf_reset_task(struct work_struct *work)
+>  	}
+> =
+
+>  	dev_err(&adapter->pdev->dev, "failed to allocate resources during
+> reinit\n");
+> -reset_finish:
+> -	rtnl_lock();
+> -	netif_device_attach(netdev);
+> -	rtnl_unlock();
+>  }
+> =
+
+>  /**
 > --
 > 2.31.1
 > =
