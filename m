@@ -2,101 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41535731B40
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 16:25:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F6D7731B9E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 16:43:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CF15941910;
-	Thu, 15 Jun 2023 14:25:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CF15941910
+	by smtp2.osuosl.org (Postfix) with ESMTP id E183C41932;
+	Thu, 15 Jun 2023 14:43:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E183C41932
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686839116;
-	bh=RH1uLGYI0YhDs93we2emLSAflenIuJywlNzyKdGLCBI=;
+	s=default; t=1686840233;
+	bh=Bp3sosaM8oTjG/CtYh3Sjo+xOEYyWcXnldJ/pxNowlY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3SGjBAbwd3gQnRwxnAcbGYYNX2kZuTzGXygqGlEzdKhUu6Cl+FAPTvvEQkVgy9iJs
-	 HOODkpDXuBwK4BIo/kZosAK+bpkV4LTGpvcVbRw0gQq52SaeGvHqPrxi76j1/Oca9h
-	 Z8DgjoR0cJG9JiUWZHZiBwSK3/PUfB11FiFmmsXGXNchpnRaMmnPVh+JB3tGB1zqW0
-	 y9XFVRGocCVEakwQ0S0xiXsUAz77ro/9yKRvvKUOXjIAq4hAGR9bF4ysiHuukLWItJ
-	 hCpAIjqv3raNenPedaXr0ZAGBzGgomrXRyr9kDrImyd0R4iiscvYjwYmlS4pL8jxgc
-	 pXlroh39kAwEQ==
+	b=3zz0fiKY2fYVmLMzMdjjRj+aj/Kar+RVICmSf4zw6o5OF9/GyV2iB7oVXLn0GFu8U
+	 +A5TnIanyEW2Hzalc2HzIkkbNP2C54/7SnY1fCqSBHhRgXgRyvrLKptPqxrObKVy7T
+	 8G2GD8PbdzdpMR+zJCrXmwPJac/JNrmNrE10OIeYTzRPXdc/DjGzANF4ff2MRMJ/FQ
+	 DpOvQy+2CAprkEuoH6zg8jMBGDiUygX/Qsvai8HSv0+9O1Mdb3u8QNxpKRWQH457t0
+	 adpRHqn6m5y06ocUlZwwoeM/PNBGKhOKZ+kDiyIoD08iH8Robz/k4lyBHMK250lL6T
+	 whi0ML/uDLn1A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KlqzVkXImEN3; Thu, 15 Jun 2023 14:25:16 +0000 (UTC)
+	with ESMTP id npSYNFfx-DGe; Thu, 15 Jun 2023 14:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B9FDB400D8;
-	Thu, 15 Jun 2023 14:25:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B9FDB400D8
+	by smtp2.osuosl.org (Postfix) with ESMTP id D20E24060D;
+	Thu, 15 Jun 2023 14:43:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D20E24060D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 81E1B1BF263
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:25:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 998CD1BF263
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:43:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6332D83EB8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:25:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6332D83EB8
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6C0DD41EBF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:43:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6C0DD41EBF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qa49_NsZqPXD for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 14:25:09 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D51AF83D35
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com
- [IPv6:2a00:1450:4864:20::32e])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D51AF83D35
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:25:08 +0000 (UTC)
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3f8d65ecdb8so20100615e9.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:25:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686839107; x=1689431107;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YnRaEq/R+qqN1l7MGLXRX4Jh2MLTeQ4xQu8xZjVF/9E=;
- b=VMOVk03fAAKOPzlpnWulqg6aoyZ1PQSWbDeB+pxue1BmbZ0aVS2hFRaVkiHND87B9z
- NZWCCCsBZo9vnHZZzs/67ehw8xREvkgbYBz1A9wm31v94olrCxDgfYOHL8vtFr1rFKe7
- ngX4eFgHNurxuAjQvxTPJfe40Ek5BB21NzCgKb0zIt8Kx2FxWWva9o7Z5N/3Xx/PD/sa
- FiNz2jFvH+jUzpUmy0MuYwO8f9hFK4ldFF+Ryc2Ei2LD8pf9eh+H2x8RTYM+PnWPE/1s
- Nvp8NPkUdegbKTzbt6tYEIe/kKpsJBXUwx5mszTHYvzNmRsx4I/RVnoRJKXYdOLLuyDu
- nDSw==
-X-Gm-Message-State: AC+VfDzQfiBQ7ghXcqigGcEGnoV9sLEusH2lPIaUwdJ26vr1ezFgedS0
- goYzUDVTqgBtHICW/36h27THHg==
-X-Google-Smtp-Source: ACHHUZ6/POVDebMNcxTEAlIgxHE9CAAQgcjr+eY2tthAxS4zMPp+MzA34nBwadH7vsqmMHlo1hEzlg==
-X-Received: by 2002:a05:600c:255:b0:3f6:53a:6665 with SMTP id
- 21-20020a05600c025500b003f6053a6665mr16182726wmj.19.1686839106865; 
- Thu, 15 Jun 2023 07:25:06 -0700 (PDT)
-Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
- c12-20020a05600c0acc00b003f195d540d9sm20654630wmr.14.2023.06.15.07.25.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jun 2023 07:25:04 -0700 (PDT)
-Date: Thu, 15 Jun 2023 17:25:00 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Simon Horman <horms@kernel.org>
-Message-ID: <278e2ad2-847d-44a5-9bfe-46e11f4fea80@kadam.mountain>
-References: <20230615-igc-err-ptr-v1-1-a17145eb8d62@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vC-qR5LVLJ8m for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 14:43:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 446A841EB1
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 446A841EB1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:43:46 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="356425078"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="356425078"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2023 07:43:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="689797987"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="689797987"
+Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2023 07:43:28 -0700
+Date: Thu, 15 Jun 2023 16:43:24 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <ZIsjjGTAJK2/Bhw/@localhost.localdomain>
+References: <20230615123830.155927-1-michal.swiatkowski@linux.intel.com>
+ <20230615123830.155927-2-michal.swiatkowski@linux.intel.com>
+ <ZIseq7r5alm5DctL@boxer>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230615-igc-err-ptr-v1-1-a17145eb8d62@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686839107; x=1689431107;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=YnRaEq/R+qqN1l7MGLXRX4Jh2MLTeQ4xQu8xZjVF/9E=;
- b=noOMb35ytk+HSd7Sg7wpxWDhOqSYGWdXJ1rDSk0c9X/IZBV4KKQPOSTUPqjUnWYxPP
- pwIBnqTXLACqrH4kXUWkEioaJ3k+577u5bA5fZ7e9Ngr7K0ctQxKXtHPjDqVS1Cy/1tX
- X2L4wpGgPAxCsCAJUlAsQnTVCJSicdZb9Lp35b4SllE5FAln2tH/a/9lumdApRtSdUHB
- cWUMV10MSSClyOgvTosV1zEkcK/2Tnmm/x6t4w5aM36Ey5J9stGpw6Z5MNZbj0mzE1eV
- zU8nWLgf53oKIvcy8SZo2cJy8Npxbyq7IyyO675lDngEHZzx23kB6x42PzsEZrtJnphS
- sa6Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=noOMb35y
-Subject: Re: [Intel-wired-lan] [PATCH RFC net] igc: Avoid dereference of
- ptr_err in igc_clean_rx_irq()
+In-Reply-To: <ZIseq7r5alm5DctL@boxer>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686840226; x=1718376226;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=R7m6EwVSs6DhwY+ljeHN8KXcYvla1ddTVA4Uzy8YF9E=;
+ b=IcRlOSwkr3IAVYQfoZI7a55HKhaM+isAGduWmd0dAlepYy9kakppqazW
+ nvlVrFiU+j8nM3VoueHx8T47A/7AQsl243Gktwgci8RqRXmSqc6y5gInf
+ uykKtZA6a7hH3jTNAHAJ+e6KMxWh1wQGNTCyV0vUtpHN1avqD3PJAPqzE
+ eyohc5AN6kr+EHyY389iAgGsEtk2GfavbgMNdvm+X1ULxVdBYqoB1+b0j
+ 5E+4cyQzYWa9CFNTeN7Z17ocRGcJYqO4uhgKKa2qVDi+1Z/WUhGG2eVkk
+ yZ5bsWDDjbmEwyHGpiQZQNxUggry37fHlsXqmDhgqeW0/zKKrJe+MOqg5
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=IcRlOSwk
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/4] ice: implement
+ num_msix field per VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,61 +98,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Jithu Joseph <jithu.joseph@intel.com>,
- intel-wired-lan@lists.osuosl.org, John Fastabend <john.fastabend@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Vedang Patel <vedang.patel@intel.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ przemyslaw.kitszel@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The original code is okay.  Passing zero to ERR_PTR() is intentional.
-
-On Thu, Jun 15, 2023 at 11:45:36AM +0200, Simon Horman wrote:
-> In igc_clean_rx_irq() the result of a call to igc_xdp_run_prog() is assigned
-> to the skb local variable. This may be an ERR_PTR.
+On Thu, Jun 15, 2023 at 04:22:35PM +0200, Maciej Fijalkowski wrote:
+> On Thu, Jun 15, 2023 at 02:38:27PM +0200, Michal Swiatkowski wrote:
+> > Store the amount of MSI-X per VF instead of storing it in pf struct. It
+> > is used to calculate number of q_vectors (and queues) for VF VSI.
+> > 
+> > Calculate vector indexes based on this new field.
 > 
-> A little later the following is executed, which seems to be a
-> possible dereference of an ERR_PTR.
+> Can you explain why? From a standalone POV the reasoning is not clear.
 > 
-> 	total_bytes += skb->len;
 
+Maybe I should reword it. Previously we had pf->vf_msix - number of MSI-X
+on each VF. The number of MSI-X was the same on all VFs. After this
+changes user is allowed to change MSI-X per VF. We need new field in VF
+struct to track it. Calculation of queues / vector/ indexes is the same
+as it was, but the number can be different for each VF, so intead of
+baseing calculation on per VF MSI-X we have to base it on real VF MSI-X.
 
-There is an IS_ERR() check in igc_cleanup_headers() which prevents
-this.  Sort of tricky to see.  Do you have the cross function database
-set up?  If so then Smatch shouldn't warn about this dereference.
-
-> 
-> Avoid this problem by continuing the loop in which all of the
-> above occurs once the handling of the NULL case completes.
-> 
-> This proposed fix is speculative - I do not have deep knowledge of this
-> driver.  And I am concerned about the effect of skipping the following
-> logic:
-> 
->   igc_put_rx_buffer(rx_ring, rx_buffer, rx_buffer_pgcnt);
->   cleaned_count++;
-> 
-> Flagged by Smatch as:
-> 
->   .../igc_main.c:2467 igc_xdp_run_prog() warn: passing zero to 'ERR_PTR'
-
-Linus once complained to me that this check is bogus and passing zero to
-ERR_PTR() is fine and an intended use case.  But actually this test
-does really find a lot of bugs.  I think for new warnings it is less
-than 10% false positives.  But we fix the bugs so warnings which are
-over three month old are probably 97% false positives.
-
-regards,
-dan carpenter
-
+Feel like I over complicated simple thing by this commit message.
+Calculation remainis the same, we have per VF field to store MSI-X instead
+of one field for all of the VFs.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
