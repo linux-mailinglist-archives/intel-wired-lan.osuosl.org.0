@@ -1,83 +1,147 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30DD9730F59
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 08:30:58 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C9AE7310B1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 09:31:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1A725418D2;
-	Thu, 15 Jun 2023 06:30:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A725418D2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3A9A7418E6;
+	Thu, 15 Jun 2023 07:31:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A9A7418E6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686810655;
-	bh=0dJmAwCWNIrw5p7Uw2qohOsfy+EOACvh1RpYcaurIAM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=ZQuc7oHCJzSNYEbYlyqUCOJQbSeWVJaKPH381j41D5QGLEWQTaSr6Q7L0rfQf31w3
-	 uvFrYVPlkbGncqC4AAsC2vebtuo94H57ZXn1zHGUckKn3Ui8vmsped4qCV04VXUFPV
-	 UfHOjAA4TU9tkg1LjVVFk2ePpkNqnQz6eyClPGq8T0dDt+7KhDWsVSsrF5hpwmIrAq
-	 7cNWyiGYOvF2ZFvz6ZeYXiB+zVlJr/LquV7CwogJTstYGn4KA0v7LiK1r6K1nLDU6i
-	 zrhJ8Bytd6YlzU1vh/JzqrWyrN2CZwybfJiwp6z0k8HUs8VQc+Taqo+1yzk7aMsbTX
-	 gOY4M0khYzchw==
+	s=default; t=1686814298;
+	bh=vEi19FhpGJwFh2xwJY4jGvhOxrv8OK9qjbptDlWHwOo=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=gj1Qdqb4utMYv4F11alWmDc/5aTxn5dQqWombnEysj9nQUZNvnNlZPiHPmQkzlviP
+	 FElKkW9b84AUZa5/3Msnqt7KPRCDUB9cytkaDtmLMBXd1LiF8kUxR0DQQ6tuhSpeyb
+	 uBNyftW920K9oiLPKhfDS1zKKNvyWGE0I4lnR4HFy3PihzD8eH2rgyIDRPVbFHpgdp
+	 yo9Ju602fM8HpkdVVmIxn+SySHIUO10rMSHRM1BEz7ZW9GvBLTuW3PMg/X89ZKO7nP
+	 0qjzt4QD9W6/WBqjyFeXr1rOSx/YD5oN9XQq+oVQDqsTFa0XCtpLfWTGpfpU4hvrfV
+	 NjxExRQXJRuiA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yag2Yb0utoYn; Thu, 15 Jun 2023 06:30:54 +0000 (UTC)
+	with ESMTP id EJZIpVmgeB_w; Thu, 15 Jun 2023 07:31:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 058B340139;
-	Thu, 15 Jun 2023 06:30:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 058B340139
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 25CC741733;
+	Thu, 15 Jun 2023 07:31:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25CC741733
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A473D1BF48C
- for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 007EA1BF321
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:31:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 79DEC41EEF
- for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 79DEC41EEF
+ by smtp4.osuosl.org (Postfix) with ESMTP id C6A3941EA4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:31:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C6A3941EA4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IkwcJUqCDC3m for <intel-wired-lan@osuosl.org>;
- Thu, 15 Jun 2023 06:30:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D36F741EEC
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D36F741EEC
- for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="358821677"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="358821677"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2023 23:30:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="777544026"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="777544026"
-Received: from inlubt0246.iind.intel.com ([10.67.198.165])
- by fmsmga008.fm.intel.com with ESMTP; 14 Jun 2023 23:30:44 -0700
-From: aravindhan.gunasekaran@intel.com
-To: intel-wired-lan@osuosl.org
-Date: Thu, 15 Jun 2023 12:00:43 +0530
-Message-Id: <20230615063043.48250-1-aravindhan.gunasekaran@intel.com>
-X-Mailer: git-send-email 2.17.1
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686810647; x=1718346647;
- h=from:to:cc:subject:date:message-id;
- bh=nlPQfZd0tRe1e7lEWePlj05fuX/5nqPk6dMh9iPjEE0=;
- b=bt4mTYMU3WfOpwo5jY3E2dOVQqjBhGcIs2Alcr9nM4JI9nU1GKh1SAAf
- 3vSS04a+1Is7Vm2fROmUl6dVyhEDBZ3Mukb7VWPD46yR6EKNiWib0bXJy
- yhi4s9M4Cl669EU5hMdZJnLPAPek5QsCdO3y38kplreDnvKp52Tc/f4ax
- xbhcm3PwxJqFKMvXQG1Y8DAnueAgWuLbA6Bxu8ZuBi8jIBHf7g+6EveCT
- vtcFaonXQpludbxwUEJs65CzQpp7p6bepB3vC0Ph2Xpwc/8hsqQNl02jJ
- lmTODPniaQeu3x+bVjyHaoBxMioQscmoRvyRsm9dz8uSpO90W/l47ywrI
- A==;
+ with ESMTP id W4KMlL6bKwzY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 07:31:32 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDB6541E96
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2122.outbound.protection.outlook.com [40.107.237.122])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BDB6541E96
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:31:31 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A5HWztDifxersf418yDC7pzNLQsdhPornplF0nWw7uKYGlxmweafduVud7K7jPatnF9X0oH1h//yYHovOAy1jDJyGylqEn9EJb+Jbrk/U3nrGJ+qVfzCtPT0rEnA/VS69FgChbGne9+VPounnbVRQ11UosEjfHU/GSLpufV+DoL6q7A13cuVl4OQAyUdl2XaGX030J1c7qSUL5KP5Osu/rQuDV6rft7h3s4wu3fAlI2Gure3h8TztwXTBJGWv0aTnlITNOwZe6Qei4JhnNvFzXJIUrtTkdKLxsGRCPjf21wCvpaIFVqmhQKq7Eas9fmaCSN50aSxm9n7BI4L3a5eqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=y3Vuf/aOLYDptyyiBu82De1OKInr83UAoMNUeDJpQSs=;
+ b=Utdkyd1WdxlAk9LTHTAxoVJHUH38ioyfX0vXrFmsEkhEubhkrm+IIEqq3nWGmAk3+8jceE45uPYXstdum3maZ9zZeTIsph+rSz0h5BQyG+SfsTZwPlBvBYAQdXbSzMBTFik+DIbjBOBmJUSOp31FKG/8ksV0DfPgIYOL/geFq6fIaEFbZdEI/kSIB72s9l41XOgxrHpi0KwMqh9zZOx8nFKWKMS4Jzpj3UyaVyXQbuoGEaDLG7wg1UA7kb5wsrhHZYO8uDyvmtizh3hyiv2qxCYevAJsQ6gbi89mKr5pXzx3u3y52GXqAZGPpHQf2rCbQHKR5plfsoX63uP16EWb/g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
+ by MW4PR13MB5602.namprd13.prod.outlook.com (2603:10b6:303:182::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.37; Thu, 15 Jun
+ 2023 07:31:27 +0000
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e%5]) with mapi id 15.20.6500.025; Thu, 15 Jun 2023
+ 07:31:27 +0000
+Date: Thu, 15 Jun 2023 09:31:20 +0200
+From: Simon Horman <simon.horman@corigine.com>
+To: Piotr Gardocki <piotrx.gardocki@intel.com>
+Message-ID: <ZIq+SMD6fdMU84Dg@corigine.com>
+References: <20230614145302.902301-1-piotrx.gardocki@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20230614145302.902301-1-piotrx.gardocki@intel.com>
+X-ClientProxiedBy: AM0PR02CA0183.eurprd02.prod.outlook.com
+ (2603:10a6:20b:28e::20) To PH0PR13MB4842.namprd13.prod.outlook.com
+ (2603:10b6:510:78::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|MW4PR13MB5602:EE_
+X-MS-Office365-Filtering-Correlation-Id: d9b5da42-ad41-4807-4f2c-08db6d72877c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: y4VCJ/VkNvfP1mmRow4YWyaCDEiA6qaBa4/T3GXFnnxoJrj+ayU7PcWVA43aWk5gThdAIM0/XNkJpAmc1zbA/G9u/bS2lT4le7VAvTds6FBaP+y8+6JMkZG/Va6k0mRfnJIbiNNYe7fjztH363q6gNYAcSyqTQbQxumciT1NMFklCQ3oCqC6I0msN0JnRPjs7THiXKX2CJ8W85A/CbPpiNlEy79JSKIc1Z6cKrysRcWdkos4lSU6mZanMun1MgbpJmiw/UX5mzmEVj8jdkdrYPYBWEVaSDgmOUD7k2AQ2cLZ2GMTDOS1N86hXOyzJWecY91h8e3oJbTV5HX2khZWBDn5iGnA643gn4clUJ8TwkDUeRWwxUFw7D4fD48b9SrQ3fcdUaD4bba+mYRGOhM6pqIbw4pI07q/SZnC6dzA+s0dRlDSu4IrNhQmKoWbNKo/gZEtIFho2hJVrErP74lYuVvk+AwGHVOnpPWOoukOqSui/7ZwfKTHzioMqWdsZLZReZB5+af4XX1pMeAd9REJJaW6Y7S7f51iUnZOntWQ/IAog2H1f3ghc7Pqg1uIzXpyZqzbVjisivOWcYCmlV+SzA6oY6jG8CGWWmvCXQV2RfUGxXZgJrirNu4QxJ+QU6SQx4q3Q7FLOIgj2mfLn52rBA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(4636009)(366004)(346002)(376002)(396003)(136003)(39840400004)(451199021)(5660300002)(83380400001)(186003)(6506007)(44832011)(2906002)(4744005)(7416002)(2616005)(6512007)(41300700001)(8936002)(8676002)(6486002)(316002)(6666004)(36756003)(478600001)(4326008)(66556008)(66476007)(86362001)(66946007)(6916009)(38100700002)(67856001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8aPp14+6KPZriIREugmRm7Ps2kWFkBlh5yworR12REbTAPMzOu3KQpEOeMUU?=
+ =?us-ascii?Q?McPFd8VGrN1lsPYWNkGHlETtJAFDSbNWaIrkUaU13VMBtsSIxTDf/mEWa+bI?=
+ =?us-ascii?Q?tnvnLULENUtegNBe1dAvk08QdlpeE+OKo+UqXvTjDe3U9yQYpJHtz313r3Yv?=
+ =?us-ascii?Q?+A60cB9fMjn3abhXMuPpuvyI62+TwDiPIIKke5xb6t2omIbUfnr6DJv7iSE5?=
+ =?us-ascii?Q?wfOsmR4ZonORmqOs6DZ7jNSatgfanfd0+C9lbOnfvk8TLZmrhfSCw63EpTQA?=
+ =?us-ascii?Q?/GkFzO9KsUkMw3vdyExzsJVz4WtafrxfzsxqSeQOu1lnzPUq+QEf1TIbrkFC?=
+ =?us-ascii?Q?hIeP+3YSSDxaPVjpQHhbdOYgSgsdodrBxIrcCp+XjIxJ8O4IqTyYv+MqyAr/?=
+ =?us-ascii?Q?R0g7tDCiiwnCR1F2SI5mxZilXXp4aiKj0zX+qOrwYN+86/hR2Q2Lh4kve6vG?=
+ =?us-ascii?Q?ZVne4wVuipMS6j3pqSG63QoCMJ6WxSZYV0WKqoG+P63Jy4Vnulc1M5euLUSA?=
+ =?us-ascii?Q?VpEVJfIWtd/tUItbtg8DQNpVWdafrmuFV8miIiLYAhaqA9hy9h20nQfMLRJt?=
+ =?us-ascii?Q?wgREhvXzALOUQTU4x9NAkJucbGNM/PawOdYiGqVH07UBE7c9iGE1O8gHeBiO?=
+ =?us-ascii?Q?tIBSjIHIuvo0/L3I119NDPLFXnl3jT/8pOcmwAK6dx75ePILSLxxiZdhaKIl?=
+ =?us-ascii?Q?rRbV0EMqB5GDNc5C/CBStIq3bXQjAtjpd357ju9bReQByYF9InyX837KnWRS?=
+ =?us-ascii?Q?jT5EHFN9ZHDfNAq+XCD55EZS9e1xa36Glyuk/Y+mlSWXn/Gnp/yPmJ+fBb7o?=
+ =?us-ascii?Q?9IQ86912Io0FMJ32hRVKNA13sIN6aWEHzvCTbp+c/7F9L6fli6vsxxupIZhl?=
+ =?us-ascii?Q?dXmp6YJHgTtDPqy+t/uNAiQM3dj2oFlVPZiBPlxQpF8v9fDV5TpEWU7/6ns2?=
+ =?us-ascii?Q?TTgpvEKElVWiWIx11xSGif23yvkEEedoxWD0WzkmUyWi1eD/kQVdvMU1Xn5d?=
+ =?us-ascii?Q?+1jo9ZqcP5fJQorFVS1Z9oAylrMYATs2s/KWGLxMKiRFwfD0Z3jVDKJ5HtuS?=
+ =?us-ascii?Q?wThZ68Yzp4ZFNqVi2/bw9smGl3MjhE3sZlHBEE77xyiS3zX7233cUbgaiLsI?=
+ =?us-ascii?Q?UhHzxH/882kOFLDDySqzHSeJXmDas9YIqCODI+MYaLgxFrG7kykDXAO6GCZb?=
+ =?us-ascii?Q?XKPhxICjlajSq2KfMrUgnlrlB9ucc6gU9J7TOYzCaTU/RwcUhaupK9Oul0nD?=
+ =?us-ascii?Q?AMR38Q5+v6jTxeSdIyqrrqQLAQ6ynF2WkmtL6L67gdsG7IC3xXp+XqGpF2K1?=
+ =?us-ascii?Q?S63GpqdbzNxh4FfCqP0vwchcx1+TTjUApW8dg5PhIqNlKqZkDu8KhwJZANLk?=
+ =?us-ascii?Q?k/7Da9sUllzksWqWcZKqZFW1HkbDWPcnUDbHZNr9lmZjKKYVJmv7HMadXVAm?=
+ =?us-ascii?Q?EXhEgBU3EnKNxGMefn8+AXSrOU3Y8sepKmo/CMj6TTpx06YVIi1WU3SQef+j?=
+ =?us-ascii?Q?V0ussslkG9EItBj/ts3fN748PckV20kUSuYGxW0uFr5HgS7CRl7PyeVpBiH0?=
+ =?us-ascii?Q?TFkPlTLAw5IOfkeRWlwAUb0Jb3l27xN2sIYzIjrXINpuLmCzB+JW9qOLE0T4?=
+ =?us-ascii?Q?4kC5D0zV0OK2/2dM6/37aBp4QDem3O2IjHqQ/dEDRKKx5vT3o10lRL53Bty8?=
+ =?us-ascii?Q?PpXvDQ=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d9b5da42-ad41-4807-4f2c-08db6d72877c
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2023 07:31:27.1527 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: onCW0is3SVNBtxTeukVzr8GYe4/b6XjJ5/eS7G/l3lZI/kTe5km67saVpavkNj3O1jxY2U2rjNqGCgmaFe7oFlz6pKe0KP7UzaD70maLlz4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR13MB5602
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=y3Vuf/aOLYDptyyiBu82De1OKInr83UAoMNUeDJpQSs=;
+ b=D7R1uOOfN2v+fhhx9P3tI6c7LSeQSk6+KKS47h86hoQsBmRFxZlFEAFg97KSEzMMXJ2nqP9M4YFPxwaSOwBYVka10x8QaKgObFZO2adFYygBx8YQfUC28Dotp7muo0I7qz9biDNV5J+LYa90excMzwC8lcVZrpqEZJRb/weVI8M=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bt4mTYMU
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] igc: Handle PPS start time
- programming for past time values
+ dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
+ header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
+ header.s=selector2-corigine-onmicrosoft-com header.b=D7R1uOOf
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 0/3] optimize procedure of
+ changing MAC address on interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,113 +154,25 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: anthony.l.nguyen@intel.com
-MIME-Version: 1.0
+Cc: pmenzel@molgen.mpg.de, netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ przemyslaw.kitszel@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+On Wed, Jun 14, 2023 at 04:52:59PM +0200, Piotr Gardocki wrote:
+> The first patch adds an if statement in core to skip early when
+> the MAC address is not being changes.
+> The remaining patches remove such checks from Intel drivers
+> as they're redundant at this point.
 
-I225/6 hardware can be programmed to start PPS output once
-the time in Target Time registers is reached. The time
-programmed in these registers should always be into future.
-Only then PPS output is triggered when SYSTIM register
-reaches the programmed value. There are two modes in i225/6
-hardware to program PPS, pulse and clock mode.
+Hi Pitor,
 
-There were issues reported where PPS is not generated when
-start time is in past.
-
-Example 1, "echo 0 0 0 2 0 > /sys/class/ptp/ptp0/period"
-
-In the current implementation, a value of '0' is programmed
-into Target time registers and PPS output is in pulse mode.
-Eventually an interrupt which is triggered upon SYSTIM
-register reaching Target time is not fired. Thus no PPS
-output is generated.
-
-Example 2, "echo 0 0 0 1 0 > /sys/class/ptp/ptp0/period"
-
-Above case, a value of '0' is programmed into Target time
-registers and PPS output is in clock mode. Here, HW tries to
-catch-up the current time by incrementing Target Time
-register. This catch-up time seem to vary according to
-programmed PPS period time as per the HW design. In my
-experiments, the delay ranged between few tens of seconds to
-few minutes. The PPS output is only generated after the
-Target time register reaches current time.
-
-In my experiments, I also observed PPS stopped working with
-below test and could not recover until module is removed and
-loaded again.
-
-1) echo 0 <future time> 0 1 0 > /sys/class/ptp/ptp1/period
-2) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
-3) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
-
-After this PPS did not work even if i re-program with proper
-values. I could only get this back working by reloading the
-driver.
-
-This patch takes care of calculating and programming
-appropriate future time value into Target Time registers.
-
-Fixes: 5e91c72e560c ("igc: Fix PPS delta between two synchronized end-points")
-Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
----
-v2: Added Fixes tag
----
- drivers/net/ethernet/intel/igc/igc_ptp.c | 25 +++++++++++++++++++++---
- 1 file changed, 22 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 32ef112f8291..f0b979a70655 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -356,16 +356,35 @@ static int igc_ptp_feature_enable_i225(struct ptp_clock_info *ptp,
- 			tsim &= ~IGC_TSICR_TT0;
- 		}
- 		if (on) {
-+			struct timespec64 safe_start;
- 			int i = rq->perout.index;
- 
- 			igc_pin_perout(igc, i, pin, use_freq);
--			igc->perout[i].start.tv_sec = rq->perout.start.sec;
-+			igc_ptp_read(igc, &safe_start);
-+
-+			/* PPS output start time is triggered by Target time(TT)
-+			 * register. Programming any past time value into TT
-+			 * register will cause PPS to never start. Need to make
-+			 * sure we program the TT register a time ahead in
-+			 * future. There isn't a stringent need to fire PPS out
-+			 * right away. Adding +2 seconds should take care of
-+			 * corner cases. Let's say if the SYSTIML is close to
-+			 * wrap up and the timer keeps ticking as we program the
-+			 * register, adding +2seconds is safe bet.
-+			 */
-+			safe_start.tv_sec += 2;
-+
-+			if (rq->perout.start.sec < safe_start.tv_sec)
-+				igc->perout[i].start.tv_sec = safe_start.tv_sec;
-+			else
-+				igc->perout[i].start.tv_sec = rq->perout.start.sec;
- 			igc->perout[i].start.tv_nsec = rq->perout.start.nsec;
- 			igc->perout[i].period.tv_sec = ts.tv_sec;
- 			igc->perout[i].period.tv_nsec = ts.tv_nsec;
--			wr32(trgttimh, rq->perout.start.sec);
-+			wr32(trgttimh, (u32)igc->perout[i].start.tv_sec);
- 			/* For now, always select timer 0 as source. */
--			wr32(trgttiml, rq->perout.start.nsec | IGC_TT_IO_TIMER_SEL_SYSTIM0);
-+			wr32(trgttiml, (u32)(igc->perout[i].start.tv_nsec |
-+					     IGC_TT_IO_TIMER_SEL_SYSTIM0));
- 			if (use_freq)
- 				wr32(freqout, ns);
- 			tsauxc |= tsauxc_mask;
--- 
-2.17.1
-
+I am wondering if you audited other drivers to see if they
+could also be updated in a similar way to the Intel changes
+in this patch-set.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
