@@ -1,86 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 999AE731DB7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 18:28:03 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D95B731DB8
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 18:28:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2BFC583F7A;
-	Thu, 15 Jun 2023 16:28:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BFC583F7A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3E20183FA1;
+	Thu, 15 Jun 2023 16:28:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E20183FA1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686846482;
-	bh=8+kSGN3CPmAW84b+KjJ8wC3/MleFoa6TTagujUtLfYQ=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=c91cCe48fpebrFlwsYyi+70Wb1Vkfkj9nzkPKXIYzdY/QVp0b16UFPoPhWOUqiSH3
-	 0yAdoq43W65cpPDJEEhMF3xuepmGxCT+QBlppNaSfRkE1MYllOQ7Tohn6mhKo0T7Av
-	 orHb0NrYiyzmw0kFbsJBb3ApH03ihNYqmtPUxtTKvSpLlQIOTdud+HIIXEiUNxFmWm
-	 rpDzB63KutE/EjVPELH9EVAGvgtiTWeNKE/1dZHDD5yoFmkLiccgf7h4aQw6hNJU7E
-	 MLZSa5mls4k15a1dwD0QRrxCztAiFLI537lNk4s5cpIfKpfwVjQWmKMPSjTB6cfhmy
-	 ZvuVkl7HemPzg==
+	s=default; t=1686846486;
+	bh=EuG1qNaG+5r4R22QMX03YOdyTWmNzmw40uMWrfPsMyY=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=ITXmXguDumj2v21/e+ecetsIWoCnaDaUoUC/XsiRXSRli/9/TNIfP1Ls6W2pI/PEi
+	 x/bN50vZKpdO4L0sc1+34nF/Dx6wLtxaYLpfOLkAxjBcg6gZvLeYJJNfwKqAR0PFQr
+	 bQ2tIPjfJ3E8D2nqSbxc9o4tESqvu0mXl6lGvqpJEipKm9hpCifsUBQgp8GxHsMgQ9
+	 dhM+3ER6C9QI2EWWX2x52OBr6uBXBrVK7cCx93cOVlWOCAxUjnxSCVQntjL/hWAJno
+	 X7hwNEPBqiwLfk30QmcUG9OOKBngGoGtPJ26kVhkIoM5aeE143DfivuJ6B+PhiXNPV
+	 n7EEj0w/Sy64w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h6VOJ7XV4RZo; Thu, 15 Jun 2023 16:28:01 +0000 (UTC)
+	with ESMTP id BQyrwD1QMr44; Thu, 15 Jun 2023 16:28:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E554383F1E;
-	Thu, 15 Jun 2023 16:28:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E554383F1E
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1860683F36;
+	Thu, 15 Jun 2023 16:28:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1860683F36
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 97AB31BF23B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 16:27:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 582D71BF23B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 16:27:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 68B1241952
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9CBA6400DD
  for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 16:27:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 68B1241952
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9CBA6400DD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9HBFGtd7NATI for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 16:27:54 +0000 (UTC)
+ with ESMTP id mETzFfW3s7PU for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 16:27:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 227CE400DD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E2E194194E
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 227CE400DD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 16:27:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="445336149"
-X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="445336149"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E2E194194E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 16:27:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="445336172"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="445336172"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2023 09:27:52 -0700
+ 15 Jun 2023 09:27:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="712513709"
-X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="712513709"
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="712513712"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="712513712"
 Received: from dmert-dev.jf.intel.com ([10.166.241.14])
  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 Jun 2023 09:27:52 -0700
 From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 15 Jun 2023 09:29:22 -0700
-Message-Id: <20230615162932.762756-1-david.m.ertman@intel.com>
+Date: Thu, 15 Jun 2023 09:29:23 -0700
+Message-Id: <20230615162932.762756-2-david.m.ertman@intel.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230615162932.762756-1-david.m.ertman@intel.com>
+References: <20230615162932.762756-1-david.m.ertman@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1686846474; x=1718382474;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=G6UNyjJF8WTUj7mm8NgppQ6B/oOSfmBpY6MsN3vpZEo=;
- b=SxcMVqJYKN/xr59lHF17gGSHIa82WOLOQZK322lNEim8jRM7o2zz+Sod
- +8BH/WHYAx/XFoLBbHH1bE+xCFXqRrNbkxgkRSzNWk08EeDrvT2BbAyEE
- cVlwxLLujMjHv50WLXNQfMDo0RYpUPsrJikW2QInm9KtxomwSHpJPA2+U
- rlO6I+Ieqhn5jfs3wHWrX1I4DDz9zWX9HUVt98DoYhJ2L+WGvnXsWRs2j
- YpMosmbV2o5jSL4+pJl6sSGY4e/34oPw5CQBk4AijOZCuChmEXmNT1Wnc
- bZHZz81a2X0BmbMDdGINMPH4XxPhgLNcWdVXCSun/pXHvwkpmhDH98KU4
- g==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=TbrE/BLnSYljGvOSSpo3ot/g4MKOgNqph8ntzp4MgYw=;
+ b=ZFI6IDeVg9+F83q0LMy4Eso1CJxrpSc78n5Tq9kp9Rpa+bQGlxZHiTyZ
+ l04zLjM0AfHnPPUGSvsCiKvUoIXiLMgBC1yL3rJLo+l4dt7jY96miIXnF
+ ZbXzwsdlSENKuXnpZp0ioJljHkTjYEm/I4FRok9DuvhxGNRiKjzz+O5EH
+ DmYVIjHzzyQhAF9h4rdhFlgVv/t7o5oGaw3eEwXvbMTNQrefFmKLCGzf8
+ r5w3AKhSLdh5PVZxwvPD/mlKZVqDfVKwzQtnN1xgDLc5mi9+6dZTGYq9M
+ bPRqFZlfxSa+/eFpKs+X9eOaRnBorYTMMf6V8QDNNbLIz1cKs7xFzXzcQ
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SxcMVqJY
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 00/10] Implement support for
- SRIOV + LAG
+ header.a=rsa-sha256 header.s=Intel header.b=ZFI6IDeV
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 01/10] ice: Correctly
+ initialize queue context values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,84 +103,94 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement support for SRIOV VF's on interfaces that are in an
-aggregate interface.
+From: Jacob Keller <jacob.e.keller@intel.com>
 
-The first interface added into the aggregate will be flagged as
-the primary interface, and this primary interface will be
-responsible for managing the VF's resources.  VF's created on the
-primary are the only VFs that will be supported on the aggregate.
-Only Active-Backup mode will be supported and only aggregates whose
-primary interface is in switchdev mode will be supported.
+The ice_alloc_lan_q_ctx function allocates the queue context array for a
+given traffic class. This function uses devm_kcalloc which will
+zero-allocate the structure. Thus, prior to any queue being setup by
+ice_ena_vsi_txq, the q_ctx structure will have a q_handle of 0 and a q_teid
+of 0. These are potentially valid values.
 
-Additional restrictions on what interfaces can be added to the aggregate
-and still support SRIOV VFs are:
-- interfaces have to all be on the same physical NIC
-- all interfaces have to have the same QoS settings
-- interfaces have to have the FW LLDP agent disabled
-- only the primary interface is to be put into switchdev mode
-- no more than two interfaces in the aggregate
+Modify the ice_alloc_lan_q_ctx function to initialize every member of the
+q_ctx array to have invalid values. Modify ice_dis_vsi_txq to ensure that
+it assigns q_teid to an invalid value when it assigns q_handle to the
+invalid value as well.
 
-Changes since v1:
-Fix typo in commit message
-Fix typos in warning messages
-Fix typo in function header
-Use correct bitwise operator instead of boolean
+This will allow other code to check whether the queue context is currently
+valid before operating on it.
 
-Changes since v2:
-Rebase on current next-queue
-Fix typos in commits
-Fix typos in function headers
-use %u for unsigned values in debug message
-Refactor common code in node moves to subfunction
+Reviewed-by: Simon Horman <simon.horman@corigine.com>
+Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.c |  1 +
+ drivers/net/ethernet/intel/ice/ice_sched.c  | 23 ++++++++++++++++-----
+ 2 files changed, 19 insertions(+), 5 deletions(-)
 
-Changes since v3:
-Fix typos in warning messages
-move refactor of common code to earlier patch
-expand use of refactored code
-move prototype and func call into patch that defines func
-
-Changes since v4:
-Change module_init to use goto unwind approach
-Change function name to be more descriptive
-chagen variable to be more scope specific
-Make sure non-feature specific functions are still performed
-Free correct memory
-Fix typos in warning messages
-added check for invalid TEID in queue cfg
-
-Dave Ertman (9):
-  ice: Add driver support for firmware changes for LAG
-  ice: changes to the interface with the HW and FW for SRIOV_VF+LAG
-  ice: implement lag netdev event handler
-  ice: process events created by lag netdev event handler
-  ice: Flesh out implementation of support for SRIOV on bonded interface
-  ice: support non-standard teardown of bond interface
-  ice: enforce interface eligibility and add messaging for SRIOV LAG
-  ice: enforce no DCB config changing when in bond
-  ice: update reset path for SRIOV LAG support
-
-Jacob Keller (1):
-  ice: Correctly initialize queue context values
-
- drivers/net/ethernet/intel/ice/ice.h          |    5 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   53 +-
- drivers/net/ethernet/intel/ice/ice_common.c   |   56 +
- drivers/net/ethernet/intel/ice/ice_common.h   |    4 +
- drivers/net/ethernet/intel/ice/ice_dcb_nl.c   |   50 +
- drivers/net/ethernet/intel/ice/ice_lag.c      | 1840 ++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_lag.h      |   34 +-
- drivers/net/ethernet/intel/ice/ice_lib.c      |    2 +-
- drivers/net/ethernet/intel/ice/ice_lib.h      |    1 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   36 +-
- drivers/net/ethernet/intel/ice/ice_sched.c    |   37 +-
- drivers/net/ethernet/intel/ice/ice_sched.h    |   21 +
- drivers/net/ethernet/intel/ice/ice_switch.c   |   88 +-
- drivers/net/ethernet/intel/ice/ice_switch.h   |   29 +
- drivers/net/ethernet/intel/ice/ice_type.h     |    2 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |    2 +
- 16 files changed, 2125 insertions(+), 135 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index deb55b6d516a..09e2e38d538e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -4673,6 +4673,7 @@ ice_dis_vsi_txq(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u8 num_queues,
+ 			break;
+ 		ice_free_sched_node(pi, node);
+ 		q_ctx->q_handle = ICE_INVAL_Q_HANDLE;
++		q_ctx->q_teid = ICE_INVAL_TEID;
+ 	}
+ 	mutex_unlock(&pi->sched_lock);
+ 	kfree(qg_list);
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
+index b664d60fd037..79a8972873f1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.c
++++ b/drivers/net/ethernet/intel/ice/ice_sched.c
+@@ -569,18 +569,24 @@ ice_alloc_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 new_numqs)
+ {
+ 	struct ice_vsi_ctx *vsi_ctx;
+ 	struct ice_q_ctx *q_ctx;
++	u16 idx;
+ 
+ 	vsi_ctx = ice_get_vsi_ctx(hw, vsi_handle);
+ 	if (!vsi_ctx)
+ 		return -EINVAL;
+ 	/* allocate LAN queue contexts */
+ 	if (!vsi_ctx->lan_q_ctx[tc]) {
+-		vsi_ctx->lan_q_ctx[tc] = devm_kcalloc(ice_hw_to_dev(hw),
+-						      new_numqs,
+-						      sizeof(*q_ctx),
+-						      GFP_KERNEL);
+-		if (!vsi_ctx->lan_q_ctx[tc])
++		q_ctx = devm_kcalloc(ice_hw_to_dev(hw), new_numqs,
++				     sizeof(*q_ctx), GFP_KERNEL);
++		if (!q_ctx)
+ 			return -ENOMEM;
++
++		for (idx = 0; idx < new_numqs; idx++) {
++			q_ctx[idx].q_handle = ICE_INVAL_Q_HANDLE;
++			q_ctx[idx].q_teid = ICE_INVAL_TEID;
++		}
++
++		vsi_ctx->lan_q_ctx[tc] = q_ctx;
+ 		vsi_ctx->num_lan_q_entries[tc] = new_numqs;
+ 		return 0;
+ 	}
+@@ -592,9 +598,16 @@ ice_alloc_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 new_numqs)
+ 				     sizeof(*q_ctx), GFP_KERNEL);
+ 		if (!q_ctx)
+ 			return -ENOMEM;
++
+ 		memcpy(q_ctx, vsi_ctx->lan_q_ctx[tc],
+ 		       prev_num * sizeof(*q_ctx));
+ 		devm_kfree(ice_hw_to_dev(hw), vsi_ctx->lan_q_ctx[tc]);
++
++		for (idx = prev_num; idx < new_numqs; idx++) {
++			q_ctx[idx].q_handle = ICE_INVAL_Q_HANDLE;
++			q_ctx[idx].q_teid = ICE_INVAL_TEID;
++		}
++
+ 		vsi_ctx->lan_q_ctx[tc] = q_ctx;
+ 		vsi_ctx->num_lan_q_entries[tc] = new_numqs;
+ 	}
 -- 
 2.40.1
 
