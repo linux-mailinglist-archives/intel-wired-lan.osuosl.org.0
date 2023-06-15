@@ -1,88 +1,183 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42020731970
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 15:01:06 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76FD1731A4E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 15:42:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABAA441FB2;
-	Thu, 15 Jun 2023 13:01:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABAA441FB2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 45D1A418FB;
+	Thu, 15 Jun 2023 13:42:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 45D1A418FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686834064;
-	bh=I1cJhSYSQ3k+tUtz/LKwVaHFiOBzDEeuYBDw/Ku5T5c=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1686836542;
+	bh=d7/g2cWWA9vpExATQ23bXePOt53OargQVVpXMNnAHVU=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mmzZlhpJG+KFoD06v0rVtVAEfXpwUBnu+6OlwmPUsfmjpCXXYuuYGdik6xb8w1yz6
-	 s+iP29Q7K4PfD+XslYJrK5BIf4He5kF8qdjpxshuNQ6ujf/LJtVIYjyW64JMVh3Xv8
-	 GMeXZu9BJZhSNIYW0j7strpuaMvQj+BlUDkavZCJT2UzuYuPhEQlu5okXFcXqvSoym
-	 h7r9u87hgcKsirII9ug+wUTN7hZsmBK0dUVIoJG49+vQ2G383fAnHy3/iQortL4Sjl
-	 tGudu+sFmj4XWPiX4rRlEdFmRZJNQ+YqgXIz4kT5G1ZsOiRoVQpdxUF69WsVbay/YW
-	 JCtCVr68clRPA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bb6Ymam8YLmq; Thu, 15 Jun 2023 13:01:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D4B9A41FB0;
-	Thu, 15 Jun 2023 13:01:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4B9A41FB0
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D9D4D1BF831
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:00:56 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B2A70404E9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:00:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2A70404E9
+	b=HRSUJUy7MZQxzoAYUxRxyjhKZyVicBnxfV5R7NO9vdHLJKhEsyQUINmkgb94xMW3L
+	 SUlX01hzNQPcVUk+qACx6Fp2aLiMJUlkky5pqppWGbt4qI2nsBKTuFwX0HU15RCZbF
+	 AfSuX3O1fbvjhxiXItZIEWaqgL/RhDUL+BD4opZC5+IFpEZsIk5WNTTg0HqcFVaviH
+	 +3kjYhV/Raq3R4Ab5pBnDzMjnN7zxAh/gDsDuniastjXp+HwKNHVDekS9R7jlHGD9R
+	 Uizwg9+8GA8bewGGdZ66srdXsn6Jf6oGtoyj4rHLTj0E/mu4INDnHcfZP7usU5BK03
+	 Kc8OYWVZrJ6Rw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TgxOgBMW2ts3 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 13:00:56 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k9JQQP8HriJm; Thu, 15 Jun 2023 13:42:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 83CAE400D8;
+	Thu, 15 Jun 2023 13:42:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83CAE400D8
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id ADF371BF30B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:42:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6DE5541F9E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:42:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6DE5541F9E
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sH0ExirMjNCY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 13:42:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D248F400D8
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D248F400D8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:00:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="424794843"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="424794843"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2023 05:59:31 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2136741FC8
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2136741FC8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 13:42:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="356408544"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="356408544"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2023 06:42:11 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="825259773"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="825259773"
-Received: from wasp.igk.intel.com ([10.102.20.192])
- by fmsmga002.fm.intel.com with ESMTP; 15 Jun 2023 05:59:29 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 15 Jun 2023 14:38:30 +0200
-Message-Id: <20230615123830.155927-5-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230615123830.155927-1-michal.swiatkowski@linux.intel.com>
-References: <20230615123830.155927-1-michal.swiatkowski@linux.intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="782522481"
+X-IronPort-AV: E=Sophos;i="6.00,245,1681196400"; d="scan'208";a="782522481"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga004.fm.intel.com with ESMTP; 15 Jun 2023 06:42:10 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Thu, 15 Jun 2023 06:42:09 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Thu, 15 Jun 2023 06:42:09 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Thu, 15 Jun 2023 06:42:09 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.102)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Thu, 15 Jun 2023 06:42:07 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Vj4s7hijdnQNoqq+FWReqxIWv4a7G0OgeHfSjs1wUnibfoAaG3GABxXcgNm0L9bD4pdTGDg44BT6AYYXnyYI7+fMhuthec3PRwPlKBG/HfryjX1vIpm9lUkM23NnUzN8IDUIaxZql2iim32FzNV/t+mkZ6xZ5yrsqUI6JSV1zd2qMTL70wPyId/PO/5IRxkofJtIattuY09Z9vbSRfXSDMzGNRkb5CAfQiNURDdn+kZLeAMbY//pXARfLotSovZwzQ0IoV+CxRhNaYAtnmsSVqtQ7xHirGvnYeXaKQWjb0lvYnToySEGcmvBG2PcuwXiU2rQgMI4yofDUvmhhX7AoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DeRrVA8z8DHzZsUPOCRSijPr54Z4whodI8kdH8N6y+4=;
+ b=DqZfWaOaAUY7uSx3Cr4ODrA7Nsh+2Oix306yFY0mXQR8JZxD+LR6ZaS3uoC/hv/7nvbXZY7o7Mo3lWFGQbfXtmoD+0Wmf10BhRnCLv4tnJaIgxltv49eX5aHBz9MfIqG4o9kETOJWR6d+c0CUZKYmm4qj7NBka9PM/BoY49UfDE3TUUW3aW8GL/usnV6YXkoX4sdlkF0vG74HqN1HV63NrfPMGtbd4qyALC5uB6KVfPbj0Clki11mxuOEX48wzPGYjnqYIWQwmJlckKgDPo13Ck3t7RdB0uVdde/DKf0uUM4x/q5cJM7/MGoBBmbBdLidn3eZO01LezcDtOKycsiRw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
+ PH7PR11MB7097.namprd11.prod.outlook.com (2603:10b6:510:20c::6) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6455.44; Thu, 15 Jun 2023 13:42:03 +0000
+Received: from DM6PR11MB4657.namprd11.prod.outlook.com
+ ([fe80::24bd:974b:5c01:83d6]) by DM6PR11MB4657.namprd11.prod.outlook.com
+ ([fe80::24bd:974b:5c01:83d6%3]) with mapi id 15.20.6500.025; Thu, 15 Jun 2023
+ 13:42:03 +0000
+From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Thread-Topic: [RFC PATCH v8 02/10] dpll: spec: Add Netlink spec in YAML
+Thread-Index: AQHZmszr2BJDDEOJ60yRPuK1IWG2S6+EOc6AgAeqEYA=
+Date: Thu, 15 Jun 2023 13:42:02 +0000
+Message-ID: <DM6PR11MB4657F2003E744E0462FD5E7D9B5BA@DM6PR11MB4657.namprd11.prod.outlook.com>
+References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
+ <20230609121853.3607724-3-arkadiusz.kubalewski@intel.com>
+ <ZISjMUcpmUTBXIOA@nanopsycho>
+In-Reply-To: <ZISjMUcpmUTBXIOA@nanopsycho>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|PH7PR11MB7097:EE_
+x-ms-office365-filtering-correlation-id: 7ab41417-6874-43e1-9bc7-08db6da64d1d
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: tQw4xzIaDIZk9PJabZjLyjhQtB+ib9NwFGrnQhkE7S0hJ2a6EzLOGVLk22HkN6U//lDLeMTXeqv4oS+sQZLXyW23eajawYiPBvQT0Qwpm2y+eL9qJ5sM7yainIisjmG1ROTjHVU9L+hYN9UQeV6UmDCtQ/agtRYboLkZ+oq+MEPleyvdP13PP/CdhNwXSMZWKfPIC5IoIWdwkopCh3uUyJOYBYm074ZxAgXp8fkm7irhf1QB3V7Tb4jjDNVUpeLjZO9kJffyKIN85+bYI7r8XrmY+gJNQ9pdz8x1kR62VUJkRcIg9vCFgsWP3q7SzrlqGh9WP1ZBziS7XjsFarM+fq1zV9+QVwLBbIQD5x0OX8PAyI/zL8FFzrl6ZiHe6FVC/AKNW+bHjZ4rYzg0t5sou9ikqhfpMNnd/JB3x1opaDhO2uE0IvR51chE68IDFbPszrKmQB33AuykPVpP1tktXLjUESq7WA+W858v1Xi886GFWZ66XXzAvUZOvne6FwMXfbVs5RFV79wSXGlsegCzCzgvIsExv9dgx0nqJPCCui1fsYraui3qoN0mmtrSqpyoO6wYnZMMB6CpdD5FgX640S6QU7+FLj2+NUvsegLXtVuVwpVOSui6WJYbyP4AjCjT
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(396003)(346002)(136003)(376002)(39860400002)(451199021)(38070700005)(52536014)(33656002)(86362001)(7416002)(2906002)(7406005)(71200400001)(55016003)(5660300002)(7696005)(186003)(83380400001)(9686003)(6506007)(26005)(82960400001)(122000001)(54906003)(66476007)(66446008)(4326008)(76116006)(66946007)(66556008)(64756008)(478600001)(316002)(38100700002)(8676002)(8936002)(6916009)(41300700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0OwbbEj4vV9cvcAocJw2RMKX+RPVyG9oAJ71OUjfOkey2zUPHbkPLf7jnPzi?=
+ =?us-ascii?Q?ZRpNS7cL5PEZ8DMGhiNJTSnTRqNQBIAS8yRGg0JPSyHudxqGcfNx2iMHk4oB?=
+ =?us-ascii?Q?pcZGLSNAJOBkE0wv1sU+56RlUfOeph8AGMX0TvspFxLqBxtbEEzcRQXYn2EC?=
+ =?us-ascii?Q?mT+REKReO2jLD6YWBxgtJ5XbZBnaGfL7qyWv3lBTQrR7Iq2B90GKYXvJr8nH?=
+ =?us-ascii?Q?i8SSbMGbk1fGv7mWr6CaMSIh4nlJ0+VHc9Vdw/gI3qE0fbSCYjvh2zbmM4D7?=
+ =?us-ascii?Q?/GDRH3S1Rw/WFAb5rJ+fndY2afAKN8tApfOxeXbpXAsbDM7Abe/vz1eBAxBS?=
+ =?us-ascii?Q?w1ACLRihjWgE1uOOyLb83KwP5+UZ3CP14bjGgpF1rf1sn/kQW0fqAFWXVhPe?=
+ =?us-ascii?Q?jpv2iMMjh1dS4x4DvgEHoxhKL04NO+3L1bbjLv0nHnIJrdEazfap4qO/fNav?=
+ =?us-ascii?Q?4OuVe//YqQQSxPLCeOB9gKocbLZmRR+xuXQwY0aEj+DhGLz9mAM+iU+H9OTl?=
+ =?us-ascii?Q?Yj9X+zYY4p+VBmeXetn6S9J9vVG8yDTcszHh2qxwzc0qiBK4teFqhuuNzE3J?=
+ =?us-ascii?Q?unWWWpnacOR7WuuqDwN1/bb57iUDo6dG8Je0jmGVcWkM0ugSdkrx6VYQvR2g?=
+ =?us-ascii?Q?gWlYivtfkGd7x4RQg5fpprYKbqt1YlgoqNmYc/GA2eJaqptFjfx+T/o1Ux5d?=
+ =?us-ascii?Q?7qzcHbQvawYawKj7prflhYEK8+kIWzHtI1AArzGZw+9IbFJsZhu5W3ZvByFO?=
+ =?us-ascii?Q?QctFwp2UuAqjXNQ+l0ljMSloU/x/EBNV00BdhT//u9FGZjTZeHijtSpP79Yv?=
+ =?us-ascii?Q?JLODWdz00j3DKASPs09paNh+qKhk56LZdh9nkcQczxws2842KGnmq64LQGF+?=
+ =?us-ascii?Q?mJa+ZLg6xjKTOSZedYJHbSKRghe6u7DY3A5VVOKVRt0pMbwITOdaYf6+1I8c?=
+ =?us-ascii?Q?N6BqOcbsmZEpnLiSCM7t/iW/X9WelJ7nzEfHjV7cssX+YMb4xMr50K0qjqCO?=
+ =?us-ascii?Q?aKCGkWUq2mAtN+qOdcdmF9GKtfkExTARnu4D2cDVHLNqt3BT4Vc3yiDO4Me+?=
+ =?us-ascii?Q?8jNZNPxIILfsQ8VpGVHIpgx+mPiPPACRQFCEkLYGH4huRaEpRUonKEITDbSx?=
+ =?us-ascii?Q?pBGOH6YRsWEPtYSKKteMMXqvIIMqhdYWc98VFxinQl7aI/vrhUYPM5vYMOWz?=
+ =?us-ascii?Q?Rl3ZpdhSQIJKJIwWcebLN/8xyjctwybxzIy2O1+DfPyYaeHC5ESHzRtDndIv?=
+ =?us-ascii?Q?1XzBDK/igKoHoM0+xEvlU6oFgWeBZsTx6rdZB9E+nfTJDDkNA9Tt6gZ6QM1w?=
+ =?us-ascii?Q?ILD2xVdQFyiFPRyTwLzmV5YrduGlmJn/X3M8+RdAOserhbdNJBIOo1oyRGey?=
+ =?us-ascii?Q?Lkgo0sT9XSw5DjEEFOBrEy1AgFfMLEXhDlJYntcxPDqblp3Xh+mHQRYGKwSv?=
+ =?us-ascii?Q?OvRTEDLoaJO2zDizyDFGJX1HAeMGj/TpFraH+u8DRIOkBvoVDkxYVusp1x4m?=
+ =?us-ascii?Q?cXLFUC65qbMxFsVR2aXdMEZqFkL9m2QDADspDYbejSjYobfs/TGtYNFs/c4I?=
+ =?us-ascii?Q?fbYqWRppByQ/yC/jIb9SZH0cW76kwufc03ZPq4m+fQK4S0BD8IyJjE2btSqN?=
+ =?us-ascii?Q?Yg=3D=3D?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7ab41417-6874-43e1-9bc7-08db6da64d1d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2023 13:42:02.8498 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OTUmTs0G4LKmLr/YoMKT1PKYRt8T9iKNKRni/Jjboc8rPPfxohmTj7AaJ1Kxbt94aTewX/4yZoFf6R5Esd8kb0p+P6HUhE9OqjZ9cEeWUNI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7097
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686834055; x=1718370055;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=i9UIlvuRTaS3ZKgBOXyiRDAuXi0ltYQuP4N2h9H7+5c=;
- b=AesEVu4amfcdrQ4ElLMiz75Xm1xp+RTs38wpzO1b8n090/xb9Wf3EJQW
- 1hkToxsIV2hhYzmpIgUz4AkPzPyAxgSAvijwoQhx7nao9oKTlM8ftz27t
- kfjhrDDAJaE4rc+gdh2zHRJvLlBAyz+FSP89bdK2Qlqd1tD0R1kKBHEKe
- 0SUQQt6dkPOUfIrILcpQ2abkp/bp4ook3aiD8ga/O3dWCJXVUcFsFtvmb
- vchdwwnS00+pyuwWvonV04gRBZDWJkHPM6IBBnJSmRDhnpKClpc2woCE8
- MiLOHVP/PY4bGd4V2Y6cSw4myt8y0b3dVFOH/GtseVSl4Yh6D0U56rXPt
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1686836533; x=1718372533;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=wCsXpDLnrIIjeXVTbgwmAPZVxPjNB9j2ZOUcOVxLBpg=;
+ b=SA9AJeJRTenbxWVLemaEdvgws/dVjoX/JNF8EWBdmr1O32IIXrQqDmoF
+ HXzU6M2DADqJU4QUqJeSs58owGhA95n0d4y1TUiZ6NfZdfWHLNT8Y4LgA
+ hHegBzPJg4kqHfEy91wYrcGoWVm1MJrc8IgBaD3PeXjTTCgDewnCa8idJ
+ xgOlckhaCqzaHAYTaWAhXE1i+9GFxf7Kk9/fg0AMR0Im0mqMsZZG/T6hj
+ iWpYs6qVQsycp12bYsfAjHdvvLsGVMdMOl2hPJKfKoKbm68arIHN+RUxt
+ JU5wuVtdQcVd7GjDqAW9rqwAadziTSY18D42frOhmV0xsM1Yva0BvC22x
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AesEVu4a
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 4/4] ice: manage VFs MSI-X
- using resource tracking
+ header.a=rsa-sha256 header.s=Intel header.b=SA9AJeJR
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 02/10] dpll: spec: Add Netlink
+ spec in YAML
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,258 +190,450 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com
+Cc: "geert+renesas@glider.be" <geert+renesas@glider.be>,
+ "mst@redhat.com" <mst@redhat.com>, "razor@blackwall.org" <razor@blackwall.org>,
+ "phil@nwl.cc" <phil@nwl.cc>, "javierm@redhat.com" <javierm@redhat.com>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "benjamin.tissoires@redhat.com" <benjamin.tissoires@redhat.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "lucien.xin@gmail.com" <lucien.xin@gmail.com>,
+ "leon@kernel.org" <leon@kernel.org>, "corbet@lwn.net" <corbet@lwn.net>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "masahiroy@kernel.org" <masahiroy@kernel.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>, "vadfed@meta.com" <vadfed@meta.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "airlied@redhat.com" <airlied@redhat.com>, "vadfed@fb.com" <vadfed@fb.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>,
+ "ricardo.canuelo@collabora.com" <ricardo.canuelo@collabora.com>,
+ "arnd@arndb.de" <arnd@arndb.de>, "idosch@nvidia.com" <idosch@nvidia.com>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "claudiajkang@gmail.com" <claudiajkang@gmail.com>,
+ "kuniyu@amazon.com" <kuniyu@amazon.com>,
+ "jacek.lawrynowicz@linux.intel.com" <jacek.lawrynowicz@linux.intel.com>,
+ "liuhangbin@gmail.com" <liuhangbin@gmail.com>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "nicolas.dichtel@6wind.com" <nicolas.dichtel@6wind.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "axboe@kernel.dk" <axboe@kernel.dk>, "sj@kernel.org" <sj@kernel.org>,
+ "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
+ "linux@zary.sk" <linux@zary.sk>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "ogabbay@kernel.org" <ogabbay@kernel.org>,
+ "nipun.gupta@amd.com" <nipun.gupta@amd.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "andy.ren@getcruise.com" <andy.ren@getcruise.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>, "M,
+ Saeed" <saeedm@nvidia.com>, "davem@davemloft.net" <davem@davemloft.net>,
+ "Olech, Milena" <milena.olech@intel.com>,
+ "hkallweit1@gmail.com" <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Track MSI-X for VFs using bitmap, by setting and clearing bitmap during
-allocation and freeing.
+>From: Jiri Pirko <jiri@resnulli.us>
+>Sent: Saturday, June 10, 2023 6:22 PM
+>
+>Fri, Jun 09, 2023 at 02:18:45PM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>Add a protocol spec for DPLL.
+>>Add code generated from the spec.
+>>
+>>Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+>>Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+>>Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+>>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>>---
+>> Documentation/netlink/specs/dpll.yaml | 466 ++++++++++++++++++++++++++
+>> drivers/dpll/dpll_nl.c                | 161 +++++++++
+>> drivers/dpll/dpll_nl.h                |  50 +++
+>> include/uapi/linux/dpll.h             | 184 ++++++++++
+>> 4 files changed, 861 insertions(+)
+>> create mode 100644 Documentation/netlink/specs/dpll.yaml
+>> create mode 100644 drivers/dpll/dpll_nl.c
+>> create mode 100644 drivers/dpll/dpll_nl.h
+>> create mode 100644 include/uapi/linux/dpll.h
+>>
+>>diff --git a/Documentation/netlink/specs/dpll.yaml
+>>b/Documentation/netlink/specs/dpll.yaml
+>>new file mode 100644
+>>index 000000000000..f7317003d312
+>>--- /dev/null
+>>+++ b/Documentation/netlink/specs/dpll.yaml
+>>@@ -0,0 +1,466 @@
+>>+# SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-
+>>Clause)
+>>+
+>>+name: dpll
+>>+
+>>+doc: DPLL subsystem.
+>>+
+>>+definitions:
+>>+  -
+>>+    type: enum
+>>+    name: mode
+>>+    doc: |
+>>+      working-modes a dpll can support, differentiate if and how dpll
+>>selects
+>
+>s/working-modes/working modes/
+>s/differentiate/differentiates/
+>?
 
-Try to linearize irqs usage for VFs, by freeing them and allocating once
-again. Do it only for VFs that aren't currently running.
+Fixed.
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_sriov.c | 170 ++++++++++++++++++---
- 1 file changed, 151 insertions(+), 19 deletions(-)
+>
+>
+>>+      one of its inputs to syntonize with it, valid values for DPLL_A_MODE
+>>+      attribute
+>>+    entries:
+>>+      -
+>>+        name: manual
+>>+        doc: input can be only selected by sending a request to dpll
+>>+        value: 1
+>>+      -
+>>+        name: automatic
+>>+        doc: highest prio, valid input, auto selected by dpll
+>
+>s/valid input, auto selected by dpll/input pin auto selected by dpll/
+>?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index e20ef1924fae..78a41163755b 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -246,22 +246,6 @@ static struct ice_vsi *ice_vf_vsi_setup(struct ice_vf *vf)
- 	return vsi;
- }
- 
--/**
-- * ice_calc_vf_first_vector_idx - Calculate MSIX vector index in the PF space
-- * @pf: pointer to PF structure
-- * @vf: pointer to VF that the first MSIX vector index is being calculated for
-- *
-- * This returns the first MSIX vector index in PF space that is used by this VF.
-- * This index is used when accessing PF relative registers such as
-- * GLINT_VECT2FUNC and GLINT_DYN_CTL.
-- * This will always be the OICR index in the AVF driver so any functionality
-- * using vf->first_vector_idx for queue configuration will have to increment by
-- * 1 to avoid meddling with the OICR index.
-- */
--static int ice_calc_vf_first_vector_idx(struct ice_pf *pf, struct ice_vf *vf)
--{
--	return pf->sriov_base_vector + vf->vf_id * pf->vfs.num_msix_per;
--}
- 
- /**
-  * ice_ena_vf_msix_mappings - enable VF MSIX mappings in hardware
-@@ -528,6 +512,52 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 	return 0;
- }
- 
-+/**
-+ * ice_sriov_get_irqs - get irqs for SR-IOV usacase
-+ * @pf: pointer to PF structure
-+ * @needed: number of irqs to get
-+ *
-+ * This returns the first MSI-X vector index in PF space that is used by this
-+ * VF. This index is used when accessing PF relative registers such as
-+ * GLINT_VECT2FUNC and GLINT_DYN_CTL.
-+ * This will always be the OICR index in the AVF driver so any functionality
-+ * using vf->first_vector_idx for queue configuration_id: id of VF which will
-+ * use this irqs
-+ *
-+ * Only SRIOV specific vectors are tracked in sriov_irq_bm. SRIOV vectors are
-+ * allocated from the end of global irq index. First bit in sriov_irq_bm means
-+ * last irq index etc. It simplifies extension of SRIOV vectors.
-+ * They will be always located from sriov_base_vector to the last irq
-+ * index. While increasing/decreasing sriov_base_vector can be moved.
-+ */
-+static int ice_sriov_get_irqs(struct ice_pf *pf, u16 needed)
-+{
-+	int res = bitmap_find_next_zero_area(pf->sriov_irq_bm,
-+					     pf->sriov_irq_size, 0, needed, 0);
-+	/* conversion from number in bitmap to global irq index */
-+	int index = pf->sriov_irq_size - res - needed;
-+
-+	if (res >= pf->sriov_irq_size || index < pf->sriov_base_vector)
-+		return -ENOENT;
-+
-+	bitmap_set(pf->sriov_irq_bm, res, needed);
-+	return index;
-+}
-+
-+/**
-+ * ice_sriov_free_irqs - free irqs used by the VF
-+ * @pf: pointer to PF structure
-+ * @vf: pointer to VF structure
-+ */
-+static void ice_sriov_free_irqs(struct ice_pf *pf, struct ice_vf *vf)
-+{
-+	/* Move back from first vector index to first index in bitmap */
-+	int bm_i = pf->sriov_irq_size - vf->first_vector_idx - vf->num_msix;
-+
-+	bitmap_clear(pf->sriov_irq_bm, bm_i, vf->num_msix);
-+	vf->first_vector_idx = 0;
-+}
-+
- /**
-  * ice_init_vf_vsi_res - initialize/setup VF VSI resources
-  * @vf: VF to initialize/setup the VSI for
-@@ -541,7 +571,9 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
- 	struct ice_vsi *vsi;
- 	int err;
- 
--	vf->first_vector_idx = ice_calc_vf_first_vector_idx(pf, vf);
-+	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	if (vf->first_vector_idx < 0)
-+		return -ENOMEM;
- 
- 	vsi = ice_vf_vsi_setup(vf);
- 	if (!vsi)
-@@ -984,6 +1016,52 @@ u32 ice_sriov_get_vf_total_msix(struct pci_dev *pdev)
- 	return pf->sriov_irq_size - ice_get_max_used_msix_vector(pf);
- }
- 
-+static int ice_sriov_move_base_vector(struct ice_pf *pf, int move)
-+{
-+	if (pf->sriov_base_vector - move < ice_get_max_used_msix_vector(pf))
-+		return -ENOMEM;
-+
-+	pf->sriov_base_vector -= move;
-+	return 0;
-+}
-+
-+static void ice_sriov_remap_vectors(struct ice_pf *pf, u16 restricted_id)
-+{
-+	u16 vf_ids[ICE_MAX_SRIOV_VFS];
-+	struct ice_vf *tmp_vf;
-+	int to_remap = 0, bkt;
-+
-+	/* For better irqs usage try to remap irqs of VFs
-+	 * that aren't running yet
-+	 */
-+	ice_for_each_vf(pf, bkt, tmp_vf) {
-+		/* skip VF which is changing the number of MSI-X */
-+		if (restricted_id == tmp_vf->vf_id ||
-+		    test_bit(ICE_VF_STATE_ACTIVE, tmp_vf->vf_states))
-+			continue;
-+
-+		ice_dis_vf_mappings(tmp_vf);
-+		ice_sriov_free_irqs(pf, tmp_vf);
-+
-+		vf_ids[to_remap] = tmp_vf->vf_id;
-+		to_remap += 1;
-+	}
-+
-+	for (int i = 0; i < to_remap; i++) {
-+		tmp_vf = ice_get_vf_by_id(pf, vf_ids[i]);
-+		if (!tmp_vf)
-+			continue;
-+
-+		tmp_vf->first_vector_idx =
-+			ice_sriov_get_irqs(pf, tmp_vf->num_msix);
-+		/* there is no need to rebuild VSI as we are only changing the
-+		 * vector indexes not amount of MSI-X or queues
-+		 */
-+		ice_ena_vf_mappings(tmp_vf);
-+		ice_put_vf(tmp_vf);
-+	}
-+}
-+
- /**
-  * ice_sriov_set_msix_vec_count
-  * @vf_dev: pointer to pci_dev struct of VF device
-@@ -1002,8 +1080,9 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- {
- 	struct pci_dev *pdev = pci_physfn(vf_dev);
- 	struct ice_pf *pf = pci_get_drvdata(pdev);
-+	u16 prev_msix, prev_queues, queues;
-+	bool needs_rebuild = false;
- 	struct ice_vf *vf;
--	u16 queues;
- 	int id;
- 
- 	if (!ice_get_num_vfs(pf))
-@@ -1016,6 +1095,13 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- 	/* add 1 MSI-X for OICR */
- 	msix_vec_count += 1;
- 
-+	if (queues > min(ice_get_avail_txq_count(pf),
-+			 ice_get_avail_rxq_count(pf)))
-+		return -EINVAL;
-+
-+	if (msix_vec_count < ICE_MIN_INTR_PER_VF)
-+		return -EINVAL;
-+
- 	/* Transition of PCI VF function number to function_id */
- 	for (id = 0; id < pci_num_vf(pdev); id++) {
- 		if (vf_dev->devfn == pci_iov_virtfn_devfn(pdev, id))
-@@ -1030,14 +1116,60 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- 	if (!vf)
- 		return -ENOENT;
- 
-+	prev_msix = vf->num_msix;
-+	prev_queues = vf->num_vf_qs;
-+
-+	if (ice_sriov_move_base_vector(pf, msix_vec_count - prev_msix)) {
-+		ice_put_vf(vf);
-+		return -ENOSPC;
-+	}
-+
- 	ice_dis_vf_mappings(vf);
-+	ice_sriov_free_irqs(pf, vf);
-+
-+	/* Remap all VFs beside the one is now configured */
-+	ice_sriov_remap_vectors(pf, vf->vf_id);
-+
- 	vf->num_msix = msix_vec_count;
- 	vf->num_vf_qs = queues;
--	ice_vsi_rebuild(ice_get_vf_vsi(vf), ICE_VSI_FLAG_NO_INIT);
-+	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	if (vf->first_vector_idx < 0)
-+		goto unroll;
-+
-+	ice_vf_vsi_release(vf);
-+	if (vf->vf_ops->create_vsi(vf)) {
-+		/* Try to rebuild with previous values */
-+		needs_rebuild = true;
-+		goto unroll;
-+	}
-+
-+	dev_info(ice_pf_to_dev(pf),
-+		 "Changing VF %d resources to %d vectors and %d queues\n",
-+		 vf->vf_id, vf->num_msix, vf->num_vf_qs);
-+
- 	ice_ena_vf_mappings(vf);
- 	ice_put_vf(vf);
- 
- 	return 0;
-+
-+unroll:
-+	dev_info(ice_pf_to_dev(pf),
-+		 "Can't set %d vectors on VF %d, falling back to %d\n",
-+		 vf->num_msix, vf->vf_id, prev_msix);
-+
-+	vf->num_msix = prev_msix;
-+	vf->num_vf_qs = prev_queues;
-+	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	if (vf->first_vector_idx < 0)
-+		return -EINVAL;
-+
-+	if (needs_rebuild)
-+		vf->vf_ops->create_vsi(vf);
-+
-+	ice_ena_vf_mappings(vf);
-+	ice_put_vf(vf);
-+
-+	return -EINVAL;
- }
- 
- /**
--- 
-2.40.1
+Fixed.
 
+>
+>
+>>+      -
+>>+        name: holdover
+>>+        doc: dpll forced into holdover mode
+>>+      -
+>>+        name: freerun
+>>+        doc: dpll driven on system clk
+>
+>Thinking about modes "holdover" and "freerun".
+>1) You don't use them anywhere in this patchset, please remove them
+>   until they are needed. ptp_ocp and ice uses automatic, mlx5 uses
+>   manual. Btw, are there any other unused parts of UAPI? If yes, could
+>   you please remove them too?
+>
+>2) I don't think it is correct to have them.
+>   a) to achieve holdover:
+>      if state is LOCKED_HO_ACQ you just disconnect all input pins.
+>   b) to achieve freerun:
+>      if state LOCKED you just disconnect all input pins.
+>   So don't mangle the mode with status.
+>
+
+Well this is not entierly true, the mode is not a state.
+Technically in those modes the user would not be able to set any states
+on the pins.
+The modes are supported on the synchronizer chips we are using, altough
+the ice driver does not have this support enabled yet.
+So I am removing those for now, if they would be needed, we will submit the
+patches for it.
+
+>
+>>+    render-max: true
+>>+  -
+>>+    type: enum
+>>+    name: lock-status
+>>+    doc: |
+>>+      provides information of dpll device lock status, valid values for
+>>+      DPLL_A_LOCK_STATUS attribute
+>>+    entries:
+>>+      -
+>>+        name: unlocked
+>>+        doc: |
+>>+          dpll was not yet locked to any valid input (or is in mode:
+>>+            DPLL_MODE_FREERUN)
+>
+>Don't forget to remove the mention of mode freerun from here.
+>
+
+Fixed.
+
+>
+>>+        value: 1
+>>+      -
+>>+        name: locked
+>>+        doc: |
+>>+          dpll is locked to a valid signal, but no holdover available
+>>+      -
+>>+        name: locked-ho-acq
+>>+        doc: |
+>>+          dpll is locked and holdover acquired
+>>+      -
+>>+        name: holdover
+>>+        doc: |
+>>+          dpll is in holdover state - lost a valid lock or was forced
+>>+          by selecting DPLL_MODE_HOLDOVER mode (latter possible only
+>>+          when dpll lock-state was already DPLL_LOCK_STATUS_LOCKED,
+>>+          if dpll lock-state was not DPLL_LOCK_STATUS_LOCKED, the
+>>+          dpll's lock-state shall remain DPLL_LOCK_STATUS_UNLOCKED
+>>+          even if DPLL_MODE_HOLDOVER was requested)
+>
+>Don't forget to remove the mention of mode holdover from here.
+>
+
+Fixed.
+
+>
+>>+    render-max: true
+>>+  -
+>>+    type: const
+>>+    name: temp-divider
+>>+    value: 1000
+>>+    doc: |
+>>+      temperature divider allowing userspace to calculate the
+>>+      temperature as float with three digit decimal precision.
+>>+      Value of (DPLL_A_TEMP / DPLL_TEMP_DIVIDER) is integer part of
+>>+      temperature value.
+>>+      Value of (DPLL_A_TEMP % DPLL_TEMP_DIVIDER) is fractional part of
+>>+      temperature value.
+>>+  -
+>>+    type: enum
+>>+    name: type
+>>+    doc: type of dpll, valid values for DPLL_A_TYPE attribute
+>>+    entries:
+>>+      -
+>>+        name: pps
+>>+        doc: dpll produces Pulse-Per-Second signal
+>>+        value: 1
+>>+      -
+>>+        name: eec
+>>+        doc: dpll drives the Ethernet Equipment Clock
+>>+    render-max: true
+>>+  -
+>>+    type: enum
+>>+    name: pin-type
+>>+    doc: |
+>>+      defines possible types of a pin, valid values for DPLL_A_PIN_TYPE
+>>+      attribute
+>>+    entries:
+>>+      -
+>>+        name: mux
+>>+        doc: aggregates another layer of selectable pins
+>>+        value: 1
+>>+      -
+>>+        name: ext
+>>+        doc: external input
+>>+      -
+>>+        name: synce-eth-port
+>>+        doc: ethernet port PHY's recovered clock
+>>+      -
+>>+        name: int-oscillator
+>>+        doc: device internal oscillator
+>>+      -
+>>+        name: gnss
+>>+        doc: GNSS recovered clock
+>>+    render-max: true
+>>+  -
+>>+    type: enum
+>>+    name: pin-direction
+>>+    doc: |
+>>+      defines possible direction of a pin, valid values for
+>>+      DPLL_A_PIN_DIRECTION attribute
+>>+    entries:
+>>+      -
+>>+        name: input
+>>+        doc: pin used as a input of a signal
+>
+>I don't think I have any objections against "input", but out of
+>curiosity, why you changed that from "source"?
+>
+
+Agreed to previous version review comment from Jakub,
+to use either: input/output or source/sink naming scheme.
+
+>
+>>+        value: 1
+>>+      -
+>>+        name: output
+>>+        doc: pin used to output the signal
+>>+    render-max: true
+>>+  -
+>>+    type: const
+>>+    name: pin-frequency-1-hz
+>>+    value: 1
+>>+  -
+>>+    type: const
+>>+    name: pin-frequency-10-khz
+>>+    value: 10000
+>>+  -
+>>+    type: const
+>>+    name: pin-frequency-77_5-khz
+>>+    value: 77500
+>>+  -
+>>+    type: const
+>>+    name: pin-frequency-10-mhz
+>>+    value: 10000000
+>>+  -
+>>+    type: enum
+>>+    name: pin-state
+>>+    doc: |
+>>+      defines possible states of a pin, valid values for
+>>+      DPLL_A_PIN_STATE attribute
+>>+    entries:
+>>+      -
+>>+        name: connected
+>>+        doc: pin connected, active input of phase locked loop
+>>+        value: 1
+>>+      -
+>>+        name: disconnected
+>>+        doc: pin disconnected, not considered as a valid input
+>>+      -
+>>+        name: selectable
+>>+        doc: pin enabled for automatic input selection
+>>+    render-max: true
+>>+  -
+>>+    type: flags
+>>+    name: pin-caps
+>>+    doc: |
+>>+      defines possible capabilities of a pin, valid flags on
+>>+      DPLL_A_PIN_CAPS attribute
+>>+    entries:
+>>+      -
+>>+        name: direction-can-change
+>>+      -
+>>+        name: priority-can-change
+>>+      -
+>>+        name: state-can-change
+>>+
+>>+attribute-sets:
+>>+  -
+>>+    name: dpll
+>>+    enum-name: dpll_a
+>>+    attributes:
+>>+      -
+>>+        name: id
+>>+        type: u32
+>>+        value: 1
+>>+      -
+>>+        name: module-name
+>>+        type: string
+>>+      -
+>>+        name: clock-id
+>>+        type: u64
+>>+      -
+>>+        name: mode
+>>+        type: u8
+>>+        enum: mode
+>>+      -
+>>+        name: mode-supported
+>>+        type: u8
+>>+        enum: mode
+>>+        multi-attr: true
+>>+      -
+>>+        name: lock-status
+>>+        type: u8
+>>+        enum: lock-status
+>>+      -
+>>+        name: temp
+>>+        type: s32
+>>+      -
+>>+        name: type
+>>+        type: u8
+>>+        enum: type
+>>+      -
+>>+        name: pin-id
+>>+        type: u32
+>>+      -
+>>+        name: pin-board-label
+>>+        type: string
+>>+      -
+>>+        name: pin-panel-label
+>>+        type: string
+>>+      -
+>>+        name: pin-package-label
+>>+        type: string
+>
+>Wouldn't it make sense to add some small documentation blocks to the
+>attrs? IDK.
+>
+
+Actually already tried that, but after all they did not generate any docs
+for attr enums. So this need also fix in ynl-gen-c.py
+
+I think this would be useful, but only if we could use them in the dpll.rst.
+Right now it is not case, but we already try to incorporate other enums
+description there, for now it is broken, but will try to fix this in the near
+future.
+
+Thank you!
+Arkadiusz
+
+>
+>>+      -
+>>+        name: pin-type
+>>+        type: u8
+>>+        enum: pin-type
+>>+      -
+>>+        name: pin-direction
+>>+        type: u8
+>>+        enum: pin-direction
+>>+      -
+>>+        name: pin-frequency
+>>+        type: u64
+>>+      -
+>>+        name: pin-frequency-supported
+>>+        type: nest
+>>+        multi-attr: true
+>>+        nested-attributes: pin-frequency-range
+>>+      -
+>>+        name: pin-frequency-min
+>>+        type: u64
+>>+      -
+>>+        name: pin-frequency-max
+>>+        type: u64
+>>+      -
+>>+        name: pin-prio
+>>+        type: u32
+>>+      -
+>>+        name: pin-state
+>>+        type: u8
+>>+        enum: pin-state
+>>+      -
+>>+        name: pin-dpll-caps
+>>+        type: u32
+>>+      -
+>>+        name: pin-parent
+>>+        type: nest
+>>+        multi-attr: true
+>>+        nested-attributes: pin-parent
+>>+  -
+>>+    name: pin-parent
+>>+    subset-of: dpll
+>>+    attributes:
+>>+      -
+>>+        name: id
+>>+        type: u32
+>>+      -
+>>+        name: pin-direction
+>>+        type: u8
+>>+      -
+>>+        name: pin-prio
+>>+        type: u32
+>>+      -
+>>+        name: pin-state
+>>+        type: u8
+>>+      -
+>>+        name: pin-id
+>>+        type: u32
+>>+
+>>+  -
+>>+    name: pin-frequency-range
+>>+    subset-of: dpll
+>>+    attributes:
+>>+      -
+>>+        name: pin-frequency-min
+>>+        type: u64
+>>+      -
+>>+        name: pin-frequency-max
+>>+        type: u64
+>
+>[...]
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
