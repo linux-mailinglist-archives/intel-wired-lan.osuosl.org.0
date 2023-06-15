@@ -1,103 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A3BA731AB9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 16:02:22 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5C82731C1A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 17:02:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B890F408C5;
-	Thu, 15 Jun 2023 14:02:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B890F408C5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6325141949;
+	Thu, 15 Jun 2023 15:02:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6325141949
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686837740;
-	bh=bi+bwGYFU2PUMICKNUeeDVwFMEMUUNY3QnvfBJbU+Zc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ugXZkJKHZb4sN7XzGYT+4MzSS9BbijPoNsp65brgjKFP/e/m7H4oXwzXD7RTsvH5n
-	 6Bbf/7ey69CA2dAoZuUdzv1ky8EnaduZKB4w7Zpf/WBtFdr17TWxpDRyI6FuV9POTO
-	 hvKmTJoPeMBm2/GdSiQXShNkLBui7RoDNb8PPR+yhxjvhFepZ0aK5D5mwqjY5SmFU0
-	 sfeXv6wFTbVbiHzFryDx90ZyqcVccHm9N09MT/yEo7kq/cuqoEVqeFEuyhxnkphpix
-	 8exZoQnOmhiMMlaFXckS9rMyK0wcxUY4zJjOiJkL1dtgZW+gYgIzXgNL2vVvMdSFRV
-	 iH31BP13gbJGw==
+	s=default; t=1686841353;
+	bh=MP/wpTkLZfOffY7PJxAWTm5drTuT7KJ79sG0y8Bfnjk=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=5AbtNYr10o61Q7P348lnTRDOBMDDD4ORKSOVo4nV4MTgzyDgZQBnoQV4nowWxP/5X
+	 zj4IlFq5BXn2PD9InXTUIRsBSs70cKXbmLx/Q0dc4GymDoOz6sRoqXWTMtA9rFZ6Fj
+	 qrp+Y1sfEncb5cFthlkNZThepByUNbptvL1JIGwrrrgPJwhbEJbRa2TcDO+QL6PfQ8
+	 ll4QYOtMaKjvnPpxAhi8Mjcfq6pI7CFhk0hXuE0bRAJRqeTp3r+qiFCiy3OLKytkZe
+	 FU+Y7pjsbfM6yokSm+kOQvKZw0YirH2jw1kNSFQOYR+XeogHK/d8WOtT0jy2MdUH+H
+	 4jrAKvYA4clyA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LowfZoRX4Je9; Thu, 15 Jun 2023 14:02:19 +0000 (UTC)
+	with ESMTP id RbYiUvZ_ITjo; Thu, 15 Jun 2023 15:02:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 717FC402F4;
-	Thu, 15 Jun 2023 14:02:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 717FC402F4
+	by smtp2.osuosl.org (Postfix) with ESMTP id 41ECA41938;
+	Thu, 15 Jun 2023 15:02:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 41ECA41938
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2C9451BF30B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:02:15 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 645401BF32A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 09:46:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 045C983CD1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:02:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 045C983CD1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3A90641F56
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 09:46:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A90641F56
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id In3KC56vRjr4 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 14:02:14 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1B5D83CB6
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E1B5D83CB6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 14:02:13 +0000 (UTC)
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-3f8d1eb535eso17038215e9.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:02:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686837732; x=1689429732;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Iuyq1q4Civx77PzFHDpUKjHueDOZzYAPik1VN/lXMjU=;
- b=lHR8dtLdpUKYb3JPt5CzGSkjR3J6ki0bkwm5phASS3PDVPvP8zuHpEUk4A1PBCB1so
- NbJ5OsWV+rSBlrpqc+3JK+DCKpWGVsrE2UiSdbK/EDRwDDwnwntr8IHg4VKKOiwidbfj
- QtE9Pc+zwgIwQPSpO1Miy76KdAFOa5dzjT9Vf0D2TE2b8+dFZQ4Ah76EJazaY+mbOm8O
- NfTXi2BQ9r+S7UkMNtx6+UX+HH+ArWOzGUOC49KKlDcJoYLmGcQGR6Ep0mOIEmvlOwDW
- BA7xvunLnPgvF1A0wQ7Rq7hr/gcQeSXg0L+/AFq+QHT+Fodlv2P9FzD9SbOPmdjVC8jm
- 29LA==
-X-Gm-Message-State: AC+VfDwm9THd1pPtGdjA9Q3ywgNM+R7cg6bYtcPjTATmXca6ncn/BfyR
- bAN9+yKlBqiFx/ICPXtfVmxFVg==
-X-Google-Smtp-Source: ACHHUZ4iD1QD4PcU+1Mi7cLd3fj4RqTIZLLfpbM5IniOHsfJxvG3gxKMkIe8r+04/YXuNVSV3DhkBw==
-X-Received: by 2002:a05:600c:2204:b0:3f6:be1:b8d9 with SMTP id
- z4-20020a05600c220400b003f60be1b8d9mr12830537wml.6.1686837731830; 
- Thu, 15 Jun 2023 07:02:11 -0700 (PDT)
-Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
- o6-20020a05600c378600b003f42d8dd7d1sm20851147wmr.7.2023.06.15.07.02.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jun 2023 07:02:10 -0700 (PDT)
-Date: Thu, 15 Jun 2023 17:02:03 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Message-ID: <64c98e79-2de5-419a-9565-2523635bd3dc@kili.mountain>
-References: <20230613215440.2465708-1-vladimir.oltean@nxp.com>
- <20230613215440.2465708-7-vladimir.oltean@nxp.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id t3g7txHdn-9m for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 09:45:59 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B46641F51
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5B46641F51
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 09:45:58 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0537261BED;
+ Thu, 15 Jun 2023 09:45:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF640C433C8;
+ Thu, 15 Jun 2023 09:45:53 +0000 (UTC)
+From: Simon Horman <horms@kernel.org>
+Date: Thu, 15 Jun 2023 11:45:36 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230613215440.2465708-7-vladimir.oltean@nxp.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686837732; x=1689429732;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Iuyq1q4Civx77PzFHDpUKjHueDOZzYAPik1VN/lXMjU=;
- b=N4QpRNULdQTn1NUO/iUp8WyMddebbz+L8BZPtSAVMqhZ4jS80V1cWa4Pil0diJQkAw
- DhCHbqsSjI4uM7MgeYO67u5tP/INNBO5NKUjFlmbqaK7LSsGuxrZGQWp6lOhD8LotFLQ
- DupgDjg0yJmIL+/oLVAytEkkpOCG++boHf44jnB3L1ZBz14x2TD6git3VPmDOcfODst6
- aXTgk7lMzTtEc981/Gs1re5ndsa+DPQ0llX5aig1q+CmmP8EKhD7Or/BlHFcswyY5ZQm
- HYX25Pl2pbe0UPEtiJdgxy6LXQvqmy/67SuTOX41SnbFadNOjucM9s1lkqjt6TyXPJmu
- LhHw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=N4QpRNUL
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/9] net: netdevsim:
- create a mock-up PTP Hardware Clock driver
+Message-Id: <20230615-igc-err-ptr-v1-1-a17145eb8d62@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAL/dimQC/x2NwQrCQAwFf2XJ2cB2pSJeBT/Aq3jYpq9toKwlW
+ 0Uo/XeDxxkYZqMKU1S6hI0MH636Kg7NIZBMuYxg7Z0pxXSMp6ZlHYVhxstq3AKDIMm5j5m86HI
+ Fd5aLTN6U9zy7XAyDfv+LB91v11Cw0nPffyFv31Z7AAAA
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+X-Mailer: b4 0.12.2
+X-Mailman-Approved-At: Thu, 15 Jun 2023 15:02:27 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1686822357;
+ bh=VXmgec0SvoWNjD+zQJUGR2dz0bJtpAmkZ85WuhMZ1Vk=;
+ h=From:Date:Subject:To:Cc:From;
+ b=ul02Ap/uEzBhWv5cvpcsaJ49I13Y8VZvNH5Lz1HvhDCmylTKEAaFsm2M3XlB7l1E7
+ D9qWbeZtCI77KdL8iMwRa2zC26kh7u8TiVOK9Ja0OmiVBFdOemN/3NNEKpPigwEE8W
+ c96Vto88G0n29VaVkOeWa5A/KfqIZy7+ZM5/ZkWwVNuoryumL7+mHaAS/+swfQECKv
+ HdXS+ZbvFgplp//3I6dI0sGR54dkLMw/6hZuYIQtCe4SvHO9ThGbRNYXmJM6OUQMVM
+ u/NQIweyXo9T0lWOtT/+xoUjwIIQTNZ9FsVhd7WxrIGSpCZp2q5nkvueUoo0WjRCnP
+ EqWj4wLbDtf+Q==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=ul02Ap/u
+Subject: [Intel-wired-lan] [PATCH RFC net] igc: Avoid dereference of ptr_err
+ in igc_clean_rx_irq()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,65 +92,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
- netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Maxim Georgiev <glipus@gmail.com>, Cong Wang <xiyou.wangcong@gmail.com>,
- Peilin Ye <yepeilin.cs@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Zhengchao Shao <shaozhengchao@huawei.com>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Andre Guedes <andre.guedes@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jithu Joseph <jithu.joseph@intel.com>,
+ netdev@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Vedang Patel <vedang.patel@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jun 14, 2023 at 12:54:37AM +0300, Vladimir Oltean wrote:
-> +
-> +	spin_lock_init(&phc->lock);
-> +	timecounter_init(&phc->tc, &phc->cc, 0);
-> +
-> +	phc->clock = ptp_clock_register(&phc->info, dev);
-> +	if (IS_ERR_OR_NULL(phc->clock)) {
-> +		err = PTR_ERR_OR_ZERO(phc->clock);
-> +		goto out_free_phc;
-> +	}
-> +
-> +	ptp_schedule_worker(phc->clock, MOCK_PHC_REFRESH_INTERVAL);
-> +
-> +	return phc;
-> +
-> +out_free_phc:
-> +	kfree(phc);
-> +out:
-> +	return ERR_PTR(err);
-> +}
+In igc_clean_rx_irq() the result of a call to igc_xdp_run_prog() is assigned
+to the skb local variable. This may be an ERR_PTR.
 
-Simon added me to the CC list because this code generates a Smatch
-warning about passing zero to ERR_PTR() which is NULL.  I have written
-a blog about this kind of warning.
+A little later the following is executed, which seems to be a
+possible dereference of an ERR_PTR.
 
-https://staticthinking.wordpress.com/2022/08/01/mixing-error-pointers-and-null/
+	total_bytes += skb->len;
 
-Returning NULL can be perfectly fine, but in this code here it will lead
-to a crash.  The caller checks for error pointers but after that it
-assumes that "phc" is a non-NULL pointer.
+Avoid this problem by continuing the loop in which all of the
+above occurs once the handling of the NULL case completes.
 
-The IS_ERR_OR_NULL() check is not correct.  It should just be if
-if (IS_ERR()).
+This proposed fix is speculative - I do not have deep knowledge of this
+driver.  And I am concerned about the effect of skipping the following
+logic:
 
-However, the question is can this driver work without a phc->clock?
-Depending on the answer you have to do one of two things.
-If yes, then the correct thing is to add NULL checks throughout the
-driver to prevent a NULL dereference.
+  igc_put_rx_buffer(rx_ring, rx_buffer, rx_buffer_pgcnt);
+  cleaned_count++;
 
-If no, then the correct thing is to ensure that CONFIG_PTP_1588_CLOCK is
-enabled using Kconfig.  We should never have a driver where we compile
-it and then it can't probe.
+Flagged by Smatch as:
 
-regards,
-dan carpenter
+  .../igc_main.c:2467 igc_xdp_run_prog() warn: passing zero to 'ERR_PTR'
 
+Compile tested only.
+
+Fixes: 26575105d6ed ("igc: Add initial XDP support")
+Signed-off-by: Simon Horman <horms@kernel.org>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 88145c30c919..b58c8a674bd1 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2586,6 +2586,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 
+ 			total_packets++;
+ 			total_bytes += size;
++			continue;
+ 		} else if (skb)
+ 			igc_add_rx_frag(rx_ring, rx_buffer, skb, size);
+ 		else if (ring_uses_build_skb(rx_ring))
 
 _______________________________________________
 Intel-wired-lan mailing list
