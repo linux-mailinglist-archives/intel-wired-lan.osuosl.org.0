@@ -1,150 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 999C8731185
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 09:58:42 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C87EB731277
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 10:42:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BA55C41730;
-	Thu, 15 Jun 2023 07:58:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA55C41730
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4B8B2418E9;
+	Thu, 15 Jun 2023 08:41:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B8B2418E9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686815920;
-	bh=AVYdXKy1xzaR/R8dWP0OI9XhogpGTh+W11w75JLUD00=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=hneOsebw0+jmGhB3LbfHcPY/rfrsAqJGeJEBomseXITi54AepvmXhFdm9JfxgKY+G
-	 3Wm65T7bw+hrPB0MdhJ7cHYwLrR1r7wPbJEDnDATVaVWd58Y3ndg7yZaQR584QROAl
-	 9gW7rRCNCk1HVOo+ATzYIZdvg4mbtz7wqti1O7BqQW8jJu5NaBHibPd0iKYby7kwRH
-	 w0uJKXHyqMS9wN6L8Hg2mlGvgGMCmKOIRs6qgzDGOexPj+Uv355gjxcaWizAZfc5/X
-	 nwWwqMilcOJRydaK9XsGb2NJVocVIu8aSx1Ri+eEO9G3fkHlIH1mtz6o42RjLRH/ci
-	 oRDxEbX+mc0nA==
+	s=default; t=1686818518;
+	bh=OfjPfnVDevB4t3XI+jcySKHOQOzHTfwnpyr1n97MbiM=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=L2/d/NoALWufC5Un+NEm44gDMb0JSwCYSAwdDfUT8h/MNwjEm2WcOR0/RFLYpq6pG
+	 IvqMAuOxv3fh24kZqGplLYi9gnipuL5PJUgzTQWgUNAnd07nQw7e2HCLaDyFcSz6gF
+	 H3Vre43j33yMhBhoUDyA9jQxmC3dMNivDqSJFrEWFo9XqheRswv90cCCulyhQ05+G3
+	 UEm1nJO8xhmucFCJBcg1zeW4wdNe0XkDDgiWa/lZ1/z6NuZdvEMn72sQQPXsYAsUI+
+	 ykJJ5/3Okc0AlDDoBCI7wEJeHzy0FMJrYfkycYfEdIMTinL4ivXk8wrS5q+oEhBp1C
+	 NV61VB8mlRKwQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fXfdezSxQIFA; Thu, 15 Jun 2023 07:58:39 +0000 (UTC)
+	with ESMTP id JLDiDtJRReLy; Thu, 15 Jun 2023 08:41:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7E64740360;
-	Thu, 15 Jun 2023 07:58:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E64740360
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8B0A640017;
+	Thu, 15 Jun 2023 08:41:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8B0A640017
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6DCAF1BF321
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:58:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 958CF1BF283
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 08:41:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 52C5880EB9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:58:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52C5880EB9
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7A99D83AD2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 08:41:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A99D83AD2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8uYDSfAe9YZn for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 07:58:33 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B44680E39
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-sn1nam02on2127.outbound.protection.outlook.com [40.107.96.127])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8B44680E39
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 07:58:33 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MGlWu/Tsygs3KbFgVJFxpXvp+FWwP+ONYpcYXSGdeEdMeimA1F1QznyCKcPsjhmo7QyNDJb+Y5G6S6nN/2R3DT5BwRwp7quZeD9RIOZ5FDnmAdPoAlr5shU78v0ZwlwnnujVipT46kuZ/Ni8A0dQzC+bRfX+zCF5Ito6HLidV0wcWOtMZSWooig1THdSD1k1cGsMeNUzEA/0BRih+rgK5waMdcZj5c0IyGh9aeK4TqLnsNnrRF/y1iqikzYQZTyBEY31mWs6AfOSYmDIxyXVUEancHkgFUH7Q9sqO2jDeqZbi6r2YzHTqQYGmUbj2PhRs+LgFpR04y+qttAR3IKHXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/hgqcFAR9oWgfjzXT74uILVy54mUDzESgVGU/sn1sSA=;
- b=F0GxS6x024nIfr+b7zAeMFj1Mnz6BkW/iR/rXSGlyWBqkU4BfZ2+Mc/sRr0/yQc8cntiVkNsqtNFAUPro2B3zaEoHs+d3opiMoMcsEOO+4r5jnPZRt9KhFDq8smisxNfT8oPlmfL24sr4ymdrdvND1AaqrjQaWnCE16FAWl3QhZVqovjjeGnm/Be1CVo8Nf0XdxCvZxTj79jlk/UHVGJZDgr7v47OHnoLYhV0Q/CPGOE59EkDjsPNFmkLzBw6swsRQxAsbHJUmlBOWxnqJ+Hi3fhgx5moVkF8jvGasYJxdmSjoZXjY5d14Tub/uiKfoQLFL0r2LwO7BSeGscSiwrlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by SA1PR13MB6148.namprd13.prod.outlook.com (2603:10b6:806:337::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.38; Thu, 15 Jun
- 2023 07:58:30 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e%5]) with mapi id 15.20.6500.025; Thu, 15 Jun 2023
- 07:58:30 +0000
-Date: Thu, 15 Jun 2023 09:58:22 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Message-ID: <ZIrEnitQEJ+P83wg@corigine.com>
-References: <20230613215440.2465708-1-vladimir.oltean@nxp.com>
- <20230613215440.2465708-7-vladimir.oltean@nxp.com>
- <ZIm8kK7plae8CLvV@corigine.com>
- <20230614221718.cx6yjiwrpik4iesw@skbuf>
-Content-Disposition: inline
-In-Reply-To: <20230614221718.cx6yjiwrpik4iesw@skbuf>
-X-ClientProxiedBy: AM0PR10CA0087.EURPRD10.PROD.OUTLOOK.COM
- (2603:10a6:208:15::40) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|SA1PR13MB6148:EE_
-X-MS-Office365-Filtering-Correlation-Id: f22b4bc7-5dc6-4a67-6a5a-08db6d764f29
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: iGvRAQeE7z/LPdaG8mf154luiEtyb28ZCTYdneWlqXFM/CxahYvInX3mziloIYAjqhoc5b9r0+aKBK1kxMFCot91raRHwl/snLsNnyVdEBvqvOZxmgJzXDVXkf+csWb+fNSbM4ITHnXtg7QB/ucw6Ekxma0Ot1hRrWdTiEBx+Zq/offn3lcGfTsSJ+HrrQZ9ZPF02VGetwTZPBiqBSgVHMwvEysVBx3lYxQq/SkF0Pqe9tWlWODAXWANKDkOEVytKRH/8vM+hqXhaJsRDBouOis6KHl763n69jWF3ugcu/3C6CMyYrylFSOmCscWZm/vT7XAoeNrAN4QpNlTZqdkALqaznF5hCnQh8YkvkVdeWzqWE5nU7oeO/1KUKcD4O56NPqGCtYac5PUV9rqWZr6tTAKUqDKNRPa9lAME6kzMdtitqhp6pcn3tSZNbfenWQSEQ7NHWmXlR8iBUfGT73dFq5FnbPJrnsGG8Aux9yisrRHB+ZH+mp2OmoO59135Uhd9+Ryp4A+tPUOYdKvfzxsjzp6khvEDX1wQxaszV6hi7zAgTPkZccSgq/Wv9WBObbO5KoHeck9MUJp12jlMVsTpUAG0cIBB3dAMMsQricfTcqLlr2guZJs6n/cy+/zSy7CJQPrIJjxJrh8iapWgBP89E7w8UwDbjVD76Rh/rloeGc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(39840400004)(396003)(136003)(366004)(376002)(346002)(451199021)(36756003)(86362001)(2906002)(44832011)(7416002)(6666004)(6486002)(186003)(83380400001)(5660300002)(6512007)(6506007)(478600001)(54906003)(6916009)(66476007)(66556008)(2616005)(4326008)(316002)(38100700002)(66946007)(8936002)(8676002)(41300700001)(67856001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?sytrfk3HnIGx+Rr90Fx7aObE3iUr5Ib2DCJT80FOUN6KsPThpxhGhJuUUiUt?=
- =?us-ascii?Q?wftdkno3JJCgMZYjULlqZTo7i9IyMcIJgdCodglezraVLSJl8COdvuhXJkwm?=
- =?us-ascii?Q?fBKSKuAcee4618z0QEK/+wJpf8SEoWGfkxIeZ6x63fOBCO44PXmlw+rYPRhZ?=
- =?us-ascii?Q?xrNT2TdKieWnqmJ+m1nwvEpmRUEvBwmfZA/MCUoHeVLqCS3G1bgSh5txB9Ia?=
- =?us-ascii?Q?m8lYhJNhIwZf0Z8Z/Bj2zH/PPJa3VpkZwK2lcu2kAZdnVEXy7T5UgjZGra/r?=
- =?us-ascii?Q?86BkZzNlVSn9KK5nhvMhKLFFUrF/YuKrvcWmGLUhJVDUM1Haj86mir13fYtw?=
- =?us-ascii?Q?sdwBMf3BovpVeuCaZ50YFMFmxCx4QQSm9lhJHii3h0FuQnN8rS5m7zI+AwxB?=
- =?us-ascii?Q?5uFkvMcZUSRkQ+zJerLqQCueEQktyBi61rmqGSHnWberw6Z8P1sgKt/N4ZZQ?=
- =?us-ascii?Q?PY7gWAxhO5KwWxcYioXKbxg1zBTG9IE/v3cZR7+K+E3vIgdikYeOhZiuRNW4?=
- =?us-ascii?Q?KhIt4ar/WhX8EX7n29dbwNNJPyyvzXxot+fs5e13TbALXxrPPCewnm4mbWcd?=
- =?us-ascii?Q?2NU2ae2o5u28nkafw+c/V1YdppsRT7QFVBbNeZU2wHGio5JV61L68nklGVaK?=
- =?us-ascii?Q?vjErtcSHOhuTeE5xh7tEh6jnskj9TcjifCaLdG+tyiOmqP1+MtcHxN2lvlSo?=
- =?us-ascii?Q?xGrfrhci9CRYmnw54bUt6GfxKbYp3e+IeR770TzNByV87rSf2ayWHJUyKI0A?=
- =?us-ascii?Q?PriEpGvA+4e/DWM28u4E+zUQekqud3GNhgFsX5PKGy/apCbLT4wpZbJLZPQG?=
- =?us-ascii?Q?cQ+qWTifV0ZaXBJSGef8xbpp5wPsGs0u2pBkP1Gt7JhBDmGgzuweSRIxwlDv?=
- =?us-ascii?Q?JLnpp/I/echKxdlwRNrJ0/nmNWwYv5MPzZntG+q/PH67UIPpfzF6F5C4oFQQ?=
- =?us-ascii?Q?IhPFPBxspwz6p5XvqRU4FpwUsn+qRXV7qMp921AE20r86anzjPW35XFFjVAZ?=
- =?us-ascii?Q?9CyjsDftWznMklrkEqCEq/vPNFRYBL3DgdRr8UjeI0Fa1InID/1zc+o6fSab?=
- =?us-ascii?Q?qrQForr5s24Ut1PV31wY4INsIu2t4jkxyR9PSJj29yqCwIqp9lBnloX4/vEj?=
- =?us-ascii?Q?HwSMrN9yRpCVW3kYU9vZyDrFKO9yHklE9G49Yfxq4uR5m5sjwIG28/AE2agL?=
- =?us-ascii?Q?9S9Y3AxQstoHQpPkCC37TdgM/pRJ7+VgljfsA5etzx+UDL2zq7VBRBu5q1aS?=
- =?us-ascii?Q?hgpPwpI16JulJvi9qzKnz3I20Tepo/lrFcNi85ckH+09rqZai8NAes7K68F5?=
- =?us-ascii?Q?Xs6yOZ0JatM7WuQtEqIPfYLZThyknSV1aubnn69ugA/93jlbmE4GCgsvlzX2?=
- =?us-ascii?Q?EenqBj9OoBJQitRb9hVt6pLfGTdsDDUF7RKIREI9Ag5OdA5DMT8HbTSetrlQ?=
- =?us-ascii?Q?RxE7c7MQoU2hK4eImtuag8jlzIV3E/AE54vQgcizK3aXW9NU6mc5z7C09zlP?=
- =?us-ascii?Q?wOX440iGEq8mEd6grypbEyEc85lWPo4z0ucaztIPWtYG319I5TVsxMXOSLUu?=
- =?us-ascii?Q?4WIVkbyvGiH1xx4uoQJxs14WHsmesVjOVhNR7Yoow+tA+pNrvDHI5IGvsJjL?=
- =?us-ascii?Q?4SfVJbbFoRp3V8IvpRbrHI+sj+J0zbrd48xEtO/sAX/YrRhmQLqE2tvuKFof?=
- =?us-ascii?Q?Z+DpDg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f22b4bc7-5dc6-4a67-6a5a-08db6d764f29
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2023 07:58:30.6194 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qKcwZ8kv2QJWhRRsA8U5EJwBgPfxsuPejnTrv1cUJKkYv9WEiwuchNcH1MIpheHstDNXBWuTThyNAUZgzgvQWz+LVYqQcINMp5W7ogT51EE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR13MB6148
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/hgqcFAR9oWgfjzXT74uILVy54mUDzESgVGU/sn1sSA=;
- b=ATCmfsEX+Fu/R48GFc9N492Cj7W3H+t7bq3kQJQW1qkzqc2u0+PviSnTqy+GjUB9S/IwnIAaUBXjseBHXdM4J+OTn4E8hHH2AUwG/pOKJzafrqL6Y8OS8VchY7QyYeDAJuU2GURFEOHFSZPcQi1ef+KJQ2zVe9POCVh57SkWPN0=
+ with ESMTP id IEraccXnbGAD for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Jun 2023 08:41:50 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E01783ACD
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6E01783ACD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 08:41:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="445221368"
+X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="445221368"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2023 01:41:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="745414310"
+X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="745414310"
+Received: from lkp-server02.sh.intel.com (HELO d59cacf64e9e) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 15 Jun 2023 01:41:48 -0700
+Received: from kbuild by d59cacf64e9e with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1q9iY7-0001fP-0v
+ for intel-wired-lan@lists.osuosl.org; Thu, 15 Jun 2023 08:41:47 +0000
+Date: Thu, 15 Jun 2023 16:41:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202306151610.qlRdlwGR-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686818510; x=1718354510;
+ h=date:from:to:subject:message-id;
+ bh=A83jZDbcxMiwzzFOALkIduO8GTgr/cTycic8iGoBO9E=;
+ b=UFtX8icDMz+AoIF80JvP8tgbqRC3jNPKkAa3cu24wg7svpzLIDS00wx3
+ nRB0jKPVUT3FiGZ64FMWmWtLPBBnHHQUT+0tzaJU7c6O3/Gx6FIUiNzIg
+ ka41+6ErJQuvMNtTnxXj6SIfs0ruJCCG41FrG9HfTXbpLY1x+r20cYb1v
+ U2AVWGQokWYmL4FlSnO4QSXUDdV9Bydtg8MagZeJGIslKU1yl5JXOw63U
+ FnI/+HlXOdMcR9iqejFVJyvbBnFS6TVeWY6fxg5mnQ/IFkbQz9Pg7haqn
+ FRtFAFDmqCDgz+7a+G5YmYKozlSHbampKkk79APyNV0VlN5FZBv3nPYzL
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=ATCmfsEX
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 6/9] net: netdevsim:
- create a mock-up PTP Hardware Clock driver
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UFtX8icD
+Subject: [Intel-wired-lan] [tnguy-next-queue:200GbE] BUILD SUCCESS
+ 2ae3defbd3b7268a0f3754a9729574f951f8c0e8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,110 +93,132 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
- netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Maxim Georgiev <glipus@gmail.com>, Cong Wang <xiyou.wangcong@gmail.com>,
- Peilin Ye <yepeilin.cs@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Zhengchao Shao <shaozhengchao@huawei.com>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>,
- Dan Carpenter <dan.carpenter@linaro.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-+ Dan Carpenter
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 200GbE
+branch HEAD: 2ae3defbd3b7268a0f3754a9729574f951f8c0e8  idpf: configure SRIOV and add other ndo_ops
 
-On Thu, Jun 15, 2023 at 01:17:18AM +0300, Vladimir Oltean wrote:
-> Hi Simon,
-> 
-> On Wed, Jun 14, 2023 at 03:11:44PM +0200, Simon Horman wrote:
-> > > +#define MOCK_PHC_CC_SHIFT		31
-> > > +#define MOCK_PHC_CC_MULT		(1 << MOCK_PHC_CC_SHIFT)
-> > 
-> > Maybe BIT()?
-> 
-> Sorry, not everything that is 1 << something has BIT() semantics.
-> This in particular is quite clearly just a multiplier factor
-> expressed as a power of 2.
+elapsed time: 886m
 
-Yes, sorry about that.
+configs tested: 104
+configs skipped: 3
 
-> > > +struct mock_phc *mock_phc_create(struct device *dev)
-> > > +{
-> > > +	struct mock_phc *phc;
-> > > +	int err;
-> > > +
-> > > +	phc = kzalloc(sizeof(*phc), GFP_KERNEL);
-> > > +	if (!phc) {
-> > > +		err = -ENOMEM;
-> > > +		goto out;
-> > > +	}
-> > > +
-> > > +	phc->info = (struct ptp_clock_info) {
-> > > +		.owner		= THIS_MODULE,
-> > > +		.name		= "Mock-up PTP clock",
-> > > +		.max_adj	= MOCK_PHC_MAX_ADJ_PPB,
-> > > +		.adjfine	= mock_phc_adjfine,
-> > > +		.adjtime	= mock_phc_adjtime,
-> > > +		.gettime64	= mock_phc_gettime64,
-> > > +		.settime64	= mock_phc_settime64,
-> > > +		.do_aux_work	= mock_phc_refresh,
-> > > +	};
-> > > +
-> > > +	phc->cc = (struct cyclecounter) {
-> > > +		.read	= mock_phc_cc_read,
-> > > +		.mask	= CYCLECOUNTER_MASK(64),
-> > > +		.mult	= MOCK_PHC_CC_MULT,
-> > > +		.shift	= MOCK_PHC_CC_SHIFT,
-> > > +	};
-> > > +
-> > > +	spin_lock_init(&phc->lock);
-> > > +	timecounter_init(&phc->tc, &phc->cc, 0);
-> > > +
-> > > +	phc->clock = ptp_clock_register(&phc->info, dev);
-> > > +	if (IS_ERR_OR_NULL(phc->clock)) {
-> > > +		err = PTR_ERR_OR_ZERO(phc->clock);
-> > > +		goto out_free_phc;
-> > > +	}
-> > > +
-> > > +	ptp_schedule_worker(phc->clock, MOCK_PHC_REFRESH_INTERVAL);
-> > > +
-> > > +	return phc;
-> > > +
-> > > +out_free_phc:
-> > > +	kfree(phc);
-> > > +out:
-> > > +	return ERR_PTR(err);
-> > > +}
-> > 
-> > Smatch complains that ERR_PTR may be passed zero.
-> > Looking at the IS_ERR_OR_NULL block above, this does indeed seem to be the
-> > case.
-> 
-> The intention here had something to do with PTP being optional for the
-> caller (netdevsim). Not sure whether the implementation is the best -
-> and in particular whether ERR_PTR(0) is NULL or not. I guess this is
-> what the smatch warning (which I haven't looked at) is saying.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Thanks. It's unclear to me if ERR_PTR(0) is actually valid or not.
-By itself it does seem harmless to me. But, OTOH, it is sometimes
-indicative of some other problem. Fortunately that seems not to
-be the case here.
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha        buildonly-randconfig-r004-20230614   gcc  
+alpha                               defconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r043-20230612   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm                  randconfig-r005-20230612   gcc  
+arm                  randconfig-r046-20230612   clang
+arm64                            allyesconfig   gcc  
+arm64        buildonly-randconfig-r005-20230614   clang
+arm64                               defconfig   gcc  
+arm64                randconfig-r002-20230612   clang
+arm64                randconfig-r012-20230614   gcc  
+arm64                randconfig-r013-20230614   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r003-20230612   gcc  
+hexagon              randconfig-r032-20230612   clang
+hexagon              randconfig-r041-20230612   clang
+hexagon              randconfig-r045-20230612   clang
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-i001-20230614   clang
+i386                 randconfig-i002-20230614   clang
+i386                 randconfig-i003-20230614   clang
+i386                 randconfig-i004-20230614   clang
+i386                 randconfig-i005-20230614   clang
+i386                 randconfig-i006-20230614   clang
+i386                 randconfig-i011-20230612   gcc  
+i386                 randconfig-i012-20230612   gcc  
+i386                 randconfig-i013-20230612   gcc  
+i386                 randconfig-i014-20230612   gcc  
+i386                 randconfig-i015-20230612   gcc  
+i386                 randconfig-i016-20230612   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r031-20230612   gcc  
+loongarch            randconfig-r035-20230612   gcc  
+m68k                             allmodconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze           randconfig-r024-20230612   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips         buildonly-randconfig-r002-20230614   gcc  
+mips                 randconfig-r015-20230614   clang
+nios2                               defconfig   gcc  
+nios2                randconfig-r023-20230612   gcc  
+nios2                randconfig-r034-20230612   gcc  
+openrisc             randconfig-r001-20230612   gcc  
+openrisc             randconfig-r006-20230612   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r022-20230612   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc      buildonly-randconfig-r003-20230614   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r042-20230612   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390         buildonly-randconfig-r001-20230614   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r011-20230614   gcc  
+s390                 randconfig-r044-20230612   gcc  
+sh                               allmodconfig   gcc  
+sh                   randconfig-r016-20230614   gcc  
+sh                   randconfig-r021-20230612   gcc  
+sh                   randconfig-r036-20230612   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64              randconfig-r004-20230612   gcc  
+sparc64              randconfig-r026-20230612   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   clang
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230612   clang
+x86_64               randconfig-a002-20230612   clang
+x86_64               randconfig-a003-20230612   clang
+x86_64               randconfig-a004-20230612   clang
+x86_64               randconfig-a005-20230612   clang
+x86_64               randconfig-a006-20230612   clang
+x86_64               randconfig-a011-20230612   gcc  
+x86_64               randconfig-a012-20230612   gcc  
+x86_64               randconfig-a013-20230612   gcc  
+x86_64               randconfig-a014-20230612   gcc  
+x86_64               randconfig-a015-20230612   gcc  
+x86_64               randconfig-a016-20230612   gcc  
+x86_64               randconfig-r025-20230612   gcc  
+x86_64               randconfig-r033-20230612   clang
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa       buildonly-randconfig-r006-20230614   gcc  
 
-> 
-> > Keeping Smatch happy is one thing - your call - but I do wonder if the
-> > caller of mock_phc_create() handles the NULL case correctly.
-> 
-> mock_phc_create() returns a pointer to an opaque data structure -
-> struct mock_phc - and the caller just carries that pointer around to the
-> other API calls exported by the mock_phc module. It doesn't need to care
-> whether the pointer is NULL or not, just the mock_phc module does (and
-> it does handle that part well, at least assuming that the pointer is NULL).
-
-Thanks, got it.
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
