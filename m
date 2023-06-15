@@ -1,86 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75E5B730EEB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 08:00:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30DD9730F59
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Jun 2023 08:30:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1E5C383B22;
-	Thu, 15 Jun 2023 06:00:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E5C383B22
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1A725418D2;
+	Thu, 15 Jun 2023 06:30:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A725418D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1686808806;
-	bh=6h0Dz4XkH902TvpihDRE7Ddo07yQ2gR7Y73cjYVkj5M=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=ey0eCSeUw1H95ops5aU9Zj73FdxG300H6Qfi6TGHHfuLVW0WNWmp/Sxz/1BbFsbbR
-	 sMA6p4lXCVX0SNKievFhjIhey/vFHIm8Wwj+TWHfWA2df68XEVYplZCeXVAvtsioSa
-	 l4Ro15lLQkvuWY6KJ53vS6UIzhsOFXnKj4brQJgVf7UX/p5MWRbQ6dYm4k1qmYiZhe
-	 6OELabF1tSEHe7aRdyyjTmAFqKz66Os8UUqjZpwQHFe2E2jZ4y/LQBd/U0PE1IhOmL
-	 ftxUe0rFTzGuf+vJreDOpcaFActFt1vzmIRQ5uQ/0tqCgLQuJMYME8YwdIOdLyJYUT
-	 Y3roDCRoyZ+8g==
+	s=default; t=1686810655;
+	bh=0dJmAwCWNIrw5p7Uw2qohOsfy+EOACvh1RpYcaurIAM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=ZQuc7oHCJzSNYEbYlyqUCOJQbSeWVJaKPH381j41D5QGLEWQTaSr6Q7L0rfQf31w3
+	 uvFrYVPlkbGncqC4AAsC2vebtuo94H57ZXn1zHGUckKn3Ui8vmsped4qCV04VXUFPV
+	 UfHOjAA4TU9tkg1LjVVFk2ePpkNqnQz6eyClPGq8T0dDt+7KhDWsVSsrF5hpwmIrAq
+	 7cNWyiGYOvF2ZFvz6ZeYXiB+zVlJr/LquV7CwogJTstYGn4KA0v7LiK1r6K1nLDU6i
+	 zrhJ8Bytd6YlzU1vh/JzqrWyrN2CZwybfJiwp6z0k8HUs8VQc+Taqo+1yzk7aMsbTX
+	 gOY4M0khYzchw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ynuyb0I5lU0C; Thu, 15 Jun 2023 06:00:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Yag2Yb0utoYn; Thu, 15 Jun 2023 06:30:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E6E3183AB6;
-	Thu, 15 Jun 2023 06:00:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E6E3183AB6
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7CF0D1BF275
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 05:59:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 058B340139;
+	Thu, 15 Jun 2023 06:30:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 058B340139
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A473D1BF48C
+ for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 51A1D83AB6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 05:59:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 51A1D83AB6
+ by smtp4.osuosl.org (Postfix) with ESMTP id 79DEC41EEF
+ for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 79DEC41EEF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xsVBxcy3yHNN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Jun 2023 05:59:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IkwcJUqCDC3m for <intel-wired-lan@osuosl.org>;
+ Thu, 15 Jun 2023 06:30:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1DA8883AB1
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1DA8883AB1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Jun 2023 05:59:57 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="338447825"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="338447825"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2023 22:59:47 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D36F741EEC
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D36F741EEC
+ for <intel-wired-lan@osuosl.org>; Thu, 15 Jun 2023 06:30:47 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="358821677"
+X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="358821677"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2023 23:30:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="745356669"
-X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="745356669"
-Received: from lkp-server02.sh.intel.com (HELO d59cacf64e9e) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 14 Jun 2023 22:59:46 -0700
-Received: from kbuild by d59cacf64e9e with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q9g1J-0001Wp-21
- for intel-wired-lan@lists.osuosl.org; Thu, 15 Jun 2023 05:59:45 +0000
-Date: Thu, 15 Jun 2023 13:59:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202306151326.RU40bpZZ-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=McAfee;i="6600,9927,10741"; a="777544026"
+X-IronPort-AV: E=Sophos;i="6.00,244,1681196400"; d="scan'208";a="777544026"
+Received: from inlubt0246.iind.intel.com ([10.67.198.165])
+ by fmsmga008.fm.intel.com with ESMTP; 14 Jun 2023 23:30:44 -0700
+From: aravindhan.gunasekaran@intel.com
+To: intel-wired-lan@osuosl.org
+Date: Thu, 15 Jun 2023 12:00:43 +0530
+Message-Id: <20230615063043.48250-1-aravindhan.gunasekaran@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686808798; x=1718344798;
- h=date:from:to:subject:message-id;
- bh=Gb6B8ZnvegZuqOuEalntSAlu74jrNVe9QqNtfwfir54=;
- b=APoi8mfmiz+Wm5Jr9Hr39w+MyMLV+h45JqI4bYad3oeVDNd5eJLeXolR
- FrO6KyjUNbrUUEomLfdi7QmDoDEma9Fan+W1Qi4pavPSZi3lHX7lsq6S9
- 1k4TiLWR3l0T3TYaXEMoIUPrOnoCFPYOTSVRFax6+r2CEIdzcACJv3v8X
- MzjEVWfngluUpP5pJs2O/noYVVK9dNBG6zOcZMhtGUIM61OWXfSLZv2zs
- C3DRGy/2ZYli9fSm2eYLxyqJftsrrF8rACj6BbDi7FqC68l+0Lf22wkLy
- Hh1VVDJkPM1nmAH0nMnhUE+jmdPC3wWkiMwQrQvbWjo/DH7XgngFM0/Z3
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1686810647; x=1718346647;
+ h=from:to:cc:subject:date:message-id;
+ bh=nlPQfZd0tRe1e7lEWePlj05fuX/5nqPk6dMh9iPjEE0=;
+ b=bt4mTYMU3WfOpwo5jY3E2dOVQqjBhGcIs2Alcr9nM4JI9nU1GKh1SAAf
+ 3vSS04a+1Is7Vm2fROmUl6dVyhEDBZ3Mukb7VWPD46yR6EKNiWib0bXJy
+ yhi4s9M4Cl669EU5hMdZJnLPAPek5QsCdO3y38kplreDnvKp52Tc/f4ax
+ xbhcm3PwxJqFKMvXQG1Y8DAnueAgWuLbA6Bxu8ZuBi8jIBHf7g+6EveCT
+ vtcFaonXQpludbxwUEJs65CzQpp7p6bepB3vC0Ph2Xpwc/8hsqQNl02jJ
+ lmTODPniaQeu3x+bVjyHaoBxMioQscmoRvyRsm9dz8uSpO90W/l47ywrI
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=APoi8mfm
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 7527419088d42a3e00f527afcfc290481c777cc9
+ header.a=rsa-sha256 header.s=Intel header.b=bt4mTYMU
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] igc: Handle PPS start time
+ programming for past time values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,128 +90,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: anthony.l.nguyen@intel.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 7527419088d42a3e00f527afcfc290481c777cc9  ice: reduce initial wait for control queue messages
+From: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
 
-elapsed time: 724m
+I225/6 hardware can be programmed to start PPS output once
+the time in Target Time registers is reached. The time
+programmed in these registers should always be into future.
+Only then PPS output is triggered when SYSTIM register
+reaches the programmed value. There are two modes in i225/6
+hardware to program PPS, pulse and clock mode.
 
-configs tested: 100
-configs skipped: 7
+There were issues reported where PPS is not generated when
+start time is in past.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Example 1, "echo 0 0 0 2 0 > /sys/class/ptp/ptp0/period"
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha        buildonly-randconfig-r004-20230614   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r043-20230614   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                  randconfig-r003-20230612   gcc  
-arm                  randconfig-r046-20230614   clang
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r025-20230613   clang
-csky         buildonly-randconfig-r002-20230614   gcc  
-csky                                defconfig   gcc  
-hexagon              randconfig-r041-20230614   clang
-hexagon              randconfig-r045-20230614   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230614   clang
-i386                 randconfig-i002-20230614   clang
-i386                 randconfig-i003-20230614   clang
-i386                 randconfig-i004-20230614   clang
-i386                 randconfig-i005-20230614   clang
-i386                 randconfig-i006-20230614   clang
-i386                 randconfig-i011-20230612   gcc  
-i386                 randconfig-i012-20230612   gcc  
-i386                 randconfig-i013-20230612   gcc  
-i386                 randconfig-i014-20230612   gcc  
-i386                 randconfig-i015-20230612   gcc  
-i386                 randconfig-i016-20230612   gcc  
-i386                 randconfig-r024-20230613   clang
-i386                 randconfig-r036-20230612   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r004-20230612   gcc  
-loongarch            randconfig-r014-20230614   gcc  
-loongarch            randconfig-r022-20230613   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r002-20230612   gcc  
-m68k                 randconfig-r012-20230614   gcc  
-microblaze           randconfig-r013-20230614   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                 randconfig-r001-20230612   gcc  
-mips                 randconfig-r023-20230613   gcc  
-nios2        buildonly-randconfig-r005-20230614   gcc  
-nios2                               defconfig   gcc  
-openrisc             randconfig-r016-20230614   gcc  
-openrisc             randconfig-r035-20230612   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r011-20230614   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r005-20230612   clang
-riscv                randconfig-r015-20230614   gcc  
-riscv                randconfig-r042-20230614   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390         buildonly-randconfig-r003-20230614   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r044-20230614   gcc  
-sh                               allmodconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64              randconfig-r033-20230612   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   clang
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-r006-20230614   clang
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-a001-20230613   gcc  
-x86_64               randconfig-a002-20230613   gcc  
-x86_64               randconfig-a003-20230613   gcc  
-x86_64               randconfig-a004-20230613   gcc  
-x86_64               randconfig-a005-20230613   gcc  
-x86_64               randconfig-a006-20230613   gcc  
-x86_64               randconfig-a011-20230614   gcc  
-x86_64               randconfig-a012-20230614   gcc  
-x86_64               randconfig-a013-20230614   gcc  
-x86_64               randconfig-a014-20230614   gcc  
-x86_64               randconfig-a015-20230614   gcc  
-x86_64               randconfig-a016-20230614   gcc  
-x86_64               randconfig-r032-20230612   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa               randconfig-r031-20230612   gcc  
+In the current implementation, a value of '0' is programmed
+into Target time registers and PPS output is in pulse mode.
+Eventually an interrupt which is triggered upon SYSTIM
+register reaching Target time is not fired. Thus no PPS
+output is generated.
 
+Example 2, "echo 0 0 0 1 0 > /sys/class/ptp/ptp0/period"
+
+Above case, a value of '0' is programmed into Target time
+registers and PPS output is in clock mode. Here, HW tries to
+catch-up the current time by incrementing Target Time
+register. This catch-up time seem to vary according to
+programmed PPS period time as per the HW design. In my
+experiments, the delay ranged between few tens of seconds to
+few minutes. The PPS output is only generated after the
+Target time register reaches current time.
+
+In my experiments, I also observed PPS stopped working with
+below test and could not recover until module is removed and
+loaded again.
+
+1) echo 0 <future time> 0 1 0 > /sys/class/ptp/ptp1/period
+2) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
+3) echo 0 0 0 1 0 > /sys/class/ptp/ptp1/period
+
+After this PPS did not work even if i re-program with proper
+values. I could only get this back working by reloading the
+driver.
+
+This patch takes care of calculating and programming
+appropriate future time value into Target Time registers.
+
+Fixes: 5e91c72e560c ("igc: Fix PPS delta between two synchronized end-points")
+Signed-off-by: Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>
+---
+v2: Added Fixes tag
+---
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 25 +++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 32ef112f8291..f0b979a70655 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -356,16 +356,35 @@ static int igc_ptp_feature_enable_i225(struct ptp_clock_info *ptp,
+ 			tsim &= ~IGC_TSICR_TT0;
+ 		}
+ 		if (on) {
++			struct timespec64 safe_start;
+ 			int i = rq->perout.index;
+ 
+ 			igc_pin_perout(igc, i, pin, use_freq);
+-			igc->perout[i].start.tv_sec = rq->perout.start.sec;
++			igc_ptp_read(igc, &safe_start);
++
++			/* PPS output start time is triggered by Target time(TT)
++			 * register. Programming any past time value into TT
++			 * register will cause PPS to never start. Need to make
++			 * sure we program the TT register a time ahead in
++			 * future. There isn't a stringent need to fire PPS out
++			 * right away. Adding +2 seconds should take care of
++			 * corner cases. Let's say if the SYSTIML is close to
++			 * wrap up and the timer keeps ticking as we program the
++			 * register, adding +2seconds is safe bet.
++			 */
++			safe_start.tv_sec += 2;
++
++			if (rq->perout.start.sec < safe_start.tv_sec)
++				igc->perout[i].start.tv_sec = safe_start.tv_sec;
++			else
++				igc->perout[i].start.tv_sec = rq->perout.start.sec;
+ 			igc->perout[i].start.tv_nsec = rq->perout.start.nsec;
+ 			igc->perout[i].period.tv_sec = ts.tv_sec;
+ 			igc->perout[i].period.tv_nsec = ts.tv_nsec;
+-			wr32(trgttimh, rq->perout.start.sec);
++			wr32(trgttimh, (u32)igc->perout[i].start.tv_sec);
+ 			/* For now, always select timer 0 as source. */
+-			wr32(trgttiml, rq->perout.start.nsec | IGC_TT_IO_TIMER_SEL_SYSTIM0);
++			wr32(trgttiml, (u32)(igc->perout[i].start.tv_nsec |
++					     IGC_TT_IO_TIMER_SEL_SYSTIM0));
+ 			if (use_freq)
+ 				wr32(freqout, ns);
+ 			tsauxc |= tsauxc_mask;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
