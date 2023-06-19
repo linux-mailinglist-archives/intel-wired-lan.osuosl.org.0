@@ -2,68 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E024B73526B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jun 2023 12:34:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 42FF77354B4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jun 2023 12:58:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2948440BA6;
-	Mon, 19 Jun 2023 10:34:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2948440BA6
+	by smtp2.osuosl.org (Postfix) with ESMTP id CCD5840BA3;
+	Mon, 19 Jun 2023 10:58:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CCD5840BA3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687170893;
-	bh=E2s3QG7AkbPCdtwZTefAE0aRc6tve+mDBp6w49HYO/A=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=JtIYdSZxJpgnFLUxS59e4u9/q+WJLtZAXN2J3SPSMIBceusi6qj9RvRB+QZFLP4YA
-	 U64RU7YgGfgYGdMvTtt5aLPWrUma2w6wMY3oeGE+j/39rERi7GjX7jyufOv1uk2dfj
-	 mRpRSuDrcWlTsQizEiLLqGRnTW/E0S9zroFy2sESBxT2IKwlv3OybitMpGTcMy6U/0
-	 7i4PYMDCxV1A1+Uapfu8HHthgF+mySuYI9ydGfnFNOJXUfmfVyMG+4FLmdJ2w5930d
-	 pWaRjLV+DA0hRUKQfh/QHpR3qL4ACTgEatmbLlGFZW5dvwQaqqQwoNqMe/qoxA0/Y2
-	 Bax9Priqdn6EQ==
+	s=default; t=1687172314;
+	bh=zohzoIxIOj2R90jYogTefjojHhcerEnRSGQyjZfmCIA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=xO/GewoATOscRlkQepNTl/r0pp9GibNd/XKNLU0c95mjDwInnWoln81VCfSzF2vLU
+	 XMSa1ikgN6pLN/nahZlPRhKCMdsN9BX3iqM5kQbJWx8y2fDct+HsiEgVTUQ0aSRjzc
+	 DwwAbCpxD6zjUkCq8ueDLxwLRcJvr8tvTd9mA+5AsCBmK+0pzZb3pdu4YmYY+S2JqK
+	 eL1qsZiyV1GoZboAlbWMuKkPJoa6Obl6T4O9SrBLBTBlKfXoOeOmlPXcnpznvTG7xO
+	 ig+Olm6nGp2wA9vk9bLvEQh82oeYly300ZjKxwWIH+6SVuGkTDMfA7g19/XHXGi4PA
+	 rSROVFHe42y9g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UV60DJ_FFzMs; Mon, 19 Jun 2023 10:34:52 +0000 (UTC)
+	with ESMTP id EOZ_1m8IYujH; Mon, 19 Jun 2023 10:58:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 07A47405DB;
-	Mon, 19 Jun 2023 10:34:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 07A47405DB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8DC5A40A08;
+	Mon, 19 Jun 2023 10:58:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DC5A40A08
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 550931BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:34:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A3F261BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:58:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2CF1A60746
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:34:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CF1A60746
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7C512404EB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:58:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C512404EB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gCuOb7DOhduF for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jun 2023 10:34:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E90260A6F
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3E90260A6F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:34:45 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 79B7061E5FE04;
- Mon, 19 Jun 2023 12:34:08 +0200 (CEST)
-Message-ID: <bc3e9167-cdea-1efb-6d5c-57df43564d37@molgen.mpg.de>
-Date: Mon, 19 Jun 2023 12:34:06 +0200
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ibEUK7OtuxPl for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jun 2023 10:58:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B92A4026E
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6B92A4026E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:58:27 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-96-CXW5x-a_OUCulziiNLLqJw-1; Mon, 19 Jun 2023 06:58:20 -0400
+X-MC-Unique: CXW5x-a_OUCulziiNLLqJw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA91D101A52C;
+ Mon, 19 Jun 2023 10:58:19 +0000 (UTC)
+Received: from swamp.redhat.com (unknown [10.45.224.86])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9E076C1603B;
+ Mon, 19 Jun 2023 10:58:17 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Mon, 19 Jun 2023 12:58:13 +0200
+Message-ID: <20230619105813.369912-1-poros@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Content-Language: en-US
-To: Petr Oros <poros@redhat.com>
-References: <20230619084948.360128-1-poros@redhat.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20230619084948.360128-1-poros@redhat.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: ice_vsi_release cleanup
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1687172306;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ACfdLduvpo39aBxZ+VT/qUTVLmOjSOUrCckJRvc8dEA=;
+ b=Xg0wXtbc1JEZM9WuXtOMVMYvYHyciVjZ0hXkDyHid3XHV9H8Dfu7DmWc32G+akqySO5Vyk
+ Lu8v40tPpRtw7d9MPQpNMOdO+iREYTdDptAIgMS1vIAQeeJKZ+t1Xe3DMc+qBngF1tx641
+ oiQhVF7DbwSEJzF4DkLsW9XLaPW+jNE=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Xg0wXtbc
+Subject: [Intel-wired-lan] [PATCH net v2] ice: Unregister netdev and
+ devlink_port only once
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,73 +94,97 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- kuba@kernel.org, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
+Cc: pmenzel@molgen.mpg.de, intel-wired-lan@lists.osuosl.org,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, kuba@kernel.org, pabeni@redhat.com,
  davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBQZXRyLAoKClRoYW5rIHlvdSBmb3IgeW91ciBwYXRjaC4KCkFtIDE5LjA2LjIzIHVtIDEw
-OjQ5IHNjaHJpZWIgUGV0ciBPcm9zOgo+IFNpbmNlIGNvbW1pdCA2NjI0ZTc4MGE1NzdmYyAoImlj
-ZTogc3BsaXQgaWNlX3ZzaV9zZXR1cCBpbnRvIHNtYWxsZXIKPiBmdW5jdGlvbnMiKSBpY2VfdnNp
-X3JlbGVhc2UgZG9lcyB0aGluZ3MgdHdpY2UuIFRoZXJlIGlzIHVucmVnaXN0ZXIKPiBuZXRkZXYg
-d2hpY2ggaXMgdW5yZWdpc3RlcmVkIGluIGljZV9kZWluaXRfZXRoIGFsc28uCj4gCj4gSXQgYWxz
-byB1bnJlZ2lzdGVycyB0aGUgZGV2bGlua19wb3J0IHR3aWNlIHdoaWNoIGlzIGFsc28gdW5yZWdp
-c3RlcmVkCj4gaW4gaWNlX2RlaW5pdF9ldGgoKS4gVGhpcyBkb3VibGUgZGVyZWdpc3RyYXRpb24g
-aXMgaGlkZGVuIGJlY2F1c2UKPiBkZXZsX3BvcnRfdW5yZWdpc3RlciBpZ25vcmVzIHRoZSByZXR1
-cm4gdmFsdWUgb2YgeGFfZXJhc2UuCj4gCj4gWyAgIDY4LjY0MjE2N10gQ2FsbCBUcmFjZToKPiBb
-ICAgNjguNjUwMzg1XSAgaWNlX2RldmxpbmtfZGVzdHJveV9wZl9wb3J0KzB4ZS8weDIwIFtpY2Vd
-Cj4gWyAgIDY4LjY1NTY1Nl0gIGljZV92c2lfcmVsZWFzZSsweDQ0NS8weDY5MCBbaWNlXQo+IFsg
-ICA2OC42NjAxNDddICBpY2VfZGVpbml0KzB4OTkvMHgyODAgW2ljZV0KPiBbICAgNjguNjY0MTE3
-XSAgaWNlX3JlbW92ZSsweDFiNi8weDVjMCBbaWNlXQo+IAo+IFsgIDE3MS4xMDM4NDFdIENhbGwg
-VHJhY2U6Cj4gWyAgMTcxLjEwOTYwN10gIGljZV9kZXZsaW5rX2Rlc3Ryb3lfcGZfcG9ydCsweGYv
-MHgyMCBbaWNlXQo+IFsgIDE3MS4xMTQ4NDFdICBpY2VfcmVtb3ZlKzB4MTU4LzB4MjcwIFtpY2Vd
-Cj4gWyAgMTcxLjExODg1NF0gIHBjaV9kZXZpY2VfcmVtb3ZlKzB4M2IvMHhjMAo+IFsgIDE3MS4x
-MjI3NzldICBkZXZpY2VfcmVsZWFzZV9kcml2ZXJfaW50ZXJuYWwrMHhjNy8weDE3MAo+IFsgIDE3
-MS4xMjc5MTJdICBkcml2ZXJfZGV0YWNoKzB4NTQvMHg4Ywo+IFsgIDE3MS4xMzE0OTFdICBidXNf
-cmVtb3ZlX2RyaXZlcisweDc3LzB4ZDEKPiBbICAxNzEuMTM1NDA2XSAgcGNpX3VucmVnaXN0ZXJf
-ZHJpdmVyKzB4MmQvMHhiMAo+IFsgIDE3MS4xMzk2NzBdICBpY2VfbW9kdWxlX2V4aXQrMHhjLzB4
-NTVmIFtpY2VdCgpJdOKAmWQgYmUgbW9yZSBzcGVjaWZpYyBpbiB0aGUgY29tbWl0IG1lc3NhZ2Ug
-c3VtbWFyeS90aXRsZSwgYW5kIHVzZSAKaW1wZXJhdGl2ZSBtb29kLiBNYXliZToKCmljZTogVW5y
-ZWdpc3RlciBuZXRkZXYgYW5kIGRldmxpbmtfcG9ydCBvbmx5IG9uY2UKCgpLaW5kIHJlZ2FyZHMs
-CgpQYXVsCgoKPiBGaXhlczogNjYyNGU3ODBhNTc3ICgiaWNlOiBzcGxpdCBpY2VfdnNpX3NldHVw
-IGludG8gc21hbGxlciBmdW5jdGlvbnMiKQo+IFNpZ25lZC1vZmYtYnk6IFBldHIgT3JvcyA8cG9y
-b3NAcmVkaGF0LmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
-Y2VfbGliLmMgfCAyNyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2Vk
-LCAyNyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaWNlL2ljZV9saWIuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vf
-bGliLmMKPiBpbmRleCAxMWFlMGU0MWY1MThhMS4uMjg0YTFmMGJmZGI1NDUgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9saWIuYwo+ICsrKyBiL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGliLmMKPiBAQCAtMzI3MiwzOSArMzI3Miwx
-MiBAQCBpbnQgaWNlX3ZzaV9yZWxlYXNlKHN0cnVjdCBpY2VfdnNpICp2c2kpCj4gICAJCXJldHVy
-biAtRU5PREVWOwo+ICAgCXBmID0gdnNpLT5iYWNrOwo+ICAgCj4gLQkvKiBkbyBub3QgdW5yZWdp
-c3RlciB3aGlsZSBkcml2ZXIgaXMgaW4gdGhlIHJlc2V0IHJlY292ZXJ5IHBlbmRpbmcKPiAtCSAq
-IHN0YXRlLiBTaW5jZSByZXNldC9yZWJ1aWxkIGhhcHBlbnMgdGhyb3VnaCBQRiBzZXJ2aWNlIHRh
-c2sgd29ya3F1ZXVlLAo+IC0JICogaXQncyBub3QgYSBnb29kIGlkZWEgdG8gdW5yZWdpc3RlciBu
-ZXRkZXYgdGhhdCBpcyBhc3NvY2lhdGVkIHRvIHRoZQo+IC0JICogUEYgdGhhdCBpcyBydW5uaW5n
-IHRoZSB3b3JrIHF1ZXVlIGl0ZW1zIGN1cnJlbnRseS4gVGhpcyBpcyBkb25lIHRvCj4gLQkgKiBh
-dm9pZCBjaGVja19mbHVzaF9kZXBlbmRlbmN5KCkgd2FybmluZyBvbiB0aGlzIHdxCj4gLQkgKi8K
-PiAtCWlmICh2c2ktPm5ldGRldiAmJiAhaWNlX2lzX3Jlc2V0X2luX3Byb2dyZXNzKHBmLT5zdGF0
-ZSkgJiYKPiAtCSAgICAodGVzdF9iaXQoSUNFX1ZTSV9ORVRERVZfUkVHSVNURVJFRCwgdnNpLT5z
-dGF0ZSkpKSB7Cj4gLQkJdW5yZWdpc3Rlcl9uZXRkZXYodnNpLT5uZXRkZXYpOwo+IC0JCWNsZWFy
-X2JpdChJQ0VfVlNJX05FVERFVl9SRUdJU1RFUkVELCB2c2ktPnN0YXRlKTsKPiAtCX0KPiAtCj4g
-LQlpZiAodnNpLT50eXBlID09IElDRV9WU0lfUEYpCj4gLQkJaWNlX2RldmxpbmtfZGVzdHJveV9w
-Zl9wb3J0KHBmKTsKPiAtCj4gICAJaWYgKHRlc3RfYml0KElDRV9GTEFHX1JTU19FTkEsIHBmLT5m
-bGFncykpCj4gICAJCWljZV9yc3NfY2xlYW4odnNpKTsKPiAgIAo+ICAgCWljZV92c2lfY2xvc2Uo
-dnNpKTsKPiAgIAlpY2VfdnNpX2RlY2ZnKHZzaSk7Cj4gICAKPiAtCWlmICh2c2ktPm5ldGRldikg
-ewo+IC0JCWlmICh0ZXN0X2JpdChJQ0VfVlNJX05FVERFVl9SRUdJU1RFUkVELCB2c2ktPnN0YXRl
-KSkgewo+IC0JCQl1bnJlZ2lzdGVyX25ldGRldih2c2ktPm5ldGRldik7Cj4gLQkJCWNsZWFyX2Jp
-dChJQ0VfVlNJX05FVERFVl9SRUdJU1RFUkVELCB2c2ktPnN0YXRlKTsKPiAtCQl9Cj4gLQkJaWYg
-KHRlc3RfYml0KElDRV9WU0lfTkVUREVWX0FMTE9DRCwgdnNpLT5zdGF0ZSkpIHsKPiAtCQkJZnJl
-ZV9uZXRkZXYodnNpLT5uZXRkZXYpOwo+IC0JCQl2c2ktPm5ldGRldiA9IE5VTEw7Cj4gLQkJCWNs
-ZWFyX2JpdChJQ0VfVlNJX05FVERFVl9BTExPQ0QsIHZzaS0+c3RhdGUpOwo+IC0JCX0KPiAtCX0K
-PiAtCj4gICAJLyogcmV0YWluIFNXIFZTSSBkYXRhIHN0cnVjdHVyZSBzaW5jZSBpdCBpcyBuZWVk
-ZWQgdG8gdW5yZWdpc3RlciBhbmQKPiAgIAkgKiBmcmVlIFZTSSBuZXRkZXYgd2hlbiBQRiBpcyBu
-b3QgaW4gcmVzZXQgcmVjb3ZlcnkgcGVuZGluZyBzdGF0ZSxcCj4gICAJICogZm9yIGV4OiBkdXJp
-bmcgcm1tb2QuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcK
-aHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFu
-Cg==
+Since commit 6624e780a577fc ("ice: split ice_vsi_setup into smaller
+functions") ice_vsi_release does things twice. There is unregister
+netdev which is unregistered in ice_deinit_eth also.
+
+It also unregisters the devlink_port twice which is also unregistered
+in ice_deinit_eth(). This double deregistration is hidden because
+devl_port_unregister ignores the return value of xa_erase.
+
+[   68.642167] Call Trace:
+[   68.650385]  ice_devlink_destroy_pf_port+0xe/0x20 [ice]
+[   68.655656]  ice_vsi_release+0x445/0x690 [ice]
+[   68.660147]  ice_deinit+0x99/0x280 [ice]
+[   68.664117]  ice_remove+0x1b6/0x5c0 [ice]
+
+[  171.103841] Call Trace:
+[  171.109607]  ice_devlink_destroy_pf_port+0xf/0x20 [ice]
+[  171.114841]  ice_remove+0x158/0x270 [ice]
+[  171.118854]  pci_device_remove+0x3b/0xc0
+[  171.122779]  device_release_driver_internal+0xc7/0x170
+[  171.127912]  driver_detach+0x54/0x8c
+[  171.131491]  bus_remove_driver+0x77/0xd1
+[  171.135406]  pci_unregister_driver+0x2d/0xb0
+[  171.139670]  ice_module_exit+0xc/0x55f [ice]
+
+Fixes: 6624e780a577 ("ice: split ice_vsi_setup into smaller functions")
+Signed-off-by: Petr Oros <poros@redhat.com>
+---
+v2: reword subject
+
+v1: https://lore.kernel.org/netdev/20230619084948.360128-1-poros@redhat.com/
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 27 ------------------------
+ 1 file changed, 27 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 11ae0e41f518a1..284a1f0bfdb545 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3272,39 +3272,12 @@ int ice_vsi_release(struct ice_vsi *vsi)
+ 		return -ENODEV;
+ 	pf = vsi->back;
+ 
+-	/* do not unregister while driver is in the reset recovery pending
+-	 * state. Since reset/rebuild happens through PF service task workqueue,
+-	 * it's not a good idea to unregister netdev that is associated to the
+-	 * PF that is running the work queue items currently. This is done to
+-	 * avoid check_flush_dependency() warning on this wq
+-	 */
+-	if (vsi->netdev && !ice_is_reset_in_progress(pf->state) &&
+-	    (test_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state))) {
+-		unregister_netdev(vsi->netdev);
+-		clear_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
+-	}
+-
+-	if (vsi->type == ICE_VSI_PF)
+-		ice_devlink_destroy_pf_port(pf);
+-
+ 	if (test_bit(ICE_FLAG_RSS_ENA, pf->flags))
+ 		ice_rss_clean(vsi);
+ 
+ 	ice_vsi_close(vsi);
+ 	ice_vsi_decfg(vsi);
+ 
+-	if (vsi->netdev) {
+-		if (test_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state)) {
+-			unregister_netdev(vsi->netdev);
+-			clear_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
+-		}
+-		if (test_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state)) {
+-			free_netdev(vsi->netdev);
+-			vsi->netdev = NULL;
+-			clear_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
+-		}
+-	}
+-
+ 	/* retain SW VSI data structure since it is needed to unregister and
+ 	 * free VSI netdev when PF is not in reset recovery pending state,\
+ 	 * for ex: during rmmod.
+-- 
+2.41.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
