@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8843B735190
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jun 2023 12:09:35 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 89B47735191
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Jun 2023 12:09:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 27327611B9;
-	Mon, 19 Jun 2023 10:09:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27327611B9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1EF7F611C2;
+	Mon, 19 Jun 2023 10:09:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1EF7F611C2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687169374;
-	bh=4ZwVFuDohEvSsRJb3EMW8Ey9Ac/HSm8N71YtO9Kn1Ck=;
+	s=default; t=1687169378;
+	bh=326usz9lz7wOY2JQM3s6YdMgJ9FDngn986UlHgXK1zg=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1pCfrp4wUZXxtcZNvzx+HQiEE/FuZ8fyNlTOBHMBvKqsZP0h8JWTCBTu1GnYiYl1a
-	 KZfNEvx3JErwQZL8uoJ13MHLeNWrtcK4a8YfYqN0Ki18opVbKBxMWDurcG0LFAYydn
-	 6Jr4iQMwsu9Zv4cTDgrIWjbsjj2+0PnCoad8/eotVSzCgo23t02FwcbHuV72wsCg4Q
-	 QejOAXzbZZJ8h97pGpmRtZPFaS+nUl1vRIQvcpeVLfJRWEu8hUh6t8ZJiZxpc+DvAC
-	 U+h7K7nbtL83gPt14l8bc2znkFp68MhTqnhJOZMkKORubWj07Fa0BTtsrjcHW8MBG/
-	 3mud+uhCo6TQA==
+	b=4QAMPzpVgK/4fcZLfwfBllzGjnlHZQA80Qx5pL8JBFrkulo/oWcBrbmQOu2uAPhKh
+	 dbV9VBcqL8XLtlA2QdldtAM8nU2+SMPHbSCHG8Vsk5xwCl0SWsFEjguvdlBLzkXNDT
+	 pyNcEEGPM4hPmWX4mn5Kk6933s4VfgRspspVkEAq8EcbySGOvDMzFKd38EcAtR6nDU
+	 mm3tdHpvL635wRQb+m9TlTbhkalazh0DqYD8e2KikNzP8ZsZSsrBHOb9ZjkD5AT0qg
+	 5p1ewhkB2yCTgVZ5fj+dNCRQduJJzXCZdzNjMqBzYmUzXJw5kWWLA4B1cUB1hirxUa
+	 3HkoFc/m7ZAQA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kmT2bEDFkwJS; Mon, 19 Jun 2023 10:09:33 +0000 (UTC)
+	with ESMTP id Fw-gqFGQ2NpP; Mon, 19 Jun 2023 10:09:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D2A7561190;
-	Mon, 19 Jun 2023 10:09:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2A7561190
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1686061190;
+	Mon, 19 Jun 2023 10:09:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1686061190
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3F49F1BF3DE
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A1B51BF3DE
  for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:09:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 15FDE607D0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:09:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 15FDE607D0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7414E81604
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:09:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7414E81604
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AF8MAYyfG3gW for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Jun 2023 10:09:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U4EiMrIplwYq for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Jun 2023 10:09:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF75660761
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B4DC881757
 Received: from galois.linutronix.de (Galois.linutronix.de
  [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EF75660761
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:09:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B4DC881757
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Jun 2023 10:09:11 +0000 (UTC)
 From: Florian Kauer <florian.kauer@linutronix.de>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -58,8 +58,8 @@ To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>,
  Aravindhan Gunasekaran <aravindhan.gunasekaran@intel.com>,
  Malli C <mallikarjuna.chilakala@intel.com>
-Date: Mon, 19 Jun 2023 12:08:56 +0200
-Message-Id: <20230619100858.116286-5-florian.kauer@linutronix.de>
+Date: Mon, 19 Jun 2023 12:08:57 +0200
+Message-Id: <20230619100858.116286-6-florian.kauer@linutronix.de>
 In-Reply-To: <20230619100858.116286-1-florian.kauer@linutronix.de>
 References: <20230619100858.116286-1-florian.kauer@linutronix.de>
 MIME-Version: 1.0
@@ -69,28 +69,28 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TCMbNNv1wUCpp0eUsLbLvQKi9uBHfNttKgJxjYAeb0M=;
- b=RHDoODmEi8b1q5ht5VJC+Tpa4mYueWcDqpqpiUcy266doPLABlALjXGQSoY2fT5SX9B+WF
- LpoJqJzS11v3+iaWpSyEmB72CPioLRYn9vP3yV8nHFdy8aSpD5ghuEqZgwKFwoPX4qcuNl
- +WxMzxvWO1KW6IxKeM4+JxtFypE1omB7wdxUhb5bZN5FI1XVWExxoNMylAwzqQF5LlfjA5
- rzoeQ9qKBiG+Mg3Lzw69aXqZDJ6pmD6DFNPHLA4F6qOCdaD3vQjYwOVakc8zPYAYoOwday
- v4m20GVSUL/YFAtDSloLh1hVDXIqkyu4WoDI7Ul/fH0TL/O5p8ckVrN2qqsE0A==
+ bh=ifTkOc+IePMxuKDemBz16w3UeJ8myDaZex1J+2pMJyw=;
+ b=O1sb0RIn6Hy6jCcn3trgyXlbi2F7M/tZc1oHs55EChHsMkOVxTWEvpmuHRQD3/pEccJKOK
+ ESPzMyNi+0R4oVNLy1dZE9I+YAf72swbc0Hr4tWQkM6h6t7IJHZXMCn8EyprCNmUavhT+9
+ PyD1MF5FEOLJ42V9fgvPhdq67drLFP7CpJvi+QdHl8SMpz55xilEZDkY7ITwh3vIbGZflN
+ etl7jQsCevFxi0nQItYAiuqUXVIKouU7RibrA4IZsWrJHu95WXIDVxnd/MR76PbP5246Yb
+ qdIULppA+9QBImqLyo9oK96FGBjP9ZsO3fKw65pU1ATkxQbpFqSf0ozxpWH4MA==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
  d=linutronix.de; s=2020e; t=1687169348;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TCMbNNv1wUCpp0eUsLbLvQKi9uBHfNttKgJxjYAeb0M=;
- b=2p6RabjMGGqHssfkfcO0pQ4a7rVYnzWw+rakRGKNB0O91Ye4QxsQsPxUos4a4qPdhxB7VA
- Cks365tjwsh28NDA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=ifTkOc+IePMxuKDemBz16w3UeJ8myDaZex1J+2pMJyw=;
+ b=mvBdAF/iCI7Y3/a7COxWzds9FSCtuMIHxL8z2+O5kNMffu0l3Cxtn9idwFTvT90lVFr1L6
+ TJHzDFGhJf1yPRBQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=RHDoODmE; 
+ header.a=rsa-sha256 header.s=2020 header.b=O1sb0RIn; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=2p6RabjM
-Subject: [Intel-wired-lan] [PATCH net v2 4/6] igc: No strict mode in pure
- launchtime/CBS offload
+ header.a=ed25519-sha256 header.s=2020e header.b=mvBdAF/i
+Subject: [Intel-wired-lan] [PATCH net v2 5/6] igc: Fix launchtime before
+ start of cycle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,144 +110,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The flags IGC_TXQCTL_STRICT_CYCLE and IGC_TXQCTL_STRICT_END
-prevent the packet transmission over slot and cycle boundaries.
-This is important for taprio offload where the slots and
-cycles correspond to the slots and cycles configured for the
-network.
+It is possible (verified on a running system) that frames are processed
+by igc_tx_launchtime with a txtime before the start of the cycle
+(baset_est).
 
-However, the Qbv offload feature of the i225 is also used for
-enabling TX launchtime / ETF offload. In that case, however,
-the cycle has no meaning for the network and is only used
-internally to adapt the base time register after a second has
-passed.
+However, the result of txtime - baset_est is written into a u32,
+leading to a wrap around to a positive number. The following
+launchtime > 0 check will only branch to executing launchtime = 0
+if launchtime is already 0.
 
-Enabling strict mode in this case would unneccesarily prevent
-the transmission of certain packets (i.e. at the boundary of a
-second) and thus interfers with the ETF qdisc that promises
-transmission at a certain point in time.
+Fix it by using a s32 before checking launchtime > 0.
 
-Similar to ETF, this also applies to CBS offload that also should
-not be influenced by strict mode unless taprio offload would be
-enabled at the same time.
-
-This fully reverts
-commit d8f45be01dd9 ("igc: Use strict cycles for Qbv scheduling")
-but its commit message only describes what was already implemented
-before that commit. The difference to a plain revert of that commit
-is that it now copes with the base_time = 0 case that was fixed with
-commit e17090eb2494 ("igc: allow BaseTime 0 enrollment for Qbv")
-
-In particular, enabling strict mode leads to TX hang situations
-under high traffic if taprio is applied WITHOUT taprio offload
-but WITH ETF offload, e.g. as in
-
-    sudo tc qdisc replace dev enp1s0 parent root handle 100 taprio \
-	    num_tc 1 \
-	    map 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \
-	    queues 1@0 \
-	    base-time 0 \
-	    sched-entry S 01 300000 \
-	    flags 0x1 \
-	    txtime-delay 500000 \
-	    clockid CLOCK_TAI
-    sudo tc qdisc replace dev enp1s0 parent 100:1 etf \
-	    clockid CLOCK_TAI \
-	    delta 500000 \
-	    offload \
-	    skip_sock_check
-
-and traffic generator
-
-    sudo trafgen -i traffic.cfg -o enp1s0 --cpp -n0 -q -t1400ns
-
-with traffic.cfg
-
-    #define ETH_P_IP        0x0800
-
-    {
-      /* Ethernet Header */
-      0x30, 0x1f, 0x9a, 0xd0, 0xf0, 0x0e,  # MAC Dest - adapt as needed
-      0x24, 0x5e, 0xbe, 0x57, 0x2e, 0x36,  # MAC Src  - adapt as needed
-      const16(ETH_P_IP),
-
-      /* IPv4 Header */
-      0b01000101, 0,   # IPv4 version, IHL, TOS
-      const16(1028),   # IPv4 total length (UDP length + 20 bytes (IP header))
-      const16(2),      # IPv4 ident
-      0b01000000, 0,   # IPv4 flags, fragmentation off
-      64,              # IPv4 TTL
-      17,              # Protocol UDP
-      csumip(14, 33),  # IPv4 checksum
-
-      /* UDP Header */
-      10,  0, 48, 1,   # IP Src - adapt as needed
-      10,  0, 48, 10,  # IP Dest - adapt as needed
-      const16(5555),   # UDP Src Port
-      const16(6666),   # UDP Dest Port
-      const16(1008),   # UDP length (UDP header 8 bytes + payload length)
-      csumudp(14, 34), # UDP checksum
-
-      /* Payload */
-      fill('W', 1000),
-    }
-
-and the observed message with that is for example
-
- igc 0000:01:00.0 enp1s0: Detected Tx Unit Hang
-   Tx Queue             <0>
-   TDH                  <d0>
-   TDT                  <f0>
-   next_to_use          <f0>
-   next_to_clean        <d0>
- buffer_info[next_to_clean]
-   time_stamp           <ffff661f>
-   next_to_watch        <00000000245a4efb>
-   jiffies              <ffff6e48>
-   desc.status          <1048000>
-
-Fixes: d8f45be01dd9 ("igc: Use strict cycles for Qbv scheduling")
+Fixes: db0b124f02ba ("igc: Enhance Qbv scheduling by using first flag bit")
 Signed-off-by: Florian Kauer <florian.kauer@linutronix.de>
 Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
- drivers/net/ethernet/intel/igc/igc_tsn.c | 24 ++++++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index c6636a7264d5..63d410e7b876 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -133,8 +133,28 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		wr32(IGC_STQT(i), ring->start_time);
- 		wr32(IGC_ENDQT(i), ring->end_time);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9c04df900b59..565c72bd737d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1017,7 +1017,7 @@ static __le32 igc_tx_launchtime(struct igc_ring *ring, ktime_t txtime,
+ 	ktime_t base_time = adapter->base_time;
+ 	ktime_t now = ktime_get_clocktai();
+ 	ktime_t baset_est, end_of_cycle;
+-	u32 launchtime;
++	s32 launchtime;
+ 	s64 n;
  
--		txqctl |= IGC_TXQCTL_STRICT_CYCLE |
--			IGC_TXQCTL_STRICT_END;
-+		if (adapter->taprio_offload_enable) {
-+			/* If taprio_offload_enable is set we are in "taprio"
-+			 * mode and we need to be strict about the
-+			 * cycles: only transmit a packet if it can be
-+			 * completed during that cycle.
-+			 *
-+			 * If taprio_offload_enable is NOT true when
-+			 * enabling TSN offload, the cycle should have
-+			 * no external effects, but is only used internally
-+			 * to adapt the base time register after a second
-+			 * has passed.
-+			 *
-+			 * Enabling strict mode in this case would
-+			 * unneccesarily prevent the transmission of
-+			 * certain packets (i.e. at the boundary of a
-+			 * second) and thus interfer with the launchtime
-+			 * feature that promises transmission at a
-+			 * certain point in time.
-+			 */
-+			txqctl |= IGC_TXQCTL_STRICT_CYCLE |
-+				IGC_TXQCTL_STRICT_END;
-+		}
- 
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
+ 	n = div64_s64(ktime_sub_ns(now, base_time), cycle_time);
 -- 
 2.39.2
 
