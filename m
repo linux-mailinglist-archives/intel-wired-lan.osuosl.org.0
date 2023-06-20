@@ -1,88 +1,191 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F2367368A7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:02:08 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C5C6736944
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:29:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 07D4941902;
-	Tue, 20 Jun 2023 10:02:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 07D4941902
+	by smtp4.osuosl.org (Postfix) with ESMTP id 031EF418E0;
+	Tue, 20 Jun 2023 10:29:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 031EF418E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687255327;
-	bh=n9zpdCjg90k9ptNRAFFOPAeGDLTYMiUa8MkTbDiF3rU=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1687256960;
+	bh=MXSL9/1FC9vGkedWu677RAYyeVXtyaKhJbaXIIpNnrg=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=f0sz4J9XPj9a8BAxLBcjsAvJXVAm+EjsT/gQRDQQw9ulZXTa9UjrMTN4a5O5r5xnr
-	 MDYsB5rN03mcMNMiYS365cZOvVP5UHdf2hFS7jescRFNAXOdRjzgKhZm7J6VVZ9qo0
-	 LU9Wm3c1n1MY+eioreB6Jt5/bT9PUnP+NDqeyc6+SukOioRHx9J4WP2c8N+hppZv6e
-	 G/v7QimojCiAZQXBupQamkKLLQRBKQmgQrBeySSchwg8zNzRMaCzcyRIN/uArHwTNh
-	 x4iw0EBLf9JpamsdlG3Y8TO//R6qWNpNSwdk5IA9q/tGjCIbmKj2TACHyOuuGnw6/3
-	 928YzcTVGMrOQ==
+	b=aLABLkumHyl0u7a/eJXqOmvN2bIvcSq8DO4OUyIug7TCdHdGx6acUCKvcYLZF0r4j
+	 lh4vcipt6FIcHnxEKObLNv1Acbufcth8hJ1xbyD1jn6Q73EqQHFBPoyAKKN+M62LmG
+	 WDtjdR1CxirtQQEr/dpywq2CL18+qhmj1JC4riVzTTETtiLRRptol0FCHzB7nsTfYM
+	 dGo8SmDX55OFcDv39p/7j9coM+luSsGZa5+Ec6NuAyhVAMRL0LywmpkoYeF/WRZctJ
+	 Nzq563eqbqNx3I0l8G2KoZa8V/OGMZ/+h56isxjh8j3ZTOT2JOJqAZ9ZkCTMA/bzFa
+	 4Eld22YLUXvRw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ytagCzddGv_3; Tue, 20 Jun 2023 10:02:05 +0000 (UTC)
+	with ESMTP id FZjH-gatvnYy; Tue, 20 Jun 2023 10:29:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 028B9410A6;
-	Tue, 20 Jun 2023 10:02:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 028B9410A6
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6CDF540650;
+	Tue, 20 Jun 2023 10:29:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CDF540650
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A5C7A1BF39E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 077391BF2FB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:29:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7F68460E4F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F68460E4F
+ by smtp2.osuosl.org (Postfix) with ESMTP id CE7E1404BF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:29:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CE7E1404BF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7KUfrMc68jIL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jun 2023 10:01:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YNNT6ldx3FXo for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jun 2023 10:29:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7949760D59
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7949760D59
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="358688611"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="358688611"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2023 03:01:50 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 16F8F400C1
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 16F8F400C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:29:11 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="389044112"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="389044112"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2023 03:29:11 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="664227685"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="664227685"
-Received: from dpdk-liulingy-2.sh.intel.com ([10.67.119.34])
- by orsmga003.jf.intel.com with ESMTP; 20 Jun 2023 03:01:46 -0700
-From: Lingyu Liu <lingyu.liu@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jun 2023 10:00:01 +0000
-Message-Id: <20230620100001.5331-16-lingyu.liu@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230620100001.5331-1-lingyu.liu@intel.com>
-References: <20230620100001.5331-1-lingyu.liu@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="743743316"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="743743316"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga008.jf.intel.com with ESMTP; 20 Jun 2023 03:29:10 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 20 Jun 2023 03:29:10 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 20 Jun 2023 03:29:10 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Tue, 20 Jun 2023 03:29:10 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Tue, 20 Jun 2023 03:29:10 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=S7IvYQvrCDU0pPmIfJ/7GTchNC2QzPuEOm0bzHEU7zXUw+7e54wcybzAboTNZ3pqGkIXsGagh6iYulbsbGmcBP4PKfTYDG18PnFIWL1EDNUD4hbxiiqEjjMzQBSOH3tVInDWw6VBTIdgWEOgBw2lM7a1fIB3Impchgsoz7WfwIlxWcHeeIZmryAz/HJk104SWUcukDn5RFU5xNd6tldTeOGTjbjT3Fk3gFWZ3GkWO1y85SWM2ADuzb6OZpHhjuhQQ23UTqCqQzIBIvsJKtHdW5EuA71IAAYzqnxICZ81O9XeyL3AmjtpvC6qBxWU60MbiAkyociiB0ThswKZLZPYPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8zW68poc7NX657FdjC9cp28F/JktpFu2cP+20fBkZLU=;
+ b=IbcE61/pDV9RSePdvUTaZTsffA2feW7zU4N5GRB37mcddPH15Sik1/TGV14VUenayu1hOp809Op47DUlCmaBibJrdpaQutl28/vVI1m2Vde2wrZ9gN92y8cvLCS//DpPzVxudYJ+DllXNrDEIDBiD4inqPdeM36kFp7ukHYqzZr6ZsKlLUCbLgOxyFDu9oVJN6cd9Wq+ZwlJvZlmPsDGR/cj24H5eJoySAiUGZTc8HzRxgSR6IYe5xN0RbJ+JDzmj5XSAO1lf4ROr8R+xyXni/Ui7VWtDZxTJMBDjYE5sU447w/O673GSgi7se0bUJdQgay74/yEy1c/g+HxklipWg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BY5PR11MB4451.namprd11.prod.outlook.com (2603:10b6:a03:1cb::30)
+ by IA1PR11MB7824.namprd11.prod.outlook.com (2603:10b6:208:3f9::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6500.37; Tue, 20 Jun
+ 2023 10:29:08 +0000
+Received: from BY5PR11MB4451.namprd11.prod.outlook.com
+ ([fe80::c5b8:6699:99fa:fbeb]) by BY5PR11MB4451.namprd11.prod.outlook.com
+ ([fe80::c5b8:6699:99fa:fbeb%5]) with mapi id 15.20.6500.036; Tue, 20 Jun 2023
+ 10:29:08 +0000
+Message-ID: <18b2b4a1-60b8-164f-ea31-5744950e138d@intel.com>
+Date: Tue, 20 Jun 2023 12:29:00 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+To: Gal Pressman <gal@nvidia.com>, <netdev@vger.kernel.org>
+References: <20230613122420.855486-1-piotrx.gardocki@intel.com>
+ <20230613122420.855486-2-piotrx.gardocki@intel.com>
+ <c29c346a-9465-c3cc-1045-272c4eb26c65@nvidia.com>
+Content-Language: en-US
+From: Piotr Gardocki <piotrx.gardocki@intel.com>
+In-Reply-To: <c29c346a-9465-c3cc-1045-272c4eb26c65@nvidia.com>
+X-ClientProxiedBy: FR0P281CA0187.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ab::17) To BY5PR11MB4451.namprd11.prod.outlook.com
+ (2603:10b6:a03:1cb::30)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY5PR11MB4451:EE_|IA1PR11MB7824:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9ee4387b-508f-4498-fe16-08db71792dbf
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ftE7wDEr6EzN3W3J9vsr5kY0F9CskkCv51VF0DiM0pFBkHYDkcbtv0b6AJwxKWdJ0soZcD//Q/woO06dow1bNYB3G1bmp066MG+HWzy16ywCugfqLlmRgMaM/FNTkYrA3lwuxHb9xmh35WEk/AL9n9ywHtYvZrxjoNHw+DCfTtmB7Avv5aI+IQJzDYH7H8aIv0JFeGs9rff4LWNIZDSndQpPypY+2hoOp+weK/BrckMZv1nUdB2eHL9xJxMvj398rsJqVDycCzLGMqkHW34MgDcJR18QTZC1dkIzHWUbWrC58Wu8H85uCBMNzRmMyGAxFHZAT8hq+0ugPFBe9HtaD0pDC3TeYVvA1y2eyHqrDrxWd/ys86mtCbCf6jUJpBCXSjbsRRh8D7fkcwP+sSyV9ueNRcFaZTQDH6aSP5Sv4ThiQoyGIddgpZy0zIVONW3zkHBL3JSv8p0x45L6722g/mV5oPm1QYq1wckQ32LMGiuMcaaruJrgoyM3kD2N0FdZduLOApuIwXFTsd38MRy7IPBj20996x275kkwX3e2W4PzzTsVyxskVKF+Qz1OXtG/2A9GRTorAu7yOUTfTrmHWXWp8gAMzpIZE4TeMkuP84WZ+ZQAqHHu2hEe0Qw29k50LR/A2+rmoQcp9MSbEfxntw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR11MB4451.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(376002)(346002)(396003)(39860400002)(136003)(451199021)(2906002)(82960400001)(478600001)(6666004)(6486002)(38100700002)(316002)(83380400001)(31686004)(31696002)(2616005)(5660300002)(41300700001)(66946007)(66476007)(66556008)(53546011)(6506007)(6512007)(36756003)(26005)(86362001)(8676002)(8936002)(4326008)(186003)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L2ZxSGhUNjhkUENYRWZuZFBwQlpJL3hXU09YMnRGQWtFUllyNUpNMDRGNHIx?=
+ =?utf-8?B?SUs2dlQyeDRFU2djbnV4ODBKTWljd1JxOVc4T1UrdDRDN1hWWnlTemY2V25z?=
+ =?utf-8?B?UTh1bEdDN0tjQW0vMmcxZTdBNFpnWFFsOVpwQXVDTndrdnZGNUxLYjk3aGhZ?=
+ =?utf-8?B?WFpNcnhuUHl0Uk5oVlpOSzB2aDdpTkFIME51eHJnZ2l1alFHL3AwWTVBaWpu?=
+ =?utf-8?B?dVN3ckFMNmsyQzNEZVRHMkZaZGdYYlNtaVU3Q09SaVc4REhTNnd3WmRVbVM1?=
+ =?utf-8?B?QUNkTnVKaUxCRXdKbmxGNzA4VHFyWEh1M2N6M2pVT0ZFMVlOdDlyZTlBeHdy?=
+ =?utf-8?B?aFZqQ1lpVzdTNHpaSlUwWlJ5ZzVjdGRnejBrNU9qZjJUMTNIay83QUppQVlt?=
+ =?utf-8?B?WFJNa3gwK1NJdk01OU9MOHgwWUVjYzl6cFEyb0lsZUo5RDk0QVQrV0hhUHpE?=
+ =?utf-8?B?SE0vdkhaNytTdU9EMzRLdGFWazkzM3hrR3JNcGo5RHZsUHVIQjlUSGpNbFg2?=
+ =?utf-8?B?SWpnR293YTFxNEdqd0JHN1djT3B6YnptRkxJcmZWN0sva1FaQkdyU2tsN3hX?=
+ =?utf-8?B?eVcxOVVzRFM2dlk5KzBTcmltYkRUZGcxWkE0cENDRkRCV1laVGNhTC9NRjRw?=
+ =?utf-8?B?U3pwVlVUbzdlRlplYlNqRnYzVmE3MEw4bS9uMjN1TWVZck9DQ25iS3crWFZ1?=
+ =?utf-8?B?N1RBd3dQK2lDaVlzVEdvVXRTRFVPTWdkT2s5RUVVZHNZd0VYc3lkUmp3QXJE?=
+ =?utf-8?B?QVFvckV6OFVDOFFuVHAzVGVDd2I0RkdsL2hHd0FGTGsweEhXekNrV0VjR0pS?=
+ =?utf-8?B?UmFMSTRicUhuWkdHSkwzakdDNzhvSllldFk2L3NxaDJYTHBZQkt2VDlLcmNG?=
+ =?utf-8?B?R3VIMVd1YXhaZ0UxTWRUVzJUWllmZnpzVzZHbzNRZEJXRGVBOWo0dHRSTWFa?=
+ =?utf-8?B?VkpzOVRKc2dqM0Q3bDZlbzZ5bVFXU3EvYXl3d3BWakZNUlYwblVxYmJQbDZC?=
+ =?utf-8?B?dGFLWkx6TDlObCtQWkdzRUV2NTVmdkJ6NkVOTVVWVEhIVWYvZUN0L3gvemFL?=
+ =?utf-8?B?R1hSWmZ4Rk5yNE10c1BsTVdSMC81enUzbVpodVBQelhwMHVObyswTWdSWGNU?=
+ =?utf-8?B?OERvWUFrMk9UM3h6K3ZuakI1cTBkc0VNTzlTbFRXYVJaUkk5b2JYOEZyb0Ew?=
+ =?utf-8?B?ZEFjL3RrcVRDRzhwWWlMOXc0RGRhR3JJRjBuV3JLb0lpWEZLS2JEMHRDV0Nr?=
+ =?utf-8?B?V1l1Smdyem96ME5EUDdRQ1dQVjRCZnRTZ2k0cDBOMmJxRHJqZ1NrYTVPUWly?=
+ =?utf-8?B?WEEweHFjL3MrVjdlSkM5TEFxaW9EUHBkL05NMEhaU29PUUZZMkVIY2NvcTRI?=
+ =?utf-8?B?U05vMUdxMHFBdXI0MnJncXdPdnBLelNzSW1WOWpwMjVCdndEWHlGM29ETlRK?=
+ =?utf-8?B?R1ozNzFuTFJRV2JrYXhsc09zRW5HM25sUUx2V29wdmVyQTRGS1dRSTR6a1c0?=
+ =?utf-8?B?anZrQlZxWkpYanBPcjk2MzRxVTgyYTdHOVh6QjlMck0yK2t1YWFlUFljSkQv?=
+ =?utf-8?B?VzVsTFhzSXBLZHU0MEVJK1RNWU15d3pwQ2ljclpFVjdENS9MUzQrRm4rZUZp?=
+ =?utf-8?B?U0RzYjlxT3FUNmFhL0RWaERkQUZtay9NQ1Q4WXN0ZkdJMWI5K2lHSjl3a1Jz?=
+ =?utf-8?B?cEs4RjkyakwzUzZQTG1EVC93NkdJT1NyQnVmcFVtWmRidmJweHErUngxL3VP?=
+ =?utf-8?B?ZGpSUTA0QWJ6NDc4OXhtbVk2NkhVaG5BWm5ZdFBXUzQ0a1FBMkwyQ3o0Z2xm?=
+ =?utf-8?B?SU51WCthU3dZZ0QwZEplMFVRa1B0TjZPYTR1UDgvU0RGTXlHNWRFRTJHYUFL?=
+ =?utf-8?B?NFlwWGhCRjVoYS9mWXpqRzFWY3lyRHZZK2FaU3NUVXZJVHd3SE1jTW1DMVVj?=
+ =?utf-8?B?VmIzemE4cFpTZ053OExLTDBLaDVrVytzaDgzd1dFVHUwc05hWHFDWGFLZHRm?=
+ =?utf-8?B?N0x1ZXFEaGN3Z29Sb1pvL0xuM3YwUHJ1WFdhOC9qdjJTbThpTHlHM1MwNzVn?=
+ =?utf-8?B?Mk80bk8yUi9xZm5FL2sxUFpxdlFEMjRsU1NFU2lSQXl6ankrSWc3SFNVRUVK?=
+ =?utf-8?B?a0dnczd3VFlQRGp3b1YvYXlTOFI2b2N3N0pUMUdwaWJFNW9kL1M2cVNtU3J2?=
+ =?utf-8?B?NWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ee4387b-508f-4498-fe16-08db71792dbf
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR11MB4451.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2023 10:29:07.8318 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tb/eD/7V2wPyfOxzcLlR9RuIE8WcaQtL5NAzxk+C09dD9Ud6GyS4QZWSFOZyRHUp652xt09k0q05vqCZpJw/nZVk0APnWe5GIAcw6F3TEvQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7824
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687255310; x=1718791310;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=K6lMIox5Mmn9ORm63u/ti9sc6LxjdYtJpuQFBWJ7ZNs=;
- b=itFf9s3rOuGs8xEjPZvTb7QOsS9kymqecqc/GxuCsqPPAVnvuZkgHMoK
- MMXBOu9ABX6LGGqivS/wWfSfkz2ZxciQ/83KRSkGMQeKLjBVkSr5oLu8j
- 2Mg0viIAckk9bzIptrL3bi/kHMxvBIQaKV/guXN+usoHLmJ+RJQ7a8sKk
- FJjlS9Kk6XHpCWP38bsdlS+XYcJYMYawP6pF9dKFXExxY/wRyZOaf83mG
- QIXMizUcyi2EmW05a22ayG9LGwfbRFlNZ/fKpiOKqm4I7HAdyKz7SDbGT
- G+hfCvqWILWAc4qnKyiOJHiDJa9X+W0tC2WMoW/alPhLO5xyEw3dikaWy
+ t=1687256952; x=1718792952;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=if0mSsicrZUSInEZjizhLWnu0nag0cDX6ODxSDUbe9Y=;
+ b=A2VGl44tos6DU0tHxsVTmcNgKZb8i7CLD2KI3C6o63LAC+ELMnL5CYZv
+ 3SMjdubEi2ZqNELp+iF9Z0SJ1Ji94/wXFB8Cf1++477etd1qniDyxUKLP
+ eo6hAclOSIujevP0wxHscgG8IWYFlHQbQTS/NjkMNMYLMdrhmfconqM7w
+ Mx8SAaj/3DiwqJjqe1QCwtJ+sW0r3OahA3wlwqItvHZQSgxuMDFfRuK3q
+ H0NGIX+YYBrfD7Dxb8gaolsIL8QkgKSKjIctmJVdYemFJOoQtZ8h7mUUL
+ SHwxlRsHuC9nILXBljux0k0FAczhT7jtbLWFuwKdMv4hTbSO7LXYLasRE
  Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=itFf9s3r
-Subject: [Intel-wired-lan] [PATCH iwl-next V1 15/15] vfio/ice: support
- iommufd vfio compat mode
+ header.a=rsa-sha256 header.s=Intel header.b=A2VGl44t
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/3] net: add check for
+ current MAC address in dev_set_mac_address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,363 +198,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kevin.tian@intel.com, yi.l.liu@intel.com, phani.r.burra@intel.com
+Cc: pmenzel@molgen.mpg.de, przemyslaw.kitszel@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ simon.horman@corigine.com, kuba@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Yahui Cao <yahui.cao@intel.com>
+On 20.06.2023 09:16, Gal Pressman wrote:
+> On 13/06/2023 15:24, Piotr Gardocki wrote:
+>> In some cases it is possible for kernel to come with request
+>> to change primary MAC address to the address that is already
+>> set on the given interface.
+>>
+>> This patch adds proper check to return fast from the function
+>> in these cases.
+>>
+>> An example of such case is adding an interface to bonding
+>> channel in balance-alb mode:
+>> modprobe bonding mode=balance-alb miimon=100 max_bonds=1
+>> ip link set bond0 up
+>> ifenslave bond0 <eth>
+>>
+>> Signed-off-by: Piotr Gardocki <piotrx.gardocki@intel.com>
+> 
+> Hello Piotr,
+> 
+> I believe this patch has an (unintended?) side effect.
+> The early return in dev_set_mac_address() makes it so
+> 'dev->addr_assign_type' doesn't get assigned with NET_ADDR_SET, I don't
+> think this is the correct behavior.
 
-In iommufd vfio compat mode, vfio_dma_rw() will return failure, since
-vfio_device_has_container() returns false and device->iommufd_access is
-NULL.
+Hi Gal,
 
-Currently device->iommufd_access will not be created if vfio device is
-backed by pci device. To support IOVA access, manually create
-iommufd_access context by iommufd_access_create/attach() and access IOVA
-by iommufd_access_rw(). And in order to minimize the iommufd_access's
-impact, store the iommufd_access context in driver data, create it only
-before loading the device state and destroy it once finishing loading
-the device state.
+I checked it, you're right. When the addr_assign_type is PERM or RANDOM
+and user or some driver sets the same MAC address the type doesn't change
+to NET_ADDR_SET. In my testing I didn't notice issues with that, but I'm
+sure there are cases I didn't cover. Did you discover any useful cases
+that broke after this patch or did you just notice it in code?
 
-To be compatible with legacy vfio, use vfio_device_has_container() to
-check the vfio uAPI. If in legacy vfio mode, call vfio_dma_rw()
-directly, otherwise call iommufd_access_rw().
+The less invasive solution might be to skip only call to ndo_set_mac_address
+if the address doesn't change, but call everything else - I suppose the
+notifying mechanism would be required if we change addr_assign_type, right?
 
-Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
----
- .../net/ethernet/intel/ice/ice_migration.c    |  23 +--
- drivers/vfio/pci/ice/ice_vfio_pci.c           | 171 +++++++++++++++++-
- include/linux/net/intel/ice_migration.h       |   4 +-
- 3 files changed, 179 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_migration.c b/drivers/net/ethernet/intel/ice/ice_migration.c
-index 0bc897ab0dc2..c5bdfee1e3b0 100644
---- a/drivers/net/ethernet/intel/ice/ice_migration.c
-+++ b/drivers/net/ethernet/intel/ice/ice_migration.c
-@@ -440,7 +440,7 @@ ice_migration_restore_rx_head(struct ice_vf *vf,
- static int
- ice_migration_restore_tx_head(struct ice_vf *vf,
- 			      struct ice_migration_dev_state *devstate,
--			      struct vfio_device *vdev)
-+			      dma_rw_handler_t handler, void *data)
- {
- 	struct ice_tx_desc *tx_desc_dummy, *tx_desc;
- 	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-@@ -509,15 +509,15 @@ ice_migration_restore_tx_head(struct ice_vf *vf,
- 			ret = -EINVAL;
- 			goto err;
- 		}
--		ret = vfio_dma_rw(vdev, tx_ring->dma, (void *)tx_desc,
--				  tx_ring->count * sizeof(tx_desc[0]), false);
-+		ret = handler(data, tx_ring->dma, (void *)tx_desc,
-+			      tx_ring->count * sizeof(tx_desc[0]), false);
- 		if (ret) {
- 			dev_err(dev, "kvm read guest tx ring error: %d\n",
- 				ret);
- 			goto err;
- 		}
--		ret = vfio_dma_rw(vdev, tx_ring->dma, (void *)tx_desc_dummy,
--				  tx_heads[i] * sizeof(tx_desc_dummy[0]), true);
-+		ret = handler(data, tx_ring->dma, (void *)tx_desc_dummy,
-+			      tx_heads[i] * sizeof(tx_desc_dummy[0]), true);
- 		if (ret) {
- 			dev_err(dev, "kvm write guest return error: %d\n",
- 				ret);
-@@ -546,8 +546,8 @@ ice_migration_restore_tx_head(struct ice_vf *vf,
- 				vf->vf_id, i);
- 			goto err;
- 		}
--		ret = vfio_dma_rw(vdev, tx_ring->dma, (void *)tx_desc,
--				  tx_ring->count * sizeof(tx_desc[0]), true);
-+		ret = handler(data, tx_ring->dma, (void *)tx_desc,
-+			      tx_ring->count * sizeof(tx_desc[0]), true);
- 		if (ret) {
- 			dev_err(dev, "kvm write guest tx ring error: %d\n",
- 				ret);
-@@ -567,7 +567,8 @@ ice_migration_restore_tx_head(struct ice_vf *vf,
-  * @opaque: pointer to VF handler in ice vdev
-  * @buf: pointer to device state buf in migration buffer
-  * @buf_sz: size of migration buffer
-- * @vdev: pointer to vfio device
-+ * @handler: dma_rw_handler
-+ * @data: dma_rw_handler data
-  *
-  * This function uses the device state saved in migration buffer
-  * to restore device state at dst VM
-@@ -575,7 +576,7 @@ ice_migration_restore_tx_head(struct ice_vf *vf,
-  * Return 0 for success, negative for error
-  */
- int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
--				   struct vfio_device *vdev)
-+				   dma_rw_handler_t handler, void *data)
- {
- 	struct ice_migration_virtchnl_msg_slot *msg_slot;
- 	struct ice_vf *vf = (struct ice_vf *)opaque;
-@@ -587,7 +588,7 @@ int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
- 	u64 slot_sz;
- 	int ret = 0;
- 
--	if (!buf || !vdev)
-+	if (!buf)
- 		return -EINVAL;
- 
- 	total_sz += sizeof(struct ice_migration_dev_state);
-@@ -658,7 +659,7 @@ int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
- 	 * After virtual channel replay completes, tx rings are enabled.
- 	 * Then restore tx head for tx rings by injecting dummy packets.
- 	 */
--	ret = ice_migration_restore_tx_head(vf, devstate, vdev);
-+	ret = ice_migration_restore_tx_head(vf, devstate, handler, data);
- 	if (ret) {
- 		dev_err(dev, "failed to restore tx queue head\n");
- 		goto err;
-diff --git a/drivers/vfio/pci/ice/ice_vfio_pci.c b/drivers/vfio/pci/ice/ice_vfio_pci.c
-index 389a2be41896..45b95d8eef5c 100644
---- a/drivers/vfio/pci/ice/ice_vfio_pci.c
-+++ b/drivers/vfio/pci/ice/ice_vfio_pci.c
-@@ -9,6 +9,9 @@
- #include <linux/net/intel/ice_migration.h>
- #include <linux/vfio_pci_core.h>
- #include <linux/anon_inodes.h>
-+#include <linux/iommufd.h>
-+
-+MODULE_IMPORT_NS(IOMMUFD);
- 
- #define DRIVER_DESC     "ICE VFIO PCI - User Level meta-driver for Intel E800 device family"
- 
-@@ -90,6 +93,10 @@ struct ice_vfio_pci_core_device {
- 	u8 __iomem *io_base;
- 	void *vf_handle;
- 	bool is_dst;
-+
-+	u32 pt_id;
-+	struct iommufd_ctx *ictx;
-+	struct iommufd_access *user;
- };
- 
- /**
-@@ -176,6 +183,112 @@ ice_vfio_pci_load_regs(struct ice_vfio_pci_core_device *ice_vdev,
- 		writel(regs->rx_tail[i], io_base + IAVF_QRX_TAIL1(i));
- }
- 
-+/**
-+ * ice_vfio_pci_emulated_unmap - callback to unmap IOVA
-+ * @data: function handler data
-+ * @iova: I/O virtuall address
-+ * @len: IOVA length
-+ *
-+ * This function is called when application are doing DMA unmap and in some
-+ * cases driver needs to explicitly do some unmap ops if this device does not
-+ * have backed iommu. Nothing is required here since this is pci baseed vfio
-+ * device, which has backed iommu.
-+ */
-+static void
-+ice_vfio_pci_emulated_unmap(void *data, unsigned long iova, unsigned long len)
-+{
-+}
-+
-+static const struct iommufd_access_ops ice_vfio_user_ops = {
-+	.needs_pin_pages = 1,
-+	.unmap = ice_vfio_pci_emulated_unmap,
-+};
-+
-+/**
-+ * ice_vfio_dma_rw - read/write function for device IOVA address space
-+ * @data: function handler data
-+ * @iova: I/O virtuall address
-+ * @buf: buffer for read/write access
-+ * @len: buffer length
-+ * @write: true for write, false for read
-+ *
-+ * Read/write function for device IOVA access. Since vfio_dma_rw() may fail
-+ * at iommufd vfio compatiable mode, we need runtime check what uAPI it is
-+ * using and use corresponding access method for IOVA access.
-+ *
-+ * Return 0 for success, negative value for failure.
-+ */
-+static int ice_vfio_dma_rw(void *data, dma_addr_t iova,
-+			   void *buf, size_t len, bool write)
-+{
-+	struct ice_vfio_pci_core_device *ice_vdev =
-+			(struct ice_vfio_pci_core_device *)data;
-+	struct vfio_device *vdev = &ice_vdev->core_device.vdev;
-+	unsigned int flags = 0;
-+
-+	if (vfio_device_has_container(vdev))
-+		return vfio_dma_rw(vdev, iova, buf, len, write);
-+
-+	if (!current->mm)
-+		flags |= IOMMUFD_ACCESS_RW_KTHREAD;
-+	if (write)
-+		flags |= IOMMUFD_ACCESS_RW_WRITE;
-+	return iommufd_access_rw(ice_vdev->user, iova, buf, len, flags);
-+}
-+
-+/**
-+ * ice_vfio_pci_load_state_init - VFIO device state reloading initialization
-+ * @ice_vdev: pointer to ice vfio pci core device structure
-+ *
-+ * Initialization procedure before loading device state.
-+ *
-+ * Return 0 for success, negative value for failure.
-+ */
-+static int
-+ice_vfio_pci_load_state_init(struct ice_vfio_pci_core_device *ice_vdev)
-+{
-+	struct device *dev = &ice_vdev->core_device.pdev->dev;
-+	struct iommufd_access *user;
-+	int pt_id = 0;
-+	int ret;
-+
-+	if (vfio_device_has_container(&ice_vdev->core_device.vdev))
-+		return 0;
-+
-+	user = iommufd_access_create(ice_vdev->ictx, &ice_vfio_user_ops,
-+				     ice_vdev, &pt_id);
-+	if (IS_ERR(user)) {
-+		ret = PTR_ERR(user);
-+		dev_err(dev, "iommufd_access_create() return %d", ret);
-+		return ret;
-+	}
-+
-+	ret = iommufd_access_attach(user, ice_vdev->pt_id);
-+	if (ret) {
-+		dev_err(dev, "iommufd_access_attach() return %d", ret);
-+		iommufd_access_destroy(user);
-+		return ret;
-+	}
-+
-+	ice_vdev->user = user;
-+	return 0;
-+}
-+
-+/**
-+ * ice_vfio_pci_load_state_exit - VFIO device state reloading exit
-+ * @ice_vdev: pointer to ice vfio pci core device structure
-+ *
-+ * Exit procedure after loading device state.
-+ */
-+static void
-+ice_vfio_pci_load_state_exit(struct ice_vfio_pci_core_device *ice_vdev)
-+{
-+	if (vfio_device_has_container(&ice_vdev->core_device.vdev))
-+		return;
-+
-+	iommufd_access_destroy(ice_vdev->user);
-+}
-+
- /**
-  * ice_vfio_pci_load_state - VFIO device state reloading
-  * @ice_vdev: pointer to ice vfio pci core device structure
-@@ -192,12 +305,19 @@ static int __must_check
- ice_vfio_pci_load_state(struct ice_vfio_pci_core_device *ice_vdev)
- {
- 	struct ice_vfio_pci_migration_file *migf = ice_vdev->resuming_migf;
-+	int ret;
- 
-+	ret = ice_vfio_pci_load_state_init(ice_vdev);
-+	if (ret)
-+		return ret;
- 	ice_vfio_pci_load_regs(ice_vdev, &migf->mig_data.regs);
--	return ice_migration_restore_devstate(ice_vdev->vf_handle,
--					      migf->mig_data.dev_state,
--					      SZ_128K,
--					      &ice_vdev->core_device.vdev);
-+	ret = ice_migration_restore_devstate(ice_vdev->vf_handle,
-+					     migf->mig_data.dev_state,
-+					     SZ_128K,
-+					     ice_vfio_dma_rw, ice_vdev);
-+	ice_vfio_pci_load_state_exit(ice_vdev);
-+
-+	return ret;
- }
- 
- /**
-@@ -744,6 +864,43 @@ static int ice_vfio_pci_core_init_dev(struct vfio_device *core_vdev)
- 	return vfio_pci_core_init_dev(core_vdev);
- }
- 
-+static int ice_vfio_pci_attach_ioas(struct vfio_device *core_vdev, u32 *pt_id)
-+{
-+	struct ice_vfio_pci_core_device *ice_vdev = container_of(core_vdev,
-+			struct ice_vfio_pci_core_device, core_device.vdev);
-+
-+	ice_vdev->pt_id = *pt_id;
-+	return vfio_iommufd_physical_attach_ioas(core_vdev, pt_id);
-+}
-+
-+static int ice_vfio_pci_bind(struct vfio_device *core_vdev,
-+			     struct iommufd_ctx *ictx, u32 *out_device_id)
-+{
-+	struct ice_vfio_pci_core_device *ice_vdev = container_of(core_vdev,
-+			struct ice_vfio_pci_core_device, core_device.vdev);
-+	int ret;
-+
-+	ice_vdev->ictx = ictx;
-+	iommufd_ctx_get(ictx);
-+
-+	ret = vfio_iommufd_physical_bind(core_vdev, ictx, out_device_id);
-+	if (ret)
-+		iommufd_ctx_put(ictx);
-+
-+	return ret;
-+}
-+
-+static void ice_vfio_pci_unbind(struct vfio_device *core_vdev)
-+{
-+	struct ice_vfio_pci_core_device *ice_vdev = container_of(core_vdev,
-+			struct ice_vfio_pci_core_device, core_device.vdev);
-+
-+	vfio_iommufd_physical_unbind(core_vdev);
-+
-+	iommufd_ctx_put(ice_vdev->ictx);
-+	ice_vdev->ictx = NULL;
-+}
-+
- static const struct vfio_device_ops ice_vfio_pci_ops = {
- 	.name		= "ice-vfio-pci",
- 	.init		= ice_vfio_pci_core_init_dev,
-@@ -757,9 +914,9 @@ static const struct vfio_device_ops ice_vfio_pci_ops = {
- 	.mmap		= vfio_pci_core_mmap,
- 	.request	= vfio_pci_core_request,
- 	.match		= vfio_pci_core_match,
--	.bind_iommufd	= vfio_iommufd_physical_bind,
--	.unbind_iommufd	= vfio_iommufd_physical_unbind,
--	.attach_ioas	= vfio_iommufd_physical_attach_ioas,
-+	.bind_iommufd	= ice_vfio_pci_bind,
-+	.unbind_iommufd	= ice_vfio_pci_unbind,
-+	.attach_ioas	= ice_vfio_pci_attach_ioas,
- };
- 
- /**
-diff --git a/include/linux/net/intel/ice_migration.h b/include/linux/net/intel/ice_migration.h
-index 45c3469df55d..f97ed6940afd 100644
---- a/include/linux/net/intel/ice_migration.h
-+++ b/include/linux/net/intel/ice_migration.h
-@@ -7,6 +7,8 @@
- 
- #if IS_ENABLED(CONFIG_ICE_VFIO_PCI)
- 
-+typedef int (*dma_rw_handler_t)(void *data, dma_addr_t iova, void *buf,
-+				size_t len, bool write);
- #define IAVF_QRX_TAIL_MAX 256
- #define QTX_HEAD_RESTORE_DELAY_MAX 100
- #define QTX_HEAD_RESTORE_DELAY_SLEEP_US_MIN 10
-@@ -19,7 +21,7 @@ void ice_migration_uninit_vf(void *opaque);
- int ice_migration_suspend_vf(void *opaque, bool mig_dst);
- int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz);
- int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
--				   struct vfio_device *vdev);
-+				   dma_rw_handler_t handler, void *data);
- 
- #else
- static inline void *ice_migration_get_vf(struct pci_dev *vf_pdev)
--- 
-2.25.1
-
+The patch set was already in v3 and it's applied to netdev next queue.
+I'll let maintainers decide how to proceed with it now. I can take care of it,
+but need to know whether to submit new patch or send v4.
+@Jakub Kicinski, could you please take a look at request and give us some guidance?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
