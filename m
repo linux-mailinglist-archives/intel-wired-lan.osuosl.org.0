@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6159B737445
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 20:32:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A428737446
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 20:32:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3F88E82AED;
-	Tue, 20 Jun 2023 18:32:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F88E82AED
+	by smtp1.osuosl.org (Postfix) with ESMTP id E81D882B34;
+	Tue, 20 Jun 2023 18:32:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E81D882B34
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687285967;
-	bh=EuG1qNaG+5r4R22QMX03YOdyTWmNzmw40uMWrfPsMyY=;
+	s=default; t=1687285971;
+	bh=Om1rg9ke8OTjwb4JSz0Tmv5pCUlwJ79mSyZA4ui2eMc=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=hhVMQhVBsOqP4trHdG+itbBmyk4/DCKjPTJa3nq3QPZUAHoUtDGJB0XYA/83l+KxR
-	 rbgbgAEks4wtTH6OGffzohmCVFIfYJMbs3m0WKLpNM2u7UpS4BImwp2jBWfir5CaXq
-	 3k3/vGwRKg9GzuCB/RXkMb38b1oVdhsny8B6xHS3lxLSD9YkKNVOPUcC3wGn7VsMVZ
-	 FI1sH6NTWBK07T/1s+Of0GuCYfU1zNJbwSBEqyFF/HIplwkrN4ZPvJgBYA5dP4nAjt
-	 T9CsAy/Dkius9nb29GtqV0oLkBVtDy5rHoFgQqbmCQfbH0nm8b6Q2sNtvBwA2jx2rj
-	 cry9qEGd+Cp/A==
+	b=KirVhQUrwawZiWBbQsDak6p042zQccCgek/jUMs8kNjOJaxPFV/UumXX12HxlDCkZ
+	 FdWEJAPT5slP3euhuZj2cTRej3KXWbml2lXGkgmgLx8sAWfFf36A4GjsgsmNVmnpKP
+	 oCRZvWJR8gPkSnlwBdtMdgyLTZMIaa4KndvO1glSwTntNN3i0HgAUK0P33N+fFRSYd
+	 aPsUCZ3ww37iPsmJrQrCs4ZNXmmlc8IbjQFKmCsU7PYqGLIjC/pSRbVKzyGNv0+Vh+
+	 qxstbOiljafLEWQosl8/wN0Q+QMDMEFg6TLhS7DwC4kya+rn1aIjj+mVuvQPAnA0BL
+	 miWx7BGxXlyDQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KhJXx_YR3QOY; Tue, 20 Jun 2023 18:32:46 +0000 (UTC)
+	with ESMTP id fcAWiiUTumCv; Tue, 20 Jun 2023 18:32:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EAE6382144;
-	Tue, 20 Jun 2023 18:32:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EAE6382144
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3E81082144;
+	Tue, 20 Jun 2023 18:32:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E81082144
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3DF7E1BF4E4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 825A71BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CA2F660AC9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA2F660AC9
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9FB6960F88
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FB6960F88
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7epJpNN4mbTE for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id k6tXAMr6mvYB for <intel-wired-lan@lists.osuosl.org>;
  Tue, 20 Jun 2023 18:32:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 183DD60E62
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 75D7460E80
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 183DD60E62
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 75D7460E80
  for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="425907900"
-X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="425907900"
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="425907907"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="425907907"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  20 Jun 2023 11:32:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="784204389"
-X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="784204389"
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="784204391"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="784204391"
 Received: from dmert-dev.jf.intel.com ([10.166.241.14])
  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  20 Jun 2023 11:32:33 -0700
 From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jun 2023 11:34:05 -0700
-Message-Id: <20230620183414.848016-2-david.m.ertman@intel.com>
+Date: Tue, 20 Jun 2023 11:34:06 -0700
+Message-Id: <20230620183414.848016-3-david.m.ertman@intel.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230620183414.848016-1-david.m.ertman@intel.com>
 References: <20230620183414.848016-1-david.m.ertman@intel.com>
@@ -71,19 +71,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1687285956; x=1718821956;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=TbrE/BLnSYljGvOSSpo3ot/g4MKOgNqph8ntzp4MgYw=;
- b=QkDfeRFHHfyv4uEQ17qR15YsPETSo8119g9EpnYvcuH1hb5Y59EfBvoo
- q89jIisIF4D4JNWyXKZo7GI25O8oSy3Armg1EuGcFBlg3hoZtvDVu4X2H
- F2WSpf0Atxkem0uxqZqw8feEWiSEViSMMbp72gjHQwW38DUzDbBv61U+O
- 6JW7cUs31YREvFPqOm+zX81XcEPXHzXLeovthGB/lgQkbZEl3/1RXctGX
- aU4Q75pMY08UNcx5ghyPjSneCiAAYx9OFQjJYt4iarRNVHoQHYI5PBdLp
- pjTkK2AgCw3C+3oPqpUQTQQ/6yZBbQgRRA131nWZJx2nCTYLWMJT+PV5H
- Q==;
+ bh=dV/7v05gzYe4XOWinuST06CoIhQI6duiE73ONLkz3RY=;
+ b=kTbMK4DWcIwejgC/hyd3EoY1sQqiLw9NC1bjPp2DDlt7vEVqCMCUvCTP
+ 0qx9VJ9EocbspqlhJ1vJdDDdeUE3Cd9qMaLYTjDrKmG8lh5gqdpJ5qz4q
+ jIDtu6djhh6ekQPqx9vzYPg4qmXHbEa0aJCFfiB86upxIIijG3JwTQUH8
+ xiyi1xM78zFeoH7hfpdHkXUoI8KbsHdPzR72cEiLUBEvVrIUoV07JY7Rh
+ /RjFNVRgjLljoeduUwHUs7xmxIhhU77as3F+Cu8LDEtXmdpWfjZWPIZDq
+ wRie6UpT4U1G2wGwk+OR3SRRcKTorE7QjgLFc4sKyxam/T9/4MmEJRaVx
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QkDfeRFH
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 01/10] ice: Correctly
- initialize queue context values
+ header.a=rsa-sha256 header.s=Intel header.b=kTbMK4DW
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 02/10] ice: Add driver support
+ for firmware changes for LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,94 +103,303 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+Add the defines, fields, and detection code for FW support of LAG for
+SRIOV.  Also exposes some previously static functions to allow access
+in the lag code.
 
-The ice_alloc_lan_q_ctx function allocates the queue context array for a
-given traffic class. This function uses devm_kcalloc which will
-zero-allocate the structure. Thus, prior to any queue being setup by
-ice_ena_vsi_txq, the q_ctx structure will have a q_handle of 0 and a q_teid
-of 0. These are potentially valid values.
+Clean up code that is unused or not needed for LAG support.  Also add
+an ordered workqueue for processing LAG events.
 
-Modify the ice_alloc_lan_q_ctx function to initialize every member of the
-q_ctx array to have invalid values. Modify ice_dis_vsi_txq to ensure that
-it assigns q_teid to an invalid value when it assigns q_handle to the
-invalid value as well.
-
-This will allow other code to check whether the queue context is currently
-valid before operating on it.
-
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
 Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c |  1 +
- drivers/net/ethernet/intel/ice/ice_sched.c  | 23 ++++++++++++++++-----
- 2 files changed, 19 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h          |  5 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  3 ++
+ drivers/net/ethernet/intel/ice/ice_common.c   |  8 +++
+ drivers/net/ethernet/intel/ice/ice_lag.c      | 53 ++++++++++---------
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |  1 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 22 ++++++--
+ drivers/net/ethernet/intel/ice/ice_type.h     |  2 +
+ 8 files changed, 66 insertions(+), 30 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 9109006336f0..5ac0ad12f9f1 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -200,6 +200,8 @@ enum ice_feature {
+ 	ICE_F_PTP_EXTTS,
+ 	ICE_F_SMA_CTRL,
+ 	ICE_F_GNSS,
++	ICE_F_ROCE_LAG,
++	ICE_F_SRIOV_LAG,
+ 	ICE_F_MAX
+ };
+ 
+@@ -569,6 +571,7 @@ struct ice_pf {
+ 	struct mutex sw_mutex;		/* lock for protecting VSI alloc flow */
+ 	struct mutex tc_mutex;		/* lock to protect TC changes */
+ 	struct mutex adev_mutex;	/* lock to protect aux device access */
++	struct mutex lag_mutex;		/* protect ice_lag struct in PF */
+ 	u32 msg_enable;
+ 	struct ice_ptp ptp;
+ 	struct gnss_serial *gnss_serial;
+@@ -639,6 +642,8 @@ struct ice_pf {
+ 	struct ice_agg_node vf_agg_node[ICE_MAX_VF_AGG_NODES];
+ };
+ 
++extern struct workqueue_struct *ice_lag_wq;
++
+ struct ice_netdev_priv {
+ 	struct ice_vsi *vsi;
+ 	struct ice_repr *repr;
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 6ea0d4c017f0..6b5ba9a02bad 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -120,6 +120,9 @@ struct ice_aqc_list_caps_elem {
+ #define ICE_AQC_CAPS_PCIE_RESET_AVOIDANCE		0x0076
+ #define ICE_AQC_CAPS_POST_UPDATE_RESET_RESTRICT		0x0077
+ #define ICE_AQC_CAPS_NVM_MGMT				0x0080
++#define ICE_AQC_CAPS_FW_LAG_SUPPORT			0x0092
++#define ICE_AQC_BIT_ROCEV2_LAG				0x01
++#define ICE_AQC_BIT_SRIOV_LAG				0x02
+ 
+ 	u8 major_ver;
+ 	u8 minor_ver;
 diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index deb55b6d516a..09e2e38d538e 100644
+index 09e2e38d538e..6ddf607d2edf 100644
 --- a/drivers/net/ethernet/intel/ice/ice_common.c
 +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -4673,6 +4673,7 @@ ice_dis_vsi_txq(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u8 num_queues,
- 			break;
- 		ice_free_sched_node(pi, node);
- 		q_ctx->q_handle = ICE_INVAL_Q_HANDLE;
-+		q_ctx->q_teid = ICE_INVAL_TEID;
- 	}
- 	mutex_unlock(&pi->sched_lock);
- 	kfree(qg_list);
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index b664d60fd037..79a8972873f1 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -569,18 +569,24 @@ ice_alloc_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 new_numqs)
- {
- 	struct ice_vsi_ctx *vsi_ctx;
- 	struct ice_q_ctx *q_ctx;
-+	u16 idx;
+@@ -2241,6 +2241,14 @@ ice_parse_common_caps(struct ice_hw *hw, struct ice_hw_common_caps *caps,
+ 			  "%s: reset_restrict_support = %d\n", prefix,
+ 			  caps->reset_restrict_support);
+ 		break;
++	case ICE_AQC_CAPS_FW_LAG_SUPPORT:
++		caps->roce_lag = !!(number & ICE_AQC_BIT_ROCEV2_LAG);
++		ice_debug(hw, ICE_DBG_INIT, "%s: roce_lag = %u\n",
++			  prefix, caps->roce_lag);
++		caps->sriov_lag = !!(number & ICE_AQC_BIT_SRIOV_LAG);
++		ice_debug(hw, ICE_DBG_INIT, "%s: sriov_lag = %u\n",
++			  prefix, caps->sriov_lag);
++		break;
+ 	default:
+ 		/* Not one of the recognized common capabilities */
+ 		found = false;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+index 5a7753bda324..d018e68f5a6d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.c
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -4,8 +4,12 @@
+ /* Link Aggregation code */
  
- 	vsi_ctx = ice_get_vsi_ctx(hw, vsi_handle);
- 	if (!vsi_ctx)
- 		return -EINVAL;
- 	/* allocate LAN queue contexts */
- 	if (!vsi_ctx->lan_q_ctx[tc]) {
--		vsi_ctx->lan_q_ctx[tc] = devm_kcalloc(ice_hw_to_dev(hw),
--						      new_numqs,
--						      sizeof(*q_ctx),
--						      GFP_KERNEL);
--		if (!vsi_ctx->lan_q_ctx[tc])
-+		q_ctx = devm_kcalloc(ice_hw_to_dev(hw), new_numqs,
-+				     sizeof(*q_ctx), GFP_KERNEL);
-+		if (!q_ctx)
- 			return -ENOMEM;
+ #include "ice.h"
++#include "ice_lib.h"
+ #include "ice_lag.h"
+ 
++#define ICE_LAG_RES_SHARED	BIT(14)
++#define ICE_LAG_RES_VALID	BIT(15)
 +
-+		for (idx = 0; idx < new_numqs; idx++) {
-+			q_ctx[idx].q_handle = ICE_INVAL_Q_HANDLE;
-+			q_ctx[idx].q_teid = ICE_INVAL_TEID;
-+		}
+ /**
+  * ice_lag_set_primary - set PF LAG state as Primary
+  * @lag: LAG info struct
+@@ -225,6 +229,26 @@ static void ice_lag_unregister(struct ice_lag *lag, struct net_device *netdev)
+ 	lag->role = ICE_LAG_NONE;
+ }
+ 
++/**
++ * ice_lag_init_feature_support_flag - Check for NVM support for LAG
++ * @pf: PF struct
++ */
++static void ice_lag_init_feature_support_flag(struct ice_pf *pf)
++{
++	struct ice_hw_common_caps *caps;
 +
-+		vsi_ctx->lan_q_ctx[tc] = q_ctx;
- 		vsi_ctx->num_lan_q_entries[tc] = new_numqs;
- 		return 0;
++	caps = &pf->hw.dev_caps.common_cap;
++	if (caps->roce_lag)
++		ice_set_feature_support(pf, ICE_F_ROCE_LAG);
++	else
++		ice_clear_feature_support(pf, ICE_F_ROCE_LAG);
++
++	if (caps->sriov_lag)
++		ice_set_feature_support(pf, ICE_F_SRIOV_LAG);
++	else
++		ice_clear_feature_support(pf, ICE_F_SRIOV_LAG);
++}
++
+ /**
+  * ice_lag_changeupper_event - handle LAG changeupper event
+  * @lag: LAG info struct
+@@ -264,26 +288,6 @@ static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
+ 	ice_display_lag_info(lag);
+ }
+ 
+-/**
+- * ice_lag_changelower_event - handle LAG changelower event
+- * @lag: LAG info struct
+- * @ptr: opaque data pointer
+- *
+- * ptr to be cast to netdev_notifier_changelowerstate_info
+- */
+-static void ice_lag_changelower_event(struct ice_lag *lag, void *ptr)
+-{
+-	struct net_device *netdev = netdev_notifier_info_to_dev(ptr);
+-
+-	if (netdev != lag->netdev)
+-		return;
+-
+-	netdev_dbg(netdev, "bonding info\n");
+-
+-	if (!netif_is_lag_port(netdev))
+-		netdev_dbg(netdev, "CHANGELOWER rcvd, but netdev not in LAG. Bail\n");
+-}
+-
+ /**
+  * ice_lag_event_handler - handle LAG events from netdev
+  * @notif_blk: notifier block registered by this netdev
+@@ -310,9 +314,6 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
+ 	case NETDEV_CHANGEUPPER:
+ 		ice_lag_changeupper_event(lag, ptr);
+ 		break;
+-	case NETDEV_CHANGELOWERSTATE:
+-		ice_lag_changelower_event(lag, ptr);
+-		break;
+ 	case NETDEV_BONDING_INFO:
+ 		ice_lag_info_event(lag, ptr);
+ 		break;
+@@ -379,6 +380,8 @@ int ice_init_lag(struct ice_pf *pf)
+ 	struct ice_vsi *vsi;
+ 	int err;
+ 
++	ice_lag_init_feature_support_flag(pf);
++
+ 	pf->lag = kzalloc(sizeof(*lag), GFP_KERNEL);
+ 	if (!pf->lag)
+ 		return -ENOMEM;
+@@ -435,9 +438,7 @@ void ice_deinit_lag(struct ice_pf *pf)
+ 	if (lag->pf)
+ 		ice_unregister_lag_handler(lag);
+ 
+-	dev_put(lag->upper_netdev);
+-
+-	dev_put(lag->peer_netdev);
++	flush_workqueue(ice_lag_wq);
+ 
+ 	kfree(lag);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 984b381386ff..cdb352e0fa07 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3997,7 +3997,7 @@ bool ice_is_feature_supported(struct ice_pf *pf, enum ice_feature f)
+  * @pf: pointer to the struct ice_pf instance
+  * @f: feature enum to set
+  */
+-static void ice_set_feature_support(struct ice_pf *pf, enum ice_feature f)
++void ice_set_feature_support(struct ice_pf *pf, enum ice_feature f)
+ {
+ 	if (f < 0 || f >= ICE_F_MAX)
+ 		return;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 1628385a9672..dd53fe968ad8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -163,6 +163,7 @@ int ice_vsi_del_vlan_zero(struct ice_vsi *vsi);
+ bool ice_vsi_has_non_zero_vlans(struct ice_vsi *vsi);
+ u16 ice_vsi_num_non_zero_vlans(struct ice_vsi *vsi);
+ bool ice_is_feature_supported(struct ice_pf *pf, enum ice_feature f);
++void ice_set_feature_support(struct ice_pf *pf, enum ice_feature f);
+ void ice_clear_feature_support(struct ice_pf *pf, enum ice_feature f);
+ void ice_init_feature_support(struct ice_pf *pf);
+ bool ice_vsi_is_rx_queue_active(struct ice_vsi *vsi);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index f358018337af..23f5af5c7537 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -64,6 +64,7 @@ struct device *ice_hw_to_dev(struct ice_hw *hw)
+ }
+ 
+ static struct workqueue_struct *ice_wq;
++struct workqueue_struct *ice_lag_wq;
+ static const struct net_device_ops ice_netdev_safe_mode_ops;
+ static const struct net_device_ops ice_netdev_ops;
+ 
+@@ -3795,6 +3796,7 @@ u16 ice_get_avail_rxq_count(struct ice_pf *pf)
+ static void ice_deinit_pf(struct ice_pf *pf)
+ {
+ 	ice_service_task_stop(pf);
++	mutex_destroy(&pf->lag_mutex);
+ 	mutex_destroy(&pf->adev_mutex);
+ 	mutex_destroy(&pf->sw_mutex);
+ 	mutex_destroy(&pf->tc_mutex);
+@@ -3875,6 +3877,7 @@ static int ice_init_pf(struct ice_pf *pf)
+ 	mutex_init(&pf->sw_mutex);
+ 	mutex_init(&pf->tc_mutex);
+ 	mutex_init(&pf->adev_mutex);
++	mutex_init(&pf->lag_mutex);
+ 
+ 	INIT_HLIST_HEAD(&pf->aq_wait_list);
+ 	spin_lock_init(&pf->aq_wait_lock);
+@@ -5565,7 +5568,7 @@ static struct pci_driver ice_driver = {
+  */
+ static int __init ice_module_init(void)
+ {
+-	int status;
++	int status = -ENOMEM;
+ 
+ 	pr_info("%s\n", ice_driver_string);
+ 	pr_info("%s\n", ice_copyright);
+@@ -5573,15 +5576,27 @@ static int __init ice_module_init(void)
+ 	ice_wq = alloc_workqueue("%s", 0, 0, KBUILD_MODNAME);
+ 	if (!ice_wq) {
+ 		pr_err("Failed to create workqueue\n");
+-		return -ENOMEM;
++		return status;
++	}
++
++	ice_lag_wq = alloc_ordered_workqueue("ice_lag_wq", 0);
++	if (!ice_lag_wq) {
++		pr_err("Failed to create LAG workqueue\n");
++		goto err_dest_wq;
  	}
-@@ -592,9 +598,16 @@ ice_alloc_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 new_numqs)
- 				     sizeof(*q_ctx), GFP_KERNEL);
- 		if (!q_ctx)
- 			return -ENOMEM;
-+
- 		memcpy(q_ctx, vsi_ctx->lan_q_ctx[tc],
- 		       prev_num * sizeof(*q_ctx));
- 		devm_kfree(ice_hw_to_dev(hw), vsi_ctx->lan_q_ctx[tc]);
-+
-+		for (idx = prev_num; idx < new_numqs; idx++) {
-+			q_ctx[idx].q_handle = ICE_INVAL_Q_HANDLE;
-+			q_ctx[idx].q_teid = ICE_INVAL_TEID;
-+		}
-+
- 		vsi_ctx->lan_q_ctx[tc] = q_ctx;
- 		vsi_ctx->num_lan_q_entries[tc] = new_numqs;
+ 
+ 	status = pci_register_driver(&ice_driver);
+ 	if (status) {
+ 		pr_err("failed to register PCI driver, err %d\n", status);
+-		destroy_workqueue(ice_wq);
++		goto err_dest_lag_wq;
  	}
+ 
++	return 0;
++
++err_dest_lag_wq:
++	destroy_workqueue(ice_lag_wq);
++err_dest_wq:
++	destroy_workqueue(ice_wq);
+ 	return status;
+ }
+ module_init(ice_module_init);
+@@ -5596,6 +5611,7 @@ static void __exit ice_module_exit(void)
+ {
+ 	pci_unregister_driver(&ice_driver);
+ 	destroy_workqueue(ice_wq);
++	destroy_workqueue(ice_lag_wq);
+ 	pr_info("module unloaded\n");
+ }
+ module_exit(ice_module_exit);
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index a073616671ef..5e353b0cbe6f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -277,6 +277,8 @@ struct ice_hw_common_caps {
+ 	u8 dcb;
+ 	u8 ieee_1588;
+ 	u8 rdma;
++	u8 roce_lag;
++	u8 sriov_lag;
+ 
+ 	bool nvm_update_pending_nvm;
+ 	bool nvm_update_pending_orom;
 -- 
 2.40.1
 
