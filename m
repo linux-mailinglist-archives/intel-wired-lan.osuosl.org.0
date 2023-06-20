@@ -2,65 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C1D773689D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:01:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DEE2773689E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:01:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D16DC418E1;
-	Tue, 20 Jun 2023 10:01:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D16DC418E1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7C4C5418E4;
+	Tue, 20 Jun 2023 10:01:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C4C5418E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687255277;
-	bh=9ECWzWA6QZKdauEEpDWbY62gH4JCgF8KoqZ/9yPOHjE=;
+	s=default; t=1687255282;
+	bh=HPrQmTub73P4CHfBFZLWnR6GDLOaPUoQGY4/VIfEZ2U=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=tdyAVw5YZcrb2nm4uVp0Rqydfvks2E5cZOHg6S8qyjYKD8mRc6mgGphWydTwIKacP
-	 6UMSAquhWMn3RYCuuiOK0D254SF9EHgpI+R9GlAr+hgOSP3lAYoV3LUwWF9V2HBvjT
-	 Wyv1aiCzoukIr1flLV59S26ptjLXu7CyhDgJdu6MfA5BPFgmHHOL41XabbQ/nDB9F3
-	 qV39fBO0HOT78VYfY/uS7J6GcFQ/k0nbMqyq5PmnQZLDdpfJf5qbvRqUHmO9DmnxeW
-	 j1dbUgXNTBHeUeWYQ7AObNwTRF0lB2+Eiwn8BmhNyrhp2dLVyDd4l5Yhp55l5FMLwE
-	 BxEgJXzkt7A0w==
+	b=5sPc8vk3vD/wJqS0Zr0n5X3dEWvwM84LN/MTixUJ8EXJCQ5G8QYr/G2MIGDasN7OF
+	 riSpF4Cnu339opeG9eRjYu7r5J/Hmvs2ME2/8G3NIvpFhysdoZFdOsteI4DmJhm43Z
+	 gwLJuw7FL5HOxwr/S1RXSm/8TLSDtPzo8G6hTMsfHAJOx2TsqJWFSXJxVVKFu8E9oO
+	 bJTsg3CKJyjuZSzzKSJUONMUUB75980r93r/Ncqq/jCRoP7dikwy1QwBVFVo11LYPl
+	 +z4L3L+ltjFFzNCEmCmywcN13Dhh5QKq4s8s1o9DEc+qhky/pIdQ/KjCPAUpSN2wQq
+	 LEFW+cYdmTvsg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3nB4UkaovZie; Tue, 20 Jun 2023 10:01:16 +0000 (UTC)
+	with ESMTP id IJwSpMBG99SQ; Tue, 20 Jun 2023 10:01:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4DFC7418C2;
-	Tue, 20 Jun 2023 10:01:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DFC7418C2
+	by smtp4.osuosl.org (Postfix) with ESMTP id D05154099D;
+	Tue, 20 Jun 2023 10:01:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D05154099D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0DF591BF39E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 123441BF39E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D5AC260E4F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5AC260E4F
+ by smtp3.osuosl.org (Postfix) with ESMTP id DDADC60E4F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDADC60E4F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id twilISpFEA9L for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jun 2023 10:00:54 +0000 (UTC)
+ with ESMTP id eFyC9DWhqCmh for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jun 2023 10:00:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 00DA260D59
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF66960D59
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 00DA260D59
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="358688365"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="358688365"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EF66960D59
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:00:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="358688372"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="358688372"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2023 03:00:50 -0700
+ 20 Jun 2023 03:00:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="664227235"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="664227235"
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="664227265"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="664227265"
 Received: from dpdk-liulingy-2.sh.intel.com ([10.67.119.34])
- by orsmga003.jf.intel.com with ESMTP; 20 Jun 2023 03:00:48 -0700
+ by orsmga003.jf.intel.com with ESMTP; 20 Jun 2023 03:00:51 -0700
 From: Lingyu Liu <lingyu.liu@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jun 2023 09:59:51 +0000
-Message-Id: <20230620100001.5331-6-lingyu.liu@intel.com>
+Date: Tue, 20 Jun 2023 09:59:52 +0000
+Message-Id: <20230620100001.5331-7-lingyu.liu@intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230620100001.5331-1-lingyu.liu@intel.com>
 References: <20230620100001.5331-1-lingyu.liu@intel.com>
@@ -70,19 +70,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1687255254; x=1718791254;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=CD7c+u9kvuhGnXGWU0glFbV6gdH+mRYurCPgdPG2+bg=;
- b=JYweFk4gyQosnnHaCwEN1X3xNVSibH1+oT1Ya+ndS1zkDeJB62ePYTXk
- 72YsDAYIeP4jV5r545pTe9eliJFTwMAVIdD8hzk2m/UzBzYPCFumEQacB
- 8eD4N4lVqhJFz6pJRzcsJx25OQtQRbyV+lqltsgjm3j5EWp/3oJxoq9PG
- XGv+ZwUUYSlnPGIzrBGKfVhDNvusZlIEBzAKYxzHn9hwkxYnnZKJ3nGqK
- rVdSulfmuqoLB74EDlG7/DZeGWg+dK8aklFtX7CdUp3gAiDFT0PQN8xgG
- I/uKgII3eMqTsct+fFp4KKZgjZOyHy889yCj+tXgb6jDOhPvwP1DDbSsW
+ bh=HIvJCz03cI7AwBUM/MSVRccvzB9TLkPwWp7+N4n+oQg=;
+ b=KqOhM277I/AgpJwUeFzstdX5Hnwc6e0s/gxldQAid852BXX4qIvvCMWV
+ 4vGaaSXS7B2lmNuwEkq+hucSWMy/+pCnhVZxbKYMXdqwyYoXa1ikjU/E9
+ u7OlqvNyo4QUVJ9+ZFpCj+07lBSNtjZAXd/HSCgd7S/u/Z8wUALRvJF/6
+ NtZnJwb1jJLAkriVzLkRx1ErPT/VTiSlklJ+8qoojZRGGhh2UeZINdaHI
+ RA5dHTwSK/47qosl6Xr4J2f456mKSyryT1+GOkHcZHu0KzsDrdsqRHuxA
+ h7pnViiofBKMngxMUMS4Eay+aoNVCSpyPbAFe9V9Wn4kZpMXcKkBjbBTW
  g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JYweFk4g
-Subject: [Intel-wired-lan] [PATCH iwl-next V1 05/15] ice: save VF messages
- as device state
+ header.a=rsa-sha256 header.s=Intel header.b=KqOhM277
+Subject: [Intel-wired-lan] [PATCH iwl-next V1 06/15] ice: save and restore
+ device state
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,222 +101,266 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add a list in VF structure to save the virtual channel
-messages sent by VF.
+Add function to migrate device state.
 
 ice_vfio_pci driver introduced in following patches from this series
-needs the saved virtual channel list.
+needs the exported function to save and restore device state.
 
 Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
 Signed-off-by: Yahui Cao <yahui.cao@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |  1 +
- .../net/ethernet/intel/ice/ice_migration.c    | 94 +++++++++++++++++++
- .../intel/ice/ice_migration_private.h         | 22 +++++
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  3 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  3 +
- 5 files changed, 123 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_migration_private.h
+ .../net/ethernet/intel/ice/ice_migration.c    | 125 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  26 +++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   7 +-
+ include/linux/net/intel/ice_migration.h       |  12 ++
+ 4 files changed, 161 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index ec7f27d93924..d264a17e0d95 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -77,6 +77,7 @@
- #include "ice_vsi_vlan_ops.h"
- #include "ice_gnss.h"
- #include "ice_irq.h"
-+#include "ice_migration_private.h"
- 
- #define ICE_BAR0		0
- #define ICE_REQ_DESC_MULTIPLE	32
 diff --git a/drivers/net/ethernet/intel/ice/ice_migration.c b/drivers/net/ethernet/intel/ice/ice_migration.c
-index 1aadb8577a41..6f658daf89a5 100644
+index 6f658daf89a5..49ad3c252f03 100644
 --- a/drivers/net/ethernet/intel/ice/ice_migration.c
 +++ b/drivers/net/ethernet/intel/ice/ice_migration.c
-@@ -3,6 +3,17 @@
- 
- #include "ice.h"
- 
-+struct ice_migration_virtchnl_msg_slot {
-+	u32 opcode;
-+	u16 msg_len;
-+	char msg_buffer[];
-+};
-+
-+struct ice_migration_virtchnl_msg_listnode {
-+	struct list_head node;
-+	struct ice_migration_virtchnl_msg_slot msg_slot;
-+};
-+
- /**
-  * ice_migration_get_vf - Get ice VF structure pointer by pdev
-  * @vf_pdev: pointer to ice vfio pci VF pdev structure
-@@ -49,6 +60,8 @@ void ice_migration_init_vf(void *opaque)
- 	struct ice_vf *vf = (struct ice_vf *)opaque;
- 
- 	vf->migration_active = true;
-+	INIT_LIST_HEAD(&vf->virtchnl_msg_list);
-+	vf->virtchnl_msg_num = 0;
+@@ -160,3 +160,128 @@ void ice_migration_save_vf_msg(struct ice_vf *vf,
+ 		break;
+ 	}
  }
- EXPORT_SYMBOL(ice_migration_init_vf);
- 
-@@ -58,11 +71,92 @@ EXPORT_SYMBOL(ice_migration_init_vf);
-  */
- void ice_migration_uninit_vf(void *opaque)
- {
-+	struct ice_migration_virtchnl_msg_listnode *msg_listnode;
-+	struct ice_migration_virtchnl_msg_listnode *dtmp;
- 	struct ice_vf *vf = (struct ice_vf *)opaque;
- 
- 	if (!vf->migration_active)
- 		return;
- 
- 	vf->migration_active = false;
-+
-+	if (list_empty(&vf->virtchnl_msg_list))
-+		return;
-+	list_for_each_entry_safe(msg_listnode, dtmp,
-+				 &vf->virtchnl_msg_list,
-+				 node) {
-+		list_del(&msg_listnode->node);
-+		kfree(msg_listnode);
-+	}
-+	vf->virtchnl_msg_num = 0;
- }
- EXPORT_SYMBOL(ice_migration_uninit_vf);
 +
 +/**
-+ * ice_migration_save_vf_msg - Save request message from VF
-+ * @vf: pointer to the VF structure
-+ * @event: pointer to the AQ event
++ * ice_migration_save_devstate - save VF msg to migration buffer
++ * @opaque: pointer to VF handler in ice vdev
++ * @buf: pointer to VF msg in migration buffer
++ * @buf_sz: size of migration buffer
 + *
-+ * save VF message for later restore during live migration
++ * Return 0 for success, negative for error
 + */
-+void ice_migration_save_vf_msg(struct ice_vf *vf,
-+			       struct ice_rq_event_info *event)
++int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz)
 +{
 +	struct ice_migration_virtchnl_msg_listnode *msg_listnode;
-+	u32 v_opcode = le32_to_cpu(event->desc.cookie_high);
-+	u16 msglen = event->msg_len;
-+	u8 *msg = event->msg_buf;
-+	struct device *dev;
-+	struct ice_pf *pf;
++	struct ice_migration_virtchnl_msg_slot *last_op;
++	struct ice_vf *vf = (struct ice_vf *)opaque;
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	u64 total_sz = 0;
 +
-+	pf = vf->pf;
-+	dev = ice_pf_to_dev(pf);
++	if (vf == NULL)
++		return -EINVAL;
 +
-+	if (!vf->migration_active)
-+		return;
++	list_for_each_entry(msg_listnode, &vf->virtchnl_msg_list, node) {
++		struct ice_migration_virtchnl_msg_slot *msg_slot;
++		u64 slot_size;
 +
-+	switch (v_opcode) {
-+	case VIRTCHNL_OP_VERSION:
-+	case VIRTCHNL_OP_GET_VF_RESOURCES:
-+	case VIRTCHNL_OP_CONFIG_VSI_QUEUES:
-+	case VIRTCHNL_OP_CONFIG_IRQ_MAP:
-+	case VIRTCHNL_OP_ADD_ETH_ADDR:
-+	case VIRTCHNL_OP_DEL_ETH_ADDR:
-+	case VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE:
-+	case VIRTCHNL_OP_ENABLE_QUEUES:
-+	case VIRTCHNL_OP_DISABLE_QUEUES:
-+	case VIRTCHNL_OP_ADD_VLAN:
-+	case VIRTCHNL_OP_DEL_VLAN:
-+	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
-+	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
-+	case VIRTCHNL_OP_CONFIG_RSS_KEY:
-+	case VIRTCHNL_OP_CONFIG_RSS_LUT:
-+	case VIRTCHNL_OP_GET_SUPPORTED_RXDIDS:
-+		if (vf->virtchnl_msg_num >= VIRTCHNL_MSG_MAX) {
-+			dev_warn(dev, "VF %d has maximum number virtual channel commands\n",
-+				 vf->vf_id);
-+			return;
++		msg_slot = &msg_listnode->msg_slot;
++		slot_size = struct_size(msg_slot, msg_buffer,
++					msg_slot->msg_len);
++		total_sz += slot_size;
++		if (total_sz > buf_sz) {
++			dev_err(dev, "Insufficient buffer to store virtchnl message for VF %d op: %d, len: %d\n",
++				vf->vf_id, msg_slot->opcode, msg_slot->msg_len);
++			return -ENOBUFS;
 +		}
-+
-+		msg_listnode = (struct ice_migration_virtchnl_msg_listnode *)
-+				kzalloc(struct_size(msg_listnode,
-+						    msg_slot.msg_buffer,
-+						    msglen),
-+					GFP_KERNEL);
-+		if (!msg_listnode) {
-+			dev_err(dev, "VF %d failed to allocate memory for msg listnode\n",
-+				vf->vf_id);
-+			return;
-+		}
-+		dev_dbg(dev, "VF %d save virtual channel command, op code: %d, len: %d\n",
-+			vf->vf_id, v_opcode, msglen);
-+		msg_listnode->msg_slot.opcode = v_opcode;
-+		msg_listnode->msg_slot.msg_len = msglen;
-+		memcpy(msg_listnode->msg_slot.msg_buffer, msg, msglen);
-+		list_add_tail(&msg_listnode->node, &vf->virtchnl_msg_list);
-+		vf->virtchnl_msg_num++;
-+		break;
-+	default:
-+		break;
++		dev_dbg(dev, "VF %d copy virtchnl message to migration buffer op: %d, len: %d\n",
++			vf->vf_id, msg_slot->opcode, msg_slot->msg_len);
++		memcpy(buf, msg_slot, slot_size);
++		buf += slot_size;
 +	}
++	/* reserve space to mark end of vf messages */
++	total_sz += sizeof(struct ice_migration_virtchnl_msg_slot);
++	if (total_sz > buf_sz) {
++		dev_err(dev, "Insufficient buffer to store virtchnl message for VF %d\n",
++			vf->vf_id);
++		return -ENOBUFS;
++	}
++
++	/* use op code unknown to mark end of vc messages */
++	last_op = (struct ice_migration_virtchnl_msg_slot *)buf;
++	last_op->opcode = VIRTCHNL_OP_UNKNOWN;
++	return 0;
 +}
-diff --git a/drivers/net/ethernet/intel/ice/ice_migration_private.h b/drivers/net/ethernet/intel/ice/ice_migration_private.h
-new file mode 100644
-index 000000000000..4773fbc6b099
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_migration_private.h
-@@ -0,0 +1,22 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright (C) 2018-2023 Intel Corporation */
++EXPORT_SYMBOL(ice_migration_save_devstate);
 +
-+#ifndef _ICE_MIGRATION_PRIVATE_H_
-+#define _ICE_MIGRATION_PRIVATE_H_
-+
-+/* This header file is for exposing functions in ice_migration.c to
-+ * files which will be compiled in ice.ko.
-+ * Functions which may be used by other files which will be compiled
-+ * in ice-vfio-pic.ko should be exposed as part of ice_migration.h.
++/**
++ * ice_migration_restore_devstate - restore device state at dst
++ * @opaque: pointer to VF handler in ice vdev
++ * @buf: pointer to device state buf in migration buffer
++ * @buf_sz: size of migration buffer
++ *
++ * This function uses the device state saved in migration buffer
++ * to restore device state at dst VM
++ *
++ * Return 0 for success, negative for error
 + */
++int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz)
++{
++	struct ice_migration_virtchnl_msg_slot *msg_slot;
++	struct ice_vf *vf = (struct ice_vf *)opaque;
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	struct ice_rq_event_info event;
++	u64 total_sz = 0;
++	u64 op_msglen_sz;
++	u64 slot_sz;
++	int ret = 0;
 +
-+#if IS_ENABLED(CONFIG_ICE_VFIO_PCI)
-+void ice_migration_save_vf_msg(struct ice_vf *vf,
-+			       struct ice_rq_event_info *event);
-+#else
-+static inline void
-+ice_migration_save_vf_msg(struct ice_vf *vf,
-+			  struct ice_rq_event_info *event) { }
-+#endif /* CONFIG_ICE_VFIO_PCI */
++	if (!buf)
++		return -EINVAL;
 +
-+#endif /* _ICE_MIGRATION_PRIVATE_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index cbff9b5aacd6..b77daa7d310c 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -77,6 +77,7 @@ struct ice_vfs {
- 	unsigned long last_printed_mdd_jiffies;	/* MDD message rate limit */
- };
- 
-+#define VIRTCHNL_MSG_MAX 1000
- /* VF information structure */
- struct ice_vf {
- 	struct hlist_node entry;
-@@ -135,6 +136,8 @@ struct ice_vf {
- 	/* devlink port data */
- 	struct devlink_port devlink_port;
- 	bool migration_active;
-+	struct list_head virtchnl_msg_list;
-+	u64 virtchnl_msg_num;
- };
- 
- /* Flags for controlling behavior of ice_reset_vf */
++	msg_slot = (struct ice_migration_virtchnl_msg_slot *)buf;
++	op_msglen_sz = sizeof(struct ice_migration_virtchnl_msg_slot);
++	/* check whether enough space for opcode and msg_len */
++	if (total_sz + op_msglen_sz > buf_sz) {
++		dev_err(dev, "VF %d msg size exceeds buffer size\n", vf->vf_id);
++		return -ENOBUFS;
++	}
++
++	set_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states);
++
++	while (msg_slot->opcode != VIRTCHNL_OP_UNKNOWN) {
++		slot_sz = struct_size(msg_slot, msg_buffer, msg_slot->msg_len);
++		total_sz += slot_sz;
++		/* check whether enough space for whole message */
++		if (total_sz > buf_sz) {
++			dev_err(dev, "VF %d msg size exceeds buffer size\n",
++				vf->vf_id);
++			ret = -ENOBUFS;
++			break;
++		}
++		dev_dbg(dev, "VF %d replay virtchnl message op code: %d, msg len: %d\n",
++			vf->vf_id, msg_slot->opcode, msg_slot->msg_len);
++		event.desc.cookie_high = msg_slot->opcode;
++		event.msg_len = msg_slot->msg_len;
++		event.desc.retval = vf->vf_id;
++		event.msg_buf = (unsigned char *)msg_slot->msg_buffer;
++		ret = ice_vc_process_vf_msg(vf->pf, &event, NULL);
++		if (ret) {
++			dev_err(dev, "failed to replay virtchnl message op code: %d\n",
++				msg_slot->opcode);
++			break;
++		}
++		event.msg_buf = NULL;
++		msg_slot = (struct ice_migration_virtchnl_msg_slot *)
++					((char *)msg_slot + slot_sz);
++		/* check whether enough space for opcode and msg_len */
++		if (total_sz + op_msglen_sz > buf_sz) {
++			dev_err(dev, "VF %d msg size exceeds buffer size\n",
++				vf->vf_id);
++			ret = -ENOBUFS;
++			break;
++		}
++	}
++	clear_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states);
++	return ret;
++}
++EXPORT_SYMBOL(ice_migration_restore_devstate);
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index aa9b7f5a6dc3..b306e0e0a395 100644
+index b306e0e0a395..ce8afceb5a8e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -4077,6 +4077,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
- 			 vf_id, v_opcode, err);
+@@ -3894,11 +3894,24 @@ ice_is_malicious_vf(struct ice_vf *vf, struct ice_mbx_data *mbxdata)
+  * @event: pointer to the AQ event
+  * @mbxdata: information used to detect VF attempting mailbox overflow
+  *
+- * called from the common asq/arq handler to
+- * process request from VF
++ * This function will be called from:
++ * 1. the common asq/arq handler to process request from VF
++ *
++ *    The return value is ignored, as the command will send the status of the
++ *    request as a response to the VF. This flow sets the mbxdata to
++ *    a non-NULL value and must call ice_is_malicious_vf to determine if this
++ *    VF might be attempting to overflow the PF message queue.
++ *
++ * 2. replay virtual channel commamds during live migration
++ *
++ *    The return value is used to indicate failure to replay vc commands and
++ *    that the migration failed. This flow sets mbxdata to NULL and skips the
++ *    ice_is_malicious_vf checks which are unnecessary during replay.
++ *
++ * Return 0 if success, negative for failure.
+  */
+-void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+-			   struct ice_mbx_data *mbxdata)
++int ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
++			  struct ice_mbx_data *mbxdata)
+ {
+ 	u32 v_opcode = le32_to_cpu(event->desc.cookie_high);
+ 	s16 vf_id = le16_to_cpu(event->desc.retval);
+@@ -3915,13 +3928,13 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+ 	if (!vf) {
+ 		dev_err(dev, "Unable to locate VF for message from VF ID %d, opcode %d, len %d\n",
+ 			vf_id, v_opcode, msglen);
+-		return;
++		return -EINVAL;
  	}
  
-+	if (!err && vf->migration_active)
-+		ice_migration_save_vf_msg(vf, event);
-+
+ 	mutex_lock(&vf->cfg_lock);
+ 
+ 	/* Check if the VF is trying to overflow the mailbox */
+-	if (ice_is_malicious_vf(vf, mbxdata))
++	if (!test_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states) && ice_is_malicious_vf(vf, mbxdata))
+ 		goto finish;
+ 
+ 	/* Check if VF is disabled. */
+@@ -4083,4 +4096,5 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
  finish:
  	mutex_unlock(&vf->cfg_lock);
  	ice_put_vf(vf);
++	return err;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.h b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
+index a2b6094e2f2f..4b151a228c52 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
+@@ -63,8 +63,8 @@ int
+ ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
+ 		     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen);
+ bool ice_vc_isvalid_vsi_id(struct ice_vf *vf, u16 vsi_id);
+-void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+-			   struct ice_mbx_data *mbxdata);
++int ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
++			  struct ice_mbx_data *mbxdata);
+ #else /* CONFIG_PCI_IOV */
+ static inline void ice_virtchnl_set_dflt_ops(struct ice_vf *vf) { }
+ static inline void ice_virtchnl_set_repr_ops(struct ice_vf *vf) { }
+@@ -84,10 +84,11 @@ static inline bool ice_vc_isvalid_vsi_id(struct ice_vf *vf, u16 vsi_id)
+ 	return false;
+ }
+ 
+-static inline void
++static inline int
+ ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+ 		      struct ice_mbx_data *mbxdata)
+ {
++	return -EOPNOTSUPP;
+ }
+ #endif /* !CONFIG_PCI_IOV */
+ 
+diff --git a/include/linux/net/intel/ice_migration.h b/include/linux/net/intel/ice_migration.h
+index 5f1c765ed582..741a242558a1 100644
+--- a/include/linux/net/intel/ice_migration.h
++++ b/include/linux/net/intel/ice_migration.h
+@@ -9,6 +9,8 @@ void *ice_migration_get_vf(struct pci_dev *vf_pdev);
+ void ice_migration_put_vf(void *opaque);
+ void ice_migration_init_vf(void *opaque);
+ void ice_migration_uninit_vf(void *opaque);
++int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz);
++int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz);
+ 
+ #else
+ static inline void *ice_migration_get_vf(struct pci_dev *vf_pdev)
+@@ -21,6 +23,16 @@ static inline void ice_migration_put_vf(void *opaque)
+ }
+ static inline void ice_migration_init_vf(void *opaque) { }
+ static inline void ice_migration_uninit_vf(void *opaque) { }
++static inline int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz)
++{
++	return 0;
++}
++
++static inline int ice_migration_restore_devstate(void *opaque, const u8 *buf,
++						 u64 buf_sz)
++{
++	return 0;
++}
+ #endif /* CONFIG_ICE_VFIO_PCI */
+ 
+ #endif /* _ICE_MIGRATION_H_ */
 -- 
 2.25.1
 
