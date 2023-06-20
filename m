@@ -1,83 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3155F73732D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 19:49:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE396737444
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 20:32:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C85D941778;
-	Tue, 20 Jun 2023 17:49:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C85D941778
+	by smtp1.osuosl.org (Postfix) with ESMTP id 000DE822DA;
+	Tue, 20 Jun 2023 18:32:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 000DE822DA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687283361;
-	bh=ePzdGkmYwyYMRbFos+MmMA2IZpm4zydM7azOvnhWNes=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=1+xA3DdwXe4/EPXJnse2Ck6U5ytj0Q997GW4AzPvyAKuFwGk/TGDyz4KV0dXRa+l3
-	 MpOFQOaxcNo/2kng/T46+aOKurSmvvPZlE2txBX4kNpnzsq2yoTkFf+4Dov6i6+TxP
-	 w+F+ZcaBM2V+9MXFdc/oMgJyRFgkg0k08R11DiWjYD0jHera3n9jA+mjR9PwjPP2f0
-	 IS+IxCqPM7EpcuSjzf3SJCKMfk5U+poC9ua7fC3yab1GNvfYS0PvoQ/gjAqCJoSQqH
-	 xkLKWm79HLP+rEDTuZFGj4IYQ2Hhx3JCOdikkdKKT+ig+yJZu3grdcUjmIx6Az4Knt
-	 2ZzPbzgUTFmdw==
+	s=default; t=1687285963;
+	bh=+hjNcM7ThElIstUd9GhMDysvqrXJb2chvb0GMM/4EUM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=jf3d1D4s5d4OAvAInhgb6hc720I+roS2DNNvGP1ptr+BOaBORtdwQObidkh3Fe3YY
+	 6G96K2ERoXS/tDSJR2DimuuoMel0YtS81f1eM9qxX+OTw76dImwfIQFPwu15PrGw4s
+	 zJHEtuI2COpNS6k9YUK+2W6P0FuB6bEN6BhWo0LV2mERRbkSy9XWQHj0U9gWWkCCZp
+	 NxuBflD0lGuEi5CqIi+V7444XL4pKeaMvP7mcVIwGgq/OYC2/Zii2SJSrvcb9UkbUd
+	 A9UegD3jhxL+vRwbT+7ShfPliKLdU828beOqVD28F9D72+UvfMg9zdOiBen+4hZBLu
+	 KjlRt0/o6bXfQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zMBoJ5xYxSVI; Tue, 20 Jun 2023 17:49:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p13R0uaxcz9b; Tue, 20 Jun 2023 18:32:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A85B740159;
-	Tue, 20 Jun 2023 17:49:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A85B740159
+	by smtp1.osuosl.org (Postfix) with ESMTP id A4ED482144;
+	Tue, 20 Jun 2023 18:32:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A4ED482144
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7A5161BF847
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 17:49:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C5C411BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4F064418D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 17:49:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4F064418D7
+ by smtp3.osuosl.org (Postfix) with ESMTP id A93A160F14
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A93A160F14
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j72PtmQY43xy for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jun 2023 17:49:14 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MFpaQEUpDjol for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jun 2023 18:32:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED51B40934
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id ED51B40934
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 17:49:13 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 2C0716131F;
- Tue, 20 Jun 2023 17:49:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E333C433C8;
- Tue, 20 Jun 2023 17:49:12 +0000 (UTC)
-Date: Tue, 20 Jun 2023 10:49:11 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Message-ID: <20230620104911.001a7a4a@kernel.org>
-In-Reply-To: <ZJHgOXXHFjsOjlnA@boxer>
-References: <20230620082454.377001-1-maciej.fijalkowski@intel.com>
- <20230620095335.43504612@kernel.org> <ZJHgOXXHFjsOjlnA@boxer>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 93C4360AC9
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 93C4360AC9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="425907894"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="425907894"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2023 11:32:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="784204376"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="784204376"
+Received: from dmert-dev.jf.intel.com ([10.166.241.14])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2023 11:32:33 -0700
+From: Dave Ertman <david.m.ertman@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 20 Jun 2023 11:34:04 -0700
+Message-Id: <20230620183414.848016-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1687283352;
- bh=0wJcGBgyILE2XLRTPn33HEgQx2fkLPGoc11dr/UIKRU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=idGL/fNeqoxiB/XTSAhnnZlTFkamLdLKzehlWT7JbQ4euLneryRlDFYsL0fTWikWb
- gsqi/B1bCvO0csIbenUqI/jjVDKQgxN34JbxnHZkC6UhgEXP71CLe9qvqJZh4C7aAY
- 5OZurPcsajwd2pTl5RFiTI/pm45r4wHPhBYRldkl3gAoP766UTaM+ja37sSxuE77+p
- RNVZuL9/OxjhTNbKNyJeZ/MPH9H/lVVaZYfCEjhGVPgy52dJcQK85Gvj5i9Y+vyLpB
- 1SKrXWsaDlYqV/8iYx+AWFDlGdfVkAfQNcphBKk7B+VhhypR3CbjxGf74Qu3qg61+c
- 2zjjsE/erpUgA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=idGL/fNe
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: add missing napi deletion
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1687285955; x=1718821955;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=/2RUvnVW4euNOUYWTQs6Tw9KUDeZCDqcSfjaSHVqi90=;
+ b=HMVh71DHYS4svAImHLI4xxxNi9k0EzZfCqzvKbVpFLpIemciuXQUeCZi
+ 5X4rhYGkdQBVrLbNPaS9MkMUgOZ+EvwBnfgOl7dIN8WWSHkhLy2An2+PZ
+ lrYsGrbGF/jPmJU+9/xeJZMyMAUv0bSh8LPBjTidyWNcvln4deLPz6Lma
+ EXK0lTDnVib7Z7LeJYHXLoSicphh/L4TJDftsg//Xp/YLip/ftGeVjoxQ
+ YFtvHpvB3Agg8mtp4VA5xuhzlKWCGOPYc6cvDr/+aOFMC6nKkiXDrs75C
+ pCL01cfFOoXEbucmFUaUjoeC5cZbpT3/pKHLA5HD2z5EkS24Y/iPvftfN
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=HMVh71DH
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 00/10] Implement support for
+ SRIOV + LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,38 +93,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com,
- michal.swiatkowski@intel.com
+Cc: netdev@vger.kernel.org, bcreeley@amd.com, daniel.machon@microchip.com,
+ simon.horman@corigine.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 20 Jun 2023 19:22:01 +0200 Maciej Fijalkowski wrote:
-> On Tue, Jun 20, 2023 at 09:53:35AM -0700, Jakub Kicinski wrote:
-> > Is there user visible impact? I agree that it's a good habit, but
-> > since unregister cleans up NAPI instances automatically the patch
-> > is not necessarily a fix.  
-> 
-> It's rather free_netdev() not unregistering per se, no? I sent this patch
-> as I found that cited commit didn't delete napis on ice_probe()'s error
-> path - I just saw that as a regression. 
-> 
-> But as you're saying when getting rid of netdev we actually do
-> netif_napi_del() - it seems redundant to do explicit napi delete on remove
-> path as it is supposed do free the netdev. Does it mean that many drivers
-> should be verified against that? Sorta tired so might be missing
-> something, pardon. If not, I'll send a v2 that just removes
-> ice_napi_del().
+Implement support for SRIOV VF's on interfaces that are in an
+aggregate interface.
 
-I personally prefer to keep track of my resources, so I avoid devm_*
-and delete NAPI instances by hand. It's up to the author and/or
-maintainer of the driver in question.
+The first interface added into the aggregate will be flagged as
+the primary interface, and this primary interface will be
+responsible for managing the VF's resources.  VF's created on the
+primary are the only VFs that will be supported on the aggregate.
+Only Active-Backup mode will be supported and only aggregates whose
+primary interface is in switchdev mode will be supported.
 
-My only real ask is to no route this via net and drop the Fixes tag.
-Whether you prefer to keep the patch as is or drop ice_napi_del() --
-up to you.
+Additional restrictions on what interfaces can be added to the aggregate
+and still support SRIOV VFs are:
+- interfaces have to all be on the same physical NIC
+- all interfaces have to have the same QoS settings
+- interfaces have to have the FW LLDP agent disabled
+- only the primary interface is to be put into switchdev mode
+- no more than two interfaces in the aggregate
+
+Changes since v1:
+Fix typo in commit message
+Fix typos in warning messages
+Fix typo in function header
+Use correct bitwise operator instead of boolean
+
+Changes since v2:
+Rebase on current next-queue
+Fix typos in commits
+Fix typos in function headers
+use %u for unsigned values in debug message
+Refactor common code in node moves to subfunction
+
+Changes since v3:
+Fix typos in warning messages
+move refactor of common code to earlier patch
+expand use of refactored code
+move prototype and func call into patch that defines func
+
+Changes since v4:
+Change module_init to use goto unwind approach
+Change function name to be more descriptive
+chagen variable to be more scope specific
+Make sure non-feature specific functions are still performed
+Free correct memory
+Fix typos in warning messages
+added check for invalid TEID in queue cfg
+
+Changes since v5:
+use PF from lag stuct in function
+remove extra blank line
+
+Dave Ertman (9):
+  ice: Add driver support for firmware changes for LAG
+  ice: changes to the interface with the HW and FW for SRIOV_VF+LAG
+  ice: implement lag netdev event handler
+  ice: process events created by lag netdev event handler
+  ice: Flesh out implementation of support for SRIOV on bonded interface
+  ice: support non-standard teardown of bond interface
+  ice: enforce interface eligibility and add messaging for SRIOV LAG
+  ice: enforce no DCB config changing when in bond
+  ice: update reset path for SRIOV LAG support
+
+Jacob Keller (1):
+  ice: Correctly initialize queue context values
+
+ drivers/net/ethernet/intel/ice/ice.h          |    5 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   53 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |   56 +
+ drivers/net/ethernet/intel/ice/ice_common.h   |    4 +
+ drivers/net/ethernet/intel/ice/ice_dcb_nl.c   |   50 +
+ drivers/net/ethernet/intel/ice/ice_lag.c      | 1840 ++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_lag.h      |   34 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |    2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |    1 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |   36 +-
+ drivers/net/ethernet/intel/ice/ice_sched.c    |   37 +-
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   21 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   |   88 +-
+ drivers/net/ethernet/intel/ice/ice_switch.h   |   29 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |    2 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |    2 +
+ 16 files changed, 2125 insertions(+), 135 deletions(-)
+
+-- 
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
