@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED7B87368A3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:01:47 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CDEB7368A4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 12:01:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 81E98418EA;
-	Tue, 20 Jun 2023 10:01:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81E98418EA
+	by smtp4.osuosl.org (Postfix) with ESMTP id A7380417E4;
+	Tue, 20 Jun 2023 10:01:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7380417E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687255306;
-	bh=vlpe5TllCth+r1H+dDq9+8Hx0V/dHyhER0uoErhPz50=;
+	s=default; t=1687255311;
+	bh=O7IMbo2Z7io2wGwNIhDJ/zkH0h2XFBv6ybspZ6KVXnA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GZomT/ZX3dI3080Rkh8RnOQDKaJ8PkBZWKsl8y+nRlqUUv6Hi2NiiHVItFnK9H37+
-	 +IM2HyAFcAvR2Mmk8xthzbKFV0aMEcTa3ccSfzhUnD1KcoJ5sVE8LMlt79eOZcsnyA
-	 HFh6N1SaJ6uBylfcYhwtEU6RFkQoXqiJM7lX34zdmwZVp20WWYpcX+cuy29AefIH1y
-	 E+OiCfzyL98EUaMhgiD+HXS/NUJzMrJMuZMbfSUknr8B/ByHPLL5NRv4++F8Ggp5Jd
-	 xorVQjieSGYUN1taugZezRnirnUdOYFQ3v301WegNZIJP/GPEl/c5nGVG8IkTVvQpi
-	 D8xz0trZWqK1g==
+	b=d/63TvuATFtdP8Wf82TIxlhtXX6YfAjM1wS8Rb242kK+gZ3JsPKROpNo2WmrUV2hj
+	 m3F9egnguZWd7zVIxnEjDH9RzVwqvN1RYh96m/4nkL9rilYCxEjMqwoX28LajNTgDQ
+	 TjfYGoETYbYbauxP+U3gGtRg1bt3xBlR+uqfxQFmRdILDm+PVhtQCDdwGIlP8lAXRf
+	 J9mPWu2g+YCZUQabZtZ3/UF+1TmJXX1V6shXSRf8+onQWgxRf3A1lHC4qOWufTZQZ/
+	 UWsSZvUfiq7tmyvxeELl9OCLYdYcSXX+R6Ye9JnO65kv9T06Y2oL36F+ku06vxYn0Z
+	 abXn21iKJ45WA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ApHIa7UKKKJV; Tue, 20 Jun 2023 10:01:45 +0000 (UTC)
+	with ESMTP id M6ASLtY1kCbA; Tue, 20 Jun 2023 10:01:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F35F2417E4;
-	Tue, 20 Jun 2023 10:01:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F35F2417E4
+	by smtp4.osuosl.org (Postfix) with ESMTP id 25F41418C1;
+	Tue, 20 Jun 2023 10:01:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 25F41418C1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 715ED1BF39E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0871F1BF39E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5862360E4F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5862360E4F
+ by smtp3.osuosl.org (Postfix) with ESMTP id D5FC460E4F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5FC460E4F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SUeKPHJv6cbf for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jun 2023 10:01:13 +0000 (UTC)
+ with ESMTP id nyCKp3t1oxjg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jun 2023 10:01:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 940EA60D59
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 666EE60D59
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 940EA60D59
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:13 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="358688497"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="358688497"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 666EE60D59
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 10:01:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="358688511"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="358688511"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2023 03:01:13 -0700
+ 20 Jun 2023 03:01:17 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="664227444"
-X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="664227444"
+X-IronPort-AV: E=McAfee;i="6600,9927,10746"; a="664227481"
+X-IronPort-AV: E=Sophos;i="6.00,256,1681196400"; d="scan'208";a="664227481"
 Received: from dpdk-liulingy-2.sh.intel.com ([10.67.119.34])
- by orsmga003.jf.intel.com with ESMTP; 20 Jun 2023 03:01:10 -0700
+ by orsmga003.jf.intel.com with ESMTP; 20 Jun 2023 03:01:14 -0700
 From: Lingyu Liu <lingyu.liu@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jun 2023 09:59:57 +0000
-Message-Id: <20230620100001.5331-12-lingyu.liu@intel.com>
+Date: Tue, 20 Jun 2023 09:59:58 +0000
+Message-Id: <20230620100001.5331-13-lingyu.liu@intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230620100001.5331-1-lingyu.liu@intel.com>
 References: <20230620100001.5331-1-lingyu.liu@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687255273; x=1718791273;
+ t=1687255277; x=1718791277;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=c+FBBT0dyZUQ3micu+dYcKU3vqU+ardYzB8VPAkl4RY=;
- b=RJu3VWmirCAxY27W5rXhiWCZ0A9ObK1wccGoBaSkafSBAqthh3lKz9Wk
- z0H1eu/lgfX9KTKBCb6135OkS4SNuKbpaR9k/P9Rx7vjG0Z7kAEc4ySmD
- vplU1mutuNFehbQ+6/DgbWqQMbbYyUe0NyczyT1mjZ8XuTM2iFwVDiW/y
- 2wdmqatTdg/iGcnMNjaAGRGVCYDsvvT+EcDqYNZ5tpl37/OZrAK24NZAD
- UYr7UdRVWENeIolUGJZAXRPF74Qz62vThqXOx3kjSXBj3AJaZ1oglM3AA
- fKUn6nEMxJCdrajRgRijc11jpBnYn1f0Il4h5i+1c/w/aAIHQ6HB7KiNL
- g==;
+ bh=6hq03XgwKBBLTJOEj+S+jKGtfVLR4/LVgHcDKbcVWtM=;
+ b=ChMbkGs6Oa7QQD2oXwqME+WR59jnTiD/ZWuTNlDRJpmSkRrMGq4gAz9x
+ EMTvcXTqtvqlrE+9tqhQaFLXY6Xyak5DDRuOAV9gq0jc/O7vJiKqnIbVc
+ DH/6cI5QSa6ArBscleCWY5ecmQ5xp4gn3NPFHyEoyamt0tYHPqehQAjf9
+ kjiUBy8wKjDSscnozA5biWNO5G7o7gYBYNeUvbfVondp+9aht0dBLiXUt
+ O+0rCzeFaX/apz7Z35CsNhpv785XiJLikyeCS52JWNy0T8wu4wsf97hLU
+ FMoAdziNpJT8kWsbUKdKWsGhtD1OQsnmhuO1VS7SIVNPuHaRqITvoTX9M
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RJu3VWmi
-Subject: [Intel-wired-lan] [PATCH iwl-next V1 11/15] ice: stop device before
- saving device states
+ header.a=rsa-sha256 header.s=Intel header.b=ChMbkGs6
+Subject: [Intel-wired-lan] [PATCH iwl-next V1 12/15] ice: mask VF advanced
+ capabilities if live migration is activated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,128 +101,88 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Stop device by disabling TX queue and RX queue.
-
-ice_vfio_pci driver introduced in following patches from this
-series needs this function when device state transits from
-VFIO_DEVICE_STATE_RUNNING to VFIO_DEVICE_STATE_STOP.
+Mask the advanced VF capability flags that are
+not supported when VF migration is activated.
 
 Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
 Signed-off-by: Yahui Cao <yahui.cao@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_migration.c    | 68 +++++++++++++++++++
- include/linux/net/intel/ice_migration.h       |  5 ++
- 2 files changed, 73 insertions(+)
+ .../net/ethernet/intel/ice/ice_migration.c    | 27 +++++++++++++++++++
+ .../intel/ice/ice_migration_private.h         |  6 +++++
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  2 ++
+ 3 files changed, 35 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_migration.c b/drivers/net/ethernet/intel/ice/ice_migration.c
-index c2a83a97af05..c588738828ab 100644
+index c588738828ab..0bc897ab0dc2 100644
 --- a/drivers/net/ethernet/intel/ice/ice_migration.c
 +++ b/drivers/net/ethernet/intel/ice/ice_migration.c
-@@ -2,6 +2,8 @@
- /* Copyright (C) 2018-2023 Intel Corporation */
- 
- #include "ice.h"
-+#include "ice_lib.h"
-+#include "ice_fltr.h"
- #include "ice_base.h"
- #include "ice_txrx_lib.h"
- 
-@@ -172,6 +174,72 @@ void ice_migration_save_vf_msg(struct ice_vf *vf,
+@@ -748,3 +748,30 @@ void ice_migration_fix_msg_vsi(struct ice_vf *vf, u32 v_opcode, u8 *msg)
+ 		break;
  	}
  }
- 
++
++#define VIRTCHNL_VF_MIGRATION_SUPPORT_FEATURE \
++				(VIRTCHNL_VF_OFFLOAD_L2 | \
++				 VIRTCHNL_VF_OFFLOAD_RSS_PF | \
++				 VIRTCHNL_VF_OFFLOAD_RSS_AQ | \
++				 VIRTCHNL_VF_OFFLOAD_RSS_REG | \
++				 VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 | \
++				 VIRTCHNL_VF_OFFLOAD_ENCAP | \
++				 VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM | \
++				 VIRTCHNL_VF_OFFLOAD_RX_POLLING | \
++				 VIRTCHNL_VF_OFFLOAD_WB_ON_ITR | \
++				 VIRTCHNL_VF_CAP_ADV_LINK_SPEED | \
++				 VIRTCHNL_VF_OFFLOAD_VLAN | \
++				 VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC | \
++				 VIRTCHNL_VF_OFFLOAD_USO)
++
 +/**
-+ * ice_migration_suspend_vf - suspend device on src
-+ * @opaque: pointer to VF handler in ice vdev
-+ * @is_dst: false: migration src true: migration dst
++ * ice_migration_supported_caps - get migration supported VF capablities
 + *
-+ * Return 0 for success, negative for error
++ * When migration is activated, some VF capabilities are not supported.
++ * So unmask those capability flags for VF resources.
 + */
-+int ice_migration_suspend_vf(void *opaque, bool is_dst)
++u32 ice_migration_supported_caps(void)
 +{
-+	struct ice_vf *vf = (struct ice_vf *)opaque;
-+	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
-+	struct ice_pf *pf = vf->pf;
-+	struct device *dev;
-+	int ret;
 +
-+	if (is_dst)
-+		return 0;
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (vf->virtchnl_msg_num >= VIRTCHNL_MSG_MAX) {
-+		dev_err(dev, "SR-IOV live migration disabled on VF %d. Migration buffer exceeded\n",
-+			vf->vf_id);
-+		return -EIO;
-+	}
-+
-+	if (!vsi) {
-+		dev_err(dev, "VF %d VSI is NULL\n", vf->vf_id);
-+		return -EINVAL;
-+	}
-+	/* Prevent VSI from incoming packets by removing all filters before
-+	 * stop rx ring and draining the traffic. There are possibilities that
-+	 * rx ring head value jitters when rx ring is stopped with large amount
-+	 * of packets incoming. In this case, HW mismatches SW on rx ring head
-+	 * state. As a result, after restoring rx ring head on the destination
-+	 * VM, the missing rx descriptors will never be written back, causing
-+	 * packets receiving failure and dropped.
-+	 */
-+	ice_fltr_remove_all(vsi);
-+	/* MAC based filter rule is disabled at this point. Set MAC to zero
-+	 * to keep consistency when using ip link to display MAC address.
-+	 */
-+	eth_zero_addr(vf->hw_lan_addr);
-+	eth_zero_addr(vf->dev_lan_addr);
-+	/* For the tx side, there is possibility that some descriptors are
-+	 * still pending to be transmitted by HW. Since VM is stopped now,
-+	 * wait a while to make sure all the transmission is completed.
-+	 * For the rx side, head value jittering may happen in case of high
-+	 * packet rate. Since all forwarding filters are removed now, wait a
-+	 * while to make sure all the reception is completed and rx head no
-+	 * longer moves.
-+	 */
-+	usleep_range(1000, 2000);
-+	ret = ice_vsi_stop_lan_tx_rings(vsi, ICE_NO_RESET, vf->vf_id);
-+	if (ret) {
-+		dev_err(dev, "VF %d failed to stop tx rings\n", vf->vf_id);
-+		return -EIO;
-+	}
-+	ret = ice_vsi_stop_all_rx_rings(vsi);
-+	if (ret) {
-+		dev_err(dev, "VF %d failed to stop rx rings\n", vf->vf_id);
-+		return -EIO;
-+	}
-+	return 0;
++	return VIRTCHNL_VF_MIGRATION_SUPPORT_FEATURE;
 +}
-+EXPORT_SYMBOL(ice_migration_suspend_vf);
-+
- static int
- ice_migration_save_rx_head(struct ice_vf *vf,
- 			   struct ice_migration_dev_state *devstate)
-diff --git a/include/linux/net/intel/ice_migration.h b/include/linux/net/intel/ice_migration.h
-index b59200a0a059..45c3469df55d 100644
---- a/include/linux/net/intel/ice_migration.h
-+++ b/include/linux/net/intel/ice_migration.h
-@@ -16,6 +16,7 @@ void *ice_migration_get_vf(struct pci_dev *vf_pdev);
- void ice_migration_put_vf(void *opaque);
- void ice_migration_init_vf(void *opaque);
- void ice_migration_uninit_vf(void *opaque);
-+int ice_migration_suspend_vf(void *opaque, bool mig_dst);
- int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz);
- int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
- 				   struct vfio_device *vdev);
-@@ -31,6 +32,10 @@ static inline void ice_migration_put_vf(void *opaque)
- }
- static inline void ice_migration_init_vf(void *opaque) { }
- static inline void ice_migration_uninit_vf(void *opaque) { }
-+static inline int ice_migration_suspend_vf(void *opaque, bool mig_dst)
+diff --git a/drivers/net/ethernet/intel/ice/ice_migration_private.h b/drivers/net/ethernet/intel/ice/ice_migration_private.h
+index 728acfaefbdf..47ad45c2b737 100644
+--- a/drivers/net/ethernet/intel/ice/ice_migration_private.h
++++ b/drivers/net/ethernet/intel/ice/ice_migration_private.h
+@@ -14,12 +14,18 @@
+ void ice_migration_save_vf_msg(struct ice_vf *vf,
+ 			       struct ice_rq_event_info *event);
+ void ice_migration_fix_msg_vsi(struct ice_vf *vf, u32 v_opcode, u8 *msg);
++u32 ice_migration_supported_caps(void);
+ #else
+ static inline void
+ ice_migration_save_vf_msg(struct ice_vf *vf,
+ 			  struct ice_rq_event_info *event) { }
+ static inline void
+ ice_migration_fix_msg_vsi(struct ice_vf *vf, u32 v_opcode, u8 *msg) { }
++static inline u32
++ice_migration_supported_caps(void)
 +{
-+	return 0;
++	return 0xFFFFFFFF;
 +}
- static inline int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz)
- {
- 	return 0;
+ #endif /* CONFIG_ICE_VFIO_PCI */
+ 
+ #endif /* _ICE_MIGRATION_PRIVATE_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index 5fc252e14fdf..655d68fc688b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -468,6 +468,8 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 				  VIRTCHNL_VF_OFFLOAD_RSS_REG |
+ 				  VIRTCHNL_VF_OFFLOAD_VLAN;
+ 
++	if (vf->migration_active)
++		vf->driver_caps &= ice_migration_supported_caps();
+ 	vfres->vf_cap_flags = VIRTCHNL_VF_OFFLOAD_L2;
+ 	vsi = ice_get_vf_vsi(vf);
+ 	if (!vsi) {
 -- 
 2.25.1
 
