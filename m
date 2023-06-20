@@ -2,88 +2,177 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4904A737448
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 20:33:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C751173746F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jun 2023 20:37:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DEF76821E1;
-	Tue, 20 Jun 2023 18:33:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DEF76821E1
+	by smtp1.osuosl.org (Postfix) with ESMTP id 635AC822CD;
+	Tue, 20 Jun 2023 18:37:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 635AC822CD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687285981;
-	bh=/TdkmhEOOgyPRBMC+GRcQ7glRMIXXGcuew9qxbq8LQ8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1687286233;
+	bh=/kPa1ER+5JhTwGKWwljG/3BGUFjsYOyvOAeFMfPmRBI=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=tvwgvebQIWMc+ThHLnAG68Z2rIbhUkHNV/+imYQDsrqrXeXtHuhn8M8XVy6qfOCU+
-	 qdzyAPbdstoa5wLxEdPUcbOBkiAeMdxhBLTtIOG1Vau8bDAUplnC3nona4M6M7tgRj
-	 cQvNlV7u/OeVwIgAC6ilXrdAheUp/0yaI4G9t4ymAU3zWdX8VZbBeB2HXHj5NFO1DG
-	 GOtnrFa6TjhjSKz8ylWayn9+YTMZIwXPP+EwsRHu+HhWOoinRHfk5x4TvyJ5eMHJTU
-	 35ABoL/2tFNhdMhM5UcujdtTbJBl0pbxPDmgeM9Ntu3nAkP3E0m4F9Sf7k5j/nkell
-	 +nr7p+KMiOESA==
+	b=5mtCj+daiAXCS7J8bHSnuNlDTCsiE3YI4OdCqee9JUA+JJJTi9vaEE2E1nrlGLgKF
+	 Yu/9hziA7EwbVuxiZDDC2Kn3NnkqnZoU1D+vqMPFwDsVOnH4KOo256gaQbknXhoZH8
+	 cmi/ScMBXkkZJ+Lon/1p1wjlFw2XEVYiqdkwA0+sXICUqNNHjuVMCmnG0Q0s30rolM
+	 bofZBx9Fb/wBEg7iRykKUWtnVPkTXE5wHf8KmkD4EXy2yeJFBs9hehzavN5HvvvbgX
+	 q//24WlsTutQOIF1LNLYUPlPmrEGfXF8UdePMNUTyoxQv6PNaGZDTLDku8urvw7yLj
+	 aBxISaNh73yRA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VjGFb4cbAz8C; Tue, 20 Jun 2023 18:33:00 +0000 (UTC)
+	with ESMTP id hoLvTmS5c5T3; Tue, 20 Jun 2023 18:37:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0C13C82200;
-	Tue, 20 Jun 2023 18:33:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C13C82200
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2690B821FC;
+	Tue, 20 Jun 2023 18:37:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2690B821FC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5780B1BF954
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 26D1B1BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:37:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2F52741B18
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2F52741B18
+ by smtp4.osuosl.org (Postfix) with ESMTP id 08F27419D3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:37:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08F27419D3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uD_H6SHOgRG0 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jun 2023 18:32:37 +0000 (UTC)
+ with ESMTP id BYAj8XUUU70M for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jun 2023 18:37:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A0CB419D3
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9A0CB419D3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:32:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="425907951"
-X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="425907951"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2023 11:32:36 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A906C41991
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A906C41991
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jun 2023 18:37:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="344696155"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="344696155"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2023 11:36:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="784204423"
-X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="784204423"
-Received: from dmert-dev.jf.intel.com ([10.166.241.14])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2023 11:32:36 -0700
-From: Dave Ertman <david.m.ertman@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jun 2023 11:34:14 -0700
-Message-Id: <20230620183414.848016-11-david.m.ertman@intel.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230620183414.848016-1-david.m.ertman@intel.com>
-References: <20230620183414.848016-1-david.m.ertman@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="708398252"
+X-IronPort-AV: E=Sophos;i="6.00,257,1681196400"; d="scan'208";a="708398252"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga007.jf.intel.com with ESMTP; 20 Jun 2023 11:36:53 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 20 Jun 2023 11:36:52 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Tue, 20 Jun 2023 11:36:52 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Tue, 20 Jun 2023 11:36:52 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FO1A/QGHkKFlnZK0DMSBM/iaeYLZD+HwMCNHLRrD5iX4LIIZi8n5OFhtjwVk1TFmkmomez68GQQX2rJryeGEworrRRtsRbKFVewx0/TTjxcH5y8BNKfMzZDXkIVcd8b/qGvKfzUWxiY42zIXeLe43SANFr/S6j6gztzGNY3BGfB5pWDochA53q1GVv64pAeuz4AVTMLy9MqYYeXDXfNfnr9Mmc+xAsBfmh4yZ4qi2MshtJxI6jtMWz9WxX9feVtMPkOvCYwYBaLcIo8353nouaWTkP1K20rDoGgPaf0xtXr017Op1dgegsmpvgxM4zmWgzt+J6y+P6tmY98n8j0WWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ysvTB/kPEo0ju03MhYIdLyu4Itgnrg44cIzlqO+ed0I=;
+ b=Ln31MDW/s6JyvE/YSYar/uFXwrU7y/c7bDLPphSGai3fxxKHtFcqKxDGFrI7qpUT0G09/L8paL5J4zKi7lbQ9J1ZstCQZp2epOCRE+BegWA8Oe92EjYcTxx8E0dCP7oEaocvQl/Oy2N2ZKA4k+9aLj4oXrx+L261Pcy1FgXUH0ytNKBpmSGpmVLM2cVF8yLgUVc0d34BouH1SposjaBED9xhl6hJ7NrdoSQ8zgwvrgbvdb72jSoRKTRIJMQmsP1gHaaeQOWB4YJOYUxf04KcQu4FDRMa36J4rg3rgvUUFoz5aTtGAVJKULx+YzvJgDMi0J/ojiC3UGggXSwVipa7CQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by BL1PR11MB5496.namprd11.prod.outlook.com (2603:10b6:208:314::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.21; Tue, 20 Jun
+ 2023 18:36:50 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::bdec:3ca4:b5e1:2b84]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::bdec:3ca4:b5e1:2b84%7]) with mapi id 15.20.6500.036; Tue, 20 Jun 2023
+ 18:36:50 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Zaborska, Olga" <olga.zaborska@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD
+ and IGBVF_MIN_RXD to allow change of rx/tx value
+Thread-Index: AQHZoGVIDhS/nwSZf0WSvJNjSF0NJa+UCDwQ
+Date: Tue, 20 Jun 2023 18:36:50 +0000
+Message-ID: <SN6PR11MB3229C8E5C13B17847D2F2EBFC65CA@SN6PR11MB3229.namprd11.prod.outlook.com>
+References: <20230616114729.27926-1-olga.zaborska@intel.com>
+In-Reply-To: <20230616114729.27926-1-olga.zaborska@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SN6PR11MB3229:EE_|BL1PR11MB5496:EE_
+x-ms-office365-filtering-correlation-id: dabb5921-9148-4fb1-2098-08db71bd4fa0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: pAjKkt6u3LUEPkk8BHcFU07TQNjpEMCH8w3jDEx/RL+unOnoBLfOVSGmDEoPhOd+7XQ5H8/bbmFeR+umOGe9DCb+GtuWFc66ozcVb1EW6xHtTSzZTHbgvsqM9pfo8wEAzghAzSgAC5fVzgKTJwrgqA5jCDirhd7n3QNnod+gv+ugxPcxzCP2FFFwcIOcyC7XDLLLdRcyhcUwy4B3IulDEpraO+NgYPSDHhjC32swLArN4cxcllYHuYbCg7n4tXAUx4mnjknzD7nDagiqLK6/0tDeKlO51gTHbpvHSopUcYLzjp3jhehR/xki0TLqzs0t7e3GfgQaFCUaENdF6cgD4ZIOQSlU9ymWIxoEpcDbTIWLovFpDFox+YzCD6VaLCvRIevksxIfo72Db87UQtgT6G+uOG0A7WaGw4DeUlSheuk2o+EnPjfiBqMSpQBaAOWaAolDlNuuRmhGe0/9Nrf09RJsEVPR0U6Jqzkm4KCMJ7GJdDzpsX630MDUba06MVTky1bp1Y6USE/b63YkSnmEYcY8vRHkauL29PZZgJyQwSt98IDG7VjPC0MdKnnDK+y9eeFqsefFhKmu1Yqk1i5wYP7FG5AsuZtdgBYLhUkktuE=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(376002)(39860400002)(366004)(346002)(136003)(396003)(451199021)(53546011)(966005)(107886003)(478600001)(7696005)(71200400001)(110136005)(83380400001)(186003)(26005)(6506007)(2906002)(9686003)(5660300002)(52536014)(33656002)(38100700002)(122000001)(316002)(76116006)(66946007)(55016003)(82960400001)(4326008)(8936002)(8676002)(41300700001)(86362001)(66476007)(66556008)(38070700005)(66446008)(64756008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?QuiZIaP6w2/fKCyynp/fl0fbSlDhDMR2dtochYIMMMnxqX+FWeMuxbrKz97k?=
+ =?us-ascii?Q?3A6PfhJB5zeTJcYivCPTXgRurxeOhDIZQAHgbwttQJP+FgJkEfXCQ6Fj0Ps1?=
+ =?us-ascii?Q?w258ZnCngBSAnNZMjm7e8eQqhnhrAFPmDe97azgwR7WtH69K7iuyexBBONxx?=
+ =?us-ascii?Q?r8P9mktRYLcQoEHo/dsTjlSbSWUm0GBmJLTvrokbtz+rrJ98qWCXk9yUQmGt?=
+ =?us-ascii?Q?tMmTZaTBytUzKWot8MbYjh1klG+9mCddErnBROEYl/lUtZLeVkOVHYbBY0J1?=
+ =?us-ascii?Q?oqk3yctR/Y81UEkyfTxp9Gd1IL5GNSlKCmX3seXdVYzXyca5FsfRNTjwPIly?=
+ =?us-ascii?Q?5cy3D2WP0TDK4Iff/oO2sthOJF/EIs5r3vJwDoIjtyd7V1qjZzDU+k7oR/DM?=
+ =?us-ascii?Q?+/Dk+xmONjNb7+8I9CfJv2L0bT2dKqJMrgfBMGVMKAWwh/zciS8R45UFv5i0?=
+ =?us-ascii?Q?KwtPZ3YCiEj6NW4rD8Z7FvEYHNjJ7lZ2dGrYQN1i76CNmDCDOY3XUmzRyWKq?=
+ =?us-ascii?Q?DRhDwwiYYvPD39hzuwi3G4MDerxpLHe8ewyKa0P+rNJ0KDoS5KqwaD5E91ia?=
+ =?us-ascii?Q?MsApLLEiSPNAZzmrdno6xBdtqnBAr9uJ8++N8nUpmyDkdP8fxNCc0FkaNcgT?=
+ =?us-ascii?Q?ek5mADOqQH7A3YfBtdvbZlR/Yi4JIfC2pNaz9EU1Q+IZpkY+BQmcdEBdvCSR?=
+ =?us-ascii?Q?Z+9PZgW2IvjfjazUO4HkMSzDnnyKf/2v+o4nUmlX9+9xdWkqhGr0IRyDadRW?=
+ =?us-ascii?Q?OUkgfyR19Lzhhd0T9RDEPHWl4yPVDMbeLVHfgXrgLpum7kdMoRFPJTNm0oTC?=
+ =?us-ascii?Q?r7GkmUZo3WWlvzAmnmojJfAMy4a9CALyctfL4818LEHZzicfk0k81x/zf7mv?=
+ =?us-ascii?Q?GEHvm94oqzjxRiMWszGZWsJZzgrCaWzbkGrmjgLU0xEtBnHQEuk8W0niP5ZZ?=
+ =?us-ascii?Q?S1arrtj7ydzPm0k6IiuXbeedvQgFjwmC+uwv5jFd1TX0OKHNmWmZEoFMIHNL?=
+ =?us-ascii?Q?uWYMRLsQ2FczCSKysV7Uy4fI/W8JExUbbZYFyg8delZ3a7blxZBXcrwgAVSC?=
+ =?us-ascii?Q?uu7LQsNT0KOqMCeah43fchUBV9jbGyhhrRqwxeKJTzSudY3PCGfncU+iq9za?=
+ =?us-ascii?Q?o5atHRSxyATNk16TQ62P498sCLp/4WwkefXnanjWbqwbrLXCPbl4soyXwqRK?=
+ =?us-ascii?Q?ggtl5jjNfePqQSulhBNPPS3/Jrr1duoJMhupv6JOopUSMWrnsYISYcOL+lvi?=
+ =?us-ascii?Q?VJxH4UzD4Oil7O8pRRZR6ySm5gl5Rav5rd6lagB1ry20w8D4GlvMqi2PteUd?=
+ =?us-ascii?Q?Uyy16LmpJWR7+Uj6GgpFcHddxcmZq0fPN0vDVUgF2qEYWF+y9WRXp7wkShRS?=
+ =?us-ascii?Q?ulZi7N5OLGl/C5BuWdXpnrMeuJq38a59jer6gEzW6EevBIDmBAIFwcFx52Y8?=
+ =?us-ascii?Q?YINbaEjnIiTBW/YbKtpS8NVM3nWf2B4jmiv0g8Uoj2bPF6wJWD1X7n68+rfY?=
+ =?us-ascii?Q?9JMPN5fncJCX9k4Vq3mG39NnbvTwU8o7HvX1bAnOUiOyi0WI9IxLpSTOZ5M2?=
+ =?us-ascii?Q?x+HrCM6HhdBecKR1loZsDo/vxM9kU9vGvvfY9DikIhv02SdOcy79YWNLnd9R?=
+ =?us-ascii?Q?IA=3D=3D?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: dabb5921-9148-4fb1-2098-08db71bd4fa0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jun 2023 18:36:50.1464 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: pMKVkO61dbaG6AkP/yNW3ZzAb7xBLHbEAWjDLU3LPPdAOaCR173Lxsy7O+Ai1i+6l8QMYHCCGRHib8B9lsO5+CxxgFHi+e2ONmHjTLwURkc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5496
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687285957; x=1718821957;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=d9ApkASqZngC0NP0iji0Yjbswe4qYvsYqVnnyrWIHns=;
- b=N1n940YmMrEqjjLnHBXRKUdJUluHmuoWdjYH/zaKmqBkvkGax5Q6Mlmo
- pZzyRAQP6ppG5bcm8NjyiZAtx+2fF2w1U3CYeRBUwL0ZytNX5R2GOdtw0
- REQmv6kVpxTLN9NJ9fNuyEuF6KTNOyj0YZGBANOmvOvx7g+kyB6AlH0jz
- GQ2WWVBf+TpssrIfRJV+cvr5hCT0GglYmNmj0diu2BOH+77drR8jY1pTE
- 2Rr3gk3jiaBy4Es9bl69umjE0iRarRKC65T2jsNYmhKAvdHkf8yjn5tsr
- 6/Sl42vR8B2tdmhc+Ni8AOeR0VDmxNQ56N7x0eQG+OLI4GcHYbxWAm4of
+ t=1687286225; x=1718822225;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=B6rsyR/UfuC9O/wdjWKGeGVjscvjs1HoDBEsfTgkUPk=;
+ b=V2kFr/f1j7UHEIOflyeTO6pz5jz7gjI6Ay3Tri8izf/TrcSQL7lzXJYJ
+ NLPnLbztaIeikls5buDuCU0F9SPeqjhLpQRDcdNYUh6lymJVd5LPlWRYd
+ zCJDK+Khk8FYCDPUu0T3A7wgkI1uU1zc+eQOw1VZO+MfXM6ittjMK1JsF
+ zOcH7GOjPogONis9Teu2dpVGKXlz7U2gi/FuWYcFubFEwoT2o9OnZno0H
+ e1DMHxVDXpcLNhFrVWQRXvaAEKg0TvuyBIsAtTp8BEQkczpZ3tiLuhcMV
+ kaAVYt7boMQdD2lELzbNbYHolr9FCIUea0iIeAcCU3hlyq0vvikEDLjI6
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=N1n940Ym
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 10/10] ice: update reset path
- for SRIOV LAG support
+ header.a=rsa-sha256 header.s=Intel header.b=V2kFr/f1
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change
+ IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,366 +185,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bcreeley@amd.com, daniel.machon@microchip.com,
- simon.horman@corigine.com
+Cc: "Zaborska, Olga" <olga.zaborska@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add code to rebuild the LAG resources when rebuilding the state of the
-interface after a reset.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Zaborska, Olga
+> Sent: Friday, June 16, 2023 4:47 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Zaborska, Olga <olga.zaborska@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD
+> and IGBVF_MIN_RXD to allow change of rx/tx value
 
-Also added in a function for building per-queue information into the buffer
-used to configure VF queues for LAG fail-over.  This improves code reuse.
+This title seems a bit misleading as I presume changes are allowed, just limited on the low end.
 
-Due to differences in timing per interface for recovering from a reset, add
-in the ability to retry on non-local dependencies where needed.
+> From: Olga Zaborska <olga.zaborska@intel.com>
+> 
+> There is currently a bug where when setting the rx/tx value between 64 and
+> 80 it automatically sets to 80, this will be fixed by changing IGBVF_MIN_TXD
+> and IGBVF_MIN_RXD
 
-Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_lag.c  | 231 +++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_lag.h  |   3 +
- drivers/net/ethernet/intel/ice/ice_main.c |  14 +-
- 3 files changed, 244 insertions(+), 4 deletions(-)
+Any insight on why it was 80 before or why 64 is now ok?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index 0054d4e1056b..c95651fdec8b 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -957,6 +957,7 @@ static void ice_lag_link_unlink(struct ice_lag *lag, void *ptr)
-  * @link: Is this a linking activity
-  *
-  * If link is false, then primary_swid should be expected to not be valid
-+ * This function should never be called in interrupt context.
-  */
- static void
- ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
-@@ -966,7 +967,7 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 	struct ice_aqc_set_port_params *cmd;
- 	struct ice_aq_desc desc;
- 	u16 buf_len, swid;
--	int status;
-+	int status, i;
- 
- 	buf_len = struct_size(buf, elem, 1);
- 	buf = kzalloc(buf_len, GFP_KERNEL);
-@@ -1017,7 +1018,20 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_port_params);
- 
- 	cmd->swid = cpu_to_le16(ICE_AQC_PORT_SWID_VALID | swid);
--	status = ice_aq_send_cmd(&local_lag->pf->hw, &desc, NULL, 0, NULL);
-+	/* If this is happening in reset context, it is possible that the
-+	 * primary interface has not finished setting its SWID to SHARED
-+	 * yet.  Allow retries to account for this timing issue between
-+	 * interfaces.
-+	 */
-+	for (i = 0; i < ICE_LAG_RESET_RETRIES; i++) {
-+		status = ice_aq_send_cmd(&local_lag->pf->hw, &desc, NULL, 0,
-+					 NULL);
-+		if (!status)
-+			break;
-+
-+		usleep_range(1000, 2000);
-+	}
-+
- 	if (status)
- 		dev_err(ice_pf_to_dev(local_lag->pf), "Error setting SWID in port params %d\n",
- 			status);
-@@ -1025,7 +1039,7 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
- 
- /**
-  * ice_lag_primary_swid - set/clear the SHARED attrib of primary's SWID
-- * @lag: primary interfaces lag struct
-+ * @lag: primary interface's lag struct
-  * @link: is this a linking activity
-  *
-  * Implement setting primary SWID as shared using 0x020B
-@@ -1769,6 +1783,135 @@ static int ice_create_lag_recipe(struct ice_hw *hw, u16 *rid,
- 	return err;
- }
- 
-+/**
-+ * ice_lag_move_vf_nodes_tc_sync - move a VF's nodes for a tc during reset
-+ * @lag: primary interfaces lag struct
-+ * @dest_hw: HW struct for destination's interface
-+ * @vsi_num: VSI index in PF space
-+ * @tc: traffic class to move
-+ */
-+static void
-+ice_lag_move_vf_nodes_tc_sync(struct ice_lag *lag, struct ice_hw *dest_hw,
-+			      u16 vsi_num, u8 tc)
-+{
-+	u16 numq, valq, buf_size, num_moved, qbuf_size;
-+	struct device *dev = ice_pf_to_dev(lag->pf);
-+	struct ice_aqc_cfg_txqs_buf *qbuf;
-+	struct ice_aqc_move_elem *buf;
-+	struct ice_sched_node *n_prt;
-+	__le32 teid, parent_teid;
-+	struct ice_vsi_ctx *ctx;
-+	struct ice_hw *hw;
-+	u32 tmp_teid;
-+
-+	hw = &lag->pf->hw;
-+	ctx = ice_get_vsi_ctx(hw, vsi_num);
-+	if (!ctx) {
-+		dev_warn(dev, "LAG rebuild failed after reset due to VSI Context failure\n");
-+		return;
-+	}
-+
-+	if (!ctx->sched.vsi_node[tc])
-+		return;
-+
-+	numq = ctx->num_lan_q_entries[tc];
-+	teid = ctx->sched.vsi_node[tc]->info.node_teid;
-+	tmp_teid = le32_to_cpu(teid);
-+	parent_teid = ctx->sched.vsi_node[tc]->info.parent_teid;
-+
-+	if (!tmp_teid || !numq)
-+		return;
-+
-+	if (ice_sched_suspend_resume_elems(hw, 1, &tmp_teid, true))
-+		dev_dbg(dev, "Problem suspending traffic during reset rebuild\n");
-+
-+	/* reconfig queues for new port */
-+	qbuf_size = struct_size(qbuf, queue_info, numq);
-+	qbuf = kzalloc(qbuf_size, GFP_KERNEL);
-+	if (!qbuf) {
-+		dev_warn(dev, "Failure allocating VF queue recfg buffer for reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	/* add the per queue info for the reconfigure command buffer */
-+	valq = ice_lag_qbuf_recfg(hw, qbuf, vsi_num, numq, tc);
-+	if (!valq) {
-+		dev_warn(dev, "Failure to reconfig queues for LAG reset rebuild\n");
-+		goto sync_none;
-+	}
-+
-+	if (ice_aq_cfg_lan_txq(hw, qbuf, qbuf_size, numq, hw->port_info->lport,
-+			       dest_hw->port_info->lport, NULL)) {
-+		dev_warn(dev, "Failure to configure queues for LAG reset rebuild\n");
-+		goto sync_qerr;
-+	}
-+
-+sync_none:
-+	kfree(qbuf);
-+
-+	/* find parent in destination tree */
-+	n_prt = ice_lag_get_sched_parent(dest_hw, tc);
-+	if (!n_prt)
-+		goto resume_sync;
-+
-+	/* Move node to new parent */
-+	buf_size = struct_size(buf, teid, 1);
-+	buf = kzalloc(buf_size, GFP_KERNEL);
-+	if (!buf) {
-+		dev_warn(dev, "Failure to alloc for VF node move in reset rebuild\n");
-+		goto resume_sync;
-+	}
-+
-+	buf->hdr.src_parent_teid = parent_teid;
-+	buf->hdr.dest_parent_teid = n_prt->info.node_teid;
-+	buf->hdr.num_elems = cpu_to_le16(1);
-+	buf->hdr.mode = ICE_AQC_MOVE_ELEM_MODE_KEEP_OWN;
-+	buf->teid[0] = teid;
-+
-+	if (ice_aq_move_sched_elems(&lag->pf->hw, 1, buf, buf_size, &num_moved,
-+				    NULL))
-+		dev_warn(dev, "Failure to move VF nodes for LAG reset rebuild\n");
-+	else
-+		ice_sched_update_parent(n_prt, ctx->sched.vsi_node[tc]);
-+
-+	kfree(buf);
-+	goto resume_sync;
-+
-+sync_qerr:
-+	kfree(qbuf);
-+
-+resume_sync:
-+	if (ice_sched_suspend_resume_elems(hw, 1, &tmp_teid, false))
-+		dev_warn(dev, "Problem restarting traffic for LAG node reset rebuild\n");
-+}
-+
-+/**
-+ * ice_lag_move_vf_nodes_sync - move vf nodes to active interface
-+ * @lag: primary interfaces lag struct
-+ * @dest_hw: lport value for currently active port
-+ *
-+ * This function is used in a reset context, outside of event handling,
-+ * to move the VF nodes to the secondary interface when that interface
-+ * is the active interface during a reset rebuild
-+ */
-+static void
-+ice_lag_move_vf_nodes_sync(struct ice_lag *lag, struct ice_hw *dest_hw)
-+{
-+	struct ice_pf *pf;
-+	int i, tc;
-+
-+	if (!lag->primary || !dest_hw)
-+		return;
-+
-+	pf = lag->pf;
-+	ice_for_each_vsi(pf, i)
-+		if (pf->vsi[i] && (pf->vsi[i]->type == ICE_VSI_VF ||
-+				   pf->vsi[i]->type == ICE_VSI_SWITCHDEV_CTRL))
-+			ice_for_each_traffic_class(tc)
-+				ice_lag_move_vf_nodes_tc_sync(lag, dest_hw, i,
-+							      tc);
-+}
-+
- /**
-  * ice_init_lag - initialize support for LAG
-  * @pf: PF struct
-@@ -1870,3 +2013,85 @@ void ice_deinit_lag(struct ice_pf *pf)
- 
- 	pf->lag = NULL;
- }
-+
-+/**
-+ * ice_lag_rebuild - rebuild lag resources after reset
-+ * @pf: pointer to local pf struct
-+ *
-+ * PF resets are promoted to CORER resets when interface in an aggregate.  This
-+ * means that we need to rebuild the PF resources for the interface.  Since
-+ * this will happen outside the normal event processing, need to acquire the lag
-+ * lock.
-+ *
-+ * This function will also evaluate the VF resources if this is the primary
-+ * interface.
-+ */
-+void ice_lag_rebuild(struct ice_pf *pf)
-+{
-+	struct ice_lag_netdev_list ndlist;
-+	struct ice_lag *lag, *prim_lag;
-+	struct list_head *tmp, *n;
-+	u8 act_port, loc_port;
-+
-+	if (!pf->lag || !pf->lag->bonded)
-+		return;
-+
-+	mutex_lock(&pf->lag_mutex);
-+
-+	lag = pf->lag;
-+	if (lag->primary) {
-+		prim_lag = lag;
-+	} else {
-+		struct ice_lag_netdev_list *nl;
-+		struct net_device *tmp_nd;
-+
-+		INIT_LIST_HEAD(&ndlist.node);
-+		rcu_read_lock();
-+		for_each_netdev_in_bond_rcu(lag->upper_netdev, tmp_nd) {
-+			nl = kzalloc(sizeof(*nl), GFP_KERNEL);
-+			if (!nl)
-+				break;
-+
-+			nl->netdev = tmp_nd;
-+			list_add(&nl->node, &ndlist.node);
-+		}
-+		rcu_read_unlock();
-+		lag->netdev_head = &ndlist.node;
-+		prim_lag = ice_lag_find_primary(lag);
-+	}
-+
-+	if (!prim_lag) {
-+		dev_dbg(ice_pf_to_dev(pf), "No primary interface in aggregate, can't rebuild\n");
-+		goto lag_rebuild_out;
-+	}
-+
-+	act_port = prim_lag->active_port;
-+	loc_port = lag->pf->hw.port_info->lport;
-+
-+	/* configure SWID for this port */
-+	if (lag->primary) {
-+		ice_lag_primary_swid(lag, true);
-+	} else {
-+		ice_lag_set_swid(prim_lag->pf->hw.port_info->sw_id, lag, true);
-+		ice_lag_add_prune_list(prim_lag, pf);
-+		if (act_port == loc_port)
-+			ice_lag_move_vf_nodes_sync(prim_lag, &pf->hw);
-+	}
-+
-+	ice_lag_cfg_cp_fltr(lag, true);
-+
-+	if (lag->pf_rule_id)
-+		if (ice_lag_cfg_dflt_fltr(lag, true))
-+			dev_err(ice_pf_to_dev(pf), "Error adding default VSI rule in rebuild\n");
-+
-+	ice_clear_rdma_cap(pf);
-+lag_rebuild_out:
-+	list_for_each_safe(tmp, n, &ndlist.node) {
-+		struct ice_lag_netdev_list *entry;
-+
-+		entry = list_entry(tmp, struct ice_lag_netdev_list, node);
-+		list_del(&entry->node);
-+		kfree(entry);
-+	}
-+	mutex_unlock(&pf->lag_mutex);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
-index df4af5184a75..18075b82485a 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.h
-@@ -16,6 +16,8 @@ enum ice_lag_role {
- 
- #define ICE_LAG_INVALID_PORT 0xFF
- 
-+#define ICE_LAG_RESET_RETRIES		5
-+
- struct ice_pf;
- struct ice_vf;
- 
-@@ -59,4 +61,5 @@ struct ice_lag_work {
- void ice_lag_move_new_vf_nodes(struct ice_vf *vf);
- int ice_init_lag(struct ice_pf *pf);
- void ice_deinit_lag(struct ice_pf *pf);
-+void ice_lag_rebuild(struct ice_pf *pf);
- #endif /* _ICE_LAG_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 23f5af5c7537..147abc0facbf 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -636,6 +636,11 @@ static void ice_do_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 
- 	dev_dbg(dev, "reset_type 0x%x requested\n", reset_type);
- 
-+	if (pf->lag && pf->lag->bonded && reset_type == ICE_RESET_PFR) {
-+		dev_dbg(dev, "PFR on a bonded interface, promoting to CORER\n");
-+		reset_type = ICE_RESET_CORER;
-+	}
-+
- 	ice_prepare_for_reset(pf, reset_type);
- 
- 	/* trigger the reset */
-@@ -719,8 +724,13 @@ static void ice_reset_subtask(struct ice_pf *pf)
- 	}
- 
- 	/* No pending resets to finish processing. Check for new resets */
--	if (test_bit(ICE_PFR_REQ, pf->state))
-+	if (test_bit(ICE_PFR_REQ, pf->state)) {
- 		reset_type = ICE_RESET_PFR;
-+		if (pf->lag && pf->lag->bonded) {
-+			dev_dbg(ice_pf_to_dev(pf), "PFR on a bonded interface, promoting to CORER\n");
-+			reset_type = ICE_RESET_CORER;
-+		}
-+	}
- 	if (test_bit(ICE_CORER_REQ, pf->state))
- 		reset_type = ICE_RESET_CORER;
- 	if (test_bit(ICE_GLOBR_REQ, pf->state))
-@@ -7365,6 +7375,8 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	clear_bit(ICE_RESET_FAILED, pf->state);
- 
- 	ice_plug_aux_dev(pf);
-+	if (ice_is_feature_supported(pf, ICE_F_SRIOV_LAG))
-+		ice_lag_rebuild(pf);
- 	return;
- 
- err_vsi_rebuild:
--- 
-2.40.1
+Is there a side affect other than not being able to set below 80? Since the referenced fixes is from 2009 without anything reported, seems like it'd be more an improvement of allowing smaller sizes than a bug?
 
+> Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual
+> functions")
+> Signed-off-by: Olga Zaborska <olga.zaborska@intel.com>
+> Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igbvf/igbvf.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> index 57d39ee00b58..7b83678ba83a 100644
+> --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> @@ -39,11 +39,11 @@ enum latency_range {
+>  /* Tx/Rx descriptor defines */
+>  #define IGBVF_DEFAULT_TXD	256
+>  #define IGBVF_MAX_TXD		4096
+> -#define IGBVF_MIN_TXD		80
+> +#define IGBVF_MIN_TXD		64
+> 
+>  #define IGBVF_DEFAULT_RXD	256
+>  #define IGBVF_MAX_RXD		4096
+> -#define IGBVF_MIN_RXD		80
+> +#define IGBVF_MIN_RXD		64
+> 
+>  #define IGBVF_MIN_ITR_USECS	10 /* 100000 irq/sec */
+>  #define IGBVF_MAX_ITR_USECS	10000 /* 100    irq/sec */
+> --
+> 2.31.1
+> 
+> ---------------------------------------------------------------------
+> Intel Technology Poland sp. z o.o.
+> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII
+> Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-
+> 07-52-316 | Kapital zakladowy 200.000 PLN.
+> Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu
+> ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym opoznieniom w
+> transakcjach handlowych.
+> 
+> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego
+> adresata i moze zawierac informacje poufne. W razie przypadkowego
+> otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale
+> jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest
+> zabronione.
+> This e-mail and any attachments may contain confidential material for the
+> sole use of the intended recipient(s). If you are not the intended recipient,
+> please contact the sender and delete all copies; any review or distribution by
+> others is strictly prohibited.
+
+This footer needs to be removed.
+
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
