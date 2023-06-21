@@ -2,193 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2F177390E9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 22:40:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CF4E7390FA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 22:44:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5CB91401AE;
-	Wed, 21 Jun 2023 20:40:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5CB91401AE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 871B541865;
+	Wed, 21 Jun 2023 20:44:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 871B541865
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687380037;
-	bh=SA+psbiMI9/YFVw38UkU2eVqKHLSNinrnQ/jH+joXTI=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=P5j9rN6uZWGCmEgFhbi3z+75PlIkYuO4OP+4GEtMzGKKtpVqcjt0ZmDPUKDZxxE/k
-	 +sv4wbFt7LE/miWPQaQhGDlsYmpqXUaKE/+FA9o4FxTcBQ2cNmcDbkS8GdCw0+VSAx
-	 NxHZ6b0zdPeF7PpMst0fpjfLVP3Xkn2GnVc0GuYgNEG8Etcc4FNryEXJ9hZJ6Rc5Mf
-	 4uqwdqizCn6ahJlmMASisYkxfaaKoIE6iH03YdxOSPt6zdajrVFXrFw4pVZiE8qjc9
-	 fMtD3a9pgkd/+i69sSV8sjilpPPTl7EwiD4XWQ6lMXLcRlvyJ9gmHVshVjteqrRTlx
-	 +/ezcV+X8/5jw==
+	s=default; t=1687380241;
+	bh=lAO3Yb7bko1fMb7+KOq/ops0CVrnRgdH1mmhFnqisKI=;
+	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
+	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
+	b=wBfiXyRgxi5ipwkmjMZ+bu/YVcFuJMHEKuMs+2DGsdqmzRev7mdFhHBquLCxfk3Vc
+	 CGzsxu6ckxuGjXsnfzri04oEvrzoNuDVOhAeYrUKSBZ9OFVTeqTnUE7KMb9ddLm5JA
+	 Yh1bGYeA7HnecF2+A7VlDsFXcG9AjerGv+7FIxGkDmqPiuJXRi7VW1BQThz1fwlV7u
+	 l/jT2qjMfpYPV2gpHp/Cym76MTYfLXIC6zxhoEO9F3LWvOG5cc+eZaLcShuNTUvqNH
+	 /HU+TcSmBGN87iwu9s0O9sXkXnVU/6dpN42XaNTvBCWTPZlnUm0k5BmPIOm0NqbS6m
+	 tay08MwKW7t8A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RHHmCHdGjHaf; Wed, 21 Jun 2023 20:40:36 +0000 (UTC)
+	with ESMTP id PHCRSZdfaqWr; Wed, 21 Jun 2023 20:44:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2BBD74064A;
-	Wed, 21 Jun 2023 20:40:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BBD74064A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C4F94064A;
+	Wed, 21 Jun 2023 20:43:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C4F94064A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4F35D1BF46D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:40:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C20731BF592
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2661B83A4F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:40:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2661B83A4F
+ by smtp4.osuosl.org (Postfix) with ESMTP id A54B041E67
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:43:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A54B041E67
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3r3R8R44vXnA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Jun 2023 20:40:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yYMzdPzBWORB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Jun 2023 20:43:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 179C78214F
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 179C78214F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:40:29 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10748"; a="345027021"
-X-IronPort-AV: E=Sophos;i="6.00,261,1681196400"; d="scan'208";a="345027021"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2023 13:39:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10748"; a="664795046"
-X-IronPort-AV: E=Sophos;i="6.00,261,1681196400"; d="scan'208";a="664795046"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga003.jf.intel.com with ESMTP; 21 Jun 2023 13:39:03 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 21 Jun 2023 13:39:01 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 21 Jun 2023 13:39:01 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Wed, 21 Jun 2023 13:39:01 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.102)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Wed, 21 Jun 2023 13:38:59 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TOmN7qSYSqAWI5NhnpB8ZAPO3mwaG4gl2pFEDUF2KFfakeSdgT+3VYWdhJB8vHpoKiBgMOFdL2VtbF5WAPuppsDWdr36mcWoJoTNrGlUJFIVuwPXhiIA7eZQ8AcXjGvj+NNDvAPkdoDy40UlkwMSJiPEcKsf+x0aIp2MeeKmcKkSPrBg4tZ6OmFHi2RSQcVZVbqYYZcCTkhp5uO43xGLT81vwA1Mr/fMa+78pX2KcyNa81AkMSITS41zP14VEln20ZfLCpZ6tFNIV8qjB6FUmzaBpsaH/REIg5i02q4J52c4CLM3oL5ywKSSPCo2x0kAE78PlvaPUTXAkNSoD8+R7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+STLdUDi/2k2yfVjuV1CdDCgzql4KieukM+ka+WZaSY=;
- b=YWcrdnGjLhKgE4PyWOsrKhN2rJGNdNX53ghQFjGI8nIHGw7D65lTDOV9AelnZkc/Jf6pe8XDdx06JIVtya3Tm5xPGV5T5kBwzsbtViSfImywceqFfvlCsq+nkeRH/hXQST8hxxJDZE9CnJmk9UtGvx790/4X9Md8VgZzH3I4TRNZkr7W4TdMvcLgl+n3+rv2MmzRlkGT60iVc5/3rxNrcQ7eBT5DEwVgENl+An9v06GuArDilSXRLKdeh3L6waQg+n5y0YHlz6MAttEx8F4Gl14pFBY6QUFT0hunuwi48ussxrnKX72SZdCzps3FDftkF/G4Ohu01G+BCAbIV3h98w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
- DS0PR11MB7192.namprd11.prod.outlook.com (2603:10b6:8:13a::22) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6521.23; Wed, 21 Jun 2023 20:38:55 +0000
-Received: from DM6PR11MB4657.namprd11.prod.outlook.com
- ([fe80::24bd:974b:5c01:83d6]) by DM6PR11MB4657.namprd11.prod.outlook.com
- ([fe80::24bd:974b:5c01:83d6%3]) with mapi id 15.20.6521.020; Wed, 21 Jun 2023
- 20:38:55 +0000
-From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-To: Paolo Abeni <pabeni@redhat.com>, Jiri Pirko <jiri@resnulli.us>
-Thread-Topic: [RFC PATCH v8 03/10] dpll: core: Add DPLL framework base
- functions
-Thread-Index: AQHZmsz08ds9noNj60q1X/LUfA+qnK+FWuwAgAFtfwCADwJFUA==
-Date: Wed, 21 Jun 2023 20:38:54 +0000
-Message-ID: <DM6PR11MB465704BE971D2E51DE78EFF29B5DA@DM6PR11MB4657.namprd11.prod.outlook.com>
-References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
- <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
- <ZIWVuPMyKRPv6oyh@nanopsycho>
- <38dad5cb196741e56d018cea155982928694b2cc.camel@redhat.com>
-In-Reply-To: <38dad5cb196741e56d018cea155982928694b2cc.camel@redhat.com>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|DS0PR11MB7192:EE_
-x-ms-office365-filtering-correlation-id: 322338ab-ee92-44d3-61fa-08db729787fc
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: mfY8AyCFtXJcj5ChmJrcRg8IM7hN5+dOPO0KD0tdNOnAgLl7d+VVU/YcQuKwSy4/MAb/a10ZG2EhMChKphP3msIVwSTv7plpcQwC7n++6agtN8d5M61QognFXbzQVa4x6RoGY/lPWHm3BlDzrO62SeK4T/Fvfs/BOL628iK446hkCC7nXNJ+KmoAwR5uuNZi1btI7YlRxyNsXFj3digwcIqXTp+tjp8PpleE/6767E5jFQQGQK8+JwfukWZtat9K+1ymrEXFvYkPW64xpS3SLuql7k4M0CqsJlwDs8BHi+L8mq7HmOsQjKq9eqPXQoYm9P9nmBkynfj8xrVW6nEiJcSCY4+iyoD75SreesjoorqadJOUgZ7A6pi19w0DuGU1t9WVqOIZpQypFMUQH/LuhCYMldbufXoYXwcLFIe9aCBrvTL4FSDA6Qfc/r35FxERx/Lm7yxco460BudFCdZaVIFTMEYotfx4UkbV79KKuz8jTg0ao/ylU+iQYCcrs+PY1RilMmYYjhKi0t9Gny0GlDj4TF9NRJUAuJ4n2B0+/llatsIUSgCvrjBQIAgKvk2g7zlFUzncmw/FJuchb7BHTBAU0XL8GCVIW8+ytFpbPZzUORUmPtObM6An6EieBFca
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(136003)(346002)(396003)(39860400002)(376002)(451199021)(7696005)(71200400001)(478600001)(83380400001)(122000001)(38100700002)(86362001)(186003)(38070700005)(55016003)(33656002)(82960400001)(6506007)(9686003)(26005)(8936002)(8676002)(41300700001)(7406005)(7416002)(52536014)(5660300002)(2906002)(110136005)(54906003)(316002)(66946007)(66476007)(66556008)(66446008)(64756008)(4326008)(76116006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Rkk0QUg1bFJXREJxMjZ1V3R6ODNDaDFkcGgyb1N2VkgyVnRnMTFOYXpWZEYy?=
- =?utf-8?B?K2FnY3BrRUg4TWpSd0I2b2tnR216eE9WSE5Td09COWs3THZmVDZxc1hWTTlt?=
- =?utf-8?B?U2ROY2tDdnJyRzVQZi9QRjNzdXd6YVdiaVBXK1JJNkpVd0NQNUc2WjNvclFD?=
- =?utf-8?B?em16RHg5M1gyUnd4ZkgyN2swWk1Gd1huSlZaUHM0SzB3TGd5RngwK05NNzdP?=
- =?utf-8?B?MFkxTDJFakdJUmlvazh6NjZ2OW0zR2NqQnkzcGgrZ2NqWEhyV0VTNGxlTGhC?=
- =?utf-8?B?aTJuMTEyVkxPZ2pIazVpaGM0RGNiZXUwcXdqVGlzQ1hwKzlSUFc1bzEvWUpJ?=
- =?utf-8?B?U29xZTllUkVGSkJIL3lvZi95eTBLZ3Y3ckpBa2UzcVVtczJZcWd5Ym96dDZk?=
- =?utf-8?B?bWRRajB2K1RKelZ4VUM2ZDMzUk9lTnJmWDh2QjhHMndOY281cDZYWU1aUnMx?=
- =?utf-8?B?ZUEzbUJ4WUpCcDgrMy9BOXY3MUVUTUVUQ1VjZEpwT0ZmV05VWXBBN1ZoOVR5?=
- =?utf-8?B?U0dLc29Ndy9RZ3lGUlJJVEdQNlhpeS9uNW9XaDI0cjdScUZhUnZVUUljNVJW?=
- =?utf-8?B?SFA1WDN2TndtYjlkQ0Fwc0RNWkFDNmJ2dGxvTm1UM3FUSDJPWVB5bU9tYWx5?=
- =?utf-8?B?SE5SUGRUdkc0V3RzSmdwL1E2WjhvcVc2Mm9vMzY0OXdwRDZTMHZGYnN5L29I?=
- =?utf-8?B?elFrOHpmUm5MdnJ5YVRUbThkb1NTZVRPQUtteXhNK3lyTFk4WWJBdzFxdTAz?=
- =?utf-8?B?NEdEdUYwZWxuM0QxY0p5eUpxVDI3R2Evejgzd3B6SUNDRTFMeWJ4OWYyUm9S?=
- =?utf-8?B?Tm1GaFRlRXpqenc5OW9kNXhBWCtWRmEzUWlsbjUvRXUwbnd3aC9wZzNaR01S?=
- =?utf-8?B?MGdlaWxBYTc4U2dJRGtKb2VyZ3dJS01nenVaUDJkRU9WVUpFY1J6M0dNbU16?=
- =?utf-8?B?dWNXU3o4cEd6NDRlYm85Q2FWbk5hODlJQ3dQdGpFSXVId21haDVvM3hpYjIv?=
- =?utf-8?B?aEtEdkJTdTUwQXBBV3Btb09vQWxRTWFlN0czemZNSzR2YU8vcVNOSnBNTzEz?=
- =?utf-8?B?VlkxcEJDcXhQQlBOM2ZqMTA5TE9Xa0lYbjV0RDNpWnhvblVmbmFIOC9nbWpx?=
- =?utf-8?B?T254S00wN1d0RjRYRjE0Rm56VXVPTENxR2RYYWpZL0xuYmpkaWpqS0dCNEJM?=
- =?utf-8?B?TitFL0ZmWFpTUGZIQkNMRHJrTy9GempHV3N1UTlXSFJ2VmtaYnRxYWNNWE5h?=
- =?utf-8?B?NVlWQmVYTm9wYjZ6TlJRR0VOcFNIOEZzVTZuWkVCQkNEWHhacVZXdDlFeDhh?=
- =?utf-8?B?NVR1SzVVU25vN2lOa1pCK0MzYy9aREpZM0IvdmlHQllSUjJPeXVnbmhaTks1?=
- =?utf-8?B?V3pteWJJZlNEVDMxdjA0djErY2huNTA0dnFkc1dDcEtzU2M5TDdZUi9PRkg4?=
- =?utf-8?B?dWNUQW4xaW1xcndUdW14Nm9VdUFmNGF2cFlYQnF3N3c1RVRJWDFWZHpjeEp2?=
- =?utf-8?B?ZlJqOUR5K05SRVprZGpxdlhFQkExZm10ZzFJcjgxdUovc0NCOG4rT0RKMTdX?=
- =?utf-8?B?clQ5dFkyU1E2cEVRRnR1d1c0Tjdxbmg5aldobFVFckdjblhnejFET0FFTCtr?=
- =?utf-8?B?UHgrSVF4RnpBaTJoS1k3LzhMbUdRUFV3V09LM0xXemQ5cEZLQnFXODNGd0Q4?=
- =?utf-8?B?N0IwVGlONkUvemozbjJWVGhibFFZYjJIT3dsNWVjTWVIQi9oS3pQcURpMFI4?=
- =?utf-8?B?Sml5THAyL2FzZnhWMDYreXNEUEZpNTNRRlBYMGhPUjhBeHBaazIzQzZoa004?=
- =?utf-8?B?N3NWMWVnbU1mS0UyN0U0VUxYZ3owbEREcFNuY2l2dzBrQzI3dVFWK1R2OE53?=
- =?utf-8?B?YVFZUDk3ZTYrTVVIUWVDUXQrR2l0Z1NTZENKVGxQcXFHS1VZWmVxNHZKQ2l5?=
- =?utf-8?B?NHZvYTZnYjRpVktFWVI2aE5YTHFMN3RUc2RzSHNuWE1XWlZQZ2dpNDhucXFS?=
- =?utf-8?B?dU5iM2dEb21NeEJzVXZ5bE9qRjQyQ05mNWZ0VVNTZ1RJS1g4dlg2bHJSR0N3?=
- =?utf-8?B?Mmh6RWFjTkxubGVWT0pFNGduS2dmUUFka2xGVFJKRjd6d0s4VkY0T1ZYYlFi?=
- =?utf-8?B?RVArUzl6OFBJdW15eGkrOUNhUmhjY1A2cFJ2VTFSVEE0VU1HTnA1bGhWL0Jp?=
- =?utf-8?B?UUE9PQ==?=
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9D0C41DBA
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E9D0C41DBA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 20:43:52 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 257D2614D2;
+ Wed, 21 Jun 2023 20:43:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 385CCC433C8;
+ Wed, 21 Jun 2023 20:43:51 +0000 (UTC)
+Date: Wed, 21 Jun 2023 15:43:49 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Message-ID: <20230621204349.GA116643@bhelgaas>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 322338ab-ee92-44d3-61fa-08db729787fc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2023 20:38:54.9700 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DFImGmEWLI06IQ429jHwdDf3w17LNLXZByLx2XXELsAk3lP+nGHw3BES+yl0DQP8SwsyQx7F63bHkn/awmGn7EhPkGlubF/fC/vo1gDEZ1I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7192
-X-OriginatorOrg: intel.com
+Content-Disposition: inline
+In-Reply-To: <20230620123636.1854690-1-kai.heng.feng@canonical.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687380030; x=1718916030;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=+STLdUDi/2k2yfVjuV1CdDCgzql4KieukM+ka+WZaSY=;
- b=QYdSb9rPxlOGVkUjYPp4tkRuPGURrwkqbnPipVHemoaRamsVpeJUBBli
- gXCm4cXgM2oYN8Ya9r8ftKdUXQAe1q/EA6JJbsLJbHBx2KVJDoUy69kYQ
- 3f+1M9y9gHdMg94Ncs3veghseQlDNzpRVuStg8yrChOmp70paiwMm09WH
- 9pExapVJBZQIEOxDkZTO9xZlAeR1k8t9/+GTwdDtIFQM+FEdPYZbOoEJV
- qDCbehplpH4ogNl9NEqs0UZH+tTuRBkocwip6UB5IvVnNY89V+5SKhV/z
- 3edx7bKyVh7CzmM10oYPfDIkCBLhry/R9LVkmRh+xIfM0SSyNsOJNHd7P
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QYdSb9rP
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [RFC PATCH v8 03/10] dpll: core: Add DPLL
- framework base functions
+ d=kernel.org; s=k20201202; t=1687380231;
+ bh=Rv5G4pKZR4bpAVEXcZTIZUFGfuKNUpSGfdEAKm9ZaGM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=kd/EvoZvbYcHHwhIO+pT/FHTbtnPui+CfRBNEaqxKf6UqZ7IMIZn1+WIkkPnl06xd
+ 9i21whXvdSR9uM3Kb2ybn0FQege2oEfQX/oZwUnfpzUJ/B4kMHPMYOTgBjz663icYA
+ oCzwJuYbxqRnEOERKqSh5/ruBAgOB3HQP9thSwVOzmI5HxJiaLYB/+gG9rfriyRt6G
+ H4Yog2HFeJX1tsDzny+OYcURCvIyvm8F3dK63Ixpf5KQ//ydqtLfRWJ69MJa4O/OyD
+ 7mF5LBf0fswD8J3h3w4ZBVS3cOdlm2C2s5vPwoT9EZi/t/Cy3+tUHaD/EgOD9hTyhe
+ D5f/42iMpRD/A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=kd/EvoZv
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Ignore AER reset when device is
+ suspended
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -201,113 +89,181 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "geert+renesas@glider.be" <geert+renesas@glider.be>,
- "mst@redhat.com" <mst@redhat.com>, "razor@blackwall.org" <razor@blackwall.org>,
- "phil@nwl.cc" <phil@nwl.cc>, "javierm@redhat.com" <javierm@redhat.com>,
- "edumazet@google.com" <edumazet@google.com>,
- "benjamin.tissoires@redhat.com" <benjamin.tissoires@redhat.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "lucien.xin@gmail.com" <lucien.xin@gmail.com>,
- "leon@kernel.org" <leon@kernel.org>, "corbet@lwn.net" <corbet@lwn.net>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- "masahiroy@kernel.org" <masahiroy@kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "vadfed@meta.com" <vadfed@meta.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "airlied@redhat.com" <airlied@redhat.com>, "vadfed@fb.com" <vadfed@fb.com>,
- "ricardo.canuelo@collabora.com" <ricardo.canuelo@collabora.com>,
- "arnd@arndb.de" <arnd@arndb.de>, "idosch@nvidia.com" <idosch@nvidia.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "claudiajkang@gmail.com" <claudiajkang@gmail.com>,
- "kuniyu@amazon.com" <kuniyu@amazon.com>,
- "jacek.lawrynowicz@linux.intel.com" <jacek.lawrynowicz@linux.intel.com>,
- "liuhangbin@gmail.com" <liuhangbin@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "nicolas.dichtel@6wind.com" <nicolas.dichtel@6wind.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "axboe@kernel.dk" <axboe@kernel.dk>, "sj@kernel.org" <sj@kernel.org>,
- "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "linux@zary.sk" <linux@zary.sk>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "ogabbay@kernel.org" <ogabbay@kernel.org>,
- "nipun.gupta@amd.com" <nipun.gupta@amd.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "andy.ren@getcruise.com" <andy.ren@getcruise.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>, "M,
- Saeed" <saeedm@nvidia.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "Olech, Milena" <milena.olech@intel.com>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>
+Cc: Tony Luck <tony.luck@intel.com>, Kees Cook <keescook@chromium.org>,
+ linux-pci@vger.kernel.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, "Guilherme G. Piccoli" <gpiccoli@igalia.com>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, linux-hardening@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->From: Paolo Abeni <pabeni@redhat.com>
->Sent: Monday, June 12, 2023 9:25 AM
->
->On Sun, 2023-06-11 at 11:36 +0200, Jiri Pirko wrote:
->> Fri, Jun 09, 2023 at 02:18:46PM CEST, arkadiusz.kubalewski@intel.com
->wrote:
->> > From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>
->> [...]
->>
->> > +int dpll_device_register(struct dpll_device *dpll, enum dpll_type
->type,
->> > +			 const struct dpll_device_ops *ops, void *priv)
->> > +{
->> > +	struct dpll_device_registration *reg;
->> > +	bool first_registration = false;
->> > +
->> > +	if (WARN_ON(!ops))
->> > +		return -EINVAL;
->> > +	if (WARN_ON(type < DPLL_TYPE_PPS || type > DPLL_TYPE_MAX))
->> > +		return -EINVAL;
->> > +
->> > +	mutex_lock(&dpll_lock);
->> > +	reg = dpll_device_registration_find(dpll, ops, priv);
->> > +	if (reg) {
->> > +		mutex_unlock(&dpll_lock);
->> > +		return -EEXIST;
->> > +	}
->> > +
->> > +	reg = kzalloc(sizeof(*reg), GFP_KERNEL);
->> > +	if (!reg) {
->> > +		mutex_unlock(&dpll_lock);
->> > +		return -EEXIST;
->> > +	}
->> > +	reg->ops = ops;
->> > +	reg->priv = priv;
->> > +	dpll->type = type;
->> > +	first_registration = list_empty(&dpll->registration_list);
->> > +	list_add_tail(&reg->list, &dpll->registration_list);
->> > +	if (!first_registration) {
->> > +		mutex_unlock(&dpll_lock);
->> > +		return 0;
->> > +	}
->> > +
->> > +	xa_set_mark(&dpll_device_xa, dpll->id, DPLL_REGISTERED);
->> > +	mutex_unlock(&dpll_lock);
->> > +	dpll_device_create_ntf(dpll);
->>
->> This function is introduced in the next patch. Breaks bissection. Make
->> sure you can compile the code after every patch applied.
->
->WRT, I think the easiest way to solve the above is adding the function
->call in the next patch.
->
->Cheers,
->
->Paolo
+On Tue, Jun 20, 2023 at 08:36:36PM +0800, Kai-Heng Feng wrote:
+> When a system that connects to a Thunderbolt dock equipped with I225,
+> I225 stops working after S3 resume:
+> 
+> [  606.527643] pcieport 0000:00:1d.0: AER: Multiple Corrected error received: 0000:00:1d.0
+> [  606.527791] pcieport 0000:00:1d.0: PCIe Bus Error: severity=Corrected, type=Transaction Layer, (Receiver ID)
+> [  606.527795] pcieport 0000:00:1d.0:   device [8086:7ab0] error status/mask=00008000/00002000
+> [  606.527800] pcieport 0000:00:1d.0:    [15] HeaderOF
+> [  606.527806] pcieport 0000:00:1d.0: AER:   Error of this Agent is reported first
+> [  606.527853] pcieport 0000:07:04.0: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+> [  606.527856] pcieport 0000:07:04.0:   device [8086:0b26] error status/mask=00000080/00002000
+> [  606.527861] pcieport 0000:07:04.0:    [ 7] BadDLLP
+> [  606.527931] pcieport 0000:00:1d.0: AER: Multiple Uncorrected (Non-Fatal) error received: 0000:00:1d.0
+> [  606.528064] pcieport 0000:00:1d.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
+> [  606.528068] pcieport 0000:00:1d.0:   device [8086:7ab0] error status/mask=00100000/00004000
+> [  606.528072] pcieport 0000:00:1d.0:    [20] UnsupReq               (First)
+> [  606.528075] pcieport 0000:00:1d.0: AER:   TLP Header: 34000000 0a000052 00000000 00000000
+> [  606.528079] pcieport 0000:00:1d.0: AER:   Error of this Agent is reported first
+> [  606.528098] pcieport 0000:04:01.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
+> [  606.528101] pcieport 0000:04:01.0:   device [8086:1136] error status/mask=00300000/00000000
+> [  606.528105] pcieport 0000:04:01.0:    [20] UnsupReq               (First)
+> [  606.528107] pcieport 0000:04:01.0:    [21] ACSViol
+> [  606.528110] pcieport 0000:04:01.0: AER:   TLP Header: 34000000 04000052 00000000 00000000
+> [  606.528187] thunderbolt 0000:05:00.0: AER: can't recover (no error_detected callback)
+> [  606.558729] ------------[ cut here ]------------
+> [  606.558729] igc 0000:38:00.0: disabling already-disabled device
+> [  606.558738] WARNING: CPU: 0 PID: 209 at drivers/pci/pci.c:2248 pci_disable_device+0xf6/0x150
+> [  606.558743] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg usbhid bnep snd_hda_codec_hdmi snd_ctl_led snd_hda_codec_realtek joydev snd_hda_codec_generic ledtrig_audio binfmt_misc snd_sof_pci_intel_tgl snd_sof_intel_hda_common snd_soc_acpi_intel_match snd_soc_acpi snd_soc_hdac_hda snd_sof_pci snd_sof_xtensa_dsp x86_pkg_temp_thermal snd_sof_intel_hda_mlink intel_powerclamp snd_sof_intel_hda snd_sof snd_sof_utils snd_hda_ext_core snd_soc_core snd_compress snd_hda_intel coretemp snd_intel_dspcfg snd_hda_codec snd_hwdep kvm_intel snd_hda_core iwlmvm nls_iso8859_1 i915 snd_pcm kvm mac80211 crct10dif_pclmul crc32_pclmul i2c_algo_bit uvcvideo ghash_clmulni_intel snd_seq mei_pxp drm_buddy videobuf2_vmalloc sch_fq_codel sha512_ssse3 libarc4 aesni_intel mei_hdcp videobuf2_memops btusb uvc crypto_simd drm_display_helper snd_seq_device btrtl videobuf2_v4l2 cryptd snd_timer intel_rapl_msr btbcm drm_kms_helper videodev iwlwifi snd btintel rapl input_leds wmi_bmof hid_senso
+ r_rotation btmtk hid_sensor_accel_3d
+> [  606.558778]  hid_sensor_gyro_3d hid_sensor_als syscopyarea videobuf2_common intel_cstate serio_raw soundcore bluetooth hid_sensor_trigger thunderbolt sysfillrect cfg80211 mc mei_me industrialio_triggered_buffer sysimgblt processor_thermal_device_pci hid_sensor_iio_common hid_multitouch ecdh_generic processor_thermal_device kfifo_buf cec 8250_dw mei ecc processor_thermal_rfim industrialio rc_core processor_thermal_mbox ucsi_acpi processor_thermal_rapl ttm typec_ucsi intel_rapl_common msr typec video int3403_thermal int340x_thermal_zone int3400_thermal intel_hid wmi acpi_pad acpi_thermal_rel sparse_keymap acpi_tad mac_hid parport_pc ppdev lp parport drm ramoops reed_solomon efi_pstore ip_tables x_tables autofs4 hid_sensor_custom hid_sensor_hub intel_ishtp_hid spi_pxa2xx_platform hid_generic dw_dmac dw_dmac_core rtsx_pci_sdmmc e1000e i2c_i801 igc nvme i2c_smbus intel_lpss_pci rtsx_pci intel_ish_ipc nvme_core intel_lpss xhci_pci i2c_hid_acpi intel_ishtp idma64 xhci_pci_renesas i2c_h
+ id hid pinctrl_alderlake
+> [  606.558809] CPU: 0 PID: 209 Comm: irq/124-aerdrv Not tainted 6.4.0-rc7+ #119
+> [  606.558811] Hardware name: HP HP ZBook Fury 16 G9 Mobile Workstation PC/89C6, BIOS U96 Ver. 01.07.01 04/06/2023
+> [  606.558812] RIP: 0010:pci_disable_device+0xf6/0x150
+> [  606.558814] Code: 4d 85 e4 75 07 4c 8b a3 d0 00 00 00 48 8d bb d0 00 00 00 e8 5c f5 1f 00 4c 89 e2 48 c7 c7 f8 e6 37 ae 48 89 c6 e8 9a 3e 86 ff <0f> 0b e9 3c ff ff ff 48 8d 55 e6 be 04 00 00 00 48 89 df e8 62 0b
+> [  606.558815] RSP: 0018:ffffa70040a4fca0 EFLAGS: 00010246
+> [  606.558816] RAX: 0000000000000000 RBX: ffff8ac8434b2000 RCX: 0000000000000000
+> [  606.558817] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+> [  606.558818] RBP: ffffa70040a4fcc0 R08: 0000000000000000 R09: 0000000000000000
+> [  606.558818] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8ac843435dd0
+> [  606.558818] R13: ffff8ac84277c000 R14: 0000000000000001 R15: ffff8ac8434b2150
+> [  606.558819] FS:  0000000000000000(0000) GS:ffff8acbd6a00000(0000) knlGS:0000000000000000
+> [  606.558820] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [  606.558821] CR2: 00007f9740ba28e8 CR3: 00000001eb43a000 CR4: 0000000000f50ef0
+> [  606.558822] PKRU: 55555554
+> [  606.558822] Call Trace:
+> [  606.558823]  <TASK>
+> [  606.558825]  ? show_regs+0x76/0x90
+> [  606.558828]  ? pci_disable_device+0xf6/0x150
+> [  606.558830]  ? __warn+0x91/0x160
+> [  606.558832]  ? pci_disable_device+0xf6/0x150
+> [  606.558834]  ? report_bug+0x1bf/0x1d0
+> [  606.558838] nvme nvme0: 24/0/0 default/read/poll queues
+> [  606.558837]  ? handle_bug+0x46/0x90
+> [  606.558841]  ? exc_invalid_op+0x1d/0x90
+> [  606.558843]  ? asm_exc_invalid_op+0x1f/0x30
+> [  606.558846]  ? pci_disable_device+0xf6/0x150
+> [  606.558849]  igc_io_error_detected+0x40/0x70 [igc]
+> [  606.558857]  report_error_detected+0xdb/0x1d0
+> [  606.558860]  ? __pfx_report_normal_detected+0x10/0x10
+> [  606.558862]  report_normal_detected+0x1a/0x30
+> [  606.558864]  pci_walk_bus+0x78/0xb0
+> [  606.558866]  pcie_do_recovery+0xba/0x340
+> [  606.558868]  ? __pfx_aer_root_reset+0x10/0x10
+> [  606.558870]  aer_process_err_devices+0x168/0x220
+> [  606.558871]  aer_isr+0x1d3/0x1f0
+> [  606.558874]  ? __pfx_irq_thread_fn+0x10/0x10
+> [  606.558876]  irq_thread_fn+0x29/0x70
+> [  606.558877]  irq_thread+0xee/0x1c0
+> [  606.558878]  ? __pfx_irq_thread_dtor+0x10/0x10
+> [  606.558879]  ? __pfx_irq_thread+0x10/0x10
+> [  606.558880]  kthread+0xf8/0x130
+> [  606.558882]  ? __pfx_kthread+0x10/0x10
+> [  606.558884]  ret_from_fork+0x29/0x50
+> [  606.558887]  </TASK>
+> [  606.558887] ---[ end trace 0000000000000000 ]---
+> [  606.570223] i915 0000:00:02.0: [drm] GT0: HuC: authenticated!
+> [  606.570228] i915 0000:00:02.0: [drm] GT0: GUC: submission disabled
+> [  606.570231] i915 0000:00:02.0: [drm] GT0: GUC: SLPC disabled
+> [  606.663042] xhci_hcd 0000:39:00.0: AER: can't recover (no error_detected callback)
+> [  606.663111] pcieport 0000:00:1d.0: AER: device recovery failed
+> [  606.721642] iwlwifi 0000:00:14.3: WFPM_UMAC_PD_NOTIFICATION: 0x1f
+> [  606.721677] iwlwifi 0000:00:14.3: WFPM_LMAC2_PD_NOTIFICATION: 0x1f
+> [  606.721687] iwlwifi 0000:00:14.3: WFPM_AUTH_KEY_0: 0x90
+> [  606.721698] iwlwifi 0000:00:14.3: CNVI_SCU_SEQ_DATA_DW9: 0x0
+> [  606.842877] usb 1-8: reset high-speed USB device number 3 using xhci_hcd
+> [  607.048340] genirq: Flags mismatch irq 164. 00000000 (enp56s0) vs. 00000000 (enp56s0)
+> [  607.050313] ------------[ cut here ]------------
+> ...
+> [  609.064160] igc 0000:38:00.0 enp56s0: Register Dump
+> [  609.064167] igc 0000:38:00.0 enp56s0: Register Name   Value
+> [  609.064181] igc 0000:38:00.0 enp56s0: CTRL            081c0641
+> [  609.064188] igc 0000:38:00.0 enp56s0: STATUS          40280401
+> [  609.064195] igc 0000:38:00.0 enp56s0: CTRL_EXT        100000c0
+> [  609.064202] igc 0000:38:00.0 enp56s0: MDIC            18017949
+> [  609.064208] igc 0000:38:00.0 enp56s0: ICR             80000010
+> [  609.064214] igc 0000:38:00.0 enp56s0: RCTL            04408022
+> [  609.064232] igc 0000:38:00.0 enp56s0: RDLEN[0-3]      00001000 00001000 00001000 00001000
+> [  609.064251] igc 0000:38:00.0 enp56s0: RDH[0-3]        00000000 00000000 00000000 00000000
+> [  609.064270] igc 0000:38:00.0 enp56s0: RDT[0-3]        000000ff 000000ff 000000ff 000000ff
+> [  609.064289] igc 0000:38:00.0 enp56s0: RXDCTL[0-3]     00040808 00040808 00040808 00040808
+> [  609.064308] igc 0000:38:00.0 enp56s0: RDBAL[0-3]      ffc62000 fff6b000 fff6c000 fff6d000
+> [  609.064326] igc 0000:38:00.0 enp56s0: RDBAH[0-3]      00000000 00000000 00000000 00000000
+> [  609.064333] igc 0000:38:00.0 enp56s0: TCTL            a50400fa
+> [  609.064351] igc 0000:38:00.0 enp56s0: TDBAL[0-3]      fff6d000 ffcdf000 ffce0000 ffce1000
+> [  609.064369] igc 0000:38:00.0 enp56s0: TDBAH[0-3]      00000000 00000000 00000000 00000000
+> [  609.064387] igc 0000:38:00.0 enp56s0: TDLEN[0-3]      00001000 00001000 00001000 00001000
+> [  609.064405] igc 0000:38:00.0 enp56s0: TDH[0-3]        00000000 00000000 00000000 00000000
+> [  609.064423] igc 0000:38:00.0 enp56s0: TDT[0-3]        00000004 00000000 00000000 00000000
+> [  609.064441] igc 0000:38:00.0 enp56s0: TXDCTL[0-3]     00100108 00100108 00100108 00100108
+> [  609.064445] igc 0000:38:00.0 enp56s0: Reset adapter
 
-Sure, will try to fix as suggested, but this will be much easier to do on
-final version of patches before sending.
+I don't *really* care since this will go via a networking tree, not
+the PCI tree, but IMO there's a lot of irrelevant detail above:
+timestamps, probably the correctable errors, module list, register
+dump, most of the stacktrace, i915, iwlwifi, usb messages, etc.
 
-Thank you,
-Arkadiusz
+I think what *would* be useful is an outline of the relevant PCI
+topology, e.g.,
+
+  00:1d.0 Root Port
+  04:01.0 Switch Upstream Port? (in dock?)
+  05:00.0 Switch Downstream Port? (in dock?)
+  38:00.0 igc I225 NIC
+
+> The issue is that the PTM requests are sending before driver resumes the
+> device. Since the issue can also be observed on Windows, it's quite
+> likely a firmware/hardwar limitation.
+
+I thought c01163dbd1b8 ("PCI/PM: Always disable PTM for all devices
+during suspend") would turn off PTM.  Is that not working for this
+path, or are we re-enabling PTM incorrectly, or something else?
+
+Checking pci_is_enable() in the .error_detected() callback looks like
+a pattern that may need to be replicated in many other drivers, which
+makes me think it may not be the best approach.
+
+> So avoid resetting the device if it's not resumed. Once the device is
+> fully resumed, the device can work normally.
+> 
+> Link: https://bugzilla.kernel.org/show_bug.cgi?id=216850
+> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index fa764190f270..6a46f886ff43 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -6962,6 +6962,9 @@ static pci_ers_result_t igc_io_error_detected(struct pci_dev *pdev,
+>  	struct net_device *netdev = pci_get_drvdata(pdev);
+>  	struct igc_adapter *adapter = netdev_priv(netdev);
+>  
+> +	if (!pci_is_enabled(pdev))
+> +		return 0;
+> +
+>  	netif_device_detach(netdev);
+>  
+>  	if (state == pci_channel_io_perm_failure)
+> -- 
+> 2.34.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
