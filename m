@@ -1,87 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F2D27384D4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 15:21:34 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5428573854E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 15:35:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 30B6041804;
-	Wed, 21 Jun 2023 13:21:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 30B6041804
+	by smtp2.osuosl.org (Postfix) with ESMTP id E955740C22;
+	Wed, 21 Jun 2023 13:35:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E955740C22
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687353692;
-	bh=PqlTAVsQ4Em/9jO0Kd2rPFjlP6tcaGThnjJsggZeppI=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zDjon2YEogYNgS+8inHpPZewVdSZJL6d34n66splohVhxrYVsPywzkuwZxj9oNo15
-	 ZxJ9epxDGSpUTzmcCQPp0C1lASQC5RdJyHnQNk6cqVCblG/Ni0kfnnEd6qQXjc155r
-	 XeSbS8/Us+qTtKHIV/SKBcmRCzQiZwwWyEt+WcLzka5kE7CqukxQZ+23yxq4DqNbiu
-	 55XeGVnk4psHc9Y+vaGnpDUM1z6lhVsBe2c4sPQ1ej2fx1lM9He8nNDQDFWeEzCOja
-	 ChqxyXFMn3UjC7phFiYkEoEddfzQCTTRRizdutHh/4WGzS2gu5eEEDWI9mAHWf7Ofz
-	 8qQPNlQXag+rg==
+	s=default; t=1687354519;
+	bh=NxAKa+yvBGTTVKuzRHAS43UVcyz7h2/iZcoCcx7zN00=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=hfeRRYO9DbQSPy8x83ea075jVuxuheLuMzVb3PPwWaGv9/wPunHyNCgLM1G2uZXts
+	 WnnCb4FgstgVxfupNaA9WDkbFcb9nch5ZBEoDVLPIKo1DICRcVBiVqcrYCtGS1nwGN
+	 g268p3Tv09uLG9PiBQK9qsY9E+efGTsDBs+UzL9xcu5rSM+r3YdxJ4vZPHZZeqVb7O
+	 7BKuZc+zcJYHESzaPd2i9sfdBr0k7JY+TcaOHRaDd4mGOQccFXlMcqmr6fpR24tPFb
+	 z7E3X5QExilO3p4M3dG/qVW4U7N6TJMlnTrEHtMxq+0NxTY3zNg26qL6fiJvB+GRfu
+	 Ms7kE0p9yAX+A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XVVebnfHWzEs; Wed, 21 Jun 2023 13:21:31 +0000 (UTC)
+	with ESMTP id gKTDZ9dguX-g; Wed, 21 Jun 2023 13:35:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 272DA40BFC;
-	Wed, 21 Jun 2023 13:21:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 272DA40BFC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9BCAF40124;
+	Wed, 21 Jun 2023 13:35:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9BCAF40124
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 636701BF966
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:21:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BF2E21BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:35:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 37DB98330B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:21:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37DB98330B
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9790782C5E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:35:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9790782C5E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x8cXBomgX1wP for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Jun 2023 13:21:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29FB4832E7
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 29FB4832E7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:21:25 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="423831895"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="423831895"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2023 06:21:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="888651095"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="888651095"
-Received: from pgardocx-hp-z6-g4-workstation.igk.intel.com (HELO
- pgardocx-mobl1.igk.intel.com) ([10.237.95.41])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2023 06:21:13 -0700
-From: Piotr Gardocki <piotrx.gardocki@intel.com>
-To: netdev@vger.kernel.org
-Date: Wed, 21 Jun 2023 15:21:06 +0200
-Message-Id: <20230621132106.991342-1-piotrx.gardocki@intel.com>
-X-Mailer: git-send-email 2.34.1
+ with ESMTP id IPZHSNP3kPZL for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Jun 2023 13:35:11 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA63F82BC3
+Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
+ [IPv6:2607:f8b0:4864:20::42f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AA63F82BC3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 13:35:11 +0000 (UTC)
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-666e6541c98so4860830b3a.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 06:35:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687354511; x=1689946511;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CuyyAi8V6gigZeXErGxMHryC1S1ME144JC1C6GyuQQ4=;
+ b=CASnw2Awl1rZamQZUzOe5OGUEjcWO5elB7kfsbbGZKsn1qsYDTaJY7b8uBwpapBGJ0
+ 3C9L/gLpgcyk7nZyfEW07Ia/ycxZ1csf7EhlgUueXU67ZAbZ1obDWucvO5zQM5jbmpXn
+ U22tFkJQvrac6W0yprCcRdZJWOZEh/IoTpDjFSSMoLEZIKVuL3XjBa0yWIg5wXO7jxtj
+ L3nk+mZUW9noS5l5vV/u5GAMHN8SlFLwcsd1eHRAGwDOgAvyqVOpwOenzyHGC/kLhDUm
+ MZHkMfSPoXNhGTtikGDYxA/WwIIYsZ2fCZOH/KllayIbLhe4kk6dBlKETtk3L0YtQ14j
+ O1oQ==
+X-Gm-Message-State: AC+VfDxchduMX6Qyz37cD4E2Mm25Gbgojm3PE3GUIqueroF3x1P7G7CZ
+ tAgMqPaLx8z+C270oELqlNwvMA==
+X-Google-Smtp-Source: ACHHUZ6sbYJSc0ArvAw2TgOqwdQmSFrJ8IzV48C3B5HSvKx77l9uY7Dyo2xudSgxnKnv/KqstImV9g==
+X-Received: by 2002:a05:6a21:6d89:b0:123:21f9:6248 with SMTP id
+ wl9-20020a056a216d8900b0012321f96248mr2286264pzb.44.1687354510800; 
+ Wed, 21 Jun 2023 06:35:10 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [142.68.25.194]) by smtp.gmail.com with ESMTPSA id
+ l17-20020a62be11000000b0063d24fcc2b7sm2946611pff.1.2023.06.21.06.35.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Jun 2023 06:35:10 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+ (envelope-from <jgg@ziepe.ca>) id 1qBxzI-007cGV-FA;
+ Wed, 21 Jun 2023 10:35:08 -0300
+Date: Wed, 21 Jun 2023 10:35:08 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Lingyu Liu <lingyu.liu@intel.com>
+Message-ID: <ZJL8jCIrVwmJ1eDl@ziepe.ca>
+References: <20230621091112.44945-1-lingyu.liu@intel.com>
+ <20230621091112.44945-5-lingyu.liu@intel.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687353685; x=1718889685;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=WH66lIuJlNBisUbKjuxmSU8egBjiug1TIhdPnlf9yiU=;
- b=Rpm/+UxxbAbhYnC2Bbn/lPti9+H/iBjHBtsjYuwjZi6M/4TkCTHlHD+A
- ZvgGACTb1gmzl+S2HZgyX1VdgODgoEOM00P47DQqvHwZGtmrMMp8Q3AO7
- upj9TjxV3xxg02iHzZBogb9oF7snBxu/zO15uCNxkPUmn2a1k9aptiHTS
- Qkb9Qc8XbbzapWOk32xHvwj6bvEI/cm6Fb4d23jkCGUaB4MzaoBCzwzHA
- f2OtredEly76ZVg6wV4TxLdFC+WkY3MVd4tirvoEYLKV22JByeiEW93vD
- svngBTh9m57gg6qZoZ85FblFgGkZW+YoPgXbBrQ6iqJ+OKQbCh7Dj65Ft
- A==;
+Content-Disposition: inline
+In-Reply-To: <20230621091112.44945-5-lingyu.liu@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ziepe.ca; s=google; t=1687354511; x=1689946511;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=CuyyAi8V6gigZeXErGxMHryC1S1ME144JC1C6GyuQQ4=;
+ b=gDlPrkSQuYi2e2ijXm38ywxS8V0u4DgiKRRFq5fWD4u6KerU3lLkDGsi5HRWORNglA
+ nZjAwhgz9uxWBs/6lq5bZWFAVGhL1WGtmRjN5NsuCXoFH/ajKdrqjcc0NVnOQOE8IHCP
+ 3tz9jVsMc8kE/SE3/pVY9qNaiWPgGo5imkMoULFZkHi6SOtv0mLQuG3G8ZP9LOASu7hk
+ U5EIETG1hYNW1qPyi/6XACR3/ZrZGCLePrGyazePxsxmpHcov99x42vuT6J4Chzr505Q
+ qtHNj8NNGxP2vZ/FgPM0VAxBwqlv4kpYZe4YRh6v9POyZzWLRiuzGc6MXt3H2P9Nt6cZ
+ GnjA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Rpm/+Uxx
-Subject: [Intel-wired-lan] [PATCH net-next] net: fix net device address
- assign type
+ dkim=pass (2048-bit key) header.d=ziepe.ca header.i=@ziepe.ca
+ header.a=rsa-sha256 header.s=google header.b=gDlPrkSQ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next V2 04/15] ice: add migration
+ init field and helper functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,54 +115,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, przemyslaw.kitszel@intel.com, gal@nvidia.com,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- simon.horman@corigine.com, kuba@kernel.org
+Cc: kevin.tian@intel.com, yi.l.liu@intel.com, intel-wired-lan@lists.osuosl.org,
+ phani.r.burra@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit ad72c4a06acc introduced optimization to return from function
-quickly if the MAC address is not changing at all. It was reported
-that such change causes dev->addr_assign_type to not change
-to NET_ADDR_SET from _PERM or _RANDOM.
-Restore the old behavior and skip only call to ndo_set_mac_address.
+On Wed, Jun 21, 2023 at 09:11:01AM +0000, Lingyu Liu wrote:
+> Adds a function to get ice VF device from pci device.
+> Adds a field in VF structure to indicate migration init state,
+> and functions to init and uninit migration.
+> 
+> This will be used by ice_vfio_pci driver introduced in coming patches
+> from this series.
+> 
+> Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
+> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/Makefile       |  1 +
+>  drivers/net/ethernet/intel/ice/ice.h          |  1 +
+>  .../net/ethernet/intel/ice/ice_migration.c    | 68 +++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  7 ++
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  1 +
+>  include/linux/net/intel/ice_migration.h       | 26 +++++++
+>  6 files changed, 104 insertions(+)
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_migration.c
+>  create mode 100644 include/linux/net/intel/ice_migration.h
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+> index 960277d78e09..915b70588f79 100644
+> --- a/drivers/net/ethernet/intel/ice/Makefile
+> +++ b/drivers/net/ethernet/intel/ice/Makefile
+> @@ -49,3 +49,4 @@ ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
+>  ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
+>  ice-$(CONFIG_ICE_SWITCHDEV) += ice_eswitch.o ice_eswitch_br.o
+>  ice-$(CONFIG_GNSS) += ice_gnss.o
+> +ice-$(CONFIG_ICE_VFIO_PCI) += ice_migration.o
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index 9109006336f0..ec7f27d93924 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -55,6 +55,7 @@
+>  #include <net/vxlan.h>
+>  #include <net/gtp.h>
+>  #include <linux/ppp_defs.h>
+> +#include <linux/net/intel/ice_migration.h>
+>  #include "ice_devids.h"
+>  #include "ice_type.h"
+>  #include "ice_txrx.h"
+> diff --git a/drivers/net/ethernet/intel/ice/ice_migration.c b/drivers/net/ethernet/intel/ice/ice_migration.c
+> new file mode 100644
+> index 000000000000..1aadb8577a41
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_migration.c
+> @@ -0,0 +1,68 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#include "ice.h"
+> +
+> +/**
+> + * ice_migration_get_vf - Get ice VF structure pointer by pdev
+> + * @vf_pdev: pointer to ice vfio pci VF pdev structure
+> + *
+> + * Return nonzero for success, NULL for failure.
+> + *
+> + * ice_put_vf() should be called after finishing accessing VF
+> + */
+> +void *ice_migration_get_vf(struct pci_dev *vf_pdev)
+> +{
+> +	struct pci_dev *pf_pdev = vf_pdev->physfn;
+> +	int vf_id = pci_iov_vf_id(vf_pdev);
+> +	struct ice_pf *pf;
+> +
+> +	if (!pf_pdev || vf_id < 0)
+> +		return NULL;
+> +
+> +	pf = pci_get_drvdata(pf_pdev);
+> +	return ice_get_vf_by_id(pf, vf_id);
+> +}
+> +EXPORT_SYMBOL(ice_migration_get_vf);
 
-Fixes: ad72c4a06acc ("net: add check for current MAC address in dev_set_mac_address")
-Reported-by: Gal Pressman <gal@nvidia.com>
-Signed-off-by: Piotr Gardocki <piotrx.gardocki@intel.com>
----
- net/core/dev.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+This doesn't look right, you shouldn't need functions like this.
 
-diff --git a/net/core/dev.c b/net/core/dev.c
-index e4ff0adf5523..69a3e544676c 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -8781,14 +8781,14 @@ int dev_set_mac_address(struct net_device *dev, struct sockaddr *sa,
- 		return -EINVAL;
- 	if (!netif_device_present(dev))
- 		return -ENODEV;
--	if (!memcmp(dev->dev_addr, sa->sa_data, dev->addr_len))
--		return 0;
- 	err = dev_pre_changeaddr_notify(dev, sa->sa_data, extack);
- 	if (err)
- 		return err;
--	err = ops->ndo_set_mac_address(dev, sa);
--	if (err)
--		return err;
-+	if (memcmp(dev->dev_addr, sa->sa_data, dev->addr_len)) {
-+		err = ops->ndo_set_mac_address(dev, sa);
-+		if (err)
-+			return err;
-+	}
- 	dev->addr_assign_type = NET_ADDR_SET;
- 	call_netdevice_notifiers(NETDEV_CHANGEADDR, dev);
- 	add_device_randomness(dev->dev_addr, dev->addr_len);
--- 
-2.34.1
+The VF knows itself, and it goes back to the PF safely from the VFIO
+code. You should not be doing things like 'vf_pdev->physfn'
 
+Loook at how the other drivers are structured.
+
+Jason
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
