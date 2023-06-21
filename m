@@ -2,176 +2,106 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD6CD738373
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 14:16:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE8437383C4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 14:28:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1092983415;
-	Wed, 21 Jun 2023 12:16:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1092983415
+	by smtp1.osuosl.org (Postfix) with ESMTP id 862B78145A;
+	Wed, 21 Jun 2023 12:28:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 862B78145A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687349787;
-	bh=Hm4nyAa19XDRWSKs5/DZlmyw36WbS/P4rhiaYN1mMJk=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1687350531;
+	bh=BepU+lZ9yaYeZkWjVe5qEnQWqjohTMCLlX1bHRDWYKE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=z86VMhJ8en1NyjT2NhOEgUXWZIpCoqiY98Z6HsP+1ukYy97A7PksltoX4F7Ng9ERZ
-	 An9/q/Q+6H1Lp8MM/SIN+o00Y304HovqFHG9MAdR/IOS2iW+61Iwsp9Q7LSGSxpjqq
-	 ZeUcM3aW82ZJR9KW+9D5YDo7gx3Pp/VPxwTr9kvtOsb7eGB3k6jMqLOKYHVlOr8Xwd
-	 b9EbYGGBkfBVf3yvMGZIBjhzjfpm8ikMkG/psXz0aKpIPCRcm11R5z/ZfrgNFdwAVT
-	 CvCRilfmeg9kUh0R7S87EUvX4ZOxnoFP7AHiAuytQY+yNDeRj7Y5MxS0EdoAn0g0dh
-	 lx7u/i6iad+vQ==
+	b=PkzLaIE750FvyNxViY493SN1K6K9QasyIJwuWM6Xay4Axk4zFpgz4mPusDx1JxQnD
+	 DFSvmRBVcVPlB8vAFjSMJIVfbT/O4oUviZkzbN3ooisD2TjuC7HLuZFCsNwjN/iD3C
+	 gktYcRfW3byEwUWAMYBe9cnRpBCiHx6UEQRxUbgrCmLTjZJJbRCr7IhmYuf4P76lJM
+	 xSubQ02OGePbTHyo2KREbO+t1iHxmaAzJpIDHl+s3s8TWzV7FgGzcpLSEiwLuBB37x
+	 vULQ+lb8okCB2e9qTHt5aMlqobOs771smwvfIdR1TNfT9we74NT/uL+ZuB1RGjSZcF
+	 Aq6tNcl6X//yw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LiqyOSiNiJb8; Wed, 21 Jun 2023 12:16:26 +0000 (UTC)
+	with ESMTP id b-6Kk6PDXOPG; Wed, 21 Jun 2023 12:28:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E51518340C;
-	Wed, 21 Jun 2023 12:16:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E51518340C
+	by smtp1.osuosl.org (Postfix) with ESMTP id BB126813EB;
+	Wed, 21 Jun 2023 12:28:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BB126813EB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D2611BF83A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:16:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2337A1BF83A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:28:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4B1DA41DE6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:16:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B1DA41DE6
+ by smtp3.osuosl.org (Postfix) with ESMTP id EF50360A82
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:28:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF50360A82
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mifHSEjvU57T for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Jun 2023 12:16:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2219741D9C
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2219741D9C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:16:18 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="446531142"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="446531142"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2023 05:16:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="1044677474"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="1044677474"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga005.fm.intel.com with ESMTP; 21 Jun 2023 05:16:17 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Wed, 21 Jun 2023 05:16:17 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Wed, 21 Jun 2023 05:16:16 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Wed, 21 Jun 2023 05:16:16 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=l/ZUkQICFTGmKfQJm1hn+5C8NrdaAsUMsQCACiNBGc6V7FgiJ96VmBQYW2f1S4q7jYCdyWDhZVLvaBDIrV3G0GaBh5L3/YUx0M4HC6yGJbaUXF18skCOp0P50fEYmy+Ow8vqPLZCvHVg+GfrALCDEdS4eH0OqxyDjMiWIpgWd1FHx+L69YrIN7YXZ8kNdLWhJ493PDtnajGXpi4rEtE6MG6wtT0/YnOOUVxNKMGw3lgAfRAZCIqCfQVnRmB3XV6hIutbEig+zNvkqJDXu+cZoC1UufyCUHUltUhk7ACdGugr6ljeyMAfMw6h3ONAA0TrBPE2IpNSocpUw7TmyrRndg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=52ADzsOwsgT0OFDybgJI0HKN6gJBJKIq3BsOGqF1BSE=;
- b=BDO+ShRCWm2Q7hYqxqECiqKqY/vah+N2VDegHOe/wO7PVv7W7aqeyFv3/UJyiQg+S2h28YTHppNr8hlr6u21OeLgVEaG0tkGKuvuT2KGWNVVOYtvtPohrT5gmiDLz6nKn1KZxf+6wIoSzVS1O+sxB3QnuMRkPwrgq/6jGHHJpCcGd6m6YgytXtfJKZqH+tLFBSAZnbYrxjeR8YUXAYR3wwlwUZS+EtNy0xNcNcnkADwTDVZpYglVuLio/XgIuDpy/2qAoIpYV6ASdckDBrW8me6pLqQyRDukY5kVrfH9pWZJoHjyRHw6PQw1ZURrxAUzQ1KjuF8b+j6PlhfRtsSkQg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MN2PR11MB4045.namprd11.prod.outlook.com (2603:10b6:208:135::27)
- by DM4PR11MB5341.namprd11.prod.outlook.com (2603:10b6:5:390::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.23; Wed, 21 Jun
- 2023 12:16:15 +0000
-Received: from MN2PR11MB4045.namprd11.prod.outlook.com
- ([fe80::373:436b:847c:bd82]) by MN2PR11MB4045.namprd11.prod.outlook.com
- ([fe80::373:436b:847c:bd82%4]) with mapi id 15.20.6521.023; Wed, 21 Jun 2023
- 12:16:15 +0000
-From: "Rout, ChandanX" <chandanx.rout@intel.com>
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v3 iwl-next] ice: allow hot-swapping
- XDP programs
-Thread-Index: AQHZn31JtWnN0q9/W0aoX5qBzZap16+VNNWw
-Date: Wed, 21 Jun 2023 12:16:14 +0000
-Message-ID: <MN2PR11MB4045B74536BFE42959654245EA5DA@MN2PR11MB4045.namprd11.prod.outlook.com>
-References: <20230615113326.347770-1-maciej.fijalkowski@intel.com>
-In-Reply-To: <20230615113326.347770-1-maciej.fijalkowski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MN2PR11MB4045:EE_|DM4PR11MB5341:EE_
-x-ms-office365-filtering-correlation-id: 7396730c-b38c-4402-bbd8-08db72514f3c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: CS95j6w8GdsFgMh3UZ+yBWzHhnh5szMfZ8HQJgOy4uP+3XkTaQDXeajYmrUf88RB/zpfcMVTdpUqnopYtyKIIJ2UkPhJe2rH7xDJQHgxHSyBcxBzIHOarWwe4Llxzl0x9SaVsaCrgZhGYKT/0uXqoFslGB9N0mbx7z48rn28fJbWibcfrNgRPpYDgC2xDVV0rtSLIO99OgIqrC3JBSBk/j3AqCtyLY/kkXc4I/h6xeO2mCWOWqEjRdKUXRc34GnFOrGKk1Shjklr8ugXFoPNmJrBOmpGs/NKpopabFLAZXdvA6ab00iTevgJ7w1N/Iut+YePgTlaahdSWhuKl2pB4189wjwHCwwoJpDcGunFKh2q14DL+2HZtoR1b64L6j3NPZpjUtPKzBTlAK+zp0k1LH/Alw9fPbeUYGBn0mhStRb2BSCTVXTD1FvE5ZWS2oiq5Es26HQ4Gr/QQQVGv/x0T7g6E2hMKzVbgmzqGESm2I7bYFrnYEa78G5rQHXFcZeiknxWJkK4jaD+LKTaWOZ5qjUZoMVUlcnCxpJXRfdNCIqDNne6290a57MnsND0fSQ49n5vXp5DD6xxGVhTtUR0ki6JVKD8eoPrvO+DYgnCpeMmigqCG/2FrpaBB/TtGqvH
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB4045.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(396003)(39860400002)(136003)(346002)(366004)(451199021)(478600001)(7696005)(71200400001)(76116006)(110136005)(54906003)(9686003)(6506007)(107886003)(186003)(2906002)(66946007)(41300700001)(66556008)(66476007)(4326008)(316002)(66446008)(5660300002)(52536014)(8936002)(8676002)(64756008)(122000001)(82960400001)(38100700002)(86362001)(33656002)(38070700005)(83380400001)(55016003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?A48zyyYrlGqD+9F5Roq/TI4X/LDPr2OO9jY3Jm1aaaaImHkOIbHuE4Rv870O?=
- =?us-ascii?Q?tSKWylmyD6kvU+YNDY7GEwOP99fwNoaZRJ98ILdqlw7XsjyDkyi32y6H/5Al?=
- =?us-ascii?Q?qmQU6lWezu5XsILYW4Ay1ou0f+9DGVFa7p0xNzwt+R83kFeObYVDNs5L9tgJ?=
- =?us-ascii?Q?WxpIade2gLk8yMnizvDZUGuvci9vZbvFZF5WYU1RolTvqVrcd11zD+YAwb+9?=
- =?us-ascii?Q?B5suUl20nW+zBhZk9DD5XxdMTwv0VWQj+9oNpQLDDtIdvpvBS+yKdi7uZHwI?=
- =?us-ascii?Q?LPmjo+Fz4ScHjFGj6h0Atl+lC//25sHVcDbXxW01IR3KJqqEhKQfol8zkKF1?=
- =?us-ascii?Q?rwGXkqWYxFlfHNQkjbtlXhBCbSHo1RiAYxZkYd8HygUguikoMOFhsosHri7J?=
- =?us-ascii?Q?dkGO5svoHuVgl+zrMslyP6hVpnk+mwj1bYb1kr9J7v1eMWlOx0uGKZtqL95d?=
- =?us-ascii?Q?3/ZBKmN9P1m9TdTp1JYiM+NHmbv8RVg3ChqLU26sfWVjPxdGfmYAGT+ralCT?=
- =?us-ascii?Q?NGSuRGjriefZ8f2FT311rDR/Qe0oWgybXFvq+xr2OW430HOPWFKfTCEWJNfF?=
- =?us-ascii?Q?J8znGZeY5qcc7TFw6YxCSEch72pvC6gni+sNUrlKymNk1Vsjju7UQ4DnmZft?=
- =?us-ascii?Q?fwpDyNw7R/FWqRIyqgJd3nfcKSJ5JBCtG0ybs12eIIfh0sJcCQ5ppNTEFjKp?=
- =?us-ascii?Q?8ZZ1rZGl5XJvXl2M9Jtpxil+h0tgAqN9QNegPkc+odYcAcDWHnpjVerE9LOw?=
- =?us-ascii?Q?K7eOq2gT1+Y2fuWUvS4eb6bGaZ/kgmZNNJh9tGpcZPOREX1wbQfCVx1yQne3?=
- =?us-ascii?Q?qLAqyNrx08CXWsoFDqLvOVUTIW8zKV22vhfwmWXkd9Ih+DHcTTWkz8HyVCLt?=
- =?us-ascii?Q?CAciQPCZFYLoSI+SW8jvlRsRKyO66vUDKQPq5eM6gmGM0gDQPFpJeeajevZd?=
- =?us-ascii?Q?hAo5z26Xqb9R/vI8elrl740315FeBqcUzIUtfyB5rSx0BdVM1SwUqV6V6haY?=
- =?us-ascii?Q?jrv72+9+PuHCAl1uKRM/jtyryuFboBffGT9bYoIMBC8n9R3t2d7xQkXw5viH?=
- =?us-ascii?Q?rVJIQSAIROi6Q4BnsC7RxqJNgLY12vd1fvH5jwiyjPxmDDKHXJAFD1+5fxk6?=
- =?us-ascii?Q?h669Ap/MiIXfcBUg8nuSHYHBRAaAq7/lDyiSGo5ynqetpT5WEnndn/j7WB0N?=
- =?us-ascii?Q?OP1ZXLqUgq8YgfiZKeUHV7xQldQ5TPnQKYBnYmHIqmAXYNjveJZ6j1EfdUxo?=
- =?us-ascii?Q?+UpfUg/L33oHgBhU2vqodchMRJ9fblBiNVMBjrCvO8t/CLn53KidzEg3928t?=
- =?us-ascii?Q?jOqpI4gIagOjfG6NBlkYGKtjg/aEs9PuHEXCkMLGMTNvGArf9UdAxW60zP0r?=
- =?us-ascii?Q?gUpRY5hm9frcPUgK1ArL0CfUqAtb/hcGLBKiCl7T6661tGsQORCOpgOeCcV/?=
- =?us-ascii?Q?ECZpK2UAM9MfJ2c5BIQTLMh1YVFmfnEeC3p35k1LXZZrTVRVYcM3NfsuFl8C?=
- =?us-ascii?Q?bvYYC8K24LD/Iw/U/l7HVka1iUbHiIDnDjnezDSnAQoDMhPGNd/wBA03ZUm8?=
- =?us-ascii?Q?kApBG2QPL7XIrb35jW8=3D?=
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IpUrS_y8MtKK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Jun 2023 12:28:43 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE26E60A7D
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AE26E60A7D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 12:28:42 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-3f9189228bcso33689495e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 05:28:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687350520; x=1689942520;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JY6qu40VU0iOU+uQjSN/rpx66RGcpmW4WoflmnS71Xs=;
+ b=QqJUHOXjs2YPN/PbNI9YuEb6w+jTXg2WN13qh8W/eTsNWF5np2XYqQ97YLqSt+a8Sg
+ lrgjmd2Czfr5OMMKHFTkwfd3JC4IvO/PaZ12sEzOlLhfJOuuMQSvxWcTWyVQMdyi9lQt
+ HxUwpzYo0dJJpWiBgSwBPKS1k6Eb8+OwIRQyyP8TatLztE0lsy47yCR5BM++qJAuE0Kp
+ iA6DTZ3QEiY/azMdjiH2e/Ywp9MawlbmIOi0FHZcyq2ROAV/GcL+DGfY2BnK/V9Fvgid
+ KWmsfYSg5v042CFcSNMdZ9UFT/AZqWG69ZWWpblBfHCD/0doq7RjNYDroTn+qgA0JlO7
+ e4kA==
+X-Gm-Message-State: AC+VfDzIBoAOvm8/E6/OTSa0oK7HiOv3ud7CnKJxkWVBo1UzVNYi4q9l
+ AYLddy8kktImHfxP6r/mAZSHpw==
+X-Google-Smtp-Source: ACHHUZ60rXBng2He7vOU89dbQRdYFpRJqDtQ+N0XHlr2RIF8GRtfIJ4xQCwrAe/ejPJeeSMNSO3pmQ==
+X-Received: by 2002:a05:600c:2315:b0:3f9:b02:9103 with SMTP id
+ 21-20020a05600c231500b003f90b029103mr6786163wmo.29.1687350520103; 
+ Wed, 21 Jun 2023 05:28:40 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ 9-20020a05600c240900b003f93c450657sm4835029wmp.38.2023.06.21.05.28.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Jun 2023 05:28:39 -0700 (PDT)
+Date: Wed, 21 Jun 2023 14:28:38 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+Message-ID: <ZJLs9np6CgKOtrWN@nanopsycho>
+References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
+ <20230609121853.3607724-9-arkadiusz.kubalewski@intel.com>
+ <ZIRI+/YDZMQJVs3i@nanopsycho>
+ <DM6PR11MB4657C07B0DA46408BDD957CD9B5FA@DM6PR11MB4657.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB4045.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7396730c-b38c-4402-bbd8-08db72514f3c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2023 12:16:15.0094 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: E8cS178VSwF//OJTfuhkU9yWjproyLPtoU8/xa6yRb+RKocCXQKUwdw2DtgUj0WrhbBbVquz1UhPu9jKQ8iS1w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5341
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687349779; x=1718885779;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=52ADzsOwsgT0OFDybgJI0HKN6gJBJKIq3BsOGqF1BSE=;
- b=gdQquKCsnFNWwrkZGs3UP2AvOiLChcC9BekDoq1I7soD2n7psdoGlQV+
- B5PGqBkZfPxn/1PALcXytCR2D6TSv32QS0RyxDKX9L2sJeYhahchNTrhz
- ngGHR5w8I+NODdQBLnPYILLLXXR+6CWADdVuG5cp/lETpQKKDN5I1aewR
- NHXnmP1b0TIvNegxvRiNx23+lPWhFqynQ44bVBIIrqLxfLCDhn/Pb1o84
- 2prnWuvHFvK0oIW8jEot+MQWximmEeViUIdoPgsSSyUdYku97iVB1vGVA
- 3KlXhDNNdWVcerjg5n00PfQZ8Z7x+Cil6r1YGDVP39i2KkTEbCMllGhpj
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gdQquKCs
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v3 iwl-next] ice: allow hot-swapping
- XDP programs
+Content-Disposition: inline
+In-Reply-To: <DM6PR11MB4657C07B0DA46408BDD957CD9B5FA@DM6PR11MB4657.namprd11.prod.outlook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1687350520; x=1689942520; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=JY6qu40VU0iOU+uQjSN/rpx66RGcpmW4WoflmnS71Xs=;
+ b=QJYEvSQGMsdga3Sw+LEwbmfVCv51FFTfe+zTbbvvLwPUJ0LE4ezg0a9FAPbbtvS79j
+ ldxilCxXfk/qb7MqAy+ESNd212YZxzqu3oycOTPossmGxj/+Lb2eOqOOf9lcPEMGXAEN
+ PiEYqFDWetWK8ZfRYfrmZm/9P89sNnGCcrKh+GQE86nDsP6EGdk29TuwFXKUxE/dT5c4
+ kUzlr7iP+NMAGevxrG3+JX0+3jlshbVy1oEq1ZHpEdLRStJDOrBcIv/hLMaGbpLbE0oh
+ XBXCRXJpf4jxbClgVqR/q8D15/odn7mAE5hds9N3YLjCa841c6Sp0r20lDZIHsSQdQ6S
+ NwWg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
+ header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
+ header.s=20221208 header.b=QJYEvSQG
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 08/10] ice: implement dpll
+ interface to control cgu
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -184,58 +114,437 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "toke@kernel.org" <toke@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>, "Nagraj,
- Shravan" <shravan.nagraj@intel.com>,
- "fred@cloudflare.com" <fred@cloudflare.com>
+Cc: "geert+renesas@glider.be" <geert+renesas@glider.be>,
+ "mst@redhat.com" <mst@redhat.com>, "razor@blackwall.org" <razor@blackwall.org>,
+ "phil@nwl.cc" <phil@nwl.cc>, "javierm@redhat.com" <javierm@redhat.com>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "benjamin.tissoires@redhat.com" <benjamin.tissoires@redhat.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "lucien.xin@gmail.com" <lucien.xin@gmail.com>,
+ "leon@kernel.org" <leon@kernel.org>, "corbet@lwn.net" <corbet@lwn.net>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "masahiroy@kernel.org" <masahiroy@kernel.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>, "vadfed@meta.com" <vadfed@meta.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "airlied@redhat.com" <airlied@redhat.com>, "vadfed@fb.com" <vadfed@fb.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>,
+ "ricardo.canuelo@collabora.com" <ricardo.canuelo@collabora.com>,
+ "arnd@arndb.de" <arnd@arndb.de>, "idosch@nvidia.com" <idosch@nvidia.com>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "claudiajkang@gmail.com" <claudiajkang@gmail.com>,
+ "kuniyu@amazon.com" <kuniyu@amazon.com>,
+ "jacek.lawrynowicz@linux.intel.com" <jacek.lawrynowicz@linux.intel.com>,
+ "liuhangbin@gmail.com" <liuhangbin@gmail.com>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "nicolas.dichtel@6wind.com" <nicolas.dichtel@6wind.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "axboe@kernel.dk" <axboe@kernel.dk>, "sj@kernel.org" <sj@kernel.org>,
+ "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
+ "linux@zary.sk" <linux@zary.sk>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "ogabbay@kernel.org" <ogabbay@kernel.org>,
+ "nipun.gupta@amd.com" <nipun.gupta@amd.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "andy.ren@getcruise.com" <andy.ren@getcruise.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>, "M,
+ Saeed" <saeedm@nvidia.com>, "davem@davemloft.net" <davem@davemloft.net>,
+ "Olech, Milena" <milena.olech@intel.com>,
+ "hkallweit1@gmail.com" <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Mon, Jun 19, 2023 at 08:08:11PM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>From: Jiri Pirko <jiri@resnulli.us>
+>>Sent: Saturday, June 10, 2023 11:57 AM
+>>
+>>Fri, Jun 09, 2023 at 02:18:51PM CEST, arkadiusz.kubalewski@intel.com wrote:
+
+[...]
 
 
->-----Original Message-----
->From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->Fijalkowski, Maciej
->Sent: 15 June 2023 17:03
->To: intel-wired-lan@lists.osuosl.org
->Cc: toke@kernel.org; netdev@vger.kernel.org; Nguyen, Anthony L
-><anthony.l.nguyen@intel.com>; Karlsson, Magnus
-><magnus.karlsson@intel.com>; fred@cloudflare.com
->Subject: [Intel-wired-lan] [PATCH v3 iwl-next] ice: allow hot-swapping XDP
->programs
+>>>+/**
+>>>+ * ice_dpll_cb_lock - lock dplls mutex in callback context
+>>>+ * @pf: private board structure
+>>>+ *
+>>>+ * Lock the mutex from the callback operations invoked by dpll subsystem.
+>>>+ * Prevent dead lock caused by `rmmod ice` when dpll callbacks are under
+>>>stress
+>>
+>>"dead lock", really? Which one? Didn't you want to write "livelock"?
+>>
 >
->Currently ice driver's .ndo_bpf callback brings interface down and up
->independently of XDP resources' presence. This is only needed when either
->these resources have to be configured or removed. It means that if one is
->switching XDP programs on-the-fly with running traffic, packets will be
->dropped.
->
->To avoid this, compare early on ice_xdp_setup_prog() state of incoming
->bpf_prog pointer vs the bpf_prog pointer that is already assigned to VSI. Do
->the swap in case VSI has bpf_prog and incoming one are non-NULL.
->
->Lastly, while at it, put old bpf_prog *after* the update of Rx ring's bpf_prog
->pointer. In theory previous code could expose us to a state where Rx ring's
->bpf_prog would still be referring to old_prog that got released with earlier
->bpf_prog_put().
->
->Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
->---
->
->v2->v3:
->- move bpf_prog_put() after ice_rx_ring::xdp_prog update [Toke, Olek]
->v1->v2:
->- fix missing brace (sigh)
->
-> drivers/net/ethernet/intel/ice/ice_main.c | 19 +++++++++----------
-> 1 file changed, 9 insertions(+), 10 deletions(-)
->
+>As explained, rmmod takes and destroys lock, it can happen that
+>netlink request/ops hangs on trying to lock when rmmod started deinit.
 
-Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com> (A Contingent Worker at Intel)
+Yeah, don't take the lock in rmmod, see below.
+
+
+>
+>>If this is livelock prevention, is this something you really see or
+>>just an assumption? Seems to me unlikely.
+>>
+>>Plus, see my note in ice_dpll_init(). If you remove taking the lock from
+>>ice_dpll_init() and ice_dpll_deinit(), do you still need this? I don't
+>>think so.
+>>
+>
+>I won't remove it from there, as the lock shall serialize the access to ice dpll
+>data, so it must be held on init until everything is ready for netlink access,
+
+Before you register the dpll device/pin, no netlink cmd can happen. So
+do whatever you want in the init, no lock needed, register at the and
+when you are ready. Same on deinit. After you unregister, no call can
+happen, no need to lock anything in deinit.
+
+Either I'm missing something really odd, or your locking scheme is very
+wrong.
+
+If this locking here is needed, could you please present an example of a
+race it solves here?
+
+
+
+>or when deinit takes place, until everything is released.
+>
+>>
+>>>+ * tests.
+>>>+ *
+>>>+ * Return:
+>>>+ * 0 - if lock acquired
+>>>+ * negative - lock not acquired or dpll was deinitialized
+>>>+ */
+>>>+static int ice_dpll_cb_lock(struct ice_pf *pf)
+>>>+{
+>>>+	int i;
+>>>+
+>>>+	for (i = 0; i < ICE_DPLL_LOCK_TRIES; i++) {
+>>>+		if (mutex_trylock(&pf->dplls.lock))
+>>>+			return 0;
+>>>+		usleep_range(100, 150);
+>>>+		if (!test_bit(ICE_FLAG_DPLL, pf->flags))
+>>
+>>How exactly could this happen? I don't think it can. Drop it.
+>>
+>
+>Asynchronously called deinit, and kworker tries to update at the same time.
+
+Could you provide an example please?
+Because I see 2 possible paths:
+1) dpll op call
+2) periodic work
+
+But when ICE_FLAG_DPLL is cleared in ice_dpll_deinit(), no dpll op call
+can happen anymore and no periodic work is scheduled.
+
+Is this another "just in case" situation? If yes, please remove.
+If no, please provide an example of a race this solves.
+
+
+>
+>>
+>>>+			return -EFAULT;
+>>>+	}
+>>>+
+>>>+	return -EBUSY;
+>>>+}
+
+[...]
+
+
+>>>+static void ice_dpll_periodic_work(struct kthread_work *work)
+>>>+{
+>>>+	struct ice_dplls *d = container_of(work, struct ice_dplls,
+>>>work.work);
+>>>+	struct ice_pf *pf = container_of(d, struct ice_pf, dplls);
+>>>+	struct ice_dpll *de = &pf->dplls.eec;
+>>>+	struct ice_dpll *dp = &pf->dplls.pps;
+>>>+	int ret = 0;
+>>>+
+>>>+	if (!test_bit(ICE_FLAG_DPLL, pf->flags))
+>>
+>>How exactly could this happen? I don't think it can. Drop it.
+>>
+>
+>I will change a bit here, ice_dpll_cb_lock returns an error
+>if that flag was already down, so will use it instead.
+
+Yeah, I believe that this simply cannot happen as when the bit is
+cleared, no work is scheduled anymore. See above.
+
+
+>
+>>
+>>>+		return;
+>>>+	ret = ice_dpll_cb_lock(pf);
+>>>+	if (ret) {
+>>>+		d->lock_err_num++;
+>>
+
+[...]
+
+
+>
+>>>+		mutex_lock(&pf->dplls.lock);
+>>
+>>Related to my question in ice_dpll_init(), why do you need to lock the
+>>mutex
+>>here?
+>
+>Because before deinit takes place on driver unload the user can still ask
+>for the info from the dpll subsystem or kworker can try to alter the status.
+
+When you unregister dpll and stop the kworker, you can't see anything
+like that. No need to take this lock.
+
+
+>
+>>
+>>
+>>>+		ice_dpll_deinit_pins(pf, cgu);
+>>>+		ice_dpll_deinit_info(pf);
+>>>+		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
+>>>+		ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
+>>
+>>Please reorder to match error path in ice_dpll_init()
+>>
+>
+>Fixed.
+>
+>>>+		if (cgu)
+>>
+>>In ice_dpll_init() you call this "cgu_present". Please be consistent in
+>>naming.
+>>
+>
+>Fixed.
+>
+>>
+>>>+			ice_dpll_deinit_worker(pf);
+>>>+		clear_bit(ICE_FLAG_DPLL, pf->flags);
+>>>+		mutex_unlock(&pf->dplls.lock);
+>>>+		mutex_destroy(&pf->dplls.lock);
+>>>+	}
+>>>+}
+>>>+
+>>>+/**
+>>>+ * ice_dpll_init_info_direct_pins - initializes direct pins info
+>>>+ * @pf: board private structure
+>>>+ * @pin_type: type of pins being initialized
+>>>+ *
+>>>+ * Init information for directly connected pins, cache them in pf's pins
+>>>+ * structures.
+>>>+ *
+>>>+ * Context: Function initializes and holds pf->dplls.lock mutex.
+>>>+ * Return:
+>>>+ * * 0 - success
+>>>+ * * negative - init failure reason
+>>>+ */
+>>>+static int
+>>>+ice_dpll_init_info_direct_pins(struct ice_pf *pf,
+>>>+			       enum ice_dpll_pin_type pin_type)
+>>>+{
+>>>+	struct ice_dpll *de = &pf->dplls.eec, *dp = &pf->dplls.pps;
+>>>+	int num_pins, i, ret = -EINVAL;
+>>>+	struct ice_hw *hw = &pf->hw;
+>>>+	struct ice_dpll_pin *pins;
+>>>+	u8 freq_supp_num;
+>>>+	bool input;
+>>>+
+>>>+	switch (pin_type) {
+>>>+	case ICE_DPLL_PIN_TYPE_INPUT:
+>>>+		pins = pf->dplls.inputs;
+>>>+		num_pins = pf->dplls.num_inputs;
+>>>+		input = true;
+>>>+		break;
+>>>+	case ICE_DPLL_PIN_TYPE_OUTPUT:
+>>>+		pins = pf->dplls.outputs;
+>>>+		num_pins = pf->dplls.num_outputs;
+>>>+		input = false;
+>>>+		break;
+>>>+	default:
+>>>+		return ret;
+>>>+	}
+>>>+
+>>>+	for (i = 0; i < num_pins; i++) {
+>>>+		pins[i].idx = i;
+>>>+		pins[i].prop.board_label = ice_cgu_get_pin_name(hw, i, input);
+>>>+		pins[i].prop.type = ice_cgu_get_pin_type(hw, i, input);
+>>>+		if (input) {
+>>>+			ret = ice_aq_get_cgu_ref_prio(hw, de->dpll_idx, i,
+>>>+						      &de->input_prio[i]);
+>>>+			if (ret)
+>>>+				return ret;
+>>>+			ret = ice_aq_get_cgu_ref_prio(hw, dp->dpll_idx, i,
+>>>+						      &dp->input_prio[i]);
+>>>+			if (ret)
+>>>+				return ret;
+>>>+			pins[i].prop.capabilities |=
+>>>+				DPLL_PIN_CAPS_PRIORITY_CAN_CHANGE;
+>>>+		}
+>>>+		pins[i].prop.capabilities |= DPLL_PIN_CAPS_STATE_CAN_CHANGE;
+>>>+		ret = ice_dpll_pin_state_update(pf, &pins[i], pin_type);
+>>>+		if (ret)
+>>>+			return ret;
+>>>+		pins[i].prop.freq_supported =
+>>>+			ice_cgu_get_pin_freq_supp(hw, i, input, &freq_supp_num);
+>>>+		pins[i].prop.freq_supported_num = freq_supp_num;
+>>>+		pins[i].pf = pf;
+>>>+	}
+>>>+
+>>>+	return ret;
+>>>+}
+>>>+
+>>>+/**
+>>>+ * ice_dpll_init_rclk_pin - initializes rclk pin information
+>>>+ * @pf: board private structure
+>>>+ * @pin_type: type of pins being initialized
+>>>+ *
+>>>+ * Init information for rclk pin, cache them in pf->dplls.rclk.
+>>>+ *
+>>>+ * Return:
+>>>+ * * 0 - success
+>>>+ * * negative - init failure reason
+>>>+ */
+>>>+static int ice_dpll_init_rclk_pin(struct ice_pf *pf)
+>>>+{
+>>>+	struct ice_dpll_pin *pin = &pf->dplls.rclk;
+>>>+	struct device *dev = ice_pf_to_dev(pf);
+>>>+
+>>>+	pin->prop.board_label = dev_name(dev);
+>>
+>>What??? Must be some sort of joke, correct?
+>>"board_label" should be an actual writing on a board. For syncE, I don't
+>>think it makes sense to fill any label. The connection to the netdev
+>>should be enough. That is what I do in mlx5.
+>>
+>>Please drop this.
+>>
+>
+>No, we want a label, as this is recovered clock, will change it to
+
+Okay, so it is recovered clock, so what? I want a lot of things, that
+does not make them meaningful.
+
+
+>package_label but the name will stay for now, this is much more meaningful
+>then i.e. "phy0" or "RCLK".
+
+No, dev_name() here is total non-sense!
+The label should contain the actual label as for example a writing on a
+front panel, board, etc.
+
+Why exactly do you need this? Why a link from netdev to this dpll pin is
+not enough for you.
+
+Please describe exactly what you need the label for. Usecases, examples,
+etc.
+
+Jakub, if you read this, this is very nice example of a misuse that even
+very precisely defined netlink attribute cannot prevent :/
+
+
+>
+>>
+>>
+>>>+	pin->prop.type = DPLL_PIN_TYPE_SYNCE_ETH_PORT;
+>>>+	pin->prop.capabilities |= DPLL_PIN_CAPS_STATE_CAN_CHANGE;
+>>>+	pin->pf = pf;
+>>>+
+
+[...]
+
+
+>>>+int ice_dpll_init(struct ice_pf *pf)
+>>>+{
+>>>+	bool cgu_present = ice_is_feature_supported(pf, ICE_F_CGU);
+>>>+	struct ice_dplls *d = &pf->dplls;
+>>>+	int err = 0;
+>>>+
+>>>+	mutex_init(&d->lock);
+>>>+	mutex_lock(&d->lock);
+>>
+>>Seeing pattern like this always triggers questions.
+>>Why exactly do you need to lock the mutex here?
+>>
+>
+>Could do it few lines below before the dplls are inited,
+>but this would make error path confusing.
+
+See above, you don't need to do this if you register dpll and start the
+periodic work only after everything is ready. I believe that you
+actually have it like this now.
+
+
+>
+>>
+>>>+	err = ice_dpll_init_info(pf, cgu_present);
+>>>+	if (err)
+>>>+		goto err_exit;
+>>>+	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu_present,
+>>>+				 DPLL_TYPE_EEC);
+>>>+	if (err)
+>>>+		goto deinit_info;
+>>>+	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu_present,
+>>>+				 DPLL_TYPE_PPS);
+>>>+	if (err)
+>>>+		goto deinit_eec;
+>>>+	err = ice_dpll_init_pins(pf, cgu_present);
+>>>+	if (err)
+>>>+		goto deinit_pps;
+>>>+	set_bit(ICE_FLAG_DPLL, pf->flags);
+>>>+	if (cgu_present) {
+>>>+		err = ice_dpll_init_worker(pf);
+>>>+		if (err)
+>>>+			goto deinit_pins;
+>>>+	}
+>>>+	mutex_unlock(&d->lock);
+>>>+	dev_info(ice_pf_to_dev(pf), "DPLLs init successful\n");
+>>
+>>What is this good for? Please avoid polluting dmesg and drop this.
+>>
+>
+>Sure, removed.
+>
+>>
+>>>+
+>>>+	return err;
+>>>+
+>>>+deinit_pins:
+>>>+	ice_dpll_deinit_pins(pf, cgu_present);
+>>>+deinit_pps:
+>>>+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu_present);
+>>>+deinit_eec:
+>>>+	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu_present);
+>>>+deinit_info:
+>>>+	ice_dpll_deinit_info(pf);
+>>>+err_exit:
+>>>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
+>>>+	mutex_unlock(&d->lock);
+>>>+	mutex_destroy(&d->lock);
+>>>+	dev_warn(ice_pf_to_dev(pf), "DPLLs init failure err:\n");
+>>
+>>You are missing the err. But why do you need the message?
+>>
+>
+>To give a clue that something went wrong on dpll init.
+
+Yeah, you ignore the err in the caller. That makes sense.
+Don't forget to add the "err" :)
+
+
+>
+>>
+>>>+
+>>>+	return err;
+
+
+[...]
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
