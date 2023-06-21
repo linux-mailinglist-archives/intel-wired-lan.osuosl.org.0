@@ -2,83 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF726737E0C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 11:11:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2582737E0D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Jun 2023 11:11:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3CFD1417FA;
-	Wed, 21 Jun 2023 09:11:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3CFD1417FA
+	by smtp2.osuosl.org (Postfix) with ESMTP id 501E5405BF;
+	Wed, 21 Jun 2023 09:11:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 501E5405BF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687338688;
-	bh=VL8TjZfcrEEqS2dNQEaR1V8ilZkPYcS58IRq3hcza9E=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=0vwUovzmOCpBjm87zjTbSt1zlxVWIxJASN7hvJbHHbU1NMqL16au/59uH18LyU8ok
-	 sfEAjzF119k/b8/s3sB2252jy4r4OpSooRUGj8nxhg8VStAg8AsvAXAxc7TNw8lqa4
-	 q5Tj5q3tw0suiFm/Mhxt8169RbWg3c0wrb3xoZ4P85jv8V0mJMClq/isQjOj3ThOP7
-	 Cg0VYvQyF7Gl/VulloE2Isa2dgrfJXoFrQgLVXmCO0Q1sfLep7YGhqxwo6C1iSZ210
-	 fhynnMgZZbGIXJzR91wNrAiKfsHm1vhhB/8BY0oQcw9JuTivJ7XD2avWyY6QCgCuIW
-	 U24Js/0eYgdyQ==
+	s=default; t=1687338692;
+	bh=2H6ICIS2bXVm2KUKMSbQIqtKXD4FF/om9gO3WuxZ6UU=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=S6mCgZj5m84/pE7elxtofpiiY1ea8Kgl505wqhLCpk0rLuZitl2onoIqoNpcpBhsE
+	 O6xgKOZXNntbTgKNClCofhwLn1NMSwZp9bV3/jlL4FPnJvdyhC8fU735R6uTBHLGB9
+	 ZnRTAcyfZZTgKRWtMAbSodwUEavGAeBMpNCZQiqHTLtZQIsRCXOot91ZKxqejvoFyK
+	 C5VYBMfWY/qN8nC1OMwcwkVNmcc0qyDP09xdbtfRHIMAW0B08Qr9xSnO5L8hYwK7Ti
+	 3syfHdOSECHdJBsVvQLf2PFDSMMwh5xu99f49CYxYmwR4xPD2ReUMJitkonrmZtxkd
+	 26il1/xIC+t9w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KP8VR9OF_aBT; Wed, 21 Jun 2023 09:11:27 +0000 (UTC)
+	with ESMTP id nkDT-_84Mfvv; Wed, 21 Jun 2023 09:11:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0D528405BF;
-	Wed, 21 Jun 2023 09:11:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0D528405BF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 46B6E400B8;
+	Wed, 21 Jun 2023 09:11:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 46B6E400B8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D8E881BF4E5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 20D971BF4E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BA03F405BF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA03F405BF
+ by smtp2.osuosl.org (Postfix) with ESMTP id EDFF0405BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EDFF0405BF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x2YZ0BO402It for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Jun 2023 09:11:21 +0000 (UTC)
+ with ESMTP id HHvieSr_QUob for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Jun 2023 09:11:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08100400B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 59281417F2
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 08100400B8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:20 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="357613602"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="357613602"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 59281417F2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Jun 2023 09:11:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="357613613"
+X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="357613613"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2023 02:11:20 -0700
-X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="748570728"
-X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="748570728"
+ 21 Jun 2023 02:11:24 -0700
+X-IronPort-AV: E=McAfee;i="6600,9927,10747"; a="748570737"
+X-IronPort-AV: E=Sophos;i="6.00,260,1681196400"; d="scan'208";a="748570737"
 Received: from dpdk-liulingy-2.sh.intel.com ([10.67.119.34])
- by orsmga001.jf.intel.com with ESMTP; 21 Jun 2023 02:11:17 -0700
+ by orsmga001.jf.intel.com with ESMTP; 21 Jun 2023 02:11:21 -0700
 From: Lingyu Liu <lingyu.liu@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 21 Jun 2023 09:10:57 +0000
-Message-Id: <20230621091112.44945-1-lingyu.liu@intel.com>
+Date: Wed, 21 Jun 2023 09:10:58 +0000
+Message-Id: <20230621091112.44945-2-lingyu.liu@intel.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230621091112.44945-1-lingyu.liu@intel.com>
+References: <20230621091112.44945-1-lingyu.liu@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687338681; x=1718874681;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=tsEPWECy0PJeuiFyPYcvjWrBwlkw4ZmbLjnlv8YCdIE=;
- b=DdOjQYbaov6nP/S8YWLrF3BWeaslUYKa5sZfCjylW1UcqXKp20ZK3y6w
- M61RV3YbifEZ8AjtrVXOlNUijVYt1ZdNGDhGbrh+zM+Y+sK0FugGbF+YI
- e5OJPC4p2Jn7o4BZaTsWk4Wdre1I3QvfFP/gRJ84z0SPy89Qn3xXOeWFn
- lp9X4pgMIXrrXE2ujJXm0VJUcl6aPSfq/vlxwxWpina762OauZuVG295X
- oycH78mSr+NNsqWcWNeo9xmhPREiM/0yTLKFXRe8kHxDzmJHyq49VgHC1
- f9kH7kKb47MycqIKNnmU6vlD/zgJweez0i0WEwWci9I4sjSPT90DVb8Vg
- Q==;
+ t=1687338684; x=1718874684;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=5aDXTa8iOTDemDX0gIFxH10ng7Vp5hUrLA5WKshiyF4=;
+ b=IdXxABinh/VysivX4UJT6WLUdRKVlBxkl8Me3LaZ0tq1+S+1qYknEJNB
+ nY8WTY3cGJWeUK3h77Ji6X9YjOq+xVg3u/AcNhMoBGxD6Im26fqQFV7MA
+ paOz+ZgjEgP84CY9/rkd8kcSx32OKdSna0D1rATKavhKuB+aJ/Ne9Hj4l
+ Ze7Z30ow587ZmskDNSY/bk61cAGzeEP/gMukV89eSThw2pYgLPP83h8xV
+ uG3QXcYXn39ul7ojNmtrsJfxu6DRTLxst3IWFTb06CsDNr2c0hV6yVfhq
+ tijIv4OmNtRe/ULIOYX4pMBECmoZfjL+9pCDbcBaAT5k+fm5szWpnfdSR
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DdOjQYba
-Subject: [Intel-wired-lan] [PATCH iwl-next V2 00/15] Add E800 live migration
- driver
+ header.a=rsa-sha256 header.s=Intel header.b=IdXxABin
+Subject: [Intel-wired-lan] [PATCH iwl-next V2 01/15] ice: Fix missing legacy
+ 32byte RXDID in the supported bitmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,67 +94,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kevin.tian@intel.com, yi.l.liu@intel.com, phani.r.burra@intel.com
+Cc: kevin.tian@intel.com, yi.l.liu@intel.com, phani.r.burra@intel.com,
+ Xu Ting <ting.xu@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series adds vfio live migration support for Intel E810 VF
-devices based on the v2 migration protocol.
+From: Xu Ting <ting.xu@intel.com>
 
-v2:
- - clarified comments and commit message
+32byte legacy descriptor format is preassigned.
+Commit e753df8fbca5 ("ice: Add support Flex RXD") created a
+supported RXDIDs bitmap according to DDP package. But it missed
+the legacy 32byte RXDID since it is not listed in the package.
+Mark 32byte legacy descriptor format as supported in the supported
+RXDIDs flags.
+
+Signed-off-by: Xu Ting <ting.xu@intel.com>
+Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
 ---
-Lingyu Liu (11):
-  ice: check VF migration status before sending messages to VF
-  ice: add migration init field and helper functions
-  ice: save VF messages as device state
-  ice: save and restore device state
-  ice: do not notify VF link state during migration
-  ice: change VSI id in virtual channel message after migration
-  ice: save and restore RX queue head
-  ice: save and restore TX queue head
-  ice: stop device before saving device states
-  ice: mask VF advanced capabilities if live migration is activated
-  vfio/ice: implement vfio_pci driver for E800 devices
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-Xu Ting (1):
-  ice: Fix missing legacy 32byte RXDID in the supported bitmap
-
-Yahui Cao (3):
-  ice: add function to get rxq context
-  vfio: Expose vfio_device_has_container()
-  vfio/ice: support iommufd vfio compat mode
-
- MAINTAINERS                                   |   7 +
- drivers/net/ethernet/intel/ice/Makefile       |   1 +
- drivers/net/ethernet/intel/ice/ice.h          |   2 +
- drivers/net/ethernet/intel/ice/ice_common.c   | 268 +++++
- drivers/net/ethernet/intel/ice/ice_common.h   |   5 +
- .../net/ethernet/intel/ice/ice_migration.c    | 778 ++++++++++++++
- .../intel/ice/ice_migration_private.h         |  31 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   8 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   6 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 238 +++--
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |  15 +-
- .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  28 +-
- drivers/vfio/group.c                          |   1 +
- drivers/vfio/pci/Kconfig                      |   2 +
- drivers/vfio/pci/Makefile                     |   2 +
- drivers/vfio/pci/ice/Kconfig                  |  10 +
- drivers/vfio/pci/ice/Makefile                 |   4 +
- drivers/vfio/pci/ice/ice_vfio_pci.c           | 998 ++++++++++++++++++
- include/linux/net/intel/ice_migration.h       |  53 +
- include/linux/vfio.h                          |   1 +
- 20 files changed, 2347 insertions(+), 111 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_migration.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_migration_private.h
- create mode 100644 drivers/vfio/pci/ice/Kconfig
- create mode 100644 drivers/vfio/pci/ice/Makefile
- create mode 100644 drivers/vfio/pci/ice/ice_vfio_pci.c
- create mode 100644 include/linux/net/intel/ice_migration.h
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index 92490fe655ea..9d74dcafde60 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -2617,10 +2617,13 @@ static int ice_vc_query_rxdid(struct ice_vf *vf)
+ 
+ 	/* Read flexiflag registers to determine whether the
+ 	 * corresponding RXDID is configured and supported or not.
+-	 * Since Legacy 16byte descriptor format is not supported,
+-	 * start from Legacy 32byte descriptor.
++	 * But the legacy 32byte RXDID is not listed in DDP package,
++	 * add it in the bitmap manually and skip check for it in the loop.
++	 * Legacy 16byte descriptor is not supported.
+ 	 */
+-	for (i = ICE_RXDID_LEGACY_1; i < ICE_FLEX_DESC_RXDID_MAX_NUM; i++) {
++	rxdid->supported_rxdids |= BIT(ICE_RXDID_LEGACY_1);
++
++	for (i = ICE_RXDID_FLEX_NIC; i < ICE_FLEX_DESC_RXDID_MAX_NUM; i++) {
+ 		regval = rd32(hw, GLFLXP_RXDID_FLAGS(i, 0));
+ 		if ((regval >> GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_S)
+ 			& GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_M)
 -- 
 2.25.1
 
