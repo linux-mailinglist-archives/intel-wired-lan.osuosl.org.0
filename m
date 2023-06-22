@@ -1,104 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2F7D7397C7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jun 2023 09:06:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70AC47397D9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jun 2023 09:10:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4E0EC60E78;
-	Thu, 22 Jun 2023 07:06:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E0EC60E78
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA22160F07;
+	Thu, 22 Jun 2023 07:10:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA22160F07
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687417568;
-	bh=sMJzb2w6qmSLbNMTPgO66Cwb9oxiwU1LW22UU+XqDIU=;
+	s=default; t=1687417805;
+	bh=Xndfq55GH9YGbw1WYGm+O2JOZsN7jTEVYkbw/p1uUgU=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=OcZAwx5zKoxt2u4caTVyPVfbfSh3Xi2IkyOZ+9V3FNZ9YmGcn7pUtVvE6boLmLOIA
-	 cH9QLn3S5/TQB+SR2Ip3V8jtnCRk7lFqIwsqBPSm1DMVJfliNVqC1aKfb8jcoUkQ2G
-	 7XXopK+kP3jv9E/zMjwjyIfzg9Jmv02LEHAigMF3nheQAstRYMwIns2wa9wuX9F981
-	 4euYZfSOj0hzJhTGTNS2ZkH3aX4kkV3Wth7TROKPRJbfiibZLUzr4r7nL9WbEdcX/J
-	 DGre7wWFdxRodqG39tP9leeFaBMXKoHh3xcma1w0FFGgBjTUaXHf4l98zgrOd3ho3/
-	 A8YKsSsq8O0ng==
+	b=kdjDJeGGFggOnPJbKYGFpxJ+Y920UCY64QdE0MB2ij3IYlHY0bPMNQAHiZzwzFxU/
+	 5+64YMBE1b6/K45+BgjFAYDa3iDsF0zbY7w9BU20fkaIgdt4Oxut770SaDm4IO/lSc
+	 tV56UpyLltDsuicH8oHI7/EX5LoBw+Z85ymkosSfYr1aprUmjwircEObD2ETBiuQ+f
+	 onX4hG4pwsx/bzFw52qLwm3aSpNu5b8JGgJo7X1ZJbPyGQurOeXf4tTChb7WJciFHF
+	 qXbq3HHBBvkc00NM4zX2FqCIoGB/RFf9WQ1Zqz6vZa/SBVSi6XYX4rmi05gCkaZ1pW
+	 h4VZLH+Eh4Djg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rCAigNfKLnyL; Thu, 22 Jun 2023 07:06:07 +0000 (UTC)
+	with ESMTP id Va5gi5-Fx_Ne; Thu, 22 Jun 2023 07:10:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10D2D60E77;
-	Thu, 22 Jun 2023 07:06:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10D2D60E77
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9732660E78;
+	Thu, 22 Jun 2023 07:10:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9732660E78
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59EE81BF421
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:06:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 13B751BF421
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:10:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 321C5400CC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:06:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 321C5400CC
+ by smtp4.osuosl.org (Postfix) with ESMTP id DE14B409AB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:09:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DE14B409AB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6omZwjsaHCWj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Jun 2023 07:06:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id e12tc-uQso_I for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Jun 2023 07:09:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DE2D400C7
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com
- [IPv6:2a00:1450:4864:20::336])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3DE2D400C7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:05:59 +0000 (UTC)
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-3fa7512e599so1356665e9.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 00:05:59 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D54A409A7
+Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
+ [IPv6:2a00:1450:4864:20::42d])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8D54A409A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 07:09:58 +0000 (UTC)
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-3094910b150so6957195f8f.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jun 2023 00:09:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687417557; x=1690009557;
+ d=1e100.net; s=20221208; t=1687417796; x=1690009796;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VIhSOYk52hVuqfcboW85OQLI0NHly7jy25hrkyJ2YAw=;
- b=QtWoh+NROIwzx1Vygi0BSV6ihYrzDczflqcG3ftFU1DukcKEuu3mmIr7CnaTmqonpy
- DckuCCpNe6veK6hUk29VEX6VEtuTwSC7NuNL4U2OK4tr6M7Ojwzihpx8TMV3AeOShrKn
- 1x6kPL8YRDKTN5A/mxTfEM2hgSA8ks8cTdHCW8vZlJCzgxIth/74Pg8KsPrwO5lPmd3P
- H5qGUyilaonXfryHzACSNS/DccSWUo8GKoanbyhB8mPkF2hkJ+1DRDzhK5zBKfMfnPs5
- 2bTEkHGACCu/5XIH83slLeqAN+NduYTRHosEaFTy1JG6YEpxrakcqXyz4X0lUdU0TYMV
- 0hgQ==
-X-Gm-Message-State: AC+VfDzgGyqLSNc6tzNI+LaldtVnKFvYRD3/39ADrhUx9fRofcoBpHij
- FCzlmqxqyL6X9CeohrpnXSsY8Q==
-X-Google-Smtp-Source: ACHHUZ47nqUaHErWDVz/sLK5UcH8SW19SUG16keT/oe5Rk5/giZmsiFYSgziHOgHrlK6XzxNNrCLiA==
-X-Received: by 2002:a1c:7415:0:b0:3fa:77c8:6724 with SMTP id
- p21-20020a1c7415000000b003fa77c86724mr51349wmc.10.1687417557595; 
- Thu, 22 Jun 2023 00:05:57 -0700 (PDT)
+ bh=mPyXOzxLtxEjY9cBPcsaRIns0EAEb4Nt/6W8EsU3ga8=;
+ b=BUJW0XkHAsQHgNEH9O9PUNQaFPyNSsO7tuR8OTedmPwEPD+nlpuh2pBuvPCJ9ocUjk
+ 053CRKHOJNfU2b1lxVTj7Wg7gh+BCb41N+T1i1fscq+qUspjjhBgt3KuoDbDd0mLb/zj
+ znpN9vgHMka8VVHcM78jkojqhmGThnPSBC82Ziyy8jCX4NgSzOgdH93XLcmBHpTm0mwd
+ N19UikXNGQOCiOGcRNFZG5tShtC9v3kHhNyFfW9WWhPpyWA/TeMHaXTYWEBVHinXTFm5
+ rmafGVzXVqZErUDjSEJIcY5KenP/LDWJZgo0xVPYbZOk6dlk73aONW6GFYawaCBsz7M0
+ UN/Q==
+X-Gm-Message-State: AC+VfDx5kZiqklT7E78mt7NwRiiaMUwC+pUDOZ0Ib1Xw8KAh98nkiZlX
+ liqMmF9WMkkrRFRI0KJz+BlgxA==
+X-Google-Smtp-Source: ACHHUZ7BfDfYg8tVKSO/1MGIhgM7knp4bxE9BjLvWPQmvpgYpkpg9XkXMIy4VKk2fcxV+HKp1ykuJA==
+X-Received: by 2002:a5d:468d:0:b0:30a:f2a0:64fa with SMTP id
+ u13-20020a5d468d000000b0030af2a064famr15527240wrq.10.1687417796496; 
+ Thu, 22 Jun 2023 00:09:56 -0700 (PDT)
 Received: from localhost ([86.61.181.4]) by smtp.gmail.com with ESMTPSA id
- 17-20020a05600c231100b003f8ec58995fsm6919930wmo.6.2023.06.22.00.05.56
+ f12-20020a5d58ec000000b00309382eb047sm6207885wrd.112.2023.06.22.00.09.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Jun 2023 00:05:57 -0700 (PDT)
-Date: Thu, 22 Jun 2023 09:05:56 +0200
+ Thu, 22 Jun 2023 00:09:55 -0700 (PDT)
+Date: Thu, 22 Jun 2023 09:09:54 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZJPy1FBvMC4z5SG2@nanopsycho>
+Message-ID: <ZJPzwj1odaC8fFzO@nanopsycho>
 References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
  <20230609121853.3607724-4-arkadiusz.kubalewski@intel.com>
- <ZIS1FX0QAqDSvVUK@nanopsycho>
- <DM6PR11MB46570B50A01D81F54F1068369B5DA@DM6PR11MB4657.namprd11.prod.outlook.com>
+ <20230612164515.6eacefb1@kernel.org>
+ <DM6PR11MB4657FED589F5922BBAC5D9059B5DA@DM6PR11MB4657.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <DM6PR11MB46570B50A01D81F54F1068369B5DA@DM6PR11MB4657.namprd11.prod.outlook.com>
+In-Reply-To: <DM6PR11MB4657FED589F5922BBAC5D9059B5DA@DM6PR11MB4657.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1687417557; x=1690009557; 
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1687417796; x=1690009796; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=VIhSOYk52hVuqfcboW85OQLI0NHly7jy25hrkyJ2YAw=;
- b=WZQ2qdOUncD9AsxUeqky0Sv9plZI/2WtRmFLj/vUPrLspAKtFdJAjDNBfRiM90Wl6l
- Bu52No9UiIMeNp5vJfqV4tdzKNy4gqSSkZZgdTA2tEhX9UhJ0VFvTD1WUjcyZjBnxsqM
- CY6kI+W0r2aC0t58Ot4ae4EkJpbEUxEO+qU0IzQugmgTpIX9f4Vdc6bAsBsmzf0/VZPu
- oMD/OCT9ypK+CBaNDZaMdjjZbvVgK6KKjigdSYdUY6tPiNMyp/u8BcNpj7C6Q76VkPqd
- cFeXbCEhZGKbNKcefxvBWXoomyu9ZEWY69AGbsxFJ97j4shY74xka5Cdz8D7NjEiYYcZ
- YJOw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=mPyXOzxLtxEjY9cBPcsaRIns0EAEb4Nt/6W8EsU3ga8=;
+ b=3iouDSVugUMNcys+i697SLnTvuKCQCDU18RQuMxLJV54x1bnilfa2bLr1aadMiQh1g
+ UItDYY8rMfETP4FeqIVWSeabeT9AuFOTAO2aUWdKuLg84/CdT7qzIiwweS4Gx3GVX1P8
+ 4bBATic4ICWKlQpgqYwOyZIg4yeumq7IFyMtmwFoUFt4NXiXBCo3DNhJZkMc01ZTBRaW
+ ek+bbOOoFMHEBQqk1J0jBtWot+LCXVC45zM6x5Dl0Kk8ybD9Cafa8DoJ6GiSDoMY3ro7
+ 6A1iZr2yMlshPSuQUwe9k+ophGjpUKdwBA35Aey0t6Ccp+bFNAOoqgp2gLV3leZxIgP/
+ d1Gg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
  header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=WZQ2qdOU
+ header.s=20221208 header.b=3iouDSVu
 Subject: Re: [Intel-wired-lan] [RFC PATCH v8 03/10] dpll: core: Add DPLL
  framework base functions
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -137,7 +137,7 @@ Cc: "geert+renesas@glider.be" <geert+renesas@glider.be>,
  "kuniyu@amazon.com" <kuniyu@amazon.com>,
  "jacek.lawrynowicz@linux.intel.com" <jacek.lawrynowicz@linux.intel.com>,
  "liuhangbin@gmail.com" <liuhangbin@gmail.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>,
  "nicolas.dichtel@6wind.com" <nicolas.dichtel@6wind.com>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "axboe@kernel.dk" <axboe@kernel.dk>, "sj@kernel.org" <sj@kernel.org>,
@@ -158,46 +158,116 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Wed, Jun 21, 2023 at 08:55:35PM CEST, arkadiusz.kubalewski@intel.com wrote:
->>From: Jiri Pirko <jiri@resnulli.us>
->>Sent: Saturday, June 10, 2023 7:38 PM
+Wed, Jun 21, 2023 at 11:17:26PM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>From: Jakub Kicinski <kuba@kernel.org>
+>>Sent: Tuesday, June 13, 2023 1:45 AM
 >>
->>Fri, Jun 09, 2023 at 02:18:46PM CEST, arkadiusz.kubalewski@intel.com wrote:
->>>From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>>
->>>DPLL framework is used to represent and configure DPLL devices
->>>in systems. Each device that has DPLL and can configure inputs
->>>and outputs can use this framework.
->>>
->>>Implement core framework functions for further interactions
->>>with device drivers implementing dpll subsystem, as well as for
->>>interactions of DPLL netlink framework part with the subsystem
->>>itself.
->>>
->>>Co-developed-by: Milena Olech <milena.olech@intel.com>
->>>Signed-off-by: Milena Olech <milena.olech@intel.com>
->>>Co-developed-by: Michal Michalik <michal.michalik@intel.com>
->>>Signed-off-by: Michal Michalik <michal.michalik@intel.com>
->>>Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>>Co-developed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>---
->>> drivers/dpll/dpll_core.c | 953 +++++++++++++++++++++++++++++++++++++++
->>> drivers/dpll/dpll_core.h | 104 +++++
+>>On Fri,  9 Jun 2023 14:18:46 +0200 Arkadiusz Kubalewski wrote:
+>>> +	xa_for_each(xa_pins, i, ref) {
+>>> +		if (ref->pin != pin)
+>>> +			continue;
+>>> +		reg = dpll_pin_registration_find(ref, ops, priv);
+>>> +		if (reg) {
+>>> +			refcount_inc(&ref->refcount);
+>>> +			return 0;
+>>> +		}
+>>> +		ref_exists = true;
+>>> +		break;
+>>> +	}
+>>> +
+>>> +	if (!ref_exists) {
+>>> +		ref = kzalloc(sizeof(*ref), GFP_KERNEL);
+>>> +		if (!ref)
+>>> +			return -ENOMEM;
+>>> +		ref->pin = pin;
+>>> +		INIT_LIST_HEAD(&ref->registration_list);
+>>> +		ret = xa_insert(xa_pins, pin->pin_idx, ref, GFP_KERNEL);
+>>> +		if (ret) {
+>>> +			kfree(ref);
+>>> +			return ret;
+>>> +		}
+>>> +		refcount_set(&ref->refcount, 1);
+>>> +	}
+>>> +
+>>> +	reg = kzalloc(sizeof(*reg), GFP_KERNEL);
 >>
->>Overall, looks very good! I pinpointed couple of nits below, nothing big.
->>General question: Why do you put documentation comment to every static
->>function? Does not make any sense to me. Even for non-exported functions
->>I think it is overkill. Most of them (if not all) give the reader no
->>additional information and only make the code a bit harder to read.
->>Care to drop them?
+>>Why do we have two structures - ref and reg?
 >>
 >
->I forgot to respond here.. I would rather leave it, but if the others think
->the same way, we could remove them.
+>Thank to Jiri and reg struct we solved a pin/dpll association
+>with multiple device drivers..
 
-Could you explain what is the benefit of leaving them? What are they
-good for. From what I see, they are obvious and only add blank LOC.
+Multiple instances of the same driver.
+
+
+>I.e. for pin:
+>
+>struct dpll_pin_registration {
+>	struct list_head list;
+>	const struct dpll_pin_ops *ops;
+>	void *priv;
+>};
+>
+>struct dpll_pin_ref {
+>	union {
+>		struct dpll_device *dpll;
+>		struct dpll_pin *pin;
+>	};
+>	struct list_head registration_list;
+>	refcount_t refcount;
+>};
+>
+>struct dpll_pin {
+>	u32 id;
+>	u32 pin_idx;
+>	u64 clock_id;
+>	struct module *module;
+>	struct xarray dpll_refs;
+>	struct xarray parent_refs;
+>	const struct dpll_pin_properties *prop;
+>	char *rclk_dev_name;
+>	refcount_t refcount;
+>};
+>
+>Basically, a pin or a device can be registered from multiple drivers,
+
+Again, multiple instances of the same driver.
+
+
+>where each driver has own priv and ops.
+
+Each instance/device.
+
+
+>A single dpll_pin has references to dplls or pins (dpll_refs/parent_refs)
+>it is connected with, and thanks to registration list single reference can
+>have multiple drivers being attached with a particular dpll/pin.
+
+Multiple instances/devices.
+
+
+In case of mlx5, the same dpll device and same dpll pin could be shared
+among two PFs but also among multiple VFs and SFs. They all share the
+same clock, same dpll device.
+
+
+>
+>The same scheme is for a dpll_device struct and associated pins.
+>
+>
+>>> +	if (!reg) {
+>>> +		if (!ref_exists)
+>>> +			kfree(ref);
+>>
+>>ref has already been inserted into xa_pins
+>>
+>
+>True, seems like a bug, will fix it.
+>
+>Thank you,
+>Arkadiusz
+>
+>>> +		return -ENOMEM;
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
