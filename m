@@ -1,109 +1,178 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29E0B73B20C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jun 2023 09:48:14 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8715873B3C9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jun 2023 11:38:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B87A740386;
-	Fri, 23 Jun 2023 07:48:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B87A740386
+	by smtp4.osuosl.org (Postfix) with ESMTP id DCDF6416B4;
+	Fri, 23 Jun 2023 09:38:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DCDF6416B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687506492;
-	bh=+bT1+cD5N1yBUvLweFcaJTeEfCzGnfFq25NnX3zgZ6w=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1687513131;
+	bh=DwvPV6a0WB7Zj3Ekab7t0XQMs1Nr3IaMgXqwVgh8xRg=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=MTbcV+1xl/bQPRmDpluCr2LHEpUbtzjMLqs1qbsPc3YiKbddGyCPb/0j7LMsdJBt5
-	 +gLHqZEjUzTn9M8AGA9eNH8IlvwTwZjvVWeVUMHucCU4mm7NkMVQT+KFI5lw6qFKC5
-	 QKKTvP3TXhzDlPgtuqv3UH7VMYq4xf+crtayQdwxdd1ZWS4DxTqFfOX52tTdbPVPhJ
-	 9wQewjsf0jYl2c0+Wgru7DuTkkmo2YkV19Oda6UVwF2kCbAkhKa5qe02ziVZtOcDRn
-	 oZc4r6+tn8ch8hFH90oyb/6A10CW1h8Ku36bh/eUe4X2hURoXD7NmFT6Pwv9VKZlf/
-	 NDda7bcpY4CPA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EbPzFxM6dS6Y; Fri, 23 Jun 2023 07:48:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F6674011D;
-	Fri, 23 Jun 2023 07:48:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7F6674011D
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5B1481BF4DD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 07:48:07 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2AA4F40362
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 07:48:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AA4F40362
+	 From;
+	b=92HX29wS5i0Yfhil16ae8hqS430yb2gWUfUXgqcjq8T5JWeg2e6ykg2WB10buMF1x
+	 eqoXHmleY46ZfqPimRqcejrMYzLtTxEuNNBoQ58IyhRZGyFE1lTMSXaYQn7sxtiq4x
+	 +TReBzARvDSPOfdEH4GorRkT5Gtedik32tSJPNQtIcmcEuZiz52GIZKdK3JqKOa8z4
+	 fG/ympIYN9gvi2482oDhUrlREMHRJgZJJPbflU27xjZYjZAPbiBXj1uasOBHLRDRZ1
+	 QndjgRfyAlaHnW/zbp+/Y4/VQSZyHfaKqalrtVuACIQ4EH5G34TQAsc/BkcDk9JDl6
+	 N2bT90+xlkROA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ERaXCye4tgAv for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Jun 2023 07:48:05 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 67718400AE
-Received: from mail-lj1-x22c.google.com (mail-lj1-x22c.google.com
- [IPv6:2a00:1450:4864:20::22c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 67718400AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 07:48:04 +0000 (UTC)
-Received: by mail-lj1-x22c.google.com with SMTP id
- 38308e7fff4ca-2b477e9d396so5459821fa.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 00:48:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687506482; x=1690098482;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=afzpoupdHBz4t80yeY68UW7BcSr6J0mUzcvK1xv8c1M=;
- b=D7pt+I5sr1kim6jdtpgk+FVF21xqU0BWgD1MwGmrhpvY8avzi9VGlACKk/+aJhQgj8
- 3kMcRapzRMWsJtzWWSwD3pE8q3BRJ5xGIoaO8r8AihyXk5vq1VELt0ovITpt8BHH8DWk
- b68y/wf5qIjSI21Fbq2lPfC9TYSdCBz+iygnTtOoNSdrRvVL334qLNzF8JgFILgNQLCQ
- RDbr+Oxf8dwN6+uaAEihkzc5uhTs57s3F54pBN6Bc+TN6wa0oio4gZzK7I427RloWNeQ
- TYcS56hWcqs+TKDwfn0XRvio+a2YuMxyqkxiDs1q5cjSyVAoPTdjZ2gUUeqFTxBKKP7K
- 8MrA==
-X-Gm-Message-State: AC+VfDz0p3CftBhlSx/sYP873caKr7Pc4FfBOnCpk+7czEGqOTjOUxH2
- +ibWD9rBGteF/ViVYnYFVJXw3w==
-X-Google-Smtp-Source: ACHHUZ60rNJlS88ekBpJsTiP/YnYc408Z0GlUIj/k7KV/RQOAUp7f7ExOF4ZyFZ2IcPQ5FADHxaxYg==
-X-Received: by 2002:a2e:9944:0:b0:2b4:6a20:f12b with SMTP id
- r4-20020a2e9944000000b002b46a20f12bmr13920987ljj.22.1687506482431; 
- Fri, 23 Jun 2023 00:48:02 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- b18-20020aa7cd12000000b0051bf49e258bsm666413edw.22.2023.06.23.00.48.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Jun 2023 00:48:01 -0700 (PDT)
-Date: Fri, 23 Jun 2023 09:48:00 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZJVOMPQ1RHx5mapG@nanopsycho>
-References: <20230609121853.3607724-1-arkadiusz.kubalewski@intel.com>
- <20230609121853.3607724-5-arkadiusz.kubalewski@intel.com>
- <c7480d0a71fb8d62108624878f549c0d91d4c9e6.camel@redhat.com>
- <ZJLktA6RJaVo3BdH@nanopsycho> <ZJL2HUkAtHEw5rq+@nanopsycho>
- <DM6PR11MB46578CD80F96AB11AF2F81F49B23A@DM6PR11MB4657.namprd11.prod.outlook.com>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YwSUjW48z8k1; Fri, 23 Jun 2023 09:38:50 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 37F2141604;
+	Fri, 23 Jun 2023 09:38:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37F2141604
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A2C3D1BF396
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 87AFD408B6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87AFD408B6
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tu-KskEEwLzz for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Jun 2023 09:38:42 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 588EC40201
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 588EC40201
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="341064753"
+X-IronPort-AV: E=Sophos;i="6.01,151,1684825200"; d="scan'208";a="341064753"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jun 2023 02:38:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="839370178"
+X-IronPort-AV: E=Sophos;i="6.01,151,1684825200"; d="scan'208";a="839370178"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga004.jf.intel.com with ESMTP; 23 Jun 2023 02:38:29 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Fri, 23 Jun 2023 02:38:29 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Fri, 23 Jun 2023 02:38:29 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Fri, 23 Jun 2023 02:38:25 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DjirBsG8Lj3ksGmOoVro2ZhnXmzsLH3cY3sTVn1I8JipJb2/JCVaSVvZ4hJuyoojZHwM974cU3JDiFwM/cLdXaPhSDW66iLhNiGuRsoyNh6fXNzvQg02ARo+BPasyD67eZAtqSdu5LbDhM9j5YMmO7iZ2xt5T4UipUjz7MhazbDwn5giUnfd1/D51Rv0JPyDOGwicNyyykp7HUcIpD+GtVue7SvdP6SVzsYwADGJhwu+9OYhEn+Tzfmiw9gailhIAfC5YmgqmdtmLjvHNO9uQyJYyNM7k84+aJIbgbikMGEUAKPClVRo1FcjedUSz+1IhW/loPI45q5H/OTC5ICmBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Re7LkH8UvwozqPbByYnMMefmwGus49jOQSJvbmlHJ74=;
+ b=a6UKzjxPqfPKqtegaPFD92kRifsW3UbSMluVKBQocv9cL0JClC2tsLj1jryk48aNjce8+KHkoFr2L96enLPN1XAxtVoikYxsQYEJ5M8NHev5M9vVrvU2I5aPMAt/KITW561lXNri+/xUzCU9VyvTLR8G3A1yAaMcg9MCG/DRoQDcGeYUL6g/POqcolF1PMW1xBu6GSwCbcu7fG4UYXiAhpaKA3oL663HK6MTi8NOdwL6duFUphj7Z6EWro19WzoqX0+eKTJPK1FALv+WjQjJQngQGOIX3eumIl8nADACHk+ZGOkbobb4OhxfLuTWSYDAAkj9EerXX8IQsK08eXbZ/Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CH3PR11MB7764.namprd11.prod.outlook.com (2603:10b6:610:145::19)
+ by CH0PR11MB8167.namprd11.prod.outlook.com (2603:10b6:610:192::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.26; Fri, 23 Jun
+ 2023 09:38:24 +0000
+Received: from CH3PR11MB7764.namprd11.prod.outlook.com
+ ([fe80::87f3:59ea:c54d:1bd0]) by CH3PR11MB7764.namprd11.prod.outlook.com
+ ([fe80::87f3:59ea:c54d:1bd0%3]) with mapi id 15.20.6521.024; Fri, 23 Jun 2023
+ 09:38:23 +0000
+From: "Zaborska, Olga" <olga.zaborska@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD
+ and IGBVF_MIN_RXD to allow change of rx/tx value
+Thread-Index: AQHZo6YtOB4EkallEU6l8L8zq1VZ+K+YCwFg
+Date: Fri, 23 Jun 2023 09:38:23 +0000
+Message-ID: <CH3PR11MB7764C3B7F4F66A4B65FB25C3F923A@CH3PR11MB7764.namprd11.prod.outlook.com>
+References: <20230616114729.27926-1-olga.zaborska@intel.com>
+ <SN6PR11MB3229C8E5C13B17847D2F2EBFC65CA@SN6PR11MB3229.namprd11.prod.outlook.com>
+In-Reply-To: <SN6PR11MB3229C8E5C13B17847D2F2EBFC65CA@SN6PR11MB3229.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR11MB7764:EE_|CH0PR11MB8167:EE_
+x-ms-office365-filtering-correlation-id: a2aad738-a2d1-46a6-b34b-08db73cd9685
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: c5+ruVsX9GnWKDSrFkurRIz2kBXphUDuC7RFPTZieJN4Vg4CPmp+BdY6UEhY2yj2lLag7Ib3WOVvRjCwgP/Xy9x0PW8aARmfZod2FM/MXbkIz/+0T0laF5dYmPE0x1IdHhafaJ6hXSuvIJxI1vTVd0LhTgSf8lRVjHdEHJhn6bT2xtw+qgEx1g/pLHVafQd/TDLVhYgZ+IAroa29q/C3Vctr0YKdErh3FSFIKuW9c9Bxc1/Cadn4pllDIb6jwonBpUukAF5pKDH2HGpY5ol3/JWWpCKS+TUPzYsM1KTgS+1Ikjg73KdAv5wn6gNbfx0UKbGfEuUjw5LZNON3t5XiqWhvj3v+4X1KI1vs451YSVz+NkwrdyRLb22Ow6zZOKjjvD9xtJI+wjZvz19GXdM1P8aHR2T8gariFvrEsJbMYqJbrBQxS1JgiKJd8qhvjWSw97Hb2EdEbev4p1LjY3RtH/Jcq8MoxAQkKhE9jgYY4L0Z8/HNwwxIJRAtng48G/+B4Kq1/RQ+rpoqMmRIlYhZ9rLup5EsHINZb0Z/Mo6Uqz5NWcfBLZOTHb/TOVRcEtr5eJ4usWec8+khxxAQyDIRuE5FtDOgMCiEGYn5H1ahYZ2LHWraI4VmTB4xduMcdcbh3RGVZRzHCNrdNj//IWIsTw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR11MB7764.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(346002)(136003)(366004)(376002)(396003)(39860400002)(451199021)(110136005)(478600001)(55016003)(26005)(71200400001)(186003)(9686003)(6506007)(53546011)(7696005)(966005)(5660300002)(33656002)(2906002)(76116006)(66946007)(86362001)(8676002)(41300700001)(66476007)(52536014)(8936002)(66446008)(64756008)(66556008)(316002)(82960400001)(38070700005)(83380400001)(122000001)(38100700002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?NJie8a9oCTSVyR1KSv9lFO/T+wcdX0wCJ9L2+UzdrY9fcBCIYqNuL8r1qbjW?=
+ =?us-ascii?Q?NQfJEeXNzZ0N5Qep1VlLQFb9T2F2iqVpmiRqndekzzhsCMa+HkgMR//P60UO?=
+ =?us-ascii?Q?Q+qZSCh1z7wkQDE3z6qLp41x7ZfRhDcDjeCmUuTxxtrF0pChG5hkBD5Ecl5l?=
+ =?us-ascii?Q?0zgHg/PhCqnpZVleJiqV3qGt6+e+YB4CWz4xL8Zym1EAkR6TLnGSFb08Gz6w?=
+ =?us-ascii?Q?xtZ4SvblPXZuq1Lv4K4l9ErjjmE2CKhCCNxd1fyxNVGuVyA9Qm5/gvEw2jh1?=
+ =?us-ascii?Q?GN6H2bL7QbkvOGn0wZCpcaInfXQFlxUx7bXF/eeVLgqldrVkm9HR24FR851f?=
+ =?us-ascii?Q?WCqYucLErLqJ4kUbOD+VceT8egccJDdEmdSRCNaJe6RrN+VU+kB0vi0dVt7L?=
+ =?us-ascii?Q?qOttcMyP9HTeYP3cBzmt7F13lGes19XJsBs2sRluFrDjMHh3Gw5TX0qCMqcc?=
+ =?us-ascii?Q?kTBq3s491DYnqNyZHw+T0NIfwYYDDZvlLVY4XErkjqKJIuyaYbEDwwylNcHM?=
+ =?us-ascii?Q?9KUj/jtuCqESwWmHCTAmHUUNobbophNQNVDLnv0arJW0f83kwUyH8gGDkA6h?=
+ =?us-ascii?Q?8j4z+B1SDIhY4RZ/e7lWVxERw9s2uwcuHeubDPvSrz/3a1ZRTXQTJTi48Yrz?=
+ =?us-ascii?Q?eoDIBoPHK+4DuN8BqI/WWKESc/5w+fhLaQPM8D7dszUlJpgvcqlnZ6NXolHf?=
+ =?us-ascii?Q?ejD3SvY/FLCzj57FfpkKDxhRHM7bxYNmQMc4GxlBsqnEkhdJ+0p8I69VpnWy?=
+ =?us-ascii?Q?wadmijRzcslMRjMoTf+JfTzU2kF5LnIlL+VwUZsSTsTDLBrIiPBf4rVvgQpr?=
+ =?us-ascii?Q?/p4YYizABcmeSOFFdsBNU61LkTVte5VI3ZbqyxTm/8h882caZ/lvs8p+L5G+?=
+ =?us-ascii?Q?Q73rX7e/CB5vy/NoTece/8QQKgAVituaZU8OeE+Kr+s5a31KmO/as4ydvjsR?=
+ =?us-ascii?Q?HUSvBWTReYm5YtDwUWyrL6NSPP/t/DJvABVh+gVz1uMolf1FCZFHYj4kYL9u?=
+ =?us-ascii?Q?H4Hs4KmVVL+ndxLpRUWCIdMh1Uz3YNTtL71b/FlsUpMYF60fgUbh7DU7U6Jz?=
+ =?us-ascii?Q?OE2DOz/Vb2wX7qoxqYJYDnCxxfxM1Do/7LGodQUAveXXGsLUaXsIrxd2Z7T5?=
+ =?us-ascii?Q?RqJSFAUW3KvtUFcCoz5Im/BNFnSfIbaOTODE8W61qa1TRbphP7trwfIWJQ89?=
+ =?us-ascii?Q?ir8ss4GIGEIWLXyrXN3759FIuYEkyfr5WLRuc0oWBbktJiFq1IjfzwTnWg97?=
+ =?us-ascii?Q?u432Co4eRF0JnytSIpetSvnKLNZWcYN/A6wMiGbX+UWFSgIAPAdBcTe+CQRv?=
+ =?us-ascii?Q?ks4I5cNnVFUasftfY1szzWnZLGWGdY771amZhjpBXtuJQyto8XoTU7jJ1/ji?=
+ =?us-ascii?Q?x2q4+eMhHdoUpVPyUWv6+iIgLT9MbgKOynST4kkAHWNxOmAaWZzdjcwy1gmU?=
+ =?us-ascii?Q?/DBF8cF5nAezVHODVyAHYNimrvPv6gQFR3YtX1/AYH/OIPXQWg7LmzLHX/Uz?=
+ =?us-ascii?Q?g3xYh/GCzZRJrEXhS1IDAR2Ab/sVtHvWfWRONDyMDref2obrwoCgSIITmeNm?=
+ =?us-ascii?Q?RF6cV5lAgC6pjGvsRCSfxIAJduHVOGGO4mpDf+le?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <DM6PR11MB46578CD80F96AB11AF2F81F49B23A@DM6PR11MB4657.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1687506482; x=1690098482; 
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=afzpoupdHBz4t80yeY68UW7BcSr6J0mUzcvK1xv8c1M=;
- b=y839S9kxd09ThLEfxmxC6oII3nMiQTOEHF9PojI9kiub9AcAU9VwNCWsdUi79zoGrL
- I53edaB4DcMZQQ0qflpJAUkvrrMC34ACSDUt0ujxI5pBdzcViBCk6n9FKsQqZhEr33/O
- VvEBWTcxrI6FtHpJuHeokazRCXKF4vksYk5o+OAae6lurukOLI6tXHVLSfb+Q+V7FEV/
- sf8imt+RlLt6Lat5yCvrtngprbPt26rUBnApAtbvCEbqlIgaWoDJC9mFHQOn0JbF41dG
- AZbWjTZ98aLp9MgUn+gURDvYq4bO/7X5+p/tQDFnf5y1CNMOL2mMEGQ/vOQjVcpXlF7u
- UTbQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
- header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=y839S9kx
-Subject: Re: [Intel-wired-lan] [RFC PATCH v8 04/10] dpll: netlink: Add DPLL
- framework base functions
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR11MB7764.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2aad738-a2d1-46a6-b34b-08db73cd9685
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jun 2023 09:38:23.3600 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: f5r1Zkcj9cBaoCEUG9wAZbseGWpQTXuI/wg4dNFXBE7ZSvYVBgxQ22wfNQHWDEHhmb+j+RxTxbH9JTWuhat5cQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB8167
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1687513122; x=1719049122;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ mime-version:content-transfer-encoding;
+ bh=m0Eqp1Jq0IuaGh2a5thW7wfJMn1ZMP4RqOiGq6TVwio=;
+ b=Q7NWDvlgkpFXhiD17exNxjWD7JAAAfScvAy2RMQ5pr7Dx6uvBJUfd+MZ
+ BQH9JrohjYorNj0OsF2tgnJ9fIdNmKULLGknl1P9T9V1/ySEp8K7Cj8Wc
+ A4aVYt+aQi1q4GRssjyGIpKgl5lZdIpYV96JVO9QGLYyf91mXv5HENgLM
+ 6ZK2WkTq7JxFJq6GTQzWj7t8twhQrg1mrbgWnjn1mYDui+oYwfB2FomMJ
+ 7ECplzgBwHl5PhVl2bqWX8/qK7n3OqIKTXlylJKZzMjPJvXNUqxZokoLV
+ 5Ky8qeroRlmfK8koND3Y1KkAJP1WVEp/wUfwywq9LOnhJxasc6gskG0bb
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Q7NWDvlg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change
+ IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,86 +185,194 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "geert+renesas@glider.be" <geert+renesas@glider.be>,
- "mst@redhat.com" <mst@redhat.com>, "razor@blackwall.org" <razor@blackwall.org>,
- "phil@nwl.cc" <phil@nwl.cc>, "javierm@redhat.com" <javierm@redhat.com>,
- "edumazet@google.com" <edumazet@google.com>,
- "benjamin.tissoires@redhat.com" <benjamin.tissoires@redhat.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "lucien.xin@gmail.com" <lucien.xin@gmail.com>,
- "leon@kernel.org" <leon@kernel.org>, "corbet@lwn.net" <corbet@lwn.net>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- "masahiroy@kernel.org" <masahiroy@kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "vadfed@meta.com" <vadfed@meta.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "vadfed@fb.com" <vadfed@fb.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "ricardo.canuelo@collabora.com" <ricardo.canuelo@collabora.com>,
- "arnd@arndb.de" <arnd@arndb.de>, "idosch@nvidia.com" <idosch@nvidia.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "claudiajkang@gmail.com" <claudiajkang@gmail.com>,
- "kuniyu@amazon.com" <kuniyu@amazon.com>,
- "jacek.lawrynowicz@linux.intel.com" <jacek.lawrynowicz@linux.intel.com>,
- "liuhangbin@gmail.com" <liuhangbin@gmail.com>,
- "airlied@redhat.com" <airlied@redhat.com>,
- "nicolas.dichtel@6wind.com" <nicolas.dichtel@6wind.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "axboe@kernel.dk" <axboe@kernel.dk>, "sj@kernel.org" <sj@kernel.org>,
- "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "linux@zary.sk" <linux@zary.sk>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "ogabbay@kernel.org" <ogabbay@kernel.org>,
- "nipun.gupta@amd.com" <nipun.gupta@amd.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "andy.ren@getcruise.com" <andy.ren@getcruise.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>, "M,
- Saeed" <saeedm@nvidia.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "Olech, Milena" <milena.olech@intel.com>,
- "hkallweit1@gmail.com" <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJpLCBKdW4gMjMsIDIwMjMgYXQgMDI6NTY6MjRBTSBDRVNULCBhcmthZGl1c3oua3ViYWxld3Nr
-aUBpbnRlbC5jb20gd3JvdGU6Cj4+RnJvbTogSmlyaSBQaXJrbyA8amlyaUByZXNudWxsaS51cz4K
-Pj5TZW50OiBXZWRuZXNkYXksIEp1bmUgMjEsIDIwMjMgMzowOCBQTQo+Pgo+PldlZCwgSnVuIDIx
-LCAyMDIzIGF0IDAxOjUzOjI0UE0gQ0VTVCwgamlyaUByZXNudWxsaS51cyB3cm90ZToKPj4+V2Vk
-LCBKdW4gMjEsIDIwMjMgYXQgMDE6MTg6NTlQTSBDRVNULCBwb3Jvc0ByZWRoYXQuY29tIHdyb3Rl
-Ogo+Pj4+QXJrYWRpdXN6IEt1YmFsZXdza2kgcMOtxaFlIHYgUMOhIDA5LiAwNi4gMjAyMyB2IDE0
-OjE4ICswMjAwOgo+Pj4+PiBGcm9tOiBWYWRpbSBGZWRvcmVua28gPHZhZGltLmZlZG9yZW5rb0Bs
-aW51eC5kZXY+Cj4+Pgo+Pj5bLi4uXQo+Pj4KPj4+Q291bGQgeW91IHBlcmhhcHMgY3V0IG91dCB0
-aGUgdGV4dCB5b3UgZG9uJ3QgY29tbWVudD8gU2F2ZXMgc29tZSB0aW1lCj4+PmZpbmRpbmcgeW91
-ciByZXBseS4KPj4+Cj4+Pgo+Pj4+PiArc3RhdGljIGludAo+Pj4+PiArZHBsbF9zZXRfZnJvbV9u
-bGF0dHIoc3RydWN0IGRwbGxfZGV2aWNlICpkcGxsLCBzdHJ1Y3QgZ2VubF9pbmZvCj4+Pj4+ICpp
-bmZvKQo+Pj4+PiArewo+Pj4+PiArwqDCoMKgwqDCoMKgwqBjb25zdCBzdHJ1Y3QgZHBsbF9kZXZp
-Y2Vfb3BzICpvcHMgPSBkcGxsX2RldmljZV9vcHMoZHBsbCk7Cj4+Pj4+ICvCoMKgwqDCoMKgwqDC
-oHN0cnVjdCBubGF0dHIgKnRiW0RQTExfQV9NQVggKyAxXTsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKg
-aW50IHJldCA9IDA7Cj4+Pj4+ICsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgbmxhX3BhcnNlKHRiLCBE
-UExMX0FfTUFYLCBnZW5sbXNnX2RhdGEoaW5mby0+Z2VubGhkciksCj4+Pj4+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBnZW5sbXNnX2xlbihpbmZvLT5nZW5saGRyKSwgTlVMTCwg
-aW5mby0+ZXh0YWNrKTsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgaWYgKHRiW0RQTExfQV9NT0RFXSkg
-ewo+Pj4+SGksCj4+Pj4KPj4+PkhlcmUgc2hvdWxkIGJlIHNvbWV0aGluZyBsaWtlOgo+Pj4+ICAg
-ICAgICAgICAgICAgaWYgKCFvcHMtPm1vZGVfc2V0KQo+Pj4+ICAgICAgICAgICAgICAgICAgICAg
-ICByZXR1cm4gLUVPUE5PVFNVUFA7Cj4+Pgo+Pj5XaHk/IEFsbCBkcml2ZXJzIGltcGxlbWVudCB0
-aGF0Lgo+Pj5JIGJlbGlldmUgdGhhdCBpdCdzIGFjdHVsbGFseSBiZXR0ZXIgdGhhdCB3YXkuIEZv
-ciBhIGNhbGxlZCBzZXR0aW5nIHVwCj4+PnRoZSBzYW1lIG1vZGUgaXQgaXMgdGhlIGRwbGwgaW4s
-IHRoZXJlIHNob3VsZCBiZSAwIHJldHVybiBieSB0aGUgZHJpdmVyLgo+Pj5Ob3RlIHRoYXQgZHJp
-dmVyIGhvbGRzIHRoaXMgdmFsdWUuIEknZCBsaWtlIHRvIGtlZXAgdGhpcyBjb2RlIGFzIGl0IGlz
-Lgo+Pgo+PkFjdHVhbGx5LCB5b3UgYXJlIGNvcnJlY3QgUGV0ciwgbXkgbWlzdGFrZS4gQWN0dWFs
-bHksIG5vIGRyaXZlcgo+PmltcGxlbWVudHMgdGhpcy4gQXJrYWRpdXN6LCBjb3VsZCB5b3UgcGxl
-YXNlIHJlbW92ZSB0aGlzIG9wIGFuZAo+PnBvc3NpYmx5IGFueSBvdGhlciB1bnVzZWQgIG9wPyBJ
-dCB3aWxsIGJlIGFkZGVkIHdoZW4gbmVlZGVkLgo+Pgo+PlRoYW5rcyEKPj4KPgo+U29ycnksIGRp
-ZG4ndCBoYXZlIHRpbWUgZm9yIHN1Y2ggY2hhbmdlLCBhZGRlZCBvbmx5IGNoZWNrIGFzIHN1Z2dl
-c3RlZCBieQo+UGV0ci4KPklmIHlvdSB0aGluayB0aGlzIGlzIGEgYmlnIGlzc3VlLCB3ZSBjb3Vs
-ZCBjaGFuZ2UgaXQgZm9yIG5leHQgdmVyc2lvbi4KCkl0J3Mgb2RkIHRvIGNhcnJ5IG9uIG9wcyB3
-aGljaCBhcmUgdW51c2VkLiBJIHdvdWxkIHByZWZlciB0aGF0IHRvIGJlCnJlbW92ZWQgbm93IGFu
-ZCBvbmx5IGludHJvZHVjZWQgd2hlbiB0aGV5IGFyZSBhY3R1YWxseSBuZWVkZWQuCgoKPgo+VGhh
-bmsgeW91IQo+QXJrYWRpdXN6Cj4KPj4KPj4+Cj4+PlsuLi5dCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+> -----Original Message-----
+> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
+> Sent: wtorek, 20 czerwca 2023 20:37
+> To: Zaborska, Olga <olga.zaborska@intel.com>; intel-wired-lan@lists.osuosl.org
+> Cc: Zaborska, Olga <olga.zaborska@intel.com>
+> Subject: RE: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+> 
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf 
+> > Of Zaborska, Olga
+> > Sent: Friday, June 16, 2023 4:47 AM
+> > To: intel-wired-lan@lists.osuosl.org
+> > Cc: Zaborska, Olga <olga.zaborska@intel.com>
+> > Subject: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change 
+> > IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+> 
+> This title seems a bit misleading as I presume changes are allowed, just limited on the low end.
+title will be corrected in v2. 
+> 
+> > From: Olga Zaborska <olga.zaborska@intel.com>
+> > 
+> > There is currently a bug where when setting the rx/tx value between 64 
+> > and
+> > 80 it automatically sets to 80, this will be fixed by changing 
+> > IGBVF_MIN_TXD and IGBVF_MIN_RXD
+> 
+> Any insight on why it was 80 before or why 64 is now ok?
+> 
+> Is there a side affect other than not being able to set below 80? Since the referenced fixes is from 2009 without anything reported, seems like it'd be more an improvement of allowing smaller sizes than a bug?
+Based on the commit https://sourceforge.net/p/e1000/mailman/message/19194160/ it should be 64 in every e1000e device, igbvf was the only with 80. 
+> 
+> > Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual
+> > functions")
+> > Signed-off-by: Olga Zaborska <olga.zaborska@intel.com>
+> > Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/igbvf/igbvf.h | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> > b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> > index 57d39ee00b58..7b83678ba83a 100644
+> > --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> > +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> > @@ -39,11 +39,11 @@ enum latency_range {
+> >  /* Tx/Rx descriptor defines */
+> >  #define IGBVF_DEFAULT_TXD	256
+> >  #define IGBVF_MAX_TXD		4096
+> > -#define IGBVF_MIN_TXD		80
+> > +#define IGBVF_MIN_TXD		64
+> > 
+> >  #define IGBVF_DEFAULT_RXD	256
+> >  #define IGBVF_MAX_RXD		4096
+> > -#define IGBVF_MIN_RXD		80
+> > +#define IGBVF_MIN_RXD		64
+> > 
+> >  #define IGBVF_MIN_ITR_USECS	10 /* 100000 irq/sec */
+> >  #define IGBVF_MAX_ITR_USECS	10000 /* 100    irq/sec */
+> > --
+> > 2.31.1
+> > 
+> > ---------------------------------------------------------------------
+> > Intel Technology Poland sp. z o.o.
+> > ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII 
+> > Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 
+> > 957-
+> > 07-52-316 | Kapital zakladowy 200.000 PLN.
+> > Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu 
+> > ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym 
+> > opoznieniom w transakcjach handlowych.
+> > 
+> > Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego 
+> > adresata i moze zawierac informacje poufne. W razie przypadkowego 
+> > otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale 
+> > jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest 
+> > zabronione.
+> > This e-mail and any attachments may contain confidential material for 
+> > the sole use of the intended recipient(s). If you are not the intended 
+> > recipient, please contact the sender and delete all copies; any review 
+> > or distribution by others is strictly prohibited.
+> 
+> This footer needs to be removed.
+> 
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+>
+
+-----Original Message-----
+From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
+Sent: wtorek, 20 czerwca 2023 20:37
+To: Zaborska, Olga <olga.zaborska@intel.com>; intel-wired-lan@lists.osuosl.org
+Cc: Zaborska, Olga <olga.zaborska@intel.com>
+Subject: RE: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf 
+> Of Zaborska, Olga
+> Sent: Friday, June 16, 2023 4:47 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Zaborska, Olga <olga.zaborska@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change 
+> IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+
+This title seems a bit misleading as I presume changes are allowed, just limited on the low end.
+
+> From: Olga Zaborska <olga.zaborska@intel.com>
+> 
+> There is currently a bug where when setting the rx/tx value between 64 
+> and
+> 80 it automatically sets to 80, this will be fixed by changing 
+> IGBVF_MIN_TXD and IGBVF_MIN_RXD
+
+Any insight on why it was 80 before or why 64 is now ok?
+
+Is there a side affect other than not being able to set below 80? Since the referenced fixes is from 2009 without anything reported, seems like it'd be more an improvement of allowing smaller sizes than a bug?
+
+> Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual
+> functions")
+> Signed-off-by: Olga Zaborska <olga.zaborska@intel.com>
+> Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igbvf/igbvf.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> index 57d39ee00b58..7b83678ba83a 100644
+> --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
+> +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
+> @@ -39,11 +39,11 @@ enum latency_range {
+>  /* Tx/Rx descriptor defines */
+>  #define IGBVF_DEFAULT_TXD	256
+>  #define IGBVF_MAX_TXD		4096
+> -#define IGBVF_MIN_TXD		80
+> +#define IGBVF_MIN_TXD		64
+> 
+>  #define IGBVF_DEFAULT_RXD	256
+>  #define IGBVF_MAX_RXD		4096
+> -#define IGBVF_MIN_RXD		80
+> +#define IGBVF_MIN_RXD		64
+> 
+>  #define IGBVF_MIN_ITR_USECS	10 /* 100000 irq/sec */
+>  #define IGBVF_MAX_ITR_USECS	10000 /* 100    irq/sec */
+> --
+> 2.31.1
+> 
+> ---------------------------------------------------------------------
+> Intel Technology Poland sp. z o.o.
+> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII 
+> Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 
+> 957-
+> 07-52-316 | Kapital zakladowy 200.000 PLN.
+> Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu 
+> ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym 
+> opoznieniom w transakcjach handlowych.
+> 
+> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego 
+> adresata i moze zawierac informacje poufne. W razie przypadkowego 
+> otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale 
+> jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest 
+> zabronione.
+> This e-mail and any attachments may contain confidential material for 
+> the sole use of the intended recipient(s). If you are not the intended 
+> recipient, please contact the sender and delete all copies; any review 
+> or distribution by others is strictly prohibited.
+
+This footer needs to be removed.
+
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
+Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym opoznieniom w transakcjach handlowych.
+
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
