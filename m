@@ -1,178 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8715873B3C9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jun 2023 11:38:53 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0420173B796
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Jun 2023 14:41:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DCDF6416B4;
-	Fri, 23 Jun 2023 09:38:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DCDF6416B4
+	by smtp2.osuosl.org (Postfix) with ESMTP id 196B4419AC;
+	Fri, 23 Jun 2023 12:41:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 196B4419AC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687513131;
-	bh=DwvPV6a0WB7Zj3Ekab7t0XQMs1Nr3IaMgXqwVgh8xRg=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=92HX29wS5i0Yfhil16ae8hqS430yb2gWUfUXgqcjq8T5JWeg2e6ykg2WB10buMF1x
-	 eqoXHmleY46ZfqPimRqcejrMYzLtTxEuNNBoQ58IyhRZGyFE1lTMSXaYQn7sxtiq4x
-	 +TReBzARvDSPOfdEH4GorRkT5Gtedik32tSJPNQtIcmcEuZiz52GIZKdK3JqKOa8z4
-	 fG/ympIYN9gvi2482oDhUrlREMHRJgZJJPbflU27xjZYjZAPbiBXj1uasOBHLRDRZ1
-	 QndjgRfyAlaHnW/zbp+/Y4/VQSZyHfaKqalrtVuACIQ4EH5G34TQAsc/BkcDk9JDl6
-	 N2bT90+xlkROA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YwSUjW48z8k1; Fri, 23 Jun 2023 09:38:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 37F2141604;
-	Fri, 23 Jun 2023 09:38:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37F2141604
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A2C3D1BF396
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:44 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 87AFD408B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87AFD408B6
+	s=default; t=1687524069;
+	bh=CiBpQIKi8qMiR24UCB6Ds9z4LFkL0XUvC8H2T324FT8=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Y03GoM946Fnq4nVxIhcNASNMuZeJO1PykWSvCfAddPfK0whuekSZv5rrq4gteJHjQ
+	 fbEHtyLxLx31asLeDD2aU4lzSk5EhqrrNWCx4N+VgRs2r0lNnKHfXqvqr3iQY+Tt51
+	 mR5iLgOz7EWQzvmmPARyVYzpjhAQftrO7l1txfEeq+U0YrCK5HnwjS45izHGR0ZK5P
+	 OdXBsXFEyh6cpix3w+11DshVZME1IjHz8Lej/ZifvDDPUJky8z0P5r3/qCSOCzy0A2
+	 mPVkGAjqeobWebZMmvxhIiJygG70YI5MMm99KQm7JU1HmwbRq36R8mizd+ztlrxDwu
+	 2XJvl3p40n/Sw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tu-KskEEwLzz for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Jun 2023 09:38:42 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0mKRk58vYyfO; Fri, 23 Jun 2023 12:41:07 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 76F58402EB;
+	Fri, 23 Jun 2023 12:41:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 76F58402EB
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 263661BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 12:41:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id F292B60F4D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 12:41:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F292B60F4D
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 27cTNpi0ptu0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Jun 2023 12:40:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 588EC40201
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4AF7860D6B
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 588EC40201
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 09:38:42 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="341064753"
-X-IronPort-AV: E=Sophos;i="6.01,151,1684825200"; d="scan'208";a="341064753"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4AF7860D6B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Jun 2023 12:40:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="341096358"
+X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; d="scan'208";a="341096358"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2023 02:38:30 -0700
+ 23 Jun 2023 05:40:23 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10749"; a="839370178"
-X-IronPort-AV: E=Sophos;i="6.01,151,1684825200"; d="scan'208";a="839370178"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga004.jf.intel.com with ESMTP; 23 Jun 2023 02:38:29 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 23 Jun 2023 02:38:29 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Fri, 23 Jun 2023 02:38:29 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Fri, 23 Jun 2023 02:38:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DjirBsG8Lj3ksGmOoVro2ZhnXmzsLH3cY3sTVn1I8JipJb2/JCVaSVvZ4hJuyoojZHwM974cU3JDiFwM/cLdXaPhSDW66iLhNiGuRsoyNh6fXNzvQg02ARo+BPasyD67eZAtqSdu5LbDhM9j5YMmO7iZ2xt5T4UipUjz7MhazbDwn5giUnfd1/D51Rv0JPyDOGwicNyyykp7HUcIpD+GtVue7SvdP6SVzsYwADGJhwu+9OYhEn+Tzfmiw9gailhIAfC5YmgqmdtmLjvHNO9uQyJYyNM7k84+aJIbgbikMGEUAKPClVRo1FcjedUSz+1IhW/loPI45q5H/OTC5ICmBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Re7LkH8UvwozqPbByYnMMefmwGus49jOQSJvbmlHJ74=;
- b=a6UKzjxPqfPKqtegaPFD92kRifsW3UbSMluVKBQocv9cL0JClC2tsLj1jryk48aNjce8+KHkoFr2L96enLPN1XAxtVoikYxsQYEJ5M8NHev5M9vVrvU2I5aPMAt/KITW561lXNri+/xUzCU9VyvTLR8G3A1yAaMcg9MCG/DRoQDcGeYUL6g/POqcolF1PMW1xBu6GSwCbcu7fG4UYXiAhpaKA3oL663HK6MTi8NOdwL6duFUphj7Z6EWro19WzoqX0+eKTJPK1FALv+WjQjJQngQGOIX3eumIl8nADACHk+ZGOkbobb4OhxfLuTWSYDAAkj9EerXX8IQsK08eXbZ/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CH3PR11MB7764.namprd11.prod.outlook.com (2603:10b6:610:145::19)
- by CH0PR11MB8167.namprd11.prod.outlook.com (2603:10b6:610:192::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.26; Fri, 23 Jun
- 2023 09:38:24 +0000
-Received: from CH3PR11MB7764.namprd11.prod.outlook.com
- ([fe80::87f3:59ea:c54d:1bd0]) by CH3PR11MB7764.namprd11.prod.outlook.com
- ([fe80::87f3:59ea:c54d:1bd0%3]) with mapi id 15.20.6521.024; Fri, 23 Jun 2023
- 09:38:23 +0000
-From: "Zaborska, Olga" <olga.zaborska@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD
- and IGBVF_MIN_RXD to allow change of rx/tx value
-Thread-Index: AQHZo6YtOB4EkallEU6l8L8zq1VZ+K+YCwFg
-Date: Fri, 23 Jun 2023 09:38:23 +0000
-Message-ID: <CH3PR11MB7764C3B7F4F66A4B65FB25C3F923A@CH3PR11MB7764.namprd11.prod.outlook.com>
-References: <20230616114729.27926-1-olga.zaborska@intel.com>
- <SN6PR11MB3229C8E5C13B17847D2F2EBFC65CA@SN6PR11MB3229.namprd11.prod.outlook.com>
-In-Reply-To: <SN6PR11MB3229C8E5C13B17847D2F2EBFC65CA@SN6PR11MB3229.namprd11.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR11MB7764:EE_|CH0PR11MB8167:EE_
-x-ms-office365-filtering-correlation-id: a2aad738-a2d1-46a6-b34b-08db73cd9685
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: c5+ruVsX9GnWKDSrFkurRIz2kBXphUDuC7RFPTZieJN4Vg4CPmp+BdY6UEhY2yj2lLag7Ib3WOVvRjCwgP/Xy9x0PW8aARmfZod2FM/MXbkIz/+0T0laF5dYmPE0x1IdHhafaJ6hXSuvIJxI1vTVd0LhTgSf8lRVjHdEHJhn6bT2xtw+qgEx1g/pLHVafQd/TDLVhYgZ+IAroa29q/C3Vctr0YKdErh3FSFIKuW9c9Bxc1/Cadn4pllDIb6jwonBpUukAF5pKDH2HGpY5ol3/JWWpCKS+TUPzYsM1KTgS+1Ikjg73KdAv5wn6gNbfx0UKbGfEuUjw5LZNON3t5XiqWhvj3v+4X1KI1vs451YSVz+NkwrdyRLb22Ow6zZOKjjvD9xtJI+wjZvz19GXdM1P8aHR2T8gariFvrEsJbMYqJbrBQxS1JgiKJd8qhvjWSw97Hb2EdEbev4p1LjY3RtH/Jcq8MoxAQkKhE9jgYY4L0Z8/HNwwxIJRAtng48G/+B4Kq1/RQ+rpoqMmRIlYhZ9rLup5EsHINZb0Z/Mo6Uqz5NWcfBLZOTHb/TOVRcEtr5eJ4usWec8+khxxAQyDIRuE5FtDOgMCiEGYn5H1ahYZ2LHWraI4VmTB4xduMcdcbh3RGVZRzHCNrdNj//IWIsTw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR11MB7764.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(136003)(366004)(376002)(396003)(39860400002)(451199021)(110136005)(478600001)(55016003)(26005)(71200400001)(186003)(9686003)(6506007)(53546011)(7696005)(966005)(5660300002)(33656002)(2906002)(76116006)(66946007)(86362001)(8676002)(41300700001)(66476007)(52536014)(8936002)(66446008)(64756008)(66556008)(316002)(82960400001)(38070700005)(83380400001)(122000001)(38100700002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?NJie8a9oCTSVyR1KSv9lFO/T+wcdX0wCJ9L2+UzdrY9fcBCIYqNuL8r1qbjW?=
- =?us-ascii?Q?NQfJEeXNzZ0N5Qep1VlLQFb9T2F2iqVpmiRqndekzzhsCMa+HkgMR//P60UO?=
- =?us-ascii?Q?Q+qZSCh1z7wkQDE3z6qLp41x7ZfRhDcDjeCmUuTxxtrF0pChG5hkBD5Ecl5l?=
- =?us-ascii?Q?0zgHg/PhCqnpZVleJiqV3qGt6+e+YB4CWz4xL8Zym1EAkR6TLnGSFb08Gz6w?=
- =?us-ascii?Q?xtZ4SvblPXZuq1Lv4K4l9ErjjmE2CKhCCNxd1fyxNVGuVyA9Qm5/gvEw2jh1?=
- =?us-ascii?Q?GN6H2bL7QbkvOGn0wZCpcaInfXQFlxUx7bXF/eeVLgqldrVkm9HR24FR851f?=
- =?us-ascii?Q?WCqYucLErLqJ4kUbOD+VceT8egccJDdEmdSRCNaJe6RrN+VU+kB0vi0dVt7L?=
- =?us-ascii?Q?qOttcMyP9HTeYP3cBzmt7F13lGes19XJsBs2sRluFrDjMHh3Gw5TX0qCMqcc?=
- =?us-ascii?Q?kTBq3s491DYnqNyZHw+T0NIfwYYDDZvlLVY4XErkjqKJIuyaYbEDwwylNcHM?=
- =?us-ascii?Q?9KUj/jtuCqESwWmHCTAmHUUNobbophNQNVDLnv0arJW0f83kwUyH8gGDkA6h?=
- =?us-ascii?Q?8j4z+B1SDIhY4RZ/e7lWVxERw9s2uwcuHeubDPvSrz/3a1ZRTXQTJTi48Yrz?=
- =?us-ascii?Q?eoDIBoPHK+4DuN8BqI/WWKESc/5w+fhLaQPM8D7dszUlJpgvcqlnZ6NXolHf?=
- =?us-ascii?Q?ejD3SvY/FLCzj57FfpkKDxhRHM7bxYNmQMc4GxlBsqnEkhdJ+0p8I69VpnWy?=
- =?us-ascii?Q?wadmijRzcslMRjMoTf+JfTzU2kF5LnIlL+VwUZsSTsTDLBrIiPBf4rVvgQpr?=
- =?us-ascii?Q?/p4YYizABcmeSOFFdsBNU61LkTVte5VI3ZbqyxTm/8h882caZ/lvs8p+L5G+?=
- =?us-ascii?Q?Q73rX7e/CB5vy/NoTece/8QQKgAVituaZU8OeE+Kr+s5a31KmO/as4ydvjsR?=
- =?us-ascii?Q?HUSvBWTReYm5YtDwUWyrL6NSPP/t/DJvABVh+gVz1uMolf1FCZFHYj4kYL9u?=
- =?us-ascii?Q?H4Hs4KmVVL+ndxLpRUWCIdMh1Uz3YNTtL71b/FlsUpMYF60fgUbh7DU7U6Jz?=
- =?us-ascii?Q?OE2DOz/Vb2wX7qoxqYJYDnCxxfxM1Do/7LGodQUAveXXGsLUaXsIrxd2Z7T5?=
- =?us-ascii?Q?RqJSFAUW3KvtUFcCoz5Im/BNFnSfIbaOTODE8W61qa1TRbphP7trwfIWJQ89?=
- =?us-ascii?Q?ir8ss4GIGEIWLXyrXN3759FIuYEkyfr5WLRuc0oWBbktJiFq1IjfzwTnWg97?=
- =?us-ascii?Q?u432Co4eRF0JnytSIpetSvnKLNZWcYN/A6wMiGbX+UWFSgIAPAdBcTe+CQRv?=
- =?us-ascii?Q?ks4I5cNnVFUasftfY1szzWnZLGWGdY771amZhjpBXtuJQyto8XoTU7jJ1/ji?=
- =?us-ascii?Q?x2q4+eMhHdoUpVPyUWv6+iIgLT9MbgKOynST4kkAHWNxOmAaWZzdjcwy1gmU?=
- =?us-ascii?Q?/DBF8cF5nAezVHODVyAHYNimrvPv6gQFR3YtX1/AYH/OIPXQWg7LmzLHX/Uz?=
- =?us-ascii?Q?g3xYh/GCzZRJrEXhS1IDAR2Ab/sVtHvWfWRONDyMDref2obrwoCgSIITmeNm?=
- =?us-ascii?Q?RF6cV5lAgC6pjGvsRCSfxIAJduHVOGGO4mpDf+le?=
+X-IronPort-AV: E=McAfee;i="6600,9927,10750"; a="785321147"
+X-IronPort-AV: E=Sophos;i="6.01,152,1684825200"; d="scan'208";a="785321147"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by fmsmga004.fm.intel.com with ESMTP; 23 Jun 2023 05:40:12 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: kuba@kernel.org, jiri@resnulli.us, arkadiusz.kubalewski@intel.com,
+ vadfed@meta.com, jonathan.lemon@gmail.com, pabeni@redhat.com
+Date: Fri, 23 Jun 2023 14:38:10 +0200
+Message-Id: <20230623123820.42850-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR11MB7764.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a2aad738-a2d1-46a6-b34b-08db73cd9685
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jun 2023 09:38:23.3600 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: f5r1Zkcj9cBaoCEUG9wAZbseGWpQTXuI/wg4dNFXBE7ZSvYVBgxQ22wfNQHWDEHhmb+j+RxTxbH9JTWuhat5cQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB8167
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687513122; x=1719049122;
- h=from:to:subject:date:message-id:references:in-reply-to:
- mime-version:content-transfer-encoding;
- bh=m0Eqp1Jq0IuaGh2a5thW7wfJMn1ZMP4RqOiGq6TVwio=;
- b=Q7NWDvlgkpFXhiD17exNxjWD7JAAAfScvAy2RMQ5pr7Dx6uvBJUfd+MZ
- BQH9JrohjYorNj0OsF2tgnJ9fIdNmKULLGknl1P9T9V1/ySEp8K7Cj8Wc
- A4aVYt+aQi1q4GRssjyGIpKgl5lZdIpYV96JVO9QGLYyf91mXv5HENgLM
- 6ZK2WkTq7JxFJq6GTQzWj7t8twhQrg1mrbgWnjn1mYDui+oYwfB2FomMJ
- 7ECplzgBwHl5PhVl2bqWX8/qK7n3OqIKTXlylJKZzMjPJvXNUqxZokoLV
- 5Ky8qeroRlmfK8koND3Y1KkAJP1WVEp/wUfwywq9LOnhJxasc6gskG0bb
+ t=1687524059; x=1719060059;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=uTdU/i32piFdb7v87h1WXxNSsz43lpPMopUoNy1xfM0=;
+ b=kTax5GD4784EZqweaHLb6iaFgCiRQ4I7HhZJTIWGsbVvZpEYGmkLtyR7
+ a+jOsANKxMxDo10gKzBv4x2Uh4oCEb6rKISSpvZrjQaEwyqgn8MzMG5/d
+ Nd6XDJkItbnbS3sDsr84R83ahfegoWBSg3YYRyVsC32ulmhJCdB3BgzOF
+ dMdF6e2O/FoFHM+FEy5lpJPaHwvwkFhSBeyYX521+ObptUHVFD9fcxm/S
+ oOfomZVSfvJxSAHNEkrkAE7ir7DOtG23NWmPJ8JnbcGOQVdJJUv49bhEo
+ UwXPhVexXX5T53I5gQ1nv+Ox/1WTERMqvDCZjSfNYDZFPoeP2sBdd4wBl
  w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q7NWDvlg
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change
- IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+ header.a=rsa-sha256 header.s=Intel header.b=kTax5GD4
+Subject: [Intel-wired-lan] [RFC PATCH v9 00/10] Create common DPLL
+ configuration API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -185,192 +93,563 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
+ javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
+ anthony.l.nguyen@intel.com, linux-clk@vger.kernel.org, lucien.xin@gmail.com,
+ leon@kernel.org, corbet@lwn.net, linux-rdma@vger.kernel.org,
+ masahiroy@kernel.org, linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ intel-wired-lan@lists.osuosl.org, airlied@redhat.com, vadfed@fb.com,
+ ricardo.canuelo@collabora.com, arnd@arndb.de, idosch@nvidia.com,
+ richardcochran@gmail.com, claudiajkang@gmail.com, kuniyu@amazon.com,
+ jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com,
+ nicolas.dichtel@6wind.com, linux-arm-kernel@lists.infradead.org,
+ axboe@kernel.dk, sj@kernel.org, vadim.fedorenko@linux.dev, linux@zary.sk,
+ gregkh@linuxfoundation.org, ogabbay@kernel.org, nipun.gupta@amd.com,
+ linux-kernel@vger.kernel.org, andy.ren@getcruise.com, tzimmermann@suse.de,
+ netdev@vger.kernel.org, saeedm@nvidia.com, davem@davemloft.net,
+ milena.olech@intel.com, hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
-> Sent: wtorek, 20 czerwca 2023 20:37
-> To: Zaborska, Olga <olga.zaborska@intel.com>; intel-wired-lan@lists.osuosl.org
-> Cc: Zaborska, Olga <olga.zaborska@intel.com>
-> Subject: RE: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
-> 
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf 
-> > Of Zaborska, Olga
-> > Sent: Friday, June 16, 2023 4:47 AM
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: Zaborska, Olga <olga.zaborska@intel.com>
-> > Subject: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change 
-> > IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
-> 
-> This title seems a bit misleading as I presume changes are allowed, just limited on the low end.
-title will be corrected in v2. 
-> 
-> > From: Olga Zaborska <olga.zaborska@intel.com>
-> > 
-> > There is currently a bug where when setting the rx/tx value between 64 
-> > and
-> > 80 it automatically sets to 80, this will be fixed by changing 
-> > IGBVF_MIN_TXD and IGBVF_MIN_RXD
-> 
-> Any insight on why it was 80 before or why 64 is now ok?
-> 
-> Is there a side affect other than not being able to set below 80? Since the referenced fixes is from 2009 without anything reported, seems like it'd be more an improvement of allowing smaller sizes than a bug?
-Based on the commit https://sourceforge.net/p/e1000/mailman/message/19194160/ it should be 64 in every e1000e device, igbvf was the only with 80. 
-> 
-> > Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual
-> > functions")
-> > Signed-off-by: Olga Zaborska <olga.zaborska@intel.com>
-> > Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/igbvf/igbvf.h | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h
-> > b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> > index 57d39ee00b58..7b83678ba83a 100644
-> > --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
-> > +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> > @@ -39,11 +39,11 @@ enum latency_range {
-> >  /* Tx/Rx descriptor defines */
-> >  #define IGBVF_DEFAULT_TXD	256
-> >  #define IGBVF_MAX_TXD		4096
-> > -#define IGBVF_MIN_TXD		80
-> > +#define IGBVF_MIN_TXD		64
-> > 
-> >  #define IGBVF_DEFAULT_RXD	256
-> >  #define IGBVF_MAX_RXD		4096
-> > -#define IGBVF_MIN_RXD		80
-> > +#define IGBVF_MIN_RXD		64
-> > 
-> >  #define IGBVF_MIN_ITR_USECS	10 /* 100000 irq/sec */
-> >  #define IGBVF_MAX_ITR_USECS	10000 /* 100    irq/sec */
-> > --
-> > 2.31.1
-> > 
-> > ---------------------------------------------------------------------
-> > Intel Technology Poland sp. z o.o.
-> > ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII 
-> > Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 
-> > 957-
-> > 07-52-316 | Kapital zakladowy 200.000 PLN.
-> > Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu 
-> > ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym 
-> > opoznieniom w transakcjach handlowych.
-> > 
-> > Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego 
-> > adresata i moze zawierac informacje poufne. W razie przypadkowego 
-> > otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale 
-> > jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest 
-> > zabronione.
-> > This e-mail and any attachments may contain confidential material for 
-> > the sole use of the intended recipient(s). If you are not the intended 
-> > recipient, please contact the sender and delete all copies; any review 
-> > or distribution by others is strictly prohibited.
-> 
-> This footer needs to be removed.
-> 
-> > _______________________________________________
-> > Intel-wired-lan mailing list
-> > Intel-wired-lan@osuosl.org
-> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
->
+Implement common API for clock/DPLL configuration and status reporting.
+The API utilises netlink interface as transport for commands and event
+notifications. This API aim to extend current pin configuration and
+make it flexible and easy to cover special configurations.
 
------Original Message-----
-From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
-Sent: wtorek, 20 czerwca 2023 20:37
-To: Zaborska, Olga <olga.zaborska@intel.com>; intel-wired-lan@lists.osuosl.org
-Cc: Zaborska, Olga <olga.zaborska@intel.com>
-Subject: RE: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+Netlink interface is based on ynl spec, it allows use of in-kernel
+tools/net/ynl/cli.py application to control the interface with properly
+formated command and json attribute strings. Here are few command
+examples of how it works with `ice` driver on supported NIC:
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf 
-> Of Zaborska, Olga
-> Sent: Friday, June 16, 2023 4:47 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Zaborska, Olga <olga.zaborska@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-net v1] igbvf: Change 
-> IGBVF_MIN_TXD and IGBVF_MIN_RXD to allow change of rx/tx value
+- dump dpll devices
+$# ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--dump device-get
+[{'clock-id': 282574471561216,
+  'id': 0,
+  'lock-status': 'unlocked',
+  'mode': 'automatic',
+  'module-name': 'ice',
+  'type': 'eec'},
+ {'clock-id': 282574471561216,
+  'id': 1,
+  'lock-status': 'unlocked',
+  'mode': 'automatic',
+  'module-name': 'ice',
+  'type': 'pps'}]
 
-This title seems a bit misleading as I presume changes are allowed, just limited on the low end.
+- get single pin info:
+$# ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-get --json '{"pin-id":2}'
+{'clock-id': 282574471561216,
+ 'module-name': 'ice',
+ 'pin-board-label': 'C827_0-RCLKA',
+ 'pin-dpll-caps': 6,
+ 'pin-frequency': 1953125,
+ 'pin-id': 2,
+ 'pin-parenti-device': [{'id': 0,
+                         'pin-direction': 'input',
+                         'pin-prio': 11,
+                         'pin-state': 'selectable'},
+                        {'id': 1,
+                         'pin-direction': 'input',
+                         'pin-prio': 9,
+                         'pin-state': 'selectable'}],
+ 'pin-type': 'mux'}
 
-> From: Olga Zaborska <olga.zaborska@intel.com>
-> 
-> There is currently a bug where when setting the rx/tx value between 64 
-> and
-> 80 it automatically sets to 80, this will be fixed by changing 
-> IGBVF_MIN_TXD and IGBVF_MIN_RXD
+- set pin's state on dpll:
+$# ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-set --json '{"pin-id":2, "pin-parent-device":{"id":1, "pin-state":2}}'
 
-Any insight on why it was 80 before or why 64 is now ok?
+- set pin's prio on dpll:
+$# ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-set --json '{"pin-id":2, "pin-parent-device":{"id":1, "pin-prio":4}}'
 
-Is there a side affect other than not being able to set below 80? Since the referenced fixes is from 2009 without anything reported, seems like it'd be more an improvement of allowing smaller sizes than a bug?
+- set pin's state on parent pin:
+$# ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-set --json '{"pin-id":13, \
+                      "pin-parent-pin":{"pin-id":2, "pin-state":1}}'
 
-> Fixes: d4e0fe01a38a ("igbvf: add new driver to support 82576 virtual
-> functions")
-> Signed-off-by: Olga Zaborska <olga.zaborska@intel.com>
-> Reviewed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
-> ---
->  drivers/net/ethernet/intel/igbvf/igbvf.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h
-> b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> index 57d39ee00b58..7b83678ba83a 100644
-> --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
-> +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> @@ -39,11 +39,11 @@ enum latency_range {
->  /* Tx/Rx descriptor defines */
->  #define IGBVF_DEFAULT_TXD	256
->  #define IGBVF_MAX_TXD		4096
-> -#define IGBVF_MIN_TXD		80
-> +#define IGBVF_MIN_TXD		64
-> 
->  #define IGBVF_DEFAULT_RXD	256
->  #define IGBVF_MAX_RXD		4096
-> -#define IGBVF_MIN_RXD		80
-> +#define IGBVF_MIN_RXD		64
-> 
->  #define IGBVF_MIN_ITR_USECS	10 /* 100000 irq/sec */
->  #define IGBVF_MAX_ITR_USECS	10000 /* 100    irq/sec */
-> --
-> 2.31.1
-> 
-> ---------------------------------------------------------------------
-> Intel Technology Poland sp. z o.o.
-> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII 
-> Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 
-> 957-
-> 07-52-316 | Kapital zakladowy 200.000 PLN.
-> Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu 
-> ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym 
-> opoznieniom w transakcjach handlowych.
-> 
-> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego 
-> adresata i moze zawierac informacje poufne. W razie przypadkowego 
-> otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale 
-> jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest 
-> zabronione.
-> This e-mail and any attachments may contain confidential material for 
-> the sole use of the intended recipient(s). If you are not the intended 
-> recipient, please contact the sender and delete all copies; any review 
-> or distribution by others is strictly prohibited.
+v8 -> v9:
+[00/10] Create common DPLL configuration API
+- update examples to reflect new pin-parent nest split
 
-This footer needs to be removed.
+[01/10] dpll: documentation on DPLL subsystem interface
+- fix docs build warnings
+- separate netlink command/attribute list
+- replace enum description with uapi header
+- add brief explanation what is a DPLL
+- fix EOPNOTSUPP typo
+- fix typo .state_get -> .state_on_dpll_get
 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
-Spolka oswiadcza, ze posiada status duzego przedsiebiorcy w rozumieniu ustawy z dnia 8 marca 2013 r. o przeciwdzialaniu nadmiernym opoznieniom w transakcjach handlowych.
+[02/10] dpll: spec: Add Netlink spec in YAML
+- regenerate policy max values
+- add missing enum descriptions
+- split pin-parent nest:
+  - pin-parent-device - for configuration of pin-device tuple
+  - pin-parent-pin - for configuration od pin-pin tuple
+- fix typos:
+  - s/working-modes/working modes/
+  - s/differentiate/differentiates/
+  - s/valid input, auto selected by dpll/input pin auto selected by dpll/
+- remove FREERUN and HOLDOVER modes
 
-Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+[03/10] dpll: core: Add DPLL framework base functions
+- fix description in spdx header.
+- remove refcount check if refcount was already set
+- do not validate dpll ptr in dpll_device_put(..)
+- fix return -ENOMEM on failed memory alloc
+- do not validate pin ptr in dpll_pin_put(..)
+- return -EINVAL in case of module/clock_id mismatch
+- do not {} around one-line xa_for_each() macro
+- move dpll_<x>_registration structs to dpll_core.c
+- rephrase doc comment on device and pin id struct members
+- remove ref in case of memory allocation fail
+- check for required ops on pin/device registration
+- mark pin with DPLL_REGISTERED once pin is registered with dpll
+
+[04/10] dpll: netlink: Add DPLL framework base functions
+- fix pin-id-get/device-id-get behavior
+- reshuffle order of functions
+- avoid forward declarations
+- functions for adding pin/device handle next to each other
+- pass ops callback return values to the user
+- remove dpll_cmd_pin_fill_details(..) function, merge the code into
+  __dpll_cmd_pin_dump_one(..)
+- rename __dpll_cmd_pin_dump_one() to dpll_cmd_pin_get_one()
+- use WARN_ON macro when dpll ref is missing
+- remove redundant pin's dpll list not empty check
+- remove double spaces inside if statement
+- add extack message when set command is not possible
+- do not return error when callback is not required
+- WARN_ON missing ops moved to dpll_core.c
+- use DPLL_REGISTERED if pin was registered with dpll
+- fix pin-id-get return and add extack errors
+- fix device-id-get return and add extack errors
+- drop pointless init of variables
+- add macro for iterating over marked pins/devices
+- move dpll_set_from_nlattr() for consistent order
+- use GENL_REQ_ATTR_CHECK() for checking attibute presence
+- fill extack if pin/device was not found
+- drop pointless init of variables
+- WARN_ON if dpll not registered on send event
+- rename goto labels to indicate error path
+- fix docs
+- drop pointless init of variables
+- verify pin in notify with a mark
+- prevent ops->mode_set call if missing callback
+- move static dpll_msg_add_pin_handle() from pin<->netdev patch
+- split pin-parent nest:
+  - pin-parent-device - for configuration of pin-device tuple
+  - pin-parent-pin - for configuration od pin-pin tuple
+
+[06/10] netdev: expose DPLL pin handle for netdevice
+- net_device->dpll_pin is only valid if IS_ENABLED(CONFIG_DPLL) fix the
+  code in net/core/rtnetlink.c to respect that.
+- move dpll_msg_add_pin_handle to "dpll: netlink" patch + export the
+  function with this patch
+
+[07/10] ice: add admin commands to access cgu configuration
+- rename MAX_NETLIST_SIZE -> ICE_MAX_NETLIST_SIZE
+- simplify function: s64 convert_s48_to_s64(s64 signed_48)
+- do not assign 0 to field that is already 0
+
+[08/10] ice: implement dpll interface to control cgu
+- drop pointless 0 assignement
+- ice_dpll_init(..) returns void instead of int
+- fix context description of the functions
+- fix ice_dpll_init(..) traces
+- fix use package_label instead pf board_label for rclk pin
+- be consistent on cgu presence naming
+- remove indent in ice_dpll_deinit(..)
+- remove unused struct field lock_err_num
+- fix kworker resched behavior
+- remove debug log from ice_dpll_deinit_worker(..)
+- reorder ice internal functions
+- release resources directly on error path
+- remove redundant NULL checks when releasing resources
+- do not assign NULL to pointers after releasing resources
+- simplify variable assignement
+- fix 'int ret;' declarations across the ice_dpll.c
+- remove leftover ice_dpll_find(..)
+- get pf pointer from dpll_priv without type cast
+- improve error reporting
+- fix documentation
+- fix ice_dpll_update_state(..) flow
+- fix return in case out of range prio set
+
+
+v7 -> v8:
+[0/10] Create common DPLL configuration API
+- reorder the patches in patch series
+- split patch "[RFC PATCH v7 2/8] dpll: Add DPLL framework base functions"
+  into 3 smaller patches for easier review:
+  - [03/10] dpll: core: Add DPLL framework base functions
+  - [04/10] dpll: netlink: Add DPLL framework base functions
+  - [05/10] dpll: api header: Add DPLL framework base
+- add cli.py usage examples in commit message
+
+[01/10] dpll: documentation on DPLL subsystem interface
+- fix DPLL_MODE_MANUAL documentation
+- remove DPLL_MODE_NCO
+- remove DPLL_LOCK_STATUS_CALIBRATING
+- add grepability Use full names of commands, attributes and values of
+  dpll subsystem in the documentation
+- align documentation with changes introduced in v8
+- fix typos
+- fix phrases to better show the intentions
+- move dpll.rst to Documentation/driver-api/
+
+[02/10] dpll: spec: Add Netlink spec in YAML
+- remove unspec attribute values
+- add 10 KHZ and 77,5 KHZ frequency defines
+- fix documentation
+- remove assigned values from subset attributes
+- reorder dpll attributes
+- fix `device` nested attribute usage, device get is not used on pin-get
+- temperature with 3 digit float precision
+- remove enum from subset definitions
+- move pin-direction to pin-dpll tuple/subset
+- remove DPLL_MODE_NCO
+- remove DPLL_LOCK_STATUS_CALIBRATING
+- fix naming scheme od notification interface functions
+- separate notifications for pins
+- rename attribute enum name: dplla -> dpll_a
+- rename pin-idx to pin-id
+- remove attributes: pin-parent-idx, device
+- replace bus-name and dev-name attributes with module-name
+- replace pin-label with 3 new attributes: pin-board-label,
+  pin-panel-label, pin-package-label
+- add device-id-get and pin-id-get commands
+- remove rclk-dev-name atribute
+- rename DPLL_PIN_DIRECTION_SOURCE -> DPLL_PIN_DIRECTION_INPUT
+
+[03/10] dpll: core: Add DPLL framework base functions
+[04/10] dpll: netlink: Add DPLL framework base functions
+[05/10] dpll: api header: Add DPLL framework base
+- remove unspec attributes after removing from dpll netlink spec
+- move pin-direction to pin-dpll tuple
+- pass parent_priv on state_on_pin_<get/set>
+- align with new notification definitions from netlink spec
+- use separated notifications for dpll pins and devices
+- format notification messages as corresponding get netlink commands
+- rename pin-idx to pin-id
+- remove attributes pin-parent-idx, device
+- use DPLL_A_PIN_PARENT to hold information on parent pin or dpll device
+- refactor lookup for pins and dplls for dpll subsystem
+- replace bus-name, dev-name with module-name
+- replace pin-label with 3 new attributes: pin-board-label,
+  pin-panel-label, pin-package-label
+- add device-id-get and pin-id-get commands
+- rename dpll_xa_lock to dpll_lock
+- improve doxygen in dpll_core.c
+- remove unused parent and dev fields from dpll_device struct
+- use u32 for pin_idx in dpll_pin_alloc
+- use driver provided pin properties struct
+- verify pin/dpll owner on registering pin
+- remove const arg modifier for helper _priv functions
+- remove function declaration _get_by_name()
+- update SPDX headers
+- parse netlink set attributes with nlattr array
+- remove rclk-dev-name attribute
+- remove device pointer from dpll_pin_register/dpll_device_register
+- remove redundant doxygen from dpll header
+- use module_name() to get name of module
+- add missing/remove outdated kdocs
+- fix call frequency_set only if available
+- fix call direction_set only for pin-dpll tuple
+
+[06/10] netdev: expose DPLL pin handle for netdevice
+- rebased on top of v8 changes
+  - use dpll_msg_add_pin_handle() in dpll_pin_find_from_nlattr()
+    and dpll_msg_add_pin_parents()
+  - fixed handle to use DPLL_A_PIN_ID and removed temporary comments
+- added documentation record for dpll_pin pointer
+- fixed compilation of net/core/dev.c when CONFIG_DPLL is not enabled
+- adjusted patch description a bit
+
+[07/10] ice: add admin commands to access cgu configuration
+- Remove unspec attributes after removing from dpll netlink spec.
+
+[08/10] ice: implement dpll interface to control cgu
+- remove unspec attributes
+- do not store pin flags received in set commands
+- use pin state field to provide pin state to the caller
+- remove include of uapi header
+- remove redundant check against null arguments
+- propagate lock function return value to the caller
+- use switch case instead of if statements
+- fix dev_dbg to dev_err for error cases
+- fix dpll/pin lookup on dpll subsytem callbacks
+- fix extack of dpll subsystem callbacks
+- remove double negation and variable cast
+- simplify ice_dpll_pin_state_set function
+- pass parent_priv on state_on_pin_<get/set>
+- remove parent hw_idx lookup
+- fix use const qualifier for dpll/dpll_pin ops
+- fix IS_ERR macros usage in ice_dpll
+- add notify previous source state change
+- fix mutex locking on releasing pins
+- use '|=' instead of '+=' when modifing capabilities field
+- rename ice_dpll_register_pins function
+- clock_id function to return clock ID on the stack instead of using
+  an output variable
+- DPLL_LOCK_STATUS_CALIBRATING was removed, return:
+  DPLL_LOCK_STATUS_LOCKED - if dpll was locked
+  DPLL_LOCK_STATUS_LOCKED_HO_ACQ - if dpll was locked and holdover is
+  acquired
+- propagate and use dpll_priv to obtain pf pointer in corresponding
+  functions.
+- remove null check for pf pointer
+- adapt to `dpll: core: fix notification scheme`
+- expose pf related pin to corresponding netdevice
+- fix dpll init error path
+- fix dpll pins naming scheme `source` -> `input`
+- replace pin-label with pin-board-label
+- dpll remove parent and dev fields from dpll_device
+- remove device pointer from dpll_pin_register/dpll_device_register
+- rename DPLL_PIN_DIRECTION_SOURCE -> DPLL_PIN_DIRECTION_INPUT
+
+[09/10] ptp_ocp: implement DPLL ops
+- replace pin-label with pin-board-label
+- dpll remove parent and dev fields from dpll_device
+- remove device pointer from dpll_pin_register/dpll_device_register
+- rename DPLL_PIN_DIRECTION_SOURCE -> DPLL_PIN_DIRECTION_INPUT
+
+[10/10] mlx5: Implement SyncE support using DPLL infrastructure
+- rebased on top of v8 changes:
+  - changed notification scheme
+  - no need to fill pin label
+  - implemented locked_ho_acq status
+  - rename DPLL_PIN_DIRECTION_SOURCE -> DPLL_PIN_DIRECTION_INPUT
+  - remove device pointer from dpll_pin_register/dpll_device_register
+- fixed MSEES register writes
+- adjusted pin state and lock state values reported
+- fixed a white space issue
+
+v6 -> v7:
+ * YAML spec:
+   - remove nested 'pin' attribute
+   - clean up definitions on top of the latest changes
+ * pin object:
+   - pin xarray uses id provided by the driver
+   - remove usage of PIN_IDX_INVALID in set function
+   - source_pin_get() returns object instead of idx
+   - fixes in frequency support API
+ * device and pin operations are const now
+ * small fixes in naming in Makefile and in the functions
+ * single mutex for the subsystem to avoid possible ABBA locks
+ * no special *_priv() helpers anymore, private data is passed as void*
+ * no netlink filters by name anymore, only index is supported
+ * update ptp_ocp and ice drivers to follow new API version
+ * add mlx5e driver as a new customer of the subsystem
+v5 -> v6:
+ * rework pin part to better fit shared pins use cases
+ * add YAML spec to easy generate user-space apps
+ * simple implementation in ptp_ocp is back again
+v4 -> v5:
+ * fix code issues found during last reviews:
+   - replace cookie with clock id
+   - follow one naming schema in dpll subsys
+   - move function comments to dpll_core.c, fix exports
+   - remove single-use helper functions
+   - merge device register with alloc
+   - lock and unlock mutex on dpll device release
+   - move dpll_type to uapi header
+   - rename DPLLA_DUMP_FILTER to DPLLA_FILTER
+   - rename dpll_pin_state to dpll_pin_mode
+   - rename DPLL_MODE_FORCED to DPLL_MODE_MANUAL
+   - remove DPLL_CHANGE_PIN_TYPE enum value
+ * rewrite framework once again (Arkadiusz)
+   - add clock class:
+     Provide userspace with clock class value of DPLL with dpll device
+     dump netlink request. Clock class is assigned by driver allocating
+     a dpll device. Clock class values are defined as specified in:
+     ITU-T G.8273.2/Y.1368.2 recommendation.
+   - dpll device naming schema use new pattern:
+     "dpll_%s_%d_%d", where:
+       - %s - dev_name(parent) of parent device,
+       - %d (1) - enum value of dpll type,
+       - %d (2) - device index provided by parent device.
+   - new muxed/shared pin registration:
+     Let the kernel module to register a shared or muxed pin without
+     finding it or its parent. Instead use a parent/shared pin
+     description to find correct pin internally in dpll_core, simplifing
+     a dpll API
+ * Implement complex DPLL design in ice driver (Arkadiusz)
+ * Remove ptp_ocp driver from the series for now
+v3 -> v4:
+ * redesign framework to make pins dynamically allocated (Arkadiusz)
+ * implement shared pins (Arkadiusz)
+v2 -> v3:
+ * implement source select mode (Arkadiusz)
+ * add documentation
+ * implementation improvements (Jakub)
+v1 -> v2:
+ * implement returning supported input/output types
+ * ptp_ocp: follow suggestions from Jonathan
+ * add linux-clk mailing list
+v0 -> v1:
+ * fix code style and errors
+ * add linux-arm mailing list
+
+
+*** BLURB HERE ***
+
+Arkadiusz Kubalewski (3):
+  dpll: spec: Add Netlink spec in YAML
+  ice: add admin commands to access cgu configuration
+  ice: implement dpll interface to control cgu
+
+Jiri Pirko (2):
+  netdev: expose DPLL pin handle for netdevice
+  mlx5: Implement SyncE support using DPLL infrastructure
+
+Vadim Fedorenko (5):
+  dpll: documentation on DPLL subsystem interface
+  dpll: core: Add DPLL framework base functions
+  dpll: netlink: Add DPLL framework base functions
+  dpll: api header: Add DPLL framework base functions
+  ptp_ocp: implement DPLL ops
+
+ Documentation/driver-api/dpll.rst             |  428 ++++
+ Documentation/driver-api/index.rst            |    1 +
+ Documentation/netlink/specs/dpll.yaml         |  472 ++++
+ MAINTAINERS                                   |    8 +
+ drivers/Kconfig                               |    2 +
+ drivers/Makefile                              |    1 +
+ drivers/dpll/Kconfig                          |    7 +
+ drivers/dpll/Makefile                         |    9 +
+ drivers/dpll/dpll_core.c                      |  976 ++++++++
+ drivers/dpll/dpll_core.h                      |   92 +
+ drivers/dpll/dpll_netlink.c                   | 1271 +++++++++++
+ drivers/dpll/dpll_netlink.h                   |   17 +
+ drivers/dpll/dpll_nl.c                        |  163 ++
+ drivers/dpll/dpll_nl.h                        |   51 +
+ drivers/net/ethernet/intel/Kconfig            |    1 +
+ drivers/net/ethernet/intel/ice/Makefile       |    3 +-
+ drivers/net/ethernet/intel/ice/ice.h          |    5 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  240 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |  462 ++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |   43 +
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 2002 +++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dpll.h     |  101 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   17 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |    7 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  413 ++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  230 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
+ .../net/ethernet/mellanox/mlx5/core/Kconfig   |    8 +
+ .../net/ethernet/mellanox/mlx5/core/Makefile  |    3 +
+ drivers/net/ethernet/mellanox/mlx5/core/dev.c |   17 +
+ .../net/ethernet/mellanox/mlx5/core/dpll.c    |  432 ++++
+ drivers/ptp/Kconfig                           |    1 +
+ drivers/ptp/ptp_ocp.c                         |  329 ++-
+ include/linux/dpll.h                          |  164 ++
+ include/linux/mlx5/driver.h                   |    2 +
+ include/linux/mlx5/mlx5_ifc.h                 |   59 +-
+ include/linux/netdevice.h                     |   20 +
+ include/uapi/linux/dpll.h                     |  183 ++
+ include/uapi/linux/if_link.h                  |    2 +
+ net/core/dev.c                                |   22 +
+ net/core/rtnetlink.c                          |   35 +
+ 41 files changed, 8241 insertions(+), 59 deletions(-)
+ create mode 100644 Documentation/driver-api/dpll.rst
+ create mode 100644 Documentation/netlink/specs/dpll.yaml
+ create mode 100644 drivers/dpll/Kconfig
+ create mode 100644 drivers/dpll/Makefile
+ create mode 100644 drivers/dpll/dpll_core.c
+ create mode 100644 drivers/dpll/dpll_core.h
+ create mode 100644 drivers/dpll/dpll_netlink.c
+ create mode 100644 drivers/dpll/dpll_netlink.h
+ create mode 100644 drivers/dpll/dpll_nl.c
+ create mode 100644 drivers/dpll/dpll_nl.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_dpll.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_dpll.h
+ create mode 100644 drivers/net/ethernet/mellanox/mlx5/core/dpll.c
+ create mode 100644 include/linux/dpll.h
+ create mode 100644 include/uapi/linux/dpll.h
+
+-- 
+2.39.3
+
+Arkadiusz Kubalewski (3):
+  dpll: spec: Add Netlink spec in YAML
+  ice: add admin commands to access cgu configuration
+  ice: implement dpll interface to control cgu
+
+Jiri Pirko (2):
+  netdev: expose DPLL pin handle for netdevice
+  mlx5: Implement SyncE support using DPLL infrastructure
+
+Vadim Fedorenko (5):
+  dpll: documentation on DPLL subsystem interface
+  dpll: core: Add DPLL framework base functions
+  dpll: netlink: Add DPLL framework base functions
+  dpll: api header: Add DPLL framework base functions
+  ptp_ocp: implement DPLL ops
+
+ Documentation/driver-api/dpll.rst             |  458 ++++
+ Documentation/driver-api/index.rst            |    1 +
+ Documentation/netlink/specs/dpll.yaml         |  466 ++++
+ MAINTAINERS                                   |    8 +
+ drivers/Kconfig                               |    2 +
+ drivers/Makefile                              |    1 +
+ drivers/dpll/Kconfig                          |    7 +
+ drivers/dpll/Makefile                         |    9 +
+ drivers/dpll/dpll_core.c                      |  953 ++++++++
+ drivers/dpll/dpll_core.h                      |  104 +
+ drivers/dpll/dpll_netlink.c                   | 1195 ++++++++++
+ drivers/dpll/dpll_netlink.h                   |   44 +
+ drivers/dpll/dpll_nl.c                        |  161 ++
+ drivers/dpll/dpll_nl.h                        |   50 +
+ drivers/net/ethernet/intel/Kconfig            |    1 +
+ drivers/net/ethernet/intel/ice/Makefile       |    3 +-
+ drivers/net/ethernet/intel/ice/ice.h          |    5 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  240 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |  467 ++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |   43 +
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 2015 +++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dpll.h     |  102 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   17 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |    7 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  414 ++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  230 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
+ .../net/ethernet/mellanox/mlx5/core/Kconfig   |    8 +
+ .../net/ethernet/mellanox/mlx5/core/Makefile  |    3 +
+ drivers/net/ethernet/mellanox/mlx5/core/dev.c |   17 +
+ .../net/ethernet/mellanox/mlx5/core/dpll.c    |  432 ++++
+ drivers/ptp/Kconfig                           |    1 +
+ drivers/ptp/ptp_ocp.c                         |  329 ++-
+ include/linux/dpll.h                          |  164 ++
+ include/linux/mlx5/driver.h                   |    2 +
+ include/linux/mlx5/mlx5_ifc.h                 |   59 +-
+ include/linux/netdevice.h                     |   10 +
+ include/uapi/linux/dpll.h                     |  184 ++
+ include/uapi/linux/if_link.h                  |    2 +
+ net/core/dev.c                                |   22 +
+ net/core/rtnetlink.c                          |   38 +
+ 41 files changed, 8216 insertions(+), 59 deletions(-)
+ create mode 100644 Documentation/driver-api/dpll.rst
+ create mode 100644 Documentation/netlink/specs/dpll.yaml
+ create mode 100644 drivers/dpll/Kconfig
+ create mode 100644 drivers/dpll/Makefile
+ create mode 100644 drivers/dpll/dpll_core.c
+ create mode 100644 drivers/dpll/dpll_core.h
+ create mode 100644 drivers/dpll/dpll_netlink.c
+ create mode 100644 drivers/dpll/dpll_netlink.h
+ create mode 100644 drivers/dpll/dpll_nl.c
+ create mode 100644 drivers/dpll/dpll_nl.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_dpll.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_dpll.h
+ create mode 100644 drivers/net/ethernet/mellanox/mlx5/core/dpll.c
+ create mode 100644 include/linux/dpll.h
+ create mode 100644 include/uapi/linux/dpll.h
+
+-- 
+2.37.3
 
 _______________________________________________
 Intel-wired-lan mailing list
