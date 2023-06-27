@@ -1,185 +1,189 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F29973F61C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jun 2023 09:51:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C31B73F67C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jun 2023 10:09:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B9DC882184;
-	Tue, 27 Jun 2023 07:51:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B9DC882184
+	by smtp1.osuosl.org (Postfix) with ESMTP id 981098196E;
+	Tue, 27 Jun 2023 08:09:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 981098196E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687852278;
-	bh=bndIK6PEyZmvroTBdgF0FSUlQUQCaawLPqoCpiNDhzU=;
+	s=default; t=1687853370;
+	bh=uDcXCWP64JwfR3/6iQR53tlkhUt/7hkXHUF69uCVJnI=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=xbHLOvIefkiWczW5+Q95Hii4r2gMT4y03jdvkMA5L60VxquitqVR02+XU/ELSQkbn
-	 l+K8pb5wx8Gj8zRC+SMB9ZcPDLs571J0F7uh3Am49tXXTQeuH2rQknla0E0xdh/yHD
-	 Df0mc63Hwy8Qi0Tm/J3oSFk5jM3B5TpBoOQR6qpRz9AO0d5LBV5SWamdDSxWzBILXS
-	 bBoIVa1uOlcBx99axPtc+Y1jB53BjONwp50dHldIEzofW6G48QW4OnBTz9V2E5LxcD
-	 Toch/iBYFCy0WvJcDQMG9URHncDyD9a57GtQdY+HS66GyI+Hig+0xQ1KzrzEn4FEuE
-	 pZn4fu1jZjmUA==
+	b=aazARYz6ZpaN9SALRXKAWtoS7B3w9Qq5QsN+uvbHhRdynSXGmhnFZVrRy4jArgMmE
+	 YwjfKJXGktu5MSPO8pfjtLQPHFDDzF41LCk/djBX1S+Foie0bCPSorHd+eiDuI0u6V
+	 /wkheRfo/G6VE+/PFoaf4YtRaSs+mrwWUYdtI6E7iorM+di3db82taFccz8A1Hnupp
+	 nrSXl1DK5Bp4W5GAUZYF2yGqu/lF6FU1lh0zc79qxbAmT8xCwzWB+k2EKNi3v1jD3I
+	 iH/kiy6AyIJprwIjK3qZ8JTfAUMbrCSQ+E8rOBPPaGR+3/b1eix+YMXJWhPsgjIu+o
+	 +O89mSXRPclow==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jjUglvOroE0V; Tue, 27 Jun 2023 07:51:17 +0000 (UTC)
+	with ESMTP id yUXXu2iOzMYN; Tue, 27 Jun 2023 08:09:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7DF4F8211A;
-	Tue, 27 Jun 2023 07:51:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7DF4F8211A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3893481959;
+	Tue, 27 Jun 2023 08:09:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3893481959
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A47131BF2B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 07:51:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 379A51BF2AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 08:09:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 87458416C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 07:51:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87458416C3
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0EA9E607A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 08:09:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0EA9E607A4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yCLgls5ngoO1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Jun 2023 07:51:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QzXfDLN9T0po for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jun 2023 08:09:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 599E9416FE
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 599E9416FE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 07:51:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="361545240"
-X-IronPort-AV: E=Sophos;i="6.01,161,1684825200"; d="scan'208";a="361545240"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jun 2023 00:50:44 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D271C60797
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D271C60797
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 08:09:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="425175636"
+X-IronPort-AV: E=Sophos;i="6.01,161,1684825200"; d="scan'208";a="425175636"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2023 01:09:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="751572499"
-X-IronPort-AV: E=Sophos;i="6.01,161,1684825200"; d="scan'208";a="751572499"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga001.jf.intel.com with ESMTP; 27 Jun 2023 00:50:43 -0700
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="693755740"
+X-IronPort-AV: E=Sophos;i="6.01,161,1684825200"; d="scan'208";a="693755740"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga006.jf.intel.com with ESMTP; 27 Jun 2023 01:09:21 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 27 Jun 2023 00:50:43 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ 15.1.2507.27; Tue, 27 Jun 2023 01:09:21 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 27 Jun 2023 00:50:43 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.46) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.27; Tue, 27 Jun 2023 01:09:20 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Tue, 27 Jun 2023 01:09:20 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.40) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Tue, 27 Jun 2023 00:50:43 -0700
+ 15.1.2507.27; Tue, 27 Jun 2023 01:09:20 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mkw06/L6D8wVzbUoBKhYWaDm0J8VcNcLFJzz9/lPqww/8rrzpPMnAVk/hjYSKOxFX5U0OFbHSG4IW6irNFLHtBK+KjAb5/AUOPOsZtUkF/NKhPFIlB3vK9FVS8EnqbYx59hoxd9tfj1S5X/PXPWW/rbmnY/7cqLOuqdpz0WFlogROuvlASKKlF9/byWo12IjwlF21nRTKKU8kjjErnfZqtdyRK00vLM/Aca6/2llkK0ZmGnJLnhBOuHm0KBeFQFenQvcMWQsJcP+2b21oFC6t/4W8G5vsxpFPIOg4SkoKvpKA4pRaqoL8UYOCFMoZPKJJtdGuBebtcpmOT+Fydrb0g==
+ b=am6fb5b2QTK2gJQSC5gas/v6WgPrF8rBVLOVUeRsnD/npLPQEAismTDCHHIoFkiHxuejdrHBIO4PQuffpfT6aL+ljP7sXW7h49VUg8g5pa2Z89UrVJvG8yqlRc+BO+Q7aC6nyle6GtsuRQduPH+rf8IYjPEz8Uzdt37mmSo0npAx+4Zi1TFo8Dh0SuDOfvxsBfbjhko9wrpg5zLN7lvuowVIJBEGVFzFZs4AMXvsUVEm8dnEFyqIckdcPdPocLaF633VtnbpGdmat4tMVJkZ1GZmsjKisEiVUzUVT0qxGEWzPwEdWNdhuJyrpJwh1DOgP1YDjOnJc9gn82NYRTawug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=m/aUvIWlXSN96vidr/lW+fI+VHsOteMntNMb7dufnvQ=;
- b=h/U8Eb0I7Dpugzz1yOPiblux+Br11hxZTvOZjZmkhcv655RDhnG1lLwoIIh8UOLbem4rqaEbSoaeOIGhYqtU8UpWAUFRUMEEItdwondN/l3pZw/1WZ8hx5HQwRTmKg7hlntuuRlFM1hrOgrr6hubtROlENR0LuruhG2mIiEbs1RJIuTdAgEJPYH+nqTH50vIaicGDLT1VwNFmjgOA1YTc1irFLwL/Dny1uuN2fjxicsOet5iyNqC45AgP5L3w+bG8NQGVv7l/13FL3+hz1Ppv1ShCIIIHpQPv8wLIXVuXpTam0s5lsWvikeeI/Rhj/Lj8iEvpM+WVFcACZXKiswtnQ==
+ bh=IvsMuarxVfXVnv+SlbUsLAtUZipcA61z1J63wdDgsds=;
+ b=YlLBTyY94qzvtp3XHy6wtl6bXyli45h2PGDbLRbWsuNHfDZJ8zOD+lZ6Devjln/2922AiZ9RvLgGdZOalYEyw+05TCxDYUH34hUkicMkiHaUoiJPELgeMzN40aQGo20m+WfLA/WWUsoA394oJr/0h1ObLp3fTUgxf/MRFfLG6Xgei3WMugfknIDnoHuGlgpE85j2OoW8kTN8oCNoU5Bol9ek1CJFTBijktwsacqYgp1UmsXG06I+G2/muzzR8um5pj5VwmHZJz9bqPrBtFK8WktBiFECezTp62iOffacc5W3KL2Ue+5tT48+Jly9hw7xbsaXkTB55nvcs1DILZBh0Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DS7PR11MB7836.namprd11.prod.outlook.com (2603:10b6:8:e3::10) by
- SJ1PR11MB6129.namprd11.prod.outlook.com (2603:10b6:a03:488::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.24; Tue, 27 Jun
- 2023 07:50:42 +0000
+ DS0PR11MB7877.namprd11.prod.outlook.com (2603:10b6:8:f4::7) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6521.26; Tue, 27 Jun 2023 08:09:18 +0000
 Received: from DS7PR11MB7836.namprd11.prod.outlook.com
  ([fe80::d48c:5581:131e:93c7]) by DS7PR11MB7836.namprd11.prod.outlook.com
  ([fe80::d48c:5581:131e:93c7%7]) with mapi id 15.20.6521.024; Tue, 27 Jun 2023
- 07:50:42 +0000
-Message-ID: <9da1c8df-98b8-bd4a-1487-e11de82d6783@intel.com>
-Date: Tue, 27 Jun 2023 15:50:32 +0800
+ 08:09:18 +0000
+Message-ID: <742ac578-7c39-f586-e4af-d7ccc8745914@intel.com>
+Date: Tue, 27 Jun 2023 16:09:07 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Firefox/102.0 Thunderbird/102.11.0
+Content-Language: en-US
 To: Jason Gunthorpe <jgg@ziepe.ca>, Lingyu Liu <lingyu.liu@intel.com>
 References: <20230621091112.44945-1-lingyu.liu@intel.com>
- <20230621091112.44945-5-lingyu.liu@intel.com> <ZJL8jCIrVwmJ1eDl@ziepe.ca>
-Content-Language: en-US
+ <20230621091112.44945-16-lingyu.liu@intel.com> <ZJMLwXt88vWmI4XX@ziepe.ca>
 From: "Cao, Yahui" <yahui.cao@intel.com>
-In-Reply-To: <ZJL8jCIrVwmJ1eDl@ziepe.ca>
-X-ClientProxiedBy: SI1PR02CA0031.apcprd02.prod.outlook.com
- (2603:1096:4:1f6::11) To DS7PR11MB7836.namprd11.prod.outlook.com
+In-Reply-To: <ZJMLwXt88vWmI4XX@ziepe.ca>
+X-ClientProxiedBy: SGAP274CA0014.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b6::26)
+ To DS7PR11MB7836.namprd11.prod.outlook.com
  (2603:10b6:8:e3::10)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB7836:EE_|SJ1PR11MB6129:EE_
-X-MS-Office365-Filtering-Correlation-Id: 90850e9d-25db-4286-e7c2-08db76e33443
+X-MS-TrafficTypeDiagnostic: DS7PR11MB7836:EE_|DS0PR11MB7877:EE_
+X-MS-Office365-Filtering-Correlation-Id: 607a2d6d-8af0-4499-dfc0-08db76e5cda6
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: XkhkM5N8hu22PDOrf7Sh35BF0ihNcc3USbjxaYYqkbB3J/RtWAoRAo956sgS8E/aMMPIPqcoMFmLhghb4E1H3jQS/gq7TJDwSzFIgncL6vJsNn/NjHqYdwn5w0HQGMTwzAhhxBUoN5iJY4Iyfzl2HMZ5TpYBvnhnd9Wk0eaUztz6GjA4DTvt6XhdRGwwhKoiKDy+lOFm21c77Fu0ZcGTLH9PohPvQ9ptpXK353N9cNjBzLc+V8qWqbJAkaKX6kfKzOCnErqv6ubzKhYrbGQTFiQIoUWQmJKD4Nsq+r7oiACgXsbTXdxs9PwvxRzi4TlIMTMy7vIgYyRPHoMGtSmyM66UKuMKT8nNiBkEnCfM/HwxzdERn/987CfLgxvKg7uo4H4qDk36ijBb1A1l7lxzQFkkC85qrmNKqkcwWbsObGEFet2wm+O65WdL2Y84D2lmf8FwIxU7OGsv0n59H7G1Fi7uO7Xft6vZx5sX3fj1hORm5M2eRFxWofEsA+j9ZivfvbMAGkWMX7KXgPlirjUfCKodHIYuz3jkwqj9qgNvt96szrd8+kHVxbDhaAO2FmY8HxIk8PiUsMGln10ZNhPegzcNgMnZqlXHu2wK9BxuFUq5nsn91eq8mC7MktlFLc2mFpvynfMcd1O6dnNRe7jakg==
+X-Microsoft-Antispam-Message-Info: N8EuUp2ObV3HM6orgM6cD04sOOZHqLzyEJfugKvhP7LHG519n6CITwxTmWsDHIBsOPeSIKDryYKp0ng21XeRmXHT9nCPwK9X/2U86LrxNabTmXr5L8AgzS8/+DnpmQ+Smsgk1o2DgyNBd1FcivcMjC1lo9L22rRn2US1eTTi2obeBIVu4+nG5PJ09qf+Kndlb2CJiZWi6QPR2uXLR4t0RgNTEaavIjCZRN9fW6LQKcz3wGulF0ztuCqzVNfqSUO88gikmyM5mTS9YyE7MRLzWXZ6AvWMPxq9voxBTiI/b7pUQv16hrnCzG2vYpnU8Qui6Lv30MFufvYVjbO+Q6tETBxIiYQXx+83cruiJndnecIAe+zhc0APcOGTuiZIYZuaEcIZ9nnhntOQKK/Gi/iVU4lm2t2D9dkIvC/NSpTcvPuvszIiQ/Umk3aImtISe3RfI5VUbh7NZqj/7o+90eggokEYeupjtDx54IdoSSMBwK0m2g4SoQ4nC7WysucAFeUT40mh+Lcx6O4Mzh4fkgVsAmSVCV3xzz4as2qJA1NJHJYrxnxRVCshN1Xtb9sJyJHKWete+SfiujbQK1d0XIkmt9IN2bVSoHFbxS4usKHbFS48ZK/XxIvUbD3llq9h9Uy8QN5owARbvP2aDZTTR9KaLw==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS7PR11MB7836.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(136003)(376002)(346002)(396003)(39860400002)(366004)(451199021)(2906002)(53546011)(6486002)(82960400001)(6666004)(107886003)(2616005)(83380400001)(38100700002)(186003)(6512007)(6506007)(26005)(110136005)(86362001)(41300700001)(31696002)(478600001)(36756003)(316002)(66946007)(66556008)(66476007)(4326008)(6636002)(31686004)(5660300002)(8676002)(8936002)(43740500002)(45980500001);
+ SFS:(13230028)(346002)(396003)(39860400002)(376002)(366004)(136003)(451199021)(31686004)(5660300002)(66946007)(66556008)(4326008)(66476007)(478600001)(36756003)(316002)(6636002)(8676002)(8936002)(2906002)(110136005)(86362001)(31696002)(41300700001)(6486002)(186003)(6506007)(6512007)(53546011)(26005)(6666004)(2616005)(82960400001)(38100700002)(107886003)(83380400001)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WkJReTlTbVZ2OWhEelN1YUNwbzBmbG1lNlp3L1NMYUc5WnpwdFVHaG90M05a?=
- =?utf-8?B?UG85Q0JyVHQ0c1hSSEhyaXRoenBvd25pUmZvWXlLRVZWaFpEc3FmYVhZSjAy?=
- =?utf-8?B?OVZxcDFtL21YMDFHYm1oNDdvanNlZjUrM3RqVTdzdHVna2Nsc2RvdGl5RFVq?=
- =?utf-8?B?L0N5aFVoZU5UVWt4UThhNit0ZW5tZ1BCRHpDSVpua0RkQ0lwRjFkUW5mU0FV?=
- =?utf-8?B?NGJZUmZXaXp5RHVBbTBObzZPNVNMam0rNlQ3ZEJHNDAvOFVYRC9NRkxxRmxn?=
- =?utf-8?B?a3lRYThPYjFDQyt4VlBBS0N2TUl2QjZSVFZ4Y0FqT0FjdGdFZ0tYRjk5RmRo?=
- =?utf-8?B?UFlhenhodDZNa09ST2hXc1pTYzBsaTBIZ0dhR0tXWE1rTFRld21hL0VOM0VY?=
- =?utf-8?B?VXNuek5OcmJObUkyZEhKWWtQanI5MUQvck1KdlFoa0hZMFBtbnh5MUVDdUtG?=
- =?utf-8?B?N2d5TWJyQ1RBbmR3VmszdGFSb3QzUE1NeGYxeTM3eVJTdFJEQ0RlUlAya0hE?=
- =?utf-8?B?NzEzczAzVEx5WHViRkRad0FqUmd3WWQ2VEE2RUdWWEIydS9GYUF3Z1dNQktY?=
- =?utf-8?B?bklKcVErZnFNSnI5c0tsclJrODQ2NUFMYmxjd1Y4YXVNYnJVMFJsbmZvaWEr?=
- =?utf-8?B?aGpFamhsMXVncDd4ZDIrL1BwbHh2bERLRkIrQzFBcHkwRzhkWDNaWFhTOEdJ?=
- =?utf-8?B?L1Q2alMzZUNmMjNRUXB1MUxFc0NQcFpzbXV1STBxMmE4Sm9PTkhpQWlYa0Fw?=
- =?utf-8?B?VnJsclpZRmVYWW10S1k1MHBkaVVwNW5PK0Fpa2luVUlJaXAzcDlndnJSRVNr?=
- =?utf-8?B?aW45WE40YWZYRTNIc3ZsbWQzWFMwaDRIRi9TZFA5ZklydGFjVzZpMVJvUlJr?=
- =?utf-8?B?NEptRmI4Ynpib21BYVVkZ1JoMXoxei9OdVorekRRWEhwV3hVUUVrdnJ1THZy?=
- =?utf-8?B?UFZiT0diSklPZ1N2ditDeXFIbFNxWDVPUnhrTWpIYUxSTUlDN3VLTVNEMjRm?=
- =?utf-8?B?NXVVSVpuUTRQQk1PdmQyaU1hVHNvZitZU21jMU9jeGg3UnJod29Jck9OeFZO?=
- =?utf-8?B?K2dQemh4bjNCb2tqdHBtT2ROcW5XKzA0K1NqZnpOc0dWNjAvQjVJK1Bab0xM?=
- =?utf-8?B?ZUs3aERRdHBCbyttSTgxVk9INTVMR1huZy9saHNjNDVnZ0MybHhiRmlzRjdQ?=
- =?utf-8?B?VnZ4cy9CR0MrN0wyQWVUdWR1ZzhzRnFvcEZESmxrWkFLeDhEUmhXbVpXTEJK?=
- =?utf-8?B?dm96ZnQ5RGdrU1lua0pONUpaOXlHbGFMTEdzbldvUSttYVJBMms3ZGNadVBu?=
- =?utf-8?B?OHk1SGo1ckk0OXV2bmR4K0V6SzVCa0M5WUtTVTFmTUZtQ3dkZTY0YTJWZEtG?=
- =?utf-8?B?clZUMlh6SVZiVk9WUm1JV1RWa2JIc3hFKzFuMUVTdzVNL1JGR3lueEduOFlC?=
- =?utf-8?B?MlY4eW1ia2dnYUtmWUJuaHVpQTdMMUtXM2EvamFVN1N4QzRqQUJRWEhGNmtE?=
- =?utf-8?B?RTRPcUJ5SmhNYnlMaWY4akRNcGtMSFRmcXpLRXF2Y2NLTXhIUmRkLy9SWlFE?=
- =?utf-8?B?M3J6cHVwbmJHbjN4NFNmWWhqU2JjZmJOM1BBY29GUHpqMENFMFRxdVh1dHB3?=
- =?utf-8?B?K2ZScG45NWM2VDRwd3lFSUJhSzZsVUdYZTFlMXdnWkhYNkJ3S0xxSXJYU2FM?=
- =?utf-8?B?eDlZUXNHL2pMOHg5WFpTZWU2aVhjQXIzRkxmbVNwTk01WXFjLy8zdi9aWkts?=
- =?utf-8?B?eXpNa3dtZEd3NVo2Q29aNEJBemh0NUE5Q1NyUjUzajRUMkRmTXFHTzdLNDVL?=
- =?utf-8?B?Wk1sUXE4dEVlM2xMTEpGZ0hOaktOTVAycFZNdVdrYVp5aXZLVHQ4QnJFdDRF?=
- =?utf-8?B?cXBDTkdjTUxuRHh4dGdxZGU5Y3dDS3NYSnR0L24xVExvby9VZkc2YkpuRXNj?=
- =?utf-8?B?dlpBYlAyakwzeWhUWVIvenp0dDQ5QWJmT1hleDdiMjJpY2owTVlVbGxIRGs4?=
- =?utf-8?B?dUFiUTJMLzVNWEdMVXAxT05xQklsZXYrTEc2a01jTE1wN0c3R2hlSXVCNWwz?=
- =?utf-8?B?dWt0MFdWZE00UmlVTlg2T3B0bVFrc0c3bW9OM0hYT0NHM3ZNblYvTStJQUxi?=
- =?utf-8?Q?ggQjvOFbCB76lZ5MsK1oAYSh5?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90850e9d-25db-4286-e7c2-08db76e33443
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OWRWUmoyUTliRXc1Vm1lQkhnTUFCWHBaeVU5TE1TdzNMTTEzUENwRmx1b3NI?=
+ =?utf-8?B?d1RWZzJrS202UEpJWHJCSmwrc1JyRytDZk90L0k1WEhYZWhhOE1pWjFGa2xv?=
+ =?utf-8?B?djBDK25uVC9LMHNFTzNOa1k2b2xBL0tjbmVwVFdUM3hURW52cFkvOCtGNk9V?=
+ =?utf-8?B?NE9vc3hOa2QrbVBPQmNDVVdWdko5aUN6aTYwZTRTZm0zK2xlRG95ekhCRlJR?=
+ =?utf-8?B?ZTBuenpvN1dNZk5oalVLYlN0WmFCcm00blNHVkhxWG1kamxyd3pGTnJjeHpL?=
+ =?utf-8?B?WnEyazhsUlZvZUlYRitsRmN1OHUweUh0bTVYajZlOGl6c2xNYVlIRXJpQVlJ?=
+ =?utf-8?B?WXZUa2lWR3lGb0FNN05CMkFEVGc0RG5jeTEvanB2SXQxbUdDdWkzdlhKbXd2?=
+ =?utf-8?B?bXNLNmhvb0p0YlhRbWhLUGQ2QUVjYjRzbHF3dlk0cW9IdUhNU0xqczAvOUhu?=
+ =?utf-8?B?Um14MGdXbDdJVzFndjlPc1NwNUx2OHBGcmJkSFJNb2lNOWFqWmtXdkVxYUhl?=
+ =?utf-8?B?UDVST1p1bElJcEFFa0ZHcC9COW4rRVh0TGIyVHRGVzJMT1l6dXpiZWlsb2JB?=
+ =?utf-8?B?eDVJYTBTUHFIYTFBZ2swSFFyUUFRb3Awb1FETFBxQXlRVEUvVGNoT3ZMbG11?=
+ =?utf-8?B?NmNhVkxxVGwrdHdTUGpYT0QrdDNuTldVS0kzcHUrcmk5eFF6MVlYb0hDMDRO?=
+ =?utf-8?B?YUJkQ0x2aUJNamQrajdWeFFFSkpHTGZmenpJWHc0dFlCQU5yemRmUC94eHY2?=
+ =?utf-8?B?UnE4ajVLODkwZ1paWXQvZnNEQldRTllvaUNTMCs3VTlJaWlOTGVNK216UU9q?=
+ =?utf-8?B?WnB2WERERHEwZERSOVRjMFdSL1pRZXEvWDlFaEF5NDl1Q0k2Y1Y4U2dyVEsx?=
+ =?utf-8?B?MExWODRXN1dlWEVja2JubnBJWTZQWEx5WXIzT01zNmV1bVhGdmV3SkI5STBl?=
+ =?utf-8?B?TmtLZGFweENtVWFTclZySGY3QzlIK1RPd1p6VnJYMmIxZXFyM0NoTlRrR0Nm?=
+ =?utf-8?B?NnZyUEtQWDIwTUFUNUhhY0drY2xkMGh5eUFiMG15a0w4TzlsZ0djM0xRVkJj?=
+ =?utf-8?B?SGwweTkzRFlSc1p5aXBPd2p3TE0yUDkzcnBzbjJMZU5peFdFaDRwYU54SnNN?=
+ =?utf-8?B?UHJKWlJ2SkdRMWRFcEQzbjNLRGQ3RURlN3FxYUQ5WlZzVGRCcm1GZktYYVA1?=
+ =?utf-8?B?YWJ3d01ZSDlIbjY5UVcvTmhvaU9LZkhIS0RzYStzbzNoK0hxcDZueUNVM3M4?=
+ =?utf-8?B?QlpNamxFbkZ4Q3IxK0U1SXRmS1A0Z1dqcTg5UERwWHJZMkxGcTRiSGZneTBM?=
+ =?utf-8?B?UG9JUERzTjhuaHpWRm9rVmVKUlFIQnF6ZHpYQ0x4K1VEUjh3R0dBL2VtdlhV?=
+ =?utf-8?B?YnVXbmo2ZnNRN2k5N1crVkYwRktxT3VtbWlKK09XVGdRUjdKR0Q3K3FQdERy?=
+ =?utf-8?B?MmlTNlh2L0tGNVZ2SWowU2pUS2FrZnVadVZYUWRDdEh3aFd1QkZMazVUNG1W?=
+ =?utf-8?B?RFpSdW8ybkNGa1FFL2N5UFNkeGNVWmN0OXZ4M29INlRlc0VzV2lMczJZTzdI?=
+ =?utf-8?B?T0U3Y21ZVXpFMGtpYVd5Slk5cmVCM0VQejJDcFNsSUxNTU1DL1ppbHlsYVFs?=
+ =?utf-8?B?VUlWZHN2RlBxWkkvTTdRb3pKeE9GN3Z4TEJCeVNzUUVkcGNiWDMvNUM1ZW0z?=
+ =?utf-8?B?RUdoZ0V1ODdzNXk1eUI5eTZzaTV6eC85dEs3TThGU2sxVlVwWEorTkJXNFhN?=
+ =?utf-8?B?Q0VZVmlReDkyT09UMjc3ZjV6ckg4Y1MvVGlUbmdZRDVxZ2kxVDBQamxGMnpo?=
+ =?utf-8?B?R0ZjWHZGaHp3OGJtekxxR1VLY0Y3NHlrTmdLUnRVRXZ1VUJiRlZBM2g0WnN4?=
+ =?utf-8?B?SjBDQVlVc2ZwSm1nMDJqRXU2dEVKOGdNejhBUlExK0lRdzZ6bFJydkdBU0pX?=
+ =?utf-8?B?QUI5djduUDhub2FlVFVoZDlqVFF4ZTJLb1B4QStYRU8rR1crY3hka0RUbkFK?=
+ =?utf-8?B?YUxEVlBtUkljamhzSnpEbDVuekhOUmZzT0wvQ21vdlR3cmNxaFVMSEFUOHdH?=
+ =?utf-8?B?WWNXSVRqSVF5am9udFEyNDgwWCsvblpLVUpSTnNRd3NpN1E1UHpVK3F6M0hs?=
+ =?utf-8?Q?x7N5CQKUc0eSDNDeEijbknJP9?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 607a2d6d-8af0-4499-dfc0-08db76e5cda6
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB7836.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2023 07:50:41.4318 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2023 08:09:17.6092 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ftlHTGgB/c0NqLYPA6+Y8Kn+kWqwRo385a3AHqgP4yZhUN09tivGE8O3yFZoZz+UGGq6jXE69kmfPmGq6M798Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR11MB6129
+X-MS-Exchange-CrossTenant-UserPrincipalName: eH7177SrqCqe1NdYUSfxqua9wGqqn6ZO2Id13SNd+CtbD5UJ/O23sgFgqo+Od+LrOITZBKjOuUmc0IyBn9GB3A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7877
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687852271; x=1719388271;
+ t=1687853362; x=1719389362;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=YMcQnJJgMxiML2KOfla72KGRrvm6USZ3nO/EEsjW7VM=;
- b=fSrZz0qKC0Sm/0Wazxfuwu6QxZXAJuhm/8rfPR18Ir8hk0qJ7dI4JtYZ
- 5Gz0HrrX519uAenCc97Y29eSeafnkahBf0cBs/wgUpA6987iNG/V5EV44
- jc5P/ClvZbsq8GLPCsbthdBES2bTPnVepHf80zhF0KkH9B9bzDKNQpO3L
- YW/NKRbMAKHZ8trDbf5X0d1RcyVjkylS/GvuaPnJ17HIAj3m2pwjZ7+l6
- GKXR7n6xgIlNg1WdKVppe6neErAMEcfCZR6eS0eMOQ+RfOVoeIpnt8vyp
- qfZ+CUKHoymnel5FLDlI5eUevHZwUI4HL2E773dwxeSqvHRd7ECR6a1Fw
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=rSAIVMPiVW3HLIObVb9DRzC3hTklOij5TrmVKKCL+8o=;
+ b=T0iY+2u31zk+DsWGTJ24/RO3LCtCAaFAnOOf04Ui/VzLEIWfnNMBzJ3Z
+ j07S8PFsB9cVHZg/qgfIflscFmCUeaoc0Hhv+uhts5Kcglf+8OhuNdivX
+ dcaaScC1hsKAjhKvh0/RMN5FyPtY8ik299swtniXUpfblNm2g1PfRvkKQ
+ 0TVRu/0AD3kpxk5JdNCi09T8UvfEKNsYYXJFCptxYDpEs3SkqZZrH/Id9
+ Q/+9eR0nvRbetXri4ecVIOIjmrAOq1cIomfqyN1j6mXHVJ3Jpw0p/Dq6N
+ EWNg9MYWxiBqY3ikozoUtXqB8k5OYUEdzzn0pTtzzri7i8OXja+LZnJKn
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fSrZz0qK
+ header.a=rsa-sha256 header.s=Intel header.b=T0iY+2u3
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next V2 04/15] ice: add migration
- init field and helper functions
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next V2 15/15] vfio/ice: support
+ iommufd vfio compat mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -199,92 +203,101 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi Jason,
 
-On 6/21/2023 9:35 PM, Jason Gunthorpe wrote:
-> On Wed, Jun 21, 2023 at 09:11:01AM +0000, Lingyu Liu wrote:
->> Adds a function to get ice VF device from pci device.
->> Adds a field in VF structure to indicate migration init state,
->> and functions to init and uninit migration.
+On 6/21/2023 10:40 PM, Jason Gunthorpe wrote:
+> On Wed, Jun 21, 2023 at 09:11:12AM +0000, Lingyu Liu wrote:
+>> From: Yahui Cao <yahui.cao@intel.com>
 >>
->> This will be used by ice_vfio_pci driver introduced in coming patches
->> from this series.
+>> In iommufd vfio compat mode, vfio_dma_rw() will return failure, since
+>> vfio_device_has_container() returns false and device->iommufd_access is
+>> NULL.
 >>
->> Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
->> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
->> ---
->>   drivers/net/ethernet/intel/ice/Makefile       |  1 +
->>   drivers/net/ethernet/intel/ice/ice.h          |  1 +
->>   .../net/ethernet/intel/ice/ice_migration.c    | 68 +++++++++++++++++++
->>   drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  7 ++
->>   drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  1 +
->>   include/linux/net/intel/ice_migration.h       | 26 +++++++
->>   6 files changed, 104 insertions(+)
->>   create mode 100644 drivers/net/ethernet/intel/ice/ice_migration.c
->>   create mode 100644 include/linux/net/intel/ice_migration.h
+>> Currently device->iommufd_access will not be created if vfio device is
+>> backed by pci device. To support IOVA access, manually create
+>> iommufd_access context by iommufd_access_create/attach() and access IOVA
+>> by iommufd_access_rw(). And in order to minimize the iommufd_access's
+>> impact, store the iommufd_access context in driver data, create it only
+>> before loading the device state and destroy it once finishing loading
+>> the device state.
 >>
->> diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
->> index 960277d78e09..915b70588f79 100644
->> --- a/drivers/net/ethernet/intel/ice/Makefile
->> +++ b/drivers/net/ethernet/intel/ice/Makefile
->> @@ -49,3 +49,4 @@ ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
->>   ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
->>   ice-$(CONFIG_ICE_SWITCHDEV) += ice_eswitch.o ice_eswitch_br.o
->>   ice-$(CONFIG_GNSS) += ice_gnss.o
->> +ice-$(CONFIG_ICE_VFIO_PCI) += ice_migration.o
->> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
->> index 9109006336f0..ec7f27d93924 100644
->> --- a/drivers/net/ethernet/intel/ice/ice.h
->> +++ b/drivers/net/ethernet/intel/ice/ice.h
->> @@ -55,6 +55,7 @@
->>   #include <net/vxlan.h>
->>   #include <net/gtp.h>
->>   #include <linux/ppp_defs.h>
->> +#include <linux/net/intel/ice_migration.h>
->>   #include "ice_devids.h"
->>   #include "ice_type.h"
->>   #include "ice_txrx.h"
->> diff --git a/drivers/net/ethernet/intel/ice/ice_migration.c b/drivers/net/ethernet/intel/ice/ice_migration.c
->> new file mode 100644
->> index 000000000000..1aadb8577a41
->> --- /dev/null
->> +++ b/drivers/net/ethernet/intel/ice/ice_migration.c
->> @@ -0,0 +1,68 @@
->> +// SPDX-License-Identifier: GPL-2.0
->> +/* Copyright (C) 2018-2023 Intel Corporation */
->> +
->> +#include "ice.h"
->> +
+>> To be compatible with legacy vfio, use vfio_device_has_container() to
+>> check the vfio uAPI. If in legacy vfio mode, call vfio_dma_rw()
+>> directly, otherwise call iommufd_access_rw().
+> This is not the right approach, you should create your access by
+> overloading the iommufd ops. Nak on exposing vfio_device_has_container
+Could you explain a little bit more about "create your access by 
+overloading the iommufd ops." ?
+
 >> +/**
->> + * ice_migration_get_vf - Get ice VF structure pointer by pdev
->> + * @vf_pdev: pointer to ice vfio pci VF pdev structure
+>> + * ice_vfio_pci_emulated_unmap - callback to unmap IOVA
+>> + * @data: function handler data
+>> + * @iova: I/O virtuall address
+>> + * @len: IOVA length
 >> + *
->> + * Return nonzero for success, NULL for failure.
->> + *
->> + * ice_put_vf() should be called after finishing accessing VF
+>> + * This function is called when application are doing DMA unmap and in some
+>> + * cases driver needs to explicitly do some unmap ops if this device does not
+>> + * have backed iommu. Nothing is required here since this is pci baseed vfio
+>> + * device, which has backed iommu.
 >> + */
->> +void *ice_migration_get_vf(struct pci_dev *vf_pdev)
+>> +static void
+>> +ice_vfio_pci_emulated_unmap(void *data, unsigned long iova, unsigned long len)
 >> +{
->> +	struct pci_dev *pf_pdev = vf_pdev->physfn;
->> +	int vf_id = pci_iov_vf_id(vf_pdev);
->> +	struct ice_pf *pf;
->> +
->> +	if (!pf_pdev || vf_id < 0)
->> +		return NULL;
->> +
->> +	pf = pci_get_drvdata(pf_pdev);
->> +	return ice_get_vf_by_id(pf, vf_id);
 >> +}
->> +EXPORT_SYMBOL(ice_migration_get_vf);
-> This doesn't look right, you shouldn't need functions like this.
+>> +
+>> +static const struct iommufd_access_ops ice_vfio_user_ops = {
+>> +	.needs_pin_pages = 1,
+>> +	.unmap = ice_vfio_pci_emulated_unmap,
+>> +};
+> If you don't call pin pages then you shouldn't set needs_pin_pages?
 >
-> The VF knows itself, and it goes back to the PF safely from the VFIO
-> code. You should not be doing things like 'vf_pdev->physfn'
+> An empty unmap op is unconditionally wrong.
+Will change in next version.
 >
-> Loook at how the other drivers are structured.
+>> + * ice_vfio_dma_rw - read/write function for device IOVA address space
+>> + * @data: function handler data
+>> + * @iova: I/O virtuall address
+>> + * @buf: buffer for read/write access
+>> + * @len: buffer length
+>> + * @write: true for write, false for read
+>> + *
+>> + * Read/write function for device IOVA access. Since vfio_dma_rw() may fail
+>> + * at iommufd vfio compatiable mode, we need runtime check what uAPI it is
+>> + * using and use corresponding access method for IOVA access.
+>> + *
+>> + * Return 0 for success, negative value for failure.
+>> + */
+>> +static int ice_vfio_dma_rw(void *data, dma_addr_t iova,
+>> +			   void *buf, size_t len, bool write)
+>> +{
+>> +	struct ice_vfio_pci_core_device *ice_vdev =
+>> +			(struct ice_vfio_pci_core_device *)data;
+>> +	struct vfio_device *vdev = &ice_vdev->core_device.vdev;
+>> +	unsigned int flags = 0;
+>> +
+>> +	if (vfio_device_has_container(vdev))
+>> +		return vfio_dma_rw(vdev, iova, buf, len, write);
+>> +
+>> +	if (!current->mm)
+>> +		flags |= IOMMUFD_ACCESS_RW_KTHREAD;
+> No, you need to know your own calling context, you can't guess like this.
+>
+> I suppose this is always called from an ioctl?
+Yes. This is always called from ioctl. Will remove this calling context 
+check.
+>> @@ -19,7 +21,7 @@ void ice_migration_uninit_vf(void *opaque);
+>>   int ice_migration_suspend_vf(void *opaque, bool mig_dst);
+>>   int ice_migration_save_devstate(void *opaque, u8 *buf, u64 buf_sz);
+>>   int ice_migration_restore_devstate(void *opaque, const u8 *buf, u64 buf_sz,
+>> -				   struct vfio_device *vdev);
+>> +				   dma_rw_handler_t handler, void *data);
+> Please remove all the wild function pointers and void * opaques I see
+> in this driver. Use proper types and get your layering right so you
+> dont't have to fake up improper cross-layer calls like this.
 >
 > Jason
 
-I'll change the way to go back to the PF, following how other drivers do.
+Will refactor the API with proper types.
 
 Thanks.
 Yahui.
