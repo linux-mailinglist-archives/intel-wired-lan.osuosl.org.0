@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A703E73FB5B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jun 2023 13:49:41 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88AAA73FB9C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Jun 2023 14:01:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 40DCE60FC7;
-	Tue, 27 Jun 2023 11:49:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40DCE60FC7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28E7D611E6;
+	Tue, 27 Jun 2023 12:01:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28E7D611E6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1687866580;
-	bh=FvQKyaL0U7zlZagIqc5KlFj/s96ECZBVgkSA7jbBFBI=;
+	s=default; t=1687867315;
+	bh=OZ+jo9jGaIHIpZK4s5U+XQJCnQ0xcuWfDJfQW+HRyf8=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=taJRl/p6j4od2cICtskfDB74K/z1FeNhwRRuiklUvrS4zdeYtr39hy83abfGxzC1D
-	 nNGLBUVReNWzeC6Ia1SUSBUy3/6qikt4c94D3hlIcnrLexpjqtGtM9I5nYyxReEVkj
-	 KGERcC9WYwOFWSfO3lHK7oKX5U8O5Pt2JnhzJep3Iy2EYQseuU0Ayk06Vd1m2ChiBF
-	 lO1r+Jy3dnYA9c9/8ZEcXvhwD/UqIaODJbpGL9JktrVIOgh9kkIxxw3vugouJmJeJS
-	 flT7J2smEhv54erDyQbFMOSmQmNOy7iOkXtQmsK1PCGa+I1reORSafeadOT3ddMyad
-	 fNus4usjUxtlQ==
+	b=RwNLDf9ZGKFgbRLfElXuIrcDRdqwZwR7AhJ3sMF5tZjmOuzLgVIsWzTbHTB5zkNyk
+	 6J6AmiRyRwo0ZP4CH3pHvKF8v0yylMU/Ptw/XZ1s4DCKV3KbiMfgXitJjmXT1eaTl2
+	 h2f2Tb7/eedEQKCdsOW8p/GIkVvs43uX581+xIQYv8afIYj7St3Uz65Oylu0vW0ONR
+	 s2s5fr0lsemqn3Owe+K3/n1tEBSdNikC3grGWs0PkWgVInTKrRCwasuBRZF/D8pPNB
+	 HW66sSkJbZGg/7v1FaMMn2cPUb7tqRLNcemgImzYbr4TglKwGyBepqi9myi3AXjJYw
+	 9GaSbb+DGgjJg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qwTzHoYt8k9b; Tue, 27 Jun 2023 11:49:36 +0000 (UTC)
+	with ESMTP id yIgQ85_Kh2vG; Tue, 27 Jun 2023 12:01:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8C864611E0;
-	Tue, 27 Jun 2023 11:49:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C864611E0
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82D6761247;
+	Tue, 27 Jun 2023 12:01:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 82D6761247
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8194A1BF369
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 11:49:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C8411BF369
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 12:01:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 59A9E821A0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 11:49:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 59A9E821A0
+ by smtp4.osuosl.org (Postfix) with ESMTP id 512B541A49
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 12:01:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 512B541A49
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZWNYOmzNTAVp for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Jun 2023 11:49:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id epjqHlMQXlQL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Jun 2023 12:01:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2937781770
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2937781770
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 11:49:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="425218769"
-X-IronPort-AV: E=Sophos;i="6.01,162,1684825200"; d="scan'208";a="425218769"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jun 2023 04:49:25 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3FCC341A43
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3FCC341A43
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Jun 2023 12:01:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="364100889"
+X-IronPort-AV: E=Sophos;i="6.01,162,1684825200"; d="scan'208";a="364100889"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2023 05:01:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="716514127"
-X-IronPort-AV: E=Sophos;i="6.01,162,1684825200"; d="scan'208";a="716514127"
+X-IronPort-AV: E=McAfee;i="6600,9927,10753"; a="786559972"
+X-IronPort-AV: E=Sophos;i="6.01,162,1684825200"; d="scan'208";a="786559972"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orsmga002.jf.intel.com with ESMTP; 27 Jun 2023 04:49:17 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 27 Jun 2023 05:01:29 -0700
 Received: from pkitszel-desk.tendawifi.com (unknown [10.255.204.178])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 072123544E;
- Tue, 27 Jun 2023 12:49:14 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id DB35234EFA;
+ Tue, 27 Jun 2023 13:01:26 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 27 Jun 2023 13:49:06 +0200
-Message-Id: <20230627114906.92366-1-przemyslaw.kitszel@intel.com>
+Date: Tue, 27 Jun 2023 14:01:24 +0200
+Message-Id: <20230627120124.93971-1-przemyslaw.kitszel@intel.com>
 X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687866566; x=1719402566;
+ t=1687867301; x=1719403301;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=dYgFgID/qP/CPbtDpnPCzJKN1QNU7un8dawQ7i+XdL4=;
- b=OYhwTPt+JoHK7k2RQ/1m0qkeIN+8XHXHYqgsQtFdXiIubWNXNqdR7Vhy
- dYRwbXlOpqrHQx1pJ6rEo1HvwS+Lu2QeEJthEoeSt59OMAzQzIX17gNNs
- YWh1+EuKTv43N68a001K1J8hE6sxh0vfUvZx1Im7OeVeWZADD95sgnsxA
- WMapum7AIlCulw4a+mwQuKnpy5vLbqmM7cudJsREOVx5DRha4qBUvv/hY
- 7NSjLNRWTtHS3H2QWdoYaa81aCOzwha/rpJLxnBFqHzGAcDfmgoCzUXI8
- 5BFlrw6JRqPShCSAhCkufmK2J9ve1E/jrO/uenuT6WPwFbXeYcR7CCTgO
+ bh=R6iv11S9ERnJhK/KqkKAVqVZqiUk9Lhfj+YEwp0sqLs=;
+ b=QWhKFgs5VwLoHrog0/pDRZoUolmck/7KYO3Zee7kAj8PF3mi5dtyY+xI
+ rCkh/cpM4M13j8PC0KYR1GXn3DEaFGcm4/KqKrR+QhqFDJIT4W3ecr+kV
+ ZUKAvKdc225TAh3w2UScbW3rCO7j19+Vv3akTzyrPUhoN0QbBGTCfksPz
+ xCqODO0HpThIfZCvMRCrEsqwrB8iZPiqndL2tm5X2PpHKm5t/aRW3k3LU
+ 2odxGrCpTTZsMBYzwewHtIdKzhf+mWbjUNzVhraI+Bhqwnh8whprkvb/H
+ ApK0b4q+goxukRMHoY7zJ7esPI0giLB6rMeevWk225gkKkWLIn+aHDq5B
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OYhwTPt+
-Subject: [Intel-wired-lan] [PATCH linux-firmware v2] ice: add LAG-supporting
+ header.a=rsa-sha256 header.s=Intel header.b=QWhKFgs5
+Subject: [Intel-wired-lan] [PATCH linux-firmware v3] ice: add LAG-supporting
  DDP package
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -109,7 +109,9 @@ in Link Aggregation (LAG) use case.
 Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
 --
-v2: use proper license, "ice" instead of "ice.enhanced"
+v3: use proper license, "ice" instead of "ice.enhanced"
+    sorry for such short time before repost (:/)
+v2: rebase
 ---
  WHENCE                                |   1 +
  intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg | Bin 0 -> 692776 bytes
@@ -117,17 +119,17 @@ v2: use proper license, "ice" instead of "ice.enhanced"
  create mode 100644 intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg
 
 diff --git a/WHENCE b/WHENCE
-index e6309ebae499..44870bff45f9 100644
+index e6309ebae499..d648d52a5a1f 100644
 --- a/WHENCE
 +++ b/WHENCE
-@@ -5835,6 +5835,7 @@ Link: intel/ice/ddp/ice.pkg -> ice-1.3.30.0.pkg
+@@ -5831,6 +5831,7 @@ Driver: ice - Intel(R) Ethernet Connection E800 Series
+ 
+ File: intel/ice/ddp/ice-1.3.30.0.pkg
+ Link: intel/ice/ddp/ice.pkg -> ice-1.3.30.0.pkg
++File: intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg
+ 
  License: Redistributable. See LICENSE.ice for details
  
- File: intel/ice/ddp-comms/ice_comms-1.3.40.0.pkg
-+File: intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg
- File: intel/ice/ddp-wireless_edge/ice_wireless_edge-1.3.10.0.pkg
- 
- License: Redistributable. See LICENSE.ice_enhanced for details
 diff --git a/intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg b/intel/ice/ddp-lag/ice_lag-1.3.1.0.pkg
 new file mode 100644
 index 0000000000000000000000000000000000000000..c527bec3908fc5473274c7f28ab3aac8ab3b15cb
