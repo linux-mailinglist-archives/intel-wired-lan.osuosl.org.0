@@ -1,105 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B03007421D6
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jun 2023 10:13:57 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78661742208
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jun 2023 10:22:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 713D4400DA;
-	Thu, 29 Jun 2023 08:13:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 713D4400DA
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7548D81D5A;
+	Thu, 29 Jun 2023 08:22:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7548D81D5A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688026435;
-	bh=1+yi7iP8FQyR4nIMl1+bcffhnCVK3jgb4Z+DmdgKmw0=;
+	s=default; t=1688026974;
+	bh=XLXmif6byoBPifMpqk76Q+Hu0nbDJ+xMM/WfFmjmiW4=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=KXuRtv+FQ+GAcYlG3/R6fgYlae2x5p7tEX20lnVAORRRlsWtcByrlqVrAVY4YI8DF
-	 odcdtjtqY8sKD0PUiYFldHXVQbOAghxA9JZQtVNcPzEd9S7eQLxPd/7Zw+yTg4rz8i
-	 GS5/WYgvprcmwJ/Tw9OAioP9iJWoneaHuIMIXZxSH7fjDy9ulopGCL59Ze8v/ecjek
-	 G285yRNcL30roJnWlFp/OVMGSVQk2wJ2+IGGcnp6FY9VTHEIGAmL36qSiDRh1J5tAT
-	 MBBAeFEYnKLs+G+LKlE/Y4OVs2r2p2JPkvEmjHJ1TBnem4sBWntegrTH41MV8R72VO
-	 fYj/dyWkCJBww==
+	b=6mNnSyJlHGFT8py/DeV+wtaDlmYP674ps37UgS8fQ4g4k//09seESvXtYqlcj0UCi
+	 9HefBOC1vHyh0Pz4M6Ma5Y8Ql9C93ZjoDUt2NS9UlZEGn5hxL4gnouY/cQzS22P/Wm
+	 jh6Vyyyg0U2jhnNXjWb7SjTZF4s30h1exGuZeT/L1SC8a4SQ0Lc/wOYNWjVFJBaJbr
+	 v3fhuRnHL1ARpW0WMpmvcur2P6WRsvCUcpyd/nm74mf4Nhqh14gE9S2c4TolLpeGf9
+	 jx8ZwXZh+iPZA9Ls7pMHJKAZYshWq6QvX8ZInt1TSxGI41QtOJiBb/ntZXXkWDCaCg
+	 BlPRjYgBIwaww==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wFl4zpHVjamz; Thu, 29 Jun 2023 08:13:54 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1qJiiI2RS36e; Thu, 29 Jun 2023 08:22:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 52B8540391;
-	Thu, 29 Jun 2023 08:13:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 52B8540391
+	by smtp1.osuosl.org (Postfix) with ESMTP id 663C981A8E;
+	Thu, 29 Jun 2023 08:22:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 663C981A8E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C9DB1BF279
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:13:49 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 89D551BF279
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:22:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 646AE40391
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:13:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 646AE40391
+ by smtp1.osuosl.org (Postfix) with ESMTP id 62C5E81B23
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:22:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 62C5E81B23
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2Rzm4tKWcDXa for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Jun 2023 08:13:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xIJtoCsZJmjN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Jun 2023 08:22:43 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CABDA40199
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
- [IPv6:2a00:1450:4864:20::333])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CABDA40199
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:13:47 +0000 (UTC)
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-3fbab489490so4009975e9.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 01:13:47 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CA25781A8E
+Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com
+ [IPv6:2a00:1450:4864:20::435])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CA25781A8E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 08:22:38 +0000 (UTC)
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-313df030ccaso435742f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jun 2023 01:22:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688026425; x=1690618425;
+ d=1e100.net; s=20221208; t=1688026957; x=1690618957;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XCNcU+qQjqANE7miJnt/rRYeXCcZNW96kSXkJVN64sA=;
- b=hYsf96adG+o7mfBF0bungYbnm9gnzpm9Rzg3zAgPJaIaHgrDj8xDR6+9rtdVxrulQz
- imi0WzLN6qqGQGRhxDXDtDi4ytN5JNHm5cYImdUQhJSMTMAphSSww6X8k6f6v93eQFCO
- Dl3CqKRX0OmW3kyqPbxmaio8IuUlI/ZX5iLfGVlShBOiFztzZrfx74w3viuVF8+fHCJt
- EXxF1E+JkkBbV4mGQWp920k2X9qRqfT4wOhjqssstWHf0LCr5B40lj3SHiRLLDkZl7XD
- Moyi7yG86ITxY4U3TJs8jc3lY/F2Ggjk9sXIkQHufrLFx01MU/XCeNT0skTfdtQVyeVd
- 5jig==
-X-Gm-Message-State: AC+VfDxoO9iyHWzX51oG/VO54Ekyxh5dluVNWn9y6l2KYbI6T1DZizRK
- 9y2dPoCi9fE+SbcfMdWaIIbHpA==
-X-Google-Smtp-Source: ACHHUZ4Hq/Ygv5bP0PW9CWoZ78vG28FdK9CR3U+nUITIwO8dut4OijbZB0fTo6rEzYqGldh55avUEQ==
-X-Received: by 2002:a1c:7417:0:b0:3f9:b87c:10db with SMTP id
- p23-20020a1c7417000000b003f9b87c10dbmr20901942wmc.3.1688026425228; 
- Thu, 29 Jun 2023 01:13:45 -0700 (PDT)
+ bh=pnekQegzwsRisctNnmboo1Flv3vcYES0Lp+fckFN5sY=;
+ b=ijf7VAZoBOx+/2aWGwBhGC7j56XCXI/+wjCbmfIB6zKCkZTXVQYptQMVedlcj/pX1B
+ XTgOpP4uqA/cMS6Gi7J7VeyJKHaFrrR8+KsHid0SXwTwOJsS4b0zpj8VKqPuJvhjEGA+
+ otmXP2U6HoDOF6SNNgMaRwfEN8abvL4jrNKIcZFSiEMfSHKXJg/e5yQhtieL9dTy20OI
+ AuKEia4mrR7SbCqW5Mo44NKZtLBRS5YDGRqEKhI8b8Bniz+XjXkHvVpdrFA3unqlDGJ0
+ zuFYbaZp/5EXhWZMz5V2yEeIGsyAMpmd4Pbc0YRGkWiN0L54zn06ZEqUJhhJMnULy8xg
+ O/4A==
+X-Gm-Message-State: AC+VfDw1vezaaXZLtO86aZmtlu70KTezArqdA8vajU67qg7Oc8aGwAOJ
+ VhGWPI2+AWXXwVTEnmAp3ZBfHw==
+X-Google-Smtp-Source: ACHHUZ4JXzVgHJuPgHk885EhxpRoKdPImG5fW7Lkuhbe5Byutu+bzpvcBvxdLy7fTClkzPvy9enJ1Q==
+X-Received: by 2002:a5d:4985:0:b0:313:f5f0:8efa with SMTP id
+ r5-20020a5d4985000000b00313f5f08efamr8300725wrq.18.1688026956848; 
+ Thu, 29 Jun 2023 01:22:36 -0700 (PDT)
 Received: from localhost (host-213-179-129-39.customer.m-online.net.
  [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- g11-20020a7bc4cb000000b003fbab76165asm5145964wmk.48.2023.06.29.01.13.44
+ j9-20020a5d4649000000b0030aefa3a957sm15272550wrs.28.2023.06.29.01.22.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jun 2023 01:13:44 -0700 (PDT)
-Date: Thu, 29 Jun 2023 10:13:43 +0200
+ Thu, 29 Jun 2023 01:22:36 -0700 (PDT)
+Date: Thu, 29 Jun 2023 10:22:34 +0200
 From: Jiri Pirko <jiri@resnulli.us>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZJ09N2TI4wHrA4rB@nanopsycho>
-References: <20230623123820.42850-1-arkadiusz.kubalewski@intel.com>
- <20230623123820.42850-4-arkadiusz.kubalewski@intel.com>
+To: Vitaly Grinberg <vgrinber@redhat.com>
+Message-ID: <ZJ0/StDYFANB1COA@nanopsycho>
+References: <CACLnSDhkUA=19905RKk=f1WBkd3jTEDcvytJCgavi90FroXb5w@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230623123820.42850-4-arkadiusz.kubalewski@intel.com>
+In-Reply-To: <CACLnSDhkUA=19905RKk=f1WBkd3jTEDcvytJCgavi90FroXb5w@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1688026425; x=1690618425; 
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1688026957; x=1690618957; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=XCNcU+qQjqANE7miJnt/rRYeXCcZNW96kSXkJVN64sA=;
- b=t+jCRgWMe9clsMdvABkCIyCYTsRENxOd2x1gINk9t8cwUOVP4GpHwYsveP15/BaTxa
- IiY4bWtoAXAchtgGBvWVBSVHajfMyXWMfg8mH09pnBnYrxbBszocjJo87KBBFuLdyr8w
- gDwrrJMKhMocvsJEE+7i6hMpn6aw274D3+HbNb8XDLOh+TxC3BZS79vlWTwn34U7DwIo
- UrNO+xXIyioiE15XYWLzIOxMxZF4seSi5sOpw+1uwvmqFJjPMEFdZ2BjQAT25raMMQuc
- Hd/KixDUkzG8rXkE/gv8cxwnI39xp/f05IZEtVkXU+ZL/rGRqJy4MJyAOvyOgom44ue+
- K2zQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=pnekQegzwsRisctNnmboo1Flv3vcYES0Lp+fckFN5sY=;
+ b=QAmw8VvKPSKCa2K72rY2EW7V5lfX1lj+u/ACfv1Lx26QU/dIWS9faLaO9CZ17mMODc
+ b6o/klntMdQqnroCYdNwla8FudZSYjpcRttWd5o8K5Gtlq9bcYQWm/SHdoKkCAhs9WW1
+ KXp3TvZhEX/NLfsF/peaplmVa7L8ChKCi2Ykc2Gy4gLnFbYvgeDYufZ+b6ZIUq7lR9Ik
+ grbNHJXGfMr3ChwJ3EnstUMChWbIT3wqtJDUA5u81A23t9LYLCAoU41TZxGUmHOcBrE/
+ P1MM/p/SDZM9S2D59RbMaL94BIUGSkPWAhGmwBDC37C/V4VyCgZN200t/RgDEX7n3TaO
+ GkNw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
  header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
- header.s=20221208 header.b=t+jCRgWM
-Subject: Re: [Intel-wired-lan] [RFC PATCH v9 03/10] dpll: core: Add DPLL
- framework base functions
+ header.s=20221208 header.b=QAmw8VvK
+Subject: Re: [Intel-wired-lan] [RFC PATCH v8 00/10] Create common DPLL
+ configuration API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,66 +111,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
- javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
- anthony.l.nguyen@intel.com, netdev@vger.kernel.org, linux-clk@vger.kernel.org,
- lucien.xin@gmail.com, leon@kernel.org, corbet@lwn.net,
- linux-rdma@vger.kernel.org, masahiroy@kernel.org, linux-doc@vger.kernel.org,
- jesse.brandeburg@intel.com, vadfed@meta.com, intel-wired-lan@lists.osuosl.org,
- airlied@redhat.com, vadfed@fb.com, pabeni@redhat.com,
- ricardo.canuelo@collabora.com, arnd@arndb.de, idosch@nvidia.com,
- richardcochran@gmail.com, claudiajkang@gmail.com, kuniyu@amazon.com,
- jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com, kuba@kernel.org,
- nicolas.dichtel@6wind.com, linux-arm-kernel@lists.infradead.org,
- axboe@kernel.dk, sj@kernel.org, vadim.fedorenko@linux.dev, linux@zary.sk,
- gregkh@linuxfoundation.org, ogabbay@kernel.org, nipun.gupta@amd.com,
- linux-kernel@vger.kernel.org, andy.ren@getcruise.com, tzimmermann@suse.de,
- jonathan.lemon@gmail.com, saeedm@nvidia.com, davem@davemloft.net,
- milena.olech@intel.com, hkallweit1@gmail.com
+Cc: geert+renesas@glider.be, linux-doc@vger.kernel.org, razor@blackwall.org,
+ phil@nwl.cc, jesse.brandeburg@intel.com, edumazet@google.com,
+ Benjamin Tissoires <benjamin.tissoires@redhat.com>, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, linux-clk@vger.kernel.org, lucien.xin@gmail.com,
+ leon@kernel.org, corbet@lwn.net, linux-rdma@vger.kernel.org,
+ masahiroy@kernel.org, Michael Tsirkin <mst@redhat.com>,
+ Javier Martinez Canillas <javierm@redhat.com>, vadfed@meta.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, vadfed@fb.com,
+ Paolo Abeni <pabeni@redhat.com>, ricardo.canuelo@collabora.com, arnd@arndb.de,
+ idosch@nvidia.com, richardcochran@gmail.com, claudiajkang@gmail.com,
+ kuniyu@amazon.com, jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com,
+ David Airlie <airlied@redhat.com>, nicolas.dichtel@6wind.com,
+ linux-arm-kernel@lists.infradead.org, axboe@kernel.dk, sj@kernel.org,
+ vadim.fedorenko@linux.dev, linux@zary.sk, gregkh@linuxfoundation.org,
+ ogabbay@kernel.org, nipun.gupta@amd.com, linux-kernel@vger.kernel.org,
+ andy.ren@getcruise.com, tzimmermann@suse.de, jonathan.lemon@gmail.com,
+ saeedm@nvidia.com, davem@davemloft.net, milena.olech@intel.com,
+ hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, Jun 23, 2023 at 02:38:13PM CEST, arkadiusz.kubalewski@intel.com wrote:
->From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->
+Thu, Jun 22, 2023 at 09:44:19AM CEST, vgrinber@redhat.com wrote:
+>Hi,
+>Could it be possible to add PPS DPLL phase offset to the netlink API? We
+>are relying on it in the E810-based grandmaster implementation.
 
-One thing I forgot to point out the last time:
-
-[...]	
-	
->+int
->+dpll_pin_register(struct dpll_device *dpll, struct dpll_pin *pin,
->+		  const struct dpll_pin_ops *ops, void *priv)
->+{
->+	int ret;
->+
->+	if (WARN_ON(!ops) ||
->+	    WARN_ON(!ops->state_on_dpll_get) ||
->+	    WARN_ON(!ops->direction_get))
-
-Please add check that you don't register to dpll instance which is
-unregistered. Similar check needs to be added to pin_on_pin register.
-
-Also, make sure you don't unregister dpll device/pin which has child
-pins registered under it.
+In which driver you need to implement this?
 
 
->+		return -EINVAL;
->+
->+	mutex_lock(&dpll_lock);
->+	if (WARN_ON(!(dpll->module == pin->module &&
->+		      dpll->clock_id == pin->clock_id)))
->+		ret = -EINVAL;
->+	else
->+		ret = __dpll_pin_register(dpll, pin, ops, priv);
->+	mutex_unlock(&dpll_lock);
->+
->+	return ret;
->+}
-
-[...]
+>Thanks,
+>Vitaly
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
