@@ -2,83 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63C58745852
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jul 2023 11:28:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58123745881
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jul 2023 11:36:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AC01060E4A;
-	Mon,  3 Jul 2023 09:28:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC01060E4A
+	by smtp3.osuosl.org (Postfix) with ESMTP id F1A2760E3E;
+	Mon,  3 Jul 2023 09:36:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F1A2760E3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688376495;
-	bh=Tinyok4uEc5UipPD17BTy1ehkFPy0PNOUhpVqosdjsw=;
+	s=default; t=1688376986;
+	bh=L5564O4N6dayL12OCyA0UpsN2Qs0cCtEbdTCORVIz44=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=4HTCFAcuZgP/nALNDb6YqpTIcbSnZhMEYrmtNiHkO83raYQgXEn4HbLMJOP3AC7Cl
-	 xh+H8QjaSCxov3WcUT5WBVsGCFhfGO+vO1mXvypVCR7SauBSzGeMFEglk9jOpg12Yk
-	 wNzoRBb6YWeWpUH9aim/dKZ5lq/4123wuypS9SjTtYONCi9Mvve27MCtPvbSgCfS95
-	 OWbh9093YE6zxmfVxyzIduvC8DvdqareUyV7XCCmwLAPRQ+v3RZUrzuYoXxotsKCwf
-	 ALxQql4F8J/51RDpTcs1IMgP+CbFfH6WZ0vPYglTm72KjjnYtLzkwNr3crZViUiQ2M
-	 fm53iRbMlSyFQ==
+	b=dJ0O4qmlkeQCQs8SaEs9tZ6oV5q4+NTJd/w+EoUBcEI+C3UJrKBs31jRGCvn3QvXG
+	 wBZlve4C0Q6iBDAeHhMUa6hfVV2v0JCfI3OsIcfEJKu0xOXoBtxWmdCAVV91xW1Km0
+	 cQR17MavX3kFkpm6OU5LwWwEqGzWGjVBN0a54fGUhiLTz93gm7yWRy8fDL/nO3+d7N
+	 nKhczdm/NFb0Hb/2GRi2lBMh08DiTNd0BtmJEWT6BuICNc/R3rkqibZ0OgZK2lNnxa
+	 Sm2GLUhPLehXNltZfPc3dobn21JyfGV+VnJdkTgJXcvMvEqVNZY2sLKlxpeekgQ3WJ
+	 rzswQN5SOZbzA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MrGoIIFuyWIv; Mon,  3 Jul 2023 09:28:15 +0000 (UTC)
+	with ESMTP id cm7jfiwOnmsH; Mon,  3 Jul 2023 09:36:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9447C607F5;
-	Mon,  3 Jul 2023 09:28:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9447C607F5
+	by smtp3.osuosl.org (Postfix) with ESMTP id C2246606FF;
+	Mon,  3 Jul 2023 09:36:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C2246606FF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C437F1BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:28:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B268E1BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:36:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9A1BB40295
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:28:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A1BB40295
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8A7CE40420
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:36:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A7CE40420
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mzRBNl5AFM3V for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Jul 2023 09:28:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yV5GQDy1FE6r for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Jul 2023 09:36:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 470F1400D3
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 470F1400D3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:28:07 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10759"; a="365406271"
-X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="365406271"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jul 2023 02:28:06 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B891940198
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B891940198
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jul 2023 09:36:18 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10759"; a="361697746"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="361697746"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Jul 2023 02:35:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10759"; a="842598722"
-X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="842598722"
+X-IronPort-AV: E=McAfee;i="6600,9927,10759"; a="748094035"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="748094035"
 Received: from gklab-018-208.igk.intel.com ([10.102.18.208])
- by orsmga004.jf.intel.com with ESMTP; 03 Jul 2023 02:27:58 -0700
+ by orsmga008.jf.intel.com with ESMTP; 03 Jul 2023 02:35:49 -0700
 From: Kamil Maziarz <kamil.maziarz@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  3 Jul 2023 11:27:50 +0200
-Message-Id: <20230703092750.74852-1-kamil.maziarz@intel.com>
+Date: Mon,  3 Jul 2023 11:35:46 +0200
+Message-Id: <20230703093546.74984-1-kamil.maziarz@intel.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688376487; x=1719912487;
+ t=1688376978; x=1719912978;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=6Y4MCcFiniPwgzg9ePYw7oA5EkB3RihZgI4/AiCbI+c=;
- b=NY9PGNzP2jG9ftUXBfUKv62ivipBuANsJgSSNDwD29VhICe1YeODpmPA
- nrNNF2cURyk8Jlw9fGZxxMcXNmGQpvZQHOpWnm5Hs9HhwbALWRcMPg2Wp
- UwDcJsM/SEKvTC3GnMIFzTNYoAKAIzryIxTdQz6b7gKA/NIAaRgBFEYY7
- 2bAGcaxEyY+A8q4eCzaxuK64RjRmQD2R1gE6pVHRsi2SprHAMb9z7kqVO
- 3MyOmsBoCa7C3WcACjjrsndX8CAaulWX3YNYdvjVT8Q2urfsVEHbhOtRS
- pfsXzqlP9CxMSjUMqPNIU5+Vjarm0qC962DG/WbFAEjHMZ2nYCyU2EaHd
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=yJZyMGUVU0AYcGQHZkYf8KR/YDM/PK7ZdyNNdswlYss=;
+ b=Ap6x6EvU7Z/gvfh/6L3bVMa1LGpxrecVsAFe22Q/uEn85y7y6AED19BE
+ HWjAqrYx7uzN9N3ekvBjvbigSfrDDl4Pbhcfmig+weaC1VCmxYgzAo7v7
+ lAiZNB2kz6NFMN8o5y1b2x6zLIXg2uOSqRGrvuvEfEomsso3P9iUH7gT1
+ WtNlG88p6RV1VMzkWHZqCZU7Rj/Nk8w9aqVTWnQUvNQau5xUuXSM1VwVd
+ BWLuduQ81sEhiVTRw9PjeEwMXLtJlh2RPCrFsqPOjao7MKWuctNDcZ7k6
+ wCrd8k6Lvu0y9oQxZkWfGo6UMTuixOQUWde38hGXili96gjKztrYzCDcC
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NY9PGNzP
-Subject: [Intel-wired-lan] [PATCH iwl-net v3] ice: Fix RDMA VSI removal
+ header.a=rsa-sha256 header.s=Intel header.b=Ap6x6EvU
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: Fix RDMA VSI removal
  during queue rebuild
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -112,9 +112,6 @@ Fixes: 348048e724a0 ("ice: Implement iidc operations")
 Signed-off-by: Rafal Rogalski <rafalx.rogalski@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 Signed-off-by: Kamil Maziarz <kamil.maziarz@intel.com>
----
-v2: instead of adding new flag use already implemented check for RDMA
-v3: added adev_mutex and device lock as recommended
 ---
  drivers/net/ethernet/intel/ice/ice_main.c | 18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
