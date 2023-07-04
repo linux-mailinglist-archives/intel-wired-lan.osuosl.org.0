@@ -2,147 +2,147 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CA89748792
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:14:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FC76748799
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:15:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9427D61063;
-	Wed,  5 Jul 2023 15:14:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9427D61063
+	by smtp3.osuosl.org (Postfix) with ESMTP id C5B7B6107C;
+	Wed,  5 Jul 2023 15:15:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C5B7B6107C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688570089;
-	bh=6uretr4Z1RrmC6D2WBIr7qgL9ezp/T/VQd0JtA0ssz0=;
+	s=default; t=1688570121;
+	bh=DOwSlCkhs5hqVA6Y7kZUOwHAhltMChc1bFxEuucXXQM=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bmh6Uo2aDnzbTT+J9R9f2ZcuMlvXuwVbxbNJYt4E2a9+FDR7BETGXPR1hcBZqRR25
-	 3Oq7wcY8sTKmDHRL5SzCfer+SqCoc42P+S9V4h+WbyPb0ih6APsQWBjTKpfQe+1RD4
-	 ZfITtajX3O7D6krLcJkS6dK6hcdDHhmQ4PDlB9/xTh67CK84mMq0efmxegUrTa0e1J
-	 Tz9HtYB78nPWEDw1P/RfJk4nSNL37rsXx1nRzMLEAR8YrdXL5it4/KG5xUpFM6iFsK
-	 UD9YRtLX5W07PACaHg1QGYfLih337Z/zTrz24Pp7P82BVkKLChyhYS13CMzaWFywOc
-	 z1dr0FxLIkzBA==
+	b=urO8k+mk3m95YWgf+LtLWBzJqVpL4h2t1WO9Euou5+/Nyfb+Ia8BDEWI8PcCi50EV
+	 tep3lwtt23WzkHMnVu3UMJOTnVC920FaLCPV0JaBQVT15VTRtrHWqRbOHvbqRvuymL
+	 WA/Bi0AWKkEaeGUm892iZ9w3+pIVCNp4vlvvPKWgUmsSZt43r9PO/p0O7ipprthmBP
+	 LFxnJOZJ5SWCHqhS24s0ZmsHVxkvutFgwQvkbxZB2SRlDUdTtg0AIcsCddjND+ToHe
+	 5vH1DKYyZtFW+p8waBzL7lHL/DsXvV11yPj8ILF+dEUujlajED+1EhGJMBR6HFvHNh
+	 DEiR9jWJbP2aQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6LwSvhptfOPb; Wed,  5 Jul 2023 15:14:48 +0000 (UTC)
+	with ESMTP id ii-x8TWP0DZb; Wed,  5 Jul 2023 15:15:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 31A3661059;
-	Wed,  5 Jul 2023 15:14:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 31A3661059
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6B9F46103C;
+	Wed,  5 Jul 2023 15:15:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6B9F46103C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 07F321BF228
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 09:59:28 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 891421BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 10:04:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DCB7E40967
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 09:59:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DCB7E40967
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5F2876068A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 10:04:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F2876068A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VE4esFNjGdad for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Jul 2023 09:59:26 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MvSYakxRLlNi for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Jul 2023 10:04:18 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 62A7A4091C
-Received: from EUR01-DB5-obe.outbound.protection.outlook.com
- (mail-db5eur01on2127.outbound.protection.outlook.com [40.107.15.127])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 62A7A4091C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 09:59:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B4EF560D72
+Received: from EUR04-DB3-obe.outbound.protection.outlook.com
+ (mail-db3eur04on2136.outbound.protection.outlook.com [40.107.6.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B4EF560D72
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jul 2023 10:04:18 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mSbxb2T4XVo9Ybo/X7/bQpNhrWVzHszQy0Rlqi3QqVX6DznzrpMK4XSx6xK7Ox5bOkaxtpIBOR2YPFrE9WbdXuLwu2vtccMI/OpPDDqgFmm3FjVGdPPfOASPJG3krwbYRB1fCI5rBn+vzRVGyLXVd1m83vqCm17SaDpsytLJyKq2y4OWqSR7++Ct9g51FfcA/huiKYZKMplv4UQHaAHmZJcJRMKBICYygAWqzqd4ek/yL1q8fk2MZunVFIYc63RkD7bDHnbnrG39JTATxuxG4DYwc8Qf6UiO1BOqmDuZY5Qa/Na/0auK3g4fYnhR8AvdFk25rIPXA7O6A+xMOG4d7g==
+ b=b0/jljdPyQZK4acWFKB2eKv7dhHT8A7wHDydEd5zRKLovVZHgQ3wU/tlI1GVGAxKOKGF2Ljji1MgwACj5enMKxNGOpeHyGYiIpjo9Nqdfr88QY1D+7gr6r33B5LQxZEjCssp9UGhFf7rFd+g2ic2vsGZd9MCJDkf1EKB3SHWpdoocTWWxKu9JNVbfHlezrASZ+zT1uIpXaiKNVAT1qTHm8iqwmvx70+qeIEXs/EDdBwBu2yOs+GRRPu5sfvTRc/pwZahYxvfIj1188rCrfN/8ofp6dL2euJZMgL2J1fwF8j0D5Zh2hrmlFyryQYHHyspIGpDCUj5EvHhsVrsHeU8cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gJNzk6ortZTQ0/sbBAse5RTvyGBIs2ID7DgTjqYF3oE=;
- b=fUah104m7pESXscbYNGZwJyTlZPRnroGFX/OL4JAoOeh+AMaAM2XJZgYHjYefY48Z15vjd5ReWF9epvPeLaxB203jav+f1gq0hq2/mdwcfjubguyCg7oTKdMvjr6i9sNJv1O7mDq2Fl5ooth/s/MTB9oYABcChdTVk5BJJnEHro3tdeV9wQcO3fcZo672gjTD0hLFzB0PIuoOmNp7DKKPQ2FwGb44zDUNfIgQn4PQqnB7HiitiydK/FzFvylZxF1yRnZdnQxdXroKUQun+gFVsB7z9HiDpJO4RE0fCzieNl0WsHra0IkPlPV7TUNnqCwqA0LaNrWajlixYh/SJPKFA==
+ bh=hyccUYh2pEpQWEmch0Qj4pn+fn6yEzbnJjPn0aC669Q=;
+ b=JcCJL3FUIdsByRdBTuxPdivdIPM6uDjHN8gJCgR/rdqcm7YNCzTxvwYrE9yI24wSgTts3FC0919/nrBpBc5bQ6O7z2GT927iT38MncYOk2b3ynZMq8owfJbocN0ARo3wgoZ7LaRlOxATXugNjvCyyrJsQr68Elyn3jpDXHY5WnxlV7zyge6TEVWaonX5ybXRhTFfyRoGlta15xiLGoTDGLoS3kREMjauxhdGiWdYvobF3ByMeko3SaqTjOCACDB9PG5HNWCpdr5F24sd/gNcm2acUJyKrue+8QyWTwN6S6XoE7o4LbDFjqXVoFt4BEA5rZYgB1puqQty3SHNlLCjUw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=est.tech; dmarc=pass action=none header.from=est.tech;
  dkim=pass header.d=est.tech; arc=none
 Received: from DBBP189MB1433.EURP189.PROD.OUTLOOK.COM (2603:10a6:10:1e7::15)
- by AM9P189MB1571.EURP189.PROD.OUTLOOK.COM (2603:10a6:20b:306::13) with
+ by DB3P189MB2624.EURP189.PROD.OUTLOOK.COM (2603:10a6:10:438::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Tue, 4 Jul
- 2023 09:59:22 +0000
+ 2023 10:04:15 +0000
 Received: from DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
  ([fe80::57d:1bb3:9180:73b6]) by DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
  ([fe80::57d:1bb3:9180:73b6%4]) with mapi id 15.20.6544.024; Tue, 4 Jul 2023
- 09:59:22 +0000
+ 10:04:14 +0000
 From: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
 To: 
-Date: Tue,  4 Jul 2023 11:59:12 +0200
-Message-Id: <20230704095915.9750-2-sriram.yagnaraman@est.tech>
+Date: Tue,  4 Jul 2023 11:59:13 +0200
+Message-Id: <20230704095915.9750-3-sriram.yagnaraman@est.tech>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230704095915.9750-1-sriram.yagnaraman@est.tech>
 References: <20230704095915.9750-1-sriram.yagnaraman@est.tech>
-X-ClientProxiedBy: GV2PEPF000000FF.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:144:1:0:1:0:9) To DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
+X-ClientProxiedBy: GV3PEPF000000D5.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:144:1:0:2:0:1e) To DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
  (2603:10a6:10:1e7::15)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DBBP189MB1433:EE_|AM9P189MB1571:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2522826c-91cd-41c3-9734-08db7c75577c
+X-MS-TrafficTypeDiagnostic: DBBP189MB1433:EE_|DB3P189MB2624:EE_
+X-MS-Office365-Filtering-Correlation-Id: b768c1ce-32a8-4e80-b3a3-08db7c7605ac
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: YNQdgalNqepkwmyBlHKs1yj0645vDyDOUbKXOyJLJ7LK0gOfdOxSyPO3/D6dOuMpESqkzzvXgzuN3A/uwyIplN81LL4GRF4y5HxXJ9izQ/I7RvYVNdjqHeMWYV8tixWjs99vz4lOhZVIeVyJ2Po2WQVKbRDIMmvaam77E0E6/Lbb3E6xEmQCNPFIHfrfQ5ZY245TTaKJYvJCLumxe7uEpOuYQbQ+0FiARGf6SnDVy9xXi0lb6boUppfflumwHbj8ssGsvkYRRfsmLD8gNgomkKQKkjznK6pL0HmGet/RKcLTV6T2kGDozpJ3paTv1Uixl9EtFX8bHBAhJx1QZBl5F6GouXO/Kw9Ao1jFo9q+w/eampRovSpTlLZp5RjMHDTafafICPSZeVLJTvLSDgo61nJ14ETUi2qgAjKTHWjrTLmxcB+7BGZkPDk80vhQGcEuRb7+tA5WZ/k7eXKy62Bop8F3i+Wx+1+xKQl6QzpoHBQS8G4lLUkVdICFqketuxeFGKWvHT3XmhJaD0hpt2BNjnK7bbX4j2ODPC1vvUze9JzBXBreIr8dmJyvCDpABtdvBVkRuRXUTJI4cfG3EUk9ne3bnJx8CSYt5qlWWb+dR+o00U19HsMeSKIaS3i2yTZ18SP868y6nrWUdH3i9KzIGueKTYdAns+2rrlzOMsXTp4=
+X-Microsoft-Antispam-Message-Info: UplPeRPknJnru7CfhLc+VJXr2gtqdnANp1XwaaBfI7prWplUuO9YHwwrs27r2rXaKyjPy1Tx62ZvRMh5M6uaMJHi8MWm3wgYb3DCUiyuHf0baX7VAZEl85DqBaDrIuM+/DUo5SqpURXRx8jPXz/uSl6BFkoIwfFDwErQUMfqzAZ9VC8+O2sM6FtV0vxLmTIL5bc6bumPMkFWA4v7EvGi6seN3EErZiFvivSqzKsknWT++se5w3aynm8MJZoxEXdgTbpYjmFExaVVL6rWiJmFvSIiB5V81CIA8btIMK1Aq62lQU1Cp9QZxYIscER6+l5ro4knpjWZbBg3hsomc7P+hVWwJGn0obsJTc9SsYl8fYbIFYTTW35eVRxhBOKOdov2TjuQo3/m2LoIKQRnuV6OgBbAFX2qeCgHZ2R+9RqAnZjHbfd/FHgY6JNcvixHN2piTz1pUNrUgSnp7qMEuSlwpJ8qbeOAXwuxcIpUnlzSNHPKGhX3h6d16Sk85Va41m7HsN3d2mtvk6HINYG7lkGzrR0cEkU/n8WZJ7t2etV/AUHyr4QcY3PBE7kagFDsn1MwJ8qr4iRkqqS3JAJznSFlaJef7PG09pFuI1iDhOxswKsKYo6++998pLe+43A9a2+TZ8MkXW1W0QmyHzqgmXW7wA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DBBP189MB1433.EURP189.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(396003)(136003)(376002)(39840400004)(451199021)(109986019)(2906002)(41300700001)(7416002)(5660300002)(44832011)(8676002)(8936002)(36756003)(86362001)(6512007)(6666004)(6486002)(478600001)(83380400001)(26005)(186003)(2616005)(4326008)(1076003)(66556008)(54906003)(66476007)(70586007)(6506007)(66946007)(316002)(38100700002)(266003)(37730700002)(309714004);
+ SFS:(13230028)(396003)(39830400003)(346002)(376002)(136003)(109986019)(451199021)(54906003)(6512007)(26005)(44832011)(186003)(86362001)(8676002)(7416002)(2906002)(8936002)(36756003)(6486002)(5660300002)(41300700001)(478600001)(38100700002)(1076003)(6506007)(66556008)(4326008)(66946007)(66476007)(70586007)(2616005)(83380400001)(316002)(266003)(37730700002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?42xiECoKgyETZqGK7HgFKdNuYIv/oqVgp95yngccjlN4P++NG1rCNlEvOqhP?=
- =?us-ascii?Q?G2sLF5Y9Nve+VbUk83kwD7xi0im6oFPJNRRSpzEXONK4DrTQ8ykUZ3sHZ1O5?=
- =?us-ascii?Q?3QARgh+bWiqC9FoHjoYFPWtc/lGKIiyZISkvH6zCrv2SyZUUdp9H5keGKFMd?=
- =?us-ascii?Q?Q+Z4jKZbv3ObKAALkEceBFVeD/rPjrVS5vM6DYKFP2Zjjl0NAER9HQdpUDpV?=
- =?us-ascii?Q?1Tph2mEBZiIQ+zJo9t79irZkw5TwIFysD1H+5wmtopczEL8z0/6YT6uFjNnF?=
- =?us-ascii?Q?oztobIXHPl3I5Owcll0SQSjIhSUI31E7nX3Bp6nCO79I7YZwY+XNrCPuzIjT?=
- =?us-ascii?Q?C7fQvRf5OBNL2MjwTyDXxhNwUJmlZIvwAq8maa+y6ooBL5vXi2X39v1udSjY?=
- =?us-ascii?Q?kOf+hzkDRTelBi/DEScHfSiCYnIC2dpmFJUTtx9rTMsIk+/bU5hZuQDpH2Bs?=
- =?us-ascii?Q?Ibym1Hgwq+LGPh2G8gSqecotd/CxG22hyN5kPup8Znny0G5zSzWfa6hvxqmz?=
- =?us-ascii?Q?6HkN89LgYVl7Ew4A/prZB/BvyZI+0djbY5y2s0yqrSSsFoOPVGdkgEDtaraO?=
- =?us-ascii?Q?yjiuN9mlPjm1RbPUiuLO5/Nlf/vPS8f4P2McAlRci7B0IQ2d+2k5MB3zLtlG?=
- =?us-ascii?Q?j5e2BJg2RTUax1euUHeIGXiB6Cvd9IJOjEJKHNNqg4jIxqd0UcHBF7I3O/la?=
- =?us-ascii?Q?MBZrNI/OlLiPhQ0juE8YpshmUVMQDU3yA0gBpwDcN1EulXb7dpTGolS4SGvp?=
- =?us-ascii?Q?lyNsnLKv3dtPm7SBbUC7LX0edrarXW8RR2dQ89iej/H2pZpxZvTn/qvL9VzN?=
- =?us-ascii?Q?ybwcTrdnOumgyahh2IYrRjSWd8VaYrRGwGQKUvE05kgEOq5PmqkUBZxjXSeK?=
- =?us-ascii?Q?aARdo6ZbsPUb/oIz9/hgPnRo3vXy3rliOPH8eQd/SAnfkzjZVuYNFdqhbrPS?=
- =?us-ascii?Q?irPjlmHbC8vEInEF7l0Nap/c/qwGKlc/liUtxgc2EzlwE5TrZOntkvz8AMo0?=
- =?us-ascii?Q?iBp5EZQ7OMo2LXUEb7xRLOoCQD/FuRQhayaokF2tnV/q5kgb7d6t5/dYc98L?=
- =?us-ascii?Q?UsoTC3fcv6Pht6qyr0fRMsa08bJoSXNoMNcLStCns1KVB7i1nQEMUOvafyU4?=
- =?us-ascii?Q?G/5iPuxdU6MgGPMXt/qAfCwPfLk/NxvOMqre7USyM6ZgrPPBn3OTQw1V9x/E?=
- =?us-ascii?Q?phk/RRKmjaZl9L1vatK1aV5hjiKJR0R5AGQq5cZzkPAt2JdY4YNd30eFlA1G?=
- =?us-ascii?Q?VEPmm3zZ0s98mtKMjCiM++kAsmC3bxM+Y0SlPklqF83aL29Ai1BFw/2PnmBv?=
- =?us-ascii?Q?7ATqPh76zJM545q7qlyE25UiCJFHPCtgVVu1bPYZueXgtePzEAZtx+FICyDp?=
- =?us-ascii?Q?jWCF/zoKNjDHDYj+GIa3jkbLmJEKAHeFas2RsBj7346bV7xb7yHjaXZcTPhX?=
- =?us-ascii?Q?t7F6vggIDb61mznKjveYzcYzgDggo77hSDBipuRQumw2mgmRIfUzU8WItc3b?=
- =?us-ascii?Q?fQMb/Bx9jyn3p8n4aS/zkhQWvmQdkMnC+wTUh4z9MYTjOhoUXxi5i5IkUdbY?=
- =?us-ascii?Q?XIMRES6nULI4Oxs+oWJdw5hRBZRBbNoQLSRWs6Mf2IfIlig2R/zZ5Tw+yAgw?=
- =?us-ascii?Q?dQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?O5JoL16tYzx7zLNIk9ZuB3fJvr3j3rIT35lYmEfw30eajSztFvRL5MnuHywS?=
+ =?us-ascii?Q?l5ghnexPbw37RGkwuu1rRbZxvNAuYaRp1mVQ4sH0al6JM81OuWGW5ywFIcVH?=
+ =?us-ascii?Q?Aqvsb7kDEPGibdIQGWyw3dNYGCollHm1aVAvWfM3spaspek02s584VB22fpG?=
+ =?us-ascii?Q?Q65smNENY4oBN0/akXFILFqkJWVAPoDuKG43S/G9Zm+DxFaGxjUGT66NnlFF?=
+ =?us-ascii?Q?NUe52QrgZaOZ/5NK2yDMp0faX2JsU+6yTHW6R8X+yp6+KBmR+7gNUMZMSZOJ?=
+ =?us-ascii?Q?ziAZX3WI/91PM/votCe4opBGNXX0RrzosyMWNXBx2/2QhVdqevkVnHAYGPml?=
+ =?us-ascii?Q?7jU/HyWYKYnBXWp/k7fyX9+UJyxRd8NExeeuCsP8Iplw4aaFHsvib5rWcysw?=
+ =?us-ascii?Q?GvFVzJAXQk2mhxgKfw0G/39oXpkR8QQYg+67aOhauRAesQGXfrc77zxpd+5C?=
+ =?us-ascii?Q?n4eZrMZew/kIUB7/ydJPt0sdQXdEetbk5hquVGJCdf58aISwbKHQiMuUIo9X?=
+ =?us-ascii?Q?GP9L6orKr6Ab+lHxotnwmCAeVzVsn/BY+4v/PUJhiaYEq8QTsSrZbGYxY8uM?=
+ =?us-ascii?Q?RIqSn712859/2VJYbu2yKtHq7LhtQ4ZNr2FZnoLF+cppmr+YTOo90VjM5HjD?=
+ =?us-ascii?Q?lOfJNWXJsNoQ8wbtw308n+BOGc7NZ4KsamOneZPDrEYtVPrRTN846cWpQIb1?=
+ =?us-ascii?Q?9PdwpXGtbV1JK6UbY4jPM5kEmdIjJogss8OIXVGJRAQHu9VBxyyhsY14U/mH?=
+ =?us-ascii?Q?r3aqGJm7ng0vd7UeGJOwtNOBHSBeBFAVSfbZa5NeGmpndyBLefpj01WxBCdz?=
+ =?us-ascii?Q?uZkgxzSJ52DXCcRzb7jNLHiPFy5uUXLy4yjQ1eMbYLpOKtW7ltNIHMxw/Tos?=
+ =?us-ascii?Q?IdpMMdxvu6pXJA6Ilqk4ndhglUfuHZXl3sMkwfqwrbcFxQG/80MoyGJrxGON?=
+ =?us-ascii?Q?APIdEpt3VHARcuGhrT5XRNvvgAWd2VB9T7sgwLbF3viDPKbES4D1vToXN4jQ?=
+ =?us-ascii?Q?J1qmXQFqlONtwymWMOt0FCkSQdPvrW3Z7sXFLUGG9oAawnMeCXpQBNeqtHIH?=
+ =?us-ascii?Q?AxOfkhSg7EKYlGudx+bFfds+6QWj4lkNmTYzfnz9xPoOBT648rTKq4fCB1QJ?=
+ =?us-ascii?Q?+6Drx/YrXh1X47vY0EluTkrDjadSB5E5/nL4Mx0S+KQoXgZ7F1vGHAHD4qOx?=
+ =?us-ascii?Q?8BccXZJGXLud4DGVq5Pa+kYtlFKmylMAKATms/J0hqj7o6zG5fhPOLcPafKr?=
+ =?us-ascii?Q?qIdj9xiskIh6MuO4QINhTMzGqBGLi1ElmNX+8wSA6ZlXleD6pPWeNvLuzY0j?=
+ =?us-ascii?Q?SEL/vJK8UWaiVLPiDGRBJBTA7jvOpJSmWWputZw8Duum9jL4oAuwqSBPCJLx?=
+ =?us-ascii?Q?QZc2QeFvjqf7duAY5huYELQnZJli6YTBtBDtx1NILwJeg0Z23pGYWCE025pr?=
+ =?us-ascii?Q?MqLjx8s1vNPiA+rK9GyIre4GQqf1ZYSY5+Usy0K+tOEagXlE0u3CVWePhYfP?=
+ =?us-ascii?Q?cKIXaGJtLmtm8cxYRVsPsd+bi3BMUV4w4w4bz7gL7s+cQ035b/Y1E/JgeAvq?=
+ =?us-ascii?Q?9nsqHN3cRaaLTzFjfutJaNn/ZSqgD9x4t0I/acD32qxiYGAdSvLnhFBT5jwf?=
+ =?us-ascii?Q?uA=3D=3D?=
 X-OriginatorOrg: est.tech
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2522826c-91cd-41c3-9734-08db7c75577c
+X-MS-Exchange-CrossTenant-Network-Message-Id: b768c1ce-32a8-4e80-b3a3-08db7c7605ac
 X-MS-Exchange-CrossTenant-AuthSource: DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2023 09:59:22.5044 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2023 10:04:14.7479 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: d2585e63-66b9-44b6-a76e-4f4b217d97fd
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xYbtWTK+qvpB3RYq1Jy2yQ/d65a22XqrNNgCWBbuwnI43gyK9pCObyJoLdWaP68E13TzvDL2XudcRNzIyyG/crt2aKpwmxDCuwkGV75Ru8g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9P189MB1571
+X-MS-Exchange-CrossTenant-UserPrincipalName: hmUtjT7qPc8KEY3NYztXwNHmqrRANM94z/yyd4aIN43isbjwoCaZBQVChxHjtgdkCN9DU7HJNVYTYc1WGd3b0LsnJdVIqBX6fWFUR5NN4Qs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB3P189MB2624
 X-Mailman-Approved-At: Wed, 05 Jul 2023 15:14:37 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=estab.onmicrosoft.com; 
  s=selector2-estab-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gJNzk6ortZTQ0/sbBAse5RTvyGBIs2ID7DgTjqYF3oE=;
- b=C68JV4pFRnqiZBZdo827rKGjSd0aIAXHwDUOdVQObcffvn1NYLY1CyvJGKSeyx+CJRPHxqPzCcGjTFyFoDe5sg1pbzeLoTkhFbg+EkajxpuHdT6gNimF2nvMBQn4U012g2g2bGs2BEMYxxYmI5QNScQZjM/2z1YyB/OPCoOFfgw=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=hyccUYh2pEpQWEmch0Qj4pn+fn6yEzbnJjPn0aC669Q=;
+ b=bjKH72fMcCbUjTPixy8obj7lt+k9xaEDSHrJfasWdYPFwYvC9oV7kzfjdf9l5CHRF/1nlMRufnmk8BZlQYL1xdO+Crc0dyyV4b6jAdH+w/jaQEAQ8lHFke4O9SesS1geH90aVLfwfsc5UqX+7y4wsMswPDkMzKu3lRLsvGRUu8o=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=estab.onmicrosoft.com
  header.i=@estab.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-estab-onmicrosoft-com header.b=C68JV4pF
+ header.s=selector2-estab-onmicrosoft-com header.b=bjKH72fM
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=est.tech;
-Subject: [Intel-wired-lan] [PATCH 1/4] igb: prepare for AF_XDP zero-copy
- support
+Subject: [Intel-wired-lan] [PATCH 2/4] igb: Introduce txrx ring
+ enable/disable functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,132 +169,90 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Remove static qualifiers on the following functions to be able to call
-from XSK specific file that is added in the later patches
-- igb_xdp_tx_queue_mapping
-- igb_xdp_ring_update_tail
-- igb_run_xdp
-- igb_process_skb_fields
-
-Introduce igb_xdp_is_enabled() to check if an XDP program is assigned to
-the device.
+Add enable/disable functions for TX and RX rings, will be used in later
+patches when AF_XDP zero-copy support is added.
 
 Signed-off-by: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
 ---
- drivers/net/ethernet/intel/igb/igb.h      | 13 +++++++++++++
- drivers/net/ethernet/intel/igb/igb_main.c | 23 ++++++++++++-----------
- 2 files changed, 25 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/igb/igb.h      |  5 ++-
+ drivers/net/ethernet/intel/igb/igb_main.c | 41 +++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index 015b78144114..94440af6cf4b 100644
+index 94440af6cf4b..5fa011c6ef2f 100644
 --- a/drivers/net/ethernet/intel/igb/igb.h
 +++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -718,6 +718,8 @@ extern char igb_driver_name[];
- int igb_xmit_xdp_ring(struct igb_adapter *adapter,
- 		      struct igb_ring *ring,
- 		      struct xdp_frame *xdpf);
-+struct igb_ring *igb_xdp_tx_queue_mapping(struct igb_adapter *adapter);
-+void igb_xdp_ring_update_tail(struct igb_ring *ring);
- int igb_open(struct net_device *netdev);
- int igb_close(struct net_device *netdev);
- int igb_up(struct igb_adapter *);
-@@ -737,6 +739,12 @@ void igb_setup_tctl(struct igb_adapter *);
+@@ -384,7 +384,8 @@ enum e1000_ring_flags_t {
+ 	IGB_RING_FLAG_RX_SCTP_CSUM,
+ 	IGB_RING_FLAG_RX_LB_VLAN_BSWAP,
+ 	IGB_RING_FLAG_TX_CTX_IDX,
+-	IGB_RING_FLAG_TX_DETECT_HANG
++	IGB_RING_FLAG_TX_DETECT_HANG,
++	IGB_RING_FLAG_TX_DISABLED
+ };
+ 
+ #define ring_uses_large_buffer(ring) \
+@@ -735,6 +736,8 @@ void igb_free_tx_resources(struct igb_ring *);
+ void igb_free_rx_resources(struct igb_ring *);
+ void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
+ void igb_configure_rx_ring(struct igb_adapter *, struct igb_ring *);
++void igb_txrx_ring_disable(struct igb_adapter *adapter, u16 qid);
++void igb_txrx_ring_enable(struct igb_adapter *adapter, u16 qid);
+ void igb_setup_tctl(struct igb_adapter *);
  void igb_setup_rctl(struct igb_adapter *);
  void igb_setup_srrctl(struct igb_adapter *, struct igb_ring *);
- netdev_tx_t igb_xmit_frame_ring(struct sk_buff *, struct igb_ring *);
-+struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
-+			    struct igb_ring *rx_ring,
-+			    struct xdp_buff *xdp);
-+void igb_process_skb_fields(struct igb_ring *rx_ring,
-+			    union e1000_adv_rx_desc *rx_desc,
-+			    struct sk_buff *skb);
- void igb_alloc_rx_buffers(struct igb_ring *, u16);
- void igb_update_stats(struct igb_adapter *);
- bool igb_has_link(struct igb_adapter *adapter);
-@@ -797,6 +805,11 @@ static inline struct netdev_queue *txring_txq(const struct igb_ring *tx_ring)
- 	return netdev_get_tx_queue(tx_ring->netdev, tx_ring->queue_index);
- }
- 
-+static inline bool igb_xdp_is_enabled(struct igb_adapter *adapter)
-+{
-+	return !!adapter->xdp_prog;
-+}
-+
- int igb_add_filter(struct igb_adapter *adapter,
- 		   struct igb_nfc_filter *input);
- int igb_erase_filter(struct igb_adapter *adapter,
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 9a2561409b06..dadc3d423cfd 100644
+index dadc3d423cfd..391c0eb136d9 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -2939,7 +2939,8 @@ static int igb_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+@@ -4856,6 +4856,47 @@ static void igb_configure_rx(struct igb_adapter *adapter)
  	}
  }
  
--static void igb_xdp_ring_update_tail(struct igb_ring *ring)
-+/* This function assumes __netif_tx_lock is held by the caller. */
-+void igb_xdp_ring_update_tail(struct igb_ring *ring)
- {
- 	/* Force memory writes to complete before letting h/w know there
- 	 * are new descriptors to fetch.
-@@ -2948,7 +2949,7 @@ static void igb_xdp_ring_update_tail(struct igb_ring *ring)
- 	writel(ring->next_to_use, ring->tail);
- }
- 
--static struct igb_ring *igb_xdp_tx_queue_mapping(struct igb_adapter *adapter)
-+struct igb_ring *igb_xdp_tx_queue_mapping(struct igb_adapter *adapter)
- {
- 	unsigned int r_idx = smp_processor_id();
- 
-@@ -3025,11 +3026,11 @@ static int igb_xdp_xmit(struct net_device *dev, int n,
- 		nxmit++;
- 	}
- 
--	__netif_tx_unlock(nq);
--
- 	if (unlikely(flags & XDP_XMIT_FLUSH))
- 		igb_xdp_ring_update_tail(tx_ring);
- 
-+	__netif_tx_unlock(nq);
++void igb_txrx_ring_disable(struct igb_adapter *adapter, u16 qid)
++{
++	struct e1000_hw *hw = &adapter->hw;
++	struct igb_ring *tx_ring = adapter->tx_ring[qid];
++	struct igb_ring *rx_ring = adapter->rx_ring[qid];
 +
- 	return nxmit;
- }
- 
-@@ -6631,7 +6632,7 @@ static int igb_change_mtu(struct net_device *netdev, int new_mtu)
- 	struct igb_adapter *adapter = netdev_priv(netdev);
- 	int max_frame = new_mtu + IGB_ETH_PKT_HDR_PAD;
- 
--	if (adapter->xdp_prog) {
-+	if (igb_xdp_is_enabled(adapter)) {
- 		int i;
- 
- 		for (i = 0; i < adapter->num_rx_queues; i++) {
-@@ -8600,9 +8601,9 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
- 	return skb;
- }
- 
--static struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
--				   struct igb_ring *rx_ring,
--				   struct xdp_buff *xdp)
-+struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
-+			    struct igb_ring *rx_ring,
-+			    struct xdp_buff *xdp)
- {
- 	int err, result = IGB_XDP_PASS;
- 	struct bpf_prog *xdp_prog;
-@@ -8798,9 +8799,9 @@ static bool igb_cleanup_headers(struct igb_ring *rx_ring,
-  *  order to populate the hash, checksum, VLAN, timestamp, protocol, and
-  *  other fields within the skb.
-  **/
--static void igb_process_skb_fields(struct igb_ring *rx_ring,
--				   union e1000_adv_rx_desc *rx_desc,
--				   struct sk_buff *skb)
-+void igb_process_skb_fields(struct igb_ring *rx_ring,
-+			    union e1000_adv_rx_desc *rx_desc,
-+			    struct sk_buff *skb)
- {
- 	struct net_device *dev = rx_ring->netdev;
- 
++	set_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags);
++
++	wr32(E1000_TXDCTL(tx_ring->reg_idx), 0);
++	wr32(E1000_RXDCTL(rx_ring->reg_idx), 0);
++
++	/* Rx/Tx share the same napi context. */
++	napi_disable(&rx_ring->q_vector->napi);
++
++	igb_clean_tx_ring(tx_ring);
++	igb_clean_rx_ring(rx_ring);
++
++	memset(&rx_ring->rx_stats, 0, sizeof(rx_ring->rx_stats));
++	memset(&tx_ring->tx_stats, 0, sizeof(tx_ring->tx_stats));
++}
++
++void igb_txrx_ring_enable(struct igb_adapter *adapter, u16 qid)
++{
++	struct igb_ring *tx_ring = adapter->tx_ring[qid];
++	struct igb_ring *rx_ring = adapter->rx_ring[qid];
++
++	/* Rx/Tx share the same napi context. */
++	napi_enable(&rx_ring->q_vector->napi);
++
++	igb_configure_tx_ring(adapter, tx_ring);
++	igb_configure_rx_ring(adapter, rx_ring);
++
++	/* call igb_desc_unused which always leaves
++	 * at least 1 descriptor unused to make sure
++	 * next_to_use != next_to_clean
++	 */
++	igb_alloc_rx_buffers(rx_ring, igb_desc_unused(rx_ring));
++
++	clear_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags);
++}
++
+ /**
+  *  igb_free_tx_resources - Free Tx Resources per Queue
+  *  @tx_ring: Tx descriptor ring for a specific queue
 -- 
 2.34.1
 
