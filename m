@@ -1,194 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 993E974884B
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:47:49 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BA5874889C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:57:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B9288206E;
-	Wed,  5 Jul 2023 15:47:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9B9288206E
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9CF4582135;
+	Wed,  5 Jul 2023 15:57:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9CF4582135
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688572067;
-	bh=ueJpY3NpgL2ZVHxDsHvZeBlXBmmRKGMqt1Yc9d5JgJg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=F/+R8BCo/K6h+zrfoK8j+rYQnXz+GLeQ3GAkXXo5KIbq1rWuRqYne/Rw7NQj8l24Q
-	 aL6aAlhhI1Rn/gpJZrfgzW/VG5SU2syCW96JSpzcfHku4wREWH3CbdK9aFbHcAZdNO
-	 cRdYRepQ1zuz/ffNFT+s2oLK6V9OMSPKbm25/k4QsZkDy32ATDVkoeF8/OhHf56fjm
-	 rwEeuM/kthwMw6K8sqmb+45gV8O2kZ5yyoC61dPyZAG1BibyPh1Cu4dnrumySsLVaY
-	 DirBOd8A5UoQQVB4VXbOpqKOOBF0UFugL3DSYj4MOWyx1gJtfYzWtRUDaVWaYL/C85
-	 6gWLxW27CSVfw==
+	s=default; t=1688572660;
+	bh=5QRNbBEEkZ+8SgEEaOPKFOsAUkRixA7ej21JlEG8/ts=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Mce30Q2JeoMGgQe5+iYqjvuriVDBuKl9E/XMxNYvYZW9EtaP5mlLNpt/3yLn+jMQa
+	 xFetBd14yVwK7RtZJjZHuXXwKiTHw2pvlggaAl/qYfdfCEkkwVziEQP823MVR+45ub
+	 7T/qiZbd03PKPB95CrOmr3q+UWtKH0R6wnKOpjdjXFxHumPbDiNdjdMRanIwsQKP/I
+	 oUMrG2EkQjAPzXCgBH+Ey1ly/Jiwtppd0KWOGmTy1f7k7qKgf3N8XCd0gz3hIk9RiR
+	 6w+hQ4z1TKxfDOxSBQWEYgsEvIoboBqIJaoWx6iHmbRiOs6cMwbkl5zG1DZ1j8gjno
+	 C1Anwnu3W825w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5USyz8_jAi98; Wed,  5 Jul 2023 15:47:46 +0000 (UTC)
+	with ESMTP id dRJfFqWHHEJC; Wed,  5 Jul 2023 15:57:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7881A82051;
-	Wed,  5 Jul 2023 15:47:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7881A82051
+	by smtp1.osuosl.org (Postfix) with ESMTP id 397BA8206E;
+	Wed,  5 Jul 2023 15:57:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 397BA8206E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8F4561BF2CE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:47:41 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C36731BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 666536104D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:47:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 666536104D
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9933F40489
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9933F40489
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNmPXnyyWUIp for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Jul 2023 15:47:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vzH2f7oDNUFk for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Jul 2023 15:57:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 79AD160FA4
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 79AD160FA4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:47:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="363407289"
-X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="363407289"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2023 08:47:38 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A44B40106
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7A44B40106
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:32 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="366863373"
+X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="366863373"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jul 2023 08:57:30 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="843326220"
-X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="843326220"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga004.jf.intel.com with ESMTP; 05 Jul 2023 08:47:37 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Wed, 5 Jul 2023 08:47:37 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Wed, 5 Jul 2023 08:47:36 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Wed, 5 Jul 2023 08:47:36 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Wed, 5 Jul 2023 08:47:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Lu3zuM5inzablBzrnAaRjBPMcQmh5ffp7oWbhmsU36P/msnVmS/hGJTObFdY3rMfg+oz9URklAJAf/8k+NJfH2QH7rofLxCMryRB+RfZQcb6DlxrtJ4UReQu3GPcc6FLNi90SEJMu7J12VPD7nfNosOHIJ57FVKzL3+LxnuAOC4QDftGs7/VPWUD7chXwCKEAjRYAeL9l3kzZDYjfZPEU4g446A9L9ynaCpqjXcPGlU2FSOhSawqW5OKEvZyWZBRM9Qp8RiR42vH1WiyPsRPzbB9lxDlzJeFwDdGdLWVZ2mIHvGYCGmqHliE0s5OmhMgkwAzIrPegDGpbZ0f7dkBVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QruTkLuEkJGQ3nw0G5eWQCr1fYABvmosJ+FSqosNTcg=;
- b=LmPi04X/8HM3TnjPO330AYKP2Jfreps8g1PME8JeqX5e2oSC5CSd5D1UpUbD43tac45O+SIdKfil+f5HUM8F8xXJWu9rIR6jud7I0x0xaPQ0W33DAKXzFwx/NJbXayCutpbup0LvEih4fNKd90GIdY1wn4QkjshtZ+idKW8lJ8sB1XyU2OlRDCHEiCthtjcr5SXyNutikyPcyHDP+US204420IO4zhj/lIYw/iRhxXaFNOvEGyqAwwvvrM8Y0uiNKMgJxBwmvH1KW8X4ZlN81VgS1ZV29LW3RXuvOa28tHM6VW2821pb6iz0PIHvrzCMxE6e2NFnCwwHgDEZbCbkbQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com (2603:10b6:303:20c::13)
- by PH0PR11MB5126.namprd11.prod.outlook.com (2603:10b6:510:3a::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.17; Wed, 5 Jul
- 2023 15:47:34 +0000
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::8029:1845:3559:3560]) by MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::8029:1845:3559:3560%4]) with mapi id 15.20.6565.016; Wed, 5 Jul 2023
- 15:47:34 +0000
-Message-ID: <9fff2b17-0b66-93a0-87aa-ca6479cb0663@intel.com>
-Date: Wed, 5 Jul 2023 18:47:26 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.12.0
-To: Yu Hao <yhao016@ucr.edu>, <jesse.brandeburg@intel.com>,
- <anthony.l.nguyen@intel.com>, <davem@davemloft.net>, <edumazet@google.com>,
- <kuba@kernel.org>, <pabeni@redhat.com>, <intel-wired-lan@lists.osuosl.org>,
- <netdev@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
- "Ruinskiy, Dima" <dima.ruinskiy@intel.com>, "Edri, Michael"
- <michael.edri@intel.com>
-References: <CA+UBctC57Lx=8Eh6P51cVz+cyb02GE_B-dWnYhffWoc-nm7v6Q@mail.gmail.com>
-Content-Language: en-US
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-In-Reply-To: <CA+UBctC57Lx=8Eh6P51cVz+cyb02GE_B-dWnYhffWoc-nm7v6Q@mail.gmail.com>
-X-ClientProxiedBy: FR0P281CA0187.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:ab::17) To MW4PR11MB6738.namprd11.prod.outlook.com
- (2603:10b6:303:20c::13)
+X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="789205538"
+X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="789205538"
+Received: from newjersey.igk.intel.com ([10.102.20.203])
+ by fmsmga004.fm.intel.com with ESMTP; 05 Jul 2023 08:57:25 -0700
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Date: Wed,  5 Jul 2023 17:55:42 +0200
+Message-ID: <20230705155551.1317583-1-aleksander.lobakin@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB6738:EE_|PH0PR11MB5126:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0b191378-ecaf-496b-2927-08db7d6f2686
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: iRcajMnv/YcIAAIUAZL0s4vFJvsJaqn6SE6nP375faz3je7PE3JtC0PDBhPEY6WnHo9uqXmAtgEaSir8PwJV43iCCIPzwZAv+z7Cpnoy49RBPPG73MxXMU77EdEVrQvwwKXki7JQAq+u6Q/5vv7kFLnCLCWpW87ELNmg1OSB0n5s0ad55/gpsBtcwHTf0C5caVnztKEiwjkJB1ebw2mJLETXQNoFSYL0cGTDHGHV9VTdN6CHlGM+fetMOlTNPyC7ivFkzu1svm7IVEE+qSZ1t8Xek6KiHoK5wfanUWEQGiNbuHaxVIWpO/KIDyaXn2Yt7Mdx25MEke/kGx/0qypwYLPF32QS/AnCSSrhjwGPVbAbfslzYTusAdqUx3qqzVe89e0HrFMHJACWMsi7pIqGwdkhMwLNdG7p3FOU1EASeNeVKWvS/3l3VzqsGIqjBtqcOmnOLGLT9jFGhpiV/Wwa7LJyeF0QxAnj1GqrHnqWIwCAtI0z0t843sOZRtfeJdKseQwJoJS5bRkKpN/uwX/PxURu3rMsHPlNlTsfF1p4JN+mtJiDsp6dUX1LOdb0RNCaGdW9TnWe4zZSbfZcBAAvpoGZ3GdZnGs6bneNnmHGLGMri8qQHHwITKeD8LN0ll4OpFxhAGM4C7HGRzFORZ4UiLaQyPMhWKiKVcLbUqWGLo8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB6738.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(39860400002)(346002)(136003)(396003)(366004)(376002)(451199021)(83380400001)(2616005)(2906002)(82960400001)(921005)(38100700002)(36756003)(8936002)(8676002)(86362001)(5660300002)(66476007)(316002)(6636002)(66946007)(66556008)(6486002)(6666004)(110136005)(41300700001)(31686004)(6512007)(478600001)(186003)(26005)(6506007)(53546011)(31696002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YjJXWHJPVk9LR0M2RVhtMEVVSXJwaXZWTXd3cUFQZGU4cmNYNitzeUpCMzcz?=
- =?utf-8?B?SFpFdHRrd1U1OTFVb0Y5VEJ4NW10RHBXdEZLT0NkWkJQdnZLRXoya1dLVEdB?=
- =?utf-8?B?QlZDSDJsTngxUEFzR0J5aFBJQnNRempDWmpnV0crSUZQT3JGQVlld3dHckxI?=
- =?utf-8?B?MmU0eTlVNHlOUlQ4Y0ZOY1NuUlZyQ0hvRnZCV0RjVFJCU25RNXlOWTFheG5B?=
- =?utf-8?B?MURFVXpkSUtma0VTRG9SbzlDSUlGNXdSTEU2UVR0Q1FMOGYvZ25NUGlMUklD?=
- =?utf-8?B?c1o5VkpMS2ZDbU9OYVRsSFFQeC9tck5iTStJRnlSUzlyc3VkR2dmL2pPZlEw?=
- =?utf-8?B?OTY3WWdCMURVRkZ0UjlOMklqS09UWXRaRXZ1eEFhcjVjMnVxbU1wWlc3ME1t?=
- =?utf-8?B?ckZNRC9jV0IxOGVubkt3RXY5MWpiQ1NQMWk2eDdLaHlGakhEYnJSbThSb0NG?=
- =?utf-8?B?WGJuWXRGa2VRL1c1S1hnVWRITnFNZWRxdXpKazlTRmhnKzNBTERjUmF2UHhG?=
- =?utf-8?B?WFcveCswMHVaWUN2c3Q1ZUpZWlVUd1paMDM3d1lya0RnMGEzMng5aWNPeFRL?=
- =?utf-8?B?amtOT29MMzBxV1FJTndxNElBUnpSOFh5OGwyY0hYRHFQM2FadzNZUkljL0o3?=
- =?utf-8?B?M29kbjZsNU9RVlVoUGZsZG9ReHF4akRaVEtoSWNzdHNEdlI0UlN3YjRDNHVW?=
- =?utf-8?B?NUtMQ1hSRGxyWHdXRW5qMmlJaUo5bmsvd2RmOHBZL0hLSnBRVGsyUENVc21q?=
- =?utf-8?B?NVJKRmdyN1lGVUZFYjJDb0lJeS9EUVd3OVZudlV4QzJONWgxazEvaDJHODhu?=
- =?utf-8?B?V2piMHlOd2xPYzhjWCt1S1lHS09TNXMvUHY3TzdtZ2swUk5oT0xaTi8zbjlE?=
- =?utf-8?B?UFB1OTBwQjIxWGNDYVJDTGtsZUloNFBDcDluYjdaRWZpbmdYdllGalhpRGJk?=
- =?utf-8?B?ZWZyaDd6MzlsOCtOU3ZpZXhSMFlkTVRtbmVlNURJaHoyRXdqaGJvc2xBSDlU?=
- =?utf-8?B?S3JUU3piTjREcjBCa3hPd1RnUGhFWjVDdy9nY0VjcmtBUmxjQm43WGxzT3lW?=
- =?utf-8?B?L2kyZTNKK0FBU3Jaa0pKaUVTcmxEeUFyS2l6VlA4SHpuaDExU2FiSWF2NlJo?=
- =?utf-8?B?U013ZzdydU9UenZ4VDNBRUR6WG82WjlyNTliK0ZtRXJUNmdoTFlRU013N2Js?=
- =?utf-8?B?Q29DeUtvRVBtSzA3Nyt4dHB6OWlWekI2MUlYRW1Zd25aZnVCenFtajlDdXZL?=
- =?utf-8?B?WHgzYXNXWTg1aVBJaTlYaUduL1k5dWE5bU5STG02RGtnTG1JbUVUMk9lSzFo?=
- =?utf-8?B?aktvK3JtVndoeWZHUDNQaU1PVExmOHVJUUJVRlVVRmN0Lzc3b05oRWpEbCtN?=
- =?utf-8?B?UEl3VnBZR1hwN01rZmVwZzAyNkhMQ0krRGRqbUxKUS9TalNVUlhDaC8xM1dU?=
- =?utf-8?B?aHlxWXozVmZ0L21VZVBBOHFqc293bTAzVEM3anFFUmxMU2JicGo4ekNpa0tH?=
- =?utf-8?B?RE9kRG5NSCtOL253czRRTVhiTGFwN1dJakFFRVZ5cXdGWTNtczc2b3hMZkgz?=
- =?utf-8?B?ekt4OVFwaVF3ck5IQ1dDclQzRytHYXR2SHVBam0rWXAvZjlKQ2FXczE4TmE1?=
- =?utf-8?B?Tks3eTFVTDJ0bTV5UklQVXBzaXVYai9QMXNCSm5BWUhUQlNNYTNFSERXdEE4?=
- =?utf-8?B?TU9pMFRWaHg5RGRxb3pqcDk3Ym9LRDNjbWJGOGZ4c1pxTytqWmJLUkl1YjE5?=
- =?utf-8?B?UGQyRnRIMmx6OXBlZnhpZEVBNElWQjhlWlhwdGttVDh0bXlwVzdKUWs3SEN6?=
- =?utf-8?B?M1ExWnM4Y2g0SU1EU0FGdGFUTlVSWHltTzBscnF2bTBRZnpKVElCV0ROdDVw?=
- =?utf-8?B?WW02aUtscG5rNHh6UHExRGRZZElPVU9Sb3BvbWE1NmlQaWZDQnk3WElxeFdF?=
- =?utf-8?B?TUFpYkJvRGFMSmQwMnlncEl4Y2pGRk1LdjNzZGZyRGRWZkhMTXR5NkVKN0dj?=
- =?utf-8?B?a1pqSk1CYnNweGJoSWVNbWZUZDVuY2xFQVFiRGx2WTgyajNQdTU0YUJOTDZJ?=
- =?utf-8?B?dXJUVjdoOEljbjc5QS9QNzcvcm1LdDBGamhxaVBlQ0habkR0emNMN29TSTd6?=
- =?utf-8?B?SmF3NWwzTHFNVEZiSWhYeGo0VEZrOUJRRGpJN0toaTJNdUNwRWI4MWNId0xr?=
- =?utf-8?B?UXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0b191378-ecaf-496b-2927-08db7d6f2686
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6738.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2023 15:47:34.6983 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: DpzX4wBucbXA+M07Qfi+HUGSvgjc5XCCPDC+RjYInkuLMIV3Dl3MJs34lU+CshfEvNnv04H0XXrFbSiiCklfoQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5126
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688572060; x=1720108060;
- h=message-id:date:subject:to:references:from:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=6TmrV2dCPuPLpG1GuCwxzWXc4+NuDJrkYgT/AVhXFbU=;
- b=HDnnqZB+6lOGYyKHc8Q/TRrZFRRLXYXAm5GRxfnqmpxmoiW8GNJ7GYaI
- 9a0m4vAg+hshaDTwy4+7MEutVV6ONqFfKxxxAAii9ENwqmo4eCkxq4IwM
- rOBAtnCb6znolH0lO4I1kGx9sPZaq+H/m9dBERLkJ8yYlXHK3zjRmSpvW
- BPPBSI0CClkXgX1jQ/QNHo6aN9nczEE5horGTSPqx6QzCpTBUSU6LP5pK
- wWbr8Rj91AyQNFozj8A5W8fveA2W56V1HxhTBOXob9aYSB59l5OyziSVu
- oEi8Rfz2SYm4F6NohulFt7KAb5gmzGmTnIIRKxnY6Xa8EsFBe/yoBgiyF
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1688572652; x=1720108652;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=LyPMsf3C0/NaDYzoiwx7gQCCBQX3u+0J5fs1oCvaAiY=;
+ b=D+lLJJg8gd6QfWumxScGr9oNrzuIRb1KzMoOnz+19ohCGcn2BFmdesIF
+ lxvK6hS2pCgwg4jKGDvgN24IiSsrFulmPAZ7XDW3tGgzMPLtWvXqbnDer
+ YFCWafo6FvzoXxPRVjV/ndLmZnX+spxFoeIk/VWpVOdeWvEXnFSiciPfY
+ 407QO2O9igD0sZ3hlDLnxbEjpWyKqNozWw/8JSn+Atx3YxrSzLWyFsM2i
+ o7p7LaCJxb27PkeQ7ueRE6hOLLjOdFgHd3HQGeb5EDtTZuq5J86Oi5jIH
+ gti4q8Mr0PNGQD1yJ+Ujjc9sDheOMj6KlHywybITQWn2BwyKTabKCn9bL
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HDnnqZB+
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ethernet: e1000e: Fix possible uninit
- bug
+ header.a=rsa-sha256 header.s=Intel header.b=D+lLJJg8
+Subject: [Intel-wired-lan] [PATCH RFC net-next v4 0/9] net: intel: start The
+ Great Code Dedup + Page Pool for iavf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -201,42 +94,124 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Alexander Duyck <alexanderduyck@fb.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Yunsheng Lin <linyunsheng@huawei.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ intel-wired-lan@lists.osuosl.org, David Christensen <drc@linux.vnet.ibm.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/5/2023 03:10, Yu Hao wrote:
-> The variable phy_data should be initialized in function e1e_rphy.
-> However, there is not return value check, which means there is a
-> possible uninit read later for the variable.
-> 
-> Signed-off-by: Yu Hao <yhao016@ucr.edu>
-> ---
->   drivers/net/ethernet/intel/e1000e/netdev.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c
-> b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 771a3c909c45..455af5e55cc6 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -6910,8 +6910,11 @@ static int __e1000_resume(struct pci_dev *pdev)
->      /* report the system wakeup cause from S3/S4 */
->      if (adapter->flags2 & FLAG2_HAS_PHY_WAKEUP) {
->          u16 phy_data;
-> +       s32 ret_val;
+Here's a two-shot: introduce Intel Ethernet common library (libie) and
+switch iavf to Page Pool. Details in the commit messages; here's
+summary:
 
-why just not initialize u16 phy_data = 0? How did it hurt us? (legacy)
+Not a secret there's a ton of code duplication between two and more Intel
+ethernet modules. Before introducing new changes, which would need to be
+copied over again, start decoupling the already existing duplicate
+functionality into a new module, which will be shared between several
+Intel Ethernet drivers.
+The first thing that came to my mind was "libie" -- "Intel Ethernet
+common library". Also this sounds like "lovelie" and can be expanded as
+"lib Internet Explorer" :P I'm open for anything else (but justified).
+The series is only the beginning. From now on, adding every new feature
+or doing any good driver refactoring will remove much more lines than add
+for quite some time. There's a basic roadmap with some deduplications
+planned already, not speaking of that touching every line now asks: "can
+I share this?".
+PP conversion for iavf lands within the same series as these two are tied
+closely. libie will support Page Pool model only, so a driver can't use
+much of the lib until it's converted. iavf is only the example, the rest
+will eventually be converted soon on a per-driver basis. That is when it
+gets really interesting. Stay tech.
 
-> 
-> -       e1e_rphy(&adapter->hw, BM_WUS, &phy_data);
-> +       ret_val = e1e_rphy(&adapter->hw, BM_WUS, &phy_data);
-> +       if (ret_val)
-> +           return ret_val;
->          if (phy_data) {
->              e_info("PHY Wakeup cause - %s\n",
->                     phy_data & E1000_WUS_EX ? "Unicast Packet" :
+Alexander Lobakin (9):
+  net: intel: introduce Intel Ethernet common library
+  iavf: kill "legacy-rx" for good
+  iavf: drop page splitting and recycling
+  net: page_pool: add DMA-sync-for-CPU inline helpers
+  libie: add Rx buffer management (via Page Pool)
+  iavf: switch to Page Pool
+  libie: add common queue stats
+  libie: add per-queue Page Pool stats
+  iavf: switch queue stats to libie
+
+ MAINTAINERS                                   |   3 +-
+ drivers/net/ethernet/intel/Kconfig            |  11 +
+ drivers/net/ethernet/intel/Makefile           |   1 +
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 253 --------
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |   1 +
+ .../net/ethernet/intel/i40e/i40e_prototype.h  |   7 -
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  74 +--
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |  88 ---
+ drivers/net/ethernet/intel/iavf/iavf.h        |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_common.c | 253 --------
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 226 +------
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  44 +-
+ .../net/ethernet/intel/iavf/iavf_prototype.h  |   7 -
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 608 ++++--------------
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h   | 176 +----
+ drivers/net/ethernet/intel/iavf/iavf_type.h   |  90 ---
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  20 +-
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    | 316 ---------
+ drivers/net/ethernet/intel/ice/ice_main.c     |   1 +
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  74 +--
+ drivers/net/ethernet/intel/libie/Makefile     |   7 +
+ drivers/net/ethernet/intel/libie/internal.h   |  23 +
+ drivers/net/ethernet/intel/libie/rx.c         | 183 ++++++
+ drivers/net/ethernet/intel/libie/stats.c      | 190 ++++++
+ include/linux/net/intel/libie/rx.h            | 241 +++++++
+ include/linux/net/intel/libie/stats.h         | 214 ++++++
+ include/net/page_pool.h                       |  49 +-
+ 27 files changed, 1137 insertions(+), 2025 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/libie/Makefile
+ create mode 100644 drivers/net/ethernet/intel/libie/internal.h
+ create mode 100644 drivers/net/ethernet/intel/libie/rx.c
+ create mode 100644 drivers/net/ethernet/intel/libie/stats.c
+ create mode 100644 include/linux/net/intel/libie/rx.h
+ create mode 100644 include/linux/net/intel/libie/stats.h
+
+---
+Directly to net-next, has non-Intel code change (#4) :p
+
+Based on the PP "hybrid" allocation series[0] and requires it to work.
+
+From v3[1]:
+* base on the latest net-next, update bloat-o-meter and perf stats;
+* split generic PP optimizations into a separate series;
+* drop "optimize hotpath a bunch" commit: a lot of [controversial]
+  changes in one place, worth own series (Alex);
+* 02: pick Rev-by (Alex);
+* 03: move in-place recycling removal here from the dropped patch;
+* 05: new, add libie Rx buffer API separatelly from IAVF changes;
+* 05-06: use new "hybrid" allocation API from[0] to reduce memory usage
+  when a page can fit more than 1 truesize (also asked by David);
+* 06: merge with "always use order-0 page" commit to reduce diffs and
+  simplify things (Alex);
+* 09: fix page_alloc_fail counter.
+
+From v2[2]:
+* 0006: fix page_pool.h include in OcteonTX2 files (Jakub, Patchwork);
+* no functional changes.
+
+From v1[3]:
+* 0006: new (me, Jakub);
+* 0008: give the helpers more intuitive names (Jakub, Ilias);
+*  -^-: also expand their kdoc a bit for the same reason;
+*  -^-: fix kdoc copy-paste issue (Patchwork, Jakub);
+* 0011: drop `inline` from C file (Patchwork, Jakub).
+
+[0] https://lore.kernel.org/netdev/20230629120226.14854-1-linyunsheng@huawei.com
+[1] https://lore.kernel.org/netdev/20230530150035.1943669-1-aleksander.lobakin@intel.com
+[2] https://lore.kernel.org/netdev/20230525125746.553874-1-aleksander.lobakin@intel.com
+[3] https://lore.kernel.org/netdev/20230516161841.37138-1-aleksander.lobakin@intel.com
+
+-- 
+2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
