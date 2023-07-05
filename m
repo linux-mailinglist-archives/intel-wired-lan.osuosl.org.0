@@ -1,90 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5ACF7488A4
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:58:03 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE9297488A6
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Jul 2023 17:58:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 62A7682154;
-	Wed,  5 Jul 2023 15:58:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 62A7682154
+	by smtp1.osuosl.org (Postfix) with ESMTP id 92E5682140;
+	Wed,  5 Jul 2023 15:58:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92E5682140
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688572682;
-	bh=faKszPNXFsgXcYllPyKJ7nVVB3eBiFvMnXRIMNn5Rmc=;
+	s=default; t=1688572687;
+	bh=9PgMu4JLv+xDZFZ6goNOqO+mvOcxPymGefJDgKNKCkg=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HGof149Ce+Qz1A1akcT4nBp4zrWdYKrCgCMGQQ7K1ZDyhLEYpbW4Vr44QyRK0SVQo
-	 QtiN1w/phdhPvSuCgyGqESPB/R/if0bJJ0Qz4gXEfhUIy00tSp9JQOmCiNVFNWKoma
-	 x4k+mZwAqH3l8a6RkzU2SqI3VvhWX8V9mgfXQo9T1ltEFeOfKy4OQ3cPxHcuwLcczT
-	 H3lnc5kdtu1fbAKdEuAIc/FVz7XVMfL88aA/NhMXzzZw6Z/xiwW16S59lk8GJ6nx1D
-	 LGdTlCm7seiYRyds+aT0MSUJ3ljM5GobDsoJ6B+QWbem0A4tG21riPexfMekxH7e2U
-	 0bYW9tSwfYi3A==
+	b=okxZVxh7F9DT6vs1b0OEVXQO5cRCjyVcxQ1eG5E74zr1Z+/bKdoeAIWJl/cSLkZiF
+	 jgAJgRp5YwrVGQ2yrVZMwmy/GsT8JfsrxJb1X235HA5ETeSZPTzOZ0A1Ks0dFPPoVW
+	 iXJGCt1QoGFf+VNM0bOY6ddDxbSZP/DlnPEWooFpCuRDkyDRRloTgACu1lffBlTs84
+	 R7g60IrOHE+aVhmMfcgG5Zf4kGM93+GoEQ4COZKYC5LneHP7TdqjOAcI9pZpoHmWdU
+	 AL0qBSKbM5upbBVMwFz5IeOIM0qXTZpkh+B42sAi9U/hnCzIsX5TI5DaF5YnGfCY+v
+	 AsuvkPYVgcVog==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BXlcYLpk7wxI; Wed,  5 Jul 2023 15:58:01 +0000 (UTC)
+	with ESMTP id P6SoG2Y0EdeI; Wed,  5 Jul 2023 15:58:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 237BD82090;
-	Wed,  5 Jul 2023 15:58:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 237BD82090
+	by smtp1.osuosl.org (Postfix) with ESMTP id 652E082128;
+	Wed,  5 Jul 2023 15:58:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 652E082128
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 117A81BF2CE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B92141BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DF6324054E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF6324054E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9FF7782090
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FF7782090
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6CZRr8NDk2cG for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Jul 2023 15:57:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LzZYk1EPo3Tt for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Jul 2023 15:57:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 27A6240529
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F84F8213F
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 27A6240529
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="366863477"
-X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="366863477"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7F84F8213F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jul 2023 15:57:58 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="366863541"
+X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="366863541"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2023 08:57:45 -0700
+ 05 Jul 2023 08:57:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="789205581"
-X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="789205581"
+X-IronPort-AV: E=McAfee;i="6600,9927,10762"; a="789205615"
+X-IronPort-AV: E=Sophos;i="6.01,183,1684825200"; d="scan'208";a="789205615"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmsmga004.fm.intel.com with ESMTP; 05 Jul 2023 08:57:42 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 05 Jul 2023 08:57:45 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Wed,  5 Jul 2023 17:55:46 +0200
-Message-ID: <20230705155551.1317583-5-aleksander.lobakin@intel.com>
+Date: Wed,  5 Jul 2023 17:55:47 +0200
+Message-ID: <20230705155551.1317583-6-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230705155551.1317583-1-aleksander.lobakin@intel.com>
 References: <20230705155551.1317583-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688572666; x=1720108666;
+ t=1688572678; x=1720108678;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=dXx6qNLsL96U/ON3QIyHjka+O/2oSNQ2rn+/wVsm/FI=;
- b=PdcdsyEMsfxrN1tkghEF1MMXSHlkeLDaZCZTXYpoMiu2CIi+VZQaJRao
- 1luJIV/rrb4aIgqKmOXn6BUgTDaH0A49BjyfbJeLrd3svWIz5vHgVZzNU
- TJ6yGfzyPd/J+SGXE0gtCOlemmBYhH5xEgp022hLYjpcDzzCaHgrm+KYp
- xQU93sVmdzfRIkXvpqfTj2AOYeYbNIqlxAsSThCUlLTz97x8CNQwWdqv1
- CD59KZRI/KGpnQjffCV6AYi5vXBKg7sd+wOIex2bzkcBT8VUnToq+wNPS
- uwO6ooWggiqPqhjK6gWy3wnCLc6d5WbVLRCW9oOCjokR1Uf/BmDLUZhNZ
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=HT3QVhaII1ut20E0aOjgvB7K1D/L8nMsNYbwazudTLI=;
+ b=IX0EDvh3qsq8mSPsaZy9tcxb6qxleRC8/DGPLnBvLAKrY6gtlBz2bads
+ n752zIJSyfMeEn7y22svWJgN3qbCCNxMQvpXnn6TKE5GKfVHYT5uSbtdx
+ r0sy0qpi5ECcJNT49nZwSKWli6qvDmUUurRRpc9nJ39JP/NOgbr9RIyNR
+ fTBynYK1PCJaRo+VBPUyEpN+g4NEIDiY4XWQs5Vqo9gG32bq4jDSnA8L3
+ H/YHT2tRQ6nulieDBr7LV06jpaH5iJpiUbpcr6zfRd2BfTo2dLf5ngzZH
+ EQdin2knn9F2x9XwiTEEbY0R/tv/HU+8IxjGJwAPril7pTKu9Cl/qOvJd
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PdcdsyEM
-Subject: [Intel-wired-lan] [PATCH RFC net-next v4 4/9] net: page_pool: add
- DMA-sync-for-CPU inline helpers
+ header.a=rsa-sha256 header.s=Intel header.b=IX0EDvh3
+Subject: [Intel-wired-lan] [PATCH RFC net-next v4 5/9] libie: add Rx buffer
+ management (via Page Pool)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,97 +109,225 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Each driver is responsible for syncing buffers written by HW for CPU
-before accessing them. Almost each PP-enabled driver uses the same
-pattern, which could be shorthanded into a static inline to make driver
-code a little bit more compact.
-Introduce a couple such functions. The first one takes the actual size
-of the data written by HW and is the main one to be used on Rx. The
-second does the same, but only if the PP performs DMA synchronizations
-at all.
-Also constify pointer arguments of page_pool_get_dma_dir() and
-page_pool_get_dma_addr() to give a bit more room for optimization,
-as both of them are read-only.
+Add a couple intuitive helpers to hide Rx buffer implementation details
+in the library and not multiplicate it between drivers. The settings are
+optimized for Intel hardware, but nothing really HW-specific here.
+Use the new page_pool_dev_alloc() to dynamically switch between
+split-page and full-page modes depending on MTU, page size, required
+headroom etc. For example, on x86_64 with the default driver settings
+each page is shared between 2 buffers. Turning on XDP (not in this
+series) -> increasing headroom requirement pushes truesize out of 2048
+boundary, leading to that each buffer starts getting a full page.
+The "ceiling" limit is %PAGE_SIZE, as only order-0 pages are used to
+avoid compound overhead. For the above architecture, this means maximum
+linear frame size of 3712 w/o XDP.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- include/net/page_pool.h | 49 ++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 46 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/Kconfig    |   1 +
+ drivers/net/ethernet/intel/libie/rx.c |  54 +++++++++++++
+ include/linux/net/intel/libie/rx.h    | 111 +++++++++++++++++++++++++-
+ 3 files changed, 165 insertions(+), 1 deletion(-)
 
-diff --git a/include/net/page_pool.h b/include/net/page_pool.h
-index ff3772fab707..89acf9e33639 100644
---- a/include/net/page_pool.h
-+++ b/include/net/page_pool.h
-@@ -304,8 +304,8 @@ static inline void *page_pool_dev_cache_alloc(struct page_pool *pool,
- /* get the stored dma direction. A driver might decide to treat this locally and
-  * avoid the extra cache line from page_pool to determine the direction
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 86ecedeac115..e187942b5a5c 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -86,6 +86,7 @@ config E1000E_HWTS
+ 
+ config LIBIE
+ 	tristate
++	select PAGE_POOL
+ 	help
+ 	  libie (Intel Ethernet library) is a common library containing
+ 	  routines shared by several Intel Ethernet drivers.
+diff --git a/drivers/net/ethernet/intel/libie/rx.c b/drivers/net/ethernet/intel/libie/rx.c
+index f503476d8eef..c60d7b20ed20 100644
+--- a/drivers/net/ethernet/intel/libie/rx.c
++++ b/drivers/net/ethernet/intel/libie/rx.c
+@@ -3,6 +3,60 @@
+ 
+ #include <linux/net/intel/libie/rx.h>
+ 
++/* Rx buffer management */
++
++/**
++ * libie_rx_sync_len - get the actual buffer size to be synced and passed to HW
++ * @dev: &net_device to calculate the size for
++ * @hr: headroom in front of each frame
++ *
++ * Returns the buffer size to pass it to HW and use for DMA synchronization
++ * accounting: MTU the @dev has, HW required alignment, minimum and maximum
++ * allowed values, and system's page size.
++ */
++static u32 libie_rx_sync_len(const struct net_device *dev, u32 hr)
++{
++	u32 len;
++
++	len = READ_ONCE(dev->mtu) + LIBIE_RX_LL_LEN;
++	len = ALIGN(len, LIBIE_RX_BUF_LEN_ALIGN);
++	len = clamp(len, LIBIE_MIN_RX_BUF_LEN, LIBIE_RX_BUF_LEN(hr));
++
++	return len;
++}
++
++/**
++ * libie_rx_page_pool_create - create a PP with the default libie settings
++ * @napi: &napi_struct covering this PP (no usage outside its poll loops)
++ * @size: size of the PP, usually simply Rx queue len
++ *
++ * Returns &page_pool on success, casted -errno on failure.
++ */
++struct page_pool *libie_rx_page_pool_create(struct napi_struct *napi,
++					    u32 size)
++{
++	struct page_pool_params pp = {
++		.flags		= PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
++		.order		= LIBIE_RX_PAGE_ORDER,
++		.pool_size	= size,
++		.nid		= NUMA_NO_NODE,
++		.dev		= napi->dev->dev.parent,
++		.napi		= napi,
++		.dma_dir	= DMA_FROM_DEVICE,
++		.offset		= LIBIE_SKB_HEADROOM,
++	};
++	size_t truesize;
++
++	pp.max_len = libie_rx_sync_len(napi->dev, pp.offset);
++
++	/* "Wanted" truesize, passed to page_pool_dev_alloc() */
++	truesize = roundup_pow_of_two(SKB_HEAD_ALIGN(pp.offset + pp.max_len));
++	pp.init_arg = (void *)truesize;
++
++	return page_pool_create(&pp);
++}
++EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_create, LIBIE);
++
+ /* O(1) converting i40e/ice/iavf's 8/10-bit hardware packet type to a parsed
+  * bitfield struct.
   */
--static
--inline enum dma_data_direction page_pool_get_dma_dir(struct page_pool *pool)
-+static inline enum dma_data_direction
-+page_pool_get_dma_dir(const struct page_pool *pool)
- {
- 	return pool->p.dma_dir;
- }
-@@ -460,7 +460,7 @@ static inline void page_pool_cache_free(struct page_pool *pool, void *data,
- 	page_pool_put_page(pool, virt_to_head_page(data), -1, allow_direct);
- }
+diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
+index 58bd0f35d025..8c0ccdff9a37 100644
+--- a/include/linux/net/intel/libie/rx.h
++++ b/include/linux/net/intel/libie/rx.h
+@@ -4,7 +4,116 @@
+ #ifndef __LIBIE_RX_H
+ #define __LIBIE_RX_H
  
--static inline dma_addr_t page_pool_get_dma_addr(struct page *page)
-+static inline dma_addr_t page_pool_get_dma_addr(const struct page *page)
- {
- 	dma_addr_t ret = page->dma_addr;
- 
-@@ -477,6 +477,49 @@ static inline void page_pool_set_dma_addr(struct page *page, dma_addr_t addr)
- 		page->dma_addr_upper = upper_32_bits(addr);
- }
- 
-+/**
-+ * __page_pool_dma_sync_for_cpu - sync Rx page for CPU after it's written by HW
-+ * @pool: &page_pool the page belongs to
-+ * @page: page to sync
-+ * @offset: offset from page start to "hard" start if using frags
-+ * @dma_sync_size: size of the data written to the page
-+ *
-+ * Can be used as a shorthand to sync Rx pages before accessing them in the
-+ * driver. Caller must ensure the pool was created with %PP_FLAG_DMA_MAP.
-+ * Note that this version performs DMA sync unconditionally, even if the
-+ * associated PP doesn't perform sync-for-device. Consider the non-underscored
-+ * version first if unsure.
+-#include <linux/netdevice.h>
++#include <linux/if_vlan.h>
++#include <net/page_pool.h>
++
++/* Rx MTU/buffer/truesize helpers. Mostly pure software-side; HW-defined values
++ * are valid for all Intel HW.
 + */
-+static inline void __page_pool_dma_sync_for_cpu(const struct page_pool *pool,
-+						const struct page *page,
-+						u32 offset, u32 dma_sync_size)
++
++/* Space reserved in front of each frame */
++#define LIBIE_SKB_HEADROOM	(NET_SKB_PAD + NET_IP_ALIGN)
++/* Maximum headroom to calculate max MTU below */
++#define LIBIE_MAX_HEADROOM	LIBIE_SKB_HEADROOM
++/* Link layer / L2 overhead: Ethernet, 2 VLAN tags (C + S), FCS */
++#define LIBIE_RX_LL_LEN		(ETH_HLEN + 2 * VLAN_HLEN + ETH_FCS_LEN)
++
++/* Always use order-0 pages */
++#define LIBIE_RX_PAGE_ORDER	0
++/* Rx buffer size config is a multiple of 128 */
++#define LIBIE_RX_BUF_LEN_ALIGN	128
++/* HW-writeable space in one buffer: truesize - headroom/tailroom,
++ * HW-aligned
++ */
++#define __LIBIE_RX_BUF_LEN(hr)						\
++	ALIGN_DOWN(SKB_MAX_ORDER(hr, LIBIE_RX_PAGE_ORDER),		\
++		   LIBIE_RX_BUF_LEN_ALIGN)
++/* The smallest and largest size for a single descriptor as per HW */
++#define LIBIE_MIN_RX_BUF_LEN	1024U
++#define LIBIE_MAX_RX_BUF_LEN	9728U
++/* "True" HW-writeable space: minimum from SW and HW values */
++#define LIBIE_RX_BUF_LEN(hr)	min_t(u32, __LIBIE_RX_BUF_LEN(hr),	\
++				      LIBIE_MAX_RX_BUF_LEN)
++
++/* The maximum frame size as per HW (S/G) */
++#define __LIBIE_MAX_RX_FRM_LEN	16382U
++/* ATST, HW can chain up to 5 Rx descriptors */
++#define LIBIE_MAX_RX_FRM_LEN(hr)					\
++	min_t(u32, __LIBIE_MAX_RX_FRM_LEN, LIBIE_RX_BUF_LEN(hr) * 5)
++/* Maximum frame size minus LL overhead */
++#define LIBIE_MAX_MTU							\
++	(LIBIE_MAX_RX_FRM_LEN(LIBIE_MAX_HEADROOM) - LIBIE_RX_LL_LEN)
++
++/* Rx buffer management */
++
++/**
++ * struct libie_rx_buffer - structure representing an Rx buffer
++ * @page: page holding the buffer
++ * @offset: offset from the page start (to the headroom)
++ * @truesize: total space occupied by the buffer (w/ headroom and tailroom)
++ *
++ * Depending on the MTU, API switches between one-page-per-frame and shared
++ * page model (to conserve memory on bigger-page platforms). In case of the
++ * former, @offset is always 0 and @truesize is always %PAGE_SIZE.
++ */
++struct libie_rx_buffer {
++	struct page	*page;
++	u32		offset;
++	u32		truesize;
++};
++
++struct page_pool *libie_rx_page_pool_create(struct napi_struct *napi,
++					    u32 size);
++
++/**
++ * libie_rx_alloc - allocate a new Rx buffer
++ * @pool: page_pool to allocate from
++ * @buf: buffer structure to populate
++ *
++ * Returns &dma_addr_t to be passed to HW for Rx, %DMA_MAPPING_ERROR otherwise.
++ */
++static inline dma_addr_t libie_rx_alloc(struct page_pool *pool,
++					struct libie_rx_buffer *buf)
 +{
-+	dma_sync_single_range_for_cpu(pool->p.dev,
-+				      page_pool_get_dma_addr(page),
-+				      offset + pool->p.offset, dma_sync_size,
-+				      page_pool_get_dma_dir(pool));
++	/* "Wanted" truesize, see libie_rx_page_pool_create() */
++	buf->truesize = (size_t)pool->p.init_arg;
++	buf->page = page_pool_dev_alloc(pool, &buf->offset, &buf->truesize);
++	if (!buf->page)
++		return DMA_MAPPING_ERROR;
++
++	return page_pool_get_dma_addr(buf->page) + buf->offset +
++	       pool->p.offset;
 +}
 +
 +/**
-+ * page_pool_dma_sync_for_cpu - sync Rx page for CPU if needed
-+ * @pool: &page_pool the page belongs to
-+ * @page: page to sync
-+ * @offset: offset from page start to "hard" start if using frags
-+ * @dma_sync_size: size of the data written to the page
++ * libie_rx_sync_for_cpu - synchronize or recycle buffer post DMA
++ * @buf: buffer to process
++ * @len: frame length from the descriptor
 + *
-+ * Performs DMA sync for CPU, but *only* when:
-+ * 1) page_pool was created with %PP_FLAG_DMA_SYNC_DEV to manage DMA syncs;
-+ * 2) AND sync shortcut is not available (IOMMU, swiotlb, non-coherent DMA, ...)
++ * Process the buffer after it's written by HW. The regular path is to
++ * synchronize DMA for CPU, but in case of no data it will be immediately
++ * recycled back to its PP.
++ *
++ * Returns true when there's data to process, false otherwise.
 + */
-+static inline void page_pool_dma_sync_for_cpu(const struct page_pool *pool,
-+					      const struct page *page,
-+					      u32 offset, u32 dma_sync_size)
++static inline bool __must_check
++libie_rx_sync_for_cpu(const struct libie_rx_buffer *buf, u32 len)
 +{
-+	if (pool->p.flags & PP_FLAG_DMA_SYNC_DEV)
-+		__page_pool_dma_sync_for_cpu(pool, page, offset,
-+					     dma_sync_size);
-+}
++	struct page *page = buf->page;
 +
- static inline bool is_page_pool_compiled_in(void)
- {
- #ifdef CONFIG_PAGE_POOL
++	/* Very rare, but possible case. The most common reason:
++	 * the last fragment contained FCS only, which was then
++	 * stripped by the HW.
++	 */
++	if (unlikely(!len)) {
++		page_pool_recycle_direct(page->pp, page);
++		return false;
++	}
++
++	page_pool_dma_sync_for_cpu(page->pp, page, buf->offset, len);
++
++	return true;
++}
+ 
+ /* O(1) converting i40e/ice/iavf's 8/10-bit hardware packet type to a parsed
+  * bitfield struct.
 -- 
 2.41.0
 
