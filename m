@@ -2,100 +2,133 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE73374A311
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jul 2023 19:28:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FEE274A357
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jul 2023 19:44:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A7DD40A98;
-	Thu,  6 Jul 2023 17:28:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A7DD40A98
+	by smtp2.osuosl.org (Postfix) with ESMTP id E36E541595;
+	Thu,  6 Jul 2023 17:43:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E36E541595
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688664532;
-	bh=oSoMC0szz1zjgX+Z0m5pKna3/JkXXr1DsgHeNspVH1c=;
+	s=default; t=1688665438;
+	bh=uuX90i78+pcsP1dtQk2N3un4G/+zjy19HkygIJJJw8g=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HnYIRvYdlRvdRwF5BtiRuo9zRWC1kzpjn9nPykCTNmJM92Q1Tez8rtqOxbFSWty3Q
-	 CGv+9MKiyQy6BIGz4oBrnuSDhycASDYsD6shtkAzwyopiSYCbT17x6npusU65Ld4dx
-	 nCp0Fe45u0LzAtL+ykFAmDDWZ22MlfPBDLOyi337pRTSn0nfBuGAXYWjxPtmAivRde
-	 2OgEwyrOK6cNtlksxmqdHIE3rbbRYnCZHwgspgbwRt8W45+C+JmiGXeI5WCQzub38u
-	 hkd/ckwV02kFky7hJeFCsvqVdkK/zRwMjJX3SpURjtXFFLxINtIFdfjNVIREctHW3c
-	 z0163ZTKsF44w==
+	b=WFQibJNDnMFWoeZWRMeoIPwO57ZHtmCO0izswWgqlciO7r9E4+UuIZfwPANzGYyjd
+	 +UFjH2G8L3wnyKezInRdjBa/M8md5jD3Ym40ia8uT0sMEANUKRLDWRAZQAEi6LOTYA
+	 v4ljQV+8wMoNLnZqKDTkdFZ8BN0PXm9x4pl/GoCoP/9uB6Rlf6H0c8SHu/V13L2a86
+	 IpNbywSqky539tnr5NWe7WuCmskKhnPN+H0V1GorW81lfGAe/w2qbuCUxAFMJYYs4G
+	 yoi+Rkub8p7vWTqWbCrH+2qAsWpKskRV0hIdbBBEiGfsNqss/39cjwWVm8HZVL6unX
+	 MJAXoIkXwF7YQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DnMo_S0Y3fsN; Thu,  6 Jul 2023 17:28:51 +0000 (UTC)
+	with ESMTP id lEE-RkDZo0ze; Thu,  6 Jul 2023 17:43:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C22DF40003;
-	Thu,  6 Jul 2023 17:28:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C22DF40003
+	by smtp2.osuosl.org (Postfix) with ESMTP id CBC4440AA5;
+	Thu,  6 Jul 2023 17:43:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CBC4440AA5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B4781BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:28:46 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 46FB11BF2AB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:43:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DF89140875
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:28:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF89140875
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2B76F40AA5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:43:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B76F40AA5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WFAYsF0qvakF for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jul 2023 17:28:44 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HaM2STqK96hK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jul 2023 17:43:49 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A8A7240856
-Received: from mail-io1-xd33.google.com (mail-io1-xd33.google.com
- [IPv6:2607:f8b0:4864:20::d33])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A8A7240856
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:28:44 +0000 (UTC)
-Received: by mail-io1-xd33.google.com with SMTP id
- ca18e2360f4ac-7836164a08aso35937239f.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Jul 2023 10:28:44 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4456940003
+Received: from mail-ua1-x92a.google.com (mail-ua1-x92a.google.com
+ [IPv6:2607:f8b0:4864:20::92a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4456940003
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jul 2023 17:43:49 +0000 (UTC)
+Received: by mail-ua1-x92a.google.com with SMTP id
+ a1e0cc1a2514c-78a5384a5daso335498241.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Jul 2023 10:43:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688664523; x=1691256523;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=f1SXTCBV+Z6xgBoo5S4POlLvEQtmwzmlx2Q+dCb+w6s=;
- b=Ky3nohuwnLCSfBsjEskyy1ROxphMuoTFJQJgFg+UFsBzg2QHAd/C/N+7MF2w5Pyqqx
- AwsNJwbyyDPVmaBxdSDNdp/G3zgLsXTZ6MUbOU2EDhaOTf0NBJt/d+AkuzNllVZDhUsR
- DwevN19ULugQutK8xUj+rCVmjerChMI5YAtpxYXqZjmflKSL4PSOAUZV4phrsUJ/eNKB
- Cpx/bw0eyxLMqXYKJrOT1JylB1dQDMXuu4fQaAaOSq8EF15HpkhDU3xj216j/csEsK50
- ENZK/2MyGqZzB1pXzcXc3W1WVW0dC1dFyrmHsiH6vHQIiajvNFXIuPTzXpmyWEmdXZnK
- 8UMg==
-X-Gm-Message-State: ABy/qLabGTwzvxRfHQLqATqnWMC7eogcA0OmOH8pwsnCfK+qeWnIMs8I
- R6E1z/ykliegulQ/bSjNHQQwXpoud25K8ApG+0g=
-X-Google-Smtp-Source: APBJJlELeZn1D3BplZE1EpqxswWLc/zf7f6K/JnoJRJhuWIJXvB5iCFv60TH2dS0NIvP9IW9Z5kyFPg3Cm8Lf6vepS8=
-X-Received: by 2002:a92:d092:0:b0:346:d48:15e7 with SMTP id
- h18-20020a92d092000000b003460d4815e7mr2990094ilh.25.1688664523472; Thu, 06
- Jul 2023 10:28:43 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1688665428; x=1691257428;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Lre5wVO4GUonISh9R6JXTKoWyWcO0Gb85CdkBCQN+Sw=;
+ b=I5JigTxuLZ9UoM6AqofNs0ONKtLa5luXnxlsjBav8ooMX+7df0S1y/D4XcB1WBcP+e
+ 50qrAcKC5bcCtrQVJSt/fc3TCLhPmRuv4hgj1Px4J77COB7MSPIsyNl/EuSZl7+IAfLf
+ +3FZyLrkvu06YZtwO67FY8/hV7FKqEGYRxvf6BiIE2bv0cjeqNjpsYn+KMNDbFxUUsRC
+ r+EEdbQJnceYsvtIoe5ERuyTZBy8og/GObToOL+55pf2ysVJzMLgpTu72e25RqeiUJBl
+ A/KzjI3EcrPCH7+iovCKJfrGS8QHGf3ipf/qOfdjwIH/wwlfnIc8WGtksjMFRd2guczh
+ Dzmw==
+X-Gm-Message-State: ABy/qLZjjOlbWPzgTNpusHS8d5OmhTpFs0RWHQsBocDP3k6KEDdu1lD9
+ EtB3TXNxT94MudQRCE4m2VfY8y+xLHZfGEduhPI=
+X-Google-Smtp-Source: APBJJlH7pbB5/razHoqd4x/hOfzG+cEWWZ/MJQAJa0xydH242Sl4+c7T3JZdQ8zWxqmjHs/Mz48mKl9t0FCQxeSa4H4=
+X-Received: by 2002:a67:b646:0:b0:443:5b1f:12e4 with SMTP id
+ e6-20020a67b646000000b004435b1f12e4mr1233918vsm.9.1688665427949; Thu, 06 Jul
+ 2023 10:43:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230705155551.1317583-1-aleksander.lobakin@intel.com>
- <20230705155551.1317583-7-aleksander.lobakin@intel.com>
- <CAKgT0Ud4h32UFwiUhcpLxSrPRMhbKYSDncL2YiursWgS7Qg7Ug@mail.gmail.com>
- <52963031-76be-b215-052e-a200f01d7130@intel.com>
-In-Reply-To: <52963031-76be-b215-052e-a200f01d7130@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 6 Jul 2023 10:28:06 -0700
-Message-ID: <CAKgT0Ufqno2z=6w6XmJ+rVeqzOnHudgsRs8Fgs+eke_cyc0hjQ@mail.gmail.com>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
+References: <CAA85sZukiFq4A+b9+en_G85eVDNXMQsnGc4o-4NZ9SfWKqaULA@mail.gmail.com>
+ <CAA85sZvm1dL3oGO85k4R+TaqBiJsggUTpZmGpH1+dqdC+U_s1w@mail.gmail.com>
+ <e7e49ed5-09e2-da48-002d-c7eccc9f9451@intel.com>
+ <CAA85sZtyM+X_oHcpOBNSgF=kmB6k32bpB8FCJN5cVE14YCba+A@mail.gmail.com>
+ <22aad588-47d6-6441-45b2-0e685ed84c8d@intel.com>
+ <CAA85sZti1=ET=Tc3MoqCX0FqthHLf6MSxGNAhJUNiMms1TfoKA@mail.gmail.com>
+ <CAA85sZvn04k7=oiTQ=4_C8x7pNEXRWzeEStcaXvi3v63ah7OUQ@mail.gmail.com>
+ <ffb554bfa4739381d928406ad24697a4dbbbe4a2.camel@redhat.com>
+ <CAA85sZunA=tf0FgLH=MNVYq3Edewb1j58oBAoXE1Tyuy3GJObg@mail.gmail.com>
+ <CAA85sZsH1tMwLtL=VDa5=GBdVNWgifvhK+eG-hQg69PeSxBWkg@mail.gmail.com>
+ <CAA85sZu=CzJx9QD87-vehOStzO9qHUSWk6DXZg3TzJeqOV5-aw@mail.gmail.com>
+ <0a040331995c072c56fce58794848f5e9853c44f.camel@redhat.com>
+ <CAA85sZuuwxtAQcMe3LHpFVeF7y-bVoHtO1nukAa2+NyJw3zcyg@mail.gmail.com>
+ <CAA85sZurk7-_0XGmoCEM93vu3vbqRgPTH4QVymPR5BeeFw6iFg@mail.gmail.com>
+ <486ae2687cd2e2624c0db1ea1f3d6ca36db15411.camel@redhat.com>
+ <CAA85sZsJEZK0g0fGfH+toiHm_o4pdN+Wo0Wq9fgsUjHXGxgxQA@mail.gmail.com>
+ <CAA85sZs4KkfVojx=vxbDaWhWRpxiHc-RCc2OLD2c+VefRjpTfw@mail.gmail.com>
+ <5688456234f5d15ea9ca0f000350c28610ed2639.camel@redhat.com>
+ <CAA85sZvT-vAHQooy8+i0-bTxgv4JjkqMorLL1HjkXK6XDKX41w@mail.gmail.com>
+ <CAA85sZs2biYueZsbDqdrMyYfaqH6hnSMpymgbsk=b3W1B7TNRA@mail.gmail.com>
+ <CAA85sZs_H3Dc-mYnj8J5VBEwUJwbHUupP+U-4eG20nfAHBtv4w@mail.gmail.com>
+ <92a4d42491a2c219192ae86fa04b579ea3676d8c.camel@redhat.com>
+ <CAA85sZvtspqfep+6rH8re98-A6rHNNWECvwqVaM=r=0NSSsGzA@mail.gmail.com>
+ <dfbbe91a9c0abe8aba2c00afd3b7f7d6af801d8e.camel@redhat.com>
+ <CAA85sZuQh0FMoGDFVyOad6G1UB9keodd3OCZ4d4r+xgXDArcVA@mail.gmail.com>
+ <062061fc4d4d3476e3b0255803b726956686eb19.camel@redhat.com>
+ <CAA85sZv9KCmw8mAzK4T-ORXB48wuLF+YXTYSWxkBhv3k_-wzcA@mail.gmail.com>
+ <CAA85sZt6ssXRaZyq4awM0yTLFk62Gxbgw-0+bTKWsHwQvVzZXQ@mail.gmail.com>
+ <d9bf21296a4691ac5aca11ccd832765b262f7088.camel@redhat.com>
+ <CAA85sZsidN4ig=RaQ34PYFjnZGU-=zqR=r-5za=G4oeAtxDA7g@mail.gmail.com>
+ <14cd6a50bd5de13825017b75c98cb3115e84acc1.camel@redhat.com>
+ <CAA85sZuZLg+L7Sr51PPaOkPKbbiywXbbKzhTyjaw12_S6CsZHQ@mail.gmail.com>
+ <c6cf7b4c0a561700d2015c970d52fc9d92b114c7.camel@redhat.com>
+ <CAA85sZvZ_X=TqCXaPui0PDLq2pp5dw_uhga+wcXgBqudrLP9bQ@mail.gmail.com>
+ <67ff0f7901e66d1c0d418c48c9a071068b32a77d.camel@redhat.com>
+ <CANn89i+F=R71refT8K_8hPaP+uWn15GeHz+FTMYU=VPTG24WFA@mail.gmail.com>
+ <c4e40b45b41d0476afd8989d31e6bab74c51a72a.camel@redhat.com>
+ <CAA85sZs_R3W42m8YmXO-k08bPow7zKj_eOxceEB_3MJveGMZ7A@mail.gmail.com>
+ <a46bb3de011002c2446a6d836aaddc9f6bce71bc.camel@redhat.com>
+In-Reply-To: <a46bb3de011002c2446a6d836aaddc9f6bce71bc.camel@redhat.com>
+From: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Thu, 6 Jul 2023 19:43:37 +0200
+Message-ID: <CAA85sZt9VuhEqQ24QmkRoteT4WKc+d-AY570NXRcWbNsOa9CMg@mail.gmail.com>
+To: Paolo Abeni <pabeni@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1688664523; x=1691256523;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=f1SXTCBV+Z6xgBoo5S4POlLvEQtmwzmlx2Q+dCb+w6s=;
- b=JXtteNjLih0QyL64Q/LmABAGma/dzRqiRHKu6Lh6pcxywb9ynuZKOhWSa3gmZdcltu
- Vpk+SDVj/3RWT+V8bhnlqeBlpaeQeFA8Lf8kxDVTJgjjRuEJK8ITTRXN6AAIPnmGFNiy
- BPmPKsXErgRZfxtfXBpUwA2uGHz6zjnxXpjqECPs1tpAtpXYZ5ghkaPb1wczLkV3YpVX
- Qf3ZUu6DxGhasrJ/V3NEbqBHtjd64nzs1IIjXEhL75G7IGyHyK5cGJ93NAR5K+MkCuIy
- nToEXYkkepmq42QtLveSyIeYFtysxAoJUV5Zi1pDyCOG9tfIYb5qzwv9D9K7SxE5YNfl
- FaLA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=gmail.com; s=20221208; t=1688665428; x=1691257428;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Lre5wVO4GUonISh9R6JXTKoWyWcO0Gb85CdkBCQN+Sw=;
+ b=hrKKVjwauEF/vznwDVULP7i9a68J7Po81xJ6tsR+90D+0qiye2gnfTsUgF0d5X3Mrr
+ frUpkVil4s64MExAWb2GuY8262D4RCWA0esFGlaEsBeKrncExEXW8AS+BvYZ96qJWgQN
+ w2l6PE28j+fAC4kcTkGU0ZPzNHKnZ4h+IeJ+XdI/Pnz0VvN6LJRiUp9K72ehCj1g1Cyr
+ awX9uNh3seTkESQ3Mkl2snjML1u/Sv/GhX6iy98Wmv6LzTL57zSPzY3PJYZvUF83Qv5E
+ T2OZ6HyaQhZgchBFC1xWP1jhOsILHSaSwtsu8sZf/+aa/tL9CllMXqHuINhG6AuFnp3U
+ AI+g==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=JXtteNjL
-Subject: Re: [Intel-wired-lan] [PATCH RFC net-next v4 6/9] iavf: switch to
- Page Pool
+ header.a=rsa-sha256 header.s=20221208 header.b=hrKKVjwa
+Subject: Re: [Intel-wired-lan] bug with rx-udp-gro-forwarding offloading?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,152 +141,439 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Alexander Duyck <alexanderduyck@fb.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
- intel-wired-lan@lists.osuosl.org, Yunsheng Lin <linyunsheng@huawei.com>,
- David Christensen <drc@linux.vnet.ibm.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Willem de Bruijn <willemb@google.com>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>
+Content-Type: multipart/mixed; boundary="===============2384616786550542225=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVGh1LCBKdWwgNiwgMjAyMyBhdCA5OjU34oCvQU0gQWxleGFuZGVyIExvYmFraW4KPGFsZWtz
-YW5kZXIubG9iYWtpbkBpbnRlbC5jb20+IHdyb3RlOgo+Cj4gRnJvbTogQWxleGFuZGVyIER1eWNr
-IDxhbGV4YW5kZXIuZHV5Y2tAZ21haWwuY29tPgo+IERhdGU6IFRodSwgNiBKdWwgMjAyMyAwODoy
-NjowMCAtMDcwMAo+Cj4gPiBPbiBXZWQsIEp1bCA1LCAyMDIzIGF0IDg6NTjigK9BTSBBbGV4YW5k
-ZXIgTG9iYWtpbgo+ID4gPGFsZWtzYW5kZXIubG9iYWtpbkBpbnRlbC5jb20+IHdyb3RlOgo+ID4+
-Cj4gPj4gTm93IHRoYXQgdGhlIElBVkYgZHJpdmVyIHNpbXBseSB1c2VzIGRldl9hbGxvY19wYWdl
-KCkgKyBmcmVlX3BhZ2UoKSB3aXRoCj4gPj4gbm8gY3VzdG9tIHJlY3ljbGluZyBsb2dpY3MsIGl0
-IGNhbiBlYXNpbHkgYmUgc3dpdGNoZWQgdG8gdXNpbmcgUGFnZQo+ID4+IFBvb2wgLyBsaWJpZSBB
-UEkgaW5zdGVhZC4KPiA+PiBUaGlzIGFsbG93cyB0byByZW1vdmluZyB0aGUgd2hvbGUgZGFuY2lu
-ZyBhcm91bmQgaGVhZHJvb20sIEhXIGJ1ZmZlcgo+ID4+IHNpemUsIGFuZCBwYWdlIG9yZGVyLiBB
-bGwgRE1BLWZvci1kZXZpY2UgaXMgbm93IGRvbmUgaW4gdGhlIFBQIGNvcmUsCj4gPj4gZm9yLUNQ
-VSAtLSBpbiB0aGUgbGliaWUgaGVscGVyLgo+ID4+IFVzZSBza2JfbWFya19mb3JfcmVjeWNsZSgp
-IHRvIGJyaW5nIGJhY2sgdGhlIHJlY3ljbGluZyBhbmQgcmVzdG9yZSB0aGUKPiA+PiBwZXJmb3Jt
-YW5jZS4gU3BlYWtpbmcgb2YgcGVyZm9ybWFuY2U6IG9uIHBhciB3aXRoIHRoZSBiYXNlbGluZSBh
-bmQKPiA+PiBmYXN0ZXIgd2l0aCB0aGUgUFAgb3B0aW1pemF0aW9uIHNlcmllcyBhcHBsaWVkLiBC
-dXQgdGhlIG1lbW9yeSB1c2FnZSBmb3IKPiA+PiAxNTAwYiBNVFUgaXMgbm93IGFsbW9zdCAyeCBs
-b3dlciAoeDg2XzY0KSB0aGFua3MgdG8gYWxsb2NhdGluZyBhIHBhZ2UKPiA+PiBldmVyeSBzZWNv
-bmQgZGVzY3JpcHRvci4KPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRlciBMb2Jha2lu
-IDxhbGVrc2FuZGVyLmxvYmFraW5AaW50ZWwuY29tPgo+ID4KPiA+IE9uZSB0aGluZyBJIGFtIG5v
-dGljaW5nIGlzIHRoYXQgdGhlcmUgc2VlbXMgdG8gYmUgYSBidW5jaCBvZiBjbGVhbnVwCj4gPiBj
-aGFuZ2VzIGluIGhlcmUgYXMgd2VsbC4gVGhpbmdzIGxpa2UgbW92aW5nIGFyb3VuZCB2YWx1ZXMg
-d2l0aGluCj4gPiBzdHJ1Y3R1cmVzIHdoaWNoIEkgYW0gYXNzdW1pbmcgYXJlIHRvIGZpbGwgaG9s
-ZXMuIFlvdSBtYXkgd2FudCB0byBsb29rCj4gPiBhdCBicmVha2luZyBzb21lIG9mIHRob3NlIG91
-dCBhcyBpdCBtYWtlcyBpdCBhIGJpdCBoYXJkZXIgdG8gcmV2aWV3Cj4gPiB0aGlzIHNpbmNlIHRo
-ZXkgc2VlbSBsaWtlIHVucmVsYXRlZCBjaGFuZ2VzLgo+Cj4gbWluX210dSBhbmQgd2F0Y2hkb2cg
-YXJlIHVucmVsYXRlZCwgSSdsbCBkcm9wIHRob3NlLgo+IE1vdmluZyB0YWlsIHBvaW50ZXIgYXJv
-dW5kIHdhcyBzdXBwb3NlZCB0byBsYW5kIGluIGEgZGlmZmVyZW50IGNvbW1pdCwKPiBub3QgdGhp
-cyBvbmUsIGFzIEkgd3JvdGUgMTAgbWludXRlcyBhZ28gYWxyZWFkeSA6cwo+Cj4gWy4uLl0KPgo+
-ID4+IC0gICAgICAgYmlfc2l6ZSA9IHNpemVvZihzdHJ1Y3QgaWF2Zl9yeF9idWZmZXIpICogcnhf
-cmluZy0+Y291bnQ7Cj4gPj4gLSAgICAgICBtZW1zZXQocnhfcmluZy0+cnhfYmksIDAsIGJpX3Np
-emUpOwo+ID4+IC0KPiA+PiAtICAgICAgIC8qIFplcm8gb3V0IHRoZSBkZXNjcmlwdG9yIHJpbmcg
-Ki8KPiA+PiAtICAgICAgIG1lbXNldChyeF9yaW5nLT5kZXNjLCAwLCByeF9yaW5nLT5zaXplKTsK
-PiA+PiAtCj4gPgo+ID4gSSBoYXZlIHNvbWUgbWlzZ2l2aW5ncyBhYm91dCBub3QgY2xlYXJpbmcg
-dGhlc2UuIFdlIG1heSB3YW50IHRvIGRvdWJsZQo+ID4gY2hlY2sgdG8gdmVyaWZ5IHRoZSBjb2Rl
-IHBhdGhzIGFyZSByZXNpbGllbnQgZW5vdWdoIHRoYXQgaXQgd29uJ3QKPiA+IGNhdXNlIGFueSBp
-c3N1ZXMgdy8gcmVwZWF0ZWQgdXAvZG93biB0ZXN0aW5nIG9uIHRoZSBpbnRlcmZhY2UuIFRoZQo+
-ID4gZ2VuZXJhbCBpZGVhIGlzIHRvIGtlZXAgdGhpbmdzIGNvbnNpc3RlbnQgdy8gdGhlIHN0YXRl
-IGFmdGVyCj4gPiBzZXR1cF9yeF9kZXNjcmlwdG9ycy4gSWYgd2UgZG9uJ3QgbmVlZCB0aGlzIHdo
-ZW4gd2UgZG9uJ3QgbmVlZCB0byBiZQo+ID4gY2FsbGluZyB0aGUgemFsbG9jIG9yIGNhbGxvYyB2
-ZXJzaW9uIG9mIHRoaW5ncyBpbgo+ID4gc2V0dXBfcnhfZGVzY3JpcHRvcnMuCj4KPiBCb3RoIGFy
-cmF5cyB3aWxsIGJlIGZyZWVkIGNvdXBsZSBpbnN0cnVjdGlvbnMgYmVsb3csIHdoeSB6ZXJvIHRo
-ZW0/CgpVZ2guIFlvdSBhcmUgcmlnaHQsIGJ1dCBub3QgZm9yIGEgZ29vZCByZWFzb24uIFNvIHRo
-ZSBvdGhlciBJbnRlbApkcml2ZXJzIGluIHRoZSBwYXN0IHdvdWxkIGJlIGRvaW5nIHRoZSBjbGVh
-bl9yeF9yaW5nIGNhbGxzIG9uIHRoZQpfZG93bigpIHdpdGggdGhlIGZyZWVpbmcgb2YgcmVzb3Vy
-Y2VzIG9uIF9jbG9zZSgpLiBTcGVjaWZpY2FsbHkgaXQKYWxsb3dlZCByZWR1Y2luZyB0aGUgb3Zl
-cmhlYWQgZm9yIHRoaW5ncyBsaWtlIHJlc2V0cyBvciBzZXR0aW5nCmNoYW5nZXMgc2luY2UgaXQg
-ZGlkbid0IHJlcXVpcmUgcmVhbGxvY2F0aW5nIHRoZSBkZXNjcmlwdG9yIHJpbmdzIGFuZApidWZm
-ZXIgaW5mbyBzdHJ1Y3R1cmVzLgoKSSBndWVzcyB5b3UgYXJlIGdvb2QgdG8gcmVtb3ZlIHRoZXNl
-IHNpbmNlIHRoaXMgY29kZSBkb2Vzbid0IGRvIHRoYXQuCgo+ID4KPiA+Cj4gPj4gICAgICAgICBy
-eF9yaW5nLT5uZXh0X3RvX2NsZWFuID0gMDsKPiA+PiAgICAgICAgIHJ4X3JpbmctPm5leHRfdG9f
-dXNlID0gMDsKPiA+PiAgfQo+Cj4gWy4uLl0KPgo+ID4+ICAgICAgICAgc3RydWN0IG5ldF9kZXZp
-Y2UgKm5ldGRldjsgICAgICAvKiBuZXRkZXYgcmluZyBtYXBzIHRvICovCj4gPj4gICAgICAgICB1
-bmlvbiB7Cj4gPj4gKyAgICAgICAgICAgICAgIHN0cnVjdCBsaWJpZV9yeF9idWZmZXIgKnJ4X2Jp
-Owo+ID4+ICAgICAgICAgICAgICAgICBzdHJ1Y3QgaWF2Zl90eF9idWZmZXIgKnR4X2JpOwo+ID4+
-IC0gICAgICAgICAgICAgICBzdHJ1Y3QgaWF2Zl9yeF9idWZmZXIgKnJ4X2JpOwo+ID4+ICAgICAg
-ICAgfTsKPiA+PiAgICAgICAgIERFQ0xBUkVfQklUTUFQKHN0YXRlLCBfX0lBVkZfUklOR19TVEFU
-RV9OQklUUyk7Cj4gPj4gKyAgICAgICB1OCBfX2lvbWVtICp0YWlsOwo+ID4+ICAgICAgICAgdTE2
-IHF1ZXVlX2luZGV4OyAgICAgICAgICAgICAgICAvKiBRdWV1ZSBudW1iZXIgb2YgcmluZyAqLwo+
-ID4+ICAgICAgICAgdTggZGNiX3RjOyAgICAgICAgICAgICAgICAgICAgICAvKiBUcmFmZmljIGNs
-YXNzIG9mIHJpbmcgKi8KPiA+PiAtICAgICAgIHU4IF9faW9tZW0gKnRhaWw7Cj4gPj4KPiA+PiAg
-ICAgICAgIC8qIGhpZ2ggYml0IHNldCBtZWFucyBkeW5hbWljLCB1c2UgYWNjZXNzb3JzIHJvdXRp
-bmVzIHRvIHJlYWQvd3JpdGUuCj4gPj4gICAgICAgICAgKiBoYXJkd2FyZSBvbmx5IHN1cHBvcnRz
-IDJ1cyByZXNvbHV0aW9uIGZvciB0aGUgSVRSIHJlZ2lzdGVycy4KPiA+Cj4gPiBJJ20gYXNzdW1p
-bmcgInRhaWwiIHdhcyBtb3ZlZCBoZXJlIHNpbmNlIGl0IGlzIGEgcG9pbnRlciBhbmQgZmlsbHMg
-YSBob2xlPwo+Cj4gKHNlZSBhYm92ZSkKPgo+ID4KPiA+PiBAQCAtMzI5LDkgKzI2NCw4IEBAIHN0
-cnVjdCBpYXZmX3Jpbmcgewo+ID4+ICAgICAgICAgICovCj4gPj4gICAgICAgICB1MTYgaXRyX3Nl
-dHRpbmc7Cj4gPj4KPiA+PiAtICAgICAgIHUxNiBjb3VudDsgICAgICAgICAgICAgICAgICAgICAg
-LyogTnVtYmVyIG9mIGRlc2NyaXB0b3JzICovCj4gPj4gICAgICAgICB1MTYgcmVnX2lkeDsgICAg
-ICAgICAgICAgICAgICAgIC8qIEhXIHJlZ2lzdGVyIGluZGV4IG9mIHRoZSByaW5nICovCj4gPj4g
-LSAgICAgICB1MTYgcnhfYnVmX2xlbjsKPiA+PiArICAgICAgIHUxNiBjb3VudDsgICAgICAgICAg
-ICAgICAgICAgICAgLyogTnVtYmVyIG9mIGRlc2NyaXB0b3JzICovCj4gPgo+ID4gV2h5IG1vdmUg
-Y291bnQgZG93biBoZXJlPyBJdCBpcyBtb3ZpbmcgdGhlIGNvbnN0YW50IHZhbHVlIHRoYXQgaXMK
-PiA+IHJlYWQtbW9zdGx5IGludG8gYW4gYXJlYSB0aGF0IHdpbGwgYmUgdXBkYXRlZCBtb3JlIG9m
-dGVuLgo+Cj4gV2l0aCB0aGUgOjp0YWlsIHB1dCBpbiBhIGRpZmZlcmVudCBzbG90LCA6OmNvdW50
-IHdhcyBsYW5kaW5nIGluIGEKPiBkaWZmZXJlbnQgY2FjaGVsaW5lLiBJIHdhbnRlZCB0byBhdm9p
-ZCB0aGlzLiBCdXQgbm93IEkgZmVlbCBsaWtlIEkgd2FzCj4ganVzdCBsYXp5IGFuZCBtdXN0J3Zl
-IHRlc3RlZCBib3RoIHZhcmlhbnRzIHRvIHNlZSBpZiB0aGlzIG1vdmUgYWZmZWN0cwo+IHBlcmZv
-cm1hbmNlLiBJJ2xsIHBsYXkgd2l0aCB0aGlzIG9uZSBpbiB0aGUgbmV4dCByZXYuCgpUaGUgcGVy
-Zm9ybWFuY2UgaW1wYWN0IHNob3VsZCBiZSBtaW5pbWFsLiBPZGRzIGFyZSB0aGUgcGxhY2VtZW50
-IHdhcwp0aGUgd2F5IGl0IHdhcyBzaW5jZSBpdCB3YXMgcHJvYmFibHkganVzdCBjb3B5aW5nIHRo
-ZSBvcmlnaW5hbCBjb2RlCnRoYXQgaGFzIGJlZW4gdGhlcmUgc2luY2UgaWdiL2l4Z2JlLiBUaGUg
-Z2VuZXJhbCBpZGVhIGlzIGp1c3Qga2VlcCB0aGUKcmVhZC1tb3N0bHkgaXRlbXMgZ3JvdXBlZCBh
-dCB0aGUgdG9wIGFuZCB0cnkgdG8gb3JkZXIgdGhlbSBzb21ld2hhdCBieQpmcmVxdWVuY3kgb2Yg
-YmVpbmcgcmVhZCBzbyB0aGF0IHdoZXJldmVyIHRoZSBjYWNoZSBsaW5lIGVuZHMgdXAgeW91Cndv
-bid0IHRha2UgbXVjaCBvZiBhIHBlbmFsdHkgYXMgaG9wZWZ1bGx5IHlvdSB3aWxsIGp1c3QgaGF2
-ZSB0aGUKaW5mcmVxdWVudGx5IHJlYWQgaXRlbXMgZW5kIHVwIGdldHRpbmcgcHVsbGVkIGludG8g
-dGhlIGFjdGl2ZSBjYWNoZQpsaW5lLgoKPiA+Cj4gPj4gICAgICAgICAvKiB1c2VkIGluIGludGVy
-cnVwdCBwcm9jZXNzaW5nICovCj4gPj4gICAgICAgICB1MTYgbmV4dF90b191c2U7Cj4gPj4gQEAg
-LTM5OCwxNyArMzMyLDYgQEAgc3RydWN0IGlhdmZfcmluZ19jb250YWluZXIgewo+ID4+ICAjZGVm
-aW5lIGlhdmZfZm9yX2VhY2hfcmluZyhwb3MsIGhlYWQpIFwKPiA+PiAgICAgICAgIGZvciAocG9z
-ID0gKGhlYWQpLnJpbmc7IHBvcyAhPSBOVUxMOyBwb3MgPSBwb3MtPm5leHQpCj4gPj4KPiA+PiAt
-c3RhdGljIGlubGluZSB1bnNpZ25lZCBpbnQgaWF2Zl9yeF9wZ19vcmRlcihzdHJ1Y3QgaWF2Zl9y
-aW5nICpyaW5nKQo+ID4+IC17Cj4gPj4gLSNpZiAoUEFHRV9TSVpFIDwgODE5MikKPiA+PiAtICAg
-ICAgIGlmIChyaW5nLT5yeF9idWZfbGVuID4gKFBBR0VfU0laRSAvIDIpKQo+ID4+IC0gICAgICAg
-ICAgICAgICByZXR1cm4gMTsKPiA+PiAtI2VuZGlmCj4gPj4gLSAgICAgICByZXR1cm4gMDsKPiA+
-PiAtfQo+ID4+IC0KPiA+PiAtI2RlZmluZSBpYXZmX3J4X3BnX3NpemUoX3JpbmcpIChQQUdFX1NJ
-WkUgPDwgaWF2Zl9yeF9wZ19vcmRlcihfcmluZykpCj4gPj4gLQo+ID4KPiA+IEFsbCB0aGlzIGNv
-ZGUgcHJvYmFibHkgY291bGQgaGF2ZSBiZWVuIHJlbW92ZWQgaW4gYW4gZWFybGllciBwYXRjaAo+
-ID4gc2luY2UgSSBkb24ndCB0aGluayB3ZSBuZWVkIHRoZSBoaWdoZXIgb3JkZXIgcGFnZXMgb25j
-ZSB3ZSBkaWQgYXdheQo+ID4gd2l0aCB0aGUgcmVjeWNsaW5nLiBPZGRzIGFyZSB3ZSBjYW4gcHJv
-YmFibHkgbW92ZSB0aGlzIGludG8gdGhlCj4gPiByZWN5Y2xpbmcgY29kZSByZW1vdmFsLgo+Cj4g
-VGhpcyB3ZW50IGhlcmUgYXMgSSBtZXJnZWQgImFsd2F5cyB1c2Ugb3JkZXIgMCIgY29tbWl0IHdp
-dGggInN3aXRjaCB0bwo+IFBhZ2UgUG9vbCIuIEluIGdlbmVyYWwsIElJUkMgaGF2aW5nIHJlbW92
-YWxzIG9mIGFsbCB0aGUgc3R1ZmYgYXQgb25jZSBpbgo+IG9uZSBjb21taXQgKCMyKSB3YXMgbGVz
-cyByZWFkYWJsZSB0aGFuIHRoZSBjdXJyZW50IHZlcnNpb24sIGJ1dCBJJ2xsCj4gZG91YmxlLWNo
-ZWNrLgoKSXQgYWxsIGRlcGVuZHMgb24gaG93IG11Y2ggaXMgaGF2aW5nIHRvIGJlIGFkZGVkIHRv
-IGFjY29tbW9kYXRlIHRoaXMuCkluIG15IG1pbmQgd2hlbiB3ZSBkaWQgYXdheSB3aXRoIHRoZSBw
-YWdlIHNwbGl0dGluZy9yZWN5Y2xpbmcgd2UgYWxzbwpkaWQgYXdheSB3aXRoIHRoZSBuZWVkIGZv
-ciB0aGUgaGlnaGVyIG9yZGVyIHBhZ2VzLiBUaGF0IGlzIHdoeSBJIHdhcwp0aGlua2luZyBpdCBt
-aWdodCBtYWtlIG1vcmUgc2Vuc2UgdGhlcmUgYXMgaXQgd291bGQganVzdCBiZSBtb3JlCnJlbW92
-YWxzIHdpdGggdmVyeSBmZXcgaWYgYW55IGFkZGl0aW9ucyBuZWVkZWQgdG8gc3VwcG9ydCBpdC4K
-Cgo+ID4KPiA+PiAgYm9vbCBpYXZmX2FsbG9jX3J4X2J1ZmZlcnMoc3RydWN0IGlhdmZfcmluZyAq
-cnhyLCB1MTYgY2xlYW5lZF9jb3VudCk7Cj4gPj4gIG5ldGRldl90eF90IGlhdmZfeG1pdF9mcmFt
-ZShzdHJ1Y3Qgc2tfYnVmZiAqc2tiLCBzdHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2KTsKPiA+PiAg
-aW50IGlhdmZfc2V0dXBfdHhfZGVzY3JpcHRvcnMoc3RydWN0IGlhdmZfcmluZyAqdHhfcmluZyk7
-Cj4KPiBbLi4uXQo+Cj4gPj4gQEAgLTMwOSw5ICszMTAsNyBAQCB2b2lkIGlhdmZfY29uZmlndXJl
-X3F1ZXVlcyhzdHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFwdGVyKQo+ID4+ICAgICAgICAgICAgICAg
-ICB2cXBpLT5yeHEucmluZ19sZW4gPSBhZGFwdGVyLT5yeF9yaW5nc1tpXS5jb3VudDsKPiA+PiAg
-ICAgICAgICAgICAgICAgdnFwaS0+cnhxLmRtYV9yaW5nX2FkZHIgPSBhZGFwdGVyLT5yeF9yaW5n
-c1tpXS5kbWE7Cj4gPj4gICAgICAgICAgICAgICAgIHZxcGktPnJ4cS5tYXhfcGt0X3NpemUgPSBt
-YXhfZnJhbWU7Cj4gPj4gLSAgICAgICAgICAgICAgIHZxcGktPnJ4cS5kYXRhYnVmZmVyX3NpemUg
-PQo+ID4+IC0gICAgICAgICAgICAgICAgICAgICAgIEFMSUdOKGFkYXB0ZXItPnJ4X3JpbmdzW2ld
-LnJ4X2J1Zl9sZW4sCj4gPj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklUX1VMTChJ
-QVZGX1JYUV9DVFhfREJVRkZfU0hJRlQpKTsKPiA+Cj4gPiBJcyB0aGlzIHJlbmRlcmVkIHJlZHVu
-ZGFudCBieSBzb21ldGhpbmc/IFNlZW1zIGxpa2UgeW91IHNob3VsZCBiZQo+ID4gZ3VhcmFudGVl
-aW5nIHNvbWV3aGVyZSB0aGF0IHlvdSBhcmUgc3RpbGwgYWxpZ25lZCB0byB0aGlzLgo+Cj4gU2Vl
-IHRoZSBwcmV2aW91cyBjb21taXQsIHRoZSBwbGFjZSB3aGVyZSBJIGNhbGN1bGF0ZSBtYXhfbGVu
-IGZvciB0aGUgUFAKPiBwYXJhbXMuIDEyOCBieXRlIGlzIEludGVsLXdpZGUgSFcgcmVxLCBzbyBp
-dCBsaXZlcyB0aGVyZSBub3cuCgpPa2F5LCB0aGF0IGlzIHRoZSBwaWVjZSBJIG1pc3NlZC4gSXQg
-d2FzIGNvbnZlcnRlZCBmcm9tIGEgQklUX1VMTCg3KQp0byBqdXN0IGEgMTI4LiBUaGFua3MuCgo+
-ID4KPiA+Cj4gPj4gKyAgICAgICAgICAgICAgIHZxcGktPnJ4cS5kYXRhYnVmZmVyX3NpemUgPSBt
-YXhfbGVuOwo+ID4+ICAgICAgICAgICAgICAgICB2cXBpKys7Cj4gVGhhbmtzLAo+IE9sZWsKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQt
-bGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3Rz
-Lm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+--===============2384616786550542225==
+Content-Type: multipart/alternative; boundary="000000000000fa404c05ffd50ee2"
+
+--000000000000fa404c05ffd50ee2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jul 6, 2023, 19:10 Paolo Abeni <pabeni@redhat.com> wrote:
+
+> On Thu, 2023-07-06 at 18:17 +0200, Ian Kumlien wrote:
+> > On Thu, Jul 6, 2023 at 4:04=E2=80=AFPM Paolo Abeni <pabeni@redhat.com> =
+wrote:
+> > >
+> > > On Thu, 2023-07-06 at 15:56 +0200, Eric Dumazet wrote:
+> > > > On Thu, Jul 6, 2023 at 3:02=E2=80=AFPM Paolo Abeni <pabeni@redhat.c=
+om>
+> wrote:
+> > > > >
+> > > > > On Thu, 2023-07-06 at 13:27 +0200, Ian Kumlien wrote:
+> > > > > > On Thu, Jul 6, 2023 at 10:42=E2=80=AFAM Paolo Abeni <pabeni@red=
+hat.com>
+> wrote:
+> > > > > > > On Wed, 2023-07-05 at 15:58 +0200, Ian Kumlien wrote:
+> > > > > > > > On Wed, Jul 5, 2023 at 3:29=E2=80=AFPM Paolo Abeni <
+> pabeni@redhat.com> wrote:
+> > > > > > > > >
+> > > > > > > > > On Wed, 2023-07-05 at 13:32 +0200, Ian Kumlien wrote:
+> > > > > > > > > > On Wed, Jul 5, 2023 at 12:28=E2=80=AFPM Paolo Abeni <
+> pabeni@redhat.com> wrote:
+> > > > > > > > > > >
+> > > > > > > > > > > On Tue, 2023-07-04 at 16:27 +0200, Ian Kumlien wrote:
+> > > > > > > > > > > > More stacktraces.. =3D)
+> > > > > > > > > > > >
+> > > > > > > > > > > > cat bug.txt | ./scripts/decode_stacktrace.sh vmlinu=
+x
+> > > > > > > > > > > > [  411.413767] ------------[ cut here ]------------
+> > > > > > > > > > > > [  411.413792] WARNING: CPU: 9 PID: 942 at
+> include/net/ud     p.h:509
+> > > > > > > > > > > > udpv6_queue_rcv_skb (./include/net/udp.h:509
+> net/ipv6/udp.c:800
+> > > > > > > > > > > > net/ipv6/udp.c:787)
+> > > > > > > > > > >
+> > > > > > > > > > > I'm really running out of ideas here...
+> > > > > > > > > > >
+> > > > > > > > > > > This is:
+> > > > > > > > > > >
+> > > > > > > > > > >         WARN_ON_ONCE(UDP_SKB_CB(skb)->partial_cov);
+> > > > > > > > > > >
+> > > > > > > > > > > sort of hint skb being shared (skb->users > 1) while
+> enqueued in
+> > > > > > > > > > > multiple places (bridge local input and br
+> forward/flood to tun
+> > > > > > > > > > > device). I audited the bridge mc flooding code, and I
+> could not find
+> > > > > > > > > > > how a shared skb could land into the local input path=
+.
+> > > > > > > > > > >
+> > > > > > > > > > > Anyway the other splats reported here and in later
+> emails are
+> > > > > > > > > > > compatible with shared skbs.
+> > > > > > > > > > >
+> > > > > > > > > > > The above leads to another bunch of questions:
+> > > > > > > > > > > * can you reproduce the issue after disabling
+> 'rx-gro-list' on the
+> > > > > > > > > > > ingress device? (while keeping 'rx-udp-gro-forwarding=
+'
+> on).
+> > > > > > > > > >
+> > > > > > > > > > With rx-gro-list off, as in never turned on, everything
+> seems to run fine
+> > > > > > > > > >
+> > > > > > > > > > > * do you have by chance qdiscs on top of the VM tun
+> devices?
+> > > > > > > > > >
+> > > > > > > > > > default qdisc is fq
+> > > > > > > > >
+> > > > > > > > > IIRC libvirt could reset the qdisc to noqueue for the
+> owned tun
+> > > > > > > > > devices.
+> > > > > > > > >
+> > > > > > > > > Could you please report the output of:
+> > > > > > > > >
+> > > > > > > > > tc -d -s qdisc show dev <tun dev name>
+> > > > > > > >
+> > > > > > > > I don't have these set:
+> > > > > > > > CONFIG_NET_SCH_INGRESS
+> > > > > > > > CONFIG_NET_SCHED
+> > > > > > > >
+> > > > > > > > so tc just gives an error...
+> > > > > > >
+> > > > > > > The above is confusing. AS CONFIG_NET_SCH_DEFAULT depends on
+> > > > > > > CONFIG_NET_SCHED, you should not have a default qdisc, too ;)
+> > > > > >
+> > > > > > Well it's still set in sysctl - dunno if it fails
+> > > > > >
+> > > > > > > Could you please share your kernel config?
+> > > > > >
+> > > > > > Sure...
+> > > > > >
+> > > > > > As a side note, it hasn't crashed - no traces since we did the
+> last change
+> > > > >
+> > > > > It sounds like an encouraging sing! (last famous words...). I'll
+> wait 1
+> > > > > more day, than I'll submit formally...
+> > > > >
+> > > > > > For reference, this is git diff on the running kernels source
+> tree:
+> > > > > > diff --git a/net/core/skbuff.c b/net/core/skbuff.c
+> > > > > > index cea28d30abb5..1b2394ebaf33 100644
+> > > > > > --- a/net/core/skbuff.c
+> > > > > > +++ b/net/core/skbuff.c
+> > > > > > @@ -4270,6 +4270,17 @@ struct sk_buff *skb_segment_list(struct
+> sk_buff *skb,
+> > > > > >
+> > > > > >         skb_push(skb, -skb_network_offset(skb) + offset);
+> > > > > >
+> > > > > > +       if (WARN_ON_ONCE(skb_shared(skb))) {
+> > > > > > +               skb =3D skb_share_check(skb, GFP_ATOMIC);
+> > > > > > +               if (!skb)
+> > > > > > +                       goto err_linearize;
+> > > > > > +       }
+> > > > > > +
+> > > > > > +       /* later code will clear the gso area in the shared inf=
+o
+> */
+> > > > > > +       err =3D skb_header_unclone(skb, GFP_ATOMIC);
+> > > > > > +       if (err)
+> > > > > > +               goto err_linearize;
+> > > > > > +
+> > > > > >         skb_shinfo(skb)->frag_list =3D NULL;
+> > > > > >
+> > > > > >         while (list_skb) {
+> > > > >
+> > > > > ...the above check only, as the other 2 should only catch-up side
+> > > > > effects of lack of this one. In any case the above address a real
+> > > > > issue, so we likely want it no-matter-what.
+> > > > >
+> > > >
+> > > > Interesting, I wonder if this could also fix some syzbot reports
+> > > > Willem and I are investigating.
+> > > >
+> > > > Any idea of when the bug was 'added' or 'revealed' ?
+> > >
+> > > The issue specifically addressed above should be present since
+> > > frag_list introduction commit 3a1296a38d0c ("net: Support GRO/GSO
+> > > fraglist chaining."). AFAICS triggering it requires non trivial setup=
+ -
+> > > mcast rx on bridge with frag-list enabled and forwarding to multiple
+> > > ports - so perhaps syzkaller found it later due to improvements on it=
+s
+> > > side ?!?
+> >
+> > I'm also a bit afraid that we just haven't triggered it - i don't see
+> > any warnings or anything... :/
+>
+> Let me try to clarify: I hope/think that this chunk alone:
+>
+> +       /* later code will clear the gso area in the shared info */
+> +       err =3D skb_header_unclone(skb, GFP_ATOMIC);
+> +       if (err)
+> +               goto err_linearize;
+> +
+>         skb_shinfo(skb)->frag_list =3D NULL;
+>
+>         while (list_skb) {
+>
+> does the magic/avoids the skb corruptions -> it everything goes well,
+> you should not see any warnings at all. Running 'nstat' in the DUT
+> should give some hints about reaching the relevant code paths.
+
+
+I'll check when I get home
+
+But I thought that:
+if (WARN_ON_ONCE(skb_shared(skb)))
+
+Would trigger at some point
+
+
+
+> Cheers,
+>
+> Paolo
+>
+>
+
+--000000000000fa404c05ffd50ee2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Thu, Jul 6, 2023, 19:10 Paolo Abeni &lt;<a href=3D"=
+mailto:pabeni@redhat.com">pabeni@redhat.com</a>&gt; wrote:<br></div><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
+solid;padding-left:1ex">On Thu, 2023-07-06 at 18:17 +0200, Ian Kumlien wrot=
+e:<br>
+&gt; On Thu, Jul 6, 2023 at 4:04=E2=80=AFPM Paolo Abeni &lt;<a href=3D"mail=
+to:pabeni@redhat.com" target=3D"_blank" rel=3D"noreferrer">pabeni@redhat.co=
+m</a>&gt; wrote:<br>
+&gt; &gt; <br>
+&gt; &gt; On Thu, 2023-07-06 at 15:56 +0200, Eric Dumazet wrote:<br>
+&gt; &gt; &gt; On Thu, Jul 6, 2023 at 3:02=E2=80=AFPM Paolo Abeni &lt;<a hr=
+ef=3D"mailto:pabeni@redhat.com" target=3D"_blank" rel=3D"noreferrer">pabeni=
+@redhat.com</a>&gt; wrote:<br>
+&gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; On Thu, 2023-07-06 at 13:27 +0200, Ian Kumlien wrote:<b=
+r>
+&gt; &gt; &gt; &gt; &gt; On Thu, Jul 6, 2023 at 10:42=E2=80=AFAM Paolo Aben=
+i &lt;<a href=3D"mailto:pabeni@redhat.com" target=3D"_blank" rel=3D"norefer=
+rer">pabeni@redhat.com</a>&gt; wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; On Wed, 2023-07-05 at 15:58 +0200, Ian Kumlie=
+n wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; On Wed, Jul 5, 2023 at 3:29=E2=80=AFPM P=
+aolo Abeni &lt;<a href=3D"mailto:pabeni@redhat.com" target=3D"_blank" rel=
+=3D"noreferrer">pabeni@redhat.com</a>&gt; wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; On Wed, 2023-07-05 at 13:32 +0200, =
+Ian Kumlien wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; On Wed, Jul 5, 2023 at 12:28=
+=E2=80=AFPM Paolo Abeni &lt;<a href=3D"mailto:pabeni@redhat.com" target=3D"=
+_blank" rel=3D"noreferrer">pabeni@redhat.com</a>&gt; wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; On Tue, 2023-07-04 at 16:=
+27 +0200, Ian Kumlien wrote:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; More stacktraces.. =
+=3D)<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; cat bug.txt | ./scri=
+pts/decode_stacktrace.sh vmlinux<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; [=C2=A0 411.413767] =
+------------[ cut here ]------------<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; [=C2=A0 411.413792] =
+WARNING: CPU: 9 PID: 942 at include/net/ud=C2=A0 =C2=A0 =C2=A0p.h:509<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; udpv6_queue_rcv_skb =
+(./include/net/udp.h:509 net/ipv6/udp.c:800<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; net/ipv6/udp.c:787)<=
+br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; I&#39;m really running ou=
+t of ideas here...<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; This is:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0WARN_ON_ONCE(UDP_SKB_CB(skb)-&gt;partial_cov);<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; sort of hint skb being sh=
+ared (skb-&gt;users &gt; 1) while enqueued in<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; multiple places (bridge l=
+ocal input and br forward/flood to tun<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; device). I audited the br=
+idge mc flooding code, and I could not find<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; how a shared skb could la=
+nd into the local input path.<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; Anyway the other splats r=
+eported here and in later emails are<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; compatible with shared sk=
+bs.<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; The above leads to anothe=
+r bunch of questions:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; * can you reproduce the i=
+ssue after disabling &#39;rx-gro-list&#39; on the<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; ingress device? (while ke=
+eping &#39;rx-udp-gro-forwarding&#39; on).<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; With rx-gro-list off, as in ne=
+ver turned on, everything seems to run fine<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; * do you have by chance q=
+discs on top of the VM tun devices?<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; default qdisc is fq<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; IIRC libvirt could reset the qdisc =
+to noqueue for the owned tun<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; devices.<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; Could you please report the output =
+of:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; &gt; tc -d -s qdisc show dev &lt;tun dev=
+ name&gt;<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; I don&#39;t have these set:<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; CONFIG_NET_SCH_INGRESS<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; CONFIG_NET_SCHED<br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; &gt; so tc just gives an error...<br>
+&gt; &gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; The above is confusing. AS CONFIG_NET_SCH_DEF=
+AULT depends on<br>
+&gt; &gt; &gt; &gt; &gt; &gt; CONFIG_NET_SCHED, you should not have a defau=
+lt qdisc, too ;)<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; Well it&#39;s still set in sysctl - dunno if it fa=
+ils<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; &gt; Could you please share your kernel config?<br=
+>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; Sure...<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; As a side note, it hasn&#39;t crashed - no traces =
+since we did the last change<br>
+&gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; It sounds like an encouraging sing! (last famous words.=
+..). I&#39;ll wait 1<br>
+&gt; &gt; &gt; &gt; more day, than I&#39;ll submit formally...<br>
+&gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; For reference, this is git diff on the running ker=
+nels source tree:<br>
+&gt; &gt; &gt; &gt; &gt; diff --git a/net/core/skbuff.c b/net/core/skbuff.c=
+<br>
+&gt; &gt; &gt; &gt; &gt; index cea28d30abb5..1b2394ebaf33 100644<br>
+&gt; &gt; &gt; &gt; &gt; --- a/net/core/skbuff.c<br>
+&gt; &gt; &gt; &gt; &gt; +++ b/net/core/skbuff.c<br>
+&gt; &gt; &gt; &gt; &gt; @@ -4270,6 +4270,17 @@ struct sk_buff *skb_segment=
+_list(struct sk_buff *skb,<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0skb_push(skb, -sk=
+b_network_offset(skb) + offset);<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0if (WARN_ON_ONCE(skb_s=
+hared(skb))) {<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0skb =3D skb_share_check(skb, GFP_ATOMIC);<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0if (!skb)<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto err_linearize;<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+&gt; &gt; &gt; &gt; &gt; +<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0/* later code will cle=
+ar the gso area in the shared info */<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D skb_header_unc=
+lone(skb, GFP_ATOMIC);<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0if (err)<br>
+&gt; &gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0goto err_linearize;<br>
+&gt; &gt; &gt; &gt; &gt; +<br>
+&gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0skb_shinfo(skb)-&=
+gt;frag_list =3D NULL;<br>
+&gt; &gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0while (list_skb) =
+{<br>
+&gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; &gt; ...the above check only, as the other 2 should only cat=
+ch-up side<br>
+&gt; &gt; &gt; &gt; effects of lack of this one. In any case the above addr=
+ess a real<br>
+&gt; &gt; &gt; &gt; issue, so we likely want it no-matter-what.<br>
+&gt; &gt; &gt; &gt; <br>
+&gt; &gt; &gt; <br>
+&gt; &gt; &gt; Interesting, I wonder if this could also fix some syzbot rep=
+orts<br>
+&gt; &gt; &gt; Willem and I are investigating.<br>
+&gt; &gt; &gt; <br>
+&gt; &gt; &gt; Any idea of when the bug was &#39;added&#39; or &#39;reveale=
+d&#39; ?<br>
+&gt; &gt; <br>
+&gt; &gt; The issue specifically addressed above should be present since<br=
+>
+&gt; &gt; frag_list introduction commit 3a1296a38d0c (&quot;net: Support GR=
+O/GSO<br>
+&gt; &gt; fraglist chaining.&quot;). AFAICS triggering it requires non triv=
+ial setup -<br>
+&gt; &gt; mcast rx on bridge with frag-list enabled and forwarding to multi=
+ple<br>
+&gt; &gt; ports - so perhaps syzkaller found it later due to improvements o=
+n its<br>
+&gt; &gt; side ?!?<br>
+&gt; <br>
+&gt; I&#39;m also a bit afraid that we just haven&#39;t triggered it - i do=
+n&#39;t see<br>
+&gt; any warnings or anything... :/<br>
+<br>
+Let me try to clarify: I hope/think that this chunk alone:<br>
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0/* later code will clear the gso area in the sh=
+ared info */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0err =3D skb_header_unclone(skb, GFP_ATOMIC);<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0if (err)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0goto err_linearize;=
+<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 skb_shinfo(skb)-&gt;frag_list =3D NULL;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 while (list_skb) {<br>
+<br>
+does the magic/avoids the skb corruptions -&gt; it everything goes well,<br=
+>
+you should not see any warnings at all. Running &#39;nstat&#39; in the DUT<=
+br>
+should give some hints about reaching the relevant code paths.</blockquote>=
+</div></div><div dir=3D"auto"><br></div><div dir=3D"auto">I&#39;ll check wh=
+en I get home</div><div dir=3D"auto"><br></div><div dir=3D"auto">But I thou=
+ght that:</div><div dir=3D"auto">if (WARN_ON_ONCE(skb_shared(skb)))</div><d=
+iv dir=3D"auto"><br></div><div dir=3D"auto">Would trigger at some point</di=
+v><div dir=3D"auto"></div><div dir=3D"auto"><br></div><div dir=3D"auto"><br=
+></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
+ft:1ex"><br>
+Cheers,<br>
+<br>
+Paolo<br>
+<br>
+</blockquote></div></div></div>
+
+--000000000000fa404c05ffd50ee2--
+
+--===============2384616786550542225==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2384616786550542225==--
