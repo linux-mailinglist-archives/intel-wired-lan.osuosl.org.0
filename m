@@ -1,83 +1,152 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2595574A8CD
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Jul 2023 04:16:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E24BC60B57;
-	Fri,  7 Jul 2023 02:16:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E24BC60B57
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688696167;
-	bh=ukEf6lkgW+OIIKdLmgyCknvSmGp8YtQIAGGTsHQ4cw0=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=i3YlIyByFtKe/SJWiJh81x4xz/9uwgSYHnOlm7FEzkFcwdZwL6pWo5bpjDbUIe58z
-	 3QchgNufgwWjmXTHSWwGO+uy728JZovWjMpgFxRKMDn20prQkuTRJaeQkVJA81kfv7
-	 KJALoihr4XBfJEiiXSo0znMeUshkLzGfvLmcYxOHknQ9XKZ4rcTCfzcBa00hIEVw2F
-	 RFyVRdK2Zqs6sTbUCG0WE7/B4mTgJg9p9q09kv8pzrktXR9j0F5rtuSUi2bTUp+Lm9
-	 hq+nQvv+e2dGN4UwelI9MR6E79f81H/UDF1TOdEF/XQ1vc+gFyUPVP+8v2SQu4yukq
-	 UJ6JiwtD+Kixw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9C7AhlPCbuVm; Fri,  7 Jul 2023 02:16:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 477CC60AA4;
-	Fri,  7 Jul 2023 02:16:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 477CC60AA4
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3483F1BF97F
- for <intel-wired-lan@osuosl.org>; Fri,  7 Jul 2023 02:16:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 801B874AB6F
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Jul 2023 08:55:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0C140400B8
- for <intel-wired-lan@osuosl.org>; Fri,  7 Jul 2023 02:16:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0C140400B8
+	by smtp2.osuosl.org (Postfix) with ESMTP id C6CC841571;
+	Fri,  7 Jul 2023 06:55:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C6CC841571
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1688712922;
+	bh=k/ZCx8IL0EYtQ66xiSm7/WC7b5Lkde8bF3kdrkooCtg=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=s2R7aalyCAh2ObSt8w86lHzhMPFL216Nm/yxIXRsQJoxqTzHUOTbulCMiystsgH1c
+	 hxQlGxJ2Im7N1ljM42Zej/y0zn48PZmOSjoMh+Qp2pvblAobI5P1HhBJ40iHqkR/2j
+	 +3lIE4VxglDGPqV7bXG4/NtPZeX5Yv+hNPaPXIzLgcm0oQhUz5j0SGXchYmRLvqOrY
+	 89/zaUb/F6EoCQziF9TlhirAI1XiYVGET2jDwgoMWcqffnm7aIOHotx2FX2wDKFyL8
+	 2Ih34rBfqAsAp+/1oFtoQuxi0+Ju6ZOdbI+7kCI9giPNht9H/f+sac4dMkXg6fmcxw
+	 YCb9AVJ87H5FA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FLpaFe_0KeMd for <intel-wired-lan@osuosl.org>;
- Fri,  7 Jul 2023 02:15:58 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3-FdtzuD5qRE; Fri,  7 Jul 2023 06:55:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3F0BB40BE1;
+	Fri,  7 Jul 2023 06:55:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F0BB40BE1
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 29E931BF859
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jul 2023 06:55:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0CD1241727
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jul 2023 06:55:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0CD1241727
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E18UQkNy-vCk for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Jul 2023 06:55:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6075B40012
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6075B40012
- for <intel-wired-lan@osuosl.org>; Fri,  7 Jul 2023 02:15:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10763"; a="362645433"
-X-IronPort-AV: E=Sophos;i="6.01,187,1684825200"; d="scan'208";a="362645433"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jul 2023 19:15:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10763"; a="785157883"
-X-IronPort-AV: E=Sophos;i="6.01,187,1684825200"; d="scan'208";a="785157883"
-Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga008.fm.intel.com with ESMTP; 06 Jul 2023 19:15:46 -0700
-From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Fri,  7 Jul 2023 10:14:19 +0800
-Message-Id: <20230707021419.22936-1-muhammad.husaini.zulkifli@intel.com>
-X-Mailer: git-send-email 2.17.1
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688696158; x=1720232158;
- h=from:to:cc:subject:date:message-id;
- bh=55kzazSHkxfzdZnWeyFbRPf/MssRd+HB2g5bXjuFeyY=;
- b=aHnVoC2zCQdFhMJWEqT3bfFBWuUcR2EARhq25y1y58ptSBnlwgGs5fJR
- U9AsNsxTcJmx/KdpXtbx7pGsOfXFlxrNnl/IyQkMa5NG71ALdxqxCM7Zz
- e4MZpsupUnKNDzFH9NQTfMbF8PNmtJp3uS0EKDuAbPVkJmm38+9pMHGY6
- 5+wp/xr/JRKq0NcFK1Ce63bjeMuryb9E3zIpYi+IPN9gikciHelTHwK15
- Uff81BwIjbZVE3Imgld96sYpue01r3tC+TvZZ6zr6VdPg0ci5vWmv76b7
- 7ClGA4bPhdoM0l6BXzaWb/YF+c8aPFyWj9VsS5qbqifzywElth8CFfzXw
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=aHnVoC2z
-Subject: [Intel-wired-lan] [PATCH iwl-net v4] igc: Fix Kernel Panic during
- ndo_tx_timeout callback
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 83CCD4171E
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 83CCD4171E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jul 2023 06:55:14 +0000 (UTC)
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-370-LA3P5d4INNG2sFkAVg8eEg-1; Fri, 07 Jul 2023 02:55:12 -0400
+X-MC-Unique: LA3P5d4INNG2sFkAVg8eEg-1
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-765ad67e690so36111385a.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Jul 2023 23:55:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688712911; x=1691304911;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=AiuIFdEbuG/V7vt0go6BhvTNeG2l7bZFx0tKuvLez8w=;
+ b=GYn4fSakFgqPd9ZURe0w1jA71/KbiDqqx+e5LE5ejVBmYUDbg5OvJ1Luty6S9qsB4O
+ XlNFWFkHdBPkotJNImLW2SSTPbo2yGLMxQRRMwjEzfIsKsJllTmBjtR2b+neGHwf3KmJ
+ TpCPlrgXu2k/CGNSYVPdhxNvUJi/rzT4kdu8IJrwUR32m4yC2lzeYpJp1VM9gBvcpC/r
+ T+bwlb4bWRizEyOw2K4LiX1EAAN2txrUPn9Bm81Yh2yHyPV+gJVJixO3jT2pD8VKaxfA
+ bQyODa0kufDJX1jqHjzwkHJ3ZIk+gqP6MKGM8ICpCouI5lIr6bV41+CQlAv3G1VpREyO
+ 6kcA==
+X-Gm-Message-State: ABy/qLb4breKK31VfgRYNQPRGQtZhnfrXUTyyaF9uH6O6z5dCwyFy/c4
+ qY8c+0gqMsd3Q85onaxW8QV2SE/xJTjVmTKmUeIs/2LkXsT1+tgwu1KlrC3eSltuLZl05CDK7XK
+ riwonUtAM9FGVFKa7da7Je72EuY8fdA==
+X-Received: by 2002:a05:620a:244a:b0:767:170d:887a with SMTP id
+ h10-20020a05620a244a00b00767170d887amr5365480qkn.2.1688712911676; 
+ Thu, 06 Jul 2023 23:55:11 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlE1hIX2H/C32J0vYUFsa3n7kXbchn8wnbtPcqrhcTOHsi1P4Q9291eV8i6EzR3Hfc5vN2z5zw==
+X-Received: by 2002:a05:620a:244a:b0:767:170d:887a with SMTP id
+ h10-20020a05620a244a00b00767170d887amr5365455qkn.2.1688712911174; 
+ Thu, 06 Jul 2023 23:55:11 -0700 (PDT)
+Received: from gerbillo.redhat.com (146-241-240-43.dyn.eolo.it.
+ [146.241.240.43]) by smtp.gmail.com with ESMTPSA id
+ x1-20020a05620a12a100b00767177a5bebsm1550954qki.56.2023.07.06.23.55.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Jul 2023 23:55:10 -0700 (PDT)
+Message-ID: <c21f6cc32ac9d1ee78d60452e52b62654152ae69.camel@redhat.com>
+From: Paolo Abeni <pabeni@redhat.com>
+To: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Fri, 07 Jul 2023 08:55:07 +0200
+In-Reply-To: <CAA85sZsHKb3Wtsa5ktSAPJsjLrcmahtgaemPhN5dTeTxEBWaqw@mail.gmail.com>
+References: <CAA85sZukiFq4A+b9+en_G85eVDNXMQsnGc4o-4NZ9SfWKqaULA@mail.gmail.com>
+ <CAA85sZvm1dL3oGO85k4R+TaqBiJsggUTpZmGpH1+dqdC+U_s1w@mail.gmail.com>
+ <e7e49ed5-09e2-da48-002d-c7eccc9f9451@intel.com>
+ <CAA85sZtyM+X_oHcpOBNSgF=kmB6k32bpB8FCJN5cVE14YCba+A@mail.gmail.com>
+ <22aad588-47d6-6441-45b2-0e685ed84c8d@intel.com>
+ <CAA85sZti1=ET=Tc3MoqCX0FqthHLf6MSxGNAhJUNiMms1TfoKA@mail.gmail.com>
+ <CAA85sZvn04k7=oiTQ=4_C8x7pNEXRWzeEStcaXvi3v63ah7OUQ@mail.gmail.com>
+ <ffb554bfa4739381d928406ad24697a4dbbbe4a2.camel@redhat.com>
+ <CAA85sZunA=tf0FgLH=MNVYq3Edewb1j58oBAoXE1Tyuy3GJObg@mail.gmail.com>
+ <CAA85sZsH1tMwLtL=VDa5=GBdVNWgifvhK+eG-hQg69PeSxBWkg@mail.gmail.com>
+ <CAA85sZu=CzJx9QD87-vehOStzO9qHUSWk6DXZg3TzJeqOV5-aw@mail.gmail.com>
+ <0a040331995c072c56fce58794848f5e9853c44f.camel@redhat.com>
+ <CAA85sZuuwxtAQcMe3LHpFVeF7y-bVoHtO1nukAa2+NyJw3zcyg@mail.gmail.com>
+ <CAA85sZurk7-_0XGmoCEM93vu3vbqRgPTH4QVymPR5BeeFw6iFg@mail.gmail.com>
+ <486ae2687cd2e2624c0db1ea1f3d6ca36db15411.camel@redhat.com>
+ <CAA85sZsJEZK0g0fGfH+toiHm_o4pdN+Wo0Wq9fgsUjHXGxgxQA@mail.gmail.com>
+ <CAA85sZs4KkfVojx=vxbDaWhWRpxiHc-RCc2OLD2c+VefRjpTfw@mail.gmail.com>
+ <5688456234f5d15ea9ca0f000350c28610ed2639.camel@redhat.com>
+ <CAA85sZvT-vAHQooy8+i0-bTxgv4JjkqMorLL1HjkXK6XDKX41w@mail.gmail.com>
+ <CAA85sZs2biYueZsbDqdrMyYfaqH6hnSMpymgbsk=b3W1B7TNRA@mail.gmail.com>
+ <CAA85sZs_H3Dc-mYnj8J5VBEwUJwbHUupP+U-4eG20nfAHBtv4w@mail.gmail.com>
+ <92a4d42491a2c219192ae86fa04b579ea3676d8c.camel@redhat.com>
+ <CAA85sZvtspqfep+6rH8re98-A6rHNNWECvwqVaM=r=0NSSsGzA@mail.gmail.com>
+ <dfbbe91a9c0abe8aba2c00afd3b7f7d6af801d8e.camel@redhat.com>
+ <CAA85sZuQh0FMoGDFVyOad6G1UB9keodd3OCZ4d4r+xgXDArcVA@mail.gmail.com>
+ <062061fc4d4d3476e3b0255803b726956686eb19.camel@redhat.com>
+ <CAA85sZv9KCmw8mAzK4T-ORXB48wuLF+YXTYSWxkBhv3k_-wzcA@mail.gmail.com>
+ <CAA85sZt6ssXRaZyq4awM0yTLFk62Gxbgw-0+bTKWsHwQvVzZXQ@mail.gmail.com>
+ <d9bf21296a4691ac5aca11ccd832765b262f7088.camel@redhat.com>
+ <CAA85sZsidN4ig=RaQ34PYFjnZGU-=zqR=r-5za=G4oeAtxDA7g@mail.gmail.com>
+ <14cd6a50bd5de13825017b75c98cb3115e84acc1.camel@redhat.com>
+ <CAA85sZuZLg+L7Sr51PPaOkPKbbiywXbbKzhTyjaw12_S6CsZHQ@mail.gmail.com>
+ <c6cf7b4c0a561700d2015c970d52fc9d92b114c7.camel@redhat.com>
+ <CAA85sZvZ_X=TqCXaPui0PDLq2pp5dw_uhga+wcXgBqudrLP9bQ@mail.gmail.com>
+ <67ff0f7901e66d1c0d418c48c9a071068b32a77d.camel@redhat.com>
+ <CANn89i+F=R71refT8K_8hPaP+uWn15GeHz+FTMYU=VPTG24WFA@mail.gmail.com>
+ <c4e40b45b41d0476afd8989d31e6bab74c51a72a.camel@redhat.com>
+ <CAA85sZs_R3W42m8YmXO-k08bPow7zKj_eOxceEB_3MJveGMZ7A@mail.gmail.com>
+ <a46bb3de011002c2446a6d836aaddc9f6bce71bc.camel@redhat.com>
+ <CAA85sZsHKb3Wtsa5ktSAPJsjLrcmahtgaemPhN5dTeTxEBWaqw@mail.gmail.com>
+User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1688712913;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AiuIFdEbuG/V7vt0go6BhvTNeG2l7bZFx0tKuvLez8w=;
+ b=Harerm3Ce4XUELpj3dIoJdwxzw1IX7ZBRDwT9CjskID9pbucdAMX1bILhmplz59vlkhgfJ
+ Iz8shqj8pDmdRLzKcXh4maTI+0ilOrY4M2nUkg+YholOV8QksLW8OyjlRaf6sKF0NJgAaT
+ zClihjj+lRRi9DvIzjyaKiBnmyiKa7c=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Harerm3C
+Subject: Re: [Intel-wired-lan] bug with rx-udp-gro-forwarding offloading?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,393 +159,147 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: anthony.l.nguyen@intel.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Willem de Bruijn <willemb@google.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The Xeon validation group has been carrying out some loaded tests
-with various HW configurations, and they have seen some transmit
-queue time out happening during the test. This will cause the
-reset adapter function to be called by igc_tx_timeout().
-Similar race conditions may arise when the interface is being brought
-down and up in igc_reinit_locked(), an interrupt being generated, and
-igc_clean_tx_irq() being called to complete the TX.
-
-When the igc_tx_timeout() function is invoked, this patch will turn
-off all TX ring HW queues during igc_down() process. TX ring HW queues
-will be activated again during the igc_configure_tx_ring() process
-when performing the igc_up() procedure later.
-
-This patch also moved existing igc_disable_tx_ring_hw() to avoid using
-forward declaration.
-
-Kernel trace:
-[ 7678.747813] ------------[ cut here ]------------
-[ 7678.757914] NETDEV WATCHDOG: enp1s0 (igc): transmit queue 2 timed out
-[ 7678.770117] WARNING: CPU: 0 PID: 13 at net/sched/sch_generic.c:525 dev_watchdog+0x1ae/0x1f0
-[ 7678.784459] Modules linked in: xt_conntrack nft_chain_nat xt_MASQUERADE xt_addrtype nft_compat
-nf_tables nfnetlink br_netfilter bridge stp llc overlay dm_mod emrcha(PO) emriio(PO) rktpm(PO)
-cegbuf_mod(PO) patch_update(PO) se(PO) sgx_tgts(PO) mktme(PO) keylocker(PO) svtdx(PO) svfs_pci_hotplug(PO)
-vtd_mod(PO) davemem(PO) svmabort(PO) svindexio(PO) usbx2(PO) ehci_sched(PO) svheartbeat(PO) ioapic(PO)
-sv8259(PO) svintr(PO) lt(PO) pcierootport(PO) enginefw_mod(PO) ata(PO) smbus(PO) spiflash_cdf(PO) arden(PO)
-dsa_iax(PO) oobmsm_punit(PO) cpm(PO) svkdb(PO) ebg_pch(PO) pch(PO) sviotargets(PO) svbdf(PO) svmem(PO)
-svbios(PO) dram(PO) svtsc(PO) targets(PO) superio(PO) svkernel(PO) cswitch(PO) mcf(PO) pentiumIII_mod(PO)
-fs_svfs(PO) mdevdefdb(PO) svfs_os_services(O) ixgbe mdio mdio_devres libphy emeraldrapids_svdefs(PO)
-regsupport(O) libnvdimm nls_cp437 snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel
-snd_intel_dspcfg snd_hda_codec snd_hwdep x86_pkg_temp_thermal snd_hda_core snd_pcm snd_timer isst_if_mbox_pci
-[ 7678.784496]  input_leds isst_if_mmio sg snd isst_if_common soundcore wmi button sad9(O) drm fuse backlight
-configfs efivarfs ip_tables x_tables vmd sdhci led_class rtl8150 r8152 hid_generic pegasus mmc_block usbhid
-mmc_core hid megaraid_sas ixgb igb i2c_algo_bit ice i40e hpsa scsi_transport_sas e1000e e1000 e100 ax88179_178a
-usbnet xhci_pci sd_mod xhci_hcd t10_pi crc32c_intel crc64_rocksoft igc crc64 crc_t10dif usbcore
-crct10dif_generic ptp crct10dif_common usb_common pps_core
-[ 7679.200403] RIP: 0010:dev_watchdog+0x1ae/0x1f0
-[ 7679.210201] Code: 28 e9 53 ff ff ff 4c 89 e7 c6 05 06 42 b9 00 01 e8 17 d1 fb ff 44 89 e9 4c
-89 e6 48 c7 c7 40 ad fb 81 48 89 c2 e8 52 62 82 ff <0f> 0b e9 72 ff ff ff 65 8b 05 80 7d 7c 7e
-89 c0 48 0f a3 05 0a c1
-[ 7679.245438] RSP: 0018:ffa00000001f7d90 EFLAGS: 00010282
-[ 7679.256021] RAX: 0000000000000000 RBX: ff11000109938440 RCX: 0000000000000000
-[ 7679.268710] RDX: ff11000361e26cd8 RSI: ff11000361e1b880 RDI: ff11000361e1b880
-[ 7679.281314] RBP: ffa00000001f7da8 R08: ff1100035f8fffe8 R09: 0000000000027ffb
-[ 7679.293840] R10: 0000000000001f0a R11: ff1100035f840000 R12: ff11000109938000
-[ 7679.306276] R13: 0000000000000002 R14: dead000000000122 R15: ffa00000001f7e18
-[ 7679.318648] FS:  0000000000000000(0000) GS:ff11000361e00000(0000) knlGS:0000000000000000
-[ 7679.332064] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 7679.342757] CR2: 00007ffff7fca168 CR3: 000000013b08a006 CR4: 0000000000471ef8
-[ 7679.354984] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 7679.367207] DR3: 0000000000000000 DR6: 00000000fffe07f0 DR7: 0000000000000400
-[ 7679.379370] PKRU: 55555554
-[ 7679.386446] Call Trace:
-[ 7679.393152]  <TASK>
-[ 7679.399363]  ? __pfx_dev_watchdog+0x10/0x10
-[ 7679.407870]  call_timer_fn+0x31/0x110
-[ 7679.415698]  expire_timers+0xb2/0x120
-[ 7679.423403]  run_timer_softirq+0x179/0x1e0
-[ 7679.431532]  ? __schedule+0x2b1/0x820
-[ 7679.439078]  __do_softirq+0xd1/0x295
-[ 7679.446426]  ? __pfx_smpboot_thread_fn+0x10/0x10
-[ 7679.454867]  run_ksoftirqd+0x22/0x30
-[ 7679.462058]  smpboot_thread_fn+0xb7/0x160
-[ 7679.469670]  kthread+0xcd/0xf0
-[ 7679.476097]  ? __pfx_kthread+0x10/0x10
-[ 7679.483211]  ret_from_fork+0x29/0x50
-[ 7679.490047]  </TASK>
-[ 7679.495204] ---[ end trace 0000000000000000 ]---
-[ 7679.503179] igc 0000:01:00.0 enp1s0: Register Dump
-[ 7679.511230] igc 0000:01:00.0 enp1s0: Register Name   Value
-[ 7679.519892] igc 0000:01:00.0 enp1s0: CTRL            181c0641
-[ 7679.528782] igc 0000:01:00.0 enp1s0: STATUS          40280683
-[ 7679.537551] igc 0000:01:00.0 enp1s0: CTRL_EXT        10000040
-[ 7679.546284] igc 0000:01:00.0 enp1s0: MDIC            180a3800
-[ 7679.554942] igc 0000:01:00.0 enp1s0: ICR             00000081
-[ 7679.563503] igc 0000:01:00.0 enp1s0: RCTL            04408022
-[ 7679.571963] igc 0000:01:00.0 enp1s0: RDLEN[0-3]      00001000 00001000 00001000 00001000
-[ 7679.583075] igc 0000:01:00.0 enp1s0: RDH[0-3]        00000068 000000b6 0000000f 00000031
-[ 7679.594162] igc 0000:01:00.0 enp1s0: RDT[0-3]        00000066 000000b2 0000000e 00000030
-[ 7679.605174] igc 0000:01:00.0 enp1s0: RXDCTL[0-3]     02040808 02040808 02040808 02040808
-[ 7679.616196] igc 0000:01:00.0 enp1s0: RDBAL[0-3]      1bb7c000 1bb7f000 1bb82000 0ef33000
-[ 7679.627242] igc 0000:01:00.0 enp1s0: RDBAH[0-3]      00000001 00000001 00000001 00000001
-[ 7679.638256] igc 0000:01:00.0 enp1s0: TCTL            a503f0fa
-[ 7679.646607] igc 0000:01:00.0 enp1s0: TDBAL[0-3]      2ba4a000 1bb6f000 1bb74000 1bb79000
-[ 7679.657609] igc 0000:01:00.0 enp1s0: TDBAH[0-3]      00000001 00000001 00000001 00000001
-[ 7679.668551] igc 0000:01:00.0 enp1s0: TDLEN[0-3]      00001000 00001000 00001000 00001000
-[ 7679.679470] igc 0000:01:00.0 enp1s0: TDH[0-3]        000000a7 0000002d 000000bf 000000d9
-[ 7679.690406] igc 0000:01:00.0 enp1s0: TDT[0-3]        000000a7 0000002d 000000bf 000000d9
-[ 7679.701264] igc 0000:01:00.0 enp1s0: TXDCTL[0-3]     02100108 02100108 02100108 02100108
-[ 7679.712123] igc 0000:01:00.0 enp1s0: Reset adapter
-[ 7683.085967] igc 0000:01:00.0 enp1s0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX/TX
-[ 8086.945561] ------------[ cut here ]------------
-Entering kdb (current=0xffffffff8220b200, pid 0) on processor 0
-Oops: (null) due to oops @ 0xffffffff81573888
-RIP: 0010:dql_completed+0x148/0x160
-Code: c9 00 48 89 57 58 e9 46 ff ff ff 45 85 e4 41 0f 95 c4 41 39 db 0f 95
-c1 41 84 cc 74 05 45 85 ed 78 0a 44 89 c1 e9 27 ff ff ff <0f> 0b 01 f6 44 89
-c1 29 f1 0f 48 ca eb 8c cc cc cc cc cc cc cc cc
-RSP: 0018:ffa0000000003e00 EFLAGS: 00010287
-RAX: 000000000000006c RBX: ffa0000003eb0f78 RCX: ff11000109938000
-RDX: 0000000000000003 RSI: 0000000000000160 RDI: ff110001002e9480
-RBP: ffa0000000003ed8 R08: ff110001002e93c0 R09: ffa0000000003d28
-R10: 0000000000007cc0 R11: 0000000000007c54 R12: 00000000ffffffd9
-R13: ff1100037039cb00 R14: 00000000ffffffd9 R15: ff1100037039c048
-FS:  0000000000000000(0000) GS:ff11000361e00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007ffff7fca168 CR3: 000000013b08a003 CR4: 0000000000471ef8
-DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-DR3: 0000000000000000 DR6: 00000000fffe07f0 DR7: 0000000000000400
-PKRU: 55555554
-Call Trace:
- <IRQ>
- ? igc_poll+0x1a9/0x14d0 [igc]
- __napi_poll+0x2e/0x1b0
- net_rx_action+0x126/0x250
- __do_softirq+0xd1/0x295
- irq_exit_rcu+0xc5/0xf0
- common_interrupt+0x86/0xa0
- </IRQ>
- <TASK>
- asm_common_interrupt+0x27/0x40
-RIP: 0010:cpuidle_enter_state+0xd3/0x3e0
-Code: 73 f1 ff ff 49 89 c6 8b 05 e2 ca a7 00 85 c0 0f 8f b3 02 00 00 31 ff e8 1b
-de 75 ff 80 7d d7 00 0f 85 cd 01 00 00 fb 45 85 ff <0f> 88 fd 00 00 00 49 63 cf
-4c 2b 75 c8 48 8d 04 49 48 89 ca 48 8d
-RSP: 0018:ffffffff82203df0 EFLAGS: 00000202
-RAX: ff11000361e2a200 RBX: 0000000000000002 RCX: 000000000000001f
-RDX: 0000000000000000 RSI: 000000003cf3cf3d RDI: 0000000000000000
-RBP: ffffffff82203e28 R08: 0000075ae38471c8 R09: 0000000000000018
-R10: 000000000000031a R11: ffffffff8238dca0 R12: ffd1ffffff200000
-R13: ffffffff8238dca0 R14: 0000075ae38471c8 R15: 0000000000000002
- cpuidle_enter+0x2e/0x50
- call_cpuidle+0x23/0x40
- do_idle+0x1be/0x220
- cpu_startup_entry+0x20/0x30
- rest_init+0xb5/0xc0
- arch_call_rest_init+0xe/0x30
- start_kernel+0x448/0x760
- x86_64_start_kernel+0x109/0x150
- secondary_startup_64_no_verify+0xe0/0xeb
- </TASK>
-more>
-[0]kdb>
-
-[0]kdb>
-[0]kdb> go
-Catastrophic error detected
-kdb_continue_catastrophic=0, type go a second time if you really want to
-continue
-[0]kdb> go
-Catastrophic error detected
-kdb_continue_catastrophic=0, attempting to continue
-[ 8086.955689] refcount_t: underflow; use-after-free.
-[ 8086.955697] WARNING: CPU: 0 PID: 0 at lib/refcount.c:28 refcount_warn_saturate+0xc2/0x110
-[ 8086.955706] Modules linked in: xt_conntrack nft_chain_nat xt_MASQUERADE xt_addrtype nft_compat
-nf_tables nfnetlink br_netfilter bridge stp llc overlay dm_mod emrcha(PO) emriio(PO) rktpm(PO)
-cegbuf_mod(PO) patch_update(PO) se(PO) sgx_tgts(PO) mktme(PO) keylocker(PO) svtdx(PO)
-svfs_pci_hotplug(PO) vtd_mod(PO) davemem(PO) svmabort(PO) svindexio(PO) usbx2(PO) ehci_sched(PO)
-svheartbeat(PO) ioapic(PO) sv8259(PO) svintr(PO) lt(PO) pcierootport(PO) enginefw_mod(PO) ata(PO)
-smbus(PO) spiflash_cdf(PO) arden(PO) dsa_iax(PO) oobmsm_punit(PO) cpm(PO) svkdb(PO) ebg_pch(PO)
-pch(PO) sviotargets(PO) svbdf(PO) svmem(PO) svbios(PO) dram(PO) svtsc(PO) targets(PO) superio(PO)
-svkernel(PO) cswitch(PO) mcf(PO) pentiumIII_mod(PO) fs_svfs(PO) mdevdefdb(PO) svfs_os_services(O)
-ixgbe mdio mdio_devres libphy emeraldrapids_svdefs(PO) regsupport(O) libnvdimm nls_cp437
-snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg
-snd_hda_codec snd_hwdep x86_pkg_temp_thermal snd_hda_core snd_pcm snd_timer isst_if_mbox_pci
-[ 8086.955751]  input_leds isst_if_mmio sg snd isst_if_common soundcore wmi button sad9(O) drm
-fuse backlight configfs efivarfs ip_tables x_tables vmd sdhci led_class rtl8150 r8152 hid_generic
-pegasus mmc_block usbhid mmc_core hid megaraid_sas ixgb igb i2c_algo_bit ice i40e hpsa
-scsi_transport_sas e1000e e1000 e100 ax88179_178a usbnet xhci_pci sd_mod xhci_hcd t10_pi
-crc32c_intel crc64_rocksoft igc crc64 crc_t10dif usbcore crct10dif_generic ptp crct10dif_common
-usb_common pps_core
-[ 8086.955784] RIP: 0010:refcount_warn_saturate+0xc2/0x110
-[ 8086.955788] Code: 01 e8 82 e7 b4 ff 0f 0b 5d c3 cc cc cc cc 80 3d 68 c6 eb 00 00 75 81
-48 c7 c7 a0 87 f6 81 c6 05 58 c6 eb 00 01 e8 5e e7 b4 ff <0f> 0b 5d c3 cc cc cc cc 80 3d
-42 c6 eb 00 00 0f 85 59 ff ff ff 48
-[ 8086.955790] RSP: 0018:ffa0000000003da0 EFLAGS: 00010286
-[ 8086.955793] RAX: 0000000000000000 RBX: ff1100011da40ee0 RCX: ff11000361e1b888
-[ 8086.955794] RDX: 00000000ffffffd8 RSI: 0000000000000027 RDI: ff11000361e1b880
-[ 8086.955795] RBP: ffa0000000003da0 R08: 80000000ffff9f45 R09: ffa0000000003d28
-[ 8086.955796] R10: ff1100035f840000 R11: 0000000000000028 R12: ff11000319ff8000
-[ 8086.955797] R13: ff1100011bb79d60 R14: 00000000ffffffd6 R15: ff1100037039cb00
-[ 8086.955798] FS:  0000000000000000(0000) GS:ff11000361e00000(0000) knlGS:0000000000000000
-[ 8086.955800] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 8086.955801] CR2: 00007ffff7fca168 CR3: 000000013b08a003 CR4: 0000000000471ef8
-[ 8086.955803] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 8086.955803] DR3: 0000000000000000 DR6: 00000000fffe07f0 DR7: 0000000000000400
-[ 8086.955804] PKRU: 55555554
-[ 8086.955805] Call Trace:
-[ 8086.955806]  <IRQ>
-[ 8086.955808]  tcp_wfree+0x112/0x130
-[ 8086.955814]  skb_release_head_state+0x24/0xa0
-[ 8086.955818]  napi_consume_skb+0x9c/0x160
-[ 8086.955821]  igc_poll+0x5d8/0x14d0 [igc]
-[ 8086.955835]  __napi_poll+0x2e/0x1b0
-[ 8086.955839]  net_rx_action+0x126/0x250
-[ 8086.955843]  __do_softirq+0xd1/0x295
-[ 8086.955846]  irq_exit_rcu+0xc5/0xf0
-[ 8086.955851]  common_interrupt+0x86/0xa0
-[ 8086.955857]  </IRQ>
-[ 8086.955857]  <TASK>
-[ 8086.955858]  asm_common_interrupt+0x27/0x40
-[ 8086.955862] RIP: 0010:cpuidle_enter_state+0xd3/0x3e0
-[ 8086.955866] Code: 73 f1 ff ff 49 89 c6 8b 05 e2 ca a7 00 85 c0 0f 8f b3 02 00 00 31 ff e8
-1b de 75 ff 80 7d d7 00 0f 85 cd 01 00 00 fb 45 85 ff <0f> 88 fd 00 00 00 49 63 cf 4c 2b 75
-c8 48 8d 04 49 48 89 ca 48 8d
-[ 8086.955867] RSP: 0018:ffffffff82203df0 EFLAGS: 00000202
-[ 8086.955869] RAX: ff11000361e2a200 RBX: 0000000000000002 RCX: 000000000000001f
-[ 8086.955870] RDX: 0000000000000000 RSI: 000000003cf3cf3d RDI: 0000000000000000
-[ 8086.955871] RBP: ffffffff82203e28 R08: 0000075ae38471c8 R09: 0000000000000018
-[ 8086.955872] R10: 000000000000031a R11: ffffffff8238dca0 R12: ffd1ffffff200000
-[ 8086.955873] R13: ffffffff8238dca0 R14: 0000075ae38471c8 R15: 0000000000000002
-[ 8086.955875]  cpuidle_enter+0x2e/0x50
-[ 8086.955880]  call_cpuidle+0x23/0x40
-[ 8086.955884]  do_idle+0x1be/0x220
-[ 8086.955887]  cpu_startup_entry+0x20/0x30
-[ 8086.955889]  rest_init+0xb5/0xc0
-[ 8086.955892]  arch_call_rest_init+0xe/0x30
-[ 8086.955895]  start_kernel+0x448/0x760
-[ 8086.955898]  x86_64_start_kernel+0x109/0x150
-[ 8086.955900]  secondary_startup_64_no_verify+0xe0/0xeb
-[ 8086.955904]  </TASK>
-[ 8086.955904] ---[ end trace 0000000000000000 ]---
-[ 8086.955912] ------------[ cut here ]------------
-[ 8086.955913] kernel BUG at lib/dynamic_queue_limits.c:27!
-[ 8086.955918] invalid opcode: 0000 [#1] SMP
-[ 8086.955922] RIP: 0010:dql_completed+0x148/0x160
-[ 8086.955925] Code: c9 00 48 89 57 58 e9 46 ff ff ff 45 85 e4 41 0f 95 c4 41 39 db
-0f 95 c1 41 84 cc 74 05 45 85 ed 78 0a 44 89 c1 e9 27 ff ff ff <0f> 0b 01 f6 44 89
-c1 29 f1 0f 48 ca eb 8c cc cc cc cc cc cc cc cc
-[ 8086.955927] RSP: 0018:ffa0000000003e00 EFLAGS: 00010287
-[ 8086.955928] RAX: 000000000000006c RBX: ffa0000003eb0f78 RCX: ff11000109938000
-[ 8086.955929] RDX: 0000000000000003 RSI: 0000000000000160 RDI: ff110001002e9480
-[ 8086.955930] RBP: ffa0000000003ed8 R08: ff110001002e93c0 R09: ffa0000000003d28
-[ 8086.955931] R10: 0000000000007cc0 R11: 0000000000007c54 R12: 00000000ffffffd9
-[ 8086.955932] R13: ff1100037039cb00 R14: 00000000ffffffd9 R15: ff1100037039c048
-[ 8086.955933] FS:  0000000000000000(0000) GS:ff11000361e00000(0000) knlGS:0000000000000000
-[ 8086.955934] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 8086.955935] CR2: 00007ffff7fca168 CR3: 000000013b08a003 CR4: 0000000000471ef8
-[ 8086.955936] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 8086.955937] DR3: 0000000000000000 DR6: 00000000fffe07f0 DR7: 0000000000000400
-[ 8086.955938] PKRU: 55555554
-[ 8086.955939] Call Trace:
-[ 8086.955939]  <IRQ>
-[ 8086.955940]  ? igc_poll+0x1a9/0x14d0 [igc]
-[ 8086.955949]  __napi_poll+0x2e/0x1b0
-[ 8086.955952]  net_rx_action+0x126/0x250
-[ 8086.955956]  __do_softirq+0xd1/0x295
-[ 8086.955958]  irq_exit_rcu+0xc5/0xf0
-[ 8086.955961]  common_interrupt+0x86/0xa0
-[ 8086.955964]  </IRQ>
-[ 8086.955965]  <TASK>
-[ 8086.955965]  asm_common_interrupt+0x27/0x40
-[ 8086.955968] RIP: 0010:cpuidle_enter_state+0xd3/0x3e0
-[ 8086.955971] Code: 73 f1 ff ff 49 89 c6 8b 05 e2 ca a7 00 85 c0 0f 8f b3 02 00 00
-31 ff e8 1b de 75 ff 80 7d d7 00 0f 85 cd 01 00 00 fb 45 85 ff <0f> 88 fd 00 00 00
-49 63 cf 4c 2b 75 c8 48 8d 04 49 48 89 ca 48 8d
-[ 8086.955972] RSP: 0018:ffffffff82203df0 EFLAGS: 00000202
-[ 8086.955973] RAX: ff11000361e2a200 RBX: 0000000000000002 RCX: 000000000000001f
-[ 8086.955974] RDX: 0000000000000000 RSI: 000000003cf3cf3d RDI: 0000000000000000
-[ 8086.955974] RBP: ffffffff82203e28 R08: 0000075ae38471c8 R09: 0000000000000018
-[ 8086.955975] R10: 000000000000031a R11: ffffffff8238dca0 R12: ffd1ffffff200000
-[ 8086.955976] R13: ffffffff8238dca0 R14: 0000075ae38471c8 R15: 0000000000000002
-[ 8086.955978]  cpuidle_enter+0x2e/0x50
-[ 8086.955981]  call_cpuidle+0x23/0x40
-[ 8086.955984]  do_idle+0x1be/0x220
-[ 8086.955985]  cpu_startup_entry+0x20/0x30
-[ 8086.955987]  rest_init+0xb5/0xc0
-[ 8086.955990]  arch_call_rest_init+0xe/0x30
-[ 8086.955992]  start_kernel+0x448/0x760
-[ 8086.955994]  x86_64_start_kernel+0x109/0x150
-[ 8086.955996]  secondary_startup_64_no_verify+0xe0/0xeb
-[ 8086.955998]  </TASK>
-[ 8086.955999] Modules linked in: xt_conntrack nft_chain_nat xt_MASQUERADE xt_addrtype
-nft_compat nf_tables nfnetlink br_netfilter bridge stp llc overlay dm_mod emrcha(PO) emriio(PO)
-rktpm(PO) cegbuf_mod(PO) patch_update(PO) se(PO) sgx_tgts(PO) mktme(PO) keylocker(PO) svtdx(PO)
-svfs_pci_hotplug(PO) vtd_mod(PO) davemem(PO) svmabort(PO) svindexio(PO) usbx2(PO) ehci_sched(PO)
-svheartbeat(PO) ioapic(PO) sv8259(PO) svintr(PO) lt(PO) pcierootport(PO) enginefw_mod(PO) ata(PO)
-smbus(PO) spiflash_cdf(PO) arden(PO) dsa_iax(PO) oobmsm_punit(PO) cpm(PO) svkdb(PO) ebg_pch(PO)
-pch(PO) sviotargets(PO) svbdf(PO) svmem(PO) svbios(PO) dram(PO) svtsc(PO) targets(PO) superio(PO)
-svkernel(PO) cswitch(PO) mcf(PO) pentiumIII_mod(PO) fs_svfs(PO) mdevdefdb(PO) svfs_os_services(O)
-ixgbe mdio mdio_devres libphy emeraldrapids_svdefs(PO) regsupport(O) libnvdimm nls_cp437
-snd_hda_codec_realtek snd_hda_codec_generic ledtrig_audio snd_hda_intel snd_intel_dspcfg
-snd_hda_codec snd_hwdep x86_pkg_temp_thermal snd_hda_core snd_pcm snd_timer isst_if_mbox_pci
-[ 8086.956029]  input_leds isst_if_mmio sg snd isst_if_common soundcore wmi button sad9(O) drm
-fuse backlight configfs efivarfs ip_tables x_tables vmd sdhci led_class rtl8150 r8152 hid_generic
-pegasus mmc_block usbhid mmc_core hid megaraid_sas ixgb igb i2c_algo_bit ice i40e hpsa
-scsi_transport_sas e1000e e1000 e100 ax88179_178a usbnet xhci_pci sd_mod xhci_hcd t10_pi
-crc32c_intel crc64_rocksoft igc crc64 crc_t10dif usbcore crct10dif_generic ptp crct10dif_common
-usb_common pps_core
-[16762.543675] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.593 msecs
-[16762.543678] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.595 msecs
-[16762.543673] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.495 msecs
-[16762.543679] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.599 msecs
-[16762.543678] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.598 msecs
-[16762.543690] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.605 msecs
-[16762.543684] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.599 msecs
-[16762.543693] INFO: NMI handler (kgdb_nmi_handler) took too long to run: 8675587.613 msecs
-[16762.543784] ---[ end trace 0000000000000000 ]---
-[16762.849099] RIP: 0010:dql_completed+0x148/0x160
-PANIC: Fatal exception in interrupt
-
-Fixes: 9b275176270e ("igc: Add ndo_tx_timeout support")
-Tested-by: Alejandra Victoria Alcaraz <alejandra.victoria.alcaraz@intel.com>
-Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
----
-V3 -> V4 : Changed the commit message
-V2 -> V3 : Fixed kernel test robot warning about missing prototype of "igc_disable_tx_ring_hw"
-V1 -> V2 : Removed forward declaration function suggested by Vinicius
----
- drivers/net/ethernet/intel/igc/igc_main.c | 40 ++++++++++++++++-------
- 1 file changed, 28 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 3c9091ad2ead..c4682382cd52 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -316,6 +316,33 @@ static void igc_clean_all_tx_rings(struct igc_adapter *adapter)
- 			igc_clean_tx_ring(adapter->tx_ring[i]);
- }
- 
-+static void igc_disable_tx_ring_hw(struct igc_ring *ring)
-+{
-+	struct igc_hw *hw = &ring->q_vector->adapter->hw;
-+	u8 idx = ring->reg_idx;
-+	u32 txdctl;
-+
-+	txdctl = rd32(IGC_TXDCTL(idx));
-+	txdctl &= ~IGC_TXDCTL_QUEUE_ENABLE;
-+	txdctl |= IGC_TXDCTL_SWFLUSH;
-+	wr32(IGC_TXDCTL(idx), txdctl);
-+}
-+
-+/**
-+ * igc_disable_all_tx_rings_hw - Disable all transmit queue operation
-+ * @adapter: board private structure
-+ */
-+static void igc_disable_all_tx_rings_hw(struct igc_adapter *adapter)
-+{
-+	int i;
-+
-+	for (i = 0; i < adapter->num_tx_queues; i++) {
-+		struct igc_ring *tx_ring = adapter->tx_ring[i];
-+
-+		igc_disable_tx_ring_hw(tx_ring);
-+	}
-+}
-+
- /**
-  * igc_setup_tx_resources - allocate Tx resources (Descriptors)
-  * @tx_ring: tx descriptor ring (for a specific queue) to setup
-@@ -5059,6 +5086,7 @@ void igc_down(struct igc_adapter *adapter)
- 	/* clear VLAN promisc flag so VFTA will be updated if necessary */
- 	adapter->flags &= ~IGC_FLAG_VLAN_PROMISC;
- 
-+	igc_disable_all_tx_rings_hw(adapter);
- 	igc_clean_all_tx_rings(adapter);
- 	igc_clean_all_rx_rings(adapter);
- }
-@@ -7292,18 +7320,6 @@ void igc_enable_rx_ring(struct igc_ring *ring)
- 		igc_alloc_rx_buffers(ring, igc_desc_unused(ring));
- }
- 
--static void igc_disable_tx_ring_hw(struct igc_ring *ring)
--{
--	struct igc_hw *hw = &ring->q_vector->adapter->hw;
--	u8 idx = ring->reg_idx;
--	u32 txdctl;
--
--	txdctl = rd32(IGC_TXDCTL(idx));
--	txdctl &= ~IGC_TXDCTL_QUEUE_ENABLE;
--	txdctl |= IGC_TXDCTL_SWFLUSH;
--	wr32(IGC_TXDCTL(idx), txdctl);
--}
--
- void igc_disable_tx_ring(struct igc_ring *ring)
- {
- 	igc_disable_tx_ring_hw(ring);
--- 
-2.17.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCAyMDIzLTA3LTA3IGF0IDAwOjMyICswMjAwLCBJYW4gS3VtbGllbiB3cm90ZToKPiBP
+biBUaHUsIEp1bCA2LCAyMDIzIGF0IDc6MTDigK9QTSBQYW9sbyBBYmVuaSA8cGFiZW5pQHJlZGhh
+dC5jb20+IHdyb3RlOgo+ID4gT24gVGh1LCAyMDIzLTA3LTA2IGF0IDE4OjE3ICswMjAwLCBJYW4g
+S3VtbGllbiB3cm90ZToKPiA+ID4gT24gVGh1LCBKdWwgNiwgMjAyMyBhdCA0OjA04oCvUE0gUGFv
+bG8gQWJlbmkgPHBhYmVuaUByZWRoYXQuY29tPiB3cm90ZToKPiA+ID4gPiAKPiA+ID4gPiBPbiBU
+aHUsIDIwMjMtMDctMDYgYXQgMTU6NTYgKzAyMDAsIEVyaWMgRHVtYXpldCB3cm90ZToKPiA+ID4g
+PiA+IE9uIFRodSwgSnVsIDYsIDIwMjMgYXQgMzowMuKAr1BNIFBhb2xvIEFiZW5pIDxwYWJlbmlA
+cmVkaGF0LmNvbT4gd3JvdGU6Cj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBPbiBUaHUsIDIwMjMt
+MDctMDYgYXQgMTM6MjcgKzAyMDAsIElhbiBLdW1saWVuIHdyb3RlOgo+ID4gPiA+ID4gPiA+IE9u
+IFRodSwgSnVsIDYsIDIwMjMgYXQgMTA6NDLigK9BTSBQYW9sbyBBYmVuaSA8cGFiZW5pQHJlZGhh
+dC5jb20+IHdyb3RlOgo+ID4gPiA+ID4gPiA+ID4gT24gV2VkLCAyMDIzLTA3LTA1IGF0IDE1OjU4
+ICswMjAwLCBJYW4gS3VtbGllbiB3cm90ZToKPiA+ID4gPiA+ID4gPiA+ID4gT24gV2VkLCBKdWwg
+NSwgMjAyMyBhdCAzOjI54oCvUE0gUGFvbG8gQWJlbmkgPHBhYmVuaUByZWRoYXQuY29tPiB3cm90
+ZToKPiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiBPbiBXZWQsIDIwMjMt
+MDctMDUgYXQgMTM6MzIgKzAyMDAsIElhbiBLdW1saWVuIHdyb3RlOgo+ID4gPiA+ID4gPiA+ID4g
+PiA+ID4gT24gV2VkLCBKdWwgNSwgMjAyMyBhdCAxMjoyOOKAr1BNIFBhb2xvIEFiZW5pIDxwYWJl
+bmlAcmVkaGF0LmNvbT4gd3JvdGU6Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4g
+PiA+ID4gPiA+ID4gPiBPbiBUdWUsIDIwMjMtMDctMDQgYXQgMTY6MjcgKzAyMDAsIElhbiBLdW1s
+aWVuIHdyb3RlOgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IE1vcmUgc3RhY2t0cmFjZXMuLiA9
+KQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IGNh
+dCBidWcudHh0IHwgLi9zY3JpcHRzL2RlY29kZV9zdGFja3RyYWNlLnNoIHZtbGludXgKPiA+ID4g
+PiA+ID4gPiA+ID4gPiA+ID4gPiBbICA0MTEuNDEzNzY3XSAtLS0tLS0tLS0tLS1bIGN1dCBoZXJl
+IF0tLS0tLS0tLS0tLS0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBbICA0MTEuNDEzNzkyXSBX
+QVJOSU5HOiBDUFU6IDkgUElEOiA5NDIgYXQgaW5jbHVkZS9uZXQvdWQgICAgIHAuaDo1MDkKPiA+
+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiB1ZHB2Nl9xdWV1ZV9yY3Zfc2tiICguL2luY2x1ZGUvbmV0
+L3VkcC5oOjUwOSBuZXQvaXB2Ni91ZHAuYzo4MDAKPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBu
+ZXQvaXB2Ni91ZHAuYzo3ODcpCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+
+ID4gPiA+ID4gPiBJJ20gcmVhbGx5IHJ1bm5pbmcgb3V0IG9mIGlkZWFzIGhlcmUuLi4KPiA+ID4g
+PiA+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IFRoaXMgaXM6Cj4gPiA+
+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiAgICAgICAgIFdBUk5f
+T05fT05DRShVRFBfU0tCX0NCKHNrYiktPnBhcnRpYWxfY292KTsKPiA+ID4gPiA+ID4gPiA+ID4g
+PiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IHNvcnQgb2YgaGludCBza2IgYmVpbmcgc2hh
+cmVkIChza2ItPnVzZXJzID4gMSkgd2hpbGUgZW5xdWV1ZWQgaW4KPiA+ID4gPiA+ID4gPiA+ID4g
+PiA+ID4gbXVsdGlwbGUgcGxhY2VzIChicmlkZ2UgbG9jYWwgaW5wdXQgYW5kIGJyIGZvcndhcmQv
+Zmxvb2QgdG8gdHVuCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IGRldmljZSkuIEkgYXVkaXRlZCB0
+aGUgYnJpZGdlIG1jIGZsb29kaW5nIGNvZGUsIGFuZCBJIGNvdWxkIG5vdCBmaW5kCj4gPiA+ID4g
+PiA+ID4gPiA+ID4gPiA+IGhvdyBhIHNoYXJlZCBza2IgY291bGQgbGFuZCBpbnRvIHRoZSBsb2Nh
+bCBpbnB1dCBwYXRoLgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4g
+PiA+ID4gQW55d2F5IHRoZSBvdGhlciBzcGxhdHMgcmVwb3J0ZWQgaGVyZSBhbmQgaW4gbGF0ZXIg
+ZW1haWxzIGFyZQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBjb21wYXRpYmxlIHdpdGggc2hhcmVk
+IHNrYnMuCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBU
+aGUgYWJvdmUgbGVhZHMgdG8gYW5vdGhlciBidW5jaCBvZiBxdWVzdGlvbnM6Cj4gPiA+ID4gPiA+
+ID4gPiA+ID4gPiA+ICogY2FuIHlvdSByZXByb2R1Y2UgdGhlIGlzc3VlIGFmdGVyIGRpc2FibGlu
+ZyAncngtZ3JvLWxpc3QnIG9uIHRoZQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBpbmdyZXNzIGRl
+dmljZT8gKHdoaWxlIGtlZXBpbmcgJ3J4LXVkcC1ncm8tZm9yd2FyZGluZycgb24pLgo+ID4gPiA+
+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBXaXRoIHJ4LWdyby1saXN0IG9m
+ZiwgYXMgaW4gbmV2ZXIgdHVybmVkIG9uLCBldmVyeXRoaW5nIHNlZW1zIHRvIHJ1biBmaW5lCj4g
+PiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gKiBkbyB5b3UgaGF2
+ZSBieSBjaGFuY2UgcWRpc2NzIG9uIHRvcCBvZiB0aGUgVk0gdHVuIGRldmljZXM/Cj4gPiA+ID4g
+PiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiA+IGRlZmF1bHQgcWRpc2MgaXMgZnEK
+PiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiBJSVJDIGxpYnZpcnQgY291
+bGQgcmVzZXQgdGhlIHFkaXNjIHRvIG5vcXVldWUgZm9yIHRoZSBvd25lZCB0dW4KPiA+ID4gPiA+
+ID4gPiA+ID4gPiBkZXZpY2VzLgo+ID4gPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4g
+PiA+IENvdWxkIHlvdSBwbGVhc2UgcmVwb3J0IHRoZSBvdXRwdXQgb2Y6Cj4gPiA+ID4gPiA+ID4g
+PiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ID4gdGMgLWQgLXMgcWRpc2Mgc2hvdyBkZXYgPHR1biBk
+ZXYgbmFtZT4KPiA+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+IEkgZG9uJ3QgaGF2
+ZSB0aGVzZSBzZXQ6Cj4gPiA+ID4gPiA+ID4gPiA+IENPTkZJR19ORVRfU0NIX0lOR1JFU1MKPiA+
+ID4gPiA+ID4gPiA+ID4gQ09ORklHX05FVF9TQ0hFRAo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4g
+PiA+ID4gPiA+ID4gc28gdGMganVzdCBnaXZlcyBhbiBlcnJvci4uLgo+ID4gPiA+ID4gPiA+ID4g
+Cj4gPiA+ID4gPiA+ID4gPiBUaGUgYWJvdmUgaXMgY29uZnVzaW5nLiBBUyBDT05GSUdfTkVUX1ND
+SF9ERUZBVUxUIGRlcGVuZHMgb24KPiA+ID4gPiA+ID4gPiA+IENPTkZJR19ORVRfU0NIRUQsIHlv
+dSBzaG91bGQgbm90IGhhdmUgYSBkZWZhdWx0IHFkaXNjLCB0b28gOykKPiA+ID4gPiA+ID4gPiAK
+PiA+ID4gPiA+ID4gPiBXZWxsIGl0J3Mgc3RpbGwgc2V0IGluIHN5c2N0bCAtIGR1bm5vIGlmIGl0
+IGZhaWxzCj4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiBDb3VsZCB5b3UgcGxlYXNlIHNo
+YXJlIHlvdXIga2VybmVsIGNvbmZpZz8KPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiBTdXJl
+Li4uCj4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gQXMgYSBzaWRlIG5vdGUsIGl0IGhhc24n
+dCBjcmFzaGVkIC0gbm8gdHJhY2VzIHNpbmNlIHdlIGRpZCB0aGUgbGFzdCBjaGFuZ2UKPiA+ID4g
+PiA+ID4gCj4gPiA+ID4gPiA+IEl0IHNvdW5kcyBsaWtlIGFuIGVuY291cmFnaW5nIHNpbmchIChs
+YXN0IGZhbW91cyB3b3Jkcy4uLikuIEknbGwgd2FpdCAxCj4gPiA+ID4gPiA+IG1vcmUgZGF5LCB0
+aGFuIEknbGwgc3VibWl0IGZvcm1hbGx5Li4uCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+IEZv
+ciByZWZlcmVuY2UsIHRoaXMgaXMgZ2l0IGRpZmYgb24gdGhlIHJ1bm5pbmcga2VybmVscyBzb3Vy
+Y2UgdHJlZToKPiA+ID4gPiA+ID4gPiBkaWZmIC0tZ2l0IGEvbmV0L2NvcmUvc2tidWZmLmMgYi9u
+ZXQvY29yZS9za2J1ZmYuYwo+ID4gPiA+ID4gPiA+IGluZGV4IGNlYTI4ZDMwYWJiNS4uMWIyMzk0
+ZWJhZjMzIDEwMDY0NAo+ID4gPiA+ID4gPiA+IC0tLSBhL25ldC9jb3JlL3NrYnVmZi5jCj4gPiA+
+ID4gPiA+ID4gKysrIGIvbmV0L2NvcmUvc2tidWZmLmMKPiA+ID4gPiA+ID4gPiBAQCAtNDI3MCw2
+ICs0MjcwLDE3IEBAIHN0cnVjdCBza19idWZmICpza2Jfc2VnbWVudF9saXN0KHN0cnVjdCBza19i
+dWZmICpza2IsCj4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gICAgICAgICBza2JfcHVzaChz
+a2IsIC1za2JfbmV0d29ya19vZmZzZXQoc2tiKSArIG9mZnNldCk7Cj4gPiA+ID4gPiA+ID4gCj4g
+PiA+ID4gPiA+ID4gKyAgICAgICBpZiAoV0FSTl9PTl9PTkNFKHNrYl9zaGFyZWQoc2tiKSkpIHsK
+PiA+ID4gPiA+ID4gPiArICAgICAgICAgICAgICAgc2tiID0gc2tiX3NoYXJlX2NoZWNrKHNrYiwg
+R0ZQX0FUT01JQyk7Cj4gPiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIGlmICghc2tiKQo+ID4g
+PiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGdvdG8gZXJyX2xpbmVhcml6ZTsKPiA+
+ID4gPiA+ID4gPiArICAgICAgIH0KPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gKyAgICAg
+ICAvKiBsYXRlciBjb2RlIHdpbGwgY2xlYXIgdGhlIGdzbyBhcmVhIGluIHRoZSBzaGFyZWQgaW5m
+byAqLwo+ID4gPiA+ID4gPiA+ICsgICAgICAgZXJyID0gc2tiX2hlYWRlcl91bmNsb25lKHNrYiwg
+R0ZQX0FUT01JQyk7Cj4gPiA+ID4gPiA+ID4gKyAgICAgICBpZiAoZXJyKQo+ID4gPiA+ID4gPiA+
+ICsgICAgICAgICAgICAgICBnb3RvIGVycl9saW5lYXJpemU7Cj4gPiA+ID4gPiA+ID4gKwo+ID4g
+PiA+ID4gPiA+ICAgICAgICAgc2tiX3NoaW5mbyhza2IpLT5mcmFnX2xpc3QgPSBOVUxMOwo+ID4g
+PiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ICAgICAgICAgd2hpbGUgKGxpc3Rfc2tiKSB7Cj4gPiA+
+ID4gPiA+IAo+ID4gPiA+ID4gPiAuLi50aGUgYWJvdmUgY2hlY2sgb25seSwgYXMgdGhlIG90aGVy
+IDIgc2hvdWxkIG9ubHkgY2F0Y2gtdXAgc2lkZQo+ID4gPiA+ID4gPiBlZmZlY3RzIG9mIGxhY2sg
+b2YgdGhpcyBvbmUuIEluIGFueSBjYXNlIHRoZSBhYm92ZSBhZGRyZXNzIGEgcmVhbAo+ID4gPiA+
+ID4gPiBpc3N1ZSwgc28gd2UgbGlrZWx5IHdhbnQgaXQgbm8tbWF0dGVyLXdoYXQuCj4gPiA+ID4g
+PiA+IAo+ID4gPiA+ID4gCj4gPiA+ID4gPiBJbnRlcmVzdGluZywgSSB3b25kZXIgaWYgdGhpcyBj
+b3VsZCBhbHNvIGZpeCBzb21lIHN5emJvdCByZXBvcnRzCj4gPiA+ID4gPiBXaWxsZW0gYW5kIEkg
+YXJlIGludmVzdGlnYXRpbmcuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IEFueSBpZGVhIG9mIHdoZW4g
+dGhlIGJ1ZyB3YXMgJ2FkZGVkJyBvciAncmV2ZWFsZWQnID8KPiA+ID4gPiAKPiA+ID4gPiBUaGUg
+aXNzdWUgc3BlY2lmaWNhbGx5IGFkZHJlc3NlZCBhYm92ZSBzaG91bGQgYmUgcHJlc2VudCBzaW5j
+ZQo+ID4gPiA+IGZyYWdfbGlzdCBpbnRyb2R1Y3Rpb24gY29tbWl0IDNhMTI5NmEzOGQwYyAoIm5l
+dDogU3VwcG9ydCBHUk8vR1NPCj4gPiA+ID4gZnJhZ2xpc3QgY2hhaW5pbmcuIikuIEFGQUlDUyB0
+cmlnZ2VyaW5nIGl0IHJlcXVpcmVzIG5vbiB0cml2aWFsIHNldHVwIC0KPiA+ID4gPiBtY2FzdCBy
+eCBvbiBicmlkZ2Ugd2l0aCBmcmFnLWxpc3QgZW5hYmxlZCBhbmQgZm9yd2FyZGluZyB0byBtdWx0
+aXBsZQo+ID4gPiA+IHBvcnRzIC0gc28gcGVyaGFwcyBzeXprYWxsZXIgZm91bmQgaXQgbGF0ZXIg
+ZHVlIHRvIGltcHJvdmVtZW50cyBvbiBpdHMKPiA+ID4gPiBzaWRlID8hPwo+ID4gPiAKPiA+ID4g
+SSdtIGFsc28gYSBiaXQgYWZyYWlkIHRoYXQgd2UganVzdCBoYXZlbid0IHRyaWdnZXJlZCBpdCAt
+IGkgZG9uJ3Qgc2VlCj4gPiA+IGFueSB3YXJuaW5ncyBvciBhbnl0aGluZy4uLiA6Lwo+ID4gCj4g
+PiBMZXQgbWUgdHJ5IHRvIGNsYXJpZnk6IEkgaG9wZS90aGluayB0aGF0IHRoaXMgY2h1bmsgYWxv
+bmU6Cj4gPiAKPiA+ICsgICAgICAgLyogbGF0ZXIgY29kZSB3aWxsIGNsZWFyIHRoZSBnc28gYXJl
+YSBpbiB0aGUgc2hhcmVkIGluZm8gKi8KPiA+ICsgICAgICAgZXJyID0gc2tiX2hlYWRlcl91bmNs
+b25lKHNrYiwgR0ZQX0FUT01JQyk7Cj4gPiArICAgICAgIGlmIChlcnIpCj4gPiArICAgICAgICAg
+ICAgICAgZ290byBlcnJfbGluZWFyaXplOwo+ID4gKwo+ID4gICAgICAgICBza2Jfc2hpbmZvKHNr
+YiktPmZyYWdfbGlzdCA9IE5VTEw7Cj4gPiAKPiA+ICAgICAgICAgd2hpbGUgKGxpc3Rfc2tiKSB7
+Cj4gPiAKPiA+IGRvZXMgdGhlIG1hZ2ljL2F2b2lkcyB0aGUgc2tiIGNvcnJ1cHRpb25zIC0+IGl0
+IGV2ZXJ5dGhpbmcgZ29lcyB3ZWxsLAo+ID4geW91IHNob3VsZCBub3Qgc2VlIGFueSB3YXJuaW5n
+cyBhdCBhbGwuIFJ1bm5pbmcgJ25zdGF0JyBpbiB0aGUgRFVUCj4gPiBzaG91bGQgZ2l2ZSBzb21l
+IGhpbnRzIGFib3V0IHJlYWNoaW5nIHRoZSByZWxldmFudCBjb2RlIHBhdGhzLgo+IAo+IFNvcnJ5
+IGFib3V0IHRoZSBodG1sIG1haWwuLi4gYnV0Li4uCj4gCj4gSSB3YXMgZnVsbHkgZXhwZWN0aW5n
+IGEgd2FybmluZyBmcm9tOgo+ICBpZiAoV0FSTl9PTl9PTkNFKHNrYl9zaGFyZWQoc2tiKSkpIHsK
+PiAKPiBCdXQgSSBjb3VsZCBiZSBjb21wbGV0ZWx5IHdyb25nIGFuZCB0aGluZ3MgPSkKPiAKPiBX
+aGljaCBmaWVsZHMgd291bGQgaSBiZSBsb29raW5nIGF0IGluIG5zdGF0ClsuLi5dCj4gVWRwSW5E
+YXRhZ3JhbXMgICAgICAgICAgICAgICAgICA0ODkzICAgICAgICAgICAgICAgMC4wClsuLi5dCj4g
+SXA2SW5NY2FzdFBrdHMgICAgICAgICAgICAgICAgICA3MTQ2ICAgICAgICAgICAgICAgMC4wClsu
+Li5dCj4gSXA2SW5NY2FzdE9jdGV0cyAgICAgICAgICAgICAgICAxMDYxMjkyICAgICAgICAgICAg
+MC4wCgpUaGUgYWJvdmUgb25lcy4gV2UgaGF2ZSBpbmdyZXNzIG1jYXN0IHRyYWZmaWMsIGJ1dCB0
+aGUgZmlndXJlcyBhcmUKaW5jb25jbHVzaXZlIGFib3V0IEdSTyBhZ2dyZWdhdGlvbiB0YWtpbmcg
+cGxhY2UgKElwNkluTWNhc3RPY3RldHMgLwpJcDZJbk1jYXN0UGt0cyA+IE1UVSB3b3VsZCBwcm92
+ZSB0aGF0KS4gU2ltaWxhciB0aGluZyBmb3IgSVB2NCBtY2FzdC4KClN0aWxsIHRoZSBjaGFuZ2Ug
+bG9vayBzYW5lLCB0aGUgYWxpdmUgdGltZSBlbmNvdXJhZ2luZy4gSSdsbCBzdWJtaXQgaXQKZm9y
+bWFsbHkgd2l0aCB5b3VyIHJlcG9ydGVkL3Rlc3RlZC1ieSB0YWdzLgoKTWFueSB0aGFua3MgZm9y
+IGFsbCB0aGUgZGVidWdnaW5nIGVmZm9ydCEKClBhb2xvCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cklu
+dGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
