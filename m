@@ -2,85 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C55A674C560
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jul 2023 17:16:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA1E174C56E
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jul 2023 17:16:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 63C1340522;
-	Sun,  9 Jul 2023 15:16:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 63C1340522
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8E7DB404F1;
+	Sun,  9 Jul 2023 15:16:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E7DB404F1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688915760;
-	bh=H35YT7ebZQ4QcDvl3QtTbbzIbhbA4vNE1JdIylbfAvk=;
+	s=default; t=1688915782;
+	bh=fHfdWofd9uWGJTPTGgC6dqsF8vsA9IrpAo9jyH8H/OA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YJU7oKplSwmPN+nmeWirX21Xt+Vctu0wtsqB4Nz/vdR5UK0jhNZ0YJb6yd73mLcOT
-	 i7slVmMJMgY5VJ3woaLlg/ojy9XxYTDofFscUVvLLCSp8nscLUb6hIlR58qiuMZEcJ
-	 Jq2+fSb2GaM1T7cCAp0GBkdHEzvyKMi7+j0C/180ikzrfaHi8LA9Cs5ax6ph6gO5Yd
-	 IY9oLaGXlwF6Z0MYWI5rcIlG0lm6Bqr6OpOOCEYUMZR5YKZH22sx1QtoyQNCsUWxLg
-	 A9a/a4eJ1WNcVnbptAMTdhBLPR3UOkooJnVlI3ALpjwQ+57wD+DeYPJJ1U9D23+y3j
-	 TKheI9GrJZbTg==
+	b=Bn7sP5324GoO7uDEUd2IOF2Lnmw/BrPjuHyQ4LSAP234q9w8A/ASG8Y9ucxxDSOEB
+	 MDVCuQxYNq5Fkji/zrgCE23bMp0Pi5NbXnXTwwH31F7t2Cq892jkxB4NH3OC0l2dG7
+	 AKyWcLIbQzHnjcTJL75cSD5jlOjX8/8yLEZzUc4KWQ+9gY8zZDGJ1WRpkxGAO1HSqL
+	 rDL7uNwvM+Zrq2RcsFsbc8M3EfM3gJkhQ6uR2P/WwdMSxLGGGXQroZ3h+Q+Z6+VqtU
+	 Dz7a8S3/fhMvNhdRf6lYqx9z2PQH7lOo8ubH0Gdiqcu194sZP5WRuTx8GTQIiaN4n0
+	 qcms0R9hJ8U9Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pvu0UeDTrzr5; Sun,  9 Jul 2023 15:15:59 +0000 (UTC)
+	with ESMTP id zh-JQX7zeiq1; Sun,  9 Jul 2023 15:16:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 02DC9404D0;
-	Sun,  9 Jul 2023 15:15:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 02DC9404D0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4F652404D0;
+	Sun,  9 Jul 2023 15:16:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4F652404D0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B25AD1BF381
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A60BF1BF381
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:16:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 97C6A60AB2
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97C6A60AB2
+ by smtp4.osuosl.org (Postfix) with ESMTP id 89A73409B0
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:16:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 89A73409B0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dWld60Q2MjnU for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Jul 2023 15:15:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IYvQAo7O6KGv for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Jul 2023 15:16:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9887460A65
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4FDBD40988
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9887460A65
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4FDBD40988
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:16:15 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C0B6B60BFF;
- Sun,  9 Jul 2023 15:15:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D57E3C433C8;
- Sun,  9 Jul 2023 15:15:49 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9970060C07;
+ Sun,  9 Jul 2023 15:16:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E187EC433CC;
+ Sun,  9 Jul 2023 15:16:11 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun,  9 Jul 2023 11:15:27 -0400
-Message-Id: <20230709151528.513775-9-sashal@kernel.org>
+Date: Sun,  9 Jul 2023 11:15:55 -0400
+Message-Id: <20230709151555.513910-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230709151528.513775-1-sashal@kernel.org>
-References: <20230709151528.513775-1-sashal@kernel.org>
+In-Reply-To: <20230709151555.513910-1-sashal@kernel.org>
+References: <20230709151555.513910-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.120
+X-stable-base: Linux 5.10.186
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1688915751;
- bh=0+28GtzrIPuHO03KXyczCcKzdYj17zvG/2QIUPRKiMY=;
+ d=kernel.org; s=k20201202; t=1688915773;
+ bh=mF3M3Dqd5ebIGhwJQBGaTz6NnAcJObf2ZcJM3jTWKVc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LUHyrVjfmNjcTDbVWxmLNN2QUmXGzGPQf8SNE+i4UK3RhMsPpWiF9a00apz/PpV0r
- ZGG1gUbrsYmqkb18rJ7+0zsbUejgBRYPiArxutul1r/qV3S/OApizjJFoyCWamf+1t
- gqkUwr0nqJ06Q6IuZAHwZg7Xjip8e4cyuREIFGCHxAwxlp1I6Oyah+0150x+YtzAZt
- TRgft9hhyXkq0/HRF997eaJWd+xV66pbojgz6iRXKBauD9/u4pC9dVr6/JuALQzodm
- RXE5dBpUZcRwx/V3lobH2pGOZxG3Ln+11Qumu3rtxiKt2+Sevbq20220eb+x1sEvAy
- ZMCHk2J+OIzAA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=YNMMmtskoKtw9O2huO08VkCKxXumUMwKTmJqpuDODgNsfUvvNgHzh4BwJ6It6Fe8Y
+ 6Ox7vmnE8BjunQ2jDwi3RasaZPPeBSmGGIBNlp11MuXseW5898ZjMTeF1QZBoKETqa
+ X7chaROwHWIYvMp6fYQjk9QrFofHJ3JvZATtKUzGl0o2ivOxl0nh6Le8JaPsu9kJ0G
+ fnl+bk8kpDCN4p7wnYzopGu2nNcEqcpfVufFz3wr7Qdr6+yIKioKAE2guPeeWVP/Ua
+ w2OcBo1tMHtAF/3eU8iUb3Sekpq2NLlZ6vjcCjbhEYxQhF7S+blQXftsiyM3uwwQxl
+ VxAHtLI79TZDg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=LUHyrVjf
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.15 09/10] igb: Fix igb_down hung
+ header.a=rsa-sha256 header.s=k20201202 header.b=YNMMmtsk
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.10 7/7] igb: Fix igb_down hung
  on surprise removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -170,10 +170,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index bff9649d8abd0..3d380dfff7783 100644
+index c5f465814dec3..4465982100127 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -9447,6 +9447,11 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
+@@ -9453,6 +9453,11 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
  	struct net_device *netdev = pci_get_drvdata(pdev);
  	struct igb_adapter *adapter = netdev_priv(netdev);
  
