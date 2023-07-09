@@ -2,85 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43FE674C52E
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jul 2023 17:14:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32EAC74C54A
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Jul 2023 17:15:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7333B404D0;
-	Sun,  9 Jul 2023 15:14:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7333B404D0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 630FE404DA;
+	Sun,  9 Jul 2023 15:15:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 630FE404DA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1688915690;
-	bh=HvE2BGJI2ngaf30Ce976FUlxGsVowCsjvFzl/u86r5M=;
+	s=default; t=1688915732;
+	bh=Q9rOC6Yg0BntsWP7VIeU+1TBv4k8bICIkHfRqCqX1jQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pccO5+m27gt4ePXBpaRaJCOM0so2WRijT7DKuKuwRFgZVt1a44qWHxNY+HvX2+Jrl
-	 XyX4zwlsnKlh2Gknh0vVsVkLn8ITmKXSFcwPggkYU7oRvuQxib6rk5uPJu/r4Hu2wB
-	 5OCeBOCf7n60gdTDjdFuYaBLr1knxTpcl1ju4k0iqHJ/XNtTb1aqkPoj2blmyiOilC
-	 DzGeRQtHL0NWqH3/wxQhiP6UQZ/QpoXneZGtJdMqENvQw+3dFUvJQ2rRzU0JjJ+X2J
-	 1ciNB93Kn0T/+5onuLaNPym87709BoNIyiBibTeFa9S8TIfgQjMwjGfw2OEqezn0Z0
-	 jlE4EINxI8C4g==
+	b=GET7UKy8ky+Hf+/GS/ZvdrnKYwkBoeAtBr7k9uHf9AGilfpE3mIzmmYcKQIJYkIVq
+	 FJaPeNLJ8nO7VquiVr0tZTKNmmdkIqsYUARRjfluVHTSqxxcne2o1g0aAlxQo3tLgs
+	 0DMeHl1P4iJ8foBRkmpl90O/gCx13UpitbKsEYKxThEiftvXE9q56njHTD6GCA3KIL
+	 JG7UtQilJpG+ua0EEkvXhJ/YtxU4kMZ2swCc8N3jAxV+DkqxF29BhG5cuFIAFoE2v2
+	 ffFA5cE0hck8DoMN+N/FZ/Euk+kDD1cG0jRQDgofD0/fmW0r5QvB5N5m3lAkS6aGQn
+	 HZ3DXF8ngQv3Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M4OT3A5nUdSw; Sun,  9 Jul 2023 15:14:49 +0000 (UTC)
+	with ESMTP id zq_2LdtOwuF2; Sun,  9 Jul 2023 15:15:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 380D0404BA;
-	Sun,  9 Jul 2023 15:14:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 380D0404BA
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1C022404D0;
+	Sun,  9 Jul 2023 15:15:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C022404D0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 588E41BF381
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:14:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 42FDD1BF381
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2FD6F404BA
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:14:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2FD6F404BA
+ by smtp2.osuosl.org (Postfix) with ESMTP id 282E5404D0
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 282E5404D0
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cjYkhFzK00lp for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Jul 2023 15:14:43 +0000 (UTC)
+ with ESMTP id 5RC_TrlDhA5Y for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Jul 2023 15:15:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 11BEF40017
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DF35404BA
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 11BEF40017
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:14:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3DF35404BA
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jul 2023 15:15:25 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4907660C1E;
- Sun,  9 Jul 2023 15:14:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DF95C433C8;
- Sun,  9 Jul 2023 15:14:40 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9004860C07;
+ Sun,  9 Jul 2023 15:15:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A098FC433CB;
+ Sun,  9 Jul 2023 15:15:22 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sun,  9 Jul 2023 11:13:55 -0400
-Message-Id: <20230709151356.513279-21-sashal@kernel.org>
+Date: Sun,  9 Jul 2023 11:14:45 -0400
+Message-Id: <20230709151446.513549-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230709151356.513279-1-sashal@kernel.org>
-References: <20230709151356.513279-1-sashal@kernel.org>
+In-Reply-To: <20230709151446.513549-1-sashal@kernel.org>
+References: <20230709151446.513549-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.3.12
+X-stable-base: Linux 6.1.38
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1688915681;
- bh=cKYad/radGQwt3JJ+AcHq02Fx0GMduHtVccg5yj8h/w=;
+ d=kernel.org; s=k20201202; t=1688915724;
+ bh=GNT2rBdZAbHwR9OeFsrHJ9hPafKi5zhIcIDq27RuLAw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=dgWnqxcxoXRfBFseyV8Sz0CFrMPUXasyDtagmxClVlCo9+o7b9+d1Pw0f8ZzR135x
- s9dtvZPs81S9+ZfKh5jXkZ77GvI/jZdinFDfwh+qOW8WauGY7VswnL+mHbR/QgNWsg
- 8iOB2gnd6WFDH0XYEMwqSYPS+yG7y6p3QeqgSE4XLQ8T+zNbdEG+Hr0So7oieBhxdQ
- EhALi7phT29AAZflYBH8dKwUZKd5T2I0/ssx8SI9t6y3myF47wjCvmKj+wSP0E4oAX
- Kd8cdnG6hTmbg0pXzUY3etpodxNiCynrP4gh/nbYTIvNL3fIxxsmgwriYNJIi7LVyc
- 3ggxwkZz7QtSw==
+ b=Qpyyio856xfH77K7GDPAYN1NDVpxG9iK7BhZpvJkbYW8V5E2N5OfM0EKK9VQdK++z
+ CejRNxuTnAAFccnOVOZjcuri2/wvew5apUnl8i5S5RcrYb2X5ayPkuX7sKyqNI9c5g
+ /yfqzfrFaAy/IbQemHqVzjXD6eu6jqhMrg3E3exEkNwSvVmxM451+ZNmnXAC4s/OKe
+ 5b3UFJlGzjynqoptsVlyYBi00j6iNCpDQYuuh/kjd1LrLS9gDV7GXztEltLVHMtoST
+ G3FPu/0nx94yazxmLN16nwXqTcNP+wX65t5h80Es9WjvovYCMJMI2SLn2QDc+Lo9bl
+ M33vNmGPnhGUQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=dgWnqxcx
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.3 21/22] igb: Fix igb_down hung
+ header.a=rsa-sha256 header.s=k20201202 header.b=Qpyyio85
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.1 17/18] igb: Fix igb_down hung
  on surprise removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -170,10 +170,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index f2f9f81c123b8..c1891e03b8e91 100644
+index 18ffbc892f86c..3e0444354632d 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -9586,6 +9586,11 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
+@@ -9585,6 +9585,11 @@ static pci_ers_result_t igb_io_error_detected(struct pci_dev *pdev,
  	struct net_device *netdev = pci_get_drvdata(pdev);
  	struct igb_adapter *adapter = netdev_priv(netdev);
  
