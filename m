@@ -1,66 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E67D74E298
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jul 2023 02:36:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A0DB74E297
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jul 2023 02:36:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 506476106A;
-	Tue, 11 Jul 2023 00:36:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 506476106A
+	by smtp3.osuosl.org (Postfix) with ESMTP id C30B96106B;
+	Tue, 11 Jul 2023 00:36:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C30B96106B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689035815;
-	bh=LkJhGT/OtoDFN8/jMAQqg4ghM5yC4OKR7RNAPKpOo1U=;
+	s=default; t=1689035810;
+	bh=sl8l+7bQbU9PpidUYM5x8MuS/BWoduNUvcZ1bn4RJuY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yJ8Ywnsv7jrDV1tefNLFndQK+rOhmd4rTvOTkS1Fwfc6r+aq2SyYcTccf85faAGrR
-	 wKKW6ExEBMw81vLl5GkV7t1zfG6to5y96gUXSmTI2XKjhwS+cQRWOaIXxAk9w+iJYh
-	 9hDkaMDvRlR21Ssx0+RhIoAnyD1GWgcK3ds5WzOFXl+DQ/RzxLKYHkQGDGjgdHldq2
-	 1xgFW96orFPWDejxU4X3s2lAHWwhHVHjGn3yX7AS0+HXDlNsYOZVPb4Dy23r2LkxmP
-	 t7YmpxUD9GIXPduqRA5RSBM0mdl7w0Oe6+9mayf5LBxdHCqVOsCMP6hnmWqMHLJotf
-	 W7ITpQuOazxKQ==
+	b=Oro0a/kbkAXTnGZ7sR7UWUIHzbE0k93tBFGi4Xz84TPtYvfZlMopsT6YZNlo+9XrB
+	 6dsai2d8zrScOScqvpWMzHlcYuEa4+iVZD5TmH+NX+A/DhKmqlPH8Gy7pfFIuAXixZ
+	 Pp/R3ANzAwfcU16bB7idCE0Sd1MjjdlZ8oVK33OeyyD9i5bCEpwuVz/IlbaK+cdH/B
+	 P48dhxKi1Xap0uJpyV4T5Wa3/tv4HIKTkEz18ZvkSaZSlbdpDQKmuEzhqbELePG/rd
+	 u4EIHDuTyT0PkjlZkwZQN46RIdjX5KRr7/YkZOCFxiL+NP9+KM0M2htP2tA+4OGsz4
+	 j/FV8ljlSzNlg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sJKjQJFaL_H6; Tue, 11 Jul 2023 00:36:54 +0000 (UTC)
+	with ESMTP id cyAG2e6sM6m1; Tue, 11 Jul 2023 00:36:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D00E60F20;
-	Tue, 11 Jul 2023 00:36:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D00E60F20
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7CA6660EEE;
+	Tue, 11 Jul 2023 00:36:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7CA6660EEE
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3C8EF1BF955
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DD29C1BF955
+ for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 163EA81F8D
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 163EA81F8D
+ by smtp1.osuosl.org (Postfix) with ESMTP id BBEBA81F91
+ for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BBEBA81F91
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4Ic68MJ_0W-b for <intel-wired-lan@osuosl.org>;
+ with ESMTP id sQGKRE6Y6eGb for <intel-wired-lan@osuosl.org>;
  Tue, 11 Jul 2023 00:36:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 63F5781F83
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C441D81F8D
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 63F5781F83
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="344811032"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="344811032"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C441D81F8D
+ for <intel-wired-lan@osuosl.org>; Tue, 11 Jul 2023 00:36:38 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="344811036"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="344811036"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2023 17:36:23 -0700
+ 10 Jul 2023 17:36:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="724222552"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="724222552"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="724222559"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="724222559"
 Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
- by fmsmga007.fm.intel.com with ESMTP; 10 Jul 2023 17:36:22 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 10 Jul 2023 17:36:23 -0700
 From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Tue, 11 Jul 2023 08:34:52 +0800
-Message-Id: <20230711003453.9856-2-muhammad.husaini.zulkifli@intel.com>
+Date: Tue, 11 Jul 2023 08:34:53 +0800
+Message-Id: <20230711003453.9856-3-muhammad.husaini.zulkifli@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20230711003453.9856-1-muhammad.husaini.zulkifli@intel.com>
 References: <20230711003453.9856-1-muhammad.husaini.zulkifli@intel.com>
@@ -69,19 +69,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1689035798; x=1720571798;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references;
- bh=b3mWrQS5bZSZ0gZhxHZ4QNUE0njdPSJIOxW89qVCm5E=;
- b=oEIf5i68h0Da3EysYnRWPwHRSL0NwEM8TOuhNatrkI+lZAkI4JfFtOYM
- Dxtvwhh1siix9CX4suUX0RGg9iBpwB9uXg29mcSUysg5V2TYb7LTOrDSY
- IQFa3P6tb/Md5NUbt3wz+rl2VYEN7O8FqQg90AE50IxaTbxpN6REPjdjm
- 9UF83n8IiRaZYwb5Y+WKFlVeZ2h81/VVsLiNh3S0mQ3NT65nDkqKPfivs
- l1gcIp5RBbNazFopgcMTVbZqTm+QqgDW8nQKpsfEH0UCYzaenBPH/106i
- QX8cFuDN5zKb1RVPHuHou9mfIPvd+/nMxaMQnMtXmaXz/QiVo/ljH1Kdo
- Q==;
+ bh=LT4MlK6oG4Jc5lv0J8lR6nIU9xQQHXQPhT9LNLkQBWw=;
+ b=PDz7MegnX9dZoNZ7zrK7wE7ywpHBuN0qc/BX9YP6UAInZ2ZCHW1AzHlh
+ 3GDeSVtPnUA7lP5B08z3Mg5/qETGlbDaNbSpC8WK6jqLW5uYcIbOSeN7/
+ u6qzfqWEcmufJJgrwBhMIdE1X+slYruCiLzx8HyzMxxD+HqBFFt+fNS7z
+ E4k4QOexPqCPW4BuOQCF3uh/XkQNPlWfuNz5BcYDL3XTS+QHt5AiPe+fA
+ Qbd7KhuJbhlCRzRKWqKxOhvoOksLY+iLqkrMTM3ZBDwRegqwz7HMhaVSA
+ 59Jc2V+dsoPLBd1IXbUVQZfoflcC6L8k4Tb69Q4AW3E72/OiKId3ek7o3
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=oEIf5i68
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/2] igc: Expose tx-usecs
- coalesce setting to user
+ header.a=rsa-sha256 header.s=Intel header.b=PDz7Megn
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 2/2] igc: Modify the tx-usecs
+ coalesce setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,44 +101,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When users attempt to obtain the coalesce setting using the
-ethtool command, current code always returns 0 for tx-usecs.
-This is because I225/6 always uses a queue pair setting, hence
-tx_coalesce_usecs does not return a value during the
-igc_ethtool_get_coalesce() callback process. The pair queue
-condition checking in igc_ethtool_get_coalesce() is removed by
-this patch so that the user gets information of the value of tx-usecs.
-
-Even if i225/6 is using queue pair setting, there is no harm in
-notifying the user of the tx-usecs. The implementation of the current
-code may have previously been a copy of the legacy code i210.
+This patch enables users to modify the tx-usecs parameter.
+The rx-usecs value will adhere to the same value as tx-usecs
+if the queue pair setting is enabled.
 
 How to test:
-User can get the coalesce value using ethtool command.
+User can set the coalesce value using ethtool command.
 
 Example command:
-Get: ethtool -c <interface>
+Set: ethtool -C <interface>
 
 Previous output:
 
-rx-usecs: 3
-rx-frames: n/a
-rx-usecs-irq: n/a
-rx-frames-irq: n/a
-
-tx-usecs: 0
-tx-frames: n/a
-tx-usecs-irq: n/a
-tx-frames-irq: n/a
+root@P12DYHUSAINI:~# ethtool -C enp170s0 tx-usecs 10
+netlink error: Invalid argument
 
 New output:
 
-rx-usecs: 3
+root@P12DYHUSAINI:~# ethtool -C enp170s0 tx-usecs 10
+rx-usecs: 10
 rx-frames: n/a
 rx-usecs-irq: n/a
 rx-frames-irq: n/a
 
-tx-usecs: 3
+tx-usecs: 10
 tx-frames: n/a
 tx-usecs-irq: n/a
 tx-frames-irq: n/a
@@ -146,40 +132,64 @@ tx-frames-irq: n/a
 Fixes: 8c5ad0dae93c ("igc: Add ethtool support")
 Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 33 ++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 93bce729be76..62d925b26f2c 100644
+index 62d925b26f2c..1cf7131a82c5 100644
 --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
 +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -880,12 +880,10 @@ static int igc_ethtool_get_coalesce(struct net_device *netdev,
+@@ -914,6 +914,34 @@ static int igc_ethtool_set_coalesce(struct net_device *netdev,
+ 			adapter->flags &= ~IGC_FLAG_DMAC;
+ 	}
+ 
++	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS) {
++		u32 old_tx_itr, old_rx_itr;
++
++		/* This is to get back the original value before byte shifting */
++		old_tx_itr = (adapter->tx_itr_setting <= 3) ?
++			      adapter->tx_itr_setting : adapter->tx_itr_setting >> 2;
++
++		old_rx_itr = (adapter->rx_itr_setting <= 3) ?
++			      adapter->rx_itr_setting : adapter->rx_itr_setting >> 2;
++
++		if (old_tx_itr != ec->tx_coalesce_usecs) {
++			if (ec->tx_coalesce_usecs && ec->tx_coalesce_usecs <= 3)
++				adapter->tx_itr_setting = ec->tx_coalesce_usecs;
++			else
++				adapter->tx_itr_setting = ec->tx_coalesce_usecs << 2;
++
++			adapter->rx_itr_setting = adapter->tx_itr_setting;
++		} else if (old_rx_itr != ec->rx_coalesce_usecs) {
++			if (ec->rx_coalesce_usecs && ec->rx_coalesce_usecs <= 3)
++				adapter->rx_itr_setting = ec->rx_coalesce_usecs;
++			else
++				adapter->rx_itr_setting = ec->rx_coalesce_usecs << 2;
++
++			adapter->tx_itr_setting = adapter->rx_itr_setting;
++		}
++		goto program_itr;
++	}
++
+ 	/* convert to rate of irq's per second */
+ 	if (ec->rx_coalesce_usecs && ec->rx_coalesce_usecs <= 3)
+ 		adapter->rx_itr_setting = ec->rx_coalesce_usecs;
+@@ -921,13 +949,12 @@ static int igc_ethtool_set_coalesce(struct net_device *netdev,
+ 		adapter->rx_itr_setting = ec->rx_coalesce_usecs << 2;
+ 
+ 	/* convert to rate of irq's per second */
+-	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS)
+-		adapter->tx_itr_setting = adapter->rx_itr_setting;
+-	else if (ec->tx_coalesce_usecs && ec->tx_coalesce_usecs <= 3)
++	if (ec->tx_coalesce_usecs && ec->tx_coalesce_usecs <= 3)
+ 		adapter->tx_itr_setting = ec->tx_coalesce_usecs;
  	else
- 		ec->rx_coalesce_usecs = adapter->rx_itr_setting >> 2;
+ 		adapter->tx_itr_setting = ec->tx_coalesce_usecs << 2;
  
--	if (!(adapter->flags & IGC_FLAG_QUEUE_PAIRS)) {
--		if (adapter->tx_itr_setting <= 3)
--			ec->tx_coalesce_usecs = adapter->tx_itr_setting;
--		else
--			ec->tx_coalesce_usecs = adapter->tx_itr_setting >> 2;
--	}
-+	if (adapter->tx_itr_setting <= 3)
-+		ec->tx_coalesce_usecs = adapter->tx_itr_setting;
-+	else
-+		ec->tx_coalesce_usecs = adapter->tx_itr_setting >> 2;
++program_itr:
+ 	for (i = 0; i < adapter->num_q_vectors; i++) {
+ 		struct igc_q_vector *q_vector = adapter->q_vector[i];
  
- 	return 0;
- }
-@@ -910,9 +908,6 @@ static int igc_ethtool_set_coalesce(struct net_device *netdev,
- 	    ec->tx_coalesce_usecs == 2)
- 		return -EINVAL;
- 
--	if ((adapter->flags & IGC_FLAG_QUEUE_PAIRS) && ec->tx_coalesce_usecs)
--		return -EINVAL;
--
- 	/* If ITR is disabled, disable DMAC */
- 	if (ec->rx_coalesce_usecs == 0) {
- 		if (adapter->flags & IGC_FLAG_DMAC)
 -- 
 2.17.1
 
