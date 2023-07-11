@@ -2,145 +2,189 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D4A274F577
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jul 2023 18:33:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9678374F5B7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jul 2023 18:40:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E4CA612A8;
-	Tue, 11 Jul 2023 16:33:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E4CA612A8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CD4F610F4;
+	Tue, 11 Jul 2023 16:40:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CD4F610F4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689093212;
-	bh=Hy7Fvfg9LW+DxEn1LjTWxsvnlhXi4eAEgUvq7rFmGtY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1689093643;
+	bh=VFruv2Vkxlvd+xsGorkdheTwOQ5GZhsCse95zbnOMbs=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=siOE1lvkQ+8bN+pNDhNtLfL0Qk11FwfD3SxG8szON/86O73YSCZN1Lmm9sgFcnLF9
-	 eyOebQEpV/Bbb4DzwKEMV4W4qeShySwGTvAGIyBcjW65Q2LVT+p9ncFsUrT9JcvE/d
-	 QDbyr87yaAgOxVUqACiI/XJ6sJWyWlt0l5SaKMVxmRrUMry0OyBbboTiisKsaFkW5o
-	 gkcVE9TdgCljHrikRv+aZbPCVsh3VHcH/4fgTPn3gO8bujo1YM0OHh67Zo0YKoG7tO
-	 n8xEYc+oiF1kCNL9Egx0SJfjZOfEq9gCNS6x4nCqlqoRNicA4p4Rp2IUipNgCspwLE
-	 9mz4pJY5mfSjg==
+	b=DgjQC63GDFp+myVl9JCmlC1x48S+fPrrcaYpNWFc5REZg9s8/3kCRkjvoLnqsF9PJ
+	 D4caZdoD406fdDNNXamR7KjLf8pAm6vy9vVT/zGm1kTVPI5sy8MlNjADrqvpFiFTNm
+	 s/zHxl+dmAcYGtpGqCwA8u4CwfU4Ugxe5OAEzhKsOnxMxUIRZP//Ybe724S6SI+igk
+	 NmMKmtiqfHcJxpQwKBK30qNsS9nQ7A9HfECz5ubxMDiYsO885wq/WiWNbTFF+L30gr
+	 vem/KxLibSGsTEPSz5aKlsJXklOayGRSO93hqbFhfxvDp2chzZRo7N9OMinT8VG5rU
+	 JwXdHmjmioF3Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QtR71jZT54f7; Tue, 11 Jul 2023 16:33:31 +0000 (UTC)
+	with ESMTP id MT9NntaauanS; Tue, 11 Jul 2023 16:40:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 44213610E3;
-	Tue, 11 Jul 2023 16:33:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 44213610E3
+	by smtp3.osuosl.org (Postfix) with ESMTP id D3A2C6101D;
+	Tue, 11 Jul 2023 16:40:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D3A2C6101D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4E6EF1BF426
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:33:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5374F1BF426
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:40:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2744541481
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:33:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2744541481
+ by smtp4.osuosl.org (Postfix) with ESMTP id 274C441E13
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:40:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 274C441E13
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zXqH1kfR9uY9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Jul 2023 16:33:25 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1245741495
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2100.outbound.protection.outlook.com [40.107.236.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1245741495
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:33:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LFiaBos2qPN5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Jul 2023 16:40:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C8CF41E12
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C8CF41E12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jul 2023 16:40:34 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362134846"
+X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; d="scan'208";a="362134846"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jul 2023 09:39:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="791261230"
+X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; d="scan'208";a="791261230"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmsmga004.fm.intel.com with ESMTP; 11 Jul 2023 09:39:41 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Tue, 11 Jul 2023 09:39:37 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Tue, 11 Jul 2023 09:39:37 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.43) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Tue, 11 Jul 2023 09:39:04 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AB/3H9Y8DNw4CC/Uc3OUtrLVzkaX72MBD6okrjFOllMp2Z/JKtze3L7L2mNL2+jwe4SGIliBcqVLY7JQkbPsta5yDxoYjfMRLPXEUtws1muQMOl5PhuMNu8lkkQZSJ84M23QdASCz1m+peroCmQdP8EHyV3W9STx2P29vwLVX62rTUsbbmZ6Ne9BzlWHsHfW9Etl+DqN4PFM9ZxfAZ2RMH04LLQhw9w82FwURtsQdsLreI9Uq/v6wxVKgZWraR/3HDvu4AGaFb7SMa2YKRQJa920zdKetf0cbTh7ysOAfG8ladcZraIgPEeG5Y1r91xewnd9sP9ahaK6BIhnNjtunQ==
+ b=N5+ssIS0tbyUuCzI5E7UIDZJvsWBm97XBVITfPntB9S1ar9jyAcQjvsjmI9X4Mgen5EtEBlmgphJTgMRR3pIWlUZocPPgkna7OcnnAHgDOhSHfyDzSWRfC5iJlvAExKTXMyHRmnxXBEEdb0onRUQyWIYLwypbmh38XMXEmHneWXq2ei6D8hvGlKIyunuZVHie9KxCu0LFGc1pFLJ+JsuNdxEIJccx1UDezuumPJvKFY2s84Cuk7ByXqlFRgjzxBreaKJZAYC45qEMAlM8RupHha4HwOU55kA9OLlWNuum23XT3iGb1ztzvaFPkVRDwKo7gHnCDBLlrRrHZb++xQFow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cfIegLM/b9d0c4gCjsheGSBunvBdy7M9ygjGPKRwyEw=;
- b=Bip8kUQMojiKh+GrNErpC4h0oXzto6aw6imy99QPFhMW9yESDzub1IHBu6QzT+Uo9FprrjpC1VGm7vYTzUtA3hDaEXdiBRayyKj/Q2XHo4jTov1K7wa+f+dEPE1d4uu9JzvsgnLYy674JkFKQLA0Q5mMl3VpAcyFmUyeik/cYZQ4yoLVFHf5ymWrhLsKso6Z0Tw33SXxUB6uODQayCIFOaXYRFQ8FV6O3HzAGZZVXBWbULcQakvLEdTsxY7AFOnjRYm3jZE4R0nOqfKi+r4A3gslvRuOMMs/iBeFN4KVFmqKPQFxxdPUHfWbWC2PY9gN7QId7yJ3eyYN0/EE0kIUPg==
+ bh=uXKFSQcRgB1353FI6zb14M1qdXoPyz78We8nDuznqoo=;
+ b=SF1Vx6jjLIEZMR1UkGx0xK6o7w63ZgfYqdUmpyiIAwrvT9Vb0LpA5CpFeK91TaSVeAEDUkJZZql14YtPveoVnSNBDFw85utulDczVw8kMT5OAscBm9k8vyOMEZAYFzceEILIYQYGnB2dWw8Fp6c/YXaQO23d9ilJQC9hh3jEj4zncaIYoYWQ1sYMg2VZLgENnuGbvXuCcq5YTV18CRw/i0kbBf16lCGfjZZRoPfjBPyQ0QCHeszwABZ4fNyF/TI9QbpkU8BOlefz9IL8D4tUry9IHXyVFQNZ0ePX8fh7EuesRlfL01+lH4Flb867o8hMtWGn80OGPyg7TVwlvRLMIQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by SJ0PR13MB5546.namprd13.prod.outlook.com (2603:10b6:a03:420::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.25; Tue, 11 Jul
- 2023 16:33:20 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::d23a:8c12:d561:470]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::d23a:8c12:d561:470%6]) with mapi id 15.20.6588.017; Tue, 11 Jul 2023
- 16:33:20 +0000
-Date: Tue, 11 Jul 2023 17:33:13 +0100
-From: Simon Horman <simon.horman@corigine.com>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <ZK2ESQIcppzGDa80@corigine.com>
-References: <20230706062551.2261312-1-michal.swiatkowski@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <20230706062551.2261312-1-michal.swiatkowski@linux.intel.com>
-X-ClientProxiedBy: LO2P265CA0306.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:a5::30) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by DS7PR11MB6104.namprd11.prod.outlook.com (2603:10b6:8:9f::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6565.32; Tue, 11 Jul 2023 16:38:56 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::1ecd:561c:902a:7130]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::1ecd:561c:902a:7130%4]) with mapi id 15.20.6565.028; Tue, 11 Jul 2023
+ 16:38:56 +0000
+Message-ID: <89dc48ab-0800-b12f-7124-cecc709364d7@intel.com>
+Date: Tue, 11 Jul 2023 18:37:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Content-Language: en-US
+To: Yunsheng Lin <linyunsheng@huawei.com>
+References: <20230705155551.1317583-1-aleksander.lobakin@intel.com>
+ <20230705155551.1317583-6-aleksander.lobakin@intel.com>
+ <138b94a7-c186-bdd9-e073-2794760c9454@huawei.com>
+ <09a9a9ef-cf77-3b60-2845-94595a42cf3e@intel.com>
+ <71a8bab4-1a1d-cb1a-d75c-585a14c6fb2e@gmail.com>
+ <b05d1a35-5bc5-b65d-b57d-5cc1b0f898cb@intel.com>
+ <2ebd75df-51ff-4c62-2a68-d258dbf32b49@huawei.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <2ebd75df-51ff-4c62-2a68-d258dbf32b49@huawei.com>
+X-ClientProxiedBy: BE0P281CA0020.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:b10:14::7) To DM6PR11MB3625.namprd11.prod.outlook.com
+ (2603:10b6:5:13a::21)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|SJ0PR13MB5546:EE_
-X-MS-Office365-Filtering-Correlation-Id: d8b3edad-a810-46a6-221b-08db822c8955
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|DS7PR11MB6104:EE_
+X-MS-Office365-Filtering-Correlation-Id: 23a0e759-91c9-4dc9-aebd-08db822d5220
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VdqvJlf9pcOqCg9fytlyZyTNvRLOtwjX2izgABQviSq1W7W1aPuYiVmKxJ1kvgI7pIxhS0LKYeS9W+S+z9YVYoa2AhfJLr/aiJ/nb6/8eBpRtLzIdgKm3tJoR/Dpw19JlOmjyDN2eZR8cjz7HVnGWT8rav7X6/1sKmTZMI3sRfKwRI7pqnnR6ixioHhWJs9tZ4EbmZH6J4tZK7lxv82HHgO8G28OHGg51Mkw/+klmIswbglzWEendElUtPwlUW2NsrA/wb6GguyWRrckJMkskgNsyXcRyk6flSj6bhPzMdNOgtxKbsomC2ohNE20Eze+AUHBSdq1l7Po6e4smyx8Bafi7TuJDA+HrFqhfGPl6g+KuidFGKJZ6Ihmf3yq01qNf4pgM/sFd+fhN6Tzzjk/Qd5lAIKfF3NmAwCamuXYI4GLJ8m1IanXAg+NJVxAEax2YU8k7z2xbcHA9Dms9/GaEnSXTzx+uY0QHBUOg3k4myTrCjPy20K0fpp3MjdO7DBIO/8SsAuFP1qq1x1GUxbCKA4+PSTQ1Tpbzy4KEEhvt1VAqGijmTpQSN2E1lom46wkjfpE1Kkf7WSNQhbe6yDF80kItlngmv26UxAVmFZgyyo=
+X-Microsoft-Antispam-Message-Info: XmvkM5hCfbCtenvSmodSS+vhVp/sfnhSSZwAEUIn274acyHxusqIp5Dos6qbf3RIxck+ADSqJDdu0y6EUQ2X8XV7hUdL6KB6dHsbJbR9gs6j2l3V2m81trWlTtwFq8IwFqhfgJigt3+8Gb2mpWwku8xQOmh+35tyb3jI/U565HSY83WNkp+UbjapxDVOm4PNVc/EEwWEp+A9ILSulPERW3QR9Ou9lKbrZiP/uorlDSQJe2IwFpKRnS+ExlzDXlzyUluXmHVcUsF2r1HovwmKlNRlYMP4O7zEqq4y+zzgo3HqJDGDEuMC8Rmo+BUlM4MSihrH2m3NZ7j4kr/TvLaTt4Gxtv9v17ocKfPqOjulvEhz7DYliUExa9Qr8FeiPXPfjagpAbYBaZvTlQEvznaQO3m9RoZH3KPpvUgrWb+4BeO3gb5Idn5e4m5rMpF9r6Ai/fGfBVY9mh3AphOJhJuFgrXOwECsohTl0v1XLfZ7/AexIjVHS5cCWcymVbqzFu31PTJrqGmkR3MOrbMAphIKylGu/a8av5VBY/k5ga4G0PYswllRemXFWap96RqOziNx0rA1rvzdB5WOBTyK8tWHPueUN5sxe6o56+Aw48vmwgqYdJPCDQ5kzcGQTjJmKP0QGFXWuJPnw4SGiLxib8ZM7g==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR13MB4842.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(136003)(346002)(376002)(366004)(396003)(39840400004)(451199021)(316002)(8676002)(83380400001)(2616005)(2906002)(66476007)(66556008)(26005)(66946007)(6916009)(4326008)(6486002)(478600001)(5660300002)(186003)(44832011)(41300700001)(6512007)(8936002)(6506007)(6666004)(86362001)(36756003)(38100700002);
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(376002)(366004)(136003)(346002)(39860400002)(396003)(451199021)(31686004)(83380400001)(41300700001)(2616005)(7416002)(2906002)(186003)(36756003)(38100700002)(5660300002)(82960400001)(26005)(6916009)(4326008)(8936002)(6506007)(53546011)(66476007)(66556008)(8676002)(316002)(86362001)(54906003)(31696002)(66946007)(6512007)(478600001)(966005)(6486002)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+QaxUOVYAWaT2ZR8Nm3odJuEA4hdrCsYz3PM3hyS4p96s+1XdryQm5yraeBh?=
- =?us-ascii?Q?AKbfhlsQWK9wr9f64+N7AjrRieGyDS/DZ9xB146l/h9Bhr0xoWpvcLGPIri5?=
- =?us-ascii?Q?1UbnV6mxmkogD8hF+iM7l2MVl3F9ZSwEvUCv/yDl8T7fkgqpHd9gcI7ghJXb?=
- =?us-ascii?Q?hsk7JoIPV9cA9yf8iTjD1RuuZRntjh2a/1ovc+vIOaHO5as5XXdqp1TjBeDN?=
- =?us-ascii?Q?mXstZz9JnQpYcwv8xzhHXnCZT1OjoeSe3d0jGIZLePHsoOx1F7YiTPra9E3n?=
- =?us-ascii?Q?WgstMw6RVRl2Mde5EWy4IzEHxeIzls+xU3Sx6SRPRh+XmMVIHO5m6OsQNOeU?=
- =?us-ascii?Q?zIrjTajehTplXoGXg6ltej4RQC8nenKXt6kvQvoPFjIEabTSGNcBppQWafDl?=
- =?us-ascii?Q?eN8FetWFrtW6bLgn8wg1iv9+JD8pfyHeM8O0wFtigugTpLt1eg2USmZm8Zxi?=
- =?us-ascii?Q?vNbnGijKpkzr5FRtjV+Fkh/KbwrdeDHvaEwGGrnYm9ltsO3r27911wbHYhzz?=
- =?us-ascii?Q?bhtKEMj6dUTjjs6qiVpcircT0HQYUqhsveHr3nKv5AeD1xcGOY3b2313OXik?=
- =?us-ascii?Q?f8KoggWRdFi7yKIxN2XPKRP7VSAIhRvQdLOW/XB+J/t2gTrIIvs/dG6NgA/a?=
- =?us-ascii?Q?utkFKkhPJp7yE+DZ+lCTzxVzZCJRUheQo3TfmUojQDO2OcTLwBd/05Sqc+kK?=
- =?us-ascii?Q?tMAI0RQUGOMYbiUfi227/MKeztxFqb9YdvLz80oZhYIYJ+0HfYn6qkP8oUcT?=
- =?us-ascii?Q?g+BC5at9sDZFRyBVOvYV1oqwfyvM3zmWPXf6U9GZa+wwem9C+KvTIpDvTpaP?=
- =?us-ascii?Q?fg5SDuOLf0nOhxaFPYxJhQnwRwT4fYpe9SwukttgH3fTEyFsFneGb4uVLLOy?=
- =?us-ascii?Q?hmkKOU+pDhooO/gVhF4UALj1XVzKlYj4/jHcsO0dajiL0ttJZvWbW4ukrMXA?=
- =?us-ascii?Q?uJCLRE9IKS0zetz72TaJUpjMjwV1VgzwqQ7MP7K7NiEsuH1A6WprI5Pc0DUA?=
- =?us-ascii?Q?7q+IZ4j7QSE2+4kSA2RHRxxrUpN4ONt5relxtJvvhqCLU9nvrLWwp3iN3LWV?=
- =?us-ascii?Q?EhGUmD8erhU3FIyLnrOUdSn02JR11AtZidIs4+9+tuZVyWs3M38H5DU2OUi9?=
- =?us-ascii?Q?mVsKFr+Jq+sfCdEITUWonJLmfUt2sKoRHoNO4AwCnPIUmqeATIclmaXn6wTj?=
- =?us-ascii?Q?de2lIAb78EmPiTKo/mKCQ2wai5945fszZlcU6C0r894v+aUNoOnOfB8yOus/?=
- =?us-ascii?Q?dfGsBOck+g02+bw8JoCPfauhUh6WBDZ1zpoBsch96KgITZPWgO4SgQmXblN0?=
- =?us-ascii?Q?8EDMBsgyL3oVgkbyQnXsYWO1NIbkZQocEEQlM5qtuyIm233dpRbWEZZWP0GB?=
- =?us-ascii?Q?9WmTgO8Q0zR9tHSa6GPl5ZVDty3raLbg5SuEMCEU5PmzXOBnI7ZZO8jEqTX3?=
- =?us-ascii?Q?DEbzbq1e4hT0DaLFnrjiUmOx0gzmZvPIGlYxz7h1CCR/x1erUpQX4lQw5g13?=
- =?us-ascii?Q?oCMZKxYSY5xI2Og/xunMrnLqhvLvFwARvZ6E+wc5+cxSZHCHJHgTO0EWkBwH?=
- =?us-ascii?Q?s8e6haCKJIpLeiUK7OpaZzN745V55gonxS6wEkiQrxD0hE77+g02WYTHxfL9?=
- =?us-ascii?Q?Vg=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d8b3edad-a810-46a6-221b-08db822c8955
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UUNvb3JGdVQ1endQa21YRTVlOUxBUU5oSU9STmp5aUt1ZnZWcS9lTTVBVDlv?=
+ =?utf-8?B?Rk9JblV1VGwrQ1VHUHVBT040WkFzWG9LcGlxT0wyeXpSbFZFRWlnS05uTHp0?=
+ =?utf-8?B?UW9wMTR5Z0RJU3BrYmRIbi9QVmdvV3lINGVEaC9yTnNXSHZxZzRmYXg4WFZr?=
+ =?utf-8?B?S2J4YXNYZXUrZDFkcS9ZcWZEaC96SE9mY1ZvVDl4MVh0OFZTWG1rcEVIVU4z?=
+ =?utf-8?B?cnNlcm40OExnQXJhQXlEZDRiQnJNRG9zOHQ0QW5CNlVKQkNBVmw4NlY4YWlK?=
+ =?utf-8?B?cmFzdjJtYWdkVFBoYXN0U3gvci9DcTFrTmROTy9FMmVuK3hwZHphbVZkMGZR?=
+ =?utf-8?B?N2xnYjJ5QzBuRzNOR3oyVi9nRnZOQ1FOSStpMGZqSmxBZHV0SWdxZ0h5Rjc2?=
+ =?utf-8?B?Ky9idzJaSjZxMFRUSjhoY2hNZU9jVXhDYTBZN0hSR3V6VlN3YWxiZmsvb3k4?=
+ =?utf-8?B?YXJSU3NPckY4a3crWnU5TnNqWkwySlI4dWovVWorKzBENkloSHREaFBPNk1v?=
+ =?utf-8?B?clFzVU9sekxOQno3aFJrZG5ieTY2YnJueE1IMEZ6RTkrblRaVFROQ0YwcjVl?=
+ =?utf-8?B?UUhwRXUrT2ZQS05LMVBTSzJDbDhpWDZlbHViU2djd1lHdE5CZnpPcUJHbXhT?=
+ =?utf-8?B?Rkxwa3UwQzVYMzF6ZDlUYWdseFZUVkJxYXMzRk1wQVR6OTZPazBVU25kblV6?=
+ =?utf-8?B?c0V4S1BOU1BOdUxxV3Brcmd3bS9kZTdHQ2NJOTExNXB6TVhMblVWT25jVWdR?=
+ =?utf-8?B?RU42ZldSZzA2aTVXdGVmQms3emN6MFBMUzd0TzExendpOXRsL0xPcXRmYWVv?=
+ =?utf-8?B?L3lneUlWOGlqbEJhSkh6M0hCNkhJY0thZnBzbEhZSU5KbVdrWkcwYkR1ZnhT?=
+ =?utf-8?B?TlQraFUxZ1R4a0NKVU1yL1djWlFBV2h4aHh5MjJrK1I4L0hwbkFvOUk5TEFH?=
+ =?utf-8?B?dkVOSHYwQm9kcnI3OEx5MEg2K3VieHE3bE5CdlJWdGlDUmtSWFpPb3BVN2c3?=
+ =?utf-8?B?RjZuTkI4MVB6cjBJUTEzcUpOTis5YU1KUzV3MVlsVXAvRE5wWVViM1Y5SlFy?=
+ =?utf-8?B?Y0NTazVyZG45b2RIdG8rbzdURGZJdms0ZWdnSUd0dnFiRVB3bmxpZGJxQTNo?=
+ =?utf-8?B?azMvOG1QR0l4aElUZWtuczlFYVU1a200VU8zeG9jUmRZWkN4SU14NGlJNUpM?=
+ =?utf-8?B?T1VMSlNFVU5hTjd0dmQ1MHVHQWhsZHBicjV4SUI2aFgzV3JUZyswNzl2Ung1?=
+ =?utf-8?B?VXZTWkZqNGFTMkRSaE5rckhKTXBzSFNmNHBEa0VOaURiMTFVbXAvRk1Jb3dx?=
+ =?utf-8?B?RmFKc1pid2JHK1M1RTJxNVBzNVJicXlHbzZoSGJrMVdCM0dBU1BnQjU0WGRZ?=
+ =?utf-8?B?OExUZ3NScG8xNDhtVkZwVjBqMjMxeklOZTNrejV0YWV4dmRFc2VJdm9uTURW?=
+ =?utf-8?B?T3A1aFJibWtEbUI2MmEyY1ZLVUlUVWlxQkREQUljdFZad2w3RjZXSC8yUllJ?=
+ =?utf-8?B?aHNEbm55UVAzSGgwWWVNWjhSWHNhRjFTcTZTK0ZVUHdpUVVkQzJYWXhCVjBC?=
+ =?utf-8?B?NzNiN004OXBYbU9wdWVVcFBDRkxINlJQSU9FeW10amRoUU1BcDk1SmJQSy9h?=
+ =?utf-8?B?b3RHZ0UrUXhqcEJqSjhCZE5XNEVxSHB1ZE5zK1BUMEtaVUZ2cWpWQ3M2RTAr?=
+ =?utf-8?B?MFZVR0dwcXBCajBGOS9zeGFmbEN3a0duMnNwQmpMUkNycVpIbWI2VVR2dTZP?=
+ =?utf-8?B?SE51VWZWanVsbU8waUV4bTFFNzY5aUZHQ1RrY2hxNDlhYWZpUmNMR1dWbkdZ?=
+ =?utf-8?B?VjVXWnNwS0FXNzhZdlE4ejc0QnA1NHRKVW9lckRMYkNEMnNUVmYwL3ZMZ3pM?=
+ =?utf-8?B?WGE0ZythRDFIZFNteDdFZDI2RlUzalhCb1N2TVJsb2pTVHBGNlljVEZ3RDJ6?=
+ =?utf-8?B?T25tdXBSRm1mTERuZXl2WDFsUDhia0RBQ0tGNkRKbFFDMWdtUkpwOWw1Vy9w?=
+ =?utf-8?B?YTNwUnU1cVJibjVTWEtrM0ZGYXVaVWVNbmliWS9lcXJtRzRJL3NnRWtDTm9G?=
+ =?utf-8?B?QWtWWVJaUHdqOEozWW9EUUFEekJtdUNpOC95dFNHQVlaRis4SjdjMWU4bHpn?=
+ =?utf-8?B?U3JNcThrbVVtQzkwQVFvc0RXZDBRQThPN05ma285dXBuTEcram8zUDllbTNZ?=
+ =?utf-8?B?UHc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23a0e759-91c9-4dc9-aebd-08db822d5220
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2023 16:33:20.4389 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2023 16:38:56.8758 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9icQ1D2lvhwQ78kASmV8IQPIZ224rfwNnvuu6BndoNX8BpMe/XqPh72t/GTudef0dQYCR6FyHrs1f0KCS1Ah5wAEJvT6nBXjTe01CoacK5c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR13MB5546
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cfIegLM/b9d0c4gCjsheGSBunvBdy7M9ygjGPKRwyEw=;
- b=Ew0E+yziSdSLxgoQ55VUZI6w9GubsVFsSgbImCzWVPKLt6Z7KEomh0RvlnLS8m2AYRBPCIj5Q8yk6kvLEXx26Mw+lzSqTH4zI+zFZADScc+uI7zzRjZ4qYUYNzESjRH+cGb9h2jUj81ys+TnHreiPihbSffyhykknREKxe5iuUI=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=corigine.onmicrosoft.com
- header.i=@corigine.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-corigine-onmicrosoft-com header.b=Ew0E+yzi
+X-MS-Exchange-CrossTenant-UserPrincipalName: s9w9LhM/2gSzgrBYqkCjiowWt3H5hb9jM1LFitvGeu1onDMBJe1IjDy7bTserRtc8QgzDdpUChZxoAbCIpWUvbdeZiF5YVBotCL4LNlvDJY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6104
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1689093634; x=1720629634;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=nPtF4ygpIMFsnI9VerWPKwSynlDGmIp0fRN5xi0NpN4=;
+ b=JDO0P5acVlm17E02GTltXEfEio+dcMY/RvL3toDpcyxw11cAbAY1MOTn
+ SRmnSLPSwNID0GkUUT+/rmRCClU3fdWMLnZjdoofF8pju+y/nXjJ9sW5c
+ SqcNTiIvnBzkkxaAtgrS188I4C1UI/Vo4Likj+M22YlAqZqfajEgANtuD
+ cfS3le6EojJkb5W7kZ0OA2ZhhJeofD5Xg7YWvPkPtAbyjEnEHEF7gD7Ds
+ FqUEkGAJ+l13uxdybtla/yZbZji9HDehceadFqfk6fJuR10f0mzOpXPQW
+ K6rIsm0RkXPL9sVB3l0chutCMRBNqD1I/ovg8qxbmGooRt1wEmjbxSuDS
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=JDO0P5ac
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] ice: prevent NULL pointer
- deref during reload
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH RFC net-next v4 5/9] libie: add Rx
+ buffer management (via Page Pool)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,84 +197,160 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, Larysa Zaremba <larysa.zaremba@intel.com>,
+ netdev@vger.kernel.org, Alexander Duyck <alexanderduyck@fb.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Yunsheng Lin <yunshenglin0825@gmail.com>,
+ David Christensen <drc@linux.vnet.ibm.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jul 06, 2023 at 08:25:51AM +0200, Michal Swiatkowski wrote:
-> Calling ethtool during reload can lead to call trace, because VSI isn't
-> configured for some time, but netdev is alive.
-> 
-> To fix it add rtnl lock for VSI deconfig and config. Set ::num_q_vectors
-> to 0 after freeing and add a check for ::tx/rx_rings in ring related
-> ethtool ops.
-> 
-> Add proper unroll of filters in ice_start_eth().
-> 
-> Reproduction:
-> $watch -n 0.1 -d 'ethtool -g enp24s0f0np0'
-> $devlink dev reload pci/0000:18:00.0 action driver_reinit
-> 
-> Call trace before fix:
-> [66303.926205] BUG: kernel NULL pointer dereference, address: 0000000000000000
-> [66303.926259] #PF: supervisor read access in kernel mode
-> [66303.926286] #PF: error_code(0x0000) - not-present page
-> [66303.926311] PGD 0 P4D 0
-> [66303.926332] Oops: 0000 [#1] PREEMPT SMP PTI
-> [66303.926358] CPU: 4 PID: 933821 Comm: ethtool Kdump: loaded Tainted: G           OE      6.4.0-rc5+ #1
-> [66303.926400] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.00.01.0014.070920180847 07/09/2018
-> [66303.926446] RIP: 0010:ice_get_ringparam+0x22/0x50 [ice]
-> [66303.926649] Code: 90 90 90 90 90 90 90 90 f3 0f 1e fa 0f 1f 44 00 00 48 8b 87 c0 09 00 00 c7 46 04 e0 1f 00 00 c7 46 10 e0 1f 00 00 48 8b 50 20 <48> 8b 12 0f b7 52 3a 89 56 14 48 8b 40 28 48 8b 00 0f b7 40 58 48
-> [66303.926722] RSP: 0018:ffffad40472f39c8 EFLAGS: 00010246
-> [66303.926749] RAX: ffff98a8ada05828 RBX: ffff98a8c46dd060 RCX: ffffad40472f3b48
-> [66303.926781] RDX: 0000000000000000 RSI: ffff98a8c46dd068 RDI: ffff98a8b23c4000
-> [66303.926811] RBP: ffffad40472f3b48 R08: 00000000000337b0 R09: 0000000000000000
-> [66303.926843] R10: 0000000000000001 R11: 0000000000000100 R12: ffff98a8b23c4000
-> [66303.926874] R13: ffff98a8c46dd060 R14: 000000000000000f R15: ffffad40472f3a50
-> [66303.926906] FS:  00007f6397966740(0000) GS:ffff98b390900000(0000) knlGS:0000000000000000
-> [66303.926941] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [66303.926967] CR2: 0000000000000000 CR3: 000000011ac20002 CR4: 00000000007706e0
-> [66303.926999] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-> [66303.927029] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-> [66303.927060] PKRU: 55555554
-> [66303.927075] Call Trace:
-> [66303.927094]  <TASK>
-> [66303.927111]  ? __die+0x23/0x70
-> [66303.927140]  ? page_fault_oops+0x171/0x4e0
-> [66303.927176]  ? exc_page_fault+0x7f/0x180
-> [66303.927209]  ? asm_exc_page_fault+0x26/0x30
-> [66303.927244]  ? ice_get_ringparam+0x22/0x50 [ice]
-> [66303.927433]  rings_prepare_data+0x62/0x80
-> [66303.927469]  ethnl_default_doit+0xe2/0x350
-> [66303.927501]  genl_family_rcv_msg_doit.isra.0+0xe3/0x140
-> [66303.927538]  genl_rcv_msg+0x1b1/0x2c0
-> [66303.927561]  ? __pfx_ethnl_default_doit+0x10/0x10
-> [66303.927590]  ? __pfx_genl_rcv_msg+0x10/0x10
-> [66303.927615]  netlink_rcv_skb+0x58/0x110
-> [66303.927644]  genl_rcv+0x28/0x40
-> [66303.927665]  netlink_unicast+0x19e/0x290
-> [66303.927691]  netlink_sendmsg+0x254/0x4d0
-> [66303.927717]  sock_sendmsg+0x93/0xa0
-> [66303.927743]  __sys_sendto+0x126/0x170
-> [66303.927780]  __x64_sys_sendto+0x24/0x30
-> [66303.928593]  do_syscall_64+0x5d/0x90
-> [66303.929370]  ? __count_memcg_events+0x60/0xa0
-> [66303.930146]  ? count_memcg_events.constprop.0+0x1a/0x30
-> [66303.930920]  ? handle_mm_fault+0x9e/0x350
-> [66303.931688]  ? do_user_addr_fault+0x258/0x740
-> [66303.932452]  ? exc_page_fault+0x7f/0x180
-> [66303.933193]  entry_SYSCALL_64_after_hwframe+0x72/0xdc
-> 
-> Fixes: 5b246e533d01 ("ice: split probe into smaller functions")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Date: Tue, 11 Jul 2023 19:39:28 +0800
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+> On 2023/7/10 21:25, Alexander Lobakin wrote:
+>> From: Yunsheng Lin <yunshenglin0825@gmail.com>
+>> Date: Sun, 9 Jul 2023 13:16:33 +0800
+>>
+>>> On 2023/7/7 0:28, Alexander Lobakin wrote:
+>>>> From: Yunsheng Lin <linyunsheng@huawei.com>
+>>>> Date: Thu, 6 Jul 2023 20:47:28 +0800
+>>>>
+>>>>> On 2023/7/5 23:55, Alexander Lobakin wrote:
+>>>>>
+>>>>>> +/**
+>>>>>> + * libie_rx_page_pool_create - create a PP with the default libie settings
+>>>>>> + * @napi: &napi_struct covering this PP (no usage outside its poll loops)
+>>>>>> + * @size: size of the PP, usually simply Rx queue len
+>>>>>> + *
+>>>>>> + * Returns &page_pool on success, casted -errno on failure.
+>>>>>> + */
+>>>>>> +struct page_pool *libie_rx_page_pool_create(struct napi_struct *napi,
+>>>>>> +					    u32 size)
+>>>>>> +{
+>>>>>> +	struct page_pool_params pp = {
+>>>>>> +		.flags		= PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
+>>>>>> +		.order		= LIBIE_RX_PAGE_ORDER,
+>>>>>> +		.pool_size	= size,
+>>>>>> +		.nid		= NUMA_NO_NODE,
+>>>>>> +		.dev		= napi->dev->dev.parent,
+>>>>>> +		.napi		= napi,
+>>>>>> +		.dma_dir	= DMA_FROM_DEVICE,
+>>>>>> +		.offset		= LIBIE_SKB_HEADROOM,
+>>>>>
+>>>>> I think it worth mentioning that the '.offset' is not really accurate
+>>>>> when the page is split, as we do not really know what is the offset of
+>>>>> the frag of a page except for the first frag.
+>>>>
+>>>> Yeah, this is read as "offset from the start of the page or frag to the
+>>>> actual frame start, i.e. its Ethernet header" or "this is just
+>>>> xdp->data - xdp->data_hard_start".
+>>>
+>>> So the problem seems to be if most of drivers have a similar reading as
+>>> libie does here, as .offset seems to have a clear semantics which is used
+>>> to skip dma sync operation for buffer range that is not touched by the
+>>> dma operation. Even if it happens to have the same value of "offset from
+>>> the start of the page or frag to the actual frame start", I am not sure
+>>> it is future-proofing to reuse it.
+>>
+>> Not sure I'm following :s
+> 
+> It would be better to avoid accessing the internal data of the page pool
+> directly as much as possible, as that may be changed to different meaning
+> or removed if the implememtation is changed.
+> 
+> If it is common enough that most drivers are using it the same way, adding
+> a helper for that would be great.
 
+How comes page_pool_params is internal if it's defined purely by the
+driver and then exists read-only :D I even got warned in the adjacent
+thread that the Page Pool core code shouldn't change it anyhow.
+
+> 
+>>
+>>>
+>>> When page frag is added, I didn't really give much thought about that as
+>>> we use it in a cache coherent system.
+>>> It seems we might need to extend or update that semantics if we really want
+>>> to skip dma sync operation for all the buffer ranges that are not touched
+>>> by the dma operation for page split case.
+>>> Or Skipping dma sync operation for all untouched ranges might not be worth
+>>> the effort, because it might need a per frag dma sync operation, which is
+>>> more costly than a batched per page dma sync operation. If it is true, page
+>>> pool already support that currently as my understanding, because the dma
+>>> sync operation is only done when the last frag is released/freed.
+>>>
+>>>>
+>>>>>
+>>>>>> +	};
+>>>>>> +	size_t truesize;
+>>>>>> +
+>>>>>> +	pp.max_len = libie_rx_sync_len(napi->dev, pp.offset);
+>>>
+>>> As mentioned above, if we depend on the last released/freed frag to do the
+>>> dma sync, the pp.max_len might need to cover all the frag.
+>>
+>>                                                ^^^^^^^^^^^^
+>>
+>> You mean the whole page or...?
+> 
+> If we don't care about the accurate dma syncing, "cover all the frag" means
+> the whole page here, as page pool doesn't have enough info to do accurate
+> dma sync for now.
+> 
+>> I think it's not the driver's duty to track all this. We always set
+>> .offset to `data - data_hard_start` and .max_len to the maximum
+>> HW-writeable length for one frame. We don't know whether PP will give us
+>> a whole page or just a piece. DMA sync for device is performed in the PP
+>> core code as well. Driver just creates a PP and don't care about the
+>> internals.
+> 
+> There problem is that when page_pool_put_page() is called with a split
+> page, the page pool does not know which frag is freeing too.
+> 
+> setting 'maximum HW-writeable length for one frame' only sync the first
+> frag of a page as below:
+
+Maybe Page Pool should synchronize DMA even when !last_frag then?
+Setting .max_len to anything bigger than the maximum frame size you're
+planning to receive is counter-intuitive.
+All three xdp_buff, xdp_frame and skb always have all info needed to
+determine which piece of the page we're recycling, it should be possible
+to do with no complications. Hypothetical forcing drivers to do DMA
+syncs on their own when they use frags is counter-intuitive as well,
+Page Pool should be able to handle this itself.
+
+Alternatively, Page Pool may do as follows:
+
+1. !last_frag -- do nothing, same as today.
+2. last_frag -- sync, but not [offset, offset + max_len), but
+   [offset, PAGE_SIZE).
+
+This would also cover non-HW-writeable pieces like 2th-nth frame's
+headroom and each frame's skb_shared_info, but it's the only alternative
+to syncing each frag separately.
+Yes, it's almost the same as to set .max_len to %PAGE_SIZE, but as I
+said, it feels weird to set .max_len to 4k when you allocate 2k frags.
+You don't know anyway how much of a page will be used.
+
+For example, when I turn on driver-side XDP, increased headroom makes
+truesize cross the 2k border with 1500 MTU, so that 2 frag per page
+converts into 1 frag per page. In fact, instead of using the whole 4k,
+I use ~2200 and don't need to sync the entire 4k.
+Setting .max_len to 4k gives you way heavier overhead to non
+DMA-coherent systems that per-frag-syncing would do.
+
+> 
+> https://elixir.free-electrons.com/linux/v6.4-rc6/source/net/core/page_pool.c#L325
+> 
+
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
