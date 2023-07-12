@@ -1,84 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DCD7751073
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jul 2023 20:25:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A13E75114F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jul 2023 21:36:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 06C33612DD;
-	Wed, 12 Jul 2023 18:25:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06C33612DD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 877A941EF4;
+	Wed, 12 Jul 2023 19:36:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 877A941EF4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689186347;
-	bh=Efva04Sf4MO0RHrCDwwIVFkcpEgL9e93da2waBpx4Kk=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1689190583;
+	bh=MWn+TMGQTDrDvnhIDx1MU3cIgGb1SHlu3k1JOCTkNNI=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GqlP3Gg3GhqCYttXT9h5p4pPYTZIiVtYXoARdtUZNyyRRulVljlVcWzpPWMc+NrnR
-	 fC73Hj/gCuSaar9p1HYtTpEfYcPyRLyMLqUYCE+qEhZRTqADcE63w9hqsFGTY0rgHZ
-	 /Mb/HHhORpsT/kfxtJ1o1OK26scxl4lSgX6nX/Qu1hKIOmuazRqDSIXruRiwG2r8jm
-	 foNb3hPze1D4DVWJNf5CmwTPNWVs9x8OSKMT3rqyH/gh76sjyKP2/QEvK+CD4kaQfL
-	 a5i0rssK2xmmI9erhIOfjwBcZccVDkgbznNH9z8cQKc9z7BFT2cG+Yz/36461Sp9VL
-	 fBjJFF98rFP3Q==
+	b=UqHqWZ5q07Xmn0WI824r1gjssU6mKc3nWnIOUBaDfs4PL04veD3dIJYaWjdnZvd89
+	 syVzqJdBCAxpXZxT/c8wGJomgf8FfaLVlsAaiN+Zc09YqJciVBWLTRac+3HvfcHQFK
+	 HAcGGSy4tipjxeDp3/cIOB/iu/gJVKVIug8tHHj1Qk0B7Pp9PvnhZVgZgkjklthehx
+	 IYgIWtwfzjyVwCmTYchMA0HZHmaTZJdftJi2Qx/Adj3ZE3Bd/VVDjkiaHacKUN7d9R
+	 8hC04HH5gm25yC48Ao4I5d+3fanPrMHpaA7gxAfpzLQjZiTJ9OLgpsFnsUVckGgOya
+	 rCg1qWlm3fvAw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ljlNluOUBscn; Wed, 12 Jul 2023 18:25:46 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YnILcI8ldFXr; Wed, 12 Jul 2023 19:36:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E12656129B;
-	Wed, 12 Jul 2023 18:25:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E12656129B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0EB7441EA3;
+	Wed, 12 Jul 2023 19:36:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0EB7441EA3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 522A01BF3BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 18:25:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D89EF1BF3BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 19:36:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 35AA5612DB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 18:25:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 35AA5612DB
+ by smtp3.osuosl.org (Postfix) with ESMTP id BCE9561267
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 19:36:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCE9561267
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3wsbcm5XE4yv for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Jul 2023 18:25:40 +0000 (UTC)
+ with ESMTP id MnMtKgqLYrM2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Jul 2023 19:36:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5337A612D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 342F060E02
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5337A612D9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 18:25:40 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 342F060E02
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jul 2023 19:36:16 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 86E5861874;
- Wed, 12 Jul 2023 18:25:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D6E9C433C8;
- Wed, 12 Jul 2023 18:25:38 +0000 (UTC)
-Date: Wed, 12 Jul 2023 21:25:34 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Message-ID: <20230712182534.GF41919@unreal>
-References: <20230712130210.33864-1-jedrzej.jagielski@intel.com>
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 68AC0618F8;
+ Wed, 12 Jul 2023 19:36:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E222C433C8;
+ Wed, 12 Jul 2023 19:36:14 +0000 (UTC)
+Date: Wed, 12 Jul 2023 12:36:13 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ivan Vecera <ivecera@redhat.com>
+Message-ID: <20230712123613.20a98732@kernel.org>
+In-Reply-To: <20230712133247.588636-1-ivecera@redhat.com>
+References: <20230712133247.588636-1-ivecera@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230712130210.33864-1-jedrzej.jagielski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1689186339;
- bh=ULH/st5gl+19kdRgKh/qaSmVJysjJgl+dLliG1WryAM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=gI4QDnNlekKSj5NnXe62Wcz0lQkvl5FhNFbrNTeuhZpZe0aY+Pyu9YdfrNZejDhfn
- s58Awk1FbMXcH9ZvLAKqdNzUpKUAjVD48bshA5aO79S/P8j06QbXU3GCOsysQOQ5pQ
- DJXnGQoSNfi9Z/y1PkO3OY1jiwhBpvoBBG1UQIvkp0JCKUMUVC8CambsBfINY3NkU2
- Q9xClgHkOWa/vADQFAaZJAPNZT1wqsf4QVGottteyxKAXeZMkFZxT9uQ0cKq6162hZ
- VN+NXBVGHrFe7JDEQibKVPeSUviXIs9s2H4zvXvZl5M2bdomsZZuDIZWEg4UIU1qmh
- Erh8Tx1G/42wg==
+ d=kernel.org; s=k20201202; t=1689190574;
+ bh=EogeTGIiuUFqzne3v5vm4Ifad7BZZ2pCtarM917N8FI=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=LpE3SJuNK4U7nmwc8P4oTt0ZKY7/t2LKkaEq8vEXLKYM8LnUOaJU0H7H0C+RhZ4mv
+ ttm0IOyk6cIjvzPIMUxFThldGR4abW/8Aknzi53P2wErDaQpIoPiU5gAaWKIhHWY/2
+ EtMI8/8C3jH0byvt5apBXNgnl9RERwkcMMqffHgnOpZH3eskXZXWBPo66ohtW4v88M
+ 2PwmkAW2cUDbgkk5A8EJt8OgxuC1PcQY7W8Lqio7OUlzAwtDlHIBOOTXOOCOrGO+8I
+ 2XW6vyo6jBcouoJXLjKa44KCxp5fRJDiXH8JHDYDCjwziNuOxnJLrYvZCrRG3IscTu
+ DEhB8WwhRBQiA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=gI4QDnNl
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v5] ice: Fix memory management
- in ice_ethtool_fdir.c
+ header.a=rsa-sha256 header.s=k20201202 header.b=LpE3SJuN
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/2] i40e: Add helper for VF inited
+ state check with timeout
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,46 +90,31 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Ma Yuying <yuma@redhat.com>, Leon Romanovsky <leon@kernel.org>,
+ netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Simon Horman <simon.horman@corigine.com>, "moderated list:INTEL
+ ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Paolo Abeni <pabeni@redhat.com>, open list <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 12, 2023 at 03:02:10PM +0200, Jedrzej Jagielski wrote:
-> Fix ethtool FDIR logic to not use memory after its release.
-> In the ice_ethtool_fdir.c file there are 2 spots where code can
-> refer to pointers which may be missing.
-> 
-> In the ice_cfg_fdir_xtrct_seq() function seg may be freed but
-> even then may be still used by memcpy(&tun_seg[1], seg, sizeof(*seg)).
-> 
-> In the ice_add_fdir_ethtool() function struct ice_fdir_fltr *input
-> may first fail to be added via ice_fdir_update_list_entry() but then
-> may be deleted by ice_fdir_update_list_entry.
-> 
-> Terminate in both cases when the returned value of the previous
-> operation is other than 0, free memory and don't use it anymore.
-> 
-> Reported-by: Michal Schmidt <mschmidt@redhat.com>
-> Link: https://bugzilla.redhat.com/show_bug.cgi?id=2208423
-> Fixes: cac2a27cd9ab ("ice: Support IPv4 Flow Director filters")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> ---
-> v2: extend CC list, fix freeing memory before return
-> v3: correct typos in the commit msg
-> v4: restore devm() approach
-> v5: minor changes
-> ---
->  .../net/ethernet/intel/ice/ice_ethtool_fdir.c | 26 ++++++++++---------
->  1 file changed, 14 insertions(+), 12 deletions(-)
-> 
+On Wed, 12 Jul 2023 15:32:46 +0200 Ivan Vecera wrote:
+> +	for (i = 0; i < 15; i++)
+> +		if (!test_bit(I40E_VF_STATE_INIT, &vf->vf_states))
+> +			msleep(20);
+> +
+> +	if (!test_bit(I40E_VF_STATE_INIT, &vf->vf_states)) {
+> +		dev_err(&vf->pf->pdev->dev,
+> +			"VF %d still in reset. Try again.\n", vf->vf_id);
+> +		return false;
 
-Thanks,
-Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
+I like my loop more but if you want to have the msleep() indented just
+add an else { return true; } branch. Take advantage of the fact this is
+a function, now, and you can just return.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
