@@ -1,89 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5094752655
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jul 2023 17:13:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44B8F752717
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jul 2023 17:31:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C919613D1;
-	Thu, 13 Jul 2023 15:13:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C919613D1
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF2A283D40;
+	Thu, 13 Jul 2023 15:31:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CF2A283D40
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689261219;
-	bh=0n3NljcaXXHr3C5Wk0JYeLpBp2LELtXVA0vcnFXhTII=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9tUjHqIUnXVRUduto23IZsdU8AfnFljUIb79HSzmkdcGuoaYso18giti+Xcyhb2zB
-	 lCqge5mhZwC8TYUHwKOKlPprT+whNW7qm9/EWkBoS5NuiC5NVBuXgugWfdm+n6HhL1
-	 O4k5zOXY6fhxZBUangotFmW6iIoOzswDijGB2zAoGNHozd4hVqTDyGBx6DpHmp2tYh
-	 4a7InW4QYFpJwxpUg8/4mnRAYBeVDBo56hQfX9Zb+DWYaGi04Bxwr+7QisPMjt+DhP
-	 aevMYGlwf47OuaNdwhMbd3YGLBnJZzwUFBKSfunBK2C1zmgbqAf1gX4hLd+LFDo3bY
-	 nTJdiKDGIZZTg==
+	s=default; t=1689262276;
+	bh=myuqOidhID8FxiMkmU+I44nHyFNUBaySPWGLrMtbgn4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Ad9/NaI4ofxMEHDGBbu92B9L3CNhBaq0+WW+Dv79oniuHKbTxA2+TsD1TM+atnxYc
+	 uOEYxC6Zwv+kwhYhj9IsrDmBPe+ZnkYvip03RIumiFXSUbZrhQjYibLPWoGls8cfUc
+	 us7WARsOTrye8dJw+Y/TbRXvCkt9GKHxSeJBD1qYmlFCtYXoVhluibjmDxclxC3u//
+	 MSyF1S7ozMMax7YETjcBk9UtDdbU1bZGRLQhozsJrZZIZf2bOXR+EEPsWlIFbIpEYU
+	 +kdUKES5yI2B7wwerZUj8A9pLd6wKz7b+uBqc0v/jV3cOB+dT8/QUCU2DQ5SbrTqtB
+	 xL32qSpDxg5uw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jd2hpnTps7v4; Thu, 13 Jul 2023 15:13:38 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p3lyjpkD7duo; Thu, 13 Jul 2023 15:31:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D59760BA4;
-	Thu, 13 Jul 2023 15:13:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D59760BA4
+	by smtp1.osuosl.org (Postfix) with ESMTP id B089B83D16;
+	Thu, 13 Jul 2023 15:31:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B089B83D16
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 48B241BF841
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:13:33 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D998F1BF841
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:31:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 20FF041761
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:13:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20FF041761
+ by smtp3.osuosl.org (Postfix) with ESMTP id B16D460BDE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:31:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B16D460BDE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zYzplp3j--SF for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Jul 2023 15:13:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GN3AjNR8KOQj for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jul 2023 15:31:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 442F74174E
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 442F74174E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:13:32 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="431383766"
-X-IronPort-AV: E=Sophos;i="6.01,203,1684825200"; d="scan'208";a="431383766"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2023 08:13:21 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3D25860B4E
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3D25860B4E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jul 2023 15:31:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="365260594"
+X-IronPort-AV: E=Sophos;i="6.01,203,1684825200"; d="scan'208";a="365260594"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jul 2023 08:31:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="725329416"
-X-IronPort-AV: E=Sophos;i="6.01,203,1684825200"; d="scan'208";a="725329416"
-Received: from unknown (HELO localhost.localdomain) ([10.237.112.144])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2023 08:13:19 -0700
-Date: Thu, 13 Jul 2023 17:13:15 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <ZLAUi6z/UauMoIWI@localhost.localdomain>
-References: <20230712222936.1048751-1-jacob.e.keller@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="715979547"
+X-IronPort-AV: E=Sophos;i="6.01,203,1684825200"; d="scan'208";a="715979547"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga007.jf.intel.com with ESMTP; 13 Jul 2023 08:31:05 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id C58543580B;
+ Thu, 13 Jul 2023 16:31:04 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 13 Jul 2023 17:29:48 +0200
+Message-Id: <20230713152948.31289-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230712222936.1048751-1-jacob.e.keller@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689261212; x=1720797212;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=0x2fcCUFINc1C1mkY2r3qNh4HcrZY1bdew3XjYJ1VRM=;
- b=RPHe0HrguB5/xDbeMW/XCkJVEpVAUGkoS51h44xjTQ0w61r7946noI5I
- i6NSaouRbRjjjTU+kfic/ypMF4PJGVPaxIqUrHTaWQjuzr20K3gEjNsd7
- 0Kter7aNnbAC4q3sKLY1L9J/I5+NksR+LAxtH/RJO2hKmnaZQO+7emYqS
- Yg206f0TarXm35nHvI6xIbcSIKyzbXdXKnID61RBmKmhBu1BAiCi+6ws2
- D5h8uD3Tc3BNMKD1gX/EYIp1cotTh62sk95hKxNEN7mwwFhBGQvX0Ow9P
- 0YHDLQmDYLPcbtuVlWN45ofKIglqGlIohZuMeoNPL47oQajWGe/BcCj5f
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1689262268; x=1720798268;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=/Fv4rK9G7IiR3Z1tzAG0nP1ZM0M+bsTL1qQMTfSfZN4=;
+ b=juAxh/vBPWJDY8Cusiui98f6/tCicH9TXRU+rrBzUt8FohPZ+ZNNDaVZ
+ ePd9EMDM81ien+O3+LthFGyZnfN404Ask8s6RzqR1J2jJNANQvRmtbX+r
+ IeFxeKz/wwnQpxjdJt5fH8iYuk2zkCUG/xeNOyZ+SG8rd2PtK7Zf5x/cc
+ YJLCLwHxXzLVWGOlBAv+F5sUIftrJtg6fpCBKNCXLXuhYOicdmEELObnP
+ RuA5XI0iosgVkTfUdf+Ft0Kb3GqYm0YgIP36vn4piWP2gBSO+PtYbelXz
+ A81S0sgO7IN+6SOXEYs6XsF7SU5WBKLsBavCdVhQ/Uy4ujfj2vL7eaTnO
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RPHe0Hrg
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ice: replace
- ice_vf_recreate_vsi() with ice_vf_reconfig_vsi()
+ header.a=rsa-sha256 header.s=Intel header.b=juAxh/vB
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Fix bridge port vlan setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,77 +94,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Anthony Nguyen <anthony.l.nguyen@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- przemyslaw.kitszel@intel.com
+Cc: anthony.l.nguyen@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 12, 2023 at 03:29:36PM -0700, Jacob Keller wrote:
-> The ice_vf_create_vsi() function and its VF ops helper introduced by commit
-> a4c785e8162e ("ice: convert vf_ops .vsi_rebuild to .create_vsi") are used
-> during an individual VF reset to re-create the VSI. This was done in order
-> to ensure that the VSI gets properly reconfigured within the hardware.
-> 
-> This is somewhat heavy handed as we completely release the VSI memory and
-> structure, and then create a new VSI. This can also potentially force a
-> change of the VSI index as we will re-use the first open slot in the VSI
-> array which may not be the same.
-> 
-> As part of implementing devlink reload, commit 6624e780a577 ("ice: split
-> ice_vsi_setup into smaller functions") split VSI setup into smaller
-> functions, introducing both ice_vsi_cfg() and ice_vsi_decfg() which can be
-> used to configure or deconfigure an existing software VSI structure.
-> 
-> Instead of completely removing the VSI and adding a new one with the
-> .create_vsi() VF operation, simply perform a reconfiguration of the VSI to
-> configure its new parameters.
-> 
-> Call ice_vsi_decfg() to remove current VSI configuration data. Call
-> ice_vsi_cfg() to reconfigure the VSI with all new configuration to match
-> the modified VF configuration data.
-> 
-> This *does not* remove the VSI from the hardware tables, as that only
-> happens if the VSI is actually fully removed via the ice_free_vsi()
-> function. ice_vsi_decfg() only deconfigures but does not remove the VSI
-> from the switch tables completely.
-> 
-> This new operation does not re-create the VSI, so rename it to
-> ice_vf_reconfig_vsi().
-> 
-> The new approach can safely share the exact same flow for both SR-IOV VFs
-> as well as the Scalable IOV VFs being worked on. This uses less code, is a
-> better abstraction, and is less invasive than the previous remove and
-> re-add cycle.
-> 
-> Co-developed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> ---
-> Changes since v2:
-> * Switch to ICE_VSI_FLAG_NO_INIT to avoid leaking the VSI in firwmare
-> * Remove now unnecessary update of the VSI number
-> 
-> Thanks to Michal for pointing this out and suggesting the fix. I've added
-> him as Co-developed-by for that reason.
-> 
->  drivers/net/ethernet/intel/ice/ice_sriov.c  | 19 --------------
->  drivers/net/ethernet/intel/ice/ice_vf_lib.c | 28 +++++++++++++--------
->  drivers/net/ethernet/intel/ice/ice_vf_lib.h |  1 -
->  3 files changed, 18 insertions(+), 30 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> index 1f66914c7a20..ab96a5596d09 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> @@ -733,24 +733,6 @@ static void ice_sriov_clear_reset_trigger(struct ice_vf *vf)
->  	ice_flush(hw);
->  }
+vlan_ops->del_vlan call in ice_eswitch_br_clear_pvid needs a
+pointer to the ice_vlan struct but right now we are calling it with
+u16 vlan id as the second arg.
 
-Looks good, thanks
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+Note for Tony: Please, squash it with the
+"[PATCH iwl-next v6 10/12] ice: implement bridge port vlan"[1].
+
+[1]https://lore.kernel.org/netdev/20230712110337.8030-11-wojciech.drewek@intel.com/
+---
+ drivers/net/ethernet/intel/ice/ice_eswitch_br.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+index 673ba3125166..cc7357ed6e5f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+@@ -580,11 +580,12 @@ ice_eswitch_br_vlan_filtering_set(struct ice_esw_br *bridge, bool enable)
+ static void
+ ice_eswitch_br_clear_pvid(struct ice_esw_br_port *port)
+ {
++	struct ice_vlan port_vlan = ICE_VLAN(ETH_P_8021Q, port->pvid, 0);
+ 	struct ice_vsi_vlan_ops *vlan_ops;
+ 
+ 	vlan_ops = ice_get_compat_vsi_vlan_ops(port->vsi);
+ 
+-	vlan_ops->del_vlan(port->vsi, port->pvid);
++	vlan_ops->del_vlan(port->vsi, &port_vlan);
+ 	vlan_ops->clear_port_vlan(port->vsi);
+ 
+ 	ice_vf_vsi_disable_port_vlan(port->vsi);
+-- 
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
