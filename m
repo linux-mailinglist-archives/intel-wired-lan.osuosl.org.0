@@ -1,86 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4E16753997
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jul 2023 13:38:46 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F66B753A2A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jul 2023 13:50:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2C5EF417EF;
-	Fri, 14 Jul 2023 11:38:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C5EF417EF
+	by smtp4.osuosl.org (Postfix) with ESMTP id 42D604220D;
+	Fri, 14 Jul 2023 11:50:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 42D604220D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689334725;
-	bh=E85hNQDcqXh9dKBYRABBE5WYYxSkmoWV7Jm7W+8F2RA=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=oexadwUMaQ+IjpcJWwtaomvcR8V98sm9QBuRxb9jjIEv+Xfk4vnb31qLZwo7xirLK
-	 Wn1y4pOzhpCTlMuwjDKc9TUASEKFO/Tp/mg4ShZeBCQVtZSQkl/uJlFE2uTjEIidZ6
-	 7CA4Z0NVrpU/+kM1CuQUrKP8O6HlGLR9c3F9vhTq/1yVxLbkDZiRpOgzRJCiqEdHTD
-	 hvWQ+qAxk8kVpEaINVugSHeQkmFpuIZk0hHQfT0pTST0YlVX3Xs0abuNpFjS3mOZqA
-	 iEd3598FVDAeWqoztxJ/l4zdRHibg6tFbRW/w8lGRiCxP5FqXdLNytB9edKpNy7QN0
-	 DGl6QMehL1E0w==
+	s=default; t=1689335456;
+	bh=/fZTjMDOjavI77gL2fn54hgAbWWXX99AVWfTbcT6ZWQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=zwVfL2eRaxOVk+dWdmaxO4cT8oFm1VQeEX+RnUDSY9mmk48pQN+mVHSM1ZmrwRbMT
+	 6AhWRv8jMlAoUck4kYQPFR+HL/T8wDV2JkJFSbFGV55pI48Ve7m0TFZ1e1FQ03a5Xb
+	 UNJQEOtB4/ybfKMOtQ6f1NGyLjTSR5LEwpkzCCXjz2VvYK8GTtOGicjI45bp8jyUOZ
+	 DMk6zZWicbdiAnFsfh4vGv7cEzBJsrR+bkGnZJCyVyGSOvpQ9NO1fLb68pyroIzZmU
+	 mBQUYmmRod4Wo5xVw4a4111cz15RM3kUZ3xQw8vGAelbseyoR1BUSemvVGaBisMnOl
+	 EaEvpcZprBDsg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kqpyzvDN8i_h; Fri, 14 Jul 2023 11:38:44 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sDy1mMQRs1kR; Fri, 14 Jul 2023 11:50:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AE92A402D7;
-	Fri, 14 Jul 2023 11:38:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE92A402D7
+	by smtp4.osuosl.org (Postfix) with ESMTP id A24FD4220B;
+	Fri, 14 Jul 2023 11:50:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A24FD4220B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0AC0F1BF3F4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:38:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C4A11BF3F4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:50:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D730361430
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:38:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D730361430
+ by smtp1.osuosl.org (Postfix) with ESMTP id 64F3A841D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:50:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 64F3A841D6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L3d_yEYeSHtP for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Jul 2023 11:38:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cogYmIg1MvLj for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Jul 2023 11:50:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D61C960B06
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D61C960B06
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:38:37 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="365492119"
-X-IronPort-AV: E=Sophos;i="6.01,205,1684825200"; d="scan'208";a="365492119"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jul 2023 04:38:32 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40B0E83C12
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 40B0E83C12
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 11:50:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="369004077"
+X-IronPort-AV: E=Sophos;i="6.01,205,1684825200"; d="scan'208";a="369004077"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jul 2023 04:50:35 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="787828058"
-X-IronPort-AV: E=Sophos;i="6.01,205,1684825200"; d="scan'208";a="787828058"
-Received: from lkp-server01.sh.intel.com (HELO c544d7fc5005) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 14 Jul 2023 04:38:31 -0700
-Received: from kbuild by c544d7fc5005 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qKH82-0007PB-1p
- for intel-wired-lan@lists.osuosl.org; Fri, 14 Jul 2023 11:38:30 +0000
-Date: Fri, 14 Jul 2023 19:37:36 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202307141934.aM2Je5ee-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="722375530"
+X-IronPort-AV: E=Sophos;i="6.01,205,1684825200"; d="scan'208";a="722375530"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga002.jf.intel.com with ESMTP; 14 Jul 2023 04:50:32 -0700
+Received: from pelor.igk.intel.com (pelor.igk.intel.com [10.123.220.13])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 5764C35804;
+ Fri, 14 Jul 2023 12:50:31 +0100 (IST)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 14 Jul 2023 07:47:21 -0400
+Message-Id: <20230714114721.335526-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689334717; x=1720870717;
- h=date:from:to:subject:message-id;
- bh=2S/c91eGHgQ9/k+chY5J8N4s2eR3tCiSutwKgWm9OQE=;
- b=ZMbX422Ptr61eoIS203xa8X5pfVdPyJAJae+DwrVfLS0j8blFhvC3fWN
- Q/S3wzQ7seJ+PIbnFvvAay8dRG/xWkKdCLvSQWxGZp16qGCyPzv0JE8tJ
- 2Ms7tZZr9QQ7TaRrprkWN387Z6OHxnLsORCYrYQnUCZRNd1zLg9JoxvL8
- NSaRb+zQNU+AvIeHgX1PIbb5cF+CpX+inGCAGnmLJvlcGeTBvASoOfS1R
- tmi/LPiWvXf0+yU+RAYJ2ZyhK3Z5mdmKG/S4kxnt2s0nLNQaPI349oP5B
- XAcHEmcreJNclPhbx5cz/BFSFovASe0Egxorcq5btUxmsY3EprH8BORZB
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1689335448; x=1720871448;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=O1F3TFTkGCUGmeShW0f4E1sxlThzJHkxTAUFXviFs/s=;
+ b=D0FATQ6D3aCuBiM/YWeOmnu/P7jhZyLOL84dID5cSWXq33qdg/sJE3fv
+ MocJiL/0t/n+/t27Y1octdh0rCNPP0pHtIIBdhaU/aE9lgdDGcKVxgsLf
+ Sm2tFI/37oE7MT6INtUaVWatRbx9uZwdNu0HJBPVAjCkjEa4jNL3oawsZ
+ KSNSAot7picL7c3mF7jQeWw/lrliVIV9tOIeMhvma9mhzzoeR9SEX61bX
+ a65NRb7LHuxG4ByjF96GeBUEvUvfWGRJ7eskJ3sHF49X7tIMUs5IxIhCK
+ rcdrerR1w+faVVEyU09uHeHI2zaMHemw/L6Q9UHyVU5/QPHvkqJog9qE/
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZMbX422P
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 264956015bbc6df23b487674fbc8d4f2b8316d94
+ header.a=rsa-sha256 header.s=Intel header.b=D0FATQ6D
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Reset stats on queues num
+ change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,146 +95,116 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Benjamin Mikailenko <benjamin.mikailenko@intel.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 264956015bbc6df23b487674fbc8d4f2b8316d94  ice: Fix memory management in ice_ethtool_fdir.c
+Reset VSI stats on queues number change.
 
-elapsed time: 720m
+Commit 288ecf491b16 ("ice: Accumulate ring statistics over reset")
+implemented functionality for interface statistics to persist over reset,
+but it left stats persisting over queue count reconfiguration.
 
-configs tested: 118
-configs skipped: 4
+Following scenario is fixed here:
+ # Observe statistics for Tx/Rx queues
+ethtool -S ethX
+ # change number of queues
+ethtool -L ethX combined 10
+ # Observe statistics for Tx/Rx queues (after reset)
+ethtool -S ethX
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Ben has left a note where to place the VSI stats reset,
+what made this fix much easier to do.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                        nsimosci_defconfig   gcc  
-arc                  randconfig-r043-20230713   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                       aspeed_g5_defconfig   gcc  
-arm                        clps711x_defconfig   gcc  
-arm                                 defconfig   gcc  
-arm                            mmp2_defconfig   clang
-arm                  randconfig-r006-20230713   gcc  
-arm                  randconfig-r013-20230713   clang
-arm                  randconfig-r046-20230713   clang
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r036-20230713   clang
-csky                                defconfig   gcc  
-csky                 randconfig-r016-20230713   gcc  
-hexagon              randconfig-r041-20230713   clang
-hexagon              randconfig-r045-20230713   clang
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r004-20230713   clang
-i386         buildonly-randconfig-r005-20230713   clang
-i386         buildonly-randconfig-r006-20230713   clang
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230713   clang
-i386                 randconfig-i002-20230713   clang
-i386                 randconfig-i003-20230713   clang
-i386                 randconfig-i004-20230713   clang
-i386                 randconfig-i005-20230713   clang
-i386                 randconfig-i006-20230713   clang
-i386                 randconfig-i011-20230714   clang
-i386                 randconfig-i012-20230714   clang
-i386                 randconfig-i013-20230714   clang
-i386                 randconfig-i014-20230714   clang
-i386                 randconfig-i015-20230714   clang
-i386                 randconfig-i016-20230714   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r001-20230713   gcc  
-loongarch            randconfig-r023-20230713   gcc  
-loongarch            randconfig-r026-20230713   gcc  
-loongarch            randconfig-r033-20230713   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r002-20230713   gcc  
-m68k                 randconfig-r003-20230713   gcc  
-m68k                 randconfig-r004-20230713   gcc  
-m68k                 randconfig-r015-20230713   gcc  
-microblaze           randconfig-r031-20230713   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                malta_qemu_32r6_defconfig   clang
-mips                          rm200_defconfig   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r025-20230713   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc              randconfig-r022-20230713   gcc  
-powerpc              randconfig-r032-20230713   clang
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv             nommu_k210_sdcard_defconfig   gcc  
-riscv                randconfig-r042-20230713   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r011-20230713   gcc  
-s390                 randconfig-r035-20230713   clang
-s390                 randconfig-r044-20230713   gcc  
-sh                               allmodconfig   gcc  
-sh                           se7343_defconfig   gcc  
-sh                   sh7724_generic_defconfig   gcc  
-sh                        sh7763rdp_defconfig   gcc  
-sh                             shx3_defconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                   randconfig-r024-20230713   clang
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-r001-20230713   clang
-x86_64       buildonly-randconfig-r002-20230713   clang
-x86_64       buildonly-randconfig-r003-20230713   clang
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-r005-20230713   clang
-x86_64               randconfig-r012-20230713   gcc  
-x86_64               randconfig-x001-20230713   gcc  
-x86_64               randconfig-x002-20230713   gcc  
-x86_64               randconfig-x003-20230713   gcc  
-x86_64               randconfig-x004-20230713   gcc  
-x86_64               randconfig-x005-20230713   gcc  
-x86_64               randconfig-x006-20230713   gcc  
-x86_64               randconfig-x011-20230713   clang
-x86_64               randconfig-x012-20230713   clang
-x86_64               randconfig-x013-20230713   clang
-x86_64               randconfig-x014-20230713   clang
-x86_64               randconfig-x015-20230713   clang
-x86_64               randconfig-x016-20230713   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa               randconfig-r034-20230713   gcc  
+Note that newly allocated structs (case of num_txq > prev_txq) don't
+need zeroing.
 
+Fixes: 288ecf491b16 ("ice: Accumulate ring statistics over reset")
+Suggested-by: Benjamin Mikailenko <benjamin.mikailenko@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c | 33 ++++++++++++++++++++----
+ 1 file changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 00e3afd507a4..09942bdea25d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3130,13 +3130,15 @@ ice_vsi_rebuild_set_coalesce(struct ice_vsi *vsi,
+ }
+ 
+ /**
+- * ice_vsi_realloc_stat_arrays - Frees unused stat structures
++ * ice_vsi_adjust_stat_arrays - Adjust VSI stat structures
+  * @vsi: VSI pointer
+  * @prev_txq: Number of Tx rings before ring reallocation
+  * @prev_rxq: Number of Rx rings before ring reallocation
++ *
++ * Zero stat structures before reuse, free redundant ones.
+  */
+ static void
+-ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
++ice_vsi_adjust_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
+ {
+ 	struct ice_vsi_stats *vsi_stat;
+ 	struct ice_pf *pf = vsi->back;
+@@ -3149,7 +3151,17 @@ ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
+ 
+ 	vsi_stat = pf->vsi_stats[vsi->idx];
+ 
+-	if (vsi->num_txq < prev_txq) {
++	if (vsi->num_txq != prev_txq) {
++		/* first, reset structs that we will reuse */
++		int reuse_q_cnt = min_t(int, vsi->num_txq, prev_txq);
++
++		for (i = 0; i < reuse_q_cnt; i++) {
++			struct ice_ring_stats *rs = vsi_stat->tx_ring_stats[i];
++
++			if (rs)
++				memset(rs, 0, sizeof(*rs));
++		}
++		/* second, free redundant ones */
+ 		for (i = vsi->num_txq; i < prev_txq; i++) {
+ 			if (vsi_stat->tx_ring_stats[i]) {
+ 				kfree_rcu(vsi_stat->tx_ring_stats[i], rcu);
+@@ -3158,7 +3170,16 @@ ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi, int prev_txq, int prev_rxq)
+ 		}
+ 	}
+ 
+-	if (vsi->num_rxq < prev_rxq) {
++	/* apply very same logic as for tx */
++	if (vsi->num_rxq != prev_rxq) {
++		int reuse_q_cnt = min_t(int, vsi->num_rxq, prev_rxq);
++
++		for (i = 0; i < reuse_q_cnt; i++) {
++			struct ice_ring_stats *rs = vsi_stat->rx_ring_stats[i];
++
++			if (rs)
++				memset(rs, 0, sizeof(*rs));
++		}
+ 		for (i = vsi->num_rxq; i < prev_rxq; i++) {
+ 			if (vsi_stat->rx_ring_stats[i]) {
+ 				kfree_rcu(vsi_stat->rx_ring_stats[i], rcu);
+@@ -3222,7 +3243,9 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+ 		return ice_schedule_reset(pf, ICE_RESET_PFR);
+ 	}
+ 
+-	ice_vsi_realloc_stat_arrays(vsi, prev_txq, prev_rxq);
++	ice_vsi_adjust_stat_arrays(vsi, prev_txq, prev_rxq);
++	if (vsi->num_txq != prev_txq || vsi->num_rxq != prev_rxq)
++		vsi->stat_offsets_loaded = false;
+ 
+ 	ice_vsi_rebuild_set_coalesce(vsi, coalesce, prev_num_q_vectors);
+ 	kfree(coalesce);
+
+base-commit: 9d23aac8a85f69239e585c8656c6fdb21be65695
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
