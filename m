@@ -1,86 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A736753057
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jul 2023 06:06:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3CE87530E0
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jul 2023 07:06:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9436C83EFE;
-	Fri, 14 Jul 2023 04:06:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9436C83EFE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 397D040B96;
+	Fri, 14 Jul 2023 05:06:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 397D040B96
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689307591;
-	bh=Wyn5rul7kSOAAdonM1i2jclNACpiMQG86MPXDIh94jQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=qYhdKU/CWFxFpNc6KXdqaEUm9cQ5+6oFnpA+EtoEOm11mnN6p3VUbQuev5YilIaV9
-	 io/HvGW0K5WHqbqznqP9nESg/N6qU5IPnk/tEpvK9inty25MzDuVeoBneXSpg0JJYD
-	 ud5QM2qJMb7vlQ0SDkTqY+I7+OSL++im97Ebh3ci5jw2JcJy4yG42ByTcYDQCyC54B
-	 CSI9fR2vtsLJk8dUBte7tLM6hCS6EQrLG7BybgdA1aLot+9/qM8JvBZuf5Q7jNgTVh
-	 BkjuTIU7tN3KJUgTDoxe6ekmzmaXenv4chskakpLfxfMZEKmXkE3IZM7qF/2gXTfAt
-	 qEtsriZ9NgxlA==
+	s=default; t=1689311204;
+	bh=TqJrXq/5na9dV2N10CCZBbvG8pDB0Sve95C1fQqo8j0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=qd7waTrZxpah59zMbQ3146KypfFpKBU9FWsT9VIQt+kUk0LDMO1qSSH0FiKox6E4p
+	 2fNVWJIcI7+7Ytrmc5jrKx3fVUosDu0ySTEtSPYeUEhU4fKzSi1vyqc3jCavGsUB5f
+	 ChsRxavxfAZBes89eKYgHzrOx1KK670l5vJT9XafSM22S99R50Nm1R+7LjxAcyXXWJ
+	 T9zo6YbvKJF7efFOGUUMEBOmolGUziGI9cGJPhI/mIQv4Nfy9n8i1CmwRNS5gbvAyt
+	 A831J9KN2L5Mzu3kT1dkBoQjT48PYH4BGXPpKWZVe43L8qwoMB/9Ty23/C26HiSZ8q
+	 ywNv16Q9QdW5g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SRZ-voWE-H0u; Fri, 14 Jul 2023 04:06:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fJWrEkQDpUhs; Fri, 14 Jul 2023 05:06:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 36BC683EF1;
-	Fri, 14 Jul 2023 04:06:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 36BC683EF1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 563CA403A9;
+	Fri, 14 Jul 2023 05:06:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 563CA403A9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 35E6C1BF384
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 04:06:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5BA771BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 05:06:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0C21E83EF1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 04:06:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C21E83EF1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3DBDE42074
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 05:06:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3DBDE42074
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YvvwkQxt8tVM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Jul 2023 04:06:23 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tUvHA_EGkc3f for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Jul 2023 05:06:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE41A83EF0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AE41A83EF0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 04:06:23 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="396195058"
-X-IronPort-AV: E=Sophos;i="6.01,204,1684825200"; d="scan'208";a="396195058"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jul 2023 21:06:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10770"; a="835883215"
-X-IronPort-AV: E=Sophos;i="6.01,204,1684825200"; d="scan'208";a="835883215"
-Received: from lkp-server01.sh.intel.com (HELO c544d7fc5005) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 13 Jul 2023 21:06:21 -0700
-Received: from kbuild by c544d7fc5005 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qKA4T-0007AC-18
- for intel-wired-lan@lists.osuosl.org; Fri, 14 Jul 2023 04:06:21 +0000
-Date: Fri, 14 Jul 2023 12:06:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202307141259.9eoPbKBY-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689307583; x=1720843583;
- h=date:from:to:subject:message-id;
- bh=tveO1qxyngXt6vxx7yMMhRKuXj0AMtE2X/M2UCIcHyA=;
- b=A97FCSGO6K8Szw0s8iBOyjeqjCuGuKsDMcXju+W/iWKudkmkAfmBMtYo
- aP3viv0vAmVTembYPnfwUUgsL+RTmzvnaozk3667zbfVrg7aCSzoJimxL
- e9jn9Z9UinSJTM+r5mFiTIjmCrq0lYUbZ4aairkHYSPQcpjDMy6VqRc51
- Zt9XeXgBrdomeDhI3iq9Kpi6VfutHgde9XMdEPCJGXCYmMp2apXyeqonG
- y+Q9tKmO8He/31ehmaqtxyoduhTPNs5rYEsXlKG3XCG1v9gN7FfTgQws5
- 7nZEgR7XUyCINAfqYFUR8//hHG8nXG3sLh1m7602e/uP1aZO8RATgCArV
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=A97FCSGO
-Subject: [Intel-wired-lan] [tnguy-net-queue:main] BUILD SUCCESS
- 9d23aac8a85f69239e585c8656c6fdb21be65695
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ADB0442071
+Received: from smtp-relay-canonical-1.canonical.com
+ (smtp-relay-canonical-1.canonical.com [185.125.188.121])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id ADB0442071
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jul 2023 05:06:34 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.101.196.174])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id A192A41FA6; 
+ Fri, 14 Jul 2023 05:06:26 +0000 (UTC)
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+To: jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com
+Date: Fri, 14 Jul 2023 13:05:41 +0800
+Message-Id: <20230714050541.2765246-1-kai.heng.feng@canonical.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=canonical.com; s=20210705; t=1689311192;
+ bh=543VXLNDHewMkAW8Fxh7NJPOOuaXB9yB33hQ8fq+X6M=;
+ h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+ b=hO+kNiwYmKr5h8NUwKnDxVEWXflOE2xSUUVTHpVe0MKbJwuGSxXj/8UQaRTQxHvNx
+ xP6knJI/UXUst1C1Z0y6saJ/F5btenhxAC0bkBlZ/resxoVeb08et+UNSJowZpQYW0
+ EbKXYMS0o3FcIRq5BymTmVLSLE6Sb538dzg2lseGecy16Zax8t3UoszhDUHMjSwyGY
+ 3UzdIDeNqqGexTL+sgvnEWe7iO3oe2QFF1VYKNhTdvi01ucm4wCTDwxTBdX4kbdjRE
+ 5kW+/Gk9m8TT8mLPL4A4QbsyN1XCI8P2P29S6yqBy4TIMGZAuPaK0BlqmdTXX8SqIV
+ eMFJX8GfSZK9g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=hO+kNiwY
+Subject: [Intel-wired-lan] [PATCH v2] igc: Ignore AER reset when device is
+ suspended
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,201 +87,167 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Tony Luck <tony.luck@intel.com>, Kees Cook <keescook@chromium.org>,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "Guilherme G . Piccoli" <gpiccoli@igalia.com>,
+ Eric Dumazet <edumazet@google.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>, intel-wired-lan@lists.osuosl.org,
+ linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git main
-branch HEAD: 9d23aac8a85f69239e585c8656c6fdb21be65695  Merge branch 'net-sched-fixes-for-sch_qfq'
+When a system that connects to a Thunderbolt dock equipped with I225,
+like HP Thunderbolt Dock G4, I225 stops working after S3 resume:
 
-elapsed time: 1100m
+[  606.527643] pcieport 0000:00:1d.0: AER: Multiple Corrected error received: 0000:00:1d.0
+[  606.527791] pcieport 0000:00:1d.0: PCIe Bus Error: severity=Corrected, type=Transaction Layer, (Receiver ID)
+[  606.527795] pcieport 0000:00:1d.0:   device [8086:7ab0] error status/mask=00008000/00002000
+[  606.527800] pcieport 0000:00:1d.0:    [15] HeaderOF
+[  606.527806] pcieport 0000:00:1d.0: AER:   Error of this Agent is reported first
+[  606.527853] pcieport 0000:07:04.0: PCIe Bus Error: severity=Corrected, type=Data Link Layer, (Receiver ID)
+[  606.527856] pcieport 0000:07:04.0:   device [8086:0b26] error status/mask=00000080/00002000
+[  606.527861] pcieport 0000:07:04.0:    [ 7] BadDLLP
+[  606.527931] pcieport 0000:00:1d.0: AER: Multiple Uncorrected (Non-Fatal) error received: 0000:00:1d.0
+[  606.528064] pcieport 0000:00:1d.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
+[  606.528068] pcieport 0000:00:1d.0:   device [8086:7ab0] error status/mask=00100000/00004000
+[  606.528072] pcieport 0000:00:1d.0:    [20] UnsupReq               (First)
+[  606.528075] pcieport 0000:00:1d.0: AER:   TLP Header: 34000000 0a000052 00000000 00000000
+[  606.528079] pcieport 0000:00:1d.0: AER:   Error of this Agent is reported first
+[  606.528098] pcieport 0000:04:01.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
+[  606.528101] pcieport 0000:04:01.0:   device [8086:1136] error status/mask=00300000/00000000
+[  606.528105] pcieport 0000:04:01.0:    [20] UnsupReq               (First)
+[  606.528107] pcieport 0000:04:01.0:    [21] ACSViol
+[  606.528110] pcieport 0000:04:01.0: AER:   TLP Header: 34000000 04000052 00000000 00000000
+[  606.528187] thunderbolt 0000:05:00.0: AER: can't recover (no error_detected callback)
+[  606.558729] ------------[ cut here ]------------
+[  606.558729] igc 0000:38:00.0: disabling already-disabled device
+[  606.558738] WARNING: CPU: 0 PID: 209 at drivers/pci/pci.c:2248 pci_disable_device+0xf6/0x150
+[  606.558743] Modules linked in: rfcomm ccm cmac algif_hash algif_skcipher af_alg usbhid bnep snd_hda_codec_hdmi snd_ctl_led snd_hda_codec_realtek joydev snd_hda_codec_generic ledtrig_audio binfmt_misc snd_sof_pci_intel_tgl snd_sof_intel_hda_common snd_soc_acpi_intel_match snd_soc_acpi snd_soc_hdac_hda snd_sof_pci snd_sof_xtensa_dsp x86_pkg_temp_thermal snd_sof_intel_hda_mlink intel_powerclamp snd_sof_intel_hda snd_sof snd_sof_utils snd_hda_ext_core snd_soc_core snd_compress snd_hda_intel coretemp snd_intel_dspcfg snd_hda_codec snd_hwdep kvm_intel snd_hda_core iwlmvm nls_iso8859_1 i915 snd_pcm kvm mac80211 crct10dif_pclmul crc32_pclmul i2c_algo_bit uvcvideo ghash_clmulni_intel snd_seq mei_pxp drm_buddy videobuf2_vmalloc sch_fq_codel sha512_ssse3 libarc4 aesni_intel mei_hdcp videobuf2_memops btusb uvc crypto_simd drm_display_helper snd_seq_device btrtl videobuf2_v4l2 cryptd snd_timer intel_rapl_msr btbcm drm_kms_helper videodev iwlwifi snd btintel rapl input_leds wmi_bmof hid_sensor_
+ rotation btmtk hid_sensor_accel_3d
+[  606.558778]  hid_sensor_gyro_3d hid_sensor_als syscopyarea videobuf2_common intel_cstate serio_raw soundcore bluetooth hid_sensor_trigger thunderbolt sysfillrect cfg80211 mc mei_me industrialio_triggered_buffer sysimgblt processor_thermal_device_pci hid_sensor_iio_common hid_multitouch ecdh_generic processor_thermal_device kfifo_buf cec 8250_dw mei ecc processor_thermal_rfim industrialio rc_core processor_thermal_mbox ucsi_acpi processor_thermal_rapl ttm typec_ucsi intel_rapl_common msr typec video int3403_thermal int340x_thermal_zone int3400_thermal intel_hid wmi acpi_pad acpi_thermal_rel sparse_keymap acpi_tad mac_hid parport_pc ppdev lp parport drm ramoops reed_solomon efi_pstore ip_tables x_tables autofs4 hid_sensor_custom hid_sensor_hub intel_ishtp_hid spi_pxa2xx_platform hid_generic dw_dmac dw_dmac_core rtsx_pci_sdmmc e1000e i2c_i801 igc nvme i2c_smbus intel_lpss_pci rtsx_pci intel_ish_ipc nvme_core intel_lpss xhci_pci i2c_hid_acpi intel_ishtp idma64 xhci_pci_renesas i2c_hid
+  hid pinctrl_alderlake
+[  606.558809] CPU: 0 PID: 209 Comm: irq/124-aerdrv Not tainted 6.4.0-rc7+ #119
+[  606.558811] Hardware name: HP HP ZBook Fury 16 G9 Mobile Workstation PC/89C6, BIOS U96 Ver. 01.07.01 04/06/2023
+[  606.558812] RIP: 0010:pci_disable_device+0xf6/0x150
+[  606.558814] Code: 4d 85 e4 75 07 4c 8b a3 d0 00 00 00 48 8d bb d0 00 00 00 e8 5c f5 1f 00 4c 89 e2 48 c7 c7 f8 e6 37 ae 48 89 c6 e8 9a 3e 86 ff <0f> 0b e9 3c ff ff ff 48 8d 55 e6 be 04 00 00 00 48 89 df e8 62 0b
+[  606.558815] RSP: 0018:ffffa70040a4fca0 EFLAGS: 00010246
+[  606.558816] RAX: 0000000000000000 RBX: ffff8ac8434b2000 RCX: 0000000000000000
+[  606.558817] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[  606.558818] RBP: ffffa70040a4fcc0 R08: 0000000000000000 R09: 0000000000000000
+[  606.558818] R10: 0000000000000000 R11: 0000000000000000 R12: ffff8ac843435dd0
+[  606.558818] R13: ffff8ac84277c000 R14: 0000000000000001 R15: ffff8ac8434b2150
+[  606.558819] FS:  0000000000000000(0000) GS:ffff8acbd6a00000(0000) knlGS:0000000000000000
+[  606.558820] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  606.558821] CR2: 00007f9740ba28e8 CR3: 00000001eb43a000 CR4: 0000000000f50ef0
+[  606.558822] PKRU: 55555554
+[  606.558822] Call Trace:
+[  606.558823]  <TASK>
+[  606.558825]  ? show_regs+0x76/0x90
+[  606.558828]  ? pci_disable_device+0xf6/0x150
+[  606.558830]  ? __warn+0x91/0x160
+[  606.558832]  ? pci_disable_device+0xf6/0x150
+[  606.558834]  ? report_bug+0x1bf/0x1d0
+[  606.558838] nvme nvme0: 24/0/0 default/read/poll queues
+[  606.558837]  ? handle_bug+0x46/0x90
+[  606.558841]  ? exc_invalid_op+0x1d/0x90
+[  606.558843]  ? asm_exc_invalid_op+0x1f/0x30
+[  606.558846]  ? pci_disable_device+0xf6/0x150
+[  606.558849]  igc_io_error_detected+0x40/0x70 [igc]
+[  606.558857]  report_error_detected+0xdb/0x1d0
+[  606.558860]  ? __pfx_report_normal_detected+0x10/0x10
+[  606.558862]  report_normal_detected+0x1a/0x30
+[  606.558864]  pci_walk_bus+0x78/0xb0
+[  606.558866]  pcie_do_recovery+0xba/0x340
+[  606.558868]  ? __pfx_aer_root_reset+0x10/0x10
+[  606.558870]  aer_process_err_devices+0x168/0x220
+[  606.558871]  aer_isr+0x1d3/0x1f0
+[  606.558874]  ? __pfx_irq_thread_fn+0x10/0x10
+[  606.558876]  irq_thread_fn+0x29/0x70
+[  606.558877]  irq_thread+0xee/0x1c0
+[  606.558878]  ? __pfx_irq_thread_dtor+0x10/0x10
+[  606.558879]  ? __pfx_irq_thread+0x10/0x10
+[  606.558880]  kthread+0xf8/0x130
+[  606.558882]  ? __pfx_kthread+0x10/0x10
+[  606.558884]  ret_from_fork+0x29/0x50
+[  606.558887]  </TASK>
+[  606.558887] ---[ end trace 0000000000000000 ]---
+[  606.570223] i915 0000:00:02.0: [drm] GT0: HuC: authenticated!
+[  606.570228] i915 0000:00:02.0: [drm] GT0: GUC: submission disabled
+[  606.570231] i915 0000:00:02.0: [drm] GT0: GUC: SLPC disabled
+[  606.663042] xhci_hcd 0000:39:00.0: AER: can't recover (no error_detected callback)
+[  606.663111] pcieport 0000:00:1d.0: AER: device recovery failed
+[  606.721642] iwlwifi 0000:00:14.3: WFPM_UMAC_PD_NOTIFICATION: 0x1f
+[  606.721677] iwlwifi 0000:00:14.3: WFPM_LMAC2_PD_NOTIFICATION: 0x1f
+[  606.721687] iwlwifi 0000:00:14.3: WFPM_AUTH_KEY_0: 0x90
+[  606.721698] iwlwifi 0000:00:14.3: CNVI_SCU_SEQ_DATA_DW9: 0x0
+[  606.842877] usb 1-8: reset high-speed USB device number 3 using xhci_hcd
+[  607.048340] genirq: Flags mismatch irq 164. 00000000 (enp56s0) vs. 00000000 (enp56s0)
+[  607.050313] ------------[ cut here ]------------
+...
+[  609.064160] igc 0000:38:00.0 enp56s0: Register Dump
+[  609.064167] igc 0000:38:00.0 enp56s0: Register Name   Value
+[  609.064181] igc 0000:38:00.0 enp56s0: CTRL            081c0641
+[  609.064188] igc 0000:38:00.0 enp56s0: STATUS          40280401
+[  609.064195] igc 0000:38:00.0 enp56s0: CTRL_EXT        100000c0
+[  609.064202] igc 0000:38:00.0 enp56s0: MDIC            18017949
+[  609.064208] igc 0000:38:00.0 enp56s0: ICR             80000010
+[  609.064214] igc 0000:38:00.0 enp56s0: RCTL            04408022
+[  609.064232] igc 0000:38:00.0 enp56s0: RDLEN[0-3]      00001000 00001000 00001000 00001000
+[  609.064251] igc 0000:38:00.0 enp56s0: RDH[0-3]        00000000 00000000 00000000 00000000
+[  609.064270] igc 0000:38:00.0 enp56s0: RDT[0-3]        000000ff 000000ff 000000ff 000000ff
+[  609.064289] igc 0000:38:00.0 enp56s0: RXDCTL[0-3]     00040808 00040808 00040808 00040808
+[  609.064308] igc 0000:38:00.0 enp56s0: RDBAL[0-3]      ffc62000 fff6b000 fff6c000 fff6d000
+[  609.064326] igc 0000:38:00.0 enp56s0: RDBAH[0-3]      00000000 00000000 00000000 00000000
+[  609.064333] igc 0000:38:00.0 enp56s0: TCTL            a50400fa
+[  609.064351] igc 0000:38:00.0 enp56s0: TDBAL[0-3]      fff6d000 ffcdf000 ffce0000 ffce1000
+[  609.064369] igc 0000:38:00.0 enp56s0: TDBAH[0-3]      00000000 00000000 00000000 00000000
+[  609.064387] igc 0000:38:00.0 enp56s0: TDLEN[0-3]      00001000 00001000 00001000 00001000
+[  609.064405] igc 0000:38:00.0 enp56s0: TDH[0-3]        00000000 00000000 00000000 00000000
+[  609.064423] igc 0000:38:00.0 enp56s0: TDT[0-3]        00000004 00000000 00000000 00000000
+[  609.064441] igc 0000:38:00.0 enp56s0: TXDCTL[0-3]     00100108 00100108 00100108 00100108
+[  609.064445] igc 0000:38:00.0 enp56s0: Reset adapter
 
-configs tested: 173
-configs skipped: 10
+The issue is that the PTM requests are sending before driver resumes the
+device. Since the issue can also be observed on Windows, it's quite
+likely a firmware/hardware limitation.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+So avoid resetting the device if it's not resumed. Once the device is
+fully resumed, the device can work normally.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r032-20230713   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r043-20230713   gcc  
-arc                        vdk_hs38_defconfig   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                       aspeed_g5_defconfig   gcc  
-arm                         axm55xx_defconfig   gcc  
-arm                     davinci_all_defconfig   clang
-arm                                 defconfig   gcc  
-arm                           h3600_defconfig   gcc  
-arm                            mmp2_defconfig   clang
-arm                  randconfig-r003-20230713   gcc  
-arm                  randconfig-r011-20230713   clang
-arm                  randconfig-r012-20230713   clang
-arm                  randconfig-r021-20230713   clang
-arm                  randconfig-r046-20230713   clang
-arm                          sp7021_defconfig   clang
-arm                        spear6xx_defconfig   gcc  
-arm                           tegra_defconfig   gcc  
-arm                       versatile_defconfig   clang
-arm                        vexpress_defconfig   clang
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r011-20230713   gcc  
-arm64                randconfig-r033-20230713   clang
-csky                                defconfig   gcc  
-csky                 randconfig-r006-20230713   gcc  
-csky                 randconfig-r013-20230713   gcc  
-csky                 randconfig-r025-20230713   gcc  
-hexagon              randconfig-r004-20230713   clang
-hexagon              randconfig-r023-20230713   clang
-hexagon              randconfig-r041-20230713   clang
-hexagon              randconfig-r045-20230713   clang
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r004-20230713   clang
-i386         buildonly-randconfig-r005-20230713   clang
-i386         buildonly-randconfig-r006-20230713   clang
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230713   clang
-i386                 randconfig-i002-20230713   clang
-i386                 randconfig-i003-20230713   clang
-i386                 randconfig-i004-20230713   clang
-i386                 randconfig-i005-20230713   clang
-i386                 randconfig-i006-20230713   clang
-i386                 randconfig-i011-20230713   gcc  
-i386                 randconfig-i012-20230713   gcc  
-i386                 randconfig-i013-20230713   gcc  
-i386                 randconfig-i014-20230713   gcc  
-i386                 randconfig-i015-20230713   gcc  
-i386                 randconfig-i016-20230713   gcc  
-i386                 randconfig-r012-20230713   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r001-20230713   gcc  
-loongarch            randconfig-r005-20230713   gcc  
-loongarch            randconfig-r015-20230713   gcc  
-loongarch            randconfig-r025-20230713   gcc  
-loongarch            randconfig-r031-20230713   gcc  
-loongarch            randconfig-r035-20230713   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r002-20230713   gcc  
-m68k                 randconfig-r036-20230713   gcc  
-microblaze           randconfig-r012-20230713   gcc  
-microblaze           randconfig-r021-20230713   gcc  
-microblaze           randconfig-r033-20230713   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                        bcm63xx_defconfig   clang
-mips                     loongson1b_defconfig   gcc  
-mips                      maltaaprp_defconfig   clang
-mips                 randconfig-r005-20230713   gcc  
-mips                 randconfig-r034-20230713   gcc  
-mips                           rs90_defconfig   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r014-20230713   gcc  
-nios2                randconfig-r035-20230713   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc               randconfig-r001-20230713   gcc  
-parisc               randconfig-r004-20230713   gcc  
-parisc               randconfig-r015-20230713   gcc  
-parisc               randconfig-r022-20230713   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          g5_defconfig   clang
-powerpc                     mpc83xx_defconfig   gcc  
-powerpc              randconfig-r013-20230713   gcc  
-powerpc              randconfig-r016-20230713   gcc  
-powerpc              randconfig-r022-20230713   gcc  
-powerpc              randconfig-r026-20230713   gcc  
-powerpc              randconfig-r036-20230713   clang
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r001-20230713   clang
-riscv                randconfig-r004-20230713   clang
-riscv                randconfig-r011-20230713   gcc  
-riscv                randconfig-r031-20230713   clang
-riscv                randconfig-r042-20230713   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r003-20230713   clang
-s390                 randconfig-r044-20230713   gcc  
-sh                               allmodconfig   gcc  
-sh                 kfr2r09-romimage_defconfig   gcc  
-sh                   randconfig-r002-20230713   gcc  
-sh                   randconfig-r006-20230713   gcc  
-sh                   randconfig-r023-20230713   gcc  
-sh                   randconfig-r026-20230713   gcc  
-sh                   randconfig-r036-20230713   gcc  
-sh                          rsk7269_defconfig   gcc  
-sh                           se7705_defconfig   gcc  
-sh                           se7712_defconfig   gcc  
-sh                           sh2007_defconfig   gcc  
-sh                        sh7785lcr_defconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r022-20230713   gcc  
-sparc                randconfig-r023-20230713   gcc  
-sparc                randconfig-r034-20230713   gcc  
-sparc                       sparc64_defconfig   gcc  
-sparc64              randconfig-r013-20230713   gcc  
-sparc64              randconfig-r016-20230713   gcc  
-sparc64              randconfig-r021-20230713   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                   randconfig-r025-20230713   clang
-um                   randconfig-r032-20230713   gcc  
-um                   randconfig-r034-20230713   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-r001-20230713   clang
-x86_64       buildonly-randconfig-r002-20230713   clang
-x86_64       buildonly-randconfig-r003-20230713   clang
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-r015-20230713   gcc  
-x86_64               randconfig-r024-20230713   gcc  
-x86_64               randconfig-r031-20230713   clang
-x86_64               randconfig-x001-20230713   gcc  
-x86_64               randconfig-x002-20230713   gcc  
-x86_64               randconfig-x003-20230713   gcc  
-x86_64               randconfig-x004-20230713   gcc  
-x86_64               randconfig-x005-20230713   gcc  
-x86_64               randconfig-x006-20230713   gcc  
-x86_64               randconfig-x011-20230713   clang
-x86_64               randconfig-x012-20230713   clang
-x86_64               randconfig-x013-20230713   clang
-x86_64               randconfig-x014-20230713   clang
-x86_64               randconfig-x015-20230713   clang
-x86_64               randconfig-x016-20230713   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                generic_kc705_defconfig   gcc  
-xtensa               randconfig-r006-20230713   gcc  
-xtensa               randconfig-r014-20230713   gcc  
-xtensa               randconfig-r016-20230713   gcc  
-xtensa               randconfig-r024-20230713   gcc  
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=216850
+Reviewed-by: Guilherme G. Piccoli <gpiccoli@igalia.com>
+Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 
+---
+v2:
+ - Fix typo.
+ - Mention the product name.
+
+ drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9f93f0f4f752..8c36bbe5e428 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -7115,6 +7115,9 @@ static pci_ers_result_t igc_io_error_detected(struct pci_dev *pdev,
+ 	struct net_device *netdev = pci_get_drvdata(pdev);
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 
++	if (!pci_is_enabled(pdev))
++		return 0;
++
+ 	netif_device_detach(netdev);
+ 
+ 	if (state == pci_channel_io_perm_failure)
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
