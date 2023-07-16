@@ -1,81 +1,182 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63267754BAB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Jul 2023 21:12:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C275754D79
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Jul 2023 07:55:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB65D81DD8;
-	Sat, 15 Jul 2023 19:12:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB65D81DD8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 31367409B2;
+	Sun, 16 Jul 2023 05:55:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31367409B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689448347;
-	bh=uolC4NMExAqi64rpdmdZUO/AMKq7qVrDvDSgX7NcltU=;
-	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=UMO1IhkfFeAA66cLvLZtFBC50KInPQStjVtfmHz7gsOostwQ+wESDli/HECly622X
-	 mMHgXn7NmIfWqsJvRKZOvf7D7pKUORn10OM+VJ8j0amuaMGDegPe8PngrfYZpTtOSn
-	 El++8N/BoqC70IkWm9QF22MUk38uKaY4W7qtidRihMWkRsrzR5nhH2ZXVFcVTmt/X1
-	 IlEQGBYVQE/GXmLNoX2RyyCpg/hQWhTN12c62f6a8uMM1nrK4qcy+LS0D/GSliuQh6
-	 FJJ+ruKFe10oPxwee6fGyCWE4O3VpsEgXZewBd6UzW6LWOKEuNgSWtitYOyVGNi0fy
-	 uDA3Y8KtJS3aQ==
+	s=default; t=1689486951;
+	bh=12u71wM9yXGYzjRmV8BhFd+jU122EppLj17Xa/o8dtU=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=zg6Qqctjz1TSVBv+/R985BjTAn3SpRslvdwQjhDqsdg0szNbC7CFnrRqaZGnxkMnE
+	 /kKVBfhDKhK0FKhq+1rQGDG59JkOY75+dJPmGpSQFddYhPEY23ILtF9wNF+Wh4o6oe
+	 Cm6UYm38OLsZCVgbh5sE5UDVhsnX3upMQWwUfCd+zjbqia5q92gGLIz4fb5x4gd6he
+	 9lOcmzCxXYZLVSVQ58Ui5bmRwiuET7RjNZfxUr4iPi8fyPfix/P8mMkr8A9VHfWk3f
+	 b9ahAQIC32GT/dF7ieXGYgDsPRrPcPraWoEvsZ4Ji3wbxiWtOMZNmJjMQ/UiYoPoFe
+	 2rge1CFmcOUtw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gSklWEyVAj7E; Sat, 15 Jul 2023 19:12:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yNAiy5B0L-Tr; Sun, 16 Jul 2023 05:55:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 93E0C81BC0;
-	Sat, 15 Jul 2023 19:12:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 93E0C81BC0
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 66503409A4;
+	Sun, 16 Jul 2023 05:55:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 66503409A4
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 539C11BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jul 2023 19:12:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0AB151BF3BB
+ for <intel-wired-lan@osuosl.org>; Sun, 16 Jul 2023 05:55:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2B67840423
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jul 2023 19:12:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B67840423
+ by smtp2.osuosl.org (Postfix) with ESMTP id D51F840489
+ for <intel-wired-lan@osuosl.org>; Sun, 16 Jul 2023 05:55:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D51F840489
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GmJvDICnnh_H for <intel-wired-lan@lists.osuosl.org>;
- Sat, 15 Jul 2023 19:12:21 +0000 (UTC)
+ with ESMTP id gz7ovdFuYWXD for <intel-wired-lan@osuosl.org>;
+ Sun, 16 Jul 2023 05:55:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3EABE400E5
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3EABE400E5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jul 2023 19:12:20 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 64D4660A0A;
- Sat, 15 Jul 2023 19:12:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BBC2C433C7;
- Sat, 15 Jul 2023 19:12:18 +0000 (UTC)
-Date: Sat, 15 Jul 2023 14:12:16 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20230715191216.GA364070@bhelgaas>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3CE9740354
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3CE9740354
+ for <intel-wired-lan@osuosl.org>; Sun, 16 Jul 2023 05:55:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10772"; a="396548600"
+X-IronPort-AV: E=Sophos;i="6.01,210,1684825200"; d="scan'208";a="396548600"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2023 22:55:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10772"; a="812896243"
+X-IronPort-AV: E=Sophos;i="6.01,210,1684825200"; d="scan'208";a="812896243"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by FMSMGA003.fm.intel.com with ESMTP; 15 Jul 2023 22:55:41 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Sat, 15 Jul 2023 22:55:41 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Sat, 15 Jul 2023 22:55:41 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Sat, 15 Jul 2023 22:55:41 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.175)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Sat, 15 Jul 2023 22:55:40 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ObeIGsjh9zq8/bcT2Z9mGZoj/UHOX/6cYVOkVeA8BUnY6QAcdfsgilhw7IqXsS9g/+tD3yCR/GasaRalKIn1tfVfJLjthBxomwY47BUibgRYn6Htzjq8e+SCLd7OTdlzC+hNucxdsymn0O32JqZil0SPVVLAGUM1biRqA/dVnfsWDaLh5pOhFlvQRJpIDsaIud5EB/RKkFc7TeB7tPOhMrnKUsJ7EfuXplUMg5gxpNGNvlhhgOFYr9U8cy4T+oTocMRpWRy5ufTOsYBzpe9xRDrb0aJJGYyJT33X2r5oDTmmnhH2BcTwkWi90jxIHtAgpz4iRqaHso8EIV163KmTgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZhPWo44NjS4o2P3H1ctm9/x8I/oYNioWAa0fndZI6q4=;
+ b=aQhgOndGb5QeuUVUeEni/JQfOZSGTLeaazoKXtVR2lYjvMYh//bDasLaz1uO0vnkDJ4kYxCZVorkcvxnpQmlVaJ3RSteq41rrG0PSVyEY14f1o1Dy4lltDjnFtXXX5pezMgblpNeeCozzqjYqU59fjwGvd6czLRQKP/7D2cf9WK8gziHgeg9AQHPIfzprYBehx7UM58bde4kkcl14A4P5kVz+6WOelt0JA4tsHrfRRXeG5mVb04Ri1TopCeL04Gd1BHq9NhyIt8BBbpDe0+Da+QfGMsDHdgDxtAR9em1gWuqsQRK20wJJ4dVw1nuacdE7lDZKYnDvSbsbukpkphT5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ1PR11MB6180.namprd11.prod.outlook.com (2603:10b6:a03:459::14)
+ by PH0PR11MB5612.namprd11.prod.outlook.com (2603:10b6:510:e7::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Sun, 16 Jul
+ 2023 05:55:38 +0000
+Received: from SJ1PR11MB6180.namprd11.prod.outlook.com
+ ([fe80::dfd2:5a47:bfeb:aa2e]) by SJ1PR11MB6180.namprd11.prod.outlook.com
+ ([fe80::dfd2:5a47:bfeb:aa2e%4]) with mapi id 15.20.6588.028; Sun, 16 Jul 2023
+ 05:55:38 +0000
+From: "Zulkifli, Muhammad Husaini" <muhammad.husaini.zulkifli@intel.com>
+To: Leon Romanovsky <leon@kernel.org>
+Thread-Topic: [PATCH iwl-net v1] igc: Add lock to safeguard global Qbv
+ variables
+Thread-Index: AQHZs62Nv7BQ4a9JnU2IeVMNIyRLfK+0L+WAgAe5ugA=
+Date: Sun, 16 Jul 2023 05:55:38 +0000
+Message-ID: <SJ1PR11MB6180150AF1B6967DBFF24F96B83AA@SJ1PR11MB6180.namprd11.prod.outlook.com>
+References: <20230711040820.16235-1-muhammad.husaini.zulkifli@intel.com>
+ <20230711074513.GL41919@unreal>
+In-Reply-To: <20230711074513.GL41919@unreal>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ1PR11MB6180:EE_|PH0PR11MB5612:EE_
+x-ms-office365-filtering-correlation-id: 9b5f03d8-26ed-478e-8125-08db85c147f1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: f3rQX+iqfz1z7xacBzyKNUY6IOi1CB6PvC/CxeaPB17YBbIJpC33l1TXwiRs1qGnfY8wBNXM0fECGCQwxTKnKwTBMs6/7vrM3MWlsKe+m1jnZqngecXzmJlGNqeyCwBWp0vZLyw1zvzAWyuzCz5KbQ/6QMy4GObu7R3RiB05G37RKPyMfzTG22x61jWADyOQ52iYofGGouBtTO3tNAa4H3AmMaYKG1vrG90/feqO2xj6AsWt5W2y7g7Rwr4JV2IZEaa8O5skPkFJ7tbhoTMaQqx0oHj5ti4TK8NjiORGtegltGYB8r6FrLinf3+2ekxic8iVMJONH2vNjDCHk6RFOfg21yfuKzcb6GfHt9bMJCiGHxSj03bNtKoi8/GueyhqcGaxUcRZXcJan1UXdToUPhH0hK73GQJdz2xSHJmDSyJkm9UMm9Pz/rmJhlfOMUnaRRMtI4qtpBlc5QMGtalaOtIjRJXY7IVJz22+0Q1NpU8TtkXCiYoB/B+KgUnS4gTufA4rEyNJFIgzzzNXsGf2su0TewsQsOWX6q+ilBSI9RJhCjzKN3zLlOSjS0dcoQvmcdhnEeWU/FV43mInlAFpyfc7aLfqGTsEcNFiSqtnye/MgAX6oCF59TpblYNkDzx5
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ1PR11MB6180.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(39860400002)(376002)(366004)(136003)(396003)(346002)(451199021)(86362001)(2906002)(33656002)(38070700005)(55016003)(83380400001)(186003)(53546011)(9686003)(26005)(6506007)(38100700002)(82960400001)(7696005)(54906003)(122000001)(76116006)(4326008)(316002)(66946007)(64756008)(6916009)(66476007)(66556008)(66446008)(8936002)(478600001)(5660300002)(71200400001)(52536014)(8676002)(41300700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RrK1U+Xnuwhxao+O7kt40eSBRG8R3RGojs1p/EK4r5SPaAeIWR1dr9nzHW3k?=
+ =?us-ascii?Q?WI4wkL/QuYETL+QxZavG+65oQzgGiOmEfB9Cvc+fs0mv+ZrJeXwUsUyoJ/l7?=
+ =?us-ascii?Q?uYfL+lAm8NvDaf/Rw8rHXpbXxKJ80cvHsD2a+T1SDHkAUKCsH1Ha5NdAvvXf?=
+ =?us-ascii?Q?bE/qh9ZRiulL3++OowADZmS0CQuCE6H0a74kleJYDY1avxU2yrQJv/2YOMJ3?=
+ =?us-ascii?Q?Z2/LW4rIQcvL72f58rjeZ81B4kOvkdgbCtZW4CtDCRN6AxItZA3TcY2dTnTV?=
+ =?us-ascii?Q?rFbzp2eod5huc9Pd461afeYeykUCpaRM3kCUPoj8jYW/lwWiSmkmeDwoJi9W?=
+ =?us-ascii?Q?my7omoafdwxkpQ7FjWUHL5+kCsT6MB9jPuAhieVSq3MF/NwKTl7lsAT+NkUp?=
+ =?us-ascii?Q?tZCjgGTwur9IzU1KRjefzerbiyZXdYDTN3bn4wn+nbSCjiy443WqpFjIGC2l?=
+ =?us-ascii?Q?4dCMBskiSALkvtb2t6OGHecogetNmk/rx0n7VgUAndaQ7x6hYDFRb5NqMQK/?=
+ =?us-ascii?Q?LJgTToKaIopw0bmNgsu6nXzzSppRM/zo2mfWI2yzQvUYMFHqZkPNItF+0UOF?=
+ =?us-ascii?Q?2NensJnOaR2H8IcWFG5mCeZpMmVg+CdoTRgl/CQ9i2pobes/CuFdHMnNVKDJ?=
+ =?us-ascii?Q?ZQduEPjbsQlzXgCffTTGob+4UxCrta1YSBhrqMXA1KE0U/43aGEqNPuiSKHW?=
+ =?us-ascii?Q?gmJ6ZzP675iOq0OY2jLntkdQ5iT1q79XDhY9L0WTimJFf+cKN94chuLjQ0KC?=
+ =?us-ascii?Q?9V+vgwaHzfnbW0kyMR+gtPzA8Dx7p1xWXbzb1TGkhputPRluoEkALbnr1baA?=
+ =?us-ascii?Q?xJzk97C6NOJPejCyq0WZ0jsK2xM5CVEtXJuW5oqxPRToBKIqUPcXaaSn0U7v?=
+ =?us-ascii?Q?PVRgngULlu4r/5IYq43uks4vR0og5oKt2v2DSC9pFD9tDTEvOEmy35axL+Y/?=
+ =?us-ascii?Q?TEiBB3ZovC2KQvdHwbGTosCayAzfMYB7fYXOcUMY79eiUQEdhRbm4/OKxFHV?=
+ =?us-ascii?Q?0BHc7JlX4LdvQQcBywmIRYpT48rHJTt/FH9BhoXwM376v0KVBWRPobMh9lfQ?=
+ =?us-ascii?Q?zw3eED0jrxVC4CafvQO1qS86KGQU0NS3qvWWNnTd/MavU/95VDg+mhTwVGwi?=
+ =?us-ascii?Q?loB+IgGJiQbA+jb6OVmK2ZSQToJVwwtRNkFpzFRYjUqQavX6Ik5+ePg5ka3S?=
+ =?us-ascii?Q?SGeZkXFS5OAO5TdHbOvu81Zi30Js0JqWz4yBhybOdfIm5knCw+HR9iYo4Nyv?=
+ =?us-ascii?Q?36Ap6/Jh0lNEWhD+IDa16gEJiJUOiirQDO27U+/xYTdhowpHKjpbZCBBtU3U?=
+ =?us-ascii?Q?tExoTDOE0qsfF+c9YdUkMO6HmlXOSqhMdv1UyLiSqBLt3EfGx4mzNGHgRrM6?=
+ =?us-ascii?Q?pSMLwOPQWC4CG0Yz2b6g43un908tSCt0Dk5JAXaB/lygXiAIv1YT4zbXLtCV?=
+ =?us-ascii?Q?CaJx+POE8NCrLCEBSb6YCwCSS57zDqPV21o5yRnZEkBKYQF+V5WN6YIsr2Is?=
+ =?us-ascii?Q?Kv72SPHY2PkIOzmAIomFDZqsHKwHF2f8IXjw/1kN/voo/vmmVaC1vtVwfOp0?=
+ =?us-ascii?Q?EaICHQA2eVt3a/jidk3RlXXiGB+leK6d9uLPAMzTqMg/q3SOMautwg86FfmA?=
+ =?us-ascii?Q?WDy1tejEShzUrDksARvbl7o=3D?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <874jm6nsd0.fsf@intel.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6180.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9b5f03d8-26ed-478e-8125-08db85c147f1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2023 05:55:38.4655 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8g879mmyTAV1F0KwVWC7gEoj/wmJ/RvpCartC4z1tQDnUfL8bOydlZaS2aCgOLM0VcU8FMzvAcSLrBRKicmkS6LTo9YojqRFzyZk4Q5tTF8v8YqFzhIY3QiZT3YPimyN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5612
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1689448338;
- bh=fvmfkQe7xASbExr7Qwq+ClgfzOJeaaWctwssh0Qdv+8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=im7jN0iZ/HRLgRjG+EeJrLdmJvNlRgFDMRvOqZAU0ZPt6OOkF4uZb4DgQCQMr89Ia
- jB06hdxpZ3qR7hA/h/jw/LqAkB2TEeV5+NqmOWRW0VCJjLwMR7rwuojB2+uyFR3Siz
- 3AnYrkBRpLPrKH981T/0y/gxKbPsAvmZSfhZXKJ+RKH0PDlrEMCcyH/1UTAr0/0vAI
- MmTaLHSf5XA6AJXtbqZkuSMjdASy9zOAQWMSiL1hXI3fwjpRzkwF83UOmII4+E/Ud+
- OHzMYrrwIrXfyeYD6XqUw1pwrVroR5yLqRuhFuIljO3Znbq3QW8zFExDvZU05YwBKA
- AWNtBdeJlqA7w==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1689486943; x=1721022943;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=cicN7osgqVLC1SanOuI/hH9DLisPO/WkoL3kviFRO+A=;
+ b=GhaGzMwCm0gHq+hJFhYbPNicXw3P/4h6A9/MMtDnejRwv4LVMo6phZCX
+ gbca2MyPS+WFtOgUOrrw1XqpruUqEN7r950DA7ds2NMl0mOV2cHrXw8BK
+ dLAV84jyCAZz+YdVy/yJ7UB+57FOEy/nJzCO1teYE5SqY9V6xoAyV3dAP
+ R6bXLh8cFjlm5rS5qk+Bc4paAa/nklerJEmMfUJ8SRkIpvHi3X41l5iyf
+ 9uaJ/p9MDhmjvSmMAQUMtmXw+hVXINoxZFx5WPTakp398vy6YdW4BTGC5
+ /sgAU7ySCu6Ie7lRWbDnx9zxODkf82W3m+WTHEyAmtj7aL3jTMXA1phYr
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=im7jN0iZ
-Subject: Re: [Intel-wired-lan] [PATCH v2] igc: Ignore AER reset when device
- is suspended
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=GhaGzMwC
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igc: Add lock to safeguard
+ global Qbv variables
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,76 +189,123 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Luck <tony.luck@intel.com>, Kees Cook <keescook@chromium.org>,
- linux-pci@vger.kernel.org, jesse.brandeburg@intel.com,
- linux-kernel@vger.kernel.org, "Guilherme G . Piccoli" <gpiccoli@igalia.com>,
- Eric Dumazet <edumazet@google.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, anthony.l.nguyen@intel.com,
- linux-hardening@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>, "Nguyen, Anthony
+ L" <anthony.l.nguyen@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jul 14, 2023 at 01:35:55PM -0700, Vinicius Costa Gomes wrote:
-> Bjorn Helgaas <helgaas@kernel.org> writes:
-> > On Fri, Jul 14, 2023 at 01:05:41PM +0800, Kai-Heng Feng wrote:
-> >> When a system that connects to a Thunderbolt dock equipped with I225,
-> >> like HP Thunderbolt Dock G4, I225 stops working after S3 resume:
-> >> ...
-> >
-> >> The issue is that the PTM requests are sending before driver resumes the
-> >> device. Since the issue can also be observed on Windows, it's quite
-> >> likely a firmware/hardware limitation.
-> >
-> > Does this mean we didn't disable PTM correctly on suspend?  Or is the
-> > device defective and sending PTM requests even though PTM is disabled?
+Dear Leon,
+
+Sorry for the late response. Replied inline.
+
+> -----Original Message-----
+> From: Leon Romanovsky <leon@kernel.org>
+> Sent: Tuesday, 11 July, 2023 3:45 PM
+> To: Zulkifli, Muhammad Husaini <muhammad.husaini.zulkifli@intel.com>
+> Cc: intel-wired-lan@osuosl.org; Neftin, Sasha <sasha.neftin@intel.com>;
+> Gomes, Vinicius <vinicius.gomes@intel.com>; naamax.meir@linux.intel.com;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>
+> Subject: Re: [PATCH iwl-net v1] igc: Add lock to safeguard global Qbv
+> variables
 > 
-> The way I understand the hardware bug, the device is defective, as you
-> said, the device sends PTM messages when "busmastering" is disabled.
+> On Tue, Jul 11, 2023 at 12:08:20PM +0800, Muhammad Husaini Zulkifli wrote:
+> > Access to shared variables through hrtimer requires locking in order
+> > to protect the variables because actions to write into these variables
+> > (oper_gate_closed, admin_gate_closed, and qbv_transition) might
+> > potentially occur simultaneously. This patch provides a locking
+> > mechanisms to avoid such scenarios.
+> 
+> I have a general comment as this patch is targeted to iwl-next and not to net-
+> next, the locking should protect access to shared variables and it means that
+> lock should be used in all places where these variables are used and not only
+> in one function.
 
-Bus Master Enable controls the ability of a Function to issue Memory
-and I/O Read/Write Requests (PCIe r6.0, sec 7.5.1.1.3).  PTM uses
-Messages, and I don't think they should be affected by Bus Master
-Enable.
+Previous patch of "igc: Fix TX Hang issue when QBV Gate is closed" was submitted to
+Iwl-net. This patch were introduced as a fix to that patch. Should we submit to iwl-net 
+instead of Iwl-net-next?
 
-I also don't understand the I225 connection.  We have these
-Uncorrected Non-Fatal errors:
+You're correct. To prohibit unauthorized access to these variables in several locations, 
+let me send the v2. These variables could be modified with different contexts.
+Looks like, we might need to modify code in igc_tsn_clear_schedule() and 
+igc_save_qbv_schedule() as well. I was thinking about separating the qbv portion
+into a diff function to improve the readability of the code in igc_tsn_clear_schedule(). 
+Let me send version 2 and see if that is OK.
 
-> >> [  606.527931] pcieport 0000:00:1d.0: AER: Multiple Uncorrected (Non-Fatal) error received: 0000:00:1d.0
-> >> [  606.528064] pcieport 0000:00:1d.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
-> >> [  606.528068] pcieport 0000:00:1d.0:   device [8086:7ab0] error status/mask=00100000/00004000
-> >> [  606.528072] pcieport 0000:00:1d.0:    [20] UnsupReq               (First)
-> >> [  606.528075] pcieport 0000:00:1d.0: AER:   TLP Header: 34000000 0a000052 00000000 00000000
-> >> [  606.528079] pcieport 0000:00:1d.0: AER:   Error of this Agent is reported first
-> >> [  606.528098] pcieport 0000:04:01.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
-> >> [  606.528101] pcieport 0000:04:01.0:   device [8086:1136] error status/mask=00300000/00000000
-> >> [  606.528105] pcieport 0000:04:01.0:    [20] UnsupReq               (First)
-> >> [  606.528107] pcieport 0000:04:01.0:    [21] ACSViol
-> >> [  606.528110] pcieport 0000:04:01.0: AER:   TLP Header: 34000000 04000052 00000000 00000000
+Thanks,
+Husaini
 
-They are clearly Unsupported Request errors caused by PTM Requests
-(decoding at https://bugzilla.kernel.org/show_bug.cgi?id=216850#c9),
-but they were logged by 00:1d.0 and 04:01.0.
-
-The hierarchy is this:
-
-  00:1d.0 Root Port to [bus 03-6c]
-  03:00.0 Switch Upstream Port to [bus 04-6c]
-  04:01.0 Switch Downstream Port to [bus 06-38]
-  06:00.0 Switch Upstream Port to [bus 07-38]
-  07:04.0 Switch Downstream Port to [bus 38]
-  38:00.0 igc I225 NIC
-
-If I225 sent a PTM request when it shouldn't have, i.e., when 07:04.0
-didn't have PTM enabled, the error would have been logged by 07:04.0.
-
-The fact that the errors were logged by 00:1d.0 and 04:01.0 means that
-they were caused by PTM requests from 03:00.0 and 06:00.0.
-
-Bjorn
+> 
+> Thanks
+> 
+> >
+> > Fixes: 175c241288c0 ("igc: Fix TX Hang issue when QBV Gate is closed")
+> > Suggested-by: Leon Romanovsky <leon@kernel.org>
+> > Signed-off-by: Muhammad Husaini Zulkifli
+> > <muhammad.husaini.zulkifli@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/igc/igc.h      | 4 ++++
+> >  drivers/net/ethernet/intel/igc/igc_main.c | 7 +++++++
+> >  2 files changed, 11 insertions(+)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igc/igc.h
+> > b/drivers/net/ethernet/intel/igc/igc.h
+> > index 9db384f66a8e..38901d2a4680 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc.h
+> > +++ b/drivers/net/ethernet/intel/igc/igc.h
+> > @@ -195,6 +195,10 @@ struct igc_adapter {
+> >  	u32 qbv_config_change_errors;
+> >  	bool qbv_transition;
+> >  	unsigned int qbv_count;
+> > +	/* Access to oper_gate_closed, admin_gate_closed and
+> qbv_transition
+> > +	 * are protected by the qbv_tx_lock.
+> > +	 */
+> > +	spinlock_t qbv_tx_lock;
+> >
+> >  	/* OS defined structs */
+> >  	struct pci_dev *pdev;
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+> > b/drivers/net/ethernet/intel/igc/igc_main.c
+> > index bdeb36790d77..cae717cb506e 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> > @@ -4801,6 +4801,7 @@ static int igc_sw_init(struct igc_adapter *adapter)
+> >  	adapter->nfc_rule_count = 0;
+> >
+> >  	spin_lock_init(&adapter->stats64_lock);
+> > +	spin_lock_init(&adapter->qbv_tx_lock);
+> >  	/* Assume MSI-X interrupts, will be checked during IRQ allocation */
+> >  	adapter->flags |= IGC_FLAG_HAS_MSIX;
+> >
+> > @@ -6619,8 +6620,11 @@ static enum hrtimer_restart
+> > igc_qbv_scheduling_timer(struct hrtimer *timer)  {
+> >  	struct igc_adapter *adapter = container_of(timer, struct igc_adapter,
+> >  						   hrtimer);
+> > +	unsigned long flags;
+> >  	unsigned int i;
+> >
+> > +	spin_lock_irqsave(&adapter->qbv_tx_lock, flags);
+> > +
+> >  	adapter->qbv_transition = true;
+> >  	for (i = 0; i < adapter->num_tx_queues; i++) {
+> >  		struct igc_ring *tx_ring = adapter->tx_ring[i]; @@ -6633,6
+> +6637,9
+> > @@ static enum hrtimer_restart igc_qbv_scheduling_timer(struct hrtimer
+> *timer)
+> >  		}
+> >  	}
+> >  	adapter->qbv_transition = false;
+> > +
+> > +	spin_unlock_irqrestore(&adapter->qbv_tx_lock, flags);
+> > +
+> >  	return HRTIMER_NORESTART;
+> >  }
+> >
+> > --
+> > 2.17.1
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
