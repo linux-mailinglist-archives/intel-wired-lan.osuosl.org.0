@@ -1,121 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55273756FBA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 00:23:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D5642756FAC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 00:17:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6723D60F4B;
-	Mon, 17 Jul 2023 22:22:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6723D60F4B
+	by smtp3.osuosl.org (Postfix) with ESMTP id A279D60F4B;
+	Mon, 17 Jul 2023 22:17:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A279D60F4B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689632578;
-	bh=WzM/Y8RU2eZFdokbU8lAFpL40s+2YA+IbYUnBqZUNLQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=8mvCjjDBrXUIdWZIUSYrhJcEDP8rLYnz6VTYcIXot/FfwNX2Cb2Aetqb87wbs9cIq
-	 14yWF1hERPDPXhTyj0Vbqa7FXqKUi+LbqF5JKg5Qq1B2MtlkCNMLdFK+JbVtwAAXGP
-	 TVsRJwyD3XuwdOm7K6sckXmctuzyyDzqmzpxSrcG9WX+fNq6i9biFNbJ6spskoUg7Q
-	 ExLWbhr8FivN0wln7jROv7bAjsXEnZWSnQjLaNToGTs6xuup1FHQS6gZgizkknaF+Z
-	 NcMVSkoQOIBmsPLOn8dT4eVFgP6BVB/SRWEO9uNJlXgmpkaPyrfeLe/s7hKLCi7h/T
-	 sgsR8QDgamriw==
+	s=default; t=1689632250;
+	bh=LCH3HVUXNqygpKz8pihglN2lG3kS7wrkq/TV4fd3m4E=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=xRZJ9S4n6PzWyO6A22xb4gwQcRtQulxUi5oJ7eCokCMVePZ143Cb8Cc3Wubt5n2XO
+	 eGXfSUBLksDwPlRV+Xor4/atwgs9JuBqetAeoDIAuc4UdCFicUhfK6GvKpzMoZLH8B
+	 dptOnTsgqOuVyymFmoZm8F462WvxEjOffziYsDF3FLnpiKnrQYH9gHisdEVrIbxli0
+	 v38rzzXWk1mKfnJGtDbdg1JP8oDOGBzIXbCR1+a1Z4/eDb6MzNGD3UHYZ7lJmREoTM
+	 Uf0BwKladwjws5Vttxx2V6hSezq12PIX6qiZZRZJ8pUWtY1pvbItOSmIOB+qJCD/Ha
+	 QDHe8e4juD1YA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VPhWUvs9lW5H; Mon, 17 Jul 2023 22:22:57 +0000 (UTC)
+	with ESMTP id vpqYAD3DWDyo; Mon, 17 Jul 2023 22:17:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 31C1E60669;
-	Mon, 17 Jul 2023 22:22:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 31C1E60669
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2960260F32;
+	Mon, 17 Jul 2023 22:17:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2960260F32
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A6FFD1BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 21:43:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C40F71BF388
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 22:17:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7BF73400FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 21:43:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7BF73400FC
+ by smtp1.osuosl.org (Postfix) with ESMTP id A942A8199D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 22:17:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A942A8199D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HDBNZxYVt0qu for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Jul 2023 21:43:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id z41BgBdN4cuT for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Jul 2023 22:17:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1345400AB
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C1345400AB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 21:43:39 +0000 (UTC)
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-230-7WNM77XCO2ajDwKZhvqhag-1; Mon, 17 Jul 2023 17:43:37 -0400
-X-MC-Unique: 7WNM77XCO2ajDwKZhvqhag-1
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-639ae879810so11562276d6.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 14:43:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689630217; x=1690235017;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aC1IIXf65GHEp2kMCcI2q32jkdDZfXQ4NeDoMesW7z8=;
- b=hRmfeCmvjBVTs2vM9dQ4FjdMgvBJV7uXbvrPOX5WyOfqjkQSeh9sZCFOyqpTu0oCDx
- wQi7If5MN4s632eDmNRTcEdZDrSt5Fe18UhgbV47QGEDO2oxyxJPVt5GdJk5UhrLoIH0
- 9i6b9aGF6lUWv4/97J6L+1h8PhvOFaGTavcWdlj64L6WlleqvNgGGu9hVKKzKiKVGsaI
- kIMLxaIbc6NHmXZMvqSb4+ewCvtZgfkhezzfaWAhGSvj2Mqiz5RCd5zCndnY6gMSZwRt
- O+5WzGxmUUiNjtXF5hGI3akzrwHuCcGB6s+LYHTo6PRPwPFMRKcI07Ul8vIoWYQF9Ioj
- xBHQ==
-X-Gm-Message-State: ABy/qLYZ4Ql3TcmkRT+JcDkB+H8VefmIU1GJTd1Np33a9uVw1WFaEP/4
- R6qoz4PBuH6anwfq3NEvw75ap2ixLnxEUnJ/GgHIW18tFCHysswC1RJZVOnKxI1pVzmHw2G23uV
- A6PFn6rq3U73Vp2xZJr2KaPfJdodYoQ==
-X-Received: by 2002:a05:6214:5188:b0:5ed:c96e:ca4a with SMTP id
- kl8-20020a056214518800b005edc96eca4amr9705841qvb.1.1689630216823; 
- Mon, 17 Jul 2023 14:43:36 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFs5YQRAFS9refn9gxMTJtY5SLvTyGyFWbWSEP5wZeWww8UNLzTXRlHWqEGCii8NHJiP211pQ==
-X-Received: by 2002:a05:6214:5188:b0:5ed:c96e:ca4a with SMTP id
- kl8-20020a056214518800b005edc96eca4amr9705824qvb.1.1689630216470; 
- Mon, 17 Jul 2023 14:43:36 -0700 (PDT)
-Received: from x1n (cpe5c7695f3aee0-cm5c7695f3aede.cpe.net.cable.rogers.com.
- [99.254.144.39]) by smtp.gmail.com with ESMTPSA id
- d7-20020a0caa07000000b006360a5daf27sm198379qvb.127.2023.07.17.14.43.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jul 2023 14:43:36 -0700 (PDT)
-Date: Mon, 17 Jul 2023 17:43:34 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Message-ID: <ZLW2BgWI+yx7qKaf@x1n>
-References: <20230621091112.44945-1-lingyu.liu@intel.com>
- <20230621091112.44945-11-lingyu.liu@intel.com>
- <ZJMLHSq9rjGIVS4V@nvidia.com>
- <DS0PR11MB7529D62973DEE1848BB9146BC324A@DS0PR11MB7529.namprd11.prod.outlook.com>
- <ZJwp6nam6/gI7Ru1@nvidia.com>
- <DS0PR11MB75295D41646A3F74BCED4323C329A@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB5276AC6CC905A57A370AE48E8C2EA@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZKReFWNJSVcfhL6y@x1n> <ZKwpm1k+1hjN7oyE@nvidia.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 947A981769
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 947A981769
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 22:17:23 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="396889143"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="396889143"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2023 15:17:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="700659539"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="700659539"
+Received: from jekeller-desk.amr.corp.intel.com (HELO
+ jekeller-desk.jekeller.internal) ([10.166.241.1])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2023 15:17:22 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Mon, 17 Jul 2023 15:17:13 -0700
+Message-ID: <20230717221713.2249044-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.41.0.1.g9857a21e0017.dirty
 MIME-Version: 1.0
-In-Reply-To: <ZKwpm1k+1hjN7oyE@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-X-Mailman-Approved-At: Mon, 17 Jul 2023 22:22:51 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1689630218;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=aC1IIXf65GHEp2kMCcI2q32jkdDZfXQ4NeDoMesW7z8=;
- b=L06C9SBKIUN/ofq858W7Lpb2T2DTKAyL6Z7elGYdru92BEumEnH8TGfYheRedI1PclXqDV
- 6JPPX4zTVTwNsOjKleLN+e+0lq13mQliirpoWyDBIZUGjj8svpfo0h409stXZGdqmTl9rS
- lP5g5WLY0NzflPkv9r+79kmWR+Hvmjo=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=L06C9SBK
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next V2 10/15] ice: save and
- restore TX queue head
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1689632243; x=1721168243;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=K6BH9S4f0Yzmay8ML7JxbdN24kdMDnvf22769bfsdy4=;
+ b=Z/fDyMP/4jRjMPA9M3KqiehHuDQ5M7VJeYGOWChv/X0n/TtgLC1mFTRq
+ WKZEnOrUTa5m4Tz7g5wzRriavp6N2XGYD5z2wDk8F9W122Qtq93kqcEqh
+ YpxeUygWiwSDBHJXtLDjtgSJ7aGwhpF/Mz1z8u526LIYyqdCU7EHd51sG
+ 5fo1qE/mRYP/SiZSExhXwk20S1HKw9I4xD9bt9Uexi8U9dIRkZkjcXZc7
+ xMEDMF8MbHCBzVmPoEAVeP6y+HPkFGZSyDdw4AeAhxtg/hHPi5W9aaD7l
+ I9eyHcKLqiQGFVBHwcHxrCDpHZdWEx4pkyR3q682ddFcwN3SuyPNsMujC
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Z/fDyMP/
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: introduce hw->phy_model for
+ handling PTP PHY differences
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,58 +94,350 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Burra,
- Phani R" <phani.r.burra@intel.com>
+Cc: Anthony Nguyen <anthony.l.nguyen@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jul 10, 2023 at 12:54:03PM -0300, Jason Gunthorpe wrote:
-> On Tue, Jul 04, 2023 at 01:59:49PM -0400, Peter Xu wrote:
-> 
-> > > This sounds counter-intuitive even for emulated devices. vIOMMU is
-> > > involved only when the device wants to access guest memory. But
-> > > by definition the RESUMING path should just restore the device to
-> > > the point where it is stopped. Why would such restore create a
-> > > dependency on vIOMMU state?
-> > 
-> > For why QEMU migrates vIOMMU earlier than PCI generic devices, I can try to
-> > repeat here: IIRC it's because some device needs dma translations during
-> > post_load(), I forgot which device and why, but it can make some sense to
-> > me if recovering states of the pci device may need help from a translation.
-> 
-> Well, it has nothing to do with VFIO given the timeframe, and if
-> internal qemu devices are doing weird things like this it also
-> suggests they have problems with P2P as well.
-> 
-> The VFIO definition we have is that a device may not do any DMA while in
-> resuming/resuming_p2p, it is only allowed to initiate DMA once it
-> fully reaches running.
-> 
-> Obviously we have to setup the vIOMMU before going to running.
-> 
-> The internal qemu devices must follow this definition as well or they
-> are not P2P compatible.
-> 
-> About the only exception I could think is if some internal devices was
-> caching translations for some purpose, but it really should setup that
-> caching at entry to running..
+The ice driver has PTP support which works across a couple of different
+device families. The device families each have different PHY hardware which
+have unique requirements for programming.
 
-Yes it's something like that which is a pure translation request, rather
-than doing a real DMA, as far as I remember.  It does sound fine to
-postpone that into a vm state change handler to me, but worth checking when
-someone really works on it, and also whether it's feasible - e.g. hopefully
-only a few devices need to work that around.
+Today, there is E810-based hardware, and E822-based hardware. To handle
+this, the driver checks the ice_is_e810() function to separate between the
+two existing families of hardware.
 
-It may boil down to why we need to avoid migrating vIOMMU before other
-devices (which I am still unsure about..), and which way is easier.
+Future development is going to add new hardware designs which have further
+unique requirements. To make this easier, introduce a phy_model field to
+the HW structure. This field represents what PHY model the current device
+has, and is used to allow distinguishing which logic a particular device
+needs.
 
-Thanks,
+This will make supporting future upcoming hardware easier, by providing an
+obvious place to initialize the PHY model, and by already using switch/case
+statements instead of the previous if statements.
 
+Astute reviewers may notice that there are a handful of remaining checks
+for ice_is_e810() left in ice_ptp.c  These conflict with some other
+cleanup patches in development, and will be fixed in the near future.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c    |  32 ++++--
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 104 ++++++++++++++++----
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |   2 +
+ drivers/net/ethernet/intel/ice/ice_type.h   |   8 ++
+ 4 files changed, 120 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index db78bf156df4..8ac5afbbf9c2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -1366,6 +1366,7 @@ ice_ptp_port_phy_restart(struct ice_ptp_port *ptp_port)
+ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+ {
+ 	struct ice_ptp_port *ptp_port;
++	struct ice_hw *hw = &pf->hw;
+ 
+ 	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+ 		return;
+@@ -1380,11 +1381,18 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+ 	/* Update cached link status for this port immediately */
+ 	ptp_port->link_up = linkup;
+ 
+-	/* E810 devices do not need to reconfigure the PHY */
+-	if (ice_is_e810(&pf->hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
++		/* Do not reconfigure E810 PHY */
+ 		return;
++	case ICE_PHY_E822:
+ 
+-	ice_ptp_port_phy_restart(ptp_port);
++		ice_ptp_port_phy_restart(ptp_port);
++
++		return;
++	default:
++		dev_warn(ice_pf_to_dev(pf), "%s: Unknown PHY type\n", __func__);
++	}
+ }
+ 
+ /**
+@@ -2702,14 +2710,22 @@ static int ice_ptp_init_work(struct ice_pf *pf, struct ice_ptp *ptp)
+  */
+ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
+ {
++	struct ice_hw *hw = &pf->hw;
++
+ 	mutex_init(&ptp_port->ps_lock);
+ 
+-	if (ice_is_e810(&pf->hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		return ice_ptp_init_tx_e810(pf, &ptp_port->tx);
++	case ICE_PHY_E822:
++		kthread_init_delayed_work(&ptp_port->ov_work,
++					  ice_ptp_wait_for_offsets);
+ 
+-	kthread_init_delayed_work(&ptp_port->ov_work,
+-				  ice_ptp_wait_for_offsets);
+-	return ice_ptp_init_tx_e822(pf, &ptp_port->tx, ptp_port->port_num);
++		return ice_ptp_init_tx_e822(pf, &ptp_port->tx,
++					    ptp_port->port_num);
++	default:
++		return -ENODEV;
++	}
+ }
+ 
+ /**
+@@ -2730,6 +2746,8 @@ void ice_ptp_init(struct ice_pf *pf)
+ 	struct ice_hw *hw = &pf->hw;
+ 	int err;
+ 
++	ice_ptp_init_phy_model(hw);
++
+ 	/* If this function owns the clock hardware, it must allocate and
+ 	 * configure the PTP clock device to represent it.
+ 	 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index f174bac58aba..8afedd28ff94 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -3138,6 +3138,23 @@ void ice_ptp_unlock(struct ice_hw *hw)
+ 	wr32(hw, PFTSYN_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), 0);
+ }
+ 
++/**
++ * ice_ptp_init_phy_model - Initialize hw->phy_model based on device type
++ * @hw: pointer to the HW structure
++ *
++ * Determine the PHY model for the device, and initialize hw->phy_model
++ * for use by other functions.
++ */
++int ice_ptp_init_phy_model(struct ice_hw *hw)
++{
++	if (ice_is_e810(hw))
++		hw->phy_model = ICE_PHY_E810;
++	else
++		hw->phy_model = ICE_PHY_E822;
++
++	return 0;
++}
++
+ /**
+  * ice_ptp_tmr_cmd - Prepare and trigger a timer sync command
+  * @hw: pointer to HW struct
+@@ -3156,10 +3173,17 @@ static int ice_ptp_tmr_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+ 	ice_ptp_src_cmd(hw, cmd);
+ 
+ 	/* Next, prepare the ports */
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		err = ice_ptp_port_cmd_e810(hw, cmd);
+-	else
++		break;
++	case ICE_PHY_E822:
+ 		err = ice_ptp_port_cmd_e822(hw, cmd);
++		break;
++	default:
++		err = -EOPNOTSUPP;
++	}
++
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to prepare PHY ports for timer command %u, err %d\n",
+ 			  cmd, err);
+@@ -3202,10 +3226,17 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
+ 
+ 	/* PHY timers */
+ 	/* Fill Rx and Tx ports and send msg to PHY */
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_time_e810(hw, time & 0xFFFFFFFF);
+-	else
++		break;
++	case ICE_PHY_E822:
+ 		err = ice_ptp_prep_phy_time_e822(hw, time & 0xFFFFFFFF);
++		break;
++	default:
++		err = -EOPNOTSUPP;
++	}
++
+ 	if (err)
+ 		return err;
+ 
+@@ -3237,10 +3268,17 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), lower_32_bits(incval));
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), upper_32_bits(incval));
+ 
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_incval_e810(hw, incval);
+-	else
++		break;
++	case ICE_PHY_E822:
+ 		err = ice_ptp_prep_phy_incval_e822(hw, incval);
++		break;
++	default:
++		err = -EOPNOTSUPP;
++	}
++
+ 	if (err)
+ 		return err;
+ 
+@@ -3296,10 +3334,17 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), 0);
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), adj);
+ 
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_adj_e810(hw, adj);
+-	else
++		break;
++	case ICE_PHY_E822:
+ 		err = ice_ptp_prep_phy_adj_e822(hw, adj);
++		break;
++	default:
++		err = -EOPNOTSUPP;
++	}
++
+ 	if (err)
+ 		return err;
+ 
+@@ -3319,10 +3364,14 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+  */
+ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+ {
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		return ice_read_phy_tstamp_e810(hw, block, idx, tstamp);
+-	else
++	case ICE_PHY_E822:
+ 		return ice_read_phy_tstamp_e822(hw, block, idx, tstamp);
++	default:
++		return -EOPNOTSUPP;
++	}
+ }
+ 
+ /**
+@@ -3337,10 +3386,14 @@ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+  */
+ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx)
+ {
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		return ice_clear_phy_tstamp_e810(hw, block, idx);
+-	else
++	case ICE_PHY_E822:
+ 		return ice_clear_phy_tstamp_e822(hw, block, idx);
++	default:
++		return -EOPNOTSUPP;
++	}
+ }
+ 
+ /**
+@@ -3349,10 +3402,14 @@ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx)
+  */
+ void ice_ptp_reset_ts_memory(struct ice_hw *hw)
+ {
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E822:
++		ice_ptp_reset_ts_memory_e822(hw);
++		break;
++	case ICE_PHY_E810:
++	default:
+ 		return;
+-
+-	ice_ptp_reset_ts_memory_e822(hw);
++	}
+ }
+ 
+ /**
+@@ -3371,10 +3428,14 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+ 	/* Clear event err indications for auxiliary pins */
+ 	(void)rd32(hw, GLTSYN_STAT(src_idx));
+ 
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		return ice_ptp_init_phc_e810(hw);
+-	else
++	case ICE_PHY_E822:
+ 		return ice_ptp_init_phc_e822(hw);
++	default:
++		return -EOPNOTSUPP;
++	}
+ }
+ 
+ /**
+@@ -3390,10 +3451,15 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+  */
+ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready)
+ {
+-	if (ice_is_e810(hw))
++	switch (hw->phy_model) {
++	case ICE_PHY_E810:
+ 		return ice_get_phy_tx_tstamp_ready_e810(hw, block,
+ 							tstamp_ready);
+-	else
++	case ICE_PHY_E822:
+ 		return ice_get_phy_tx_tstamp_ready_e822(hw, block,
+ 							tstamp_ready);
++		break;
++	default:
++		return -EOPNOTSUPP;
++	}
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index ba4ab96073e0..c17d9dcf96f2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -203,6 +203,8 @@ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
+ int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data);
+ bool ice_is_pca9575_present(struct ice_hw *hw);
+ 
++int ice_ptp_init_phy_model(struct ice_hw *hw);
++
+ #define PFTSYN_SEM_BYTES	4
+ 
+ #define ICE_PTP_CLOCK_INDEX_0	0x00
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index f1231a8162af..581b18cd32d0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -805,6 +805,13 @@ struct ice_mbx_data {
+ 	u16 async_watermark_val;
+ };
+ 
++/* PHY model */
++enum ice_phy_model {
++	ICE_PHY_UNSUP = -1,
++	ICE_PHY_E810  = 1,
++	ICE_PHY_E822,
++};
++
+ /* Port hardware description */
+ struct ice_hw {
+ 	u8 __iomem *hw_addr;
+@@ -826,6 +833,7 @@ struct ice_hw {
+ 	u8 revision_id;
+ 
+ 	u8 pf_id;		/* device profile info */
++	enum ice_phy_model phy_model;
+ 
+ 	u16 max_burst_size;	/* driver sets this value */
+ 
+
+base-commit: 3a78e3e1ac7da2f416519fc52260761e563d9509
 -- 
-Peter Xu
+2.41.0.1.g9857a21e0017.dirty
 
 _______________________________________________
 Intel-wired-lan mailing list
