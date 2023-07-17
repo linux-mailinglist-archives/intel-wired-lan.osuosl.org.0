@@ -2,80 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C80787564D5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Jul 2023 15:26:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A30F97564E5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Jul 2023 15:27:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6323E60F0D;
-	Mon, 17 Jul 2023 13:26:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6323E60F0D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 49CEB60B8A;
+	Mon, 17 Jul 2023 13:27:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 49CEB60B8A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689600368;
-	bh=K2tvLVtGQeyoYX1fTOeOIT6bbqZwm5uzTAPX426z6qE=;
+	s=default; t=1689600438;
+	bh=kSp7eZWlfMKuBydlN/0OJIFIjRpJfEejvb103h36W9A=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gVSytVaP3LwUhM5VaKhUtYr9lUrfBpo+dfaSk4LdO1SeLMeqBGmheDA56S8oTgJFN
-	 3iLPfJGS40n3MFfXxuOVt/N9kOJjs+QbtMPxYf8I5IsTZfbai0VCwWPLLl9w9GJh4c
-	 +ajiURyaQiGjBk6mauR7FK+pQnUmPudp+Gw6BxOpWxbGl8aX18/lidpcmWk+83fSl8
-	 dPg8sPdvNhKxpcoBdxD+tteoqkqNeHjlfPxz8to5GNn3kb0EHAZnsIvimDI92VzkvI
-	 Jdip1CraYg5hk0sqXhkpn6G0NNWivkMbd5K0yAjNuIpwKISbCS99rRo2aDOCQoFG0J
-	 avU3SCJyBj5yQ==
+	b=rIkkfmo2Qy3VIhlFrVfUsoEuzh8n5FFq+etQMrsgWtlwZVZ98OWoMuku+z3yLdeUe
+	 bOfQz3GxpGarZWsqGw2mrZbpgmOMikETnW4KeFYYoxNUngJdLycTGZq6/ZRsg+u2BO
+	 MLi+fHOpz0sBxLqdm++ePzt4T0Qh1n11hi+f9fpm163u4impgNdU5o0ZU6xd8WH+MF
+	 wFDgloxkN7KVGxsscBFF8o4nxRJjbrLku//qV+6fIFHlTkCSSkZfvrPJiQHd2zYQRo
+	 pXG5DersnNBu7vxK9F4T+E/l9pINdRDYykPF+M5QLFMtIoBE71rJZyBXrG/6IK0+NX
+	 dXBP//Hr8Z3cw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8ZzR_M3QXDW3; Mon, 17 Jul 2023 13:26:07 +0000 (UTC)
+	with ESMTP id jzySGlvdQNML; Mon, 17 Jul 2023 13:27:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 90C0E600B6;
-	Mon, 17 Jul 2023 13:26:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 90C0E600B6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 973D8600B6;
+	Mon, 17 Jul 2023 13:27:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 973D8600B6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 014031BF2BD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:26:01 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 648A51BF2BD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:27:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CC50081973
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:26:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC50081973
+ by smtp4.osuosl.org (Postfix) with ESMTP id 395CC41511
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:27:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 395CC41511
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VwHKDNaQi914 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Jul 2023 13:26:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B2SWEZf7dX5J for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Jul 2023 13:27:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5AC0A81BA8
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5AC0A81BA8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:26:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="368571539"
-X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="368571539"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2023 06:25:59 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E66D940F4E
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E66D940F4E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 13:27:08 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="345519694"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="345519694"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2023 06:26:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="793249871"
-X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="793249871"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga004.fm.intel.com with ESMTP; 17 Jul 2023 06:25:58 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="1053906939"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="1053906939"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga005.fm.intel.com with ESMTP; 17 Jul 2023 06:26:58 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 17 Jul 2023 06:25:58 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ 15.1.2507.27; Mon, 17 Jul 2023 06:26:57 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Mon, 17 Jul 2023 06:25:58 -0700
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.46) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ 15.1.2507.27 via Frontend Transport; Mon, 17 Jul 2023 06:26:57 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.49) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Mon, 17 Jul 2023 06:25:58 -0700
+ 15.1.2507.27; Mon, 17 Jul 2023 06:26:56 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ixOz2lIkOHdr8tyY+AvHsv2Vkj5XdgFsyZawQh4khugC67dYMujzfU9yyeIoIJ/Nx14hEsBGCo7VXT72Y9/GZuPXPvYCQ7uzEBaeIzya3x5DGiqYgllOlUG9IvjVntNPXSMIFbHjItSmw3jltXBFjucAdYjQDu+GwQU0TmW/w0eMFpg0XqV13IoKO5K8ADsJYBWKQrEhcvqk2U5kpwG4x79VksyoUAbK0m1ohY0xfx4/yp09x8JEZTgWO/mI7iB0CczrHTtG6R/94OF5HINDs07GFfyP7m9Wo29CTq7Mu7WtEoHwUDO+wqjfn72ds24UF/xbxosX8BK1VNYOvkW7Mg==
+ b=QEM2knwKBelmg2nQ3/kPFEaL2xT8iK3E0XyJOoJlXcpLHV3EZvXwRx9H8tjWiSgQvIgDIlZy9uCJCDcejokYPcpeQF9HqwnHOeX7hBk6U/3ab7I3zhaQ3E3xID6M8ENYFrStZOmMk0vOuCGflswT13G8BMAEY6Mz23LFS76oLpTDp2mx5ldiy0RQevRltx/jraZXJF11o4r13D7UCh7arpPrrjoY3+FMC4FQkdJyanU9OtF0ERWUmbNBNRFyAhKqsglamaJlHoL/zO2PES3HKo6wtpF+CpZB3DZpPNmKMJSiCVarceYUtFW+nsnCPXCcrR5fmsp7SVac0qgYoNA7/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=y4kkSpT8p380rHIV9SQfrtCpGcub/t5E/bsu8dWZlvw=;
- b=eKBK/yakEp6neYh2CGRm08DCCWvxKZ+Cfc1B2ZQHpppB/3SjZbvI6CMrpYArm0hxMS4McyF8/8kbBVBTU5cl++R8x1LFT7Gz1Nmc9IAKioU2hxH8TLDR/Qv3bMyTlZSEq3uiOaheQmCToMTLSslLt5jbRErl0CH8JdpDHFvRvf1VtPbaymOfhS0YewSAC2gS9c/NtOW7qVuwmxXHbzZuVKikkv/O6sNra8JDNEpYKwbpPqvG7G0ISVkBm+mBTJKqR0pSW5yHMRnZVuQ2LwQ1JxTFYdnVztUmBmeaJm2xEV3vD7W7jOU9nJSnpvbhRyr72ygo20/qIViny07PHLsorQ==
+ bh=k3LkqjX4zc/UlU2yNvQztfXb9uSq/SJmS2EOmIyDfT8=;
+ b=gmd0cgFnZ4/E02BdLqaFK8v/TRVGo+ygyyRMyirVpdKWCjqGvfaztEjbK7rSos2nG6HS8AsSrxTvvBI0jdp6ckOr3gJmNYJgN1bxt0srEqroGquQwU1MqPEsOdqZ7aRRQY4Ti8XuOT0IOrvyUkbIx7WYM91b6j48O0lj732ZnAOvTymwBGnJYEsb6C20HYhkqDNzI1A6VvX43T9xP9wEw6eIFjASLpfmwSsp84gE/pg/TOFc8EBFnOWfQFT4c/N+wE28EzyN3Uy/dXg37aITgE77N33Os+j2YVcBpq+1yljk6+BsmzPgZnRXdYAxJ9MsQ5shT2zy89NgJi+02O5IkA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -83,98 +83,98 @@ Received: from BL0PR11MB3521.namprd11.prod.outlook.com (2603:10b6:208:7b::32)
  by PH7PR11MB6770.namprd11.prod.outlook.com (2603:10b6:510:1b4::21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.32; Mon, 17 Jul
- 2023 13:25:53 +0000
+ 2023 13:26:52 +0000
 Received: from BL0PR11MB3521.namprd11.prod.outlook.com
  ([fe80::2b55:774d:2fd0:59a9]) by BL0PR11MB3521.namprd11.prod.outlook.com
  ([fe80::2b55:774d:2fd0:59a9%6]) with mapi id 15.20.6588.031; Mon, 17 Jul 2023
- 13:25:53 +0000
+ 13:26:52 +0000
 From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
 To: Leon Romanovsky <leon@kernel.org>, "Ding, Hui" <dinghui@sangfor.com.cn>
-Thread-Topic: [Intel-wired-lan] [PATCH net v5 1/2] iavf: Fix use-after-free in
- free_netdev
-Thread-Index: AQHZgmcwNKHdsV2mXEKG7O4tyzSJo69R8q8AgGxsxuA=
-Date: Mon, 17 Jul 2023 13:25:53 +0000
-Message-ID: <BL0PR11MB3521A84A538B26EB6CD287A48F3BA@BL0PR11MB3521.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net v5 2/2] iavf: Fix out-of-bounds
+ when setting channels on remove
+Thread-Index: AQHZgmcx3JXpn5A2Cka5LBJnCCwmSK9R8p2AgGxtNLA=
+Date: Mon, 17 Jul 2023 13:26:52 +0000
+Message-ID: <BL0PR11MB35216C012485B6575D9650D38F3BA@BL0PR11MB3521.namprd11.prod.outlook.com>
 References: <20230509111148.4608-1-dinghui@sangfor.com.cn>
- <20230509111148.4608-2-dinghui@sangfor.com.cn>
- <20230509133958.GL38143@unreal>
-In-Reply-To: <20230509133958.GL38143@unreal>
+ <20230509111148.4608-3-dinghui@sangfor.com.cn>
+ <20230509133943.GK38143@unreal>
+In-Reply-To: <20230509133943.GK38143@unreal>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: BL0PR11MB3521:EE_|PH7PR11MB6770:EE_
-x-ms-office365-filtering-correlation-id: 5ba7e78b-3282-4b62-333e-08db86c95870
+x-ms-office365-filtering-correlation-id: 296492c3-12ce-4204-dc9f-08db86c97b97
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: IkjQtv1WAS9bkysHiNnV+8Oo4v39lABojE42NdwJC7siHjpB011r9jHNa57SaUlXcQmiexaoN6GuxLl3deHPeePK9RjknTE7lcZbZdpprp6lJ30I7cGSOfuDZ8ntdf08a8+uyZJrJzAWvIn8ke0NEbAOmX7NZk0qkwADarILwdIFZVYc4KV0/8mdV/kut1u2U6VJQH8vLBDZbBbaKv3b7PvIz8q6XLOxTzKh16yc1dwSTIWpOWYnmw8ygsXOw1M9ADeY3P82/e8FYoGZJgP6vZ/A3RUeBsu+/d7TTch0XsGRQ7ixmo7hRtGeoJIT3Eo7BTHQm5x6GO1JcYn1w1BtTpMihe8nVGG5YmIvOcNApV3LrlLfdHh79qfBjqSttLJVhBNx4o7T/8WrtiJJ66Fa7zapuPX9MfLNyoF0gTtdPpG3AsqV+2fQzXPWNS64olBD1GvE6IjdKfYnUtTsDFyc5WsVEx5dnr1dQ9U9s0cZPnFKBebxXZaTa4K1hUMcrU0IzGZEh+5Tvgt518NBdzHZxOUlXnrWLHzvkIHNLxgEdoev/56pTJYZYt3+RuuKBM+PlZgkiwx0ZheginfMiEolgq4lLFZ4BaEqlFTcWlRYQkc=
+x-microsoft-antispam-message-info: dr5qq1nNoFNtM/NvStaperHszAO/juxivmfkOa7CVWnCOMcxa2eVibmHUcmYU0b46QUI9WEgHN+SGr6JLA9BSbPlAjT2JfAvdVS61Ya5EIkldi5rqaN6fLUjYvAzyBDPq5UTB8g4T3y/SMAnq748Ujju2uFNyKZ4H2yjqN0ZvPAKSGAQ28rqV0jwYuGkL5GwmqrvMI5QO1xVh3mCYT4treoyBFP45rOr+zGGcB8C81+3dvbpSYg7db4ImQS24dx7F4lpkcpqdcTOJhmsoxhl0g9M+wilUa+JzxAJrJMfhQYltEAuOVtzjLqTEU7Mdbb7esFc7SiC80E7JcbKn9/ht113ZU+PdU2ySu2fpXZPkhMxk31QsnWmgCLH4JZKD+WSTlQbxIeBHoAN0JdpvlSha7nxLERR1lHyU74Ci7WGS4pw1YGZHoolDoZ/FjiEnhWk3vlFYlbBtjbrCJQlbkXxgLUzt7QBTtVY9U15pKqG7Av9pyIzsHzaeAWd1dlOPSlj3VzNMP2X8wwZUlwtXQdn3nkBWU6G064qhoNo2aW1kkKI/OhgveVs8L3RWjdgblKNH7mD3hTWQoG/CKmV3CUoKE+5V8M41R2vGNAaAeL+/L4=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BL0PR11MB3521.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230028)(366004)(136003)(396003)(376002)(39860400002)(346002)(451199021)(110136005)(478600001)(71200400001)(7696005)(54906003)(186003)(53546011)(6506007)(26005)(9686003)(966005)(76116006)(2906002)(41300700001)(4326008)(316002)(64756008)(66556008)(66446008)(66946007)(5660300002)(52536014)(8936002)(7416002)(8676002)(66476007)(38100700002)(122000001)(82960400001)(33656002)(86362001)(38070700005)(83380400001)(55016003)(84970400001);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3t7EJAnSjNBJJTPGjPEwn2C0MeQFkacu8UlfoTYkO15O8iT5MBnC+L1FC0BM?=
- =?us-ascii?Q?5yIBmWoDTzaAhK3fjhcryu8Vs5ka2tyJG4vlxbgMZNf9e+qdd1z2sLLG3qea?=
- =?us-ascii?Q?/0ZOYdnhS3aLhJRyh9d+TVT5yZYjJgA2JaSas9NZdlvP0BWvboA5bD7sJ9vv?=
- =?us-ascii?Q?yxdieSZCezBb8ZGrhbUkP8XGp24MEddRo4KHQAKi27Wb23csF25jNxmZwOy8?=
- =?us-ascii?Q?a4m+yhS6LrP1ID5d++7u06YUNuahusIOKowLLZknX+04dW4xr4ppTm7FesZq?=
- =?us-ascii?Q?/trgbmdGzOxUNQlMiKKh6IiR+HwzJuOXU+9AYXGT86mUfVmW8eyMvz579G9q?=
- =?us-ascii?Q?tZaFzMJ7ppJpSq7mNPoiTtkUHe/ey7xzUt/x/7uWAZgXOlo7rymodfOBQhTz?=
- =?us-ascii?Q?6GnV0sj6YtxRd8q1tKa+qpP+mno/kPhJzCmGevhgswqKW+9i1cLW8aONoWmd?=
- =?us-ascii?Q?6d9f8zRU5df+RzFBW36AMXG5epduSGlxe4iw/5mn1/rpyUCMhmOP2rGfKHxj?=
- =?us-ascii?Q?zup/7x2Hyg8sjNO2Oy0+d3wuiE3xFkimL/SUqVNOQaewOvJYGW2x4hNFTpUU?=
- =?us-ascii?Q?pP3WP/S3gzSM57bojq94qeVt8lb20AX0ePVikiJ6xBD+wSHHtQ+HNVSOR6+z?=
- =?us-ascii?Q?CeIBjwVXPXTajaWr467UVGpO0yQ1v4jws5w9ix+7MzZuK/jpafmEAng509Ed?=
- =?us-ascii?Q?Wc4yFs3oDYICT7r930z4v1XZn55fP68VtSfW7azmsJSSs/+qfZuzaZ3KD6DS?=
- =?us-ascii?Q?oMee0UpVjT+6U7tSVng2+dpJLfMfT0Dvylu6WDmrprdkbOH6oEJFphcIvhJt?=
- =?us-ascii?Q?dyiMf3DVuxiQmlVWAZvJV+IwibuUwXOytN0JcrXckSssRerYf+6wjzhmD2um?=
- =?us-ascii?Q?D2rx077lHXR1rFrVk9RjgKeRv4+cFI6p69KErIaYc4QiXsrq1p19ctQ/Ae6R?=
- =?us-ascii?Q?Dn0LuXPTzQDastUBQ59TS+jsWRAHO+4Tpy3N5Nrkol6ABh7tSPxYvqSr7oZV?=
- =?us-ascii?Q?E+yc21l99OJoWcR0z2ClKzW6khSuDX9XlTMvIXCfURl0e6TztNCkI9vSWUmA?=
- =?us-ascii?Q?QeY2eMSmCMHV1LqL78/sUgVveDHy5yurplFQAGxJmzqDQeixMGEV5phpu1h6?=
- =?us-ascii?Q?cWMJ5ZlD9Raf0YQ4pNprbaCtbDC+JJ8sT0xnGSwiH88XbcIv9G33m7YVnjtm?=
- =?us-ascii?Q?JowegQ2TkXYOkyCjhWBaWMx8uVj8mfoLtZdsYrNibFjgY7rwJ6Vw7G0S7Nr+?=
- =?us-ascii?Q?QSgbx4+36O1y73b52h9uAkTZ0OKMYel4Jr16unxWMKRML75vdGui928t0A+q?=
- =?us-ascii?Q?fx3dH/nYj+hPgeShAM6zCrJn+WRE/i2tfAsgcuWTH0XLCGhykPSwmbwVnfXS?=
- =?us-ascii?Q?smIwxOac8df1CscbaCiZkU4Qibxb1Kuxp0yskykoPtxhmzAJiflKoCr2A2rp?=
- =?us-ascii?Q?mRRYKwHTcH174zz3r5IeSXHYVryWmfGSrF/jRB8H9CGhGnwAV5Ui/OoJMUNt?=
- =?us-ascii?Q?gZK1QOpVzX0G0AZcz23wYg6r8IN1WDU1EYfKIDY0sE1ud9FWYumXZnprFMCM?=
- =?us-ascii?Q?RyG/MTa86huIdxrRxdqmInZRyJd95l+LDxRkz9sAVS1MA11jN6DsfEDekq0X?=
- =?us-ascii?Q?jw=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HBtBiQ5RO9CltEEdikwr6A0l1FIXTTDH1j15BE5nVxfRqw8CkgmGo7F2OoM9?=
+ =?us-ascii?Q?1xRv9TC7DvP+skTqAJMxSmfA3WEKXQ/VJerCuboMcpJsf8eoPAvHcCd4KN+8?=
+ =?us-ascii?Q?mYZQEr/o1rvFS7gCTI3ktBpfZ/85PYpznM4mm+nOefeVRBfxiK2VHKJ5anLC?=
+ =?us-ascii?Q?XxaYaa6StxSt+xHfWOttMXdWn2P3Zt9m7Q1ivhT3/6ZBwgWA95/lZl2lJ2IZ?=
+ =?us-ascii?Q?B0ll180d3oWOAaNdJyw2ppylOI0tp6416hkzwgrfMfZnDqWrXcIUgTq+9hMk?=
+ =?us-ascii?Q?P5y4l9TgqJphNfZF+U4dmln+J9FBy2Uwcz1VpzXNT+d+JyPapAc0iF0SZGon?=
+ =?us-ascii?Q?rFLwULbOfsMKaE65mCTI8AnH7oVGpFKYpWucXgDcJ3uHHjhJdTuF7rqKt/YJ?=
+ =?us-ascii?Q?PWvjCo++n6F7Hu/zt/aEjZIFfsZUBev9sC+fMuDQ+gpOYwVt6Tm1WX823DBH?=
+ =?us-ascii?Q?ZCCdfeRd5TPLrh0uuvnp1u/SgyaPMAXtCztkuRM1aNjyYnBtb0RLg72zLqHn?=
+ =?us-ascii?Q?Hf3iB0W1vKjbjA+d4GGLzClde5SNeE+k6xx+vfO806DZlY0kBVnCVfBS7Llh?=
+ =?us-ascii?Q?o0JDgwm2OEX4U/JnBgX0geGaD4XTlvNDoAYfJiyXOwAs6RdyredEC7X3QniI?=
+ =?us-ascii?Q?bYebdeZVS3Ydq0ybmqvrRA/3g4FLinLaC/9hwRUYYcmsJa00QuUSx1Sc/RC1?=
+ =?us-ascii?Q?/cxDXQLiM+ye5nppxgrD7RGlNl4NeZYy5tQGzsV6/ip4Oz1mpp5uar+j8npY?=
+ =?us-ascii?Q?92FKs9Km6460HjFi0mKyPRA2z2uRdo6NXX5pLjbeVNtZFqFRk8SRhfSqbEK7?=
+ =?us-ascii?Q?wNkRKM/s/kekPaouinF0RD2Td6If4FNbKSfi4Drc/gJ1TUZAHfn0O04+Y3Ig?=
+ =?us-ascii?Q?TV8lQBHL1RGhKAwcL+2J3Tx5ZzxUMTOT6i1BfVXzKw3M3sTJL63OkYOMNKIf?=
+ =?us-ascii?Q?5sel5k9Pk/NlIolitbnBOpI1rW4wafERnAyH6t5YBGvQgevDci5qSIfCnYXV?=
+ =?us-ascii?Q?vHfnbI4GOwPZ248fjDkSb/XzgFv0IASiiMCRa6U9cSAeigFFOaCkEduzp26+?=
+ =?us-ascii?Q?qyHvTBfNJ3JBfnMEdHHGSFYawVmNvwtaqoHeW9opQMYeT8KIH9feJLQXIM8h?=
+ =?us-ascii?Q?OZXW/nA219Z7gQeweEyzdfCrxOlgz03YKhsnUD21zJVdJeW7Q0CnYd2p6WUA?=
+ =?us-ascii?Q?gaEX8ArU+p9JkNHHz+IixhC6+Sv5t8yQsZfx0xim0XqMdRPxX9LZqSQqLX2g?=
+ =?us-ascii?Q?/xJjG/jpSuiiA+KTyVIDwAWNqAKIdLPy7Wjk7WpmB1jEze58Y36+aXoSxFwK?=
+ =?us-ascii?Q?xLk0I5BofcsZdye6ZFMMVYOfaEiyvOls/RsMUzja/gcpAURn3FRChCDL1N8v?=
+ =?us-ascii?Q?jsVfkz6Czlc+I516oyAoM4SB5sMvk0EUQ4jsu2mtTqYfkQN5BkRSz/A1jqxG?=
+ =?us-ascii?Q?IBS29oHCADw9EUBXd/fUxFIemyeF6YVfJPdy9sTDUXaFv7ceHIYXNRT02ui8?=
+ =?us-ascii?Q?Bpe+rkIX3U1c0Us/r63pti0FVP/ZC3uhkEtXNcxAFaTFGSxOYaWg0cIY67jS?=
+ =?us-ascii?Q?HQwGFl52ZYKfLMOiovCKgGk0pbVU2rAcNdVjVPV4Sa/iUcFdDK++EcHXHEY6?=
+ =?us-ascii?Q?MA=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3521.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5ba7e78b-3282-4b62-333e-08db86c95870
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2023 13:25:53.3012 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 296492c3-12ce-4204-dc9f-08db86c97b97
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jul 2023 13:26:52.2627 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Yyz11bmiMAAIRaWr9CXWecL5QTw5+mgbrnsmtiqPirw6HhCP8Dyi14MedqbO/luAPuCo+R5IKZGZCtEul3TagvEvCdxkawlnx3n5mOf+9jo=
+X-MS-Exchange-CrossTenant-userprincipalname: Sf4w+Vnsp3amYs4/SYQp4KdCQI0C/GdMi6besD0HLMncOLf1276nxiLMvuvMLm4V6TjhwVBDyfy+/FgaRjjZYGgtoNN0O01JrNxscPX4Q9c=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB6770
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689600360; x=1721136360;
+ t=1689600428; x=1721136428;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=JudSg3tEKuZKL5TAvWctdfu8IY8IazwQspec4Xvl9LM=;
- b=RPjpO/oLJ2oOvT3BB+XDPNRaqRVmOzVBsLV+1+Aahfx+wVuBo/kXNjUu
- pdFhcA6JCPGfrRZUkHe4PFUyVYT7tdBVs07XsuIw9I9ij7gAydCcmfxuT
- 5wUP2YHa2UCFJ0V0K5+l53FYe6cXcltmdQgeHmf5dx8jwERPrCylf8zb4
- wOKju+vwZ+QGxHEI3LrllF+Gmw6fhk8gd4+U3SEE01Gyrqi7xr8VmRlp0
- DWzE4rFfIqFl3to+4AtYwvKuA4AWUAasxwmyv3UPJbC03QoNNwR+7jBSM
- XeQJ3rXU7zgcbRPtR9PEGyTbgKDF0f/fZKoYyFE3zVDetFZOkTXcnYT3W
+ bh=XINq3PZ9jwOhuwEfgSovvHePaqe7bFz+GYGM6I5SB2I=;
+ b=NIQumOK0eHEgFj9Rn28m13rB6qBsDrH9ZR++ZN3Pp72a1+jgPXIZsUwL
+ nPv7Ono9lLkobW7LAlL1gnlSzUb5S0lwy/BO6a7iaKYmtp0/MWzjrizZ1
+ HrL6kE/QUqdq+37tBYc6Lxmr2kpYyU8ikXtivsZ65Y/aLhI6BDfTInoGy
+ TubNP+c6Wdb1dt+iC2qH8+lcE65+cYk8llj6WdiVdC27y7AXvhdcV1BEM
+ 9wY/a4mTYlbErHTAaWmeNSimxUSPFnm+F8gbGMffOXlzflPq9TIMxFZ3B
+ Xb3h3wdYTlCKeyRkEFP5YEbuipzNSvPCKm7151piCtZ4sDgoR7WWUladl
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RPjpO/oL
+ header.a=rsa-sha256 header.s=Intel header.b=NIQumOK0
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v5 1/2] iavf: Fix use-after-free
- in free_netdev
+Subject: Re: [Intel-wired-lan] [PATCH net v5 2/2] iavf: Fix out-of-bounds
+ when setting channels on remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -227,13 +227,15 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > simon.horman@corigine.com; kuba@kernel.org; netdev@vger.kernel.org;
 > pabeni@redhat.com; davem@davemloft.net; linux-
 > hardening@vger.kernel.org
-> Subject: Re: [Intel-wired-lan] [PATCH net v5 1/2] iavf: Fix use-after-free in
-> free_netdev
+> Subject: Re: [Intel-wired-lan] [PATCH net v5 2/2] iavf: Fix out-of-bounds
+> when setting channels on remove
 > 
-> On Tue, May 09, 2023 at 07:11:47PM +0800, Ding Hui wrote:
-> > We do netif_napi_add() for all allocated q_vectors[], but potentially
-> > do netif_napi_del() for part of them, then kfree q_vectors and leave
-> > invalid pointers at dev->napi_list.
+> On Tue, May 09, 2023 at 07:11:48PM +0800, Ding Hui wrote:
+> > If we set channels greater during iavf_remove(), and waiting reset
+> > done would be timeout, then returned with error but changed
+> > num_active_queues directly, that will lead to OOB like the following
+> > logs. Because the num_active_queues is greater than tx/rx_rings[]
+> allocated actually.
 > >
 > > Reproducer:
 > >
@@ -284,148 +286,99 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > >
 > > Result:
 > >
-> > [ 4093.900222]
+> > [ 3506.152887] iavf 0000:41:02.0: Removing device [ 3510.400799]
 > >
 > ==========================================================
 > ========
-> > [ 4093.900230] BUG: KASAN: use-after-free in free_netdev+0x308/0x390 [
-> > 4093.900232] Read of size 8 at addr ffff88b4dc145640 by task
-> > repro.sh/6699 [ 4093.900233]
-> > [ 4093.900236] CPU: 10 PID: 6699 Comm: repro.sh Kdump: loaded Tainted:
-> G           O     --------- -t - 4.18.0 #1
-> > [ 4093.900238] Hardware name: Powerleader PR2008AL/H12DSi-N6, BIOS
+> > [ 3510.400820] BUG: KASAN: slab-out-of-bounds in
+> > iavf_free_all_tx_resources+0x156/0x160 [iavf] [ 3510.400823] Read of
+> > size 8 at addr ffff88b6f9311008 by task repro.sh/55536 [ 3510.400823]
+> > [ 3510.400830] CPU: 101 PID: 55536 Comm: repro.sh Kdump: loaded
+> Tainted: G           O     --------- -t - 4.18.0 #1
+> > [ 3510.400832] Hardware name: Powerleader PR2008AL/H12DSi-N6, BIOS
 > 2.0
-> > 04/09/2021 [ 4093.900239] Call Trace:
-> > [ 4093.900244]  dump_stack+0x71/0xab
-> > [ 4093.900249]  print_address_description+0x6b/0x290
-> > [ 4093.900251]  ? free_netdev+0x308/0x390 [ 4093.900252]
-> > kasan_report+0x14a/0x2b0 [ 4093.900254]  free_netdev+0x308/0x390 [
-> > 4093.900261]  iavf_remove+0x825/0xd20 [iavf] [ 4093.900265]
-> > pci_device_remove+0xa8/0x1f0 [ 4093.900268]
+> > 04/09/2021 [ 3510.400835] Call Trace:
+> > [ 3510.400851]  dump_stack+0x71/0xab
+> > [ 3510.400860]  print_address_description+0x6b/0x290
+> > [ 3510.400865]  ? iavf_free_all_tx_resources+0x156/0x160 [iavf] [
+> > 3510.400868]  kasan_report+0x14a/0x2b0 [ 3510.400873]
+> > iavf_free_all_tx_resources+0x156/0x160 [iavf] [ 3510.400880]
+> > iavf_remove+0x2b6/0xc70 [iavf] [ 3510.400884]  ?
+> > iavf_free_all_rx_resources+0x160/0x160 [iavf] [ 3510.400891]  ?
+> > wait_woken+0x1d0/0x1d0 [ 3510.400895]  ?
+> > notifier_call_chain+0xc1/0x130 [ 3510.400903]
+> > pci_device_remove+0xa8/0x1f0 [ 3510.400910]
 > > device_release_driver_internal+0x1c6/0x460
-> > [ 4093.900271]  pci_stop_bus_device+0x101/0x150 [ 4093.900273]
+> > [ 3510.400916]  pci_stop_bus_device+0x101/0x150 [ 3510.400919]
 > > pci_stop_and_remove_bus_device+0xe/0x20
-> > [ 4093.900275]  pci_iov_remove_virtfn+0x187/0x420 [ 4093.900277]  ?
-> > pci_iov_add_virtfn+0xe10/0xe10 [ 4093.900278]  ?
-> > pci_get_subsys+0x90/0x90 [ 4093.900280]  sriov_disable+0xed/0x3e0 [
-> > 4093.900282]  ? bus_find_device+0x12d/0x1a0 [ 4093.900290]
-> > i40e_free_vfs+0x754/0x1210 [i40e] [ 4093.900298]  ?
-> > i40e_reset_all_vfs+0x880/0x880 [i40e] [ 4093.900299]  ?
-> > pci_get_device+0x7c/0x90 [ 4093.900300]  ? pci_get_subsys+0x90/0x90 [
-> > 4093.900306]  ? pci_vfs_assigned.part.7+0x144/0x210
-> > [ 4093.900309]  ? __mutex_lock_slowpath+0x10/0x10 [ 4093.900315]
-> > i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e] [ 4093.900318]
-> > sriov_numvfs_store+0x214/0x290 [ 4093.900320]  ?
-> > sriov_totalvfs_show+0x30/0x30 [ 4093.900321]  ?
-> > __mutex_lock_slowpath+0x10/0x10 [ 4093.900323]  ?
-> > __check_object_size+0x15a/0x350 [ 4093.900326]
-> > kernfs_fop_write+0x280/0x3f0 [ 4093.900329]  vfs_write+0x145/0x440 [
-> > 4093.900330]  ksys_write+0xab/0x160 [ 4093.900332]  ?
-> > __ia32_sys_read+0xb0/0xb0 [ 4093.900334]  ? fput_many+0x1a/0x120 [
-> > 4093.900335]  ? filp_close+0xf0/0x130 [ 4093.900338]
-> > do_syscall_64+0xa0/0x370 [ 4093.900339]  ? page_fault+0x8/0x30 [
-> > 4093.900341]  entry_SYSCALL_64_after_hwframe+0x65/0xca
-> > [ 4093.900357] RIP: 0033:0x7f16ad4d22c0 [ 4093.900359] Code: 73 01 c3
+> > [ 3510.400924]  pci_iov_remove_virtfn+0x187/0x420 [ 3510.400927]  ?
+> > pci_iov_add_virtfn+0xe10/0xe10 [ 3510.400929]  ?
+> > pci_get_subsys+0x90/0x90 [ 3510.400932]  sriov_disable+0xed/0x3e0 [
+> > 3510.400936]  ? bus_find_device+0x12d/0x1a0 [ 3510.400953]
+> > i40e_free_vfs+0x754/0x1210 [i40e] [ 3510.400966]  ?
+> > i40e_reset_all_vfs+0x880/0x880 [i40e] [ 3510.400968]  ?
+> > pci_get_device+0x7c/0x90 [ 3510.400970]  ? pci_get_subsys+0x90/0x90 [
+> > 3510.400982]  ? pci_vfs_assigned.part.7+0x144/0x210
+> > [ 3510.400987]  ? __mutex_lock_slowpath+0x10/0x10 [ 3510.400996]
+> > i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e] [ 3510.401001]
+> > sriov_numvfs_store+0x214/0x290 [ 3510.401005]  ?
+> > sriov_totalvfs_show+0x30/0x30 [ 3510.401007]  ?
+> > __mutex_lock_slowpath+0x10/0x10 [ 3510.401011]  ?
+> > __check_object_size+0x15a/0x350 [ 3510.401018]
+> > kernfs_fop_write+0x280/0x3f0 [ 3510.401022]  vfs_write+0x145/0x440 [
+> > 3510.401025]  ksys_write+0xab/0x160 [ 3510.401028]  ?
+> > __ia32_sys_read+0xb0/0xb0 [ 3510.401031]  ? fput_many+0x1a/0x120 [
+> > 3510.401032]  ? filp_close+0xf0/0x130 [ 3510.401038]
+> > do_syscall_64+0xa0/0x370 [ 3510.401041]  ? page_fault+0x8/0x30 [
+> > 3510.401043]  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> > [ 3510.401073] RIP: 0033:0x7f3a9bb842c0 [ 3510.401079] Code: 73 01 c3
 > > 48 8b 0d d8 cb 2c 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00
 > > 83 3d 89 24 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73
-> > 31 c3 48 83 ec 08 e8 fe dd 01 00 48 89 04 24 [ 4093.900360] RSP:
-> > 002b:00007ffd6491b7f8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001 [
-> > 4093.900362] RAX: ffffffffffffffda RBX: 0000000000000002 RCX:
-> > 00007f16ad4d22c0 [ 4093.900363] RDX: 0000000000000002 RSI:
-> > 0000000001a41408 RDI: 0000000000000001 [ 4093.900364] RBP:
-> > 0000000001a41408 R08: 00007f16ad7a1780 R09: 00007f16ae1f2700 [
-> > 4093.900364] R10: 0000000000000001 R11: 0000000000000246 R12:
-> 0000000000000002 [ 4093.900365] R13: 0000000000000001 R14:
-> 00007f16ad7a0620 R15: 0000000000000001 [ 4093.900367] [ 4093.900368]
-> Allocated by task 820:
-> > [ 4093.900371]  kasan_kmalloc+0xa6/0xd0 [ 4093.900373]
-> > __kmalloc+0xfb/0x200 [ 4093.900376]
-> > iavf_init_interrupt_scheme+0x63b/0x1320 [iavf] [ 4093.900380]
-> > iavf_watchdog_task+0x3d51/0x52c0 [iavf] [ 4093.900382]
-> > process_one_work+0x56a/0x11f0 [ 4093.900383]
+> > 31 c3 48 83 ec 08 e8 fe dd 01 00 48 89 04 24 [ 3510.401080] RSP:
+> > 002b:00007ffc05f1fe18 EFLAGS: 00000246 ORIG_RAX: 0000000000000001 [
+> > 3510.401083] RAX: ffffffffffffffda RBX: 0000000000000002 RCX:
+> > 00007f3a9bb842c0 [ 3510.401085] RDX: 0000000000000002 RSI:
+> > 0000000002327408 RDI: 0000000000000001 [ 3510.401086] RBP:
+> > 0000000002327408 R08: 00007f3a9be53780 R09: 00007f3a9c8a4700 [
+> > 3510.401086] R10: 0000000000000001 R11: 0000000000000246 R12:
+> 0000000000000002 [ 3510.401087] R13: 0000000000000001 R14:
+> 00007f3a9be52620 R15: 0000000000000001 [ 3510.401090] [ 3510.401093]
+> Allocated by task 76795:
+> > [ 3510.401098]  kasan_kmalloc+0xa6/0xd0 [ 3510.401099]
+> > __kmalloc+0xfb/0x200 [ 3510.401104]
+> > iavf_init_interrupt_scheme+0x26f/0x1310 [iavf] [ 3510.401108]
+> > iavf_watchdog_task+0x1d58/0x4050 [iavf] [ 3510.401114]
+> > process_one_work+0x56a/0x11f0 [ 3510.401115]
 > worker_thread+0x8f/0xf40
-> > [ 4093.900384]  kthread+0x2a0/0x390 [ 4093.900385]
-> > ret_from_fork+0x1f/0x40 [ 4093.900387]  0xffffffffffffffff [
-> > 4093.900387] [ 4093.900388] Freed by task 6699:
-> > [ 4093.900390]  __kasan_slab_free+0x137/0x190 [ 4093.900391]
-> > kfree+0x8b/0x1b0 [ 4093.900394]  iavf_free_q_vectors+0x11d/0x1a0
-> > [iavf] [ 4093.900397]  iavf_remove+0x35a/0xd20 [iavf] [ 4093.900399]
-> > pci_device_remove+0xa8/0x1f0 [ 4093.900400]
-> > device_release_driver_internal+0x1c6/0x460
-> > [ 4093.900401]  pci_stop_bus_device+0x101/0x150 [ 4093.900402]
-> > pci_stop_and_remove_bus_device+0xe/0x20
-> > [ 4093.900403]  pci_iov_remove_virtfn+0x187/0x420 [ 4093.900404]
-> > sriov_disable+0xed/0x3e0 [ 4093.900409]  i40e_free_vfs+0x754/0x1210
-> > [i40e] [ 4093.900415]  i40e_pci_sriov_configure+0x1fa/0x2e0 [i40e] [
-> > 4093.900416]  sriov_numvfs_store+0x214/0x290 [ 4093.900417]
-> > kernfs_fop_write+0x280/0x3f0 [ 4093.900418]  vfs_write+0x145/0x440 [
-> > 4093.900419]  ksys_write+0xab/0x160 [ 4093.900420]
-> > do_syscall_64+0xa0/0x370 [ 4093.900421]
-> > entry_SYSCALL_64_after_hwframe+0x65/0xca
-> > [ 4093.900422]  0xffffffffffffffff
-> > [ 4093.900422]
-> > [ 4093.900424] The buggy address belongs to the object at
-> ffff88b4dc144200
-> >                 which belongs to the cache kmalloc-8k of size 8192 [
-> > 4093.900425] The buggy address is located 5184 bytes inside of
-> >                 8192-byte region [ffff88b4dc144200, ffff88b4dc146200)
-> > [ 4093.900425] The buggy address belongs to the page:
-> > [ 4093.900427] page:ffffea00d3705000 refcount:1 mapcount:0
-> > mapping:ffff88bf04415c80 index:0x0 compound_mapcount: 0 [
-> 4093.900430]
-> > flags: 0x10000000008100(slab|head) [ 4093.900433] raw:
-> > 0010000000008100 dead000000000100 dead000000000200 ffff88bf04415c80
-> [
-> > 4093.900434] raw: 0000000000000000 0000000000030003 00000001ffffffff
-> > 0000000000000000 [ 4093.900434] page dumped because: kasan: bad access
-> > detected [ 4093.900435] [ 4093.900435] Memory state around the buggy
-> address:
-> > [ 4093.900436]  ffff88b4dc145500: fb fb fb fb fb fb fb fb fb fb fb fb
-> > fb fb fb fb [ 4093.900437]  ffff88b4dc145580: fb fb fb fb fb fb fb fb
-> > fb fb fb fb fb fb fb fb [ 4093.900438] >ffff88b4dc145600: fb fb fb fb fb fb fb
-> fb fb fb fb fb fb fb fb fb
-> > [ 4093.900438]                                            ^
-> > [ 4093.900439]  ffff88b4dc145680: fb fb fb fb fb fb fb fb fb fb fb fb
-> > fb fb fb fb [ 4093.900440]  ffff88b4dc145700: fb fb fb fb fb fb fb fb
-> > fb fb fb fb fb fb fb fb [ 4093.900440]
+> > [ 3510.401117]  kthread+0x2a0/0x390 [ 3510.401119]
+> > ret_from_fork+0x1f/0x40 [ 3510.401122]  0xffffffffffffffff [
+> > 3510.401123]
 > >
-> ==========================================================
-> ========
+> > In timeout handling, we should keep the original num_active_queues and
+> > reset num_req_queues to 0.
 > >
-> > Although the patch #2 (of 2) can avoid the issuse triggered by this
-> > repro.sh, there still are other potential risks that if
-> > num_active_queues is changed to less than allocated q_vectors[] by
-> > unexpected, the mismatched netif_napi_add/del() can also cause UAF.
-> >
-> > Since we actually call netif_napi_add() for all allocated q_vectors
-> > unconditionally in iavf_alloc_q_vectors(), so we should fix it by
-> > letting netif_napi_del() match to netif_napi_add().
-> >
-> > Fixes: 5eae00c57f5e ("i40evf: main driver core")
+> > Fixes: 4e5e6b5d9d13 ("iavf: Fix return of set the new channel count")
 > > Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
 > > Cc: Donglin Peng <pengdonglin@sangfor.com.cn>
 > > Cc: Huang Cun <huangcun@sangfor.com.cn>
-> > Reviewed-by: Simon Horman <simon.horman@corigine.com>
-> > Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
-> > Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
 > > ---
 > > v4 to v5:
-> >   - no changes
+> >   - remove testing __IAVF_IN_REMOVE_TASK condition
+> >   - update commit message
+> >   - remove Reviewed-by tags to review again
 > >
 > > v3 to v4:
-> >   - fix typo in commit message
+> >   - nothing changed
 > >
 > > v2 to v3:
 > >   - fix review tag
 > >
 > > v1 to v2:
-> >   - add Fixes: tag
 > >   - add reproduction script
-> >   - update commit message
 > >
 > > ---
-> >  drivers/net/ethernet/intel/iavf/iavf_main.c | 6 +-----
-> >  1 file changed, 1 insertion(+), 5 deletions(-)
+> >  drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > >
 > 
 > Thanks,
