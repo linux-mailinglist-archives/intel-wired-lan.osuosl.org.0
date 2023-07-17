@@ -1,108 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4155E755D5A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Jul 2023 09:47:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF58C755F1A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Jul 2023 11:20:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ACCB94098E;
-	Mon, 17 Jul 2023 07:47:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ACCB94098E
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7E93A409F8;
+	Mon, 17 Jul 2023 09:20:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E93A409F8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689580050;
-	bh=i65gu0yAdi2TZyovulGCJIdNuWTZAi0IHv/D4ij6A+o=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=6GajNDjAHrvlN1ez3aYSoGhMsj61bissInswLUDGyj4PKRm4Q3GG0knm79+daMroQ
-	 JFgj3829Mq/R/ZFBzVhLDqXyRaKd2t8dKENQ+YD3S1I6z7E0yQMpoS5u1X8tGIwaP0
-	 5JWg8DSFsPzsnz/Vew7/VfP5Q8lTMukYnxUhaO2tRDY0UBGT8G4tIzxUkaZc3GzSRr
-	 ENsyNM7Z0tYj4rDrR4+qo0TBeh6mtDPdTdv/T3azAlt1Tclj3bB82TzivJTnHQEsaF
-	 ACU0T2Zwv1/T5xTxvZ76fasYwCyEaaxRTK9fCqnVFcNw9Th1Wrc+0YICytkhKDpr1Y
-	 9oQCbjLOJiYxw==
+	s=default; t=1689585609;
+	bh=q2RPpVVFm4QGWN55bsRjRm1mhhVs9Jm+fuR0qjYvx/8=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=huREecAl0AIyZUyjWQ5+XYujLp13zTPQX/1Zfg2au9R7uANyGg8AD5ArtSUT2K6pH
+	 /ATZqL/u9ywIhB7DyYVYA+dTj2zrlo0oPa/ju0RiNy6upwnh5tcTWd0i4Oh49fysSi
+	 mHolLfmdjgaskje2TDtVGjULwoCJaGOe5dYFgCkdA4QAxH0P34hz28bp/jx/d7j3Md
+	 5+mCAr9hWfeV0pmxl5fBFhOAuhQgq7Zu77AMwxFyvcctjLmmGDTjM6vLxS1cEOiI+2
+	 m/V/rQVyihNTig+FCUUM2h6AVDy/fmqcsTRvIre01+i4Fx+5d21iM9LW0AL1DSzmui
+	 +EhnAgopgahUA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eqcPBis-Uk8F; Mon, 17 Jul 2023 07:47:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id S882bwONGbss; Mon, 17 Jul 2023 09:20:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0DB7C4098B;
-	Mon, 17 Jul 2023 07:47:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0DB7C4098B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6CB0340412;
+	Mon, 17 Jul 2023 09:20:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6CB0340412
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C514D1BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 07:47:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F7991BF363
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 09:20:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9BA7E4098B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 07:47:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9BA7E4098B
+ by smtp2.osuosl.org (Postfix) with ESMTP id 25840404AF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 09:20:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25840404AF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o6kDGDifGtMl for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Jul 2023 07:47:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bmTDOHGRTUGB for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Jul 2023 09:20:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A94440987
-Received: from smtp-relay-internal-0.canonical.com
- (smtp-relay-internal-0.canonical.com [185.125.188.122])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1A94440987
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 07:47:22 +0000 (UTC)
-Received: from mail-oo1-f72.google.com (mail-oo1-f72.google.com
- [209.85.161.72])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 5DE283F487
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 07:47:17 +0000 (UTC)
-Received: by mail-oo1-f72.google.com with SMTP id
- 006d021491bc7-560ce5f7646so5520471eaf.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 00:47:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689580035; x=1692172035;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3gAfaAKrcJgIAcFAT2kE7R0UfBXH+B9pPbdV57Y5Wuk=;
- b=inYl5o7DdeNPbSslqxjl7wzLP51S4PubwOk+VcoDkt4NUrwhM4u3jAt2E6s7XYCKA/
- ATn7IJWj0aB/yMDpDGfE9URbNidmwSQZQ54Du9+DuhgCC8uf18fVRYqVABxJqxfhdF/k
- bKHri+i8VzjrZQPFMJlMlZwPlR9Z3ZZpOOrQbRd8vaCg5pqeUoENgPmLvGh/vqKA/0x8
- SRrXnnQSUgjpJGMfWi/MP8hVso7C64BzS9yox4hN3e5TIubriKVRvduIXguZTh2zsvZw
- uCYoFoZnKc0fWkXjPW0rgal5tQa1xYu7hSADVwv46PGve3ow7ArdvhDOgraGiX8PdhfY
- veCw==
-X-Gm-Message-State: ABy/qLb1L7ob9x7pq5kM2wUssPtOjSm4AMte4jPgyGZ9bTvR6LPsVmW4
- z7K9CR1SMPs22Tfyt7vrlyQefwZ+89RWfNWjJvFanCbFLg7ceOEKqCIkFo/Lj6P1vL/TteWhGAR
- +kFRMFMm53XJAWIOjX4BUjwQdM8p6F0g2l1RGRi45HgyjuYRNtrhx9q6Y8ltHL5U=
-X-Received: by 2002:a05:6358:4291:b0:133:291:f9ac with SMTP id
- s17-20020a056358429100b001330291f9acmr8421574rwc.25.1689580035721; 
- Mon, 17 Jul 2023 00:47:15 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlG9DoONFKdmsKqUh/LuGSuwifc1GAuZNV44ZqW0/u5tIfGEjz1hRCf3IVbFGKMGLXWKhFrokqQ0Xv8dAN/JWlM=
-X-Received: by 2002:a05:6358:4291:b0:133:291:f9ac with SMTP id
- s17-20020a056358429100b001330291f9acmr8421558rwc.25.1689580035356; Mon, 17
- Jul 2023 00:47:15 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2F2E040412
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2F2E040412
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Jul 2023 09:20:02 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10773"; a="364760127"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="364760127"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2023 02:20:01 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10773"; a="752830769"
+X-IronPort-AV: E=Sophos;i="6.01,211,1684825200"; d="scan'208";a="752830769"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga008.jf.intel.com with ESMTP; 17 Jul 2023 02:19:59 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 1E8EC33BD2;
+ Mon, 17 Jul 2023 10:19:58 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 17 Jul 2023 11:18:43 +0200
+Message-Id: <20230717091843.108015-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-References: <874jm6nsd0.fsf@intel.com> <20230715191216.GA364070@bhelgaas>
-In-Reply-To: <20230715191216.GA364070@bhelgaas>
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Date: Mon, 17 Jul 2023 15:47:04 +0800
-Message-ID: <CAAd53p6SiQrmjWA3=4CE0tw15-ZfmkcqTNoheXzkkkargfGtCw@mail.gmail.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=canonical.com; s=20210705; t=1689580037;
- bh=3gAfaAKrcJgIAcFAT2kE7R0UfBXH+B9pPbdV57Y5Wuk=;
- h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
- To:Cc:Content-Type;
- b=K8hR62ljMn1m6vkLxvCo/yL3vl/+mlbkYKaEUz7x//DxzXcJ53tsDHtnz7/WzXEK0
- GVtfiVuV3wW27uFz5mmaw66hHA6d5guZwWVwh/M7zsm/Cw7DRx2wKOdoJGVf/9xwAy
- UZLlXZJDCBa8YMqCsaaC4Um7vmdjpQTUsYiT1zDU1bJXxBghYBwpHu+C9zXLlxjAIA
- qva0I7CpWNnOYjQhv5mIZagueTo4Lndrjx7o063Xk190RS7Ih9w9fzLGur2+J0l/b1
- tKthC7pPVpz11EgCcgnTBwMfTbAbhGHlu0JSCkVr3YDviX2oNTfQtFl7TmrQVOJoKa
- FU19Vu/7NNIcQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
- header.a=rsa-sha256 header.s=20210705 header.b=K8hR62lj
-Subject: Re: [Intel-wired-lan] [PATCH v2] igc: Ignore AER reset when device
- is suspended
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1689585602; x=1721121602;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=A+tNpp1B2GMC6J+XCqkkLSUfvqd1LUEI1yHKunNN9HY=;
+ b=X7m/MvkGScd4jnF7OTzZZ8iJ492gRH5tLz8GkaRY4RChREND+w63Ajq1
+ bHwetz9F+SuD8PPqzxaNS83gAoMMtRJHKjuRhkuK4eYu0q1/ZqnWqLlSS
+ cBsdSAzqofp0SJrn0jG+bTWssscEmei+HdSbDDFV36dHfa2PaJn2VyW6f
+ D9gKTtGXnSZIht6cZX7GCV1333+XDK3wd51AwXW+O74ulfpexvIPEz0W9
+ Fwk+AqOgP1YgZ3htX4+arjPQatf0kucUYPIJG+1s1D9Gxru0Oh6T8NQ2A
+ Pgox40UJprBvdAXXqenJcK5YXjp8A064evPm6YYCV9auuDiZElZXUsRMW
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=X7m/MvkG
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: Accept LAG netdevs in
+ bridge offloads
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,76 +95,105 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Luck <tony.luck@intel.com>, Kees Cook <keescook@chromium.org>,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- jesse.brandeburg@intel.com, "Guilherme G . Piccoli" <gpiccoli@igalia.com>,
- Eric Dumazet <edumazet@google.com>, anthony.l.nguyen@intel.com,
- linux-hardening@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: jiri@resnulli.us, simon.horman@corigine.com, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gU3VuLCBKdWwgMTYsIDIwMjMgYXQgMzoxMuKAr0FNIEJqb3JuIEhlbGdhYXMgPGhlbGdhYXNA
-a2VybmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBGcmksIEp1bCAxNCwgMjAyMyBhdCAwMTozNTo1NVBN
-IC0wNzAwLCBWaW5pY2l1cyBDb3N0YSBHb21lcyB3cm90ZToKPiA+IEJqb3JuIEhlbGdhYXMgPGhl
-bGdhYXNAa2VybmVsLm9yZz4gd3JpdGVzOgo+ID4gPiBPbiBGcmksIEp1bCAxNCwgMjAyMyBhdCAw
-MTowNTo0MVBNICswODAwLCBLYWktSGVuZyBGZW5nIHdyb3RlOgo+ID4gPj4gV2hlbiBhIHN5c3Rl
-bSB0aGF0IGNvbm5lY3RzIHRvIGEgVGh1bmRlcmJvbHQgZG9jayBlcXVpcHBlZCB3aXRoIEkyMjUs
-Cj4gPiA+PiBsaWtlIEhQIFRodW5kZXJib2x0IERvY2sgRzQsIEkyMjUgc3RvcHMgd29ya2luZyBh
-ZnRlciBTMyByZXN1bWU6Cj4gPiA+PiAuLi4KPiA+ID4KPiA+ID4+IFRoZSBpc3N1ZSBpcyB0aGF0
-IHRoZSBQVE0gcmVxdWVzdHMgYXJlIHNlbmRpbmcgYmVmb3JlIGRyaXZlciByZXN1bWVzIHRoZQo+
-ID4gPj4gZGV2aWNlLiBTaW5jZSB0aGUgaXNzdWUgY2FuIGFsc28gYmUgb2JzZXJ2ZWQgb24gV2lu
-ZG93cywgaXQncyBxdWl0ZQo+ID4gPj4gbGlrZWx5IGEgZmlybXdhcmUvaGFyZHdhcmUgbGltaXRh
-dGlvbi4KPiA+ID4KPiA+ID4gRG9lcyB0aGlzIG1lYW4gd2UgZGlkbid0IGRpc2FibGUgUFRNIGNv
-cnJlY3RseSBvbiBzdXNwZW5kPyAgT3IgaXMgdGhlCj4gPiA+IGRldmljZSBkZWZlY3RpdmUgYW5k
-IHNlbmRpbmcgUFRNIHJlcXVlc3RzIGV2ZW4gdGhvdWdoIFBUTSBpcyBkaXNhYmxlZD8KPiA+Cj4g
-PiBUaGUgd2F5IEkgdW5kZXJzdGFuZCB0aGUgaGFyZHdhcmUgYnVnLCB0aGUgZGV2aWNlIGlzIGRl
-ZmVjdGl2ZSwgYXMgeW91Cj4gPiBzYWlkLCB0aGUgZGV2aWNlIHNlbmRzIFBUTSBtZXNzYWdlcyB3
-aGVuICJidXNtYXN0ZXJpbmciIGlzIGRpc2FibGVkLgo+Cj4gQnVzIE1hc3RlciBFbmFibGUgY29u
-dHJvbHMgdGhlIGFiaWxpdHkgb2YgYSBGdW5jdGlvbiB0byBpc3N1ZSBNZW1vcnkKPiBhbmQgSS9P
-IFJlYWQvV3JpdGUgUmVxdWVzdHMgKFBDSWUgcjYuMCwgc2VjIDcuNS4xLjEuMykuICBQVE0gdXNl
-cwo+IE1lc3NhZ2VzLCBhbmQgSSBkb24ndCB0aGluayB0aGV5IHNob3VsZCBiZSBhZmZlY3RlZCBi
-eSBCdXMgTWFzdGVyCj4gRW5hYmxlLgo+Cj4gSSBhbHNvIGRvbid0IHVuZGVyc3RhbmQgdGhlIEky
-MjUgY29ubmVjdGlvbi4gIFdlIGhhdmUgdGhlc2UKPiBVbmNvcnJlY3RlZCBOb24tRmF0YWwgZXJy
-b3JzOgo+Cj4gPiA+PiBbICA2MDYuNTI3OTMxXSBwY2llcG9ydCAwMDAwOjAwOjFkLjA6IEFFUjog
-TXVsdGlwbGUgVW5jb3JyZWN0ZWQgKE5vbi1GYXRhbCkgZXJyb3IgcmVjZWl2ZWQ6IDAwMDA6MDA6
-MWQuMAo+ID4gPj4gWyAgNjA2LjUyODA2NF0gcGNpZXBvcnQgMDAwMDowMDoxZC4wOiBQQ0llIEJ1
-cyBFcnJvcjogc2V2ZXJpdHk9VW5jb3JyZWN0ZWQgKE5vbi1GYXRhbCksIHR5cGU9VHJhbnNhY3Rp
-b24gTGF5ZXIsIChSZXF1ZXN0ZXIgSUQpCj4gPiA+PiBbICA2MDYuNTI4MDY4XSBwY2llcG9ydCAw
-MDAwOjAwOjFkLjA6ICAgZGV2aWNlIFs4MDg2OjdhYjBdIGVycm9yIHN0YXR1cy9tYXNrPTAwMTAw
-MDAwLzAwMDA0MDAwCj4gPiA+PiBbICA2MDYuNTI4MDcyXSBwY2llcG9ydCAwMDAwOjAwOjFkLjA6
-ICAgIFsyMF0gVW5zdXBSZXEgICAgICAgICAgICAgICAoRmlyc3QpCj4gPiA+PiBbICA2MDYuNTI4
-MDc1XSBwY2llcG9ydCAwMDAwOjAwOjFkLjA6IEFFUjogICBUTFAgSGVhZGVyOiAzNDAwMDAwMCAw
-YTAwMDA1MiAwMDAwMDAwMCAwMDAwMDAwMAo+ID4gPj4gWyAgNjA2LjUyODA3OV0gcGNpZXBvcnQg
-MDAwMDowMDoxZC4wOiBBRVI6ICAgRXJyb3Igb2YgdGhpcyBBZ2VudCBpcyByZXBvcnRlZCBmaXJz
-dAo+ID4gPj4gWyAgNjA2LjUyODA5OF0gcGNpZXBvcnQgMDAwMDowNDowMS4wOiBQQ0llIEJ1cyBF
-cnJvcjogc2V2ZXJpdHk9VW5jb3JyZWN0ZWQgKE5vbi1GYXRhbCksIHR5cGU9VHJhbnNhY3Rpb24g
-TGF5ZXIsIChSZXF1ZXN0ZXIgSUQpCj4gPiA+PiBbICA2MDYuNTI4MTAxXSBwY2llcG9ydCAwMDAw
-OjA0OjAxLjA6ICAgZGV2aWNlIFs4MDg2OjExMzZdIGVycm9yIHN0YXR1cy9tYXNrPTAwMzAwMDAw
-LzAwMDAwMDAwCj4gPiA+PiBbICA2MDYuNTI4MTA1XSBwY2llcG9ydCAwMDAwOjA0OjAxLjA6ICAg
-IFsyMF0gVW5zdXBSZXEgICAgICAgICAgICAgICAoRmlyc3QpCj4gPiA+PiBbICA2MDYuNTI4MTA3
-XSBwY2llcG9ydCAwMDAwOjA0OjAxLjA6ICAgIFsyMV0gQUNTVmlvbAo+ID4gPj4gWyAgNjA2LjUy
-ODExMF0gcGNpZXBvcnQgMDAwMDowNDowMS4wOiBBRVI6ICAgVExQIEhlYWRlcjogMzQwMDAwMDAg
-MDQwMDAwNTIgMDAwMDAwMDAgMDAwMDAwMDAKPgo+IFRoZXkgYXJlIGNsZWFybHkgVW5zdXBwb3J0
-ZWQgUmVxdWVzdCBlcnJvcnMgY2F1c2VkIGJ5IFBUTSBSZXF1ZXN0cwo+IChkZWNvZGluZyBhdCBo
-dHRwczovL2J1Z3ppbGxhLmtlcm5lbC5vcmcvc2hvd19idWcuY2dpP2lkPTIxNjg1MCNjOSksCj4g
-YnV0IHRoZXkgd2VyZSBsb2dnZWQgYnkgMDA6MWQuMCBhbmQgMDQ6MDEuMC4KPgo+IFRoZSBoaWVy
-YXJjaHkgaXMgdGhpczoKPgo+ICAgMDA6MWQuMCBSb290IFBvcnQgdG8gW2J1cyAwMy02Y10KPiAg
-IDAzOjAwLjAgU3dpdGNoIFVwc3RyZWFtIFBvcnQgdG8gW2J1cyAwNC02Y10KPiAgIDA0OjAxLjAg
-U3dpdGNoIERvd25zdHJlYW0gUG9ydCB0byBbYnVzIDA2LTM4XQo+ICAgMDY6MDAuMCBTd2l0Y2gg
-VXBzdHJlYW0gUG9ydCB0byBbYnVzIDA3LTM4XQo+ICAgMDc6MDQuMCBTd2l0Y2ggRG93bnN0cmVh
-bSBQb3J0IHRvIFtidXMgMzhdCj4gICAzODowMC4wIGlnYyBJMjI1IE5JQwo+Cj4gSWYgSTIyNSBz
-ZW50IGEgUFRNIHJlcXVlc3Qgd2hlbiBpdCBzaG91bGRuJ3QgaGF2ZSwgaS5lLiwgd2hlbiAwNzow
-NC4wCj4gZGlkbid0IGhhdmUgUFRNIGVuYWJsZWQsIHRoZSBlcnJvciB3b3VsZCBoYXZlIGJlZW4g
-bG9nZ2VkIGJ5IDA3OjA0LjAuCj4KPiBUaGUgZmFjdCB0aGF0IHRoZSBlcnJvcnMgd2VyZSBsb2dn
-ZWQgYnkgMDA6MWQuMCBhbmQgMDQ6MDEuMCBtZWFucyB0aGF0Cj4gdGhleSB3ZXJlIGNhdXNlZCBi
-eSBQVE0gcmVxdWVzdHMgZnJvbSAwMzowMC4wIGFuZCAwNjowMC4wLgoKT0ssIHNvIHRoZSBQVE0g
-aXMgYWN0dWFsbHkgZmlyZWQgYnkgdGhlIFRodW5kZXJib2x0IHN3aXRjaC4KVGhhdCBtZWFucyB0
-aGUgSTIyNSByZXNldCBpcyBjb2xsYXRlcmFsIGRhbWFnZS4KTGV0IG1lIHNlZSBpZiBJIGNhbiBy
-ZXByb2R1Y2UgdGhlIFVSIFBUTSB3aXRoIG90aGVyIGRldmljZXMuCgpLYWktSGVuZwoKPgo+IEJq
-b3JuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVs
-LXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6
-Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Allow LAG interfaces to be used in bridge offload using
+netif_is_lag_master. In this case, search for ice netdev in
+the list of LAG's lower devices.
+
+Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+Note for Tony: This patch needs to go with Dave's LAG
+patchset:
+http://patchwork.ozlabs.org/project/intel-wired-lan/list/?series=360621
+
+v2: fix spelling of uplink in ice_eswitch_br_get_uplink_from_lag
+---
+ .../net/ethernet/intel/ice/ice_eswitch_br.c   | 47 +++++++++++++++++--
+ 1 file changed, 42 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+index cc7357ed6e5f..67bfd1f61cdd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+@@ -20,8 +20,23 @@ static const struct rhashtable_params ice_fdb_ht_params = {
+ 
+ static bool ice_eswitch_br_is_dev_valid(const struct net_device *dev)
+ {
+-	/* Accept only PF netdev and PRs */
+-	return ice_is_port_repr_netdev(dev) || netif_is_ice(dev);
++	/* Accept only PF netdev, PRs and LAG */
++	return ice_is_port_repr_netdev(dev) || netif_is_ice(dev) ||
++		netif_is_lag_master(dev);
++}
++
++static struct net_device *
++ice_eswitch_br_get_uplink_from_lag(struct net_device *lag_dev)
++{
++	struct net_device *lower;
++	struct list_head *iter;
++
++	netdev_for_each_lower_dev(lag_dev, lower, iter) {
++		if (netif_is_ice(lower))
++			return lower;
++	}
++
++	return NULL;
+ }
+ 
+ static struct ice_esw_br_port *
+@@ -31,8 +46,19 @@ ice_eswitch_br_netdev_to_port(struct net_device *dev)
+ 		struct ice_repr *repr = ice_netdev_to_repr(dev);
+ 
+ 		return repr->br_port;
+-	} else if (netif_is_ice(dev)) {
+-		struct ice_pf *pf = ice_netdev_to_pf(dev);
++	} else if (netif_is_ice(dev) || netif_is_lag_master(dev)) {
++		struct net_device *ice_dev;
++		struct ice_pf *pf;
++
++		if (netif_is_lag_master(dev))
++			ice_dev = ice_eswitch_br_get_uplink_from_lag(dev);
++		else
++			ice_dev = dev;
++
++		if (!ice_dev)
++			return NULL;
++
++		pf = ice_netdev_to_pf(ice_dev);
+ 
+ 		return pf->br_port;
+ 	}
+@@ -1085,7 +1111,18 @@ ice_eswitch_br_port_link(struct ice_esw_br_offloads *br_offloads,
+ 		err = ice_eswitch_br_vf_repr_port_init(bridge, repr);
+ 		trace_ice_eswitch_br_port_link(repr->br_port);
+ 	} else {
+-		struct ice_pf *pf = ice_netdev_to_pf(dev);
++		struct net_device *ice_dev;
++		struct ice_pf *pf;
++
++		if (netif_is_lag_master(dev))
++			ice_dev = ice_eswitch_br_get_uplink_from_lag(dev);
++		else
++			ice_dev = dev;
++
++		if (!ice_dev)
++			return 0;
++
++		pf = ice_netdev_to_pf(ice_dev);
+ 
+ 		err = ice_eswitch_br_uplink_port_init(bridge, pf);
+ 		trace_ice_eswitch_br_port_link(pf->br_port);
+-- 
+2.40.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
