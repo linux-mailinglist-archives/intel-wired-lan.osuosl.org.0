@@ -1,70 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52837758231
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 18:33:54 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D55A758262
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 18:45:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D02E340339;
-	Tue, 18 Jul 2023 16:33:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D02E340339
+	by smtp4.osuosl.org (Postfix) with ESMTP id D958041743;
+	Tue, 18 Jul 2023 16:45:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D958041743
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689698032;
-	bh=Aj1pFKRkou6QOZE7AemQjL4MB7sea2fTlcWXnwLvcYg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=4iUS7ulEEJyifQ99O9OrgsUF9+V4ndSg8hLc/1ZM33nySHZfOUGQyYp3FB4s3DsCV
-	 YRTiWBAT4m9vCxlrAs+rfPxh3NwDvxL8VtzaOysiXa3YZuGD61k1LUt5nwGYp0xL7s
-	 0GWLuVjYIJJ4rjkb+KtrxFbBf8vIMUk6I2LzVW3dlXjfSjTMxW7G7afhlpQBjF5oYh
-	 g9uDMC6vOxvHrvitj+VhYQ8y+0lRS4rFkkgGj9rJ1km+ciZH+c/KwsG+JzQwVamAcH
-	 qmKFrl/J+y7sdUsF7IZ0FC2Vr3Rz8N3cZMEmZ/Bw2aikkgkE/nek5T++njtR4MSpO/
-	 bP2cNGu1WoOpg==
+	s=default; t=1689698757;
+	bh=aZf1XQx+w1tQJpR85ewvTpbzAkajnanMWb4+BG/Eeps=;
+	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
+	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
+	b=landNjFUYR7ZsLEY2WrhNUoTSt0vY+o9eSWfven90z1CouiIfB6zxV8lOi33oviKp
+	 uqQ3K/41ehgtQpoC4/EHvjFMHu2FHy5kf250/wpsCcqiOzwWP3jTA7C47gk6PJG6Dz
+	 S3hLbCiWmunmviGR4yl7z+a+AaVF45piOSkeNnuJ3tNhMt5I8n5gw0J4msGWWcqq1O
+	 qP7FxK3sW/zNpcxf4RCsepGI5VcNmz3vtfx4QNfdAkyvEC3IahsrmPm/nM2J083RIJ
+	 alWS/oqM03+LiEzCI0vzQRo2rEzPJtrhXiPoUAQrRGzOANI551gOVaIMVriyjUWEnM
+	 xAEHGHKWbXgXg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n4vW-eGHvogG; Tue, 18 Jul 2023 16:33:51 +0000 (UTC)
+	with ESMTP id 3WgHf-LfnEsv; Tue, 18 Jul 2023 16:45:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C3D2040300;
-	Tue, 18 Jul 2023 16:33:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C3D2040300
+	by smtp4.osuosl.org (Postfix) with ESMTP id 623CC41742;
+	Tue, 18 Jul 2023 16:45:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 623CC41742
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 17AA21BF31C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:33:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 25E411BF2A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E1A7C80E80
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:33:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1A7C80E80
+ by smtp4.osuosl.org (Postfix) with ESMTP id F0DF341742
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0DF341742
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EGU4cBemGOBQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jul 2023 16:33:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B5D2980F00
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B5D2980F00
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:33:42 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7RREWKksSpTx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Jul 2023 16:45:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5205641740
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5205641740
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:49 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id A3B5E61E5FE0B;
- Tue, 18 Jul 2023 18:33:24 +0200 (CEST)
-Message-ID: <b90a0c53-b68f-9cb9-df92-1b48556d5f1b@molgen.mpg.de>
-Date: Tue, 18 Jul 2023 18:33:24 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Content-Language: en-US
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id D0FBA61659;
+ Tue, 18 Jul 2023 16:45:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16D0EC433C8;
+ Tue, 18 Jul 2023 16:45:46 +0000 (UTC)
+Date: Tue, 18 Jul 2023 11:45:44 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
 To: Sasha Neftin <sasha.neftin@intel.com>
-References: <20230718162857.3566306-1-sasha.neftin@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20230718162857.3566306-1-sasha.neftin@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/1] e1000e: Add support
- for the next LOM generation
+Message-ID: <20230718164544.GA486141@bhelgaas>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230717171927.78516-1-sasha.neftin@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1689698747;
+ bh=rSlNjvjzRrnWqAERbD+Th9DUDaRg0H6dEdA0hZG5nGU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=E+3zbumnbaxkGpPAaU08iYHTdifWS4XmynlZ2knsL0lfzd/vh1C/LqgvHmVR3Jp5R
+ n63pl9akI/e0QSTSyJNO8OaOkbircps6YQhbD116vW++qvLlluueJgnnI3+Dq7XwmR
+ iUb7weNKGWi6LIcPC0c4H6vl4FhZJ/vu3U3y/jElt5o3Oa9Qypp9C9I80JEj/vCrXO
+ 5dY4EQ6ajh8NHknS33gRCFhw80bsrp28d043/2awDlLSakpV9dpE/tdeM6cPNsculg
+ +T5+Bd2VARhOjxF1sBenpm67Eixwubvk/Z8gDXvovZPSPKy0aFVQepVtsYdOjPgchL
+ 1ULW00FSogo7Q==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=E+3zbumn
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] igc: Correct the short
+ interval between PTM requests.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,125 +88,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
+ "Guilherme G. Piccoli" <gpiccoli@igalia.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>, intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTYXNoYSwKCgpUaGFuayB5b3UgZm9yIHRoZSBwYXRjaC4gSXTigJlkIGJlIGdyZWF0IGlm
-IHlvdSBtZW50aW9uZWQgTlZMIGluIHRoZSAKY29tbWl0IG1lc3NhZ2UgdGl0bGUuCgpBbSAxOC4w
-Ny4yMyB1bSAxODoyOCBzY2hyaWViIFNhc2hhIE5lZnRpbjoKPiBBZGQgZGV2aWNlcyBJRHMgZm9y
-IHRoZSBuZXh0IExPTSBnZW5lcmF0aW9ucyB0aGF0IHdpbGwgYmUgYXZhaWxhYmxlIG9uIHRoZQo+
-IG5leHQgSW50ZWwgQ2xpZW50IHBsYXRmb3Jtcy4gVGhpcyBwYXRjaCBwcm92aWRlcyB0aGUgaW5p
-dGlhbCBzdXBwb3J0IGZvcgo+IHRoZXNlIGRldmljZXMuCgrigKYgYnkgYWRkaW5nIHRoZSBpZHMg
-ZnJvbSBkYXRhc2hlZXQg4oCmIGFuZCB0cmVhdGluZyBpdCBsaWtlIFBUUC4KCgpLaW5kIHJlZ2Fy
-ZHMsCgpQYXVsCgoKPiBTaWduZWQtb2ZmLWJ5OiBTYXNoYSBOZWZ0aW4gPHNhc2hhLm5lZnRpbkBp
-bnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvZXRo
-dG9vbC5jIHwgMiArKwo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2h3Lmgg
-ICAgICB8IDMgKysrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxh
-bi5jIHwgNyArKysrKysrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0
-ZGV2LmMgIHwgNCArKysrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvcHRw
-LmMgICAgIHwgMSArCj4gICA1IGZpbGVzIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2V0aHRvb2wuYyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9ldGh0b29sLmMKPiBpbmRleCA3MjFm
-ODZmZDU4MDIuLjk4MzVlNmE5MGQ1NiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9lMTAwMGUvZXRodG9vbC5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvZTEwMDBlL2V0aHRvb2wuYwo+IEBAIC05MTcsNiArOTE3LDcgQEAgc3RhdGljIGludCBlMTAw
-MF9yZWdfdGVzdChzdHJ1Y3QgZTEwMDBfYWRhcHRlciAqYWRhcHRlciwgdTY0ICpkYXRhKQo+ICAg
-CWNhc2UgZTEwMDBfcGNoX210cDoKPiAgIAljYXNlIGUxMDAwX3BjaF9sbnA6Cj4gICAJY2FzZSBl
-MTAwMF9wY2hfcHRwOgo+ICsJY2FzZSBlMTAwMF9wY2hfbnZwOgo+ICAgCQltYXNrIHw9IEJJVCgx
-OCk7Cj4gICAJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gQEAgLTE1ODUsNiArMTU4Niw3IEBAIHN0
-YXRpYyB2b2lkIGUxMDAwX2xvb3BiYWNrX2NsZWFudXAoc3RydWN0IGUxMDAwX2FkYXB0ZXIgKmFk
-YXB0ZXIpCj4gICAJY2FzZSBlMTAwMF9wY2hfbXRwOgo+ICAgCWNhc2UgZTEwMDBfcGNoX2xucDoK
-PiAgIAljYXNlIGUxMDAwX3BjaF9wdHA6Cj4gKwljYXNlIGUxMDAwX3BjaF9udnA6Cj4gICAJCWZl
-eHRfbnZtMTEgPSBlcjMyKEZFWFROVk0xMSk7Cj4gICAJCWZleHRfbnZtMTEgJj0gfkUxMDAwX0ZF
-WFROVk0xMV9ESVNBQkxFX01VTFJfRklYOwo+ICAgCQlldzMyKEZFWFROVk0xMSwgZmV4dF9udm0x
-MSk7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9ody5o
-IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2h3LmgKPiBpbmRleCAyOWY5ZmFl
-MzVmNDIuLjFmZWY2YmI1YTVmYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9lMTAwMGUvaHcuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAw
-ZS9ody5oCj4gQEAgLTEyMiw2ICsxMjIsOCBAQCBzdHJ1Y3QgZTEwMDBfaHc7Cj4gICAjZGVmaW5l
-IEUxMDAwX0RFVl9JRF9QQ0hfUFRQX0kyMTlfVjI2CQkweDU3QjYKPiAgICNkZWZpbmUgRTEwMDBf
-REVWX0lEX1BDSF9QVFBfSTIxOV9MTTI3CQkweDU3QjcKPiAgICNkZWZpbmUgRTEwMDBfREVWX0lE
-X1BDSF9QVFBfSTIxOV9WMjcJCTB4NTdCOAo+ICsjZGVmaW5lIEUxMDAwX0RFVl9JRF9QQ0hfTlZM
-X0kyMTlfTE0yOQkJMHg1N0I5Cj4gKyNkZWZpbmUgRTEwMDBfREVWX0lEX1BDSF9OVkxfSTIxOV9W
-MjkJCTB4NTdCQQo+ICAgCj4gICAjZGVmaW5lIEUxMDAwX1JFVklTSU9OXzQJNAo+ICAgCj4gQEAg
-LTE1MCw2ICsxNTIsNyBAQCBlbnVtIGUxMDAwX21hY190eXBlIHsKPiAgIAllMTAwMF9wY2hfbXRw
-LAo+ICAgCWUxMDAwX3BjaF9sbnAsCj4gICAJZTEwMDBfcGNoX3B0cCwKPiArCWUxMDAwX3BjaF9u
-dnAsCj4gICB9Owo+ICAgCj4gICBlbnVtIGUxMDAwX21lZGlhX3R5cGUgewo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uYwo+IGluZGV4IDBjN2ZkMTAzMTJjOC4u
-MzllOWZjNjAxYmY1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
-MDAwZS9pY2g4bGFuLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
-aWNoOGxhbi5jCj4gQEAgLTMyMyw2ICszMjMsNyBAQCBzdGF0aWMgczMyIGUxMDAwX2luaXRfcGh5
-X3dvcmthcm91bmRzX3BjaGxhbihzdHJ1Y3QgZTEwMDBfaHcgKmh3KQo+ICAgCWNhc2UgZTEwMDBf
-cGNoX210cDoKPiAgIAljYXNlIGUxMDAwX3BjaF9sbnA6Cj4gICAJY2FzZSBlMTAwMF9wY2hfcHRw
-Ogo+ICsJY2FzZSBlMTAwMF9wY2hfbnZwOgo+ICAgCQlpZiAoZTEwMDBfcGh5X2lzX2FjY2Vzc2li
-bGVfcGNobGFuKGh3KSkKPiAgIAkJCWJyZWFrOwo+ICAgCj4gQEAgLTQ3MCw2ICs0NzEsNyBAQCBz
-dGF0aWMgczMyIGUxMDAwX2luaXRfcGh5X3BhcmFtc19wY2hsYW4oc3RydWN0IGUxMDAwX2h3ICpo
-dykKPiAgIAkJY2FzZSBlMTAwMF9wY2hfbXRwOgo+ICAgCQljYXNlIGUxMDAwX3BjaF9sbnA6Cj4g
-ICAJCWNhc2UgZTEwMDBfcGNoX3B0cDoKPiArCQljYXNlIGUxMDAwX3BjaF9udnA6Cj4gICAJCQkv
-KiBJbiBjYXNlIHRoZSBQSFkgbmVlZHMgdG8gYmUgaW4gbWRpbyBzbG93IG1vZGUsCj4gICAJCQkg
-KiBzZXQgc2xvdyBtb2RlIGFuZCB0cnkgdG8gZ2V0IHRoZSBQSFkgaWQgYWdhaW4uCj4gICAJCQkg
-Ki8KPiBAQCAtNzE3LDYgKzcxOSw3IEBAIHN0YXRpYyBzMzIgZTEwMDBfaW5pdF9tYWNfcGFyYW1z
-X2ljaDhsYW4oc3RydWN0IGUxMDAwX2h3ICpodykKPiAgIAljYXNlIGUxMDAwX3BjaF9tdHA6Cj4g
-ICAJY2FzZSBlMTAwMF9wY2hfbG5wOgo+ICAgCWNhc2UgZTEwMDBfcGNoX3B0cDoKPiArCWNhc2Ug
-ZTEwMDBfcGNoX252cDoKPiAgIAljYXNlIGUxMDAwX3BjaGxhbjoKPiAgIAkJLyogY2hlY2sgbWFu
-YWdlbWVudCBtb2RlICovCj4gICAJCW1hYy0+b3BzLmNoZWNrX21uZ19tb2RlID0gZTEwMDBfY2hl
-Y2tfbW5nX21vZGVfcGNobGFuOwo+IEBAIC0xNjg1LDYgKzE2ODgsNyBAQCBzdGF0aWMgczMyIGUx
-MDAwX2dldF92YXJpYW50c19pY2g4bGFuKHN0cnVjdCBlMTAwMF9hZGFwdGVyICphZGFwdGVyKQo+
-ICAgCWNhc2UgZTEwMDBfcGNoX210cDoKPiAgIAljYXNlIGUxMDAwX3BjaF9sbnA6Cj4gICAJY2Fz
-ZSBlMTAwMF9wY2hfcHRwOgo+ICsJY2FzZSBlMTAwMF9wY2hfbnZwOgo+ICAgCQlyYyA9IGUxMDAw
-X2luaXRfcGh5X3BhcmFtc19wY2hsYW4oaHcpOwo+ICAgCQlicmVhazsKPiAgIAlkZWZhdWx0Ogo+
-IEBAIC0yMTQyLDYgKzIxNDYsNyBAQCBzdGF0aWMgczMyIGUxMDAwX3N3X2xjZF9jb25maWdfaWNo
-OGxhbihzdHJ1Y3QgZTEwMDBfaHcgKmh3KQo+ICAgCWNhc2UgZTEwMDBfcGNoX210cDoKPiAgIAlj
-YXNlIGUxMDAwX3BjaF9sbnA6Cj4gICAJY2FzZSBlMTAwMF9wY2hfcHRwOgo+ICsJY2FzZSBlMTAw
-MF9wY2hfbnZwOgo+ICAgCQlzd19jZmdfbWFzayA9IEUxMDAwX0ZFWFROVk1fU1dfQ09ORklHX0lD
-SDhNOwo+ICAgCQlicmVhazsKPiAgIAlkZWZhdWx0Ogo+IEBAIC0zMTg4LDYgKzMxOTMsNyBAQCBz
-dGF0aWMgczMyIGUxMDAwX3ZhbGlkX252bV9iYW5rX2RldGVjdF9pY2g4bGFuKHN0cnVjdCBlMTAw
-MF9odyAqaHcsIHUzMiAqYmFuaykKPiAgIAljYXNlIGUxMDAwX3BjaF9tdHA6Cj4gICAJY2FzZSBl
-MTAwMF9wY2hfbG5wOgo+ICAgCWNhc2UgZTEwMDBfcGNoX3B0cDoKPiArCWNhc2UgZTEwMDBfcGNo
-X252cDoKPiAgIAkJYmFuazFfb2Zmc2V0ID0gbnZtLT5mbGFzaF9iYW5rX3NpemU7Cj4gICAJCWFj
-dF9vZmZzZXQgPSBFMTAwMF9JQ0hfTlZNX1NJR19XT1JEOwo+ICAgCj4gQEAgLTQxMjksNiArNDEz
-NSw3IEBAIHN0YXRpYyBzMzIgZTEwMDBfdmFsaWRhdGVfbnZtX2NoZWNrc3VtX2ljaDhsYW4oc3Ry
-dWN0IGUxMDAwX2h3ICpodykKPiAgIAljYXNlIGUxMDAwX3BjaF9tdHA6Cj4gICAJY2FzZSBlMTAw
-MF9wY2hfbG5wOgo+ICAgCWNhc2UgZTEwMDBfcGNoX3B0cDoKPiArCWNhc2UgZTEwMDBfcGNoX252
-cDoKPiAgIAkJd29yZCA9IE5WTV9DT01QQVQ7Cj4gICAJCXZhbGlkX2NzdW1fbWFzayA9IE5WTV9D
-T01QQVRfVkFMSURfQ1NVTTsKPiAgIAkJYnJlYWs7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2UxMDAwZS9uZXRkZXYuYwo+IGluZGV4IDE4YTVlNzNiODY4MC4uZjUzNmM4NTY3MjdjIDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+
-ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+IEBAIC0z
-NTQ1LDYgKzM1NDUsNyBAQCBzMzIgZTEwMDBlX2dldF9iYXNlX3RpbWluY2Eoc3RydWN0IGUxMDAw
-X2FkYXB0ZXIgKmFkYXB0ZXIsIHUzMiAqdGltaW5jYSkKPiAgIAljYXNlIGUxMDAwX3BjaF9tdHA6
-Cj4gICAJY2FzZSBlMTAwMF9wY2hfbG5wOgo+ICAgCWNhc2UgZTEwMDBfcGNoX3B0cDoKPiArCWNh
-c2UgZTEwMDBfcGNoX252cDoKPiAgIAkJaWYgKGVyMzIoVFNZTkNSWENUTCkgJiBFMTAwMF9UU1lO
-Q1JYQ1RMX1NZU0NGSSkgewo+ICAgCQkJLyogU3RhYmxlIDI0TUh6IGZyZXF1ZW5jeSAqLwo+ICAg
-CQkJaW5jcGVyaW9kID0gSU5DUEVSSU9EXzI0TUhaOwo+IEBAIC00MDYxLDYgKzQwNjIsNyBAQCB2
-b2lkIGUxMDAwZV9yZXNldChzdHJ1Y3QgZTEwMDBfYWRhcHRlciAqYWRhcHRlcikKPiAgIAljYXNl
-IGUxMDAwX3BjaF9tdHA6Cj4gICAJY2FzZSBlMTAwMF9wY2hfbG5wOgo+ICAgCWNhc2UgZTEwMDBf
-cGNoX3B0cDoKPiArCWNhc2UgZTEwMDBfcGNoX252cDoKPiAgIAkJZmMtPnJlZnJlc2hfdGltZSA9
-IDB4RkZGRjsKPiAgIAkJZmMtPnBhdXNlX3RpbWUgPSAweEZGRkY7Cj4gICAKPiBAQCAtNzkxMyw2
-ICs3OTE1LDggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwY2lfZGV2aWNlX2lkIGUxMDAwX3BjaV90
-YmxbXSA9IHsKPiAgIAl7IFBDSV9WREVWSUNFKElOVEVMLCBFMTAwMF9ERVZfSURfUENIX1BUUF9J
-MjE5X1YyNiksIGJvYXJkX3BjaF9tdHAgfSwKPiAgIAl7IFBDSV9WREVWSUNFKElOVEVMLCBFMTAw
-MF9ERVZfSURfUENIX1BUUF9JMjE5X0xNMjcpLCBib2FyZF9wY2hfbXRwIH0sCj4gICAJeyBQQ0lf
-VkRFVklDRShJTlRFTCwgRTEwMDBfREVWX0lEX1BDSF9QVFBfSTIxOV9WMjcpLCBib2FyZF9wY2hf
-bXRwIH0sCj4gKwl7IFBDSV9WREVWSUNFKElOVEVMLCBFMTAwMF9ERVZfSURfUENIX05WTF9JMjE5
-X0xNMjkpLCBib2FyZF9wY2hfbXRwIH0sCj4gKwl7IFBDSV9WREVWSUNFKElOVEVMLCBFMTAwMF9E
-RVZfSURfUENIX05WTF9JMjE5X1YyOSksIGJvYXJkX3BjaF9tdHAgfSwKPiAgIAo+ICAgCXsgMCwg
-MCwgMCwgMCwgMCwgMCwgMCB9CS8qIHRlcm1pbmF0ZSBsaXN0ICovCj4gICB9Owo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvcHRwLmMgYi9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvcHRwLmMKPiBpbmRleCBkZWY0NTY2YTkxNmYuLjAyZDg3
-MWJjMTEyYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
-cHRwLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvcHRwLmMKPiBA
-QCAtMjg4LDYgKzI4OCw3IEBAIHZvaWQgZTEwMDBlX3B0cF9pbml0KHN0cnVjdCBlMTAwMF9hZGFw
-dGVyICphZGFwdGVyKQo+ICAgCWNhc2UgZTEwMDBfcGNoX210cDoKPiAgIAljYXNlIGUxMDAwX3Bj
-aF9sbnA6Cj4gICAJY2FzZSBlMTAwMF9wY2hfcHRwOgo+ICsJY2FzZSBlMTAwMF9wY2hfbnZwOgo+
-ICAgCQlpZiAoKGh3LT5tYWMudHlwZSA8IGUxMDAwX3BjaF9scHQpIHx8Cj4gICAJCSAgICAoZXIz
-MihUU1lOQ1JYQ1RMKSAmIEUxMDAwX1RTWU5DUlhDVExfU1lTQ0ZJKSkgewo+ICAgCQkJYWRhcHRl
-ci0+cHRwX2Nsb2NrX2luZm8ubWF4X2FkaiA9IDI0MDAwMDAwIC0gMTsKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
-bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+[+cc Paul, Vinicius, Kai-Heng, Guilherme]
+
+On Mon, Jul 17, 2023 at 08:19:27PM +0300, Sasha Neftin wrote:
+> With the 10us interval, we were seeing PTM transactions taking around 12us.
+> With the 1us interval, PTM dialogs took around 2us. Checked with the PCIe
+> sniffer.
+> 
+> Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
+> Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index 44a507029946..c3722f524ea7 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -549,7 +549,7 @@
+>  #define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x2f) << 2)
+>  #define IGC_PTM_CTRL_PTM_TO(usec)	(((usec) & 0xff) << 8)
+>  
+> -#define IGC_PTM_SHORT_CYC_DEFAULT	10  /* Default Short/interrupted cycle interval */
+> +#define IGC_PTM_SHORT_CYC_DEFAULT	1   /* Default short cycle interval */
+
+Not related to *this* patch, but from looking at igc_ptp_reset(),
+where IGC_PTM_SHORT_CYC_DEFAULT is used,
+
+  /* PCIe PTM Control */
+  #define IGC_PTM_CTRL_START_NOW  BIT(29) /* Start PTM Now */
+  #define IGC_PTM_CTRL_EN         BIT(30) /* Enable PTM */
+
+  ctrl = IGC_PTM_CTRL_EN |
+	  IGC_PTM_CTRL_START_NOW |
+	  IGC_PTM_CTRL_SHRT_CYC(IGC_PTM_SHORT_CYC_DEFAULT) |
+	  IGC_PTM_CTRL_PTM_TO(IGC_PTM_TIMEOUT_DEFAULT) |
+	  IGC_PTM_CTRL_TRIG;
+
+  wr32(IGC_PTM_CTRL, ctrl);
+
+Obviously this must be implementation-specific PTM configuration,
+which is fine.  But I assume even though this sets IGC_PTM_CTRL_EN and
+IGC_PTM_CTRL_START_NOW, the device will not actually send PTM Request
+messages unless the architected PTM Enable bit in the PTM Capability
+is set (PCIe r6.0, sec 7.9.15.3).  Right?
+
+I'm asking because Kai-Heng has been working on issues where
+Unsupported Request errors are reported because some devices seem to
+send PTM Requests when we don't think they should.  See
+https://lore.kernel.org/r/20230714050541.2765246-1-kai.heng.feng@canonical.com
+
+>  #define IGC_PTM_CYC_TIME_DEFAULT	5   /* Default PTM cycle time */
+>  #define IGC_PTM_TIMEOUT_DEFAULT		255 /* Default timeout for PTM errors */
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
