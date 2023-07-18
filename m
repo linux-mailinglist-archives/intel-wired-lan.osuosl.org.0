@@ -2,187 +2,120 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 108B0758340
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 19:11:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 488847583AA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 19:42:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 43B0C81EC4;
-	Tue, 18 Jul 2023 17:11:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 43B0C81EC4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4D9F981EAE;
+	Tue, 18 Jul 2023 17:42:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D9F981EAE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689700280;
-	bh=0lzyJfMzHranLyD8So3xidimjvmaa4MydP4d9L3XpFQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1689702145;
+	bh=PjnK3gYOjyq60Tmub5mdtlX+gqbFhdKqNU56DNyUH3A=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ufRcGTEqclul7mgAHi+T5Qr9WN6raRTPeioVFoP7eXKyS5vyQiTMJvcZmzQDaFEiz
-	 pkEXl4ZrNAOA2j+HPy/QNI0TmPfKw5/V8PAWGHcE+HT9ewo1I3hUxDSJgN2eEfDBJy
-	 8JZiIayqOjlPwIHIZ6xRhz/SsoLedZRRo5NTGSYca4LKBrqPwjlotbbq7eL7KLIn/U
-	 xvn6jgiUYmurspXUZZPn4S0IBMP2ubKEyscglKnXdSr/DgU4b2Q/vV9J07fwoYw4YA
-	 1bHxJDpPcXoC4/7aXI9XJ8eAhT5wtlXnlamVjUXqu2Moswtqi51id+4QPSL2/J3+W2
-	 bEophKIy8BSvQ==
+	b=91nQUdgN9H309oMQEYD6IugUZztwuChTCIEtxRABgzSZrPhaz5kU+JWZz9rV7rBDO
+	 X89RpUcUt1WI8fpFFugjX8t17GWNtMgJll7SkFVKt0SG8USeDxV3m+kXIYbtOpy/00
+	 bcE83Jiv3e/Ec6pFaZVYaX/VYWXeIWgv3UVEofBWhFCTxS1s1DSTTAQ3BH7cCaQog4
+	 ADBnDwXFI6tOH16cpheflOlaqzuN9lnIbNahEWp7RErlf/XdxReFOQcxbnCQGPkM2a
+	 zoE2tZyrVYfqYKX/JkGSzbdhcd/0aCe809d5C6AqKUGYHrriRsBzAPpTIKSz95SxkC
+	 Ej6bxKNF8KbHg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WimSJGP234Dw; Tue, 18 Jul 2023 17:11:19 +0000 (UTC)
+	with ESMTP id rhpLdS1g08kK; Tue, 18 Jul 2023 17:42:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0E3DD81B70;
-	Tue, 18 Jul 2023 17:11:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E3DD81B70
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2247981E82;
+	Tue, 18 Jul 2023 17:42:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2247981E82
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D481E1BF359
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:11:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 169721BF333
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:36:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AC43081B70
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:11:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC43081B70
+ by smtp3.osuosl.org (Postfix) with ESMTP id E1F6360FDD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:36:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1F6360FDD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5JDeVGIm7aeJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jul 2023 17:11:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wWvVogi6au1N for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Jul 2023 17:36:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E3B8F81A99
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E3B8F81A99
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:11:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="368906473"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="368906473"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2023 10:10:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="837342739"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="837342739"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga002.fm.intel.com with ESMTP; 18 Jul 2023 10:10:48 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 18 Jul 2023 10:10:47 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 18 Jul 2023 10:10:47 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 18 Jul 2023 10:10:47 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.174)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Tue, 18 Jul 2023 10:10:47 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=O7Uzd/d9VxWuXm9ShQS8kP60IXyjdDzEmOaTGnyInrieXxR5haG1dWAxC9qb4Biwtri5pjn/duyXW/3LzVnxRKmKK9knO9xAYdsLUeLcDdqyMYfW5lzb6r6emVurqNnyUOdiQ9bZU/9x5VgBY6WxL8n1w8PA7XavEALH9t7P1rBlz0fTzPmBeFk1NNNXNZYoeS9zU2ugtAuBv1j5P6JM9ToJgl66xiJUHHGssTtUJFppfA5ZUCz1QArQD1uoVtfOyC+rHKdhAnOJB8tQENQjVu3XOCDbO6UNjdDRqg3jqcFW+uRhetDrsFDHgQMzhJAtOUt7XSZ1hP4R8F6qkrfctw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=h05Nr3AgBwDNzAPJv7EkFclf2RYBwXubzW8+P42JnYc=;
- b=FZb8yvO/p1uskZZxM4F1426kc7jtQjzJ/b8WF0eZD028sJuXAk8cNPRtRpH65Rz6M/yLfLQcX9amV4ARptsY+qsLrkzo/rzdne5TDjEtUJA7wMgmQ3nyGOWKCFGzb4+I0nn3FO8GBnvUr19zH1LcWrLwuZblYBksDXeDyb1CUue+oiKAcVrmeTxCgKmIA5QFRg/hsMZT/Q3aKiBRWN2RN4oZDtc2yxWc4TNyfSGQL7M31KxsIMhufHeIXakGmRIB38B68Sxx2aL22mFoQ5KSbr8yLX7Rr8+F8L9J9tSjaNOjz7stjAeu5ISDKBB54epqcEH0moMyyC49NDbDR05dEQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com (2603:10b6:303:20c::13)
- by PH0PR11MB5784.namprd11.prod.outlook.com (2603:10b6:510:129::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.32; Tue, 18 Jul
- 2023 17:10:45 +0000
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::3d4e:c4ae:f083:de21]) by MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::3d4e:c4ae:f083:de21%7]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
- 17:10:45 +0000
-Message-ID: <06c17403-fb5e-ff14-4707-829ede312336@intel.com>
-Date: Tue, 18 Jul 2023 20:10:38 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.13.0
-Content-Language: en-US
-To: Bjorn Helgaas <helgaas@kernel.org>
-References: <20230718164544.GA486141@bhelgaas>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-In-Reply-To: <20230718164544.GA486141@bhelgaas>
-X-ClientProxiedBy: FR0P281CA0093.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a9::7) To MW4PR11MB6738.namprd11.prod.outlook.com
- (2603:10b6:303:20c::13)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0597B60FDC
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0597B60FDC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 17:36:21 +0000 (UTC)
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-541-FISzloyGME6-mqghDu56cQ-1; Tue, 18 Jul 2023 13:36:19 -0400
+X-MC-Unique: FISzloyGME6-mqghDu56cQ-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-635e2618aaeso10609676d6.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 10:36:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689701779; x=1690306579;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mvPVjjNECoRFNO48oXbxAOJbDMaOxAF6tNeJiwWQlBM=;
+ b=kSYlnfMdsENkKoRg3/xK074GYhnPorEbsxpE88/XqSPOq+zhJO2UK1rYGfpmIyO3XR
+ 9tFvdmPEeWBqURI4bKXvLZ87qjibnPRs3sljI/Uzz1f5o0JsWxknX0Cn9AMw4yHhKXLY
+ n0WRDQjBeVmcpRBXTVErP1e7H0v7PapbUh/J8kEHr/POPDw2/jKn85vJ3p1cfPgBg9Xm
+ ibnkQ9VC2aV9koQcFF0QAPNlqD52lApA1xHKTokyQS0wxoBDvxNUI5i83+XfHxYAV9rr
+ DfomRRHNKwDin3zE2kH1qS/VZzmSkORe4f0DXlYyzRJTW2bN1Z/FlkzUk3cAvoRfreWR
+ 8iug==
+X-Gm-Message-State: ABy/qLb/K/dY6sz0ErQtUnOjVWkugy52Mp6XD1SMdQ9W22v951w6+eMs
+ 0fC9RCTE9014eWc2NBzsLPll7DJ+ZeXx3zodNAPzOaBscs8wLggnGKaOViEvHykkGIjkihpL3mg
+ fqRfhvhm1JoJBPJrR8DtpbE5ex9XgOw==
+X-Received: by 2002:a05:6214:2347:b0:635:ec47:bfa4 with SMTP id
+ hu7-20020a056214234700b00635ec47bfa4mr352824qvb.4.1689701779085; 
+ Tue, 18 Jul 2023 10:36:19 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFhsaoNoEEZoCH/skqMrd/Xxs9L3XtXbc866bnnm0z/uTuX8dGJc6EUVvzB6WVh1uVVpbZnCQ==
+X-Received: by 2002:a05:6214:2347:b0:635:ec47:bfa4 with SMTP id
+ hu7-20020a056214234700b00635ec47bfa4mr352807qvb.4.1689701778749; 
+ Tue, 18 Jul 2023 10:36:18 -0700 (PDT)
+Received: from x1n (cpe5c7695f3aee0-cm5c7695f3aede.cpe.net.cable.rogers.com.
+ [99.254.144.39]) by smtp.gmail.com with ESMTPSA id
+ g1-20020a37e201000000b007681fc2999bsm737311qki.54.2023.07.18.10.36.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jul 2023 10:36:18 -0700 (PDT)
+Date: Tue, 18 Jul 2023 13:36:17 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Message-ID: <ZLbNkZ5a2XVrKOX9@x1n>
+References: <20230621091112.44945-11-lingyu.liu@intel.com>
+ <ZJMLHSq9rjGIVS4V@nvidia.com>
+ <DS0PR11MB7529D62973DEE1848BB9146BC324A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <ZJwp6nam6/gI7Ru1@nvidia.com>
+ <DS0PR11MB75295D41646A3F74BCED4323C329A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB5276AC6CC905A57A370AE48E8C2EA@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZKReFWNJSVcfhL6y@x1n> <ZKwpm1k+1hjN7oyE@nvidia.com>
+ <ZLW2BgWI+yx7qKaf@x1n> <ZLayEkkaFgshJuDx@nvidia.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB6738:EE_|PH0PR11MB5784:EE_
-X-MS-Office365-Filtering-Correlation-Id: 257654d6-9642-426f-3fdc-08db87b1ec62
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: IQESmrN6ybnJfRBfXq8qFu8HMLeG3qxZHc6XqlpAoMlrJTMrM0npd42FcDLjqOuSvN5vQ0e0A78zf2uJuMFpRySHmsotJorv3GaJ3voyxOphchLv4CIC/iSNNh3k2IghBJoLM/jb2Ma+N64fzjs/6H0wxpQ279mC7DDYt66b2BmlyYC/Ohcw4ySvwtSmrAaZD1DhWg0H1TKnWzCUDodnfp1e4OunHsnxCjnXLMdO6fBcpIcqje7llhzUjxaqeLW7VI/Af3bywj3CKfDbTzjbwDjUJQe962GQCRbbEpJyJe02r9B1tMQ3oA8OdyhUPgljkrPrHk4zafRV0e97RD5UzWWTbSa0eRFRK03dNVhYkFd+jkFXEofbiTj50r+uwr4gMnseD/MQh7CgyV1AhFiX2BwJr/bAoB9a3gOXJeqzRCwwXeMgILS7PDvsGhGZmkQWPx4M0wvBxNRq5NATSC+M5oEJVTZTiPQt6m7PlMJp40kWMzTPvFrPNRGa39i+1YtKrzkPeoKOnxpRNGfmKR4XcsQ7mzG5IkkjibV+UhAyQQhFsVp/j4jtkV4pIE+Xl/hYLNQEj/Bt3yLA1jEVlv6TtsYXe9YstidDosYWIgSU+Qg8/3gqOn3idqHhCZp8q6wpSTRc341jCPtdSAjfPHb+eA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB6738.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(366004)(39860400002)(136003)(376002)(396003)(451199021)(82960400001)(38100700002)(31696002)(83380400001)(36756003)(2906002)(6486002)(54906003)(8936002)(6666004)(6512007)(478600001)(2616005)(26005)(53546011)(6506007)(5660300002)(966005)(186003)(8676002)(66556008)(41300700001)(66476007)(66946007)(4326008)(316002)(86362001)(6916009)(31686004)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZHN6ci8ramlMMkxpb0g1cHpNNyt0NEtwdkpmenBzODMwVE0zZUtqVHA4eTFP?=
- =?utf-8?B?cjBGYklSWi9BOWpGaUY2bnl4T3JIRkdpNHNPcmp4QVBYdGJDb1EySGEvdDlj?=
- =?utf-8?B?d0hmdlJSYUFUaFEwdUhCNXVrS1VFRmxDRFpuWDk4dVU1bUtqTTQ5YlR2YUJv?=
- =?utf-8?B?QmJwaDIwdERHcFEyOU8zN282WWVWTUJmZmFESForZklPdjFGNGpQbGNpQjNL?=
- =?utf-8?B?R3hmU1JBOVQ1VGhuTTJmcit3ck5XQTRlWFBtU2VMZHRRdE4yUzZ1bzFMUkhJ?=
- =?utf-8?B?bW1mQnkwaVJqQjdKZW0vcGllQmNzNlZaaTJ3b2VVaGxTbE5ocWV0NFFMK3dP?=
- =?utf-8?B?VTFNNUdYZXhodHY4V0piUTlrWHhxNkpNS1JyU0hmVUxvbUM5czlTYXlXZUtv?=
- =?utf-8?B?TFU4eWk3WHM2NzJXV3JEd3hOWGtiMFVPMVRQUkE4RjhjMU9aVnpUS05UMGR5?=
- =?utf-8?B?YjJzYW95UWtvT1MyMXhReXZ3UUM5aXRiSkZLSG9aL3JqTXBKYlZZMFdBYzBQ?=
- =?utf-8?B?Q1ljZUFXd3BmUjIxcjd0WTAwYnB5WDZRZ3VYTE5SZ3FITzRBRUN3Sm1wVk5y?=
- =?utf-8?B?eGdTY2sxNVBVVG9RcjZlYlFBSHRtSkk2eEFXdzI1WmlWYXgvWUxOUTV4aHJq?=
- =?utf-8?B?ckliblpsMUFId2IyTFFYMkt2aTk3MU9GYnM2ZjlSUWthc21RNFA3d0dHeUF1?=
- =?utf-8?B?Vjk2V1M0ZWRPazFUQTRVUkhVZHZlUkx0ZHJkR2Jra3ZZQmplOTROdEhUb0tu?=
- =?utf-8?B?NkZjWGJiV2NMR0ppNDZLWlArMzZYRFZhdGpwMmVRbkZmMDg2eWhkWGpvTE8x?=
- =?utf-8?B?WXN0QWc4bFRRa0phMEFTbDgzUGpiL1plUGs1UGV4VjZxNnFwVzZ6WFBlU3lB?=
- =?utf-8?B?WW8zMHYxZGo0YnFsSHdEMXNveERyeDFjbk9FT1d6REc5cVVPcjQ3c2FMMXY1?=
- =?utf-8?B?ZjlJM1Q3U2oxV2UwZitKYXJEL0hHNkFBNmxRQXROSWFTZjZ0RDJXbnlCNTZW?=
- =?utf-8?B?bzZIWFFFOWdpc1QwVjh1a2RyemFrcVZtT1A5MWU4cW5qbGt2aGFQUHZRVXdU?=
- =?utf-8?B?dkRlczgzMlVvbHlYZWFuWXhvK1Frd0x3U082WHdZemNqVDVKWHgxTFVKQ0Fp?=
- =?utf-8?B?YWZBNFVxV1NCa2FqVUpUQzN5M29JR0F2QVJSMlFDQzJ1Y1RqOGtXMzlDVVcr?=
- =?utf-8?B?ZXdsZXd0VUZTQzBWMmJHVmsxcnV6OEtKQUVSK0xVVlhmenFBNnA5VWJiUjdO?=
- =?utf-8?B?d0ZzQS9IVlJ6SmtlWHVLVHhpU0E2WW9Yck83YkNBK2VaTmNPWmZjaC93VDc3?=
- =?utf-8?B?bElwd1pSN29rSFA1NjVQMnlkOENsK3pMQkZmaFdqUnJLVjVGOUVwanBWbzUz?=
- =?utf-8?B?eS9UZlo3bVdhU2tlUUUxRUpQb0ZlSkZKL1hqSWhqWnRteWdPbzREN1JNWFBV?=
- =?utf-8?B?U2w2cHYxWWJHY0Q1Q0FYdTJ6ZVhoRG5GV1M4ZjdNemJ0YVR5a0ZZTDhFZS9w?=
- =?utf-8?B?QmlabXIwd1NDdENGYUk5YTVlb1NSOGx1NzRhSVRlQlF6WGJxckIwR3BNRDlT?=
- =?utf-8?B?cEhzWlpTY25VUXhXZmdTWW9EeE5DamR1QS9ISzN0a2hZM2toV2YyZEdiR21Y?=
- =?utf-8?B?Q3NOaGlFMTR4RVUrUi9TQnd4Mm1lRFQ3Nzk2R1VBMFJTbnNyZ0YzNW9FZmVp?=
- =?utf-8?B?Nm0vbHJKMG1UVUVjd1ZBTHVtbEFTTm1OT2NaVGd2QStPc2RVRWVwTy9UWVlU?=
- =?utf-8?B?c21TRkt3NnFRT3RjZFc3WENydTlhYzRyM0xlSG1tY3hPTTV6ZWdXS1IrWXZv?=
- =?utf-8?B?c1FaREF3d0dpMklOck1tMDcvNDVwYUpRVWNLdmdnUGEyR1F5V2ZUNXVtcXNN?=
- =?utf-8?B?UDM5bTFkSklYNFNmOEU4eXYyejZRek9vR2k2Y0NzUVVOVERpUnRWdHdTREZu?=
- =?utf-8?B?dUVsNmRtR2M4NzRnQ25neXUxdEhqZnJSYWs3S090OVBXUUR2T0tqTGhBelVB?=
- =?utf-8?B?ZFA0K3VyMGZEVG5zOStIRUY2ckhlOGRXM01LcGxicnlxUHhoclZFa0g5S1lF?=
- =?utf-8?B?SFc1TG1UMHlWTFdCeHNRWDhSenJKWGszOHIyQ0pMUFEwTFhtdTlTeGR1M21y?=
- =?utf-8?Q?GAl2VvIzA1lFW0m0DOJjqfw+L?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 257654d6-9642-426f-3fdc-08db87b1ec62
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6738.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 17:10:45.0349 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /UhGApy3ursBv1OzZO3L4WrZcEwGiuUyKTLTDBWYvYMUZgcYPXOA9VMzW7AEu5rLEsUhWjO2vE4bVkbDzklOiw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5784
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689700272; x=1721236272;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=v99rs/ftkQBmWzyhvHlOxZ6W6Q4rRVTzsWYBLTJ+NtM=;
- b=nPdRC0Yii56AAqgvQbiylgzPUYT/0wrg2fJN9CbJMEVNtxKjRWSkCriu
- FGi4mGp2MiG+MoL9tWHZrIn7TB3ptBVnogVdzXfbV6CDgfbrbve01GLMj
- kJNi2KIJc++3VAUSc38GeHIrXDDKJew+wecmuaSF8gAlNw+MXje3g1Pgn
- E1Q+O2yzFZmrX52FerReTPSYEZq70r8NM3Autlvug9sR0JX9mBXj3CHDc
- 0it71sqiCCJi/Bm5jYgSmKHTg/PGRET9LfDyDwjcTVqfmUFfsCsXKa4Ik
- 3EyRulOjyd9e98kEL2MhPkvt32GnUPqY6Fu+d5bAVckef1rSf4L7CsSrP
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nPdRC0Yi
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] igc: Correct the short
- interval between PTM requests.
+In-Reply-To: <ZLayEkkaFgshJuDx@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+X-Mailman-Approved-At: Tue, 18 Jul 2023 17:42:18 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1689701780;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=mvPVjjNECoRFNO48oXbxAOJbDMaOxAF6tNeJiwWQlBM=;
+ b=iKzE9vXrDxZzdXMOvBVBXV/tZhROewwIcwyN81L2hxacN6yzsstt0MPQtJGdbCAjApkJRh
+ Yb58PDm2HysNpDXNhspSUrIRGFmqI3mI2uxo/dROZWBoBesZ7sZlViXBkgbVWtmwQE2h8L
+ Z889h5jkYko69R6a1c6Ug2R2T3Qg/Es=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=iKzE9vXr
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next V2 10/15] ice: save and
+ restore TX queue head
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -195,75 +128,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- "Guilherme G. Piccoli" <gpiccoli@igalia.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, intel-wired-lan@lists.osuosl.org
+Cc: "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Burra,
+ Phani R" <phani.r.burra@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/18/2023 19:45, Bjorn Helgaas wrote:
-> [+cc Paul, Vinicius, Kai-Heng, Guilherme]
+On Tue, Jul 18, 2023 at 12:38:58PM -0300, Jason Gunthorpe wrote:
+> On Mon, Jul 17, 2023 at 05:43:34PM -0400, Peter Xu wrote:
 > 
-> On Mon, Jul 17, 2023 at 08:19:27PM +0300, Sasha Neftin wrote:
->> With the 10us interval, we were seeing PTM transactions taking around 12us.
->> With the 1us interval, PTM dialogs took around 2us. Checked with the PCIe
->> sniffer.
->>
->> Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
->> Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
->> ---
->>   drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
->> index 44a507029946..c3722f524ea7 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
->> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
->> @@ -549,7 +549,7 @@
->>   #define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x2f) << 2)
->>   #define IGC_PTM_CTRL_PTM_TO(usec)	(((usec) & 0xff) << 8)
->>   
->> -#define IGC_PTM_SHORT_CYC_DEFAULT	10  /* Default Short/interrupted cycle interval */
->> +#define IGC_PTM_SHORT_CYC_DEFAULT	1   /* Default short cycle interval */
+> > It may boil down to why we need to avoid migrating vIOMMU before other
+> > devices (which I am still unsure about..), and which way is easier.
 > 
-> Not related to *this* patch, but from looking at igc_ptp_reset(),
-> where IGC_PTM_SHORT_CYC_DEFAULT is used,
+> The statement is just that the kernel cannot assume anything about
+> vIOMMU ordering and people can't make VFIO migration drivers that
+> assume the vIOMMU is setup before the entry to running.
 > 
->    /* PCIe PTM Control */
->    #define IGC_PTM_CTRL_START_NOW  BIT(29) /* Start PTM Now */
->    #define IGC_PTM_CTRL_EN         BIT(30) /* Enable PTM */
-> 
->    ctrl = IGC_PTM_CTRL_EN |
-> 	  IGC_PTM_CTRL_START_NOW |
-> 	  IGC_PTM_CTRL_SHRT_CYC(IGC_PTM_SHORT_CYC_DEFAULT) |
-> 	  IGC_PTM_CTRL_PTM_TO(IGC_PTM_TIMEOUT_DEFAULT) |
-> 	  IGC_PTM_CTRL_TRIG;
-> 
->    wr32(IGC_PTM_CTRL, ctrl);
-> 
-> Obviously this must be implementation-specific PTM configuration,
-> which is fine.  But I assume even though this sets IGC_PTM_CTRL_EN and
-> IGC_PTM_CTRL_START_NOW, the device will not actually send PTM Request
-> messages unless the architected PTM Enable bit in the PTM Capability
-> is set (PCIe r6.0, sec 7.9.15.3).  Right?
+> That qemu enforces this ordering today for pointless reasons is
+> interesting, but it should not leak into becoming the ABI contract of
+> the kernel.
 
-Right.
+I wouldn't say it's pointless because we did that obviously with a reason.
+But I agree it should be qemu internal and shouldn't even be exposed unless
+extremely necessary.
 
-> 
-> I'm asking because Kai-Heng has been working on issues where
-> Unsupported Request errors are reported because some devices seem to
-> send PTM Requests when we don't think they should.  See
-> https://lore.kernel.org/r/20230714050541.2765246-1-kai.heng.feng@canonical.com
-
-I know. This is a different problem. (I can not reproduce, we will try 
-to get HP dock). We will think how to help here.
-
-> 
->>   #define IGC_PTM_CYC_TIME_DEFAULT	5   /* Default PTM cycle time */
->>   #define IGC_PTM_TIMEOUT_DEFAULT		255 /* Default timeout for PTM errors */
+-- 
+Peter Xu
 
 _______________________________________________
 Intel-wired-lan mailing list
