@@ -2,80 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D55A758262
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 18:45:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C96877582A3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jul 2023 18:55:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D958041743;
-	Tue, 18 Jul 2023 16:45:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D958041743
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3343C416B9;
+	Tue, 18 Jul 2023 16:55:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3343C416B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689698757;
-	bh=aZf1XQx+w1tQJpR85ewvTpbzAkajnanMWb4+BG/Eeps=;
-	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=landNjFUYR7ZsLEY2WrhNUoTSt0vY+o9eSWfven90z1CouiIfB6zxV8lOi33oviKp
-	 uqQ3K/41ehgtQpoC4/EHvjFMHu2FHy5kf250/wpsCcqiOzwWP3jTA7C47gk6PJG6Dz
-	 S3hLbCiWmunmviGR4yl7z+a+AaVF45piOSkeNnuJ3tNhMt5I8n5gw0J4msGWWcqq1O
-	 qP7FxK3sW/zNpcxf4RCsepGI5VcNmz3vtfx4QNfdAkyvEC3IahsrmPm/nM2J083RIJ
-	 alWS/oqM03+LiEzCI0vzQRo2rEzPJtrhXiPoUAQrRGzOANI551gOVaIMVriyjUWEnM
-	 xAEHGHKWbXgXg==
+	s=default; t=1689699307;
+	bh=ojiaSB5ysklGKm1lUguchxw/B7MrcyYhNuAG9TMrWFg=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=eHqoqyJA81q48qm0lr/J6iPRy9op8vu2ERvWyaAuPC+DoiW560xe4Qx9OMBC35zkM
+	 cOcSgP1N+jk52kaMTDh1G0bOF9y5K0HY7B/6T7+AVRqFheXazwOeNlfHIATGKxWIs9
+	 ypDVvizJhc/pXKxo5tacREItoqz5WNccb+OL7IlScAM9BMsp7gx9vysothD+XDcviI
+	 LvoLuaCRDp3TtazMGPRaIpW+uw7nYHCC7o9K7qPB7u8/cf4ij9VYY60oc4p5lP0C1N
+	 6rlFlk/D+hRAeJLLukb9b28f6H/v4h3BZdlnhuhP/sduDqeMvRGh1GD7fssFANpmce
+	 QKkm9QzDQUU9w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3WgHf-LfnEsv; Tue, 18 Jul 2023 16:45:56 +0000 (UTC)
+	with ESMTP id lKky2fzs9PpY; Tue, 18 Jul 2023 16:55:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 623CC41742;
-	Tue, 18 Jul 2023 16:45:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 623CC41742
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id C2CC441693;
+	Tue, 18 Jul 2023 16:55:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C2CC441693
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 25E411BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AA0481BF2A2
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Jul 2023 16:55:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F0DF341742
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0DF341742
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8E23B41693
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Jul 2023 16:55:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8E23B41693
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7RREWKksSpTx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jul 2023 16:45:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5205641740
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5205641740
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 16:45:49 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D0FBA61659;
- Tue, 18 Jul 2023 16:45:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16D0EC433C8;
- Tue, 18 Jul 2023 16:45:46 +0000 (UTC)
-Date: Tue, 18 Jul 2023 11:45:44 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Sasha Neftin <sasha.neftin@intel.com>
-Message-ID: <20230718164544.GA486141@bhelgaas>
+ with ESMTP id ficfliLd7L-m for <intel-wired-lan@osuosl.org>;
+ Tue, 18 Jul 2023 16:54:59 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D1360415F2
+Received: from mail-lj1-x22a.google.com (mail-lj1-x22a.google.com
+ [IPv6:2a00:1450:4864:20::22a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D1360415F2
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Jul 2023 16:54:58 +0000 (UTC)
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2b741cf99f8so91578851fa.0
+ for <intel-wired-lan@osuosl.org>; Tue, 18 Jul 2023 09:54:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689699297; x=1692291297;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=MIY3tAi9K8XvVcupPzvaGm+r1IqcF8mCNWuou85hGLs=;
+ b=XKYGFhVz2Ps/9jOD+VA4w4BpbyjmPRCvDEifsMLW659uQOqS9eUw/exdKy/Y9NFGRs
+ 4T+Y6fw/1RZls9Q6lAikWRDFb6IM+33DpHe7vma68LaS6ge7ZczLx60h0J5i/V7yZ+sO
+ CGXaxkgQ470ipEDiZE4jECZ0/55zgrlY1cxzVW6FfSn+8WXOgr+tFg6LXdgfXVDuZ3mj
+ d3t/KPz6sFLIbJEkdOboUhqqDqY8K0/PBRZ+mtKc5RQVSEB5jLJaFul6Fy6ekxorH5mf
+ DiGx6fmjrgD93YRbswb0o6M1yh+jeX43hKDu6O1RlLMUL4JpCb2bOgnlqd2+iW0VVwlI
+ +W0A==
+X-Gm-Message-State: ABy/qLZkbDptnWlaWRLMj/kq/eApPtCsOTIYTuZH0dyZrRSuxJB1+GlJ
+ EyRmqSoAr1i3ZIUuUfLZYemCJNvaXVx/T7dKQB7vyziJBJ4=
+X-Google-Smtp-Source: APBJJlHo3r7K23tNKPtXzDgSqhuRMbWZorBjhVlkHZVIfN+N2vLje20YE7yw+2XrB9ZXL3I82Ezb4J8b5xhUFYsjkz4=
+X-Received: by 2002:a2e:900c:0:b0:2b6:e7b7:a163 with SMTP id
+ h12-20020a2e900c000000b002b6e7b7a163mr10753276ljg.27.1689699296332; Tue, 18
+ Jul 2023 09:54:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230717171927.78516-1-sasha.neftin@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1689698747;
- bh=rSlNjvjzRrnWqAERbD+Th9DUDaRg0H6dEdA0hZG5nGU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=E+3zbumnbaxkGpPAaU08iYHTdifWS4XmynlZ2knsL0lfzd/vh1C/LqgvHmVR3Jp5R
- n63pl9akI/e0QSTSyJNO8OaOkbircps6YQhbD116vW++qvLlluueJgnnI3+Dq7XwmR
- iUb7weNKGWi6LIcPC0c4H6vl4FhZJ/vu3U3y/jElt5o3Oa9Qypp9C9I80JEj/vCrXO
- 5dY4EQ6ajh8NHknS33gRCFhw80bsrp28d043/2awDlLSakpV9dpE/tdeM6cPNsculg
- +T5+Bd2VARhOjxF1sBenpm67Eixwubvk/Z8gDXvovZPSPKy0aFVQepVtsYdOjPgchL
- 1ULW00FSogo7Q==
+From: War Nings <warnings007@gmail.com>
+Date: Tue, 18 Jul 2023 18:54:44 +0200
+Message-ID: <CALsJR91-KyLCqR6gzFxKdEp45tMJtjjMvFV1=+H4ehHOJ+26ag@mail.gmail.com>
+To: intel-wired-lan@osuosl.org
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1689699297; x=1692291297;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=MIY3tAi9K8XvVcupPzvaGm+r1IqcF8mCNWuou85hGLs=;
+ b=XQFef+SxvC82/1VdUAVFUMP8MUIsTxyMPN3P0D8XIasWL9NtMgFMKHjkEtbRA+F6Ez
+ UNREJBbeHYtWMA5zihUnyXTqVuV16lupS2kEkwWIWbDaoGxzEzHcHkWiWV6pa6G7MRkZ
+ HvWwOixp20Wspt4vtVjhB1Ciqw7081x3C1//bGfuqzh4dLO+eHYNtql63Fn3+IQRKu/O
+ J1GCvvsMCmPks6W8q+it/BsxQ8qWgzzDPs+CpzAq8GR+0yXEbBjloFvG8OwowY3Y4nrd
+ SEeSr15nSqozfJ6faMG2BHyU5OVoWa20QC+qi9bPfMTPrDjQs9QVvj03qVtdD1QJ3qqS
+ uCmw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=E+3zbumn
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] igc: Correct the short
- interval between PTM requests.
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=XQFef+Sx
+Subject: [Intel-wired-lan] Compilation error with ixgbe 5.18.11 or 5.18.13
+ on RT kernel 6.1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,68 +100,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, linux-pci@vger.kernel.org,
- "Guilherme G. Piccoli" <gpiccoli@igalia.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1333785075744559524=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[+cc Paul, Vinicius, Kai-Heng, Guilherme]
+--===============1333785075744559524==
+Content-Type: multipart/alternative; boundary="00000000000055d0e40600c5c694"
 
-On Mon, Jul 17, 2023 at 08:19:27PM +0300, Sasha Neftin wrote:
-> With the 10us interval, we were seeing PTM transactions taking around 12us.
-> With the 1us interval, PTM dialogs took around 2us. Checked with the PCIe
-> sniffer.
-> 
-> Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
-> Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-> index 44a507029946..c3722f524ea7 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-> @@ -549,7 +549,7 @@
->  #define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x2f) << 2)
->  #define IGC_PTM_CTRL_PTM_TO(usec)	(((usec) & 0xff) << 8)
->  
-> -#define IGC_PTM_SHORT_CYC_DEFAULT	10  /* Default Short/interrupted cycle interval */
-> +#define IGC_PTM_SHORT_CYC_DEFAULT	1   /* Default short cycle interval */
+--00000000000055d0e40600c5c694
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Not related to *this* patch, but from looking at igc_ptp_reset(),
-where IGC_PTM_SHORT_CYC_DEFAULT is used,
+Hello,
 
-  /* PCIe PTM Control */
-  #define IGC_PTM_CTRL_START_NOW  BIT(29) /* Start PTM Now */
-  #define IGC_PTM_CTRL_EN         BIT(30) /* Enable PTM */
+This driver seem have a compilation issue with two latest ixgbe drivers
+5.18.11 or 5.18.13 when you have a RT kernel 6.1.
+It's work fine with the standard 6.1 kernel but cause two errors with a
+PREEMPT_RT Kernel 6.1.
 
-  ctrl = IGC_PTM_CTRL_EN |
-	  IGC_PTM_CTRL_START_NOW |
-	  IGC_PTM_CTRL_SHRT_CYC(IGC_PTM_SHORT_CYC_DEFAULT) |
-	  IGC_PTM_CTRL_PTM_TO(IGC_PTM_TIMEOUT_DEFAULT) |
-	  IGC_PTM_CTRL_TRIG;
+Errors :
+ixgbe_main.c:8231:33: error: implicit declaration of function
+=E2=80=98u64_stats_fetch_begin_irq=E2=80=99; did you mean =E2=80=98u64_stat=
+s_fetch_begin=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
 
-  wr32(IGC_PTM_CTRL, ctrl);
+ixgbe_main.c:8234:26: error: implicit declaration of function
+=E2=80=98u64_stats_fetch_retry_irq=E2=80=99; did you mean =E2=80=98u64_stat=
+s_fetch_retry=E2=80=99?
+[-Werror=3Dimplicit-function-declaration]
 
-Obviously this must be implementation-specific PTM configuration,
-which is fine.  But I assume even though this sets IGC_PTM_CTRL_EN and
-IGC_PTM_CTRL_START_NOW, the device will not actually send PTM Request
-messages unless the architected PTM Enable bit in the PTM Capability
-is set (PCIe r6.0, sec 7.9.15.3).  Right?
 
-I'm asking because Kai-Heng has been working on issues where
-Unsupported Request errors are reported because some devices seem to
-send PTM Requests when we don't think they should.  See
-https://lore.kernel.org/r/20230714050541.2765246-1-kai.heng.feng@canonical.com
+Thank you
 
->  #define IGC_PTM_CYC_TIME_DEFAULT	5   /* Default PTM cycle time */
->  #define IGC_PTM_TIMEOUT_DEFAULT		255 /* Default timeout for PTM errors */
+--00000000000055d0e40600c5c694
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div><div>Hello,<br><br></div>This driver seem have a=
+ compilation issue with two latest ixgbe drivers 5.18.11 or 5.18.13 when yo=
+u have a RT kernel 6.1.<br></div>It&#39;s work fine with the standard 6.1 k=
+ernel but cause two errors with a PREEMPT_RT Kernel 6.1.<br><br>Errors :<br=
+>ixgbe_main.c:8231:33: error: implicit declaration of function =E2=80=98u64=
+_stats_fetch_begin_irq=E2=80=99; did you mean =E2=80=98u64_stats_fetch_begi=
+n=E2=80=99? [-Werror=3Dimplicit-function-declaration]<br><br>ixgbe_main.c:8=
+234:26: error: implicit declaration of function =E2=80=98u64_stats_fetch_re=
+try_irq=E2=80=99; did you mean =E2=80=98u64_stats_fetch_retry=E2=80=99? [-W=
+error=3Dimplicit-function-declaration]<br><br><br></div>Thank you<br></div>
+
+--00000000000055d0e40600c5c694--
+
+--===============1333785075744559524==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============1333785075744559524==--
