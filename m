@@ -1,74 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91E027588B3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jul 2023 00:47:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5006B758B4A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jul 2023 04:20:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EC16B60C15;
-	Tue, 18 Jul 2023 22:47:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC16B60C15
+	by smtp2.osuosl.org (Postfix) with ESMTP id 64D6740550;
+	Wed, 19 Jul 2023 02:20:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64D6740550
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689720427;
-	bh=5vUXF0dcJMGpDtkARch/swg6Ma7YZHuid4J6rc6oPa0=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1689733202;
+	bh=MM1HRgxNOMkHMPC0Wei3rHG+FPd09hjaNGUJjClycHs=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ufh4TSbnwyFgGcR9A7G7nfPCUspMS0auZG+pzCqHyjnyYGglWKj/G90qG+epiGO37
-	 BPuvdpbQ8PUA9T+TYeFLO5gvNZ/9MFNN9HrIG7sKiVbYBe1eznMYjhsQSeHeWOZNXk
-	 +DGpiHDwkvEO+UT4kZXAef9K+aRXITAxOoTKldDXMN/8IHPQpc3Tot1RlQdO6Vynex
-	 g3zPkVU2NNEH2ac66w1nMfgtGory/iQi7PTNvJ/n7LjQqM9WLtXEvR663DARhu5Dc/
-	 IG059c4fZhzCgbBv76v9t3oa1MTla2JzaM3K0t25FqUZ+SPKHUP0H6O0p44518BD8a
-	 3TqKwwLEXGCjw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ahw3m-Wg8XCv; Tue, 18 Jul 2023 22:47:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD72060BB5;
-	Tue, 18 Jul 2023 22:47:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD72060BB5
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C2E011BF2CA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 22:47:00 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 980C540503
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 22:47:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 980C540503
+	b=NZGB8G6Mh4OGtM/s31x7bj0O2IcR3vbX3p4zYTa7h/RSRZ3jTWin1jFAcZmnWvkZx
+	 Qw60qdv8Dm2gLiUOS/Wj/8tuDs7Zhbov0AUocoTBpWd6T4YQx24gerDzed0S4M/O13
+	 hLnczeGzk0LtJ959HhGL1FdcOHoBng0Ygbl+TB2NpaQF+nacsoO+mIKUG7rbOn6d3p
+	 R1JH/ucXhDUp7FJrsQEAqhFzG5ptBRaY8GLT6ZkVwhiqxDOjXkcYNpYMenOGHbMX7b
+	 H9MxZ3qWQzboAaq+PEjLpFp3QIR17QVn+KwtrNDrlBsK1AwpUDYngXC+InW+ElGmZT
+	 Lpkp1bNnoyfWA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QpaPXY5U09RI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jul 2023 22:46:59 +0000 (UTC)
-X-Greylist: delayed 558 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 18 Jul 2023 22:46:58 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0F6640253
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C0F6640253
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jul 2023 22:46:58 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5ae953.dynamic.kabel-deutschland.de
- [95.90.233.83])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 13B7361E5FE37;
- Wed, 19 Jul 2023 00:37:20 +0200 (CEST)
-Message-ID: <0221c4b6-096b-c8fb-2b83-cdfbab668589@molgen.mpg.de>
-Date: Wed, 19 Jul 2023 00:37:19 +0200
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TLitrCmsek5m; Wed, 19 Jul 2023 02:20:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 63C3E403C6;
+	Wed, 19 Jul 2023 02:20:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 63C3E403C6
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A71A21BF303
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jul 2023 02:19:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7A61840360
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jul 2023 02:19:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7A61840360
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 27rKBDQIAMSt for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Jul 2023 02:19:55 +0000 (UTC)
+X-Greylist: delayed 570 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 19 Jul 2023 02:19:55 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4622740357
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4622740357
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jul 2023 02:19:55 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id AFB2F616DA;
+ Wed, 19 Jul 2023 02:10:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 70763C43391;
+ Wed, 19 Jul 2023 02:10:22 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 44377E22AE5; Wed, 19 Jul 2023 02:10:22 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-To: Sasha Neftin <sasha.neftin@intel.com>
-References: <20230717171927.78516-1-sasha.neftin@intel.com>
- <80bfadb3-5af3-0100-30bb-c5008660d5a5@molgen.mpg.de>
- <af05bc6d-adf3-a0d1-534d-976f99e96d58@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <af05bc6d-adf3-a0d1-534d-976f99e96d58@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] igc: Correct the short
- interval between PTM requests.
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <168973262227.24960.1211431370018888838.git-patchwork-notify@kernel.org>
+Date: Wed, 19 Jul 2023 02:10:22 +0000
+References: <20230717030937.53818-1-yunchuan@nfschina.com>
+In-Reply-To: <20230717030937.53818-1-yunchuan@nfschina.com>
+To: yunchuan <yunchuan@nfschina.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1689732622;
+ bh=GZrsVklu6wW9LRIDBIigNtrV62SEsXbQ+xxiZOxft5s=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=FIb0s6XXYq/T55KzIt+Av0wBEgHCjwPJAodcts8fRWJ6J1jZQlNGPkMQ1tiKO550I
+ xFyhtK8xnKYn/XakGD5CBsTPo0I2nXhjALNanhNdzHENLOUM0ANe3usMv+BTjJtAEt
+ vtE0WTDDk5w7gifeqCH4SMDAZp5zfq3WiAu84Rh79RrX8vtSLpWdWR1LR1QkwgbGTa
+ pDNfcbZE/UuKWCwUcSnnP0eLPRh6sVJ+/wtlaKRyYke1BW3+M4+Xv0gxDOEU7rdu0W
+ GHWh9+Y6WPmZv8dy2n2CsUClZTnhEf85MNfMIVA1uq1IfW8hBv6HzjPO+JtpjWndbD
+ Q9KUAIcKtF3fQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=FIb0s6XX
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 0/9] Remove unnecessary
+ (void*) conversions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,52 +95,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michael Edri <michael.edri@intel.com>, linux-pci@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: andrew@lunn.ch, irusskikh@marvell.com, kernel-janitors@vger.kernel.org,
+ jesse.brandeburg@intel.com, edumazet@google.com,
+ iyappan@os.amperecomputing.com, anthony.l.nguyen@intel.com,
+ quan@os.amperecomputing.com, linux@armlinux.org.uk, xeb@mail.ru,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ yisen.zhuang@huawei.com, wg@grandegger.com, steve.glendinning@shawell.net,
+ keyur@os.amperecomputing.com, linux-can@vger.kernel.org,
+ mostrows@earthlink.net, mkl@pengutronix.de, salil.mehta@huawei.com,
+ GR-Linux-NIC-Dev@marvell.com, uttenthaler@ems-wuensche.com, rmody@marvell.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, davem@davemloft.net,
+ skalluru@marvell.com, hkallweit1@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-W0NjOiArVmluaWNpdXNdCgpEZWFyIFNhc2hhLAoKCkFtIDE4LjA3LjIzIHVtIDE4OjE1IHNjaHJp
-ZWIgTmVmdGluLCBTYXNoYToKPiBPbiA3LzE3LzIwMjMgMjA6MzIsIFBhdWwgTWVuemVsIHdyb3Rl
-Ogo+PiBbQ2M6ICtsaW51eC1wY2lAdmdlci5rZXJuZWwub3JnXQoKW+KApl0KCj4+IE1heWJlIGJl
-IG1vcmUgc3BlY2lmaWMgaW4gdGhlIGNvbW1pdCBtZXNzYWdlIHN1bW1hcnkuIE1heWJlOgo+Pgo+
-PiBpZ2M6IERlY3JlYXNlIFBUTSBzaG9ydCBpbnRlcnZhbCBmcm9tIDEwIHVzIHRvIDEgdXMKPiAK
-PiBHb29kLgo+IAo+PiBBbSAxNy4wNy4yMyB1bSAxOToxOSBzY2hyaWViIFNhc2hhIE5lZnRpbjoK
-Pj4+IFdpdGggdGhlIDEwdXMgaW50ZXJ2YWwsIHdlIHdlcmUgc2VlaW5nIFBUTSB0cmFuc2FjdGlv
-bnMgdGFraW5nIGFyb3VuZCAxMnVzLgo+Pj4gV2l0aCB0aGUgMXVzIGludGVydmFsLCBQVE0gZGlh
-bG9ncyB0b29rIGFyb3VuZCAydXMuIENoZWNrZWQgd2l0aCB0aGUKPj4+IFBDSWUgc25pZmZlci4K
-Pj4KPj4gT24gd2hhdCBib2FyZCwgYW5kIHdpdGggd2hhdCBkZXZpY2UgYW5kIHdoYXQgZmlybXdh
-cmUgdmVyc2lvbnM/Cj4gCj4gQW55IHdpdGggdGhlIFBUTSBzdXBwb3J0LiBIVyBmZWF0dXJlIGFu
-ZCBub3QgZGVwZW5kZW50IG9uIHRoZSBmaXJtd2FyZS4KClN0aWxsIHlvdSB0ZXN0ZWQgaXQuIEl0
-4oCZcyBhbHdheXMgYmVuZWZpY2lhbCB0byBhdCBsZWFzdCBkZW5vdGUgb25lIG9mIAp0aGUgc3lz
-dGVtcyB3aXRoIGFsbCB0aGUgZGV0YWlscy4gRXNwZWNpYWxseSBhcyBpdCBzaG91bGRu4oCZdCBj
-b3N0IHlvdSAKbW9yZSB0aGFuIGEgbWludXRlIHRvIGFkZCB0aGVzZSBkZXRhaWxzLgoKPj4+IEZp
-eGVzOiBhOTBlYzg0ODM3MzIgKCJpZ2M6IEFkZCBzdXBwb3J0IGZvciBQVFAgZ2V0Y3Jvc3N0c3Rh
-bXAoKSIpCj4+PiBTdWdnZXN0ZWQtYnk6IFZpbmljaXVzIENvc3RhIEdvbWVzIDx2aW5pY2l1cy5n
-b21lc0BpbnRlbC5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBTYXNoYSBOZWZ0aW4gPHNhc2hhLm5l
-ZnRpbkBpbnRlbC5jb20+Cj4+PiAtLS0KPj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2lnYy9pZ2NfZGVmaW5lcy5oIHwgMiArLQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
-aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2lnYy9pZ2NfZGVmaW5lcy5oIAo+Pj4gYi9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pZ2MvaWdjX2RlZmluZXMuaAo+Pj4gaW5kZXggNDRhNTA3MDI5OTQ2Li5jMzcyMmY1
-MjRlYTcgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2MvaWdj
-X2RlZmluZXMuaAo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19k
-ZWZpbmVzLmgKPj4+IEBAIC01NDksNyArNTQ5LDcgQEAKPj4+IMKgICNkZWZpbmUgSUdDX1BUTV9D
-VFJMX1NIUlRfQ1lDKHVzZWMpwqDCoMKgICgoKHVzZWMpICYgMHgyZikgPDwgMikKPj4+IMKgICNk
-ZWZpbmUgSUdDX1BUTV9DVFJMX1BUTV9UTyh1c2VjKcKgwqDCoCAoKCh1c2VjKSAmIDB4ZmYpIDw8
-IDgpCj4+PiAtI2RlZmluZSBJR0NfUFRNX1NIT1JUX0NZQ19ERUZBVUxUwqDCoMKgIDEwwqAgLyog
-RGVmYXVsdCBTaG9ydC9pbnRlcnJ1cHRlZCBjeWNsZSBpbnRlcnZhbCAqLwo+Pj4gKyNkZWZpbmUg
-SUdDX1BUTV9TSE9SVF9DWUNfREVGQVVMVMKgwqDCoCAxwqDCoCAvKiBEZWZhdWx0IHNob3J0IGN5
-Y2xlIAo+Pj4gaW50ZXJ2YWwgKi8KPj4KPj4gV2h5IGlzIHRoZSBjb21tZW50IHVwZGF0ZWQ/Cj4g
-Cj4gSW50ZXJ2YWwsIG5vdCBpbnRlcnJ1cHQuLi4KClNvcnJ5LCBJIGRvIG5vdCB1bmRlcnN0YW5k
-IHlvdXIgYW5zd2VyLiBJdOKAmWQgYmUgZ3JlYXQsIGlmIHlvdSBlbGFib3JhdGVkLgoKPj4+IMKg
-ICNkZWZpbmUgSUdDX1BUTV9DWUNfVElNRV9ERUZBVUxUwqDCoMKgIDXCoMKgIC8qIERlZmF1bHQg
-UFRNIGN5Y2xlIHRpbWUgKi8KPj4+IMKgICNkZWZpbmUgSUdDX1BUTV9USU1FT1VUX0RFRkFVTFTC
-oMKgwqDCoMKgwqDCoCAyNTUgLyogRGVmYXVsdCB0aW1lb3V0IGZvciBQVE0gZXJyb3JzICovCgoK
-S2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
-c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
-LXdpcmVkLWxhbgo=
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 17 Jul 2023 11:09:37 +0800 you wrote:
+> Remove (void*) conversions under "drivers/net" directory.
+> 
+> Changes in v3:
+> 	change the author name to my full name "Wu Yunchuan".
+> 	improve the commit message to be more clearly.
+> 
+> Changes in v2:
+>         move declarations to be reverse xmas tree.
+>         compile it in net and net-next branch.
+>         remove some error patches in v1.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v3,1/9] net: atlantic: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/f15fbe46f5ed
+  - [net-next,v3,2/9] net: ppp: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/89c04d6c49c3
+  - [net-next,v3,3/9] net: hns3: remove unnecessary (void*) conversions.
+    https://git.kernel.org/netdev/net-next/c/14fbcad00fe5
+  - [net-next,v3,4/9] net: hns: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/406eb9cf6f6f
+  - [net-next,v3,5/9] ice: remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/c59cc2679acc
+  - [net-next,v3,6/9] ethernet: smsc: remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/099090c6effc
+  - [net-next,v3,7/9] net: mdio: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/04115debedce
+  - [net-next,v3,8/9] can: ems_pci: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/9235e3bcc613
+  - [net-next,v3,9/9] net: bna: Remove unnecessary (void*) conversions
+    https://git.kernel.org/netdev/net-next/c/1d5123efdb91
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
