@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6485975AE39
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jul 2023 14:22:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EA5C75AF31
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jul 2023 15:09:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06797820FA;
-	Thu, 20 Jul 2023 12:22:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06797820FA
+	by smtp1.osuosl.org (Postfix) with ESMTP id A21F481F7D;
+	Thu, 20 Jul 2023 13:09:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A21F481F7D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689855723;
-	bh=ZMvEFKQ1Xzm8go/jUq+Ot6O82tkkReVxGjy9XJXWBqg=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Z88FjhWmilihgpINuvSIvK0KVY4KwDuAVzdQWn3oGzLIMMNgokBVuNLwz3ykTid7J
-	 +h2nAohRTyWNmstB/ZpRht4Ig02BHnGVM0IJFPceM24OV5opCGkQCZ/9inVEugtD8K
-	 uITFhzbFBALBjCvGIcUWOi173imdWNZhKaBAPjP9C41TEbPVndbFM3iBUlDKFVoFFX
-	 npZgD9KQpz8Jg4d5clP4Xh0OyWkRPW/cey4bcFdy58/Os/m0iTOrH9WKwmzR1bGd1s
-	 4Jx1EmgBPtm5qJEpI/qbwqigpH+ul8azpV00/t9f+zh4ChtG0oD6wwhryIUYKsUAjt
-	 lhx7MaPjGbSGg==
+	s=default; t=1689858550;
+	bh=q6fJ+BNo+NDT0ac08ZzbKyYt6/1YgWpSSVbce45Z1uo=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=occCviVy718T66/qlU2L7F/Q10iLDxtnuE5AYKHMWzxRxpn4p0ssQG7KT5TrBAHWP
+	 5al10gKJ8t6i5rWJc4nZ/Y/ru6n81hFkRaVmdaUHFQPyUxchGCcpf37KNJn4tKTQLC
+	 gGSJLLecK3E73MgeWShFY3ug5fgZtQc71sPQhPJqUzErR0xrY7K3+Kdszk3qhibIds
+	 Ccv7aOkmUMM7+3e4FyBaS0XWVtSSJ07TT0qugEi/zrXBSxrW8Fjf6+AixDCemfN99y
+	 ghlgYRoTL0OiVys2E2ZzFbp/iPfZg77dIgfzqWvNK3m7zXdqfz8hg32WLIPvhIR78r
+	 0OfAH3hrYJ14g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xufEM-HDX3oa; Thu, 20 Jul 2023 12:22:02 +0000 (UTC)
+	with ESMTP id QTek__BCw2SW; Thu, 20 Jul 2023 13:09:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7E2ED8214C;
-	Thu, 20 Jul 2023 12:22:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E2ED8214C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E8CB82199;
+	Thu, 20 Jul 2023 13:09:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E8CB82199
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BF16F1BF36E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 12:21:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 845841BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 13:09:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DE53E41B98
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 12:21:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DE53E41B98
+ by smtp4.osuosl.org (Postfix) with ESMTP id 674EB416E3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 13:09:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 674EB416E3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GagC0NiLwUSM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jul 2023 12:21:46 +0000 (UTC)
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A962B41BAE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 12:21:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A962B41BAE
-X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="366742998"
-X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; d="scan'208";a="366742998"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jul 2023 05:14:24 -0700
+ with ESMTP id c4TRUmjRHQuN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jul 2023 13:09:02 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EC0F0401C0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jul 2023 13:09:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC0F0401C0
+X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="453098108"
+X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; d="scan'208";a="453098108"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jul 2023 06:07:05 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10776"; a="718368027"
-X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; d="scan'208";a="718368027"
-Received: from mmichali-devpc.igk.intel.com ([10.211.235.239])
- by orsmga007.jf.intel.com with ESMTP; 20 Jul 2023 05:14:22 -0700
-From: Michal Michalik <michal.michalik@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 20 Jul 2023 14:13:57 +0200
-Message-Id: <20230720121357.26739-4-michal.michalik@intel.com>
-X-Mailer: git-send-email 2.9.5
-In-Reply-To: <20230720121357.26739-1-michal.michalik@intel.com>
-References: <20230720121357.26739-1-michal.michalik@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="971023679"
+X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; d="scan'208";a="971023679"
+Received: from lkp-server02.sh.intel.com (HELO 36946fcf73d7) ([10.239.97.151])
+ by fmsmga006.fm.intel.com with ESMTP; 20 Jul 2023 06:07:04 -0700
+Received: from kbuild by 36946fcf73d7 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qMTN2-00066i-0C
+ for intel-wired-lan@lists.osuosl.org; Thu, 20 Jul 2023 13:07:04 +0000
+Date: Thu, 20 Jul 2023 21:06:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202307202121.8Hr3rQTP-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689855706; x=1721391706;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=t+osvWIvvWcFxq1mOfxR2Lj0bP44GDz2hcUuuKBPW1M=;
- b=Z6HK4U6y+86OSnrIF0vbooG+nZg83xd5conQJ34IjMtFTOAdKj0bE0Uu
- 0jm0tknPHavWMdSm6zLTqL0QMuZVDoKgrbk2Q7KxIeG9KAfJeEqosFrdL
- Q0sU+SR2zFjFxK7kPHrK4IkllmIfVY50xxLKQHIIjt2JKPgq5WCJnNWKg
- OKWTfA34zjB+R90mkM9LXkeIlgeV553Tn/XQTSdempA4SGR92Pf/GkqxS
- oic+mt/Hf7giw2tNM/quBqvInrus5MDNTPC8SuAejhuAJGEu9K07et4iI
- 5O6KaMBFYUwmZoaHfBh7wJ68hNRmbgwSpQxycRLJm8sKb/hRcUJGb4Nn9
- A==;
+ t=1689858541; x=1721394541;
+ h=date:from:to:subject:message-id;
+ bh=cGDOPO23dKHar7/Ujr2XwqIcFsuGFS1lXGAbk9wlBzo=;
+ b=Ng7jv4igjXmtIb4w6I5JarA5gNZ2KiyGr6EPnPjyeQGNFplWxPqxgeUY
+ ClP/kOOfStJt7ylATGRBRnrffX8HrPSj1x3lwtP/xsG238DoOKR0z0L3W
+ +VqULlCuZRXoDMcEy1CPYwAQ9U6yPc7DKaxGdbQW/UPakA+PyzVppEX62
+ gfo5ljXi+F7gTkNrpLdF3+2LrVrqW7ae9ABlP/rv2HsLmYKujkzzBbDWm
+ tiB9gnOijpAiCnhrt+CwXNS1P7KFo5b7CsOVnqgdt1R1q9YgdYKmdX1ms
+ aOI8OK1em7IDK2V+jcYySujmhVmGRlGI9+5iM2fNKukB+hMTzu+iMbrAO
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Z6HK4U6y
-Subject: [Intel-wired-lan] [PATCH net-next v1 3/3] ice: PTP: add clock
- domain number to auxiliary interface
+ header.a=rsa-sha256 header.s=Intel header.b=Ng7jv4ig
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 70ca4026d2e27fc012fa687a0951d2cc8758035d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,298 +92,166 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: karol.kolacinski@intel.com, anthony.l.nguyen@intel.com,
- jesse.brandeburg@intel.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The PHC clock id used to be moved between PFs using FW admin queue
-shared parameters - move the implementation to auxiliary bus.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 70ca4026d2e27fc012fa687a0951d2cc8758035d  i40e: Fix an NULL vs IS_ERR() bug for debugfs_create_dir()
 
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Michal Michalik <michal.michalik@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ethtool.c |   2 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c     | 163 +++++----------------------
- drivers/net/ethernet/intel/ice/ice_ptp.h     |  11 +-
- 3 files changed, 34 insertions(+), 142 deletions(-)
+elapsed time: 725m
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 8d5cbbd..aaa727c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3276,7 +3276,7 @@ ice_get_ts_info(struct net_device *dev, struct ethtool_ts_info *info)
- 				SOF_TIMESTAMPING_RX_HARDWARE |
- 				SOF_TIMESTAMPING_RAW_HARDWARE;
- 
--	info->phc_index = ice_get_ptp_clock_index(pf);
-+	info->phc_index = ice_ptp_clock_index(pf);
- 
- 	info->tx_types = BIT(HWTSTAMP_TX_OFF) | BIT(HWTSTAMP_TX_ON);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 7fced6e..ebc6f87 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -340,131 +340,6 @@ void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena)
- }
- 
- /**
-- * ice_get_ptp_clock_index - Get the PTP clock index
-- * @pf: the PF pointer
-- *
-- * Determine the clock index of the PTP clock associated with this device. If
-- * this is the PF controlling the clock, just use the local access to the
-- * clock device pointer.
-- *
-- * Otherwise, read from the driver shared parameters to determine the clock
-- * index value.
-- *
-- * Returns: the index of the PTP clock associated with this device, or -1 if
-- * there is no associated clock.
-- */
--int ice_get_ptp_clock_index(struct ice_pf *pf)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	enum ice_aqc_driver_params param_idx;
--	struct ice_hw *hw = &pf->hw;
--	u8 tmr_idx;
--	u32 value;
--	int err;
--
--	/* Use the ptp_clock structure if we're the main PF */
--	if (pf->ptp.clock)
--		return ptp_clock_index(pf->ptp.clock);
--
--	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--	if (!tmr_idx)
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR0;
--	else
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR1;
--
--	err = ice_aq_get_driver_param(hw, param_idx, &value, NULL);
--	if (err) {
--		dev_err(dev, "Failed to read PTP clock index parameter, err %d aq_err %s\n",
--			err, ice_aq_str(hw->adminq.sq_last_status));
--		return -1;
--	}
--
--	/* The PTP clock index is an integer, and will be between 0 and
--	 * INT_MAX. The highest bit of the driver shared parameter is used to
--	 * indicate whether or not the currently stored clock index is valid.
--	 */
--	if (!(value & PTP_SHARED_CLK_IDX_VALID))
--		return -1;
--
--	return value & ~PTP_SHARED_CLK_IDX_VALID;
--}
--
--/**
-- * ice_set_ptp_clock_index - Set the PTP clock index
-- * @pf: the PF pointer
-- *
-- * Set the PTP clock index for this device into the shared driver parameters,
-- * so that other PFs associated with this device can read it.
-- *
-- * If the PF is unable to store the clock index, it will log an error, but
-- * will continue operating PTP.
-- */
--static void ice_set_ptp_clock_index(struct ice_pf *pf)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	enum ice_aqc_driver_params param_idx;
--	struct ice_hw *hw = &pf->hw;
--	u8 tmr_idx;
--	u32 value;
--	int err;
--
--	if (!pf->ptp.clock)
--		return;
--
--	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--	if (!tmr_idx)
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR0;
--	else
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR1;
--
--	value = (u32)ptp_clock_index(pf->ptp.clock);
--	if (value > INT_MAX) {
--		dev_err(dev, "PTP Clock index is too large to store\n");
--		return;
--	}
--	value |= PTP_SHARED_CLK_IDX_VALID;
--
--	err = ice_aq_set_driver_param(hw, param_idx, value, NULL);
--	if (err) {
--		dev_err(dev, "Failed to set PTP clock index parameter, err %d aq_err %s\n",
--			err, ice_aq_str(hw->adminq.sq_last_status));
--	}
--}
--
--/**
-- * ice_clear_ptp_clock_index - Clear the PTP clock index
-- * @pf: the PF pointer
-- *
-- * Clear the PTP clock index for this device. Must be called when
-- * unregistering the PTP clock, in order to ensure other PFs stop reporting
-- * a clock object that no longer exists.
-- */
--static void ice_clear_ptp_clock_index(struct ice_pf *pf)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	enum ice_aqc_driver_params param_idx;
--	struct ice_hw *hw = &pf->hw;
--	u8 tmr_idx;
--	int err;
--
--	/* Do not clear the index if we don't own the timer */
--	if (!hw->func_caps.ts_func_info.src_tmr_owned)
--		return;
--
--	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--	if (!tmr_idx)
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR0;
--	else
--		param_idx = ICE_AQC_DRIVER_PARAM_CLK_IDX_TMR1;
--
--	err = ice_aq_set_driver_param(hw, param_idx, 0, NULL);
--	if (err) {
--		dev_dbg(dev, "Failed to clear PTP clock index parameter, err %d aq_err %s\n",
--			err, ice_aq_str(hw->adminq.sq_last_status));
--	}
--}
--
--/**
-  * ice_ptp_read_src_clk_reg - Read the source clock register
-  * @pf: Board private structure
-  * @sts: Optional parameter for holding a pair of system timestamps from
-@@ -2434,7 +2309,6 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- static long ice_ptp_create_clock(struct ice_pf *pf)
- {
- 	struct ptp_clock_info *info;
--	struct ptp_clock *clock;
- 	struct device *dev;
- 
- 	/* No need to create a clock device if we already have one */
-@@ -2447,11 +2321,11 @@ static long ice_ptp_create_clock(struct ice_pf *pf)
- 	dev = ice_pf_to_dev(pf);
- 
- 	/* Attempt to register the clock before enabling the hardware. */
--	clock = ptp_clock_register(info, dev);
--	if (IS_ERR(clock))
--		return PTR_ERR(clock);
--
--	pf->ptp.clock = clock;
-+	pf->ptp.clock = ptp_clock_register(info, dev);
-+	if (IS_ERR(pf->ptp.clock)) {
-+		dev_err(ice_pf_to_dev(pf), "Failed to register PTP clock device");
-+		return PTR_ERR(pf->ptp.clock);
-+	}
- 
- 	return 0;
- }
-@@ -2819,6 +2693,28 @@ static void ice_ptp_unregister_auxbus_driver(struct ice_pf *pf)
- }
- 
- /**
-+ * ice_ptp_clock_index - Get the PTP clock index for this device
-+ * @pf: Board private structure
-+ *
-+ * Returns: the PTP clock index associated with this PF, or -1 if no PTP clock
-+ * is associated.
-+ */
-+int ice_ptp_clock_index(struct ice_pf *pf)
-+{
-+	struct auxiliary_device *aux_dev;
-+	struct ice_pf *owner_pf;
-+	struct ptp_clock *clock;
-+
-+	aux_dev = &pf->ptp.port.aux_dev;
-+	owner_pf = ice_ptp_aux_dev_to_owner_pf(aux_dev);
-+	if (!owner_pf)
-+		return -1;
-+	clock = owner_pf->ptp.clock;
-+
-+	return clock ? ptp_clock_index(clock) : -1;
-+}
-+
-+/**
-  * ice_ptp_prepare_for_reset - Prepare PTP for reset
-  * @pf: Board private structure
-  */
-@@ -2916,9 +2812,6 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- 	if (err)
- 		goto err_clk;
- 
--	/* Store the PTP clock index for other PFs */
--	ice_set_ptp_clock_index(pf);
--
- 	err = ice_ptp_register_auxbus_driver(pf);
- 	if (err) {
- 		dev_err(ice_pf_to_dev(pf), "Failed to register PTP auxbus driver");
-@@ -2927,7 +2820,6 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- 
- 	return 0;
- err_aux:
--	ice_clear_ptp_clock_index(pf);
- 	ptp_clock_unregister(pf->ptp.clock);
- err_clk:
- 	pf->ptp.clock = NULL;
-@@ -3187,7 +3079,6 @@ void ice_ptp_release(struct ice_pf *pf)
- 	/* Disable periodic outputs */
- 	ice_ptp_disable_all_clkout(pf);
- 
--	ice_clear_ptp_clock_index(pf);
- 	ptp_clock_unregister(pf->ptp.clock);
- 	pf->ptp.clock = NULL;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index d94c223..5e5b54a 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -287,12 +287,12 @@ struct ice_ptp {
- #define N_EXT_TS_NO_SMA_E810T		2
- #define ETH_GLTSYN_ENA(_i)		(0x03000348 + ((_i) * 4))
- 
-+int ice_ptp_clock_index(struct ice_pf *pf);
- #if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
- struct ice_pf;
- int ice_ptp_set_ts_config(struct ice_pf *pf, struct ifreq *ifr);
- int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr);
- void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena);
--int ice_get_ptp_clock_index(struct ice_pf *pf);
- 
- void ice_ptp_extts_event(struct ice_pf *pf);
- s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb);
-@@ -318,10 +318,6 @@ static inline int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr)
- }
- 
- static inline void ice_ptp_cfg_timestamp(struct ice_pf *pf, bool ena) { }
--static inline int ice_get_ptp_clock_index(struct ice_pf *pf)
--{
--	return -1;
--}
- 
- static inline void ice_ptp_extts_event(struct ice_pf *pf) { }
- static inline s8
-@@ -344,5 +340,10 @@ static inline void ice_ptp_release(struct ice_pf *pf) { }
- static inline void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
- {
- }
-+
-+static inline int ice_ptp_clock_index(struct ice_pf *pf)
-+{
-+	return -1;
-+}
- #endif /* IS_ENABLED(CONFIG_PTP_1588_CLOCK) */
- #endif /* _ICE_PTP_H_ */
+configs tested: 138
+configs skipped: 5
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r003-20230720   gcc  
+alpha                randconfig-r013-20230720   gcc  
+alpha                randconfig-r033-20230720   gcc  
+alpha                randconfig-r036-20230720   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r005-20230720   gcc  
+arc                  randconfig-r022-20230720   gcc  
+arc                  randconfig-r043-20230720   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm                           h3600_defconfig   gcc  
+arm                  randconfig-r004-20230720   clang
+arm                  randconfig-r011-20230720   gcc  
+arm                  randconfig-r046-20230720   gcc  
+arm                             rpc_defconfig   gcc  
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r014-20230720   clang
+arm64                randconfig-r032-20230720   gcc  
+csky                                defconfig   gcc  
+hexagon              randconfig-r032-20230720   clang
+hexagon              randconfig-r041-20230720   clang
+hexagon              randconfig-r045-20230720   clang
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-r004-20230720   gcc  
+i386         buildonly-randconfig-r005-20230720   gcc  
+i386         buildonly-randconfig-r006-20230720   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-i001-20230720   gcc  
+i386                 randconfig-i002-20230720   gcc  
+i386                 randconfig-i003-20230720   gcc  
+i386                 randconfig-i004-20230720   gcc  
+i386                 randconfig-i005-20230720   gcc  
+i386                 randconfig-i006-20230720   gcc  
+i386                 randconfig-i011-20230720   clang
+i386                 randconfig-i012-20230720   clang
+i386                 randconfig-i013-20230720   clang
+i386                 randconfig-i014-20230720   clang
+i386                 randconfig-i015-20230720   clang
+i386                 randconfig-i016-20230720   clang
+i386                 randconfig-r036-20230720   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r024-20230720   gcc  
+loongarch            randconfig-r034-20230720   gcc  
+m68k                             allmodconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                          atari_defconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r036-20230720   gcc  
+microblaze           randconfig-r032-20230720   gcc  
+microblaze           randconfig-r035-20230720   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                        bcm63xx_defconfig   clang
+mips                 randconfig-r006-20230720   clang
+mips                 randconfig-r035-20230720   clang
+nios2                               defconfig   gcc  
+nios2                randconfig-r002-20230720   gcc  
+nios2                randconfig-r023-20230720   gcc  
+nios2                randconfig-r025-20230720   gcc  
+openrisc             randconfig-r021-20230720   gcc  
+openrisc             randconfig-r033-20230720   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r001-20230720   gcc  
+parisc               randconfig-r012-20230720   gcc  
+parisc               randconfig-r035-20230720   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                      arches_defconfig   gcc  
+powerpc                      chrp32_defconfig   gcc  
+powerpc                       holly_defconfig   gcc  
+powerpc                      katmai_defconfig   clang
+powerpc                    mvme5100_defconfig   clang
+powerpc              randconfig-r014-20230720   clang
+powerpc                     tqm8548_defconfig   gcc  
+powerpc                        warp_defconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r042-20230720   clang
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r016-20230720   clang
+s390                 randconfig-r031-20230720   gcc  
+s390                 randconfig-r044-20230720   clang
+sh                               allmodconfig   gcc  
+sh                          rsk7203_defconfig   gcc  
+sh                          sdk7786_defconfig   gcc  
+sh                           sh2007_defconfig   gcc  
+sh                            titan_defconfig   gcc  
+sh                              ul2_defconfig   gcc  
+sh                          urquell_defconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r015-20230720   gcc  
+sparc                randconfig-r026-20230720   gcc  
+sparc64              randconfig-r031-20230720   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   clang
+um                                  defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                   randconfig-r034-20230720   clang
+um                           x86_64_defconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64       buildonly-randconfig-r001-20230720   gcc  
+x86_64       buildonly-randconfig-r002-20230720   gcc  
+x86_64       buildonly-randconfig-r003-20230720   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-r016-20230720   clang
+x86_64               randconfig-x001-20230720   clang
+x86_64               randconfig-x002-20230720   clang
+x86_64               randconfig-x003-20230720   clang
+x86_64               randconfig-x004-20230720   clang
+x86_64               randconfig-x005-20230720   clang
+x86_64               randconfig-x006-20230720   clang
+x86_64               randconfig-x011-20230720   gcc  
+x86_64               randconfig-x012-20230720   gcc  
+x86_64               randconfig-x013-20230720   gcc  
+x86_64               randconfig-x014-20230720   gcc  
+x86_64               randconfig-x015-20230720   gcc  
+x86_64               randconfig-x016-20230720   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                    xip_kc705_defconfig   gcc  
+
 -- 
-2.9.5
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
