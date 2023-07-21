@@ -1,87 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A52C175D606
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jul 2023 22:57:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3ADD75D785
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 22 Jul 2023 00:31:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 467174186B;
-	Fri, 21 Jul 2023 20:57:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 467174186B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1764183AFF;
+	Fri, 21 Jul 2023 22:31:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1764183AFF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1689973033;
-	bh=0g+zl7hMjT9dq551GX0rKaOfYEqhWkwj1s8WxaMRxkA=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=AHfg39myeW1WCrZXl+sdmnpuTWM27fDa+K6ReQLXrP47xXF7LjoNau47t6IUwuhYi
-	 yzcCKOfF3ofxK+kt6LF4zgm2Wq7YMVyHEytDD+0gTJKA6njzJLsz26s4JbjsVK36o1
-	 AeP7k1NMB3Je98bgOvjgcTjuAe3QYMaQrzoYTLLUDOmhDIO0fD0PBg4DbDr5BSU+II
-	 gvx0iJEkjXP5Y7jA18KjuvVfr+ENwTG8bxlfShlV5j2xxKavHecMQy+3Oi75D0gzkR
-	 3L254fWyIQo/krGc8aX8Zz3PLGm7wSC54VtAL/Bpk6/BtExajfJ0dvvW3dDXg2aBgl
-	 R19xdSNj7WgoQ==
+	s=default; t=1689978668;
+	bh=X5bJV61iZ8tcQ2IgTQeWnP/IANusmgA1zWh5DC5qkVM=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=2LLTK+71K3jYIwnE9DqfnKSDxSDjvGKxfXDSQ7sepWNePKMhPrVtXEeAh3D8QHytY
+	 HCaPEQqGo1OfUZ2HmeK7pizF64bqoOOEjQPOngi0CIkCYQwwcYdyp9VWhkV2ENCaEX
+	 6+u96R35HUQpjQzAb+y1IDjEkQaqX4ls/ZmbwyfvwdKOv1R82A/HEQ7gMsukWecqJM
+	 FlYJQE+734cfjZdv97vMlzMYxfLP38s3OMJWSZLdByPUxo8EcWJsQDEw1Q2Yo7CFHf
+	 MlIsYSBY6tW78oMr5gBgw0wGj3pLJwMIwfNJXZkUh1NmwoRYYs4tr0WEZffe24/B1F
+	 24pDQHGOzVfzw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RMyEpjRMU23K; Fri, 21 Jul 2023 20:57:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id orwtu7VhlHeE; Fri, 21 Jul 2023 22:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 00AF640128;
-	Fri, 21 Jul 2023 20:57:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 00AF640128
+	by smtp1.osuosl.org (Postfix) with ESMTP id 048CD838ED;
+	Fri, 21 Jul 2023 22:31:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 048CD838ED
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 160BE1BF299
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 20:56:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F3A71BF982
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 17:58:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DD32F4185C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 20:56:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DD32F4185C
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5E40C4055E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 17:58:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E40C4055E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jis67eXOrRT9 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jul 2023 20:56:53 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 21 Jul 2023 20:56:53 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 128AD40128
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 128AD40128
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 20:56:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10778"; a="364577778"
-X-IronPort-AV: E=Sophos;i="6.01,222,1684825200"; d="scan'208";a="364577778"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2023 13:49:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10778"; a="790305428"
-X-IronPort-AV: E=Sophos;i="6.01,222,1684825200"; d="scan'208";a="790305428"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmsmga008.fm.intel.com with ESMTP; 21 Jul 2023 13:49:44 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Date: Fri, 21 Jul 2023 22:49:43 +0200
-Message-Id: <20230721204943.701303-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id K8cxjY8AKusB for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jul 2023 17:58:02 +0000 (UTC)
+Received: from smtp.portwell.com (smtp.portwell.com [38.88.18.152])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 51E7B4036E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 17:58:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51E7B4036E
+Received: from APTEXCH01.APT.local by smtp.portwell.com (MDaemon PRO v13.5.1)
+ with ESMTP id md50002405511.msg
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jul 2023 10:57:59 -0700
+X-Spam-Processed: smtp.portwell.com, Fri, 21 Jul 2023 10:57:59 -0700
+ (not processed: spam filter heuristic analysis disabled)
+X-Return-Path: easonl@portwell.com
+X-Envelope-From: easonl@portwell.com
+X-MDaemon-Deliver-To: intel-wired-lan@lists.osuosl.org
+Received: from APTEXCH01.APT.local (192.168.0.243) by APTEXCH01.APT.local
+ (192.168.0.243) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 21 Jul
+ 2023 10:57:59 -0700
+Received: from APTEXCH01.APT.local ([::1]) by APTEXCH01.APT.local ([::1]) with
+ mapi id 15.00.1497.012; Fri, 21 Jul 2023 10:57:59 -0700
+From: "Eason  Lin (3383)" <easonl@portwell.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Neftin, Sasha" <sasha.neftin@intel.com>
+Thread-Topic: Ubuntu Kernel 5.4 to support Intel I225
+Thread-Index: Adm7ZthKb82qg0E7QY6QvI52QapUqQAymYWAAA0rsPA=
+Date: Fri, 21 Jul 2023 17:57:59 +0000
+Message-ID: <6a59df5ae6e346c3979dc7645c018ab5@APTEXCH01.APT.local>
+References: <484b485adfa8430bb1436479d915bb81@APTEXCH01.APT.local>
+ <4472b54e-79bf-8c1c-485b-88fc8bcb1e00@intel.com>
+In-Reply-To: <4472b54e-79bf-8c1c-485b-88fc8bcb1e00@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [192.168.96.126]
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689973013; x=1721509013;
- h=from:to:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=2DSwUEIy8+pldt3wpXfkteiSrYf8jkA26/n0BT4UXVA=;
- b=VdDuJsuJ2yrCO4Pem8bMj9zzZN+mrK6mlyfniBkncQIY4L3/4ERyemPv
- KjfyXdxgVXrm8GyFZSVcrwuhUGvVI4G039TLvNK9jCUSVUSAXTVpIlesx
- quj/rfeyiX8d8KuG4Y41NjSMViDzsmG5tTv4m+loFmmqb1TNwVvLUvHJp
- iJsksD8RpdCtP4PZiaDlxT/Ew+UBTtsKxg6u508D6suuSMXCKiUbfuPzT
- E85TQrqDJjZd4fx7ObFn6NFRvRv6Sga5P0E8ZLXtpho88krqmw67+gSzc
- 04Uc5m/Rj3QiFz7UZfhBnsLoIYD5KIP96fmPNMrvefxMtsDM5OhGFWmIM
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VdDuJsuJ
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] i40e: fix livelocks in
- i40e_reset_subtask()
+X-Mailman-Approved-At: Fri, 21 Jul 2023 22:31:02 +0000
+Subject: Re: [Intel-wired-lan] Ubuntu Kernel 5.4 to support Intel I225
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,104 +91,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix livelocks by aquiring rtnl_lock() before any reset related operations.
-Add rtnl_lock()/rtnl_unlock() at top/bottom of i40e_reset_subtask()
-Add check for __I40E_RESET_INTR_RECEIVED bit.
-Add re-entry guard by fast return in case reset is already in progress.
+Hi Tony,
+Thank you for quick response.
+Let's put Ubuntu aside and focus on i225 driver. Is it possible that you can help to write a i225 driver to support Linux Kernel version 5.4? Thank you again.
 
-Fixes: 373149fc99a0 ("i40e: Decrease the scope of rtnl lock")
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v1->v2
-* apply on https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git
----
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 39 +++++++++++----------
- 1 file changed, 20 insertions(+), 19 deletions(-)
+Best regards,
+Eason
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 7c30abd..164f7c6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -10011,42 +10011,44 @@ static void i40e_reset_subtask(struct i40e_pf *pf)
- {
- 	u32 reset_flags = 0;
- 
--	if (test_bit(__I40E_REINIT_REQUESTED, pf->state)) {
-+	if (test_and_clear_bit(__I40E_REINIT_REQUESTED, pf->state))
- 		reset_flags |= BIT(__I40E_REINIT_REQUESTED);
--		clear_bit(__I40E_REINIT_REQUESTED, pf->state);
--	}
--	if (test_bit(__I40E_PF_RESET_REQUESTED, pf->state)) {
-+	if (test_and_clear_bit(__I40E_PF_RESET_REQUESTED, pf->state))
- 		reset_flags |= BIT(__I40E_PF_RESET_REQUESTED);
--		clear_bit(__I40E_PF_RESET_REQUESTED, pf->state);
--	}
--	if (test_bit(__I40E_CORE_RESET_REQUESTED, pf->state)) {
-+	if (test_and_clear_bit(__I40E_CORE_RESET_REQUESTED, pf->state))
- 		reset_flags |= BIT(__I40E_CORE_RESET_REQUESTED);
--		clear_bit(__I40E_CORE_RESET_REQUESTED, pf->state);
--	}
--	if (test_bit(__I40E_GLOBAL_RESET_REQUESTED, pf->state)) {
-+	if (test_and_clear_bit(__I40E_GLOBAL_RESET_REQUESTED, pf->state))
- 		reset_flags |= BIT(__I40E_GLOBAL_RESET_REQUESTED);
--		clear_bit(__I40E_GLOBAL_RESET_REQUESTED, pf->state);
--	}
--	if (test_bit(__I40E_DOWN_REQUESTED, pf->state)) {
-+	if (test_and_clear_bit(__I40E_DOWN_REQUESTED, pf->state))
- 		reset_flags |= BIT(__I40E_DOWN_REQUESTED);
--		clear_bit(__I40E_DOWN_REQUESTED, pf->state);
--	}
-+	if (test_and_clear_bit(__I40E_RESET_INTR_RECEIVED, pf->state))
-+		reset_flags |= BIT(__I40E_RESET_INTR_RECEIVED);
-+
-+	if (!(reset_flags & (BIT(__I40E_PF_RESET_REQUESTED)
-+			     | BIT(__I40E_CORE_RESET_REQUESTED)
-+			     | BIT(__I40E_GLOBAL_RESET_REQUESTED)
-+			     | BIT(__I40E_RESET_INTR_RECEIVED))))
-+		return;
-+
-+	rtnl_lock();
- 
- 	/* If there's a recovery already waiting, it takes
- 	 * precedence before starting a new reset sequence.
- 	 */
--	if (test_bit(__I40E_RESET_INTR_RECEIVED, pf->state)) {
-+	if (reset_flags & BIT(__I40E_RESET_INTR_RECEIVED)) {
- 		i40e_prep_for_reset(pf);
- 		i40e_reset(pf);
--		i40e_rebuild(pf, false, false);
-+		i40e_rebuild(pf, false, true);
- 	}
- 
- 	/* If we're already down or resetting, just bail */
- 	if (reset_flags &&
- 	    !test_bit(__I40E_DOWN, pf->state) &&
- 	    !test_bit(__I40E_CONFIG_BUSY, pf->state)) {
--		i40e_do_reset(pf, reset_flags, false);
-+		i40e_do_reset(pf, reset_flags, true);
- 	}
-+
-+	rtnl_unlock();
- }
- 
- /**
-@@ -10694,7 +10696,6 @@ static void i40e_prep_for_reset(struct i40e_pf *pf)
- 	int ret = 0;
- 	u32 v;
- 
--	clear_bit(__I40E_RESET_INTR_RECEIVED, pf->state);
- 	if (test_and_set_bit(__I40E_RESET_RECOVERY_PENDING, pf->state))
- 		return;
- 	if (i40e_check_asq_alive(&pf->hw))
--- 
-2.31.1
+-----Original Message-----
+From: Tony Nguyen <anthony.l.nguyen@intel.com> 
+Sent: Friday, July 21, 2023 10:13 AM
+To: Eason Lin (3383) <easonl@portwell.com>; intel-wired-lan@lists.osuosl.org; Neftin, Sasha <sasha.neftin@intel.com>
+Cc: jesse.brandeburg@intel.com
+Subject: Re: Ubuntu Kernel 5.4 to support Intel I225
 
+On 7/20/2023 5:07 PM, Eason Lin (3383) wrote:
+> Hi Intel Ethernet Driver team,
+> 
+> Hope this note finds you well. This is Eason, a Technical Project 
+> Manager from American Portwell, and here is our website in case you 
+> want to refer. https://portwell.com/ <https://portwell.com/>
+> 
+> We know starting from _Kernel 5.8_ Intel i225 can be supported. 
+> However, is it possible that you can make _Kernel 5.4_ to support i225 as well?
+> We have such request from certain customers, so would like to see any 
+> possibility.
+> 
+> Are you able to consider it? If yes, of course we can discuss about 
+> term and condition, plus any fee incurred. Thank you so much and any 
+> of your response will be appreciated!
+
+Hi Eason,
+
+The Ubuntu kernel is not something under our control. I would advise you check with Canonical/Ubuntu about enabling i225 support in their kernel.
+
+Thanks,
+Tony
+
+> Best regards,
+> 
+> Eason
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
