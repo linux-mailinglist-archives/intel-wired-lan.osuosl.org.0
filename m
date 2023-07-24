@@ -1,96 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3880675F48B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jul 2023 13:10:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2851E75F4C0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jul 2023 13:17:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 61C9240BFD;
-	Mon, 24 Jul 2023 11:09:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61C9240BFD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 67B1740C11;
+	Mon, 24 Jul 2023 11:17:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 67B1740C11
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690196998;
-	bh=eCYS00sjawb/g8s+5nfkbRB610G1RxXYzORmSsy0XKg=;
+	s=default; t=1690197436;
+	bh=rCOfPnba3gup2iCjPpKMNlTgiw0PJ/fTXDp0gaK6Urs=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Rp930kEWt0FezeC2vzcEmKZZogev3+T7Sq+CONChcvPJN1wMhutlTB2ovC12CrbwS
-	 PR1+N/q98l2LbGXKKQzKy6e6DfIaVpXBY/HuPK8Okx7Suiov7S5Hx3LeJfe8hhGnE1
-	 XnuSXkCDMrrOKWB79m6KasivzubSb+Eb9Q7WWe9BY1WaePmH4xXj1WucH1E3vrQJ3p
-	 4W8A3hA0oh0tfC3mCXTBc47o4eQb1hhXDnPE4abJeYJnt0jJjIfquTDJmIyTMO6r/H
-	 3wl7t4ZC26DGfTelL3b15pH8ms3if8/lwgTQUpJwW8bj41EMoTdmvpRyYFwsDCpR1N
-	 bj1ZErKKptGsw==
+	b=uf0JN2UnSVS9sDuj4gMfQmE60t8X+0A9BsEW1hozpYTNOfCyT/Oi4uN9s5UnM8i/X
+	 hdjhEzSuYatqpEy7edL01FiC1uHs2I1RwlBayJUERQaKpqtLFiL1bEQFTQmhxtrRWd
+	 +Ss7wZ/ocNnJyPQR9/8H+lc8OnKuPP3nd5nlXUMQ6lA3zB5A/b0ueP+ZGHs6AKqhMP
+	 HanI+mVImXi+k7HAYQPwbkcNujeA63vZjuIZXwE+hsJVHbkIOtXEeRRnDrUrlT60iX
+	 mmTFtpSPYkPWgLoCl4ysJmqJ4HbRwtsYqhR7IUHeYk5RyiHraAZnyskNaqM2BNQQiu
+	 ocDc6m3tVirng==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OnrI5PJAmdC5; Mon, 24 Jul 2023 11:09:57 +0000 (UTC)
+	with ESMTP id 6RuHtv-it6M0; Mon, 24 Jul 2023 11:17:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 271E140182;
-	Mon, 24 Jul 2023 11:09:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 271E140182
+	by smtp2.osuosl.org (Postfix) with ESMTP id 022144012A;
+	Mon, 24 Jul 2023 11:17:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 022144012A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A71951BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:09:52 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 929051BF4D6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:17:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7F2A781EE9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:09:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F2A781EE9
+ by smtp2.osuosl.org (Postfix) with ESMTP id 691124012A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:17:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 691124012A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 18rbCUwm2tFd for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Jul 2023 11:09:51 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Y3IU5CASS5Wi for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Jul 2023 11:17:09 +0000 (UTC)
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A857C81EE7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:09:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A857C81EE7
-Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-116-Ugr-HIyiOxa70c4JyyrOug-1; Mon, 24 Jul 2023 07:09:47 -0400
-X-MC-Unique: Ugr-HIyiOxa70c4JyyrOug-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 86550400C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 11:17:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 86550400C8
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-679-VN36vpgTNzCh0DoAe-rl0A-1; Mon, 24 Jul 2023 07:17:05 -0400
+X-MC-Unique: VN36vpgTNzCh0DoAe-rl0A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 190F61C03D9E;
- Mon, 24 Jul 2023 11:09:47 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B585288D0F3;
+ Mon, 24 Jul 2023 11:17:04 +0000 (UTC)
 Received: from [10.45.225.24] (unknown [10.45.225.24])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 40B5AF782E;
- Mon, 24 Jul 2023 11:09:46 +0000 (UTC)
-Message-ID: <123b098f-c398-6156-e861-6cb8f06e87eb@redhat.com>
-Date: Mon, 24 Jul 2023 13:09:45 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DD61C2166B25;
+ Mon, 24 Jul 2023 11:17:03 +0000 (UTC)
+Message-ID: <044eba59-0880-501a-7fb5-75b84fe51b69@redhat.com>
+Date: Mon, 24 Jul 2023 13:17:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
 To: Junfeng Guo <junfeng.guo@intel.com>, intel-wired-lan@lists.osuosl.org
 References: <20230605054641.2865142-1-junfeng.guo@intel.com>
- <20230605054641.2865142-14-junfeng.guo@intel.com>
+ <20230605054641.2865142-16-junfeng.guo@intel.com>
 From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <20230605054641.2865142-14-junfeng.guo@intel.com>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+In-Reply-To: <20230605054641.2865142-16-junfeng.guo@intel.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1690196990;
+ s=mimecast20190719; t=1690197428;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eNZFnbjjcHGX9j3TRhdbXR1ssmhOGERohhGmOCzPM9s=;
- b=ExlOBl9ZndxB9vuBn5iyePiHMgl/BFTIThDlr4jERzErQcJ1aUoScj9byL4yWtW8dgz1iy
- G8h9CGp9GB7n3SyXz3rB4alLb1MXLXusvHeeIdhv3TSISE3e/+l7EBrmvFep+OMKz1l6UE
- gs386ISpG2wT4LuP9Ttr8gdmIr1SLJo=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=qk5vbQfpc6/D9qzta5WTt3wo81amgeVb0dGHTQftHJc=;
+ b=hPe+dC8mNxNK9t0FgqDGuI1+uRjSRGTjp3WMnXAAwRUKXt/GQAPm3mdGxNElvLAr+bG5d3
+ kWnsKFzFsVMVBZudjOyqgkQ2viKl0dZCsWKnpFUNJVIjq6dn2j9IW2zJzMiNJqVr0hudZv
+ jIcqj2fiugYLL6hHuA74m+GRgvIXDoM=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=ExlOBl9Z
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 13/15] ice: support double
- vlan mode configure for parser
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=hPe+dC8m
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 15/15] ice: add API for
+ parser profile initialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,122 +109,179 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-See inline comments...
+
 
 On 05. 06. 23 7:46, Junfeng Guo wrote:
-> Add API ice_parser_dvm_set to support turn on/off parser's
-> double vlan mode.
+> Add API ice_parser_profile_init to init a parser profile base on
+> a parser result and a mask buffer. The ice_parser_profile can feed to
+> low level FXP engine to create HW profile / field vector directly.
 > 
 > Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
 > ---
->   drivers/net/ethernet/intel/ice/ice_bst_tcam.c | 28 ++++++++++++++++++
->   drivers/net/ethernet/intel/ice/ice_bst_tcam.h |  4 +++
->   drivers/net/ethernet/intel/ice/ice_parser.c   | 29 +++++++++++++++++++
->   drivers/net/ethernet/intel/ice/ice_parser.h   |  1 +
->   4 files changed, 62 insertions(+)
+>   drivers/net/ethernet/intel/ice/ice_parser.c | 113 ++++++++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_parser.h |  24 +++++
+>   2 files changed, 137 insertions(+)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_bst_tcam.c b/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
-> index bd3ebc8a5f5b..e29c7d6c554b 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
-> @@ -267,3 +267,31 @@ ice_bst_tcam_match(struct ice_bst_tcam_item *tcam_table, u8 *pat)
->   
->   	return NULL;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
+> index 1ca0886e6590..ad42dcd31cb3 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+> @@ -448,3 +448,116 @@ int ice_parser_ecpri_tunnel_set(struct ice_parser *psr,
+>   {
+>   	return _tunnel_port_set(psr, "TNL_UDP_ECPRI", udp_port, on);
 >   }
 > +
-> +static bool _start_with(const char *prefix, const char *string)
+> +static bool _nearest_proto_id(struct ice_parser_result *rslt, u16 offset,
+> +			      u8 *proto_id, u16 *proto_off)
 > +{
-> +	int len1 = strlen(prefix);
-> +	int len2 = strlen(string);
-> +
-> +	if (len2 < len1)
-> +		return false;
-> +
-> +	return !memcmp(prefix, string, len1);
-> +}
+> +	u16 dist = 0xffff;
 
-Isn't there any existing implementation for this general purpose function?
-You can use strstarts() function instead of your own implementation.
+Use U16_MAX here...
 
+> +	u8 p = 0
+
+Also 'proto' instead of 'p' would be better.
+
+> +	int i;
 > +
-> +struct ice_bst_tcam_item *
-> +ice_bst_tcam_search(struct ice_bst_tcam_item *tcam_table,
-> +		    struct ice_lbl_item *lbl_table,
-> +		    const char *prefix, u16 *start)
-> +{
-> +	u16 i = *start;
-> +
-> +	for (; i < ICE_BST_TCAM_TABLE_SIZE; i++) {
-> +		if (_start_with(prefix, lbl_table[i].label)) {
-> +			*start = i;
-> +			return &tcam_table[lbl_table[i].idx];
+> +	for (i = 0; i < rslt->po_num; i++) {
+> +		if (offset < rslt->po[i].offset)
+> +			continue;
+> +		if (offset - rslt->po[i].offset < dist) {
+> +			p = rslt->po[i].proto_id;
+> +			dist = offset - rslt->po[i].offset;
 > +		}
 > +	}
 > +
-> +	return NULL;
+> +	if (dist % 2)
+> +		return false;
+> +
+> +	*proto_id = p;
+> +	*proto_off = dist;
+> +
+> +	return true;
 > +}
-> diff --git a/drivers/net/ethernet/intel/ice/ice_bst_tcam.h b/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
-> index 7b69f3b88da5..873ff42fcdb7 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
-> @@ -27,4 +27,8 @@ struct ice_lbl_item *ice_bst_lbl_table_get(struct ice_hw *hw);
->   
->   struct ice_bst_tcam_item *
->   ice_bst_tcam_match(struct ice_bst_tcam_item *tcam_table, u8 *pat);
-> +struct ice_bst_tcam_item *
-> +ice_bst_tcam_search(struct ice_bst_tcam_item *tcam_table,
-> +		    struct ice_lbl_item *lbl_table,
-> +		    const char *prefix, u16 *start);
->   #endif /*_ICE_BST_TCAM_H_ */
-> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
-> index eddbc80d71fa..33b649a4644a 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
-> @@ -343,3 +343,32 @@ void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt)
->   	dev_info(ice_hw_to_dev(hw), "flags_fd = 0x%04x\n", rslt->flags_fd);
->   	dev_info(ice_hw_to_dev(hw), "flags_rss = 0x%04x\n", rslt->flags_rss);
->   }
 > +
-> +static void _bst_vm_set(struct ice_parser *psr, const char *prefix, bool on)
+> +/** default flag mask to cover GTP_EH_PDU, GTP_EH_PDU_LINK and TUN2
+> + * In future, the flag masks should learn from DDP
+> + */
+> +#define ICE_KEYBUILD_FLAG_MASK_DEFAULT_SW	0x4002
+> +#define ICE_KEYBUILD_FLAG_MASK_DEFAULT_ACL	0x0000
+> +#define ICE_KEYBUILD_FLAG_MASK_DEFAULT_FD	0x6080
+> +#define ICE_KEYBUILD_FLAG_MASK_DEFAULT_RSS	0x6010
+> +
+> +/**
+> + * ice_parser_profile_init  - initialize a FXP profile base on parser result
+> + * @rslt: a instance of a parser result
+> + * @pkt_buf: packet data buffer
+> + * @msk_buf: packet mask buffer
+> + * @buf_len: packet length
+> + * @blk: FXP pipeline stage
+> + * @prefix_match: match protocol stack exactly or only prefix
+> + * @prof: input/output parameter to save the profile
+> + */
+> +int ice_parser_profile_init(struct ice_parser_result *rslt,
+> +			    const u8 *pkt_buf, const u8 *msk_buf,
+> +			    int buf_len, enum ice_block blk,
+> +			    bool prefix_match,
+> +			    struct ice_parser_profile *prof)
 > +{
-> +	u16 i = 0;
+> +	u8 proto_id = 0xff;
+> +	u16 proto_off = 0;
+> +	u16 off;
 > +
-> +	while (true) {
-> +		struct ice_bst_tcam_item *item;
-> +
-> +		item = ice_bst_tcam_search(psr->bst_tcam_table,
-> +					   psr->bst_lbl_table,
-> +					   prefix, &i);
-> +		if (!item)
-> +			break;
-> +		item->key[0] = (u8)(on ? 0xff : 0xfe);
-> +		item->key_inv[0] = (u8)(on ? 0xff : 0xfe);
-> +		i++;
+> +	memset(prof, 0, sizeof(*prof));
+> +	set_bit(rslt->ptype, prof->ptypes);
+> +	if (blk == ICE_BLK_SW) {
+> +		prof->flags = rslt->flags_sw;
+> +		prof->flags_msk = ICE_KEYBUILD_FLAG_MASK_DEFAULT_SW;
+> +	} else if (blk == ICE_BLK_ACL) {
+> +		prof->flags = rslt->flags_acl;
+> +		prof->flags_msk = ICE_KEYBUILD_FLAG_MASK_DEFAULT_ACL;
+> +	} else if (blk == ICE_BLK_FD) {
+> +		prof->flags = rslt->flags_fd;
+> +		prof->flags_msk = ICE_KEYBUILD_FLAG_MASK_DEFAULT_FD;
+> +	} else if (blk == ICE_BLK_RSS) {
+> +		prof->flags = rslt->flags_rss;
+> +		prof->flags_msk = ICE_KEYBUILD_FLAG_MASK_DEFAULT_RSS;
+> +	} else {
+> +		return -EINVAL;
 > +	}
+> +
+> +	for (off = 0; off < buf_len - 1; off++) {
+> +		if (msk_buf[off] == 0 && msk_buf[off + 1] == 0)
+> +			continue;
+> +		if (!_nearest_proto_id(rslt, off, &proto_id, &proto_off))
+> +			continue;
+> +		if (prof->fv_num >= 32)
+> +			return -EINVAL;
+> +
+> +		prof->fv[prof->fv_num].proto_id = proto_id;
+> +		prof->fv[prof->fv_num].offset = proto_off;
+> +		prof->fv[prof->fv_num].spec = *(const u16 *)&pkt_buf[off];
+> +		prof->fv[prof->fv_num].msk = *(const u16 *)&msk_buf[off];
+> +		prof->fv_num++;
+> +	}
+> +
+> +	return 0;
 > +}
 > +
 > +/**
-> + * ice_parser_dvm_set - configure double vlan mode for parser
-> + * @psr: pointer to a parser instance
-> + * @on: true to turn on; false to turn off
+> + * ice_parser_profile_dump - dump an FXP profile info
+> + * @hw: pointer to the hardware structure
+> + * @prof: profile info to dump
 > + */
-> +void ice_parser_dvm_set(struct ice_parser *psr, bool on)
+> +void ice_parser_profile_dump(struct ice_hw *hw, struct ice_parser_profile *prof)
 > +{
-> +	_bst_vm_set(psr, "BOOST_MAC_VLAN_DVM", on);
-> +	_bst_vm_set(psr, "BOOST_MAC_VLAN_SVM", !on);
+> +	u16 i;
+> +
+> +	dev_info(ice_hw_to_dev(hw), "ptypes:\n");
+> +	for (i = 0; i < ICE_FLOW_PTYPE_MAX; i++)
+> +		if (test_bit(i, prof->ptypes))
+> +			dev_info(ice_hw_to_dev(hw), "\t%d\n", i);
+> +
+> +	for (i = 0; i < prof->fv_num; i++)
+> +		dev_info(ice_hw_to_dev(hw),
+> +			 "proto = %d, offset = %d spec = 0x%04x, mask = 0x%04x\n",
+> +			 prof->fv[i].proto_id, prof->fv[i].offset,
+> +			 prof->fv[i].spec, prof->fv[i].msk);
+> +
+> +	dev_info(ice_hw_to_dev(hw), "flags = 0x%04x\n", prof->flags);
+> +	dev_info(ice_hw_to_dev(hw), "flags_msk = 0x%04x\n", prof->flags_msk);
 > +}
 > diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
-> index d4de0796a292..02ea2ef5fc91 100644
+> index 432d47031298..ecbec5843e9f 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_parser.h
 > +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
-> @@ -56,6 +56,7 @@ struct ice_parser {
->   
->   int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
->   void ice_parser_destroy(struct ice_parser *psr);
-> +void ice_parser_dvm_set(struct ice_parser *psr, bool on);
->   
->   struct ice_parser_proto_off {
->   	u8 proto_id; /* hardware protocol ID */
+> @@ -85,4 +85,28 @@ struct ice_parser_result {
+>   int ice_parser_run(struct ice_parser *psr, const u8 *pkt_buf,
+>   		   int pkt_len, struct ice_parser_result *rslt);
+>   void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt);
+> +
+> +struct ice_parser_fv {
+> +	u8 proto_id; /* hardware protocol ID */
+> +	u16 offset; /* offset from the start of the protocol header */
+> +	u16 spec; /* 16 bits pattern to match */
+> +	u16 msk; /* 16 bits pattern mask */
+> +};
+> +
+> +struct ice_parser_profile {
+> +	struct ice_parser_fv fv[48]; /* field vector arrary */
+> +	int fv_num; /* field vector number must <= 48 */
+> +	u16 flags; /* 16 bits key builder flag */
+> +	u16 flags_msk; /* key builder flag masker */
+> +	/* 1024 bits PTYPE bitmap */
+> +	DECLARE_BITMAP(ptypes, ICE_FLOW_PTYPE_MAX);
+> +};
+> +
+> +int ice_parser_profile_init(struct ice_parser_result *rslt,
+> +			    const u8 *pkt_buf, const u8 *msk_buf,
+> +					int buf_len, enum ice_block blk,
+> +					bool prefix_match,
+> +					struct ice_parser_profile *prof);
+> +void ice_parser_profile_dump(struct ice_hw *hw,
+> +			     struct ice_parser_profile *prof);
+>   #endif /* _ICE_PARSER_H_ */
 
 _______________________________________________
 Intel-wired-lan mailing list
