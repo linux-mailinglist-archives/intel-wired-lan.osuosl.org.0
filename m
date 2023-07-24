@@ -2,91 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 668CD75F36D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jul 2023 12:36:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5264375F37A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jul 2023 12:37:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0D04560F60;
-	Mon, 24 Jul 2023 10:36:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D04560F60
+	by smtp3.osuosl.org (Postfix) with ESMTP id ED11060F33;
+	Mon, 24 Jul 2023 10:37:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ED11060F33
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690195003;
-	bh=eOu0aGbq8EU7Xaly3F7UgRmFFO1ChrxJp9xlIzGVaVA=;
+	s=default; t=1690195037;
+	bh=ZLaYM0RawcJAcWJB+1Ex/NaS6wrhtF/mf2gLCZCAM7w=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zv4Btj9TdHf04HIqzPIgCVqWh1hPc8AkF12yOwJfI4RDqvPsN4XyhybWBgmu47Vii
-	 5NFPjmaKk3/uBqJN4jQxOHgeazMhrX3LxZzG0q96v4Rqkh4H50Q/EMaeAceF1n0qjJ
-	 PCQJcFSjTgIegaKnmCcEQaJwB+NZ4gbxdYlyib6p1G9GZTCSjjBBjHFspswfzST6NE
-	 Y+Nbw5oqYTeWqhiFypKmHlN7yLjBFkpAi6cNo68nuhbh1gL7wNbiruUsxnRpJoZYI8
-	 RVAfkNAjNMD57XXQABnQKO/KPEPLK6y/q8CLXuEPSuHrwbwe7H8vvZH2yUTV24Zlnc
-	 HL9nYoF2GQMOA==
+	b=ZZyoLHpHO6aGXtj3+ovlW+aUrKMrldqc7jEqPHINEefBovkVrGGFYA8e/QFpX4LU1
+	 y5ekExtsEa/E0aeFuOBm+JPXnOhHwpk0qRk+i3KejzuEnjFDndUss7a3HIUrvgyCoZ
+	 a8do7l9Php1+oovQqO9hJX6Qp1EZnByT52R/vpahxpx9Zo3KtyUQVxWbMiSau4kz+1
+	 U9QeBen23f0SoRbpo7YLpZQ8pPTMA1LpDQN0D3lc+/kdZFgjkiwcXb22PnJzbebYqh
+	 jKBbC/ALZQjW/FyM/fl+uomuuzloZtHT8ELvXYfat5wAyK9ECd+v6MTTo/cviNUoLF
+	 2D+h5wAkfMkZg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BLsIkVvPG4o6; Mon, 24 Jul 2023 10:36:42 +0000 (UTC)
+	with ESMTP id TCRDcUHSPajN; Mon, 24 Jul 2023 10:37:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9EBDD60F3D;
-	Mon, 24 Jul 2023 10:36:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9EBDD60F3D
+	by smtp3.osuosl.org (Postfix) with ESMTP id E477A60F31;
+	Mon, 24 Jul 2023 10:37:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E477A60F31
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 26C571BF45A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:36:36 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A06D1BF45A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:37:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B69C81DE7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:36:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B69C81DE7
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3E85E60F31
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:37:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E85E60F31
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oSrmyUABj0S7 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Jul 2023 10:36:35 +0000 (UTC)
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DC7B381DE5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:36:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC7B381DE5
-X-IronPort-AV: E=McAfee;i="6600,9927,10780"; a="433649085"
-X-IronPort-AV: E=Sophos;i="6.01,228,1684825200"; d="scan'208";a="433649085"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2023 03:36:32 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10780"; a="899453197"
-X-IronPort-AV: E=Sophos;i="6.01,228,1684825200"; d="scan'208";a="899453197"
-Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.237.140.125])
- ([10.237.140.125])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2023 03:36:30 -0700
-Message-ID: <0aab3ce1-d92d-3df1-2dd4-60796bf9bf38@linux.intel.com>
-Date: Mon, 24 Jul 2023 12:36:24 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0muoT_xXhE5Q for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Jul 2023 10:37:08 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AFB2660EAA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jul 2023 10:37:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AFB2660EAA
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-301-yMqcYdPzO9-H0Ds7Erph5w-1; Mon, 24 Jul 2023 06:37:02 -0400
+X-MC-Unique: yMqcYdPzO9-H0Ds7Erph5w-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8473F1C07544;
+ Mon, 24 Jul 2023 10:37:02 +0000 (UTC)
+Received: from [10.45.225.24] (unknown [10.45.225.24])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 91A8640C6F4F;
+ Mon, 24 Jul 2023 10:37:01 +0000 (UTC)
+Message-ID: <1e367e7f-2b95-7b53-dbd2-b0163ad0ceee@redhat.com>
+Date: Mon, 24 Jul 2023 12:37:00 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-To: Andy Shevchenko <andy@kernel.org>
-References: <20230721071532.613888-1-marcin.szycik@linux.intel.com>
- <20230721071532.613888-4-marcin.szycik@linux.intel.com>
- <ZLqcDf68HgB6Knnk@smile.fi.intel.com>
+To: Junfeng Guo <junfeng.guo@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20230605054641.2865142-1-junfeng.guo@intel.com>
+ <20230605054641.2865142-5-junfeng.guo@intel.com>
+From: Ivan Vecera <ivecera@redhat.com>
+In-Reply-To: <20230605054641.2865142-5-junfeng.guo@intel.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <ZLqcDf68HgB6Knnk@smile.fi.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690194993; x=1721730993;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=bO8nTFIe7M7bVl0r8YUD+3gUO5FWmnkLDH3idl28Gbg=;
- b=HNbqRAfoqtF/dbSIAp2Y5CD3b36206Wm0Xp/aRbZBe5QkSbLCtOWqhVe
- 4RqhS9gcEdqV09vJjasp5dhvkulaD7yjCGDh4Wssgr9hMVIBB+V03g0+m
- gZCKUkYrD1kJn2KawezZxmYkXQewUswv25f6Cvh5dsfRSdhYux96rTH1z
- JijeXSKDemrPgIUpBUsTRHCMss4miN3A+ZerHAFR6M41u9wNqpOtg8ibn
- 6nVzFa6I3KS3JMOj//MjSrvJWBcSfLk/KXYeY802c+xmc9yC+ZJh26aMR
- 9PGziZYHiddvWjzMfhNzRsK2MWdfoAE2qO2qL+5wKyVDJWGOwF4oFCZ/4
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HNbqRAfo
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 3/6] pfcp: add PFCP module
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1690195026;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wRyKRE/yLslrjFEYvvVOpxBm66refx36y87yMsGjkdk=;
+ b=ipNTQ4cquKXIvcl556dYc069QjXKNQPdfluy1GaGtXUPfwNkUoQ/YpOcosh/XCg4771LPj
+ +MQ1vrOs7mTy1lJTYcGG1Xf+GNITFIBsaV/VYctMbyNvz5KtmboIo+7lRqSb1ZJRdaagmu
+ ryE2ivjiUZIatSWyMYdlQnFsMgSChX8=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=ipNTQ4cq
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 04/15] ice: init parse
+ graph cam table for parser
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,176 +103,528 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, netdev@vger.kernel.org, idosch@nvidia.com,
- jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- simon.horman@corigine.com, pabeni@redhat.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
+Cc: qi.z.zhang@intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+See inline comments...
 
+On 05. 06. 23 7:46, Junfeng Guo wrote:
+> Parse DDP section ICE_SID_RXPARSER_CAM or ICE_SID_RXPARSER_PG_SPILL
+> into an array of struct ice_pg_cam_item.
+> Parse DDP section ICE_SID_RXPARSER_NOMATCH_CAM or
+> ICE_SID_RXPARSER_NOMATCH_SPILL into an array of struct ice_pg_nm_cam_item.
+> 
+> Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_parser.c |  44 +++
+>   drivers/net/ethernet/intel/ice/ice_parser.h |  12 +
+>   drivers/net/ethernet/intel/ice/ice_pg_cam.c | 300 ++++++++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_pg_cam.h |  67 +++++
+>   4 files changed, 423 insertions(+)
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_pg_cam.c
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_pg_cam.h
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
+> index a1f28395c1a9..22c2382ae9e8 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+> @@ -7,6 +7,10 @@
+>   #define ICE_SEC_DATA_OFFSET				4
+>   #define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
+>   #define ICE_SID_RXPARSER_METADATA_INIT_ENTRY_SIZE	24
+> +#define ICE_SID_RXPARSER_CAM_ENTRY_SIZE			16
+> +#define ICE_SID_RXPARSER_PG_SPILL_ENTRY_SIZE		17
+> +#define ICE_SID_RXPARSER_NOMATCH_CAM_ENTRY_SIZE		12
+> +#define ICE_SID_RXPARSER_NOMATCH_SPILL_ENTRY_SIZE	13
+>   
+>   /**
+>    * ice_parser_sect_item_get - parse a item from a section
+> @@ -32,6 +36,18 @@ void *ice_parser_sect_item_get(u32 sect_type, void *section,
+>   	case ICE_SID_RXPARSER_METADATA_INIT:
+>   		size = ICE_SID_RXPARSER_METADATA_INIT_ENTRY_SIZE;
+>   		break;
+> +	case ICE_SID_RXPARSER_CAM:
+> +		size = ICE_SID_RXPARSER_CAM_ENTRY_SIZE;
+> +		break;
+> +	case ICE_SID_RXPARSER_PG_SPILL:
+> +		size = ICE_SID_RXPARSER_PG_SPILL_ENTRY_SIZE;
+> +		break;
+> +	case ICE_SID_RXPARSER_NOMATCH_CAM:
+> +		size = ICE_SID_RXPARSER_NOMATCH_CAM_ENTRY_SIZE;
+> +		break;
+> +	case ICE_SID_RXPARSER_NOMATCH_SPILL:
+> +		size = ICE_SID_RXPARSER_NOMATCH_SPILL_ENTRY_SIZE;
+> +		break;
+>   	default:
+>   		return NULL;
+>   	}
+> @@ -127,6 +143,30 @@ int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+>   		goto err;
+>   	}
+>   
+> +	p->pg_cam_table = ice_pg_cam_table_get(hw);
+> +	if (!p->pg_cam_table) {
+> +		status = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	p->pg_sp_cam_table = ice_pg_sp_cam_table_get(hw);
+> +	if (!p->pg_sp_cam_table) {
+> +		status = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	p->pg_nm_cam_table = ice_pg_nm_cam_table_get(hw);
+> +	if (!p->pg_nm_cam_table) {
+> +		status = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	p->pg_nm_sp_cam_table = ice_pg_nm_sp_cam_table_get(hw);
+> +	if (!p->pg_nm_sp_cam_table) {
+> +		status = -EINVAL;
+> +		goto err;
+> +	}
+> +
+>   	*psr = p;
+>   	return 0;
+>   err:
+> @@ -142,6 +182,10 @@ void ice_parser_destroy(struct ice_parser *psr)
+>   {
+>   	devm_kfree(ice_hw_to_dev(psr->hw), psr->imem_table);
+>   	devm_kfree(ice_hw_to_dev(psr->hw), psr->mi_table);
+> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->pg_cam_table);
+> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->pg_sp_cam_table);
+> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->pg_nm_cam_table);
+> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->pg_nm_sp_cam_table);
+>   
+>   	devm_kfree(ice_hw_to_dev(psr->hw), psr);
+>   }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
+> index 8fcc10479260..1f699ef12387 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_parser.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+> @@ -4,6 +4,10 @@
+>   #ifndef _ICE_PARSER_H_
+>   #define _ICE_PARSER_H_
+>   
+> +#include "ice_metainit.h"
+> +#include "ice_imem.h"
+> +#include "ice_pg_cam.h"
+> +
+>   struct ice_parser {
+>   	struct ice_hw *hw; /* pointer to the hardware structure */
+>   
+> @@ -11,6 +15,14 @@ struct ice_parser {
+>   	struct ice_imem_item *imem_table;
+>   	/* load data from section ICE_SID_RXPARSER_METADATA_INIT */
+>   	struct ice_metainit_item *mi_table;
+> +	/* load data from section ICE_SID_RXPARSER_CAM */
+> +	struct ice_pg_cam_item *pg_cam_table;
+> +	/* load data from section ICE_SID_RXPARSER_PG_SPILL */
+> +	struct ice_pg_cam_item *pg_sp_cam_table;
+> +	/* load data from section ICE_SID_RXPARSER_NOMATCH_CAM */
+> +	struct ice_pg_nm_cam_item *pg_nm_cam_table;
+> +	/* load data from section ICE_SID_RXPARSER_NOMATCH_SPILL */
+> +	struct ice_pg_nm_cam_item *pg_nm_sp_cam_table;
+>   };
+>   
+>   int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_pg_cam.c b/drivers/net/ethernet/intel/ice/ice_pg_cam.c
+> new file mode 100644
+> index 000000000000..25b837ba684c
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_pg_cam.c
+> @@ -0,0 +1,300 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#include "ice_common.h"
+> +#include "ice_parser_util.h"
+> +
+> +static void _pg_cam_key_dump(struct ice_hw *hw, struct ice_pg_cam_key *key)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "key:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tvalid = %d\n", key->valid);
+> +	dev_info(ice_hw_to_dev(hw), "\tnode_id = %d\n", key->node_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag0 = %d\n", key->flag0);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag1 = %d\n", key->flag1);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag2 = %d\n", key->flag2);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag3 = %d\n", key->flag3);
+> +	dev_info(ice_hw_to_dev(hw), "\tboost_idx = %d\n", key->boost_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\talu_reg = 0x%04x\n", key->alu_reg);
+> +	dev_info(ice_hw_to_dev(hw), "\tnext_proto = 0x%08x\n",
+> +		 key->next_proto);
+> +}
+> +
+> +static void _pg_nm_cam_key_dump(struct ice_hw *hw,
+> +				struct ice_pg_nm_cam_key *key)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "key:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tvalid = %d\n", key->valid);
+> +	dev_info(ice_hw_to_dev(hw), "\tnode_id = %d\n", key->node_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag0 = %d\n", key->flag0);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag1 = %d\n", key->flag1);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag2 = %d\n", key->flag2);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag3 = %d\n", key->flag3);
+> +	dev_info(ice_hw_to_dev(hw), "\tboost_idx = %d\n", key->boost_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\talu_reg = 0x%04x\n", key->alu_reg);
+> +}
+> +
+> +static void _pg_cam_action_dump(struct ice_hw *hw,
+> +				struct ice_pg_cam_action *action)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "action:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tnext_node = %d\n", action->next_node);
+> +	dev_info(ice_hw_to_dev(hw), "\tnext_pc = %d\n", action->next_pc);
+> +	dev_info(ice_hw_to_dev(hw), "\tis_pg = %d\n", action->is_pg);
+> +	dev_info(ice_hw_to_dev(hw), "\tproto_id = %d\n", action->proto_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tis_mg = %d\n", action->is_mg);
+> +	dev_info(ice_hw_to_dev(hw), "\tmarker_id = %d\n", action->marker_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tis_last_round = %d\n",
+> +		 action->is_last_round);
+> +	dev_info(ice_hw_to_dev(hw), "\tho_polarity = %d\n",
+> +		 action->ho_polarity);
+> +	dev_info(ice_hw_to_dev(hw), "\tho_inc = %d\n", action->ho_inc);
+> +}
+> +
+> +/**
+> + * ice_pg_cam_dump - dump an parse graph cam info
+> + * @hw: pointer to the hardware structure
+> + * @item: parse graph cam to dump
+> + */
+> +void ice_pg_cam_dump(struct ice_hw *hw, struct ice_pg_cam_item *item)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "index = %d\n", item->idx);
+> +	_pg_cam_key_dump(hw, &item->key);
+> +	_pg_cam_action_dump(hw, &item->action);
+> +}
+> +
+> +/**
+> + * ice_pg_nm_cam_dump - dump an parse graph no match cam info
+> + * @hw: pointer to the hardware structure
+> + * @item: parse graph no match cam to dump
+> + */
+> +void ice_pg_nm_cam_dump(struct ice_hw *hw, struct ice_pg_nm_cam_item *item)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "index = %d\n", item->idx);
+> +	_pg_nm_cam_key_dump(hw, &item->key);
+> +	_pg_cam_action_dump(hw, &item->action);
+> +}
+> +
+> +/** The function parses a 55 bits Parse Graph CAM Action with below format:
+> + *  BIT 0-11:	Next Node ID (action->next_node)
+> + *  BIT 12-19:	Next PC (action->next_pc)
+> + *  BIT 20:	Is Protocol Group (action->is_pg)
+> + *  BIT 21-23:	reserved
+> + *  BIT 24-31:	Protocol ID (action->proto_id)
+> + *  BIT 32:	Is Marker Group (action->is_mg)
+> + *  BIT 33-40:	Marker ID (action->marker_id)
+> + *  BIT 41:	Is Last Round (action->is_last_round)
+> + *  BIT 42:	Header Offset Polarity (action->ho_poloarity)
+> + *  BIT 43-51:	Header Offset Inc (action->ho_inc)
+> + *  BIT 52-54:	reserved
+> + */
+> +static void _pg_cam_action_init(struct ice_pg_cam_action *action, u64 data)
+> +{
+> +	action->next_node = (u16)(data & 0x7ff);
+> +	action->next_pc = (u8)((data >> 11) & 0xff);
+> +	action->is_pg = ((data >> 19) & 0x1) != 0;
+> +	action->proto_id = ((data >> 23) & 0xff);
+> +	action->is_mg = ((data >> 31) & 0x1) != 0;
+> +	action->marker_id = ((data >> 32) & 0xff);
+> +	action->is_last_round = ((data >> 40) & 0x1) != 0;
+> +	action->ho_polarity = ((data >> 41) & 0x1) != 0;
+> +	action->ho_inc = ((data >> 42) & 0x1ff);
+> +}
 
-On 21.07.2023 16:54, Andy Shevchenko wrote:
-> On Fri, Jul 21, 2023 at 09:15:29AM +0200, Marcin Szycik wrote:
->> From: Wojciech Drewek <wojciech.drewek@intel.com>
->>
->> Packet Forwarding Control Protocol (PFCP) is a 3GPP Protocol
->> used between the control plane and the user plane function.
->> It is specified in TS 29.244[1].
->>
->> Note that this module is not designed to support this Protocol
->> in the kernel space. There is no support for parsing any PFCP messages.
->> There is no API that could be used by any userspace daemon.
->> Basically it does not support PFCP. This protocol is sophisticated
->> and there is no need for implementing it in the kernel. The purpose
->> of this module is to allow users to setup software and hardware offload
->> of PFCP packets using tc tool.
->>
->> When user requests to create a PFCP device, a new socket is created.
->> The socket is set up with port number 8805 which is specific for
->> PFCP [29.244 4.2.2]. This allow to receive PFCP request messages,
->> response messages use other ports.
->>
->> Note that only one PFCP netdev can be created.
->>
->> Only IPv4 is supported at this time.
->>
->> [1] https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3111
-> 
->> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> 
-> Co-developed-by: Marcin...?
+As in my previous emails... such blocks with hardcoded values are 
+unacceptable.
 
-In this case I'm only a sender, I didn't help in development.
+> +
+> +/** The function parses a 41 bits Parse Graph NoMatch CAM Key with below format:
+> + *  BIT 0:	Valid (key->valid)
+> + *  BIT 1-11:	Node ID (key->node_id)
+> + *  BIT 12:	Flag 0 (key->flag0)
+> + *  BIT 13:	Flag 1 (key->flag1)
+> + *  BIT 14:	Flag 2 (key->flag2)
+> + *  BIT 15:	Flag 3 (key->flag3)
+> + *  BIT 16:	Boost Hit (key->boost_idx to 0 if it is 0)
+> + *  BIT 17-24:	Boost Index (key->boost_idx only if Boost Hit is not 0)
+> + *  BIT 25-40:	ALU Reg (key->alu_reg)
+> + */
+> +static void _pg_nm_cam_key_init(struct ice_pg_nm_cam_key *key, u64 data)
+> +{
+> +	key->valid = (data & 0x1) != 0;
+> +	key->node_id = (u16)((data >> 1) & 0x7ff);
+> +	key->flag0 = ((data >> 12) & 0x1) != 0;
+> +	key->flag1 = ((data >> 13) & 0x1) != 0;
+> +	key->flag2 = ((data >> 14) & 0x1) != 0;
+> +	key->flag3 = ((data >> 15) & 0x1) != 0;
+> +	if ((data >> 16) & 0x1)
+> +		key->boost_idx = (u8)((data >> 17) & 0xff);
+> +	else
+> +		key->boost_idx = 0;
+> +	key->alu_reg = (u16)((data >> 25) & 0xffff);
+> +}
 
-> 
->> Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> 
-> ...
-> 
->> +/* PFCP according to 3GPP TS 29.244
->> + *
->> + * Copyright (C) 2022, Intel Corporation.
-> 
->> + * (C) 2022 by Wojciech Drewek <wojciech.drewek@intel.com>
-> 
-> Is it approved by our Legal? First time I see such (c) together with Intel's
-> and correct authorship.
+Here the same but also flag0..3? Could it be possible to use more 
+descriptive names or in multi-purpose case union of bools?
 
-Right, I'll leave only first (c) line.
+> +
+> +/** The function parses a 73 bits Parse Graph CAM Key with below format:
+> + *  BIT 0:	Valid (key->valid)
+> + *  BIT 1-11:	Node ID (key->node_id)
+> + *  BIT 12:	Flag 0 (key->flag0)
+> + *  BIT 13:	Flag 1 (key->flag1)
+> + *  BIT 14:	Flag 2 (key->flag2)
+> + *  BIT 15:	Flag 3 (key->flag3)
+> + *  BIT 16:	Boost Hit (key->boost_idx to 0 if it is 0)
+> + *  BIT 17-24:	Boost Index (key->boost_idx only if Boost Hit is not 0)
+> + *  BIT 25-40:	ALU Reg (key->alu_reg)
+> + *  BIT 41-72:	Next Proto Key (key->next_proto)
+> + */
+> +static void _pg_cam_key_init(struct ice_pg_cam_key *key, u8 *data)
+> +{
+> +	u64 d64 = *(u64 *)data;
+> +
+> +	key->valid = (d64 & 0x1) != 0;
+> +	key->node_id = (u16)((d64 >> 1) & 0x7ff);
+> +	key->flag0 = ((d64 >> 12) & 0x1) != 0;
+> +	key->flag1 = ((d64 >> 13) & 0x1) != 0;
+> +	key->flag2 = ((d64 >> 14) & 0x1) != 0;
+> +	key->flag3 = ((d64 >> 15) & 0x1) != 0;
+> +	if ((d64 >> 16) & 0x1)
+> +		key->boost_idx = (u8)((d64 >> 17) & 0xff);
+> +	else
+> +		key->boost_idx = 0;
+> +	key->alu_reg = (u16)((d64 >> 25) & 0xffff);
+> +
+> +	key->next_proto = (*(u32 *)&data[5] >> 1);
+> +	key->next_proto |= ((u32)(data[9] & 0x1) << 31);
+> +}
+> +
+> +/** The function parses a 128 bits Parse Graph CAM Entry with below format:
+> + *  BIT 0-72:	Key (ci->key)
+> + *  BIT 73-127:	Action (ci->action)
+> + */
+> +static void _pg_cam_parse_item(struct ice_hw *hw, u16 idx, void *item,
+> +			       void *data, int size)
+> +{
+> +	struct ice_pg_cam_item *ci = item;
+> +	u8 *buf = data;
+> +	u64 d64;
+> +
+> +	ci->idx = idx;
+> +	d64 = (*(u64 *)&buf[9] >> 1);
+> +	_pg_cam_key_init(&ci->key, buf);
+> +	_pg_cam_action_init(&ci->action, d64);
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_pg_cam_dump(hw, ci);
+> +}
+> +
+> +/** The function parses a 136 bits Parse Graph Spill CAM Entry with below
+> + *  format:
+> + *  BIT 0-55:	Action (ci->key)
+> + *  BIT 56-135:	Key (ci->action)
+> + */
+> +static void _pg_sp_cam_parse_item(struct ice_hw *hw, u16 idx, void *item,
+> +				  void *data, int size)
+> +{
+> +	struct ice_pg_cam_item *ci = item;
+> +	u8 *buf = data;
+> +	u64 d64;
+> +
+> +	ci->idx = idx;
+> +	d64 = *(u64 *)buf;
+> +	_pg_cam_action_init(&ci->action, d64);
+> +	_pg_cam_key_init(&ci->key, &buf[7]);
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_pg_cam_dump(hw, ci);
+> +}
+> +
+> +/** The function parses a 96 bits Parse Graph NoMatch CAM Entry with below
+> + *  format:
+> + *  BIT 0-40:	Key (ci->key)
+> + *  BIT 41-95:	Action (ci->action)
+> + */
+> +static void _pg_nm_cam_parse_item(struct ice_hw *hw, u16 idx, void *item,
+> +				  void *data, int size)
+> +{
+> +	struct ice_pg_nm_cam_item *ci = item;
+> +	u8 *buf = data;
+> +	u64 d64;
+> +
+> +	ci->idx = idx;
+> +	d64 = *(u64 *)buf;
+> +	_pg_nm_cam_key_init(&ci->key, d64);
+> +	d64 = (*(u64 *)&buf[5] >> 1);
+> +	_pg_cam_action_init(&ci->action, d64);
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_pg_nm_cam_dump(hw, ci);
+> +}
+> +
+> +/** The function parses a 104 bits Parse Graph NoMatch Spill CAM Entry with
+> + *  below format:
+> + *  BIT 0-55:	Key (ci->key)
+> + *  BIT 56-103:	Action (ci->action)
+> + */
+> +static void _pg_nm_sp_cam_parse_item(struct ice_hw *hw, u16 idx, void *item,
+> +				     void *data, int size)
+> +{
+> +	struct ice_pg_nm_cam_item *ci = item;
+> +	u8 *buf = data;
+> +	u64 d64;
+> +
+> +	ci->idx = idx;
+> +	d64 = *(u64 *)buf;
+> +	_pg_cam_action_init(&ci->action, d64);
+> +	d64 = *(u64 *)&buf[7];
+> +	_pg_nm_cam_key_init(&ci->key, d64);
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_pg_nm_cam_dump(hw, ci);
+> +}
+> +
+> +/**
+> + * ice_pg_cam_table_get - create a parse graph cam table
+> + * @hw: pointer to the hardware structure
+> + */
+> +struct ice_pg_cam_item *ice_pg_cam_table_get(struct ice_hw *hw)
+> +{
+> +	return (struct ice_pg_cam_item *)
+> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_CAM,
+> +					sizeof(struct ice_pg_cam_item),
+> +					ICE_PG_CAM_TABLE_SIZE,
+> +					ice_parser_sect_item_get,
+> +					_pg_cam_parse_item);
+> +}
+> +
+> +/**
+> + * ice_pg_sp_cam_table_get - create a parse graph spill cam table
+> + * @hw: pointer to the hardware structure
+> + */
+> +struct ice_pg_cam_item *ice_pg_sp_cam_table_get(struct ice_hw *hw)
+> +{
+> +	return (struct ice_pg_cam_item *)
+> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_PG_SPILL,
+> +					sizeof(struct ice_pg_cam_item),
+> +					ICE_PG_SP_CAM_TABLE_SIZE,
+> +					ice_parser_sect_item_get,
+> +					_pg_sp_cam_parse_item);
+> +}
+> +
+> +/**
+> + * ice_pg_nm_cam_table_get - create a parse graph no match cam table
+> + * @hw: pointer to the hardware structure
+> + */
+> +struct ice_pg_nm_cam_item *ice_pg_nm_cam_table_get(struct ice_hw *hw)
+> +{
+> +	return (struct ice_pg_nm_cam_item *)
+> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_NOMATCH_CAM,
+> +					sizeof(struct ice_pg_nm_cam_item),
+> +					ICE_PG_NM_CAM_TABLE_SIZE,
+> +					ice_parser_sect_item_get,
+> +					_pg_nm_cam_parse_item);
+> +}
+> +
+> +/**
+> + * ice_pg_nm_sp_cam_table_get - create a parse graph no match spill cam table
+> + * @hw: pointer to the hardware structure
+> + */
+> +struct ice_pg_nm_cam_item *ice_pg_nm_sp_cam_table_get(struct ice_hw *hw)
+> +{
+> +	return (struct ice_pg_nm_cam_item *)
+> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_NOMATCH_SPILL,
+> +					sizeof(struct ice_pg_nm_cam_item),
+> +					ICE_PG_NM_SP_CAM_TABLE_SIZE,
+> +					ice_parser_sect_item_get,
+> +					_pg_nm_sp_cam_parse_item);
+> +}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_pg_cam.h b/drivers/net/ethernet/intel/ice/ice_pg_cam.h
+> new file mode 100644
+> index 000000000000..1d794fa519d6
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_pg_cam.h
+> @@ -0,0 +1,67 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#ifndef _ICE_PG_CAM_H_
+> +#define _ICE_PG_CAM_H_
+> +
+> +#define ICE_PG_CAM_TABLE_SIZE		2048
+> +#define ICE_PG_SP_CAM_TABLE_SIZE	128
+> +#define ICE_PG_NM_CAM_TABLE_SIZE	1024
+> +#define ICE_PG_NM_SP_CAM_TABLE_SIZE	64
+> +
+> +struct ice_pg_cam_key {
+> +	bool valid;
+> +	u16 node_id;
+> +	bool flag0;
+> +	bool flag1;
+> +	bool flag2;
+> +	bool flag3;
+> +	u8 boost_idx;
+> +	u16 alu_reg;
+> +	u32 next_proto;
+> +};
+> +
+> +struct ice_pg_nm_cam_key {
+> +	bool valid;
+> +	u16 node_id;
+> +	bool flag0;
+> +	bool flag1;
+> +	bool flag2;
+> +	bool flag3;
+> +	u8 boost_idx;
+> +	u16 alu_reg;
+> +};
+> +
+> +struct ice_pg_cam_action {
+> +	u16 next_node;
+> +	u8 next_pc;
+> +	bool is_pg;
+> +	u8 proto_id;
+> +	bool is_mg;
+> +	u8 marker_id;
+> +	bool is_last_round;
+> +	bool ho_polarity;
+> +	u16 ho_inc;
+> +};
+> +
+> +struct ice_pg_cam_item {
+> +	u16 idx;
+> +	struct ice_pg_cam_key key;
+> +	struct ice_pg_cam_action action;
+> +};
+> +
+> +struct ice_pg_nm_cam_item {
+> +	u16 idx;
+> +	struct ice_pg_nm_cam_key key;
+> +	struct ice_pg_cam_action action;
+> +};
 
->> + * Author: Wojciech Drewek <wojciech.drewek@intel.com>
->> + */
-> 
-> ...
-> 
->> +struct pfcp_dev {
->> +	struct list_head	list;
-> 
-> This is defined in types.h which is missing.
+Some comment with documentation of the fields in the all structs above 
+would be fine.
 
-Will add.
+> +
+> +void ice_pg_cam_dump(struct ice_hw *hw, struct ice_pg_cam_item *item);
+> +void ice_pg_nm_cam_dump(struct ice_hw *hw, struct ice_pg_nm_cam_item *item);
+> +
+> +struct ice_pg_cam_item *ice_pg_cam_table_get(struct ice_hw *hw);
+> +struct ice_pg_cam_item *ice_pg_sp_cam_table_get(struct ice_hw *hw);
+> +
+> +struct ice_pg_nm_cam_item *ice_pg_nm_cam_table_get(struct ice_hw *hw);
+> +struct ice_pg_nm_cam_item *ice_pg_nm_sp_cam_table_get(struct ice_hw *hw);
+> +#endif /* _ICE_PG_CAM_H_ */
 
-> 
->> +	struct socket		*sock;
->> +	struct net_device	*dev;
->> +	struct net		*net;
->> +};
-> 
-> ...
-> 
->> +	dev->needs_free_netdev	= true;
-> 
-> Single space is enough.
-
-Will fix.
-
-> 
-> ...
-> 
->> +static int pfcp_newlink(struct net *net, struct net_device *dev,
->> +			struct nlattr *tb[], struct nlattr *data[],
->> +			struct netlink_ext_ack *extack)
->> +{
->> +	struct pfcp_dev *pfcp = netdev_priv(dev);
->> +	struct pfcp_net *pn;
->> +	int err;
->> +
->> +	pfcp->net = net;
->> +
->> +	err = pfcp_add_sock(pfcp);
->> +	if (err) {
->> +		netdev_dbg(dev, "failed to add pfcp socket %d\n", err);
->> +		goto exit;
->> +	}
->> +
->> +	err = register_netdevice(dev);
->> +	if (err) {
->> +		netdev_dbg(dev, "failed to register pfcp netdev %d\n", err);
->> +		goto exit_reg_netdev;
->> +	}
->> +
->> +	pn = net_generic(dev_net(dev), pfcp_net_id);
->> +	list_add_rcu(&pfcp->list, &pn->pfcp_dev_list);
->> +
->> +	netdev_dbg(dev, "registered new PFCP interface\n");
->> +
->> +	return 0;
->> +
->> +exit_reg_netdev:
-> 
-> The label naming should tell what _will_ happen if goto $LABEL.
-> Something like
-> 
-> exit_del_pfcp_sock:
-
-Another convention I've seen is `err_what_failed`. But yeah,
-exit_reg_netdev doesn't match either convention, will change to your
-suggestion.
-
-> 
-> Ditto for all labels in your code.
-> 
->> +	pfcp_del_sock(pfcp);
->> +exit:
-> 
-> Shouldn't here be
-> 
-> 	->net = NULL;
-
-Good catch, will add.
-
-> 
-> ?
-> 
->> +	return err;
->> +}
-> 
-> ...
-> 
->> +#ifndef _PFCP_H_
->> +#define _PFCP_H_
-> 
-> Missing headers:
-> For net_device internals, bool type, and strcpm() call.
-
-Will add.
-
-> 
->> +#define PFCP_PORT 8805
->> +
->> +static inline bool netif_is_pfcp(const struct net_device *dev)
->> +{
->> +	return dev->rtnl_link_ops &&
->> +	       !strcmp(dev->rtnl_link_ops->kind, "pfcp");
->> +}
->> +
->> +#endif
-> 
-
-Thank you for review!
-Marcin
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
