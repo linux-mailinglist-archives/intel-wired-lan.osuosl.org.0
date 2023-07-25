@@ -1,86 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53431762359
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jul 2023 22:31:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 187F87624D7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jul 2023 23:51:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DD46561125;
-	Tue, 25 Jul 2023 20:31:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD46561125
+	by smtp4.osuosl.org (Postfix) with ESMTP id AEA2541907;
+	Tue, 25 Jul 2023 21:51:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AEA2541907
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690317100;
-	bh=C/rcoUBA9knniezS5aa93mFohnfCAb8M8+c3ly1ia0o=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=sd/DztEuBRgB2dVgukryvzrYGc3j5/ae+C8N6hbeMXmJnValwdE8Ex7kJpSz5Pp9X
-	 3J4k2pWl2ge8nPR8mwYnZG+YjKDw6XJ1TLnN245oHaMADAgGHCc1Zp2jHSOTiDqli+
-	 dqir6KBzmrrbpvlLrW1MuY3P0sAOXSMPymc9HEbAs42J1PKb5dg+5W4ejI0w1hP6Xr
-	 0Wga2KsPsxnmblL+v06xpS4ku+83irOtpoMP3Y6VrU48UmEW4qtCkbqKv+Qnt3Jyk6
-	 UfotsBIDdE3Nq1KxXW2hYBg01phlij8e9D3ZQ1NKZ8kCERrCErBvkGyulTfTrYo3Y0
-	 KZTccp40kM0Ew==
+	s=default; t=1690321897;
+	bh=2UR2oF5ExThHQcRQ0roQvBPzHLPZ6iQtJgdYPi3PfoE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=t4bdL7H36nRWIIEj2mpZbVSrJnhkQvLndQYmlXQ0gf2FLS3pm9bTnZXnWB9PXMmB4
+	 cmvEzr34JlcrUppsKr4xBgde8qY4xFups84dZrzErRbp/nUwr2AtHoHu2jUOWmWBPJ
+	 +1v3WxVrlv4A10cdCiWiXrnDheR7CaeFq7DZ0+3od0afIl5i0NNQtcIuVgFiXZMVby
+	 7Y0jHKvmnpl1nF2SVYZOpsnfFVTg+YqQbnRqFU1BgPM4NZOjGC0St8yCrCl0wUw7aQ
+	 nG5L8rodDYWMKghLaQ9F1jnauyxrr409+8U3htZCr4gpN5WTotGpk25wiWmIvEBs+J
+	 QO3rr0ucclaDw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GYXt2Z4eEW1T; Tue, 25 Jul 2023 20:31:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dAyjLHXFQEj5; Tue, 25 Jul 2023 21:51:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5ACC6610F2;
-	Tue, 25 Jul 2023 20:31:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5ACC6610F2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2703E418A0;
+	Tue, 25 Jul 2023 21:51:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2703E418A0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F2F3E1BF4E5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 20:31:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4867E1BF47A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 21:51:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C8237610F2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 20:31:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C8237610F2
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1F8C261124
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 21:51:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1F8C261124
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Po8TKnNS-heg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Jul 2023 20:31:32 +0000 (UTC)
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3CE636111C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 20:31:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CE636111C
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="365298488"
-X-IronPort-AV: E=Sophos;i="6.01,230,1684825200"; d="scan'208";a="365298488"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jul 2023 13:31:31 -0700
+ with ESMTP id yC4NgbYBj5Zh for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Jul 2023 21:51:30 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 17E9E60C18
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jul 2023 21:51:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17E9E60C18
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="352753630"
+X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; d="scan'208";a="352753630"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jul 2023 14:51:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="761345711"
-X-IronPort-AV: E=Sophos;i="6.01,230,1684825200"; d="scan'208";a="761345711"
-Received: from jekeller-desk.amr.corp.intel.com (HELO
- jekeller-desk.jekeller.internal) ([10.166.241.1])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jul 2023 13:31:30 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 25 Jul 2023 13:31:25 -0700
-Message-ID: <20230725203125.508243-1-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.41.0.1.g9857a21e0017.dirty
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="1056933626"
+X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; d="scan'208";a="1056933626"
+Received: from lkp-server02.sh.intel.com (HELO 953e8cd98f7d) ([10.239.97.151])
+ by fmsmga005.fm.intel.com with ESMTP; 25 Jul 2023 14:51:27 -0700
+Received: from kbuild by 953e8cd98f7d with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qOPw9-0000Mn-2X;
+ Tue, 25 Jul 2023 21:51:23 +0000
+Date: Wed, 26 Jul 2023 05:50:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202307260524.gD96xyN6-lkp@intel.com>
+References: <20230725203125.508243-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230725203125.508243-1-jacob.e.keller@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690317092; x=1721853092;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=y7G2NR7HkElrmi8PzGL9WJrYrM1Gq/K0T80Hp6vbVK4=;
- b=Pj0vXRCUaxg4qTSQ5wZJMMaM+sAdOebI+uDxkZ6tmYqmg0rq3tXU74yi
- j+aVolWphowuFw3pKlU1GMkgRq/QFwny1vGLLo28mr3JqmOIAH/p1MZt6
- 6qjZxbdgRxuilZaIcLgh6m56NUZ3Bpo8o0Sxl7prvnjrreEDkaunqFmuz
- aG/nys04fqPrRw3khYjJSjQ/gt2cF+ZnKjj7O0KiJHhK+DH4ixm5GgApG
- acg2DkCMMZ3zZq4pe0O8Vx2s28ntdQc+TFmNzjyOC3zAIXd06fshJIWid
- Kz9ixFNTtIh8CWF3xBlplW+H7CGm7NRqRhJlJmgkz9RWsO248Oy9tuH1V
- A==;
+ t=1690321890; x=1721857890;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=4j1REvpsFGcYj8gu5WcqDBuw17M5YBKjzoMA4WaJsJo=;
+ b=QLJeC6BHzcIAkVS1zVcP9AF3oaZ+HSVbXcDrbUBwlEw/kktEMdI+1S3Z
+ QoFSNCEOLPT8N628xGEbE2y8kLlw1BFspu8Yf3zk9Q/PrcIeGesdvSbpa
+ GhPw6g9fjqE41IaFRofjl2hDiCXHTBiP4ERWN3HEuCHQOClzG+QKZMFnu
+ +ZFpKyJirs7LgJI7FNEiaxm9ffzlXH3z1/BEFqDy5PYT2d5yyw2IUqwG7
+ qeym6yef25bkChmfSIvKw3nUb0fXflQhi4QZcN/yMq1aALdFUfTXiUDdk
+ lrcTCy6CoJvpTT++rfEAiI2ZgU5pil7wX8RuRKxyyb2jYprKOd0TCwjnI
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Pj0vXRCU
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: avoid executing commands on
- other ports when driving sync
+ header.a=rsa-sha256 header.s=Intel header.b=QLJeC6BH
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: avoid executing commands
+ on other ports when driving sync
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,201 +98,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: siddaraju.dh@intel.com, Anthony Nguyen <anthony.l.nguyen@intel.com>
+Cc: siddaraju.dh@intel.com, Anthony Nguyen <anthony.l.nguyen@intel.com>,
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice hardware has a synchronization mechanism used to drive the
-simultaneous application of commands on both PHY ports and the source timer
-in the MAC.
+Hi Jacob,
 
-When issuing a sync via ice_ptp_exec_tmr_cmd(), the hardware will
-simultaneously apply the commands programmed for the main timer and each
-PHY port. Neither the main timer command register, nor the PHY port command
-registers auto clear on command execution.
+kernel test robot noticed the following build warnings:
 
-During the execution of a timer command intended for a single port on E822
-devices, such as those used to configure a PHY during link up, the driver
-is not correctly clearing the previous commands.
+[auto build test WARNING on tnguy-net-queue/dev-queue]
 
-This results in unintentionally executing the last programmed command on
-the main timer and other PHY ports whenever performing reconfiguration on
-E822 ports after link up. This results in unintended side effects on other
-timers, depending on what command was previously programmed.
+url:    https://github.com/intel-lab-lkp/linux/commits/Jacob-Keller/ice-avoid-executing-commands-on-other-ports-when-driving-sync/20230726-043405
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20230725203125.508243-1-jacob.e.keller%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-net] ice: avoid executing commands on other ports when driving sync
+config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20230726/202307260524.gD96xyN6-lkp@intel.com/config)
+compiler: loongarch64-linux-gcc (GCC) 12.3.0
+reproduce: (https://download.01.org/0day-ci/archive/20230726/202307260524.gD96xyN6-lkp@intel.com/reproduce)
 
-To fix this, the driver must ensure that the main timer and all other PHY
-ports are properly initialized to perform no action.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202307260524.gD96xyN6-lkp@intel.com/
 
-The enumeration for timer commands does not include an enumeration value
-for doing nothing. Introduce ICE_PTP_NOP for this purpose. When writing a
-timer command to hardware, leave the command bits set to zero which
-indicates that no operation should be performed on that port.
+All warnings (new ones prefixed by >>):
 
-Modify ice_ptp_one_port_cmd() to always initialize all ports. For all ports
-other than the one being configured, write their timer command register to
-ICE_PTP_NOP. This ensures that no side effect happens on the timer command.
+>> drivers/net/ethernet/intel/ice/ice_ptp_hw.c:1326: warning: expecting prototype for ice_ptp_one_port_cmd_e822(). Prototype was for ice_ptp_one_port_cmd() instead
 
-To fix this for the PHY ports, modify ice_ptp_one_port_cmd() to always
-initialize all other ports to ICE_PTP_NOP. This ensures that no side
-effects happen on the other ports.
 
-Call ice_ptp_src_cmd() with a command value if ICE_PTP_NOP in
-ice_sync_phy_timer_e822() and ice_start_phy_timer_e822().
+vim +1326 drivers/net/ethernet/intel/ice/ice_ptp_hw.c
 
-With both of these changes, the driver should no longer execute a stale
-command on the main timer or another PHY port when reconfiguring one of the
-PHY ports after link up.
+  1312	
+  1313	/**
+  1314	 * ice_ptp_one_port_cmd_e822 - Prepare one port for a timer command
+  1315	 * @hw: pointer to the HW struct
+  1316	 * @configured_port: the port to configure with configured_cmd
+  1317	 * @configured_cmd: timer command to prepare on the configured_port
+  1318	 *
+  1319	 * Prepare the configured_port for the configured_cmd, and prepare all other
+  1320	 * ports for ICE_PTP_NOP. This causes the configured_port to execute the
+  1321	 * desired command while all other ports perform no operation.
+  1322	 */
+  1323	static int
+  1324	ice_ptp_one_port_cmd(struct ice_hw *hw, u8 configured_port,
+  1325			     enum ice_ptp_tmr_cmd configured_cmd)
+> 1326	{
+  1327		u8 port;
+  1328	
+  1329		for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
+  1330			enum ice_ptp_tmr_cmd cmd;
+  1331			int err;
+  1332	
+  1333			if (port == configured_port)
+  1334				cmd = configured_cmd;
+  1335			else
+  1336				cmd = ICE_PTP_NOP;
+  1337	
+  1338			err = ice_ptp_write_port_cmd_e822(hw, port, cmd);
+  1339			if (err)
+  1340				return err;
+  1341		}
+  1342	
+  1343		return 0;
+  1344	}
+  1345	
 
-Fixes: 3a7496234d17 ("ice: implement basic E822 PTP support")
-Signed-off-by: Siddaraju DH <siddaraju.dh@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 55 +++++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  3 +-
- 2 files changed, 52 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index a38614d21ea8..bb70f8a811f5 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -131,6 +131,8 @@ static void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	case READ_TIME:
- 		cmd_val |= GLTSYN_CMD_READ_TIME;
- 		break;
-+	case ICE_PTP_NOP:
-+		break;
- 	}
- 
- 	wr32(hw, GLTSYN_CMD, cmd_val);
-@@ -1226,18 +1228,18 @@ ice_ptp_read_port_capture(struct ice_hw *hw, u8 port, u64 *tx_ts, u64 *rx_ts)
- }
- 
- /**
-- * ice_ptp_one_port_cmd - Prepare a single PHY port for a timer command
-+ * ice_ptp_write_port_cmd_e822 - Prepare a single PHY port for a timer command
-  * @hw: pointer to HW struct
-  * @port: Port to which cmd has to be sent
-  * @cmd: Command to be sent to the port
-  *
-  * Prepare the requested port for an upcoming timer sync command.
-  *
-- * Note there is no equivalent of this operation on E810, as that device
-- * always handles all external PHYs internally.
-+ * Do not use this function directly. If you want to configure exactly one
-+ * port, use ice_ptp_one_port_cmd() instead.
-  */
- static int
--ice_ptp_one_port_cmd(struct ice_hw *hw, u8 port, enum ice_ptp_tmr_cmd cmd)
-+ice_ptp_write_port_cmd_e822(struct ice_hw *hw, u8 port, enum ice_ptp_tmr_cmd cmd)
- {
- 	u32 cmd_val, val;
- 	u8 tmr_idx;
-@@ -1261,6 +1263,8 @@ ice_ptp_one_port_cmd(struct ice_hw *hw, u8 port, enum ice_ptp_tmr_cmd cmd)
- 	case ADJ_TIME_AT_TIME:
- 		cmd_val |= PHY_CMD_ADJ_TIME_AT_TIME;
- 		break;
-+	case ICE_PTP_NOP:
-+		break;
- 	}
- 
- 	/* Tx case */
-@@ -1306,6 +1310,39 @@ ice_ptp_one_port_cmd(struct ice_hw *hw, u8 port, enum ice_ptp_tmr_cmd cmd)
- 	return 0;
- }
- 
-+/**
-+ * ice_ptp_one_port_cmd_e822 - Prepare one port for a timer command
-+ * @hw: pointer to the HW struct
-+ * @configured_port: the port to configure with configured_cmd
-+ * @configured_cmd: timer command to prepare on the configured_port
-+ *
-+ * Prepare the configured_port for the configured_cmd, and prepare all other
-+ * ports for ICE_PTP_NOP. This causes the configured_port to execute the
-+ * desired command while all other ports perform no operation.
-+ */
-+static int
-+ice_ptp_one_port_cmd(struct ice_hw *hw, u8 configured_port,
-+		     enum ice_ptp_tmr_cmd configured_cmd)
-+{
-+	u8 port;
-+
-+	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
-+		enum ice_ptp_tmr_cmd cmd;
-+		int err;
-+
-+		if (port == configured_port)
-+			cmd = configured_cmd;
-+		else
-+			cmd = ICE_PTP_NOP;
-+
-+		err = ice_ptp_write_port_cmd_e822(hw, port, cmd);
-+		if (err)
-+			return err;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_ptp_port_cmd_e822 - Prepare all ports for a timer command
-  * @hw: pointer to the HW struct
-@@ -1322,7 +1359,7 @@ ice_ptp_port_cmd_e822(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
- 		int err;
- 
--		err = ice_ptp_one_port_cmd(hw, port, cmd);
-+		err = ice_ptp_write_port_cmd_e822(hw, port, cmd);
- 		if (err)
- 			return err;
- 	}
-@@ -2252,6 +2289,9 @@ static int ice_sync_phy_timer_e822(struct ice_hw *hw, u8 port)
- 	if (err)
- 		goto err_unlock;
- 
-+	/* Do not perform any action on the main timer */
-+	ice_ptp_src_cmd(hw, ICE_PTP_NOP);
-+
- 	/* Issue the sync to activate the time adjustment */
- 	ice_ptp_exec_tmr_cmd(hw);
- 
-@@ -2372,6 +2412,9 @@ int ice_start_phy_timer_e822(struct ice_hw *hw, u8 port)
- 	if (err)
- 		return err;
- 
-+	/* Do not perform any action on the main timer */
-+	ice_ptp_src_cmd(hw, ICE_PTP_NOP);
-+
- 	ice_ptp_exec_tmr_cmd(hw);
- 
- 	err = ice_read_phy_reg_e822(hw, port, P_REG_PS, &val);
-@@ -2847,6 +2890,8 @@ static int ice_ptp_port_cmd_e810(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	case ADJ_TIME_AT_TIME:
- 		cmd_val = GLTSYN_CMD_ADJ_INIT_TIME;
- 		break;
-+	case ICE_PTP_NOP:
-+		return 0;
- 	}
- 
- 	/* Read, modify, write */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 3b68cb91bd81..096685237ca6 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -9,7 +9,8 @@ enum ice_ptp_tmr_cmd {
- 	INIT_INCVAL,
- 	ADJ_TIME,
- 	ADJ_TIME_AT_TIME,
--	READ_TIME
-+	READ_TIME,
-+	ICE_PTP_NOP,
- };
- 
- enum ice_ptp_serdes {
 -- 
-2.41.0.1.g9857a21e0017.dirty
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
