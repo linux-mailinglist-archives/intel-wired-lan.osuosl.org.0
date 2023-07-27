@@ -1,65 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1310765763
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jul 2023 17:23:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3586D765765
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jul 2023 17:23:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C5CF740155;
-	Thu, 27 Jul 2023 15:23:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C5CF740155
+	by smtp4.osuosl.org (Postfix) with ESMTP id B9FC04154A;
+	Thu, 27 Jul 2023 15:23:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9FC04154A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690471417;
-	bh=sS0iyStfFSmcJqYsNXguE8A9mVTvTHOKSTGr9uFFGxk=;
+	s=default; t=1690471423;
+	bh=3ogXyhWztFCU9eng3S+GN+brPAMjcTI9MeDPosOCbFQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=cXEAZZJsUy7ZLpHSWFO5hrhPVNhQzlpVBVG79ccoBdRzEyHE2Ng8geeQxBX4MyCZ0
-	 OYsaC7hqSzI4F/cr/tcfZFnlXf0tPTPKmLAa49sCi8Xzg7ouZLtfWNxnxsOA5H3Xi6
-	 VdqjQYN9UoM395FrRcmoQEkUamSCiww6j9EGc7xpART5GZCQ70gvGDotujTA+TRu3U
-	 VVu8pYFS23hL1OX8dMnPhA6pwmKHIIAhOYfkHlfmkXUU3bZG9LpXuEsk4bS92cxgyX
-	 PRvu/QR/wCh2FOBxp09PgVY0CQ2tuINlH3B7c5kKQQXZpRGG6CALJvYEQXzRqXzHst
-	 1ENmFxjTPo9TA==
+	b=uvzuWpJNn5Cq66n79VVgDMvpiXqFpgwg8jLJ1gKpLaRnEMA+wE2a6Q4QWP1nC9vBy
+	 lCLxZ7zLZK/V0mvDnRTuAEn4fYhsnOxi3UyR/rNVkmlg1esu+Di70nC13uNx5wrkai
+	 FkMJD+OMlVc7YMg+rzS0NndmSmspau8Ne8Di3MeAQBDcYJyRQJDJG3YS8xqq3fQl1d
+	 a6D0J5YXpwg8bR8cN/wsdcCI810TiKfnLjav0gvn4AdbxZ9q2FxPE/6R3LwLNWSc0M
+	 GPj45/Tt7QYwUEIcctQSSCN+Iv9TOnAJ9cnKqZR/bDpVfEXipWdu1sUrINpKrFz/Ch
+	 NpRMkZkFtFO4g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9STV9Ytz6dvw; Thu, 27 Jul 2023 15:23:36 +0000 (UTC)
+	with ESMTP id TINo-N55qYok; Thu, 27 Jul 2023 15:23:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0ADF14154A;
-	Thu, 27 Jul 2023 15:23:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0ADF14154A
+	by smtp4.osuosl.org (Postfix) with ESMTP id ABFB240083;
+	Thu, 27 Jul 2023 15:23:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABFB240083
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DC32A1BF98E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E8BE51BF2A9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B613440407
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B613440407
+ by smtp2.osuosl.org (Postfix) with ESMTP id C204440407
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C204440407
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id di6GAzijB9YM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Jul 2023 02:15:32 +0000 (UTC)
+ with ESMTP id IF-B08tZdCHO for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Jul 2023 02:15:35 +0000 (UTC)
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BC81D40134
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC81D40134
-X-IronPort-AV: E=McAfee;i="6600,9927,10783"; a="365640287"
-X-IronPort-AV: E=Sophos;i="6.01,233,1684825200"; d="scan'208";a="365640287"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BF0CF40134
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 02:15:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF0CF40134
+X-IronPort-AV: E=McAfee;i="6600,9927,10783"; a="365640295"
+X-IronPort-AV: E=Sophos;i="6.01,233,1684825200"; d="scan'208";a="365640295"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2023 19:08:26 -0700
+ 26 Jul 2023 19:08:30 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10783"; a="796785280"
-X-IronPort-AV: E=Sophos;i="6.01,233,1684825200"; d="scan'208";a="796785280"
+X-IronPort-AV: E=McAfee;i="6600,9927,10783"; a="796785293"
+X-IronPort-AV: E=Sophos;i="6.01,233,1684825200"; d="scan'208";a="796785293"
 Received: from dpdk-wuwenjun-icelake-ii.sh.intel.com ([10.67.110.188])
- by fmsmga004.fm.intel.com with ESMTP; 26 Jul 2023 19:08:24 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 26 Jul 2023 19:08:28 -0700
 From: Wenjun Wu <wenjun1.wu@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 Jul 2023 10:10:19 +0800
-Message-Id: <20230727021021.961119-4-wenjun1.wu@intel.com>
+Date: Thu, 27 Jul 2023 10:10:20 +0800
+Message-Id: <20230727021021.961119-5-wenjun1.wu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230727021021.961119-1-wenjun1.wu@intel.com>
 References: <20230727021021.961119-1-wenjun1.wu@intel.com>
@@ -67,22 +67,22 @@ MIME-Version: 1.0
 X-Mailman-Approved-At: Thu, 27 Jul 2023 15:23:16 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690424132; x=1721960132;
+ t=1690424135; x=1721960135;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=BK+ZxCCFujr6ZGyABNxbMinOZsSCuAe4IylL9tuXDCo=;
- b=aK5i40q73oQ7nKO7lxg90sQvPOlLm5ZeqZgVQF3wt8qSDPYt/ZEGX8B3
- bYT+TG289rap2+EgiSLlchknxDpx623QMGZfUAZ610UlycP1Aumk5Yn8b
- +UoJWjP/hLnS+fqzyiAcNHH+30kNek4ZHlym4X/XZA3kYXu8ki9QpXAoZ
- bzKt/dA/utfTaREJxbcuQiP1tPGXuiPob51kdDXAop0IZdMjO/SmqipB8
- bSIMmsPf5m7T+pqtRqi+tOQxpV16p51bZqxhDN/htMsvxffYk3Tami1QH
- duBWeuTn9ZY0CRHLb2DE9NYKqTp71l20RwLqfaF1vYT4ehKy/C9lIq/fH
- g==;
+ bh=+IGcpLwj00e1zrYm5XadsZkJ3YPaNxGDyHlf90Ner8s=;
+ b=fXCCZ4NOXDeRedcdqi+G0LRUVOwLsMJMT4WDFgf/Lm3mdMFwt5o31cXS
+ TNtlHKPV3M1bwuu2IUBWghDvaRuEC+7mPy2+rzYdovWjclHlaNnDk7aFc
+ n9fxgLtG1KfArwTb0IgrQrHp/W+o4W4vYrfbaRqKKzUnmnx3kmn8QH5ZI
+ 05qXHsY1y7OSRgWBElV15JmvLLEbvGdtj9y/wsWV11mPT1rS9tUmVo2Wa
+ 8lXjV3SITh3QPrs4V+bqyRTaDsHtyso8zpr8+/239LTeZ13q5+KpMn9Am
+ wt83KE3b+bLgVQf1hQKZlbc9l1vNBVtzlKACuBzIAB+vDKPFy7ewImmet
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=aK5i40q7
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 3/5] iavf: Add devlink and
- devlink port support
+ header.a=rsa-sha256 header.s=Intel header.b=fXCCZ4NO
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 4/5] iavf: Add devlink port
+ function rate API support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,250 +103,388 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jun Zhang <xuejun.zhang@intel.com>
 
-To allow user to configure queue bandwidth, devlink port support
-is added to support devlink port rate API.
+To allow user to configure queue based parameters, devlink port function
+rate api functions are added for setting node tx_max and tx_share
+parameters.
 
-Add devlink framework registration/unregistration on iavf driver
-initialization and remove, and devlink port of DEVLINK_PORT_FLAVOUR_VIRTUAL
-is created to be associated iavf net device.
+iavf rate tree with root node and  queue nodes is created and registered
+with devlink rate when iavf adapter is configured.
 
 Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
 ---
- drivers/net/ethernet/intel/Kconfig            |  1 +
- drivers/net/ethernet/intel/iavf/Makefile      |  2 +-
- drivers/net/ethernet/intel/iavf/iavf.h        |  6 ++
- .../net/ethernet/intel/iavf/iavf_devlink.c    | 93 +++++++++++++++++++
- .../net/ethernet/intel/iavf/iavf_devlink.h    | 17 ++++
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 14 +++
- 6 files changed, 132 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_devlink.c
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_devlink.h
+ .../net/ethernet/intel/iavf/iavf_devlink.c    | 270 +++++++++++++++++-
+ .../net/ethernet/intel/iavf/iavf_devlink.h    |  21 ++
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |   7 +-
+ 3 files changed, 295 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 9bc0a9519899..f916b8ef6acb 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -256,6 +256,7 @@ config I40EVF
- 	tristate "Intel(R) Ethernet Adaptive Virtual Function support"
- 	select IAVF
- 	depends on PCI_MSI
-+	select NET_DEVLINK
- 	help
- 	  This driver supports virtual functions for Intel XL710,
- 	  X710, X722, XXV710, and all devices advertising support for
-diff --git a/drivers/net/ethernet/intel/iavf/Makefile b/drivers/net/ethernet/intel/iavf/Makefile
-index 9c3e45c54d01..b5d7db97ab8b 100644
---- a/drivers/net/ethernet/intel/iavf/Makefile
-+++ b/drivers/net/ethernet/intel/iavf/Makefile
-@@ -12,5 +12,5 @@ subdir-ccflags-y += -I$(src)
- obj-$(CONFIG_IAVF) += iavf.o
- 
- iavf-objs := iavf_main.o iavf_ethtool.o iavf_virtchnl.o iavf_fdir.o \
--	     iavf_adv_rss.o \
-+	     iavf_adv_rss.o iavf_devlink.o \
- 	     iavf_txrx.o iavf_common.o iavf_adminq.o iavf_client.o
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 8cbdebc5b698..519aeaec793c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -33,9 +33,11 @@
- #include <net/udp.h>
- #include <net/tc_act/tc_gact.h>
- #include <net/tc_act/tc_mirred.h>
-+#include <net/devlink.h>
- 
- #include "iavf_type.h"
- #include <linux/avf/virtchnl.h>
-+#include "iavf_devlink.h"
- #include "iavf_txrx.h"
- #include "iavf_fdir.h"
- #include "iavf_adv_rss.h"
-@@ -369,6 +371,10 @@ struct iavf_adapter {
- 	struct net_device *netdev;
- 	struct pci_dev *pdev;
- 
-+	/* devlink & port data */
-+	struct devlink *devlink;
-+	struct devlink_port devlink_port;
-+
- 	struct iavf_hw hw; /* defined in iavf_type.h */
- 
- 	enum iavf_state_t state;
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.c b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-new file mode 100644
-index 000000000000..991d041e5922
---- /dev/null
+index 991d041e5922..e8469fda054d 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_devlink.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-@@ -0,0 +1,93 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright (C) 2023 Intel Corporation */
+@@ -4,7 +4,273 @@
+ #include "iavf.h"
+ #include "iavf_devlink.h"
+ 
+-static const struct devlink_ops iavf_devlink_ops = {};
++/**
++ * iavf_devlink_rate_init_rate_tree - export rate tree to devlink rate
++ * @adapter: iavf adapter struct instance
++ *
++ * This function builds Rate Tree based on iavf adapter configuration
++ * and exports it's contents to devlink rate.
++ */
++void iavf_devlink_rate_init_rate_tree(struct iavf_adapter *adapter)
++{
++	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
++	struct iavf_dev_rate_node *iavf_r_node;
++	struct iavf_dev_rate_node *iavf_q_node;
++	struct devlink_rate *dl_root_node;
++	struct devlink_rate *dl_tmp_node;
++	int q_num, size, i;
 +
-+#include "iavf.h"
-+#include "iavf_devlink.h"
++	if (!adapter->devlink_port.registered)
++		return;
 +
-+static const struct devlink_ops iavf_devlink_ops = {};
++	iavf_r_node = &dl_priv->root_node;
++	memset(iavf_r_node, 0, sizeof(*iavf_r_node));
++	iavf_r_node->tx_max = adapter->link_speed;
++	strncpy(iavf_r_node->name, "iavf_root", IAVF_RATE_NODE_NAME);
++
++	devl_lock(adapter->devlink);
++	dl_root_node = devl_rate_node_create(adapter->devlink, iavf_r_node,
++					     iavf_r_node->name, NULL);
++	if (!dl_root_node || IS_ERR(dl_root_node))
++		goto err_node;
++
++	iavf_r_node->rate_node = dl_root_node;
++
++	/* Allocate queue nodes, and chain them under root */
++	q_num = adapter->num_active_queues;
++	if (q_num > 0) {
++		size = q_num * sizeof(struct iavf_dev_rate_node);
++		dl_priv->queue_nodes = kzalloc(size, GFP_KERNEL);
++		if (!dl_priv->queue_nodes)
++			goto err_node;
++
++		memset(dl_priv->queue_nodes, 0, size);
++
++		for (i = 0; i < q_num; ++i) {
++			iavf_q_node = &dl_priv->queue_nodes[i];
++			snprintf(iavf_q_node->name, IAVF_RATE_NODE_NAME,
++				 "txq_%d", i);
++			dl_tmp_node = devl_rate_node_create(adapter->devlink,
++							    iavf_q_node,
++							    iavf_q_node->name,
++							    dl_root_node);
++			if (!dl_tmp_node || IS_ERR(dl_tmp_node)) {
++				kfree(dl_priv->queue_nodes);
++				goto err_node;
++			}
++
++			iavf_q_node->rate_node = dl_tmp_node;
++			iavf_q_node->tx_max = IAVF_TX_DEFAULT;
++			iavf_q_node->tx_share = 0;
++		}
++	}
++
++	dl_priv->update_in_progress = false;
++	dl_priv->iavf_dev_rate_initialized = true;
++	devl_unlock(adapter->devlink);
++	return;
++err_node:
++	devl_rate_nodes_destroy(adapter->devlink);
++	dl_priv->iavf_dev_rate_initialized = false;
++	devl_unlock(adapter->devlink);
++}
 +
 +/**
-+ * iavf_devlink_register - Register allocated devlink instance for iavf adapter
-+ * @adapter: the iavf adapter to register the devlink for.
++ * iavf_devlink_rate_deinit_rate_tree - Unregister rate tree with devlink rate
++ * @adapter: iavf adapter struct instance
 + *
-+ * Register the devlink instance associated with this iavf adapter
-+ *
-+ * Return: zero on success or an error code on failure.
++ * This function unregisters the current iavf rate tree registered with devlink
++ * rate and frees resources.
 + */
-+int iavf_devlink_register(struct iavf_adapter *adapter)
++void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter)
 +{
-+	struct device *dev = &adapter->pdev->dev;
-+	struct iavf_devlink *ref;
-+	struct devlink *devlink;
++	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
 +
-+	/* Allocate devlink instance */
-+	devlink = devlink_alloc(&iavf_devlink_ops, sizeof(struct iavf_devlink),
-+				dev);
-+	if (!devlink)
-+		return -ENOMEM;
++	if (!dl_priv->iavf_dev_rate_initialized)
++		return;
 +
-+	/* Init iavf adapter devlink */
-+	adapter->devlink = devlink;
-+	ref = devlink_priv(devlink);
-+	ref->devlink_ref = adapter;
++	devl_lock(adapter->devlink);
++	devl_rate_leaf_destroy(&adapter->devlink_port);
++	devl_rate_nodes_destroy(adapter->devlink);
++	kfree(dl_priv->queue_nodes);
++	devl_unlock(adapter->devlink);
++}
 +
-+	devlink_register(devlink);
++/**
++ * iavf_check_update_config - check if updating queue parameters needed
++ * @adapter: iavf adapter struct instance
++ * @node: iavf rate node struct instance
++ *
++ * This function sets queue bw & quanta size configuration if all
++ * queue parameters are set
++ */
++static int iavf_check_update_config(struct iavf_adapter *adapter,
++				    struct iavf_dev_rate_node *node)
++{
++	/* Update queue bw if any one of the queues have been fully updated by
++	 * user, the other queues either use the default value or the last
++	 * fully updated value
++	 */
++	if (node->tx_update_flag ==
++	    (IAVF_FLAG_TX_MAX_UPDATED | IAVF_FLAG_TX_SHARE_UPDATED)) {
++		node->tx_max = node->tx_max_temp;
++		node->tx_share = node->tx_share_temp;
++	} else {
++		return 0;
++	}
++
++	/* Reconfig queue bw only when iavf driver on running state */
++	if (adapter->state != __IAVF_RUNNING)
++		return -EBUSY;
 +
 +	return 0;
 +}
 +
 +/**
-+ * iavf_devlink_unregister - Unregister devlink resources for iavf adapter.
-+ * @adapter: the iavf adapter structure
++ * iavf_update_queue_tx_share - sets tx min parameter
++ * @adapter: iavf adapter struct instance
++ * @node: iavf rate node struct instance
++ * @bw: bandwidth in bytes per second
++ * @extack: extended netdev ack structure
 + *
-+ * Releases resources used by devlink and cleans up associated memory.
++ * This function sets min BW limit.
 + */
-+void iavf_devlink_unregister(struct iavf_adapter *adapter)
++static int iavf_update_queue_tx_share(struct iavf_adapter *adapter,
++				      struct iavf_dev_rate_node *node,
++				      u64 bw, struct netlink_ext_ack *extack)
 +{
-+	devlink_unregister(adapter->devlink);
-+	devlink_free(adapter->devlink);
++	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
++	u64 tx_share_sum = 0;
++
++	/* Keep in kbps */
++	node->tx_share_temp = div_u64(bw, IAVF_RATE_DIV_FACTOR);
++
++	if (ADV_LINK_SUPPORT(adapter)) {
++		int i;
++
++		for (i = 0; i < adapter->num_active_queues; ++i) {
++			if (node != &dl_priv->queue_nodes[i])
++				tx_share_sum +=
++					dl_priv->queue_nodes[i].tx_share;
++			else
++				tx_share_sum += node->tx_share_temp;
++		}
++
++		if (tx_share_sum / 1000  > adapter->link_speed_mbps)
++			return -EINVAL;
++	}
++
++	node->tx_update_flag |= IAVF_FLAG_TX_SHARE_UPDATED;
++	return iavf_check_update_config(adapter, node);
 +}
 +
 +/**
-+ * iavf_devlink_port_register - Register devlink port for iavf adapter
-+ * @adapter: the iavf adapter to register the devlink port for.
++ * iavf_update_queue_tx_max - sets tx max parameter
++ * @adapter: iavf adapter struct instance
++ * @node: iavf rate node struct instance
++ * @bw: bandwidth in bytes per second
++ * @extack: extended netdev ack structure
 + *
-+ * Register the devlink port instance associated with this iavf adapter
-+ * before iavf adapter registers with netdevice
-+ *
-+ * Return: zero on success or an error code on failure.
++ * This function sets max BW limit.
 + */
-+int iavf_devlink_port_register(struct iavf_adapter *adapter)
++static int iavf_update_queue_tx_max(struct iavf_adapter *adapter,
++				    struct iavf_dev_rate_node *node,
++				    u64 bw, struct netlink_ext_ack *extack)
 +{
-+	struct device *dev = &adapter->pdev->dev;
-+	struct devlink_port_attrs attrs = {};
-+	int err;
++	/* Keep in kbps */
++	node->tx_max_temp = div_u64(bw, IAVF_RATE_DIV_FACTOR);
++	if (ADV_LINK_SUPPORT(adapter)) {
++		if (node->tx_max_temp / 1000 > adapter->link_speed_mbps)
++			return -EINVAL;
++	}
 +
-+	/* Create devlink port: attr/port flavour, port index */
-+	SET_NETDEV_DEVLINK_PORT(adapter->netdev, &adapter->devlink_port);
-+	attrs.flavour = DEVLINK_PORT_FLAVOUR_VIRTUAL;
-+	memset(&adapter->devlink_port, 0, sizeof(adapter->devlink_port));
-+	devlink_port_attrs_set(&adapter->devlink_port, &attrs);
++	node->tx_update_flag |= IAVF_FLAG_TX_MAX_UPDATED;
 +
-+	/* Register with driver specific index (device id) */
-+	err = devlink_port_register(adapter->devlink, &adapter->devlink_port,
-+				    adapter->hw.bus.device);
-+	if (err)
-+		dev_err(dev, "devlink port registration failed: %d\n", err);
-+
-+	return err;
++	return iavf_check_update_config(adapter, node);
 +}
 +
 +/**
-+ * iavf_devlink_port_unregister - Unregister devlink port for iavf adapter.
-+ * @adapter: the iavf adapter structure
++ * iavf_devlink_rate_node_tx_max_set - devlink_rate API for setting tx max
++ * @rate_node: devlink rate struct instance
 + *
-+ * Releases resources used by devlink port and registration with devlink.
++ * This function implements rate_node_tx_max_set function of devlink_ops
 + */
-+void iavf_devlink_port_unregister(struct iavf_adapter *adapter)
++static int iavf_devlink_rate_node_tx_max_set(struct devlink_rate *rate_node,
++					     void *priv, u64 tx_max,
++					     struct netlink_ext_ack *extack)
 +{
-+	if (!adapter->devlink_port.registered)
-+		return;
++	struct iavf_dev_rate_node *node = priv;
++	struct iavf_devlink *dl_priv;
++	struct iavf_adapter *adapter;
 +
-+	devlink_port_unregister(&adapter->devlink_port);
++	if (!node)
++		return 0;
++
++	dl_priv = devlink_priv(rate_node->devlink);
++	adapter = dl_priv->devlink_ref;
++
++	/* Check if last update is in progress */
++	if (dl_priv->update_in_progress)
++		return -EBUSY;
++
++	if (node == &dl_priv->root_node)
++		return 0;
++
++	return iavf_update_queue_tx_max(adapter, node, tx_max, extack);
 +}
++
++/**
++ * iavf_devlink_rate_node_tx_share_set - devlink_rate API for setting tx share
++ * @rate_node: devlink rate struct instance
++ *
++ * This function implements rate_node_tx_share_set function of devlink_ops
++ */
++static int iavf_devlink_rate_node_tx_share_set(struct devlink_rate *rate_node,
++					       void *priv, u64 tx_share,
++					       struct netlink_ext_ack *extack)
++{
++	struct iavf_dev_rate_node *node = priv;
++	struct iavf_devlink *dl_priv;
++	struct iavf_adapter *adapter;
++
++	if (!node)
++		return 0;
++
++	dl_priv = devlink_priv(rate_node->devlink);
++	adapter = dl_priv->devlink_ref;
++
++	/* Check if last update is in progress */
++	if (dl_priv->update_in_progress)
++		return -EBUSY;
++
++	if (node == &dl_priv->root_node)
++		return 0;
++
++	return iavf_update_queue_tx_share(adapter, node, tx_share, extack);
++}
++
++static int iavf_devlink_rate_node_del(struct devlink_rate *rate_node,
++				      void *priv,
++				      struct netlink_ext_ack *extack)
++{
++	return -EINVAL;
++}
++
++static int iavf_devlink_set_parent(struct devlink_rate *devlink_rate,
++				   struct devlink_rate *parent,
++				   void *priv, void *parent_priv,
++				   struct netlink_ext_ack *extack)
++{
++	return -EINVAL;
++}
++
++static const struct devlink_ops iavf_devlink_ops = {
++	.rate_node_tx_share_set = iavf_devlink_rate_node_tx_share_set,
++	.rate_node_tx_max_set = iavf_devlink_rate_node_tx_max_set,
++	.rate_node_del = iavf_devlink_rate_node_del,
++	.rate_leaf_parent_set = iavf_devlink_set_parent,
++	.rate_node_parent_set = iavf_devlink_set_parent,
++};
+ 
+ /**
+  * iavf_devlink_register - Register allocated devlink instance for iavf adapter
+@@ -30,7 +296,7 @@ int iavf_devlink_register(struct iavf_adapter *adapter)
+ 	adapter->devlink = devlink;
+ 	ref = devlink_priv(devlink);
+ 	ref->devlink_ref = adapter;
+-
++	ref->iavf_dev_rate_initialized = false;
+ 	devlink_register(devlink);
+ 
+ 	return 0;
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.h b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-new file mode 100644
-index 000000000000..5c122278611a
---- /dev/null
+index 5c122278611a..897ff5fc87af 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_devlink.h
 +++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-@@ -0,0 +1,17 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright (C) 2023 Intel Corporation */
-+
-+#ifndef _IAVF_DEVLINK_H_
-+#define _IAVF_DEVLINK_H_
-+
-+/* iavf devlink structure pointing to iavf adapter */
-+struct iavf_devlink {
-+	struct iavf_adapter *devlink_ref;	/* ref to iavf adapter */
+@@ -4,14 +4,35 @@
+ #ifndef _IAVF_DEVLINK_H_
+ #define _IAVF_DEVLINK_H_
+ 
++#define IAVF_RATE_NODE_NAME			12
++struct iavf_dev_rate_node {
++	char name[IAVF_RATE_NODE_NAME];
++	struct devlink_rate *rate_node;
++	u8 tx_update_flag;
++#define IAVF_FLAG_TX_SHARE_UPDATED		BIT(0)
++#define IAVF_FLAG_TX_MAX_UPDATED		BIT(1)
++	u64 tx_max;
++	u64 tx_share;
++	u64 tx_max_temp;
++	u64 tx_share_temp;
++#define IAVF_RATE_DIV_FACTOR			125
++#define IAVF_TX_DEFAULT				100000
 +};
 +
-+int iavf_devlink_register(struct iavf_adapter *adapter);
-+void iavf_devlink_unregister(struct iavf_adapter *adapter);
-+int iavf_devlink_port_register(struct iavf_adapter *adapter);
-+void iavf_devlink_port_unregister(struct iavf_adapter *adapter);
-+
-+#endif /* _IAVF_DEVLINK_H_ */
+ /* iavf devlink structure pointing to iavf adapter */
+ struct iavf_devlink {
+ 	struct iavf_adapter *devlink_ref;	/* ref to iavf adapter */
++	struct iavf_dev_rate_node root_node;
++	struct iavf_dev_rate_node *queue_nodes;
++	bool iavf_dev_rate_initialized;
++	bool update_in_progress;
+ };
+ 
+ int iavf_devlink_register(struct iavf_adapter *adapter);
+ void iavf_devlink_unregister(struct iavf_adapter *adapter);
+ int iavf_devlink_port_register(struct iavf_adapter *adapter);
+ void iavf_devlink_port_unregister(struct iavf_adapter *adapter);
++void iavf_devlink_rate_init_rate_tree(struct iavf_adapter *adapter);
++void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter);
+ 
+ #endif /* _IAVF_DEVLINK_H_ */
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 06ea61f30b6f..c9ee1e8712a8 100644
+index c9ee1e8712a8..b621e44e8890 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
 @@ -2036,6 +2036,7 @@ static void iavf_finish_config(struct work_struct *work)
  				iavf_free_rss(adapter);
  				iavf_free_misc_irq(adapter);
  				iavf_reset_interrupt_capability(adapter);
-+				iavf_devlink_port_unregister(adapter);
++				iavf_devlink_rate_deinit_rate_tree(adapter);
+ 				iavf_devlink_port_unregister(adapter);
  				iavf_change_state(adapter,
  						  __IAVF_INIT_CONFIG_ADAPTER);
- 				goto out;
-@@ -2707,6 +2708,9 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
+@@ -2708,8 +2709,10 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
  	if (err)
  		goto err_sw_init;
  
-+	if (!adapter->netdev_registered)
-+		iavf_devlink_port_register(adapter);
-+
+-	if (!adapter->netdev_registered)
++	if (!adapter->netdev_registered) {
+ 		iavf_devlink_port_register(adapter);
++		iavf_devlink_rate_init_rate_tree(adapter);
++	}
+ 
  	netif_carrier_off(netdev);
  	adapter->link_up = false;
- 	netif_tx_stop_all_queues(netdev);
-@@ -2748,6 +2752,7 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
+@@ -2752,6 +2755,7 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
  err_mem:
  	iavf_free_rss(adapter);
  	iavf_free_misc_irq(adapter);
-+	iavf_devlink_port_unregister(adapter);
++	iavf_devlink_rate_deinit_rate_tree(adapter);
+ 	iavf_devlink_port_unregister(adapter);
  err_sw_init:
  	iavf_reset_interrupt_capability(adapter);
- err:
-@@ -4994,6 +4999,12 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* Setup the wait queue for indicating virtchannel events */
- 	init_waitqueue_head(&adapter->vc_waitqueue);
- 
-+	/* Register iavf adapter with devlink */
-+	err = iavf_devlink_register(adapter);
-+	if (err)
-+		dev_err(&pdev->dev, "devlink registration failed: %d\n", err);
-+
-+	/* Keep driver interface even on devlink registration failure */
- 	return 0;
- 
- err_ioremap:
-@@ -5138,6 +5149,9 @@ static void iavf_remove(struct pci_dev *pdev)
+@@ -5149,6 +5153,7 @@ static void iavf_remove(struct pci_dev *pdev)
  				 err);
  	}
  
-+	iavf_devlink_port_unregister(adapter);
-+	iavf_devlink_unregister(adapter);
-+
- 	mutex_lock(&adapter->crit_lock);
- 	dev_info(&adapter->pdev->dev, "Removing device\n");
- 	iavf_change_state(adapter, __IAVF_REMOVE);
++	iavf_devlink_rate_deinit_rate_tree(adapter);
+ 	iavf_devlink_port_unregister(adapter);
+ 	iavf_devlink_unregister(adapter);
+ 
 -- 
 2.34.1
 
