@@ -2,98 +2,133 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE17576702C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jul 2023 17:09:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08CE2767032
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jul 2023 17:09:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E6C4A614BD;
-	Fri, 28 Jul 2023 15:09:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E6C4A614BD
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9EF64614B7;
+	Fri, 28 Jul 2023 15:09:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9EF64614B7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690556955;
-	bh=u09t3A7pYy/irs8CH4z2jQhQ7c4cLbJzOMrTcamYxqU=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1690556963;
+	bh=HLLn4g6qFNJsfwGaDDM1unjfRU9nxTuqV+7/zFHLe4Y=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jXeOHGRqjZoWCgeCy/tvZCSl2jkUGbyNS//92F/ldidE2Bm9cTBCtLVoTL7X/rLPF
-	 id7dPSNMuzDM7R7E1/A2/c+INg4Hh7n1EZIaPmW5ky4W+Fs65VOtRM37DN3EuB0dNm
-	 31TjjIxqfNzfH/+h0Q2WFX2Frvg/tsbdOor/qOMKYGgXw+4u0yeUPRcU6CseI4W+9z
-	 qgE+xvHRBGJo8TMjhmXHeCwcZI7QG6P7Gl4H7mgwW2o5fDMJ6PTznLEoKeWqGu2xS0
-	 eeYHryhG+ZV6SG857zUYl4XZ9vQtzu00plmTr85V6XqIpeUd+o+4GoFiz9XkmcHJFv
-	 aXnCIZEVDd8pg==
+	b=Wt3KRsfbltRFllBB9uQm/hIOrZKab36OmOI9PsJVwv9kHICKxqOmoyQFvtAY/y5v3
+	 6XzSx0NdU09lkDMbaLAlyazk3HPfrM3WwQhJQ/osku/pvRVVuxAan5Cz9wK++/wHvb
+	 dBxZl+j3iWfGcQ/exSVJ+C4kb5lldAYY7OJA1O6dwFIXogwXMRJ9vrWsMBTA6Ouc2F
+	 h7p2pYcBYqoAJ5YJX6MLx9DKKIA+Aj9IWlA9XTeIcngTxx2N0W5CQ2C+MO6R7PGnbs
+	 5DrkPJd8nL+00nBE6Po0GcLy0qPQcC0astKF3L4BWQRYWXp1Pmty/4OdnJxELvaWQQ
+	 1eNSaRth5U+mA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IBufxyz30UgK; Fri, 28 Jul 2023 15:09:15 +0000 (UTC)
+	with ESMTP id kJfWM6G6oMag; Fri, 28 Jul 2023 15:09:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D4DE8614AF;
-	Fri, 28 Jul 2023 15:09:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4DE8614AF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18E6E614AE;
+	Fri, 28 Jul 2023 15:09:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 18E6E614AE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 43BCB1BF414
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 21:16:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E0A741BF489
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jul 2023 07:56:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 28DF0613CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 21:16:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28DF0613CD
+ by smtp2.osuosl.org (Postfix) with ESMTP id C0A2A4044C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jul 2023 07:56:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0A2A4044C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 43v3dKOfnRDT for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Jul 2023 21:16:57 +0000 (UTC)
-Received: from mail-yw1-x112f.google.com (mail-yw1-x112f.google.com
- [IPv6:2607:f8b0:4864:20::112f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DA283613CB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 21:16:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DA283613CB
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-58451ecf223so14616827b3.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jul 2023 14:16:56 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eVeRGVONv2V2 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jul 2023 07:56:21 +0000 (UTC)
+Received: from mail-lf1-x130.google.com (mail-lf1-x130.google.com
+ [IPv6:2a00:1450:4864:20::130])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4784440166
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jul 2023 07:56:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4784440166
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-4fe10f0f4d1so3170909e87.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jul 2023 00:56:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690492616; x=1691097416;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/uGRhmfCXLxN6YU1cWESg55BRtPox1xD8u6NHDhwMzU=;
- b=MTCDCoLeNOEePuXMxUumUYY6gbcO5gqDoXfzFasCw64PQWkB7UWYgiWdhq9PMfvhjt
- cMf/MZCzh2tfyXY+FbYxPiyoO6OKsUREbzAszewoXMpdGxAypvcQpTGNz8S7WLVLDxZL
- 7JkyeSL/ZnVVPdVSM6ZKPb2hH1LsqRebMJqEiAl7PfOYhATrfyKnJK5JzJbcC1cSt4SN
- yqZ4xGQLa6zwILqEn3RsG1NpFMTyVR2CA4sZy6ChUo9H+F84TeVs+E8gPRM8tPV0KtI4
- YUZjb8aiaNMJD6IRcSghTmlYvGlnc20mpN4F/AfXweKBB9kgjjwGWZb1mdvsyNRNRNFk
- jRPw==
-X-Gm-Message-State: ABy/qLZfv5V1+lti+VK08SVnHOXiPiTb6e8FlD6NnxuIocrTc7Oh7Muw
- GEyxW7QYizmquz3oGVNgG/mQWs3Kv18sZ/ANmJe50Q==
-X-Google-Smtp-Source: APBJJlF/WP9UF5vhbN5Eh27rtP31+QJ0KngVSCOWM/D/823cWc4t3dHqdkGuZ+k5czJWqkSh0GU74FyljZsGrCSOQus=
-X-Received: by 2002:a25:fe0f:0:b0:cfa:f7cb:be16 with SMTP id
- k15-20020a25fe0f000000b00cfaf7cbbe16mr513279ybe.49.1690492615774; Thu, 27 Jul
- 2023 14:16:55 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690530978; x=1691135778;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=by6ZbWPoKfDspAgeBQTDTxywl7PwdXev5MUD4wNtq8Q=;
+ b=beW1pH6eB4/vWH8UbcuFwzl+Vlz9osKaMzce98y3f0+jNHDZ46rHgni1qiYxkiVWVN
+ LpCzbeKePZH2U8efTjGL1BfrDRuPJu/RV5qjATM4Kt1fEuvE9f4TfT/GssED0slTF2lW
+ vjFBBKQNoQp9r3HsYzP9Of1OM9DLsTlpwrFFPq8odKgJhbT6C7djWBR0BVoWZs/w3eNN
+ O5E1J+hft5v13Aylj3KF1h3uwC1sXniniP5NTSxJf+jxPmAIdEtkS7Mq76Bfvezlf3Cs
+ gmGWgjCYzk+OZEFgoPw9dw4RT4rja+SvHllSuqzeKVBrJLaUjJtTvUtqDnmqyePTkrn0
+ Z16w==
+X-Gm-Message-State: ABy/qLaV6wH2yTyMqoKIbICYS58NLN6/WIR5yobYqm+vdIGyWDe601JP
+ eqVNUNR7BfOv1l8SpnojnuI=
+X-Google-Smtp-Source: APBJJlE0taTCO4txpr+ENZVrA1wY3JfILlw9ZxDFUUFTO8zXLfpXT4zoLSstjFPt7QC4dTUHqomFxg==
+X-Received: by 2002:a05:6512:1106:b0:4f8:6e52:68ae with SMTP id
+ l6-20020a056512110600b004f86e5268aemr1247704lfg.31.1690530977311; 
+ Fri, 28 Jul 2023 00:56:17 -0700 (PDT)
+Received: from gmail.com ([81.168.73.77]) by smtp.gmail.com with ESMTPSA id
+ e40-20020a5d5968000000b0031431fb40fasm4081724wri.89.2023.07.28.00.56.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Jul 2023 00:56:16 -0700 (PDT)
+Date: Fri, 28 Jul 2023 08:56:12 +0100
+From: Martin Habets <habetsm.xilinx@gmail.com>
+To: Ratheesh Kannoth <rkannoth@marvell.com>
+Message-ID: <ZMN0nBQw091QgvHW@gmail.com>
+Mail-Followup-To: Ratheesh Kannoth <rkannoth@marvell.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ vladimir.oltean@nxp.com, claudiu.manoil@nxp.com,
+ alexandre.belloni@bootlin.com, andrew@lunn.ch, f.fainelli@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, olteanv@gmail.com, michael.chan@broadcom.com,
+ rajur@chelsio.com, yisen.zhuang@huawei.com, salil.mehta@huawei.com,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ sgoutham@marvell.com, gakula@marvell.com, sbhatta@marvell.com,
+ hkelam@marvell.com, taras.chornyi@plvision.eu, saeedm@nvidia.com,
+ leon@kernel.org, idosch@nvidia.com, petrm@nvidia.com,
+ horatiu.vultur@microchip.com, lars.povlsen@microchip.com,
+ Steen.Hegelund@microchip.com, daniel.machon@microchip.com,
+ simon.horman@corigine.com, aelior@marvell.com, manishc@marvell.com,
+ ecree.xilinx@gmail.com, peppe.cavallaro@st.com,
+ alexandre.torgue@foss.st.com, joabreu@synopsys.com,
+ mcoquelin.stm32@gmail.com, pablo@netfilter.org,
+ kadlec@netfilter.org, fw@strlen.de,
+ muhammad.husaini.zulkifli@intel.com, coreteam@netfilter.org,
+ ioana.ciornei@nxp.com, wojciech.drewek@intel.com,
+ gerhard@engleder-embedded.com, oss-drivers@corigine.com,
+ shenjian15@huawei.com, wentao.jia@corigine.com,
+ linux-net-drivers@amd.com, huangguangbin2@huawei.com,
+ hui.zhou@corigine.com, linux-rdma@vger.kernel.org,
+ louis.peens@corigine.com, zdoychev@maxlinear.com,
+ intel-wired-lan@lists.osuosl.org, wenjuan.geng@corigine.com,
+ grygorii.strashko@ti.com, kurt@linutronix.de,
+ UNGLinuxDriver@microchip.com, netfilter-devel@vger.kernel.org,
+ lanhao@huawei.com, linux-omap@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, shmulik.ladkani@gmail.com,
+ d-tatianin@yandex-team.ru, linux-stm32@st-md-mailman.stormreply.com
+References: <20230728022142.2066980-1-rkannoth@marvell.com>
 MIME-Version: 1.0
-References: <20230623123820.42850-1-arkadiusz.kubalewski@intel.com>
- <20230623123820.42850-8-arkadiusz.kubalewski@intel.com>
-In-Reply-To: <20230623123820.42850-8-arkadiusz.kubalewski@intel.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 27 Jul 2023 23:16:42 +0200
-Message-ID: <CACRpkdar39x8nd5cWEDiFDHwLqHghUQZqkR0rEcv2-sZOZZ0KQ@mail.gmail.com>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20230728022142.2066980-1-rkannoth@marvell.com>
 X-Mailman-Approved-At: Fri, 28 Jul 2023 15:09:04 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690492616; x=1691097416;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/uGRhmfCXLxN6YU1cWESg55BRtPox1xD8u6NHDhwMzU=;
- b=wswgZlkJ4NBe7/FtnWso7C3R/rqxZSJUmuWg9QHSi9JMGr8w9D2uQzTwgYsequJulq
- is/1hwyg+1vqmZ9shtq1fLohk50d+i8QBH94zB9Ej1yzYbUEOx8Q8l3bt0oVwirfr+xh
- AcGAad0J9UQ+W6bzboUyHjcJsZi+WSrDF+7OkvzGWimEu22FXf1MLJ5EWwQk8FgWWRli
- 5nuxAenh9aEGSFI3R+2Wy25KS6nV9YXFHtJMJgUjRnHRAdpCMvCEBYpGfAgwwEMdv3tk
- 6JayWaqklc5v3KEH7PSXfzGTJ/CMqnzNShHlNUjbz1y94StJOZzcLCOnavQ4iCJKf8+F
- iyZA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=wswgZlkJ
-Subject: Re: [Intel-wired-lan] [RFC PATCH v9 07/10] ice: add admin commands
- to access cgu configuration
+ d=gmail.com; s=20221208; t=1690530978; x=1691135778;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=by6ZbWPoKfDspAgeBQTDTxywl7PwdXev5MUD4wNtq8Q=;
+ b=C+q0ARSc1OwJ52g25VMN8I8N+3HO0BoiFOQMf3zArDAPvcUn+XTBad/KYOolstpasK
+ NpAGgS+0hkviSz94hz7KgHb4hILctNAOPV3JEoMPpB3qpvxG1qk7WtN9z7zD/0Wnkn5e
+ ayzDozqzIPfeNrdMQKmGzSVvCu4j3tPNWf2MvVk6jOBboVc54iiTxFDsOrst3k2IB7Ls
+ KCGu9evqQahfW3yWEKBHPIe1KZy1CDHxsBnnquUCVruKl3fBjNfnT9lm1MUF1HZfB1No
+ gQoXdj+87RItSAydPo4YOo0eA81ibdpXWq674CV2JlvY5Z/aHzEScaz0jc6fVfoue4Va
+ Wl3Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=C+q0ARSc
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next] dissector: Use 64bits for
+ used_keys
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,41 +141,1510 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: geert+renesas@glider.be, mst@redhat.com, razor@blackwall.org, phil@nwl.cc,
- javierm@redhat.com, edumazet@google.com, benjamin.tissoires@redhat.com,
- anthony.l.nguyen@intel.com, netdev@vger.kernel.org, linux-clk@vger.kernel.org,
- lucien.xin@gmail.com, leon@kernel.org, corbet@lwn.net,
- linux-rdma@vger.kernel.org, masahiroy@kernel.org, linux-doc@vger.kernel.org,
- jesse.brandeburg@intel.com, vadfed@meta.com, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, vadfed@fb.com, pabeni@redhat.com,
- ricardo.canuelo@collabora.com, jiri@resnulli.us, arnd@arndb.de,
- idosch@nvidia.com, richardcochran@gmail.com, claudiajkang@gmail.com,
- kuniyu@amazon.com, jacek.lawrynowicz@linux.intel.com, liuhangbin@gmail.com,
- airlied@redhat.com, nicolas.dichtel@6wind.com,
- linux-arm-kernel@lists.infradead.org, axboe@kernel.dk, sj@kernel.org,
- vadim.fedorenko@linux.dev, linux@zary.sk, gregkh@linuxfoundation.org,
- ogabbay@kernel.org, nipun.gupta@amd.com, linux-kernel@vger.kernel.org,
- andy.ren@getcruise.com, tzimmermann@suse.de, jonathan.lemon@gmail.com,
- saeedm@nvidia.com, davem@davemloft.net, milena.olech@intel.com,
- hkallweit1@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: taras.chornyi@plvision.eu, andrew@lunn.ch, alexandre.belloni@bootlin.com,
+ linux-stm32@st-md-mailman.stormreply.com, vladimir.oltean@nxp.com,
+ kurt@linutronix.de, alexandre.torgue@foss.st.com, UNGLinuxDriver@microchip.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, sbhatta@marvell.com,
+ ioana.ciornei@nxp.com, gerhard@engleder-embedded.com, shenjian15@huawei.com,
+ horatiu.vultur@microchip.com, lanhao@huawei.com, louis.peens@corigine.com,
+ f.fainelli@gmail.com, leon@kernel.org, linux-net-drivers@amd.com,
+ Steen.Hegelund@microchip.com, jesse.brandeburg@intel.com, kadlec@netfilter.org,
+ huangguangbin2@huawei.com, joabreu@synopsys.com,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
+ simon.horman@corigine.com, kuba@kernel.org, d-tatianin@yandex-team.ru,
+ pabeni@redhat.com, yisen.zhuang@huawei.com, sgoutham@marvell.com,
+ linux-rdma@vger.kernel.org, grygorii.strashko@ti.com, aelior@marvell.com,
+ daniel.machon@microchip.com, idosch@nvidia.com, wenjuan.geng@corigine.com,
+ claudiu.manoil@nxp.com, coreteam@netfilter.org, hui.zhou@corigine.com,
+ peppe.cavallaro@st.com, michael.chan@broadcom.com, linux-omap@vger.kernel.org,
+ lars.povlsen@microchip.com, petrm@nvidia.com, zdoychev@maxlinear.com,
+ salil.mehta@huawei.com, wentao.jia@corigine.com, manishc@marvell.com,
+ netdev@vger.kernel.org, oss-drivers@corigine.com, shmulik.ladkani@gmail.com,
+ fw@strlen.de, linux-kernel@vger.kernel.org, davem@davemloft.net,
+ ecree.xilinx@gmail.com, hkelam@marvell.com, netfilter-devel@vger.kernel.org,
+ pablo@netfilter.org, mcoquelin.stm32@gmail.com, rajur@chelsio.com,
+ olteanv@gmail.com, saeedm@nvidia.com, gakula@marvell.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGkgQXJrYWRpdXN6LAoKT24gRnJpLCBKdW4gMjMsIDIwMjMgYXQgMjo0NeKAr1BNIEFya2FkaXVz
-eiBLdWJhbGV3c2tpCjxhcmthZGl1c3oua3ViYWxld3NraUBpbnRlbC5jb20+IHdyb3RlOgoKPiAr
-LyoqCj4gKyAqIGNvbnZlcnRfczQ4X3RvX3M2NCAtIGNvbnZlcnQgNDggYml0IHZhbHVlIHRvIDY0
-IGJpdCB2YWx1ZQo+ICsgKiBAc2lnbmVkXzQ4OiBzaWduZWQgNjQgYml0IHZhcmlhYmxlIHN0b3Jp
-bmcgc2lnbmVkIDQ4IGJpdCB2YWx1ZQo+ICsgKgo+ICsgKiBDb252ZXJ0IHNpZ25lZCA0OCBiaXQg
-dmFsdWUgdG8gaXRzIDY0IGJpdCByZXByZXNlbnRhdGlvbi4KPiArICoKPiArICogUmV0dXJuOiBz
-aWduZWQgNjQgYml0IHJlcHJlc2VudGF0aW9uIG9mIHNpZ25lZCA0OCBiaXQgdmFsdWUuCj4gKyAq
-Lwo+ICtzdGF0aWMgczY0IGNvbnZlcnRfczQ4X3RvX3M2NChzNjQgc2lnbmVkXzQ4KQo+ICt7Cj4g
-KyAgICAgICByZXR1cm4gc2lnbmVkXzQ4ICYgQklUX1VMTCg0NykgPwo+ICsgICAgICAgICAgICAg
-ICBHRU5NQVNLX1VMTCg2MywgNDgpIHwgc2lnbmVkXzQ4IDogc2lnbmVkXzQ4Owo+ICt9CgpDYW4n
-dCB5b3UganVzdCB1c2Ugc2lnbl9leHRlbmQ2NCgpIGZyb20gPGxpbnV4L2JpdG9wcy5oPgpwYXNz
-aW5nIGJpdCA0OCBhcyBzaWduIGJpdCBpc3RlYWQgb2YgaW52ZW50aW5nIHRoaXM/CgpZb3VycywK
-TGludXMgV2FsbGVpagpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
-b3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVk
-LWxhbgo=
+On Fri, Jul 28, 2023 at 07:51:42AM +0530, Ratheesh Kannoth wrote:
+> As 32bit of dissector->used_keys are exhausted,
+> increase the size to 64bits.
+> 
+> This is base changes for ESP/AH flow dissector patch.
+> Please find patch and discussions at
+> https://lore.kernel.org/netdev/ZMDNjD46BvZ5zp5I@corigine.com/T/#t
+> 
+> Signed-off-by: Ratheesh Kannoth <rkannoth@marvell.com>
+> Reviewed-by: Petr Machata <petrm@nvidia.com>
+> Tested-by: Petr Machata <petrm@nvidia.com>
+
+sfc changes look good.
+
+Reviewed-by: Martin Habets <habetsm.xilinx@gmail.com>
+
+> 
+> ---
+> ChangeLog
+> 
+> v1 -> v2: Commit message typo fix.
+> v0 -> v1: Fix errors reported by kernel test robot
+> ---
+>  drivers/net/dsa/ocelot/felix_vsc9959.c        |  8 +--
+>  drivers/net/dsa/sja1105/sja1105_flower.c      |  8 +--
+>  drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c  |  6 +-
+>  .../ethernet/chelsio/cxgb4/cxgb4_tc_flower.c  | 18 ++---
+>  .../freescale/dpaa2/dpaa2-switch-flower.c     | 22 +++---
+>  .../net/ethernet/freescale/enetc/enetc_qos.c  |  8 +--
+>  .../hisilicon/hns3/hns3pf/hclge_main.c        | 16 ++---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 18 ++---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c   | 18 ++---
+>  drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 44 ++++++------
+>  drivers/net/ethernet/intel/igb/igb_main.c     |  8 +--
+>  .../ethernet/marvell/octeontx2/nic/otx2_tc.c  | 18 ++---
+>  .../marvell/prestera/prestera_flower.c        | 20 +++---
+>  .../mellanox/mlx5/core/en/tc/ct_fs_smfs.c     | 25 ++++---
+>  .../net/ethernet/mellanox/mlx5/core/en_tc.c   | 44 ++++++------
+>  .../ethernet/mellanox/mlxsw/spectrum_flower.c | 22 +++---
+>  .../microchip/lan966x/lan966x_tc_flower.c     |  4 +-
+>  .../microchip/sparx5/sparx5_tc_flower.c       |  4 +-
+>  drivers/net/ethernet/microchip/vcap/vcap_tc.c | 18 ++---
+>  drivers/net/ethernet/microchip/vcap/vcap_tc.h |  2 +-
+>  drivers/net/ethernet/mscc/ocelot_flower.c     | 28 ++++----
+>  .../ethernet/netronome/nfp/flower/conntrack.c | 43 ++++++------
+>  .../ethernet/netronome/nfp/flower/offload.c   | 64 +++++++++---------
+>  .../net/ethernet/qlogic/qede/qede_filter.c    | 12 ++--
+>  drivers/net/ethernet/sfc/tc.c                 | 67 ++++++++++---------
+>  .../stmicro/stmmac/stmmac_selftests.c         |  6 +-
+>  drivers/net/ethernet/ti/am65-cpsw-qos.c       |  6 +-
+>  drivers/net/ethernet/ti/cpsw_priv.c           |  6 +-
+>  include/net/flow_dissector.h                  |  5 +-
+>  net/core/flow_dissector.c                     |  2 +-
+>  net/ethtool/ioctl.c                           | 16 ++---
+>  net/netfilter/nf_flow_table_offload.c         | 22 +++---
+>  net/netfilter/nf_tables_offload.c             | 13 ++--
+>  net/netfilter/nft_cmp.c                       |  2 +-
+>  34 files changed, 317 insertions(+), 306 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/ocelot/felix_vsc9959.c b/drivers/net/dsa/ocelot/felix_vsc9959.c
+> index 1c113957fcf4..7e7489321170 100644
+> --- a/drivers/net/dsa/ocelot/felix_vsc9959.c
+> +++ b/drivers/net/dsa/ocelot/felix_vsc9959.c
+> @@ -1745,10 +1745,10 @@ static int vsc9959_stream_identify(struct flow_cls_offload *f,
+>  	struct flow_dissector *dissector = rule->match.dissector;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS)))
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS)))
+>  		return -EOPNOTSUPP;
+>  
+>  	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
+> diff --git a/drivers/net/dsa/sja1105/sja1105_flower.c b/drivers/net/dsa/sja1105/sja1105_flower.c
+> index fad5afe3819c..9e8ca182c722 100644
+> --- a/drivers/net/dsa/sja1105/sja1105_flower.c
+> +++ b/drivers/net/dsa/sja1105/sja1105_flower.c
+> @@ -205,10 +205,10 @@ static int sja1105_flower_parse_key(struct sja1105_private *priv,
+>  	u16 pcp = U16_MAX;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Unsupported keys used");
+>  		return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c b/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
+> index d8afcf8d6b30..38d89d80b4a9 100644
+> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
+> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt_tc.c
+> @@ -373,9 +373,9 @@ static int bnxt_tc_parse_flow(struct bnxt *bp,
+>  	struct flow_dissector *dissector = rule->match.dissector;
+>  
+>  	/* KEY_CONTROL and KEY_BASIC are needed for forming a meaningful key */
+> -	if ((dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_CONTROL)) == 0 ||
+> -	    (dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_BASIC)) == 0) {
+> -		netdev_info(bp->dev, "cannot form TC key: used_keys = 0x%x\n",
+> +	if ((dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL)) == 0 ||
+> +	    (dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_BASIC)) == 0) {
+> +		netdev_info(bp->dev, "cannot form TC key: used_keys = 0x%llx\n",
+>  			    dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_tc_flower.c b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_tc_flower.c
+> index d3541159487d..72ac4a34424b 100644
+> --- a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_tc_flower.c
+> +++ b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_tc_flower.c
+> @@ -313,15 +313,15 @@ static int cxgb4_validate_flow_match(struct net_device *dev,
+>  	u16 ethtype_key = 0;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP))) {
+> -		netdev_warn(dev, "Unsupported key used: 0x%x\n",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP))) {
+> +		netdev_warn(dev, "Unsupported key used: 0x%llx\n",
+>  			    dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-flower.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-flower.c
+> index c39b866e2582..4798fb7fe35d 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-flower.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-flower.c
+> @@ -17,14 +17,14 @@ static int dpaa2_switch_flower_parse_key(struct flow_cls_offload *cls,
+>  	struct dpsw_acl_fields *acl_h, *acl_m;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Unsupported keys used");
+>  		return -EOPNOTSUPP;
+> @@ -539,9 +539,9 @@ static int dpaa2_switch_flower_parse_mirror_key(struct flow_cls_offload *cls,
+>  	int ret = -EOPNOTSUPP;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Mirroring is supported only per VLAN");
+>  		return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/freescale/enetc/enetc_qos.c b/drivers/net/ethernet/freescale/enetc/enetc_qos.c
+> index 270cbd5e8684..2513b44056c1 100644
+> --- a/drivers/net/ethernet/freescale/enetc/enetc_qos.c
+> +++ b/drivers/net/ethernet/freescale/enetc/enetc_qos.c
+> @@ -483,13 +483,13 @@ struct enetc_psfp {
+>  static struct actions_fwd enetc_act_fwd[] = {
+>  	{
+>  		BIT(FLOW_ACTION_GATE),
+> -		BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS),
+> +		BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS),
+>  		FILTER_ACTION_TYPE_PSFP
+>  	},
+>  	{
+>  		BIT(FLOW_ACTION_POLICE) |
+>  		BIT(FLOW_ACTION_GATE),
+> -		BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS),
+> +		BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS),
+>  		FILTER_ACTION_TYPE_PSFP
+>  	},
+>  	/* example for ACL actions */
+> @@ -1069,8 +1069,8 @@ static int enetc_psfp_hw_set(struct enetc_ndev_priv *priv,
+>  	return err;
+>  }
+>  
+> -static struct actions_fwd *enetc_check_flow_actions(u64 acts,
+> -						    unsigned int inputkeys)
+> +static struct actions_fwd *
+> +enetc_check_flow_actions(u64 acts, unsigned long long inputkeys)
+>  {
+>  	int i;
+>  
+> diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+> index bf675c15fbb9..83ab89f44250 100644
+> --- a/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+> +++ b/drivers/net/ethernet/hisilicon/hns3/hns3pf/hclge_main.c
+> @@ -7315,14 +7315,14 @@ static int hclge_parse_cls_flower(struct hclge_dev *hdev,
+>  	struct flow_dissector *dissector = flow->match.dissector;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS))) {
+> -		dev_err(&hdev->pdev->dev, "unsupported key set: %#x\n",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS))) {
+> +		dev_err(&hdev->pdev->dev, "unsupported key set: %#llx\n",
+>  			dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 982ae70c51e8..3d0d6974c2a7 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -8525,15 +8525,15 @@ static int i40e_parse_cls_flower(struct i40e_vsi *vsi,
+>  	u8 field_flags = 0;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID))) {
+> -		dev_err(&pf->pdev->dev, "Unsupported key used: 0x%x\n",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID))) {
+> +		dev_err(&pf->pdev->dev, "Unsupported key used: 0x%llx\n",
+>  			dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 3a88d413ddee..09b492472408 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -3743,15 +3743,15 @@ static int iavf_parse_cls_flower(struct iavf_adapter *adapter,
+>  	struct virtchnl_filter *vf = &filter->f;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID))) {
+> -		dev_err(&adapter->pdev->dev, "Unsupported key used: 0x%x\n",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID))) {
+> +		dev_err(&adapter->pdev->dev, "Unsupported key used: 0x%llx\n",
+>  			dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> index 4a34ef5f58d3..38547db1ec4e 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> @@ -1343,24 +1343,24 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+>  	dissector = rule->match.dissector;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CVLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_OPTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PPPOE) |
+> -	      BIT(FLOW_DISSECTOR_KEY_L2TPV3))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_OPTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PPPOE) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_L2TPV3))) {
+>  		NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported key used");
+>  		return -EOPNOTSUPP;
+>  	}
+> @@ -1382,10 +1382,10 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
+>  		 */
+>  		headers = &fltr->inner_headers;
+>  	} else if (dissector->used_keys &
+> -		  (BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> -		   BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> -		   BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -		   BIT(FLOW_DISSECTOR_KEY_ENC_PORTS))) {
+> +		  (BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> +		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> +		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS))) {
+>  		NL_SET_ERR_MSG_MOD(fltr->extack, "Tunnel key used, but device isn't a tunnel");
+>  		return -EOPNOTSUPP;
+>  	} else {
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 9a2561409b06..9f63a10c6f80 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -2615,10 +2615,10 @@ static int igb_parse_cls_flower(struct igb_adapter *adapter,
+>  	struct netlink_ext_ack *extack = f->common.extack;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Unsupported key used, only BASIC, CONTROL, ETH_ADDRS and VLAN are supported");
+>  		return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_tc.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_tc.c
+> index 1e6fc23eca4f..71daff86f775 100644
+> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_tc.c
+> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_tc.c
+> @@ -454,15 +454,15 @@ static int otx2_tc_prepare_flow(struct otx2_nic *nic, struct otx2_tc_flow *node,
+>  	dissector = rule->match.dissector;
+>  
+>  	if ((dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP))))  {
+> -		netdev_info(nic->netdev, "unsupported flow used key 0x%x",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP))))  {
+> +		netdev_info(nic->netdev, "unsupported flow used key 0x%llx",
+>  			    dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/marvell/prestera/prestera_flower.c b/drivers/net/ethernet/marvell/prestera/prestera_flower.c
+> index 3e20e71b0f81..8b9455d8a4f7 100644
+> --- a/drivers/net/ethernet/marvell/prestera/prestera_flower.c
+> +++ b/drivers/net/ethernet/marvell/prestera/prestera_flower.c
+> @@ -202,16 +202,16 @@ static int prestera_flower_parse(struct prestera_flow_block *block,
+>  	int err;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_META) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ICMP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS_RANGE) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_META) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ICMP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS_RANGE) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN))) {
+>  		NL_SET_ERR_MSG_MOD(f->common.extack, "Unsupported key");
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/ct_fs_smfs.c b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/ct_fs_smfs.c
+> index 2b80fe73549d..8c531f4ec912 100644
+> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/ct_fs_smfs.c
+> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/ct_fs_smfs.c
+> @@ -221,16 +221,21 @@ mlx5_ct_fs_smfs_destroy(struct mlx5_ct_fs *fs)
+>  }
+>  
+>  static inline bool
+> -mlx5_tc_ct_valid_used_dissector_keys(const u32 used_keys)
+> +mlx5_tc_ct_valid_used_dissector_keys(const u64 used_keys)
+>  {
+> -#define DISS_BIT(name) BIT(FLOW_DISSECTOR_KEY_ ## name)
+> -	const u32 basic_keys = DISS_BIT(BASIC) | DISS_BIT(CONTROL) | DISS_BIT(META);
+> -	const u32 ipv4_tcp = basic_keys | DISS_BIT(IPV4_ADDRS) | DISS_BIT(PORTS) | DISS_BIT(TCP);
+> -	const u32 ipv6_tcp = basic_keys | DISS_BIT(IPV6_ADDRS) | DISS_BIT(PORTS) | DISS_BIT(TCP);
+> -	const u32 ipv4_udp = basic_keys | DISS_BIT(IPV4_ADDRS) | DISS_BIT(PORTS);
+> -	const u32 ipv6_udp = basic_keys | DISS_BIT(IPV6_ADDRS) | DISS_BIT(PORTS);
+> -	const u32 ipv4_gre = basic_keys | DISS_BIT(IPV4_ADDRS);
+> -	const u32 ipv6_gre = basic_keys | DISS_BIT(IPV6_ADDRS);
+> +#define DISS_BIT(name) BIT_ULL(FLOW_DISSECTOR_KEY_ ## name)
+> +	const u64 basic_keys = DISS_BIT(BASIC) | DISS_BIT(CONTROL) |
+> +				DISS_BIT(META);
+> +	const u64 ipv4_tcp = basic_keys | DISS_BIT(IPV4_ADDRS) |
+> +				DISS_BIT(PORTS) | DISS_BIT(TCP);
+> +	const u64 ipv6_tcp = basic_keys | DISS_BIT(IPV6_ADDRS) |
+> +				DISS_BIT(PORTS) | DISS_BIT(TCP);
+> +	const u64 ipv4_udp = basic_keys | DISS_BIT(IPV4_ADDRS) |
+> +				DISS_BIT(PORTS);
+> +	const u64 ipv6_udp = basic_keys | DISS_BIT(IPV6_ADDRS) |
+> +				 DISS_BIT(PORTS);
+> +	const u64 ipv4_gre = basic_keys | DISS_BIT(IPV4_ADDRS);
+> +	const u64 ipv6_gre = basic_keys | DISS_BIT(IPV6_ADDRS);
+>  
+>  	return (used_keys == ipv4_tcp || used_keys == ipv4_udp || used_keys == ipv6_tcp ||
+>  		used_keys == ipv6_udp || used_keys == ipv4_gre || used_keys == ipv6_gre);
+> @@ -247,7 +252,7 @@ mlx5_ct_fs_smfs_ct_validate_flow_rule(struct mlx5_ct_fs *fs, struct flow_rule *f
+>  	struct flow_match_tcp tcp;
+>  
+>  	if (!mlx5_tc_ct_valid_used_dissector_keys(flow_rule->match.dissector->used_keys)) {
+> -		ct_dbg("rule uses unexpected dissectors (0x%08x)",
+> +		ct_dbg("rule uses unexpected dissectors (0x%016llx)",
+>  		       flow_rule->match.dissector->used_keys);
+>  		return false;
+>  	}
+> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_tc.c b/drivers/net/ethernet/mellanox/mlx5/core/en_tc.c
+> index 8d0a3f69693e..842952e7b540 100644
+> --- a/drivers/net/ethernet/mellanox/mlx5/core/en_tc.c
+> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en_tc.c
+> @@ -2593,29 +2593,29 @@ static int __parse_cls_flower(struct mlx5e_priv *priv,
+>  	match_level = outer_match_level;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_META) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CVLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_PORTS)	|
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_TCP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP)  |
+> -	      BIT(FLOW_DISSECTOR_KEY_CT) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_OPTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ICMP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_MPLS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_META) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS)	|
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_TCP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP)  |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CT) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_OPTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ICMP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_MPLS))) {
+>  		NL_SET_ERR_MSG_MOD(extack, "Unsupported key");
+> -		netdev_dbg(priv->netdev, "Unsupported key used: 0x%x\n",
+> +		netdev_dbg(priv->netdev, "Unsupported key used: 0x%llx\n",
+>  			   dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/mellanox/mlxsw/spectrum_flower.c b/drivers/net/ethernet/mellanox/mlxsw/spectrum_flower.c
+> index 8329100479b3..af3f57d017ec 100644
+> --- a/drivers/net/ethernet/mellanox/mlxsw/spectrum_flower.c
+> +++ b/drivers/net/ethernet/mellanox/mlxsw/spectrum_flower.c
+> @@ -558,17 +558,17 @@ static int mlxsw_sp_flower_parse(struct mlxsw_sp *mlxsw_sp,
+>  	int err;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_META) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS_RANGE) |
+> -	      BIT(FLOW_DISSECTOR_KEY_TCP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_META) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS_RANGE) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_TCP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN))) {
+>  		dev_err(mlxsw_sp->bus_info->dev, "Unsupported key\n");
+>  		NL_SET_ERR_MSG_MOD(f->common.extack, "Unsupported key");
+>  		return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_tc_flower.c b/drivers/net/ethernet/microchip/lan966x/lan966x_tc_flower.c
+> index 96b3def6c474..d696cf9dbd19 100644
+> --- a/drivers/net/ethernet/microchip/lan966x/lan966x_tc_flower.c
+> +++ b/drivers/net/ethernet/microchip/lan966x/lan966x_tc_flower.c
+> @@ -75,7 +75,7 @@ lan966x_tc_flower_handler_control_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_CONTROL);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL);
+>  
+>  	return err;
+>  
+> @@ -172,7 +172,7 @@ lan966x_tc_flower_handler_basic_usage(struct vcap_tc_flower_parse_usage *st)
+>  		}
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_BASIC);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_BASIC);
+>  	return err;
+>  out:
+>  	NL_SET_ERR_MSG_MOD(st->fco->common.extack, "ip_proto parse error");
+> diff --git a/drivers/net/ethernet/microchip/sparx5/sparx5_tc_flower.c b/drivers/net/ethernet/microchip/sparx5/sparx5_tc_flower.c
+> index 3f87a5285a6d..906299ad8425 100644
+> --- a/drivers/net/ethernet/microchip/sparx5/sparx5_tc_flower.c
+> +++ b/drivers/net/ethernet/microchip/sparx5/sparx5_tc_flower.c
+> @@ -126,7 +126,7 @@ sparx5_tc_flower_handler_basic_usage(struct vcap_tc_flower_parse_usage *st)
+>  		}
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_BASIC);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_BASIC);
+>  
+>  	return err;
+>  
+> @@ -175,7 +175,7 @@ sparx5_tc_flower_handler_control_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_CONTROL);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL);
+>  
+>  	return err;
+>  
+> diff --git a/drivers/net/ethernet/microchip/vcap/vcap_tc.c b/drivers/net/ethernet/microchip/vcap/vcap_tc.c
+> index 09abe7944af6..27e2dffb65e6 100644
+> --- a/drivers/net/ethernet/microchip/vcap/vcap_tc.c
+> +++ b/drivers/net/ethernet/microchip/vcap/vcap_tc.c
+> @@ -50,7 +50,7 @@ int vcap_tc_flower_handler_ethaddr_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS);
+>  
+>  	return err;
+>  
+> @@ -86,7 +86,7 @@ int vcap_tc_flower_handler_ipv4_usage(struct vcap_tc_flower_parse_usage *st)
+>  		}
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+>  
+>  	return err;
+>  
+> @@ -124,7 +124,7 @@ int vcap_tc_flower_handler_ipv6_usage(struct vcap_tc_flower_parse_usage *st)
+>  				goto out;
+>  		}
+>  	}
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS);
+>  	return err;
+>  out:
+>  	NL_SET_ERR_MSG_MOD(st->fco->common.extack, "ipv6_addr parse error");
+> @@ -158,7 +158,7 @@ int vcap_tc_flower_handler_portnum_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_PORTS);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_PORTS);
+>  
+>  	return err;
+>  
+> @@ -201,7 +201,7 @@ int vcap_tc_flower_handler_cvlan_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_CVLAN);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN);
+>  
+>  	return 0;
+>  out:
+> @@ -238,7 +238,7 @@ int vcap_tc_flower_handler_vlan_usage(struct vcap_tc_flower_parse_usage *st,
+>  	if (mt.mask->vlan_tpid)
+>  		st->tpid = be16_to_cpu(mt.key->vlan_tpid);
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_VLAN);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_VLAN);
+>  
+>  	return 0;
+>  out:
+> @@ -313,7 +313,7 @@ int vcap_tc_flower_handler_tcp_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_TCP);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_TCP);
+>  
+>  	return err;
+>  
+> @@ -376,7 +376,7 @@ int vcap_tc_flower_handler_arp_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_ARP);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_ARP);
+>  
+>  	return 0;
+>  
+> @@ -401,7 +401,7 @@ int vcap_tc_flower_handler_ip_usage(struct vcap_tc_flower_parse_usage *st)
+>  			goto out;
+>  	}
+>  
+> -	st->used_keys |= BIT(FLOW_DISSECTOR_KEY_IP);
+> +	st->used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_IP);
+>  
+>  	return err;
+>  
+> diff --git a/drivers/net/ethernet/microchip/vcap/vcap_tc.h b/drivers/net/ethernet/microchip/vcap/vcap_tc.h
+> index 071f892f9aa4..49b02d032906 100644
+> --- a/drivers/net/ethernet/microchip/vcap/vcap_tc.h
+> +++ b/drivers/net/ethernet/microchip/vcap/vcap_tc.h
+> @@ -14,7 +14,7 @@ struct vcap_tc_flower_parse_usage {
+>  	u16 l3_proto;
+>  	u8 l4_proto;
+>  	u16 tpid;
+> -	unsigned int used_keys;
+> +	unsigned long long used_keys;
+>  };
+>  
+>  int vcap_tc_flower_handler_ethaddr_usage(struct vcap_tc_flower_parse_usage *st);
+> diff --git a/drivers/net/ethernet/mscc/ocelot_flower.c b/drivers/net/ethernet/mscc/ocelot_flower.c
+> index e0916afcddfb..33b438c6aec5 100644
+> --- a/drivers/net/ethernet/mscc/ocelot_flower.c
+> +++ b/drivers/net/ethernet/mscc/ocelot_flower.c
+> @@ -581,14 +581,14 @@ ocelot_flower_parse_key(struct ocelot *ocelot, int port, bool ingress,
+>  	int ret;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_META) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_META) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+>  		return -EOPNOTSUPP;
+>  	}
+>  
+> @@ -641,12 +641,12 @@ ocelot_flower_parse_key(struct ocelot *ocelot, int port, bool ingress,
+>  		 * then just bail out
+>  		 */
+>  		if ((dissector->used_keys &
+> -		    (BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -		     BIT(FLOW_DISSECTOR_KEY_CONTROL))) !=
+> -		    (BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -		     BIT(FLOW_DISSECTOR_KEY_CONTROL)))
+> +		    (BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL))) !=
+> +		    (BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL)))
+>  			return -EOPNOTSUPP;
+>  
+>  		flow_rule_match_eth_addrs(rule, &match);
+> diff --git a/drivers/net/ethernet/netronome/nfp/flower/conntrack.c b/drivers/net/ethernet/netronome/nfp/flower/conntrack.c
+> index 73032173ac4e..2643c4b3ff1f 100644
+> --- a/drivers/net/ethernet/netronome/nfp/flower/conntrack.c
+> +++ b/drivers/net/ethernet/netronome/nfp/flower/conntrack.c
+> @@ -61,7 +61,7 @@ bool is_pre_ct_flow(struct flow_cls_offload *flow)
+>  	struct flow_match_ct ct;
+>  	int i;
+>  
+> -	if (dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_CT)) {
+> +	if (dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CT)) {
+>  		flow_rule_match_ct(rule, &ct);
+>  		if (ct.key->ct_state)
+>  			return false;
+> @@ -94,7 +94,7 @@ bool is_post_ct_flow(struct flow_cls_offload *flow)
+>  	struct flow_match_ct ct;
+>  	int i;
+>  
+> -	if (dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_CT)) {
+> +	if (dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CT)) {
+>  		flow_rule_match_ct(rule, &ct);
+>  		if (ct.key->ct_state & TCA_FLOWER_KEY_CT_FLAGS_ESTABLISHED)
+>  			return true;
+> @@ -236,10 +236,11 @@ static bool nfp_ct_merge_check_cannot_skip(struct nfp_fl_ct_flow_entry *entry1,
+>  static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			      struct nfp_fl_ct_flow_entry *entry2)
+>  {
+> -	unsigned int ovlp_keys = entry1->rule->match.dissector->used_keys &
+> -				 entry2->rule->match.dissector->used_keys;
+> +	unsigned long long ovlp_keys;
+>  	bool out, is_v6 = false;
+>  	u8 ip_proto = 0;
+> +	ovlp_keys = entry1->rule->match.dissector->used_keys &
+> +			entry2->rule->match.dissector->used_keys;
+>  	/* Temporary buffer for mangling keys, 64 is enough to cover max
+>  	 * struct size of key in various fields that may be mangled.
+>  	 * Supported fields to mangle:
+> @@ -257,7 +258,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  	/* Check the overlapped fields one by one, the unmasked part
+>  	 * should not conflict with each other.
+>  	 */
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_CONTROL)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL)) {
+>  		struct flow_match_control match1, match2;
+>  
+>  		flow_rule_match_control(entry1->rule, &match1);
+> @@ -267,7 +268,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_BASIC)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_BASIC)) {
+>  		struct flow_match_basic match1, match2;
+>  
+>  		flow_rule_match_basic(entry1->rule, &match1);
+> @@ -289,7 +290,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  	 * will be do merge check when do nft and post ct merge,
+>  	 * so skip this ip merge check here.
+>  	 */
+> -	if ((ovlp_keys & BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS)) &&
+> +	if ((ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS)) &&
+>  	    nfp_ct_merge_check_cannot_skip(entry1, entry2)) {
+>  		struct flow_match_ipv4_addrs match1, match2;
+>  
+> @@ -311,7 +312,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  	 * will be do merge check when do nft and post ct merge,
+>  	 * so skip this ip merge check here.
+>  	 */
+> -	if ((ovlp_keys & BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS)) &&
+> +	if ((ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS)) &&
+>  	    nfp_ct_merge_check_cannot_skip(entry1, entry2)) {
+>  		struct flow_match_ipv6_addrs match1, match2;
+>  
+> @@ -333,7 +334,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  	 * will be do merge check when do nft and post ct merge,
+>  	 * so skip this tport merge check here.
+>  	 */
+> -	if ((ovlp_keys & BIT(FLOW_DISSECTOR_KEY_PORTS)) &&
+> +	if ((ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_PORTS)) &&
+>  	    nfp_ct_merge_check_cannot_skip(entry1, entry2)) {
+>  		enum flow_action_mangle_base htype = FLOW_ACT_MANGLE_UNSPEC;
+>  		struct flow_match_ports match1, match2;
+> @@ -355,7 +356,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
+>  		struct flow_match_eth_addrs match1, match2;
+>  
+>  		flow_rule_match_eth_addrs(entry1->rule, &match1);
+> @@ -371,7 +372,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_VLAN)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_VLAN)) {
+>  		struct flow_match_vlan match1, match2;
+>  
+>  		flow_rule_match_vlan(entry1->rule, &match1);
+> @@ -381,7 +382,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_MPLS)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_MPLS)) {
+>  		struct flow_match_mpls match1, match2;
+>  
+>  		flow_rule_match_mpls(entry1->rule, &match1);
+> @@ -391,7 +392,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_TCP)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_TCP)) {
+>  		struct flow_match_tcp match1, match2;
+>  
+>  		flow_rule_match_tcp(entry1->rule, &match1);
+> @@ -401,7 +402,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_IP)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_IP)) {
+>  		struct flow_match_ip match1, match2;
+>  
+>  		flow_rule_match_ip(entry1->rule, &match1);
+> @@ -413,7 +414,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_KEYID)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID)) {
+>  		struct flow_match_enc_keyid match1, match2;
+>  
+>  		flow_rule_match_enc_keyid(entry1->rule, &match1);
+> @@ -423,7 +424,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS)) {
+>  		struct flow_match_ipv4_addrs match1, match2;
+>  
+>  		flow_rule_match_enc_ipv4_addrs(entry1->rule, &match1);
+> @@ -433,7 +434,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS)) {
+>  		struct flow_match_ipv6_addrs match1, match2;
+>  
+>  		flow_rule_match_enc_ipv6_addrs(entry1->rule, &match1);
+> @@ -443,7 +444,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL)) {
+>  		struct flow_match_control match1, match2;
+>  
+>  		flow_rule_match_enc_control(entry1->rule, &match1);
+> @@ -453,7 +454,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_IP)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP)) {
+>  		struct flow_match_ip match1, match2;
+>  
+>  		flow_rule_match_enc_ip(entry1->rule, &match1);
+> @@ -463,7 +464,7 @@ static int nfp_ct_merge_check(struct nfp_fl_ct_flow_entry *entry1,
+>  			goto check_failed;
+>  	}
+>  
+> -	if (ovlp_keys & BIT(FLOW_DISSECTOR_KEY_ENC_OPTS)) {
+> +	if (ovlp_keys & BIT_ULL(FLOW_DISSECTOR_KEY_ENC_OPTS)) {
+>  		struct flow_match_enc_opts match1, match2;
+>  
+>  		flow_rule_match_enc_opts(entry1->rule, &match1);
+> @@ -589,7 +590,7 @@ static int nfp_ct_check_meta(struct nfp_fl_ct_flow_entry *post_ct_entry,
+>  	int i;
+>  
+>  	ct_met = get_flow_act(nft_entry->rule, FLOW_ACTION_CT_METADATA);
+> -	if (ct_met && (dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_CT))) {
+> +	if (ct_met && (dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CT))) {
+>  		u32 *act_lbl;
+>  
+>  		act_lbl = ct_met->ct_metadata.labels;
+> diff --git a/drivers/net/ethernet/netronome/nfp/flower/offload.c b/drivers/net/ethernet/netronome/nfp/flower/offload.c
+> index 18328eb7f5c3..c153f0575b92 100644
+> --- a/drivers/net/ethernet/netronome/nfp/flower/offload.c
+> +++ b/drivers/net/ethernet/netronome/nfp/flower/offload.c
+> @@ -24,43 +24,43 @@
+>  	 FLOW_DIS_FIRST_FRAG)
+>  
+>  #define NFP_FLOWER_WHITELIST_DISSECTOR \
+> -	(BIT(FLOW_DISSECTOR_KEY_CONTROL) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_BASIC) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_TCP) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_PORTS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_VLAN) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_CVLAN) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_OPTS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IP) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_MPLS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_CT) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_META) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_IP))
+> +	(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_TCP) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_OPTS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_MPLS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_CT) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_META) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_IP))
+>  
+>  #define NFP_FLOWER_WHITELIST_TUN_DISSECTOR \
+> -	(BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_OPTS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IP))
+> +	(BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_OPTS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP))
+>  
+>  #define NFP_FLOWER_WHITELIST_TUN_DISSECTOR_R \
+> -	(BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS))
+> +	(BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS))
+>  
+>  #define NFP_FLOWER_WHITELIST_TUN_DISSECTOR_V6_R \
+> -	(BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> -	 BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS))
+> +	(BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) | \
+> +	 BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS))
+>  
+>  #define NFP_FLOWER_MERGE_FIELDS \
+>  	(NFP_FLOWER_LAYER_PORT | \
+> @@ -1303,7 +1303,7 @@ static bool offload_pre_check(struct flow_cls_offload *flow)
+>  	struct flow_dissector *dissector = rule->match.dissector;
+>  	struct flow_match_ct ct;
+>  
+> -	if (dissector->used_keys & BIT(FLOW_DISSECTOR_KEY_CT)) {
+> +	if (dissector->used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CT)) {
+>  		flow_rule_match_ct(rule, &ct);
+>  		/* Allow special case where CT match is all 0 */
+>  		if (memchr_inv(ct.key, 0, sizeof(*ct.key)))
+> diff --git a/drivers/net/ethernet/qlogic/qede/qede_filter.c b/drivers/net/ethernet/qlogic/qede/qede_filter.c
+> index 3010833ddde3..a5ac21a0ee33 100644
+> --- a/drivers/net/ethernet/qlogic/qede/qede_filter.c
+> +++ b/drivers/net/ethernet/qlogic/qede/qede_filter.c
+> @@ -1827,12 +1827,12 @@ qede_parse_flow_attr(struct qede_dev *edev, __be16 proto,
+>  	memset(tuple, 0, sizeof(*tuple));
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS))) {
+> -		DP_NOTICE(edev, "Unsupported key set:0x%x\n",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS))) {
+> +		DP_NOTICE(edev, "Unsupported key set:0x%llx\n",
+>  			  dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/sfc/tc.c b/drivers/net/ethernet/sfc/tc.c
+> index 15ebd3973922..4dc881159246 100644
+> --- a/drivers/net/ethernet/sfc/tc.c
+> +++ b/drivers/net/ethernet/sfc/tc.c
+> @@ -201,23 +201,23 @@ static int efx_tc_flower_parse_match(struct efx_nic *efx,
+>  		}
+>  	}
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_VLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CVLAN) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_PORTS) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_TCP) |
+> -	      BIT(FLOW_DISSECTOR_KEY_IP))) {
+> -		NL_SET_ERR_MSG_FMT_MOD(extack, "Unsupported flower keys %#x",
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_TCP) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_IP))) {
+> +		NL_SET_ERR_MSG_FMT_MOD(extack, "Unsupported flower keys %#llx",
+>  				       dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> @@ -228,12 +228,13 @@ static int efx_tc_flower_parse_match(struct efx_nic *efx,
+>  	    !(match->value.eth_proto == htons(ETH_P_IP) ||
+>  	      match->value.eth_proto == htons(ETH_P_IPV6)))
+>  		if (dissector->used_keys &
+> -		    (BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_IP) |
+> -		     BIT(FLOW_DISSECTOR_KEY_TCP))) {
+> -			NL_SET_ERR_MSG_FMT_MOD(extack, "L3/L4 flower keys %#x require protocol ipv[46]",
+> +		    (BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_IP) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_TCP))) {
+> +			NL_SET_ERR_MSG_FMT_MOD(extack,
+> +					       "L3/L4 flower keys %#llx require protocol ipv[46]",
+>  					       dissector->used_keys);
+>  			return -EINVAL;
+>  		}
+> @@ -281,9 +282,10 @@ static int efx_tc_flower_parse_match(struct efx_nic *efx,
+>  	if ((match->value.ip_proto != IPPROTO_UDP &&
+>  	     match->value.ip_proto != IPPROTO_TCP) || !IS_ALL_ONES(match->mask.ip_proto))
+>  		if (dissector->used_keys &
+> -		    (BIT(FLOW_DISSECTOR_KEY_PORTS) |
+> -		     BIT(FLOW_DISSECTOR_KEY_TCP))) {
+> -			NL_SET_ERR_MSG_FMT_MOD(extack, "L4 flower keys %#x require ipproto udp or tcp",
+> +		    (BIT_ULL(FLOW_DISSECTOR_KEY_PORTS) |
+> +		     BIT_ULL(FLOW_DISSECTOR_KEY_TCP))) {
+> +			NL_SET_ERR_MSG_FMT_MOD(extack,
+> +					       "L4 flower keys %#llx require ipproto udp or tcp",
+>  					       dissector->used_keys);
+>  			return -EINVAL;
+>  		}
+> @@ -344,12 +346,13 @@ static int efx_tc_flower_parse_match(struct efx_nic *efx,
+>  		MAP_ENC_KEY_AND_MASK(PORTS, ports, enc_ports, dst, enc_dport);
+>  		MAP_ENC_KEY_AND_MASK(KEYID, enc_keyid, enc_keyid, keyid, enc_keyid);
+>  	} else if (dissector->used_keys &
+> -		   (BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -		    BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> -		    BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> -		    BIT(FLOW_DISSECTOR_KEY_ENC_IP) |
+> -		    BIT(FLOW_DISSECTOR_KEY_ENC_PORTS))) {
+> -		NL_SET_ERR_MSG_FMT_MOD(extack, "Flower enc keys require enc_control (keys: %#x)",
+> +		   (BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +		    BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
+> +		    BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
+> +		    BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IP) |
+> +		    BIT_ULL(FLOW_DISSECTOR_KEY_ENC_PORTS))) {
+> +		NL_SET_ERR_MSG_FMT_MOD(extack,
+> +				       "Flower enc keys require enc_control (keys: %#llx)",
+>  				       dissector->used_keys);
+>  		return -EOPNOTSUPP;
+>  	}
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_selftests.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_selftests.c
+> index 687f43cd466c..f9e43fc32ee8 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_selftests.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_selftests.c
+> @@ -1355,7 +1355,7 @@ static int __stmmac_test_l3filt(struct stmmac_priv *priv, u32 dst, u32 src,
+>  		goto cleanup_rss;
+>  	}
+>  
+> -	dissector->used_keys |= (1 << FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+> +	dissector->used_keys |= (1ULL << FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+>  	dissector->offset[FLOW_DISSECTOR_KEY_IPV4_ADDRS] = 0;
+>  
+>  	cls = kzalloc(sizeof(*cls), GFP_KERNEL);
+> @@ -1481,8 +1481,8 @@ static int __stmmac_test_l4filt(struct stmmac_priv *priv, u32 dst, u32 src,
+>  		goto cleanup_rss;
+>  	}
+>  
+> -	dissector->used_keys |= (1 << FLOW_DISSECTOR_KEY_BASIC);
+> -	dissector->used_keys |= (1 << FLOW_DISSECTOR_KEY_PORTS);
+> +	dissector->used_keys |= (1ULL << FLOW_DISSECTOR_KEY_BASIC);
+> +	dissector->used_keys |= (1ULL << FLOW_DISSECTOR_KEY_PORTS);
+>  	dissector->offset[FLOW_DISSECTOR_KEY_BASIC] = 0;
+>  	dissector->offset[FLOW_DISSECTOR_KEY_PORTS] = offsetof(typeof(keys), key);
+>  
+> diff --git a/drivers/net/ethernet/ti/am65-cpsw-qos.c b/drivers/net/ethernet/ti/am65-cpsw-qos.c
+> index eced87fa261c..9ac2ff05d501 100644
+> --- a/drivers/net/ethernet/ti/am65-cpsw-qos.c
+> +++ b/drivers/net/ethernet/ti/am65-cpsw-qos.c
+> @@ -624,9 +624,9 @@ static int am65_cpsw_qos_clsflower_add_policer(struct am65_cpsw_port *port,
+>  	int ret;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Unsupported keys used");
+>  		return -EOPNOTSUPP;
+> diff --git a/drivers/net/ethernet/ti/cpsw_priv.c b/drivers/net/ethernet/ti/cpsw_priv.c
+> index e966dd47e2db..ae52cdbcf8cc 100644
+> --- a/drivers/net/ethernet/ti/cpsw_priv.c
+> +++ b/drivers/net/ethernet/ti/cpsw_priv.c
+> @@ -1396,9 +1396,9 @@ static int cpsw_qos_clsflower_add_policer(struct cpsw_priv *priv,
+>  	int ret;
+>  
+>  	if (dissector->used_keys &
+> -	    ~(BIT(FLOW_DISSECTOR_KEY_BASIC) |
+> -	      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -	      BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+> +	    ~(BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +	      BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS))) {
+>  		NL_SET_ERR_MSG_MOD(extack,
+>  				   "Unsupported keys used");
+>  		return -EOPNOTSUPP;
+> diff --git a/include/net/flow_dissector.h b/include/net/flow_dissector.h
+> index 8664ed4fbbdf..830f06b2f36d 100644
+> --- a/include/net/flow_dissector.h
+> +++ b/include/net/flow_dissector.h
+> @@ -370,7 +370,8 @@ struct flow_dissector_key {
+>  };
+>  
+>  struct flow_dissector {
+> -	unsigned int used_keys; /* each bit repesents presence of one key id */
+> +	unsigned long long  used_keys;
+> +		/* each bit represents presence of one key id */
+>  	unsigned short int offset[FLOW_DISSECTOR_KEY_MAX];
+>  };
+>  
+> @@ -430,7 +431,7 @@ void skb_flow_get_icmp_tci(const struct sk_buff *skb,
+>  static inline bool dissector_uses_key(const struct flow_dissector *flow_dissector,
+>  				      enum flow_dissector_key_id key_id)
+>  {
+> -	return flow_dissector->used_keys & (1 << key_id);
+> +	return flow_dissector->used_keys & (1ULL << key_id);
+>  }
+>  
+>  static inline void *skb_flow_dissector_target(struct flow_dissector *flow_dissector,
+> diff --git a/net/core/flow_dissector.c b/net/core/flow_dissector.c
+> index 85a2d0d9bd39..ed5dfa376024 100644
+> --- a/net/core/flow_dissector.c
+> +++ b/net/core/flow_dissector.c
+> @@ -40,7 +40,7 @@
+>  static void dissector_set_key(struct flow_dissector *flow_dissector,
+>  			      enum flow_dissector_key_id key_id)
+>  {
+> -	flow_dissector->used_keys |= (1 << key_id);
+> +	flow_dissector->used_keys |= (1ULL << key_id);
+>  }
+>  
+>  void skb_flow_dissector_init(struct flow_dissector *flow_dissector,
+> diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
+> index 4a51e0ec295c..10fa880047ac 100644
+> --- a/net/ethtool/ioctl.c
+> +++ b/net/ethtool/ioctl.c
+> @@ -3207,7 +3207,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		if (v4_m_spec->ip4src ||
+>  		    v4_m_spec->ip4dst) {
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_IPV4_ADDRS);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_IPV4_ADDRS] =
+>  				offsetof(struct ethtool_rx_flow_key, ipv4);
+>  		}
+> @@ -3222,7 +3222,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		if (v4_m_spec->psrc ||
+>  		    v4_m_spec->pdst) {
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_PORTS);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_PORTS);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_PORTS] =
+>  				offsetof(struct ethtool_rx_flow_key, tp);
+>  		}
+> @@ -3259,7 +3259,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		if (!ipv6_addr_any((struct in6_addr *)v6_m_spec->ip6src) ||
+>  		    !ipv6_addr_any((struct in6_addr *)v6_m_spec->ip6dst)) {
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_IPV6_ADDRS);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_IPV6_ADDRS);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_IPV6_ADDRS] =
+>  				offsetof(struct ethtool_rx_flow_key, ipv6);
+>  		}
+> @@ -3274,7 +3274,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		if (v6_m_spec->psrc ||
+>  		    v6_m_spec->pdst) {
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_PORTS);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_PORTS);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_PORTS] =
+>  				offsetof(struct ethtool_rx_flow_key, tp);
+>  		}
+> @@ -3282,7 +3282,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  			match->key.ip.tos = v6_spec->tclass;
+>  			match->mask.ip.tos = v6_m_spec->tclass;
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_IP);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_IP);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_IP] =
+>  				offsetof(struct ethtool_rx_flow_key, ip);
+>  		}
+> @@ -3306,7 +3306,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		break;
+>  	}
+>  
+> -	match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_BASIC);
+> +	match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_BASIC);
+>  	match->dissector.offset[FLOW_DISSECTOR_KEY_BASIC] =
+>  		offsetof(struct ethtool_rx_flow_key, basic);
+>  
+> @@ -3339,7 +3339,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		if (ext_m_spec->vlan_etype ||
+>  		    ext_m_spec->vlan_tci) {
+>  			match->dissector.used_keys |=
+> -				BIT(FLOW_DISSECTOR_KEY_VLAN);
+> +				BIT_ULL(FLOW_DISSECTOR_KEY_VLAN);
+>  			match->dissector.offset[FLOW_DISSECTOR_KEY_VLAN] =
+>  				offsetof(struct ethtool_rx_flow_key, vlan);
+>  		}
+> @@ -3354,7 +3354,7 @@ ethtool_rx_flow_rule_create(const struct ethtool_rx_flow_spec_input *input)
+>  		       ETH_ALEN);
+>  
+>  		match->dissector.used_keys |=
+> -			BIT(FLOW_DISSECTOR_KEY_ETH_ADDRS);
+> +			BIT_ULL(FLOW_DISSECTOR_KEY_ETH_ADDRS);
+>  		match->dissector.offset[FLOW_DISSECTOR_KEY_ETH_ADDRS] =
+>  			offsetof(struct ethtool_rx_flow_key, eth_addrs);
+>  	}
+> diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flow_table_offload.c
+> index 1c26f03fc661..a010b25076ca 100644
+> --- a/net/netfilter/nf_flow_table_offload.c
+> +++ b/net/netfilter/nf_flow_table_offload.c
+> @@ -34,7 +34,7 @@ static void nf_flow_rule_lwt_match(struct nf_flow_match *match,
+>  {
+>  	struct nf_flow_key *mask = &match->mask;
+>  	struct nf_flow_key *key = &match->key;
+> -	unsigned int enc_keys;
+> +	unsigned long long enc_keys;
+>  
+>  	if (!tun_info || !(tun_info->mode & IP_TUNNEL_INFO_TX))
+>  		return;
+> @@ -43,8 +43,8 @@ static void nf_flow_rule_lwt_match(struct nf_flow_match *match,
+>  	NF_FLOW_DISSECTOR(match, FLOW_DISSECTOR_KEY_ENC_KEYID, enc_key_id);
+>  	key->enc_key_id.keyid = tunnel_id_to_key32(tun_info->key.tun_id);
+>  	mask->enc_key_id.keyid = 0xffffffff;
+> -	enc_keys = BIT(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> -		   BIT(FLOW_DISSECTOR_KEY_ENC_CONTROL);
+> +	enc_keys = BIT_ULL(FLOW_DISSECTOR_KEY_ENC_KEYID) |
+> +		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_CONTROL);
+>  
+>  	if (ip_tunnel_info_af(tun_info) == AF_INET) {
+>  		NF_FLOW_DISSECTOR(match, FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS,
+> @@ -55,7 +55,7 @@ static void nf_flow_rule_lwt_match(struct nf_flow_match *match,
+>  			mask->enc_ipv4.src = 0xffffffff;
+>  		if (key->enc_ipv4.dst)
+>  			mask->enc_ipv4.dst = 0xffffffff;
+> -		enc_keys |= BIT(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS);
+> +		enc_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS);
+>  		key->enc_control.addr_type = FLOW_DISSECTOR_KEY_IPV4_ADDRS;
+>  	} else {
+>  		memcpy(&key->enc_ipv6.src, &tun_info->key.u.ipv6.dst,
+> @@ -70,7 +70,7 @@ static void nf_flow_rule_lwt_match(struct nf_flow_match *match,
+>  			   sizeof(struct in6_addr)))
+>  			memset(&mask->enc_ipv6.dst, 0xff,
+>  			       sizeof(struct in6_addr));
+> -		enc_keys |= BIT(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS);
+> +		enc_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS);
+>  		key->enc_control.addr_type = FLOW_DISSECTOR_KEY_IPV6_ADDRS;
+>  	}
+>  
+> @@ -163,14 +163,14 @@ static int nf_flow_rule_match(struct nf_flow_match *match,
+>  		return -EOPNOTSUPP;
+>  	}
+>  	mask->control.addr_type = 0xffff;
+> -	match->dissector.used_keys |= BIT(key->control.addr_type);
+> +	match->dissector.used_keys |= BIT_ULL(key->control.addr_type);
+>  	mask->basic.n_proto = 0xffff;
+>  
+>  	switch (tuple->l4proto) {
+>  	case IPPROTO_TCP:
+>  		key->tcp.flags = 0;
+>  		mask->tcp.flags = cpu_to_be16(be32_to_cpu(TCP_FLAG_RST | TCP_FLAG_FIN) >> 16);
+> -		match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_TCP);
+> +		match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_TCP);
+>  		break;
+>  	case IPPROTO_UDP:
+>  	case IPPROTO_GRE:
+> @@ -182,9 +182,9 @@ static int nf_flow_rule_match(struct nf_flow_match *match,
+>  	key->basic.ip_proto = tuple->l4proto;
+>  	mask->basic.ip_proto = 0xff;
+>  
+> -	match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_META) |
+> -				      BIT(FLOW_DISSECTOR_KEY_CONTROL) |
+> -				      BIT(FLOW_DISSECTOR_KEY_BASIC);
+> +	match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_META) |
+> +				      BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL) |
+> +				      BIT_ULL(FLOW_DISSECTOR_KEY_BASIC);
+>  
+>  	switch (tuple->l4proto) {
+>  	case IPPROTO_TCP:
+> @@ -194,7 +194,7 @@ static int nf_flow_rule_match(struct nf_flow_match *match,
+>  		key->tp.dst = tuple->dst_port;
+>  		mask->tp.dst = 0xffff;
+>  
+> -		match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_PORTS);
+> +		match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_PORTS);
+>  		break;
+>  	}
+>  
+> diff --git a/net/netfilter/nf_tables_offload.c b/net/netfilter/nf_tables_offload.c
+> index 910ef881c3b8..12ab78fa5d84 100644
+> --- a/net/netfilter/nf_tables_offload.c
+> +++ b/net/netfilter/nf_tables_offload.c
+> @@ -35,12 +35,12 @@ void nft_flow_rule_set_addr_type(struct nft_flow_rule *flow,
+>  	struct nft_flow_key *mask = &match->mask;
+>  	struct nft_flow_key *key = &match->key;
+>  
+> -	if (match->dissector.used_keys & BIT(FLOW_DISSECTOR_KEY_CONTROL))
+> +	if (match->dissector.used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL))
+>  		return;
+>  
+>  	key->control.addr_type = addr_type;
+>  	mask->control.addr_type = 0xffff;
+> -	match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_CONTROL);
+> +	match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_CONTROL);
+>  	match->dissector.offset[FLOW_DISSECTOR_KEY_CONTROL] =
+>  		offsetof(struct nft_flow_key, control);
+>  }
+> @@ -59,7 +59,7 @@ static void nft_flow_rule_transfer_vlan(struct nft_offload_ctx *ctx,
+>  		.mask	= match->mask.basic.n_proto,
+>  	};
+>  
+> -	if (match->dissector.used_keys & BIT(FLOW_DISSECTOR_KEY_VLAN) &&
+> +	if (match->dissector.used_keys & BIT_ULL(FLOW_DISSECTOR_KEY_VLAN) &&
+>  	    (match->key.vlan.vlan_tpid == htons(ETH_P_8021Q) ||
+>  	     match->key.vlan.vlan_tpid == htons(ETH_P_8021AD))) {
+>  		match->key.basic.n_proto = match->key.cvlan.vlan_tpid;
+> @@ -70,8 +70,9 @@ static void nft_flow_rule_transfer_vlan(struct nft_offload_ctx *ctx,
+>  		match->mask.vlan.vlan_tpid = ethertype.mask;
+>  		match->dissector.offset[FLOW_DISSECTOR_KEY_CVLAN] =
+>  			offsetof(struct nft_flow_key, cvlan);
+> -		match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_CVLAN);
+> -	} else if (match->dissector.used_keys & BIT(FLOW_DISSECTOR_KEY_BASIC) &&
+> +		match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_CVLAN);
+> +	} else if (match->dissector.used_keys &
+> +		   BIT_ULL(FLOW_DISSECTOR_KEY_BASIC) &&
+>  		   (match->key.basic.n_proto == htons(ETH_P_8021Q) ||
+>  		    match->key.basic.n_proto == htons(ETH_P_8021AD))) {
+>  		match->key.basic.n_proto = match->key.vlan.vlan_tpid;
+> @@ -80,7 +81,7 @@ static void nft_flow_rule_transfer_vlan(struct nft_offload_ctx *ctx,
+>  		match->mask.vlan.vlan_tpid = ethertype.mask;
+>  		match->dissector.offset[FLOW_DISSECTOR_KEY_VLAN] =
+>  			offsetof(struct nft_flow_key, vlan);
+> -		match->dissector.used_keys |= BIT(FLOW_DISSECTOR_KEY_VLAN);
+> +		match->dissector.used_keys |= BIT_ULL(FLOW_DISSECTOR_KEY_VLAN);
+>  	}
+>  }
+>  
+> diff --git a/net/netfilter/nft_cmp.c b/net/netfilter/nft_cmp.c
+> index 6eb21a4f5698..cd4652259095 100644
+> --- a/net/netfilter/nft_cmp.c
+> +++ b/net/netfilter/nft_cmp.c
+> @@ -162,7 +162,7 @@ static int __nft_cmp_offload(struct nft_offload_ctx *ctx,
+>  	memcpy(key + reg->offset, data, reg->len);
+>  	memcpy(mask + reg->offset, datamask, reg->len);
+>  
+> -	flow->match.dissector.used_keys |= BIT(reg->key);
+> +	flow->match.dissector.used_keys |= BIT_ULL(reg->key);
+>  	flow->match.dissector.offset[reg->key] = reg->base_offset;
+>  
+>  	if (reg->key == FLOW_DISSECTOR_KEY_META &&
+> -- 
+> 2.25.1
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
