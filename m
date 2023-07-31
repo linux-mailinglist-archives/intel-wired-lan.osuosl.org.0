@@ -1,86 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F87C768FED
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jul 2023 10:20:34 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F2F07698CF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 31 Jul 2023 15:59:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3AB1961045;
-	Mon, 31 Jul 2023 08:20:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AB1961045
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1A7C6409B4;
+	Mon, 31 Jul 2023 13:59:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A7C6409B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690791633;
-	bh=XmRgx6u2dL+OovhSyaXnXEi4cvRr0PXhoE4Gx18FPtU=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=EI82OgZr837pho22Z36aqEYYEf5kpLaZiXdbniOCtkBXkYiNocZ647oGpLzbfQuCP
-	 C8TcmRh4g48Isz2XlRwcDjussMzs0d8MAc6w+xteTEyeR4cXtUqxef1+VToUMRPcaZ
-	 BOUNr4QqSEjIuTt71GxdKYrYuqafjBzG+Ph43bcMA+Ta1SeROwR/2f1nflX6l6kdZ1
-	 1lAFvnhZoUEdnLt27PRJbgY8thgZ7IziRxlKVdelakBTGW1GyZh2vV4WcO8pdLL4hc
-	 I1RURmWp7JHyE9OyFnaxMnXRij3fDvpjQVE86TTxM4agg8S1IL9aYgzJI5trWxbIMW
-	 4WBYXMDlBLeEg==
+	s=default; t=1690811976;
+	bh=C0tbZAr0pJFiGmn48gzzX7LQtXHlY6NT8X7Iz/8Bvo4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=ohhAP++t8JBa1j/k6gsM+S/S/HsuZaLfnxtn6Lg7DlVKVFRtJKp7hFtwNe5PMr4YE
+	 yFfyRXK8DeS4Ma5NhFsHNoLwswHyEea5P7vAVF4kUykcp9hlOIz/PYdzJz2yIr5HHM
+	 YmHPyeqDZW01kynopEnJ6gO8X/eQ3xCBFBPEsHhs9xxmOZKepc0xsurVrakMV5H30d
+	 WZv+wTABHFYtuw5NC0ZbIwrK6x+m236u7s+5Q5CG6vG2snvwJyHs4/Zad1QTR+VkgR
+	 w7Yo/baF74zi4sMbHWeCjAzm+uZhU6zu03o9hcbDH/446MiY2FvnZG42wztZKkBK7b
+	 lNptmZDOUvH1A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 80vsWBsWuE0a; Mon, 31 Jul 2023 08:20:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id J8sQGLGS6StQ; Mon, 31 Jul 2023 13:59:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1FE786104B;
-	Mon, 31 Jul 2023 08:20:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FE786104B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9541A40998;
+	Mon, 31 Jul 2023 13:59:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9541A40998
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 94F411BF3A6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 08:20:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3237D1BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 13:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6CB7E400A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 08:20:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6CB7E400A4
+ by smtp2.osuosl.org (Postfix) with ESMTP id 07622403C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 13:59:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 07622403C4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NTCEh1aAstra for <intel-wired-lan@lists.osuosl.org>;
- Mon, 31 Jul 2023 08:20:25 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3A84A40017
- for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 08:20:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A84A40017
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 9D75160F89;
- Mon, 31 Jul 2023 08:20:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3C561C433A9;
- Mon, 31 Jul 2023 08:20:23 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 1B4A1E96AC0; Mon, 31 Jul 2023 08:20:23 +0000 (UTC)
+ with ESMTP id I5srx3EPzFHh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 31 Jul 2023 13:59:27 +0000 (UTC)
+Received: from mgamail.intel.com (unknown [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DCA7E401B7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 31 Jul 2023 13:59:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DCA7E401B7
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="348621035"
+X-IronPort-AV: E=Sophos;i="6.01,244,1684825200"; d="scan'208";a="348621035"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2023 06:59:26 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="757951536"
+X-IronPort-AV: E=Sophos;i="6.01,244,1684825200"; d="scan'208";a="757951536"
+Received: from os-delivery.igk.intel.com ([10.102.18.218])
+ by orsmga008.jf.intel.com with ESMTP; 31 Jul 2023 06:59:23 -0700
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 31 Jul 2023 15:52:18 +0200
+Message-Id: <20230731135218.10051-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169079162310.10005.11385616493848955483.git-patchwork-notify@kernel.org>
-Date: Mon, 31 Jul 2023 08:20:23 +0000
-References: <20230728232215.2071351-1-rkannoth@marvell.com>
-In-Reply-To: <20230728232215.2071351-1-rkannoth@marvell.com>
-To: Ratheesh Kannoth <rkannoth@marvell.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1690791623;
- bh=iFw1eTT0uqbhzj8JDGSr0fgbWXoLNoGg8HGa6Krj/BE=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=pdzuiheNxcAIUt7dl4VvftR6KVgfb4WfHYzXw7S4BW3HMeL0KMuaUJegDV4ye1i2q
- xt+IXuw4p4K/OydDVMCVezK9Voc5opQc2n1uQHW+pCcF2S8wyiKFcuPa64UxEPUtvQ
- G1Iwdhc79AaODYjflPpqOtbjQJnp2U4Fo+ECkhcQA/WYz7nibFltasYOX6TfOGyiQm
- DkftOEw0qo8qS7YQ1KRXR6FKZrHxTFzDS6vQd6ySIF1lkhclBxDg0VactJ9YcERA3Q
- lruw6F4hQjhGdeD4QZ4puijNgB6y1lT949oNG2pypUD5bnAAqPINZFgkA0SmN19lHN
- qOipMmAtNgTCQ==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1690811966; x=1722347966;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=FLzU3pA/+0H8iLwjfinK0J+eRdmmpjynTV8LPGQR8c0=;
+ b=N0T/QfJDYSK2JN5t1JGBM3znZZbv51WlNI4jRgZ9hIonqoC7ZV1y/pAo
+ PNiLVLwkc17g3X+HEJ5XuvKCQXfHS6ums9I2dEZMZSdSEdX7fPCFrFoBa
+ hE+N0m+u6UyOrmvB7QUgkVxFEHPl+nD0Z+FsFBsVLCS8h3UicqH1VyqUJ
+ /Ln5Vuqg7ELzjcGyd0kvVHiSxQIj5k2S9Ue27+VrvSKiM4nniXCNpdiPC
+ rptAVpIyoa4HIEpUN6qAiou7hVBaTxFQYzxxj0VNE33OFxc85DuIzxr08
+ JbeJk4uwm40fGG8Xvhr1l+SH8KnzZcCxjEjKwW3siO/4J4IZGNjac5NmQ
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=pdzuiheN
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next] net: flow_dissector: Use
- 64bits for used_keys
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=N0T/QfJD
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] i40e: Clear stats after
+ deleting tc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,58 +91,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: taras.chornyi@plvision.eu, andrew@lunn.ch, alexandre.belloni@bootlin.com,
- linux-stm32@st-md-mailman.stormreply.com, vladimir.oltean@nxp.com,
- jdamato@fastly.com, kurt@linutronix.de, alexandre.torgue@foss.st.com,
- edumazet@google.com, anthony.l.nguyen@intel.com, ioana.ciornei@nxp.com,
- gerhard@engleder-embedded.com, UNGLinuxDriver@microchip.com,
- horatiu.vultur@microchip.com, lanhao@huawei.com, louis.peens@corigine.com,
- f.fainelli@gmail.com, leon@kernel.org, linux-net-drivers@amd.com,
- Steen.Hegelund@microchip.com, jesse.brandeburg@intel.com, kadlec@netfilter.org,
- huangguangbin2@huawei.com, joabreu@synopsys.com,
- intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
- simon.horman@corigine.com, kuba@kernel.org, d-tatianin@yandex-team.ru,
- pabeni@redhat.com, yisen.zhuang@huawei.com, pablo@netfilter.org,
- linux-rdma@vger.kernel.org, grygorii.strashko@ti.com, aelior@marvell.com,
- daniel.machon@microchip.com, idosch@nvidia.com, wenjuan.geng@corigine.com,
- claudiu.manoil@nxp.com, coreteam@netfilter.org, habetsm.xilinx@gmail.com,
- hui.zhou@corigine.com, peppe.cavallaro@st.com, michael.chan@broadcom.com,
- linux-omap@vger.kernel.org, lars.povlsen@microchip.com, petrm@nvidia.com,
- zdoychev@maxlinear.com, salil.mehta@huawei.com, wentao.jia@corigine.com,
- manishc@marvell.com, netdev@vger.kernel.org, oss-drivers@corigine.com,
- fw@strlen.de, linux-kernel@vger.kernel.org, shenjian15@huawei.com,
- ecree.xilinx@gmail.com, netfilter-devel@vger.kernel.org,
- shmulik.ladkani@gmail.com, mcoquelin.stm32@gmail.com, rajur@chelsio.com,
- olteanv@gmail.com, saeedm@nvidia.com, davem@davemloft.net
+Cc: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+From: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
 
-This patch was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
+There was an issue with ethtool stats that have not been cleared after tc
+had been deleted. Stats printed by ethtool -S remained the same despite
+qdisc had been removed, what is an unexpected behavior.
+Stats should be reset once the qdisc is removed.
 
-On Sat, 29 Jul 2023 04:52:15 +0530 you wrote:
-> As 32bits of dissector->used_keys are exhausted,
-> increase the size to 64bits.
-> 
-> This is base change for ESP/AH flow dissector patch.
-> Please find patch and discussions at
-> https://lore.kernel.org/netdev/ZMDNjD46BvZ5zp5I@corigine.com/T/#t
-> 
-> [...]
+Fix this by resetting stats after deleting tc by calling
+i40e_vsi_reset_stats() function after destroying qdisc.
 
-Here is the summary with links:
-  - [v3,net-next] net: flow_dissector: Use 64bits for used_keys
-    https://git.kernel.org/netdev/net-next/c/2b3082c6ef3b
+Steps to reproduce:
 
-You are awesome, thank you!
+1) Add ingress rule
+tc qdisc add dev <ethX> ingress
+
+2) Create qdisc and filter
+tc qdisc add dev <ethX> root mqprio num_tc 4 map 0 0 0 0 1 2 2 3 queues 2@0 2@2 1@4 1@5 hw 1 mode channel
+tc filter add dev <ethX> protocol ip parent ffff: prio 3 flower dst_ip <ip> ip_proto tcp dst_port 8300 skip_sw hw_tc 2
+
+3) Run iperf between client and SUT
+iperf3 -s -p 8300
+iperf3 -c <ip> -p 8300
+
+4) Check the ethtool stats
+ethtool -S <ethX> | grep packets | column
+
+5) Delete filter and qdisc
+tc filter del dev <ethX> parent ffff:
+tc qdisc del dev <ethX> root
+
+6) Check the ethtool stats and see that they didn't change
+ethtool -S <ethX> | grep packets | column
+
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+---
+v2: Make the commit msg more detailed
+v3: Correct the commit msg
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 29ad1797adce..e8e03ede1672 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -5885,6 +5885,11 @@ static int i40e_vsi_config_tc(struct i40e_vsi *vsi, u8 enabled_tc)
+ 
+ 	/* Update the netdev TC setup */
+ 	i40e_vsi_config_netdev_tc(vsi, enabled_tc);
++
++	/* After destroying qdisc reset all stats of the vsi */
++	if (!vsi->mqprio_qopt.qopt.hw)
++		i40e_vsi_reset_stats(vsi);
++
+ out:
+ 	return ret;
+ }
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.31.1
 
 _______________________________________________
 Intel-wired-lan mailing list
