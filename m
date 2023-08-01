@@ -2,85 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E2AA76B2F7
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 13:20:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DB4976B2F8
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 13:20:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BE66C4025D;
-	Tue,  1 Aug 2023 11:20:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE66C4025D
+	by smtp2.osuosl.org (Postfix) with ESMTP id 20FF5405DD;
+	Tue,  1 Aug 2023 11:20:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20FF5405DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690888819;
-	bh=McJzuQrIhnHzpd1fCmw13wZ5ZNg2c2hjS7fyT2rufdg=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=OIexAaF4B5buM7tmapVYtTkID7k91/R8nitY0i5xfyDxtN+war2Byy+LHRhlFDW+a
-	 AnHQyXJcm5rhcmjN/uUrjwWaoUJQMuwdXU/t+BVOXC3MJvj9sZRJx3MVy3Xh98S93O
-	 M9y/n9ofT8YOSfuG9i1yuePBOrvnkMilEzl167wKzggNkdsZcQgCpxylg40RGogu12
-	 x6lLCLXA+w4Z4QnVTWhZ8+1SlbtDpZy55H3kxmgL4eKuNdJHVw0H8yKr6McexoB2yv
-	 VmfjUgQtV5VNhHQHDFI79yr6UnAnBmXsIuy2vrVjlbbMYBSRZfsNOnPNCP6Xr32Op6
-	 kpuv6KjFYzp2Q==
+	s=default; t=1690888824;
+	bh=hxPf9u5ahIr2aojHHjp0ZaqDt7AXoLPLNBkHFGt/r64=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=CzjQ/g6BfgKchUfHMyIPAtUNlCcdgpgrK+NL3LMOi9JasUMPUnQFzn1gWWky1FN0s
+	 MTF7KRUDXdJRwnxHSatsn4Jg4mlrG4omA+Ag2gUzFRl2zwGdZ+W3fznZvT1GF4yM26
+	 k7ilBLR05AO5c9PffOsK1a0cqh7AAQFubBwCnUv9w0itZK2eJjRZ4k+JQFZyRMntK8
+	 oUtKVmNAu7D9SmrPwtUe8wUSyLWBZijy12X2byNe6wmb/VBrkeEOVondrPuv69EL1r
+	 x+CvvaGjHbaIHddcbhHOXULcPdFvhYKAfdltwtRaR1m4rpKu/KRMI1ingcU+0PhCrU
+	 CWQjwEIhlMSQw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ecIdhT1gkSWQ; Tue,  1 Aug 2023 11:20:19 +0000 (UTC)
+	with ESMTP id xorB9BVhDCRk; Tue,  1 Aug 2023 11:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3D3E0402B1;
-	Tue,  1 Aug 2023 11:20:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D3E0402B1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 90EA24011A;
+	Tue,  1 Aug 2023 11:20:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 90EA24011A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 180C31BF290
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:20:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1470E1BF98D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:20:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A9E6F402F7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:19:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A9E6F402F7
+ by smtp2.osuosl.org (Postfix) with ESMTP id 60BAC402B1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:19:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 60BAC402B1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JOaLMFk34iIr for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 2-rOB3l1ecY2 for <intel-wired-lan@lists.osuosl.org>;
  Tue,  1 Aug 2023 11:19:52 +0000 (UTC)
 Received: from mgamail.intel.com (unknown [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A0E814011A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:19:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A0E814011A
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="455644608"
-X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="455644608"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CBC674011A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:19:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CBC674011A
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="455644612"
+X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="455644612"
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2023 04:19:50 -0700
+ 01 Aug 2023 04:19:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="852415984"
-X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="852415984"
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="852415995"
+X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="852415995"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orsmga004.jf.intel.com with ESMTP; 01 Aug 2023 04:19:48 -0700
+ by orsmga004.jf.intel.com with ESMTP; 01 Aug 2023 04:19:50 -0700
 Received: from pkitszel-desk.tendawifi.com (unknown [10.255.193.236])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id AA00033BFB;
- Tue,  1 Aug 2023 12:19:46 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 813B233BFE;
+ Tue,  1 Aug 2023 12:19:48 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 To: Kees Cook <keescook@chromium.org>
-Date: Tue,  1 Aug 2023 13:19:21 +0200
-Message-Id: <20230801111923.118268-1-przemyslaw.kitszel@intel.com>
+Date: Tue,  1 Aug 2023 13:19:22 +0200
+Message-Id: <20230801111923.118268-2-przemyslaw.kitszel@intel.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230801111923.118268-1-przemyslaw.kitszel@intel.com>
+References: <20230801111923.118268-1-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1690888792; x=1722424792;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=p38RNBiodPsGTUvHHthqRsdKcc6ICIQY2cU2NRQTHwM=;
- b=MhR6d+aUNM5xkWldxTVnS6Pbq3EwqBY2h9lRbITZhChTOVgQoKjk1jgL
- gPleu8GhJ8M0TuWlRutJy5PYKBF8Iw5ZwwwAkdQdV6gHv9gGb5OVk79m0
- SB/MdtTiEs1xt8cH7vkoFYY94Pq2UUMVHvg7ZKYq2Je0KQ1MnKeuQe2yQ
- G9evhe6UePcnATv1UdIoQ+wRqA/qKsoGH9Prg28DdHvkqQPs7cZ+OV6DE
- tVO62TloLvdYRTFISz4myEoJb9XrK4th/nuo4RkOqOQLon63sXSwLAh0i
- x/y55gFZ7y8gCINOhbK9I+fcjshhEg27yLq5qKgLyPC7hi1Kg1n/k0gti
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=WtT6XgSWlnrDQ68ZvjZ28IvPo6s0OiqVJdElDVPQXhc=;
+ b=NpMFhqeKuGG3DqZcOViGYB/8v8nslc5RWwj0Esa6r+pvPE2/0PoC+/AX
+ 9W7ReYrApxbrYLAZ8Ty7OZxwWa0CkkR6b652Ta2nXELwg9ZjMiF4nXwso
+ pB7KXNjD1W7+MLnaUNuLB+UNS0p6DXDfxnfm1M/CVTPp1UuksdHJtG5b9
+ CtdquZRbTr/T3JRZS3nmd+FrhPYnYtr4G8QbqkNwMfE/Recck/3t4POwA
+ Zgnr0NaOfV3KxlAGZZTjSg5BZgqlhC87Kq7wCzdP2NpD4J+w5QBV+Snzw
+ 2zCi+fKGofMEmk4tEJlAWR67DgKLkMQFmM65Ma7PHngnHCSHM/q7ZgAec
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MhR6d+aU
-Subject: [Intel-wired-lan] [RFC net-next 0/2] introduce DECLARE_FLEX() macro
+ header.a=rsa-sha256 header.s=Intel header.b=NpMFhqeK
+Subject: [Intel-wired-lan] [RFC net-next 1/2] overflow: add DECLARE_FLEX()
+ for on-stack allocs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,39 +104,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add DECLARE_FLEX() macro that lets us declare structures with flexible
-array members on stack (patch 1).
+Add DECLARE_FLEX() macro for on-stack allocations of structs with
+flexible array member.
 
-Show how it could be used by ice example (note that post-RFC version will
-cover whole driver, here is just one file) (patch 2).
+Using underlying array for on-stack storage lets us to declare known
+on compile-time structures without kzalloc().
 
-Two open questions:
-Any better macro name?
-Especially given it's valid only for on stack allocations,
-(ie. could not be placed into struct definitions).
+Actual usage for ice driver is in next patch of the series.
 
-More sugar?
-It's tempting to introduce yet another macro that would avoid
-repetition of flex array field name and count, eg to apply:
--struct_size(sw_buf, elem, 1)
-+flex_sizeof(sw_buf)
+Note that "struct" kw and "*" char is moved to the caller, to both:
+have shorter macro name, and have more natural type specification
+in the driver code (IOW not hiding an actual type of var).
 
-With simple definition:
-+#define flex_sizeof(var) \
-+	sizeof(var##_buf)
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ include/linux/overflow.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Yet I'm unsure if usage it's not too magical then?
-
-Przemek Kitszel (2):
-  overflow: add DECLARE_FLEX() for on-stack allocs
-  ice: make use of DECLARE_FLEX() in ice_switch.c
-
- drivers/net/ethernet/intel/ice/ice_switch.c | 53 +++++----------------
- include/linux/overflow.h                    | 14 ++++++
- 2 files changed, 26 insertions(+), 41 deletions(-)
-
-
-base-commit: 9d1505d88ad0f6970015a06a475b9d67b21f20fa
+diff --git a/include/linux/overflow.h b/include/linux/overflow.h
+index f9b60313eaea..403b7ec120a2 100644
+--- a/include/linux/overflow.h
++++ b/include/linux/overflow.h
+@@ -309,4 +309,18 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+ #define struct_size_t(type, member, count)					\
+ 	struct_size((type *)NULL, member, count)
+ 
++/**
++ * DECLARE_FLEX() - Declare an on-stack instance of structure with trailing
++ * flexible array.
++ * @type: Pointer to structure type, including "struct" keyword and "*" char.
++ * @name: Name for a (pointer) variable to create.
++ * @member: Name of the array member.
++ * @count: Number of elements in the array; must be compile-time const.
++ *
++ * Declare an instance of structure *@type with trailing flexible array.
++ */
++#define DECLARE_FLEX(type, name, member, count)					\
++	u8 name##_buf[struct_size((type)NULL, member, count)] __aligned(8) = {};\
++	type name = (type)&name##_buf
++
+ #endif /* __LINUX_OVERFLOW_H */
 -- 
 2.38.1
 
