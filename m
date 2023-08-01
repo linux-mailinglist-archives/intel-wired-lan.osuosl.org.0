@@ -1,90 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D006A76B6D6
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 16:09:25 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4299676B755
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 16:26:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5B7D94049D;
-	Tue,  1 Aug 2023 14:09:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B7D94049D
+	by smtp2.osuosl.org (Postfix) with ESMTP id DDBCD408B6;
+	Tue,  1 Aug 2023 14:26:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DDBCD408B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690898964;
-	bh=p/snjg0CM8pTEzER2bDAtLJGcIUYSPd/j7rgy9RfffQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1690899960;
+	bh=KdC1GMnrJlR3+zyxDHS9RH+I0O65BKh9OCrsQKOp4Hw=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=dJvt0fNcNRLXsI/F8GqpKUbrrHaMiqlUad59VMEOKEKaUGrCczRZJe68KVi/++rGD
-	 hJtEaMvrY74LZ9sDi+33YeilGGboS4gcMRUGLWB80JMBNCQ2qsUEvRzOZvFtXWGmNO
-	 Agx9tc5ffkvA4SWl42OuJFDkcwt6uVDgPFirSfXEJXKbW25lht+j4bc1tNlKW/NV6a
-	 KXS8R9PbLCvNYUQjU6rXSWeQPR37kasMsOqBu7w6QUiBHtRRJAYgmNWYN7mE3zNCFZ
-	 6EG5bXiQwX+Q0qwXiG/p4yinWJ/Wa6ANfRlZQb1yfCWDan9azKaccTw1piN4Xiczf0
-	 tGHvMfF0INEsg==
+	b=UrTQt3zUYzhjzgl0SrOPKDBlE2uQMy1DcPHuO6b/qNYcCf81GP+HtR/j9c3zBFnsO
+	 jxspLxss/0i/LVJNhC5if8GDE486vl8Itawo1r6XboCYwDZl1XmkKPAFY3KD3JwFfp
+	 qvSov9L0205eS7P5+B9/ADr31qBxox5WNhpFi+ymFBoKZJNP257JugGjwa0Slz/Oby
+	 2bKDUJgJ4p+pVHxFNeAVgScWfou2Ix2CFqiM5tKkftU09+ChvC9UQ+L+gXU24GUc3e
+	 k64ShFevTInDvL0GExBvskZ/TRmhp8Rdy6o5oYDlfmDa0AEeoUs2NjU2ym108seNha
+	 NuO1D2E6DUjXg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x2ZgdZ3Th_Px; Tue,  1 Aug 2023 14:09:23 +0000 (UTC)
+	with ESMTP id l1VYekqU4syn; Tue,  1 Aug 2023 14:26:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B8F5D40374;
-	Tue,  1 Aug 2023 14:09:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B8F5D40374
+	by smtp2.osuosl.org (Postfix) with ESMTP id BA6EF404BB;
+	Tue,  1 Aug 2023 14:25:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA6EF404BB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4C8601BF2AA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:09:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 73C8E1BF954
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:25:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 195CD812D8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:09:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 195CD812D8
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0F43740038
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:25:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F43740038
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2lUkToTqIdSJ for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Aug 2023 14:09:14 +0000 (UTC)
-Received: from mgamail.intel.com (unknown [134.134.136.126])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0A3C080F0F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:09:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A3C080F0F
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="354232785"
-X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; d="scan'208";a="354232785"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2023 07:06:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="902562851"
-X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; d="scan'208";a="902562851"
-Received: from lkp-server01.sh.intel.com (HELO d1ccc7e87e8f) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 01 Aug 2023 07:05:59 -0700
-Received: from kbuild by d1ccc7e87e8f with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qQq0c-0000Ku-2f;
- Tue, 01 Aug 2023 14:05:58 +0000
-Date: Tue, 1 Aug 2023 22:05:36 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jan Sokolowski <jan.sokolowski@intel.com>, intel-wired-lan@lists.osuosl.org
-Message-ID: <202308012117.GWpl2IGh-lkp@intel.com>
-References: <20230801115309.697331-3-jan.sokolowski@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JklnbCxpzbX6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Aug 2023 14:25:50 +0000 (UTC)
+X-Greylist: delayed 492 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 01 Aug 2023 14:25:50 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 80BB4404C8
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 80BB4404C8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 14:25:50 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+In-Reply-To: <20230729001800.227269-1-vinicius.gomes@intel.com>
+References: <20230729001800.227269-1-vinicius.gomes@intel.com>
+Date: Tue, 01 Aug 2023 16:17:32 +0200
+Message-ID: <87jzueludf.fsf@kurt>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230801115309.697331-3-jan.sokolowski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690898954; x=1722434954;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=oRynheA8juoUI+0GBEhCccN5NpjSNx1eanJEFgIeSIs=;
- b=lsK1p4Kg0ZxzXkbMM+cXEhJd9NxEm4LBY5AduPU1GHY8gJrVErYneVgL
- UXtJjmJNkzmETvnkeUSEX6ksXDIvWAvxUYEt2Y30N2DuarnV3aOIwTwFE
- CaWxvRNZo0v5K5V2k5EMlov4miJUt7Za2/g1cNLUQiUfmpik8EIA3Uz94
- JQaViqcddkckiKZEzGoSlU0Eormlj7l4e0xvvJAWSj2Y677fFPBbUCtk4
- FYh01nrjY2TGW3NDh1f9xTst9uV6IzKq6+EXGAM75KeLeyukU52Z3f8Dw
- hb2cQguumkdEIW9SOdfo2dEkjw/6uhxBys8YOMDVmm/w0AotxsMPqAuP/
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lsK1p4Kg
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/6] ice: refactor ice_ddp
- to make functions static
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1690899453;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=SKQb4yfYfI+GHK7buamQNe0IAAGaCykGLk3StBq0IqQ=;
+ b=M1naz5aAAsKbdROchXTvtcjVzwcswVM9JIhwvDTOXNq9GvNH442IA4j2H9WvE43umFzrzJ
+ EuGpRMUUjQrl6rZsvBrLxCHutTCU9/4p6xGy/200Xx3U/wbeF9NLTCbGyFzEEehOPD1cDg
+ 2B3FU6PO0o066AjJQDlL4VABQO9Ti4o3owLifODrY93ROH5a7Ch4qBYAU6Mm4YWcPHA0yL
+ 3FzECV6d7tVehxJPnxkFouSs9glFEUmpSvhy1WMA6mbbd/EHQ+e7nI079AXFkzYdP904rL
+ dk/j+64X8XLxDnT13tF12io1SZezovOcufX762ULuqhWaRveYdv5zXS0AYvu5Q==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1690899453;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=SKQb4yfYfI+GHK7buamQNe0IAAGaCykGLk3StBq0IqQ=;
+ b=lfBM0gnzQklLkM2gua9TgDu7Sefxr91UHFkjRz6YSMQnSLIhryf0CNo5xdEj4LiYxtHIMl
+ RK8zPxbB3KCtCWBw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=M1naz5aA; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=lfBM0gnz
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] igc: Add support for
+ multiple in-flight TX timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,81 +95,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: vladimir.oltean@nxp.com, richardcochran@gmail.com,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com
+Content-Type: multipart/mixed; boundary="===============0547472054152392177=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jan,
+--===============0547472054152392177==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-kernel test robot noticed the following build warnings:
+--=-=-=
+Content-Type: text/plain
 
-[auto build test WARNING on tnguy-next-queue/dev-queue]
+On Fri Jul 28 2023, Vinicius Costa Gomes wrote:
+> Add support for using the four sets of timestamping registers that
+> i225/i226 have available for TX.
+>
+> In some workloads, where multiple applications request hardware
+> transmission timestamps, it was possible that some of those requests
+> were denied because the only in use register was already occupied.
+>
+> This is also in preparation to future support for hardware
+> timestamping wwith multiple PTP domains. With multiple domains chances
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jan-Sokolowski/ice-remove-unused-methods/20230801-195105
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20230801115309.697331-3-jan.sokolowski%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next v2 2/6] ice: refactor ice_ddp to make functions static
-config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20230801/202308012117.GWpl2IGh-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 12.3.0
-reproduce: (https://download.01.org/0day-ci/archive/20230801/202308012117.GWpl2IGh-lkp@intel.com/reproduce)
+s/wwith/with/g;
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202308012117.GWpl2IGh-lkp@intel.com/
+Other than that,
 
-All warnings (new ones prefixed by >>):
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 
->> drivers/net/ethernet/intel/ice/ice_ddp.c:1474:29: warning: no previous prototype for 'ice_find_seg_in_pkg' [-Wmissing-prototypes]
-    1474 | struct ice_generic_seg_hdr *ice_find_seg_in_pkg(struct ice_hw *hw, u32 seg_type,
-         |                             ^~~~~~~~~~~~~~~~~~~
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-vim +/ice_find_seg_in_pkg +1474 drivers/net/ethernet/intel/ice/ice_ddp.c
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmTJE/wTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgigsEACEKpSVykwCGHt/rGVOS0GSVf1F9NGX
+yYZRIpDLt2iLugPWbKd/o7BxnpM74hBNRh1cDs25wos/zfPCsKEYxEv06dQ4sUAD
+bVG3Ahc2cukFY4zqPyaeoMJZ56KDURqHkVM11Q5ATPta8lBgHfjhPO9DM15/Gw11
+ayunTyzofRcWmf40eFutx+4h3gGxoPmUTuZpbAZ4avpb/SpRzG+UBK9Ad69gvuXB
+MLsH8QmgnUYSl9G0BSlcpSlpY+CvdYwO9gqLo8VwJ9v/bGVlU7JW79UPgEbAt9DA
+GxP69+ApuPlX6/Xa6ng49YFKGb8s1zOpei6fh/y57PVEU2w/iOF7z64gjiooyl49
+LD0RNg4h2/t0uFAzcnMQ06NNof/nAUd9OQbkuWm5qj4nWdWbNm3MnpaKbVKITvy8
+BWkwSmJGM1X7INiEdPMHSOMQcLwms+mIQqt1x3jnKMyxc3CLLb2d/J519lOPF3Cm
+Sc6hdczKAhlW3giTAqyorWOOB3px1Sm/uJhPhy4VYznO7fyxQdADTmFG9yrGjARB
+TQg7vHBXJJnRA/NcOyzlwwaG7J4zU5m6c3WMYWiZmh4fyXJHYlzVZFBb17WrWjyI
+HvuSfxxyyXB1H5nBSZ96Op0Q8gO2iph6IUPiR5ye7cignoo0rsFI2Ypmr9fcjDkh
+N0t4H7FL3sJISA==
+=EsLu
+-----END PGP SIGNATURE-----
+--=-=-=--
 
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1463  
-b1e9d9a5d80ff6 Jan Sokolowski     2023-08-01  1464  /*
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1465   * ice_find_seg_in_pkg
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1466   * @hw: pointer to the hardware structure
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1467   * @seg_type: the segment type to search for (i.e., SEGMENT_TYPE_CPK)
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1468   * @pkg_hdr: pointer to the package header to be searched
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1469   *
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1470   * This function searches a package file for a particular segment type. On
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1471   * success it returns a pointer to the segment header, otherwise it will
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1472   * return NULL.
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1473   */
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20 @1474  struct ice_generic_seg_hdr *ice_find_seg_in_pkg(struct ice_hw *hw, u32 seg_type,
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1475  						struct ice_pkg_hdr *pkg_hdr)
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1476  {
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1477  	u32 i;
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1478  
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1479  	ice_debug(hw, ICE_DBG_PKG, "Package format version: %d.%d.%d.%d\n",
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1480  		  pkg_hdr->pkg_format_ver.major, pkg_hdr->pkg_format_ver.minor,
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1481  		  pkg_hdr->pkg_format_ver.update,
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1482  		  pkg_hdr->pkg_format_ver.draft);
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1483  
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1484  	/* Search all package segments for the requested segment type */
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1485  	for (i = 0; i < le32_to_cpu(pkg_hdr->seg_count); i++) {
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1486  		struct ice_generic_seg_hdr *seg;
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1487  
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1488  		seg = (struct ice_generic_seg_hdr
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1489  			       *)((u8 *)pkg_hdr +
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1490  				  le32_to_cpu(pkg_hdr->seg_offset[i]));
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1491  
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1492  		if (le32_to_cpu(seg->seg_type) == seg_type)
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1493  			return seg;
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1494  	}
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1495  
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1496  	return NULL;
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1497  }
-2ffd87d38d6b9d Sergey Temerkhanov 2022-12-20  1498  
+--===============0547472054152392177==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0547472054152392177==--
