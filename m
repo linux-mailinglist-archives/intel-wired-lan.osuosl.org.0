@@ -1,87 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B52D76B3C3
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 13:49:36 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9F6F76B3C4
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Aug 2023 13:49:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 424EB405DD;
-	Tue,  1 Aug 2023 11:49:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 424EB405DD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 590354035D;
+	Tue,  1 Aug 2023 11:49:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 590354035D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690890575;
-	bh=WLpPJKErBgdwULCR0GEjRch/M3sS6Kd/lA2SczduewY=;
+	s=default; t=1690890579;
+	bh=E7UI2GJWdIllZNEtW3z6u4Bu+fzLo0Saarbuu432obI=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4XJ267u3qU/u6DLMfHcAKnfhBnR56hUe5E5GQU/dpEM6mas1eH/sy2eX1ba5kF+ua
-	 oBK+uDwthgpMZVnGe/lyIDnrCJR80blDqvj4B8894QzXvBPIbcnsKA1/zmGruDSktm
-	 yS8p4ZHOGmJSBl13jxCZwTmKQHZjxvEoJZck4NOi6vojq26+tf9aqLcoCJRgfS6XKr
-	 uPSEygxIPY1teYSq42PTpvDK8IQ9quoSvv51huq6pWqG9Fs6h41DKU5Kv0r4TYj0D8
-	 eB4icnHCvyRcaMSMQVAXcnbmxb0q2j3bUDD5QI6ydTFdRQF8O95SU7RxM6lNICPiqD
-	 /bNUZ8dxLXnsA==
+	b=0nArT7eLYiBOoWLjaR+mEhZzVBnmCYXRh6q5xmz5n42kuTT1D7mhUoqlPPZ/GUSIu
+	 zVztD42MKY3h9LkTEOKJUbByctZ3Rl23gXKP0iin5X/wNP87AihBzjEd+vTXL7PPbj
+	 ogVHAQ6SDJXNeLSrMZOnn8pNFNs071Ff35eawzCQIHmCpDLYnc4Xu0JrZJ+MrYB4EL
+	 xqj5/SH6dzDvnjnyZ83h7+li5q15bBs8yJfxUyEATgwEGweAWM32nsEp3w7YI9k2hf
+	 5oTJe5USGhPcDi7hl++Bco8PqqQ9o8/BfeH9u8Dvn34iyySHe1pj5mmLL2w0Xqe3cV
+	 P7BZ0j8zNI6zQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vgnhwv9FXsxW; Tue,  1 Aug 2023 11:49:34 +0000 (UTC)
+	with ESMTP id EcjqQEQRAYom; Tue,  1 Aug 2023 11:49:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 76A5E4011A;
-	Tue,  1 Aug 2023 11:49:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 76A5E4011A
+	by smtp2.osuosl.org (Postfix) with ESMTP id DD9724011A;
+	Tue,  1 Aug 2023 11:49:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DD9724011A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 56B7F1BF97F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1F0A81BF290
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AECAA40194
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AECAA40194
+ by smtp2.osuosl.org (Postfix) with ESMTP id C6E0440201
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C6E0440201
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xd2nVSWo_5Pu for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Aug 2023 11:49:22 +0000 (UTC)
+ with ESMTP id 1-y4J4AzU6S2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Aug 2023 11:49:23 +0000 (UTC)
 Received: from mgamail.intel.com (unknown [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DF4444011A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF4444011A
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="433112511"
-X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="433112511"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DC64E4011A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 11:49:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC64E4011A
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="433112512"
+X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="433112512"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2023 04:49:21 -0700
+ 01 Aug 2023 04:49:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="902528640"
-X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; d="scan'208";a="902528640"
+X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="902528643"
+X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; d="scan'208";a="902528643"
 Received: from s240.igk.intel.com (HELO DevelopmentVM.nql.local)
  ([10.102.18.202])
- by orsmga005.jf.intel.com with ESMTP; 01 Aug 2023 04:49:20 -0700
+ by orsmga005.jf.intel.com with ESMTP; 01 Aug 2023 04:49:21 -0700
 From: Jan Sokolowski <jan.sokolowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  1 Aug 2023 13:53:04 +0200
-Message-Id: <20230801115309.697331-2-jan.sokolowski@intel.com>
+Date: Tue,  1 Aug 2023 13:53:05 +0200
+Message-Id: <20230801115309.697331-3-jan.sokolowski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20230801115309.697331-1-jan.sokolowski@intel.com>
 References: <20230801115309.697331-1-jan.sokolowski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690890561; x=1722426561;
+ t=1690890562; x=1722426562;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=T2iM4YtkKd0y6cIhj66HUViH3YUUhzHdM7wxqwKMaZY=;
- b=IaTYJ10hia2R86LkoW64ilnVjVQa8zIUDJqAT+VJinTJ+3128hKSxN4u
- oH733m67yXgE80IHpLbBpbArIe36fNDC3KNrIs1AUf/RyjSqLgnwy1tN9
- dneU/PJSmDqayO/x1JhkNzBq3vAJ9g7nGLujG3IOIeE3pZc3LwyYU9VOQ
- Y9oaVr6InJ7nI1Ty55HdO5sAWTpwx8o8TxlHByi6Zrxik96AZfF8LEFzV
- CPOKHaTvEYZFcQ8HsP2jIuMofUDQO7McEs1exoWwVDO9PG5I2kM4JNPg3
- 1BOikdM9B1KLnBovF0eE3f0zAPM3nCGjn4he9nyy+cglu2yQWdmz7CdBl
+ bh=Zu4Xg9JmJxsR5wLiPI+FxUts+Hcbyz15HLymGwvdwXY=;
+ b=eh1yvTieyLquW2mZx/2K0TpZpcVWl5j72xy/uMOwFgmCLcztt+BR39Ya
+ Y/lClctxNkb8Xae5BYmEbeNTq6w/RWmc9J1c+J3eUcbMuZuz6kO9a8Th8
+ 0LYMjjwGLME84xAqdj7MxE7/bEeG7YYsSYaSqBU4s8FgG6uLSicRNypxB
+ C0y83kmtYcuStH6JXTntM9k+atlGW36cpzVgJXL6Ax7TBTYWcZ1WMhYio
+ tfHHDrZAEYOIegq3FlNjBEMoaSlBmaHMuD/7LAvsu+GYz8EyrZcVosiXo
+ hstyqobZt+lplYzLF0S9mdKVnFJ2HIkpiO9gU2S4clcZzhktpHESq3FZp
  Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=IaTYJ10h
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/6] ice: remove unused methods
+ header.a=rsa-sha256 header.s=Intel header.b=eh1yvTie
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/6] ice: refactor ice_ddp to
+ make functions static
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,175 +100,225 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Following methods were found to no longer be in use:
-ice_is_pca9575_present
-ice_mac_fltr_exist
-ice_napi_del
-
-Remove them.
+Refactor ice_ddp.c/h in order to make as many methods
+as possible static.
 
 Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c    | 15 -------
- drivers/net/ethernet/intel/ice/ice_lib.h    |  2 -
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 19 --------
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 -
- drivers/net/ethernet/intel/ice/ice_switch.c | 48 ---------------------
- drivers/net/ethernet/intel/ice/ice_switch.h |  1 -
- 6 files changed, 86 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ddp.c | 117 ++++++++++++-----------
+ drivers/net/ethernet/intel/ice/ice_ddp.h |  10 --
+ 2 files changed, 59 insertions(+), 68 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 927518fcad51..54aa01d2a474 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -2943,21 +2943,6 @@ void ice_vsi_dis_irq(struct ice_vsi *vsi)
- 		synchronize_irq(vsi->q_vectors[i]->irq.virq);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index d71ed210f9c4..c43ac8c87a1d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -30,7 +30,7 @@ static const struct ice_tunnel_type_scan tnls[] = {
+  * Verifies various attributes of the package file, including length, format
+  * version, and the requirement of at least one segment.
+  */
+-enum ice_ddp_state ice_verify_pkg(struct ice_pkg_hdr *pkg, u32 len)
++static enum ice_ddp_state ice_verify_pkg(struct ice_pkg_hdr *pkg, u32 len)
+ {
+ 	u32 seg_count;
+ 	u32 i;
+@@ -118,7 +118,7 @@ static enum ice_ddp_state ice_chk_pkg_version(struct ice_pkg_ver *pkg_ver)
+  *
+  * This helper function validates a buffer's header.
+  */
+-struct ice_buf_hdr *ice_pkg_val_buf(struct ice_buf *buf)
++static struct ice_buf_hdr *ice_pkg_val_buf(struct ice_buf *buf)
+ {
+ 	struct ice_buf_hdr *hdr;
+ 	u16 section_count;
+@@ -1152,6 +1152,54 @@ static void ice_release_global_cfg_lock(struct ice_hw *hw)
+ 	ice_release_res(hw, ICE_GLOBAL_CFG_LOCK_RES_ID);
+ }
+ 
++/**
++ * ice_aq_download_pkg
++ * @hw: pointer to the hardware structure
++ * @pkg_buf: the package buffer to transfer
++ * @buf_size: the size of the package buffer
++ * @last_buf: last buffer indicator
++ * @error_offset: returns error offset
++ * @error_info: returns error information
++ * @cd: pointer to command details structure or NULL
++ *
++ * Download Package (0x0C40)
++ */
++static int
++ice_aq_download_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
++		    u16 buf_size, bool last_buf, u32 *error_offset,
++		    u32 *error_info, struct ice_sq_cd *cd)
++{
++	struct ice_aqc_download_pkg *cmd;
++	struct ice_aq_desc desc;
++	int status;
++
++	if (error_offset)
++		*error_offset = 0;
++	if (error_info)
++		*error_info = 0;
++
++	cmd = &desc.params.download_pkg;
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_download_pkg);
++	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
++
++	if (last_buf)
++		cmd->flags |= ICE_AQC_DOWNLOAD_PKG_LAST_BUF;
++
++	status = ice_aq_send_cmd(hw, &desc, pkg_buf, buf_size, cd);
++	if (status == -EIO) {
++		/* Read error from buffer only when the FW returned an error */
++		struct ice_aqc_download_pkg_resp *resp;
++
++		resp = (struct ice_aqc_download_pkg_resp *)pkg_buf;
++		if (error_offset)
++			*error_offset = le32_to_cpu(resp->error_offset);
++		if (error_info)
++			*error_info = le32_to_cpu(resp->error_info);
++	}
++
++	return status;
++}
++
+ /**
+  * ice_dwnld_cfg_bufs
+  * @hw: pointer to the hardware structure
+@@ -1294,20 +1342,20 @@ static enum ice_ddp_state ice_download_pkg(struct ice_hw *hw,
+ }
+ 
+ /**
+- * ice_aq_download_pkg
++ * ice_aq_update_pkg
+  * @hw: pointer to the hardware structure
+- * @pkg_buf: the package buffer to transfer
+- * @buf_size: the size of the package buffer
++ * @pkg_buf: the package cmd buffer
++ * @buf_size: the size of the package cmd buffer
+  * @last_buf: last buffer indicator
+  * @error_offset: returns error offset
+  * @error_info: returns error information
+  * @cd: pointer to command details structure or NULL
+  *
+- * Download Package (0x0C40)
++ * Update Package (0x0C42)
+  */
+-int ice_aq_download_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+-			u16 buf_size, bool last_buf, u32 *error_offset,
+-			u32 *error_info, struct ice_sq_cd *cd)
++static int ice_aq_update_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
++			     u16 buf_size, bool last_buf, u32 *error_offset,
++			     u32 *error_info, struct ice_sq_cd *cd)
+ {
+ 	struct ice_aqc_download_pkg *cmd;
+ 	struct ice_aq_desc desc;
+@@ -1319,7 +1367,7 @@ int ice_aq_download_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+ 		*error_info = 0;
+ 
+ 	cmd = &desc.params.download_pkg;
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_download_pkg);
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_update_pkg);
+ 	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+ 
+ 	if (last_buf)
+@@ -1360,53 +1408,6 @@ int ice_aq_upload_section(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+ 	return ice_aq_send_cmd(hw, &desc, pkg_buf, buf_size, cd);
  }
  
 -/**
-- * ice_napi_del - Remove NAPI handler for the VSI
-- * @vsi: VSI for which NAPI handler is to be removed
+- * ice_aq_update_pkg
+- * @hw: pointer to the hardware structure
+- * @pkg_buf: the package cmd buffer
+- * @buf_size: the size of the package cmd buffer
+- * @last_buf: last buffer indicator
+- * @error_offset: returns error offset
+- * @error_info: returns error information
+- * @cd: pointer to command details structure or NULL
+- *
+- * Update Package (0x0C42)
 - */
--void ice_napi_del(struct ice_vsi *vsi)
+-static int ice_aq_update_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+-			     u16 buf_size, bool last_buf, u32 *error_offset,
+-			     u32 *error_info, struct ice_sq_cd *cd)
 -{
--	int v_idx;
+-	struct ice_aqc_download_pkg *cmd;
+-	struct ice_aq_desc desc;
+-	int status;
 -
--	if (!vsi->netdev)
--		return;
+-	if (error_offset)
+-		*error_offset = 0;
+-	if (error_info)
+-		*error_info = 0;
 -
--	ice_for_each_q_vector(vsi, v_idx)
--		netif_napi_del(&vsi->q_vectors[v_idx]->napi);
+-	cmd = &desc.params.download_pkg;
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_update_pkg);
+-	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+-
+-	if (last_buf)
+-		cmd->flags |= ICE_AQC_DOWNLOAD_PKG_LAST_BUF;
+-
+-	status = ice_aq_send_cmd(hw, &desc, pkg_buf, buf_size, cd);
+-	if (status == -EIO) {
+-		/* Read error from buffer only when the FW returned an error */
+-		struct ice_aqc_download_pkg_resp *resp;
+-
+-		resp = (struct ice_aqc_download_pkg_resp *)pkg_buf;
+-		if (error_offset)
+-			*error_offset = le32_to_cpu(resp->error_offset);
+-		if (error_info)
+-			*error_info = le32_to_cpu(resp->error_info);
+-	}
+-
+-	return status;
 -}
 -
  /**
-  * ice_vsi_release - Delete a VSI and free its resources
-  * @vsi: the VSI being removed
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index dd53fe968ad8..cb6599cb8be6 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -93,8 +93,6 @@ void ice_vsi_cfg_netdev_tc(struct ice_vsi *vsi, u8 ena_tc);
- struct ice_vsi *
- ice_vsi_setup(struct ice_pf *pf, struct ice_vsi_cfg_params *params);
- 
--void ice_napi_del(struct ice_vsi *vsi);
--
- int ice_vsi_release(struct ice_vsi *vsi);
- 
- void ice_vsi_close(struct ice_vsi *vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 526a70a83747..dd2fad831924 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -3113,25 +3113,6 @@ int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data)
- 	return ice_aq_read_i2c(hw, link_topo, 0, addr, 1, data, NULL);
- }
- 
--/**
-- * ice_is_pca9575_present
-- * @hw: pointer to the hw struct
-- *
-- * Check if the SW IO expander is present in the netlist
-- */
--bool ice_is_pca9575_present(struct ice_hw *hw)
--{
--	u16 handle = 0;
--	int status;
--
--	if (!ice_is_e810t(hw))
--		return false;
--
--	status = ice_get_pca9575_handle(hw, &handle);
--
--	return !status && handle;
--}
--
- /* Device agnostic functions
-  *
-  * The following functions implement shared behavior common to both E822 and
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 5987d3422dfe..3dc1d6e5468c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -202,7 +202,6 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw);
- int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data);
- int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
- int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data);
--bool ice_is_pca9575_present(struct ice_hw *hw);
- 
- void ice_ptp_init_phy_model(struct ice_hw *hw);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index a7afb612fe32..24c3f481848b 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3408,54 +3408,6 @@ ice_remove_rule_internal(struct ice_hw *hw, u8 recp_id,
+  * ice_update_pkg_no_lock
+  * @hw: pointer to the hardware structure
+@@ -1460,7 +1461,7 @@ int ice_update_pkg(struct ice_hw *hw, struct ice_buf *bufs, u32 count)
  	return status;
  }
  
 -/**
-- * ice_mac_fltr_exist - does this MAC filter exist for given VSI
-- * @hw: pointer to the hardware structure
-- * @mac: MAC address to be checked (for MAC filter)
-- * @vsi_handle: check MAC filter for this VSI
-- */
--bool ice_mac_fltr_exist(struct ice_hw *hw, u8 *mac, u16 vsi_handle)
--{
--	struct ice_fltr_mgmt_list_entry *entry;
--	struct list_head *rule_head;
--	struct ice_switch_info *sw;
--	struct mutex *rule_lock; /* Lock to protect filter rule list */
--	u16 hw_vsi_id;
--
--	if (!ice_is_vsi_valid(hw, vsi_handle))
--		return false;
--
--	hw_vsi_id = ice_get_hw_vsi_num(hw, vsi_handle);
--	sw = hw->switch_info;
--	rule_head = &sw->recp_list[ICE_SW_LKUP_MAC].filt_rules;
--	if (!rule_head)
--		return false;
--
--	rule_lock = &sw->recp_list[ICE_SW_LKUP_MAC].filt_rule_lock;
--	mutex_lock(rule_lock);
--	list_for_each_entry(entry, rule_head, list_entry) {
--		struct ice_fltr_info *f_info = &entry->fltr_info;
--		u8 *mac_addr = &f_info->l_data.mac.mac_addr[0];
--
--		if (is_zero_ether_addr(mac_addr))
--			continue;
--
--		if (f_info->flag != ICE_FLTR_TX ||
--		    f_info->src_id != ICE_SRC_ID_VSI ||
--		    f_info->lkup_type != ICE_SW_LKUP_MAC ||
--		    f_info->fltr_act != ICE_FWD_TO_VSI ||
--		    hw_vsi_id != f_info->fwd_id.hw_vsi_id)
--			continue;
--
--		if (ether_addr_equal(mac, mac_addr)) {
--			mutex_unlock(rule_lock);
--			return true;
--		}
--	}
--	mutex_unlock(rule_lock);
--	return false;
--}
--
- /**
-  * ice_vlan_fltr_exist - does this VLAN filter exist for given VSI
++/*
+  * ice_find_seg_in_pkg
   * @hw: pointer to the hardware structure
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index 0bd4320e39df..db7e501b7e0a 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -371,7 +371,6 @@ int ice_add_vlan(struct ice_hw *hw, struct list_head *m_list);
- int ice_remove_vlan(struct ice_hw *hw, struct list_head *v_list);
- int ice_add_mac(struct ice_hw *hw, struct list_head *m_lst);
- int ice_remove_mac(struct ice_hw *hw, struct list_head *m_lst);
--bool ice_mac_fltr_exist(struct ice_hw *hw, u8 *mac, u16 vsi_handle);
- bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle);
- int ice_add_eth_mac(struct ice_hw *hw, struct list_head *em_list);
- int ice_remove_eth_mac(struct ice_hw *hw, struct list_head *em_list);
+  * @seg_type: the segment type to search for (i.e., SEGMENT_TYPE_CPK)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
+index 41acfe26df1c..abb5f32f2ef4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
+@@ -416,21 +416,13 @@ struct ice_pkg_enum {
+ 	void *(*handler)(u32 sect_type, void *section, u32 index, u32 *offset);
+ };
+ 
+-int ice_aq_download_pkg(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+-			u16 buf_size, bool last_buf, u32 *error_offset,
+-			u32 *error_info, struct ice_sq_cd *cd);
+ int ice_aq_upload_section(struct ice_hw *hw, struct ice_buf_hdr *pkg_buf,
+ 			  u16 buf_size, struct ice_sq_cd *cd);
+ 
+ void *ice_pkg_buf_alloc_section(struct ice_buf_build *bld, u32 type, u16 size);
+ 
+-enum ice_ddp_state ice_verify_pkg(struct ice_pkg_hdr *pkg, u32 len);
+-
+ struct ice_buf_build *ice_pkg_buf_alloc(struct ice_hw *hw);
+ 
+-struct ice_generic_seg_hdr *ice_find_seg_in_pkg(struct ice_hw *hw, u32 seg_type,
+-						struct ice_pkg_hdr *pkg_hdr);
+-
+ int ice_update_pkg_no_lock(struct ice_hw *hw, struct ice_buf *bufs, u32 count);
+ int ice_update_pkg(struct ice_hw *hw, struct ice_buf *bufs, u32 count);
+ 
+@@ -439,6 +431,4 @@ u16 ice_pkg_buf_get_active_sections(struct ice_buf_build *bld);
+ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+ 			   u32 sect_type);
+ 
+-struct ice_buf_hdr *ice_pkg_val_buf(struct ice_buf *buf);
+-
+ #endif
 -- 
 2.31.1
 
