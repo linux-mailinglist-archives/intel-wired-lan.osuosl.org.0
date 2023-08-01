@@ -2,99 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D25E876C073
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Aug 2023 00:31:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EF5676C07A
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Aug 2023 00:36:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 20CF881441;
-	Tue,  1 Aug 2023 22:31:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20CF881441
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3CBBC81E38;
+	Tue,  1 Aug 2023 22:36:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3CBBC81E38
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690929108;
-	bh=Ji2uS0lKnFGIdAaK2e0njrVIlTKcOLW1uQmwnPF281U=;
+	s=default; t=1690929367;
+	bh=IzeDXEGZ/aHc4D0gwqJJJaT9yBse7IFBhREijOVCm5c=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=MDn13m3T/C1gIoZG+KFbiQV5eCyoy0uQxDkPBJ2ZhCUVaCXNcVbpOmunclTwvjca1
-	 apG/+/f9QOxzZP5aA5t5xr7vicLQsZGHA1VQQ3wfx8P0nlULiFVdLttEFs3c0nR6xQ
-	 0kJI9GBl8GWFm+0bzAktYSL06m8GwmY4l3xXHAopHDWxNIY+CmEv5xFS2fBa2ENk4i
-	 d6e6VeZF5/0t9xNzCBUbgvOmChHMBxb7nAggTgVBbRHRZa778MuT8Lp4eWmJxJuU3o
-	 n/0LE1z/+KqvWieqfD4UhpKAjmdAAVT7khvL+RWv9isFXukL5z4kU0cMLsBgwEfSNs
-	 1x+8y4yoy/cpA==
+	b=INxiw5Rf1LG+IX/XUmQ4LMcLjW+f3nMXvV7NKNLu9+KpPcD5kXMcJHnlQXdOKIkGT
+	 zi0px3HHL5C/wJHzBQiClRB09HNhClGEDEjMFF9yf9inuL8cP+wf3iavpzyDOPmJtF
+	 WDV/DJVWBLz8djbx1y7MCvt3icoBnlej2pkhtWQb+lojUO6YJzNV3TKT0mXid1e1wj
+	 +x8hAl4/DzTZ96TKutNLzw1nRf/DaSZV7MYQyXeD3eleWPv4zgPvLL/gLL7/eHlYls
+	 NfOUSpmbjPBMpz906wfMqtAE6usbYFDsxjH7ow9HTCI5+uLlKet/9DQnsDPlFk581F
+	 LG+/Dl/85PBJQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ucePwUKYJgpQ; Tue,  1 Aug 2023 22:31:47 +0000 (UTC)
+	with ESMTP id P8-BjKn8wSxE; Tue,  1 Aug 2023 22:36:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DC098188D;
-	Tue,  1 Aug 2023 22:31:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DC098188D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2C39281D24;
+	Tue,  1 Aug 2023 22:36:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2C39281D24
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 231A31BF2F0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:31:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 395401BF476
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:36:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6D48140C2C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:31:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6D48140C2C
+ by smtp4.osuosl.org (Postfix) with ESMTP id CBF7040873
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:35:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBF7040873
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S7d7Bw6YqlIu for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Aug 2023 22:31:13 +0000 (UTC)
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com
- [IPv6:2607:f8b0:4864:20::430])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A863C40CA7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:31:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A863C40CA7
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-686b9964ae2so4331645b3a.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Aug 2023 15:31:12 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QwukdZDTn4CU for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Aug 2023 22:35:23 +0000 (UTC)
+Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
+ [IPv6:2607:f8b0:4864:20::635])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0387040899
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Aug 2023 22:35:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0387040899
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-1b8b4749013so49163075ad.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Aug 2023 15:35:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690929072; x=1691533872;
+ d=1e100.net; s=20221208; t=1690929322; x=1691534122;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5rI769blANvKakho//KZylc2H6HwF2kf18muyWtGVFE=;
- b=eLoqcEhgCO7d14HEEpltObyiIDgWYBMq80/Qx2sbb65Mml5m17SA3dexkxfO04AeCy
- 4Z7bg5xOkku9SK46VPdqJer8oVfyK5O6Dvgzx4Bl+AL8sNVRA4M52c8j4HPNod96ojZu
- GzFkDpgMzLXA3S1jHo5QfaRA8WY1871J5rNhmGHu6vSLve0dzJN7Q7GWl7Bi9/qt2EIr
- CLOOPUnid4wq5F4peNiFjtE1cRMGl2qAcO0/X8ILrbHUXVXtEIcDeVhgj4FLBNGRLeNQ
- 3SLJmf0AP/Qh55GYQJ5orSUxXoNaUCjKfqY2K37mBig+fWZpEcHxPv6GrvtAb0022bWF
- HGYw==
-X-Gm-Message-State: ABy/qLYe8NNo2c/smzuu0qunM/82ENzxdwgGqFCvO9QVvKiGsnkYSSSR
- gNq4C99TtY2ky0mSKqVHKemaog==
-X-Google-Smtp-Source: APBJJlEB8hJ/wfGV5TLpVSHRxwHvYwuuNQs9GxuXEQyZQxV8JwciDeGgwsHIx2ioq2H59TUVG6owXA==
-X-Received: by 2002:a17:902:f547:b0:1b8:b827:aa8e with SMTP id
- h7-20020a170902f54700b001b8b827aa8emr14471846plf.11.1690929071987; 
- Tue, 01 Aug 2023 15:31:11 -0700 (PDT)
+ bh=eoE3c8ICemots41uvNCVYms50IlLZwpK4rs4AeMXx54=;
+ b=US36rQCXahK+9X7QeraxA3G9xKpFt4KL5aFf25wq3Po+Djk0c43wwSSIwRzEVDdeuG
+ Z2TBxsTu/YRte3hwgo/txU6GBihPNw6cGDagx3cbef3wZ+HNwTOtw2WFEdB9JBqmsYCL
+ QHW8xNheeVQucEI4fV2Npv1vXiPbtaRl58Qr7u9KdpkSHm21p7K4i5XlfCtb+zjqnEkm
+ AMLXUPBAxuJgKd54Dbuz4nAnue3KD9T1D8lx1JwYggC9FsJsJWFoebawoTpwRTHYllXz
+ OqHC/yMR5yYdjLApWLs+g7xD/AHrAM/D+OwsX84f6EOBw8VW2JqDVLedzKdlJVdQMO/o
+ GQeg==
+X-Gm-Message-State: ABy/qLboPc+OhwL81EiUI0yrh4wPj3Q+sswfrE/L2X/UyyvjMX8ApFDb
+ 3PjirFUdY5hD0kwqm9P9MEz+QQ==
+X-Google-Smtp-Source: APBJJlElgraw/W6oH7KzSXHtGpfX8bqLl3oOYDzTdVMdq4PcdwrTVXZGZQ4aBsDaQXfyFx+MN3C5kQ==
+X-Received: by 2002:a17:903:1ce:b0:1b8:88c5:2d2f with SMTP id
+ e14-20020a17090301ce00b001b888c52d2fmr16472861plh.64.1690929322430; 
+ Tue, 01 Aug 2023 15:35:22 -0700 (PDT)
 Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net.
  [198.0.35.241]) by smtp.gmail.com with ESMTPSA id
- jn13-20020a170903050d00b001b895a17429sm10957681plb.280.2023.08.01.15.31.11
+ j18-20020a170902759200b001ab2b4105ddsm5246480pll.60.2023.08.01.15.35.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Aug 2023 15:31:11 -0700 (PDT)
-Date: Tue, 1 Aug 2023 15:31:10 -0700
+ Tue, 01 Aug 2023 15:35:22 -0700 (PDT)
+Date: Tue, 1 Aug 2023 15:35:21 -0700
 From: Kees Cook <keescook@chromium.org>
 To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <202308011403.E0A8D25CE@keescook>
+Message-ID: <202308011532.A92CFB351@keescook>
 References: <20230801111923.118268-1-przemyslaw.kitszel@intel.com>
- <20230801111923.118268-2-przemyslaw.kitszel@intel.com>
+ <20230801111923.118268-3-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230801111923.118268-2-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20230801111923.118268-3-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=chromium.org; s=google; t=1690929072; x=1691533872;
+ d=chromium.org; s=google; t=1690929322; x=1691534122;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=5rI769blANvKakho//KZylc2H6HwF2kf18muyWtGVFE=;
- b=S/mRkmfA0lmJMoq6lyuKbHLryPTrbrj6nCOzzsunS253TyR6O8d01K9JabxWlHKwgU
- XQjqXimg+lQVrOaG3Ag0dTf5G4KwNryKCHUVHRQ70ZwVX3MsWtmwU8WO8JJW3pERGdWr
- FFD/J8g17ysNh5AGszxYdGXbK8sSCpprcMm5E=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=eoE3c8ICemots41uvNCVYms50IlLZwpK4rs4AeMXx54=;
+ b=b8Dlc3rNrIoGeoB3AITiPCLmuLqATv0RcuCPd76wAPvqZRG/FLE/JudB8GxxwbyelX
+ 6U5n5WKerZH663GTEe5YbkqXZm8XsC6h57C+FmmXEEljxgjdAEuDmIoO44ZXGoh+cPvQ
+ LdMyklUOsUHGQEyPJcqg0SQYQ1vXA1r4J19FU=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
- header.a=rsa-sha256 header.s=google header.b=S/mRkmfA
-Subject: Re: [Intel-wired-lan] [RFC net-next 1/2] overflow: add
- DECLARE_FLEX() for on-stack allocs
+ header.a=rsa-sha256 header.s=google header.b=b8Dlc3rN
+Subject: Re: [Intel-wired-lan] [RFC net-next 2/2] ice: make use of
+ DECLARE_FLEX() in ice_switch.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,109 +113,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 01, 2023 at 01:19:22PM +0200, Przemek Kitszel wrote:
-> Add DECLARE_FLEX() macro for on-stack allocations of structs with
-> flexible array member.
-
-I like this idea!
-
-One terminology nit: I think this should be called "DEFINE_...", since
-it's a specific instantiation. Other macros in the kernel seem to confuse
-this a lot, though. Yay naming.
-
-> Using underlying array for on-stack storage lets us to declare known
-> on compile-time structures without kzalloc().
-
-Hmpf, this appears to immediately trip over any (future) use of
-__counted_by()[1] for these (since the counted-by member would be
-initialized to zero), but I think I have a solution. (See below.)
-
-> 
-> Actual usage for ice driver is in next patch of the series.
-> 
-> Note that "struct" kw and "*" char is moved to the caller, to both:
-> have shorter macro name, and have more natural type specification
-> in the driver code (IOW not hiding an actual type of var).
+On Tue, Aug 01, 2023 at 01:19:23PM +0200, Przemek Kitszel wrote:
+> Use DECLARE_FLEX() macro for 1-elem flex array members of ice_switch.c
 > 
 > Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > ---
->  include/linux/overflow.h | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
+>  drivers/net/ethernet/intel/ice/ice_switch.c | 53 +++++----------------
+>  1 file changed, 12 insertions(+), 41 deletions(-)
 > 
-> diff --git a/include/linux/overflow.h b/include/linux/overflow.h
-> index f9b60313eaea..403b7ec120a2 100644
-> --- a/include/linux/overflow.h
-> +++ b/include/linux/overflow.h
-> @@ -309,4 +309,18 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
->  #define struct_size_t(type, member, count)					\
->  	struct_size((type *)NULL, member, count)
->  
-> +/**
-> + * DECLARE_FLEX() - Declare an on-stack instance of structure with trailing
-> + * flexible array.
-> + * @type: Pointer to structure type, including "struct" keyword and "*" char.
-> + * @name: Name for a (pointer) variable to create.
-> + * @member: Name of the array member.
-> + * @count: Number of elements in the array; must be compile-time const.
-> + *
-> + * Declare an instance of structure *@type with trailing flexible array.
-> + */
-> +#define DECLARE_FLEX(type, name, member, count)					\
-> +	u8 name##_buf[struct_size((type)NULL, member, count)] __aligned(8) = {};\
-> +	type name = (type)&name##_buf
-> +
->  #endif /* __LINUX_OVERFLOW_H */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+> index a7afb612fe32..41679cb6b548 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_switch.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+> @@ -1812,15 +1812,11 @@ ice_aq_alloc_free_vsi_list(struct ice_hw *hw, u16 *vsi_list_id,
+>  			   enum ice_sw_lkup_type lkup_type,
+>  			   enum ice_adminq_opc opc)
+>  {
+> -	struct ice_aqc_alloc_free_res_elem *sw_buf;
+> +	DECLARE_FLEX(struct ice_aqc_alloc_free_res_elem *, sw_buf, elem, 1);
+> +	u16 buf_len = struct_size(sw_buf, elem, 1);
 
-I was disappointed to discover that only global (static) initializers
-would work for a flex array member. :(
+With the macro I suggested, I think this line can become:
 
-i.e. this works:
+	u16 buf_len = __builtin_object_size(sw_buf, 1);
 
-struct foo {
-    unsigned long flags;
-    unsigned char count;
-    int array[] __counted_by(count);
-};
-
-struct foo global = {
-    .count = 1,
-    .array = { 0 },
-};
-
-But I can't do that on the stack. :P So, yes, it seems like the u8 array
-trick is needed.
-
-It looks like Alexander already suggested this, and I agree, instead of
-__aligned(8), please use "__aligned(_Alignof(type))".
-
-As for "*" or not, I would tend to agree that always requiring "*" when
-using the macro seems redundant.
-
-Initially I was struggling to make __counted_by work, but it seems we can
-use an initializer for that member, as long as we don't touch the flexible
-array member in the initializer. So we just need to add the counted-by
-member to the macro, and use a union to do the initialization. And if
-we take the address of the union (and not the struct within it), the
-compiler will see the correct object size with __builtin_object_size:
-
-#define DEFINE_FLEX(type, name, flex, counter, count) \
-    union { \
-        u8   bytes[struct_size_t(type, flex, count)]; \
-        type obj; \
-    } name##_u __aligned(_Alignof(type)) = { .obj.counter = count }; \
-    /* take address of whole union to get the correct __builtin_object_size */ \
-    type *name = (type *)&name##_u
-
-i.e. __builtin_object_size(name, 1) (as used by FORTIFY_SOURCE, etc)
-works correctly here, but breaks (sees a zero-sized flex array member)
-if this macro ends with:
-
-    type *name = &name##_u.obj
-
+but either is fine. (N.B. the "1" here is a bitfield, not the "1" size
+above).
 
 -Kees
-
-[1] https://git.kernel.org/linus/dd06e72e68bcb4070ef211be100d2896e236c8fb
 
 -- 
 Kees Cook
