@@ -1,85 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 198D976CA9E
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Aug 2023 12:18:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AC4A76CC76
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Aug 2023 14:19:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3D45F8164A;
-	Wed,  2 Aug 2023 10:18:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D45F8164A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5C47F60B60;
+	Wed,  2 Aug 2023 12:18:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5C47F60B60
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1690971531;
-	bh=d0/VOpe3hCdYuE6ZUA/VI+uvmYB+kQeLzk0DYjCxEYo=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=25mFMqr1aKxbVhdEZaNMakokaDOJldwfFfuSTEMJwoo42oNFLZSmrUrZ8M3WJkCJM
-	 hENVk8SIkvczPHtcgKbJVi68V6grojkYbgutG111P3lM2E733/INEmxw4MpLCFHBKB
-	 IG9Lr1uLhcWe1NKypPhVloYLNlp6moBE4j7VYWAoWRI2Wp/rnc5o7ohMpd2tVcbjZ3
-	 bPSeYxsiRQ9kbqYVjOhg9P5FbGefIsaXuyxLcUUN40luBdNCpihWGmBEF5/+s9bqkV
-	 9k4OSLeVe0Gnzbuh2K29RLOcS7Wp234oAB1PRMVHMgtqlRdi5Qczg/J1+Gt0PlR/1T
-	 dQbbUPqpa+HCg==
+	s=default; t=1690978738;
+	bh=peagcNmHwtMthOw3Fw0q7w88ZCxV6mX56wgVRzEwudQ=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=x5mW62fRdzmTL2/d5noRaaIyuxopXDNIKFP7IDmmNf3tGNZujHYqSLl/txDrgszK4
+	 /Atvn+j3UmvkyUjfNmhUxc+CgKMtiVNwW87h6wdLuohpOF9iRi+tO/ZLRicU0D5o83
+	 sfRRZmLMtzgvY+lKgJghy0bN87iriLlhqftCXARxeRRmPht8IGxlOX6OCakH5/g+xI
+	 F/waBu5AIrPRy6OF8gUeeM2I63zOHg6BZIcWR81A3UlnGmwTuBJG8S57F17KjV2+cE
+	 vbi8WqtxBVf/Pm8/Q2LZl2YaAQYsVdPHgmofjNCidBMYYhct0u3FL57kS3O7CibMld
+	 DGQcUBFC2gFdw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3ibk67mJa42Y; Wed,  2 Aug 2023 10:18:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0dVnxb745EbV; Wed,  2 Aug 2023 12:18:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0D6B380B81;
-	Wed,  2 Aug 2023 10:18:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D6B380B81
+	by smtp3.osuosl.org (Postfix) with ESMTP id 556D2607A4;
+	Wed,  2 Aug 2023 12:18:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 556D2607A4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 97F631BF2CD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 10:18:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5FFAC1BF322
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 12:18:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2BD0681656
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 10:18:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BD0681656
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7BD9C81767
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 12:18:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7BD9C81767
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YxKMHY3ZCqPV for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Aug 2023 10:18:27 +0000 (UTC)
-Received: from mgamail.intel.com (unknown [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 30A618137E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 10:18:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 30A618137E
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="373183587"
-X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; d="scan'208";a="373183587"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2023 03:18:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="843079333"
-X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; d="scan'208";a="843079333"
-Received: from lkp-server01.sh.intel.com (HELO d1ccc7e87e8f) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 02 Aug 2023 03:18:24 -0700
-Received: from kbuild by d1ccc7e87e8f with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qR8vw-00017I-0e
- for intel-wired-lan@lists.osuosl.org; Wed, 02 Aug 2023 10:18:24 +0000
-Date: Wed, 02 Aug 2023 18:17:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202308021832.zXK7oNSt-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690971507; x=1722507507;
- h=date:from:to:subject:message-id;
- bh=RhHgx0F/HdKXRiIymTlmmL0I3JxQVLwyoI6Eg4Js/gM=;
- b=VBHIvD1JtDzQNBTwP5/mNcsnkvZZq6iqM4/sUb2DR1kgP3dhI8/zvAh/
- 7K/eLLn+/lO6jiFhkV8LByHwelm9bzL+25FsnOSgWp0rL8jXqGz6kLb2x
- HwdYj6cYWBuk38n8HRf0MLJCk5H/6N6ZLmXmUUez9V81ZJksk6UevXd36
- HyETqWzg7OgJQbqK38UOKrsN/MC3WMlmJIRRtnhlWVuaK4qNha/K+MPwf
- A3pnihcylu7cLHQGsMSFRE7KyESRsMxrWcLJ5V7235mbHtb481NKT49+v
- wabgvAMYXxSs0ODKJkHSnjpHZopB2mM5yVcVkNYmZFyURaZ/dG51A02ad
- w==;
+ with ESMTP id Nv_2LeYC2oum for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Aug 2023 12:18:16 +0000 (UTC)
+X-Greylist: delayed 79239 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 02 Aug 2023 12:18:15 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2D3980BBB
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E2D3980BBB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Aug 2023 12:18:15 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+In-Reply-To: <20230801182421.1997560-7-vladimir.oltean@nxp.com>
+References: <20230801182421.1997560-1-vladimir.oltean@nxp.com>
+ <20230801182421.1997560-7-vladimir.oltean@nxp.com>
+Date: Wed, 02 Aug 2023 14:18:10 +0200
+Message-ID: <87cz05k58d.fsf@kurt>
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1690978692;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bMAneZp3OckYjyE32V73PiGzEMsgoPXCBUkh4CsnmoU=;
+ b=w3ThA7Z06zmpY68gr+ESi4ZA/mC3537QiRzz6v6ozvn3HuQiIJ2ksA3J++l+F9MwQKyBdy
+ cHA126rZVZnUofpwO4HJyjfE4zvv6wGjuYqKqpVjSkfehc8+ZmcPtPyFyKHiQ7DKeDoaBH
+ myzoKh8CUDjSJmhz9UWlpc5v8yEvS/dTrBu1rErjIxqzd1XuYYxe7FK3PmV9Xgk7iikpnv
+ nxyPMnGyyZ6Mf38kzIS6lcYClILMH+kczPtJ9JinQRVtKpkuCPI/dQGhUiCy4I9V2N6cBV
+ 91P0WnRwJ8zl4Z6hh7O3qJ7dAi9JcFp8NejJP7CM2h9rk276exwwPJa21TP1kw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1690978692;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bMAneZp3OckYjyE32V73PiGzEMsgoPXCBUkh4CsnmoU=;
+ b=wNFbAxGuBxg98WB6+t3Oe71370gKrw7ZsemKYB400LiMLrfeCeygtP6DuZP4VJM9k7Ym9V
+ JNUVjJaVCTGH1wDw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VBHIvD1J
-Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
- 7ee0a2c40bd5c73ee8ad6363f3c5ea76ac13ceb4
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=w3ThA7Z0; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=wNFbAxGu
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next 06/10] net: ptp: create a
+ mock-up PTP Hardware Clock driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,142 +94,230 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Jamal Hadi Salim <jhs@mojatatu.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Maxim Georgiev <glipus@gmail.com>, Cong Wang <xiyou.wangcong@gmail.com>,
+ Peilin Ye <yepeilin.cs@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Zhengchao Shao <shaozhengchao@huawei.com>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============4974214375730906322=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
-branch HEAD: 7ee0a2c40bd5c73ee8ad6363f3c5ea76ac13ceb4  igc: Modify the tx-usecs coalesce setting
+--===============4974214375730906322==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-elapsed time: 1007m
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-configs tested: 113
-configs skipped: 7
+Hi Vladimir,
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+this looks good. One question below.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r011-20230731   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                 nsimosci_hs_smp_defconfig   gcc  
-arc                  randconfig-r031-20230731   gcc  
-arc                  randconfig-r043-20230731   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                        clps711x_defconfig   gcc  
-arm                                 defconfig   gcc  
-arm                  randconfig-r004-20230801   clang
-arm                  randconfig-r046-20230731   gcc  
-arm                         socfpga_defconfig   clang
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r013-20230731   clang
-csky                                defconfig   gcc  
-hexagon              randconfig-r021-20230731   clang
-hexagon              randconfig-r041-20230731   clang
-hexagon              randconfig-r045-20230731   clang
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-r004-20230731   gcc  
-i386         buildonly-randconfig-r005-20230731   gcc  
-i386         buildonly-randconfig-r006-20230731   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                 randconfig-i001-20230731   gcc  
-i386                 randconfig-i002-20230731   gcc  
-i386                 randconfig-i003-20230731   gcc  
-i386                 randconfig-i004-20230731   gcc  
-i386                 randconfig-i005-20230731   gcc  
-i386                 randconfig-i006-20230731   gcc  
-i386                 randconfig-i011-20230731   clang
-i386                 randconfig-i012-20230731   clang
-i386                 randconfig-i013-20230731   clang
-i386                 randconfig-i014-20230731   clang
-i386                 randconfig-i015-20230731   clang
-i386                 randconfig-i016-20230731   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch            randconfig-r016-20230731   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze           randconfig-r005-20230801   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                        omega2p_defconfig   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r001-20230801   gcc  
-openrisc             randconfig-r014-20230731   gcc  
-openrisc             randconfig-r036-20230731   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc               randconfig-r023-20230731   gcc  
-parisc               randconfig-r024-20230731   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                      arches_defconfig   gcc  
-powerpc                    sam440ep_defconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r034-20230731   gcc  
-riscv                randconfig-r042-20230731   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r044-20230731   clang
-sh                               allmodconfig   gcc  
-sh                         apsh4a3a_defconfig   gcc  
-sh                               j2_defconfig   gcc  
-sh                          polaris_defconfig   gcc  
-sh                   randconfig-r006-20230801   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r003-20230801   gcc  
-sparc64              randconfig-r015-20230731   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                   randconfig-r032-20230731   clang
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-r001-20230731   gcc  
-x86_64       buildonly-randconfig-r002-20230731   gcc  
-x86_64       buildonly-randconfig-r003-20230731   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64               randconfig-x001-20230731   clang
-x86_64               randconfig-x002-20230731   clang
-x86_64               randconfig-x003-20230731   clang
-x86_64               randconfig-x004-20230731   clang
-x86_64               randconfig-x005-20230731   clang
-x86_64               randconfig-x006-20230731   clang
-x86_64               randconfig-x011-20230731   gcc  
-x86_64               randconfig-x012-20230731   gcc  
-x86_64               randconfig-x013-20230731   gcc  
-x86_64               randconfig-x014-20230731   gcc  
-x86_64               randconfig-x015-20230731   gcc  
-x86_64               randconfig-x016-20230731   gcc  
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa               randconfig-r022-20230731   gcc  
-xtensa               randconfig-r033-20230731   gcc  
+On Tue Aug 01 2023, Vladimir Oltean wrote:
+> There are several cases where virtual net devices may benefit from
+> having a PTP clock, and these have to do with testing. I can see at
+> least netdevsim and veth as potential users of a common mock-up PTP
+> hardware clock driver.
+>
+> The proposed idea is to create an object which emulates PTP clock
+> operations on top of the unadjustable CLOCK_MONOTONIC_RAW plus a
+> software-controlled time domain via a timecounter/cyclecounter and then
+> link that PHC to the netdevsim device.
+>
+> The driver is fully functional for its intended purpose, and it
+> successfully passes the PTP selftests.
+>
+> $ cd tools/testing/selftests/ptp/
+> $ ./phc.sh /dev/ptp2
+> TEST: settime                          [ OK ]
+> TEST: adjtime                          [ OK ]
+> TEST: adjfreq                          [ OK ]
+>
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> ---
+> v2->v3:
+> - split off ptp_mock into separate patch
+> - fix ptp_mock compilation as a module
+> - turn phc->lock into a global spinlock
+> - drop bogus support for ptp_clock_register() ever returning NULL
+> - add MAINTAINERS entry
+> v1->v2: patch is new
+>
+>  MAINTAINERS              |   7 ++
+>  drivers/ptp/Kconfig      |  11 +++
+>  drivers/ptp/Makefile     |   1 +
+>  drivers/ptp/ptp_mock.c   | 175 +++++++++++++++++++++++++++++++++++++++
+>  include/linux/ptp_mock.h |  38 +++++++++
+>  5 files changed, 232 insertions(+)
+>  create mode 100644 drivers/ptp/ptp_mock.c
+>  create mode 100644 include/linux/ptp_mock.h
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index c4f95a9d03b9..164b7930f5d0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -17175,6 +17175,13 @@ F:	drivers/ptp/*
+>  F:	include/linux/ptp_cl*
+>  K:	(?:\b|_)ptp(?:\b|_)
+>=20=20
+> +PTP MOCKUP CLOCK SUPPORT
+> +M:	Vladimir Oltean <vladimir.oltean@nxp.com>
+> +L:	netdev@vger.kernel.org
+> +S:	Maintained
+> +F:	drivers/ptp/ptp_mock.c
+> +F:	include/linux/ptp_mock.h
+> +
+>  PTP VIRTUAL CLOCK SUPPORT
+>  M:	Yangbo Lu <yangbo.lu@nxp.com>
+>  L:	netdev@vger.kernel.org
+> diff --git a/drivers/ptp/Kconfig b/drivers/ptp/Kconfig
+> index 32dff1b4f891..ed9d97a032f1 100644
+> --- a/drivers/ptp/Kconfig
+> +++ b/drivers/ptp/Kconfig
+> @@ -155,6 +155,17 @@ config PTP_1588_CLOCK_IDTCM
+>  	  To compile this driver as a module, choose M here: the module
+>  	  will be called ptp_clockmatrix.
+>=20=20
+> +config PTP_1588_CLOCK_MOCK
+> +	tristate "Mock-up PTP clock"
+> +	depends on PTP_1588_CLOCK
+> +	help
+> +	  This driver offers a set of PTP clock manipulation operations over
+> +	  the system monotonic time. It can be used by virtual network device
+> +	  drivers to emulate PTP capabilities.
+> +
+> +	  To compile this driver as a module, choose M here: the module
+> +	  will be called ptp_mock.
+> +
+>  config PTP_1588_CLOCK_VMW
+>  	tristate "VMware virtual PTP clock"
+>  	depends on ACPI && HYPERVISOR_GUEST && X86
+> diff --git a/drivers/ptp/Makefile b/drivers/ptp/Makefile
+> index 553f18bf3c83..dea0cebd2303 100644
+> --- a/drivers/ptp/Makefile
+> +++ b/drivers/ptp/Makefile
+> @@ -16,6 +16,7 @@ ptp-qoriq-y				+=3D ptp_qoriq.o
+>  ptp-qoriq-$(CONFIG_DEBUG_FS)		+=3D ptp_qoriq_debugfs.o
+>  obj-$(CONFIG_PTP_1588_CLOCK_IDTCM)	+=3D ptp_clockmatrix.o
+>  obj-$(CONFIG_PTP_1588_CLOCK_IDT82P33)	+=3D ptp_idt82p33.o
+> +obj-$(CONFIG_PTP_1588_CLOCK_MOCK)	+=3D ptp_mock.o
+>  obj-$(CONFIG_PTP_1588_CLOCK_VMW)	+=3D ptp_vmw.o
+>  obj-$(CONFIG_PTP_1588_CLOCK_OCP)	+=3D ptp_ocp.o
+>  obj-$(CONFIG_PTP_DFL_TOD)		+=3D ptp_dfl_tod.o
+> diff --git a/drivers/ptp/ptp_mock.c b/drivers/ptp/ptp_mock.c
+> new file mode 100644
+> index 000000000000..1525aafca752
+> --- /dev/null
+> +++ b/drivers/ptp/ptp_mock.c
+> @@ -0,0 +1,175 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright 2023 NXP
+> + *
+> + * Mock-up PTP Hardware Clock driver for virtual network devices
+> + *
+> + * Create a PTP clock which offers PTP time manipulation operations
+> + * using a timecounter/cyclecounter on top of CLOCK_MONOTONIC_RAW.
+> + */
+> +
+> +#include <linux/ptp_clock_kernel.h>
+> +#include <linux/ptp_mock.h>
+> +#include <linux/timecounter.h>
+> +
+> +/* Clamp scaled_ppm between -2,097,152,000 and 2,097,152,000,
+> + * and thus "adj" between -68,719,476 and 68,719,476
+> + */
+> +#define MOCK_PHC_MAX_ADJ_PPB		32000000
+> +/* Timestamps from ktime_get_raw() have 1 ns resolution, so the scale fa=
+ctor
+> + * (MULT >> SHIFT) needs to be 1. Pick SHIFT as 31 bits, which translates
+> + * MULT(freq 0) into 0x80000000.
+> + */
+> +#define MOCK_PHC_CC_SHIFT		31
+> +#define MOCK_PHC_CC_MULT		(1 << MOCK_PHC_CC_SHIFT)
+> +#define MOCK_PHC_FADJ_SHIFT		9
+> +#define MOCK_PHC_FADJ_DENOMINATOR	15625ULL
+> +
+> +/* The largest cycle_delta that timecounter_read_delta() can handle with=
+out a
+> + * 64-bit overflow during the multiplication with cc->mult, given the ma=
+x "adj"
+> + * we permit, is ~8.3 seconds. Make sure readouts are more frequent than=
+ that.
+> + */
+> +#define MOCK_PHC_REFRESH_INTERVAL	(HZ * 5)
+> +
+> +#define info_to_phc(d) container_of((d), struct mock_phc, info)
+> +
+> +static DEFINE_SPINLOCK(mock_phc_lock);
+> +
+> +struct mock_phc {
+> +	struct ptp_clock_info info;
+> +	struct ptp_clock *clock;
+> +	struct timecounter tc;
+> +	struct cyclecounter cc;
+> +};
+> +
+> +static u64 mock_phc_cc_read(const struct cyclecounter *cc)
+> +{
+> +	return ktime_to_ns(ktime_get_raw());
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Maybe return ktime_get_raw_ns()?
+
+> +}
+> +
+> +static int mock_phc_adjfine(struct ptp_clock_info *info, long scaled_ppm)
+> +{
+> +	struct mock_phc *phc =3D info_to_phc(info);
+> +	s64 adj;
+> +
+> +	adj =3D (s64)scaled_ppm << MOCK_PHC_FADJ_SHIFT;
+> +	adj =3D div_s64(adj, MOCK_PHC_FADJ_DENOMINATOR);
+> +
+> +	spin_lock_bh(&mock_phc_lock);
+
+Why spin_lock_bh()? What's executed in bh context here? The PTP aux
+worker runs in thread context.
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmTKSYITHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgmalD/0T4fNzGBAhSXGDvnb/llJaos7360ga
+pc+sYaEa9wRcbZf+Q8fwg/cUsNd73a6weLS7SPlNzq3BOpzmL+nKC/fFj5DwSWB+
+D8TJdIeugioy0OJQ/nhovu+32o4BDaRaP3sd4z2XyyvU4kuLBdRvRopX6sXc4lyf
+Z+6GlOX0n96XSHqix4nv0HHj6iHRXWzbFvcXQBinJTJMY1WNzrdX+jpZ75X90J3a
+BWPjiJ2v+N0KAzGA1eLf71lKhUnugIZjX85nbDqP/ZsOuSKTwk3+0+mtwchDHiL+
+VWrtNTNseprLbBrgPD1Vm6o1KuxksEAvDEm/VQdkPI6s7/+trw4wJMP4+ASY36cj
+J2H+Y4H1uIsOtjOCoFKghJMVRS8Vij4/YgbJVsExd+h4mQndiWmyOZTVcP+EwfOV
+infkBmIPeXcjDsHd0Xw5d8GUYbcZeFSs8V90D9qeX2S773OZrpaKIWaU1BffGhZo
+gCXzE5zNAPqJPcrQGrbnwk69IJ5Bhso19eU77xrNsbR3cBB3a3mASG0VqorfDmrk
+mHq136FJ3U+W1bL+gNORu5I377DvDrbIoMYeywK9C+NF8X2jR9kYYoWnzVgQONEb
+YOJwP9osD/3nKJVKjXwu+oJrY3bv4GWutDMFRMu3MfpTMopR36POg4nNSn+B6A/A
+INKSRgt2BvMLAA==
+=p7Jf
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============4974214375730906322==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4974214375730906322==--
