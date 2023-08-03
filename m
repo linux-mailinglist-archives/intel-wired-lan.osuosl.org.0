@@ -1,84 +1,190 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 290EF76DE58
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Aug 2023 04:39:05 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CECC76DF02
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Aug 2023 05:29:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 11E3561330;
-	Thu,  3 Aug 2023 02:39:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11E3561330
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1173D61309;
+	Thu,  3 Aug 2023 03:29:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1173D61309
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691030343;
-	bh=PeMVdmX5/0dqpeiR6OLkCf5Im/5ezHAj0TsIHLV1T8Q=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Wdu/SQgbXG1Wjc0CGk+XEB6LebP+wbqVpuUhNl5V7SAFUjpGOO6UGYvCJC0So0Qqk
-	 vqxalkUxuXzHFrvRMCTEVg6zZMHiTRFp6eRQqwsy4O1coQDf9BHMubNqwEsUv99cGu
-	 QZnjaI8yU108q+uCDp9uXBzewS9Fcclsi1QY6pj3W9xMH9tZDKb/u99CA/dsMCzXR6
-	 zhYHdORz1y495BGyAEeBQigf4FCq4Pt2bw2F0FKwHAtg+P0jeQgLXEZpNycLcoFtAQ
-	 ptuEVN8Jga5RcponZIKT0PkFhubkVedec/X5KnIZWyFZGQIIte8jzksDkg3WcwBpeE
-	 PHgdgbdqegmLA==
+	s=default; t=1691033359;
+	bh=wK5A3tFOr155LOD1yGdJRmxRE1/z4pY1bf0dgZ7IEls=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=4NNa7UdOofoHUrTs0N1O0HK8nz3BCwLlefiBIfcgXHaA/WXvKNZbxvpdbe9V83JSw
+	 +kkhCAQrvsKeSnxNSAYmMWcNqSE4jTHUnAIpyeDwFduXMEWlbmXQ24XkTLfiSSG5gQ
+	 uXxJit182aKFUwLMgK0gcy3QEKof++eYQb1oDn4MQw0Ns6swRIquyToEPC+JQ2kLb7
+	 GeYNalnNJVKzRTbtAjueNpYTu/714+/YBHqXkJ2HJR7Gi2/fm/vNZ20GO2sCekFKaa
+	 s5wqzrczCDlKoo/PX2zA4x/7itt6b02OjiZ1paGJHHpvU/kxH0pgG9mu/YVxrftr8s
+	 9icY50OJu2qUg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C4MRZBVGsfO0; Thu,  3 Aug 2023 02:39:02 +0000 (UTC)
+	with ESMTP id r8nEi9RG4dZG; Thu,  3 Aug 2023 03:29:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F05B36132B;
-	Thu,  3 Aug 2023 02:39:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F05B36132B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 490C9612C9;
+	Thu,  3 Aug 2023 03:29:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 490C9612C9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4DCE11BF420
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 02:38:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C88D1BF38C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 03:29:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8275441883
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 02:38:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8275441883
+ by smtp4.osuosl.org (Postfix) with ESMTP id 85BBE41C07
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 03:28:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85BBE41C07
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dc1-6tiYIJ4K for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Aug 2023 02:38:35 +0000 (UTC)
+ with ESMTP id 8yRSggM5louz for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Aug 2023 03:28:25 +0000 (UTC)
 Received: from mgamail.intel.com (unknown [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 12D88402F0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 02:38:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12D88402F0
-X-IronPort-AV: E=McAfee;i="6600,9927,10790"; a="436067350"
-X-IronPort-AV: E=Sophos;i="6.01,250,1684825200"; d="scan'208";a="436067350"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B2C1E41C56
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Aug 2023 03:28:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2C1E41C56
+X-IronPort-AV: E=McAfee;i="6600,9927,10790"; a="436073551"
+X-IronPort-AV: E=Sophos;i="6.01,251,1684825200"; d="scan'208";a="436073551"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2023 19:38:06 -0700
+ 02 Aug 2023 20:28:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10790"; a="706383785"
-X-IronPort-AV: E=Sophos;i="6.01,250,1684825200"; d="scan'208";a="706383785"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.129])
- by orsmga006.jf.intel.com with ESMTP; 02 Aug 2023 19:38:05 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  3 Aug 2023 05:37:58 +0300
-Message-Id: <20230803023758.3916368-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.25.1
+X-IronPort-AV: E=McAfee;i="6600,9927,10790"; a="723086646"
+X-IronPort-AV: E=Sophos;i="6.01,251,1684825200"; d="scan'208";a="723086646"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga007.jf.intel.com with ESMTP; 02 Aug 2023 20:28:21 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Wed, 2 Aug 2023 20:28:21 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Wed, 2 Aug 2023 20:28:21 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Wed, 2 Aug 2023 20:28:20 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kXld+uZBgd4Y7n1s1gaV9dX2R9MTSUlWnoDdS6lQQCIJm93RmUkFa99vJzx3Lly3E9ULEwGf96EhXTlskdiM/zPKiPejToc++9ub5/NI6/qwPP95b16L+AgmSS8P/uPKBTdwFtSGw03xMv9LDXHWOd3/3MVjvzesHg3n/ua1SJ2GrNruZPOPUKtP0B5/YJ+dQEEwHMBvuQXDrTSH75A27RtV3aeGvJvv2lmmaGWnWDGaIE6XztqfDVAFcECK1w29dU1CId8viUnegido366cWfcp6uLB6eCXXeMlxV16opME8nIhMzYKvZ+kNWlzT+xYlL7zCxLTbnnhnYS3j7Qt5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kJIlAmcQxpPlGV5FqDCURhOCCgBW1BfLBsCpGjlTJYA=;
+ b=TzSmk1aB/KXGuTsnBdvbSOK7N1ZW6d6W4jIoghhSVlDGcIF3rblMh/HmpNjAKcfuL0oLLIcaPUmYosmqocV1NHjpAzqTXAcOr6zIITHc0wdTm7QStIZ2+Gjwd1LOyng/N/6i5kRuWDaeCMa5k2I0exTWS53d35jg7pfGprV/XmMUysjUqYCDRLm2kwfrrATu5To6LgDws2kdYH1LjQI3NAWuRg4pHeqPPJ57MqlSAOq96FPXFmpPjWIxG00JDW7J9bjIHXVvUaUlfeA9qR3yJ5iyPOTzH38DvkKm53LSdkKfRUNdjwY8AdjflOXr5LafD49VDfzIsgIdGhs+/GnO2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3723.namprd11.prod.outlook.com (2603:10b6:5:13f::25)
+ by SJ0PR11MB5216.namprd11.prod.outlook.com (2603:10b6:a03:2db::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.45; Thu, 3 Aug
+ 2023 03:28:17 +0000
+Received: from DM6PR11MB3723.namprd11.prod.outlook.com
+ ([fe80::1e9e:bb95:66b2:e3f1]) by DM6PR11MB3723.namprd11.prod.outlook.com
+ ([fe80::1e9e:bb95:66b2:e3f1%4]) with mapi id 15.20.6631.046; Thu, 3 Aug 2023
+ 03:28:17 +0000
+From: "Guo, Junfeng" <junfeng.guo@intel.com>
+To: ivecera <ivecera@redhat.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v2 02/15] ice: init imem table
+ for parser
+Thread-Index: AQHZl3FOtYAT078BFEOFJA0Eo3RTL6/JA7IAgA3dD7CAAKQuAIAAuKAw
+Date: Thu, 3 Aug 2023 03:28:17 +0000
+Message-ID: <DM6PR11MB372355B3509297045B545D48E708A@DM6PR11MB3723.namprd11.prod.outlook.com>
+References: <20230605054641.2865142-1-junfeng.guo@intel.com>
+ <20230605054641.2865142-3-junfeng.guo@intel.com>
+ <6142fcbd-c72e-078a-3194-9a3fab8ed9d2@redhat.com>
+ <DM6PR11MB372330301635F94A420222E2E70BA@DM6PR11MB3723.namprd11.prod.outlook.com>
+ <04a9e818-3c36-7aa0-09a1-934ac44fb3ba@redhat.com>
+In-Reply-To: <04a9e818-3c36-7aa0-09a1-934ac44fb3ba@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM6PR11MB3723:EE_|SJ0PR11MB5216:EE_
+x-ms-office365-filtering-correlation-id: 80a22f43-cdba-43ba-e32f-08db93d1ad71
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: lG9mnsYuQqMtDdgDdxW0dIbZYav4Z+R6Xvp5ccKTZEmvbjeinC8tHGN3Y4NtozLfniTi74lhgUjVgpa+KzHUgzr+oaoAdMQ5Qy0Mj/yBpDcDWaZzq1tok96ZZlqDvtwIRKGXWS1bsB7iGHkCIQAmOJg0F4ghWfUg7l2nOFuDOqzZSEc65/SKii+5tYHCkIRHAdcy8EqWHJB9vXYHO+cCrQtXCdl1U6oclFbVvLk/bC/hm5d0d9LYt+7ynITNGb3r9dN4jHzZ+fjrZNj+N48G/S+Oz6KZnHsWIrRXwC20VE8JlHzm1MprocWT9tPwBxoB+weWVFAuE86u+gbIpPSoNj4SVgkuR5CelQvYg6SJFOMAEAj5iSZmAGQZzfhAah7g/yju5LWGRRGGhEoDveiEysvIJijadb/bcoBOGSus/p4E2IDZjd9zcMc2eGok9MlxXn5GKoqss0REP5QD+RmZB/wWMttv15ySsbg/uL48RX1R+bDVVPoJ1PK3AIgmWWM7NcyH6Ax+egTWjNf5jzc/aLr+BlK55XpbQYujGcsfLCFr2LiTTjxiyPKfjufTJhmd78hDMu+k84c3rV6fn6pxJdzezLzg4rLAPMwmZcmbeTDZv1UFnkykYp/M6rQiJYg5
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3723.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(136003)(376002)(346002)(39860400002)(396003)(451199021)(66946007)(64756008)(86362001)(66446008)(66476007)(66556008)(7696005)(71200400001)(52536014)(76116006)(9686003)(2906002)(4326008)(54906003)(110136005)(55016003)(33656002)(478600001)(83380400001)(38100700002)(41300700001)(122000001)(82960400001)(5660300002)(8676002)(8936002)(26005)(53546011)(38070700005)(6506007)(186003)(316002)(30864003)(559001)(579004);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eHdoVG81R1g1eTZmdGFtZk42ZFRML0JCNjN3dWpHV2dRd1QyNElyVElXdTd6?=
+ =?utf-8?B?bk5RdkRHa2dUeTUrTUJpakFCa3owNWRucHV3OEtkbUpIdXVVeUhQRXFQRHNL?=
+ =?utf-8?B?YWlKek5tQnpidG1hd0tqenJ6TmNhR1RoREcyL1d0N05aVlhwV2I5aVdkdHor?=
+ =?utf-8?B?NmRmakNTalI5cmY2aGNHQXdQd0hzVG11enA5NXIreUE0VmdlZkd4Z1pmL2FG?=
+ =?utf-8?B?SFdFSmVUN29TZ29tdzJqbXloeFlyUWhqQTJqdTlsUk9FMUJuL3g4ZGxMOTVi?=
+ =?utf-8?B?QnVZWGFTZTQ4bXo3QW85aXV3cGlKa1I3MkFsMXFjSzN1dHJrZ2dTVUpRMlAx?=
+ =?utf-8?B?UmVYdmJEUGtWZlZiV2VkeDNpWFBVMUhaVU1DeVY1N0NXeTA1UHlSU3EzbkNk?=
+ =?utf-8?B?d24rTWVmZUVScUJVOWxpM0hkc3d3RW1EREFmaVZMNHdoaUttOE1SaVczbXhL?=
+ =?utf-8?B?ai9leUsxMGQvZU4ySWFkUC9QeGQrZnJmSkhLemZFakFoM0x0Z25haytROGx6?=
+ =?utf-8?B?anJiUUR1bFl2REZaNXdNVWt5QlNTNjZMQjN3dFR0UTE0UHphMFFLT0t6ekRV?=
+ =?utf-8?B?ZFNPYk1HS1Jmc1pOSUVyZWJMa3gyZW5RZVJBK2x2RFIxcFNleEQvcElXcC9B?=
+ =?utf-8?B?a1RMeXlycjJ5UnQ2ZDJkVER5VEFGZXg1R0c2bEgyV21CYzNJYVd0aTdvTkdY?=
+ =?utf-8?B?YTJQN2w0cXY1YjV4b0xremVMdFFqaHo5WW5HRWNDMElPaVdzREM5TUVhQXU3?=
+ =?utf-8?B?UGhUVVI3Q1VFZ2poVWg4MHJwb3EwTmRtQkRtZ1h3SU1FTHRidzhQY3hCT1lX?=
+ =?utf-8?B?VXBsWnBQZ0I1bUJrdWg3U05FQTlybUhMTi9nSmZqOUh4VENhV3c1dmRBU21U?=
+ =?utf-8?B?UVVmRFNXYmJVVnphK00wZjVDWGswYjh1THIyQWtyQXB1b2ZvK1dlS3h2dWNj?=
+ =?utf-8?B?M0M5ZkJwenU4a1JHOG1RQWdXS0txMzI2TVFOYUR3c29DSEx4Q1U0dUNRaVYz?=
+ =?utf-8?B?OHlsdlBaMnRqZFRnaEdnRm5iV0xsYUFBSEQ2dHdwMCtTTnZVdGdRWWVFYzlz?=
+ =?utf-8?B?Y3VNQmczMTlaSysycEpEMGF2TjhUNi95VGZlMms3RzBldWY3RnNBTWQyNlBK?=
+ =?utf-8?B?YUFNaXhscjA2YWVPTVNzaDdkakVUeWppU1crVFJ6QytGREQ1ZWRzenZjRlRr?=
+ =?utf-8?B?SFpBdjlWQXA3M2d5V1d2T0g2VU5Wa2NmTWY3MnFONmVIcGJIK0VlU29BWVhW?=
+ =?utf-8?B?Rk9EK29uMEgwQ0JKcUhOUkM2ckhNR2NiYUNveVhmVmU1aTRZZGMybVpMMVFs?=
+ =?utf-8?B?WitvQXRXZWF0d0Vlb1JOMi8zUHVTaUUxZTJjQnNOL1lOd1h6YnBrdmJ6RVAy?=
+ =?utf-8?B?dGFTUWxLKzJiajBIRi9RbTNtTDk1NE9LbzVoMGdUL2taRTZRZ2RjVTR3aWNR?=
+ =?utf-8?B?Y0NNWXZ6NUlBM09Wa3QvVlVIT0w3cU4zTlR4M2o1dy9KTVNJYUszTlViME81?=
+ =?utf-8?B?MG5EWmRKTXZJK0Fvd1h5ZDZMSW5tYWVOblkxclRoNkZIT1U1QllyZHhRRkxD?=
+ =?utf-8?B?eG1NdlNXd01rekc5QjVxa2hEOW9ablJ4emwyUEV6VzlydXF4dzhlaXh0b0pK?=
+ =?utf-8?B?cjRLUHU2Y3Z0WmwwZ24zZXdiV2pxRm9UK2l4TzQwRHpmNk5HaHVUR0hBdUF1?=
+ =?utf-8?B?YmU3Z0M1WnNoYytPMXBYQ3gvNjU4dEJhdHNTd2o1eVNZK0Y5UWhkajc5aFJU?=
+ =?utf-8?B?NEQxTk1NTUFqM096OFBFN0pTU1FwcEE0Rmg4RklUbnRtVFRPSmlUK1dlMGZK?=
+ =?utf-8?B?OWpTYkxzT1VaclZaUWZ4Lys1ekxoOVhDcHZzY1hzK3p0WGtJMG9BQ203LzZW?=
+ =?utf-8?B?OXpYaEw5eGNxbUFKdlE4WXJ0YTRhZWpxelZGcjAxck1xaW8xRTNmc0RQdTBZ?=
+ =?utf-8?B?YzlhNkVsMzRtaGdOVk5DU3pBSWY5OHVyTllleTRQZkFWSWZNaFM5WVBiNmQ4?=
+ =?utf-8?B?OGdrM0lOdFlmaHRvZm1NTEhRRnNOd0sxSjlKbDMwdjE0eDZtWHN1dmN5eDNR?=
+ =?utf-8?B?NXpIeEhqSlVLMzRpTUV2WFdBbjEyWFVZZzJxeWNWS0ZDeFEvbVVJL0Frc0x6?=
+ =?utf-8?Q?I0LxTclkTQnCNVDwhaHMJ2qnj?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3723.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 80a22f43-cdba-43ba-e32f-08db93d1ad71
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Aug 2023 03:28:17.0351 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: M8Yff6yl6z/KiNVp7hPGaxjJ3koSxj17O1DJBnw4bgKpnFBnwR8aWJLU+7dqIwMDwaOAri5BnjNxJkmaoi0H3w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5216
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691030315; x=1722566315;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=HB5SaPCVYyLi/5S6jihc0w4W+GiGFQo+w8XQpny+PTg=;
- b=VdrCCerCOsctSNAnszVvSwuotWYUpfk938bumIfatjDUClGG46HOyPlQ
- ho1eGwySJAgp77yE9+X3jNkjxLe/L4aiV47FGQB103UTz1MmrpkAUkPmv
- /58VeU9K7oGjKZIThChM+TwBbvB600ypSwbvTRizebpxjm9PFfyUnSGZS
- lT/uRkS9yrdn8K6Rv8Hv6FdLVSQc5b3d7Zv5iyBH8vqkllIxm/DArn7zu
- viK6ihD90OAE/zepYRqI2PiqHa2OpkL2lFrTbIg6KFYcXUqsugOKFOEGg
- rp1Wx+zy6LpeR4J+iLmCOFKfkwYVs9VmlLSGOJm0qHmNDyEOkCZklpxIs
- g==;
+ t=1691033305; x=1722569305;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=kJIlAmcQxpPlGV5FqDCURhOCCgBW1BfLBsCpGjlTJYA=;
+ b=LYkFn6/HFwuqL9BT79UW5cseG/1QRsO+dnco45CXzgyti3kp0LbInawg
+ V/TSvuFGVEkQFPpzwk2h5BZypO6x6MLz2Z83Zg5djckaQpBEILfwWi+mb
+ ni+MWMkOvBbqCbz3SgXAxsHXGDV2k6v058xmAyIS50GD3t3G6dSDu6RrZ
+ ki7R+Yn6Ldpu+8rfwp9ZXBoegRPW7kVaOaiHhuzgDFKCsNuq7Qks6+g8+
+ 7EOr5Cj20T3wY/qDXNamT2Ry89MYvtn9yEhefE92e9a/IJjNjTTR4qaBu
+ Zbe78GPaOPCJQ11GZZC1GnBd9pau//3xs4X0m8pXuIgm2T6C01EI5DUXK
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VdrCCerC
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] igc: Fix the typo in the
- PTM Control macro
+ header.a=rsa-sha256 header.s=Intel header.b=LYkFn6/H
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 02/15] ice: init imem
+ table for parser
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,39 +197,767 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Zhang, Qi Z" <qi.z.zhang@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The IGC_PTM_CTRL_SHRT_CYC defines the time between two consecutive PTM
-requests. The bit resolution of this field is six bits. That bit five was
-missing in the mask. This patch comes to correct the typo in the
-IGC_PTM_CTRL_SHRT_CYC macro.
 
-Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
-v1->v2: Fixed commit message
----
- drivers/net/ethernet/intel/igc/igc_defines.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index c3722f524ea7..0bac6eeb42c0 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -546,7 +546,7 @@
- #define IGC_PTM_CTRL_START_NOW	BIT(29) /* Start PTM Now */
- #define IGC_PTM_CTRL_EN		BIT(30) /* Enable PTM */
- #define IGC_PTM_CTRL_TRIG	BIT(31) /* PTM Cycle trigger */
--#define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x2f) << 2)
-+#define IGC_PTM_CTRL_SHRT_CYC(usec)	(((usec) & 0x3f) << 2)
- #define IGC_PTM_CTRL_PTM_TO(usec)	(((usec) & 0xff) << 8)
- 
- #define IGC_PTM_SHORT_CYC_DEFAULT	1   /* Default short cycle interval */
--- 
-2.25.1
+> -----Original Message-----
+> From: Ivan Vecera <ivecera@redhat.com>
+> Sent: Wednesday, August 2, 2023 23:57
+> To: Guo, Junfeng <junfeng.guo@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Cc: Zhang, Qi Z <qi.z.zhang@intel.com>; mschmidt
+> <mschmidt@redhat.com>; poros <poros@redhat.com>
+> Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 02/15] ice: init imem
+> table for parser
+> 
+> Hi, thank you for reply... see my inline comments...
+> 
+> Ivan
+> 
+> On 02. 08. 23 9:55, Guo, Junfeng wrote:
+> >
+> >
+> >> -----Original Message-----
+> >> From: Ivan Vecera <ivecera@redhat.com>
+> >> Sent: Monday, July 24, 2023 18:26
+> >> To: Guo, Junfeng <junfeng.guo@intel.com>; intel-wired-
+> >> lan@lists.osuosl.org
+> >> Cc: Zhang, Qi Z <qi.z.zhang@intel.com>; mschmidt
+> >> <mschmidt@redhat.com>; poros <poros@redhat.com>
+> >> Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 02/15] ice: init imem
+> >> table for parser
+> >>
+> >> See inline comments...
+> >>
+> >> On 05. 06. 23 7:46, Junfeng Guo wrote:
+> >>> Parse DDP section ICE_SID_RXPARSER_IMEM into an arrary of
+> >>> struct ice_imem_item.
+> >>>
+> >>> Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+> >>> ---
+> >>>    drivers/net/ethernet/intel/ice/ice_imem.c     | 250
+> >> ++++++++++++++++++
+> >>>    drivers/net/ethernet/intel/ice/ice_imem.h     | 108 ++++++++
+> >>>    drivers/net/ethernet/intel/ice/ice_parser.c   | 102 +++++++
+> >>>    drivers/net/ethernet/intel/ice/ice_parser.h   |   3 +
+> >>>    .../net/ethernet/intel/ice/ice_parser_util.h  |  24 ++
+> >>>    drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+> >>>    6 files changed, 488 insertions(+)
+> >>>    create mode 100644 drivers/net/ethernet/intel/ice/ice_imem.c
+> >>>    create mode 100644 drivers/net/ethernet/intel/ice/ice_imem.h
+> >>>    create mode 100644
+> drivers/net/ethernet/intel/ice/ice_parser_util.h
+> >>>
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_imem.c
+> >> b/drivers/net/ethernet/intel/ice/ice_imem.c
+> >>> new file mode 100644
+> >>> index 000000000000..2bd48f080326
+> >>> --- /dev/null
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_imem.c
+> >>> @@ -0,0 +1,250 @@
+> >>> +// SPDX-License-Identifier: GPL-2.0
+> >>> +/* Copyright (C) 2018-2023 Intel Corporation */
+> >>> +
+> >>> +#include "ice_common.h"
+> >>> +#include "ice_parser_util.h"
+> >>> +
+> >>> +#define ICE_IMEM_TABLE_SIZE 192
+> >>> +
+> >>> +static void _imem_bst_bm_dump(struct ice_hw *hw, struct
+> >> ice_bst_main *bm)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "boost main:\n");
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tal0 = %d\n", bm->al0);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tal1 = %d\n", bm->al1);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tal2 = %d\n", bm->al2);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tpg = %d\n", bm->pg);
+> >>> +}
+> >>> +
+> >>> +static void _imem_bst_kb_dump(struct ice_hw *hw, struct
+> >> ice_bst_keybuilder *kb)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "boost key builder:\n");
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tpriority = %d\n", kb->priority);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\ttsr_ctrl = %d\n", kb->tsr_ctrl);
+> >>> +}
+> >>> +
+> >>> +static void _imem_np_kb_dump(struct ice_hw *hw, struct
+> >> ice_np_keybuilder *kb)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "next proto key builder:\n");
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tops = %d\n", kb->ops);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tstart_or_reg0 = %d\n",
+> >>> +		 kb->start_or_reg0);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tlen_or_reg1 = %d\n", kb-
+> >>> len_or_reg1);
+> >>> +}
+> >>> +
+> >>> +static void _imem_pg_kb_dump(struct ice_hw *hw, struct
+> >> ice_pg_keybuilder *kb)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "parse graph key builder:\n");
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag0_ena = %d\n", kb-
+> >>> flag0_ena);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag1_ena = %d\n", kb-
+> >>> flag1_ena);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag2_ena = %d\n", kb-
+> >>> flag2_ena);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag3_ena = %d\n", kb-
+> >>> flag3_ena);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag0_idx = %d\n", kb-
+> >>> flag0_idx);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag1_idx = %d\n", kb-
+> >>> flag1_idx);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag2_idx = %d\n", kb-
+> >>> flag2_idx);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflag3_idx = %d\n", kb-
+> >>> flag3_idx);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\talu_reg_idx = %d\n", kb-
+> >>> alu_reg_idx);
+> >>> +}
+> >>> +
+> >>> +static void _imem_alu_dump(struct ice_hw *hw, struct ice_alu *alu,
+> int
+> >> index)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "alu%d:\n", index);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\topc = %d\n", alu->opc);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tsrc_start = %d\n", alu-
+> >>> src_start);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tsrc_len = %d\n", alu->src_len);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tshift_xlate_select = %d\n",
+> >>> +		 alu->shift_xlate_select);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tshift_xlate_key = %d\n",
+> >>> +		 alu->shift_xlate_key);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tsrc_reg_id = %d\n", alu-
+> >>> src_reg_id);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tdst_reg_id = %d\n", alu-
+> >>> dst_reg_id);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tinc0 = %d\n", alu->inc0);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tinc1 = %d\n", alu->inc1);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tproto_offset_opc = %d\n",
+> >>> +		 alu->proto_offset_opc);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tproto_offset = %d\n",
+> >>> +		 alu->proto_offset);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tbranch_addr = %d\n", alu-
+> >>> branch_addr);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\timm = %d\n", alu->imm);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tdst_start = %d\n", alu-
+> >>> dst_start);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tdst_len = %d\n", alu->dst_len);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflags_extr_imm = %d\n",
+> >>> +		 alu->flags_extr_imm);
+> >>> +	dev_info(ice_hw_to_dev(hw), "\tflags_start_imm= %d\n",
+> >>> +		 alu->flags_start_imm);
+> >>> +}
+> >>> +
+> >>> +/**
+> >>> + * ice_imem_dump - dump an imem item info
+> >>> + * @hw: pointer to the hardware structure
+> >>> + * @item: imem item to dump
+> >>> + */
+> >>> +void ice_imem_dump(struct ice_hw *hw, struct ice_imem_item
+> *item)
+> >>> +{
+> >>> +	dev_info(ice_hw_to_dev(hw), "index = %d\n", item->idx);
+> >>> +	_imem_bst_bm_dump(hw, &item->b_m);
+> >>> +	_imem_bst_kb_dump(hw, &item->b_kb);
+> >>> +	dev_info(ice_hw_to_dev(hw), "pg priority = %d\n", item->pg);
+> >>> +	_imem_np_kb_dump(hw, &item->np_kb);
+> >>> +	_imem_pg_kb_dump(hw, &item->pg_kb);
+> >>> +	_imem_alu_dump(hw, &item->alu0, 0);
+> >>> +	_imem_alu_dump(hw, &item->alu1, 1);
+> >>> +	_imem_alu_dump(hw, &item->alu2, 2);
+> >>> +}
+> >>> +
+> >>> +/** The function parses a 4 bits Boost Main with below format:
+> >>> + *  BIT 0: ALU 0 (bm->alu0)
+> >>> + *  BIT 1: ALU 1 (bm->alu1)
+> >>> + *  BIT 2: ALU 2 (bm->alu2)
+> >>> + *  BIT 3: Parge Graph (bm->pg)
+> >>> + */
+> >>> +static void _imem_bm_init(struct ice_bst_main *bm, u8 data)
+> >>> +{
+> >>> +	bm->al0 = (data & 0x1) != 0;
+> >>> +	bm->al1 = (data & 0x2) != 0;
+> >>> +	bm->al2 = (data & 0x4) != 0;
+> >>> +	bm->pg = (data & 0x8) != 0;
+> >>> +}
+> >>
+> >> Please introduce mask macros with values BIT(0), BIT(1)... and use
+> them
+> >> here instead of magic hardcoded values.
+> >
+> > Sure, make sense!
+> >
+> > The detailed info for each BIT has been commented before the function.
+> > It would be better to use BIT() for one bit select.
+> > But there seems no macro for bit range in kernel. Is there standard
+> usage for this purpose?
+> 
+> For bit ranges you can use GENMASK*() macros from <linux/bits.h>
+> Check this header file and also <linux/bitops.h>, there is useful stuff
+> for bit operations.
+
+Thanks for the knowledge! It helps a lot!
+Will check and utilize this for the code rebase. Thanks!
+
+> 
+> > Will update in the coming version. Thanks!
+> >
+> >>
+> >>> +
+> >>> +/** The function parses a 10 bits Boost Main Build with below
+> format:
+> >>> + *  BIT 0-7:	Priority (bkb->priority)
+> >>> + *  BIT 8:	TSR Control (bkb->tsr_ctrl)
+> >>> + *  BIT 9:	Reserved
+> >>> + */
+> >>> +static void _imem_bkb_init(struct ice_bst_keybuilder *bkb, u16 data)
+> >>> +{
+> >>> +	bkb->priority = (u8)(data & 0xff);
+> >>> +	bkb->tsr_ctrl = (data & 0x100) != 0;
+> >>> +}
+> >>
+> >> Ditto...
+> >
+> > Sure, thanks!
+> >
+> >>
+> >>> +
+> >>> +/** The function parses a 18 bits Next Protocol Key Build with below
+> >> format:
+> >>> + *  BIT 0-1:	Opcode kb->ops
+> >>> + *  BIT 2-9:	Start / Reg 0 (kb->start_or_reg0)
+> >>> + *  BIT 10-17:	Length / Reg 1 (kb->len_or_reg1)
+> >>> + */
+> >>> +static void _imem_npkb_init(struct ice_np_keybuilder *kb, u32 data)
+> >>> +{
+> >>> +	kb->ops = (u8)(data & 0x3);
+> >>> +	kb->start_or_reg0 = (u8)((data >> 2) & 0xff);
+> >>> +	kb->len_or_reg1 = (u8)((data >> 10) & 0xff);
+> >>> +}
+> >>
+> >> Ditto... the same also for shift values.
+> >
+> > Sure, thanks!
+> >
+> >>
+> >>> +
+> >>> +/** The function parses a 35 bits Parse Graph Key Build with below
+> >> format:
+> >>> + *  BIT 0:	Flag 0 Enable (kb->flag0_ena)
+> >>> + *  BIT 1-6:	Flag 0 Index (kb->flag0_idx)
+> >>> + *  BIT 7:	Flag 1 Enable (kb->flag1_ena)
+> >>> + *  BIT 8-13:	Flag 1 Index (kb->flag1_idx)
+> >>> + *  BIT 14:	Flag 2 Enable (kb->flag2_ena)
+> >>> + *  BIT 15-20:	Flag 2 Index (kb->flag2_idx)
+> >>> + *  BIT 21:	Flag 3 Enable (kb->flag3_ena)
+> >>> + *  BIT 22-27:	Flag 3 Index (kb->flag3_idx)
+> >>> + *  BIT 28-34:	ALU Register Index (kb->alu_reg_idx)
+> >>> + */
+> >>> +static void _imem_pgkb_init(struct ice_pg_keybuilder *kb, u64 data)
+> >>> +{
+> >>> +	kb->flag0_ena = (data & 0x1) != 0;
+> >>> +	kb->flag0_idx = (u8)((data >> 1) & 0x3f);
+> >>> +	kb->flag1_ena = ((data >> 7) & 0x1) != 0;
+> >>> +	kb->flag1_idx = (u8)((data >> 8) & 0x3f);
+> >>> +	kb->flag2_ena = ((data >> 14) & 0x1) != 0;
+> >>> +	kb->flag2_idx = (u8)((data >> 15) & 0x3f);
+> >>> +	kb->flag3_ena = ((data >> 21) & 0x1) != 0;
+> >>> +	kb->flag3_idx = (u8)((data >> 22) & 0x3f);
+> >>> +	kb->alu_reg_idx = (u8)((data >> 28) & 0x7f);
+> >>> +}
+> >>
+> >> ...
+> >
+> > Sure, thanks!
+> >
+> >>
+> >>> +
+> >>> +/** The function parses a 96 bits ALU entry with below format:
+> >>> + *  BIT 0-5:	Opcode (alu->opc)
+> >>> + *  BIT 6-13:	Source Start (alu->src_start)
+> >>> + *  BIT 14-18:	Source Length (alu->src_len)
+> >>> + *  BIT 19:	Shift/Xlate Select (alu->shift_xlate_select)
+> >>> + *  BIT 20-23:	Shift/Xlate Key (alu->shift_xlate_key)
+> >>> + *  BIT 24-30:	Source Register ID (alu->src_reg_id)
+> >>> + *  BIT 31-37:	Dest. Register ID (alu->dst_reg_id)
+> >>> + *  BIT 38:	Inc0 (alu->inc0)
+> >>> + *  BIT 39:	Inc1:(alu->inc1)
+> >>> + *  BIT 40:41	Protocol Offset Opcode (alu->proto_offset_opc)
+> >>> + *  BIT 42:49	Protocol Offset (alu->proto_offset)
+> >>> + *  BIT 50:57	Branch Address (alu->branch_addr)
+> >>> + *  BIT 58:73	Immediate (alu->imm)
+> >>> + *  BIT 74	Dedicated Flags Enable (alu->dedicate_flags_ena)
+> >>> + *  BIT 75:80	Dest. Start (alu->dst_start)
+> >>> + *  BIT 81:86	Dest. Length (alu->dst_len)
+> >>> + *  BIT 87	Flags Extract Imm. (alu->flags_extr_imm)
+> >>> + *  BIT 88:95	Flags Start/Immediate (alu->flags_start_imm)
+> >>> + *
+> >>> + *  NOTE: the first 5 bits are skipped as the start bit is not
+> >>> + *  byte aligned.
+> >>> + */
+> >>> +static void _imem_alu_init(struct ice_alu *alu, u8 *data)
+> >>> +{
+> >>> +	u64 d64 = *(u64 *)data >> 5;
+> >>> +
+> >>> +	alu->opc = (enum ice_alu_opcode)(d64 & 0x3f);
+> >>> +	alu->src_start = (u8)((d64 >> 6) & 0xff);
+> >>> +	alu->src_len = (u8)((d64 >> 14) & 0x1f);
+> >>> +	alu->shift_xlate_select = ((d64 >> 19) & 0x1) != 0;
+> >>> +	alu->shift_xlate_key = (u8)((d64 >> 20) & 0xf);
+> >>> +	alu->src_reg_id = (u8)((d64 >> 24) & 0x7f);
+> >>> +	alu->dst_reg_id = (u8)((d64 >> 31) & 0x7f);
+> >>> +	alu->inc0 = ((d64 >> 38) & 0x1) != 0;
+> >>> +	alu->inc1 = ((d64 >> 39) & 0x1) != 0;
+> >>> +	alu->proto_offset_opc = (u8)((d64 >> 40) & 0x3);
+> >>> +	alu->proto_offset = (u8)((d64 >> 42) & 0xff);
+> >>> +	alu->branch_addr = (u8)((d64 >> 50) & 0xff);
+> >>> +
+> >>> +	d64 = *(u64 *)(&data[7]) >> 7;
+> >>
+> >> What is at offset 7 and why shift 7?? Use corresponding macros please.
+> >
+> > This is just calculated numbers to get target bits.
+> > And the first 5 bits are skipped due to not byte aligned.
+> > Thus, 8 * 7 + 7 - 5 = 58, which is just aligned with BIT 58:73 for
+> Immediate (alu->imm).
+> >
+> > Sure, it would be better to use macros for this. Thanks!
+> 
+> Look into <linux/bitfield.h> header... I think you could use
+> FIELD_GET(), BIT() and GENMASK() macros for parsing.
+
+Thanks for the knowledge! It helps a lot! Will check for this too!
+
+> 
+> >>
+> >>> +
+> >>> +	alu->imm = (u16)(d64 & 0xffff);
+> >>> +	alu->dedicate_flags_ena = ((d64 >> 16) & 0x1) != 0;
+> >>> +	alu->dst_start = (u8)((d64 >> 17) & 0x3f);
+> >>> +	alu->dst_len = (u8)((d64 >> 23) & 0x3f);
+> >>> +	alu->flags_extr_imm = ((d64 >> 29) & 0x1) != 0;
+> >>> +	alu->flags_start_imm = (u8)((d64 >> 30) & 0xff);
+> >>> +}
+> >>> +
+> >>> +/** The function parses a 384 bits IMEM entry with below format:
+> >>> + *  BIT 0-3:	Boost Main (ii->b_m)
+> >>> + *  BIT 4-13:	Boost Key Build (ii->b_kb)
+> >>> + *  BIT 14-15:	PG Priority (ii->pg)
+> >>> + *  BIT 16-33:	Next Proto Key Build (ii->np_kb)
+> >>> + *  BIT 34-68:	PG Key Build (ii->pg_kb)
+> >>> + *  BIT 69-164:	ALU0 (ii->alu0)
+> >>> + *  BIT 165-260:ALU1 (ii->alu1)
+> >>> + *  BIT 261-356:ALU2 (ii->alu2)
+> >>> + *  BIT 357-383:Reserved
+> >>> + */
+> >>> +static void _imem_parse_item(struct ice_hw *hw, u16 idx, void
+> *item,
+> >>> +			     void *data, int size)
+> >>> +{
+> >>> +	struct ice_imem_item *ii = item;
+> >>> +	u8 *buf = data;
+> >>> +
+> >>> +	ii->idx = idx;
+> >>> +
+> >>> +	_imem_bm_init(&ii->b_m, buf[0]);
+> >>> +	_imem_bkb_init(&ii->b_kb, *((u16 *)(&buf[0])) >> 4);
+> >>> +
+> >>> +	ii->pg = (u8)((buf[1] & 0xc0) >> 6);
+> >>> +	_imem_npkb_init(&ii->np_kb, *((u32 *)(&buf[2])));
+> >>> +	_imem_pgkb_init(&ii->pg_kb, *((u64 *)(&buf[2])) >> 18);
+> >>> +	_imem_alu_init(&ii->alu0, &buf[8]);
+> >>> +	_imem_alu_init(&ii->alu1, &buf[20]);
+> >>> +	_imem_alu_init(&ii->alu2, &buf[32]);
+> >>> +
+> >>> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> >>> +		ice_imem_dump(hw, ii);
+> >>> +}
+> >>
+> >> The same also here... bits description in the comments are nice but
+> >> please use macros or enums also in the code.
+> >
+> > Sure, thanks!
+> >
+> >>
+> >>> +
+> >>> +/**
+> >>> + * ice_imem_table_get - create an imem table
+> >>> + * @hw: pointer to the hardware structure
+> >>> + */
+> >>> +struct ice_imem_item *ice_imem_table_get(struct ice_hw *hw)
+> >>> +{
+> >>> +	return (struct ice_imem_item *)
+> >>> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_IMEM,
+> >>> +					sizeof(struct ice_imem_item),
+> >>> +					ICE_IMEM_TABLE_SIZE,
+> >>> +					ice_parser_sect_item_get,
+> >>> +					_imem_parse_item);
+> >>> +}
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_imem.h
+> >> b/drivers/net/ethernet/intel/ice/ice_imem.h
+> >>> new file mode 100644
+> >>> index 000000000000..b6b923d67112
+> >>> --- /dev/null
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_imem.h
+> >>> @@ -0,0 +1,108 @@
+> >>> +/* SPDX-License-Identifier: GPL-2.0 */
+> >>> +/* Copyright (C) 2018-2023 Intel Corporation */
+> >>> +
+> >>> +#ifndef _ICE_IMEM_H_
+> >>> +#define _ICE_IMEM_H_
+> >>> +
+> >>> +struct ice_bst_main {
+> >>> +	bool al0;
+> >>> +	bool al1;
+> >>> +	bool al2;
+> >>> +	bool pg;
+> >>> +};
+> >>
+> >> Please use more descriptive names.
+> >
+> > These names are just from the spec of the hardware.
+> > Actually there is no more meaningful description about them.
+> > These functions are only used to get value from certain bits.
+> > Better to keep the names here to aligned with the spec.
+> > And we will try if we can add some doc here. Thanks!
+> >
+> >>
+> >>> +
+> >>> +struct ice_bst_keybuilder {
+> >>> +	u8 priority;
+> >>> +	bool tsr_ctrl;
+> >>> +};
+> >>> +
+> >>> +struct ice_np_keybuilder {
+> >>> +	u8 ops;
+> >>> +	u8 start_or_reg0;
+> >>> +	u8 len_or_reg1;
+> >>> +};
+> >>> +
+> >>> +struct ice_pg_keybuilder {
+> >>> +	bool flag0_ena;
+> >>> +	bool flag1_ena;
+> >>> +	bool flag2_ena;
+> >>> +	bool flag3_ena;
+> >>> +	u8 flag0_idx;
+> >>> +	u8 flag1_idx;
+> >>> +	u8 flag2_idx;
+> >>> +	u8 flag3_idx;
+> >>> +	u8 alu_reg_idx;
+> >>> +};
+> >>
+> >> What are flag0..3? More descriptive names should be fine... If they are
+> >> multipurpose you can use anonymous union of bools with context
+> >> dependent
+> >> field names inside.
+> >
+> > Same here. There is no more meaningful description in the spec.
+> > Better to keep these names, in case anyone want to lookup them in the
+> spec.
+> > But we will try if we can add some doc here.
+> > Thanks!
+> >
+> >>
+> >>> +
+> >>> +enum ice_alu_opcode {
+> >>> +	ICE_ALU_PARK = 0,
+> >>> +	ICE_ALU_MOV_ADD = 1,
+> >>> +	ICE_ALU_ADD = 2,
+> >>> +	ICE_ALU_MOV_AND = 4,
+> >>> +	ICE_ALU_AND = 5,
+> >>> +	ICE_ALU_AND_IMM = 6,
+> >>> +	ICE_ALU_MOV_OR = 7,
+> >>> +	ICE_ALU_OR = 8,
+> >>> +	ICE_ALU_MOV_XOR = 9,
+> >>> +	ICE_ALU_XOR = 10,
+> >>> +	ICE_ALU_NOP = 11,
+> >>> +	ICE_ALU_BR = 12,
+> >>> +	ICE_ALU_BREQ = 13,
+> >>> +	ICE_ALU_BRNEQ = 14,
+> >>> +	ICE_ALU_BRGT = 15,
+> >>> +	ICE_ALU_BRLT = 16,
+> >>> +	ICE_ALU_BRGEQ = 17,
+> >>> +	ICE_ALU_BRLEG = 18,
+> >>> +	ICE_ALU_SETEQ = 19,
+> >>> +	ICE_ALU_ANDEQ = 20,
+> >>> +	ICE_ALU_OREQ = 21,
+> >>> +	ICE_ALU_SETNEQ = 22,
+> >>> +	ICE_ALU_ANDNEQ = 23,
+> >>> +	ICE_ALU_ORNEQ = 24,
+> >>> +	ICE_ALU_SETGT = 25,
+> >>> +	ICE_ALU_ANDGT = 26,
+> >>> +	ICE_ALU_ORGT = 27,
+> >>> +	ICE_ALU_SETLT = 28,
+> >>> +	ICE_ALU_ANDLT = 29,
+> >>> +	ICE_ALU_ORLT = 30,
+> >>> +	ICE_ALU_MOV_SUB = 31,
+> >>> +	ICE_ALU_SUB = 32,
+> >>> +	ICE_ALU_INVALID = 64,
+> >>> +};
+> >>> +
+> >>> +struct ice_alu {
+> >>> +	enum ice_alu_opcode opc;
+> >>> +	u8 src_start;
+> >>> +	u8 src_len;
+> >>> +	bool shift_xlate_select;
+> >>> +	u8 shift_xlate_key;
+> >>> +	u8 src_reg_id;
+> >>> +	u8 dst_reg_id;
+> >>> +	bool inc0;
+> >>> +	bool inc1;
+> >>> +	u8 proto_offset_opc;
+> >>> +	u8 proto_offset;
+> >>> +	u8 branch_addr;
+> >>> +	u16 imm;
+> >>> +	bool dedicate_flags_ena;
+> >>> +	u8 dst_start;
+> >>> +	u8 dst_len;
+> >>> +	bool flags_extr_imm;
+> >>> +	u8 flags_start_imm;
+> >>> +};
+> >>> +
+> >>> +struct ice_imem_item {
+> >>> +	u16 idx;
+> >>> +	struct ice_bst_main b_m;
+> >>> +	struct ice_bst_keybuilder b_kb;
+> >>> +	u8 pg;
+> >>> +	struct ice_np_keybuilder np_kb;
+> >>> +	struct ice_pg_keybuilder pg_kb;
+> >>> +	struct ice_alu alu0;
+> >>> +	struct ice_alu alu1;
+> >>> +	struct ice_alu alu2;
+> >>> +};
+> >>> +
+> >>> +void ice_imem_dump(struct ice_hw *hw, struct ice_imem_item
+> *item);
+> >>> +struct ice_imem_item *ice_imem_table_get(struct ice_hw *hw);
+> >>> +#endif /* _ICE_IMEM_H_ */
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c
+> >> b/drivers/net/ethernet/intel/ice/ice_parser.c
+> >>> index 692ad26ec551..a35f45964c9e 100644
+> >>> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+> >>> @@ -2,6 +2,96 @@
+> >>>    /* Copyright (C) 2018-2023 Intel Corporation */
+> >>>
+> >>>    #include "ice_common.h"
+> >>> +#include "ice_parser_util.h"
+> >>> +
+> >>> +#define ICE_SEC_DATA_OFFSET				4
+> >>> +#define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
+> >>> +
+> >>> +/**
+> >>> + * ice_parser_sect_item_get - parse a item from a section
+> >>> + * @sect_type: section type
+> >>> + * @section: section object
+> >>> + * @index: index of the item to get
+> >>> + * @offset: dummy as prototype of ice_pkg_enum_entry's last
+> >> parameter
+> >>> + */
+> >>> +void *ice_parser_sect_item_get(u32 sect_type, void *section,
+> >>> +			       u32 index, u32 *offset)
+> >>> +{
+> >>> +	struct ice_pkg_sect_hdr *hdr;
+> >>> +	int data_off = ICE_SEC_DATA_OFFSET;
+> >>> +	int size;
+> >>> +
+> >>> +	if (!section)
+> >>> +		return NULL;
+> >>> +
+> >>> +	switch (sect_type) {
+> >>> +	case ICE_SID_RXPARSER_IMEM:
+> >>> +		size = ICE_SID_RXPARSER_IMEM_ENTRY_SIZE;
+> >>> +		break;
+> >>> +	default:
+> >>> +		return NULL;
+> >>> +	}
+> >>> +
+> >>> +	hdr = section;
+> >>> +	if (index >= le16_to_cpu(hdr->count))
+> >>> +		return NULL;
+> >>> +
+> >>> +	return (void *)((uintptr_t)section +
+> >>> +			(uintptr_t)data_off +
+> >>> +			((uintptr_t)index * (uintptr_t)size));
+> >>> +}
+> >>
+> >> Use size_t for 'data' and 'data_off' to avoid superfluous type cast to
+> >> uintptr_t. Also you don't need to cast section ptr to uintptr_t and back
+> >> to void *. Just use cast to (u8 *) that can be used in arithmentic and
+> >> can be used as (void *) return value:
+> >>
+> >> size_t data_off, size;
+> >> ...
+> >> return (u8 *)section + data_off + index * size;
+> >
+> > Thanks for the detailed advice!
+> >
+> > Will update this in the coming version, thanks a lot!
+> >
+> >>
+> >>> +
+> >>> +/**
+> >>> + * ice_parser_create_table - create a item table from a section
+> >>> + * @hw: pointer to the hardware structure
+> >>> + * @sect_type: section type
+> >>> + * @item_size: item size in byte
+> >>> + * @length: number of items in the table to create
+> >>> + * @item_get: the function will be parsed to ice_pkg_enum_entry
+> >>> + * @parse_item: the function to parse the item
+> >>> + */
+> >>> +void *ice_parser_create_table(struct ice_hw *hw, u32 sect_type,
+> >>> +			      u32 item_size, u32 length,
+> >>> +			      void *(*item_get)(u32 sect_type, void
+> >> *section,
+> >>> +						u32 index, u32 *offset),
+> >>> +			      void (*parse_item)(struct ice_hw *hw, u16 idx,
+> >>> +						 void *item, void *data,
+> >>> +						 int size))
+> >>> +{
+> >>> +	struct ice_seg *seg = hw->seg;
+> >>> +	struct ice_pkg_enum state;
+> >>> +	u16 idx = 0xffff;
+> >>> +	void *table;
+> >>> +	void *data;
+> >>> +
+> >>> +	if (!seg)
+> >>> +		return NULL;
+> >>> +
+> >>> +	table = devm_kzalloc(ice_hw_to_dev(hw), item_size * length,
+> >>> +			     GFP_KERNEL);
+> >>> +	if (!table)
+> >>> +		return NULL;
+> >>> +
+> >>> +	memset(&state, 0, sizeof(state));
+> >>> +	do {
+> >>> +		data = ice_pkg_enum_entry(seg, &state, sect_type, NULL,
+> >>> +					  item_get);
+> >>> +		seg = NULL;
+> >>> +		if (data) {
+> >>> +			struct ice_pkg_sect_hdr *hdr =
+> >>> +				(struct ice_pkg_sect_hdr *)state.sect;
+> >>> +
+> >>> +			idx = le16_to_cpu(hdr->offset) + state.entry_idx;
+> >>> +			parse_item(hw, idx,
+> >>> +				   (void *)((uintptr_t)table +
+> >>> +					    ((uintptr_t)idx *
+> >>> +					     (uintptr_t)item_size)),
+> >>> +				   data, item_size);
+> >>> +		}
+> >>> +	} while (data);
+> >>> +
+> >>> +	return table;
+> >>> +}
+> >>>
+> >>>    /**
+> >>>     * ice_parser_create - create a parser instance
+> >>> @@ -11,6 +101,7 @@
+> >>>    int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+> >>>    {
+> >>>    	struct ice_parser *p;
+> >>> +	int status;
+> >>>
+> >>>    	p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(struct ice_parser),
+> >>>    			 GFP_KERNEL);
+> >>> @@ -20,8 +111,17 @@ int ice_parser_create(struct ice_hw *hw,
+> struct
+> >> ice_parser **psr)
+> >>>    	p->hw = hw;
+> >>>    	p->rt.psr = p;
+> >>>
+> >>> +	p->imem_table = ice_imem_table_get(hw);
+> >>> +	if (!p->imem_table) {
+> >>> +		status = -EINVAL;
+> >>> +		goto err;
+> >>> +	}
+> >>> +
+> >>>    	*psr = p;
+> >>>    	return 0;
+> >>> +err:
+> >>> +	ice_parser_destroy(p);
+> >>> +	return status;
+> >>>    }
+> >>>
+> >>>    /**
+> >>> @@ -30,5 +130,7 @@ int ice_parser_create(struct ice_hw *hw,
+> struct
+> >> ice_parser **psr)
+> >>>     */
+> >>>    void ice_parser_destroy(struct ice_parser *psr)
+> >>>    {
+> >>> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->imem_table);
+> >>> +
+> >>>    	devm_kfree(ice_hw_to_dev(psr->hw), psr);
+> >>>    }
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h
+> >> b/drivers/net/ethernet/intel/ice/ice_parser.h
+> >>> index c6cd74c6e434..b5a3c473666a 100644
+> >>> --- a/drivers/net/ethernet/intel/ice/ice_parser.h
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+> >>> @@ -6,6 +6,9 @@
+> >>>
+> >>>    struct ice_parser {
+> >>>    	struct ice_hw *hw; /* pointer to the hardware structure */
+> >>> +
+> >>> +	/* load data from section ICE_SID_RX_PARSER_IMEM */
+> >>> +	struct ice_imem_item *imem_table;
+> >>>    };
+> >>>
+> >>>    int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_parser_util.h
+> >> b/drivers/net/ethernet/intel/ice/ice_parser_util.h
+> >>> new file mode 100644
+> >>> index 000000000000..6259d3d97b23
+> >>> --- /dev/null
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_parser_util.h
+> >>> @@ -0,0 +1,24 @@
+> >>> +/* SPDX-License-Identifier: GPL-2.0 */
+> >>> +/* Copyright (C) 2018-2023 Intel Corporation */
+> >>> +
+> >>> +#ifndef _ICE_PARSER_UTIL_H_
+> >>> +#define _ICE_PARSER_UTIL_H_
+> >>> +
+> >>> +#include "ice_imem.h"
+> >>> +
+> >>> +struct ice_pkg_sect_hdr {
+> >>> +	__le16 count;
+> >>> +	__le16 offset;
+> >>> +};
+> >>> +
+> >>> +void *ice_parser_sect_item_get(u32 sect_type, void *section,
+> >>> +			       u32 index, u32 *offset);
+> >>> +
+> >>> +void *ice_parser_create_table(struct ice_hw *hw, u32 sect_type,
+> >>> +			      u32 item_size, u32 length,
+> >>> +			      void *(*handler)(u32 sect_type, void *section,
+> >>> +					       u32 index, u32 *offset),
+> >>> +			      void (*parse_item)(struct ice_hw *hw, u16 idx,
+> >>> +						 void *item, void *data,
+> >>> +						 int size));
+> >>> +#endif /* _ICE_PARSER_UTIL_H_ */
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h
+> >> b/drivers/net/ethernet/intel/ice/ice_type.h
+> >>> index a09556e57803..fa4336dd55f7 100644
+> >>> --- a/drivers/net/ethernet/intel/ice/ice_type.h
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
+> >>> @@ -60,6 +60,7 @@ static inline u32 ice_round_to_num(u32 N, u32
+> R)
+> >>>    				 ICE_DBG_AQ_DESC	| \
+> >>>    				 ICE_DBG_AQ_DESC_BUF	| \
+> >>>    				 ICE_DBG_AQ_CMD)
+> >>> +#define ICE_DBG_PARSER		BIT_ULL(28)
+> >>>
+> >>>    #define ICE_DBG_USER		BIT_ULL(31)
+> >>>
+> >
 
 _______________________________________________
 Intel-wired-lan mailing list
