@@ -1,146 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E1E676FC29
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 10:41:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7794176FED2
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 12:48:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A759C40550;
-	Fri,  4 Aug 2023 08:41:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A759C40550
+	by smtp3.osuosl.org (Postfix) with ESMTP id 491CC6149B;
+	Fri,  4 Aug 2023 10:48:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 491CC6149B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691138504;
-	bh=1MwhZp7b+dpkMw70cyEAqi6+pdwiik8lb5qSS12KBG8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=OQL3Zrot2cMoPT6l3x6lZN6XGf7eU9x95cVYNNgSJSamoWsm0f1vlHG0BpgpLxuPQ
-	 IKcfg/8bOwe4ukBauT4JZEpQmsolvRoxh7UqggtVi+C774o3okUw/G3AbNuwbkvbtH
-	 YNHjJkh+gQyxchRbtReRR5dwPoWs0fP4kOMPNCsraj0w1V5JN378sxnPDs6GJYdWzR
-	 eHn9GeDTNeBj5NvkzyU7AE9tzidV/WxnpXlAWGuOYT3vac/bdCKDD1qy6Bw5auVwLH
-	 K20vqIonavxGT5Z5bJHOxaFOlTPE7sRQBjz7l+n5ur+JseizcllpHlYrhofmYa1KD5
-	 3IgywOXvqDGoQ==
+	s=default; t=1691146113;
+	bh=rUAnuGJZyynjSv76KddnxlE9/NqTaUoay+ESRr562Yc=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=jV5TvPf6fIeFUmBtNgDEskVBzUYy++j1onhVYuonBnaqBrdJ9frc7mPWg1EzpgUwP
+	 8CJ+5g10i+gh5ESas5mjXRrwMtbVmLQXgL8Xr/8Mn6ku85tB7OAYL1G2Yj/UYPdWBN
+	 LjfYhVoR4Xz84V5Vid2xGhLLrlR5NE0iiQsLHg5vtcEsDRJb6bjPHhgvcRz7B2dwBX
+	 dCYEjFOyV4LcRWeV7FJkdUA/TA58oJEwEM2UcED6MIbjR3EKNsAuh4P9orAL7fQgWV
+	 oPSsjvrGtmhIn9s2OvojADLvY/+mal3/DDH8g77jGDFGV41qKe250BWfq/JAozB7uN
+	 iX6s4KpOMZxEQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P_Qnz9F7Xj7F; Fri,  4 Aug 2023 08:41:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 50Y5YjizDs2I; Fri,  4 Aug 2023 10:48:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 02BAF401B3;
-	Fri,  4 Aug 2023 08:41:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 02BAF401B3
+	by smtp3.osuosl.org (Postfix) with ESMTP id DE7436142D;
+	Fri,  4 Aug 2023 10:48:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DE7436142D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0CC6A1BF315
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 08:41:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6CA871BF997
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 10:48:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 89D0D83F87
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 08:41:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89D0D83F87
+ by smtp1.osuosl.org (Postfix) with ESMTP id 34DB981F81
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 10:47:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34DB981F81
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UBP0ji8kzwNR for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Aug 2023 08:41:19 +0000 (UTC)
-Received: from EUR01-VE1-obe.outbound.protection.outlook.com
- (mail-ve1eur01on2091.outbound.protection.outlook.com [40.107.14.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7C6C684059
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 08:41:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7C6C684059
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UKBT9MD8R5oIQuGjUv0rUudp0pq7qgliShUDc3VNZXrR/u48HQppVzuExg9q2hF5dSRqun+6ZzhYeuyAOn9X0nYapAeXbwuHRnhNj7EVRlmi2GVJI+/8Xk/qLOQUBs9Tdelp+3+kA+GYRF/i/nOiqbZ5jTgzM+gmZkjEyEgj+pKGR6RV/mCFB1pYUCi4hdEqDB887nmmdMrM+ksKg1J2KA+Le/TxzbX+TA0Id2DEAqbzOwk87DRG8ehnb+/CNTyygPrKVW1doBO/fDuK9Dp1Z16VjBYhbpHVMnAH33NxoSz103hpsri+xhYkSA4zkW+3zRjwdLasrDXMNSyl8OKeLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=T0NmAlm4XOC2HDTtLjkZ3VYozmsL6PBGqVMMw9QZMhI=;
- b=DKLELfN0mSVUVy7fcZPs2li/D0/qkBYh28rwqhBCHOzox6lNI1A8uyc/8pRYW7A3JP1JbFznJrBSUFz81VFCndO8do6Q+3Pk4FKyWOLnH8mUfFuVHYp8qHRZgTlUTglVApJh+11SYfcfMXJu04xZcyrFxbpNt1uHyRoqv24VQS2IGcwYyIdF1Vk/3jp4HgUZp2nFdrmYkmCGCZddh+OZ6YEliJM8PpKQ4u+30w1cKsLNHvimq9jT4lUhQP1fnl493OvfdmCUw/ibZXtm9B6UaBWOYnehjv4x5mFM3ImVsQBgxiWDFUtIOqGZqWBH9Llthw4gjr8a3Kh/gGR1v/S0Yg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=est.tech; dmarc=pass action=none header.from=est.tech;
- dkim=pass header.d=est.tech; arc=none
-Received: from DBBP189MB1433.EURP189.PROD.OUTLOOK.COM (2603:10a6:10:1e7::15)
- by VI1P18901MB0736.EURP189.PROD.OUTLOOK.COM (2603:10a6:800:122::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.21; Fri, 4 Aug
- 2023 08:41:15 +0000
-Received: from DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
- ([fe80::759b:94eb:c2e8:c670]) by DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
- ([fe80::759b:94eb:c2e8:c670%6]) with mapi id 15.20.6609.032; Fri, 4 Aug 2023
- 08:41:15 +0000
-From: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
-To: 
-Date: Fri,  4 Aug 2023 10:40:51 +0200
-Message-Id: <20230804084051.14194-5-sriram.yagnaraman@est.tech>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230804084051.14194-1-sriram.yagnaraman@est.tech>
-References: <20230804084051.14194-1-sriram.yagnaraman@est.tech>
-X-ClientProxiedBy: GV3PEPF000000D2.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:144:1:0:2:0:14) To DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
- (2603:10a6:10:1e7::15)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DBBP189MB1433:EE_|VI1P18901MB0736:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4c4b7bc1-4a52-42cf-8da7-08db94c6903c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: W2J7cy+oKcmyzNIM25qyrubUe0xzQAiC4GAg9bcd9Q8bSwF9febeLm4RO/g9AZoWHvSQQ6MPUxl9Fj6eTMWZ8GH0TnA2LQs911j/z9U0kXJ2hQvaLUzGCmcn8Q7U1gqbsmpTII6c3DcGttndxwoZGhK9+jEz94FIpOTe2+7f0ggPD0D82tJevFFb9R4Te2nQbhZJXufC36kb+8D2KeRlza4snlZU57hT/PessltbNtToW+hs5EpoKzs6ZQ9WK5BkVj+n+QzZXxtMIBhiKiiho7CSUXX2Lc7D4cn1zKqo/f5b5l+IiaOHOvHul+IBd6U/jI24EJH06odvZzeWhfoU2hedwfNcbayl7W5jewxrd5NzpVOg7pBJrL9EeMIKOvRKDS3RoS0v8yt5uyumBJddVceOVLQhaPuk+yYVAhHz2j2RBfaNj8jMJcjnIW88fYC2Lb99qlNymdwrzbX2F/6ITbYf/jCFZ9V5MbWrA9UfQPlNDgtf+N5fTbfrVRdXTGZ/pa0fbnRFnzVD4AKSlXi3CBDuonBS73TUnaFMb1109kr+5CvBBy+t5frTo7h7jThEa7B6or2EQYRdkpajdrjTNRrpbpZqYd7S5yBjFCtS2ikWqXN07OKZs6gPh+uvkOhDUV4Hz637QwIKNKrCBmyr61dBI5BEy28oRnhiA9E8U1s=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DBBP189MB1433.EURP189.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(136003)(376002)(39830400003)(346002)(451199021)(109986019)(1800799003)(186006)(6506007)(1076003)(26005)(38100700002)(2616005)(83380400001)(36756003)(2906002)(5660300002)(7416002)(44832011)(8676002)(478600001)(54906003)(86362001)(6512007)(6666004)(6486002)(41300700001)(316002)(8936002)(4326008)(66556008)(66476007)(70586007)(66946007)(266003)(37730700002)(309714004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?p2DdxCcty0dIRlTEW0Rfg1osManC+KAmSQ7fyW63mDr6OIKMLz9YXoZIxkRS?=
- =?us-ascii?Q?uVEk/EQ2HXBwpolTc81SLz2WrIiVKKLwoHvVOt6NQwo23+4/h5BSq/DZueCg?=
- =?us-ascii?Q?slatM4Tn0hKabSxKn/TkD+9AYdquvJSkbAPnXb53Oly9s0mVkxbveW5BuHDk?=
- =?us-ascii?Q?azq3nF8RkFErqP2rT+Sx6Q75viVT7+wOR8wMyVOqtsY3Cnh9154nqEXPHeAs?=
- =?us-ascii?Q?o6OwHLXlVOQW10WMb+iOnKUi7so71ymwKDNUrC5Gi/6fu5+SOMFTwYFhYE/Y?=
- =?us-ascii?Q?p4PovPFa8tdfB9kLK1Zj7//eSOgYsYmYkOmlbYfGz43tyFPuYWuW7dR85iKJ?=
- =?us-ascii?Q?u0A18Pe9oRjRIclejduhV1qO2rTOqvdliXBdovKB5GiY7OrHYIxUkpkixqz1?=
- =?us-ascii?Q?/QR+k6uTAWmNzrEDuVbt1tantnFYqVT3QyOC9K7O39KTrr10m1gLpLydA2PO?=
- =?us-ascii?Q?tLBK4WtFt2N+t1GMUne+YiMhHbmKhV0e2xMB7mygz/6ucAK4vzNQ/9YZbtN+?=
- =?us-ascii?Q?H9+IAuOTDv9bU0ZL34QjgCVxkM5BO7cRWL25Dtjd4j8VbmSIbBGgzM0ChrVS?=
- =?us-ascii?Q?GccrKIMZaEvOf+Ihj9rjOibx2MbGtS8sdtTROPPUjiaPFa6mMMpVawcF1940?=
- =?us-ascii?Q?/segqyCBVUTbK1ETnrB7V02T1739JcVf0czFWg5V4P3f7aR0EkAOqWml0Vqp?=
- =?us-ascii?Q?HtBCQPty72K6Yx2I7zj+IqQvsUvRvuSf6kvIhig6YfHOmxEgkkWOoHaY84SE?=
- =?us-ascii?Q?2RhM6B3F2WrHo/hIjnYUCgp4c5WsmoQtRjjXsYOAqepHXl4jPRhqnsclOp+y?=
- =?us-ascii?Q?HTqLnXy02J76GZZeN9aSzn4sSA3xoS1tvQEUeF5CB+Te6ZAd/5sosU5iTsHo?=
- =?us-ascii?Q?0sWkTQzq4CXB45V24R0YmOqaHJsXA/Zuwqxpl1F5mo2K6ppJHF4tLTydTLo4?=
- =?us-ascii?Q?O0e8suPFFgVdp21lgGUXbgVWPIAnVowqrMdFB0QRA2MDB7zrvNGsA1syH3jU?=
- =?us-ascii?Q?iZBBaNX4pdC1XkQxQ3HtZc9JhyyGMvvxKpQEypqzqaolaT0j1Bm5w1UI87WL?=
- =?us-ascii?Q?0SSAhFLa3Np/yhDo3Z1ugPASOAhsietNawAuHcFv6KDC1cTvBj96V3f1jo6I?=
- =?us-ascii?Q?FQWuUP4VuMDvM0pZhWr9CL3d91OS4QZY1LTD6EMcep32sceuQj7hUJWEXPvu?=
- =?us-ascii?Q?HhCW/tVUhY1GssY4D3WObRI8l0nmUg095h0XfWxta7LucxTb1lvDqJfX/edA?=
- =?us-ascii?Q?0jlepOPKlZzzZoYstw1sWwBP0SYLKhi7eJ+7h4szQJ4v3b7yp9w0BuIx51Po?=
- =?us-ascii?Q?Z7Yd2xdVt3M3LSdNppwqHLCgfM2+RyA37epijLCwdeifz0vIh4zAh284Lh3n?=
- =?us-ascii?Q?BbwCDTc2mThA63Mtz91+kFUBVPYah8Kl34BHSRPDscHp5DapTK0FIS2W+1Tr?=
- =?us-ascii?Q?6JW7boEwYJZVsvwh7wjok9tRx5vs/InUVwvX5BX+r5TWR1n2dm5IPwHenOcp?=
- =?us-ascii?Q?9+rclhDBKAeN1maHnPzYhV2ZEwfGvkmjC1opeDIwSgyk6g4gl7kZ2w6BmfaX?=
- =?us-ascii?Q?gHLRx8NxSYVkNv5sIAN6pE8CJdfnwqz9n5Jt9/b/dabTdk0Zus6y/WcpC5Sf?=
- =?us-ascii?Q?Ow=3D=3D?=
-X-OriginatorOrg: est.tech
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c4b7bc1-4a52-42cf-8da7-08db94c6903c
-X-MS-Exchange-CrossTenant-AuthSource: DBBP189MB1433.EURP189.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2023 08:41:14.8864 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: d2585e63-66b9-44b6-a76e-4f4b217d97fd
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Fc/nKZr6OG3Pa0nD7jx5ACqopeUXubLx6O2TPmsY03AKYnFBg43Yp9/47yxN37WklhnB5D6vR+JUoSz+vlSb4qveFqA/Tgfk8UbUQpN0fOs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1P18901MB0736
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=estab.onmicrosoft.com; 
- s=selector2-estab-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=T0NmAlm4XOC2HDTtLjkZ3VYozmsL6PBGqVMMw9QZMhI=;
- b=JqUueiu50/kGtv5Fu/rv0XYm9F1FL/TkvUHF65hnwXEzVTaLLbXSxPy9Wnt8XEiAo5h0mbTxyHWdU6oX+yk7cXUTog72uFsm+cbYJpiCOQA1Lokhecjf6ZE5tucDhGasPKLUIMZH6bYYRLFJdJAME41+S0xIWl/EPs3CNxHgXro=
+ with ESMTP id kJSqTpWMzu47 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Aug 2023 10:47:40 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EA78983F61
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 10:47:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA78983F61
+X-IronPort-AV: E=McAfee;i="6600,9927,10791"; a="456499884"
+X-IronPort-AV: E=Sophos;i="6.01,254,1684825200"; d="scan'208";a="456499884"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Aug 2023 03:47:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10791"; a="765064907"
+X-IronPort-AV: E=Sophos;i="6.01,254,1684825200"; d="scan'208";a="765064907"
+Received: from lkp-server01.sh.intel.com (HELO d1ccc7e87e8f) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 04 Aug 2023 03:46:24 -0700
+Received: from kbuild by d1ccc7e87e8f with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qRsK7-0002nj-0Q
+ for intel-wired-lan@lists.osuosl.org; Fri, 04 Aug 2023 10:46:23 +0000
+Date: Fri, 04 Aug 2023 18:46:20 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202308041818.kTdaaNCR-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1691146059; x=1722682059;
+ h=date:from:to:subject:message-id;
+ bh=zBQXv+DSyeLUJwalwEyO2W298joMQxhSUREb0LZxZd8=;
+ b=QnhUHTvWy17BjJXHmjCWW6nyA9dKi4VtUTVnZMkBeSWkooURe/DvHdzx
+ 9GeFC697cVIwY4FmLpoOZkWou4Zg0kBS1EKXtunlQ46lS0PufSy7zg2i+
+ yY9HbX4BnUBCJ+HsCKsHu24J6udVItEH8X/3dCMz6nhl3vP1mi0ty79S3
+ Zn5JXY0c1ieKUT+IMSZpgiXJd0rQWxZ2XJrZSNLM8ISCEi8quVkswzgOQ
+ 5djfpATZQBDdAUS6fbRyi+oAj7C2ODl6PoRKPU7eEpQ8ASCcOCGgy/Avk
+ rWAbUwYd7rpSlVuW8xUqWHyrX1G4GfoXos42njuTISH9aGM5C4sfRmI3y
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=estab.onmicrosoft.com
- header.i=@estab.onmicrosoft.com header.a=rsa-sha256
- header.s=selector2-estab-onmicrosoft-com header.b=JqUueiu5
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=est.tech;
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 4/4] igb: add AF_XDP zero-copy
- Tx support
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=QnhUHTvW
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 7a665d6059a8589637be63e5b6b386ba262f7f92
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,269 +92,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- John Fastabend <john.fastabend@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Alexei Starovoitov <ast@kernel.org>,
- =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn@kernel.org>,
- Eric Dumazet <edumazet@google.com>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for AF_XDP zero-copy transmit path.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 7a665d6059a8589637be63e5b6b386ba262f7f92  i40e: fix livelocks in i40e_reset_subtask()
 
-A new TX buffer type IGB_TYPE_XSK is introduced to indicate that the Tx
-frame was allocated from the xsk buff pool, so igb_clean_tx_ring and
-igb_clean_tx_irq can clean the buffers correctly based on type.
+elapsed time: 724m
 
-igb_xmit_zc performs the actual packet transmit when AF_XDP zero-copy is
-enabled. We share the TX ring between slow path, XDP and AF_XDP
-zero-copy, so we use the netdev queue lock to ensure mutual exclusion.
+configs tested: 105
+configs skipped: 6
 
-Signed-off-by: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
----
- drivers/net/ethernet/intel/igb/igb.h      |  2 +
- drivers/net/ethernet/intel/igb/igb_main.c | 56 +++++++++++++++++++----
- drivers/net/ethernet/intel/igb/igb_xsk.c  | 52 +++++++++++++++++++++
- 3 files changed, 101 insertions(+), 9 deletions(-)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index 39202c40116a..f52a988fe2f0 100644
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -257,6 +257,7 @@ enum igb_tx_flags {
- enum igb_tx_buf_type {
- 	IGB_TYPE_SKB = 0,
- 	IGB_TYPE_XDP,
-+	IGB_TYPE_XSK
- };
- 
- /* wrapper around a pointer to a socket buffer,
-@@ -836,6 +837,7 @@ int igb_xsk_pool_setup(struct igb_adapter *adapter,
- bool igb_alloc_rx_buffers_zc(struct igb_ring *rx_ring, u16 count);
- void igb_clean_rx_ring_zc(struct igb_ring *rx_ring);
- int igb_clean_rx_irq_zc(struct igb_q_vector *q_vector, const int budget);
-+bool igb_xmit_zc(struct igb_ring *tx_ring);
- int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags);
- 
- #endif /* _IGB_H_ */
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index b13cc94ac178..117c3d883529 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3021,6 +3021,9 @@ static int igb_xdp_xmit(struct net_device *dev, int n,
- 	if (unlikely(!tx_ring))
- 		return -ENXIO;
- 
-+	if (unlikely(test_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags)))
-+		return -ENXIO;
-+
- 	nq = txring_txq(tx_ring);
- 	__netif_tx_lock(nq, cpu);
- 
-@@ -4934,15 +4937,20 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
- {
- 	u16 i = tx_ring->next_to_clean;
- 	struct igb_tx_buffer *tx_buffer = &tx_ring->tx_buffer_info[i];
-+	u32 xsk_frames = 0;
- 
- 	while (i != tx_ring->next_to_use) {
- 		union e1000_adv_tx_desc *eop_desc, *tx_desc;
- 
- 		/* Free all the Tx ring sk_buffs or xdp frames */
--		if (tx_buffer->type == IGB_TYPE_SKB)
-+		if (tx_buffer->type == IGB_TYPE_SKB) {
- 			dev_kfree_skb_any(tx_buffer->skb);
--		else
-+		} else if (tx_buffer->type == IGB_TYPE_XDP) {
- 			xdp_return_frame(tx_buffer->xdpf);
-+		} else if (tx_buffer->type == IGB_TYPE_XSK) {
-+			xsk_frames++;
-+			goto skip_for_xsk;
-+		}
- 
- 		/* unmap skb header data */
- 		dma_unmap_single(tx_ring->dev,
-@@ -4973,6 +4981,7 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
- 					       DMA_TO_DEVICE);
- 		}
- 
-+skip_for_xsk:
- 		tx_buffer->next_to_watch = NULL;
- 
- 		/* move us one more past the eop_desc for start of next pkt */
-@@ -4987,6 +4996,9 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
- 	/* reset BQL for queue */
- 	netdev_tx_reset_queue(txring_txq(tx_ring));
- 
-+	if (tx_ring->xsk_pool && xsk_frames)
-+		xsk_tx_completed(tx_ring->xsk_pool, xsk_frames);
-+
- 	/* reset next_to_use and next_to_clean */
- 	tx_ring->next_to_use = 0;
- 	tx_ring->next_to_clean = 0;
-@@ -6520,6 +6532,9 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 		return NETDEV_TX_BUSY;
- 	}
- 
-+	if (unlikely(test_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags)))
-+		return NETDEV_TX_BUSY;
-+
- 	/* record the location of the first descriptor for this packet */
- 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
- 	first->type = IGB_TYPE_SKB;
-@@ -8293,13 +8308,17 @@ static int igb_poll(struct napi_struct *napi, int budget)
-  **/
- static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- {
--	struct igb_adapter *adapter = q_vector->adapter;
--	struct igb_ring *tx_ring = q_vector->tx.ring;
--	struct igb_tx_buffer *tx_buffer;
--	union e1000_adv_tx_desc *tx_desc;
- 	unsigned int total_bytes = 0, total_packets = 0;
-+	struct igb_adapter *adapter = q_vector->adapter;
- 	unsigned int budget = q_vector->tx.work_limit;
-+	struct igb_ring *tx_ring = q_vector->tx.ring;
- 	unsigned int i = tx_ring->next_to_clean;
-+	union e1000_adv_tx_desc *tx_desc;
-+	struct igb_tx_buffer *tx_buffer;
-+	int cpu = smp_processor_id();
-+	bool xsk_xmit_done = true;
-+	struct netdev_queue *nq;
-+	u32 xsk_frames = 0;
- 
- 	if (test_bit(__IGB_DOWN, &adapter->state))
- 		return true;
-@@ -8330,10 +8349,14 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 		total_packets += tx_buffer->gso_segs;
- 
- 		/* free the skb */
--		if (tx_buffer->type == IGB_TYPE_SKB)
-+		if (tx_buffer->type == IGB_TYPE_SKB) {
- 			napi_consume_skb(tx_buffer->skb, napi_budget);
--		else
-+		} else if (tx_buffer->type == IGB_TYPE_XDP) {
- 			xdp_return_frame(tx_buffer->xdpf);
-+		} else if (tx_buffer->type == IGB_TYPE_XSK) {
-+			xsk_frames++;
-+			goto skip_for_xsk;
-+		}
- 
- 		/* unmap skb header data */
- 		dma_unmap_single(tx_ring->dev,
-@@ -8365,6 +8388,7 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 			}
- 		}
- 
-+skip_for_xsk:
- 		/* move us one more past the eop_desc for start of next pkt */
- 		tx_buffer++;
- 		tx_desc++;
-@@ -8393,6 +8417,20 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 	q_vector->tx.total_bytes += total_bytes;
- 	q_vector->tx.total_packets += total_packets;
- 
-+	if (tx_ring->xsk_pool) {
-+		if (xsk_frames)
-+			xsk_tx_completed(tx_ring->xsk_pool, xsk_frames);
-+		if (xsk_uses_need_wakeup(tx_ring->xsk_pool))
-+			xsk_set_tx_need_wakeup(tx_ring->xsk_pool);
-+
-+		nq = txring_txq(tx_ring);
-+		__netif_tx_lock(nq, cpu);
-+		/* Avoid transmit queue timeout since we share it with the slow path */
-+		txq_trans_cond_update(nq);
-+		xsk_xmit_done = igb_xmit_zc(tx_ring);
-+		__netif_tx_unlock(nq);
-+	}
-+
- 	if (test_bit(IGB_RING_FLAG_TX_DETECT_HANG, &tx_ring->flags)) {
- 		struct e1000_hw *hw = &adapter->hw;
- 
-@@ -8455,7 +8493,7 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 		}
- 	}
- 
--	return !!budget;
-+	return !!budget && xsk_xmit_done;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
-index 5e0244772914..c5d01d65e7de 100644
---- a/drivers/net/ethernet/intel/igb/igb_xsk.c
-+++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
-@@ -432,6 +432,58 @@ int igb_clean_rx_irq_zc(struct igb_q_vector *q_vector, const int budget)
- 	return failure ? budget : (int)total_packets;
- }
- 
-+bool igb_xmit_zc(struct igb_ring *tx_ring)
-+{
-+	unsigned int budget = igb_desc_unused(tx_ring);
-+	struct xsk_buff_pool *pool = tx_ring->xsk_pool;
-+	struct xdp_desc *descs = pool->tx_descs;
-+	union e1000_adv_tx_desc *tx_desc = NULL;
-+	struct igb_tx_buffer *tx_buffer_info;
-+	u32 cmd_type, nb_pkts, i = 0;
-+	unsigned int total_bytes = 0;
-+	dma_addr_t dma;
-+
-+	nb_pkts = xsk_tx_peek_release_desc_batch(pool, budget);
-+	if (!nb_pkts)
-+		return true;
-+
-+	while (nb_pkts-- > 0) {
-+		dma = xsk_buff_raw_get_dma(pool, descs[i].addr);
-+		xsk_buff_raw_dma_sync_for_device(pool, dma, descs[i].len);
-+
-+		tx_buffer_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+		tx_buffer_info->bytecount = descs[i].len;
-+		tx_buffer_info->type = IGB_TYPE_XSK;
-+		tx_buffer_info->xdpf = NULL;
-+		tx_buffer_info->gso_segs = 1;
-+		tx_buffer_info->time_stamp = jiffies;
-+
-+		tx_desc = IGB_TX_DESC(tx_ring, tx_ring->next_to_use);
-+		tx_desc->read.buffer_addr = cpu_to_le64(dma);
-+
-+		/* put descriptor type bits */
-+		cmd_type = E1000_ADVTXD_DTYP_DATA | E1000_ADVTXD_DCMD_DEXT |
-+			   E1000_ADVTXD_DCMD_IFCS;
-+
-+		cmd_type |= descs[i].len | IGB_TXD_DCMD;
-+		tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+		tx_desc->read.olinfo_status = 0;
-+
-+		total_bytes += descs[i].len;
-+
-+		i++;
-+		tx_ring->next_to_use++;
-+		tx_buffer_info->next_to_watch = tx_desc;
-+		if (tx_ring->next_to_use == tx_ring->count)
-+			tx_ring->next_to_use = 0;
-+	}
-+
-+	netdev_tx_sent_queue(txring_txq(tx_ring), total_bytes);
-+	igb_xdp_ring_update_tail(tx_ring);
-+
-+	return nb_pkts < budget;
-+}
-+
- int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- {
- 	struct igb_adapter *adapter = netdev_priv(dev);
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r033-20230731   gcc  
+arc                  randconfig-r043-20230731   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm                  randconfig-r004-20230801   clang
+arm                  randconfig-r024-20230731   gcc  
+arm                  randconfig-r025-20230731   gcc  
+arm                  randconfig-r032-20230731   clang
+arm                  randconfig-r046-20230731   gcc  
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r036-20230731   gcc  
+csky                                defconfig   gcc  
+hexagon              randconfig-r026-20230731   clang
+hexagon              randconfig-r041-20230731   clang
+hexagon              randconfig-r045-20230731   clang
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-r004-20230731   gcc  
+i386         buildonly-randconfig-r005-20230731   gcc  
+i386         buildonly-randconfig-r006-20230731   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-i001-20230802   clang
+i386                 randconfig-i002-20230802   clang
+i386                 randconfig-i003-20230802   clang
+i386                 randconfig-i004-20230802   clang
+i386                 randconfig-i005-20230802   clang
+i386                 randconfig-i006-20230802   clang
+i386                 randconfig-i011-20230731   clang
+i386                 randconfig-i012-20230731   clang
+i386                 randconfig-i013-20230731   clang
+i386                 randconfig-i014-20230731   clang
+i386                 randconfig-i015-20230731   clang
+i386                 randconfig-i016-20230731   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r014-20230731   gcc  
+microblaze           randconfig-r005-20230801   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                randconfig-r001-20230801   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r013-20230731   clang
+riscv                randconfig-r023-20230731   clang
+riscv                randconfig-r042-20230731   clang
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r044-20230731   clang
+sh                               allmodconfig   gcc  
+sh                   randconfig-r006-20230801   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r003-20230801   gcc  
+sparc                randconfig-r011-20230731   gcc  
+sparc                randconfig-r012-20230731   gcc  
+sparc64              randconfig-r015-20230731   gcc  
+sparc64              randconfig-r021-20230731   gcc  
+sparc64              randconfig-r035-20230731   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   clang
+um                                  defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                   randconfig-r034-20230731   clang
+um                           x86_64_defconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64       buildonly-randconfig-r001-20230731   gcc  
+x86_64       buildonly-randconfig-r002-20230731   gcc  
+x86_64       buildonly-randconfig-r003-20230731   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-x001-20230801   clang
+x86_64               randconfig-x002-20230801   clang
+x86_64               randconfig-x003-20230801   clang
+x86_64               randconfig-x004-20230801   clang
+x86_64               randconfig-x005-20230801   clang
+x86_64               randconfig-x006-20230801   clang
+x86_64               randconfig-x011-20230731   gcc  
+x86_64               randconfig-x012-20230731   gcc  
+x86_64               randconfig-x013-20230731   gcc  
+x86_64               randconfig-x014-20230731   gcc  
+x86_64               randconfig-x015-20230731   gcc  
+x86_64               randconfig-x016-20230731   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
