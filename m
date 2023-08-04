@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 203C277044C
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 17:22:13 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57BCE770447
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 17:21:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B181540503;
-	Fri,  4 Aug 2023 15:22:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B181540503
+	by smtp2.osuosl.org (Postfix) with ESMTP id E75864060D;
+	Fri,  4 Aug 2023 15:21:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E75864060D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691162531;
-	bh=8NkZJ8yp5ANfGrrqau/MinwsMryTZog8zfJmcgj2moc=;
+	s=default; t=1691162510;
+	bh=zxHGQpfPdTDc1EYqZHbpUq4yf+d0XxzWFsxr4UEVbF0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=I3vtDtN/CuttaYbHIkKma3VHG1zS7cs34NQwHYWTXzbBYorKUdSs2q8v91PZ+YQdc
-	 i81od3vnMV7hQf521ngUPaPp8MCh0dUJBLXL2G/phdxXeJ+oPAoeXf52TpLD1St45A
-	 U3WjbHbKaD9a+nLcDHAZBM1QrhrcnuXLm9THXODcCCBd2GixogmXOAK0M/yf2q4vy1
-	 flFjy2nJ/Jj5T3qPQMMhfNfcD1Y6qgHDUMNH4/AXU1uQ9bQLna8/5nz49Y/CmYadnf
-	 NVdyKRjTcnCRCznbM9jyFaYQg+7Qa3XzKwBeDblauO9vx2OlmMfmuGuUmX0nIbPM/e
-	 A35XqEvV6RaGw==
+	b=9Kird19jBRDr7d+VJ9gEDxYpbOl2JYiG3787GRCALNmYnXc4BTkVb0uEL9pZGqQrQ
+	 rPkgrQYt3XixtqrXEWesqPikHz/xrC9M/U7w5t4h+0w0xJk7leWASDqfgji8lnuPrk
+	 Z1bcjZQ2RPCmQL5tP5cnMpUXG/5KQz8dbK1iKwupqHboKu3iNXgarEu8od3Z9Jw6LL
+	 86hSxHv1NLO+fTK7xkQtaSDU0HnOQ+3W/7MPIRjMbP5BfXgrW+QNF7siEDwlUqgGXN
+	 sp1D8kL9QZMkToC6MnH5d+M8oQImDahy7AjqPFx/NNFV42Lro9X7+svweD9/acdwMG
+	 rkN9uycymCGdA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y8NLNblGEBCM; Fri,  4 Aug 2023 15:22:11 +0000 (UTC)
+	with ESMTP id jHlBsXh2uXS0; Fri,  4 Aug 2023 15:21:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 87016400AB;
-	Fri,  4 Aug 2023 15:22:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87016400AB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5B3C9400AB;
+	Fri,  4 Aug 2023 15:21:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B3C9400AB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 695811BF2A3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 796F11BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C09C860F7A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C09C860F7A
+ by smtp2.osuosl.org (Postfix) with ESMTP id D3AB2403BF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3AB2403BF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ctmJvhIqjAY4 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Aug 2023 04:11:18 +0000 (UTC)
-Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C80C360F15
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C80C360F15
-Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.57])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RHBb94gk1zNmj2;
- Fri,  4 Aug 2023 11:51:17 +0800 (CST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Sc0FRzq3rmJv for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Aug 2023 04:11:10 +0000 (UTC)
+Received: from szxga08-in.huawei.com (szxga08-in.huawei.com [45.249.212.255])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DD5C44014E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 04:11:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DD5C44014E
+Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.54])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RHBdx2X1qz1KCCw;
+ Fri,  4 Aug 2023 11:53:41 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Fri, 4 Aug
- 2023 11:54:43 +0800
+ 2023 11:54:44 +0800
 From: Ruan Jinjie <ruanjinjie@huawei.com>
 To: <sgoutham@marvell.com>, <davem@davemloft.net>, <edumazet@google.com>,
  <kuba@kernel.org>, <pabeni@redhat.com>, <jesse.brandeburg@intel.com>,
@@ -66,8 +66,8 @@ To: <sgoutham@marvell.com>, <davem@davemloft.net>, <edumazet@google.com>,
  <intel-wired-lan@lists.osuosl.org>, <linux-rdma@vger.kernel.org>,
  <linux-renesas-soc@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
  <brcm80211-dev-list.pdl@broadcom.com>, <SHA-cyfmac-dev-list@infineon.com>
-Date: Fri, 4 Aug 2023 11:53:45 +0800
-Message-ID: <20230804035346.2879318-6-ruanjinjie@huawei.com>
+Date: Fri, 4 Aug 2023 11:53:46 +0800
+Message-ID: <20230804035346.2879318-7-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230804035346.2879318-1-ruanjinjie@huawei.com>
 References: <20230804035346.2879318-1-ruanjinjie@huawei.com>
@@ -77,7 +77,7 @@ X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
 X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Fri, 04 Aug 2023 15:21:40 +0000
-Subject: [Intel-wired-lan] [PATCH -next 5/6] net: fjes: Remove an
+Subject: [Intel-wired-lan] [PATCH -next 6/6] brcm80211: Remove an
  unnecessary ternary operator
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -101,22 +101,23 @@ is unnecessary in C language semantics.
 
 Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
 ---
- drivers/net/fjes/fjes_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/net/fjes/fjes_main.c b/drivers/net/fjes/fjes_main.c
-index 2513be6d4e11..a0d915d1dbed 100644
---- a/drivers/net/fjes/fjes_main.c
-+++ b/drivers/net/fjes/fjes_main.c
-@@ -612,7 +612,7 @@ fjes_xmit_frame(struct sk_buff *skb, struct net_device *netdev)
- 	eth = (struct ethhdr *)skb->data;
- 	my_epid = hw->my_epid;
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c b/drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c
+index 8580a2754789..8328b22829c5 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmsmac/phy/phy_n.c
+@@ -27351,8 +27351,7 @@ static int wlc_phy_cal_rxiq_nphy_rev3(struct brcms_phy *pi,
  
--	vlan = (vlan_get_tag(skb, &vlan_id) == 0) ? true : false;
-+	vlan = vlan_get_tag(skb, &vlan_id) == 0;
+ 	for (rx_core = 0; rx_core < pi->pubpi.phy_corenum; rx_core++) {
  
- 	data = skb->data;
- 	len = skb->len;
+-		skip_rxiqcal =
+-			((rxcore_state & (1 << rx_core)) == 0) ? true : false;
++		skip_rxiqcal = (rxcore_state & (1 << rx_core)) == 0;
+ 
+ 		wlc_phy_rxcal_physetup_nphy(pi, rx_core);
+ 
 -- 
 2.34.1
 
