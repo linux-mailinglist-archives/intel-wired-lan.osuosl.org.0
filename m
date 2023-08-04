@@ -1,87 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 857327702F8
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 16:27:44 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA5FE770330
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Aug 2023 16:35:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1484B41923;
-	Fri,  4 Aug 2023 14:27:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1484B41923
+	by smtp2.osuosl.org (Postfix) with ESMTP id B3B50417E9;
+	Fri,  4 Aug 2023 14:35:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B3B50417E9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691159263;
-	bh=o0tti54BRMhWvnEoD6Vzyt2niXRHriTuZXaioetnXaM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RYGXy7LWBZSNeZLOw8g0wclyAE/Nj2fNPWyp9kFyhoTcExeafNR3Uh6S2F5WuerDj
-	 +poon1QkU6Y4sYTAgpwysxQQXzAig9P6IQZWAIqs83h6eGwQXtnyun/+YLASqXyrLC
-	 lfbynMS5pevyYbYbsU9GhXKjHeYDh0A2u98olkXwWSw1u0x3C6gCLPRj8m/Wykj9iv
-	 fi9Fg1zXhYRkL0XyVG6w98C1cyhOi4RhrimHHPWMHSm9VfkaYqHdLu7Zc6D03lIEus
-	 AMonTCmJKFYktAk5rOt/vMsoYHaYWhiPhFetnLbStmQU2nZKYMvs6PIWg6OFwpUkMv
-	 c/8XwpC6tqYfw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QoktqnWRqNO8; Fri,  4 Aug 2023 14:27:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF007401C7;
-	Fri,  4 Aug 2023 14:27:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF007401C7
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 12B8F1BF97D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:27:36 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A50F541777
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:27:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A50F541777
+	s=default; t=1691159715;
+	bh=KisQv5khAp7/B831yKk3qXFUx9NI7FaITVajq+8XQaM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=xfglnrZOftSca0Dd6Itgr0NyqKxc+rxdwxvPmuMFBU/rcOSoNM36Y45gXQ1GEFtte
+	 ZBD53ylSGwoU8BIN5Xebgzk0EoxRlfp4CbAy6Eqvt0/Z7/5lLEO26qWQ0Fdh8E7Boi
+	 6GqCNV4OD5OA6ZtVqPrQBlp9EMATBULwHeuAuixS1H4pfVfbHqLXE6Tk+iVRQvAixa
+	 lOAzcUqyED12OBoZe0o4YBopqWpei9Np43Srvn4wUih9NQI5QxzlgWyNys//SJPoga
+	 +ftUgkbYXW7C2KfMFHBFkpL4/i8zxNGY0Mc7JoKxsNLojRuApIeQ23ny9GpedF2Njw
+	 h6bL67BQdxJyA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ep6KMLql8X94 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Aug 2023 14:27:16 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8FFEB4054E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:27:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8FFEB4054E
-X-IronPort-AV: E=McAfee;i="6600,9927,10792"; a="401123204"
-X-IronPort-AV: E=Sophos;i="6.01,255,1684825200"; d="scan'208";a="401123204"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2023 07:27:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10792"; a="844107132"
-X-IronPort-AV: E=Sophos;i="6.01,255,1684825200"; d="scan'208";a="844107132"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga002.fm.intel.com with ESMTP; 04 Aug 2023 07:27:13 -0700
-Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 910093494F;
- Fri,  4 Aug 2023 15:27:12 +0100 (IST)
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  4 Aug 2023 16:26:54 +0200
-Message-ID: <20230804142654.9729-1-marcin.szycik@linux.intel.com>
-X-Mailer: git-send-email 2.41.0
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pd00uZgYhqKa; Fri,  4 Aug 2023 14:35:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4723B41777;
+	Fri,  4 Aug 2023 14:35:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4723B41777
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 33D2A1BF97D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:35:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id CECEC83942
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:35:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CECEC83942
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dw5gp1u10e5o for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Aug 2023 14:35:08 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 450A38390F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Aug 2023 14:35:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 450A38390F
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 278FC62042;
+ Fri,  4 Aug 2023 14:35:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D8BBC433C7;
+ Fri,  4 Aug 2023 14:35:05 +0000 (UTC)
+Date: Fri, 4 Aug 2023 16:35:02 +0200
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <ZM0MlhZduLVa6YZV@kernel.org>
+References: <20230803151347.23322-1-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20230803151347.23322-1-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691159236; x=1722695236;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=GXmF27uGNRobpHnK3Kr3IDEDkP14r39sOYDAQGNg9ks=;
- b=e4KxdKYyhJXvQjOUsoVbr0ukiQx9dp2cOEuZERCxI5OKmyzwOyffZQ5r
- ojkN0sA+usZvaGYDF148yc/2ZKLmP2VvxQnqrFBGDgCcr7sTCoSqQ6BMS
- j3PvJAxM92U6wStV1ahq4EeFuZe3ayn6bKz2AXkku8Uv8H+m6md515coj
- ReleYGwFer/3fgWcwk64nSLpU4/oO9oI5+cG4vP8hqcc4CC+MgX330nwd
- ka3oa53Eo53YpulIUVxwI5mgFweaA0/heY5CiGK7vcmFspd9AumhAsWbU
- 3vxkb1seWk8JzkKUS3LGJOcNC9Rc6iterDtx1l955oMkDEJ/w9ZDdCZ9r
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=e4KxdKYy
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: Block switchdev mode when
- ADQ is active and vice versa
+ d=kernel.org; s=k20201202; t=1691159706;
+ bh=lI3Yz8yyI1OekaPbi6kQfjrKofOteaQVZnmEx+XbDVQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jCQUEn3kKTRpq8LNxvB8atg3pEf55bRiqS83dVV4mR9nGKMe7n+WwbNFdcj50i2+5
+ tkxnMifwxXdiQHzJbzWCNwjBiiVCGybNy+8qggbvi+49V6wqFywsV2w+nprqQopEQL
+ HM7HkjeCX3DBNHQKrxqUerxN3YUxVrKLIZUlsPLnypldZ2PUdQpyFX/7RqY3mI2PGE
+ 5afKAIgLXD6CJqzdD5D0jTf4cHxOuyQourKnWJD3JKHmRd0aX8DyelF1ruCXPoEcMV
+ n4afMB2IpFFexRq9TElS9z5T7fXIy+NM+PwZ21T+aP0qkxCSrbzFTMfk5fU7Asx59z
+ dk5EEmYkvx73A==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jCQUEn3k
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: split
+ ice_aq_wait_for_event() func into two
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,67 +89,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jiri@resnulli.us, leon@kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ADQ and switchdev are not supported simultaneously. Enabling both at the
-same time can result in nullptr dereference.
+On Thu, Aug 03, 2023 at 11:13:47AM -0400, Przemek Kitszel wrote:
+> Mitigate race between registering on wait list and receiving
+> AQ Response from FW.
+> 
+> ice_aq_prep_for_event() should be called before sending AQ command,
+> ice_aq_wait_for_event() should be called after sending AQ command,
+> to wait for AQ Response.
+> 
+> struct ice_aq_task is exposed to callers, what takes burden of memory
+> ownership out from AQ-wait family of functions.
+> 
+> Embed struct ice_rq_event_info event into struct ice_aq_task
+> (instead of it being a ptr), to remove some more code from the callers.
+> 
+> Additional fix: one of the checks in ice_aq_check_events() was off by one.
 
-To prevent this, check if ADQ is active when changing devlink mode to
-switchdev mode, and check if switchdev is active when enabling ADQ.
+Hi Przemek,
 
-Fixes: fbc7b27af0f9 ("ice: enable ndo_setup_tc support for mqprio_qdisc")
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
-v2: Added netlink extack, changed error message to be more informative, 
-    fixed typo in commit message
----
- drivers/net/ethernet/intel/ice/ice_eswitch.c | 6 ++++++
- drivers/net/ethernet/intel/ice/ice_main.c    | 6 ++++++
- 2 files changed, 12 insertions(+)
+This patch seems to be doing three things:
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-index ad0a007b7398..8f232c41a89e 100644
---- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-@@ -538,6 +538,12 @@ ice_eswitch_mode_set(struct devlink *devlink, u16 mode,
- 		break;
- 	case DEVLINK_ESWITCH_MODE_SWITCHDEV:
- 	{
-+		if (ice_is_adq_active(pf)) {
-+			dev_err(ice_pf_to_dev(pf), "Couldn't change eswitch mode to switchdev - ADQ is active. Delete ADQ configs and try again, e.g. tc qdisc del dev $PF root");
-+			NL_SET_ERR_MSG_MOD(extack, "Couldn't change eswitch mode to switchdev - ADQ is active. Delete ADQ configs and try again, e.g. tc qdisc del dev $PF root");
-+			return -EOPNOTSUPP;
-+		}
-+
- 		dev_info(ice_pf_to_dev(pf), "PF %d changed eswitch mode to switchdev",
- 			 pf->hw.pf_id);
- 		NL_SET_ERR_MSG_MOD(extack, "Changed eswitch mode to switchdev");
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index cf92c39467c8..2468b6018613 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -8834,6 +8834,12 @@ ice_setup_tc(struct net_device *netdev, enum tc_setup_type type,
- 			}
- 		}
- 
-+		if (ice_is_eswitch_mode_switchdev(pf)) {
-+			netdev_err(netdev, "TC MQPRIO offload not supported, switchdev is enabled\n");
-+			err = -EOPNOTSUPP;
-+			goto adev_unlock;
-+		}
-+
- 		/* setup traffic classifier for receive side */
- 		mutex_lock(&pf->tc_mutex);
- 		err = ice_setup_tc_mqprio_qdisc(netdev, type_data);
--- 
-2.41.0
+1. Refactoring code, in order to allow
+2. Addressing a race condition
+3. Correcting an off-by-one error
 
+All good stuff. But all complex, and 1 somewhat buries 2 and 3.
+I'm wondering if the patch could be broken up into smaller patches
+to aid both review new and inspection later.
+
+The above notwithstanding, the code does seems fine to me.
+
+> Please note, that this was found by reading the code,
+> an actual race has not yet materialized.
+
+Sure. But I do wonder if a fixes tag might be appropriate anyway.
+
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
