@@ -1,87 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13367771CF1
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 11:15:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D8F1771D62
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 11:48:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EEAE54012F;
-	Mon,  7 Aug 2023 09:15:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EEAE54012F
+	by smtp2.osuosl.org (Postfix) with ESMTP id EA3EE40B39;
+	Mon,  7 Aug 2023 09:48:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EA3EE40B39
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691399709;
-	bh=CHM3sEkEOJPrmgQKS59bTJfx23g9gYqnTfsfHpT3+pw=;
+	s=default; t=1691401734;
+	bh=7z5P+G07y3qlALoXMt5pMERtviJ701xciJkh/NfuhfE=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=NMvAjOGQWk5CAiaHy+vvAow+FEAnBRkjqyFWxm31KQH6kT6zam74m5Dz1+ez4Goku
-	 aIoJyds1Gj/A/98gHLG2MEQtgUjLzvES42A8bc1ClhIWWY73YWzjR6ivAAKsTPFjo9
-	 +Zj9bvXBypi2++9pyNswRtLT3fzh7eN1XuteftfzGJjPAM1SUEoupAsP42cxj6rFfP
-	 6XCUAh9JYu8B/f0drfpDcon9Txv1ABRTQygVS+2AA4xv3rK0NUu0Sgb0nkUtQz1yig
-	 sS5Cfrrchw5SWLD3dsMxH58Grryxf414PX4/8HZhmoLZMwXd26TrmUwIMbF4DAxfc5
-	 rw6j4Ex9QOvlw==
+	b=Xbb4Jb0Y9bQEWcWrMMREqYyfpxlQMljbEAcUZs57D0npqfdEpTueZ1C1hYxe1SMaM
+	 7M9MwFSyvBzUJKzIu64c8SgT642tTNzy3Ednkcj5DhF8zUjQtSNHNwuqHk29mlBtUX
+	 T/QeqAHGYQXM0K3j5WHujfomqyhQhfMBHv+2jrYckvgEH1MbU18tt8fFg2z2BRlsGC
+	 /y//tVG1ALXzvsEc/cH5H97Wu6Z+qc6JNm17Oa50IFIoa3NKozgqG43uArVe1/A3DP
+	 nT/iuhdkphU/wS0epxbVNt/H1s4LgkIaOxCa0FcUouMtkPMAhlvR2zxt7An19s6HZR
+	 iKkniF6Bjfing==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yOBM0lz_YIOp; Mon,  7 Aug 2023 09:15:08 +0000 (UTC)
+	with ESMTP id s3bCGaKGCiuZ; Mon,  7 Aug 2023 09:48:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5DC1A403E9;
-	Mon,  7 Aug 2023 09:15:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5DC1A403E9
+	by smtp2.osuosl.org (Postfix) with ESMTP id E350C40323;
+	Mon,  7 Aug 2023 09:48:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E350C40323
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3BCF41BF969
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:15:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 14FFF1BF329
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:48:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9092C81492
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:14:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9092C81492
+ by smtp3.osuosl.org (Postfix) with ESMTP id A235D608B7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:48:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A235D608B7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pl6uQ56jKR_m for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Aug 2023 09:14:45 +0000 (UTC)
-Received: from sgoci-sdnproxy-4.icoremail.net (sgoci-sdnproxy-4.icoremail.net
- [129.150.39.64])
- by smtp1.osuosl.org (Postfix) with ESMTP id 05ACE80C1B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:14:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05ACE80C1B
-Received: from localhost.localdomain (unknown [115.206.160.170])
- by mail-app2 (Coremail) with SMTP id by_KCgCXDxvXtdBkKGQpCw--.25311S4;
- Mon, 07 Aug 2023 17:14:00 +0800 (CST)
-From: Lin Ma <linma@zju.edu.cn>
-To: michael.chan@broadcom.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, ajit.khaparde@broadcom.com,
- sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, saeedm@nvidia.com,
- leon@kernel.org, simon.horman@corigine.com, louis.peens@corigine.com,
- yinjun.zhang@corigine.com, huanhuan.wang@corigine.com, tglx@linutronix.de,
- na.wang@corigine.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
- oss-drivers@corigine.com
-Date: Mon,  7 Aug 2023 17:13:47 +0800
-Message-Id: <20230807091347.3804523-1-linma@zju.edu.cn>
-X-Mailer: git-send-email 2.17.1
-X-CM-TRANSID: by_KCgCXDxvXtdBkKGQpCw--.25311S4
-X-Coremail-Antispam: 1UD129KBjvJXoWxZw1DXF1xXw4xWrW3Gw17Wrg_yoWrGFyDpa
- 1UJa4xZ3yvqr15Xan7Ja18ZF9Yqay7t398uF4Sya1rZw1vvFyDCr4DKF9I9ryUArWUGF13
- tr4UAF13Aas8X3JanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUvG14x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4U
- JVW0owA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
- Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
- I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
- 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
- n2kIc2xKxwCY02Avz4vE14v_GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr
- 0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY
- 17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcV
- C0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY
- 6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa
- 73UjIFyTuYvjfUeF4EDUUUU
-X-CM-SenderInfo: qtrwiiyqvtljo62m3hxhgxhubq/
-Subject: [Intel-wired-lan] [PATCH net-next v2] rtnetlink: remove redundant
- checks for nlattr IFLA_BRIDGE_MODE
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id z62YCu8JiAAq for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 09:48:40 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B43FF607D0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 09:48:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B43FF607D0
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-288-tPRH4S_9O9qMixjTX2NOpg-1; Mon, 07 Aug 2023 05:48:35 -0400
+X-MC-Unique: tPRH4S_9O9qMixjTX2NOpg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7BBFA3C13922;
+ Mon,  7 Aug 2023 09:48:34 +0000 (UTC)
+Received: from swamp.redhat.com (unknown [10.45.226.148])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EC1381121314;
+ Mon,  7 Aug 2023 09:48:31 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Mon,  7 Aug 2023 11:48:29 +0200
+Message-ID: <20230807094831.696626-1-poros@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1691401719;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=mCbJj/vVAJbYyM13q10h5V9OXKZQO+l4vJHMyz5zA34=;
+ b=is6KgjE432Y5BFFCiOrDzbLbBG57ivkli9Jhaup/2rcIJ7YDo1mOozNhouhXLO/8lVvs67
+ 9bT8EgBYXe598I0hRdaz6ITPxJx/DowFbqc43vRZa5neu1MlN1i92VMOHO8rLmjFJ2w5wB
+ Wx4hBLOC6vZKba9zIuEIBXgXlCCEGck=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=is6KgjE4
+Subject: [Intel-wired-lan] [PATCH net 0/2] Fix VF to VM attach detach
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,103 +92,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Lin Ma <linma@zju.edu.cn>
-MIME-Version: 1.0
+Cc: slawomirx.laba@intel.com, przemyslawx.patynowski@intel.com,
+ kamil.maziarz@intel.com, jesse.brandeburg@intel.com,
+ norbertx.zulinski@intel.com, dawidx.wesierski@intel.com, edumazet@google.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The commit d73ef2d69c0d ("rtnetlink: let rtnl_bridge_setlink checks
-IFLA_BRIDGE_MODE length") added the nla_len check in rtnl_bridge_setlink,
-which is the only caller for ndo_bridge_setlink handlers defined in
-low-level driver codes. Hence, this patch cleanups the redundant checks in
-each ndo_bridge_setlink handler function.
+Petr Oros (2):
+  Revert "ice: Fix ice VF reset during iavf initialization"
+  ice: Fix NULL pointer deref during VF reset
 
-Suggested-by: Hangbin Liu <liuhangbin@gmail.com>
-Signed-off-by: Lin Ma <linma@zju.edu.cn>
----
-V1->V2: delete the link to last commit as it already in tree
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |  8 ++---
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 34 +++++--------------
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  1 -
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  1 -
+ 4 files changed, 12 insertions(+), 32 deletions(-)
 
- drivers/net/ethernet/broadcom/bnxt/bnxt.c           | 3 ---
- drivers/net/ethernet/emulex/benet/be_main.c         | 3 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c       | 3 ---
- drivers/net/ethernet/mellanox/mlx5/core/en_main.c   | 3 ---
- drivers/net/ethernet/netronome/nfp/nfp_net_common.c | 3 ---
- 5 files changed, 15 deletions(-)
-
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-index e5b54e6025be..9e098c1cf1ab 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-@@ -13101,9 +13101,6 @@ static int bnxt_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh,
- 		if (nla_type(attr) != IFLA_BRIDGE_MODE)
- 			continue;
- 
--		if (nla_len(attr) < sizeof(mode))
--			return -EINVAL;
--
- 		mode = nla_get_u16(attr);
- 		if (mode == bp->br_mode)
- 			break;
-diff --git a/drivers/net/ethernet/emulex/benet/be_main.c b/drivers/net/ethernet/emulex/benet/be_main.c
-index 18c2fc880d09..e8abc43a7061 100644
---- a/drivers/net/ethernet/emulex/benet/be_main.c
-+++ b/drivers/net/ethernet/emulex/benet/be_main.c
-@@ -4985,9 +4985,6 @@ static int be_ndo_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh,
- 		if (nla_type(attr) != IFLA_BRIDGE_MODE)
- 			continue;
- 
--		if (nla_len(attr) < sizeof(mode))
--			return -EINVAL;
--
- 		mode = nla_get_u16(attr);
- 		if (BE3_chip(adapter) && mode == BRIDGE_MODE_VEPA)
- 			return -EOPNOTSUPP;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 1726297f2e0d..d1381b1b3f3a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -10042,9 +10042,6 @@ static int ixgbe_ndo_bridge_setlink(struct net_device *dev,
- 		if (nla_type(attr) != IFLA_BRIDGE_MODE)
- 			continue;
- 
--		if (nla_len(attr) < sizeof(mode))
--			return -EINVAL;
--
- 		mode = nla_get_u16(attr);
- 		status = ixgbe_configure_bridge_mode(adapter, mode);
- 		if (status)
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-index defb1efccb78..b2df8e517a85 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-@@ -4883,9 +4883,6 @@ static int mlx5e_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh,
- 		if (nla_type(attr) != IFLA_BRIDGE_MODE)
- 			continue;
- 
--		if (nla_len(attr) < sizeof(mode))
--			return -EINVAL;
--
- 		mode = nla_get_u16(attr);
- 		if (mode > BRIDGE_MODE_VEPA)
- 			return -EINVAL;
-diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-index 6b1fb5708434..85f36ec2f986 100644
---- a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-+++ b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
-@@ -2068,9 +2068,6 @@ static int nfp_net_bridge_setlink(struct net_device *dev, struct nlmsghdr *nlh,
- 		if (nla_type(attr) != IFLA_BRIDGE_MODE)
- 			continue;
- 
--		if (nla_len(attr) < sizeof(mode))
--			return -EINVAL;
--
- 		new_ctrl = nn->dp.ctrl;
- 		mode = nla_get_u16(attr);
- 		if (mode == BRIDGE_MODE_VEPA)
 -- 
-2.17.1
+2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
