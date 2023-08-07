@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1A4F7733BB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 01:06:48 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83E10773420
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 01:08:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 01F8840A5C;
-	Mon,  7 Aug 2023 23:06:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 01F8840A5C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1E56140A67;
+	Mon,  7 Aug 2023 23:08:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E56140A67
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691449607;
-	bh=2NwQdwJpiZqLNlZqI1V8nqqofL/oyMAwuAEWRTu6kII=;
+	s=default; t=1691449711;
+	bh=GR6L9v7mYOSf2GB220rf7RwjvR1o57H+V9Q91qz3Qu4=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5E7KM6+BygfDltc014ZyYtxSerhUeHMFwx5rvDzPVeDPaJjRN3x1F5Nbbfo0HuXw6
-	 DKnXWiwncFpE/HIWbuXquGMdh6IJTz1GfMWyXFsBJ4VQY/mWerc3HQhba36CbFMKD6
-	 lWN89/5nJKwTu0sMaHRH7/mIn1a9bdIYjcvXosbxkOS+nWrxFcR8SsjGYgXnjiatC5
-	 J5nf/rZPur/JfbLSnNO8HsCZn76LziQqz1Amroq2pnjB86iaeAE+QJKxAb0rKzOsv5
-	 Oq0RitCUj+Ya6ZvzmfdLndBPnEoCCAmZUR9ur2WbZzkHJOMsa2QmJ/92oEWKDCh2uq
-	 MrsmgjCJGcGfw==
+	b=NA9pkf8impeT0jmPLdEI5v6pR/yxz2Q6vuNlkXNDIjN1n+bM/kbiDk7LcSg8EopU2
+	 Y9OrMM/pxyyaZXpDiYk22a2b+2AuXpf6UFTXKyaBqZBfRdgAv7KG5JRESe+HzBxq+p
+	 dhq7VUjKZj3LokWaGyMTzWDNytlFrhJZ2+HmKW5f26MPyB6JZOt92yL0MUyTaAB6VW
+	 uaOX5mbTWbKvH3vgsj/9wGcOSTnvCwdxB5SgER21uh7c6q76htFW6VAA9J9BOLP7aJ
+	 Ia5Pbi6JwG4c0ANjCcUUSfjuFQFDogNYlfK8h6k9CEXJ26XrD9yokeLupjzKP8m4dk
+	 nZ6qW/Jz2OgkQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0J45tbqxCcXv; Mon,  7 Aug 2023 23:06:46 +0000 (UTC)
+	with ESMTP id 3RZ8pTB74l0i; Mon,  7 Aug 2023 23:08:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A0FD40519;
-	Mon,  7 Aug 2023 23:06:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A0FD40519
+	by smtp2.osuosl.org (Postfix) with ESMTP id D19C140519;
+	Mon,  7 Aug 2023 23:08:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D19C140519
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 396271BF42E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:06:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2ECD31BF42E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:08:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1C0B0410C0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:06:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C0B0410C0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0537C81F01
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:08:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0537C81F01
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jv1BJzPHnbUe for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Aug 2023 23:06:38 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 63FBB410BD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:06:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 63FBB410BD
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="369568289"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="369568289"
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kbm5dQIHox73 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 23:08:23 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 177B881EFC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 23:08:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 177B881EFC
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="401631693"
+X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="401631693"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 16:06:28 -0700
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2023 16:08:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="796500313"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="796500313"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga008.fm.intel.com with ESMTP; 07 Aug 2023 16:06:21 -0700
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="796501506"
+X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="796501506"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga008.fm.intel.com with ESMTP; 07 Aug 2023 16:08:21 -0700
 Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 7 Aug 2023 16:06:15 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ 15.1.2507.27; Mon, 7 Aug 2023 16:08:21 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
  fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 7 Aug 2023 16:06:15 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2507.27; Mon, 7 Aug 2023 16:08:21 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Mon, 7 Aug 2023 16:06:15 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.43) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.27 via Frontend Transport; Mon, 7 Aug 2023 16:08:21 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Mon, 7 Aug 2023 16:06:14 -0700
+ 15.1.2507.27; Mon, 7 Aug 2023 16:08:21 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XJT3meaTbB0nTiGPPEO3pwObXBDiGc8p98xrWXdFuZ8MxceSy8514hAzkkViHHcuqyEzvT/g0mpRVj14JPGdJdbkOye8TfJgjJQHIrVuhAE145bLC1D/SwxF8cJ/ZSAYQoM2cIEPL050XBLfFXXtLi82+lrtCkmieTchQ0hCfedzjJQlOCiyY6kmnxHdqaESbMUEWWXo0wF+uRXtwNCWTju53WKhwFfU9H6wSPjztY2jYGkf8vAobBa9LKVnIfmLU71ZrjyhOUo8KiKWSWazRg/5qHfDJD4pvsLNgwce5nZb3gpVTRhdV+OE6Gd1jMBeSYWDjS0pMTF0r2CijcJRMQ==
+ b=CHbnoCTun3xQ+KKB4ayXzTXM5J76OJSLDdGhZV15uBcPJgumsBHpjPrgFuqrskTiX7+VcaLxcJzcmWxWtWH8aQKAI3NUvZXjbuVD6hqg2K5nnOp9YbewgfXNAuS62f1px7FOXBTlBFsXdiMdWcj3tMkZGJmrgxLrCGAyMmVvcHvENk8sW2N6qwifx3Q5K1VQzOf1e6VtJ+H8fOG7DB/T47tVOcADxvfYnaR2ruMX+HoIuot/UxDPTS5i9/kpkkWaXDlhzt1W/0UhWcwAhLArfz1ckbyzikuNRB1ZM1bdANQgoVdW2p30F2qGyclMcyUNZCM0aeuo+h7SxOuMYpNMfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a4vU+VK5xZeZWkTz+FvTHoB9jY9zXZaoV2JMi+dAhuA=;
- b=VXMAHAdpqMQJs0dc/O9RfBPnpz7BdD4nKsJoL72RwS//4MvTKT0EfWeRu//zxcNfs+/GKpU2Q69eWC0r1MTEmIU6wXkwPYpCCiu8BWJkBsSF0bTuCede3hq/e3+29uOJcQ4TiP1/cGQ/oYE7fjl0T20mB2YmsBTLfaQIBh0WIZt0OyhEKZM0Q0+pTUj3ZmppGciGnHbE4Itc4/vXNjlFU+eOGKimhG+bvcZy59n3XT988Dd3oBFDmIFKrffytLRgq6RGFIlQhdk+35RO+grPtu4HNeCrxy2dyGCzEtV5aDObsonDQqOG+XETCZWDNcaduHhLaPO2u3ktIwNNT0rvJw==
+ bh=Z45MZ0BD0WkXyg8lIwRSEiD8/5T4R9pLPvu1DAcSg1A=;
+ b=F9URBuHxIYSqZqdVyEUYlszuwNlyy0FQaTjLDb0TV6jUvV+kfJ7bLlCtXOAbVhQXVwdecGwe6AtClzA5/nl1GSjO+GiNg6z4KqLfY/el8VTdUITEgaXq8xITyp1mI6XzAD+u8I6Y7QO9f2c7ordvlPV0aexsrDzpC1RP1jZxfr3nZ3f//9ZmRMDRKAKP6ayXJ6nkTllkBCJpcmxm3oIemd28HfB/h+7g5nYkT5GxuQY8dJmqZJ0Lim9LxrXKaE84mV4EDmkLslRN4KeNtCAImBETNN+ru4kpI9I5ch+yGkvPzmyRASCDjogzh0FqBjVbQXz9faPtjgZhurOZZLImjA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -86,98 +86,99 @@ Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
  CY8PR11MB7685.namprd11.prod.outlook.com (2603:10b6:930:73::17) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6652.21; Mon, 7 Aug 2023 23:06:11 +0000
+ 15.20.6652.21; Mon, 7 Aug 2023 23:08:13 +0000
 Received: from DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::c3cd:b8d0:5231:33a8]) by DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::c3cd:b8d0:5231:33a8%5]) with mapi id 15.20.6652.026; Mon, 7 Aug 2023
- 23:06:11 +0000
+ 23:08:13 +0000
 From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-To: Jiri Pirko <jiri@resnulli.us>, Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Thread-Topic: [PATCH net-next v2 7/9] ice: implement dpll interface to control
- cgu
-Thread-Index: AQHZxwa2tpV0bJfdtEKQtg9oKdvEq6/ebaiAgAELAZA=
-Date: Mon, 7 Aug 2023 23:06:11 +0000
-Message-ID: <DM6PR11MB4657B0935B869AFCB3A87BBB9B0CA@DM6PR11MB4657.namprd11.prod.outlook.com>
+To: Simon Horman <horms@kernel.org>, Vadim Fedorenko
+ <vadim.fedorenko@linux.dev>
+Thread-Topic: [PATCH net-next v2 6/9] ice: add admin commands to access cgu
+ configuration
+Thread-Index: AQHZxwbCEAx9MO6vs0irTseMzSA5w6/diaoAgAHv6PA=
+Date: Mon, 7 Aug 2023 23:08:13 +0000
+Message-ID: <DM6PR11MB46577E9609111FDE34A4F7469B0CA@DM6PR11MB4657.namprd11.prod.outlook.com>
 References: <20230804190454.394062-1-vadim.fedorenko@linux.dev>
- <20230804190454.394062-8-vadim.fedorenko@linux.dev>
- <ZNCYPVX7p9Fe/lPY@nanopsycho>
-In-Reply-To: <ZNCYPVX7p9Fe/lPY@nanopsycho>
+ <20230804190454.394062-7-vadim.fedorenko@linux.dev>
+ <ZM/Y/PjPVNxbwLOL@vergenet.net>
+In-Reply-To: <ZM/Y/PjPVNxbwLOL@vergenet.net>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|CY8PR11MB7685:EE_
-x-ms-office365-filtering-correlation-id: 4b5b5469-7cd4-415b-9ef4-08db979ae475
+x-ms-office365-filtering-correlation-id: 1c9eeef2-35d7-43a6-e66a-08db979b2ce4
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: CjoTEa0P5AkhzpMBm7aGIuCNhQ3UG0BOJpTa2n1qOF75Me8YO+DuQI06bxZA0wHqPRP/9k4ABSMwsyX0DjczQ9VTPjg5LQqTc4F/YzkRCh+DP897m5ZVK2/tuqtj6Y4I3y7kp57+1e+NFWECvtDufSrxx8oyOr5s/efn3+VeNdcxf0Vo+su8a64lYoMjNR40zQ/0BPUfbrd0WkZdXDb1gobgm67Y+KYrRBKnih+sE4bFe3fbyyGMQQneXuvrrQksOJj9dF+c7F0p10lbEK2DDwoAxSDS13rod9vOn2KIWR0qvyhsbNWI6JK836E1gkfw8I6owPCQrx28l2KiEJYJjsjcXLw76v38PHaNfFxCy/QvNtXMrco4Aye8BjsYGiKx5itgnKxo6FyFwjEEEz3K18jhf2tgTTsG9C43Z6vEXc1CPVTpu2CafaWF+f83Bq6Ydsu/WD7En8YDgGgeiSf+132VKbQXtshYLXog0MNM+YA6tGoyhOMLprZ9dGc1hJAi2iYsbMBOBKD2889iZeKQRHrLeFjexQGNmx2knPFiWJ7RlUGdqDmrUiGzMIgXZMkF2wWenrskrwZtmsvN7g0aRM40wT5suAQuqdcV7BCvQyprcFjpskEKqFvY7U6EBmDNXCFHqQhtNM0lRhJkqH6bgi3su0JOojHyADXVgD0IV1u6txhfhXiTTRt9Iyc7qydP
+x-microsoft-antispam-message-info: o5b9lpmE0YU36AmMnnjYta9YZBqt5OTZBIzInx3RzbfI43Ztl37bBV6Jbomp5AVvlrB01zXQ9ayJCyfes9lT5fniZxGmjH3/ts6uopqIiAt+YEGB8X/VZ4eOTvWfPQXjm94sBkRrbkKnr9b60Sqm20zmM4CsBupNCZKLSv3OiHx3teGG4N/0UwUYzwht28vWRXFTa1LIx933VlIBbqx+ZRhbQL2VznqRQogfQ08Ng4uuYCxAgbOgBeoHM7+5JbfyEkkxPF3lcVgqaj7mNrAsLlCDPIi5xRNGFe6OyitCGsjKMTVI3cYzFBmrjm7axeI19vHWdUpKMy/HZyXRFutqZVfyDisQawA1mR8GHihsyMgChh8ZV+03t7Y+5DcNW4FPN1UnXF9vJNM1qj2ISMnceo2LaU1afhzN+EV4Qjcf+kmXmeXLXt0xe/sNlQFSSIDpZCA7PEn3hbzo52w6uRXD3FViEh9kh7NZlvWEX3SvMYv0tqe2CLMq9IJ/R5jTi2iW/+NvCyOQ2zw3FyYoLmkUFjWhI/Brc58q+DQSY1RyfR3+rMca9hWvXPBHEgDxeAHQWELBtRh5cQy8nrUNIx03XGZI0Jk8XkqkhDMTaeprmNeqn59SLkeYoghMFrSDgKNnY6i8vSPP3SoEUPncL3T9LCOwBfiuKGiOQDi9OLTEpKzE2RZoe0uzDV+G/ewDjxxN
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230028)(396003)(39860400002)(346002)(376002)(366004)(136003)(451199021)(90011799007)(90021799007)(186006)(1800799003)(55016003)(9686003)(4326008)(316002)(86362001)(478600001)(122000001)(54906003)(110136005)(38100700002)(71200400001)(76116006)(66946007)(6506007)(82960400001)(66446008)(66476007)(64756008)(66556008)(33656002)(7696005)(41300700001)(26005)(52536014)(38070700005)(8936002)(8676002)(2906002)(83380400001)(7416002)(5660300002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?B0rD0Sca+MBmC7ibjPI6vGRf2Wm8XTN8tgYWRG/phwg6rOpy/7libuwgByqm?=
- =?us-ascii?Q?HvJ2VN65WvPEFKlBiUAOdPkWjzhnE9N7kBhuOYzOX4F1r+CuEpu02ACyME/A?=
- =?us-ascii?Q?vd8Uyj3HvX5kYdoMN/m119VezNFgwY+8F3OfD2EmdpI+wiMYcwMNG9t6lQg4?=
- =?us-ascii?Q?sUiNwxfv54kLjAVjvONgOZOmXKtshz/NqY0kS/amp1vC0EtZbw70hX0DfB1w?=
- =?us-ascii?Q?2NLW6FnvubRutrnC+hPTmGU/T1QME+lz64snV86IpFb7+hdU0YgsJQvWOtT6?=
- =?us-ascii?Q?uY4N/Z8NwzOcR5Ph0Q4lUA1OgmULSSntpNCoYHQ00U3YcyFfLYB0ze0YVMyH?=
- =?us-ascii?Q?pzRi6HQsojSbNxOsttDHoBzoYYRerRwwPnxmsvJsjh2mmROrlyrkLOX0tQ+b?=
- =?us-ascii?Q?45uSyLaHopb7vuFpdeWr4Hh+czZV1625pVk6zP11i7j2AhcMq1tivTFloVs+?=
- =?us-ascii?Q?cRS6QxgQD9PmmKEHUfqASJdFBw7eupVkL/MU/Kc2BdtbKq5rTsINFYPmqtMT?=
- =?us-ascii?Q?qMgDSvu/VX4NJZpQIVdTNoCHradStfLEgghYq+rgafghNs7sEijhOaobTdEe?=
- =?us-ascii?Q?YLU3J5IS0JS/3lrlH1cMXb7pzmbCeQPfJ9TipLOwkchhFieMZI30w0sYglEd?=
- =?us-ascii?Q?LY2fhZMlkUjNQaarsrPDoGbodDoKgLA7yLvNaRPiqnoLF+CIU7sHvGVfYEal?=
- =?us-ascii?Q?SP5T2MvqYBR4P1NonsGOB9reBfta4eGgB3yaliZwdfLkMxagZswSOi/Bb7vj?=
- =?us-ascii?Q?Iggtgx7QYRU21IGuG5IFjkMtwNx7DSIquzlqGQ3V3c+HO1PTQTtcbYmGio/+?=
- =?us-ascii?Q?LmYNbvs28KaNtbLZDrabXr7Vb0phSnW8tnkxAW7eSawrmDhvSLBjM2pys56A?=
- =?us-ascii?Q?fwtN4EvzsepxrGZKZUHdJSoUso13VUw8PDDVF4RzzO43F3sELqpKct+TSd71?=
- =?us-ascii?Q?5xjJyllWbsQublaSdVgXaVIPt/c7wWVX12V0U6fqngBEViphrRjHLFtOBdSZ?=
- =?us-ascii?Q?nMGq9AN4UaCF0R8a5gLTU+tAe/MilY2qMXmZukSupjifoRlQK7I7OvZt+/v/?=
- =?us-ascii?Q?jRwqp6rO+yw2m+EPsKgd+KXSW7NX8LKW3ptQVBBhkBU/tfO9hYW/puW0zF70?=
- =?us-ascii?Q?nK5OJ5fttPKeuIujxsKfQkrTPBK3irr6sNnxiAtXMk3a9RvGJsHk1qOVzMOk?=
- =?us-ascii?Q?I8I+6o4dr7r+QPGPaVf4r0mXBckCCJ/x0fiNvgIelQ+ZWnobrcfz5vTKwM03?=
- =?us-ascii?Q?QoFMHP+wSLZ+R8rQyc18Bz4sa11M91Sw8GBj29ATMLVUaVhlrTuX8zTAhPwm?=
- =?us-ascii?Q?9hVZnvJsOqzrdLv8IbRcYtgDLl5MV8Ffbp/g+zgKqbNezciC8/OAKlwJQzio?=
- =?us-ascii?Q?Z3n1ms6a+hoPhcp5Ota1eDSjHtJItnNMuAvmFA0H9209X7F0fQiALB4yzrW0?=
- =?us-ascii?Q?5mcgNRaA+3LlM8AZHV/MeTrXz/xKzJoBdRhmrBg4a39sUMK6fY/VnjILPu1+?=
- =?us-ascii?Q?TWMIJu3qq/U0ugid/apWQCwiclVuxDUZm+Y3142K/XsenuCqKbubiHXWWs8S?=
- =?us-ascii?Q?gabR7tyRrwRyn/31y5nVpZLO71imuP7CZl+qOMoYG5X1WKI2u8Q92J4I+VJE?=
- =?us-ascii?Q?VA=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?UHifpVNQuV8ujsPXEaSOq9dR3+gzEGTEIQ4b0VnQG0D77e6AGNZfetxpznMQ?=
+ =?us-ascii?Q?VJCCcRpI3gdhMxtbkImcndO6DNBpw9qVqhPzeryU3lHF6d+xJKJNMFPfJGUt?=
+ =?us-ascii?Q?qsNMAimx7n0pnWCJZUCbsmFrRYPTKmPFf4UC9s/F2omaTihAxXpJr+gxsX0l?=
+ =?us-ascii?Q?4DLJLjERMcxDcGYLU9p05zrKg/2y/VnJzOsV1WjOzaZ7wtZe9QHDQ71BDbWq?=
+ =?us-ascii?Q?uElZR9CVksdgxGmouPRYJ8cpewrgpSgcQRdIyvvgag2rCTfOistkvtLEosgK?=
+ =?us-ascii?Q?tVpEONj93szH+XxQ17LMw6dmE6MxoB6COrewwRycryOzmE8A79+HJyyAElEO?=
+ =?us-ascii?Q?SDe0nIB+PNw/SxDfcRs+tVQOIHVuyxtChe27Ld4kUvGeofb45lyuWW2AfJh9?=
+ =?us-ascii?Q?e4MeSO5KyVviAjh2t8qML738sYpZUVa3xZoZfY1hK3rVK9uEpe6cjl8Z8xSw?=
+ =?us-ascii?Q?fqCKscH1U8dX5e740wfPqRYH61eYEEuU+JXo1QiEuAMWBpM3OnGYnhQqff32?=
+ =?us-ascii?Q?FKBLRpETChnVFN0OvQIvaEXsWGHZVBaykZAIj8rgXzkkGgb3VtXU+V09DZEm?=
+ =?us-ascii?Q?jyY4/OiywSwaoZEJkcBmFxdQl+Yl5B5YiYPmpJM7z9JV2/qv7mXd/zaZzmUy?=
+ =?us-ascii?Q?nSmySkzDmCmO5sJ0q4ZQm4BEA+CRjMSv8C/yMKpKMHbF2zr+4Ug5vlx1H6YK?=
+ =?us-ascii?Q?RQL1PVpIEIPChljnC4d9aRkIuT5/orGtt1i0ba6AHfpgzQAcRng+WucgSu2J?=
+ =?us-ascii?Q?md/EwOOyDnYVldfJBp47R0jCbOJZb5mTejyHUObIhRY1l3QtU/NR/BU4WBHt?=
+ =?us-ascii?Q?tn7oJEzN/1YNwafCi60Nmbtff6FHR9BZySYY+jz2wfIJOHh3zhqbSsLcwk1u?=
+ =?us-ascii?Q?enIAehMutd8sjOkpeMHh3HxrGFKsFh6B3QUW/T0sv/DpV0BFqumMuJPS4TIC?=
+ =?us-ascii?Q?sS0hqB0yhTejTvNNY/1g5Px/14fmkcvu/NDiE45cgl5vftvB5e874KOiQcFp?=
+ =?us-ascii?Q?Mpn0duQ3UhmnPPKguBymm2Kp4HP6AwmOeAiHb/mbgXcvdjWC8CdXT7jUNIBa?=
+ =?us-ascii?Q?0beevuwNJvEurXoeXH+OFaDfjneG7TJiBJgrB2VEccKto5DSDSk3ZzhZs0Cp?=
+ =?us-ascii?Q?b1FLj84xg50zNClPaSUAHMI897Ng1mQSVxz04xmOHRU6+QRz0mRKRfSAhUHL?=
+ =?us-ascii?Q?QQdYUur0WYiN8pSSX70LziJ0K83riltnRe3U5q6t+tGumhtTKx/f2epQCKyx?=
+ =?us-ascii?Q?at2RszZcqF/RUJmuiL4XJtU08YLo23MIW7x+SXTlEVkprQxPiiUNKKGQ2y0D?=
+ =?us-ascii?Q?PAStPZt4hVQVcXiVdu8csllpUEFCljE5FQ7ewVUsaqiual7oHSgI5pnlfEMm?=
+ =?us-ascii?Q?OjMcf05uRTOyqxL6S6Qjd9OF8xLuUhe6jDp0oqOUD8A7fyHEHvoIMhrRSnOX?=
+ =?us-ascii?Q?5DKWzRpDhySV8scF4iyMBqEvcQkasmF1P5T0mQw/rJrwUGTIjd1lmnkQpifG?=
+ =?us-ascii?Q?grjI109OPlK3xsfSLgkBY/LnxhFDT7gKmWoeyVSuuFoDnXfrzEWJhX9IVdhC?=
+ =?us-ascii?Q?aziYnOB1f1+Zo9qG9TH85jMQF91lOOxBRC7HndUb9XJCKzLoVPi1EBusmv07?=
+ =?us-ascii?Q?HA=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4b5b5469-7cd4-415b-9ef4-08db979ae475
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Aug 2023 23:06:11.6112 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1c9eeef2-35d7-43a6-e66a-08db979b2ce4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Aug 2023 23:08:13.2046 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5K1VEXa8vLz5SpsRumTuJxtpZ1Ss6HkdpkN/iImhW4YWvCQc++qwgBiOKpYkMLD0w30ItugEYqaeQ3Wb85BlykiVfUWZIGoZqAU0z40yXsc=
+X-MS-Exchange-CrossTenant-userprincipalname: IG15myC+MBvLGArTbwXx65UnY/zV5tU3WnZvzCUiixWpc1hHAYFkgmxf99U7DT4AYUxR1fas7p8FP4o3g/DRYh4EpoeXeAnn3SRAL5B+3ts=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7685
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691449598; x=1722985598;
+ t=1691449703; x=1722985703;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=ZgU0Mu33BbVDjG1QCFvfkoNZ2WATwhZQKqf1S5dgwYo=;
- b=dgqBVTI+RdgyuqYTIrK7zghxozcCsBdbrCSSwS5pZ7gwWBEdhLw3d7LW
- NEdk7YlE+YcQArxyoBjBFPdvihJOMBc2toJyJGPBp2VY8DSCh1MQ1Z3eT
- hkkHiOOP7mD3g3ASQfPp2T44JDxPH9c2ll6rjSZe3WcNYt2hnaHVb62rT
- q9uQynyhTaHGGu37LQxxAuNhxq327qa9MHqG2Yg76CAWNKvTTasj3+Sht
- R3s8WqpG/lP/OokmQaxoAG4ZLLk5A6moLBd9TmMvv/zNqLN8fCi63AxXc
- 3fcthX8NHDjM9ZnhtdBF55s2y/f4FrurpRg4ucoR+1Lqfc4MdEgGwrvUH
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=X+EBfCWuttTi30h4bfff97doqJN+1vnLYZoSC8zqgCU=;
+ b=iGJUFtgYfoWb9zlav1YnC4gsChGBArHWG67OLKU2lPaLCitkmFpsndH5
+ P1/nSERD8Wh8DIVvmzscI89FJNrNQ2bzEG4jRS5NtwP3PgZkNnAq2ff6G
+ 4oAkad6Y0dpJTtUenPTGc6/1zKECvQ+GUkVprT39wFWz92BxztUIPbLMn
+ UcMTXuKSFXUTZyZP6jbEqwAY2ik/0JAi/MNGnRV6cjJXjPDHJyTBp6Eiq
+ 9WHkQjraQexrQjlTGa+rZzHiyyASb4xxkOqKB1h72FXyHokdjp7cI+vVg
+ 2fALN9F4xG8Bs4o7kHub2BsTo9kAq1XtNDhEXHl4cowIRH3spDBfUR/Un
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dgqBVTI+
+ header.a=rsa-sha256 header.s=Intel header.b=iGJUFtgY
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 7/9] ice: implement dpll
- interface to control cgu
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 6/9] ice: add admin
+ commands to access cgu configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,243 +191,165 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
+Cc: Jiri Pirko <jiri@resnulli.us>, Bart Van Assche <bvanassche@acm.org>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Olech,
- Milena" <milena.olech@intel.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Jonathan
+ Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "Olech, 
+ Milena" <milena.olech@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->From: Jiri Pirko <jiri@resnulli.us>
->Sent: Monday, August 7, 2023 9:08 AM
+>From: Simon Horman <horms@kernel.org>
+>Sent: Sunday, August 6, 2023 7:32 PM
 >
->Fri, Aug 04, 2023 at 09:04:52PM CEST, vadim.fedorenko@linux.dev wrote:
->>From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->
->[...]
->
->
->>+/**
->>+ * ice_dpll_deinit_worker - deinitialize dpll kworker
->>+ * @pf: board private structure
->>+ *
->>+ * Stop dpll's kworker, release it's resources.
->>+ */
->>+static void ice_dpll_deinit_worker(struct ice_pf *pf)
->>+{
->>+	struct ice_dplls *d = &pf->dplls;
->>+
->>+	kthread_cancel_delayed_work_sync(&d->work);
->>+	kthread_destroy_worker(d->kworker);
->>+}
->>+
->>+/**
->>+ * ice_dpll_init_worker - Initialize DPLLs periodic worker
->>+ * @pf: board private structure
->>+ *
->>+ * Create and start DPLLs periodic worker.
->>+ *
->>+ * Context: Shall be called after pf->dplls.lock is initialized and
->>+ * ICE_FLAG_DPLL flag is set.
->>+ * Return:
->>+ * * 0 - success
->>+ * * negative - create worker failure
->>+ */
->>+static int ice_dpll_init_worker(struct ice_pf *pf)
->>+{
->>+	struct ice_dplls *d = &pf->dplls;
->>+	struct kthread_worker *kworker;
->>+
->>+	ice_dpll_update_state(pf, &d->eec, true);
->>+	ice_dpll_update_state(pf, &d->pps, true);
->>+	kthread_init_delayed_work(&d->work, ice_dpll_periodic_work);
->>+	kworker = kthread_create_worker(0, "ice-dplls-%s",
->>+					dev_name(ice_pf_to_dev(pf)));
->>+	if (IS_ERR(kworker))
->>+		return PTR_ERR(kworker);
->>+	d->kworker = kworker;
->>+	d->cgu_state_acq_err_num = 0;
->>+	kthread_queue_delayed_work(d->kworker, &d->work, 0);
->>+
->>+	return 0;
->>+}
->>+
->
->[...]
->
->
->>+/**
->>+ * ice_dpll_deinit - Disable the driver/HW support for dpll subsystem
->>+ * the dpll device.
->>+ * @pf: board private structure
->>+ *
->>+ * Handles the cleanup work required after dpll initialization, freeing
->>+ * resources and unregistering the dpll, pin and all resources used for
->>+ * handling them.
->>+ *
->>+ * Context: Destroys pf->dplls.lock mutex.
->>+ */
->>+void ice_dpll_deinit(struct ice_pf *pf)
->>+{
->>+	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
->>+
->>+	if (!test_bit(ICE_FLAG_DPLL, pf->flags))
->>+		return;
->>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
->>+
->
->Please be symmetric with the init path and move ice_dpll_deinit_worker()
->call here.
->
->That would not only lead to nicer code, also, that will assure that the
->worker thread can only access initialized object.
->
->And as:
->1) worked thread can only access initialized objects
->2) dpll callbacks can only be called on initialized and registered objects
->
->You can remove the check for ICE_FLAG_DPLL flag from ice_dpll_cb_lock()
->as there would be no longer any possibility when this check could be
->evaluated as "true".
->
->Then, as an unexpected side effect (:O), ice_dpll_cb_lock() basically
->reduces to just calling mutex_lock(&pf->dplls.lock). So you can remove
->the thin wrappers of ice_dpll_cb_lock() and ice_dpll_cb_unlock() and
->instead of doing this obfuscation, you can call
->mutex_lock(&pf->dplls.lock) and mutex_unlock(&pf->dplls.lock) directly.
->
->That is what I'm trying to explain from the beginning. Is it clear now
->or do we need another iteration?
->
->Thanks!
-
-Yeah, actually I removed ice_dpll_cb_lock() already, but this patch
-was somehow lost when we were merging :s
-Anyway, true will be fixed for v3.
-
->
->
->>+	ice_dpll_deinit_pins(pf, cgu);
->>+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
->>+	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
->>+	ice_dpll_deinit_info(pf);
->>+	if (cgu)
->>+		ice_dpll_deinit_worker(pf);
->>+	mutex_destroy(&pf->dplls.lock);
->>+}
->>+
->>+/**
->>+ * ice_dpll_init - initialize support for dpll subsystem
->>+ * @pf: board private structure
->>+ *
->>+ * Set up the device dplls, register them and pins connected within Linux
->>dpll
->>+ * subsystem. Allow userspace to obtain state of DPLL and handling of
->>DPLL
->>+ * configuration requests.
->>+ *
->>+ * Context: Initializes pf->dplls.lock mutex.
->>+ */
->>+void ice_dpll_init(struct ice_pf *pf)
->>+{
->>+	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
->>+	struct ice_dplls *d = &pf->dplls;
->>+	int err = 0;
->>+
->>+	err = ice_dpll_init_info(pf, cgu);
->>+	if (err)
->>+		goto err_exit;
->>+	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu, DPLL_TYPE_EEC);
->>+	if (err)
->>+		goto deinit_info;
->>+	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu, DPLL_TYPE_PPS);
->>+	if (err)
->>+		goto deinit_eec;
->>+	err = ice_dpll_init_pins(pf, cgu);
->>+	if (err)
->>+		goto deinit_pps;
->>+	mutex_init(&d->lock);
->>+	set_bit(ICE_FLAG_DPLL, pf->flags);
->
->Why can't you move the flag set to the end of this function and avoid
->calling clear_bi on the error path?
->
->If you can't, please fix the clear_bit() position (should be at the
->beginning of deinit_pins label section).
->
-
-Yes, will be fixed in v3.
-
->
->>+	if (cgu) {
->>+		err = ice_dpll_init_worker(pf);
->>+		if (err)
->>+			goto deinit_pins;
->>+	}
->>+
->>+	return;
->>+
->>+deinit_pins:
->>+	ice_dpll_deinit_pins(pf, cgu);
->>+deinit_pps:
->>+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
->>+deinit_eec:
->>+	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
->>+deinit_info:
->>+	ice_dpll_deinit_info(pf);
->>+err_exit:
->>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
->>+	mutex_destroy(&d->lock);
->>+	dev_warn(ice_pf_to_dev(pf), "DPLLs init failure err:%d\n", err);
->>+}
->
->[...]
->
->
->>diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
->b/drivers/net/ethernet/intel/ice/ice_main.c
->>index 2e80d5cd9f56..4adc74f1cb1f 100644
->>--- a/drivers/net/ethernet/intel/ice/ice_main.c
->>+++ b/drivers/net/ethernet/intel/ice/ice_main.c
->>@@ -4627,6 +4627,10 @@ static void ice_init_features(struct ice_pf *pf)
->> 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
->> 		ice_gnss_init(pf);
+>On Fri, Aug 04, 2023 at 08:04:51PM +0100, Vadim Fedorenko wrote:
+>> From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 >>
->>+	if (ice_is_feature_supported(pf, ICE_F_CGU) ||
->>+	    ice_is_feature_supported(pf, ICE_F_PHY_RCLK))
->>+		ice_dpll_init(pf);
->>+
->> 	/* Note: Flow director init failure is non-fatal to load */
->> 	if (ice_init_fdir(pf))
->> 		dev_err(dev, "could not initialize flow director\n");
->>@@ -4653,6 +4657,9 @@ static void ice_deinit_features(struct ice_pf *pf)
->> 		ice_gnss_exit(pf);
->> 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
->> 		ice_ptp_release(pf);
->>+	if (ice_is_feature_supported(pf, ICE_F_PHY_RCLK) ||
->>+	    ice_is_feature_supported(pf, ICE_F_CGU))
+>> Add firmware admin command to access clock generation unit
+>> configuration, it is required to enable Extended PTP and SyncE features
+>> in the driver.
+>> Add definitions of possible hardware variations of input and output pins
+>> related to clock generation unit and functions to access the data.
+>>
+>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>> Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 >
->As you internally depend on ICE_FLAG_DPLL flag, this check is redundant.
+>Hi Arkadiusz and Vadim,
+>
+>> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
+>b/drivers/net/ethernet/intel/ice/ice_common.c
+>
+>...
+>
+>> +/**
+>> + * ice_aq_get_cgu_dpll_status - get dpll status
+>> + * @hw: pointer to the HW struct
+>> + * @dpll_num: DPLL index
+>> + * @ref_state: Reference clock state
+>> + * @config: current DPLL config
+>> + * @dpll_state: current DPLL state
+>> + * @phase_offset: Phase offset in ns
+>> + * @eec_mode: EEC_mode
+>> + *
+>> + * Get CGU DPLL status (0x0C66)
+>> + * Return: 0 on success or negative value on failure.
+>> + */
+>> +int
+>> +ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8
+>>*ref_state,
+>> +			   u8 *dpll_state, u8 *config, s64 *phase_offset,
+>> +			   u8 *eec_mode)
+>> +{
+>> +	struct ice_aqc_get_cgu_dpll_status *cmd;
+>> +	const s64 NSEC_PER_PSEC = 1000LL;
+>
+>Probably this should be in lower case, or an (upper case) #define.
+>In the case of the latter it should probably be moved outside of the
+>function.
+
+Hi Simon,
+
+Sure, will fix.
+
+>
+>> +	struct ice_aq_desc desc;
+>> +	int status;
+>> +
+>> +	ice_fill_dflt_direct_cmd_desc(&desc,
+>>ice_aqc_opc_get_cgu_dpll_status);
+>> +	cmd = &desc.params.get_cgu_dpll_status;
+>> +	cmd->dpll_num = dpll_num;
+>> +
+>> +	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
+>> +	if (!status) {
+>> +		*ref_state = cmd->ref_state;
+>> +		*dpll_state = cmd->dpll_state;
+>> +		*config = cmd->config;
+>> +		*phase_offset = le32_to_cpu(cmd->phase_offset_h);
+>> +		*phase_offset <<= 32;
+>> +		*phase_offset += le32_to_cpu(cmd->phase_offset_l);
+>> +		*phase_offset = sign_extend64(*phase_offset, 47) /
+>> +			NSEC_PER_PSEC;
+>
+>This causes a build failure on x86_32.
+>
+>  ERROR: modpost: "__divdi3" [drivers/net/ethernet/intel/ice/ice.ko]
+>undefined!
+>
+>Possibly you want (please do check for yourself):
+>
+>		*phase_offset = div64_s64(sign_extend64(*phase_offset, 47),
+>					  NSEC_PER_PSEC);
+>
+
+Yes, makes sense, thanks for catching this, will fix.
+
+>> +		*eec_mode = cmd->eec_mode;
+>> +	}
+>> +
+>> +	return status;
+>> +}
+>> +
+>> +/**
+>> + * ice_aq_set_cgu_dpll_config - set dpll config
+>> + * @hw: pointer to the HW struct
+>> + * @dpll_num: DPLL index
+>> + * @ref_state: Reference clock state
+>> + * @config: DPLL config
+>> + * @eec_mode: EEC mode
+>> + *
+>> + * Set CGU DPLL config (0x0C67)
+>> + * Return: 0 on success or negative value on failure.
+>> + */
+>> +int
+>> +ice_aq_set_cgu_dpll_config(struct ice_hw *hw, u8 dpll_num, u8 ref_state,
+>> +			   u8 config, u8 eec_mode)
+>> +{
+>> +	struct ice_aqc_set_cgu_dpll_config *cmd;
+>> +	struct ice_aq_desc desc;
+>> +
+>> +	ice_fill_dflt_direct_cmd_desc(&desc,
+>>ice_aqc_opc_set_cgu_dpll_config);
+>> +	cmd = &desc.params.set_cgu_dpll_config;
+>> +	cmd->dpll_num = dpll_num;
+>> +	cmd->ref_state = ref_state;
+>> +	cmd->config = config;
+>> +	cmd->eec_mode = eec_mode;
+>> +
+>> +	return ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
+>> +}
+>> +
+>> +/**
+>> + * ice_aq_set_cgu_ref_prio - set input refernce priority
+>
+>nit: refernce -> reference
 >
 
 Sure, will fix.
 
-Thanks!
+Thank you!
 Arkadiusz
 
+>> + * @hw: pointer to the HW struct
+>> + * @dpll_num: DPLL index
+>> + * @ref_idx: Reference pin index
+>> + * @ref_priority: Reference input priority
+>> + *
+>> + * Set CGU reference priority (0x0C68)
+>> + * Return: 0 on success or negative value on failure.
+>> + */
 >
->>+		ice_dpll_deinit(pf);
->> }
->>
->> static void ice_init_wakeup(struct ice_pf *pf)
->>--
->>2.27.0
->>
+>...
+>
+>--
+>pw-bot: changes-requested
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
