@@ -1,86 +1,115 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF7DA7724D5
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 15:00:59 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95C9D772926
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 17:27:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 29D9981DD8;
-	Mon,  7 Aug 2023 13:00:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29D9981DD8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3062E404FF;
+	Mon,  7 Aug 2023 15:27:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3062E404FF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691413258;
-	bh=bxje2vkoVNQ+BSUDr8qiuLJLG0imEtl+k464CbwsWi0=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Y2OvVi7JA4llVbKbV3rSRp0SLcQihMMeXy4TJggST30TwUqXz/idsagM9hyGdsrYM
-	 zNLFDgCPqZ1kAu0Kmd5xcROtNwPUKGIRNSxpz/HKs1iAX6qzgXLzVGWX6NS5XVGYwK
-	 ozEMDUADPG69rMzbmJqrA2m7n0uBUoNILRXZxMufed1VzSKuyL2d/6wBua3xHeKIL1
-	 w7Osa2E3C40rgNkPiiEnc11JWyYv258FdtkuUTj3hlidTkoB8PnpPNMKF4yXJlQKJG
-	 OKU8BqfHin9NIPH+X+AhdWK8DBnc/yphVzr+f/PqBqR1xAoVjKE6ALWCWBD1BxKh40
-	 +m85qTPJsb1RA==
+	s=default; t=1691422060;
+	bh=ElDmo4EKtQAL6wpG0vpSVkHGEym2zCL3rklgJh4JkEA=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Z0yaZBPvNugZ/AJiI1cL5spm8mVSQVnTxd7ic3XqiNBaBREXR5GHeRwP4xZa3T4Ld
+	 plmU58LobjVnawymXgYgxwJQhYj/EJEHbhesNIUpwA34mjYnoLC70T/eb9dlnqCU7V
+	 2OKgPZeZJHIcdJ2C6IMh1O0EJ5Huk8i2jj2zNbAKdatR1Ewi3txATUNFZst+PlJd4h
+	 F3DIvT05mop3sMoZnjFkhVVbzyfS1yvzT154pdy51HLKZy83SKqyn8IdaV5GBdgr5B
+	 WMNb/fCNIItmeH7gNs08ghRSquqoxOAGQaIG7kInYm7gHB/9YsUYHJluDQVgvMBoW9
+	 BllbhCuYpR1UQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bURFBj6PE6lu; Mon,  7 Aug 2023 13:00:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id agZSL3AHXVPO; Mon,  7 Aug 2023 15:27:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06CF281E4E;
-	Mon,  7 Aug 2023 13:00:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06CF281E4E
+	by smtp2.osuosl.org (Postfix) with ESMTP id E6EA040AAF;
+	Mon,  7 Aug 2023 15:27:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E6EA040AAF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 19D1B1BF951
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 13:00:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B6191BF32A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 01:53:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 217D760EB6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 13:00:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 217D760EB6
+ by smtp3.osuosl.org (Postfix) with ESMTP id B192760AC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 01:53:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B192760AC6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XR0FMeqFvqUq for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Aug 2023 13:00:11 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0A04560E5D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 13:00:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0A04560E5D
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="436867060"
-X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="436867060"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 06:00:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="707858543"
-X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="707858543"
-Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
- ([10.237.94.20])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 06:00:08 -0700
-From: Radoslaw Tyl <radoslawx.tyl@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  7 Aug 2023 14:59:40 +0200
-Message-Id: <20230807125940.985494-1-radoslawx.tyl@intel.com>
-X-Mailer: git-send-email 2.31.1
+ with ESMTP id ztj7xwsHh74E for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 01:53:20 +0000 (UTC)
+Received: from rtits2.realtek.com.tw (rtits2.realtek.com [211.75.126.72])
+ by smtp3.osuosl.org (Postfix) with ESMTP id EF13860A99
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 01:53:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF13860A99
+X-SpamFilter-By: ArmorX SpamTrap 5.77 with qID 3771dYi55025316,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexh36506.realtek.com.tw[172.21.6.27])
+ by rtits2.realtek.com.tw (8.15.2/2.81/5.90) with ESMTPS id 3771dYi55025316
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=FAIL);
+ Mon, 7 Aug 2023 09:39:35 +0800
+Received: from RTEXMBS03.realtek.com.tw (172.21.6.96) by
+ RTEXH36506.realtek.com.tw (172.21.6.27) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.17; Mon, 7 Aug 2023 09:39:51 +0800
+Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
+ RTEXMBS03.realtek.com.tw (172.21.6.96) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.7; Mon, 7 Aug 2023 09:39:50 +0800
+Received: from RTEXMBS04.realtek.com.tw ([fe80::e138:e7f1:4709:ff4d]) by
+ RTEXMBS04.realtek.com.tw ([fe80::e138:e7f1:4709:ff4d%5]) with mapi id
+ 15.01.2375.007; Mon, 7 Aug 2023 09:39:50 +0800
+From: Ping-Ke Shih <pkshih@realtek.com>
+To: Ruan Jinjie <ruanjinjie@huawei.com>, "sgoutham@marvell.com"
+ <sgoutham@marvell.com>, "davem@davemloft.net" <davem@davemloft.net>,
+ "edumazet@google.com" <edumazet@google.com>, "kuba@kernel.org"
+ <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
+ "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>,
+ "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ "tariqt@nvidia.com" <tariqt@nvidia.com>, "s.shtylyov@omp.ru"
+ <s.shtylyov@omp.ru>, "aspriel@gmail.com" <aspriel@gmail.com>,
+ "franky.lin@broadcom.com" <franky.lin@broadcom.com>,
+ "hante.meuleman@broadcom.com" <hante.meuleman@broadcom.com>,
+ "kvalo@kernel.org" <kvalo@kernel.org>, "richardcochran@gmail.com"
+ <richardcochran@gmail.com>, "yoshihiro.shimoda.uh@renesas.com"
+ <yoshihiro.shimoda.uh@renesas.com>, "u.kleine-koenig@pengutronix.de"
+ <u.kleine-koenig@pengutronix.de>,
+ "mkl@pengutronix.de" <mkl@pengutronix.de>,
+ "lee@kernel.org" <lee@kernel.org>, "set_pte_at@outlook.com"
+ <set_pte_at@outlook.com>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "linux-rdma@vger.kernel.org"
+ <linux-rdma@vger.kernel.org>, "linux-renesas-soc@vger.kernel.org"
+ <linux-renesas-soc@vger.kernel.org>, "linux-wireless@vger.kernel.org"
+ <linux-wireless@vger.kernel.org>, "brcm80211-dev-list.pdl@broadcom.com"
+ <brcm80211-dev-list.pdl@broadcom.com>, "SHA-cyfmac-dev-list@infineon.com"
+ <SHA-cyfmac-dev-list@infineon.com>
+Thread-Topic: [PATCH -next 1/6] net: thunderx: Remove unnecessary ternary
+ operators
+Thread-Index: AQHZxoduaAYTDJlTBUyphtGbEFvm5q/eErLw
+Date: Mon, 7 Aug 2023 01:39:50 +0000
+Message-ID: <15759f98483947999393a25b857bc4fe@realtek.com>
+References: <20230804035346.2879318-1-ruanjinjie@huawei.com>
+ <20230804035346.2879318-2-ruanjinjie@huawei.com>
+In-Reply-To: <20230804035346.2879318-2-ruanjinjie@huawei.com>
+Accept-Language: en-US, zh-TW
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.21.69.188]
+x-kse-serverinfo: RTEXMBS03.realtek.com.tw, 9
+x-kse-antispam-interceptor-info: fallback
+x-kse-antivirus-interceptor-info: fallback
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691413211; x=1722949211;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=N4cmZUiMbyJa1n3VTRg3Mc/XlujlFcw9ZNvekFwc0FE=;
- b=gbGfsfPm32CliiJMc5TK0wnTuxjh/K7ag2UCzs8AKcPgDAzyEB/Tu7td
- We5R/WHFmbuTmL0wIrVaQq4Y/TfyqQV1Xm6/Izwtp/16e901mDruK5y/X
- y9eKG89Vqb2+qI4PhA0SjJ5t9un4MRuk4aMSBZ28BP47g+lpoEmwR1Lwv
- p+gLNyehXIaZBqlhjPh1HJfAzuUph2yma4/oKqqX1P6OlqGq58tSVIOMC
- HnRof6jBzeQz3yrLZ4rk32G0Al3PVgNMnxshZTP6n6WBcbupxoZpmZf2R
- 5xqbv2kUGWUjZvVFX3CS/pBpbier8W9LQBu0ugVNVzV1VLYIju+v+OOkP
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gbGfsfPm
-Subject: [Intel-wired-lan] [PATCH iwl-net] iavf: do no process adminq tasks
- when __IAVF_IN_REMOVE_TASK is set
+X-KSE-AntiSpam-Interceptor-Info: fallback
+X-Mailman-Approved-At: Mon, 07 Aug 2023 15:27:25 +0000
+Subject: Re: [Intel-wired-lan] [PATCH -next 1/6] net: thunderx: Remove
+ unnecessary ternary operators
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,83 +122,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Radoslaw Tyl <radoslawx.tyl@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Prevent schedule operations for adminq during device remove and when
-__IAVF_IN_REMOVE_TASK flag is set. Currently, the iavf_down function
-adds operations for adminq that shouldn't be processed when the device
-is in the __IAVF_REMOVE state.
 
-Reproduction:
 
-echo 4 > /sys/bus/pci/devices/0000:17:00.0/sriov_numvfs
-ip link set dev ens1f0 vf 0 trust on
-ip link set dev ens1f0 vf 1 trust on
-ip link set dev ens1f0 vf 2 trust on
-ip link set dev ens1f0 vf 3 trust on
+> -----Original Message-----
+> From: Ruan Jinjie <ruanjinjie@huawei.com>
+> Sent: Friday, August 4, 2023 11:54 AM
+> To: sgoutham@marvell.com; davem@davemloft.net; edumazet@google.com; kuba@kernel.org; pabeni@redhat.com;
+> jesse.brandeburg@intel.com; anthony.l.nguyen@intel.com; tariqt@nvidia.com; s.shtylyov@omp.ru;
+> aspriel@gmail.com; franky.lin@broadcom.com; hante.meuleman@broadcom.com; kvalo@kernel.org;
+> richardcochran@gmail.com; yoshihiro.shimoda.uh@renesas.com; ruanjinjie@huawei.com;
+> u.kleine-koenig@pengutronix.de; mkl@pengutronix.de; lee@kernel.org; set_pte_at@outlook.com;
+> linux-arm-kernel@lists.infradead.org; netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
+> linux-rdma@vger.kernel.org; linux-renesas-soc@vger.kernel.org; linux-wireless@vger.kernel.org;
+> brcm80211-dev-list.pdl@broadcom.com; SHA-cyfmac-dev-list@infineon.com
+> Subject: [PATCH -next 1/6] net: thunderx: Remove unnecessary ternary operators
+> 
+> Ther are a little ternary operators, the true or false judgement
+> of which is unnecessary in C language semantics.
+> 
+> Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
+> ---
+>  drivers/net/ethernet/cavium/thunder/nic_main.c    | 2 +-
+>  drivers/net/ethernet/cavium/thunder/thunder_bgx.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/cavium/thunder/nic_main.c
+> b/drivers/net/ethernet/cavium/thunder/nic_main.c
+> index 0ec65ec634df..b7cf4ba89b7c 100644
+> --- a/drivers/net/ethernet/cavium/thunder/nic_main.c
+> +++ b/drivers/net/ethernet/cavium/thunder/nic_main.c
+> @@ -174,7 +174,7 @@ static void nic_mbx_send_ready(struct nicpf *nic, int vf)
+>                 if (mac)
+>                         ether_addr_copy((u8 *)&mbx.nic_cfg.mac_addr, mac);
+>         }
+> -       mbx.nic_cfg.sqs_mode = (vf >= nic->num_vf_en) ? true : false;
+> +       mbx.nic_cfg.sqs_mode = vf >= nic->num_vf_en;
+>         mbx.nic_cfg.node_id = nic->node;
+> 
+>         mbx.nic_cfg.loopback_supported = vf < nic->num_vf_en;
+> diff --git a/drivers/net/ethernet/cavium/thunder/thunder_bgx.c
+> b/drivers/net/ethernet/cavium/thunder/thunder_bgx.c
+> index a317feb8decb..9e467cecc33a 100644
+> --- a/drivers/net/ethernet/cavium/thunder/thunder_bgx.c
+> +++ b/drivers/net/ethernet/cavium/thunder/thunder_bgx.c
+> @@ -957,7 +957,7 @@ static void bgx_poll_for_sgmii_link(struct lmac *lmac)
+>                 goto next_poll;
+>         }
+> 
+> -       lmac->link_up = ((pcs_link & PCS_MRX_STATUS_LINK) != 0) ? true : false;
+> +       lmac->link_up = (pcs_link & PCS_MRX_STATUS_LINK) != 0;
 
-ip link set dev ens1f0 vf 0 mac 00:22:33:44:55:66
-ip link set dev ens1f0 vf 1 mac 00:22:33:44:55:67
-ip link set dev ens1f0 vf 2 mac 00:22:33:44:55:68
-ip link set dev ens1f0 vf 3 mac 00:22:33:44:55:69
+lmac->link_up = !!(pcs_link & PCS_MRX_STATUS_LINK);
 
-echo 0000:17:02.0 > /sys/bus/pci/devices/0000\:17\:02.0/driver/unbind
-echo 0000:17:02.1 > /sys/bus/pci/devices/0000\:17\:02.1/driver/unbind
-echo 0000:17:02.2 > /sys/bus/pci/devices/0000\:17\:02.2/driver/unbind
-echo 0000:17:02.3 > /sys/bus/pci/devices/0000\:17\:02.3/driver/unbind
-sleep 10
-echo 0000:17:02.0 > /sys/bus/pci/drivers/iavf/bind
-echo 0000:17:02.1 > /sys/bus/pci/drivers/iavf/bind
-echo 0000:17:02.2 > /sys/bus/pci/drivers/iavf/bind
-echo 0000:17:02.3 > /sys/bus/pci/drivers/iavf/bind
-
-modprobe vfio-pci
-echo 8086 154c > /sys/bus/pci/drivers/vfio-pci/new_id
-
-qemu-system-x86_64 -accel kvm -m 4096 -cpu host \
--drive file=centos9.qcow2,if=none,id=virtio-disk0 \
--device virtio-blk-pci,drive=virtio-disk0,bootindex=0 -smp 4 \
--device vfio-pci,host=17:02.0 -net none \
--device vfio-pci,host=17:02.1 -net none \
--device vfio-pci,host=17:02.2 -net none \
--device vfio-pci,host=17:02.3 -net none \
--daemonize -vnc :5
-
-Current result:
-There is a probability that the mac of VF in guest is inconsistent with
-it in host
-
-Expected result:
-When passthrough NIC VF to guest, the VF in guest should always get
-the same mac as it in host.
-
-Fixes: 14756b2ae265 ("iavf: Fix __IAVF_RESETTING state usage")
-Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index f329f81c793d..7ebbf2a4c487 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1421,7 +1421,8 @@ void iavf_down(struct iavf_adapter *adapter)
- 	iavf_clear_fdir_filters(adapter);
- 	iavf_clear_adv_rss_conf(adapter);
- 
--	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)) {
-+	if (!(adapter->flags & IAVF_FLAG_PF_COMMS_FAILED) &&
-+	    !(test_bit(__IAVF_IN_REMOVE_TASK, &adapter->crit_section))) {
- 		/* cancel any current operation */
- 		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- 		/* Schedule operations to close down the HW. Don't wait
--- 
-2.31.1
-
+>         an_result = bgx_reg_read(lmac->bgx, lmac->lmacid,
+>                                  BGX_GMP_PCS_ANX_AN_RESULTS);
+> 
+> --
+> 2.34.1
+> 
+> 
+> ------Please consider the environment before printing this e-mail.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
