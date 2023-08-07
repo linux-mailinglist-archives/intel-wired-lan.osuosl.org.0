@@ -1,85 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FE1E772823
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 16:48:27 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAED577292F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 17:27:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1956C81ED5;
-	Mon,  7 Aug 2023 14:48:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1956C81ED5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 579A440B2E;
+	Mon,  7 Aug 2023 15:27:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 579A440B2E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691419706;
-	bh=IVcoQ4PF3n7IJSS+58aO6+z8X75g9H5AUPJt8U4xhS4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=v3TwEQzKMBxOeyYI4Q15xMYAT83Qkom+eod9AgO07WIAVCDGfk2pn9EzV47vIgvBH
-	 cack/acbPUK6I7yP1/vWAbAcm1+NA5hSllMWeTLYCjgkg1JgYMQQ2/LsSg+gp6ucTc
-	 +oUAaRXYYilj0vfdEdA2cHJS4w5pS5eB3IjzgYYmpXsyjpgGc+42TCHG4eeayCliRj
-	 I6kOHWnHhkSapH02IIu/CXuUYfS/PBUfy+tN0e9hmLcYX6cJf0917u1+0kdV5xN2DF
-	 l0rikgbpPYNuCMOZYVthJV6rGODaF4HzSclJoOa0XpYtdFgi35jQgN4Jkq6jD8uCmG
-	 fm1BYwZAVmrzw==
+	s=default; t=1691422077;
+	bh=ON0/j/otEDwli3BzPCBLP3pzJcEZeJBnrhhtrdW48WE=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=zfUvULGxsJ8uA9xeCu3X2B1vC5Pq0CXG+pLXiSqF+BIU8J7uicAVbKWeHoG4hGj73
+	 SqWQ/yCGZb7pHH4pmuCHsABNUUZqr9I03G6jF5iWmSnv0/+Dx4WC7l93oiWsu8tOwe
+	 /0mLf0BZM8PxeRi4RboWwWhJRohcjIBuoN+Rwvofoisw+BHDMfVv+AZcH9NIjeD82g
+	 LXL6HyCxeITMd4NPyDcowD/gX/T2ttsyhKfEgrvDmlGUWKV4m4MMzlfsRz/L/rZLMr
+	 EFIzl7ZZ79YeTyzXM3nqpxN4AzQUSqSD46dGjJ6gCY61zTNFkDvdYmWDt+Auvj0HcN
+	 7LZUCr6moiJEw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RfoTAC5vIi5w; Mon,  7 Aug 2023 14:48:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id es8fzjJAl3aE; Mon,  7 Aug 2023 15:27:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8336981E18;
-	Mon,  7 Aug 2023 14:48:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8336981E18
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2206D40A53;
+	Mon,  7 Aug 2023 15:27:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2206D40A53
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4F1011BF280
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:48:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 272601BF280
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:48:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 681CE61087
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:47:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 681CE61087
+ by smtp1.osuosl.org (Postfix) with ESMTP id E9A9281DEA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:47:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E9A9281DEA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pfXgEiOyPvCy for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Aug 2023 14:47:04 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6816361078
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:47:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6816361078
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="374236801"
-X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="374236801"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 07:46:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="821001048"
-X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="821001048"
-Received: from pgardocx-mobl1.igk.intel.com ([10.237.95.41])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 07:46:15 -0700
-From: Piotr Gardocki <piotrx.gardocki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  7 Aug 2023 16:46:04 +0200
-Message-Id: <20230807144604.1014049-1-piotrx.gardocki@intel.com>
-X-Mailer: git-send-email 2.34.1
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1PzDZfytKGb1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 14:47:52 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 46E1881A6D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 14:47:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 46E1881A6D
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 21BD261D52;
+ Mon,  7 Aug 2023 14:47:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F951C433C8;
+ Mon,  7 Aug 2023 14:47:50 +0000 (UTC)
+Date: Mon, 07 Aug 2023 07:47:47 -0700
+From: Kees Cook <kees@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>
+User-Agent: K-9 Mail for Android
+In-Reply-To: <9f817d7a-8f85-9217-620f-dd2f62c2c050@intel.com>
+References: <20230801111923.118268-1-przemyslaw.kitszel@intel.com>
+ <20230801111923.118268-2-przemyslaw.kitszel@intel.com>
+ <202308011403.E0A8D25CE@keescook>
+ <e0cb5bf2-2278-b83f-c45c-0556927787a6@intel.com>
+ <572fb95a-7806-0ed1-00e3-6a7796273946@intel.com>
+ <9f817d7a-8f85-9217-620f-dd2f62c2c050@intel.com>
+Message-ID: <6C572B68-2913-4F5B-8295-C001A98CA7A2@kernel.org>
 MIME-Version: 1.0
+X-Mailman-Approved-At: Mon, 07 Aug 2023 15:27:25 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691419623; x=1722955623;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=/SiRCR7m2ebf/SDFBN/zIsQbXPob/n2MH1jp7haF4bA=;
- b=ZdJdBtgjaGuOZ5jG38E9bgHItkch0KipgV2vm0a7DZUeh/0jFDC7dan6
- HfAqAAo8rYk110rnWHmhtftu+tLFinN9OEjpzkXQoLDqXaCJAiFPlVP/o
- B5HgQewSNUHz133l0KuzD+XX3gBYvGuDeMYjhvDSl84rts7TGA68JVvro
- sYnjxuZmF+LrTPYl21dA8th4H2mg29FLiHgSy76pXyJX+Pea7cr+R9+wi
- TlyQRLyyLIvP1PhSawZDQ2BYGAiQc+pfXqy2pttehL8pmNsbTDDBvSpxF
- 22hUJ1K1HIZEi5NyvbZWYZhtHHLMsUAPxLrMsEzWE33qpoZRMsgkj6L8w
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZdJdBtgj
-Subject: [Intel-wired-lan] [PATCH iwl-net] iavf: fix FDIR rule fields masks
- validation
+ d=kernel.org; s=k20201202; t=1691419670;
+ bh=bpPHccARP+nSofUhaL1UTNcFQ9beOi9t6SJoSE+64CU=;
+ h=Date:From:To:CC:Subject:In-Reply-To:References:From;
+ b=DVCe7XhX+w1CcVE9sMRbu4kaoE22D7T378pKolQU/NZkUYIovAC2clzWcvxvhvRYx
+ PrC6uO0Qv0Tbh4NmYEvmCdt2GKSJdMzbJ3rB71PbVkaUKuPfah3HwUL1pSyHVNgbuJ
+ he84dzDxmHUA2axwG0pD3mzpNxZUl+dSYIvnyVGOqgSmYZt/aQSI8rh/9PZGUtTsFv
+ 7E3xr8V5a3feekKKFD/CUnEjkS8yfFKW3fgpbIfke32KYpl2qwWk603RF4Q9tRbrRu
+ HB9tYJUECFjU9Mv0SPoUpnM0R4t9basYDKo7AxVMYbSxcFAuqtzUAkK/9GAcQuzZiE
+ 94om0YYaPitPQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=DVCe7XhX
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/2] overflow: add
+ DECLARE_FLEX() for on-stack allocs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,209 +96,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Kees Cook <keescook@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Return an error if a field's mask is neither full nor empty. When a mask
-is only partial the field is not being used for rule programming but it
-gives a wrong impression it is used. Fix by returning an error on any
-partial mask to make it clear they are not supported.
-The ip_ver assignment is moved earlier in code to allow using it in
-iavf_validate_fdir_fltr_masks.
-
-Fixes: 527691bf0682 ("iavf: Support IPv4 Flow Director filters")
-Fixes: e90cbc257a6f ("iavf: Support IPv6 Flow Director filters")
-Signed-off-by: Piotr Gardocki <piotrx.gardocki@intel.com>
----
- .../net/ethernet/intel/iavf/iavf_ethtool.c    | 10 +++
- drivers/net/ethernet/intel/iavf/iavf_fdir.c   | 77 ++++++++++++++++++-
- drivers/net/ethernet/intel/iavf/iavf_fdir.h   |  2 +
- 3 files changed, 85 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 460ca561819a..a34303ad057d 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1289,6 +1289,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		fltr->ip_mask.src_port = fsp->m_u.tcp_ip4_spec.psrc;
- 		fltr->ip_mask.dst_port = fsp->m_u.tcp_ip4_spec.pdst;
- 		fltr->ip_mask.tos = fsp->m_u.tcp_ip4_spec.tos;
-+		fltr->ip_ver = 4;
- 		break;
- 	case AH_V4_FLOW:
- 	case ESP_V4_FLOW:
-@@ -1300,6 +1301,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		fltr->ip_mask.v4_addrs.dst_ip = fsp->m_u.ah_ip4_spec.ip4dst;
- 		fltr->ip_mask.spi = fsp->m_u.ah_ip4_spec.spi;
- 		fltr->ip_mask.tos = fsp->m_u.ah_ip4_spec.tos;
-+		fltr->ip_ver = 4;
- 		break;
- 	case IPV4_USER_FLOW:
- 		fltr->ip_data.v4_addrs.src_ip = fsp->h_u.usr_ip4_spec.ip4src;
-@@ -1312,6 +1314,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		fltr->ip_mask.l4_header = fsp->m_u.usr_ip4_spec.l4_4_bytes;
- 		fltr->ip_mask.tos = fsp->m_u.usr_ip4_spec.tos;
- 		fltr->ip_mask.proto = fsp->m_u.usr_ip4_spec.proto;
-+		fltr->ip_ver = 4;
- 		break;
- 	case TCP_V6_FLOW:
- 	case UDP_V6_FLOW:
-@@ -1330,6 +1333,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		fltr->ip_mask.src_port = fsp->m_u.tcp_ip6_spec.psrc;
- 		fltr->ip_mask.dst_port = fsp->m_u.tcp_ip6_spec.pdst;
- 		fltr->ip_mask.tclass = fsp->m_u.tcp_ip6_spec.tclass;
-+		fltr->ip_ver = 6;
- 		break;
- 	case AH_V6_FLOW:
- 	case ESP_V6_FLOW:
-@@ -1345,6 +1349,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		       sizeof(struct in6_addr));
- 		fltr->ip_mask.spi = fsp->m_u.ah_ip6_spec.spi;
- 		fltr->ip_mask.tclass = fsp->m_u.ah_ip6_spec.tclass;
-+		fltr->ip_ver = 6;
- 		break;
- 	case IPV6_USER_FLOW:
- 		memcpy(&fltr->ip_data.v6_addrs.src_ip, fsp->h_u.usr_ip6_spec.ip6src,
-@@ -1361,6 +1366,7 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		fltr->ip_mask.l4_header = fsp->m_u.usr_ip6_spec.l4_4_bytes;
- 		fltr->ip_mask.tclass = fsp->m_u.usr_ip6_spec.tclass;
- 		fltr->ip_mask.proto = fsp->m_u.usr_ip6_spec.l4_proto;
-+		fltr->ip_ver = 6;
- 		break;
- 	case ETHER_FLOW:
- 		fltr->eth_data.etype = fsp->h_u.ether_spec.h_proto;
-@@ -1371,6 +1377,10 @@ iavf_add_fdir_fltr_info(struct iavf_adapter *adapter, struct ethtool_rx_flow_spe
- 		return -EINVAL;
- 	}
- 
-+	err = iavf_validate_fdir_fltr_masks(adapter, fltr);
-+	if (err)
-+		return err;
-+
- 	if (iavf_fdir_is_dup_fltr(adapter, fltr))
- 		return -EEXIST;
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.c b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-index 505e82ebafe4..de91e31853db 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-@@ -18,6 +18,79 @@ static const struct in6_addr ipv6_addr_full_mask = {
- 	}
- };
- 
-+static const struct in6_addr ipv6_addr_zero_mask = {
-+	.in6_u = {
-+		.u6_addr8 = {
-+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		}
-+	}
-+};
-+
-+/**
-+ * iavf_validate_fdir_fltr_masks - validate Flow Director filter fields masks
-+ * @adapter: pointer to the VF adapter structure
-+ * @fltr: Flow Director filter data structure
-+ *
-+ * Returns 0 if all masks of packet fields are either full or empty. Returns
-+ * error on at least one partial mask.
-+ */
-+int iavf_validate_fdir_fltr_masks(struct iavf_adapter *adapter,
-+				  struct iavf_fdir_fltr *fltr)
-+{
-+	if (fltr->eth_mask.etype && fltr->eth_mask.etype != htons(U16_MAX))
-+		goto partial_mask;
-+
-+	if (fltr->ip_ver == 4) {
-+		if (fltr->ip_mask.v4_addrs.src_ip &&
-+		    fltr->ip_mask.v4_addrs.src_ip != htonl(U32_MAX))
-+			goto partial_mask;
-+
-+		if (fltr->ip_mask.v4_addrs.dst_ip &&
-+		    fltr->ip_mask.v4_addrs.dst_ip != htonl(U32_MAX))
-+			goto partial_mask;
-+
-+		if (fltr->ip_mask.tos && fltr->ip_mask.tos != U8_MAX)
-+			goto partial_mask;
-+	} else if (fltr->ip_ver == 6) {
-+		if (memcmp(&fltr->ip_mask.v6_addrs.src_ip, &ipv6_addr_zero_mask,
-+			   sizeof(struct in6_addr)) &&
-+		    memcmp(&fltr->ip_mask.v6_addrs.src_ip, &ipv6_addr_full_mask,
-+			  sizeof(struct in6_addr)))
-+			goto partial_mask;
-+
-+		if (memcmp(&fltr->ip_mask.v6_addrs.dst_ip, &ipv6_addr_zero_mask,
-+			   sizeof(struct in6_addr)) &&
-+		    memcmp(&fltr->ip_mask.v6_addrs.dst_ip, &ipv6_addr_full_mask,
-+			   sizeof(struct in6_addr)))
-+			goto partial_mask;
-+
-+		if (fltr->ip_mask.tclass && fltr->ip_mask.tclass != U8_MAX)
-+			goto partial_mask;
-+	}
-+
-+	if (fltr->ip_mask.proto && fltr->ip_mask.proto != U8_MAX)
-+		goto partial_mask;
-+
-+	if (fltr->ip_mask.src_port && fltr->ip_mask.src_port != htons(U16_MAX))
-+		goto partial_mask;
-+
-+	if (fltr->ip_mask.dst_port && fltr->ip_mask.dst_port != htons(U16_MAX))
-+		goto partial_mask;
-+
-+	if (fltr->ip_mask.spi && fltr->ip_mask.spi != htonl(U32_MAX))
-+		goto partial_mask;
-+
-+	if (fltr->ip_mask.l4_header &&
-+	    fltr->ip_mask.l4_header != htonl(U32_MAX))
-+		goto partial_mask;
-+
-+	return 0;
-+
-+partial_mask:
-+	dev_err(&adapter->pdev->dev, "Failed to add Flow Director filter, partial masks are not supported\n");
-+	return -EOPNOTSUPP;
-+}
-+
- /**
-  * iavf_pkt_udp_no_pay_len - the length of UDP packet without payload
-  * @fltr: Flow Director filter data structure
-@@ -263,8 +336,6 @@ iavf_fill_fdir_ip4_hdr(struct iavf_fdir_fltr *fltr,
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV4, DST);
- 	}
- 
--	fltr->ip_ver = 4;
--
- 	return 0;
- }
- 
-@@ -309,8 +380,6 @@ iavf_fill_fdir_ip6_hdr(struct iavf_fdir_fltr *fltr,
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, IPV6, DST);
- 	}
- 
--	fltr->ip_ver = 6;
--
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.h b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-index 33c55c366315..9eb9f73f6adf 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-@@ -110,6 +110,8 @@ struct iavf_fdir_fltr {
- 	struct virtchnl_fdir_add vc_add_msg;
- };
- 
-+int iavf_validate_fdir_fltr_masks(struct iavf_adapter *adapter,
-+				  struct iavf_fdir_fltr *fltr);
- int iavf_fill_fdir_add_msg(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
- void iavf_print_fdir_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
- bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
--- 
-2.34.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gQXVndXN0IDcsIDIwMjMgNTo0MjozMSBBTSBQRFQsIFByemVtZWsgS2l0c3plbCA8cHJ6ZW15
+c2xhdy5raXRzemVsQGludGVsLmNvbT4gd3JvdGU6Cj5PbiA4LzQvMjMgMTc6NDQsIEFsZXhhbmRl
+ciBMb2Jha2luIHdyb3RlOgo+PiBGcm9tOiBQcnplbWVrIEtpdHN6ZWwgPHByemVteXNsYXcua2l0
+c3plbEBpbnRlbC5jb20+Cj4+IERhdGU6IEZyaSwgNCBBdWcgMjAyMyAxNTo0Nzo0OCArMDIwMAo+
+PiAKPj4+IE9uIDgvMi8yMyAwMDozMSwgS2VlcyBDb29rIHdyb3RlOgo+Pj4gCj4+PiBbLi4uXQo+
+Pj4gCj4+Pj4gSW5pdGlhbGx5IEkgd2FzIHN0cnVnZ2xpbmcgdG8gbWFrZSBfX2NvdW50ZWRfYnkg
+d29yaywgYnV0IGl0IHNlZW1zIHdlIGNhbgo+Pj4+IHVzZSBhbiBpbml0aWFsaXplciBmb3IgdGhh
+dCBtZW1iZXIsIGFzIGxvbmcgYXMgd2UgZG9uJ3QgdG91Y2ggdGhlCj4+Pj4gZmxleGlibGUKPj4+
+PiBhcnJheSBtZW1iZXIgaW4gdGhlIGluaXRpYWxpemVyLiBTbyB3ZSBqdXN0IG5lZWQgdG8gYWRk
+IHRoZSBjb3VudGVkLWJ5Cj4+Pj4gbWVtYmVyIHRvIHRoZSBtYWNybywgYW5kIHVzZSBhIHVuaW9u
+IHRvIGRvIHRoZSBpbml0aWFsaXphdGlvbi4gQW5kIGlmCj4+Pj4gd2UgdGFrZSB0aGUgYWRkcmVz
+cyBvZiB0aGUgdW5pb24gKGFuZCBub3QgdGhlIHN0cnVjdCB3aXRoaW4gaXQpLCB0aGUKPj4+PiBj
+b21waWxlciB3aWxsIHNlZSB0aGUgY29ycmVjdCBvYmplY3Qgc2l6ZSB3aXRoIF9fYnVpbHRpbl9v
+YmplY3Rfc2l6ZToKPj4+PiAKPj4+PiAjZGVmaW5lIERFRklORV9GTEVYKHR5cGUsIG5hbWUsIGZs
+ZXgsIGNvdW50ZXIsIGNvdW50KSBcCj4+Pj4gIMKgwqDCoMKgIHVuaW9uIHsgXAo+Pj4+ICDCoMKg
+wqDCoMKgwqDCoMKgIHU4wqDCoCBieXRlc1tzdHJ1Y3Rfc2l6ZV90KHR5cGUsIGZsZXgsIGNvdW50
+KV07IFwKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoCB0eXBlIG9iajsgXAo+Pj4+ICDCoMKgwqDCoCB9
+IG5hbWUjI191IF9fYWxpZ25lZChfQWxpZ25vZih0eXBlKSkgPSB7IC5vYmouY291bnRlciA9IGNv
+dW50IH07IFwKPj4+PiAgwqDCoMKgwqAgLyogdGFrZSBhZGRyZXNzIG9mIHdob2xlIHVuaW9uIHRv
+IGdldCB0aGUgY29ycmVjdAo+Pj4+IF9fYnVpbHRpbl9vYmplY3Rfc2l6ZSAqLyBcCj4+Pj4gIMKg
+wqDCoMKgIHR5cGUgKm5hbWUgPSAodHlwZSAqKSZuYW1lIyNfdQo+Pj4+IAo+Pj4+IGkuZS4gX19i
+dWlsdGluX29iamVjdF9zaXplKG5hbWUsIDEpIChhcyB1c2VkIGJ5IEZPUlRJRllfU09VUkNFLCBl
+dGMpCj4+Pj4gd29ya3MgY29ycmVjdGx5IGhlcmUsIGJ1dCBicmVha3MgKHNlZXMgYSB6ZXJvLXNp
+emVkIGZsZXggYXJyYXkgbWVtYmVyKQo+Pj4+IGlmIHRoaXMgbWFjcm8gZW5kcyB3aXRoOgo+Pj4+
+IAo+Pj4+ICDCoMKgwqDCoCB0eXBlICpuYW1lID0gJm5hbWUjI191Lm9iago+Pj4gCj4+PiBfX2J1
+aWx0aW5fb2JqZWN0X3NpemUobmFtZSwgMCkgd29ya3MgZmluZSBmb3IgYm90aCB2ZXJzaW9ucyAo
+d2l0aCBhbmQKPj4+IHdpdGhvdXQgLm9iaiBhdCB0aGUgZW5kKQo+Pj4gCj4+PiBob3dldmVyIGl0
+IGRvZXMgbm90IHdvcmsgZm9yIGJ1aWxkcyB3aXRob3V0IC1PMiBzd2l0Y2gsIHNvCj4+PiBzdHJ1
+Y3Rfc2l6ZV90KCkgaXMgcmF0aGVyIGEgd2F5IHRvIGdvIDovCj4+IAo+PiBZb3Ugb25seSBuZWVk
+IHRvIGNhcmUgYWJvdXQgLU8yIGFuZCAtT3MsIHNpbmNlIG9ubHkgdGhvc2UgMiBhcmUKPj4gb2Zm
+aWNpYWxseSBzdXBwb3J0ZWQgYnkgS2J1aWxkLiBEaWQgeW91IG1lYW4gaXQgZG9lc24ndCB3b3Jr
+IG9uIC1PcyBhcyB3ZWxsPwo+Cj5Cb3RoIC1PcyBhbmQgLU8yIGFyZSBmaW5lIGhlcmUuCj4KPk9u
+ZSB0aGluZyBpcyB0aGF0IHBlcmhhcHMgYSAidXNlciBmcmllbmRseSIgZGVmaW5lIGZvciAiX19i
+dWlsdGluX29iamVjdF9zaXplKG5hbWUsIDEpIiB3b3VsZCBhdm9pZCBhbnkgcG90ZW50aWFsIGZv
+ciBtaXNsZWFkaW5nICIxIiB3aXRoIGFueSAiY291bnRlciIgdmFyaWFibGUsIHdpbGwgc2VlLgoK
+SSBtZWFudCB0aGF0IEZPUlRJRllfU09VUkNFIHdpbGwgd29yayBjb3JyZWN0bHkgaW4gdGhlIGV4
+YW1wbGUgSSBnYXZlLiAoX19idWlsdGluX29iamVjdF9zaXplKCkgaXMgdXNlZCB0aGVyZS4pIEFs
+c28gbm90ZSB0aGF0ICJtYXggc2l6ZSIgKG1vZGUgMCkgaXMgdW5jaGFuZ2VkIGluIGVpdGhlciBj
+YXNlLCBidXQgbW9kZSAxIG5lZWRzIHRvIHNlZSB0aGUgb3V0ZXIgb2JqZWN0IHRvIGdldCB0aGUg
+bWluIHNpemUgY29ycmVjdC4KCi1LZWVzCgoKLS0gCktlZXMgQ29vawpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
+aXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
