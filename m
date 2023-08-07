@@ -1,186 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1DDD771F0E
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 13:00:54 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 901A9771FE0
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 13:12:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 77C134052A;
-	Mon,  7 Aug 2023 11:00:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 77C134052A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 303E54044C;
+	Mon,  7 Aug 2023 11:12:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 303E54044C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691406053;
-	bh=ybDt6iO36uvhAVaAHoZLpf1Qe8XfujQoOocehNvC9eI=;
+	s=default; t=1691406767;
+	bh=BGoNjPT6F4Bh2SSHk6iQT88gEDJwtq/ho5OCU+HZZfU=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=coPsppfGFcYQEBFoIMJ2mYRWAn4LVlPwvhE/B8c4h7TKDplsYLOdHHHxD4n0/MQeC
-	 +rIscOyEkOZUwZ4U8tvw4o9AZ7jKRJ82YubLp49atLz+QMRQTEZj7EFzLSKLtRVKeU
-	 KetZtAqtiFBO6WcgT73hWx2t2bI3IoFsqK2Sj5eEfqL6ETgsojJ2+lQ3Ovwccta0Ec
-	 9U5buEhZprWUtn6gxKCVc0/7ExjhefYKnsX/e9lY3Y1cQgDwu+PtreXcRiABldbi5N
-	 tTKg3PEZi2/4VYovoxN5Hy2CMQVv7j4Fj5eJJEiLS8Gzn2LthODPMItIrJPshZHlRp
-	 zZCnswFZO4heg==
+	b=iukON93cJZshk3dUmoU66BhXNtiA+omJBaf3EsK9T9xoRAYzw1Xop7MJ/sy2CPAwV
+	 65aEimGPEAqo1wDdA/nM+owjLu9MSLTRfkY8LrrHgJVWbzSqQjb11yJTA8cLaaXNMS
+	 V1x2/2Knp2joypSF7ezCHZLWRIjTMCj6RBdkGNX25F69JIk41QL0Wk6yLsY/du1BRL
+	 FePssRYcXT+TJZXvQBcLatQX0d0yRqClzdop/rQ8jmGn/0+spHWSxaZI7R6PgtHcS4
+	 +bKlmvqm0o3US8IXz8iSQvYxJNWuh+prPGpMFU5cmz9T8w6Hxfl7KopN6TtTjW/+Hc
+	 g4RzZjNOI6FuQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iCctxllRQFTx; Mon,  7 Aug 2023 11:00:52 +0000 (UTC)
+	with ESMTP id pOgsIsycHDLb; Mon,  7 Aug 2023 11:12:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 24840404DB;
-	Mon,  7 Aug 2023 11:00:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24840404DB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6B14F4012F;
+	Mon,  7 Aug 2023 11:12:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B14F4012F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C9F361BF860
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:00:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 332D11BF366
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:12:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 44C65404D8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:00:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 44C65404D8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 18C904031E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:12:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18C904031E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tlspoLvz7ln7 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Aug 2023 11:00:07 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D5DB34044C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:00:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5DB34044C
-X-IronPort-AV: E=McAfee;i="6600,9927,10794"; a="360597202"
-X-IronPort-AV: E=Sophos;i="6.01,261,1684825200"; d="scan'208";a="360597202"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 04:00:05 -0700
+ with ESMTP id RyTtYQyDo1J5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 11:12:28 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EF48F40347
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 11:12:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF48F40347
+X-IronPort-AV: E=McAfee;i="6600,9927,10794"; a="355457366"
+X-IronPort-AV: E=Sophos;i="6.01,261,1684825200"; d="scan'208";a="355457366"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2023 04:12:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10794"; a="844990638"
-X-IronPort-AV: E=Sophos;i="6.01,261,1684825200"; d="scan'208";a="844990638"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga002.fm.intel.com with ESMTP; 07 Aug 2023 04:00:05 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10794"; a="1061552189"
+X-IronPort-AV: E=Sophos;i="6.01,261,1684825200"; d="scan'208";a="1061552189"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga005.fm.intel.com with ESMTP; 07 Aug 2023 04:12:27 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 7 Aug 2023 04:00:05 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.27; Mon, 7 Aug 2023 04:12:26 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Mon, 7 Aug 2023 04:00:05 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2507.27 via Frontend Transport; Mon, 7 Aug 2023 04:12:26 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Mon, 7 Aug 2023 04:00:05 -0700
+ 15.1.2507.27; Mon, 7 Aug 2023 04:12:26 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HiivZQg6YAb4ovVAjIcegfNNmptLAwhB9bRnx6/NzXynIsk68gQMiayokZT9Bz1EZerwGJixvFat+OP1/hawca+WIDF+I8wqrCRbNsDgeU/6kym+949B6bZdFY0N09ho61vUme+XcqMRUPIKRiFgjlyqBBWbYbHOrF96ZhMgStZe1L++evvZEf2owpUrsfUaB+Tcd4ksbFSbsvvXPmspmuYtuBY2JsuCGp0GQ4ClWy9MPhlLSYE7q/W9m2m4pKdzK5IaPNHoFv6Bkx7GNLj7iZtl204Cq2ur3Q+Qcnp8QjBbMImI/NYjpQKmk2GoOgOdjn/yW+22Iu/n+J+ZshUfiw==
+ b=V63xs/GYlkhvZKA8D7znV2Y0fcUjE6I6yduYwdBL7YhE6E2vEP+9yeSlnhO53ZPwGSaJ9vgwGe09jWZ7f9dsVuqlNhjiqTmkjJAsCx18ZWtJO0R2ymp0SjvHrqXqjPpvByP0DcMRjQ69w4yOQ7wN4TUxVXMw9wn+MGpIF4cy9wuR1rJSwmMYHQwiqiUYiMKoPA0gc6yM1gz8sR+ryMAM8ctZx7oM0SLnLybEnrsAVL+7xgV/zuek8wx7RekNj4M50aAtVoHKCXHRD9uPdj4aNjz5ujBjurqhJjK90X38Oqi7S2zT9VOja1TpHdVFfYRh9NAVzctLvoF3srTSvPcMVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RTCJZ913+/QrEs/araeA/7qj3KbilbeNijlJ6MHV6wc=;
- b=gAaz1Hcc9Cn1p4T4pMKCqa8qpKW5gcRwV9zHkq70IIpiDepQxbVItT3HyNxRXy3jarSruB2b0gQUCkVKsZjXxKXkFJdJE+gUNBuPcYEnaS04/0pHR3xcikwUrrcjq7pcGCGMUI8WDxBi/3BC60YoVa47Egxn7LDDYN5pRLFUdymLS8nb1GbmXB625ngNNP90mK51F2VtpZQ5ylTBpD7xNqVGL60uhPt2P2x5uzp2e77GSYZ5k74x7hqOQjHDDPMmRWa+mG1qoDgeAm1OHmiiOzssDi+TrLLLfqEiHta0O+e8e++nZhxdrVemMb+tij4wUqKVBsxpZb/3HBB7oIcVnw==
+ bh=0NFj1epD1F9/6jkwTPVuCaAdtZJX6POa8VySXeS3orM=;
+ b=Z95zepa8WvgVZEX7Yt9zOCXArGx/5zZctKBPFjlGlslXO5DJWflsFzIyGho3jPIRaCtV9v2sarzoa3Euxk93syA0oLOEfDlUEZ3oD3lknSX+xJ1WsFvCWyFqvUNDZEP/Gl9mz3rqqTH81NcWID+fWVQWTWblrj8JRBwI7L+cw+dlJIrp0rHnVlRHNa/o9NWZ73n05H/HzRYThIWcX9zNOuM0NbIS11kA2v+wG+bJO+dtnak391vzftfaQ6KzReSLY/WIAn0pCBZNuEdC/MXdy+phdDtdV6FGpv44Jcwv5F1QEiyO9bHf1g0HI65KwIRSkfVMsFWSimXXGmLRGVdhJg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from BYAPR11MB3672.namprd11.prod.outlook.com (2603:10b6:a03:fa::30)
- by CO1PR11MB5170.namprd11.prod.outlook.com (2603:10b6:303:91::21)
+ by MW3PR11MB4636.namprd11.prod.outlook.com (2603:10b6:303:5a::20)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.27; Mon, 7 Aug
- 2023 11:00:03 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.26; Mon, 7 Aug
+ 2023 11:12:24 +0000
 Received: from BYAPR11MB3672.namprd11.prod.outlook.com
  ([fe80::7ed4:d535:7f41:de71]) by BYAPR11MB3672.namprd11.prod.outlook.com
  ([fe80::7ed4:d535:7f41:de71%6]) with mapi id 15.20.6652.026; Mon, 7 Aug 2023
- 11:00:02 +0000
-Message-ID: <028ad477-ac88-52a4-25fe-6c7815f94ead@intel.com>
-Date: Mon, 7 Aug 2023 12:59:54 +0200
+ 11:12:24 +0000
+Message-ID: <45567907-afad-635c-73d9-95860beefcf3@intel.com>
+Date: Mon, 7 Aug 2023 13:12:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
+Content-Language: en-US
 To: Karol Kolacinski <karol.kolacinski@intel.com>,
  <intel-wired-lan@lists.osuosl.org>
 References: <20230807103624.468230-1-karol.kolacinski@intel.com>
- <20230807103624.468230-2-karol.kolacinski@intel.com>
-Content-Language: en-US
+ <20230807103624.468230-3-karol.kolacinski@intel.com>
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <20230807103624.468230-2-karol.kolacinski@intel.com>
-X-ClientProxiedBy: FR0P281CA0170.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:b4::8) To BYAPR11MB3672.namprd11.prod.outlook.com
+In-Reply-To: <20230807103624.468230-3-karol.kolacinski@intel.com>
+X-ClientProxiedBy: FR0P281CA0214.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ac::8) To BYAPR11MB3672.namprd11.prod.outlook.com
  (2603:10b6:a03:fa::30)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|CO1PR11MB5170:EE_
-X-MS-Office365-Filtering-Correlation-Id: b4dbae82-6977-4283-230c-08db973572f4
+X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|MW3PR11MB4636:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3fe0ffba-cb10-4978-396d-08db97372d4b
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hPYgwRcHdB0Qq+RqgYD1S7qXYIAHE0G668STkyLNkZjK0FudovzSjzwO19tRn8tizXsvJMaHMoL28wRFwZRQw+8t1Scy4IjtNhf5ZooW/vqPZRBwpZnHEZOvILhLgqNNulOzJ5yNXcqnvuX9fchITMISunQLiouqFSNVtU2XNEBLTgR3HZB9Vb9BoSHlaa9uV6Be2rjfR/Divh3d1zJkICBbAPPKlgKjq+8co5ejhBrcjLfL7m1WO8vr5SPTyAXVclEAuu/8gueoA32B0e6OlpFh69ZyEE0ONVFJOwENygx+Knp3zjSyUtr2wxcATKP05y9ZLn7cpZY3q6vxCetS/Wpiasf/qGD3DsOntTcojkrXYLRjf8qTgI+Rg81uh9JtOeZraepKS0xSX2Zjddf8c44eEiBh848cJAYkwQiObzMiCHOZVyK0HY3mm2f/BiagqQfI+5+nWHEAMWYBPcee/c+3RfVia3wOJgtRFiXhblMlvY+7eiz+xBFmdVNuCOXJaG0LgrpJ0Ti7MPcd0nW92WkdCLvypTQEIR5YUNmHeh9pJyGWU9uDhy1Q2rBCvP6l2CfBHWeBWZmD5MwcS5k1fzbBHZS8iolFPL0iFo5rRbMGqEnbH5i5z0nOWmhj8FL9Ud9a4X5Yp1uTyY5iQPguVg==
+X-Microsoft-Antispam-Message-Info: dt0bZMegeCMpB8wEZiTldB/W9vgoxUt0BQJCOerNxWfj3IsNZNwIkLU7WLgldAcDBVRchuZv9p6Sgmpfi001toRRA/9CGKztzOg3oSXDxzjiciaMDwpMFsRles+9reimOl+2HJefm3ZACttpz+2XTWATb2vLL27V73KKxaELYFh+4CUGZyfbRPG3m4pypYqrnG79ogvAmuG6IrdzA7fmenNELV3AOY0H5IO+i86NWDDg2rqpVsRbvPXG3CYLj51KDt9BAJa2h3K6zPWA43z9zDO3u5z579R8mLnDJ3ssvhlICKV0T1ptlHbaGGaAO7RaDXmgw9u9A8XK8ObWfenOcI+6vH96jUABSmBr2a/ojbh3EV1IE3hCrX6MQAKh/2B2eyEGIqJj5ZKpPCjd7y5TOpMISuJ4IVw5pKAnxcAmbXh142TXER8mmsx4Oh3Be1bYyXnj1DDHhNAL9Kv+yqqE3llcfmbV+deWcOgTExiGBaILc5ZLkD7qYUrA8EHQF6lW9QU2yu1bKjQHZ1DWn432hef76Y3HgCQyXQON8gf9eoiFUf4b95a8dJkpwvTJ51YrYxnlC/Xlf/wZnw4yMPeX5nTERxNDGLJ3AcWTv9o2eTl3kfKJrH5z5rBDKhHiXixiUDWdGTathJ/NFJvwkQOltA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR11MB3672.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(396003)(346002)(136003)(376002)(39860400002)(451199021)(186006)(1800799003)(2616005)(36756003)(6512007)(316002)(86362001)(478600001)(38100700002)(6666004)(66946007)(66556008)(66476007)(6486002)(31696002)(82960400001)(53546011)(6506007)(41300700001)(26005)(8676002)(8936002)(2906002)(83380400001)(5660300002)(31686004)(45980500001)(43740500002);
+ SFS:(13230028)(366004)(376002)(346002)(136003)(396003)(39860400002)(1800799003)(186006)(451199021)(41300700001)(26005)(30864003)(2906002)(5660300002)(31686004)(83380400001)(8676002)(8936002)(2616005)(86362001)(316002)(31696002)(6506007)(82960400001)(53546011)(38100700002)(6486002)(66556008)(66476007)(66946007)(6666004)(478600001)(6512007)(36756003)(43740500002)(45980500001);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QktmeXFySkFvY2drNWhNUkx5b1ZzdzNPWTFEek9OT3FBNmc1NHB4VUpxc1dr?=
- =?utf-8?B?MTRXNGVudmJxczZkSFRtcE9nb0orMEMwUTBscGl0YjZDOVRaNURTOTdIdlFN?=
- =?utf-8?B?VXFqNzdoWjlDR095LzN1NUtwVWJ4L3pNM2NRKzdsa28rbElYbER1YTlSVlp1?=
- =?utf-8?B?Z2MrR1hLYjFQSWFvd3ZTZ0dDc0MrRmhSNWhpN25ZUHVlMTR3ekltSmRHSS9U?=
- =?utf-8?B?KzNKWFNvYVBtNG5MUS9MSE9tMWtUUFdvU2pObU1Xc0FNT0dHdmQ0bHRybGdM?=
- =?utf-8?B?KzJYSE9tRkt0TGVRNzJEeDQ3UnFueUprQUpCZHI5Z0RTRm0vMXdiRXk2YnB4?=
- =?utf-8?B?TmJ1dWdlQ0RyMFVOSTBUYU0zSjNhVWZ3WE0yZ1NMbmVub3NxaGpUaWp4UWc4?=
- =?utf-8?B?VXY2bFMrUXBQc1Z1TXc1UTFuOUF3ZkxmZ0UyejlZU0l5dnh3b1pWdlJQZ2NM?=
- =?utf-8?B?QU1sQlpEZm1ySVBERGN3ZWk2c1l3TzN1eExKZWc1YXZiais1cTFlamkydEhZ?=
- =?utf-8?B?ZUpaUHlVQllTbVMxWGdnVHJKNkg4NDYrR3U2aUVhZ1o4L0hSNVVKdUg3NUVE?=
- =?utf-8?B?OUVaZjBUbFJld2pCTVN1OG9pTFNpL1YxY090dEh6QUFxKzBhREpMOUdqYjhm?=
- =?utf-8?B?ZWpRZEs5bUl3eG1KaGhZL0NqbWNER3g4UWJrdHhPN2ZZVjVyOHdHNncrV25P?=
- =?utf-8?B?bllVOUlFTFdMQW43TklJQVJ6MlF2b29NZDlScEJzN09sWFlXaWtPeXdNTWV4?=
- =?utf-8?B?L2FjT25vQ1FHN0tNZFpYVFVYRnhNaVdyYjJSbVJvNmlaYUJ4VjZlaFg3bnJ2?=
- =?utf-8?B?ZzZteVdQbzY5bDdidkJySnAxYUlBdzc0bDFXU2FRZEUxUDNNbWZjVmlFQzFK?=
- =?utf-8?B?d1ZTSVE5UnJhSVJLeWJoS2tiQ3BTNG1JQmdGU3lyZFFuZGZ2QlhXdzF5bEJL?=
- =?utf-8?B?WktFR091OW5XREtZVElDamhnSDhiSmFUNXZYVDREb1VRZ3dEczZNZzZsUk9t?=
- =?utf-8?B?QXVZTXpTcXpyQ09maVViWjE4clhITGNENzBEVjQ1NE9OZ3Jjb21aazN2YTBq?=
- =?utf-8?B?QnRENStuVFQyN1NycEpKSkJQRnlrcDBPVFZib1N5akxIc0JxOG92ZExIbXNk?=
- =?utf-8?B?RXRCUnoxTFVLUytqSlQ1a1R0ZE12US93VHY4eDRCb05YTThlVis2SUVNSE1U?=
- =?utf-8?B?SjRic3NUeUVIbEFhZDdiNDFyY240YTAvWE1WOWc5OUNFUXRiQWpzaHVKQk1j?=
- =?utf-8?B?V05ua3pHTG9kRGpGa0l5WDNSdGtCanRNYWhaSkRObXVVM1MwUGNOWXBNU25y?=
- =?utf-8?B?QitwMzVLdDJPNTJYYzhyRC9Tc3NZOGJxM2t6d2JkaVVJM29vd2RTVVRIWkMy?=
- =?utf-8?B?ZnVxRlRpK3BVSk9mWEY3Ulg0eUhYRVpSZFl6VDdMTDBjYU03L2tDYndRaFB6?=
- =?utf-8?B?RWJsR3BQVWJ4ekM2Q25Ua0liQ1lpTS9kTll4ZXpsL1U1emc1dSt2VzYwbGNC?=
- =?utf-8?B?b1J6NUEzVlJ6YnR2L3REOXhReUpkNmE1c1o3Q1M0RGhsb3o4YXcva0FDNERJ?=
- =?utf-8?B?OFZGWWtZZ2ROeUZISjUxcGJWWkRUYldmOHVrTE11YmZTZmxCeGpGUU1tZ2dk?=
- =?utf-8?B?bENxNmhDcFpTNVpaWFdPRUJkRE5CS3dISE5TaC9pcXZpRWNoelhkQjBIQkRp?=
- =?utf-8?B?dE9iYzRzanR3QWlJbGZKVGZ1eXh0UkpybG1RSzBnREVnWWRtZ3BJekNCOVJo?=
- =?utf-8?B?N2swS0l3bWZPZy9NNDB6RU9PbTRsRE1yMjQrRGFRYXdjcnJyYVNtSnZsWmQ5?=
- =?utf-8?B?UEI4WnBCQ2dMNmpnL2QxbCt3dlpudGRUYTF2RFJEeS9ZMUJSQ2JQTm5ETFAw?=
- =?utf-8?B?U1JrNGxoMDZRK2NWRWNoczFvOGxPeGxrVUY0NHRlRTdxeUlITjFKWnFiYlVO?=
- =?utf-8?B?b3VqZVNXVkx3aEd0Uk5OZUE3cjhZdWRvNVJZZ1ZYQjFibnlHNFQwQnkwcVVY?=
- =?utf-8?B?ck9FVjlnZXlWK2FFSFZJMEdXUFBHampLVmhyQVVIRTNMdUV1dUtzS29IOGQr?=
- =?utf-8?B?T1M3dk1PbHNTZjNIZklXS1hwbjZ3cHlJMnp6QXhFcUVDaUx3MUhMd0gwZXRH?=
- =?utf-8?B?citvRHdkQ1hUQTJHbEtxOFFLaFJvTlJzN1RoYWs4cnFpanZhdHh4b3MxemZD?=
- =?utf-8?B?cWc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: b4dbae82-6977-4283-230c-08db973572f4
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q3ZoeDVVT2l4d252dC9BZk1OWHkwaXFEVGJWQ01KdW14UU9CcmZIZW9tb1Qy?=
+ =?utf-8?B?ZEtROXhUWEhBOTVDV2JVMDV6WXFmaXVuM25vdUZINWRIN0JXWnVjM0FMc0sx?=
+ =?utf-8?B?U2lJWlN0eFdRSDVqb3NBY3FoeFdOajNtTVFyd0lncldqR3IxQmhVdXlrT2N5?=
+ =?utf-8?B?TjR0cUxmOXYwZUJLei9TYVk4RkVLTk4xK1B6Z3p2cUxZbHBjNGZlTEpnRXNU?=
+ =?utf-8?B?S0xHZG1KOG9yTVl1WE1wa3FTdEFqRnZBa3JjcUFHTTRzR3JIOS9NWFVnRnk2?=
+ =?utf-8?B?N09zTlpOM0h6UFI0UXl3QzlRTHlZZFd2SnBnQWljbTkzVlMzKzZqdDNkaUE5?=
+ =?utf-8?B?N09MdE9jQjlKNmkrYVViNmJSNnF6NHlCQ1JqZ1hCWDFIQzE1MzhjR3VxdWhu?=
+ =?utf-8?B?TW1PbHJvbjRMWC83eU1oZkJTY0pzc2RDbk03dWp4YjBUWGFaZ3VJblFLYzFW?=
+ =?utf-8?B?eFc1THdMSklDTXNPL2dibEhDdzRXUGx3VmlYWXN0elcra1lPc0xGenU2S1ky?=
+ =?utf-8?B?VEo3bEM3SkJhM2wzeFJNNzFucTVpbXZxTVREWUFqandFdG8xOG9NRHdNT2dD?=
+ =?utf-8?B?WERRQkdIOHo0MmJYcFpiZTFyMHl5R3YwRFdlemF2OHVjVXcvZW1kc3Z4ell3?=
+ =?utf-8?B?MDVsL0dwMDduekJsVjJ0dWR5cVBBNWJFekNlbVlhTU5nbDZvN2JPdStqSGxT?=
+ =?utf-8?B?cDZ5TTM4Y1QxNEJGbFVIaTd3U2Ira1pROGZlV1R0b2tsWWNBL2tCb0tJcExP?=
+ =?utf-8?B?UzBTOUgwTlB5N0FkM1lLZ3lmRmVydzNSajVTdHl0VURiamFMMEcyandUR1k5?=
+ =?utf-8?B?MGtoUkQzcXZ6QTQ2WHE2VHJORVVxSXFuOG5QT2dyd3ZoeENyeCtaT2krYk1z?=
+ =?utf-8?B?VnFtbzZkYWI0bDdZdWYrWWJ6Ym9GRWNsM2hicUcxVk40aW4xUEhZdHNTRmFu?=
+ =?utf-8?B?NTBmdzhvMXlsWXVUR3RtU0IrVjhUbTI1OCtiOTlGbUN0SjlFOVA4QndXK3Nw?=
+ =?utf-8?B?VUcxVEFJNFBKaDJCaTN3emtrMzZWTnFEZ2E0Q2dLaTRUcXRKLzY1eTAyZFd1?=
+ =?utf-8?B?R25xUmtQejI1ZUxmZVlPRk9XdFA1dytuaWFiZVBZZXk1bmNWRDU2N0dWN0o0?=
+ =?utf-8?B?QUo5NkU3YnN1Skd2eTJjN2dCMTBWRGVZVFpHVnpUVnpqcmVEejZmOVJ2RDZz?=
+ =?utf-8?B?TTZscDlGQ1YwYUcrWXZxSTV4eVpmMEpKWFROVnZUTFJFNVFXV3A4RStXMDJV?=
+ =?utf-8?B?RUFpcWhrdTFXcnJqbnRkbnptd2VjMkp1S1MwVW5PemFpQzY4QmJEeE5GYWN6?=
+ =?utf-8?B?YUlRaVFERDN5S2t3V010WmpNb3JTUWZWc1NnWUsxNXlJWTZPTGZVSW4rVi9J?=
+ =?utf-8?B?UE42Z214ZWhnTFlRTVVFd1dHb0Y1aEtsTGNmeTZVSkc0d1ZpWlJlSVRDYWlJ?=
+ =?utf-8?B?S0o0S2ZUSW1rOFVIdTZuMDFKU09ZZ2pyK3hZK0JFN2pYODlZK1Z5RXZEMFp3?=
+ =?utf-8?B?dTdzdmluQ0w2L1NhYVNsTzM5bUJBeXc0TmFjc2xxaU1CdjZTWGhQbytTYjdN?=
+ =?utf-8?B?bElqbG5OQkVuamFvOWZkMngvdnNIUXhNZUthVkxZV1FkOEwyaFpwb2pRQzZl?=
+ =?utf-8?B?TTJ3R0YxUDE1N3lPdnFzUlQ5eVRlZWl4ekYxVXM1K1YrZUxXclN6WjR0VEN3?=
+ =?utf-8?B?MzRmOFcwTjdxbi9ZemNjL1hMdlB1VE1LalZlV1Z2UFkycU9ORHRNOXRVaWRa?=
+ =?utf-8?B?bjBScWZpWUs0ZnZubEYwamlRSVhIQnptS0U3cGJPeTAxeGlyaDBqTEx0SlVC?=
+ =?utf-8?B?UWpMaWFwN1lrMHBMVHFpWVdXQ2F0UTBCRS9td09PMjQvUUZWKzdBcENiV1U1?=
+ =?utf-8?B?YUhBOUJYczZRU0pqL284OUlMeGV2UU5pdkVJdEwzbVdkTnJtRi9Zemc1ei9w?=
+ =?utf-8?B?Z1g1UFJUOTZVQzFpWjh1RC9yN1RsSFZMWmdLU1ZnUXQ4ZzZiWHpUSFo5Rm5D?=
+ =?utf-8?B?ZUI4eGxuMjA0MFl3blAraDBYMmZsQnFNVk0wdTRlWndnVG56WlZyZGZ3VXVx?=
+ =?utf-8?B?SnpWRlJ0VnF3eURqL09sSDJDT0FGdmJYcFZZenV1aGtkNDFreDMxRStZbzBo?=
+ =?utf-8?B?cEh2SnQ0NEtMRGNqdnUwa2RRUUM4ak1EcEh3KzcvYktCdngvNkdXYTZmWENV?=
+ =?utf-8?B?a1E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fe0ffba-cb10-4978-396d-08db97372d4b
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3672.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Aug 2023 11:00:02.3255 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Aug 2023 11:12:24.4335 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LbSVrWPvjAI252zOMdFIzai0LGgX6w1ZUXX5svDIL1DkdTxIQDY580Z/cmWFOUtC788f9dklaTPLlUKPipd8XhplolrQv237T0Cu8r7FEyI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5170
+X-MS-Exchange-CrossTenant-UserPrincipalName: HCeF4GqwBS+Pug7kD0hA1LAJrrje28oKvtCR6+B0PZ2ZYfcISpGUc3Db5E59dmYoRtyZ5tK7yDR6IA5ECWVvF90W8R+EcDgNL3MfS3Bo374=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4636
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691406006; x=1722942006;
+ t=1691406747; x=1722942747;
  h=message-id:date:subject:to:references:from:in-reply-to:
  content-transfer-encoding:mime-version;
- bh=wOjPMp+WZ1oC4+tr23NSPrqUOTXuP0+ClExzEvBD83A=;
- b=WVWbiz/LTlcDC8p0p2xoMz5BS0E3wtKnH3A+58CxxxBU6ja8QxRHe8C/
- GMcUHlxGpRumqpR9h3uOnz3ENwnR2rGp6xZwRSMiIIyn2KSNQmLx/rJAp
- /Y4lyV5AcsvEYC3W0H1RYpbh3od7pHJdEmnLcBp37nHFjoJfULSfPxt+i
- fkwcXMrQw1JFlB23NiY5bv5p1yBuzl+2o+Ht6vDFw7Bh8FRV1Rh91g6zp
- +KoAb5lwwhw8GNSG+yjtjOhWUPDab6N4aIgRz1nmfWsOttOD2MW9CvOnu
- Jjp/yjHvnOIcT0CiAN41HLYMCO9AtAv7vaRD9BLj+00CVuBaATFY1LliO
+ bh=kZd5zJHZZtqlcvEQhOgw6Jlf/aAII7XiClQGNmorgfQ=;
+ b=QUUHqOi1zai2PWcL9xWLkSqMjUByhr8SismYoOZO/uoNNHum1QXE+yuF
+ 9i1tspbauA7on12VPetsqcOs0ctnnLtu4zUOFIEJLQYzllvDN+UHxht2g
+ eHttv8ZA6J0v+vPQndu/3zD/E//2NtR5xGoVTESGUB4/4wJ5umdLxOM7l
+ mN3MvgvMMKhHpmL/abBwTuXO2zKCbNSdCMQhMo0kvqFbk+yqL+Gb/RMCa
+ fKLQTXEpqiO2teY+oXxmVHJ1bdHrq9UHBUqTtVytdepG1hlvnXpFzxcRh
+ yYxY7wd1vciVoqeTKDosK8nj0Tl8m656vq8Ms7hnrPJUGOFT55Jt70y2g
  w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WVWbiz/L
+ header.a=rsa-sha256 header.s=Intel header.b=QUUHqOi1
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH 1/9] ice: use ice_pf_src_tmr_owned
- where available
+Subject: Re: [Intel-wired-lan] [PATCH 2/9] ice: introduce PTP state machine
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -199,68 +198,330 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 8/7/23 12:36, Karol Kolacinski wrote:
-> The ice_pf_src_tmr_owned() macro exists to check the function capability
-> bit indicating if the current function owns the PTP hardware clock.
+> Add PTP state machine so that the driver can correctly identify PTP
+> state around resets.
+> When the driver got information about ungraceful reset, PTP was not
+> prepared for reset and it returned error. When this situation occurs,
+> prepare PTP before rebuilding its structures.
 > 
-> This is slightly shorter than the more verbose access via
-> hw.func_caps.ts_func_info.src_tmr_owned. Be consistent and use this
-> where possible rather than open coding its equivalent.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-
-Hi Karol,
-
-sorry for not reaching you during internal review phase ("e1000").
-
-For future submissions, please ensure to set target tree via subject 
-prefix/tag, here it could be "iwl-next".
-For IWL submissions, you should also CC netdev ML.
-You should also CC anyone mentioned in the patch and/or last author of 
-given area of the code, +our maintainers Tony and Jesse.
-
-For this particular patch - Who is the author, you or Jake?
-If Jake, you should send it in a way that it is properly accounted 
-(here, and cover letter),
-if it's yours, then what is his Signed-off-by doing here?
-
-For any case, all patches that you send, should be decorated with your 
-S-o-b, as a last tag.
-
-Przemek
-
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > ---
->   drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
->   drivers/net/ethernet/intel/ice/ice_ptp.c  | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   drivers/net/ethernet/intel/ice/ice.h         |   1 -
+>   drivers/net/ethernet/intel/ice/ice_ethtool.c |   2 +-
+>   drivers/net/ethernet/intel/ice/ice_ptp.c     | 131 +++++++++++++------
+>   drivers/net/ethernet/intel/ice/ice_ptp.h     |  10 ++
+>   4 files changed, 99 insertions(+), 45 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index a73895483e6c..1ac37a3f8de5 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -3158,7 +3158,7 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index 34be1cb1e28f..86f6f94da535 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -490,7 +490,6 @@ enum ice_pf_flags {
+>   	ICE_FLAG_DCB_ENA,
+>   	ICE_FLAG_FD_ENA,
+>   	ICE_FLAG_PTP_SUPPORTED,		/* PTP is supported by NVM */
+> -	ICE_FLAG_PTP,			/* PTP is enabled by software */
+>   	ICE_FLAG_ADV_FEATURES,
+>   	ICE_FLAG_TC_MQPRIO,		/* support for Multi queue TC */
+>   	ICE_FLAG_CLS_FLOWER,
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index d3cb08e66dcb..7d57ecf48da0 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -3275,7 +3275,7 @@ ice_get_ts_info(struct net_device *dev, struct ethtool_ts_info *info)
+>   	struct ice_pf *pf = ice_netdev_to_pf(dev);
 >   
->   		ena_mask &= ~PFINT_OICR_TSYN_EVNT_M;
+>   	/* only report timestamping if PTP is enabled */
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (!test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+>   		return ethtool_op_get_ts_info(dev, info);
 >   
-> -		if (hw->func_caps.ts_func_info.src_tmr_owned) {
-> +		if (ice_pf_src_tmr_owned(pf)) {
->   			/* Save EVENTs from GLTSYN register */
->   			pf->ptp.ext_ts_irq |= gltsyn_stat &
->   					      (GLTSYN_STAT_EVENT0_M |
+>   	info->so_timestamping = SOF_TIMESTAMPING_TX_SOFTWARE |
 > diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> index 97b8581ae931..0669ca905c46 100644
+> index 0669ca905c46..a6ea90b9461e 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> @@ -2447,7 +2447,7 @@ void ice_ptp_reset(struct ice_pf *pf)
+> @@ -255,6 +255,31 @@ ice_verify_pin_e810t(struct ptp_clock_info *info, unsigned int pin,
+>   	return ice_ptp_set_sma_e810t(info, pin, func);
+>   }
+>   
+> +/**
+> + * ice_ptp_state_str - Convert PTP state to readable string
+> + * @state: PTP state to convert
+> + *
+> + * Returns: the human readable string representation of the provided PTP
+> + * state, used for printing error messages.
+> + */
+> +static const char *ice_ptp_state_str(enum ice_ptp_state state)
+> +{
+> +	switch (state) {
+> +	case ICE_PTP_UNINIT:
+> +		return "UNINITIALIZED";
+> +	case ICE_PTP_INITIALIZING:
+> +		return "INITIALIZING";
+> +	case ICE_PTP_READY:
+> +		return "READY";
+> +	case ICE_PTP_RESETTING:
+> +		return "RESETTING";
+> +	case ICE_PTP_ERROR:
+> +		return "ERROR";
+> +	}
+> +
+> +	return "UNKNOWN";
+> +}
+> +
+>   /**
+>    * ice_ptp_configure_tx_tstamp - Enable or disable Tx timestamp interrupt
+>    * @pf: The PF pointer to search in
+> @@ -1285,7 +1310,7 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+>   	struct ice_ptp_port *ptp_port;
+>   	struct ice_hw *hw = &pf->hw;
+>   
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (pf->ptp.state != ICE_PTP_READY)
+
+test_bit() is atomic API, but "just reading/using variable" is rather not.
+Please extend commit message to say something about why transition  here 
+(here=whole commit) is safe.
+
+>   		return;
+>   
+>   	if (WARN_ON_ONCE(port >= ICE_NUM_EXTERNAL_PORTS))
+> @@ -2020,7 +2045,7 @@ int ice_ptp_get_ts_config(struct ice_pf *pf, struct ifreq *ifr)
+>   {
+>   	struct hwtstamp_config *config;
+>   
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (pf->ptp.state != ICE_PTP_READY)
+>   		return -EIO;
+>   
+>   	config = &pf->ptp.tstamp_config;
+> @@ -2087,7 +2112,7 @@ int ice_ptp_set_ts_config(struct ice_pf *pf, struct ifreq *ifr)
+>   	struct hwtstamp_config config;
+>   	int err;
+>   
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (pf->ptp.state != ICE_PTP_READY)
+>   		return -EAGAIN;
+>   
+>   	if (copy_from_user(&config, ifr->ifr_data, sizeof(config)))
+> @@ -2422,7 +2447,7 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
+>   	struct ice_pf *pf = container_of(ptp, struct ice_pf, ptp);
+>   	int err;
+>   
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (pf->ptp.state != ICE_PTP_READY)
+>   		return;
+>   
+>   	err = ice_ptp_update_cached_phctime(pf);
+> @@ -2432,6 +2457,42 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
+>   				   msecs_to_jiffies(err ? 10 : 500));
+>   }
+>   
+> +/**
+> + * ice_ptp_prepare_for_reset - Prepare PTP for reset
+> + * @pf: Board private structure
+> + */
+> +void ice_ptp_prepare_for_reset(struct ice_pf *pf)
+> +{
+> +	struct ice_ptp *ptp = &pf->ptp;
+> +	u8 src_tmr;
+> +
+> +	if (ptp->state == ICE_PTP_RESETTING)
+> +		return;
+> +
+> +	ptp->state = ICE_PTP_RESETTING;
+> +
+> +	/* Disable timestamping for both Tx and Rx */
+> +	ice_ptp_cfg_timestamp(pf, false);
+> +
+> +	kthread_cancel_delayed_work_sync(&ptp->work);
+> +
+> +	if (test_bit(ICE_PFR_REQ, pf->state))
+> +		return;
+> +
+> +	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+> +
+> +	/* Disable periodic outputs */
+> +	ice_ptp_disable_all_clkout(pf);
+> +
+> +	src_tmr = ice_get_ptp_src_clock_index(&pf->hw);
+> +
+> +	/* Disable source clock */
+> +	wr32(&pf->hw, GLTSYN_ENA(src_tmr), (u32)~GLTSYN_ENA_TSYN_ENA_M);
+> +
+> +	/* Acquire PHC and system timer to restore after reset */
+> +	ptp->reset_time = ktime_get_real_ns();
+> +}
+> +
+>   /**
+>    * ice_ptp_reset - Initialize PTP hardware clock support after reset
+>    * @pf: Board private structure
+> @@ -2444,6 +2505,16 @@ void ice_ptp_reset(struct ice_pf *pf)
+>   	int err, itr = 1;
+>   	u64 time_diff;
+>   
+> +	if (ptp->state != ICE_PTP_RESETTING) {
+> +		if (ptp->state == ICE_PTP_READY) {
+> +			ice_ptp_prepare_for_reset(pf);
+> +		} else {
+> +			err = -EINVAL;
+> +			dev_err(ice_pf_to_dev(pf), "PTP was not initialized\n");
+> +			goto err;
+> +		}
+> +	}
+> +
 >   	if (test_bit(ICE_PFR_REQ, pf->state))
 >   		goto pfr;
 >   
-> -	if (!hw->func_caps.ts_func_info.src_tmr_owned)
-> +	if (!ice_pf_src_tmr_owned(pf))
->   		goto reset_ts;
+> @@ -2510,7 +2581,7 @@ void ice_ptp_reset(struct ice_pf *pf)
+>   	if (err)
+>   		goto err;
 >   
->   	err = ice_ptp_init_phc(hw);
+> -	set_bit(ICE_FLAG_PTP, pf->flags);
+> +	ptp->state = ICE_PTP_READY;
+>   
+>   	/* Start periodic work going */
+>   	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
+> @@ -2519,6 +2590,7 @@ void ice_ptp_reset(struct ice_pf *pf)
+>   	return;
+>   
+>   err:
+> +	ptp->state = ICE_PTP_ERROR;
+>   	dev_err(ice_pf_to_dev(pf), "PTP reset failed %d\n", err);
+>   }
+>   
+> @@ -2725,39 +2797,6 @@ int ice_ptp_clock_index(struct ice_pf *pf)
+>   	return clock ? ptp_clock_index(clock) : -1;
+>   }
+>   
+> -/**
+> - * ice_ptp_prepare_for_reset - Prepare PTP for reset
+> - * @pf: Board private structure
+> - */
+> -void ice_ptp_prepare_for_reset(struct ice_pf *pf)
+> -{
+> -	struct ice_ptp *ptp = &pf->ptp;
+> -	u8 src_tmr;
+> -
+> -	clear_bit(ICE_FLAG_PTP, pf->flags);
+> -
+> -	/* Disable timestamping for both Tx and Rx */
+> -	ice_ptp_cfg_timestamp(pf, false);
+> -
+> -	kthread_cancel_delayed_work_sync(&ptp->work);
+> -
+> -	if (test_bit(ICE_PFR_REQ, pf->state))
+> -		return;
+> -
+> -	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+> -
+> -	/* Disable periodic outputs */
+> -	ice_ptp_disable_all_clkout(pf);
+> -
+> -	src_tmr = ice_get_ptp_src_clock_index(&pf->hw);
+> -
+> -	/* Disable source clock */
+> -	wr32(&pf->hw, GLTSYN_ENA(src_tmr), (u32)~GLTSYN_ENA_TSYN_ENA_M);
+> -
+> -	/* Acquire PHC and system timer to restore after reset */
+> -	ptp->reset_time = ktime_get_real_ns();
+> -}
+> -
+>   /**
+>    * ice_ptp_init_owner - Initialize PTP_1588_CLOCK device
+>    * @pf: Board private structure
+> @@ -3011,6 +3050,8 @@ void ice_ptp_init(struct ice_pf *pf)
+>   	struct ice_hw *hw = &pf->hw;
+>   	int err;
+>   
+> +	ptp->state = ICE_PTP_INITIALIZING;
+> +
+>   	ice_ptp_init_phy_model(hw);
+>   
+>   	ice_ptp_init_tx_interrupt_mode(pf);
+> @@ -3032,7 +3073,6 @@ void ice_ptp_init(struct ice_pf *pf)
+>   	/* Start the PHY timestamping block */
+>   	ice_ptp_reset_phy_timestamping(pf);
+>   
+> -	set_bit(ICE_FLAG_PTP, pf->flags);
+>   	err = ice_ptp_init_work(pf, ptp);
+>   	if (err)
+>   		goto err;
+> @@ -3041,6 +3081,7 @@ void ice_ptp_init(struct ice_pf *pf)
+>   	if (err)
+>   		goto err;
+>   
+> +	ptp->state = ICE_PTP_READY;
+>   	dev_info(ice_pf_to_dev(pf), "PTP init successful\n");
+>   	return;
+>   
+> @@ -3050,7 +3091,7 @@ void ice_ptp_init(struct ice_pf *pf)
+>   		ptp_clock_unregister(ptp->clock);
+>   		pf->ptp.clock = NULL;
+>   	}
+> -	clear_bit(ICE_FLAG_PTP, pf->flags);
+> +	ptp->state = ICE_PTP_ERROR;
+>   	dev_err(ice_pf_to_dev(pf), "PTP failed %d\n", err);
+>   }
+>   
+> @@ -3063,9 +3104,15 @@ void ice_ptp_init(struct ice_pf *pf)
+>    */
+>   void ice_ptp_release(struct ice_pf *pf)
+>   {
+> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
+> +	if (pf->ptp.state == ICE_PTP_UNINIT)
+>   		return;
+>   
+> +	if (pf->ptp.state != ICE_PTP_READY)
+> +		dev_warn(ice_pf_to_dev(pf), "PTP state machine is %s, tearing down PTP anyways\n",
+> +			 ice_ptp_state_str(pf->ptp.state));
+> +
+> +	pf->ptp.state = ICE_PTP_UNINIT;
+> +
+>   	/* Disable timestamping for both Tx and Rx */
+>   	ice_ptp_cfg_timestamp(pf, false);
+>   
+> @@ -3073,8 +3120,6 @@ void ice_ptp_release(struct ice_pf *pf)
+>   
+>   	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+>   
+> -	clear_bit(ICE_FLAG_PTP, pf->flags);
+> -
+>   	kthread_cancel_delayed_work_sync(&pf->ptp.work);
+>   
+>   	ice_ptp_port_phy_stop(&pf->ptp.port);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> index 8f6f94392756..674a0abe3cdd 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> @@ -201,8 +201,17 @@ struct ice_ptp_port_owner {
+>   
+>   #define GLTSYN_TGT_H_IDX_MAX		4
+>   
+> +enum ice_ptp_state {
+> +	ICE_PTP_UNINIT = 0,
+> +	ICE_PTP_INITIALIZING,
+> +	ICE_PTP_READY,
+> +	ICE_PTP_RESETTING,
+> +	ICE_PTP_ERROR,
+> +};
+> +
+>   /**
+>    * struct ice_ptp - data used for integrating with CONFIG_PTP_1588_CLOCK
+> + * @state: current state of PTP state machine
+>    * @tx_interrupt_mode: the TX interrupt mode for the PTP clock
+>    * @port: data for the PHY port initialization procedure
+>    * @ports_owner: data for the auxiliary driver owner
+> @@ -225,6 +234,7 @@ struct ice_ptp_port_owner {
+>    * @late_cached_phc_updates: number of times cached PHC update is late
+>    */
+>   struct ice_ptp {
+> +	enum ice_ptp_state state;
+>   	enum ice_ptp_tx_interrupt tx_interrupt_mode;
+>   	struct ice_ptp_port port;
+>   	struct ice_ptp_port_owner ports_owner;
 
-codewise, this patch is fine
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
