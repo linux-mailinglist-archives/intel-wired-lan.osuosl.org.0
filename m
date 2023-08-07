@@ -2,83 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67650771651
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  6 Aug 2023 19:32:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EB90771B2A
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Aug 2023 09:08:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 01C3381BB0;
-	Sun,  6 Aug 2023 17:32:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 01C3381BB0
+	by smtp1.osuosl.org (Postfix) with ESMTP id BFB3280EF1;
+	Mon,  7 Aug 2023 07:08:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BFB3280EF1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691343156;
-	bh=xEm7AsfcS+o8nE3Pzi2czU5gqeE+hdS+UPBrEYRmq28=;
+	s=default; t=1691392129;
+	bh=fUA7iyJ/DcyO782zRCJKkprKcq1EskaP65zr5dztmqE=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=JwRt5YM07ZiYTeKemhOaFIu73y0IOcPO9BwKyHPwwu+M0wD9ySmvJy3klrgsSJiRr
-	 k1uHUbZ5+LdhgegL8+g0zCMl++BIOzUjpaAnbhNk5BGKNvzNygjXHyaWztAvW8SSax
-	 ewGcLM68HNVCmo6vPlG44DBXSWegDWu9fF5Fk9mZpZ7osqN1dXytWIr5TWn63VZ+a5
-	 WZYwBb6IyWTR9jnSQSoNQO6wOSoT6YDcaL3ge532qr/cjbu3YlT4wVP4+taLEhPwvS
-	 KTyJZ6JiE2l7TWPTnhOF+B4lymmU65yXy0mGxg80vVN4F40AV8e/14jKokNrVdQ9b2
-	 H4kcQSKaoCYIQ==
+	b=Tk66N4JQB5Ot9mMov7Yof22dXasLRA683VAvVXIXKvmlNnzKttfte8rbNRRwAJsob
+	 Bgki++wlx89t0QM3HrnYlgTZFj90tIgnayj1fy6t/cVsJFBWctDuVnzYYBl2qxho9v
+	 aXuLoKWOlgLjep0qnIc1f1pMGtikGdJreqHwiKUUFdYZKLws6Qjxk4mvDhtpUInepc
+	 Bb3kIqQa+y5l9/Fogq100WGreCm5GuyZbsJwdAB3xhIUk9BiW46j0CR3p29I11cnOv
+	 4Pmqa5ezln0qu3i0CNsl/5AM4gs1fEERTog5StYxOIoS4HaiwIqBhq7OFz5i5WV9/T
+	 KoJzGB9hldyzg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0chEoiRZRupy; Sun,  6 Aug 2023 17:32:35 +0000 (UTC)
+	with ESMTP id L-9C-y_pWlw1; Mon,  7 Aug 2023 07:08:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A3262818CD;
-	Sun,  6 Aug 2023 17:32:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A3262818CD
+	by smtp1.osuosl.org (Postfix) with ESMTP id A3D5D80ED8;
+	Mon,  7 Aug 2023 07:08:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A3D5D80ED8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 497FD1BF909
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Aug 2023 17:32:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CF5E1BF357
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 07:08:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 928D0605A2
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Aug 2023 17:31:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 928D0605A2
+ by smtp4.osuosl.org (Postfix) with ESMTP id A589D41527
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 07:07:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A589D41527
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P9trkRc22Yff for <intel-wired-lan@lists.osuosl.org>;
- Sun,  6 Aug 2023 17:31:46 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C4FC660B14
- for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Aug 2023 17:31:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C4FC660B14
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id E6EFF6119D;
- Sun,  6 Aug 2023 17:31:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F63AC433C8;
- Sun,  6 Aug 2023 17:31:42 +0000 (UTC)
-Date: Sun, 6 Aug 2023 19:31:40 +0200
-From: Simon Horman <horms@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WMihX3enYs5z for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Aug 2023 07:07:46 +0000 (UTC)
+Received: from mail-lf1-x130.google.com (mail-lf1-x130.google.com
+ [IPv6:2a00:1450:4864:20::130])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 606D8408C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Aug 2023 07:07:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 606D8408C4
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-4fe2d152f62so6761675e87.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Aug 2023 00:07:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1691392064; x=1691996864;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cWWnXKOt1mBeIEynylWCqyYZNRdvBS5hxgZ4awLikYQ=;
+ b=LFFEIflEjKGennqFfU8wVXkI40uvZ7ywtxnN2ZIW1OQ9YzrK+ToagXs2LrO6m8XuvJ
+ /C1ZkB59H8xn955YgWEuNdHb4wcAdHMNuQ4jxQq7GQk+wZOT4txcv7Wz3oT6fHS1guxR
+ 9uT+kZuaqbvqPLwSPXrK4KX8k2t+wi9ZD1XvIhcd0W18N3PiPIn89VfCmSJSj0w+hzpe
+ Ik1qstQgHQCZiC3gv+22+Xn9inBsLFcsCqdxNdNvPfcrLdbldO5M7wok4tfRDvxV/oke
+ XkQSF0N1yTOFgFNbo3I9n7RlG1sBMXgru5FwAQ+KgrYzcS9ncU3dbAub44To02zn3MnB
+ nTpQ==
+X-Gm-Message-State: AOJu0YyvnRpWYg3z8mF/qqSxdfvQdD/jr2EvevlvSwm46gKnAyndvWg/
+ 32yhu1QPKOLm7POeKTwXyxwd3g==
+X-Google-Smtp-Source: AGHT+IHqu92CAl5eucjDnqV8FrzoalX0QSA+DPma7ktAhbEBbnPB9ME04dfagA2jYn4ZmDIGK40XTw==
+X-Received: by 2002:a05:6512:108b:b0:4fb:8bfd:32e4 with SMTP id
+ j11-20020a056512108b00b004fb8bfd32e4mr5637893lfg.13.1691392063541; 
+ Mon, 07 Aug 2023 00:07:43 -0700 (PDT)
+Received: from localhost ([212.23.236.67]) by smtp.gmail.com with ESMTPSA id
+ u3-20020adfed43000000b0031759e6b43fsm9531115wro.39.2023.08.07.00.07.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Aug 2023 00:07:42 -0700 (PDT)
+Date: Mon, 7 Aug 2023 09:07:41 +0200
+From: Jiri Pirko <jiri@resnulli.us>
 To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Message-ID: <ZM/Y/PjPVNxbwLOL@vergenet.net>
+Message-ID: <ZNCYPVX7p9Fe/lPY@nanopsycho>
 References: <20230804190454.394062-1-vadim.fedorenko@linux.dev>
- <20230804190454.394062-7-vadim.fedorenko@linux.dev>
+ <20230804190454.394062-8-vadim.fedorenko@linux.dev>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230804190454.394062-7-vadim.fedorenko@linux.dev>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1691343105;
- bh=WqQcq/iEINXz8RMnCvagZGNodm+OM0Vsc80wKSLiO8s=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IKEg7He7kFUl20AIIDoHuxBcTaAREW7VOD8eI3toZ9y+9qGYMhnjDGnOUlDjRifcR
- UrRZbEKDp+JE/25p6YyGgYpfavyiNv3nhHSiGZnOxRDBXGi+YEhGI6reJLaWaxWvOW
- //vh2vD9+RridiJxcIej5D6SspDL1fRgo/VWAbZoIYeQkpeQNmsc4LKCAMCuxWRXJI
- 0jmLfv9GnH7cNhfEXxoLFfnPesjZiXwHcukekgX7aOPPKvwgvoOU+rOdXWi8T92rWb
- s5EM9mzqxlNGSwVbelT5lfeks7vnvek8uhzcHziVotAe1d7T325DOksT/+TD9MGOW8
- Neuu6smhSFg3A==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=IKEg7He7
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 6/9] ice: add admin
- commands to access cgu configuration
+In-Reply-To: <20230804190454.394062-8-vadim.fedorenko@linux.dev>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1691392064; x=1691996864; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=cWWnXKOt1mBeIEynylWCqyYZNRdvBS5hxgZ4awLikYQ=;
+ b=ZP2rNYEzKbJiw4/twCr06gCfoDpq1kXEI6dvZvET6awgzhG2NFhu6iJh6DPYZOiSd+
+ G65bI+0KemUsir2VCkGUiYsUnCrFBCQU7G9OO6XRwMZv+uTUITopgzAEseibWMrusxmw
+ 0H2daFCmx0/bKK1kZmVFQO8Lse9Ru11dNVj4bIxT5MovDHvOFOCfT40GcZKt8ysiwBGd
+ C4UcSOCx5grh0r5U8dS/ebAG6CoGAU42FWq0VRF3cmn6WetA332g7r2eqRbkszi2SMpV
+ 0VDM5rsXnpc0n3awdyb0FS+ggO6wYAUXnLi/Yszv22vnrJ/YOUa/gjVIiuXIwtdvzlJY
+ nOJg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
+ header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
+ header.s=20221208 header.b=ZP2rNYEz
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 7/9] ice: implement dpll
+ interface to control cgu
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,9 +110,8 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Bart Van Assche <bvanassche@acm.org>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org,
+Cc: Bart Van Assche <bvanassche@acm.org>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
  Jonathan Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, linux-clk@vger.kernel.org,
  Milena Olech <milena.olech@intel.com>
@@ -102,129 +120,211 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Aug 04, 2023 at 08:04:51PM +0100, Vadim Fedorenko wrote:
-> From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Fri, Aug 04, 2023 at 09:04:52PM CEST, vadim.fedorenko@linux.dev wrote:
+>From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+
+[...]
+
+
+>+/**
+>+ * ice_dpll_deinit_worker - deinitialize dpll kworker
+>+ * @pf: board private structure
+>+ *
+>+ * Stop dpll's kworker, release it's resources.
+>+ */
+>+static void ice_dpll_deinit_worker(struct ice_pf *pf)
+>+{
+>+	struct ice_dplls *d = &pf->dplls;
+>+
+>+	kthread_cancel_delayed_work_sync(&d->work);
+>+	kthread_destroy_worker(d->kworker);
+>+}
+>+
+>+/**
+>+ * ice_dpll_init_worker - Initialize DPLLs periodic worker
+>+ * @pf: board private structure
+>+ *
+>+ * Create and start DPLLs periodic worker.
+>+ *
+>+ * Context: Shall be called after pf->dplls.lock is initialized and
+>+ * ICE_FLAG_DPLL flag is set.
+>+ * Return:
+>+ * * 0 - success
+>+ * * negative - create worker failure
+>+ */
+>+static int ice_dpll_init_worker(struct ice_pf *pf)
+>+{
+>+	struct ice_dplls *d = &pf->dplls;
+>+	struct kthread_worker *kworker;
+>+
+>+	ice_dpll_update_state(pf, &d->eec, true);
+>+	ice_dpll_update_state(pf, &d->pps, true);
+>+	kthread_init_delayed_work(&d->work, ice_dpll_periodic_work);
+>+	kworker = kthread_create_worker(0, "ice-dplls-%s",
+>+					dev_name(ice_pf_to_dev(pf)));
+>+	if (IS_ERR(kworker))
+>+		return PTR_ERR(kworker);
+>+	d->kworker = kworker;
+>+	d->cgu_state_acq_err_num = 0;
+>+	kthread_queue_delayed_work(d->kworker, &d->work, 0);
+>+
+>+	return 0;
+>+}
+>+
+
+[...]
+
+
+>+/**
+>+ * ice_dpll_deinit - Disable the driver/HW support for dpll subsystem
+>+ * the dpll device.
+>+ * @pf: board private structure
+>+ *
+>+ * Handles the cleanup work required after dpll initialization, freeing
+>+ * resources and unregistering the dpll, pin and all resources used for
+>+ * handling them.
+>+ *
+>+ * Context: Destroys pf->dplls.lock mutex.
+>+ */
+>+void ice_dpll_deinit(struct ice_pf *pf)
+>+{
+>+	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
+>+
+>+	if (!test_bit(ICE_FLAG_DPLL, pf->flags))
+>+		return;
+>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
+>+
+
+Please be symmetric with the init path and move ice_dpll_deinit_worker()
+call here.
+
+That would not only lead to nicer code, also, that will assure that the
+worker thread can only access initialized object.
+
+And as:
+1) worked thread can only access initialized objects
+2) dpll callbacks can only be called on initialized and registered objects
+
+You can remove the check for ICE_FLAG_DPLL flag from ice_dpll_cb_lock()
+as there would be no longer any possibility when this check could be
+evaluated as "true".
+
+Then, as an unexpected side effect (:O), ice_dpll_cb_lock() basically
+reduces to just calling mutex_lock(&pf->dplls.lock). So you can remove
+the thin wrappers of ice_dpll_cb_lock() and ice_dpll_cb_unlock() and
+instead of doing this obfuscation, you can call
+mutex_lock(&pf->dplls.lock) and mutex_unlock(&pf->dplls.lock) directly.
+
+That is what I'm trying to explain from the beginning. Is it clear now
+or do we need another iteration?
+
+Thanks!
+
+
+>+	ice_dpll_deinit_pins(pf, cgu);
+>+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
+>+	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
+>+	ice_dpll_deinit_info(pf);
+>+	if (cgu)
+>+		ice_dpll_deinit_worker(pf);
+>+	mutex_destroy(&pf->dplls.lock);
+>+}
+>+
+>+/**
+>+ * ice_dpll_init - initialize support for dpll subsystem
+>+ * @pf: board private structure
+>+ *
+>+ * Set up the device dplls, register them and pins connected within Linux dpll
+>+ * subsystem. Allow userspace to obtain state of DPLL and handling of DPLL
+>+ * configuration requests.
+>+ *
+>+ * Context: Initializes pf->dplls.lock mutex.
+>+ */
+>+void ice_dpll_init(struct ice_pf *pf)
+>+{
+>+	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
+>+	struct ice_dplls *d = &pf->dplls;
+>+	int err = 0;
+>+
+>+	err = ice_dpll_init_info(pf, cgu);
+>+	if (err)
+>+		goto err_exit;
+>+	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu, DPLL_TYPE_EEC);
+>+	if (err)
+>+		goto deinit_info;
+>+	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu, DPLL_TYPE_PPS);
+>+	if (err)
+>+		goto deinit_eec;
+>+	err = ice_dpll_init_pins(pf, cgu);
+>+	if (err)
+>+		goto deinit_pps;
+>+	mutex_init(&d->lock);
+>+	set_bit(ICE_FLAG_DPLL, pf->flags);
+
+Why can't you move the flag set to the end of this function and avoid
+calling clear_bi on the error path?
+
+If you can't, please fix the clear_bit() position (should be at the
+beginning of deinit_pins label section).
+
+
+>+	if (cgu) {
+>+		err = ice_dpll_init_worker(pf);
+>+		if (err)
+>+			goto deinit_pins;
+>+	}
+>+
+>+	return;
+>+
+>+deinit_pins:
+>+	ice_dpll_deinit_pins(pf, cgu);
+>+deinit_pps:
+>+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
+>+deinit_eec:
+>+	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
+>+deinit_info:
+>+	ice_dpll_deinit_info(pf);
+>+err_exit:
+>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
+>+	mutex_destroy(&d->lock);
+>+	dev_warn(ice_pf_to_dev(pf), "DPLLs init failure err:%d\n", err);
+>+}
+
+[...]
+
+
+>diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+>index 2e80d5cd9f56..4adc74f1cb1f 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_main.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_main.c
+>@@ -4627,6 +4627,10 @@ static void ice_init_features(struct ice_pf *pf)
+> 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
+> 		ice_gnss_init(pf);
 > 
-> Add firmware admin command to access clock generation unit
-> configuration, it is required to enable Extended PTP and SyncE features
-> in the driver.
-> Add definitions of possible hardware variations of input and output pins
-> related to clock generation unit and functions to access the data.
+>+	if (ice_is_feature_supported(pf, ICE_F_CGU) ||
+>+	    ice_is_feature_supported(pf, ICE_F_PHY_RCLK))
+>+		ice_dpll_init(pf);
+>+
+> 	/* Note: Flow director init failure is non-fatal to load */
+> 	if (ice_init_fdir(pf))
+> 		dev_err(dev, "could not initialize flow director\n");
+>@@ -4653,6 +4657,9 @@ static void ice_deinit_features(struct ice_pf *pf)
+> 		ice_gnss_exit(pf);
+> 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+> 		ice_ptp_release(pf);
+>+	if (ice_is_feature_supported(pf, ICE_F_PHY_RCLK) ||
+>+	    ice_is_feature_supported(pf, ICE_F_CGU))
+
+As you internally depend on ICE_FLAG_DPLL flag, this check is redundant. 
+
+
+>+		ice_dpll_deinit(pf);
+> }
 > 
-> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-> Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-
-Hi Arkadiusz and Vadim,
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-
-...
-
-> +/**
-> + * ice_aq_get_cgu_dpll_status - get dpll status
-> + * @hw: pointer to the HW struct
-> + * @dpll_num: DPLL index
-> + * @ref_state: Reference clock state
-> + * @config: current DPLL config
-> + * @dpll_state: current DPLL state
-> + * @phase_offset: Phase offset in ns
-> + * @eec_mode: EEC_mode
-> + *
-> + * Get CGU DPLL status (0x0C66)
-> + * Return: 0 on success or negative value on failure.
-> + */
-> +int
-> +ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
-> +			   u8 *dpll_state, u8 *config, s64 *phase_offset,
-> +			   u8 *eec_mode)
-> +{
-> +	struct ice_aqc_get_cgu_dpll_status *cmd;
-> +	const s64 NSEC_PER_PSEC = 1000LL;
-
-Probably this should be in lower case, or an (upper case) #define.
-In the case of the latter it should probably be moved outside of the
-function.
-
-> +	struct ice_aq_desc desc;
-> +	int status;
-> +
-> +	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_cgu_dpll_status);
-> +	cmd = &desc.params.get_cgu_dpll_status;
-> +	cmd->dpll_num = dpll_num;
-> +
-> +	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-> +	if (!status) {
-> +		*ref_state = cmd->ref_state;
-> +		*dpll_state = cmd->dpll_state;
-> +		*config = cmd->config;
-> +		*phase_offset = le32_to_cpu(cmd->phase_offset_h);
-> +		*phase_offset <<= 32;
-> +		*phase_offset += le32_to_cpu(cmd->phase_offset_l);
-> +		*phase_offset = sign_extend64(*phase_offset, 47) /
-> +			NSEC_PER_PSEC;
-
-This causes a build failure on x86_32.
-
-  ERROR: modpost: "__divdi3" [drivers/net/ethernet/intel/ice/ice.ko] undefined!
-
-Possibly you want (please do check for yourself):
-
-		*phase_offset = div64_s64(sign_extend64(*phase_offset, 47),
-					  NSEC_PER_PSEC);
-
-> +		*eec_mode = cmd->eec_mode;
-> +	}
-> +
-> +	return status;
-> +}
-> +
-> +/**
-> + * ice_aq_set_cgu_dpll_config - set dpll config
-> + * @hw: pointer to the HW struct
-> + * @dpll_num: DPLL index
-> + * @ref_state: Reference clock state
-> + * @config: DPLL config
-> + * @eec_mode: EEC mode
-> + *
-> + * Set CGU DPLL config (0x0C67)
-> + * Return: 0 on success or negative value on failure.
-> + */
-> +int
-> +ice_aq_set_cgu_dpll_config(struct ice_hw *hw, u8 dpll_num, u8 ref_state,
-> +			   u8 config, u8 eec_mode)
-> +{
-> +	struct ice_aqc_set_cgu_dpll_config *cmd;
-> +	struct ice_aq_desc desc;
-> +
-> +	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_cgu_dpll_config);
-> +	cmd = &desc.params.set_cgu_dpll_config;
-> +	cmd->dpll_num = dpll_num;
-> +	cmd->ref_state = ref_state;
-> +	cmd->config = config;
-> +	cmd->eec_mode = eec_mode;
-> +
-> +	return ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-> +}
-> +
-> +/**
-> + * ice_aq_set_cgu_ref_prio - set input refernce priority
-
-nit: refernce -> reference
-
-> + * @hw: pointer to the HW struct
-> + * @dpll_num: DPLL index
-> + * @ref_idx: Reference pin index
-> + * @ref_priority: Reference input priority
-> + *
-> + * Set CGU reference priority (0x0C68)
-> + * Return: 0 on success or negative value on failure.
-> + */
-
-...
-
--- 
-pw-bot: changes-requested
-
+> static void ice_init_wakeup(struct ice_pf *pf)
+>-- 
+>2.27.0
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
