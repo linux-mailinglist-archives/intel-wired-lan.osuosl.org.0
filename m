@@ -2,89 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41B22773AE4
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 17:13:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DBCBD773AE5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 17:13:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D33B06118C;
-	Tue,  8 Aug 2023 15:13:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D33B06118C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 76916611A7;
+	Tue,  8 Aug 2023 15:13:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 76916611A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691507581;
-	bh=B7qJlkaqwa9o7HrZVvJl9RpZdplKbYT8SJJca6NdBpA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1691507585;
+	bh=ppm60B0Yc4Ni/uCtD3Wpu5DzmYEEg9skx+rnT3q7dpo=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bwRWT1hATryqEjrZdH+eaaSpe21dIoi4ygl0X1FUc1Owzinlg6wS4sCk4EOgNwz0j
-	 eAVvHv+AgeYF+hF1igE6zrNjDNBKLVvDcHksLhV47b4nZ6snNu8iwxNBUiwZ+JS56Q
-	 DuxL8Zy+pdIutIrF28BIg0G6sFbf65Rb1QgR98W759Dx4JADuYJIY2bsLF5ARBGC3h
-	 dN2voujZ4iTKaoJwaMWg4G5Oab0s7RSiGMAY18KxhjhNVMYyHrORffFggvc8dJjzRV
-	 ZQCwFOf+zUpqLky2lQxr1MG6k8NivVkfVU/gXbYOrmKrfUTPYPJ2jyO3b6MTIkYbzs
-	 /tlQ3eKCMrG9g==
+	b=n4S/5g2Bl8FyuimjbdV5I4DtJylCX5XYxHid1bHvJx99euzzNptEAwDBs1u4MkK5/
+	 e5Klcj2BP/XmDzn8Q11+u+yRczrroSpWMq8XAZHOD0gCeSpaJlkLOfLZ1dxyfM/G0V
+	 /5TiKroeZWBVSVUdDb+FN5As8rJvp3p+xDoKUcb607NQbm0u00/DNE9h+16BMplvXH
+	 tsE9e2ywSm4NmZ4gf9PcwwA/q1wpXXy0phsUX7EHy3n1J+m1jlJqTAg3H73Cew3LOU
+	 LoHg0OAs7tIIL4zMV//7eLFud+85aoHMLqpkGn0+pARD55RH8vNO5FxvMnD6nPxrmP
+	 WBydUutxXWa6w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jYsFGeNIv3pU; Tue,  8 Aug 2023 15:13:00 +0000 (UTC)
+	with ESMTP id oN-bbMvaEsxn; Tue,  8 Aug 2023 15:13:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 582BE6117D;
-	Tue,  8 Aug 2023 15:12:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 582BE6117D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 49F0B6117D;
+	Tue,  8 Aug 2023 15:13:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 49F0B6117D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EA23C1BF404
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:54:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 301251BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 08:46:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id ADD9D404A8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:54:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADD9D404A8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0847640562
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 08:46:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0847640562
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9v1koFWh5M35 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Aug 2023 01:54:11 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4D7E940447
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:54:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4D7E940447
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="350997474"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="350997474"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 18:54:11 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="801162783"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="801162783"
-Received: from dpdk-wuwenjun-icelake-ii.sh.intel.com ([10.67.110.188])
- by fmsmga004.fm.intel.com with ESMTP; 07 Aug 2023 18:54:08 -0700
-From: Wenjun Wu <wenjun1.wu@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	netdev@vger.kernel.org
-Date: Tue,  8 Aug 2023 09:57:34 +0800
-Message-Id: <20230808015734.1060525-6-wenjun1.wu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230808015734.1060525-1-wenjun1.wu@intel.com>
-References: <20230727021021.961119-1-wenjun1.wu@intel.com>
- <20230808015734.1060525-1-wenjun1.wu@intel.com>
+ with ESMTP id k3pCG2mrybQB for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Aug 2023 08:46:21 +0000 (UTC)
+Received: from mail-ot1-x32d.google.com (mail-ot1-x32d.google.com
+ [IPv6:2607:f8b0:4864:20::32d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 03A96401AE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 08:46:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03A96401AE
+Received: by mail-ot1-x32d.google.com with SMTP id
+ 46e09a7af769-6bca66e6c44so4623760a34.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Aug 2023 01:46:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1691484380; x=1692089180;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=bDBxMR3G3sXMobJ6HxOscOD1ysvyt0mdGqJvMciMd1U=;
+ b=XdAztolCgvDDu9GQxy/7QUOgqHfabkC2NSSjb28oqVpmPwYCBhooQlEDdG/DrcYExM
+ 4w8LtxgRGz2gJKJxg6Yp2knSVDaDSm6I91BZxnPaXiR/OUvnJPtwqyAIBHHRRe/STHW9
+ Y3iVy3A9onrwm2tYJmdCUTm5rA6BK7/E4PwRrmKhh/fx3LKskgxkFnVRjOLQ7NrA0X6S
+ PNAES8WKuLsXdLJX2mAqM8+xGavsoPtlZwaDGd3/XYqa0H3cR5wElMoqA8f4ShA6/Oke
+ KdEDbYkhtYyn2SfKmINBdzvah3YdiVDhHhs/l5T9ammgXZ2LDHLbqID7vUViwdW2ZyWB
+ GvcQ==
+X-Gm-Message-State: AOJu0YzATDETIzgQyJS/9IhfsbHPSgIoC6lCyO5fKKQQt4ffVcDZtHgK
+ jwl1XwRfeASY3IOtWQhVBB0Xglh4rR2pX2Zx/0aSKw==
+X-Google-Smtp-Source: AGHT+IHKwvbTr31AkRvL5hcdMGYdwGhdq6rBw0AeOhcm4bQ5HQDEOzqEQ1VdXdOVOWCok/abT4S6ZyVakozEFKATAD4=
+X-Received: by 2002:a05:6871:522c:b0:1b0:883e:3095 with SMTP id
+ ht44-20020a056871522c00b001b0883e3095mr14451636oac.56.1691484379911; Tue, 08
+ Aug 2023 01:46:19 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230807091347.3804523-1-linma@zju.edu.cn>
+In-Reply-To: <20230807091347.3804523-1-linma@zju.edu.cn>
+From: Pavan Chebbi <pavan.chebbi@broadcom.com>
+Date: Tue, 8 Aug 2023 14:16:06 +0530
+Message-ID: <CALs4sv19JEZgB0D5TYuO6Lei97BLC_Z-3Sad8pOwDnvRm0Eexg@mail.gmail.com>
+To: Lin Ma <linma@zju.edu.cn>
 X-Mailman-Approved-At: Tue, 08 Aug 2023 15:12:33 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691459651; x=1722995651;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=GiLBXuq02Zb7yBxwYpob6rCQi+x/TStUbux6VJvv4wE=;
- b=k+vv55D8P8IngTThGJFHHga9Cf9815QFiboG8JXjZHWxFGDPY0Kj7rrf
- 3bTJH8EMoIZhKMeqeXCxV1qdO63oy6y9nSva1Pk1f3Cu1+MMNaS8pxUPH
- c0lyGV6T4eG8R6X6v+jb6+XVaUIUgIVeLtsdh2OMIQ4H8TUwE007wUVoS
- ivo+rp+I/XUszKBLLfMusmY6nKl/U3iqTY7oNYXC9YtIAJHdcQ0n5IwAv
- dGlPxBveLp3o2ImgNasyxUQIDisPp5xVir6h/is/Bb/dn1QqORpc8PD3e
- YftxF6J04KvJ8+5I+grEoG2lMVj4OJ5a2nUcyQUUGP3LIiXhGlf7XEQ7A
- g==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=broadcom.com; s=google; t=1691484380; x=1692089180;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=bDBxMR3G3sXMobJ6HxOscOD1ysvyt0mdGqJvMciMd1U=;
+ b=Bn5iFWBjd8aVetU0xdB171h3gwON07LebOMmAmWs/ugFKI1BIYfe9/16b4HRhmQHJG
+ /QxvOjetZwBIrPj1WUy5pLMi32s6/4QUUQ/o9/Qy3EsEYVTZsTdk5NLFPJsRUuTN4rxr
+ LO+UwRnePnKZPNvNsa9BxiepAJZwrysAAB890=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=k+vv55D8
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 5/5] iavf: Add VIRTCHNL
- Opcodes Support for Queue bw Setting
+ dkim=pass (1024-bit key) header.d=broadcom.com header.i=@broadcom.com
+ header.a=rsa-sha256 header.s=google header.b=Bn5iFWBj
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2] rtnetlink: remove
+ redundant checks for nlattr IFLA_BRIDGE_MODE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,523 +101,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: anthony.l.nguyen@intel.com, qi.z.zhang@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: ajit.khaparde@broadcom.com, simon.horman@corigine.com,
+ somnath.kotur@broadcom.com, edumazet@google.com, anthony.l.nguyen@intel.com,
+ michael.chan@broadcom.com, louis.peens@corigine.com, leon@kernel.org,
+ linux-rdma@vger.kernel.org, jesse.brandeburg@intel.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ huanhuan.wang@corigine.com, tglx@linutronix.de, yinjun.zhang@corigine.com,
+ na.wang@corigine.com, sriharsha.basavapatna@broadcom.com,
+ netdev@vger.kernel.org, oss-drivers@corigine.com, linux-kernel@vger.kernel.org,
+ saeedm@nvidia.com, davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============4302637413558927573=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jun Zhang <xuejun.zhang@intel.com>
+--===============4302637413558927573==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
+	boundary="0000000000009f75eb0602656584"
 
-iavf rate tree with root node and queue nodes is created and registered
-with devlink rate when iavf adapter is configured.
+--0000000000009f75eb0602656584
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-User can configure the tx_max and tx_share of each queue. If any one of
-the queues have been fully updated by user, i.e. both tx_max and
-tx_share have been updated for that queue, VIRTCHNL opcodes of
-VIRTCHNL_OP_CONFIG_QUEUE_BW and VIRTCHNL_OP_CONFIG_QUANTA will be sent
-to PF to configure queues allocated to VF if PF indicates support of
-VIRTCHNL_VF_OFFLOAD_QOS through VF Resource / Capability Exchange.
+On Mon, Aug 7, 2023 at 2:44=E2=80=AFPM Lin Ma <linma@zju.edu.cn> wrote:
+>
+> The commit d73ef2d69c0d ("rtnetlink: let rtnl_bridge_setlink checks
+> IFLA_BRIDGE_MODE length") added the nla_len check in rtnl_bridge_setlink,
+> which is the only caller for ndo_bridge_setlink handlers defined in
+> low-level driver codes. Hence, this patch cleanups the redundant checks i=
+n
+> each ndo_bridge_setlink handler function.
+>
+> Suggested-by: Hangbin Liu <liuhangbin@gmail.com>
+> Signed-off-by: Lin Ma <linma@zju.edu.cn>
+> ---
+> V1->V2: delete the link to last commit as it already in tree
+>
 
-Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |  14 ++
- .../net/ethernet/intel/iavf/iavf_devlink.c    |  29 +++
- .../net/ethernet/intel/iavf/iavf_devlink.h    |   1 +
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  45 +++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 228 +++++++++++++++++-
- 5 files changed, 313 insertions(+), 4 deletions(-)
+Acked-by: Pavan Chebbi <pavan.chebbi@broadcom.com>
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 519aeaec793c..e9b781cacffa 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -252,6 +252,9 @@ struct iavf_cloud_filter {
- #define IAVF_RESET_WAIT_DETECTED_COUNT 500
- #define IAVF_RESET_WAIT_COMPLETE_COUNT 2000
- 
-+#define IAVF_MAX_QOS_TC_NUM		8
-+#define IAVF_DEFAULT_QUANTA_SIZE	1024
-+
- /* board specific private data structure */
- struct iavf_adapter {
- 	struct workqueue_struct *wq;
-@@ -351,6 +354,9 @@ struct iavf_adapter {
- #define IAVF_FLAG_AQ_DISABLE_CTAG_VLAN_INSERTION	BIT_ULL(36)
- #define IAVF_FLAG_AQ_ENABLE_STAG_VLAN_INSERTION		BIT_ULL(37)
- #define IAVF_FLAG_AQ_DISABLE_STAG_VLAN_INSERTION	BIT_ULL(38)
-+#define IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW		BIT_ULL(39)
-+#define IAVF_FLAG_AQ_CONFIGURE_QUEUES_QUANTA_SIZE	BIT_ULL(40)
-+#define IAVF_FLAG_AQ_GET_QOS_CAPS			BIT_ULL(41)
- 
- 	/* flags for processing extended capability messages during
- 	 * __IAVF_INIT_EXTENDED_CAPS. Each capability exchange requires
-@@ -374,6 +380,7 @@ struct iavf_adapter {
- 	/* devlink & port data */
- 	struct devlink *devlink;
- 	struct devlink_port devlink_port;
-+	bool devlink_update;
- 
- 	struct iavf_hw hw; /* defined in iavf_type.h */
- 
-@@ -423,6 +430,8 @@ struct iavf_adapter {
- 			       VIRTCHNL_VF_OFFLOAD_FDIR_PF)
- #define ADV_RSS_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
- 			     VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF)
-+#define QOS_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
-+			 VIRTCHNL_VF_OFFLOAD_QOS)
- 	struct virtchnl_vf_resource *vf_res; /* incl. all VSIs */
- 	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
- 	struct virtchnl_version_info pf_version;
-@@ -431,6 +440,7 @@ struct iavf_adapter {
- 	struct virtchnl_vlan_caps vlan_v2_caps;
- 	u16 msg_enable;
- 	struct iavf_eth_stats current_stats;
-+	struct virtchnl_qos_cap_list *qos_caps;
- 	struct iavf_vsi vsi;
- 	u32 aq_wait_count;
- 	/* RSS stuff */
-@@ -577,6 +587,10 @@ void iavf_notify_client_message(struct iavf_vsi *vsi, u8 *msg, u16 len);
- void iavf_notify_client_l2_params(struct iavf_vsi *vsi);
- void iavf_notify_client_open(struct iavf_vsi *vsi);
- void iavf_notify_client_close(struct iavf_vsi *vsi, bool reset);
-+void iavf_update_queue_config(struct iavf_adapter *adapter);
-+void iavf_configure_queues_bw(struct iavf_adapter *adapter);
-+void iavf_configure_queues_quanta_size(struct iavf_adapter *adapter);
-+void iavf_get_qos_caps(struct iavf_adapter *adapter);
- void iavf_enable_channels(struct iavf_adapter *adapter);
- void iavf_disable_channels(struct iavf_adapter *adapter);
- void iavf_add_cloud_filter(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.c b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-index a2bd5295c216..dbe88eb538a8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-@@ -96,6 +96,30 @@ void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter)
- 	devl_unlock(adapter->devlink);
- }
- 
-+/**
-+ * iavf_notify_queue_config_complete - notify updating queue completion
-+ * @adapter: iavf adapter struct instance
-+ *
-+ * This function sets the queue configuration update status when all
-+ * queue parameters have been sent to PF
-+ */
-+void iavf_notify_queue_config_complete(struct iavf_adapter *adapter)
-+{
-+	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-+	int q_num = adapter->num_active_queues;
-+	int i;
-+
-+	/* clean up rate tree update flags*/
-+	for (i = 0; i < q_num; i++)
-+		if (dl_priv->queue_nodes[i].tx_update_flag ==
-+		    (IAVF_FLAG_TX_MAX_UPDATED | IAVF_FLAG_TX_SHARE_UPDATED)) {
-+			dl_priv->queue_nodes[i].tx_update_flag = 0;
-+			break;
-+		}
-+
-+	dl_priv->update_in_progress = false;
-+}
-+
- /**
-  * iavf_check_update_config - check if updating queue parameters needed
-  * @adapter: iavf adapter struct instance
-@@ -107,6 +131,8 @@ void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter)
- static int iavf_check_update_config(struct iavf_adapter *adapter,
- 				    struct iavf_dev_rate_node *node)
- {
-+	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-+
- 	/* Update queue bw if any one of the queues have been fully updated by
- 	 * user, the other queues either use the default value or the last
- 	 * fully updated value
-@@ -123,6 +149,8 @@ static int iavf_check_update_config(struct iavf_adapter *adapter,
- 	if (adapter->state != __IAVF_RUNNING)
- 		return -EBUSY;
- 
-+	dl_priv->update_in_progress = true;
-+	iavf_update_queue_config(adapter);
- 	return 0;
- }
- 
-@@ -294,6 +322,7 @@ int iavf_devlink_register(struct iavf_adapter *adapter)
- 
- 	/* Init iavf adapter devlink */
- 	adapter->devlink = devlink;
-+	adapter->devlink_update = false;
- 	ref = devlink_priv(devlink);
- 	ref->devlink_ref = adapter;
- 	ref->iavf_dev_rate_initialized = false;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.h b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-index 897ff5fc87af..a8a41f343f56 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-@@ -34,5 +34,6 @@ int iavf_devlink_port_register(struct iavf_adapter *adapter);
- void iavf_devlink_port_unregister(struct iavf_adapter *adapter);
- void iavf_devlink_rate_init_rate_tree(struct iavf_adapter *adapter);
- void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter);
-+void iavf_notify_queue_config_complete(struct iavf_adapter *adapter);
- 
- #endif /* _IAVF_DEVLINK_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 7348b65f9f19..5e27131e5104 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2130,6 +2130,21 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
- 		return 0;
- 	}
- 
-+	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW) {
-+		iavf_configure_queues_bw(adapter);
-+		return 0;
-+	}
-+
-+	if (adapter->aq_required & IAVF_FLAG_AQ_GET_QOS_CAPS) {
-+		iavf_get_qos_caps(adapter);
-+		return 0;
-+	}
-+
-+	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_QUEUES_QUANTA_SIZE) {
-+		iavf_configure_queues_quanta_size(adapter);
-+		return 0;
-+	}
-+
- 	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_QUEUES) {
- 		iavf_configure_queues(adapter);
- 		return 0;
-@@ -2712,7 +2727,9 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 
- 	if (!adapter->netdev_registered) {
- 		iavf_devlink_port_register(adapter);
--		iavf_devlink_rate_init_rate_tree(adapter);
-+
-+		if (QOS_ALLOWED(adapter))
-+			iavf_devlink_rate_init_rate_tree(adapter);
- 	}
- 
- 	netif_carrier_off(netdev);
-@@ -3135,6 +3152,19 @@ static void iavf_reset_task(struct work_struct *work)
- 		err = iavf_reinit_interrupt_scheme(adapter, running);
- 		if (err)
- 			goto reset_err;
-+
-+		if (QOS_ALLOWED(adapter)) {
-+			iavf_devlink_rate_deinit_rate_tree(adapter);
-+			iavf_devlink_rate_init_rate_tree(adapter);
-+		}
-+	}
-+
-+	if (adapter->devlink_update) {
-+		adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
-+		adapter->aq_required |= IAVF_FLAG_AQ_GET_QOS_CAPS;
-+		adapter->aq_required |=
-+				IAVF_FLAG_AQ_CONFIGURE_QUEUES_QUANTA_SIZE;
-+		adapter->devlink_update = false;
- 	}
- 
- 	if (RSS_AQ(adapter)) {
-@@ -4900,7 +4930,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	struct net_device *netdev;
- 	struct iavf_adapter *adapter = NULL;
- 	struct iavf_hw *hw = NULL;
--	int err;
-+	int err, len;
- 
- 	err = pci_enable_device(pdev);
- 	if (err)
-@@ -5004,10 +5034,18 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* Setup the wait queue for indicating virtchannel events */
- 	init_waitqueue_head(&adapter->vc_waitqueue);
- 
-+	len = struct_size(adapter->qos_caps, cap, IAVF_MAX_QOS_TC_NUM);
-+	adapter->qos_caps = kzalloc(len, GFP_KERNEL);
-+	if (!adapter->qos_caps)
-+		goto err_ioremap;
-+
- 	/* Register iavf adapter with devlink */
- 	err = iavf_devlink_register(adapter);
--	if (err)
-+	if (err) {
- 		dev_err(&pdev->dev, "devlink registration failed: %d\n", err);
-+		kfree(adapter->qos_caps);
-+		goto err_ioremap;
-+	}
- 
- 	/* Keep driver interface even on devlink registration failure */
- 	return 0;
-@@ -5157,6 +5195,7 @@ static void iavf_remove(struct pci_dev *pdev)
- 	iavf_devlink_rate_deinit_rate_tree(adapter);
- 	iavf_devlink_port_unregister(adapter);
- 	iavf_devlink_unregister(adapter);
-+	kfree(adapter->qos_caps);
- 
- 	mutex_lock(&adapter->crit_lock);
- 	dev_info(&adapter->pdev->dev, "Removing device\n");
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index be3c007ce90a..7de4ad5029fb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -148,7 +148,8 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_USO |
- 	       VIRTCHNL_VF_OFFLOAD_FDIR_PF |
- 	       VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF |
--	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
-+	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED |
-+	       VIRTCHNL_VF_OFFLOAD_QOS;
- 
- 	adapter->current_op = VIRTCHNL_OP_GET_VF_RESOURCES;
- 	adapter->aq_required &= ~IAVF_FLAG_AQ_GET_CONFIG;
-@@ -1479,6 +1480,209 @@ iavf_set_adapter_link_speed_from_vpe(struct iavf_adapter *adapter,
- 		adapter->link_speed = vpe->event_data.link_event.link_speed;
- }
- 
-+/**
-+ * iavf_get_qos_caps - get qos caps support
-+ * @adapter: iavf adapter struct instance
-+ *
-+ * This function requests PF for Supported QoS Caps.
-+ */
-+void iavf_get_qos_caps(struct iavf_adapter *adapter)
-+{
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev,
-+			"Cannot get qos caps, command %d pending\n",
-+			adapter->current_op);
-+		return;
-+	}
-+
-+	adapter->current_op = VIRTCHNL_OP_GET_QOS_CAPS;
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_GET_QOS_CAPS;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_GET_QOS_CAPS, NULL, 0);
-+}
-+
-+/**
-+ * iavf_set_quanta_size - set quanta size of queue chunk
-+ * @adapter: iavf adapter struct instance
-+ * @quanta_size: quanta size in bytes
-+ * @queue_index: starting index of queue chunk
-+ * @num_queues: number of queues in the queue chunk
-+ *
-+ * This function requests PF to set quanta size of queue chunk
-+ * starting at queue_index.
-+ */
-+static void
-+iavf_set_quanta_size(struct iavf_adapter *adapter, u16 quanta_size,
-+		     u16 queue_index, u16 num_queues)
-+{
-+	struct virtchnl_quanta_cfg quanta_cfg;
-+
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev,
-+			"Cannot set queue quanta size, command %d pending\n",
-+			adapter->current_op);
-+		return;
-+	}
-+
-+	adapter->current_op = VIRTCHNL_OP_CONFIG_QUANTA;
-+	quanta_cfg.quanta_size = quanta_size;
-+	quanta_cfg.queue_select.type = VIRTCHNL_QUEUE_TYPE_TX;
-+	quanta_cfg.queue_select.start_queue_id = queue_index;
-+	quanta_cfg.queue_select.num_queues = num_queues;
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_QUEUES_QUANTA_SIZE;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_CONFIG_QUANTA,
-+			 (u8 *)&quanta_cfg, sizeof(quanta_cfg));
-+}
-+
-+/**
-+ * iavf_set_queue_bw - set bw of allocated queues
-+ * @adapter: iavf adapter struct instance
-+ *
-+ * This function requests PF to set queue bw of tc0 queues
-+ */
-+static void iavf_set_queue_bw(struct iavf_adapter *adapter)
-+{
-+	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-+	struct virtchnl_queues_bw_cfg *queues_bw_cfg;
-+	struct iavf_dev_rate_node *queue_rate;
-+	size_t len;
-+	int i;
-+
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev,
-+			"Cannot set tc queue bw, command %d pending\n",
-+			adapter->current_op);
-+		return;
-+	}
-+
-+	len = struct_size(queues_bw_cfg, cfg, adapter->num_active_queues);
-+	queues_bw_cfg = kzalloc(len, GFP_KERNEL);
-+	if (!queues_bw_cfg)
-+		return;
-+
-+	queue_rate = dl_priv->queue_nodes;
-+	queues_bw_cfg->vsi_id = adapter->vsi.id;
-+	queues_bw_cfg->num_queues = adapter->num_active_queues;
-+
-+	for (i = 0; i < queues_bw_cfg->num_queues; i++) {
-+		queues_bw_cfg->cfg[i].queue_id = i;
-+		queues_bw_cfg->cfg[i].shaper.peak = queue_rate[i].tx_max;
-+		queues_bw_cfg->cfg[i].shaper.committed =
-+						    queue_rate[i].tx_share;
-+		queues_bw_cfg->cfg[i].tc = 0;
-+	}
-+
-+	adapter->current_op = VIRTCHNL_OP_CONFIG_QUEUE_BW;
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_CONFIG_QUEUE_BW,
-+			 (u8 *)queues_bw_cfg, len);
-+	kfree(queues_bw_cfg);
-+}
-+
-+/**
-+ * iavf_set_tc_queue_bw - set bw of allocated tc/queues
-+ * @adapter: iavf adapter struct instance
-+ *
-+ * This function requests PF to set queue bw of multiple tc(s)
-+ */
-+static void iavf_set_tc_queue_bw(struct iavf_adapter *adapter)
-+{
-+	struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-+	struct virtchnl_queues_bw_cfg *queues_bw_cfg;
-+	struct iavf_dev_rate_node *queue_rate;
-+	u16 queue_to_tc[256];
-+	size_t len;
-+	int q_idx;
-+	int i, j;
-+	u16 tc;
-+
-+	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
-+		/* bail because we already have a command pending */
-+		dev_err(&adapter->pdev->dev,
-+			"Cannot set tc queue bw, command %d pending\n",
-+			adapter->current_op);
-+		return;
-+	}
-+
-+	len = struct_size(queues_bw_cfg, cfg, adapter->num_active_queues);
-+	queues_bw_cfg = kzalloc(len, GFP_KERNEL);
-+	if (!queues_bw_cfg)
-+		return;
-+
-+	queue_rate = dl_priv->queue_nodes;
-+	queues_bw_cfg->vsi_id = adapter->vsi.id;
-+	queues_bw_cfg->num_queues = adapter->ch_config.total_qps;
-+
-+	/* build tc[queue] */
-+	for (i = 0; i < adapter->num_tc; i++) {
-+		for (j = 0; j < adapter->ch_config.ch_info[i].count; ++j) {
-+			q_idx = j + adapter->ch_config.ch_info[i].offset;
-+			queue_to_tc[q_idx] = i;
-+		}
-+	}
-+
-+	for (i = 0; i < queues_bw_cfg->num_queues; i++) {
-+		tc = queue_to_tc[i];
-+		queues_bw_cfg->cfg[i].queue_id = i;
-+		queues_bw_cfg->cfg[i].shaper.peak = queue_rate[i].tx_max;
-+		queues_bw_cfg->cfg[i].shaper.committed =
-+						    queue_rate[i].tx_share;
-+		queues_bw_cfg->cfg[i].tc = tc;
-+	}
-+
-+	adapter->current_op = VIRTCHNL_OP_CONFIG_QUEUE_BW;
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
-+	iavf_send_pf_msg(adapter, VIRTCHNL_OP_CONFIG_QUEUE_BW,
-+			 (u8 *)queues_bw_cfg, len);
-+	kfree(queues_bw_cfg);
-+}
-+
-+/**
-+ * iavf_configure_queues_bw - configure bw of allocated tc/queues
-+ * @adapter: iavf adapter struct instance
-+ *
-+ * This function requests PF to configure queue bw of allocated
-+ * tc/queues
-+ */
-+void iavf_configure_queues_bw(struct iavf_adapter *adapter)
-+{
-+	/* Set Queue bw */
-+	if (adapter->ch_config.state == __IAVF_TC_INVALID)
-+		iavf_set_queue_bw(adapter);
-+	else
-+		iavf_set_tc_queue_bw(adapter);
-+}
-+
-+/**
-+ * iavf_configure_queues_quanta_size - configure quanta size of queues
-+ * @adapter: adapter structure
-+ *
-+ * Request that the PF configure quanta size of allocated queues.
-+ **/
-+void iavf_configure_queues_quanta_size(struct iavf_adapter *adapter)
-+{
-+	int quanta_size = IAVF_DEFAULT_QUANTA_SIZE;
-+
-+	/* Set Queue Quanta Size to default */
-+	iavf_set_quanta_size(adapter, quanta_size, 0,
-+			     adapter->num_active_queues);
-+}
-+
-+/**
-+ * iavf_update_queue_config - request queue configuration update
-+ * @adapter: adapter structure
-+ *
-+ * Request that the PF configure queue quanta size and queue bw
-+ * of allocated queues.
-+ **/
-+void iavf_update_queue_config(struct iavf_adapter *adapter)
-+{
-+	adapter->devlink_update = true;
-+	iavf_schedule_reset(adapter, IAVF_FLAG_RESET_NEEDED);
-+}
-+
- /**
-  * iavf_enable_channels
-  * @adapter: adapter structure
-@@ -2138,6 +2342,18 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			dev_warn(&adapter->pdev->dev, "Failed to add VLAN filter, error %s\n",
- 				 iavf_stat_str(&adapter->hw, v_retval));
- 			break;
-+		case VIRTCHNL_OP_GET_QOS_CAPS:
-+			dev_warn(&adapter->pdev->dev, "Failed to Get Qos CAPs, error %s\n",
-+				 iavf_stat_str(&adapter->hw, v_retval));
-+			break;
-+		case VIRTCHNL_OP_CONFIG_QUANTA:
-+			dev_warn(&adapter->pdev->dev, "Failed to Config Quanta, error %s\n",
-+				 iavf_stat_str(&adapter->hw, v_retval));
-+			break;
-+		case VIRTCHNL_OP_CONFIG_QUEUE_BW:
-+			dev_warn(&adapter->pdev->dev, "Failed to Config Queue BW, error %s\n",
-+				 iavf_stat_str(&adapter->hw, v_retval));
-+			break;
- 		default:
- 			dev_err(&adapter->pdev->dev, "PF returned error %d (%s) to our request %d\n",
- 				v_retval, iavf_stat_str(&adapter->hw, v_retval),
-@@ -2471,6 +2687,16 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 		if (!v_retval)
- 			iavf_netdev_features_vlan_strip_set(netdev, false);
- 		break;
-+	case VIRTCHNL_OP_GET_QOS_CAPS:
-+		u16 len = struct_size(adapter->qos_caps, cap,
-+				      IAVF_MAX_QOS_TC_NUM);
-+		memcpy(adapter->qos_caps, msg, min(msglen, len));
-+		break;
-+	case VIRTCHNL_OP_CONFIG_QUANTA:
-+		iavf_notify_queue_config_complete(adapter);
-+		break;
-+	case VIRTCHNL_OP_CONFIG_QUEUE_BW:
-+		break;
- 	default:
- 		if (adapter->current_op && (v_opcode != adapter->current_op))
- 			dev_warn(&adapter->pdev->dev, "Expected response %d from PF, received %d\n",
--- 
-2.34.1
+> --
+> 2.17.1
+>
+>
+
+--0000000000009f75eb0602656584
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
+
+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
+OltyqaGBuzv+bJTUL+bmV7E4QBLIqGt4jVr1R9hJdH6KxXwJdyfHZ9C6qXmoe2NQhiFUyBOJ0wgk
+dB9Z1IU7nCwvNKYg2JMoJs93tIgbhPJg/D7pqW8gabkCAwEAAaOCAdowggHWMA4GA1UdDwEB/wQE
+AwIFoDCBowYIKwYBBQUHAQEEgZYwgZMwTgYIKwYBBQUHMAKGQmh0dHA6Ly9zZWN1cmUuZ2xvYmFs
+c2lnbi5jb20vY2FjZXJ0L2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNydDBBBggrBgEFBQcw
+AYY1aHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyM3BlcnNvbmFsc2lnbjJjYTIwMjAw
+TQYDVR0gBEYwRDBCBgorBgEEAaAyASgKMDQwMgYIKwYBBQUHAgEWJmh0dHBzOi8vd3d3Lmdsb2Jh
+bHNpZ24uY29tL3JlcG9zaXRvcnkvMAkGA1UdEwQCMAAwSQYDVR0fBEIwQDA+oDygOoY4aHR0cDov
+L2NybC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWduMmNhMjAyMC5jcmwwJAYDVR0R
+BB0wG4EZcGF2YW4uY2hlYmJpQGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggrBgEFBQcDBDAfBgNV
+HSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUEV6y/89alKPoFbKUaJXsvWu5
+fdowDQYJKoZIhvcNAQELBQADggEBAEHSIB6g652wVb+r2YCmfHW47Jo+5TuCBD99Hla8PYhaWGkd
+9HIyD3NPhb6Vb6vtMWJW4MFGQF42xYRrAS4LZj072DuMotr79rI09pbOiWg0FlRRFt6R9vgUgebu
+pWSH7kmwVXcPtY94XSMMak4b7RSKig2mKbHDpD4bC7eGlwl5RxzYkgrHtMNRmHmQor5Nvqe52cFJ
+25Azqtwvjt5nbrEd81iBmboNTEnLaKuxbbCtLaMEP8xKeDjAKnNOqHUMps0AsQT8c0EGq39YHpjp
+Wn1l67VU0rMShbEFsiUf9WYgE677oinpdm0t2mdCjxr35tryxptoTZXKHDxr/Yy6l6ExggJtMIIC
+aQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQD
+EyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwV/XkICjVscn4SNZMw
+DQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIAGeXPPQ2FfaYXzsRZQZKp3gTygqgZ34
+lEnFrZ5cWRLZMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIzMDgw
+ODA4NDYyMFowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCG
+SAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQC
+ATANBgkqhkiG9w0BAQEFAASCAQA3pO86oTxubbGfwtVwZ7UcHYul3at6k7044rfYteP8/04RhgCi
+/ILFHn+Q1DCmAhVogSuHqYvRapYclen+3V9XnuKcGzY2OL9e2GNMyQyn27n+YQQSqEyIhD206lsG
+aiCmTQFsFV7KDjeMCSkLYWKXhbUHU+AkBp3s670Y9aayo8h+0I+FKFCekp6HCmYwXZkrb8ssYP+V
+yB+mSxwekL4IDow52oMQAOZDN6JO5RhdHYc/BER48Yuhh/7ctJ6hqeLhj58I+uRDLtzrZS65BYb+
+eZDTeXWWaZyZxrVdnxTSJiPiGId97A5XizHbP1vnG7ALHZbKs4KiWenZ4s9+uHjA
+--0000000000009f75eb0602656584--
+
+--===============4302637413558927573==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4302637413558927573==--
