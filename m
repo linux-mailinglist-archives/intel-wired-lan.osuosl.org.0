@@ -1,82 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28DE97749C9
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 22:03:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B1BF7749EA
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 22:06:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A9E1840893;
-	Tue,  8 Aug 2023 20:03:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A9E1840893
+	by smtp4.osuosl.org (Postfix) with ESMTP id CA2BB4174E;
+	Tue,  8 Aug 2023 20:06:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA2BB4174E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691525018;
-	bh=YNYLuAlOAEUiY3VpHAWKe1YxfLFu9tWfekCKZXkGUeU=;
+	s=default; t=1691525187;
+	bh=hNef1/mQxDE8QL/0Ja1tv5SZW3CuuIynXpWdRAQKiMw=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=c8BWo6y4g8P8B3sQg5aGJiwGXXnJXzJb/u7vJJEBe1kJczFGM6x4k7nzvzKciyqyV
-	 /Edx0iCdkvBVuieKTLJ9wcQU3Ld5byOyks+9PQUt1iVpdFr6BE19rc9Q/jiB0HahwV
-	 Lg5j+jjb3rqHB2AE1o/YocgGRg21jRVvthvOTMFCBzijiew0h0WTwQxQTRU9DxttPA
-	 0WlCUUstj4NnAmqH294YhCvPcYmUtVP8G3Kdia52V7XMjxoxwFi1f55L7OGXCTyqPY
-	 vMoJS/3fb8c/ZodrcnOKUcmWw9tN/kA8SszbopMJn+i7YtBH/qBRjf4FnONhwZJBcH
-	 6j6lTFoBKb2YQ==
+	b=VBaWqqzv1Ub2zvvvmFR2Blpk90GAESZOnN+ccDqDY6869sX5G6+1gX1WGZA1dRx99
+	 IU/2C1z17XwYkf0rqgXeJDX87kwPQURT9H7uHE9QMDBxF8xLYbCustkc2/3wb3ge0r
+	 8z5wg0EiECz+Ti0ZoywBq6Wgdx+A/B9MGnGKoxhSCCgT3bpb9oJMRv9xj+ezDv6Ege
+	 /vCcT807x2zRuksoXwKM8zTYFNjtYHjZBnwYPOvj6NwW9AtEL2BtVLcMPeTV1jC6NU
+	 6epErLM3pwIG448iQlH9Vi/6rx6kfqljphqgXK6HYHBcrlZUhVNp+LQMqYPGCi+2uC
+	 w8wkuZJfxBgVQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BbPYMlwVyN2W; Tue,  8 Aug 2023 20:03:37 +0000 (UTC)
+	with ESMTP id QvQv9N8hTMHM; Tue,  8 Aug 2023 20:06:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4A541408F7;
-	Tue,  8 Aug 2023 20:03:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A541408F7
+	by smtp4.osuosl.org (Postfix) with ESMTP id 619F741744;
+	Tue,  8 Aug 2023 20:06:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 619F741744
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 977FA1BF341
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:03:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 55E521BF966
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:06:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6EE3E80E66
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:03:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6EE3E80E66
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A90660B58
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:06:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A90660B58
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6rx45MtQOiaz for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Aug 2023 20:03:30 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BCD2B80B6D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:03:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BCD2B80B6D
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8Ge9a6mmozVs for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Aug 2023 20:06:20 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EBBB860C25
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 20:06:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EBBB860C25
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 974A062BE6;
- Tue,  8 Aug 2023 20:03:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 918EEC433C7;
- Tue,  8 Aug 2023 20:03:28 +0000 (UTC)
-Date: Tue, 8 Aug 2023 13:03:27 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 24F0462C15;
+ Tue,  8 Aug 2023 20:06:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12AD2C433C7;
+ Tue,  8 Aug 2023 20:06:18 +0000 (UTC)
+Date: Tue, 8 Aug 2023 13:06:17 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Message-ID: <20230808130327.5638d15b@kernel.org>
-In-Reply-To: <a7e2f7e1-e36a-2c79-46c3-874550d24575@linux.dev>
+Message-ID: <20230808130617.5ad74486@kernel.org>
+In-Reply-To: <20230808130327.5638d15b@kernel.org>
 References: <20230804190454.394062-1-vadim.fedorenko@linux.dev>
  <20230804190454.394062-3-vadim.fedorenko@linux.dev>
  <ZNCjwfn8MBnx4k6a@nanopsycho>
  <a7e2f7e1-e36a-2c79-46c3-874550d24575@linux.dev>
+ <20230808130327.5638d15b@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1691525009;
- bh=XieZPduHjyDSjvr/8gZ88ZdbCP4k+VL3yfyNd86jhhw=;
+ d=kernel.org; s=k20201202; t=1691525178;
+ bh=EXXgYeO8+2thyLJnvnLv8j6A+askNI7McKgPFzgsrAI=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=dNjflAS3B1mZjhgu4XYMPMrOknEEnqRQ4UnDUtmF/wdZkTf9wwfnvuB025/6ZCMel
- 3MO9DSNyp3jMcES/AJwS2n6lxQiS66Rstw0RZalS34IIkFvpOcd+R0AL29usX7IkyI
- H+tKnwu0tcbrs0c/2n3u0aGS9F15ZEiH0arFKVnqTBE7nSlx8t1aIJdCgW+JpoF6WG
- dgNA3g1eIEaVHlaxYaItysPNSn31LkY9UeqnNtrtLkKDUheCfrraKEN0gpW2DDXcwR
- kwuqmYFMLnjW4HuSL63sL9Pz4EvfOZGLaNkTjlookm6FW6SDTGD9X/QEP4SB1iKdR7
- 6z8zDBRKM7wSw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=XuZ9+hENrre4giva7n00N0bFg27pLNhnPyPqDyGlMhYcKysZHD7s+wB5GQ9gKWMhr
+ xLEBZEtxy4Ijq280LlshZ0OQtc5bdOBJaYsmdcRVVjYgwBmCDKYBR3TcdMZV9c8G8L
+ IvwUuNxIeLXI3+ekfhqB1C/LmZKr6JOPykHbiaQvHxJ8f/hfZgIXJ3/W73BAC6hI/X
+ Xg+8ejZndgpq9pr3s9d/dV4IDGbuok/uNo2SrySkFxU60DkqseTlu+lEE0WQusCotG
+ 4NUeCjA6QmY4IlkytAP5Gja51o1bFOHrk2BMskSBjBMwWkcdvEcpmhPs0YTxVf8+gn
+ pDR0jFGaIeuUQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=dNjflAS3
+ header.a=rsa-sha256 header.s=k20201202 header.b=XuZ9+hEN
 Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/9] dpll: spec: Add
  Netlink spec in YAML
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -102,33 +104,20 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 7 Aug 2023 22:25:25 +0100 Vadim Fedorenko wrote:
-> Well, in my case after rebasing on latest net-next I got just part of 
-> your diff:
+On Tue, 8 Aug 2023 13:03:27 -0700 Jakub Kicinski wrote:
+> >   const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE 
+> > + 1] = {
+> >          [DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U8, 1, 3),
+> >          [DPLL_A_PIN_ID] = { .type = NLA_U32, },
+> > 
+> > 
+> > The "/* private: */" comment was added to the generator after Simon's
+> > comment. But I'll include this part into the next version.  
 > 
-> diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
-> index ff3f55f0ca94..638e21a9a06d 100644
-> --- a/drivers/dpll/dpll_nl.c
-> +++ b/drivers/dpll/dpll_nl.c
-> @@ -17,7 +17,6 @@ const struct nla_policy 
-> dpll_pin_parent_device_nl_policy[DPLL_A_PIN_STATE + 1] =
->          [DPLL_A_PIN_PRIO] = { .type = NLA_U32, },
->          [DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U8, 1, 3),
->   };
-> -
+> We only added private for enum masks, I'll send a patch for nlattrs.
 
-Uh, missing cw.nl() somewhere. Will add.
-
->   const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE 
-> + 1] = {
->          [DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U8, 1, 3),
->          [DPLL_A_PIN_ID] = { .type = NLA_U32, },
-> 
-> 
-> The "/* private: */" comment was added to the generator after Simon's
-> comment. But I'll include this part into the next version.
-
-We only added private for enum masks, I'll send a patch for nlattrs.
+On closer look these have no kdoc, so the priv markings are not
+necessary, dropping them sounds right.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
