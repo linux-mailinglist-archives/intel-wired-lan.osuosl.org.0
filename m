@@ -2,88 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FB02773ADF
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 17:12:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3EB6773AE0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 17:12:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36F9A6117D;
-	Tue,  8 Aug 2023 15:12:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36F9A6117D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4D65561190;
+	Tue,  8 Aug 2023 15:12:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D65561190
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691507559;
-	bh=/hMoGJsda7r1mRzVzYIonC+qCbOKKUq9/pia0JFfCaw=;
+	s=default; t=1691507563;
+	bh=A+2jiNxfhG3EMzvlcQbSEavovDTpKyZWXyOgtEzb4Fg=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=IpjCJfi+iO9KYbwMZjIlO9FaEhjPCkARc1U8wfjZFBTMA2EIXwJSIPoa+w/k3ygZx
-	 MO6ZtQh059+JKJ4YtoUtrnAVS1kCqfAUGbCx1hsuVeAQE6CQ0UI0y6SZENsN7fKvsc
-	 4E1t2E8XwbtfIS74anqgo8/7zAiCRPpGs1AwwBW4UxfM90aU5Pmhbenw2RauTpVQss
-	 XFDnczji+PisYgnZZKDNmbQVLbAmBUJMo97tPhc6hpEOk4LqU5evvwRNaQRLiT7/vy
-	 t0tiEo+ima+647lZ5c89rzZuLTCHdlWcKI182rXwbD+gB5Zf0rzkTMceMTAkgmejaq
-	 HPaWOsfF1ALAg==
+	b=zQC24JuumKu3dB/gtkkFFNCUXMtY0qU54ayl8nLbST+OIPN1AqMUfUMPoqYcuJ7j4
+	 n4RAulvTdfyoGhkwCLK8D2EFHvN1HRyc2Rm3P5GXS+PplAzcydU5XHhfbuUTpmA2hY
+	 BtykRowtRHrtgSWo7N56WQbMt90XYIpp2rF6vHmYMSvGr7vp3HtAJsKZtg1+3pIYGz
+	 yq8GXJSbzkj1Adl9iYLvx4FfcgFtABXG4o1MWug215mzFq2YaMm+Uff42ZLiwF5WBM
+	 7jIDQ8SSEIS4Ifme1M6bVngbfACxqsiA6osyqm54oqePqFyVnKbyFC2pgXGW8CGUU/
+	 9NmX3nT5gkkvQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sVLK-K_Q-Rj0; Tue,  8 Aug 2023 15:12:38 +0000 (UTC)
+	with ESMTP id Frzj7ADf9MSL; Tue,  8 Aug 2023 15:12:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CA5A86117F;
-	Tue,  8 Aug 2023 15:12:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA5A86117F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19DAE6117F;
+	Tue,  8 Aug 2023 15:12:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19DAE6117F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0E9961BF404
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B21731BF404
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E775040447
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E775040447
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8B8CA404A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8B8CA404A8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mu3L7k6jWq1m for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Aug 2023 01:53:55 +0000 (UTC)
+ with ESMTP id LIw5s5ryswe7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Aug 2023 01:53:58 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B7FD3404A8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B7FD3404A8
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="350997435"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="350997435"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D4C6840447
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 01:53:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4C6840447
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="350997451"
+X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="350997451"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2023 18:53:54 -0700
+ 07 Aug 2023 18:53:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="801162721"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="801162721"
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="801162731"
+X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="801162731"
 Received: from dpdk-wuwenjun-icelake-ii.sh.intel.com ([10.67.110.188])
- by fmsmga004.fm.intel.com with ESMTP; 07 Aug 2023 18:53:52 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 07 Aug 2023 18:53:56 -0700
 From: Wenjun Wu <wenjun1.wu@intel.com>
 To: intel-wired-lan@lists.osuosl.org,
 	netdev@vger.kernel.org
-Date: Tue,  8 Aug 2023 09:57:29 +0800
-Message-Id: <20230808015734.1060525-1-wenjun1.wu@intel.com>
+Date: Tue,  8 Aug 2023 09:57:30 +0800
+Message-Id: <20230808015734.1060525-2-wenjun1.wu@intel.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230727021021.961119-1-wenjun1.wu@intel.com>
+In-Reply-To: <20230808015734.1060525-1-wenjun1.wu@intel.com>
 References: <20230727021021.961119-1-wenjun1.wu@intel.com>
+ <20230808015734.1060525-1-wenjun1.wu@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 08 Aug 2023 15:12:33 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691459635; x=1722995635;
+ t=1691459638; x=1722995638;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=yCX1f0D63BhxyBJ5lB2UOaTd7ZrJLybm3hSvnHjlN3A=;
- b=SjZF3JUyoInsZx3thUDEWYyGD+lvKsJ5rBzJYo8KjHwViP7Qo8XU6px9
- 9Jt9QScjgnemFmcrEr/VqAm7jbsZgwjbvMazWn+0slBGU2a9wMu05bGlP
- vAeat+6XIrTTkcDd2naNtPKhxf9PDdsQW5SuMuw8niJN2JRCjw7+UaIuT
- dHr55pUtCgRJPJxRqPEpEAMGVKS5iUN1EtUj5clXURCFlo5GWCXh5RBRA
- bg7ifAUR1dw6jJIvBaEryBYZjvyu7ZY4u0Lh7dy7V65f2oPmia0xVSxom
- Zz11MZcYVyJ7D2X72Ze3kP8d3mVrgVY7DkIxGldCQseumAddttx0zz7Av
- Q==;
+ bh=XF9JrGdrp655loYrJ3fDDNczLpowmm7IGpRDpW4C/P0=;
+ b=Z6cpRbBWuIyIgP9gFn5ONhkyB3LoHy8AhHweqAoh/5T5wF0KBhfcpGK2
+ vCxux2xXBmRu/CBMRblUC4WMIjLGj9ktfIfTqgNKRns2n+AuVyG//y3Xb
+ 0JoKldLio4CJKUzUWbD9wUdyVYjC6FgliAiEtOTr9tcWG0FSbJP9f2aN/
+ /ErlhANAvCU6LMfSaodn0csBKGdQFp6uOTI7oSmgTCnR7mNf2g1qjcikf
+ zF8bG/husChgBOQVuLREgphKlD0Kp7ev0ZxBwd/POQfvqmuQr01M4qao+
+ 9Sl/OoqbqUztXZb3A+7b/pF+Cx0wvAEaQYkk4G3POa430Kl55iAdbhVYT
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SjZF3JUy
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/5] iavf: Add devlink and
- devlink rate support
+ header.a=rsa-sha256 header.s=Intel header.b=Z6cpRbBW
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/5] virtchnl: support queue
+ rate limit and quanta size configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,126 +104,175 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To allow user to configure queue bandwidth, devlink port support
-is added to support devlink port rate API. [1]
+This patch adds new virtchnl opcodes and structures for rate limit
+and quanta size configuration, which include:
+1. VIRTCHNL_OP_CONFIG_QUEUE_BW, to configure max bandwidth for each
+VF per queue.
+2. VIRTCHNL_OP_CONFIG_QUANTA, to configure quanta size per queue.
+3. VIRTCHNL_OP_GET_QOS_CAPS, VF queries current QoS configuration, such
+as enabled TCs, arbiter type, up2tc and bandwidth of VSI node. The
+configuration is previously set by DCB and PF, and now is the potential
+QoS capability of VF. VF can take it as reference to configure queue TC
+mapping.
 
-Add devlink framework registration/unregistration on iavf driver
-initialization and remove, and devlink port of DEVLINK_PORT_FLAVOUR_VIRTUAL
-is created to be associated iavf netdevice.
-
-iavf rate tree with root node, queue nodes, and leaf node is created
-and registered with devlink rate when iavf adapter is configured, and
-if PF indicates support of VIRTCHNL_VF_OFFLOAD_QOS through VF Resource /
-Capability Exchange.
-
-[root@localhost ~]# devlink port function rate show
-pci/0000:af:01.0/txq_15: type node parent iavf_root
-pci/0000:af:01.0/txq_14: type node parent iavf_root
-pci/0000:af:01.0/txq_13: type node parent iavf_root
-pci/0000:af:01.0/txq_12: type node parent iavf_root
-pci/0000:af:01.0/txq_11: type node parent iavf_root
-pci/0000:af:01.0/txq_10: type node parent iavf_root
-pci/0000:af:01.0/txq_9: type node parent iavf_root
-pci/0000:af:01.0/txq_8: type node parent iavf_root
-pci/0000:af:01.0/txq_7: type node parent iavf_root
-pci/0000:af:01.0/txq_6: type node parent iavf_root
-pci/0000:af:01.0/txq_5: type node parent iavf_root
-pci/0000:af:01.0/txq_4: type node parent iavf_root
-pci/0000:af:01.0/txq_3: type node parent iavf_root
-pci/0000:af:01.0/txq_2: type node parent iavf_root
-pci/0000:af:01.0/txq_1: type node parent iavf_root
-pci/0000:af:01.0/txq_0: type node parent iavf_root
-pci/0000:af:01.0/iavf_root: type node
-
-
-                         +---------+
-                         |   root  |
-                         +----+----+
-                              |
-            |-----------------|-----------------|
-       +----v----+       +----v----+       +----v----+
-       |  txq_0  |       |  txq_1  |       |  txq_x  |
-       +----+----+       +----+----+       +----+----+
-
-User can configure the tx_max and tx_share of each queue. Once any one of the
-queues are fully configured, VIRTCHNL opcodes of VIRTCHNL_OP_CONFIG_QUEUE_BW
-and VIRTCHNL_OP_CONFIG_QUANTA will be sent to PF to configure queues allocated
-to VF
-
-Example:
-
-1.To Set the queue tx_share:
-devlink port function rate set pci/0000:af:01.0 txq_0 tx_share 100 MBps
-
-2.To Set the queue tx_max:
-devlink port function rate set pci/0000:af:01.0 txq_0 tx_max 200 MBps
-
-3.To Show Current devlink port rate info:
-devlink port function rate function show
-[root@localhost ~]# devlink port function rate show
-pci/0000:af:01.0/txq_15: type node parent iavf_root
-pci/0000:af:01.0/txq_14: type node parent iavf_root
-pci/0000:af:01.0/txq_13: type node parent iavf_root
-pci/0000:af:01.0/txq_12: type node parent iavf_root
-pci/0000:af:01.0/txq_11: type node parent iavf_root
-pci/0000:af:01.0/txq_10: type node parent iavf_root
-pci/0000:af:01.0/txq_9: type node parent iavf_root
-pci/0000:af:01.0/txq_8: type node parent iavf_root
-pci/0000:af:01.0/txq_7: type node parent iavf_root
-pci/0000:af:01.0/txq_6: type node parent iavf_root
-pci/0000:af:01.0/txq_5: type node parent iavf_root
-pci/0000:af:01.0/txq_4: type node parent iavf_root
-pci/0000:af:01.0/txq_3: type node parent iavf_root
-pci/0000:af:01.0/txq_2: type node parent iavf_root
-pci/0000:af:01.0/txq_1: type node parent iavf_root
-pci/0000:af:01.0/txq_0: type node tx_share 800Mbit tx_max 1600Mbit parent iavf_root
-pci/0000:af:01.0/iavf_root: type node
-
-
-[1]https://lore.kernel.org/netdev/20221115104825.172668-1-michal.wilczynski@intel.com/
-
-Change log:
-
-v2:
-- Change static array to flex array
-- Use struct_size helper
-- Align all the error code types in the function
-- Move the register field definitions to the right place in the file
-- Fix coding style
-- Adapted to queue bw cfg and qos cap list virtchnl message with flex array fields
-
+Signed-off-by: Wenjun Wu <wenjun1.wu@intel.com>
 ---
-Jun Zhang (3):
-  iavf: Add devlink and devlink port support
-  iavf: Add devlink port function rate API support
-  iavf: Add VIRTCHNL Opcodes Support for Queue bw Setting
+ include/linux/avf/virtchnl.h | 114 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 114 insertions(+)
 
-Wenjun Wu (2):
-  virtchnl: support queue rate limit and quanta size configuration
-  ice: Support VF queue rate limit and quanta size configuration
-
- drivers/net/ethernet/intel/Kconfig            |   1 +
- drivers/net/ethernet/intel/iavf/Makefile      |   2 +-
- drivers/net/ethernet/intel/iavf/iavf.h        |  20 +
- .../net/ethernet/intel/iavf/iavf_devlink.c    | 388 ++++++++++++++++++
- .../net/ethernet/intel/iavf/iavf_devlink.h    |  39 ++
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  60 ++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 228 +++++++++-
- drivers/net/ethernet/intel/ice/ice.h          |   2 +
- drivers/net/ethernet/intel/ice/ice_base.c     |   2 +
- drivers/net/ethernet/intel/ice/ice_common.c   |  19 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 +
- drivers/net/ethernet/intel/ice/ice_txrx.h     |   2 +
- drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   9 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 312 ++++++++++++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |  11 +
- .../intel/ice/ice_virtchnl_allowlist.c        |   6 +
- include/linux/avf/virtchnl.h                  | 114 +++++
- 18 files changed, 1221 insertions(+), 3 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_devlink.c
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_devlink.h
-
+diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
+index c15221dcb75e..10566a1458bb 100644
+--- a/include/linux/avf/virtchnl.h
++++ b/include/linux/avf/virtchnl.h
+@@ -84,6 +84,9 @@ enum virtchnl_rx_hsplit {
+ 	VIRTCHNL_RX_HSPLIT_SPLIT_SCTP    = 8,
+ };
+ 
++enum virtchnl_bw_limit_type {
++	VIRTCHNL_BW_SHAPER = 0,
++};
+ /* END GENERIC DEFINES */
+ 
+ /* Opcodes for VF-PF communication. These are placed in the v_opcode field
+@@ -145,6 +148,11 @@ enum virtchnl_ops {
+ 	VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2 = 55,
+ 	VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2 = 56,
+ 	VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2 = 57,
++	/* opcode 57 - 65 are reserved */
++	VIRTCHNL_OP_GET_QOS_CAPS = 66,
++	/* opcode 68 through 111 are reserved */
++	VIRTCHNL_OP_CONFIG_QUEUE_BW = 112,
++	VIRTCHNL_OP_CONFIG_QUANTA = 113,
+ 	VIRTCHNL_OP_MAX,
+ };
+ 
+@@ -253,6 +261,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
+ #define VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC	BIT(26)
+ #define VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF		BIT(27)
+ #define VIRTCHNL_VF_OFFLOAD_FDIR_PF		BIT(28)
++#define VIRTCHNL_VF_OFFLOAD_QOS			BIT(29)
+ 
+ #define VF_BASE_MODE_OFFLOADS (VIRTCHNL_VF_OFFLOAD_L2 | \
+ 			       VIRTCHNL_VF_OFFLOAD_VLAN | \
+@@ -1367,6 +1376,83 @@ struct virtchnl_fdir_del {
+ 
+ VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_fdir_del);
+ 
++struct virtchnl_shaper_bw {
++	/* Unit is Kbps */
++	u32 committed;
++	u32 peak;
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(8, virtchnl_shaper_bw);
++
++/* VIRTCHNL_OP_GET_QOS_CAPS
++ * VF sends this message to get its QoS Caps, such as
++ * TC number, Arbiter and Bandwidth.
++ */
++struct virtchnl_qos_cap_elem {
++	u8 tc_num;
++	u8 tc_prio;
++#define VIRTCHNL_ABITER_STRICT      0
++#define VIRTCHNL_ABITER_ETS         2
++	u8 arbiter;
++#define VIRTCHNL_STRICT_WEIGHT      1
++	u8 weight;
++	enum virtchnl_bw_limit_type type;
++	union {
++		struct virtchnl_shaper_bw shaper;
++		u8 pad2[32];
++	};
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(40, virtchnl_qos_cap_elem);
++
++struct virtchnl_qos_cap_list {
++	u16 vsi_id;
++	u16 num_elem;
++	struct virtchnl_qos_cap_elem cap[];
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(4, virtchnl_qos_cap_list);
++
++/* VIRTCHNL_OP_CONFIG_QUEUE_BW */
++struct virtchnl_queue_bw {
++	u16 queue_id;
++	u8 tc;
++	u8 pad;
++	struct virtchnl_shaper_bw shaper;
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_queue_bw);
++
++struct virtchnl_queues_bw_cfg {
++	u16 vsi_id;
++	u16 num_queues;
++	struct virtchnl_queue_bw cfg[];
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(4, virtchnl_queues_bw_cfg);
++
++enum virtchnl_queue_type {
++	VIRTCHNL_QUEUE_TYPE_TX			= 0,
++	VIRTCHNL_QUEUE_TYPE_RX			= 1,
++};
++
++/* structure to specify a chunk of contiguous queues */
++struct virtchnl_queue_chunk {
++	/* see enum virtchnl_queue_type */
++	s32 type;
++	u16 start_queue_id;
++	u16 num_queues;
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(8, virtchnl_queue_chunk);
++
++struct virtchnl_quanta_cfg {
++	u16 quanta_size;
++	struct virtchnl_queue_chunk queue_select;
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_quanta_cfg);
++
+ /**
+  * virtchnl_vc_validate_vf_msg
+  * @ver: Virtchnl version info
+@@ -1558,6 +1644,34 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
+ 	case VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2:
+ 		valid_len = sizeof(struct virtchnl_vlan_setting);
+ 		break;
++	case VIRTCHNL_OP_GET_QOS_CAPS:
++		break;
++	case VIRTCHNL_OP_CONFIG_QUEUE_BW:
++		valid_len = sizeof(struct virtchnl_queues_bw_cfg);
++		if (msglen >= valid_len) {
++			struct virtchnl_queues_bw_cfg *q_bw =
++				(struct virtchnl_queues_bw_cfg *)msg;
++
++			if (q_bw->num_queues == 0) {
++				err_msg_format = true;
++				break;
++			}
++			valid_len = struct_size(q_bw, cfg, q_bw->num_queues);
++		}
++		break;
++	case VIRTCHNL_OP_CONFIG_QUANTA:
++		valid_len = sizeof(struct virtchnl_quanta_cfg);
++		if (msglen >= valid_len) {
++			struct virtchnl_quanta_cfg *q_quanta =
++				(struct virtchnl_quanta_cfg *)msg;
++
++			if (q_quanta->quanta_size == 0 ||
++			    q_quanta->queue_select.num_queues == 0) {
++				err_msg_format = true;
++				break;
++			}
++		}
++		break;
+ 	/* These are always errors coming from the VF. */
+ 	case VIRTCHNL_OP_EVENT:
+ 	case VIRTCHNL_OP_UNKNOWN:
 -- 
 2.34.1
 
