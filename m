@@ -1,190 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBB12773926
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 10:47:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04F9477393D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Aug 2023 11:08:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 63986610A8;
-	Tue,  8 Aug 2023 08:47:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63986610A8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8BA92610B6;
+	Tue,  8 Aug 2023 09:08:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BA92610B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691484476;
-	bh=WNCqco8Yxkhfll9CNZnsvoa4PJdnq+h5ofYpai6vT9s=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1691485700;
+	bh=7WjrYowH8+RecrkMQ5faaO25wetnh1q6GQTkm9WaM7A=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=arm44PixZsUxrMfOxZoM+G0YX5kDp/TMIJ7glJRUes17RRhCr323FJrOkWfZz5hEM
-	 6Efz95VNzf4Ak6j8lfL+08kRm757y/UYzZ68rEOEh4Uzu72Qe9xc7vCztu+GgkTeb9
-	 DTcs288WaDU/2PMHEo7C0DMTte1YLRLFY/caSw1i/CgOZfiAWH7bhCDVDjjvghf4Ym
-	 bFXynffciYSWmExMgnKTSSKERHjrUF4Yp7CKehrCmNkUjfoKLvA4Dxp3TdRhKPf31/
-	 iO68cVqYkH9+DEg2AobCJaIuX4/jqdDsvtxVJu5+epDQ0mL9l5CelbsD2ut3qkepyx
-	 KUjoNHXQSLQKw==
+	 Cc:From;
+	b=ZJWCXyBg9TWKbN0RdOjtjhyg+kxSm2RW/5gBXCLOhSdWU/55iV4enQ9lDAhvpIR6x
+	 kq6ytkfFXOpdqvZ8ed+kr/fsqW7VVCSl93sv+9hSgINxOFYGyEO6KcA0GHXj5IQJ4C
+	 qMKq6H9kG3ot7GLh59nPl6bCBF2cREyHn9b6jP4U1mc2ArOwnQUqEXkKT3D9BxG9o2
+	 nQxFUDkxfC6T5Gb9SXA81LMgrm0B2c7I4XNMS52ZTpShrXSl/OmvszTL3PcrUlMbYB
+	 tCkfV0muofVCwSN68nQu69nZpKmUcAcSU39DazAo1RO/CoxNmGXzBugvJutUJg1GcH
+	 Mnlze8FxLquQw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MZJ__8_TSE6S; Tue,  8 Aug 2023 08:47:55 +0000 (UTC)
+	with ESMTP id V47GinqZJlMm; Tue,  8 Aug 2023 09:08:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D6B3A6109A;
-	Tue,  8 Aug 2023 08:47:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D6B3A6109A
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AEC9A1BF25F
- for <intel-wired-lan@osuosl.org>; Tue,  8 Aug 2023 08:47:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0A8E7606DC;
+	Tue,  8 Aug 2023 09:08:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0A8E7606DC
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 653EB1BF28D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 09:08:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9262181BD4
- for <intel-wired-lan@osuosl.org>; Tue,  8 Aug 2023 08:47:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9262181BD4
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3C14961099
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 09:08:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C14961099
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tckt1DI4ZfDp for <intel-wired-lan@osuosl.org>;
- Tue,  8 Aug 2023 08:47:46 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7F2E181BCF
- for <intel-wired-lan@osuosl.org>; Tue,  8 Aug 2023 08:47:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F2E181BCF
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="373512725"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="373512725"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Aug 2023 01:47:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="855013858"
-X-IronPort-AV: E=Sophos;i="6.01,263,1684825200"; d="scan'208";a="855013858"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga004.jf.intel.com with ESMTP; 08 Aug 2023 01:47:45 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 8 Aug 2023 01:47:45 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 8 Aug 2023 01:47:45 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 8 Aug 2023 01:47:45 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Tue, 8 Aug 2023 01:47:44 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ywm2quaGhX+A+9NlKSNriQbY4UF5tWffQ/5r7M9q28BYBqeA/W9tA4ZZ0jo4PrCqte8AbkHH2hY3fUaq6C0naGID6BcqrdYaM3Xfwt8clPt0EOU8h2Er7RxCR8paqWraJIWsma9K7X46HqUutWS31KU+suHUoCdyauOkxBdDfDwy34htRXmC/zyXgWi9OJPIDv99luvOhSw68EVQ4HFF7FxKhCU/VvaRJ4lEMcWV0en7c5n+pQdfY5RBFbTHHib5e1dTbr+dnKPmutrrvQIhvKwLnOO0Z+D3nj4R3vzEJ1K8L431zOROQ0KmrfYay4876Kx9Cr8kIDd8lGOvJdx1ZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ucrqWqIZfoQcZ927/s8rGIYyrNXwLSQIfxKuqP/EJek=;
- b=VjmpjIvnKGwoa609MQp3JKQwKYo6aziZgYnskjR4UcfhKj7JOJOgHNweWMuSh0Y/Gj1r8+0k1YeaLpJ9klVFSfrc2uv6Dnc8PaCVBx9gNQk5GJ26o9cMVh9erwb852JUH9voabjwhyvv4FdHcXQJlO77I9Fik553PnW72SZS7XRCIFOioikHawSwLLFNf+vOsZjwySnGOf+RLq//aJvgdZz+97vX+WumLOtoPsL6pdsFm+BlMLJAVUDsOVcic3jw5kKS9gu/H3GCPi73egD07IBYfvIIc3bya+Z6kIBFtKO8l9j0nMFOAtBvHRNdjXhbDlSPLrJ2rxeht/dmyMsJKw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB3674.namprd11.prod.outlook.com (2603:10b6:5:13d::11)
- by CH0PR11MB5332.namprd11.prod.outlook.com (2603:10b6:610:bf::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.27; Tue, 8 Aug
- 2023 08:47:38 +0000
-Received: from DM6PR11MB3674.namprd11.prod.outlook.com
- ([fe80::7f4:c05b:358b:79c4]) by DM6PR11MB3674.namprd11.prod.outlook.com
- ([fe80::7f4:c05b:358b:79c4%7]) with mapi id 15.20.6652.026; Tue, 8 Aug 2023
- 08:47:38 +0000
-Message-ID: <124f8872-37ea-dedc-75ee-331d8d1f590f@intel.com>
-Date: Tue, 8 Aug 2023 10:47:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Content-Language: en-US
-To: Jacob Keller <jacob.e.keller@intel.com>, <intel-wired-lan@osuosl.org>
-References: <20230807103624.468230-1-karol.kolacinski@intel.com>
- <20230807103624.468230-3-karol.kolacinski@intel.com>
- <45567907-afad-635c-73d9-95860beefcf3@intel.com>
- <fd0a3660-f4e5-d540-4dd3-98e9aaf270cd@intel.com>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <fd0a3660-f4e5-d540-4dd3-98e9aaf270cd@intel.com>
-X-ClientProxiedBy: FR2P281CA0099.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:9c::9) To DM6PR11MB3674.namprd11.prod.outlook.com
- (2603:10b6:5:13d::11)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oRQ2C_XUV98N for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Aug 2023 09:08:13 +0000 (UTC)
+Received: from mail-yw1-x112e.google.com (mail-yw1-x112e.google.com
+ [IPv6:2607:f8b0:4864:20::112e])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AE8A660759
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Aug 2023 09:08:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE8A660759
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-58451ecf223so58475597b3.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Aug 2023 02:08:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1691485691; x=1692090491;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YQmrlSF1etaTQwOr3qLYhfPTQagr4vCwIJuRXoehTGo=;
+ b=VhEfa00wmThJrozKawBMe2A1eH6B2z1/PpZJcWUr9AElMBhnXWLD+acLhNaXdv0T3B
+ lQzLIhV+DCUaWyU4FSnAgJEGirOuKzskv01U+yLZ52Ns70LC1K2c1QaEkTqXy20ig1Se
+ T+bzfBACa/2yUwfbk+211ugzk2IL9B9wUeWKiw9kqB7BrWV+avytCAXL6QlTCFF6qIFx
+ 6xX0J4xRhsOWSSnU7QFE2qCbsgNtWsBOfk8EE4Z+K5Yg5tPb9EazBp2V4fEmbeBlmQLJ
+ ba9HWVhdgIXgCxNec+wDRd/4VH08z4+ZcsiXTI6t+FJj4Bzd6xOyvqUdZvyK7LB2vqwF
+ Hwyw==
+X-Gm-Message-State: AOJu0YwxzZV/DQSpJyuqZ6wzgc6M4eEZVkTMayDWUM9rtwfh+2qCG3Zr
+ 58KctWjMZJ0uqBzUC3pP78jcsydf6YaIO8yyZp6zMQ==
+X-Google-Smtp-Source: AGHT+IFkFqDAPqkMZL6EOB3nTaTaTclyG8LGaWCNTS0UTd9Fw91qMj4d/RD9Nwx9UORxt61p5bPLTt5CLy8a5USEoQk=
+X-Received: by 2002:a0d:e64a:0:b0:559:f18d:ee94 with SMTP id
+ p71-20020a0de64a000000b00559f18dee94mr12567880ywe.10.1691485691463; Tue, 08
+ Aug 2023 02:08:11 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3674:EE_|CH0PR11MB5332:EE_
-X-MS-Office365-Filtering-Correlation-Id: 835cb109-09af-4ab2-bc8d-08db97ec1e51
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ot31qwQ6e8a3yIMbkC+KspdCqU/nqlcq1srWTeTz1ugDxx9yhZue7ZmfGNeksQ70CTc669jFsB6qoZm41IkVTTzOK3BZVFvzSXDaSXV58FNttaXsOR7a6ir/Kg4TEiBl1eJEUOtzQ/lSvQRG8zIaPNHuAq2o/wXWCxIM5f1xhrjSZzp6z5NThBBgLLK/ADqBAhj5RjBTRqcgp8ZM5E34t70HQdtXOPosFbVykNJVPHqsOTznCASr2KbVKJsx6MnHKjAyT5eeExJ1wtv7icGxSiswtmQZGnnN2k8XQW2eKHOuNhWOi8YsokA1NB7VkWKULz7gTjz9EIUryKZXxrdVIZRuj1C+Q+Cz2uncLX0/Mk17XMxz0lXy1yaxo5RP6eg9KiI89MZiMBFYwCrQXRZvZU+DoNl3yib5FTMnP4kj/9GrYSRzL9JhXix9K7vntBj7KifnjdrqMAzwgVgeEGedkrgXr/ep6Qm94Qr8i5s7fMZvy0fMhTI/BJrxaETYGWqtI5YQhPjk2R9qMuX38SStuIkmXVFnYH0SWvXHgW6yL8PNRGlbKmkeaIG6KJxyVcWDtgXyghWiYX8gFsWC39LUqhdOBL5F3RoBeRTg7fPxVwMSQyTvaDtxDOqs2zw2eaJWNMy1YAp4l1NmCl+BtaE/ng==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3674.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(396003)(39860400002)(376002)(136003)(346002)(451199021)(1800799003)(186006)(83380400001)(316002)(66476007)(41300700001)(66556008)(6506007)(66946007)(38100700002)(8936002)(8676002)(53546011)(26005)(6486002)(5660300002)(6666004)(6512007)(478600001)(31696002)(86362001)(2616005)(82960400001)(36756003)(2906002)(31686004)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YzN6L1RKMzBrRGdNS0V5NEN5MzFXNWw2U3Q5RUFFbDE1R0ROZzhhdDJtaFdo?=
- =?utf-8?B?YWJsRTlLYzFKckZ1RFZDdTN1VUd3bitGTVZzbDNwU0N0NUVrc0xEOG1hMlZR?=
- =?utf-8?B?VmNwRndib2l1eUJJSXcyYjBsM2lnazFBbFFwYTgzM255Nk4vZWFPaGlDK3c0?=
- =?utf-8?B?RDY0ODJZTE9YK0FPa2Z2YkM5QlM5bWtFRlJXZ0x4M3RmVWh0THRPcEZIK1I1?=
- =?utf-8?B?RGw2dzM4bHZIMlFiWHQvRktjTFFEczZyL0NsVmxBemNEdUsrLytmN01SRzVa?=
- =?utf-8?B?VnBLeWxLc2xDNk9iQ1ROMHVIZlNicHFVdTFqKy9PRGoxRWpCUHhERjNJM21i?=
- =?utf-8?B?NFB3Q0FvMTgyNncyR1A5Q1VzUThGSUxNdlJxTE5oNlNManNPbUo0S1ZwbEp2?=
- =?utf-8?B?SGl5WkEzaEc4K0lTYURnZHcwSmJnd0x3YjgycncycEg5TXNVUVYxRnRzejJT?=
- =?utf-8?B?TVo5MTUyc3J6YldIZHRWbElwK2oxMjgrZlVTLzZmaS9Ib0x4Um1hU0RCVGhX?=
- =?utf-8?B?amhCM0VlbHdrK3NXcGRoOW5vZHdDMGc4aDB5b3JzTHZpWmhrR21vNlVBbnZL?=
- =?utf-8?B?ZkZOWnFNUDFvcFNXQ3lxNGVwRURBd0hiKy9mUEtxTCtIVTNacSt6UDFuNi9N?=
- =?utf-8?B?QnNaMVZnWnBNMmp6TmtBRlVlcXRvR1NCaDV2OTNrWHl5MGM1K2Fma3M0UE9J?=
- =?utf-8?B?VWJuaHN0ODhmRno1UmRITmVqdDU3K3U1Z3ZwZXR2MmJtMWxJQVQrdEswTWJE?=
- =?utf-8?B?Z0ozLzVkTmw4Z2pQS2lqdlVjck1JWXlJSWdJcjFYeVplL3VvM3BIMDh4eXR6?=
- =?utf-8?B?Yy9NdWNyUWs1NlE0eHdSUWMyTUFJSG1LVVZaam9oWnBHN0NzOU4vZi96MWlH?=
- =?utf-8?B?QzFCS2hlSUtRTXFMTlBEdHRjZ1o5SncyeVpTMkM5eENxTVlWczlsSDNwWUk0?=
- =?utf-8?B?RVQrWDhaVE9VK09kSENBQ09lc2s5N3hSWFBYU0dEZk4vZkpqTnllcG05WDFr?=
- =?utf-8?B?azBkeEpnblhlNVZaUTFxTmczUjR2c2RQa2VTRC84OGFZNGtUV1FrV3ZlUW5q?=
- =?utf-8?B?QTNjU09VSEorUTdqZXpxbmhOeXh3MEV0RVl6V0MzZUZDRzVvSENSU0VORjVy?=
- =?utf-8?B?eHgrRmU1OE9vRTFjclhEUVFFcy9xb0l6WlJzTmgrNUNvdWdnOVNnYnFNdTk3?=
- =?utf-8?B?YTUzZ0RkL1VyV1JnViszSHgzb01vaVBOWDdjWU40ekN1VTIwNmQ4UldRV2ZE?=
- =?utf-8?B?OFowMUg4YzYwWElTQ1BIK0djV3pZTzBKa1RnSk84ZlNTdFBKeGoyamVraTZM?=
- =?utf-8?B?ZzBBUitGZGVaR0V3Mk5YdktKOWl0T0R0NnZobUttME1aRDFyQjdSRys3TFRT?=
- =?utf-8?B?SGtkYm5GbG1tOXpxYzFPYUNrdWxaZWpaUnBHZUxOR1k5eUZnbDJJbGhsNk00?=
- =?utf-8?B?bnJxZlB0d3d2ZHd3cVVNdlA2dXMzQ2RLRkRkaC9pK3lQUW9TTkpnWGNibzAx?=
- =?utf-8?B?WVBHeG1GWFdNUk5JZ2V6NkhkSms4SnIrVkFnMnYrSGdYSXdrcU5nNTEreGNn?=
- =?utf-8?B?RVh2b2p0aFcydENMTTFUVVlHQllhRFdkNklZZnRmQldLazFhakNLejVFMmRK?=
- =?utf-8?B?UWRvMEk3akdiN3oxT3BCY2E4U016Mkk0UE5jbXpXT1BvYkJ4SDk5cW1WSU4v?=
- =?utf-8?B?cDMxLzdVL3RGZ3dEbWZFV2Y3VXIyYVB0Y3VaZXVBQnY4L1BBVVdwWVo4YzF6?=
- =?utf-8?B?ZEFINWJITndqaEEzazI4SUh5bWJLaUowOFdhMVozdDNVc1lrMFhieVFGTEdk?=
- =?utf-8?B?ZFp2ZEdoV0VOaGdaYmdSRDRmS3ZyUWVVZUlPeG5ncWRoV3JoNmdVeGtXeDVS?=
- =?utf-8?B?M1M1NVg5RjE5M3FIZ21KUEFwVHNkOTBGd3ZxelJ5bDdaNWoyNklSOFdGNFpH?=
- =?utf-8?B?VUdRKytCclIwWE8zR3RzY3ZlSm03UUttOUxvN0phYXhHSlBRUng1QlFadzEv?=
- =?utf-8?B?b1RaZWdhN3B6MG5HdVVsYmltMTR6NG5BUGlJdE1tS2hwS0FDRGlDZnVOdGVT?=
- =?utf-8?B?eWFhMkRuOVZTRFpoL2tnV0Z1WWgwY2xhVGRpTEVTMkJGMSszS2dJSzBnak1t?=
- =?utf-8?B?SkJtVlgvdU1IT0xieGNoUXpmbytFcEIzSGI4blpoa0pHbzB4VjN1bSt0THF1?=
- =?utf-8?Q?6Xw8IreDUxAG+XsyWql6tEs=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 835cb109-09af-4ab2-bc8d-08db97ec1e51
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3674.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Aug 2023 08:47:38.2061 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NRWSmY1Gdhj8rgj+gGtncHoAjDeTcotLhdpbBWqWvwOnMx3kquQWzAztPEx25XCuGNkndFo2tCrdX1IIEbR4aGyhLUdNFVJBznp9H658uTg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5332
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691484466; x=1723020466;
- h=message-id:date:subject:to:references:from:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=N7rBE7wcfgBrM9yJHAyvrL3zV/03oY9pw9y8PBG8SXQ=;
- b=nOVhJcQAfltq0hEtU5P9ePcm3P9kH9YpWupY4T8blHuwuQphZkOjtn31
- w0fllunSl6Mnbu2IkfX+ucsRZdf6lhCsVilMFUAv5zeXMdfCXTjm3lEyC
- 01/5NLOZIkwhaGJoyOtd/n7RqapgZiT8H/PEpgbcKVUsxw58GHUWJetQA
- f4OsjBV0wc0dKPK+oHjW7hDbDidGHsUWgHZQ+ZamD4W1+Bh5B0FJkrQvD
- qic6uclTvmofnh/fxoiwCwthQYKjew5GIBeDcw4bzWI1zf8mV4AnKvY/o
- dGEn4vHrZHLsMxKofl4Iw4A8STeM3ktrsZqFzCpo7+LfeBOI4TJb8zebz
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nOVhJcQA
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH 2/9] ice: introduce PTP state machine
+References: <20230807193324.4128292-1-vladimir.oltean@nxp.com>
+In-Reply-To: <20230807193324.4128292-1-vladimir.oltean@nxp.com>
+From: Jamal Hadi Salim <jhs@mojatatu.com>
+Date: Tue, 8 Aug 2023 05:08:00 -0400
+Message-ID: <CAM0EoM=UM4SO+OVngZPsA22hP2tufhdGwNoWOSdK_1gY=30bJA@mail.gmail.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mojatatu-com.20221208.gappssmtp.com; s=20221208; t=1691485691; x=1692090491; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=YQmrlSF1etaTQwOr3qLYhfPTQagr4vCwIJuRXoehTGo=;
+ b=yz3191m8r7PPh74O1VayV2JHqTo89Iee1CB/hBMLgWSXDLzuv0v0UI4WLcIdEQxPiU
+ Avs238YH21ljuwZkDsdyiLvXSQRFrG7GGk/ZZwEkLK3Abt93rKnISh1WgImPY2LKof5H
+ +hNd+nok43vRqo5Zr8dwD4P8pSdrrHwW3cehK7ysr3c36am4UME+Fd2qin6wEgk5u3bF
+ WgxqHjfcPjdjtrVg+4CveeBD7IZVj/kM5lRE6A0ikC5hm2XMyHqsaTv427ItMA6DfhFf
+ eHSzN11GCBzylXMnOA47cmzaHDCsTlNHxlb59gtKfoczdD8TBZKqlhCWvxuqYgcfdV/t
+ CkjQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=mojatatu-com.20221208.gappssmtp.com
+ header.i=@mojatatu-com.20221208.gappssmtp.com header.a=rsa-sha256
+ header.s=20221208 header.b=yz3191m8
+Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 00/11] Improve the taprio
+ qdisc's relationship with its children
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,137 +104,262 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Jiri Pirko <jiri@resnulli.us>, Pedro Tammela <pctammela@mojatatu.com>,
+ netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
+ linux-kernel@vger.kernel.org, Peilin Ye <yepeilin.cs@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Maxim Georgiev <glipus@gmail.com>,
+ Cong Wang <xiyou.wangcong@gmail.com>,
+ Zhengchao Shao <shaozhengchao@huawei.com>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============2484060317574202742=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 8/7/23 19:32, Jacob Keller wrote:
-> 
-> 
-> On 8/7/2023 4:12 AM, Przemek Kitszel wrote:
->> On 8/7/23 12:36, Karol Kolacinski wrote:
->>> Add PTP state machine so that the driver can correctly identify PTP
->>> state around resets.
->>> When the driver got information about ungraceful reset, PTP was not
->>> prepared for reset and it returned error. When this situation occurs,
->>> prepare PTP before rebuilding its structures.
->>>
->>> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
->>> ---
->>>    drivers/net/ethernet/intel/ice/ice.h         |   1 -
->>>    drivers/net/ethernet/intel/ice/ice_ethtool.c |   2 +-
->>>    drivers/net/ethernet/intel/ice/ice_ptp.c     | 131 +++++++++++++------
->>>    drivers/net/ethernet/intel/ice/ice_ptp.h     |  10 ++
->>>    4 files changed, 99 insertions(+), 45 deletions(-)
->>>
->>> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
->>> index 34be1cb1e28f..86f6f94da535 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice.h
->>> +++ b/drivers/net/ethernet/intel/ice/ice.h
->>> @@ -490,7 +490,6 @@ enum ice_pf_flags {
->>>    	ICE_FLAG_DCB_ENA,
->>>    	ICE_FLAG_FD_ENA,
->>>    	ICE_FLAG_PTP_SUPPORTED,		/* PTP is supported by NVM */
->>> -	ICE_FLAG_PTP,			/* PTP is enabled by software */
->>>    	ICE_FLAG_ADV_FEATURES,
->>>    	ICE_FLAG_TC_MQPRIO,		/* support for Multi queue TC */
->>>    	ICE_FLAG_CLS_FLOWER,
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
->>> index d3cb08e66dcb..7d57ecf48da0 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
->>> @@ -3275,7 +3275,7 @@ ice_get_ts_info(struct net_device *dev, struct ethtool_ts_info *info)
->>>    	struct ice_pf *pf = ice_netdev_to_pf(dev);
->>>    
->>>    	/* only report timestamping if PTP is enabled */
->>> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
->>> +	if (!test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
->>>    		return ethtool_op_get_ts_info(dev, info);
->>>    
->>>    	info->so_timestamping = SOF_TIMESTAMPING_TX_SOFTWARE |
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
->>> index 0669ca905c46..a6ea90b9461e 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
->>> @@ -255,6 +255,31 @@ ice_verify_pin_e810t(struct ptp_clock_info *info, unsigned int pin,
->>>    	return ice_ptp_set_sma_e810t(info, pin, func);
->>>    }
->>>    
->>> +/**
->>> + * ice_ptp_state_str - Convert PTP state to readable string
->>> + * @state: PTP state to convert
->>> + *
->>> + * Returns: the human readable string representation of the provided PTP
->>> + * state, used for printing error messages.
->>> + */
->>> +static const char *ice_ptp_state_str(enum ice_ptp_state state)
->>> +{
->>> +	switch (state) {
->>> +	case ICE_PTP_UNINIT:
->>> +		return "UNINITIALIZED";
->>> +	case ICE_PTP_INITIALIZING:
->>> +		return "INITIALIZING";
->>> +	case ICE_PTP_READY:
->>> +		return "READY";
->>> +	case ICE_PTP_RESETTING:
->>> +		return "RESETTING";
->>> +	case ICE_PTP_ERROR:
->>> +		return "ERROR";
->>> +	}
->>> +
->>> +	return "UNKNOWN";
->>> +}
->>> +
->>>    /**
->>>     * ice_ptp_configure_tx_tstamp - Enable or disable Tx timestamp interrupt
->>>     * @pf: The PF pointer to search in
->>> @@ -1285,7 +1310,7 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
->>>    	struct ice_ptp_port *ptp_port;
->>>    	struct ice_hw *hw = &pf->hw;
->>>    
->>> -	if (!test_bit(ICE_FLAG_PTP, pf->flags))
->>> +	if (pf->ptp.state != ICE_PTP_READY)
->>
->> test_bit() is atomic API, but "just reading/using variable" is rather not.
->> Please extend commit message to say something about why transition  here
->> (here=whole commit) is safe.
->>
-> 
-> Just use of "test_bit()" doesn't really provide much more than
-> potentially some memory barriers. On its own, it doesn't actually
-> provide any synchronization mechanism. I guess this could be "READ_ONCE"
-> or use some barrier to make sure this doesn't re-order the read, but
-> otherwise its about as atomic as before. Either we see the value as
-> being ready or we don't. That's essentially no different than the bit flag.
-> 
-> Unless we were using something like "test_and_set" or "test_and_clear"
-> the use of atomic flags here isn't providing any actual protection or
-> synchronization beyond avoiding screwing up the flags variable itself.
-> 
-> I considered swapping to an atomic value like using atomic_set or
-> something but it really felt like overkill when writing it in the
-> out-of-tree driver. (Yes, the lack of proper synchronization primitives
-> in ice is rather annoying...)
-> 
-> In my understanding this should be no worse than before since the state
-> field is always either directly assigned or directly read. We're not
-> replacing something like "test_and_set_bit" so we aren't any worse than
-> before.
-> 
-> This could be clarified better in the commit message.  Note that
-> originally we kept the flag and introduced the state field, then later
-> removed the flag. Some of this detail was lost when squashing everything
-> together.
+--===============2484060317574202742==
+Content-Type: multipart/alternative; boundary="000000000000c86075060265b36f"
 
-Thank you :)
+--000000000000c86075060265b36f
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-As a whole this series makes things better, so it's not an issue.
+On Mon, Aug 7, 2023 at 3:37=E2=80=AFPM Vladimir Oltean <vladimir.oltean@nxp=
+.com>
+wrote:
 
-Some part of the question originates in me not knowing the driver well, 
-what only proves the need for clarification/s everywhere ;)
+> Changes in v4:
+> - Clean up some leftovers in the ptp_mock driver.
+> - Add CONFIG_PTP_1588_CLOCK_MOCK to
+> tools/testing/selftests/tc-testing/config
+> - Wait for taprio schedule to become operational in the selftests
+>
+> Changes in v3:
+> Fix ptp_mock compilation as module, fix small mistakes in selftests.
+>
+> Changes in v2:
+> It was requested to add test cases for the taprio software and offload
+> modes.
+> Those are patches 08 and 09.
+>
+> That implies adding taprio offload support to netdevsim, which is patch 0=
+7.
+>
+> In turn, that implies adding a PHC driver for netdevsim, which is patch 0=
+6.
+>
+> v1 at:
+>
+> https://lore.kernel.org/lkml/20230531173928.1942027-1-vladimir.oltean@nxp=
+.com/
+>
+> Original message:
+>
+> Prompted by Vinicius' request to consolidate some child Qdisc
+> dereferences in taprio:
+> https://lore.kernel.org/netdev/87edmxv7x2.fsf@intel.com/
+>
+> I remembered that I had left some unfinished work in this Qdisc, namely
+> commit af7b29b1deaa ("Revert "net/sched: taprio: make qdisc_leaf() see
+> the per-netdev-queue pfifo child qdiscs"").
+>
+> This patch set represents another stab at, essentially, what's in the
+> title. Not only does taprio not properly detect when it's grafted as a
+> non-root qdisc, but it also returns incorrect per-class stats.
+> Eventually, Vinicius' request is addressed too, although in a different
+> form than the one he requested (which was purely cosmetic).
+>
+> Review from people more experienced with Qdiscs than me would be
+> appreciated. I tried my best to explain what I consider to be problems.
+> I am deliberately targeting net-next because the changes are too
+> invasive for net - they were reverted from stable once already.
+>
+>
+Thanks for getting those tdc tests in as well. For this patchset:
+Acked-by: Jamal Hadi Salim <jhs@mojatatu.com>
+
+cheers,
+jamal
+
+> Vladimir Oltean (11):
+>   net/sched: taprio: don't access q->qdiscs[] in unoffloaded mode during
+>     attach()
+>   net/sched: taprio: keep child Qdisc refcount elevated at 2 in offload
+>     mode
+>   net/sched: taprio: try again to report q->qdiscs[] to qdisc_leaf()
+>   net/sched: taprio: delete misleading comment about preallocating child
+>     qdiscs
+>   net/sched: taprio: dump class stats for the actual q->qdiscs[]
+>   net: ptp: create a mock-up PTP Hardware Clock driver
+>   net: netdevsim: use mock PHC driver
+>   net: netdevsim: mimic tc-taprio offload
+>   selftests/tc-testing: add ptp_mock Kconfig dependency
+>   selftests/tc-testing: test that taprio can only be attached as root
+>   selftests/tc-testing: verify that a qdisc can be grafted onto a taprio
+>     class
+>
+>  MAINTAINERS                                   |   7 +
+>  drivers/net/Kconfig                           |   1 +
+>  drivers/net/netdevsim/ethtool.c               |  11 ++
+>  drivers/net/netdevsim/netdev.c                |  38 +++-
+>  drivers/net/netdevsim/netdevsim.h             |   2 +
+>  drivers/ptp/Kconfig                           |  11 ++
+>  drivers/ptp/Makefile                          |   1 +
+>  drivers/ptp/ptp_mock.c                        | 175 ++++++++++++++++++
+>  include/linux/ptp_mock.h                      |  38 ++++
+>  net/sched/sch_taprio.c                        |  68 ++++---
+>  tools/testing/selftests/tc-testing/config     |   3 +-
+>  .../tc-testing/taprio_wait_for_admin.sh       |  16 ++
+>  .../tc-testing/tc-tests/qdiscs/taprio.json    | 102 +++++++++-
+>  13 files changed, 443 insertions(+), 30 deletions(-)
+>  create mode 100644 drivers/ptp/ptp_mock.c
+>  create mode 100644 include/linux/ptp_mock.h
+>  create mode 100755
+> tools/testing/selftests/tc-testing/taprio_wait_for_admin.sh
+>
+> --
+> 2.34.1
+>
+>
+
+--000000000000c86075060265b36f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Aug 7, 2023 at 3:37=E2=80=AFP=
+M Vladimir Oltean &lt;<a href=3D"mailto:vladimir.oltean@nxp.com">vladimir.o=
+ltean@nxp.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">Changes in v4:<br>
+- Clean up some leftovers in the ptp_mock driver.<br>
+- Add CONFIG_PTP_1588_CLOCK_MOCK to tools/testing/selftests/tc-testing/conf=
+ig<br>
+- Wait for taprio schedule to become operational in the selftests<br>
+<br>
+Changes in v3:<br>
+Fix ptp_mock compilation as module, fix small mistakes in selftests.<br>
+<br>
+Changes in v2:<br>
+It was requested to add test cases for the taprio software and offload mode=
+s.<br>
+Those are patches 08 and 09.<br>
+<br>
+That implies adding taprio offload support to netdevsim, which is patch 07.=
+<br>
+<br>
+In turn, that implies adding a PHC driver for netdevsim, which is patch 06.=
+<br>
+<br>
+v1 at:<br>
+<a href=3D"https://lore.kernel.org/lkml/20230531173928.1942027-1-vladimir.o=
+ltean@nxp.com/" rel=3D"noreferrer" target=3D"_blank">https://lore.kernel.or=
+g/lkml/20230531173928.1942027-1-vladimir.oltean@nxp.com/</a><br>
+<br>
+Original message:<br>
+<br>
+Prompted by Vinicius&#39; request to consolidate some child Qdisc<br>
+dereferences in taprio:<br>
+<a href=3D"https://lore.kernel.org/netdev/87edmxv7x2.fsf@intel.com/" rel=3D=
+"noreferrer" target=3D"_blank">https://lore.kernel.org/netdev/87edmxv7x2.fs=
+f@intel.com/</a><br>
+<br>
+I remembered that I had left some unfinished work in this Qdisc, namely<br>
+commit af7b29b1deaa (&quot;Revert &quot;net/sched: taprio: make qdisc_leaf(=
+) see<br>
+the per-netdev-queue pfifo child qdiscs&quot;&quot;).<br>
+<br>
+This patch set represents another stab at, essentially, what&#39;s in the<b=
+r>
+title. Not only does taprio not properly detect when it&#39;s grafted as a<=
+br>
+non-root qdisc, but it also returns incorrect per-class stats.<br>
+Eventually, Vinicius&#39; request is addressed too, although in a different=
+<br>
+form than the one he requested (which was purely cosmetic).<br>
+<br>
+Review from people more experienced with Qdiscs than me would be<br>
+appreciated. I tried my best to explain what I consider to be problems.<br>
+I am deliberately targeting net-next because the changes are too<br>
+invasive for net - they were reverted from stable once already.<br>
+<br></blockquote><div><br></div><div>Thanks for getting those tdc tests in =
+as well. For this patchset:</div><div>Acked-by: Jamal Hadi Salim &lt;<a hre=
+f=3D"mailto:jhs@mojatatu.com">jhs@mojatatu.com</a>&gt;</div><div><br></div>=
+<div>cheers,</div><div>jamal=C2=A0</div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex">
+Vladimir Oltean (11):<br>
+=C2=A0 net/sched: taprio: don&#39;t access q-&gt;qdiscs[] in unoffloaded mo=
+de during<br>
+=C2=A0 =C2=A0 attach()<br>
+=C2=A0 net/sched: taprio: keep child Qdisc refcount elevated at 2 in offloa=
+d<br>
+=C2=A0 =C2=A0 mode<br>
+=C2=A0 net/sched: taprio: try again to report q-&gt;qdiscs[] to qdisc_leaf(=
+)<br>
+=C2=A0 net/sched: taprio: delete misleading comment about preallocating chi=
+ld<br>
+=C2=A0 =C2=A0 qdiscs<br>
+=C2=A0 net/sched: taprio: dump class stats for the actual q-&gt;qdiscs[]<br=
+>
+=C2=A0 net: ptp: create a mock-up PTP Hardware Clock driver<br>
+=C2=A0 net: netdevsim: use mock PHC driver<br>
+=C2=A0 net: netdevsim: mimic tc-taprio offload<br>
+=C2=A0 selftests/tc-testing: add ptp_mock Kconfig dependency<br>
+=C2=A0 selftests/tc-testing: test that taprio can only be attached as root<=
+br>
+=C2=A0 selftests/tc-testing: verify that a qdisc can be grafted onto a tapr=
+io<br>
+=C2=A0 =C2=A0 class<br>
+<br>
+=C2=A0MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 =C2=A07 +<br>
+=C2=A0drivers/net/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
+=C2=A0drivers/net/netdevsim/ethtool.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 11 ++<br>
+=C2=A0drivers/net/netdevsim/netdev.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 |=C2=A0 38 +++-<br>
+=C2=A0drivers/net/netdevsim/netdevsim.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0|=C2=A0 =C2=A02 +<br>
+=C2=A0drivers/ptp/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 11 ++<br>
+=C2=A0drivers/ptp/Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0drivers/ptp/ptp_mock.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 175 ++++++++++++++++++<br>
+=C2=A0include/linux/ptp_mock.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 38 ++++<br>
+=C2=A0net/sched/sch_taprio.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 68 ++++---<br>
+=C2=A0tools/testing/selftests/tc-testing/config=C2=A0 =C2=A0 =C2=A0|=C2=A0 =
+=C2=A03 +-<br>
+=C2=A0.../tc-testing/taprio_wait_for_admin.sh=C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 16 ++<br>
+=C2=A0.../tc-testing/tc-tests/qdiscs/taprio.json=C2=A0 =C2=A0 | 102 +++++++=
+++-<br>
+=C2=A013 files changed, 443 insertions(+), 30 deletions(-)<br>
+=C2=A0create mode 100644 drivers/ptp/ptp_mock.c<br>
+=C2=A0create mode 100644 include/linux/ptp_mock.h<br>
+=C2=A0create mode 100755 tools/testing/selftests/tc-testing/taprio_wait_for=
+_admin.sh<br>
+<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000c86075060265b36f--
+
+--===============2484060317574202742==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2484060317574202742==--
