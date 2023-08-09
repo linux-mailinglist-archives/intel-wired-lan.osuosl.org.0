@@ -1,90 +1,184 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24B79776383
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Aug 2023 17:15:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B1C377667A
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Aug 2023 19:29:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A6F5F834D5;
-	Wed,  9 Aug 2023 15:15:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6F5F834D5
+	by smtp4.osuosl.org (Postfix) with ESMTP id B14D9418DD;
+	Wed,  9 Aug 2023 17:29:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B14D9418DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691594157;
-	bh=+Y9j4/Ogow/ixWgiry++cX8chshhvacRSlOmcLmsTs0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1691602153;
+	bh=dlkc9DAjegR6lI5aHcGbjggoWVEFShZdW0kW3counHE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=cMd0MMo2NrFuFd397Uxsz225mvvgCsf30kOVn0geHyxhcBEsAtXvFzVYxxxgA5tT/
-	 ncoOQ9CfbH1Svw5bpaH1uKuqRxT14fBBWyOiIwqMSXiAo7YVFWzfHyfzo1e6qM0XTc
-	 dcQswqdJNufrZWKKEz74rA2Tz+HiEzMZYmxf5lnMjo0QfOxH4ERGVna47ym042BuZ7
-	 O15MSqZSZMhojLM0ZnU+0vgbHK1VVpNqzVCZeKNakw6iqahHBzAYCr0Z9+t0m3Btvp
-	 ac1+E1QHRoSLtdUqkJlj6pEzQ0B2roaNsidY6hYlNAH/fGsR8mf6SNPf6cAjsNCEF7
-	 d+u+otoroLT4A==
+	 From;
+	b=OeJqrUJCh/Xi0HlAxwwKyneXaWBDsfLBdK3jCsQkBr1i7cbU3+8RbpgPW42n6yiX3
+	 yk1kLWiBVchTgz1G4AIDBJhkdhD0/vIlVDz07h+UfldAbPWaV0aHxkchJbB2TJkEIC
+	 W+mBSGiqNGdbyGvRVt1W0OZhf5Ek1gNsF1fUi+cGoDVuZuF5WS1ijuSCDWN1l1Iaxp
+	 kNeymWmjj1oHqedfIa8gGn9YUVySEsOrdGtjURcSsr7FGX334IiaGLYMrohTuJUj5y
+	 xiMQb7VH2JFju6dVVmCJU/+rqoJkMWk4OWDNLydAdeiaN3fCCu/rrOtbXka1kMTdun
+	 9yLAfs3jv7gag==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DjogFkiK94o8; Wed,  9 Aug 2023 15:15:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n8mxknNzIPyF; Wed,  9 Aug 2023 17:29:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 64ED38328E;
-	Wed,  9 Aug 2023 15:15:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 64ED38328E
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0A9571BF283
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 15:15:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3099B41745;
+	Wed,  9 Aug 2023 17:29:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3099B41745
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EC31D1BF3B9
+ for <intel-wired-lan@osuosl.org>; Wed,  9 Aug 2023 17:29:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D85B483252
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 15:15:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D85B483252
+ by smtp4.osuosl.org (Postfix) with ESMTP id C136E41745
+ for <intel-wired-lan@osuosl.org>; Wed,  9 Aug 2023 17:29:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C136E41745
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ajxHn8yeN4g9 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Aug 2023 15:15:50 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D08F483298
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 15:15:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D08F483298
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-665-SWTbmGHBMeyAijRrTQxKGA-1; Wed, 09 Aug 2023 11:15:42 -0400
-X-MC-Unique: SWTbmGHBMeyAijRrTQxKGA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA8E2185A78F;
- Wed,  9 Aug 2023 15:15:38 +0000 (UTC)
-Received: from swamp.redhat.com (unknown [10.45.226.148])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 11A812026D4B;
- Wed,  9 Aug 2023 15:15:35 +0000 (UTC)
-From: Petr Oros <poros@redhat.com>
-To: netdev@vger.kernel.org
-Date: Wed,  9 Aug 2023 17:15:29 +0200
-Message-ID: <20230809151529.842798-3-poros@redhat.com>
-In-Reply-To: <20230809151529.842798-1-poros@redhat.com>
-References: <20230809151529.842798-1-poros@redhat.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Oj6bqA2v3DcE for <intel-wired-lan@osuosl.org>;
+ Wed,  9 Aug 2023 17:29:05 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B1464418DD
+ for <intel-wired-lan@osuosl.org>; Wed,  9 Aug 2023 17:29:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1464418DD
+X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="368645903"
+X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="368645903"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2023 10:29:04 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="821936611"
+X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="821936611"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Aug 2023 10:29:04 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Wed, 9 Aug 2023 10:29:04 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Wed, 9 Aug 2023 10:29:04 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Wed, 9 Aug 2023 10:29:04 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=badnoZ9dcrrisWbONWdT0iKoDm9J+2gHwf303EDImWx4f1YijKhKH6b+SLlQuEO/YHWWtQJiFunGvYFeINRyqLGlb0V6u5DpspY4NoU3R9VRRgQ9jUS/kA6cgtypSVrE0DbOS/c5YtYFFY1UeXYStsEJIbtAAdT8Nya6DKBQcW/3TyGDmPHA/1FD4Tg2SwcfjX0ODdbv5c+T5ezy2+AdHS0bdPW5N9AauKKa7saTr+1CfadoVmD78fT5zSaooOOnMltfej0Q5PfMo/3nqhgobfFqxQPf56Ne95QQPrh0pniu1ir+QT95jPe+TaFEgv0IGJnS1e/NA/TfLVyZu5nSWA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RfrXSzkj8NiQG+OJKtfwf7HQ7k7iMDAnrMf3xaZ5i5o=;
+ b=j216+XYLF0pecYTcCYKI4x5Pds36pnIvSDcx4HZXnBvDPiRicuiDo8WrT4RGPh4ivGz2rTKAqLDoHkyJE0KvusXNADq25NiKj2FOYZ+RuyW88D+vsaAO/H2Rlt3zinG5Rpn4XwBqSgh9DxtxZfgpgRyTUF5z9H71drJmK9l/7Iime92Qb1PfBhn+jTKmDfO4lnyP2cyLxPGl7WqyuC3ak3zmwq8zIpJ56UqcRA8VsuYiJvmWcDmnhLylMxXSqDOECf7RArT/hyYXA0q1QpIZYz6Y8mTOF2NBwUrBAINPSUX95Aeaea5q8UlZU8+zLzebbPd2VEjsDZH+v/Z/Y2fCWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by SA1PR11MB8279.namprd11.prod.outlook.com (2603:10b6:806:25c::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Wed, 9 Aug
+ 2023 17:29:03 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::cb4c:eb85:42f6:e3ae]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::cb4c:eb85:42f6:e3ae%7]) with mapi id 15.20.6652.028; Wed, 9 Aug 2023
+ 17:29:02 +0000
+Message-ID: <eaca8a6c-2787-ecea-3d72-2c965a9a8b7f@intel.com>
+Date: Wed, 9 Aug 2023 10:29:00 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+To: <intel-wired-lan@osuosl.org>
+References: <20230809133913.2652736-1-jan.sokolowski@intel.com>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <20230809133913.2652736-1-jan.sokolowski@intel.com>
+X-ClientProxiedBy: MW4PR04CA0349.namprd04.prod.outlook.com
+ (2603:10b6:303:8a::24) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1691594148;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fJTHP3h8jgE1WAfofh/OTR2zhEA9OJbMlwTVi1RJsEQ=;
- b=jRNCYua4kPmwVhdqtepe83nfxMzhlhNlIU4ke4Re8i3Ievwqhltq4exFHaH4O1Coq+Onfq
- FJZ8JsKRW4rKYMRa9L1LyPfUd0+bE1fL0ru3s+ymoGHmSV8weVA/LIamOIS/lGQBmyowLw
- h32o9oYMR5GU+InRj3zxpwYR7rghapM=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=jRNCYua4
-Subject: [Intel-wired-lan] [PATCH net v2 2/2] ice: Fix NULL pointer deref
- during VF reset
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|SA1PR11MB8279:EE_
+X-MS-Office365-Filtering-Correlation-Id: b7436fde-6ce8-4d1a-1e34-08db98fe1fd5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: sSTSpy755wAA82crzngmkM0VEm/PB3zYo+e9DbAk+bwr1j0cwS73KuMbLnKxgqJ2t7zyNr0B2gfLxOEYQb4tzwfzT9rU4YMT+O6/KAxDr5FVajgXOPoJyn3BzopD5MnZ27MH10h7XdI1f209odpbjEzCbNTk3WSgiVFpSiXqgZ2h287jGW16HZBv+bPAnaolrmTFd2wz5uO6LcTbvmiNdm7HDti+o+2m7YjYJyq5HetacYIzp2e/SQwOOUXxcsofW9/Kbo8cEa9xcPrmpeh0GPMc5+O1j1XeZlly3kzPMxNPp9z6PzoWfWit3HoFhoO7DwS9oN9z+TMf24rU2Fh9Pq++Mj6y8+9+tLdtjYa2kOH/gqC2Jc6iEkaXuJMCL15V+V6ykFjsb5nWUb2zOxptJk0B4txxuFOpxxP146P4XEFN5dnMQT8BTC3L0iOzMKufpAUsRDIsPcxrRCxu8gp32t+MmKe0PPCk0OWiAAZendCEII0GIodyLTPNReQWV/cW+OJ4qV42w7QAFov1JQin6W8aAA3FJDkW8Y/W/GZf9PQoXNFIhhRcA9ksWqOm8g7amxBAWoQzkFzeYzac2CaNVQpugkdl9FdSx0BOAHSo5L8VKaaiBieKqV82kSnNbBb/P2iESOhrDv5Jw41qNiRY7A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(396003)(39860400002)(136003)(376002)(346002)(186006)(1800799006)(451199021)(66476007)(66556008)(6916009)(66946007)(41300700001)(8676002)(8936002)(316002)(6486002)(83380400001)(2616005)(38100700002)(31696002)(86362001)(26005)(82960400001)(6512007)(36756003)(53546011)(6506007)(478600001)(31686004)(5660300002)(2906002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?clZ4bEFXNzZtWnFIY0NtZldCR2FVY1dVakJFVGkyMStQMGdoZmF1dnlRQ21G?=
+ =?utf-8?B?SG9aRitkUUVONTFBV0QvWHdaYUJjbXQybEVaaUViWldZaWltUVBncElWVFo3?=
+ =?utf-8?B?K0FQYkhUeGg0ejQxbmRFY0ZkcnRIb1UzMFNsVkJwMUdzYjhnbGYxbFFaTUQv?=
+ =?utf-8?B?SlpjTkVkNmxqZ2JVSjZPTlQrai9WOG16Z3JZcWo0MUJLSDYvUUFFMHlHZE9k?=
+ =?utf-8?B?N1BXZXJPdTBIL1lEc3A3V0ZBZW5UbHM3ZkRKM0kxOHYyakE4YU93aDZPYW1t?=
+ =?utf-8?B?cHJPbnRMMVFJVG1QYWUwRFJ5aXFnTjYyNVMrbmFYUW5WcmxZQUFaU3AzNGxZ?=
+ =?utf-8?B?R3g3S08wS1JlWUxjRVVZK0d0MEJTbnU0cXpsVEhCdW92eHAvZ2lmbUd0dito?=
+ =?utf-8?B?QkNtS2tWbjdCWjFPTlJTRHoyc0svS3RyRXIxZGRvd0lkSVk1SDBLeU4wUXVm?=
+ =?utf-8?B?NVhOZDZhMjFpdjZyamhsZEtwcUlDNFQxOFRCbUdvZ0QzYTNib0JtK0N2K2lz?=
+ =?utf-8?B?NUNIVk8rTUlDdmVpRkQrMWlYZVRlL2ViV2FHMVN1RUVqbkRCeWhBZFN1K0pF?=
+ =?utf-8?B?WUlXSktJUEEwai8zYlliblQ1UmM2WkpJN3Z3cEZSWFR2TldzWWRRQVFkb1Ir?=
+ =?utf-8?B?S3NSdVlyanNxMld1ZmJmbXFUVWpCMml2TENvN0pGTGZUK2pBaUpYbFU1eDVI?=
+ =?utf-8?B?RGswY3l0OTVmczhLMGVNSVp3UkgwMk9NYU1jZ0RVVjMvTDNvdHdZcHJ0R0RC?=
+ =?utf-8?B?bldXWlNTV0lnVGxLODVHTEJMNER1UzQyQ0JNWVNVYndacGVicUFDMnZrMGFY?=
+ =?utf-8?B?YU9ubTRvV2JsM2ZGeTlTUnFXVVlyN1h1bXBVNnFLYmhDYkJ4UlVxOUt4QjRa?=
+ =?utf-8?B?NGhNZHkwdDZGbHpBSFd3UmdTdEFmZjEwY01JV1hwd0VnWGM0dngwNVhjSjdy?=
+ =?utf-8?B?Z25aVWcyTnAyeGh5YkI3RnVNNzAvSXZIK1kzZTJQRGQ1dG1BcUVXMDRkNFF6?=
+ =?utf-8?B?aHIwTTNJZW5YUHdrZmlsRmYwQjJvQ3kvMXRGbE94SmRuSXBQN1JhR0VvdnBy?=
+ =?utf-8?B?NmROMnNKQ1ArUktHSktUR3RtdHlOMXBtNER4VUZKWU9ibG1JTVlFZTV3cnNT?=
+ =?utf-8?B?R0FNc0FuTVVxRmQyN2FHVlYvTFV1c0dFTmdIUzlMUFBYWDN1K3R2VjhhSmdn?=
+ =?utf-8?B?bjUwWFJvdXFia0doWUdCVFY1d3k4NkdmUUJBOGVQYzQ5NmZtVTM4dnRuTUlk?=
+ =?utf-8?B?Z3puUXJYaFM4czEyK1Z6aUV3RWFXbkQ5VUJCTTBBa0ZReUJnYmhiL1FHYmNi?=
+ =?utf-8?B?SDhCNGRtZmo4dXlsVzVlUnIzM0pzU3ZESTF2OU9Na3FWS1c3eG5YVlAyaTF0?=
+ =?utf-8?B?dTllNGJZQmdqbUJiNUYzYTBkZGt6UVFmcy8rN1RaV05DcitzWVIxT3JqOWt6?=
+ =?utf-8?B?RHB0SzZwV2JVc0RWVFkxNVJqd0ptMm5uMUlMejFQL1lGS0JTeU5sMWdhd0kx?=
+ =?utf-8?B?UFo3WUhlV3IyK0c1elRKcmo5eTBXQnArWXd5eDdDYWNTcVY2TEhHckdUWnU4?=
+ =?utf-8?B?bTZpcHNjbkVJVzdBSVhoQmVPcEprTE14Nmdkc1RxQVRRalJSVEVrNVRtRFQ2?=
+ =?utf-8?B?QUxlUlN6alY3M0J2Q28yMElSczBpTVFPeEpleXMwaHpyK2Y4Z0xDa25MeDJB?=
+ =?utf-8?B?SWdFZDZFMUY5ZUUxZnR3SzdweUNFSTNSUFl3eXlEQWdvanYwYUtFNk1HSTZq?=
+ =?utf-8?B?VFgzM0tSNk5SSmpLekRzUmltdVhHWHZrYkJCRnh6UzBDc01JSG4yTE9qbnZ2?=
+ =?utf-8?B?MkF0elpjTHVzblpVeFlyZktGcXJ0b0ZGUFVXZUpmWFI5NUVFYURKOURJWWpo?=
+ =?utf-8?B?L1FIcnR5U3FSdnBudWt4SmdDcWU2Ly92UzYwNTFkZERFa05NZWt0bE9nd1Yy?=
+ =?utf-8?B?R1MvQm5UNEJmc29uMzQ2OUhXMFdGY2tZWHdYTm1IODhHTVVDbElocHRIdkFp?=
+ =?utf-8?B?R1R2WDN6VG9Ua2pHV0JpN1hTc1lTRmhkUUZJdUcwZlBlemxHM01Wb1NSQkJy?=
+ =?utf-8?B?bG1tNCtoeTU5K1FpcWhWZGh5eFVLQU5MQysvblZkMEFvR2RDNzNuZHlzSUlv?=
+ =?utf-8?B?dGVWS1piV2lPTDIvN2MvRGNBODFicUxzODBWZUY5WXMxS0JHbmhmUkhpNDNh?=
+ =?utf-8?B?S3c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: b7436fde-6ce8-4d1a-1e34-08db98fe1fd5
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Aug 2023 17:29:02.8950 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DiJVfjBfQmr8bSdOE7U8kpR8UYPISD5NqKAltnwHdLmcpfuAcK5j98O7YOuTnVsKyISIx0sDK/1fUeZizQG7pcUlzH0tTqYsKs1X8LusxW8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB8279
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1691602145; x=1723138145;
+ h=message-id:date:subject:to:references:from:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=Xxw9QifUjVCy+kaUMS8gOGeaVqb67WnzUA/ZZrHfv+w=;
+ b=lQ8LhSjSjxEVtS9YDnEQmpN2Gzb7QI5eFkG//smCLEbkGEYYDV5FQOtM
+ iJF/tcEjNLf3mxwEGw3RhWaiq7C7oE18BKE91uoViP/93Kvu8nznJlHLw
+ O/Eax19CgKUEKMsCKYu94Z6P/lXBcSOqyWcefr4NwbmyCthQjiVZloMTP
+ eLCLHVU64Z5JAeUbQllHpsT1iSsLz9AKsqF3QeTBad97UXvF9r6OUWbnm
+ jTEEAPfU3t1ie3heYYCTYAEhtfDSfJ6VAZPvjgNvCfnwUxi5IBMothp+q
+ YXNnstxMYW0xQBCqumTFQj2bm0P7luA6olonCHRKSjUJhYscGbxuiRuFf
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=lQ8LhSjS
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 0/7] ice: staticization
+ refactor
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,136 +191,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: slawomirx.laba@intel.com, przemyslawx.patynowski@intel.com,
- kamil.maziarz@intel.com, jesse.brandeburg@intel.com,
- norbertx.zulinski@intel.com, dawidx.wesierski@intel.com, edumazet@google.com,
- przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com, horms@kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-During stress test with attaching and detaching VF from KVM and
-simultaneously changing VFs spoofcheck and trust there was a
-NULL pointer dereference in ice_reset_vf that VF's VSI is null.
 
-More than one instance of ice_reset_vf() can be running at a given
-time. When we rebuild the VSI in ice_reset_vf, another reset can be
-triaged from ice_service_task. In this case we can access the currently
-uninitialized VSI and cause panic. The window for this racing condition
-has been around for a long time but it's much worse after commit
-227bf4500aaa ("ice: move VSI delete outside deconfig") because
-the reset runs faster. ice_reset_vf() using vf->cfg_lock and when
-we move this lock before accessing to the VF VSI, we can fix
-BUG for all cases.
 
-Panic occurs sometimes in ice_vsi_is_rx_queue_active() and sometimes
-in ice_vsi_stop_all_rx_rings()
+On 8/9/2023 6:39 AM, Jan Sokolowski wrote:
+> ice: refactor methods to make them static
+> 
+> This series of patches refactor some ice driver files
+> in order to make as many methods as possible static.
+> One additional patch introduced in v3 also refactors
+> one method that can be simplified thanks to being
+> static.
+> 
+> Also there's a minor cleanup of unused methods.
+> 
+> Jan Sokolowski (7):
+>   ice: remove unused methods
+>   ice: refactor ice_ddp to make functions static
+>   ice: refactor ice_lib to make functions static
+>   ice: refactor ice_vf_lib to make functions static
+>   ice: refactor ice_sched to make functions static
+>   ice: refactor ice_ptp_hw to make functions static
+>   ice: refactor ice_vsi_is_vlan_pruning_ena
+> 
 
-With our reproducer, we can hit BUG:
-~8h before commit 227bf4500aaa ("ice: move VSI delete outside deconfig").
-~20m after commit 227bf4500aaa ("ice: move VSI delete outside deconfig").
-After this fix we are not able to reproduce it after ~48h
+I read through this and it all seems reasonable. Some of the code in
+ice_vf_lib.c used to be called from other files but later refactors have
+since eliminated those calls.
 
-There was commit cf90b74341ee ("ice: Fix call trace with null VSI during
-VF reset") which also tried to fix this issue, but it was only
-partially resolved and the bug still exists.
+Additionally the read PHY register functions in ice_ptp_hw.c also were
+previously called in other files but no longer.
 
-[ 6420.658415] BUG: kernel NULL pointer dereference, address: 0000000000000000
-[ 6420.665382] #PF: supervisor read access in kernel mode
-[ 6420.670521] #PF: error_code(0x0000) - not-present page
-[ 6420.675659] PGD 0
-[ 6420.677679] Oops: 0000 [#1] PREEMPT SMP NOPTI
-[ 6420.682038] CPU: 53 PID: 326472 Comm: kworker/53:0 Kdump: loaded Not tainted 5.14.0-317.el9.x86_64 #1
-[ 6420.691250] Hardware name: Dell Inc. PowerEdge R750/04V528, BIOS 1.6.5 04/15/2022
-[ 6420.698729] Workqueue: ice ice_service_task [ice]
-[ 6420.703462] RIP: 0010:ice_vsi_is_rx_queue_active+0x2d/0x60 [ice]
-[ 6420.705860] ice 0000:ca:00.0: VF 0 is now untrusted
-[ 6420.709494] Code: 00 00 66 83 bf 76 04 00 00 00 48 8b 77 10 74 3e 31 c0 eb 0f 0f b7 97 76 04 00 00 48 83 c0 01 39 c2 7e 2b 48 8b 97 68 04 00 00 <0f> b7 0c 42 48 8b 96 20 13 00 00 48 8d 94 8a 00 00 12 00 8b 12 83
-[ 6420.714426] ice 0000:ca:00.0 ens7f0: Setting MAC 22:22:22:22:22:00 on VF 0. VF driver will be reinitialized
-[ 6420.733120] RSP: 0018:ff778d2ff383fdd8 EFLAGS: 00010246
-[ 6420.733123] RAX: 0000000000000000 RBX: ff2acf1916294000 RCX: 0000000000000000
-[ 6420.733125] RDX: 0000000000000000 RSI: ff2acf1f2c6401a0 RDI: ff2acf1a27301828
-[ 6420.762346] RBP: ff2acf1a27301828 R08: 0000000000000010 R09: 0000000000001000
-[ 6420.769476] R10: ff2acf1916286000 R11: 00000000019eba3f R12: ff2acf19066460d0
-[ 6420.776611] R13: ff2acf1f2c6401a0 R14: ff2acf1f2c6401a0 R15: 00000000ffffffff
-[ 6420.783742] FS:  0000000000000000(0000) GS:ff2acf28ffa80000(0000) knlGS:0000000000000000
-[ 6420.791829] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 6420.797575] CR2: 0000000000000000 CR3: 00000016ad410003 CR4: 0000000000773ee0
-[ 6420.804708] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 6420.811034] vfio-pci 0000:ca:01.0: enabling device (0000 -> 0002)
-[ 6420.811840] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[ 6420.811841] PKRU: 55555554
-[ 6420.811842] Call Trace:
-[ 6420.811843]  <TASK>
-[ 6420.811844]  ice_reset_vf+0x9a/0x450 [ice]
-[ 6420.811876]  ice_process_vflr_event+0x8f/0xc0 [ice]
-[ 6420.841343]  ice_service_task+0x23b/0x600 [ice]
-[ 6420.845884]  ? __schedule+0x212/0x550
-[ 6420.849550]  process_one_work+0x1e2/0x3b0
-[ 6420.853563]  ? rescuer_thread+0x390/0x390
-[ 6420.857577]  worker_thread+0x50/0x3a0
-[ 6420.861242]  ? rescuer_thread+0x390/0x390
-[ 6420.865253]  kthread+0xdd/0x100
-[ 6420.868400]  ? kthread_complete_and_exit+0x20/0x20
-[ 6420.873194]  ret_from_fork+0x1f/0x30
-[ 6420.876774]  </TASK>
-[ 6420.878967] Modules linked in: vfio_pci vfio_pci_core vfio_iommu_type1 vfio iavf vhost_net vhost vhost_iotlb tap tun xt_CHECKSUM xt_MASQUERADE xt_conntrack ipt_REJECT nf_reject_ipv4 nft_compat nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 nft_counter nf_tables bridge stp llc sctp ip6_udp_tunnel udp_tunnel nfp tls nfnetlink bluetooth mlx4_en mlx4_core rpcsec_gss_krb5 auth_rpcgss nfsv4 dns_resolver nfs lockd grace fscache netfs rfkill sunrpc intel_rapl_msr intel_rapl_common i10nm_edac nfit libnvdimm ipmi_ssif x86_pkg_temp_thermal intel_powerclamp coretemp irdma kvm_intel i40e kvm iTCO_wdt dcdbas ib_uverbs irqbypass iTCO_vendor_support mgag200 mei_me ib_core dell_smbios isst_if_mmio isst_if_mbox_pci rapl i2c_algo_bit drm_shmem_helper intel_cstate drm_kms_helper syscopyarea sysfillrect isst_if_common sysimgblt intel_uncore fb_sys_fops dell_wmi_descriptor wmi_bmof intel_vsec mei i2c_i801 acpi_ipmi ipmi_si i2c_smbus ipmi_devintf intel_pch_thermal acpi_power_meter pcspk
- r
+Thanks for the cleanup.
 
-Fixes: efe41860008e ("ice: Fix memory corruption in VF driver")
-Fixes: f23df5220d2b ("ice: Fix spurious interrupt during removal of trusted VF")
-Signed-off-by: Petr Oros <poros@redhat.com>
----
-v2: fixed typos in the description
----
-drivers/net/ethernet/intel/ice/ice_vf_lib.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index 294e91c3453ccd..ea3310be8354cf 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -612,11 +612,17 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 		return 0;
- 	}
- 
-+	if (flags & ICE_VF_RESET_LOCK)
-+		mutex_lock(&vf->cfg_lock);
-+	else
-+		lockdep_assert_held(&vf->cfg_lock);
-+
- 	if (ice_is_vf_disabled(vf)) {
- 		vsi = ice_get_vf_vsi(vf);
- 		if (!vsi) {
- 			dev_dbg(dev, "VF is already removed\n");
--			return -EINVAL;
-+			err = -EINVAL;
-+			goto out_unlock;
- 		}
- 		ice_vsi_stop_lan_tx_rings(vsi, ICE_NO_RESET, vf->vf_id);
- 
-@@ -625,14 +631,9 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 
- 		dev_dbg(dev, "VF is already disabled, there is no need for resetting it, telling VM, all is fine %d\n",
- 			vf->vf_id);
--		return 0;
-+		goto out_unlock;
- 	}
- 
--	if (flags & ICE_VF_RESET_LOCK)
--		mutex_lock(&vf->cfg_lock);
--	else
--		lockdep_assert_held(&vf->cfg_lock);
--
- 	/* Set VF disable bit state here, before triggering reset */
- 	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
- 	ice_trigger_vf_reset(vf, flags & ICE_VF_RESET_VFLR, false);
--- 
-2.41.0
-
+>  drivers/net/ethernet/intel/ice/ice_ddp.c      | 120 ++---
+>  drivers/net/ethernet/intel/ice/ice_ddp.h      |  10 -
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  82 ++-
+>  drivers/net/ethernet/intel/ice/ice_lib.h      |   5 -
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  25 +-
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   4 -
+>  drivers/net/ethernet/intel/ice/ice_sched.c    |   2 +-
+>  drivers/net/ethernet/intel/ice/ice_sched.h    |   4 -
+>  drivers/net/ethernet/intel/ice/ice_switch.c   |  48 --
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |   1 -
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 468 +++++++++---------
+>  .../ethernet/intel/ice/ice_vf_lib_private.h   |   2 -
+>  12 files changed, 331 insertions(+), 440 deletions(-)
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
