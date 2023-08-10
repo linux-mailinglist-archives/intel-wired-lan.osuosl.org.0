@@ -1,100 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 963D677809C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 20:46:22 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23EC477826D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 22:54:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A73316101F;
-	Thu, 10 Aug 2023 18:46:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A73316101F
+	by smtp2.osuosl.org (Postfix) with ESMTP id B0CB040B6B;
+	Thu, 10 Aug 2023 20:54:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B0CB040B6B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691693180;
-	bh=DCo4jNugB2wj2EVME0khSWKjjbBW+/MD7RqkWRf2ggk=;
+	s=default; t=1691700883;
+	bh=LpkwKq45V+8I6t33WSfUxhlo7MAATvKi0t5sXadk7zM=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5NyWPiW+3JadsNdBtGvvRLjXllsftA2RspF02bSjNgWPieNXSF2dyG2+GLOmPRysY
-	 jLS6/+IljpSU2Y55+IBFHT/O5xl5B/PqVSDLaTPlj9Vr0QcZijndYjLSz5Y1kQXzo7
-	 8L7wu6GCTcWOFWQhIXMubZ4TGpEi4sofLaiJDzf1e+hIg/pt0TifYzoqzdcY58m5WJ
-	 OiknP1v/Ci6o6ttL2MFq3UTCkCF4eNp5YURAMJWaxFE8TmMfidTk8LeV4b6TE1vjSY
-	 ghT6N1ryHbIKONVyPR6Vfl78EVaNiG6ivywLkuTBplJz23TvMO1jwy2bOqi+aY7/8p
-	 xjSe4+AuLdWpw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e7kfMvfl_rRr; Thu, 10 Aug 2023 18:46:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3C94361002;
-	Thu, 10 Aug 2023 18:46:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C94361002
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B59531BF969
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 18:46:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8DE354036A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 18:46:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DE354036A
+	b=61CIjSUhm+Lm47YHMoU/pRNwX86nGCTeYxe6j9TqePtJCc1O/+VIZt/R1+mkIpLpy
+	 HIzlSPvQgAhe47UQ029QP4e/EZnmlzp3xK2Dm2uOUOeQrHG4jdpUqjBb8LF/reHTy3
+	 L6EL0IjbYrTZvhwDkBO4kTMHN/nxNXqTRKUyhrii8qecZyAvgXWk4p65ElRmMUPn/h
+	 BjfVzooxJNzELpTv+7za/RhAaRXrKcszsZ0EovyEaHamvH0sbfmRnNBNZ3BaxvQ+00
+	 tN01WVuYAFIh7yBZgGNMVBn1GGBJ7hwpGYZ7PX0x0f6JYIDTNb2X2+SFqyTja96tUR
+	 3g18mmdCs5D/g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vv5qqlU5RcAd for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Aug 2023 18:46:13 +0000 (UTC)
-Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
- [IPv6:2607:f8b0:4864:20::631])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3E054400DC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 18:46:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3E054400DC
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-1bb893e6365so9473885ad.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 11:46:13 -0700 (PDT)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xnx7Iont1cig; Thu, 10 Aug 2023 20:54:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9F3294052B;
+	Thu, 10 Aug 2023 20:54:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F3294052B
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2DFE1BF97F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 20:49:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id BA92283BFE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 20:49:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA92283BFE
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Pw2xrTL6k2NK for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Aug 2023 20:49:58 +0000 (UTC)
+Received: from mail-il1-x136.google.com (mail-il1-x136.google.com
+ [IPv6:2607:f8b0:4864:20::136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C4B5E83BC1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 20:49:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C4B5E83BC1
+Received: by mail-il1-x136.google.com with SMTP id
+ e9e14a558f8ab-34992fd567bso2044765ab.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 13:49:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691693172; x=1692297972;
+ d=1e100.net; s=20221208; t=1691700597; x=1692305397;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aD4/1sZser2bYv6MWlh14IS1WZm+jBzIMYH/7BTHdPg=;
- b=axF1DGGb/ISQQ0kq9RO7nqUc8FCC9yo1otwfwg8DYEL2gxWhf4GZmb+/Wn+45BjOTa
- +N3qC7pCRSKIKSqSjlPYx/H3vhQSVbfGs7FGzjoGvGshRg1jbv+5HSFez3p3MofbCVcP
- ZbGDAEnWMyxrujTyxwI1ey8FH5qCYWuhS776NkGLYptetQtRYgVD3MB7uhztd3R+RrkX
- 592lw0Ke5vdiH1b0+D7Y6LpR0ElY44nDnKKSfCZEIViXtSr8RAzm4zpLzXXWLYSjzEKt
- lAi5ZqDfCy1v/Szc0SEdCpJtB17GAKW+k5JDEtEiFUk/rIWwq8MIR18MY2CFfS6RPJpZ
- Nitw==
-X-Gm-Message-State: AOJu0YwvV8pBAV2wI1KCHSkhzEdA1mLyc1KL8BcEAbDIM/C9BXGSNtfH
- DxBky2o0RLicMUqzNMe/7sGkxhXVcz+Ia63F/IM=
-X-Google-Smtp-Source: AGHT+IFZv2IWBP2UQjY57EbZ1aEKhfpe99+b1ybWLM5PinM+M8Pll2NyW6GLul8RARS7ehj5SPlY9Q==
-X-Received: by 2002:a17:902:d511:b0:1b3:fafd:11c5 with SMTP id
- b17-20020a170902d51100b001b3fafd11c5mr3596148plg.44.1691693172613; 
- Thu, 10 Aug 2023 11:46:12 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net.
- [198.0.35.241]) by smtp.gmail.com with ESMTPSA id
- n4-20020a170902d2c400b001bb6c5ff4edsm2116032plc.173.2023.08.10.11.46.11
+ bh=IrPtI7WuVK/oaLBJhxp0over27m1houzlRFCqoHRsZI=;
+ b=czmexxVqW6F6N0GgtyZ9PO9eI7fJMJkPLPB3GZz200VKHRpylznL4jG+BzySrrwqLf
+ BpZqTfbwFJ8Y5mD3b7in3HK0nxgWO4mob6CtA5WQ6tbNjyQFXMy/p+1rubuNbTANlxmE
+ 5eChfejtaFJ+mSNKb77/RnzpKyxza580nlcBMunaOz7IkGGpwJLpHbyUYxKgC0R/QvvZ
+ 7pER6hS7W8GX9aNsMKg+btnESiGm/ZGWPWTF0kMoxgZ7NEp0HOeUwxfoRfsP1bekLMYv
+ 281uZuSBJusfrAIo1hWCr5X6fjyyk+xQbE1gXHD5aK6l5Ob/Sf7fBISakmfq83rgDhNX
+ 1JAw==
+X-Gm-Message-State: AOJu0YwJzTgcbA1IptiPj7APPHwSIl661FtXGQGY0+EQXBmjWU6koXcz
+ 6Zn0CqwnS05ADeL5fLp0VMItmw==
+X-Google-Smtp-Source: AGHT+IEwEFZIXKpAeifAuxh0Eqsxgobltmkf4dACqcHcGYNcVSpVavL7FAFg27OJnH28qQrTLzgHWA==
+X-Received: by 2002:a92:c54f:0:b0:348:b07e:fdac with SMTP id
+ a15-20020a92c54f000000b00348b07efdacmr51572ilj.3.1691700596858; 
+ Thu, 10 Aug 2023 13:49:56 -0700 (PDT)
+Received: from google.com (161.74.123.34.bc.googleusercontent.com.
+ [34.123.74.161]) by smtp.gmail.com with ESMTPSA id
+ u9-20020a92da89000000b003487840f1d3sm658566iln.50.2023.08.10.13.49.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Aug 2023 11:46:12 -0700 (PDT)
-Date: Thu, 10 Aug 2023 11:46:11 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <202308101131.D8DEE055@keescook>
-References: <20230810103509.163225-1-przemyslaw.kitszel@intel.com>
- <20230810103509.163225-2-przemyslaw.kitszel@intel.com>
+ Thu, 10 Aug 2023 13:49:56 -0700 (PDT)
+Date: Thu, 10 Aug 2023 20:49:53 +0000
+From: Justin Stitt <justinstitt@google.com>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Message-ID: <20230810204953.wwwvbl57m3cebf27@google.com>
+References: <cover.1690938732.git.gustavoars@kernel.org>
+ <52da391229a45fe3dbd5c43167cdb0701a17a361.1690938732.git.gustavoars@kernel.org>
+ <20230810173404.jjuvqo5tv57en7pg@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20230810103509.163225-2-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20230810173404.jjuvqo5tv57en7pg@google.com>
+X-Mailman-Approved-At: Thu, 10 Aug 2023 20:54:38 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=chromium.org; s=google; t=1691693172; x=1692297972;
+ d=google.com; s=20221208; t=1691700597; x=1692305397;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=aD4/1sZser2bYv6MWlh14IS1WZm+jBzIMYH/7BTHdPg=;
- b=DbRD0/P47O0+ZL9rjWH0sZdgC1npDJRwHmGoM4Ckm/w7RSZ2p1glpZZ7jDvJyLMqqi
- zv+1ysQGn+JBBj/a9syvEOrcZwixcRIFqs9FWXHXct8olVEPgLioEH5OAU2zzM+MEd5m
- 3wGqRPnW3x1LvdwpmeFpbp5sm9KI8i2KTfX48=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
- header.a=rsa-sha256 header.s=google header.b=DbRD0/P4
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/7] overflow: add
- DEFINE_FLEX() for on-stack allocs
+ bh=IrPtI7WuVK/oaLBJhxp0over27m1houzlRFCqoHRsZI=;
+ b=FefyM5boM+iZbD5HCFP6q7YdNjfhM4Crf149F1xn2YjT84k7yzbFnUm4EO4WcJBcZ+
+ aEq9gMUJrhGCPkZaVrruWI0GixWkHHRk0W1/MSLywlOf6fFJM1mBanu5xUpziUnJymb6
+ wyMDdWSPzAnOugSUbmiwqmUPrwD+Vxc4coHCD6T4B3h9E7dP/vncsfUtROT2l1kYs4Bj
+ HkVbnH6HdttJ4QgZB0j6943Pt0v6CrrXpVyV2ss+wRQ9mqjk5Vvo9SKj9Kok2GSWDeBT
+ kPTFXzES0QKtjF2Jz0+naAIStbwstX0nqX+vIjBACvmYnlYxgerfm5rQEcA5u63Q2KVm
+ qAZw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20221208 header.b=FefyM5bo
+Subject: Re: [Intel-wired-lan] [PATCH 2/4][next] i40e: Replace one-element
+ array with flex-array member in struct i40e_profile_segment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,132 +112,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Steven Zou <steven.zou@intel.com>,
- intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org
+Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, linux-hardening@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Aug 10, 2023 at 06:35:03AM -0400, Przemek Kitszel wrote:
-> Add DEFINE_FLEX() macro for on-stack allocations of structs with
-> flexible array member.
-> 
-> Add also const_flex_size() macro, that reads size of structs
-> allocated by DEFINE_FLEX().
-> 
-> Using underlying array for on-stack storage lets us to declare
-> known-at-compile-time structures without kzalloc().
-> 
-> Actual usage for ice driver is in following patches of the series.
-> 
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
-> v1: change macro name; add macro for size read;
->     accept struct type instead of ptr to it; change alignment;
-> ---
->  include/linux/overflow.h | 27 +++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
-> 
-> diff --git a/include/linux/overflow.h b/include/linux/overflow.h
-> index f9b60313eaea..21a4410799eb 100644
-> --- a/include/linux/overflow.h
-> +++ b/include/linux/overflow.h
-> @@ -309,4 +309,31 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
->  #define struct_size_t(type, member, count)					\
->  	struct_size((type *)NULL, member, count)
->  
-> +/**
-> + * DEFINE_FLEX() - Define a zeroed, on-stack, instance of @type structure with
-> + * a trailing flexible array member.
-> + *
-> + * @type: structure type name, including "struct" keyword.
-> + * @name: Name for a variable to define.
-> + * @member: Name of the array member.
-> + * @count: Number of elements in the array; must be compile-time const.
-> + */
-> +#define DEFINE_FLEX(type, name, member, count)					\
-> +	union {									\
-> +		u8 bytes[struct_size_t(type, member, count)];			\
-> +		type obj;							\
-> +	} name##_u __aligned(_Alignof(type)) = {};				\
-> +	type *name = (type *)&name##_u
+On Thu, Aug 10, 2023 at 05:34:04PM +0000, Justin Stitt wrote:
+> On Tue, Aug 01, 2023 at 11:05:59PM -0600, Gustavo A. R. Silva wrote:
+> > One-element and zero-length arrays are deprecated. So, replace
+> > one-element array in struct i40e_profile_segment with flexible-array
+> > member.
+> >
+> > This results in no differences in binary output.
+> >
+> > Link: https://github.com/KSPP/linux/issues/335
+> > Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+> > ---
+> >  drivers/net/ethernet/intel/i40e/i40e_type.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> Tested-by: Justin Stitt <justinstitt@google.com>
+Whoops, this should be:
+Reviewed-by: Justin Stitt <justinstitt@google.com>
 
-We'll need another macro when __counted_by is needed, but yes, if all of
-these structs use non-native endian counters, we can't require it in the
-base macro. (i.e. not now -- this is fine as-is.)
+I did not test, I just verified there are no binary differences produced
+by this patch.
 
-> +
-> +/**
-> + * const_flex_size() - Get size of on-stack instance of structure with
-> + * a trailing flexible array member.
-> + *
-> + * @name: Name of the variable, the one defined by DEFINE_FLEX() macro above.
-> + *
-> + * Get size of @name, which is equivalent to struct_size(name, array, count),
-> + * but does not require (repeating) last two arguments.
-> + */
-> +#define const_flex_size(name)	__builtin_object_size(name, 1)
-
-Naming is hard. ;) I don't like "const" here (it's not a storage
-class). But more importantly, this calculation ("how big is this thing
-actually?") gets used a lot in the fortify routines, so I'd prefer
-exposing those macros (from fortify-string.h):
-
-
-diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
-index c88488715a39..4b788fa0c576 100644
---- a/include/linux/compiler_types.h
-+++ b/include/linux/compiler_types.h
-@@ -352,6 +352,18 @@ struct ftrace_likely_data {
- # define __realloc_size(x, ...)
- #endif
- 
-+/*
-+ * When the size of an allocated object is needed, use the best available
-+ * mechanism to find it. (For cases where sizeof() cannot be used.)
-+ */
-+#if __has_builtin(__builtin_dynamic_object_size)
-+#define __struct_size(p)	__builtin_dynamic_object_size(p, 0)
-+#define __member_size(p)	__builtin_dynamic_object_size(p, 1)
-+#else
-+#define __struct_size(p)	__builtin_object_size(p, 0)
-+#define __member_size(p)	__builtin_object_size(p, 1)
-+#endif
-+
- #ifndef asm_volatile_goto
- #define asm_volatile_goto(x...) asm goto(x)
- #endif
-diff --git a/include/linux/fortify-string.h b/include/linux/fortify-string.h
-index da51a83b2829..1e7711185ec6 100644
---- a/include/linux/fortify-string.h
-+++ b/include/linux/fortify-string.h
-@@ -93,13 +93,9 @@ extern char *__underlying_strncpy(char *p, const char *q, __kernel_size_t size)
- #if __has_builtin(__builtin_dynamic_object_size)
- #define POS			__pass_dynamic_object_size(1)
- #define POS0			__pass_dynamic_object_size(0)
--#define __struct_size(p)	__builtin_dynamic_object_size(p, 0)
--#define __member_size(p)	__builtin_dynamic_object_size(p, 1)
- #else
- #define POS			__pass_object_size(1)
- #define POS0			__pass_object_size(0)
--#define __struct_size(p)	__builtin_object_size(p, 0)
--#define __member_size(p)	__builtin_object_size(p, 1)
- #endif
- 
- #define __compiletime_lessthan(bounds, length)	(	\
-
-
-And the way DEFINE_FLEX is built, __struct_size() and __member_size()
-will give the same result (which is what I was concerned about for
-FORTIFY_SOURCE's use of __member_size not "seeing" the flexible array
-members).
-
-In this case, I think using __struct_size() in place of const_flex_size()
-in the patch series is the way to go.
-
--- 
-Kees Cook
+>
+> >
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+> > index c3d5fe12059a..f7a984304b65 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_type.h
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+> > @@ -1487,7 +1487,7 @@ struct i40e_profile_segment {
+> >  	struct i40e_ddp_version version;
+> >  	char name[I40E_DDP_NAME_SIZE];
+> >  	u32 device_table_count;
+> > -	struct i40e_device_id_entry device_table[1];
+> > +	struct i40e_device_id_entry device_table[];
+> >  };
+> >
+> >  struct i40e_section_table {
+> > --
+> > 2.34.1
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
