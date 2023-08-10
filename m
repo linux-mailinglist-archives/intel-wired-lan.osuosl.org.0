@@ -1,85 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A577C776D04
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 02:23:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E74A77709E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 08:43:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3CB32418EA;
-	Thu, 10 Aug 2023 00:23:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3CB32418EA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 30AC660FFD;
+	Thu, 10 Aug 2023 06:43:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 30AC660FFD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691627017;
-	bh=/6xe03/ClmZAOM3XB5s/+btzRtC45q3hnKVB7r32BvA=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zAZSg2zXX3cchX4S17UiVv1mcs4fFcV+bn6uZmFsdd6cKc5H3FF3fjzR9m2CN04WY
-	 mKafzbC1o9ThB17YMaK6B77wu411/3PyPj2diDWtvyKFaL508o4YeTL7JNaTiNDKfa
-	 PXz/dbwYbwYAZxTGR6Wh+wZjvvdSarhLmIufmL6gz2WrBT4nQNGvUpUCIDdwTQ8SRy
-	 H76rZVYx/wocpALA+yY5fwU5/zNk9FB68rw+0VmOjvsyse2biRJUQAemBnKLAyrKvW
-	 AfPtoORf7z466EJHNFzgEb0nfPTzRxq8tiL/XUWHyrZ8hpbTMf1UVoKtApW4Si3Y32
-	 s2u5tdkyEybvQ==
+	s=default; t=1691649800;
+	bh=4QZsGGCKBzlAvz1x6FiqEEkHob5baADEgFbDCCUnjRU=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=pQ7rPAy89QnuvZ5w5P4YRwL+pTqNXY/bchteQGQMP/uiaV3Z5IHi8cM7uT6NAvMjv
+	 LOt4MNXgsZsTEDA9G097pbQTDskvdpl62Ix5OUK0OJZqTwwAkxI2VxpBijKiKBEAhD
+	 OHrn/U9kbgw8jZFbk4lhaJtYsgS6WVG6Rx+lgI5I+uiCJYxxcn/B04vBw/v630BcZR
+	 zM4AtiUOcXmqrB0tXXiGO55vkH7Aev5h+FXXGx/l6S5/3Hj0VaUS47TbwNo4D5+qLo
+	 c8RSzH2N5Apf/zzfmlcN9my+/lk/G2YjLIcSACmwnYzoXVtSpWM8BMmhWUDXWG1vUP
+	 MW2AXnHw0nQ+Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OUF3i3OxbSU8; Thu, 10 Aug 2023 00:23:36 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Iv64vasvIkFq; Thu, 10 Aug 2023 06:43:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E4ED6418ED;
-	Thu, 10 Aug 2023 00:23:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E4ED6418ED
+	by smtp3.osuosl.org (Postfix) with ESMTP id 17D0560FF9;
+	Thu, 10 Aug 2023 06:43:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17D0560FF9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9B62A1BF97F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7388C1BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 06:43:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 727F040359
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 727F040359
+ by smtp2.osuosl.org (Postfix) with ESMTP id 524334023B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 06:43:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 524334023B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G_6sFAbbchb0 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Aug 2023 00:23:24 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 84627403AA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 84627403AA
-X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="368720843"
-X-IronPort-AV: E=Sophos;i="6.01,160,1684825200"; d="scan'208";a="368720843"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2023 17:23:23 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="797396125"
-X-IronPort-AV: E=Sophos;i="6.01,160,1684825200"; d="scan'208";a="797396125"
-Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.102])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2023 17:23:23 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  9 Aug 2023 17:23:13 -0700
-Message-ID: <20230810002313.421684-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.41.0
+ with ESMTP id qZA2OxsQuZ8J for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Aug 2023 06:43:07 +0000 (UTC)
+Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com
+ [IPv6:2a00:1450:4864:20::336])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AEC14400E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 06:43:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEC14400E7
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-3fe5c0e58c0so5137425e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Aug 2023 23:43:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1691649783; x=1692254583;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=yut2Z+a14yxMcDEXkZzdFPLfRVZ9Qb94p4k3EOO68Sk=;
+ b=VHKLtODl166ehBPyfBjJhtGUSKDMUGmhCgcMlUfx2wghVu8eBaScrfEZ6IMRvs3Ilc
+ vTGUHjaavB38DAK7oxic9amUjHgySWO+Ih245hegGR5vkLHub0vPcFGytGG3MjytrpCY
+ ijaI1+kzbk1ORBbzbX8je7MXqjeXmWn9bhUhiev+J23c/df3jsNM4Xx6zYo8FWlX/kTn
+ 11isUVQ6apJgy4+lRvYTbvvVLPcJIUvnzgEgKQWnAU6sMm+pJ/pbZvwy89pI+jNKjAeS
+ CpIF/D57XwyupRL+ZCle42kqi+oDd+W1r3Zc0m7evAGQtLVZt5/XVYLLyHD/qc9NoKaK
+ po/Q==
+X-Gm-Message-State: AOJu0YyMZECsXEtktPLPSTVuoW/C8T1la6409ihXqbUIGoQyowHldR8W
+ 3fAAJ9S5BVqA3VQ0DcjauA37Mw==
+X-Google-Smtp-Source: AGHT+IEb+I3lyZINCDfzufoiEQMlOzN4F9fGAh7xM3gOhb0li7sIX6eV0rOgKMK5X7Ymolf57qXmPA==
+X-Received: by 2002:a05:600c:4fd5:b0:3fe:4d66:2d4b with SMTP id
+ o21-20020a05600c4fd500b003fe4d662d4bmr1096237wmq.28.1691649782577; 
+ Wed, 09 Aug 2023 23:43:02 -0700 (PDT)
+Received: from localhost ([212.23.236.67]) by smtp.gmail.com with ESMTPSA id
+ b10-20020a5d550a000000b0031801aa34e2sm1066784wrv.9.2023.08.09.23.43.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Aug 2023 23:43:01 -0700 (PDT)
+Date: Thu, 10 Aug 2023 08:43:00 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Message-ID: <ZNSG9GwGhND0YsBr@nanopsycho>
+References: <20230809214027.556192-1-vadim.fedorenko@linux.dev>
+ <20230809214027.556192-8-vadim.fedorenko@linux.dev>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691627004; x=1723163004;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=x13+hl34vBPVCPEfpwk1nYGCHVVQhHx3+doEaSVBKy4=;
- b=S1HrMODt/YHbuL31YOU25+mV63Ynq58iNqVoAOwzt+vpmp2ajiSryQI7
- Tr8IDJCviwms9U35zlPHREUAefgcQHM347XnyIMNVmI8aPAyMN1+0H491
- Jo0C2iGBGT4mlbIEHXoMFiov+Ehq9twY+OGXmL7nTqpH0bz9FWqbQanNg
- bDFr/ATPm8/SvDOfXoZYH84c0don5J+JUxJcCJJGdrPLOKxwpE2dXmYsH
- knqhY8YYyMxg4MOOqHjLA5gKKXqNRHJDV38ciU6qrreWIJNQvnHc8GdaT
- sojR1EmHMYrcGa9t4qtGs1SHcJyOt9NpmCLD+gBfPAxQ3h6qqvJYnhmwQ
- g==;
+Content-Disposition: inline
+In-Reply-To: <20230809214027.556192-8-vadim.fedorenko@linux.dev>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20221208.gappssmtp.com; s=20221208; t=1691649783; x=1692254583; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=yut2Z+a14yxMcDEXkZzdFPLfRVZ9Qb94p4k3EOO68Sk=;
+ b=1jfPBNHE0y4mAOO5VPnZKKKbCc0i2D7mzRSFE7xLau88UAVMFTX/eIuLcqpU9qIQqF
+ nTnGkB+J9fE04oWwgeY69dzIzbrmF5HkVCJfbjUZYUxWqtVAeGP/n/32olVrS/Kq9gP0
+ AdyrPcVcNQKU7lmrCLa6Q/x6Q3yOqy5Q/MuD0TDr8+p44PerbSjSQCyClZSUb61+HMwx
+ 05UzRyUzxOz48sQV74+3TaRKFSxhTkC4j6c7aYvU5iK1WLq8pWDPehJlpEXtCwNaSitv
+ zCuNUMe+m53dt2TPiqkgm7G1h+L+qYGH7c+p+gc5KfR+yJdkbVBMsdUgF81bOGfrXvAa
+ imJw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=S1HrMODt
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix receive buffer size
- miscalculation
+ dkim=pass (2048-bit key) header.d=resnulli-us.20221208.gappssmtp.com
+ header.i=@resnulli-us.20221208.gappssmtp.com header.a=rsa-sha256
+ header.s=20221208 header.b=1jfPBNHE
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 7/9] ice: implement dpll
+ interface to control cgu
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,47 +110,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Bart Van Assche <bvanassche@acm.org>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-clk@vger.kernel.org,
+ Milena Olech <milena.olech@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The driver is misconfiguring the hardware for some values of MTU such that
-it could use multiple descriptors to receive a packet when it could have
-simply used one.
+Wed, Aug 09, 2023 at 11:40:25PM CEST, vadim.fedorenko@linux.dev wrote:
+>From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 
-Change the driver to use a round-up instead of the result of a shift, as
-the shift can truncate the lower bits of the size, and result in the
-problem noted above. It also aligns this driver with similar code in i40e.
+[...]
 
-The insidiousness of this problem is that everything works with the wrong
-size, it's just not working as well as it could, as some MTU sizes end up
-using two or more descriptors, and there is no way to tell that is
-happening without looking at ice_trace or a bus analyzer.
 
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+>+/**
+>+ * ice_dpll_deinit - Disable the driver/HW support for dpll subsystem
+>+ * the dpll device.
+>+ * @pf: board private structure
+>+ *
+>+ * Handles the cleanup work required after dpll initialization, freeing
+>+ * resources and unregistering the dpll, pin and all resources used for
+>+ * handling them.
+>+ *
+>+ * Context: Destroys pf->dplls.lock mutex.
+>+ */
+>+void ice_dpll_deinit(struct ice_pf *pf)
+>+{
+>+	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
+>+
+>+	if (!test_bit(ICE_FLAG_DPLL, pf->flags))
+>+		return;
+>+	if (cgu)
+>+		ice_dpll_deinit_worker(pf);
+>+	clear_bit(ICE_FLAG_DPLL, pf->flags);
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index b678bdf96f3a..074bf9403cd1 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -435,7 +435,8 @@ static int ice_setup_rx_ctx(struct ice_rx_ring *ring)
- 	/* Receive Packet Data Buffer Size.
- 	 * The Packet Data Buffer Size is defined in 128 byte units.
- 	 */
--	rlan_ctx.dbuf = ring->rx_buf_len >> ICE_RLAN_CTX_DBUF_S;
-+	rlan_ctx.dbuf = DIV_ROUND_UP(ring->rx_buf_len,
-+				     BIT_ULL(ICE_RLAN_CTX_DBUF_S));
- 
- 	/* use 32 byte descriptors */
- 	rlan_ctx.dsize = 1;
--- 
-2.41.0
+Clearing the flag after deinit worker somehow implicates that it needs
+to be set until here. That is not true.
 
+Please rather use test_and_clear_bit() instead of test_bit() which would
+takes care of the clear alongside with the check.
+
+With or without that.
+
+Signed-off-by: Jiri Pirko <jiri@nvidia.com>
+
+[...]
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
