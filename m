@@ -1,86 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A49E7776CAA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 01:10:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A577C776D04
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Aug 2023 02:23:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4ECD560B50;
-	Wed,  9 Aug 2023 23:10:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4ECD560B50
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3CB32418EA;
+	Thu, 10 Aug 2023 00:23:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3CB32418EA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691622636;
-	bh=w5fp70CcAtZC2JrT5T0ph4bHAeeSVAMMhbcusXe2HrA=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=74vESKst2/5oxQFiuxTU9f7lhyVVdLl+OQPmpiP3xwyyRxYMuE75vkUKuoIjGDr5n
-	 o6X1tLxwufygoRBmsr6i8Psn62/FQh39LaDFAeRaZhcXnBZJcnD4fPQv2t6Zp2QF3d
-	 1mOmYA/PK2GOz2aVbgdSWLMYbCGPG/52HY5sOldXiwehveE3kU27cmkEjJCi3/3B31
-	 sGLKbsPxYGy7sWQKZ2PHvd4kLiTRyd/e5ZHWrUwSApw+Opk9JMtUi1Y6kA5WkfhMus
-	 S4KWdTF5Y6NgG3JVilcfsfB7L+2tZhKK2cavfLY9vkj0lDEiqfWEkgWQKflgIaPsZ8
-	 lL/7+iE3BItbg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F1EAemBlHm8b; Wed,  9 Aug 2023 23:10:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2570D60AE6;
-	Wed,  9 Aug 2023 23:10:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2570D60AE6
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C59491BF2A7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 23:10:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A85764087E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 23:10:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A85764087E
+	s=default; t=1691627017;
+	bh=/6xe03/ClmZAOM3XB5s/+btzRtC45q3hnKVB7r32BvA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=zAZSg2zXX3cchX4S17UiVv1mcs4fFcV+bn6uZmFsdd6cKc5H3FF3fjzR9m2CN04WY
+	 mKafzbC1o9ThB17YMaK6B77wu411/3PyPj2diDWtvyKFaL508o4YeTL7JNaTiNDKfa
+	 PXz/dbwYbwYAZxTGR6Wh+wZjvvdSarhLmIufmL6gz2WrBT4nQNGvUpUCIDdwTQ8SRy
+	 H76rZVYx/wocpALA+yY5fwU5/zNk9FB68rw+0VmOjvsyse2biRJUQAemBnKLAyrKvW
+	 AfPtoORf7z466EJHNFzgEb0nfPTzRxq8tiL/XUWHyrZ8hpbTMf1UVoKtApW4Si3Y32
+	 s2u5tdkyEybvQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g9GItteDSNVb for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Aug 2023 23:10:29 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7448240878
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Aug 2023 23:10:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7448240878
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3CA2D63D00;
- Wed,  9 Aug 2023 23:10:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A382AC433C8;
- Wed,  9 Aug 2023 23:10:27 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 87E4BE3308F; Wed,  9 Aug 2023 23:10:27 +0000 (UTC)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OUF3i3OxbSU8; Thu, 10 Aug 2023 00:23:36 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id E4ED6418ED;
+	Thu, 10 Aug 2023 00:23:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E4ED6418ED
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B62A1BF97F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 727F040359
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 727F040359
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id G_6sFAbbchb0 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Aug 2023 00:23:24 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 84627403AA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Aug 2023 00:23:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 84627403AA
+X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="368720843"
+X-IronPort-AV: E=Sophos;i="6.01,160,1684825200"; d="scan'208";a="368720843"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2023 17:23:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10797"; a="797396125"
+X-IronPort-AV: E=Sophos;i="6.01,160,1684825200"; d="scan'208";a="797396125"
+Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.102])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2023 17:23:23 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  9 Aug 2023 17:23:13 -0700
+Message-ID: <20230810002313.421684-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169162262755.8257.7127331416998395436.git-patchwork-notify@kernel.org>
-Date: Wed, 09 Aug 2023 23:10:27 +0000
-References: <20230807193324.4128292-1-vladimir.oltean@nxp.com>
-In-Reply-To: <20230807193324.4128292-1-vladimir.oltean@nxp.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1691622627;
- bh=GBjuHFL646u1lkFK2JAMT4bXgcXxV4RlWdIPaFhWsoY=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=UBNPRxzIdXsxTCndxX/ZUJuzq+IuL1fEZFx0Oba0f77z1jZzjnbQNUBNnhgS5q1/T
- NFlIE2qDMh3NBa6bEfi+5FPDsdPIjLbJVzJRQ5C2F8rb/a4lYs9B/Lmidy/B1V5wHB
- 3PXiMk404NZrRDx/48hiAi5tGZ+B78QWxLaOUnQheX9g4TjURdawJWzUNM4SCjkCGy
- W6ydK/MAFGQPe7iFmJn2xaEbvIZ2/HauMj/wyMjfeAs3EVFSp1KcyjBzpGHVEkt1vC
- JvRjc83drygXihs70F1RfI9lO+ZvFhrjERjfUTJjMBcT9XFf4zv6kGzNVbXrdwg+S0
- adg14QcfswWig==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=UBNPRxzI
-Subject: Re: [Intel-wired-lan] [PATCH v4 net-next 00/11] Improve the taprio
- qdisc's relationship with its children
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1691627004; x=1723163004;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=x13+hl34vBPVCPEfpwk1nYGCHVVQhHx3+doEaSVBKy4=;
+ b=S1HrMODt/YHbuL31YOU25+mV63Ynq58iNqVoAOwzt+vpmp2ajiSryQI7
+ Tr8IDJCviwms9U35zlPHREUAefgcQHM347XnyIMNVmI8aPAyMN1+0H491
+ Jo0C2iGBGT4mlbIEHXoMFiov+Ehq9twY+OGXmL7nTqpH0bz9FWqbQanNg
+ bDFr/ATPm8/SvDOfXoZYH84c0don5J+JUxJcCJJGdrPLOKxwpE2dXmYsH
+ knqhY8YYyMxg4MOOqHjLA5gKKXqNRHJDV38ciU6qrreWIJNQvnHc8GdaT
+ sojR1EmHMYrcGa9t4qtGs1SHcJyOt9NpmCLD+gBfPAxQ3h6qqvJYnhmwQ
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=S1HrMODt
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix receive buffer size
+ miscalculation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,61 +92,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, pctammela@mojatatu.com, netdev@vger.kernel.org,
- richardcochran@gmail.com, jhs@mojatatu.com, linux-kernel@vger.kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, glipus@gmail.com,
- xiyou.wangcong@gmail.com, yepeilin.cs@gmail.com, kuba@kernel.org,
- shaozhengchao@huawei.com, pabeni@redhat.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+The driver is misconfiguring the hardware for some values of MTU such that
+it could use multiple descriptors to receive a packet when it could have
+simply used one.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Change the driver to use a round-up instead of the result of a shift, as
+the shift can truncate the lower bits of the size, and result in the
+problem noted above. It also aligns this driver with similar code in i40e.
 
-On Mon,  7 Aug 2023 22:33:13 +0300 you wrote:
-> Changes in v4:
-> - Clean up some leftovers in the ptp_mock driver.
-> - Add CONFIG_PTP_1588_CLOCK_MOCK to tools/testing/selftests/tc-testing/config
-> - Wait for taprio schedule to become operational in the selftests
-> 
-> Changes in v3:
-> Fix ptp_mock compilation as module, fix small mistakes in selftests.
-> 
-> [...]
+The insidiousness of this problem is that everything works with the wrong
+size, it's just not working as well as it could, as some MTU sizes end up
+using two or more descriptors, and there is no way to tell that is
+happening without looking at ice_trace or a bus analyzer.
 
-Here is the summary with links:
-  - [v4,net-next,01/11] net/sched: taprio: don't access q->qdiscs[] in unoffloaded mode during attach()
-    https://git.kernel.org/netdev/net-next/c/09e0c3bbde90
-  - [v4,net-next,02/11] net/sched: taprio: keep child Qdisc refcount elevated at 2 in offload mode
-    https://git.kernel.org/netdev/net-next/c/25b0d4e4e41f
-  - [v4,net-next,03/11] net/sched: taprio: try again to report q->qdiscs[] to qdisc_leaf()
-    https://git.kernel.org/netdev/net-next/c/98766add2d55
-  - [v4,net-next,04/11] net/sched: taprio: delete misleading comment about preallocating child qdiscs
-    https://git.kernel.org/netdev/net-next/c/6e0ec800c174
-  - [v4,net-next,05/11] net/sched: taprio: dump class stats for the actual q->qdiscs[]
-    https://git.kernel.org/netdev/net-next/c/665338b2a7a0
-  - [v4,net-next,06/11] net: ptp: create a mock-up PTP Hardware Clock driver
-    https://git.kernel.org/netdev/net-next/c/40b0425f8ba1
-  - [v4,net-next,07/11] net: netdevsim: use mock PHC driver
-    https://git.kernel.org/netdev/net-next/c/b63e78fca889
-  - [v4,net-next,08/11] net: netdevsim: mimic tc-taprio offload
-    https://git.kernel.org/netdev/net-next/c/35da47fe1c47
-  - [v4,net-next,09/11] selftests/tc-testing: add ptp_mock Kconfig dependency
-    https://git.kernel.org/netdev/net-next/c/355adce3010b
-  - [v4,net-next,10/11] selftests/tc-testing: test that taprio can only be attached as root
-    https://git.kernel.org/netdev/net-next/c/1890cf08bd99
-  - [v4,net-next,11/11] selftests/tc-testing: verify that a qdisc can be grafted onto a taprio class
-    https://git.kernel.org/netdev/net-next/c/29c298d2bc82
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_base.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-You are awesome, thank you!
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index b678bdf96f3a..074bf9403cd1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -435,7 +435,8 @@ static int ice_setup_rx_ctx(struct ice_rx_ring *ring)
+ 	/* Receive Packet Data Buffer Size.
+ 	 * The Packet Data Buffer Size is defined in 128 byte units.
+ 	 */
+-	rlan_ctx.dbuf = ring->rx_buf_len >> ICE_RLAN_CTX_DBUF_S;
++	rlan_ctx.dbuf = DIV_ROUND_UP(ring->rx_buf_len,
++				     BIT_ULL(ICE_RLAN_CTX_DBUF_S));
+ 
+ 	/* use 32 byte descriptors */
+ 	rlan_ctx.dsize = 1;
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
