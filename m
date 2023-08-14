@@ -2,90 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB60277A65B
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 13 Aug 2023 14:40:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9C3977B741
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Aug 2023 13:04:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C0608410A3;
-	Sun, 13 Aug 2023 12:40:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0608410A3
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E9B641722;
+	Mon, 14 Aug 2023 11:04:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E9B641722
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1691930416;
-	bh=V88D2iJmsZa5Ri4kG669oFG3KxZylYU59WyoaW/6QUQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1692011069;
+	bh=mpKEU2TWQgbgPwnk/np5QCeHlEN5M+fNSb2llDbd8i8=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=jsBdq4Oo4dt6bRdy3pScRItJKgtond5oqc7X0CMRZQVCOtUmGa/X6Ssn4mtNvVpil
-	 LElOK2XCH3URPLc/PvrjrfGll27Lbx0Dx2MaeuUeZtkCPeyhu4pef+KfH/QgOJy1eX
-	 RIvZpzAv61P93Vd67BD+PPcjY91vy1j8T71KUHHzIh/LjoVA6zbmq869wRs4NhNmOg
-	 +eZGi9TWwU4ipkJwWX3scEnjT9YpcV+BxspMZBm6yvWIPTpGGkeW2T3m6ou5LE/RNt
-	 JdRAZtMzQ2m82vVO2jMrTp2lN9OqsR7VNI9fmd9vWw+6QLElErsAXRAdPuFE+GMoqI
-	 qXrS9Mq8qbqXQ==
+	 Cc:From;
+	b=3XJgVLnz92wdwt2kVV2Fq6Es+gdbERhcbKRT61rf7cKRaGXLgIAhWkhEQg4W82vaN
+	 mZ6UE/5QtL7EFnMmbSmzd2+1/FMiuNW3WHq/aWH6pwyAFFJ3Ud5Enxl8wDCyHeMFa1
+	 rFw+bmJGo81Q4/Yu6njpNGmgWFnC1us5At3RGWbuuA1Wp0h2c95qZIoJi22/OHwO9+
+	 uKu/tA1uJBi0lkMEBp6KA4qA3YFI7BGsEfIH5LDeMbx0EVqGWfBFgIEKCvvgCIh1Sw
+	 jsebwv+2cdcoV2x0NmZrepacaLgGLGV4UzXBDx5bfP4AsmtCRpTFK+jf6xh1mo0PXY
+	 sn0DMPCRPWriQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xd9ICBClZrgC; Sun, 13 Aug 2023 12:40:16 +0000 (UTC)
+	with ESMTP id lxHgi6FNvpXH; Mon, 14 Aug 2023 11:04:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7D63F40978;
-	Sun, 13 Aug 2023 12:40:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D63F40978
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB7A040951;
+	Mon, 14 Aug 2023 11:04:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB7A040951
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A2B1E1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 13 Aug 2023 12:40:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EE601BF3AF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Aug 2023 11:04:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 77270402E7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 13 Aug 2023 12:40:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 77270402E7
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7461D40951
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Aug 2023 11:04:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7461D40951
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jK6zkHzm6IdE for <intel-wired-lan@lists.osuosl.org>;
- Sun, 13 Aug 2023 12:40:09 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3D9B440124
- for <intel-wired-lan@lists.osuosl.org>; Sun, 13 Aug 2023 12:40:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D9B440124
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="362039146"
-X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; d="scan'208";a="362039146"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2023 05:40:08 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10801"; a="733159931"
-X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; d="scan'208";a="733159931"
-Received: from onachmix-mobl1.ger.corp.intel.com (HELO [10.251.178.57])
- ([10.251.178.57])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2023 05:40:06 -0700
-Message-ID: <2b1105c4-dc8e-be22-206b-8bb1070e2e0b@linux.intel.com>
-Date: Sun, 13 Aug 2023 15:39:57 +0300
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iZZ1fUg7uHXK for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Aug 2023 11:04:21 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4A8EC408F5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Aug 2023 11:04:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A8EC408F5
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 325CA6142D;
+ Mon, 14 Aug 2023 11:04:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 302AFC433C7;
+ Mon, 14 Aug 2023 11:04:18 +0000 (UTC)
+From: James Hogan <jhogan@kernel.org>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Date: Mon, 14 Aug 2023 12:04:15 +0100
+Message-ID: <5962826.lOV4Wx5bFT@saruman>
+In-Reply-To: <3329047.e9J7NaK4W3@saruman>
+References: <20220811151342.19059-1-vinicius.gomes@intel.com>
+ <3186253.aeNJFYEL58@saruman> <3329047.e9J7NaK4W3@saruman>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20230718162857.3566306-1-sasha.neftin@intel.com>
-Content-Language: en-US
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20230718162857.3566306-1-sasha.neftin@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1691930409; x=1723466409;
- h=message-id:date:mime-version:subject:to:references:from:
- in-reply-to:content-transfer-encoding;
- bh=sOynRMh/Uqptrr9XDPTS//SfTDfHjh39yYMAtmE+hFw=;
- b=WbjoPbk2dwBPVI7FxvYdK8EzpT6OIZWyHq1EIm41r51aUHJebspyQtjO
- L2WKNRpoj1IjcbLkf49KmGUOuCH3VxKXuaR0i24GNUaEBkBWQfsIQOPds
- /QbrkiSg8oMGexHiG//cN6YA4has1G82HWuHvT2kMyUjfrj7Btchq+TJ0
- E3bCJwl60qvu8910lOIev7wndIE6cof7VPmoozPbPX6fSAUhUAgKSG+Ub
- 0ns1hkbO1f4vv1xylFkrweTnMy8EJNOlecETuj90icZAsPOg6PesmRBLK
- BupqmzFJAxJFhgFZnBqVAngDSO72PP/cRO7zH2iR88B2tJThA/DNl6cfK
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WbjoPbk2
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/1] e1000e: Add support
- for the next LOM generation
+ d=kernel.org; s=k20201202; t=1692011059;
+ bh=X4sVDlguYz5tjg9hwDCiyx+vB92yLKZdyBV6FcV6r7Q=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=K4Lw6ZR8a7owfJBnUQ0WbiNRBfef3MPlV+X1+2WtxNb54bapktF08BEySVgh6/Xj+
+ nejnT6m94DsZ0B+2nABbZjwDSpLO/0yPc0rS6Ri/R+UH/KF3FSJo0u3XQPlwrysEMH
+ gqLyaY8YZsSiki2xDR4+jHTCwzwHTlRRA1fiBvQ0yaUa81jndGiHGqtJ61D/j0MLqt
+ BJe/ceXOQKKk6qgEZF/ceTewFiyQ3Ki7U3KBMA1N5M5XfuR0tWxYuEPjQV5Y3n9upd
+ +JPMoiLVUlaxxCHZlMgO5fUQeGjU2RUHTWGxBDoCQBCvE6Vrh5MZTmbqFX9JTJ2XP5
+ nR5zmPcxfUasQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=K4Lw6ZR8
+Subject: Re: [Intel-wired-lan] [WIP v2] igc: fix deadlock caused by taking
+ RTNL in RPM resume path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,26 +89,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, netdev@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/18/2023 19:28, Sasha Neftin wrote:
-> Add devices IDs for the next LOM generations that will be available on the
-> next Intel Client platforms. This patch provides the initial support for
-> these devices.
+On Sunday, 2 October 2022 11:56:28 BST James Hogan wrote:
+> On Monday, 29 August 2022 09:16:33 BST James Hogan wrote:
+> > On Saturday, 13 August 2022 18:18:25 BST James Hogan wrote:
+> > > On Saturday, 13 August 2022 01:05:41 BST Vinicius Costa Gomes wrote:
+> > > > James Hogan <jhogan@kernel.org> writes:
+> > > > > On Thursday, 11 August 2022 21:25:24 BST Vinicius Costa Gomes wrote:
+> > > > >> It was reported a RTNL deadlock in the igc driver that was causing
+> > > > >> problems during suspend/resume.
+> > > > >> 
+> > > > >> The solution is similar to commit ac8c58f5b535 ("igb: fix deadlock
+> > > > >> caused by taking RTNL in RPM resume path").
+> > > > >> 
+> > > > >> Reported-by: James Hogan <jhogan@kernel.org>
+> > > > >> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> > > > >> ---
+> > > > >> Sorry for the noise earlier, my kernel config didn't have runtime
+> > > > >> PM
+> > > > >> enabled.
+> > > > > 
+> > > > > Thanks for looking into this.
+> > > > > 
+> > > > > This is identical to the patch I've been running for the last week.
+> > > > > The
+> > > > > deadlock is avoided, however I now occasionally see an assertion
+> > > > > from
+> > > > > netif_set_real_num_tx_queues due to the lock not being taken in some
+> > > > > cases
+> > > > > via the runtime_resume path, and a suspicious
+> > > > > rcu_dereference_protected()
+> > > > > warning (presumably due to the same issue of the lock not being
+> > > > > taken).
+> > > > > See here for details:
+> > > > > https://lore.kernel.org/netdev/4765029.31r3eYUQgx@saruman/
+> > > > 
+> > > > Oh, sorry. I missed the part that the rtnl assert splat was already
+> > > > using similar/identical code to what I got/copied from igb.
+> > > > 
+> > > > So what this seems to be telling us is that the "fix" from igb is only
+> > > > hiding the issue,
+> > > 
+> > > I suppose the patch just changes the assumption from "lock will never be
+> > > held on runtime resume path" (incorrect, deadlock) to "lock will always
+> > > be
+> > > held on runtime resume path" (also incorrect, probably racy).
+> > > 
+> > > > and we would need to remove the need for taking the
+> > > > RTNL for the suspend/resume paths in igc and igb? (as someone else
+> > > > said
+> > > > in that igb thread, iirc)
+> > > 
+> > > (I'll defer to others on this. I'm pretty unfamiliar with networking
+> > > code
+> > > and this particular lock.)
+> > 
+> > I'd be great to have this longstanding issue properly fixed rather than
+> > having to carry a patch locally that may not be lock safe.
+> > 
+> > Also, any tips for diagnosing the issue of the network link not coming
+> > back
+> > up after resume? I sometimes have to unload and reload the driver module
+> > to
+> > get it back again.
 > 
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/ethtool.c | 2 ++
->   drivers/net/ethernet/intel/e1000e/hw.h      | 3 +++
->   drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 +++++++
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 4 ++++
->   drivers/net/ethernet/intel/e1000e/ptp.c     | 1 +
->   5 files changed, 17 insertions(+)
+> Any thoughts on this from anybody?
 
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+Ping... I've been carrying this patch locally on archlinux for almost a year 
+now. Every time I update my kernel and forget to rebuild with the patch it 
+catches me out with deadlocks after resume, and even with the patch I 
+frequently have to reload the igc module after resume to get the network to 
+come up (which is preferable to deadlocks but still really sucks). I'd really 
+appreciate if it could get some attention.
+
+Many thanks
+James
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
