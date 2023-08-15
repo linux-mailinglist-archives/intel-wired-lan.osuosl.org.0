@@ -2,80 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74EF577D1A0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Aug 2023 20:20:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB5C977D1BC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Aug 2023 20:25:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 105D141139;
-	Tue, 15 Aug 2023 18:20:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 105D141139
+	by smtp2.osuosl.org (Postfix) with ESMTP id 572304113A;
+	Tue, 15 Aug 2023 18:25:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 572304113A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692123648;
-	bh=rkKWFsQ4etJk+BOR+olaq0v221zlyGCwOGeDzDI4C2I=;
+	s=default; t=1692123929;
+	bh=/KtQEfXfUiZYcKB+dUy5AH+k2DPqsU0ExCSgC8bckw4=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=foppHuFeckxrVbjYvIIjj87OGyYPwViS81ZtQo8JVrgDzCBgpYFDrECs7KXmEvp5g
-	 CoMXpRJdEqmU/Ssu4pn9h0DG9EmBusC3UcQ7+r70zozAgYFXBPYlO4iziyej9/KVjn
-	 3MhlzN1qQLMu+l7mJ+X/THE4Xb/aOTGJmxFzRjTMHv+QIYhBJBRyNQAMj2izqmOrde
-	 ocX12pnRygwA5HDFSQEuuib0cnjK24zNE74h4qu1YMbPfuLgYav+Aya1YVUVReXyc6
-	 HxzWjzzrtMx5X87ena7jF5RnaMG9RVJ+pXkD7QQCNqrB+MKgA0gt9saIZvpMM0/E1k
-	 75e3S/V1t+J9A==
+	b=iTMcewFMEmn6bQ1Ii1yK+qkJ4NLY59otmLNNVhZKekTXPUPAvlaiRZQT8OzHN1pV0
+	 dcnRQZtAwTaZD6G/gx0sbTHZl1f0uQiB/q8OnvbLaX6O8BVK7RpO9lUlmhFH+UI7Ky
+	 cZhZreW/qLCtYL25g652bkrz/PvvURia+b8sSX2Ut0TfK8P5/l+2H7MSD9mlkbJ4IE
+	 9g/4m8t1lxbE9Y3nJP8Y9ZPxx+O4JHQc1q+9Wi3Zp6YzDJBZfJAHxqTFsJ6lpRJvIX
+	 TkB0rlzPbf7pqpTIC6no6FV75gJfG9OgcHhO7OTJGpqG/F4S7aK1++HZngd0w+tJdf
+	 fIJaZWAbvkWNw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MYWnIXihSSQD; Tue, 15 Aug 2023 18:20:47 +0000 (UTC)
+	with ESMTP id Ugf3H9TrWnSQ; Tue, 15 Aug 2023 18:25:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 95531405BD;
-	Tue, 15 Aug 2023 18:20:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 95531405BD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 390824116B;
+	Tue, 15 Aug 2023 18:25:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 390824116B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 648301BF422
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:20:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1321A1BF422
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:25:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 10A1E404FE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:20:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10A1E404FE
+ by smtp1.osuosl.org (Postfix) with ESMTP id BE8C58148F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:25:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE8C58148F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hjhvLgZBN561 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Aug 2023 18:20:39 +0000 (UTC)
-Received: from out-16.mta1.migadu.com (out-16.mta1.migadu.com
- [IPv6:2001:41d0:203:375::10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4A832405BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:20:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A832405BD
-Message-ID: <ef2eca98-4fcc-b448-fecb-38695238f87b@linux.dev>
-Date: Tue, 15 Aug 2023 19:20:31 +0100
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id x09Cc8dq3a6h for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Aug 2023 18:25:22 +0000 (UTC)
+Received: from out-3.mta0.migadu.com (out-3.mta0.migadu.com [91.218.175.3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E55C4813EB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 18:25:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E55C4813EB
+Message-ID: <51cc24cb-13d7-7352-db25-bb5f10baa830@linux.dev>
+Date: Tue, 15 Aug 2023 19:25:12 +0100
 MIME-Version: 1.0
 Content-Language: en-US
 To: Jakub Kicinski <kuba@kernel.org>
 References: <20230811200340.577359-1-vadim.fedorenko@linux.dev>
- <20230811200340.577359-4-vadim.fedorenko@linux.dev>
- <20230814201709.655a24e2@kernel.org>
+ <20230811200340.577359-5-vadim.fedorenko@linux.dev>
+ <20230814202441.349586b4@kernel.org>
+ <d5c30de7-df89-18dd-3ad8-a5d99c1e7108@linux.dev>
+ <20230815095519.76d06274@kernel.org>
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
  include these headers.
 From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20230814201709.655a24e2@kernel.org>
+In-Reply-To: <20230815095519.76d06274@kernel.org>
 X-Migadu-Flow: FLOW_OUT
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1692123635;
+ d=linux.dev; s=key1; t=1692123918;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rfj/I2U5lSypaHfr+RNkX86cmcJmTgFoRPPvni+deJM=;
- b=SsD9mfnukB+vgW2iwRCL53+e3FiIO4/flFG93D/vSt5AaPzJKxNUivJbYTit35xOtN3+Vb
- 2afp6ZjXfCba+gBvI9RpcOeRNtGvar8QOR6pL68lfk6SgX4RQH2luWgjlDRtxeS8zJuBhb
- o6nHSxC2klS59Pq3fri/tAak1oFkJJ8=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=BmnrvXvdD8lgpuFR05ob4D/kjINcLJM401vTSVLXNrM=;
+ b=fRteu83GGLzHE57G2311l51six8Q6p2BxtX/kymFzDXHnCHF1u6j9gAVhn25BW4pFsySlP
+ y0qqD0gp3iqhCN64N/S/StnIjr3lkQpxEr2a8OdBUaO28dbKBDCT6FFJVgLocaE7ON10r8
+ EVGMAAFJcp2OkdbE/CyN1dTXIJOYe6A=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=SsD9mfnu
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 3/9] dpll: core: Add DPLL
- framework base functions
+ header.s=key1 header.b=fRteu83G
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 4/9] dpll: netlink: Add
+ DPLL framework base functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,220 +99,35 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 15/08/2023 04:17, Jakub Kicinski wrote:
-> On Fri, 11 Aug 2023 21:03:34 +0100 Vadim Fedorenko wrote:
->> DPLL framework is used to represent and configure DPLL devices
->> in systems. Each device that has DPLL and can configure inputs
->> and outputs can use this framework.
+On 15/08/2023 17:55, Jakub Kicinski wrote:
+> On Tue, 15 Aug 2023 16:18:16 +0100 Vadim Fedorenko wrote:
+>> On 15/08/2023 04:24, Jakub Kicinski wrote:
+>>> On Fri, 11 Aug 2023 21:03:35 +0100 Vadim Fedorenko wrote:
+>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
+>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>>>> +		struct dpll_device *dpll = ref->dpll;
+>>>> +
+>>>> +		if (!ops->frequency_set)
+>>>> +			return -EOPNOTSUPP;
+>>>> +		ret = ops->frequency_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
+>>>> +					 dpll, dpll_priv(dpll), freq, extack);
+>>>> +		if (ret)
+>>>> +			return ret;
+>>>> +		__dpll_pin_change_ntf(pin);
+>>>> +	}
+>>>
+>>> only one freq is reported in get, AFAICT, so why send a notification
+>>> after each ref is updated?
 >>
->> Implement core framework functions for further interactions
->> with device drivers implementing dpll subsystem, as well as for
->> interactions of DPLL netlink framework part with the subsystem
->> itself.
+>> The pin can be technically connected to several DPLLs and app may watch
+>> for the specific DPLL messages only. We would like to inform all users
+>> on any DPLL which has this pin connected to.
 > 
->> +static struct dpll_device *
->> +dpll_device_alloc(const u64 clock_id, u32 device_idx, struct module *module)
->> +{
->> +	struct dpll_device *dpll;
->> +	int ret;
->> +
->> +	dpll = kzalloc(sizeof(*dpll), GFP_KERNEL);
->> +	if (!dpll)
->> +		return ERR_PTR(-ENOMEM);
->> +	refcount_set(&dpll->refcount, 1);
->> +	INIT_LIST_HEAD(&dpll->registration_list);
->> +	dpll->device_idx = device_idx;
->> +	dpll->clock_id = clock_id;
->> +	dpll->module = module;
->> +	ret = xa_alloc(&dpll_device_xa, &dpll->id, dpll, xa_limit_16b,
->> +		       GFP_KERNEL);
-> 
-> Why only 16b and why not _cyclic?
->
+> How does this end up looking in the notifications?
+> __dpll_pin_change_ntf() only takes the pin object, from a quick read
+> it seems like it will generate the same notification multiple times.
 
-I cannot image systems with more than 65k of DPLL devices. We don't
-store any id's of last used DPLL device, so there is no easy way to
-restart the search from the last point. And it's not a hot path to
-optimize it.
-
->> +/**
->> + * dpll_device_register - register the dpll device in the subsystem
->> + * @dpll: pointer to a dpll
->> + * @type: type of a dpll
->> + * @ops: ops for a dpll device
->> + * @priv: pointer to private information of owner
->> + *
->> + * Make dpll device available for user space.
->> + *
->> + * Context: Acquires a lock (dpll_lock)
->> + * Return:
->> + * * 0 on success
->> + * * negative - error value
->> + */
->> +int dpll_device_register(struct dpll_device *dpll, enum dpll_type type,
->> +			 const struct dpll_device_ops *ops, void *priv)
->> +{
->> +	struct dpll_device_registration *reg;
->> +	bool first_registration = false;
->> +
->> +	if (WARN_ON(!ops))
->> +		return -EINVAL;
->> +	if (WARN_ON(!ops->mode_get))
->> +		return -EINVAL;
->> +	if (WARN_ON(!ops->lock_status_get))
->> +		return -EINVAL;
->> +	if (WARN_ON(type < DPLL_TYPE_PPS || type > DPLL_TYPE_MAX))
->> +		return -EINVAL;
->> +
->> +	mutex_lock(&dpll_lock);
->> +	reg = dpll_device_registration_find(dpll, ops, priv);
->> +	if (reg) {
->> +		mutex_unlock(&dpll_lock);
->> +		return -EEXIST;
->> +	}
->> +
->> +	reg = kzalloc(sizeof(*reg), GFP_KERNEL);
->> +	if (!reg) {
->> +		mutex_unlock(&dpll_lock);
->> +		return -ENOMEM;
->> +	}
->> +	reg->ops = ops;
->> +	reg->priv = priv;
->> +	dpll->type = type;
->> +	first_registration = list_empty(&dpll->registration_list);
->> +	list_add_tail(&reg->list, &dpll->registration_list);
->> +	if (!first_registration) {
->> +		mutex_unlock(&dpll_lock);
->> +		return 0;
->> +	}
->> +
->> +	xa_set_mark(&dpll_device_xa, dpll->id, DPLL_REGISTERED);
->> +	mutex_unlock(&dpll_lock);
->> +
->> +	return 0;
->> +}
->> +EXPORT_SYMBOL_GPL(dpll_device_register);
-> 
-> Is the registration flow documented? It's a bit atypical so we should
-> write some pseudocode somewhere.
-> 
-
-Yeah, I'll add it and point to the drivers as examples.
-
->> +/**
->> + * dpll_device_unregister - unregister dpll device
->> + * @dpll: registered dpll pointer
->> + * @ops: ops for a dpll device
->> + * @priv: pointer to private information of owner
->> + *
->> + * Unregister device, make it unavailable for userspace.
->> + * Note: It does not free the memory
->> + * Context: Acquires a lock (dpll_lock)
->> + */
->> +void dpll_device_unregister(struct dpll_device *dpll,
->> +			    const struct dpll_device_ops *ops, void *priv)
->> +{
->> +	struct dpll_device_registration *reg;
->> +
->> +	mutex_lock(&dpll_lock);
->> +	ASSERT_DPLL_REGISTERED(dpll);
->> +	reg = dpll_device_registration_find(dpll, ops, priv);
->> +	if (WARN_ON(!reg)) {
->> +		mutex_unlock(&dpll_lock);
->> +		return;
->> +	}
->> +	list_del(&reg->list);
->> +	kfree(reg);
->> +
->> +	if (!list_empty(&dpll->registration_list)) {
->> +		mutex_unlock(&dpll_lock);
->> +		return;
->> +	}
->> +	xa_clear_mark(&dpll_device_xa, dpll->id, DPLL_REGISTERED);
->> +	mutex_unlock(&dpll_lock);
->> +}
->> +EXPORT_SYMBOL_GPL(dpll_device_unregister);
-> 
->> +/**
->> + * struct dpll_pin - structure for a dpll pin
->> + * @id:			unique id number for pin given by dpll subsystem
->> + * @pin_idx:		index of a pin given by dev driver
->> + * @clock_id:		clock_id of creator
->> + * @module:		module of creator
->> + * @dpll_refs:		hold referencees to dplls pin was registered with
->> + * @parent_refs:	hold references to parent pins pin was registered with
->> + * @prop:		pointer to pin properties given by registerer
->> + * @rclk_dev_name:	holds name of device when pin can recover clock from it
->> + * @refcount:		refcount
->> + **/
->> +struct dpll_pin {
->> +	u32 id;
->> +	u32 pin_idx;
->> +	u64 clock_id;
->> +	struct module *module;
->> +	struct xarray dpll_refs;
->> +	struct xarray parent_refs;
->> +	const struct dpll_pin_properties *prop;
->> +	char *rclk_dev_name;
-> 
-> Where is rclk_dev_name filled in?
-
-As Jiri said - left over, will remove it.
-
->> +struct dpll_pin_ops {
->> +	int (*frequency_set)(const struct dpll_pin *pin, void *pin_priv,
->> +			     const struct dpll_device *dpll, void *dpll_priv,
->> +			     const u64 frequency,
->> +			     struct netlink_ext_ack *extack);
->> +	int (*frequency_get)(const struct dpll_pin *pin, void *pin_priv,
->> +			     const struct dpll_device *dpll, void *dpll_priv,
->> +			     u64 *frequency, struct netlink_ext_ack *extack);
->> +	int (*direction_set)(const struct dpll_pin *pin, void *pin_priv,
->> +			     const struct dpll_device *dpll, void *dpll_priv,
->> +			     const enum dpll_pin_direction direction,
->> +			     struct netlink_ext_ack *extack);
->> +	int (*direction_get)(const struct dpll_pin *pin, void *pin_priv,
->> +			     const struct dpll_device *dpll, void *dpll_priv,
->> +			     enum dpll_pin_direction *direction,
->> +			     struct netlink_ext_ack *extack);
->> +	int (*state_on_pin_get)(const struct dpll_pin *pin, void *pin_priv,
->> +				const struct dpll_pin *parent_pin,
->> +				void *parent_pin_priv,
->> +				enum dpll_pin_state *state,
->> +				struct netlink_ext_ack *extack);
->> +	int (*state_on_dpll_get)(const struct dpll_pin *pin, void *pin_priv,
->> +				 const struct dpll_device *dpll,
->> +				 void *dpll_priv, enum dpll_pin_state *state,
->> +				 struct netlink_ext_ack *extack);
->> +	int (*state_on_pin_set)(const struct dpll_pin *pin, void *pin_priv,
->> +				const struct dpll_pin *parent_pin,
->> +				void *parent_pin_priv,
->> +				const enum dpll_pin_state state,
->> +				struct netlink_ext_ack *extack);
->> +	int (*state_on_dpll_set)(const struct dpll_pin *pin, void *pin_priv,
->> +				 const struct dpll_device *dpll,
->> +				 void *dpll_priv,
->> +				 const enum dpll_pin_state state,
->> +				 struct netlink_ext_ack *extack);
->> +	int (*prio_get)(const struct dpll_pin *pin,  void *pin_priv,
->> +			const struct dpll_device *dpll,  void *dpll_priv,
->> +			u32 *prio, struct netlink_ext_ack *extack);
->> +	int (*prio_set)(const struct dpll_pin *pin, void *pin_priv,
->> +			const struct dpll_device *dpll, void *dpll_priv,
->> +			const u32 prio, struct netlink_ext_ack *extack);
->> +};
-> 
-> The ops need a kdoc
-
-Ok, will add it.
-
-> 
->> +struct dpll_device
->> +*dpll_device_get(u64 clock_id, u32 dev_driver_id, struct module *module);
-> 
-> nit: * is part of the type, it goes on the previous line
-
-Fixed, thanks!
+Oops... yeah, will move the notification outside of the loop.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
