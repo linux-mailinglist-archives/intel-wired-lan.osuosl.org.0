@@ -2,83 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C2BF77D070
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Aug 2023 18:55:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37A3577D085
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Aug 2023 19:02:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D23CC61144;
-	Tue, 15 Aug 2023 16:55:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D23CC61144
+	by smtp3.osuosl.org (Postfix) with ESMTP id B837261152;
+	Tue, 15 Aug 2023 17:02:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B837261152
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692118528;
-	bh=WN9S8Njc2tiAyYvTsvRD2mLgDtiW0AVJLknxGc99Mek=;
+	s=default; t=1692118932;
+	bh=fUxMN8KuOwZfF2HBX/Y7o7gsFHIsLfjb06hIobpSCY8=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=8/Z66xxhcZOV6bRp/6v5AQn+j0UrAdV/SlLd0T3yAJyYxKyqKf/rGoBHSQ1HTikye
-	 zRhhcxlnQ6/fQixGvoakoR5M/0sRCDsz5zdjZRuRsz0UnZFWTA1VKAvTg9E/eTgykD
-	 nNifNp3hipI0QSmaE6tvSF0Cu07kCekJrpkkv5C6N+bt2NmgUAcPXIH28uUn9vgcPS
-	 /TVwur0tey8NYy4nR2eK7yKrQPgX2hTFR4L/6gNwWUwFMLCsJn9FIOgLRoWAm2afxo
-	 AWhqsg8BiORUBKJLX1Vt6E//qKa0GY/t+9iElGUzAvtx+4yN5OoT2QdEx5SIh26XWY
-	 zcN+WbRQXJP0g==
+	b=FWLOILbJi+pdTTvQEe7elN7PRu4QoJ3dNoeNZuw/azApWYgHsuYfWUyVHKRZC00Qq
+	 VfXdHcyLdPv2wzPlFwiBfllHPzs/3+ffKa5u36GE49O8MHootib0PncDrDlPLJTkK5
+	 lcoI87DGiHwlVNQoD97kw5rdOgrjZsbajXwZNecdLLauq6XgbdDJ/iIo/YTj0C0ZVm
+	 ocME/Yd/dGeusO5wfTUNYhdfQ6rX+u+krEtaVSSZxIsovCQ8tsP2pVMmmqUN9SxiPC
+	 WnvrK8JS7n+9Pae4G+VNIqWs34dbYHev7wi7cgr8EW/XN+MlRcUu/extqtAfAmejPS
+	 I3Glw5rHvYHZw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X86WcdXfQNAY; Tue, 15 Aug 2023 16:55:28 +0000 (UTC)
+	with ESMTP id mxZIrn0CqVGt; Tue, 15 Aug 2023 17:02:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A913960C2B;
-	Tue, 15 Aug 2023 16:55:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A913960C2B
+	by smtp3.osuosl.org (Postfix) with ESMTP id B42376114A;
+	Tue, 15 Aug 2023 17:02:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B42376114A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 635AE1BF379
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 16:55:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6CF3D1BF379
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 17:02:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3BA0E60C2B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 16:55:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3BA0E60C2B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4E36540953
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 17:02:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E36540953
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gPlDLK5QD5KU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Aug 2023 16:55:22 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8759C60C16
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 16:55:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8759C60C16
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rSyy4vmlt5Je for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Aug 2023 17:02:06 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CF285408DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Aug 2023 17:02:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF285408DF
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id AD5E261ADA;
- Tue, 15 Aug 2023 16:55:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51967C433CD;
- Tue, 15 Aug 2023 16:55:20 +0000 (UTC)
-Date: Tue, 15 Aug 2023 09:55:19 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0CEA961646;
+ Tue, 15 Aug 2023 17:02:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDA68C433C7;
+ Tue, 15 Aug 2023 17:02:03 +0000 (UTC)
+Date: Tue, 15 Aug 2023 10:02:03 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Message-ID: <20230815095519.76d06274@kernel.org>
-In-Reply-To: <d5c30de7-df89-18dd-3ad8-a5d99c1e7108@linux.dev>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <20230815100203.4e45fc7e@kernel.org>
+In-Reply-To: <ZNtm6v+UuDIex1+s@nanopsycho>
 References: <20230811200340.577359-1-vadim.fedorenko@linux.dev>
- <20230811200340.577359-5-vadim.fedorenko@linux.dev>
- <20230814202441.349586b4@kernel.org>
- <d5c30de7-df89-18dd-3ad8-a5d99c1e7108@linux.dev>
+ <20230814194528.00baec23@kernel.org>
+ <43395307-9d11-7905-0eec-0a4c1b1fc62a@linux.dev>
+ <ZNtm6v+UuDIex1+s@nanopsycho>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1692118520;
- bh=0NoRpcHZaUX5im0cn9/N12oK9jNQtW6pqx60BrLK0cs=;
+ d=kernel.org; s=k20201202; t=1692118924;
+ bh=r9KZfoAmpLHh60UciV5nylVVLkX7ks9J5Cw/wgBs6bw=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=h/qtXebOTThtIYgLdqHqoNRqfFRfa9y/NntkWbmyTvfgyh9BOctmFKj8k3XAsH1JF
- aoJAGqTrHqidY5JCD+vm0ExK6+BLcxDLSq3p717eHvClBAxkaQSQRbfU1psUYJ74Bd
- kRbPS0rjZmAdOGYHTHVXNwPnKjpnhSFi0B1wAuRKNJLkChNkLAJtDl052iMqhiYfZN
- gLXuKq0MKFOl6PONyTJmxtK4SAvnRX8Q7p9ID1pGkSED5bp6y1rmkY83gbeufmn7as
- b20tSiNqCkYQIn2ljZnydCYVtFoTrK3QNRMZqB4owFbaLyN+qC3eEAVhaUSNzJt1Kk
- YrHv4JWLD1v1g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=ow3YXSqMksDmaueAVNUM5WBG5xKeQfFxfA2pH0oD3F3PvzxmMy6ICbHq6ZzgWRWGK
+ aWiZcvJDavt+UHR9txOSRokZGJD9qnwxvM+4LGry273QbcF13RARMuqN/EpldDPYDz
+ i0ZsYWxjZmeSzflU80014K/dHCmsJDX9fy9KMyTwcG/Vjl3cE75GCUZbpKO87T62yC
+ 3Bi7Za/j8N56fcVheaxGJPTdawjHf/fmoUf7FcSiHoSNE7yeJUf+tSLIC53h/zBXV4
+ 9qetQIWqiAAyj3tjag/Z1MIK3/yq837XwlBfjKN5VylEFFKiQduQPdj5489SdaCf8g
+ k6H7+xF9YjAsQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=h/qtXebO
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 4/9] dpll: netlink: Add
- DPLL framework base functions
+ header.a=rsa-sha256 header.s=k20201202 header.b=ow3YXSqM
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 0/9] Create common DPLL
+ configuration API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,9 +92,9 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Bart Van Assche <bvanassche@acm.org>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org, Jiri Pirko <jiri@nvidia.com>,
+Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Bart Van Assche <bvanassche@acm.org>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
  Jonathan Lemon <jonathan.lemon@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
  linux-clk@vger.kernel.org, Milena Olech <milena.olech@intel.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -101,32 +102,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 15 Aug 2023 16:18:16 +0100 Vadim Fedorenko wrote:
-> On 15/08/2023 04:24, Jakub Kicinski wrote:
-> > On Fri, 11 Aug 2023 21:03:35 +0100 Vadim Fedorenko wrote:  
-> >> +	xa_for_each(&pin->dpll_refs, i, ref) {
-> >> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
-> >> +		struct dpll_device *dpll = ref->dpll;
-> >> +
-> >> +		if (!ops->frequency_set)
-> >> +			return -EOPNOTSUPP;
-> >> +		ret = ops->frequency_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
-> >> +					 dpll, dpll_priv(dpll), freq, extack);
-> >> +		if (ret)
-> >> +			return ret;
-> >> +		__dpll_pin_change_ntf(pin);
-> >> +	}  
-> > 
-> > only one freq is reported in get, AFAICT, so why send a notification
-> > after each ref is updated?  
+On Tue, 15 Aug 2023 13:52:10 +0200 Jiri Pirko wrote:
+> >> Feels like we're lacking tests here. Is there a common subset of
+> >> stuff we can expect reasonable devices to support?
+> >> Anything you used in development that can be turned into tests?  
+> >
+> >Well, we were playing with the tool ynl/cli.py and it's stated in
+> >the cover letter. But needs proper hardware to run. I'm not sure
+> >we can easily create emulation device to run tests.  
 > 
-> The pin can be technically connected to several DPLLs and app may watch
-> for the specific DPLL messages only. We would like to inform all users 
-> on any DPLL which has this pin connected to.
+> Well, something like "dpllsim", similar to netdevsim would be certainly
+> possible, then you can use it to write selftests for the uapi testing.
+> But why don't we do that as a follow-up patchset?
 
-How does this end up looking in the notifications?
-__dpll_pin_change_ntf() only takes the pin object, from a quick read 
-it seems like it will generate the same notification multiple times.
+I was thinking about a test that can be run against real HW.
+Something that a new vendor implementing DPLL can run and
+validate that their implementation behaves as expected.
+And something that distributors and stable kernels could
+potentially use to validate the code still works.
+
+We don't have any well established user space to make use of this 
+new functionality, there's high risk that drivers will invent their
+own ways of interpreting the API.
+
+Perhaps something that Red Hat could help with? I'm guessing you'd 
+be writing test to validate this for RHEL, anyway?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
