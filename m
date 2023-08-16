@@ -1,98 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3910B77E47B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 17:01:36 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D46177E688
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 18:36:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C4AFB42063;
-	Wed, 16 Aug 2023 15:01:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C4AFB42063
+	by smtp1.osuosl.org (Postfix) with ESMTP id A321B835FB;
+	Wed, 16 Aug 2023 16:36:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A321B835FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692198094;
-	bh=is1In+P2sqtN6iDvctxqqHXq2kALLla5nmM26NrDrfc=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1692203803;
+	bh=DddXWVwild4K1HXfFf2ZAbg8q3RDN9TQETqwSwOevr0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=g16qEsPyVQd9hKn9AXpOZJ1BddY5VMTSd2wKIJYbMl8EwEMvMQstGrYkACN+0F3E6
-	 QJS4YzCw2L+fk9jvd8RNdi9CMqJytsU3Qbj6M5ckmVNvykpIqh+UQekwiH22XQN9DS
-	 8RlG6OgeavY9lk6+I2Mik0l61or+XcYARVr1pFYPNNBMu3MjFjGlZ101A0C8jt0sFH
-	 MQ6e2gueW8peyoFp94tzxfG6nbvi/mJIx4MhxBsW0oNUFdPkAbLDxUBbl/n5VqLkJP
-	 h8VvTEHp5btsrdhjPJ/s1LMhgflZQoQUuKDlh+aNbD0qn/50w7+4TIew5Jz2uQ31c7
-	 NPZgY0e4bzJEw==
+	b=z7BkCjQnWoP13J6VLUFEg2/GDORQavOhc96H9oC0Kd9VveRm7+WllHQM0wrh22Xcy
+	 F84DDfZcg8GY3U6k3iMQmIQcvG0mM7m8Ntkdbz8eW50GDT+zn9aFhhiX/wvF+Oaofy
+	 wsUobQMr58S9ttwXK0c+brwFzhiRorZ6/HewhUTvmaX9U4gQP6187fhcin0glzjk+6
+	 SAaYQOW/tVB4IBdxdK3z8zIPARcooGDfiKTmV7FPzbVrf0iCKJChm5xEi66WXJ1rR8
+	 2PWBUD/2MF8XHTvdp1yEynuuruXmPSJdgM+Y6qVJGvWx/b6J8roetz9br0tQJ6FmBP
+	 MuQN6gVnB4H+Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yZtz8vKmr9Ry; Wed, 16 Aug 2023 15:01:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gkmtktwAVN-b; Wed, 16 Aug 2023 16:36:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 413CD42062;
-	Wed, 16 Aug 2023 15:01:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 413CD42062
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3F63E834E8;
+	Wed, 16 Aug 2023 16:36:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F63E834E8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 833EE1BF41B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 15:01:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0EAB41BF3AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 16:36:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6897661350
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 15:01:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6897661350
+ by smtp3.osuosl.org (Postfix) with ESMTP id DA1EB6139D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 16:36:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DA1EB6139D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jS1_dlp1tJld for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Aug 2023 15:01:27 +0000 (UTC)
-Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
- [IPv6:2a00:1450:4864:20::62a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2098260A8C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 15:01:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2098260A8C
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-99d90ffed68so890286466b.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 08:01:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692198085; x=1692802885;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zsaDsMPO5ZV2AqjhfXoaV5yTJLxRJeYGvz3XE1CIUIc=;
- b=VNMpY+HxIxjHeZDK/Orh1a3sMRelE89ZmXbscAGrTY2QEsfrkWP4gIFticEXGSwE2o
- gr3+W38BVZZ06ne5qLucwknXvAr5I7MqhgVSvRy7m94zLyZhdFFKLs9gLItC2RnxGZwJ
- cwboeA8E6tWKjLBDSEfo2rF4e0zQwa3ARH5M3latHUdk+jvAuxGz0itF3S657l305rTR
- 6Qf1X0ZLPZGU1QJbgEkLJ/u6f3c1ffiSnYZNvRQEBXkW2eke4tV+6rbWsb8t0XfcVpwY
- rT7QLaNq78TDniOTIh3t5PdGHQcCy7hsgaAk7lvURi+aKSWQMFoHuhR1n8Y9nPfnSZTh
- kDLQ==
-X-Gm-Message-State: AOJu0Yz2XD0BjH07tH6l6Hh5IB8tzFZY75nx9tcIRqX6xGn2kUNhlDFh
- 1BCtNP7wCgcMnAIxV0kyz7UhhEZGywFyQDcMEyc=
-X-Google-Smtp-Source: AGHT+IGtAKEDE+xT7TNnkw6TPYDNLMC4+1tbYbjVQLLPFOUQJ7vUeFyz2cwobk843W8psqC5T4xRMMXFELE8FjY2D+Q=
-X-Received: by 2002:a17:907:7d87:b0:978:2b56:d76e with SMTP id
- oz7-20020a1709077d8700b009782b56d76emr5258514ejc.12.1692198084302; Wed, 16
- Aug 2023 08:01:24 -0700 (PDT)
+ with ESMTP id 0dNGAUu2GYBD for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Aug 2023 16:36:35 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2D3BB60A69
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 16:36:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D3BB60A69
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="438931547"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="438931547"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2023 09:36:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="734289393"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="734289393"
+Received: from lkp-server02.sh.intel.com (HELO a9caf1a0cf30) ([10.239.97.151])
+ by orsmga002.jf.intel.com with ESMTP; 16 Aug 2023 09:36:04 -0700
+Received: from kbuild by a9caf1a0cf30 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qWJV5-0000RR-3B;
+ Wed, 16 Aug 2023 16:36:03 +0000
+Date: Thu, 17 Aug 2023 00:35:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org
+Message-ID: <202308170000.YqabIR9D-lkp@intel.com>
+References: <20230816140623.452869-2-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
-References: <20230816010705.1360446-1-jesse.brandeburg@intel.com>
- <20230816010705.1360446-2-jesse.brandeburg@intel.com>
-In-Reply-To: <20230816010705.1360446-2-jesse.brandeburg@intel.com>
-From: Shannon Nelson <shannon.lee.nelson@gmail.com>
-Date: Wed, 16 Aug 2023 08:01:13 -0700
-Message-ID: <CAP-MU4Pxx3GT6tTV1as3Lk_kj1iZpFHWp=6wn+5dh=C4g5OjpA@mail.gmail.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1692198085; x=1692802885;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zsaDsMPO5ZV2AqjhfXoaV5yTJLxRJeYGvz3XE1CIUIc=;
- b=iX/JBUx6gMgJzNlvlUSbeaMg2LOWHBUEs9wfw73TDPNGGBdq6oeQVpyeaZmKIbUu+6
- 3pVj1odtJ2+CXlP4HRI0nUJTbJQ2vytGP86KMvwIS9LMAZv1vhKRsmx6GQZDV65dV660
- 6NVgsfeOA3u8ykIEvB4W225zdkyzosfbupLRhM0/fuX9I0jo+KshtLBVVUwXWOkMtW2i
- Ingdfq6dafrJBXO1cP8JYZCL4r8Ws0znTRl9SMQsC/SsRht2T+x7q5vl5lXVOm/iVY5L
- Gbd/XD+VwKVlGMdpvuvjNlcAuuxo9OG90lWrZs+n2riV7Q5P9llCKe98blKOimNPLTV7
- z0iw==
+Content-Disposition: inline
+In-Reply-To: <20230816140623.452869-2-przemyslaw.kitszel@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1692203795; x=1723739795;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=9UeH/chb7IQAwSssem/J/NF0SyQa1tgGe+NbjTKigpA=;
+ b=fPGz6HLx2DY2zvmSEHzLjaHN45YKnSPWiLWI3MD/lpYjzDE85rB8J98c
+ rTeDYFosbAjGfaNsoj98hfgmWDWikaki4XTVn9h0VCDSYx/0M6nfEEi8b
+ szzcXk+bQDFxUdPt3ChB/mIDG9h7jEPcw0cFxs/2eSae6x2ia0lQdQ3fl
+ w0iVSZkXnVH6xver4swNLG2Z+ceWbc7Gohhk9/dD8hy1N9uuuiC7ss8FO
+ jyEPE8iimwifa8TcxPBFTVI0k/f8U2MtxrrbU8prgeFrmQoZnO585vqaJ
+ o3ish/UHwE0z8sh/gUrsn5TcnJHCALRXL0gz9SPIYRQleTIZ3xT0X3uwF
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=iX/JBUx6
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/2] ice: refactor code to
- remove unused variable
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=fPGz6HLx
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/7] overflow: add
+ DEFINE_FLEX() for on-stack allocs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,63 +98,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, llvm@lists.linux.dev,
+ Steven Zou <steven.zou@intel.com>, intel-wired-lan@lists.osuosl.org,
+ linux-hardening@vger.kernel.org, oe-kbuild-all@lists.linux.dev
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVHVlLCBBdWcgMTUsIDIwMjMgYXQgNjowN+KAr1BNIEplc3NlIEJyYW5kZWJ1cmcKPGplc3Nl
-LmJyYW5kZWJ1cmdAaW50ZWwuY29tPiB3cm90ZToKPgo+IFVwb24gcmV2aWV3IGl0IHdhcyBub3Rp
-Y2VkIHRoYXQgdGhlcmUgaXMgYW4gdW51c2VkIGxvY2FsIHZhcmlhYmxlIHRoYXQKPiBpcyB1c2lu
-ZyBhbm90aGVyIHVudXNlZCBkZWZpbmUuIFJlbW92ZSBhbGwgdGhlIHVudXNlZCBzdHVmZiBmcm9t
-IHRoZQo+IGZ1bmN0aW9uIGFuZCBoZWFkZXIgaW4gcXVlc3Rpb24uCj4KPiBTaWduZWQtb2ZmLWJ5
-OiBKZXNzZSBCcmFuZGVidXJnIDxqZXNzZS5icmFuZGVidXJnQGludGVsLmNvbT4KPiAtLS0KPiAg
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9nbnNzLmMgfCA1ICsrLS0tCj4gIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZ25zcy5oIHwgMSAtCj4gIDIgZmlsZXMg
-Y2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZ25zcy5jIGIvZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9nbnNzLmMKPiBpbmRleCA3NWM5ZGU2NzVmMjAuLjAyNmJm
-YTcxMjA0ZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
-X2duc3MuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZ25zcy5j
-Cj4gQEAgLTg1LDcgKzg1LDYgQEAgc3RhdGljIHZvaWQgaWNlX2duc3NfcmVhZChzdHJ1Y3Qga3Ro
-cmVhZF93b3JrICp3b3JrKQo+ICB7Cj4gICAgICAgICBzdHJ1Y3QgZ25zc19zZXJpYWwgKmduc3Mg
-PSBjb250YWluZXJfb2Yod29yaywgc3RydWN0IGduc3Nfc2VyaWFsLAo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlYWRfd29yay53b3JrKTsKPiAtICAg
-ICAgIHVuc2lnbmVkIGxvbmcgZGVsYXkgPSBJQ0VfR05TU19QT0xMX0RBVEFfREVMQVlfVElNRTsK
-ClRoaXMgaXMgYSBkaWZmZXJlbnQgdmFsdWUgdGhhbiB0aGUgb25lIHlvdSBhcmUgdXNpbmcgaW4g
-dGhlIGt0aHJlYWQuLi4KY2FsbCBiZWxvdy4gIFRoZSBsb2dpYyBoYXMgc29tZSBqdW1wcyB0byB0
-aGUgcmVxdWV1ZSBsYWJlbCB0aGF0IHdvdWxkCmJlIHVzaW5nIHRoaXMgUE9MTF9EQVRBX0RFTEFZ
-IHZhbHVlLiAgV2l0aCB5b3VyIGNoYW5nZSwgdGhlc2UganVtcHMKd2lsbCBub3cgYmUgdXNpbmcg
-dGhlIFRJTUVSX0RFTEFZIHZhbHVlLiAgSXMgdGhpcyBhIHNpZ25pZmljYW50IGNoYW5nZQppbiBi
-ZWhhdmlvcj8KCnNsbgoKPiAgICAgICAgIHVuc2lnbmVkIGludCBpLCBieXRlc19yZWFkLCBkYXRh
-X2xlbiwgY291bnQ7Cj4gICAgICAgICBzdHJ1Y3QgaWNlX2FxY19saW5rX3RvcG9fYWRkciBsaW5r
-X3RvcG87Cj4gICAgICAgICBzdHJ1Y3QgaWNlX3BmICpwZjsKPiBAQCAtMTQ5LDExICsxNDgsMTEg
-QEAgc3RhdGljIHZvaWQgaWNlX2duc3NfcmVhZChzdHJ1Y3Qga3RocmVhZF93b3JrICp3b3JrKQo+
-ICAgICAgICAgICAgICAgICBkZXZfd2FybihpY2VfcGZfdG9fZGV2KHBmKSwKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgImduc3NfaW5zZXJ0X3JhdyByZXQ9JWQgc2l6ZT0lZFxuIiwKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgY291bnQsIGkpOwo+IC0gICAgICAgZGVsYXkgPSBJQ0VfR05T
-U19USU1FUl9ERUxBWV9USU1FOwo+ICBmcmVlX2J1ZjoKPiAgICAgICAgIGZyZWVfcGFnZSgodW5z
-aWduZWQgbG9uZylidWYpOwo+ICByZXF1ZXVlOgo+IC0gICAgICAga3RocmVhZF9xdWV1ZV9kZWxh
-eWVkX3dvcmsoZ25zcy0+a3dvcmtlciwgJmduc3MtPnJlYWRfd29yaywgZGVsYXkpOwo+ICsgICAg
-ICAga3RocmVhZF9xdWV1ZV9kZWxheWVkX3dvcmsoZ25zcy0+a3dvcmtlciwgJmduc3MtPnJlYWRf
-d29yaywKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIElDRV9HTlNTX1RJTUVS
-X0RFTEFZX1RJTUUpOwo+ICAgICAgICAgaWYgKGVycikKPiAgICAgICAgICAgICAgICAgZGV2X2Ri
-ZyhpY2VfcGZfdG9fZGV2KHBmKSwgIkdOU1MgZmFpbGVkIHRvIHJlYWQgZXJyPSVkXG4iLCBlcnIp
-Owo+ICB9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2Vf
-Z25zcy5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9nbnNzLmgKPiBpbmRl
-eCA3NWU1NjdhZDcwNTkuLjdhMzU5MDNkNjE5YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9pY2UvaWNlX2duc3MuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfZ25zcy5oCj4gQEAgLTUsNyArNSw2IEBACj4gICNkZWZpbmUgX0lDRV9H
-TlNTX0hfCj4KPiAgI2RlZmluZSBJQ0VfRTgxMFRfR05TU19JMkNfQlVTICAgICAgICAgMHgyCj4g
-LSNkZWZpbmUgSUNFX0dOU1NfUE9MTF9EQVRBX0RFTEFZX1RJTUUgIChIWiAvIDUwKSAvKiBwb2xs
-IGV2ZXJ5IDIwIG1zICovCj4gICNkZWZpbmUgSUNFX0dOU1NfVElNRVJfREVMQVlfVElNRSAgICAg
-IChIWiAvIDEwKSAvKiAwLjEgc2Vjb25kIHBlciBtZXNzYWdlICovCj4gICNkZWZpbmUgSUNFX0dO
-U1NfVFRZX1dSSVRFX0JVRiAgICAgICAgIDI1MAo+ICAjZGVmaW5lIElDRV9NQVhfSTJDX0RBVEFf
-U0laRSAgICAgICAgICBGSUVMRF9NQVgoSUNFX0FRQ19JMkNfREFUQV9TSVpFX00pCj4gLS0KPiAy
-LjQxLjAKPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Cj4gSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdAo+IEludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
-b3JnCj4gaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2ly
-ZWQtbGFuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCklu
-dGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0
-cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Hi Przemek,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on 479b322ee6feaff612285a0e7f22c022e8cd84eb]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Przemek-Kitszel/overflow-add-DEFINE_FLEX-for-on-stack-allocs/20230816-221402
+base:   479b322ee6feaff612285a0e7f22c022e8cd84eb
+patch link:    https://lore.kernel.org/r/20230816140623.452869-2-przemyslaw.kitszel%40intel.com
+patch subject: [PATCH net-next v3 1/7] overflow: add DEFINE_FLEX() for on-stack allocs
+config: x86_64-rhel-8.3-rust (https://download.01.org/0day-ci/archive/20230817/202308170000.YqabIR9D-lkp@intel.com/config)
+compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
+reproduce: (https://download.01.org/0day-ci/archive/20230817/202308170000.YqabIR9D-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202308170000.YqabIR9D-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> thread 'main' panicked at '"ftrace_branch_data_union_(anonymous_at_include/linux/compiler_types_h_144_2)" is not a valid Ident', /opt/cross/rustc-1.68.2-bindgen-0.56.0/cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.24/src/fallback.rs:693:9
+   stack backtrace:
+      0: rust_begin_unwind
+                at /rustc/9eb3afe9ebe9c7d2b84b71002d44f4a0edac95e0/library/std/src/panicking.rs:575:5
+      1: core::panicking::panic_fmt
+                at /rustc/9eb3afe9ebe9c7d2b84b71002d44f4a0edac95e0/library/core/src/panicking.rs:64:14
+      2: proc_macro2::fallback::Ident::_new
+      3: proc_macro2::Ident::new
+      4: bindgen::ir::context::BindgenContext::rust_ident
+      5: <bindgen::ir::comp::CompInfo as bindgen::codegen::CodeGenerator>::codegen
+      6: <bindgen::ir::ty::Type as bindgen::codegen::CodeGenerator>::codegen
+      7: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+      8: <bindgen::ir::comp::CompInfo as bindgen::codegen::CodeGenerator>::codegen
+      9: <bindgen::ir::ty::Type as bindgen::codegen::CodeGenerator>::codegen
+     10: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+     11: <bindgen::ir::module::Module as bindgen::codegen::CodeGenerator>::codegen
+     12: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+     13: bindgen::ir::context::BindgenContext::gen
+     14: bindgen::Builder::generate
+     15: bindgen::main
+   note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+   make[3]: *** [rust/Makefile:316: rust/uapi/uapi_generated.rs] Error 1
+   make[3]: *** Deleting file 'rust/uapi/uapi_generated.rs'
+>> thread 'main' panicked at '"ftrace_branch_data_union_(anonymous_at_include/linux/compiler_types_h_144_2)" is not a valid Ident', /opt/cross/rustc-1.68.2-bindgen-0.56.0/cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.24/src/fallback.rs:693:9
+   stack backtrace:
+      0: rust_begin_unwind
+                at /rustc/9eb3afe9ebe9c7d2b84b71002d44f4a0edac95e0/library/std/src/panicking.rs:575:5
+      1: core::panicking::panic_fmt
+                at /rustc/9eb3afe9ebe9c7d2b84b71002d44f4a0edac95e0/library/core/src/panicking.rs:64:14
+      2: proc_macro2::fallback::Ident::_new
+      3: proc_macro2::Ident::new
+      4: bindgen::ir::context::BindgenContext::rust_ident
+      5: <bindgen::ir::comp::CompInfo as bindgen::codegen::CodeGenerator>::codegen
+      6: <bindgen::ir::ty::Type as bindgen::codegen::CodeGenerator>::codegen
+      7: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+      8: <bindgen::ir::comp::CompInfo as bindgen::codegen::CodeGenerator>::codegen
+      9: <bindgen::ir::ty::Type as bindgen::codegen::CodeGenerator>::codegen
+     10: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+     11: <bindgen::ir::module::Module as bindgen::codegen::CodeGenerator>::codegen
+     12: <bindgen::ir::item::Item as bindgen::codegen::CodeGenerator>::codegen
+     13: bindgen::ir::context::BindgenContext::gen
+     14: bindgen::Builder::generate
+     15: bindgen::main
+   note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+   make[3]: *** [rust/Makefile:310: rust/bindings/bindings_generated.rs] Error 1
+   make[3]: *** Deleting file 'rust/bindings/bindings_generated.rs'
+   make[3]: Target 'rust/' not remade because of errors.
+   make[2]: *** [Makefile:1293: prepare] Error 2
+   make[1]: *** [Makefile:234: __sub-make] Error 2
+   make[1]: Target 'prepare' not remade because of errors.
+   make: *** [Makefile:234: __sub-make] Error 2
+   make: Target 'prepare' not remade because of errors.
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
