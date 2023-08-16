@@ -2,65 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF7E877D753
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 03:07:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65D7177D754
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 03:07:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 75AE641BA2;
-	Wed, 16 Aug 2023 01:07:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 75AE641BA2
+	by smtp4.osuosl.org (Postfix) with ESMTP id F1FC241BA1;
+	Wed, 16 Aug 2023 01:07:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1FC241BA1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692148050;
-	bh=jKbTcQeqhjCI4AHebLM3y/VlVHesmajL/wRT2iUixgM=;
+	s=default; t=1692148055;
+	bh=UYg/+H2DKBQiYej3GFM0zvP3THxfSQtIX9oeNfcsLj0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ChRP6pov7nJVnAB0ScMysfYDrgPUVUnLNUuJWHQuIenLO3FO6hetd5WQC/QKmgCw4
-	 Y7W/MSS8shIshkYdZkKhfcxKmiL/SJQwnBnhU+U+bEtXrtO8Ik/5i3orVoidbn8czE
-	 OAC/N2WIeLiHl37sfeiCII8bDayR0e5gN5L1fexlTZOz2ryW/97NN6f2/tOXYpXPS/
-	 CD3SpdrzeudEKeLWC1AFBRufvui+ELNlwZ2piIDXQPH14reZIrpkKKq/VoDrsQ8eqt
-	 irW+PMyqCSHbAFRZQvb5oHpp4SffzHtLah0oez9m3+4OFpDimScDN6sLZK21aa6Cyj
-	 EnTGNuiE4QQzA==
+	b=ZddwrYOYx4NECCUKGBpt1uzB+jFMVPaR2pmKCuqI7Ngul/ddIjPn3wqLW65pW3lv3
+	 o74UmWVULgI0UOpOqtuQwLfrLVJO7ApmfC2HQCLtaJG2+qqtTrMGceRUGeBQ5ZucIh
+	 U33hL4HmVgcoJhHwzBeQHIssrTGZcs8cxYmIntoa3/WCp0/oVYi5spzGeuvEjbqOGU
+	 MRRDngEfixczMrvxRwtfsP1ujfxvVikK9FV7O7oqVwbLDXbShfz9ygQRmLRD7ex3Hx
+	 2LccoNNj7MfkmOQIoca3m8K41Rm8k6I97zumc60pI2OFVMXqy4F6hLmOOid8T4UC/b
+	 qEXXKFaf43Afg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qX7r3V_AivrJ; Wed, 16 Aug 2023 01:07:29 +0000 (UTC)
+	with ESMTP id dAotEc4dwZbY; Wed, 16 Aug 2023 01:07:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CFA6041B93;
-	Wed, 16 Aug 2023 01:07:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CFA6041B93
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6906C41B99;
+	Wed, 16 Aug 2023 01:07:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6906C41B99
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E0E3F1BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 01:07:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F1AD61BF3CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 01:07:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7A92460A61
+ by smtp3.osuosl.org (Postfix) with ESMTP id B6C5B611FB
  for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 01:07:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7A92460A61
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B6C5B611FB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 02MAF8DnsCrV for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id QFxk-ldhHkhS for <intel-wired-lan@lists.osuosl.org>;
  Wed, 16 Aug 2023 01:07:15 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 56F53611FB
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8934F611FC
  for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 01:07:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 56F53611FB
-X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="357388353"
-X-IronPort-AV: E=Sophos;i="6.01,175,1684825200"; d="scan'208";a="357388353"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8934F611FC
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="357388354"
+X-IronPort-AV: E=Sophos;i="6.01,175,1684825200"; d="scan'208";a="357388354"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 Aug 2023 18:07:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="824049531"
-X-IronPort-AV: E=Sophos;i="6.01,175,1684825200"; d="scan'208";a="824049531"
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="824049534"
+X-IronPort-AV: E=Sophos;i="6.01,175,1684825200"; d="scan'208";a="824049534"
 Received: from jbrandeb-saw1.jf.intel.com ([10.166.28.102])
  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2023 18:07:13 -0700
+ 15 Aug 2023 18:07:14 -0700
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 15 Aug 2023 18:07:04 -0700
-Message-ID: <20230816010705.1360446-2-jesse.brandeburg@intel.com>
+Date: Tue, 15 Aug 2023 18:07:05 -0700
+Message-ID: <20230816010705.1360446-3-jesse.brandeburg@intel.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230816010705.1360446-1-jesse.brandeburg@intel.com>
 References: <20230816010705.1360446-1-jesse.brandeburg@intel.com>
@@ -70,19 +70,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1692148035; x=1723684035;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=vBmkRCSVF/PHpCQ2VfAIrsvVKjc0Tn2l7pWgcVt22JQ=;
- b=j7240BGoVHbbU2ZyWjvyCq4Dg9WsfaMCKab88MOA6X1G6yqWysjFpOHP
- yzwXKsFpVFcgEzy50TKj8q4OFEPOtSZeSfdbi1rFtqEaTnczmk2keqwS2
- 0HqCUj+KSEw7erzQgf+8luXoQ2IQyxZZoqPCP6/u6xgFuSYYsH5zoLB9R
- OCC5C0F9s9CmfZNtkusX/3npIlvy3/JSRrrYFxLViE6u2pm6A2Y/n3+TI
- aWb/87SSrCycunydz/gqjnk+v1xwEW3jfU4j0o73rr8vSyGEIkRKryFpH
- VpmVOqYadFc+WQ3Won4nc21tSnvqKY+YKdfJy6ChskCn4uCkYeuKlCSx7
- w==;
+ bh=CIN0ti0766k5wQG04GvB0R0/B6CI+Vdzk7RbnzyQ6fs=;
+ b=bARC7NzbDP1mFErECGIpfsBJNRbWFvdzSRUk1DwvaQ8OaSXKJBkuiID/
+ 4T3FZsTp3hYqNpdFV3ht+jjs7Hy+cO8otvthWpZbalv+QMPylhwFO5/Gw
+ 5rRe+0MWzHlCAR0Fr7iYdPUmEcbKUoxcxB4RWmdRaV0mm1cOL0bh7mQGd
+ tyXBl9/aj817dp972pRGRZzkSDccX+KpgGyqqGvdW+3bUa8V2tRNpNzVe
+ PKZdGQmBMVB06obLsgg04X4m6fXed4mAl58uMmZwVIbcpxWZT00JY1xbb
+ zgmLclmo4S6IKQPd9cMfkaCY14O9rJInEQE/6ONc6mitjA4cou3LDqxj2
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=j7240BGo
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 1/2] ice: refactor code to
- remove unused variable
+ header.a=rsa-sha256 header.s=Intel header.b=bARC7Nzb
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 2/2] ice: trivial: normalize
+ strings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,54 +101,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Upon review it was noticed that there is an unused local variable that
-is using another unused define. Remove all the unused stuff from the
-function and header in question.
+While reviewing this code I noticed two strings being printed from the
+driver that are reporting status, but calling it err=, so fix up those
+messages. This better matches other locations in the driver where we call
+that type of return value print "status=".
 
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_gnss.c | 5 ++---
- drivers/net/ethernet/intel/ice/ice_gnss.h | 1 -
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_gnss.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
-index 75c9de675f20..026bfa71204f 100644
+index 026bfa71204f..250236bd84c0 100644
 --- a/drivers/net/ethernet/intel/ice/ice_gnss.c
 +++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
-@@ -85,7 +85,6 @@ static void ice_gnss_read(struct kthread_work *work)
- {
- 	struct gnss_serial *gnss = container_of(work, struct gnss_serial,
- 						read_work.work);
--	unsigned long delay = ICE_GNSS_POLL_DATA_DELAY_TIME;
- 	unsigned int i, bytes_read, data_len, count;
- 	struct ice_aqc_link_topo_addr link_topo;
- 	struct ice_pf *pf;
-@@ -149,11 +148,11 @@ static void ice_gnss_read(struct kthread_work *work)
- 		dev_warn(ice_pf_to_dev(pf),
- 			 "gnss_insert_raw ret=%d size=%d\n",
- 			 count, i);
--	delay = ICE_GNSS_TIMER_DELAY_TIME;
- free_buf:
- 	free_page((unsigned long)buf);
- requeue:
--	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, delay);
-+	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work,
-+				   ICE_GNSS_TIMER_DELAY_TIME);
- 	if (err)
- 		dev_dbg(ice_pf_to_dev(pf), "GNSS failed to read err=%d\n", err);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/ethernet/intel/ice/ice_gnss.h
-index 75e567ad7059..7a35903d619c 100644
---- a/drivers/net/ethernet/intel/ice/ice_gnss.h
-+++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
-@@ -5,7 +5,6 @@
- #define _ICE_GNSS_H_
+@@ -69,7 +69,7 @@ ice_gnss_do_write(struct ice_pf *pf, const unsigned char *buf, unsigned int size
+ 	return size;
  
- #define ICE_E810T_GNSS_I2C_BUS		0x2
--#define ICE_GNSS_POLL_DATA_DELAY_TIME	(HZ / 50) /* poll every 20 ms */
- #define ICE_GNSS_TIMER_DELAY_TIME	(HZ / 10) /* 0.1 second per message */
- #define ICE_GNSS_TTY_WRITE_BUF		250
- #define ICE_MAX_I2C_DATA_SIZE		FIELD_MAX(ICE_AQC_I2C_DATA_SIZE_M)
+ err_out:
+-	dev_err(ice_pf_to_dev(pf), "GNSS failed to write, offset=%u, size=%u, err=%d\n",
++	dev_err(ice_pf_to_dev(pf), "GNSS failed to write, offset=%u, size=%u, status=%d\n",
+ 		offset, size, err);
+ 
+ 	return err;
+@@ -310,7 +310,7 @@ static int ice_gnss_register(struct ice_pf *pf)
+ 	gnss_set_drvdata(gdev, pf);
+ 	ret = gnss_register_device(gdev);
+ 	if (ret) {
+-		dev_err(ice_pf_to_dev(pf), "gnss_register_device err=%d\n",
++		dev_err(ice_pf_to_dev(pf), "gnss_register_device failed, status=%d\n",
+ 			ret);
+ 		gnss_put_device(gdev);
+ 	} else {
 -- 
 2.41.0
 
