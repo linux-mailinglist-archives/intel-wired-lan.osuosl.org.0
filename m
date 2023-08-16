@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B72C77E78B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 19:28:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5312277E7A6
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 19:33:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BC609408BC;
-	Wed, 16 Aug 2023 17:28:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC609408BC
+	by smtp2.osuosl.org (Postfix) with ESMTP id E5271408BC;
+	Wed, 16 Aug 2023 17:33:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5271408BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692206880;
-	bh=psPaygJ5NBmjSknZB2qZLdbDJ/MPlJ5qlAn6csjyJA0=;
+	s=default; t=1692207180;
+	bh=W0cP0QRBXlDDLrIU9TpnFOrxPLbdoGmbWrc6n/pqEi8=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=K2sjFmjOIKjFmHdARTxwsKAXDPqVT6AUm4Vwvi5HwOu8AKXKBl6nkxy1sammynCIN
-	 2FreIzdgtG8tH4Hn2FEw8uOA2xzhKg6HZETRN2SBb7O3OZU1RtmHDaZ4sn/j2NBbKe
-	 piWdBIuFgSLzN/ucXetBJlFeZ20V7fZFXBsyl03yXpG1zmFZvsaVLZZOtPoUZlI0Um
-	 y+8exD7snRfCksH2NfA+lmavJ6yXE67GCttaCb4Lf0MPMhtMjWICudTcb3j3LRCkxa
-	 ShNvbvKAIxRTry5ocq62NXRMdeSH+/nBGSqZQUxXbROkA9VeZWz56avnCiiuxm26Qf
-	 TKFYTHWqL71DA==
+	b=VDpS8aoqGkFllaVTIwVpy3snfakc4XNeCudBwv48+ppcZv/F+Igrz/THEzfMeBUMF
+	 cAIGAnOLDkjxqFaTprSXo5ZRP+jjgrxL8n/HlVXWtDDQ4rBzag1IMy1ojiGUia7MQq
+	 pOsovQCq/ho1U3lFQ+bFMnsYr7LH/psViZTGoRQLs8Nv5MK0J2O81NRZEX2VtpCpry
+	 5x0XnBHpJsx5mpUVqNhltmXl08Xr6fql7ww4XlQ44IubjpEUkV+uBkAyPKrofzuPMe
+	 XR2sgzOwLcqawkmbHAtZ5sJQs+MKRP53POjn08wrAxjA9bxHfaVQxNV1A4K41VHA9A
+	 0yTeyD+AEamoA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iypx_AMcneUq; Wed, 16 Aug 2023 17:27:59 +0000 (UTC)
+	with ESMTP id e509ATUC4U16; Wed, 16 Aug 2023 17:33:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EBDDC4021C;
-	Wed, 16 Aug 2023 17:27:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EBDDC4021C
+	by smtp2.osuosl.org (Postfix) with ESMTP id B3595404B2;
+	Wed, 16 Aug 2023 17:32:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B3595404B2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B75351BF3DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:27:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B37A11BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:32:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4C47B42050
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:27:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C47B42050
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7A645838DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:32:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A645838DE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 280gu-aMrHe3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Aug 2023 17:27:51 +0000 (UTC)
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2056.outbound.protection.outlook.com [40.107.244.56])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 27BA741F33
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:27:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 27BA741F33
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qxGRts-nUxvu for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Aug 2023 17:32:53 +0000 (UTC)
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam04on2058.outbound.protection.outlook.com [40.107.101.58])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9DD34838B3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 17:32:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9DD34838B3
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=By31x8Ogj8ukFd2U1YtIIKJ0fMTn/QcVK+bMiQtZel9O3ToJ8ALd6oOkdDMOvqYUxdENvvdbxOteM34Yb9SgZrasHj7c2mODLAiR7IixPo/h8AhiUS0x7pGc8+ft7zxgKNhbmxB5w9OW+OVUeTZeXu0Jvo+yrhZOl8MGr88b3Zprx8RAj+OtyYPHLLUy6QWX+pNQJPALKZLKOGUy9tbmKPtSGvrWAMEMEkSsGp9VRfTiymbn4jaZeR0p6kcitCJdz+bowt9UTST6GFqgj+WTLMGDF/RWOjQvGp+WmzaTC7rHF10trVe28MbZKXostCTKK1KSjueeFwwrRnymsfGoNw==
+ b=fb/svFw2Kn3iaPHP/DKymAE/K8aooDBlDr/roq2Bxigt1vHeragAQ+tMzdkL2yt6SBB7O9CzfZpvycQvdjN62Ex7g6/9KHzuHotYPhQ8o+4vR5n8dw6fDt+cJhVVXS1D7es6U8D478q+x7vNGaaSH9+RIoJchei0HNOIsi9rqc5RWXwS37jXCk2L2N/niYkBSWKaKBRm933aiWeEpEtBPdBL8C4Aof/docLW7+lEJOv9PwbUppO1RD/KMOzQdbT92ikwpxlOdmZVgAUqrqP4gyzvLJiOs0HeurmftJ13fGs91CvQT+6GqTIGQJJsRyhXbEPi75CvFIGa88P3t8lDPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xYp3JRqHDbwm81Lr0iC19cUMBXNnJ+8k6TKMnOzmaf8=;
- b=jPdzqpWLyqfCsoZUmhWV0vq5hVHrY3N/K2Gp7tQKgKPp5uGrRxa70D9P9fN1Ib4jnhOnh+bMDYavmiw1qa2yflENEoRO+3rzsTcKYyg9C4rnYPVITdmDxbLK0MFBka3i3mveDmgJGi1Z/qKuTio4iN0ZZS/We0j4QDPq7wWxmIm3NLUJDWdDIUce48LJxrIm2bCXbta7z2J2G1Prar6NL5mRcZCyeQCu5SDnzM0STy2XO3tFIKwlRvsfb9Dt7Bc8IgJ9u/ah8gCn3pfhLybp0KaTL3W1hwaXI9/A4KI8bXbSXg82klRsiOBHJuWWlG1uqTdXjmkecW+ST9A0xldp9Q==
+ bh=QRhi0NYSyynfNWuyjd6WRuLytm7DQB4Pysh+taDYNRw=;
+ b=gn7QYFxU+kE/CKorGcHkKtVcmqtwP5HP/JriDSTihKtMM2cS+Sup5x9fcHdpbQlbnFpv0UsIvIOzAjCgtyIVuWG/1kwdeJbBd/PdVJIQryuX17OgCA1V///8poOgcJcwR/DBAYuBciIZfZUQPdbm7ttAELjv+rhKedybtR3VLAOO1yZP+DJmB/0gfjxDf70lKAl+rCzPCe/tKdejDvfo8jeQnmghyABUDs2t6C3Qzt6bztNLIgme7V09rNFpFb2ww/1FY7PemTpCyxlYZiDa8N05jGh5zt0Qw9MqZELTfWE2z/K+HPCb9cTVv2zmIKUriYrOyvgmzPui0k1pouZBUg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
  header.d=amd.com; arc=none
@@ -61,13 +61,13 @@ Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
  by PH0PR12MB5420.namprd12.prod.outlook.com (2603:10b6:510:e8::18)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.29; Wed, 16 Aug
- 2023 17:27:49 +0000
+ 2023 17:32:52 +0000
 Received: from PH0PR12MB7982.namprd12.prod.outlook.com
  ([fe80::ee63:b5d6:340c:63b2]) by PH0PR12MB7982.namprd12.prod.outlook.com
  ([fe80::ee63:b5d6:340c:63b2%5]) with mapi id 15.20.6678.029; Wed, 16 Aug 2023
- 17:27:48 +0000
-Message-ID: <416aa269-ba69-fe7a-ddab-0faf1f0c24ca@amd.com>
-Date: Wed, 16 Aug 2023 10:27:45 -0700
+ 17:32:52 +0000
+Message-ID: <d7d6b96b-11b7-fc6a-90ce-82deead74b89@amd.com>
+Date: Wed, 16 Aug 2023 10:32:49 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
 Content-Language: en-US
@@ -75,84 +75,84 @@ To: Wenjun Wu <wenjun1.wu@intel.com>, intel-wired-lan@lists.osuosl.org,
  netdev@vger.kernel.org
 References: <20230727021021.961119-1-wenjun1.wu@intel.com>
  <20230808015734.1060525-1-wenjun1.wu@intel.com>
- <20230808015734.1060525-5-wenjun1.wu@intel.com>
+ <20230808015734.1060525-6-wenjun1.wu@intel.com>
 From: Brett Creeley <bcreeley@amd.com>
-In-Reply-To: <20230808015734.1060525-5-wenjun1.wu@intel.com>
-X-ClientProxiedBy: BYAPR06CA0004.namprd06.prod.outlook.com
- (2603:10b6:a03:d4::17) To PH0PR12MB7982.namprd12.prod.outlook.com
+In-Reply-To: <20230808015734.1060525-6-wenjun1.wu@intel.com>
+X-ClientProxiedBy: PH0P220CA0013.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:d3::11) To PH0PR12MB7982.namprd12.prod.outlook.com
  (2603:10b6:510:28d::5)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|PH0PR12MB5420:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3911e706-4c68-481d-8865-08db9e7e1c5c
+X-MS-Office365-Filtering-Correlation-Id: 0ff0f735-a809-4f31-bca2-08db9e7ed165
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: TFVYt3aj1A768ZkxelzmeOjkFnWZE1EI8xt8jsavaSltkz9wndr3wJX7w6+KOXjN6lHGiPkKCxZkwYn6KP4qwjEkbKphUQEEc2B28G6hUitUqL4/p3a+cxRFdXmk+9p0muoUBgzIGtd6LgarR75YL9IRrRoT6aLUjmtOEwhebpBIuL3anXVl54W4Kr+XINiBvgjfT6o60RCq/8MJdV+zwWr0tP1SKwqAqFgqPBmrgB8+oicbfk7mW0XRohtAqCoSHwEECK+rwuheGZXbB0OwSIZx0uEWUpRQa4PJImQIwa8KYMs7Sk1BH4Aak4jGxG87aeIPlXtkk1TnI27JstMtY+YPScFYQbF5UlNR2wr+FMa5DHLPqnb+hLkRz2sLugTNn3Xn+aAG0kjJUw9Rk4wpJUW8brXudJp31piSP7wEQpNrQqTYKfCpsEYQerzM6tF5iGDnsqcO/ibvC9se7VPCWTwJtsMwbD56uItOKrqBxF+sqoLKY0H7RRwCqqbdZtzLLTMs6216co4sAH/85sGFZ7PnqiBf79s5q/UnfNSTph27pbccgt07JFC1A4WKbPLZSn3i0nfNgLb+0dS1bKHj+GZr1GX9JkPcoXFeFmxngchQ6jvcVhIEdGFzAFNSVKbz8AX9vqYxtzTqCCQizS+7QA==
+X-Microsoft-Antispam-Message-Info: x2/Ve5XqRwviLeIx1rWPa+brDhd6m7g2xjAxWqUDn+el0qeMz5qP1KSj4TfYrXusDXZ/Kk/lBuE1UJe3ktMVGUeIARSo2RQE6PjMOF78u5Mw8kJc+F1CaoCUXwg32hnLVWkeXiDhX+9h+itBdez1N+v7GH7FhMgCl3tjhUJyH5MYOda2Oya1fN6eiEhqiOBktq3c+RmYOyGEIdPcK45yv+tNm5siALtCT+JlXKFiD90jVkmDFXKRP+qVEgHjWJeNTMV3CNDb5a5IXy6FYZ+YjoMKu/Ef7r2UYyR5VpNYL+xWriBbGdUJw8JJe8pCvGHVk5qNKqp3WbOycekcU6NVAcZkq3SSPZALN0zaZVIgGS5A9CWqze+yOKLoqLZo+U3udtD5zpTJeuPfjvnZdEXzv/kuqoJ0DmHJ3rQWOIPL+rUoWUZ/YfF3Y2DswCo/NZdeYUr/TrXazOZ6jPDqHw3PlkKwxsN/yQa2b1BwhSggRwYCKHsJnrw6/AT5ASBxyf6brVWDlgXBX53tb6bsJxHrj9hhTcEZbXj7LaX8xzFs9lm6uJFBtNiexel9qph8hj498ZdOCV6Z+JlOy0kLkUP/x0PpgAEogEQq12qC+eGRYXqbcyHs33cGuzyUgTGy/S2fUVdQde3pef/3uMHWS6kQGg==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH0PR12MB7982.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(136003)(376002)(39860400002)(396003)(346002)(451199024)(1800799009)(186009)(30864003)(2906002)(83380400001)(478600001)(31696002)(6506007)(36756003)(6486002)(2616005)(6666004)(6512007)(53546011)(26005)(5660300002)(41300700001)(316002)(66946007)(66556008)(66476007)(31686004)(8676002)(8936002)(4326008)(38100700002)(43740500002)(45980500001);
+ SFS:(13230031)(366004)(136003)(376002)(39860400002)(396003)(346002)(451199024)(1800799009)(186009)(2906002)(83380400001)(478600001)(31696002)(6506007)(36756003)(6486002)(2616005)(6666004)(6512007)(53546011)(26005)(5660300002)(41300700001)(316002)(66946007)(66556008)(66476007)(31686004)(8676002)(8936002)(4326008)(38100700002)(43740500002)(45980500001);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WXVuaEFqeDlFTmRDdGM1VUNxUEhya1VQQW5TRzJhbFlPMUFYTlM4WVBCR2No?=
- =?utf-8?B?N0hqQXFOUmdpYUpXa3R5SHdrM0F3RmVNTEJGb3B0Z0ZCVU43bTROdnF1bkhm?=
- =?utf-8?B?YnkyN0Q4dGoxTDlvRmhaaTFuaWpZYXp0SUhEc0xYRzVUZTRFMmhyTXhMZlN0?=
- =?utf-8?B?R3Nxcjc1TjdYL1RVMGNMZDVrOXJHNzZIS0NiWG03bkM4YmwxRzB4MTRtazFU?=
- =?utf-8?B?dmV2dUVVZEFTMFdtemF4WmhJOU9pYjJ6YU5rYUQ5NmtDUFZLL3U3UkJITmlj?=
- =?utf-8?B?VXNrcG5xRWlRY2s1OStwNGN5OFhDTk9rSVUvbytLa3VKSWNxWW05SUpXWDJ4?=
- =?utf-8?B?ckVCbGxjdG51c3UzTXNoUU4zMHExcEVuVGV6VWlLZzV6ZW0vWnh6STI3MTBD?=
- =?utf-8?B?bk11UVZic0tpd3c0VUtwdHRVTmQ4YUVCVjMrWjNkRUk2WjBHZlUwL0FBeTIz?=
- =?utf-8?B?WUZ1a2lOQkRQREJrRzNlZTRSVmwxVEFzZTNmc0xXVkRlcHdyR0xwVEZFWVRE?=
- =?utf-8?B?a2VjUUU1Q1RyWWlZdGdaV3R1VWlucWJIMy8yMVVBakdIcUt2dkZQdU1WMW1n?=
- =?utf-8?B?UkFNaHdaUVRDYXlKUWdrWnJyR3FkYW1IeG1jcXF5TDN6Z3JPUE5KWmdXUmRU?=
- =?utf-8?B?WUNkQWtFMExxbFJLUmVuMlQ4L3c5NzJsYWJ2ZHdrZDhSMEpYQm5vc2tTc0FJ?=
- =?utf-8?B?QXhrKys5MjR6cXBEOU45LzM0T0NHekVsS2pXMG1NeExpbW5oSWc1cUgzMGw1?=
- =?utf-8?B?NlpQV1hBQVBFRHkzMVF3UTUrRGxHK0xIVDUyOGl0S1o3cDBqSHZDbExsLzYy?=
- =?utf-8?B?VG96Z1VxZnBNdVNtQlpDRFVrM3hscVVha0oxUmY1bW1ZQklMN1dnYmxJZ1pk?=
- =?utf-8?B?K3Q4SVZGclo3Uzlkd2VzeDZsb0JPcWZWRU5rQjdaTlF1NmRqSXFOWWF0QXMy?=
- =?utf-8?B?bUpTM0wrbFArenpQYWZMK3hsalNTaUpLR3F2M1lxa3pGSko5TFdhR0h5Z1Vx?=
- =?utf-8?B?MmN0Z0paRWxzUFFrNGRrQXFLcUtRcHRDYTNyNkZ1bXdyeFplMXJodkdOT1Fo?=
- =?utf-8?B?NWxRZjZhYVNVSGRnL3dTTitpQkFNYzhEdDBBcnpvTEZWRVRxeE9HVm5wQ3l0?=
- =?utf-8?B?K3ZwL1A2bFg2cm0xdEd2SVdPZWZEckkzOGpXUzdIRncvb0tBcDYwdWZjR01V?=
- =?utf-8?B?SGNLNEUrd2pEbjJVcG8xbzkvTzY5RFdhTmV0eC9WWUlPOTAzcUpmZ1dORXRC?=
- =?utf-8?B?OEhXSTlJTE82a01DMFFheFJ3cHVGR0J6NGF6cm9iNmc2OHZ1UE1RY3JZTVJr?=
- =?utf-8?B?NDFvc0w2UloyZnNNT0JHRW92Q3dMcDZHbW9odXJaL2twblB0RUxDanNNSjhv?=
- =?utf-8?B?OU1sSFFkYzhzVld2WFFrNENYKy9XZCsyRDRGWmc3M2NIZXhKbVlQVmtTeC9Z?=
- =?utf-8?B?blFqQU1UZHFGL0UwamY4WTlBVnpKODZTYm9VOUp1U0pnb29DS1dwTkhRWGFv?=
- =?utf-8?B?d1BTaG5odTFiOVorYjlheGJYenRkNHdkeXNyWnl0Y0pKSjdoN0xYZ3lXRC9C?=
- =?utf-8?B?Yi9iRjQyRldSQ1lpRjY3M0hSNlQ1MWZhc3ZuYkpNYUtNY3lpQlJFN1c3MzdL?=
- =?utf-8?B?V1RmaUhiM3g0R2w5TjJucmVXcUg0QTRpOGpjdHRCU1FuZEtYN25lNjE5NmpC?=
- =?utf-8?B?NmJRYzNqZXJLL1RTSi9helFSWHJJME1UamxjaHlUZmNCYVFaWUlIL0J3UGYv?=
- =?utf-8?B?cWpoL1NuZWZDU2xBS1ZjdnVFUTNHYWRXYkhqa0J5MkpNeERiTFJQZXRjNndl?=
- =?utf-8?B?N3RCVW9LOFZYWG9aZFRyakwreTllM2o1SSs3WkxReldsVkIrL05JdUVxTmM5?=
- =?utf-8?B?dlYxajI3eEdvQ1NRMUJjcmV5WURkMkRYRXJISUltVjlWMCtNQWFQK1BGYTFQ?=
- =?utf-8?B?elpIdXkrVGdZQWJ6RitIb2tZL09jcHg5ZmxhMmFIMzdEU0NMR01majhNWmht?=
- =?utf-8?B?ODRGelg1SjJ0RFZUOEkyUkZ4dk9iaUR0eGxLdVpHQ25SWDZVQUNWL1ozRUhM?=
- =?utf-8?B?aDdXMkl4QlVzQnE5YWE1TVp2cTQzdE1jUDlWRHcvd0krTzl6RVdMcHlCUmQ4?=
- =?utf-8?Q?Eu8toTZk0xzqMFOBg/PldBgZE?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aWlaa0FQbVhkdWFrclF5YU9Rb2JZSDFkUUQ4S3dTZjdzZ3BKeUMvZlRqbElT?=
+ =?utf-8?B?SEl0bEZPVm1LeWpuZVpvd0MycDR2ckR6aHFZVUQzbWx1aHZzUjlDeHdoMUJP?=
+ =?utf-8?B?N2k0NmNoZ3FBQU0vaWt0ZUJsRzgzVGxUQTdsZFFTT3M5b1ovQ2lkRlhyZm9E?=
+ =?utf-8?B?cGxIN2F3U3Jqc1pNd0lyWVlQZmFqTk5wS1h6L3Frdkd1UDdScGpqODc3L2xH?=
+ =?utf-8?B?bnpTMGxNbHJlT3pBNGh0UGFrc0dLRTJYa2JZNFlZVVpJaWdUOEpjUXJ2d2xH?=
+ =?utf-8?B?Yk5RUngxMisxQ0JreXBZYkNkNGVpb3YwTTdkVXRhT0hKSTBGSFpmZ1MxalV3?=
+ =?utf-8?B?Y0FPenVnc0cxbmt5MmUzbk1ONEN1UmZ5S1J4V2FGKzNTbUdFclNER2RvazZT?=
+ =?utf-8?B?S3lnakU1WjJsZGdyVWUvRjFiWnhLV1ZaaVBFTmQ2VTZIRS9oVXIzVEQzRjJp?=
+ =?utf-8?B?RnFRQ2NBZkNUNXNDRjR3RFpId1RjaWZyK0VnT25WcFN3eG9uZWZ4bkw4T05p?=
+ =?utf-8?B?Y01QK25EK3pUTnVSMWF1VEkyZFo1RGR2STB1WnZNSWxDNG43UVo5VnlpTC80?=
+ =?utf-8?B?MTcxT045YzZ0eWVYUmh0eFdNWE9odVFaK3JLNUk0bW53emt4U0pCZFZJaFhv?=
+ =?utf-8?B?cS9vdHQwMUZ0aHMrbWJvYlE1RWViYlZBM29qZGRJS09wcUcwSDFnQTBNT0Uz?=
+ =?utf-8?B?K3JnV0g4NVZuL2ovSEJXVHpNUDVBNzFMMDUvQUJzVnpKTWREMXlTQXlnb0ll?=
+ =?utf-8?B?SUVSaWVqWW1JRXpSZWhseFNtZ3Y2VlVRNEliUWp4R0lMTXdTR1RlUW4xZkJq?=
+ =?utf-8?B?elkzWHJPSzZCMGJxRlJxR2ZLN1dkUFZlY0NWWEsyQ1ZKcStBKytuQ3VSR1B5?=
+ =?utf-8?B?MnlYc3B6UExLTmJFSkhLa2NydDVJTjhISE9GaWhtWDFyMnN5TkFLT1lRMWh2?=
+ =?utf-8?B?dEEyYkIrWGtOL2ZFYXJjMzViSmNjelZaTnZERjJEN2F6RFlwa25tdjYram8v?=
+ =?utf-8?B?MTFCSFp5ZUZZRzY4NlA1N0F4MWRMQUZlbWNLYW9oend1U3hOeW9KRy9KdTVB?=
+ =?utf-8?B?VW4wSG9ma0c1aEZNY0p1dVA3RzVacHdmN1I0ZEpZZHh2eCsrdGloSlk2a2lT?=
+ =?utf-8?B?bVhMUWJqcUs3RE1SN0VPT2Z4aVBaTTVLUXpudG9jZkxhMHQvYjl0RnUzYzFv?=
+ =?utf-8?B?eVc1T0NOVllqa0VDWWp5dmFaaU95Q244OHpXdWR0NGhGZGowYWxiY3dBNjhO?=
+ =?utf-8?B?UHBGa2tjWkNZcTEybE9NY2NmUEJaU1pPSlZvUW9mTWJEVkR4c0x2T0pMa2VZ?=
+ =?utf-8?B?d0YwYmJhRlFnWFMvbWRmMDFJUjdHYm5SVmFMOG44VlN4MzR4R3hFMWhSQTlV?=
+ =?utf-8?B?ZHc2NzZhV211R0lvb3p5cjJCa0p0S2lDSHlmQ1ZDQTAyZWg5RktoTXlXNEhq?=
+ =?utf-8?B?cVRzQndsQ2hNZWlRcHp4YnA2azZyVTRteTk4aEhMLzdUbDFrb2wwRjdIK1dy?=
+ =?utf-8?B?bFN1RXFjeGxIYWVlZmxpajJiYzcyZVF3UVhaSmdzOVhHazdQNHFJa09qNkJw?=
+ =?utf-8?B?Y1R0OHdiUzRRaUtIRFBVL3JYWjlrUW53NG5NU2lWNTBnS0VEeTFJeEd6VFFx?=
+ =?utf-8?B?MG1BRXNiTU1xcThqbWZhSHhCQ0RRUkNWeDZxWHJIMGZDSHdDcVNRcWUrMEFK?=
+ =?utf-8?B?Q2pLRmEwWEJ0SER6bkdEaXpYUk5aNWVIbHhTTHhiU09XRmw1TWtKbEUxV3dG?=
+ =?utf-8?B?NithV05mR1ZCcy9QRXZCaDVEOWh1eFpGMlNYZm4vMHRKUm13Q2Rja0YyS1Yz?=
+ =?utf-8?B?Y2tzYXRnTkVHdTNkTUtkektQV004R1J1cGNRT0RSV1htNUlFK2JiQlZxT0Vk?=
+ =?utf-8?B?ZnA0RDFOSVRxYS9jYkkyd0JSMk9TTUMvRUFEcnpFRkFtaGs0OFU3RGZLakxT?=
+ =?utf-8?B?UzZOOFZOL2Q4cU0vSEhOSE83aVAvRHh5c2dwZlo0Q1F2RW56L2JIbXFScWN0?=
+ =?utf-8?B?UU5aM09aQUFqSVpkU3NFMTVjMlZFN294UTZSVjZ1RGhaU2xuNzhDaG1nbEFz?=
+ =?utf-8?B?eGRzMUdKRUNVTGJrNUlVaHJDb2luanJ4Z3luMmZiLzFZNm5yQjJxRnVMcGZC?=
+ =?utf-8?Q?cD1/lVb2ztpbwDGBmEVea0WOU?=
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3911e706-4c68-481d-8865-08db9e7e1c5c
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0ff0f735-a809-4f31-bca2-08db9e7ed165
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2023 17:27:48.3306 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2023 17:32:52.0354 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hVXB65mIxYK4EfOWA3PVyfSxfcktHQH8ysa+nGp/lb7vmIvE1hT8Fxvy4K+nPTlvlCz3Z/pY0klRccj43upjBQ==
+X-MS-Exchange-CrossTenant-UserPrincipalName: RWC69vHKHIbYL4CG/0LHJsJbRQyxEeIfNxpupbXZUQ2QWcIJmvbYnPW4RlDSgsZrK7MBmGLTq3HPTNl8+gsutA==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5420
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xYp3JRqHDbwm81Lr0iC19cUMBXNnJ+8k6TKMnOzmaf8=;
- b=mEHGkXmrhPsHEUNoH5bRXD2myGe6n+HNrtsJb8ZLdwA8wnxzaSHvzdL+An/gad7upLA608fBmbDphsf6aMDwnmmH8D5ZX/6aB2WMZqaH1hH041C6hQ73mTFkdHfRw3sc2ky5ahQVE0pmO+YmkPLI1um4b5hodyLggCaUQoOacgo=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=QRhi0NYSyynfNWuyjd6WRuLytm7DQB4Pysh+taDYNRw=;
+ b=qIK2t1bgIvv2FS3gvqkrUtYlNE1fWEojzVJGK08MP7+a+mq8oijDnbBPMPLVG0Q1ksJAKvRiOKGwEedW41cZQT21fEAAigP8BD2KX1Hm5JdH0bIj1gQc3fwV2Zq9CvEdduvVt+7VAgJEvImJ/QEVivzSm1wih3yeCoE6QjFwIEY=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=mEHGkXmr
+ header.s=selector1 header.b=qIK2t1bg
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 4/5] iavf: Add devlink
- port function rate API support
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 5/5] iavf: Add VIRTCHNL
+ Opcodes Support for Queue bw Setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -177,408 +177,93 @@ On 8/7/2023 6:57 PM, Wenjun Wu wrote:
 > 
 > From: Jun Zhang <xuejun.zhang@intel.com>
 > 
-> To allow user to configure queue based parameters, devlink port function
-> rate api functions are added for setting node tx_max and tx_share
-> parameters.
-> 
-> iavf rate tree with root node and  queue nodes is created and registered
+> iavf rate tree with root node and queue nodes is created and registered
 > with devlink rate when iavf adapter is configured.
+> 
+> User can configure the tx_max and tx_share of each queue. If any one of
+> the queues have been fully updated by user, i.e. both tx_max and
+> tx_share have been updated for that queue, VIRTCHNL opcodes of
+> VIRTCHNL_OP_CONFIG_QUEUE_BW and VIRTCHNL_OP_CONFIG_QUANTA will be sent
+> to PF to configure queues allocated to VF if PF indicates support of
+> VIRTCHNL_VF_OFFLOAD_QOS through VF Resource / Capability Exchange.
 > 
 > Signed-off-by: Jun Zhang <xuejun.zhang@intel.com>
 > ---
->   .../net/ethernet/intel/iavf/iavf_devlink.c    | 270 +++++++++++++++++-
->   .../net/ethernet/intel/iavf/iavf_devlink.h    |  21 ++
->   drivers/net/ethernet/intel/iavf/iavf_main.c   |   7 +-
->   3 files changed, 295 insertions(+), 3 deletions(-)
+>   drivers/net/ethernet/intel/iavf/iavf.h        |  14 ++
+>   .../net/ethernet/intel/iavf/iavf_devlink.c    |  29 +++
+>   .../net/ethernet/intel/iavf/iavf_devlink.h    |   1 +
+>   drivers/net/ethernet/intel/iavf/iavf_main.c   |  45 +++-
+>   .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 228 +++++++++++++++++-
+>   5 files changed, 313 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.c b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-> index 991d041e5922..a2bd5295c216 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.c
-> @@ -4,7 +4,273 @@
->   #include "iavf.h"
->   #include "iavf_devlink.h"
-> 
-> -static const struct devlink_ops iavf_devlink_ops = {};
+
+[...]
+
 > +/**
-> + * iavf_devlink_rate_init_rate_tree - export rate tree to devlink rate
+> + * iavf_set_tc_queue_bw - set bw of allocated tc/queues
 > + * @adapter: iavf adapter struct instance
 > + *
-> + * This function builds Rate Tree based on iavf adapter configuration
-> + * and exports it's contents to devlink rate.
+> + * This function requests PF to set queue bw of multiple tc(s)
 > + */
-> +void iavf_devlink_rate_init_rate_tree(struct iavf_adapter *adapter)
+> +static void iavf_set_tc_queue_bw(struct iavf_adapter *adapter)
 > +{
 > +       struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-> +       struct iavf_dev_rate_node *iavf_r_node;
-> +       struct iavf_dev_rate_node *iavf_q_node;
-> +       struct devlink_rate *dl_root_node;
-> +       struct devlink_rate *dl_tmp_node;
-> +       int q_num, size, i;
+> +       struct virtchnl_queues_bw_cfg *queues_bw_cfg;
+> +       struct iavf_dev_rate_node *queue_rate;
+> +       u16 queue_to_tc[256];
+> +       size_t len;
+> +       int q_idx;
+> +       int i, j;
+
+
+> +       u16 tc;
 > +
-> +       if (!adapter->devlink_port.registered)
+> +       if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
+> +               /* bail because we already have a command pending */
+> +               dev_err(&adapter->pdev->dev,
+> +                       "Cannot set tc queue bw, command %d pending\n",
+> +                       adapter->current_op);
+> +               return;
+> +       }
+> +
+> +       len = struct_size(queues_bw_cfg, cfg, adapter->num_active_queues);
+> +       queues_bw_cfg = kzalloc(len, GFP_KERNEL);
+> +       if (!queues_bw_cfg)
 > +               return;
 > +
-> +       iavf_r_node = &dl_priv->root_node;
-> +       memset(iavf_r_node, 0, sizeof(*iavf_r_node));
-> +       iavf_r_node->tx_max = adapter->link_speed;
-> +       strscpy(iavf_r_node->name, "iavf_root", IAVF_RATE_NODE_NAME);
+> +       queue_rate = dl_priv->queue_nodes;
+> +       queues_bw_cfg->vsi_id = adapter->vsi.id;
+> +       queues_bw_cfg->num_queues = adapter->ch_config.total_qps;
 > +
-> +       devl_lock(adapter->devlink);
-> +       dl_root_node = devl_rate_node_create(adapter->devlink, iavf_r_node,
-> +                                            iavf_r_node->name, NULL);
-> +       if (!dl_root_node || IS_ERR(dl_root_node))
-> +               goto err_node;
-> +
-> +       iavf_r_node->rate_node = dl_root_node;
-> +
-> +       /* Allocate queue nodes, and chain them under root */
-> +       q_num = adapter->num_active_queues;
-> +       if (q_num > 0) {
-> +               size = q_num * sizeof(struct iavf_dev_rate_node);
-> +               dl_priv->queue_nodes = kzalloc(size, GFP_KERNEL);
-> +               if (!dl_priv->queue_nodes)
-> +                       goto err_node;
-> +
-> +               memset(dl_priv->queue_nodes, 0, size);
+> +       /* build tc[queue] */
+> +       for (i = 0; i < adapter->num_tc; i++) {
 
-Why not just use kcalloc() here? Also, it seems like there's no need to 
-zero the memory here.
+Nit, the scope of q_idx and j can have their scope reduced to this for loop.
 
-> +
-> +               for (i = 0; i < q_num; ++i) {
-> +                       iavf_q_node = &dl_priv->queue_nodes[i];
-> +                       snprintf(iavf_q_node->name, IAVF_RATE_NODE_NAME,
-> +                                "txq_%d", i);
-> +                       dl_tmp_node = devl_rate_node_create(adapter->devlink,
-> +                                                           iavf_q_node,
-> +                                                           iavf_q_node->name,
-> +                                                           dl_root_node);
-> +                       if (!dl_tmp_node || IS_ERR(dl_tmp_node)) {
-> +                               kfree(dl_priv->queue_nodes); > +                               goto err_node;
-> +                       }
-> +
-> +                       iavf_q_node->rate_node = dl_tmp_node;
-> +                       iavf_q_node->tx_max = IAVF_TX_DEFAULT;
-> +                       iavf_q_node->tx_share = 0;
+> +               for (j = 0; j < adapter->ch_config.ch_info[i].count; ++j) {
+> +                       q_idx = j + adapter->ch_config.ch_info[i].offset;
+> +                       queue_to_tc[q_idx] = i;
 > +               }
 > +       }
 > +
-> +       dl_priv->update_in_progress = false;
-> +       dl_priv->iavf_dev_rate_initialized = true;
-> +       devl_unlock(adapter->devlink);
-> +       return;
-> +err_node:
-> +       devl_rate_nodes_destroy(adapter->devlink);
-> +       dl_priv->iavf_dev_rate_initialized = false;
-> +       devl_unlock(adapter->devlink);
-> +}
-> +
-> +/**
-> + * iavf_devlink_rate_deinit_rate_tree - Unregister rate tree with devlink rate
-> + * @adapter: iavf adapter struct instance
-> + *
-> + * This function unregisters the current iavf rate tree registered with devlink
-> + * rate and frees resources.
-> + */
-> +void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter)
-> +{
-> +       struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-> +
-> +       if (!dl_priv->iavf_dev_rate_initialized)
-> +               return;
-> +
-> +       devl_lock(adapter->devlink);
-> +       devl_rate_leaf_destroy(&adapter->devlink_port);
-> +       devl_rate_nodes_destroy(adapter->devlink);
-> +       kfree(dl_priv->queue_nodes);
-> +       devl_unlock(adapter->devlink);
-> +}
-> +
-> +/**
-> + * iavf_check_update_config - check if updating queue parameters needed
-> + * @adapter: iavf adapter struct instance
-> + * @node: iavf rate node struct instance
-> + *
-> + * This function sets queue bw & quanta size configuration if all
-> + * queue parameters are set
-> + */
-> +static int iavf_check_update_config(struct iavf_adapter *adapter,
-> +                                   struct iavf_dev_rate_node *node)
-> +{
-> +       /* Update queue bw if any one of the queues have been fully updated by
-> +        * user, the other queues either use the default value or the last
-> +        * fully updated value
-> +        */
-> +       if (node->tx_update_flag ==
-> +           (IAVF_FLAG_TX_MAX_UPDATED | IAVF_FLAG_TX_SHARE_UPDATED)) {
-> +               node->tx_max = node->tx_max_temp;
-> +               node->tx_share = node->tx_share_temp;
-> +       } else {
-> +               return 0;
-> +       }
-
-I think it would more readable to do the following:
-
-if (node->tx_update_flag !=
-     (IAVE_FLAG_TX_MAX_UPDATED | IAVF_FLAG_TX_SHARE_UPDATED))
-	return 0;
-
-/* rest of function */
-> +
-> +       /* Reconfig queue bw only when iavf driver on running state */
-> +       if (adapter->state != __IAVF_RUNNING)
-> +               return -EBUSY;
-> +
-> +       return 0;
-> +}
-> +
-> +/**
-> + * iavf_update_queue_tx_share - sets tx min parameter
-> + * @adapter: iavf adapter struct instance
-> + * @node: iavf rate node struct instance
-> + * @bw: bandwidth in bytes per second
-> + * @extack: extended netdev ack structure
-> + *
-> + * This function sets min BW limit.
-> + */
-> +static int iavf_update_queue_tx_share(struct iavf_adapter *adapter,
-> +                                     struct iavf_dev_rate_node *node,
-> +                                     u64 bw, struct netlink_ext_ack *extack)
-> +{
-> +       struct iavf_devlink *dl_priv = devlink_priv(adapter->devlink);
-> +       u64 tx_share_sum = 0;
-> +
-> +       /* Keep in kbps */
-> +       node->tx_share_temp = div_u64(bw, IAVF_RATE_DIV_FACTOR);
-> +
-> +       if (ADV_LINK_SUPPORT(adapter)) {
-> +               int i;
-> +
-> +               for (i = 0; i < adapter->num_active_queues; ++i) {
-> +                       if (node != &dl_priv->queue_nodes[i])
-> +                               tx_share_sum +=
-> +                                       dl_priv->queue_nodes[i].tx_share;
-> +                       else
-> +                               tx_share_sum += node->tx_share_temp;
-> +               }
-> +
-> +               if (tx_share_sum / 1000  > adapter->link_speed_mbps)
-> +                       return -EINVAL;
+> +       for (i = 0; i < queues_bw_cfg->num_queues; i++) {
+> +               tc = queue_to_tc[i];
+> +               queues_bw_cfg->cfg[i].queue_id = i;
+> +               queues_bw_cfg->cfg[i].shaper.peak = queue_rate[i].tx_max;
+> +               queues_bw_cfg->cfg[i].shaper.committed =
+> +                                                   queue_rate[i].tx_share;
+> +               queues_bw_cfg->cfg[i].tc = tc;
 > +       }
 > +
-> +       node->tx_update_flag |= IAVF_FLAG_TX_SHARE_UPDATED;
-> +       return iavf_check_update_config(adapter, node);
+> +       adapter->current_op = VIRTCHNL_OP_CONFIG_QUEUE_BW;
+> +       adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
+> +       iavf_send_pf_msg(adapter, VIRTCHNL_OP_CONFIG_QUEUE_BW,
+> +                        (u8 *)queues_bw_cfg, len);
+> +       kfree(queues_bw_cfg);
 > +}
 > +
-> +/**
-> + * iavf_update_queue_tx_max - sets tx max parameter
-> + * @adapter: iavf adapter struct instance
-> + * @node: iavf rate node struct instance
-> + * @bw: bandwidth in bytes per second
-> + * @extack: extended netdev ack structure
-> + *
-> + * This function sets max BW limit.
-> + */
-> +static int iavf_update_queue_tx_max(struct iavf_adapter *adapter,
-> +                                   struct iavf_dev_rate_node *node,
-> +                                   u64 bw, struct netlink_ext_ack *extack)
-> +{
-> +       /* Keep in kbps */
-> +       node->tx_max_temp = div_u64(bw, IAVF_RATE_DIV_FACTOR);
-> +       if (ADV_LINK_SUPPORT(adapter)) {
-> +               if (node->tx_max_temp / 1000 > adapter->link_speed_mbps)
-> +                       return -EINVAL;
-> +       }
-> +
-> +       node->tx_update_flag |= IAVF_FLAG_TX_MAX_UPDATED;
-> +
-> +       return iavf_check_update_config(adapter, node);
-> +}
-> +
-> +/**
-> + * iavf_devlink_rate_node_tx_max_set - devlink_rate API for setting tx max
-> + * @rate_node: devlink rate struct instance
-> + *
-> + * This function implements rate_node_tx_max_set function of devlink_ops
-> + */
-> +static int iavf_devlink_rate_node_tx_max_set(struct devlink_rate *rate_node,
-> +                                            void *priv, u64 tx_max,
-> +                                            struct netlink_ext_ack *extack)
-> +{
-> +       struct iavf_dev_rate_node *node = priv;
-> +       struct iavf_devlink *dl_priv;
-> +       struct iavf_adapter *adapter;
-> +
-> +       if (!node)
-> +               return 0;
-> +
-> +       dl_priv = devlink_priv(rate_node->devlink);
-> +       adapter = dl_priv->devlink_ref;
-> +
-> +       /* Check if last update is in progress */
-> +       if (dl_priv->update_in_progress)
-> +               return -EBUSY;
-> +
-> +       if (node == &dl_priv->root_node)
-> +               return 0;
-> +
-> +       return iavf_update_queue_tx_max(adapter, node, tx_max, extack);
-> +}
-> +
-> +/**
-> + * iavf_devlink_rate_node_tx_share_set - devlink_rate API for setting tx share
-> + * @rate_node: devlink rate struct instance
-> + *
-> + * This function implements rate_node_tx_share_set function of devlink_ops
-> + */
-> +static int iavf_devlink_rate_node_tx_share_set(struct devlink_rate *rate_node,
-> +                                              void *priv, u64 tx_share,
-> +                                              struct netlink_ext_ack *extack)
-> +{
-> +       struct iavf_dev_rate_node *node = priv;
-> +       struct iavf_devlink *dl_priv;
-> +       struct iavf_adapter *adapter;
-> +
-> +       if (!node)
-> +               return 0;
-> +
-> +       dl_priv = devlink_priv(rate_node->devlink);
-> +       adapter = dl_priv->devlink_ref;
-> +
-> +       /* Check if last update is in progress */
-> +       if (dl_priv->update_in_progress)
-> +               return -EBUSY;
-> +
-> +       if (node == &dl_priv->root_node)
-> +               return 0;
-> +
-> +       return iavf_update_queue_tx_share(adapter, node, tx_share, extack);
-> +}
-> +
-> +static int iavf_devlink_rate_node_del(struct devlink_rate *rate_node,
-> +                                     void *priv,
-> +                                     struct netlink_ext_ack *extack)
-> +{
-> +       return -EINVAL;
-> +}
-> +
-> +static int iavf_devlink_set_parent(struct devlink_rate *devlink_rate,
-> +                                  struct devlink_rate *parent,
-> +                                  void *priv, void *parent_priv,
-> +                                  struct netlink_ext_ack *extack)
-> +{
-> +       return -EINVAL;
-> +}
-> +
-> +static const struct devlink_ops iavf_devlink_ops = {
-> +       .rate_node_tx_share_set = iavf_devlink_rate_node_tx_share_set,
-> +       .rate_node_tx_max_set = iavf_devlink_rate_node_tx_max_set,
-> +       .rate_node_del = iavf_devlink_rate_node_del,
-> +       .rate_leaf_parent_set = iavf_devlink_set_parent,
-> +       .rate_node_parent_set = iavf_devlink_set_parent,
-> +};
-> 
->   /**
->    * iavf_devlink_register - Register allocated devlink instance for iavf adapter
-> @@ -30,7 +296,7 @@ int iavf_devlink_register(struct iavf_adapter *adapter)
->          adapter->devlink = devlink;
->          ref = devlink_priv(devlink);
->          ref->devlink_ref = adapter;
-> -
-> +       ref->iavf_dev_rate_initialized = false;
->          devlink_register(devlink);
-> 
->          return 0;
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_devlink.h b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-> index 5c122278611a..897ff5fc87af 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_devlink.h
-> @@ -4,14 +4,35 @@
->   #ifndef _IAVF_DEVLINK_H_
->   #define _IAVF_DEVLINK_H_
-> 
-> +#define IAVF_RATE_NODE_NAME                    12
-> +struct iavf_dev_rate_node {
-> +       char name[IAVF_RATE_NODE_NAME];
-> +       struct devlink_rate *rate_node;
-> +       u8 tx_update_flag;
-> +#define IAVF_FLAG_TX_SHARE_UPDATED             BIT(0)
-> +#define IAVF_FLAG_TX_MAX_UPDATED               BIT(1)
-> +       u64 tx_max;
-> +       u64 tx_share;
-> +       u64 tx_max_temp;
-> +       u64 tx_share_temp;
-> +#define IAVF_RATE_DIV_FACTOR                   125
-> +#define IAVF_TX_DEFAULT                                100000
-> +};
-> +
->   /* iavf devlink structure pointing to iavf adapter */
->   struct iavf_devlink {
->          struct iavf_adapter *devlink_ref;       /* ref to iavf adapter */
-> +       struct iavf_dev_rate_node root_node;
-> +       struct iavf_dev_rate_node *queue_nodes;
-> +       bool iavf_dev_rate_initialized;
-> +       bool update_in_progress;
 
-It seems like this is never true until patch 5/5, so IMO it makes sense 
-to add it there. Also, why is this bool needed? Is there not another 
-flag or lock that can be used instead of adding this new flag/bit?
-
->   };
-> 
->   int iavf_devlink_register(struct iavf_adapter *adapter);
->   void iavf_devlink_unregister(struct iavf_adapter *adapter);
->   int iavf_devlink_port_register(struct iavf_adapter *adapter);
->   void iavf_devlink_port_unregister(struct iavf_adapter *adapter);
-> +void iavf_devlink_rate_init_rate_tree(struct iavf_adapter *adapter);
-> +void iavf_devlink_rate_deinit_rate_tree(struct iavf_adapter *adapter);
-> 
->   #endif /* _IAVF_DEVLINK_H_ */
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index db010e68d5d2..7348b65f9f19 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -2037,6 +2037,7 @@ static void iavf_finish_config(struct work_struct *work)
->                                  iavf_free_rss(adapter);
->                                  iavf_free_misc_irq(adapter);
->                                  iavf_reset_interrupt_capability(adapter);
-> +                               iavf_devlink_rate_deinit_rate_tree(adapter);
->                                  iavf_devlink_port_unregister(adapter);
->                                  iavf_change_state(adapter,
->                                                    __IAVF_INIT_CONFIG_ADAPTER);
-> @@ -2709,8 +2710,10 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
->          if (err)
->                  goto err_sw_init;
-> 
-> -       if (!adapter->netdev_registered)
-> +       if (!adapter->netdev_registered) {
->                  iavf_devlink_port_register(adapter);
-> +               iavf_devlink_rate_init_rate_tree(adapter);
-> +       }
-> 
->          netif_carrier_off(netdev);
->          adapter->link_up = false;
-> @@ -2753,6 +2756,7 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
->   err_mem:
->          iavf_free_rss(adapter);
->          iavf_free_misc_irq(adapter);
-> +       iavf_devlink_rate_deinit_rate_tree(adapter);
->          iavf_devlink_port_unregister(adapter);
->   err_sw_init:
->          iavf_reset_interrupt_capability(adapter);
-> @@ -5150,6 +5154,7 @@ static void iavf_remove(struct pci_dev *pdev)
->                                   err);
->          }
-> 
-> +       iavf_devlink_rate_deinit_rate_tree(adapter);
->          iavf_devlink_port_unregister(adapter);
->          iavf_devlink_unregister(adapter);
-> 
-> --
-> 2.34.1
-> 
-> 
+[...]
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
