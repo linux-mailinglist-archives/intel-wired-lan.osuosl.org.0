@@ -2,81 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D1DE77E39C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 16:32:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66E2877E43A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Aug 2023 16:54:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A2C541E59;
-	Wed, 16 Aug 2023 14:32:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A2C541E59
+	by smtp4.osuosl.org (Postfix) with ESMTP id F201041F6C;
+	Wed, 16 Aug 2023 14:54:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F201041F6C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692196323;
-	bh=+HAATAhRQvgBwVa7IxBn5iODhCXtGgK88mk6bhD5Ezw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1692197690;
+	bh=OUyHSTq9+sAzKpw8ugSgpDP5FD/zTJO+D+b6Ic5Ybs8=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HCFbal1PQVpjzq4OLoGH/5uxdEtKN80RMHRhXzYVSvSwXoR0v+wx5LXr7sbnVCHJU
-	 Hd/WHsooCXHv4CXim77DF+Hd3roqey6JSdhndI1Bo92rfb8N3jkh6Dea6gx5n8R2dV
-	 7DOmpeSHdHsytpcvPNNTV0wPqC1G9FOLNO90AOwWyWjWqVbzbaPzQ42hkCMj+5lyFt
-	 CASfMrMlQfscWzMB1EIRT9G+GflKafkhYyjKhln6Vz87CmWTbLhJ70uWBQytkqKICZ
-	 QXvJMUek5YttJDpDzK9DZw1yI6+ZgXk+xZJ8OchKBafgLO6kuS904StrYamm/XeIBb
-	 qIPSU9RbCD35A==
+	b=PhvxK1BY6DaBxT2WKSNgnw6+eY0o5fJCnN74ybvwkjHTqjV9WFQpE9DZ9dQcFXJKU
+	 23axXLs8JFVMsmJK8HJEiHWuZnF8gJUpuLZ/JPwxmU6XVnX2WAgiM+ZKf5LFJKwucI
+	 46ZZ7HbFJVtfBxXv3pL6QUo45RYDe6RmJFMkHGggsA0B9mFLfKDEYfNZod9+H304VW
+	 yp86/ipPVU7TUsjNgFsXZNWov2bgwE/KNYytRQUDPfQ0njcryzDmaPZYES96aRd1sF
+	 v3DZh4rFePDSxNdieO2fLt/aYCH+nG3RQkcf5IZKESBOYMup5Nz2fVRPlqNTPRO9NF
+	 iwREZmJaUUsbA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tF6gj8ievfIS; Wed, 16 Aug 2023 14:32:01 +0000 (UTC)
+	with ESMTP id EjTRWVOt2Yjp; Wed, 16 Aug 2023 14:54:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5D91941E54;
-	Wed, 16 Aug 2023 14:32:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D91941E54
+	by smtp4.osuosl.org (Postfix) with ESMTP id 76C9140948;
+	Wed, 16 Aug 2023 14:54:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76C9140948
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A65B21BF41B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:31:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 52C721BF41B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:54:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7E62061367
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:31:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E62061367
+ by smtp2.osuosl.org (Postfix) with ESMTP id 384F840C28
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:54:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 384F840C28
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aZ9IS3k376TX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Aug 2023 14:31:54 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9D9EC61366
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:31:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D9EC61366
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7429C62023;
- Wed, 16 Aug 2023 14:31:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B2E2C433C8;
- Wed, 16 Aug 2023 14:31:52 +0000 (UTC)
-Date: Wed, 16 Aug 2023 17:31:48 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20230816143148.GX22185@unreal>
-References: <20230816085454.235440-1-przemyslaw.kitszel@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xz6UXjviVvwR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Aug 2023 14:54:42 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E28A04059E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Aug 2023 14:54:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E28A04059E
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="352877879"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="352877879"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2023 07:54:41 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10803"; a="737317153"
+X-IronPort-AV: E=Sophos;i="6.01,177,1684825200"; d="scan'208";a="737317153"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.214.225.82])
+ ([10.214.225.82])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2023 07:54:39 -0700
+Message-ID: <6526c871-e273-ac30-7a9a-acd6a6d39c8c@linux.intel.com>
+Date: Wed, 16 Aug 2023 17:54:36 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230816085454.235440-1-przemyslaw.kitszel@intel.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Content-Language: en-US
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <20230729001800.227269-1-vinicius.gomes@intel.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20230729001800.227269-1-vinicius.gomes@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1692196312;
- bh=IalgyWP00nls9iz5H4Epnnl80SzME+5KTptIjGJfRBU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dVfXwWrY1/A/bkqoYzwraEN4tUVmKsOqyiu/gfr0w/wSVEpueWIXKPh20G/jEZgLk
- P5Wmm5jygyeM1j5HEuK2XME3dN1kKo5Jxo75zK29ZgeyEK2Jqc5j714ucYN3+tPrlG
- ao4bbc5mh7tm4NIWk85/CR1Rot8pBRI0RPItzvRt+ZGjgy//u3iJfo/+Ait/eo4Fc2
- YI2JcucF/KN8Nug0SDV/S5mXzL3rS3SlTVvxxHg1etP8KObUlV6orw7MDarL9BKFQZ
- m6pCjKOVh0mLXgqMSAb1T7lYFr1g+M2IG+wojoCt+1z3t1K4yCoaioWC8PK83aGlWe
- sIta6Ju8HzfIg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=dVfXwWrY
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: store VF's pci_dev ptr
- in ice_vf
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1692197682; x=1723733682;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=CFS7++Lz+0Gzz3WZCIwQshEX7wGQdVIE22WARDWKcIg=;
+ b=e7DNUAXVJcKtRTHsVvkKrzNoGUm+tYcJvhghD4xs0qqOlPIxNs7S5oOR
+ hdnULw5SgoSG+vFsO4jS9smRzp9fbr/UyBgYNEH1/lno29EVWyuY4rb8U
+ zDGOBcbK4Cabcm+QbO7XIuAvNSboL9qjbCnxz6j7jF4uadGXKYUXpnirb
+ T7UGr5ZJstp+1Yj0KHjy7MDAgRJX08zW7jwYVfSF+co9pEL5zbu1OpziY
+ N8zW8jYA1vo3kPDNcuMlCzQhiVyM4orgxY0e2u1Q0EOpZjxYzJFom8c/g
+ aye5PyvYdWSuipS806RWiqoc+Pw4ARTErzTfBJlV0X6bez7t0VbltvYVz
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=e7DNUAXV
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] igc: Add support for
+ multiple in-flight TX timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,171 +99,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: vladimir.oltean@nxp.com, richardcochran@gmail.com, kurt@linutronix.de,
+ anthony.l.nguyen@intel.com, jesse.brandeburg@intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Aug 16, 2023 at 04:54:54AM -0400, Przemek Kitszel wrote:
-> Extend struct ice_vf by vfdev.
-> Calculation of vfdev falls more nicely into ice_create_vf_entries().
+On 7/29/2023 03:17, Vinicius Costa Gomes wrote:
+> Add support for using the four sets of timestamping registers that
+> i225/i226 have available for TX.
 > 
-> Caching of vfdev enables simplification of ice_restore_all_vfs_msi_state().
-
-I see that old code had access to pci_dev * of VF without any locking
-from concurrent PCI core access. How is it protected? How do you make
-sure that vfdev is valid?
-
-Generally speaking, it is rarely good idea to cache VF pci_dev pointers
-inside driver.
-
-Thanks
-
+> In some workloads, where multiple applications request hardware
+> transmission timestamps, it was possible that some of those requests
+> were denied because the only in use register was already occupied.
 > 
-> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> This is also in preparation to future support for hardware
+> timestamping wwith multiple PTP domains. With multiple domains chances
+> of multiple TX timestamps being requested at the same time increase.
+> 
+> Before:
+> $ sudo ./ntpperf -i enp3s0 -m 10:22:22:22:22:21 -d 192.168.1.3 -s 172.18.0.0/16 -I -H -o 37
+>                 |          responses            |     TX timestamp offset (ns)
+> rate   clients |  lost invalid   basic  xleave |    min    mean     max stddev
+> 1000       100   0.00%   0.00%   0.00% 100.00%       +1     +41     +73     13
+> 1500       150   0.00%   0.00%   0.00% 100.00%       +9     +49     +87     15
+> 2250       225   0.00%   0.00%   0.00% 100.00%       +9     +42     +79     13
+> 3375       337   0.00%   0.00%   0.00% 100.00%      +11     +46     +81     13
+> 5062       506   0.00%   0.00%   0.00% 100.00%       +7     +44     +80     13
+> 7593       759   0.00%   0.00%   0.00% 100.00%       +9     +44     +79     12
+> 11389     1138   0.00%   0.00%   0.00% 100.00%      +14     +51     +87     13
+> 17083     1708   0.00%   0.00%   0.00% 100.00%       +1     +41     +80     14
+> 25624     2562   0.00%   0.00%   0.00% 100.00%      +11     +50   +5107     51
+> 38436     3843   0.00%   0.00%   0.00% 100.00%       -2     +36   +7843     38
+> 57654     5765   0.00%   0.00%   0.00% 100.00%       +4     +42  +10503     69
+> 86481     8648   0.00%   0.00%   0.00% 100.00%      +11     +54   +5492     65
+> 129721   12972   0.00%   0.00%   0.00% 100.00%      +31   +2680   +6942   2606
+> 194581   16384  16.79%   0.00%   0.87%  82.34%      +73   +4444  +15879   3116
+> 291871   16384  35.05%   0.00%   1.53%  63.42%     +188   +5381  +17019   3035
+> 437806   16384  54.95%   0.00%   2.55%  42.50%     +233   +6302  +13885   2846
+> 
+> After:
+> $ sudo ./ntpperf -i enp3s0 -m 10:22:22:22:22:21 -d 192.168.1.3 -s 172.18.0.0/16 -I -H -o 37
+>                 |          responses            |     TX timestamp offset (ns)
+> rate   clients |  lost invalid   basic  xleave |    min    mean     max stddev
+> 1000       100   0.00%   0.00%   0.00% 100.00%      -20     +12     +43     13
+> 1500       150   0.00%   0.00%   0.00% 100.00%      -23     +18     +57     14
+> 2250       225   0.00%   0.00%   0.00% 100.00%       -2     +33     +67     13
+> 3375       337   0.00%   0.00%   0.00% 100.00%       +1     +38     +76     13
+> 5062       506   0.00%   0.00%   0.00% 100.00%       +9     +52     +93     14
+> 7593       759   0.00%   0.00%   0.00% 100.00%      +11     +47     +82     13
+> 11389     1138   0.00%   0.00%   0.00% 100.00%       -9     +27     +74     13
+> 17083     1708   0.00%   0.00%   0.00% 100.00%      -13     +25     +66     14
+> 25624     2562   0.00%   0.00%   0.00% 100.00%       -8     +28     +65     13
+> 38436     3843   0.00%   0.00%   0.00% 100.00%      -13     +28     +69     13
+> 57654     5765   0.00%   0.00%   0.00% 100.00%      -11     +32     +71     14
+> 86481     8648   0.00%   0.00%   0.00% 100.00%       +2     +44     +83     14
+> 129721   12972  15.36%   0.00%   0.35%  84.29%       -2   +2248  +22907   4252
+> 194581   16384  42.98%   0.00%   1.98%  55.04%       -4   +5278  +65039   5856
+> 291871   16384  54.33%   0.00%   2.21%  43.46%       -3   +6306  +22608   5665
+> 
+> We can see that with 4 registers, as expected, we are able to handle a
+> increasing number of requests more consistently, but as soon as all
+> registers are in use, the decrease in quality of service happens in a
+> sharp step.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 > ---
-> add/remove: 0/0 grow/shrink: 2/1 up/down: 157/-130 (27)
-> Function                                     old     new   delta
-> ice_sriov_configure                         1712    1866    +154
-> ice_pci_err_resume                           168     171      +3
-> ice_restore_all_vfs_msi_state                200      70    -130
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c   |  2 +-
->  drivers/net/ethernet/intel/ice/ice_sriov.c  | 40 +++++++++------------
->  drivers/net/ethernet/intel/ice/ice_sriov.h  |  4 +--
->  drivers/net/ethernet/intel/ice/ice_vf_lib.h |  2 +-
->  4 files changed, 21 insertions(+), 27 deletions(-)
+> v2 -> v3:
+>   - Removed unnecessary documentation that sneaked up from previous
+>     versions (Tony Nguyen)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index a6dd336d2500..d04498c2fd6d 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5561,7 +5561,7 @@ static void ice_pci_err_resume(struct pci_dev *pdev)
->  		return;
->  	}
->  
-> -	ice_restore_all_vfs_msi_state(pdev);
-> +	ice_restore_all_vfs_msi_state(pf);
->  
->  	ice_do_reset(pf, ICE_RESET_PFR);
->  	ice_service_task_restart(pf);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> index 31314e7540f8..48bc8ea55265 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> @@ -789,14 +789,19 @@ static const struct ice_vf_ops ice_sriov_vf_ops = {
->   */
->  static int ice_create_vf_entries(struct ice_pf *pf, u16 num_vfs)
->  {
-> +	struct pci_dev *pdev = pf->pdev;
->  	struct ice_vfs *vfs = &pf->vfs;
-> +	struct pci_dev *vfdev = NULL;
->  	struct ice_vf *vf;
-> -	u16 vf_id;
-> -	int err;
-> +	u16 vf_pdev_id;
-> +	int err, pos;
->  
->  	lockdep_assert_held(&vfs->table_lock);
->  
-> -	for (vf_id = 0; vf_id < num_vfs; vf_id++) {
-> +	pos = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_SRIOV);
-> +	pci_read_config_word(pdev, pos + PCI_SRIOV_VF_DID, &vf_pdev_id);
-> +
-> +	for (u16 vf_id = 0; vf_id < num_vfs; vf_id++) {
->  		vf = kzalloc(sizeof(*vf), GFP_KERNEL);
->  		if (!vf) {
->  			err = -ENOMEM;
-> @@ -812,6 +817,10 @@ static int ice_create_vf_entries(struct ice_pf *pf, u16 num_vfs)
->  
->  		ice_initialize_vf_entry(vf);
->  
-> +		do {
-> +			vfdev = pci_get_device(pdev->vendor, vf_pdev_id, vfdev);
-> +		} while (vfdev && vfdev->physfn != pdev);
-> +		vf->vfdev = vfdev;
->  		vf->vf_sw_id = pf->first_sw;
->  
->  		hash_add_rcu(vfs->table, &vf->entry, vf_id);
-> @@ -1714,26 +1723,11 @@ void ice_print_vfs_mdd_events(struct ice_pf *pf)
->   * Called when recovering from a PF FLR to restore interrupt capability to
->   * the VFs.
->   */
-> -void ice_restore_all_vfs_msi_state(struct pci_dev *pdev)
-> +void ice_restore_all_vfs_msi_state(struct ice_pf *pf)
->  {
-> -	u16 vf_id;
-> -	int pos;
-> -
-> -	if (!pci_num_vf(pdev))
-> -		return;
-> +	struct ice_vf *vf;
-> +	u32 bkt;
->  
-> -	pos = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_SRIOV);
-> -	if (pos) {
-> -		struct pci_dev *vfdev;
-> -
-> -		pci_read_config_word(pdev, pos + PCI_SRIOV_VF_DID,
-> -				     &vf_id);
-> -		vfdev = pci_get_device(pdev->vendor, vf_id, NULL);
-> -		while (vfdev) {
-> -			if (vfdev->is_virtfn && vfdev->physfn == pdev)
-> -				pci_restore_msi_state(vfdev);
-> -			vfdev = pci_get_device(pdev->vendor, vf_id,
-> -					       vfdev);
-> -		}
-> -	}
-> +	ice_for_each_vf(pf, bkt, vf)
-> +		pci_restore_msi_state(vf->vfdev);
->  }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> index 346cb2666f3a..06829443d540 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> @@ -33,7 +33,7 @@ int
->  ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi);
->  
->  void ice_free_vfs(struct ice_pf *pf);
-> -void ice_restore_all_vfs_msi_state(struct pci_dev *pdev);
-> +void ice_restore_all_vfs_msi_state(struct ice_pf *pf);
->  
->  int
->  ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
-> @@ -67,7 +67,7 @@ static inline
->  void ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event) { }
->  static inline void ice_print_vfs_mdd_events(struct ice_pf *pf) { }
->  static inline void ice_print_vf_rx_mdd_event(struct ice_vf *vf) { }
-> -static inline void ice_restore_all_vfs_msi_state(struct pci_dev *pdev) { }
-> +static inline void ice_restore_all_vfs_msi_state(struct ice_pf *pf) { }
->  
->  static inline int
->  ice_sriov_configure(struct pci_dev __always_unused *pdev,
-> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> index 48fea6fa0362..57c36e4ccf91 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> @@ -82,7 +82,7 @@ struct ice_vf {
->  	struct rcu_head rcu;
->  	struct kref refcnt;
->  	struct ice_pf *pf;
-> -
-> +	struct pci_dev *vfdev;
->  	/* Used during virtchnl message handling and NDO ops against the VF
->  	 * that will trigger a VFR
->  	 */
+> v1 -> v2:
+>   - Removed patches sent as fixes to the net tree;
+>   - More details to the commit message, ntpperf comparison (with the
+>     right clientloglimit, as Miroslav Lichvar suggested);
 > 
-> base-commit: 0ad204c4acb8ba1ed99564b001609e62547bc79d
-> -- 
-> 2.40.1
+> v1: https://lore.kernel.org/r/20230228054534.1093483-1-vinicius.gomes@intel.com/
 > 
 > 
+>   drivers/net/ethernet/intel/igc/igc.h         |  18 +-
+>   drivers/net/ethernet/intel/igc/igc_base.h    |   3 +
+>   drivers/net/ethernet/intel/igc/igc_defines.h |   7 +
+>   drivers/net/ethernet/intel/igc/igc_main.c    |  41 ++++-
+>   drivers/net/ethernet/intel/igc/igc_ptp.c     | 178 +++++++++++++------
+>   drivers/net/ethernet/intel/igc/igc_regs.h    |  12 ++
+>   6 files changed, 194 insertions(+), 65 deletions(-)
+
+
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
