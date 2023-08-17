@@ -1,89 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F16377F897
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Aug 2023 16:19:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C6D577F96F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Aug 2023 16:42:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E048983F60;
-	Thu, 17 Aug 2023 14:19:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E048983F60
+	by smtp2.osuosl.org (Postfix) with ESMTP id B43F5418BD;
+	Thu, 17 Aug 2023 14:42:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B43F5418BD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692281940;
-	bh=CbacEijjVpgOxOPlsO5D8AFE5WoQEcAJoNSFl2pRPjY=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1692283338;
+	bh=e5DyPqCTcTJxm5rb98bYfUKX3aCH/A++LsQBz3aSsdo=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Vg5DawswvCy9TFljz16J0XgVsDPZ4P031w6lupPWw58LDOU2AQZQwR0wTbEyT1CDk
-	 bkSwPY4sexgl5eNpleNAc+BTeMvaNAoi+WmDohufA/e+9MoNTOJE8Ibf2Qxn06Qrrm
-	 v7DRgDaRxA+qUC13EaF+oQKAJzvch2OhL/JN9AoCqit4C2kougdPSxD7Em0XDvgnE0
-	 fwuUckFc2LpOLYrgV0pboGz/GYBQmJncgpihdtFPztyybyAq3UNTCqGvukxVYp508l
-	 7XTZ5bcxQ/yYEe12Y9kl5QdLoqd3iX4AUUY6kN/zTy3cFXmGVwlkzCFdKMCj2dbbhM
-	 o4pONYKWMyZDw==
+	b=L27F6gfbrElmSpBQF36bkj3DrxoZGQmYKjGaJNje4H0BknS8URjbtFSPWlRwP2Nkp
+	 bFOBJ/ixh7bMzSzOcr7I8FRE4o6t7GJEsucK423wY5mXMdCH/iXvlaV576ORxwZ9P4
+	 SrmnrazWVMNnenpO+AlSIvyTBfMJ/GYDxCJVUwCo7phJyqDvx/EL59Y7YcyU4GMg1V
+	 I7JConfxMnqjB2U7+TTJIT3bklQEikiWJLXS44k36ukDnz6POzZOBXwx+M2kcnW9aZ
+	 sywHHF+3l4T18pWycTiaEia/nMmxHuQ0n0ANPBl+p3aRmkOTaNULAabnIyqK+kiqXS
+	 RsDGW2AH8W9+g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j5S7dzGZIoQl; Thu, 17 Aug 2023 14:19:00 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NrA_BxkFA8L8; Thu, 17 Aug 2023 14:42:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 813C083EE1;
-	Thu, 17 Aug 2023 14:18:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 813C083EE1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9819240591;
+	Thu, 17 Aug 2023 14:42:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9819240591
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4EFB21BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:18:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E79171BF3BC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:42:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 26BAD80C31
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:18:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26BAD80C31
+ by smtp3.osuosl.org (Postfix) with ESMTP id C3DCD6154B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:42:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C3DCD6154B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KuP4TrMIlM4y for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Aug 2023 14:18:30 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6ED8C80BB4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:18:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6ED8C80BB4
-X-IronPort-AV: E=McAfee;i="6600,9927,10805"; a="403804248"
-X-IronPort-AV: E=Sophos;i="6.01,180,1684825200"; d="scan'208";a="403804248"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Aug 2023 07:18:30 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10805"; a="981189769"
-X-IronPort-AV: E=Sophos;i="6.01,180,1684825200"; d="scan'208";a="981189769"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by fmsmga006.fm.intel.com with ESMTP; 17 Aug 2023 07:18:28 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 17 Aug 2023 16:17:46 +0200
-Message-Id: <20230817141746.18726-10-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230817141746.18726-1-karol.kolacinski@intel.com>
-References: <20230817141746.18726-1-karol.kolacinski@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id g4jHiMVucBWE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Aug 2023 14:42:12 +0000 (UTC)
+X-Greylist: delayed 309 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 17 Aug 2023 14:42:11 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2402607A3
+Received: from eu-smtp-delivery-151.mimecast.com
+ (eu-smtp-delivery-151.mimecast.com [185.58.86.151])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A2402607A3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Aug 2023 14:42:11 +0000 (UTC)
+Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
+ relay.mimecast.com with ESMTP with both STARTTLS and AUTH (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ uk-mta-6-t1ZLIpC4P7uCuSrIMZoxRA-1; Thu, 17 Aug 2023 15:35:27 +0100
+X-MC-Unique: t1ZLIpC4P7uCuSrIMZoxRA-1
+Received: from AcuMS.Aculab.com (10.202.163.4) by AcuMS.aculab.com
+ (10.202.163.4) with Microsoft SMTP Server (TLS) id 15.0.1497.48; Thu, 17 Aug
+ 2023 15:35:23 +0100
+Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
+ id 15.00.1497.048; Thu, 17 Aug 2023 15:35:23 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Przemek Kitszel' <przemyslaw.kitszel@intel.com>, Kees Cook
+ <keescook@chromium.org>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [PATCH net-next v3 1/7] overflow: add DEFINE_FLEX() for on-stack
+ allocs
+Thread-Index: AQHZ0EteSw2XTdntxkSn8fWObNOCVK/uiVWQ
+Date: Thu, 17 Aug 2023 14:35:23 +0000
+Message-ID: <1f9cb37f21294c31a01af62fd920f070@AcuMS.aculab.com>
+References: <20230816140623.452869-1-przemyslaw.kitszel@intel.com>
+ <20230816140623.452869-2-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20230816140623.452869-2-przemyslaw.kitszel@intel.com>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692281910; x=1723817910;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=aVmsgUhP2TkHsmCMEc/GKA3A86G+RhAFJOVKAq0dOSs=;
- b=mbhRdVxKsEEHe+iRhxm4M8WmL/yepr6CsfWAl9yb65S/MkkbT0FGZy70
- BHFz5uyHydusIoVSISgD5iwGywPsbCnriqGs9xqHI5PcQv01cl8jwZiBG
- S9hqtbGZI4jdQtWHrwFAChuHidZUC/XVR6vRxuIGhB0l7gFRBf9XxiX54
- hz/aT+v5Fp3W5+AclSCjtGVPTr0dOzY0khNbA8RF61mIH8KHOuDKiDuMS
- vCPkqZVlgpMkCqKFbp3CL6Vun/4MTH69i+rrMgZ30L2aSMevEoqAGCkKc
- G7fHyKEJHb0eRWvloG3X72hon1TjR07vxU37wf6MlD7Hy7lWyRrbadb4X
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mbhRdVxK
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 9/9] ice: stop destroying and
- reinitalizing Tx tracker during reset
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/7] overflow: add
+ DEFINE_FLEX() for on-stack allocs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,92 +93,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- anthony.l.nguyen@intel.com, jesse.brandeburg@intel.com
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-hardening@vger.kernel.org" <linux-hardening@vger.kernel.org>, Steven
+ Zou <steven.zou@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice driver currently attempts to destroy and re-initialize the Tx
-timestamp tracker during the reset flow. The release of the Tx tracker
-only happened during CORE reset or GLOBAL reset. The ice_ptp_rebuild()
-function always calls the ice_ptp_init_tx function which will allocate
-a new tracker data structure, resulting in memory leaks during PF reset.
+From: Przemek Kitszel
+> Sent: Wednesday, August 16, 2023 3:06 PM
+> 
+> Using underlying array for on-stack storage lets us to declare
+> known-at-compile-time structures without kzalloc().
 
-Certainly the driver should not be allocating a new tracker without
-removing the old tracker data, as this results in a memory leak.
-Additionally, there's no reason to remove the tracker memory during a
-reset. Remove this logic from the reset and rebuild flow. Instead of
-releasing the Tx tracker, flush outstanding timestamps just before we
-reset the PHY timestamp block in ice_ptp_cfg_phy_interrupt().
+Isn't DEFINE_FLEX() a bit misleading?
+One thing it isn't is 'flexible' since it has a fixed size.
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp.c | 33 +++++++++++++++---------
- 1 file changed, 21 insertions(+), 12 deletions(-)
+> +#define DEFINE_FLEX(type, name, member, count)					\
+> +	union {									\
+> +		u8 bytes[struct_size_t(type, member, count)];			\
+> +		type obj;							\
+> +	} name##_u __aligned(_Alignof(type)) = {};				\
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 373ca79803af..d10c43f9266b 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -868,6 +868,22 @@ ice_ptp_mark_tx_tracker_stale(struct ice_ptp_tx *tx)
- 	spin_unlock(&tx->lock);
- }
- 
-+/**
-+ * ice_ptp_flush_all_tx_tracker - Flush all timestamp trackers on this clock
-+ * @pf: Board private structure
-+ *
-+ * Called by the clock owner to flush all the Tx timestamp trackers associated
-+ * with the clock.
-+ */
-+static void
-+ice_ptp_flush_all_tx_tracker(struct ice_pf *pf)
-+{
-+	struct ice_ptp_port *port;
-+
-+	list_for_each_entry(port, &pf->ptp.ports_owner.ports, list_member)
-+		ice_ptp_flush_tx_tracker(ptp_port_to_pf(port), &port->tx);
-+}
-+
- /**
-  * ice_ptp_release_tx_tracker - Release allocated memory for Tx tracker
-  * @pf: Board private structure
-@@ -2573,6 +2589,11 @@ static int ice_ptp_rebuild_owner(struct ice_pf *pf)
- 	/* Release the global hardware lock */
- 	ice_ptp_unlock(hw);
- 
-+	/* Flush software tracking of any outstanding timestamps since we're
-+	 * about to flush the PHY timestamp block.
-+	 */
-+	ice_ptp_flush_all_tx_tracker(pf);
-+
- 	if (!ice_is_e810(hw)) {
- 		/* Enable quad interrupts */
- 		err = ice_ptp_cfg_phy_interrupt(pf, true, 1);
-@@ -2608,18 +2629,6 @@ void ice_ptp_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	if (ice_pf_src_tmr_owned(pf) && reset_type != ICE_RESET_PFR)
- 		ice_ptp_rebuild_owner(pf);
- 
--	/* Init Tx structures */
--	if (ice_is_e810(&pf->hw)) {
--		err = ice_ptp_init_tx_e810(pf, &ptp->port.tx);
--	} else {
--		kthread_init_delayed_work(&ptp->port.ov_work,
--					  ice_ptp_wait_for_offsets);
--		err = ice_ptp_init_tx_e822(pf, &ptp->port.tx,
--					   ptp->port.port_num);
--	}
--	if (err)
--		goto err;
+You shouldn't need the _Alignof() it is the default.
+I'm not sure you should be forcing the memset() either.
+
+> +	type *name = (type *)&name##_u
+
+How about?
+	type *const name = &name_##_u.obj;
+
+You might want to add:
+	Static_assert(is_constexpr(count), "DEFINE_FLEX: non-constant count " #count);
+
+	David
+
 -
- 	ptp->state = ICE_PTP_READY;
- 
- 	/* Start periodic work going */
--- 
-2.39.2
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
 
 _______________________________________________
 Intel-wired-lan mailing list
