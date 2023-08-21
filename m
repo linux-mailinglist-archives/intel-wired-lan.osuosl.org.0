@@ -1,87 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CC0378277F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 13:02:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B493578299B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 14:55:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D0D3B81F7F;
-	Mon, 21 Aug 2023 11:01:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D0D3B81F7F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4D1D3408A9;
+	Mon, 21 Aug 2023 12:55:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D1D3408A9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692615718;
-	bh=kXS8RHBvDu3yhSwKOsqBrLJrNQt9iiu2Xg+2RtxqTAE=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=2QzBERpCdeFC8hGUQsQXG7J+QblsU6TbFfG/Eyg1iWaNqXwGQw/fIbSUHXirGq2Ua
-	 TKdJ2y7JVrQCUsLk63WH8y9QuRK8RCn9yCJpFJDOg4NtxPwKHac6d3mVnLAt0EC8s+
-	 g0UeBMcQ/ZgDOriG5nEnJCvXjF2jWX5Znea9ImaVHJlrYbU5hj9vfOFOm75pWXfjUY
-	 viUJU3eeqO8LVMoQQ1h5+UC6EAohn5fa24fi5WCO3e8/MqFdCSR+xrfihJanjgfkQA
-	 PuqQp45cDwECw83NSAEeik8nT5SX92s+haJzzX9EclPhObkLGoMFYFOMxh6jobjGSW
-	 f/vp+FYK7JETQ==
+	s=default; t=1692622530;
+	bh=Pz9Y0mdSmx25eX7i/q1KL+hPjy0iblw+ng9+V9zDXoI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=a9U1zbjjtSPk6WGYfudsHyjBDHQNQWLCBVKCz/Zd13A+mZi9jO6Zh5dYBqM9jjQrh
+	 4Zs2KFeCuwGy56tni3Lhv1wz81S7zfDwwlA/+UjR6q+65CNUfpN2qIijH5IDHmHpY0
+	 fwgNywdhTdYeoUoAJcBVW7uhziS2jVO2X6+D4d1LOSCsNckpbov1sYfi5KOSn8EjFW
+	 W3kg29xGFzEVEMys9ZLX+3tHSQ49n+KQ5fuJ/GoI7wjuwHvY/d5UHenXTGSytUt9Tl
+	 q01blTmODyxHOu9VTPUdfftXSDYbuOWlQkQlT12SvsR7lNMGcdzVmfU/bIqcujah8s
+	 88/FeGa0A5SFw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id As_6VYpPHJJF; Mon, 21 Aug 2023 11:01:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iNnWQYymo0xt; Mon, 21 Aug 2023 12:55:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BAE1A81F6B;
-	Mon, 21 Aug 2023 11:01:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BAE1A81F6B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 14076408A8;
+	Mon, 21 Aug 2023 12:55:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14076408A8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8DEF11BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 11:01:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 75C3C1BF388
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 12:55:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 666BF40134
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 11:01:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 666BF40134
+ by smtp1.osuosl.org (Postfix) with ESMTP id 586578139E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 12:55:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 586578139E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GzkhggB-UdEi for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Aug 2023 11:01:51 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C7698400D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 11:01:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C7698400D7
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id E3A8E6146F;
- Mon, 21 Aug 2023 11:01:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAD4EC433C8;
- Mon, 21 Aug 2023 11:01:49 +0000 (UTC)
-Date: Mon, 21 Aug 2023 14:01:46 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20230821110146.GA6583@unreal>
-References: <20230816085454.235440-1-przemyslaw.kitszel@intel.com>
- <20230816143148.GX22185@unreal>
- <c1f65aa1-3e20-9e21-1994-1190bf0086b7@intel.com>
- <20230818182059.GZ22185@unreal>
- <12025d38-a5e2-5ddd-721f-c1c083785d22@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bpu501Njk84d for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Aug 2023 12:55:23 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 88BCE81399
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 12:55:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 88BCE81399
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="439953394"
+X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="439953394"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Aug 2023 05:55:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="982450586"
+X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="982450586"
+Received: from unknown (HELO ocsbesrhlrepo01.amr.corp.intel.com)
+ ([10.237.94.20])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Aug 2023 05:55:21 -0700
+From: Radoslaw Tyl <radoslawx.tyl@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 21 Aug 2023 14:55:04 +0200
+Message-Id: <20230821125504.169064-1-radoslawx.tyl@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <12025d38-a5e2-5ddd-721f-c1c083785d22@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1692615710;
- bh=S4a8g3g8apaEmqmUxzFGUGuj/O5FXcWNOgUHgFy7xWE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Q9vbORbijEtOyv7Du8LhvIQliLo8lOQ1y5wTjmlAyaxaokYCa0G0Whh0mHMCVOJ3K
- wlZMfeaFHkm7tPwD8YwGgKTKYT2NBAaa2zqE92zfcblAboa+NZzIMuc4XmLPh1oLBl
- Y2iI1EB9uyNgwry18gRk6Rny4tr/4im7sJLk3rtbvY+uKeoAXmewKQJEZKwuQVP4f+
- mD3NdBap+QixSrrG38nr3j9xRTfvmP+Bn7sHfFzypSHLDtRWfZHy6Dk8+8VVQp+Px0
- cJvtZZBTQyY5mMUQEZ4XsR5j6gbpAALMjLTiUOTdrTVwb0yENKlr75xkRIbg963CVZ
- TO+HCXimT1AXQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Q9vbORbi
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: store VF's pci_dev ptr
- in ice_vf
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1692622523; x=1724158523;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=YRvWmkW2o4THNidBzJmUmWdpl/HpIkdBtuKAmnf6Ebw=;
+ b=bLafR0IAHVTDXRrvaAOjUGKB5TxZLmhh6idtrUa6vxOSz9PKljFqh8FL
+ oNL5mCD4ap0Km/tmS2mzllzg99olwPjkD8Kr6BPKvmq4XQiJ+IVBJGKdY
+ OvWvKsGCiwuLfwFnMdyiahdj322ur1jgVzJenBGVnohWKcwaVrSmvpZPi
+ ZBQMZQneCaXE9LkBzgtyQtuHaH2/bfxIQ/XzQ/kUk4w5NGSzGYBpo/Q9B
+ NJp3/ANe1yDhhk5lzScJuJ5/MPVaUWXbjyugzrzG2B/fD0Pg1JrX0GpHR
+ loL2KOX0bfGZ0SntL0yX7KWPfo6J0Oy6T06j2xizaWguG2lGFU397oTPw
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=bLafR0IA
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] igb: set max size RX buffer
+ when store bad packet is enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,61 +93,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: Radoslaw Tyl <radoslawx.tyl@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 21, 2023 at 12:48:40PM +0200, Przemek Kitszel wrote:
-> On 8/18/23 20:20, Leon Romanovsky wrote:
-> > On Fri, Aug 18, 2023 at 02:20:51PM +0200, Przemek Kitszel wrote:
-> > > On 8/16/23 16:31, Leon Romanovsky wrote:
-> > > > On Wed, Aug 16, 2023 at 04:54:54AM -0400, Przemek Kitszel wrote:
-> > > > > Extend struct ice_vf by vfdev.
-> > > > > Calculation of vfdev falls more nicely into ice_create_vf_entries().
-> > > > > 
-> > > > > Caching of vfdev enables simplification of ice_restore_all_vfs_msi_state().
-> > > > 
-> > > > I see that old code had access to pci_dev * of VF without any locking
-> > > > from concurrent PCI core access. How is it protected? How do you make
-> > > > sure that vfdev is valid?
-> > > > 
-> > > > Generally speaking, it is rarely good idea to cache VF pci_dev pointers
-> > > > inside driver.
-> > > > 
-> > > > Thanks
-> > > 
-> > > Overall, I do agree that ice driver, as a whole, has room for improvement in
-> > > terms of synchronization, objects lifetime, and similar.
-> > > 
-> > > In this particular case, I don't see any reason of PCI reconfiguration
-> > > during VF lifetime, but likely I'm missing something?
-> > 
-> > You are caching VF pointer in PF,
-> 
-> that's correct that the driver is PF/ice
-> 
-> > and you are subjected to PF lifetime
-> > and not VF lifetime.
-> 
-> this belongs to struct ice_vf, which should have VF lifetime,
-> otherwise it's already at risk
+Increase the RX buffer size to 3K when the SBP bit is on. The size of
+the RX buffer determines the number of pages allocated which may not
+be sufficient for receive frames larger than the set MTU size.
 
-I'm not so sure about it. ICE used to use devm_* API and not explicit
-kalloc/kfree calls, it is not clear anymore the lifetime scope of VF
-structure.
+Fixes: 89eaefb61dc9 ("igb: Support RX-ALL feature flag.")
+Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+---
+v2: fix lkm build warning
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-Thanks
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 2293ae78f711..5d15bbdef03b 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4814,6 +4814,9 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+ 				  struct igb_ring *rx_ring)
+ {
++#if (PAGE_SIZE < 8192)
++	struct e1000_hw *hw = &adapter->hw;
++#endif
+ 	/* set build_skb and buffer size flags */
+ 	clear_ring_build_skb_enabled(rx_ring);
+ 	clear_ring_uses_large_buffer(rx_ring);
+@@ -4824,10 +4827,9 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+ 	set_ring_build_skb_enabled(rx_ring);
+ 
+ #if (PAGE_SIZE < 8192)
+-	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
+-		return;
+-
+-	set_ring_uses_large_buffer(rx_ring);
++	if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
++	    rd32(E1000_RCTL) & E1000_RCTL_SBP)
++		set_ring_uses_large_buffer(rx_ring);
+ #endif
+ }
+ 
+-- 
+2.31.1
 
-> 
-> > 
-> > Thanks
-> 
-> Thank you!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
