@@ -1,90 +1,184 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B4317829E5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 15:04:32 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76DA5782A10
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 15:12:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F079440980;
-	Mon, 21 Aug 2023 13:04:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F079440980
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8AF74098D;
+	Mon, 21 Aug 2023 13:12:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8AF74098D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692623071;
-	bh=lz1aBBTkHNGRRcFemsa42JN0ZJinqA4JUIARAiCE0F4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1692623534;
+	bh=z2oGzVvPg6xkgrQasTepgSXPY0Ig4dUfoja1bdBydfc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6+c8t0cuhRfJQNGHQYSCl6/XDmQ5JN+tPYrisTdyjWXdExHCzdazVfZeHErY30qYO
-	 xi0F5laD4pbaywKkcZcHHochFMh74wK498Tr+TlT/Q4D7NR6U2hxMBUJGttKNq/dBG
-	 OSCLad6COz1zbyjKlpcvnGj04jqtCjQJqEcPzTdeUOMdppW5UWx5THryK8OdHiwyxK
-	 UPoCjT0BphLLlsh/zeqXjusJ6YnVt1xBLK0LV8Jo7mRLEVmbhQfbo3ikcqYEBjnNz7
-	 GjgbbEvbgDcVx2a+GgL7mETTOkJfvFRXEVNKOsABe2WunQ/T5bEGjUxSsw5YwnVKXB
-	 y98XohgLDJsoQ==
+	b=rvscM4RheofFKQBAs2FdUW051XMTSEZJanv5WJFts54aNHBioIyx4s/llc/iPScYi
+	 sVFDmwh2T7vfBhAJlhBF9Ynq9QwXh7cRxAFz1AF/5BiVlWfAr9fcW1RHGUVpWKuC4z
+	 97NY0XBVc5a68MTDRJu/2+Czu/XEI4slochUrSpzyH/LW2laFLa0NhTi5Rfwooreoi
+	 4IRswCSAxYFkoHMzpcxwte72+07st7Ul8OVt6TgcYCqti5OLGhO6UuxsJS+rucj/f4
+	 ip3lskGi6WBnrrwAxud7SD8Bhkh48lWGiC561yWm8iCerxif1/rXJrCazc+mISgNlP
+	 MLv/LsjvWXjFw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NJkcMioGJn_V; Mon, 21 Aug 2023 13:04:29 +0000 (UTC)
+	with ESMTP id EacOF0blbSSn; Mon, 21 Aug 2023 13:12:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BA4E40545;
-	Mon, 21 Aug 2023 13:04:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3BA4E40545
+	by smtp4.osuosl.org (Postfix) with ESMTP id 446E8409A4;
+	Mon, 21 Aug 2023 13:12:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 446E8409A4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 141A91BF2F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:04:24 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 101EF1BF2F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:12:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 75B5140545
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:04:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 75B5140545
+ by smtp3.osuosl.org (Postfix) with ESMTP id D0B96610C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:11:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0B96610C4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k_-OM-1GJo81 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Aug 2023 13:04:22 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1864340980
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:04:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1864340980
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="353898838"
-X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="353898838"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2023 06:04:21 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FQ7hXgehP1YP for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Aug 2023 13:11:40 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 099E0610F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 13:11:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 099E0610F6
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="459952945"
+X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="459952945"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Aug 2023 06:11:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="765361641"
-X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="765361641"
-Received: from lkp-server02.sh.intel.com (HELO 6809aa828f2a) ([10.239.97.151])
- by orsmga008.jf.intel.com with ESMTP; 21 Aug 2023 06:04:18 -0700
-Received: from kbuild by 6809aa828f2a with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qY4Zt-0000VE-2q;
- Mon, 21 Aug 2023 13:04:17 +0000
-Date: Mon, 21 Aug 2023 21:03:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: Paul Greenwalt <paul.greenwalt@intel.com>, intel-wired-lan@lists.osuosl.org
-Message-ID: <202308212014.a1qQx4Wp-lkp@intel.com>
-References: <20230819094025.15196-1-paul.greenwalt@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="685651140"
+X-IronPort-AV: E=Sophos;i="6.01,190,1684825200"; d="scan'208";a="685651140"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga003.jf.intel.com with ESMTP; 21 Aug 2023 06:11:13 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 21 Aug 2023 06:11:12 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Mon, 21 Aug 2023 06:11:12 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.104)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Mon, 21 Aug 2023 06:11:12 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=m3r5fFgdu8qCPuyOnv3O0ozkKwmsWmpQ2QrXrQDiGIXRVFAY348DoieJKOY2Khu3SiP3GUr9u3H2oWA1k5GrVKAdh+z4RZUkjtl2hGkHEdSYKYmSmSndrYIlRSytPLuhYVMf9AXD+TY3ROeVPjmGcp9Xx7aA62djU3UNxuhLOaDTS3A720BeOHylsDG9BOaUVJUgOQl6TQzjpZ3hyHPcVT/xN0wp4v9muyplBtY6ZoINgC+nivoqdDDWR1DC+KYZKbuDHHOR7w5x3Rv4Z/5Aqp88wo7p2nPUuTgJvVhXKxXoziMccUUc5ycJRYi4kUjsIpTNNX5S97l5RGiNCPhgOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Fi2hqG9hz/ISAvprJ+43Fm5sxKB1E5QiKtbXPUXH2nU=;
+ b=R1yyc2+HpA0w9NJGpU+zGoJrGIdaPU4hKbl8tXmnFjcEILvuTcYIHi52OCR/UJ9F8k7hpw/bOte5rJHO4k3RHdyVTlhcxxAK2vxa79CutjCMuBmIgijNlW0cPFp2doFjXCoqXHwQPFKSH/LMlC/mVrLRBzPHpFI+3asHwhSN4zn6kRqtwCuhwY5Xmn7Ce2tLkr6Wt5wbP2HxFPNFJtMv6+3vmlDknmQ8kX5gP9w3LlnjN7I9BOnoHZnDMC9jXXAHJvd8XyPvWg7TtBhjIELbI3ejfij4H8AB+TjWUgtLdb/kdJTfH3pWdxE2U7tbib/1PuGX6mIyRY9Nk3z9w+0aVA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by CO1PR11MB5025.namprd11.prod.outlook.com (2603:10b6:303:9e::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.24; Mon, 21 Aug
+ 2023 13:11:09 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::44ff:6a5:9aa4:124a]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::44ff:6a5:9aa4:124a%7]) with mapi id 15.20.6678.031; Mon, 21 Aug 2023
+ 13:11:09 +0000
+Message-ID: <86ba753a-f4a3-3d0f-1924-2b31666c3346@intel.com>
+Date: Mon, 21 Aug 2023 15:10:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Content-Language: en-US
+To: Paul Greenwalt <paul.greenwalt@intel.com>
+References: <20230819094239.15304-1-paul.greenwalt@intel.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <20230819094239.15304-1-paul.greenwalt@intel.com>
+X-ClientProxiedBy: DU2P250CA0029.EURP250.PROD.OUTLOOK.COM
+ (2603:10a6:10:231::34) To DM6PR11MB3625.namprd11.prod.outlook.com
+ (2603:10b6:5:13a::21)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230819094025.15196-1-paul.greenwalt@intel.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|CO1PR11MB5025:EE_
+X-MS-Office365-Filtering-Correlation-Id: e46c4ab0-73f9-40b2-4894-08dba24815bd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: jiT0AFpUzMbfI2sjYU8FpO9PgUMF2lwE/5ytzLOC4AB/LVfBHQAo4qAt26JxaBGsxlwZSO47Y8XsKbL5/4XKZnG+lkz80ZKb0t2eGxx3CH2cYJ6h3jV10/n9CSjrIsUrhDjJ+xsvHmISJxrYGbAC/WBZt5FH7t3ExyBP9/3QI/x7lnN63eEzsdCl3COZd8zZBH+SGpqlY641bN4kJ4SH6idNgRE3bawcyoEWkPs6EaBSNcLbmElyvS2Fafva5rVCPQYdXFdkVMB1oAc3g01A+wXk3lyVwQTEpScWNJqx+jR0BoY0NCPdfovjyhSsidxvTf8eD1jvIBPTp2ESP8Qv8yD1e6GD83antvjKxXMlxl2ONIlh1Qe8IFUSstbWhCC/LjA5uKr69hq19FNWGbTyO4/T8nAREBibp+wLNRisSWSAoLgC8PrYH8Tj6/U7XyIuXHIdLqubBep0i6e2cHIlNOx3JHPyYVVcdM4wpnth7ExEP+sAsLwG8QcC4ASR18X9m5Q14JaEOr29bE+C8qpKtucpmb5mUJa//4gYNnzMYmIL/YdsecUcdYTcZSGkT+wXqsW+ZUr0KslZcooQs/EYJHx0bD1YmdA1i6ACYKdwYycO/N2tbSP7RLpYyO9WLNGoDy1AZgdTeO6TMjhNA8UYXA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(346002)(366004)(39860400002)(376002)(136003)(396003)(451199024)(186009)(1800799009)(2906002)(38100700002)(6506007)(6486002)(83380400001)(5660300002)(26005)(86362001)(31686004)(31696002)(8676002)(2616005)(8936002)(107886003)(6862004)(4326008)(316002)(66946007)(6512007)(6636002)(66556008)(66476007)(37006003)(82960400001)(478600001)(6666004)(36756003)(41300700001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q1prcTBzQTIyUEFORHRwMmhJZUlHR1RsUVI2Q29NNU44NXZGQ3dIZnJGQVhX?=
+ =?utf-8?B?aFZhTEZpKzNoRHluUmtqRmN2RG96VlZwS0I4ZDBlM1ZKMVpTTEo5Qmc1ZTlr?=
+ =?utf-8?B?bFpiRjV0LzlpRzFLUnFjY251UU1GRWpra3RxVml1dUQ3emJTMktHZDNOSTAz?=
+ =?utf-8?B?RjZhNUFuQUE3M0JXdll5WE12M2FRYlZYNGc5Qi9kVWZPa0Vhb0RqZEwyWmN5?=
+ =?utf-8?B?SlYwNW5TbTlyQXBlNFBmYjVVc0RTcmZOaGw3TE9EYkROWCs3OHc0S3ViNEt3?=
+ =?utf-8?B?dWZ0ck1RUGxoczQ0aUJmdE9RQnJZL2NKZjNNZ211TDk4a25EcTVLUkErN01x?=
+ =?utf-8?B?L1dVNUpsZm5ndDlueGQySHFPMkdOTG9yZHdsOHRKUWFHZjk1ZW9ZdkVGLzAz?=
+ =?utf-8?B?YkwyWkRNcFFnT2M3UGd4NGpGbExaeG5EcWI1SXZ4UzJzc004ZmRPcHFuMTFW?=
+ =?utf-8?B?ZmZWTVBPNWxYbCsyaXB5bVRkanNMdyt0d3lhZXNxQUpTYitWK045NDJoWFNT?=
+ =?utf-8?B?TE1XS2xuUTRqZ0tIaWdrNk54SUVRYUJ2OVBpZm56UmZWU0xtZkZoZnVkdVhI?=
+ =?utf-8?B?S3h1MkJLQ1JOTjZRbmhaS1VWWDdlSE1waUIreW54bVY3M0tPRndUaGdXNFVl?=
+ =?utf-8?B?eFUwMUNpbUpCeUVUR3ZXeTRURlhLV0owVGlEdGx3TlU2SUVCa1FXYXArck93?=
+ =?utf-8?B?czg5bkVOcStaUkVyTWFSQktqSGl1Y0pPeGQ5MkdCL0w4c0xVejdFZ21QVU1y?=
+ =?utf-8?B?UUUxQ0Fhd25GRkZCTHdIL3UzQjE2Z1NGSk5lNW5lTVIvN3k3bzdRRGErZkt3?=
+ =?utf-8?B?T2grc01taTJTcm80clhiSC9tQU9SWStRYklaUFdqdGtNLzFNQ1QxZXFaYTlW?=
+ =?utf-8?B?WGptMjJjR0xLQXlhd2NISWRET3Zsb3FqWUJaakl5Zkk2TjdRTWlXZDdGOGZ1?=
+ =?utf-8?B?dk4wZFV2REo2RCsva2NQanhtODZzL2h0ci9jQnlrWmIwc2RhWEJ2c3hkWkJP?=
+ =?utf-8?B?NHRxRXZYZ1JPWlBJNVdLTTJSc3ZmQUtxbVRzaThEYmpPbUlmWmtJVklBcXVy?=
+ =?utf-8?B?dDYxdUZsOSsycEpDZlNGcStFODN2dFh3RnpONk12enlsT05BNzVmbHlDclVT?=
+ =?utf-8?B?S3kzNEo5akdJeUI5UEdPaVdRYnBoYnhTV3NjOElwM0F4MktnWHBJdE42SWdV?=
+ =?utf-8?B?WnVHTkc1ZndXU1FIeHJxK2x3SzYzbXJGZW5PbXVCeFVRVGlQTmQzUFdDRXJY?=
+ =?utf-8?B?c0cyR1FVLzhaeHZjRGZ4ckR4aHFOd08yRU5BODVWZFFvTmVMRFlFcm9pZ0k5?=
+ =?utf-8?B?dUFjNVY5YlRIbXZiRkpLVGY5QkdwN1BXcDYzam1ZNzVtRGxaNmRZWGQzUitr?=
+ =?utf-8?B?NmFvV0RYdlJjRDBVcW00U3hwZ0pDelI3eVVVUVhuTCs1NVg4LzliZUVtdHlH?=
+ =?utf-8?B?a2ZWYVFrWHVpK3FpeWYrWmxiaWVzbjJmM3RWRkhrUnhwQ3VIM3pSSEU3SnFW?=
+ =?utf-8?B?a25FQ2l1aURlaFdYZTl5U3dTWUxWLzQrVzVrc0pTSkhyTG05VFZKV0tpelRO?=
+ =?utf-8?B?NnNJNFNpdjRhakV6d3BLZFlmVUpNTkFPUktiMTFLdUNqNFRRUjBiZ1RkOHZF?=
+ =?utf-8?B?bk8xdkhPcFRGTEV0eHRxZkp1WFU0dHRPMXpnQkY0N1FCc29yVG1ISlJSQXNM?=
+ =?utf-8?B?eXI4cjUzWE5hRXNpZGppS2JOL2RBenV6RWVZSkpyQWVJa0E1TzV4eGlJdW80?=
+ =?utf-8?B?VkNGbDFaNE9xaVoreGJMZVppYk93T1dKbGF2dFhRL0Evdi9zNlhnNkkxclFw?=
+ =?utf-8?B?dnUvQTU0aS9DWjNpdnRFY1NrZHRlZ0RpbmpQdlp1QzRzaU4vS295SlAwRHJQ?=
+ =?utf-8?B?UG1mRWM4YjBNbkg1M3lHMnF5NFIyNE8vaVF0cmYxd3ZPNXFRVk12S0dtTTE3?=
+ =?utf-8?B?UTR5MXlOcU1wZ3JyUWkwTVBnTXMzZFpnS3pjSkIzWU1zKzg3RUVwVjB0ckth?=
+ =?utf-8?B?MG9icDdQckd2R29SV0JkbzNIdkY1SEJkTy9HQTRSTktrTVpjYURrQm12YkU0?=
+ =?utf-8?B?eE1NUXQ1emhpUGFKL2xiOVAxUTA1Ujc4by9MVjJwTkt5SWJRQU5YZEJ3RVQx?=
+ =?utf-8?B?MXdWMkZ6WTVuOXFrSEtuMUJFZW1XeUQzRGhQeXorY3JzYWpPN054UHc2cFlT?=
+ =?utf-8?B?Y2c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e46c4ab0-73f9-40b2-4894-08dba24815bd
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2023 13:11:09.1374 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: h6HWt0dQEE8aWyQBUP5kGMPeiH7JPBHYgTjK1uAs9H5A9AMRZY3QBiEwWdhOrHdaI/dZJ+b2XS08CpPhW93LPW1CwiB6Iww0XVPFRvq/B60=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5025
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692623062; x=1724159062;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Owv1ANrpuvOaA6Tr8TM4kOysFxfycb+EDrnRaLZQHaw=;
- b=NV946gBFt+7QlhYQMVmnWxjsAd8c0HhPRycPGsa8JmmGfjjjoYrbwe92
- HgqxWI/ujX7HoccMdOgEG4ZFaDbiVOPTGpk+nl+w9YZtd1+kTUAUbYKty
- W56lZAvWDQYvMK+CbwwyKDAnWWsqXXkVjoqP+N6ey/7dHB22JPyjalX8w
- 92wgIlv4tV5kDSJ3SdORUg0dav5vNAe/gvE4n7QlAP8O45yQ27v3X99nJ
- 5ZywdxuNM+L5DnfmELML2N1sjT2sOnhUOr04GhjQ7O8c42yeFrTiMMHeq
- aTb6qMZqyQv9xI4gMLAXm2iWXh7bromD/VUudgl90HJqZUGUAXnShBnwN
+ t=1692623494; x=1724159494;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=JtHm4FjX5Vihc+8ECmsbkSnw1Z+g52sZQoimkB9+jRw=;
+ b=dbH5OvoZxmNZjFdQn06yExvPOWpsdRFcNv9LO/PAw4ZKM+3X7C7kOXzQ
+ Q7YpA96nkzZpgOyhfdhODJgtbQsdCEN56ga9Tw7iEXUxygwbi5YcIGmPS
+ Vzwrj1PmSKfbpJhLysI5M6YnhbV1FFr2y3tu9/q/XDourSfUShIFt03JU
+ rOZccJWITi53Amm5FFbN0QqMAET621+phkwbcxA8pkHt7qTgDw0nSLPYS
+ W2jl9dskmMh6eAuMCUvHg4OnAfD4tIRsiBuB2dYfJhwgmSFzjpCh8Gpjr
+ O8j+EMMvWQgpk05i5dMXBSUN42uc3qlnN221F9V7dgj6YR3CMDmJyK2+v
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NV946gBF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 3/9] ethtool: Add missing
- ETHTOOL_LINK_MODE_ to forced speed map
+ header.a=rsa-sha256 header.s=Intel header.b=dbH5OvoZ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 8/9] ice: Remove redundant
+ zeroing of the fields.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,224 +191,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, netdev@vger.kernel.org, aelior@marvell.com,
- manishc@marvell.com, oe-kbuild-all@lists.linux.dev
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, Jesse
+ Brandeburg <jesse.brandeburg@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Paul,
+From: Paul Greenwalt <paul.greenwalt@intel.com>
+Date: Sat, 19 Aug 2023 02:42:39 -0700
 
-kernel test robot noticed the following build warnings:
+> From: Pawel Chmielewski <pawel.chmielewski@intel.com>
+> 
+> Remove zeroing of the fields, as all the fields are in fact initialized
+> with zeros automatically
+> 
+> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 52 +++++++++++------------
+>  1 file changed, 26 insertions(+), 26 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index ffed5543a5aa..d6715a89ec78 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -5605,32 +5605,32 @@ static void ice_pci_err_reset_done(struct pci_dev *pdev)
+>   *   Class, Class Mask, private data (not used) }
+>   */
+>  static const struct pci_device_id ice_pci_tbl[] = {
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_QSFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_QSFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_10G_BASE_T), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SGMII), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_BACKPLANE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_SFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_10G_BASE_T), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP), 0 },
+> -	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT), 0 },
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_QSFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_QSFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_10G_BASE_T)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SGMII)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_BACKPLANE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_SFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_10G_BASE_T)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP)},
+> +	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT)},
 
-[auto build test WARNING on net-next/main]
-[also build test WARNING on next-20230821]
-[cannot apply to tnguy-next-queue/dev-queue tnguy-net-queue/dev-queue net/main linus/master horms-ipvs/master v6.5-rc7]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+If you want to remove them, please keep the code style consistent. If
+you have a space after the opening brace (which is correct), leave a
+space before the closing one:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Paul-Greenwalt/ice-Add-E830-device-IDs-MAC-type-and-registers/20230821-095200
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20230819094025.15196-1-paul.greenwalt%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next v2 3/9] ethtool: Add missing ETHTOOL_LINK_MODE_ to forced speed map
-config: sparc64-randconfig-r015-20230821 (https://download.01.org/0day-ci/archive/20230821/202308212014.a1qQx4Wp-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 12.3.0
-reproduce: (https://download.01.org/0day-ci/archive/20230821/202308212014.a1qQx4Wp-lkp@intel.com/reproduce)
+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT) },
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202308212014.a1qQx4Wp-lkp@intel.com/
+>  	/* required last entry */
+>  	{ 0, }
 
-All warnings (new ones prefixed by >>):
+Why wasn't this one addressed? :D
 
-   In file included from include/linux/linkmode.h:5,
-                    from include/linux/mii.h:13,
-                    from include/uapi/linux/mdio.h:15,
-                    from drivers/vfio/platform/reset/vfio_platform_amdxgbe.c:14:
->> include/linux/ethtool.h:1190:18: warning: 'ethtool_forced_speed_800000' defined but not used [-Wunused-const-variable=]
-    1190 | static const u32 ethtool_forced_speed_800000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1177:18: warning: 'ethtool_forced_speed_400000' defined but not used [-Wunused-const-variable=]
-    1177 | static const u32 ethtool_forced_speed_400000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1164:18: warning: 'ethtool_forced_speed_200000' defined but not used [-Wunused-const-variable=]
-    1164 | static const u32 ethtool_forced_speed_200000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1147:18: warning: 'ethtool_forced_speed_100000' defined but not used [-Wunused-const-variable=]
-    1147 | static const u32 ethtool_forced_speed_100000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1140:18: warning: 'ethtool_forced_speed_56000' defined but not used [-Wunused-const-variable=]
-    1140 | static const u32 ethtool_forced_speed_56000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1129:18: warning: 'ethtool_forced_speed_50000' defined but not used [-Wunused-const-variable=]
-    1129 | static const u32 ethtool_forced_speed_50000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1122:18: warning: 'ethtool_forced_speed_40000' defined but not used [-Wunused-const-variable=]
-    1122 | static const u32 ethtool_forced_speed_40000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1116:18: warning: 'ethtool_forced_speed_25000' defined but not used [-Wunused-const-variable=]
-    1116 | static const u32 ethtool_forced_speed_25000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1111:18: warning: 'ethtool_forced_speed_20000' defined but not used [-Wunused-const-variable=]
-    1111 | static const u32 ethtool_forced_speed_20000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1099:18: warning: 'ethtool_forced_speed_10000' defined but not used [-Wunused-const-variable=]
-    1099 | static const u32 ethtool_forced_speed_10000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1095:18: warning: 'ethtool_forced_speed_5000' defined but not used [-Wunused-const-variable=]
-    1095 | static const u32 ethtool_forced_speed_5000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1090:18: warning: 'ethtool_forced_speed_2500' defined but not used [-Wunused-const-variable=]
-    1090 | static const u32 ethtool_forced_speed_2500[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/ethtool.h:1084:18: warning: 'ethtool_forced_speed_1000' defined but not used [-Wunused-const-variable=]
-    1084 | static const u32 ethtool_forced_speed_1000[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1078:18: warning: 'ethtool_forced_speed_100' defined but not used [-Wunused-const-variable=]
-    1078 | static const u32 ethtool_forced_speed_100[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~~
->> include/linux/ethtool.h:1072:18: warning: 'ethtool_forced_speed_10' defined but not used [-Wunused-const-variable=]
-    1072 | static const u32 ethtool_forced_speed_10[] __initconst = {
-         |                  ^~~~~~~~~~~~~~~~~~~~~~~
+	/* required last entry */
+	{ }
 
+or (saves 1 line):
 
-vim +/ethtool_forced_speed_800000 +1190 include/linux/ethtool.h
+	{ /* required last entry */ }
 
-  1071	
-> 1072	static const u32 ethtool_forced_speed_10[] __initconst = {
-  1073		ETHTOOL_LINK_MODE_10baseT_Full_BIT,
-  1074		ETHTOOL_LINK_MODE_10baseT1L_Full_BIT,
-  1075		ETHTOOL_LINK_MODE_10baseT1S_Full_BIT,
-  1076	};
-  1077	
-> 1078	static const u32 ethtool_forced_speed_100[] __initconst = {
-  1079		ETHTOOL_LINK_MODE_100baseT_Full_BIT,
-  1080		ETHTOOL_LINK_MODE_100baseFX_Half_BIT,
-  1081		ETHTOOL_LINK_MODE_100baseFX_Full_BIT,
-  1082	};
-  1083	
-  1084	static const u32 ethtool_forced_speed_1000[] __initconst = {
-  1085		ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
-  1086		ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
-  1087		ETHTOOL_LINK_MODE_1000baseX_Full_BIT,
-  1088	};
-  1089	
-> 1090	static const u32 ethtool_forced_speed_2500[] __initconst = {
-  1091		ETHTOOL_LINK_MODE_2500baseT_Full_BIT,
-  1092		ETHTOOL_LINK_MODE_2500baseX_Full_BIT,
-  1093	};
-  1094	
-> 1095	static const u32 ethtool_forced_speed_5000[] __initconst = {
-  1096		ETHTOOL_LINK_MODE_5000baseT_Full_BIT,
-  1097	};
-  1098	
-  1099	static const u32 ethtool_forced_speed_10000[] __initconst = {
-  1100		ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
-  1101		ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
-  1102		ETHTOOL_LINK_MODE_10000baseKX4_Full_BIT,
-  1103		ETHTOOL_LINK_MODE_10000baseR_FEC_BIT,
-  1104		ETHTOOL_LINK_MODE_10000baseCR_Full_BIT,
-  1105		ETHTOOL_LINK_MODE_10000baseSR_Full_BIT,
-  1106		ETHTOOL_LINK_MODE_10000baseLR_Full_BIT,
-  1107		ETHTOOL_LINK_MODE_10000baseLRM_Full_BIT,
-  1108		ETHTOOL_LINK_MODE_10000baseER_Full_BIT,
-  1109	};
-  1110	
-  1111	static const u32 ethtool_forced_speed_20000[] __initconst = {
-  1112		ETHTOOL_LINK_MODE_20000baseKR2_Full_BIT,
-  1113		ETHTOOL_LINK_MODE_20000baseMLD2_Full_BIT,
-  1114	};
-  1115	
-  1116	static const u32 ethtool_forced_speed_25000[] __initconst = {
-  1117		ETHTOOL_LINK_MODE_25000baseKR_Full_BIT,
-  1118		ETHTOOL_LINK_MODE_25000baseCR_Full_BIT,
-  1119		ETHTOOL_LINK_MODE_25000baseSR_Full_BIT,
-  1120	};
-  1121	
-  1122	static const u32 ethtool_forced_speed_40000[] __initconst = {
-  1123		ETHTOOL_LINK_MODE_40000baseLR4_Full_BIT,
-  1124		ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
-  1125		ETHTOOL_LINK_MODE_40000baseCR4_Full_BIT,
-  1126		ETHTOOL_LINK_MODE_40000baseSR4_Full_BIT,
-  1127	};
-  1128	
-  1129	static const u32 ethtool_forced_speed_50000[] __initconst = {
-  1130		ETHTOOL_LINK_MODE_50000baseKR2_Full_BIT,
-  1131		ETHTOOL_LINK_MODE_50000baseCR2_Full_BIT,
-  1132		ETHTOOL_LINK_MODE_50000baseSR2_Full_BIT,
-  1133		ETHTOOL_LINK_MODE_50000baseKR_Full_BIT,
-  1134		ETHTOOL_LINK_MODE_50000baseKR_Full_BIT,
-  1135		ETHTOOL_LINK_MODE_50000baseCR_Full_BIT,
-  1136		ETHTOOL_LINK_MODE_50000baseLR_ER_FR_Full_BIT,
-  1137		ETHTOOL_LINK_MODE_50000baseDR_Full_BIT,
-  1138	};
-  1139	
-> 1140	static const u32 ethtool_forced_speed_56000[] __initconst = {
-  1141		ETHTOOL_LINK_MODE_56000baseKR4_Full_BIT,
-  1142		ETHTOOL_LINK_MODE_56000baseCR4_Full_BIT,
-  1143		ETHTOOL_LINK_MODE_56000baseSR4_Full_BIT,
-  1144		ETHTOOL_LINK_MODE_56000baseLR4_Full_BIT,
-  1145	};
-  1146	
-  1147	static const u32 ethtool_forced_speed_100000[] __initconst = {
-  1148		ETHTOOL_LINK_MODE_100000baseKR4_Full_BIT,
-  1149		ETHTOOL_LINK_MODE_100000baseSR4_Full_BIT,
-  1150		ETHTOOL_LINK_MODE_100000baseCR4_Full_BIT,
-  1151		ETHTOOL_LINK_MODE_100000baseLR4_ER4_Full_BIT,
-  1152		ETHTOOL_LINK_MODE_100000baseCR2_Full_BIT,
-  1153		ETHTOOL_LINK_MODE_100000baseSR2_Full_BIT,
-  1154		ETHTOOL_LINK_MODE_100000baseKR2_Full_BIT,
-  1155		ETHTOOL_LINK_MODE_100000baseLR2_ER2_FR2_Full_BIT,
-  1156		ETHTOOL_LINK_MODE_100000baseDR2_Full_BIT,
-  1157		ETHTOOL_LINK_MODE_100000baseKR_Full_BIT,
-  1158		ETHTOOL_LINK_MODE_100000baseSR_Full_BIT,
-  1159		ETHTOOL_LINK_MODE_100000baseLR_ER_FR_Full_BIT,
-  1160		ETHTOOL_LINK_MODE_100000baseCR_Full_BIT,
-  1161		ETHTOOL_LINK_MODE_100000baseDR_Full_BIT,
-  1162	};
-  1163	
-> 1164	static const u32 ethtool_forced_speed_200000[] __initconst = {
-  1165		ETHTOOL_LINK_MODE_200000baseKR4_Full_BIT,
-  1166		ETHTOOL_LINK_MODE_200000baseSR4_Full_BIT,
-  1167		ETHTOOL_LINK_MODE_200000baseLR4_ER4_FR4_Full_BIT,
-  1168		ETHTOOL_LINK_MODE_200000baseDR4_Full_BIT,
-  1169		ETHTOOL_LINK_MODE_200000baseCR4_Full_BIT,
-  1170		ETHTOOL_LINK_MODE_200000baseKR2_Full_BIT,
-  1171		ETHTOOL_LINK_MODE_200000baseSR2_Full_BIT,
-  1172		ETHTOOL_LINK_MODE_200000baseLR2_ER2_FR2_Full_BIT,
-  1173		ETHTOOL_LINK_MODE_200000baseDR2_Full_BIT,
-  1174		ETHTOOL_LINK_MODE_200000baseCR2_Full_BIT,
-  1175	};
-  1176	
-> 1177	static const u32 ethtool_forced_speed_400000[] __initconst = {
-  1178		ETHTOOL_LINK_MODE_400000baseKR8_Full_BIT,
-  1179		ETHTOOL_LINK_MODE_400000baseSR8_Full_BIT,
-  1180		ETHTOOL_LINK_MODE_400000baseLR8_ER8_FR8_Full_BIT,
-  1181		ETHTOOL_LINK_MODE_400000baseDR8_Full_BIT,
-  1182		ETHTOOL_LINK_MODE_400000baseCR8_Full_BIT,
-  1183		ETHTOOL_LINK_MODE_400000baseKR4_Full_BIT,
-  1184		ETHTOOL_LINK_MODE_400000baseSR4_Full_BIT,
-  1185		ETHTOOL_LINK_MODE_400000baseLR4_ER4_FR4_Full_BIT,
-  1186		ETHTOOL_LINK_MODE_400000baseDR4_Full_BIT,
-  1187		ETHTOOL_LINK_MODE_400000baseCR4_Full_BIT,
-  1188	};
-  1189	
-> 1190	static const u32 ethtool_forced_speed_800000[] __initconst = {
-  1191		ETHTOOL_LINK_MODE_800000baseCR8_Full_BIT,
-  1192		ETHTOOL_LINK_MODE_800000baseKR8_Full_BIT,
-  1193		ETHTOOL_LINK_MODE_800000baseDR8_Full_BIT,
-  1194		ETHTOOL_LINK_MODE_800000baseDR8_2_Full_BIT,
-  1195		ETHTOOL_LINK_MODE_800000baseSR8_Full_BIT,
-  1196		ETHTOOL_LINK_MODE_800000baseVR8_Full_BIT,
-  1197	};
-  1198	
+>  };
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
