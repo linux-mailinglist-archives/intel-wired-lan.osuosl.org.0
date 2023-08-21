@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19690782191
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 04:39:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95456782192
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Aug 2023 04:39:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A49F340643;
-	Mon, 21 Aug 2023 02:39:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A49F340643
+	by smtp2.osuosl.org (Postfix) with ESMTP id 26A7A40A4B;
+	Mon, 21 Aug 2023 02:39:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 26A7A40A4B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692585585;
-	bh=lIH13ZkvEmyDg8S8q9FHAo36jhxZSQY0HpyW+ISoPgc=;
+	s=default; t=1692585590;
+	bh=WHn5XxzpUtQcXCYK65z0fN7fLyFdn1HjA5EF5UfJOPU=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=hUmK63fNBvH2fW0fyJryVIgpX+1s8vuGTewUaurL2+SW0jylOVqdNRemrJea7GFDE
-	 B1Yr6atn7l4MQLCsUxOKhYMkoVwyKVDDwATF52rKMZszGZssvT1HvdEb8X63H7sM0V
-	 7IiRRHaMpJZo4N5sYGzsSf2cF+8Jo0/Ea5EsSkPqJ+9FVJaOkp2hI7vRq8FUFeFVft
-	 1DyoYRfBoYDhvKovD1nK1esYVvIRF9smEA7ao1cy9hROPQVgsKbCx4/E69pK+TQjgf
-	 mKhR1wG2CMzOdIXnOsxbnq5bQ4GVxKqL/VZ3Nyyos7EUhVx+e3KWC8k7mJuG9IlLfQ
-	 lbAv03o757Kmg==
+	b=VV3AE8I6b1GXhB0eWyAx0T/9Pd/v/P36npdCK6guNT7uVLTq2c/n4uzH5QpgBas3i
+	 gHIN9SHsNLxp9mzgBVub0HLjvKtvI2o3oLXZv0ad8FB/yf4bT3DGbhONhBiG0CjJxV
+	 n5Hav4NGyC5XBLjXhgQxeiIAbiHv+tbIyb27H+kNgA7+0J6PkN0zdDX3IjmnK2Ahp3
+	 8my7zOUAxRvKmmQZmJCC7iBAAISo0Cy/O0H97NJXQgOfbRApcc3TNs+k2qIomUcQdV
+	 LBsJhE0x0/itT9iSOReHIh1A5Xg72WZSmHpY2LGtiJj5spYfrSAu/vPRRYojAi374U
+	 FL1bNh4lGG0GQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4ERNrV9f377X; Mon, 21 Aug 2023 02:39:44 +0000 (UTC)
+	with ESMTP id B-OpLs5xHX2k; Mon, 21 Aug 2023 02:39:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 21D76409DB;
-	Mon, 21 Aug 2023 02:39:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21D76409DB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6B38740105;
+	Mon, 21 Aug 2023 02:39:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B38740105
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF0921BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 89C101BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 953E261073
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 953E261073
+ by smtp3.osuosl.org (Postfix) with ESMTP id 62E2461073
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 62E2461073
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6rP7NlMJBXdc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Aug 2023 02:39:23 +0000 (UTC)
+ with ESMTP id g09H7Z-YPFhg for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Aug 2023 02:39:27 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9699361072
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9699361072
-X-IronPort-AV: E=McAfee;i="6600,9927,10808"; a="377216760"
-X-IronPort-AV: E=Sophos;i="6.01,189,1684825200"; d="scan'208";a="377216760"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 46AA261072
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 02:39:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 46AA261072
+X-IronPort-AV: E=McAfee;i="6600,9927,10808"; a="377216777"
+X-IronPort-AV: E=Sophos;i="6.01,189,1684825200"; d="scan'208";a="377216777"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2023 19:39:23 -0700
+ 20 Aug 2023 19:39:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10808"; a="982326662"
-X-IronPort-AV: E=Sophos;i="6.01,189,1684825200"; d="scan'208";a="982326662"
+X-IronPort-AV: E=McAfee;i="6600,9927,10808"; a="982326680"
+X-IronPort-AV: E=Sophos;i="6.01,189,1684825200"; d="scan'208";a="982326680"
 Received: from dpdk-jf-ntb-v2.sh.intel.com ([10.67.119.19])
- by fmsmga006.fm.intel.com with ESMTP; 20 Aug 2023 19:39:20 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 20 Aug 2023 19:39:23 -0700
 From: Junfeng Guo <junfeng.guo@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 21 Aug 2023 10:38:28 +0800
-Message-Id: <20230821023833.2700902-11-junfeng.guo@intel.com>
+Date: Mon, 21 Aug 2023 10:38:29 +0800
+Message-Id: <20230821023833.2700902-12-junfeng.guo@intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230821023833.2700902-1-junfeng.guo@intel.com>
 References: <20230605054641.2865142-1-junfeng.guo@intel.com>
@@ -67,22 +67,22 @@ References: <20230605054641.2865142-1-junfeng.guo@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692585563; x=1724121563;
+ t=1692585567; x=1724121567;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=5EGSlo+h0N7zNdqJspuK3yt6XqSTdRYL9+vgxraz+SY=;
- b=gJaMd68lg9UQrg58pLx3UKhIu7B5gtz7OMI6TdInxJjUzoA/r7UUMKde
- dopE40oN3DIRM3PYae+us4dLmL+HE92MvqQby1a42s6VrgiE11LwkbJpG
- IhwJakgRMBASOjgyNc8OfXy02EBq1gYPLKjur1ToOZAO9RNeoX3y/2oPH
- s/n201fCFgFgICKQtdjhQsooL5sKvx2nAP+AdlAdILyz0uEoZe5BY30VW
- PWMqQ/1QJotrpPmKnv7qKqWMF7tVOL3t4ivNzMSPE+vkMcy5S+Oneb8yo
- 8kX5KCk4iDHj6YLxV0XPQmtO7NwWWcUm70PHxViBOlV7ZGs4S3Ca0Y4sR
- w==;
+ bh=wFRjToU4KwshnEhmMyF5ttIlSk6nbOLYgak9F1zaUq4=;
+ b=Cl4F4dDtYKHGumNJnadNF7PqKUC4yXsK9o/jWzKhxmiKXq1QltgQVVkd
+ WfIYBoWRjz2WhK9XmVvOGIh6Y0DrjEVoyUKuAfljuLPwiXY3SlppkuL3T
+ l1Gmzclr+gDZXxKAqZANklwpmuUHpcHMxBkiL59LVJH/zllo9TV60akAB
+ poSBeYIcbS4kAigIwJ7+Te7u/aujZkwgp69F0r+djEAX8RiYgwixbO+5g
+ /Pa7h2goEC8N/oLHwoGG38uO6sGy7bmxbAxfuZ6f6hzcAqoSaDNOeUzsw
+ ZLM01GxdS1YL7zX6NVvbG8znaUhquXjf+wc/zCg6tfU7IVnu+kVr5iSiD
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gJaMd68l
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 10/15] ice: add parser runtime
- skeleton
+ header.a=rsa-sha256 header.s=Intel header.b=Cl4F4dDt
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 11/15] ice: add internal help
+ functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,270 +102,371 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add parser runtime data struct ice_parser_rt.
+Add below internal helper function:
 
-Add below APIs for parser runtime preparation:
-- ice_parser_rt_reset
-- ice_parser_rt_pkt_buf_set
+- [ice_bst_tcam_match]:
+  to perform ternary match on boost TCAM.
 
-Add below API skeleton for parser runtime execution:
-- ice_parser_rt_execute
+- [ice_pg_cam_match]:
+  to perform parse graph key match in cam table.
+
+- [ice_pg_nm_cam_match]:
+  to perform parse graph key no match in cam table.
+
+- [ice_ptype_mk_tcam_match]:
+  to perform ptype markers match in tcam table.
+
+- [ice_flg_redirect]:
+  to redirect parser flags to packet flags.
+
+- [ice_xlt_kb_flg_get]:
+  to aggregate 64 bit packet flag into 16 bit key builder flags.
 
 Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_parser.c   | 39 ++++++++
- drivers/net/ethernet/intel/ice/ice_parser.h   | 28 ++++++
- .../net/ethernet/intel/ice/ice_parser_rt.c    | 92 +++++++++++++++++++
- .../net/ethernet/intel/ice/ice_parser_rt.h    | 39 ++++++++
- 4 files changed, 198 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_parser_rt.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_parser_rt.h
+ drivers/net/ethernet/intel/ice/ice_bst_tcam.c | 23 ++++++
+ drivers/net/ethernet/intel/ice/ice_bst_tcam.h |  3 +
+ drivers/net/ethernet/intel/ice/ice_flg_rd.c   | 23 ++++++
+ drivers/net/ethernet/intel/ice/ice_flg_rd.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_parser.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_pg_cam.c   | 76 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_pg_cam.h   |  6 ++
+ drivers/net/ethernet/intel/ice/ice_ptype_mk.c | 22 ++++++
+ drivers/net/ethernet/intel/ice/ice_ptype_mk.h |  3 +
+ drivers/net/ethernet/intel/ice/ice_tmatch.h   | 40 ++++++++++
+ drivers/net/ethernet/intel/ice/ice_xlt_kb.c   | 27 +++++++
+ drivers/net/ethernet/intel/ice/ice_xlt_kb.h   |  1 +
+ 12 files changed, 226 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_tmatch.h
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
-index cc71329de5f7..1bd1417e32c6 100644
---- a/drivers/net/ethernet/intel/ice/ice_parser.c
-+++ b/drivers/net/ethernet/intel/ice/ice_parser.c
-@@ -286,3 +286,42 @@ void ice_parser_destroy(struct ice_parser *psr)
- 
- 	devm_kfree(ice_hw_to_dev(psr->hw), psr);
+diff --git a/drivers/net/ethernet/intel/ice/ice_bst_tcam.c b/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
+index 9f232db164d9..f31023da0a41 100644
+--- a/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
++++ b/drivers/net/ethernet/intel/ice/ice_bst_tcam.c
+@@ -271,3 +271,26 @@ struct ice_lbl_item *ice_bst_lbl_table_get(struct ice_hw *hw)
+ 					ice_parser_sect_item_get,
+ 					_ice_parse_lbl_item, true);
  }
 +
 +/**
-+ * ice_parser_run - parse on a packet in binary and return the result
-+ * @psr: pointer to a parser instance
-+ * @pkt_buf: packet data
-+ * @pkt_len: packet length
-+ * @rslt: input/output parameter to save parser result.
++ * ice_bst_tcam_match - match a pattern on the boost tcam table
++ * @tcam_table: boost tcam table to search
++ * @pat: pattern to match
 + */
-+int ice_parser_run(struct ice_parser *psr, const u8 *pkt_buf,
-+		   int pkt_len, struct ice_parser_result *rslt)
-+{
-+	ice_parser_rt_reset(&psr->rt);
-+	ice_parser_rt_pktbuf_set(&psr->rt, pkt_buf, pkt_len);
-+
-+	return ice_parser_rt_execute(&psr->rt, rslt);
-+}
-+
-+/**
-+ * ice_parser_result_dump - dump a parser result info
-+ * @hw: pointer to the hardware structure
-+ * @rslt: parser result info to dump
-+ */
-+void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt)
++struct ice_bst_tcam_item *
++ice_bst_tcam_match(struct ice_bst_tcam_item *tcam_table, u8 *pat)
 +{
 +	int i;
 +
-+	dev_info(ice_hw_to_dev(hw), "ptype = %d\n", rslt->ptype);
-+	for (i = 0; i < rslt->po_num; i++)
-+		dev_info(ice_hw_to_dev(hw), "proto = %d, offset = %d\n",
-+			 rslt->po[i].proto_id, rslt->po[i].offset);
++	for (i = 0; i < ICE_BST_TCAM_TABLE_SIZE; i++) {
++		struct ice_bst_tcam_item *item = &tcam_table[i];
 +
-+	dev_info(ice_hw_to_dev(hw), "flags_psr = 0x%016llx\n",
-+		 (unsigned long long)rslt->flags_psr);
-+	dev_info(ice_hw_to_dev(hw), "flags_pkt = 0x%016llx\n",
-+		 (unsigned long long)rslt->flags_pkt);
-+	dev_info(ice_hw_to_dev(hw), "flags_sw = 0x%04x\n", rslt->flags_sw);
-+	dev_info(ice_hw_to_dev(hw), "flags_fd = 0x%04x\n", rslt->flags_fd);
-+	dev_info(ice_hw_to_dev(hw), "flags_rss = 0x%04x\n", rslt->flags_rss);
++		if (item->hit_idx_grp == 0)
++			continue;
++		if (ice_ternary_match(item->key, item->key_inv, pat,
++				      ICE_BST_TCAM_KEY_SIZE))
++			return item;
++	}
++
++	return NULL;
 +}
+diff --git a/drivers/net/ethernet/intel/ice/ice_bst_tcam.h b/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
+index b1b1dc224d70..960c8ff09171 100644
+--- a/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
++++ b/drivers/net/ethernet/intel/ice/ice_bst_tcam.h
+@@ -42,4 +42,7 @@ void ice_bst_tcam_dump(struct ice_hw *hw, struct ice_bst_tcam_item *item);
+ struct ice_bst_tcam_item *ice_bst_tcam_table_get(struct ice_hw *hw);
+ 
+ struct ice_lbl_item *ice_bst_lbl_table_get(struct ice_hw *hw);
++
++struct ice_bst_tcam_item *
++ice_bst_tcam_match(struct ice_bst_tcam_item *tcam_table, u8 *pat);
+ #endif /*_ICE_BST_TCAM_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_flg_rd.c b/drivers/net/ethernet/intel/ice/ice_flg_rd.c
+index 9d5d66d0c773..057bcd68125f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flg_rd.c
++++ b/drivers/net/ethernet/intel/ice/ice_flg_rd.c
+@@ -48,3 +48,26 @@ struct ice_flg_rd_item *ice_flg_rd_table_get(struct ice_hw *hw)
+ 					ice_parser_sect_item_get,
+ 					_ice_flg_rd_parse_item, false);
+ }
++
++/**
++ * ice_flg_redirect - redirect a parser flag to packet flag
++ * @table: flag redirect table
++ * @psr_flg: parser flag to redirect
++ */
++u64 ice_flg_redirect(struct ice_flg_rd_item *table, u64 psr_flg)
++{
++	u64 flg = 0;
++	int i;
++
++	for (i = 0; i < ICE_FLG_RDT_SIZE; i++) {
++		struct ice_flg_rd_item *item = &table[i];
++
++		if (!item->expose)
++			continue;
++
++		if (psr_flg & BIT(item->intr_flg_id))
++			flg |= BIT(i);
++	}
++
++	return flg;
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_flg_rd.h b/drivers/net/ethernet/intel/ice/ice_flg_rd.h
+index b3b4fd7a9002..9215c8e0cdfd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flg_rd.h
++++ b/drivers/net/ethernet/intel/ice/ice_flg_rd.h
+@@ -20,4 +20,5 @@ struct ice_flg_rd_item {
+ 
+ void ice_flg_rd_dump(struct ice_hw *hw, struct ice_flg_rd_item *item);
+ struct ice_flg_rd_item *ice_flg_rd_table_get(struct ice_hw *hw);
++u64 ice_flg_redirect(struct ice_flg_rd_item *table, u64 psr_flg);
+ #endif /* _ICE_FLG_RD_H_ */
 diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
-index ca71ef4f50f5..5f98f3031294 100644
+index 5f98f3031294..bfcef4f597bf 100644
 --- a/drivers/net/ethernet/intel/ice/ice_parser.h
 +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
-@@ -13,6 +13,7 @@
- #include "ice_proto_grp.h"
+@@ -14,6 +14,7 @@
  #include "ice_flg_rd.h"
  #include "ice_xlt_kb.h"
-+#include "ice_parser_rt.h"
+ #include "ice_parser_rt.h"
++#include "ice_tmatch.h"
  
  #define ICE_SEC_DATA_OFFSET				4
  #define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
-@@ -30,6 +31,8 @@
- #define ICE_SEC_LBL_DATA_OFFSET				2
- #define ICE_SID_LBL_ENTRY_SIZE				66
- 
-+#define ICE_PARSER_PROTO_OFF_PAIR_SIZE			16
+diff --git a/drivers/net/ethernet/intel/ice/ice_pg_cam.c b/drivers/net/ethernet/intel/ice/ice_pg_cam.c
+index 70b0b0b93a8d..bd17e85834ed 100644
+--- a/drivers/net/ethernet/intel/ice/ice_pg_cam.c
++++ b/drivers/net/ethernet/intel/ice/ice_pg_cam.c
+@@ -319,3 +319,79 @@ struct ice_pg_nm_cam_item *ice_pg_nm_sp_cam_table_get(struct ice_hw *hw)
+ 					ice_parser_sect_item_get,
+ 					_ice_pg_nm_sp_cam_parse_item, false);
+ }
 +
- struct ice_parser {
- 	struct ice_hw *hw; /* pointer to the hardware structure */
- 
-@@ -65,8 +68,33 @@ struct ice_parser {
- 	struct ice_xlt_kb *xlt_kb_fd;
- 	/* load data from section ICE_SID_XLT_KEY_BUILDER_RSS */
- 	struct ice_xlt_kb *xlt_kb_rss;
-+	struct ice_parser_rt rt; /* parser runtime */
- };
- 
- int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
- void ice_parser_destroy(struct ice_parser *psr);
-+
-+struct ice_parser_proto_off {
-+	u8 proto_id;	/* hardware protocol ID */
-+	u16 offset;	/* offset from the start of the protocol header */
-+};
-+
-+#define ICE_PARSER_FLAG_PSR_SIZE	8
-+
-+struct ice_parser_result {
-+	u16 ptype;	/* 16 bits hardware PTYPE */
-+	/* array of protocol and header offset pairs */
-+	struct ice_parser_proto_off po[ICE_PARSER_PROTO_OFF_PAIR_SIZE];
-+	int po_num;	/* # of protocol-offset pairs must <= 16 */
-+	u64 flags_psr;	/* 64 bits parser flags */
-+	u64 flags_pkt;	/* 64 bits packet flags */
-+	u16 flags_sw;	/* 16 bits key builder flag for SW */
-+	u16 flags_acl;	/* 16 bits key builder flag for ACL */
-+	u16 flags_fd;	/* 16 bits key builder flag for FD */
-+	u16 flags_rss;	/* 16 bits key builder flag for RSS */
-+};
-+
-+int ice_parser_run(struct ice_parser *psr, const u8 *pkt_buf,
-+		   int pkt_len, struct ice_parser_result *rslt);
-+void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt);
- #endif /* _ICE_PARSER_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-new file mode 100644
-index 000000000000..a6644f4b3324
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-@@ -0,0 +1,92 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (C) 2023 Intel Corporation */
-+
-+#include "ice_common.h"
-+
-+static void _ice_rt_tsr_set(struct ice_parser_rt *rt, u16 tsr)
++static bool _ice_pg_cam_match(struct ice_pg_cam_item *item,
++			      struct ice_pg_cam_key *key)
 +{
-+	rt->gpr[ICE_GPR_TSR_IDX] = tsr;
++	if (!item->key.valid ||
++	    item->key.node_id	!= key->node_id ||
++	    item->key.flag0	!= key->flag0 ||
++	    item->key.flag1	!= key->flag1 ||
++	    item->key.flag2	!= key->flag2 ||
++	    item->key.flag3	!= key->flag3 ||
++	    item->key.boost_idx	!= key->boost_idx ||
++	    item->key.alu_reg	!= key->alu_reg ||
++	    item->key.next_proto != key->next_proto)
++		return false;
++
++	return true;
 +}
 +
-+static void _ice_rt_ho_set(struct ice_parser_rt *rt, u16 ho)
++static bool _ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *item,
++				 struct ice_pg_cam_key *key)
 +{
-+	rt->gpr[ICE_GPR_HO_IDX] = ho;
-+	memcpy(&rt->gpr[ICE_GPR_HV_IDX], &rt->pkt_buf[ho], ICE_GPR_HV_SIZE);
-+}
++	if (!item->key.valid ||
++	    item->key.node_id	!= key->node_id ||
++	    item->key.flag0	!= key->flag0 ||
++	    item->key.flag1	!= key->flag1 ||
++	    item->key.flag2	!= key->flag2 ||
++	    item->key.flag3	!= key->flag3 ||
++	    item->key.boost_idx	!= key->boost_idx ||
++	    item->key.alu_reg	!= key->alu_reg)
++		return false;
 +
-+static void _ice_rt_np_set(struct ice_parser_rt *rt, u16 pc)
-+{
-+	rt->gpr[ICE_GPR_NP_IDX] = pc;
-+}
-+
-+static void _ice_rt_nn_set(struct ice_parser_rt *rt, u16 node)
-+{
-+	rt->gpr[ICE_GPR_NN_IDX] = node;
-+}
-+
-+static void _ice_rt_flag_set(struct ice_parser_rt *rt, int idx, bool val)
-+{
-+	int y = idx / ICE_GPR_FLG_SIZE;
-+	int x = idx % ICE_GPR_FLG_SIZE;
-+
-+	if (val)
-+		rt->gpr[ICE_GPR_FLG_IDX + y] |= (u16)BIT(x);
++	return true;
 +}
 +
 +/**
-+ * ice_parser_rt_reset - reset the parser runtime
-+ * @rt: pointer to the parser runtime
++ * ice_pg_cam_match - search parse graph cam table by key
++ * @table: parse graph cam table to search
++ * @size: cam table size
++ * @key: search key
 + */
-+void ice_parser_rt_reset(struct ice_parser_rt *rt)
++struct ice_pg_cam_item *ice_pg_cam_match(struct ice_pg_cam_item *table,
++					 int size, struct ice_pg_cam_key *key)
 +{
-+	struct ice_parser *psr = rt->psr;
-+	struct ice_metainit_item *mi = &psr->mi_table[0];
 +	int i;
 +
-+	memset(rt, 0, sizeof(*rt));
++	for (i = 0; i < size; i++) {
++		struct ice_pg_cam_item *item = &table[i];
 +
-+	/* TSR: TCAM Search Register */
-+	_ice_rt_tsr_set(rt, mi->tsr);
-+	/* HO: Next Parsing Cycle Header Offset */
-+	_ice_rt_ho_set(rt, mi->ho);
-+	/* NP: Next Parsing Cycle */
-+	_ice_rt_np_set(rt, mi->pc);
-+	/* NN: Next Parsing Cycle Node ID */
-+	_ice_rt_nn_set(rt, mi->pg_rn);
-+
-+	rt->psr = psr;
-+
-+	for (i = 0; i < ICE_PARSER_FLG_NUM; i++) {
-+		if ((mi->flags & BIT(i)) != 0ul)
-+			_ice_rt_flag_set(rt, i, true);
++		if (_ice_pg_cam_match(item, key))
++			return item;
 +	}
++
++	return NULL;
 +}
 +
 +/**
-+ * ice_parser_rt_pktbuf_set - set a packet into parser runtime
-+ * @rt: pointer to the parser runtime
-+ * @pkt_buf: buffer with packet data
-+ * @pkt_len: packet buffer length
++ * ice_pg_nm_cam_match - search parse graph no match cam table by key
++ * @table: parse graph no match cam table to search
++ * @size: cam table size
++ * @key: search key
 + */
-+void ice_parser_rt_pktbuf_set(struct ice_parser_rt *rt, const u8 *pkt_buf,
-+			      int pkt_len)
++struct ice_pg_nm_cam_item *
++ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *table, int size,
++		    struct ice_pg_cam_key *key)
 +{
-+	int len = min(ICE_PARSER_MAX_PKT_LEN, pkt_len);
-+	u16 ho = rt->gpr[ICE_GPR_HO_IDX];
++	int i;
 +
-+	memcpy(rt->pkt_buf, pkt_buf, len);
-+	rt->pkt_len = pkt_len;
++	for (i = 0; i < size; i++) {
++		struct ice_pg_nm_cam_item *item = &table[i];
 +
-+	memcpy(&rt->gpr[ICE_GPR_HV_IDX], &rt->pkt_buf[ho], ICE_GPR_HV_SIZE);
++		if (_ice_pg_nm_cam_match(item, key))
++			return item;
++	}
++
++	return NULL;
 +}
+diff --git a/drivers/net/ethernet/intel/ice/ice_pg_cam.h b/drivers/net/ethernet/intel/ice/ice_pg_cam.h
+index 0d5c84d380d3..301165b19b6a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_pg_cam.h
++++ b/drivers/net/ethernet/intel/ice/ice_pg_cam.h
+@@ -133,4 +133,10 @@ struct ice_pg_cam_item *ice_pg_sp_cam_table_get(struct ice_hw *hw);
+ 
+ struct ice_pg_nm_cam_item *ice_pg_nm_cam_table_get(struct ice_hw *hw);
+ struct ice_pg_nm_cam_item *ice_pg_nm_sp_cam_table_get(struct ice_hw *hw);
++
++struct ice_pg_cam_item *ice_pg_cam_match(struct ice_pg_cam_item *table,
++					 int size, struct ice_pg_cam_key *key);
++struct ice_pg_nm_cam_item *
++ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *table, int size,
++		    struct ice_pg_cam_key *key);
+ #endif /* _ICE_PG_CAM_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptype_mk.c b/drivers/net/ethernet/intel/ice/ice_ptype_mk.c
+index ee7b09618d54..fbd46ae857a3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptype_mk.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptype_mk.c
+@@ -49,3 +49,25 @@ struct ice_ptype_mk_tcam_item *ice_ptype_mk_tcam_table_get(struct ice_hw *hw)
+ 					ice_parser_sect_item_get,
+ 					_ice_parse_ptype_mk_tcam_item, true);
+ }
 +
 +/**
-+ * ice_parser_rt_execute - parser execution routine
-+ * @rt: pointer to the parser runtime
-+ * @rslt: input/output parameter to save parser result
++ * ice_ptype_mk_tcam_match - match a pattern on a ptype marker tcam table
++ * @table: ptype marker tcam table to search
++ * @pat: pattern to match
++ * @len: length of the pattern
 + */
-+int ice_parser_rt_execute(struct ice_parser_rt *rt,
-+			  struct ice_parser_result *rslt)
++struct ice_ptype_mk_tcam_item *
++ice_ptype_mk_tcam_match(struct ice_ptype_mk_tcam_item *table,
++			u8 *pat, int len)
 +{
-+	return ICE_ERR_NOT_IMPL;
++	int i;
++
++	for (i = 0; i < ICE_PTYPE_MK_TCAM_TABLE_SIZE; i++) {
++		struct ice_ptype_mk_tcam_item *item = &table[i];
++
++		if (ice_ternary_match(item->key, item->key_inv, pat, len))
++			return item;
++	}
++
++	return NULL;
 +}
-diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.h b/drivers/net/ethernet/intel/ice/ice_parser_rt.h
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptype_mk.h b/drivers/net/ethernet/intel/ice/ice_ptype_mk.h
+index 4a071d823bea..c8061f55cccc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptype_mk.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptype_mk.h
+@@ -17,4 +17,7 @@ struct ice_ptype_mk_tcam_item {
+ void ice_ptype_mk_tcam_dump(struct ice_hw *hw,
+ 			    struct ice_ptype_mk_tcam_item *item);
+ struct ice_ptype_mk_tcam_item *ice_ptype_mk_tcam_table_get(struct ice_hw *hw);
++struct ice_ptype_mk_tcam_item *
++ice_ptype_mk_tcam_match(struct ice_ptype_mk_tcam_item *table,
++			u8 *pat, int len);
+ #endif /* _ICE_PTYPE_MK_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_tmatch.h b/drivers/net/ethernet/intel/ice/ice_tmatch.h
 new file mode 100644
-index 000000000000..dadcb8791430
+index 000000000000..e7adcf22ae3f
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.h
-@@ -0,0 +1,39 @@
++++ b/drivers/net/ethernet/intel/ice/ice_tmatch.h
+@@ -0,0 +1,40 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/* Copyright (C) 2023 Intel Corporation */
 +
-+#ifndef _ICE_PARSER_RT_H_
-+#define _ICE_PARSER_RT_H_
++#ifndef _ICE_TMATCH_H_
++#define _ICE_TMATCH_H_
 +
-+#define ICE_GPR_HV_IDX		64
-+#define ICE_GPR_HV_SIZE		32
-+#define ICE_GPR_ERR_IDX		84
-+#define ICE_GPR_FLG_IDX		104
-+#define ICE_GPR_FLG_SIZE	16
++static inline bool ice_ternary_match_byte(u8 key, u8 key_inv, u8 pat)
++{
++	u8 k1, k2, vv;
++	int i;
 +
-+#define ICE_GPR_TSR_IDX		108
-+#define ICE_GPR_NN_IDX		109
-+#define ICE_GPR_HO_IDX		110
-+#define ICE_GPR_NP_IDX		111
++	for (i = 0; i < BITS_PER_BYTE; i++) {
++		k1 = (u8)(key & BIT(i));
++		k2 = (u8)(key_inv & BIT(i));
++		vv = (u8)(pat & BIT(i));
 +
-+struct ice_parser_ctx;
++		if (k1 != 0 && k2 != 0)
++			continue;
++		if (k1 == 0 && k2 == 0)
++			return false;
 +
-+#define ICE_PARSER_MAX_PKT_LEN	504
-+#define ICE_PARSER_PKT_REV	32
-+#define ICE_PARSER_GPR_NUM	128
++		if (k1 == vv)
++			return false;
++	}
 +
-+struct ice_parser_rt {
-+	struct ice_parser *psr;
-+	u16 gpr[ICE_PARSER_GPR_NUM];
-+	u8 pkt_buf[ICE_PARSER_MAX_PKT_LEN + ICE_PARSER_PKT_REV];
-+	u16 pkt_len;
-+	u16 po;
-+};
++	return true;
++}
 +
-+void ice_parser_rt_reset(struct ice_parser_rt *rt);
-+void ice_parser_rt_pktbuf_set(struct ice_parser_rt *rt, const u8 *pkt_buf,
-+			      int pkt_len);
++static inline bool ice_ternary_match(const u8 *key, const u8 *key_inv,
++				     const u8 *pat, int len)
++{
++	int i;
 +
-+struct ice_parser_result;
-+int ice_parser_rt_execute(struct ice_parser_rt *rt,
-+			  struct ice_parser_result *rslt);
-+#endif /* _ICE_PARSER_RT_H_ */
++	for (i = 0; i < len; i++)
++		if (!ice_ternary_match_byte(key[i], key_inv[i], pat[i]))
++			return false;
++
++	return true;
++}
++#endif /* _ICE_TMATCH_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_xlt_kb.c b/drivers/net/ethernet/intel/ice/ice_xlt_kb.c
+index 4fca88fb7d77..1cb00fabbaf4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xlt_kb.c
++++ b/drivers/net/ethernet/intel/ice/ice_xlt_kb.c
+@@ -233,3 +233,30 @@ struct ice_xlt_kb *ice_xlt_kb_get_rss(struct ice_hw *hw)
+ {
+ 	return _ice_xlt_kb_get(hw, ICE_SID_XLT_KEY_BUILDER_RSS);
+ }
++
++/**
++ * ice_xlt_kb_flag_get - aggregate 64 bits packet flag into 16 bits xlt flag
++ * @kb: xlt key build
++ * @pkt_flag: 64 bits packet flag
++ */
++u16 ice_xlt_kb_flag_get(struct ice_xlt_kb *kb, u64 pkt_flag)
++{
++	struct ice_xlt_kb_entry *entry = &kb->entries[0];
++	u16 flg = 0;
++	int i;
++
++	/* check flag 15 */
++	if (kb->flag15 & pkt_flag)
++		flg = (u16)BIT(ICE_XLT_KB_FLAG0_14_CNT);
++
++	/* check flag 0 - 14 */
++	for (i = 0; i < ICE_XLT_KB_FLAG0_14_CNT; i++) {
++		/* only check first entry */
++		u16 idx = (u16)(entry->flg0_14_sel[i] & ICE_XLT_KB_FLAG_M);
++
++		if (pkt_flag & BIT(idx))
++			flg |=  (u16)BIT(i);
++	}
++
++	return flg;
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_xlt_kb.h b/drivers/net/ethernet/intel/ice/ice_xlt_kb.h
+index 020f96bfdbe8..dbd80fe8b0b9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xlt_kb.h
++++ b/drivers/net/ethernet/intel/ice/ice_xlt_kb.h
+@@ -76,4 +76,5 @@ struct ice_xlt_kb *ice_xlt_kb_get_sw(struct ice_hw *hw);
+ struct ice_xlt_kb *ice_xlt_kb_get_acl(struct ice_hw *hw);
+ struct ice_xlt_kb *ice_xlt_kb_get_fd(struct ice_hw *hw);
+ struct ice_xlt_kb *ice_xlt_kb_get_rss(struct ice_hw *hw);
++u16 ice_xlt_kb_flag_get(struct ice_xlt_kb *kb, u64 pkt_flag);
+ #endif /* _ICE_XLT_KB_H */
 -- 
 2.25.1
 
