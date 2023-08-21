@@ -1,86 +1,188 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6CB0783610
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 01:02:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC80D78361D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 01:09:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4463B4063C;
-	Mon, 21 Aug 2023 23:02:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4463B4063C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06E5D6114A;
+	Mon, 21 Aug 2023 23:09:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06E5D6114A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692658927;
-	bh=1u84Pm0lS230w3bitvdKrnxaF2pU5kGhSt6YDiW3TGw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=AG9ac9893pBBrBPeWNTs7u/OuvKxNA0v22qyxyeTSaH8BRQsz/8i7HXzzUEdy76HX
-	 AxEQbjJ7N9zCYpCZV5rK8jLkP4k29xk3dwNzGldgSva4v/n+ZKEnllcwedqeIM5c2t
-	 dp2j9fnctnVoOvWCgD/AuXuk0b9KraCoJLxc5DaJjARb67a0+I0tACTVct1QhbSi1p
-	 gg45fNBUk9sxSNnXYxwHBpmYA9qf7PCSAlhRh3qA+T+gGu1ToBP9N8kNRlYgMAU5/t
-	 udZEmFO0BNoRMKPIJV01sbAFaLubRhs7rbfnodPxVttfA/sE0Ja3hLjrg+uNL/fbky
-	 QUIwy0Snlu6bQ==
+	s=default; t=1692659398;
+	bh=mP3aXg02oHxqkQlQnzy3ZRCaPYzQZAdPU0mqBM3T1do=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=RuTWsrFgVMEE9rssD0jwQ1PzvF2WTg5jyomBJWHNsvrpwvpjUMCYbfBVKypTLbcfG
+	 QbfAaV3CwR1TdO5AEfELP5DuhJ69aSIB7KXrDCPZlzTeknqXZPTWA2Lh2Y1Vw+t9SN
+	 8lfwZC0kTGBmtpKwbMVwhiOGMb82bi7y7iQ7XH0f8yXtqRiuzTAnAkF2+MVEakN2c+
+	 Lz2F9+4LxSil2T4z32RO06F/bZlO/xwH5+3ew9gSVD6DX/wxiytyXWseJ3UMOJkgU5
+	 9ARgvP3XdG9j6YeLbV2SRZcxhY6Nw7VPjoJ6g/+OM+9W7Xg7wPByKCWVKS7hESTd0a
+	 pls3xIbpg44ag==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mww4GfA4q-o9; Mon, 21 Aug 2023 23:02:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SSXq38D-e8aa; Mon, 21 Aug 2023 23:09:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 96B0340B5B;
-	Mon, 21 Aug 2023 23:02:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 96B0340B5B
+	by smtp3.osuosl.org (Postfix) with ESMTP id BE2926113D;
+	Mon, 21 Aug 2023 23:09:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE2926113D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4837F1BF35B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:02:00 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CF51E1BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:09:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2D9A381D7C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:02:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D9A381D7C
+ by smtp3.osuosl.org (Postfix) with ESMTP id A6F5361140
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:09:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A6F5361140
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nb-L8PZiQNqd for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Aug 2023 23:01:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bi08ISSrUe-6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Aug 2023 23:09:51 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C6F8081D46
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:01:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6F8081D46
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="460086925"
-X-IronPort-AV: E=Sophos;i="6.01,191,1684825200"; d="scan'208";a="460086925"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 94CAA6113D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Aug 2023 23:09:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 94CAA6113D
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="460088919"
+X-IronPort-AV: E=Sophos;i="6.01,191,1684825200"; d="scan'208";a="460088919"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2023 16:01:55 -0700
+ 21 Aug 2023 16:09:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="712939026"
-X-IronPort-AV: E=Sophos;i="6.01,191,1684825200"; d="scan'208";a="712939026"
-Received: from phoberx-mobl.ger.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.249.40.168])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2023 16:01:53 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 21 Aug 2023 17:01:44 -0600
-Message-Id: <20230821230144.744741-1-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="712942467"
+X-IronPort-AV: E=Sophos;i="6.01,191,1684825200"; d="scan'208";a="712942467"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga006.jf.intel.com with ESMTP; 21 Aug 2023 16:09:49 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 21 Aug 2023 16:09:48 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 21 Aug 2023 16:09:48 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Mon, 21 Aug 2023 16:09:48 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.173)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Mon, 21 Aug 2023 16:09:47 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=acRFsNtr6iuZUSwneG0K28YygV17JboUZAixLKFO0AfK+oqO3ZvKSV51w2nqxkCijndTEOvz/yhh+QwMUEHJAeyu3Qbtk3j3sz7ncdPdjDVpDIYLv0Gq6VzyAcnl38EVl8bq9rvw34ACD2u2SXBvenxLdnsELQ8tCSu0EYnkkKPgrOYFpRYNZ+N4rh94QWUepx38ZRjRn0JGoFLLKcuf1Smn4tFEYUNhsU1ifMdZS19LJk0PwEJQ8qp45eN99N6bwPeePeRH9gCy0z7ses1l88rkQCV7hKUm9QSPdEiCvEn5B/TUNYbSapwHsnht+5rjGsXUqNo5lMOOQapQfpBRWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OX6OkCv3LR8Xkpi68q7jR0pVauhk+RvraWbM1dJ0ZA8=;
+ b=WJqkWFI0MWhtN7Z9zY1nFq+8MYnpkTslHGBAjiJbllwaxyJDVSyqwKTn4zdORtSdl1tq1ZL+zvC1CPl17ALWoXBOdtj3TFlWFWBWuNK79aYQXVnbp9Y/mvrhWvnIiwNFjsbrL+QH52gYBN6rjD+Hzc1EN8w9MYj5UebNxmcG4TbsBnO2cLWp4xYXmJNFMtyL44D+ux58AX+goodaEy+nAQEQxssnohrOBFioV2O3cKppvFb+PPdlQD+zxpqU0yfsq2tkKV4ga22917h4y7u4dIpNgfO8LBc/2uN5RW7zEB+nveZB3UWfoWV4E6vs8ql4Qp93i8OuB05vOGsKRcDVhg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by SA1PR11MB8277.namprd11.prod.outlook.com (2603:10b6:806:25a::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.20; Mon, 21 Aug
+ 2023 23:09:41 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::91f3:3879:b47d:a1c3]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::91f3:3879:b47d:a1c3%3]) with mapi id 15.20.6699.022; Mon, 21 Aug 2023
+ 23:09:40 +0000
+Message-ID: <5b658cb6-a0eb-2999-c627-762bda6b6f8b@intel.com>
+Date: Mon, 21 Aug 2023 16:09:36 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+To: Radoslaw Tyl <radoslawx.tyl@intel.com>, <intel-wired-lan@lists.osuosl.org>
+References: <20230821125504.169064-1-radoslawx.tyl@intel.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20230821125504.169064-1-radoslawx.tyl@intel.com>
+X-ClientProxiedBy: MW4PR04CA0328.namprd04.prod.outlook.com
+ (2603:10b6:303:82::33) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|SA1PR11MB8277:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5f597593-bee3-4b7f-dbfb-08dba29bb2a4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KqAEBttzHPLpmYN0vZtnEVuN3cLS/0AV9q1RFtGA0D6VAhOboKkYVwbvLVpmW24i44P1LvH8kugESmMrndqqotEFICm/jolyr0d7aNUIBl2OowMRyLcKIfoxbiGImXgH0r+AFj50Xe6eBV+p0gUIqDeR6/DL44ZMsRiebKAQ8dFP5cBrIloH/7kBe/75m36/M8n10gf5BnvoZVh+KLYmweRnmSR0ANvxIJmgl5B52bO45TyVq6sAhKIORMv9F+A5Ye78dypvL805N4UiL1UnbYn0rsJoVNeAQoYP2Fxm0pGlzD5d60/ZEoGGNcpP3ZP2A5tX9h200aKapqVcyBMaORn1gADW2ZB77kZZL4ojL7ZDRU9r7maefQG0PnWQDVymsxfrgL+su+YRaKaOVgaoq+kntXim1PfrPcUKN4AXlAzsWM07BMpL8B1rjIEj3iKwirqYZRgTVywzL1KfB8PyNaeU6I09IIkD0JKWCOSkWjD7xhpFtWWsdrdhil9A0omO4jq3Q8QME0a9reOta8xMMIJGQ6YSGkdSj/msBh2SH64uaNgl4RRN/OwS+0pdQH5Ob2Hf8bdgt457WAHodkX1CIFeF/JaQpbxvklZ62U7HagEtLTglLEJm542xpsh6WpVJWjIaW9JJmDW8lHko4GsDQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(136003)(396003)(376002)(346002)(366004)(39860400002)(186009)(1800799009)(451199024)(82960400001)(86362001)(31696002)(36756003)(31686004)(316002)(66556008)(66476007)(41300700001)(478600001)(38100700002)(66946007)(6486002)(6506007)(6666004)(6512007)(53546011)(26005)(83380400001)(8676002)(2906002)(2616005)(8936002)(5660300002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bFU4Zm00R1ppTkxDN2VBR0dBK1poUG1JdTBNdzNkMC9RY21pZXdCdCt2Z3ZS?=
+ =?utf-8?B?WndaWEhuNE9Ta2N3RndveitZTUlLSmJpQXpjekF2SitPVEx3ZDdycFB0VGJL?=
+ =?utf-8?B?T2F3cW9DVm5rQWxQWGFmSTFWbERCVHZmZUxCWnQ1NUxkeEhvV0lzSHJtaXNu?=
+ =?utf-8?B?cUg0R0hWYnhXWWUyS2tualFQWktQWUI3SlZPemNlUnVJYitHNDdFOHdheXJO?=
+ =?utf-8?B?OFJMY1hMOXFURytXRDdZbTR6KzZwZU5VcXRlUmpBTzZ3dzZNT2RIMHZhM25k?=
+ =?utf-8?B?THppSDNQZ1BJTkN4LzBuWjFWbDJ4dU9yM29SbkpNSkVwMUhaczZ2cUJXeVht?=
+ =?utf-8?B?V1Y5UytGamYwVkxpRlhveDhKcEFKaHZQL3RvaEtyL016VndheGtiR3BwcUk3?=
+ =?utf-8?B?cUZNK2dEWGxhQTFqTmJqR0ZzYXNDQjB0bXhwbjlvZGM1TStTWVZ6cEpsVFc1?=
+ =?utf-8?B?L0dhYmdrNlFEVERoQ2xzQXYvSHFFeFRDV01mS2RGN1puRW9oZmVyQng2aysw?=
+ =?utf-8?B?NlVPSmxGakhoRE5kOUJGRTBzZ1VkSzN2TVVFWThuS1hLTldzOTdBQ2FhNE9D?=
+ =?utf-8?B?SFlvRURMcXhFUjhENTBNN0QyQTFvazZpeFkxNzZxaWhncmFzN2Mrdng4YjIx?=
+ =?utf-8?B?aFNocCtJN1Y1dTN2YTdFWmVRbGdCYkJBVEhEb0JCNFg2c1duQlc2NTJzb3pV?=
+ =?utf-8?B?MmFBazhBOTVKSnM2aWcrYk1hcHNxOWV1cDUySGRaZTM3dEZ3VmJkUTdZeUtI?=
+ =?utf-8?B?aDY5UnlVOHl5SmVmU1BuYTBBd2Z6TUMyVVVLRXZzc29MZ2pnMFkvc3Y1clR2?=
+ =?utf-8?B?ZDNqMjlQM1VkYng0SGlMVWZHbXBodzNxYVBnSUNjbzEzV3RzVEZnejJzMG45?=
+ =?utf-8?B?dXJSeHB1bThKekZLN2NCdkQ0bDJCR1o0M2JCblNZb0dzS3JlV0tVWCtERnV2?=
+ =?utf-8?B?dElXd0lhNFZTaWJuaGs2dnBMTllwczJEZ24waUV1UHBWOUJlL3N6NStMOGh1?=
+ =?utf-8?B?Rm04MVM5bm1SYVc4SDViL05vOFJqck1jb1BuVWtJamtSaEg5NklsNDhsYUYw?=
+ =?utf-8?B?TWE4aWhsVE85bmtQc0ZDR2VjbXUyNWNCbHF6cFJ5cEN6NE5IZzM4L0RaWExY?=
+ =?utf-8?B?Ui9maVdOSWpFODh3N0puWEhuUWdoRFpxTEpabis5enJTN28yUy9uUjlkWGxZ?=
+ =?utf-8?B?YXRkRHZIRDdEd2E0SjdDZjhBdXMrRGpzVTB1WWFTaDYzR2VPVGZuTkF2eWtQ?=
+ =?utf-8?B?S2tCY0RvVjM1TXdEck1NaUJmZXgzcGFDWUpsVnJTNFI4VnNhaHIwL0JOaGxO?=
+ =?utf-8?B?aGkzaS9hcEZLOEloa3Urbkk1Y2J2ZzlMZVpMVFJXNTA4cHFSZFhoWUdPWEhq?=
+ =?utf-8?B?VGVCbDE5N1VmRkRHUWhJVVN6QTJVb3NZK2NUWWNPK3Q2RGsyNGdRUFp4S1hi?=
+ =?utf-8?B?Q1k3Y2JQSnBFajRGaEp4T1RNV1c3VG5KcXd2ZUhtVUxtVW5hM1FCckZUN1Fh?=
+ =?utf-8?B?ZHIvTVJrRTNLSzBmK2luN1MvZU9SVEdFUkhyQ3VaZ3lmbk45SEM4ZXJIUUZQ?=
+ =?utf-8?B?blVWaXhxSjY0TDl3ODJkVjg4TEtxZDhUNkhudlhKTjJraElEU1Z5NWpqZ01s?=
+ =?utf-8?B?VENkdWtHMmpWeGZKZTY0ZFBOSUxLUldRLzZUYXM0T3pGQ1k2NzNPdFJYNHAx?=
+ =?utf-8?B?dU1xRkhFOGpGczRiWGk2Q1l1WDdvTEtPTzd0VHRHOWJrNEd2MVNwSzlGNEM1?=
+ =?utf-8?B?aE5TWkZUbUZRZHBBQ2ZGOStLNitPY3dQS256R0hyYmwyME5Za1VqUFdObWQ1?=
+ =?utf-8?B?ZE1XNGxXMlhEaWUvU29RemhEQVF0dGJzOXJlNkpNaDJYM3lCd0xva0EwL0pM?=
+ =?utf-8?B?YnB3VWYvN0IxV2RNUkJva3BFc0ZVNnVkcWJuNVE1Q1kvekVLV2FIcVRDeHZP?=
+ =?utf-8?B?SDVITnlGVkErUmU2NGU3YU05T2VmUU5hWEZ2NG0vbVFNOGZWZ3JlWngwVk94?=
+ =?utf-8?B?UExXcE5NQjlHcjFFVUNKNnBnUXNXTkl0MTB1MGFHNlBuTUZpb2o4QzM5VGk5?=
+ =?utf-8?B?bVJNMEFzR3BiMEplc0NHek5IQWpHV3JiNEZPdmNpQk11WkJPaU9JSzV0WXRy?=
+ =?utf-8?B?M0FvOTZtTmNiSDdkbm1CU1B3VXpqUkJKbkVIaEY4SDhTMVk4aTRvd24vMEQx?=
+ =?utf-8?B?S2c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5f597593-bee3-4b7f-dbfb-08dba29bb2a4
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2023 23:09:40.6294 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BGOZgebvkVMo8yYyHPFTqWe8OXiPeGnKzScUzb8kXhBMweJZA7IH8WImR30GOBRxc+ajt0tkp8oPp+xMsez4VjEMUJr5UpAPYVs5+A59L80=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB8277
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692658916; x=1724194916;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=hMAd0aXYpucX9bPLUAUX+Dh3fI1/7Tpy698BKsG7pyQ=;
- b=h5qh7JldS7bklUzU1FNwPv5SJTJfR5I1DmzAf/cnLytcEtghIv2sQFDx
- Ja2AWsEC97thlA7Y0KbVmbF6HPXGxhongINVvyMY3oNN9FhotHrGeedny
- Hj6dgw1BfblrXEsLbKGn5+RyfKVJ4vJkFklZYqP2CNNTcXuZs+cLHnILJ
- Pxsnr140ACa2HSY64f8d4kMVDZJypqb3hElXVpAunnN9KrKDdu1xxhzYS
- PmoZL05fyZ9EyjaQk0rel+Fa8xICNAAeJ3fWm1TYrC2wwlCaHlnpkTeab
- gipEELE4dOXhdIbUWd+q1znmGQTWIDFmUi24Stbly2ZqVH/LsnkM2H+zt
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1692659390; x=1724195390;
+ h=message-id:date:subject:to:references:from:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=cEmai1adQFf6srvYyJaox+J9927bgNT2FnK7is1e/8w=;
+ b=K6JYUgC56bF32aNgUOi7iY4ozzmAtXbI62BW+MZ+il72iHoOM3x/nkDf
+ +fC3bW2AmRm/JpBuBWlBP25QiPmo7GB2Buqt/+vqlGThY6UYo2Fp32qOL
+ 37zTU+9isY2KbccR6zwmfHfMzLAGK3y0580SYg3kIDB2zrMvlrCPc69KZ
+ G7Zke+EManFl0labPfBenafeF6WkrtCoIP8HtEjG4q9EOBWgQcIB7UaxU
+ Pumc83fB627sRUOknTsN+jl7Iue+FxmY065c/UIsBOnnm19qTG2RhTCZx
+ urEJx/GASuTFZos9lTta1kt6TnxeiFGC6T6WnXdBaPqQkPVi1iGlymyei
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=h5qh7Jld
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] iavf: Fix promiscuous mode
- configuration flow messages
+ header.a=rsa-sha256 header.s=Intel header.b=K6JYUgC5
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igb: set max size RX
+ buffer when store bad packet is enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,295 +195,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Brett Creeley <brett.creeley@intel.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
 
-Currently when configuring promiscuous mode on the AVF we detect a
-change in the netdev->flags. We use IFF_PROMISC and IFF_ALLMULTI to
-determine whether or not we need to request/release promiscuous mode
-and/or multicast promiscuous mode. The problem is that the AQ calls for
-setting/clearing promiscuous/multicast mode are treated separately. This
-leads to a case where we can trigger two promiscuous mode AQ calls in
-a row with the incorrect state. To fix this make a few changes.
 
-Use IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE instead of the previous
-IAVF_FLAG_AQ_[REQUEST|RELEASE]_[PROMISC|ALLMULTI] flags.
+On 8/21/2023 5:55 AM, Radoslaw Tyl wrote:
+> Increase the RX buffer size to 3K when the SBP bit is on. The size of
+> the RX buffer determines the number of pages allocated which may not
+> be sufficient for receive frames larger than the set MTU size.
+> 
+> Fixes: 89eaefb61dc9 ("igb: Support RX-ALL feature flag.")
+> Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+> ---
+> v2: fix lkm build warning
+> ---
+>   drivers/net/ethernet/intel/igb/igb_main.c | 10 ++++++----
+>   1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 2293ae78f711..5d15bbdef03b 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -4814,6 +4814,9 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+>   static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+>   				  struct igb_ring *rx_ring)
+>   {
+> +#if (PAGE_SIZE < 8192)
+> +	struct e1000_hw *hw = &adapter->hw;
+> +#endif
 
-In iavf_set_rx_mode() detect if there is a change in the
-netdev->flags in comparison with adapter->flags and set the
-IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE aq_required bit. Then in
-iavf_process_aq_command() only check for IAVF_FLAG_CONFIGURE_PROMISC_MODE
-and call iavf_set_promiscuous() if it's set.
+Need a newline
 
-In iavf_set_promiscuous() check again to see which (if any) promiscuous
-mode bits have changed when comparing the netdev->flags with the
-adapter->flags. Use this to set the flags which get sent to the PF
-driver.
-
-Add a spinlock that is used for updating current_netdev_promisc_flags
-and only allows one promiscuous mode AQ at a time.
-
-[1] Fixes the fact that we will only have one AQ call in the aq_required
-queue at any one time.
-
-[2] Streamlines the change in promiscuous mode to only set one AQ
-required bit.
-
-[3] This allows us to keep track of the current state of the flags and
-also makes it so we can take the most recent netdev->flags promiscuous
-mode state.
-
-[4] This fixes the problem where a change in the netdev->flags can cause
-IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE to be set in iavf_set_rx_mode(),
-but cleared in iavf_set_promiscuous() before the change is ever made via
-AQ call.
-
-Fixes: 47d3483988f6 ("i40evf: Add driver support for promiscuous mode")
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
-v2: change Author info to Brett's
----
- drivers/net/ethernet/intel/iavf/iavf.h        | 16 ++--
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 43 +++++------
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 75 ++++++++++++-------
- 3 files changed, 74 insertions(+), 60 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 8cbdebc5b698..00552a1a19c7 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -298,8 +298,6 @@ struct iavf_adapter {
- #define IAVF_FLAG_CLIENT_NEEDS_OPEN		BIT(10)
- #define IAVF_FLAG_CLIENT_NEEDS_CLOSE		BIT(11)
- #define IAVF_FLAG_CLIENT_NEEDS_L2_PARAMS	BIT(12)
--#define IAVF_FLAG_PROMISC_ON			BIT(13)
--#define IAVF_FLAG_ALLMULTI_ON			BIT(14)
- #define IAVF_FLAG_LEGACY_RX			BIT(15)
- #define IAVF_FLAG_REINIT_ITR_NEEDED		BIT(16)
- #define IAVF_FLAG_QUEUES_DISABLED		BIT(17)
-@@ -325,10 +323,7 @@ struct iavf_adapter {
- #define IAVF_FLAG_AQ_SET_HENA			BIT_ULL(12)
- #define IAVF_FLAG_AQ_SET_RSS_KEY		BIT_ULL(13)
- #define IAVF_FLAG_AQ_SET_RSS_LUT		BIT_ULL(14)
--#define IAVF_FLAG_AQ_REQUEST_PROMISC		BIT_ULL(15)
--#define IAVF_FLAG_AQ_RELEASE_PROMISC		BIT_ULL(16)
--#define IAVF_FLAG_AQ_REQUEST_ALLMULTI		BIT_ULL(17)
--#define IAVF_FLAG_AQ_RELEASE_ALLMULTI		BIT_ULL(18)
-+#define IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE	BIT_ULL(15)
- #define IAVF_FLAG_AQ_ENABLE_VLAN_STRIPPING	BIT_ULL(19)
- #define IAVF_FLAG_AQ_DISABLE_VLAN_STRIPPING	BIT_ULL(20)
- #define IAVF_FLAG_AQ_ENABLE_CHANNELS		BIT_ULL(21)
-@@ -365,6 +360,12 @@ struct iavf_adapter {
- 	(IAVF_EXTENDED_CAP_SEND_VLAN_V2 |		\
- 	 IAVF_EXTENDED_CAP_RECV_VLAN_V2)
- 
-+	/* Lock to prevent possible clobbering of
-+	 * current_netdev_promisc_flags
-+	 */
-+	spinlock_t current_netdev_promisc_flags_lock;
-+	netdev_features_t current_netdev_promisc_flags;
-+
- 	/* OS defined structs */
- 	struct net_device *netdev;
- 	struct pci_dev *pdev;
-@@ -551,7 +552,8 @@ void iavf_add_ether_addrs(struct iavf_adapter *adapter);
- void iavf_del_ether_addrs(struct iavf_adapter *adapter);
- void iavf_add_vlans(struct iavf_adapter *adapter);
- void iavf_del_vlans(struct iavf_adapter *adapter);
--void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags);
-+void iavf_set_promiscuous(struct iavf_adapter *adapter);
-+bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter);
- void iavf_request_stats(struct iavf_adapter *adapter);
- int iavf_request_reset(struct iavf_adapter *adapter);
- void iavf_get_hena(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 1d24a71905d0..1e7c216ecee7 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1188,6 +1188,16 @@ static int iavf_addr_unsync(struct net_device *netdev, const u8 *addr)
- 	return 0;
- }
- 
-+/**
-+ * iavf_promiscuous_mode_changed - check if promiscuous mode bits changed
-+ * @adapter: device specific adapter
-+ */
-+bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter)
-+{
-+	return (adapter->current_netdev_promisc_flags ^ adapter->netdev->flags)
-+		& (IFF_PROMISC | IFF_ALLMULTI);
-+}
-+
- /**
-  * iavf_set_rx_mode - NDO callback to set the netdev filters
-  * @netdev: network interface device structure
-@@ -1201,19 +1211,10 @@ static void iavf_set_rx_mode(struct net_device *netdev)
- 	__dev_mc_sync(netdev, iavf_addr_sync, iavf_addr_unsync);
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
--	if (netdev->flags & IFF_PROMISC &&
--	    !(adapter->flags & IAVF_FLAG_PROMISC_ON))
--		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_PROMISC;
--	else if (!(netdev->flags & IFF_PROMISC) &&
--		 adapter->flags & IAVF_FLAG_PROMISC_ON)
--		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_PROMISC;
--
--	if (netdev->flags & IFF_ALLMULTI &&
--	    !(adapter->flags & IAVF_FLAG_ALLMULTI_ON))
--		adapter->aq_required |= IAVF_FLAG_AQ_REQUEST_ALLMULTI;
--	else if (!(netdev->flags & IFF_ALLMULTI) &&
--		 adapter->flags & IAVF_FLAG_ALLMULTI_ON)
--		adapter->aq_required |= IAVF_FLAG_AQ_RELEASE_ALLMULTI;
-+	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
-+	if (iavf_promiscuous_mode_changed(adapter))
-+		adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
- }
- 
- /**
-@@ -2164,19 +2165,8 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
- 		return 0;
- 	}
- 
--	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_PROMISC) {
--		iavf_set_promiscuous(adapter, FLAG_VF_UNICAST_PROMISC |
--				       FLAG_VF_MULTICAST_PROMISC);
--		return 0;
--	}
--
--	if (adapter->aq_required & IAVF_FLAG_AQ_REQUEST_ALLMULTI) {
--		iavf_set_promiscuous(adapter, FLAG_VF_MULTICAST_PROMISC);
--		return 0;
--	}
--	if ((adapter->aq_required & IAVF_FLAG_AQ_RELEASE_PROMISC) ||
--	    (adapter->aq_required & IAVF_FLAG_AQ_RELEASE_ALLMULTI)) {
--		iavf_set_promiscuous(adapter, 0);
-+	if (adapter->aq_required & IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE) {
-+		iavf_set_promiscuous(adapter);
- 		return 0;
- 	}
- 
-@@ -4972,6 +4962,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	spin_lock_init(&adapter->cloud_filter_list_lock);
- 	spin_lock_init(&adapter->fdir_fltr_lock);
- 	spin_lock_init(&adapter->adv_rss_lock);
-+	spin_lock_init(&adapter->current_netdev_promisc_flags_lock);
- 
- 	INIT_LIST_HEAD(&adapter->mac_filter_list);
- 	INIT_LIST_HEAD(&adapter->vlan_filter_list);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index be3c007ce90a..e5b36d73e4d5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -948,14 +948,14 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
- /**
-  * iavf_set_promiscuous
-  * @adapter: adapter structure
-- * @flags: bitmask to control unicast/multicast promiscuous.
-  *
-  * Request that the PF enable promiscuous mode for our VSI.
-  **/
--void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags)
-+void iavf_set_promiscuous(struct iavf_adapter *adapter)
- {
-+	struct net_device *netdev = adapter->netdev;
- 	struct virtchnl_promisc_info vpi;
--	int promisc_all;
-+	unsigned int flags;
- 
- 	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
- 		/* bail because we already have a command pending */
-@@ -964,36 +964,57 @@ void iavf_set_promiscuous(struct iavf_adapter *adapter, int flags)
- 		return;
- 	}
- 
--	promisc_all = FLAG_VF_UNICAST_PROMISC |
--		      FLAG_VF_MULTICAST_PROMISC;
--	if ((flags & promisc_all) == promisc_all) {
--		adapter->flags |= IAVF_FLAG_PROMISC_ON;
--		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_PROMISC;
--		dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
--	}
-+	/* prevent changes to promiscuous flags */
-+	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
- 
--	if (flags & FLAG_VF_MULTICAST_PROMISC) {
--		adapter->flags |= IAVF_FLAG_ALLMULTI_ON;
--		adapter->aq_required &= ~IAVF_FLAG_AQ_REQUEST_ALLMULTI;
--		dev_info(&adapter->pdev->dev, "%s is entering multicast promiscuous mode\n",
--			 adapter->netdev->name);
-+	/* sanity check to prevent duplicate AQ calls */
-+	if (!iavf_promiscuous_mode_changed(adapter)) {
-+		adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+		dev_dbg(&adapter->pdev->dev, "No change in promiscuous mode\n");
-+		/* allow changes to promiscuous flags */
-+		spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
-+		return;
- 	}
- 
--	if (!flags) {
--		if (adapter->flags & IAVF_FLAG_PROMISC_ON) {
--			adapter->flags &= ~IAVF_FLAG_PROMISC_ON;
--			adapter->aq_required &= ~IAVF_FLAG_AQ_RELEASE_PROMISC;
--			dev_info(&adapter->pdev->dev, "Leaving promiscuous mode\n");
--		}
-+	/* there are 2 bits, but only 3 states */
-+	if (!(netdev->flags & IFF_PROMISC) &&
-+	    netdev->flags & IFF_ALLMULTI) {
-+		/* State 1  - only multicast promiscuous mode enabled
-+		 * - !IFF_PROMISC && IFF_ALLMULTI
-+		 */
-+		flags = FLAG_VF_MULTICAST_PROMISC;
-+		adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
-+		adapter->current_netdev_promisc_flags &= ~IFF_PROMISC;
-+		dev_info(&adapter->pdev->dev, "Entering multicast promiscuous mode\n");
-+	} else if (!(netdev->flags & IFF_PROMISC) &&
-+		   !(netdev->flags & IFF_ALLMULTI)) {
-+		/* State 2 - unicast/multicast promiscuous mode disabled
-+		 * - !IFF_PROMISC && !IFF_ALLMULTI
-+		 */
-+		flags = 0;
-+		adapter->current_netdev_promisc_flags &=
-+			~(IFF_PROMISC | IFF_ALLMULTI);
-+		dev_info(&adapter->pdev->dev, "Leaving promiscuous mode\n");
-+	} else {
-+		/* State 3 - unicast/multicast promiscuous mode enabled
-+		 * - IFF_PROMISC && IFF_ALLMULTI
-+		 * - IFF_PROMISC && !IFF_ALLMULTI
-+		 */
-+		flags = FLAG_VF_UNICAST_PROMISC | FLAG_VF_MULTICAST_PROMISC;
-+		adapter->current_netdev_promisc_flags |= IFF_PROMISC;
-+		if (netdev->flags & IFF_ALLMULTI)
-+			adapter->current_netdev_promisc_flags |= IFF_ALLMULTI;
-+		else
-+			adapter->current_netdev_promisc_flags &= ~IFF_ALLMULTI;
- 
--		if (adapter->flags & IAVF_FLAG_ALLMULTI_ON) {
--			adapter->flags &= ~IAVF_FLAG_ALLMULTI_ON;
--			adapter->aq_required &= ~IAVF_FLAG_AQ_RELEASE_ALLMULTI;
--			dev_info(&adapter->pdev->dev, "%s is leaving multicast promiscuous mode\n",
--				 adapter->netdev->name);
--		}
-+		dev_info(&adapter->pdev->dev, "Entering promiscuous mode\n");
- 	}
- 
-+	adapter->aq_required &= ~IAVF_FLAG_AQ_CONFIGURE_PROMISC_MODE;
-+
-+	/* allow changes to promiscuous flags */
-+	spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
-+
- 	adapter->current_op = VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE;
- 	vpi.vsi_id = adapter->vsi_res->vsi_id;
- 	vpi.flags = flags;
--- 
-2.34.1
-
+>   	/* set build_skb and buffer size flags */
+>   	clear_ring_build_skb_enabled(rx_ring);
+>   	clear_ring_uses_large_buffer(rx_ring);
+> @@ -4824,10 +4827,9 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+>   	set_ring_build_skb_enabled(rx_ring);
+>   
+>   #if (PAGE_SIZE < 8192)
+> -	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
+> -		return;
+> -
+> -	set_ring_uses_large_buffer(rx_ring);
+> +	if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
+> +	    rd32(E1000_RCTL) & E1000_RCTL_SBP)
+> +		set_ring_uses_large_buffer(rx_ring);
+>   #endif
+>   }
+>   
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
