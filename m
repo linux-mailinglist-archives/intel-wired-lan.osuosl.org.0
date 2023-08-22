@@ -2,65 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E371E78468D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 18:07:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAE1D784809
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 18:53:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6AEE3403FD;
-	Tue, 22 Aug 2023 16:07:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AEE3403FD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 31BEC40BF0;
+	Tue, 22 Aug 2023 16:53:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 31BEC40BF0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692720424;
-	bh=rWwjlhmNTqVmiFc1dOsTA7/j02d6nxs6AJz2yvQMAdc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1692723194;
+	bh=3vBqZENhv56PE/xsyGjtZXrgwFcn4r+mRIfFUWhzLss=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Bg4GP2YznmGM6d1viTFg43kIChQVmuxtACYFMVf/qPIseS9wsdr9K/Xg8cWphLeVD
-	 qcypzQ3F1Om+GchbFQnoVb/SdSK668Ygp9G4GdO6j14BT9Q5xhnAkVFR7t9uzH1Q8y
-	 6cwYv9lsjXiRRwWs0bfo+WTmvJ6As08CZi4O7DlymW5E44Gqq3kygm4yCswVx3ZP5g
-	 m0KCnl2pJfWJVAr59NgDXjsYmqNtxbdFTtqGTtsks1l3yc1iFH7AkukR5MhMP1NsWq
-	 bPAbr5gBKoH97UVkBJn/gTv2b/ZuM3o3FcFtA0oFT2o45X/2I//9VKeNG0Cs5L/bIo
-	 mnh8b5VHttTnA==
+	b=pR749lDrrwQD/nSq7VsEUiBdSgjTofo3GnXRksGwa9iz7xM92Nua9+qcMQHRR6kaI
+	 U5D28q1VWzt/wKT2HQMZKiVST1I+xec5jcp/y5nxBOWAdIVxQKivrkzc4Jycv5D0jC
+	 ktt/Q/qwcivgHqxyahFBEUXoLjYxqicgnm3CWA2+2GQHAKSjBRn/rjDG+71vb4K8BM
+	 5xLeOz/SUcWuXo9HC7XntxDaNO/WBmpuMGM/b8q7o8PTxmL6mnEhAZL1P63d1hsFxU
+	 IKnJ+dGWqXFKVAQ0yDCeLHQ91dSHvXFWRxHA+inNi9kmJoBKq93omwWvILZmyVG4FQ
+	 5Jk8Ee8EZ2c/A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8EUx5i8Ied96; Tue, 22 Aug 2023 16:07:03 +0000 (UTC)
+	with ESMTP id AUX4MbpppJKL; Tue, 22 Aug 2023 16:53:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 409FD40272;
-	Tue, 22 Aug 2023 16:07:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 409FD40272
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3521440BE6;
+	Tue, 22 Aug 2023 16:53:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3521440BE6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A9C8A1BF39D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:06:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E12071BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:53:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8A9A4408BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:06:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A9A4408BD
+ by smtp2.osuosl.org (Postfix) with ESMTP id B38B240BE6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:53:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B38B240BE6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7aB8MeLJFiDo for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Aug 2023 16:06:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SAOE-koDZ2BD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Aug 2023 16:53:04 +0000 (UTC)
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4210A408AA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:06:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4210A408AA
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4780B40BE0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 16:53:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4780B40BE0
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 796AB624D6;
- Tue, 22 Aug 2023 16:06:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6261FC433C8;
- Tue, 22 Aug 2023 16:06:55 +0000 (UTC)
-Date: Tue, 22 Aug 2023 19:06:51 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- anthony.l.nguyen@intel.com, Jakub Kicinski <kuba@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
-Message-ID: <20230822160651.GN6029@unreal>
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1C33461DAE;
+ Tue, 22 Aug 2023 16:53:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32E80C433C7;
+ Tue, 22 Aug 2023 16:53:02 +0000 (UTC)
+Date: Tue, 22 Aug 2023 09:53:01 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Leon Romanovsky <leon@kernel.org>
+Message-ID: <20230822095301.31aeeaf2@kernel.org>
+In-Reply-To: <20230822160651.GN6029@unreal>
 References: <20230817141746.18726-1-karol.kolacinski@intel.com>
  <20230817141746.18726-2-karol.kolacinski@intel.com>
  <20230819115249.GP22185@unreal>
@@ -69,22 +68,21 @@ References: <20230817141746.18726-1-karol.kolacinski@intel.com>
  <f497dc97-76bb-7526-7d19-d6886a3f3a65@intel.com>
  <20230822154810.GM6029@unreal>
  <8a0e05ed-ae10-ba2f-5859-003cd02fba9c@intel.com>
+ <20230822160651.GN6029@unreal>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8a0e05ed-ae10-ba2f-5859-003cd02fba9c@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1692720415;
- bh=1V7w5fj4v1tLII5zZTBA1w3oKQjMiTF1veCGb3+VCYo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Hb9YUpXluU/qkdIVPn5jGONVx8yj//QL2hQAmzhL/mrITbjMYzNGxpMfnPNJT0cx2
- CGGf8gpIM+m/XMN5QRgwTvQ+cBl5sx9lT19gBg0HDh2AhoVx8IwXGT3oHrCAzfmMba
- 3aEG1rDsvICZlWzzM7qhTdCh1ZC4Do0NFjSlOTfN8EgawbHqBP7Fxh6qi2RODTDHTe
- afhS/CQNyTmtStFor5ABkoW2aED9KRNHUCeqk88n/wgaNesHNN1JWTv0iQSKUyJzLU
- vzRN3Cu9T55sz6Cv5vwnTJUvFqs8yF+2fKwE84mBrkGQUyzTe4pkLx2m8j7KXQjND5
- BCPGhuw1K1hnA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1692723182;
+ bh=1PCdFDvVtS6q1aCDOFe7QTda6W7MpcZ2xfJ2LZ9QIbY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=VfIluj/XOmj1Vo69xYyBpbO8ovsot7Y2I00bnwHpW22TsutWjNv0r750auv12htnQ
+ TmZjDj9nY9UWNXqy91kp07O+qeYDKnWuH/GkIJN8+Dd63fiqFi2ohgtkl209VuZfuJ
+ H6HNnU3iBfJ1o4PIzwEWnmtLhO9dCTWYWJ3eVBTCLuH8ozT7UrtKkwvrWNVbq0efr/
+ +zOAQjYgQI+COo0N65Rnm4jbkr6wKIiC3SSEzdlEDd+OG4WviFNsXMCgeSPoCNmSxo
+ ZJKkzxbjpdstG1nj+ABUAmJbFMpGlbE1KxKqXT1CNt4uOEtcFdCAbXj19VoRYus6Mx
+ C4ex4mBwja0sA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Hb9YUpXl
+ header.a=rsa-sha256 header.s=k20201202 header.b=VfIluj/X
 Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 1/9] ice: use
  ice_pf_src_tmr_owned where available
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -99,70 +97,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Simon Horman <horms@kernel.org>,
- Jiri Pirko <jiri@nvidia.com>, anthony.l.nguyen@intel.com,
- Saeed Mahameed <saeedm@nvidia.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jiri Pirko <jiri@nvidia.com>, jesse.brandeburg@intel.com,
+ Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
+ Simon Horman <horms@kernel.org>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVHVlLCBBdWcgMjIsIDIwMjMgYXQgMDU6NTY6MjVQTSArMDIwMCwgUHJ6ZW1layBLaXRzemVs
-IHdyb3RlOgo+IE9uIDgvMjIvMjMgMTc6NDgsIExlb24gUm9tYW5vdnNreSB3cm90ZToKPiA+IE9u
-IFR1ZSwgQXVnIDIyLCAyMDIzIGF0IDA0OjQ0OjI5UE0gKzAyMDAsIFByemVtZWsgS2l0c3plbCB3
-cm90ZToKPiA+ID4gT24gOC8yMi8yMyAxNjoxMywgTGVvbiBSb21hbm92c2t5IHdyb3RlOgo+ID4g
-PiA+IE9uIFR1ZSwgQXVnIDIyLCAyMDIzIGF0IDA5OjAyOjExQU0gKzAyMDAsIFNpbW9uIEhvcm1h
-biB3cm90ZToKPiA+ID4gPiA+IE9uIFNhdCwgQXVnIDE5LCAyMDIzIGF0IDAyOjUyOjQ5UE0gKzAz
-MDAsIExlb24gUm9tYW5vdnNreSB3cm90ZToKPiA+ID4gPiA+ID4gT24gVGh1LCBBdWcgMTcsIDIw
-MjMgYXQgMDQ6MTc6MzhQTSArMDIwMCwgS2Fyb2wgS29sYWNpbnNraSB3cm90ZToKPiA+ID4gPiA+
-ID4gPiBUaGUgaWNlX3BmX3NyY190bXJfb3duZWQoKSBtYWNybyBleGlzdHMgdG8gY2hlY2sgdGhl
-IGZ1bmN0aW9uIGNhcGFiaWxpdHkKPiA+ID4gPiA+ID4gPiBiaXQgaW5kaWNhdGluZyBpZiB0aGUg
-Y3VycmVudCBmdW5jdGlvbiBvd25zIHRoZSBQVFAgaGFyZHdhcmUgY2xvY2suCj4gPiA+ID4gPiA+
-IAo+ID4gPiA+ID4gPiBUaGlzIGlzIGZpcnN0IHBhdGNoIGluIHRoZSBzZXJpZXMsIGJ1dCBJIGNh
-bid0IGZpbmQgbWVudGlvbmVkIG1hY3JvLgo+ID4gPiA+ID4gPiBNeSBuZXQtbmV4dCBpcyBiYXNl
-ZCBvbiA1YjBhMTQxNGUwYjAgKCJNZXJnZSBicmFuY2ggJ3NtYy1mZWF0dXJlcyciKQo+ID4gPiA+
-ID4gPiDinpwgIGtlcm5lbCBnaXQ6KG5ldC1uZXh0KSBnaXQgZ3JlcCBpY2VfcGZfc3JjX3Rtcl9v
-d25lZAo+ID4gPiA+ID4gPiBzaG93cyBub3RoaW5nLgo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4g
-T24gd2hpY2ggYnJhbmNoIGlzIGl0IGJhc2VkPwo+ID4gPiA+ID4gCj4gPiA+ID4gPiBIaSBMZW9u
-LAo+ID4gPiA+ID4gCj4gPiA+ID4gPiBNeSBhc3N1bXB0aW9uIGlzIHRoYXQgaXQgaXMgYmFzZWQg
-b24gdGhlIGRldi1xdWV1ZSBicmFuY2ggb2YKPiA+ID4gPiA+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5v
-cmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RuZ3V5L25leHQtcXVldWUuZ2l0Cj4gPiA+ID4g
-Cj4gPiA+ID4gU28gc2hvdWxkIG5ldGRldiByZWFkZXJzIHJldmlldyBpdCBvciB3YWl0IHRpbGwg
-SW50ZWwgZm9sa3MgcGVyZm9ybQo+ID4gPiA+IGZpcnN0IHBhc3Mgb24gaXQ/Cj4gPiA+IAo+ID4g
-PiBNb3N0IG9mIHRoZSB0aW1lIEludGVsIGZvbGtzIHdvdWxkIGJlIGZpcnN0IHRvIHJldmlldywg
-aWYgb25seSBiZWNhdXNlIG9mCj4gPiA+IG91ciBwcmUtSVdMIHByb2Nlc3NlcyBvciBwdXJlIGZh
-bWlsaWFyaXR5L2ludGVyZXN0IGluIGdpdmVuIHBpZWNlLgo+ID4gPiAKPiA+ID4gRm9yIHRoaXMg
-cGFydGljdWxhciBzZXJpZXMsIGl0IGlzIGFib3V0IHJpZ2h0ICJjb2Rld2lzZSIgc2luY2UgdjEs
-IHNvIHlvdQo+ID4gPiBhcmUgd2VsY29tZSBmb3IgYW4gaW5zaWdodGZ1bCBsb29rIGF0IHYzCj4g
-PiA+IChJIGRpZG4ndCBwcm92aWRlZCBteSBSQnMgc28gZmFyIGJlY2F1c2Ugb2YgIm1ldGFkYXRh
-IiBpc3N1ZXMgOiksCj4gPiA+IHdpbGwgdGFrZSBhIGZyZXNoIGxvb2ssIGJ1dCB5b3UgZG9uJ3Qg
-bmVlZCB0byB3YWl0KS4KPiA+ID4gCj4gPiA+IAo+ID4gPiBHZW5lcmFsIGlkZWEgZm9yIENDJ2lu
-ZyBuZXRkZXYgZm9yIElXTC10YXJnZXRlZCBwYXRjaGVzIGlzIHRvIGhhdmUgb3Blbgo+ID4gPiBk
-ZXZlbG9tcGVudCBwcm9jZXNzLgo+ID4gPiBRdWFsaXR5IHNob3VsZCBiZSBhbHJlYWR5IGFzIGZv
-ciBuZXRkZXYgcG9zdGluZy4KPiA+ID4gT3VyIFZBTCBwaWNrcyB1cCBwYXRjaGVzIGZvciB0ZXN0
-aW5nIGZyb20gaGVyZSB3aGVuIFRvbnkgbWFya3MgdGhlbSBzby4KPiA+ID4gCj4gPiA+IFRoYXQn
-cyB3aGF0IEkgY291bGQgc2F5IGZvciByZXZpZXcgcHJvY2Vzcy4KPiA+ID4gCj4gPiA+ICJNYWlu
-dGFpbmVycyBzdHVmZiIsIEkgKmd1ZXNzKiwgaXM6Cj4gPiA+IGFmdGVyIHJldmlldyZ0ZXN0IFRv
-bnkgUmVxdWVzdHMgbmV0ZGV2IE1haW50YWluZXJzIHRvIFB1bGwKPiA+ID4gKGFuZCB0aHJvdHRs
-ZXMgb3V0Z29pbmcgc3R1ZmYgYnkgZG9pbmcgc28gdG8gcGFjZSBhZ3JlZWQgdXBvbikuCj4gPiA+
-IEF0IHRoYXQgc3RhZ2UgaXMgYSBsYXN0IG1vbWVudCBmb3IgKGxhdGU/KSByZXZpZXcsIHdlbGNv
-bWVkIGFzIGFsd2F5cy4KPiA+IAo+ID4gSXQgbWVhbnMgdGhhdCB3ZSAobmV0ZGV2QC4uLiApIHdp
-bGwgc2VlICJzYW1lIiBwYXRjaGVzIHR3aWNlLCBhbSBJIHJpZ2h0Pwo+IAo+IFRoYXQncyB0cnVl
-LgoKQ2FuIEkgc3VnZ2VzdCBjaGFuZ2UgaW4gdGhlIHByb2Nlc3M/CjEuIFBlcmZvcm0gdmFsaWRh
-dGlvbiBiZWZvcmUgcG9zdGluZwoyLiBJbnRlbCB3aWxsIHBvc3QgdGhlaXIgcGF0Y2hlcyB0byB0
-aGUgbmV0ZGV2QCBNTC4KMy4gVG9ueSB3aWxsIGNvbGxlY3QgcmV2aWV3ZWQgcGF0Y2hlcyBmcm9t
-IG5ldGRldkAKNC4gVG9ueSB3aWxsIHNlbmQgY2xlYW4gUFJzICh3aXRob3V0IHBhdGNoZXMpIGZy
-b20gdGltZSB0byB0aW1lIHRvCm5ldGRldiBtYWludGFpbmVycyBmb3IgYWNjZXB0YW5jZS4KCkl0
-IHdpbGwgYWxsb3cgdG8gYWxsIG9mIHVzIChJbnRlbCwgTnZpZGlhIGUudC5jKSB0byBoYXZlIHNh
-bWUgc3VibWlzc2lvbgpmbG93IHdpdGhvdXQgc2FjcmlmaWNpbmcgb3BlbiBuZXRkZXZAIHJldmll
-dyB3aGljaCB3aWxsIGJlIGRvbmUgb25seSBvbmNlLgoKSmFrdWIvRGF2ZSwgaXMgaXQgcG9zc2li
-bGU/CgpUaGFua3MKCj4gCj4gPiAKPiA+IFRoYW5rcwo+ID4gCj4gPiA+IAo+ID4gPiAKPiA+ID4g
-Cj4gPiA+ID4gCj4gPiA+ID4gVGhhbmtzCj4gPiA+ID4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KPiA+ID4gPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
-aXN0Cj4gPiA+ID4gSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKPiA+ID4gPiBodHRwczovL2xp
-c3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4KPiA+ID4gCj4g
-PiA+IAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJ
-bnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0
-dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+On Tue, 22 Aug 2023 19:06:51 +0300 Leon Romanovsky wrote:
+> Can I suggest change in the process?
+> 1. Perform validation before posting
+> 2. Intel will post their patches to the netdev@ ML.
+> 3. Tony will collect reviewed patches from netdev@
+> 4. Tony will send clean PRs (without patches) from time to time to
+> netdev maintainers for acceptance.
+> 
+> It will allow to all of us (Intel, Nvidia e.t.c) to have same submission
+> flow without sacrificing open netdev@ review which will be done only once.
+> 
+> Jakub/Dave, is it possible?
+
+That sounds worse than what they are doing today. And I can't help
+but think that you're targeting them because I asked you to stop posting
+directly for net-next. Vendetta is not a good guide for process changes.
+
+Let's see what the 6.6 development stats look like. Then we'll have
+a discussion about what we can improve.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
